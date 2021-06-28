@@ -87,8 +87,8 @@ msgstr "显示"
 
 #. Description of --cdk-debug=FLAGS in --help output
 #: cdk/cdk.c:240
-msgid "GDK debugging flags to set"
-msgstr "要设置的 GDK 调试标志"
+msgid "CDK debugging flags to set"
+msgstr "要设置的 CDK 调试标志"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
@@ -100,12 +100,12 @@ msgstr "标志"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: cdk/cdk.c:243
-msgid "GDK debugging flags to unset"
-msgstr "要取消的 GDK 调试标志"
+msgid "CDK debugging flags to unset"
+msgstr "要取消的 CDK 调试标志"
 
 #: cdk/cdkwindow.c:2851
-msgid "GL support disabled via GDK_DEBUG"
-msgstr "已通过 GDK_DEBUG 停用 GL 支持"
+msgid "GL support disabled via CDK_DEBUG"
+msgstr "已通过 CDK_DEBUG 停用 GL 支持"
 
 #: cdk/cdkwindow.c:2862
 msgid "The current backend does not support OpenGL"
@@ -4117,8 +4117,8 @@ msgid "CTK+ Version"
 msgstr "CTK+ 版本"
 
 #: ctk/inspector/general.ui:68
-msgid "GDK Backend"
-msgstr "GDK 后端"
+msgid "CDK Backend"
+msgstr "CDK 后端"
 
 #: ctk/inspector/general.ui:373
 msgid "Display"
@@ -4491,10 +4491,10 @@ msgstr "设置值由 CTK_TEST_TOUCHSCREEN 所设置"
 #: ctk/inspector/visual.c:817
 msgid ""
 "Not settable at runtime.\n"
-"Use GDK_GL=always or GDK_GL=disable instead"
+"Use CDK_GL=always or CDK_GL=disable instead"
 msgstr ""
 "在运行阶段不能设置。\n"
-"使用 GDK_GL=always 或 GDK_GL=disable 代替"
+"使用 CDK_GL=always 或 CDK_GL=disable 代替"
 
 #: ctk/inspector/visual.c:831 ctk/inspector/visual.c:832
 #: ctk/inspector/visual.c:833

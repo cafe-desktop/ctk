@@ -85,62 +85,62 @@ struct _CtkSettingsValue
 
 
 /* --- functions --- */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType           ctk_settings_get_type                (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkSettings*    ctk_settings_get_default             (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkSettings*    ctk_settings_get_for_screen          (CdkScreen *screen);
 
-GDK_DEPRECATED_IN_3_16
+CDK_DEPRECATED_IN_3_16
 void            ctk_settings_install_property        (GParamSpec         *pspec);
-GDK_DEPRECATED_IN_3_16
+CDK_DEPRECATED_IN_3_16
 void            ctk_settings_install_property_parser (GParamSpec         *pspec,
                                                       CtkRcPropertyParser parser);
 
 /* --- precoded parsing functions --- */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_rc_property_parse_color       (const GParamSpec *pspec,
                                             const GString    *gstring,
                                             GValue           *property_value);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_rc_property_parse_enum        (const GParamSpec *pspec,
                                             const GString    *gstring,
                                             GValue           *property_value);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_rc_property_parse_flags       (const GParamSpec *pspec,
                                             const GString    *gstring,
                                             GValue           *property_value);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_rc_property_parse_requisition (const GParamSpec *pspec,
                                             const GString    *gstring,
                                             GValue           *property_value);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_rc_property_parse_border      (const GParamSpec *pspec,
                                             const GString    *gstring,
                                             GValue           *property_value);
 
-GDK_DEPRECATED_IN_3_16
+CDK_DEPRECATED_IN_3_16
 void     ctk_settings_set_property_value   (CtkSettings            *settings,
                                             const gchar            *name,
                                             const CtkSettingsValue *svalue);
-GDK_DEPRECATED_IN_3_16
+CDK_DEPRECATED_IN_3_16
 void     ctk_settings_set_string_property  (CtkSettings            *settings,
                                             const gchar            *name,
                                             const gchar            *v_string,
                                             const gchar            *origin);
-GDK_DEPRECATED_IN_3_16
+CDK_DEPRECATED_IN_3_16
 void     ctk_settings_set_long_property    (CtkSettings            *settings,
                                             const gchar            *name,
                                             glong                   v_long,
                                             const gchar            *origin);
-GDK_DEPRECATED_IN_3_16
+CDK_DEPRECATED_IN_3_16
 void     ctk_settings_set_double_property  (CtkSettings            *settings,
                                             const gchar            *name,
                                             gdouble                 v_double,
                                             const gchar            *origin);
 
-GDK_AVAILABLE_IN_3_20
+CDK_AVAILABLE_IN_3_20
 void     ctk_settings_reset_property       (CtkSettings            *settings,
                                             const gchar            *name);
 

@@ -71,15 +71,15 @@ struct _CtkTextChildAnchorClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType               ctk_text_child_anchor_get_type    (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTextChildAnchor* ctk_text_child_anchor_new         (void);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GList*              ctk_text_child_anchor_get_widgets (CtkTextChildAnchor *anchor);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean            ctk_text_child_anchor_get_deleted (CtkTextChildAnchor *anchor);
 
 G_END_DECLS

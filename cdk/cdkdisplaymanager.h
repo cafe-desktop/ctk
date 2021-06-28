@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2000 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -22,10 +22,10 @@
  * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
-#ifndef __GDK_DISPLAY_MANAGER_H__
-#define __GDK_DISPLAY_MANAGER_H__
+#ifndef __CDK_DISPLAY_MANAGER_H__
+#define __CDK_DISPLAY_MANAGER_H__
 
-#if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined (__CDK_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdk.h> can be included directly."
 #endif
 
@@ -35,27 +35,27 @@
 G_BEGIN_DECLS
 
 
-#define GDK_TYPE_DISPLAY_MANAGER              (cdk_display_manager_get_type ())
-#define GDK_DISPLAY_MANAGER(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_DISPLAY_MANAGER, CdkDisplayManager))
-#define GDK_IS_DISPLAY_MANAGER(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_DISPLAY_MANAGER))
+#define CDK_TYPE_DISPLAY_MANAGER              (cdk_display_manager_get_type ())
+#define CDK_DISPLAY_MANAGER(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), CDK_TYPE_DISPLAY_MANAGER, CdkDisplayManager))
+#define CDK_IS_DISPLAY_MANAGER(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), CDK_TYPE_DISPLAY_MANAGER))
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType              cdk_display_manager_get_type            (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkDisplayManager *cdk_display_manager_get                 (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkDisplay *       cdk_display_manager_get_default_display (CdkDisplayManager *manager);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void               cdk_display_manager_set_default_display (CdkDisplayManager *manager,
                                                             CdkDisplay        *display);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GSList *           cdk_display_manager_list_displays       (CdkDisplayManager *manager);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkDisplay *       cdk_display_manager_open_display        (CdkDisplayManager *manager,
                                                             const gchar       *name);
 
 G_END_DECLS
 
-#endif /* __GDK_DISPLAY_MANAGER_H__ */
+#endif /* __CDK_DISPLAY_MANAGER_H__ */

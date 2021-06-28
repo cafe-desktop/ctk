@@ -250,7 +250,7 @@
 #mesondefine _FILE_OFFSET_BITS
 
 /* defines how to decorate public symbols while building */
-#mesondefine _GDK_EXTERN
+#mesondefine _CDK_EXTERN
 
 /* Define for large files, on AIX-style hosts. */
 #mesondefine _LARGE_FILES

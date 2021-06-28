@@ -30,24 +30,24 @@ G_BEGIN_DECLS
 
 #define CTK_TYPE_FILE_CHOOSER_NATIVE             (ctk_file_chooser_native_get_type ())
 
-GDK_AVAILABLE_IN_3_20
+CDK_AVAILABLE_IN_3_20
 G_DECLARE_FINAL_TYPE (CtkFileChooserNative, ctk_file_chooser_native, CTK, FILE_CHOOSER_NATIVE, CtkNativeDialog)
 
-GDK_AVAILABLE_IN_3_20
+CDK_AVAILABLE_IN_3_20
 CtkFileChooserNative *ctk_file_chooser_native_new (const gchar          *title,
                                                    CtkWindow            *parent,
                                                    CtkFileChooserAction  action,
                                                    const gchar          *accept_label,
                                                    const gchar          *cancel_label);
 
-GDK_AVAILABLE_IN_3_20
+CDK_AVAILABLE_IN_3_20
 const char *ctk_file_chooser_native_get_accept_label (CtkFileChooserNative *self);
-GDK_AVAILABLE_IN_3_20
+CDK_AVAILABLE_IN_3_20
 void        ctk_file_chooser_native_set_accept_label (CtkFileChooserNative *self,
                                                       const char           *accept_label);
-GDK_AVAILABLE_IN_3_20
+CDK_AVAILABLE_IN_3_20
 const char *ctk_file_chooser_native_get_cancel_label (CtkFileChooserNative *self);
-GDK_AVAILABLE_IN_3_20
+CDK_AVAILABLE_IN_3_20
 void        ctk_file_chooser_native_set_cancel_label (CtkFileChooserNative *self,
                                                       const char           *cancel_label);
 

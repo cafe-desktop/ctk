@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_WIN32_MONITOR_PRIVATE_H__
-#define __GDK_WIN32_MONITOR_PRIVATE_H__
+#ifndef __CDK_WIN32_MONITOR_PRIVATE_H__
+#define __CDK_WIN32_MONITOR_PRIVATE_H__
 
 #include <windows.h>
 #include <glib.h>
@@ -49,11 +49,11 @@
  * (rgb -> vbgr; bgr -> vrgb).
  */
 typedef enum _CdkWin32MonitorRotation {
-  GDK_WIN32_MONITOR_ROTATION_UNKNOWN = 0,
-  GDK_WIN32_MONITOR_ROTATION_0 = 1,
-  GDK_WIN32_MONITOR_ROTATION_90 = 2,
-  GDK_WIN32_MONITOR_ROTATION_180 = 3,
-  GDK_WIN32_MONITOR_ROTATION_270 = 4,
+  CDK_WIN32_MONITOR_ROTATION_UNKNOWN = 0,
+  CDK_WIN32_MONITOR_ROTATION_0 = 1,
+  CDK_WIN32_MONITOR_ROTATION_90 = 2,
+  CDK_WIN32_MONITOR_ROTATION_180 = 3,
+  CDK_WIN32_MONITOR_ROTATION_270 = 4,
 } CdkWin32MonitorRotation;
 
 struct _CdkWin32Monitor
@@ -76,10 +76,10 @@ struct _CdkWin32Monitor
    */
   guint madeup : 1;
 
-  /* TRUE if we should notify GDK about this monitor being added */
+  /* TRUE if we should notify CDK about this monitor being added */
   guint add    : 1;
 
-  /* TRUE if we should notify GDK about this monitor being removed */
+  /* TRUE if we should notify CDK about this monitor being removed */
   guint remove : 1;
 };
 

@@ -50,10 +50,10 @@ typedef enum {
   CTK_BUTTON_ROLE_RADIO
 } CtkButtonRole;
 
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 GType       ctk_model_button_get_type (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 CtkWidget * ctk_model_button_new      (void);
 
 G_END_DECLS

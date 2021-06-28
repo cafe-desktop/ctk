@@ -20,10 +20,10 @@ HTML-specific aspects of using CTK+
 <title>Using CTK+ with Broadway</title>
 
 <para>
-The GDK Broadway backend provides support for displaying CTK+
+The CDK Broadway backend provides support for displaying CTK+
 applications in a web browser, using HTML5 and web sockets. To run
 your application in this way, select the Broadway backend by setting
-<literal>GDK_BACKEND=broadway</literal>. Then you can make
+<literal>CDK_BACKEND=broadway</literal>. Then you can make
 your application appear in a web browser by pointing it at
 <literal>http://127.0.0.1:8080</literal>. Note that you need
 to enable web sockets in your web browser.
@@ -46,7 +46,7 @@ broadwayd :5
 Then point your web browser at <literal>http://127.0.0.1:8085</literal>.
 Start your applications like this:
 <programlisting>
-GDK_BACKEND=broadway BROADWAY_DISPLAY=:5 ctk3-demo
+CDK_BACKEND=broadway BROADWAY_DISPLAY=:5 ctk3-demo
 </programlisting>
 </para>
 

@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2000 Red Hat, Inc. 
  *
  * This library is free software; you can redistribute it and/or
@@ -28,13 +28,13 @@
 
 /**
  * SECTION:pango_interaction
- * @Short_description: Using Pango in GDK
+ * @Short_description: Using Pango in CDK
  * @Title: Pango Interaction
  *
- * Pango is the text layout system used by GDK and CTK+. The functions
+ * Pango is the text layout system used by CDK and CTK+. The functions
  * and types in this section are used to obtain clip regions for
  * #PangoLayouts, and to get #PangoContexts that can be used with
- * GDK.
+ * CDK.
  *
  * Creating a #PangoLayout object is the first step in rendering text,
  * and requires getting a handle to a #PangoContext. For CTK+ programs,
@@ -301,7 +301,7 @@ cdk_pango_layout_get_clip_region (PangoLayout *layout,
 /**
  * cdk_pango_context_get:
  * 
- * Creates a #PangoContext for the default GDK screen.
+ * Creates a #PangoContext for the default CDK screen.
  *
  * The context must be freed when you’re finished with it.
  * 
@@ -353,7 +353,7 @@ cdk_pango_context_get_for_screen (CdkScreen *screen)
   const cairo_font_options_t *options;
   double dpi;
 
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), NULL);
 
   fontmap = pango_cairo_font_map_get_default ();
   context = pango_font_map_create_context (fontmap);
@@ -392,7 +392,7 @@ cdk_pango_context_get_for_screen (CdkScreen *screen)
 PangoContext *
 cdk_pango_context_get_for_display (CdkDisplay *display)
 {
-  g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
+  g_return_val_if_fail (CDK_IS_DISPLAY (display), NULL);
 
   return cdk_pango_context_get_for_screen (cdk_display_get_default_screen (display));
 }

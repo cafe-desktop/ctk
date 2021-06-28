@@ -28,7 +28,7 @@
 void
 _cdk_x11_window_sync_rendering (CdkWindow *window)
 {
-  Display *display = GDK_WINDOW_XDISPLAY (window);
+  Display *display = CDK_WINDOW_XDISPLAY (window);
   XImage *ximage;
 
   /* syncronize to X drawing queue, see:
@@ -57,9 +57,9 @@ _cdk_x11_window_simulate_key (CdkWindow      *window,
     0,  /* serial */
     1,  /* send_event */
   };
-  g_return_val_if_fail (key_pressrelease == GDK_KEY_PRESS || key_pressrelease == GDK_KEY_RELEASE, FALSE);
+  g_return_val_if_fail (key_pressrelease == CDK_KEY_PRESS || key_pressrelease == CDK_KEY_RELEASE, FALSE);
   g_return_val_if_fail (window != NULL, FALSE);
-  if (!GDK_WINDOW_IS_MAPPED (window))
+  if (!CDK_WINDOW_IS_MAPPED (window))
     return FALSE;
 
   screen = cdk_window_get_screen (window);
@@ -74,10 +74,10 @@ _cdk_x11_window_simulate_key (CdkWindow      *window,
   x = x + window->abs_x;
   y = y + window->abs_y;
 
-  xev.type = key_pressrelease == GDK_KEY_PRESS ? KeyPress : KeyRelease;
-  xev.display = GDK_WINDOW_XDISPLAY (window);
-  xev.window = GDK_WINDOW_XID (window);
-  xev.root = RootWindow (xev.display, GDK_X11_SCREEN (screen)->screen_num);
+  xev.type = key_pressrelease == CDK_KEY_PRESS ? KeyPress : KeyRelease;
+  xev.display = CDK_WINDOW_XDISPLAY (window);
+  xev.window = CDK_WINDOW_XID (window);
+  xev.root = RootWindow (xev.display, CDK_X11_SCREEN (screen)->screen_num);
   xev.subwindow = 0;
   xev.time = 0;
   xev.x = MAX (x, 0);
@@ -98,7 +98,7 @@ _cdk_x11_window_simulate_key (CdkWindow      *window,
             if (keys[i].level == 1)
               {
                 /* Assume shift takes us to level 1 */
-                xev.state |= GDK_SHIFT_MASK;
+                xev.state |= CDK_SHIFT_MASK;
               }
             break;
           }
@@ -108,7 +108,7 @@ _cdk_x11_window_simulate_key (CdkWindow      *window,
   g_free (keys);
   if (!success)
     return FALSE;
-  cdk_x11_display_error_trap_push (GDK_WINDOW_DISPLAY (window));
+  cdk_x11_display_error_trap_push (CDK_WINDOW_DISPLAY (window));
   xev.same_screen = XTranslateCoordinates (xev.display, xev.window, xev.root,
                                            xev.x, xev.y, &xev.x_root, &xev.y_root,
                                            &xev.subwindow);
@@ -117,9 +117,9 @@ _cdk_x11_window_simulate_key (CdkWindow      *window,
   success &= xev.same_screen;
   if (x >= 0 && y >= 0)
     success &= 0 != XWarpPointer (xev.display, None, xev.window, 0, 0, 0, 0, xev.x, xev.y);
-  success &= 0 != XSendEvent (xev.display, xev.window, True, key_pressrelease == GDK_KEY_PRESS ? KeyPressMask : KeyReleaseMask, (XEvent*) &xev);
+  success &= 0 != XSendEvent (xev.display, xev.window, True, key_pressrelease == CDK_KEY_PRESS ? KeyPressMask : KeyReleaseMask, (XEvent*) &xev);
   XSync (xev.display, False);
-  success &= 0 == cdk_x11_display_error_trap_pop (GDK_WINDOW_DISPLAY (window));
+  success &= 0 == cdk_x11_display_error_trap_pop (CDK_WINDOW_DISPLAY (window));
   return success;
 }
 
@@ -139,10 +139,10 @@ _cdk_x11_window_simulate_button (CdkWindow      *window,
   };
   gboolean success;
 
-  g_return_val_if_fail (button_pressrelease == GDK_BUTTON_PRESS || button_pressrelease == GDK_BUTTON_RELEASE, FALSE);
+  g_return_val_if_fail (button_pressrelease == CDK_BUTTON_PRESS || button_pressrelease == CDK_BUTTON_RELEASE, FALSE);
   g_return_val_if_fail (window != NULL, FALSE);
 
-  if (!GDK_WINDOW_IS_MAPPED (window))
+  if (!CDK_WINDOW_IS_MAPPED (window))
     return FALSE;
 
   screen = cdk_window_get_screen (window);
@@ -157,10 +157,10 @@ _cdk_x11_window_simulate_button (CdkWindow      *window,
   x = x + window->abs_x;
   y = y + window->abs_y;
 
-  xev.type = button_pressrelease == GDK_BUTTON_PRESS ? ButtonPress : ButtonRelease;
-  xev.display = GDK_WINDOW_XDISPLAY (window);
-  xev.window = GDK_WINDOW_XID (window);
-  xev.root = RootWindow (xev.display, GDK_X11_SCREEN (screen)->screen_num);
+  xev.type = button_pressrelease == CDK_BUTTON_PRESS ? ButtonPress : ButtonRelease;
+  xev.display = CDK_WINDOW_XDISPLAY (window);
+  xev.window = CDK_WINDOW_XID (window);
+  xev.root = RootWindow (xev.display, CDK_X11_SCREEN (screen)->screen_num);
   xev.subwindow = 0;
   xev.time = 0;
   xev.x = x;
@@ -169,7 +169,7 @@ _cdk_x11_window_simulate_button (CdkWindow      *window,
   xev.y_root = 0;
   xev.state = modifiers;
   xev.button = button;
-  cdk_x11_display_error_trap_push (GDK_WINDOW_DISPLAY (window));
+  cdk_x11_display_error_trap_push (CDK_WINDOW_DISPLAY (window));
   xev.same_screen = XTranslateCoordinates (xev.display, xev.window, xev.root,
                                            xev.x, xev.y, &xev.x_root, &xev.y_root,
                                            &xev.subwindow);
@@ -177,8 +177,8 @@ _cdk_x11_window_simulate_button (CdkWindow      *window,
     xev.subwindow = xev.window;
   success = xev.same_screen;
   success &= 0 != XWarpPointer (xev.display, None, xev.window, 0, 0, 0, 0, xev.x, xev.y);
-  success &= 0 != XSendEvent (xev.display, xev.window, True, button_pressrelease == GDK_BUTTON_PRESS ? ButtonPressMask : ButtonReleaseMask, (XEvent*) &xev);
+  success &= 0 != XSendEvent (xev.display, xev.window, True, button_pressrelease == CDK_BUTTON_PRESS ? ButtonPressMask : ButtonReleaseMask, (XEvent*) &xev);
   XSync (xev.display, False);
-  success &= 0 == cdk_x11_display_error_trap_pop(GDK_WINDOW_DISPLAY (window));
+  success &= 0 == cdk_x11_display_error_trap_pop(CDK_WINDOW_DISPLAY (window));
   return success;
 }

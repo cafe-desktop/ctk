@@ -76,9 +76,9 @@ msgstr "ДИСПЛЕЙ"
 
 #. Description of --cdk-debug=FLAGS in --help output
 #: cdk/cdk.c:238
-msgid "GDK debugging flags to set"
+msgid "CDK debugging flags to set"
 msgstr ""
-"Флагове за изчистване на грешки на GDK,\n"
+"Флагове за изчистване на грешки на CDK,\n"
 "                                        които да бъдат зададени"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
@@ -91,14 +91,14 @@ msgstr "ФЛАГОВЕ"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: cdk/cdk.c:241
-msgid "GDK debugging flags to unset"
+msgid "CDK debugging flags to unset"
 msgstr ""
-"Флагове за изчистване на грешки на GDK,\n"
+"Флагове за изчистване на грешки на CDK,\n"
 "                                        които да не бъдат зададени"
 
 #: cdk/cdkwindow.c:2766
-msgid "GL support disabled via GDK_DEBUG"
-msgstr "Поддръжката на GL е забранена от GDK_DEBUG"
+msgid "GL support disabled via CDK_DEBUG"
+msgstr "Поддръжката на GL е забранена от CDK_DEBUG"
 
 #.
 #. * Translators, the strings in the “keyboard label” context are
@@ -3908,8 +3908,8 @@ msgid "CTK+ Version"
 msgstr "Версия на CTK+"
 
 #: ctk/inspector/general.ui:68
-msgid "GDK Backend"
-msgstr "Ядро на GDK"
+msgid "CDK Backend"
+msgstr "Ядро на CDK"
 
 #: ctk/inspector/general.ui:373
 msgid "Display"
@@ -4280,10 +4280,10 @@ msgstr "Настройката е изрично зададена чрез CTK_T
 #: ctk/inspector/visual.c:752
 msgid ""
 "Not settable at runtime.\n"
-"Use GDK_GL=always or GDK_GL=disable instead"
+"Use CDK_GL=always or CDK_GL=disable instead"
 msgstr ""
 "Не може да се задава по време на работа.\n"
-"Вместо това използвайте GDK_GL=always или GDK_GL=disable"
+"Вместо това използвайте CDK_GL=always или CDK_GL=disable"
 
 #: ctk/inspector/visual.c:766 ctk/inspector/visual.c:767
 #: ctk/inspector/visual.c:768

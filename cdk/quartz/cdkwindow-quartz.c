@@ -58,25 +58,25 @@ typedef struct
 #if MAC_OS_X_VERSION_MIN_REQUIRED < 101200
 typedef enum
 {
- GDK_QUARTZ_BORDERLESS_WINDOW = NSBorderlessWindowMask,
- GDK_QUARTZ_CLOSABLE_WINDOW = NSClosableWindowMask,
+ CDK_QUARTZ_BORDERLESS_WINDOW = NSBorderlessWindowMask,
+ CDK_QUARTZ_CLOSABLE_WINDOW = NSClosableWindowMask,
 #if MAC_OS_X_VERSION_MIN_REQUIRED > 1060
  /* Added in 10.7. Apple's docs are wrong to say it's from earlier. */
- GDK_QUARTZ_FULLSCREEN_WINDOW = NSFullScreenWindowMask,
+ CDK_QUARTZ_FULLSCREEN_WINDOW = NSFullScreenWindowMask,
 #endif
- GDK_QUARTZ_MINIATURIZABLE_WINDOW = NSMiniaturizableWindowMask,
- GDK_QUARTZ_RESIZABLE_WINDOW = NSResizableWindowMask,
- GDK_QUARTZ_TITLED_WINDOW = NSTitledWindowMask,
+ CDK_QUARTZ_MINIATURIZABLE_WINDOW = NSMiniaturizableWindowMask,
+ CDK_QUARTZ_RESIZABLE_WINDOW = NSResizableWindowMask,
+ CDK_QUARTZ_TITLED_WINDOW = NSTitledWindowMask,
 } CdkQuartzWindowMask;
 #else
 typedef enum
 {
- GDK_QUARTZ_BORDERLESS_WINDOW = NSWindowStyleMaskBorderless,
- GDK_QUARTZ_CLOSABLE_WINDOW = NSWindowStyleMaskClosable,
- GDK_QUARTZ_FULLSCREEN_WINDOW = NSWindowStyleMaskFullScreen,
- GDK_QUARTZ_MINIATURIZABLE_WINDOW = NSWindowStyleMaskMiniaturizable,
- GDK_QUARTZ_RESIZABLE_WINDOW = NSWindowStyleMaskResizable,
- GDK_QUARTZ_TITLED_WINDOW = NSWindowStyleMaskTitled,
+ CDK_QUARTZ_BORDERLESS_WINDOW = NSWindowStyleMaskBorderless,
+ CDK_QUARTZ_CLOSABLE_WINDOW = NSWindowStyleMaskClosable,
+ CDK_QUARTZ_FULLSCREEN_WINDOW = NSWindowStyleMaskFullScreen,
+ CDK_QUARTZ_MINIATURIZABLE_WINDOW = NSWindowStyleMaskMiniaturizable,
+ CDK_QUARTZ_RESIZABLE_WINDOW = NSWindowStyleMaskResizable,
+ CDK_QUARTZ_TITLED_WINDOW = NSWindowStyleMaskTitled,
 } CdkQuartzWindowMask;
 #endif
 
@@ -90,9 +90,9 @@ static void update_toplevel_order (void);
 static void clear_toplevel_order  (void);
 
 #define WINDOW_IS_TOPLEVEL(window)		     \
-  (GDK_WINDOW_TYPE (window) != GDK_WINDOW_CHILD &&   \
-   GDK_WINDOW_TYPE (window) != GDK_WINDOW_FOREIGN && \
-   GDK_WINDOW_TYPE (window) != GDK_WINDOW_OFFSCREEN)
+  (CDK_WINDOW_TYPE (window) != CDK_WINDOW_CHILD &&   \
+   CDK_WINDOW_TYPE (window) != CDK_WINDOW_FOREIGN && \
+   CDK_WINDOW_TYPE (window) != CDK_WINDOW_OFFSCREEN)
 
 /*
  * CdkQuartzWindow
@@ -108,7 +108,7 @@ struct _CdkQuartzWindowClass
   CdkWindowClass parent_class;
 };
 
-G_DEFINE_TYPE (CdkQuartzWindow, cdk_quartz_window, GDK_TYPE_WINDOW);
+G_DEFINE_TYPE (CdkQuartzWindow, cdk_quartz_window, CDK_TYPE_WINDOW);
 
 static void
 cdk_quartz_window_class_init (CdkQuartzWindowClass *quartz_window_class)
@@ -128,7 +128,7 @@ cdk_quartz_window_init (CdkQuartzWindow *quartz_window)
 NSView *
 cdk_quartz_window_get_nsview (CdkWindow *window)
 {
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     return NULL;
 
   return ((CdkWindowImplQuartz *)window->impl)->view;
@@ -137,7 +137,7 @@ cdk_quartz_window_get_nsview (CdkWindow *window)
 NSWindow *
 cdk_quartz_window_get_nswindow (CdkWindow *window)
 {
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     return NULL;
 
   return ((CdkWindowImplQuartz *)window->impl)->toplevel;
@@ -150,7 +150,7 @@ cdk_window_impl_quartz_get_context (CdkWindowImplQuartz *window_impl,
   CGContextRef cg_context = NULL;
   CGSize scale;
 
-  if (GDK_WINDOW_DESTROYED (window_impl->wrapper))
+  if (CDK_WINDOW_DESTROYED (window_impl->wrapper))
     return NULL;
 
   /* Lock focus when not called as part of a drawRect call. This
@@ -167,7 +167,7 @@ cdk_window_impl_quartz_get_context (CdkWindowImplQuartz *window_impl,
 #if MAC_OS_X_VERSION_MAX_ALLOWED < 101000
     cg_context = [[NSGraphicsContext currentContext] graphicsPort];
 #else
-  if (cdk_quartz_osx_version () < GDK_OSX_YOSEMITE)
+  if (cdk_quartz_osx_version () < CDK_OSX_YOSEMITE)
     cg_context = [[NSGraphicsContext currentContext] graphicsPort];
   else
     cg_context = [[NSGraphicsContext currentContext] CGContext];
@@ -208,7 +208,7 @@ cdk_window_impl_quartz_release_context (CdkWindowImplQuartz *window_impl,
 static void
 cdk_window_impl_quartz_finalize (GObject *object)
 {
-  CdkWindowImplQuartz *impl = GDK_WINDOW_IMPL_QUARTZ (object);
+  CdkWindowImplQuartz *impl = CDK_WINDOW_IMPL_QUARTZ (object);
   CdkDisplay *display = cdk_window_get_display (impl->wrapper);
   CdkSeat *seat = cdk_display_get_default_seat (display);
 
@@ -322,9 +322,9 @@ cdk_quartz_create_cairo_surface (CdkWindowImplQuartz *impl,
 static cairo_surface_t *
 cdk_quartz_ref_cairo_surface (CdkWindow *window)
 {
-  CdkWindowImplQuartz *impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+  CdkWindowImplQuartz *impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
 
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     return NULL;
 
   if (!impl->cairo_surface)
@@ -347,7 +347,7 @@ cdk_quartz_ref_cairo_surface (CdkWindow *window)
 static void
 cdk_window_impl_quartz_init (CdkWindowImplQuartz *impl)
 {
-  impl->type_hint = GDK_WINDOW_TYPE_HINT_NORMAL;
+  impl->type_hint = CDK_WINDOW_TYPE_HINT_NORMAL;
 }
 
 static gboolean
@@ -363,7 +363,7 @@ cdk_quartz_window_set_needs_display_in_region (CdkWindow    *window,
   CdkWindowImplQuartz *impl;
   int i, n_rects;
 
-  impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+  impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
 
   if (!impl->needs_display_region)
     impl->needs_display_region = cairo_region_create ();
@@ -429,7 +429,7 @@ _cdk_quartz_display_before_process_all_updates (CdkDisplay *display)
 {
   in_process_all_updates = TRUE;
 
-  if (cdk_quartz_osx_version () >= GDK_OSX_EL_CAPITAN)
+  if (cdk_quartz_osx_version () >= CDK_OSX_EL_CAPITAN)
     {
       [NSAnimationContext endGrouping];
     }
@@ -466,7 +466,7 @@ _cdk_quartz_display_after_process_all_updates (CdkDisplay *display)
 
   in_process_all_updates = FALSE;
 
-  if (cdk_quartz_osx_version() >= GDK_OSX_EL_CAPITAN)
+  if (cdk_quartz_osx_version() >= CDK_OSX_EL_CAPITAN)
     {
       [NSAnimationContext beginGrouping];
     }
@@ -558,9 +558,9 @@ _cdk_quartz_window_debug_highlight (CdkWindow *window, gint number)
 
   debug_window[number] = [[NSWindow alloc] initWithContentRect:rect
 #if MAC_OS_X_VERSION_MIN_REQUIRED < 101200
-                                                     styleMask:(NSUInteger)GDK_QUARTZ_BORDERLESS_WINDOW
+                                                     styleMask:(NSUInteger)CDK_QUARTZ_BORDERLESS_WINDOW
 #else
-                                                     styleMask:(NSWindowStyleMask)GDK_QUARTZ_BORDERLESS_WINDOW
+                                                     styleMask:(NSWindowStyleMask)CDK_QUARTZ_BORDERLESS_WINDOW
 #endif
 			                               backing:NSBackingStoreBuffered
 			                                 defer:NO];
@@ -620,7 +620,7 @@ _cdk_quartz_window_cdk_xy_to_xy (gint  cdk_x,
                                  gint *ns_x,
                                  gint *ns_y)
 {
-  CdkQuartzScreen *screen_quartz = GDK_QUARTZ_SCREEN (_cdk_screen);
+  CdkQuartzScreen *screen_quartz = CDK_QUARTZ_SCREEN (_cdk_screen);
 
   if (ns_y)
     *ns_y = screen_quartz->orig_y - cdk_y;
@@ -635,7 +635,7 @@ _cdk_quartz_window_xy_to_cdk_xy (gint  ns_x,
                                  gint *cdk_x,
                                  gint *cdk_y)
 {
-  CdkQuartzScreen *screen_quartz = GDK_QUARTZ_SCREEN (_cdk_screen);
+  CdkQuartzScreen *screen_quartz = CDK_QUARTZ_SCREEN (_cdk_screen);
 
   if (cdk_y)
     *cdk_y = screen_quartz->orig_y - ns_y;
@@ -664,7 +664,7 @@ find_child_window_helper (CdkWindow *window,
   CdkWindowImplQuartz *impl;
   GList *l;
 
-  impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+  impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
 
   if (window == _cdk_root)
     update_toplevel_order ();
@@ -672,10 +672,10 @@ find_child_window_helper (CdkWindow *window,
   for (l = impl->sorted_children; l; l = l->next)
     {
       CdkWindow *child = l->data;
-      CdkWindowImplQuartz *child_impl = GDK_WINDOW_IMPL_QUARTZ (child->impl);
+      CdkWindowImplQuartz *child_impl = CDK_WINDOW_IMPL_QUARTZ (child->impl);
       int temp_x, temp_y;
 
-      if (!GDK_WINDOW_IS_MAPPED (child))
+      if (!CDK_WINDOW_IS_MAPPED (child))
 	continue;
 
       temp_x = x_offset + child->x;
@@ -706,7 +706,7 @@ find_child_window_helper (CdkWindow *window,
               x < temp_x + child->width && y < temp_y)
             {
               /* The root means "unknown" i.e. a window not managed by
-               * GDK.
+               * CDK.
                */
               return (CdkWindow *)_cdk_root;
             }
@@ -756,7 +756,7 @@ raise_transient (CdkWindowImplQuartz *impl)
    * parent and then add it back in.
    */
   CdkWindowImplQuartz *parent_impl =
-        GDK_WINDOW_IMPL_QUARTZ (impl->transient_for->impl);
+        CDK_WINDOW_IMPL_QUARTZ (impl->transient_for->impl);
   [parent_impl->toplevel removeChildWindow:impl->toplevel];
   [parent_impl->toplevel addChildWindow:impl->toplevel
                          ordered:NSWindowAbove];
@@ -765,11 +765,11 @@ raise_transient (CdkWindowImplQuartz *impl)
 void
 _cdk_quartz_window_did_become_main (CdkWindow *window)
 {
-  CdkWindowImplQuartz *impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+  CdkWindowImplQuartz *impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
 
   main_window_stack = g_slist_remove (main_window_stack, window);
 
-  if (window->window_type != GDK_WINDOW_TEMP)
+  if (window->window_type != CDK_WINDOW_TEMP)
     main_window_stack = g_slist_prepend (main_window_stack, window);
 
   if (impl->transient_for)
@@ -797,10 +797,10 @@ _cdk_quartz_window_did_resign_main (CdkWindow *window)
 
   if (new_window &&
       new_window != window &&
-      GDK_WINDOW_IS_MAPPED (new_window) &&
+      CDK_WINDOW_IS_MAPPED (new_window) &&
       WINDOW_IS_TOPLEVEL (new_window))
     {
-      CdkWindowImplQuartz *impl = GDK_WINDOW_IMPL_QUARTZ (new_window->impl);
+      CdkWindowImplQuartz *impl = CDK_WINDOW_IMPL_QUARTZ (new_window->impl);
 
       [impl->toplevel makeKeyAndOrderFront:impl->toplevel];
     }
@@ -815,7 +815,7 @@ get_nsscreen_for_point (gint x, gint y)
   NSArray *screens;
   NSScreen *screen = NULL;
 
-  GDK_QUARTZ_ALLOC_POOL;
+  CDK_QUARTZ_ALLOC_POOL;
 
   screens = [NSScreen screens];
 
@@ -831,7 +831,7 @@ get_nsscreen_for_point (gint x, gint y)
         }
     }
 
-  GDK_QUARTZ_RELEASE_POOL;
+  CDK_QUARTZ_RELEASE_POOL;
 
   return screen;
 }
@@ -847,24 +847,24 @@ _cdk_quartz_display_create_window_impl (CdkDisplay    *display,
 {
   CdkWindowImplQuartz *impl;
   CdkWindowImplQuartz *parent_impl;
-  CdkWindowTypeHint    type_hint = GDK_WINDOW_TYPE_HINT_NORMAL;
+  CdkWindowTypeHint    type_hint = CDK_WINDOW_TYPE_HINT_NORMAL;
 
-  GDK_QUARTZ_ALLOC_POOL;
+  CDK_QUARTZ_ALLOC_POOL;
 
-  impl = g_object_new (GDK_TYPE_WINDOW_IMPL_QUARTZ, NULL);
-  window->impl = GDK_WINDOW_IMPL (impl);
+  impl = g_object_new (CDK_TYPE_WINDOW_IMPL_QUARTZ, NULL);
+  window->impl = CDK_WINDOW_IMPL (impl);
   impl->wrapper = window;
 
-  parent_impl = GDK_WINDOW_IMPL_QUARTZ (window->parent->impl);
+  parent_impl = CDK_WINDOW_IMPL_QUARTZ (window->parent->impl);
 
   switch (window->window_type)
     {
-    case GDK_WINDOW_TOPLEVEL:
-    case GDK_WINDOW_TEMP:
-      if (GDK_WINDOW_TYPE (window->parent) != GDK_WINDOW_ROOT)
+    case CDK_WINDOW_TOPLEVEL:
+    case CDK_WINDOW_TEMP:
+      if (CDK_WINDOW_TYPE (window->parent) != CDK_WINDOW_ROOT)
 	{
 	  /* The common code warns for this case */
-          parent_impl = GDK_WINDOW_IMPL_QUARTZ (_cdk_root->impl);
+          parent_impl = CDK_WINDOW_IMPL_QUARTZ (_cdk_root->impl);
 	}
     }
 
@@ -874,13 +874,13 @@ _cdk_quartz_display_create_window_impl (CdkDisplay    *display,
   else
     clear_toplevel_order ();
 
-  cdk_window_set_cursor (window, ((attributes_mask & GDK_WA_CURSOR) ?
+  cdk_window_set_cursor (window, ((attributes_mask & CDK_WA_CURSOR) ?
 				  (attributes->cursor) :
 				  NULL));
 
   impl->view = NULL;
 
-  if (attributes_mask & GDK_WA_TYPE_HINT)
+  if (attributes_mask & CDK_WA_TYPE_HINT)
     {
       type_hint = attributes->type_hint;
       cdk_window_set_type_hint (window, type_hint);
@@ -888,8 +888,8 @@ _cdk_quartz_display_create_window_impl (CdkDisplay    *display,
 
   switch (window->window_type)
     {
-    case GDK_WINDOW_TOPLEVEL:
-    case GDK_WINDOW_TEMP:
+    case CDK_WINDOW_TOPLEVEL:
+    case CDK_WINDOW_TEMP:
       {
         NSScreen *screen;
         NSRect screen_rect;
@@ -914,17 +914,17 @@ _cdk_quartz_display_create_window_impl (CdkDisplay    *display,
                                    window->width,
                                    window->height);
 
-        if (window->window_type == GDK_WINDOW_TEMP ||
-            type_hint == GDK_WINDOW_TYPE_HINT_SPLASHSCREEN)
+        if (window->window_type == CDK_WINDOW_TEMP ||
+            type_hint == CDK_WINDOW_TYPE_HINT_SPLASHSCREEN)
           {
-            style_mask = GDK_QUARTZ_BORDERLESS_WINDOW;
+            style_mask = CDK_QUARTZ_BORDERLESS_WINDOW;
           }
         else
           {
-            style_mask = (GDK_QUARTZ_TITLED_WINDOW |
-                          GDK_QUARTZ_CLOSABLE_WINDOW |
-                          GDK_QUARTZ_MINIATURIZABLE_WINDOW |
-                          GDK_QUARTZ_RESIZABLE_WINDOW);
+            style_mask = (CDK_QUARTZ_TITLED_WINDOW |
+                          CDK_QUARTZ_CLOSABLE_WINDOW |
+                          CDK_QUARTZ_MINIATURIZABLE_WINDOW |
+                          CDK_QUARTZ_RESIZABLE_WINDOW);
           }
 
 	impl->toplevel = [[CdkQuartzNSWindow alloc] initWithContentRect:content_rect 
@@ -933,10 +933,10 @@ _cdk_quartz_display_create_window_impl (CdkDisplay    *display,
 			                                          defer:NO
                                                                   screen:screen];
 
-        if (type_hint != GDK_WINDOW_TYPE_HINT_NORMAL)
+        if (type_hint != CDK_WINDOW_TYPE_HINT_NORMAL)
           impl->toplevel.excludedFromWindowsMenu = true;
 
-	if (attributes_mask & GDK_WA_TITLE)
+	if (attributes_mask & CDK_WA_TITLE)
 	  title = attributes->title;
 	else
 	  title = get_default_title ();
@@ -963,9 +963,9 @@ _cdk_quartz_display_create_window_impl (CdkDisplay    *display,
       }
       break;
 
-    case GDK_WINDOW_CHILD:
+    case CDK_WINDOW_CHILD:
       {
-	CdkWindowImplQuartz *parent_impl = GDK_WINDOW_IMPL_QUARTZ (window->parent->impl);
+	CdkWindowImplQuartz *parent_impl = CDK_WINDOW_IMPL_QUARTZ (window->parent->impl);
 
 	if (!window->input_only)
 	  {
@@ -990,7 +990,7 @@ _cdk_quartz_display_create_window_impl (CdkDisplay    *display,
       g_assert_not_reached ();
     }
 
-  GDK_QUARTZ_RELEASE_POOL;
+  CDK_QUARTZ_RELEASE_POOL;
 }
 
 void
@@ -998,9 +998,9 @@ _cdk_quartz_window_update_position (CdkWindow *window)
 {
   NSRect frame_rect;
   NSRect content_rect;
-  CdkWindowImplQuartz *impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+  CdkWindowImplQuartz *impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
 
-  GDK_QUARTZ_ALLOC_POOL;
+  CDK_QUARTZ_ALLOC_POOL;
 
   frame_rect = [impl->toplevel frame];
   content_rect = [impl->toplevel contentRectForFrameRect:frame_rect];
@@ -1010,7 +1010,7 @@ _cdk_quartz_window_update_position (CdkWindow *window)
                                    &window->x, &window->y);
 
 
-  GDK_QUARTZ_RELEASE_POOL;
+  CDK_QUARTZ_RELEASE_POOL;
 }
 
 void
@@ -1027,12 +1027,12 @@ _cdk_quartz_window_init_windowing (CdkDisplay *display,
   _cdk_root->impl_window = _cdk_root;
   _cdk_root->visual = cdk_screen_get_system_visual (screen);
 
-  impl = GDK_WINDOW_IMPL_QUARTZ (_cdk_root->impl);
+  impl = CDK_WINDOW_IMPL_QUARTZ (_cdk_root->impl);
 
   _cdk_quartz_screen_update_window_sizes (screen);
 
-  _cdk_root->state = 0; /* We don't want GDK_WINDOW_STATE_WITHDRAWN here */
-  _cdk_root->window_type = GDK_WINDOW_ROOT;
+  _cdk_root->state = 0; /* We don't want CDK_WINDOW_STATE_WITHDRAWN here */
+  _cdk_root->window_type = CDK_WINDOW_ROOT;
   _cdk_root->depth = 24;
   _cdk_root->viewable = TRUE;
 
@@ -1047,7 +1047,7 @@ cdk_quartz_window_destroy (CdkWindow *window,
   CdkWindowImplQuartz *impl;
   CdkWindow *parent;
 
-  impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+  impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
 
   main_window_stack = g_slist_remove (main_window_stack, window);
 
@@ -1057,7 +1057,7 @@ cdk_quartz_window_destroy (CdkWindow *window,
   parent = window->parent;
   if (parent)
     {
-      CdkWindowImplQuartz *parent_impl = GDK_WINDOW_IMPL_QUARTZ (parent->impl);
+      CdkWindowImplQuartz *parent_impl = CDK_WINDOW_IMPL_QUARTZ (parent->impl);
 
       parent_impl->sorted_children = g_list_remove (parent_impl->sorted_children, window);
     }
@@ -1072,14 +1072,14 @@ cdk_quartz_window_destroy (CdkWindow *window,
 
   if (!recursing && !foreign_destroy)
     {
-      GDK_QUARTZ_ALLOC_POOL;
+      CDK_QUARTZ_ALLOC_POOL;
 
       if (impl->toplevel)
 	[impl->toplevel close];
       else if (impl->view)
 	[impl->view removeFromSuperview];
 
-      GDK_QUARTZ_RELEASE_POOL;
+      CDK_QUARTZ_RELEASE_POOL;
     }
 }
 
@@ -1095,12 +1095,12 @@ cdk_quartz_window_destroy_foreign (CdkWindow *window)
 static void
 cdk_window_quartz_show (CdkWindow *window, gboolean already_mapped)
 {
-  CdkWindowImplQuartz *impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+  CdkWindowImplQuartz *impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
   gboolean focus_on_map;
 
-  GDK_QUARTZ_ALLOC_POOL;
+  CDK_QUARTZ_ALLOC_POOL;
 
-  if (!GDK_WINDOW_IS_MAPPED (window))
+  if (!CDK_WINDOW_IS_MAPPED (window))
     focus_on_map = window->focus_on_map;
   else
     focus_on_map = TRUE;
@@ -1110,7 +1110,7 @@ cdk_window_quartz_show (CdkWindow *window, gboolean already_mapped)
       gboolean make_key;
 
       make_key = (window->accept_focus && focus_on_map &&
-                  window->window_type != GDK_WINDOW_TEMP);
+                  window->window_type != CDK_WINDOW_TEMP);
 
       [(CdkQuartzNSWindow*)impl->toplevel showAndMakeKey:make_key];
       clear_toplevel_order ();
@@ -1124,18 +1124,18 @@ cdk_window_quartz_show (CdkWindow *window, gboolean already_mapped)
 
   [impl->view setNeedsDisplay:YES];
 
-  cdk_synthesize_window_state (window, GDK_WINDOW_STATE_WITHDRAWN, 0);
+  cdk_synthesize_window_state (window, CDK_WINDOW_STATE_WITHDRAWN, 0);
 
-  if (window->state & GDK_WINDOW_STATE_MAXIMIZED)
+  if (window->state & CDK_WINDOW_STATE_MAXIMIZED)
     cdk_window_maximize (window);
 
-  if (window->state & GDK_WINDOW_STATE_ICONIFIED)
+  if (window->state & CDK_WINDOW_STATE_ICONIFIED)
     cdk_window_iconify (window);
 
-  if (impl->transient_for && !GDK_WINDOW_DESTROYED (impl->transient_for))
+  if (impl->transient_for && !CDK_WINDOW_DESTROYED (impl->transient_for))
     _cdk_quartz_window_attach_to_parent (window);
 
-  GDK_QUARTZ_RELEASE_POOL;
+  CDK_QUARTZ_RELEASE_POOL;
 }
 
 /* Temporarily unsets the parent window, if the window is a
@@ -1146,17 +1146,17 @@ _cdk_quartz_window_detach_from_parent (CdkWindow *window)
 {
   CdkWindowImplQuartz *impl;
 
-  g_return_if_fail (GDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_WINDOW (window));
 
-  impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+  impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
   
   g_return_if_fail (impl->toplevel != NULL);
 
-  if (impl->transient_for && !GDK_WINDOW_DESTROYED (impl->transient_for))
+  if (impl->transient_for && !CDK_WINDOW_DESTROYED (impl->transient_for))
     {
       CdkWindowImplQuartz *parent_impl;
 
-      parent_impl = GDK_WINDOW_IMPL_QUARTZ (impl->transient_for->impl);
+      parent_impl = CDK_WINDOW_IMPL_QUARTZ (impl->transient_for->impl);
       [parent_impl->toplevel removeChildWindow:impl->toplevel];
       clear_toplevel_order ();
     }
@@ -1168,17 +1168,17 @@ _cdk_quartz_window_attach_to_parent (CdkWindow *window)
 {
   CdkWindowImplQuartz *impl;
 
-  g_return_if_fail (GDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_WINDOW (window));
 
-  impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+  impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
   
   g_return_if_fail (impl->toplevel != NULL);
 
-  if (impl->transient_for && !GDK_WINDOW_DESTROYED (impl->transient_for))
+  if (impl->transient_for && !CDK_WINDOW_DESTROYED (impl->transient_for))
     {
       CdkWindowImplQuartz *parent_impl;
 
-      parent_impl = GDK_WINDOW_IMPL_QUARTZ (impl->transient_for->impl);
+      parent_impl = CDK_WINDOW_IMPL_QUARTZ (impl->transient_for->impl);
       [parent_impl->toplevel addChildWindow:impl->toplevel ordered:NSWindowAbove];
       clear_toplevel_order ();
     }
@@ -1200,7 +1200,7 @@ cdk_window_quartz_hide (CdkWindow *window)
 
   _cdk_window_clear_update_area (window);
 
-  impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+  impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
 
   if (WINDOW_IS_TOPLEVEL (window)) 
     {
@@ -1241,10 +1241,10 @@ move_resize_window_internal (CdkWindow *window,
   cairo_region_t *expose_region;
   NSSize delta;
 
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     return;
 
-  impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+  impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
 
   if ((x == -1 || (x == window->x)) &&
       (y == -1 || (y == window->y)) &&
@@ -1292,7 +1292,7 @@ move_resize_window_internal (CdkWindow *window,
   if (height != -1)
     window->height = height;
 
-  GDK_QUARTZ_ALLOC_POOL;
+  CDK_QUARTZ_ALLOC_POOL;
 
   if (impl->toplevel)
     {
@@ -1363,9 +1363,9 @@ move_resize_window_internal (CdkWindow *window,
     }
 
   if (window->gl_paint_context != NULL)
-    [GDK_QUARTZ_GL_CONTEXT (window->gl_paint_context)->gl_context update];
+    [CDK_QUARTZ_GL_CONTEXT (window->gl_paint_context)->gl_context update];
 
-  GDK_QUARTZ_RELEASE_POOL;
+  CDK_QUARTZ_RELEASE_POOL;
 }
 
 static inline void
@@ -1373,9 +1373,9 @@ window_quartz_move (CdkWindow *window,
                     gint       x,
                     gint       y)
 {
-  g_return_if_fail (GDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_WINDOW (window));
 
-  if (window->state & GDK_WINDOW_STATE_FULLSCREEN)
+  if (window->state & CDK_WINDOW_STATE_FULLSCREEN)
     return;
 
   move_resize_window_internal (window, x, y, -1, -1);
@@ -1386,9 +1386,9 @@ window_quartz_resize (CdkWindow *window,
                       gint       width,
                       gint       height)
 {
-  g_return_if_fail (GDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_WINDOW (window));
 
-  if (window->state & GDK_WINDOW_STATE_FULLSCREEN)
+  if (window->state & CDK_WINDOW_STATE_FULLSCREEN)
     return;
 
   if (width < 1)
@@ -1453,14 +1453,14 @@ cdk_window_quartz_reparent (CdkWindow *window,
       return FALSE;
     }
 
-  impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+  impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
   view = impl->view;
 
-  new_parent_impl = GDK_WINDOW_IMPL_QUARTZ (new_parent->impl);
+  new_parent_impl = CDK_WINDOW_IMPL_QUARTZ (new_parent->impl);
   new_parent_view = new_parent_impl->view;
 
   old_parent = window->parent;
-  old_parent_impl = GDK_WINDOW_IMPL_QUARTZ (old_parent->impl);
+  old_parent_impl = CDK_WINDOW_IMPL_QUARTZ (old_parent->impl);
 
   [view retain];
 
@@ -1493,12 +1493,12 @@ update_toplevel_order (void)
   id nswindow;
   GList *toplevels = NULL;
 
-  root_impl = GDK_WINDOW_IMPL_QUARTZ (_cdk_root->impl);
+  root_impl = CDK_WINDOW_IMPL_QUARTZ (_cdk_root->impl);
 
   if (root_impl->sorted_children)
     return;
 
-  GDK_QUARTZ_ALLOC_POOL;
+  CDK_QUARTZ_ALLOC_POOL;
 
   enumerator = [[NSApp orderedWindows] objectEnumerator];
   while ((nswindow = [enumerator nextObject]))
@@ -1512,7 +1512,7 @@ update_toplevel_order (void)
       toplevels = g_list_prepend (toplevels, window);
     }
 
-  GDK_QUARTZ_RELEASE_POOL;
+  CDK_QUARTZ_RELEASE_POOL;
 
   root_impl->sorted_children = g_list_reverse (toplevels);
 }
@@ -1522,7 +1522,7 @@ clear_toplevel_order (void)
 {
   CdkWindowImplQuartz *root_impl;
 
-  root_impl = GDK_WINDOW_IMPL_QUARTZ (_cdk_root->impl);
+  root_impl = CDK_WINDOW_IMPL_QUARTZ (_cdk_root->impl);
 
   g_list_free (root_impl->sorted_children);
   root_impl->sorted_children = NULL;
@@ -1531,14 +1531,14 @@ clear_toplevel_order (void)
 static void
 cdk_window_quartz_raise (CdkWindow *window)
 {
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     return;
 
   if (WINDOW_IS_TOPLEVEL (window))
     {
       CdkWindowImplQuartz *impl;
 
-      impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+      impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
 
       if (impl->transient_for)
         raise_transient (impl);
@@ -1566,14 +1566,14 @@ cdk_window_quartz_raise (CdkWindow *window)
 static void
 cdk_window_quartz_lower (CdkWindow *window)
 {
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     return;
 
   if (WINDOW_IS_TOPLEVEL (window))
     {
       CdkWindowImplQuartz *impl;
 
-      impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+      impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
       [impl->toplevel orderBack:impl->toplevel];
 
       clear_toplevel_order ();
@@ -1602,10 +1602,10 @@ cdk_window_quartz_restack_toplevel (CdkWindow *window,
   CdkWindowImplQuartz *impl;
   gint sibling_num;
 
-  impl = GDK_WINDOW_IMPL_QUARTZ (sibling->impl);
+  impl = CDK_WINDOW_IMPL_QUARTZ (sibling->impl);
   sibling_num = [impl->toplevel windowNumber];
 
-  impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+  impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
 
   if (above)
     [impl->toplevel orderWindow:NSWindowAbove relativeTo:sibling_num];
@@ -1629,7 +1629,7 @@ cdk_window_quartz_set_device_cursor (CdkWindow *window,
 {
   NSCursor *nscursor;
 
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     return;
 
   nscursor = _cdk_quartz_cursor_get_ns_cursor (cursor);
@@ -1647,10 +1647,10 @@ cdk_window_quartz_get_geometry (CdkWindow *window,
   CdkWindowImplQuartz *impl;
   NSRect ns_rect;
 
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     return;
 
-  impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+  impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
   if (window == _cdk_root)
     {
       if (x) 
@@ -1675,7 +1675,7 @@ cdk_window_quartz_get_geometry (CdkWindow *window,
        * windows with borders and the root relative coordinates
        * otherwise.
        */
-      if ([impl->toplevel styleMask] == GDK_QUARTZ_BORDERLESS_WINDOW)
+      if ([impl->toplevel styleMask] == CDK_QUARTZ_BORDERLESS_WINDOW)
         {
           _cdk_quartz_window_xy_to_cdk_xy (ns_rect.origin.x,
                                            ns_rect.origin.y + ns_rect.size.height,
@@ -1721,7 +1721,7 @@ cdk_window_quartz_get_root_coords (CdkWindow *window,
   NSRect content_rect;
   CdkWindowImplQuartz *impl;
 
-  if (GDK_WINDOW_DESTROYED (window)) 
+  if (CDK_WINDOW_DESTROYED (window)) 
     {
       if (root_x)
 	*root_x = 0;
@@ -1742,7 +1742,7 @@ cdk_window_quartz_get_root_coords (CdkWindow *window,
     }
   
   toplevel = cdk_window_get_toplevel (window);
-  impl = GDK_WINDOW_IMPL_QUARTZ (toplevel->impl);
+  impl = CDK_WINDOW_IMPL_QUARTZ (toplevel->impl);
 
   content_rect = [impl->toplevel contentRectForFrameRect:[impl->toplevel frame]];
 
@@ -1783,9 +1783,9 @@ cdk_window_quartz_get_device_state_helper (CdkWindow       *window,
   CdkWindow *toplevel;
   CdkWindow *found_window;
 
-  g_return_val_if_fail (window == NULL || GDK_IS_WINDOW (window), NULL);
+  g_return_val_if_fail (window == NULL || CDK_IS_WINDOW (window), NULL);
 
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     {
       *x = 0;
       *y = 0;
@@ -1809,7 +1809,7 @@ cdk_window_quartz_get_device_state_helper (CdkWindow       *window,
       CdkWindowImplQuartz *impl;
       NSWindow *nswindow;
 
-      impl = GDK_WINDOW_IMPL_QUARTZ (toplevel->impl);
+      impl = CDK_WINDOW_IMPL_QUARTZ (toplevel->impl);
       nswindow = impl->toplevel;
 
       point = [nswindow mouseLocationOutsideOfEventStream];
@@ -1848,7 +1848,7 @@ cdk_window_quartz_get_device_state (CdkWindow       *window,
 static CdkEventMask
 cdk_window_quartz_get_events (CdkWindow *window)
 {
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     return 0;
   else
     return window->event_mask;
@@ -1865,7 +1865,7 @@ static void
 cdk_quartz_window_set_urgency_hint (CdkWindow *window,
                                     gboolean   urgent)
 {
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL (window))
     return;
 
@@ -1881,30 +1881,30 @@ cdk_quartz_window_set_geometry_hints (CdkWindow         *window,
 
   g_return_if_fail (geometry != NULL);
 
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL (window))
     return;
   
-  impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+  impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
   if (!impl->toplevel)
     return;
 
-  if (geom_mask & GDK_HINT_POS)
+  if (geom_mask & CDK_HINT_POS)
     {
       /* FIXME: Implement */
     }
 
-  if (geom_mask & GDK_HINT_USER_POS)
+  if (geom_mask & CDK_HINT_USER_POS)
     {
       /* FIXME: Implement */
     }
 
-  if (geom_mask & GDK_HINT_USER_SIZE)
+  if (geom_mask & CDK_HINT_USER_SIZE)
     {
       /* FIXME: Implement */
     }
   
-  if (geom_mask & GDK_HINT_MIN_SIZE)
+  if (geom_mask & CDK_HINT_MIN_SIZE)
     {
       NSSize size;
 
@@ -1914,7 +1914,7 @@ cdk_quartz_window_set_geometry_hints (CdkWindow         *window,
       [impl->toplevel setContentMinSize:size];
     }
   
-  if (geom_mask & GDK_HINT_MAX_SIZE)
+  if (geom_mask & CDK_HINT_MAX_SIZE)
     {
       NSSize size;
 
@@ -1924,12 +1924,12 @@ cdk_quartz_window_set_geometry_hints (CdkWindow         *window,
       [impl->toplevel setContentMaxSize:size];
     }
   
-  if (geom_mask & GDK_HINT_BASE_SIZE)
+  if (geom_mask & CDK_HINT_BASE_SIZE)
     {
       /* FIXME: Implement */
     }
   
-  if (geom_mask & GDK_HINT_RESIZE_INC)
+  if (geom_mask & CDK_HINT_RESIZE_INC)
     {
       NSSize size;
 
@@ -1939,7 +1939,7 @@ cdk_quartz_window_set_geometry_hints (CdkWindow         *window,
       [impl->toplevel setContentResizeIncrements:size];
     }
   
-  if (geom_mask & GDK_HINT_ASPECT)
+  if (geom_mask & CDK_HINT_ASPECT)
     {
       NSSize size;
 
@@ -1954,7 +1954,7 @@ cdk_quartz_window_set_geometry_hints (CdkWindow         *window,
       [impl->toplevel setContentAspectRatio:size];
     }
 
-  if (geom_mask & GDK_HINT_WIN_GRAVITY)
+  if (geom_mask & CDK_HINT_WIN_GRAVITY)
     {
       /* FIXME: Implement */
     }
@@ -1968,17 +1968,17 @@ cdk_quartz_window_set_title (CdkWindow   *window,
 
   g_return_if_fail (title != NULL);
 
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL (window))
     return;
 
-  impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+  impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
 
   if (impl->toplevel)
     {
-      GDK_QUARTZ_ALLOC_POOL;
+      CDK_QUARTZ_ALLOC_POOL;
       [impl->toplevel setTitle:[NSString stringWithUTF8String:title]];
-      GDK_QUARTZ_RELEASE_POOL;
+      CDK_QUARTZ_RELEASE_POOL;
     }
 }
 
@@ -1986,7 +1986,7 @@ static void
 cdk_quartz_window_set_role (CdkWindow   *window,
                             const gchar *role)
 {
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       WINDOW_IS_TOPLEVEL (window))
     return;
 
@@ -2007,15 +2007,15 @@ cdk_quartz_window_set_transient_for (CdkWindow *window,
   CdkWindowImplQuartz *window_impl;
   CdkWindowImplQuartz *parent_impl;
 
-  if (GDK_WINDOW_DESTROYED (window)  || GDK_WINDOW_DESTROYED (parent) ||
+  if (CDK_WINDOW_DESTROYED (window)  || CDK_WINDOW_DESTROYED (parent) ||
       !WINDOW_IS_TOPLEVEL (window))
     return;
 
-  window_impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+  window_impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
   if (!window_impl->toplevel)
     return;
 
-  GDK_QUARTZ_ALLOC_POOL;
+  CDK_QUARTZ_ALLOC_POOL;
 
   if (window_impl->transient_for)
     {
@@ -2025,7 +2025,7 @@ cdk_quartz_window_set_transient_for (CdkWindow *window,
       window_impl->transient_for = NULL;
     }
 
-  parent_impl = GDK_WINDOW_IMPL_QUARTZ (parent->impl);
+  parent_impl = CDK_WINDOW_IMPL_QUARTZ (parent->impl);
   if (parent_impl->toplevel)
     {
       /* We save the parent because it needs to be unset/reset when
@@ -2037,7 +2037,7 @@ cdk_quartz_window_set_transient_for (CdkWindow *window,
        * the parent window will be brought to the top just because the
        * tooltip is, which is not what we want.
        */
-      if (cdk_window_get_type_hint (window) != GDK_WINDOW_TYPE_HINT_TOOLTIP)
+      if (cdk_window_get_type_hint (window) != CDK_WINDOW_TYPE_HINT_TOOLTIP)
         {
           window_impl->transient_for = g_object_ref (parent);
 
@@ -2045,12 +2045,12 @@ cdk_quartz_window_set_transient_for (CdkWindow *window,
            * be shown unconditionally here. If it is not shown, the
            * window will be added in show() instead.
            */
-          if (!(window->state & GDK_WINDOW_STATE_WITHDRAWN))
+          if (!(window->state & CDK_WINDOW_STATE_WITHDRAWN))
             _cdk_quartz_window_attach_to_parent (window);
         }
     }
   
-  GDK_QUARTZ_RELEASE_POOL;
+  CDK_QUARTZ_RELEASE_POOL;
 }
 
 static void
@@ -2105,18 +2105,18 @@ cdk_quartz_window_focus (CdkWindow *window,
 {
   CdkWindowImplQuartz *impl;
 	
-  impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+  impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
 
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL (window))
     return;
 
-  if (window->accept_focus && window->window_type != GDK_WINDOW_TEMP)
+  if (window->accept_focus && window->window_type != CDK_WINDOW_TEMP)
     {
-      GDK_QUARTZ_ALLOC_POOL;
+      CDK_QUARTZ_ALLOC_POOL;
       [impl->toplevel makeKeyAndOrderFront:impl->toplevel];
       clear_toplevel_order ();
-      GDK_QUARTZ_RELEASE_POOL;
+      CDK_QUARTZ_RELEASE_POOL;
     }
 }
 
@@ -2128,30 +2128,30 @@ window_type_hint_to_level (CdkWindowTypeHint hint)
    */
   switch (hint)
     {
-    case GDK_WINDOW_TYPE_HINT_POPUP_MENU:
-    case GDK_WINDOW_TYPE_HINT_COMBO:
-    case GDK_WINDOW_TYPE_HINT_DND:
-    case GDK_WINDOW_TYPE_HINT_TOOLTIP:
+    case CDK_WINDOW_TYPE_HINT_POPUP_MENU:
+    case CDK_WINDOW_TYPE_HINT_COMBO:
+    case CDK_WINDOW_TYPE_HINT_DND:
+    case CDK_WINDOW_TYPE_HINT_TOOLTIP:
       return NSPopUpMenuWindowLevel;
 
-    case GDK_WINDOW_TYPE_HINT_NOTIFICATION:
-    case GDK_WINDOW_TYPE_HINT_SPLASHSCREEN:
+    case CDK_WINDOW_TYPE_HINT_NOTIFICATION:
+    case CDK_WINDOW_TYPE_HINT_SPLASHSCREEN:
       return NSStatusWindowLevel;
 
-    case GDK_WINDOW_TYPE_HINT_MENU: /* Torn-off menu */
-    case GDK_WINDOW_TYPE_HINT_DROPDOWN_MENU: /* Menu from menubar */
+    case CDK_WINDOW_TYPE_HINT_MENU: /* Torn-off menu */
+    case CDK_WINDOW_TYPE_HINT_DROPDOWN_MENU: /* Menu from menubar */
       return NSTornOffMenuWindowLevel;
 
-    case GDK_WINDOW_TYPE_HINT_DOCK:
+    case CDK_WINDOW_TYPE_HINT_DOCK:
       return NSFloatingWindowLevel; /* NSDockWindowLevel is deprecated, and not replaced */
 
-    case GDK_WINDOW_TYPE_HINT_UTILITY:
-    case GDK_WINDOW_TYPE_HINT_DIALOG:  /* Dialog window */
-    case GDK_WINDOW_TYPE_HINT_NORMAL:  /* Normal toplevel window */
-    case GDK_WINDOW_TYPE_HINT_TOOLBAR: /* Window used to implement toolbars */
+    case CDK_WINDOW_TYPE_HINT_UTILITY:
+    case CDK_WINDOW_TYPE_HINT_DIALOG:  /* Dialog window */
+    case CDK_WINDOW_TYPE_HINT_NORMAL:  /* Normal toplevel window */
+    case CDK_WINDOW_TYPE_HINT_TOOLBAR: /* Window used to implement toolbars */
       return NSNormalWindowLevel;
 
-    case GDK_WINDOW_TYPE_HINT_DESKTOP:
+    case CDK_WINDOW_TYPE_HINT_DESKTOP:
       return kCGDesktopWindowLevelKey; /* doesn't map to any real Cocoa model */
 
     default:
@@ -2166,22 +2166,22 @@ window_type_hint_to_shadow (CdkWindowTypeHint hint)
 {
   switch (hint)
     {
-    case GDK_WINDOW_TYPE_HINT_NORMAL:  /* Normal toplevel window */
-    case GDK_WINDOW_TYPE_HINT_DIALOG:  /* Dialog window */
-    case GDK_WINDOW_TYPE_HINT_DOCK:
-    case GDK_WINDOW_TYPE_HINT_UTILITY:
-    case GDK_WINDOW_TYPE_HINT_MENU: /* Torn-off menu */
-    case GDK_WINDOW_TYPE_HINT_DROPDOWN_MENU: /* Menu from menubar */
-    case GDK_WINDOW_TYPE_HINT_SPLASHSCREEN:
-    case GDK_WINDOW_TYPE_HINT_POPUP_MENU:
-    case GDK_WINDOW_TYPE_HINT_COMBO:
-    case GDK_WINDOW_TYPE_HINT_NOTIFICATION:
-    case GDK_WINDOW_TYPE_HINT_TOOLTIP:
+    case CDK_WINDOW_TYPE_HINT_NORMAL:  /* Normal toplevel window */
+    case CDK_WINDOW_TYPE_HINT_DIALOG:  /* Dialog window */
+    case CDK_WINDOW_TYPE_HINT_DOCK:
+    case CDK_WINDOW_TYPE_HINT_UTILITY:
+    case CDK_WINDOW_TYPE_HINT_MENU: /* Torn-off menu */
+    case CDK_WINDOW_TYPE_HINT_DROPDOWN_MENU: /* Menu from menubar */
+    case CDK_WINDOW_TYPE_HINT_SPLASHSCREEN:
+    case CDK_WINDOW_TYPE_HINT_POPUP_MENU:
+    case CDK_WINDOW_TYPE_HINT_COMBO:
+    case CDK_WINDOW_TYPE_HINT_NOTIFICATION:
+    case CDK_WINDOW_TYPE_HINT_TOOLTIP:
       return TRUE;
 
-    case GDK_WINDOW_TYPE_HINT_TOOLBAR: /* Window used to implement toolbars */
-    case GDK_WINDOW_TYPE_HINT_DESKTOP: /* N/A */
-    case GDK_WINDOW_TYPE_HINT_DND:
+    case CDK_WINDOW_TYPE_HINT_TOOLBAR: /* Window used to implement toolbars */
+    case CDK_WINDOW_TYPE_HINT_DESKTOP: /* N/A */
+    case CDK_WINDOW_TYPE_HINT_DND:
       break;
 
     default:
@@ -2196,11 +2196,11 @@ window_type_hint_to_hides_on_deactivate (CdkWindowTypeHint hint)
 {
   switch (hint)
     {
-    case GDK_WINDOW_TYPE_HINT_UTILITY:
-    case GDK_WINDOW_TYPE_HINT_MENU: /* Torn-off menu */
-    case GDK_WINDOW_TYPE_HINT_SPLASHSCREEN:
-    case GDK_WINDOW_TYPE_HINT_NOTIFICATION:
-    case GDK_WINDOW_TYPE_HINT_TOOLTIP:
+    case CDK_WINDOW_TYPE_HINT_UTILITY:
+    case CDK_WINDOW_TYPE_HINT_MENU: /* Torn-off menu */
+    case CDK_WINDOW_TYPE_HINT_SPLASHSCREEN:
+    case CDK_WINDOW_TYPE_HINT_NOTIFICATION:
+    case CDK_WINDOW_TYPE_HINT_TOOLTIP:
       return TRUE;
 
     default:
@@ -2229,37 +2229,37 @@ _cdk_quartz_window_set_collection_behavior (NSWindow *nswindow,
 {
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= 1070
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= 10110
-#define GDK_QUARTZ_ALLOWS_TILING NSWindowCollectionBehaviorFullScreenAllowsTiling
-#define GDK_QUARTZ_DISALLOWS_TILING NSWindowCollectionBehaviorFullScreenDisallowsTiling
+#define CDK_QUARTZ_ALLOWS_TILING NSWindowCollectionBehaviorFullScreenAllowsTiling
+#define CDK_QUARTZ_DISALLOWS_TILING NSWindowCollectionBehaviorFullScreenDisallowsTiling
 #else
-#define GDK_QUARTZ_ALLOWS_TILING 1 << 11
-#define GDK_QUARTZ_DISALLOWS_TILING 1 << 12
+#define CDK_QUARTZ_ALLOWS_TILING 1 << 11
+#define CDK_QUARTZ_DISALLOWS_TILING 1 << 12
 #endif
-  if (cdk_quartz_osx_version() >= GDK_OSX_LION)
+  if (cdk_quartz_osx_version() >= CDK_OSX_LION)
     {
       /* Fullscreen Collection Behavior */
       NSWindowCollectionBehavior behavior = [nswindow collectionBehavior];
       switch (hint)
         {
-        case GDK_WINDOW_TYPE_HINT_NORMAL:
-        case GDK_WINDOW_TYPE_HINT_SPLASHSCREEN:
+        case CDK_WINDOW_TYPE_HINT_NORMAL:
+        case CDK_WINDOW_TYPE_HINT_SPLASHSCREEN:
           behavior &= ~(NSWindowCollectionBehaviorFullScreenAuxiliary &
-                        GDK_QUARTZ_DISALLOWS_TILING);
+                        CDK_QUARTZ_DISALLOWS_TILING);
           behavior |= (NSWindowCollectionBehaviorFullScreenPrimary |
-                       GDK_QUARTZ_ALLOWS_TILING);
+                       CDK_QUARTZ_ALLOWS_TILING);
 
           break;
         default:
           behavior &= ~(NSWindowCollectionBehaviorFullScreenPrimary &
-                        GDK_QUARTZ_ALLOWS_TILING);
+                        CDK_QUARTZ_ALLOWS_TILING);
           behavior |= (NSWindowCollectionBehaviorFullScreenAuxiliary |
-                       GDK_QUARTZ_DISALLOWS_TILING);
+                       CDK_QUARTZ_DISALLOWS_TILING);
           break;
         }
       [nswindow setCollectionBehavior:behavior];
     }
-#undef GDK_QUARTZ_ALLOWS_TILING
-#undef GDK_QUARTZ_DISALLOWS_TILING
+#undef CDK_QUARTZ_ALLOWS_TILING
+#undef CDK_QUARTZ_DISALLOWS_TILING
 #endif
 }
 
@@ -2269,16 +2269,16 @@ cdk_quartz_window_set_type_hint (CdkWindow        *window,
 {
   CdkWindowImplQuartz *impl;
 
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL (window))
     return;
 
-  impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+  impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
 
   impl->type_hint = hint;
 
   /* Match the documentation, only do something if we're not mapped yet. */
-  if (GDK_WINDOW_IS_MAPPED (window))
+  if (CDK_WINDOW_IS_MAPPED (window))
     return;
 
   _cdk_quartz_window_update_has_shadow (impl);
@@ -2291,18 +2291,18 @@ cdk_quartz_window_set_type_hint (CdkWindow        *window,
 static CdkWindowTypeHint
 cdk_quartz_window_get_type_hint (CdkWindow *window)
 {
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL (window))
-    return GDK_WINDOW_TYPE_HINT_NORMAL;
+    return CDK_WINDOW_TYPE_HINT_NORMAL;
   
-  return GDK_WINDOW_IMPL_QUARTZ (window->impl)->type_hint;
+  return CDK_WINDOW_IMPL_QUARTZ (window->impl)->type_hint;
 }
 
 static void
 cdk_quartz_window_set_modal_hint (CdkWindow *window,
                                   gboolean   modal)
 {
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL (window))
     return;
 
@@ -2313,7 +2313,7 @@ static void
 cdk_quartz_window_set_skip_taskbar_hint (CdkWindow *window,
                                          gboolean   skips_taskbar)
 {
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL (window))
     return;
 
@@ -2324,7 +2324,7 @@ static void
 cdk_quartz_window_set_skip_pager_hint (CdkWindow *window,
                                        gboolean   skips_pager)
 {
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL (window))
     return;
 
@@ -2342,12 +2342,12 @@ cdk_quartz_window_begin_resize_drag (CdkWindow     *window,
 {
   CdkWindowImplQuartz *impl;
 
-  g_return_if_fail (GDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_WINDOW (window));
 
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     return;
 
-  impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+  impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
 
   if (!impl->toplevel)
     {
@@ -2368,11 +2368,11 @@ cdk_quartz_window_begin_move_drag (CdkWindow *window,
 {
   CdkWindowImplQuartz *impl;
 
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL (window))
     return;
 
-  impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+  impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
 
   if (!impl->toplevel)
     {
@@ -2407,7 +2407,7 @@ cdk_quartz_window_get_frame_extents (CdkWindow    *window,
   rect->height = 1;
   
   toplevel = cdk_window_get_effective_toplevel (window);
-  impl = GDK_WINDOW_IMPL_QUARTZ (toplevel->impl);
+  impl = CDK_WINDOW_IMPL_QUARTZ (toplevel->impl);
 
   ns_rect = [impl->toplevel frame];
 
@@ -2435,26 +2435,26 @@ cdk_quartz_window_set_decorations (CdkWindow       *window,
   NSUInteger old_mask, new_mask;
   NSView *old_view;
 
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL (window))
     return;
 
-  impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+  impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
 
-  if (decorations == 0 || GDK_WINDOW_TYPE (window) == GDK_WINDOW_TEMP ||
-      impl->type_hint == GDK_WINDOW_TYPE_HINT_SPLASHSCREEN )
+  if (decorations == 0 || CDK_WINDOW_TYPE (window) == CDK_WINDOW_TEMP ||
+      impl->type_hint == CDK_WINDOW_TYPE_HINT_SPLASHSCREEN )
     {
-      new_mask = GDK_QUARTZ_BORDERLESS_WINDOW;
+      new_mask = CDK_QUARTZ_BORDERLESS_WINDOW;
     }
   else
     {
-      /* FIXME: Honor other GDK_DECOR_* flags. */
-      new_mask = (GDK_QUARTZ_TITLED_WINDOW | GDK_QUARTZ_CLOSABLE_WINDOW |
-                  GDK_QUARTZ_MINIATURIZABLE_WINDOW |
-                  GDK_QUARTZ_RESIZABLE_WINDOW);
+      /* FIXME: Honor other CDK_DECOR_* flags. */
+      new_mask = (CDK_QUARTZ_TITLED_WINDOW | CDK_QUARTZ_CLOSABLE_WINDOW |
+                  CDK_QUARTZ_MINIATURIZABLE_WINDOW |
+                  CDK_QUARTZ_RESIZABLE_WINDOW);
     }
 
-  GDK_QUARTZ_ALLOC_POOL;
+  CDK_QUARTZ_ALLOC_POOL;
 
   old_mask = [impl->toplevel styleMask];
 
@@ -2469,14 +2469,14 @@ cdk_quartz_window_set_decorations (CdkWindow       *window,
       /* Properly update the size of the window when the titlebar is
        * added or removed.
        */
-      if (old_mask == GDK_QUARTZ_BORDERLESS_WINDOW &&
-          new_mask != GDK_QUARTZ_BORDERLESS_WINDOW)
+      if (old_mask == CDK_QUARTZ_BORDERLESS_WINDOW &&
+          new_mask != CDK_QUARTZ_BORDERLESS_WINDOW)
         {
           rect = [NSWindow frameRectForContentRect:rect styleMask:new_mask];
 
         }
-      else if (old_mask != GDK_QUARTZ_BORDERLESS_WINDOW &&
-               new_mask == GDK_QUARTZ_BORDERLESS_WINDOW)
+      else if (old_mask != CDK_QUARTZ_BORDERLESS_WINDOW &&
+               new_mask == CDK_QUARTZ_BORDERLESS_WINDOW)
         {
           rect = [NSWindow contentRectForFrameRect:rect styleMask:old_mask];
         }
@@ -2493,13 +2493,13 @@ cdk_quartz_window_set_decorations (CdkWindow       *window,
           [(id<CanSetStyleMask>)impl->toplevel setStyleMask:new_mask];
 
           /* It appears that unsetting and then resetting
-           * GDK_QUARTZ_TITLED_WINDOW does not reset the title in the
+           * CDK_QUARTZ_TITLED_WINDOW does not reset the title in the
            * title bar as might be expected.
            *
            * In theory we only need to set this if new_mask includes
-           * GDK_QUARTZ_TITLED_WINDOW. This behaved extremely oddly when
+           * CDK_QUARTZ_TITLED_WINDOW. This behaved extremely oddly when
            * conditionalized upon that and since it has no side effects (i.e.
-           * if GDK_QUARTZ_TITLED_WINDOW is not requested, the title will not be
+           * if CDK_QUARTZ_TITLED_WINDOW is not requested, the title will not be
            * displayed) just do it unconditionally. We also must null check
            * 'title' before setting it to avoid crashing.
            */
@@ -2532,7 +2532,7 @@ cdk_quartz_window_set_decorations (CdkWindow       *window,
           [impl->toplevel setContentView:old_view];
         }
 
-      if (new_mask == GDK_QUARTZ_BORDERLESS_WINDOW)
+      if (new_mask == CDK_QUARTZ_BORDERLESS_WINDOW)
         {
           [impl->toplevel setContentSize:rect.size];
         }
@@ -2548,7 +2548,7 @@ cdk_quartz_window_set_decorations (CdkWindow       *window,
       [old_view release];
     }
 
-  GDK_QUARTZ_RELEASE_POOL;
+  CDK_QUARTZ_RELEASE_POOL;
 }
 
 static gboolean
@@ -2557,23 +2557,23 @@ cdk_quartz_window_get_decorations (CdkWindow       *window,
 {
   CdkWindowImplQuartz *impl;
 
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL (window))
     return FALSE;
 
-  impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+  impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
 
   if (decorations)
     {
       /* Borderless is 0, so we can't check it as a bit being set. */
-      if ([impl->toplevel styleMask] == GDK_QUARTZ_BORDERLESS_WINDOW)
+      if ([impl->toplevel styleMask] == CDK_QUARTZ_BORDERLESS_WINDOW)
         {
           *decorations = 0;
         }
       else
         {
-          /* FIXME: Honor the other GDK_DECOR_* flags. */
-          *decorations = GDK_DECOR_ALL;
+          /* FIXME: Honor the other CDK_DECOR_* flags. */
+          *decorations = CDK_DECOR_ALL;
         }
     }
 
@@ -2587,21 +2587,21 @@ cdk_quartz_window_set_functions (CdkWindow    *window,
   CdkWindowImplQuartz *impl;
   gboolean min, max, close;
 
-  g_return_if_fail (GDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_WINDOW (window));
 
-  impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+  impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
 
-  if (functions & GDK_FUNC_ALL)
+  if (functions & CDK_FUNC_ALL)
     {
-      min = !(functions & GDK_FUNC_MINIMIZE);
-      max = !(functions & GDK_FUNC_MAXIMIZE);
-      close = !(functions & GDK_FUNC_CLOSE);
+      min = !(functions & CDK_FUNC_MINIMIZE);
+      max = !(functions & CDK_FUNC_MAXIMIZE);
+      close = !(functions & CDK_FUNC_CLOSE);
     }
   else
     {
-      min = (functions & GDK_FUNC_MINIMIZE);
-      max = (functions & GDK_FUNC_MAXIMIZE);
-      close = (functions & GDK_FUNC_CLOSE);
+      min = (functions & CDK_FUNC_MINIMIZE);
+      max = (functions & CDK_FUNC_MAXIMIZE);
+      close = (functions & CDK_FUNC_CLOSE);
     }
 
   if (impl->toplevel)
@@ -2609,19 +2609,19 @@ cdk_quartz_window_set_functions (CdkWindow    *window,
       NSUInteger mask = [impl->toplevel styleMask];
 
       if (min)
-        mask = mask | GDK_QUARTZ_MINIATURIZABLE_WINDOW;
+        mask = mask | CDK_QUARTZ_MINIATURIZABLE_WINDOW;
       else
-        mask = mask & ~GDK_QUARTZ_MINIATURIZABLE_WINDOW;
+        mask = mask & ~CDK_QUARTZ_MINIATURIZABLE_WINDOW;
 
       if (max)
-        mask = mask | GDK_QUARTZ_RESIZABLE_WINDOW;
+        mask = mask | CDK_QUARTZ_RESIZABLE_WINDOW;
       else
-        mask = mask & ~GDK_QUARTZ_RESIZABLE_WINDOW;
+        mask = mask & ~CDK_QUARTZ_RESIZABLE_WINDOW;
 
       if (close)
-        mask = mask | GDK_QUARTZ_CLOSABLE_WINDOW;
+        mask = mask | CDK_QUARTZ_CLOSABLE_WINDOW;
       else
-        mask = mask & ~GDK_QUARTZ_CLOSABLE_WINDOW;
+        mask = mask & ~CDK_QUARTZ_CLOSABLE_WINDOW;
 
       [impl->toplevel setStyleMask:mask];
     }
@@ -2630,7 +2630,7 @@ cdk_quartz_window_set_functions (CdkWindow    *window,
 static void
 cdk_quartz_window_stick (CdkWindow *window)
 {
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL (window))
     return;
 }
@@ -2638,7 +2638,7 @@ cdk_quartz_window_stick (CdkWindow *window)
 static void
 cdk_quartz_window_unstick (CdkWindow *window)
 {
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL (window))
     return;
 }
@@ -2649,21 +2649,21 @@ cdk_quartz_window_maximize (CdkWindow *window)
   CdkWindowImplQuartz *impl;
   gboolean maximized;
 
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL (window))
     return;
 
-  impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
-  maximized = cdk_window_get_state (window) & GDK_WINDOW_STATE_MAXIMIZED;
+  impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
+  maximized = cdk_window_get_state (window) & CDK_WINDOW_STATE_MAXIMIZED;
 
-  if (GDK_WINDOW_IS_MAPPED (window))
+  if (CDK_WINDOW_IS_MAPPED (window))
     {
-      GDK_QUARTZ_ALLOC_POOL;
+      CDK_QUARTZ_ALLOC_POOL;
 
       if (impl->toplevel && !maximized)
         [impl->toplevel zoom:nil];
 
-      GDK_QUARTZ_RELEASE_POOL;
+      CDK_QUARTZ_RELEASE_POOL;
     }
 }
 
@@ -2673,21 +2673,21 @@ cdk_quartz_window_unmaximize (CdkWindow *window)
   CdkWindowImplQuartz *impl;
   gboolean maximized;
 
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL (window))
     return;
 
-  impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
-  maximized = cdk_window_get_state (window) & GDK_WINDOW_STATE_MAXIMIZED;
+  impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
+  maximized = cdk_window_get_state (window) & CDK_WINDOW_STATE_MAXIMIZED;
 
-  if (GDK_WINDOW_IS_MAPPED (window))
+  if (CDK_WINDOW_IS_MAPPED (window))
     {
-      GDK_QUARTZ_ALLOC_POOL;
+      CDK_QUARTZ_ALLOC_POOL;
 
       if (impl->toplevel && maximized)
         [impl->toplevel zoom:nil];
 
-      GDK_QUARTZ_RELEASE_POOL;
+      CDK_QUARTZ_RELEASE_POOL;
     }
 }
 
@@ -2696,26 +2696,26 @@ cdk_quartz_window_iconify (CdkWindow *window)
 {
   CdkWindowImplQuartz *impl;
 
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL (window))
     return;
 
-  impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+  impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
 
-  if (GDK_WINDOW_IS_MAPPED (window))
+  if (CDK_WINDOW_IS_MAPPED (window))
     {
-      GDK_QUARTZ_ALLOC_POOL;
+      CDK_QUARTZ_ALLOC_POOL;
 
       if (impl->toplevel)
 	[impl->toplevel miniaturize:nil];
 
-      GDK_QUARTZ_RELEASE_POOL;
+      CDK_QUARTZ_RELEASE_POOL;
     }
   else
     {
       cdk_synthesize_window_state (window,
 				   0,
-				   GDK_WINDOW_STATE_ICONIFIED);
+				   CDK_WINDOW_STATE_ICONIFIED);
     }
 }
 
@@ -2724,25 +2724,25 @@ cdk_quartz_window_deiconify (CdkWindow *window)
 {
   CdkWindowImplQuartz *impl;
 
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL (window))
     return;
 
-  impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+  impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
 
-  if (GDK_WINDOW_IS_MAPPED (window))
+  if (CDK_WINDOW_IS_MAPPED (window))
     {
-      GDK_QUARTZ_ALLOC_POOL;
+      CDK_QUARTZ_ALLOC_POOL;
 
       if (impl->toplevel)
 	[impl->toplevel deminiaturize:nil];
 
-      GDK_QUARTZ_RELEASE_POOL;
+      CDK_QUARTZ_RELEASE_POOL;
     }
   else
     {
       cdk_synthesize_window_state (window,
-				   GDK_WINDOW_STATE_ICONIFIED,
+				   CDK_WINDOW_STATE_ICONIFIED,
 				   0);
     }
 }
@@ -2750,11 +2750,11 @@ cdk_quartz_window_deiconify (CdkWindow *window)
 static gboolean
 window_is_fullscreen (CdkWindow *window)
 {
-  CdkWindowImplQuartz *impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+  CdkWindowImplQuartz *impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
 
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= 1070
-  if (cdk_quartz_osx_version() >= GDK_OSX_LION)
-    return ([impl->toplevel styleMask] & GDK_QUARTZ_FULLSCREEN_WINDOW) != 0;
+  if (cdk_quartz_osx_version() >= CDK_OSX_LION)
+    return ([impl->toplevel styleMask] & CDK_QUARTZ_FULLSCREEN_WINDOW) != 0;
   else
 #endif
     return g_object_get_data (G_OBJECT (window), FULLSCREEN_DATA) != NULL;
@@ -2765,14 +2765,14 @@ cdk_quartz_window_fullscreen (CdkWindow *window)
 {
   CdkWindowImplQuartz *impl;
 
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL (window))
     return;
 
-  impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+  impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
 
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= 1070
-  if (cdk_quartz_osx_version() >= GDK_OSX_LION)
+  if (cdk_quartz_osx_version() >= CDK_OSX_LION)
     {
       if (!window_is_fullscreen (window))
         [impl->toplevel toggleFullScreen:nil];
@@ -2781,10 +2781,10 @@ cdk_quartz_window_fullscreen (CdkWindow *window)
     {
 #endif
       FullscreenSavedGeometry *geometry;
-      CdkWindowImplQuartz *impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+      CdkWindowImplQuartz *impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
       NSRect frame;
 
-      if (GDK_WINDOW_DESTROYED (window) ||
+      if (CDK_WINDOW_DESTROYED (window) ||
           !WINDOW_IS_TOPLEVEL (window))
         return;
 
@@ -2799,7 +2799,7 @@ cdk_quartz_window_fullscreen (CdkWindow *window)
           geometry->height = window->height;
 
           if (!cdk_window_get_decorations (window, &geometry->decor))
-            geometry->decor = GDK_DECOR_ALL;
+            geometry->decor = CDK_DECOR_ALL;
 
           g_object_set_data_full (G_OBJECT (window),
                                   FULLSCREEN_DATA, geometry, 
@@ -2819,7 +2819,7 @@ cdk_quartz_window_fullscreen (CdkWindow *window)
 
       SetSystemUIMode (kUIModeAllHidden, kUIOptionAutoShowMenuBar);
 
-      cdk_synthesize_window_state (window, 0, GDK_WINDOW_STATE_FULLSCREEN);
+      cdk_synthesize_window_state (window, 0, CDK_WINDOW_STATE_FULLSCREEN);
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= 1070
     }
 #endif
@@ -2830,14 +2830,14 @@ cdk_quartz_window_unfullscreen (CdkWindow *window)
 {
   CdkWindowImplQuartz *impl;
 
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL (window))
     return;
 
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= 1070
-  if (cdk_quartz_osx_version() >= GDK_OSX_LION)
+  if (cdk_quartz_osx_version() >= CDK_OSX_LION)
     {
-      impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+      impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
 
       if (window_is_fullscreen (window))
         [impl->toplevel toggleFullScreen:nil];
@@ -2845,10 +2845,10 @@ cdk_quartz_window_unfullscreen (CdkWindow *window)
   else
     {
 #endif
-      CdkWindowImplQuartz *impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+      CdkWindowImplQuartz *impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
       FullscreenSavedGeometry *geometry;
 
-      if (GDK_WINDOW_DESTROYED (window) ||
+      if (CDK_WINDOW_DESTROYED (window) ||
           !WINDOW_IS_TOPLEVEL (window))
         return;
 
@@ -2870,7 +2870,7 @@ cdk_quartz_window_unfullscreen (CdkWindow *window)
           [impl->toplevel makeKeyAndOrderFront:impl->toplevel];
           clear_toplevel_order ();
 
-          cdk_synthesize_window_state (window, GDK_WINDOW_STATE_FULLSCREEN, 0);
+          cdk_synthesize_window_state (window, CDK_WINDOW_STATE_FULLSCREEN, 0);
         }
 
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= 1070
@@ -2889,22 +2889,22 @@ get_fullscreen_geometry (CdkWindow *window)
 void
 _cdk_quartz_window_update_fullscreen_state (CdkWindow *window)
 {
-  if (GDK_WINDOW_DESTROYED (window) || !WINDOW_IS_TOPLEVEL (window))
+  if (CDK_WINDOW_DESTROYED (window) || !WINDOW_IS_TOPLEVEL (window))
     return;
 
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= 1070
-  if (cdk_quartz_osx_version() >= GDK_OSX_LION)
+  if (cdk_quartz_osx_version() >= CDK_OSX_LION)
     {
       gboolean is_fullscreen = window_is_fullscreen (window);
       gboolean was_fullscreen = (cdk_window_get_state (window) &
-                                 GDK_WINDOW_STATE_FULLSCREEN) != 0;
+                                 CDK_WINDOW_STATE_FULLSCREEN) != 0;
 
       if (is_fullscreen != was_fullscreen)
         {
           if (is_fullscreen)
-            cdk_synthesize_window_state (window, 0, GDK_WINDOW_STATE_FULLSCREEN);
+            cdk_synthesize_window_state (window, 0, CDK_WINDOW_STATE_FULLSCREEN);
           else
-            cdk_synthesize_window_state (window, GDK_WINDOW_STATE_FULLSCREEN, 0);
+            cdk_synthesize_window_state (window, CDK_WINDOW_STATE_FULLSCREEN, 0);
         }
     }
 #endif
@@ -2914,12 +2914,12 @@ static void
 cdk_quartz_window_set_keep_above (CdkWindow *window,
                                   gboolean   setting)
 {
-  CdkWindowImplQuartz *impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+  CdkWindowImplQuartz *impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
   gint level;
 
-  g_return_if_fail (GDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_WINDOW (window));
 
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL (window))
     return;
 
@@ -2933,12 +2933,12 @@ static void
 cdk_quartz_window_set_keep_below (CdkWindow *window,
                                   gboolean   setting)
 {
-  CdkWindowImplQuartz *impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+  CdkWindowImplQuartz *impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
   gint level;
 
-  g_return_if_fail (GDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_WINDOW (window));
 
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL (window))
     return;
   
@@ -2974,12 +2974,12 @@ static void
 cdk_quartz_window_set_opacity (CdkWindow *window,
                                gdouble    opacity)
 {
-  CdkWindowImplQuartz *impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+  CdkWindowImplQuartz *impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
 
-  g_return_if_fail (GDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_WINDOW (window));
   g_return_if_fail (WINDOW_IS_TOPLEVEL (window));
 
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL (window))
     return;
 
@@ -2998,12 +2998,12 @@ cdk_quartz_window_set_shadow_width (CdkWindow *window,
                                     gint       top,
                                     gint       bottom)
 {
-  CdkWindowImplQuartz *impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+  CdkWindowImplQuartz *impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
 
-  g_return_if_fail (GDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_WINDOW (window));
   g_return_if_fail (WINDOW_IS_TOPLEVEL (window));
 
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL (window))
     return;
 
@@ -3036,12 +3036,12 @@ cdk_quartz_window_get_scale_factor (CdkWindow *window)
 {
   CdkWindowImplQuartz *impl;
 
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     return 1;
 
-  impl = GDK_WINDOW_IMPL_QUARTZ (window->impl);
+  impl = CDK_WINDOW_IMPL_QUARTZ (window->impl);
 
-  if (impl->toplevel != NULL && cdk_quartz_osx_version() >= GDK_OSX_LION)
+  if (impl->toplevel != NULL && cdk_quartz_osx_version() >= CDK_OSX_LION)
     return [(id <ScaleFactor>) impl->toplevel backingScaleFactor];
 
   return 1;
@@ -3051,8 +3051,8 @@ static void
 cdk_window_impl_quartz_class_init (CdkWindowImplQuartzClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  CdkWindowImplClass *impl_class = GDK_WINDOW_IMPL_CLASS (klass);
-  CdkWindowImplQuartzClass *impl_quartz_class = GDK_WINDOW_IMPL_QUARTZ_CLASS (klass);
+  CdkWindowImplClass *impl_class = CDK_WINDOW_IMPL_CLASS (klass);
+  CdkWindowImplQuartzClass *impl_quartz_class = CDK_WINDOW_IMPL_QUARTZ_CLASS (klass);
 
   parent_class = g_type_class_peek_parent (klass);
 
@@ -3158,7 +3158,7 @@ _cdk_window_impl_quartz_get_type (void)
 	  (GInstanceInitFunc) cdk_window_impl_quartz_init,
 	};
 
-      object_type = g_type_register_static (GDK_TYPE_WINDOW_IMPL,
+      object_type = g_type_register_static (CDK_TYPE_WINDOW_IMPL,
                                             "CdkWindowImplQuartz",
                                             &object_info, 0);
     }
@@ -3170,28 +3170,28 @@ CGContextRef
 cdk_quartz_window_get_context (CdkWindowImplQuartz  *window,
                                gboolean             antialias)
 {
-  if (!GDK_WINDOW_IMPL_QUARTZ_GET_CLASS (window)->get_context)
+  if (!CDK_WINDOW_IMPL_QUARTZ_GET_CLASS (window)->get_context)
     {
       g_warning ("%s doesn't implement CdkWindowImplQuartzClass::get_context()",
                  G_OBJECT_TYPE_NAME (window));
       return NULL;
     }
 
-  return GDK_WINDOW_IMPL_QUARTZ_GET_CLASS (window)->get_context (window, antialias);
+  return CDK_WINDOW_IMPL_QUARTZ_GET_CLASS (window)->get_context (window, antialias);
 }
 
 void
 cdk_quartz_window_release_context (CdkWindowImplQuartz  *window,
                                    CGContextRef          cg_context)
 {
-  if (!GDK_WINDOW_IMPL_QUARTZ_GET_CLASS (window)->release_context)
+  if (!CDK_WINDOW_IMPL_QUARTZ_GET_CLASS (window)->release_context)
     {
       g_warning ("%s doesn't implement CdkWindowImplQuartzClass::release_context()",
                  G_OBJECT_TYPE_NAME (window));
       return;
     }
 
-  GDK_WINDOW_IMPL_QUARTZ_GET_CLASS (window)->release_context (window, cg_context);
+  CDK_WINDOW_IMPL_QUARTZ_GET_CLASS (window)->release_context (window, cg_context);
 }
 
 
@@ -3202,9 +3202,9 @@ cdk_root_window_impl_quartz_get_context (CdkWindowImplQuartz *window,
 {
   CGColorSpaceRef colorspace;
   CGContextRef cg_context;
-  CdkWindowImplQuartz *window_impl = GDK_WINDOW_IMPL_QUARTZ (window);
+  CdkWindowImplQuartz *window_impl = CDK_WINDOW_IMPL_QUARTZ (window);
 
-  if (GDK_WINDOW_DESTROYED (window_impl->wrapper))
+  if (CDK_WINDOW_DESTROYED (window_impl->wrapper))
     return NULL;
 
   /* We do not have the notion of a root window on OS X.  We fake this
@@ -3229,7 +3229,7 @@ cdk_root_window_impl_quartz_release_context (CdkWindowImplQuartz *window,
 static void
 cdk_root_window_impl_quartz_class_init (CdkRootWindowImplQuartzClass *klass)
 {
-  CdkWindowImplQuartzClass *window_quartz_class = GDK_WINDOW_IMPL_QUARTZ_CLASS (klass);
+  CdkWindowImplQuartzClass *window_quartz_class = CDK_WINDOW_IMPL_QUARTZ_CLASS (klass);
 
   root_window_parent_class = g_type_class_peek_parent (klass);
 
@@ -3262,7 +3262,7 @@ _cdk_root_window_impl_quartz_get_type (void)
           (GInstanceInitFunc) cdk_root_window_impl_quartz_init,
         };
 
-      object_type = g_type_register_static (GDK_TYPE_WINDOW_IMPL_QUARTZ,
+      object_type = g_type_register_static (CDK_TYPE_WINDOW_IMPL_QUARTZ,
                                             "CdkRootWindowQuartz",
                                             &object_info, 0);
     }

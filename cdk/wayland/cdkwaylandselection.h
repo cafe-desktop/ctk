@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -22,10 +22,10 @@
  * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
-#ifndef __GDK_WAYLAND_SELECTION_H__
-#define __GDK_WAYLAND_SELECTION_H__
+#ifndef __CDK_WAYLAND_SELECTION_H__
+#define __CDK_WAYLAND_SELECTION_H__
 
-#if !defined (__GDKWAYLAND_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined (__CDKWAYLAND_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdkwayland.h> can be included directly."
 #endif
 
@@ -33,9 +33,9 @@
 
 G_BEGIN_DECLS
 
-#if defined (CTK_COMPILATION) || defined (GDK_COMPILATION)
+#if defined (CTK_COMPILATION) || defined (CDK_COMPILATION)
 #define cdk_wayland_selection_add_targets cdk_wayland_selection_add_targets_libctk_only
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void
 cdk_wayland_selection_add_targets (CdkWindow *window,
                                    CdkAtom    selection,
@@ -43,7 +43,7 @@ cdk_wayland_selection_add_targets (CdkWindow *window,
                                    CdkAtom   *targets);
 
 #define cdk_wayland_selection_clear_targets cdk_wayland_selection_clear_targets_libctk_only
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void
 cdk_wayland_selection_clear_targets (CdkDisplay *display, CdkAtom selection);
 
@@ -51,4 +51,4 @@ cdk_wayland_selection_clear_targets (CdkDisplay *display, CdkAtom selection);
 
 G_END_DECLS
 
-#endif /* __GDK_WAYLAND_SELECTION_H__ */
+#endif /* __CDK_WAYLAND_SELECTION_H__ */

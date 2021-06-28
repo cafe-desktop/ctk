@@ -15,11 +15,11 @@ PERL = perl
 
 # Possibly override versions from build/win32/module.defs
 CTK_VER = 2.0
-GDK_PIXBUF_VER = 2.0
+CDK_PIXBUF_VER = 2.0
 
-GDK_LIBS = ../../cdk/cdk-win32-$(CTK_VER).lib
+CDK_LIBS = ../../cdk/cdk-win32-$(CTK_VER).lib
 CTK_LIBS = ../../ctk/ctk-win32-$(CTK_VER).lib
-GDK_PIXBUF_LIBS = ../../cdk-pixbuf/cdk_pixbuf-$(GDK_PIXBUF_VER).lib
+CDK_PIXBUF_LIBS = ../../cdk-pixbuf/cdk_pixbuf-$(CDK_PIXBUF_VER).lib
 
 INCLUDES = -FImsvc_recommended_pragmas.h -I . -I ../.. -I ../../cdk -I ../../cdk-pixbuf -I ../../ctk
 DEPCFLAGS = $(PANGO_CFLAGS) $(GLIB_CFLAGS) $(LIBICONV_CFLAGS) $(INTL_CFLAGS) $(ATK_CFLAGS) $(CAIRO_CFLAGS)
@@ -86,6 +86,6 @@ OBJECTS = \
 	main.obj \
 
 ctk-demo.exe : demos.h $(OBJECTS)
-	$(CC) $(CFLAGS) -Fectk-demo.exe $(OBJECTS) $(CTK_LIBS) $(GDK_LIBS) $(GDK_PIXBUF_LIBS) \
+	$(CC) $(CFLAGS) -Fectk-demo.exe $(OBJECTS) $(CTK_LIBS) $(CDK_LIBS) $(CDK_PIXBUF_LIBS) \
 	$(CAIRO_LIBS) $(PANGOCAIRO_LIBS) $(PANGO_LIBS) $(GLIB_LIBS) $(LDFLAGS)
 

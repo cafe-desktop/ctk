@@ -149,20 +149,20 @@ msgid "Default Display"
 msgstr "Vorgabeanzeige"
 
 #: cdk/cdkdisplaymanager.c:163
-msgid "The default display for GDK"
-msgstr "Die voreingestellte Anzeige für GDK"
+msgid "The default display for CDK"
+msgstr "Die voreingestellte Anzeige für CDK"
 
 #: cdk/cdkglcontext.c:318
-msgid "The GDK display used to create the GL context"
-msgstr "Die GDK-Anzeige, die zum Erstellen des GL-Kontexts verwendet wird"
+msgid "The CDK display used to create the GL context"
+msgstr "Die CDK-Anzeige, die zum Erstellen des GL-Kontexts verwendet wird"
 
 #: cdk/cdkglcontext.c:333 ctk/ctkwidget.c:1347
 msgid "Window"
 msgstr "Fenster"
 
 #: cdk/cdkglcontext.c:334
-msgid "The GDK window bound to the GL context"
-msgstr "Dem GL-Kontext zugewiesenes GDK-Fenster"
+msgid "The CDK window bound to the GL context"
+msgstr "Dem GL-Kontext zugewiesenes CDK-Fenster"
 
 #: cdk/cdkglcontext.c:349
 msgid "Shared context"

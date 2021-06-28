@@ -88,8 +88,8 @@ msgstr "SCHERM"
 
 #. Description of --cdk-debug=FLAGS in --help output
 #: cdk/cdk.c:240
-msgid "GDK debugging flags to set"
-msgstr "In te stellen GDK debug-vlaggen"
+msgid "CDK debugging flags to set"
+msgstr "In te stellen CDK debug-vlaggen"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
@@ -101,12 +101,12 @@ msgstr "VLAGGEN"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: cdk/cdk.c:243
-msgid "GDK debugging flags to unset"
-msgstr "Uit te zetten GDK debug-vlaggen"
+msgid "CDK debugging flags to unset"
+msgstr "Uit te zetten CDK debug-vlaggen"
 
 #: cdk/cdkwindow.c:2851
-msgid "GL support disabled via GDK_DEBUG"
-msgstr "GL-ondersteuning uitgeschakeld via GDK_DEBUG"
+msgid "GL support disabled via CDK_DEBUG"
+msgstr "GL-ondersteuning uitgeschakeld via CDK_DEBUG"
 
 #: cdk/cdkwindow.c:2862
 msgid "The current backend does not support OpenGL"
@@ -4257,8 +4257,8 @@ msgid "CTK+ Version"
 msgstr "CTK+-versie"
 
 #: ctk/inspector/general.ui:68
-msgid "GDK Backend"
-msgstr "GDK Backend"
+msgid "CDK Backend"
+msgstr "CDK Backend"
 
 #: ctk/inspector/general.ui:373
 msgid "Display"
@@ -4634,10 +4634,10 @@ msgstr "Instelling is hard gecodeerd door CTK_TEST_TOUCHSCREEN"
 #: ctk/inspector/visual.c:817
 msgid ""
 "Not settable at runtime.\n"
-"Use GDK_GL=always or GDK_GL=disable instead"
+"Use CDK_GL=always or CDK_GL=disable instead"
 msgstr ""
 "Tijdens uitvoering niet instelbaar.\n"
-"Gebruik in plaats daarvan GDK_GL=always of GDK_GL=disable"
+"Gebruik in plaats daarvan CDK_GL=always of CDK_GL=disable"
 
 #: ctk/inspector/visual.c:831 ctk/inspector/visual.c:832
 #: ctk/inspector/visual.c:833
@@ -8571,8 +8571,8 @@ msgstr "Afdrukken om printer te testen"
 #~ msgid "No compatible formats to transfer contents."
 #~ msgstr "Geen compatibele formaten om inhoud over te dragen."
 
-#~ msgid "Vulkan support disabled via GDK_DEBUG"
-#~ msgstr "Vulkan-ondersteuning uitgeschakeld via GDK_DEBUG"
+#~ msgid "Vulkan support disabled via CDK_DEBUG"
+#~ msgstr "Vulkan-ondersteuning uitgeschakeld via CDK_DEBUG"
 
 #~ msgid "No compatible transfer format found"
 #~ msgstr "Geen compatibel overdrachtsformaat gevonden"
@@ -8664,8 +8664,8 @@ msgstr "Afdrukken om printer te testen"
 #~ "Kan DnD-gegevens niet verkrijgen. Toewijzen van %lu bytes om gegevens op "
 #~ "te slaan mislukt."
 
-#~ msgid "GDK surface 0x%p is not registered as a drop target"
-#~ msgstr "GDK-oppervlak 0x%p is niet geregistreerd als sleepdoel"
+#~ msgid "CDK surface 0x%p is not registered as a drop target"
+#~ msgstr "CDK-oppervlak 0x%p is niet geregistreerd als sleepdoel"
 
 #~ msgid "Target context record 0x%p has no data object"
 #~ msgstr "Doelcontextopname 0x%p heeft geen gegevensobject"

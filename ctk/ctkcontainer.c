@@ -24,7 +24,7 @@
 
 #include "config.h"
 
-#define GDK_DISABLE_DEPRECATION_WARNINGS
+#define CDK_DISABLE_DEPRECATION_WARNINGS
 #include "ctkcontainer.h"
 #include "ctkcontainerprivate.h"
 
@@ -2072,7 +2072,7 @@ ctk_container_idle_sizer (CdkFrameClock *clock,
   else
     {
       cdk_frame_clock_request_phase (clock,
-                                     GDK_FRAME_CLOCK_PHASE_LAYOUT);
+                                     CDK_FRAME_CLOCK_PHASE_LAYOUT);
     }
 }
 
@@ -2095,7 +2095,7 @@ ctk_container_start_idle_sizer (CtkContainer *container)
   container->priv->resize_handler = g_signal_connect (clock, "layout",
 						      G_CALLBACK (ctk_container_idle_sizer), container);
   cdk_frame_clock_request_phase (clock,
-                                 GDK_FRAME_CLOCK_PHASE_LAYOUT);
+                                 CDK_FRAME_CLOCK_PHASE_LAYOUT);
 }
 
 void

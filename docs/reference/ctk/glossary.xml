@@ -89,12 +89,12 @@
     <glossterm>display</glossterm>
     <glossdef>
       <para>
-        GDK inherited the concept of display from the X window system,
+        CDK inherited the concept of display from the X window system,
         which considers a display to be the combination
         of a keyboard, a pointing device and one or more 
         <glossterm linkend="screen">screens</glossterm>. 
         Applications open a display to show windows and interact with the user.
-        In GDK, a display is represented by a #CdkDisplay.
+        In CDK, a display is represented by a #CdkDisplay.
       </para>
     </glossdef>
   </glossentry>
@@ -114,7 +114,7 @@
     <glossterm>event</glossterm>
     <glossdef>
       <para>
-        Events are the way in which GDK informs CTK+ about external events
+        Events are the way in which CDK informs CTK+ about external events
         like pointer motion, button clicks, key presses, etc. 
       </para>
     </glossdef>
@@ -265,14 +265,14 @@
     <glossterm>screen</glossterm>
     <glossdef>
       <para>
-	GDK inherited the concept of screen from the X window system, 
+	CDK inherited the concept of screen from the X window system, 
         which considers a screen to be a rectangular area, on which 
         applications may place their windows. Screens under X may have 
         quite dissimilar <glossterm linkend="visual">visuals</glossterm>.
         Each screen can stretch across multiple physical monitors.
       </para>
       <para>
-        In GDK, screens are represented by #CdkScreen objects.
+        In CDK, screens are represented by #CdkScreen objects.
       </para>
     </glossdef>
   </glossentry>

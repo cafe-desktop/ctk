@@ -4,7 +4,7 @@ AM_CPPFLAGS =				\
 	-I$(top_srcdir)/cdk		\
 	$(CTK_DEBUG_FLAGS)		\
 	$(CTK_DEP_CFLAGS)		\
-	$(GDK_DEP_CFLAGS)
+	$(CDK_DEP_CFLAGS)
 
 AM_CXXFLAGS = $(AM_CPPFLAGS)
 

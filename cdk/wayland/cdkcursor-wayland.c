@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -24,7 +24,7 @@
 
 #include "config.h"
 
-#define GDK_PIXBUF_ENABLE_BACKEND
+#define CDK_PIXBUF_ENABLE_BACKEND
 
 #include <string.h>
 
@@ -36,12 +36,12 @@
 
 #include <wayland-cursor.h>
 
-#define GDK_TYPE_WAYLAND_CURSOR              (_cdk_wayland_cursor_get_type ())
-#define GDK_WAYLAND_CURSOR(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WAYLAND_CURSOR, CdkWaylandCursor))
-#define GDK_WAYLAND_CURSOR_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WAYLAND_CURSOR, CdkWaylandCursorClass))
-#define GDK_IS_WAYLAND_CURSOR(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WAYLAND_CURSOR))
-#define GDK_IS_WAYLAND_CURSOR_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_WAYLAND_CURSOR))
-#define GDK_WAYLAND_CURSOR_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_WAYLAND_CURSOR, CdkWaylandCursorClass))
+#define CDK_TYPE_WAYLAND_CURSOR              (_cdk_wayland_cursor_get_type ())
+#define CDK_WAYLAND_CURSOR(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), CDK_TYPE_WAYLAND_CURSOR, CdkWaylandCursor))
+#define CDK_WAYLAND_CURSOR_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CDK_TYPE_WAYLAND_CURSOR, CdkWaylandCursorClass))
+#define CDK_IS_WAYLAND_CURSOR(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), CDK_TYPE_WAYLAND_CURSOR))
+#define CDK_IS_WAYLAND_CURSOR_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CDK_TYPE_WAYLAND_CURSOR))
+#define CDK_WAYLAND_CURSOR_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CDK_TYPE_WAYLAND_CURSOR, CdkWaylandCursorClass))
 
 typedef struct _CdkWaylandCursor CdkWaylandCursor;
 typedef struct _CdkWaylandCursorClass CdkWaylandCursorClass;
@@ -69,7 +69,7 @@ struct _CdkWaylandCursorClass
 
 GType _cdk_wayland_cursor_get_type (void);
 
-G_DEFINE_TYPE (CdkWaylandCursor, _cdk_wayland_cursor, GDK_TYPE_CURSOR)
+G_DEFINE_TYPE (CdkWaylandCursor, _cdk_wayland_cursor, CDK_TYPE_CURSOR)
 
 void
 _cdk_wayland_display_init_cursors (CdkWaylandDisplay *display)
@@ -192,7 +192,7 @@ _cdk_wayland_display_update_cursors (CdkWaylandDisplay *display)
 static void
 cdk_wayland_cursor_finalize (GObject *object)
 {
-  CdkWaylandCursor *cursor = GDK_WAYLAND_CURSOR (object);
+  CdkWaylandCursor *cursor = CDK_WAYLAND_CURSOR (object);
 
   g_free (cursor->name);
   if (cursor->surface.cairo_surface)
@@ -218,7 +218,7 @@ _cdk_wayland_cursor_get_buffer (CdkCursor *cursor,
                                 int       *h,
                                 int       *scale)
 {
-  CdkWaylandCursor *wayland_cursor = GDK_WAYLAND_CURSOR (cursor);
+  CdkWaylandCursor *wayland_cursor = CDK_WAYLAND_CURSOR (cursor);
 
   if (wayland_cursor->wl_cursor)
     {
@@ -276,7 +276,7 @@ _cdk_wayland_cursor_get_next_image_index (CdkCursor *cursor,
                                           guint      current_image_index,
                                           guint     *next_image_delay)
 {
-  struct wl_cursor *wl_cursor = GDK_WAYLAND_CURSOR (cursor)->wl_cursor;
+  struct wl_cursor *wl_cursor = CDK_WAYLAND_CURSOR (cursor)->wl_cursor;
 
   if (wl_cursor && wl_cursor->image_count > 1)
     {
@@ -302,13 +302,13 @@ _cdk_wayland_cursor_set_scale (CdkCursor *cursor,
                                guint      scale)
 {
   CdkWaylandDisplay *display_wayland =
-    GDK_WAYLAND_DISPLAY (cdk_cursor_get_display (cursor));
-  CdkWaylandCursor *wayland_cursor = GDK_WAYLAND_CURSOR (cursor);
+    CDK_WAYLAND_DISPLAY (cdk_cursor_get_display (cursor));
+  CdkWaylandCursor *wayland_cursor = CDK_WAYLAND_CURSOR (cursor);
 
-  if (scale > GDK_WAYLAND_MAX_THEME_SCALE)
+  if (scale > CDK_WAYLAND_MAX_THEME_SCALE)
     {
       g_warning (G_STRLOC ": cursor theme size %u too large", scale);
-      scale = GDK_WAYLAND_MAX_THEME_SCALE;
+      scale = CDK_WAYLAND_MAX_THEME_SCALE;
     }
 
   if (wayland_cursor->scale == scale)
@@ -326,7 +326,7 @@ _cdk_wayland_cursor_set_scale (CdkCursor *cursor,
 static void
 _cdk_wayland_cursor_class_init (CdkWaylandCursorClass *wayland_cursor_class)
 {
-  CdkCursorClass *cursor_class = GDK_CURSOR_CLASS (wayland_cursor_class);
+  CdkCursorClass *cursor_class = CDK_CURSOR_CLASS (wayland_cursor_class);
   GObjectClass *object_class = G_OBJECT_CLASS (wayland_cursor_class);
 
   object_class->finalize = cdk_wayland_cursor_finalize;
@@ -345,16 +345,16 @@ _cdk_wayland_display_get_cursor_for_name_with_scale (CdkDisplay  *display,
                                                      guint        scale)
 {
   CdkWaylandCursor *wayland_cursor;
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (display);
 
-  g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
+  g_return_val_if_fail (CDK_IS_DISPLAY (display), NULL);
 
   wayland_cursor = g_hash_table_lookup (display_wayland->cursor_cache, name);
   if (wayland_cursor && wayland_cursor->scale == scale)
-    return GDK_CURSOR (g_object_ref (wayland_cursor));
+    return CDK_CURSOR (g_object_ref (wayland_cursor));
 
-  wayland_cursor = g_object_new (GDK_TYPE_WAYLAND_CURSOR,
-                                 "cursor-type", GDK_CURSOR_IS_PIXMAP,
+  wayland_cursor = g_object_new (CDK_TYPE_WAYLAND_CURSOR,
+                                 "cursor-type", CDK_CURSOR_IS_PIXMAP,
                                  "display", display,
                                  NULL);
 
@@ -364,7 +364,7 @@ _cdk_wayland_display_get_cursor_for_name_with_scale (CdkDisplay  *display,
       wayland_cursor->name = g_strdup ("none");
       wayland_cursor->scale = scale;
 
-      return GDK_CURSOR (wayland_cursor);
+      return CDK_CURSOR (wayland_cursor);
     }
 
   wayland_cursor->name = g_strdup (name);
@@ -380,7 +380,7 @@ _cdk_wayland_display_get_cursor_for_name_with_scale (CdkDisplay  *display,
   g_hash_table_replace (display_wayland->cursor_cache,
                         wayland_cursor->name,
                         g_object_ref (wayland_cursor));
-  return GDK_CURSOR (wayland_cursor);
+  return CDK_CURSOR (wayland_cursor);
 }
 
 CdkCursor *
@@ -400,7 +400,7 @@ _cdk_wayland_display_get_cursor_for_type_with_scale (CdkDisplay    *display,
   gchar *cursor_name;
   CdkCursor *result;
 
-  enum_class = g_type_class_ref (GDK_TYPE_CURSOR_TYPE);
+  enum_class = g_type_class_ref (CDK_TYPE_CURSOR_TYPE);
   enum_value = g_enum_get_value (enum_class, cursor_type);
   cursor_name = g_strdup (enum_value->value_nick);
   g_strdelimit (cursor_name, "-", '_');
@@ -444,12 +444,12 @@ _cdk_wayland_display_get_cursor_for_surface (CdkDisplay *display,
 					     gdouble     y)
 {
   CdkWaylandCursor *cursor;
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (display);
   struct wl_buffer *buffer;
   cairo_t *cr;
 
-  cursor = g_object_new (GDK_TYPE_WAYLAND_CURSOR,
-			 "cursor-type", GDK_CURSOR_IS_PIXMAP,
+  cursor = g_object_new (CDK_TYPE_WAYLAND_CURSOR,
+			 "cursor-type", CDK_CURSOR_IS_PIXMAP,
 			 "display", display_wayland,
 			 NULL);
   cursor->name = NULL;
@@ -489,7 +489,7 @@ _cdk_wayland_display_get_cursor_for_surface (CdkDisplay *display,
       cairo_destroy (cr);
     }
 
-  return GDK_CURSOR (cursor);
+  return CDK_CURSOR (cursor);
 }
 
 void

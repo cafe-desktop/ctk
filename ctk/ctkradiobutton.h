@@ -70,31 +70,31 @@ struct _CtkRadioButtonClass
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType	   ctk_radio_button_get_type	     (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_radio_button_new                           (GSList         *group);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_radio_button_new_from_widget               (CtkRadioButton *radio_group_member);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_radio_button_new_with_label                (GSList         *group,
                                                            const gchar    *label);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_radio_button_new_with_label_from_widget    (CtkRadioButton *radio_group_member,
                                                            const gchar    *label);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_radio_button_new_with_mnemonic             (GSList         *group,
                                                            const gchar    *label);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_radio_button_new_with_mnemonic_from_widget (CtkRadioButton *radio_group_member,
                                                            const gchar    *label);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GSList*    ctk_radio_button_get_group                     (CtkRadioButton *radio_button);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_radio_button_set_group                     (CtkRadioButton *radio_button,
                                                            GSList         *group);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void            ctk_radio_button_join_group        (CtkRadioButton        *radio_button,
                                                     CtkRadioButton        *group_source);
 G_END_DECLS

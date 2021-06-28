@@ -507,7 +507,7 @@ ctk_file_chooser_entry_tab_handler (CtkWidget *widget,
   chooser_entry = CTK_FILE_CHOOSER_ENTRY (widget);
   editable = CTK_EDITABLE (widget);
 
-  if (event->keyval == GDK_KEY_Escape &&
+  if (event->keyval == CDK_KEY_Escape &&
       chooser_entry->eat_escape)
     {
       g_signal_emit (widget, signals[HIDE_ENTRY], 0);
@@ -517,11 +517,11 @@ ctk_file_chooser_entry_tab_handler (CtkWidget *widget,
   if (!chooser_entry->eat_tabs)
     return FALSE;
 
-  if (event->keyval != GDK_KEY_Tab)
+  if (event->keyval != CDK_KEY_Tab)
     return FALSE;
 
   if (ctk_get_current_event_state (&state) &&
-      (state & GDK_CONTROL_MASK) == GDK_CONTROL_MASK)
+      (state & CDK_CONTROL_MASK) == CDK_CONTROL_MASK)
     return FALSE;
 
   /* This is a bit evil -- it makes Tab never leave the entry. It basically

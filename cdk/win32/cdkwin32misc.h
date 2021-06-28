@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  * Copyright (C) 2013 Chun-wei Fan
  *
@@ -23,10 +23,10 @@
  * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
-#ifndef __GDK_WIN32_MISC_H__
-#define __GDK_WIN32_MISC_H__
+#ifndef __CDK_WIN32_MISC_H__
+#define __CDK_WIN32_MISC_H__
 
-#if !defined (__GDKWIN32_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined (__CDKWIN32_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdkwin32.h> can be included directly."
 #endif
 
@@ -40,16 +40,16 @@
 
 G_BEGIN_DECLS
 
-#ifdef INSIDE_GDK_WIN32
+#ifdef INSIDE_CDK_WIN32
 
 #include "cdkprivate-win32.h"
 
-#define GDK_WINDOW_HWND(win)          (GDK_WINDOW_IMPL_WIN32(win->impl)->handle)
+#define CDK_WINDOW_HWND(win)          (CDK_WINDOW_IMPL_WIN32(win->impl)->handle)
 #else
 /* definition for exported 'internals' go here */
-#define GDK_WINDOW_HWND(d) (cdk_win32_window_get_handle (d))
+#define CDK_WINDOW_HWND(d) (cdk_win32_window_get_handle (d))
 
-#endif /* INSIDE_GDK_WIN32 */
+#endif /* INSIDE_CDK_WIN32 */
 
 /* These need to be here so ctkstatusicon.c can pick them up if needed. */
 #ifndef WM_XBUTTONDOWN
@@ -69,52 +69,52 @@ G_BEGIN_DECLS
 #endif
 
 /* Return true if the CdkWindow is a win32 implemented window */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean      cdk_win32_window_is_win32 (CdkWindow *window);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 HWND          cdk_win32_window_get_impl_hwnd (CdkWindow *window);
 
 /* Return the Cdk* for a particular HANDLE */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gpointer      cdk_win32_handle_table_lookup (HWND handle);
 /* Translate from window to Windows handle */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 HGDIOBJ       cdk_win32_window_get_handle (CdkWindow *window);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          cdk_win32_selection_add_targets (CdkWindow  *owner,
 					       CdkAtom     selection,
 					       gint	   n_targets,
 					       CdkAtom    *targets);
 
-#if defined (CTK_COMPILATION) || defined (GDK_COMPILATION)
+#if defined (CTK_COMPILATION) || defined (CDK_COMPILATION)
 #define cdk_win32_selection_clear_targets cdk_win32_selection_clear_targets_libctk_only
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          cdk_win32_selection_clear_targets (CdkDisplay *display,
                                                  CdkAtom     selection);
 #endif
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkWindow *   cdk_win32_window_foreign_new_for_display (CdkDisplay *display,
                                                         HWND        anid);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkWindow *   cdk_win32_window_lookup_for_display (CdkDisplay *display,
                                                    HWND        anid);
 
-#if defined (INSIDE_GDK_WIN32) || defined (GDK_COMPILATION) || defined (CTK_COMPILATION)
+#if defined (INSIDE_CDK_WIN32) || defined (CDK_COMPILATION) || defined (CTK_COMPILATION)
 
 /* For internal CTK use only */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkPixbuf    *cdk_win32_icon_to_pixbuf_libctk_only (HICON hicon,
                                                     gdouble *x_hot,
                                                     gdouble *y_hot);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 HICON         cdk_win32_pixbuf_to_hicon_libctk_only (CdkPixbuf *pixbuf);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          cdk_win32_set_modal_dialog_libctk_only (HWND window);
 
 #endif
 
 G_END_DECLS
 
-#endif /* __GDK_WIN32_MISC_H__ */
+#endif /* __CDK_WIN32_MISC_H__ */

@@ -311,7 +311,7 @@ create_trash_button (void)
                      CTK_DEST_DEFAULT_MOTION | CTK_DEST_DEFAULT_DROP,
                      button_targets,
                      G_N_ELEMENTS (button_targets),
-                     GDK_ACTION_MOVE);
+                     CDK_ACTION_MOVE);
 
   g_signal_connect_after (G_OBJECT (button), "drag-data-received",
                           G_CALLBACK (on_button_drag_data_received), NULL);

@@ -84,46 +84,46 @@ struct _CtkAppChooserWidgetClass {
   gpointer padding[16];
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType         ctk_app_chooser_widget_get_type             (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *   ctk_app_chooser_widget_new                  (const gchar         *content_type);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_app_chooser_widget_set_show_default     (CtkAppChooserWidget *self,
                                                            gboolean             setting);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean      ctk_app_chooser_widget_get_show_default     (CtkAppChooserWidget *self);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_app_chooser_widget_set_show_recommended (CtkAppChooserWidget *self,
                                                            gboolean             setting);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean      ctk_app_chooser_widget_get_show_recommended (CtkAppChooserWidget *self);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_app_chooser_widget_set_show_fallback    (CtkAppChooserWidget *self,
                                                            gboolean             setting);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean      ctk_app_chooser_widget_get_show_fallback    (CtkAppChooserWidget *self);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_app_chooser_widget_set_show_other       (CtkAppChooserWidget *self,
                                                            gboolean             setting);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean      ctk_app_chooser_widget_get_show_other       (CtkAppChooserWidget *self);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_app_chooser_widget_set_show_all         (CtkAppChooserWidget *self,
                                                            gboolean             setting);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean      ctk_app_chooser_widget_get_show_all         (CtkAppChooserWidget *self);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_app_chooser_widget_set_default_text     (CtkAppChooserWidget *self,
                                                            const gchar         *text);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar * ctk_app_chooser_widget_get_default_text     (CtkAppChooserWidget *self);
 
 G_END_DECLS

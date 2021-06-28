@@ -73,7 +73,7 @@ struct _CdkQuartzKeymapClass
   CdkKeymapClass keymap_class;
 };
 
-G_DEFINE_TYPE (CdkQuartzKeymap, cdk_quartz_keymap, GDK_TYPE_KEYMAP)
+G_DEFINE_TYPE (CdkQuartzKeymap, cdk_quartz_keymap, CDK_TYPE_KEYMAP)
 
 CdkKeymap *
 _cdk_quartz_display_get_keymap (CdkDisplay *display)
@@ -94,60 +94,60 @@ const static struct {
   guint keyval;
   unsigned int modmask; /* So we can tell when a mod key is pressed/released */
 } modifier_keys[] = {
-  {  54, GDK_KEY_Meta_R,    GDK_QUARTZ_COMMAND_KEY_MASK },
-  {  55, GDK_KEY_Meta_L,    GDK_QUARTZ_COMMAND_KEY_MASK },
-  {  56, GDK_KEY_Shift_L,   GDK_QUARTZ_SHIFT_KEY_MASK },
-  {  57, GDK_KEY_Caps_Lock, GDK_QUARTZ_ALPHA_SHIFT_KEY_MASK },
-  {  58, GDK_KEY_Alt_L,     GDK_QUARTZ_ALTERNATE_KEY_MASK },
-  {  59, GDK_KEY_Control_L, GDK_QUARTZ_CONTROL_KEY_MASK },
-  {  60, GDK_KEY_Shift_R,   GDK_QUARTZ_SHIFT_KEY_MASK },
-  {  61, GDK_KEY_Alt_R,     GDK_QUARTZ_ALTERNATE_KEY_MASK },
-  {  62, GDK_KEY_Control_R, GDK_QUARTZ_CONTROL_KEY_MASK }
+  {  54, CDK_KEY_Meta_R,    CDK_QUARTZ_COMMAND_KEY_MASK },
+  {  55, CDK_KEY_Meta_L,    CDK_QUARTZ_COMMAND_KEY_MASK },
+  {  56, CDK_KEY_Shift_L,   CDK_QUARTZ_SHIFT_KEY_MASK },
+  {  57, CDK_KEY_Caps_Lock, CDK_QUARTZ_ALPHA_SHIFT_KEY_MASK },
+  {  58, CDK_KEY_Alt_L,     CDK_QUARTZ_ALTERNATE_KEY_MASK },
+  {  59, CDK_KEY_Control_L, CDK_QUARTZ_CONTROL_KEY_MASK },
+  {  60, CDK_KEY_Shift_R,   CDK_QUARTZ_SHIFT_KEY_MASK },
+  {  61, CDK_KEY_Alt_R,     CDK_QUARTZ_ALTERNATE_KEY_MASK },
+  {  62, CDK_KEY_Control_R, CDK_QUARTZ_CONTROL_KEY_MASK }
 };
 
 const static struct {
   guint keycode;
   guint keyval;
 } function_keys[] = {
-  { 122, GDK_KEY_F1 },
-  { 120, GDK_KEY_F2 },
-  {  99, GDK_KEY_F3 },
-  { 118, GDK_KEY_F4 },
-  {  96, GDK_KEY_F5 },
-  {  97, GDK_KEY_F6 },
-  {  98, GDK_KEY_F7 },
-  { 100, GDK_KEY_F8 },
-  { 101, GDK_KEY_F9 },
-  { 109, GDK_KEY_F10 },
-  { 103, GDK_KEY_F11 },
-  { 111, GDK_KEY_F12 },
-  { 105, GDK_KEY_F13 },
-  { 107, GDK_KEY_F14 },
-  { 113, GDK_KEY_F15 },
-  { 106, GDK_KEY_F16 }
+  { 122, CDK_KEY_F1 },
+  { 120, CDK_KEY_F2 },
+  {  99, CDK_KEY_F3 },
+  { 118, CDK_KEY_F4 },
+  {  96, CDK_KEY_F5 },
+  {  97, CDK_KEY_F6 },
+  {  98, CDK_KEY_F7 },
+  { 100, CDK_KEY_F8 },
+  { 101, CDK_KEY_F9 },
+  { 109, CDK_KEY_F10 },
+  { 103, CDK_KEY_F11 },
+  { 111, CDK_KEY_F12 },
+  { 105, CDK_KEY_F13 },
+  { 107, CDK_KEY_F14 },
+  { 113, CDK_KEY_F15 },
+  { 106, CDK_KEY_F16 }
 };
 
 const static struct {
   guint keycode;
   guint normal_keyval, keypad_keyval;
 } known_numeric_keys[] = {
-  { 65, GDK_KEY_period, GDK_KEY_KP_Decimal },
-  { 67, GDK_KEY_asterisk, GDK_KEY_KP_Multiply },
-  { 69, GDK_KEY_plus, GDK_KEY_KP_Add },
-  { 75, GDK_KEY_slash, GDK_KEY_KP_Divide },
-  { 76, GDK_KEY_Return, GDK_KEY_KP_Enter },
-  { 78, GDK_KEY_minus, GDK_KEY_KP_Subtract },
-  { 81, GDK_KEY_equal, GDK_KEY_KP_Equal },
-  { 82, GDK_KEY_0, GDK_KEY_KP_0 },
-  { 83, GDK_KEY_1, GDK_KEY_KP_1 },
-  { 84, GDK_KEY_2, GDK_KEY_KP_2 },
-  { 85, GDK_KEY_3, GDK_KEY_KP_3 },
-  { 86, GDK_KEY_4, GDK_KEY_KP_4 },
-  { 87, GDK_KEY_5, GDK_KEY_KP_5 },
-  { 88, GDK_KEY_6, GDK_KEY_KP_6 },
-  { 89, GDK_KEY_7, GDK_KEY_KP_7 },
-  { 91, GDK_KEY_8, GDK_KEY_KP_8 },
-  { 92, GDK_KEY_9, GDK_KEY_KP_9 }
+  { 65, CDK_KEY_period, CDK_KEY_KP_Decimal },
+  { 67, CDK_KEY_asterisk, CDK_KEY_KP_Multiply },
+  { 69, CDK_KEY_plus, CDK_KEY_KP_Add },
+  { 75, CDK_KEY_slash, CDK_KEY_KP_Divide },
+  { 76, CDK_KEY_Return, CDK_KEY_KP_Enter },
+  { 78, CDK_KEY_minus, CDK_KEY_KP_Subtract },
+  { 81, CDK_KEY_equal, CDK_KEY_KP_Equal },
+  { 82, CDK_KEY_0, CDK_KEY_KP_0 },
+  { 83, CDK_KEY_1, CDK_KEY_KP_1 },
+  { 84, CDK_KEY_2, CDK_KEY_KP_2 },
+  { 85, CDK_KEY_3, CDK_KEY_KP_3 },
+  { 86, CDK_KEY_4, CDK_KEY_KP_4 },
+  { 87, CDK_KEY_5, CDK_KEY_KP_5 },
+  { 88, CDK_KEY_6, CDK_KEY_KP_6 },
+  { 89, CDK_KEY_7, CDK_KEY_KP_7 },
+  { 91, CDK_KEY_8, CDK_KEY_KP_8 },
+  { 92, CDK_KEY_9, CDK_KEY_KP_9 }
 };
 
 /* These values aren't covered by cdk_unicode_to_keyval */
@@ -155,74 +155,74 @@ const static struct {
   gunichar ucs_value;
   guint keyval;
 } special_ucs_table [] = {
-  { 0x0001, GDK_KEY_Home },
-  { 0x0003, GDK_KEY_Return },
-  { 0x0004, GDK_KEY_End },
-  { 0x0008, GDK_KEY_BackSpace },
-  { 0x0009, GDK_KEY_Tab },
-  { 0x000b, GDK_KEY_Page_Up },
-  { 0x000c, GDK_KEY_Page_Down },
-  { 0x000d, GDK_KEY_Return },
-  { 0x001b, GDK_KEY_Escape },
-  { 0x001c, GDK_KEY_Left },
-  { 0x001d, GDK_KEY_Right },
-  { 0x001e, GDK_KEY_Up },
-  { 0x001f, GDK_KEY_Down },
-  { 0x007f, GDK_KEY_Delete },
-  { 0xf027, GDK_KEY_dead_acute },
-  { 0xf060, GDK_KEY_dead_grave },
-  { 0xf300, GDK_KEY_dead_grave },
-  { 0xf0b4, GDK_KEY_dead_acute },
-  { 0xf301, GDK_KEY_dead_acute },
-  { 0xf385, GDK_KEY_dead_acute },
-  { 0xf05e, GDK_KEY_dead_circumflex },
-  { 0xf2c6, GDK_KEY_dead_circumflex },
-  { 0xf302, GDK_KEY_dead_circumflex },
-  { 0xf07e, GDK_KEY_dead_tilde },
-  { 0xf2dc, GDK_KEY_dead_tilde },
-  { 0xf303, GDK_KEY_dead_tilde },
-  { 0xf342, GDK_KEY_dead_perispomeni },
-  { 0xf0af, GDK_KEY_dead_macron },
-  { 0xf304, GDK_KEY_dead_macron },
-  { 0xf2d8, GDK_KEY_dead_breve },
-  { 0xf306, GDK_KEY_dead_breve },
-  { 0xf2d9, GDK_KEY_dead_abovedot },
-  { 0xf307, GDK_KEY_dead_abovedot },
-  { 0xf0a8, GDK_KEY_dead_diaeresis },
-  { 0xf308, GDK_KEY_dead_diaeresis },
-  { 0xf2da, GDK_KEY_dead_abovering },
-  { 0xf30A, GDK_KEY_dead_abovering },
-  { 0xf022, GDK_KEY_dead_doubleacute },
-  { 0xf2dd, GDK_KEY_dead_doubleacute },
-  { 0xf30B, GDK_KEY_dead_doubleacute },
-  { 0xf2c7, GDK_KEY_dead_caron },
-  { 0xf30C, GDK_KEY_dead_caron },
-  { 0xf0be, GDK_KEY_dead_cedilla },
-  { 0xf327, GDK_KEY_dead_cedilla },
-  { 0xf2db, GDK_KEY_dead_ogonek },
-  { 0xf328, GDK_KEY_dead_ogonek },
-  { 0xfe5d, GDK_KEY_dead_iota },
-  { 0xf323, GDK_KEY_dead_belowdot },
-  { 0xf309, GDK_KEY_dead_hook },
-  { 0xf31B, GDK_KEY_dead_horn },
-  { 0xf02d, GDK_KEY_dead_stroke },
-  { 0xf335, GDK_KEY_dead_stroke },
-  { 0xf336, GDK_KEY_dead_stroke },
-  { 0xf313, GDK_KEY_dead_abovecomma },
-  /*  { 0xf313, GDK_KEY_dead_psili }, */
-  { 0xf314, GDK_KEY_dead_abovereversedcomma },
-  /*  { 0xf314, GDK_KEY_dead_dasia }, */
-  { 0xf30F, GDK_KEY_dead_doublegrave },
-  { 0xf325, GDK_KEY_dead_belowring },
-  { 0xf2cd, GDK_KEY_dead_belowmacron },
-  { 0xf331, GDK_KEY_dead_belowmacron },
-  { 0xf32D, GDK_KEY_dead_belowcircumflex },
-  { 0xf330, GDK_KEY_dead_belowtilde },
-  { 0xf32E, GDK_KEY_dead_belowbreve },
-  { 0xf324, GDK_KEY_dead_belowdiaeresis },
-  { 0xf311, GDK_KEY_dead_invertedbreve },
-  { 0xf02c, GDK_KEY_dead_belowcomma },
-  { 0xf326, GDK_KEY_dead_belowcomma }
+  { 0x0001, CDK_KEY_Home },
+  { 0x0003, CDK_KEY_Return },
+  { 0x0004, CDK_KEY_End },
+  { 0x0008, CDK_KEY_BackSpace },
+  { 0x0009, CDK_KEY_Tab },
+  { 0x000b, CDK_KEY_Page_Up },
+  { 0x000c, CDK_KEY_Page_Down },
+  { 0x000d, CDK_KEY_Return },
+  { 0x001b, CDK_KEY_Escape },
+  { 0x001c, CDK_KEY_Left },
+  { 0x001d, CDK_KEY_Right },
+  { 0x001e, CDK_KEY_Up },
+  { 0x001f, CDK_KEY_Down },
+  { 0x007f, CDK_KEY_Delete },
+  { 0xf027, CDK_KEY_dead_acute },
+  { 0xf060, CDK_KEY_dead_grave },
+  { 0xf300, CDK_KEY_dead_grave },
+  { 0xf0b4, CDK_KEY_dead_acute },
+  { 0xf301, CDK_KEY_dead_acute },
+  { 0xf385, CDK_KEY_dead_acute },
+  { 0xf05e, CDK_KEY_dead_circumflex },
+  { 0xf2c6, CDK_KEY_dead_circumflex },
+  { 0xf302, CDK_KEY_dead_circumflex },
+  { 0xf07e, CDK_KEY_dead_tilde },
+  { 0xf2dc, CDK_KEY_dead_tilde },
+  { 0xf303, CDK_KEY_dead_tilde },
+  { 0xf342, CDK_KEY_dead_perispomeni },
+  { 0xf0af, CDK_KEY_dead_macron },
+  { 0xf304, CDK_KEY_dead_macron },
+  { 0xf2d8, CDK_KEY_dead_breve },
+  { 0xf306, CDK_KEY_dead_breve },
+  { 0xf2d9, CDK_KEY_dead_abovedot },
+  { 0xf307, CDK_KEY_dead_abovedot },
+  { 0xf0a8, CDK_KEY_dead_diaeresis },
+  { 0xf308, CDK_KEY_dead_diaeresis },
+  { 0xf2da, CDK_KEY_dead_abovering },
+  { 0xf30A, CDK_KEY_dead_abovering },
+  { 0xf022, CDK_KEY_dead_doubleacute },
+  { 0xf2dd, CDK_KEY_dead_doubleacute },
+  { 0xf30B, CDK_KEY_dead_doubleacute },
+  { 0xf2c7, CDK_KEY_dead_caron },
+  { 0xf30C, CDK_KEY_dead_caron },
+  { 0xf0be, CDK_KEY_dead_cedilla },
+  { 0xf327, CDK_KEY_dead_cedilla },
+  { 0xf2db, CDK_KEY_dead_ogonek },
+  { 0xf328, CDK_KEY_dead_ogonek },
+  { 0xfe5d, CDK_KEY_dead_iota },
+  { 0xf323, CDK_KEY_dead_belowdot },
+  { 0xf309, CDK_KEY_dead_hook },
+  { 0xf31B, CDK_KEY_dead_horn },
+  { 0xf02d, CDK_KEY_dead_stroke },
+  { 0xf335, CDK_KEY_dead_stroke },
+  { 0xf336, CDK_KEY_dead_stroke },
+  { 0xf313, CDK_KEY_dead_abovecomma },
+  /*  { 0xf313, CDK_KEY_dead_psili }, */
+  { 0xf314, CDK_KEY_dead_abovereversedcomma },
+  /*  { 0xf314, CDK_KEY_dead_dasia }, */
+  { 0xf30F, CDK_KEY_dead_doublegrave },
+  { 0xf325, CDK_KEY_dead_belowring },
+  { 0xf2cd, CDK_KEY_dead_belowmacron },
+  { 0xf331, CDK_KEY_dead_belowmacron },
+  { 0xf32D, CDK_KEY_dead_belowcircumflex },
+  { 0xf330, CDK_KEY_dead_belowtilde },
+  { 0xf32E, CDK_KEY_dead_belowbreve },
+  { 0xf324, CDK_KEY_dead_belowdiaeresis },
+  { 0xf311, CDK_KEY_dead_invertedbreve },
+  { 0xf02c, CDK_KEY_dead_belowcomma },
+  { 0xf326, CDK_KEY_dead_belowcomma }
 };
 
 static void
@@ -319,10 +319,10 @@ update_keymap (void)
                     }
 
                   /* Special-case shift-tab since CTK+ expects
-                   * GDK_KEY_ISO_Left_Tab for that.
+                   * CDK_KEY_ISO_Left_Tab for that.
                    */
-                  if (found && p[j] == GDK_KEY_Tab && modifiers[j] == shiftKey)
-                    p[j] = GDK_KEY_ISO_Left_Tab;
+                  if (found && p[j] == CDK_KEY_Tab && modifiers[j] == shiftKey)
+                    p[j] = CDK_KEY_ISO_Left_Tab;
 
                   if (!found)
                     p[j] = cdk_unicode_to_keyval (uc);
@@ -408,10 +408,10 @@ update_keymap (void)
                     }
 
                   /* Special-case shift-tab since CTK+ expects
-                   * GDK_KEY_ISO_Left_Tab for that.
+                   * CDK_KEY_ISO_Left_Tab for that.
                    */
-                  if (found && p[j] == GDK_KEY_Tab && modifiers[j] == shiftKey)
-                    p[j] = GDK_KEY_ISO_Left_Tab;
+                  if (found && p[j] == CDK_KEY_Tab && modifiers[j] == shiftKey)
+                    p[j] = CDK_KEY_ISO_Left_Tab;
 
                   if (!found)
                     p[j] = cdk_unicode_to_keyval (uc);
@@ -611,7 +611,7 @@ translate_keysym (guint           hardware_keycode,
   gint level;
   guint tmp_keyval;
 
-  level = (state & GDK_SHIFT_MASK) ? 1 : 0;
+  level = (state & CDK_SHIFT_MASK) ? 1 : 0;
 
   if (!(GET_KEYVAL (hardware_keycode, group, 0) || GET_KEYVAL (hardware_keycode, group, 1)) &&
       (GET_KEYVAL (hardware_keycode, 0, 0) || GET_KEYVAL (hardware_keycode, 0, 1)))
@@ -623,7 +623,7 @@ translate_keysym (guint           hardware_keycode,
 
   tmp_keyval = GET_KEYVAL (hardware_keycode, group, level);
 
-  if (state & GDK_LOCK_MASK)
+  if (state & CDK_LOCK_MASK)
     {
       guint upper = cdk_keyval_to_upper (tmp_keyval);
       if (upper != tmp_keyval)
@@ -668,7 +668,7 @@ cdk_quartz_keymap_translate_keyboard_state (CdkKeymap       *keymap,
   /* Check if modifiers modify the keyval */
   if (consumed_modifiers)
     {
-      guint tmp_modifiers = (state & GDK_MODIFIER_MASK);
+      guint tmp_modifiers = (state & CDK_MODIFIER_MASK);
 
       for (bit = 1; bit <= tmp_modifiers; bit <<= 1)
         {
@@ -691,16 +691,16 @@ static void
 cdk_quartz_keymap_add_virtual_modifiers (CdkKeymap       *keymap,
                                          CdkModifierType *state)
 {
-  if (*state & GDK_MOD2_MASK)
-    *state |= GDK_META_MASK;
+  if (*state & CDK_MOD2_MASK)
+    *state |= CDK_META_MASK;
 }
 
 static gboolean
 cdk_quartz_keymap_map_virtual_modifiers (CdkKeymap       *keymap,
                                          CdkModifierType *state)
 {
-  if (*state & GDK_META_MASK)
-    *state |= GDK_MOD2_MASK;
+  if (*state & CDK_META_MASK)
+    *state |= CDK_MOD2_MASK;
 
   return TRUE;
 }
@@ -711,28 +711,28 @@ cdk_quartz_keymap_get_modifier_mask (CdkKeymap         *keymap,
 {
   switch (intent)
     {
-    case GDK_MODIFIER_INTENT_PRIMARY_ACCELERATOR:
-      return GDK_MOD2_MASK;
+    case CDK_MODIFIER_INTENT_PRIMARY_ACCELERATOR:
+      return CDK_MOD2_MASK;
 
-    case GDK_MODIFIER_INTENT_CONTEXT_MENU:
-      return GDK_CONTROL_MASK;
+    case CDK_MODIFIER_INTENT_CONTEXT_MENU:
+      return CDK_CONTROL_MASK;
 
-    case GDK_MODIFIER_INTENT_EXTEND_SELECTION:
-      return GDK_SHIFT_MASK;
+    case CDK_MODIFIER_INTENT_EXTEND_SELECTION:
+      return CDK_SHIFT_MASK;
 
-    case GDK_MODIFIER_INTENT_MODIFY_SELECTION:
-      return GDK_MOD2_MASK;
+    case CDK_MODIFIER_INTENT_MODIFY_SELECTION:
+      return CDK_MOD2_MASK;
 
-    case GDK_MODIFIER_INTENT_NO_TEXT_INPUT:
-      return GDK_MOD2_MASK | GDK_CONTROL_MASK;
+    case CDK_MODIFIER_INTENT_NO_TEXT_INPUT:
+      return CDK_MOD2_MASK | CDK_CONTROL_MASK;
 
-    case GDK_MODIFIER_INTENT_SHIFT_GROUP:
-      return GDK_MOD1_MASK;
+    case CDK_MODIFIER_INTENT_SHIFT_GROUP:
+      return CDK_MOD1_MASK;
 
-    case GDK_MODIFIER_INTENT_DEFAULT_MOD_MASK:
-      return (GDK_SHIFT_MASK   | GDK_CONTROL_MASK | GDK_MOD1_MASK    |
-	      GDK_MOD2_MASK    | GDK_SUPER_MASK   | GDK_HYPER_MASK   |
-	      GDK_META_MASK);
+    case CDK_MODIFIER_INTENT_DEFAULT_MOD_MASK:
+      return (CDK_SHIFT_MASK   | CDK_CONTROL_MASK | CDK_MOD1_MASK    |
+	      CDK_MOD2_MASK    | CDK_SUPER_MASK   | CDK_HYPER_MASK   |
+	      CDK_META_MASK);
 
     default:
       g_return_val_if_reached (0);
@@ -740,7 +740,7 @@ cdk_quartz_keymap_get_modifier_mask (CdkKeymap         *keymap,
 }
 
 /* What sort of key event is this? Returns one of
- * GDK_KEY_PRESS, GDK_KEY_RELEASE, GDK_NOTHING (should be ignored)
+ * CDK_KEY_PRESS, CDK_KEY_RELEASE, CDK_NOTHING (should be ignored)
  */
 CdkEventType
 _cdk_quartz_keys_event_type (NSEvent *event)
@@ -751,11 +751,11 @@ _cdk_quartz_keys_event_type (NSEvent *event)
   
   switch ([event type])
     {
-    case GDK_QUARTZ_KEY_DOWN:
-      return GDK_KEY_PRESS;
-    case GDK_QUARTZ_KEY_UP:
-      return GDK_KEY_RELEASE;
-    case GDK_QUARTZ_FLAGS_CHANGED:
+    case CDK_QUARTZ_KEY_DOWN:
+      return CDK_KEY_PRESS;
+    case CDK_QUARTZ_KEY_UP:
+      return CDK_KEY_RELEASE;
+    case CDK_QUARTZ_FLAGS_CHANGED:
       break;
     default:
       g_assert_not_reached ();
@@ -771,15 +771,15 @@ _cdk_quartz_keys_event_type (NSEvent *event)
       if (modifier_keys[i].keycode == keycode)
 	{
 	  if (flags & modifier_keys[i].modmask)
-	    return GDK_KEY_PRESS;
+	    return CDK_KEY_PRESS;
 	  else
-	    return GDK_KEY_RELEASE;
+	    return CDK_KEY_RELEASE;
 	}
     }
   
   /* Some keypresses (eg: Expose' activations) seem to trigger flags-changed
    * events for no good reason. Ignore them! */
-  return GDK_NOTHING;
+  return CDK_NOTHING;
 }
 
 gboolean
@@ -836,7 +836,7 @@ static void
 cdk_quartz_keymap_class_init (CdkQuartzKeymapClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  CdkKeymapClass *keymap_class = GDK_KEYMAP_CLASS (klass);
+  CdkKeymapClass *keymap_class = CDK_KEYMAP_CLASS (klass);
 
   object_class->finalize = cdk_quartz_keymap_finalize;
 

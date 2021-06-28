@@ -7,21 +7,21 @@ libcdkwin32includedir = $(includedir)/ctk-3.0/cdk/win32
 AM_CPPFLAGS = \
 	-DG_LOG_DOMAIN=\"Cdk\"		\
 	-DG_LOG_USE_STRUCTURED=1	\
-	-DINSIDE_GDK_WIN32		\
+	-DINSIDE_CDK_WIN32		\
 	-I$(top_srcdir)			\
 	-I$(top_srcdir)/cdk		\
 	-I$(top_builddir)/cdk		\
-	$(GDK_HIDDEN_VISIBILITY_CFLAGS) \
+	$(CDK_HIDDEN_VISIBILITY_CFLAGS) \
 	$(CTK_DEBUG_FLAGS) 		\
-	$(GDK_DEP_CFLAGS)		\
-	$(GDK_WIN32_EXTRA_CFLAGS)	\
-	-DGDK_COMPILATION
+	$(CDK_DEP_CFLAGS)		\
+	$(CDK_WIN32_EXTRA_CFLAGS)	\
+	-DCDK_COMPILATION
 
 if WIN32_GLES
-AM_CPPFLAGS += "-DGDK_WIN32_ENABLE_EGL=1"
+AM_CPPFLAGS += "-DCDK_WIN32_ENABLE_EGL=1"
 endif #WIN32_GLES
 
-LDADDS = $(GDK_DEP_LIBS)
+LDADDS = $(CDK_DEP_LIBS)
 
 noinst_LTLIBRARIES = libcdk-win32.la
 

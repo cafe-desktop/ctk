@@ -84,7 +84,7 @@ reftest_uninhibit_snapshot (void)
 static void
 check_for_draw (CdkEvent *event, gpointer data)
 {
-  if (event->type == GDK_EXPOSE)
+  if (event->type == CDK_EXPOSE)
     {
       reftest_uninhibit_snapshot ();
       cdk_event_handler_set ((CdkEventFunc) ctk_main_do_event, NULL, NULL);
@@ -129,8 +129,8 @@ snapshot_widget (CtkWidget *widget, SnapshotMode mode)
     case SNAPSHOT_WINDOW:
       {
         CdkWindow *window = ctk_widget_get_window (widget);
-        if (cdk_window_get_window_type (window) == GDK_WINDOW_TOPLEVEL ||
-            cdk_window_get_window_type (window) == GDK_WINDOW_FOREIGN)
+        if (cdk_window_get_window_type (window) == CDK_WINDOW_TOPLEVEL ||
+            cdk_window_get_window_type (window) == CDK_WINDOW_FOREIGN)
           {
             /* give the WM/server some time to sync. They need it.
              * Also, do use popups instead of toplevels in your tests

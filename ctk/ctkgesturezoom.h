@@ -39,13 +39,13 @@ G_BEGIN_DECLS
 typedef struct _CtkGestureZoom CtkGestureZoom;
 typedef struct _CtkGestureZoomClass CtkGestureZoomClass;
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 GType        ctk_gesture_zoom_get_type        (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 CtkGesture * ctk_gesture_zoom_new             (CtkWidget      *widget);
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 gdouble      ctk_gesture_zoom_get_scale_delta (CtkGestureZoom *gesture);
 
 G_END_DECLS

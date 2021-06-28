@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -22,20 +22,20 @@
  * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
-#ifndef __GDK_WINDOW_IMPL_H__
-#define __GDK_WINDOW_IMPL_H__
+#ifndef __CDK_WINDOW_IMPL_H__
+#define __CDK_WINDOW_IMPL_H__
 
 #include <cdk/cdkwindow.h>
 #include <cdk/cdkproperty.h>
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_WINDOW_IMPL           (cdk_window_impl_get_type ())
-#define GDK_WINDOW_IMPL(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WINDOW_IMPL, CdkWindowImpl))
-#define GDK_WINDOW_IMPL_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WINDOW_IMPL, CdkWindowImplClass))
-#define GDK_IS_WINDOW_IMPL(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WINDOW_IMPL))
-#define GDK_IS_WINDOW_IMPL_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_WINDOW_IMPL))
-#define GDK_WINDOW_IMPL_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_WINDOW_IMPL, CdkWindowImplClass))
+#define CDK_TYPE_WINDOW_IMPL           (cdk_window_impl_get_type ())
+#define CDK_WINDOW_IMPL(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), CDK_TYPE_WINDOW_IMPL, CdkWindowImpl))
+#define CDK_WINDOW_IMPL_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CDK_TYPE_WINDOW_IMPL, CdkWindowImplClass))
+#define CDK_IS_WINDOW_IMPL(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), CDK_TYPE_WINDOW_IMPL))
+#define CDK_IS_WINDOW_IMPL_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CDK_TYPE_WINDOW_IMPL))
+#define CDK_WINDOW_IMPL_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CDK_TYPE_WINDOW_IMPL, CdkWindowImplClass))
 
 typedef struct _CdkWindowImpl       CdkWindowImpl;
 typedef struct _CdkWindowImplClass  CdkWindowImplClass;
@@ -322,4 +322,4 @@ GType cdk_window_impl_get_type (void) G_GNUC_CONST;
 
 G_END_DECLS
 
-#endif /* __GDK_WINDOW_IMPL_H__ */
+#endif /* __CDK_WINDOW_IMPL_H__ */

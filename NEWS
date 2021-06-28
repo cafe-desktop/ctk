@@ -159,7 +159,7 @@ Overview of Changes in CTK+ 3.24.21
 
 * Add a ctk-cursor-aspect-ratio setting
 
-* GDK:
+* CDK:
  - Improve frame clock smoothness
  - Fix frame clock monotonicity
 
@@ -727,7 +727,7 @@ Overview of Changes in CTK+ 3.24.2
  widget-factory: Move app menu contents to primary menu
  Make dashed border-style work correctly
  ctkstack: fix null pointer dereference
- GDK W32: Support switching input modules at runtime
+ CDK W32: Support switching input modules at runtime
  Tooltip: Fix the used cursor size if 0 in Settings
  quartz: Fix crash when realizing CtkOffscreenWindow
  win32 dnd: Fix setting icon on drag-begin
@@ -957,7 +957,7 @@ Overview of Changes in CTK+ 3.23.0
  786524 ocument CTK_OVERLAY_SCROLLING environment variable
  787867 OSX macports pango text size appears to vary between version 1.40...
  789215 CtkScrolledWindow and CtkIconView atk objects can cause a segfaul...
- 791542 GDK 3 Selections documentation makes references to X
+ 791542 CDK 3 Selections documentation makes references to X
  791802 Fix direction value moves on scroll/keypress over RTL/inverted ra...
 
 * Translation updates:
@@ -1090,9 +1090,9 @@ Overview of Changes in CTK+ 3.22.29
  774248 Desktop-wide text scaling factor is ignored by ctk_widget_override_fon...
  779009 Missing property-change::accessible-description events when the toolti...
  786123 CtkPlacesSidebar: Add support for libcloudproviders
- 786509 GDK W32: OLE2 DnD is completely broken
+ 786509 CDK W32: OLE2 DnD is completely broken
  786528 Please make the output deterministic
- 787089 win32: CtkWindow of type CTK_WINDOW_POPUP/GDK_WINDOW_TEMP leaks memory...
+ 787089 win32: CtkWindow of type CTK_WINDOW_POPUP/CDK_WINDOW_TEMP leaks memory...
  787128 Re-add FUSE network mounts in local-only mode
  789054 Firefox crashes @cdk_window_begin_move_drag() on WM without _NET_WM_MO...
  789160 Add Windows compatible emoji shortcuts
@@ -1100,11 +1100,11 @@ Overview of Changes in CTK+ 3.22.29
  790029 CtkTextView: Support ctk 3.22.19's emoji chooser
  790031 CtkClipboardClearFunc is not being called
  790033 Add support for third stylus button on Wacom's new Pro Pen 3D
- 790201 Settings in ~/.config/ctk-3.0/settings.ini ignored with GDK_BACKEND=wa...
+ 790201 Settings in ~/.config/ctk-3.0/settings.ini ignored with CDK_BACKEND=wa...
  790270 avoid copy of CSS data from resources
  790862 Addition of insert_emoji breaks ABI on ctk-3-22
  790963 Thread safety issue in ctk_application_impl_dbus_startup
- 791039 Emit enter+motion after GDK_CROSSING_TOUCH_END leave
+ 791039 Emit enter+motion after CDK_CROSSING_TOUCH_END leave
  791062 Fix mapping window with complete xdg-foreign state
  791234 autocleanups: allow g_autoptr() usage with CtkTreePath
  791281 Backport size allocation optimization from master to 3.22
@@ -1219,7 +1219,7 @@ Overview of Changes in CTK+ 3.22.25
  789141 Segmentation fault when adding Google online account
  789149 CtkGestureZoom leaks the list of sequences while calculating the dis...
  789327 appchooserwidget: Don't limit application list unconditionally
- 789357 Regression in 3.22.23: GDK_WINDOW_STATE_TILED flag is never set
+ 789357 Regression in 3.22.23: CDK_WINDOW_STATE_TILED flag is never set
 
 * Translation updates:
  Brazilian Portuguese
@@ -1677,7 +1677,7 @@ Overview of Changes in CTK+ 3.22.8
  773686 Software when launched shows in dash with wrong icon, name and menu
  775732 mir: clipboard support missing
  775864 getting-started: typo tie->the
- 777527 GDK W32: Invisible drop-down menus in CTK apps when working via RDP
+ 777527 CDK W32: Invisible drop-down menus in CTK apps when working via RDP
  777547 Notebook arrow icon wrong color after closing final tab
 
 * Translation updates:
@@ -1695,7 +1695,7 @@ Overview of Changes in CTK+ 3.22.7
  775846 cdk/wayland: Add support for the ctk-enable-primary-paste gsetting
  776031 W32: Winkey+down minimizes maximized window instead of restoring it
  776225 [wayland] dropdown placed somewhere in the screen
- 776485 GDK W32: Impossible to restore maximized window via system menu
+ 776485 CDK W32: Impossible to restore maximized window via system menu
  776807 CtkInspector doesn't show up when Ctk is initialized through option group
  777031 win32 HiDPI assert
  777176 [wayland] gedit killed by protocol error "Invalid anchor rectangle size"
@@ -1765,7 +1765,7 @@ Overview of Changes in CTK+ 3.22.4
 
 * Bug fixes:
  767713 Fullscreen in wayland is buggy
- 768081 Enable HiDPI support for GDK-Win32
+ 768081 Enable HiDPI support for CDK-Win32
  768531 wayland: Startup notification doesn't work on some apps (eg. gnome-terminal)...
  772075 CTK+ uses a lot more CPU under Wayland than under X11
  772202 Handling of scaled monitors is broken
@@ -1798,7 +1798,7 @@ Overview of Changes in CTK+ 3.22.3
  - Hi-DPI is now supported
 
 * Bugs fixed:
- 768081 Enable HiDPI support for GDK-Win32
+ 768081 Enable HiDPI support for CDK-Win32
  773274 [Wayland] Crash under cdk_wayland_window_attach_image()
  773474 Color chooser dialog opened with show-editor=TRUE has black header bar
  773479 Typo in CtkShortcutType developer docs
@@ -1835,7 +1835,7 @@ Overview of Changes in CTK+ 3.22.2
  773029 style-set signal problem
  773082 overlay: Document availability of properties
  773113 tests: fix clipboard test by loading correct icon
- 773180 Don't second-guess whether our GDK GL context is GLES
+ 773180 Don't second-guess whether our CDK GL context is GLES
  773246 Typo in css color definitions documentation 
 
 * Translation updates:
@@ -1994,12 +1994,12 @@ Overview of Changes in CTK+ 3.21.5
  569581 Using the US-Intl keyboard layout causes unexpected character comb...
  712760 Clang static analysis fixes
  755947 wayland: gnome-terminal does not fill entire area when tiled
- 756579 CTK should let GDK position menus
+ 756579 CTK should let CDK position menus
  762260 Check boxes and radio buttons animate when inside a popover that i...
  764413 Wayland: not fullscreenable ctk+ apps can be fullscreened
  768017 Wayland: menus opened from access keys (mnemonic menu items) hide ...
- 768081 Enable HiDPI support for GDK-Win32
- 768138 Update the GDK-Mir backend to fix a few problems
+ 768081 Enable HiDPI support for CDK-Win32
+ 768138 Update the CDK-Mir backend to fix a few problems
  768722 Keyboard shortcuts for russian characters doesn't work
  768902 Font too small when using ctk_widget_override_font()
  768930 reftests: override GSETTINGS_SCHEMA_DIR when running tests
@@ -2113,7 +2113,7 @@ Overview of Changes in CTK+ 3.21.3
 * The CtkSizeGroup::ignore-hidden property has been documented as
   not working.
 
-* GDK_SOURCE_TRACKPOINT has been added to the CdkInputSource enumeration
+* CDK_SOURCE_TRACKPOINT has been added to the CdkInputSource enumeration
   to allow special-casing this kind of input device
 
 * Wayland:
@@ -2180,7 +2180,7 @@ Overview of Changes in CTK+ 3.21.2
 * CTK+ is now using upstream gettext instead of the GLib wrappers.
   This adds a requirement for the fairly recent gettext 0.19.7 release
 
-* GDK has a new CdkMonitor api that offers richer information about
+* CDK has a new CdkMonitor api that offers richer information about
   connected outputs
 
 * Bugs fixed:
@@ -2199,7 +2199,7 @@ Overview of Changes in CTK+ 3.21.2
  765790 W32: configure does not tell which cairo version to use
  765793 configure script failure (cairo_win32_surface_create_with_format i...
  765858 file chooser generates a warning about a network path
- 765907 [Wayland] Reversed scrolling GDK_SCROLL_UP/GDK_SCROLL_DOWN in Wayl...
+ 765907 [Wayland] Reversed scrolling CDK_SCROLL_UP/CDK_SCROLL_DOWN in Wayl...
  765922 CtkScale labels extend past edge of widget and overlap neighboring...
  765924 Improve external drives detection
  765939 [Wayland] very slow scrolling in CtkMenu using the touchpad
@@ -2282,15 +2282,15 @@ Overview of Changes in CTK+ 3.21.1
  743746 Add GLES 2.0 (and/or 3.0) profile
  749405 CtkMenuSectionBox doesn't remove submenus when parent item is r...
  761651 glade previewer is resizing windows until it crashes gnome-shell
- 763013 GDK W32: AeroSnap doesn't work on CSD windows
+ 763013 CDK W32: AeroSnap doesn't work on CSD windows
  763600 trashmonitor: change trash monitoring process
  763627 menu-traditional puts popover beneath the text editor widget
  763768 Wrong margin used for the sidebar separator
- 763783 GDK W32: Erase hidden layered windows before showing them
+ 763783 CDK W32: Erase hidden layered windows before showing them
  763850 Add License CTK_LICENSE_AGPL_3_0 to CtkLicense enum
- 763851 GDK W32: show_window_menu() is not implemented
- 763907 GDK W32: Clipboard handling is not tight enough
- 763913 GDK W32: Not all relevant debug info is printed for events
+ 763851 CDK W32: show_window_menu() is not implemented
+ 763907 CDK W32: Clipboard handling is not tight enough
+ 763913 CDK W32: Not all relevant debug info is printed for events
  764022 (totem:4131): Ctk-WARNING **: Negative content width -200 (alloc...
  764060 opening a second nautilus while a delete operation is in progres...
  764170 [HighContrastInverse] “suqqested-action” is white on lightgrey
@@ -2310,17 +2310,17 @@ Overview of Changes in CTK+ 3.21.1
  764710 CtkListBox row CSS nodes do not reflect visual order
  764712 Build failure for Quartz backend in master branch due to ctkdnd-...
  764835 broadway: fix documentation, correct display port details
- 764845 GDK: cdk_window_reparent creates circular reference in 'children...
+ 764845 CDK: cdk_window_reparent creates circular reference in 'children...
  764846 Code improvements in CtkApplication
  764863 CtkTrayIcon: fix uninitialised variable
  764879 Extract CtkApplicationAccels private class from CtkApplication
  764925 Fix trivial typo in CtkWidget
  764975 CTKShortcutWindow runtime changes to accelerator not reflected i...
- 764996 GDK: Incorrect window size when creating window with position sp...
+ 764996 CDK: Incorrect window size when creating window with position sp...
  765038 Adwaita & decorations
  765065 Wayland: Hover state stuck after mouse leaving the toplevel
  765066 CtkColorChooser looks like it can select multiple colors
- 765100 GDK: cdk_window_reparent does not position/size a reparented win...
+ 765100 CDK: cdk_window_reparent does not position/size a reparented win...
  765118 W32: ctk-builder-tool botches output encoding
  765122 Duplicate/missing string in ctkprintbackendcups
  765195 Visual Studio builds: Update how introspection is done
@@ -2494,20 +2494,20 @@ Overview of Changes in CTK+ 3.19.12
  762811 Adwaita: nonsquare image buttons
  762820 Remove "core_pointer" from the CdkDisplay struct
  762891 cdk: remove the display->list_devices vfunc
- 762902 GDK W32: Newly-opened windows (such as popups) have unthemed cursor
+ 762902 CDK W32: Newly-opened windows (such as popups) have unthemed cursor
  762907 gnome-shell crashes after undocking
  762945 Wrong allignemet in some places
  762974 CtkWindow: ctk_window_set_default_size() does not work with fixed si...
  762996 Revealer doesn't reveal the entire width of a ListBox that has Revea...
  763001 implement beeping
- 763012 GDK W32: No cdk_win32_screen_get_monitor_workarea()
+ 763012 CDK W32: No cdk_win32_screen_get_monitor_workarea()
  763017 tooltip text is not shown
  763023 Segfault in init_randr15()
- 763080 Layered Window crashes GDKGLWin32
+ 763080 Layered Window crashes CDKGLWin32
  763103 ctk-launch: add hack to close up dbus-daemon race
  763216 CtkTextView's top-margin/bottom-margin don't work with non-scrolling...
- 763285 cdkwindow/Win32: Make update_style_bits() available across the GDK-W...
- 763287 GDK-Win32: GL area does not redraw on resize
+ 763285 cdkwindow/Win32: Make update_style_bits() available across the CDK-W...
+ 763287 CDK-Win32: GL area does not redraw on resize
  763298 wayland: connection flooded when dragging
  763351 [wayland] high cpu usage on open popover
  763380 colorscale input popup difficult to use with a pointer
@@ -2563,9 +2563,9 @@ Overview of Changes in CTK+ 3.19.11
  762561 Implement primary selection protocol
  762593 Solid separator in gnome-tweak-tool header bar
  762614 Commit 51af704 gadget: Be careful in geometry calculations breaks v...
- 762629 GDK W32: Wrong MINMAXINFO calculation
+ 762629 CDK W32: Wrong MINMAXINFO calculation
  762677 ctkplacessidebar: avoid irresponsible UI while trashing
- 762713 [Wayland] GDK doesn't remember unmaximized or unfullscreen size
+ 762713 [Wayland] CDK doesn't remember unmaximized or unfullscreen size
  762720 Moving Epiphany tabs with keyboard shortcuts visually broken
  762755 Epiphany, Eye of GNOME crash when run in cdkwindow-wayland.c buffer...
  762820 Remove "core_pointer" from the CdkDisplay struct
@@ -2590,7 +2590,7 @@ Overview of Changes in CTK+ 3.19.10
 ===================================
 
 * CTK+ will now list included backends when seeing the
-  environment variable GDK_BACKEND=help
+  environment variable CDK_BACKEND=help
 
 * Themes
  - Windows theme improvements
@@ -2784,7 +2784,7 @@ Overview of Changes in CTK+ 3.19.7
   with many children, like large list boxes or flow boxes).
 
 * Drag-and-Drop has been rearchitected to move the input handling into
-  GDK, where different backends can handle it according to their needs
+  CDK, where different backends can handle it according to their needs
   and capabilities. The new, 'managed' DND is currently implemented
   for X11 and Wayland.
 
@@ -2797,7 +2797,7 @@ Overview of Changes in CTK+ 3.19.7
 * Bugs fixed:
  722727 Widget state CSS pseudoclasses should work with adjacent selectors
  722937 problem rendering asymmetric borders with dotted style
- 748327 W32: GDK can be hypothetically stuck in time
+ 748327 W32: CDK can be hypothetically stuck in time
  756729 No kinetic scrolling on Wayland
  757503 Selected text is white on white (invisible) - Evo / CTK+ 3.19.1
  759785 CdkSeat: Suspected errors in documentation
@@ -2822,7 +2822,7 @@ Overview of Changes in CTK+ 3.19.7
  760748 CtkTextView should allow hooks for reseting blink time
  760754 gedit crashes detaching a tab
  756729 No kinetic scrolling on Wayland
- 760370 GDK-ify drag and drop
+ 760370 CDK-ify drag and drop
 
 * Translation updates:
  Brazilian Portuguese
@@ -2877,7 +2877,7 @@ Overview of Changes in CTK+ 3.19.6
  759668 Drawing failures with CTK+ master
  759670 CtkPaned doesn't react to mouse dragging in some cases
  759705 Sidebar broken in GNOME Disks
- 759738 wayland: use a subsurface for GDK_WINDOW_TEMP if attached to ...
+ 759738 wayland: use a subsurface for CDK_WINDOW_TEMP if attached to ...
  759764 ctkinspector crashes app when selecting 'cancel' on initial p...
  759768 ctkinspector crashes app on termination, when selecting 'canc...
  759771 CdkSeat: Missing G_BEGIN_DECLS and G_END_DECLS
@@ -2890,7 +2890,7 @@ Overview of Changes in CTK+ 3.19.6
  760141 New cdk_cursor_new_from_name() fallback breaks behavior expec...
  760148 Duplication of word in document
  760169 CtkColorButton sensitive and insensitive appearances are bare...
- 760188 GDK's X11 backend leaks SyncCounters
+ 760188 CDK's X11 backend leaks SyncCounters
  760202 ctkbuilder: Install gettext ITS files
  760213 wayland: cdk_seat_grab() set cursor not resilient
  760238 Improve function documentation for ctk_css_provider_load_from...
@@ -2931,8 +2931,8 @@ Overview of Changes in CTK+ 3.19.5
 * Wayland:
  - DND with icon widgets is working properly
 
-* GDK:
- - More of the DND implementation is now handled in GDK: creating the
+* CDK:
+ - More of the DND implementation is now handled in CDK: creating the
    drag window, moving the window along with the cursor, the drag
    cancel animation.
  - CdkSeat is a new API that supersedes grabs on individual devices and
@@ -2986,7 +2986,7 @@ Overview of Changes in CTK+ 3.19.4
  - Make drag highlighting themable
  - Stop using RGBA cursors for drag icons (this only ever worked on X11)
  - Change the handling of drag windows to work on Wayland. The drag window
-   implementation has been moved to GDK, with the new function
+   implementation has been moved to CDK, with the new function
    cdk_drag_context_get_drag_window
  - Non-toplevel widgets can be used as drag widgets
 
@@ -2999,8 +2999,8 @@ Overview of Changes in CTK+ 3.19.4
  757147 cdk_pixbuf_get_from_window() doesn't honor device scale
  757282 "window: Ignore geometry widget" commit breaks gnome-terminal win...
  757474 Add option for automatic CtkPopover placement
- 758483 GDK W32: Incorrectly uses SetWindowLong() to set/unset WS_EX_TOPM...
- 758484 GDK W32: Some calls to W32 routines are rather unclear
+ 758483 CDK W32: Incorrectly uses SetWindowLong() to set/unset WS_EX_TOPM...
+ 758484 CDK W32: Some calls to W32 routines are rather unclear
  758563 play bar gets weird position in fullscreen under Wayland
  758609 Regression with firefox dropdown menu position
  758634 wayland: Use wayland-protocols for shared protocols
@@ -3374,7 +3374,7 @@ Overview of Changes in CTK+ 3.17.8
  345345 PrintOperation::paginate is not emitted for class handler
  736125 The default ctk accelerator mod mask does not include all  ...
  752615 listbox: Model items changed doesn't take sorting into account
- 753185 cdk_device_get_source: assertion 'GDK_IS_DEVICE (device)' f...
+ 753185 cdk_device_get_source: assertion 'CDK_IS_DEVICE (device)' f...
  753357 [HighContrast] Days of a different month in CtkCalendar sho...
  753495 Kinetic scrolling events still reach the CtkScrolledWindow
  753644 Switching from Multipress input method to None immediately ...
@@ -3434,7 +3434,7 @@ Overview of Changes in CTK+ 3.17.7
 * Theme and CSS:
  - HighContrast theme improvements
 
-* GDK:
+* CDK:
  - Add support for touchpad gesture events
 
 * OS X:
@@ -3779,7 +3779,7 @@ Overview of Changes in CTK+ 3.17.2
  - New page setup demo
  - Builder demo ported away from CtkUIManager
 
-* GDK:
+* CDK:
  - Make css cursor names work across backends
 
 * Windows:
@@ -3807,7 +3807,7 @@ Overview of Changes in CTK+ 3.17.2
  693738 ctk print dialog shows "Getting printer information failed"...
  719683 Escaping issue "Failed to set text from markup due to error...
  719819 Wayland backend depends on ordering of globals in the displ...
- 727316 W32: GDK does not support per-pixel alpha-blended windows
+ 727316 W32: CDK does not support per-pixel alpha-blended windows
  744086 configure.ac: Pull gio-unix dependency for all unix builds
  746916 File chooser search does not work over remote network shares
  747150 hint for vertical writing mode to input method
@@ -3892,7 +3892,7 @@ Overview of Changes in CTK+ 3.17.1
  723394 const parameter to CtkPopover ctk_popover_set_pointing_to
  734741 CtkScale's fill-level starts at the very left if show-fill-level is set
  737175 most horizontal sliders are inverted when scrolled with mouse wheel
- 741849 Add CdkScreen->is_composited() for GDK-Win32
+ 741849 Add CdkScreen->is_composited() for CDK-Win32
  745721 wayland: Add support for ctk_window_set_modal
  746149 “Close tab” buttons change the tab high on hover when using HighContrast
  746188 [HighContrast] insensitive ModelButtons are not drawn insensitive
@@ -4346,10 +4346,10 @@ Overview of Changes in CTK+ 3.15.4
  705582 ctk_recent_manager_init fails to check settings==NULL
  710612 [PATCH] Allow to extend selection with mouse scrollwheel
  738338 quartz: NSWindow NULL check in get_scale_factor
- 738891 Use GDK_WINDOW_SUBSURFACE for popovers
+ 738891 Use CDK_WINDOW_SUBSURFACE for popovers
  739038 ctk_recent_manager_set_filename: assertion failed: (priv->filename...
  740758 Add getters for device vendor/product IDs
- 740795 GDK: Add OpenGL Support for Windows
+ 740795 CDK: Add OpenGL Support for Windows
  741259 ctkmodelmenuitem: force icon scaling
  741569 Minor theme bug: square progress bars
  741610 Finish up support for macos menubar
@@ -4513,7 +4513,7 @@ Overview of Changes in CTK+ 3.15.2
  - Rework the way GL rendering is done in CtkGLArea
  - Support input events in CtkGLArea
  - Use shaders
- - The GDK_GL environment variable can be used for debugging
+ - The CDK_GL environment variable can be used for debugging
 
 * Inspector:
  - Make picking widgets work in Wayland
@@ -4558,7 +4558,7 @@ Overview of Changes in CTK+ 3.15.2
  738887 "Cannot commit NULL buffer to xdg_surface" error too pervasive
  739474 radiobutton: don't consider hidden buttons in the group for focus
  739750 Fix handling of windows with sizes that aren't a multiple of...
- 739781 Make global GDK libctk_only functions more private
+ 739781 Make global CDK libctk_only functions more private
  739885 ctk3-3.14.5 - fail to link - undefined reference to `CTK_IS_PLUG'
  739977 Don't wait for ENTER to initiate search
  740011 overscroll overlay is opaque in unfocused mode sidebars
@@ -4608,7 +4608,7 @@ Translation updates:
 Overview of Changes in CTK+ 3.15.0
 ==================================
 
-* GDK supports rendering windows using OpenGL; currently
+* CDK supports rendering windows using OpenGL; currently
   this is implemented for X11 and Wayland using libepoxy
 
 * CtkGLArea: A new widget for rendering with OpenGL
@@ -5000,7 +5000,7 @@ Overview of Changes in CTK+ 3.13.5 to 3.13.6
  705054	Embed manifest into ctk-update-icon-cache.exe
  715176	object:state-changed:focused event missing when a text widget regains...
  721367	Add ctk_application_get_actions_for_accel()
- 726224	W32: GDK tries to set GWLP_HWNDPARENT to NULL when it's NULL already
+ 726224	W32: CDK tries to set GWLP_HWNDPARENT to NULL when it's NULL already
  729140	popovers can't always track the widget
  729636	Only show title button separator when there is something to separate...
  729809	listbox: Add missing ::row-selected emissions
@@ -5012,7 +5012,7 @@ Overview of Changes in CTK+ 3.13.5 to 3.13.6
  733416	image: support scale factor when loading from GResource
  733610 g_object_unref exceptions using CtkNotebook
  733671 W32: Non-CSDed windows have unthemed titlebar
- 733679 GDK does not handle WM_NCHITTEST
+ 733679 CDK does not handle WM_NCHITTEST
  733766 W32: gedit crashes when closing a print dialogue
  733767 CtkPrintOperation does not keep itself alive through callbacks
  733768 W32: Widgets can't be embedded into foreign windows
@@ -5177,7 +5177,7 @@ Overview of Changes in CTK+ 3.13.3 to 3.13.4
  732970 Unselectable CtkLabels with links get the wrong initial cursor
  732991 ctk_drag_anim_timeout change the user widget and never restore it
  733027 CtkStack doesn't render a background
- 733076 Handle resolution changes in the GDK backend code
+ 733076 Handle resolution changes in the CDK backend code
  733092 inspector: Do not accidentally change tab in the object notebook
  733099 Regression: ctk_window_set_title() no longer sets header bar title
  733112 CtkListBox: Add a ::activatable property for rows 
@@ -5397,7 +5397,7 @@ Overview of Changes in CTK+ 3.12.0 to 3.13.1
 * Bugs fixed:
  495105 Open recent file keyboard shortcuts do not work correctly
  654417 Add <binding> element to CtkBuilder syntax
- 686170 cdk/win32: VK_SNAPSHOT maps to GDK_Print
+ 686170 cdk/win32: VK_SNAPSHOT maps to CDK_Print
  712752 CtkClipboard: add _get_default and _get_primary
  722058 CtkTreeModelFilter bug
  722211 improve the file chooser design
@@ -5529,7 +5529,7 @@ Overview of Changes in CTK+ 3.11.8 to 3.11.9
  726135 documentation: clarify ctk_icon_theme_add_builtin_icon() usage
  726136 use && instead of 'and' in deprecation warnings
  726149 broadway: remove unused libcrypt
- 726187 Use GDK's current window tracking when synthesizing events in CTK+
+ 726187 Use CDK's current window tracking when synthesizing events in CTK+
  726209	CtkTreeView: stop ignoring crossing events from grabs
  726492 Possible crash when setting titlebar 
 
@@ -5960,7 +5960,7 @@ Overview of Changes in CTK+ 3.11.0 to 3.11.1
  710533 CtkBuilder can no longer construct CtkEntryCompletions ...
  710909 Buttons are cut in some windows
  710987 g_return_if_fail used even if function requires return value
- 711110 GDK_HINT_MAX_SIZE ignored on Win32
+ 711110 CDK_HINT_MAX_SIZE ignored on Win32
  711158 ctktextattributes: Use an anonymous union instead of arch-...
  711255 CtkListBox: Expand the placeholder
  711324 Some more patches to make more containers honor background...
@@ -6099,7 +6099,7 @@ Overview of Changes in CTK+ 3.9.14 to 3.9.16
 * Bug fixes:
  339539 Ctrl-C, Ctrl-V changes tags
  513812 Optimize cdk_cairo_set_source_pixbuf() alpha multiplication loop
- 696756 cdk_device_get_source : assertion `GDK_IS_DEVICE(source)` failed
+ 696756 cdk_device_get_source : assertion `CDK_IS_DEVICE(source)` failed
  702034 color_value_parse() memory leak
  702423 CellRendererPixbuf regression: Stock icons with rtl/ltr varia...
  706269 Clarify CtkBox, CtkHBox, and CtkVBox documentation
@@ -6235,7 +6235,7 @@ Overview of Changes in CTK+ 3.9.10 to 3.9.12
  704173 Don't use UNIX-specific printer objects on non-UNIX
  704334 add revealer to infobar
  704703 fine adjustments are difficult with scrollbars
- 705068 Update the GDK and CTK on Win32 to not use deprecated APIs
+ 705068 Update the CDK and CTK on Win32 to not use deprecated APIs
  705181 Annoying beep on arrow keys when using IME on MacOS
  705182 Reset Cocoa IME state when immodule is reset
  705215 Minimum required cairo version should be 1.12 since 83c5e354b
@@ -6243,7 +6243,7 @@ Overview of Changes in CTK+ 3.9.10 to 3.9.12
  705372 ctk_image_menu_item_new_from_stock deprecation warning point...
  705443 Fix image effects
  705498 build and enable wayland backend by default
- 705524 searchbar: ignore GDK_KEY_Menu in handle_event()
+ 705524 searchbar: ignore CDK_KEY_Menu in handle_event()
  705529 CtkTextView: improve documentation
  705558 [listbox] convenience methods to prepend and insert at index
  705601 headerbar: some improvements
@@ -6373,7 +6373,7 @@ Overview of Changes in CTK+ 3.9.6 to 3.9.8
  696498 can't set download folder
  701119 Error messages when CtkAboutDialog shows license info
  702332 File Browser: Filter submenu is missing from context menu
- 702831 Shaped GDK windows do not work
+ 702831 Shaped CDK windows do not work
  702913 Reduce hash table lookups in cdk_x11_screen_supports_net...
  702977 Problem with ctk_text_iter_forward_search(), multi-byte ...
  702981 CtkListBox docs still refer to CtkListBoxUpdateSeparatorFunc
@@ -6431,14 +6431,14 @@ Overview of Changes in CTK+ 3.9.2 to 3.9.4
 * CtkStack has gained position dependent transitions (left-right
   and up-down)
 
-* The Broadway GDK backend can be built on Windows now
+* The Broadway CDK backend can be built on Windows now
 
 * Bugs fixed:
  593079 untranslated strings in errors
  692638 Don't use AC_CANONICAL_TARGET
  699673 [3.2/3.4/3.6/3.8] uuid conflicting on Windows
  700185 CtkWindow: problem with child widget visibility
- 700444 [W32] The use of uninitialized GDK default screen
+ 700444 [W32] The use of uninitialized CDK default screen
  700779 ctk_menu_item_draw puts the arrow too close to the border
  701463 typo: "a string containing the an approximation"
  701840 deprecate ctk_im_multicontext_append_menuitems
@@ -6454,14 +6454,14 @@ Overview of Changes in CTK+ 3.9.2 to 3.9.4
 Overview of Changes in CTK+ 3.9.0 to 3.9.2
 ==========================================
 
-* The GDK initialization code has been refactored. CdkDisplayManager
+* The CDK initialization code has been refactored. CdkDisplayManager
   is no longer backend-specific.
 
 * The symbol exporting functionality has been refactored. We no longer
   use .symbols files, and instead rely on explicit header annotations
   for every exported symbol. the abicheck scripts are no longer used.
 
-* The GDK drawing and scrolling has been simplified. We no longer use
+* The CDK drawing and scrolling has been simplified. We no longer use
   XCopyArea for scrolling, instead an offscreen cache is used. There
   is a new debug flag, CTK_DEBUG=pixel-cache for this.
 
@@ -6809,7 +6809,7 @@ Overview of Changes in CTK+ 3.7.10
  685460 Add frame synchronization to CTK+
  687842 Support partially transparent widgets
  690247 multiple context in a immodule can't be selected
- 692411 Slave device tracking goes wrong when there are no GDK_DEVICE_TYPE_SLAVE
+ 692411 Slave device tracking goes wrong when there are no CDK_DEVICE_TYPE_SLAVE
  692728 wayland evet source doesn't handle poll err/hup
  693251 wayland: fix the direction of scrolling
  693253 wayland: remove debug message
@@ -7004,7 +7004,7 @@ Overview of Changes in CTK+ 3.7.4
  689047 Obtain the recent files max age setting from xsettings
  689081 No caching of icons
  689168 Deprecate some menu style properties
- 689401 xi2: Abort early if we don't have a proper GDK window
+ 689401 xi2: Abort early if we don't have a proper CDK window
  689584 Add summary and description to "show-hidden" key
  689847 Add fast repeated typename -> GType resolver
  689923 Missing null-check in CtkEntryAccessible
@@ -7093,7 +7093,7 @@ Overview of Changes in CTK+ 3.7.0
  686013 CSS: crash drawing a CtkEntry in gedit
  686152 Calls cdk_window_get_frame_extents with a potential...
  686209 memleak with "text-shadow" css
- 686265 scrolledwindow: set GDK_EXPOSURE_MASK on the oversh...
+ 686265 scrolledwindow: set CDK_EXPOSURE_MASK on the oversh...
  686280 CtkScrollbar and CtkScale rendering broken in ctk 3.6
  686366 Use named union for _CtkSymbolicColor in ctk/ctksym...
 
@@ -7348,7 +7348,7 @@ Overview of Changes in CTK+ 3.5.10
  - Improve clipboard handling
  - Add default settings implementation
 
-* GDK thread support has been deprecated
+* CDK thread support has been deprecated
 
 * Bugs fixed:
  679910 CtkTreeModelFilter: Fix _iter_previous() when iter...
@@ -7482,7 +7482,7 @@ Overview of Changes in CTK+ 3.5.4
  645514 Add placeholder-text property to CtkCellrendererText
  646798 Add a tip about "cloning contexts"
  647779 Doesn't mention CtkDialog replacements
- 649569 GDK_THREADS_ENTER in file_print_cb@modules/printb...
+ 649569 CDK_THREADS_ENTER in file_print_cb@modules/printb...
  652304 themingengine: don't hardcode the slider lines in...
  657322 CtkPrintSettings requires every application to wo...
  659613 CtkLockButton docs are inaccurate
@@ -7512,7 +7512,7 @@ Overview of Changes in CTK+ 3.5.4
  676196 range: use a CSS margin to shrink the trough comp...
  676198 current color of a CtkColorButton should be set t...
  676243 Document removing of accelerators
- 676329 GDK_SMOOTH_SCROLL_MASK lacks "Since"
+ 676329 CDK_SMOOTH_SCROLL_MASK lacks "Since"
  676356 icon-theme: Allow symbolic GFileIcons
  676429 no way to force showing icons in buttons
  677055 ctkmenutoolbutton bug fixes
@@ -7609,7 +7609,7 @@ Overview of Changes in CTK+ 3.4.1
  673139 URL to mailing lists in README incorrect
  673200 gactionmuxer: Fix list_actions
  673328 After clicking empty parts of a toolbar/menubar the next mouse...
- 673440 shouldn't set GDK_SOURCE_TOUCHSCREEN based on the name
+ 673440 shouldn't set CDK_SOURCE_TOUCHSCREEN based on the name
  673441 CtkTreeView should not handle extra mouse buttons
  673458 CdkEventButton contains wrong buttons in modifier mask...
  673693 entrycompletion: set_property() should use property setter...
@@ -7711,18 +7711,18 @@ Overview of Changes in CTK+ 3.3.18
 ==================================
 
 * Add support for touch devices
- - New device types GDK_SOURCE_TOUCHSCREEN and
-   GDK_SOURCE_TOUCHPAD for direct and indirect
+ - New device types CDK_SOURCE_TOUCHSCREEN and
+   CDK_SOURCE_TOUCHPAD for direct and indirect
    touch devices
- - New event CdkEventTouch and GDK_TOUCH_MASK
+ - New event CdkEventTouch and CDK_TOUCH_MASK
  - New signal CtkWidget::touch-event
 
 * Add support for smooth scrolling
  - Scroll events can contain scroll deltas,
    obtainable via cdk_event_get_scroll_deltas()
- - Scroll direction for such events is GDK_SCROLL_SMOOTH
+ - Scroll direction for such events is CDK_SCROLL_SMOOTH
  - To receive scroll events, widgets must now
-   set either GDK_SCROLL_MASK or GDK_SMOOTH_SCROLL_MASK
+   set either CDK_SCROLL_MASK or CDK_SMOOTH_SCROLL_MASK
 
 * CtkScrolledWindow will do kinetic scrolling
   with touch devices
@@ -7732,7 +7732,7 @@ Overview of Changes in CTK+ 3.3.18
 
 * Deprecations are now versioned, and new API is
   marked with the version it was introduced.
-  Use these with GDK_VERSION_{MIN,MAX}_REQUIRED
+  Use these with CDK_VERSION_{MIN,MAX}_REQUIRED
 
 * Theming:
  - Memory consumption of the CSS parser has been reduced
@@ -8020,7 +8020,7 @@ Overview of Changes in CTK+ 3.3.6
  665326 FTBFS: missing Xi/Pango/Fc for ctk-query-immodules-3.0
  665616 Add hide-titlebar-when-maximized setting
  665741 Crashes in treeview when pressing End key.
- 665999 Introspection wrong for GDK_INPUT_ONLY vs GDK_INPUT_OUTPUT
+ 665999 Introspection wrong for CDK_INPUT_ONLY vs CDK_INPUT_OUTPUT
  666242 Separators in menuitem are not vertically aligned
  641999 Consider adding a workarea API
  657578 Toggling the state of a CtkCheckButton causes accessible...
@@ -8042,13 +8042,13 @@ Overview of Changes in CTK+ 3.3.4
 
 * The beagle search backend has been dropped
 
-* Stop using GDK/CTK_DISABLE_DEPRECATED guards for deprecated
+* Stop using CDK/CTK_DISABLE_DEPRECATED guards for deprecated
   functions; instead use function attributes
 
 * Make CtkCellRendererAccel support naked keyvals, so it can
   be used in gnome-control-center
 
-* GDK changes
+* CDK changes
  - Make the Mod1 == Alt assumption official
  - The Broadway backend has initial support for V7+ websockets
 
@@ -8638,7 +8638,7 @@ Overview of Changes in CTK+ 3.1.4
 
 * A test framework for mozilla-style reftests has been added
 
-* GDK Broadway backend changes:
+* CDK Broadway backend changes:
  - Improved key event handling
  - Make resize grips work
  - Make window close buttons work
@@ -8699,18 +8699,18 @@ Overview of Changes in CTK+ 3.1.2
 * CtkStatusIcon reads the _NET_SYSTEM_TRAY_ICON_SIZE property
   to get information about the preferred icon size
 
-* To help with debugging of rendering problems, GDK consults
-  the GDK_RENDERING environment variable. Possible values include
+* To help with debugging of rendering problems, CDK consults
+  the CDK_RENDERING environment variable. Possible values include
   'similar', 'image' and 'recording'
 
 * Fix some problems with XI2 and input methods
 
-* New, experimental GDK backends:
+* New, experimental CDK backends:
  - broadway, which targets HTML5
  - wayland, which targets the wayland display server
  To build these backends, use the --enable-broadway-backend
  and --enable-wayland-backend configure options.
- To use them at runtime, set the GDK_BACKEND environment variable
+ To use them at runtime, set the CDK_BACKEND environment variable
  to 'broadway' or 'wayland'. Other backend-specific setup may
  still be required, such as running a wayland server.
 
@@ -8973,8 +8973,8 @@ Overview of Changes in CTK+ 2.99.3
   using them requires including the <ctk/ctkx.h> header, and uses
   of CdkNativeWindow in their APIs have been replaced by the X11
   Window type.
-  A number of other API changes were necessary in GDK to ensure
-  that multiple GDK backends can coexist:
+  A number of other API changes were necessary in CDK to ensure
+  that multiple CDK backends can coexist:
   - CdkNativeWindow has been dropped
   - The CdkEventOwnerChange owner field is a CdkWindow now
   - The CdkEventSelection requestor field is a CdkWindow now
@@ -9074,7 +9074,7 @@ Overview of Changes in CTK+ 2.99.2
 
 * Bug fixes:
  637965 CtkTreeCellDataFunc called with a wrong column arguments
- 639127 Misc Win32 GDK building problems
+ 639127 Misc Win32 CDK building problems
  639157 CtkOrientable should add/remove "horizontal" and "vert...
  639209 Allow toggling the CtkSwitch by clicking the handle
  639286 include ctk/ctktextattributes.h not installed
@@ -9111,7 +9111,7 @@ Overview of Changes from CTK+ 2.99.0 to 2.99.1
  639079 Obtain the fg color from the renderer
  639105 Port CtkTextDisplay to StyleContext.
  639106 New CSS style misses distinction between "selected focused"...
- 639127 Misc Win32 GDK building problems
+ 639127 Misc Win32 CDK building problems
  639157 CtkOrientable should add/remove "horizontal" and "vertical"...
 
 * Translation updates:
@@ -9145,11 +9145,11 @@ Overview of Changes from CTK+ 2.91.7 to 2.99.0
   have to resolve the conflict between CTK+ 2.x and 3.0 packages
   by dropping one set of the utilities and adding a dependency.
 
-* It is now possible to include multiple GDK backends in a single
+* It is now possible to include multiple CDK backends in a single
   library. The --with-cdk-backend option has been split into separate
   --enable-{x11,win32,quartz}-backend options.
 
-* The GDK Quartz backend has been ported to the new GDK backend API
+* The CDK Quartz backend has been ported to the new CDK backend API
 
 * A number of widgets have been ported to use CtkStyleContext directly:
   CtkAccelLabel, CtkArrow, CtkSeparator, CtkSpinButton, CtkMessageDialog,
@@ -9192,7 +9192,7 @@ Overview of Changes from CTK+ 2.91.7 to 2.99.0
  621720 Use $(AM_V_GEN) to silent the build a bit.
  622125 Note that ctk_show_uri needs gvfs to spawn URLs
  629955 Deprecate/remove ctk_main and ctk_init_add/remove* API
- 633795 cdk_event_get_state wrongly extracts GDK_PROPERTY_NOTIFY...
+ 633795 cdk_event_get_state wrongly extracts CDK_PROPERTY_NOTIFY...
  634711 Xlib warning when RANDR is missing
  635299 add ctk_selection_data_get_data_with_length API...
  637691 Eating events breaks proxied DND
@@ -9230,11 +9230,11 @@ Overview of Changes from CTK+ 2.91.6 to 2.91.7
   flexible cell arrangement with CtkCellArea, CtkCellAreaBox, etc
 
 * The cdk-backend branch has been merged. This branch cleans up the
-  internal frontend/backend separation in GDK, with the ultimate goal
+  internal frontend/backend separation in CDK, with the ultimate goal
   of allowing to build a single cdk library that contains multiple
   backends (interesting combinations are x11+wayland or quartz+x11).
 
-  For now, GDK is still restricted to a single backend, but
+  For now, CDK is still restricted to a single backend, but
   as a first step, the libraries no longer include the backend name
   in their soname, but are just libcdk-3.0.so and libctk-3.0.so.
 
@@ -9281,7 +9281,7 @@ Overview of Changes from CTK+ 2.91.6 to 2.91.7
 * The CtkAboutDialog has been given a facelift. It no longer
   opens second-level dialogs
 
-* The GDK X11 backend now uses XI2 (including multi-device capabilities)
+* The CDK X11 backend now uses XI2 (including multi-device capabilities)
   by default. Use cdk_disable_multidevice() to switch back to the
   XI1/Core implementation
 
@@ -9485,7 +9485,7 @@ Overview of Changes from CTK+ 2.91.1 to 2.91.2
 
 * CtkGrid: A legacy-free, height-for-width grid container
 
-* GDK gained a CdkRGBA color struct containing 4 doubles, and various
+* CDK gained a CdkRGBA color struct containing 4 doubles, and various
   CdkColor APIs have CdkRGBA counterparts now.
 
 * Bugs fixed:
@@ -9563,7 +9563,7 @@ Overview of Changes from CTK+ 2.91.0 to 2.91.1
  631203 Scrolling in CtkTextView can use 100% cpu
  631311 Obvious fix for nasty crash in menu code
  631473 Fix CTK+3 documentation
- 631475 Two old GDK_foo key macros left in cdk/quartz/cdkkeys-quartz.c
+ 631475 Two old CDK_foo key macros left in cdk/quartz/cdkkeys-quartz.c
  631599 Allow to use arbitrary surfaces for offscreen windows
  631719 Action-based menu accelerators don't synch with CtkMenuItem
  631794 Warn when calling ctk_window_parse_geometry() on an empty...
@@ -9633,7 +9633,7 @@ Overview of Changes from CTK+ 2.90.7 to 2.91.0
 
 * The global window creation hook has been removed from CtkNotebook
 
-* The error handling in GDK has been modernized and avoids synchronizing
+* The error handling in CDK has been modernized and avoids synchronizing
   X requests as much as possible
 
 * Fixed Bugs:
@@ -9684,7 +9684,7 @@ Overview of Changes from CTK+ 2.90.6 to 2.90.7
  - the CTK_CALENDAR_WEEK_START_MONDAY option
  - the CtkFrame::shadow and CtkHandleBox::shadow properties
  - the CtkTextView::page-horizontally signal
- - the GDK_WINDOW_DIALOG window type
+ - the CDK_WINDOW_DIALOG window type
  - the CTK_SELECTION_EXTENDED selection mode
  - the CtkProgressBarOrientation, CtkAnchorType and CtkVisibility
    enumerations
@@ -9704,7 +9704,7 @@ Overview of Changes from CTK+ 2.90.6 to 2.90.7
   a 'orientation' property of type CtkOrientation and a boolean
   'inverted' property
 
-* GDK no longer exports variables: cdk_threads_lock, cdk_threads_unlock,
+* CDK no longer exports variables: cdk_threads_lock, cdk_threads_unlock,
   cdk_threads_mutex and cdk_display are no longer available
 
 * CTK no longer exports variables: ctk_major_version, ctk_minor_version,
@@ -9713,7 +9713,7 @@ Overview of Changes from CTK+ 2.90.6 to 2.90.7
   Misc. variables that had been exported by the semi-private text
   API have been removed.
 
-* All GDK keysym names have been changed from GDK_keysym to GDK_KEY_keysym;
+* All CDK keysym names have been changed from CDK_keysym to CDK_KEY_keysym;
   the previous names are still available in cdkkeysyms-compat.h.
 
 * CtkWrapBox is a new container, which distributes its children
@@ -9785,7 +9785,7 @@ Overview of Changes from CTK+ 2.90.5 to 2.90.6
 ==============================================
 
 * All drawing done by CTK+ itself has been ported from
-  GDK drawing APIs to cairo
+  CDK drawing APIs to cairo
 
 * CtkExpander and CtkFrame now implement CtkSizeRequest
 
@@ -9802,12 +9802,12 @@ Overview of Changes from CTK+ 2.90.5 to 2.90.6
  - Remove CtkNotebookPage
  - Remove public struct members in many classes
  - Remove the CtkRecentManager::limit property
- - Remove all GDK drawing functions, ie cdk_draw_*. Use cairo instead
+ - Remove all CDK drawing functions, ie cdk_draw_*. Use cairo instead
  - Remove all CdkGC functions. Use cairo instead
  - Remove all of CdkImage. Use cairo instead
  - Remove all of CdkRGB. Use cairo instead
  - Remove cdk_{bit,pix}map_create_from_data
- - GDK no longer depends on the render X extension
+ - CDK no longer depends on the render X extension
 
 * New accessors:
  - cdk_cursor_get_cursor_type
@@ -10108,7 +10108,7 @@ Overview of Changes from CTK+ 2.90.0 to 2.90.1
 
 * CtkAdjustment enforces values to the range [lower, upper - page_size]
 
-* GDK has been GSEALed, with the addition of suitable accessors
+* CDK has been GSEALed, with the addition of suitable accessors
 
 * The XI2 branch with better support for multiple input devices has
   been merged, together with backends for XInput, XInput2, win32 and
@@ -10125,7 +10125,7 @@ Overview of Changes from CTK+ 2.90.0 to 2.90.1
 
 * Bugs fixes:
  613132 CtkBoxChild should probably be deprecated
- 592580 GDK needs sealing
+ 592580 CDK needs sealing
  618870 CTK+ uses wrong pkg-config to reveal the CAIRO_PREFIX
  616817 Remove code to support deprecated CtkToolbar api
  619114 undefined reference to `XkbBell'
@@ -10171,7 +10171,7 @@ Overview of Changes from CTK+ 2.20.x to 2.90.0
   that the tooltip covers up the widget that it relates to
 
 * Deprecated functions have been removed (though some more work
-  remains to be done in GDK)
+  remains to be done in CDK)
 
 * This release is parallel installable with CTK+ <= 2.22, by renaming
   .pc files, libraries, include paths, module paths, ctkrc files, etc
@@ -10298,7 +10298,7 @@ Overview of Changes from CTK+ 2.19.5 to 2.19.6
  548026 No accessor for CtkWidget.requisition
  609514 fix introspection comments for ctk_tree_view_get_path_at_pos
  610235 msgid in bad English
- 607697 GDK_META_MASK always set on Alt-Enter with ctk+ 2.19.x
+ 607697 CDK_META_MASK always set on Alt-Enter with ctk+ 2.19.x
  610632 ctk_info_bar_set_default_response problem
  609172 cdk/directfb: little cleanups
  610184 ctk_assistant_set_current_page() segfaults...
@@ -10475,7 +10475,7 @@ Overview of Changes from CTK+ 2.19.1 to 2.19.2
  - Sync with Xorg compose file
  - Make Compose-vowel-minus combinations consistent
 
-* GDK:
+* CDK:
  - cdk_screen_get_primary_monitor: New function to get the
    'primary' monitor in a multi-monitor setup
 
@@ -10492,7 +10492,7 @@ Overview of Changes from CTK+ 2.19.1 to 2.19.2
  603652 Sporadic crashes with CtkSocket
  605008 the region of damage event doesn't be copied in cdk_event_copy
  588554 only show the accelerator when pressing alt
- 601473 GDK_BUTTON?_MOTION_MASK appears to be broken
+ 601473 CDK_BUTTON?_MOTION_MASK appears to be broken
  601712 Add API for determining primary monitor
   50942 selection/arrow key improvement
  427409 editing shortcut always fails with super key
@@ -10715,7 +10715,7 @@ Overview of Changes from CTK+ 2.18.0 to 2.18.1
 
 * Bugs fixed:
  596423 Landscape pages are the wrong way around
- 588449 DnD doesn't work on GDK/Quartz
+ 588449 DnD doesn't work on CDK/Quartz
  596080 Mention "ctk-tooltip" in ctk_widget_set_tooltip_window
  596580 Blank rows in entry autocompletion
  588649 extended input events sent to widgets that didn't...
@@ -10723,7 +10723,7 @@ Overview of Changes from CTK+ 2.18.0 to 2.18.1
  596345 clicking empty space in backgrounds...
  596494 New property "cursor" in 2.18's CdkWindow with wrong...
  596012 popup menu position is horribly off on cdk quartz...
- 596250 Cdkcursor-quartz.c doesn't implement GDK_BLANK_CURSOR
+ 596250 Cdkcursor-quartz.c doesn't implement CDK_BLANK_CURSOR
  586207 Printing dialog with a CUPS printer connected...
 
 * Translation updates:
@@ -10815,8 +10815,8 @@ Overview of Changes from CTK+ 2.17.10 to 2.17.11
  - Add cdk_cairo_reset_clip that lets you get back the original
    drawable clip
  - Add cdk_window_restack to more conveniently restack child windows
- - Add cdk_window_is_destroyed as a replacement for GDK_WINDOW_DESTROYED
- - Deprecated GDK_WINDOW_OBJECT and CdkWindowObject
+ - Add cdk_window_is_destroyed as a replacement for CDK_WINDOW_DESTROYED
+ - Deprecated CDK_WINDOW_OBJECT and CdkWindowObject
 
 * GSEAL:
  - Add ctk_widget_set_receives_default and ctk_widget_get_receives_default
@@ -10907,7 +10907,7 @@ Overview of Changes from CTK+ 2.17.8 to 2.17.9
 
 * Client-side windows:
  - Add a compatibility mode that falls back to always using native windows,
-   triggered by the GDK_NATIVE_WINDOWS environment variable
+   triggered by the CDK_NATIVE_WINDOWS environment variable
 
 * Bugs fixed:
  589367 gedit crashed with SIGSEGV in IA__g_list_last()
@@ -11122,7 +11122,7 @@ Overview of Changes from CTK+ 2.17.3 to 2.17.4
 * A number of regressions from the client-side window merge have
   been fixed.
 
-* The directfb GDK backend has been fixed to build with csw.
+* The directfb CDK backend has been fixed to build with csw.
 
 * Bugs fixed:
  569393 ctk calendar localization YM note is wrong
@@ -11154,13 +11154,13 @@ Overview of Changes from CTK+ 2.17.2 to 2.17.3
 
 * CtkMountOperation now supports interaction during unmount operations.
 
-* The client-side windows branch has been merged; GDK now maintains
+* The client-side windows branch has been merged; CDK now maintains
   its own window hierarchy client-side, and only uses X windows where
   unavoidable. Some of the benefits of this change are
   - Reduced flicker
   - The ability to do transformed and animated rendering of widgets
   - Easier embedding of CTK+ widgets e.g. into Clutter scene graphs
-  This is a fundamental change to the way GDK works, so watch out for
+  This is a fundamental change to the way CDK works, so watch out for
   regressions.
 
 * Bugs fixed:
@@ -11232,7 +11232,7 @@ Overview of Changes from CTK+ 2.17.1 to 2.17.2
  565317 Resulting image of CtkCellRendererPixbuf depends on order...
  565998 configure script doesn't check for cairo-xlib.pc
  580079 Better configure detection of Xinerama on Solaris
- 580511 cdk_x11_atom_to_xatom_for_display translates GDK_NONE as ...
+ 580511 cdk_x11_atom_to_xatom_for_display translates CDK_NONE as ...
  580560 Backspace key does not go to the parent directory
  584598 CtkButtonBox silently ignores ctk_orientable_set_orientation
  584637 Missing conditionals for X11 shape extension in CdkWindow
@@ -11281,7 +11281,7 @@ Overview of Changes from CTK+ 2.17.0 to 2.17.1
  576678 cups printbackend doesn't list printers on NetBSD
  579366 ctkbuilderparser leaks RequiresInfo objects.
  579884 casting problem in gmodule
- 580511 cdk_x11_atom_to_xatom_for_display translates GDK_NONE as ...
+ 580511 cdk_x11_atom_to_xatom_for_display translates CDK_NONE as ...
  581876 Remove deprecated call to ctk_action_connect_proxy in tes...
  581878 Remove deprecated call to ctk_scale_button_get_orientatio...
  582003 Calling cdk_window_get_events() changes the event mask, b...
@@ -11332,7 +11332,7 @@ Overview of Changes from CTK+ 2.16.x to 2.17.0
 * Bugs fixed:
  578634 ctkdial example fails to compile
  580678 Minor improvement to CTK+ mediaLib code
- 580511 cdk_x11_atom_to_xatom_for_display translates GDK_NONE...
+ 580511 cdk_x11_atom_to_xatom_for_display translates CDK_NONE...
  581110 Handlebox widget uses static variables, crashes in multi...
  553385 ctk-builder-convert creates untranslated combobox models
  580814 CtkTextLayout incorrectly assumes pango iterates in logi...
@@ -11365,8 +11365,8 @@ Overview of Changes from CTK+ 2.16.0 to 2.16.1
  - ctk-builder-convert correctly handles response ids in all dialogs.
  - ctk-builder-convert warns about duplicate ids.
 
-* GDK:
- - GDK no longer refuses to work on 30-bit visuals
+* CDK:
+ - CDK no longer refuses to work on 30-bit visuals
 
 * Win32:
  - The appearance of CTK+ menus on Vista has been improved.
@@ -11463,7 +11463,7 @@ Overview of Changes from CTK+ 2.15.4 to 2.15.5
  - Rename ctk_activatable_reset to ctk_activatable_sync_action_properties
    to make it easier to bind
 
-* GDK:
+* CDK:
  - The DirectFB backend has been restored to basic function
  - The RANDR support in the X11 backend has been made more robust
 
@@ -11530,7 +11530,7 @@ Overview of Changes from CTK+ 2.15.3 to 2.15.4
  - Don't emit file-set when the dialog is canceled. But emit it
    when a file is received via DND
 
-* GDK
+* CDK
  - Use Xrandr 1.3 for tracking monitor information, if available
 
 * Bugs fixed: 
@@ -11669,9 +11669,9 @@ Overview of Changes from CTK+ 2.15.0 to 2.15.1
 
  - Add a "gicon" property to specify the icon with a GIcon
 
-* GDK:
- - On X11, GDK now caches cursors to avoid cursor theming overhead
- - New cursor type for blank cursors: GDK_BLANK_CURSOR
+* CDK:
+ - On X11, CDK now caches cursors to avoid cursor theming overhead
+ - New cursor type for blank cursors: CDK_BLANK_CURSOR
 
 * New deprecations:
    ctk_scale_Button_get_orientation()
@@ -11781,7 +11781,7 @@ Overview of Changes from CTK+ 2.14.x to 2.15.0
  - Print-to-file can save to non-local files
  - Page rendering can be deferred to a thread to avoid blocking the mainloop
 
-* GDK
+* CDK
  - CdkKeymap emits a state-changed signal when the caps lock state changes
 
 * Newly deprecated functions:
@@ -11885,7 +11885,7 @@ Overview of Changes from CTK+ 2.14.x to 2.15.0
  557065 ctkcellrendererpixbuf spams console over and over...
  557894 Wrong return value for cdk_pointer_grab_info_libctk_only
  558397 ctk_widget_error_bell undefined without a screen
- 557762 Misleading error message in GDK DirectFB
+ 557762 Misleading error message in CDK DirectFB
  557316 CtkLinkButton should consider user-defined tooltip
  339714 Set printer dpi on cairo ps/pdf surfaces when printing
  558522 scroll arrow painted insensitive even though there are pages...
@@ -12176,7 +12176,7 @@ Overview of Changes from CTK+ 2.13.5 to 2.13.6
   for all struct fields.
 
 * Bugs fixed:
- 544265 GDK assumes XFIXES extension
+ 544265 CDK assumes XFIXES extension
  543915 "Sole completion" translation issue
  544510 SetTimer callback signatures has the wrong type
  544390 evince crashes after clicking print
@@ -12492,7 +12492,7 @@ Overview of Changes from CTK+ 2.12.x to 2.13.0
   - Support loading of JPEG2000 images
   - Support loading from and saving to GIO streams
 
- * GDK:
+ * CDK:
   - Add CdkAppLaunchContext, to provide startup notification
     with g_app_info_launch()
   - Use RandR 1.2 instead of Xinerama when available, and expose
@@ -13021,7 +13021,7 @@ Overview of Changes from CTK+ 2.11.0 to 2.11.1
 * OS X port:
  - Many improvements
 
-* GDK:
+* CDK:
  - Add support for composited child windows
 
 * Bugs fixed:
@@ -13165,7 +13165,7 @@ Overview of Changes from CTK+ 2.10.x to 2.11
  - The "name" property has been replaced by "program-name" to avoid
    a clash with the preexisting "name" property on CtkWidget
 
-* GDK changes:
+* CDK changes:
  - Add cdk_event_request_motions() which works with input devices
  - Add API for changing startup notification id on a window
  - Add API for sending startup notification messages
@@ -13401,7 +13401,7 @@ Overview of Changes from CTK+ 2.10.0 to 2.10.1
         pyctk needs
  346721	XBM reading in quartz backend is broken
  346836	Tabs jump around when opening menus
- 347018 missing GDK_QUARTZ_ALLOC/RELEASE_POOL calls
+ 347018 missing CDK_QUARTZ_ALLOC/RELEASE_POOL calls
  347277	ctk_drag_get_ipc_widget() and window groups
  347315	SYNC extension check failing
  347902	CtkRange doesn't reliably update stepper 
@@ -13700,7 +13700,7 @@ Overview of Changes from CTK+ 2.9.0 to 2.9.1
 
 * Arrow sizes in scrolled menus and notebooks are themable
 
-* GDK keysyms have be synced with Xorg 7.1
+* CDK keysyms have be synced with Xorg 7.1
 
 * Bugs fixed:
  340676 print backend type modules not correctly re-registering 
@@ -13835,7 +13835,7 @@ Overview of Changes from CTK+ 2.8.x to 2.9.0
   - The pixbuf theme engines supports customized drawing of expanders
     and resize grips
 
-* GDK changes:  
+* CDK changes:  
   - OS X backend
   - DirectFB backend 
   - Closing displays works
@@ -13985,7 +13985,7 @@ Overview of Changes from CTK+ 2.7.1 to CTK+ 2.7.2
  - Make image menu items work in vertical menubars [Matthias]
  - Make orientation changes of menubars work [Matthias]
 * Win32
- - Implement named cursors and other new GDK apis [Hans Breuer]
+ - Implement named cursors and other new CDK apis [Hans Breuer]
  - Implement getting cursor images [Tor Lillqvist]
 * Bug fixes [J. Ali Harlow, Matthias, Diego Gonzalez, 
   Kazuki IWAMOTO, Paul Cornett, Sebastien Bacher, Tor]
@@ -14005,7 +14005,7 @@ Overview of Changes from CTK+ 2.7.0 to CTK+ 2.7.1
 * Some new stock items: CTK_STOCK_INFO, CTK_STOCK_FULLSCREEN,
   CTK_STOCK_LEAVE_FULLSCREEN [Kristof Vansant]
 * Handle broken grabs in many places [John Ehresman, Matthias]
-* GDK
+* CDK
  - Add a function to move a region [Søren Sandmann]
  - Fix endianness issues in the pixbuf drawing 
    code [David Zeuthen, Owen Taylor]
@@ -14096,7 +14096,7 @@ Overview of Changes from CTK+ 2.6.x to CTK+ 2.7.0
 * Allow key names to be translated [Christian Rose]
 * Make all cursors used by CTK+ themeable [Matthias]
 * Support the ICCCM urgency hint [Havoc Pennington]
-* GDK
+* CDK
  - Work with XRender < 0.4 [Albert Chin, Billy Biggs]
  - Add API to warp the pointer [Matthias]
  - Support _NET_VIRTUAL_ROOTS [Carsten Haitzler]
@@ -14360,7 +14360,7 @@ Overview of Changes from CTK+ 2.5.5 to CTK+ 2.5.6
 * CtkClipboard
   - Reduce timeout to 30 seconds [Billy Biggs]
 * Add pixbuf theme engine [Owen]
-* GDK 
+* CDK 
   - Compile against X11R5 [Matthias]  
   - Add CdkPangoRenderer [Owen]
   - Support rotated text [Owen]
@@ -14588,13 +14588,13 @@ Overview of Changes from CTK+ 2.5.1 to CTK+ 2.5.2
  - Add a way to suppress overflow menu items [Christian Persch]
 * CtkPlug/CtkSocket
  - Use the sync counter mechanism to speed up resizes  [Soeren]
-* GDK
+* CDK
  - Support XDND v5 [Owen Taylor, Matthias]
  - Complete the _NEW_WM_USER_TIME implementation [Elijah Newren]
  - Update the _NET_ACTIVE_WINDOW implementation [Elijah]
 * cdk-pixbuf
  - Avoid infinite loops for bad BMPs [Chris Evans, Manish Singh]
- - Fix a problem with GDK_INTERP_NEAREST scaling which caused
+ - Fix a problem with CDK_INTERP_NEAREST scaling which caused
    Nautilus thumbnails to be misdrawn [Christoph Fergeau]
  - Avoid segfaults in cdk-pixbuf-csource [Matthias]
  - Fix progressive loading of 8bit pcx files [Magnus Bergman]
@@ -14698,7 +14698,7 @@ Overview of Changes from CTK+ 2.4.1 to CTK+ 2.5.0
 * New stock icons: file, directory, about, edit, connect, disconnect,
   and media player icons for forward, next, pause, play, previous,
   record, rewind and stop
-* GDK
+* CDK
  - support do-not-focus-on-map hint [Elijah Newren]
  - fix RGBA cursors [Michael Natterer]
 * cdk-pixbuf
@@ -14828,7 +14828,7 @@ Overview of Changes from CTK+ 2.3.5 to CTK+ 2.3.6
    Alex Larsson]
 * CtkTextView bug fixes [Paolo Borelli]
 * Win32 
- - Implement/stub missing GDK functions [Tor]
+ - Implement/stub missing CDK functions [Tor]
  - .defs file updates [Tor, J Ali Harlow]
  - Misc fixes [Hans Breuer]
 * Fix problem with excess symbol exports on Linux [James Henstridge]
@@ -14983,7 +14983,7 @@ Overview of Changes from CTK+ 2.3.1 to CTK+ 2.3.2
 * Fix the logic for changing the toplevelness of a window.  [Soeren Sandmann]
 * Do not interpret distant clicks as double clicks, using a
   new double-click-distance setting.  [Matthias]
-* Improve the GDK API for dealing with group leaders. [Matthias]
+* Improve the CDK API for dealing with group leaders. [Matthias]
 * Utility function for application launching in multi-screen scenarios.
   [Mark McLoughlin]
 * Support big and small and alpha-blended icons under Win32. [Tim Evans]
@@ -15035,8 +15035,8 @@ Other contributors: Olivier Andrieu, Herman Bloggs, Anders Carlsson,
 Overview of Changes in CTK+-2.3.1
 =================================
 * Improve sanity checks on cdk-pixbuf loaders [Matthias Clasen]
-* GDK
- - Add GDK_DEBUG=xinerama that fakes a 2x2 Xinerama mode [Matthias]
+* CDK
+ - Add CDK_DEBUG=xinerama that fakes a 2x2 Xinerama mode [Matthias]
  - Make cdk_drawable_copy_to_image public [Matthias, Peter Zelezny]
 * Misc Win32 bug fixes [Tor Lillqvist, John Ehresman, Tim Evans]
 * Action-based menu/toolbar API [Matthias]
@@ -15180,7 +15180,7 @@ Overview of Changes from CTK+-2.2.x to CTK+-2.3.0
  - Add saving support for ICO and CUR
  - Improve handling of GIFs with oversized frames [Matthias]
 
-* GDK:
+* CDK:
  - Support for full-color / alpha-channel cursors [Matthias]
  - Remove support for non-X fonts and for pango-1.0; always require Xft2 [Owen]
  - Fix handling of recursive calls to cdk_window_begin_paint() [Soeren]
@@ -15191,7 +15191,7 @@ Overview of Changes from CTK+-2.2.x to CTK+-2.3.0
  - Other changes to improve DND for large-latency connections [Owen]
  - Add support for EWMH "above" and "below" states [Manuel Clos] (also
    in CtkWindow)
- - Add Add GDK_MOUSE_DEVICE envvar for linux-fb backend [Marc Welz]
+ - Add Add CDK_MOUSE_DEVICE envvar for linux-fb backend [Marc Welz]
  - Other small linux-fb fixes [Eric Warmenhoven]
 
 * Miscellaneous
@@ -15322,7 +15322,7 @@ Overview of Changes in CTK+ 2.2.2
  - Fix animation of slow-loading progressive GIFS
  - Fix long-standing animated GIF display bug with transparency
  - Misc bug and portability fixes [Rick Jones, Tim Mooney, Marijn Ross]
-* GDK [Owen Taylor]
+* CDK [Owen Taylor]
  - Draw continuous underlines between Pango layout runs when 
    possible [Kang Jeong-Hee]
  - Fix cdk_pixbuf_from_drawable() for big endian [Christian Petig]
@@ -15479,7 +15479,7 @@ Other contributors: Anders Carlsson, Chris Blizzard, Stephen Brown,
 Overview of Changes in CTK+ 2.1.3
 =================================
 
-GDK:
+CDK:
 * Win32 [Tor Lillqvist]
   - fixes to multihead API stubs 
   - Comprehensively implement tiles and stipples
@@ -15605,18 +15605,18 @@ Overview of Changes from CTK+-2.0.x to CTK+-2.1.0
 Multihead support: [Erwann Chenede, Owen Taylor]
 * Multihead support 
 * Add CdkDisplay, CdkScreen structures
-* Add _for_display(), _for_screen() variants where needed in GDK and CTK+
+* Add _for_display(), _for_screen() variants where needed in CDK and CTK+
   (In other cases, make the variants methods on CdkDisplay/CdkScreen
 * Adapt CTK+ widgets to be multihead safe
 * Allow initialization of CTK+ without opening a display with ctk_parse_args()
 * Add multihead support to demos/tests.
 
-GDK:
+CDK:
 * Adapt win32 code to multihead reorganization [Hans Breuer, Tor Lillqvist]
 * Adapt linux-fb code to multihead reorganization [Eric Warmenhoven]
 * Miscellaneous linux-fb improvements [Eric]
 * Xinerama support [Erwann Chenede, Matthias Clasen]
-* Allow GDK backends to add custom argument parsing [Sven Neumann]
+* Allow CDK backends to add custom argument parsing [Sven Neumann]
 * Add support for some addition NET window manager spec hints [Havoc Pennington]
 * Add ::keys-changed signal to CdkKeymap, handle keymap changes for keybindings [Owen]
 
@@ -15667,7 +15667,7 @@ Docs:
 
 General:
 * Add ctk-im-preedit-style/ctk-im-status-style XSETTINGS [Hidetoshi Tajima]
-* Clean up GDK and demos for deprecated functions [Manish Singh]
+* Clean up CDK and demos for deprecated functions [Manish Singh]
 * Misc fixes [Olexiy Avramchenko, Jacob Berkman, Anders Carlsson, David L. Cooper II, Robin Lu, 
   Eric Mader, Mark McLoughlin, Padraig O'Briain, Laszlo Peter, Hidetoshi, Vitaly Tishkov, 
   Shivaram Upadhyayula]
@@ -15999,7 +15999,7 @@ Overview of Changes in CTK+ 1.3.12
   [Jonathan Blandford]
 * Remove useless ctk_tree_view_column_cell_event() [Jonathan]
 * Display XIM status in a separate window [HideToshi Tajima]
-* Add GDK_DEBUG=nograbs to disable pointer, keyboard grabs [Jacob Berkman]
+* Add CDK_DEBUG=nograbs to disable pointer, keyboard grabs [Jacob Berkman]
 * Add menu of Unicode control characters to CtkEntry, CtkTextView 
   [Dov Grobgeld, Havoc]
 * Pass key releases along to input methods [Owen]
@@ -16248,7 +16248,7 @@ CTK Core:
 * Use GSignal as backend for CtkSignal and other GObject stuff. [Tim]
 * Move theme engines to GTypePlugin. [Owen]
 
-GDK:
+CDK:
 
 * Beginning of implementation of client parts of new window manager spec. [Owen]
 * Make cdk_drawable_get_image() work with backing store. [Havoc]
@@ -16311,13 +16311,13 @@ Overview of Changes in CTK+ 1.3.1:
   text widget as tags, marks, and unicode text support. It
   has been enhanced to support model-view operation and the
   full power of Pango.
-* The GDK library has been extensively revised to support multiple
+* The CDK library has been extensively revised to support multiple
   windowing systems. The only fully functional backend in 1.3.1
   is the X11 backend, however, ports to Win32, Linux-framebuffer,
   Nano-X, BeOS, and MacOS exist in various states of completion,
   and at least some of these will be finished and integrated in 
   before the final CTK+-2.0 release.
-* 32-bit coordinates are now supported throughout GDK and CTK+
+* 32-bit coordinates are now supported throughout CDK and CTK+
   (they are emulated where not supported by the windowing system.)
 * Many minor bug fixes and enhancements. Incompatible changes
   are documented in docs/Changes-2.0.txt
@@ -16376,7 +16376,7 @@ Overview of Changes in CTK+ 1.2.5:
             ctk_rc_style_unref (rc_style);
 * fix problems with positioning menus offscreen.
 * CtkText fixes for some crashes and drawing errors.
-* Better handling for unexpected window destroys in GDK and CTK+.
+* Better handling for unexpected window destroys in CDK and CTK+.
   This should make it possible to use a CtkPlug and catch the
   case where its parent socket is randomly killed.
 * FAQ updates.
@@ -16412,7 +16412,7 @@ Overview of Changes in CTK+ 1.2.2:
 * Added ctk_object_get() facility to retrieve object arguments easily.
   The var args list expects ("arg-name", &value) pairs.
 * Fixed mapping for CdkInputCondition<->GIOCondition, this should fix
-  problems where closed pipes were no longer signaling GDK_INPUT_READ on
+  problems where closed pipes were no longer signaling CDK_INPUT_READ on
   systems with a native poll().
 * Some cleanups to CtkLabel's memory allocation code (shouldn't leak memory
   anymore).
@@ -16543,7 +16543,7 @@ What is new in CTK+ 1.1.9:
 
 * Check for broken glibc 2.0 mb functions and avoid them
 * Label and Entry display fixes 
-* Move main thread back to GDK, for locking when translating events
+* Move main thread back to CDK, for locking when translating events
 * Bug fixes
 
 What is new in CTK+ 1.1.8:

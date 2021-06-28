@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -49,9 +49,9 @@ _cdk_x11_display_add_window (CdkDisplay *display,
   CdkX11Display *display_x11;
 
   g_return_if_fail (xid != NULL);
-  g_return_if_fail (GDK_IS_DISPLAY (display));
+  g_return_if_fail (CDK_IS_DISPLAY (display));
 
-  display_x11 = GDK_X11_DISPLAY (display);
+  display_x11 = CDK_X11_DISPLAY (display);
 
   if (!display_x11->xid_ht)
     display_x11->xid_ht = g_hash_table_new ((GHashFunc) cdk_xid_hash,
@@ -69,9 +69,9 @@ _cdk_x11_display_remove_window (CdkDisplay *display,
 {
   CdkX11Display *display_x11;
 
-  g_return_if_fail (GDK_IS_DISPLAY (display));
+  g_return_if_fail (CDK_IS_DISPLAY (display));
 
-  display_x11 = GDK_X11_DISPLAY (display);
+  display_x11 = CDK_X11_DISPLAY (display);
 
   if (display_x11->xid_ht)
     g_hash_table_remove (display_x11->xid_ht, &xid);
@@ -97,9 +97,9 @@ cdk_x11_window_lookup_for_display (CdkDisplay *display,
   CdkX11Display *display_x11;
   CdkWindow *data = NULL;
 
-  g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
+  g_return_val_if_fail (CDK_IS_DISPLAY (display), NULL);
 
-  display_x11 = GDK_X11_DISPLAY (display);
+  display_x11 = CDK_X11_DISPLAY (display);
 
   if (display_x11->xid_ht)
     data = g_hash_table_lookup (display_x11->xid_ht, &window);

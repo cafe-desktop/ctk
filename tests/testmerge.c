@@ -23,7 +23,7 @@
 #include <unistd.h>
 #endif
 
-#define GDK_DISABLE_DEPRECATION_WARNINGS
+#define CDK_DISABLE_DEPRECATION_WARNINGS
 
 #include <ctk/ctk.h>
 
@@ -460,7 +460,7 @@ area_press (CtkWidget      *drawing_area,
   ctk_widget_grab_focus (drawing_area);
 
   if (cdk_event_triggers_context_menu ((CdkEvent *) event) &&
-      event->type == GDK_BUTTON_PRESS)
+      event->type == CDK_BUTTON_PRESS)
     {
       CtkWidget *menu = ctk_ui_manager_get_widget (merge, "/FileMenu");
       
@@ -622,7 +622,7 @@ main (int argc, char **argv)
   ctk_box_pack_end (CTK_BOX (menu_box), statusbar, FALSE, FALSE, 0);
     
   area = ctk_drawing_area_new ();
-  ctk_widget_set_events (area, GDK_BUTTON_PRESS_MASK);
+  ctk_widget_set_events (area, CDK_BUTTON_PRESS_MASK);
   ctk_widget_set_size_request (area, -1, 40);
   ctk_box_pack_end (CTK_BOX (menu_box), area, FALSE, FALSE, 0);
   ctk_widget_show (area);

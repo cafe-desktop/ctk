@@ -111,7 +111,7 @@ ctk_accel_group_class_init (CtkAccelGroupClass *class)
     g_param_spec_flags ("modifier-mask",
                         "Modifier Mask",
                         "Modifier Mask",
-                        GDK_TYPE_MODIFIER_TYPE,
+                        CDK_TYPE_MODIFIER_TYPE,
                         default_accel_mod_mask,
                         G_PARAM_READABLE);
 
@@ -141,7 +141,7 @@ ctk_accel_group_class_init (CtkAccelGroupClass *class)
                   G_TYPE_BOOLEAN, 3,
                   G_TYPE_OBJECT,
                   G_TYPE_UINT,
-                  GDK_TYPE_MODIFIER_TYPE);
+                  CDK_TYPE_MODIFIER_TYPE);
   /**
    * CtkAccelGroup::accel-changed:
    * @accel_group: the #CtkAccelGroup which received the signal
@@ -165,7 +165,7 @@ ctk_accel_group_class_init (CtkAccelGroupClass *class)
                   _ctk_marshal_VOID__UINT_FLAGS_BOXED,
                   G_TYPE_NONE, 3,
                   G_TYPE_UINT,
-                  GDK_TYPE_MODIFIER_TYPE,
+                  CDK_TYPE_MODIFIER_TYPE,
                   G_TYPE_CLOSURE);
 }
 
@@ -271,7 +271,7 @@ ctk_accel_group_get_is_locked (CtkAccelGroup *accel_group)
  * @accel_group: a #CtkAccelGroup
  *
  * Gets a #CdkModifierType representing the mask for this
- * @accel_group. For example, #GDK_CONTROL_MASK, #GDK_SHIFT_MASK, etc.
+ * @accel_group. For example, #CDK_CONTROL_MASK, #CDK_SHIFT_MASK, etc.
  *
  * Returns: the modifier mask for this accel group.
  *
@@ -954,13 +954,13 @@ ctk_accel_groups_activate (GObject         *object,
 
 /**
  * ctk_accelerator_valid:
- * @keyval: a GDK keyval
+ * @keyval: a CDK keyval
  * @modifiers: modifier mask
  *
  * Determines whether a given keyval and modifier mask constitute
- * a valid keyboard accelerator. For example, the #GDK_KEY_a keyval
- * plus #GDK_CONTROL_MASK is valid - this is a “Ctrl+a” accelerator.
- * But, you can't, for instance, use the #GDK_KEY_Control_L keyval
+ * a valid keyboard accelerator. For example, the #CDK_KEY_a keyval
+ * plus #CDK_CONTROL_MASK is valid - this is a “Ctrl+a” accelerator.
+ * But, you can't, for instance, use the #CDK_KEY_Control_L keyval
  * as an accelerator.
  *
  * Returns: %TRUE if the accelerator is valid
@@ -970,29 +970,29 @@ ctk_accelerator_valid (guint           keyval,
                        CdkModifierType modifiers)
 {
   static const guint invalid_accelerator_vals[] = {
-    GDK_KEY_Shift_L, GDK_KEY_Shift_R, GDK_KEY_Shift_Lock,
-    GDK_KEY_Caps_Lock, GDK_KEY_ISO_Lock, GDK_KEY_Control_L,
-    GDK_KEY_Control_R, GDK_KEY_Meta_L, GDK_KEY_Meta_R,
-    GDK_KEY_Alt_L, GDK_KEY_Alt_R, GDK_KEY_Super_L, GDK_KEY_Super_R,
-    GDK_KEY_Hyper_L, GDK_KEY_Hyper_R, GDK_KEY_ISO_Level3_Shift,
-    GDK_KEY_ISO_Next_Group, GDK_KEY_ISO_Prev_Group,
-    GDK_KEY_ISO_First_Group, GDK_KEY_ISO_Last_Group,
-    GDK_KEY_Mode_switch, GDK_KEY_Num_Lock, GDK_KEY_Multi_key,
-    GDK_KEY_Scroll_Lock, GDK_KEY_Sys_Req,
-    GDK_KEY_Tab, GDK_KEY_ISO_Left_Tab, GDK_KEY_KP_Tab,
-    GDK_KEY_First_Virtual_Screen, GDK_KEY_Prev_Virtual_Screen,
-    GDK_KEY_Next_Virtual_Screen, GDK_KEY_Last_Virtual_Screen,
-    GDK_KEY_Terminate_Server, GDK_KEY_AudibleBell_Enable,
+    CDK_KEY_Shift_L, CDK_KEY_Shift_R, CDK_KEY_Shift_Lock,
+    CDK_KEY_Caps_Lock, CDK_KEY_ISO_Lock, CDK_KEY_Control_L,
+    CDK_KEY_Control_R, CDK_KEY_Meta_L, CDK_KEY_Meta_R,
+    CDK_KEY_Alt_L, CDK_KEY_Alt_R, CDK_KEY_Super_L, CDK_KEY_Super_R,
+    CDK_KEY_Hyper_L, CDK_KEY_Hyper_R, CDK_KEY_ISO_Level3_Shift,
+    CDK_KEY_ISO_Next_Group, CDK_KEY_ISO_Prev_Group,
+    CDK_KEY_ISO_First_Group, CDK_KEY_ISO_Last_Group,
+    CDK_KEY_Mode_switch, CDK_KEY_Num_Lock, CDK_KEY_Multi_key,
+    CDK_KEY_Scroll_Lock, CDK_KEY_Sys_Req,
+    CDK_KEY_Tab, CDK_KEY_ISO_Left_Tab, CDK_KEY_KP_Tab,
+    CDK_KEY_First_Virtual_Screen, CDK_KEY_Prev_Virtual_Screen,
+    CDK_KEY_Next_Virtual_Screen, CDK_KEY_Last_Virtual_Screen,
+    CDK_KEY_Terminate_Server, CDK_KEY_AudibleBell_Enable,
     0
   };
   static const guint invalid_unmodified_vals[] = {
-    GDK_KEY_Up, GDK_KEY_Down, GDK_KEY_Left, GDK_KEY_Right,
-    GDK_KEY_KP_Up, GDK_KEY_KP_Down, GDK_KEY_KP_Left, GDK_KEY_KP_Right,
+    CDK_KEY_Up, CDK_KEY_Down, CDK_KEY_Left, CDK_KEY_Right,
+    CDK_KEY_KP_Up, CDK_KEY_KP_Down, CDK_KEY_KP_Left, CDK_KEY_KP_Right,
     0
   };
   const guint *ac_val;
 
-  modifiers &= GDK_MODIFIER_MASK;
+  modifiers &= CDK_MODIFIER_MASK;
 
   if (keyval <= 0xFF)
     return keyval >= 0x20;
@@ -1225,7 +1225,7 @@ ctk_accelerator_parse_with_keycode (const gchar     *accelerator,
             {
               accelerator += 9;
               len -= 9;
-              mods |= GDK_RELEASE_MASK;
+              mods |= CDK_RELEASE_MASK;
             }
           else if (len >= 9 && is_primary (accelerator))
             {
@@ -1237,31 +1237,31 @@ ctk_accelerator_parse_with_keycode (const gchar     *accelerator,
             {
               accelerator += 9;
               len -= 9;
-              mods |= GDK_CONTROL_MASK;
+              mods |= CDK_CONTROL_MASK;
             }
           else if (len >= 7 && is_shift (accelerator))
             {
               accelerator += 7;
               len -= 7;
-              mods |= GDK_SHIFT_MASK;
+              mods |= CDK_SHIFT_MASK;
             }
           else if (len >= 6 && is_shft (accelerator))
             {
               accelerator += 6;
               len -= 6;
-              mods |= GDK_SHIFT_MASK;
+              mods |= CDK_SHIFT_MASK;
             }
           else if (len >= 6 && is_ctrl (accelerator))
             {
               accelerator += 6;
               len -= 6;
-              mods |= GDK_CONTROL_MASK;
+              mods |= CDK_CONTROL_MASK;
             }
           else if (len >= 6 && is_modx (accelerator))
             {
               static const guint mod_vals[] = {
-                GDK_MOD1_MASK, GDK_MOD2_MASK, GDK_MOD3_MASK,
-                GDK_MOD4_MASK, GDK_MOD5_MASK
+                CDK_MOD1_MASK, CDK_MOD2_MASK, CDK_MOD3_MASK,
+                CDK_MOD4_MASK, CDK_MOD5_MASK
               };
 
               len -= 6;
@@ -1273,31 +1273,31 @@ ctk_accelerator_parse_with_keycode (const gchar     *accelerator,
             {
               accelerator += 5;
               len -= 5;
-              mods |= GDK_CONTROL_MASK;
+              mods |= CDK_CONTROL_MASK;
             }
           else if (len >= 5 && is_alt (accelerator))
             {
               accelerator += 5;
               len -= 5;
-              mods |= GDK_MOD1_MASK;
+              mods |= CDK_MOD1_MASK;
             }
           else if (len >= 6 && is_meta (accelerator))
             {
               accelerator += 6;
               len -= 6;
-              mods |= GDK_META_MASK;
+              mods |= CDK_META_MASK;
             }
           else if (len >= 7 && is_hyper (accelerator))
             {
               accelerator += 7;
               len -= 7;
-              mods |= GDK_HYPER_MASK;
+              mods |= CDK_HYPER_MASK;
             }
           else if (len >= 7 && is_super (accelerator))
             {
               accelerator += 7;
               len -= 7;
-              mods |= GDK_SUPER_MASK;
+              mods |= CDK_SUPER_MASK;
             }
           else
             {
@@ -1355,7 +1355,7 @@ ctk_accelerator_parse_with_keycode (const gchar     *accelerator,
 	  else
 	    {
 	      keyval = cdk_keyval_from_name (accelerator);
-	      if (keyval == GDK_KEY_VoidSymbol)
+	      if (keyval == CDK_KEY_VoidSymbol)
 	        {
 	          error = TRUE;
 	          goto out;
@@ -1509,7 +1509,7 @@ ctk_accelerator_name_with_keycode (CdkDisplay      *display,
  *
  * Converts an accelerator keyval and modifier mask into a string
  * parseable by ctk_accelerator_parse(). For example, if you pass in
- * #GDK_KEY_q and #GDK_CONTROL_MASK, this function returns “<Control>q”.
+ * #CDK_KEY_q and #CDK_CONTROL_MASK, this function returns “<Control>q”.
  *
  * If you need to display accelerators in the user interface,
  * see ctk_accelerator_get_label().
@@ -1537,7 +1537,7 @@ ctk_accelerator_name (guint           accelerator_key,
   gchar *keyval_name;
   gchar *accelerator;
 
-  accelerator_mods &= GDK_MODIFIER_MASK;
+  accelerator_mods &= CDK_MODIFIER_MASK;
 
   keyval_name = cdk_keyval_name (cdk_keyval_to_lower (accelerator_key));
   if (!keyval_name)
@@ -1545,33 +1545,33 @@ ctk_accelerator_name (guint           accelerator_key,
 
   saved_mods = accelerator_mods;
   l = 0;
-  if (accelerator_mods & GDK_RELEASE_MASK)
+  if (accelerator_mods & CDK_RELEASE_MASK)
     l += sizeof (text_release) - 1;
   if (accelerator_mods & _ctk_get_primary_accel_mod ())
     {
       l += sizeof (text_primary) - 1;
       accelerator_mods &= ~_ctk_get_primary_accel_mod (); /* consume the default accel */
     }
-  if (accelerator_mods & GDK_SHIFT_MASK)
+  if (accelerator_mods & CDK_SHIFT_MASK)
     l += sizeof (text_shift) - 1;
-  if (accelerator_mods & GDK_CONTROL_MASK)
+  if (accelerator_mods & CDK_CONTROL_MASK)
     l += sizeof (text_control) - 1;
-  if (accelerator_mods & GDK_MOD1_MASK)
+  if (accelerator_mods & CDK_MOD1_MASK)
     l += sizeof (text_mod1) - 1;
-  if (accelerator_mods & GDK_MOD2_MASK)
+  if (accelerator_mods & CDK_MOD2_MASK)
     l += sizeof (text_mod2) - 1;
-  if (accelerator_mods & GDK_MOD3_MASK)
+  if (accelerator_mods & CDK_MOD3_MASK)
     l += sizeof (text_mod3) - 1;
-  if (accelerator_mods & GDK_MOD4_MASK)
+  if (accelerator_mods & CDK_MOD4_MASK)
     l += sizeof (text_mod4) - 1;
-  if (accelerator_mods & GDK_MOD5_MASK)
+  if (accelerator_mods & CDK_MOD5_MASK)
     l += sizeof (text_mod5) - 1;
   l += strlen (keyval_name);
-  if (accelerator_mods & GDK_META_MASK)
+  if (accelerator_mods & CDK_META_MASK)
     l += sizeof (text_meta) - 1;
-  if (accelerator_mods & GDK_HYPER_MASK)
+  if (accelerator_mods & CDK_HYPER_MASK)
     l += sizeof (text_hyper) - 1;
-  if (accelerator_mods & GDK_SUPER_MASK)
+  if (accelerator_mods & CDK_SUPER_MASK)
     l += sizeof (text_super) - 1;
 
   accelerator = g_new (gchar, l + 1);
@@ -1579,7 +1579,7 @@ ctk_accelerator_name (guint           accelerator_key,
   accelerator_mods = saved_mods;
   l = 0;
   accelerator[l] = 0;
-  if (accelerator_mods & GDK_RELEASE_MASK)
+  if (accelerator_mods & CDK_RELEASE_MASK)
     {
       strcpy (accelerator + l, text_release);
       l += sizeof (text_release) - 1;
@@ -1590,52 +1590,52 @@ ctk_accelerator_name (guint           accelerator_key,
       l += sizeof (text_primary) - 1;
       accelerator_mods &= ~_ctk_get_primary_accel_mod (); /* consume the default accel */
     }
-  if (accelerator_mods & GDK_SHIFT_MASK)
+  if (accelerator_mods & CDK_SHIFT_MASK)
     {
       strcpy (accelerator + l, text_shift);
       l += sizeof (text_shift) - 1;
     }
-  if (accelerator_mods & GDK_CONTROL_MASK)
+  if (accelerator_mods & CDK_CONTROL_MASK)
     {
       strcpy (accelerator + l, text_control);
       l += sizeof (text_control) - 1;
     }
-  if (accelerator_mods & GDK_MOD1_MASK)
+  if (accelerator_mods & CDK_MOD1_MASK)
     {
       strcpy (accelerator + l, text_mod1);
       l += sizeof (text_mod1) - 1;
     }
-  if (accelerator_mods & GDK_MOD2_MASK)
+  if (accelerator_mods & CDK_MOD2_MASK)
     {
       strcpy (accelerator + l, text_mod2);
       l += sizeof (text_mod2) - 1;
     }
-  if (accelerator_mods & GDK_MOD3_MASK)
+  if (accelerator_mods & CDK_MOD3_MASK)
     {
       strcpy (accelerator + l, text_mod3);
       l += sizeof (text_mod3) - 1;
     }
-  if (accelerator_mods & GDK_MOD4_MASK)
+  if (accelerator_mods & CDK_MOD4_MASK)
     {
       strcpy (accelerator + l, text_mod4);
       l += sizeof (text_mod4) - 1;
     }
-  if (accelerator_mods & GDK_MOD5_MASK)
+  if (accelerator_mods & CDK_MOD5_MASK)
     {
       strcpy (accelerator + l, text_mod5);
       l += sizeof (text_mod5) - 1;
     }
-  if (accelerator_mods & GDK_META_MASK)
+  if (accelerator_mods & CDK_META_MASK)
     {
       strcpy (accelerator + l, text_meta);
       l += sizeof (text_meta) - 1;
     }
-  if (accelerator_mods & GDK_HYPER_MASK)
+  if (accelerator_mods & CDK_HYPER_MASK)
     {
       strcpy (accelerator + l, text_hyper);
       l += sizeof (text_hyper) - 1;
     }
-  if (accelerator_mods & GDK_SUPER_MASK)
+  if (accelerator_mods & CDK_SUPER_MASK)
     {
       strcpy (accelerator + l, text_super);
       l += sizeof (text_super) - 1;
@@ -1722,9 +1722,9 @@ ctk_accelerator_get_label (guint           accelerator_key,
  * @default_mod_mask: accelerator modifier mask
  *
  * Sets the modifiers that will be considered significant for keyboard
- * accelerators. The default mod mask depends on the GDK backend in use,
- * but will typically include #GDK_CONTROL_MASK | #GDK_SHIFT_MASK |
- * #GDK_MOD1_MASK | #GDK_SUPER_MASK | #GDK_HYPER_MASK | #GDK_META_MASK.
+ * accelerators. The default mod mask depends on the CDK backend in use,
+ * but will typically include #CDK_CONTROL_MASK | #CDK_SHIFT_MASK |
+ * #CDK_MOD1_MASK | #CDK_SUPER_MASK | #CDK_HYPER_MASK | #CDK_META_MASK.
  * In other words, Control, Shift, Alt, Super, Hyper and Meta. Other
  * modifiers will by default be ignored by #CtkAccelGroup.
  *
@@ -1737,8 +1737,8 @@ ctk_accelerator_get_label (guint           accelerator_key,
 void
 ctk_accelerator_set_default_mod_mask (CdkModifierType default_mod_mask)
 {
-  default_accel_mod_mask = (default_mod_mask & GDK_MODIFIER_MASK) |
-    (GDK_CONTROL_MASK | GDK_SHIFT_MASK | GDK_MOD1_MASK);
+  default_accel_mod_mask = (default_mod_mask & CDK_MODIFIER_MASK) |
+    (CDK_CONTROL_MASK | CDK_SHIFT_MASK | CDK_MOD1_MASK);
 }
 
 /**
@@ -1761,11 +1761,11 @@ ctk_accelerator_get_default_mod_mask (void)
       display = cdk_display_get_default ();
 
       if (!display)
-        return GDK_CONTROL_MASK | GDK_SHIFT_MASK | GDK_MOD1_MASK;
+        return CDK_CONTROL_MASK | CDK_SHIFT_MASK | CDK_MOD1_MASK;
 
       default_accel_mod_mask =
           cdk_keymap_get_modifier_mask (cdk_keymap_get_for_display (display),
-				        GDK_MODIFIER_INTENT_DEFAULT_MOD_MASK);
+				        CDK_MODIFIER_INTENT_DEFAULT_MOD_MASK);
     }
 
   return default_accel_mod_mask;

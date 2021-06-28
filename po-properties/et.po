@@ -149,11 +149,11 @@ msgid "Default Display"
 msgstr "Vaikimisi kuva"
 
 #: cdk/cdkdisplaymanager.c:170
-msgid "The default display for GDK"
-msgstr "GDK vaikimisi kuva"
+msgid "The default display for CDK"
+msgstr "CDK vaikimisi kuva"
 
 #: cdk/cdkglcontext.c:318
-msgid "The GDK display used to create the GL context"
+msgid "The CDK display used to create the GL context"
 msgstr ""
 
 #: cdk/cdkglcontext.c:333 ctk/ctkwidget.c:1344
@@ -161,7 +161,7 @@ msgid "Window"
 msgstr "Aken"
 
 #: cdk/cdkglcontext.c:334
-msgid "The GDK window bound to the GL context"
+msgid "The CDK window bound to the GL context"
 msgstr ""
 
 #: cdk/cdkglcontext.c:349

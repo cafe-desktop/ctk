@@ -163,20 +163,20 @@ msgid "Default Display"
 msgstr "Pantalla per defecte"
 
 #: cdk/cdkdisplaymanager.c:170
-msgid "The default display for GDK"
-msgstr "La pantalla per defecte per al GDK"
+msgid "The default display for CDK"
+msgstr "La pantalla per defecte per al CDK"
 
 #: cdk/cdkglcontext.c:318
-msgid "The GDK display used to create the GL context"
-msgstr "La pantalla GDK utilitzada per crear el context GL"
+msgid "The CDK display used to create the GL context"
+msgstr "La pantalla CDK utilitzada per crear el context GL"
 
 #: cdk/cdkglcontext.c:333 ctk/ctkwidget.c:1338
 msgid "Window"
 msgstr "Finestra"
 
 #: cdk/cdkglcontext.c:334
-msgid "The GDK window bound to the GL context"
-msgstr "La finestra GDK vinculada al context GL"
+msgid "The CDK window bound to the GL context"
+msgstr "La finestra CDK vinculada al context GL"
 
 #: cdk/cdkglcontext.c:349
 msgid "Shared context"
@@ -9792,8 +9792,8 @@ msgstr "El títol del perfil de color a utilitzar"
 #~ msgid "Name of default font to use"
 #~ msgstr "Nom per defecte del tipus de lletra a utilitzar"
 
-#~ msgid "The GDK display the context is from"
-#~ msgstr "El context del qual prové la visualització GDK"
+#~ msgid "The CDK display the context is from"
+#~ msgstr "El context del qual prové la visualització CDK"
 
 #~ msgid "Affects font"
 #~ msgstr "Afecta al tipus de lletra"

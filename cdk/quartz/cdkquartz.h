@@ -17,8 +17,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_QUARTZ_H__
-#define __GDK_QUARTZ_H__
+#ifndef __CDK_QUARTZ_H__
+#define __CDK_QUARTZ_H__
 
 #include <cdk/cdk.h>
 #include <cdk/cdkprivate.h>
@@ -27,31 +27,31 @@ G_BEGIN_DECLS
 
 typedef enum
 {
-  GDK_OSX_UNSUPPORTED = 0,
-  GDK_OSX_MIN = 4,
-  GDK_OSX_TIGER = 4,
-  GDK_OSX_LEOPARD = 5,
-  GDK_OSX_SNOW_LEOPARD = 6,
-  GDK_OSX_LION = 7,
-  GDK_OSX_MOUNTAIN_LION = 8,
-  GDK_OSX_MAVERICKS = 9,
-  GDK_OSX_YOSEMITE = 10,
-  GDK_OSX_EL_CAPITAN = 11,
-  GDK_OSX_SIERRA = 12,
-  GDK_OSX_HIGH_SIERRA = 13,
-  GDK_OSX_MOJAVE = 14,
-  GDK_OSX_CATALINA = 15,
-  GDK_OSX_BIGSUR = 16,
-  GDK_OSX_CURRENT = 15,
-  GDK_OSX_NEW = 99
+  CDK_OSX_UNSUPPORTED = 0,
+  CDK_OSX_MIN = 4,
+  CDK_OSX_TIGER = 4,
+  CDK_OSX_LEOPARD = 5,
+  CDK_OSX_SNOW_LEOPARD = 6,
+  CDK_OSX_LION = 7,
+  CDK_OSX_MOUNTAIN_LION = 8,
+  CDK_OSX_MAVERICKS = 9,
+  CDK_OSX_YOSEMITE = 10,
+  CDK_OSX_EL_CAPITAN = 11,
+  CDK_OSX_SIERRA = 12,
+  CDK_OSX_HIGH_SIERRA = 13,
+  CDK_OSX_MOJAVE = 14,
+  CDK_OSX_CATALINA = 15,
+  CDK_OSX_BIGSUR = 16,
+  CDK_OSX_CURRENT = 15,
+  CDK_OSX_NEW = 99
 } CdkOSXVersion;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkOSXVersion cdk_quartz_osx_version (void);
 
 G_END_DECLS
 
-#define __GDKQUARTZ_H_INSIDE__
+#define __CDKQUARTZ_H_INSIDE__
 
 #include <cdk/quartz/cdkquartzcursor.h>
 #include <cdk/quartz/cdkquartzdevice-core.h>
@@ -65,6 +65,6 @@ G_END_DECLS
 #include <cdk/quartz/cdkquartzvisual.h>
 #include <cdk/quartz/cdkquartzwindow.h>
 
-#undef __GDKQUARTZ_H_INSIDE__
+#undef __CDKQUARTZ_H_INSIDE__
 
-#endif /* __GDK_QUARTZ_H__ */
+#endif /* __CDK_QUARTZ_H__ */

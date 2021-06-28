@@ -46,7 +46,7 @@
 #include "ctkshortcutswindow.h"
 #include "ctkintl.h"
 
-/* NB: please do not add backend-specific GDK headers here.  This should
+/* NB: please do not add backend-specific CDK headers here.  This should
  * be abstracted via CtkApplicationImpl.
  */
 
@@ -68,11 +68,11 @@
  * While CtkApplication works fine with plain #CtkWindows, it is recommended
  * to use it together with #CtkApplicationWindow.
  *
- * When GDK threads are enabled, CtkApplication will acquire the GDK
- * lock when invoking actions that arrive from other processes.  The GDK
+ * When CDK threads are enabled, CtkApplication will acquire the CDK
+ * lock when invoking actions that arrive from other processes.  The CDK
  * lock is not touched for local action invocations.  In order to have
  * actions invoked in a predictable context it is therefore recommended
- * that the GDK lock be held while invoking actions locally with
+ * that the CDK lock be held while invoking actions locally with
  * g_action_group_activate_action().  The same applies to actions
  * associated with #CtkApplicationWindow and to the “activate” and
  * “open” #GApplication methods.
@@ -196,7 +196,7 @@ ctk_application_focus_in_event_cb (CtkWindow      *window,
 
   g_object_notify_by_pspec (G_OBJECT (application), ctk_application_props[PROP_ACTIVE_WINDOW]);
 
-  return GDK_EVENT_PROPAGATE;
+  return CDK_EVENT_PROPAGATE;
 }
 
 static void
@@ -355,7 +355,7 @@ ctk_application_add_platform_data (GApplication    *application,
    * So we do all the things... which currently is just one thing.
    */
   const gchar *desktop_startup_id =
-    GDK_PRIVATE_CALL (cdk_get_desktop_startup_id) ();
+    CDK_PRIVATE_CALL (cdk_get_desktop_startup_id) ();
   if (desktop_startup_id)
     g_variant_builder_add (builder, "{sv}", "desktop-startup-id",
                            g_variant_new_string (desktop_startup_id));
@@ -401,7 +401,7 @@ ctk_application_init (CtkApplication *application)
   application->priv->accels = ctk_application_accels_new ();
 
   /* getenv now at the latest */
-  GDK_PRIVATE_CALL (cdk_get_desktop_startup_id) ();
+  CDK_PRIVATE_CALL (cdk_get_desktop_startup_id) ();
 }
 
 static void
@@ -646,7 +646,7 @@ sysprof_profiler_method_call (GDBusConnection       *connection,
       int fd = -1;
       int idx;
 
-      if (GDK_PRIVATE_CALL (cdk_profiler_is_running) ())
+      if (CDK_PRIVATE_CALL (cdk_profiler_is_running) ())
         {
           g_dbus_method_invocation_return_error (invocation,
                                                  G_DBUS_ERROR,
@@ -662,13 +662,13 @@ sysprof_profiler_method_call (GDBusConnection       *connection,
       if (fd_list)
         fd = g_unix_fd_list_get (fd_list, idx, NULL);
 
-      GDK_PRIVATE_CALL (cdk_profiler_start) (fd);
+      CDK_PRIVATE_CALL (cdk_profiler_start) (fd);
 
       g_variant_unref (options);
     }
   else if (strcmp (method_name, "Stop") == 0)
     {
-      if (!GDK_PRIVATE_CALL (cdk_profiler_is_running) ())
+      if (!CDK_PRIVATE_CALL (cdk_profiler_is_running) ())
         {
           g_dbus_method_invocation_return_error (invocation,
                                                  G_DBUS_ERROR,
@@ -677,7 +677,7 @@ sysprof_profiler_method_call (GDBusConnection       *connection,
           return;
         }
 
-      GDK_PRIVATE_CALL (cdk_profiler_stop) ();
+      CDK_PRIVATE_CALL (cdk_profiler_stop) ();
     }
   else
     {

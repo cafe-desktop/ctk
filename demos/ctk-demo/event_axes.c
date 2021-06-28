@@ -128,13 +128,13 @@ update_axes_from_event (CdkEvent  *event,
   sequence = cdk_event_get_event_sequence (event);
   tool = cdk_event_get_device_tool (event);
 
-  if (event->type == GDK_TOUCH_END ||
-      event->type == GDK_TOUCH_CANCEL)
+  if (event->type == CDK_TOUCH_END ||
+      event->type == CDK_TOUCH_CANCEL)
     {
       g_hash_table_remove (data->touch_info, sequence);
       return;
     }
-  else if (event->type == GDK_LEAVE_NOTIFY)
+  else if (event->type == CDK_LEAVE_NOTIFY)
     {
       g_hash_table_remove (data->pointer_info, device);
       return;
@@ -169,20 +169,20 @@ update_axes_from_event (CdkEvent  *event,
 
   g_clear_pointer (&info->axes, g_free);
 
-  if (event->type == GDK_TOUCH_BEGIN ||
-      event->type == GDK_TOUCH_UPDATE)
+  if (event->type == CDK_TOUCH_BEGIN ||
+      event->type == CDK_TOUCH_UPDATE)
     {
       if (sequence && event->touch.emulating_pointer)
         g_hash_table_remove (data->pointer_info, device);
     }
-  if (event->type == GDK_MOTION_NOTIFY)
+  if (event->type == CDK_MOTION_NOTIFY)
     {
       info->axes =
       g_memdup (event->motion.axes,
                 sizeof (gdouble) * cdk_device_get_n_axes (source_device));
     }
-  else if (event->type == GDK_BUTTON_PRESS ||
-           event->type == GDK_BUTTON_RELEASE)
+  else if (event->type == CDK_BUTTON_PRESS ||
+           event->type == CDK_BUTTON_RELEASE)
     {
       info->axes =
       g_memdup (event->button.axes,
@@ -253,11 +253,11 @@ draw_axes_info (cairo_t       *cr,
       return;
     }
 
-  if (axes & GDK_AXIS_FLAG_PRESSURE)
+  if (axes & CDK_AXIS_FLAG_PRESSURE)
     {
       cairo_pattern_t *pattern;
 
-      cdk_device_get_axis (info->last_source, info->axes, GDK_AXIS_PRESSURE,
+      cdk_device_get_axis (info->last_source, info->axes, CDK_AXIS_PRESSURE,
                            &pressure);
 
       pattern = cairo_pattern_create_radial (0, 0, 0, 0, 0, 100);
@@ -272,23 +272,23 @@ draw_axes_info (cairo_t       *cr,
       cairo_pattern_destroy (pattern);
     }
 
-  if (axes & GDK_AXIS_FLAG_XTILT &&
-      axes & GDK_AXIS_FLAG_YTILT)
+  if (axes & CDK_AXIS_FLAG_XTILT &&
+      axes & CDK_AXIS_FLAG_YTILT)
     {
-      cdk_device_get_axis (info->last_source, info->axes, GDK_AXIS_XTILT,
+      cdk_device_get_axis (info->last_source, info->axes, CDK_AXIS_XTILT,
                            &tilt_x);
-      cdk_device_get_axis (info->last_source, info->axes, GDK_AXIS_YTILT,
+      cdk_device_get_axis (info->last_source, info->axes, CDK_AXIS_YTILT,
                            &tilt_y);
 
       render_arrow (cr, tilt_x * 100, tilt_y * 100, "Tilt");
     }
 
-  if (axes & GDK_AXIS_FLAG_DISTANCE)
+  if (axes & CDK_AXIS_FLAG_DISTANCE)
     {
       double dashes[] = { 5.0, 5.0 };
       cairo_text_extents_t extents;
 
-      cdk_device_get_axis (info->last_source, info->axes, GDK_AXIS_DISTANCE,
+      cdk_device_get_axis (info->last_source, info->axes, CDK_AXIS_DISTANCE,
                            &distance);
 
       cairo_save (cr);
@@ -310,9 +310,9 @@ draw_axes_info (cairo_t       *cr,
       cairo_restore (cr);
     }
 
-  if (axes & GDK_AXIS_FLAG_WHEEL)
+  if (axes & CDK_AXIS_FLAG_WHEEL)
     {
-      cdk_device_get_axis (info->last_source, info->axes, GDK_AXIS_WHEEL,
+      cdk_device_get_axis (info->last_source, info->axes, CDK_AXIS_WHEEL,
                            &wheel);
 
       cairo_save (cr);
@@ -325,9 +325,9 @@ draw_axes_info (cairo_t       *cr,
       cairo_restore (cr);
     }
 
-  if (axes & GDK_AXIS_FLAG_ROTATION)
+  if (axes & CDK_AXIS_FLAG_ROTATION)
     {
-      cdk_device_get_axis (info->last_source, info->axes, GDK_AXIS_ROTATION,
+      cdk_device_get_axis (info->last_source, info->axes, CDK_AXIS_ROTATION,
                            &rotation);
       rotation *= 2 * G_PI;
 
@@ -342,11 +342,11 @@ draw_axes_info (cairo_t       *cr,
       cairo_restore (cr);
     }
 
-  if (axes & GDK_AXIS_FLAG_SLIDER)
+  if (axes & CDK_AXIS_FLAG_SLIDER)
     {
       cairo_pattern_t *pattern, *mask;
 
-      cdk_device_get_axis (info->last_source, info->axes, GDK_AXIS_SLIDER,
+      cdk_device_get_axis (info->last_source, info->axes, CDK_AXIS_SLIDER,
                            &slider);
 
       cairo_save (cr);
@@ -387,21 +387,21 @@ tool_type_to_string (CdkDeviceToolType tool_type)
 {
   switch (tool_type)
     {
-    case GDK_DEVICE_TOOL_TYPE_PEN:
+    case CDK_DEVICE_TOOL_TYPE_PEN:
       return "Pen";
-    case GDK_DEVICE_TOOL_TYPE_ERASER:
+    case CDK_DEVICE_TOOL_TYPE_ERASER:
       return "Eraser";
-    case GDK_DEVICE_TOOL_TYPE_BRUSH:
+    case CDK_DEVICE_TOOL_TYPE_BRUSH:
       return "Brush";
-    case GDK_DEVICE_TOOL_TYPE_PENCIL:
+    case CDK_DEVICE_TOOL_TYPE_PENCIL:
       return "Pencil";
-    case GDK_DEVICE_TOOL_TYPE_AIRBRUSH:
+    case CDK_DEVICE_TOOL_TYPE_AIRBRUSH:
       return "Airbrush";
-    case GDK_DEVICE_TOOL_TYPE_MOUSE:
+    case CDK_DEVICE_TOOL_TYPE_MOUSE:
       return "Mouse";
-    case GDK_DEVICE_TOOL_TYPE_LENS:
+    case CDK_DEVICE_TOOL_TYPE_LENS:
       return "Lens cursor";
-    case GDK_DEVICE_TOOL_TYPE_UNKNOWN:
+    case CDK_DEVICE_TOOL_TYPE_UNKNOWN:
     default:
       return "Unknown";
     }
@@ -629,13 +629,13 @@ do_event_axes (CtkWidget *toplevel)
       ctk_container_add (CTK_CONTAINER (window), box);
       ctk_widget_set_support_multidevice (box, TRUE);
       ctk_widget_add_events (box,
-			     GDK_POINTER_MOTION_MASK |
-			     GDK_BUTTON_PRESS_MASK |
-			     GDK_BUTTON_RELEASE_MASK |
-			     GDK_SMOOTH_SCROLL_MASK |
-			     GDK_ENTER_NOTIFY_MASK |
-			     GDK_LEAVE_NOTIFY_MASK |
-			     GDK_TOUCH_MASK);
+			     CDK_POINTER_MOTION_MASK |
+			     CDK_BUTTON_PRESS_MASK |
+			     CDK_BUTTON_RELEASE_MASK |
+			     CDK_SMOOTH_SCROLL_MASK |
+			     CDK_ENTER_NOTIFY_MASK |
+			     CDK_LEAVE_NOTIFY_MASK |
+			     CDK_TOUCH_MASK);
 
       event_data = event_data_new ();
       g_object_set_data_full (G_OBJECT (box), "ctk-demo-event-data",

@@ -72,7 +72,7 @@ msgstr "PADEKRAN"
 #. Description of --cdk-debug=FLAGS in --help output
 #: cdk/cdk.c:164
 #, fuzzy
-msgid "GDK debugging flags to set"
+msgid "CDK debugging flags to set"
 msgstr "Ustalavanyja ściažki adsočki CTK+"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
@@ -86,7 +86,7 @@ msgstr "ŚCIAŽKI"
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: cdk/cdk.c:167
 #, fuzzy
-msgid "GDK debugging flags to unset"
+msgid "CDK debugging flags to unset"
 msgstr "Vyčyščanyja ściažki adsočki CTK+"
 
 #: cdk/keyname-table.h:3940

@@ -23,13 +23,13 @@
 #include "cdkmonitor-quartz.h"
 #include "cdkdisplay-quartz.h"
 
-G_DEFINE_TYPE (CdkQuartzMonitor, cdk_quartz_monitor, GDK_TYPE_MONITOR)
+G_DEFINE_TYPE (CdkQuartzMonitor, cdk_quartz_monitor, CDK_TYPE_MONITOR)
 
 static void
 cdk_quartz_monitor_get_workarea (CdkMonitor   *monitor,
                                  CdkRectangle *dest)
 {
-  GDK_QUARTZ_ALLOC_POOL;
+  CDK_QUARTZ_ALLOC_POOL;
 
   NSArray *array = [NSScreen screens];
   NSScreen* screen;
@@ -37,7 +37,7 @@ cdk_quartz_monitor_get_workarea (CdkMonitor   *monitor,
     {
       CGDirectDisplayID screen_id =
         [[[obj deviceDescription] objectForKey:@"NSScreenNumber"] unsignedIntValue];
-      CdkQuartzMonitor *q_mon = GDK_QUARTZ_MONITOR (monitor);
+      CdkQuartzMonitor *q_mon = CDK_QUARTZ_MONITOR (monitor);
       if (screen_id == q_mon->id)
         {
           screen = obj;
@@ -48,7 +48,7 @@ cdk_quartz_monitor_get_workarea (CdkMonitor   *monitor,
   if (screen)
     {
       CdkQuartzDisplay *display =
-        GDK_QUARTZ_DISPLAY (cdk_monitor_get_display (monitor));
+        CDK_QUARTZ_DISPLAY (cdk_monitor_get_display (monitor));
       NSRect rect = [screen visibleFrame];
       dest->x = (int)trunc (display->geometry.origin.x + rect.origin.x);
       dest->y = (int)trunc (display->geometry.origin.y -
@@ -59,7 +59,7 @@ cdk_quartz_monitor_get_workarea (CdkMonitor   *monitor,
   else
     *dest = monitor->geometry;
 
-  GDK_QUARTZ_RELEASE_POOL;
+  CDK_QUARTZ_RELEASE_POOL;
 }
 
 static void
@@ -70,6 +70,6 @@ cdk_quartz_monitor_init (CdkQuartzMonitor *monitor)
 static void
 cdk_quartz_monitor_class_init (CdkQuartzMonitorClass *class)
 {
-  GDK_MONITOR_CLASS (class)->get_workarea = cdk_quartz_monitor_get_workarea;
+  CDK_MONITOR_CLASS (class)->get_workarea = cdk_quartz_monitor_get_workarea;
 }
 

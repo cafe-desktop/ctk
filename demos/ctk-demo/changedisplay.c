@@ -129,8 +129,8 @@ query_for_toplevel (CdkScreen  *screen,
 
   if (cdk_seat_grab (cdk_device_get_seat (device),
                      ctk_widget_get_window (popup),
-                     GDK_SEAT_CAPABILITY_ALL_POINTING,
-                     FALSE, cursor, NULL, NULL, NULL) == GDK_GRAB_SUCCESS)
+                     CDK_SEAT_CAPABILITY_ALL_POINTING,
+                     FALSE, cursor, NULL, NULL, NULL) == CDK_GRAB_SUCCESS)
     {
       gboolean clicked = FALSE;
 
@@ -371,7 +371,7 @@ create_display_frame (ChangeDisplayInfo *info)
 
   info->display_model = (CtkTreeModel *)ctk_list_store_new (DISPLAY_NUM_COLUMNS,
                                                             G_TYPE_STRING,
-                                                            GDK_TYPE_DISPLAY);
+                                                            CDK_TYPE_DISPLAY);
 
   ctk_tree_view_set_model (CTK_TREE_VIEW (tree_view), info->display_model);
 

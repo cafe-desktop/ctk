@@ -164,7 +164,7 @@ How do I use CTK+ with threads?
 <answer>
 
 <para>
-This is covered in the <link linkend="cdk-Threads">GDK threads
+This is covered in the <link linkend="cdk-Threads">CDK threads
 documentation</link>. See also the <link linkend="glib-Threads">GThread</link>
 documentation for portable threading primitives.
 </para>
@@ -392,14 +392,14 @@ code:
 <informalexample>
 <programlisting>
   cdk_window_set_events (cdk_window,
-                         GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK);
+                         CDK_BUTTON_PRESS_MASK | CDK_BUTTON_RELEASE_MASK);
 </programlisting>
 </informalexample>
 while in C++ you must write:
 <informalexample>
 <programlisting>
   cdk_window_set_events (cdk_window,
-                         (CdkEventMask) GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK);
+                         (CdkEventMask) CDK_BUTTON_PRESS_MASK | CDK_BUTTON_RELEASE_MASK);
 </programlisting>
 </informalexample>
 There are very few functions that require this cast, however.
@@ -964,9 +964,9 @@ Glitz or GL backend of cairo ?
 </para></question>
 
 <answer><para>
-No. The GDK X11 backend uses the cairo X backend (and the other
-GDK backends use their respective native cairo backends). The
-CTK+ developers believe that the best way to improving the GDK
+No. The CDK X11 backend uses the cairo X backend (and the other
+CDK backends use their respective native cairo backends). The
+CTK+ developers believe that the best way to improving the CDK
 drawing performance is to optimize the cairo X backend and the
 relevant code paths in the X server that is uses (mostly the
 Render extension).

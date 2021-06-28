@@ -1,5 +1,5 @@
 N_("CTK+ Version");
-N_("GDK Backend");
+N_("CDK Backend");
 N_("Prefix");
 N_("X display");
 N_("RGBA visual");

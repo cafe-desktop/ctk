@@ -59,16 +59,16 @@ struct _CtkAccessibleClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType      ctk_accessible_get_type                 (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_accessible_set_widget               (CtkAccessible *accessible,
                                                     CtkWidget     *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *ctk_accessible_get_widget               (CtkAccessible *accessible);
 
-GDK_DEPRECATED_IN_3_4_FOR(ctk_accessible_set_widget)
+CDK_DEPRECATED_IN_3_4_FOR(ctk_accessible_set_widget)
 void       ctk_accessible_connect_widget_destroyed (CtkAccessible *accessible);
 
 G_END_DECLS

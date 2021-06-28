@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2009 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -69,7 +69,7 @@ cdk_event_apply_filters (XEvent    *xevent,
       CdkEventFilter *filter = (CdkEventFilter*) tmp_list->data;
       GList *node;
 
-      if ((filter->flags & GDK_EVENT_FILTER_REMOVED) != 0)
+      if ((filter->flags & CDK_EVENT_FILTER_REMOVED) != 0)
         {
           tmp_list = tmp_list->next;
           continue;
@@ -85,11 +85,11 @@ cdk_event_apply_filters (XEvent    *xevent,
 
       tmp_list = node;
 
-      if (result != GDK_FILTER_CONTINUE)
+      if (result != CDK_FILTER_CONTINUE)
         return result;
     }
 
-  return GDK_FILTER_CONTINUE;
+  return CDK_FILTER_CONTINUE;
 }
 
 static CdkWindow *
@@ -120,7 +120,7 @@ cdk_event_source_get_filter_window (CdkEventSource      *event_source,
   window = cdk_x11_window_lookup_for_display (event_source->display,
                                               xevent->xany.window);
 
-  if (window && !GDK_IS_WINDOW (window))
+  if (window && !CDK_IS_WINDOW (window))
     window = NULL;
 
   return window;
@@ -134,13 +134,13 @@ handle_focus_change (CdkEventCrossing *event)
   gboolean focus_in, had_focus;
 
   toplevel = _cdk_x11_window_get_toplevel (event->window);
-  x11_screen = GDK_X11_SCREEN (cdk_window_get_screen (event->window));
-  focus_in = (event->type == GDK_ENTER_NOTIFY);
+  x11_screen = CDK_X11_SCREEN (cdk_window_get_screen (event->window));
+  focus_in = (event->type == CDK_ENTER_NOTIFY);
 
   if (x11_screen->wmspec_check_window)
     return;
 
-  if (!toplevel || event->detail == GDK_NOTIFY_INFERIOR)
+  if (!toplevel || event->detail == CDK_NOTIFY_INFERIOR)
     return;
 
   toplevel->has_pointer = focus_in;
@@ -155,7 +155,7 @@ handle_focus_change (CdkEventCrossing *event)
     {
       CdkEvent *focus_event;
 
-      focus_event = cdk_event_new (GDK_FOCUS_CHANGE);
+      focus_event = cdk_event_new (CDK_FOCUS_CHANGE);
       focus_event->focus_change.window = g_object_ref (event->window);
       focus_event->focus_change.send_event = FALSE;
       focus_event->focus_change.in = focus_in;
@@ -170,13 +170,13 @@ static CdkEvent *
 cdk_event_source_translate_event (CdkEventSource *event_source,
                                   XEvent         *xevent)
 {
-  CdkEvent *event = cdk_event_new (GDK_NOTHING);
-  CdkFilterReturn result = GDK_FILTER_CONTINUE;
+  CdkEvent *event = cdk_event_new (CDK_NOTHING);
+  CdkFilterReturn result = CDK_FILTER_CONTINUE;
   CdkEventTranslator *event_translator;
   CdkWindow *filter_window;
   Display *dpy;
 
-  dpy = GDK_DISPLAY_XDISPLAY (event_source->display);
+  dpy = CDK_DISPLAY_XDISPLAY (event_source->display);
 
 #ifdef HAVE_XGENERICEVENTS
   /* Get cookie data here so it's available
@@ -198,26 +198,26 @@ cdk_event_source_translate_event (CdkEventSource *event_source,
       result = cdk_event_apply_filters (xevent, event, NULL);
     }
 
-  if (result == GDK_FILTER_CONTINUE &&
+  if (result == CDK_FILTER_CONTINUE &&
       filter_window && filter_window->filters)
     {
       /* Apply per-window filters */
       result = cdk_event_apply_filters (xevent, event, filter_window);
     }
 
-  if (result != GDK_FILTER_CONTINUE)
+  if (result != CDK_FILTER_CONTINUE)
     {
 #ifdef HAVE_XGENERICEVENTS
       if (xevent->type == GenericEvent)
         XFreeEventData (dpy, &xevent->xcookie);
 #endif
 
-      if (result == GDK_FILTER_REMOVE)
+      if (result == CDK_FILTER_REMOVE)
         {
           cdk_event_free (event);
           return NULL;
         }
-      else /* GDK_FILTER_TRANSLATE */
+      else /* CDK_FILTER_TRANSLATE */
         return event;
     }
 
@@ -247,8 +247,8 @@ cdk_event_source_translate_event (CdkEventSource *event_source,
     }
 
   if (event &&
-      (event->type == GDK_ENTER_NOTIFY ||
-       event->type == GDK_LEAVE_NOTIFY) &&
+      (event->type == CDK_ENTER_NOTIFY ||
+       event->type == CDK_LEAVE_NOTIFY) &&
       event->crossing.window != NULL)
     {
       /* Handle focusing (in the case where no window manager is running */
@@ -266,7 +266,7 @@ cdk_event_source_translate_event (CdkEventSource *event_source,
 static gboolean
 cdk_check_xpending (CdkDisplay *display)
 {
-  return XPending (GDK_DISPLAY_XDISPLAY (display));
+  return XPending (CDK_DISPLAY_XDISPLAY (display));
 }
 
 static gboolean
@@ -317,11 +317,11 @@ _cdk_x11_display_queue_events (CdkDisplay *display)
 {
   CdkEvent *event;
   XEvent xevent;
-  Display *xdisplay = GDK_DISPLAY_XDISPLAY (display);
+  Display *xdisplay = CDK_DISPLAY_XDISPLAY (display);
   CdkEventSource *event_source;
   CdkX11Display *display_x11;
 
-  display_x11 = GDK_X11_DISPLAY (display);
+  display_x11 = CDK_X11_DISPLAY (display);
   event_source = (CdkEventSource *) display_x11->event_source;
 
   while (!_cdk_event_queue_find_first (display) && XPending (xdisplay))
@@ -393,21 +393,21 @@ cdk_x11_event_source_new (CdkDisplay *display)
   char *name;
 
   source = g_source_new (&event_funcs, sizeof (CdkEventSource));
-  name = g_strdup_printf ("GDK X11 Event source (%s)",
+  name = g_strdup_printf ("CDK X11 Event source (%s)",
                           cdk_display_get_name (display));
   g_source_set_name (source, name);
   g_free (name);
   event_source = (CdkEventSource *) source;
   event_source->display = display;
 
-  display_x11 = GDK_X11_DISPLAY (display);
+  display_x11 = CDK_X11_DISPLAY (display);
   connection_number = ConnectionNumber (display_x11->xdisplay);
 
   event_source->event_poll_fd.fd = connection_number;
   event_source->event_poll_fd.events = G_IO_IN;
   g_source_add_poll (source, &event_source->event_poll_fd);
 
-  g_source_set_priority (source, GDK_PRIORITY_EVENTS);
+  g_source_set_priority (source, CDK_PRIORITY_EVENTS);
   g_source_set_can_recurse (source, TRUE);
   g_source_attach (source, NULL);
 
@@ -418,7 +418,7 @@ void
 cdk_x11_event_source_add_translator (CdkEventSource     *source,
                                      CdkEventTranslator *translator)
 {
-  g_return_if_fail (GDK_IS_EVENT_TRANSLATOR (translator));
+  g_return_if_fail (CDK_IS_EVENT_TRANSLATOR (translator));
 
   source->translators = g_list_append (source->translators, translator);
 }
@@ -458,5 +458,5 @@ cdk_x11_event_source_select_events (CdkEventSource *source,
         xmask |= _cdk_x11_event_mask_table[i];
     }
 
-  XSelectInput (GDK_DISPLAY_XDISPLAY (source->display), window, xmask);
+  XSelectInput (CDK_DISPLAY_XDISPLAY (source->display), window, xmask);
 }

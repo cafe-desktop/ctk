@@ -748,7 +748,7 @@ rgba_changed (GObject *object, GParamSpec *pspec, gpointer data)
   CdkRGBA *color;
   CdkRGBA cb_color;
 
-  g_value_init (&val, GDK_TYPE_RGBA);
+  g_value_init (&val, CDK_TYPE_RGBA);
   get_property_value (object, pspec, &val);
 
   color = g_value_get_boxed (&val);
@@ -790,7 +790,7 @@ color_changed (GObject *object, GParamSpec *pspec, gpointer data)
   CdkColor *color;
   CdkRGBA rgba;
 
-  g_value_init (&val, GDK_TYPE_COLOR);
+  g_value_init (&val, CDK_TYPE_COLOR);
   get_property_value (object, pspec, &val);
   color = g_value_get_boxed (&val);
   rgba.red = color->red / 65535.0;
@@ -1082,7 +1082,7 @@ property_editor (GObject                *object,
                                  prop_edit, G_OBJECT (label));
     }
   else if (type == G_TYPE_PARAM_BOXED &&
-           G_PARAM_SPEC_VALUE_TYPE (spec) == GDK_TYPE_RGBA)
+           G_PARAM_SPEC_VALUE_TYPE (spec) == CDK_TYPE_RGBA)
     {
       prop_edit = ctk_color_chooser_widget_new ();
       ctk_color_chooser_set_use_alpha (CTK_COLOR_CHOOSER (prop_edit), TRUE);

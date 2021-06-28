@@ -16,8 +16,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_PRIVATE_QUARTZ_H__
-#define __GDK_PRIVATE_QUARTZ_H__
+#ifndef __CDK_PRIVATE_QUARTZ_H__
+#define __CDK_PRIVATE_QUARTZ_H__
 
 
 #include <cdk/cdk.h>
@@ -26,7 +26,7 @@
 
 #include "config.h"
 
-#define GDK_WINDOW_IS_QUARTZ(win)        (GDK_IS_WINDOW_IMPL_QUARTZ (((CdkWindow *)win)->impl))
+#define CDK_WINDOW_IS_QUARTZ(win)        (CDK_IS_WINDOW_IMPL_QUARTZ (((CdkWindow *)win)->impl))
 
 
 /* Display */
@@ -34,4 +34,4 @@
 CdkDisplay *    _cdk_quartz_display_open (const gchar *name);
 
 
-#endif /* __GDK_PRIVATE_QUARTZ_H__ */
+#endif /* __CDK_PRIVATE_QUARTZ_H__ */

@@ -17,10 +17,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_QUARTZ_MONITOR_H__
-#define __GDK_QUARTZ_MONITOR_H__
+#ifndef __CDK_QUARTZ_MONITOR_H__
+#define __CDK_QUARTZ_MONITOR_H__
 
-#if !defined (__GDKQUARTZ_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined (__CDKQUARTZ_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdkquartz.h> can be included directly."
 #endif
 
@@ -28,18 +28,18 @@
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_QUARTZ_MONITOR           (cdk_quartz_monitor_get_type ())
-#define GDK_QUARTZ_MONITOR(object)        (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_QUARTZ_MONITOR, CdkQuartzMonitor))
-#define GDK_IS_QUARTZ_MONITOR(object)     (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_QUARTZ_MONITOR))
+#define CDK_TYPE_QUARTZ_MONITOR           (cdk_quartz_monitor_get_type ())
+#define CDK_QUARTZ_MONITOR(object)        (G_TYPE_CHECK_INSTANCE_CAST ((object), CDK_TYPE_QUARTZ_MONITOR, CdkQuartzMonitor))
+#define CDK_IS_QUARTZ_MONITOR(object)     (G_TYPE_CHECK_INSTANCE_TYPE ((object), CDK_TYPE_QUARTZ_MONITOR))
 
 typedef struct _CdkQuartzMonitor      CdkQuartzMonitor;
 typedef struct _CdkQuartzMonitorClass CdkQuartzMonitorClass;
 
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 GType             cdk_quartz_monitor_get_type            (void) G_GNUC_CONST;
 
 
 G_END_DECLS
 
-#endif  /* __GDK_QUARTZ_MONITOR_H__ */
+#endif  /* __CDK_QUARTZ_MONITOR_H__ */
 

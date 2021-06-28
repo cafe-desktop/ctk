@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -22,15 +22,15 @@
  * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
-#ifndef __GDK_X_H__
-#define __GDK_X_H__
+#ifndef __CDK_X_H__
+#define __CDK_X_H__
 
 #include <cdk/cdk.h>
 
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
 
-#define __GDKX_H_INSIDE__
+#define __CDKX_H_INSIDE__
 
 #include <cdk/x11/cdkx11applaunchcontext.h>
 #include <cdk/x11/cdkx11cursor.h>
@@ -55,6 +55,6 @@
 
 #include <cdk/x11/cdkx-autocleanups.h>
 
-#undef __GDKX_H_INSIDE__
+#undef __CDKX_H_INSIDE__
 
-#endif /* __GDK_X_H__ */
+#endif /* __CDK_X_H__ */

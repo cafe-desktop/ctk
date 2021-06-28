@@ -19,8 +19,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_X11_DISPLAY__
-#define __GDK_X11_DISPLAY__
+#ifndef __CDK_X11_DISPLAY__
+#define __CDK_X11_DISPLAY__
 
 #include "cdkdisplayprivate.h"
 #include "cdkkeys.h"
@@ -167,4 +167,4 @@ CdkFilterReturn _cdk_wm_protocols_filter        (CdkXEvent   *xev,
 
 G_END_DECLS
 
-#endif  /* __GDK_X11_DISPLAY__ */
+#endif  /* __CDK_X11_DISPLAY__ */

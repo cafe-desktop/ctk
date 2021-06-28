@@ -131,14 +131,14 @@ draw_brush (CtkWidget *widget, CdkInputSource source,
 
   switch (source)
     {
-    case GDK_SOURCE_MOUSE:
+    case CDK_SOURCE_MOUSE:
       color.red = color.green = 0.0;
       color.blue = 1.0;
       break;
-    case GDK_SOURCE_PEN:
+    case CDK_SOURCE_PEN:
       color.red = color.green = color.blue = 0.0;
       break;
-    case GDK_SOURCE_ERASER:
+    case CDK_SOURCE_ERASER:
       color.red = color.green = color.blue = 1.0;
       break;
     default:
@@ -187,13 +187,13 @@ button_press_event (CtkWidget *widget, CdkEventButton *event)
   current_device = event->device;
   cursor_proximity = TRUE;
 
-  if (event->button == GDK_BUTTON_PRIMARY &&
+  if (event->button == CDK_BUTTON_PRIMARY &&
       surface != NULL)
     {
       gdouble pressure = 0.5;
 
       print_axes (event->device, event->axes);
-      cdk_event_get_axis ((CdkEvent *)event, GDK_AXIS_PRESSURE, &pressure);
+      cdk_event_get_axis ((CdkEvent *)event, CDK_AXIS_PRESSURE, &pressure);
       draw_brush (widget, cdk_device_get_source (cdk_event_get_source_device (event)),
                   event->x, event->y, pressure);
 
@@ -226,7 +226,7 @@ motion_notify_event (CtkWidget *widget, CdkEventMotion *event)
   current_device = event->device;
   cursor_proximity = TRUE;
 
-  if (event->state & GDK_BUTTON1_MASK && surface != NULL)
+  if (event->state & CDK_BUTTON1_MASK && surface != NULL)
     {
       if (cdk_device_get_history (event->device, event->window, 
 				  motion_time, event->time,
@@ -236,9 +236,9 @@ motion_notify_event (CtkWidget *widget, CdkEventMotion *event)
 	    {
 	      double x = 0, y = 0, pressure = 0.5;
 
-	      cdk_device_get_axis (event->device, events[i]->axes, GDK_AXIS_X, &x);
-	      cdk_device_get_axis (event->device, events[i]->axes, GDK_AXIS_Y, &y);
-	      cdk_device_get_axis (event->device, events[i]->axes, GDK_AXIS_PRESSURE, &pressure);
+	      cdk_device_get_axis (event->device, events[i]->axes, CDK_AXIS_X, &x);
+	      cdk_device_get_axis (event->device, events[i]->axes, CDK_AXIS_Y, &y);
+	      cdk_device_get_axis (event->device, events[i]->axes, CDK_AXIS_PRESSURE, &pressure);
 	      draw_brush (widget, cdk_device_get_source (cdk_event_get_source_device (event)),
                           x, y, pressure);
 
@@ -250,7 +250,7 @@ motion_notify_event (CtkWidget *widget, CdkEventMotion *event)
 	{
 	  double pressure = 0.5;
 
-	  cdk_event_get_axis ((CdkEvent *)event, GDK_AXIS_PRESSURE, &pressure);
+	  cdk_event_get_axis ((CdkEvent *)event, CDK_AXIS_PRESSURE, &pressure);
 
 	  draw_brush (widget, cdk_device_get_source (cdk_event_get_source_device (event)),
                       event->x, event->y, pressure);
@@ -346,16 +346,16 @@ main (int argc, char *argv[])
   g_signal_connect (drawing_area, "proximity_out_event",
 		    G_CALLBACK (proximity_out_event), NULL);
 
-  event_mask = GDK_EXPOSURE_MASK |
-    GDK_LEAVE_NOTIFY_MASK |
-    GDK_BUTTON_PRESS_MASK |
-    GDK_KEY_PRESS_MASK |
-    GDK_POINTER_MOTION_MASK |
-    GDK_PROXIMITY_OUT_MASK;
+  event_mask = CDK_EXPOSURE_MASK |
+    CDK_LEAVE_NOTIFY_MASK |
+    CDK_BUTTON_PRESS_MASK |
+    CDK_KEY_PRESS_MASK |
+    CDK_POINTER_MOTION_MASK |
+    CDK_PROXIMITY_OUT_MASK;
 
   ctk_widget_set_events (drawing_area, event_mask);
 
-  devices = cdk_seat_get_slaves (seat, GDK_SEAT_CAPABILITY_ALL_POINTING);
+  devices = cdk_seat_get_slaves (seat, CDK_SEAT_CAPABILITY_ALL_POINTING);
 
   for (d = devices; d; d = d->next)
     {
@@ -363,7 +363,7 @@ main (int argc, char *argv[])
 
       device = d->data;
       ctk_widget_set_device_events (drawing_area, device, event_mask);
-      cdk_device_set_mode (device, GDK_MODE_SCREEN);
+      cdk_device_set_mode (device, CDK_MODE_SCREEN);
     }
 
   g_list_free (devices);

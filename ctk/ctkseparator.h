@@ -66,9 +66,9 @@ struct _CtkSeparatorClass
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType       ctk_separator_get_type (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget * ctk_separator_new      (CtkOrientation orientation);
 
 

@@ -37,7 +37,7 @@
 #include <ctk/ctktogglebutton.h>
 #include <ctk/ctkaccessible.h>
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
 #include <atk-bridge.h>
 #endif
 
@@ -156,7 +156,7 @@ gail_focus_watcher (GSignalInvocationHint *ihint,
   event = g_value_get_boxed (param_values + 1);
   widget = CTK_WIDGET (object);
 
-  if (event->type == GDK_FOCUS_CHANGE) 
+  if (event->type == CDK_FOCUS_CHANGE) 
     {
       if (event->focus_change.in)
         {
@@ -241,7 +241,7 @@ gail_focus_watcher (GSignalInvocationHint *ihint,
     }
   else
     {
-      if (event->type == GDK_MOTION_NOTIFY && ctk_widget_has_focus (widget))
+      if (event->type == CDK_MOTION_NOTIFY && ctk_widget_has_focus (widget))
         {
           if (widget == _focus_widget)
             {
@@ -254,7 +254,7 @@ gail_focus_watcher (GSignalInvocationHint *ihint,
         }
     }
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
   /*
    * If the focus widget is a CtkSocket without a plug
    * then ignore the focus notification as the embedded
@@ -821,13 +821,13 @@ state_event_watcher (GSignalInvocationHint *hint,
     return FALSE;
 
   event = g_value_get_boxed (param_values + 1);
-  if (event->type == GDK_WINDOW_STATE)
+  if (event->type == CDK_WINDOW_STATE)
     return FALSE;
   widget = CTK_WIDGET (object);
 
-  if (event->new_window_state & GDK_WINDOW_STATE_MAXIMIZED)
+  if (event->new_window_state & CDK_WINDOW_STATE_MAXIMIZED)
     signal_name = "maximize";
-  else if (event->new_window_state & GDK_WINDOW_STATE_ICONIFIED)
+  else if (event->new_window_state & CDK_WINDOW_STATE_ICONIFIED)
     signal_name = "minimize";
   else if (event->new_window_state == 0)
     signal_name = "restore";
@@ -866,7 +866,7 @@ configure_event_watcher (GSignalInvocationHint *hint,
     return FALSE;
 
   event = g_value_get_boxed (param_values + 1);
-  if (event->type != GDK_CONFIGURE)
+  if (event->type != CDK_CONFIGURE)
     return FALSE;
   widget = CTK_WIDGET (object);
   ctk_widget_get_allocation (widget, &allocation);
@@ -988,7 +988,7 @@ _ctk_accessibility_init (void)
   _ctk_accessibility_override_atk_util ();
   do_window_event_initialization ();
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
   atk_bridge_adaptor_init (NULL, NULL);
 #endif
 

@@ -478,7 +478,7 @@ ctk_expander_init (CtkExpander *expander)
 
   priv->multipress_gesture = ctk_gesture_multi_press_new (CTK_WIDGET (expander));
   ctk_gesture_single_set_button (CTK_GESTURE_SINGLE (priv->multipress_gesture),
-                                 GDK_BUTTON_PRIMARY);
+                                 CDK_BUTTON_PRIMARY);
   ctk_gesture_single_set_touch_only (CTK_GESTURE_SINGLE (priv->multipress_gesture),
                                      FALSE);
   g_signal_connect (priv->multipress_gesture, "released",
@@ -623,19 +623,19 @@ ctk_expander_realize (CtkWidget *widget)
 
   ctk_css_gadget_get_border_allocation (priv->title_gadget, &title_allocation, NULL);
 
-  attributes.window_type = GDK_WINDOW_CHILD;
+  attributes.window_type = CDK_WINDOW_CHILD;
   attributes.x = title_allocation.x;
   attributes.y = title_allocation.y;
   attributes.width = title_allocation.width;
   attributes.height = title_allocation.height;
-  attributes.wclass = GDK_INPUT_ONLY;
+  attributes.wclass = CDK_INPUT_ONLY;
   attributes.event_mask = ctk_widget_get_events (widget)
-                          | GDK_BUTTON_PRESS_MASK
-                          | GDK_BUTTON_RELEASE_MASK
-                          | GDK_ENTER_NOTIFY_MASK
-                          | GDK_LEAVE_NOTIFY_MASK;
+                          | CDK_BUTTON_PRESS_MASK
+                          | CDK_BUTTON_RELEASE_MASK
+                          | CDK_ENTER_NOTIFY_MASK
+                          | CDK_LEAVE_NOTIFY_MASK;
 
-  attributes_mask = GDK_WA_X | GDK_WA_Y;
+  attributes_mask = CDK_WA_X | CDK_WA_Y;
 
   window = ctk_widget_get_parent_window (widget);
   ctk_widget_set_window (widget, window);
@@ -813,7 +813,7 @@ ctk_expander_enter_notify (CtkWidget        *widget,
   CtkExpander *expander = CTK_EXPANDER (widget);
 
   if (event->window == expander->priv->event_window &&
-      event->detail != GDK_NOTIFY_INFERIOR)
+      event->detail != CDK_NOTIFY_INFERIOR)
     {
       expander->priv->prelight = TRUE;
 
@@ -837,7 +837,7 @@ ctk_expander_leave_notify (CtkWidget        *widget,
   CtkExpander *expander = CTK_EXPANDER (widget);
 
   if (event->window == expander->priv->event_window &&
-      event->detail != GDK_NOTIFY_INFERIOR)
+      event->detail != CDK_NOTIFY_INFERIOR)
     {
       expander->priv->prelight = FALSE;
 

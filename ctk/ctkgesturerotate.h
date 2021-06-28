@@ -39,13 +39,13 @@ G_BEGIN_DECLS
 typedef struct _CtkGestureRotate CtkGestureRotate;
 typedef struct _CtkGestureRotateClass CtkGestureRotateClass;
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 GType        ctk_gesture_rotate_get_type        (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 CtkGesture * ctk_gesture_rotate_new             (CtkWidget        *widget);
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 gdouble      ctk_gesture_rotate_get_angle_delta (CtkGestureRotate *gesture);
 
 G_END_DECLS

@@ -151,7 +151,7 @@ ctk_cell_renderer_pixbuf_class_init (CtkCellRendererPixbufClass *class)
 				   g_param_spec_object ("pixbuf",
 							P_("Pixbuf Object"),
 							P_("The pixbuf to render"),
-							GDK_TYPE_PIXBUF,
+							CDK_TYPE_PIXBUF,
 							CTK_PARAM_READWRITE));
 
   g_object_class_install_property (object_class,
@@ -159,7 +159,7 @@ ctk_cell_renderer_pixbuf_class_init (CtkCellRendererPixbufClass *class)
 				   g_param_spec_object ("pixbuf-expander-open",
 							P_("Pixbuf Expander Open"),
 							P_("Pixbuf for open expander"),
-							GDK_TYPE_PIXBUF,
+							CDK_TYPE_PIXBUF,
 							CTK_PARAM_READWRITE));
 
   g_object_class_install_property (object_class,
@@ -167,7 +167,7 @@ ctk_cell_renderer_pixbuf_class_init (CtkCellRendererPixbufClass *class)
 				   g_param_spec_object ("pixbuf-expander-closed",
 							P_("Pixbuf Expander Closed"),
 							P_("Pixbuf for closed expander"),
-							GDK_TYPE_PIXBUF,
+							CDK_TYPE_PIXBUF,
 							CTK_PARAM_READWRITE));
   /**
    * CtkCellRendererPixbuf:surface:

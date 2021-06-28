@@ -58,18 +58,18 @@ struct _CtkIMMulticontextClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType         ctk_im_multicontext_get_type (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkIMContext *ctk_im_multicontext_new      (void);
 
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void          ctk_im_multicontext_append_menuitems (CtkIMMulticontext *context,
 						    CtkMenuShell      *menushell);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const char  * ctk_im_multicontext_get_context_id   (CtkIMMulticontext *context);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_im_multicontext_set_context_id   (CtkIMMulticontext *context,
                                                     const char        *context_id);
  

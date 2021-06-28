@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2016 Red Hat
  *
  * This library is free software; you can redistribute it and/or
@@ -17,10 +17,10 @@
  * Author: Carlos Garnacho <carlosg@gnome.org>
  */
 
-#ifndef __GDK_DEVICE_PAD_H__
-#define __GDK_DEVICE_PAD_H__
+#ifndef __CDK_DEVICE_PAD_H__
+#define __CDK_DEVICE_PAD_H__
 
-#if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined (__CDK_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdk.h> can be included directly."
 #endif
 
@@ -29,46 +29,46 @@
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_DEVICE_PAD         (cdk_device_pad_get_type ())
-#define GDK_DEVICE_PAD(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_DEVICE_PAD, CdkDevicePad))
-#define GDK_IS_DEVICE_PAD(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_DEVICE_PAD))
+#define CDK_TYPE_DEVICE_PAD         (cdk_device_pad_get_type ())
+#define CDK_DEVICE_PAD(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CDK_TYPE_DEVICE_PAD, CdkDevicePad))
+#define CDK_IS_DEVICE_PAD(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CDK_TYPE_DEVICE_PAD))
 
 typedef struct _CdkDevicePad CdkDevicePad;
 typedef struct _CdkDevicePadInterface CdkDevicePadInterface;
 
 /**
  * CdkDevicePadFeature:
- * @GDK_DEVICE_PAD_FEATURE_BUTTON: a button
- * @GDK_DEVICE_PAD_FEATURE_RING: a ring-shaped interactive area
- * @GDK_DEVICE_PAD_FEATURE_STRIP: a straight interactive area
+ * @CDK_DEVICE_PAD_FEATURE_BUTTON: a button
+ * @CDK_DEVICE_PAD_FEATURE_RING: a ring-shaped interactive area
+ * @CDK_DEVICE_PAD_FEATURE_STRIP: a straight interactive area
  *
  * A pad feature.
  */
 typedef enum {
-  GDK_DEVICE_PAD_FEATURE_BUTTON,
-  GDK_DEVICE_PAD_FEATURE_RING,
-  GDK_DEVICE_PAD_FEATURE_STRIP
+  CDK_DEVICE_PAD_FEATURE_BUTTON,
+  CDK_DEVICE_PAD_FEATURE_RING,
+  CDK_DEVICE_PAD_FEATURE_STRIP
 } CdkDevicePadFeature;
 
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 GType cdk_device_pad_get_type          (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 gint  cdk_device_pad_get_n_groups      (CdkDevicePad *pad);
 
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 gint  cdk_device_pad_get_group_n_modes (CdkDevicePad *pad,
                                         gint          group_idx);
 
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 gint  cdk_device_pad_get_n_features    (CdkDevicePad        *pad,
                                         CdkDevicePadFeature  feature);
 
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 gint  cdk_device_pad_get_feature_group (CdkDevicePad        *pad,
                                         CdkDevicePadFeature  feature,
                                         gint                 feature_idx);
 
 G_END_DECLS
 
-#endif /* __GDK_DEVICE_PAD_H__ */
+#endif /* __CDK_DEVICE_PAD_H__ */

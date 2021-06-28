@@ -39,10 +39,10 @@ G_BEGIN_DECLS
 typedef struct _CtkEventControllerMotion CtkEventControllerMotion;
 typedef struct _CtkEventControllerMotionClass CtkEventControllerMotionClass;
 
-GDK_AVAILABLE_IN_3_24
+CDK_AVAILABLE_IN_3_24
 GType               ctk_event_controller_motion_get_type (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_3_24
+CDK_AVAILABLE_IN_3_24
 CtkEventController *ctk_event_controller_motion_new      (CtkWidget *widget);
 
 G_END_DECLS

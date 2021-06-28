@@ -88,39 +88,39 @@ struct _CtkPrinterOptionClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType   ctk_printer_option_get_type       (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkPrinterOption *ctk_printer_option_new                    (const char           *name,
 							     const char           *display_text,
 							     CtkPrinterOptionType  type);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_printer_option_set                    (CtkPrinterOption     *option,
 							     const char           *value);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_printer_option_set_has_conflict       (CtkPrinterOption     *option,
 							     gboolean              has_conflict);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_printer_option_clear_has_conflict     (CtkPrinterOption     *option);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_printer_option_set_boolean            (CtkPrinterOption     *option,
 							     gboolean              value);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_printer_option_allocate_choices       (CtkPrinterOption     *option,
 							     int                   num);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_printer_option_choices_from_array     (CtkPrinterOption     *option,
 							     int                   num_choices,
 							     char                 *choices[],
 							     char                 *choices_display[]);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean          ctk_printer_option_has_choice             (CtkPrinterOption     *option,
 							    const char           *choice);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_printer_option_set_activates_default (CtkPrinterOption     *option,
 							    gboolean              activates);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean          ctk_printer_option_get_activates_default (CtkPrinterOption     *option);
 
 

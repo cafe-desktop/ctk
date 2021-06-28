@@ -192,57 +192,57 @@ struct _CtkTreeModelIface
 
 
 /* CtkTreePath operations */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreePath *ctk_tree_path_new              (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreePath *ctk_tree_path_new_from_string  (const gchar       *path);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreePath *ctk_tree_path_new_from_indices (gint               first_index,
 					     ...);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 CtkTreePath *ctk_tree_path_new_from_indicesv (gint             *indices,
 					      gsize             length);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gchar       *ctk_tree_path_to_string        (CtkTreePath       *path);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreePath *ctk_tree_path_new_first        (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void         ctk_tree_path_append_index     (CtkTreePath       *path,
 					     gint               index_);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void         ctk_tree_path_prepend_index    (CtkTreePath       *path,
 					     gint               index_);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint         ctk_tree_path_get_depth        (CtkTreePath       *path);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint        *ctk_tree_path_get_indices      (CtkTreePath       *path);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint        *ctk_tree_path_get_indices_with_depth (CtkTreePath *path,
 						   gint        *depth);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void         ctk_tree_path_free             (CtkTreePath       *path);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreePath *ctk_tree_path_copy             (const CtkTreePath *path);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType        ctk_tree_path_get_type         (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint         ctk_tree_path_compare          (const CtkTreePath *a,
 					     const CtkTreePath *b);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void         ctk_tree_path_next             (CtkTreePath       *path);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean     ctk_tree_path_prev             (CtkTreePath       *path);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean     ctk_tree_path_up               (CtkTreePath       *path);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void         ctk_tree_path_down             (CtkTreePath       *path);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean     ctk_tree_path_is_ancestor      (CtkTreePath       *path,
                                              CtkTreePath       *descendant);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean     ctk_tree_path_is_descendant    (CtkTreePath       *path,
                                              CtkTreePath       *ancestor);
 
@@ -254,149 +254,149 @@ gboolean     ctk_tree_path_is_descendant    (CtkTreePath       *path,
  * new CtkTreeRowReference with ctk_tree_row_reference_new().
  */
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType                ctk_tree_row_reference_get_type (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreeRowReference *ctk_tree_row_reference_new       (CtkTreeModel        *model,
 						       CtkTreePath         *path);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreeRowReference *ctk_tree_row_reference_new_proxy (GObject             *proxy,
 						       CtkTreeModel        *model,
 						       CtkTreePath         *path);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreePath         *ctk_tree_row_reference_get_path  (CtkTreeRowReference *reference);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreeModel        *ctk_tree_row_reference_get_model (CtkTreeRowReference *reference);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean             ctk_tree_row_reference_valid     (CtkTreeRowReference *reference);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreeRowReference *ctk_tree_row_reference_copy      (CtkTreeRowReference *reference);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                 ctk_tree_row_reference_free      (CtkTreeRowReference *reference);
 /* These two functions are only needed if you created the row reference with a
  * proxy object */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                 ctk_tree_row_reference_inserted  (GObject     *proxy,
 						       CtkTreePath *path);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                 ctk_tree_row_reference_deleted   (GObject     *proxy,
 						       CtkTreePath *path);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                 ctk_tree_row_reference_reordered (GObject     *proxy,
 						       CtkTreePath *path,
 						       CtkTreeIter *iter,
 						       gint        *new_order);
 
 /* CtkTreeIter operations */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreeIter *     ctk_tree_iter_copy             (CtkTreeIter  *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_tree_iter_free             (CtkTreeIter  *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType             ctk_tree_iter_get_type         (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType             ctk_tree_model_get_type        (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreeModelFlags ctk_tree_model_get_flags       (CtkTreeModel *tree_model);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint              ctk_tree_model_get_n_columns   (CtkTreeModel *tree_model);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType             ctk_tree_model_get_column_type (CtkTreeModel *tree_model,
 						  gint          index_);
 
 
 /* Iterator movement */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean          ctk_tree_model_get_iter        (CtkTreeModel *tree_model,
 						  CtkTreeIter  *iter,
 						  CtkTreePath  *path);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean          ctk_tree_model_get_iter_from_string (CtkTreeModel *tree_model,
 						       CtkTreeIter  *iter,
 						       const gchar  *path_string);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gchar *           ctk_tree_model_get_string_from_iter (CtkTreeModel *tree_model,
                                                        CtkTreeIter  *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean          ctk_tree_model_get_iter_first  (CtkTreeModel *tree_model,
 						  CtkTreeIter  *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreePath *     ctk_tree_model_get_path        (CtkTreeModel *tree_model,
 						  CtkTreeIter  *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_tree_model_get_value       (CtkTreeModel *tree_model,
 						  CtkTreeIter  *iter,
 						  gint          column,
 						  GValue       *value);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean          ctk_tree_model_iter_previous   (CtkTreeModel *tree_model,
 						  CtkTreeIter  *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean          ctk_tree_model_iter_next       (CtkTreeModel *tree_model,
 						  CtkTreeIter  *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean          ctk_tree_model_iter_children   (CtkTreeModel *tree_model,
 						  CtkTreeIter  *iter,
 						  CtkTreeIter  *parent);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean          ctk_tree_model_iter_has_child  (CtkTreeModel *tree_model,
 						  CtkTreeIter  *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint              ctk_tree_model_iter_n_children (CtkTreeModel *tree_model,
 						  CtkTreeIter  *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean          ctk_tree_model_iter_nth_child  (CtkTreeModel *tree_model,
 						  CtkTreeIter  *iter,
 						  CtkTreeIter  *parent,
 						  gint          n);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean          ctk_tree_model_iter_parent     (CtkTreeModel *tree_model,
 						  CtkTreeIter  *iter,
 						  CtkTreeIter  *child);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_tree_model_ref_node        (CtkTreeModel *tree_model,
 						  CtkTreeIter  *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_tree_model_unref_node      (CtkTreeModel *tree_model,
 						  CtkTreeIter  *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_tree_model_get             (CtkTreeModel *tree_model,
 						  CtkTreeIter  *iter,
 						  ...);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_tree_model_get_valist      (CtkTreeModel *tree_model,
 						  CtkTreeIter  *iter,
 						  va_list       var_args);
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_tree_model_foreach         (CtkTreeModel            *model,
 						  CtkTreeModelForeachFunc  func,
 						  gpointer                 user_data);
 
 /* Signals */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_tree_model_row_changed           (CtkTreeModel *tree_model,
 					   CtkTreePath  *path,
 					   CtkTreeIter  *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_tree_model_row_inserted          (CtkTreeModel *tree_model,
 					   CtkTreePath  *path,
 					   CtkTreeIter  *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_tree_model_row_has_child_toggled (CtkTreeModel *tree_model,
 					   CtkTreePath  *path,
 					   CtkTreeIter  *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_tree_model_row_deleted           (CtkTreeModel *tree_model,
 					   CtkTreePath  *path);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_tree_model_rows_reordered        (CtkTreeModel *tree_model,
 					   CtkTreePath  *path,
 					   CtkTreeIter  *iter,
 					   gint         *new_order);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void ctk_tree_model_rows_reordered_with_length (CtkTreeModel *tree_model,
 						CtkTreePath  *path,
 						CtkTreeIter  *iter,

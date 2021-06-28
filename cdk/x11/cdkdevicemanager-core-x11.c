@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2009 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -47,14 +47,14 @@ static gboolean cdk_x11_device_manager_core_translate_event  (CdkEventTranslator
                                                               XEvent             *xevent);
 
 
-G_DEFINE_TYPE_WITH_CODE (CdkX11DeviceManagerCore, cdk_x11_device_manager_core, GDK_TYPE_DEVICE_MANAGER,
-                         G_IMPLEMENT_INTERFACE (GDK_TYPE_EVENT_TRANSLATOR,
+G_DEFINE_TYPE_WITH_CODE (CdkX11DeviceManagerCore, cdk_x11_device_manager_core, CDK_TYPE_DEVICE_MANAGER,
+                         G_IMPLEMENT_INTERFACE (CDK_TYPE_EVENT_TRANSLATOR,
                                                 cdk_x11_device_manager_event_translator_init))
 
 static void
 cdk_x11_device_manager_core_class_init (CdkX11DeviceManagerCoreClass *klass)
 {
-  CdkDeviceManagerClass *device_manager_class = GDK_DEVICE_MANAGER_CLASS (klass);
+  CdkDeviceManagerClass *device_manager_class = CDK_DEVICE_MANAGER_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   object_class->finalize = cdk_x11_device_manager_core_finalize;
@@ -73,11 +73,11 @@ static CdkDevice *
 create_core_pointer (CdkDeviceManager *device_manager,
                      CdkDisplay       *display)
 {
-  return g_object_new (GDK_TYPE_X11_DEVICE_CORE,
+  return g_object_new (CDK_TYPE_X11_DEVICE_CORE,
                        "name", "Core Pointer",
-                       "type", GDK_DEVICE_TYPE_MASTER,
-                       "input-source", GDK_SOURCE_MOUSE,
-                       "input-mode", GDK_MODE_SCREEN,
+                       "type", CDK_DEVICE_TYPE_MASTER,
+                       "input-source", CDK_SOURCE_MOUSE,
+                       "input-mode", CDK_MODE_SCREEN,
                        "has-cursor", TRUE,
                        "display", display,
                        "device-manager", device_manager,
@@ -88,11 +88,11 @@ static CdkDevice *
 create_core_keyboard (CdkDeviceManager *device_manager,
                       CdkDisplay       *display)
 {
-  return g_object_new (GDK_TYPE_X11_DEVICE_CORE,
+  return g_object_new (CDK_TYPE_X11_DEVICE_CORE,
                        "name", "Core Keyboard",
-                       "type", GDK_DEVICE_TYPE_MASTER,
-                       "input-source", GDK_SOURCE_KEYBOARD,
-                       "input-mode", GDK_MODE_SCREEN,
+                       "type", CDK_DEVICE_TYPE_MASTER,
+                       "input-source", CDK_SOURCE_KEYBOARD,
+                       "input-mode", CDK_MODE_SCREEN,
                        "has-cursor", FALSE,
                        "display", display,
                        "device-manager", device_manager,
@@ -109,7 +109,7 @@ cdk_x11_device_manager_core_finalize (GObject *object)
 {
   CdkX11DeviceManagerCore *device_manager_core;
 
-  device_manager_core = GDK_X11_DEVICE_MANAGER_CORE (object);
+  device_manager_core = CDK_X11_DEVICE_MANAGER_CORE (object);
 
   g_object_unref (device_manager_core->core_pointer);
   g_object_unref (device_manager_core->core_keyboard);
@@ -123,16 +123,16 @@ cdk_x11_device_manager_core_constructed (GObject *object)
   CdkX11DeviceManagerCore *device_manager;
   CdkDisplay *display;
 
-  device_manager = GDK_X11_DEVICE_MANAGER_CORE (object);
-  display = cdk_device_manager_get_display (GDK_DEVICE_MANAGER (object));
-  device_manager->core_pointer = create_core_pointer (GDK_DEVICE_MANAGER (device_manager), display);
-  device_manager->core_keyboard = create_core_keyboard (GDK_DEVICE_MANAGER (device_manager), display);
+  device_manager = CDK_X11_DEVICE_MANAGER_CORE (object);
+  display = cdk_device_manager_get_display (CDK_DEVICE_MANAGER (object));
+  device_manager->core_pointer = create_core_pointer (CDK_DEVICE_MANAGER (device_manager), display);
+  device_manager->core_keyboard = create_core_keyboard (CDK_DEVICE_MANAGER (device_manager), display);
 
   _cdk_device_set_associated_device (device_manager->core_pointer, device_manager->core_keyboard);
   _cdk_device_set_associated_device (device_manager->core_keyboard, device_manager->core_pointer);
 
   /* We expect subclasses to handle their own seats */
-  if (G_OBJECT_TYPE (object) == GDK_TYPE_X11_DEVICE_MANAGER_CORE)
+  if (G_OBJECT_TYPE (object) == CDK_TYPE_X11_DEVICE_MANAGER_CORE)
     {
       CdkSeat *seat;
 
@@ -153,7 +153,7 @@ translate_key_event (CdkDisplay              *display,
   CdkKeymap *keymap = cdk_keymap_get_for_display (display);
   CdkModifierType consumed, state;
 
-  event->key.type = xevent->xany.type == KeyPress ? GDK_KEY_PRESS : GDK_KEY_RELEASE;
+  event->key.type = xevent->xany.type == KeyPress ? CDK_KEY_PRESS : CDK_KEY_RELEASE;
   event->key.time = xevent->xkey.time;
   cdk_event_set_device (event, device_manager->core_keyboard);
 
@@ -162,7 +162,7 @@ translate_key_event (CdkDisplay              *display,
   event->key.hardware_keycode = xevent->xkey.keycode;
   cdk_event_set_scancode (event, xevent->xkey.keycode);
 
-  event->key.keyval = GDK_KEY_VoidSymbol;
+  event->key.keyval = CDK_KEY_VoidSymbol;
 
   cdk_keymap_translate_keyboard_state (keymap,
                                        event->key.hardware_keycode,
@@ -180,10 +180,10 @@ translate_key_event (CdkDisplay              *display,
   _cdk_x11_event_translate_keyboard_string (&event->key);
 
 #ifdef G_ENABLE_DEBUG
-  if (GDK_DEBUG_CHECK (EVENTS))
+  if (CDK_DEBUG_CHECK (EVENTS))
     {
       g_message ("%s:\t\twindow: %ld     key: %12s  %d",
-                 event->type == GDK_KEY_PRESS ? "key press  " : "key release",
+                 event->type == CDK_KEY_PRESS ? "key press  " : "key release",
                  xevent->xkey.window,
                  event->key.keyval ? cdk_keyval_name (event->key.keyval) : "(none)",
                  event->key.keyval);
@@ -223,12 +223,12 @@ set_user_time (CdkWindow *window,
   g_return_if_fail (event != NULL);
 
   window = cdk_window_get_toplevel (event->any.window);
-  g_return_if_fail (GDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_WINDOW (window));
 
   /* If an event doesn't have a valid timestamp, we shouldn't use it
    * to update the latest user interaction time.
    */
-  if (cdk_event_get_time (event) != GDK_CURRENT_TIME)
+  if (cdk_event_get_time (event) != CDK_CURRENT_TIME)
     cdk_x11_window_set_user_time (cdk_window_get_toplevel (window),
                                   cdk_event_get_time (event));
 }
@@ -258,11 +258,11 @@ translate_crossing_mode (int mode)
   switch (mode)
     {
     case NotifyNormal:
-      return GDK_CROSSING_NORMAL;
+      return CDK_CROSSING_NORMAL;
     case NotifyGrab:
-      return GDK_CROSSING_GRAB;
+      return CDK_CROSSING_GRAB;
     case NotifyUngrab:
-      return GDK_CROSSING_UNGRAB;
+      return CDK_CROSSING_UNGRAB;
     default:
       g_assert_not_reached ();
     }
@@ -274,15 +274,15 @@ translate_notify_type (int detail)
   switch (detail)
     {
     case NotifyInferior:
-      return GDK_NOTIFY_INFERIOR;
+      return CDK_NOTIFY_INFERIOR;
     case NotifyAncestor:
-      return GDK_NOTIFY_ANCESTOR;
+      return CDK_NOTIFY_ANCESTOR;
     case NotifyVirtual:
-      return GDK_NOTIFY_VIRTUAL;
+      return CDK_NOTIFY_VIRTUAL;
     case NotifyNonlinear:
-      return GDK_NOTIFY_NONLINEAR;
+      return CDK_NOTIFY_NONLINEAR;
     case NotifyNonlinearVirtual:
-      return GDK_NOTIFY_NONLINEAR_VIRTUAL;
+      return CDK_NOTIFY_NONLINEAR_VIRTUAL;
     default:
       g_assert_not_reached ();
     }
@@ -314,7 +314,7 @@ get_event_window (CdkEventTranslator *translator,
   CdkDisplay *display;
   CdkWindow *window;
 
-  device_manager = GDK_DEVICE_MANAGER (translator);
+  device_manager = CDK_DEVICE_MANAGER (translator);
   display = cdk_device_manager_get_display (device_manager);
   window = cdk_x11_window_lookup_for_display (display, xevent->xany.window);
 
@@ -326,7 +326,7 @@ get_event_window (CdkEventTranslator *translator,
 
       serial = _cdk_display_get_next_serial (display);
       info = _cdk_display_has_device_grab (display,
-                                           GDK_X11_DEVICE_MANAGER_CORE (device_manager)->core_keyboard,
+                                           CDK_X11_DEVICE_MANAGER_CORE (device_manager)->core_keyboard,
                                            serial);
       if (info &&
           (!is_parent_of (info->window, window) ||
@@ -351,27 +351,27 @@ cdk_x11_device_manager_core_translate_event (CdkEventTranslator *translator,
   CdkWindow *window;
   gboolean return_val;
   int scale;
-  CdkX11Display *display_x11 = GDK_X11_DISPLAY (display);
+  CdkX11Display *display_x11 = CDK_X11_DISPLAY (display);
 
-  device_manager = GDK_X11_DEVICE_MANAGER_CORE (translator);
+  device_manager = CDK_X11_DEVICE_MANAGER_CORE (translator);
 
   window = get_event_window (translator, xevent);
 
   scale = 1;
   if (window)
     {
-      if (GDK_WINDOW_DESTROYED (window) || !GDK_IS_WINDOW (window))
+      if (CDK_WINDOW_DESTROYED (window) || !CDK_IS_WINDOW (window))
         return FALSE;
 
       g_object_ref (window);
-      impl = GDK_WINDOW_IMPL_X11 (window->impl);
+      impl = CDK_WINDOW_IMPL_X11 (window->impl);
       scale = impl->window_scale;
     }
 
   event->any.window = window;
   event->any.send_event = xevent->xany.send_event ? TRUE : FALSE;
 
-  if (window && GDK_WINDOW_DESTROYED (window))
+  if (window && CDK_WINDOW_DESTROYED (window))
     {
       if (xevent->type != DestroyNotify)
         {
@@ -443,7 +443,7 @@ cdk_x11_device_manager_core_translate_event (CdkEventTranslator *translator,
       break;
 
     case ButtonPress:
-      GDK_NOTE (EVENTS,
+      CDK_NOTE (EVENTS,
                 g_message ("button press:\t\twindow: %ld  x,y: %d %d  button: %d",
                            xevent->xbutton.window,
                            xevent->xbutton.x, xevent->xbutton.y,
@@ -463,16 +463,16 @@ cdk_x11_device_manager_core_translate_event (CdkEventTranslator *translator,
         case 5: /* down */
         case 6: /* left */
         case 7: /* right */
-          event->scroll.type = GDK_SCROLL;
+          event->scroll.type = CDK_SCROLL;
 
           if (xevent->xbutton.button == 4)
-            event->scroll.direction = GDK_SCROLL_UP;
+            event->scroll.direction = CDK_SCROLL_UP;
           else if (xevent->xbutton.button == 5)
-            event->scroll.direction = GDK_SCROLL_DOWN;
+            event->scroll.direction = CDK_SCROLL_DOWN;
           else if (xevent->xbutton.button == 6)
-            event->scroll.direction = GDK_SCROLL_LEFT;
+            event->scroll.direction = CDK_SCROLL_LEFT;
           else
-            event->scroll.direction = GDK_SCROLL_RIGHT;
+            event->scroll.direction = CDK_SCROLL_RIGHT;
 
           event->scroll.window = window;
           event->scroll.time = xevent->xbutton.time;
@@ -495,7 +495,7 @@ cdk_x11_device_manager_core_translate_event (CdkEventTranslator *translator,
           break;
 
         default:
-          event->button.type = GDK_BUTTON_PRESS;
+          event->button.type = CDK_BUTTON_PRESS;
           event->button.window = window;
           event->button.time = xevent->xbutton.time;
           event->button.x = (gdouble) xevent->xbutton.x / scale;
@@ -518,7 +518,7 @@ cdk_x11_device_manager_core_translate_event (CdkEventTranslator *translator,
       break;
 
     case ButtonRelease:
-      GDK_NOTE (EVENTS,
+      CDK_NOTE (EVENTS,
                 g_message ("button release:\twindow: %ld  x,y: %d %d  button: %d",
                            xevent->xbutton.window,
                            xevent->xbutton.x, xevent->xbutton.y,
@@ -538,7 +538,7 @@ cdk_x11_device_manager_core_translate_event (CdkEventTranslator *translator,
           break;
         }
 
-      event->button.type = GDK_BUTTON_RELEASE;
+      event->button.type = CDK_BUTTON_RELEASE;
       event->button.window = window;
       event->button.time = xevent->xbutton.time;
       event->button.x = (gdouble) xevent->xbutton.x / scale;
@@ -556,7 +556,7 @@ cdk_x11_device_manager_core_translate_event (CdkEventTranslator *translator,
       break;
 
     case MotionNotify:
-      GDK_NOTE (EVENTS,
+      CDK_NOTE (EVENTS,
                 g_message ("motion notify:\t\twindow: %ld  x,y: %d %d  hint: %s",
                            xevent->xmotion.window,
                            xevent->xmotion.x, xevent->xmotion.y,
@@ -568,7 +568,7 @@ cdk_x11_device_manager_core_translate_event (CdkEventTranslator *translator,
           break;
         }
 
-      event->motion.type = GDK_MOTION_NOTIFY;
+      event->motion.type = CDK_MOTION_NOTIFY;
       event->motion.window = window;
       event->motion.time = xevent->xmotion.time;
       event->motion.x = (gdouble) xevent->xmotion.x / scale;
@@ -589,7 +589,7 @@ cdk_x11_device_manager_core_translate_event (CdkEventTranslator *translator,
       break;
 
     case EnterNotify:
-      GDK_NOTE (EVENTS,
+      CDK_NOTE (EVENTS,
                 g_message ("enter notify:\t\twindow: %ld  detail: %d subwin: %ld",
                            xevent->xcrossing.window,
                            xevent->xcrossing.detail,
@@ -607,7 +607,7 @@ cdk_x11_device_manager_core_translate_event (CdkEventTranslator *translator,
           break;
         }
 
-      event->crossing.type = GDK_ENTER_NOTIFY;
+      event->crossing.type = CDK_ENTER_NOTIFY;
       event->crossing.window = window;
       cdk_event_set_device (event, device_manager->core_pointer);
 
@@ -634,7 +634,7 @@ cdk_x11_device_manager_core_translate_event (CdkEventTranslator *translator,
       break;
 
     case LeaveNotify:
-      GDK_NOTE (EVENTS,
+      CDK_NOTE (EVENTS,
                 g_message ("leave notify:\t\twindow: %ld  detail: %d subwin: %ld",
                            xevent->xcrossing.window,
                            xevent->xcrossing.detail, xevent->xcrossing.subwindow));
@@ -651,7 +651,7 @@ cdk_x11_device_manager_core_translate_event (CdkEventTranslator *translator,
           break;
         }
 
-      event->crossing.type = GDK_LEAVE_NOTIFY;
+      event->crossing.type = CDK_LEAVE_NOTIFY;
       event->crossing.window = window;
       cdk_event_set_device (event, device_manager->core_pointer);
 
@@ -700,8 +700,8 @@ cdk_x11_device_manager_core_translate_event (CdkEventTranslator *translator,
       if (event->any.window)
         g_object_ref (event->any.window);
 
-      if (((event->any.type == GDK_ENTER_NOTIFY) ||
-           (event->any.type == GDK_LEAVE_NOTIFY)) &&
+      if (((event->any.type == CDK_ENTER_NOTIFY) ||
+           (event->any.type == CDK_LEAVE_NOTIFY)) &&
           (event->crossing.subwindow != NULL))
         g_object_ref (event->crossing.subwindow);
     }
@@ -709,7 +709,7 @@ cdk_x11_device_manager_core_translate_event (CdkEventTranslator *translator,
     {
       /* Mark this event as having no resources to be freed */
       event->any.window = NULL;
-      event->any.type = GDK_NOTHING;
+      event->any.type = CDK_NOTHING;
     }
 
   if (window)
@@ -725,7 +725,7 @@ cdk_x11_device_manager_core_list_devices (CdkDeviceManager *device_manager,
   CdkX11DeviceManagerCore *device_manager_core;
   GList *devices = NULL;
 
-  if (type == GDK_DEVICE_TYPE_MASTER)
+  if (type == CDK_DEVICE_TYPE_MASTER)
     {
       device_manager_core = (CdkX11DeviceManagerCore *) device_manager;
       devices = g_list_prepend (devices, device_manager_core->core_keyboard);
@@ -755,7 +755,7 @@ _cdk_x11_event_translate_keyboard_string (CdkEventKey *event)
    */
   event->string = NULL;
 
-  if (event->keyval != GDK_KEY_VoidSymbol)
+  if (event->keyval != CDK_KEY_VoidSymbol)
     c = cdk_keyval_to_unicode (event->keyval);
 
   if (c)
@@ -765,7 +765,7 @@ _cdk_x11_event_translate_keyboard_string (CdkEventKey *event)
 
       /* Apply the control key - Taken from Xlib
        */
-      if (event->state & GDK_CONTROL_MASK)
+      if (event->state & CDK_CONTROL_MASK)
         {
           if ((c >= '@' && c < '\177') || c == ' ') c &= 0x1F;
           else if (c == '2')
@@ -789,13 +789,13 @@ _cdk_x11_event_translate_keyboard_string (CdkEventKey *event)
       if (event->string)
         event->length = bytes_written;
     }
-  else if (event->keyval == GDK_KEY_Escape)
+  else if (event->keyval == CDK_KEY_Escape)
     {
       event->length = 1;
       event->string = g_strdup ("\033");
     }
-  else if (event->keyval == GDK_KEY_Return ||
-          event->keyval == GDK_KEY_KP_Enter)
+  else if (event->keyval == CDK_KEY_Return ||
+          event->keyval == CDK_KEY_KP_Enter)
     {
       event->length = 1;
       event->string = g_strdup ("\r");
@@ -824,13 +824,13 @@ _cdk_device_manager_core_handle_focus (CdkWindow *window,
   CdkX11Screen *x11_screen;
   gboolean had_focus;
 
-  g_return_if_fail (GDK_IS_WINDOW (window));
-  g_return_if_fail (GDK_IS_DEVICE (device));
-  g_return_if_fail (source_device == NULL || GDK_IS_DEVICE (source_device));
+  g_return_if_fail (CDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_DEVICE (device));
+  g_return_if_fail (source_device == NULL || CDK_IS_DEVICE (source_device));
 
-  GDK_NOTE (EVENTS,
+  CDK_NOTE (EVENTS,
             g_message ("focus out:\t\twindow: %ld, detail: %s, mode: %s",
-                       GDK_WINDOW_XID (window),
+                       CDK_WINDOW_XID (window),
                        notify_details[detail],
                        notify_modes[mode]));
 
@@ -843,7 +843,7 @@ _cdk_device_manager_core_handle_focus (CdkWindow *window,
     return;
 
   had_focus = HAS_FOCUS (toplevel);
-  x11_screen = GDK_X11_SCREEN (cdk_window_get_screen (window));
+  x11_screen = CDK_X11_SCREEN (cdk_window_get_screen (window));
 
   switch (detail)
     {
@@ -908,7 +908,7 @@ _cdk_device_manager_core_handle_focus (CdkWindow *window,
     {
       CdkEvent *event;
 
-      event = cdk_event_new (GDK_FOCUS_CHANGE);
+      event = cdk_event_new (CDK_FOCUS_CHANGE);
       event->focus_change.window = g_object_ref (window);
       event->focus_change.send_event = FALSE;
       event->focus_change.in = focus_in;

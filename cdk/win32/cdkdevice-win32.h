@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2009 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -15,19 +15,19 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_DEVICE_WIN32_H__
-#define __GDK_DEVICE_WIN32_H__
+#ifndef __CDK_DEVICE_WIN32_H__
+#define __CDK_DEVICE_WIN32_H__
 
 #include <cdk/cdkdeviceprivate.h>
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_DEVICE_WIN32         (cdk_device_win32_get_type ())
-#define GDK_DEVICE_WIN32(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_DEVICE_WIN32, CdkDeviceWin32))
-#define GDK_DEVICE_WIN32_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_DEVICE_WIN32, CdkDeviceWin32Class))
-#define GDK_IS_DEVICE_WIN32(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_DEVICE_WIN32))
-#define GDK_IS_DEVICE_WIN32_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), GDK_TYPE_DEVICE_WIN32))
-#define GDK_DEVICE_WIN32_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_DEVICE_WIN32, CdkDeviceWin32Class))
+#define CDK_TYPE_DEVICE_WIN32         (cdk_device_win32_get_type ())
+#define CDK_DEVICE_WIN32(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CDK_TYPE_DEVICE_WIN32, CdkDeviceWin32))
+#define CDK_DEVICE_WIN32_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), CDK_TYPE_DEVICE_WIN32, CdkDeviceWin32Class))
+#define CDK_IS_DEVICE_WIN32(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CDK_TYPE_DEVICE_WIN32))
+#define CDK_IS_DEVICE_WIN32_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), CDK_TYPE_DEVICE_WIN32))
+#define CDK_DEVICE_WIN32_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CDK_TYPE_DEVICE_WIN32, CdkDeviceWin32Class))
 
 typedef struct _CdkDeviceWin32 CdkDeviceWin32;
 typedef struct _CdkDeviceWin32Class CdkDeviceWin32Class;
@@ -52,4 +52,4 @@ CdkWindow *_cdk_device_win32_window_at_position (CdkDevice       *device,
 
 G_END_DECLS
 
-#endif /* __GDK_DEVICE_WIN32_H__ */
+#endif /* __CDK_DEVICE_WIN32_H__ */

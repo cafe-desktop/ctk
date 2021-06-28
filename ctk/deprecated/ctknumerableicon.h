@@ -56,43 +56,43 @@ struct _CtkNumerableIconClass {
   gpointer padding[16];
 };
 
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 GType             ctk_numerable_icon_get_type                 (void) G_GNUC_CONST;
 
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 GIcon *           ctk_numerable_icon_new                      (GIcon            *base_icon);
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 GIcon *           ctk_numerable_icon_new_with_style_context   (GIcon            *base_icon,
                                                                CtkStyleContext  *context);
 
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 CtkStyleContext * ctk_numerable_icon_get_style_context        (CtkNumerableIcon *self);
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 void              ctk_numerable_icon_set_style_context        (CtkNumerableIcon *self,
                                                                CtkStyleContext  *style);
 
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 gint              ctk_numerable_icon_get_count                (CtkNumerableIcon *self);
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 void              ctk_numerable_icon_set_count                (CtkNumerableIcon *self,
                                                                gint count);
 
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 const gchar *     ctk_numerable_icon_get_label                (CtkNumerableIcon *self);
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 void              ctk_numerable_icon_set_label                (CtkNumerableIcon *self,
                                                                const gchar      *label);
 
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 void              ctk_numerable_icon_set_background_gicon     (CtkNumerableIcon *self,
                                                                GIcon            *icon);
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 GIcon *           ctk_numerable_icon_get_background_gicon     (CtkNumerableIcon *self);
 
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 void              ctk_numerable_icon_set_background_icon_name (CtkNumerableIcon *self,
                                                                const gchar      *icon_name);
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 const gchar *     ctk_numerable_icon_get_background_icon_name (CtkNumerableIcon *self);
 
 G_END_DECLS

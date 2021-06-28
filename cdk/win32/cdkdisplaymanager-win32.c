@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * cdkdisplaymanager-win32.c
  *
  * Copyright 2010 Hans Breuer
@@ -36,7 +36,7 @@ struct _CdkWin32DisplayManagerClass
   CdkDisplayManagerClass parent_instance;
 };
 
-G_DEFINE_TYPE (CdkWin32DisplayManager, cdk_win32_display_manager, GDK_TYPE_DISPLAY_MANAGER)
+G_DEFINE_TYPE (CdkWin32DisplayManager, cdk_win32_display_manager, CDK_TYPE_DISPLAY_MANAGER)
 
 static void
 cdk_win32_display_manager_init (CdkWin32DisplayManager *manager)

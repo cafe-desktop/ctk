@@ -41,7 +41,7 @@ image_request_cb (CtkClipboard *clipboard,
 
       factor = MAX ((SIZE / height), (SIZE / width));
 
-      copy = cdk_pixbuf_scale_simple (pixbuf, width * factor, height * factor, GDK_INTERP_BILINEAR);
+      copy = cdk_pixbuf_scale_simple (pixbuf, width * factor, height * factor, CDK_INTERP_BILINEAR);
       ctk_image_set_from_pixbuf (CTK_IMAGE (image), copy);
       g_object_unref (copy);
       str = g_strdup_printf ("<b>Image</b> %d \342\234\225 %d", width, height);
@@ -127,7 +127,7 @@ main (int argc, char **argv)
   g_signal_connect (window, "response", G_CALLBACK (on_response), NULL);
 
   clipboard = ctk_clipboard_get_for_display (ctk_widget_get_display (window),
-                                             GDK_SELECTION_CLIPBOARD);
+                                             CDK_SELECTION_CLIPBOARD);
   g_signal_connect (clipboard, "owner-change", G_CALLBACK (on_owner_change), NULL);
 
   update_display ();

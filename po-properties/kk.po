@@ -132,11 +132,11 @@ msgid "Default Display"
 msgstr "Негізгі экран"
 
 #: cdk/cdkdisplaymanager.c:163
-msgid "The default display for GDK"
+msgid "The default display for CDK"
 msgstr ""
 
 #: cdk/cdkglcontext.c:318
-msgid "The GDK display used to create the GL context"
+msgid "The CDK display used to create the GL context"
 msgstr ""
 
 #: cdk/cdkglcontext.c:333 ctk/ctkwidget.c:1347
@@ -144,7 +144,7 @@ msgid "Window"
 msgstr "Терезе"
 
 #: cdk/cdkglcontext.c:334
-msgid "The GDK window bound to the GL context"
+msgid "The CDK window bound to the GL context"
 msgstr ""
 
 #: cdk/cdkglcontext.c:349

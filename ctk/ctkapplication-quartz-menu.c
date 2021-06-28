@@ -342,13 +342,13 @@ icon_loaded (GObject      *object,
       [self setKeyEquivalent:[NSString stringWithCharacters:&character length:1]];
 
       modifiers = 0;
-      if (mask & GDK_SHIFT_MASK)
+      if (mask & CDK_SHIFT_MASK)
         modifiers |= NSShiftKeyMask;
-      if (mask & GDK_CONTROL_MASK)
+      if (mask & CDK_CONTROL_MASK)
         modifiers |= NSControlKeyMask;
-      if (mask & GDK_MOD1_MASK)
+      if (mask & CDK_MOD1_MASK)
         modifiers |= NSAlternateKeyMask;
-      if (mask & GDK_META_MASK)
+      if (mask & CDK_META_MASK)
         modifiers |= NSCommandKeyMask;
       [self setKeyEquivalentModifierMask:modifiers];
     }

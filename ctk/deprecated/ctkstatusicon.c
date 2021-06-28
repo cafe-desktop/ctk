@@ -30,7 +30,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-#define GDK_DISABLE_DEPRECATION_WARNINGS
+#define CDK_DISABLE_DEPRECATION_WARNINGS
 #include "ctkstatusicon.h"
 
 #include "ctkintl.h"
@@ -46,12 +46,12 @@
 #include "ctkstylecontextprivate.h"
 #include "ctktypebuiltins.h"
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
 #include "cdk/x11/cdkx.h"
 #include "ctktrayicon.h"
 #endif
 
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
 #include "cdk/win32/cdkwin32.h"
 #define WM_CTK_TRAY_NOTIFICATION (WM_USER+1)
 #endif
@@ -135,20 +135,20 @@ enum
 
 static guint status_icon_signals [LAST_SIGNAL] = { 0 };
 
-#ifdef GDK_WINDOWING_QUARTZ
+#ifdef CDK_WINDOWING_QUARTZ
 #include "ctkstatusicon-quartz.c"
 #endif
 
 struct _CtkStatusIconPrivate
 {
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
   CtkWidget    *tray_icon;
   CtkWidget    *image;
 #else
   CtkWidget    *dummy_widget;
 #endif
 
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
   NOTIFYICONDATAW nid;
   gint          taskbar_top;
   gint		last_click_x, last_click_y;
@@ -157,7 +157,7 @@ struct _CtkStatusIconPrivate
   gchar         *title;
 #endif
 
-#ifdef GDK_WINDOWING_QUARTZ
+#ifdef CDK_WINDOWING_QUARTZ
   CtkQuartzStatusIcon *status_item;
   gchar         *tooltip_text;
   gchar         *title;
@@ -179,7 +179,7 @@ static void     ctk_status_icon_get_property     (GObject        *object,
 						  GValue         *value,
 					          GParamSpec     *pspec);
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
 static void     ctk_status_icon_size_allocate    (CtkStatusIcon  *status_icon,
 						  CtkAllocation  *allocation);
 static void     ctk_status_icon_screen_changed   (CtkStatusIcon  *status_icon,
@@ -233,7 +233,7 @@ ctk_status_icon_class_init (CtkStatusIconClass *class)
 				   g_param_spec_object ("pixbuf",
 							P_("Pixbuf"),
 							P_("A CdkPixbuf to display"),
-							GDK_TYPE_PIXBUF,
+							CDK_TYPE_PIXBUF,
 							CTK_PARAM_READWRITE));
 
   g_object_class_install_property (gobject_class,
@@ -305,7 +305,7 @@ ctk_status_icon_class_init (CtkStatusIconClass *class)
 				   g_param_spec_object ("screen",
  							P_("Screen"),
  							P_("The screen where this status icon will be displayed"),
-							GDK_TYPE_SCREEN,
+							CDK_TYPE_SCREEN,
  							CTK_PARAM_READWRITE));
 
   g_object_class_install_property (gobject_class,
@@ -551,7 +551,7 @@ ctk_status_icon_class_init (CtkStatusIconClass *class)
 		  g_signal_accumulator_true_handled, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
-		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
+		  CDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
 
   /**
    * CtkStatusIcon::button-release-event:
@@ -578,7 +578,7 @@ ctk_status_icon_class_init (CtkStatusIconClass *class)
 		  g_signal_accumulator_true_handled, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
-		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
+		  CDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
 
   /**
    * CtkStatusIcon::scroll-event:
@@ -605,7 +605,7 @@ ctk_status_icon_class_init (CtkStatusIconClass *class)
 		  g_signal_accumulator_true_handled, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
-		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
+		  CDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
 
   /**
    * CtkStatusIcon::query-tooltip:
@@ -651,7 +651,7 @@ ctk_status_icon_class_init (CtkStatusIconClass *class)
 		  CTK_TYPE_TOOLTIP);
 }
 
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
 
 static void
 build_button_event (CtkStatusIconPrivate *priv,
@@ -688,7 +688,7 @@ button_callback (gpointer data)
 {
   ButtonCallbackData *bc = (ButtonCallbackData *) data;
 
-  if (bc->event->type == GDK_BUTTON_PRESS)
+  if (bc->event->type == CDK_BUTTON_PRESS)
     ctk_status_icon_button_press (bc->status_icon, bc->event);
   else
     ctk_status_icon_button_release (bc->status_icon, bc->event);
@@ -785,7 +785,7 @@ wndproc (HWND   hwnd,
 
 	buttondown0:
 	  bc = g_new (ButtonCallbackData, 1);
-	  bc->event = (CdkEventButton *) cdk_event_new (GDK_BUTTON_PRESS);
+	  bc->event = (CdkEventButton *) cdk_event_new (CDK_BUTTON_PRESS);
 	  bc->status_icon = find_status_icon (wparam);
 	  build_button_event (bc->status_icon->priv, bc->event, button);
 	  g_idle_add (button_callback, bc);
@@ -811,7 +811,7 @@ wndproc (HWND   hwnd,
 
 	buttonup0:
 	  bc = g_new (ButtonCallbackData, 1);
-	  bc->event = (CdkEventButton *) cdk_event_new (GDK_BUTTON_RELEASE);
+	  bc->event = (CdkEventButton *) cdk_event_new (CDK_BUTTON_RELEASE);
 	  bc->status_icon = find_status_icon (wparam);
 	  build_button_event (bc->status_icon->priv, bc->event, button);
 	  g_idle_add (button_callback, bc);
@@ -876,15 +876,15 @@ ctk_status_icon_init (CtkStatusIcon *status_icon)
   priv->image_def = ctk_image_definition_new_empty ();
   priv->visible = TRUE;
 
-#ifdef GDK_WINDOWING_X11
-  if (GDK_IS_X11_DISPLAY (cdk_display_get_default ()))
+#ifdef CDK_WINDOWING_X11
+  if (CDK_IS_X11_DISPLAY (cdk_display_get_default ()))
     {
       priv->size         = 0;
       priv->tray_icon = CTK_WIDGET (_ctk_tray_icon_new (NULL));
 
       ctk_widget_add_events (CTK_WIDGET (priv->tray_icon),
-                             GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK |
-                             GDK_SCROLL_MASK);
+                             CDK_BUTTON_PRESS_MASK | CDK_BUTTON_RELEASE_MASK |
+                             CDK_SCROLL_MASK);
 
       g_signal_connect_swapped (priv->tray_icon, "key-press-event",
                                 G_CALLBACK (ctk_status_icon_key_press), status_icon);
@@ -930,11 +930,11 @@ ctk_status_icon_init (CtkStatusIcon *status_icon)
       g_signal_connect_swapped (priv->image, "size-allocate",
                                 G_CALLBACK (ctk_status_icon_size_allocate), status_icon);
     }
-#else /* !GDK_WINDOWING_X11 */
+#else /* !CDK_WINDOWING_X11 */
   priv->dummy_widget = ctk_label_new ("");
 #endif
 
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
 
   /* Get position and orientation of Windows taskbar. */
   {
@@ -983,7 +983,7 @@ ctk_status_icon_init (CtkStatusIcon *status_icon)
 
 #endif
 	
-#ifdef GDK_WINDOWING_QUARTZ
+#ifdef CDK_WINDOWING_QUARTZ
   QUARTZ_POOL_ALLOC;
 
   priv->status_item = [[CtkQuartzStatusIcon alloc] initWithStatusIcon:status_icon];
@@ -999,7 +999,7 @@ ctk_status_icon_constructed (GObject *object)
 {
   G_OBJECT_CLASS (ctk_status_icon_parent_class)->constructed (object);
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
   {
     CtkStatusIcon *status_icon = CTK_STATUS_ICON (object);
     CtkStatusIconPrivate *priv = status_icon->priv;
@@ -1019,7 +1019,7 @@ ctk_status_icon_finalize (GObject *object)
   ctk_status_icon_reset_image_data (status_icon);
   ctk_image_definition_unref (priv->image_def);
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
   if (priv->tray_icon)
     {
       g_signal_handlers_disconnect_by_func (priv->tray_icon,
@@ -1051,11 +1051,11 @@ ctk_status_icon_finalize (GObject *object)
       ctk_widget_destroy (priv->image);
       ctk_widget_destroy (priv->tray_icon);
     }
-#else /* !GDK_WINDOWING_X11 */
+#else /* !CDK_WINDOWING_X11 */
   ctk_widget_destroy (priv->dummy_widget);
 #endif
 
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
   if (priv->nid.hWnd != NULL && priv->visible)
     Shell_NotifyIconW (NIM_DELETE, &priv->nid);
   if (priv->nid.hIcon)
@@ -1065,7 +1065,7 @@ ctk_status_icon_finalize (GObject *object)
   status_icons = g_slist_remove (status_icons, status_icon);
 #endif
 
-#ifdef GDK_WINDOWING_QUARTZ
+#ifdef CDK_WINDOWING_QUARTZ
   QUARTZ_POOL_ALLOC;
   [priv->status_item release];
   QUARTZ_POOL_RELEASE;
@@ -1162,13 +1162,13 @@ ctk_status_icon_get_property (GObject    *object,
       g_value_set_boolean (value, ctk_status_icon_is_embedded (status_icon));
       break;
     case PROP_ORIENTATION:
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
       if (status_icon->priv->tray_icon)
         g_value_set_enum (value, _ctk_tray_icon_get_orientation (CTK_TRAY_ICON (status_icon->priv->tray_icon)));
       else
         g_value_set_enum (value, CTK_ORIENTATION_HORIZONTAL);
 #endif
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
       g_value_set_enum (value, status_icon->priv->orientation);
 #endif
       break;
@@ -1343,7 +1343,7 @@ emit_popup_menu_signal (CtkStatusIcon *status_icon,
 		 activate_time);
 }
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
 
 static gboolean
 emit_size_changed_signal (CtkStatusIcon *status_icon,
@@ -1392,19 +1392,19 @@ static void
 ctk_status_icon_update_image (CtkStatusIcon *status_icon)
 {
   CtkStatusIconPrivate *priv = status_icon->priv;
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
   HICON prev_hicon;
 #endif
   CtkIconHelper *icon_helper;
   cairo_surface_t *surface;
   CtkWidget *widget;
-#ifndef GDK_WINDOWING_X11
+#ifndef CDK_WINDOWING_X11
   CdkPixbuf *pixbuf;
 #endif
   gint round_size;
   gint scale;
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
   widget = priv->image;
   scale = ctk_widget_get_scale_factor (widget);
 #else
@@ -1426,7 +1426,7 @@ ctk_status_icon_update_image (CtkStatusIcon *status_icon)
 
   g_object_unref (icon_helper);
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
   if (surface)
     {
       ctk_image_set_from_surface (CTK_IMAGE (priv->image), surface);
@@ -1438,7 +1438,7 @@ ctk_status_icon_update_image (CtkStatusIcon *status_icon)
     }
 #endif
 
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
   if (surface)
     {
       pixbuf = cdk_pixbuf_get_from_surface (surface, 0, 0,
@@ -1469,7 +1469,7 @@ ctk_status_icon_update_image (CtkStatusIcon *status_icon)
   g_clear_object (&pixbuf);
 #endif
 
-#ifdef GDK_WINDOWING_QUARTZ
+#ifdef CDK_WINDOWING_QUARTZ
   if (surface)
     {
       pixbuf = cdk_pixbuf_get_from_surface (surface, 0, 0,
@@ -1493,7 +1493,7 @@ ctk_status_icon_update_image (CtkStatusIcon *status_icon)
 #endif
 }
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
 
 static void
 ctk_status_icon_size_allocate (CtkStatusIcon *status_icon,
@@ -1642,11 +1642,11 @@ ctk_status_icon_key_press (CtkStatusIcon  *status_icon,
   state = event->state & ctk_accelerator_get_default_mod_mask ();
   keyval = event->keyval;
   if (state == 0 &&
-      (keyval == GDK_KEY_Return ||
-       keyval == GDK_KEY_KP_Enter ||
-       keyval == GDK_KEY_ISO_Enter ||
-       keyval == GDK_KEY_space ||
-       keyval == GDK_KEY_KP_Space))
+      (keyval == CDK_KEY_Return ||
+       keyval == CDK_KEY_KP_Enter ||
+       keyval == CDK_KEY_ISO_Enter ||
+       keyval == CDK_KEY_space ||
+       keyval == CDK_KEY_KP_Space))
     {
       emit_activate_signal (status_icon);
       return TRUE;
@@ -1661,7 +1661,7 @@ ctk_status_icon_popup_menu (CtkStatusIcon  *status_icon)
   emit_popup_menu_signal (status_icon, 0, ctk_get_current_event_time ());
 }
 
-#endif  /* GDK_WINDOWING_X11 */
+#endif  /* CDK_WINDOWING_X11 */
 
 static gboolean
 ctk_status_icon_button_press (CtkStatusIcon  *status_icon,
@@ -1680,7 +1680,7 @@ ctk_status_icon_button_press (CtkStatusIcon  *status_icon,
       emit_popup_menu_signal (status_icon, event->button, event->time);
       return TRUE;
     }
-  else if (event->button == GDK_BUTTON_PRIMARY && event->type == GDK_BUTTON_PRESS)
+  else if (event->button == CDK_BUTTON_PRIMARY && event->type == CDK_BUTTON_PRESS)
     {
       emit_activate_signal (status_icon);
       return TRUE;
@@ -1700,7 +1700,7 @@ ctk_status_icon_button_release (CtkStatusIcon  *status_icon,
   return handled;
 }
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
 
 static gboolean
 ctk_status_icon_scroll (CtkStatusIcon  *status_icon,
@@ -1727,7 +1727,7 @@ ctk_status_icon_query_tooltip (CtkStatusIcon *status_icon,
   return handled;
 }
 
-#endif /* GDK_WINDOWING_X11 */
+#endif /* CDK_WINDOWING_X11 */
 
 static void
 ctk_status_icon_reset_image_data (CtkStatusIcon *status_icon)
@@ -1824,7 +1824,7 @@ ctk_status_icon_set_from_pixbuf (CtkStatusIcon *status_icon,
 				 CdkPixbuf     *pixbuf)
 {
   g_return_if_fail (CTK_IS_STATUS_ICON (status_icon));
-  g_return_if_fail (pixbuf == NULL || GDK_IS_PIXBUF (pixbuf));
+  g_return_if_fail (pixbuf == NULL || CDK_IS_PIXBUF (pixbuf));
 
   ctk_status_icon_take_image (status_icon,
       			      ctk_image_definition_new_pixbuf (pixbuf, 1));
@@ -2131,9 +2131,9 @@ void
 ctk_status_icon_set_screen (CtkStatusIcon *status_icon,
                             CdkScreen     *screen)
 {
-  g_return_if_fail (GDK_IS_SCREEN (screen));
+  g_return_if_fail (CDK_IS_SCREEN (screen));
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
   if (status_icon->priv->tray_icon)
     ctk_window_set_screen (CTK_WINDOW (status_icon->priv->tray_icon), screen);
 #endif
@@ -2158,7 +2158,7 @@ ctk_status_icon_get_screen (CtkStatusIcon *status_icon)
 {
   g_return_val_if_fail (CTK_IS_STATUS_ICON (status_icon), NULL);
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
   if (status_icon->priv->tray_icon)
     return ctk_window_get_screen (CTK_WINDOW (status_icon->priv->tray_icon));
   else
@@ -2195,7 +2195,7 @@ ctk_status_icon_set_visible (CtkStatusIcon *status_icon,
     {
       priv->visible = visible;
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
       if (priv->tray_icon)
         {
           if (visible)
@@ -2207,7 +2207,7 @@ ctk_status_icon_set_visible (CtkStatusIcon *status_icon,
             }
         }
 #endif
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
       if (priv->nid.hWnd != NULL)
 	{
 	  if (visible)
@@ -2216,7 +2216,7 @@ ctk_status_icon_set_visible (CtkStatusIcon *status_icon,
 	    Shell_NotifyIconW (NIM_DELETE, &priv->nid);
 	}
 #endif
-#ifdef GDK_WINDOWING_QUARTZ
+#ifdef CDK_WINDOWING_QUARTZ
       QUARTZ_POOL_ALLOC;
       [priv->status_item setVisible:visible];
       QUARTZ_POOL_RELEASE;
@@ -2271,7 +2271,7 @@ ctk_status_icon_is_embedded (CtkStatusIcon *status_icon)
 {
   g_return_val_if_fail (CTK_IS_STATUS_ICON (status_icon), FALSE);
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
   if (status_icon->priv->tray_icon == NULL ||
       !ctk_plug_get_embedded (CTK_PLUG (status_icon->priv->tray_icon)))
     return FALSE;
@@ -2305,7 +2305,7 @@ ctk_status_icon_position_menu (CtkMenu  *menu,
 			       gboolean *push_in,
 			       gpointer  user_data)
 {
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
   CtkStatusIcon *status_icon = CTK_STATUS_ICON (user_data);
   CtkStatusIconPrivate *priv = status_icon->priv;
   CtkAllocation allocation;
@@ -2398,9 +2398,9 @@ ctk_status_icon_position_menu (CtkMenu  *menu,
     *y -= menu_req.height - height;
 
   *push_in = FALSE;
-#endif /* GDK_WINDOWING_X11 */
+#endif /* CDK_WINDOWING_X11 */
 
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
   CtkStatusIcon *status_icon;
   CtkStatusIconPrivate *priv;
   CtkRequisition menu_req;
@@ -2461,7 +2461,7 @@ ctk_status_icon_get_geometry (CtkStatusIcon    *status_icon,
 			      CdkRectangle     *area,
 			      CtkOrientation   *orientation)
 {
-#ifdef GDK_WINDOWING_X11   
+#ifdef CDK_WINDOWING_X11   
   CtkStatusIconPrivate *priv = status_icon->priv;
   CtkAllocation allocation;
   CtkWidget *widget;
@@ -2495,7 +2495,7 @@ ctk_status_icon_get_geometry (CtkStatusIcon    *status_icon,
   return TRUE;
 #else
   return FALSE;
-#endif /* GDK_WINDOWING_X11 */
+#endif /* CDK_WINDOWING_X11 */
 }
 
 /**
@@ -2524,7 +2524,7 @@ ctk_status_icon_set_has_tooltip (CtkStatusIcon *status_icon,
 
   priv = status_icon->priv;
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
   if (priv->tray_icon)
     {
       if (ctk_widget_get_has_tooltip (priv->tray_icon) != has_tooltip)
@@ -2534,12 +2534,12 @@ ctk_status_icon_set_has_tooltip (CtkStatusIcon *status_icon,
         }
     }
 #endif
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
   changed = TRUE;
   if (!has_tooltip && priv->tooltip_text)
     ctk_status_icon_set_tooltip_text (status_icon, NULL);
 #endif
-#ifdef GDK_WINDOWING_QUARTZ
+#ifdef CDK_WINDOWING_QUARTZ
   changed = TRUE;
   if (!has_tooltip && priv->tooltip_text)
     ctk_status_icon_set_tooltip_text (status_icon, NULL);
@@ -2574,14 +2574,14 @@ ctk_status_icon_get_has_tooltip (CtkStatusIcon *status_icon)
 
   priv = status_icon->priv;
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
   if (priv->tray_icon)
     has_tooltip = ctk_widget_get_has_tooltip (priv->tray_icon);
 #endif
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
   has_tooltip = (priv->tooltip_text != NULL);
 #endif
-#ifdef GDK_WINDOWING_QUARTZ
+#ifdef CDK_WINDOWING_QUARTZ
   has_tooltip = (priv->tooltip_text != NULL);
 #endif
 
@@ -2618,11 +2618,11 @@ ctk_status_icon_set_tooltip_text (CtkStatusIcon *status_icon,
 
   priv = status_icon->priv;
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
   if (priv->tray_icon)
     ctk_widget_set_tooltip_text (priv->tray_icon, text);
 #endif
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
   if (text == NULL)
     priv->nid.uFlags &= ~NIF_TIP;
   else
@@ -2641,7 +2641,7 @@ ctk_status_icon_set_tooltip_text (CtkStatusIcon *status_icon,
   g_free (priv->tooltip_text);
   priv->tooltip_text = g_strdup (text);
 #endif
-#ifdef GDK_WINDOWING_QUARTZ
+#ifdef CDK_WINDOWING_QUARTZ
   QUARTZ_POOL_ALLOC;
   [priv->status_item setToolTip:text];
   QUARTZ_POOL_RELEASE;
@@ -2676,15 +2676,15 @@ ctk_status_icon_get_tooltip_text (CtkStatusIcon *status_icon)
 
   priv = status_icon->priv;
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
   if (priv->tray_icon)
     tooltip_text = ctk_widget_get_tooltip_text (priv->tray_icon);
 #endif
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
   if (priv->tooltip_text)
     tooltip_text = g_strdup (priv->tooltip_text);
 #endif
-#ifdef GDK_WINDOWING_QUARTZ
+#ifdef CDK_WINDOWING_QUARTZ
   if (priv->tooltip_text)
     tooltip_text = g_strdup (priv->tooltip_text);
 #endif
@@ -2716,28 +2716,28 @@ void
 ctk_status_icon_set_tooltip_markup (CtkStatusIcon *status_icon,
 				    const gchar   *markup)
 {
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
   CtkStatusIconPrivate *priv;
 #endif
-#if defined (GDK_WINDOWING_WIN32) || defined (GDK_WINDOWING_QUARTZ)
+#if defined (CDK_WINDOWING_WIN32) || defined (CDK_WINDOWING_QUARTZ)
   gchar *text = NULL;
 #endif
 
   g_return_if_fail (CTK_IS_STATUS_ICON (status_icon));
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
   priv = status_icon->priv;
 
   if (priv->tray_icon)
     ctk_widget_set_tooltip_markup (priv->tray_icon, markup);
 #endif
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
   if (markup)
     pango_parse_markup (markup, -1, 0, NULL, &text, NULL, NULL);
   ctk_status_icon_set_tooltip_text (status_icon, text);
   g_free (text);
 #endif
-#ifdef GDK_WINDOWING_QUARTZ
+#ifdef CDK_WINDOWING_QUARTZ
   if (markup)
     pango_parse_markup (markup, -1, 0, NULL, &text, NULL, NULL);
   ctk_status_icon_set_tooltip_text (status_icon, text);
@@ -2770,15 +2770,15 @@ ctk_status_icon_get_tooltip_markup (CtkStatusIcon *status_icon)
 
   priv = status_icon->priv;
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
   if (priv->tray_icon)
     markup = ctk_widget_get_tooltip_markup (priv->tray_icon);
 #endif
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
   if (priv->tooltip_text)
     markup = g_markup_escape_text (priv->tooltip_text, -1);
 #endif
-#ifdef GDK_WINDOWING_QUARTZ
+#ifdef CDK_WINDOWING_QUARTZ
   if (priv->tooltip_text)
     markup = g_markup_escape_text (priv->tooltip_text, -1);
 #endif
@@ -2814,11 +2814,11 @@ ctk_status_icon_get_tooltip_markup (CtkStatusIcon *status_icon)
 guint32
 ctk_status_icon_get_x11_window_id (CtkStatusIcon *status_icon)
 {
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
   if (status_icon->priv->tray_icon)
     {
       ctk_widget_realize (CTK_WIDGET (status_icon->priv->tray_icon));
-      return GDK_WINDOW_XID (ctk_widget_get_window (CTK_WIDGET (status_icon->priv->tray_icon)));
+      return CDK_WINDOW_XID (ctk_widget_get_window (CTK_WIDGET (status_icon->priv->tray_icon)));
     }
   else
 #endif
@@ -2851,15 +2851,15 @@ ctk_status_icon_set_title (CtkStatusIcon *status_icon,
 
   priv = status_icon->priv;
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
   if (priv->tray_icon)
     ctk_window_set_title (CTK_WINDOW (priv->tray_icon), title);
 #endif
-#ifdef GDK_WINDOWING_QUARTZ
+#ifdef CDK_WINDOWING_QUARTZ
   g_free (priv->title);
   priv->title = g_strdup (title);
 #endif
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
   g_free (priv->title);
   priv->title = g_strdup (title);
 #endif
@@ -2891,14 +2891,14 @@ ctk_status_icon_get_title (CtkStatusIcon *status_icon)
 
   priv = status_icon->priv;
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
   if (priv->tray_icon)
     title = ctk_window_get_title (CTK_WINDOW (priv->tray_icon));
 #endif
-#ifdef GDK_WINDOWING_QUARTZ
+#ifdef CDK_WINDOWING_QUARTZ
   title = priv->title;
 #endif
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
   title = priv->title;
 #endif
 
@@ -2927,13 +2927,13 @@ void
 ctk_status_icon_set_name (CtkStatusIcon *status_icon,
                           const gchar   *name)
 {
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
   CtkStatusIconPrivate *priv;
 #endif
 
   g_return_if_fail (CTK_IS_STATUS_ICON (status_icon));
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
   priv = status_icon->priv;
 
   if (priv->tray_icon)

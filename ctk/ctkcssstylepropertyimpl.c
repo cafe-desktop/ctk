@@ -185,7 +185,7 @@ color_query (CtkCssStyleProperty *property,
              const CtkCssValue   *css_value,
              GValue              *value)
 {
-  g_value_init (value, GDK_TYPE_RGBA);
+  g_value_init (value, CDK_TYPE_RGBA);
   g_value_set_boxed (value, _ctk_css_rgba_value_get_rgba (css_value));
 }
 
@@ -1062,7 +1062,7 @@ _ctk_css_style_property_init_properties (void)
    * sizes in em can be looked up properly */
   ctk_css_style_property_register        ("color",
                                           CTK_CSS_PROPERTY_COLOR,
-                                          GDK_TYPE_RGBA,
+                                          CDK_TYPE_RGBA,
                                           CTK_STYLE_PROPERTY_INHERIT | CTK_STYLE_PROPERTY_ANIMATED,
                                           CTK_CSS_AFFECTS_FOREGROUND | CTK_CSS_AFFECTS_TEXT | CTK_CSS_AFFECTS_SYMBOLIC_ICON,
                                           color_parse,
@@ -1111,7 +1111,7 @@ _ctk_css_style_property_init_properties (void)
    * start here */
   ctk_css_style_property_register        ("background-color",
                                           CTK_CSS_PROPERTY_BACKGROUND_COLOR,
-                                          GDK_TYPE_RGBA,
+                                          CDK_TYPE_RGBA,
                                           CTK_STYLE_PROPERTY_ANIMATED,
                                           CTK_CSS_AFFECTS_BACKGROUND,
                                           color_parse,
@@ -1525,7 +1525,7 @@ _ctk_css_style_property_init_properties (void)
 
   ctk_css_style_property_register        ("border-top-color",
                                           CTK_CSS_PROPERTY_BORDER_TOP_COLOR,
-                                          GDK_TYPE_RGBA,
+                                          CDK_TYPE_RGBA,
                                           CTK_STYLE_PROPERTY_ANIMATED,
                                           CTK_CSS_AFFECTS_BORDER,
                                           color_parse,
@@ -1534,7 +1534,7 @@ _ctk_css_style_property_init_properties (void)
                                           _ctk_css_color_value_new_current_color ());
   ctk_css_style_property_register        ("border-right-color",
                                           CTK_CSS_PROPERTY_BORDER_RIGHT_COLOR,
-                                          GDK_TYPE_RGBA,
+                                          CDK_TYPE_RGBA,
                                           CTK_STYLE_PROPERTY_ANIMATED,
                                           CTK_CSS_AFFECTS_BORDER,
                                           color_parse,
@@ -1543,7 +1543,7 @@ _ctk_css_style_property_init_properties (void)
                                           _ctk_css_color_value_new_current_color ());
   ctk_css_style_property_register        ("border-bottom-color",
                                           CTK_CSS_PROPERTY_BORDER_BOTTOM_COLOR,
-                                          GDK_TYPE_RGBA,
+                                          CDK_TYPE_RGBA,
                                           CTK_STYLE_PROPERTY_ANIMATED,
                                           CTK_CSS_AFFECTS_BORDER,
                                           color_parse,
@@ -1552,7 +1552,7 @@ _ctk_css_style_property_init_properties (void)
                                           _ctk_css_color_value_new_current_color ());
   ctk_css_style_property_register        ("border-left-color",
                                           CTK_CSS_PROPERTY_BORDER_LEFT_COLOR,
-                                          GDK_TYPE_RGBA,
+                                          CDK_TYPE_RGBA,
                                           CTK_STYLE_PROPERTY_ANIMATED,
                                           CTK_CSS_AFFECTS_BORDER,
                                           color_parse,
@@ -1561,7 +1561,7 @@ _ctk_css_style_property_init_properties (void)
                                           _ctk_css_color_value_new_current_color ());
   ctk_css_style_property_register        ("outline-color",
                                           CTK_CSS_PROPERTY_OUTLINE_COLOR,
-                                          GDK_TYPE_RGBA,
+                                          CDK_TYPE_RGBA,
                                           CTK_STYLE_PROPERTY_ANIMATED,
                                           CTK_CSS_AFFECTS_OUTLINE,
                                           color_parse,
@@ -1859,7 +1859,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
   ctk_css_style_property_register        ("caret-color",
                                           CTK_CSS_PROPERTY_CARET_COLOR,
-                                          GDK_TYPE_RGBA,
+                                          CDK_TYPE_RGBA,
                                           CTK_STYLE_PROPERTY_INHERIT | CTK_STYLE_PROPERTY_ANIMATED,
                                           CTK_CSS_AFFECTS_TEXT,
                                           color_parse,
@@ -1868,7 +1868,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                                           _ctk_css_color_value_new_current_color ());
   ctk_css_style_property_register        ("-ctk-secondary-caret-color",
                                           CTK_CSS_PROPERTY_SECONDARY_CARET_COLOR,
-                                          GDK_TYPE_RGBA,
+                                          CDK_TYPE_RGBA,
                                           CTK_STYLE_PROPERTY_INHERIT | CTK_STYLE_PROPERTY_ANIMATED,
                                           CTK_CSS_AFFECTS_TEXT,
                                           color_parse,

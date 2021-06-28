@@ -61,11 +61,11 @@ struct _CtkVScaleClass
 };
 
 
-GDK_DEPRECATED_IN_3_2
+CDK_DEPRECATED_IN_3_2
 GType      ctk_vscale_get_type       (void) G_GNUC_CONST;
-GDK_DEPRECATED_IN_3_2_FOR(ctk_scale_new)
+CDK_DEPRECATED_IN_3_2_FOR(ctk_scale_new)
 CtkWidget* ctk_vscale_new            (CtkAdjustment *adjustment);
-GDK_DEPRECATED_IN_3_2_FOR(ctk_scale_new_with_range)
+CDK_DEPRECATED_IN_3_2_FOR(ctk_scale_new_with_range)
 CtkWidget* ctk_vscale_new_with_range (gdouble        min,
                                       gdouble        max,
                                       gdouble        step);

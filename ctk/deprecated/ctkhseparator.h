@@ -55,9 +55,9 @@ struct _CtkHSeparatorClass
 };
 
 
-GDK_DEPRECATED_IN_3_2
+CDK_DEPRECATED_IN_3_2
 GType      ctk_hseparator_get_type (void) G_GNUC_CONST;
-GDK_DEPRECATED_IN_3_2_FOR(ctk_separator_new)
+CDK_DEPRECATED_IN_3_2_FOR(ctk_separator_new)
 CtkWidget* ctk_hseparator_new      (void);
 
 G_END_DECLS

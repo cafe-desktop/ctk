@@ -72,10 +72,10 @@ struct _CtkBinClass
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType      ctk_bin_get_type  (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *ctk_bin_get_child (CtkBin *bin);
 
 void       _ctk_bin_set_child (CtkBin    *bin,

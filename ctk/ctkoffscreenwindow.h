@@ -59,14 +59,14 @@ struct _CtkOffscreenWindowClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType            ctk_offscreen_window_get_type    (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget       *ctk_offscreen_window_new         (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 cairo_surface_t *ctk_offscreen_window_get_surface (CtkOffscreenWindow *offscreen);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkPixbuf       *ctk_offscreen_window_get_pixbuf  (CtkOffscreenWindow *offscreen);
 
 G_END_DECLS

@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2015 Red Hat
  *
  * This library is free software; you can redistribute it and/or
@@ -68,7 +68,7 @@ cdk_seat_set_property (GObject      *object,
                        const GValue *value,
                        GParamSpec   *pspec)
 {
-  CdkSeatPrivate *priv = cdk_seat_get_instance_private (GDK_SEAT (object));
+  CdkSeatPrivate *priv = cdk_seat_get_instance_private (CDK_SEAT (object));
 
   switch (prop_id)
     {
@@ -87,7 +87,7 @@ cdk_seat_get_property (GObject    *object,
                        GValue     *value,
                        GParamSpec *pspec)
 {
-  CdkSeatPrivate *priv = cdk_seat_get_instance_private (GDK_SEAT (object));
+  CdkSeatPrivate *priv = cdk_seat_get_instance_private (CDK_SEAT (object));
 
   switch (prop_id)
     {
@@ -126,7 +126,7 @@ cdk_seat_class_init (CdkSeatClass *klass)
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 1,
-                  GDK_TYPE_DEVICE);
+                  CDK_TYPE_DEVICE);
 
   /**
    * CdkSeat::device-removed:
@@ -146,7 +146,7 @@ cdk_seat_class_init (CdkSeatClass *klass)
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 1,
-                  GDK_TYPE_DEVICE);
+                  CDK_TYPE_DEVICE);
 
   /**
    * CdkSeat::tool-added:
@@ -169,7 +169,7 @@ cdk_seat_class_init (CdkSeatClass *klass)
                   0, NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 1,
-                  GDK_TYPE_DEVICE_TOOL);
+                  CDK_TYPE_DEVICE_TOOL);
 
   /**
    * CdkSeat::tool-removed:
@@ -188,7 +188,7 @@ cdk_seat_class_init (CdkSeatClass *klass)
                   0, NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 1,
-                  GDK_TYPE_DEVICE_TOOL);
+                  CDK_TYPE_DEVICE_TOOL);
 
   /**
    * CdkSeat:display:
@@ -201,7 +201,7 @@ cdk_seat_class_init (CdkSeatClass *klass)
     g_param_spec_object ("display",
                          P_("Display"),
                          P_("Display"),
-                         GDK_TYPE_DISPLAY,
+                         CDK_TYPE_DISPLAY,
                          G_PARAM_READWRITE |
                          G_PARAM_CONSTRUCT_ONLY |
                          G_PARAM_STATIC_STRINGS);
@@ -229,9 +229,9 @@ cdk_seat_get_capabilities (CdkSeat *seat)
 {
   CdkSeatClass *seat_class;
 
-  g_return_val_if_fail (GDK_IS_SEAT (seat), GDK_SEAT_CAPABILITY_NONE);
+  g_return_val_if_fail (CDK_IS_SEAT (seat), CDK_SEAT_CAPABILITY_NONE);
 
-  seat_class = GDK_SEAT_GET_CLASS (seat);
+  seat_class = CDK_SEAT_GET_CLASS (seat);
   return seat_class->get_capabilities (seat);
 }
 
@@ -262,10 +262,10 @@ cdk_seat_get_capabilities (CdkSeat *seat)
  * or the window becomes hidden. This overrides any previous grab on the
  * seat by this client.
  *
- * As a rule of thumb, if a grab is desired over %GDK_SEAT_CAPABILITY_POINTER,
- * all other "pointing" capabilities (eg. %GDK_SEAT_CAPABILITY_TOUCH) should
+ * As a rule of thumb, if a grab is desired over %CDK_SEAT_CAPABILITY_POINTER,
+ * all other "pointing" capabilities (eg. %CDK_SEAT_CAPABILITY_TOUCH) should
  * be grabbed too, so the user is able to interact with all of those while
- * the grab holds, you should thus use %GDK_SEAT_CAPABILITY_ALL_POINTING most
+ * the grab holds, you should thus use %CDK_SEAT_CAPABILITY_ALL_POINTING most
  * commonly.
  *
  * Grabs are used for operations which need complete control over the
@@ -282,7 +282,7 @@ cdk_seat_get_capabilities (CdkSeat *seat)
  * cleaned up when the grab ends, you should handle the #CdkEventGrabBroken
  * events that are emitted when the grab ends unvoluntarily.
  *
- * Returns: %GDK_GRAB_SUCCESS if the grab was successful.
+ * Returns: %CDK_GRAB_SUCCESS if the grab was successful.
  *
  * Since: 3.20
  **/
@@ -298,13 +298,13 @@ cdk_seat_grab (CdkSeat                *seat,
 {
   CdkSeatClass *seat_class;
 
-  g_return_val_if_fail (GDK_IS_SEAT (seat), GDK_GRAB_FAILED);
-  g_return_val_if_fail (GDK_IS_WINDOW (window), GDK_GRAB_FAILED);
+  g_return_val_if_fail (CDK_IS_SEAT (seat), CDK_GRAB_FAILED);
+  g_return_val_if_fail (CDK_IS_WINDOW (window), CDK_GRAB_FAILED);
 
-  capabilities &= GDK_SEAT_CAPABILITY_ALL;
-  g_return_val_if_fail (capabilities != GDK_SEAT_CAPABILITY_NONE, GDK_GRAB_FAILED);
+  capabilities &= CDK_SEAT_CAPABILITY_ALL;
+  g_return_val_if_fail (capabilities != CDK_SEAT_CAPABILITY_NONE, CDK_GRAB_FAILED);
 
-  seat_class = GDK_SEAT_GET_CLASS (seat);
+  seat_class = CDK_SEAT_GET_CLASS (seat);
 
   return seat_class->grab (seat, window, capabilities, owner_events, cursor,
                            event, prepare_func, prepare_func_data);
@@ -323,9 +323,9 @@ cdk_seat_ungrab (CdkSeat *seat)
 {
   CdkSeatClass *seat_class;
 
-  g_return_if_fail (GDK_IS_SEAT (seat));
+  g_return_if_fail (CDK_IS_SEAT (seat));
 
-  seat_class = GDK_SEAT_GET_CLASS (seat);
+  seat_class = CDK_SEAT_GET_CLASS (seat);
   seat_class->ungrab (seat);
 }
 
@@ -338,7 +338,7 @@ cdk_seat_ungrab (CdkSeat *seat)
  *
  * Returns: (transfer container) (element-type CdkDevice): A list of #CdkDevices.
  *          The list must be freed with g_list_free(), the elements are owned
- *          by GDK and must not be freed.
+ *          by CDK and must not be freed.
  *
  * Since: 3.20
  **/
@@ -348,9 +348,9 @@ cdk_seat_get_slaves (CdkSeat             *seat,
 {
   CdkSeatClass *seat_class;
 
-  g_return_val_if_fail (GDK_IS_SEAT (seat), NULL);
+  g_return_val_if_fail (CDK_IS_SEAT (seat), NULL);
 
-  seat_class = GDK_SEAT_GET_CLASS (seat);
+  seat_class = CDK_SEAT_GET_CLASS (seat);
   return seat_class->get_slaves (seat, capabilities);
 }
 
@@ -370,10 +370,10 @@ cdk_seat_get_pointer (CdkSeat *seat)
 {
   CdkSeatClass *seat_class;
 
-  g_return_val_if_fail (GDK_IS_SEAT (seat), NULL);
+  g_return_val_if_fail (CDK_IS_SEAT (seat), NULL);
 
-  seat_class = GDK_SEAT_GET_CLASS (seat);
-  return seat_class->get_master (seat, GDK_SEAT_CAPABILITY_POINTER);
+  seat_class = CDK_SEAT_GET_CLASS (seat);
+  return seat_class->get_master (seat, CDK_SEAT_CAPABILITY_POINTER);
 }
 
 /**
@@ -392,10 +392,10 @@ cdk_seat_get_keyboard (CdkSeat *seat)
 {
   CdkSeatClass *seat_class;
 
-  g_return_val_if_fail (GDK_IS_SEAT (seat), NULL);
+  g_return_val_if_fail (CDK_IS_SEAT (seat), NULL);
 
-  seat_class = GDK_SEAT_GET_CLASS (seat);
-  return seat_class->get_master (seat, GDK_SEAT_CAPABILITY_KEYBOARD);
+  seat_class = CDK_SEAT_GET_CLASS (seat);
+  return seat_class->get_master (seat, CDK_SEAT_CAPABILITY_KEYBOARD);
 }
 
 void
@@ -428,7 +428,7 @@ cdk_seat_get_display (CdkSeat *seat)
 {
   CdkSeatPrivate *priv = cdk_seat_get_instance_private (seat);
 
-  g_return_val_if_fail (GDK_IS_SEAT (seat), NULL);
+  g_return_val_if_fail (CDK_IS_SEAT (seat), NULL);
 
   return priv->display;
 }
@@ -454,8 +454,8 @@ cdk_seat_get_tool (CdkSeat *seat,
 {
   CdkSeatClass *seat_class;
 
-  g_return_val_if_fail (GDK_IS_SEAT (seat), NULL);
+  g_return_val_if_fail (CDK_IS_SEAT (seat), NULL);
 
-  seat_class = GDK_SEAT_GET_CLASS (seat);
+  seat_class = CDK_SEAT_GET_CLASS (seat);
   return seat_class->get_tool (seat, serial, hw_id);
 }

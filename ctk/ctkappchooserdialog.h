@@ -65,24 +65,24 @@ struct _CtkAppChooserDialogClass {
   gpointer padding[16];
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType         ctk_app_chooser_dialog_get_type             (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *   ctk_app_chooser_dialog_new                  (CtkWindow           *parent,
                                                            CtkDialogFlags       flags,
                                                            GFile               *file);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *   ctk_app_chooser_dialog_new_for_content_type (CtkWindow           *parent,
                                                            CtkDialogFlags       flags,
                                                            const gchar         *content_type);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *   ctk_app_chooser_dialog_get_widget           (CtkAppChooserDialog *self);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_app_chooser_dialog_set_heading          (CtkAppChooserDialog *self,
                                                            const gchar         *heading);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar * ctk_app_chooser_dialog_get_heading          (CtkAppChooserDialog *self);
 
 G_END_DECLS

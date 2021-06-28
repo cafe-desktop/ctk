@@ -152,7 +152,7 @@ enum {
   PROP_IS_EXPANDER,
   PROP_IS_EXPANDED,
   PROP_CELL_BACKGROUND,
-  PROP_CELL_BACKGROUND_GDK,
+  PROP_CELL_BACKGROUND_CDK,
   PROP_CELL_BACKGROUND_RGBA,
   PROP_CELL_BACKGROUND_SET,
   PROP_EDITING
@@ -404,11 +404,11 @@ ctk_cell_renderer_class_init (CtkCellRendererClass *class)
    */
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   g_object_class_install_property (object_class,
-				   PROP_CELL_BACKGROUND_GDK,
+				   PROP_CELL_BACKGROUND_CDK,
 				   g_param_spec_boxed ("cell-background-cdk",
 						       P_("Cell background color"),
 						       P_("Cell background color as a CdkColor"),
-						       GDK_TYPE_COLOR,
+						       CDK_TYPE_COLOR,
 						       CTK_PARAM_READWRITE|G_PARAM_DEPRECATED));
 G_GNUC_END_IGNORE_DEPRECATIONS
   /**
@@ -423,7 +423,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 				   g_param_spec_boxed ("cell-background-rgba",
 						       P_("Cell background RGBA color"),
 						       P_("Cell background color as a CdkRGBA"),
-						       GDK_TYPE_RGBA,
+						       CDK_TYPE_RGBA,
 						       CTK_PARAM_READWRITE));
 
   g_object_class_install_property (object_class,
@@ -533,7 +533,7 @@ ctk_cell_renderer_get_property (GObject     *object,
     case PROP_IS_EXPANDED:
       g_value_set_boolean (value, priv->is_expanded);
       break;
-    case PROP_CELL_BACKGROUND_GDK:
+    case PROP_CELL_BACKGROUND_CDK:
       {
 	CdkColor color;
 
@@ -660,7 +660,7 @@ ctk_cell_renderer_set_property (GObject      *object,
         g_object_notify (object, "cell-background");
       }
       break;
-    case PROP_CELL_BACKGROUND_GDK:
+    case PROP_CELL_BACKGROUND_CDK:
       {
         CdkColor *color;
 

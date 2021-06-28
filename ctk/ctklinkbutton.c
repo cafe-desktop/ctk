@@ -232,9 +232,9 @@ ctk_link_button_init (CtkLinkButton *link_button)
 
   /* enable drag source */
   ctk_drag_source_set (CTK_WIDGET (link_button),
-  		       GDK_BUTTON1_MASK,
+  		       CDK_BUTTON1_MASK,
   		       link_drop_types, G_N_ELEMENTS (link_drop_types),
-  		       GDK_ACTION_COPY);
+  		       CDK_ACTION_COPY);
 
   context = ctk_widget_get_style_context (CTK_WIDGET (link_button));
   ctk_style_context_add_class (context, "link");
@@ -346,7 +346,7 @@ copy_activate_cb (CtkWidget     *widget,
   CtkLinkButtonPrivate *priv = link_button->priv;
   
   ctk_clipboard_set_text (ctk_widget_get_clipboard (CTK_WIDGET (link_button),
-			  			    GDK_SELECTION_CLIPBOARD),
+			  			    CDK_SELECTION_CLIPBOARD),
 		  	  priv->uri, -1);
 }
 
@@ -383,8 +383,8 @@ ctk_link_button_do_popup (CtkLinkButton  *link_button,
         {
           ctk_menu_popup_at_widget (CTK_MENU (priv->popup_menu),
                                     CTK_WIDGET (link_button),
-                                    GDK_GRAVITY_SOUTH,
-                                    GDK_GRAVITY_NORTH_WEST,
+                                    CDK_GRAVITY_SOUTH,
+                                    CDK_GRAVITY_NORTH_WEST,
                                     event);
 
           ctk_menu_shell_select_first (CTK_MENU_SHELL (priv->popup_menu), FALSE);
@@ -424,7 +424,7 @@ ctk_link_button_activate_link (CtkLinkButton *link_button)
   toplevel = ctk_widget_get_toplevel (CTK_WIDGET (link_button));
 
   error = NULL;
-  ctk_show_uri_on_window (CTK_WINDOW (toplevel), link_button->priv->uri, GDK_CURRENT_TIME, &error);
+  ctk_show_uri_on_window (CTK_WINDOW (toplevel), link_button->priv->uri, CDK_CURRENT_TIME, &error);
   if (error)
     {
       g_warning ("Unable to show '%s': %s",

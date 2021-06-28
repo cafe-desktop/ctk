@@ -33,7 +33,7 @@
 #  include "ctkprinteroptionwidget.h"
 #endif
 
-_GDK_EXTERN
+_CDK_EXTERN
 void ctk_glade_catalog_init (const gchar *catalog_name);
 
 /* This function is referred to in ctk/glade/ctk-private-widgets.xml

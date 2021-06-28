@@ -106,7 +106,7 @@
  * ctk_tool_palette_add_drag_dest (CTK_TOOL_PALETTE (palette), target,
  *                                 CTK_DEST_DEFAULT_ALL,
  *                                 CTK_TOOL_PALETTE_DRAG_ITEMS,
- *                                 GDK_ACTION_COPY);
+ *                                 CDK_ACTION_COPY);
  * ]|
  *
  * # CSS nodes
@@ -180,8 +180,8 @@ struct _CtkToolPaletteDragData
   CtkWidget      *item;
 };
 
-static CdkAtom dnd_target_atom_item = GDK_NONE;
-static CdkAtom dnd_target_atom_group = GDK_NONE;
+static CdkAtom dnd_target_atom_item = CDK_NONE;
+static CdkAtom dnd_target_atom_group = CDK_NONE;
 
 static const CtkTargetEntry dnd_targets[] =
 {
@@ -217,7 +217,7 @@ ctk_tool_palette_init (CtkToolPalette *palette)
 
   palette->priv->text_size_group = ctk_size_group_new (CTK_SIZE_GROUP_BOTH);
 
-  if (dnd_target_atom_item == GDK_NONE)
+  if (dnd_target_atom_item == CDK_NONE)
     {
       dnd_target_atom_item = cdk_atom_intern_static_string (dnd_targets[0].target);
       dnd_target_atom_group = cdk_atom_intern_static_string (dnd_targets[1].target);
@@ -724,20 +724,20 @@ ctk_tool_palette_realize (CtkWidget *widget)
 
   ctk_widget_get_allocation (widget, &allocation);
 
-  attributes.window_type = GDK_WINDOW_CHILD;
+  attributes.window_type = CDK_WINDOW_CHILD;
   attributes.x = allocation.x + border_width;
   attributes.y = allocation.y + border_width;
   attributes.width = allocation.width - border_width * 2;
   attributes.height = allocation.height - border_width * 2;
-  attributes.wclass = GDK_INPUT_OUTPUT;
+  attributes.wclass = CDK_INPUT_OUTPUT;
   attributes.visual = ctk_widget_get_visual (widget);
   attributes.event_mask = ctk_widget_get_events (widget)
-                         | GDK_VISIBILITY_NOTIFY_MASK
-                         | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK
-                         | GDK_BUTTON_MOTION_MASK
-                         | GDK_SCROLL_MASK | GDK_SMOOTH_SCROLL_MASK
-                         | GDK_TOUCH_MASK;
-  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
+                         | CDK_VISIBILITY_NOTIFY_MASK
+                         | CDK_BUTTON_PRESS_MASK | CDK_BUTTON_RELEASE_MASK
+                         | CDK_BUTTON_MOTION_MASK
+                         | CDK_SCROLL_MASK | CDK_SMOOTH_SCROLL_MASK
+                         | CDK_TOUCH_MASK;
+  attributes_mask = CDK_WA_X | CDK_WA_Y | CDK_WA_VISUAL;
 
   window = cdk_window_new (ctk_widget_get_parent_window (widget),
                            &attributes, attributes_mask);
@@ -1786,8 +1786,8 @@ _ctk_tool_palette_child_set_drag_source (CtkWidget *child,
       if (!child)
         return;
 
-      ctk_drag_source_set (child, GDK_BUTTON1_MASK | GDK_BUTTON3_MASK,
-                           &dnd_targets[0], 1, GDK_ACTION_COPY | GDK_ACTION_MOVE);
+      ctk_drag_source_set (child, CDK_BUTTON1_MASK | CDK_BUTTON3_MASK,
+                           &dnd_targets[0], 1, CDK_ACTION_COPY | CDK_ACTION_MOVE);
 
       g_signal_connect (child, "drag-data-get",
                         G_CALLBACK (ctk_tool_palette_item_drag_data_get),
@@ -1796,8 +1796,8 @@ _ctk_tool_palette_child_set_drag_source (CtkWidget *child,
   else if (CTK_IS_BUTTON (child) &&
            (palette->priv->drag_source & CTK_TOOL_PALETTE_DRAG_GROUPS))
     {
-      ctk_drag_source_set (child, GDK_BUTTON1_MASK | GDK_BUTTON3_MASK,
-                           &dnd_targets[1], 1, GDK_ACTION_COPY | GDK_ACTION_MOVE);
+      ctk_drag_source_set (child, CDK_BUTTON1_MASK | CDK_BUTTON3_MASK,
+                           &dnd_targets[1], 1, CDK_ACTION_COPY | CDK_ACTION_MOVE);
 
       g_signal_connect (child, "drag-data-get",
                         G_CALLBACK (ctk_tool_palette_child_drag_data_get),

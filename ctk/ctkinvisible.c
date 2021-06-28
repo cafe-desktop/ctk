@@ -97,7 +97,7 @@ ctk_invisible_class_init (CtkInvisibleClass *class)
 				   g_param_spec_object ("screen",
  							P_("Screen"),
  							P_("The screen where this window will be displayed"),
-							GDK_TYPE_SCREEN,
+							CDK_TYPE_SCREEN,
  							CTK_PARAM_READWRITE));
 }
 
@@ -147,7 +147,7 @@ ctk_invisible_destroy (CtkWidget *widget)
 CtkWidget* 
 ctk_invisible_new_for_screen (CdkScreen *screen)
 {
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), NULL);
   
   return g_object_new (CTK_TYPE_INVISIBLE, "screen", screen, NULL);
 }
@@ -184,7 +184,7 @@ ctk_invisible_set_screen (CtkInvisible *invisible,
   gboolean was_realized;
 
   g_return_if_fail (CTK_IS_INVISIBLE (invisible));
-  g_return_if_fail (GDK_IS_SCREEN (screen));
+  g_return_if_fail (CDK_IS_SCREEN (screen));
 
   priv = invisible->priv;
 
@@ -244,12 +244,12 @@ ctk_invisible_realize (CtkWidget *widget)
   attributes.y = -100;
   attributes.width = 10;
   attributes.height = 10;
-  attributes.window_type = GDK_WINDOW_TEMP;
-  attributes.wclass = GDK_INPUT_ONLY;
+  attributes.window_type = CDK_WINDOW_TEMP;
+  attributes.wclass = CDK_INPUT_ONLY;
   attributes.override_redirect = TRUE;
   attributes.event_mask = ctk_widget_get_events (widget);
 
-  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_NOREDIR;
+  attributes_mask = CDK_WA_X | CDK_WA_Y | CDK_WA_NOREDIR;
 
   window = cdk_window_new (parent, &attributes, attributes_mask);
   ctk_widget_set_window (widget, window);

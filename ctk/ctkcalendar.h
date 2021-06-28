@@ -123,60 +123,60 @@ struct _CtkCalendarClass
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType	   ctk_calendar_get_type	(void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_calendar_new		(void);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_calendar_select_month	(CtkCalendar *calendar,
 					 guint	      month,
 					 guint	      year);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void	   ctk_calendar_select_day	(CtkCalendar *calendar,
 					 guint	      day);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_calendar_mark_day	(CtkCalendar *calendar,
 					 guint	      day);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_calendar_unmark_day	(CtkCalendar *calendar,
 					 guint	      day);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void	   ctk_calendar_clear_marks	(CtkCalendar *calendar);
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void	   ctk_calendar_set_display_options (CtkCalendar    	      *calendar,
 					     CtkCalendarDisplayOptions flags);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkCalendarDisplayOptions
            ctk_calendar_get_display_options (CtkCalendar   	      *calendar);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void	   ctk_calendar_get_date	(CtkCalendar *calendar, 
 					 guint	     *year,
 					 guint	     *month,
 					 guint	     *day);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_calendar_set_detail_func (CtkCalendar           *calendar,
                                          CtkCalendarDetailFunc  func,
                                          gpointer               data,
                                          GDestroyNotify         destroy);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_calendar_set_detail_width_chars (CtkCalendar    *calendar,
                                                 gint            chars);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_calendar_set_detail_height_rows (CtkCalendar    *calendar,
                                                 gint            rows);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint       ctk_calendar_get_detail_width_chars (CtkCalendar    *calendar);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint       ctk_calendar_get_detail_height_rows (CtkCalendar    *calendar);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_calendar_get_day_is_marked      (CtkCalendar    *calendar,
                                                 guint           day);
 

@@ -78,7 +78,7 @@ msgstr "प्रदर्शन"
 
 #. Description of --cdk-debug=FLAGS in --help output
 #: ../cdk/cdk.c:223
-msgid "GDK debugging flags to set"
+msgid "CDK debugging flags to set"
 msgstr "CTK+ डिबगिंग फ्लैग सेट किया जाना है"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
@@ -91,7 +91,7 @@ msgstr "पताका"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: ../cdk/cdk.c:226
-msgid "GDK debugging flags to unset"
+msgid "CDK debugging flags to unset"
 msgstr "CTK+ डिबगिंग फ्लैग अनसेट किया जाना है"
 
 #.
@@ -3535,8 +3535,8 @@ msgid "CTK+ Version"
 msgstr "CTK+ संस्करण"
 
 #: ../ctk/inspector/general.ui.h:2
-msgid "GDK Backend"
-msgstr "GDK बैकेंड"
+msgid "CDK Backend"
+msgstr "CDK बैकेंड"
 
 #: ../ctk/inspector/gestures.c:128
 msgid "Capture"

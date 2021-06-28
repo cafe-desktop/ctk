@@ -72,68 +72,68 @@ struct _CtkStackClass {
   CtkContainerClass parent_class;
 };
 
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 GType                  ctk_stack_get_type                (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 CtkWidget *            ctk_stack_new                     (void);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void                   ctk_stack_add_named               (CtkStack               *stack,
                                                           CtkWidget              *child,
                                                           const gchar            *name);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void                   ctk_stack_add_titled              (CtkStack               *stack,
                                                           CtkWidget              *child,
                                                           const gchar            *name,
                                                           const gchar            *title);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 CtkWidget *            ctk_stack_get_child_by_name       (CtkStack               *stack,
                                                           const gchar            *name);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void                   ctk_stack_set_visible_child       (CtkStack               *stack,
                                                           CtkWidget              *child);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 CtkWidget *            ctk_stack_get_visible_child       (CtkStack               *stack);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void                   ctk_stack_set_visible_child_name  (CtkStack               *stack,
                                                           const gchar            *name);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 const gchar *          ctk_stack_get_visible_child_name  (CtkStack               *stack);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void                   ctk_stack_set_visible_child_full  (CtkStack               *stack,
                                                           const gchar            *name,
                                                           CtkStackTransitionType  transition);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void                   ctk_stack_set_homogeneous         (CtkStack               *stack,
                                                           gboolean                homogeneous);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 gboolean               ctk_stack_get_homogeneous         (CtkStack               *stack);
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 void                   ctk_stack_set_hhomogeneous        (CtkStack               *stack,
                                                           gboolean                hhomogeneous);
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 gboolean               ctk_stack_get_hhomogeneous        (CtkStack               *stack);
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 void                   ctk_stack_set_vhomogeneous        (CtkStack               *stack,
                                                           gboolean                vhomogeneous);
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 gboolean               ctk_stack_get_vhomogeneous        (CtkStack               *stack);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void                   ctk_stack_set_transition_duration (CtkStack               *stack,
                                                           guint                   duration);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 guint                  ctk_stack_get_transition_duration (CtkStack               *stack);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void                   ctk_stack_set_transition_type     (CtkStack               *stack,
                                                           CtkStackTransitionType  transition);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 CtkStackTransitionType ctk_stack_get_transition_type     (CtkStack               *stack);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 gboolean               ctk_stack_get_transition_running  (CtkStack               *stack);
-GDK_AVAILABLE_IN_3_18
+CDK_AVAILABLE_IN_3_18
 void                   ctk_stack_set_interpolate_size    (CtkStack *stack,
                                                           gboolean  interpolate_size);
-GDK_AVAILABLE_IN_3_18
+CDK_AVAILABLE_IN_3_18
 gboolean               ctk_stack_get_interpolate_size    (CtkStack *stack);
 G_END_DECLS
 

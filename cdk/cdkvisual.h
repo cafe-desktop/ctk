@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -22,10 +22,10 @@
  * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
-#ifndef __GDK_VISUAL_H__
-#define __GDK_VISUAL_H__
+#ifndef __CDK_VISUAL_H__
+#define __CDK_VISUAL_H__
 
-#if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined (__CDK_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdk.h> can be included directly."
 #endif
 
@@ -34,28 +34,28 @@
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_VISUAL              (cdk_visual_get_type ())
-#define GDK_VISUAL(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_VISUAL, CdkVisual))
-#define GDK_IS_VISUAL(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_VISUAL))
+#define CDK_TYPE_VISUAL              (cdk_visual_get_type ())
+#define CDK_VISUAL(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), CDK_TYPE_VISUAL, CdkVisual))
+#define CDK_IS_VISUAL(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), CDK_TYPE_VISUAL))
 
 /**
  * CdkVisualType:
- * @GDK_VISUAL_STATIC_GRAY: Each pixel value indexes a grayscale value
+ * @CDK_VISUAL_STATIC_GRAY: Each pixel value indexes a grayscale value
  *     directly.
- * @GDK_VISUAL_GRAYSCALE: Each pixel is an index into a color map that
+ * @CDK_VISUAL_GRAYSCALE: Each pixel is an index into a color map that
  *     maps pixel values into grayscale values. The color map can be
  *     changed by an application.
- * @GDK_VISUAL_STATIC_COLOR: Each pixel value is an index into a predefined,
+ * @CDK_VISUAL_STATIC_COLOR: Each pixel value is an index into a predefined,
  *     unmodifiable color map that maps pixel values into RGB values.
- * @GDK_VISUAL_PSEUDO_COLOR: Each pixel is an index into a color map that
+ * @CDK_VISUAL_PSEUDO_COLOR: Each pixel is an index into a color map that
  *     maps pixel values into rgb values. The color map can be changed by
  *     an application.
- * @GDK_VISUAL_TRUE_COLOR: Each pixel value directly contains red, green,
+ * @CDK_VISUAL_TRUE_COLOR: Each pixel value directly contains red, green,
  *     and blue components. Use cdk_visual_get_red_pixel_details(), etc,
  *     to obtain information about how the components are assembled into
  *     a pixel value.
- * @GDK_VISUAL_DIRECT_COLOR: Each pixel value contains red, green, and blue
- *     components as for %GDK_VISUAL_TRUE_COLOR, but the components are
+ * @CDK_VISUAL_DIRECT_COLOR: Each pixel value contains red, green, and blue
+ *     components as for %CDK_VISUAL_TRUE_COLOR, but the components are
  *     mapped via a color table into the final output table instead of
  *     being converted directly.
  *
@@ -64,12 +64,12 @@ G_BEGIN_DECLS
  */
 typedef enum
 {
-  GDK_VISUAL_STATIC_GRAY,
-  GDK_VISUAL_GRAYSCALE,
-  GDK_VISUAL_STATIC_COLOR,
-  GDK_VISUAL_PSEUDO_COLOR,
-  GDK_VISUAL_TRUE_COLOR,
-  GDK_VISUAL_DIRECT_COLOR
+  CDK_VISUAL_STATIC_GRAY,
+  CDK_VISUAL_GRAYSCALE,
+  CDK_VISUAL_STATIC_COLOR,
+  CDK_VISUAL_PSEUDO_COLOR,
+  CDK_VISUAL_TRUE_COLOR,
+  CDK_VISUAL_DIRECT_COLOR
 } CdkVisualType;
 
 /**
@@ -79,59 +79,59 @@ typedef enum
  * a particular visual.
  */
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType         cdk_visual_get_type            (void) G_GNUC_CONST;
 
-GDK_DEPRECATED_IN_3_22
+CDK_DEPRECATED_IN_3_22
 gint          cdk_visual_get_best_depth      (void);
-GDK_DEPRECATED_IN_3_22
+CDK_DEPRECATED_IN_3_22
 CdkVisualType cdk_visual_get_best_type       (void);
-GDK_DEPRECATED_IN_3_22_FOR(cdk_screen_get_system_visual)
+CDK_DEPRECATED_IN_3_22_FOR(cdk_screen_get_system_visual)
 CdkVisual*    cdk_visual_get_system          (void);
-GDK_DEPRECATED_IN_3_22
+CDK_DEPRECATED_IN_3_22
 CdkVisual*    cdk_visual_get_best            (void);
-GDK_DEPRECATED_IN_3_22
+CDK_DEPRECATED_IN_3_22
 CdkVisual*    cdk_visual_get_best_with_depth (gint           depth);
-GDK_DEPRECATED_IN_3_22
+CDK_DEPRECATED_IN_3_22
 CdkVisual*    cdk_visual_get_best_with_type  (CdkVisualType  visual_type);
-GDK_DEPRECATED_IN_3_22
+CDK_DEPRECATED_IN_3_22
 CdkVisual*    cdk_visual_get_best_with_both  (gint           depth,
                                               CdkVisualType  visual_type);
 
-GDK_DEPRECATED_IN_3_22
+CDK_DEPRECATED_IN_3_22
 void cdk_query_depths       (gint           **depths,
                              gint            *count);
-GDK_DEPRECATED_IN_3_22
+CDK_DEPRECATED_IN_3_22
 void cdk_query_visual_types (CdkVisualType  **visual_types,
                              gint            *count);
 
-GDK_DEPRECATED_IN_3_22_FOR(cdk_screen_list_visuals)
+CDK_DEPRECATED_IN_3_22_FOR(cdk_screen_list_visuals)
 GList* cdk_list_visuals (void);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkScreen    *cdk_visual_get_screen (CdkVisual *visual);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkVisualType cdk_visual_get_visual_type         (CdkVisual *visual);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint          cdk_visual_get_depth               (CdkVisual *visual);
-GDK_DEPRECATED_IN_3_22
+CDK_DEPRECATED_IN_3_22
 CdkByteOrder  cdk_visual_get_byte_order          (CdkVisual *visual);
-GDK_DEPRECATED_IN_3_22
+CDK_DEPRECATED_IN_3_22
 gint          cdk_visual_get_colormap_size       (CdkVisual *visual);
-GDK_DEPRECATED_IN_3_22
+CDK_DEPRECATED_IN_3_22
 gint          cdk_visual_get_bits_per_rgb        (CdkVisual *visual);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          cdk_visual_get_red_pixel_details   (CdkVisual *visual,
                                                   guint32   *mask,
                                                   gint      *shift,
                                                   gint      *precision);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          cdk_visual_get_green_pixel_details (CdkVisual *visual,
                                                   guint32   *mask,
                                                   gint      *shift,
                                                   gint      *precision);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          cdk_visual_get_blue_pixel_details  (CdkVisual *visual,
                                                   guint32   *mask,
                                                   gint      *shift,
@@ -139,4 +139,4 @@ void          cdk_visual_get_blue_pixel_details  (CdkVisual *visual,
 
 G_END_DECLS
 
-#endif /* __GDK_VISUAL_H__ */
+#endif /* __CDK_VISUAL_H__ */

@@ -546,7 +546,7 @@ ctk_menu_item_accessible_get_keybinding (AtkAction *action,
       if (CTK_IS_LABEL (child))
         {
           key_val = ctk_label_get_mnemonic_keyval (CTK_LABEL (child));
-          if (key_val != GDK_KEY_VoidSymbol)
+          if (key_val != CDK_KEY_VoidSymbol)
             {
               key = ctk_accelerator_name (key_val, mnemonic_modifier);
               if (full_keybinding)

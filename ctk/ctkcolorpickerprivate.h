@@ -51,15 +51,15 @@ struct _CtkColorPickerInterface {
                              GError             **error);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType            ctk_color_picker_get_type    (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkColorPicker * ctk_color_picker_new         (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_color_picker_pick        (CtkColorPicker       *picker,
                                                GAsyncReadyCallback   callback,
                                                gpointer              user_data);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkRGBA *        ctk_color_picker_pick_finish (CtkColorPicker       *picker,
                                                GAsyncResult         *res,
                                                GError              **error);

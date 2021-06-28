@@ -55,9 +55,9 @@ struct _CtkVPanedClass
 };
 
 
-GDK_DEPRECATED_IN_3_2
+CDK_DEPRECATED_IN_3_2
 GType       ctk_vpaned_get_type (void) G_GNUC_CONST;
-GDK_DEPRECATED_IN_3_2_FOR(ctk_paned_new)
+CDK_DEPRECATED_IN_3_2_FOR(ctk_paned_new)
 CtkWidget * ctk_vpaned_new      (void);
 
 G_END_DECLS

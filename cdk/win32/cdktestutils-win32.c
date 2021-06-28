@@ -36,7 +36,7 @@ _cdk_win32_window_simulate_key (CdkWindow      *window,
   INPUT         ip;
   gint          i;
 
-  g_return_val_if_fail (key_pressrelease == GDK_KEY_PRESS || key_pressrelease == GDK_KEY_RELEASE, FALSE);
+  g_return_val_if_fail (key_pressrelease == CDK_KEY_PRESS || key_pressrelease == CDK_KEY_RELEASE, FALSE);
   g_return_val_if_fail (window != NULL, FALSE);
 
   ip.type = INPUT_KEYBOARD;
@@ -46,10 +46,10 @@ _cdk_win32_window_simulate_key (CdkWindow      *window,
 
   switch (key_pressrelease)
     {
-    case GDK_KEY_PRESS:
+    case CDK_KEY_PRESS:
       ip.ki.dwFlags = 0;
       break;
-    case GDK_KEY_RELEASE:
+    case CDK_KEY_RELEASE:
       ip.ki.dwFlags = KEYEVENTF_KEYUP;
       break;
     default:
@@ -60,7 +60,7 @@ _cdk_win32_window_simulate_key (CdkWindow      *window,
     {
       for (i = 0; i < n_keys; i++)
         {
-          if (key_pressrelease == GDK_KEY_PRESS)
+          if (key_pressrelease == CDK_KEY_PRESS)
             {
               /* AltGr press. */
               if (keys[i].group)
@@ -73,7 +73,7 @@ _cdk_win32_window_simulate_key (CdkWindow      *window,
                   SendInput(1, &ip, sizeof(INPUT));
                 }
               /* Shift press. */
-              if (keys[i].level || (modifiers & GDK_SHIFT_MASK))
+              if (keys[i].level || (modifiers & CDK_SHIFT_MASK))
                 {
                   ip.ki.wVk = VK_SHIFT;
                   SendInput(1, &ip, sizeof(INPUT));
@@ -84,10 +84,10 @@ _cdk_win32_window_simulate_key (CdkWindow      *window,
           ip.ki.wVk = keys[i].keycode;
           SendInput(1, &ip, sizeof(INPUT));
 
-          if (key_pressrelease == GDK_KEY_RELEASE)
+          if (key_pressrelease == CDK_KEY_RELEASE)
             {
               /* Shift release. */
-              if (keys[i].level || (modifiers & GDK_SHIFT_MASK))
+              if (keys[i].level || (modifiers & CDK_SHIFT_MASK))
                 {
                   ip.ki.wVk = VK_SHIFT;
                   SendInput(1, &ip, sizeof(INPUT));
@@ -120,7 +120,7 @@ _cdk_win32_window_simulate_button (CdkWindow      *window,
                           CdkModifierType modifiers,
                           CdkEventType    button_pressrelease)
 {
-  g_return_val_if_fail (button_pressrelease == GDK_BUTTON_PRESS || button_pressrelease == GDK_BUTTON_RELEASE, FALSE);
+  g_return_val_if_fail (button_pressrelease == CDK_BUTTON_PRESS || button_pressrelease == CDK_BUTTON_RELEASE, FALSE);
   g_return_val_if_fail (window != NULL, FALSE);
 
   return FALSE;

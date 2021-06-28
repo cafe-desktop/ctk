@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -22,8 +22,8 @@
  * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
-#ifndef __GDK_PRIVATE_H__
-#define __GDK_PRIVATE_H__
+#ifndef __CDK_PRIVATE_H__
+#define __CDK_PRIVATE_H__
 
 #include <cdk/cdk.h>
 
@@ -31,14 +31,14 @@ G_BEGIN_DECLS
 
 const char * _cdk_atom_name_const (CdkAtom atom);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void cdk_window_destroy_notify	     (CdkWindow *window);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void cdk_synthesize_window_state (CdkWindow     *window,
                                   CdkWindowState unset_flags,
                                   CdkWindowState set_flags);
 
 G_END_DECLS
 
-#endif /* __GDK_PRIVATE_H__ */
+#endif /* __CDK_PRIVATE_H__ */

@@ -28,7 +28,7 @@ test_error_trapping (CdkDisplay *cdk_display)
   int dummy;
   int error;
 
-  d = GDK_DISPLAY_XDISPLAY (cdk_display);
+  d = CDK_DISPLAY_XDISPLAY (cdk_display);
 
   /* verify that we can catch errors */
   cdk_error_trap_push ();

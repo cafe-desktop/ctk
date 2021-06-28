@@ -27,7 +27,7 @@
 #define CONFIGURATION_FILENAME MULTIPRESS_CONFDIR G_DIR_SEPARATOR_S "im-multipress.conf"
 
 /* This contains rows of characters that can be entered by pressing
- * a particular key repeatedly.  Each row has one key (such as GDK_a),
+ * a particular key repeatedly.  Each row has one key (such as CDK_a),
  * and an array of character strings, such as "a".
  */
 typedef struct
@@ -224,7 +224,7 @@ vfunc_filter_keypress (CtkIMContext *context, CdkEventKey *event)
 
   multipress_context = CTK_IM_CONTEXT_MULTIPRESS (context);
 
-  if (event->type == GDK_KEY_PRESS)
+  if (event->type == CDK_KEY_PRESS)
     {
       KeySequence *possible;
 
@@ -413,7 +413,7 @@ load_config (CtkImContextMultipress *self)
 
       keyval = cdk_keyval_from_name (keys[i]);
 
-      if (keyval == GDK_KEY_VoidSymbol)
+      if (keyval == CDK_KEY_VoidSymbol)
         {
           g_warning ("Error while trying to read the %s configuration file: "
                      "invalid key name \"%s\"",

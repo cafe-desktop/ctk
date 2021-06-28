@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -22,21 +22,21 @@
  * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
-/* Uninstalled header, internal to GDK */
+/* Uninstalled header, internal to CDK */
 
-#ifndef __GDK_FRAME_CLOCK_IDLE_H__
-#define __GDK_FRAME_CLOCK_IDLE_H__
+#ifndef __CDK_FRAME_CLOCK_IDLE_H__
+#define __CDK_FRAME_CLOCK_IDLE_H__
 
 #include "cdkframeclockprivate.h"
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_FRAME_CLOCK_IDLE            (cdk_frame_clock_idle_get_type ())
-#define GDK_FRAME_CLOCK_IDLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GDK_TYPE_FRAME_CLOCK_IDLE, CdkFrameClockIdle))
-#define GDK_FRAME_CLOCK_IDLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_FRAME_CLOCK_IDLE, CdkFrameClockIdleClass))
-#define GDK_IS_FRAME_CLOCK_IDLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GDK_TYPE_FRAME_CLOCK_IDLE))
-#define GDK_IS_FRAME_CLOCK_IDLE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_FRAME_CLOCK_IDLE))
-#define GDK_FRAME_CLOCK_IDLE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_FRAME_CLOCK_IDLE, CdkFrameClockIdleClass))
+#define CDK_TYPE_FRAME_CLOCK_IDLE            (cdk_frame_clock_idle_get_type ())
+#define CDK_FRAME_CLOCK_IDLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CDK_TYPE_FRAME_CLOCK_IDLE, CdkFrameClockIdle))
+#define CDK_FRAME_CLOCK_IDLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CDK_TYPE_FRAME_CLOCK_IDLE, CdkFrameClockIdleClass))
+#define CDK_IS_FRAME_CLOCK_IDLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CDK_TYPE_FRAME_CLOCK_IDLE))
+#define CDK_IS_FRAME_CLOCK_IDLE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CDK_TYPE_FRAME_CLOCK_IDLE))
+#define CDK_FRAME_CLOCK_IDLE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CDK_TYPE_FRAME_CLOCK_IDLE, CdkFrameClockIdleClass))
 
 
 typedef struct _CdkFrameClockIdle              CdkFrameClockIdle;
@@ -64,4 +64,4 @@ void           _cdk_frame_clock_idle_thaw_updates   (CdkFrameClockIdle *clock_id
 
 G_END_DECLS
 
-#endif /* __GDK_FRAME_CLOCK_IDLE_H__ */
+#endif /* __CDK_FRAME_CLOCK_IDLE_H__ */

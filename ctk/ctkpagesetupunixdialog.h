@@ -62,20 +62,20 @@ struct _CtkPageSetupUnixDialogClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType 		  ctk_page_setup_unix_dialog_get_type	        (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *       ctk_page_setup_unix_dialog_new                (const gchar            *title,
 								 CtkWindow              *parent);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_page_setup_unix_dialog_set_page_setup     (CtkPageSetupUnixDialog *dialog,
 								 CtkPageSetup           *page_setup);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkPageSetup *    ctk_page_setup_unix_dialog_get_page_setup     (CtkPageSetupUnixDialog *dialog);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_page_setup_unix_dialog_set_print_settings (CtkPageSetupUnixDialog *dialog,
 								 CtkPrintSettings       *print_settings);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkPrintSettings *ctk_page_setup_unix_dialog_get_print_settings (CtkPageSetupUnixDialog *dialog);
 
 G_END_DECLS

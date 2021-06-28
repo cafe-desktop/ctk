@@ -29,36 +29,36 @@ G_BEGIN_DECLS
 
 #define CTK_TYPE_SYMBOLIC_COLOR (ctk_symbolic_color_get_type ())
 
-GDK_DEPRECATED_IN_3_8
+CDK_DEPRECATED_IN_3_8
 GType              ctk_symbolic_color_get_type    (void) G_GNUC_CONST;
 
-GDK_DEPRECATED_IN_3_8
+CDK_DEPRECATED_IN_3_8
 CtkSymbolicColor * ctk_symbolic_color_new_literal (const CdkRGBA      *color);
-GDK_DEPRECATED_IN_3_8
+CDK_DEPRECATED_IN_3_8
 CtkSymbolicColor * ctk_symbolic_color_new_name    (const gchar        *name);
-GDK_DEPRECATED_IN_3_8
+CDK_DEPRECATED_IN_3_8
 CtkSymbolicColor * ctk_symbolic_color_new_shade   (CtkSymbolicColor   *color,
                                                    gdouble             factor);
-GDK_DEPRECATED_IN_3_8
+CDK_DEPRECATED_IN_3_8
 CtkSymbolicColor * ctk_symbolic_color_new_alpha   (CtkSymbolicColor   *color,
                                                    gdouble             factor);
-GDK_DEPRECATED_IN_3_8
+CDK_DEPRECATED_IN_3_8
 CtkSymbolicColor * ctk_symbolic_color_new_mix     (CtkSymbolicColor   *color1,
                                                    CtkSymbolicColor   *color2,
                                                    gdouble             factor);
-GDK_DEPRECATED_IN_3_8
+CDK_DEPRECATED_IN_3_8
 CtkSymbolicColor * ctk_symbolic_color_new_win32   (const gchar        *theme_class,
                                                    gint                id);
 
-GDK_DEPRECATED_IN_3_8
+CDK_DEPRECATED_IN_3_8
 CtkSymbolicColor * ctk_symbolic_color_ref         (CtkSymbolicColor   *color);
-GDK_DEPRECATED_IN_3_8
+CDK_DEPRECATED_IN_3_8
 void               ctk_symbolic_color_unref       (CtkSymbolicColor   *color);
 
-GDK_DEPRECATED_IN_3_8
+CDK_DEPRECATED_IN_3_8
 char *             ctk_symbolic_color_to_string   (CtkSymbolicColor   *color);
 
-GDK_DEPRECATED_IN_3_8
+CDK_DEPRECATED_IN_3_8
 gboolean           ctk_symbolic_color_resolve     (CtkSymbolicColor   *color,
                                                    CtkStyleProperties *props,
                                                    CdkRGBA            *resolved_color);

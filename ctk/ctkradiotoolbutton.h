@@ -55,22 +55,22 @@ struct _CtkRadioToolButtonClass
   void (* _ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType        ctk_radio_tool_button_get_type       (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkToolItem *ctk_radio_tool_button_new                        (GSList             *group);
-GDK_DEPRECATED_IN_3_10_FOR(ctk_radio_tool_button_new)
+CDK_DEPRECATED_IN_3_10_FOR(ctk_radio_tool_button_new)
 CtkToolItem *ctk_radio_tool_button_new_from_stock             (GSList             *group,
 							       const gchar        *stock_id);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkToolItem *ctk_radio_tool_button_new_from_widget            (CtkRadioToolButton *group);
-GDK_DEPRECATED_IN_3_10_FOR(ctk_radio_tool_button_new_from_widget)
+CDK_DEPRECATED_IN_3_10_FOR(ctk_radio_tool_button_new_from_widget)
 CtkToolItem *ctk_radio_tool_button_new_with_stock_from_widget (CtkRadioToolButton *group,
 							       const gchar        *stock_id);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GSList *     ctk_radio_tool_button_get_group                  (CtkRadioToolButton *button);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void         ctk_radio_tool_button_set_group                  (CtkRadioToolButton *button,
 							       GSList             *group);
 

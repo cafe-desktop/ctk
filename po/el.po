@@ -68,16 +68,16 @@ msgid "No compatible formats to transfer contents."
 msgstr "Δεν υπάρχουν συμβατές μορφές για τη μεταφορά περιεχομένων."
 
 #: cdk/cdksurface.c:1094
-msgid "GL support disabled via GDK_DEBUG"
-msgstr "Η υποστήριξη GL απενεργοποιήθηκε μέσα από το GDK_DEBUG"
+msgid "GL support disabled via CDK_DEBUG"
+msgstr "Η υποστήριξη GL απενεργοποιήθηκε μέσα από το CDK_DEBUG"
 
 #: cdk/cdksurface.c:1105
 msgid "The current backend does not support OpenGL"
 msgstr "Το τρέχον σύστημα υποστήριξης δεν υποστηρίζει OpenGL"
 
 #: cdk/cdksurface.c:1213
-msgid "Vulkan support disabled via GDK_DEBUG"
-msgstr "Η υποστήριξη Vulkan απενεργοποιήθηκε μέσα από το GDK_DEBUG"
+msgid "Vulkan support disabled via CDK_DEBUG"
+msgstr "Η υποστήριξη Vulkan απενεργοποιήθηκε μέσα από το CDK_DEBUG"
 
 #.
 #. * Translators, the strings in the “keyboard label” context are
@@ -606,7 +606,7 @@ msgstr ""
 
 #: cdk/win32/cdkdrop-win32.c:1298
 #, c-format
-msgid "GDK surface 0x%p is not registered as a drop target"
+msgid "CDK surface 0x%p is not registered as a drop target"
 msgstr ""
 
 #: cdk/win32/cdkdrop-win32.c:1305
@@ -2830,8 +2830,8 @@ msgid "CTK Version"
 msgstr "Έκδοση CTK"
 
 #: ctk/inspector/general.ui:66
-msgid "GDK Backend"
-msgstr "Σύστημα υποστήριξης GDK"
+msgid "CDK Backend"
+msgstr "Σύστημα υποστήριξης CDK"
 
 #: ctk/inspector/general.ui:96
 #, fuzzy
@@ -8111,10 +8111,10 @@ msgstr "Ακαθόριστο προφίλ"
 
 #~ msgid ""
 #~ "Not settable at runtime.\n"
-#~ "Use GDK_GL=always or GDK_GL=disable instead"
+#~ "Use CDK_GL=always or CDK_GL=disable instead"
 #~ msgstr ""
 #~ "Δεν μπορεί να οριστεί στο περιβάλλον εκτέλεσης.\n"
-#~ "Χρησιμοποιήστε GDK_GL=always ή GDK_GL=disable"
+#~ "Χρησιμοποιήστε CDK_GL=always ή CDK_GL=disable"
 
 #~ msgid "Similar"
 #~ msgstr "Παρόμοιο"
@@ -8263,14 +8263,14 @@ msgstr "Ακαθόριστο προφίλ"
 #~ msgid "DISPLAY"
 #~ msgstr "ΠΡΟΒΟΛΗ"
 
-#~ msgid "GDK debugging flags to set"
-#~ msgstr "Σημαίες αποσφαλμάτωσης του GDK για ορισμό"
+#~ msgid "CDK debugging flags to set"
+#~ msgstr "Σημαίες αποσφαλμάτωσης του CDK για ορισμό"
 
 #~ msgid "FLAGS"
 #~ msgstr "ΣΗΜΑΙΕΣ"
 
-#~ msgid "GDK debugging flags to unset"
-#~ msgstr "Σημαίες αποσφαλμάτωσης του GDK για αφαίρεση"
+#~ msgid "CDK debugging flags to unset"
+#~ msgstr "Σημαίες αποσφαλμάτωσης του CDK για αφαίρεση"
 
 #~ msgid ""
 #~ "The WGL_ARB_create_context extension needed to create core profiles is "

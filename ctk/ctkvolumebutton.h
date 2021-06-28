@@ -62,9 +62,9 @@ struct _CtkVolumeButtonClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType		ctk_volume_button_get_type	(void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget*	ctk_volume_button_new		(void);
 
 G_END_DECLS

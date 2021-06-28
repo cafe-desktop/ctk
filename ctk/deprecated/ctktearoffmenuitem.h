@@ -71,9 +71,9 @@ struct _CtkTearoffMenuItemClass
 };
 
 
-GDK_DEPRECATED_IN_3_4
+CDK_DEPRECATED_IN_3_4
 GType	   ctk_tearoff_menu_item_get_type     (void) G_GNUC_CONST;
-GDK_DEPRECATED_IN_3_4
+CDK_DEPRECATED_IN_3_4
 CtkWidget* ctk_tearoff_menu_item_new	      (void);
 
 G_END_DECLS

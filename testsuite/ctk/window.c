@@ -1,6 +1,6 @@
 #include <ctk/ctk.h>
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
 #include <cdk/cdkx.h>
 #include <X11/Xatom.h>
 #endif
@@ -371,8 +371,8 @@ test_hide_titlebar_when_maximized (void)
   g_timeout_add (100, stop_main, NULL);
   ctk_main ();
 
-#ifdef GDK_WINDOWING_X11
-  if (GDK_IS_X11_SCREEN (ctk_widget_get_screen (window)))
+#ifdef CDK_WINDOWING_X11
+  if (CDK_IS_X11_SCREEN (ctk_widget_get_screen (window)))
     {
       Atom type;
       gint format;
@@ -381,7 +381,7 @@ test_hide_titlebar_when_maximized (void)
       gulong *hide = NULL;
 
       XGetWindowProperty (cdk_x11_get_default_xdisplay (),
-                          GDK_WINDOW_XID (ctk_widget_get_window (window)),
+                          CDK_WINDOW_XID (ctk_widget_get_window (window)),
                           cdk_x11_get_xatom_by_name ("_CTK_HIDE_TITLEBAR_WHEN_MAXIMIZED"),
                           0,
                           G_MAXLONG,

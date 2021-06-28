@@ -56,10 +56,10 @@ struct _CtkColorChooserDialogClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 GType       ctk_color_chooser_dialog_get_type (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 CtkWidget * ctk_color_chooser_dialog_new      (const gchar *title,
                                                CtkWindow   *parent);
 

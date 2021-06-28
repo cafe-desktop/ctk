@@ -16,10 +16,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_QUARTZ_SCREEN_H__
-#define __GDK_QUARTZ_SCREEN_H__
+#ifndef __CDK_QUARTZ_SCREEN_H__
+#define __CDK_QUARTZ_SCREEN_H__
 
-#if !defined(__GDKQUARTZ_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined(__CDKQUARTZ_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdkquartz.h> can be included directly."
 #endif
 
@@ -27,14 +27,14 @@ G_BEGIN_DECLS
 
 #include <cdk/cdk.h>
 
-#define GDK_TYPE_QUARTZ_SCREEN              (cdk_quartz_screen_get_type ())
-#define GDK_QUARTZ_SCREEN(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_QUARTZ_SCREEN, CdkQuartzScreen))
-#define GDK_QUARTZ_SCREEN_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_QUARTZ_SCREEN, CdkQuartzScreenClass))
-#define GDK_IS_QUARTZ_SCREEN(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_QUARTZ_SCREEN))
-#define GDK_IS_QUARTZ_SCREEN_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_QUARTZ_SCREEN))
-#define GDK_QUARTZ_SCREEN_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_QUARTZ_SCREEN, CdkQuartzScreenClass))
+#define CDK_TYPE_QUARTZ_SCREEN              (cdk_quartz_screen_get_type ())
+#define CDK_QUARTZ_SCREEN(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), CDK_TYPE_QUARTZ_SCREEN, CdkQuartzScreen))
+#define CDK_QUARTZ_SCREEN_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CDK_TYPE_QUARTZ_SCREEN, CdkQuartzScreenClass))
+#define CDK_IS_QUARTZ_SCREEN(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), CDK_TYPE_QUARTZ_SCREEN))
+#define CDK_IS_QUARTZ_SCREEN_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CDK_TYPE_QUARTZ_SCREEN))
+#define CDK_QUARTZ_SCREEN_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CDK_TYPE_QUARTZ_SCREEN, CdkQuartzScreenClass))
 
-#ifdef GDK_COMPILATION
+#ifdef CDK_COMPILATION
 typedef struct _CdkQuartzScreen CdkQuartzScreen;
 #else
 typedef CdkScreen CdkQuartzScreen;
@@ -42,9 +42,9 @@ typedef CdkScreen CdkQuartzScreen;
 typedef struct _CdkQuartzScreenClass CdkQuartzScreenClass;
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType      cdk_quartz_screen_get_type (void);
 
 G_END_DECLS
 
-#endif /* _GDK_QUARTZ_SCREEN_H_ */
+#endif /* _CDK_QUARTZ_SCREEN_H_ */

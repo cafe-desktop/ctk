@@ -239,7 +239,7 @@ typedef enum {
        };                               }G_STMT_END
 #endif
 
-#define CTK_TREE_VIEW_PRIORITY_VALIDATE (GDK_PRIORITY_REDRAW + 5)
+#define CTK_TREE_VIEW_PRIORITY_VALIDATE (CDK_PRIORITY_REDRAW + 5)
 #define CTK_TREE_VIEW_PRIORITY_SCROLL_SYNC (CTK_TREE_VIEW_PRIORITY_VALIDATE + 2)
 /* 3/5 of cdkframeclockidle.c's FRAME_INTERVAL (16667 microsecs) */
 #define CTK_TREE_VIEW_TIME_MS_PER_IDLE 10
@@ -1274,14 +1274,14 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
                                            g_param_spec_boxed ("even-row-color",
                                                                P_("Even Row Color"),
                                                                P_("Color to use for even rows"),
-							       GDK_TYPE_COLOR,
+							       CDK_TYPE_COLOR,
 							       CTK_PARAM_READABLE));
 
   ctk_widget_class_install_style_property (widget_class,
                                            g_param_spec_boxed ("odd-row-color",
                                                                P_("Odd Row Color"),
                                                                P_("Color to use for odd rows"),
-							       GDK_TYPE_COLOR,
+							       CDK_TYPE_COLOR,
 							       CTK_PARAM_READABLE));
 G_GNUC_END_IGNORE_DEPRECATIONS
 
@@ -1598,217 +1598,217 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                               _ctk_marshal_BOOLEAN__VOIDv);
 
   /* Key bindings */
-  ctk_tree_view_add_move_binding (binding_set, GDK_KEY_Up, 0, TRUE,
+  ctk_tree_view_add_move_binding (binding_set, CDK_KEY_Up, 0, TRUE,
 				  CTK_MOVEMENT_DISPLAY_LINES, -1);
-  ctk_tree_view_add_move_binding (binding_set, GDK_KEY_KP_Up, 0, TRUE,
-				  CTK_MOVEMENT_DISPLAY_LINES, -1);
-
-  ctk_tree_view_add_move_binding (binding_set, GDK_KEY_Down, 0, TRUE,
-				  CTK_MOVEMENT_DISPLAY_LINES, 1);
-  ctk_tree_view_add_move_binding (binding_set, GDK_KEY_KP_Down, 0, TRUE,
-				  CTK_MOVEMENT_DISPLAY_LINES, 1);
-
-  ctk_tree_view_add_move_binding (binding_set, GDK_KEY_p, GDK_CONTROL_MASK, FALSE,
+  ctk_tree_view_add_move_binding (binding_set, CDK_KEY_KP_Up, 0, TRUE,
 				  CTK_MOVEMENT_DISPLAY_LINES, -1);
 
-  ctk_tree_view_add_move_binding (binding_set, GDK_KEY_n, GDK_CONTROL_MASK, FALSE,
+  ctk_tree_view_add_move_binding (binding_set, CDK_KEY_Down, 0, TRUE,
+				  CTK_MOVEMENT_DISPLAY_LINES, 1);
+  ctk_tree_view_add_move_binding (binding_set, CDK_KEY_KP_Down, 0, TRUE,
 				  CTK_MOVEMENT_DISPLAY_LINES, 1);
 
-  ctk_tree_view_add_move_binding (binding_set, GDK_KEY_Home, 0, TRUE,
+  ctk_tree_view_add_move_binding (binding_set, CDK_KEY_p, CDK_CONTROL_MASK, FALSE,
+				  CTK_MOVEMENT_DISPLAY_LINES, -1);
+
+  ctk_tree_view_add_move_binding (binding_set, CDK_KEY_n, CDK_CONTROL_MASK, FALSE,
+				  CTK_MOVEMENT_DISPLAY_LINES, 1);
+
+  ctk_tree_view_add_move_binding (binding_set, CDK_KEY_Home, 0, TRUE,
 				  CTK_MOVEMENT_BUFFER_ENDS, -1);
-  ctk_tree_view_add_move_binding (binding_set, GDK_KEY_KP_Home, 0, TRUE,
+  ctk_tree_view_add_move_binding (binding_set, CDK_KEY_KP_Home, 0, TRUE,
 				  CTK_MOVEMENT_BUFFER_ENDS, -1);
 
-  ctk_tree_view_add_move_binding (binding_set, GDK_KEY_End, 0, TRUE,
+  ctk_tree_view_add_move_binding (binding_set, CDK_KEY_End, 0, TRUE,
 				  CTK_MOVEMENT_BUFFER_ENDS, 1);
-  ctk_tree_view_add_move_binding (binding_set, GDK_KEY_KP_End, 0, TRUE,
+  ctk_tree_view_add_move_binding (binding_set, CDK_KEY_KP_End, 0, TRUE,
 				  CTK_MOVEMENT_BUFFER_ENDS, 1);
 
-  ctk_tree_view_add_move_binding (binding_set, GDK_KEY_Page_Up, 0, TRUE,
+  ctk_tree_view_add_move_binding (binding_set, CDK_KEY_Page_Up, 0, TRUE,
 				  CTK_MOVEMENT_PAGES, -1);
-  ctk_tree_view_add_move_binding (binding_set, GDK_KEY_KP_Page_Up, 0, TRUE,
+  ctk_tree_view_add_move_binding (binding_set, CDK_KEY_KP_Page_Up, 0, TRUE,
 				  CTK_MOVEMENT_PAGES, -1);
 
-  ctk_tree_view_add_move_binding (binding_set, GDK_KEY_Page_Down, 0, TRUE,
+  ctk_tree_view_add_move_binding (binding_set, CDK_KEY_Page_Down, 0, TRUE,
 				  CTK_MOVEMENT_PAGES, 1);
-  ctk_tree_view_add_move_binding (binding_set, GDK_KEY_KP_Page_Down, 0, TRUE,
+  ctk_tree_view_add_move_binding (binding_set, CDK_KEY_KP_Page_Down, 0, TRUE,
 				  CTK_MOVEMENT_PAGES, 1);
 
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Right, 0, "move-cursor", 2,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Right, 0, "move-cursor", 2,
 				G_TYPE_ENUM, CTK_MOVEMENT_VISUAL_POSITIONS,
 				G_TYPE_INT, 1);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Left, 0, "move-cursor", 2,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Left, 0, "move-cursor", 2,
 				G_TYPE_ENUM, CTK_MOVEMENT_VISUAL_POSITIONS,
 				G_TYPE_INT, -1);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Right, 0, "move-cursor", 2,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Right, 0, "move-cursor", 2,
 				G_TYPE_ENUM, CTK_MOVEMENT_VISUAL_POSITIONS,
 				G_TYPE_INT, 1);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Left, 0, "move-cursor", 2,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Left, 0, "move-cursor", 2,
 				G_TYPE_ENUM, CTK_MOVEMENT_VISUAL_POSITIONS,
 				G_TYPE_INT, -1);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Right, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Right, CDK_CONTROL_MASK,
                                 "move-cursor", 2,
 				G_TYPE_ENUM, CTK_MOVEMENT_VISUAL_POSITIONS,
 				G_TYPE_INT, 1);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Left, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Left, CDK_CONTROL_MASK,
                                 "move-cursor", 2,
 				G_TYPE_ENUM, CTK_MOVEMENT_VISUAL_POSITIONS,
 				G_TYPE_INT, -1);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Right, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Right, CDK_CONTROL_MASK,
                                 "move-cursor", 2,
 				G_TYPE_ENUM, CTK_MOVEMENT_VISUAL_POSITIONS,
 				G_TYPE_INT, 1);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Left, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Left, CDK_CONTROL_MASK,
                                 "move-cursor", 2,
 				G_TYPE_ENUM, CTK_MOVEMENT_VISUAL_POSITIONS,
 				G_TYPE_INT, -1);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_space, GDK_CONTROL_MASK, "toggle-cursor-row", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Space, GDK_CONTROL_MASK, "toggle-cursor-row", 0);
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_space, CDK_CONTROL_MASK, "toggle-cursor-row", 0);
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Space, CDK_CONTROL_MASK, "toggle-cursor-row", 0);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_a, GDK_CONTROL_MASK, "select-all", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_slash, GDK_CONTROL_MASK, "select-all", 0);
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_a, CDK_CONTROL_MASK, "select-all", 0);
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_slash, CDK_CONTROL_MASK, "select-all", 0);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_A, GDK_CONTROL_MASK | GDK_SHIFT_MASK, "unselect-all", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_backslash, GDK_CONTROL_MASK, "unselect-all", 0);
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_A, CDK_CONTROL_MASK | CDK_SHIFT_MASK, "unselect-all", 0);
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_backslash, CDK_CONTROL_MASK, "unselect-all", 0);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_space, GDK_SHIFT_MASK, "select-cursor-row", 1,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_space, CDK_SHIFT_MASK, "select-cursor-row", 1,
 				G_TYPE_BOOLEAN, TRUE);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Space, GDK_SHIFT_MASK, "select-cursor-row", 1,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Space, CDK_SHIFT_MASK, "select-cursor-row", 1,
 				G_TYPE_BOOLEAN, TRUE);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_space, 0, "select-cursor-row", 1,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_space, 0, "select-cursor-row", 1,
 				G_TYPE_BOOLEAN, TRUE);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Space, 0, "select-cursor-row", 1,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Space, 0, "select-cursor-row", 1,
 				G_TYPE_BOOLEAN, TRUE);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Return, 0, "select-cursor-row", 1,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Return, 0, "select-cursor-row", 1,
 				G_TYPE_BOOLEAN, TRUE);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_ISO_Enter, 0, "select-cursor-row", 1,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_ISO_Enter, 0, "select-cursor-row", 1,
 				G_TYPE_BOOLEAN, TRUE);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Enter, 0, "select-cursor-row", 1,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Enter, 0, "select-cursor-row", 1,
 				G_TYPE_BOOLEAN, TRUE);
 
   /* expand and collapse rows */
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_plus, 0, "expand-collapse-cursor-row", 3,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_plus, 0, "expand-collapse-cursor-row", 3,
 				G_TYPE_BOOLEAN, TRUE,
 				G_TYPE_BOOLEAN, TRUE,
 				G_TYPE_BOOLEAN, FALSE);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_asterisk, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_asterisk, 0,
                                 "expand-collapse-cursor-row", 3,
                                 G_TYPE_BOOLEAN, TRUE,
                                 G_TYPE_BOOLEAN, TRUE,
                                 G_TYPE_BOOLEAN, TRUE);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Multiply, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Multiply, 0,
                                 "expand-collapse-cursor-row", 3,
                                 G_TYPE_BOOLEAN, TRUE,
                                 G_TYPE_BOOLEAN, TRUE,
                                 G_TYPE_BOOLEAN, TRUE);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_slash, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_slash, 0,
                                 "expand-collapse-cursor-row", 3,
                                 G_TYPE_BOOLEAN, TRUE,
                                 G_TYPE_BOOLEAN, FALSE,
                                 G_TYPE_BOOLEAN, FALSE);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Divide, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Divide, 0,
                                 "expand-collapse-cursor-row", 3,
                                 G_TYPE_BOOLEAN, TRUE,
                                 G_TYPE_BOOLEAN, FALSE,
                                 G_TYPE_BOOLEAN, FALSE);
 
   /* Not doable on US keyboards */
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_plus, GDK_SHIFT_MASK, "expand-collapse-cursor-row", 3,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_plus, CDK_SHIFT_MASK, "expand-collapse-cursor-row", 3,
 				G_TYPE_BOOLEAN, TRUE,
 				G_TYPE_BOOLEAN, TRUE,
 				G_TYPE_BOOLEAN, TRUE);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Add, 0, "expand-collapse-cursor-row", 3,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Add, 0, "expand-collapse-cursor-row", 3,
 				G_TYPE_BOOLEAN, TRUE,
 				G_TYPE_BOOLEAN, TRUE,
 				G_TYPE_BOOLEAN, FALSE);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Add, GDK_SHIFT_MASK, "expand-collapse-cursor-row", 3,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Add, CDK_SHIFT_MASK, "expand-collapse-cursor-row", 3,
 				G_TYPE_BOOLEAN, TRUE,
 				G_TYPE_BOOLEAN, TRUE,
 				G_TYPE_BOOLEAN, TRUE);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Add, GDK_SHIFT_MASK, "expand-collapse-cursor-row", 3,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Add, CDK_SHIFT_MASK, "expand-collapse-cursor-row", 3,
 				G_TYPE_BOOLEAN, TRUE,
 				G_TYPE_BOOLEAN, TRUE,
 				G_TYPE_BOOLEAN, TRUE);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Right, GDK_SHIFT_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Right, CDK_SHIFT_MASK,
                                 "expand-collapse-cursor-row", 3,
 				G_TYPE_BOOLEAN, FALSE,
 				G_TYPE_BOOLEAN, TRUE,
 				G_TYPE_BOOLEAN, TRUE);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Right, GDK_SHIFT_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Right, CDK_SHIFT_MASK,
                                 "expand-collapse-cursor-row", 3,
 				G_TYPE_BOOLEAN, FALSE,
 				G_TYPE_BOOLEAN, TRUE,
 				G_TYPE_BOOLEAN, TRUE);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Right,
-                                GDK_CONTROL_MASK | GDK_SHIFT_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Right,
+                                CDK_CONTROL_MASK | CDK_SHIFT_MASK,
                                 "expand-collapse-cursor-row", 3,
 				G_TYPE_BOOLEAN, FALSE,
 				G_TYPE_BOOLEAN, TRUE,
 				G_TYPE_BOOLEAN, TRUE);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Right,
-                                GDK_CONTROL_MASK | GDK_SHIFT_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Right,
+                                CDK_CONTROL_MASK | CDK_SHIFT_MASK,
                                 "expand-collapse-cursor-row", 3,
 				G_TYPE_BOOLEAN, FALSE,
 				G_TYPE_BOOLEAN, TRUE,
 				G_TYPE_BOOLEAN, TRUE);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_minus, 0, "expand-collapse-cursor-row", 3,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_minus, 0, "expand-collapse-cursor-row", 3,
 				G_TYPE_BOOLEAN, TRUE,
 				G_TYPE_BOOLEAN, FALSE,
 				G_TYPE_BOOLEAN, FALSE);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_minus, GDK_SHIFT_MASK, "expand-collapse-cursor-row", 3,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_minus, CDK_SHIFT_MASK, "expand-collapse-cursor-row", 3,
 				G_TYPE_BOOLEAN, TRUE,
 				G_TYPE_BOOLEAN, FALSE,
 				G_TYPE_BOOLEAN, TRUE);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Subtract, 0, "expand-collapse-cursor-row", 3,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Subtract, 0, "expand-collapse-cursor-row", 3,
 				G_TYPE_BOOLEAN, TRUE,
 				G_TYPE_BOOLEAN, FALSE,
 				G_TYPE_BOOLEAN, FALSE);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Subtract, GDK_SHIFT_MASK, "expand-collapse-cursor-row", 3,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Subtract, CDK_SHIFT_MASK, "expand-collapse-cursor-row", 3,
 				G_TYPE_BOOLEAN, TRUE,
 				G_TYPE_BOOLEAN, FALSE,
 				G_TYPE_BOOLEAN, TRUE);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Left, GDK_SHIFT_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Left, CDK_SHIFT_MASK,
                                 "expand-collapse-cursor-row", 3,
 				G_TYPE_BOOLEAN, FALSE,
 				G_TYPE_BOOLEAN, FALSE,
 				G_TYPE_BOOLEAN, TRUE);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Left, GDK_SHIFT_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Left, CDK_SHIFT_MASK,
                                 "expand-collapse-cursor-row", 3,
 				G_TYPE_BOOLEAN, FALSE,
 				G_TYPE_BOOLEAN, FALSE,
 				G_TYPE_BOOLEAN, TRUE);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Left,
-                                GDK_CONTROL_MASK | GDK_SHIFT_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Left,
+                                CDK_CONTROL_MASK | CDK_SHIFT_MASK,
                                 "expand-collapse-cursor-row", 3,
 				G_TYPE_BOOLEAN, FALSE,
 				G_TYPE_BOOLEAN, FALSE,
 				G_TYPE_BOOLEAN, TRUE);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Left,
-                                GDK_CONTROL_MASK | GDK_SHIFT_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Left,
+                                CDK_CONTROL_MASK | CDK_SHIFT_MASK,
                                 "expand-collapse-cursor-row", 3,
 				G_TYPE_BOOLEAN, FALSE,
 				G_TYPE_BOOLEAN, FALSE,
 				G_TYPE_BOOLEAN, TRUE);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_BackSpace, 0, "select-cursor-parent", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_BackSpace, GDK_CONTROL_MASK, "select-cursor-parent", 0);
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_BackSpace, 0, "select-cursor-parent", 0);
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_BackSpace, CDK_CONTROL_MASK, "select-cursor-parent", 0);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_f, GDK_CONTROL_MASK, "start-interactive-search", 0);
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_f, CDK_CONTROL_MASK, "start-interactive-search", 0);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_F, GDK_CONTROL_MASK, "start-interactive-search", 0);
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_F, CDK_CONTROL_MASK, "start-interactive-search", 0);
 
   ctk_widget_class_set_accessible_type (widget_class, CTK_TYPE_TREE_VIEW_ACCESSIBLE);
   ctk_widget_class_set_css_name (widget_class, "treeview");
@@ -2459,16 +2459,16 @@ ctk_tree_view_realize (CtkWidget *widget)
   ctk_widget_get_allocation (widget, &allocation);
 
   /* Make the main, clipping window */
-  attributes.window_type = GDK_WINDOW_CHILD;
+  attributes.window_type = CDK_WINDOW_CHILD;
   attributes.x = allocation.x;
   attributes.y = allocation.y;
   attributes.width = allocation.width;
   attributes.height = allocation.height;
-  attributes.wclass = GDK_INPUT_OUTPUT;
+  attributes.wclass = CDK_INPUT_OUTPUT;
   attributes.visual = ctk_widget_get_visual (widget);
-  attributes.event_mask = GDK_VISIBILITY_NOTIFY_MASK;
+  attributes.event_mask = CDK_VISIBILITY_NOTIFY_MASK;
 
-  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
+  attributes_mask = CDK_WA_X | CDK_WA_Y | CDK_WA_VISUAL;
 
   window = cdk_window_new (ctk_widget_get_parent_window (widget),
                            &attributes, attributes_mask);
@@ -2482,13 +2482,13 @@ ctk_tree_view_realize (CtkWidget *widget)
   attributes.y = ctk_tree_view_get_effective_header_height (tree_view);
   attributes.width = MAX (tree_view->priv->width, allocation.width);
   attributes.height = allocation.height;
-  attributes.event_mask = (GDK_SCROLL_MASK |
-                           GDK_SMOOTH_SCROLL_MASK |
-                           GDK_POINTER_MOTION_MASK |
-                           GDK_ENTER_NOTIFY_MASK |
-                           GDK_LEAVE_NOTIFY_MASK |
-                           GDK_BUTTON_PRESS_MASK |
-                           GDK_BUTTON_RELEASE_MASK |
+  attributes.event_mask = (CDK_SCROLL_MASK |
+                           CDK_SMOOTH_SCROLL_MASK |
+                           CDK_POINTER_MOTION_MASK |
+                           CDK_ENTER_NOTIFY_MASK |
+                           CDK_LEAVE_NOTIFY_MASK |
+                           CDK_BUTTON_PRESS_MASK |
+                           CDK_BUTTON_RELEASE_MASK |
                            ctk_widget_get_events (widget));
 
   tree_view->priv->bin_window = cdk_window_new (window,
@@ -2504,13 +2504,13 @@ ctk_tree_view_realize (CtkWidget *widget)
   attributes.y = 0;
   attributes.width = MAX (tree_view->priv->width, allocation.width);
   attributes.height = tree_view->priv->header_height;
-  attributes.event_mask = (GDK_SCROLL_MASK |
-                           GDK_ENTER_NOTIFY_MASK |
-                           GDK_LEAVE_NOTIFY_MASK |
-                           GDK_BUTTON_PRESS_MASK |
-                           GDK_BUTTON_RELEASE_MASK |
-                           GDK_KEY_PRESS_MASK |
-                           GDK_KEY_RELEASE_MASK |
+  attributes.event_mask = (CDK_SCROLL_MASK |
+                           CDK_ENTER_NOTIFY_MASK |
+                           CDK_LEAVE_NOTIFY_MASK |
+                           CDK_BUTTON_PRESS_MASK |
+                           CDK_BUTTON_RELEASE_MASK |
+                           CDK_KEY_PRESS_MASK |
+                           CDK_KEY_RELEASE_MASK |
                            ctk_widget_get_events (widget));
 
   tree_view->priv->header_window = cdk_window_new (window,
@@ -3144,10 +3144,10 @@ get_current_selection_modifiers (CtkWidget *widget,
 
   if (ctk_get_current_event_state (&state))
     {
-      mask = ctk_widget_get_modifier_mask (widget, GDK_MODIFIER_INTENT_MODIFY_SELECTION);
+      mask = ctk_widget_get_modifier_mask (widget, CDK_MODIFIER_INTENT_MODIFY_SELECTION);
       if ((state & mask) == mask)
         *modify = TRUE;
-      mask = ctk_widget_get_modifier_mask (widget, GDK_MODIFIER_INTENT_EXTEND_SELECTION);
+      mask = ctk_widget_get_modifier_mask (widget, CDK_MODIFIER_INTENT_EXTEND_SELECTION);
       if ((state & mask) == mask)
         *extend = TRUE;
     }
@@ -3214,7 +3214,7 @@ ctk_tree_view_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
       tree_view->priv->arrow_prelit &&
       ctk_tree_view_draw_expanders (tree_view))
     {
-      if (button == GDK_BUTTON_PRIMARY)
+      if (button == CDK_BUTTON_PRIMARY)
         {
           tree_view->priv->button_pressed_node = tree_view->priv->prelight_node;
           tree_view->priv->button_pressed_tree = tree_view->priv->prelight_tree;
@@ -3312,7 +3312,7 @@ ctk_tree_view_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
   cdk_event_get_state (event, &modifiers);
 
   /* decide if we edit */
-  if (button == GDK_BUTTON_PRIMARY &&
+  if (button == CDK_BUTTON_PRIMARY &&
       !(modifiers & ctk_accelerator_get_default_mod_mask ()))
     {
       CtkTreePath *anchor;
@@ -3400,7 +3400,7 @@ ctk_tree_view_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
       tree_view->priv->extend_selection_pressed = FALSE;
     }
 
-  if (button == GDK_BUTTON_PRIMARY && n_press == 2)
+  if (button == CDK_BUTTON_PRIMARY && n_press == 2)
     ctk_tree_view_row_activated (tree_view, path, column);
   else
     {
@@ -3706,7 +3706,7 @@ ctk_tree_view_multipress_gesture_released (CtkGestureMultiPress *gesture,
 
   button = ctk_gesture_single_get_current_button (CTK_GESTURE_SINGLE (gesture));
 
-  if (button != GDK_BUTTON_PRIMARY ||
+  if (button != CDK_BUTTON_PRIMARY ||
       tree_view->priv->button_pressed_node == NULL ||
       tree_view->priv->button_pressed_node != tree_view->priv->prelight_node)
     return;
@@ -4070,16 +4070,16 @@ ctk_tree_view_motion_draw_column_motion_arrow (CtkTreeView *tree_view)
 	    }
 
 	  button = ctk_tree_view_column_get_button (tree_view->priv->drag_column);
-	  attributes.window_type = GDK_WINDOW_CHILD;
-	  attributes.wclass = GDK_INPUT_OUTPUT;
+	  attributes.window_type = CDK_WINDOW_CHILD;
+	  attributes.wclass = CDK_INPUT_OUTPUT;
           attributes.x = tree_view->priv->drag_column_x;
           attributes.y = 0;
           ctk_widget_get_allocation (button, &drag_allocation);
 	  width = attributes.width = drag_allocation.width;
 	  height = attributes.height = drag_allocation.height;
 	  attributes.visual = cdk_screen_get_rgba_visual (ctk_widget_get_screen (widget));
-	  attributes.event_mask = GDK_VISIBILITY_NOTIFY_MASK | GDK_POINTER_MOTION_MASK;
-	  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
+	  attributes.event_mask = CDK_VISIBILITY_NOTIFY_MASK | CDK_POINTER_MOTION_MASK;
+	  attributes_mask = CDK_WA_X | CDK_WA_Y | CDK_WA_VISUAL;
 	  tree_view->priv->drag_highlight_window = cdk_window_new (tree_view->priv->header_window, &attributes, attributes_mask);
 	  ctk_widget_register_window (CTK_WIDGET (tree_view), tree_view->priv->drag_highlight_window);
 
@@ -4121,11 +4121,11 @@ ctk_tree_view_motion_draw_column_motion_arrow (CtkTreeView *tree_view)
 	      cdk_window_destroy (tree_view->priv->drag_highlight_window);
 	    }
 
-	  attributes.window_type = GDK_WINDOW_TEMP;
-	  attributes.wclass = GDK_INPUT_OUTPUT;
+	  attributes.window_type = CDK_WINDOW_TEMP;
+	  attributes.wclass = CDK_INPUT_OUTPUT;
 	  attributes.visual = ctk_widget_get_visual (CTK_WIDGET (tree_view));
-	  attributes.event_mask = GDK_VISIBILITY_NOTIFY_MASK | GDK_POINTER_MOTION_MASK;
-	  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
+	  attributes.event_mask = CDK_VISIBILITY_NOTIFY_MASK | CDK_POINTER_MOTION_MASK;
+	  attributes_mask = CDK_WA_X | CDK_WA_Y | CDK_WA_VISUAL;
           attributes.x = x;
           attributes.y = y;
 	  attributes.width = width;
@@ -4202,11 +4202,11 @@ ctk_tree_view_motion_draw_column_motion_arrow (CtkTreeView *tree_view)
 	      cdk_window_destroy (tree_view->priv->drag_highlight_window);
 	    }
 
-	  attributes.window_type = GDK_WINDOW_TEMP;
-	  attributes.wclass = GDK_INPUT_OUTPUT;
+	  attributes.window_type = CDK_WINDOW_TEMP;
+	  attributes.wclass = CDK_INPUT_OUTPUT;
 	  attributes.visual = ctk_widget_get_visual (CTK_WIDGET (tree_view));
-	  attributes.event_mask = GDK_VISIBILITY_NOTIFY_MASK | GDK_POINTER_MOTION_MASK;
-	  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
+	  attributes.event_mask = CDK_VISIBILITY_NOTIFY_MASK | CDK_POINTER_MOTION_MASK;
+	  attributes_mask = CDK_WA_X | CDK_WA_Y | CDK_WA_VISUAL;
           attributes.x = x;
           attributes.y = y;
 	  attributes.width = width;
@@ -5968,10 +5968,10 @@ ctk_tree_view_get_drop_column (CtkTreeView       *tree_view,
 static gboolean
 ctk_tree_view_search_key_cancels_search (guint keyval)
 {
-  return keyval == GDK_KEY_Escape
-      || keyval == GDK_KEY_Tab
-      || keyval == GDK_KEY_KP_Tab
-      || keyval == GDK_KEY_ISO_Left_Tab;
+  return keyval == CDK_KEY_Escape
+      || keyval == CDK_KEY_Tab
+      || keyval == CDK_KEY_KP_Tab
+      || keyval == CDK_KEY_ISO_Left_Tab;
 }
 
 static gboolean
@@ -5983,7 +5983,7 @@ ctk_tree_view_key_press (CtkWidget   *widget,
 
   if (tree_view->priv->rubber_band_status)
     {
-      if (event->keyval == GDK_KEY_Escape)
+      if (event->keyval == CDK_KEY_Escape)
 	ctk_tree_view_stop_rubber_band (tree_view);
 
       return TRUE;
@@ -5991,7 +5991,7 @@ ctk_tree_view_key_press (CtkWidget   *widget,
 
   if (tree_view->priv->in_column_drag)
     {
-      if (event->keyval == GDK_KEY_Escape)
+      if (event->keyval == CDK_KEY_Escape)
         ctk_gesture_set_state (CTK_GESTURE (tree_view->priv->column_drag_gesture),
                                CTK_EVENT_SEQUENCE_DENIED);
       return TRUE;
@@ -6016,9 +6016,9 @@ ctk_tree_view_key_press (CtkWidget   *widget,
         }
 
       if (focus_column &&
-          (event->state & GDK_SHIFT_MASK) && (event->state & GDK_MOD1_MASK) &&
-          (event->keyval == GDK_KEY_Left || event->keyval == GDK_KEY_KP_Left
-           || event->keyval == GDK_KEY_Right || event->keyval == GDK_KEY_KP_Right))
+          (event->state & CDK_SHIFT_MASK) && (event->state & CDK_MOD1_MASK) &&
+          (event->keyval == CDK_KEY_Left || event->keyval == CDK_KEY_KP_Left
+           || event->keyval == CDK_KEY_Right || event->keyval == CDK_KEY_KP_Right))
         {
           CtkTreeViewColumn *column = CTK_TREE_VIEW_COLUMN (focus_column->data);
           gint column_width;
@@ -6031,13 +6031,13 @@ ctk_tree_view_key_press (CtkWidget   *widget,
 
 	  column_width = ctk_tree_view_column_get_width (column);
 
-          if (event->keyval == (rtl ? GDK_KEY_Right : GDK_KEY_Left)
-              || event->keyval == (rtl ? GDK_KEY_KP_Right : GDK_KEY_KP_Left))
+          if (event->keyval == (rtl ? CDK_KEY_Right : CDK_KEY_Left)
+              || event->keyval == (rtl ? CDK_KEY_KP_Right : CDK_KEY_KP_Left))
             {
 	      column_width = MAX (column_width - 2, 0);
             }
-          else if (event->keyval == (rtl ? GDK_KEY_Left : GDK_KEY_Right)
-                   || event->keyval == (rtl ? GDK_KEY_KP_Left : GDK_KEY_KP_Right))
+          else if (event->keyval == (rtl ? CDK_KEY_Left : CDK_KEY_Right)
+                   || event->keyval == (rtl ? CDK_KEY_KP_Left : CDK_KEY_KP_Right))
             {
 	      column_width = column_width + 2;
             }
@@ -6048,16 +6048,16 @@ ctk_tree_view_key_press (CtkWidget   *widget,
         }
 
       if (focus_column &&
-          (event->state & GDK_MOD1_MASK) &&
-          (event->keyval == GDK_KEY_Left || event->keyval == GDK_KEY_KP_Left
-           || event->keyval == GDK_KEY_Right || event->keyval == GDK_KEY_KP_Right
-           || event->keyval == GDK_KEY_Home || event->keyval == GDK_KEY_KP_Home
-           || event->keyval == GDK_KEY_End || event->keyval == GDK_KEY_KP_End))
+          (event->state & CDK_MOD1_MASK) &&
+          (event->keyval == CDK_KEY_Left || event->keyval == CDK_KEY_KP_Left
+           || event->keyval == CDK_KEY_Right || event->keyval == CDK_KEY_KP_Right
+           || event->keyval == CDK_KEY_Home || event->keyval == CDK_KEY_KP_Home
+           || event->keyval == CDK_KEY_End || event->keyval == CDK_KEY_KP_End))
         {
           CtkTreeViewColumn *column = CTK_TREE_VIEW_COLUMN (focus_column->data);
 
-          if (event->keyval == (rtl ? GDK_KEY_Right : GDK_KEY_Left)
-              || event->keyval == (rtl ? GDK_KEY_KP_Right : GDK_KEY_KP_Left))
+          if (event->keyval == (rtl ? CDK_KEY_Right : CDK_KEY_Left)
+              || event->keyval == (rtl ? CDK_KEY_KP_Right : CDK_KEY_KP_Left))
             {
               CtkTreeViewColumn *col;
               col = ctk_tree_view_get_drop_column (tree_view, column, DROP_LEFT);
@@ -6066,8 +6066,8 @@ ctk_tree_view_key_press (CtkWidget   *widget,
               else
                 ctk_widget_error_bell (widget);
             }
-          else if (event->keyval == (rtl ? GDK_KEY_Left : GDK_KEY_Right)
-                   || event->keyval == (rtl ? GDK_KEY_KP_Left : GDK_KEY_KP_Right))
+          else if (event->keyval == (rtl ? CDK_KEY_Left : CDK_KEY_Right)
+                   || event->keyval == (rtl ? CDK_KEY_KP_Left : CDK_KEY_KP_Right))
             {
               CtkTreeViewColumn *col;
               col = ctk_tree_view_get_drop_column (tree_view, column, DROP_RIGHT);
@@ -6076,7 +6076,7 @@ ctk_tree_view_key_press (CtkWidget   *widget,
               else
                 ctk_widget_error_bell (widget);
             }
-          else if (event->keyval == GDK_KEY_Home || event->keyval == GDK_KEY_KP_Home)
+          else if (event->keyval == CDK_KEY_Home || event->keyval == CDK_KEY_KP_Home)
             {
               CtkTreeViewColumn *col;
               col = ctk_tree_view_get_drop_column (tree_view, column, DROP_HOME);
@@ -6085,7 +6085,7 @@ ctk_tree_view_key_press (CtkWidget   *widget,
               else
                 ctk_widget_error_bell (widget);
             }
-          else if (event->keyval == GDK_KEY_End || event->keyval == GDK_KEY_KP_End)
+          else if (event->keyval == CDK_KEY_End || event->keyval == CDK_KEY_KP_End)
             {
               CtkTreeViewColumn *col;
               col = ctk_tree_view_get_drop_column (tree_view, column, DROP_END);
@@ -7684,7 +7684,7 @@ set_destination_row (CtkTreeView    *tree_view,
   gboolean can_drop = FALSE;
 
   *suggested_action = 0;
-  *target = GDK_NONE;
+  *target = CDK_NONE;
 
   widget = CTK_WIDGET (tree_view);
 
@@ -7708,7 +7708,7 @@ set_destination_row (CtkTreeView    *tree_view,
 
   *target = ctk_drag_dest_find_target (widget, context,
                                        ctk_drag_dest_get_target_list (widget));
-  if (*target == GDK_NONE)
+  if (*target == CDK_NONE)
     {
       return FALSE;
     }
@@ -7784,8 +7784,8 @@ out:
           /* Default to MOVE, unless the user has
            * pressed ctrl or shift to affect available actions
            */
-          if ((cdk_drag_context_get_actions (context) & GDK_ACTION_MOVE) != 0)
-            *suggested_action = GDK_ACTION_MOVE;
+          if ((cdk_drag_context_get_actions (context) & CDK_ACTION_MOVE) != 0)
+            *suggested_action = CDK_ACTION_MOVE;
         }
 
       ctk_tree_view_set_drag_dest_row (CTK_TREE_VIEW (widget),
@@ -7907,7 +7907,7 @@ ctk_tree_view_maybe_begin_dragging_row (CtkTreeView *tree_view)
 					   path))
     goto out;
 
-  if (!(GDK_BUTTON1_MASK << (button - 1) & di->start_button_mask))
+  if (!(CDK_BUTTON1_MASK << (button - 1) & di->start_button_mask))
     goto out;
 
   retval = TRUE;
@@ -8183,7 +8183,7 @@ ctk_tree_view_drag_drop (CtkWidget        *widget,
   CtkTreeView *tree_view;
   CtkTreePath *path;
   CdkDragAction suggested_action = 0;
-  CdkAtom target = GDK_NONE;
+  CdkAtom target = CDK_NONE;
   TreeViewDragInfo *di;
   CtkTreeModel *model;
   gboolean path_down_mode;
@@ -8209,7 +8209,7 @@ ctk_tree_view_drag_drop (CtkWidget        *widget,
 
   path = get_logical_dest_row (tree_view, &path_down_mode, &drop_append_mode);
 
-  if (target != GDK_NONE && path != NULL)
+  if (target != CDK_NONE && path != NULL)
     {
       /* in case a motion had requested drag data, change things so we
        * treat drag data receives as a drop.
@@ -8228,7 +8228,7 @@ ctk_tree_view_drag_drop (CtkWidget        *widget,
                                    NULL,
                                    CTK_TREE_VIEW_DROP_BEFORE);
 
-  if (target != GDK_NONE)
+  if (target != CDK_NONE)
     {
       ctk_drag_get_data (widget, context, target, time);
       return TRUE;
@@ -8347,7 +8347,7 @@ ctk_tree_view_drag_data_received (CtkWidget        *widget,
 
   ctk_drag_finish (context,
                    accepted,
-                   (cdk_drag_context_get_selected_action (context) == GDK_ACTION_MOVE),
+                   (cdk_drag_context_get_selected_action (context) == CDK_ACTION_MOVE),
                    time);
 
   if (ctk_tree_path_get_depth (dest_row) == 1 &&
@@ -8907,11 +8907,11 @@ ctk_tree_view_real_move_cursor (CtkTreeView       *tree_view,
 
       extend_mod_mask =
         ctk_widget_get_modifier_mask (CTK_WIDGET (tree_view),
-                                      GDK_MODIFIER_INTENT_EXTEND_SELECTION);
+                                      CDK_MODIFIER_INTENT_EXTEND_SELECTION);
 
       modify_mod_mask =
         ctk_widget_get_modifier_mask (CTK_WIDGET (tree_view),
-                                      GDK_MODIFIER_INTENT_MODIFY_SELECTION);
+                                      CDK_MODIFIER_INTENT_MODIFY_SELECTION);
 
       if ((state & modify_mod_mask) == modify_mod_mask)
         tree_view->priv->modify_selection_pressed = TRUE;
@@ -9880,20 +9880,20 @@ ctk_tree_view_add_move_binding (CtkBindingSet  *binding_set,
                                 G_TYPE_INT, count);
 
   if (add_shifted_binding)
-    ctk_binding_entry_add_signal (binding_set, keyval, GDK_SHIFT_MASK,
+    ctk_binding_entry_add_signal (binding_set, keyval, CDK_SHIFT_MASK,
 				  "move-cursor", 2,
 				  G_TYPE_ENUM, step,
 				  G_TYPE_INT, count);
 
-  if ((modmask & GDK_CONTROL_MASK) == GDK_CONTROL_MASK)
+  if ((modmask & CDK_CONTROL_MASK) == CDK_CONTROL_MASK)
    return;
 
-  ctk_binding_entry_add_signal (binding_set, keyval, GDK_CONTROL_MASK | GDK_SHIFT_MASK,
+  ctk_binding_entry_add_signal (binding_set, keyval, CDK_CONTROL_MASK | CDK_SHIFT_MASK,
                                 "move-cursor", 2,
                                 G_TYPE_ENUM, step,
                                 G_TYPE_INT, count);
 
-  ctk_binding_entry_add_signal (binding_set, keyval, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, keyval, CDK_CONTROL_MASK,
                                 "move-cursor", 2,
                                 G_TYPE_ENUM, step,
                                 G_TYPE_INT, count);
@@ -10094,15 +10094,15 @@ _ctk_tree_view_column_start_drag (CtkTreeView       *tree_view,
 
   ctk_widget_get_allocation (button, &button_allocation);
 
-  attributes.window_type = GDK_WINDOW_CHILD;
-  attributes.wclass = GDK_INPUT_OUTPUT;
+  attributes.window_type = CDK_WINDOW_CHILD;
+  attributes.wclass = CDK_INPUT_OUTPUT;
   attributes.x = button_allocation.x;
   attributes.y = 0;
   attributes.width = button_allocation.width;
   attributes.height = button_allocation.height;
   attributes.visual = ctk_widget_get_visual (CTK_WIDGET (tree_view));
-  attributes.event_mask = GDK_VISIBILITY_NOTIFY_MASK | GDK_POINTER_MOTION_MASK;
-  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
+  attributes.event_mask = CDK_VISIBILITY_NOTIFY_MASK | CDK_POINTER_MOTION_MASK;
+  attributes_mask = CDK_WA_X | CDK_WA_Y | CDK_WA_VISUAL;
 
   tree_view->priv->drag_window = cdk_window_new (tree_view->priv->header_window,
                                                  &attributes,
@@ -10134,7 +10134,7 @@ _ctk_tree_view_column_start_drag (CtkTreeView       *tree_view,
    */
   cdk_seat_grab (cdk_device_get_seat (device),
                  tree_view->priv->drag_window,
-                 GDK_SEAT_CAPABILITY_ALL, FALSE,
+                 CDK_SEAT_CAPABILITY_ALL, FALSE,
                  NULL, NULL, NULL, NULL);
 
   ctk_gesture_set_state (tree_view->priv->column_drag_gesture,
@@ -11111,7 +11111,7 @@ ctk_tree_view_real_select_cursor_parent (CtkTreeView *tree_view)
 
           modify_mod_mask =
             ctk_widget_get_modifier_mask (CTK_WIDGET (tree_view),
-                                          GDK_MODIFIER_INTENT_MODIFY_SELECTION);
+                                          CDK_MODIFIER_INTENT_MODIFY_SELECTION);
 
 	  if ((state & modify_mod_mask) == modify_mod_mask)
 	    tree_view->priv->modify_selection_pressed = TRUE;
@@ -11153,9 +11153,9 @@ send_focus_change (CtkWidget *widget,
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   device_manager = cdk_display_get_device_manager (ctk_widget_get_display (widget));
-  devices = cdk_device_manager_list_devices (device_manager, GDK_DEVICE_TYPE_MASTER);
-  devices = g_list_concat (devices, cdk_device_manager_list_devices (device_manager, GDK_DEVICE_TYPE_SLAVE));
-  devices = g_list_concat (devices, cdk_device_manager_list_devices (device_manager, GDK_DEVICE_TYPE_FLOATING));
+  devices = cdk_device_manager_list_devices (device_manager, CDK_DEVICE_TYPE_MASTER);
+  devices = g_list_concat (devices, cdk_device_manager_list_devices (device_manager, CDK_DEVICE_TYPE_SLAVE));
+  devices = g_list_concat (devices, cdk_device_manager_list_devices (device_manager, CDK_DEVICE_TYPE_FLOATING));
   G_GNUC_END_IGNORE_DEPRECATIONS;
 
   for (d = devices; d; d = d->next)
@@ -11164,7 +11164,7 @@ send_focus_change (CtkWidget *widget,
       CdkEvent *fevent;
       CdkWindow *window;
 
-      if (cdk_device_get_source (dev) != GDK_SOURCE_KEYBOARD)
+      if (cdk_device_get_source (dev) != CDK_SOURCE_KEYBOARD)
         continue;
 
       window = ctk_widget_get_window (widget);
@@ -11172,13 +11172,13 @@ send_focus_change (CtkWidget *widget,
       /* Skip non-master keyboards that haven't
        * selected for events from this window
        */
-      if (cdk_device_get_device_type (dev) != GDK_DEVICE_TYPE_MASTER &&
+      if (cdk_device_get_device_type (dev) != CDK_DEVICE_TYPE_MASTER &&
           !cdk_window_get_device_events (window, dev))
         continue;
 
-      fevent = cdk_event_new (GDK_FOCUS_CHANGE);
+      fevent = cdk_event_new (CDK_FOCUS_CHANGE);
 
-      fevent->focus_change.type = GDK_FOCUS_CHANGE;
+      fevent->focus_change.type = CDK_FOCUS_CHANGE;
       fevent->focus_change.window = g_object_ref (window);
       fevent->focus_change.in = in;
       cdk_event_set_device (fevent, device);
@@ -11225,7 +11225,7 @@ ctk_tree_view_ensure_interactive_directory (CtkTreeView *tree_view)
 				 CTK_WINDOW (tree_view->priv->search_window));
 
   ctk_window_set_type_hint (CTK_WINDOW (tree_view->priv->search_window),
-                            GDK_WINDOW_TYPE_HINT_UTILITY);
+                            CDK_WINDOW_TYPE_HINT_UTILITY);
   ctk_window_set_modal (CTK_WINDOW (tree_view->priv->search_window), TRUE);
   ctk_window_set_transient_for (CTK_WINDOW (tree_view->priv->search_window),
                                 CTK_WINDOW (toplevel));
@@ -13256,14 +13256,14 @@ ctk_tree_view_set_reorderable (CtkTreeView *tree_view,
       };
 
       ctk_tree_view_enable_model_drag_source (tree_view,
-					      GDK_BUTTON1_MASK,
+					      CDK_BUTTON1_MASK,
 					      row_targets,
 					      G_N_ELEMENTS (row_targets),
-					      GDK_ACTION_MOVE);
+					      CDK_ACTION_MOVE);
       ctk_tree_view_enable_model_drag_dest (tree_view,
 					    row_targets,
 					    G_N_ELEMENTS (row_targets),
-					    GDK_ACTION_MOVE);
+					    CDK_ACTION_MOVE);
     }
   else
     {
@@ -15288,12 +15288,12 @@ ctk_tree_view_search_scroll_event (CtkWidget *widget,
 {
   gboolean retval = FALSE;
 
-  if (event->direction == GDK_SCROLL_UP)
+  if (event->direction == CDK_SCROLL_UP)
     {
       ctk_tree_view_search_move (widget, tree_view, TRUE);
       retval = TRUE;
     }
-  else if (event->direction == GDK_SCROLL_DOWN)
+  else if (event->direction == CDK_SCROLL_DOWN)
     {
       ctk_tree_view_search_move (widget, tree_view, FALSE);
       retval = TRUE;
@@ -15335,10 +15335,10 @@ ctk_tree_view_search_key_press_event (CtkWidget *widget,
     }
 
   default_accel = ctk_widget_get_modifier_mask (widget,
-                                                GDK_MODIFIER_INTENT_PRIMARY_ACCELERATOR);
+                                                CDK_MODIFIER_INTENT_PRIMARY_ACCELERATOR);
 
   /* select previous matching iter */
-  if (event->keyval == GDK_KEY_Up || event->keyval == GDK_KEY_KP_Up)
+  if (event->keyval == CDK_KEY_Up || event->keyval == CDK_KEY_KP_Up)
     {
       if (!ctk_tree_view_search_move (widget, tree_view, TRUE))
         ctk_widget_error_bell (widget);
@@ -15346,8 +15346,8 @@ ctk_tree_view_search_key_press_event (CtkWidget *widget,
       retval = TRUE;
     }
 
-  if (((event->state & (default_accel | GDK_SHIFT_MASK)) == (default_accel | GDK_SHIFT_MASK))
-      && (event->keyval == GDK_KEY_g || event->keyval == GDK_KEY_G))
+  if (((event->state & (default_accel | CDK_SHIFT_MASK)) == (default_accel | CDK_SHIFT_MASK))
+      && (event->keyval == CDK_KEY_g || event->keyval == CDK_KEY_G))
     {
       if (!ctk_tree_view_search_move (widget, tree_view, TRUE))
         ctk_widget_error_bell (widget);
@@ -15356,7 +15356,7 @@ ctk_tree_view_search_key_press_event (CtkWidget *widget,
     }
 
   /* select next matching iter */
-  if (event->keyval == GDK_KEY_Down || event->keyval == GDK_KEY_KP_Down)
+  if (event->keyval == CDK_KEY_Down || event->keyval == CDK_KEY_KP_Down)
     {
       if (!ctk_tree_view_search_move (widget, tree_view, FALSE))
         ctk_widget_error_bell (widget);
@@ -15364,8 +15364,8 @@ ctk_tree_view_search_key_press_event (CtkWidget *widget,
       retval = TRUE;
     }
 
-  if (((event->state & (default_accel | GDK_SHIFT_MASK)) == default_accel)
-      && (event->keyval == GDK_KEY_g || event->keyval == GDK_KEY_G))
+  if (((event->state & (default_accel | CDK_SHIFT_MASK)) == default_accel)
+      && (event->keyval == CDK_KEY_g || event->keyval == CDK_KEY_G))
     {
       if (!ctk_tree_view_search_move (widget, tree_view, FALSE))
         ctk_widget_error_bell (widget);

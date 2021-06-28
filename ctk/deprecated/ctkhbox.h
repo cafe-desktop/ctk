@@ -57,9 +57,9 @@ struct _CtkHBoxClass
 };
 
 
-GDK_DEPRECATED_IN_3_2
+CDK_DEPRECATED_IN_3_2
 GType       ctk_hbox_get_type (void) G_GNUC_CONST;
-GDK_DEPRECATED_IN_3_2_FOR(ctk_box_new)
+CDK_DEPRECATED_IN_3_2_FOR(ctk_box_new)
 CtkWidget * ctk_hbox_new      (gboolean homogeneous,
                                gint     spacing);
 

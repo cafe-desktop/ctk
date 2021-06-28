@@ -52,8 +52,8 @@
         clipping", instead of "toplevel application windows".  Most
         windowing systems support nested windows, where the contents of
         child windows get clipped by the boundaries of their parents.
-        Although CTK+ and GDK in particular may run on a windowing
-        system with no such notion of nested windows, GDK presents the
+        Although CTK+ and CDK in particular may run on a windowing
+        system with no such notion of nested windows, CDK presents the
         illusion of being under such a system.  A toplevel window may
         contain many subwindows and sub-subwindows, for example, one for
         the menu bar, one for the document area, one for each scrollbar,
@@ -85,7 +85,7 @@
       </para>
 
       <para>
-        The windowing system generates events for native windows. The GDK
+        The windowing system generates events for native windows. The CDK
         interface to the windowing system translates such native events into
         <link linkend="CdkEvent"><structname>CdkEvent</structname></link>
         structures and sends them on to the CTK layer.  In turn, the CTK layer
@@ -199,7 +199,7 @@
       </para>
 
       <para>
-        When generating the event, GDK also sets up double buffering to
+        When generating the event, CDK also sets up double buffering to
         avoid the flickering that would result from each widget drawing
         itself in turn.  <xref linkend="double-buffering"/> describes
         the double buffering mechanism in detail.
@@ -268,14 +268,14 @@
       windowing system, flicker could result.  This is because areas may get
       redrawn repeatedly:  the background, then decorative frames, then text
       labels, etc.  To avoid flicker, CTK+ employs a <firstterm>double
-	buffering</firstterm> system at the GDK level.  Widgets normally don't
+	buffering</firstterm> system at the CDK level.  Widgets normally don't
       know that they are drawing to an off-screen buffer; they just issue their
       normal drawing commands, and the buffer gets sent to the windowing system
       when all drawing operations are done.
     </para>
 
     <para>
-      Two basic functions in GDK form the core of the double-buffering
+      Two basic functions in CDK form the core of the double-buffering
       mechanism:  <link
       linkend="cdk_window_begin_paint_region"><function>cdk_window_begin_paint_region()</function></link>
       and <link

@@ -74,8 +74,8 @@ msgstr "DISPLĖJUS"
 
 #. Description of --cdk-debug=FLAGS in --help output
 #: cdk/cdk.c:240
-msgid "GDK debugging flags to set"
-msgstr "GDK derinimo parametrai, kuriuos naudoti"
+msgid "CDK debugging flags to set"
+msgstr "CDK derinimo parametrai, kuriuos naudoti"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
@@ -87,12 +87,12 @@ msgstr "PARAMETRAI"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: cdk/cdk.c:243
-msgid "GDK debugging flags to unset"
-msgstr "GDK derinimo parametrai, kurių nenaudoti"
+msgid "CDK debugging flags to unset"
+msgstr "CDK derinimo parametrai, kurių nenaudoti"
 
 #: cdk/cdkwindow.c:2851
-msgid "GL support disabled via GDK_DEBUG"
-msgstr "GL palaikymas išjungtas naudojant GDK_DEBUG"
+msgid "GL support disabled via CDK_DEBUG"
+msgstr "GL palaikymas išjungtas naudojant CDK_DEBUG"
 
 #: cdk/cdkwindow.c:2862
 msgid "The current backend does not support OpenGL"
@@ -4237,8 +4237,8 @@ msgid "CTK+ Version"
 msgstr "CTK+ versija"
 
 #: ctk/inspector/general.ui:68
-msgid "GDK Backend"
-msgstr "GDK realizacija"
+msgid "CDK Backend"
+msgstr "CDK realizacija"
 
 #: ctk/inspector/general.ui:373
 msgid "Display"
@@ -4611,10 +4611,10 @@ msgstr "Nustatymas yra fiksuotas su CTK_TEST_TOUCHSCREEN"
 #: ctk/inspector/visual.c:817
 msgid ""
 "Not settable at runtime.\n"
-"Use GDK_GL=always or GDK_GL=disable instead"
+"Use CDK_GL=always or CDK_GL=disable instead"
 msgstr ""
 "Nenustatomas vykdymo metu.\n"
-"Naudokite GDK_GL=always arba GDK_GL=disable"
+"Naudokite CDK_GL=always arba CDK_GL=disable"
 
 #: ctk/inspector/visual.c:831 ctk/inspector/visual.c:832
 #: ctk/inspector/visual.c:833

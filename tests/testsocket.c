@@ -262,11 +262,11 @@ static const char *
 grab_string (int status)
 {
   switch (status) {
-  case GDK_GRAB_SUCCESS:          return "GrabSuccess";
-  case GDK_GRAB_ALREADY_GRABBED:  return "AlreadyGrabbed";
-  case GDK_GRAB_INVALID_TIME:     return "GrabInvalidTime";
-  case GDK_GRAB_NOT_VIEWABLE:     return "GrabNotViewable";
-  case GDK_GRAB_FROZEN:           return "GrabFrozen";
+  case CDK_GRAB_SUCCESS:          return "GrabSuccess";
+  case CDK_GRAB_ALREADY_GRABBED:  return "AlreadyGrabbed";
+  case CDK_GRAB_INVALID_TIME:     return "GrabInvalidTime";
+  case CDK_GRAB_NOT_VIEWABLE:     return "GrabNotViewable";
+  case CDK_GRAB_FROZEN:           return "GrabFrozen";
   default:
     {
       static char foo [255];
@@ -288,10 +288,10 @@ grab_window_toggled (CtkToggleButton *button,
       int status;
 
       status = cdk_seat_grab (seat, ctk_widget_get_window (widget),
-                              GDK_SEAT_CAPABILITY_KEYBOARD,
+                              CDK_SEAT_CAPABILITY_KEYBOARD,
                               FALSE, NULL, NULL, NULL, NULL);
 
-      if (status != GDK_GRAB_SUCCESS)
+      if (status != CDK_GRAB_SUCCESS)
 	g_warning ("Could not grab keyboard!  (%s)", grab_string (status));
 
     }

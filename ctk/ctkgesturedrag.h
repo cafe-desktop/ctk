@@ -38,17 +38,17 @@ G_BEGIN_DECLS
 typedef struct _CtkGestureDrag CtkGestureDrag;
 typedef struct _CtkGestureDragClass CtkGestureDragClass;
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 GType        ctk_gesture_drag_get_type          (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 CtkGesture * ctk_gesture_drag_new               (CtkWidget      *widget);
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 gboolean     ctk_gesture_drag_get_start_point   (CtkGestureDrag *gesture,
                                                  gdouble        *x,
                                                  gdouble        *y);
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 gboolean     ctk_gesture_drag_get_offset        (CtkGestureDrag *gesture,
                                                  gdouble        *x,
                                                  gdouble        *y);

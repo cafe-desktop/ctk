@@ -73,28 +73,28 @@ struct _CtkAlignmentClass
 };
 
 
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 GType      ctk_alignment_get_type   (void) G_GNUC_CONST;
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 CtkWidget* ctk_alignment_new        (gfloat             xalign,
 				     gfloat             yalign,
 				     gfloat             xscale,
 				     gfloat             yscale);
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 void       ctk_alignment_set        (CtkAlignment      *alignment,
 				     gfloat             xalign,
 				     gfloat             yalign,
 				     gfloat             xscale,
 				     gfloat             yscale);
 
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 void       ctk_alignment_set_padding (CtkAlignment      *alignment,
 				      guint              padding_top,
 				      guint              padding_bottom,
 				      guint              padding_left,
 				      guint              padding_right);
 
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 void       ctk_alignment_get_padding (CtkAlignment      *alignment,
 				      guint             *padding_top,
 				      guint             *padding_bottom,

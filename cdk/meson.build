@@ -161,11 +161,11 @@ cdk_marshalers = gnome.genmarshal('cdkmarshalers',
 cdkmarshal_h = cdk_marshalers[1]
 
 cdkconfig_cdata = configuration_data()
-cdkconfig_cdata.set('GDK_WINDOWING_X11', x11_enabled)
-cdkconfig_cdata.set('GDK_WINDOWING_WAYLAND', wayland_enabled)
-cdkconfig_cdata.set('GDK_WINDOWING_WIN32', win32_enabled)
-cdkconfig_cdata.set('GDK_WINDOWING_BROADWAY', broadway_enabled)
-cdkconfig_cdata.set('GDK_WINDOWING_QUARTZ', quartz_enabled)
+cdkconfig_cdata.set('CDK_WINDOWING_X11', x11_enabled)
+cdkconfig_cdata.set('CDK_WINDOWING_WAYLAND', wayland_enabled)
+cdkconfig_cdata.set('CDK_WINDOWING_WIN32', win32_enabled)
+cdkconfig_cdata.set('CDK_WINDOWING_BROADWAY', broadway_enabled)
+cdkconfig_cdata.set('CDK_WINDOWING_QUARTZ', quartz_enabled)
 
 cdkconfig = configure_file(
   input  : 'cdkconfig.h.meson',
@@ -293,7 +293,7 @@ libcdk = library('cdk-3',
                  dependencies: cdk_deps,
                  include_directories: [confinc, cdkx11_inc, wlinc],
                  c_args: [
-                   '-DGDK_COMPILATION',
+                   '-DCDK_COMPILATION',
                    '-DG_LOG_DOMAIN="Cdk"',
                  ] + common_cflags,
                  link_whole: cdk_backends,
@@ -336,7 +336,7 @@ if build_gir
                                header: 'cdk/cdk.h',
                                install: true,
                                extra_args: gir_args + [
-                                 '-DGDK_COMPILATION',
+                                 '-DCDK_COMPILATION',
                                ])
   cdk_gir_dep = declare_dependency(sources: cdk_gir)
   cdk_dep_sources += cdk_gir
@@ -354,7 +354,7 @@ if build_gir
                                      dependencies: cdk_gir_dep,
                                      header: 'cdk/cdkx.h',
                                      extra_args: gir_args + [
-                                       '-DGDK_COMPILATION',
+                                       '-DCDK_COMPILATION',
                                      ])
     cdk_dep_sources += cdk_x11_gir
   endif
@@ -372,7 +372,7 @@ if build_gir
                                      dependencies: cdk_gir_dep,
                                      header: 'cdk/cdkwin32.h',
                                      extra_args: gir_args + [
-                                       '-DGDK_COMPILATION',
+                                       '-DCDK_COMPILATION',
                                      ])
     cdk_dep_sources += cdk_win32_gir
   endif

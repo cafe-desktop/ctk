@@ -165,42 +165,42 @@ ctk_menu_bar_class_init (CtkMenuBarClass *class)
 
   binding_set = ctk_binding_set_by_class (class);
   ctk_binding_entry_add_signal (binding_set,
-				GDK_KEY_Left, 0,
+				CDK_KEY_Left, 0,
 				"move-current", 1,
 				CTK_TYPE_MENU_DIRECTION_TYPE,
 				CTK_MENU_DIR_PREV);
   ctk_binding_entry_add_signal (binding_set,
-				GDK_KEY_KP_Left, 0,
+				CDK_KEY_KP_Left, 0,
 				"move-current", 1,
 				CTK_TYPE_MENU_DIRECTION_TYPE,
 				CTK_MENU_DIR_PREV);
   ctk_binding_entry_add_signal (binding_set,
-				GDK_KEY_Right, 0,
+				CDK_KEY_Right, 0,
 				"move-current", 1,
 				CTK_TYPE_MENU_DIRECTION_TYPE,
 				CTK_MENU_DIR_NEXT);
   ctk_binding_entry_add_signal (binding_set,
-				GDK_KEY_KP_Right, 0,
+				CDK_KEY_KP_Right, 0,
 				"move-current", 1,
 				CTK_TYPE_MENU_DIRECTION_TYPE,
 				CTK_MENU_DIR_NEXT);
   ctk_binding_entry_add_signal (binding_set,
-				GDK_KEY_Up, 0,
+				CDK_KEY_Up, 0,
 				"move-current", 1,
 				CTK_TYPE_MENU_DIRECTION_TYPE,
 				CTK_MENU_DIR_PARENT);
   ctk_binding_entry_add_signal (binding_set,
-				GDK_KEY_KP_Up, 0,
+				CDK_KEY_KP_Up, 0,
 				"move-current", 1,
 				CTK_TYPE_MENU_DIRECTION_TYPE,
 				CTK_MENU_DIR_PARENT);
   ctk_binding_entry_add_signal (binding_set,
-				GDK_KEY_Down, 0,
+				CDK_KEY_Down, 0,
 				"move-current", 1,
 				CTK_TYPE_MENU_DIRECTION_TYPE,
 				CTK_MENU_DIR_CHILD);
   ctk_binding_entry_add_signal (binding_set,
-				GDK_KEY_KP_Down, 0,
+				CDK_KEY_KP_Down, 0,
 				"move-current", 1,
 				CTK_TYPE_MENU_DIRECTION_TYPE,
 				CTK_MENU_DIR_CHILD);

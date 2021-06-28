@@ -838,53 +838,53 @@ ctk_combo_box_class_init (CtkComboBoxClass *klass)
   /* key bindings */
   binding_set = ctk_binding_set_by_class (widget_class);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Down, GDK_MOD1_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Down, CDK_MOD1_MASK,
                                 "popup", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Down, GDK_MOD1_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Down, CDK_MOD1_MASK,
                                 "popup", 0);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Up, GDK_MOD1_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Up, CDK_MOD1_MASK,
                                 "popdown", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Up, GDK_MOD1_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Up, CDK_MOD1_MASK,
                                 "popdown", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Escape, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Escape, 0,
                                 "popdown", 0);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Up, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Up, 0,
                                 "move-active", 1,
                                 CTK_TYPE_SCROLL_TYPE, CTK_SCROLL_STEP_UP);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Up, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Up, 0,
                                 "move-active", 1,
                                 CTK_TYPE_SCROLL_TYPE, CTK_SCROLL_STEP_UP);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Page_Up, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Page_Up, 0,
                                 "move-active", 1,
                                 CTK_TYPE_SCROLL_TYPE, CTK_SCROLL_PAGE_UP);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Page_Up, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Page_Up, 0,
                                 "move-active", 1,
                                 CTK_TYPE_SCROLL_TYPE, CTK_SCROLL_PAGE_UP);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Home, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Home, 0,
                                 "move-active", 1,
                                 CTK_TYPE_SCROLL_TYPE, CTK_SCROLL_START);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Home, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Home, 0,
                                 "move-active", 1,
                                 CTK_TYPE_SCROLL_TYPE, CTK_SCROLL_START);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Down, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Down, 0,
                                 "move-active", 1,
                                 CTK_TYPE_SCROLL_TYPE, CTK_SCROLL_STEP_DOWN);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Down, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Down, 0,
                                 "move-active", 1,
                                 CTK_TYPE_SCROLL_TYPE, CTK_SCROLL_STEP_DOWN);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Page_Down, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Page_Down, 0,
                                 "move-active", 1,
                                 CTK_TYPE_SCROLL_TYPE, CTK_SCROLL_PAGE_DOWN);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Page_Down, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Page_Down, 0,
                                 "move-active", 1,
                                 CTK_TYPE_SCROLL_TYPE, CTK_SCROLL_PAGE_DOWN);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_End, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_End, 0,
                                 "move-active", 1,
                                 CTK_TYPE_SCROLL_TYPE, CTK_SCROLL_END);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_End, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_End, 0,
                                 "move-active", 1,
                                 CTK_TYPE_SCROLL_TYPE, CTK_SCROLL_END);
 
@@ -1315,7 +1315,7 @@ ctk_combo_box_init (CtkComboBox *combo_box)
   g_type_ensure (CTK_TYPE_ICON);
   ctk_widget_init_template (CTK_WIDGET (combo_box));
 
-  ctk_widget_add_events (priv->button, GDK_SCROLL_MASK);
+  ctk_widget_add_events (priv->button, CDK_SCROLL_MASK);
 
   context = ctk_widget_get_style_context (priv->button);
   ctk_style_context_remove_class (context, "toggle");
@@ -1868,7 +1868,7 @@ ctk_combo_box_set_popup_widget (CtkComboBox *combo_box,
           ctk_widget_set_name (priv->popup_window, "ctk-combobox-popup-window");
 
           ctk_window_set_type_hint (CTK_WINDOW (priv->popup_window),
-                                    GDK_WINDOW_TYPE_HINT_COMBO);
+                                    CDK_WINDOW_TYPE_HINT_COMBO);
           ctk_window_set_modal (CTK_WINDOW (priv->popup_window), TRUE);
 
           g_signal_connect (priv->popup_window, "show",
@@ -2147,7 +2147,7 @@ ctk_combo_box_menu_popup (CtkComboBox    *combo_box,
                                         ctk_menu_update_scroll_offset,
                                         NULL);
 
-  g_object_set (priv->popup_widget, "menu-type-hint", GDK_WINDOW_TYPE_HINT_COMBO, NULL);
+  g_object_set (priv->popup_widget, "menu-type-hint", CDK_WINDOW_TYPE_HINT_COMBO, NULL);
 
   if (priv->wrap_width > 0 || priv->cell_view == NULL)
     {
@@ -2155,16 +2155,16 @@ ctk_combo_box_menu_popup (CtkComboBox    *combo_box,
       ctk_css_gadget_get_content_allocation (priv->gadget, &content_allocation, NULL);
 
       g_object_set (priv->popup_widget,
-                    "anchor-hints", (GDK_ANCHOR_FLIP_Y |
-                                     GDK_ANCHOR_SLIDE |
-                                     GDK_ANCHOR_RESIZE),
+                    "anchor-hints", (CDK_ANCHOR_FLIP_Y |
+                                     CDK_ANCHOR_SLIDE |
+                                     CDK_ANCHOR_RESIZE),
                     "rect-anchor-dx", border_allocation.x - content_allocation.x,
                     NULL);
 
       ctk_menu_popup_at_widget (CTK_MENU (priv->popup_widget),
                                 ctk_bin_get_child (CTK_BIN (combo_box)),
-                                GDK_GRAVITY_SOUTH_WEST,
-                                GDK_GRAVITY_NORTH_WEST,
+                                CDK_GRAVITY_SOUTH_WEST,
+                                CDK_GRAVITY_NORTH_WEST,
                                 trigger_event);
     }
   else
@@ -2207,8 +2207,8 @@ ctk_combo_box_menu_popup (CtkComboBox    *combo_box,
         }
 
       g_object_set (priv->popup_widget,
-                    "anchor-hints", (GDK_ANCHOR_SLIDE |
-                                     GDK_ANCHOR_RESIZE),
+                    "anchor-hints", (CDK_ANCHOR_SLIDE |
+                                     CDK_ANCHOR_RESIZE),
                     "rect-anchor-dy", rect_anchor_dy,
                     NULL);
 
@@ -2219,8 +2219,8 @@ ctk_combo_box_menu_popup (CtkComboBox    *combo_box,
 
       ctk_menu_popup_at_widget (CTK_MENU (priv->popup_widget),
                                 CTK_WIDGET (combo_box),
-                                GDK_GRAVITY_WEST,
-                                GDK_GRAVITY_NORTH_WEST,
+                                CDK_GRAVITY_WEST,
+                                CDK_GRAVITY_NORTH_WEST,
                                 trigger_event);
     }
 
@@ -2242,10 +2242,10 @@ popup_grab_on_window (CdkWindow *window,
 
   seat = cdk_device_get_seat (pointer);
   status = cdk_seat_grab (seat, window,
-                          GDK_SEAT_CAPABILITY_ALL, TRUE,
+                          CDK_SEAT_CAPABILITY_ALL, TRUE,
                           NULL, NULL, NULL, NULL);
 
-  return status == GDK_GRAB_SUCCESS;
+  return status == CDK_GRAB_SUCCESS;
 }
 
 /**
@@ -2292,7 +2292,7 @@ ctk_combo_box_popup_for_device (CtkComboBox *combo_box,
   CdkDevice *pointer;
 
   g_return_if_fail (CTK_IS_COMBO_BOX (combo_box));
-  g_return_if_fail (GDK_IS_DEVICE (device));
+  g_return_if_fail (CDK_IS_DEVICE (device));
 
   priv = combo_box->priv;
 
@@ -2305,7 +2305,7 @@ ctk_combo_box_popup_for_device (CtkComboBox *combo_box,
   if (priv->grab_pointer)
     return;
 
-  if (cdk_device_get_source (device) == GDK_SOURCE_KEYBOARD)
+  if (cdk_device_get_source (device) == CDK_SOURCE_KEYBOARD)
     pointer = cdk_device_get_associated_device (device);
   else
     pointer = device;
@@ -2710,7 +2710,7 @@ ctk_combo_box_scroll_event (CtkWidget          *widget,
   if (!ctk_combo_box_get_active_iter (combo_box, &iter))
     return TRUE;
 
-  if (event->direction == GDK_SCROLL_UP)
+  if (event->direction == CDK_SCROLL_UP)
     found = tree_prev (combo_box, priv->model,
                        &iter, &new_iter);
   else
@@ -2804,7 +2804,7 @@ ctk_combo_box_menu_button_press (CtkWidget      *widget,
   CtkComboBoxPrivate *priv = combo_box->priv;
 
   if (CTK_IS_MENU (priv->popup_widget) &&
-      event->type == GDK_BUTTON_PRESS && event->button == GDK_BUTTON_PRIMARY)
+      event->type == CDK_BUTTON_PRESS && event->button == CDK_BUTTON_PRIMARY)
     {
       if (ctk_widget_get_focus_on_click (CTK_WIDGET (combo_box)) &&
           !ctk_widget_has_focus (priv->button))
@@ -3246,8 +3246,8 @@ ctk_combo_box_list_key_press (CtkWidget   *widget,
   CtkComboBoxPrivate *priv = combo_box->priv;
   CtkTreeIter iter;
 
-  if (event->keyval == GDK_KEY_Return || event->keyval == GDK_KEY_ISO_Enter || event->keyval == GDK_KEY_KP_Enter ||
-      event->keyval == GDK_KEY_space || event->keyval == GDK_KEY_KP_Space)
+  if (event->keyval == CDK_KEY_Return || event->keyval == CDK_KEY_ISO_Enter || event->keyval == CDK_KEY_KP_Enter ||
+      event->keyval == CDK_KEY_space || event->keyval == CDK_KEY_KP_Space)
   {
     CtkTreeModel *model = NULL;
 
@@ -4347,7 +4347,7 @@ ctk_cell_editable_key_press (CtkWidget   *widget,
 {
   CtkComboBox *combo_box = CTK_COMBO_BOX (data);
 
-  if (event->keyval == GDK_KEY_Escape)
+  if (event->keyval == CDK_KEY_Escape)
     {
       g_object_set (combo_box,
                     "editing-canceled", TRUE,
@@ -4357,9 +4357,9 @@ ctk_cell_editable_key_press (CtkWidget   *widget,
 
       return TRUE;
     }
-  else if (event->keyval == GDK_KEY_Return ||
-           event->keyval == GDK_KEY_ISO_Enter ||
-           event->keyval == GDK_KEY_KP_Enter)
+  else if (event->keyval == CDK_KEY_Return ||
+           event->keyval == CDK_KEY_ISO_Enter ||
+           event->keyval == CDK_KEY_KP_Enter)
     {
       ctk_cell_editable_editing_done (CTK_CELL_EDITABLE (combo_box));
       ctk_cell_editable_remove_widget (CTK_CELL_EDITABLE (combo_box));

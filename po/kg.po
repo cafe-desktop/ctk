@@ -71,9 +71,9 @@ msgstr "muinu"
 
 #. Description of --cdk-debug=FLAGS in --help output
 #: ../cdk/cdk.c:164
-#| msgid "GDK debugging flags to set"
+#| msgid "CDK debugging flags to set"
 msgid "Cdk debugging flags to set"
-msgstr "bendila biobio bia GDK, si sasila bio"
+msgstr "bendila biobio bia CDK, si sasila bio"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
@@ -88,9 +88,9 @@ msgstr "bisinsu"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: ../cdk/cdk.c:167
-#| msgid "GDK debugging flags to unset"
+#| msgid "CDK debugging flags to unset"
 msgid "Cdk debugging flags to unset"
-msgstr "bendila biobio bia GDK, kusasidi bio ko"
+msgstr "bendila biobio bia CDK, kusasidi bio ko"
 
 #: ../cdk/keyname-table.h:3940
 msgctxt "keyboard label"

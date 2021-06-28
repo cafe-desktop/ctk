@@ -19,8 +19,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_WAYLAND_DISPLAY__
-#define __GDK_WAYLAND_DISPLAY__
+#ifndef __CDK_WAYLAND_DISPLAY__
+#define __CDK_WAYLAND_DISPLAY__
 
 #include <config.h>
 #include <stdint.h>
@@ -49,17 +49,17 @@
 
 G_BEGIN_DECLS
 
-#define GDK_WAYLAND_MAX_THEME_SCALE 4
-#define GDK_WAYLAND_THEME_SCALES_COUNT GDK_WAYLAND_MAX_THEME_SCALE
+#define CDK_WAYLAND_MAX_THEME_SCALE 4
+#define CDK_WAYLAND_THEME_SCALES_COUNT CDK_WAYLAND_MAX_THEME_SCALE
 
-#define GDK_ZWP_POINTER_GESTURES_V1_VERSION 1
+#define CDK_ZWP_POINTER_GESTURES_V1_VERSION 1
 
 typedef struct _CdkWaylandSelection CdkWaylandSelection;
 
 typedef enum _CdkWaylandShellVariant
 {
-  GDK_WAYLAND_SHELL_VARIANT_XDG_SHELL,
-  GDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6,
+  CDK_WAYLAND_SHELL_VARIANT_XDG_SHELL,
+  CDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6,
 } CdkWaylandShellVariant;
 
 struct _CdkWaylandDisplay
@@ -113,7 +113,7 @@ struct _CdkWaylandDisplay
 
   GList *current_popups;
 
-  struct wl_cursor_theme *scaled_cursor_themes[GDK_WAYLAND_THEME_SCALES_COUNT];
+  struct wl_cursor_theme *scaled_cursor_themes[CDK_WAYLAND_THEME_SCALES_COUNT];
   gchar *cursor_theme_name;
   int cursor_theme_size;
   GHashTable *cursor_cache;
@@ -156,4 +156,4 @@ struct _CdkWaylandDisplayClass
 
 G_END_DECLS
 
-#endif  /* __GDK_WAYLAND_DISPLAY__ */
+#endif  /* __CDK_WAYLAND_DISPLAY__ */

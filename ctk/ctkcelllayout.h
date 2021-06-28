@@ -108,43 +108,43 @@ struct _CtkCellLayoutIface
   CtkCellArea *(* get_area)   (CtkCellLayout         *cell_layout);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType ctk_cell_layout_get_type           (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void  ctk_cell_layout_pack_start         (CtkCellLayout         *cell_layout,
                                           CtkCellRenderer       *cell,
                                           gboolean               expand);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void  ctk_cell_layout_pack_end           (CtkCellLayout         *cell_layout,
                                           CtkCellRenderer       *cell,
                                           gboolean               expand);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GList *ctk_cell_layout_get_cells         (CtkCellLayout         *cell_layout);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void  ctk_cell_layout_clear              (CtkCellLayout         *cell_layout);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void  ctk_cell_layout_set_attributes     (CtkCellLayout         *cell_layout,
                                           CtkCellRenderer       *cell,
                                           ...) G_GNUC_NULL_TERMINATED;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void  ctk_cell_layout_add_attribute      (CtkCellLayout         *cell_layout,
                                           CtkCellRenderer       *cell,
                                           const gchar           *attribute,
                                           gint                   column);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void  ctk_cell_layout_set_cell_data_func (CtkCellLayout         *cell_layout,
                                           CtkCellRenderer       *cell,
                                           CtkCellLayoutDataFunc  func,
                                           gpointer               func_data,
                                           GDestroyNotify         destroy);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void  ctk_cell_layout_clear_attributes   (CtkCellLayout         *cell_layout,
                                           CtkCellRenderer       *cell);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void  ctk_cell_layout_reorder            (CtkCellLayout         *cell_layout,
                                           CtkCellRenderer       *cell,
                                           gint                   position);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkCellArea *ctk_cell_layout_get_area    (CtkCellLayout         *cell_layout);
 
 gboolean _ctk_cell_layout_buildable_custom_tag_start (CtkBuildable  *buildable,

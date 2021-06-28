@@ -23,7 +23,7 @@ import getopt
 # We grab files off the web, left and right.
 URL_COMPOSE = 'http://cgit.freedesktop.org/xorg/lib/libX11/plain/nls/en_US.UTF-8/Compose.pre'
 URL_KEYSYMSTXT = "http://www.cl.cam.ac.uk/~mgk25/ucs/keysyms.txt"
-URL_GDKKEYSYMSH = "http://git.gnome.org/browse/ctk%2B/plain/cdk/cdkkeysyms.h"
+URL_CDKKEYSYMSH = "http://git.gnome.org/browse/ctk%2B/plain/cdk/cdkkeysyms.h"
 URL_UNICODEDATATXT = 'http://www.unicode.org/Public/6.0.0/ucd/UnicodeData.txt'
 FILENAME_COMPOSE_SUPPLEMENTARY = 'ctk-compose-lookaside.txt'
 
@@ -235,7 +235,7 @@ def download_file(url):
 def process_cdkkeysymsh():
 	""" Opens the cdkkeysyms.h file from CTK+/cdk/cdkkeysyms.h """
 	""" Fills up keysymdb with contents """
-	filename_cdkkeysymsh = download_file(URL_GDKKEYSYMSH)
+	filename_cdkkeysymsh = download_file(URL_CDKKEYSYMSH)
 	try: 
 		cdkkeysymsh = open(filename_cdkkeysymsh, 'r')
 	except IOError, (errno, strerror):
@@ -251,7 +251,7 @@ def process_cdkkeysymsh():
 	for line in cdkkeysymsh.readlines():
 		linenum_cdkkeysymsh += 1
 		line = line.strip()
-		if line == "" or not match('^#define GDK_KEY_', line):
+		if line == "" or not match('^#define CDK_KEY_', line):
 			continue
 		components = split('\s+', line)
 		if len(components) < 3:
@@ -259,10 +259,10 @@ def process_cdkkeysymsh():
 			% {'linenum': linenum_cdkkeysymsh, 'filename': filename_cdkkeysymsh, 'line': line}
 			print "Was expecting 3 items in the line"
 			sys.exit(-1)
-		if not match('^GDK_KEY_', components[1]):
+		if not match('^CDK_KEY_', components[1]):
 			print "Invalid line %(linenum)d in %(filename)s: %(line)s"\
 			% {'linenum': linenum_cdkkeysymsh, 'filename': filename_cdkkeysymsh, 'line': line}
-			print "Was expecting a keysym starting with GDK_KEY_"
+			print "Was expecting a keysym starting with CDK_KEY_"
 			sys.exit(-1)
 		if match('^0x[0-9a-fA-F]+$', components[2]):
 			unival = long(components[2][2:], 16)
@@ -766,7 +766,7 @@ def convert_UnotationToHex(arg):
 			return sub('^U', '0x', arg)
 	return arg
 
-def addprefix_GDK(arg):
+def addprefix_CDK(arg):
 	if match('^0x', arg):
 		return '%(arg)s, ' % { 'arg': arg }
 	elif match('^U[0-9A-F][0-9A-F][0-9A-F][0-9A-F]$', arg.upper()):
@@ -776,11 +776,11 @@ def addprefix_GDK(arg):
                         keysym = k
                         break
                 if keysym != '':
-		    return 'GDK_KEY_%(arg)s, ' % { 'arg': keysym }
+		    return 'CDK_KEY_%(arg)s, ' % { 'arg': keysym }
                 else:
 		    return '0x%(arg)04X, ' % { 'arg': keysymvalue(arg) }
 	else:
-		return 'GDK_KEY_%(arg)s, ' % { 'arg': arg }
+		return 'CDK_KEY_%(arg)s, ' % { 'arg': arg }
 
 if opt_ctk:
 	first_keysym = ""
@@ -824,7 +824,7 @@ if opt_ctk:
 			print "0x%(ks)04X," % { "ks": keysymvalue(i[0]) },
 			print '%(str)s' % { 'str': "".join(map(lambda x : str(x) + ", ", i[1:])) }
 		elif not match('^0x', i[0]):
-			print 'GDK_KEY_%(str)s' % { 'str': "".join(map(lambda x : str(x) + ", ", i)) }
+			print 'CDK_KEY_%(str)s' % { 'str': "".join(map(lambda x : str(x) + ", ", i)) }
 		else:
 			print '%(str)s' % { 'str': "".join(map(lambda x : str(x) + ", ", i)) }
 	for i in ct_second_part:
@@ -838,9 +838,9 @@ if opt_ctk:
 			print '0x%(cp)04X, ' % { 'cp':i[-1] }
 			"""
 		elif opt_ctkexpanded:
-			print '%(seq)s0x%(cp)04X, ' % { 'seq': "".join(map(addprefix_GDK, i[:-1])), 'cp':i[-1] }
+			print '%(seq)s0x%(cp)04X, ' % { 'seq': "".join(map(addprefix_CDK, i[:-1])), 'cp':i[-1] }
 		else:
-			print '%(seq)s0x%(cp)04X, ' % { 'seq': "".join(map(addprefix_GDK, i[:-1][1:])), 'cp':i[-1] }
+			print '%(seq)s0x%(cp)04X, ' % { 'seq': "".join(map(addprefix_CDK, i[:-1][1:])), 'cp':i[-1] }
 	print headerfile_end 
 
 def redecompose(codepoint):

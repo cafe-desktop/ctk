@@ -149,7 +149,7 @@ get_model_types (void)
     {
       column_types[0] = G_TYPE_STRING;
       column_types[1] = G_TYPE_STRING;
-      column_types[2] = GDK_TYPE_PIXBUF;
+      column_types[2] = CDK_TYPE_PIXBUF;
       column_types[3] = G_TYPE_FLOAT;
       column_types[4] = G_TYPE_UINT;
       column_types[5] = G_TYPE_UCHAR;
@@ -703,15 +703,15 @@ main (int    argc,
   g_signal_connect (tv, "row-activated", G_CALLBACK (on_row_activated), NULL);
 
   ctk_tree_view_enable_model_drag_source (CTK_TREE_VIEW (tv),
-					  GDK_BUTTON1_MASK,
+					  CDK_BUTTON1_MASK,
 					  row_targets,
 					  G_N_ELEMENTS (row_targets),
-					  GDK_ACTION_MOVE | GDK_ACTION_COPY);
+					  CDK_ACTION_MOVE | CDK_ACTION_COPY);
 
   ctk_tree_view_enable_model_drag_dest (CTK_TREE_VIEW (tv),
 					row_targets,
 					G_N_ELEMENTS (row_targets),
-					GDK_ACTION_MOVE | GDK_ACTION_COPY);
+					CDK_ACTION_MOVE | CDK_ACTION_COPY);
   
   /* Model menu */
   combo_box = ctk_combo_box_text_new ();

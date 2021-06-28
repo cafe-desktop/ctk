@@ -85,25 +85,25 @@ struct _CtkTextMarkClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType                 ctk_text_mark_get_type         (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTextMark          *ctk_text_mark_new              (const gchar *name,
                                                       gboolean     left_gravity);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_text_mark_set_visible      (CtkTextMark *mark,
                                                       gboolean     setting);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_text_mark_get_visible      (CtkTextMark *mark);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *         ctk_text_mark_get_name         (CtkTextMark *mark);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_text_mark_get_deleted      (CtkTextMark *mark);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTextBuffer*        ctk_text_mark_get_buffer       (CtkTextMark *mark);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_text_mark_get_left_gravity (CtkTextMark *mark);
 
 G_END_DECLS

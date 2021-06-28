@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2010 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_WIN32_KEYS_H__
-#define __GDK_WIN32_KEYS_H__
+#ifndef __CDK_WIN32_KEYS_H__
+#define __CDK_WIN32_KEYS_H__
 
-#if !defined (__GDKWIN32_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined (__CDKWIN32_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdkwin32.h> can be included directly."
 #endif
 
@@ -28,40 +28,40 @@ G_BEGIN_DECLS
 
 /**
  * CdkWin32KeymapMatch:
- * @GDK_WIN32_KEYMAP_MATCH_NONE: no matches found. Output is not valid.
- * @GDK_WIN32_KEYMAP_MATCH_INCOMPLETE: the sequence matches so far, but is incomplete. Output is not valid.
- * @GDK_WIN32_KEYMAP_MATCH_PARTIAL: the sequence matches up to the last key,
+ * @CDK_WIN32_KEYMAP_MATCH_NONE: no matches found. Output is not valid.
+ * @CDK_WIN32_KEYMAP_MATCH_INCOMPLETE: the sequence matches so far, but is incomplete. Output is not valid.
+ * @CDK_WIN32_KEYMAP_MATCH_PARTIAL: the sequence matches up to the last key,
  *     which does not match. Output is valid.
- * @GDK_WIN32_KEYMAP_MATCH_EXACT: the sequence matches exactly. Output is valid.
+ * @CDK_WIN32_KEYMAP_MATCH_EXACT: the sequence matches exactly. Output is valid.
  *
  * An enumeration describing the result of a deadkey combination matching.
  */
 typedef enum
 {
-  GDK_WIN32_KEYMAP_MATCH_NONE,
-  GDK_WIN32_KEYMAP_MATCH_INCOMPLETE,
-  GDK_WIN32_KEYMAP_MATCH_PARTIAL,
-  GDK_WIN32_KEYMAP_MATCH_EXACT
+  CDK_WIN32_KEYMAP_MATCH_NONE,
+  CDK_WIN32_KEYMAP_MATCH_INCOMPLETE,
+  CDK_WIN32_KEYMAP_MATCH_PARTIAL,
+  CDK_WIN32_KEYMAP_MATCH_EXACT
 } CdkWin32KeymapMatch;
 
-#ifdef GDK_COMPILATION
+#ifdef CDK_COMPILATION
 typedef struct _CdkWin32Keymap CdkWin32Keymap;
 #else
 typedef CdkKeymap CdkWin32Keymap;
 #endif
 typedef struct _CdkWin32KeymapClass CdkWin32KeymapClass;
 
-#define GDK_TYPE_WIN32_KEYMAP              (cdk_win32_keymap_get_type())
-#define GDK_WIN32_KEYMAP(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WIN32_KEYMAP, CdkWin32Keymap))
-#define GDK_WIN32_KEYMAP_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WIN32_KEYMAP, CdkWin32KeymapClass))
-#define GDK_IS_WIN32_KEYMAP(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WIN32_KEYMAP))
-#define GDK_IS_WIN32_KEYMAP_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_WIN32_KEYMAP))
-#define GDK_WIN32_KEYMAP_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_WIN32_KEYMAP, CdkWin32KeymapClass))
+#define CDK_TYPE_WIN32_KEYMAP              (cdk_win32_keymap_get_type())
+#define CDK_WIN32_KEYMAP(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), CDK_TYPE_WIN32_KEYMAP, CdkWin32Keymap))
+#define CDK_WIN32_KEYMAP_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CDK_TYPE_WIN32_KEYMAP, CdkWin32KeymapClass))
+#define CDK_IS_WIN32_KEYMAP(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), CDK_TYPE_WIN32_KEYMAP))
+#define CDK_IS_WIN32_KEYMAP_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CDK_TYPE_WIN32_KEYMAP))
+#define CDK_WIN32_KEYMAP_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CDK_TYPE_WIN32_KEYMAP, CdkWin32KeymapClass))
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType cdk_win32_keymap_get_type (void);
 
-GDK_AVAILABLE_IN_3_20
+CDK_AVAILABLE_IN_3_20
 CdkWin32KeymapMatch cdk_win32_keymap_check_compose (CdkWin32Keymap *keymap,
                                                     guint16        *compose_buffer,
                                                     gsize           compose_buffer_len,
@@ -70,4 +70,4 @@ CdkWin32KeymapMatch cdk_win32_keymap_check_compose (CdkWin32Keymap *keymap,
 
 G_END_DECLS
 
-#endif /* __GDK_WIN32_KEYMAP_H__ */
+#endif /* __CDK_WIN32_KEYMAP_H__ */

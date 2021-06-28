@@ -1671,7 +1671,7 @@ get_drag_data (CtkWidget      *list_box,
 
   target = ctk_drag_dest_find_target (list_box, context, NULL);
 
-  if (target == GDK_NONE)
+  if (target == CDK_NONE)
     return FALSE;
 
   ctk_drag_get_data (list_box, context, target, time);
@@ -1748,7 +1748,7 @@ on_motion_notify_event (CtkWidget      *widget,
   if (sidebar->drag_row == NULL || sidebar->dragging_over)
     return FALSE;
 
-  if (!(event->state & GDK_BUTTON1_MASK))
+  if (!(event->state & CDK_BUTTON1_MASK))
     return FALSE;
 
   if (ctk_drag_check_threshold (widget,
@@ -1757,8 +1757,8 @@ on_motion_notify_event (CtkWidget      *widget,
     {
       sidebar->dragging_over = TRUE;
 
-      ctk_drag_begin_with_coordinates (widget, sidebar->source_targets, GDK_ACTION_MOVE,
-                                       GDK_BUTTON_PRIMARY, (CdkEvent*)event,
+      ctk_drag_begin_with_coordinates (widget, sidebar->source_targets, CDK_ACTION_MOVE,
+                                       CDK_BUTTON_PRIMARY, (CdkEvent*)event,
                                        -1, -1);
     }
 
@@ -1836,7 +1836,7 @@ drag_motion_callback (CtkWidget      *widget,
       sidebar->drag_data_info == DND_CTK_SIDEBAR_ROW)
     {
       /* Dragging bookmarks always moves them to another position in the bookmarks list */
-      action = GDK_ACTION_MOVE;
+      action = CDK_ACTION_MOVE;
       if (sidebar->row_placeholder == NULL)
         {
           sidebar->row_placeholder = create_placeholder_row (sidebar);
@@ -1907,7 +1907,7 @@ drag_motion_callback (CtkWidget      *widget,
         {
           if (place_type == PLACES_DROP_FEEDBACK)
             {
-              action = GDK_ACTION_COPY;
+              action = CDK_ACTION_COPY;
             }
           else
             {
@@ -2040,7 +2040,7 @@ drag_data_received_callback (CtkWidget        *list_box,
 
   if (!sidebar->drag_data_received)
     {
-      if (ctk_selection_data_get_target (selection_data) != GDK_NONE &&
+      if (ctk_selection_data_get_target (selection_data) != CDK_NONE &&
           info == DND_TEXT_URI_LIST)
         {
           gchar **uris;
@@ -2107,7 +2107,7 @@ drag_data_received_callback (CtkWidget        *list_box,
       /* file transfer requested */
       real_action = cdk_drag_context_get_selected_action (context);
 
-      if (real_action == GDK_ACTION_ASK)
+      if (real_action == CDK_ACTION_ASK)
         real_action = emit_drag_action_ask (sidebar, cdk_drag_context_get_actions (context));
 
       if (real_action > 0)
@@ -3467,16 +3467,16 @@ on_key_press_event (CtkWidget        *widget,
         {
           modifiers = ctk_accelerator_get_default_mod_mask ();
 
-          if (event->keyval == GDK_KEY_Return ||
-              event->keyval == GDK_KEY_KP_Enter ||
-              event->keyval == GDK_KEY_ISO_Enter ||
-              event->keyval == GDK_KEY_space)
+          if (event->keyval == CDK_KEY_Return ||
+              event->keyval == CDK_KEY_KP_Enter ||
+              event->keyval == CDK_KEY_ISO_Enter ||
+              event->keyval == CDK_KEY_space)
             {
               CtkPlacesOpenFlags open_flags = CTK_PLACES_OPEN_NORMAL;
 
-              if ((event->state & modifiers) == GDK_SHIFT_MASK)
+              if ((event->state & modifiers) == CDK_SHIFT_MASK)
                 open_flags = CTK_PLACES_OPEN_NEW_TAB;
-              else if ((event->state & modifiers) == GDK_CONTROL_MASK)
+              else if ((event->state & modifiers) == CDK_CONTROL_MASK)
                 open_flags = CTK_PLACES_OPEN_NEW_WINDOW;
 
               open_row (CTK_SIDEBAR_ROW (row), open_flags);
@@ -3484,28 +3484,28 @@ on_key_press_event (CtkWidget        *widget,
               return TRUE;
             }
 
-          if (event->keyval == GDK_KEY_Down &&
-              (event->state & modifiers) == GDK_MOD1_MASK)
+          if (event->keyval == CDK_KEY_Down &&
+              (event->state & modifiers) == CDK_MOD1_MASK)
             return eject_or_unmount_selection (sidebar);
 
-          if ((event->keyval == GDK_KEY_Delete ||
-               event->keyval == GDK_KEY_KP_Delete) &&
+          if ((event->keyval == CDK_KEY_Delete ||
+               event->keyval == CDK_KEY_KP_Delete) &&
               (event->state & modifiers) == 0)
             {
               remove_bookmark (CTK_SIDEBAR_ROW (row));
               return TRUE;
             }
 
-          if ((event->keyval == GDK_KEY_F2) &&
+          if ((event->keyval == CDK_KEY_F2) &&
               (event->state & modifiers) == 0)
             {
               rename_bookmark (CTK_SIDEBAR_ROW (row));
               return TRUE;
             }
 
-          if ((event->keyval == GDK_KEY_Menu) ||
-              ((event->keyval == GDK_KEY_F10) &&
-               (event->state & modifiers) == GDK_SHIFT_MASK))
+          if ((event->keyval == CDK_KEY_Menu) ||
+              ((event->keyval == CDK_KEY_F10) &&
+               (event->state & modifiers) == CDK_SHIFT_MASK))
 
             {
               popup_menu_cb (CTK_SIDEBAR_ROW (row));
@@ -3828,7 +3828,7 @@ on_button_release_event (CtkWidget      *widget,
         {
           CtkPlacesOpenFlags open_flags = CTK_PLACES_OPEN_NORMAL;
 
-          open_flags = (event->state & GDK_CONTROL_MASK) ?
+          open_flags = (event->state & CDK_CONTROL_MASK) ?
                         CTK_PLACES_OPEN_NEW_WINDOW :
                         CTK_PLACES_OPEN_NEW_TAB;
 
@@ -4124,7 +4124,7 @@ ctk_places_sidebar_init (CtkPlacesSidebar *sidebar)
   ctk_drag_dest_set (sidebar->list_box,
                      0,
                      NULL, 0,
-                     GDK_ACTION_MOVE | GDK_ACTION_COPY | GDK_ACTION_LINK);
+                     CDK_ACTION_MOVE | CDK_ACTION_COPY | CDK_ACTION_LINK);
   target_list = ctk_target_list_new  (dnd_drop_targets, G_N_ELEMENTS (dnd_drop_targets));
   ctk_target_list_add_uri_targets (target_list, DND_TEXT_URI_LIST);
   ctk_drag_dest_set_target_list (sidebar->list_box, target_list);
@@ -4609,8 +4609,8 @@ ctk_places_sidebar_class_init (CtkPlacesSidebarClass *class)
    *
    * The drag action to use must be the return value of the signal handler.
    *
-   * Returns: The drag action to use, for example, #GDK_ACTION_COPY
-   * or #GDK_ACTION_MOVE, or 0 if no action is allowed here (i.e. drops
+   * Returns: The drag action to use, for example, #CDK_ACTION_COPY
+   * or #CDK_ACTION_MOVE, or 0 if no action is allowed here (i.e. drops
    * are not allowed in the specified @dest_file).
    *
    * Since: 3.10
@@ -4623,7 +4623,7 @@ ctk_places_sidebar_class_init (CtkPlacesSidebarClass *class)
                         NULL, NULL,
                         _ctk_marshal_INT__OBJECT_OBJECT_POINTER,
                         G_TYPE_INT, 3,
-                        GDK_TYPE_DRAG_CONTEXT,
+                        CDK_TYPE_DRAG_CONTEXT,
                         G_TYPE_OBJECT,
                         G_TYPE_POINTER /* GList of GFile */ );
 

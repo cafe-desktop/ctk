@@ -93,42 +93,42 @@ struct _CtkIMContextClass
   void (*_ctk_reserved6) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType    ctk_im_context_get_type            (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_im_context_set_client_window   (CtkIMContext       *context,
 					     CdkWindow          *window);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_im_context_get_preedit_string  (CtkIMContext       *context,
 					     gchar             **str,
 					     PangoAttrList     **attrs,
 					     gint               *cursor_pos);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_im_context_filter_keypress     (CtkIMContext       *context,
 					     CdkEventKey        *event);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_im_context_focus_in            (CtkIMContext       *context);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_im_context_focus_out           (CtkIMContext       *context);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_im_context_reset               (CtkIMContext       *context);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_im_context_set_cursor_location (CtkIMContext       *context,
 					     const CdkRectangle *area);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_im_context_set_use_preedit     (CtkIMContext       *context,
 					     gboolean            use_preedit);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_im_context_set_surrounding     (CtkIMContext       *context,
 					     const gchar        *text,
 					     gint                len,
 					     gint                cursor_index);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_im_context_get_surrounding     (CtkIMContext       *context,
 					     gchar             **text,
 					     gint               *cursor_index);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_im_context_delete_surrounding  (CtkIMContext       *context,
 					     gint                offset,
 					     gint                n_chars);

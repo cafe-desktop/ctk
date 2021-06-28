@@ -60,15 +60,15 @@ struct _CtkCellEditableIface
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType ctk_cell_editable_get_type      (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void  ctk_cell_editable_start_editing (CtkCellEditable *cell_editable,
 				       CdkEvent        *event);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void  ctk_cell_editable_editing_done  (CtkCellEditable *cell_editable);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void  ctk_cell_editable_remove_widget (CtkCellEditable *cell_editable);
 
 

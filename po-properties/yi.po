@@ -99,7 +99,7 @@ msgid "Default Display"
 msgstr "געװײנטלעכע װײַזונג"
 
 #: cdk/cdkdisplaymanager.c:103
-msgid "The default display for GDK"
+msgid "The default display for CDK"
 msgstr "געװײנטלעכע װײַזונג"
 
 #: cdk/cdkscreen.c:72

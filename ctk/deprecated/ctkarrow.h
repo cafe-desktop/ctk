@@ -67,12 +67,12 @@ struct _CtkArrowClass
 };
 
 
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 GType      ctk_arrow_get_type   (void) G_GNUC_CONST;
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 CtkWidget* ctk_arrow_new        (CtkArrowType   arrow_type,
 				 CtkShadowType  shadow_type);
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 void       ctk_arrow_set        (CtkArrow      *arrow,
 				 CtkArrowType   arrow_type,
 				 CtkShadowType  shadow_type);

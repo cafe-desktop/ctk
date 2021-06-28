@@ -170,7 +170,7 @@ enum
   PROP_0,
   PROP_ORIENTATION,
   PROP_BACKGROUND,
-  PROP_BACKGROUND_GDK,
+  PROP_BACKGROUND_CDK,
   PROP_BACKGROUND_RGBA,
   PROP_BACKGROUND_SET,
   PROP_MODEL,
@@ -228,11 +228,11 @@ ctk_cell_view_class_init (CtkCellViewClass *klass)
    */
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   g_object_class_install_property (gobject_class,
-                                   PROP_BACKGROUND_GDK,
+                                   PROP_BACKGROUND_CDK,
                                    g_param_spec_boxed ("background-cdk",
                                                       P_("Background color"),
                                                       P_("Background color as a CdkColor"),
-                                                      GDK_TYPE_COLOR,
+                                                      CDK_TYPE_COLOR,
                                                       CTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
 G_GNUC_END_IGNORE_DEPRECATIONS
   /**
@@ -247,7 +247,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                                    g_param_spec_boxed ("background-rgba",
                                                       P_("Background RGBA color"),
                                                       P_("Background color as a CdkRGBA"),
-                                                      GDK_TYPE_RGBA,
+                                                      CDK_TYPE_RGBA,
                                                       CTK_PARAM_READWRITE));
 
   /**
@@ -406,7 +406,7 @@ ctk_cell_view_get_property (GObject    *object,
     case PROP_ORIENTATION:
       g_value_set_enum (value, view->priv->orientation);
       break;
-    case PROP_BACKGROUND_GDK:
+    case PROP_BACKGROUND_CDK:
       {
 	CdkColor color;
 	
@@ -483,7 +483,7 @@ ctk_cell_view_set_property (GObject      *object,
         g_object_notify (object, "background-cdk");
       }
       break;
-    case PROP_BACKGROUND_GDK:
+    case PROP_BACKGROUND_CDK:
       {
         CdkColor *color;
         CdkRGBA rgba;
@@ -1188,7 +1188,7 @@ ctk_cell_view_new_with_pixbuf (CdkPixbuf *pixbuf)
   ctk_cell_layout_pack_start (CTK_CELL_LAYOUT (cellview),
 			      renderer, TRUE);
 
-  g_value_init (&value, GDK_TYPE_PIXBUF);
+  g_value_init (&value, CDK_TYPE_PIXBUF);
   g_value_set_object (&value, pixbuf);
   ctk_cell_view_set_value (cellview, renderer, "pixbuf", &value);
   g_value_unset (&value);

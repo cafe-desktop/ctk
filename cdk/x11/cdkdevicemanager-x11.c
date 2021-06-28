@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2009 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -34,13 +34,13 @@
 CdkDeviceManager *
 _cdk_x11_device_manager_new (CdkDisplay *display)
 {
-  if (!g_getenv ("GDK_CORE_DEVICE_EVENTS"))
+  if (!g_getenv ("CDK_CORE_DEVICE_EVENTS"))
     {
 #ifdef XINPUT_2
       int opcode, firstevent, firsterror;
       Display *xdisplay;
 
-      xdisplay = GDK_DISPLAY_XDISPLAY (display);
+      xdisplay = CDK_DISPLAY_XDISPLAY (display);
 
       if (XQueryExtension (xdisplay, "XInputExtension",
                            &opcode, &firstevent, &firsterror))
@@ -55,24 +55,24 @@ _cdk_x11_device_manager_new (CdkDisplay *display)
             {
               CdkX11DeviceManagerXI2 *device_manager_xi2;
 
-              GDK_NOTE (INPUT, g_message ("Creating XI2 device manager"));
+              CDK_NOTE (INPUT, g_message ("Creating XI2 device manager"));
 
-              device_manager_xi2 = g_object_new (GDK_TYPE_X11_DEVICE_MANAGER_XI2,
+              device_manager_xi2 = g_object_new (CDK_TYPE_X11_DEVICE_MANAGER_XI2,
                                                  "display", display,
                                                  "opcode", opcode,
                                                  "major", major,
                                                  "minor", minor,
                                                  NULL);
 
-              return GDK_DEVICE_MANAGER (device_manager_xi2);
+              return CDK_DEVICE_MANAGER (device_manager_xi2);
             }
         }
 #endif /* XINPUT_2 */
     }
 
-  GDK_NOTE (INPUT, g_message ("Creating core device manager"));
+  CDK_NOTE (INPUT, g_message ("Creating core device manager"));
 
-  return g_object_new (GDK_TYPE_X11_DEVICE_MANAGER_CORE,
+  return g_object_new (CDK_TYPE_X11_DEVICE_MANAGER_CORE,
                        "display", display,
                        NULL);
 }
@@ -95,24 +95,24 @@ cdk_x11_device_manager_lookup (CdkDeviceManager *device_manager,
 {
   CdkDevice *device = NULL;
 
-  g_return_val_if_fail (GDK_IS_DEVICE_MANAGER (device_manager), NULL);
+  g_return_val_if_fail (CDK_IS_DEVICE_MANAGER (device_manager), NULL);
 
 #ifdef XINPUT_2
-  if (GDK_IS_X11_DEVICE_MANAGER_XI2 (device_manager))
-    device = _cdk_x11_device_manager_xi2_lookup (GDK_X11_DEVICE_MANAGER_XI2 (device_manager),
+  if (CDK_IS_X11_DEVICE_MANAGER_XI2 (device_manager))
+    device = _cdk_x11_device_manager_xi2_lookup (CDK_X11_DEVICE_MANAGER_XI2 (device_manager),
                                                  device_id);
   else
 #endif /* XINPUT_2 */
-    if (GDK_IS_X11_DEVICE_MANAGER_CORE (device_manager))
+    if (CDK_IS_X11_DEVICE_MANAGER_CORE (device_manager))
       {
         /* It is a core/xi1 device manager, we only map
          * IDs 2 and 3, matching XI2's Virtual Core Pointer
          * and Keyboard.
          */
         if (device_id == VIRTUAL_CORE_POINTER_ID)
-          device = GDK_X11_DEVICE_MANAGER_CORE (device_manager)->core_pointer;
+          device = CDK_X11_DEVICE_MANAGER_CORE (device_manager)->core_pointer;
         else if (device_id == VIRTUAL_CORE_KEYBOARD_ID)
-          device = GDK_X11_DEVICE_MANAGER_CORE (device_manager)->core_keyboard;
+          device = CDK_X11_DEVICE_MANAGER_CORE (device_manager)->core_keyboard;
       }
 
   return device;
@@ -139,16 +139,16 @@ cdk_x11_device_get_id (CdkDevice *device)
 {
   gint device_id = 0;
 
-  g_return_val_if_fail (GDK_IS_DEVICE (device), 0);
+  g_return_val_if_fail (CDK_IS_DEVICE (device), 0);
 
 #ifdef XINPUT_2
-  if (GDK_IS_X11_DEVICE_XI2 (device))
-    device_id = _cdk_x11_device_xi2_get_id (GDK_X11_DEVICE_XI2 (device));
+  if (CDK_IS_X11_DEVICE_XI2 (device))
+    device_id = _cdk_x11_device_xi2_get_id (CDK_X11_DEVICE_XI2 (device));
   else
 #endif /* XINPUT_2 */
-    if (GDK_IS_X11_DEVICE_CORE (device))
+    if (CDK_IS_X11_DEVICE_CORE (device))
       {
-        if (cdk_device_get_source (device) == GDK_SOURCE_KEYBOARD)
+        if (cdk_device_get_source (device) == CDK_SOURCE_KEYBOARD)
           device_id = VIRTUAL_CORE_KEYBOARD_ID;
         else
           device_id = VIRTUAL_CORE_POINTER_ID;

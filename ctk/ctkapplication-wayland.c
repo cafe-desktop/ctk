@@ -46,7 +46,7 @@ ctk_application_impl_wayland_handle_window_realize (CtkApplicationImpl *impl,
 
   cdk_window = ctk_widget_get_window (CTK_WIDGET (window));
 
-  if (!GDK_IS_WAYLAND_WINDOW (cdk_window))
+  if (!CDK_IS_WAYLAND_WINDOW (cdk_window))
     return;
 
   window_path = ctk_application_impl_dbus_get_window_path (dbus, window);

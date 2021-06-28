@@ -157,7 +157,7 @@ ctk_cell_renderer_accel_class_init (CtkCellRendererAccelClass *cell_accel_class)
                                    g_param_spec_flags ("accel-mods",
                                                        P_("Accelerator modifiers"),
                                                        P_("The modifier mask of the accelerator"),
-                                                       GDK_TYPE_MODIFIER_TYPE,
+                                                       CDK_TYPE_MODIFIER_TYPE,
                                                        0,
                                                        CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 
@@ -220,7 +220,7 @@ ctk_cell_renderer_accel_class_init (CtkCellRendererAccelClass *cell_accel_class)
                                         G_TYPE_NONE, 4,
                                         G_TYPE_STRING,
                                         G_TYPE_UINT,
-                                        GDK_TYPE_MODIFIER_TYPE,
+                                        CDK_TYPE_MODIFIER_TYPE,
                                         G_TYPE_UINT);
 
   /**
@@ -462,14 +462,14 @@ ctk_cell_renderer_accel_start_editing (CtkCellRenderer      *cell,
   if (!device || !window)
     return NULL;
 
-  if (cdk_device_get_source (device) == GDK_SOURCE_KEYBOARD)
+  if (cdk_device_get_source (device) == CDK_SOURCE_KEYBOARD)
     pointer = cdk_device_get_associated_device (device);
   else
     pointer = device;
 
   if (cdk_seat_grab (cdk_device_get_seat (pointer), window,
-                     GDK_SEAT_CAPABILITY_ALL, FALSE,
-                     NULL, event, NULL, NULL) != GDK_GRAB_SUCCESS)
+                     CDK_SEAT_CAPABILITY_ALL, FALSE,
+                     NULL, event, NULL, NULL) != CDK_GRAB_SUCCESS)
     return NULL;
 
   priv->grab_pointer = pointer;
@@ -569,13 +569,13 @@ ctk_cell_editable_event_box_key_press_event (CtkWidget   *widget,
 
   accel_mods = event->state;
 
-  if (event->keyval == GDK_KEY_Sys_Req && 
-      (accel_mods & GDK_MOD1_MASK) != 0)
+  if (event->keyval == CDK_KEY_Sys_Req && 
+      (accel_mods & CDK_MOD1_MASK) != 0)
     {
       /* HACK: we don't want to use SysRq as a keybinding (but we do
        * want Alt+Print), so we avoid translation from Alt+Print to SysRq
        */
-      keyval = GDK_KEY_Print;
+      keyval = CDK_KEY_Print;
       consumed_modifiers = 0;
     }
   else
@@ -589,8 +589,8 @@ ctk_cell_editable_event_box_key_press_event (CtkWidget   *widget,
     }
 
   accel_key = cdk_keyval_to_lower (keyval);
-  if (accel_key == GDK_KEY_ISO_Left_Tab) 
-    accel_key = GDK_KEY_Tab;
+  if (accel_key == CDK_KEY_ISO_Left_Tab) 
+    accel_key = CDK_KEY_Tab;
 
   accel_mods &= ctk_accelerator_get_default_mod_mask ();
 
@@ -602,16 +602,16 @@ ctk_cell_editable_event_box_key_press_event (CtkWidget   *widget,
   /* Put shift back if it changed the case of the key, not otherwise.
    */
   if (accel_key != keyval)
-    accel_mods |= GDK_SHIFT_MASK;
+    accel_mods |= CDK_SHIFT_MASK;
     
   if (accel_mods == 0)
     {
       switch (keyval)
 	{
-	case GDK_KEY_BackSpace:
+	case CDK_KEY_BackSpace:
 	  cleared = TRUE;
           /* fall thru */
-	case GDK_KEY_Escape:
+	case CDK_KEY_Escape:
 	  goto out;
 	default:
 	  break;

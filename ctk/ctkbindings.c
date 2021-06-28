@@ -143,11 +143,11 @@
  */
 
 /* --- defines --- */
-#define BINDING_MOD_MASK() (ctk_accelerator_get_default_mod_mask () | GDK_RELEASE_MASK)
+#define BINDING_MOD_MASK() (ctk_accelerator_get_default_mod_mask () | CDK_RELEASE_MASK)
 
 
 #define CTK_TYPE_IDENTIFIER (ctk_identifier_get_type ())
-_GDK_EXTERN
+_CDK_EXTERN
 GType ctk_identifier_get_type (void) G_GNUC_CONST;
 
 
@@ -239,15 +239,15 @@ binding_key_hash_insert_entry (CtkKeyHash      *key_hash,
   /* We store lowercased accelerators. To deal with this, if <Shift>
    * was specified, uppercase.
    */
-  if (entry->modifiers & GDK_SHIFT_MASK)
+  if (entry->modifiers & CDK_SHIFT_MASK)
     {
-      if (keyval == GDK_KEY_Tab)
-        keyval = GDK_KEY_ISO_Left_Tab;
+      if (keyval == CDK_KEY_Tab)
+        keyval = CDK_KEY_ISO_Left_Tab;
       else
         keyval = cdk_keyval_to_upper (keyval);
     }
 
-  _ctk_key_hash_add_entry (key_hash, keyval, entry->modifiers & ~GDK_RELEASE_MASK, entry);
+  _ctk_key_hash_add_entry (key_hash, keyval, entry->modifiers & ~CDK_RELEASE_MASK, entry);
 }
 
 static void
@@ -1006,10 +1006,10 @@ _ctk_binding_entry_add_signall (CtkBindingSet  *binding_set,
  *
  * |[<!-- language="C" -->
  * CtkBindingSet *binding_set;
- * CdkModifierType modmask = GDK_CONTROL_MASK;
+ * CdkModifierType modmask = CDK_CONTROL_MASK;
  * int count = 1;
  * ctk_binding_entry_add_signal (binding_set,
- *                               GDK_KEY_space,
+ *                               CDK_KEY_space,
  *                               modmask,
  *                               "move-cursor", 2,
  *                               CTK_TYPE_MOVEMENT_STEP, CTK_MOVEMENT_PAGES,
@@ -1443,7 +1443,7 @@ binding_activate (CtkBindingSet *binding_set,
 
   entry = elem->data;
 
-  if (is_release != ((entry->modifiers & GDK_RELEASE_MASK) != 0))
+  if (is_release != ((entry->modifiers & CDK_RELEASE_MASK) != 0))
     return FALSE;
 
   if (entry->marks_unbound)
@@ -1550,8 +1550,8 @@ ctk_bindings_activate (GObject         *object,
   if (!CTK_IS_WIDGET (object))
     return FALSE;
 
-  is_release = (modifiers & GDK_RELEASE_MASK) != 0;
-  modifiers = modifiers & BINDING_MOD_MASK () & ~GDK_RELEASE_MASK;
+  is_release = (modifiers & CDK_RELEASE_MASK) != 0;
+  modifiers = modifiers & BINDING_MOD_MASK () & ~CDK_RELEASE_MASK;
 
   display = ctk_widget_get_display (CTK_WIDGET (object));
   key_hash = binding_key_hash_for_keymap (cdk_keymap_get_for_display (display));
@@ -1595,11 +1595,11 @@ ctk_bindings_activate_event (GObject     *object,
   entries = _ctk_key_hash_lookup (key_hash,
                                   event->hardware_keycode,
                                   event->state,
-                                  BINDING_MOD_MASK () & ~GDK_RELEASE_MASK,
+                                  BINDING_MOD_MASK () & ~CDK_RELEASE_MASK,
                                   event->group);
 
   handled = ctk_bindings_activate_list (object, entries,
-                                        event->type == GDK_KEY_RELEASE);
+                                        event->type == CDK_KEY_RELEASE);
 
   g_slist_free (entries);
 

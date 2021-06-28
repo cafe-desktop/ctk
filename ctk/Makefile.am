@@ -1455,7 +1455,7 @@ ctktypefuncs.inc: stamp-ctktypebuiltins.h stamp-ctkprivatetypebuiltins.h $(top_s
 	  ${CPP} $(DEFS) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) xgen-gtfsrc.c | \
 	  $(GREP) -o '\bg[td]k_[a-zA-Z0-9_]*_get_type\b' | \
 	  sort | uniq | \
-	  $(SED) '{ s/^/*tp++ = /; s/$$/();/; s/^.*\(cdk_x11\|ctk_plug_\|ctk_socket_\).*$$/#ifdef GDK_WINDOWING_X11\n&\n#endif/; }' >> xgen-gtf \
+	  $(SED) '{ s/^/*tp++ = /; s/$$/();/; s/^.*\(cdk_x11\|ctk_plug_\|ctk_socket_\).*$$/#ifdef CDK_WINDOWING_X11\n&\n#endif/; }' >> xgen-gtf \
 	&& cp xgen-gtf $@ && rm -f xgen-gtf
 $(srcdir)/ctktestutils.c: ctktypefuncs.inc
 
@@ -1476,7 +1476,7 @@ ctkunixprintinclude_HEADERS = $(ctk_unix_print_public_h_sources)
 
 nodist_libctk_3_la_SOURCES = $(nodist_ctk_c_sources)
 libctk_3_la_SOURCES = $(ctk_c_sources)
-libctk_3_la_CFLAGS = $(AM_CFLAGS) $(GDK_HIDDEN_VISIBILITY_CFLAGS)
+libctk_3_la_CFLAGS = $(AM_CFLAGS) $(CDK_HIDDEN_VISIBILITY_CFLAGS)
 libctk_3_la_LDFLAGS = $(libtool_opts)
 libctk_3_la_LIBADD = $(libadd)
 libctk_3_la_DEPENDENCIES = $(deps)
@@ -1673,11 +1673,11 @@ ctk_query_immodules_3_0_LDADD = 		\
 	$(CTK_DEP_LIBS)
 
 ctk_update_icon_cache_SOURCES = updateiconcache.c
-ctk_update_icon_cache_LDADD = $(GDK_PIXBUF_LIBS)
+ctk_update_icon_cache_LDADD = $(CDK_PIXBUF_LIBS)
 
 ctk_encode_symbolic_svg_SOURCES = encodesymbolic.c
 ctk_encode_symbolic_svg_LDADD =			\
-	$(GDK_PIXBUF_LIBS)			\
+	$(CDK_PIXBUF_LIBS)			\
 	$(top_builddir)/cdk/libcdk-3.la		\
 	$(CTK_DEP_LIBS)
 

@@ -70,8 +70,8 @@ msgstr "DISPLAY"
 
 #. Description of --cdk-debug=FLAGS in --help output
 #: cdk/cdk.c:243
-msgid "GDK debugging flags to set"
-msgstr "GDK डिबग्गिङ फ्ल्यागहरू सेट भयो"
+msgid "CDK debugging flags to set"
+msgstr "CDK डिबग्गिङ फ्ल्यागहरू सेट भयो"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
@@ -84,11 +84,11 @@ msgstr "FLAGS"
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: cdk/cdk.c:246
 #, fuzzy
-msgid "GDK debugging flags to unset"
+msgid "CDK debugging flags to unset"
 msgstr "अनसेट गरिने Cdk डिबगिङ झन्डा"
 
 #: cdk/cdkwindow.c:2826
-msgid "GL support disabled via GDK_DEBUG"
+msgid "GL support disabled via CDK_DEBUG"
 msgstr ""
 
 #: cdk/cdkwindow.c:2837
@@ -4147,8 +4147,8 @@ msgstr "संस्करण:"
 
 #: ctk/inspector/general.ui:68
 #, fuzzy
-msgid "GDK Backend"
-msgstr "GDK डिबग्गिङ फ्ल्यागहरू सेट भयो"
+msgid "CDK Backend"
+msgstr "CDK डिबग्गिङ फ्ल्यागहरू सेट भयो"
 
 #: ctk/inspector/general.ui:373
 msgid "Display"
@@ -4582,7 +4582,7 @@ msgstr ""
 #: ctk/inspector/visual.c:791
 msgid ""
 "Not settable at runtime.\n"
-"Use GDK_GL=always or GDK_GL=disable instead"
+"Use CDK_GL=always or CDK_GL=disable instead"
 msgstr ""
 
 #: ctk/inspector/visual.c:805 ctk/inspector/visual.c:806 ctk/inspector/visual.c:807

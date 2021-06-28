@@ -126,15 +126,15 @@ struct _CtkMenuClass
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType	   ctk_menu_get_type		  (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_menu_new			  (void);
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 CtkWidget* ctk_menu_new_from_model        (GMenuModel *model);
 
 /* Display the menu onscreen */
-GDK_DEPRECATED_IN_3_22_FOR((ctk_menu_popup_at_widget, ctk_menu_popup_at_pointer, ctk_menu_popup_at_rect))
+CDK_DEPRECATED_IN_3_22_FOR((ctk_menu_popup_at_widget, ctk_menu_popup_at_pointer, ctk_menu_popup_at_rect))
 void	   ctk_menu_popup		  (CtkMenu	       *menu,
 					   CtkWidget	       *parent_menu_shell,
 					   CtkWidget	       *parent_menu_item,
@@ -142,7 +142,7 @@ void	   ctk_menu_popup		  (CtkMenu	       *menu,
 					   gpointer		data,
 					   guint		button,
 					   guint32		activate_time);
-GDK_DEPRECATED_IN_3_22_FOR((ctk_menu_popup_at_widget, ctk_menu_popup_at_pointer, ctk_menu_popup_at_rect))
+CDK_DEPRECATED_IN_3_22_FOR((ctk_menu_popup_at_widget, ctk_menu_popup_at_pointer, ctk_menu_popup_at_rect))
 void       ctk_menu_popup_for_device      (CtkMenu             *menu,
                                            CdkDevice           *device,
                                            CtkWidget           *parent_menu_shell,
@@ -152,98 +152,98 @@ void       ctk_menu_popup_for_device      (CtkMenu             *menu,
                                            GDestroyNotify       destroy,
                                            guint                button,
                                            guint32              activate_time);
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 void       ctk_menu_popup_at_rect         (CtkMenu             *menu,
                                            CdkWindow           *rect_window,
                                            const CdkRectangle  *rect,
                                            CdkGravity           rect_anchor,
                                            CdkGravity           menu_anchor,
                                            const CdkEvent      *trigger_event);
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 void       ctk_menu_popup_at_widget       (CtkMenu             *menu,
                                            CtkWidget           *widget,
                                            CdkGravity           widget_anchor,
                                            CdkGravity           menu_anchor,
                                            const CdkEvent      *trigger_event);
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 void       ctk_menu_popup_at_pointer      (CtkMenu             *menu,
                                            const CdkEvent      *trigger_event);
 
 /* Position the menu according to its position function. Called
  * from ctkmenuitem.c when a menu-item changes its allocation
  */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void	   ctk_menu_reposition		  (CtkMenu	       *menu);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void	   ctk_menu_popdown		  (CtkMenu	       *menu);
 
 /* Keep track of the last menu item selected. (For the purposes
  * of the option menu
  */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_menu_get_active		  (CtkMenu	       *menu);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void	   ctk_menu_set_active		  (CtkMenu	       *menu,
 					   guint		index);
 
 /* set/get the accelerator group that holds global accelerators (should
  * be added to the corresponding toplevel with ctk_window_add_accel_group().
  */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void	       ctk_menu_set_accel_group	  (CtkMenu	       *menu,
 					   CtkAccelGroup       *accel_group);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkAccelGroup* ctk_menu_get_accel_group	  (CtkMenu	       *menu);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_menu_set_accel_path    (CtkMenu             *menu,
 					   const gchar         *accel_path);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar*   ctk_menu_get_accel_path    (CtkMenu             *menu);
 
 /* A reference count is kept for a widget when it is attached to
  * a particular widget. This is typically a menu item; it may also
  * be a widget with a popup menu - for instance, the Notebook widget.
  */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void	   ctk_menu_attach_to_widget	  (CtkMenu	       *menu,
 					   CtkWidget	       *attach_widget,
 					   CtkMenuDetachFunc	detacher);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void	   ctk_menu_detach		  (CtkMenu	       *menu);
 
 /* This should be dumped in favor of data set when the menu is popped
  * up - that is currently in the ItemFactory code, but should be
  * in the Menu code.
  */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_menu_get_attach_widget	  (CtkMenu	       *menu);
 
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void       ctk_menu_set_tearoff_state     (CtkMenu             *menu,
                                            gboolean             torn_off);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 gboolean   ctk_menu_get_tearoff_state     (CtkMenu             *menu);
 
 /* This sets the window manager title for the window that
  * appears when a menu is torn off
  */
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void          ctk_menu_set_title          (CtkMenu             *menu,
                                            const gchar         *title);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 const gchar * ctk_menu_get_title          (CtkMenu             *menu);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_menu_reorder_child         (CtkMenu             *menu,
                                            CtkWidget           *child,
                                            gint                position);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void	   ctk_menu_set_screen		  (CtkMenu	       *menu,
 					   CdkScreen	       *screen);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_menu_attach                (CtkMenu             *menu,
                                            CtkWidget           *child,
                                            guint                left_attach,
@@ -251,23 +251,23 @@ void       ctk_menu_attach                (CtkMenu             *menu,
                                            guint                top_attach,
                                            guint                bottom_attach);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_menu_set_monitor           (CtkMenu             *menu,
                                            gint                 monitor_num);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint       ctk_menu_get_monitor           (CtkMenu             *menu);
 
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 void       ctk_menu_place_on_monitor      (CtkMenu             *menu,
                                            CdkMonitor          *monitor);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GList*     ctk_menu_get_for_attach_widget (CtkWidget           *widget); 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_menu_set_reserve_toggle_size (CtkMenu  *menu,
                                           gboolean   reserve_toggle_size);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_menu_get_reserve_toggle_size (CtkMenu  *menu);
 
 G_DEFINE_AUTOPTR_CLEANUP_FUNC(CtkMenu, g_object_unref)

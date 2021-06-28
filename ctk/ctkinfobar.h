@@ -80,60 +80,60 @@ struct _CtkInfoBarClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType          ctk_info_bar_get_type               (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget     *ctk_info_bar_new                    (void);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget     *ctk_info_bar_new_with_buttons       (const gchar    *first_button_text,
                                                     ...);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget     *ctk_info_bar_get_action_area        (CtkInfoBar     *info_bar);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget     *ctk_info_bar_get_content_area       (CtkInfoBar     *info_bar);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_info_bar_add_action_widget      (CtkInfoBar     *info_bar,
                                                     CtkWidget      *child,
                                                     gint            response_id);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget     *ctk_info_bar_add_button             (CtkInfoBar     *info_bar,
                                                     const gchar    *button_text,
                                                     gint            response_id);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_info_bar_add_buttons            (CtkInfoBar     *info_bar,
                                                     const gchar    *first_button_text,
                                                     ...);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_info_bar_set_response_sensitive (CtkInfoBar     *info_bar,
                                                     gint            response_id,
                                                     gboolean        setting);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_info_bar_set_default_response   (CtkInfoBar     *info_bar,
                                                     gint            response_id);
 
 /* Emit response signal */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_info_bar_response               (CtkInfoBar     *info_bar,
                                                     gint            response_id);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_info_bar_set_message_type       (CtkInfoBar     *info_bar,
                                                     CtkMessageType  message_type);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkMessageType ctk_info_bar_get_message_type       (CtkInfoBar     *info_bar);
 
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void           ctk_info_bar_set_show_close_button  (CtkInfoBar     *info_bar,
                                                     gboolean        setting);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 gboolean       ctk_info_bar_get_show_close_button  (CtkInfoBar     *info_bar);
 
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 void           ctk_info_bar_set_revealed           (CtkInfoBar     *info_bar,
                                                     gboolean        revealed);
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 gboolean       ctk_info_bar_get_revealed           (CtkInfoBar     *info_bar);
 
 G_END_DECLS

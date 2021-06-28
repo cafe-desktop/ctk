@@ -852,7 +852,7 @@ ctk_layout_init (CtkLayout *layout)
 
   priv->scroll_x = 0;
   priv->scroll_y = 0;
-  priv->visibility = GDK_VISIBILITY_PARTIAL;
+  priv->visibility = CDK_VISIBILITY_PARTIAL;
 
   priv->freeze_count = 0;
 }
@@ -894,16 +894,16 @@ ctk_layout_realize (CtkWidget *widget)
 
   ctk_widget_get_allocation (widget, &allocation);
 
-  attributes.window_type = GDK_WINDOW_CHILD;
+  attributes.window_type = CDK_WINDOW_CHILD;
   attributes.x = allocation.x;
   attributes.y = allocation.y;
   attributes.width = allocation.width;
   attributes.height = allocation.height;
-  attributes.wclass = GDK_INPUT_OUTPUT;
+  attributes.wclass = CDK_INPUT_OUTPUT;
   attributes.visual = ctk_widget_get_visual (widget);
-  attributes.event_mask = GDK_VISIBILITY_NOTIFY_MASK;
+  attributes.event_mask = CDK_VISIBILITY_NOTIFY_MASK;
 
-  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
+  attributes_mask = CDK_WA_X | CDK_WA_Y | CDK_WA_VISUAL;
 
   window = cdk_window_new (ctk_widget_get_parent_window (widget),
                            &attributes, attributes_mask);
@@ -916,8 +916,8 @@ ctk_layout_realize (CtkWidget *widget)
   attributes.y = - ctk_adjustment_get_value (priv->vadjustment);
   attributes.width = MAX (priv->width, allocation.width);
   attributes.height = MAX (priv->height, allocation.height);
-  attributes.event_mask = GDK_EXPOSURE_MASK | GDK_SCROLL_MASK |
-                          GDK_SMOOTH_SCROLL_MASK | 
+  attributes.event_mask = CDK_EXPOSURE_MASK | CDK_SCROLL_MASK |
+                          CDK_SMOOTH_SCROLL_MASK | 
                           ctk_widget_get_events (widget);
 
   priv->bin_window = cdk_window_new (window,

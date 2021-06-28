@@ -49,7 +49,7 @@ struct _CtkTextViewAccessibleClass
   CtkContainerAccessibleClass parent_class;
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType ctk_text_view_accessible_get_type (void);
 
 

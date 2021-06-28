@@ -112,8 +112,8 @@ enum {
   /* Style args */
   PROP_BACKGROUND,
   PROP_FOREGROUND,
-  PROP_BACKGROUND_GDK,
-  PROP_FOREGROUND_GDK,
+  PROP_BACKGROUND_CDK,
+  PROP_FOREGROUND_CDK,
   PROP_BACKGROUND_RGBA,
   PROP_FOREGROUND_RGBA,
   PROP_FONT,
@@ -293,11 +293,11 @@ ctk_cell_renderer_text_class_init (CtkCellRendererTextClass *class)
    * Deprecated: 3.4: Use #CtkCellRendererText:background-rgba instead.
    */
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  text_cell_renderer_props[PROP_BACKGROUND_GDK] =
+  text_cell_renderer_props[PROP_BACKGROUND_CDK] =
       g_param_spec_boxed ("background-cdk",
                           P_("Background color"),
                           P_("Background color as a CdkColor"),
-                          GDK_TYPE_COLOR,
+                          CDK_TYPE_COLOR,
                           CTK_PARAM_READWRITE | G_PARAM_DEPRECATED);
 G_GNUC_END_IGNORE_DEPRECATIONS
 
@@ -312,7 +312,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       g_param_spec_boxed ("background-rgba",
                           P_("Background color as RGBA"),
                           P_("Background color as a CdkRGBA"),
-                          GDK_TYPE_RGBA,
+                          CDK_TYPE_RGBA,
                           CTK_PARAM_READWRITE);
   text_cell_renderer_props[PROP_FOREGROUND] =
       g_param_spec_string ("foreground",
@@ -329,11 +329,11 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * Deprecated: 3.4: Use #CtkCellRendererText:foreground-rgba instead.
    */
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  text_cell_renderer_props[PROP_FOREGROUND_GDK] =
+  text_cell_renderer_props[PROP_FOREGROUND_CDK] =
       g_param_spec_boxed ("foreground-cdk",
                           P_("Foreground color"),
                           P_("Foreground color as a CdkColor"),
-                          GDK_TYPE_COLOR,
+                          CDK_TYPE_COLOR,
                           CTK_PARAM_READWRITE | G_PARAM_DEPRECATED);
 G_GNUC_END_IGNORE_DEPRECATIONS
 
@@ -348,7 +348,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       g_param_spec_boxed ("foreground-rgba",
                           P_("Foreground color as RGBA"),
                           P_("Foreground color as a CdkRGBA"),
-                          GDK_TYPE_RGBA,
+                          CDK_TYPE_RGBA,
                           CTK_PARAM_READWRITE);
 
 
@@ -763,7 +763,7 @@ ctk_cell_renderer_text_get_property (GObject        *object,
       g_value_set_boolean (value, priv->single_paragraph);
       break;
 
-    case PROP_BACKGROUND_GDK:
+    case PROP_BACKGROUND_CDK:
       {
         CdkColor color;
 
@@ -775,7 +775,7 @@ ctk_cell_renderer_text_get_property (GObject        *object,
       }
       break;
 
-    case PROP_FOREGROUND_GDK:
+    case PROP_FOREGROUND_CDK:
       {
         CdkColor color;
 
@@ -1192,7 +1192,7 @@ ctk_cell_renderer_text_set_property (GObject      *object,
         else
           g_warning ("Don't know color '%s'", g_value_get_string (value));
 
-        g_object_notify_by_pspec (object, text_cell_renderer_props[PROP_BACKGROUND_GDK]);
+        g_object_notify_by_pspec (object, text_cell_renderer_props[PROP_BACKGROUND_CDK]);
       }
       break;
 
@@ -1207,11 +1207,11 @@ ctk_cell_renderer_text_set_property (GObject      *object,
         else
           g_warning ("Don't know color '%s'", g_value_get_string (value));
 
-        g_object_notify_by_pspec (object, text_cell_renderer_props[PROP_FOREGROUND_GDK]);
+        g_object_notify_by_pspec (object, text_cell_renderer_props[PROP_FOREGROUND_CDK]);
       }
       break;
 
-    case PROP_BACKGROUND_GDK:
+    case PROP_BACKGROUND_CDK:
       {
         CdkColor *color;
 
@@ -1234,7 +1234,7 @@ ctk_cell_renderer_text_set_property (GObject      *object,
       }
       break;
 
-    case PROP_FOREGROUND_GDK:
+    case PROP_FOREGROUND_CDK:
       {
         CdkColor *color;
 

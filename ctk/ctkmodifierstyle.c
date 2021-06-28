@@ -78,7 +78,7 @@ ctk_modifier_style_get_style_property (CtkStyleProvider *provider,
   gchar *str;
 
   /* Reject non-color types for now */
-  if (pspec->value_type != GDK_TYPE_COLOR)
+  if (pspec->value_type != CDK_TYPE_COLOR)
     return FALSE;
 
   priv = CTK_MODIFIER_STYLE (provider)->priv;

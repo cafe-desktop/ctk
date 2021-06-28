@@ -202,75 +202,75 @@ typedef void     (*CtkTreeViewSearchPositionFunc) (CtkTreeView  *tree_view,
 
 
 /* Creators */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType                  ctk_tree_view_get_type                      (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget             *ctk_tree_view_new                           (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget             *ctk_tree_view_new_with_model                (CtkTreeModel              *model);
 
 /* Accessors */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreeModel          *ctk_tree_view_get_model                     (CtkTreeView               *tree_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_tree_view_set_model                     (CtkTreeView               *tree_view,
 								    CtkTreeModel              *model);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreeSelection      *ctk_tree_view_get_selection                 (CtkTreeView               *tree_view);
 
-GDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_get_hadjustment)
+CDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_get_hadjustment)
 CtkAdjustment         *ctk_tree_view_get_hadjustment               (CtkTreeView               *tree_view);
-GDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_set_hadjustment)
+CDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_set_hadjustment)
 void                   ctk_tree_view_set_hadjustment               (CtkTreeView               *tree_view,
 								    CtkAdjustment             *adjustment);
-GDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_get_vadjustment)
+CDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_get_vadjustment)
 CtkAdjustment         *ctk_tree_view_get_vadjustment               (CtkTreeView               *tree_view);
-GDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_set_vadjustment)
+CDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_set_vadjustment)
 void                   ctk_tree_view_set_vadjustment               (CtkTreeView               *tree_view,
 								    CtkAdjustment             *adjustment);
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean               ctk_tree_view_get_headers_visible           (CtkTreeView               *tree_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_tree_view_set_headers_visible           (CtkTreeView               *tree_view,
 								    gboolean                   headers_visible);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_tree_view_columns_autosize              (CtkTreeView               *tree_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean               ctk_tree_view_get_headers_clickable         (CtkTreeView *tree_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_tree_view_set_headers_clickable         (CtkTreeView               *tree_view,
 								    gboolean                   setting);
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 void                   ctk_tree_view_set_rules_hint                (CtkTreeView               *tree_view,
 								    gboolean                   setting);
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 gboolean               ctk_tree_view_get_rules_hint                (CtkTreeView               *tree_view);
-GDK_AVAILABLE_IN_3_8
+CDK_AVAILABLE_IN_3_8
 gboolean               ctk_tree_view_get_activate_on_single_click  (CtkTreeView               *tree_view);
-GDK_AVAILABLE_IN_3_8
+CDK_AVAILABLE_IN_3_8
 void                   ctk_tree_view_set_activate_on_single_click  (CtkTreeView               *tree_view,
 								    gboolean                   single);
 
 /* Column funtions */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint                   ctk_tree_view_append_column                 (CtkTreeView               *tree_view,
 								    CtkTreeViewColumn         *column);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint                   ctk_tree_view_remove_column                 (CtkTreeView               *tree_view,
 								    CtkTreeViewColumn         *column);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint                   ctk_tree_view_insert_column                 (CtkTreeView               *tree_view,
 								    CtkTreeViewColumn         *column,
 								    gint                       position);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint                   ctk_tree_view_insert_column_with_attributes (CtkTreeView               *tree_view,
 								    gint                       position,
 								    const gchar               *title,
 								    CtkCellRenderer           *cell,
 								    ...) G_GNUC_NULL_TERMINATED;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint                   ctk_tree_view_insert_column_with_data_func  (CtkTreeView               *tree_view,
 								    gint                       position,
 								    const gchar               *title,
@@ -279,91 +279,91 @@ gint                   ctk_tree_view_insert_column_with_data_func  (CtkTreeView 
                                                                     gpointer                   data,
                                                                     GDestroyNotify             dnotify);
 
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 guint                  ctk_tree_view_get_n_columns                 (CtkTreeView               *tree_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreeViewColumn     *ctk_tree_view_get_column                    (CtkTreeView               *tree_view,
 								    gint                       n);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GList                 *ctk_tree_view_get_columns                   (CtkTreeView               *tree_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_tree_view_move_column_after             (CtkTreeView               *tree_view,
 								    CtkTreeViewColumn         *column,
 								    CtkTreeViewColumn         *base_column);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_tree_view_set_expander_column           (CtkTreeView               *tree_view,
 								    CtkTreeViewColumn         *column);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreeViewColumn     *ctk_tree_view_get_expander_column           (CtkTreeView               *tree_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_tree_view_set_column_drag_function      (CtkTreeView               *tree_view,
 								    CtkTreeViewColumnDropFunc  func,
 								    gpointer                   user_data,
 								    GDestroyNotify             destroy);
 
 /* Actions */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_tree_view_scroll_to_point               (CtkTreeView               *tree_view,
 								    gint                       tree_x,
 								    gint                       tree_y);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_tree_view_scroll_to_cell                (CtkTreeView               *tree_view,
 								    CtkTreePath               *path,
 								    CtkTreeViewColumn         *column,
 								    gboolean                   use_align,
 								    gfloat                     row_align,
 								    gfloat                     col_align);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_tree_view_row_activated                 (CtkTreeView               *tree_view,
 								    CtkTreePath               *path,
 								    CtkTreeViewColumn         *column);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_tree_view_expand_all                    (CtkTreeView               *tree_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_tree_view_collapse_all                  (CtkTreeView               *tree_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_tree_view_expand_to_path                (CtkTreeView               *tree_view,
 								    CtkTreePath               *path);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean               ctk_tree_view_expand_row                    (CtkTreeView               *tree_view,
 								    CtkTreePath               *path,
 								    gboolean                   open_all);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean               ctk_tree_view_collapse_row                  (CtkTreeView               *tree_view,
 								    CtkTreePath               *path);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_tree_view_map_expanded_rows             (CtkTreeView               *tree_view,
 								    CtkTreeViewMappingFunc     func,
 								    gpointer                   data);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean               ctk_tree_view_row_expanded                  (CtkTreeView               *tree_view,
 								    CtkTreePath               *path);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_tree_view_set_reorderable               (CtkTreeView               *tree_view,
 								    gboolean                   reorderable);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean               ctk_tree_view_get_reorderable               (CtkTreeView               *tree_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_tree_view_set_cursor                    (CtkTreeView               *tree_view,
 								    CtkTreePath               *path,
 								    CtkTreeViewColumn         *focus_column,
 								    gboolean                   start_editing);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_tree_view_set_cursor_on_cell            (CtkTreeView               *tree_view,
 								    CtkTreePath               *path,
 								    CtkTreeViewColumn         *focus_column,
 								    CtkCellRenderer           *focus_cell,
 								    gboolean                   start_editing);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_tree_view_get_cursor                    (CtkTreeView               *tree_view,
 								    CtkTreePath              **path,
 								    CtkTreeViewColumn        **focus_column);
 
 
 /* Layout information */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkWindow             *ctk_tree_view_get_bin_window                (CtkTreeView               *tree_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean               ctk_tree_view_get_path_at_pos               (CtkTreeView               *tree_view,
 								    gint                       x,
 								    gint                       y,
@@ -371,24 +371,24 @@ gboolean               ctk_tree_view_get_path_at_pos               (CtkTreeView 
 								    CtkTreeViewColumn        **column,
 								    gint                      *cell_x,
 								    gint                      *cell_y);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_tree_view_get_cell_area                 (CtkTreeView               *tree_view,
 								    CtkTreePath               *path,
 								    CtkTreeViewColumn         *column,
 								    CdkRectangle              *rect);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_tree_view_get_background_area           (CtkTreeView               *tree_view,
 								    CtkTreePath               *path,
 								    CtkTreeViewColumn         *column,
 								    CdkRectangle              *rect);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_tree_view_get_visible_rect              (CtkTreeView               *tree_view,
 								    CdkRectangle              *visible_rect);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean               ctk_tree_view_get_visible_range             (CtkTreeView               *tree_view,
 								    CtkTreePath              **start_path,
 								    CtkTreePath              **end_path);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean               ctk_tree_view_is_blank_at_pos               (CtkTreeView               *tree_view,
                                                                     gint                       x,
                                                                     gint                       y,
@@ -398,106 +398,106 @@ gboolean               ctk_tree_view_is_blank_at_pos               (CtkTreeView 
                                                                     gint                      *cell_y);
 
 /* Drag-and-Drop support */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_tree_view_enable_model_drag_source      (CtkTreeView               *tree_view,
 								    CdkModifierType            start_button_mask,
 								    const CtkTargetEntry      *targets,
 								    gint                       n_targets,
 								    CdkDragAction              actions);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_tree_view_enable_model_drag_dest        (CtkTreeView               *tree_view,
 								    const CtkTargetEntry      *targets,
 								    gint                       n_targets,
 								    CdkDragAction              actions);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_tree_view_unset_rows_drag_source        (CtkTreeView               *tree_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_tree_view_unset_rows_drag_dest          (CtkTreeView               *tree_view);
 
 
 /* These are useful to implement your own custom stuff. */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_tree_view_set_drag_dest_row             (CtkTreeView               *tree_view,
 								    CtkTreePath               *path,
 								    CtkTreeViewDropPosition    pos);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_tree_view_get_drag_dest_row             (CtkTreeView               *tree_view,
 								    CtkTreePath              **path,
 								    CtkTreeViewDropPosition   *pos);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean               ctk_tree_view_get_dest_row_at_pos           (CtkTreeView               *tree_view,
 								    gint                       drag_x,
 								    gint                       drag_y,
 								    CtkTreePath              **path,
 								    CtkTreeViewDropPosition   *pos);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 cairo_surface_t       *ctk_tree_view_create_row_drag_icon          (CtkTreeView               *tree_view,
 								    CtkTreePath               *path);
 
 /* Interactive search */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                       ctk_tree_view_set_enable_search     (CtkTreeView                *tree_view,
 								gboolean                    enable_search);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean                   ctk_tree_view_get_enable_search     (CtkTreeView                *tree_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint                       ctk_tree_view_get_search_column     (CtkTreeView                *tree_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                       ctk_tree_view_set_search_column     (CtkTreeView                *tree_view,
 								gint                        column);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreeViewSearchEqualFunc ctk_tree_view_get_search_equal_func (CtkTreeView                *tree_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                       ctk_tree_view_set_search_equal_func (CtkTreeView                *tree_view,
 								CtkTreeViewSearchEqualFunc  search_equal_func,
 								gpointer                    search_user_data,
 								GDestroyNotify              search_destroy);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkEntry                     *ctk_tree_view_get_search_entry         (CtkTreeView                   *tree_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                          ctk_tree_view_set_search_entry         (CtkTreeView                   *tree_view,
 								      CtkEntry                      *entry);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreeViewSearchPositionFunc ctk_tree_view_get_search_position_func (CtkTreeView                   *tree_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                          ctk_tree_view_set_search_position_func (CtkTreeView                   *tree_view,
 								      CtkTreeViewSearchPositionFunc  func,
 								      gpointer                       data,
 								      GDestroyNotify                 destroy);
 
 /* Convert between the different coordinate systems */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_tree_view_convert_widget_to_tree_coords       (CtkTreeView *tree_view,
 							gint         wx,
 							gint         wy,
 							gint        *tx,
 							gint        *ty);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_tree_view_convert_tree_to_widget_coords       (CtkTreeView *tree_view,
 							gint         tx,
 							gint         ty,
 							gint        *wx,
 							gint        *wy);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_tree_view_convert_widget_to_bin_window_coords (CtkTreeView *tree_view,
 							gint         wx,
 							gint         wy,
 							gint        *bx,
 							gint        *by);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_tree_view_convert_bin_window_to_widget_coords (CtkTreeView *tree_view,
 							gint         bx,
 							gint         by,
 							gint        *wx,
 							gint        *wy);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_tree_view_convert_tree_to_bin_window_coords   (CtkTreeView *tree_view,
 							gint         tx,
 							gint         ty,
 							gint        *bx,
 							gint        *by);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_tree_view_convert_bin_window_to_tree_coords   (CtkTreeView *tree_view,
 							gint         bx,
 							gint         by,
@@ -510,77 +510,77 @@ typedef void (* CtkTreeDestroyCountFunc)  (CtkTreeView             *tree_view,
 					   CtkTreePath             *path,
 					   gint                     children,
 					   gpointer                 user_data);
-GDK_DEPRECATED_IN_3_4
+CDK_DEPRECATED_IN_3_4
 void ctk_tree_view_set_destroy_count_func (CtkTreeView             *tree_view,
 					   CtkTreeDestroyCountFunc  func,
 					   gpointer                 data,
 					   GDestroyNotify           destroy);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_tree_view_set_fixed_height_mode (CtkTreeView          *tree_view,
 					      gboolean              enable);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_tree_view_get_fixed_height_mode (CtkTreeView          *tree_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_tree_view_set_hover_selection   (CtkTreeView          *tree_view,
 					      gboolean              hover);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_tree_view_get_hover_selection   (CtkTreeView          *tree_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_tree_view_set_hover_expand      (CtkTreeView          *tree_view,
 					      gboolean              expand);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_tree_view_get_hover_expand      (CtkTreeView          *tree_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_tree_view_set_rubber_banding    (CtkTreeView          *tree_view,
 					      gboolean              enable);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_tree_view_get_rubber_banding    (CtkTreeView          *tree_view);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_tree_view_is_rubber_banding_active (CtkTreeView       *tree_view);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreeViewRowSeparatorFunc ctk_tree_view_get_row_separator_func (CtkTreeView               *tree_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                        ctk_tree_view_set_row_separator_func (CtkTreeView                *tree_view,
 								  CtkTreeViewRowSeparatorFunc func,
 								  gpointer                    data,
 								  GDestroyNotify              destroy);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreeViewGridLines        ctk_tree_view_get_grid_lines         (CtkTreeView                *tree_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                        ctk_tree_view_set_grid_lines         (CtkTreeView                *tree_view,
 								  CtkTreeViewGridLines        grid_lines);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean                    ctk_tree_view_get_enable_tree_lines  (CtkTreeView                *tree_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                        ctk_tree_view_set_enable_tree_lines  (CtkTreeView                *tree_view,
 								  gboolean                    enabled);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                        ctk_tree_view_set_show_expanders     (CtkTreeView                *tree_view,
 								  gboolean                    enabled);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean                    ctk_tree_view_get_show_expanders     (CtkTreeView                *tree_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                        ctk_tree_view_set_level_indentation  (CtkTreeView                *tree_view,
 								  gint                        indentation);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint                        ctk_tree_view_get_level_indentation  (CtkTreeView                *tree_view);
 
 /* Convenience functions for setting tooltips */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_tree_view_set_tooltip_row    (CtkTreeView       *tree_view,
 						CtkTooltip        *tooltip,
 						CtkTreePath       *path);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_tree_view_set_tooltip_cell   (CtkTreeView       *tree_view,
 						CtkTooltip        *tooltip,
 						CtkTreePath       *path,
 						CtkTreeViewColumn *column,
 						CtkCellRenderer   *cell);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean      ctk_tree_view_get_tooltip_context(CtkTreeView       *tree_view,
 						gint              *x,
 						gint              *y,
@@ -588,10 +588,10 @@ gboolean      ctk_tree_view_get_tooltip_context(CtkTreeView       *tree_view,
 						CtkTreeModel     **model,
 						CtkTreePath      **path,
 						CtkTreeIter       *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_tree_view_set_tooltip_column (CtkTreeView       *tree_view,
 					        gint               column);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint          ctk_tree_view_get_tooltip_column (CtkTreeView       *tree_view);
 
 G_END_DECLS

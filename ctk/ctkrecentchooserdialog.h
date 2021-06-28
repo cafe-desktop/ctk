@@ -61,15 +61,15 @@ struct _CtkRecentChooserDialogClass
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType      ctk_recent_chooser_dialog_get_type        (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *ctk_recent_chooser_dialog_new             (const gchar      *title,
 					              CtkWindow        *parent,
 					              const gchar      *first_button_text,
 					              ...) G_GNUC_NULL_TERMINATED;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *ctk_recent_chooser_dialog_new_for_manager (const gchar      *title,
 						      CtkWindow        *parent,
 						      CtkRecentManager *manager,

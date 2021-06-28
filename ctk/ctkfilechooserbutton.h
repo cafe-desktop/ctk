@@ -70,26 +70,26 @@ struct _CtkFileChooserButtonClass
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType                 ctk_file_chooser_button_get_type         (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *           ctk_file_chooser_button_new              (const gchar          *title,
 								CtkFileChooserAction  action);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *           ctk_file_chooser_button_new_with_dialog  (CtkWidget            *dialog);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *         ctk_file_chooser_button_get_title        (CtkFileChooserButton *button);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_file_chooser_button_set_title        (CtkFileChooserButton *button,
 								const gchar          *title);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint                  ctk_file_chooser_button_get_width_chars  (CtkFileChooserButton *button);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_file_chooser_button_set_width_chars  (CtkFileChooserButton *button,
 								gint                  n_chars);
-GDK_DEPRECATED_IN_3_20_FOR(ctk_widget_get_focus_on_click)
+CDK_DEPRECATED_IN_3_20_FOR(ctk_widget_get_focus_on_click)
 gboolean              ctk_file_chooser_button_get_focus_on_click (CtkFileChooserButton *button);
-GDK_DEPRECATED_IN_3_20_FOR(ctk_widget_set_focus_on_click)
+CDK_DEPRECATED_IN_3_20_FOR(ctk_widget_set_focus_on_click)
 void                  ctk_file_chooser_button_set_focus_on_click (CtkFileChooserButton *button,
                                                                   gboolean              focus_on_click);
 

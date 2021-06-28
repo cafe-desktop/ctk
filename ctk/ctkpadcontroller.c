@@ -33,7 +33,7 @@
  * meaning.
  *
  * Buttons and sensors are not constrained to triggering a single action, some
- * %GDK_SOURCE_TABLET_PAD devices feature multiple "modes", all these input
+ * %CDK_SOURCE_TABLET_PAD devices feature multiple "modes", all these input
  * elements have one current mode, which may determine the final action
  * being triggered. Pad devices often divide buttons and sensors into groups,
  * all elements in a group share the same current mode, but different groups
@@ -75,7 +75,7 @@
 #include "ctkprivate.h"
 #include "ctkintl.h"
 
-#ifdef GDK_WINDOWING_WAYLAND
+#ifdef CDK_WINDOWING_WAYLAND
 #include <cdk/wayland/cdkwayland.h>
 #endif
 
@@ -174,20 +174,20 @@ ctk_pad_controller_handle_mode_switch (CtkPadController *controller,
                                        guint             group,
                                        guint             mode)
 {
-#ifdef GDK_WINDOWING_WAYLAND
-  if (GDK_IS_WAYLAND_DISPLAY (cdk_device_get_display (pad)))
+#ifdef CDK_WINDOWING_WAYLAND
+  if (CDK_IS_WAYLAND_DISPLAY (cdk_device_get_display (pad)))
     {
       const CtkPadActionEntry *entry;
       gint elem, idx, n_features;
 
       for (elem = CTK_PAD_ACTION_BUTTON; elem <= CTK_PAD_ACTION_STRIP; elem++)
         {
-          n_features = cdk_device_pad_get_n_features (GDK_DEVICE_PAD (pad),
+          n_features = cdk_device_pad_get_n_features (CDK_DEVICE_PAD (pad),
                                                       elem);
 
           for (idx = 0; idx < n_features; idx++)
             {
-              if (cdk_device_pad_get_feature_group (GDK_DEVICE_PAD (pad),
+              if (cdk_device_pad_get_feature_group (CDK_DEVICE_PAD (pad),
                                                     elem, idx) != group)
                 continue;
 
@@ -212,11 +212,11 @@ ctk_pad_controller_filter_event (CtkEventController *controller,
 {
   CtkPadController *pad_controller = CTK_PAD_CONTROLLER (controller);
 
-  if (event->type != GDK_PAD_BUTTON_PRESS &&
-      event->type != GDK_PAD_BUTTON_RELEASE &&
-      event->type != GDK_PAD_RING &&
-      event->type != GDK_PAD_STRIP &&
-      event->type != GDK_PAD_GROUP_MODE)
+  if (event->type != CDK_PAD_BUTTON_PRESS &&
+      event->type != CDK_PAD_BUTTON_RELEASE &&
+      event->type != CDK_PAD_RING &&
+      event->type != CDK_PAD_STRIP &&
+      event->type != CDK_PAD_GROUP_MODE)
     return TRUE;
 
   if (pad_controller->pad &&
@@ -235,40 +235,40 @@ ctk_pad_controller_handle_event (CtkEventController *controller,
   CtkPadActionType type;
   gint index, mode;
 
-  if (event->type == GDK_PAD_GROUP_MODE)
+  if (event->type == CDK_PAD_GROUP_MODE)
     {
       ctk_pad_controller_handle_mode_switch (pad_controller,
                                              cdk_event_get_source_device (event),
                                              event->pad_group_mode.group,
                                              event->pad_group_mode.mode);
-      return GDK_EVENT_PROPAGATE;
+      return CDK_EVENT_PROPAGATE;
     }
 
   switch (event->type)
     {
-    case GDK_PAD_BUTTON_PRESS:
+    case CDK_PAD_BUTTON_PRESS:
       type = CTK_PAD_ACTION_BUTTON;
       index = event->pad_button.button;
       mode = event->pad_button.mode;
       break;
-    case GDK_PAD_RING:
-    case GDK_PAD_STRIP:
-      type = event->type == GDK_PAD_RING ?
+    case CDK_PAD_RING:
+    case CDK_PAD_STRIP:
+      type = event->type == CDK_PAD_RING ?
         CTK_PAD_ACTION_RING : CTK_PAD_ACTION_STRIP;
       index = event->pad_axis.index;
       mode = event->pad_axis.mode;
       break;
     default:
-      return GDK_EVENT_PROPAGATE;
+      return CDK_EVENT_PROPAGATE;
     }
 
   entry = ctk_pad_action_find_match (pad_controller,
                                      type, index, mode);
   if (!entry)
-    return GDK_EVENT_PROPAGATE;
+    return CDK_EVENT_PROPAGATE;
 
-  if (event->type == GDK_PAD_RING ||
-      event->type == GDK_PAD_STRIP)
+  if (event->type == CDK_PAD_RING ||
+      event->type == CDK_PAD_STRIP)
     {
       ctk_pad_controller_activate_action_with_axis (pad_controller, entry,
                                                     event->pad_axis.value);
@@ -278,15 +278,15 @@ ctk_pad_controller_handle_event (CtkEventController *controller,
       ctk_pad_controller_activate_action (pad_controller, entry);
     }
 
-  return GDK_EVENT_STOP;
+  return CDK_EVENT_STOP;
 }
 
 static void
 ctk_pad_controller_set_pad (CtkPadController *controller,
                             CdkDevice        *pad)
 {
-  g_return_if_fail (!pad || GDK_IS_DEVICE (pad));
-  g_return_if_fail (!pad || cdk_device_get_source (pad) == GDK_SOURCE_TABLET_PAD);
+  g_return_if_fail (!pad || CDK_IS_DEVICE (pad));
+  g_return_if_fail (!pad || cdk_device_get_source (pad) == CDK_SOURCE_TABLET_PAD);
 
   g_set_object (&controller->pad, pad);
 }
@@ -378,7 +378,7 @@ ctk_pad_controller_class_init (CtkPadControllerClass *klass)
     g_param_spec_object ("pad",
                          P_("Pad device"),
                          P_("Pad device to control"),
-                         GDK_TYPE_DEVICE,
+                         CDK_TYPE_DEVICE,
                          CTK_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY);
 
   g_object_class_install_properties (object_class, N_PROPS, pspecs);
@@ -393,7 +393,7 @@ ctk_pad_controller_init (CtkPadController *controller)
  * ctk_pad_controller_new:
  * @window: a #CtkWindow
  * @group: #GActionGroup to trigger actions from
- * @pad: (nullable): A %GDK_SOURCE_TABLET_PAD device, or %NULL to handle all pads
+ * @pad: (nullable): A %CDK_SOURCE_TABLET_PAD device, or %NULL to handle all pads
  *
  * Creates a new #CtkPadController that will associate events from @pad to
  * actions. A %NULL pad may be provided so the controller manages all pad devices
@@ -416,8 +416,8 @@ ctk_pad_controller_new (CtkWindow    *window,
 {
   g_return_val_if_fail (CTK_IS_WINDOW (window), NULL);
   g_return_val_if_fail (G_IS_ACTION_GROUP (group), NULL);
-  g_return_val_if_fail (!pad || GDK_IS_DEVICE (pad), NULL);
-  g_return_val_if_fail (!pad || cdk_device_get_source (pad) == GDK_SOURCE_TABLET_PAD, NULL);
+  g_return_val_if_fail (!pad || CDK_IS_DEVICE (pad), NULL);
+  g_return_val_if_fail (!pad || cdk_device_get_source (pad) == CDK_SOURCE_TABLET_PAD, NULL);
 
   return g_object_new (CTK_TYPE_PAD_CONTROLLER,
                        "propagation-phase", CTK_PHASE_CAPTURE,

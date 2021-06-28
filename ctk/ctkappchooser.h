@@ -38,14 +38,14 @@ G_BEGIN_DECLS
 
 typedef struct _CtkAppChooser CtkAppChooser;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType      ctk_app_chooser_get_type         (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GAppInfo * ctk_app_chooser_get_app_info     (CtkAppChooser *self);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gchar *    ctk_app_chooser_get_content_type (CtkAppChooser *self);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_app_chooser_refresh          (CtkAppChooser *self);
 
 G_END_DECLS

@@ -137,22 +137,22 @@ msgid "Default Display"
 msgstr "Ecran per defaut"
 
 #: cdk/cdkdisplaymanager.c:170
-msgid "The default display for GDK"
-msgstr "L'ecran per defaut per GDK"
+msgid "The default display for CDK"
+msgstr "L'ecran per defaut per CDK"
 
 #: cdk/cdkglcontext.c:316
 #, fuzzy
-#| msgid "The GDK window bound to the GL context"
-msgid "The GDK display used to create the GL context"
-msgstr "La fenèstra GDK ligada al contèxte GL"
+#| msgid "The CDK window bound to the GL context"
+msgid "The CDK display used to create the GL context"
+msgstr "La fenèstra CDK ligada al contèxte GL"
 
 #: cdk/cdkglcontext.c:331 ctk/ctkwidget.c:1345
 msgid "Window"
 msgstr "Fenèstra"
 
 #: cdk/cdkglcontext.c:332
-msgid "The GDK window bound to the GL context"
-msgstr "La fenèstra GDK ligada al contèxte GL"
+msgid "The CDK window bound to the GL context"
+msgstr "La fenèstra CDK ligada al contèxte GL"
 
 #: cdk/cdkglcontext.c:347
 msgid "Shared context"
@@ -9917,8 +9917,8 @@ msgstr "Lo títol del perfil de colors d'utilizar"
 #~ msgid "Sans 12"
 #~ msgstr "Sans 12"
 
-#~ msgid "The GDK display the context is from"
-#~ msgstr "L'afichatge GDK origina del contèxte"
+#~ msgid "The CDK display the context is from"
+#~ msgstr "L'afichatge CDK origina del contèxte"
 
 #~ msgid "Whether the combo box grabs focus when it is clicked with the mouse"
 #~ msgstr ""

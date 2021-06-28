@@ -1705,7 +1705,7 @@ broadway_server_grab_pointer (BroadwayServer *server,
 {
   if (server->pointer_grab_window_id != -1 &&
       time_ != 0 && server->pointer_grab_time > time_)
-    return GDK_GRAB_ALREADY_GRABBED;
+    return CDK_GRAB_ALREADY_GRABBED;
 
   if (time_ == 0)
     time_ = server->last_seen_time;
@@ -1725,7 +1725,7 @@ broadway_server_grab_pointer (BroadwayServer *server,
 
   /* TODO: What about toplevel grab events if we're not connected? */
 
-  return GDK_GRAB_SUCCESS;
+  return CDK_GRAB_SUCCESS;
 }
 
 guint32

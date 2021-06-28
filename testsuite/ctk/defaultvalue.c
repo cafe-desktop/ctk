@@ -76,8 +76,8 @@ test_type (gconstpointer data)
 
   /* These can't be freely constructed/destroyed */
   if (g_type_is_a (type, CTK_TYPE_APPLICATION) ||
-      g_type_is_a (type, GDK_TYPE_PIXBUF_LOADER) ||
-      g_type_is_a (type, GDK_TYPE_DRAWING_CONTEXT) ||
+      g_type_is_a (type, CDK_TYPE_PIXBUF_LOADER) ||
+      g_type_is_a (type, CDK_TYPE_DRAWING_CONTEXT) ||
 #ifdef G_OS_UNIX
       g_type_is_a (type, CTK_TYPE_PRINT_JOB) ||
 #endif
@@ -95,7 +95,7 @@ test_type (gconstpointer data)
     return;
 
   /* pixbufs without pixel data are just pointless */
-  if (g_type_is_a (type, GDK_TYPE_PIXBUF))
+  if (g_type_is_a (type, CDK_TYPE_PIXBUF))
     return;
 
   /* These leak their GDBusConnections */
@@ -109,11 +109,11 @@ test_type (gconstpointer data)
 
   if (g_type_is_a (type, CTK_TYPE_SETTINGS))
     instance = G_OBJECT (g_object_ref (ctk_settings_get_default ()));
-  else if (g_type_is_a (type, GDK_TYPE_WINDOW))
+  else if (g_type_is_a (type, CDK_TYPE_WINDOW))
     {
       CdkWindowAttr attributes;
-      attributes.wclass = GDK_INPUT_OUTPUT;
-      attributes.window_type = GDK_WINDOW_TEMP;
+      attributes.wclass = CDK_INPUT_OUTPUT;
+      attributes.window_type = CDK_WINDOW_TEMP;
       attributes.event_mask = 0;
       attributes.width = 100;
       attributes.height = 100;
@@ -152,11 +152,11 @@ test_type (gconstpointer data)
 	  (strcmp (pspec->name, "pointing-to") == 0))
 	continue;
 
-      if (g_type_is_a (type, GDK_TYPE_DISPLAY_MANAGER) &&
+      if (g_type_is_a (type, CDK_TYPE_DISPLAY_MANAGER) &&
 	  (strcmp (pspec->name, "default-display") == 0))
 	continue;
 
-      if (g_type_is_a (type, GDK_TYPE_MONITOR) &&
+      if (g_type_is_a (type, CDK_TYPE_MONITOR) &&
           (strcmp (pspec->name, "geometry") == 0 ||
            strcmp (pspec->name, "workarea") == 0))
         continue;
@@ -444,8 +444,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       g_free (pspecs);
     }
 
-  if (g_type_is_a (type, GDK_TYPE_WINDOW))
-    cdk_window_destroy (GDK_WINDOW (instance));
+  if (g_type_is_a (type, CDK_TYPE_WINDOW))
+    cdk_window_destroy (CDK_WINDOW (instance));
   else
     g_object_unref (instance);
 

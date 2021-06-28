@@ -75,45 +75,45 @@ struct _CtkPanedClass
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType       ctk_paned_get_type     (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget * ctk_paned_new          (CtkOrientation orientation);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_paned_add1         (CtkPaned       *paned,
                                     CtkWidget      *child);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_paned_add2         (CtkPaned       *paned,
                                     CtkWidget      *child);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_paned_pack1        (CtkPaned       *paned,
                                     CtkWidget      *child,
                                     gboolean        resize,
                                     gboolean        shrink);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_paned_pack2        (CtkPaned       *paned,
                                     CtkWidget      *child,
                                     gboolean        resize,
                                     gboolean        shrink);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint        ctk_paned_get_position (CtkPaned       *paned);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_paned_set_position (CtkPaned       *paned,
                                     gint            position);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget * ctk_paned_get_child1   (CtkPaned       *paned);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget * ctk_paned_get_child2   (CtkPaned       *paned);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkWindow * ctk_paned_get_handle_window (CtkPaned  *paned);
 
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 void        ctk_paned_set_wide_handle (CtkPaned    *paned,
                                        gboolean     wide);
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 gboolean    ctk_paned_get_wide_handle (CtkPaned    *paned);
 
 

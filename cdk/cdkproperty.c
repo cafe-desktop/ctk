@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2000 Red Hat, Inc.
  *               2005 Imendio AB
  *
@@ -182,8 +182,8 @@ intern_atom_internal (const gchar *atom_name,
 /**
  * cdk_atom_intern:
  * @atom_name: a string.
- * @only_if_exists: if %TRUE, GDK is allowed to not create a new atom, but
- *   just return %GDK_NONE if the requested atom doesn’t already
+ * @only_if_exists: if %TRUE, CDK is allowed to not create a new atom, but
+ *   just return %CDK_NONE if the requested atom doesn’t already
  *   exists. Currently, the flag is ignored, since checking the
  *   existance of an atom is as expensive as creating it.
  *
@@ -195,7 +195,7 @@ CdkAtom
 cdk_atom_intern (const gchar *atom_name,
                  gboolean     only_if_exists)
 {
-  g_return_val_if_fail (atom_name != NULL, GDK_NONE);
+  g_return_val_if_fail (atom_name != NULL, CDK_NONE);
 
   return intern_atom_internal (atom_name, TRUE);
 }
@@ -222,7 +222,7 @@ cdk_atom_intern (const gchar *atom_name,
 CdkAtom
 cdk_atom_intern_static_string (const gchar *atom_name)
 {
-  g_return_val_if_fail (atom_name != NULL, GDK_NONE);
+  g_return_val_if_fail (atom_name != NULL, CDK_NONE);
 
   return intern_atom_internal (atom_name, FALSE);
 }

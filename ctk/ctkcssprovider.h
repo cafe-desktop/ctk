@@ -58,7 +58,7 @@ typedef enum
   CTK_CSS_PROVIDER_ERROR_UNKNOWN_VALUE
 } CtkCssProviderError;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GQuark ctk_css_provider_error_quark (void);
 
 typedef struct _CtkCssProvider CtkCssProvider;
@@ -85,37 +85,37 @@ struct _CtkCssProviderClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType ctk_css_provider_get_type (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkCssProvider * ctk_css_provider_new (void);
 
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 char *           ctk_css_provider_to_string      (CtkCssProvider  *provider);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean         ctk_css_provider_load_from_data (CtkCssProvider  *css_provider,
                                                   const gchar     *data,
                                                   gssize           length,
                                                   GError         **error);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean         ctk_css_provider_load_from_file (CtkCssProvider  *css_provider,
                                                   GFile           *file,
                                                   GError         **error);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean         ctk_css_provider_load_from_path (CtkCssProvider  *css_provider,
                                                   const gchar     *path,
                                                   GError         **error);
 
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 void             ctk_css_provider_load_from_resource (CtkCssProvider *css_provider,
                                                       const gchar    *resource_path);
 
-GDK_DEPRECATED_FOR(ctk_css_provider_new)
+CDK_DEPRECATED_FOR(ctk_css_provider_new)
 CtkCssProvider * ctk_css_provider_get_default (void);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkCssProvider * ctk_css_provider_get_named (const gchar *name,
                                              const gchar *variant);
 

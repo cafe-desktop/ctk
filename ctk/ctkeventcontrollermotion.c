@@ -98,17 +98,17 @@ ctk_event_controller_motion_handle_event (CtkEventController *controller,
   widget = ctk_event_controller_get_widget (controller);
 
   type = cdk_event_get_event_type (event);
-  if (type == GDK_ENTER_NOTIFY)
+  if (type == CDK_ENTER_NOTIFY)
     {
       double x, y;
       get_coords (widget, event, &x, &y);
       g_signal_emit (controller, signals[ENTER], 0, x, y);
     }
-  else if (type == GDK_LEAVE_NOTIFY)
+  else if (type == CDK_LEAVE_NOTIFY)
     {
       g_signal_emit (controller, signals[LEAVE], 0);
     }
-  else if (type == GDK_MOTION_NOTIFY)
+  else if (type == CDK_MOTION_NOTIFY)
     {
       double x, y;
       get_coords (widget, event, &x, &y);

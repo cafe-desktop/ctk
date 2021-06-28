@@ -49,14 +49,14 @@ struct _CtkNotebookPageAccessibleClass
   AtkObjectClass parent_class;
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType      ctk_notebook_page_accessible_get_type   (void);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 AtkObject *ctk_notebook_page_accessible_new        (CtkNotebookAccessible     *notebook,
                                                     CtkWidget                 *child);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_notebook_page_accessible_invalidate (CtkNotebookPageAccessible *page);
 
 G_END_DECLS

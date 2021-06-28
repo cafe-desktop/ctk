@@ -54,19 +54,19 @@ struct _CtkPrinterOptionWidgetClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType	     ctk_printer_option_widget_get_type           (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget   *ctk_printer_option_widget_new                (CtkPrinterOption       *source);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void         ctk_printer_option_widget_set_source         (CtkPrinterOptionWidget *setting,
 		 					   CtkPrinterOption       *source);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean     ctk_printer_option_widget_has_external_label (CtkPrinterOptionWidget *setting);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget   *ctk_printer_option_widget_get_external_label (CtkPrinterOptionWidget *setting);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *ctk_printer_option_widget_get_value          (CtkPrinterOptionWidget *setting);
 
 G_END_DECLS

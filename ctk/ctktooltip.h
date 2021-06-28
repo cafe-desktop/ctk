@@ -32,39 +32,39 @@ G_BEGIN_DECLS
 #define CTK_TOOLTIP(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_TOOLTIP, CtkTooltip))
 #define CTK_IS_TOOLTIP(obj)              (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_TOOLTIP))
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType ctk_tooltip_get_type (void);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_tooltip_set_markup              (CtkTooltip         *tooltip,
                                           const gchar        *markup);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_tooltip_set_text                (CtkTooltip         *tooltip,
                                           const gchar        *text);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_tooltip_set_icon                (CtkTooltip         *tooltip,
                                           CdkPixbuf          *pixbuf);
-GDK_DEPRECATED_IN_3_10_FOR(ctk_tooltip_set_icon_from_icon_name)
+CDK_DEPRECATED_IN_3_10_FOR(ctk_tooltip_set_icon_from_icon_name)
 void ctk_tooltip_set_icon_from_stock     (CtkTooltip         *tooltip,
                                           const gchar        *stock_id,
                                           CtkIconSize         size);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_tooltip_set_icon_from_icon_name (CtkTooltip         *tooltip,
 				          const gchar        *icon_name,
 				          CtkIconSize         size);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_tooltip_set_icon_from_gicon     (CtkTooltip         *tooltip,
 					  GIcon              *gicon,
 					  CtkIconSize         size);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_tooltip_set_custom	         (CtkTooltip         *tooltip,
                                           CtkWidget          *custom_widget);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_tooltip_set_tip_area            (CtkTooltip         *tooltip,
                                           const CdkRectangle *rect);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_tooltip_trigger_tooltip_query   (CdkDisplay         *display);
 
 

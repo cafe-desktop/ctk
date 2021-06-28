@@ -24,7 +24,7 @@
 
 #include "config.h"
 
-#define GDK_DISABLE_DEPRECATION_WARNINGS
+#define CDK_DISABLE_DEPRECATION_WARNINGS
 
 #include "ctkimagemenuitem.h"
 
@@ -99,7 +99,7 @@
  *   ctk_label_set_xalign (CTK_LABEL (label), 0.0);
  *
  *   ctk_widget_add_accelerator (menu_item, "activate", accel_group,
- *                               GDK_KEY_m, GDK_CONTROL_MASK, CTK_ACCEL_VISIBLE);
+ *                               CDK_KEY_m, CDK_CONTROL_MASK, CTK_ACCEL_VISIBLE);
  *   ctk_accel_label_set_accel_widget (CTK_ACCEL_LABEL (label), menu_item);
  *
  *   ctk_box_pack_end (CTK_BOX (box), label, TRUE, TRUE, 0);

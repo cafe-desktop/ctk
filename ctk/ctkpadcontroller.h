@@ -74,19 +74,19 @@ struct _CtkPadActionEntry {
   gchar *action_name;
 };
 
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 GType ctk_pad_controller_get_type           (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 CtkPadController *ctk_pad_controller_new    (CtkWindow        *window,
                                              GActionGroup     *group,
                                              CdkDevice        *pad);
 
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 void  ctk_pad_controller_set_action_entries (CtkPadController        *controller,
                                              const CtkPadActionEntry *entries,
                                              gint                     n_entries);
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 void  ctk_pad_controller_set_action         (CtkPadController *controller,
                                              CtkPadActionType  type,
                                              gint              index,

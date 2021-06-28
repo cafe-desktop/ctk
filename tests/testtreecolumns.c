@@ -865,34 +865,34 @@ main (int argc, char *argv[])
   
   /* Drag and Drop */
   ctk_tree_view_enable_model_drag_source (CTK_TREE_VIEW (left_tree_view),
-					  GDK_BUTTON1_MASK,
+					  CDK_BUTTON1_MASK,
 					  row_targets,
 					  G_N_ELEMENTS (row_targets),
-					  GDK_ACTION_MOVE);
+					  CDK_ACTION_MOVE);
   ctk_tree_view_enable_model_drag_dest (CTK_TREE_VIEW (left_tree_view),
 					row_targets,
 					G_N_ELEMENTS (row_targets),
-					GDK_ACTION_MOVE);
+					CDK_ACTION_MOVE);
 
   ctk_tree_view_enable_model_drag_source (CTK_TREE_VIEW (top_right_tree_view),
-					  GDK_BUTTON1_MASK,
+					  CDK_BUTTON1_MASK,
 					  row_targets,
 					  G_N_ELEMENTS (row_targets),
-					  GDK_ACTION_MOVE);
+					  CDK_ACTION_MOVE);
   ctk_tree_view_enable_model_drag_dest (CTK_TREE_VIEW (top_right_tree_view),
 					row_targets,
 					G_N_ELEMENTS (row_targets),
-					GDK_ACTION_MOVE);
+					CDK_ACTION_MOVE);
 
   ctk_tree_view_enable_model_drag_source (CTK_TREE_VIEW (bottom_right_tree_view),
-					  GDK_BUTTON1_MASK,
+					  CDK_BUTTON1_MASK,
 					  row_targets,
 					  G_N_ELEMENTS (row_targets),
-					  GDK_ACTION_MOVE);
+					  CDK_ACTION_MOVE);
   ctk_tree_view_enable_model_drag_dest (CTK_TREE_VIEW (bottom_right_tree_view),
 					row_targets,
 					G_N_ELEMENTS (row_targets),
-					GDK_ACTION_MOVE);
+					CDK_ACTION_MOVE);
 
 
   ctk_box_pack_start (CTK_BOX (vbox), ctk_separator_new (CTK_ORIENTATION_HORIZONTAL),

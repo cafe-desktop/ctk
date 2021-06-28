@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * cdkdisplay-broadway.c
  * 
  * Copyright 2001 Sun Microsystems Inc.
@@ -50,14 +50,14 @@ static void   cdk_broadway_display_finalize           (GObject            *objec
 #define DEBUG_WEBSOCKETS 1
 #endif
 
-G_DEFINE_TYPE (CdkBroadwayDisplay, cdk_broadway_display, GDK_TYPE_DISPLAY)
+G_DEFINE_TYPE (CdkBroadwayDisplay, cdk_broadway_display, CDK_TYPE_DISPLAY)
 
 static void
 cdk_broadway_display_init (CdkBroadwayDisplay *display)
 {
   display->id_ht = g_hash_table_new (NULL, NULL);
 
-  display->monitor = g_object_new (GDK_TYPE_BROADWAY_MONITOR,
+  display->monitor = g_object_new (CDK_TYPE_BROADWAY_MONITOR,
                                    "display", display,
                                    NULL);
   cdk_monitor_set_manufacturer (display->monitor, "browser");
@@ -69,7 +69,7 @@ cdk_event_init (CdkDisplay *display)
 {
   CdkBroadwayDisplay *broadway_display;
 
-  broadway_display = GDK_BROADWAY_DISPLAY (display);
+  broadway_display = CDK_BROADWAY_DISPLAY (display);
   broadway_display->event_source = _cdk_broadway_event_source_new (display);
 }
 
@@ -80,8 +80,8 @@ _cdk_broadway_display_open (const gchar *display_name)
   CdkBroadwayDisplay *broadway_display;
   GError *error = NULL;
 
-  display = g_object_new (GDK_TYPE_BROADWAY_DISPLAY, NULL);
-  broadway_display = GDK_BROADWAY_DISPLAY (display);
+  display = g_object_new (CDK_TYPE_BROADWAY_DISPLAY, NULL);
+  broadway_display = CDK_BROADWAY_DISPLAY (display);
 
   /* initialize the display's screens */
   broadway_display->screens = g_new (CdkScreen *, 1);
@@ -122,7 +122,7 @@ _cdk_broadway_display_open (const gchar *display_name)
 static const gchar *
 cdk_broadway_display_get_name (CdkDisplay *display)
 {
-  g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
+  g_return_val_if_fail (CDK_IS_DISPLAY (display), NULL);
 
   return (gchar *) "Broadway";
 }
@@ -130,23 +130,23 @@ cdk_broadway_display_get_name (CdkDisplay *display)
 static CdkScreen *
 cdk_broadway_display_get_default_screen (CdkDisplay *display)
 {
-  g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
+  g_return_val_if_fail (CDK_IS_DISPLAY (display), NULL);
 
-  return GDK_BROADWAY_DISPLAY (display)->default_screen;
+  return CDK_BROADWAY_DISPLAY (display)->default_screen;
 }
 
 static void
 cdk_broadway_display_beep (CdkDisplay *display)
 {
-  g_return_if_fail (GDK_IS_DISPLAY (display));
+  g_return_if_fail (CDK_IS_DISPLAY (display));
 }
 
 static void
 cdk_broadway_display_sync (CdkDisplay *display)
 {
-  CdkBroadwayDisplay *broadway_display = GDK_BROADWAY_DISPLAY (display);
+  CdkBroadwayDisplay *broadway_display = CDK_BROADWAY_DISPLAY (display);
 
-  g_return_if_fail (GDK_IS_BROADWAY_DISPLAY (display));
+  g_return_if_fail (CDK_IS_BROADWAY_DISPLAY (display));
 
   _cdk_broadway_server_sync (broadway_display->server);
 }
@@ -154,9 +154,9 @@ cdk_broadway_display_sync (CdkDisplay *display)
 static void
 cdk_broadway_display_flush (CdkDisplay *display)
 {
-  CdkBroadwayDisplay *broadway_display = GDK_BROADWAY_DISPLAY (display);
+  CdkBroadwayDisplay *broadway_display = CDK_BROADWAY_DISPLAY (display);
 
-  g_return_if_fail (GDK_IS_BROADWAY_DISPLAY (display));
+  g_return_if_fail (CDK_IS_BROADWAY_DISPLAY (display));
 
   _cdk_broadway_server_flush (broadway_display->server);
 }
@@ -170,7 +170,7 @@ cdk_broadway_display_has_pending (CdkDisplay *display)
 static CdkWindow *
 cdk_broadway_display_get_default_group (CdkDisplay *display)
 {
-  g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
+  g_return_val_if_fail (CDK_IS_DISPLAY (display), NULL);
 
   return NULL;
 }
@@ -178,7 +178,7 @@ cdk_broadway_display_get_default_group (CdkDisplay *display)
 static void
 cdk_broadway_display_dispose (GObject *object)
 {
-  CdkBroadwayDisplay *broadway_display = GDK_BROADWAY_DISPLAY (object);
+  CdkBroadwayDisplay *broadway_display = CDK_BROADWAY_DISPLAY (object);
 
   _cdk_screen_close (broadway_display->screens[0]);
 
@@ -195,13 +195,13 @@ cdk_broadway_display_dispose (GObject *object)
 static void
 cdk_broadway_display_finalize (GObject *object)
 {
-  CdkBroadwayDisplay *broadway_display = GDK_BROADWAY_DISPLAY (object);
+  CdkBroadwayDisplay *broadway_display = CDK_BROADWAY_DISPLAY (object);
 
   /* Keymap */
   if (broadway_display->keymap)
     g_object_unref (broadway_display->keymap);
 
-  _cdk_broadway_cursor_display_finalize (GDK_DISPLAY_OBJECT(broadway_display));
+  _cdk_broadway_cursor_display_finalize (CDK_DISPLAY_OBJECT(broadway_display));
 
   /* Free all CdkScreens */
   g_object_unref (broadway_display->screens[0]);
@@ -269,7 +269,7 @@ static gulong
 cdk_broadway_display_get_next_serial (CdkDisplay *display)
 {
   CdkBroadwayDisplay *broadway_display;
-  broadway_display = GDK_BROADWAY_DISPLAY (display);
+  broadway_display = CDK_BROADWAY_DISPLAY (display);
 
   return _cdk_broadway_server_get_next_serial (broadway_display->server);
 }
@@ -277,7 +277,7 @@ cdk_broadway_display_get_next_serial (CdkDisplay *display)
 void
 cdk_broadway_display_show_keyboard (CdkBroadwayDisplay *display)
 {
-  g_return_if_fail (GDK_IS_BROADWAY_DISPLAY (display));
+  g_return_if_fail (CDK_IS_BROADWAY_DISPLAY (display));
 
   _cdk_broadway_server_set_show_keyboard (display->server, TRUE);
 }
@@ -285,7 +285,7 @@ cdk_broadway_display_show_keyboard (CdkBroadwayDisplay *display)
 void
 cdk_broadway_display_hide_keyboard (CdkBroadwayDisplay *display)
 {
-  g_return_if_fail (GDK_IS_BROADWAY_DISPLAY (display));
+  g_return_if_fail (CDK_IS_BROADWAY_DISPLAY (display));
 
   _cdk_broadway_server_set_show_keyboard (display->server, FALSE);
 }
@@ -300,7 +300,7 @@ static CdkMonitor *
 cdk_broadway_display_get_monitor (CdkDisplay *display,
                                   int         monitor_num)
 {
-  CdkBroadwayDisplay *broadway_display = GDK_BROADWAY_DISPLAY (display);
+  CdkBroadwayDisplay *broadway_display = CDK_BROADWAY_DISPLAY (display);
 
   if (monitor_num == 0)
     return broadway_display->monitor;
@@ -311,7 +311,7 @@ cdk_broadway_display_get_monitor (CdkDisplay *display,
 static CdkMonitor *
 cdk_broadway_display_get_primary_monitor (CdkDisplay *display)
 {
-  CdkBroadwayDisplay *broadway_display = GDK_BROADWAY_DISPLAY (display);
+  CdkBroadwayDisplay *broadway_display = CDK_BROADWAY_DISPLAY (display);
 
   return broadway_display->monitor;
 }
@@ -320,12 +320,12 @@ static void
 cdk_broadway_display_class_init (CdkBroadwayDisplayClass * class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
-  CdkDisplayClass *display_class = GDK_DISPLAY_CLASS (class);
+  CdkDisplayClass *display_class = CDK_DISPLAY_CLASS (class);
 
   object_class->dispose = cdk_broadway_display_dispose;
   object_class->finalize = cdk_broadway_display_finalize;
 
-  display_class->window_type = GDK_TYPE_BROADWAY_WINDOW;
+  display_class->window_type = CDK_TYPE_BROADWAY_WINDOW;
 
   display_class->get_name = cdk_broadway_display_get_name;
   display_class->get_default_screen = cdk_broadway_display_get_default_screen;

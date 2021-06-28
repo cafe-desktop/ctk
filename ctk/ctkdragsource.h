@@ -37,38 +37,38 @@
 
 G_BEGIN_DECLS
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_drag_source_set  (CtkWidget            *widget,
 			   CdkModifierType       start_button_mask,
 			   const CtkTargetEntry *targets,
 			   gint                  n_targets,
 			   CdkDragAction         actions);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_drag_source_unset (CtkWidget        *widget);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTargetList* ctk_drag_source_get_target_list (CtkWidget     *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_drag_source_set_target_list (CtkWidget     *widget,
                                                 CtkTargetList *target_list);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_drag_source_add_text_targets  (CtkWidget     *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_drag_source_add_image_targets (CtkWidget    *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_drag_source_add_uri_targets   (CtkWidget    *widget);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_drag_source_set_icon_pixbuf  (CtkWidget       *widget,
 				       CdkPixbuf       *pixbuf);
-GDK_DEPRECATED_IN_3_10_FOR(ctk_drag_source_set_icon_name)
+CDK_DEPRECATED_IN_3_10_FOR(ctk_drag_source_set_icon_name)
 void ctk_drag_source_set_icon_stock   (CtkWidget       *widget,
 				       const gchar     *stock_id);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_drag_source_set_icon_name    (CtkWidget       *widget,
 				       const gchar     *icon_name);
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 void ctk_drag_source_set_icon_gicon   (CtkWidget       *widget,
 				       GIcon           *icon);
 

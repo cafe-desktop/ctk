@@ -39,10 +39,10 @@
 
 G_BEGIN_DECLS
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_hsv_to_rgb (gdouble  h, gdouble  s, gdouble  v,
                      gdouble *r, gdouble *g, gdouble *b);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_rgb_to_hsv (gdouble  r, gdouble  g, gdouble  b,
                      gdouble *h, gdouble *s, gdouble *v);
 

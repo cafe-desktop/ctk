@@ -90,41 +90,41 @@ struct _CtkCellAreaContextClass
   void (*_ctk_reserved6) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType        ctk_cell_area_context_get_type              (void) G_GNUC_CONST;
 
 /* Main apis */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkCellArea *ctk_cell_area_context_get_area                        (CtkCellAreaContext *context);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void         ctk_cell_area_context_allocate                        (CtkCellAreaContext *context,
                                                                     gint                width,
                                                                     gint                height);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void         ctk_cell_area_context_reset                           (CtkCellAreaContext *context);
 
 /* Apis for CtkCellArea clients to consult cached values
  * for a series of CtkTreeModel rows
  */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void         ctk_cell_area_context_get_preferred_width            (CtkCellAreaContext *context,
                                                                    gint               *minimum_width,
                                                                    gint               *natural_width);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void         ctk_cell_area_context_get_preferred_height           (CtkCellAreaContext *context,
                                                                    gint               *minimum_height,
                                                                    gint               *natural_height);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void         ctk_cell_area_context_get_preferred_height_for_width (CtkCellAreaContext *context,
                                                                    gint                width,
                                                                    gint               *minimum_height,
                                                                    gint               *natural_height);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void         ctk_cell_area_context_get_preferred_width_for_height (CtkCellAreaContext *context,
                                                                    gint                height,
                                                                    gint               *minimum_width,
                                                                    gint               *natural_width);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void         ctk_cell_area_context_get_allocation                 (CtkCellAreaContext *context,
                                                                    gint               *width,
                                                                    gint               *height);
@@ -132,11 +132,11 @@ void         ctk_cell_area_context_get_allocation                 (CtkCellAreaCo
 /* Apis for CtkCellArea implementations to update cached values
  * for multiple CtkTreeModel rows
  */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void         ctk_cell_area_context_push_preferred_width  (CtkCellAreaContext *context,
                                                           gint                minimum_width,
                                                           gint                natural_width);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void         ctk_cell_area_context_push_preferred_height (CtkCellAreaContext *context,
                                                           gint                minimum_height,
                                                           gint                natural_height);

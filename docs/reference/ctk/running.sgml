@@ -27,7 +27,7 @@ All CTK+ applications support a number of standard commandline
 options. These are removed from <literal>argv</literal> by ctk_init().
 Modules may parse and remove further options. The
 <link linkend="x11-cmdline">X11</link> and
-<link linkend="win32-cmdline">Windows</link> GDK backends parse
+<link linkend="win32-cmdline">Windows</link> CDK backends parse
 some additional commandline options.
 </para>
 
@@ -74,7 +74,7 @@ to turn off. This option is only available if CTK+ has been configured with
 </formalpara>
 
 <para>
-The following options are really used by GDK, not by CTK+, but we
+The following options are really used by CDK, not by CTK+, but we
 list them here for completeness nevertheless.
 </para>
 
@@ -98,8 +98,8 @@ Sets the program name.
 <title><systemitem>--cdk-debug <replaceable>options</replaceable></systemitem></title>
 
 <para>
-A list of <link linkend="GDK-Debug-Options">debug options</link>
-to turn on in addition to those specified in the <envar>GDK_DEBUG</envar>
+A list of <link linkend="CDK-Debug-Options">debug options</link>
+to turn on in addition to those specified in the <envar>CDK_DEBUG</envar>
 environment variable. This option is only available if CTK+ has been
 configured with <option>--enable-debug=yes</option>.
 </para>
@@ -109,7 +109,7 @@ configured with <option>--enable-debug=yes</option>.
 <title><systemitem>--cdk-no-debug <replaceable>options</replaceable></systemitem></title>
 
 <para>
-A list of <link linkend="GDK-Debug-Options">debug options</link>
+A list of <link linkend="CDK-Debug-Options">debug options</link>
 to turn off. This option is only available if CTK+ has been configured with
 <option>--enable-debug=yes</option>.
 </para>
@@ -126,7 +126,7 @@ variables like <envar>LANG</envar>, <envar>PATH</envar>, <envar>HOME</envar>
 or <envar>DISPLAY</envar>; mostly to determine paths to look for certain
 files. The <link linkend="x11-envar">X11</link>,
 <link linkend="win32-envar">Windows</link> and
-<link linkend="broadway-envar">Broadway</link> GDK backends use some
+<link linkend="broadway-envar">Broadway</link> CDK backends use some
 additional environment variables.
 </para>
 
@@ -367,13 +367,13 @@ additional environment variables.
 </formalpara>
 
 <para>
-The following environment variables are used by CdkPixbuf, GDK or
+The following environment variables are used by CdkPixbuf, CDK or
 Pango, not by CTK+ itself, but we list them here for completeness
 nevertheless.
 </para>
 
 <formalpara>
-  <title><envar>GDK_PIXBUF_MODULE_FILE</envar></title>
+  <title><envar>CDK_PIXBUF_MODULE_FILE</envar></title>
 
   <para>
     Specifies the file listing the CdkPixbuf loader modules to load.
@@ -388,12 +388,12 @@ nevertheless.
   </para>
  </formalpara>
 
-<formalpara id="GDK-Debug-Options">
-  <title><envar>GDK_DEBUG</envar></title>
+<formalpara id="CDK-Debug-Options">
+  <title><envar>CDK_DEBUG</envar></title>
 
   <para>
   If CTK+ has been configured with <option>--enable-debug=yes</option>,
-  this variable can be set to a list of debug options, which cause GDK
+  this variable can be set to a list of debug options, which cause CDK
   to print out different types of debugging information.
   <variablelist>
     <varlistentry>
@@ -418,7 +418,7 @@ nevertheless.
     </varlistentry>
     <varlistentry>
       <term>nogl</term>
-      <listitem><para>Turn off OpenGL. GDK will behave as if OpenGL support was not available.</para></listitem>
+      <listitem><para>Turn off OpenGL. CDK will behave as if OpenGL support was not available.</para></listitem>
     </varlistentry>
     <varlistentry>
       <term>nograbs</term>
@@ -440,12 +440,12 @@ nevertheless.
 </formalpara>
 
 <formalpara>
-  <title><envar>GDK_RENDERING</envar></title>
+  <title><envar>CDK_RENDERING</envar></title>
 
   <para>
-    If set, selects the way how GDK creates similar surfaces. This affects both the
+    If set, selects the way how CDK creates similar surfaces. This affects both the
     functionality of the function cdk_window_create_similar_surface() as well as the
-    way GDK creates backing surfaces for double buffering. The following values can
+    way CDK creates backing surfaces for double buffering. The following values can
     be used:
     <variablelist>
 
@@ -475,12 +475,12 @@ nevertheless.
 </formalpara>
 
 <formalpara>
-  <title><envar>GDK_BACKEND</envar></title>
+  <title><envar>CDK_BACKEND</envar></title>
 
   <para>
-    If set, selects the GDK backend to use. Selecting a backend requires that
+    If set, selects the CDK backend to use. Selecting a backend requires that
     CTK+ is compiled with support for that backend. The following backends can
-    be selected, provided they are included in the GDK libraries you are using:
+    be selected, provided they are included in the CDK libraries you are using:
     <variablelist>
 
       <varlistentry>
@@ -512,7 +512,7 @@ nevertheless.
     Since 3.10, this environment variable can contain a comma-separated list
     of backend names, which are tried in order. The list may also contain
     a *, which means: try all remaining backends. The special value "help" can
-    be used to make GDK print out a list of all available backends.
+    be used to make CDK print out a list of all available backends.
     For more information about selecting backends, see the cdk_display_manager_get() function.
   </para>
 </formalpara>

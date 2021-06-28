@@ -8,16 +8,16 @@ libcdkbroadwayincludedir = $(includedir)/ctk-3.0/cdk/broadway
 AM_CPPFLAGS =				\
 	-DG_LOG_DOMAIN=\"Cdk\"		\
 	-DG_LOG_USE_STRUCTURED=1	\
-	-DGDK_COMPILATION		\
-	-DGDK_DISABLE_DEPRECATION_WARNINGS \
+	-DCDK_COMPILATION		\
+	-DCDK_DISABLE_DEPRECATION_WARNINGS \
 	-I$(top_srcdir)			\
 	-I$(top_srcdir)/cdk		\
 	-I$(top_builddir)/cdk		\
-	$(GDK_HIDDEN_VISIBILITY_CFLAGS) \
+	$(CDK_HIDDEN_VISIBILITY_CFLAGS) \
 	$(CTK_DEBUG_FLAGS)		\
-	$(GDK_DEP_CFLAGS)
+	$(CDK_DEP_CFLAGS)
 
-LDADDS = $(GDK_DEP_LIBS) -lrt
+LDADDS = $(CDK_DEP_LIBS) -lrt
 
 noinst_LTLIBRARIES = libcdk-broadway.la
 
@@ -98,9 +98,9 @@ broadwayd_SOURCES = \
 	broadway-output.c
 
 if OS_WIN32
-broadwayd_LDADD = $(GDK_DEP_LIBS) -lws2_32
+broadwayd_LDADD = $(CDK_DEP_LIBS) -lws2_32
 else
-broadwayd_LDADD = $(GDK_DEP_LIBS) @SHM_LIBS@
+broadwayd_LDADD = $(CDK_DEP_LIBS) @SHM_LIBS@
 endif
 
 MAINTAINERCLEANFILES = $(broadway_built_sources)

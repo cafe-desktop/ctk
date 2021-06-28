@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -22,10 +22,10 @@
  * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
-/* Uninstalled header defining types and functions internal to GDK */
+/* Uninstalled header defining types and functions internal to CDK */
 
-#ifndef __GDK_INTERNALS_H__
-#define __GDK_INTERNALS_H__
+#ifndef __CDK_INTERNALS_H__
+#define __CDK_INTERNALS_H__
 
 #include <gio/gio.h>
 #include "cdkwindowimpl.h"
@@ -45,7 +45,7 @@ typedef struct _CdkEventFilter         CdkEventFilter;
 typedef struct _CdkClientFilter        CdkClientFilter;
 
 typedef enum {
-  GDK_COLOR_WRITEABLE = 1 << 0
+  CDK_COLOR_WRITEABLE = 1 << 0
 } CdkColorInfoFlags;
 
 struct _CdkColorInfo
@@ -55,7 +55,7 @@ struct _CdkColorInfo
 };
 
 typedef enum {
-  GDK_EVENT_FILTER_REMOVED = 1 << 0
+  CDK_EVENT_FILTER_REMOVED = 1 << 0
 } CdkEventFilterFlags;
 
 struct _CdkEventFilter {
@@ -72,36 +72,36 @@ struct _CdkClientFilter {
 };
 
 typedef enum {
-  GDK_DEBUG_MISC          = 1 <<  0,
-  GDK_DEBUG_EVENTS        = 1 <<  1,
-  GDK_DEBUG_DND           = 1 <<  2,
-  GDK_DEBUG_XIM           = 1 <<  3,
-  GDK_DEBUG_NOGRABS       = 1 <<  4,
-  GDK_DEBUG_INPUT         = 1 <<  5,
-  GDK_DEBUG_CURSOR        = 1 <<  6,
-  GDK_DEBUG_MULTIHEAD     = 1 <<  7,
-  GDK_DEBUG_XINERAMA      = 1 <<  8,
-  GDK_DEBUG_DRAW          = 1 <<  9,
-  GDK_DEBUG_EVENTLOOP     = 1 << 10,
-  GDK_DEBUG_FRAMES        = 1 << 11,
-  GDK_DEBUG_SETTINGS      = 1 << 12,
-  GDK_DEBUG_OPENGL        = 1 << 13,
+  CDK_DEBUG_MISC          = 1 <<  0,
+  CDK_DEBUG_EVENTS        = 1 <<  1,
+  CDK_DEBUG_DND           = 1 <<  2,
+  CDK_DEBUG_XIM           = 1 <<  3,
+  CDK_DEBUG_NOGRABS       = 1 <<  4,
+  CDK_DEBUG_INPUT         = 1 <<  5,
+  CDK_DEBUG_CURSOR        = 1 <<  6,
+  CDK_DEBUG_MULTIHEAD     = 1 <<  7,
+  CDK_DEBUG_XINERAMA      = 1 <<  8,
+  CDK_DEBUG_DRAW          = 1 <<  9,
+  CDK_DEBUG_EVENTLOOP     = 1 << 10,
+  CDK_DEBUG_FRAMES        = 1 << 11,
+  CDK_DEBUG_SETTINGS      = 1 << 12,
+  CDK_DEBUG_OPENGL        = 1 << 13,
 } CdkDebugFlag;
 
 typedef enum {
-  GDK_RENDERING_MODE_SIMILAR = 0,
-  GDK_RENDERING_MODE_IMAGE,
-  GDK_RENDERING_MODE_RECORDING
+  CDK_RENDERING_MODE_SIMILAR = 0,
+  CDK_RENDERING_MODE_IMAGE,
+  CDK_RENDERING_MODE_RECORDING
 } CdkRenderingMode;
 
 typedef enum {
-  GDK_GL_DISABLE                = 1 << 0,
-  GDK_GL_ALWAYS                 = 1 << 1,
-  GDK_GL_SOFTWARE_DRAW_GL       = 1 << 2,
-  GDK_GL_SOFTWARE_DRAW_SURFACE  = 1 << 3,
-  GDK_GL_TEXTURE_RECTANGLE      = 1 << 4,
-  GDK_GL_LEGACY                 = 1 << 5,
-  GDK_GL_GLES                   = 1 << 6
+  CDK_GL_DISABLE                = 1 << 0,
+  CDK_GL_ALWAYS                 = 1 << 1,
+  CDK_GL_SOFTWARE_DRAW_GL       = 1 << 2,
+  CDK_GL_SOFTWARE_DRAW_SURFACE  = 1 << 3,
+  CDK_GL_TEXTURE_RECTANGLE      = 1 << 4,
+  CDK_GL_LEGACY                 = 1 << 5,
+  CDK_GL_GLES                   = 1 << 6
 } CdkGLFlags;
 
 extern GList            *_cdk_default_filters;
@@ -114,16 +114,16 @@ extern gboolean _cdk_debug_updates;
 
 #ifdef G_ENABLE_DEBUG
 
-#define GDK_DEBUG_CHECK(type) G_UNLIKELY (_cdk_debug_flags & GDK_DEBUG_##type)
+#define CDK_DEBUG_CHECK(type) G_UNLIKELY (_cdk_debug_flags & CDK_DEBUG_##type)
 
-#define GDK_NOTE(type,action)                G_STMT_START {     \
-    if (GDK_DEBUG_CHECK (type))                                 \
+#define CDK_NOTE(type,action)                G_STMT_START {     \
+    if (CDK_DEBUG_CHECK (type))                                 \
        { action; };                          } G_STMT_END
 
 #else /* !G_ENABLE_DEBUG */
 
-#define GDK_DEBUG_CHECK(type) 0
-#define GDK_NOTE(type,action)
+#define CDK_DEBUG_CHECK(type) 0
+#define CDK_NOTE(type,action)
 
 #endif /* G_ENABLE_DEBUG */
 
@@ -131,11 +131,11 @@ extern gboolean _cdk_debug_updates;
 
 typedef enum 
 {
-  GDK_ARG_STRING,
-  GDK_ARG_INT,
-  GDK_ARG_BOOL,
-  GDK_ARG_NOBOOL,
-  GDK_ARG_CALLBACK
+  CDK_ARG_STRING,
+  CDK_ARG_INT,
+  CDK_ARG_BOOL,
+  CDK_ARG_NOBOOL,
+  CDK_ARG_CALLBACK
 } CdkArgType;
 
 typedef struct _CdkArgContext CdkArgContext;
@@ -166,19 +166,19 @@ typedef enum
   /* Following flag is set for events on the event queue during
    * translation and cleared afterwards.
    */
-  GDK_EVENT_PENDING = 1 << 0,
+  CDK_EVENT_PENDING = 1 << 0,
 
   /* The following flag is set for:
    * 1) touch events emulating pointer events
    * 2) pointer events being emulated by a touch sequence.
    */
-  GDK_EVENT_POINTER_EMULATED = 1 << 1,
+  CDK_EVENT_POINTER_EMULATED = 1 << 1,
 
   /* When we are ready to draw a frame, we pause event delivery,
    * mark all events in the queue with this flag, and deliver
    * only those events until we finish the frame.
    */
-  GDK_EVENT_FLUSHED = 1 << 2
+  CDK_EVENT_FLUSHED = 1 << 2
 } CdkEventFlags;
 
 struct _CdkEventPrivate
@@ -193,7 +193,7 @@ struct _CdkEventPrivate
   CdkDeviceTool *tool;
   guint16    key_scancode;
 
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
   gunichar2 *translation;
   guint      translation_len;
 #endif
@@ -396,8 +396,8 @@ struct _CdkWindow
   cairo_region_t *opaque_region;
 };
 
-#define GDK_WINDOW_TYPE(d) ((((CdkWindow *)(d)))->window_type)
-#define GDK_WINDOW_DESTROYED(d) (((CdkWindow *)(d))->destroyed)
+#define CDK_WINDOW_TYPE(d) ((((CdkWindow *)(d)))->window_type)
+#define CDK_WINDOW_DESTROYED(d) (((CdkWindow *)(d))->destroyed)
 
 extern gchar     *_cdk_display_name;
 extern gint       _cdk_screen_number;
@@ -419,7 +419,7 @@ void     cdk_event_set_seat              (CdkEvent *event,
                                           CdkSeat  *seat);
 
 /* The IME IM module needs this symbol exported. */
-_GDK_EXTERN
+_CDK_EXTERN
 gboolean cdk_event_is_allocated      (const CdkEvent *event);
 
 void   _cdk_event_emit               (CdkEvent   *event);
@@ -515,7 +515,7 @@ void _cdk_windowing_got_event                (CdkDisplay       *display,
                                               CdkEvent         *event,
                                               gulong            serial);
 
-#define GDK_WINDOW_IS_MAPPED(window) (((window)->state & GDK_WINDOW_STATE_WITHDRAWN) == 0)
+#define CDK_WINDOW_IS_MAPPED(window) (((window)->state & CDK_WINDOW_STATE_WITHDRAWN) == 0)
 
 void _cdk_window_invalidate_for_expose (CdkWindow       *window,
                                         cairo_region_t       *region);
@@ -572,4 +572,4 @@ PangoDirection cdk_unichar_direction (gunichar ch);
 
 G_END_DECLS
 
-#endif /* __GDK_INTERNALS_H__ */
+#endif /* __CDK_INTERNALS_H__ */

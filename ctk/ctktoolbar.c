@@ -363,7 +363,7 @@ add_arrow_bindings (CtkBindingSet   *binding_set,
 		    guint            keysym,
 		    CtkDirectionType dir)
 {
-  guint keypad_keysym = keysym - GDK_KEY_Left + GDK_KEY_KP_Left;
+  guint keypad_keysym = keysym - CDK_KEY_Left + CDK_KEY_KP_Left;
   
   ctk_binding_entry_add_signal (binding_set, keysym, 0,
                                 "move-focus", 1,
@@ -379,11 +379,11 @@ add_ctrl_tab_bindings (CtkBindingSet    *binding_set,
 		       CtkDirectionType  direction)
 {
   ctk_binding_entry_add_signal (binding_set,
-				GDK_KEY_Tab, GDK_CONTROL_MASK | modifiers,
+				CDK_KEY_Tab, CDK_CONTROL_MASK | modifiers,
 				"move-focus", 1,
 				CTK_TYPE_DIRECTION_TYPE, direction);
   ctk_binding_entry_add_signal (binding_set,
-				GDK_KEY_KP_Tab, GDK_CONTROL_MASK | modifiers,
+				CDK_KEY_KP_Tab, CDK_CONTROL_MASK | modifiers,
 				"move-focus", 1,
 				CTK_TYPE_DIRECTION_TYPE, direction);
 }
@@ -685,26 +685,26 @@ ctk_toolbar_class_init (CtkToolbarClass *klass)
 
   binding_set = ctk_binding_set_by_class (klass);
   
-  add_arrow_bindings (binding_set, GDK_KEY_Left, CTK_DIR_LEFT);
-  add_arrow_bindings (binding_set, GDK_KEY_Right, CTK_DIR_RIGHT);
-  add_arrow_bindings (binding_set, GDK_KEY_Up, CTK_DIR_UP);
-  add_arrow_bindings (binding_set, GDK_KEY_Down, CTK_DIR_DOWN);
+  add_arrow_bindings (binding_set, CDK_KEY_Left, CTK_DIR_LEFT);
+  add_arrow_bindings (binding_set, CDK_KEY_Right, CTK_DIR_RIGHT);
+  add_arrow_bindings (binding_set, CDK_KEY_Up, CTK_DIR_UP);
+  add_arrow_bindings (binding_set, CDK_KEY_Down, CTK_DIR_DOWN);
   
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Home, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Home, 0,
                                 "focus-home-or-end", 1,
 				G_TYPE_BOOLEAN, TRUE);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Home, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Home, 0,
                                 "focus-home-or-end", 1,
 				G_TYPE_BOOLEAN, TRUE);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_End, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_End, 0,
                                 "focus-home-or-end", 1,
 				G_TYPE_BOOLEAN, FALSE);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_End, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_End, 0,
                                 "focus-home-or-end", 1,
 				G_TYPE_BOOLEAN, FALSE);
   
   add_ctrl_tab_bindings (binding_set, 0, CTK_DIR_TAB_FORWARD);
-  add_ctrl_tab_bindings (binding_set, GDK_SHIFT_MASK, CTK_DIR_TAB_BACKWARD);
+  add_ctrl_tab_bindings (binding_set, CDK_SHIFT_MASK, CTK_DIR_TAB_BACKWARD);
 
   ctk_widget_class_set_css_name (widget_class, "toolbar");
 }
@@ -881,20 +881,20 @@ ctk_toolbar_realize (CtkWidget *widget)
 
   ctk_widget_get_allocation (widget, &allocation);
 
-  attributes.wclass = GDK_INPUT_ONLY;
-  attributes.window_type = GDK_WINDOW_CHILD;
+  attributes.wclass = CDK_INPUT_ONLY;
+  attributes.window_type = CDK_WINDOW_CHILD;
   attributes.x = allocation.x;
   attributes.y = allocation.y;
   attributes.width = allocation.width;
   attributes.height = allocation.height;
   attributes.event_mask = ctk_widget_get_events (widget);
-  attributes.event_mask |= (GDK_BUTTON_PRESS_MASK |
-			    GDK_BUTTON_RELEASE_MASK |
-			    GDK_POINTER_MOTION_MASK |
-			    GDK_ENTER_NOTIFY_MASK |
-			    GDK_LEAVE_NOTIFY_MASK);
+  attributes.event_mask |= (CDK_BUTTON_PRESS_MASK |
+			    CDK_BUTTON_RELEASE_MASK |
+			    CDK_POINTER_MOTION_MASK |
+			    CDK_ENTER_NOTIFY_MASK |
+			    CDK_LEAVE_NOTIFY_MASK);
 
-  attributes_mask = GDK_WA_X | GDK_WA_Y;
+  attributes_mask = CDK_WA_X | CDK_WA_Y;
 
   window = ctk_widget_get_parent_window (widget);
   ctk_widget_set_window (widget, window);
@@ -2639,32 +2639,32 @@ show_menu (CtkToolbar     *toolbar,
       ctk_widget_get_preferred_size (priv->arrow_button, &minimum_size, NULL);
 
       g_object_set (priv->menu,
-                    "anchor-hints", (GDK_ANCHOR_FLIP_Y |
-                                     GDK_ANCHOR_SLIDE |
-                                     GDK_ANCHOR_RESIZE),
-                    "menu-type-hint", GDK_WINDOW_TYPE_HINT_DROPDOWN_MENU,
+                    "anchor-hints", (CDK_ANCHOR_FLIP_Y |
+                                     CDK_ANCHOR_SLIDE |
+                                     CDK_ANCHOR_RESIZE),
+                    "menu-type-hint", CDK_WINDOW_TYPE_HINT_DROPDOWN_MENU,
                     "rect-anchor-dx", -minimum_size.width,
                     NULL);
 
       ctk_menu_popup_at_widget (priv->menu,
                                 priv->arrow_button,
-                                GDK_GRAVITY_SOUTH_EAST,
-                                GDK_GRAVITY_NORTH_WEST,
+                                CDK_GRAVITY_SOUTH_EAST,
+                                CDK_GRAVITY_NORTH_WEST,
                                 (CdkEvent *) event);
 
       break;
 
     case CTK_ORIENTATION_VERTICAL:
       g_object_set (priv->menu,
-                    "anchor-hints", (GDK_ANCHOR_FLIP_X |
-                                     GDK_ANCHOR_SLIDE |
-                                     GDK_ANCHOR_RESIZE),
+                    "anchor-hints", (CDK_ANCHOR_FLIP_X |
+                                     CDK_ANCHOR_SLIDE |
+                                     CDK_ANCHOR_RESIZE),
                     NULL);
 
       ctk_menu_popup_at_widget (priv->menu,
                                 priv->arrow_button,
-                                GDK_GRAVITY_NORTH_EAST,
-                                GDK_GRAVITY_NORTH_WEST,
+                                CDK_GRAVITY_NORTH_EAST,
+                                CDK_GRAVITY_NORTH_WEST,
                                 (CdkEvent *) event);
 
       break;

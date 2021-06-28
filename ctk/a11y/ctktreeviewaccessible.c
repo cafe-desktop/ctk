@@ -18,7 +18,7 @@
 #include "config.h"
 
 #include <ctk/ctk.h>
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
 #include <cdk/x11/cdkx.h>
 #endif
 
@@ -1173,8 +1173,8 @@ ctk_tree_view_accessible_grab_cell_focus (CtkCellAccessibleParent *parent,
       toplevel = ctk_widget_get_toplevel (widget);
       if (ctk_widget_is_toplevel (toplevel))
         {
-#ifdef GDK_WINDOWING_X11
-          if (GDK_IS_X11_DISPLAY (ctk_widget_get_display (toplevel)))
+#ifdef CDK_WINDOWING_X11
+          if (CDK_IS_X11_DISPLAY (ctk_widget_get_display (toplevel)))
             ctk_window_present_with_time (CTK_WINDOW (toplevel),
                                           cdk_x11_get_server_time (ctk_widget_get_window (widget)));
           else

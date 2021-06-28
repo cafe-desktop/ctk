@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2000 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -32,25 +32,25 @@
 #include "cdkmarshalers.h"
 #include "cdkintl.h"
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
 #include "x11/cdkx.h"
 #include "x11/cdkprivate-x11.h"
 #endif
 
-#ifdef GDK_WINDOWING_QUARTZ
+#ifdef CDK_WINDOWING_QUARTZ
 #include "quartz/cdkprivate-quartz.h"
 #endif
 
-#ifdef GDK_WINDOWING_BROADWAY
+#ifdef CDK_WINDOWING_BROADWAY
 #include "broadway/cdkprivate-broadway.h"
 #endif
 
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
 #include "win32/cdkwin32.h"
 #include "win32/cdkprivate-win32.h"
 #endif
 
-#ifdef GDK_WINDOWING_WAYLAND
+#ifdef CDK_WINDOWING_WAYLAND
 #include "wayland/cdkprivate-wayland.h"
 #endif
 
@@ -68,35 +68,35 @@
  * CTK+ opens a display that you can work with without ever accessing the
  * #CdkDisplayManager.
  *
- * The GDK library can be built with support for multiple backends.
+ * The CDK library can be built with support for multiple backends.
  * The #CdkDisplayManager object determines which backend is used
  * at runtime.
  *
  * When writing backend-specific code that is supposed to work with
- * multiple GDK backends, you have to consider both compile time and
- * runtime. At compile time, use the #GDK_WINDOWING_X11, #GDK_WINDOWING_WIN32
- * macros, etc. to find out which backends are present in the GDK library
+ * multiple CDK backends, you have to consider both compile time and
+ * runtime. At compile time, use the #CDK_WINDOWING_X11, #CDK_WINDOWING_WIN32
+ * macros, etc. to find out which backends are present in the CDK library
  * you are building your application against. At runtime, use type-check
- * macros like GDK_IS_X11_DISPLAY() to find out which backend is in use:
+ * macros like CDK_IS_X11_DISPLAY() to find out which backend is in use:
  *
  * ## Backend-specific code ## {#backend-specific}
  *
  * |[<!-- language="C" -->
- * #ifdef GDK_WINDOWING_X11
- *   if (GDK_IS_X11_DISPLAY (display))
+ * #ifdef CDK_WINDOWING_X11
+ *   if (CDK_IS_X11_DISPLAY (display))
  *     {
  *       // make X11-specific calls here
  *     }
  *   else
  * #endif
- * #ifdef GDK_WINDOWING_QUARTZ
- *   if (GDK_IS_QUARTZ_DISPLAY (display))
+ * #ifdef CDK_WINDOWING_QUARTZ
+ *   if (CDK_IS_QUARTZ_DISPLAY (display))
  *     {
  *       // make Quartz-specific calls here
 *     }
  *   else
  * #endif
- *   g_error ("Unsupported GDK backend");
+ *   g_error ("Unsupported CDK backend");
  * ]|
  */
 
@@ -151,7 +151,7 @@ cdk_display_manager_class_init (CdkDisplayManagerClass *klass)
                   _cdk_marshal_VOID__OBJECT,
                   G_TYPE_NONE,
                   1,
-                  GDK_TYPE_DISPLAY);
+                  CDK_TYPE_DISPLAY);
   g_signal_set_va_marshaller (signals[DISPLAY_OPENED],
                               G_TYPE_FROM_CLASS (klass),
                               _cdk_marshal_VOID__OBJECTv);
@@ -160,8 +160,8 @@ cdk_display_manager_class_init (CdkDisplayManagerClass *klass)
                                    PROP_DEFAULT_DISPLAY,
                                    g_param_spec_object ("default-display",
                                                         P_("Default Display"),
-                                                        P_("The default display for GDK"),
-                                                        GDK_TYPE_DISPLAY,
+                                                        P_("The default display for CDK"),
+                                                        CDK_TYPE_DISPLAY,
                                                         G_PARAM_READWRITE|G_PARAM_STATIC_NAME|
                                                         G_PARAM_STATIC_NICK|G_PARAM_STATIC_BLURB));
 }
@@ -180,7 +180,7 @@ cdk_display_manager_set_property (GObject      *object,
   switch (prop_id)
     {
     case PROP_DEFAULT_DISPLAY:
-      cdk_display_manager_set_default_display (GDK_DISPLAY_MANAGER (object),
+      cdk_display_manager_set_default_display (CDK_DISPLAY_MANAGER (object),
                                                g_value_get_object (value));
       break;
     default:
@@ -199,7 +199,7 @@ cdk_display_manager_get_property (GObject      *object,
     {
     case PROP_DEFAULT_DISPLAY:
       g_value_set_object (value,
-                          cdk_display_manager_get_default_display (GDK_DISPLAY_MANAGER (object)));
+                          cdk_display_manager_get_default_display (CDK_DISPLAY_MANAGER (object)));
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -213,22 +213,22 @@ static const gchar *allowed_backends;
  * cdk_set_allowed_backends:
  * @backends: a comma-separated list of backends
  *
- * Sets a list of backends that GDK should try to use.
+ * Sets a list of backends that CDK should try to use.
  *
  * This can be be useful if your application does not
- * work with certain GDK backends.
+ * work with certain CDK backends.
  *
- * By default, GDK tries all included backends.
+ * By default, CDK tries all included backends.
  *
  * For example,
  * |[<!-- language="C" -->
  * cdk_set_allowed_backends ("wayland,quartz,*");
  * ]|
- * instructs GDK to try the Wayland backend first,
+ * instructs CDK to try the Wayland backend first,
  * followed by the Quartz backend, and then all
  * others.
  *
- * If the `GDK_BACKEND` environment variable
+ * If the `CDK_BACKEND` environment variable
  * is set, it determines what backends are tried in what
  * order, while still respecting the set of allowed backends
  * that are specified by this function.
@@ -257,19 +257,19 @@ struct _CdkBackend {
 };
 
 static CdkBackend cdk_backends[] = {
-#ifdef GDK_WINDOWING_QUARTZ
+#ifdef CDK_WINDOWING_QUARTZ
   { "quartz",   _cdk_quartz_display_open },
 #endif
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
   { "win32",    _cdk_win32_display_open },
 #endif
-#ifdef GDK_WINDOWING_WAYLAND
+#ifdef CDK_WINDOWING_WAYLAND
   { "wayland",  _cdk_wayland_display_open },
 #endif
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
   { "x11",      _cdk_x11_display_open },
 #endif
-#ifdef GDK_WINDOWING_BROADWAY
+#ifdef CDK_WINDOWING_BROADWAY
   { "broadway", _cdk_broadway_display_open },
 #endif
   /* NULL-terminating this array so we can use commas above */
@@ -282,8 +282,8 @@ static CdkBackend cdk_backends[] = {
  * Gets the singleton #CdkDisplayManager object.
  *
  * When called for the first time, this function consults the
- * `GDK_BACKEND` environment variable to find out which
- * of the supported GDK backends to use (in case GDK has been compiled
+ * `CDK_BACKEND` environment variable to find out which
+ * of the supported CDK backends to use (in case CDK has been compiled
  * with multiple backends). Applications can use cdk_set_allowed_backends()
  * to limit what backends can be used.
  *
@@ -299,7 +299,7 @@ cdk_display_manager_get (void)
   static CdkDisplayManager *manager = NULL;
 
   if (manager == NULL)
-    manager = g_object_new (GDK_TYPE_DISPLAY_MANAGER, NULL);
+    manager = g_object_new (CDK_TYPE_DISPLAY_MANAGER, NULL);
   
   return manager;
 }
@@ -358,7 +358,7 @@ cdk_screen_get_default (void)
   display = cdk_display_get_default ();
 
   if (display)
-    return GDK_DISPLAY_GET_CLASS (display)->get_default_screen (display);
+    return CDK_DISPLAY_GET_CLASS (display)->get_default_screen (display);
   else
     return NULL;
 }
@@ -379,7 +379,7 @@ cdk_display_manager_set_default_display (CdkDisplayManager *manager,
   manager->default_display = display;
 
   if (display)
-    GDK_DISPLAY_GET_CLASS (display)->make_default (display);
+    CDK_DISPLAY_GET_CLASS (display)->make_default (display);
 
   g_object_notify (G_OBJECT (manager), "default-display");
 }
@@ -428,12 +428,12 @@ cdk_display_manager_open_display (CdkDisplayManager *manager,
     allowed_backends = "*";
   allow_any = strstr (allowed_backends, "*") != NULL;
 
-  backend_list = g_getenv ("GDK_BACKEND");
+  backend_list = g_getenv ("CDK_BACKEND");
   if (backend_list == NULL)
     backend_list = allowed_backends;
   else if (g_strcmp0 (backend_list, "help") == 0)
     {
-      fprintf (stderr, "Supported GDK backends:");
+      fprintf (stderr, "Supported CDK backends:");
       for (i = 0; cdk_backends[i].name != NULL; i++)
         fprintf (stderr, " %s", cdk_backends[i].name);
       fprintf (stderr, "\n");
@@ -458,7 +458,7 @@ cdk_display_manager_open_display (CdkDisplayManager *manager,
               (any && strstr (allowed_backends, cdk_backends[j].name)) ||
               g_str_equal (backend, cdk_backends[j].name))
             {
-              GDK_NOTE (MISC, g_message ("Trying %s backend", cdk_backends[j].name));
+              CDK_NOTE (MISC, g_message ("Trying %s backend", cdk_backends[j].name));
               display = cdk_backends[j].open_display (name);
               if (display)
                 break;

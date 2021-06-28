@@ -452,7 +452,7 @@ ctk_file_chooser_native_quartz_show (CtkFileChooserNative *self)
   char *message = NULL;
 
   /* Not supported before MacOS X 10.6 */
-  if (cdk_quartz_osx_version () < GDK_OSX_SNOW_LEOPARD)
+  if (cdk_quartz_osx_version () < CDK_OSX_SNOW_LEOPARD)
     return FALSE;
 
   extra_widget = ctk_file_chooser_get_extra_widget (CTK_FILE_CHOOSER (self));
@@ -567,7 +567,7 @@ ctk_file_chooser_native_quartz_hide (CtkFileChooserNative *self)
   FileChooserQuartzData *data = self->mode_data;
 
   /* Not supported before MacOS X 10.6 */
-  if (cdk_quartz_osx_version () < GDK_OSX_SNOW_LEOPARD)
+  if (cdk_quartz_osx_version () < CDK_OSX_SNOW_LEOPARD)
     return;
 
   /* This is always set while dialog visible */

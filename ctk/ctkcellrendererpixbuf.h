@@ -58,9 +58,9 @@ struct _CtkCellRendererPixbufClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType            ctk_cell_renderer_pixbuf_get_type (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkCellRenderer *ctk_cell_renderer_pixbuf_new      (void);
 
 

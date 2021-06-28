@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -40,7 +40,7 @@ struct _CdkBroadwayVisualClass
   GObjectClass parent_class;
 };
 
-G_DEFINE_TYPE (CdkBroadwayVisual, cdk_broadway_visual, GDK_TYPE_VISUAL)
+G_DEFINE_TYPE (CdkBroadwayVisual, cdk_broadway_visual, CDK_TYPE_VISUAL)
 
 static void
 cdk_broadway_visual_finalize (GObject *object)
@@ -68,28 +68,28 @@ _cdk_broadway_screen_init_visuals (CdkScreen *screen)
   CdkVisual **visuals;
   int nvisuals;
 
-  g_return_if_fail (GDK_IS_SCREEN (screen));
-  broadway_screen = GDK_BROADWAY_SCREEN (screen);
+  g_return_if_fail (CDK_IS_SCREEN (screen));
+  broadway_screen = CDK_BROADWAY_SCREEN (screen);
 
   nvisuals = 2;
   visuals = g_new (CdkVisual *, nvisuals);
 
-  visuals[0] = g_object_new (GDK_TYPE_BROADWAY_VISUAL, NULL);
+  visuals[0] = g_object_new (CDK_TYPE_BROADWAY_VISUAL, NULL);
   visuals[0]->screen = screen;
-  visuals[0]->type = GDK_VISUAL_TRUE_COLOR;
+  visuals[0]->type = CDK_VISUAL_TRUE_COLOR;
   visuals[0]->depth = 32;
-  visuals[0]->byte_order = (G_BYTE_ORDER == G_LITTLE_ENDIAN) ? GDK_LSB_FIRST : GDK_MSB_FIRST;
+  visuals[0]->byte_order = (G_BYTE_ORDER == G_LITTLE_ENDIAN) ? CDK_LSB_FIRST : CDK_MSB_FIRST;
   visuals[0]->red_mask = 0xff0000;
   visuals[0]->green_mask = 0xff00;
   visuals[0]->blue_mask = 0xff;
   visuals[0]->colormap_size = 256;
   visuals[0]->bits_per_rgb = 8;
 
-  visuals[1] = g_object_new (GDK_TYPE_BROADWAY_VISUAL, NULL);
+  visuals[1] = g_object_new (CDK_TYPE_BROADWAY_VISUAL, NULL);
   visuals[1]->screen = screen;
-  visuals[1]->type = GDK_VISUAL_TRUE_COLOR;
+  visuals[1]->type = CDK_VISUAL_TRUE_COLOR;
   visuals[1]->depth = 24;
-  visuals[1]->byte_order = (G_BYTE_ORDER == G_LITTLE_ENDIAN) ? GDK_LSB_FIRST : GDK_MSB_FIRST;
+  visuals[1]->byte_order = (G_BYTE_ORDER == G_LITTLE_ENDIAN) ? CDK_LSB_FIRST : CDK_MSB_FIRST;
   visuals[1]->red_mask = 0xff0000;
   visuals[1]->green_mask = 0xff00;
   visuals[1]->blue_mask = 0xff;
@@ -104,7 +104,7 @@ _cdk_broadway_screen_init_visuals (CdkScreen *screen)
   broadway_screen->available_depths[1] = 24;
 
   broadway_screen->navailable_types = 1;
-  broadway_screen->available_types[0] = GDK_VISUAL_TRUE_COLOR;
+  broadway_screen->available_types[0] = CDK_VISUAL_TRUE_COLOR;
 
   broadway_screen->visuals = visuals;
   broadway_screen->nvisuals = nvisuals;
@@ -113,27 +113,27 @@ _cdk_broadway_screen_init_visuals (CdkScreen *screen)
 gint
 _cdk_broadway_screen_visual_get_best_depth (CdkScreen * screen)
 {
-  return GDK_BROADWAY_SCREEN (screen)->available_depths[0];
+  return CDK_BROADWAY_SCREEN (screen)->available_depths[0];
 }
 
 CdkVisualType
 _cdk_broadway_screen_visual_get_best_type (CdkScreen * screen)
 {
-  return GDK_BROADWAY_SCREEN (screen)->available_types[0];
+  return CDK_BROADWAY_SCREEN (screen)->available_types[0];
 }
 
 CdkVisual *
 _cdk_broadway_screen_get_system_visual (CdkScreen * screen)
 {
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), NULL);
 
-  return ((CdkVisual *) GDK_BROADWAY_SCREEN (screen)->system_visual);
+  return ((CdkVisual *) CDK_BROADWAY_SCREEN (screen)->system_visual);
 }
 
 CdkVisual*
 _cdk_broadway_screen_visual_get_best (CdkScreen * screen)
 {
-  CdkBroadwayScreen *broadway_screen = GDK_BROADWAY_SCREEN (screen);
+  CdkBroadwayScreen *broadway_screen = CDK_BROADWAY_SCREEN (screen);
 
   return (CdkVisual *)broadway_screen->visuals[0];
 }
@@ -142,7 +142,7 @@ CdkVisual*
 _cdk_broadway_screen_visual_get_best_with_depth (CdkScreen * screen,
 						 gint depth)
 {
-  CdkBroadwayScreen *broadway_screen = GDK_BROADWAY_SCREEN (screen);
+  CdkBroadwayScreen *broadway_screen = CDK_BROADWAY_SCREEN (screen);
   CdkVisual *return_val;
   int i;
 
@@ -161,7 +161,7 @@ CdkVisual*
 _cdk_broadway_screen_visual_get_best_with_type (CdkScreen * screen,
 						CdkVisualType visual_type)
 {
-  CdkBroadwayScreen *broadway_screen = GDK_BROADWAY_SCREEN (screen);
+  CdkBroadwayScreen *broadway_screen = CDK_BROADWAY_SCREEN (screen);
   CdkVisual *return_val;
   int i;
 
@@ -181,7 +181,7 @@ _cdk_broadway_screen_visual_get_best_with_both (CdkScreen * screen,
 						gint          depth,
 						CdkVisualType visual_type)
 {
-  CdkBroadwayScreen *broadway_screen = GDK_BROADWAY_SCREEN (screen);
+  CdkBroadwayScreen *broadway_screen = CDK_BROADWAY_SCREEN (screen);
   CdkVisual *return_val;
   int i;
 
@@ -202,7 +202,7 @@ _cdk_broadway_screen_query_depths  (CdkScreen * screen,
 				    gint **depths,
 				    gint  *count)
 {
-  CdkBroadwayScreen *broadway_screen = GDK_BROADWAY_SCREEN (screen);
+  CdkBroadwayScreen *broadway_screen = CDK_BROADWAY_SCREEN (screen);
 
   *count = broadway_screen->navailable_depths;
   *depths = broadway_screen->available_depths;
@@ -213,7 +213,7 @@ _cdk_broadway_screen_query_visual_types (CdkScreen * screen,
 					 CdkVisualType **visual_types,
 					 gint           *count)
 {
-  CdkBroadwayScreen *broadway_screen = GDK_BROADWAY_SCREEN (screen);
+  CdkBroadwayScreen *broadway_screen = CDK_BROADWAY_SCREEN (screen);
 
   *count = broadway_screen->navailable_types;
   *visual_types = broadway_screen->available_types;
@@ -226,8 +226,8 @@ _cdk_broadway_screen_list_visuals (CdkScreen *screen)
   CdkBroadwayScreen *broadway_screen;
   guint i;
 
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
-  broadway_screen = GDK_BROADWAY_SCREEN (screen);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), NULL);
+  broadway_screen = CDK_BROADWAY_SCREEN (screen);
 
   list = NULL;
 

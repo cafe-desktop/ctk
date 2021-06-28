@@ -49,9 +49,9 @@ struct _CtkToplevelAccessibleClass
   AtkObjectClass parent_class;
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType  ctk_toplevel_accessible_get_type     (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GList *ctk_toplevel_accessible_get_children (CtkToplevelAccessible *accessible);
 
 G_END_DECLS

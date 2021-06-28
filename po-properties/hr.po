@@ -136,20 +136,20 @@ msgid "Default Display"
 msgstr "Uobičajeni zaslon"
 
 #: cdk/cdkdisplaymanager.c:163
-msgid "The default display for GDK"
-msgstr "Uobičajeni prikaz za GDK"
+msgid "The default display for CDK"
+msgstr "Uobičajeni prikaz za CDK"
 
 #: cdk/cdkglcontext.c:318
-msgid "The GDK display used to create the GL context"
-msgstr "GDK prikaz korišten za stvaranje GL sadržaja"
+msgid "The CDK display used to create the GL context"
+msgstr "CDK prikaz korišten za stvaranje GL sadržaja"
 
 #: cdk/cdkglcontext.c:333 ctk/ctkwidget.c:1347
 msgid "Window"
 msgstr "Prozor"
 
 #: cdk/cdkglcontext.c:334
-msgid "The GDK window bound to the GL context"
-msgstr "GDK prozor povezan s GL sadržajem"
+msgid "The CDK window bound to the GL context"
+msgstr "CDK prozor povezan s GL sadržajem"
 
 #: cdk/cdkglcontext.c:349
 msgid "Shared context"

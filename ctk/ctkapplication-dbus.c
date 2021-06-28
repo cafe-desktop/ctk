@@ -257,7 +257,7 @@ ctk_application_impl_dbus_startup (CtkApplicationImpl *impl,
   gboolean same_bus;
   const char *bus_name;
   const char *client_interface;
-  const char *client_id = GDK_PRIVATE_CALL (cdk_get_desktop_autostart_id) ();
+  const char *client_id = CDK_PRIVATE_CALL (cdk_get_desktop_autostart_id) ();
 
   dbus->session = g_application_get_dbus_connection (G_APPLICATION (impl->application));
 

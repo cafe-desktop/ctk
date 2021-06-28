@@ -42,15 +42,15 @@ static CdkVisual *
 create_standard_visual (CdkScreen *screen,
                         gint       depth)
 {
-  CdkVisual *visual = g_object_new (GDK_TYPE_QUARTZ_VISUAL, NULL);
+  CdkVisual *visual = g_object_new (CDK_TYPE_QUARTZ_VISUAL, NULL);
 
   visual->screen = screen;
 
   visual->depth = depth;
-  visual->byte_order = GDK_MSB_FIRST; /* FIXME: Should this be different on intel macs? */
+  visual->byte_order = CDK_MSB_FIRST; /* FIXME: Should this be different on intel macs? */
   visual->colormap_size = 0;
 
-  visual->type = GDK_VISUAL_TRUE_COLOR;
+  visual->type = CDK_VISUAL_TRUE_COLOR;
 
   visual->red_mask = 0xff0000;
   visual->green_mask = 0xff00;
@@ -62,21 +62,21 @@ create_standard_visual (CdkScreen *screen,
 static CdkVisual *
 create_gray_visual (CdkScreen *screen)
 {
-  CdkVisual *visual = g_object_new (GDK_TYPE_QUARTZ_VISUAL, NULL);
+  CdkVisual *visual = g_object_new (CDK_TYPE_QUARTZ_VISUAL, NULL);
 
   visual->screen = screen;
 
   visual->depth = 1;
-  visual->byte_order = GDK_MSB_FIRST;
+  visual->byte_order = CDK_MSB_FIRST;
   visual->colormap_size = 0;
 
-  visual->type = GDK_VISUAL_STATIC_GRAY;
+  visual->type = CDK_VISUAL_STATIC_GRAY;
 
   return visual;
 }
 
 
-G_DEFINE_TYPE (CdkQuartzVisual, cdk_quartz_visual, GDK_TYPE_VISUAL)
+G_DEFINE_TYPE (CdkQuartzVisual, cdk_quartz_visual, CDK_TYPE_VISUAL)
 
 static void
 cdk_quartz_visual_init (CdkQuartzVisual *quartz_visual)

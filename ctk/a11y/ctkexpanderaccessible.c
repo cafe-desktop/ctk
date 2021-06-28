@@ -257,8 +257,8 @@ ctk_expander_accessible_get_keybinding (AtkAction *action,
       guint key_val;
 
       key_val = ctk_label_get_mnemonic_keyval (CTK_LABEL (label));
-      if (key_val != GDK_KEY_VoidSymbol)
-        return_value = ctk_accelerator_name (key_val, GDK_MOD1_MASK);
+      if (key_val != CDK_KEY_VoidSymbol)
+        return_value = ctk_accelerator_name (key_val, CDK_MOD1_MASK);
     }
 
   return return_value;

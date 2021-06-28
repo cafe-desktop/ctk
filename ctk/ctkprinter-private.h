@@ -52,7 +52,7 @@ gboolean             _ctk_printer_get_hard_margins_for_paper_size (CtkPrinter   
 								   gdouble          *right);
 
 /* CtkPrintJob private methods: */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_print_job_set_status (CtkPrintJob   *job,
 			       CtkPrintStatus status);
 

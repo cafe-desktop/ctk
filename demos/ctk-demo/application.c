@@ -485,13 +485,13 @@ demo_application_window_state_event (CtkWidget           *widget,
                                      CdkEventWindowState *event)
 {
   DemoApplicationWindow *window = (DemoApplicationWindow *)widget;
-  gboolean res = GDK_EVENT_PROPAGATE;
+  gboolean res = CDK_EVENT_PROPAGATE;
 
   if (CTK_WIDGET_CLASS (demo_application_window_parent_class)->window_state_event)
     res = CTK_WIDGET_CLASS (demo_application_window_parent_class)->window_state_event (widget, event);
 
-  window->maximized = (event->new_window_state & GDK_WINDOW_STATE_MAXIMIZED) != 0;
-  window->fullscreen = (event->new_window_state & GDK_WINDOW_STATE_FULLSCREEN) != 0;
+  window->maximized = (event->new_window_state & CDK_WINDOW_STATE_MAXIMIZED) != 0;
+  window->fullscreen = (event->new_window_state & CDK_WINDOW_STATE_FULLSCREEN) != 0;
 
   return res;
 }

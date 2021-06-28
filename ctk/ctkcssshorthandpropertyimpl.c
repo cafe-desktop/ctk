@@ -1328,7 +1328,7 @@ _ctk_css_shorthand_property_init_properties (void)
                                           unpack_border_radius,
                                           pack_border_radius);
   _ctk_css_shorthand_property_register   ("border-color",
-                                          GDK_TYPE_RGBA,
+                                          CDK_TYPE_RGBA,
                                           border_color_subproperties,
                                           parse_border_color,
                                           unpack_to_everything,

@@ -157,7 +157,7 @@ _cdk_broadway_server_new (const char *display, GError **error)
   if (connection == NULL)
     return NULL;
 
-  server = g_object_new (GDK_TYPE_BROADWAY_SERVER, NULL);
+  server = g_object_new (CDK_TYPE_BROADWAY_SERVER, NULL);
   server->connection = connection;
 
   in = g_io_stream_get_input_stream (G_IO_STREAM (server->connection));

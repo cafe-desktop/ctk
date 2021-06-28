@@ -48,15 +48,15 @@ typedef struct {
   int flags;
 } CtkPrintWin32Devnames;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_print_win32_devnames_free (CtkPrintWin32Devnames *devnames);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkPrintWin32Devnames *ctk_print_win32_devnames_from_win32 (HGLOBAL global);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkPrintWin32Devnames *ctk_print_win32_devnames_from_printer_name (const char *printer);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 HGLOBAL ctk_print_win32_devnames_to_win32 (const CtkPrintWin32Devnames *devnames);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 HGLOBAL ctk_print_win32_devnames_to_win32_from_printer_name (const char *printer);
 
 G_END_DECLS

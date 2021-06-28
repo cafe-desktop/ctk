@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2009 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -36,12 +36,12 @@ static GList * cdk_broadway_device_manager_list_devices (CdkDeviceManager *devic
 							 CdkDeviceType     type);
 static CdkDevice * cdk_broadway_device_manager_get_client_pointer (CdkDeviceManager *device_manager);
 
-G_DEFINE_TYPE (CdkBroadwayDeviceManager, cdk_broadway_device_manager, GDK_TYPE_DEVICE_MANAGER)
+G_DEFINE_TYPE (CdkBroadwayDeviceManager, cdk_broadway_device_manager, CDK_TYPE_DEVICE_MANAGER)
 
 static void
 cdk_broadway_device_manager_class_init (CdkBroadwayDeviceManagerClass *klass)
 {
-  CdkDeviceManagerClass *device_manager_class = GDK_DEVICE_MANAGER_CLASS (klass);
+  CdkDeviceManagerClass *device_manager_class = CDK_DEVICE_MANAGER_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   object_class->finalize = cdk_broadway_device_manager_finalize;
@@ -54,11 +54,11 @@ static CdkDevice *
 create_core_pointer (CdkDeviceManager *device_manager,
                      CdkDisplay       *display)
 {
-  return g_object_new (GDK_TYPE_BROADWAY_DEVICE,
+  return g_object_new (CDK_TYPE_BROADWAY_DEVICE,
                        "name", "Core Pointer",
-                       "type", GDK_DEVICE_TYPE_MASTER,
-                       "input-source", GDK_SOURCE_MOUSE,
-                       "input-mode", GDK_MODE_SCREEN,
+                       "type", CDK_DEVICE_TYPE_MASTER,
+                       "input-source", CDK_SOURCE_MOUSE,
+                       "input-mode", CDK_MODE_SCREEN,
                        "has-cursor", TRUE,
                        "display", display,
                        "device-manager", device_manager,
@@ -69,11 +69,11 @@ static CdkDevice *
 create_core_keyboard (CdkDeviceManager *device_manager,
                       CdkDisplay       *display)
 {
-  return g_object_new (GDK_TYPE_BROADWAY_DEVICE,
+  return g_object_new (CDK_TYPE_BROADWAY_DEVICE,
                        "name", "Core Keyboard",
-                       "type", GDK_DEVICE_TYPE_MASTER,
-                       "input-source", GDK_SOURCE_KEYBOARD,
-                       "input-mode", GDK_MODE_SCREEN,
+                       "type", CDK_DEVICE_TYPE_MASTER,
+                       "input-source", CDK_SOURCE_KEYBOARD,
+                       "input-mode", CDK_MODE_SCREEN,
                        "has-cursor", FALSE,
                        "display", display,
                        "device-manager", device_manager,
@@ -84,11 +84,11 @@ static CdkDevice *
 create_touchscreen (CdkDeviceManager *device_manager,
                     CdkDisplay       *display)
 {
-  return g_object_new (GDK_TYPE_BROADWAY_DEVICE,
+  return g_object_new (CDK_TYPE_BROADWAY_DEVICE,
                        "name", "Touchscreen",
-                       "type", GDK_DEVICE_TYPE_SLAVE,
-                       "input-source", GDK_SOURCE_TOUCHSCREEN,
-                       "input-mode", GDK_MODE_SCREEN,
+                       "type", CDK_DEVICE_TYPE_SLAVE,
+                       "input-source", CDK_SOURCE_TOUCHSCREEN,
+                       "input-mode", CDK_MODE_SCREEN,
                        "has-cursor", FALSE,
                        "display", display,
                        "device-manager", device_manager,
@@ -105,7 +105,7 @@ cdk_broadway_device_manager_finalize (GObject *object)
 {
   CdkBroadwayDeviceManager *device_manager;
 
-  device_manager = GDK_BROADWAY_DEVICE_MANAGER (object);
+  device_manager = CDK_BROADWAY_DEVICE_MANAGER (object);
 
   g_object_unref (device_manager->core_pointer);
   g_object_unref (device_manager->core_keyboard);
@@ -121,11 +121,11 @@ cdk_broadway_device_manager_constructed (GObject *object)
   CdkDisplay *display;
   CdkSeat *seat;
 
-  device_manager = GDK_BROADWAY_DEVICE_MANAGER (object);
-  display = cdk_device_manager_get_display (GDK_DEVICE_MANAGER (object));
-  device_manager->core_pointer = create_core_pointer (GDK_DEVICE_MANAGER (device_manager), display);
-  device_manager->core_keyboard = create_core_keyboard (GDK_DEVICE_MANAGER (device_manager), display);
-  device_manager->touchscreen = create_touchscreen (GDK_DEVICE_MANAGER (device_manager), display);
+  device_manager = CDK_BROADWAY_DEVICE_MANAGER (object);
+  display = cdk_device_manager_get_display (CDK_DEVICE_MANAGER (object));
+  device_manager->core_pointer = create_core_pointer (CDK_DEVICE_MANAGER (device_manager), display);
+  device_manager->core_keyboard = create_core_keyboard (CDK_DEVICE_MANAGER (device_manager), display);
+  device_manager->touchscreen = create_touchscreen (CDK_DEVICE_MANAGER (device_manager), display);
 
   _cdk_device_set_associated_device (device_manager->core_pointer, device_manager->core_keyboard);
   _cdk_device_set_associated_device (device_manager->core_keyboard, device_manager->core_pointer);
@@ -135,7 +135,7 @@ cdk_broadway_device_manager_constructed (GObject *object)
   seat = cdk_seat_default_new_for_master_pair (device_manager->core_pointer,
                                                device_manager->core_keyboard);
   cdk_display_add_seat (display, seat);
-  cdk_seat_default_add_slave (GDK_SEAT_DEFAULT (seat), device_manager->touchscreen);
+  cdk_seat_default_add_slave (CDK_SEAT_DEFAULT (seat), device_manager->touchscreen);
   g_object_unref (seat);
 }
 
@@ -147,13 +147,13 @@ cdk_broadway_device_manager_list_devices (CdkDeviceManager *device_manager,
   CdkBroadwayDeviceManager *broadway_device_manager = (CdkBroadwayDeviceManager *) device_manager;
   GList *devices = NULL;
 
-  if (type == GDK_DEVICE_TYPE_MASTER)
+  if (type == CDK_DEVICE_TYPE_MASTER)
     {
       devices = g_list_prepend (devices, broadway_device_manager->core_keyboard);
       devices = g_list_prepend (devices, broadway_device_manager->core_pointer);
     }
 
-  if (type == GDK_DEVICE_TYPE_SLAVE)
+  if (type == CDK_DEVICE_TYPE_SLAVE)
     {
       devices = g_list_prepend (devices, broadway_device_manager->touchscreen);
     }
@@ -172,7 +172,7 @@ cdk_broadway_device_manager_get_client_pointer (CdkDeviceManager *device_manager
 CdkDeviceManager *
 _cdk_broadway_device_manager_new (CdkDisplay *display)
 {
-  return g_object_new (GDK_TYPE_BROADWAY_DEVICE_MANAGER,
+  return g_object_new (CDK_TYPE_BROADWAY_DEVICE_MANAGER,
 		       "display", display,
 		       NULL);
 }

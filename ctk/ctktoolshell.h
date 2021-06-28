@@ -72,26 +72,26 @@ struct _CtkToolShellIface
   CtkSizeGroup *     (*get_text_size_group)  (CtkToolShell *shell);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType              ctk_tool_shell_get_type             (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkIconSize        ctk_tool_shell_get_icon_size        (CtkToolShell *shell);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkOrientation     ctk_tool_shell_get_orientation      (CtkToolShell *shell);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkToolbarStyle    ctk_tool_shell_get_style            (CtkToolShell *shell);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkReliefStyle     ctk_tool_shell_get_relief_style     (CtkToolShell *shell);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void               ctk_tool_shell_rebuild_menu         (CtkToolShell *shell);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkOrientation     ctk_tool_shell_get_text_orientation (CtkToolShell *shell);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gfloat             ctk_tool_shell_get_text_alignment   (CtkToolShell *shell);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 PangoEllipsizeMode ctk_tool_shell_get_ellipsize_mode   (CtkToolShell *shell);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkSizeGroup *     ctk_tool_shell_get_text_size_group  (CtkToolShell *shell);
 
 G_END_DECLS

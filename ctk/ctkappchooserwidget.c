@@ -229,7 +229,7 @@ widget_button_press_event_cb (CtkWidget      *widget,
 {
   CtkAppChooserWidget *self = user_data;
 
-  if (event->button == GDK_BUTTON_SECONDARY && event->type == GDK_BUTTON_PRESS)
+  if (event->button == CDK_BUTTON_SECONDARY && event->type == CDK_BUTTON_PRESS)
     {
       GAppInfo *info;
       CtkWidget *menu;

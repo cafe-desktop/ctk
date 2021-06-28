@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2009 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_X11_EVENT_SOURCE_H__
-#define __GDK_X11_EVENT_SOURCE_H__
+#ifndef __CDK_X11_EVENT_SOURCE_H__
+#define __CDK_X11_EVENT_SOURCE_H__
 
 #include "cdkeventtranslator.h"
 
@@ -40,4 +40,4 @@ void      cdk_x11_event_source_select_events  (CdkEventSource *source,
 
 G_END_DECLS
 
-#endif /* __GDK_X11_EVENT_SOURCE_H__ */
+#endif /* __CDK_X11_EVENT_SOURCE_H__ */

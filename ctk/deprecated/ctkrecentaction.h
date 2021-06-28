@@ -59,22 +59,22 @@ struct _CtkRecentActionClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 GType      ctk_recent_action_get_type         (void) G_GNUC_CONST;
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 CtkAction *ctk_recent_action_new              (const gchar      *name,
                                                const gchar      *label,
                                                const gchar      *tooltip,
                                                const gchar      *stock_id);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 CtkAction *ctk_recent_action_new_for_manager  (const gchar      *name,
                                                const gchar      *label,
                                                const gchar      *tooltip,
                                                const gchar      *stock_id,
                                                CtkRecentManager *manager);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 gboolean   ctk_recent_action_get_show_numbers (CtkRecentAction  *action);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void       ctk_recent_action_set_show_numbers (CtkRecentAction  *action,
                                                gboolean          show_numbers);
 

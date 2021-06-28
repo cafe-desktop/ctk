@@ -96,85 +96,85 @@ struct _CtkEntryCompletionClass
 };
 
 /* core */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType               ctk_entry_completion_get_type               (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkEntryCompletion *ctk_entry_completion_new                    (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkEntryCompletion *ctk_entry_completion_new_with_area          (CtkCellArea                 *area);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget          *ctk_entry_completion_get_entry              (CtkEntryCompletion          *completion);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                ctk_entry_completion_set_model              (CtkEntryCompletion          *completion,
                                                                  CtkTreeModel                *model);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreeModel       *ctk_entry_completion_get_model              (CtkEntryCompletion          *completion);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                ctk_entry_completion_set_match_func         (CtkEntryCompletion          *completion,
                                                                  CtkEntryCompletionMatchFunc  func,
                                                                  gpointer                     func_data,
                                                                  GDestroyNotify               func_notify);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                ctk_entry_completion_set_minimum_key_length (CtkEntryCompletion          *completion,
                                                                  gint                         length);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint                ctk_entry_completion_get_minimum_key_length (CtkEntryCompletion          *completion);
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 gchar *             ctk_entry_completion_compute_prefix         (CtkEntryCompletion          *completion,
                                                                  const char                  *key);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                ctk_entry_completion_complete               (CtkEntryCompletion          *completion);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                ctk_entry_completion_insert_prefix          (CtkEntryCompletion          *completion);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                ctk_entry_completion_insert_action_text     (CtkEntryCompletion          *completion,
                                                                  gint                         index_,
                                                                  const gchar                 *text);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                ctk_entry_completion_insert_action_markup   (CtkEntryCompletion          *completion,
                                                                  gint                         index_,
                                                                  const gchar                 *markup);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                ctk_entry_completion_delete_action          (CtkEntryCompletion          *completion,
                                                                  gint                         index_);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                ctk_entry_completion_set_inline_completion  (CtkEntryCompletion          *completion,
                                                                  gboolean                     inline_completion);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean            ctk_entry_completion_get_inline_completion  (CtkEntryCompletion          *completion);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                ctk_entry_completion_set_inline_selection  (CtkEntryCompletion          *completion,
                                                                  gboolean                     inline_selection);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean            ctk_entry_completion_get_inline_selection  (CtkEntryCompletion          *completion);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                ctk_entry_completion_set_popup_completion   (CtkEntryCompletion          *completion,
                                                                  gboolean                     popup_completion);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean            ctk_entry_completion_get_popup_completion   (CtkEntryCompletion          *completion);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                ctk_entry_completion_set_popup_set_width    (CtkEntryCompletion          *completion,
                                                                  gboolean                     popup_set_width);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean            ctk_entry_completion_get_popup_set_width    (CtkEntryCompletion          *completion);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                ctk_entry_completion_set_popup_single_match (CtkEntryCompletion          *completion,
                                                                  gboolean                     popup_single_match);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean            ctk_entry_completion_get_popup_single_match (CtkEntryCompletion          *completion);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar         *ctk_entry_completion_get_completion_prefix (CtkEntryCompletion *completion);
 /* convenience */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                ctk_entry_completion_set_text_column        (CtkEntryCompletion          *completion,
                                                                  gint                         column);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint                ctk_entry_completion_get_text_column        (CtkEntryCompletion          *completion);
 
 G_END_DECLS

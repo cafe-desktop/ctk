@@ -23,7 +23,7 @@
 
 #include "cdkmonitor-wayland.h"
 
-G_DEFINE_TYPE (CdkWaylandMonitor, cdk_wayland_monitor, GDK_TYPE_MONITOR)
+G_DEFINE_TYPE (CdkWaylandMonitor, cdk_wayland_monitor, CDK_TYPE_MONITOR)
 
 static void
 cdk_wayland_monitor_init (CdkWaylandMonitor *monitor)
@@ -60,7 +60,7 @@ cdk_wayland_monitor_class_init (CdkWaylandMonitorClass *class)
 struct wl_output *
 cdk_wayland_monitor_get_wl_output (CdkMonitor *monitor)
 {
-  g_return_val_if_fail (GDK_IS_WAYLAND_MONITOR (monitor), NULL);
+  g_return_val_if_fail (CDK_IS_WAYLAND_MONITOR (monitor), NULL);
 
-  return GDK_WAYLAND_MONITOR (monitor)->output;
+  return CDK_WAYLAND_MONITOR (monitor)->output;
 }

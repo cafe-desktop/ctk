@@ -165,54 +165,54 @@ gboolean  _ctk_rc_match_widget_class     (GSList       *list,
                                           gchar        *path,
                                           gchar        *path_reversed);
 
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 void      ctk_rc_add_default_file       (const gchar *filename);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 void      ctk_rc_set_default_files      (gchar **filenames);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 gchar**   ctk_rc_get_default_files      (void);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 CtkStyle* ctk_rc_get_style              (CtkWidget   *widget);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 CtkStyle* ctk_rc_get_style_by_paths     (CtkSettings *settings,
                                          const char  *widget_path,
                                          const char  *class_path,
                                          GType        type);
 
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 gboolean ctk_rc_reparse_all_for_settings (CtkSettings *settings,
                                           gboolean     force_load);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 void     ctk_rc_reset_styles             (CtkSettings *settings);
 
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 gchar*   ctk_rc_find_pixmap_in_path (CtkSettings  *settings,
                                      GScanner     *scanner,
                                      const gchar  *pixmap_file);
 
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 void     ctk_rc_parse                   (const gchar *filename);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 void      ctk_rc_parse_string           (const gchar *rc_string);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 gboolean  ctk_rc_reparse_all            (void);
 
-GDK_DEPRECATED_IN_3_0
+CDK_DEPRECATED_IN_3_0
 GType       ctk_rc_style_get_type   (void) G_GNUC_CONST;
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 CtkRcStyle* ctk_rc_style_new        (void);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 CtkRcStyle* ctk_rc_style_copy       (CtkRcStyle *orig);
 
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 gchar*      ctk_rc_find_module_in_path (const gchar *module_file);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 gchar*      ctk_rc_get_theme_dir       (void);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 gchar*      ctk_rc_get_module_dir      (void);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 gchar*      ctk_rc_get_im_module_path  (void);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 gchar*      ctk_rc_get_im_module_file  (void);
 
 /* private functions/definitions */
@@ -354,19 +354,19 @@ typedef enum
   CTK_PATH_CLASS
 } CtkPathType;
 
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 GScanner* ctk_rc_scanner_new    (void);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 guint     ctk_rc_parse_color    (GScanner            *scanner,
                                  CdkColor            *color);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 guint     ctk_rc_parse_color_full (GScanner          *scanner,
                                    CtkRcStyle        *style,
                                    CdkColor          *color);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 guint     ctk_rc_parse_state    (GScanner            *scanner,
                                  CtkStateType        *state);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 guint     ctk_rc_parse_priority (GScanner            *scanner,
                                  CtkPathPriorityType *priority);
 
@@ -394,7 +394,7 @@ struct _CtkRcProperty
   GValue value;
 };
 
-GDK_DEPRECATED_IN_3_0
+CDK_DEPRECATED_IN_3_0
 void      ctk_binding_set_add_path (CtkBindingSet       *binding_set,
                                     CtkPathType          path_type,
                                     const gchar         *path_pattern,

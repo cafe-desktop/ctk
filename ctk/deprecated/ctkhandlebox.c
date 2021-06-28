@@ -27,7 +27,7 @@
 
 #include <stdlib.h>
 
-#define GDK_DISABLE_DEPRECATION_WARNINGS
+#define CDK_DISABLE_DEPRECATION_WARNINGS
 
 #include "ctkhandlebox.h"
 #include "ctkinvisible.h"
@@ -491,11 +491,11 @@ ctk_handle_box_realize (CtkWidget *widget)
   attributes.y = allocation.y;
   attributes.width = allocation.width;
   attributes.height = allocation.height;
-  attributes.window_type = GDK_WINDOW_CHILD;
-  attributes.wclass = GDK_INPUT_OUTPUT;
+  attributes.window_type = CDK_WINDOW_CHILD;
+  attributes.wclass = CDK_INPUT_OUTPUT;
   attributes.visual = ctk_widget_get_visual (widget);
   attributes.event_mask = ctk_widget_get_events (widget);
-  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
+  attributes_mask = CDK_WA_X | CDK_WA_Y | CDK_WA_VISUAL;
 
   window = cdk_window_new (ctk_widget_get_parent_window (widget),
                            &attributes, attributes_mask);
@@ -506,13 +506,13 @@ ctk_handle_box_realize (CtkWidget *widget)
   attributes.y = 0;
   attributes.width = allocation.width;
   attributes.height = allocation.height;
-  attributes.window_type = GDK_WINDOW_CHILD;
+  attributes.window_type = CDK_WINDOW_CHILD;
   attributes.event_mask = (ctk_widget_get_events (widget)
-                           | GDK_BUTTON1_MOTION_MASK
-                           | GDK_POINTER_MOTION_HINT_MASK
-                           | GDK_BUTTON_PRESS_MASK
-                           | GDK_BUTTON_RELEASE_MASK);
-  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
+                           | CDK_BUTTON1_MOTION_MASK
+                           | CDK_POINTER_MOTION_HINT_MASK
+                           | CDK_BUTTON_PRESS_MASK
+                           | CDK_BUTTON_RELEASE_MASK);
+  attributes_mask = CDK_WA_X | CDK_WA_Y | CDK_WA_VISUAL;
 
   priv->bin_window = cdk_window_new (window,
                                      &attributes, attributes_mask);
@@ -528,22 +528,22 @@ ctk_handle_box_realize (CtkWidget *widget)
   attributes.y = 0;
   attributes.width = requisition.width;
   attributes.height = requisition.height;
-  attributes.window_type = GDK_WINDOW_TOPLEVEL;
-  attributes.wclass = GDK_INPUT_OUTPUT;
+  attributes.window_type = CDK_WINDOW_TOPLEVEL;
+  attributes.wclass = CDK_INPUT_OUTPUT;
   attributes.visual = ctk_widget_get_visual (widget);
   attributes.event_mask = (ctk_widget_get_events (widget)
-                           | GDK_KEY_PRESS_MASK
-                           | GDK_ENTER_NOTIFY_MASK
-                           | GDK_LEAVE_NOTIFY_MASK
-                           | GDK_FOCUS_CHANGE_MASK
-                           | GDK_STRUCTURE_MASK);
-  attributes.type_hint = GDK_WINDOW_TYPE_HINT_TOOLBAR;
-  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL | GDK_WA_TYPE_HINT;
+                           | CDK_KEY_PRESS_MASK
+                           | CDK_ENTER_NOTIFY_MASK
+                           | CDK_LEAVE_NOTIFY_MASK
+                           | CDK_FOCUS_CHANGE_MASK
+                           | CDK_STRUCTURE_MASK);
+  attributes.type_hint = CDK_WINDOW_TYPE_HINT_TOOLBAR;
+  attributes_mask = CDK_WA_X | CDK_WA_Y | CDK_WA_VISUAL | CDK_WA_TYPE_HINT;
   priv->float_window = cdk_window_new (cdk_screen_get_root_window (ctk_widget_get_screen (widget)),
                                        &attributes, attributes_mask);
   cdk_window_set_user_data (priv->float_window, widget);
   cdk_window_set_decorations (priv->float_window, 0);
-  cdk_window_set_type_hint (priv->float_window, GDK_WINDOW_TYPE_HINT_TOOLBAR);
+  cdk_window_set_type_hint (priv->float_window, CDK_WINDOW_TYPE_HINT_TOOLBAR);
 
   context = ctk_widget_get_style_context (widget);
   ctk_style_context_set_background (context, window);
@@ -1182,7 +1182,7 @@ ctk_handle_box_grab_event (CtkWidget    *widget,
 
   switch (event->type)
     {
-    case GDK_BUTTON_RELEASE:
+    case CDK_BUTTON_RELEASE:
       if (priv->in_drag)		/* sanity check */
 	{
 	  ctk_handle_box_end_drag (hb, event->button.time);
@@ -1190,7 +1190,7 @@ ctk_handle_box_grab_event (CtkWidget    *widget,
 	}
       break;
 
-    case GDK_MOTION_NOTIFY:
+    case CDK_MOTION_NOTIFY:
       return ctk_handle_box_motion (CTK_WIDGET (hb), (CdkEventMotion *)event);
       break;
 
@@ -1214,8 +1214,8 @@ ctk_handle_box_button_press (CtkWidget      *widget,
   handle_position = effective_handle_position (hb);
 
   event_handled = FALSE;
-  if ((event->button == GDK_BUTTON_PRIMARY) &&
-      (event->type == GDK_BUTTON_PRESS || event->type == GDK_2BUTTON_PRESS))
+  if ((event->button == CDK_BUTTON_PRIMARY) &&
+      (event->type == CDK_BUTTON_PRESS || event->type == CDK_2BUTTON_PRESS))
     {
       CtkWidget *child;
       gboolean in_handle;
@@ -1260,7 +1260,7 @@ ctk_handle_box_button_press (CtkWidget      *widget,
       
       if (in_handle)
 	{
-	  if (event->type == GDK_BUTTON_PRESS) /* Start a drag */
+	  if (event->type == CDK_BUTTON_PRESS) /* Start a drag */
 	    {
 	      CtkWidget *invisible = ctk_handle_box_get_invisible ();
               CdkWindow *window;
@@ -1298,16 +1298,16 @@ ctk_handle_box_button_press (CtkWidget      *widget,
 	      priv->in_drag = TRUE;
               priv->grab_device = event->device;
 	      fleur = cdk_cursor_new_for_display (ctk_widget_get_display (widget),
-						  GDK_FLEUR);
+						  CDK_FLEUR);
 	      if (cdk_device_grab (event->device,
                                    ctk_widget_get_window (invisible),
-                                   GDK_OWNERSHIP_WINDOW,
+                                   CDK_OWNERSHIP_WINDOW,
                                    FALSE,
-                                   (GDK_BUTTON1_MOTION_MASK |
-                                    GDK_POINTER_MOTION_HINT_MASK |
-                                    GDK_BUTTON_RELEASE_MASK),
+                                   (CDK_BUTTON1_MOTION_MASK |
+                                    CDK_POINTER_MOTION_HINT_MASK |
+                                    CDK_BUTTON_RELEASE_MASK),
                                    fleur,
-                                   event->time) != GDK_GRAB_SUCCESS)
+                                   event->time) != CDK_GRAB_SUCCESS)
 		{
 		  priv->in_drag = FALSE;
                   priv->grab_device = NULL;
@@ -1517,7 +1517,7 @@ ctk_handle_box_motion (CtkWidget      *widget,
 	  
 	  cdk_window_move_resize (priv->float_window, new_x, new_y, width, height);
 	  cdk_window_reparent (priv->bin_window, priv->float_window, 0, 0);
-	  cdk_window_set_geometry_hints (priv->float_window, &geometry, GDK_HINT_POS);
+	  cdk_window_set_geometry_hints (priv->float_window, &geometry, CDK_HINT_POS);
 	  cdk_window_show (priv->float_window);
 	  priv->float_window_mapped = TRUE;
 #if	0
@@ -1603,7 +1603,7 @@ ctk_handle_box_reattach (CtkHandleBox *hb)
       priv->float_window_mapped = FALSE;
     }
   if (priv->in_drag)
-    ctk_handle_box_end_drag (hb, GDK_CURRENT_TIME);
+    ctk_handle_box_end_drag (hb, CDK_CURRENT_TIME);
 
   ctk_widget_queue_resize (CTK_WIDGET (hb));
 }

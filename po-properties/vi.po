@@ -114,20 +114,20 @@ msgid "Default Display"
 msgstr "Bộ trình bày mặc định"
 
 #: cdk/cdkdisplaymanager.c:170
-msgid "The default display for GDK"
-msgstr "Bộ trình bày mặc định cho GDK"
+msgid "The default display for CDK"
+msgstr "Bộ trình bày mặc định cho CDK"
 
 #: cdk/cdkglcontext.c:265
-msgid "The GDK display used to create the GL context"
-msgstr "Bộ trình bày GDK để tạo ngữ cảnh GL"
+msgid "The CDK display used to create the GL context"
+msgstr "Bộ trình bày CDK để tạo ngữ cảnh GL"
 
 #: cdk/cdkglcontext.c:280 ctk/ctkwidget.c:1332
 msgid "Window"
 msgstr "Cửa sổ"
 
 #: cdk/cdkglcontext.c:281
-msgid "The GDK window bound to the GL context"
-msgstr "Cửa sổ GDK gắn với ngữ cảnh GL"
+msgid "The CDK window bound to the GL context"
+msgstr "Cửa sổ CDK gắn với ngữ cảnh GL"
 
 #: cdk/cdkglcontext.c:296
 msgid "Shared context"
@@ -9263,8 +9263,8 @@ msgstr "Tiêu đề hồ sơ màu"
 msgid "The title of the color profile to use"
 msgstr "Tiêu đề của hộp thoại hồ sơ màu được dùng"
 
-#~ msgid "The GDK display the context is from"
-#~ msgstr "GDK hiển thị ngữ cảnh từ"
+#~ msgid "The CDK display the context is from"
+#~ msgstr "CDK hiển thị ngữ cảnh từ"
 
 #~ msgid "Profile"
 #~ msgstr "Hồ sơ"

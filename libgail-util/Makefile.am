@@ -59,7 +59,7 @@ libgailutil_3_la_CPPFLAGS = \
 	-I$(top_srcdir)/ctk	\
 	-I$(top_builddir)/ctk	\
 	$(AM_CPPFLAGS) 		\
-	-DGDK_DISABLE_DEPRECATED\
+	-DCDK_DISABLE_DEPRECATED\
 	-DCTK_DISABLE_DEPRECATED
 
 libgailutil_3_la_CFLAGS = \

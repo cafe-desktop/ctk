@@ -48,7 +48,7 @@ on_drawing_area_draw (CtkWidget *drawing_area,
   cairo_set_source_rgb (cr, 1, 1, 1);
   cairo_paint (cr);
 
-  if ((mask & GDK_HINT_BASE_SIZE) != 0)
+  if ((mask & CDK_HINT_BASE_SIZE) != 0)
     border = BORDER;
 
   cairo_set_source_rgb (cr, 0, 0, 0);
@@ -80,7 +80,7 @@ on_resize_clicked (CtkWidget *button,
   CtkWidget *window = ctk_widget_get_toplevel (button);
   CdkWindowHints mask = GPOINTER_TO_UINT(data);
 
-  if ((mask & GDK_HINT_RESIZE_INC) != 0)
+  if ((mask & CDK_HINT_RESIZE_INC) != 0)
     ctk_window_resize_to_geometry (CTK_WINDOW (window), 8, 8);
   else
     ctk_window_resize_to_geometry (CTK_WINDOW (window), 8 * GRID_SIZE, 8 * GRID_SIZE);
@@ -98,17 +98,17 @@ create_window (CdkWindowHints  mask)
   GString *label_text = g_string_new (NULL);
   int border = 0;
 
-  if ((mask & GDK_HINT_RESIZE_INC) != 0)
+  if ((mask & CDK_HINT_RESIZE_INC) != 0)
     g_string_append (label_text, "Gridded\n");
-  if ((mask & GDK_HINT_BASE_SIZE) != 0)
+  if ((mask & CDK_HINT_BASE_SIZE) != 0)
     g_string_append (label_text, "Base\n");
-  if ((mask & GDK_HINT_MIN_SIZE) != 0)
+  if ((mask & CDK_HINT_MIN_SIZE) != 0)
     {
       g_string_append (label_text, "Minimum\n");
-      if ((mask & GDK_HINT_BASE_SIZE) == 0)
+      if ((mask & CDK_HINT_BASE_SIZE) == 0)
 	g_string_append (label_text, "(base=min)\n");
     }
-  if ((mask & GDK_HINT_MAX_SIZE) != 0)
+  if ((mask & CDK_HINT_MAX_SIZE) != 0)
     g_string_append (label_text, "Maximum\n");
 
   if (label_text->len > 0)
@@ -147,26 +147,26 @@ create_window (CdkWindowHints  mask)
 
   ctk_container_add (CTK_CONTAINER (window), grid);
 
-  if ((mask & GDK_HINT_BASE_SIZE) != 0)
+  if ((mask & CDK_HINT_BASE_SIZE) != 0)
     {
       border = BORDER;
       geometry.base_width = border * 2;
       geometry.base_height = border * 2;
     }
 
-  if ((mask & GDK_HINT_RESIZE_INC) != 0)
+  if ((mask & CDK_HINT_RESIZE_INC) != 0)
     {
       geometry.width_inc = GRID_SIZE;
       geometry.height_inc = GRID_SIZE;
     }
 
-  if ((mask & GDK_HINT_MIN_SIZE) != 0)
+  if ((mask & CDK_HINT_MIN_SIZE) != 0)
     {
       geometry.min_width = 5 * GRID_SIZE + 2 * border;
       geometry.min_height = 5 * GRID_SIZE + 2 * border;
     }
 
-  if ((mask & GDK_HINT_MAX_SIZE) != 0)
+  if ((mask & CDK_HINT_MAX_SIZE) != 0)
     {
       geometry.max_width = 15 * GRID_SIZE + 2 * border;
       geometry.max_height = 15 * GRID_SIZE + 2 * border;
@@ -180,7 +180,7 @@ create_window (CdkWindowHints  mask)
 				 &geometry,
 				 mask);
 
-  if ((mask & GDK_HINT_RESIZE_INC) != 0)
+  if ((mask & CDK_HINT_RESIZE_INC) != 0)
     {
       if (geometry_string)
 	ctk_window_parse_geometry (CTK_WINDOW (window), geometry_string);
@@ -212,13 +212,13 @@ main(int argc, char **argv)
       return 1;
     }
 
-  create_window (GDK_HINT_MIN_SIZE);
-  create_window (GDK_HINT_MIN_SIZE | GDK_HINT_BASE_SIZE);
-  create_window (GDK_HINT_MIN_SIZE | GDK_HINT_MAX_SIZE);
-  create_window (GDK_HINT_RESIZE_INC | GDK_HINT_MIN_SIZE);
-  create_window (GDK_HINT_RESIZE_INC | GDK_HINT_MAX_SIZE);
-  create_window (GDK_HINT_RESIZE_INC | GDK_HINT_BASE_SIZE);
-  create_window (GDK_HINT_RESIZE_INC | GDK_HINT_BASE_SIZE | GDK_HINT_MIN_SIZE);
+  create_window (CDK_HINT_MIN_SIZE);
+  create_window (CDK_HINT_MIN_SIZE | CDK_HINT_BASE_SIZE);
+  create_window (CDK_HINT_MIN_SIZE | CDK_HINT_MAX_SIZE);
+  create_window (CDK_HINT_RESIZE_INC | CDK_HINT_MIN_SIZE);
+  create_window (CDK_HINT_RESIZE_INC | CDK_HINT_MAX_SIZE);
+  create_window (CDK_HINT_RESIZE_INC | CDK_HINT_BASE_SIZE);
+  create_window (CDK_HINT_RESIZE_INC | CDK_HINT_BASE_SIZE | CDK_HINT_MIN_SIZE);
 
   ctk_main ();
 

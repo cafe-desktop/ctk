@@ -9,7 +9,7 @@ AM_CPPFLAGS =				\
 	-I$(top_srcdir)/cdk		\
 	$(CTK_DEBUG_FLAGS)		\
 	$(CTK_DEP_CFLAGS)		\
-	$(GDK_DEP_CFLAGS)
+	$(CDK_DEP_CFLAGS)
 
 DEPS = \
 	$(top_builddir)/ctk/libctk-3.la
@@ -18,7 +18,7 @@ LDADD = \
 	$(top_builddir)/ctk/libctk-3.la	\
 	$(top_builddir)/cdk/libcdk-3.la	\
 	$(CTK_DEP_LIBS)			\
-	$(GDK_DEP_LIBS)			\
+	$(CDK_DEP_LIBS)			\
 	-lm
 
 

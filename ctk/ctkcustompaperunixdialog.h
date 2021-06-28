@@ -58,7 +58,7 @@ struct _CtkCustomPaperUnixDialogClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType             ctk_custom_paper_unix_dialog_get_type           (void) G_GNUC_CONST;
 CtkWidget *       _ctk_custom_paper_unix_dialog_new                (CtkWindow   *parent,
 								   const gchar *title);

@@ -122,40 +122,40 @@ struct _CtkNotebookClass
  *           Creation, insertion, deletion                 *
  ***********************************************************/
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType   ctk_notebook_get_type       (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget * ctk_notebook_new        (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint ctk_notebook_append_page       (CtkNotebook *notebook,
 				     CtkWidget   *child,
 				     CtkWidget   *tab_label);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint ctk_notebook_append_page_menu  (CtkNotebook *notebook,
 				     CtkWidget   *child,
 				     CtkWidget   *tab_label,
 				     CtkWidget   *menu_label);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint ctk_notebook_prepend_page      (CtkNotebook *notebook,
 				     CtkWidget   *child,
 				     CtkWidget   *tab_label);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint ctk_notebook_prepend_page_menu (CtkNotebook *notebook,
 				     CtkWidget   *child,
 				     CtkWidget   *tab_label,
 				     CtkWidget   *menu_label);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint ctk_notebook_insert_page       (CtkNotebook *notebook,
 				     CtkWidget   *child,
 				     CtkWidget   *tab_label,
 				     gint         position);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint ctk_notebook_insert_page_menu  (CtkNotebook *notebook,
 				     CtkWidget   *child,
 				     CtkWidget   *tab_label,
 				     CtkWidget   *menu_label,
 				     gint         position);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_notebook_remove_page       (CtkNotebook *notebook,
 				     gint         page_num);
 
@@ -163,10 +163,10 @@ void ctk_notebook_remove_page       (CtkNotebook *notebook,
  *           Tabs drag and drop                            *
  ***********************************************************/
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void         ctk_notebook_set_group_name (CtkNotebook *notebook,
                                           const gchar *group_name);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *ctk_notebook_get_group_name (CtkNotebook *notebook);
 
 
@@ -175,120 +175,120 @@ const gchar *ctk_notebook_get_group_name (CtkNotebook *notebook);
  *            query, set current NotebookPage              *
  ***********************************************************/
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint       ctk_notebook_get_current_page (CtkNotebook *notebook);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_notebook_get_nth_page     (CtkNotebook *notebook,
 					  gint         page_num);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint       ctk_notebook_get_n_pages      (CtkNotebook *notebook);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint       ctk_notebook_page_num         (CtkNotebook *notebook,
 					  CtkWidget   *child);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_notebook_set_current_page (CtkNotebook *notebook,
 					  gint         page_num);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_notebook_next_page        (CtkNotebook *notebook);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_notebook_prev_page        (CtkNotebook *notebook);
 
 /***********************************************************
  *            set Notebook, NotebookTab style              *
  ***********************************************************/
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_notebook_set_show_border      (CtkNotebook     *notebook,
 					    gboolean         show_border);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_notebook_get_show_border      (CtkNotebook     *notebook);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_notebook_set_show_tabs        (CtkNotebook     *notebook,
 					    gboolean         show_tabs);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_notebook_get_show_tabs        (CtkNotebook     *notebook);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_notebook_set_tab_pos          (CtkNotebook     *notebook,
 				            CtkPositionType  pos);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkPositionType ctk_notebook_get_tab_pos   (CtkNotebook     *notebook);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_notebook_set_scrollable       (CtkNotebook     *notebook,
 					    gboolean         scrollable);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_notebook_get_scrollable       (CtkNotebook     *notebook);
-GDK_DEPRECATED_IN_3_4
+CDK_DEPRECATED_IN_3_4
 guint16  ctk_notebook_get_tab_hborder      (CtkNotebook     *notebook);
-GDK_DEPRECATED_IN_3_4
+CDK_DEPRECATED_IN_3_4
 guint16  ctk_notebook_get_tab_vborder      (CtkNotebook     *notebook);
 
 /***********************************************************
  *               enable/disable PopupMenu                  *
  ***********************************************************/
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_notebook_popup_enable  (CtkNotebook *notebook);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_notebook_popup_disable (CtkNotebook *notebook);
 
 /***********************************************************
  *             query/set NotebookPage Properties           *
  ***********************************************************/
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget * ctk_notebook_get_tab_label    (CtkNotebook *notebook,
 					   CtkWidget   *child);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_notebook_set_tab_label           (CtkNotebook *notebook,
 					   CtkWidget   *child,
 					   CtkWidget   *tab_label);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_notebook_set_tab_label_text (CtkNotebook *notebook,
                                                CtkWidget   *child,
                                                const gchar *tab_text);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar * ctk_notebook_get_tab_label_text (CtkNotebook *notebook,
                                                CtkWidget   *child);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget * ctk_notebook_get_menu_label   (CtkNotebook *notebook,
 					   CtkWidget   *child);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_notebook_set_menu_label          (CtkNotebook *notebook,
 					   CtkWidget   *child,
 					   CtkWidget   *menu_label);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_notebook_set_menu_label_text (CtkNotebook *notebook,
                                                 CtkWidget   *child,
                                                 const gchar *menu_text);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar * ctk_notebook_get_menu_label_text (CtkNotebook *notebook,
 							CtkWidget   *child);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_notebook_reorder_child           (CtkNotebook *notebook,
 					   CtkWidget   *child,
 					   gint         position);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_notebook_get_tab_reorderable (CtkNotebook *notebook,
 					   CtkWidget   *child);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_notebook_set_tab_reorderable     (CtkNotebook *notebook,
 					   CtkWidget   *child,
 					   gboolean     reorderable);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_notebook_get_tab_detachable  (CtkNotebook *notebook,
 					   CtkWidget   *child);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_notebook_set_tab_detachable      (CtkNotebook *notebook,
 					   CtkWidget   *child,
 					   gboolean     detachable);
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 void ctk_notebook_detach_tab              (CtkNotebook *notebook,
                                            CtkWidget   *child);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_notebook_get_action_widget (CtkNotebook *notebook,
                                            CtkPackType  pack_type);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_notebook_set_action_widget (CtkNotebook *notebook,
                                            CtkWidget   *widget,
                                            CtkPackType  pack_type);

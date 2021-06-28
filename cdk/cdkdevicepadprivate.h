@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2016 Red Hat
  *
  * This library is free software; you can redistribute it and/or
@@ -17,14 +17,14 @@
  * Author: Carlos Garnacho <carlosg@gnome.org>
  */
 
-#ifndef __GDK_DEVICE_PAD_PRIVATE_H__
-#define __GDK_DEVICE_PAD_PRIVATE_H__
+#ifndef __CDK_DEVICE_PAD_PRIVATE_H__
+#define __CDK_DEVICE_PAD_PRIVATE_H__
 
 #include "cdkdevicepad.h"
 
 G_BEGIN_DECLS
 
-#define GDK_DEVICE_PAD_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), GDK_TYPE_DEVICE_PAD, CdkDevicePadInterface))
+#define CDK_DEVICE_PAD_GET_IFACE(obj)  (G_TYPE_INSTANCE_GET_INTERFACE ((obj), CDK_TYPE_DEVICE_PAD, CdkDevicePadInterface))
 
 struct _CdkDevicePadInterface {
   GTypeInterface parent_interface;
@@ -42,4 +42,4 @@ struct _CdkDevicePadInterface {
 
 G_END_DECLS
 
-#endif /* __GDK_DEVICE_PAD_PRIVATE_H__ */
+#endif /* __CDK_DEVICE_PAD_PRIVATE_H__ */

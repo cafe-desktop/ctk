@@ -15,7 +15,7 @@ ctk_reftest_CFLAGS = \
 	-I$(top_srcdir)                 \
 	-I$(top_builddir)/cdk           \
 	-I$(top_srcdir)/cdk             \
-	-DGDK_DISABLE_DEPRECATED        \
+	-DCDK_DISABLE_DEPRECATED        \
 	-DCTK_DISABLE_DEPRECATED        \
 	$(CTK_DEBUG_FLAGS)              \
 	$(CTK_DEP_CFLAGS)		\

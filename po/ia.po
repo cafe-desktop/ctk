@@ -61,8 +61,8 @@ msgstr "SCHERMO"
 
 #. Description of --cdk-debug=FLAGS in --help output
 #: ../cdk/cdk.c:213
-msgid "GDK debugging flags to set"
-msgstr "Activar optiones diagnostic GDK"
+msgid "CDK debugging flags to set"
+msgstr "Activar optiones diagnostic CDK"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
@@ -74,8 +74,8 @@ msgstr "OPTIONES"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: ../cdk/cdk.c:216
-msgid "GDK debugging flags to unset"
-msgstr "Disactivar optiones diagnostic GDK"
+msgid "CDK debugging flags to unset"
+msgstr "Disactivar optiones diagnostic CDK"
 
 #.
 #. * Translators, the strings in the 'keyboard label' context are

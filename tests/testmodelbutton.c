@@ -6,7 +6,7 @@ on_action_beep (GSimpleAction *action,
                 void          *user_data)
 {
   CdkDisplay *display = cdk_display_get_default ();
-  g_assert (GDK_IS_DISPLAY (display));
+  g_assert (CDK_IS_DISPLAY (display));
   cdk_display_beep (display);
 }
 
@@ -34,7 +34,7 @@ on_application_activate (GApplication *gapplication,
     /* :iconic == TRUE */
     "button.model { background: yellow; }"
     , -1, NULL);
-  g_assert (GDK_IS_SCREEN (screen));
+  g_assert (CDK_IS_SCREEN (screen));
   ctk_style_context_add_provider_for_screen (screen,
                                              CTK_STYLE_PROVIDER (css_provider),
                                              CTK_STYLE_PROVIDER_PRIORITY_APPLICATION);

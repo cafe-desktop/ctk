@@ -80,7 +80,7 @@ get_dragsource (void)
   ctk_tree_view_append_column (tv, column);
 
   ctk_tree_view_set_model (tv, get_model ());
-  ctk_tree_view_enable_model_drag_source (tv, GDK_BUTTON1_MASK, entries, G_N_ELEMENTS (entries), GDK_ACTION_COPY);
+  ctk_tree_view_enable_model_drag_source (tv, CDK_BUTTON1_MASK, entries, G_N_ELEMENTS (entries), CDK_ACTION_COPY);
 
   return CTK_WIDGET (tv);
 }
@@ -106,7 +106,7 @@ get_droptarget (void)
   CtkWidget *label;
 
   label = ctk_label_new ("Drop here");
-  ctk_drag_dest_set (label, CTK_DEST_DEFAULT_ALL, entries, G_N_ELEMENTS (entries), GDK_ACTION_COPY);
+  ctk_drag_dest_set (label, CTK_DEST_DEFAULT_ALL, entries, G_N_ELEMENTS (entries), CDK_ACTION_COPY);
   g_signal_connect (label, "drag-data-received", G_CALLBACK (data_received), NULL);
 
   return label;

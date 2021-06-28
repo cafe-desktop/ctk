@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -22,12 +22,12 @@
  * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
-#ifndef __GDK_WAYLAND_H__
-#define __GDK_WAYLAND_H__
+#ifndef __CDK_WAYLAND_H__
+#define __CDK_WAYLAND_H__
 
 #include <cdk/cdk.h>
 
-#define __GDKWAYLAND_H_INSIDE__
+#define __CDKWAYLAND_H_INSIDE__
 
 #include <cdk/wayland/cdkwaylanddevice.h>
 #include <cdk/wayland/cdkwaylanddisplay.h>
@@ -36,6 +36,6 @@
 #include <cdk/wayland/cdkwaylandwindow.h>
 #include <cdk/wayland/cdkwaylandglcontext.h>
 
-#undef __GDKWAYLAND_H_INSIDE__
+#undef __CDKWAYLAND_H_INSIDE__
 
-#endif /* __GDK_WAYLAND_H__ */
+#endif /* __CDK_WAYLAND_H__ */

@@ -264,48 +264,48 @@ struct _CtkTextLineDisplay
 extern G_GNUC_INTERNAL PangoAttrType ctk_text_attr_appearance_type;
 #endif
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType         ctk_text_layout_get_type    (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTextLayout*     ctk_text_layout_new                   (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void               ctk_text_layout_set_buffer            (CtkTextLayout     *layout,
 							  CtkTextBuffer     *buffer);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTextBuffer     *ctk_text_layout_get_buffer            (CtkTextLayout     *layout);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void               ctk_text_layout_set_default_style     (CtkTextLayout     *layout,
 							  CtkTextAttributes *values);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void               ctk_text_layout_set_contexts          (CtkTextLayout     *layout,
 							  PangoContext      *ltr_context,
 							  PangoContext      *rtl_context);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void               ctk_text_layout_set_cursor_direction  (CtkTextLayout     *layout,
                                                           CtkTextDirection   direction);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void		   ctk_text_layout_set_overwrite_mode	 (CtkTextLayout     *layout,
 							  gboolean           overwrite);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void               ctk_text_layout_set_keyboard_direction (CtkTextLayout     *layout,
 							   CtkTextDirection keyboard_dir);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void               ctk_text_layout_default_style_changed (CtkTextLayout     *layout);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_layout_set_screen_width       (CtkTextLayout     *layout,
                                              gint               width);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_layout_set_preedit_string     (CtkTextLayout     *layout,
  					     const gchar       *preedit_string,
  					     PangoAttrList     *preedit_attrs,
  					     gint               cursor_pos);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_text_layout_set_cursor_visible (CtkTextLayout     *layout,
                                              gboolean           cursor_visible);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_text_layout_get_cursor_visible (CtkTextLayout     *layout);
 
 /* Getting the size or the lines potentially results in a call to
@@ -315,67 +315,67 @@ gboolean ctk_text_layout_get_cursor_visible (CtkTextLayout     *layout);
  * Long-term, we would really like to be able to do these without
  * a full recompute so they may get cheaper over time.
  */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void    ctk_text_layout_get_size  (CtkTextLayout  *layout,
                                    gint           *width,
                                    gint           *height);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GSList* ctk_text_layout_get_lines (CtkTextLayout  *layout,
                                    /* [top_y, bottom_y) */
                                    gint            top_y,
                                    gint            bottom_y,
                                    gint           *first_line_y);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_layout_wrap_loop_start (CtkTextLayout *layout);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_layout_wrap_loop_end   (CtkTextLayout *layout);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTextLineDisplay* ctk_text_layout_get_line_display  (CtkTextLayout      *layout,
                                                        CtkTextLine        *line,
                                                        gboolean            size_only);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                ctk_text_layout_free_line_display (CtkTextLayout      *layout,
                                                        CtkTextLineDisplay *display);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_layout_get_line_at_y     (CtkTextLayout     *layout,
                                         CtkTextIter       *target_iter,
                                         gint               y,
                                         gint              *line_top);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_text_layout_get_iter_at_pixel (CtkTextLayout     *layout,
                                             CtkTextIter       *iter,
                                             gint               x,
                                             gint               y);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_text_layout_get_iter_at_position (CtkTextLayout     *layout,
                                                CtkTextIter       *iter,
                                                gint              *trailing,
                                                gint               x,
                                                gint               y);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_layout_invalidate        (CtkTextLayout     *layout,
                                         const CtkTextIter *start,
                                         const CtkTextIter *end);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_layout_invalidate_cursors(CtkTextLayout     *layout,
                                         const CtkTextIter *start,
                                         const CtkTextIter *end);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_layout_free_line_data    (CtkTextLayout     *layout,
                                         CtkTextLine       *line,
                                         CtkTextLineData   *line_data);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_text_layout_is_valid        (CtkTextLayout *layout);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_text_layout_validate_yrange (CtkTextLayout *layout,
                                           CtkTextIter   *anchor_line,
                                           gint           y0_,
                                           gint           y1_);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_text_layout_validate        (CtkTextLayout *layout,
                                           gint           max_pixels);
 
@@ -386,66 +386,66 @@ void     ctk_text_layout_validate        (CtkTextLayout *layout,
  * there should be exactly one line data for this view
  * stored on the btree line.
  */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTextLineData* ctk_text_layout_wrap  (CtkTextLayout   *layout,
                                         CtkTextLine     *line,
                                         CtkTextLineData *line_data); /* may be NULL */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_text_layout_changed              (CtkTextLayout     *layout,
                                                gint               y,
                                                gint               old_height,
                                                gint               new_height);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_text_layout_cursors_changed      (CtkTextLayout     *layout,
                                                gint               y,
                                                gint               old_height,
                                                gint               new_height);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_text_layout_get_iter_location    (CtkTextLayout     *layout,
                                                const CtkTextIter *iter,
                                                CdkRectangle      *rect);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_text_layout_get_line_yrange      (CtkTextLayout     *layout,
                                                const CtkTextIter *iter,
                                                gint              *y,
                                                gint              *height);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_text_layout_get_cursor_locations (CtkTextLayout     *layout,
                                                CtkTextIter       *iter,
                                                CdkRectangle      *strong_pos,
                                                CdkRectangle      *weak_pos);
 gboolean _ctk_text_layout_get_block_cursor    (CtkTextLayout     *layout,
 					       CdkRectangle      *pos);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_text_layout_clamp_iter_to_vrange (CtkTextLayout     *layout,
                                                CtkTextIter       *iter,
                                                gint               top,
                                                gint               bottom);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_text_layout_move_iter_to_line_end      (CtkTextLayout *layout,
                                                      CtkTextIter   *iter,
                                                      gint           direction);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_text_layout_move_iter_to_previous_line (CtkTextLayout *layout,
                                                      CtkTextIter   *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_text_layout_move_iter_to_next_line     (CtkTextLayout *layout,
                                                      CtkTextIter   *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_text_layout_move_iter_to_x             (CtkTextLayout *layout,
                                                      CtkTextIter   *iter,
                                                      gint           x);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_text_layout_move_iter_visually         (CtkTextLayout *layout,
                                                      CtkTextIter   *iter,
                                                      gint           count);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_text_layout_iter_starts_line           (CtkTextLayout       *layout,
                                                      const CtkTextIter   *iter);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_text_layout_get_iter_at_line           (CtkTextLayout *layout,
                                                      CtkTextIter    *iter,
                                                      CtkTextLine    *line,
@@ -456,23 +456,23 @@ void     ctk_text_layout_get_iter_at_line           (CtkTextLayout *layout,
  * since they are semi-public and require CtkTextLayout to
  * be declared.
  */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_child_anchor_register_child   (CtkTextChildAnchor *anchor,
                                              CtkWidget          *child,
                                              CtkTextLayout      *layout);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_child_anchor_unregister_child (CtkTextChildAnchor *anchor,
                                              CtkWidget          *child);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_child_anchor_queue_resize     (CtkTextChildAnchor *anchor,
                                              CtkTextLayout      *layout);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_anchored_child_set_layout     (CtkWidget          *child,
                                              CtkTextLayout      *layout);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_layout_spew (CtkTextLayout *layout);
 
 G_END_DECLS

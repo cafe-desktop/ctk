@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -26,8 +26,8 @@
  * Private uninstalled header defining things local to X windowing code
  */
 
-#ifndef __GDK_PRIVATE_X11_H__
-#define __GDK_PRIVATE_X11_H__
+#ifndef __CDK_PRIVATE_X11_H__
+#define __CDK_PRIVATE_X11_H__
 
 #include "cdkcursor.h"
 #include "cdkprivate.h"
@@ -329,22 +329,22 @@ cairo_surface_t * _cdk_x11_window_create_bitmap_surface (CdkWindow *window,
 extern const gint        _cdk_x11_event_mask_table[];
 extern const gint        _cdk_x11_event_mask_table_size;
 
-#define GDK_SCREEN_DISPLAY(screen)    (GDK_X11_SCREEN (screen)->display)
-#define GDK_SCREEN_XROOTWIN(screen)   (GDK_X11_SCREEN (screen)->xroot_window)
-#define GDK_WINDOW_SCREEN(win)        (cdk_window_get_screen (win))
-#define GDK_WINDOW_DISPLAY(win)       (GDK_X11_SCREEN (GDK_WINDOW_SCREEN (win))->display)
-#define GDK_WINDOW_XROOTWIN(win)      (GDK_X11_SCREEN (GDK_WINDOW_SCREEN (win))->xroot_window)
-#define GDK_WINDOW_IS_X11(win)        (GDK_IS_WINDOW_IMPL_X11 ((win)->impl))
+#define CDK_SCREEN_DISPLAY(screen)    (CDK_X11_SCREEN (screen)->display)
+#define CDK_SCREEN_XROOTWIN(screen)   (CDK_X11_SCREEN (screen)->xroot_window)
+#define CDK_WINDOW_SCREEN(win)        (cdk_window_get_screen (win))
+#define CDK_WINDOW_DISPLAY(win)       (CDK_X11_SCREEN (CDK_WINDOW_SCREEN (win))->display)
+#define CDK_WINDOW_XROOTWIN(win)      (CDK_X11_SCREEN (CDK_WINDOW_SCREEN (win))->xroot_window)
+#define CDK_WINDOW_IS_X11(win)        (CDK_IS_WINDOW_IMPL_X11 ((win)->impl))
 
 /* override some macros from cdkx.h with direct-access variants */
-#undef GDK_DISPLAY_XDISPLAY
-#undef GDK_WINDOW_XDISPLAY
-#undef GDK_WINDOW_XID
-#undef GDK_SCREEN_XDISPLAY
+#undef CDK_DISPLAY_XDISPLAY
+#undef CDK_WINDOW_XDISPLAY
+#undef CDK_WINDOW_XID
+#undef CDK_SCREEN_XDISPLAY
 
-#define GDK_DISPLAY_XDISPLAY(display) (GDK_X11_DISPLAY(display)->xdisplay)
-#define GDK_WINDOW_XDISPLAY(win)      (GDK_X11_SCREEN (GDK_WINDOW_SCREEN (win))->xdisplay)
-#define GDK_WINDOW_XID(win)           (GDK_WINDOW_IMPL_X11(GDK_WINDOW (win)->impl)->xid)
-#define GDK_SCREEN_XDISPLAY(screen)   (GDK_X11_SCREEN (screen)->xdisplay)
+#define CDK_DISPLAY_XDISPLAY(display) (CDK_X11_DISPLAY(display)->xdisplay)
+#define CDK_WINDOW_XDISPLAY(win)      (CDK_X11_SCREEN (CDK_WINDOW_SCREEN (win))->xdisplay)
+#define CDK_WINDOW_XID(win)           (CDK_WINDOW_IMPL_X11(CDK_WINDOW (win)->impl)->xid)
+#define CDK_SCREEN_XDISPLAY(screen)   (CDK_X11_SCREEN (screen)->xdisplay)
 
-#endif /* __GDK_PRIVATE_X11_H__ */
+#endif /* __CDK_PRIVATE_X11_H__ */

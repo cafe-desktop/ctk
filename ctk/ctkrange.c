@@ -2227,22 +2227,22 @@ ctk_range_realize (CtkWidget *widget)
 
   ctk_widget_get_allocation (widget, &allocation);
 
-  attributes.window_type = GDK_WINDOW_CHILD;
+  attributes.window_type = CDK_WINDOW_CHILD;
   attributes.x = allocation.x;
   attributes.y = allocation.y;
   attributes.width = allocation.width;
   attributes.height = allocation.height;
-  attributes.wclass = GDK_INPUT_ONLY;
+  attributes.wclass = CDK_INPUT_ONLY;
   attributes.event_mask = ctk_widget_get_events (widget);
-  attributes.event_mask |= GDK_BUTTON_PRESS_MASK |
-                           GDK_BUTTON_RELEASE_MASK |
-                           GDK_SCROLL_MASK |
-                           GDK_SMOOTH_SCROLL_MASK |
-                           GDK_ENTER_NOTIFY_MASK |
-                           GDK_LEAVE_NOTIFY_MASK |
-                           GDK_POINTER_MOTION_MASK;
+  attributes.event_mask |= CDK_BUTTON_PRESS_MASK |
+                           CDK_BUTTON_RELEASE_MASK |
+                           CDK_SCROLL_MASK |
+                           CDK_SMOOTH_SCROLL_MASK |
+                           CDK_ENTER_NOTIFY_MASK |
+                           CDK_LEAVE_NOTIFY_MASK |
+                           CDK_POINTER_MOTION_MASK;
 
-  attributes_mask = GDK_WA_X | GDK_WA_Y;
+  attributes_mask = CDK_WA_X | CDK_WA_Y;
 
   priv->event_window = cdk_window_new (ctk_widget_get_parent_window (widget),
 					&attributes, attributes_mask);
@@ -2419,7 +2419,7 @@ ctk_range_draw (CtkWidget *widget,
 
   ctk_css_gadget_draw (priv->gadget, cr);
 
-  return GDK_EVENT_PROPAGATE;
+  return CDK_EVENT_PROPAGATE;
 }
 
 static void
@@ -2431,7 +2431,7 @@ range_grab_add (CtkRange      *range,
 
   context = ctk_widget_get_style_context (CTK_WIDGET (range));
 
-  /* Don't perform any GDK/CTK+ grab here. Since a button
+  /* Don't perform any CDK/CTK+ grab here. Since a button
    * is down, there's an ongoing implicit grab on
    * priv->event_window, which pretty much guarantees this
    * is the only widget receiving the pointer events.
@@ -2507,13 +2507,13 @@ range_get_scroll_for_grab (CtkRange *range)
     {
       switch (grab_button)
         {
-        case GDK_BUTTON_PRIMARY:
+        case CDK_BUTTON_PRIMARY:
           return invert ? CTK_SCROLL_STEP_FORWARD : CTK_SCROLL_STEP_BACKWARD;
           break;
-        case GDK_BUTTON_SECONDARY:
+        case CDK_BUTTON_SECONDARY:
           return invert ? CTK_SCROLL_PAGE_FORWARD : CTK_SCROLL_PAGE_BACKWARD;
           break;
-        case GDK_BUTTON_MIDDLE:
+        case CDK_BUTTON_MIDDLE:
           return invert ? CTK_SCROLL_END : CTK_SCROLL_START;
           break;
         default:
@@ -2527,13 +2527,13 @@ range_get_scroll_for_grab (CtkRange *range)
     {
       switch (grab_button)
         {
-        case GDK_BUTTON_PRIMARY:
+        case CDK_BUTTON_PRIMARY:
           return invert ? CTK_SCROLL_STEP_BACKWARD : CTK_SCROLL_STEP_FORWARD;
           break;
-        case GDK_BUTTON_SECONDARY:
+        case CDK_BUTTON_SECONDARY:
           return invert ? CTK_SCROLL_PAGE_BACKWARD : CTK_SCROLL_PAGE_FORWARD;
           break;
-        case GDK_BUTTON_MIDDLE:
+        case CDK_BUTTON_MIDDLE:
           return invert ? CTK_SCROLL_START : CTK_SCROLL_END;
           break;
         default:
@@ -2609,16 +2609,16 @@ ctk_range_key_press (CtkWidget   *widget,
 
   if (ctk_gesture_is_active (priv->drag_gesture) &&
       device == ctk_gesture_get_device (priv->drag_gesture) &&
-      event->keyval == GDK_KEY_Escape &&
+      event->keyval == CDK_KEY_Escape &&
       priv->grab_location != NULL)
     {
       stop_scrolling (range);
 
-      return GDK_EVENT_STOP;
+      return CDK_EVENT_STOP;
     }
   else if (priv->in_drag &&
-           (event->keyval == GDK_KEY_Shift_L ||
-            event->keyval == GDK_KEY_Shift_R))
+           (event->keyval == CDK_KEY_Shift_L ||
+            event->keyval == CDK_KEY_Shift_R))
     {
       CtkAllocation slider_alloc;
 
@@ -2630,7 +2630,7 @@ ctk_range_key_press (CtkWidget   *widget,
         priv->slide_initial_slider_position = slider_alloc.x;
       update_zoom_state (range, !priv->zoom);
 
-      return GDK_EVENT_STOP;
+      return CDK_EVENT_STOP;
     }
 
   return CTK_WIDGET_CLASS (ctk_range_parent_class)->key_press_event (widget, event);
@@ -2702,7 +2702,7 @@ ctk_range_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
   button = ctk_gesture_single_get_current_button (CTK_GESTURE_SINGLE (gesture));
   event = ctk_gesture_get_last_event (CTK_GESTURE (gesture), sequence);
   cdk_event_get_state (event, &state_mask);
-  shift_pressed = (state_mask & GDK_SHIFT_MASK) != 0;
+  shift_pressed = (state_mask & CDK_SHIFT_MASK) != 0;
 
   source_device = cdk_event_get_source_device ((CdkEvent *) event);
   source = cdk_device_get_source (source_device);
@@ -2758,10 +2758,10 @@ ctk_range_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
         }
     }
   else if (priv->mouse_location == priv->trough_gadget &&
-           (source == GDK_SOURCE_TOUCHSCREEN ||
-            (primary_warps && !shift_pressed && button == GDK_BUTTON_PRIMARY) ||
-            (!primary_warps && shift_pressed && button == GDK_BUTTON_PRIMARY) ||
-            (!primary_warps && button == GDK_BUTTON_MIDDLE)))
+           (source == CDK_SOURCE_TOUCHSCREEN ||
+            (primary_warps && !shift_pressed && button == CDK_BUTTON_PRIMARY) ||
+            (!primary_warps && shift_pressed && button == CDK_BUTTON_PRIMARY) ||
+            (!primary_warps && button == CDK_BUTTON_MIDDLE)))
     {
       /* warp to location */
       CdkRectangle slider;
@@ -2790,9 +2790,9 @@ ctk_range_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
       update_slider_position (range, x, y);
     }
   else if (priv->mouse_location == priv->trough_gadget &&
-           ((primary_warps && shift_pressed && button == GDK_BUTTON_PRIMARY) ||
-            (!primary_warps && !shift_pressed && button == GDK_BUTTON_PRIMARY) ||
-            (primary_warps && button == GDK_BUTTON_MIDDLE)))
+           ((primary_warps && shift_pressed && button == CDK_BUTTON_PRIMARY) ||
+            (!primary_warps && !shift_pressed && button == CDK_BUTTON_PRIMARY) ||
+            (primary_warps && button == CDK_BUTTON_MIDDLE)))
     {
       /* jump by pages */
       CtkScrollType scroll;
@@ -2809,7 +2809,7 @@ ctk_range_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
       ctk_range_add_step_timer (range, scroll);
     }
   else if (priv->mouse_location == priv->trough_gadget &&
-           button == GDK_BUTTON_SECONDARY)
+           button == CDK_BUTTON_SECONDARY)
     {
       /* autoscroll */
       gdouble click_value;
@@ -3077,7 +3077,7 @@ _ctk_range_get_wheel_delta (CtkRange       *range,
 
   if (cdk_event_get_scroll_deltas ((CdkEvent *) event, &dx, &dy))
     {
-#ifdef GDK_WINDOWING_QUARTZ
+#ifdef CDK_WINDOWING_QUARTZ
       scroll_unit = 1;
 #endif
 
@@ -3094,12 +3094,12 @@ _ctk_range_get_wheel_delta (CtkRange       *range,
     }
   else if (cdk_event_get_scroll_direction ((CdkEvent *) event, &direction))
     {
-      if (direction == GDK_SCROLL_LEFT || direction == GDK_SCROLL_RIGHT)
+      if (direction == CDK_SCROLL_LEFT || direction == CDK_SCROLL_RIGHT)
         move_orientation = CTK_ORIENTATION_HORIZONTAL;
       else
         move_orientation = CTK_ORIENTATION_VERTICAL;
 
-      if (direction == GDK_SCROLL_LEFT || direction == GDK_SCROLL_UP)
+      if (direction == CDK_SCROLL_LEFT || direction == CDK_SCROLL_UP)
         delta = - scroll_unit;
       else
         delta = scroll_unit;
@@ -3124,7 +3124,7 @@ ctk_range_scroll_event (CtkWidget      *widget,
                  CTK_SCROLL_JUMP, ctk_adjustment_get_value (priv->adjustment) + delta,
                  &handled);
 
-  return GDK_EVENT_STOP;
+  return CDK_EVENT_STOP;
 }
 
 static void
@@ -3206,7 +3206,7 @@ ctk_range_event (CtkWidget *widget,
   CtkRangePrivate *priv = range->priv;
   gdouble x, y;
 
-  if (event->type == GDK_LEAVE_NOTIFY)
+  if (event->type == CDK_LEAVE_NOTIFY)
     {
       priv->mouse_x = G_MININT;
       priv->mouse_y = G_MININT;
@@ -3219,7 +3219,7 @@ ctk_range_event (CtkWidget *widget,
 
   ctk_range_update_mouse_location (range);
 
-  return GDK_EVENT_PROPAGATE;
+  return CDK_EVENT_PROPAGATE;
 }
 
 static void

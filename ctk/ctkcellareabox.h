@@ -64,26 +64,26 @@ struct _CtkCellAreaBoxClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType        ctk_cell_area_box_get_type    (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkCellArea *ctk_cell_area_box_new         (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void         ctk_cell_area_box_pack_start  (CtkCellAreaBox  *box,
                                             CtkCellRenderer *renderer,
                                             gboolean         expand,
                                             gboolean         align,
                                             gboolean         fixed);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void         ctk_cell_area_box_pack_end    (CtkCellAreaBox  *box,
                                             CtkCellRenderer *renderer,
                                             gboolean         expand,
                                             gboolean         align,
                                             gboolean         fixed);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint         ctk_cell_area_box_get_spacing (CtkCellAreaBox  *box);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void         ctk_cell_area_box_set_spacing (CtkCellAreaBox  *box,
                                             gint             spacing);
 

@@ -69,75 +69,75 @@ struct _CtkGridClass
   void (*_ctk_reserved8) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType      ctk_grid_get_type               (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_grid_new                    (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_grid_attach                 (CtkGrid         *grid,
                                             CtkWidget       *child,
                                             gint             left,
                                             gint             top,
                                             gint             width,
                                             gint             height);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_grid_attach_next_to         (CtkGrid         *grid,
                                             CtkWidget       *child,
                                             CtkWidget       *sibling,
                                             CtkPositionType  side,
                                             gint             width,
                                             gint             height);
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 CtkWidget *ctk_grid_get_child_at           (CtkGrid         *grid,
                                             gint             left,
                                             gint             top);
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 void       ctk_grid_insert_row             (CtkGrid         *grid,
                                             gint             position);
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 void       ctk_grid_insert_column          (CtkGrid         *grid,
                                             gint             position);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void       ctk_grid_remove_row             (CtkGrid         *grid,
                                             gint             position);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void       ctk_grid_remove_column          (CtkGrid         *grid,
                                             gint             position);
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 void       ctk_grid_insert_next_to         (CtkGrid         *grid,
                                             CtkWidget       *sibling,
                                             CtkPositionType  side);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_grid_set_row_homogeneous    (CtkGrid         *grid,
                                             gboolean         homogeneous);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_grid_get_row_homogeneous    (CtkGrid         *grid);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_grid_set_row_spacing        (CtkGrid         *grid,
                                             guint            spacing);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 guint      ctk_grid_get_row_spacing        (CtkGrid         *grid);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_grid_set_column_homogeneous (CtkGrid         *grid,
                                             gboolean         homogeneous);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_grid_get_column_homogeneous (CtkGrid         *grid);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_grid_set_column_spacing     (CtkGrid         *grid,
                                             guint            spacing);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 guint      ctk_grid_get_column_spacing     (CtkGrid         *grid);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void       ctk_grid_set_row_baseline_position (CtkGrid      *grid,
 					       gint          row,
 					       CtkBaselinePosition pos);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 CtkBaselinePosition ctk_grid_get_row_baseline_position (CtkGrid      *grid,
 							gint          row);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void       ctk_grid_set_baseline_row       (CtkGrid         *grid,
 					    gint             row);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 gint       ctk_grid_get_baseline_row       (CtkGrid         *grid);
 
 

@@ -16,7 +16,7 @@
  */
 
 #include "config.h"
-#define GDK_DISABLE_DEPRECATION_WARNINGS
+#define CDK_DISABLE_DEPRECATION_WARNINGS
 #include <ctk/ctk.h>
 
 static CtkActionGroup *action_group = NULL;

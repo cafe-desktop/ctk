@@ -1015,126 +1015,126 @@ struct _CtkStyleContextClass
  */
 #define CTK_STYLE_REGION_TAB "tab"
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType ctk_style_context_get_type (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkStyleContext * ctk_style_context_new (void);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_style_context_add_provider_for_screen    (CdkScreen        *screen,
                                                    CtkStyleProvider *provider,
                                                    guint             priority);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_style_context_remove_provider_for_screen (CdkScreen        *screen,
                                                    CtkStyleProvider *provider);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_style_context_add_provider    (CtkStyleContext  *context,
                                         CtkStyleProvider *provider,
                                         guint             priority);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_style_context_remove_provider (CtkStyleContext  *context,
                                         CtkStyleProvider *provider);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_style_context_save    (CtkStyleContext *context);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_style_context_restore (CtkStyleContext *context);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkCssSection * ctk_style_context_get_section (CtkStyleContext *context,
                                                const gchar     *property);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_style_context_get_property (CtkStyleContext *context,
                                      const gchar     *property,
                                      CtkStateFlags    state,
                                      GValue          *value);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_style_context_get_valist   (CtkStyleContext *context,
                                      CtkStateFlags    state,
                                      va_list          args);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_style_context_get          (CtkStyleContext *context,
                                      CtkStateFlags    state,
                                      ...) G_GNUC_NULL_TERMINATED;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_style_context_set_state    (CtkStyleContext *context,
                                               CtkStateFlags    flags);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkStateFlags ctk_style_context_get_state    (CtkStyleContext *context);
 
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void          ctk_style_context_set_scale    (CtkStyleContext *context,
                                               gint             scale);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 gint          ctk_style_context_get_scale    (CtkStyleContext *context);
 
-GDK_DEPRECATED_IN_3_6
+CDK_DEPRECATED_IN_3_6
 gboolean      ctk_style_context_state_is_running (CtkStyleContext *context,
                                                   CtkStateType     state,
                                                   gdouble         *progress);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_style_context_set_path     (CtkStyleContext *context,
                                               CtkWidgetPath   *path);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const CtkWidgetPath * ctk_style_context_get_path (CtkStyleContext *context);
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 void          ctk_style_context_set_parent   (CtkStyleContext *context,
                                               CtkStyleContext *parent);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkStyleContext *ctk_style_context_get_parent (CtkStyleContext *context);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GList *  ctk_style_context_list_classes (CtkStyleContext *context);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_style_context_add_class    (CtkStyleContext *context,
                                          const gchar     *class_name);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_style_context_remove_class (CtkStyleContext *context,
                                          const gchar     *class_name);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_style_context_has_class    (CtkStyleContext *context,
                                          const gchar     *class_name);
 
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 GList *  ctk_style_context_list_regions (CtkStyleContext *context);
 
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 void     ctk_style_context_add_region    (CtkStyleContext    *context,
                                           const gchar        *region_name,
                                           CtkRegionFlags      flags);
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 void     ctk_style_context_remove_region (CtkStyleContext    *context,
                                           const gchar        *region_name);
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 gboolean ctk_style_context_has_region    (CtkStyleContext    *context,
                                           const gchar        *region_name,
                                           CtkRegionFlags     *flags_return);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_style_context_get_style_property (CtkStyleContext *context,
                                            const gchar     *property_name,
                                            GValue          *value);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_style_context_get_style_valist   (CtkStyleContext *context,
                                            va_list          args);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_style_context_get_style          (CtkStyleContext *context,
                                            ...);
 
-GDK_DEPRECATED_IN_3_10_FOR(ctk_icon_theme_lookup_icon)
+CDK_DEPRECATED_IN_3_10_FOR(ctk_icon_theme_lookup_icon)
 CtkIconSet * ctk_style_context_lookup_icon_set (CtkStyleContext *context,
                                                 const gchar     *stock_id);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 CdkPixbuf  * ctk_icon_set_render_icon_pixbuf   (CtkIconSet      *icon_set,
                                                 CtkStyleContext *context,
                                                 CtkIconSize      size);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 cairo_surface_t  *
 ctk_icon_set_render_icon_surface               (CtkIconSet      *icon_set,
 						CtkStyleContext *context,
@@ -1142,97 +1142,97 @@ ctk_icon_set_render_icon_surface               (CtkIconSet      *icon_set,
 						int              scale,
 						CdkWindow       *for_window);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_style_context_set_screen (CtkStyleContext *context,
                                           CdkScreen       *screen);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkScreen * ctk_style_context_get_screen (CtkStyleContext *context);
 
-GDK_AVAILABLE_IN_3_8
+CDK_AVAILABLE_IN_3_8
 void           ctk_style_context_set_frame_clock (CtkStyleContext *context,
                                                   CdkFrameClock   *frame_clock);
-GDK_AVAILABLE_IN_3_8
+CDK_AVAILABLE_IN_3_8
 CdkFrameClock *ctk_style_context_get_frame_clock (CtkStyleContext *context);
 
-GDK_DEPRECATED_IN_3_8_FOR(ctk_style_context_set_state)
+CDK_DEPRECATED_IN_3_8_FOR(ctk_style_context_set_state)
 void             ctk_style_context_set_direction (CtkStyleContext  *context,
                                                   CtkTextDirection  direction);
-GDK_DEPRECATED_IN_3_8_FOR(ctk_style_context_get_state)
+CDK_DEPRECATED_IN_3_8_FOR(ctk_style_context_get_state)
 CtkTextDirection ctk_style_context_get_direction (CtkStyleContext  *context);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_style_context_set_junction_sides (CtkStyleContext  *context,
                                                        CtkJunctionSides  sides);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkJunctionSides ctk_style_context_get_junction_sides (CtkStyleContext  *context);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_style_context_lookup_color (CtkStyleContext *context,
                                          const gchar     *color_name,
                                          CdkRGBA         *color);
 
-GDK_DEPRECATED_IN_3_6
+CDK_DEPRECATED_IN_3_6
 void  ctk_style_context_notify_state_change (CtkStyleContext *context,
                                              CdkWindow       *window,
                                              gpointer         region_id,
                                              CtkStateType     state,
                                              gboolean         state_value);
-GDK_DEPRECATED_IN_3_6
+CDK_DEPRECATED_IN_3_6
 void  ctk_style_context_cancel_animations   (CtkStyleContext *context,
                                              gpointer         region_id);
-GDK_DEPRECATED_IN_3_6
+CDK_DEPRECATED_IN_3_6
 void  ctk_style_context_scroll_animations   (CtkStyleContext *context,
                                              CdkWindow       *window,
                                              gint             dx,
                                              gint             dy);
 
-GDK_DEPRECATED_IN_3_6
+CDK_DEPRECATED_IN_3_6
 void ctk_style_context_push_animatable_region (CtkStyleContext *context,
                                                gpointer         region_id);
-GDK_DEPRECATED_IN_3_6
+CDK_DEPRECATED_IN_3_6
 void ctk_style_context_pop_animatable_region  (CtkStyleContext *context);
 
 /* Some helper functions to retrieve most common properties */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_style_context_get_color            (CtkStyleContext *context,
                                              CtkStateFlags    state,
                                              CdkRGBA         *color);
-GDK_DEPRECATED_IN_3_16_FOR(ctk_render_background)
+CDK_DEPRECATED_IN_3_16_FOR(ctk_render_background)
 void ctk_style_context_get_background_color (CtkStyleContext *context,
                                              CtkStateFlags    state,
                                              CdkRGBA         *color);
-GDK_DEPRECATED_IN_3_16_FOR(ctk_render_frame)
+CDK_DEPRECATED_IN_3_16_FOR(ctk_render_frame)
 void ctk_style_context_get_border_color     (CtkStyleContext *context,
                                              CtkStateFlags    state,
                                              CdkRGBA         *color);
 
-GDK_DEPRECATED_IN_3_8_FOR(ctk_style_context_get)
+CDK_DEPRECATED_IN_3_8_FOR(ctk_style_context_get)
 const PangoFontDescription *
      ctk_style_context_get_font             (CtkStyleContext *context,
                                              CtkStateFlags    state);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_style_context_get_border           (CtkStyleContext *context,
                                              CtkStateFlags    state,
                                              CtkBorder       *border);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_style_context_get_padding          (CtkStyleContext *context,
                                              CtkStateFlags    state,
                                              CtkBorder       *padding);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_style_context_get_margin           (CtkStyleContext *context,
                                              CtkStateFlags    state,
                                              CtkBorder       *margin);
 
-GDK_DEPRECATED_IN_3_12
+CDK_DEPRECATED_IN_3_12
 void ctk_style_context_invalidate           (CtkStyleContext *context);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_style_context_reset_widgets        (CdkScreen       *screen);
 
-GDK_DEPRECATED_IN_3_18_FOR(ctk_render_background)
+CDK_DEPRECATED_IN_3_18_FOR(ctk_render_background)
 void ctk_style_context_set_background       (CtkStyleContext *context,
                                              CdkWindow       *window);
 
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 void        ctk_render_insertion_cursor
                                    (CtkStyleContext     *context,
                                     cairo_t             *cr,
@@ -1241,7 +1241,7 @@ void        ctk_render_insertion_cursor
                                     PangoLayout         *layout,
                                     int                  index,
                                     PangoDirection       direction);
-GDK_DEPRECATED_IN_3_4
+CDK_DEPRECATED_IN_3_4
 void   ctk_draw_insertion_cursor    (CtkWidget          *widget,
                                      cairo_t            *cr,
                                      const CdkRectangle *location,
@@ -1255,7 +1255,7 @@ typedef enum {
   CTK_STYLE_CONTEXT_PRINT_SHOW_STYLE   = 1 << 1
 } CtkStyleContextPrintFlags;
 
-GDK_AVAILABLE_IN_3_20
+CDK_AVAILABLE_IN_3_20
 char * ctk_style_context_to_string (CtkStyleContext           *context,
                                     CtkStyleContextPrintFlags  flags);
 

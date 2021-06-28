@@ -16,8 +16,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_INTERNAL_QUARTZ_H__
-#define __GDK_INTERNAL_QUARTZ_H__
+#ifndef __CDK_INTERNAL_QUARTZ_H__
+#define __CDK_INTERNAL_QUARTZ_H__
 
 #include <AppKit/AppKit.h>
 
@@ -39,8 +39,8 @@ typedef unsigned int NSUInteger;
 typedef float CGFloat;
 #endif
 
-#define GDK_QUARTZ_ALLOC_POOL NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init]
-#define GDK_QUARTZ_RELEASE_POOL [pool release]
+#define CDK_QUARTZ_ALLOC_POOL NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init]
+#define CDK_QUARTZ_RELEASE_POOL [pool release]
 
 #include <cdk/cdkprivate.h>
 #include <cdk/quartz/cdkquartz.h>
@@ -59,7 +59,7 @@ extern CdkWindow *_cdk_root;
 
 extern CdkDragContext *_cdk_quartz_drag_source_context;
 
-#define GDK_WINDOW_IS_QUARTZ(win)        (GDK_IS_WINDOW_IMPL_QUARTZ (((CdkWindow *)win)->impl))
+#define CDK_WINDOW_IS_QUARTZ(win)        (CDK_IS_WINDOW_IMPL_QUARTZ (((CdkWindow *)win)->impl))
 
 /* Initialization */
 void _cdk_quartz_window_init_windowing      (CdkDisplay *display,
@@ -72,17 +72,17 @@ NSCursor   *_cdk_quartz_cursor_get_ns_cursor        (CdkCursor *cursor);
 
 /* Events */
 typedef enum {
-  GDK_QUARTZ_EVENT_SUBTYPE_EVENTLOOP
+  CDK_QUARTZ_EVENT_SUBTYPE_EVENTLOOP
 } CdkQuartzEventSubType;
 
 #if MAC_OS_X_VERSION_MIN_REQUIRED >= 10130
-#define GDK_QUARTZ_EVENT_TABLET_PROXIMITY NSEventTypeTabletProximity
-#define GDK_QUARTZ_EVENT_SUBTYPE_TABLET_PROXIMITY NSEventSubtypeTabletProximity
-#define GDK_QUARTZ_EVENT_SUBTYPE_TABLET_POINT NSEventSubtypeTabletPoint
+#define CDK_QUARTZ_EVENT_TABLET_PROXIMITY NSEventTypeTabletProximity
+#define CDK_QUARTZ_EVENT_SUBTYPE_TABLET_PROXIMITY NSEventSubtypeTabletProximity
+#define CDK_QUARTZ_EVENT_SUBTYPE_TABLET_POINT NSEventSubtypeTabletPoint
 #else
-#define GDK_QUARTZ_EVENT_TABLET_PROXIMITY NSTabletProximity
-#define GDK_QUARTZ_EVENT_SUBTYPE_TABLET_PROXIMITY NSTabletProximityEventSubtype
-#define GDK_QUARTZ_EVENT_SUBTYPE_TABLET_POINT NSTabletPointEventSubtype
+#define CDK_QUARTZ_EVENT_TABLET_PROXIMITY NSTabletProximity
+#define CDK_QUARTZ_EVENT_SUBTYPE_TABLET_PROXIMITY NSTabletProximityEventSubtype
+#define CDK_QUARTZ_EVENT_SUBTYPE_TABLET_POINT NSTabletPointEventSubtype
 #endif
 
 void         _cdk_quartz_events_update_focus_window    (CdkWindow *new_window,
@@ -285,4 +285,4 @@ void     _cdk_quartz_window_delete_property   (CdkWindow    *window,
                                                CdkAtom       property);
 
 
-#endif /* __GDK_INTERNAL_QUARTZ_H__ */
+#endif /* __CDK_INTERNAL_QUARTZ_H__ */

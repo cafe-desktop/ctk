@@ -78,7 +78,7 @@ cdk_monitor_get_property (GObject    *object,
                           GValue     *value,
                           GParamSpec *pspec)
 {
-  CdkMonitor *monitor = GDK_MONITOR (object);
+  CdkMonitor *monitor = CDK_MONITOR (object);
 
   switch (prop_id)
     {
@@ -137,7 +137,7 @@ cdk_monitor_set_property (GObject      *object,
                           const GValue *value,
                           GParamSpec   *pspec)
 {
-  CdkMonitor *monitor = GDK_MONITOR (object);
+  CdkMonitor *monitor = CDK_MONITOR (object);
 
   switch (prop_id)
     {
@@ -153,7 +153,7 @@ cdk_monitor_set_property (GObject      *object,
 static void
 cdk_monitor_finalize (GObject *object)
 {
-  CdkMonitor *monitor = GDK_MONITOR (object);
+  CdkMonitor *monitor = CDK_MONITOR (object);
 
   g_free (monitor->connector);
   g_free (monitor->manufacturer);
@@ -175,7 +175,7 @@ cdk_monitor_class_init (CdkMonitorClass *class)
     g_param_spec_object ("display",
                          "Display",
                          "The display of the monitor",
-                         GDK_TYPE_DISPLAY,
+                         CDK_TYPE_DISPLAY,
                          G_PARAM_READWRITE|G_PARAM_CONSTRUCT_ONLY);
   props[PROP_MANUFACTURER] =
     g_param_spec_string ("manufacturer",
@@ -200,13 +200,13 @@ cdk_monitor_class_init (CdkMonitorClass *class)
     g_param_spec_boxed ("geometry",
                         "Geometry",
                         "The geometry of the monitor",
-                        GDK_TYPE_RECTANGLE,
+                        CDK_TYPE_RECTANGLE,
                         G_PARAM_READABLE);
   props[PROP_WORKAREA] =
     g_param_spec_boxed ("workarea",
                         "Workarea",
                         "The workarea of the monitor",
-                        GDK_TYPE_RECTANGLE,
+                        CDK_TYPE_RECTANGLE,
                         G_PARAM_READABLE);
   props[PROP_WIDTH_MM] =
     g_param_spec_int ("width-mm",
@@ -233,8 +233,8 @@ cdk_monitor_class_init (CdkMonitorClass *class)
     g_param_spec_enum ("subpixel-layout",
                        "Subpixel layout",
                        "The subpixel layout",
-                       GDK_TYPE_SUBPIXEL_LAYOUT,
-                       GDK_SUBPIXEL_LAYOUT_UNKNOWN,
+                       CDK_TYPE_SUBPIXEL_LAYOUT,
+                       CDK_SUBPIXEL_LAYOUT_UNKNOWN,
                        G_PARAM_READABLE);
 
   g_object_class_install_properties (object_class, LAST_PROP, props);
@@ -260,7 +260,7 @@ cdk_monitor_class_init (CdkMonitorClass *class)
 CdkDisplay *
 cdk_monitor_get_display (CdkMonitor *monitor)
 {
-  g_return_val_if_fail (GDK_IS_MONITOR (monitor), NULL);
+  g_return_val_if_fail (CDK_IS_MONITOR (monitor), NULL);
 
   return monitor->display;
 }
@@ -280,7 +280,7 @@ void
 cdk_monitor_get_geometry (CdkMonitor   *monitor,
                           CdkRectangle *geometry)
 {
-  g_return_if_fail (GDK_IS_MONITOR (monitor));
+  g_return_if_fail (CDK_IS_MONITOR (monitor));
   g_return_if_fail (geometry != NULL);
 
   *geometry = monitor->geometry;
@@ -311,11 +311,11 @@ void
 cdk_monitor_get_workarea (CdkMonitor   *monitor,
                           CdkRectangle *workarea)
 {
-  g_return_if_fail (GDK_IS_MONITOR (monitor));
+  g_return_if_fail (CDK_IS_MONITOR (monitor));
   g_return_if_fail (workarea != NULL);
 
-  if (GDK_MONITOR_GET_CLASS (monitor)->get_workarea)
-    GDK_MONITOR_GET_CLASS (monitor)->get_workarea (monitor, workarea);
+  if (CDK_MONITOR_GET_CLASS (monitor)->get_workarea)
+    CDK_MONITOR_GET_CLASS (monitor)->get_workarea (monitor, workarea);
   else
     *workarea = monitor->geometry;
 }
@@ -333,7 +333,7 @@ cdk_monitor_get_workarea (CdkMonitor   *monitor,
 int
 cdk_monitor_get_width_mm (CdkMonitor *monitor)
 {
-  g_return_val_if_fail (GDK_IS_MONITOR (monitor), 0);
+  g_return_val_if_fail (CDK_IS_MONITOR (monitor), 0);
 
   return monitor->width_mm;
 }
@@ -350,7 +350,7 @@ cdk_monitor_get_width_mm (CdkMonitor *monitor)
 int
 cdk_monitor_get_height_mm (CdkMonitor *monitor)
 {
-  g_return_val_if_fail (GDK_IS_MONITOR (monitor), 0);
+  g_return_val_if_fail (CDK_IS_MONITOR (monitor), 0);
 
   return monitor->height_mm;
 }
@@ -366,7 +366,7 @@ cdk_monitor_get_height_mm (CdkMonitor *monitor)
 const char *
 cdk_monitor_get_connector (CdkMonitor *monitor)
 {
-  g_return_val_if_fail (GDK_IS_MONITOR (monitor), NULL);
+  g_return_val_if_fail (CDK_IS_MONITOR (monitor), NULL);
 
   return monitor->connector;
 }
@@ -387,7 +387,7 @@ cdk_monitor_get_connector (CdkMonitor *monitor)
 const char *
 cdk_monitor_get_manufacturer (CdkMonitor *monitor)
 {
-  g_return_val_if_fail (GDK_IS_MONITOR (monitor), NULL);
+  g_return_val_if_fail (CDK_IS_MONITOR (monitor), NULL);
 
   return monitor->manufacturer;
 }
@@ -403,7 +403,7 @@ cdk_monitor_get_manufacturer (CdkMonitor *monitor)
 const char *
 cdk_monitor_get_model (CdkMonitor *monitor)
 {
-  g_return_val_if_fail (GDK_IS_MONITOR (monitor), NULL);
+  g_return_val_if_fail (CDK_IS_MONITOR (monitor), NULL);
 
   return monitor->model;
 }
@@ -426,7 +426,7 @@ cdk_monitor_get_model (CdkMonitor *monitor)
 int
 cdk_monitor_get_scale_factor (CdkMonitor *monitor)
 {
-  g_return_val_if_fail (GDK_IS_MONITOR (monitor), 1);
+  g_return_val_if_fail (CDK_IS_MONITOR (monitor), 1);
 
   return monitor->scale_factor;
 }
@@ -446,7 +446,7 @@ cdk_monitor_get_scale_factor (CdkMonitor *monitor)
 int
 cdk_monitor_get_refresh_rate (CdkMonitor *monitor)
 {
-  g_return_val_if_fail (GDK_IS_MONITOR (monitor), 0);
+  g_return_val_if_fail (CDK_IS_MONITOR (monitor), 0);
 
   return monitor->refresh_rate;
 }
@@ -464,7 +464,7 @@ cdk_monitor_get_refresh_rate (CdkMonitor *monitor)
 CdkSubpixelLayout
 cdk_monitor_get_subpixel_layout (CdkMonitor *monitor)
 {
-  g_return_val_if_fail (GDK_IS_MONITOR (monitor), GDK_SUBPIXEL_LAYOUT_UNKNOWN);
+  g_return_val_if_fail (CDK_IS_MONITOR (monitor), CDK_SUBPIXEL_LAYOUT_UNKNOWN);
 
   return monitor->subpixel_layout;
 }
@@ -482,7 +482,7 @@ cdk_monitor_get_subpixel_layout (CdkMonitor *monitor)
 gboolean
 cdk_monitor_is_primary (CdkMonitor *monitor)
 {
-  g_return_val_if_fail (GDK_IS_MONITOR (monitor), FALSE);
+  g_return_val_if_fail (CDK_IS_MONITOR (monitor), FALSE);
 
   return monitor == cdk_display_get_primary_monitor (monitor->display);
 }
@@ -490,7 +490,7 @@ cdk_monitor_is_primary (CdkMonitor *monitor)
 CdkMonitor *
 cdk_monitor_new (CdkDisplay *display)
 {
-  return GDK_MONITOR (g_object_new (GDK_TYPE_MONITOR,
+  return CDK_MONITOR (g_object_new (CDK_TYPE_MONITOR,
                                     "display", display,
                                     NULL));
 }

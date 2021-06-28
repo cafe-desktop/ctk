@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2009 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -75,8 +75,8 @@ struct _CdkX11DeviceManagerXI2Class
 
 static void     cdk_x11_device_manager_xi2_event_translator_init (CdkEventTranslatorIface *iface);
 
-G_DEFINE_TYPE_WITH_CODE (CdkX11DeviceManagerXI2, cdk_x11_device_manager_xi2, GDK_TYPE_X11_DEVICE_MANAGER_CORE,
-                         G_IMPLEMENT_INTERFACE (GDK_TYPE_EVENT_TRANSLATOR,
+G_DEFINE_TYPE_WITH_CODE (CdkX11DeviceManagerXI2, cdk_x11_device_manager_xi2, CDK_TYPE_X11_DEVICE_MANAGER_CORE,
+                         G_IMPLEMENT_INTERFACE (CDK_TYPE_EVENT_TRANSLATOR,
                                                 cdk_x11_device_manager_xi2_event_translator_init))
 
 static void    cdk_x11_device_manager_xi2_constructed  (GObject      *object);
@@ -115,7 +115,7 @@ enum {
 static void
 cdk_x11_device_manager_xi2_class_init (CdkX11DeviceManagerXI2Class *klass)
 {
-  CdkDeviceManagerClass *device_manager_class = GDK_DEVICE_MANAGER_CLASS (klass);
+  CdkDeviceManagerClass *device_manager_class = CDK_DEVICE_MANAGER_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   object_class->constructed = cdk_x11_device_manager_xi2_constructed;
@@ -167,7 +167,7 @@ _cdk_x11_device_manager_xi2_select_events (CdkDeviceManager *device_manager,
   Display *xdisplay;
 
   display = cdk_device_manager_get_display (device_manager);
-  xdisplay = GDK_DISPLAY_XDISPLAY (display);
+  xdisplay = CDK_DISPLAY_XDISPLAY (display);
 
   XISelectEvents (xdisplay, xwindow, event_mask, 1);
 }
@@ -181,23 +181,23 @@ translate_valuator_class (CdkDisplay          *display,
                           gdouble              resolution)
 {
   static gboolean initialized = FALSE;
-  static Atom label_atoms [GDK_AXIS_LAST] = { 0 };
-  CdkAxisUse use = GDK_AXIS_IGNORE;
+  static Atom label_atoms [CDK_AXIS_LAST] = { 0 };
+  CdkAxisUse use = CDK_AXIS_IGNORE;
   CdkAtom label;
   gint i;
 
   if (!initialized)
     {
-      label_atoms [GDK_AXIS_X] = cdk_x11_get_xatom_by_name_for_display (display, "Abs X");
-      label_atoms [GDK_AXIS_Y] = cdk_x11_get_xatom_by_name_for_display (display, "Abs Y");
-      label_atoms [GDK_AXIS_PRESSURE] = cdk_x11_get_xatom_by_name_for_display (display, "Abs Pressure");
-      label_atoms [GDK_AXIS_XTILT] = cdk_x11_get_xatom_by_name_for_display (display, "Abs Tilt X");
-      label_atoms [GDK_AXIS_YTILT] = cdk_x11_get_xatom_by_name_for_display (display, "Abs Tilt Y");
-      label_atoms [GDK_AXIS_WHEEL] = cdk_x11_get_xatom_by_name_for_display (display, "Abs Wheel");
+      label_atoms [CDK_AXIS_X] = cdk_x11_get_xatom_by_name_for_display (display, "Abs X");
+      label_atoms [CDK_AXIS_Y] = cdk_x11_get_xatom_by_name_for_display (display, "Abs Y");
+      label_atoms [CDK_AXIS_PRESSURE] = cdk_x11_get_xatom_by_name_for_display (display, "Abs Pressure");
+      label_atoms [CDK_AXIS_XTILT] = cdk_x11_get_xatom_by_name_for_display (display, "Abs Tilt X");
+      label_atoms [CDK_AXIS_YTILT] = cdk_x11_get_xatom_by_name_for_display (display, "Abs Tilt Y");
+      label_atoms [CDK_AXIS_WHEEL] = cdk_x11_get_xatom_by_name_for_display (display, "Abs Wheel");
       initialized = TRUE;
     }
 
-  for (i = GDK_AXIS_IGNORE; i < GDK_AXIS_LAST; i++)
+  for (i = CDK_AXIS_IGNORE; i < CDK_AXIS_LAST; i++)
     {
       if (label_atoms[i] == valuator_label)
         {
@@ -209,10 +209,10 @@ translate_valuator_class (CdkDisplay          *display,
   if (valuator_label != None)
     label = cdk_x11_xatom_to_atom_for_display (display, valuator_label);
   else
-    label = GDK_NONE;
+    label = CDK_NONE;
 
   _cdk_device_add_axis (device, label, use, min, max, resolution);
-  GDK_NOTE (INPUT, g_message ("\n\taxis: %s %s", cdk_atom_name (label), use == GDK_AXIS_IGNORE ? "(ignored)" : "(used)"));
+  CDK_NOTE (INPUT, g_message ("\n\taxis: %s %s", cdk_atom_name (label), use == CDK_AXIS_IGNORE ? "(ignored)" : "(used)"));
 }
 
 static void
@@ -259,11 +259,11 @@ translate_device_classes (CdkDisplay      *display,
             CdkScrollDirection direction;
 
             if (scroll_info->scroll_type == XIScrollTypeVertical)
-              direction = GDK_SCROLL_DOWN;
+              direction = CDK_SCROLL_DOWN;
             else
-              direction = GDK_SCROLL_RIGHT;
+              direction = CDK_SCROLL_RIGHT;
 
-            GDK_NOTE (INPUT,
+            CDK_NOTE (INPUT,
                       g_message ("\n\tscroll valuator %d: %s, increment %f",
                                  scroll_info->number,
                                  scroll_info->scroll_type == XIScrollTypeVertical
@@ -271,7 +271,7 @@ translate_device_classes (CdkDisplay      *display,
                                                 : "horizontal",
                                  scroll_info->increment));
 
-            _cdk_x11_device_xi2_add_scroll_valuator (GDK_X11_DEVICE_XI2 (device),
+            _cdk_x11_device_xi2_add_scroll_valuator (CDK_X11_DEVICE_XI2 (device),
                                                      scroll_info->number,
                                                      direction,
                                                      scroll_info->increment);
@@ -305,9 +305,9 @@ is_touch_device (XIAnyClassInfo **classes,
       if (class->num_touches > 0)
         {
           if (class->mode == XIDirectTouch)
-            *device_type = GDK_SOURCE_TOUCHSCREEN;
+            *device_type = CDK_SOURCE_TOUCHSCREEN;
           else if (class->mode == XIDependentTouch)
-            *device_type = GDK_SOURCE_TOUCHPAD;
+            *device_type = CDK_SOURCE_TOUCHPAD;
           else
             continue;
 
@@ -367,7 +367,7 @@ get_device_ids (CdkDisplay    *display,
 
   cdk_x11_display_error_trap_push (display);
 
-  prop = XInternAtom (GDK_DISPLAY_XDISPLAY (display), "Device Product ID", True);
+  prop = XInternAtom (CDK_DISPLAY_XDISPLAY (display), "Device Product ID", True);
 
   if (prop == None)
     {
@@ -375,7 +375,7 @@ get_device_ids (CdkDisplay    *display,
       return 0;
     }
 
-  rc = XIGetProperty (GDK_DISPLAY_XDISPLAY (display),
+  rc = XIGetProperty (CDK_DISPLAY_XDISPLAY (display),
                       info->deviceid, prop,
                       0, 2, False, XA_INTEGER, &type, &format, &nitems, &bytes_after,
                       (guchar **) &data);
@@ -405,7 +405,7 @@ is_touchpad_device (CdkDisplay   *display,
 
   cdk_x11_display_error_trap_push (display);
 
-  rc = XIGetProperty (GDK_DISPLAY_XDISPLAY (display),
+  rc = XIGetProperty (CDK_DISPLAY_XDISPLAY (display),
                       info->deviceid,
                       cdk_x11_get_xatom_by_name_for_display (display, "libinput Tapping Enabled"),
                       0, 1, False, XA_INTEGER, &type, &format, &nitems, &bytes_after,
@@ -434,9 +434,9 @@ create_device (CdkDeviceManager *device_manager,
   gchar *vendor_id = NULL, *product_id = NULL;
 
   if (dev->use == XIMasterKeyboard || dev->use == XISlaveKeyboard)
-    input_source = GDK_SOURCE_KEYBOARD;
+    input_source = CDK_SOURCE_KEYBOARD;
   else if (is_touchpad_device (display, dev))
-    input_source = GDK_SOURCE_TOUCHPAD;
+    input_source = CDK_SOURCE_TOUCHPAD;
   else if (dev->use == XISlavePointer &&
            is_touch_device (dev->classes, dev->num_classes, &touch_source, &num_touches))
     input_source = touch_source;
@@ -447,26 +447,26 @@ create_device (CdkDeviceManager *device_manager,
       tmp_name = g_ascii_strdown (dev->name, -1);
 
       if (strstr (tmp_name, "eraser"))
-        input_source = GDK_SOURCE_ERASER;
+        input_source = CDK_SOURCE_ERASER;
       else if (strstr (tmp_name, "cursor"))
-        input_source = GDK_SOURCE_CURSOR;
+        input_source = CDK_SOURCE_CURSOR;
       else if (strstr (tmp_name, " pad"))
-        input_source = GDK_SOURCE_TABLET_PAD;
+        input_source = CDK_SOURCE_TABLET_PAD;
       else if (strstr (tmp_name, "wacom") ||
                strstr (tmp_name, "pen"))
-        input_source = GDK_SOURCE_PEN;
+        input_source = CDK_SOURCE_PEN;
       else if (!strstr (tmp_name, "mouse") &&
                !strstr (tmp_name, "pointer") &&
                !strstr (tmp_name, "qemu usb tablet") &&
                !strstr (tmp_name, "spice vdagent tablet") &&
                !strstr (tmp_name, "virtualbox usb tablet") &&
                has_abs_axes (display, dev->classes, dev->num_classes))
-        input_source = GDK_SOURCE_TOUCHSCREEN;
+        input_source = CDK_SOURCE_TOUCHSCREEN;
       else if (strstr (tmp_name, "trackpoint") ||
                strstr (tmp_name, "dualpoint stick"))
-        input_source = GDK_SOURCE_TRACKPOINT;
+        input_source = CDK_SOURCE_TRACKPOINT;
       else
-        input_source = GDK_SOURCE_MOUSE;
+        input_source = CDK_SOURCE_MOUSE;
 
       g_free (tmp_name);
     }
@@ -475,22 +475,22 @@ create_device (CdkDeviceManager *device_manager,
     {
     case XIMasterKeyboard:
     case XIMasterPointer:
-      type = GDK_DEVICE_TYPE_MASTER;
-      mode = GDK_MODE_SCREEN;
+      type = CDK_DEVICE_TYPE_MASTER;
+      mode = CDK_MODE_SCREEN;
       break;
     case XISlaveKeyboard:
     case XISlavePointer:
-      type = GDK_DEVICE_TYPE_SLAVE;
-      mode = GDK_MODE_DISABLED;
+      type = CDK_DEVICE_TYPE_SLAVE;
+      mode = CDK_MODE_DISABLED;
       break;
     case XIFloatingSlave:
     default:
-      type = GDK_DEVICE_TYPE_FLOATING;
-      mode = GDK_MODE_DISABLED;
+      type = CDK_DEVICE_TYPE_FLOATING;
+      mode = CDK_MODE_DISABLED;
       break;
     }
 
-  GDK_NOTE (INPUT,
+  CDK_NOTE (INPUT,
             ({
               const gchar *type_names[] = { "master", "slave", "floating" };
               const gchar *source_names[] = { "mouse", "pen", "eraser", "cursor", "keyboard", "direct touch", "indirect touch", "trackpoint", "pad" };
@@ -508,7 +508,7 @@ create_device (CdkDeviceManager *device_manager,
       dev->use != XIMasterPointer)
     get_device_ids (display, dev, &vendor_id, &product_id);
 
-  device = g_object_new (GDK_TYPE_X11_DEVICE_XI2,
+  device = g_object_new (CDK_TYPE_X11_DEVICE_XI2,
                          "name", dev->name,
                          "type", type,
                          "input-source", input_source,
@@ -538,12 +538,12 @@ ensure_seat_for_device_pair (CdkX11DeviceManagerXI2 *device_manager,
   CdkDisplay *display;
   CdkSeat *seat;
 
-  display = cdk_device_manager_get_display (GDK_DEVICE_MANAGER (device_manager));
+  display = cdk_device_manager_get_display (CDK_DEVICE_MANAGER (device_manager));
   seat = cdk_device_get_seat (device1);
 
   if (!seat)
     {
-      if (cdk_device_get_source (device1) == GDK_SOURCE_KEYBOARD)
+      if (cdk_device_get_source (device1) == CDK_SOURCE_KEYBOARD)
         {
           keyboard = device1;
           pointer = device2;
@@ -568,8 +568,8 @@ add_device (CdkX11DeviceManagerXI2 *device_manager,
   CdkDisplay *display;
   CdkDevice *device;
 
-  display = cdk_device_manager_get_display (GDK_DEVICE_MANAGER (device_manager));
-  device = create_device (GDK_DEVICE_MANAGER (device_manager), display, dev);
+  display = cdk_device_manager_get_display (CDK_DEVICE_MANAGER (device_manager));
+  device = create_device (CDK_DEVICE_MANAGER (device_manager), display, dev);
 
   g_hash_table_replace (device_manager->id_table,
                         GINT_TO_POINTER (dev->deviceid),
@@ -594,7 +594,7 @@ add_device (CdkX11DeviceManagerXI2 *device_manager,
           _cdk_device_add_slave (master, device);
 
           seat = cdk_device_get_seat (master);
-          cdk_seat_default_add_slave (GDK_SEAT_DEFAULT (seat), device);
+          cdk_seat_default_add_slave (CDK_SEAT_DEFAULT (seat), device);
         }
       else if (dev->use == XIMasterPointer || dev->use == XIMasterKeyboard)
         {
@@ -625,10 +625,10 @@ detach_from_seat (CdkDevice *device)
   if (!seat)
     return;
 
-  if (cdk_device_get_device_type (device) == GDK_DEVICE_TYPE_MASTER)
+  if (cdk_device_get_device_type (device) == CDK_DEVICE_TYPE_MASTER)
     cdk_display_remove_seat (cdk_device_get_display (device), seat);
-  else if (cdk_device_get_device_type (device) == GDK_DEVICE_TYPE_SLAVE)
-    cdk_seat_default_remove_slave (GDK_SEAT_DEFAULT (seat), device);
+  else if (cdk_device_get_device_type (device) == CDK_DEVICE_TYPE_SLAVE)
+    cdk_seat_default_remove_slave (CDK_SEAT_DEFAULT (seat), device);
 }
 
 static void
@@ -688,7 +688,7 @@ relate_slaves (gpointer key,
   _cdk_device_add_slave (master, slave);
 
   seat = cdk_device_get_seat (master);
-  cdk_seat_default_add_slave (GDK_SEAT_DEFAULT (seat), slave);
+  cdk_seat_default_add_slave (CDK_SEAT_DEFAULT (seat), slave);
 }
 
 static void
@@ -706,9 +706,9 @@ cdk_x11_device_manager_xi2_constructed (GObject *object)
 
   G_OBJECT_CLASS (cdk_x11_device_manager_xi2_parent_class)->constructed (object);
 
-  device_manager = GDK_X11_DEVICE_MANAGER_XI2 (object);
-  display = cdk_device_manager_get_display (GDK_DEVICE_MANAGER (object));
-  xdisplay = GDK_DISPLAY_XDISPLAY (display);
+  device_manager = CDK_X11_DEVICE_MANAGER_XI2 (object);
+  display = cdk_device_manager_get_display (CDK_DEVICE_MANAGER (object));
+  xdisplay = CDK_DISPLAY_XDISPLAY (display);
 
   g_assert (device_manager->major == 2);
 
@@ -762,8 +762,8 @@ cdk_x11_device_manager_xi2_constructed (GObject *object)
   event_mask.mask_len = sizeof (mask);
   event_mask.mask = mask;
 
-  _cdk_x11_device_manager_xi2_select_events (GDK_DEVICE_MANAGER (object),
-                                             GDK_WINDOW_XID (cdk_screen_get_root_window (screen)),
+  _cdk_x11_device_manager_xi2_select_events (CDK_DEVICE_MANAGER (object),
+                                             CDK_WINDOW_XID (cdk_screen_get_root_window (screen)),
                                              &event_mask);
 }
 
@@ -772,7 +772,7 @@ cdk_x11_device_manager_xi2_dispose (GObject *object)
 {
   CdkX11DeviceManagerXI2 *device_manager;
 
-  device_manager = GDK_X11_DEVICE_MANAGER_XI2 (object);
+  device_manager = CDK_X11_DEVICE_MANAGER_XI2 (object);
 
   g_list_free_full (device_manager->devices, g_object_unref);
   device_manager->devices = NULL;
@@ -793,7 +793,7 @@ cdk_x11_device_manager_xi2_list_devices (CdkDeviceManager *device_manager,
   CdkX11DeviceManagerXI2 *device_manager_xi2;
   GList *cur, *list = NULL;
 
-  device_manager_xi2 = GDK_X11_DEVICE_MANAGER_XI2 (device_manager);
+  device_manager_xi2 = CDK_X11_DEVICE_MANAGER_XI2 (device_manager);
 
   for (cur = device_manager_xi2->devices; cur; cur = cur->next)
     {
@@ -816,7 +816,7 @@ cdk_x11_device_manager_xi2_get_client_pointer (CdkDeviceManager *device_manager)
   device_manager_xi2 = (CdkX11DeviceManagerXI2 *) device_manager;
   display = cdk_device_manager_get_display (device_manager);
 
-  XIGetClientPointer (GDK_DISPLAY_XDISPLAY (display),
+  XIGetClientPointer (CDK_DISPLAY_XDISPLAY (display),
                       None, &device_id);
 
   return g_hash_table_lookup (device_manager_xi2->id_table,
@@ -831,7 +831,7 @@ cdk_x11_device_manager_xi2_set_property (GObject      *object,
 {
   CdkX11DeviceManagerXI2 *device_manager;
 
-  device_manager = GDK_X11_DEVICE_MANAGER_XI2 (object);
+  device_manager = CDK_X11_DEVICE_MANAGER_XI2 (object);
 
   switch (prop_id)
     {
@@ -858,7 +858,7 @@ cdk_x11_device_manager_xi2_get_property (GObject    *object,
 {
   CdkX11DeviceManagerXI2 *device_manager;
 
-  device_manager = GDK_X11_DEVICE_MANAGER_XI2 (object);
+  device_manager = CDK_X11_DEVICE_MANAGER_XI2 (object);
 
   switch (prop_id)
     {
@@ -896,8 +896,8 @@ handle_hierarchy_changed (CdkX11DeviceManagerXI2 *device_manager,
   int ndevices;
   gint i;
 
-  display = cdk_device_manager_get_display (GDK_DEVICE_MANAGER (device_manager));
-  xdisplay = GDK_DISPLAY_XDISPLAY (display);
+  display = cdk_device_manager_get_display (CDK_DEVICE_MANAGER (device_manager));
+  xdisplay = CDK_DISPLAY_XDISPLAY (display);
 
   for (i = 0; i < ev->num_info; i++)
     {
@@ -937,7 +937,7 @@ handle_hierarchy_changed (CdkX11DeviceManagerXI2 *device_manager,
               g_signal_emit_by_name (device_manager, "device-changed", master);
 
               seat = cdk_device_get_seat (master);
-              cdk_seat_default_remove_slave (GDK_SEAT_DEFAULT (seat), slave);
+              cdk_seat_default_remove_slave (CDK_SEAT_DEFAULT (seat), slave);
             }
 
           /* Add new master if it's an attachment event */
@@ -959,7 +959,7 @@ handle_hierarchy_changed (CdkX11DeviceManagerXI2 *device_manager,
                   _cdk_device_add_slave (master, slave);
 
                   seat = cdk_device_get_seat (master);
-                  cdk_seat_default_add_slave (GDK_SEAT_DEFAULT (seat), slave);
+                  cdk_seat_default_add_slave (CDK_SEAT_DEFAULT (seat), slave);
 
                   g_signal_emit_by_name (device_manager, "device-changed", master);
                 }
@@ -977,7 +977,7 @@ handle_device_changed (CdkX11DeviceManagerXI2 *device_manager,
   CdkDisplay *display;
   CdkDevice *device, *source_device;
 
-  display = cdk_device_manager_get_display (GDK_DEVICE_MANAGER (device_manager));
+  display = cdk_device_manager_get_display (CDK_DEVICE_MANAGER (device_manager));
   device = g_hash_table_lookup (device_manager->id_table,
                                 GUINT_TO_POINTER (ev->deviceid));
   source_device = g_hash_table_lookup (device_manager->id_table,
@@ -987,14 +987,14 @@ handle_device_changed (CdkX11DeviceManagerXI2 *device_manager,
     {
       _cdk_device_reset_axes (device);
       _cdk_device_xi2_unset_scroll_valuators ((CdkX11DeviceXI2 *) device);
-      cdk_x11_device_xi2_store_axes (GDK_X11_DEVICE_XI2 (device), NULL, 0);
+      cdk_x11_device_xi2_store_axes (CDK_X11_DEVICE_XI2 (device), NULL, 0);
       translate_device_classes (display, device, ev->classes, ev->num_classes);
 
       g_signal_emit_by_name (G_OBJECT (device), "changed");
     }
 
   if (source_device)
-    _cdk_device_xi2_reset_scroll_valuators (GDK_X11_DEVICE_XI2 (source_device));
+    _cdk_device_xi2_reset_scroll_valuators (CDK_X11_DEVICE_XI2 (source_device));
 }
 
 static gboolean
@@ -1012,7 +1012,7 @@ device_get_tool_serial_and_id (CdkDevice *device,
 
   cdk_x11_display_error_trap_push (display);
 
-  rc = XIGetProperty (GDK_DISPLAY_XDISPLAY (display),
+  rc = XIGetProperty (CDK_DISPLAY_XDISPLAY (display),
                       cdk_x11_device_get_id (device),
                       cdk_x11_get_xatom_by_name_for_display (display, "Wacom Serial IDs"),
                       0, 5, False, XA_INTEGER, &type, &format, &nitems, &bytes_after,
@@ -1045,12 +1045,12 @@ device_get_tool_type (CdkDevice *device)
   Atom type;
   Atom device_type;
   Atom types[N_WACOM_TYPE_ATOMS];
-  CdkDeviceToolType tool_type = GDK_DEVICE_TOOL_TYPE_UNKNOWN;
+  CdkDeviceToolType tool_type = CDK_DEVICE_TOOL_TYPE_UNKNOWN;
 
   display = cdk_device_get_display (device);
   cdk_x11_display_error_trap_push (display);
 
-  rc = XIGetProperty (GDK_DISPLAY_XDISPLAY (display),
+  rc = XIGetProperty (CDK_DISPLAY_XDISPLAY (display),
                       cdk_x11_device_get_id (device),
                       cdk_x11_get_xatom_by_name_for_display (display, "Wacom Tool Type"),
                       0, 1, False, XA_ATOM, &type, &format, &nitems, &bytes_after,
@@ -1058,22 +1058,22 @@ device_get_tool_type (CdkDevice *device)
   cdk_x11_display_error_trap_pop_ignored (display);
 
   if (rc != Success)
-    return GDK_DEVICE_TOOL_TYPE_UNKNOWN;
+    return CDK_DEVICE_TOOL_TYPE_UNKNOWN;
 
   if (type != XA_ATOM || format != 32 || nitems != 1)
     {
       XFree (data);
-      return GDK_DEVICE_TOOL_TYPE_UNKNOWN;
+      return CDK_DEVICE_TOOL_TYPE_UNKNOWN;
     }
 
   device_type = *data;
   XFree (data);
 
   if (device_type == 0)
-    return GDK_DEVICE_TOOL_TYPE_UNKNOWN;
+    return CDK_DEVICE_TOOL_TYPE_UNKNOWN;
 
   cdk_x11_display_error_trap_push (display);
-  rc = XInternAtoms (GDK_DISPLAY_XDISPLAY (display),
+  rc = XInternAtoms (CDK_DISPLAY_XDISPLAY (display),
                      (char **) wacom_type_atoms,
                      N_WACOM_TYPE_ATOMS,
                      False,
@@ -1081,16 +1081,16 @@ device_get_tool_type (CdkDevice *device)
   cdk_x11_display_error_trap_pop_ignored (display);
 
   if (rc == 0)
-    return GDK_DEVICE_TOOL_TYPE_UNKNOWN;
+    return CDK_DEVICE_TOOL_TYPE_UNKNOWN;
 
   if (device_type == types[WACOM_TYPE_STYLUS])
-    tool_type = GDK_DEVICE_TOOL_TYPE_PEN;
+    tool_type = CDK_DEVICE_TOOL_TYPE_PEN;
   else if (device_type == types[WACOM_TYPE_CURSOR])
-    tool_type = GDK_DEVICE_TOOL_TYPE_MOUSE;
+    tool_type = CDK_DEVICE_TOOL_TYPE_MOUSE;
   else if (device_type == types[WACOM_TYPE_ERASER])
-    tool_type = GDK_DEVICE_TOOL_TYPE_ERASER;
+    tool_type = CDK_DEVICE_TOOL_TYPE_ERASER;
   else if (device_type == types[WACOM_TYPE_TOUCH])
-    tool_type = GDK_DEVICE_TOOL_TYPE_UNKNOWN;
+    tool_type = CDK_DEVICE_TOOL_TYPE_UNKNOWN;
 
   return tool_type;
 }
@@ -1122,10 +1122,10 @@ handle_property_change (CdkX11DeviceManagerXI2 *device_manager,
               CdkDeviceToolType tool_type;
 
               tool_type = device_get_tool_type (device);
-              if (tool_type != GDK_DEVICE_TOOL_TYPE_UNKNOWN)
+              if (tool_type != CDK_DEVICE_TOOL_TYPE_UNKNOWN)
                 {
                   tool = cdk_device_tool_new (serial_id, tool_id, tool_type, 0);
-                  cdk_seat_default_add_tool (GDK_SEAT_DEFAULT (seat), tool);
+                  cdk_seat_default_add_tool (CDK_SEAT_DEFAULT (seat), tool);
                 }
             }
         }
@@ -1140,13 +1140,13 @@ translate_crossing_mode (gint mode)
   switch (mode)
     {
     case XINotifyNormal:
-      return GDK_CROSSING_NORMAL;
+      return CDK_CROSSING_NORMAL;
     case XINotifyGrab:
     case XINotifyPassiveGrab:
-      return GDK_CROSSING_GRAB;
+      return CDK_CROSSING_GRAB;
     case XINotifyUngrab:
     case XINotifyPassiveUngrab:
-      return GDK_CROSSING_UNGRAB;
+      return CDK_CROSSING_UNGRAB;
     case XINotifyWhileGrabbed:
       /* Fall through, unexpected in pointer crossing events */
     default:
@@ -1160,15 +1160,15 @@ translate_notify_type (gint detail)
   switch (detail)
     {
     case NotifyInferior:
-      return GDK_NOTIFY_INFERIOR;
+      return CDK_NOTIFY_INFERIOR;
     case NotifyAncestor:
-      return GDK_NOTIFY_ANCESTOR;
+      return CDK_NOTIFY_ANCESTOR;
     case NotifyVirtual:
-      return GDK_NOTIFY_VIRTUAL;
+      return CDK_NOTIFY_VIRTUAL;
     case NotifyNonlinear:
-      return GDK_NOTIFY_NONLINEAR;
+      return CDK_NOTIFY_NONLINEAR;
     case NotifyNonlinearVirtual:
-      return GDK_NOTIFY_NONLINEAR_VIRTUAL;
+      return CDK_NOTIFY_NONLINEAR_VIRTUAL;
     default:
       g_assert_not_reached ();
     }
@@ -1200,14 +1200,14 @@ set_user_time (CdkEvent *event)
   guint32 time;
 
   window = cdk_window_get_toplevel (event->any.window);
-  g_return_if_fail (GDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_WINDOW (window));
 
   time = cdk_event_get_time (event);
 
   /* If an event doesn't have a valid timestamp, we shouldn't use it
    * to update the latest user interaction time.
    */
-  if (time != GDK_CURRENT_TIME)
+  if (time != CDK_CURRENT_TIME)
     cdk_x11_window_set_user_time (window, time);
 }
 
@@ -1234,7 +1234,7 @@ translate_axes (CdkDevice       *device,
 
       if (!XIMaskIsSet (valuators->mask, i))
         {
-          axes[i] = cdk_x11_device_xi2_get_last_axis_value (GDK_X11_DEVICE_XI2 (device), i);
+          axes[i] = cdk_x11_device_xi2_get_last_axis_value (CDK_X11_DEVICE_XI2 (device), i);
           continue;
         }
 
@@ -1243,13 +1243,13 @@ translate_axes (CdkDevice       *device,
 
       switch (use)
         {
-        case GDK_AXIS_X:
-        case GDK_AXIS_Y:
-          if (cdk_device_get_mode (device) == GDK_MODE_WINDOW)
+        case CDK_AXIS_X:
+        case CDK_AXIS_Y:
+          if (cdk_device_get_mode (device) == CDK_MODE_WINDOW)
             _cdk_device_translate_window_coord (device, window, i, val, &axes[i]);
           else
             {
-              if (use == GDK_AXIS_X)
+              if (use == CDK_AXIS_X)
                 axes[i] = x;
               else
                 axes[i] = y;
@@ -1261,7 +1261,7 @@ translate_axes (CdkDevice       *device,
         }
     }
 
-  cdk_x11_device_xi2_store_axes (GDK_X11_DEVICE_XI2 (device), axes, n_axes);
+  cdk_x11_device_xi2_store_axes (CDK_X11_DEVICE_XI2 (device), axes, n_axes);
 
   return axes;
 }
@@ -1293,7 +1293,7 @@ get_event_window (CdkEventTranslator *translator,
   CdkWindow *window = NULL;
   gboolean should_have_window = TRUE;
 
-  display = cdk_device_manager_get_display (GDK_DEVICE_MANAGER (translator));
+  display = cdk_device_manager_get_display (CDK_DEVICE_MANAGER (translator));
 
   switch (ev->evtype)
     {
@@ -1319,7 +1319,7 @@ get_event_window (CdkEventTranslator *translator,
             CdkDevice *device;
             gulong serial;
 
-            device = g_hash_table_lookup (GDK_X11_DEVICE_MANAGER_XI2 (translator)->id_table,
+            device = g_hash_table_lookup (CDK_X11_DEVICE_MANAGER_XI2 (translator)->id_table,
                                           GUINT_TO_POINTER (((XIDeviceEvent *) ev)->deviceid));
 
             serial = _cdk_display_get_next_serial (display);
@@ -1417,7 +1417,7 @@ cdk_x11_device_manager_xi2_translate_core_event (CdkEventTranslator *translator,
   else
     return FALSE;
 
-  parent_iface = g_type_interface_peek_parent (GDK_EVENT_TRANSLATOR_GET_IFACE (translator));
+  parent_iface = g_type_interface_peek_parent (CDK_EVENT_TRANSLATOR_GET_IFACE (translator));
   if (!parent_iface->translate_event (translator, display, event, xevent))
     return FALSE;
 
@@ -1444,7 +1444,7 @@ scroll_valuators_changed (CdkX11DeviceXI2 *device,
   guint n_axes, i, n_val;
   gdouble *vals;
 
-  n_axes = cdk_device_get_n_axes (GDK_DEVICE (device));
+  n_axes = cdk_device_get_n_axes (CDK_DEVICE (device));
   vals = valuators->values;
   *dx = *dy = 0;
   n_val = 0;
@@ -1461,8 +1461,8 @@ scroll_valuators_changed (CdkX11DeviceXI2 *device,
         {
           has_scroll_valuators = TRUE;
 
-          if (direction == GDK_SCROLL_UP ||
-              direction == GDK_SCROLL_DOWN)
+          if (direction == CDK_SCROLL_UP ||
+              direction == CDK_SCROLL_DOWN)
             *dy = delta;
           else
             *dx = delta;
@@ -1505,13 +1505,13 @@ cdk_x11_device_manager_xi2_translate_event (CdkEventTranslator *translator,
   if (!get_event_window (translator, ev, &window))
     return FALSE;
 
-  if (window && GDK_WINDOW_DESTROYED (window))
+  if (window && CDK_WINDOW_DESTROYED (window))
     return FALSE;
 
   scale = 1;
   if (window)
     {
-      impl = GDK_WINDOW_IMPL_X11 (window->impl);
+      impl = CDK_WINDOW_IMPL_X11 (window->impl);
       scale = impl->window_scale;
     }
 
@@ -1546,7 +1546,7 @@ cdk_x11_device_manager_xi2_translate_event (CdkEventTranslator *translator,
         CdkKeymap *keymap = cdk_keymap_get_for_display (display);
         CdkModifierType consumed, state;
 
-        GDK_NOTE (EVENTS,
+        CDK_NOTE (EVENTS,
                   g_message ("key %s:\twindow %ld\n"
                              "\tdevice:%u\n"
                              "\tsource device:%u\n"
@@ -1557,7 +1557,7 @@ cdk_x11_device_manager_xi2_translate_event (CdkEventTranslator *translator,
                              xev->sourceid,
                              xev->detail));
 
-        event->key.type = xev->evtype == XI_KeyPress ? GDK_KEY_PRESS : GDK_KEY_RELEASE;
+        event->key.type = xev->evtype == XI_KeyPress ? CDK_KEY_PRESS : CDK_KEY_RELEASE;
 
         event->key.window = window;
 
@@ -1578,7 +1578,7 @@ cdk_x11_device_manager_xi2_translate_event (CdkEventTranslator *translator,
         cdk_event_set_source_device (event, source_device);
         cdk_event_set_seat (event, cdk_device_get_seat (device));
 
-        event->key.keyval = GDK_KEY_VoidSymbol;
+        event->key.keyval = CDK_KEY_VoidSymbol;
 
         cdk_keymap_translate_keyboard_state (keymap,
                                              event->key.hardware_keycode,
@@ -1607,7 +1607,7 @@ cdk_x11_device_manager_xi2_translate_event (CdkEventTranslator *translator,
       {
         XIDeviceEvent *xev = (XIDeviceEvent *) ev;
 
-        GDK_NOTE (EVENTS,
+        CDK_NOTE (EVENTS,
                   g_message ("button %s:\twindow %ld\n"
                              "\tdevice:%u\n"
                              "\tsource device:%u\n"
@@ -1627,16 +1627,16 @@ cdk_x11_device_manager_xi2_translate_event (CdkEventTranslator *translator,
                  (xev->detail >= 4 && xev->detail <= 7))
           {
             /* Button presses of button 4-7 are scroll events */
-            event->scroll.type = GDK_SCROLL;
+            event->scroll.type = CDK_SCROLL;
 
             if (xev->detail == 4)
-              event->scroll.direction = GDK_SCROLL_UP;
+              event->scroll.direction = CDK_SCROLL_UP;
             else if (xev->detail == 5)
-              event->scroll.direction = GDK_SCROLL_DOWN;
+              event->scroll.direction = CDK_SCROLL_DOWN;
             else if (xev->detail == 6)
-              event->scroll.direction = GDK_SCROLL_LEFT;
+              event->scroll.direction = CDK_SCROLL_LEFT;
             else
-              event->scroll.direction = GDK_SCROLL_RIGHT;
+              event->scroll.direction = CDK_SCROLL_RIGHT;
 
             event->scroll.window = window;
             event->scroll.time = xev->time;
@@ -1665,7 +1665,7 @@ cdk_x11_device_manager_xi2_translate_event (CdkEventTranslator *translator,
           }
         else
           {
-            event->button.type = (ev->evtype == XI_ButtonPress) ? GDK_BUTTON_PRESS : GDK_BUTTON_RELEASE;
+            event->button.type = (ev->evtype == XI_ButtonPress) ? CDK_BUTTON_PRESS : CDK_BUTTON_RELEASE;
 
             event->button.window = window;
             event->button.time = xev->time;
@@ -1690,13 +1690,13 @@ cdk_x11_device_manager_xi2_translate_event (CdkEventTranslator *translator,
                                                  event->button.window,
                                                  &xev->valuators);
 
-            if (cdk_device_get_mode (event->button.device) == GDK_MODE_WINDOW)
+            if (cdk_device_get_mode (event->button.device) == CDK_MODE_WINDOW)
               {
                 CdkDevice *device = event->button.device;
 
                 /* Update event coordinates from axes */
-                cdk_device_get_axis (device, event->button.axes, GDK_AXIS_X, &event->button.x);
-                cdk_device_get_axis (device, event->button.axes, GDK_AXIS_Y, &event->button.y);
+                cdk_device_get_axis (device, event->button.axes, CDK_AXIS_X, &event->button.x);
+                cdk_device_get_axis (device, event->button.axes, CDK_AXIS_Y, &event->button.y);
               }
 
             event->button.state = _cdk_x11_device_xi2_translate_state (&xev->mods, &xev->buttons, &xev->group);
@@ -1742,17 +1742,17 @@ cdk_x11_device_manager_xi2_translate_event (CdkEventTranslator *translator,
          * source device, we need to explicitly ignore the first event in
          * order to get the correct delta for the second.
          */
-        if (cdk_device_get_device_type (device) != GDK_DEVICE_TYPE_SLAVE &&
-            scroll_valuators_changed (GDK_X11_DEVICE_XI2 (source_device),
+        if (cdk_device_get_device_type (device) != CDK_DEVICE_TYPE_SLAVE &&
+            scroll_valuators_changed (CDK_X11_DEVICE_XI2 (source_device),
                                       &xev->valuators, &delta_x, &delta_y))
           {
-            event->scroll.type = GDK_SCROLL;
-            event->scroll.direction = GDK_SCROLL_SMOOTH;
+            event->scroll.type = CDK_SCROLL;
+            event->scroll.direction = CDK_SCROLL_SMOOTH;
 
             if (delta_x == 0.0 && delta_y == 0.0)
               event->scroll.is_stop = TRUE;
 
-            GDK_NOTE(EVENTS,
+            CDK_NOTE(EVENTS,
                      g_message ("smooth scroll: %s\n\tdevice: %u\n\tsource device: %u\n\twindow %ld\n\tdeltas: %f %f",
 #ifdef XINPUT_2_2
                                 (xev->flags & XIPointerEmulated) ? "emulated" : "",
@@ -1780,7 +1780,7 @@ cdk_x11_device_manager_xi2_translate_event (CdkEventTranslator *translator,
             break;
           }
 
-        event->motion.type = GDK_MOTION_NOTIFY;
+        event->motion.type = CDK_MOTION_NOTIFY;
         event->motion.window = window;
         event->motion.time = xev->time;
         event->motion.x = (gdouble) xev->event_x / scale;
@@ -1809,11 +1809,11 @@ cdk_x11_device_manager_xi2_translate_event (CdkEventTranslator *translator,
                                              event->motion.window,
                                              &xev->valuators);
 
-        if (cdk_device_get_mode (event->motion.device) == GDK_MODE_WINDOW)
+        if (cdk_device_get_mode (event->motion.device) == CDK_MODE_WINDOW)
           {
             /* Update event coordinates from axes */
-            cdk_device_get_axis (event->motion.device, event->motion.axes, GDK_AXIS_X, &event->motion.x);
-            cdk_device_get_axis (event->motion.device, event->motion.axes, GDK_AXIS_Y, &event->motion.y);
+            cdk_device_get_axis (event->motion.device, event->motion.axes, CDK_AXIS_X, &event->motion.x);
+            cdk_device_get_axis (event->motion.device, event->motion.axes, CDK_AXIS_Y, &event->motion.y);
           }
       }
       break;
@@ -1824,7 +1824,7 @@ cdk_x11_device_manager_xi2_translate_event (CdkEventTranslator *translator,
       {
         XIDeviceEvent *xev = (XIDeviceEvent *) ev;
 
-        GDK_NOTE(EVENTS,
+        CDK_NOTE(EVENTS,
                  g_message ("touch %s:\twindow %ld\n\ttouch id: %u\n\tpointer emulating: %s",
                             ev->evtype == XI_TouchBegin ? "begin" : "end",
                             xev->event,
@@ -1832,9 +1832,9 @@ cdk_x11_device_manager_xi2_translate_event (CdkEventTranslator *translator,
                             xev->flags & XITouchEmulatingPointer ? "true" : "false"));
 
         if (ev->evtype == XI_TouchBegin)
-          event->touch.type = GDK_TOUCH_BEGIN;
+          event->touch.type = CDK_TOUCH_BEGIN;
         else if (ev->evtype == XI_TouchEnd)
-          event->touch.type = GDK_TOUCH_END;
+          event->touch.type = CDK_TOUCH_END;
 
         event->touch.window = window;
         event->touch.time = xev->time;
@@ -1858,19 +1858,19 @@ cdk_x11_device_manager_xi2_translate_event (CdkEventTranslator *translator,
                                             event->touch.window,
                                             &xev->valuators);
 
-        if (cdk_device_get_mode (event->touch.device) == GDK_MODE_WINDOW)
+        if (cdk_device_get_mode (event->touch.device) == CDK_MODE_WINDOW)
           {
             CdkDevice *device = event->touch.device;
 
             /* Update event coordinates from axes */
-            cdk_device_get_axis (device, event->touch.axes, GDK_AXIS_X, &event->touch.x);
-            cdk_device_get_axis (device, event->touch.axes, GDK_AXIS_Y, &event->touch.y);
+            cdk_device_get_axis (device, event->touch.axes, CDK_AXIS_X, &event->touch.x);
+            cdk_device_get_axis (device, event->touch.axes, CDK_AXIS_Y, &event->touch.y);
           }
 
         event->touch.state = _cdk_x11_device_xi2_translate_state (&xev->mods, &xev->buttons, &xev->group);
 
         if (ev->evtype == XI_TouchBegin)
-          event->touch.state |= GDK_BUTTON1_MASK;
+          event->touch.state |= CDK_BUTTON1_MASK;
 
         event->touch.sequence = GUINT_TO_POINTER (xev->detail);
 
@@ -1898,7 +1898,7 @@ cdk_x11_device_manager_xi2_translate_event (CdkEventTranslator *translator,
       {
         XIDeviceEvent *xev = (XIDeviceEvent *) ev;
 
-        GDK_NOTE(EVENTS,
+        CDK_NOTE(EVENTS,
                  g_message ("touch update:\twindow %ld\n\ttouch id: %u\n\tpointer emulating: %s",
                             xev->event,
                             xev->detail,
@@ -1906,7 +1906,7 @@ cdk_x11_device_manager_xi2_translate_event (CdkEventTranslator *translator,
 
         event->touch.window = window;
         event->touch.sequence = GUINT_TO_POINTER (xev->detail);
-        event->touch.type = GDK_TOUCH_UPDATE;
+        event->touch.type = CDK_TOUCH_UPDATE;
         event->touch.time = xev->time;
         event->touch.x = (gdouble) xev->event_x / scale;
         event->touch.y = (gdouble) xev->event_y / scale;
@@ -1924,7 +1924,7 @@ cdk_x11_device_manager_xi2_translate_event (CdkEventTranslator *translator,
 
         event->touch.state = _cdk_x11_device_xi2_translate_state (&xev->mods, &xev->buttons, &xev->group);
 
-        event->touch.state |= GDK_BUTTON1_MASK;
+        event->touch.state |= CDK_BUTTON1_MASK;
 
         if (xev->flags & XITouchEmulatingPointer)
           {
@@ -1938,13 +1938,13 @@ cdk_x11_device_manager_xi2_translate_event (CdkEventTranslator *translator,
                                             event->touch.window,
                                             &xev->valuators);
 
-        if (cdk_device_get_mode (event->touch.device) == GDK_MODE_WINDOW)
+        if (cdk_device_get_mode (event->touch.device) == CDK_MODE_WINDOW)
           {
             CdkDevice *device = event->touch.device;
 
             /* Update event coordinates from axes */
-            cdk_device_get_axis (device, event->touch.axes, GDK_AXIS_X, &event->touch.x);
-            cdk_device_get_axis (device, event->touch.axes, GDK_AXIS_Y, &event->touch.y);
+            cdk_device_get_axis (device, event->touch.axes, CDK_AXIS_X, &event->touch.x);
+            cdk_device_get_axis (device, event->touch.axes, CDK_AXIS_Y, &event->touch.y);
           }
       }
       break;
@@ -1955,7 +1955,7 @@ cdk_x11_device_manager_xi2_translate_event (CdkEventTranslator *translator,
       {
         XIEnterEvent *xev = (XIEnterEvent *) ev;
 
-        GDK_NOTE (EVENTS,
+        CDK_NOTE (EVENTS,
                   g_message ("%s notify:\twindow %ld\n\tsubwindow:%ld\n"
                              "\tdevice: %u\n\tsource device: %u\n"
                              "\tnotify type: %u\n\tcrossing mode: %u",
@@ -1964,7 +1964,7 @@ cdk_x11_device_manager_xi2_translate_event (CdkEventTranslator *translator,
                              xev->deviceid, xev->sourceid,
                              xev->detail, xev->mode));
 
-        event->crossing.type = (ev->evtype == XI_Enter) ? GDK_ENTER_NOTIFY : GDK_LEAVE_NOTIFY;
+        event->crossing.type = (ev->evtype == XI_Enter) ? CDK_ENTER_NOTIFY : CDK_LEAVE_NOTIFY;
 
         event->crossing.x = (gdouble) xev->event_x / scale;
         event->crossing.y = (gdouble) xev->event_y / scale;
@@ -1987,10 +1987,10 @@ cdk_x11_device_manager_xi2_translate_event (CdkEventTranslator *translator,
 
         if (ev->evtype == XI_Enter &&
             xev->detail != XINotifyInferior && xev->mode != XINotifyPassiveUngrab &&
-	    cdk_window_get_window_type (window) == GDK_WINDOW_TOPLEVEL)
+	    cdk_window_get_window_type (window) == CDK_WINDOW_TOPLEVEL)
           {
-            if (cdk_device_get_device_type (source_device) != GDK_DEVICE_TYPE_MASTER)
-              _cdk_device_xi2_reset_scroll_valuators (GDK_X11_DEVICE_XI2 (source_device));
+            if (cdk_device_get_device_type (source_device) != CDK_DEVICE_TYPE_MASTER)
+              _cdk_device_xi2_reset_scroll_valuators (CDK_X11_DEVICE_XI2 (source_device));
             else
               {
                 GList *slaves, *l;
@@ -1998,7 +1998,7 @@ cdk_x11_device_manager_xi2_translate_event (CdkEventTranslator *translator,
                 slaves = cdk_device_list_slave_devices (source_device);
 
                 for (l = slaves; l; l = l->next)
-                  _cdk_device_xi2_reset_scroll_valuators (GDK_X11_DEVICE_XI2 (l->data));
+                  _cdk_device_xi2_reset_scroll_valuators (CDK_X11_DEVICE_XI2 (l->data));
 
                 g_list_free (slaves);
               }
@@ -2046,8 +2046,8 @@ cdk_x11_device_manager_xi2_translate_event (CdkEventTranslator *translator,
       if (event->any.window)
         g_object_ref (event->any.window);
 
-      if (((event->any.type == GDK_ENTER_NOTIFY) ||
-           (event->any.type == GDK_LEAVE_NOTIFY)) &&
+      if (((event->any.type == CDK_ENTER_NOTIFY) ||
+           (event->any.type == CDK_LEAVE_NOTIFY)) &&
           (event->crossing.subwindow != NULL))
         g_object_ref (event->crossing.subwindow);
     }
@@ -2055,7 +2055,7 @@ cdk_x11_device_manager_xi2_translate_event (CdkEventTranslator *translator,
     {
       /* Mark this event as having no resources to be freed */
       event->any.window = NULL;
-      event->any.type = GDK_NOTHING;
+      event->any.type = CDK_NOTHING;
     }
 
   return return_val;
@@ -2064,21 +2064,21 @@ cdk_x11_device_manager_xi2_translate_event (CdkEventTranslator *translator,
 static CdkEventMask
 cdk_x11_device_manager_xi2_get_handled_events (CdkEventTranslator *translator)
 {
-  return (GDK_KEY_PRESS_MASK |
-          GDK_KEY_RELEASE_MASK |
-          GDK_BUTTON_PRESS_MASK |
-          GDK_BUTTON_RELEASE_MASK |
-          GDK_SCROLL_MASK |
-          GDK_ENTER_NOTIFY_MASK |
-          GDK_LEAVE_NOTIFY_MASK |
-          GDK_POINTER_MOTION_MASK |
-          GDK_POINTER_MOTION_HINT_MASK |
-          GDK_BUTTON1_MOTION_MASK |
-          GDK_BUTTON2_MOTION_MASK |
-          GDK_BUTTON3_MOTION_MASK |
-          GDK_BUTTON_MOTION_MASK |
-          GDK_FOCUS_CHANGE_MASK |
-          GDK_TOUCH_MASK);
+  return (CDK_KEY_PRESS_MASK |
+          CDK_KEY_RELEASE_MASK |
+          CDK_BUTTON_PRESS_MASK |
+          CDK_BUTTON_RELEASE_MASK |
+          CDK_SCROLL_MASK |
+          CDK_ENTER_NOTIFY_MASK |
+          CDK_LEAVE_NOTIFY_MASK |
+          CDK_POINTER_MOTION_MASK |
+          CDK_POINTER_MOTION_HINT_MASK |
+          CDK_BUTTON1_MOTION_MASK |
+          CDK_BUTTON2_MOTION_MASK |
+          CDK_BUTTON3_MOTION_MASK |
+          CDK_BUTTON_MOTION_MASK |
+          CDK_FOCUS_CHANGE_MASK |
+          CDK_TOUCH_MASK);
 }
 
 static void
@@ -2089,10 +2089,10 @@ cdk_x11_device_manager_xi2_select_window_events (CdkEventTranslator *translator,
   CdkDeviceManager *device_manager;
   XIEventMask event_mask;
 
-  device_manager = GDK_DEVICE_MANAGER (translator);
+  device_manager = CDK_DEVICE_MANAGER (translator);
 
   event_mask.deviceid = XIAllMasterDevices;
-  event_mask.mask = _cdk_x11_device_xi2_translate_event_mask (GDK_X11_DEVICE_MANAGER_XI2 (device_manager),
+  event_mask.mask = _cdk_x11_device_xi2_translate_event_mask (CDK_X11_DEVICE_MANAGER_XI2 (device_manager),
                                                               evmask,
                                                               &event_mask.mask_len);
 

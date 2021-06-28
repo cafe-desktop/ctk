@@ -105,33 +105,33 @@ add_entries (CtkKeyHash *hash,
     _ctk_key_hash_add_entry (hash, entries[i].keyval, entries[i].modifiers, GINT_TO_POINTER (i+1));
 }
 
-#define DEFAULT_MASK (GDK_CONTROL_MASK \
-                      | GDK_SHIFT_MASK \
-                      | GDK_MOD1_MASK  \
-                      | GDK_SUPER_MASK \
-                      | GDK_HYPER_MASK \
-                      | GDK_META_MASK)
+#define DEFAULT_MASK (CDK_CONTROL_MASK \
+                      | CDK_SHIFT_MASK \
+                      | CDK_MOD1_MASK  \
+                      | CDK_SUPER_MASK \
+                      | CDK_HYPER_MASK \
+                      | CDK_META_MASK)
 
 static void
 test_match (void)
 {
   CtkKeyHash *hash;
   static Entry entries[] = {
-    { GDK_KEY_a, GDK_CONTROL_MASK },
-    { GDK_KEY_a, GDK_CONTROL_MASK|GDK_SHIFT_MASK } ,
-    { GDK_KEY_b, GDK_MOD1_MASK|GDK_CONTROL_MASK },
-    { GDK_KEY_F10, 0 },
+    { CDK_KEY_a, CDK_CONTROL_MASK },
+    { CDK_KEY_a, CDK_CONTROL_MASK|CDK_SHIFT_MASK } ,
+    { CDK_KEY_b, CDK_MOD1_MASK|CDK_CONTROL_MASK },
+    { CDK_KEY_F10, 0 },
     {  0, 0 }
   };
 
   hash = _ctk_key_hash_new (cdk_keymap_get_default (), NULL);
   add_entries (hash, entries);
 
-  test_lookup (hash, GDK_KEY_a, GDK_CONTROL_MASK, DEFAULT_MASK, 4, 1, 1, 2, 2);
-  test_lookup (hash, GDK_KEY_A, GDK_CONTROL_MASK, DEFAULT_MASK, 4, 1, 1, 2, 2);
-  test_lookup (hash, GDK_KEY_a, GDK_MOD1_MASK, DEFAULT_MASK, 0);
-  test_lookup (hash, GDK_KEY_F10, 0, DEFAULT_MASK, 4, 4, 4, 4, 4);
-  test_lookup (hash, GDK_KEY_F10, GDK_SHIFT_MASK, DEFAULT_MASK, 4, 4, 4, 4, 4);
+  test_lookup (hash, CDK_KEY_a, CDK_CONTROL_MASK, DEFAULT_MASK, 4, 1, 1, 2, 2);
+  test_lookup (hash, CDK_KEY_A, CDK_CONTROL_MASK, DEFAULT_MASK, 4, 1, 1, 2, 2);
+  test_lookup (hash, CDK_KEY_a, CDK_MOD1_MASK, DEFAULT_MASK, 0);
+  test_lookup (hash, CDK_KEY_F10, 0, DEFAULT_MASK, 4, 4, 4, 4, 4);
+  test_lookup (hash, CDK_KEY_F10, CDK_SHIFT_MASK, DEFAULT_MASK, 4, 4, 4, 4, 4);
 
   _ctk_key_hash_free (hash);
 }
@@ -141,12 +141,12 @@ hyper_equals_super (void)
 {
   CdkModifierType mods1, mods2;
 
-  mods1 = GDK_HYPER_MASK;
+  mods1 = CDK_HYPER_MASK;
   cdk_keymap_map_virtual_modifiers (cdk_keymap_get_default (), &mods1);
-  mods1 = mods1 & ~GDK_HYPER_MASK;
-  mods2 = GDK_SUPER_MASK;
+  mods1 = mods1 & ~CDK_HYPER_MASK;
+  mods2 = CDK_SUPER_MASK;
   cdk_keymap_map_virtual_modifiers (cdk_keymap_get_default (), &mods2);
-  mods2 = mods2 & ~GDK_SUPER_MASK;
+  mods2 = mods2 & ~CDK_SUPER_MASK;
 
   return mods1 == mods2;
 }
@@ -156,31 +156,31 @@ test_virtual (void)
 {
   CtkKeyHash *hash;
   static Entry entries[] = {
-    { GDK_KEY_a, GDK_SUPER_MASK },
-    { GDK_KEY_b, GDK_HYPER_MASK } ,
-    { GDK_KEY_c, GDK_META_MASK },
-    { GDK_KEY_d, GDK_SUPER_MASK|GDK_HYPER_MASK },
+    { CDK_KEY_a, CDK_SUPER_MASK },
+    { CDK_KEY_b, CDK_HYPER_MASK } ,
+    { CDK_KEY_c, CDK_META_MASK },
+    { CDK_KEY_d, CDK_SUPER_MASK|CDK_HYPER_MASK },
     {  0, 0 }
   };
 
   hash = _ctk_key_hash_new (cdk_keymap_get_default (), NULL);
   add_entries (hash, entries);
 
-  test_lookup (hash, GDK_KEY_a, GDK_SUPER_MASK, DEFAULT_MASK, 2, 1, 1);
-  test_lookup (hash, GDK_KEY_a, GDK_HYPER_MASK, DEFAULT_MASK, 0);
-  test_lookup (hash, GDK_KEY_b, GDK_HYPER_MASK, DEFAULT_MASK, 2, 2, 2);
-  test_lookup (hash, GDK_KEY_c, GDK_META_MASK,  DEFAULT_MASK, 2, 3, 3);
+  test_lookup (hash, CDK_KEY_a, CDK_SUPER_MASK, DEFAULT_MASK, 2, 1, 1);
+  test_lookup (hash, CDK_KEY_a, CDK_HYPER_MASK, DEFAULT_MASK, 0);
+  test_lookup (hash, CDK_KEY_b, CDK_HYPER_MASK, DEFAULT_MASK, 2, 2, 2);
+  test_lookup (hash, CDK_KEY_c, CDK_META_MASK,  DEFAULT_MASK, 2, 3, 3);
   if (hyper_equals_super ())
     {
       CdkModifierType mods;
 
       /* test that colocated virtual modifiers don't count twice */
-      test_lookup (hash, GDK_KEY_d, GDK_SUPER_MASK, DEFAULT_MASK, 0);
-      test_lookup (hash, GDK_KEY_d, GDK_HYPER_MASK, DEFAULT_MASK, 0);
+      test_lookup (hash, CDK_KEY_d, CDK_SUPER_MASK, DEFAULT_MASK, 0);
+      test_lookup (hash, CDK_KEY_d, CDK_HYPER_MASK, DEFAULT_MASK, 0);
 
-      mods = GDK_HYPER_MASK;
+      mods = CDK_HYPER_MASK;
       cdk_keymap_map_virtual_modifiers (cdk_keymap_get_default (), &mods);
-      test_lookup (hash, GDK_KEY_d, mods, DEFAULT_MASK, 0);
+      test_lookup (hash, CDK_KEY_d, mods, DEFAULT_MASK, 0);
     }
 
   _ctk_key_hash_free (hash);

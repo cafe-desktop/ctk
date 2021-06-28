@@ -49,13 +49,13 @@ cdk_quartz_cursor_new_from_nscursor (NSCursor      *nscursor,
 {
   CdkQuartzCursor *private;
 
-  private = g_object_new (GDK_TYPE_QUARTZ_CURSOR,
+  private = g_object_new (CDK_TYPE_QUARTZ_CURSOR,
                           "cursor-type", cursor_type,
                           "display", _cdk_display,
                           NULL);
   private->nscursor = nscursor;
 
-  return GDK_CURSOR (private);
+  return CDK_CURSOR (private);
 }
 
 static CdkCursor *
@@ -70,7 +70,7 @@ create_blank_cursor (void)
                                hotSpot:NSMakePoint(0.0, 0.0)];
   [nsimage release];
 
-  return cdk_quartz_cursor_new_from_nscursor (nscursor, GDK_BLANK_CURSOR);
+  return cdk_quartz_cursor_new_from_nscursor (nscursor, CDK_BLANK_CURSOR);
 }
 
 static gboolean
@@ -114,7 +114,7 @@ create_builtin_cursor (CdkCursorType cursor_type)
   if (cursor)
     return cursor;
 
-  GDK_QUARTZ_ALLOC_POOL;
+  CDK_QUARTZ_ALLOC_POOL;
 
   src_width = xcursors[cursor_type].width;
   src_height = xcursors[cursor_type].height;
@@ -178,11 +178,11 @@ create_builtin_cursor (CdkCursorType cursor_type)
   nscursor = [[NSCursor alloc] initWithImage:image hotSpot:hotspot];
   [image release];
 
-  cursor = cdk_quartz_cursor_new_from_nscursor (nscursor, GDK_CURSOR_IS_PIXMAP);
+  cursor = cdk_quartz_cursor_new_from_nscursor (nscursor, CDK_CURSOR_IS_PIXMAP);
 
   cached_xcursors[cursor_type] = g_object_ref (cursor);
 
-  GDK_QUARTZ_RELEASE_POOL;
+  CDK_QUARTZ_RELEASE_POOL;
 
   return cursor;
 }
@@ -197,50 +197,50 @@ _cdk_quartz_display_get_cursor_for_type (CdkDisplay    *display,
 
   switch (cursor_type)
     {
-    case GDK_XTERM:
+    case CDK_XTERM:
       nscursor = [NSCursor IBeamCursor];
       break;
-    case GDK_SB_H_DOUBLE_ARROW:
+    case CDK_SB_H_DOUBLE_ARROW:
       nscursor = [NSCursor resizeLeftRightCursor];
       break;
-    case GDK_SB_V_DOUBLE_ARROW:
+    case CDK_SB_V_DOUBLE_ARROW:
       nscursor = [NSCursor resizeUpDownCursor];
       break;
-    case GDK_SB_UP_ARROW:
-    case GDK_BASED_ARROW_UP:
-    case GDK_BOTTOM_TEE:
-    case GDK_TOP_SIDE:
+    case CDK_SB_UP_ARROW:
+    case CDK_BASED_ARROW_UP:
+    case CDK_BOTTOM_TEE:
+    case CDK_TOP_SIDE:
       nscursor = [NSCursor resizeUpCursor];
       break;
-    case GDK_SB_DOWN_ARROW:
-    case GDK_BASED_ARROW_DOWN:
-    case GDK_TOP_TEE:
-    case GDK_BOTTOM_SIDE:
+    case CDK_SB_DOWN_ARROW:
+    case CDK_BASED_ARROW_DOWN:
+    case CDK_TOP_TEE:
+    case CDK_BOTTOM_SIDE:
       nscursor = [NSCursor resizeDownCursor];
       break;
-    case GDK_SB_LEFT_ARROW:
-    case GDK_RIGHT_TEE:
-    case GDK_LEFT_SIDE:
+    case CDK_SB_LEFT_ARROW:
+    case CDK_RIGHT_TEE:
+    case CDK_LEFT_SIDE:
       nscursor = [NSCursor resizeLeftCursor];
       break;
-    case GDK_SB_RIGHT_ARROW:
-    case GDK_LEFT_TEE:
-    case GDK_RIGHT_SIDE:
+    case CDK_SB_RIGHT_ARROW:
+    case CDK_LEFT_TEE:
+    case CDK_RIGHT_SIDE:
       nscursor = [NSCursor resizeRightCursor];
       break;
-    case GDK_TCROSS:
-    case GDK_CROSS:
-    case GDK_CROSSHAIR:
-    case GDK_DIAMOND_CROSS:
+    case CDK_TCROSS:
+    case CDK_CROSS:
+    case CDK_CROSSHAIR:
+    case CDK_DIAMOND_CROSS:
       nscursor = [NSCursor crosshairCursor];
       break;
-    case GDK_HAND1:
-    case GDK_HAND2:
+    case CDK_HAND1:
+    case CDK_HAND2:
       nscursor = [NSCursor pointingHandCursor];
       break;
-    case GDK_CURSOR_IS_PIXMAP:
+    case CDK_CURSOR_IS_PIXMAP:
       return NULL;
-    case GDK_BLANK_CURSOR:
+    case CDK_BLANK_CURSOR:
       return create_blank_cursor ();
     default:
       return g_object_ref (create_builtin_cursor (cursor_type));
@@ -262,7 +262,7 @@ _cdk_quartz_display_get_cursor_for_surface (CdkDisplay      *display,
   CdkCursor *cursor;
   CdkPixbuf *pixbuf;
 
-  GDK_QUARTZ_ALLOC_POOL;
+  CDK_QUARTZ_ALLOC_POOL;
 
   pixbuf = cdk_pixbuf_get_from_surface (surface, 0, 0,
 					cairo_image_surface_get_width (surface),
@@ -270,11 +270,11 @@ _cdk_quartz_display_get_cursor_for_surface (CdkDisplay      *display,
   image = cdk_quartz_pixbuf_to_ns_image_libctk_only (pixbuf);
   nscursor = [[NSCursor alloc] initWithImage:image hotSpot:NSMakePoint(x, y)];
 
-  cursor = cdk_quartz_cursor_new_from_nscursor (nscursor, GDK_CURSOR_IS_PIXMAP);
+  cursor = cdk_quartz_cursor_new_from_nscursor (nscursor, CDK_CURSOR_IS_PIXMAP);
 
   g_object_unref (pixbuf);
 
-  GDK_QUARTZ_RELEASE_POOL;
+  CDK_QUARTZ_RELEASE_POOL;
 
   return cursor;
 }
@@ -407,10 +407,10 @@ _cdk_quartz_display_get_cursor_for_name (CdkDisplay  *display,
   nscursor = [[cdkCoreCursor class] performSelector:selector];
 
   [nscursor retain];
-  return cdk_quartz_cursor_new_from_nscursor (nscursor, GDK_CURSOR_IS_PIXMAP);
+  return cdk_quartz_cursor_new_from_nscursor (nscursor, CDK_CURSOR_IS_PIXMAP);
 }
 
-G_DEFINE_TYPE (CdkQuartzCursor, cdk_quartz_cursor, GDK_TYPE_CURSOR)
+G_DEFINE_TYPE (CdkQuartzCursor, cdk_quartz_cursor, CDK_TYPE_CURSOR)
 
 static cairo_surface_t *cdk_quartz_cursor_get_surface (CdkCursor *cursor,
 						       gdouble *x_hot,
@@ -419,7 +419,7 @@ static cairo_surface_t *cdk_quartz_cursor_get_surface (CdkCursor *cursor,
 static void
 cdk_quartz_cursor_finalize (GObject *object)
 {
-  CdkQuartzCursor *private = GDK_QUARTZ_CURSOR (object);
+  CdkQuartzCursor *private = CDK_QUARTZ_CURSOR (object);
 
   if (private->nscursor)
     [private->nscursor release];
@@ -429,7 +429,7 @@ cdk_quartz_cursor_finalize (GObject *object)
 static void
 cdk_quartz_cursor_class_init (CdkQuartzCursorClass *quartz_cursor_class)
 {
-  CdkCursorClass *cursor_class = GDK_CURSOR_CLASS (quartz_cursor_class);
+  CdkCursorClass *cursor_class = CDK_CURSOR_CLASS (quartz_cursor_class);
   GObjectClass *object_class = G_OBJECT_CLASS (quartz_cursor_class);
 
   object_class->finalize = cdk_quartz_cursor_finalize;
@@ -483,9 +483,9 @@ _cdk_quartz_cursor_get_ns_cursor (CdkCursor *cursor)
   if (!cursor)
     return [NSCursor arrowCursor];
 
-  g_return_val_if_fail (GDK_IS_QUARTZ_CURSOR (cursor), NULL);
+  g_return_val_if_fail (CDK_IS_QUARTZ_CURSOR (cursor), NULL);
 
-  cursor_private = GDK_QUARTZ_CURSOR (cursor);
+  cursor_private = CDK_QUARTZ_CURSOR (cursor);
 
   return cursor_private->nscursor;
 }

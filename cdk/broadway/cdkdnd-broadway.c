@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1999 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -35,14 +35,14 @@
 
 #include <string.h>
 
-#define GDK_TYPE_BROADWAY_DRAG_CONTEXT              (cdk_broadway_drag_context_get_type ())
-#define GDK_BROADWAY_DRAG_CONTEXT(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_BROADWAY_DRAG_CONTEXT, CdkBroadwayDragContext))
-#define GDK_BROADWAY_DRAG_CONTEXT_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_BROADWAY_DRAG_CONTEXT, CdkBroadwayDragContextClass))
-#define GDK_IS_BROADWAY_DRAG_CONTEXT(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_BROADWAY_DRAG_CONTEXT))
-#define GDK_IS_BROADWAY_DRAG_CONTEXT_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_BROADWAY_DRAG_CONTEXT))
-#define GDK_BROADWAY_DRAG_CONTEXT_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_BROADWAY_DRAG_CONTEXT, CdkBroadwayDragContextClass))
+#define CDK_TYPE_BROADWAY_DRAG_CONTEXT              (cdk_broadway_drag_context_get_type ())
+#define CDK_BROADWAY_DRAG_CONTEXT(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), CDK_TYPE_BROADWAY_DRAG_CONTEXT, CdkBroadwayDragContext))
+#define CDK_BROADWAY_DRAG_CONTEXT_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CDK_TYPE_BROADWAY_DRAG_CONTEXT, CdkBroadwayDragContextClass))
+#define CDK_IS_BROADWAY_DRAG_CONTEXT(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), CDK_TYPE_BROADWAY_DRAG_CONTEXT))
+#define CDK_IS_BROADWAY_DRAG_CONTEXT_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CDK_TYPE_BROADWAY_DRAG_CONTEXT))
+#define CDK_BROADWAY_DRAG_CONTEXT_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CDK_TYPE_BROADWAY_DRAG_CONTEXT, CdkBroadwayDragContextClass))
 
-#ifdef GDK_COMPILATION
+#ifdef CDK_COMPILATION
 typedef struct _CdkBroadwayDragContext CdkBroadwayDragContext;
 #else
 typedef CdkDragContext CdkBroadwayDragContext;
@@ -64,7 +64,7 @@ static void cdk_broadway_drag_context_finalize (GObject *object);
 
 static GList *contexts;
 
-G_DEFINE_TYPE (CdkBroadwayDragContext, cdk_broadway_drag_context, GDK_TYPE_DRAG_CONTEXT)
+G_DEFINE_TYPE (CdkBroadwayDragContext, cdk_broadway_drag_context, CDK_TYPE_DRAG_CONTEXT)
 
 static void
 cdk_broadway_drag_context_init (CdkBroadwayDragContext *dragcontext)
@@ -75,7 +75,7 @@ cdk_broadway_drag_context_init (CdkBroadwayDragContext *dragcontext)
 static void
 cdk_broadway_drag_context_finalize (GObject *object)
 {
-  CdkDragContext *context = GDK_DRAG_CONTEXT (object);
+  CdkDragContext *context = CDK_DRAG_CONTEXT (object);
 
   contexts = g_list_remove (contexts, context);
 
@@ -94,9 +94,9 @@ _cdk_broadway_window_drag_begin (CdkWindow *window,
   CdkDragContext *new_context;
 
   g_return_val_if_fail (window != NULL, NULL);
-  g_return_val_if_fail (GDK_WINDOW_IS_BROADWAY (window), NULL);
+  g_return_val_if_fail (CDK_WINDOW_IS_BROADWAY (window), NULL);
 
-  new_context = g_object_new (GDK_TYPE_BROADWAY_DRAG_CONTEXT,
+  new_context = g_object_new (CDK_TYPE_BROADWAY_DRAG_CONTEXT,
 			      NULL);
   new_context->display = cdk_window_get_display (window);
 
@@ -107,7 +107,7 @@ CdkDragProtocol
 _cdk_broadway_window_get_drag_protocol (CdkWindow *window,
 					CdkWindow **target)
 {
-  return GDK_DRAG_PROTO_NONE;
+  return CDK_DRAG_PROTO_NONE;
 }
 
 static CdkWindow *
@@ -133,7 +133,7 @@ cdk_broadway_drag_context_drag_motion (CdkDragContext *context,
 				       guint32         time)
 {
   g_return_val_if_fail (context != NULL, FALSE);
-  g_return_val_if_fail (dest_window == NULL || GDK_WINDOW_IS_BROADWAY (dest_window), FALSE);
+  g_return_val_if_fail (dest_window == NULL || CDK_WINDOW_IS_BROADWAY (dest_window), FALSE);
 
   return FALSE;
 }
@@ -186,9 +186,9 @@ _cdk_broadway_window_register_dnd (CdkWindow      *window)
 static CdkAtom
 cdk_broadway_drag_context_get_selection (CdkDragContext *context)
 {
-  g_return_val_if_fail (context != NULL, GDK_NONE);
+  g_return_val_if_fail (context != NULL, CDK_NONE);
 
-  return GDK_NONE;
+  return CDK_NONE;
 }
 
 static gboolean
@@ -208,7 +208,7 @@ static void
 cdk_broadway_drag_context_class_init (CdkBroadwayDragContextClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  CdkDragContextClass *context_class = GDK_DRAG_CONTEXT_CLASS (klass);
+  CdkDragContextClass *context_class = CDK_DRAG_CONTEXT_CLASS (klass);
 
   object_class->finalize = cdk_broadway_drag_context_finalize;
 

@@ -551,15 +551,15 @@ ctk_path_bar_realize (CtkWidget *widget)
 
   ctk_widget_get_allocation (widget, &allocation);
 
-  attributes.window_type = GDK_WINDOW_CHILD;
+  attributes.window_type = CDK_WINDOW_CHILD;
   attributes.x = allocation.x;
   attributes.y = allocation.y;
   attributes.width = allocation.width;
   attributes.height = allocation.height;
-  attributes.wclass = GDK_INPUT_ONLY;
+  attributes.wclass = CDK_INPUT_ONLY;
   attributes.event_mask = ctk_widget_get_events (widget);
-  attributes.event_mask |= GDK_SCROLL_MASK;
-  attributes_mask = GDK_WA_X | GDK_WA_Y;
+  attributes.event_mask |= CDK_SCROLL_MASK;
+  attributes_mask = CDK_WA_X | CDK_WA_Y;
 
   path_bar->priv->event_window = cdk_window_new (ctk_widget_get_parent_window (widget),
                                            &attributes, attributes_mask);
@@ -851,15 +851,15 @@ ctk_path_bar_scroll (CtkWidget      *widget,
 {
   switch (event->direction)
     {
-    case GDK_SCROLL_RIGHT:
-    case GDK_SCROLL_DOWN:
+    case CDK_SCROLL_RIGHT:
+    case CDK_SCROLL_DOWN:
       ctk_path_bar_scroll_down (CTK_PATH_BAR (widget));
       break;
-    case GDK_SCROLL_LEFT:
-    case GDK_SCROLL_UP:
+    case CDK_SCROLL_LEFT:
+    case CDK_SCROLL_UP:
       ctk_path_bar_scroll_up (CTK_PATH_BAR (widget));
       break;
-    case GDK_SCROLL_SMOOTH:
+    case CDK_SCROLL_SMOOTH:
       break;
     }
 
@@ -1085,7 +1085,7 @@ ctk_path_bar_slider_up_defocus (CtkWidget      *widget,
   GList *list;
   GList *up_button = NULL;
 
-  if (event->type != GDK_FOCUS_CHANGE)
+  if (event->type != CDK_FOCUS_CHANGE)
     return FALSE;
 
   for (list = g_list_last (path_bar->priv->button_list); list; list = list->prev)
@@ -1113,7 +1113,7 @@ ctk_path_bar_slider_down_defocus (CtkWidget      *widget,
   GList *list;
   GList *down_button = NULL;
 
-  if (event->type != GDK_FOCUS_CHANGE)
+  if (event->type != CDK_FOCUS_CHANGE)
     return FALSE;
 
   for (list = path_bar->priv->button_list; list; list = list->next)
@@ -1138,7 +1138,7 @@ ctk_path_bar_slider_button_press (CtkWidget      *widget,
 				  CdkEventButton *event,
 				  CtkPathBar     *path_bar)
 {
-  if (event->type != GDK_BUTTON_PRESS || event->button != GDK_BUTTON_PRIMARY)
+  if (event->type != CDK_BUTTON_PRESS || event->button != CDK_BUTTON_PRIMARY)
     return FALSE;
 
   path_bar->priv->ignore_click = FALSE;
@@ -1173,7 +1173,7 @@ ctk_path_bar_slider_button_release (CtkWidget      *widget,
 				    CdkEventButton *event,
 				    CtkPathBar     *path_bar)
 {
-  if (event->type != GDK_BUTTON_RELEASE)
+  if (event->type != CDK_BUTTON_RELEASE)
     return FALSE;
 
   path_bar->priv->ignore_click = TRUE;
@@ -1560,7 +1560,7 @@ make_directory_button (CtkPathBar  *path_bar,
   button_data->button = ctk_toggle_button_new ();
   atk_obj = ctk_widget_get_accessible (button_data->button);
   ctk_widget_set_focus_on_click (button_data->button, FALSE);
-  ctk_widget_add_events (button_data->button, GDK_SCROLL_MASK);
+  ctk_widget_add_events (button_data->button, CDK_SCROLL_MASK);
 
   switch (button_data->type)
     {
@@ -1601,9 +1601,9 @@ make_directory_button (CtkPathBar  *path_bar,
 		     (GWeakNotify) button_data_free, button_data);
 
   ctk_drag_source_set (button_data->button,
-		       GDK_BUTTON1_MASK,
+		       CDK_BUTTON1_MASK,
 		       NULL, 0,
-		       GDK_ACTION_COPY);
+		       CDK_ACTION_COPY);
   ctk_drag_source_add_uri_targets (button_data->button);
   g_signal_connect (button_data->button, "drag-data-get",
 		    G_CALLBACK (button_drag_data_get_cb), button_data);

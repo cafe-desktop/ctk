@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_BROADWAY_MONITOR_PRIVATE_H__
-#define __GDK_BROADWAY_MONITOR_PRIVATE_H__
+#ifndef __CDK_BROADWAY_MONITOR_PRIVATE_H__
+#define __CDK_BROADWAY_MONITOR_PRIVATE_H__
 
 #include <glib.h>
 #include <gio/gio.h>

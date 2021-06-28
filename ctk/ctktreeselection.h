@@ -103,69 +103,69 @@ struct _CtkTreeSelectionClass
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType            ctk_tree_selection_get_type            (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_tree_selection_set_mode            (CtkTreeSelection            *selection,
 							 CtkSelectionMode             type);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkSelectionMode ctk_tree_selection_get_mode        (CtkTreeSelection            *selection);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_tree_selection_set_select_function (CtkTreeSelection            *selection,
 							 CtkTreeSelectionFunc         func,
 							 gpointer                     data,
 							 GDestroyNotify               destroy);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gpointer         ctk_tree_selection_get_user_data       (CtkTreeSelection            *selection);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreeView*     ctk_tree_selection_get_tree_view       (CtkTreeSelection            *selection);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreeSelectionFunc ctk_tree_selection_get_select_function (CtkTreeSelection        *selection);
 
 /* Only meaningful if CTK_SELECTION_SINGLE or CTK_SELECTION_BROWSE is set */
 /* Use selected_foreach or get_selected_rows for CTK_SELECTION_MULTIPLE */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean         ctk_tree_selection_get_selected        (CtkTreeSelection            *selection,
 							 CtkTreeModel               **model,
 							 CtkTreeIter                 *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GList *          ctk_tree_selection_get_selected_rows   (CtkTreeSelection            *selection,
                                                          CtkTreeModel               **model);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint             ctk_tree_selection_count_selected_rows (CtkTreeSelection            *selection);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_tree_selection_selected_foreach    (CtkTreeSelection            *selection,
 							 CtkTreeSelectionForeachFunc  func,
 							 gpointer                     data);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_tree_selection_select_path         (CtkTreeSelection            *selection,
 							 CtkTreePath                 *path);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_tree_selection_unselect_path       (CtkTreeSelection            *selection,
 							 CtkTreePath                 *path);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_tree_selection_select_iter         (CtkTreeSelection            *selection,
 							 CtkTreeIter                 *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_tree_selection_unselect_iter       (CtkTreeSelection            *selection,
 							 CtkTreeIter                 *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean         ctk_tree_selection_path_is_selected    (CtkTreeSelection            *selection,
 							 CtkTreePath                 *path);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean         ctk_tree_selection_iter_is_selected    (CtkTreeSelection            *selection,
 							 CtkTreeIter                 *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_tree_selection_select_all          (CtkTreeSelection            *selection);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_tree_selection_unselect_all        (CtkTreeSelection            *selection);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_tree_selection_select_range        (CtkTreeSelection            *selection,
 							 CtkTreePath                 *start_path,
 							 CtkTreePath                 *end_path);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_tree_selection_unselect_range      (CtkTreeSelection            *selection,
                                                          CtkTreePath                 *start_path,
 							 CtkTreePath                 *end_path);

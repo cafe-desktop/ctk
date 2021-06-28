@@ -17,8 +17,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_QUARTZ_DISPLAY__
-#define __GDK_QUARTZ_DISPLAY__
+#ifndef __CDK_QUARTZ_DISPLAY__
+#define __CDK_QUARTZ_DISPLAY__
 
 #include "cdkdisplayprivate.h"
 #include "cdkkeys.h"
@@ -113,4 +113,4 @@ gchar *     _cdk_quartz_display_utf8_to_string_target      (CdkDisplay     *disp
                                                             const gchar    *str);
 G_END_DECLS
 
-#endif  /* __GDK_QUARTZ_DISPLAY__ */
+#endif  /* __CDK_QUARTZ_DISPLAY__ */

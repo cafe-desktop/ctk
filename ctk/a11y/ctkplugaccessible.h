@@ -53,10 +53,10 @@ struct _CtkPlugAccessibleClass
   CtkWindowAccessibleClass parent_class;
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType ctk_plug_accessible_get_type (void);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gchar *ctk_plug_accessible_get_id (CtkPlugAccessible *plug);
 
 G_END_DECLS

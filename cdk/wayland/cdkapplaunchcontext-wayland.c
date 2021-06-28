@@ -74,7 +74,7 @@ struct _CdkWaylandAppLaunchContextClass
 
 GType cdk_wayland_app_launch_context_get_type (void);
 
-G_DEFINE_TYPE (CdkWaylandAppLaunchContext, cdk_wayland_app_launch_context, GDK_TYPE_APP_LAUNCH_CONTEXT)
+G_DEFINE_TYPE (CdkWaylandAppLaunchContext, cdk_wayland_app_launch_context, CDK_TYPE_APP_LAUNCH_CONTEXT)
 
 static void
 cdk_wayland_app_launch_context_class_init (CdkWaylandAppLaunchContextClass *klass)

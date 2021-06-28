@@ -34,10 +34,10 @@
 
 #include "fallback-c89.c"
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
 #include "x11/cdkx.h"
 #endif
-#ifdef GDK_WINDOWING_WAYLAND
+#ifdef CDK_WINDOWING_WAYLAND
 #include "wayland/cdkwayland.h"
 #endif
 
@@ -146,8 +146,8 @@ redraw_everything (void)
 static double
 get_font_scale (CtkInspectorVisual *vis)
 {
-#ifdef GDK_WINDOWING_X11
-  if (GDK_IS_X11_DISPLAY (cdk_display_get_default ()))
+#ifdef CDK_WINDOWING_X11
+  if (CDK_IS_X11_DISPLAY (cdk_display_get_default ()))
     {
       int dpi_int;
 
@@ -158,8 +158,8 @@ get_font_scale (CtkInspectorVisual *vis)
       return dpi_int / (96.0 * 1024.0);
     }
 #endif
-#ifdef GDK_WINDOWING_WAYLAND
-  if (GDK_IS_WAYLAND_DISPLAY (cdk_display_get_default ()))
+#ifdef CDK_WINDOWING_WAYLAND
+  if (CDK_IS_WAYLAND_DISPLAY (cdk_display_get_default ()))
     {
       int dpi_int;
 
@@ -224,7 +224,7 @@ updates_activate (CtkSwitch *sw)
   gboolean updates;
 
   updates = ctk_switch_get_active (sw);
-  GDK_PRIVATE_CALL (cdk_display_set_debug_updates) (cdk_display_get_default (), updates);
+  CDK_PRIVATE_CALL (cdk_display_set_debug_updates) (cdk_display_get_default (), updates);
   redraw_everything ();
 }
 
@@ -233,7 +233,7 @@ init_updates (CtkInspectorVisual *vis)
 {
   gboolean updates;
 
-  updates = GDK_PRIVATE_CALL (cdk_display_get_debug_updates) (cdk_display_get_default ());
+  updates = CDK_PRIVATE_CALL (cdk_display_get_debug_updates) (cdk_display_get_default ());
   ctk_switch_set_active (CTK_SWITCH (vis->priv->updates_switch), updates);
 }
 
@@ -356,7 +356,7 @@ static gchar*
 get_data_path (const gchar *subdir)
 {
   gchar *base_datadir, *full_datadir;
-#if defined (GDK_WINDOWING_WIN32) || defined (GDK_WINDOWING_QUARTZ)
+#if defined (CDK_WINDOWING_WIN32) || defined (CDK_WINDOWING_QUARTZ)
   base_datadir = g_strdup (_ctk_get_datadir ());
 #else
   base_datadir = g_strdup (CTK_DATADIR);
@@ -617,7 +617,7 @@ init_font_scale (CtkInspectorVisual *vis)
                     G_CALLBACK (font_scale_entry_activated), vis);
 }
 
-#if defined (GDK_WINDOWING_X11)
+#if defined (CDK_WINDOWING_X11)
 static void
 scale_changed (CtkAdjustment *adjustment, CtkInspectorVisual *vis)
 {
@@ -633,11 +633,11 @@ scale_changed (CtkAdjustment *adjustment, CtkInspectorVisual *vis)
 static void
 init_scale (CtkInspectorVisual *vis)
 {
-#if defined (GDK_WINDOWING_X11)
+#if defined (CDK_WINDOWING_X11)
   CdkScreen *screen;
 
   screen = cdk_screen_get_default ();
-  if (GDK_IS_X11_SCREEN (screen))
+  if (CDK_IS_X11_SCREEN (screen))
     {
       gdouble scale;
 
@@ -804,26 +804,26 @@ init_gl (CtkInspectorVisual *vis)
 {
   CdkGLFlags flags;
 
-  flags = GDK_PRIVATE_CALL (cdk_gl_get_flags) ();
+  flags = CDK_PRIVATE_CALL (cdk_gl_get_flags) ();
 
-  if (flags & GDK_GL_ALWAYS)
+  if (flags & CDK_GL_ALWAYS)
     ctk_combo_box_set_active_id (CTK_COMBO_BOX (vis->priv->gl_combo), "always");
-  else if (flags & GDK_GL_DISABLE)
+  else if (flags & CDK_GL_DISABLE)
     ctk_combo_box_set_active_id (CTK_COMBO_BOX (vis->priv->gl_combo), "disable");
   else
     ctk_combo_box_set_active_id (CTK_COMBO_BOX (vis->priv->gl_combo), "maybe");
   ctk_widget_set_sensitive (vis->priv->gl_combo, FALSE);
   ctk_widget_set_tooltip_text (vis->priv->gl_combo,
-                               _("Not settable at runtime.\nUse GDK_GL=always or GDK_GL=disable instead"));
+                               _("Not settable at runtime.\nUse CDK_GL=always or CDK_GL=disable instead"));
 
   ctk_switch_set_active (CTK_SWITCH (vis->priv->software_gl_switch),
-                         flags & GDK_GL_SOFTWARE_DRAW_GL);
+                         flags & CDK_GL_SOFTWARE_DRAW_GL);
   ctk_switch_set_active (CTK_SWITCH (vis->priv->software_surface_switch),
-                         flags & GDK_GL_SOFTWARE_DRAW_SURFACE);
+                         flags & CDK_GL_SOFTWARE_DRAW_SURFACE);
   ctk_switch_set_active (CTK_SWITCH (vis->priv->texture_rectangle_switch),
-                         flags & GDK_GL_TEXTURE_RECTANGLE);
+                         flags & CDK_GL_TEXTURE_RECTANGLE);
 
-  if (flags & GDK_GL_DISABLE)
+  if (flags & CDK_GL_DISABLE)
     {
       ctk_widget_set_sensitive (vis->priv->software_gl_switch, FALSE);
       ctk_widget_set_sensitive (vis->priv->software_surface_switch, FALSE);
@@ -839,7 +839,7 @@ init_rendering_mode (CtkInspectorVisual *vis)
 {
   CdkRenderingMode mode;
 
-  mode = GDK_PRIVATE_CALL (cdk_display_get_rendering_mode) (cdk_display_get_default ());
+  mode = CDK_PRIVATE_CALL (cdk_display_get_rendering_mode) (cdk_display_get_default ());
   ctk_combo_box_set_active (CTK_COMBO_BOX (vis->priv->rendering_mode_combo), mode);
 }
 
@@ -850,7 +850,7 @@ rendering_mode_changed (CtkComboBox        *c,
   CdkRenderingMode mode;
 
   mode = ctk_combo_box_get_active (c);
-  GDK_PRIVATE_CALL (cdk_display_set_rendering_mode) (cdk_display_get_default (), mode);
+  CDK_PRIVATE_CALL (cdk_display_set_rendering_mode) (cdk_display_get_default (), mode);
 }
 
 static void
@@ -859,32 +859,32 @@ update_gl_flag (CtkSwitch  *sw,
 {
   CdkGLFlags flags;
 
-  flags = GDK_PRIVATE_CALL (cdk_gl_get_flags) ();
+  flags = CDK_PRIVATE_CALL (cdk_gl_get_flags) ();
 
   if (ctk_switch_get_active (sw))
     flags |= flag;
   else
     flags &= ~flag;
 
-  GDK_PRIVATE_CALL (cdk_gl_set_flags) (flags);
+  CDK_PRIVATE_CALL (cdk_gl_set_flags) (flags);
 }
 
 static void
 software_gl_activate (CtkSwitch *sw)
 {
-  update_gl_flag (sw, GDK_GL_SOFTWARE_DRAW_GL);
+  update_gl_flag (sw, CDK_GL_SOFTWARE_DRAW_GL);
 }
 
 static void
 software_surface_activate (CtkSwitch *sw)
 {
-  update_gl_flag (sw, GDK_GL_SOFTWARE_DRAW_SURFACE);
+  update_gl_flag (sw, CDK_GL_SOFTWARE_DRAW_SURFACE);
 }
 
 static void
 texture_rectangle_activate (CtkSwitch *sw)
 {
-  update_gl_flag (sw, GDK_GL_TEXTURE_RECTANGLE);
+  update_gl_flag (sw, CDK_GL_TEXTURE_RECTANGLE);
 }
 
 static void

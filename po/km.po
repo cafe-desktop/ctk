@@ -64,8 +64,8 @@ msgstr "បង្ហាញ"
 
 #. Description of --cdk-debug=FLAGS in --help output
 #: ../cdk/cdk.c:213
-msgid "GDK debugging flags to set"
-msgstr "កំណត់​ទង់​បំបាត់​កំហុស​របស់ GDK"
+msgid "CDK debugging flags to set"
+msgstr "កំណត់​ទង់​បំបាត់​កំហុស​របស់ CDK"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
@@ -77,8 +77,8 @@ msgstr "ទង់"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: ../cdk/cdk.c:216
-msgid "GDK debugging flags to unset"
-msgstr "មិន​កំណត់​ទង់​បំបាត់​កំហុស​​របស់ GDK"
+msgid "CDK debugging flags to unset"
+msgstr "មិន​កំណត់​ទង់​បំបាត់​កំហុស​​របស់ CDK"
 
 #.
 #. * Translators, the strings in the 'keyboard label' context are

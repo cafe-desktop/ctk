@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2010 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_WIN32_DND_PRIVATE_H__
-#define __GDK_WIN32_DND_PRIVATE_H__
+#ifndef __CDK_WIN32_DND_PRIVATE_H__
+#define __CDK_WIN32_DND_PRIVATE_H__
 
-#if !defined (__GDKWIN32_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined (__CDKWIN32_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdkwin32.h> can be included directly."
 #endif
 
@@ -48,11 +48,11 @@ struct _CdkWin32DragContext
   guint has_jfif : 1;
 
   guint scale;              /* Temporarily caches the HiDPI scale */
-  gint hot_x;             /* Hotspot offset from the top-left of the drag-window, scaled (can be added to GDK space coordinates) */
+  gint hot_x;             /* Hotspot offset from the top-left of the drag-window, scaled (can be added to CDK space coordinates) */
   gint hot_y;
-  gint last_x;            /* Coordinates from last event, in GDK space */
+  gint last_x;            /* Coordinates from last event, in CDK space */
   gint last_y;
-  gint start_x;           /* Coordinates of the drag start, in GDK space */
+  gint start_x;           /* Coordinates of the drag start, in CDK space */
   gint start_y;
   DWORD last_key_state;     /* Key state from last event */
 
@@ -69,4 +69,4 @@ struct _CdkWin32DragContextClass
 
 G_END_DECLS
 
-#endif /* __GDK_WIN32_DND_PRIVATE_H__ */
+#endif /* __CDK_WIN32_DND_PRIVATE_H__ */

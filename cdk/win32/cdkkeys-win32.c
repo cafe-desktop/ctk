@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2000 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -40,15 +40,15 @@
 
 enum _CdkWin32KeyLevelState
 {
-  GDK_WIN32_LEVEL_NONE = 0,
-  GDK_WIN32_LEVEL_SHIFT,
-  GDK_WIN32_LEVEL_CAPSLOCK,
-  GDK_WIN32_LEVEL_SHIFT_CAPSLOCK,
-  GDK_WIN32_LEVEL_ALTGR,
-  GDK_WIN32_LEVEL_SHIFT_ALTGR,
-  GDK_WIN32_LEVEL_CAPSLOCK_ALTGR,
-  GDK_WIN32_LEVEL_SHIFT_CAPSLOCK_ALTGR,
-  GDK_WIN32_LEVEL_COUNT
+  CDK_WIN32_LEVEL_NONE = 0,
+  CDK_WIN32_LEVEL_SHIFT,
+  CDK_WIN32_LEVEL_CAPSLOCK,
+  CDK_WIN32_LEVEL_SHIFT_CAPSLOCK,
+  CDK_WIN32_LEVEL_ALTGR,
+  CDK_WIN32_LEVEL_SHIFT_ALTGR,
+  CDK_WIN32_LEVEL_CAPSLOCK_ALTGR,
+  CDK_WIN32_LEVEL_SHIFT_CAPSLOCK_ALTGR,
+  CDK_WIN32_LEVEL_COUNT
 };
 
 typedef enum _CdkWin32KeyLevelState CdkWin32KeyLevelState;
@@ -64,7 +64,7 @@ struct _CdkWin32KeyNode
   /* Level for which this virtual key code produces this cdk_keycode */
   CdkWin32KeyLevelState  level;
 
-  /* GDK (X11) code for this key */
+  /* CDK (X11) code for this key */
   guint                  cdk_keycode;
 
   /* Array of CdkWin32KeyNode should be sorted by cdk_keycode, then by level */
@@ -77,26 +77,26 @@ typedef struct _CdkWin32KeyNode CdkWin32KeyNode;
 Example:
   CdkWin32KeyNode
   {
-    undead_cdk_keycode = 0x0b4 GDK_KEY_acute (')
+    undead_cdk_keycode = 0x0b4 CDK_KEY_acute (')
     vk = 0xde VK_OEM_7
-    level = GDK_WIN32_LEVEL_NONE
-    cdk_keycode = 0xfe51 GDK_KEY_dead_acute
+    level = CDK_WIN32_LEVEL_NONE
+    cdk_keycode = 0xfe51 CDK_KEY_dead_acute
     combinations = 
     {
       CdkWin32KeyNode
       {
-        undead_cdk_keycode = 0x061 GDK_KEY_a (a)
-        level = GDK_WIN32_LEVEL_NONE
+        undead_cdk_keycode = 0x061 CDK_KEY_a (a)
+        level = CDK_WIN32_LEVEL_NONE
         vk = 0x41 VK_A
-        cdk_keycode = 0xe1 GDK_KEY_aacute á
+        cdk_keycode = 0xe1 CDK_KEY_aacute á
         combinations = NULL
       },
       CdkWin32KeyNode
       {
-        unicode_char = 0x041 GDK_KEY_A (A)
-        level = GDK_WIN32_LEVEL_SHIFT
+        unicode_char = 0x041 CDK_KEY_A (A)
+        level = CDK_WIN32_LEVEL_SHIFT
         vk = 0x41 VK_A
-        cdk_keycode = 0x0c1 GDK_KEY_Aacute Á
+        cdk_keycode = 0x0c1 CDK_KEY_Aacute Á
         combinations = NULL
       },
       { ... }
@@ -105,21 +105,21 @@ Example:
 
 Thus:
 
-GDK_KEY_dead_acute + GDK_KEY_a
-= GDK_KEY_aacute
+CDK_KEY_dead_acute + CDK_KEY_a
+= CDK_KEY_aacute
 
-GDK_KEY_dead_acute + GDK_KEY_A
-= GDK_KEY_Aacute
+CDK_KEY_dead_acute + CDK_KEY_A
+= CDK_KEY_Aacute
 
-GDK_KEY_dead_acute + GDK_KEY_s
+CDK_KEY_dead_acute + CDK_KEY_s
 matches partially
-(GDK_KEY_dead_acute is a known dead key, but does not combine with GDK_KEY_s)
+(CDK_KEY_dead_acute is a known dead key, but does not combine with CDK_KEY_s)
 and resolves into:
-GDK_KEY_acute + GDK_KEY_s
+CDK_KEY_acute + CDK_KEY_s
 
-GDK_KEY_dead_somethingelse + GDK_KEY_anything
+CDK_KEY_dead_somethingelse + CDK_KEY_anything
 does not match at all
-(W32 API did not provide any deadkey info for GDK_KEY_dead_somethingelse)
+(W32 API did not provide any deadkey info for CDK_KEY_dead_somethingelse)
 and the caller will try other matching mechanisms for compose_buffer
 */
 
@@ -169,12 +169,12 @@ struct _CdkWin32Keymap
 
   /* Index of a handle in layout_handles,
    * at any point it should be the same handle as GetKeyboardLayout(0) returns,
-   * but GDK caches it to avoid calling GetKeyboardLayout (0) every time.
+   * but CDK caches it to avoid calling GetKeyboardLayout (0) every time.
    */
   guint8 active_layout;
 };
 
-G_DEFINE_TYPE (CdkWin32Keymap, cdk_win32_keymap, GDK_TYPE_KEYMAP)
+G_DEFINE_TYPE (CdkWin32Keymap, cdk_win32_keymap, CDK_TYPE_KEYMAP)
 
 guint _cdk_keymap_serial = 0;
 
@@ -204,13 +204,13 @@ cdk_win32_keymap_init (CdkWin32Keymap *keymap)
   g_array_set_clear_func (keymap->options, (GDestroyNotify) cdk_win32_key_group_options_clear);
   keymap->keysym_tab = NULL;
   keymap->active_layout = 0;
-  update_keymap (GDK_KEYMAP (keymap));
+  update_keymap (CDK_KEYMAP (keymap));
 }
 
 static void
 cdk_win32_keymap_finalize (GObject *object)
 {
-  CdkWin32Keymap *keymap = GDK_WIN32_KEYMAP (object);
+  CdkWin32Keymap *keymap = CDK_WIN32_KEYMAP (object);
 
   g_clear_pointer (&keymap->keysym_tab, g_free);
   g_clear_pointer (&keymap->layout_handles, g_array_unref);
@@ -240,9 +240,9 @@ print_keysym_tab (CdkWin32Keymap *keymap)
         {
           g_print ("%#.02x: ", vk);
 
-          for (level = 0; level < GDK_WIN32_LEVEL_COUNT; level++)
+          for (level = 0; level < CDK_WIN32_LEVEL_COUNT; level++)
             {
-              gchar *name = cdk_keyval_name (keymap->keysym_tab[vk * group_size * GDK_WIN32_LEVEL_COUNT + level]);
+              gchar *name = cdk_keyval_name (keymap->keysym_tab[vk * group_size * CDK_WIN32_LEVEL_COUNT + level]);
 
               g_print ("%s ", name ? name : "(none)");
             }
@@ -262,158 +262,158 @@ handle_special (guint  vk,
   switch (vk)
     {
     case VK_CANCEL:
-      *ksymp = GDK_KEY_Cancel; break;
+      *ksymp = CDK_KEY_Cancel; break;
     case VK_BACK:
-      *ksymp = GDK_KEY_BackSpace; break;
+      *ksymp = CDK_KEY_BackSpace; break;
     case VK_TAB:
       if (shift & 0x1)
-	*ksymp = GDK_KEY_ISO_Left_Tab;
+	*ksymp = CDK_KEY_ISO_Left_Tab;
       else
-	*ksymp = GDK_KEY_Tab;
+	*ksymp = CDK_KEY_Tab;
       break;
     case VK_CLEAR:
-      *ksymp = GDK_KEY_Clear; break;
+      *ksymp = CDK_KEY_Clear; break;
     case VK_RETURN:
-      *ksymp = GDK_KEY_Return; break;
+      *ksymp = CDK_KEY_Return; break;
     case VK_SHIFT:
     case VK_LSHIFT:
-      *ksymp = GDK_KEY_Shift_L; break;
+      *ksymp = CDK_KEY_Shift_L; break;
     case VK_CONTROL:
     case VK_LCONTROL:
-      *ksymp = GDK_KEY_Control_L; break;
+      *ksymp = CDK_KEY_Control_L; break;
     case VK_MENU:
     case VK_LMENU:
-      *ksymp = GDK_KEY_Alt_L; break;
+      *ksymp = CDK_KEY_Alt_L; break;
     case VK_PAUSE:
-      *ksymp = GDK_KEY_Pause; break;
+      *ksymp = CDK_KEY_Pause; break;
     case VK_ESCAPE:
-      *ksymp = GDK_KEY_Escape; break;
+      *ksymp = CDK_KEY_Escape; break;
     case VK_PRIOR:
-      *ksymp = GDK_KEY_Prior; break;
+      *ksymp = CDK_KEY_Prior; break;
     case VK_NEXT:
-      *ksymp = GDK_KEY_Next; break;
+      *ksymp = CDK_KEY_Next; break;
     case VK_END:
-      *ksymp = GDK_KEY_End; break;
+      *ksymp = CDK_KEY_End; break;
     case VK_HOME:
-      *ksymp = GDK_KEY_Home; break;
+      *ksymp = CDK_KEY_Home; break;
     case VK_LEFT:
-      *ksymp = GDK_KEY_Left; break;
+      *ksymp = CDK_KEY_Left; break;
     case VK_UP:
-      *ksymp = GDK_KEY_Up; break;
+      *ksymp = CDK_KEY_Up; break;
     case VK_RIGHT:
-      *ksymp = GDK_KEY_Right; break;
+      *ksymp = CDK_KEY_Right; break;
     case VK_DOWN:
-      *ksymp = GDK_KEY_Down; break;
+      *ksymp = CDK_KEY_Down; break;
     case VK_SELECT:
-      *ksymp = GDK_KEY_Select; break;
+      *ksymp = CDK_KEY_Select; break;
     case VK_PRINT:
-      *ksymp = GDK_KEY_Print; break;
+      *ksymp = CDK_KEY_Print; break;
     case VK_SNAPSHOT:
-      *ksymp = GDK_KEY_Print; break;
+      *ksymp = CDK_KEY_Print; break;
     case VK_EXECUTE:
-      *ksymp = GDK_KEY_Execute; break;
+      *ksymp = CDK_KEY_Execute; break;
     case VK_INSERT:
-      *ksymp = GDK_KEY_Insert; break;
+      *ksymp = CDK_KEY_Insert; break;
     case VK_DELETE:
-      *ksymp = GDK_KEY_Delete; break;
+      *ksymp = CDK_KEY_Delete; break;
     case VK_HELP:
-      *ksymp = GDK_KEY_Help; break;
+      *ksymp = CDK_KEY_Help; break;
     case VK_LWIN:
-      *ksymp = GDK_KEY_Meta_L; break;
+      *ksymp = CDK_KEY_Meta_L; break;
     case VK_RWIN:
-      *ksymp = GDK_KEY_Meta_R; break;
+      *ksymp = CDK_KEY_Meta_R; break;
     case VK_APPS:
-      *ksymp = GDK_KEY_Menu; break;
+      *ksymp = CDK_KEY_Menu; break;
     case VK_DECIMAL:
-      *ksymp = GDK_KEY_KP_Decimal; break;
+      *ksymp = CDK_KEY_KP_Decimal; break;
     case VK_MULTIPLY:
-      *ksymp = GDK_KEY_KP_Multiply; break;
+      *ksymp = CDK_KEY_KP_Multiply; break;
     case VK_ADD:
-      *ksymp = GDK_KEY_KP_Add; break;
+      *ksymp = CDK_KEY_KP_Add; break;
     case VK_SEPARATOR:
-      *ksymp = GDK_KEY_KP_Separator; break;
+      *ksymp = CDK_KEY_KP_Separator; break;
     case VK_SUBTRACT:
-      *ksymp = GDK_KEY_KP_Subtract; break;
+      *ksymp = CDK_KEY_KP_Subtract; break;
     case VK_DIVIDE:
-      *ksymp = GDK_KEY_KP_Divide; break;
+      *ksymp = CDK_KEY_KP_Divide; break;
     case VK_NUMPAD0:
-      *ksymp = GDK_KEY_KP_0; break;
+      *ksymp = CDK_KEY_KP_0; break;
     case VK_NUMPAD1:
-      *ksymp = GDK_KEY_KP_1; break;
+      *ksymp = CDK_KEY_KP_1; break;
     case VK_NUMPAD2:
-      *ksymp = GDK_KEY_KP_2; break;
+      *ksymp = CDK_KEY_KP_2; break;
     case VK_NUMPAD3:
-      *ksymp = GDK_KEY_KP_3; break;
+      *ksymp = CDK_KEY_KP_3; break;
     case VK_NUMPAD4:
-      *ksymp = GDK_KEY_KP_4; break;
+      *ksymp = CDK_KEY_KP_4; break;
     case VK_NUMPAD5:
-      *ksymp = GDK_KEY_KP_5; break;
+      *ksymp = CDK_KEY_KP_5; break;
     case VK_NUMPAD6:
-      *ksymp = GDK_KEY_KP_6; break;
+      *ksymp = CDK_KEY_KP_6; break;
     case VK_NUMPAD7:
-      *ksymp = GDK_KEY_KP_7; break;
+      *ksymp = CDK_KEY_KP_7; break;
     case VK_NUMPAD8:
-      *ksymp = GDK_KEY_KP_8; break;
+      *ksymp = CDK_KEY_KP_8; break;
     case VK_NUMPAD9:
-      *ksymp = GDK_KEY_KP_9; break;
+      *ksymp = CDK_KEY_KP_9; break;
     case VK_F1:
-      *ksymp = GDK_KEY_F1; break;
+      *ksymp = CDK_KEY_F1; break;
     case VK_F2:
-      *ksymp = GDK_KEY_F2; break;
+      *ksymp = CDK_KEY_F2; break;
     case VK_F3:
-      *ksymp = GDK_KEY_F3; break;
+      *ksymp = CDK_KEY_F3; break;
     case VK_F4:
-      *ksymp = GDK_KEY_F4; break;
+      *ksymp = CDK_KEY_F4; break;
     case VK_F5:
-      *ksymp = GDK_KEY_F5; break;
+      *ksymp = CDK_KEY_F5; break;
     case VK_F6:
-      *ksymp = GDK_KEY_F6; break;
+      *ksymp = CDK_KEY_F6; break;
     case VK_F7:
-      *ksymp = GDK_KEY_F7; break;
+      *ksymp = CDK_KEY_F7; break;
     case VK_F8:
-      *ksymp = GDK_KEY_F8; break;
+      *ksymp = CDK_KEY_F8; break;
     case VK_F9:
-      *ksymp = GDK_KEY_F9; break;
+      *ksymp = CDK_KEY_F9; break;
     case VK_F10:
-      *ksymp = GDK_KEY_F10; break;
+      *ksymp = CDK_KEY_F10; break;
     case VK_F11:
-      *ksymp = GDK_KEY_F11; break;
+      *ksymp = CDK_KEY_F11; break;
     case VK_F12:
-      *ksymp = GDK_KEY_F12; break;
+      *ksymp = CDK_KEY_F12; break;
     case VK_F13:
-      *ksymp = GDK_KEY_F13; break;
+      *ksymp = CDK_KEY_F13; break;
     case VK_F14:
-      *ksymp = GDK_KEY_F14; break;
+      *ksymp = CDK_KEY_F14; break;
     case VK_F15:
-      *ksymp = GDK_KEY_F15; break;
+      *ksymp = CDK_KEY_F15; break;
     case VK_F16:
-      *ksymp = GDK_KEY_F16; break;
+      *ksymp = CDK_KEY_F16; break;
     case VK_F17:
-      *ksymp = GDK_KEY_F17; break;
+      *ksymp = CDK_KEY_F17; break;
     case VK_F18:
-      *ksymp = GDK_KEY_F18; break;
+      *ksymp = CDK_KEY_F18; break;
     case VK_F19:
-      *ksymp = GDK_KEY_F19; break;
+      *ksymp = CDK_KEY_F19; break;
     case VK_F20:
-      *ksymp = GDK_KEY_F20; break;
+      *ksymp = CDK_KEY_F20; break;
     case VK_F21:
-      *ksymp = GDK_KEY_F21; break;
+      *ksymp = CDK_KEY_F21; break;
     case VK_F22:
-      *ksymp = GDK_KEY_F22; break;
+      *ksymp = CDK_KEY_F22; break;
     case VK_F23:
-      *ksymp = GDK_KEY_F23; break;
+      *ksymp = CDK_KEY_F23; break;
     case VK_F24:
-      *ksymp = GDK_KEY_F24; break;
+      *ksymp = CDK_KEY_F24; break;
     case VK_NUMLOCK:
-      *ksymp = GDK_KEY_Num_Lock; break;
+      *ksymp = CDK_KEY_Num_Lock; break;
     case VK_SCROLL:
-      *ksymp = GDK_KEY_Scroll_Lock; break;
+      *ksymp = CDK_KEY_Scroll_Lock; break;
     case VK_RSHIFT:
-      *ksymp = GDK_KEY_Shift_R; break;
+      *ksymp = CDK_KEY_Shift_R; break;
     case VK_RCONTROL:
-      *ksymp = GDK_KEY_Control_R; break;
+      *ksymp = CDK_KEY_Control_R; break;
     case VK_RMENU:
-      *ksymp = GDK_KEY_Alt_R; break;
+      *ksymp = CDK_KEY_Alt_R; break;
     }
 }
 
@@ -423,47 +423,47 @@ set_level_vks (guchar               *key_state,
 {
   switch (level)
     {
-    case GDK_WIN32_LEVEL_NONE:
+    case CDK_WIN32_LEVEL_NONE:
       key_state[VK_SHIFT] = 0;
       key_state[VK_CAPITAL] = 0;
       key_state[VK_CONTROL] = key_state[VK_MENU] = 0;
       break;
-    case GDK_WIN32_LEVEL_SHIFT:
+    case CDK_WIN32_LEVEL_SHIFT:
       key_state[VK_SHIFT] = 0x80;
       key_state[VK_CAPITAL] = 0;
       key_state[VK_CONTROL] = key_state[VK_MENU] = 0;
       break;
-    case GDK_WIN32_LEVEL_CAPSLOCK:
+    case CDK_WIN32_LEVEL_CAPSLOCK:
       key_state[VK_SHIFT] = 0;
       key_state[VK_CAPITAL] = 0x01;
       key_state[VK_CONTROL] = key_state[VK_MENU] = 0;
       break;
-    case GDK_WIN32_LEVEL_SHIFT_CAPSLOCK:
+    case CDK_WIN32_LEVEL_SHIFT_CAPSLOCK:
       key_state[VK_SHIFT] = 0x80;
       key_state[VK_CAPITAL] = 0x01;
       key_state[VK_CONTROL] = key_state[VK_MENU] = 0;
       break;
-    case GDK_WIN32_LEVEL_ALTGR:
+    case CDK_WIN32_LEVEL_ALTGR:
       key_state[VK_SHIFT] = 0;
       key_state[VK_CAPITAL] = 0;
       key_state[VK_CONTROL] = key_state[VK_MENU] = 0x80;
       break;
-    case GDK_WIN32_LEVEL_SHIFT_ALTGR:
+    case CDK_WIN32_LEVEL_SHIFT_ALTGR:
       key_state[VK_SHIFT] = 0x80;
       key_state[VK_CAPITAL] = 0;
       key_state[VK_CONTROL] = key_state[VK_MENU] = 0x80;
       break;
-    case GDK_WIN32_LEVEL_CAPSLOCK_ALTGR:
+    case CDK_WIN32_LEVEL_CAPSLOCK_ALTGR:
       key_state[VK_SHIFT] = 0;
       key_state[VK_CAPITAL] = 0x01;
       key_state[VK_CONTROL] = key_state[VK_MENU] = 0x80;
       break;
-    case GDK_WIN32_LEVEL_SHIFT_CAPSLOCK_ALTGR:
+    case CDK_WIN32_LEVEL_SHIFT_CAPSLOCK_ALTGR:
       key_state[VK_SHIFT] = 0x80;
       key_state[VK_CAPITAL] = 0x01;
       key_state[VK_CONTROL] = key_state[VK_MENU] = 0x80;
       break;
-    case GDK_WIN32_LEVEL_COUNT:
+    case CDK_WIN32_LEVEL_COUNT:
       g_assert_not_reached ();
       break;
     }
@@ -495,39 +495,39 @@ handle_dead (guint  keysym,
   switch (keysym)
     {
     case '"': /* 0x022 */
-      *ksymp = GDK_KEY_dead_diaeresis; break;
+      *ksymp = CDK_KEY_dead_diaeresis; break;
     case '\'': /* 0x027 */
-      *ksymp = GDK_KEY_dead_acute; break;
-    case GDK_KEY_asciicircum: /* 0x05e */
-      *ksymp = GDK_KEY_dead_circumflex; break;
-    case GDK_KEY_grave:	/* 0x060 */
-      *ksymp = GDK_KEY_dead_grave; break;
-    case GDK_KEY_asciitilde: /* 0x07e */
-      *ksymp = GDK_KEY_dead_tilde; break;
-    case GDK_KEY_diaeresis: /* 0x0a8 */
-      *ksymp = GDK_KEY_dead_diaeresis; break;
-    case GDK_KEY_degree: /* 0x0b0 */
-      *ksymp = GDK_KEY_dead_abovering; break;
-    case GDK_KEY_acute:	/* 0x0b4 */
-      *ksymp = GDK_KEY_dead_acute; break;
-    case GDK_KEY_periodcentered: /* 0x0b7 */
-      *ksymp = GDK_KEY_dead_abovedot; break;
-    case GDK_KEY_cedilla: /* 0x0b8 */
-      *ksymp = GDK_KEY_dead_cedilla; break;
-    case GDK_KEY_breve:	/* 0x1a2 */
-      *ksymp = GDK_KEY_dead_breve; break;
-    case GDK_KEY_ogonek: /* 0x1b2 */
-      *ksymp = GDK_KEY_dead_ogonek; break;
-    case GDK_KEY_caron:	/* 0x1b7 */
-      *ksymp = GDK_KEY_dead_caron; break;
-    case GDK_KEY_doubleacute: /* 0x1bd */
-      *ksymp = GDK_KEY_dead_doubleacute; break;
-    case GDK_KEY_abovedot: /* 0x1ff */
-      *ksymp = GDK_KEY_dead_abovedot; break;
+      *ksymp = CDK_KEY_dead_acute; break;
+    case CDK_KEY_asciicircum: /* 0x05e */
+      *ksymp = CDK_KEY_dead_circumflex; break;
+    case CDK_KEY_grave:	/* 0x060 */
+      *ksymp = CDK_KEY_dead_grave; break;
+    case CDK_KEY_asciitilde: /* 0x07e */
+      *ksymp = CDK_KEY_dead_tilde; break;
+    case CDK_KEY_diaeresis: /* 0x0a8 */
+      *ksymp = CDK_KEY_dead_diaeresis; break;
+    case CDK_KEY_degree: /* 0x0b0 */
+      *ksymp = CDK_KEY_dead_abovering; break;
+    case CDK_KEY_acute:	/* 0x0b4 */
+      *ksymp = CDK_KEY_dead_acute; break;
+    case CDK_KEY_periodcentered: /* 0x0b7 */
+      *ksymp = CDK_KEY_dead_abovedot; break;
+    case CDK_KEY_cedilla: /* 0x0b8 */
+      *ksymp = CDK_KEY_dead_cedilla; break;
+    case CDK_KEY_breve:	/* 0x1a2 */
+      *ksymp = CDK_KEY_dead_breve; break;
+    case CDK_KEY_ogonek: /* 0x1b2 */
+      *ksymp = CDK_KEY_dead_ogonek; break;
+    case CDK_KEY_caron:	/* 0x1b7 */
+      *ksymp = CDK_KEY_dead_caron; break;
+    case CDK_KEY_doubleacute: /* 0x1bd */
+      *ksymp = CDK_KEY_dead_doubleacute; break;
+    case CDK_KEY_abovedot: /* 0x1ff */
+      *ksymp = CDK_KEY_dead_abovedot; break;
     case 0x1000384: /* Greek tonos */
-      *ksymp = GDK_KEY_dead_acute; break;
-    case GDK_KEY_Greek_accentdieresis: /* 0x7ae */
-      *ksymp = GDK_KEY_Greek_accentdieresis; break;
+      *ksymp = CDK_KEY_dead_acute; break;
+    case CDK_KEY_Greek_accentdieresis: /* 0x7ae */
+      *ksymp = CDK_KEY_Greek_accentdieresis; break;
     default:
       /* By default use the keysym as such. This takes care of for
        * instance the dead U+09CD (BENGALI VIRAMA) on the ekushey
@@ -620,7 +620,7 @@ update_keymap (CdkKeymap *cdk_keymap)
   gint                     i, group;
   CdkWin32KeyLevelState    level;
   CdkWin32KeyGroupOptions *options;
-  CdkWin32Keymap          *keymap = GDK_WIN32_KEYMAP (cdk_keymap);
+  CdkWin32Keymap          *keymap = CDK_WIN32_KEYMAP (cdk_keymap);
   gint                     keysym_tab_size;
 
   guchar                   key_state[KEY_STATE_SIZE];
@@ -668,11 +668,11 @@ update_keymap (CdkKeymap *cdk_keymap)
       return;
     }
 
-  GDK_NOTE (EVENTS, g_print ("\nHave %d keyboard layouts:", hkls_len));
+  CDK_NOTE (EVENTS, g_print ("\nHave %d keyboard layouts:", hkls_len));
 
   for (i = 0; i < hkls_len; i++)
     {
-      GDK_NOTE (EVENTS, g_print (" 0x%p", hkls[i]));
+      CDK_NOTE (EVENTS, g_print (" 0x%p", hkls[i]));
 
       if (GetKeyboardLayout (0) == hkls[i])
         {
@@ -681,11 +681,11 @@ update_keymap (CdkKeymap *cdk_keymap)
           if (!GetKeyboardLayoutNameW (hkl_name))
             wcscpy_s (hkl_name, KL_NAMELENGTH, L"(NULL)");
 
-          GDK_NOTE (EVENTS, g_print ("(active, %S)", hkl_name));
+          CDK_NOTE (EVENTS, g_print ("(active, %S)", hkl_name));
         }
     }
 
-  GDK_NOTE (EVENTS, g_print ("\n"));
+  CDK_NOTE (EVENTS, g_print ("\n"));
 
   keysym_tab_size = hkls_len * 256 * 2 * 4;
 
@@ -718,7 +718,7 @@ update_keymap (CdkKeymap *cdk_keymap)
         {
           options = &g_array_index (keymap->options, CdkWin32KeyGroupOptions, group);
           scancode = MapVirtualKeyEx (vk, 0, hkls[group]);
-          keygroup = &keymap->keysym_tab[(vk * hkls_len + group) * GDK_WIN32_LEVEL_COUNT];
+          keygroup = &keymap->keysym_tab[(vk * hkls_len + group) * CDK_WIN32_LEVEL_COUNT];
 
           /* MapVirtualKeyEx() fails to produce a scancode for VK_DIVIDE and VK_PAUSE.
            * Ignore that, handle_special() will figure out a Cdk keyval for these
@@ -728,8 +728,8 @@ update_keymap (CdkKeymap *cdk_keymap)
               vk != VK_DIVIDE &&
               vk != VK_PAUSE)
             {
-              for (level = GDK_WIN32_LEVEL_NONE; level < GDK_WIN32_LEVEL_COUNT; level++)
-                keygroup[level] = GDK_KEY_VoidSymbol;
+              for (level = CDK_WIN32_LEVEL_NONE; level < CDK_WIN32_LEVEL_COUNT; level++)
+                keygroup[level] = CDK_KEY_VoidSymbol;
 
               continue;
             }
@@ -739,7 +739,7 @@ update_keymap (CdkKeymap *cdk_keymap)
 
           key_state[vk] = 0x80;
 
-          for (level = GDK_WIN32_LEVEL_NONE; level < GDK_WIN32_LEVEL_COUNT; level++)
+          for (level = CDK_WIN32_LEVEL_NONE; level < CDK_WIN32_LEVEL_COUNT; level++)
             {
               guint *ksymp = &keygroup[level];
 
@@ -748,14 +748,14 @@ update_keymap (CdkKeymap *cdk_keymap)
               *ksymp = 0;
 
               /* First, handle those virtual keys that we always want
-               * as special GDK_* keysyms, even if ToAsciiEx might
+               * as special CDK_* keysyms, even if ToAsciiEx might
                * turn some them into a ASCII character (like TAB and
                * ESC).
                */
               handle_special (vk, ksymp, level);
 
               if ((*ksymp == 0) ||
-                  ((vk == VK_DECIMAL) && (level == GDK_WIN32_LEVEL_NONE)))
+                  ((vk == VK_DECIMAL) && (level == CDK_WIN32_LEVEL_NONE)))
                 {
                   wchar_t         wcs[10];
                   gint            k;
@@ -774,7 +774,7 @@ update_keymap (CdkKeymap *cdk_keymap)
                   switch (k)
                     {
                     case 1:
-                      if ((vk == VK_DECIMAL) && (level == GDK_WIN32_LEVEL_NONE))
+                      if ((vk == VK_DECIMAL) && (level == CDK_WIN32_LEVEL_NONE))
                         options->decimal_mark = wcs[0];
                       else
                         *ksymp = cdk_unicode_to_keyval (wcs[0]);
@@ -813,7 +813,7 @@ update_keymap (CdkKeymap *cdk_keymap)
                       break;
                     default:
 #if 0
-                      GDK_NOTE (EVENTS,
+                      CDK_NOTE (EVENTS,
                                 g_print ("ToUnicodeEx returns %d "
                                          "for vk:%02x, sc:%02x%s%s\n",
                                          k, vk, scancode,
@@ -825,7 +825,7 @@ update_keymap (CdkKeymap *cdk_keymap)
                 }
 
               if (*ksymp == 0)
-                *ksymp = GDK_KEY_VoidSymbol;
+                *ksymp = CDK_KEY_VoidSymbol;
             }
 
           key_state[vk] = 0;
@@ -836,10 +836,10 @@ update_keymap (CdkKeymap *cdk_keymap)
            * dead keys themselves, only the results of dead key combinations.
            */
           if (!options->has_altgr)
-            if ((keygroup[GDK_WIN32_LEVEL_ALTGR] != GDK_KEY_VoidSymbol &&
-                 keygroup[GDK_WIN32_LEVEL_NONE] != keygroup[GDK_WIN32_LEVEL_ALTGR]) ||
-                (keygroup[GDK_WIN32_LEVEL_SHIFT_ALTGR] != GDK_KEY_VoidSymbol &&
-                 keygroup[GDK_WIN32_LEVEL_SHIFT] != keygroup[GDK_WIN32_LEVEL_SHIFT_ALTGR]))
+            if ((keygroup[CDK_WIN32_LEVEL_ALTGR] != CDK_KEY_VoidSymbol &&
+                 keygroup[CDK_WIN32_LEVEL_NONE] != keygroup[CDK_WIN32_LEVEL_ALTGR]) ||
+                (keygroup[CDK_WIN32_LEVEL_SHIFT_ALTGR] != CDK_KEY_VoidSymbol &&
+                 keygroup[CDK_WIN32_LEVEL_SHIFT] != keygroup[CDK_WIN32_LEVEL_SHIFT_ALTGR]))
               options->has_altgr = TRUE;
         }
     }
@@ -861,7 +861,7 @@ update_keymap (CdkKeymap *cdk_keymap)
 
           for (vk = 0; vk < KEY_STATE_SIZE; vk++)
             {
-              for (level = GDK_WIN32_LEVEL_NONE; level < GDK_WIN32_LEVEL_COUNT; level++)
+              for (level = CDK_WIN32_LEVEL_NONE; level < CDK_WIN32_LEVEL_COUNT; level++)
                 {
                   /* Prime the ToUnicodeEx() internal state */
                   wcs[0] = wcs[1] = 0;
@@ -917,32 +917,32 @@ update_keymap (CdkKeymap *cdk_keymap)
                         dead_key_undead_u8 = g_utf16_to_utf8 (&t, 1, NULL, NULL, NULL);
                         wcs_u8 = g_utf16_to_utf8 (wcs, 1, NULL, NULL, NULL);
                         g_fprintf (stdout, "%d %s%s%s0x%02x (%s) + %s%s%s0x%02x = 0x%04x (%s)\n", group,
-                                 (dead_key->level == GDK_WIN32_LEVEL_SHIFT ||
-                                  dead_key->level == GDK_WIN32_LEVEL_SHIFT_ALTGR ||
-                                  dead_key->level == GDK_WIN32_LEVEL_SHIFT_CAPSLOCK ||
-                                  dead_key->level == GDK_WIN32_LEVEL_SHIFT_CAPSLOCK_ALTGR) ? "SHIFT-" : "      ",
-                                 (dead_key->level == GDK_WIN32_LEVEL_CAPSLOCK ||
-                                  dead_key->level == GDK_WIN32_LEVEL_SHIFT_CAPSLOCK ||
-                                  dead_key->level == GDK_WIN32_LEVEL_CAPSLOCK_ALTGR ||
-                                  dead_key->level == GDK_WIN32_LEVEL_SHIFT_CAPSLOCK_ALTGR) ? "CAPSLOCK-" : "         ",
-                                 (dead_key->level == GDK_WIN32_LEVEL_ALTGR ||
-                                  dead_key->level == GDK_WIN32_LEVEL_SHIFT_ALTGR ||
-                                  dead_key->level == GDK_WIN32_LEVEL_CAPSLOCK_ALTGR ||
-                                  dead_key->level == GDK_WIN32_LEVEL_SHIFT_CAPSLOCK_ALTGR) ? "ALTGR-" : "      ",
+                                 (dead_key->level == CDK_WIN32_LEVEL_SHIFT ||
+                                  dead_key->level == CDK_WIN32_LEVEL_SHIFT_ALTGR ||
+                                  dead_key->level == CDK_WIN32_LEVEL_SHIFT_CAPSLOCK ||
+                                  dead_key->level == CDK_WIN32_LEVEL_SHIFT_CAPSLOCK_ALTGR) ? "SHIFT-" : "      ",
+                                 (dead_key->level == CDK_WIN32_LEVEL_CAPSLOCK ||
+                                  dead_key->level == CDK_WIN32_LEVEL_SHIFT_CAPSLOCK ||
+                                  dead_key->level == CDK_WIN32_LEVEL_CAPSLOCK_ALTGR ||
+                                  dead_key->level == CDK_WIN32_LEVEL_SHIFT_CAPSLOCK_ALTGR) ? "CAPSLOCK-" : "         ",
+                                 (dead_key->level == CDK_WIN32_LEVEL_ALTGR ||
+                                  dead_key->level == CDK_WIN32_LEVEL_SHIFT_ALTGR ||
+                                  dead_key->level == CDK_WIN32_LEVEL_CAPSLOCK_ALTGR ||
+                                  dead_key->level == CDK_WIN32_LEVEL_SHIFT_CAPSLOCK_ALTGR) ? "ALTGR-" : "      ",
                                  dead_key->vk,
                                  dead_key_undead_u8,
-                                 (combo.level == GDK_WIN32_LEVEL_SHIFT ||
-                                  combo.level == GDK_WIN32_LEVEL_SHIFT_ALTGR ||
-                                  combo.level == GDK_WIN32_LEVEL_SHIFT_CAPSLOCK ||
-                                  combo.level == GDK_WIN32_LEVEL_SHIFT_CAPSLOCK_ALTGR) ? "SHIFT-" : "      ",
-                                 (combo.level == GDK_WIN32_LEVEL_CAPSLOCK ||
-                                  combo.level == GDK_WIN32_LEVEL_SHIFT_CAPSLOCK ||
-                                  combo.level == GDK_WIN32_LEVEL_CAPSLOCK_ALTGR ||
-                                  combo.level == GDK_WIN32_LEVEL_SHIFT_CAPSLOCK_ALTGR) ? "CAPSLOCK-" : "         ",
-                                 (combo.level == GDK_WIN32_LEVEL_ALTGR ||
-                                  combo.level == GDK_WIN32_LEVEL_SHIFT_ALTGR ||
-                                  combo.level == GDK_WIN32_LEVEL_CAPSLOCK_ALTGR ||
-                                  combo.level == GDK_WIN32_LEVEL_SHIFT_CAPSLOCK_ALTGR) ? "ALTGR-" : "      ",
+                                 (combo.level == CDK_WIN32_LEVEL_SHIFT ||
+                                  combo.level == CDK_WIN32_LEVEL_SHIFT_ALTGR ||
+                                  combo.level == CDK_WIN32_LEVEL_SHIFT_CAPSLOCK ||
+                                  combo.level == CDK_WIN32_LEVEL_SHIFT_CAPSLOCK_ALTGR) ? "SHIFT-" : "      ",
+                                 (combo.level == CDK_WIN32_LEVEL_CAPSLOCK ||
+                                  combo.level == CDK_WIN32_LEVEL_SHIFT_CAPSLOCK ||
+                                  combo.level == CDK_WIN32_LEVEL_CAPSLOCK_ALTGR ||
+                                  combo.level == CDK_WIN32_LEVEL_SHIFT_CAPSLOCK_ALTGR) ? "CAPSLOCK-" : "         ",
+                                 (combo.level == CDK_WIN32_LEVEL_ALTGR ||
+                                  combo.level == CDK_WIN32_LEVEL_SHIFT_ALTGR ||
+                                  combo.level == CDK_WIN32_LEVEL_CAPSLOCK_ALTGR ||
+                                  combo.level == CDK_WIN32_LEVEL_SHIFT_CAPSLOCK_ALTGR) ? "ALTGR-" : "      ",
                                  vk,
                                  wcs[0],
                                  wcs_u8);
@@ -960,7 +960,7 @@ update_keymap (CdkKeymap *cdk_keymap)
        g_array_sort (options->dead_keys, (GCompareFunc) sort_key_nodes_by_cdk_keyval);
     }
 
-  GDK_NOTE (EVENTS, print_keysym_tab (keymap));
+  CDK_NOTE (EVENTS, print_keysym_tab (keymap));
 
   check_that_active_layout_is_in_sync (keymap);
   current_serial = _cdk_keymap_serial;
@@ -1033,10 +1033,10 @@ cdk_win32_keymap_check_compose (CdkWin32Keymap *keymap,
   CdkWin32KeymapMatch match;
   gsize output_size;
 
-  g_return_val_if_fail (output != NULL && output_len != NULL, GDK_WIN32_KEYMAP_MATCH_NONE);
+  g_return_val_if_fail (output != NULL && output_len != NULL, CDK_WIN32_KEYMAP_MATCH_NONE);
 
   if (compose_buffer_len < 1)
-    return GDK_WIN32_KEYMAP_MATCH_NONE;
+    return CDK_WIN32_KEYMAP_MATCH_NONE;
 
   output_size = *output_len;
 
@@ -1044,7 +1044,7 @@ cdk_win32_keymap_check_compose (CdkWin32Keymap *keymap,
   options = &g_array_index (keymap->options, CdkWin32KeyGroupOptions, active_group);
 
   partial_match = -1;
-  match = GDK_WIN32_KEYMAP_MATCH_NONE;
+  match = CDK_WIN32_KEYMAP_MATCH_NONE;
 
   if (find_deadkey_by_keyval (options->dead_keys, compose_buffer[0], &deadkey_i))
     {
@@ -1068,10 +1068,10 @@ cdk_win32_keymap_check_compose (CdkWin32Keymap *keymap,
       partial_match = deadkey_i;
 
       if (compose_buffer_len < 2)
-        match = GDK_WIN32_KEYMAP_MATCH_INCOMPLETE;
+        match = CDK_WIN32_KEYMAP_MATCH_INCOMPLETE;
 
       for (node_i = 0;
-           match != GDK_WIN32_KEYMAP_MATCH_INCOMPLETE &&
+           match != CDK_WIN32_KEYMAP_MATCH_INCOMPLETE &&
            node_i < dead_key->combinations->len;
            node_i++)
         {
@@ -1079,9 +1079,9 @@ cdk_win32_keymap_check_compose (CdkWin32Keymap *keymap,
 
           node = &g_array_index (dead_key->combinations, CdkWin32KeyNode, node_i);
 
-          if (keymap->keysym_tab[(node->vk * keymap->layout_handles->len + active_group) * GDK_WIN32_LEVEL_COUNT + node->level] == compose_buffer[1])
+          if (keymap->keysym_tab[(node->vk * keymap->layout_handles->len + active_group) * CDK_WIN32_LEVEL_COUNT + node->level] == compose_buffer[1])
             {
-              match = GDK_WIN32_KEYMAP_MATCH_EXACT;
+              match = CDK_WIN32_KEYMAP_MATCH_EXACT;
               *output_len = 0;
 
               if (*output_len < output_size && node->cdk_keycode != 0)
@@ -1092,8 +1092,8 @@ cdk_win32_keymap_check_compose (CdkWin32Keymap *keymap,
         }
     }
 
-  if (match == GDK_WIN32_KEYMAP_MATCH_EXACT ||
-      match == GDK_WIN32_KEYMAP_MATCH_INCOMPLETE)
+  if (match == CDK_WIN32_KEYMAP_MATCH_EXACT ||
+      match == CDK_WIN32_KEYMAP_MATCH_INCOMPLETE)
     {
       return match;
     }
@@ -1124,10 +1124,10 @@ cdk_win32_keymap_check_compose (CdkWin32Keymap *keymap,
             }
         }
 
-      return GDK_WIN32_KEYMAP_MATCH_PARTIAL;
+      return CDK_WIN32_KEYMAP_MATCH_PARTIAL;
     }
 
-  return GDK_WIN32_KEYMAP_MATCH_NONE;
+  return CDK_WIN32_KEYMAP_MATCH_NONE;
 }
 
 guint8
@@ -1212,11 +1212,11 @@ cdk_win32_keymap_get_direction (CdkKeymap *cdk_keymap)
   CdkWin32Keymap *keymap;
 
   if (cdk_keymap == NULL || cdk_keymap != cdk_keymap_get_default ())
-    keymap = GDK_WIN32_KEYMAP (cdk_keymap_get_default ());
+    keymap = CDK_WIN32_KEYMAP (cdk_keymap_get_default ());
   else
-    keymap = GDK_WIN32_KEYMAP (cdk_keymap);
+    keymap = CDK_WIN32_KEYMAP (cdk_keymap);
 
-  update_keymap (GDK_KEYMAP (keymap));
+  update_keymap (CDK_KEYMAP (keymap));
 
   if (keymap->layout_handles->len <= 0)
     active_hkl = GetKeyboardLayout (0);
@@ -1235,11 +1235,11 @@ cdk_win32_keymap_have_bidi_layouts (CdkKeymap *cdk_keymap)
   gint            group;
 
   if (cdk_keymap == NULL || cdk_keymap != cdk_keymap_get_default ())
-    keymap = GDK_WIN32_KEYMAP (cdk_keymap_get_default ());
+    keymap = CDK_WIN32_KEYMAP (cdk_keymap_get_default ());
   else
-    keymap = GDK_WIN32_KEYMAP (cdk_keymap);
+    keymap = CDK_WIN32_KEYMAP (cdk_keymap);
 
-  update_keymap (GDK_KEYMAP (keymap));
+  update_keymap (CDK_KEYMAP (keymap));
 
   for (group = 0; group < keymap->layout_handles->len; group++)
     {
@@ -1284,7 +1284,7 @@ cdk_win32_keymap_get_entries_for_keyval (CdkKeymap     *cdk_keymap,
 {
   GArray *retval;
 
-  g_return_val_if_fail (cdk_keymap == NULL || GDK_IS_KEYMAP (cdk_keymap), FALSE);
+  g_return_val_if_fail (cdk_keymap == NULL || CDK_IS_KEYMAP (cdk_keymap), FALSE);
   g_return_val_if_fail (keys != NULL, FALSE);
   g_return_val_if_fail (n_keys != NULL, FALSE);
   g_return_val_if_fail (keyval != 0, FALSE);
@@ -1298,9 +1298,9 @@ cdk_win32_keymap_get_entries_for_keyval (CdkKeymap     *cdk_keymap,
       CdkWin32Keymap *keymap;
 
       if (cdk_keymap == NULL)
-        keymap = GDK_WIN32_KEYMAP (cdk_keymap_get_default ());
+        keymap = CDK_WIN32_KEYMAP (cdk_keymap_get_default ());
       else
-        keymap = GDK_WIN32_KEYMAP (cdk_keymap);
+        keymap = CDK_WIN32_KEYMAP (cdk_keymap);
 
       update_keymap (cdk_keymap);
 
@@ -1312,11 +1312,11 @@ cdk_win32_keymap_get_entries_for_keyval (CdkKeymap     *cdk_keymap,
             {
               CdkWin32KeyLevelState    level;
 
-              for (level = GDK_WIN32_LEVEL_NONE; level < GDK_WIN32_LEVEL_COUNT; level++)
+              for (level = CDK_WIN32_LEVEL_NONE; level < CDK_WIN32_LEVEL_COUNT; level++)
                 {
                   guint *keygroup;
 
-                  keygroup = &keymap->keysym_tab[(vk * keymap->layout_handles->len + group) * GDK_WIN32_LEVEL_COUNT];
+                  keygroup = &keymap->keysym_tab[(vk * keymap->layout_handles->len + group) * CDK_WIN32_LEVEL_COUNT];
 
                   if (keygroup[level] == keyval)
                     {
@@ -1333,7 +1333,7 @@ cdk_win32_keymap_get_entries_for_keyval (CdkKeymap     *cdk_keymap,
     }
 
 #ifdef G_ENABLE_DEBUG
-  if (_cdk_debug_flags & GDK_DEBUG_EVENTS)
+  if (_cdk_debug_flags & CDK_DEBUG_EVENTS)
     {
       guint i;
 
@@ -1376,7 +1376,7 @@ cdk_win32_keymap_get_entries_for_keycode (CdkKeymap     *cdk_keymap,
   gint            group;
   CdkWin32Keymap *keymap;
 
-  g_return_val_if_fail (cdk_keymap == NULL || GDK_IS_KEYMAP (cdk_keymap), FALSE);
+  g_return_val_if_fail (cdk_keymap == NULL || CDK_IS_KEYMAP (cdk_keymap), FALSE);
   g_return_val_if_fail (n_entries != NULL, FALSE);
 
   if (hardware_keycode <= 0 ||
@@ -1404,14 +1404,14 @@ cdk_win32_keymap_get_entries_for_keycode (CdkKeymap     *cdk_keymap,
   else
     keyval_array = NULL;
 
-  keymap = GDK_WIN32_KEYMAP (cdk_keymap_get_default ());
-  update_keymap (GDK_KEYMAP (keymap));
+  keymap = CDK_WIN32_KEYMAP (cdk_keymap_get_default ());
+  update_keymap (CDK_KEYMAP (keymap));
 
   for (group = 0; group < keymap->layout_handles->len; group++)
     {
       CdkWin32KeyLevelState    level;
 
-      for (level = GDK_WIN32_LEVEL_NONE; level < GDK_WIN32_LEVEL_COUNT; level++)
+      for (level = CDK_WIN32_LEVEL_NONE; level < CDK_WIN32_LEVEL_COUNT; level++)
         {
           if (key_array)
             {
@@ -1425,14 +1425,14 @@ cdk_win32_keymap_get_entries_for_keycode (CdkKeymap     *cdk_keymap,
 
           if (keyval_array)
             {
-              guint keyval = keymap->keysym_tab[(hardware_keycode * keymap->layout_handles->len + group) * GDK_WIN32_LEVEL_COUNT + level];
+              guint keyval = keymap->keysym_tab[(hardware_keycode * keymap->layout_handles->len + group) * CDK_WIN32_LEVEL_COUNT + level];
 
               g_array_append_val (keyval_array, keyval);
             }
         }
     }
 
-  *n_entries = group * GDK_WIN32_LEVEL_COUNT;
+  *n_entries = group * CDK_WIN32_LEVEL_COUNT;
 
   if ((key_array && key_array->len > 0) ||
       (keyval_array && keyval_array->len > 0))
@@ -1467,24 +1467,24 @@ cdk_win32_keymap_lookup_key (CdkKeymap          *cdk_keymap,
   guint sym;
   CdkWin32Keymap *keymap;
 
-  g_return_val_if_fail (cdk_keymap == NULL || GDK_IS_KEYMAP (cdk_keymap), 0);
+  g_return_val_if_fail (cdk_keymap == NULL || CDK_IS_KEYMAP (cdk_keymap), 0);
   g_return_val_if_fail (key != NULL, 0);
 
   /* Accept only the default keymap */
   if (cdk_keymap != NULL && cdk_keymap != cdk_keymap_get_default ())
     return 0;
 
-  keymap = GDK_WIN32_KEYMAP (cdk_keymap_get_default ());
-  update_keymap (GDK_KEYMAP (keymap));
+  keymap = CDK_WIN32_KEYMAP (cdk_keymap_get_default ());
+  update_keymap (CDK_KEYMAP (keymap));
 
   if (key->keycode >= KEY_STATE_SIZE ||
       key->group < 0 || key->group >= keymap->layout_handles->len ||
-      key->level < 0 || key->level >= GDK_WIN32_LEVEL_COUNT)
+      key->level < 0 || key->level >= CDK_WIN32_LEVEL_COUNT)
     return 0;
 
-  sym = keymap->keysym_tab[(key->keycode * keymap->layout_handles->len + key->group) * GDK_WIN32_LEVEL_COUNT + key->level];
+  sym = keymap->keysym_tab[(key->keycode * keymap->layout_handles->len + key->group) * CDK_WIN32_LEVEL_COUNT + key->level];
 
-  if (sym == GDK_KEY_VoidSymbol)
+  if (sym == CDK_KEY_VoidSymbol)
     return 0;
   else
     return sym;
@@ -1504,12 +1504,12 @@ cdk_win32_keymap_translate_keyboard_state (CdkKeymap       *cdk_keymap,
   guint tmp_keyval;
   guint *keygroup;
   CdkWin32KeyLevelState shift_level;
-  CdkModifierType modifiers = GDK_SHIFT_MASK | GDK_LOCK_MASK | GDK_MOD2_MASK;
+  CdkModifierType modifiers = CDK_SHIFT_MASK | CDK_LOCK_MASK | CDK_MOD2_MASK;
 
-  g_return_val_if_fail (cdk_keymap == NULL || GDK_IS_KEYMAP (cdk_keymap), FALSE);
+  g_return_val_if_fail (cdk_keymap == NULL || CDK_IS_KEYMAP (cdk_keymap), FALSE);
 
 #if 0
-  GDK_NOTE (EVENTS, g_print ("cdk_keymap_translate_keyboard_state: keycode=%#x state=%#x group=%d\n",
+  CDK_NOTE (EVENTS, g_print ("cdk_keymap_translate_keyboard_state: keycode=%#x state=%#x group=%d\n",
 			     hardware_keycode, state, group));
 #endif
   if (keyval)
@@ -1528,90 +1528,90 @@ cdk_win32_keymap_translate_keyboard_state (CdkKeymap       *cdk_keymap,
   if (hardware_keycode >= KEY_STATE_SIZE)
     return FALSE;
 
-  keymap = GDK_WIN32_KEYMAP (cdk_keymap_get_default ());
-  update_keymap (GDK_KEYMAP (keymap));
+  keymap = CDK_WIN32_KEYMAP (cdk_keymap_get_default ());
+  update_keymap (CDK_KEYMAP (keymap));
 
   if (group < 0 || group >= keymap->layout_handles->len)
     return FALSE;
 
-  keygroup = &keymap->keysym_tab[(hardware_keycode * keymap->layout_handles->len + group) * GDK_WIN32_LEVEL_COUNT];
+  keygroup = &keymap->keysym_tab[(hardware_keycode * keymap->layout_handles->len + group) * CDK_WIN32_LEVEL_COUNT];
 
-  if ((state & (GDK_SHIFT_MASK | GDK_LOCK_MASK)) == (GDK_SHIFT_MASK | GDK_LOCK_MASK))
-    shift_level = GDK_WIN32_LEVEL_SHIFT_CAPSLOCK;
-  else if (state & GDK_SHIFT_MASK)
-    shift_level = GDK_WIN32_LEVEL_SHIFT;
-  else if (state & GDK_LOCK_MASK)
-    shift_level = GDK_WIN32_LEVEL_CAPSLOCK;
+  if ((state & (CDK_SHIFT_MASK | CDK_LOCK_MASK)) == (CDK_SHIFT_MASK | CDK_LOCK_MASK))
+    shift_level = CDK_WIN32_LEVEL_SHIFT_CAPSLOCK;
+  else if (state & CDK_SHIFT_MASK)
+    shift_level = CDK_WIN32_LEVEL_SHIFT;
+  else if (state & CDK_LOCK_MASK)
+    shift_level = CDK_WIN32_LEVEL_CAPSLOCK;
   else
-    shift_level = GDK_WIN32_LEVEL_NONE;
+    shift_level = CDK_WIN32_LEVEL_NONE;
 
-  if (state & GDK_MOD2_MASK)
+  if (state & CDK_MOD2_MASK)
     {
-      if (shift_level == GDK_WIN32_LEVEL_NONE)
-        shift_level = GDK_WIN32_LEVEL_ALTGR;
-      else if (shift_level == GDK_WIN32_LEVEL_SHIFT)
-        shift_level = GDK_WIN32_LEVEL_SHIFT_ALTGR;
-      else if (shift_level == GDK_WIN32_LEVEL_CAPSLOCK)
-        shift_level = GDK_WIN32_LEVEL_CAPSLOCK_ALTGR;
+      if (shift_level == CDK_WIN32_LEVEL_NONE)
+        shift_level = CDK_WIN32_LEVEL_ALTGR;
+      else if (shift_level == CDK_WIN32_LEVEL_SHIFT)
+        shift_level = CDK_WIN32_LEVEL_SHIFT_ALTGR;
+      else if (shift_level == CDK_WIN32_LEVEL_CAPSLOCK)
+        shift_level = CDK_WIN32_LEVEL_CAPSLOCK_ALTGR;
       else
-        shift_level = GDK_WIN32_LEVEL_SHIFT_CAPSLOCK_ALTGR;
+        shift_level = CDK_WIN32_LEVEL_SHIFT_CAPSLOCK_ALTGR;
     }
 
   /* Drop altgr, capslock and shift if there are no keysymbols on
    * the key for those.
    */
-  if (keygroup[shift_level] == GDK_KEY_VoidSymbol)
+  if (keygroup[shift_level] == CDK_KEY_VoidSymbol)
     {
       switch (shift_level)
         {
-         case GDK_WIN32_LEVEL_NONE:
-         case GDK_WIN32_LEVEL_ALTGR:
-         case GDK_WIN32_LEVEL_SHIFT:
-         case GDK_WIN32_LEVEL_CAPSLOCK:
-           if (keygroup[GDK_WIN32_LEVEL_NONE] != GDK_KEY_VoidSymbol)
-             shift_level = GDK_WIN32_LEVEL_NONE;
+         case CDK_WIN32_LEVEL_NONE:
+         case CDK_WIN32_LEVEL_ALTGR:
+         case CDK_WIN32_LEVEL_SHIFT:
+         case CDK_WIN32_LEVEL_CAPSLOCK:
+           if (keygroup[CDK_WIN32_LEVEL_NONE] != CDK_KEY_VoidSymbol)
+             shift_level = CDK_WIN32_LEVEL_NONE;
            break;
-         case GDK_WIN32_LEVEL_SHIFT_CAPSLOCK:
-           if (keygroup[GDK_WIN32_LEVEL_CAPSLOCK] != GDK_KEY_VoidSymbol)
-             shift_level = GDK_WIN32_LEVEL_CAPSLOCK;
-           else if (keygroup[GDK_WIN32_LEVEL_SHIFT] != GDK_KEY_VoidSymbol)
-             shift_level = GDK_WIN32_LEVEL_SHIFT;
-           else if (keygroup[GDK_WIN32_LEVEL_NONE] != GDK_KEY_VoidSymbol)
-             shift_level = GDK_WIN32_LEVEL_NONE;
+         case CDK_WIN32_LEVEL_SHIFT_CAPSLOCK:
+           if (keygroup[CDK_WIN32_LEVEL_CAPSLOCK] != CDK_KEY_VoidSymbol)
+             shift_level = CDK_WIN32_LEVEL_CAPSLOCK;
+           else if (keygroup[CDK_WIN32_LEVEL_SHIFT] != CDK_KEY_VoidSymbol)
+             shift_level = CDK_WIN32_LEVEL_SHIFT;
+           else if (keygroup[CDK_WIN32_LEVEL_NONE] != CDK_KEY_VoidSymbol)
+             shift_level = CDK_WIN32_LEVEL_NONE;
            break;
-         case GDK_WIN32_LEVEL_CAPSLOCK_ALTGR:
-           if (keygroup[GDK_WIN32_LEVEL_ALTGR] != GDK_KEY_VoidSymbol)
-             shift_level = GDK_WIN32_LEVEL_ALTGR;
-           else if (keygroup[GDK_WIN32_LEVEL_CAPSLOCK] != GDK_KEY_VoidSymbol)
-             shift_level = GDK_WIN32_LEVEL_CAPSLOCK;
-           else if (keygroup[GDK_WIN32_LEVEL_NONE] != GDK_KEY_VoidSymbol)
-             shift_level = GDK_WIN32_LEVEL_NONE;
+         case CDK_WIN32_LEVEL_CAPSLOCK_ALTGR:
+           if (keygroup[CDK_WIN32_LEVEL_ALTGR] != CDK_KEY_VoidSymbol)
+             shift_level = CDK_WIN32_LEVEL_ALTGR;
+           else if (keygroup[CDK_WIN32_LEVEL_CAPSLOCK] != CDK_KEY_VoidSymbol)
+             shift_level = CDK_WIN32_LEVEL_CAPSLOCK;
+           else if (keygroup[CDK_WIN32_LEVEL_NONE] != CDK_KEY_VoidSymbol)
+             shift_level = CDK_WIN32_LEVEL_NONE;
            break;
-         case GDK_WIN32_LEVEL_SHIFT_ALTGR:
-           if (keygroup[GDK_WIN32_LEVEL_ALTGR] != GDK_KEY_VoidSymbol)
-             shift_level = GDK_WIN32_LEVEL_ALTGR;
-           else if (keygroup[GDK_WIN32_LEVEL_SHIFT] != GDK_KEY_VoidSymbol)
-             shift_level = GDK_WIN32_LEVEL_SHIFT;
-           else if (keygroup[GDK_WIN32_LEVEL_NONE] != GDK_KEY_VoidSymbol)
-             shift_level = GDK_WIN32_LEVEL_NONE;
+         case CDK_WIN32_LEVEL_SHIFT_ALTGR:
+           if (keygroup[CDK_WIN32_LEVEL_ALTGR] != CDK_KEY_VoidSymbol)
+             shift_level = CDK_WIN32_LEVEL_ALTGR;
+           else if (keygroup[CDK_WIN32_LEVEL_SHIFT] != CDK_KEY_VoidSymbol)
+             shift_level = CDK_WIN32_LEVEL_SHIFT;
+           else if (keygroup[CDK_WIN32_LEVEL_NONE] != CDK_KEY_VoidSymbol)
+             shift_level = CDK_WIN32_LEVEL_NONE;
            break;
-         case GDK_WIN32_LEVEL_SHIFT_CAPSLOCK_ALTGR:
-           if (keygroup[GDK_WIN32_LEVEL_CAPSLOCK_ALTGR] != GDK_KEY_VoidSymbol)
-             shift_level = GDK_WIN32_LEVEL_CAPSLOCK_ALTGR;
-           else if (keygroup[GDK_WIN32_LEVEL_SHIFT_ALTGR] != GDK_KEY_VoidSymbol)
-             shift_level = GDK_WIN32_LEVEL_SHIFT_ALTGR;
-           else if (keygroup[GDK_WIN32_LEVEL_ALTGR] != GDK_KEY_VoidSymbol)
-             shift_level = GDK_WIN32_LEVEL_ALTGR;
-           else if (keygroup[GDK_WIN32_LEVEL_SHIFT_CAPSLOCK] != GDK_KEY_VoidSymbol)
-             shift_level = GDK_WIN32_LEVEL_SHIFT_CAPSLOCK;
-           else if (keygroup[GDK_WIN32_LEVEL_CAPSLOCK] != GDK_KEY_VoidSymbol)
-             shift_level = GDK_WIN32_LEVEL_CAPSLOCK;
-           else if (keygroup[GDK_WIN32_LEVEL_SHIFT] != GDK_KEY_VoidSymbol)
-             shift_level = GDK_WIN32_LEVEL_SHIFT;
-           else if (keygroup[GDK_WIN32_LEVEL_NONE] != GDK_KEY_VoidSymbol)
-             shift_level = GDK_WIN32_LEVEL_NONE;
+         case CDK_WIN32_LEVEL_SHIFT_CAPSLOCK_ALTGR:
+           if (keygroup[CDK_WIN32_LEVEL_CAPSLOCK_ALTGR] != CDK_KEY_VoidSymbol)
+             shift_level = CDK_WIN32_LEVEL_CAPSLOCK_ALTGR;
+           else if (keygroup[CDK_WIN32_LEVEL_SHIFT_ALTGR] != CDK_KEY_VoidSymbol)
+             shift_level = CDK_WIN32_LEVEL_SHIFT_ALTGR;
+           else if (keygroup[CDK_WIN32_LEVEL_ALTGR] != CDK_KEY_VoidSymbol)
+             shift_level = CDK_WIN32_LEVEL_ALTGR;
+           else if (keygroup[CDK_WIN32_LEVEL_SHIFT_CAPSLOCK] != CDK_KEY_VoidSymbol)
+             shift_level = CDK_WIN32_LEVEL_SHIFT_CAPSLOCK;
+           else if (keygroup[CDK_WIN32_LEVEL_CAPSLOCK] != CDK_KEY_VoidSymbol)
+             shift_level = CDK_WIN32_LEVEL_CAPSLOCK;
+           else if (keygroup[CDK_WIN32_LEVEL_SHIFT] != CDK_KEY_VoidSymbol)
+             shift_level = CDK_WIN32_LEVEL_SHIFT;
+           else if (keygroup[CDK_WIN32_LEVEL_NONE] != CDK_KEY_VoidSymbol)
+             shift_level = CDK_WIN32_LEVEL_NONE;
            break;
-         case GDK_WIN32_LEVEL_COUNT:
+         case CDK_WIN32_LEVEL_COUNT:
            g_assert_not_reached ();
         }
     }
@@ -1619,29 +1619,29 @@ cdk_win32_keymap_translate_keyboard_state (CdkKeymap       *cdk_keymap,
   /* See whether the shift level actually mattered
    * to know what to put in consumed_modifiers
    */
-  if ((keygroup[GDK_WIN32_LEVEL_SHIFT] == GDK_KEY_VoidSymbol ||
-       keygroup[GDK_WIN32_LEVEL_NONE] == keygroup[GDK_WIN32_LEVEL_SHIFT]) &&
-      (keygroup[GDK_WIN32_LEVEL_SHIFT_ALTGR] == GDK_KEY_VoidSymbol ||
-       keygroup[GDK_WIN32_LEVEL_ALTGR] == keygroup[GDK_WIN32_LEVEL_SHIFT_ALTGR]) &&
-      (keygroup[GDK_WIN32_LEVEL_SHIFT_CAPSLOCK] == GDK_KEY_VoidSymbol ||
-       keygroup[GDK_WIN32_LEVEL_CAPSLOCK] == keygroup[GDK_WIN32_LEVEL_SHIFT_CAPSLOCK]))
-      modifiers &= ~GDK_SHIFT_MASK;
+  if ((keygroup[CDK_WIN32_LEVEL_SHIFT] == CDK_KEY_VoidSymbol ||
+       keygroup[CDK_WIN32_LEVEL_NONE] == keygroup[CDK_WIN32_LEVEL_SHIFT]) &&
+      (keygroup[CDK_WIN32_LEVEL_SHIFT_ALTGR] == CDK_KEY_VoidSymbol ||
+       keygroup[CDK_WIN32_LEVEL_ALTGR] == keygroup[CDK_WIN32_LEVEL_SHIFT_ALTGR]) &&
+      (keygroup[CDK_WIN32_LEVEL_SHIFT_CAPSLOCK] == CDK_KEY_VoidSymbol ||
+       keygroup[CDK_WIN32_LEVEL_CAPSLOCK] == keygroup[CDK_WIN32_LEVEL_SHIFT_CAPSLOCK]))
+      modifiers &= ~CDK_SHIFT_MASK;
 
-  if ((keygroup[GDK_WIN32_LEVEL_CAPSLOCK] == GDK_KEY_VoidSymbol ||
-       keygroup[GDK_WIN32_LEVEL_NONE] == keygroup[GDK_WIN32_LEVEL_CAPSLOCK]) &&
-      (keygroup[GDK_WIN32_LEVEL_CAPSLOCK_ALTGR] == GDK_KEY_VoidSymbol ||
-       keygroup[GDK_WIN32_LEVEL_ALTGR] == keygroup[GDK_WIN32_LEVEL_CAPSLOCK_ALTGR]) &&
-      (keygroup[GDK_WIN32_LEVEL_SHIFT_CAPSLOCK] == GDK_KEY_VoidSymbol ||
-       keygroup[GDK_WIN32_LEVEL_SHIFT] == keygroup[GDK_WIN32_LEVEL_SHIFT_CAPSLOCK]))
-      modifiers &= ~GDK_LOCK_MASK;
+  if ((keygroup[CDK_WIN32_LEVEL_CAPSLOCK] == CDK_KEY_VoidSymbol ||
+       keygroup[CDK_WIN32_LEVEL_NONE] == keygroup[CDK_WIN32_LEVEL_CAPSLOCK]) &&
+      (keygroup[CDK_WIN32_LEVEL_CAPSLOCK_ALTGR] == CDK_KEY_VoidSymbol ||
+       keygroup[CDK_WIN32_LEVEL_ALTGR] == keygroup[CDK_WIN32_LEVEL_CAPSLOCK_ALTGR]) &&
+      (keygroup[CDK_WIN32_LEVEL_SHIFT_CAPSLOCK] == CDK_KEY_VoidSymbol ||
+       keygroup[CDK_WIN32_LEVEL_SHIFT] == keygroup[CDK_WIN32_LEVEL_SHIFT_CAPSLOCK]))
+      modifiers &= ~CDK_LOCK_MASK;
 
-  if ((keygroup[GDK_WIN32_LEVEL_ALTGR] == GDK_KEY_VoidSymbol ||
-       keygroup[GDK_WIN32_LEVEL_NONE] == keygroup[GDK_WIN32_LEVEL_ALTGR]) &&
-      (keygroup[GDK_WIN32_LEVEL_SHIFT_ALTGR] == GDK_KEY_VoidSymbol ||
-       keygroup[GDK_WIN32_LEVEL_SHIFT] == keygroup[GDK_WIN32_LEVEL_SHIFT_ALTGR]) &&
-      (keygroup[GDK_WIN32_LEVEL_CAPSLOCK_ALTGR] == GDK_KEY_VoidSymbol ||
-       keygroup[GDK_WIN32_LEVEL_CAPSLOCK] == keygroup[GDK_WIN32_LEVEL_CAPSLOCK_ALTGR]))
-      modifiers &= ~GDK_MOD2_MASK;
+  if ((keygroup[CDK_WIN32_LEVEL_ALTGR] == CDK_KEY_VoidSymbol ||
+       keygroup[CDK_WIN32_LEVEL_NONE] == keygroup[CDK_WIN32_LEVEL_ALTGR]) &&
+      (keygroup[CDK_WIN32_LEVEL_SHIFT_ALTGR] == CDK_KEY_VoidSymbol ||
+       keygroup[CDK_WIN32_LEVEL_SHIFT] == keygroup[CDK_WIN32_LEVEL_SHIFT_ALTGR]) &&
+      (keygroup[CDK_WIN32_LEVEL_CAPSLOCK_ALTGR] == CDK_KEY_VoidSymbol ||
+       keygroup[CDK_WIN32_LEVEL_CAPSLOCK] == keygroup[CDK_WIN32_LEVEL_CAPSLOCK_ALTGR]))
+      modifiers &= ~CDK_MOD2_MASK;
 
   tmp_keyval = keygroup[shift_level];
 
@@ -1658,11 +1658,11 @@ cdk_win32_keymap_translate_keyboard_state (CdkKeymap       *cdk_keymap,
     *consumed_modifiers = modifiers;
 
 #if 0
-  GDK_NOTE (EVENTS, g_print ("... group=%d level=%d cmods=%#x keyval=%s\n",
+  CDK_NOTE (EVENTS, g_print ("... group=%d level=%d cmods=%#x keyval=%s\n",
 			     group, shift_level, modifiers, cdk_keyval_name (tmp_keyval)));
 #endif
 
-  return tmp_keyval != GDK_KEY_VoidSymbol;
+  return tmp_keyval != CDK_KEY_VoidSymbol;
 }
 
 static void
@@ -1683,7 +1683,7 @@ static void
 cdk_win32_keymap_class_init (CdkWin32KeymapClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  CdkKeymapClass *keymap_class = GDK_KEYMAP_CLASS (klass);
+  CdkKeymapClass *keymap_class = CDK_KEYMAP_CLASS (klass);
 
   object_class->finalize = cdk_win32_keymap_finalize;
 

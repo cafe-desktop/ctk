@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  *
  * cdkglcontextprivate.h: GL context abstraction
  * 
@@ -18,16 +18,16 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_GL_CONTEXT_PRIVATE_H__
-#define __GDK_GL_CONTEXT_PRIVATE_H__
+#ifndef __CDK_GL_CONTEXT_PRIVATE_H__
+#define __CDK_GL_CONTEXT_PRIVATE_H__
 
 #include "cdkglcontext.h"
 
 G_BEGIN_DECLS
 
-#define GDK_GL_CONTEXT_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_GL_CONTEXT, CdkGLContextClass))
-#define GDK_IS_GL_CONTEXT_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_GL_CONTEXT))
-#define GDK_GL_CONTEXT_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_GL_CONTEXT, CdkGLContextClass))
+#define CDK_GL_CONTEXT_CLASS(klass)	(G_TYPE_CHECK_CLASS_CAST ((klass), CDK_TYPE_GL_CONTEXT, CdkGLContextClass))
+#define CDK_IS_GL_CONTEXT_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), CDK_TYPE_GL_CONTEXT))
+#define CDK_GL_CONTEXT_GET_CLASS(obj)	(G_TYPE_INSTANCE_GET_CLASS ((obj), CDK_TYPE_GL_CONTEXT, CdkGLContextClass))
 
 typedef struct _CdkGLContextClass       CdkGLContextClass;
 
@@ -92,4 +92,4 @@ void                    cdk_gl_context_end_frame                (CdkGLContext   
 
 G_END_DECLS
 
-#endif /* __GDK_GL_CONTEXT_PRIVATE_H__ */
+#endif /* __CDK_GL_CONTEXT_PRIVATE_H__ */

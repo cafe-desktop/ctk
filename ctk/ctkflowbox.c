@@ -128,10 +128,10 @@ get_current_selection_modifiers (CtkWidget *widget,
 
   if (ctk_get_current_event_state (&state))
     {
-      mask = ctk_widget_get_modifier_mask (widget, GDK_MODIFIER_INTENT_MODIFY_SELECTION);
+      mask = ctk_widget_get_modifier_mask (widget, CDK_MODIFIER_INTENT_MODIFY_SELECTION);
       if ((state & mask) == mask)
         *modify = TRUE;
-      mask = ctk_widget_get_modifier_mask (widget, GDK_MODIFIER_INTENT_EXTEND_SELECTION);
+      mask = ctk_widget_get_modifier_mask (widget, CDK_MODIFIER_INTENT_EXTEND_SELECTION);
       if ((state & mask) == mask)
         *extend = TRUE;
     }
@@ -2920,7 +2920,7 @@ ctk_flow_box_leave_notify_event (CtkWidget        *widget,
   if (event->window != ctk_widget_get_window (CTK_WIDGET (box)))
     return FALSE;
 
-  if (event->detail != GDK_NOTIFY_INFERIOR)
+  if (event->detail != CDK_NOTIFY_INFERIOR)
     child = NULL;
   else
     child = ctk_flow_box_get_child_at_pos (box, event->x, event->y);
@@ -3081,7 +3081,7 @@ ctk_flow_box_multipress_gesture_released (CtkGestureMultiPress *gesture,
           event = ctk_gesture_get_last_event (CTK_GESTURE (gesture), sequence);
           source = cdk_device_get_source (cdk_event_get_source_device (event));
 
-          if (source == GDK_SOURCE_TOUCHSCREEN)
+          if (source == CDK_SOURCE_TOUCHSCREEN)
             modify = !modify;
 
           ctk_flow_box_update_selection (box, priv->active_child, modify, extend);
@@ -3178,7 +3178,7 @@ ctk_flow_box_key_press_event (CtkWidget   *widget,
 
   if (priv->rubberband_select)
     {
-      if (event->keyval == GDK_KEY_Escape)
+      if (event->keyval == CDK_KEY_Escape)
         {
           ctk_flow_box_stop_rubberband (box);
           return TRUE;
@@ -3205,18 +3205,18 @@ ctk_flow_box_realize (CtkWidget *widget)
   attributes.y = allocation.y;
   attributes.width = allocation.width;
   attributes.height = allocation.height;
-  attributes.window_type = GDK_WINDOW_CHILD;
+  attributes.window_type = CDK_WINDOW_CHILD;
   attributes.event_mask = ctk_widget_get_events (CTK_WIDGET (box))
-                                | GDK_ENTER_NOTIFY_MASK
-                                | GDK_LEAVE_NOTIFY_MASK
-                                | GDK_POINTER_MOTION_MASK
-                                | GDK_KEY_PRESS_MASK
-                                | GDK_BUTTON_PRESS_MASK
-                                | GDK_BUTTON_RELEASE_MASK;
-  attributes.wclass = GDK_INPUT_OUTPUT;
+                                | CDK_ENTER_NOTIFY_MASK
+                                | CDK_LEAVE_NOTIFY_MASK
+                                | CDK_POINTER_MOTION_MASK
+                                | CDK_KEY_PRESS_MASK
+                                | CDK_BUTTON_PRESS_MASK
+                                | CDK_BUTTON_RELEASE_MASK;
+  attributes.wclass = CDK_INPUT_OUTPUT;
 
   window = cdk_window_new (ctk_widget_get_parent_window (CTK_WIDGET (box)),
-                           &attributes, GDK_WA_X | GDK_WA_Y);
+                           &attributes, CDK_WA_X | CDK_WA_Y);
   ctk_widget_register_window (CTK_WIDGET (box), window);
   ctk_widget_set_window (CTK_WIDGET (box), window);
 }
@@ -3385,16 +3385,16 @@ ctk_flow_box_add_move_binding (CtkBindingSet   *binding_set,
                                gint             count)
 {
   CdkDisplay *display;
-  CdkModifierType extend_mod_mask = GDK_SHIFT_MASK;
-  CdkModifierType modify_mod_mask = GDK_CONTROL_MASK;
+  CdkModifierType extend_mod_mask = CDK_SHIFT_MASK;
+  CdkModifierType modify_mod_mask = CDK_CONTROL_MASK;
 
   display = cdk_display_get_default ();
   if (display)
     {
       extend_mod_mask = cdk_keymap_get_modifier_mask (cdk_keymap_get_for_display (display),
-                                                      GDK_MODIFIER_INTENT_EXTEND_SELECTION);
+                                                      CDK_MODIFIER_INTENT_EXTEND_SELECTION);
       modify_mod_mask = cdk_keymap_get_modifier_mask (cdk_keymap_get_for_display (display),
-                                                      GDK_MODIFIER_INTENT_MODIFY_SELECTION);
+                                                      CDK_MODIFIER_INTENT_MODIFY_SELECTION);
     }
 
   ctk_binding_entry_add_signal (binding_set, keyval, modmask,
@@ -4056,48 +4056,48 @@ ctk_flow_box_class_init (CtkFlowBoxClass *class)
   widget_class->activate_signal = signals[ACTIVATE_CURSOR_CHILD];
 
   binding_set = ctk_binding_set_by_class (class);
-  ctk_flow_box_add_move_binding (binding_set, GDK_KEY_Home, 0,
+  ctk_flow_box_add_move_binding (binding_set, CDK_KEY_Home, 0,
                                  CTK_MOVEMENT_BUFFER_ENDS, -1);
-  ctk_flow_box_add_move_binding (binding_set, GDK_KEY_KP_Home, 0,
+  ctk_flow_box_add_move_binding (binding_set, CDK_KEY_KP_Home, 0,
                                  CTK_MOVEMENT_BUFFER_ENDS, -1);
-  ctk_flow_box_add_move_binding (binding_set, GDK_KEY_End, 0,
+  ctk_flow_box_add_move_binding (binding_set, CDK_KEY_End, 0,
                                  CTK_MOVEMENT_BUFFER_ENDS, 1);
-  ctk_flow_box_add_move_binding (binding_set, GDK_KEY_KP_End, 0,
+  ctk_flow_box_add_move_binding (binding_set, CDK_KEY_KP_End, 0,
                                  CTK_MOVEMENT_BUFFER_ENDS, 1);
-  ctk_flow_box_add_move_binding (binding_set, GDK_KEY_Up, 0,
+  ctk_flow_box_add_move_binding (binding_set, CDK_KEY_Up, 0,
                                  CTK_MOVEMENT_DISPLAY_LINES, -1);
-  ctk_flow_box_add_move_binding (binding_set, GDK_KEY_KP_Up, 0,
+  ctk_flow_box_add_move_binding (binding_set, CDK_KEY_KP_Up, 0,
                                  CTK_MOVEMENT_DISPLAY_LINES, -1);
-  ctk_flow_box_add_move_binding (binding_set, GDK_KEY_Down, 0,
+  ctk_flow_box_add_move_binding (binding_set, CDK_KEY_Down, 0,
                                  CTK_MOVEMENT_DISPLAY_LINES, 1);
-  ctk_flow_box_add_move_binding (binding_set, GDK_KEY_KP_Down, 0,
+  ctk_flow_box_add_move_binding (binding_set, CDK_KEY_KP_Down, 0,
                                  CTK_MOVEMENT_DISPLAY_LINES, 1);
-  ctk_flow_box_add_move_binding (binding_set, GDK_KEY_Page_Up, 0,
+  ctk_flow_box_add_move_binding (binding_set, CDK_KEY_Page_Up, 0,
                                  CTK_MOVEMENT_PAGES, -1);
-  ctk_flow_box_add_move_binding (binding_set, GDK_KEY_KP_Page_Up, 0,
+  ctk_flow_box_add_move_binding (binding_set, CDK_KEY_KP_Page_Up, 0,
                                  CTK_MOVEMENT_PAGES, -1);
-  ctk_flow_box_add_move_binding (binding_set, GDK_KEY_Page_Down, 0,
+  ctk_flow_box_add_move_binding (binding_set, CDK_KEY_Page_Down, 0,
                                  CTK_MOVEMENT_PAGES, 1);
-  ctk_flow_box_add_move_binding (binding_set, GDK_KEY_KP_Page_Down, 0,
+  ctk_flow_box_add_move_binding (binding_set, CDK_KEY_KP_Page_Down, 0,
                                  CTK_MOVEMENT_PAGES, 1);
 
-  ctk_flow_box_add_move_binding (binding_set, GDK_KEY_Right, 0,
+  ctk_flow_box_add_move_binding (binding_set, CDK_KEY_Right, 0,
                                  CTK_MOVEMENT_VISUAL_POSITIONS, 1);
-  ctk_flow_box_add_move_binding (binding_set, GDK_KEY_KP_Right, 0,
+  ctk_flow_box_add_move_binding (binding_set, CDK_KEY_KP_Right, 0,
                                  CTK_MOVEMENT_VISUAL_POSITIONS, 1);
-  ctk_flow_box_add_move_binding (binding_set, GDK_KEY_Left, 0,
+  ctk_flow_box_add_move_binding (binding_set, CDK_KEY_Left, 0,
                                  CTK_MOVEMENT_VISUAL_POSITIONS, -1);
-  ctk_flow_box_add_move_binding (binding_set, GDK_KEY_KP_Left, 0,
+  ctk_flow_box_add_move_binding (binding_set, CDK_KEY_KP_Left, 0,
                                  CTK_MOVEMENT_VISUAL_POSITIONS, -1);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_space, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_space, CDK_CONTROL_MASK,
                                 "toggle-cursor-child", 0, NULL);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Space, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Space, CDK_CONTROL_MASK,
                                 "toggle-cursor-child", 0, NULL);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_a, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_a, CDK_CONTROL_MASK,
                                 "select-all", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_a, GDK_CONTROL_MASK | GDK_SHIFT_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_a, CDK_CONTROL_MASK | CDK_SHIFT_MASK,
                                 "unselect-all", 0);
 
   ctk_widget_class_set_accessible_type (widget_class, CTK_TYPE_FLOW_BOX_ACCESSIBLE);
@@ -4127,7 +4127,7 @@ ctk_flow_box_init (CtkFlowBox *box)
   ctk_gesture_single_set_touch_only (CTK_GESTURE_SINGLE (priv->multipress_gesture),
                                      FALSE);
   ctk_gesture_single_set_button (CTK_GESTURE_SINGLE (priv->multipress_gesture),
-                                 GDK_BUTTON_PRIMARY);
+                                 CDK_BUTTON_PRIMARY);
   ctk_event_controller_set_propagation_phase (CTK_EVENT_CONTROLLER (priv->multipress_gesture),
                                               CTK_PHASE_BUBBLE);
   g_signal_connect (priv->multipress_gesture, "pressed",
@@ -4141,7 +4141,7 @@ ctk_flow_box_init (CtkFlowBox *box)
   ctk_gesture_single_set_touch_only (CTK_GESTURE_SINGLE (priv->drag_gesture),
                                      FALSE);
   ctk_gesture_single_set_button (CTK_GESTURE_SINGLE (priv->drag_gesture),
-                                 GDK_BUTTON_PRIMARY);
+                                 CDK_BUTTON_PRIMARY);
   ctk_event_controller_set_propagation_phase (CTK_EVENT_CONTROLLER (priv->drag_gesture),
                                               CTK_PHASE_CAPTURE);
   g_signal_connect (priv->drag_gesture, "drag-begin",

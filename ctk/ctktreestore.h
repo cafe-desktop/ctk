@@ -61,65 +61,65 @@ struct _CtkTreeStoreClass
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType         ctk_tree_store_get_type         (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreeStore *ctk_tree_store_new              (gint          n_columns,
 					       ...);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreeStore *ctk_tree_store_newv             (gint          n_columns,
 					       GType        *types);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_tree_store_set_column_types (CtkTreeStore *tree_store,
 					       gint          n_columns,
 					       GType        *types);
 
 /* NOTE: use ctk_tree_model_get to get values from a CtkTreeStore */
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_tree_store_set_value        (CtkTreeStore *tree_store,
 					       CtkTreeIter  *iter,
 					       gint          column,
 					       GValue       *value);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_tree_store_set              (CtkTreeStore *tree_store,
 					       CtkTreeIter  *iter,
 					       ...);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_tree_store_set_valuesv      (CtkTreeStore *tree_store,
 					       CtkTreeIter  *iter,
 					       gint         *columns,
 					       GValue       *values,
 					       gint          n_values);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_tree_store_set_valist       (CtkTreeStore *tree_store,
 					       CtkTreeIter  *iter,
 					       va_list       var_args);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean      ctk_tree_store_remove           (CtkTreeStore *tree_store,
 					       CtkTreeIter  *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_tree_store_insert           (CtkTreeStore *tree_store,
 					       CtkTreeIter  *iter,
 					       CtkTreeIter  *parent,
 					       gint          position);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_tree_store_insert_before    (CtkTreeStore *tree_store,
 					       CtkTreeIter  *iter,
 					       CtkTreeIter  *parent,
 					       CtkTreeIter  *sibling);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_tree_store_insert_after     (CtkTreeStore *tree_store,
 					       CtkTreeIter  *iter,
 					       CtkTreeIter  *parent,
 					       CtkTreeIter  *sibling);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_tree_store_insert_with_values (CtkTreeStore *tree_store,
 						 CtkTreeIter  *iter,
 						 CtkTreeIter  *parent,
 						 gint          position,
 						 ...);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_tree_store_insert_with_valuesv (CtkTreeStore *tree_store,
 						  CtkTreeIter  *iter,
 						  CtkTreeIter  *parent,
@@ -127,39 +127,39 @@ void          ctk_tree_store_insert_with_valuesv (CtkTreeStore *tree_store,
 						  gint         *columns,
 						  GValue       *values,
 						  gint          n_values);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_tree_store_prepend          (CtkTreeStore *tree_store,
 					       CtkTreeIter  *iter,
 					       CtkTreeIter  *parent);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_tree_store_append           (CtkTreeStore *tree_store,
 					       CtkTreeIter  *iter,
 					       CtkTreeIter  *parent);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean      ctk_tree_store_is_ancestor      (CtkTreeStore *tree_store,
 					       CtkTreeIter  *iter,
 					       CtkTreeIter  *descendant);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint          ctk_tree_store_iter_depth       (CtkTreeStore *tree_store,
 					       CtkTreeIter  *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_tree_store_clear            (CtkTreeStore *tree_store);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean      ctk_tree_store_iter_is_valid    (CtkTreeStore *tree_store,
                                                CtkTreeIter  *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_tree_store_reorder          (CtkTreeStore *tree_store,
                                                CtkTreeIter  *parent,
                                                gint         *new_order);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_tree_store_swap             (CtkTreeStore *tree_store,
                                                CtkTreeIter  *a,
                                                CtkTreeIter  *b);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_tree_store_move_before      (CtkTreeStore *tree_store,
                                                CtkTreeIter  *iter,
                                                CtkTreeIter  *position);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_tree_store_move_after       (CtkTreeStore *tree_store,
                                                CtkTreeIter  *iter,
                                                CtkTreeIter  *position);

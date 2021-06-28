@@ -91,52 +91,52 @@ struct _CtkEntryBufferClass
   void (*_ctk_reserved8) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType                     ctk_entry_buffer_get_type               (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkEntryBuffer*           ctk_entry_buffer_new                    (const gchar     *initial_chars,
                                                                    gint             n_initial_chars);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gsize                     ctk_entry_buffer_get_bytes              (CtkEntryBuffer  *buffer);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 guint                     ctk_entry_buffer_get_length             (CtkEntryBuffer  *buffer);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar*              ctk_entry_buffer_get_text               (CtkEntryBuffer  *buffer);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                      ctk_entry_buffer_set_text               (CtkEntryBuffer  *buffer,
                                                                    const gchar     *chars,
                                                                    gint             n_chars);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                      ctk_entry_buffer_set_max_length         (CtkEntryBuffer  *buffer,
                                                                    gint             max_length);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint                      ctk_entry_buffer_get_max_length         (CtkEntryBuffer  *buffer);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 guint                     ctk_entry_buffer_insert_text            (CtkEntryBuffer  *buffer,
                                                                    guint            position,
                                                                    const gchar     *chars,
                                                                    gint             n_chars);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 guint                     ctk_entry_buffer_delete_text            (CtkEntryBuffer  *buffer,
                                                                    guint            position,
                                                                    gint             n_chars);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                      ctk_entry_buffer_emit_inserted_text     (CtkEntryBuffer  *buffer,
                                                                    guint            position,
                                                                    const gchar     *chars,
                                                                    guint            n_chars);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                      ctk_entry_buffer_emit_deleted_text      (CtkEntryBuffer  *buffer,
                                                                    guint            position,
                                                                    guint            n_chars);

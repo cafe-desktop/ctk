@@ -97,7 +97,7 @@ scribble_button_press_event (CtkWidget      *widget,
   if (surface == NULL)
     return FALSE; /* paranoia check, in case we haven't gotten a configure event */
 
-  if (event->button == GDK_BUTTON_PRIMARY)
+  if (event->button == CDK_BUTTON_PRIMARY)
     draw_brush (widget, event->x, event->y);
 
   /* We've handled the event, stop processing */
@@ -118,7 +118,7 @@ scribble_motion_notify_event (CtkWidget      *widget,
   /* This call is very important; it requests the next motion event.
    * If you don't call cdk_window_get_pointer() you'll only get
    * a single motion event. The reason is that we specified
-   * GDK_POINTER_MOTION_HINT_MASK to ctk_widget_set_events().
+   * CDK_POINTER_MOTION_HINT_MASK to ctk_widget_set_events().
    * If we hadn't specified that, we could just use event->x, event->y
    * as the pointer location. But we'd also get deluged in events.
    * By requesting the next event as we handle the current one,
@@ -128,7 +128,7 @@ scribble_motion_notify_event (CtkWidget      *widget,
 
   cdk_window_get_device_position (event->window, event->device, &x, &y, &state);
 
-  if (state & GDK_BUTTON1_MASK)
+  if (state & CDK_BUTTON1_MASK)
     draw_brush (widget, x, y);
 
   /* We've handled it, stop processing */
@@ -281,10 +281,10 @@ do_drawingarea (CtkWidget *do_widget)
        * subscribe to
        */
       ctk_widget_set_events (da, ctk_widget_get_events (da)
-                             | GDK_LEAVE_NOTIFY_MASK
-                             | GDK_BUTTON_PRESS_MASK
-                             | GDK_POINTER_MOTION_MASK
-                             | GDK_POINTER_MOTION_HINT_MASK);
+                             | CDK_LEAVE_NOTIFY_MASK
+                             | CDK_BUTTON_PRESS_MASK
+                             | CDK_POINTER_MOTION_MASK
+                             | CDK_POINTER_MOTION_HINT_MASK);
 
     }
 

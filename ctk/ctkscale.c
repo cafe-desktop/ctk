@@ -832,116 +832,116 @@ ctk_scale_class_init (CtkScaleClass *class)
   
   binding_set = ctk_binding_set_by_class (class);
 
-  add_slider_binding (binding_set, GDK_KEY_Left, 0,
+  add_slider_binding (binding_set, CDK_KEY_Left, 0,
                       CTK_SCROLL_STEP_LEFT);
 
-  add_slider_binding (binding_set, GDK_KEY_Left, GDK_CONTROL_MASK,
+  add_slider_binding (binding_set, CDK_KEY_Left, CDK_CONTROL_MASK,
                       CTK_SCROLL_PAGE_LEFT);
 
-  add_slider_binding (binding_set, GDK_KEY_KP_Left, 0,
+  add_slider_binding (binding_set, CDK_KEY_KP_Left, 0,
                       CTK_SCROLL_STEP_LEFT);
 
-  add_slider_binding (binding_set, GDK_KEY_KP_Left, GDK_CONTROL_MASK,
+  add_slider_binding (binding_set, CDK_KEY_KP_Left, CDK_CONTROL_MASK,
                       CTK_SCROLL_PAGE_LEFT);
 
-  add_slider_binding (binding_set, GDK_KEY_Right, 0,
+  add_slider_binding (binding_set, CDK_KEY_Right, 0,
                       CTK_SCROLL_STEP_RIGHT);
 
-  add_slider_binding (binding_set, GDK_KEY_Right, GDK_CONTROL_MASK,
+  add_slider_binding (binding_set, CDK_KEY_Right, CDK_CONTROL_MASK,
                       CTK_SCROLL_PAGE_RIGHT);
 
-  add_slider_binding (binding_set, GDK_KEY_KP_Right, 0,
+  add_slider_binding (binding_set, CDK_KEY_KP_Right, 0,
                       CTK_SCROLL_STEP_RIGHT);
 
-  add_slider_binding (binding_set, GDK_KEY_KP_Right, GDK_CONTROL_MASK,
+  add_slider_binding (binding_set, CDK_KEY_KP_Right, CDK_CONTROL_MASK,
                       CTK_SCROLL_PAGE_RIGHT);
 
-  add_slider_binding (binding_set, GDK_KEY_Up, 0,
+  add_slider_binding (binding_set, CDK_KEY_Up, 0,
                       CTK_SCROLL_STEP_UP);
 
-  add_slider_binding (binding_set, GDK_KEY_Up, GDK_CONTROL_MASK,
+  add_slider_binding (binding_set, CDK_KEY_Up, CDK_CONTROL_MASK,
                       CTK_SCROLL_PAGE_UP);
 
-  add_slider_binding (binding_set, GDK_KEY_KP_Up, 0,
+  add_slider_binding (binding_set, CDK_KEY_KP_Up, 0,
                       CTK_SCROLL_STEP_UP);
 
-  add_slider_binding (binding_set, GDK_KEY_KP_Up, GDK_CONTROL_MASK,
+  add_slider_binding (binding_set, CDK_KEY_KP_Up, CDK_CONTROL_MASK,
                       CTK_SCROLL_PAGE_UP);
 
-  add_slider_binding (binding_set, GDK_KEY_Down, 0,
+  add_slider_binding (binding_set, CDK_KEY_Down, 0,
                       CTK_SCROLL_STEP_DOWN);
 
-  add_slider_binding (binding_set, GDK_KEY_Down, GDK_CONTROL_MASK,
+  add_slider_binding (binding_set, CDK_KEY_Down, CDK_CONTROL_MASK,
                       CTK_SCROLL_PAGE_DOWN);
 
-  add_slider_binding (binding_set, GDK_KEY_KP_Down, 0,
+  add_slider_binding (binding_set, CDK_KEY_KP_Down, 0,
                       CTK_SCROLL_STEP_DOWN);
 
-  add_slider_binding (binding_set, GDK_KEY_KP_Down, GDK_CONTROL_MASK,
+  add_slider_binding (binding_set, CDK_KEY_KP_Down, CDK_CONTROL_MASK,
                       CTK_SCROLL_PAGE_DOWN);
    
-  add_slider_binding (binding_set, GDK_KEY_Page_Up, GDK_CONTROL_MASK,
+  add_slider_binding (binding_set, CDK_KEY_Page_Up, CDK_CONTROL_MASK,
                       CTK_SCROLL_PAGE_LEFT);
 
-  add_slider_binding (binding_set, GDK_KEY_KP_Page_Up, GDK_CONTROL_MASK,
+  add_slider_binding (binding_set, CDK_KEY_KP_Page_Up, CDK_CONTROL_MASK,
                       CTK_SCROLL_PAGE_LEFT);  
 
-  add_slider_binding (binding_set, GDK_KEY_Page_Up, 0,
+  add_slider_binding (binding_set, CDK_KEY_Page_Up, 0,
                       CTK_SCROLL_PAGE_UP);
 
-  add_slider_binding (binding_set, GDK_KEY_KP_Page_Up, 0,
+  add_slider_binding (binding_set, CDK_KEY_KP_Page_Up, 0,
                       CTK_SCROLL_PAGE_UP);
   
-  add_slider_binding (binding_set, GDK_KEY_Page_Down, GDK_CONTROL_MASK,
+  add_slider_binding (binding_set, CDK_KEY_Page_Down, CDK_CONTROL_MASK,
                       CTK_SCROLL_PAGE_RIGHT);
 
-  add_slider_binding (binding_set, GDK_KEY_KP_Page_Down, GDK_CONTROL_MASK,
+  add_slider_binding (binding_set, CDK_KEY_KP_Page_Down, CDK_CONTROL_MASK,
                       CTK_SCROLL_PAGE_RIGHT);
 
-  add_slider_binding (binding_set, GDK_KEY_Page_Down, 0,
+  add_slider_binding (binding_set, CDK_KEY_Page_Down, 0,
                       CTK_SCROLL_PAGE_DOWN);
 
-  add_slider_binding (binding_set, GDK_KEY_KP_Page_Down, 0,
+  add_slider_binding (binding_set, CDK_KEY_KP_Page_Down, 0,
                       CTK_SCROLL_PAGE_DOWN);
 
   /* Logical bindings (vs. visual bindings above) */
 
-  add_slider_binding (binding_set, GDK_KEY_plus, 0,
+  add_slider_binding (binding_set, CDK_KEY_plus, 0,
                       CTK_SCROLL_STEP_FORWARD);  
 
-  add_slider_binding (binding_set, GDK_KEY_minus, 0,
+  add_slider_binding (binding_set, CDK_KEY_minus, 0,
                       CTK_SCROLL_STEP_BACKWARD);  
 
-  add_slider_binding (binding_set, GDK_KEY_plus, GDK_CONTROL_MASK,
+  add_slider_binding (binding_set, CDK_KEY_plus, CDK_CONTROL_MASK,
                       CTK_SCROLL_PAGE_FORWARD);  
 
-  add_slider_binding (binding_set, GDK_KEY_minus, GDK_CONTROL_MASK,
+  add_slider_binding (binding_set, CDK_KEY_minus, CDK_CONTROL_MASK,
                       CTK_SCROLL_PAGE_BACKWARD);
 
 
-  add_slider_binding (binding_set, GDK_KEY_KP_Add, 0,
+  add_slider_binding (binding_set, CDK_KEY_KP_Add, 0,
                       CTK_SCROLL_STEP_FORWARD);  
 
-  add_slider_binding (binding_set, GDK_KEY_KP_Subtract, 0,
+  add_slider_binding (binding_set, CDK_KEY_KP_Subtract, 0,
                       CTK_SCROLL_STEP_BACKWARD);  
 
-  add_slider_binding (binding_set, GDK_KEY_KP_Add, GDK_CONTROL_MASK,
+  add_slider_binding (binding_set, CDK_KEY_KP_Add, CDK_CONTROL_MASK,
                       CTK_SCROLL_PAGE_FORWARD);  
 
-  add_slider_binding (binding_set, GDK_KEY_KP_Subtract, GDK_CONTROL_MASK,
+  add_slider_binding (binding_set, CDK_KEY_KP_Subtract, CDK_CONTROL_MASK,
                       CTK_SCROLL_PAGE_BACKWARD);
   
   
-  add_slider_binding (binding_set, GDK_KEY_Home, 0,
+  add_slider_binding (binding_set, CDK_KEY_Home, 0,
                       CTK_SCROLL_START);
 
-  add_slider_binding (binding_set, GDK_KEY_KP_Home, 0,
+  add_slider_binding (binding_set, CDK_KEY_KP_Home, 0,
                       CTK_SCROLL_START);
 
-  add_slider_binding (binding_set, GDK_KEY_End, 0,
+  add_slider_binding (binding_set, CDK_KEY_End, 0,
                       CTK_SCROLL_END);
 
-  add_slider_binding (binding_set, GDK_KEY_KP_End, 0,
+  add_slider_binding (binding_set, CDK_KEY_KP_End, 0,
                       CTK_SCROLL_END);
 
   ctk_widget_class_set_accessible_type (widget_class, CTK_TYPE_SCALE_ACCESSIBLE);

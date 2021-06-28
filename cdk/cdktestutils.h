@@ -16,10 +16,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_TEST_UTILS_H__
-#define __GDK_TEST_UTILS_H__
+#ifndef __CDK_TEST_UTILS_H__
+#define __CDK_TEST_UTILS_H__
 
-#if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined (__CDK_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdk.h> can be included directly."
 #endif
 
@@ -39,16 +39,16 @@ G_BEGIN_DECLS
 
 
 /* --- Cdk Test Utility API --- */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void            cdk_test_render_sync            (CdkWindow      *window);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean        cdk_test_simulate_key           (CdkWindow      *window,
                                                  gint            x,
                                                  gint            y,
                                                  guint           keyval,
                                                  CdkModifierType modifiers,
                                                  CdkEventType    key_pressrelease);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean        cdk_test_simulate_button        (CdkWindow      *window,
                                                  gint            x,
                                                  gint            y,
@@ -58,4 +58,4 @@ gboolean        cdk_test_simulate_button        (CdkWindow      *window,
 
 G_END_DECLS
 
-#endif /* __GDK_TEST_UTILS_H__ */
+#endif /* __CDK_TEST_UTILS_H__ */

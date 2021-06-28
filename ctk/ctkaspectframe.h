@@ -72,15 +72,15 @@ struct _CtkAspectFrameClass
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType      ctk_aspect_frame_get_type   (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_aspect_frame_new        (const gchar     *label,
 					gfloat           xalign,
 					gfloat           yalign,
 					gfloat           ratio,
 					gboolean         obey_child);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_aspect_frame_set        (CtkAspectFrame  *aspect_frame,
 					gfloat           xalign,
 					gfloat           yalign,

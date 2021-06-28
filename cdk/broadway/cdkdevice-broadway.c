@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2009 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -68,12 +68,12 @@ static void      cdk_broadway_device_select_window_events (CdkDevice       *devi
 							   CdkEventMask     event_mask);
 
 
-G_DEFINE_TYPE (CdkBroadwayDevice, cdk_broadway_device, GDK_TYPE_DEVICE)
+G_DEFINE_TYPE (CdkBroadwayDevice, cdk_broadway_device, CDK_TYPE_DEVICE)
 
 static void
 cdk_broadway_device_class_init (CdkBroadwayDeviceClass *klass)
 {
-  CdkDeviceClass *device_class = GDK_DEVICE_CLASS (klass);
+  CdkDeviceClass *device_class = CDK_DEVICE_CLASS (klass);
 
   device_class->get_history = cdk_broadway_device_get_history;
   device_class->get_state = cdk_broadway_device_get_state;
@@ -91,10 +91,10 @@ cdk_broadway_device_init (CdkBroadwayDevice *device_core)
 {
   CdkDevice *device;
 
-  device = GDK_DEVICE (device_core);
+  device = CDK_DEVICE (device_core);
 
-  _cdk_device_add_axis (device, GDK_NONE, GDK_AXIS_X, 0, 0, 1);
-  _cdk_device_add_axis (device, GDK_NONE, GDK_AXIS_Y, 0, 0, 1);
+  _cdk_device_add_axis (device, CDK_NONE, CDK_AXIS_X, 0, 0, 1);
+  _cdk_device_add_axis (device, CDK_NONE, CDK_AXIS_Y, 0, 0, 1);
 }
 
 static gboolean
@@ -161,13 +161,13 @@ cdk_broadway_device_query_state (CdkDevice        *device,
   CdkWindow *mouse_toplevel;
   guint32 mask32;
 
-  if (cdk_device_get_source (device) != GDK_SOURCE_MOUSE)
+  if (cdk_device_get_source (device) != CDK_SOURCE_MOUSE)
     return;
 
   display = cdk_device_get_display (device);
-  broadway_display = GDK_BROADWAY_DISPLAY (display);
+  broadway_display = CDK_BROADWAY_DISPLAY (display);
 
-  impl = GDK_WINDOW_IMPL_BROADWAY (window->impl);
+  impl = CDK_WINDOW_IMPL_BROADWAY (window->impl);
   toplevel = impl->wrapper;
 
   if (root_window)
@@ -195,7 +195,7 @@ cdk_broadway_device_query_state (CdkDevice        *device,
     *mask = mask32;
   if (child_window)
     {
-      if (cdk_window_get_window_type (toplevel) == GDK_WINDOW_ROOT)
+      if (cdk_window_get_window_type (toplevel) == CDK_WINDOW_ROOT)
 	{
 	  *child_window = mouse_toplevel;
 	  if (*child_window == NULL)
@@ -223,9 +223,9 @@ _cdk_broadway_window_grab_check_unmap (CdkWindow *window,
   device_manager = cdk_display_get_device_manager (display);
 
   /* Get all devices */
-  devices = cdk_device_manager_list_devices (device_manager, GDK_DEVICE_TYPE_MASTER);
-  devices = g_list_concat (devices, cdk_device_manager_list_devices (device_manager, GDK_DEVICE_TYPE_SLAVE));
-  devices = g_list_concat (devices, cdk_device_manager_list_devices (device_manager, GDK_DEVICE_TYPE_FLOATING));
+  devices = cdk_device_manager_list_devices (device_manager, CDK_DEVICE_TYPE_MASTER);
+  devices = g_list_concat (devices, cdk_device_manager_list_devices (device_manager, CDK_DEVICE_TYPE_SLAVE));
+  devices = g_list_concat (devices, cdk_device_manager_list_devices (device_manager, CDK_DEVICE_TYPE_FLOATING));
   G_GNUC_END_IGNORE_DEPRECATIONS;
 
   /* End all grabs on the newly hidden window */
@@ -248,7 +248,7 @@ _cdk_broadway_window_grab_check_destroy (CdkWindow *window)
   device_manager = cdk_display_get_device_manager (display);
 
   /* Get all devices */
-  devices = cdk_device_manager_list_devices (device_manager, GDK_DEVICE_TYPE_MASTER);
+  devices = cdk_device_manager_list_devices (device_manager, CDK_DEVICE_TYPE_MASTER);
   G_GNUC_END_IGNORE_DEPRECATIONS;
 
   for (d = devices; d; d = d->next)
@@ -281,18 +281,18 @@ cdk_broadway_device_grab (CdkDevice    *device,
   CdkBroadwayDisplay *broadway_display;
 
   display = cdk_device_get_display (device);
-  broadway_display = GDK_BROADWAY_DISPLAY (display);
+  broadway_display = CDK_BROADWAY_DISPLAY (display);
 
-  if (cdk_device_get_source (device) == GDK_SOURCE_KEYBOARD)
+  if (cdk_device_get_source (device) == CDK_SOURCE_KEYBOARD)
     {
       /* Device is a keyboard */
-      return GDK_GRAB_SUCCESS;
+      return CDK_GRAB_SUCCESS;
     }
   else
     {
       /* Device is a pointer */
       return _cdk_broadway_server_grab_pointer (broadway_display->server,
-						GDK_WINDOW_IMPL_BROADWAY (window->impl)->id,
+						CDK_WINDOW_IMPL_BROADWAY (window->impl)->id,
 						owner_events,
 						event_mask,
 						time_);
@@ -314,9 +314,9 @@ cdk_broadway_device_ungrab (CdkDevice *device,
   guint32 serial;
 
   display = cdk_device_get_display (device);
-  broadway_display = GDK_BROADWAY_DISPLAY (display);
+  broadway_display = CDK_BROADWAY_DISPLAY (display);
 
-  if (cdk_device_get_source (device) == GDK_SOURCE_KEYBOARD)
+  if (cdk_device_get_source (device) == CDK_SOURCE_KEYBOARD)
     {
       /* Device is a keyboard */
     }
@@ -329,8 +329,8 @@ cdk_broadway_device_ungrab (CdkDevice *device,
 	{
 	  grab = _cdk_display_get_last_device_grab (display, device);
 	  if (grab &&
-	      (time_ == GDK_CURRENT_TIME ||
-	       grab->time == GDK_CURRENT_TIME ||
+	      (time_ == CDK_CURRENT_TIME ||
+	       grab->time == CDK_CURRENT_TIME ||
 	       !TIME_IS_LATER (grab->time, time_)))
 	    grab->serial_end = serial;
 	}

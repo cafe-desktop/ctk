@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -22,10 +22,10 @@
  * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
-#ifndef __GDK_H__
-#define __GDK_H__
+#ifndef __CDK_H__
+#define __CDK_H__
 
-#define __GDK_H_INSIDE__
+#define __CDK_H_INSIDE__
 
 #include <cdk/cdkconfig.h>
 #include <cdk/cdkversionmacros.h>
@@ -63,12 +63,12 @@
 #include <cdk/cdkvisual.h>
 #include <cdk/cdkwindow.h>
 
-#ifndef GDK_DISABLE_DEPRECATED
+#ifndef CDK_DISABLE_DEPRECATED
 #include <cdk/deprecated/cdkcolor.h>
 #endif
 
 #include <cdk/cdk-autocleanup.h>
 
-#undef __GDK_H_INSIDE__
+#undef __CDK_H_INSIDE__
 
-#endif /* __GDK_H__ */
+#endif /* __CDK_H__ */

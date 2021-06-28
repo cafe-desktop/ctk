@@ -104,8 +104,8 @@ msgid "Default Display"
 msgstr "Լռելյայն Էկրան (Display)"
 
 #: cdk/cdkdisplaymanager.c:103
-msgid "The default display for GDK"
-msgstr "GDK-ի լռելյայն Էկրան (Display)"
+msgid "The default display for CDK"
+msgstr "CDK-ի լռելյայն Էկրան (Display)"
 
 #: cdk/cdkscreen.c:72
 msgid "Font options"

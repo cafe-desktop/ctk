@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -22,8 +22,8 @@
  * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
-#ifndef __GDK_PRIVATE_WIN32_H__
-#define __GDK_PRIVATE_WIN32_H__
+#ifndef __CDK_PRIVATE_WIN32_H__
+#define __CDK_PRIVATE_WIN32_H__
 
 #ifndef WINVER
 /* Vista or newer */
@@ -120,12 +120,12 @@
 
 
 /* Define some combinations of CdkDebugFlags */
-#define GDK_DEBUG_EVENTS_OR_INPUT (GDK_DEBUG_EVENTS|GDK_DEBUG_INPUT)
-#define GDK_DEBUG_MISC_OR_EVENTS (GDK_DEBUG_MISC|GDK_DEBUG_EVENTS)
+#define CDK_DEBUG_EVENTS_OR_INPUT (CDK_DEBUG_EVENTS|CDK_DEBUG_INPUT)
+#define CDK_DEBUG_MISC_OR_EVENTS (CDK_DEBUG_MISC|CDK_DEBUG_EVENTS)
 
-CdkScreen *GDK_WINDOW_SCREEN(GObject *win);
+CdkScreen *CDK_WINDOW_SCREEN(GObject *win);
 
-#define GDK_WINDOW_IS_WIN32(win)        (GDK_IS_WINDOW_IMPL_WIN32 (win->impl))
+#define CDK_WINDOW_IS_WIN32(win)        (CDK_IS_WINDOW_IMPL_WIN32 (win->impl))
 
 typedef struct _CdkColormapPrivateWin32 CdkColormapPrivateWin32;
 typedef struct _CdkWin32SingleFont      CdkWin32SingleFont;
@@ -147,9 +147,9 @@ struct _CdkWin32SingleFont
 };
 
 typedef enum {
-  GDK_WIN32_PE_STATIC,
-  GDK_WIN32_PE_AVAILABLE,
-  GDK_WIN32_PE_INUSE
+  CDK_WIN32_PE_STATIC,
+  CDK_WIN32_PE_AVAILABLE,
+  CDK_WIN32_PE_INUSE
 } CdkWin32PalEntryState;
 
 struct _CdkColormapPrivateWin32
@@ -277,7 +277,7 @@ extern CdkDisplay       *_cdk_display;
 
 /* Offsets to add to Windows coordinates (which are relative to the
  * primary monitor's origin, and thus might be negative for monitors
- * to the left and/or above the primary monitor) to get GDK
+ * to the left and/or above the primary monitor) to get CDK
  * coordinates, which should be non-negative on the whole screen.
  */
 extern gint		 _cdk_offset_x, _cdk_offset_y;
@@ -288,7 +288,7 @@ extern HINSTANCE	 _cdk_app_hmodule;
 
 extern gint		 _cdk_input_ignore_core;
 
-/* These are thread specific, but GDK/win32 works OK only when invoked
+/* These are thread specific, but CDK/win32 works OK only when invoked
  * from a single thread anyway.
  */
 extern HKL		 _cdk_input_locale;
@@ -307,14 +307,14 @@ void _cdk_win32_ole2_dnd_property_change (CdkAtom       type,
 					  gint          nelements);
 
 typedef enum {
-  GDK_WIN32_MODAL_OP_NONE = 0x0,
-  GDK_WIN32_MODAL_OP_SIZE = 0x1 << 0,
-  GDK_WIN32_MODAL_OP_MOVE = 0x1 << 1,
-  GDK_WIN32_MODAL_OP_MENU = 0x1 << 2,
-  GDK_WIN32_MODAL_OP_DND  = 0x1 << 3
+  CDK_WIN32_MODAL_OP_NONE = 0x0,
+  CDK_WIN32_MODAL_OP_SIZE = 0x1 << 0,
+  CDK_WIN32_MODAL_OP_MOVE = 0x1 << 1,
+  CDK_WIN32_MODAL_OP_MENU = 0x1 << 2,
+  CDK_WIN32_MODAL_OP_DND  = 0x1 << 3
 } CdkWin32ModalOpKind;
 
-#define GDK_WIN32_MODAL_OP_SIZEMOVE_MASK (GDK_WIN32_MODAL_OP_SIZE | GDK_WIN32_MODAL_OP_MOVE)
+#define CDK_WIN32_MODAL_OP_SIZEMOVE_MASK (CDK_WIN32_MODAL_OP_SIZE | CDK_WIN32_MODAL_OP_MOVE)
 
 /* Non-zero while a modal sizing, moving, or dnd operation is in progress */
 extern CdkWin32ModalOpKind _modal_operation_in_progress;
@@ -329,7 +329,7 @@ void  _cdk_win32_end_modal_call (CdkWin32ModalOpKind kind);
 extern gboolean		 _cdk_input_ignore_wintab;
 extern gint		 _cdk_max_colors;
 
-#define GDK_WIN32_COLORMAP_DATA(cmap) ((CdkColormapPrivateWin32 *) GDK_COLORMAP (cmap)->windowing_data)
+#define CDK_WIN32_COLORMAP_DATA(cmap) ((CdkColormapPrivateWin32 *) CDK_COLORMAP (cmap)->windowing_data)
 
 extern CdkCursor *_cdk_win32_grab_cursor;
 
@@ -352,10 +352,10 @@ struct _Win32CursorTheme {
 };
 
 typedef enum CdkWin32CursorLoadType {
-  GDK_WIN32_CURSOR_LOAD_FROM_FILE = 0,
-  GDK_WIN32_CURSOR_LOAD_FROM_RESOURCE_NULL = 1,
-  GDK_WIN32_CURSOR_LOAD_FROM_RESOURCE_THIS = 2,
-  GDK_WIN32_CURSOR_CREATE = 3,
+  CDK_WIN32_CURSOR_LOAD_FROM_FILE = 0,
+  CDK_WIN32_CURSOR_LOAD_FROM_RESOURCE_NULL = 1,
+  CDK_WIN32_CURSOR_LOAD_FROM_RESOURCE_THIS = 2,
+  CDK_WIN32_CURSOR_CREATE = 3,
 } CdkWin32CursorLoadType;
 
 typedef struct _Win32Cursor Win32Cursor;
@@ -531,4 +531,4 @@ void _cdk_win32_windowing_init (void);
 void _cdk_dnd_init    (void);
 void _cdk_events_init (CdkDisplay *display);
 
-#endif /* __GDK_PRIVATE_WIN32_H__ */
+#endif /* __CDK_PRIVATE_WIN32_H__ */

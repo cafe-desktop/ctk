@@ -312,17 +312,17 @@ ctk_scale_button_class_init (CtkScaleButtonClass *klass)
   /* Key bindings */
   binding_set = ctk_binding_set_by_class (widget_class);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_space, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_space, 0,
 				"popup", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Space, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Space, 0,
 				"popup", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Return, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Return, 0,
 				"popup", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_ISO_Enter, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_ISO_Enter, 0,
 				"popup", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Enter, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Enter, 0,
 				"popup", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Escape, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Escape, 0,
 				"popdown", 0);
 
   /* Bind class to template
@@ -367,7 +367,7 @@ ctk_scale_button_init (CtkScaleButton *button)
   g_object_ref_sink (priv->adjustment);
   ctk_range_set_adjustment (CTK_RANGE (priv->scale), priv->adjustment);
 
-  ctk_widget_add_events (CTK_WIDGET (button), GDK_SMOOTH_SCROLL_MASK);
+  ctk_widget_add_events (CTK_WIDGET (button), CDK_SMOOTH_SCROLL_MASK);
 
   context = ctk_widget_get_style_context (CTK_WIDGET (button));
   ctk_style_context_add_class (context, "scale");
@@ -789,23 +789,23 @@ ctk_scale_button_scroll (CtkWidget      *widget,
   priv = button->priv;
   adjustment = priv->adjustment;
 
-  if (event->type != GDK_SCROLL)
+  if (event->type != CDK_SCROLL)
     return FALSE;
 
   d = ctk_scale_button_get_value (button);
-  if (event->direction == GDK_SCROLL_UP)
+  if (event->direction == CDK_SCROLL_UP)
     {
       d += ctk_adjustment_get_step_increment (adjustment);
       if (d > ctk_adjustment_get_upper (adjustment))
 	d = ctk_adjustment_get_upper (adjustment);
     }
-  else if (event->direction == GDK_SCROLL_DOWN)
+  else if (event->direction == CDK_SCROLL_DOWN)
     {
       d -= ctk_adjustment_get_step_increment (adjustment);
       if (d < ctk_adjustment_get_lower (adjustment))
 	d = ctk_adjustment_get_lower (adjustment);
     }
-  else if (event->direction == GDK_SCROLL_SMOOTH)
+  else if (event->direction == CDK_SCROLL_SMOOTH)
     {
       d -= event->delta_y * ctk_adjustment_get_step_increment (adjustment);
       d = CLAMP (d, ctk_adjustment_get_lower (adjustment),

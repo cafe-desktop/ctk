@@ -17,7 +17,7 @@ LDADDS = \
 	$(top_builddir)/cdk/libcdk-3.la	\
 	$(top_builddir)/tests/ctkgears.o \
 	$(CTK_DEP_LIBS)			\
-	$(GDK_DEP_LIBS)			\
+	$(CDK_DEP_LIBS)			\
 	-lm
 
 EXTRA_DIST += \

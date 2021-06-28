@@ -585,19 +585,19 @@ resize_by_scroll_cb (CtkWidget      *scrolled_window,
   CtkFontChooserWidgetPrivate *priv = fc->priv;
   CtkAdjustment *adj = ctk_spin_button_get_adjustment (CTK_SPIN_BUTTON (priv->size_spin));
 
-  if (event->direction == GDK_SCROLL_UP || event->direction == GDK_SCROLL_RIGHT)
+  if (event->direction == CDK_SCROLL_UP || event->direction == CDK_SCROLL_RIGHT)
     ctk_adjustment_set_value (adj,
                               ctk_adjustment_get_value (adj) +
                               ctk_adjustment_get_step_increment (adj));
-  else if (event->direction == GDK_SCROLL_DOWN || event->direction == GDK_SCROLL_LEFT)
+  else if (event->direction == CDK_SCROLL_DOWN || event->direction == CDK_SCROLL_LEFT)
     ctk_adjustment_set_value (adj,
                               ctk_adjustment_get_value (adj) -
                               ctk_adjustment_get_step_increment (adj));
-  else if (event->direction == GDK_SCROLL_SMOOTH && event->delta_x != 0.0)
+  else if (event->direction == CDK_SCROLL_SMOOTH && event->delta_x != 0.0)
     ctk_adjustment_set_value (adj,
                               ctk_adjustment_get_value (adj) +
                               ctk_adjustment_get_step_increment (adj) * event->delta_x);
-  else if (event->direction == GDK_SCROLL_SMOOTH && event->delta_y != 0.0)
+  else if (event->direction == CDK_SCROLL_SMOOTH && event->delta_y != 0.0)
     ctk_adjustment_set_value (adj,
                               ctk_adjustment_get_value (adj) -
                               ctk_adjustment_get_step_increment (adj) * event->delta_y);
@@ -841,7 +841,7 @@ ctk_font_chooser_widget_init (CtkFontChooserWidget *fontchooser)
 
   ctk_font_chooser_widget_update_preview_attributes (fontchooser);
 
-  ctk_widget_add_events (priv->preview, GDK_SCROLL_MASK);
+  ctk_widget_add_events (priv->preview, CDK_SCROLL_MASK);
 
   /* Set the upper values of the spin/scale with G_MAXINT / PANGO_SCALE */
   ctk_spin_button_set_range (CTK_SPIN_BUTTON (priv->size_spin),
@@ -2026,7 +2026,7 @@ add_check_group (CtkFontChooserWidget *fontchooser,
       gesture = ctk_gesture_multi_press_new (feat);
       g_object_set_data_full (G_OBJECT (feat), "press", gesture, g_object_unref);
 
-      ctk_gesture_single_set_button (CTK_GESTURE_SINGLE (gesture), GDK_BUTTON_SECONDARY);
+      ctk_gesture_single_set_button (CTK_GESTURE_SINGLE (gesture), CDK_BUTTON_SECONDARY);
       g_signal_connect (gesture, "pressed", G_CALLBACK (feat_pressed), feat);
 
       example = ctk_label_new ("");

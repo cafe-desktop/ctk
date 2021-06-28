@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-2007 Peter Mattis, Spencer Kimball,
  * Josh MacDonald, Ryan Lortie
  *
@@ -51,13 +51,13 @@ static void        cdk_window_impl_broadway_finalize   (GObject            *obje
 static const cairo_user_data_key_t cdk_broadway_cairo_key;
 
 #define WINDOW_IS_TOPLEVEL_OR_FOREIGN(window) \
-  (GDK_WINDOW_TYPE (window) != GDK_WINDOW_CHILD &&   \
-   GDK_WINDOW_TYPE (window) != GDK_WINDOW_OFFSCREEN)
+  (CDK_WINDOW_TYPE (window) != CDK_WINDOW_CHILD &&   \
+   CDK_WINDOW_TYPE (window) != CDK_WINDOW_OFFSCREEN)
 
 #define WINDOW_IS_TOPLEVEL(window)		     \
-  (GDK_WINDOW_TYPE (window) != GDK_WINDOW_CHILD &&   \
-   GDK_WINDOW_TYPE (window) != GDK_WINDOW_FOREIGN && \
-   GDK_WINDOW_TYPE (window) != GDK_WINDOW_OFFSCREEN)
+  (CDK_WINDOW_TYPE (window) != CDK_WINDOW_CHILD &&   \
+   CDK_WINDOW_TYPE (window) != CDK_WINDOW_FOREIGN && \
+   CDK_WINDOW_TYPE (window) != CDK_WINDOW_OFFSCREEN)
 
 struct _CdkBroadwayWindow {
   CdkWindow parent;
@@ -67,7 +67,7 @@ struct _CdkBroadwayWindowClass {
   CdkWindowClass parent_class;
 };
 
-G_DEFINE_TYPE (CdkBroadwayWindow, cdk_broadway_window, GDK_TYPE_WINDOW)
+G_DEFINE_TYPE (CdkBroadwayWindow, cdk_broadway_window, CDK_TYPE_WINDOW)
 
 static void
 cdk_broadway_window_class_init (CdkBroadwayWindowClass *broadway_window_class)
@@ -81,7 +81,7 @@ cdk_broadway_window_init (CdkBroadwayWindow *broadway_window)
 
 G_DEFINE_TYPE (CdkWindowImplBroadway,
 	       cdk_window_impl_broadway,
-	       GDK_TYPE_WINDOW_IMPL)
+	       CDK_TYPE_WINDOW_IMPL)
 
 static CdkDisplay *
 find_broadway_display (void)
@@ -94,7 +94,7 @@ find_broadway_display (void)
   list = cdk_display_manager_list_displays (cdk_display_manager_get ());
   for (l = list; l; l = l->next)
     {
-      if (GDK_IS_BROADWAY_DISPLAY (l->data))
+      if (CDK_IS_BROADWAY_DISPLAY (l->data))
         {
           display = l->data;
           break; 
@@ -112,7 +112,7 @@ update_dirty_windows_and_sync (void)
   CdkBroadwayDisplay *display;
   gboolean updated_surface;
 
-  display = GDK_BROADWAY_DISPLAY (find_broadway_display ());
+  display = CDK_BROADWAY_DISPLAY (find_broadway_display ());
   g_assert (display != NULL);
 
   updated_surface = FALSE;
@@ -133,9 +133,9 @@ update_dirty_windows_and_sync (void)
   /* We sync here to ensure all references to the impl->surface memory
      is done, as we may later paint new data in them. */
   if (updated_surface)
-    cdk_display_sync (GDK_DISPLAY (display));
+    cdk_display_sync (CDK_DISPLAY (display));
   else
-    cdk_display_flush (GDK_DISPLAY (display));
+    cdk_display_flush (CDK_DISPLAY (display));
 }
 
 static guint flush_id = 0;
@@ -178,15 +178,15 @@ cdk_window_impl_broadway_finalize (GObject *object)
   CdkWindowImplBroadway *impl;
   CdkBroadwayDisplay *broadway_display;
 
-  g_return_if_fail (GDK_IS_WINDOW_IMPL_BROADWAY (object));
+  g_return_if_fail (CDK_IS_WINDOW_IMPL_BROADWAY (object));
 
-  impl = GDK_WINDOW_IMPL_BROADWAY (object);
+  impl = CDK_WINDOW_IMPL_BROADWAY (object);
 
   wrapper = impl->wrapper;
 
   _cdk_broadway_window_grab_check_destroy (wrapper);
 
-  broadway_display = GDK_BROADWAY_DISPLAY (cdk_window_get_display (impl->wrapper));
+  broadway_display = CDK_BROADWAY_DISPLAY (cdk_window_get_display (impl->wrapper));
 
   g_hash_table_remove (broadway_display->id_ht, GINT_TO_POINTER(impl->id));
 
@@ -207,24 +207,24 @@ _cdk_broadway_screen_init_root_window (CdkScreen * screen)
   CdkWindowImplBroadway *impl;
   CdkBroadwayScreen *broadway_screen;
 
-  broadway_screen = GDK_BROADWAY_SCREEN (screen);
+  broadway_screen = CDK_BROADWAY_SCREEN (screen);
 
   g_assert (broadway_screen->root_window == NULL);
 
-  broadway_screen->root_window = g_object_new (GDK_TYPE_BROADWAY_WINDOW, NULL);
+  broadway_screen->root_window = g_object_new (CDK_TYPE_BROADWAY_WINDOW, NULL);
 
   window = broadway_screen->root_window;
-  window->impl = g_object_new (GDK_TYPE_WINDOW_IMPL_BROADWAY, NULL);
+  window->impl = g_object_new (CDK_TYPE_WINDOW_IMPL_BROADWAY, NULL);
   window->impl_window = window;
   window->visual = cdk_screen_get_system_visual (screen);
 
-  impl = GDK_WINDOW_IMPL_BROADWAY (window->impl);
+  impl = CDK_WINDOW_IMPL_BROADWAY (window->impl);
 
   impl->screen = screen;
   impl->wrapper = window;
   impl->id = 0;
 
-  window->window_type = GDK_WINDOW_ROOT;
+  window->window_type = CDK_WINDOW_ROOT;
   window->depth = 24;
 
   window->x = 0;
@@ -269,24 +269,24 @@ _cdk_broadway_display_create_window_impl (CdkDisplay    *display,
   CdkWindowImplBroadway *impl;
   CdkBroadwayDisplay *broadway_display;
 
-  broadway_display = GDK_BROADWAY_DISPLAY (display);
+  broadway_display = CDK_BROADWAY_DISPLAY (display);
 
-  impl = g_object_new (GDK_TYPE_WINDOW_IMPL_BROADWAY, NULL);
+  impl = g_object_new (CDK_TYPE_WINDOW_IMPL_BROADWAY, NULL);
   window->impl = (CdkWindowImpl *)impl;
   impl->id = _cdk_broadway_server_new_window (broadway_display->server,
 					      window->x,
 					      window->y,
 					      window->width,
 					      window->height,
-					      window->window_type == GDK_WINDOW_TEMP);
+					      window->window_type == CDK_WINDOW_TEMP);
   g_hash_table_insert (broadway_display->id_ht, GINT_TO_POINTER(impl->id), window);
   impl->wrapper = window;
 
   impl->screen = screen;
 
-  g_assert (window->window_type == GDK_WINDOW_TOPLEVEL ||
-	    window->window_type == GDK_WINDOW_TEMP);
-  g_assert (GDK_WINDOW_TYPE (window->parent) == GDK_WINDOW_ROOT);
+  g_assert (window->window_type == CDK_WINDOW_TOPLEVEL ||
+	    window->window_type == CDK_WINDOW_TEMP);
+  g_assert (CDK_WINDOW_TYPE (window->parent) == CDK_WINDOW_ROOT);
 
   broadway_display->toplevels = g_list_prepend (broadway_display->toplevels, impl);
 
@@ -296,7 +296,7 @@ _cdk_broadway_display_create_window_impl (CdkDisplay    *display,
 void
 _cdk_broadway_window_resize_surface (CdkWindow *window)
 {
-  CdkWindowImplBroadway *impl = GDK_WINDOW_IMPL_BROADWAY (window->impl);
+  CdkWindowImplBroadway *impl = CDK_WINDOW_IMPL_BROADWAY (window->impl);
 
   if (impl->surface)
     {
@@ -327,11 +327,11 @@ ref_surface_destroyed (void *data)
 static cairo_surface_t *
 cdk_window_broadway_ref_cairo_surface (CdkWindow *window)
 {
-  CdkWindowImplBroadway *impl = GDK_WINDOW_IMPL_BROADWAY (window->impl);
+  CdkWindowImplBroadway *impl = CDK_WINDOW_IMPL_BROADWAY (window->impl);
   int w, h;
 
-  if (GDK_IS_WINDOW_IMPL_BROADWAY (window) &&
-      GDK_WINDOW_DESTROYED (impl->wrapper))
+  if (CDK_IS_WINDOW_IMPL_BROADWAY (window) &&
+      CDK_WINDOW_DESTROYED (impl->wrapper))
     return NULL;
 
   w = cdk_window_get_width (impl->wrapper);
@@ -366,9 +366,9 @@ _cdk_broadway_window_destroy (CdkWindow *window,
   CdkWindowImplBroadway *impl;
   CdkBroadwayDisplay *broadway_display;
 
-  g_return_if_fail (GDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_WINDOW (window));
 
-  impl = GDK_WINDOW_IMPL_BROADWAY (window->impl);
+  impl = CDK_WINDOW_IMPL_BROADWAY (window->impl);
 
   _cdk_broadway_selection_window_destroyed (window);
   _cdk_broadway_window_grab_check_destroy (window);
@@ -386,7 +386,7 @@ _cdk_broadway_window_destroy (CdkWindow *window,
       impl->surface = NULL;
     }
 
-  broadway_display = GDK_BROADWAY_DISPLAY (cdk_window_get_display (window));
+  broadway_display = CDK_BROADWAY_DISPLAY (cdk_window_get_display (window));
   g_hash_table_remove (broadway_display->id_ht, GINT_TO_POINTER(impl->id));
 
   _cdk_broadway_server_destroy_window (broadway_display->server,
@@ -403,9 +403,9 @@ cdk_broadway_window_destroy_foreign (CdkWindow *window)
 static void
 cdk_broadway_window_destroy_notify (CdkWindow *window)
 {
-  if (!GDK_WINDOW_DESTROYED (window))
+  if (!CDK_WINDOW_DESTROYED (window))
     {
-      if (GDK_WINDOW_TYPE(window) != GDK_WINDOW_FOREIGN)
+      if (CDK_WINDOW_TYPE(window) != CDK_WINDOW_FOREIGN)
 	g_warning ("CdkWindow %p unexpectedly destroyed", window);
 
       _cdk_window_destroy (window, TRUE);
@@ -420,16 +420,16 @@ cdk_window_broadway_show (CdkWindow *window, gboolean already_mapped)
   CdkWindowImplBroadway *impl;
   CdkBroadwayDisplay *broadway_display;
 
-  impl = GDK_WINDOW_IMPL_BROADWAY (window->impl);
+  impl = CDK_WINDOW_IMPL_BROADWAY (window->impl);
   impl->visible = TRUE;
 
-  if (window->event_mask & GDK_STRUCTURE_MASK)
-    _cdk_make_event (GDK_WINDOW (window), GDK_MAP, NULL, FALSE);
+  if (window->event_mask & CDK_STRUCTURE_MASK)
+    _cdk_make_event (CDK_WINDOW (window), CDK_MAP, NULL, FALSE);
 
-  if (window->parent && window->parent->event_mask & GDK_SUBSTRUCTURE_MASK)
-    _cdk_make_event (GDK_WINDOW (window), GDK_MAP, NULL, FALSE);
+  if (window->parent && window->parent->event_mask & CDK_SUBSTRUCTURE_MASK)
+    _cdk_make_event (CDK_WINDOW (window), CDK_MAP, NULL, FALSE);
 
-  broadway_display = GDK_BROADWAY_DISPLAY (cdk_window_get_display (window));
+  broadway_display = CDK_BROADWAY_DISPLAY (cdk_window_get_display (window));
   if (_cdk_broadway_server_window_show (broadway_display->server, impl->id))
     queue_flush (window);
 
@@ -441,16 +441,16 @@ cdk_window_broadway_hide (CdkWindow *window)
   CdkWindowImplBroadway *impl;
   CdkBroadwayDisplay *broadway_display;
 
-  impl = GDK_WINDOW_IMPL_BROADWAY (window->impl);
+  impl = CDK_WINDOW_IMPL_BROADWAY (window->impl);
   impl->visible = FALSE;
 
-  if (window->event_mask & GDK_STRUCTURE_MASK)
-    _cdk_make_event (GDK_WINDOW (window), GDK_UNMAP, NULL, FALSE);
+  if (window->event_mask & CDK_STRUCTURE_MASK)
+    _cdk_make_event (CDK_WINDOW (window), CDK_UNMAP, NULL, FALSE);
 
-  if (window->parent && window->parent->event_mask & GDK_SUBSTRUCTURE_MASK)
-    _cdk_make_event (GDK_WINDOW (window), GDK_UNMAP, NULL, FALSE);
+  if (window->parent && window->parent->event_mask & CDK_SUBSTRUCTURE_MASK)
+    _cdk_make_event (CDK_WINDOW (window), CDK_UNMAP, NULL, FALSE);
 
-  broadway_display = GDK_BROADWAY_DISPLAY (cdk_window_get_display (window));
+  broadway_display = CDK_BROADWAY_DISPLAY (cdk_window_get_display (window));
 
   _cdk_broadway_window_grab_check_unmap (window,
 					 _cdk_broadway_server_get_next_serial (broadway_display->server));
@@ -475,13 +475,13 @@ cdk_window_broadway_move_resize (CdkWindow *window,
 				 gint       width,
 				 gint       height)
 {
-  CdkWindowImplBroadway *impl = GDK_WINDOW_IMPL_BROADWAY (window->impl);
+  CdkWindowImplBroadway *impl = CDK_WINDOW_IMPL_BROADWAY (window->impl);
   CdkBroadwayDisplay *broadway_display;
   gboolean size_changed;
 
   size_changed = FALSE;
 
-  broadway_display = GDK_BROADWAY_DISPLAY (cdk_window_get_display (window));
+  broadway_display = CDK_BROADWAY_DISPLAY (cdk_window_get_display (window));
 
   if (width > 0 || height > 0)
     {
@@ -556,14 +556,14 @@ cdk_broadway_window_focus (CdkWindow *window,
   CdkWindowImplBroadway *impl;
   CdkBroadwayDisplay *broadway_display;
 
-  g_return_if_fail (GDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_WINDOW (window));
 
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !window->accept_focus)
     return;
 
-  impl = GDK_WINDOW_IMPL_BROADWAY (window->impl);
-  broadway_display = GDK_BROADWAY_DISPLAY (cdk_window_get_display (window));
+  impl = CDK_WINDOW_IMPL_BROADWAY (window->impl);
+  broadway_display = CDK_BROADWAY_DISPLAY (cdk_window_get_display (window));
   _cdk_broadway_server_window_focus (broadway_display->server,
 				     impl->id);
 }
@@ -577,7 +577,7 @@ cdk_broadway_window_set_type_hint (CdkWindow        *window,
 static CdkWindowTypeHint
 cdk_broadway_window_get_type_hint (CdkWindow *window)
 {
-  return GDK_WINDOW_TYPE_HINT_NORMAL;
+  return CDK_WINDOW_TYPE_HINT_NORMAL;
 }
 
 static void
@@ -611,7 +611,7 @@ cdk_broadway_window_set_geometry_hints (CdkWindow         *window,
 {
   CdkWindowImplBroadway *impl;
 
-  impl = GDK_WINDOW_IMPL_BROADWAY (window->impl);
+  impl = CDK_WINDOW_IMPL_BROADWAY (window->impl);
 
   impl->geometry_hints = *geometry;
   impl->geometry_hints_mask = geom_mask;
@@ -643,15 +643,15 @@ cdk_broadway_window_set_transient_for (CdkWindow *window,
   CdkWindowImplBroadway *impl;
   int parent_id;
 
-  impl = GDK_WINDOW_IMPL_BROADWAY (window->impl);
+  impl = CDK_WINDOW_IMPL_BROADWAY (window->impl);
 
   parent_id = 0;
   if (parent)
-    parent_id = GDK_WINDOW_IMPL_BROADWAY (parent->impl)->id;
+    parent_id = CDK_WINDOW_IMPL_BROADWAY (parent->impl)->id;
 
   impl->transient_for = parent_id;
 
-  display = GDK_BROADWAY_DISPLAY (cdk_window_get_display (impl->wrapper));
+  display = CDK_BROADWAY_DISPLAY (cdk_window_get_display (impl->wrapper));
   _cdk_broadway_server_window_set_transient_for (display->server, impl->id, impl->transient_for);
 }
 
@@ -669,10 +669,10 @@ cdk_window_broadway_set_device_cursor (CdkWindow *window,
 {
   CdkWindowImplBroadway *impl;
 
-  g_return_if_fail (GDK_IS_WINDOW (window));
-  g_return_if_fail (GDK_IS_DEVICE (device));
+  g_return_if_fail (CDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_DEVICE (device));
 
-  impl = GDK_WINDOW_IMPL_BROADWAY (window->impl);
+  impl = CDK_WINDOW_IMPL_BROADWAY (window->impl);
 
   if (!cursor)
     g_hash_table_remove (impl->device_cursor, device);
@@ -683,8 +683,8 @@ cdk_window_broadway_set_device_cursor (CdkWindow *window,
                             device, g_object_ref (cursor));
     }
 
-  if (!GDK_WINDOW_DESTROYED (window))
-    GDK_DEVICE_GET_CLASS (device)->set_window_cursor (device, window, cursor);
+  if (!CDK_WINDOW_DESTROYED (window))
+    CDK_DEVICE_GET_CLASS (device)->set_window_cursor (device, window, cursor);
 }
 
 static void
@@ -696,9 +696,9 @@ cdk_window_broadway_get_geometry (CdkWindow *window,
 {
   CdkWindowImplBroadway *impl;
 
-  g_return_if_fail (GDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_WINDOW (window));
 
-  impl = GDK_WINDOW_IMPL_BROADWAY (window->impl);
+  impl = CDK_WINDOW_IMPL_BROADWAY (window->impl);
 
   /* TODO: These should really roundtrip to the client to get the current data */
 
@@ -722,7 +722,7 @@ cdk_window_broadway_get_root_coords (CdkWindow *window,
 {
   CdkWindowImplBroadway *impl;
 
-  impl = GDK_WINDOW_IMPL_BROADWAY (window->impl);
+  impl = CDK_WINDOW_IMPL_BROADWAY (window->impl);
 
   if (root_x)
     *root_x = x + impl->wrapper->x;
@@ -753,12 +753,12 @@ cdk_window_broadway_get_device_state (CdkWindow       *window,
 {
   CdkWindow *child;
 
-  g_return_val_if_fail (window == NULL || GDK_IS_WINDOW (window), FALSE);
+  g_return_val_if_fail (window == NULL || CDK_IS_WINDOW (window), FALSE);
 
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     return FALSE;
 
-  GDK_DEVICE_GET_CLASS (device)->query_state (device, window,
+  CDK_DEVICE_GET_CLASS (device)->query_state (device, window,
                                               NULL, &child,
                                               NULL, NULL,
                                               x, y, mask);
@@ -768,7 +768,7 @@ cdk_window_broadway_get_device_state (CdkWindow       *window,
 static CdkEventMask
 cdk_window_broadway_get_events (CdkWindow *window)
 {
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     return 0;
 
   return 0;
@@ -778,7 +778,7 @@ static void
 cdk_window_broadway_set_events (CdkWindow    *window,
 				CdkEventMask  event_mask)
 {
-  if (!GDK_WINDOW_DESTROYED (window))
+  if (!CDK_WINDOW_DESTROYED (window))
     {
     }
 }
@@ -841,7 +841,7 @@ static void
 cdk_broadway_window_set_icon_name (CdkWindow   *window,
 				   const gchar *name)
 {
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL_OR_FOREIGN (window))
     return;
 
@@ -852,7 +852,7 @@ cdk_broadway_window_set_icon_name (CdkWindow   *window,
 static void
 cdk_broadway_window_iconify (CdkWindow *window)
 {
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL_OR_FOREIGN (window))
     return;
 }
@@ -860,7 +860,7 @@ cdk_broadway_window_iconify (CdkWindow *window)
 static void
 cdk_broadway_window_deiconify (CdkWindow *window)
 {
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL_OR_FOREIGN (window))
     return;
 }
@@ -868,7 +868,7 @@ cdk_broadway_window_deiconify (CdkWindow *window)
 static void
 cdk_broadway_window_stick (CdkWindow *window)
 {
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL_OR_FOREIGN (window))
     return;
 
@@ -877,7 +877,7 @@ cdk_broadway_window_stick (CdkWindow *window)
 static void
 cdk_broadway_window_unstick (CdkWindow *window)
 {
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL_OR_FOREIGN (window))
     return;
 
@@ -889,18 +889,18 @@ cdk_broadway_window_maximize (CdkWindow *window)
   CdkWindowImplBroadway *impl;
   CdkScreen *screen;
 
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL_OR_FOREIGN (window))
     return;
 
-  impl = GDK_WINDOW_IMPL_BROADWAY (window->impl);
+  impl = CDK_WINDOW_IMPL_BROADWAY (window->impl);
 
   if (impl->maximized)
     return;
 
   impl->maximized = TRUE;
 
-  cdk_synthesize_window_state (window, 0, GDK_WINDOW_STATE_MAXIMIZED);
+  cdk_synthesize_window_state (window, 0, CDK_WINDOW_STATE_MAXIMIZED);
 
   impl->pre_maximize_x = window->x;
   impl->pre_maximize_y = window->y;
@@ -919,18 +919,18 @@ cdk_broadway_window_unmaximize (CdkWindow *window)
 {
   CdkWindowImplBroadway *impl;
 
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL_OR_FOREIGN (window))
     return;
 
-  impl = GDK_WINDOW_IMPL_BROADWAY (window->impl);
+  impl = CDK_WINDOW_IMPL_BROADWAY (window->impl);
 
   if (!impl->maximized)
     return;
 
   impl->maximized = FALSE;
 
-  cdk_synthesize_window_state (window, GDK_WINDOW_STATE_MAXIMIZED, 0);
+  cdk_synthesize_window_state (window, CDK_WINDOW_STATE_MAXIMIZED, 0);
 
   cdk_window_move_resize (window,
 			  impl->pre_maximize_x,
@@ -942,7 +942,7 @@ cdk_broadway_window_unmaximize (CdkWindow *window)
 static void
 cdk_broadway_window_fullscreen (CdkWindow *window)
 {
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL_OR_FOREIGN (window))
     return;
 
@@ -951,7 +951,7 @@ cdk_broadway_window_fullscreen (CdkWindow *window)
 static void
 cdk_broadway_window_unfullscreen (CdkWindow *window)
 {
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL_OR_FOREIGN (window))
     return;
 
@@ -961,9 +961,9 @@ static void
 cdk_broadway_window_set_keep_above (CdkWindow *window,
 				    gboolean   setting)
 {
-  g_return_if_fail (GDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_WINDOW (window));
 
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL_OR_FOREIGN (window))
     return;
 
@@ -972,9 +972,9 @@ cdk_broadway_window_set_keep_above (CdkWindow *window,
 static void
 cdk_broadway_window_set_keep_below (CdkWindow *window, gboolean setting)
 {
-  g_return_if_fail (GDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_WINDOW (window));
 
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL_OR_FOREIGN (window))
     return;
 
@@ -983,7 +983,7 @@ cdk_broadway_window_set_keep_below (CdkWindow *window, gboolean setting)
 static CdkWindow *
 cdk_broadway_window_get_group (CdkWindow *window)
 {
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL (window))
     return NULL;
 
@@ -1000,7 +1000,7 @@ static void
 cdk_broadway_window_set_decorations (CdkWindow      *window,
 				     CdkWMDecoration decorations)
 {
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL_OR_FOREIGN (window))
     return;
 
@@ -1012,7 +1012,7 @@ cdk_broadway_window_get_decorations (CdkWindow       *window,
 {
   gboolean result = FALSE;
 
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL_OR_FOREIGN (window))
     return FALSE;
 
@@ -1023,9 +1023,9 @@ static void
 cdk_broadway_window_set_functions (CdkWindow    *window,
 				   CdkWMFunction functions)
 {
-  g_return_if_fail (GDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_WINDOW (window));
 
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL_OR_FOREIGN (window))
     return;
 }
@@ -1046,7 +1046,7 @@ static void
 cdk_broadway_window_end_paint (CdkWindow *window)
 {
   CdkWindowImplBroadway *impl;
-  impl = GDK_WINDOW_IMPL_BROADWAY (window->impl);
+  impl = CDK_WINDOW_IMPL_BROADWAY (window->impl);
   impl->dirty = TRUE;
 }
 
@@ -1080,7 +1080,7 @@ get_move_resize_data (CdkDisplay *display,
   CdkBroadwayDisplay *broadway_display;
   MoveResizeData *mv_resize;
 
-  broadway_display = GDK_BROADWAY_DISPLAY (display);
+  broadway_display = CDK_BROADWAY_DISPLAY (display);
 
   mv_resize = broadway_display->move_resize_data;
 
@@ -1117,37 +1117,37 @@ update_pos (MoveResizeData *mv_resize,
 
       switch (mv_resize->resize_edge)
 	{
-	case GDK_WINDOW_EDGE_NORTH_WEST:
+	case CDK_WINDOW_EDGE_NORTH_WEST:
 	  x += dx;
 	  y += dy;
 	  w -= dx;
 	  h -= dy;
 	  break;
-	case GDK_WINDOW_EDGE_NORTH:
+	case CDK_WINDOW_EDGE_NORTH:
 	  y += dy;
 	  h -= dy;
 	  break;
-	case GDK_WINDOW_EDGE_NORTH_EAST:
+	case CDK_WINDOW_EDGE_NORTH_EAST:
 	  y += dy;
 	  h -= dy;
 	  w += dx;
 	  break;
-	case GDK_WINDOW_EDGE_SOUTH_WEST:
+	case CDK_WINDOW_EDGE_SOUTH_WEST:
 	  h += dy;
 	  x += dx;
 	  w -= dx;
 	  break;
-	case GDK_WINDOW_EDGE_SOUTH_EAST:
+	case CDK_WINDOW_EDGE_SOUTH_EAST:
 	  w += dx;
 	  h += dy;
 	  break;
-	case GDK_WINDOW_EDGE_SOUTH:
+	case CDK_WINDOW_EDGE_SOUTH:
 	  h += dy;
 	  break;
-	case GDK_WINDOW_EDGE_EAST:
+	case CDK_WINDOW_EDGE_EAST:
 	  w += dx;
 	  break;
-	case GDK_WINDOW_EDGE_WEST:
+	case CDK_WINDOW_EDGE_WEST:
 	  x += dx;
 	  w -= dx;
 	  break;
@@ -1195,7 +1195,7 @@ moveresize_lookahead (CdkDisplay *display,
 {
   CdkBroadwayDisplay *broadway_display;
 
-  broadway_display = GDK_BROADWAY_DISPLAY (display);
+  broadway_display = CDK_BROADWAY_DISPLAY (display);
 
   return !_cdk_broadway_server_lookahead_event (broadway_display->server, "mb");
 }
@@ -1210,7 +1210,7 @@ _cdk_broadway_moveresize_handle_event (CdkDisplay *display,
   if (!mv_resize || !mv_resize->moveresize_window)
     return FALSE;
 
-  button_mask = GDK_BUTTON1_MASK << (mv_resize->moveresize_button - 1);
+  button_mask = CDK_BUTTON1_MASK << (mv_resize->moveresize_button - 1);
 
   switch (event->base.type)
     {
@@ -1317,12 +1317,12 @@ create_moveresize_window (MoveResizeData *mv_resize,
   attributes.y = -100;
   attributes.width = 10;
   attributes.height = 10;
-  attributes.window_type = GDK_WINDOW_TEMP;
-  attributes.wclass = GDK_INPUT_ONLY;
+  attributes.window_type = CDK_WINDOW_TEMP;
+  attributes.wclass = CDK_INPUT_ONLY;
   attributes.override_redirect = TRUE;
   attributes.event_mask = 0;
 
-  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_NOREDIR;
+  attributes_mask = CDK_WA_X | CDK_WA_Y | CDK_WA_NOREDIR;
 
   mv_resize->moveresize_emulation_window =
     cdk_window_new (cdk_screen_get_root_window (cdk_display_get_default_screen (mv_resize->display)),
@@ -1334,14 +1334,14 @@ create_moveresize_window (MoveResizeData *mv_resize,
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   status = cdk_pointer_grab (mv_resize->moveresize_emulation_window,
 			     FALSE,
-			     GDK_BUTTON_RELEASE_MASK |
-			     GDK_POINTER_MOTION_MASK,
+			     CDK_BUTTON_RELEASE_MASK |
+			     CDK_POINTER_MOTION_MASK,
 			     NULL,
 			     NULL,
 			     timestamp);
   G_GNUC_END_IGNORE_DEPRECATIONS;
 
-  if (status != GDK_GRAB_SUCCESS)
+  if (status != CDK_GRAB_SUCCESS)
     {
       /* If this fails, some other client has grabbed the window
        * already.
@@ -1358,8 +1358,8 @@ calculate_unmoving_origin (MoveResizeData *mv_resize)
   CdkRectangle rect;
   gint width, height;
 
-  if (mv_resize->moveresize_geom_mask & GDK_HINT_WIN_GRAVITY &&
-      mv_resize->moveresize_geometry.win_gravity == GDK_GRAVITY_STATIC)
+  if (mv_resize->moveresize_geom_mask & CDK_HINT_WIN_GRAVITY &&
+      mv_resize->moveresize_geometry.win_gravity == CDK_GRAVITY_STATIC)
     {
       cdk_window_get_origin (mv_resize->moveresize_window,
 			     &mv_resize->moveresize_orig_x,
@@ -1373,39 +1373,39 @@ calculate_unmoving_origin (MoveResizeData *mv_resize)
 
       switch (mv_resize->moveresize_geometry.win_gravity)
 	{
-	case GDK_GRAVITY_NORTH_WEST:
+	case CDK_GRAVITY_NORTH_WEST:
 	  mv_resize->moveresize_orig_x = rect.x;
 	  mv_resize->moveresize_orig_y = rect.y;
 	  break;
-	case GDK_GRAVITY_NORTH:
+	case CDK_GRAVITY_NORTH:
 	  mv_resize->moveresize_orig_x = rect.x + rect.width / 2 - width / 2;
 	  mv_resize->moveresize_orig_y = rect.y;
 	  break;
-	case GDK_GRAVITY_NORTH_EAST:
+	case CDK_GRAVITY_NORTH_EAST:
 	  mv_resize->moveresize_orig_x = rect.x + rect.width - width;
 	  mv_resize->moveresize_orig_y = rect.y;
 	  break;
-	case GDK_GRAVITY_WEST:
+	case CDK_GRAVITY_WEST:
 	  mv_resize->moveresize_orig_x = rect.x;
 	  mv_resize->moveresize_orig_y = rect.y + rect.height / 2 - height / 2;
 	  break;
-	case GDK_GRAVITY_CENTER:
+	case CDK_GRAVITY_CENTER:
 	  mv_resize->moveresize_orig_x = rect.x + rect.width / 2 - width / 2;
 	  mv_resize->moveresize_orig_y = rect.y + rect.height / 2 - height / 2;
 	  break;
-	case GDK_GRAVITY_EAST:
+	case CDK_GRAVITY_EAST:
 	  mv_resize->moveresize_orig_x = rect.x + rect.width - width;
 	  mv_resize->moveresize_orig_y = rect.y + rect.height / 2 - height / 2;
 	  break;
-	case GDK_GRAVITY_SOUTH_WEST:
+	case CDK_GRAVITY_SOUTH_WEST:
 	  mv_resize->moveresize_orig_x = rect.x;
 	  mv_resize->moveresize_orig_y = rect.y + rect.height - height;
 	  break;
-	case GDK_GRAVITY_SOUTH:
+	case CDK_GRAVITY_SOUTH:
 	  mv_resize->moveresize_orig_x = rect.x + rect.width / 2 - width / 2;
 	  mv_resize->moveresize_orig_y = rect.y + rect.height - height;
 	  break;
-	case GDK_GRAVITY_SOUTH_EAST:
+	case CDK_GRAVITY_SOUTH_EAST:
 	  mv_resize->moveresize_orig_x = rect.x + rect.width - width;
 	  mv_resize->moveresize_orig_y = rect.y + rect.height - height;
 	  break;
@@ -1429,9 +1429,9 @@ cdk_broadway_window_begin_resize_drag (CdkWindow     *window,
   MoveResizeData *mv_resize;
   CdkWindowImplBroadway *impl;
 
-  impl = GDK_WINDOW_IMPL_BROADWAY (window->impl);
+  impl = CDK_WINDOW_IMPL_BROADWAY (window->impl);
 
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL_OR_FOREIGN (window))
     return;
 
@@ -1469,9 +1469,9 @@ cdk_broadway_window_begin_move_drag (CdkWindow *window,
   MoveResizeData *mv_resize;
   CdkWindowImplBroadway *impl;
 
-  impl = GDK_WINDOW_IMPL_BROADWAY (window->impl);
+  impl = CDK_WINDOW_IMPL_BROADWAY (window->impl);
 
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL_OR_FOREIGN (window))
     return;
 
@@ -1507,9 +1507,9 @@ static void
 cdk_broadway_window_set_opacity (CdkWindow *window,
 				 gdouble    opacity)
 {
-  g_return_if_fail (GDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_WINDOW (window));
 
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL (window))
     return;
 
@@ -1541,14 +1541,14 @@ cdk_broadway_get_last_seen_time (CdkWindow  *window)
   CdkDisplay *display;
 
   display = cdk_window_get_display (window);
-  return _cdk_broadway_server_get_last_seen_time (GDK_BROADWAY_DISPLAY (display)->server);
+  return _cdk_broadway_server_get_last_seen_time (CDK_BROADWAY_DISPLAY (display)->server);
 }
 
 static void
 cdk_window_impl_broadway_class_init (CdkWindowImplBroadwayClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  CdkWindowImplClass *impl_class = GDK_WINDOW_IMPL_CLASS (klass);
+  CdkWindowImplClass *impl_class = CDK_WINDOW_IMPL_CLASS (klass);
 
   object_class->finalize = cdk_window_impl_broadway_finalize;
 

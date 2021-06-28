@@ -93,13 +93,13 @@ cdk_pixbuf_get_from_window (CdkWindow *src,
   CdkPixbuf *dest;
   int scale;
 
-  g_return_val_if_fail (GDK_IS_WINDOW (src), NULL);
+  g_return_val_if_fail (CDK_IS_WINDOW (src), NULL);
   g_return_val_if_fail (cdk_window_is_viewable (src), NULL);
 
   surface = _cdk_window_ref_cairo_surface (src);
   scale = cdk_window_get_scale_factor (src);
 
-  /* We do not know what happened to this surface outside of GDK.
+  /* We do not know what happened to this surface outside of CDK.
    * Especially for foreign windows, they will have been modified
    * by external applications.
    * So be on the safe side and:
@@ -268,7 +268,7 @@ cdk_pixbuf_get_from_surface  (cairo_surface_t *surface,
   g_return_val_if_fail (width > 0 && height > 0, NULL);
 
   content = cairo_surface_get_content (surface) | CAIRO_CONTENT_COLOR;
-  dest = cdk_pixbuf_new (GDK_COLORSPACE_RGB,
+  dest = cdk_pixbuf_new (CDK_COLORSPACE_RGB,
                          !!(content & CAIRO_CONTENT_ALPHA),
                          8,
                          width, height);

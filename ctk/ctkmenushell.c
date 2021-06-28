@@ -368,39 +368,39 @@ ctk_menu_shell_class_init (CtkMenuShellClass *klass)
 
   binding_set = ctk_binding_set_by_class (klass);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_Escape, 0,
+                                CDK_KEY_Escape, 0,
                                 "cancel", 0);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_Return, 0,
+                                CDK_KEY_Return, 0,
                                 "activate-current", 1,
                                 G_TYPE_BOOLEAN,
                                 TRUE);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_ISO_Enter, 0,
+                                CDK_KEY_ISO_Enter, 0,
                                 "activate-current", 1,
                                 G_TYPE_BOOLEAN,
                                 TRUE);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_KP_Enter, 0,
+                                CDK_KEY_KP_Enter, 0,
                                 "activate-current", 1,
                                 G_TYPE_BOOLEAN,
                                 TRUE);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_space, 0,
+                                CDK_KEY_space, 0,
                                 "activate-current", 1,
                                 G_TYPE_BOOLEAN,
                                 FALSE);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_KP_Space, 0,
+                                CDK_KEY_KP_Space, 0,
                                 "activate-current", 1,
                                 G_TYPE_BOOLEAN,
                                 FALSE);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_F10, 0,
+                                CDK_KEY_F10, 0,
                                 "cycle-focus", 1,
                                 CTK_TYPE_DIRECTION_TYPE, CTK_DIR_TAB_FORWARD);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_F10, GDK_SHIFT_MASK,
+                                CDK_KEY_F10, CDK_SHIFT_MASK,
                                 "cycle-focus", 1,
                                 CTK_TYPE_DIRECTION_TYPE, CTK_DIR_TAB_BACKWARD);
 
@@ -598,18 +598,18 @@ ctk_menu_shell_realize (CtkWidget *widget)
   attributes.y = allocation.y;
   attributes.width = allocation.width;
   attributes.height = allocation.height;
-  attributes.window_type = GDK_WINDOW_CHILD;
-  attributes.wclass = GDK_INPUT_OUTPUT;
+  attributes.window_type = CDK_WINDOW_CHILD;
+  attributes.wclass = CDK_INPUT_OUTPUT;
   attributes.visual = ctk_widget_get_visual (widget);
   attributes.event_mask = ctk_widget_get_events (widget);
-  attributes.event_mask |= (GDK_BUTTON_PRESS_MASK |
-                            GDK_BUTTON_RELEASE_MASK |
-                            GDK_POINTER_MOTION_MASK |
-                            GDK_KEY_PRESS_MASK |
-                            GDK_ENTER_NOTIFY_MASK |
-                            GDK_LEAVE_NOTIFY_MASK);
+  attributes.event_mask |= (CDK_BUTTON_PRESS_MASK |
+                            CDK_BUTTON_RELEASE_MASK |
+                            CDK_POINTER_MOTION_MASK |
+                            CDK_KEY_PRESS_MASK |
+                            CDK_ENTER_NOTIFY_MASK |
+                            CDK_LEAVE_NOTIFY_MASK);
 
-  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
+  attributes_mask = CDK_WA_X | CDK_WA_Y | CDK_WA_VISUAL;
 
   window = cdk_window_new (ctk_widget_get_parent_window (widget),
                            &attributes, attributes_mask);
@@ -645,7 +645,7 @@ ctk_menu_shell_button_press (CtkWidget      *widget,
   CtkWidget *menu_item;
   CtkWidget *parent;
 
-  if (event->type != GDK_BUTTON_PRESS)
+  if (event->type != CDK_BUTTON_PRESS)
     return FALSE;
 
   menu_shell = CTK_MENU_SHELL (widget);
@@ -982,9 +982,9 @@ ctk_menu_shell_enter_notify (CtkWidget        *widget,
   CtkMenuShell *menu_shell = CTK_MENU_SHELL (widget);
   CtkMenuShellPrivate *priv = menu_shell->priv;
 
-  if (event->mode == GDK_CROSSING_CTK_GRAB ||
-      event->mode == GDK_CROSSING_CTK_UNGRAB ||
-      event->mode == GDK_CROSSING_STATE_CHANGED)
+  if (event->mode == CDK_CROSSING_CTK_GRAB ||
+      event->mode == CDK_CROSSING_CTK_UNGRAB ||
+      event->mode == CDK_CROSSING_STATE_CHANGED)
     return TRUE;
 
   if (priv->active)
@@ -1011,7 +1011,7 @@ ctk_menu_shell_enter_notify (CtkWidget        *widget,
           if (priv->ignore_enter)
             return TRUE;
 
-          if (event->detail != GDK_NOTIFY_INFERIOR)
+          if (event->detail != CDK_NOTIFY_INFERIOR)
             {
               if ((ctk_widget_get_state_flags (menu_item) & CTK_STATE_FLAG_PRELIGHT) == 0)
                 ctk_menu_shell_select_item (menu_shell, menu_item);
@@ -1024,7 +1024,7 @@ ctk_menu_shell_enter_notify (CtkWidget        *widget,
                * entering a menu item where we wouldn't want to show
                * its submenu.
                */
-              if ((event->state & (GDK_BUTTON1_MASK|GDK_BUTTON2_MASK|GDK_BUTTON3_MASK)) &&
+              if ((event->state & (CDK_BUTTON1_MASK|CDK_BUTTON2_MASK|CDK_BUTTON3_MASK)) &&
                   CTK_MENU_ITEM (menu_item)->priv->submenu != NULL)
                 {
                   CTK_MENU_SHELL (parent)->priv->activated_submenu = TRUE;
@@ -1035,7 +1035,7 @@ ctk_menu_shell_enter_notify (CtkWidget        *widget,
 
                       source_device = cdk_event_get_source_device ((CdkEvent *) event);
 
-                      if (cdk_device_get_source (source_device) == GDK_SOURCE_TOUCHSCREEN)
+                      if (cdk_device_get_source (source_device) == CDK_SOURCE_TOUCHSCREEN)
                         _ctk_menu_item_popup_submenu (menu_item, TRUE);
                     }
                 }
@@ -1054,9 +1054,9 @@ static gint
 ctk_menu_shell_leave_notify (CtkWidget        *widget,
                              CdkEventCrossing *event)
 {
-  if (event->mode == GDK_CROSSING_CTK_GRAB ||
-      event->mode == GDK_CROSSING_CTK_UNGRAB ||
-      event->mode == GDK_CROSSING_STATE_CHANGED)
+  if (event->mode == CDK_CROSSING_CTK_GRAB ||
+      event->mode == CDK_CROSSING_CTK_UNGRAB ||
+      event->mode == CDK_CROSSING_STATE_CHANGED)
     return TRUE;
 
   if (ctk_widget_get_visible (widget))
@@ -1080,7 +1080,7 @@ ctk_menu_shell_leave_notify (CtkWidget        *widget,
       if ((priv->active_menu_item == event_widget) &&
           (menu_item->priv->submenu == NULL))
         {
-          if ((event->detail != GDK_NOTIFY_INFERIOR) &&
+          if ((event->detail != CDK_NOTIFY_INFERIOR) &&
               (ctk_widget_get_state_flags (CTK_WIDGET (menu_item)) & CTK_STATE_FLAG_PRELIGHT) != 0)
             {
               ctk_menu_shell_deselect (menu_shell);
@@ -1865,13 +1865,13 @@ _ctk_menu_shell_set_grab_device (CtkMenuShell *menu_shell,
   CtkMenuShellPrivate *priv;
 
   g_return_if_fail (CTK_IS_MENU_SHELL (menu_shell));
-  g_return_if_fail (device == NULL || GDK_IS_DEVICE (device));
+  g_return_if_fail (device == NULL || CDK_IS_DEVICE (device));
 
   priv = menu_shell->priv;
 
   if (!device)
     priv->grab_pointer = NULL;
-  else if (cdk_device_get_source (device) == GDK_SOURCE_KEYBOARD)
+  else if (cdk_device_get_source (device) == CDK_SOURCE_KEYBOARD)
     priv->grab_pointer = cdk_device_get_associated_device (device);
   else
     priv->grab_pointer = device;

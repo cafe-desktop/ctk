@@ -41,19 +41,19 @@
 
 -(BOOL)acceptsFirstResponder
 {
-  GDK_NOTE (EVENTS, g_message ("acceptsFirstResponder"));
+  CDK_NOTE (EVENTS, g_message ("acceptsFirstResponder"));
   return YES;
 }
 
 -(BOOL)becomeFirstResponder
 {
-  GDK_NOTE (EVENTS, g_message ("becomeFirstResponder"));
+  CDK_NOTE (EVENTS, g_message ("becomeFirstResponder"));
   return YES;
 }
 
 -(BOOL)resignFirstResponder
 {
-  GDK_NOTE (EVENTS, g_message ("resignFirstResponder"));
+  CDK_NOTE (EVENTS, g_message ("resignFirstResponder"));
   return YES;
 }
 
@@ -69,7 +69,7 @@
   g_object_set_data (G_OBJECT (cdk_window), GIC_FILTER_KEY,
                      GUINT_TO_POINTER (GIC_FILTER_FILTERED));
 
-  GDK_NOTE (EVENTS, g_message ("keyDown"));
+  CDK_NOTE (EVENTS, g_message ("keyDown"));
   [self interpretKeyEvents: [NSArray arrayWithObject: theEvent]];
 }
 
@@ -79,13 +79,13 @@
 
 -(NSUInteger)characterIndexForPoint: (NSPoint)aPoint
 {
-  GDK_NOTE (EVENTS, g_message ("characterIndexForPoint"));
+  CDK_NOTE (EVENTS, g_message ("characterIndexForPoint"));
   return 0;
 }
 
 -(NSRect)firstRectForCharacterRange: (NSRange)aRange actualRange: (NSRangePointer)actualRange
 {
-  GDK_NOTE (EVENTS, g_message ("firstRectForCharacterRange"));
+  CDK_NOTE (EVENTS, g_message ("firstRectForCharacterRange"));
   gint ns_x, ns_y;
   CdkRectangle *rect;
 
@@ -105,37 +105,37 @@
 
 -(NSArray *)validAttributesForMarkedText
 {
-  GDK_NOTE (EVENTS, g_message ("validAttributesForMarkedText"));
+  CDK_NOTE (EVENTS, g_message ("validAttributesForMarkedText"));
   return [NSArray arrayWithObjects: NSUnderlineStyleAttributeName, nil];
 }
 
 -(NSAttributedString *)attributedSubstringForProposedRange: (NSRange)aRange actualRange: (NSRangePointer)actualRange
 {
-  GDK_NOTE (EVENTS, g_message ("attributedSubstringForProposedRange"));
+  CDK_NOTE (EVENTS, g_message ("attributedSubstringForProposedRange"));
   return nil;
 }
 
 -(BOOL)hasMarkedText
 {
-  GDK_NOTE (EVENTS, g_message ("hasMarkedText"));
+  CDK_NOTE (EVENTS, g_message ("hasMarkedText"));
   return markedRange.location != NSNotFound && markedRange.length != 0;
 }
 
 -(NSRange)markedRange
 {
-  GDK_NOTE (EVENTS, g_message ("markedRange"));
+  CDK_NOTE (EVENTS, g_message ("markedRange"));
   return markedRange;
 }
 
 -(NSRange)selectedRange
 {
-  GDK_NOTE (EVENTS, g_message ("selectedRange"));
+  CDK_NOTE (EVENTS, g_message ("selectedRange"));
   return selectedRange;
 }
 
 -(void)unmarkText
 {
-  GDK_NOTE (EVENTS, g_message ("unmarkText"));
+  CDK_NOTE (EVENTS, g_message ("unmarkText"));
   selectedRange = NSMakeRange (0, 0);
   markedRange = NSMakeRange (NSNotFound, 0);
 
@@ -144,7 +144,7 @@
 
 -(void)setMarkedText: (id)aString selectedRange: (NSRange)newSelection replacementRange: (NSRange)replacementRange
 {
-  GDK_NOTE (EVENTS, g_message ("setMarkedText"));
+  CDK_NOTE (EVENTS, g_message ("setMarkedText"));
   const char *str;
 
   if (replacementRange.location == NSNotFound)
@@ -171,7 +171,7 @@
   g_object_set_data (G_OBJECT (cdk_window), TIC_SELECTED_LEN,
 		     GUINT_TO_POINTER (selectedRange.length));
 
-  GDK_NOTE (EVENTS, g_message ("setMarkedText: set %s (%p, nsview %p): %s",
+  CDK_NOTE (EVENTS, g_message ("setMarkedText: set %s (%p, nsview %p): %s",
 			       TIC_MARKED_TEXT, cdk_window, self,
 			       str ? str : "(empty)"));
 
@@ -185,14 +185,14 @@
 
 -(void)doCommandBySelector: (SEL)aSelector
 {
-  GDK_NOTE (EVENTS, g_message ("doCommandBySelector %s", aSelector));
+  CDK_NOTE (EVENTS, g_message ("doCommandBySelector %s", aSelector));
   g_object_set_data (G_OBJECT (cdk_window), GIC_FILTER_KEY,
                      GUINT_TO_POINTER (GIC_FILTER_PASSTHRU));
 }
 
 -(void)insertText: (id)aString replacementRange: (NSRange)replacementRange
 {
-  GDK_NOTE (EVENTS, g_message ("insertText"));
+  CDK_NOTE (EVENTS, g_message ("insertText"));
   const char *str;
   NSString *string;
 
@@ -232,7 +232,7 @@
     }
 
   g_object_set_data_full (G_OBJECT (cdk_window), TIC_INSERT_TEXT, g_strdup (str), g_free);
-  GDK_NOTE (EVENTS, g_message ("insertText: set %s (%p, nsview %p): %s",
+  CDK_NOTE (EVENTS, g_message ("insertText: set %s (%p, nsview %p): %s",
 			     TIC_INSERT_TEXT, cdk_window, self,
 			     str ? str : "(empty)"));
 
@@ -281,7 +281,7 @@
 
 -(BOOL)isOpaque
 {
-  if (GDK_WINDOW_DESTROYED (cdk_window))
+  if (CDK_WINDOW_DESTROYED (cdk_window))
     return YES;
 
   /* A view is opaque if its CdkWindow doesn't have the RGBA visual */
@@ -292,22 +292,22 @@
 -(void)drawRect: (NSRect)rect
 {
   CdkRectangle cdk_rect;
-  CdkWindowImplQuartz *impl = GDK_WINDOW_IMPL_QUARTZ (cdk_window->impl);
+  CdkWindowImplQuartz *impl = CDK_WINDOW_IMPL_QUARTZ (cdk_window->impl);
   const NSRect *drawn_rects;
   NSInteger count;
   int i;
   cairo_region_t *region;
 
-  if (GDK_WINDOW_DESTROYED (cdk_window))
+  if (CDK_WINDOW_DESTROYED (cdk_window))
     return;
 
-  if (! (cdk_window->event_mask & GDK_EXPOSURE_MASK))
+  if (! (cdk_window->event_mask & CDK_EXPOSURE_MASK))
     return;
 
   if (NSEqualRects (rect, NSZeroRect))
     return;
 
-  if (!GDK_WINDOW_IS_MAPPED (cdk_window))
+  if (!CDK_WINDOW_IS_MAPPED (cdk_window))
     {
       /* If the window is not yet mapped, clip_region_with_children
        * will be empty causing the usual code below to draw nothing.
@@ -369,7 +369,7 @@
  */
 -(void)updateTrackingRect
 {
-  CdkWindowImplQuartz *impl = GDK_WINDOW_IMPL_QUARTZ (cdk_window->impl);
+  CdkWindowImplQuartz *impl = CDK_WINDOW_IMPL_QUARTZ (cdk_window->impl);
   NSRect rect;
 
   if (!impl || !impl->toplevel)
@@ -414,7 +414,7 @@
 
 -(void)setFrame: (NSRect)frame
 {
-  if (GDK_WINDOW_DESTROYED (cdk_window))
+  if (CDK_WINDOW_DESTROYED (cdk_window))
     return;
   
   [super setFrame: frame];

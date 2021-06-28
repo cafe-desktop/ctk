@@ -61,7 +61,7 @@
      the window with the keyboard focus.
     </para>
     <para>
-     GDK translates these raw windowing system events into #CdkEvents.
+     CDK translates these raw windowing system events into #CdkEvents.
      Typical input events are:
      <simplelist>
        <member>#CdkEventButton</member>
@@ -73,7 +73,7 @@
      </simplelist>
     </para>
     <para>
-      Additionally, GDK/CTK synthesizes other signals to let know whether
+      Additionally, CDK/CTK synthesizes other signals to let know whether
       grabs (system-wide or in-app) are taking input away:
       <simplelist>
 	<member>#CdkEventGrabBroken</member>
@@ -100,7 +100,7 @@
     </para>
 
     <para>
-      When a GDK backend produces an input event, it is tied to a #CdkDevice and
+      When a CDK backend produces an input event, it is tied to a #CdkDevice and
       a #CdkWindow, which in turn represents a windowing system surface in the
       backend. If a widget has grabbed the current input device, or all input
       devices, the event is propagated to that #CtkWidget. Otherwise, it is
@@ -120,8 +120,8 @@
 
     <para>
       An event is propagated to a widget using ctk_propagate_event().
-      Propagation differs between event types: key events (%GDK_KEY_PRESS,
-      %GDK_KEY_RELEASE) are delivered to the top-level #CtkWindow; other events
+      Propagation differs between event types: key events (%CDK_KEY_PRESS,
+      %CDK_KEY_RELEASE) are delivered to the top-level #CtkWindow; other events
       are propagated down and up the widget hierarchy in three phases (see
       #CtkPropagationPhase).
     </para>
@@ -174,7 +174,7 @@
     <para>
       Any time during the propagation phase, a widget may indicate that a
       received event was consumed and propagation should therefore be stopped.
-      In traditional event handlers, this is hinted by returning %GDK_EVENT_STOP.
+      In traditional event handlers, this is hinted by returning %CDK_EVENT_STOP.
       If gestures are used, this may happen when the widget tells the gesture
       to claim the event touch sequence (or the pointer events) for its own. See the
       "gesture states" section below to know more of the latter.
@@ -195,14 +195,14 @@
       If a widget is windowless (ctk_widget_get_has_window() returns %FALSE) and
       an application wants to receive custom events on it, it must be placed
       inside a #CtkEventBox to receive the events, and an appropriate event mask
-      must be set on the box. When implementing a widget, use a %GDK_INPUT_ONLY
+      must be set on the box. When implementing a widget, use a %CDK_INPUT_ONLY
       #CdkWindow to receive the events instead.
     </para>
 
     <para>
       Filtering events against event masks happens inside #CdkWindow, which
       exposes event masks to the windowing system to reduce the number of events
-      GDK receives from it. On receiving an event, it is filtered against the
+      CDK receives from it. On receiving an event, it is filtered against the
       #CdkWindow’s mask for the input device, if set. Otherwise, it is filtered
       against the #CdkWindow’s basic event mask.
     </para>
@@ -228,8 +228,8 @@
     <title>Touch events</title>
 
     <para>
-      Touch events are emitted as events of type %GDK_TOUCH_BEGIN, %GDK_TOUCH_UPDATE or
-      %GDK_TOUCH_END, those events contain an “event sequence” that univocally identifies
+      Touch events are emitted as events of type %CDK_TOUCH_BEGIN, %CDK_TOUCH_UPDATE or
+      %CDK_TOUCH_END, those events contain an “event sequence” that univocally identifies
       the physical touch until it is lifted from the device.
     </para>
 
@@ -237,16 +237,16 @@
       On some windowing platforms, multitouch devices perform pointer emulation, this works
       by granting a “pointer emulating” hint to one of the currently interacting touch
       sequences, which will be reported on every #CdkEventTouch event from that sequence. By
-      default, if a widget didn't request touch events by setting %GDK_TOUCH_MASK on its
+      default, if a widget didn't request touch events by setting %CDK_TOUCH_MASK on its
       event mask and didn't override #CtkWidget::touch-event, CTK+ will transform these
       “pointer emulating” events into semantically similar #CdkEventButton and #CdkEventMotion
-      events. Depending on %GDK_TOUCH_MASK being in the event mask or not, non-pointer-emulating
+      events. Depending on %CDK_TOUCH_MASK being in the event mask or not, non-pointer-emulating
       sequences could still trigger gestures or just get filtered out, regardless of the widget
       not handling those directly.
     </para>
 
     <para>
-      If the widget sets %GDK_TOUCH_MASK on its event mask and doesn't chain up on
+      If the widget sets %CDK_TOUCH_MASK on its event mask and doesn't chain up on
       #CtkWidget::touch-event, only touch events will be received, and no pointer emulation
       will be performed.
     </para>
@@ -262,13 +262,13 @@
       then on, until after the corresponding #CdkEventButtonRelease, will be reported
       to the widget that got the first event. Likewise, on touch events, every
       #CdkEventSequence will deliver only events to the widget that received its
-      %GDK_TOUCH_BEGIN event.
+      %CDK_TOUCH_BEGIN event.
     </para>
 
     <para>
       Explicit grabs happen programatically (both activation and deactivation),
-      and can be either system-wide (GDK grabs) or application-wide (CTK grabs).
-      On the windowing platforms that support it, GDK grabs will prevent any
+      and can be either system-wide (CDK grabs) or application-wide (CTK grabs).
+      On the windowing platforms that support it, CDK grabs will prevent any
       interaction with any other application/window/widget than the grabbing one,
       whereas CTK grabs will be effective only within the application (across all
       its windows), still allowing for interaction with other applications.
@@ -278,7 +278,7 @@
       But one important aspect of grabs is that they may potentially happen at any
       point somewhere else, even while the pointer/touch device is already grabbed.
       This makes it necessary for widgets to handle the cancellation of any ongoing
-      interaction. Depending on whether a CTK or GDK grab is causing this, the
+      interaction. Depending on whether a CTK or CDK grab is causing this, the
       widget will respectively receive a #CtkWidget::grab-notify signal, or a
       #CdkEventGrabBroken event.
     </para>
@@ -357,7 +357,7 @@
       Alternatively, or at a later point in time, the widget may choose to deny the touch
       sequences, thus letting those go through again in event propagation. When this happens
       in the capture phase, and if there are no other claiming gestures in the widget,
-      a %GDK_TOUCH_BEGIN/%GDK_BUTTON_PRESS event will be emulated and
+      a %CDK_TOUCH_BEGIN/%CDK_BUTTON_PRESS event will be emulated and
       propagated downwards, in order to preserve consistency.
     </para>
 

@@ -22,7 +22,7 @@
 #include <ctk/ctkfilefilter.h>
 #include <cdk/cdkconfig.h>
 
-#ifdef GDK_WINDOWING_QUARTZ
+#ifdef CDK_WINDOWING_QUARTZ
 #import <Foundation/Foundation.h>
 #endif
 
@@ -30,7 +30,7 @@ G_BEGIN_DECLS
 
 char ** _ctk_file_filter_get_as_patterns (CtkFileFilter      *filter);
 
-#ifdef GDK_WINDOWING_QUARTZ
+#ifdef CDK_WINDOWING_QUARTZ
 NSArray * _ctk_file_filter_get_as_pattern_nsstrings (CtkFileFilter *filter);
 #endif
 

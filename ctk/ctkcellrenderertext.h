@@ -63,12 +63,12 @@ struct _CtkCellRendererTextClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType            ctk_cell_renderer_text_get_type (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkCellRenderer *ctk_cell_renderer_text_new      (void);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_cell_renderer_text_set_fixed_height_from_font (CtkCellRendererText *renderer,
 								    gint                 number_of_rows);
 

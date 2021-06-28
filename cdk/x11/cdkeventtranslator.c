@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2009 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -38,15 +38,15 @@ _cdk_x11_event_translator_translate (CdkEventTranslator *translator,
   CdkEventTranslatorIface *iface;
   CdkEvent *event;
 
-  g_return_val_if_fail (GDK_IS_EVENT_TRANSLATOR (translator), NULL);
-  g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
+  g_return_val_if_fail (CDK_IS_EVENT_TRANSLATOR (translator), NULL);
+  g_return_val_if_fail (CDK_IS_DISPLAY (display), NULL);
 
-  iface = GDK_EVENT_TRANSLATOR_GET_IFACE (translator);
+  iface = CDK_EVENT_TRANSLATOR_GET_IFACE (translator);
 
   if (!iface->translate_event)
     return NULL;
 
-  event = cdk_event_new (GDK_NOTHING);
+  event = cdk_event_new (CDK_NOTHING);
 
   if ((iface->translate_event) (translator, display, event, xevent))
     return event;
@@ -61,9 +61,9 @@ _cdk_x11_event_translator_get_handled_events (CdkEventTranslator *translator)
 {
   CdkEventTranslatorIface *iface;
 
-  g_return_val_if_fail (GDK_IS_EVENT_TRANSLATOR (translator), 0);
+  g_return_val_if_fail (CDK_IS_EVENT_TRANSLATOR (translator), 0);
 
-  iface = GDK_EVENT_TRANSLATOR_GET_IFACE (translator);
+  iface = CDK_EVENT_TRANSLATOR_GET_IFACE (translator);
 
   if (iface->get_handled_events)
     return iface->get_handled_events (translator);
@@ -78,9 +78,9 @@ _cdk_x11_event_translator_select_window_events (CdkEventTranslator *translator,
 {
   CdkEventTranslatorIface *iface;
 
-  g_return_if_fail (GDK_IS_EVENT_TRANSLATOR (translator));
+  g_return_if_fail (CDK_IS_EVENT_TRANSLATOR (translator));
 
-  iface = GDK_EVENT_TRANSLATOR_GET_IFACE (translator);
+  iface = CDK_EVENT_TRANSLATOR_GET_IFACE (translator);
 
   if (iface->select_window_events)
     iface->select_window_events (translator, window, event_mask);
@@ -93,9 +93,9 @@ _cdk_x11_event_translator_get_window (CdkEventTranslator *translator,
 {
   CdkEventTranslatorIface *iface;
 
-  g_return_val_if_fail (GDK_IS_EVENT_TRANSLATOR (translator), NULL);
+  g_return_val_if_fail (CDK_IS_EVENT_TRANSLATOR (translator), NULL);
 
-  iface = GDK_EVENT_TRANSLATOR_GET_IFACE (translator);
+  iface = CDK_EVENT_TRANSLATOR_GET_IFACE (translator);
 
   if (iface->get_window)
     return iface->get_window (translator, xevent);

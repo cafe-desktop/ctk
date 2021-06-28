@@ -550,7 +550,7 @@ ctk_about_dialog_class_init (CtkAboutDialogClass *klass)
     g_param_spec_object ("logo",
                          P_("Logo"),
                          P_("A logo for the about box. If this is not set, it defaults to ctk_window_get_default_icon_list()"),
-                         GDK_TYPE_PIXBUF,
+                         CDK_TYPE_PIXBUF,
                          CTK_PARAM_READWRITE | G_PARAM_EXPLICIT_NOTIFY);
 
   /**
@@ -1789,7 +1789,7 @@ ctk_about_dialog_set_logo (CtkAboutDialog *about,
       if (pixbufs != NULL)
         {
           ctk_image_set_from_pixbuf (CTK_IMAGE (priv->logo_image),
-                                     GDK_PIXBUF (pixbufs->data));
+                                     CDK_PIXBUF (pixbufs->data));
 
           g_list_free (pixbufs);
         }
@@ -1950,9 +1950,9 @@ text_view_key_press_event (CtkWidget      *text_view,
 
   switch (event->keyval)
     {
-      case GDK_KEY_Return:
-      case GDK_KEY_ISO_Enter:
-      case GDK_KEY_KP_Enter:
+      case CDK_KEY_Return:
+      case CDK_KEY_ISO_Enter:
+      case CDK_KEY_KP_Enter:
         buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (text_view));
         ctk_text_buffer_get_iter_at_mark (buffer, &iter,
                                           ctk_text_buffer_get_insert (buffer));
@@ -1976,12 +1976,12 @@ text_view_event_after (CtkWidget      *text_view,
   CdkEventButton *button_event;
   gint x, y;
 
-  if (event->type != GDK_BUTTON_RELEASE)
+  if (event->type != CDK_BUTTON_RELEASE)
     return FALSE;
 
   button_event = (CdkEventButton *)event;
 
-  if (button_event->button != GDK_BUTTON_PRIMARY)
+  if (button_event->button != CDK_BUTTON_PRIMARY)
     return FALSE;
 
   buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (text_view));

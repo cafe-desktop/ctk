@@ -456,14 +456,14 @@ switch_to_label (void)
 static gboolean
 entry_key_press (CtkEntry *entry, CdkEventKey *event)
 {
-  if (event->keyval == GDK_KEY_Escape)
+  if (event->keyval == CDK_KEY_Escape)
     {
       ctk_entry_set_text (CTK_ENTRY (entry), text);
       switch_to_label ();
-      return GDK_EVENT_STOP;
+      return CDK_EVENT_STOP;
     }
 
-  return GDK_EVENT_PROPAGATE;
+  return CDK_EVENT_PROPAGATE;
 }
 
 CtkWidget *

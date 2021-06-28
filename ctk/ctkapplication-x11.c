@@ -44,7 +44,7 @@ ctk_application_impl_x11_handle_window_realize (CtkApplicationImpl *impl,
 
   cdk_window = ctk_widget_get_window (CTK_WIDGET (window));
 
-  if (!GDK_IS_X11_WINDOW (cdk_window))
+  if (!CDK_IS_X11_WINDOW (cdk_window))
     return;
 
   window_path = ctk_application_impl_dbus_get_window_path (dbus, window);
@@ -67,8 +67,8 @@ ctk_application_impl_x11_get_window_system_id (CtkApplicationImplDBus *dbus,
 
   cdk_window = ctk_widget_get_window (CTK_WIDGET (window));
 
-  if (GDK_IS_X11_WINDOW (cdk_window))
-    return g_variant_new_uint32 (GDK_WINDOW_XID (cdk_window));
+  if (CDK_IS_X11_WINDOW (cdk_window))
+    return g_variant_new_uint32 (CDK_WINDOW_XID (cdk_window));
 
   return CTK_APPLICATION_IMPL_DBUS_CLASS (ctk_application_impl_x11_parent_class)->get_window_system_id (dbus, window);
 }

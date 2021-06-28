@@ -61,7 +61,7 @@ ctk_drag_source_gesture_begin (CtkGesture       *gesture,
   g_assert (button >= 1);
 
   if (!site->start_button_mask ||
-      !(site->start_button_mask & (GDK_BUTTON1_MASK << (button - 1))))
+      !(site->start_button_mask & (CDK_BUTTON1_MASK << (button - 1))))
     ctk_gesture_set_state (gesture, CTK_EVENT_SEQUENCE_DENIED);
 }
 
@@ -153,8 +153,8 @@ ctk_drag_source_set (CtkWidget            *widget,
 
   ctk_widget_add_events (widget,
                          ctk_widget_get_events (widget) |
-                         GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK |
-                         GDK_BUTTON_MOTION_MASK);
+                         CDK_BUTTON_PRESS_MASK | CDK_BUTTON_RELEASE_MASK |
+                         CDK_BUTTON_MOTION_MASK);
 
   if (site)
     {
@@ -374,7 +374,7 @@ ctk_drag_source_set_icon_pixbuf (CtkWidget *widget,
   CtkDragSourceSite *site;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
-  g_return_if_fail (GDK_IS_PIXBUF (pixbuf));
+  g_return_if_fail (CDK_IS_PIXBUF (pixbuf));
 
   site = g_object_get_data (G_OBJECT (widget), "ctk-site-data");
   g_return_if_fail (site != NULL); 

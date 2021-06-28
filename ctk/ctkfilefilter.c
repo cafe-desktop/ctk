@@ -592,7 +592,7 @@ ctk_file_filter_get_needed (CtkFileFilter *filter)
   return filter->needed;
 }
 
-#ifdef GDK_WINDOWING_QUARTZ
+#ifdef CDK_WINDOWING_QUARTZ
 
 #import <Foundation/Foundation.h>
 

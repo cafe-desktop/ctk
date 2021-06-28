@@ -404,19 +404,19 @@ ctk_shortcuts_section_class_init (CtkShortcutsSectionClass *klass)
 
   binding_set = ctk_binding_set_by_class (klass);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_Page_Up, 0,
+                                CDK_KEY_Page_Up, 0,
                                 "change-current-page", 1,
                                 G_TYPE_INT, -1);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_Page_Down, 0,
+                                CDK_KEY_Page_Down, 0,
                                 "change-current-page", 1,
                                 G_TYPE_INT, 1);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_Page_Up, GDK_CONTROL_MASK,
+                                CDK_KEY_Page_Up, CDK_CONTROL_MASK,
                                 "change-current-page", 1,
                                 G_TYPE_INT, -1);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_Page_Down, GDK_CONTROL_MASK,
+                                CDK_KEY_Page_Down, CDK_CONTROL_MASK,
                                 "change-current-page", 1,
                                 G_TYPE_INT, 1);
 }

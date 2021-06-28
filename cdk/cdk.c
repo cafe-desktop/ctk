@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -52,53 +52,53 @@
  * @Short_description: Library initialization and miscellaneous functions
  * @Title: General
  *
- * This section describes the GDK initialization functions and miscellaneous
+ * This section describes the CDK initialization functions and miscellaneous
  * utility functions, as well as deprecation facilities.
  *
- * The GDK and CTK+ headers annotate deprecated APIs in a way that produces
+ * The CDK and CTK+ headers annotate deprecated APIs in a way that produces
  * compiler warnings if these deprecated APIs are used. The warnings
- * can be turned off by defining the macro %GDK_DISABLE_DEPRECATION_WARNINGS
+ * can be turned off by defining the macro %CDK_DISABLE_DEPRECATION_WARNINGS
  * before including the glib.h header.
  *
- * GDK and CTK+ also provide support for building applications against
+ * CDK and CTK+ also provide support for building applications against
  * defined subsets of deprecated or new APIs. Define the macro
- * %GDK_VERSION_MIN_REQUIRED to specify up to what version
+ * %CDK_VERSION_MIN_REQUIRED to specify up to what version
  * you want to receive warnings about deprecated APIs. Define the
- * macro %GDK_VERSION_MAX_ALLOWED to specify the newest version
+ * macro %CDK_VERSION_MAX_ALLOWED to specify the newest version
  * whose API you want to use.
  */
 
 /**
- * GDK_WINDOWING_X11:
+ * CDK_WINDOWING_X11:
  *
- * The #GDK_WINDOWING_X11 macro is defined if the X11 backend
+ * The #CDK_WINDOWING_X11 macro is defined if the X11 backend
  * is supported.
  *
  * Use this macro to guard code that is specific to the X11 backend.
  */
 
 /**
- * GDK_WINDOWING_WIN32:
+ * CDK_WINDOWING_WIN32:
  *
- * The #GDK_WINDOWING_WIN32 macro is defined if the Win32 backend
+ * The #CDK_WINDOWING_WIN32 macro is defined if the Win32 backend
  * is supported.
  *
  * Use this macro to guard code that is specific to the Win32 backend.
  */
 
 /**
- * GDK_WINDOWING_QUARTZ:
+ * CDK_WINDOWING_QUARTZ:
  *
- * The #GDK_WINDOWING_QUARTZ macro is defined if the Quartz backend
+ * The #CDK_WINDOWING_QUARTZ macro is defined if the Quartz backend
  * is supported.
  *
  * Use this macro to guard code that is specific to the Quartz backend.
  */
 
 /**
- * GDK_WINDOWING_WAYLAND:
+ * CDK_WINDOWING_WAYLAND:
  *
- * The #GDK_WINDOWING_WAYLAND macro is defined if the Wayland backend
+ * The #CDK_WINDOWING_WAYLAND macro is defined if the Wayland backend
  * is supported.
  *
  * Use this macro to guard code that is specific to the Wayland backend.
@@ -137,32 +137,32 @@ static GCallback cdk_threads_lock = NULL;
 static GCallback cdk_threads_unlock = NULL;
 
 static const GDebugKey cdk_gl_keys[] = {
-  { "disable",               GDK_GL_DISABLE },
-  { "always",                GDK_GL_ALWAYS },
-  { "software-draw",         GDK_GL_SOFTWARE_DRAW_GL | GDK_GL_SOFTWARE_DRAW_SURFACE} ,
-  { "software-draw-gl",      GDK_GL_SOFTWARE_DRAW_GL },
-  { "software-draw-surface", GDK_GL_SOFTWARE_DRAW_SURFACE },
-  { "texture-rectangle",     GDK_GL_TEXTURE_RECTANGLE },
-  { "legacy",                GDK_GL_LEGACY },
-  { "gles",                  GDK_GL_GLES },
+  { "disable",               CDK_GL_DISABLE },
+  { "always",                CDK_GL_ALWAYS },
+  { "software-draw",         CDK_GL_SOFTWARE_DRAW_GL | CDK_GL_SOFTWARE_DRAW_SURFACE} ,
+  { "software-draw-gl",      CDK_GL_SOFTWARE_DRAW_GL },
+  { "software-draw-surface", CDK_GL_SOFTWARE_DRAW_SURFACE },
+  { "texture-rectangle",     CDK_GL_TEXTURE_RECTANGLE },
+  { "legacy",                CDK_GL_LEGACY },
+  { "gles",                  CDK_GL_GLES },
 };
 
 #ifdef G_ENABLE_DEBUG
 static const GDebugKey cdk_debug_keys[] = {
-  { "events",        GDK_DEBUG_EVENTS },
-  { "misc",          GDK_DEBUG_MISC },
-  { "dnd",           GDK_DEBUG_DND },
-  { "xim",           GDK_DEBUG_XIM },
-  { "nograbs",       GDK_DEBUG_NOGRABS },
-  { "input",         GDK_DEBUG_INPUT },
-  { "cursor",        GDK_DEBUG_CURSOR },
-  { "multihead",     GDK_DEBUG_MULTIHEAD },
-  { "xinerama",      GDK_DEBUG_XINERAMA },
-  { "draw",          GDK_DEBUG_DRAW },
-  { "eventloop",     GDK_DEBUG_EVENTLOOP },
-  { "frames",        GDK_DEBUG_FRAMES },
-  { "settings",      GDK_DEBUG_SETTINGS },
-  { "opengl",        GDK_DEBUG_OPENGL }
+  { "events",        CDK_DEBUG_EVENTS },
+  { "misc",          CDK_DEBUG_MISC },
+  { "dnd",           CDK_DEBUG_DND },
+  { "xim",           CDK_DEBUG_XIM },
+  { "nograbs",       CDK_DEBUG_NOGRABS },
+  { "input",         CDK_DEBUG_INPUT },
+  { "cursor",        CDK_DEBUG_CURSOR },
+  { "multihead",     CDK_DEBUG_MULTIHEAD },
+  { "xinerama",      CDK_DEBUG_XINERAMA },
+  { "draw",          CDK_DEBUG_DRAW },
+  { "eventloop",     CDK_DEBUG_EVENTLOOP },
+  { "frames",        CDK_DEBUG_FRAMES },
+  { "settings",      CDK_DEBUG_SETTINGS },
+  { "opengl",        CDK_DEBUG_OPENGL }
 };
 
 static gboolean
@@ -237,10 +237,10 @@ static const GOptionEntry cdk_args[] = {
 #endif
 #ifdef G_ENABLE_DEBUG
   { "cdk-debug",    0, 0, G_OPTION_ARG_CALLBACK, cdk_arg_debug_cb,  
-    /* Description of --cdk-debug=FLAGS in --help output */    N_("GDK debugging flags to set"),
+    /* Description of --cdk-debug=FLAGS in --help output */    N_("CDK debugging flags to set"),
     /* Placeholder in --cdk-debug=FLAGS in --help output */    N_("FLAGS") },
   { "cdk-no-debug", 0, 0, G_OPTION_ARG_CALLBACK, cdk_arg_no_debug_cb, 
-    /* Description of --cdk-no-debug=FLAGS in --help output */ N_("GDK debugging flags to unset"),
+    /* Description of --cdk-no-debug=FLAGS in --help output */ N_("CDK debugging flags to unset"),
     /* Placeholder in --cdk-no-debug=FLAGS in --help output */ N_("FLAGS") },
 #endif 
   { NULL }
@@ -303,7 +303,7 @@ cdk_pre_parse (void)
   
 #ifdef G_ENABLE_DEBUG
   {
-    gchar *debug_string = getenv("GDK_DEBUG");
+    gchar *debug_string = getenv("CDK_DEBUG");
     if (debug_string != NULL)
       _cdk_debug_flags = g_parse_debug_string (debug_string,
                                               (GDebugKey *) cdk_debug_keys,
@@ -315,35 +315,35 @@ cdk_pre_parse (void)
   }
 #endif  /* G_ENABLE_DEBUG */
 
-  gl_string = getenv("GDK_GL");
+  gl_string = getenv("CDK_GL");
   if (gl_string != NULL)
     _cdk_gl_flags = g_parse_debug_string (gl_string,
                                           (GDebugKey *) cdk_gl_keys,
                                           G_N_ELEMENTS (cdk_gl_keys));
 
-  if (getenv ("GDK_NATIVE_WINDOWS"))
+  if (getenv ("CDK_NATIVE_WINDOWS"))
     {
-      g_warning ("The GDK_NATIVE_WINDOWS environment variable is not supported in CTK3.\n"
+      g_warning ("The CDK_NATIVE_WINDOWS environment variable is not supported in CTK3.\n"
                  "See the documentation for cdk_window_ensure_native() on how to get native windows.");
-      g_unsetenv ("GDK_NATIVE_WINDOWS");
+      g_unsetenv ("CDK_NATIVE_WINDOWS");
     }
 
-  rendering_mode = g_getenv ("GDK_RENDERING");
+  rendering_mode = g_getenv ("CDK_RENDERING");
   if (rendering_mode)
     {
       if (g_str_equal (rendering_mode, "similar"))
-        _cdk_rendering_mode = GDK_RENDERING_MODE_SIMILAR;
+        _cdk_rendering_mode = CDK_RENDERING_MODE_SIMILAR;
       else if (g_str_equal (rendering_mode, "image"))
-        _cdk_rendering_mode = GDK_RENDERING_MODE_IMAGE;
+        _cdk_rendering_mode = CDK_RENDERING_MODE_IMAGE;
       else if (g_str_equal (rendering_mode, "recording"))
-        _cdk_rendering_mode = GDK_RENDERING_MODE_RECORDING;
+        _cdk_rendering_mode = CDK_RENDERING_MODE_RECORDING;
     }
 }
 
 /**
  * cdk_pre_parse_libctk_only:
  *
- * Prepare for parsing command line arguments for GDK. This is not
+ * Prepare for parsing command line arguments for CDK. This is not
  * public API and should not be used in application code.
  *
  * Deprecated: 3.16: This symbol was never meant to be used outside
@@ -363,7 +363,7 @@ cdk_pre_parse_libctk_only (void)
  * Parse command line arguments, and store for future
  * use by calls to cdk_display_open().
  *
- * Any arguments used by GDK are removed from the array and @argc and @argv are
+ * Any arguments used by CDK are removed from the array and @argc and @argv are
  * updated accordingly.
  *
  * You shouldn’t call this function explicitly if you are using
@@ -399,7 +399,7 @@ cdk_parse_args (int    *argc,
     }
   g_option_context_free (option_context);
 
-  GDK_NOTE (MISC, g_message ("progname: \"%s\"", g_get_prgname ()));
+  CDK_NOTE (MISC, g_message ("progname: \"%s\"", g_get_prgname ()));
 }
 
 /**
@@ -521,13 +521,13 @@ cdk_display_open_default_libctk_only (void)
  * @argc: (inout): the number of command line arguments.
  * @argv: (array length=argc) (inout): the array of command line arguments.
  *
- * Initializes the GDK library and connects to the windowing system,
+ * Initializes the CDK library and connects to the windowing system,
  * returning %TRUE on success.
  *
- * Any arguments used by GDK are removed from the array and @argc and @argv
+ * Any arguments used by CDK are removed from the array and @argc and @argv
  * are updated accordingly.
  *
- * CTK+ initializes GDK in ctk_init() and so this function is not usually
+ * CTK+ initializes CDK in ctk_init() and so this function is not usually
  * needed by CTK+ applications.
  *
  * Returns: %TRUE if initialization succeeded.
@@ -547,14 +547,14 @@ cdk_init_check (int    *argc,
  * @argc: (inout): the number of command line arguments.
  * @argv: (array length=argc) (inout): the array of command line arguments.
  *
- * Initializes the GDK library and connects to the windowing system.
+ * Initializes the CDK library and connects to the windowing system.
  * If initialization fails, a warning message is output and the application
  * terminates with a call to `exit(1)`.
  *
- * Any arguments used by GDK are removed from the array and @argc and @argv
+ * Any arguments used by CDK are removed from the array and @argc and @argv
  * are updated accordingly.
  *
- * CTK+ initializes GDK in ctk_init() and so this function is not usually
+ * CTK+ initializes CDK in ctk_init() and so this function is not usually
  * needed by CTK+ applications.
  */
 void
@@ -572,10 +572,10 @@ cdk_init (int *argc, char ***argv)
 
 /**
  * SECTION:threads
- * @Short_description: Functions for using GDK in multi-threaded programs
+ * @Short_description: Functions for using CDK in multi-threaded programs
  * @Title: Threads
  *
- * For thread safety, GDK relies on the thread primitives in GLib,
+ * For thread safety, CDK relies on the thread primitives in GLib,
  * and on the thread-safe GLib main loop.
  *
  * GLib is completely thread safe (all global data is automatically
@@ -583,11 +583,11 @@ cdk_init (int *argc, char ***argv)
  * locked for performance reasons. So e.g. you must coordinate
  * accesses to the same #GHashTable from multiple threads.
  *
- * CTK+, however, is not thread safe. You should only use CTK+ and GDK
+ * CTK+, however, is not thread safe. You should only use CTK+ and CDK
  * from the thread ctk_init() and ctk_main() were called on.
  * This is usually referred to as the “main thread”.
  *
- * Signals on CTK+ and GDK types, as well as non-signal callbacks, are
+ * Signals on CTK+ and CDK types, as well as non-signal callbacks, are
  * emitted in the main thread.
  *
  * You can schedule work in the main thread safely from other threads
@@ -617,7 +617,7 @@ cdk_init (int *argc, char ***argv)
  *
  * You should use cdk_threads_add_idle() and cdk_threads_add_timeout()
  * instead of g_idle_add() and g_timeout_add() since libraries not under
- * your control might be using the deprecated GDK locking mechanism.
+ * your control might be using the deprecated CDK locking mechanism.
  * If you are sure that none of the code in your application and libraries
  * use the deprecated cdk_threads_enter() or cdk_threads_leave() methods,
  * then you can safely use g_idle_add() and g_timeout_add().
@@ -632,11 +632,11 @@ cdk_init (int *argc, char ***argv)
  * cdk_threads_enter:
  *
  * This function marks the beginning of a critical section in which
- * GDK and CTK+ functions can be called safely and without causing race
+ * CDK and CTK+ functions can be called safely and without causing race
  * conditions. Only one thread at a time can be in such a critial
  * section.
  *
- * Deprecated:3.6: All GDK and CTK+ calls should be made from the main
+ * Deprecated:3.6: All CDK and CTK+ calls should be made from the main
  *     thread
  */
 void
@@ -651,7 +651,7 @@ cdk_threads_enter (void)
  *
  * Leaves a critical region begun with cdk_threads_enter().
  *
- * Deprecated:3.6: All GDK and CTK+ calls should be made from the main
+ * Deprecated:3.6: All CDK and CTK+ calls should be made from the main
  *     thread
  */
 void
@@ -677,7 +677,7 @@ cdk_threads_impl_unlock (void)
    *  b) fail on GLib ≥ 2.41
    *
    * trylock() will either succeed because nothing is holding the
-   * GDK mutex, and will be unlocked right afterwards; or it's
+   * CDK mutex, and will be unlocked right afterwards; or it's
    * going to fail because the mutex is locked already, in which
    * case we unlock it as expected.
    *
@@ -696,13 +696,13 @@ cdk_threads_impl_unlock (void)
 /**
  * cdk_threads_init:
  *
- * Initializes GDK so that it can be used from multiple threads
+ * Initializes CDK so that it can be used from multiple threads
  * in conjunction with cdk_threads_enter() and cdk_threads_leave().
  *
  * This call must be made before any use of the main loop from
  * CTK+; to be safe, call it before ctk_init().
  *
- * Deprecated:3.6: All GDK and CTK+ calls should be made from the main
+ * Deprecated:3.6: All CDK and CTK+ calls should be made from the main
  *     thread
  */
 void
@@ -716,11 +716,11 @@ cdk_threads_init (void)
 
 /**
  * cdk_threads_set_lock_functions: (skip)
- * @enter_fn:   function called to guard GDK
+ * @enter_fn:   function called to guard CDK
  * @leave_fn: function called to release the guard
  *
  * Allows the application to replace the standard method that
- * GDK uses to protect its data structures. Normally, GDK
+ * CDK uses to protect its data structures. Normally, CDK
  * creates a single #GMutex that is locked by cdk_threads_enter(),
  * and released by cdk_threads_leave(); using this function an
  * application provides, instead, a function @enter_fn that is
@@ -741,7 +741,7 @@ cdk_threads_init (void)
  * This method must be called before cdk_threads_init(), and cannot
  * be called multiple times.
  *
- * Deprecated:3.6: All GDK and CTK+ calls should be made from the main
+ * Deprecated:3.6: All CDK and CTK+ calls should be made from the main
  *     thread
  *
  * Since: 2.4
@@ -797,7 +797,7 @@ cdk_threads_dispatch_free (gpointer data)
  * events pending.  If the function returns %FALSE it is automatically
  * removed from the list of event sources and will not be called again.
  *
- * This variant of g_idle_add_full() calls @function with the GDK lock
+ * This variant of g_idle_add_full() calls @function with the CDK lock
  * held. It can be thought of a MT-safe version for CTK+ widgets for the
  * following use case, where you have to worry about idle_callback()
  * running in thread A and accessing @self after it has been finalized
@@ -893,7 +893,7 @@ cdk_threads_add_idle (GSourceFunc    function,
  * @data:     data to pass to @function
  * @notify: (allow-none):   function to call when the timeout is removed, or %NULL
  *
- * Sets a function to be called at regular intervals holding the GDK lock,
+ * Sets a function to be called at regular intervals holding the CDK lock,
  * with the given priority.  The function is called repeatedly until it 
  * returns %FALSE, at which point the timeout is automatically destroyed 
  * and the function will not be called again.  The @notify function is
@@ -1095,12 +1095,12 @@ cdk_set_program_class (const char *program_class)
 /**
  * cdk_disable_multidevice:
  *
- * Disables multidevice support in GDK. This call must happen prior
+ * Disables multidevice support in CDK. This call must happen prior
  * to cdk_display_open(), ctk_init(), ctk_init_with_args() or
  * ctk_init_check() in order to take effect.
  *
  * Most common CTK+ applications won’t ever need to call this. Only
- * applications that do mixed GDK/Xlib calls could want to disable
+ * applications that do mixed CDK/Xlib calls could want to disable
  * multidevice support if such Xlib code deals with input devices in
  * any way and doesn’t observe the presence of XInput 2.
  *

@@ -70,38 +70,38 @@ struct _CtkAppChooserButtonClass {
   gpointer padding[16];
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType       ctk_app_chooser_button_get_type           (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget * ctk_app_chooser_button_new                (const gchar         *content_type);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_app_chooser_button_append_separator   (CtkAppChooserButton *self);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_app_chooser_button_append_custom_item (CtkAppChooserButton *self,
                                                        const gchar         *name,
                                                        const gchar         *label,
                                                        GIcon               *icon);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_app_chooser_button_set_active_custom_item (CtkAppChooserButton *self,
                                                         const gchar         *name);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_app_chooser_button_set_show_dialog_item  (CtkAppChooserButton *self,
                                                        gboolean             setting);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_app_chooser_button_get_show_dialog_item  (CtkAppChooserButton *self);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_app_chooser_button_set_heading           (CtkAppChooserButton *self,
                                                        const gchar         *heading);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *
          ctk_app_chooser_button_get_heading           (CtkAppChooserButton *self);
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 void     ctk_app_chooser_button_set_show_default_item (CtkAppChooserButton *self,
                                                        gboolean             setting);
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 gboolean ctk_app_chooser_button_get_show_default_item (CtkAppChooserButton *self);
 
 G_END_DECLS

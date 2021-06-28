@@ -189,124 +189,124 @@ typedef void (*CtkListBoxUpdateHeaderFunc) (CtkListBoxRow *row,
 typedef CtkWidget * (*CtkListBoxCreateWidgetFunc) (gpointer item,
                                                    gpointer user_data);
 
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 GType      ctk_list_box_row_get_type      (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 CtkWidget* ctk_list_box_row_new           (void);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 CtkWidget* ctk_list_box_row_get_header    (CtkListBoxRow *row);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void       ctk_list_box_row_set_header    (CtkListBoxRow *row,
                                            CtkWidget     *header);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 gint       ctk_list_box_row_get_index     (CtkListBoxRow *row);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void       ctk_list_box_row_changed       (CtkListBoxRow *row);
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 gboolean   ctk_list_box_row_is_selected   (CtkListBoxRow *row);
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 void       ctk_list_box_row_set_selectable (CtkListBoxRow *row,
                                             gboolean       selectable);
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 gboolean   ctk_list_box_row_get_selectable (CtkListBoxRow *row);
 
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 void       ctk_list_box_row_set_activatable (CtkListBoxRow *row,
                                              gboolean       activatable);
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 gboolean   ctk_list_box_row_get_activatable (CtkListBoxRow *row);
 
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 GType          ctk_list_box_get_type                     (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void           ctk_list_box_prepend                      (CtkListBox                    *box,
                                                           CtkWidget                     *child);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void           ctk_list_box_insert                       (CtkListBox                    *box,
                                                           CtkWidget                     *child,
                                                           gint                           position);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 CtkListBoxRow* ctk_list_box_get_selected_row             (CtkListBox                    *box);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 CtkListBoxRow* ctk_list_box_get_row_at_index             (CtkListBox                    *box,
                                                           gint                           index_);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 CtkListBoxRow* ctk_list_box_get_row_at_y                 (CtkListBox                    *box,
                                                           gint                           y);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void           ctk_list_box_select_row                   (CtkListBox                    *box,
                                                           CtkListBoxRow                 *row);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void           ctk_list_box_set_placeholder              (CtkListBox                    *box,
                                                           CtkWidget                     *placeholder);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void           ctk_list_box_set_adjustment               (CtkListBox                    *box,
                                                           CtkAdjustment                 *adjustment);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 CtkAdjustment *ctk_list_box_get_adjustment               (CtkListBox                    *box);
 
 typedef void (* CtkListBoxForeachFunc) (CtkListBox      *box,
                                         CtkListBoxRow   *row,
                                         gpointer         user_data);
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 void           ctk_list_box_selected_foreach             (CtkListBox                    *box,
                                                           CtkListBoxForeachFunc          func,
                                                           gpointer                       data);
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 GList         *ctk_list_box_get_selected_rows            (CtkListBox                    *box);
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 void           ctk_list_box_unselect_row                 (CtkListBox                    *box,
                                                           CtkListBoxRow                 *row);
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 void           ctk_list_box_select_all                   (CtkListBox                    *box);
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 void           ctk_list_box_unselect_all                 (CtkListBox                    *box);
 
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void           ctk_list_box_set_selection_mode           (CtkListBox                    *box,
                                                           CtkSelectionMode               mode);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 CtkSelectionMode ctk_list_box_get_selection_mode         (CtkListBox                    *box);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void           ctk_list_box_set_filter_func              (CtkListBox                    *box,
                                                           CtkListBoxFilterFunc           filter_func,
                                                           gpointer                       user_data,
                                                           GDestroyNotify                 destroy);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void           ctk_list_box_set_header_func              (CtkListBox                    *box,
                                                           CtkListBoxUpdateHeaderFunc     update_header,
                                                           gpointer                       user_data,
                                                           GDestroyNotify                 destroy);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void           ctk_list_box_invalidate_filter            (CtkListBox                    *box);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void           ctk_list_box_invalidate_sort              (CtkListBox                    *box);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void           ctk_list_box_invalidate_headers           (CtkListBox                    *box);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void           ctk_list_box_set_sort_func                (CtkListBox                    *box,
                                                           CtkListBoxSortFunc             sort_func,
                                                           gpointer                       user_data,
                                                           GDestroyNotify                 destroy);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void           ctk_list_box_set_activate_on_single_click (CtkListBox                    *box,
                                                           gboolean                       single);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 gboolean       ctk_list_box_get_activate_on_single_click (CtkListBox                    *box);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void           ctk_list_box_drag_unhighlight_row         (CtkListBox                    *box);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void           ctk_list_box_drag_highlight_row           (CtkListBox                    *box,
                                                           CtkListBoxRow                 *row);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 CtkWidget*     ctk_list_box_new                          (void);
 
 
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 void           ctk_list_box_bind_model                   (CtkListBox                   *box,
                                                           GListModel                   *model,
                                                           CtkListBoxCreateWidgetFunc    create_widget_func,

@@ -49,7 +49,7 @@ struct _CtkImageAccessibleClass
   CtkWidgetAccessibleClass parent_class;
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType ctk_image_accessible_get_type (void);
 
 G_END_DECLS

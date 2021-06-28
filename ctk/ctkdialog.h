@@ -140,70 +140,70 @@ struct _CtkDialogClass
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType      ctk_dialog_get_type (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_dialog_new      (void);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_dialog_new_with_buttons (const gchar     *title,
                                         CtkWindow       *parent,
                                         CtkDialogFlags   flags,
                                         const gchar     *first_button_text,
                                         ...) G_GNUC_NULL_TERMINATED;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_dialog_add_action_widget (CtkDialog   *dialog,
                                          CtkWidget   *child,
                                          gint         response_id);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_dialog_add_button        (CtkDialog   *dialog,
                                          const gchar *button_text,
                                          gint         response_id);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_dialog_add_buttons       (CtkDialog   *dialog,
                                          const gchar *first_button_text,
                                          ...) G_GNUC_NULL_TERMINATED;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_dialog_set_response_sensitive (CtkDialog *dialog,
                                         gint       response_id,
                                         gboolean   setting);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_dialog_set_default_response   (CtkDialog *dialog,
                                         gint       response_id);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_dialog_get_widget_for_response (CtkDialog *dialog,
                                                gint       response_id);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint ctk_dialog_get_response_for_widget (CtkDialog *dialog,
                                          CtkWidget *widget);
 
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 gboolean ctk_alternative_dialog_button_order (CdkScreen *screen);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void     ctk_dialog_set_alternative_button_order (CtkDialog *dialog,
                                                   gint       first_response_id,
                                                   ...);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void     ctk_dialog_set_alternative_button_order_from_array (CtkDialog *dialog,
                                                              gint       n_params,
                                                              gint      *new_order);
 
 /* Emit response signal */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_dialog_response           (CtkDialog *dialog,
                                     gint       response_id);
 
 /* Returns response_id */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint ctk_dialog_run                (CtkDialog *dialog);
 
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 CtkWidget * ctk_dialog_get_action_area  (CtkDialog *dialog);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget * ctk_dialog_get_content_area (CtkDialog *dialog);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 CtkWidget * ctk_dialog_get_header_bar   (CtkDialog *dialog);
 
 G_DEFINE_AUTOPTR_CLEANUP_FUNC(CtkDialog, g_object_unref)

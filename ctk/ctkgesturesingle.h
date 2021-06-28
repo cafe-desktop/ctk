@@ -39,34 +39,34 @@ G_BEGIN_DECLS
 typedef struct _CtkGestureSingle CtkGestureSingle;
 typedef struct _CtkGestureSingleClass CtkGestureSingleClass;
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 GType       ctk_gesture_single_get_type       (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 gboolean    ctk_gesture_single_get_touch_only (CtkGestureSingle *gesture);
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 void        ctk_gesture_single_set_touch_only (CtkGestureSingle *gesture,
                                                gboolean          touch_only);
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 gboolean    ctk_gesture_single_get_exclusive  (CtkGestureSingle *gesture);
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 void        ctk_gesture_single_set_exclusive  (CtkGestureSingle *gesture,
                                                gboolean          exclusive);
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 guint       ctk_gesture_single_get_button     (CtkGestureSingle *gesture);
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 void        ctk_gesture_single_set_button     (CtkGestureSingle *gesture,
                                                guint             button);
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 guint       ctk_gesture_single_get_current_button
                                               (CtkGestureSingle *gesture);
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 CdkEventSequence * ctk_gesture_single_get_current_sequence
                                               (CtkGestureSingle *gesture);
 

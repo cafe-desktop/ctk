@@ -51,90 +51,90 @@ struct _CtkPageRange
   gint end;
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType             ctk_print_settings_get_type                (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkPrintSettings *ctk_print_settings_new                     (void);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkPrintSettings *ctk_print_settings_copy                    (CtkPrintSettings     *other);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkPrintSettings *ctk_print_settings_new_from_file           (const gchar          *file_name,
 							      GError              **error);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean          ctk_print_settings_load_file               (CtkPrintSettings     *settings,
 							      const gchar          *file_name,
 							      GError              **error);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean          ctk_print_settings_to_file                 (CtkPrintSettings     *settings,
 							      const gchar          *file_name,
 							      GError              **error);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkPrintSettings *ctk_print_settings_new_from_key_file       (GKeyFile             *key_file,
 							      const gchar          *group_name,
 							      GError              **error);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean          ctk_print_settings_load_key_file           (CtkPrintSettings     *settings,
 							      GKeyFile             *key_file,
 							      const gchar          *group_name,
 							      GError              **error);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_print_settings_to_key_file             (CtkPrintSettings     *settings,
 							      GKeyFile             *key_file,
 							      const gchar          *group_name);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean          ctk_print_settings_has_key                 (CtkPrintSettings     *settings,
 							      const gchar          *key);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *     ctk_print_settings_get                     (CtkPrintSettings     *settings,
 							      const gchar          *key);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_print_settings_set                     (CtkPrintSettings     *settings,
 							      const gchar          *key,
 							      const gchar          *value);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_print_settings_unset                   (CtkPrintSettings     *settings,
 							      const gchar          *key);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_print_settings_foreach                 (CtkPrintSettings     *settings,
 							      CtkPrintSettingsFunc  func,
 							      gpointer              user_data);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean          ctk_print_settings_get_bool                (CtkPrintSettings     *settings,
 							      const gchar          *key);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_print_settings_set_bool                (CtkPrintSettings     *settings,
 							      const gchar          *key,
 							      gboolean              value);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gdouble           ctk_print_settings_get_double              (CtkPrintSettings     *settings,
 							      const gchar          *key);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gdouble           ctk_print_settings_get_double_with_default (CtkPrintSettings     *settings,
 							      const gchar          *key,
 							      gdouble               def);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_print_settings_set_double              (CtkPrintSettings     *settings,
 							      const gchar          *key,
 							      gdouble               value);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gdouble           ctk_print_settings_get_length              (CtkPrintSettings     *settings,
 							      const gchar          *key,
 							      CtkUnit               unit);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_print_settings_set_length              (CtkPrintSettings     *settings,
 							      const gchar          *key,
 							      gdouble               value,
 							      CtkUnit               unit);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint              ctk_print_settings_get_int                 (CtkPrintSettings     *settings,
 							      const gchar          *key);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint              ctk_print_settings_get_int_with_default    (CtkPrintSettings     *settings,
 							      const gchar          *key,
 							      gint                  def);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_print_settings_set_int                 (CtkPrintSettings     *settings,
 							      const gchar          *key,
 							      gint                  value);
@@ -209,144 +209,144 @@ void              ctk_print_settings_set_int                 (CtkPrintSettings  
 
 /* Helpers: */
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *         ctk_print_settings_get_printer           (CtkPrintSettings   *settings);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_print_settings_set_printer           (CtkPrintSettings   *settings,
 								const gchar        *printer);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkPageOrientation    ctk_print_settings_get_orientation       (CtkPrintSettings   *settings);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_print_settings_set_orientation       (CtkPrintSettings   *settings,
 								CtkPageOrientation  orientation);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkPaperSize *        ctk_print_settings_get_paper_size        (CtkPrintSettings   *settings);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_print_settings_set_paper_size        (CtkPrintSettings   *settings,
 								CtkPaperSize       *paper_size);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gdouble               ctk_print_settings_get_paper_width       (CtkPrintSettings   *settings,
 								CtkUnit             unit);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_print_settings_set_paper_width       (CtkPrintSettings   *settings,
 								gdouble             width,
 								CtkUnit             unit);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gdouble               ctk_print_settings_get_paper_height      (CtkPrintSettings   *settings,
 								CtkUnit             unit);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_print_settings_set_paper_height      (CtkPrintSettings   *settings,
 								gdouble             height,
 								CtkUnit             unit);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_print_settings_get_use_color         (CtkPrintSettings   *settings);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_print_settings_set_use_color         (CtkPrintSettings   *settings,
 								gboolean            use_color);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_print_settings_get_collate           (CtkPrintSettings   *settings);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_print_settings_set_collate           (CtkPrintSettings   *settings,
 								gboolean            collate);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_print_settings_get_reverse           (CtkPrintSettings   *settings);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_print_settings_set_reverse           (CtkPrintSettings   *settings,
 								gboolean            reverse);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkPrintDuplex        ctk_print_settings_get_duplex            (CtkPrintSettings   *settings);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_print_settings_set_duplex            (CtkPrintSettings   *settings,
 								CtkPrintDuplex      duplex);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkPrintQuality       ctk_print_settings_get_quality           (CtkPrintSettings   *settings);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_print_settings_set_quality           (CtkPrintSettings   *settings,
 								CtkPrintQuality     quality);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint                  ctk_print_settings_get_n_copies          (CtkPrintSettings   *settings);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_print_settings_set_n_copies          (CtkPrintSettings   *settings,
 								gint                num_copies);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint                  ctk_print_settings_get_number_up         (CtkPrintSettings   *settings);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_print_settings_set_number_up         (CtkPrintSettings   *settings,
 								gint                number_up);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkNumberUpLayout     ctk_print_settings_get_number_up_layout  (CtkPrintSettings   *settings);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_print_settings_set_number_up_layout  (CtkPrintSettings   *settings,
 								CtkNumberUpLayout   number_up_layout);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint                  ctk_print_settings_get_resolution        (CtkPrintSettings   *settings);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_print_settings_set_resolution        (CtkPrintSettings   *settings,
 								gint                resolution);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint                  ctk_print_settings_get_resolution_x      (CtkPrintSettings   *settings);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint                  ctk_print_settings_get_resolution_y      (CtkPrintSettings   *settings);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_print_settings_set_resolution_xy     (CtkPrintSettings   *settings,
 								gint                resolution_x,
 								gint                resolution_y);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gdouble               ctk_print_settings_get_printer_lpi       (CtkPrintSettings   *settings);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_print_settings_set_printer_lpi       (CtkPrintSettings   *settings,
 								gdouble             lpi);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gdouble               ctk_print_settings_get_scale             (CtkPrintSettings   *settings);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_print_settings_set_scale             (CtkPrintSettings   *settings,
 								gdouble             scale);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkPrintPages         ctk_print_settings_get_print_pages       (CtkPrintSettings   *settings);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_print_settings_set_print_pages       (CtkPrintSettings   *settings,
 								CtkPrintPages       pages);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkPageRange *        ctk_print_settings_get_page_ranges       (CtkPrintSettings   *settings,
 								gint               *num_ranges);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_print_settings_set_page_ranges       (CtkPrintSettings   *settings,
 								CtkPageRange       *page_ranges,
 								gint                num_ranges);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkPageSet            ctk_print_settings_get_page_set          (CtkPrintSettings   *settings);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_print_settings_set_page_set          (CtkPrintSettings   *settings,
 								CtkPageSet          page_set);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *         ctk_print_settings_get_default_source    (CtkPrintSettings   *settings);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_print_settings_set_default_source    (CtkPrintSettings   *settings,
 								const gchar        *default_source);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *         ctk_print_settings_get_media_type        (CtkPrintSettings   *settings);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_print_settings_set_media_type        (CtkPrintSettings   *settings,
 								const gchar        *media_type);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *         ctk_print_settings_get_dither            (CtkPrintSettings   *settings);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_print_settings_set_dither            (CtkPrintSettings   *settings,
 								const gchar        *dither);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *         ctk_print_settings_get_finishings        (CtkPrintSettings   *settings);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_print_settings_set_finishings        (CtkPrintSettings   *settings,
 								const gchar        *finishings);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *         ctk_print_settings_get_output_bin        (CtkPrintSettings   *settings);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_print_settings_set_output_bin        (CtkPrintSettings   *settings,
 								const gchar        *output_bin);
 
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 GVariant             *ctk_print_settings_to_gvariant           (CtkPrintSettings   *settings);
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 CtkPrintSettings     *ctk_print_settings_new_from_gvariant     (GVariant           *variant);
 
 

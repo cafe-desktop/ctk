@@ -1,7 +1,7 @@
-#ifndef __GDKCONFIG_H__
-#define __GDKCONFIG_H__
+#ifndef __CDKCONFIG_H__
+#define __CDKCONFIG_H__
 
-#if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined (__CDK_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdk.h> can be included directly."
 #endif
 
@@ -10,12 +10,12 @@
 G_BEGIN_DECLS
 
 
-#mesondefine GDK_WINDOWING_X11
-#mesondefine GDK_WINDOWING_BROADWAY
-#mesondefine GDK_WINDOWING_WAYLAND
-#mesondefine GDK_WINDOWING_WIN32
-#mesondefine GDK_WINDOWING_QUARTZ
+#mesondefine CDK_WINDOWING_X11
+#mesondefine CDK_WINDOWING_BROADWAY
+#mesondefine CDK_WINDOWING_WAYLAND
+#mesondefine CDK_WINDOWING_WIN32
+#mesondefine CDK_WINDOWING_QUARTZ
 
 G_END_DECLS
 
-#endif  /* __GDKCONFIG_H__ */
+#endif  /* __CDKCONFIG_H__ */

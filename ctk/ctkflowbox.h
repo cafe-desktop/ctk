@@ -114,74 +114,74 @@ struct _CtkFlowBoxChildClass
 typedef CtkWidget * (*CtkFlowBoxCreateWidgetFunc) (gpointer item,
                                                    gpointer  user_data);
 
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 GType                 ctk_flow_box_child_get_type            (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 CtkWidget*            ctk_flow_box_child_new                 (void);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 gint                  ctk_flow_box_child_get_index           (CtkFlowBoxChild *child);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 gboolean              ctk_flow_box_child_is_selected         (CtkFlowBoxChild *child);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void                  ctk_flow_box_child_changed             (CtkFlowBoxChild *child);
 
 
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 GType                 ctk_flow_box_get_type                  (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 CtkWidget            *ctk_flow_box_new                       (void);
 
-GDK_AVAILABLE_IN_3_18
+CDK_AVAILABLE_IN_3_18
 void                  ctk_flow_box_bind_model                (CtkFlowBox                 *box,
                                                               GListModel                 *model,
                                                               CtkFlowBoxCreateWidgetFunc  create_widget_func,
                                                               gpointer                    user_data,
                                                               GDestroyNotify              user_data_free_func);
 
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void                  ctk_flow_box_set_homogeneous           (CtkFlowBox           *box,
                                                               gboolean              homogeneous);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 gboolean              ctk_flow_box_get_homogeneous           (CtkFlowBox           *box);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void                  ctk_flow_box_set_row_spacing           (CtkFlowBox           *box,
                                                               guint                 spacing);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 guint                 ctk_flow_box_get_row_spacing           (CtkFlowBox           *box);
 
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void                  ctk_flow_box_set_column_spacing        (CtkFlowBox           *box,
                                                               guint                 spacing);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 guint                 ctk_flow_box_get_column_spacing        (CtkFlowBox           *box);
 
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void                  ctk_flow_box_set_min_children_per_line (CtkFlowBox           *box,
                                                               guint                 n_children);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 guint                 ctk_flow_box_get_min_children_per_line (CtkFlowBox           *box);
 
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void                  ctk_flow_box_set_max_children_per_line (CtkFlowBox           *box,
                                                               guint                 n_children);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 guint                 ctk_flow_box_get_max_children_per_line (CtkFlowBox           *box);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void                  ctk_flow_box_set_activate_on_single_click (CtkFlowBox        *box,
                                                                  gboolean           single);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 gboolean              ctk_flow_box_get_activate_on_single_click (CtkFlowBox        *box);
 
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void                  ctk_flow_box_insert                       (CtkFlowBox        *box,
                                                                  CtkWidget         *widget,
                                                                  gint               position);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 CtkFlowBoxChild      *ctk_flow_box_get_child_at_index           (CtkFlowBox        *box,
                                                                  gint               idx);
 
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 CtkFlowBoxChild      *ctk_flow_box_get_child_at_pos             (CtkFlowBox        *box,
                                                                  gint               x,
                                                                  gint               y);
@@ -190,55 +190,55 @@ typedef void (* CtkFlowBoxForeachFunc) (CtkFlowBox      *box,
                                         CtkFlowBoxChild *child,
                                         gpointer         user_data);
 
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void                  ctk_flow_box_selected_foreach             (CtkFlowBox        *box,
                                                                  CtkFlowBoxForeachFunc func,
                                                                  gpointer           data);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 GList                *ctk_flow_box_get_selected_children        (CtkFlowBox        *box);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void                  ctk_flow_box_select_child                 (CtkFlowBox        *box,
                                                                  CtkFlowBoxChild   *child);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void                  ctk_flow_box_unselect_child               (CtkFlowBox        *box,
                                                                  CtkFlowBoxChild   *child);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void                  ctk_flow_box_select_all                   (CtkFlowBox        *box);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void                  ctk_flow_box_unselect_all                 (CtkFlowBox        *box);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void                  ctk_flow_box_set_selection_mode           (CtkFlowBox        *box,
                                                                  CtkSelectionMode   mode);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 CtkSelectionMode      ctk_flow_box_get_selection_mode           (CtkFlowBox        *box);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void                  ctk_flow_box_set_hadjustment              (CtkFlowBox        *box,
                                                                  CtkAdjustment     *adjustment);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void                  ctk_flow_box_set_vadjustment              (CtkFlowBox        *box,
                                                                  CtkAdjustment     *adjustment);
 
 typedef gboolean (*CtkFlowBoxFilterFunc) (CtkFlowBoxChild *child,
                                           gpointer         user_data);
 
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void                  ctk_flow_box_set_filter_func              (CtkFlowBox        *box,
                                                                  CtkFlowBoxFilterFunc filter_func,
                                                                  gpointer             user_data,
                                                                  GDestroyNotify       destroy);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void                  ctk_flow_box_invalidate_filter            (CtkFlowBox        *box);
 
 typedef gint (*CtkFlowBoxSortFunc) (CtkFlowBoxChild *child1,
                                     CtkFlowBoxChild *child2,
                                     gpointer         user_data);
 
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void                  ctk_flow_box_set_sort_func                (CtkFlowBox        *box,
                                                                  CtkFlowBoxSortFunc  sort_func,
                                                                  gpointer            user_data,
                                                                  GDestroyNotify      destroy);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void                  ctk_flow_box_invalidate_sort              (CtkFlowBox         *box);
 
 G_END_DECLS

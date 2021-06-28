@@ -35,7 +35,7 @@ find_toplevel_window (Window xid)
 
   do
     {
-      if (XQueryTree (GDK_DISPLAY_XDISPLAY (cdk_display_get_default ()), xid, &root,
+      if (XQueryTree (CDK_DISPLAY_XDISPLAY (cdk_display_get_default ()), xid, &root,
 		      &parent, &children, &nchildren) == 0)
 	{
 	  g_warning ("Couldn't find window manager window");
@@ -92,7 +92,7 @@ remove_shaped_area (CdkPixbuf *pixbuf,
 			   cdk_pixbuf_get_height (pixbuf));
   
   cdk_pixbuf_fill (retval, 0);
-  rectangles = XShapeGetRectangles (GDK_DISPLAY_XDISPLAY (cdk_display_get_default ()), window,
+  rectangles = XShapeGetRectangles (CDK_DISPLAY_XDISPLAY (cdk_display_get_default ()), window,
 				    ShapeBounding, &rectangle_count, &rectangle_order);
 
   for (i = 0; i < rectangle_count; i++)

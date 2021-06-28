@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_PIXBUF_UTILS_PRIVATE_H__
-#define __GDK_PIXBUF_UTILS_PRIVATE_H__
+#ifndef __CDK_PIXBUF_UTILS_PRIVATE_H__
+#define __CDK_PIXBUF_UTILS_PRIVATE_H__
 
 #include <cdk-pixbuf/cdk-pixbuf.h>
 
@@ -32,4 +32,4 @@ CdkPixbuf *_cdk_pixbuf_new_from_resource_scaled (const gchar   *resource_path,
 
 G_END_DECLS
 
-#endif  /* __GDK_PIXBUF_UTILS_PRIVATE_H__ */
+#endif  /* __CDK_PIXBUF_UTILS_PRIVATE_H__ */

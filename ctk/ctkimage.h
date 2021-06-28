@@ -107,95 +107,95 @@ struct _CtkImageClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType      ctk_image_get_type (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_image_new                (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_image_new_from_file      (const gchar     *filename);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_image_new_from_resource  (const gchar     *resource_path);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_image_new_from_pixbuf    (CdkPixbuf       *pixbuf);
-GDK_DEPRECATED_IN_3_10_FOR(ctk_image_new_from_icon_name)
+CDK_DEPRECATED_IN_3_10_FOR(ctk_image_new_from_icon_name)
 CtkWidget* ctk_image_new_from_stock     (const gchar     *stock_id,
                                          CtkIconSize      size);
-GDK_DEPRECATED_IN_3_10_FOR(ctk_image_new_from_icon_name)
+CDK_DEPRECATED_IN_3_10_FOR(ctk_image_new_from_icon_name)
 CtkWidget* ctk_image_new_from_icon_set  (CtkIconSet      *icon_set,
                                          CtkIconSize      size);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_image_new_from_animation (CdkPixbufAnimation *animation);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_image_new_from_icon_name (const gchar     *icon_name,
 					 CtkIconSize      size);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_image_new_from_gicon     (GIcon           *icon,
 					 CtkIconSize      size);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 CtkWidget* ctk_image_new_from_surface   (cairo_surface_t *surface);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_image_clear              (CtkImage        *image);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_image_set_from_file      (CtkImage        *image,
                                    const gchar     *filename);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_image_set_from_resource  (CtkImage        *image,
                                    const gchar     *resource_path);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_image_set_from_pixbuf    (CtkImage        *image,
                                    CdkPixbuf       *pixbuf);
-GDK_DEPRECATED_IN_3_10_FOR(ctk_image_set_from_icon_name)
+CDK_DEPRECATED_IN_3_10_FOR(ctk_image_set_from_icon_name)
 void ctk_image_set_from_stock     (CtkImage        *image,
                                    const gchar     *stock_id,
                                    CtkIconSize      size);
-GDK_DEPRECATED_IN_3_10_FOR(ctk_image_set_from_icon_name)
+CDK_DEPRECATED_IN_3_10_FOR(ctk_image_set_from_icon_name)
 void ctk_image_set_from_icon_set  (CtkImage        *image,
                                    CtkIconSet      *icon_set,
                                    CtkIconSize      size);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_image_set_from_animation (CtkImage           *image,
                                    CdkPixbufAnimation *animation);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_image_set_from_icon_name (CtkImage        *image,
 				   const gchar     *icon_name,
 				   CtkIconSize      size);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_image_set_from_gicon     (CtkImage        *image,
 				   GIcon           *icon,
 				   CtkIconSize      size);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void ctk_image_set_from_surface   (CtkImage        *image,
 				   cairo_surface_t *surface);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_image_set_pixel_size     (CtkImage        *image,
 				   gint             pixel_size);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkImageType ctk_image_get_storage_type (CtkImage   *image);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkPixbuf* ctk_image_get_pixbuf   (CtkImage         *image);
-GDK_DEPRECATED_IN_3_10_FOR(ctk_image_get_icon_name)
+CDK_DEPRECATED_IN_3_10_FOR(ctk_image_get_icon_name)
 void       ctk_image_get_stock    (CtkImage         *image,
                                    gchar           **stock_id,
                                    CtkIconSize      *size);
-GDK_DEPRECATED_IN_3_10_FOR(ctk_image_get_icon_name)
+CDK_DEPRECATED_IN_3_10_FOR(ctk_image_get_icon_name)
 void       ctk_image_get_icon_set (CtkImage         *image,
                                    CtkIconSet      **icon_set,
                                    CtkIconSize      *size);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkPixbufAnimation* ctk_image_get_animation (CtkImage *image);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_image_get_icon_name (CtkImage     *image,
 				    const gchar **icon_name,
 				    CtkIconSize  *size);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_image_get_gicon     (CtkImage              *image,
 				    GIcon                **gicon,
 				    CtkIconSize           *size);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint       ctk_image_get_pixel_size (CtkImage             *image);
 
 G_END_DECLS

@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2009 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_DEVICE_WINTAB_H__
-#define __GDK_DEVICE_WINTAB_H__
+#ifndef __CDK_DEVICE_WINTAB_H__
+#define __CDK_DEVICE_WINTAB_H__
 
 #include <cdk/cdkdeviceprivate.h>
 
@@ -25,12 +25,12 @@
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_DEVICE_WINTAB         (cdk_device_wintab_get_type ())
-#define GDK_DEVICE_WINTAB(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_DEVICE_WINTAB, CdkDeviceWintab))
-#define GDK_DEVICE_WINTAB_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_DEVICE_WINTAB, CdkDeviceWintabClass))
-#define GDK_IS_DEVICE_WINTAB(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_DEVICE_WINTAB))
-#define GDK_IS_DEVICE_WINTAB_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), GDK_TYPE_DEVICE_WINTAB))
-#define GDK_DEVICE_WINTAB_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_DEVICE_WINTAB, CdkDeviceWintabClass))
+#define CDK_TYPE_DEVICE_WINTAB         (cdk_device_wintab_get_type ())
+#define CDK_DEVICE_WINTAB(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CDK_TYPE_DEVICE_WINTAB, CdkDeviceWintab))
+#define CDK_DEVICE_WINTAB_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), CDK_TYPE_DEVICE_WINTAB, CdkDeviceWintabClass))
+#define CDK_IS_DEVICE_WINTAB(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CDK_TYPE_DEVICE_WINTAB))
+#define CDK_IS_DEVICE_WINTAB_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), CDK_TYPE_DEVICE_WINTAB))
+#define CDK_DEVICE_WINTAB_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CDK_TYPE_DEVICE_WINTAB, CdkDeviceWintabClass))
 
 typedef struct _CdkDeviceWintab CdkDeviceWintab;
 typedef struct _CdkDeviceWintabClass CdkDeviceWintabClass;
@@ -68,4 +68,4 @@ void         _cdk_device_wintab_translate_axes (CdkDeviceWintab *device,
 
 G_END_DECLS
 
-#endif /* __GDK_DEVICE_WINTAB_H__ */
+#endif /* __CDK_DEVICE_WINTAB_H__ */

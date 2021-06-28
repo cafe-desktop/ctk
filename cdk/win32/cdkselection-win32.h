@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  *
  * cdkselection-win32.h: Private Win32 specific selection object
  *
@@ -18,8 +18,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_SELECTION_WIN32_H__
-#define __GDK_SELECTION_WIN32_H__
+#ifndef __CDK_SELECTION_WIN32_H__
+#define __CDK_SELECTION_WIN32_H__
 
 G_BEGIN_DECLS
 
@@ -39,7 +39,7 @@ typedef struct {
   gboolean transmute;
 } CdkSelTargetFormat;
 
-/* We emulate the GDK_SELECTION window properties of windows (as used
+/* We emulate the CDK_SELECTION window properties of windows (as used
  * in the X11 backend) by using a hash table from window handles to
  * CdkSelProp structs.
  */
@@ -52,74 +52,74 @@ typedef struct {
 
 /* OLE-based DND state */
 typedef enum {
-  GDK_WIN32_DND_NONE,
-  GDK_WIN32_DND_PENDING,
-  GDK_WIN32_DND_DROPPED,
-  GDK_WIN32_DND_FAILED,
-  GDK_WIN32_DND_DRAGGING,
+  CDK_WIN32_DND_NONE,
+  CDK_WIN32_DND_PENDING,
+  CDK_WIN32_DND_DROPPED,
+  CDK_WIN32_DND_FAILED,
+  CDK_WIN32_DND_DRAGGING,
 } CdkWin32DndState;
 
 enum _CdkWin32AtomIndex
 {
 /* CdkAtoms: properties, targets and types */
-  GDK_WIN32_ATOM_INDEX_GDK_SELECTION = 0,
-  GDK_WIN32_ATOM_INDEX_CLIPBOARD_MANAGER,
-  GDK_WIN32_ATOM_INDEX_WM_TRANSIENT_FOR,
-  GDK_WIN32_ATOM_INDEX_TARGETS,
-  GDK_WIN32_ATOM_INDEX_DELETE,
-  GDK_WIN32_ATOM_INDEX_SAVE_TARGETS,
-  GDK_WIN32_ATOM_INDEX_UTF8_STRING,
-  GDK_WIN32_ATOM_INDEX_TEXT,
-  GDK_WIN32_ATOM_INDEX_COMPOUND_TEXT,
-  GDK_WIN32_ATOM_INDEX_TEXT_URI_LIST,
-  GDK_WIN32_ATOM_INDEX_TEXT_HTML,
-  GDK_WIN32_ATOM_INDEX_IMAGE_PNG,
-  GDK_WIN32_ATOM_INDEX_IMAGE_JPEG,
-  GDK_WIN32_ATOM_INDEX_IMAGE_BMP,
-  GDK_WIN32_ATOM_INDEX_IMAGE_GIF,
+  CDK_WIN32_ATOM_INDEX_CDK_SELECTION = 0,
+  CDK_WIN32_ATOM_INDEX_CLIPBOARD_MANAGER,
+  CDK_WIN32_ATOM_INDEX_WM_TRANSIENT_FOR,
+  CDK_WIN32_ATOM_INDEX_TARGETS,
+  CDK_WIN32_ATOM_INDEX_DELETE,
+  CDK_WIN32_ATOM_INDEX_SAVE_TARGETS,
+  CDK_WIN32_ATOM_INDEX_UTF8_STRING,
+  CDK_WIN32_ATOM_INDEX_TEXT,
+  CDK_WIN32_ATOM_INDEX_COMPOUND_TEXT,
+  CDK_WIN32_ATOM_INDEX_TEXT_URI_LIST,
+  CDK_WIN32_ATOM_INDEX_TEXT_HTML,
+  CDK_WIN32_ATOM_INDEX_IMAGE_PNG,
+  CDK_WIN32_ATOM_INDEX_IMAGE_JPEG,
+  CDK_WIN32_ATOM_INDEX_IMAGE_BMP,
+  CDK_WIN32_ATOM_INDEX_IMAGE_GIF,
 /* DND selections */
-  GDK_WIN32_ATOM_INDEX_LOCAL_DND_SELECTION,
-  GDK_WIN32_ATOM_INDEX_DROPFILES_DND,
-  GDK_WIN32_ATOM_INDEX_OLE2_DND,
+  CDK_WIN32_ATOM_INDEX_LOCAL_DND_SELECTION,
+  CDK_WIN32_ATOM_INDEX_DROPFILES_DND,
+  CDK_WIN32_ATOM_INDEX_OLE2_DND,
 /* Clipboard formats */
-  GDK_WIN32_ATOM_INDEX_PNG,
-  GDK_WIN32_ATOM_INDEX_JFIF,
-  GDK_WIN32_ATOM_INDEX_GIF,
-  GDK_WIN32_ATOM_INDEX_CF_DIB,
-  GDK_WIN32_ATOM_INDEX_CFSTR_SHELLIDLIST,
-  GDK_WIN32_ATOM_INDEX_CF_TEXT,
-  GDK_WIN32_ATOM_INDEX_CF_UNICODETEXT,
-  GDK_WIN32_ATOM_INDEX_LAST
+  CDK_WIN32_ATOM_INDEX_PNG,
+  CDK_WIN32_ATOM_INDEX_JFIF,
+  CDK_WIN32_ATOM_INDEX_GIF,
+  CDK_WIN32_ATOM_INDEX_CF_DIB,
+  CDK_WIN32_ATOM_INDEX_CFSTR_SHELLIDLIST,
+  CDK_WIN32_ATOM_INDEX_CF_TEXT,
+  CDK_WIN32_ATOM_INDEX_CF_UNICODETEXT,
+  CDK_WIN32_ATOM_INDEX_LAST
 };
 
 typedef enum _CdkWin32AtomIndex CdkWin32AtomIndex;
 
 enum _CdkWin32CFIndex
 {
-  GDK_WIN32_CF_INDEX_PNG = 0,
-  GDK_WIN32_CF_INDEX_JFIF,
-  GDK_WIN32_CF_INDEX_GIF,
-  GDK_WIN32_CF_INDEX_UNIFORMRESOURCELOCATORW,
-  GDK_WIN32_CF_INDEX_CFSTR_SHELLIDLIST,
-  GDK_WIN32_CF_INDEX_HTML_FORMAT,
-  GDK_WIN32_CF_INDEX_TEXT_HTML,
-  GDK_WIN32_CF_INDEX_IMAGE_PNG,
-  GDK_WIN32_CF_INDEX_IMAGE_JPEG,
-  GDK_WIN32_CF_INDEX_IMAGE_BMP,
-  GDK_WIN32_CF_INDEX_IMAGE_GIF,
-  GDK_WIN32_CF_INDEX_TEXT_URI_LIST,
-  GDK_WIN32_CF_INDEX_UTF8_STRING,
-  GDK_WIN32_CF_INDEX_LAST
+  CDK_WIN32_CF_INDEX_PNG = 0,
+  CDK_WIN32_CF_INDEX_JFIF,
+  CDK_WIN32_CF_INDEX_GIF,
+  CDK_WIN32_CF_INDEX_UNIFORMRESOURCELOCATORW,
+  CDK_WIN32_CF_INDEX_CFSTR_SHELLIDLIST,
+  CDK_WIN32_CF_INDEX_HTML_FORMAT,
+  CDK_WIN32_CF_INDEX_TEXT_HTML,
+  CDK_WIN32_CF_INDEX_IMAGE_PNG,
+  CDK_WIN32_CF_INDEX_IMAGE_JPEG,
+  CDK_WIN32_CF_INDEX_IMAGE_BMP,
+  CDK_WIN32_CF_INDEX_IMAGE_GIF,
+  CDK_WIN32_CF_INDEX_TEXT_URI_LIST,
+  CDK_WIN32_CF_INDEX_UTF8_STRING,
+  CDK_WIN32_CF_INDEX_LAST
 };
 
 typedef enum _CdkWin32CFIndex CdkWin32CFIndex;
 
-#define GDK_TYPE_WIN32_SELECTION         (cdk_win32_selection_get_type ())
-#define GDK_WIN32_SELECTION(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_WIN32_SELECTION, CdkWin32Selection))
-#define GDK_WIN32_SELECTION_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_WIN32_SELECTION, CdkWin32SelectionClass))
-#define GDK_IS_WIN32_SELECTION(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_WIN32_SELECTION))
-#define GDK_IS_WIN32_SELECTION_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), GDK_TYPE_WIN32_SELECTION))
-#define GDK_WIN32_SELECTION_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_WIN32_SELECTION, CdkWin32SelectionClass))
+#define CDK_TYPE_WIN32_SELECTION         (cdk_win32_selection_get_type ())
+#define CDK_WIN32_SELECTION(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CDK_TYPE_WIN32_SELECTION, CdkWin32Selection))
+#define CDK_WIN32_SELECTION_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), CDK_TYPE_WIN32_SELECTION, CdkWin32SelectionClass))
+#define CDK_IS_WIN32_SELECTION(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CDK_TYPE_WIN32_SELECTION))
+#define CDK_IS_WIN32_SELECTION_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), CDK_TYPE_WIN32_SELECTION))
+#define CDK_WIN32_SELECTION_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CDK_TYPE_WIN32_SELECTION, CdkWin32SelectionClass))
 
 typedef struct _CdkWin32Selection CdkWin32Selection;
 typedef struct _CdkWin32SelectionClass CdkWin32SelectionClass;
@@ -142,12 +142,12 @@ struct _CdkWin32Selection
   int n_known_pixbuf_formats;
 
   /* GArray of CdkAtoms for various known Selection and DnD strings.
-   * Size is guaranteed to be at least GDK_WIN32_ATOM_INDEX_LAST
+   * Size is guaranteed to be at least CDK_WIN32_ATOM_INDEX_LAST
    */
   GArray *known_atoms;
 
   /* GArray of UINTs for various known clipboard formats.
-   * Size is guaranteed to be at least GDK_WIN32_CF_INDEX_LAST.
+   * Size is guaranteed to be at least CDK_WIN32_CF_INDEX_LAST.
    */
   GArray *known_clipboard_formats;
 
@@ -167,7 +167,7 @@ struct _CdkWin32Selection
   LPSTGMEDIUM       property_change_data;
   /* Carries the transmute field of the CdkSelTargetFormat from from idataobject_getdata() to property_change() */
   gboolean          property_change_transmute;
-  /* Carries the target atom from GDK_SELECTION_REQUEST issuer to property_change() */
+  /* Carries the target atom from CDK_SELECTION_REQUEST issuer to property_change() */
   CdkAtom           property_change_target_atom;
 
   /* TRUE when we are emptying the clipboard ourselves */
@@ -179,7 +179,7 @@ struct _CdkWin32Selection
   /* Same for the DnD selection (applies for both LOCAL and OLE2 DnD) */
   GArray           *dnd_selection_targets;
 
-  /* If TRUE, then we queued a GDK_SELECTION_REQUEST with TARGETS
+  /* If TRUE, then we queued a CDK_SELECTION_REQUEST with TARGETS
    * target. This field is checked to prevent queueing
    * multiple selection requests.
    */
@@ -221,4 +221,4 @@ void    _cdk_win32_selection_property_change                      (CdkWin32Selec
                                                                    const guchar      *data,
                                                                    gint               nelements);
 
-#endif /* __GDK_SELECTION_WIN32_H__ */
+#endif /* __CDK_SELECTION_WIN32_H__ */

@@ -72,33 +72,33 @@ struct _CtkImageMenuItemClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_DEPRECATED_IN_3_10_FOR(ctk_menu_item_get_type)
+CDK_DEPRECATED_IN_3_10_FOR(ctk_menu_item_get_type)
 GType	   ctk_image_menu_item_get_type          (void) G_GNUC_CONST;
-GDK_DEPRECATED_IN_3_10_FOR(ctk_menu_item_new)
+CDK_DEPRECATED_IN_3_10_FOR(ctk_menu_item_new)
 CtkWidget* ctk_image_menu_item_new               (void);
-GDK_DEPRECATED_IN_3_10_FOR(ctk_menu_item_new_with_label)
+CDK_DEPRECATED_IN_3_10_FOR(ctk_menu_item_new_with_label)
 CtkWidget* ctk_image_menu_item_new_with_label    (const gchar      *label);
-GDK_DEPRECATED_IN_3_10_FOR(ctk_menu_item_new_with_mnemonic)
+CDK_DEPRECATED_IN_3_10_FOR(ctk_menu_item_new_with_mnemonic)
 CtkWidget* ctk_image_menu_item_new_with_mnemonic (const gchar      *label);
-GDK_DEPRECATED_IN_3_10_FOR(ctk_menu_item_new)
+CDK_DEPRECATED_IN_3_10_FOR(ctk_menu_item_new)
 CtkWidget* ctk_image_menu_item_new_from_stock    (const gchar      *stock_id,
                                                   CtkAccelGroup    *accel_group);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void       ctk_image_menu_item_set_always_show_image (CtkImageMenuItem *image_menu_item,
                                                       gboolean          always_show);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 gboolean   ctk_image_menu_item_get_always_show_image (CtkImageMenuItem *image_menu_item);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void       ctk_image_menu_item_set_image         (CtkImageMenuItem *image_menu_item,
                                                   CtkWidget        *image);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 CtkWidget* ctk_image_menu_item_get_image         (CtkImageMenuItem *image_menu_item);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void       ctk_image_menu_item_set_use_stock     (CtkImageMenuItem *image_menu_item,
 						  gboolean          use_stock);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 gboolean   ctk_image_menu_item_get_use_stock     (CtkImageMenuItem *image_menu_item);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void       ctk_image_menu_item_set_accel_group   (CtkImageMenuItem *image_menu_item, 
 						  CtkAccelGroup    *accel_group);
 

@@ -19,7 +19,7 @@
  *	Mark McLoughlin <mark@skynet.ie>
  */
 
-#define GDK_DISABLE_DEPRECATION_WARNINGS
+#define CDK_DISABLE_DEPRECATION_WARNINGS
 #include <ctk/ctk.h>
 #include <stdlib.h>
 

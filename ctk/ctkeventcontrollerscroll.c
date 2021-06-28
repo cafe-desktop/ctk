@@ -245,10 +245,10 @@ ctk_event_controller_scroll_handle_event (CtkEventController *controller,
                                           const CdkEvent     *event)
 {
   CtkEventControllerScroll *scroll = CTK_EVENT_CONTROLLER_SCROLL (controller);
-  CdkScrollDirection direction = GDK_SCROLL_SMOOTH;
+  CdkScrollDirection direction = CDK_SCROLL_SMOOTH;
   gdouble dx = 0, dy = 0;
 
-  if (cdk_event_get_event_type (event) != GDK_SCROLL)
+  if (cdk_event_get_event_type (event) != CDK_SCROLL)
     return FALSE;
   if ((scroll->flags & (CTK_EVENT_CONTROLLER_SCROLL_VERTICAL |
                         CTK_EVENT_CONTROLLER_SCROLL_HORIZONTAL)) == 0)
@@ -262,8 +262,8 @@ ctk_event_controller_scroll_handle_event (CtkEventController *controller,
       CdkInputSource input_source = cdk_device_get_source (device);
 
       if (!scroll->active &&
-          (input_source == GDK_SOURCE_TRACKPOINT ||
-           input_source == GDK_SOURCE_TOUCHPAD))
+          (input_source == CDK_SOURCE_TRACKPOINT ||
+           input_source == CDK_SOURCE_TOUCHPAD))
         {
           g_signal_emit (controller, signals[SCROLL_BEGIN], 0);
           scroll_history_reset (scroll);
@@ -302,16 +302,16 @@ ctk_event_controller_scroll_handle_event (CtkEventController *controller,
     {
       switch (direction)
         {
-        case GDK_SCROLL_UP:
+        case CDK_SCROLL_UP:
           dy -= 1;
           break;
-        case GDK_SCROLL_DOWN:
+        case CDK_SCROLL_DOWN:
           dy += 1;
           break;
-        case GDK_SCROLL_LEFT:
+        case CDK_SCROLL_LEFT:
           dx -= 1;
           break;
-        case GDK_SCROLL_RIGHT:
+        case CDK_SCROLL_RIGHT:
           dx += 1;
           break;
         default:
@@ -328,7 +328,7 @@ ctk_event_controller_scroll_handle_event (CtkEventController *controller,
   if (dx != 0 || dy != 0)
     g_signal_emit (controller, signals[SCROLL], 0, dx, dy);
 
-  if (direction == GDK_SCROLL_SMOOTH &&
+  if (direction == CDK_SCROLL_SMOOTH &&
       scroll->flags & CTK_EVENT_CONTROLLER_SCROLL_KINETIC)
     scroll_history_push (scroll, dx, dy, cdk_event_get_time (event));
 
@@ -455,8 +455,8 @@ ctk_event_controller_scroll_init (CtkEventControllerScroll *scroll)
   scroll->scroll_history = g_array_new (FALSE, FALSE,
                                         sizeof (ScrollHistoryElem));
   ctk_event_controller_set_event_mask (CTK_EVENT_CONTROLLER (scroll),
-                                       GDK_SCROLL_MASK |
-                                       GDK_SMOOTH_SCROLL_MASK);
+                                       CDK_SCROLL_MASK |
+                                       CDK_SMOOTH_SCROLL_MASK);
 }
 
 /**

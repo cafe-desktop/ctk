@@ -130,51 +130,51 @@ struct _CtkBuildableIface
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType     ctk_buildable_get_type               (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void      ctk_buildable_set_name               (CtkBuildable        *buildable,
 						const gchar         *name);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar * ctk_buildable_get_name           (CtkBuildable        *buildable);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void      ctk_buildable_add_child              (CtkBuildable        *buildable,
 						CtkBuilder          *builder,
 						GObject             *child,
 						const gchar         *type);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void      ctk_buildable_set_buildable_property (CtkBuildable        *buildable,
 						CtkBuilder          *builder,
 						const gchar         *name,
 						const GValue        *value);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GObject * ctk_buildable_construct_child        (CtkBuildable        *buildable,
 						CtkBuilder          *builder,
 						const gchar         *name);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean  ctk_buildable_custom_tag_start       (CtkBuildable        *buildable,
 						CtkBuilder          *builder,
 						GObject             *child,
 						const gchar         *tagname,
 						GMarkupParser       *parser,
 						gpointer            *data);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void      ctk_buildable_custom_tag_end         (CtkBuildable        *buildable,
 						CtkBuilder          *builder,
 						GObject             *child,
 						const gchar         *tagname,
 						gpointer            *data);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void      ctk_buildable_custom_finished        (CtkBuildable        *buildable,
 						CtkBuilder          *builder,
 						GObject             *child,
 						const gchar         *tagname,
 						gpointer             data);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void      ctk_buildable_parser_finished        (CtkBuildable        *buildable,
 						CtkBuilder          *builder);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GObject * ctk_buildable_get_internal_child     (CtkBuildable        *buildable,
 						CtkBuilder          *builder,
 						const gchar         *childname);

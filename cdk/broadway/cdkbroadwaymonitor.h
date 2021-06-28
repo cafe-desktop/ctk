@@ -19,10 +19,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_BROADWAY_MONITOR_H__
-#define __GDK_BROADWAY_MONITOR_H__
+#ifndef __CDK_BROADWAY_MONITOR_H__
+#define __CDK_BROADWAY_MONITOR_H__
 
-#if !defined (__GDKBROADWAY_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined (__CDKBROADWAY_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdkbroadway.h> can be included directly."
 #endif
 
@@ -30,17 +30,17 @@
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_BROADWAY_MONITOR           (cdk_broadway_monitor_get_type ())
-#define GDK_BROADWAY_MONITOR(object)        (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_BROADWAY_MONITOR, CdkBroadwayMonitor))
-#define GDK_IS_BROADWAY_MONITOR(object)     (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_BROADWAY_MONITOR))
+#define CDK_TYPE_BROADWAY_MONITOR           (cdk_broadway_monitor_get_type ())
+#define CDK_BROADWAY_MONITOR(object)        (G_TYPE_CHECK_INSTANCE_CAST ((object), CDK_TYPE_BROADWAY_MONITOR, CdkBroadwayMonitor))
+#define CDK_IS_BROADWAY_MONITOR(object)     (G_TYPE_CHECK_INSTANCE_TYPE ((object), CDK_TYPE_BROADWAY_MONITOR))
 
 typedef struct _CdkBroadwayMonitor      CdkBroadwayMonitor;
 typedef struct _CdkBroadwayMonitorClass CdkBroadwayMonitorClass;
 
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 GType             cdk_broadway_monitor_get_type            (void) G_GNUC_CONST;
 
 G_END_DECLS
 
-#endif  /* __GDK_BROADWAY_MONITOR_H__ */
+#endif  /* __CDK_BROADWAY_MONITOR_H__ */
 

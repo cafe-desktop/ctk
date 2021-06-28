@@ -166,7 +166,7 @@ _ctk_quartz_pasteboard_types_to_atom_list (NSArray *array)
     {
       CdkAtom atom = cdk_quartz_pasteboard_type_to_atom_libctk_only ([array objectAtIndex:i]);
 
-      result = g_list_prepend (result, GDK_ATOM_TO_POINTER (atom));
+      result = g_list_prepend (result, CDK_ATOM_TO_POINTER (atom));
     }
 
   return result;

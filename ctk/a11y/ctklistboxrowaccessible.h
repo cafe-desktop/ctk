@@ -47,7 +47,7 @@ struct _CtkListBoxRowAccessibleClass
   CtkContainerAccessibleClass parent_class;
 };
 
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 GType ctk_list_box_row_accessible_get_type (void);
 
 G_END_DECLS

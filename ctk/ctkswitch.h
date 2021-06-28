@@ -83,22 +83,22 @@ struct _CtkSwitchClass
   void (* _switch_padding_5) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType ctk_switch_get_type (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *     ctk_switch_new          (void);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void            ctk_switch_set_active   (CtkSwitch *sw,
                                          gboolean   is_active);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean        ctk_switch_get_active   (CtkSwitch *sw);
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 void            ctk_switch_set_state   (CtkSwitch *sw,
                                         gboolean   state);
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 gboolean        ctk_switch_get_state   (CtkSwitch *sw);
 
 G_END_DECLS

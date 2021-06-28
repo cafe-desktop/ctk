@@ -62,7 +62,7 @@ msgstr "KÖSTERİM"
 #. Description of --cdk-debug=FLAGS in --help output
 #: ../cdk/cdk.c:211
 #, fuzzy
-msgid "GDK debugging flags to set"
+msgid "CDK debugging flags to set"
 msgstr "Tesbit etilecek CTK+ arızasızlandıruv bayraqları"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
@@ -75,8 +75,8 @@ msgstr "BAYRAQLAR"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: ../cdk/cdk.c:214
-msgid "GDK debugging flags to unset"
-msgstr "Ğayrı tesbit etilecek GDK arızasızlandıruv bayraqları"
+msgid "CDK debugging flags to unset"
+msgstr "Ğayrı tesbit etilecek CDK arızasızlandıruv bayraqları"
 
 # tüklü
 #.

@@ -102,13 +102,13 @@ entry_key_pressed_event_cb (CtkWidget    *widget,
                             CdkEvent     *event,
                             CtkSearchBar *bar)
 {
-  if (event->key.keyval == GDK_KEY_Escape)
+  if (event->key.keyval == CDK_KEY_Escape)
     {
       stop_search_cb (widget, bar);
-      return GDK_EVENT_STOP;
+      return CDK_EVENT_STOP;
     }
   else
-    return GDK_EVENT_PROPAGATE;
+    return CDK_EVENT_PROPAGATE;
 }
 
 static void
@@ -131,14 +131,14 @@ ctk_search_bar_handle_event_for_entry (CtkSearchBar *bar,
   char *old_text, *new_text;
 
   if (ctk_search_entry_is_keynav_event (event) ||
-      event->key.keyval == GDK_KEY_space ||
-      event->key.keyval == GDK_KEY_Menu)
-    return GDK_EVENT_PROPAGATE;
+      event->key.keyval == CDK_KEY_space ||
+      event->key.keyval == CDK_KEY_Menu)
+    return CDK_EVENT_PROPAGATE;
 
   if (!ctk_widget_get_realized (priv->entry))
     ctk_widget_realize (priv->entry);
 
-  handled = GDK_EVENT_PROPAGATE;
+  handled = CDK_EVENT_PROPAGATE;
   preedit_changed = FALSE;
   preedit_change_id = g_signal_connect (priv->entry, "preedit-changed",
                                         G_CALLBACK (preedit_changed_cb), &preedit_changed);
@@ -150,7 +150,7 @@ ctk_search_bar_handle_event_for_entry (CtkSearchBar *bar,
   g_signal_handler_disconnect (priv->entry, preedit_change_id);
 
   if ((res && g_strcmp0 (new_text, old_text) != 0) || preedit_changed)
-    handled = GDK_EVENT_STOP;
+    handled = CDK_EVENT_STOP;
 
   g_free (old_text);
   g_free (new_text);
@@ -167,7 +167,7 @@ ctk_search_bar_handle_event_for_entry (CtkSearchBar *bar,
  * window which contains the search bar received a key event.
  *
  * If the key event is handled by the search bar, the bar will
- * be shown, the entry populated with the entered text and %GDK_EVENT_STOP
+ * be shown, the entry populated with the entered text and %CDK_EVENT_STOP
  * will be returned. The caller should ensure that events are
  * not propagated further.
  *
@@ -202,9 +202,9 @@ ctk_search_bar_handle_event_for_entry (CtkSearchBar *bar,
  * }
  * ]|
  *
- * Returns: %GDK_EVENT_STOP if the key press event resulted
+ * Returns: %CDK_EVENT_STOP if the key press event resulted
  *     in text being entered in the search entry (and revealing
- *     the search bar if necessary), %GDK_EVENT_PROPAGATE otherwise.
+ *     the search bar if necessary), %CDK_EVENT_PROPAGATE otherwise.
  *
  * Since: 3.10
  */
@@ -216,12 +216,12 @@ ctk_search_bar_handle_event (CtkSearchBar *bar,
   gboolean handled;
 
   if (priv->reveal_child)
-    return GDK_EVENT_PROPAGATE;
+    return CDK_EVENT_PROPAGATE;
 
   if (priv->entry == NULL)
     {
       g_warning ("The search bar does not have an entry connected to it. Call ctk_search_bar_connect_entry() to connect one.");
-      return GDK_EVENT_PROPAGATE;
+      return CDK_EVENT_PROPAGATE;
     }
 
   if (CTK_IS_SEARCH_ENTRY (priv->entry))
@@ -229,7 +229,7 @@ ctk_search_bar_handle_event (CtkSearchBar *bar,
   else
     handled = ctk_search_bar_handle_event_for_entry (bar, event);
 
-  if (handled == GDK_EVENT_STOP)
+  if (handled == CDK_EVENT_STOP)
     ctk_revealer_set_reveal_child (CTK_REVEALER (priv->revealer), TRUE);
 
   return handled;

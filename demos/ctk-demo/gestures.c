@@ -159,8 +159,8 @@ do_gestures (CtkWidget *do_widget)
       drawing_area = ctk_drawing_area_new ();
       ctk_container_add (CTK_CONTAINER (window), drawing_area);
       ctk_widget_add_events (drawing_area,
-                             GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK |
-                             GDK_POINTER_MOTION_MASK | GDK_TOUCH_MASK);
+                             CDK_BUTTON_PRESS_MASK | CDK_BUTTON_RELEASE_MASK |
+                             CDK_POINTER_MOTION_MASK | CDK_TOUCH_MASK);
 
       g_signal_connect (drawing_area, "draw",
                         G_CALLBACK (drawing_area_draw), NULL);

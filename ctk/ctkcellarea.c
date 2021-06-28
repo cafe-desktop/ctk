@@ -721,7 +721,7 @@ ctk_cell_area_class_init (CtkCellAreaClass *class)
                   G_TYPE_NONE, 4,
                   CTK_TYPE_CELL_RENDERER,
                   CTK_TYPE_CELL_EDITABLE,
-                  GDK_TYPE_RECTANGLE,
+                  CDK_TYPE_RECTANGLE,
                   G_TYPE_STRING);
 
 
@@ -1038,22 +1038,22 @@ ctk_cell_area_real_event (CtkCellArea          *area,
   CtkCellAreaPrivate *priv = area->priv;
   gboolean            retval = FALSE;
 
-  if (event->type == GDK_KEY_PRESS && (flags & CTK_CELL_RENDERER_FOCUSED) != 0)
+  if (event->type == CDK_KEY_PRESS && (flags & CTK_CELL_RENDERER_FOCUSED) != 0)
     {
       CdkEventKey *key_event = (CdkEventKey *)event;
 
       /* Cancel any edits in progress */
-      if (priv->edited_cell && (key_event->keyval == GDK_KEY_Escape))
+      if (priv->edited_cell && (key_event->keyval == CDK_KEY_Escape))
         {
           ctk_cell_area_stop_editing (area, TRUE);
           retval = TRUE;
         }
     }
-  else if (event->type == GDK_BUTTON_PRESS)
+  else if (event->type == CDK_BUTTON_PRESS)
     {
       CdkEventButton *button_event = (CdkEventButton *)event;
 
-      if (button_event->button == GDK_BUTTON_PRIMARY)
+      if (button_event->button == CDK_BUTTON_PRIMARY)
         {
           CtkCellRenderer *renderer = NULL;
           CtkCellRenderer *focus_renderer;

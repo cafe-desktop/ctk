@@ -46,7 +46,7 @@ struct _CtkStackAccessibleClass
   CtkContainerAccessibleClass parent_class;
 };
 
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 GType ctk_stack_accessible_get_type (void);
 
 G_END_DECLS

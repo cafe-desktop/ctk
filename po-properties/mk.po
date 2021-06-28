@@ -106,8 +106,8 @@ msgid "Default Display"
 msgstr "Стандарден приказ"
 
 #: cdk/cdkdisplaymanager.c:103
-msgid "The default display for GDK"
-msgstr "Стандарден приказ за GDK"
+msgid "The default display for CDK"
+msgstr "Стандарден приказ за CDK"
 
 #: cdk/cdkscreen.c:72
 msgid "Font options"

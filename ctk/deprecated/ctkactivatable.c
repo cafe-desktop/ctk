@@ -258,7 +258,7 @@
 
 #include "config.h"
 
-#define GDK_DISABLE_DEPRECATION_WARNINGS
+#define CDK_DISABLE_DEPRECATION_WARNINGS
 
 #include "ctkactivatable.h"
 #include "ctkactiongroup.h"

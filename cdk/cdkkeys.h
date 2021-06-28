@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2000 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -22,10 +22,10 @@
  * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
-#ifndef __GDK_KEYS_H__
-#define __GDK_KEYS_H__
+#ifndef __CDK_KEYS_H__
+#define __CDK_KEYS_H__
 
-#if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined (__CDK_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdk.h> can be included directly."
 #endif
 
@@ -62,9 +62,9 @@ struct _CdkKeymapKey
 };
 
 
-#define GDK_TYPE_KEYMAP              (cdk_keymap_get_type ())
-#define GDK_KEYMAP(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_KEYMAP, CdkKeymap))
-#define GDK_IS_KEYMAP(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_KEYMAP))
+#define CDK_TYPE_KEYMAP              (cdk_keymap_get_type ())
+#define CDK_KEYMAP(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), CDK_TYPE_KEYMAP, CdkKeymap))
+#define CDK_IS_KEYMAP(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), CDK_TYPE_KEYMAP))
 
 /**
  * CdkKeymap:
@@ -77,18 +77,18 @@ struct _CdkKeymapKey
  * in the keymap and see what keyval it corresponds to.
  */
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType cdk_keymap_get_type (void) G_GNUC_CONST;
 
-GDK_DEPRECATED_IN_3_22_FOR(cdk_keymap_get_for_display)
+CDK_DEPRECATED_IN_3_22_FOR(cdk_keymap_get_for_display)
 CdkKeymap* cdk_keymap_get_default     (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkKeymap* cdk_keymap_get_for_display (CdkDisplay *display);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 guint          cdk_keymap_lookup_key               (CdkKeymap           *keymap,
 						    const CdkKeymapKey  *key);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean       cdk_keymap_translate_keyboard_state (CdkKeymap           *keymap,
 						    guint                hardware_keycode,
 						    CdkModifierType      state,
@@ -97,67 +97,67 @@ gboolean       cdk_keymap_translate_keyboard_state (CdkKeymap           *keymap,
 						    gint                *effective_group,
 						    gint                *level,
 						    CdkModifierType     *consumed_modifiers);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean       cdk_keymap_get_entries_for_keyval   (CdkKeymap           *keymap,
 						    guint                keyval,
 						    CdkKeymapKey       **keys,
 						    gint                *n_keys);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean       cdk_keymap_get_entries_for_keycode  (CdkKeymap           *keymap,
 						    guint                hardware_keycode,
 						    CdkKeymapKey       **keys,
 						    guint              **keyvals,
 						    gint                *n_entries);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 PangoDirection cdk_keymap_get_direction            (CdkKeymap           *keymap);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean       cdk_keymap_have_bidi_layouts        (CdkKeymap           *keymap);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean       cdk_keymap_get_caps_lock_state      (CdkKeymap           *keymap);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean       cdk_keymap_get_num_lock_state       (CdkKeymap           *keymap);
-GDK_AVAILABLE_IN_3_18
+CDK_AVAILABLE_IN_3_18
 gboolean       cdk_keymap_get_scroll_lock_state    (CdkKeymap           *keymap);
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 guint          cdk_keymap_get_modifier_state       (CdkKeymap           *keymap);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           cdk_keymap_add_virtual_modifiers    (CdkKeymap           *keymap,
                                                     CdkModifierType     *state);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean       cdk_keymap_map_virtual_modifiers    (CdkKeymap           *keymap,
                                                     CdkModifierType     *state);
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 CdkModifierType cdk_keymap_get_modifier_mask       (CdkKeymap           *keymap,
                                                     CdkModifierIntent    intent);
 
 
 /* Key values
  */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gchar*   cdk_keyval_name         (guint        keyval) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 guint    cdk_keyval_from_name    (const gchar *keyval_name);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     cdk_keyval_convert_case (guint        symbol,
 				  guint       *lower,
 				  guint       *upper);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 guint    cdk_keyval_to_upper     (guint        keyval) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 guint    cdk_keyval_to_lower     (guint        keyval) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean cdk_keyval_is_upper     (guint        keyval) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean cdk_keyval_is_lower     (guint        keyval) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 guint32  cdk_keyval_to_unicode   (guint        keyval) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 guint    cdk_unicode_to_keyval   (guint32      wc) G_GNUC_CONST;
 
 
 G_END_DECLS
 
-#endif /* __GDK_KEYS_H__ */
+#endif /* __CDK_KEYS_H__ */

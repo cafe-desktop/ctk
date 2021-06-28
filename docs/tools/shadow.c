@@ -144,6 +144,6 @@ create_shadowed_pixbuf (CdkPixbuf *src)
 			cdk_pixbuf_get_width (src),
 			cdk_pixbuf_get_height (src),
 			BLUR_RADIUS, BLUR_RADIUS, 1.0, 1.0,
-			GDK_INTERP_NEAREST, 255);
+			CDK_INTERP_NEAREST, 255);
   return dest;
 }

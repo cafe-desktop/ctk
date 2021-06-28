@@ -53,5 +53,5 @@ cdk_quartz_deps = [ core_graphics_dep, appkit_dep, cocoa_dep, carbon_dep ]
 libcdk_quartz = static_library('cdk-quartz',
   cdk_quartz_sources, cdkconfig, cdkenum_h,
   include_directories: [confinc, cdkinc],
-  c_args: ['-DGDK_COMPILATION', '-DG_LOG_DOMAIN="Cdk"', '-xobjective-c'],
+  c_args: ['-DCDK_COMPILATION', '-DG_LOG_DOMAIN="Cdk"', '-xobjective-c'],
   dependencies: [cdk_deps, cdk_quartz_deps])

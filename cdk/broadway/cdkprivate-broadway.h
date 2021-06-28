@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -26,8 +26,8 @@
  * Private uninstalled header defining things local to X windowing code
  */
 
-#ifndef __GDK_PRIVATE_BROADWAY_H__
-#define __GDK_PRIVATE_BROADWAY_H__
+#ifndef __CDK_PRIVATE_BROADWAY_H__
+#define __CDK_PRIVATE_BROADWAY_H__
 
 #include <cdk/cdkcursor.h>
 #include <cdk/cdkprivate.h>
@@ -203,6 +203,6 @@ void _cdk_broadway_window_resize_surface        (CdkWindow *window);
 void _cdk_broadway_cursor_update_theme (CdkCursor *cursor);
 void _cdk_broadway_cursor_display_finalize (CdkDisplay *display);
 
-#define GDK_WINDOW_IS_BROADWAY(win)   (GDK_IS_WINDOW_IMPL_BROADWAY (((CdkWindow *)win)->impl))
+#define CDK_WINDOW_IS_BROADWAY(win)   (CDK_IS_WINDOW_IMPL_BROADWAY (((CdkWindow *)win)->impl))
 
-#endif /* __GDK_PRIVATE_BROADWAY_H__ */
+#endif /* __CDK_PRIVATE_BROADWAY_H__ */

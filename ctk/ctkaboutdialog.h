@@ -126,92 +126,92 @@ struct _CtkAboutDialogClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType                  ctk_about_dialog_get_type               (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget             *ctk_about_dialog_new                    (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_show_about_dialog                   (CtkWindow       *parent,
                                                                 const gchar     *first_property_name,
                                                                 ...) G_GNUC_NULL_TERMINATED;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *          ctk_about_dialog_get_program_name       (CtkAboutDialog  *about);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_about_dialog_set_program_name       (CtkAboutDialog  *about,
                                                                 const gchar     *name);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *          ctk_about_dialog_get_version            (CtkAboutDialog  *about);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_about_dialog_set_version            (CtkAboutDialog  *about,
                                                                 const gchar     *version);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *          ctk_about_dialog_get_copyright          (CtkAboutDialog  *about);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_about_dialog_set_copyright          (CtkAboutDialog  *about,
                                                                 const gchar     *copyright);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *          ctk_about_dialog_get_comments           (CtkAboutDialog  *about);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_about_dialog_set_comments           (CtkAboutDialog  *about,
                                                                 const gchar     *comments);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *          ctk_about_dialog_get_license            (CtkAboutDialog  *about);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_about_dialog_set_license            (CtkAboutDialog  *about,
                                                                 const gchar     *license);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_about_dialog_set_license_type       (CtkAboutDialog  *about,
                                                                 CtkLicense       license_type);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkLicense             ctk_about_dialog_get_license_type       (CtkAboutDialog  *about);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean               ctk_about_dialog_get_wrap_license       (CtkAboutDialog  *about);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_about_dialog_set_wrap_license       (CtkAboutDialog  *about,
                                                                 gboolean         wrap_license);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *          ctk_about_dialog_get_website            (CtkAboutDialog  *about);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_about_dialog_set_website            (CtkAboutDialog  *about,
                                                                 const gchar     *website);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *          ctk_about_dialog_get_website_label      (CtkAboutDialog  *about);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_about_dialog_set_website_label      (CtkAboutDialog  *about,
                                                                 const gchar     *website_label);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar* const *   ctk_about_dialog_get_authors            (CtkAboutDialog  *about);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_about_dialog_set_authors            (CtkAboutDialog  *about,
                                                                 const gchar    **authors);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar* const *   ctk_about_dialog_get_documenters        (CtkAboutDialog  *about);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_about_dialog_set_documenters        (CtkAboutDialog  *about,
                                                                 const gchar    **documenters);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar* const *   ctk_about_dialog_get_artists            (CtkAboutDialog  *about);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_about_dialog_set_artists            (CtkAboutDialog  *about,
                                                                 const gchar    **artists);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *          ctk_about_dialog_get_translator_credits (CtkAboutDialog  *about);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_about_dialog_set_translator_credits (CtkAboutDialog  *about,
                                                                 const gchar     *translator_credits);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkPixbuf             *ctk_about_dialog_get_logo               (CtkAboutDialog  *about);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_about_dialog_set_logo               (CtkAboutDialog  *about,
                                                                 CdkPixbuf       *logo);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *          ctk_about_dialog_get_logo_icon_name     (CtkAboutDialog  *about);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                   ctk_about_dialog_set_logo_icon_name     (CtkAboutDialog  *about,
                                                                 const gchar     *icon_name);
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 void                  ctk_about_dialog_add_credit_section      (CtkAboutDialog  *about,
                                                                 const gchar     *section_name,
                                                                 const gchar    **people);

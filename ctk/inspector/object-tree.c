@@ -732,12 +732,12 @@ key_press_event (CtkWidget              *window,
       gboolean search_started;
 
       search_started = ctk_search_bar_get_search_mode (CTK_SEARCH_BAR (wt->priv->search_bar));
-      default_accel = ctk_widget_get_modifier_mask (CTK_WIDGET (wt), GDK_MODIFIER_INTENT_PRIMARY_ACCELERATOR);
+      default_accel = ctk_widget_get_modifier_mask (CTK_WIDGET (wt), CDK_MODIFIER_INTENT_PRIMARY_ACCELERATOR);
 
       if (search_started &&
-          (event->key.keyval == GDK_KEY_Return ||
-           event->key.keyval == GDK_KEY_ISO_Enter ||
-           event->key.keyval == GDK_KEY_KP_Enter))
+          (event->key.keyval == CDK_KEY_Return ||
+           event->key.keyval == CDK_KEY_ISO_Enter ||
+           event->key.keyval == CDK_KEY_KP_Enter))
         {
           CtkTreeSelection *selection;
           CtkTreeModel *model;
@@ -753,20 +753,20 @@ key_press_event (CtkWidget              *window,
                                            wt->priv->object_column);
               ctk_tree_path_free (path);
 
-              return GDK_EVENT_STOP;
+              return CDK_EVENT_STOP;
             }
           else
-            return GDK_EVENT_PROPAGATE;
+            return CDK_EVENT_PROPAGATE;
         }
       else if (search_started &&
-               (event->key.keyval == GDK_KEY_Escape))
+               (event->key.keyval == CDK_KEY_Escape))
         {
           ctk_search_bar_set_search_mode (CTK_SEARCH_BAR (wt->priv->search_bar), FALSE);
-          return GDK_EVENT_STOP;
+          return CDK_EVENT_STOP;
         }
       else if (search_started &&
-               ((event->key.state & (default_accel | GDK_SHIFT_MASK)) == (default_accel | GDK_SHIFT_MASK)) &&
-               (event->key.keyval == GDK_KEY_g || event->key.keyval == GDK_KEY_G))
+               ((event->key.state & (default_accel | CDK_SHIFT_MASK)) == (default_accel | CDK_SHIFT_MASK)) &&
+               (event->key.keyval == CDK_KEY_g || event->key.keyval == CDK_KEY_G))
         {
           CtkTreeIter iter;
           if (ctk_tree_walk_next_match (wt->priv->walk, TRUE, TRUE, &iter))
@@ -774,11 +774,11 @@ key_press_event (CtkWidget              *window,
           else
             ctk_widget_error_bell (CTK_WIDGET (wt));
 
-          return GDK_EVENT_STOP;
+          return CDK_EVENT_STOP;
         }
       else if (search_started &&
-               ((event->key.state & (default_accel | GDK_SHIFT_MASK)) == default_accel) &&
-               (event->key.keyval == GDK_KEY_g || event->key.keyval == GDK_KEY_G))
+               ((event->key.state & (default_accel | CDK_SHIFT_MASK)) == default_accel) &&
+               (event->key.keyval == CDK_KEY_g || event->key.keyval == CDK_KEY_G))
         {
           CtkTreeIter iter;
 
@@ -787,13 +787,13 @@ key_press_event (CtkWidget              *window,
           else
             ctk_widget_error_bell (CTK_WIDGET (wt));
 
-          return GDK_EVENT_STOP;
+          return CDK_EVENT_STOP;
         }
 
       return ctk_search_bar_handle_event (CTK_SEARCH_BAR (wt->priv->search_bar), event);
     }
   else
-    return GDK_EVENT_PROPAGATE;
+    return CDK_EVENT_PROPAGATE;
 }
 
 static void

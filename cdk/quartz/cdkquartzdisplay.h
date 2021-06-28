@@ -17,10 +17,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_QUARTZ_DISPLAY_H__
-#define __GDK_QUARTZ_DISPLAY_H__
+#ifndef __CDK_QUARTZ_DISPLAY_H__
+#define __CDK_QUARTZ_DISPLAY_H__
 
-#if !defined(__GDKQUARTZ_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined(__CDKQUARTZ_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdkquartz.h> can be included directly."
 #endif
 
@@ -28,14 +28,14 @@
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_QUARTZ_DISPLAY              (cdk_quartz_display_get_type ())
-#define GDK_QUARTZ_DISPLAY(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_QUARTZ_DISPLAY, CdkQuartzDisplay))
-#define GDK_QUARTZ_DISPLAY_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_QUARTZ_DISPLAY, CdkQuartzDisplayClass))
-#define GDK_IS_QUARTZ_DISPLAY(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_QUARTZ_DISPLAY))
-#define GDK_IS_QUARTZ_DISPLAY_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_QUARTZ_DISPLAY))
-#define GDK_QUARTZ_DISPLAY_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_QUARTZ_DISPLAY, CdkQuartzDisplayClass))
+#define CDK_TYPE_QUARTZ_DISPLAY              (cdk_quartz_display_get_type ())
+#define CDK_QUARTZ_DISPLAY(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), CDK_TYPE_QUARTZ_DISPLAY, CdkQuartzDisplay))
+#define CDK_QUARTZ_DISPLAY_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CDK_TYPE_QUARTZ_DISPLAY, CdkQuartzDisplayClass))
+#define CDK_IS_QUARTZ_DISPLAY(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), CDK_TYPE_QUARTZ_DISPLAY))
+#define CDK_IS_QUARTZ_DISPLAY_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CDK_TYPE_QUARTZ_DISPLAY))
+#define CDK_QUARTZ_DISPLAY_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CDK_TYPE_QUARTZ_DISPLAY, CdkQuartzDisplayClass))
 
-#ifdef GDK_COMPILATION
+#ifdef CDK_COMPILATION
 typedef struct _CdkQuartzDisplay CdkQuartzDisplay;
 #else
 typedef CdkDisplay CdkQuartzDisplay;
@@ -43,9 +43,9 @@ typedef CdkDisplay CdkQuartzDisplay;
 typedef struct _CdkQuartzDisplayClass CdkQuartzDisplayClass;
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType cdk_quartz_display_get_type (void);
 
 G_END_DECLS
 
-#endif /* __GDK_QUARTZ_DISPLAY_H__ */
+#endif /* __CDK_QUARTZ_DISPLAY_H__ */

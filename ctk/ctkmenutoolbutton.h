@@ -70,23 +70,23 @@ struct _CtkMenuToolButtonClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType         ctk_menu_tool_button_get_type       (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkToolItem  *ctk_menu_tool_button_new            (CtkWidget   *icon_widget,
                                                    const gchar *label);
-GDK_DEPRECATED_IN_3_10_FOR(ctk_menu_tool_button_new)
+CDK_DEPRECATED_IN_3_10_FOR(ctk_menu_tool_button_new)
 CtkToolItem  *ctk_menu_tool_button_new_from_stock (const gchar *stock_id);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_menu_tool_button_set_menu       (CtkMenuToolButton *button,
                                                    CtkWidget         *menu);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget    *ctk_menu_tool_button_get_menu       (CtkMenuToolButton *button);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_menu_tool_button_set_arrow_tooltip_text   (CtkMenuToolButton *button,
 							     const gchar       *text);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_menu_tool_button_set_arrow_tooltip_markup (CtkMenuToolButton *button,
 							     const gchar       *markup);
 

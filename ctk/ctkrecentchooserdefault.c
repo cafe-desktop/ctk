@@ -419,9 +419,9 @@ _ctk_recent_chooser_default_init (CtkRecentChooserDefault *impl)
   					   impl,
   					   NULL);
   ctk_drag_source_set (priv->recent_view,
-		       GDK_BUTTON1_MASK,
+		       CDK_BUTTON1_MASK,
 		       NULL, 0,
-		       GDK_ACTION_COPY);
+		       CDK_ACTION_COPY);
   ctk_drag_source_add_uri_targets (priv->recent_view);
 }
 
@@ -1583,7 +1583,7 @@ copy_activated_cb (CtkMenuItem *menu_item,
   utf8_uri = ctk_recent_info_get_uri_display (info);
   
   ctk_clipboard_set_text (ctk_widget_get_clipboard (CTK_WIDGET (impl),
-			  			    GDK_SELECTION_CLIPBOARD),
+			  			    CDK_SELECTION_CLIPBOARD),
                           utf8_uri, -1);
 
   ctk_recent_info_unref (info);
@@ -1739,8 +1739,8 @@ recent_view_menu_popup (CtkRecentChooserDefault *impl,
     {
       ctk_menu_popup_at_widget (CTK_MENU (impl->priv->recent_popup_menu),
                                 impl->priv->recent_view,
-                                GDK_GRAVITY_CENTER,
-                                GDK_GRAVITY_CENTER,
+                                CDK_GRAVITY_CENTER,
+                                CDK_GRAVITY_CENTER,
                                 (CdkEvent *) event);
 
       ctk_menu_shell_select_first (CTK_MENU_SHELL (impl->priv->recent_popup_menu), FALSE);

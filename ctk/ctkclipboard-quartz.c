@@ -211,7 +211,7 @@ ctk_clipboard_class_init (CtkClipboardClass *class)
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1,
-		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
+		  CDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
 }
 
 static void
@@ -268,7 +268,7 @@ CtkClipboard *
 ctk_clipboard_get_for_display (CdkDisplay *display,
 			       CdkAtom     selection)
 {
-  g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
+  g_return_val_if_fail (CDK_IS_DISPLAY (display), NULL);
   g_return_val_if_fail (!cdk_display_is_closed (display), NULL);
 
   return clipboard_peek (display, selection, FALSE);
@@ -301,9 +301,9 @@ CtkClipboard *
 ctk_clipboard_get_default (CdkDisplay *display)
 {
   g_return_val_if_fail (display != NULL, NULL);
-  g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
+  g_return_val_if_fail (CDK_IS_DISPLAY (display), NULL);
 
-  return ctk_clipboard_get_for_display (display, GDK_SELECTION_CLIPBOARD);
+  return ctk_clipboard_get_for_display (display, CDK_SELECTION_CLIPBOARD);
 }
 
 static void
@@ -575,7 +575,7 @@ ctk_clipboard_clear (CtkClipboard *clipboard)
 {
   clipboard_unset (clipboard);
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= 1060
-  if (cdk_quartz_osx_version() >= GDK_OSX_SNOW_LEOPARD)
+  if (cdk_quartz_osx_version() >= CDK_OSX_SNOW_LEOPARD)
     [clipboard->pasteboard clearContents];
 #if MAC_OS_X_VERSION_MIN_REQUIRED < 1060
   else
@@ -649,7 +649,7 @@ ctk_clipboard_set_image (CtkClipboard *clipboard,
   gint n_targets, i;
 
   g_return_if_fail (clipboard != NULL);
-  g_return_if_fail (GDK_IS_PIXBUF (pixbuf));
+  g_return_if_fail (CDK_IS_PIXBUF (pixbuf));
 
   list = ctk_target_list_new (NULL, 0);
   ctk_target_list_add_image_targets (list, 0, TRUE);
@@ -845,11 +845,11 @@ ctk_clipboard_wait_for_contents (CtkClipboard *clipboard,
 
       atom_list = _ctk_quartz_pasteboard_types_to_atom_list (types);
       for (l = atom_list, i = 0; l ; l = l->next, i++)
-	atoms[i] = GDK_POINTER_TO_ATOM (l->data);
+	atoms[i] = CDK_POINTER_TO_ATOM (l->data);
       g_list_free (atom_list);
 
       ctk_selection_data_set (selection_data,
-                              GDK_SELECTION_TYPE_ATOM, 32,
+                              CDK_SELECTION_TYPE_ATOM, 32,
                               (guchar *)atoms, length);
 
       [pool release];
@@ -1109,8 +1109,8 @@ clipboard_peek (CdkDisplay *display,
   GSList *clipboards;
   GSList *tmp_list;
 
-  if (selection == GDK_NONE)
-    selection = GDK_SELECTION_CLIPBOARD;
+  if (selection == CDK_NONE)
+    selection = CDK_SELECTION_CLIPBOARD;
 
   clipboards = g_object_get_data (G_OBJECT (display), "ctk-clipboard-list");
 
@@ -1130,7 +1130,7 @@ clipboard_peek (CdkDisplay *display,
       NSString *pasteboard_name;
       clipboard = g_object_new (CTK_TYPE_CLIPBOARD, NULL);
 
-      if (selection == GDK_SELECTION_CLIPBOARD)
+      if (selection == CDK_SELECTION_CLIPBOARD)
 	pasteboard_name = NSGeneralPboard;
       else
 	{
@@ -1280,7 +1280,7 @@ _ctk_clipboard_store_all (void)
     {
       CdkDisplay *display = list->data;
 
-      clipboard = clipboard_peek (display, GDK_SELECTION_CLIPBOARD, TRUE);
+      clipboard = clipboard_peek (display, CDK_SELECTION_CLIPBOARD, TRUE);
 
       if (clipboard)
         ctk_clipboard_store (clipboard);
@@ -1300,7 +1300,7 @@ _ctk_clipboard_store_all (void)
 CdkAtom
 ctk_clipboard_get_selection (CtkClipboard *clipboard)
 {
-  g_return_val_if_fail (CTK_IS_CLIPBOARD (clipboard), GDK_NONE);
+  g_return_val_if_fail (CTK_IS_CLIPBOARD (clipboard), CDK_NONE);
 
   return clipboard->selection;
 }

@@ -51,7 +51,7 @@ struct _CtkTrayIconClass
   void (*__ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType          ctk_tray_icon_get_type         (void) G_GNUC_CONST;
 
 CtkTrayIcon   *_ctk_tray_icon_new_for_screen  (CdkScreen   *screen,

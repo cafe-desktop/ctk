@@ -141,20 +141,20 @@ msgid "Default Display"
 msgstr "Privzeti prikaz"
 
 #: cdk/cdkdisplaymanager.c:163
-msgid "The default display for GDK"
-msgstr "Privzeti prikaz za GDK"
+msgid "The default display for CDK"
+msgstr "Privzeti prikaz za CDK"
 
 #: cdk/cdkglcontext.c:318
-msgid "The GDK display used to create the GL context"
-msgstr "Okno GDK, ki je zavezano s predmetom GL"
+msgid "The CDK display used to create the GL context"
+msgstr "Okno CDK, ki je zavezano s predmetom GL"
 
 #: cdk/cdkglcontext.c:333 ctk/ctkwidget.c:1347
 msgid "Window"
 msgstr "Okno"
 
 #: cdk/cdkglcontext.c:334
-msgid "The GDK window bound to the GL context"
-msgstr "Okno GDK, ki je zavezano s kontekstom GL"
+msgid "The CDK window bound to the GL context"
+msgstr "Okno CDK, ki je zavezano s kontekstom GL"
 
 #: cdk/cdkglcontext.c:349
 msgid "Shared context"
@@ -9678,5 +9678,5 @@ msgstr "Naziv barvnega profila, ki bo uporabljen"
 #~ msgid "Color of strike-through for this text"
 #~ msgstr "Barva prečrtanega besedila"
 
-#~ msgid "The GDK display the context is from"
-#~ msgstr "Zaslon GDK, s katerega je kontekst"
+#~ msgid "The CDK display the context is from"
+#~ msgstr "Zaslon CDK, s katerega je kontekst"

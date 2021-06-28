@@ -248,7 +248,7 @@ create_row (const gchar *text)
   ctk_container_add (CTK_CONTAINER (box), ebox);
 
   ctk_style_context_add_class (ctk_widget_get_style_context (row), "row");
-  ctk_drag_source_set (ebox, GDK_BUTTON1_MASK, entries, 1, GDK_ACTION_MOVE);
+  ctk_drag_source_set (ebox, CDK_BUTTON1_MASK, entries, 1, CDK_ACTION_MOVE);
   g_signal_connect (ebox, "drag-begin", G_CALLBACK (drag_begin), NULL);
   g_signal_connect (ebox, "drag-end", G_CALLBACK (drag_end), NULL);
   g_signal_connect (ebox, "drag-data-get", G_CALLBACK (drag_data_get), NULL);
@@ -348,7 +348,7 @@ main (int argc, char *argv[])
   list = ctk_list_box_new ();
   ctk_list_box_set_selection_mode (CTK_LIST_BOX (list), CTK_SELECTION_NONE);
 
-  ctk_drag_dest_set (list, CTK_DEST_DEFAULT_MOTION | CTK_DEST_DEFAULT_DROP, entries, 1, GDK_ACTION_MOVE);
+  ctk_drag_dest_set (list, CTK_DEST_DEFAULT_MOTION | CTK_DEST_DEFAULT_DROP, entries, 1, CDK_ACTION_MOVE);
   g_signal_connect (list, "drag-data-received", G_CALLBACK (drag_data_received), NULL);
   g_signal_connect (list, "drag-motion", G_CALLBACK (drag_motion), NULL);
   g_signal_connect (list, "drag-leave", G_CALLBACK (drag_leave), NULL);

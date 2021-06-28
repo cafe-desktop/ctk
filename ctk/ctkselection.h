@@ -110,174 +110,174 @@ struct _CtkTargetEntry
   guint  info;
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType          ctk_target_list_get_type  (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTargetList *ctk_target_list_new       (const CtkTargetEntry *targets,
                                           guint                 ntargets);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTargetList *ctk_target_list_ref       (CtkTargetList  *list);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_target_list_unref     (CtkTargetList  *list);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_target_list_add       (CtkTargetList  *list,
                                           CdkAtom         target,
                                           guint           flags,
                                           guint           info);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_target_list_add_text_targets      (CtkTargetList  *list,
                                                       guint           info);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_target_list_add_rich_text_targets (CtkTargetList  *list,
                                                       guint           info,
                                                       gboolean        deserializable,
                                                       CtkTextBuffer  *buffer);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_target_list_add_image_targets     (CtkTargetList  *list,
                                                       guint           info,
                                                       gboolean        writable);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_target_list_add_uri_targets       (CtkTargetList  *list,
                                                       guint           info);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_target_list_add_table (CtkTargetList        *list,
                                           const CtkTargetEntry *targets,
                                           guint                 ntargets);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_target_list_remove    (CtkTargetList  *list,
                                           CdkAtom         target);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean       ctk_target_list_find      (CtkTargetList  *list,
                                           CdkAtom         target,
                                           guint          *info);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTargetEntry * ctk_target_table_new_from_list (CtkTargetList  *list,
                                                  gint           *n_targets);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_target_table_free          (CtkTargetEntry *targets,
                                                  gint            n_targets);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_selection_owner_set             (CtkWidget  *widget,
                                               CdkAtom     selection,
                                               guint32     time_);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_selection_owner_set_for_display (CdkDisplay *display,
                                               CtkWidget  *widget,
                                               CdkAtom     selection,
                                               guint32     time_);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_selection_add_target    (CtkWidget            *widget,
                                       CdkAtom               selection,
                                       CdkAtom               target,
                                       guint                 info);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_selection_add_targets   (CtkWidget            *widget,
                                       CdkAtom               selection,
                                       const CtkTargetEntry *targets,
                                       guint                 ntargets);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_selection_clear_targets (CtkWidget            *widget,
                                       CdkAtom               selection);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_selection_convert       (CtkWidget            *widget,
                                       CdkAtom               selection,
                                       CdkAtom               target,
                                       guint32               time_);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_selection_remove_all    (CtkWidget             *widget);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkAtom       ctk_selection_data_get_selection (const CtkSelectionData *selection_data);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkAtom       ctk_selection_data_get_target    (const CtkSelectionData *selection_data);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkAtom       ctk_selection_data_get_data_type (const CtkSelectionData *selection_data);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint          ctk_selection_data_get_format    (const CtkSelectionData *selection_data);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const guchar *ctk_selection_data_get_data      (const CtkSelectionData *selection_data);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint          ctk_selection_data_get_length    (const CtkSelectionData *selection_data);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const guchar *ctk_selection_data_get_data_with_length
                                                (const CtkSelectionData *selection_data,
                                                 gint                   *length);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkDisplay   *ctk_selection_data_get_display   (const CtkSelectionData *selection_data);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_selection_data_set      (CtkSelectionData     *selection_data,
                                       CdkAtom               type,
                                       gint                  format,
                                       const guchar         *data,
                                       gint                  length);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_selection_data_set_text (CtkSelectionData     *selection_data,
                                       const gchar          *str,
                                       gint                  len);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 guchar * ctk_selection_data_get_text (const CtkSelectionData     *selection_data);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_selection_data_set_pixbuf   (CtkSelectionData  *selection_data,
                                           CdkPixbuf         *pixbuf);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkPixbuf *ctk_selection_data_get_pixbuf (const CtkSelectionData  *selection_data);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_selection_data_set_uris (CtkSelectionData     *selection_data,
                                       gchar               **uris);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gchar  **ctk_selection_data_get_uris (const CtkSelectionData     *selection_data);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_selection_data_get_targets          (const CtkSelectionData  *selection_data,
                                                   CdkAtom          **targets,
                                                   gint              *n_atoms);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_selection_data_targets_include_text (const CtkSelectionData  *selection_data);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_selection_data_targets_include_rich_text (const CtkSelectionData *selection_data,
                                                        CtkTextBuffer    *buffer);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_selection_data_targets_include_image (const CtkSelectionData  *selection_data,
                                                    gboolean           writable);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_selection_data_targets_include_uri  (const CtkSelectionData  *selection_data);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_targets_include_text                (CdkAtom       *targets,
                                                   gint           n_targets);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_targets_include_rich_text           (CdkAtom       *targets,
                                                   gint           n_targets,
                                                   CtkTextBuffer *buffer);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_targets_include_image               (CdkAtom       *targets,
                                                   gint           n_targets,
                                                   gboolean       writable);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_targets_include_uri                 (CdkAtom       *targets,
                                                   gint           n_targets);
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType             ctk_selection_data_get_type (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkSelectionData *ctk_selection_data_copy     (const CtkSelectionData *data);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_selection_data_free     (CtkSelectionData *data);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType             ctk_target_entry_get_type    (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTargetEntry   *ctk_target_entry_new        (const gchar    *target,
                                                guint           flags,
                                                guint           info);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTargetEntry   *ctk_target_entry_copy       (CtkTargetEntry *data);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_target_entry_free       (CtkTargetEntry *data);
 
 G_END_DECLS

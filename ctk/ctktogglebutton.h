@@ -68,31 +68,31 @@ struct _CtkToggleButtonClass
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType      ctk_toggle_button_get_type          (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_toggle_button_new               (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_toggle_button_new_with_label    (const gchar     *label);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_toggle_button_new_with_mnemonic (const gchar     *label);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_toggle_button_set_mode          (CtkToggleButton *toggle_button,
                                                 gboolean         draw_indicator);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_toggle_button_get_mode          (CtkToggleButton *toggle_button);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_toggle_button_set_active        (CtkToggleButton *toggle_button,
                                                 gboolean         is_active);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_toggle_button_get_active        (CtkToggleButton *toggle_button);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_toggle_button_toggled           (CtkToggleButton *toggle_button);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_toggle_button_set_inconsistent  (CtkToggleButton *toggle_button,
                                                 gboolean         setting);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_toggle_button_get_inconsistent  (CtkToggleButton *toggle_button);
 
 

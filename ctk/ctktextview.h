@@ -108,7 +108,7 @@ typedef enum
  * The priority at which the text view validates onscreen lines
  * in an idle job in the background.
  */
-#define CTK_TEXT_VIEW_PRIORITY_VALIDATE (GDK_PRIORITY_REDRAW + 5)
+#define CTK_TEXT_VIEW_PRIORITY_VALIDATE (CDK_PRIORITY_REDRAW + 5)
 
 typedef struct _CtkTextView        CtkTextView;
 typedef struct _CtkTextViewPrivate CtkTextViewPrivate;
@@ -202,92 +202,92 @@ struct _CtkTextViewClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType          ctk_text_view_get_type              (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *    ctk_text_view_new                   (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *    ctk_text_view_new_with_buffer       (CtkTextBuffer *buffer);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_text_view_set_buffer            (CtkTextView   *text_view,
                                                     CtkTextBuffer *buffer);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTextBuffer *ctk_text_view_get_buffer            (CtkTextView   *text_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean       ctk_text_view_scroll_to_iter        (CtkTextView   *text_view,
                                                     CtkTextIter   *iter,
                                                     gdouble        within_margin,
                                                     gboolean       use_align,
                                                     gdouble        xalign,
                                                     gdouble        yalign);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_text_view_scroll_to_mark        (CtkTextView   *text_view,
                                                     CtkTextMark   *mark,
                                                     gdouble        within_margin,
                                                     gboolean       use_align,
                                                     gdouble        xalign,
                                                     gdouble        yalign);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_text_view_scroll_mark_onscreen  (CtkTextView   *text_view,
                                                     CtkTextMark   *mark);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean       ctk_text_view_move_mark_onscreen    (CtkTextView   *text_view,
                                                     CtkTextMark   *mark);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean       ctk_text_view_place_cursor_onscreen (CtkTextView   *text_view);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_text_view_get_visible_rect      (CtkTextView   *text_view,
                                                     CdkRectangle  *visible_rect);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_text_view_set_cursor_visible    (CtkTextView   *text_view,
                                                     gboolean       setting);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean       ctk_text_view_get_cursor_visible    (CtkTextView   *text_view);
 
-GDK_AVAILABLE_IN_3_20
+CDK_AVAILABLE_IN_3_20
 void           ctk_text_view_reset_cursor_blink    (CtkTextView   *text_view);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_text_view_get_cursor_locations  (CtkTextView       *text_view,
                                                     const CtkTextIter *iter,
                                                     CdkRectangle      *strong,
                                                     CdkRectangle      *weak);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_text_view_get_iter_location     (CtkTextView   *text_view,
                                                     const CtkTextIter *iter,
                                                     CdkRectangle  *location);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean       ctk_text_view_get_iter_at_location  (CtkTextView   *text_view,
                                                     CtkTextIter   *iter,
                                                     gint           x,
                                                     gint           y);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean       ctk_text_view_get_iter_at_position  (CtkTextView   *text_view,
                                                     CtkTextIter   *iter,
 						    gint          *trailing,
                                                     gint           x,
                                                     gint           y);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_text_view_get_line_yrange       (CtkTextView       *text_view,
                                                     const CtkTextIter *iter,
                                                     gint              *y,
                                                     gint              *height);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_text_view_get_line_at_y         (CtkTextView       *text_view,
                                                     CtkTextIter       *target_iter,
                                                     gint               y,
                                                     gint              *line_top);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_view_buffer_to_window_coords (CtkTextView       *text_view,
                                             CtkTextWindowType  win,
                                             gint               buffer_x,
                                             gint               buffer_y,
                                             gint              *window_x,
                                             gint              *window_y);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_view_window_to_buffer_coords (CtkTextView       *text_view,
                                             CtkTextWindowType  win,
                                             gint               window_x,
@@ -295,59 +295,59 @@ void ctk_text_view_window_to_buffer_coords (CtkTextView       *text_view,
                                             gint              *buffer_x,
                                             gint              *buffer_y);
 
-GDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_get_hadjustment)
+CDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_get_hadjustment)
 CtkAdjustment*   ctk_text_view_get_hadjustment (CtkTextView   *text_view);
-GDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_get_vadjustment)
+CDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_get_vadjustment)
 CtkAdjustment*   ctk_text_view_get_vadjustment (CtkTextView   *text_view);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkWindow*        ctk_text_view_get_window      (CtkTextView       *text_view,
                                                  CtkTextWindowType  win);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTextWindowType ctk_text_view_get_window_type (CtkTextView       *text_view,
                                                  CdkWindow         *window);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_view_set_border_window_size (CtkTextView       *text_view,
                                            CtkTextWindowType  type,
                                            gint               size);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint ctk_text_view_get_border_window_size (CtkTextView       *text_view,
 					   CtkTextWindowType  type);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_text_view_forward_display_line           (CtkTextView       *text_view,
                                                        CtkTextIter       *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_text_view_backward_display_line          (CtkTextView       *text_view,
                                                        CtkTextIter       *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_text_view_forward_display_line_end       (CtkTextView       *text_view,
                                                        CtkTextIter       *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_text_view_backward_display_line_start    (CtkTextView       *text_view,
                                                        CtkTextIter       *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_text_view_starts_display_line            (CtkTextView       *text_view,
                                                        const CtkTextIter *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_text_view_move_visually                  (CtkTextView       *text_view,
                                                        CtkTextIter       *iter,
                                                        gint               count);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean        ctk_text_view_im_context_filter_keypress        (CtkTextView       *text_view,
                                                                  CdkEventKey       *event);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void            ctk_text_view_reset_im_context                  (CtkTextView       *text_view);
 
 /* Adding child widgets */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_view_add_child_at_anchor (CtkTextView          *text_view,
                                         CtkWidget            *child,
                                         CtkTextChildAnchor   *anchor);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_view_add_child_in_window (CtkTextView          *text_view,
                                         CtkWidget            *child,
                                         CtkTextWindowType     which_window,
@@ -355,7 +355,7 @@ void ctk_text_view_add_child_in_window (CtkTextView          *text_view,
                                         gint                  xpos,
                                         gint                  ypos);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_view_move_child          (CtkTextView          *text_view,
                                         CtkWidget            *child,
                                         /* window coordinates */
@@ -364,97 +364,97 @@ void ctk_text_view_move_child          (CtkTextView          *text_view,
 
 /* Default style settings (fallbacks if no tag affects the property) */
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_text_view_set_wrap_mode          (CtkTextView      *text_view,
                                                        CtkWrapMode       wrap_mode);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWrapMode      ctk_text_view_get_wrap_mode          (CtkTextView      *text_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_text_view_set_editable           (CtkTextView      *text_view,
                                                        gboolean          setting);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean         ctk_text_view_get_editable           (CtkTextView      *text_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_text_view_set_overwrite          (CtkTextView      *text_view,
 						       gboolean          overwrite);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean         ctk_text_view_get_overwrite          (CtkTextView      *text_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void		 ctk_text_view_set_accepts_tab        (CtkTextView	*text_view,
 						       gboolean		 accepts_tab);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean	 ctk_text_view_get_accepts_tab        (CtkTextView	*text_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_text_view_set_pixels_above_lines (CtkTextView      *text_view,
                                                        gint              pixels_above_lines);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint             ctk_text_view_get_pixels_above_lines (CtkTextView      *text_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_text_view_set_pixels_below_lines (CtkTextView      *text_view,
                                                        gint              pixels_below_lines);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint             ctk_text_view_get_pixels_below_lines (CtkTextView      *text_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_text_view_set_pixels_inside_wrap (CtkTextView      *text_view,
                                                        gint              pixels_inside_wrap);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint             ctk_text_view_get_pixels_inside_wrap (CtkTextView      *text_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_text_view_set_justification      (CtkTextView      *text_view,
                                                        CtkJustification  justification);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkJustification ctk_text_view_get_justification      (CtkTextView      *text_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_text_view_set_left_margin        (CtkTextView      *text_view,
                                                        gint              left_margin);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint             ctk_text_view_get_left_margin        (CtkTextView      *text_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_text_view_set_right_margin       (CtkTextView      *text_view,
                                                        gint              right_margin);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint             ctk_text_view_get_right_margin       (CtkTextView      *text_view);
-GDK_AVAILABLE_IN_3_18
+CDK_AVAILABLE_IN_3_18
 void             ctk_text_view_set_top_margin         (CtkTextView      *text_view,
                                                        gint              top_margin);
-GDK_AVAILABLE_IN_3_18
+CDK_AVAILABLE_IN_3_18
 gint             ctk_text_view_get_top_margin         (CtkTextView      *text_view);
-GDK_AVAILABLE_IN_3_18
+CDK_AVAILABLE_IN_3_18
 void             ctk_text_view_set_bottom_margin      (CtkTextView      *text_view,
                                                        gint              bottom_margin);
-GDK_AVAILABLE_IN_3_18
+CDK_AVAILABLE_IN_3_18
 gint             ctk_text_view_get_bottom_margin       (CtkTextView      *text_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_text_view_set_indent             (CtkTextView      *text_view,
                                                        gint              indent);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint             ctk_text_view_get_indent             (CtkTextView      *text_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_text_view_set_tabs               (CtkTextView      *text_view,
                                                        PangoTabArray    *tabs);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 PangoTabArray*   ctk_text_view_get_tabs               (CtkTextView      *text_view);
 
 /* note that the return value of this changes with the theme */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTextAttributes* ctk_text_view_get_default_attributes (CtkTextView    *text_view);
 
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 void             ctk_text_view_set_input_purpose      (CtkTextView      *text_view,
                                                        CtkInputPurpose   purpose);
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 CtkInputPurpose  ctk_text_view_get_input_purpose      (CtkTextView      *text_view);
 
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 void             ctk_text_view_set_input_hints        (CtkTextView      *text_view,
                                                        CtkInputHints     hints);
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 CtkInputHints    ctk_text_view_get_input_hints        (CtkTextView      *text_view);
 
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 void             ctk_text_view_set_monospace          (CtkTextView      *text_view,
                                                        gboolean          monospace);
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 gboolean         ctk_text_view_get_monospace          (CtkTextView      *text_view);
 
 G_END_DECLS

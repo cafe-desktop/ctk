@@ -1712,7 +1712,7 @@ ctk_text_view_accessible_copy_text (AtkEditableText *text,
   ctk_text_buffer_get_iter_at_offset (buffer, &end, end_pos);
   str = ctk_text_buffer_get_text (buffer, &start, &end, FALSE);
 
-  clipboard = ctk_widget_get_clipboard (widget, GDK_SELECTION_CLIPBOARD);
+  clipboard = ctk_widget_get_clipboard (widget, CDK_SELECTION_CLIPBOARD);
   ctk_clipboard_set_text (clipboard, str, -1);
 }
 
@@ -1740,7 +1740,7 @@ ctk_text_view_accessible_cut_text (AtkEditableText *text,
   ctk_text_buffer_get_iter_at_offset (buffer, &start, start_pos);
   ctk_text_buffer_get_iter_at_offset (buffer, &end, end_pos);
   str = ctk_text_buffer_get_text (buffer, &start, &end, FALSE);
-  clipboard = ctk_widget_get_clipboard (widget, GDK_SELECTION_CLIPBOARD);
+  clipboard = ctk_widget_get_clipboard (widget, CDK_SELECTION_CLIPBOARD);
   ctk_clipboard_set_text (clipboard, str, -1);
   ctk_text_buffer_delete (buffer, &start, &end);
 }
@@ -1816,7 +1816,7 @@ ctk_text_view_accessible_paste_text (AtkEditableText *text,
   paste.position = position;
 
   g_object_ref (paste.buffer);
-  clipboard = ctk_widget_get_clipboard (widget, GDK_SELECTION_CLIPBOARD);
+  clipboard = ctk_widget_get_clipboard (widget, CDK_SELECTION_CLIPBOARD);
   ctk_clipboard_request_text (clipboard, paste_received, &paste);
 }
 

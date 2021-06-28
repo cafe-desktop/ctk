@@ -129,7 +129,7 @@ drawing_area_apply_stroke (DrawingArea   *area,
                            gdouble        y,
                            gdouble        pressure)
 {
-  if (cdk_device_tool_get_tool_type (tool) == GDK_DEVICE_TOOL_TYPE_ERASER)
+  if (cdk_device_tool_get_tool_type (tool) == CDK_DEVICE_TOOL_TYPE_ERASER)
     {
       cairo_set_line_width (area->cr, 10 * pressure);
       cairo_set_operator (area->cr, CAIRO_OPERATOR_DEST_OUT);
@@ -171,7 +171,7 @@ stylus_gesture_motion (CtkGestureStylus *gesture,
 
   tool = ctk_gesture_stylus_get_device_tool (gesture);
 
-  if (!ctk_gesture_stylus_get_axis (gesture, GDK_AXIS_PRESSURE, &pressure))
+  if (!ctk_gesture_stylus_get_axis (gesture, CDK_AXIS_PRESSURE, &pressure))
     pressure = 1;
 
   drawing_area_apply_stroke (area, tool, x, y, pressure);

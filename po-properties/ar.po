@@ -109,8 +109,8 @@ msgid "Default Display"
 msgstr "الشاشة الافتراضية"
 
 #: cdk/cdkdisplaymanager.c:103
-msgid "The default display for GDK"
-msgstr "شاشة GDK الافتراضية"
+msgid "The default display for CDK"
+msgstr "شاشة CDK الافتراضية"
 
 #: cdk/cdkscreen.c:72
 msgid "Font options"

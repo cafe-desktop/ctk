@@ -64,16 +64,16 @@ ctk_gesture_stylus_handle_event (CtkEventController *controller,
 
   switch ((guint) cdk_event_get_event_type (event))
     {
-    case GDK_BUTTON_PRESS:
+    case CDK_BUTTON_PRESS:
       n_signal = DOWN;
       break;
-    case GDK_BUTTON_RELEASE:
+    case CDK_BUTTON_RELEASE:
       n_signal = UP;
       break;
-    case GDK_MOTION_NOTIFY:
+    case CDK_MOTION_NOTIFY:
       cdk_event_get_state (event, &modifiers);
 
-      if (modifiers & GDK_BUTTON1_MASK)
+      if (modifiers & CDK_BUTTON1_MASK)
         n_signal = MOTION;
       else
         n_signal = PROXIMITY;
@@ -200,7 +200,7 @@ ctk_gesture_stylus_get_axis (CtkGestureStylus *gesture,
   const CdkEvent *event;
 
   g_return_val_if_fail (CTK_IS_GESTURE_STYLUS (gesture), FALSE);
-  g_return_val_if_fail (axis < GDK_AXIS_LAST, FALSE);
+  g_return_val_if_fail (axis < CDK_AXIS_LAST, FALSE);
   g_return_val_if_fail (value != NULL, FALSE);
 
   event = gesture_get_current_event (gesture);
@@ -213,7 +213,7 @@ ctk_gesture_stylus_get_axis (CtkGestureStylus *gesture,
 /**
  * ctk_gesture_stylus_get_axes:
  * @gesture: a CtkGestureStylus
- * @axes: (array): array of requested axes, terminated with #GDK_AXIS_IGNORE
+ * @axes: (array): array of requested axes, terminated with #CDK_AXIS_IGNORE
  * @values: (out) (array): return location for the axis values
  *
  * Returns the current values for the requested @axes. This function
@@ -243,14 +243,14 @@ ctk_gesture_stylus_get_axes (CtkGestureStylus  *gesture,
 
   array = g_array_new (TRUE, FALSE, sizeof (gdouble));
 
-  while (axes[i] != GDK_AXIS_IGNORE)
+  while (axes[i] != CDK_AXIS_IGNORE)
     {
       gdouble value;
 
-      if (axes[i] >= GDK_AXIS_LAST)
+      if (axes[i] >= CDK_AXIS_LAST)
         {
           g_warning ("Requesting unknown axis %d, did you "
-                     "forget to add a last GDK_AXIS_IGNORE axis?",
+                     "forget to add a last CDK_AXIS_IGNORE axis?",
                      axes[i]);
           g_array_free (array, TRUE);
           return FALSE;

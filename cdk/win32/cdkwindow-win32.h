@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -22,8 +22,8 @@
  * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
-#ifndef __GDK_WINDOW_WIN32_H__
-#define __GDK_WINDOW_WIN32_H__
+#ifndef __CDK_WINDOW_WIN32_H__
+#define __CDK_WINDOW_WIN32_H__
 
 #include "cdk/win32/cdkprivate-win32.h"
 #include "cdk/cdkwindowimpl.h"
@@ -31,7 +31,7 @@
 
 #include <windows.h>
 
-#ifdef GDK_WIN32_ENABLE_EGL
+#ifdef CDK_WIN32_ENABLE_EGL
 #include <epoxy/egl.h>
 #endif
 
@@ -43,39 +43,39 @@ G_BEGIN_DECLS
 typedef struct _CdkWindowImplWin32 CdkWindowImplWin32;
 typedef struct _CdkWindowImplWin32Class CdkWindowImplWin32Class;
 
-#define GDK_TYPE_WINDOW_IMPL_WIN32              (_cdk_window_impl_win32_get_type ())
-#define GDK_WINDOW_IMPL_WIN32(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WINDOW_IMPL_WIN32, CdkWindowImplWin32))
-#define GDK_WINDOW_IMPL_WIN32_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WINDOW_IMPL_WIN32, CdkWindowImplWin32Class))
-#define GDK_IS_WINDOW_IMPL_WIN32(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WINDOW_IMPL_WIN32))
-#define GDK_IS_WINDOW_IMPL_WIN32_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_WINDOW_IMPL_WIN32))
-#define GDK_WINDOW_IMPL_WIN32_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_WINDOW_IMPL_WIN32, CdkWindowImplWin32Class))
+#define CDK_TYPE_WINDOW_IMPL_WIN32              (_cdk_window_impl_win32_get_type ())
+#define CDK_WINDOW_IMPL_WIN32(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), CDK_TYPE_WINDOW_IMPL_WIN32, CdkWindowImplWin32))
+#define CDK_WINDOW_IMPL_WIN32_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CDK_TYPE_WINDOW_IMPL_WIN32, CdkWindowImplWin32Class))
+#define CDK_IS_WINDOW_IMPL_WIN32(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), CDK_TYPE_WINDOW_IMPL_WIN32))
+#define CDK_IS_WINDOW_IMPL_WIN32_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CDK_TYPE_WINDOW_IMPL_WIN32))
+#define CDK_WINDOW_IMPL_WIN32_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CDK_TYPE_WINDOW_IMPL_WIN32, CdkWindowImplWin32Class))
 
 enum _CdkWin32AeroSnapCombo
 {
-  GDK_WIN32_AEROSNAP_COMBO_NOTHING = 0,
-  GDK_WIN32_AEROSNAP_COMBO_UP,
-  GDK_WIN32_AEROSNAP_COMBO_DOWN,
-  GDK_WIN32_AEROSNAP_COMBO_LEFT,
-  GDK_WIN32_AEROSNAP_COMBO_RIGHT,
+  CDK_WIN32_AEROSNAP_COMBO_NOTHING = 0,
+  CDK_WIN32_AEROSNAP_COMBO_UP,
+  CDK_WIN32_AEROSNAP_COMBO_DOWN,
+  CDK_WIN32_AEROSNAP_COMBO_LEFT,
+  CDK_WIN32_AEROSNAP_COMBO_RIGHT,
   /* Same order as non-shift variants. We use it to do things like:
    * AEROSNAP_UP + 4 = AEROSNAP_SHIFTUP
    */
-  GDK_WIN32_AEROSNAP_COMBO_SHIFTUP,
-  GDK_WIN32_AEROSNAP_COMBO_SHIFTDOWN,
-  GDK_WIN32_AEROSNAP_COMBO_SHIFTLEFT,
-  GDK_WIN32_AEROSNAP_COMBO_SHIFTRIGHT
+  CDK_WIN32_AEROSNAP_COMBO_SHIFTUP,
+  CDK_WIN32_AEROSNAP_COMBO_SHIFTDOWN,
+  CDK_WIN32_AEROSNAP_COMBO_SHIFTLEFT,
+  CDK_WIN32_AEROSNAP_COMBO_SHIFTRIGHT
 };
 
 typedef enum _CdkWin32AeroSnapCombo CdkWin32AeroSnapCombo;
 
 enum _CdkWin32AeroSnapState
 {
-  GDK_WIN32_AEROSNAP_STATE_UNDETERMINED = 0,
-  GDK_WIN32_AEROSNAP_STATE_HALFLEFT,
-  GDK_WIN32_AEROSNAP_STATE_HALFRIGHT,
-  GDK_WIN32_AEROSNAP_STATE_FULLUP,
+  CDK_WIN32_AEROSNAP_STATE_UNDETERMINED = 0,
+  CDK_WIN32_AEROSNAP_STATE_HALFLEFT,
+  CDK_WIN32_AEROSNAP_STATE_HALFRIGHT,
+  CDK_WIN32_AEROSNAP_STATE_FULLUP,
   /* Maximize state is only used by edge-snap */
-  GDK_WIN32_AEROSNAP_STATE_MAXIMIZE
+  CDK_WIN32_AEROSNAP_STATE_MAXIMIZE
 };
 
 typedef enum _CdkWin32AeroSnapState CdkWin32AeroSnapState;
@@ -92,10 +92,10 @@ typedef struct _CdkRectangleDouble CdkRectangleDouble;
 
 enum _CdkW32WindowDragOp
 {
-  GDK_WIN32_DRAGOP_NONE = 0,
-  GDK_WIN32_DRAGOP_RESIZE,
-  GDK_WIN32_DRAGOP_MOVE,
-  GDK_WIN32_DRAGOP_COUNT
+  CDK_WIN32_DRAGOP_NONE = 0,
+  CDK_WIN32_DRAGOP_RESIZE,
+  CDK_WIN32_DRAGOP_MOVE,
+  CDK_WIN32_DRAGOP_COUNT
 };
 
 typedef enum _CdkW32WindowDragOp CdkW32WindowDragOp;
@@ -185,7 +185,7 @@ struct _CdkW32DragMoveResizeContext
   /* A special timestamp, if we want to draw not how
    * the animation should look *now*, but how it should
    * look at arbitrary moment of time.
-   * Set to 0 to tell GDK to use current time.
+   * Set to 0 to tell CDK to use current time.
    */
   gint64             draw_timestamp;
 
@@ -212,7 +212,7 @@ struct _CdkW32DragMoveResizeContext
 
   /* Arrays of CdkRectangle pairs, describing the areas of the virtual
    * desktop that trigger various AeroSnap window transofrmations
-   * Coordinates are GDK screen coordinates.
+   * Coordinates are CDK screen coordinates.
    */
   GArray            *halfleft_regions;
   GArray            *halfright_regions;
@@ -289,7 +289,7 @@ struct _CdkWindowImplWin32
    */
   guint maximizing : 1;
 
-  /* GDK does not keep window contents around, it just draws new
+  /* CDK does not keep window contents around, it just draws new
    * stuff over the window where changes occurred.
    * cache_surface retains old window contents, because
    * UpdateLayeredWindow() doesn't do partial redraws.
@@ -349,7 +349,7 @@ struct _CdkWindowImplWin32
   gint unscaled_width;
   gint unscaled_height;
 
-#ifdef GDK_WIN32_ENABLE_EGL
+#ifdef CDK_WIN32_ENABLE_EGL
   EGLSurface egl_surface;
   EGLSurface egl_dummy_surface;
   guint egl_force_redraw_all : 1;
@@ -375,7 +375,7 @@ void  _cdk_win32_window_update_style_bits   (CdkWindow *window);
 
 gint  _cdk_win32_window_get_scale_factor    (CdkWindow *window);
 
-#ifdef GDK_WIN32_ENABLE_EGL
+#ifdef CDK_WIN32_ENABLE_EGL
 EGLSurface _cdk_win32_window_get_egl_surface (CdkWindow *window,
                                               EGLConfig  config,
                                               gboolean   is_dummy);
@@ -383,4 +383,4 @@ EGLSurface _cdk_win32_window_get_egl_surface (CdkWindow *window,
 
 G_END_DECLS
 
-#endif /* __GDK_WINDOW_WIN32_H__ */
+#endif /* __CDK_WINDOW_WIN32_H__ */

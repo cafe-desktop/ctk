@@ -18,9 +18,9 @@
 
 #include "config.h"
 #include <ctk/ctk.h>
-#if defined (GDK_WINDOWING_X11)
+#if defined (CDK_WINDOWING_X11)
 #include <ctk/ctkx.h>
-#elif defined (GDK_WINDOWING_WIN32)
+#elif defined (CDK_WINDOWING_WIN32)
 #include "win32/cdkwin32.h"
 #endif
 
@@ -274,11 +274,11 @@ create_child_plug (guint32  xid,
   ctk_widget_show_all (window);
 
   if (ctk_widget_get_realized (window))
-#if defined (GDK_WINDOWING_X11)
-    return GDK_WINDOW_XID (ctk_widget_get_window (window));
-#elif defined (GDK_WINDOWING_WIN32)
-    return (guint32) GDK_WINDOW_HWND (ctk_widget_get_window (window));
-#elif defined (GDK_WINDOWING_BROADWAY)
+#if defined (CDK_WINDOWING_X11)
+    return CDK_WINDOW_XID (ctk_widget_get_window (window));
+#elif defined (CDK_WINDOWING_WIN32)
+    return (guint32) CDK_WINDOW_HWND (ctk_widget_get_window (window));
+#elif defined (CDK_WINDOWING_BROADWAY)
     return (guint32) 0; /* Child windows not supported */
 #endif
   else

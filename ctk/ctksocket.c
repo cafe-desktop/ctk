@@ -109,7 +109,7 @@
  * in CTK or vice versa.
  *
  * The #CtkPlug and #CtkSocket widgets are only available when CTK+
- * is compiled for the X11 platform and %GDK_WINDOWING_X11 is defined.
+ * is compiled for the X11 platform and %CDK_WINDOWING_X11 is defined.
  * They can only be used on a #CdkX11Display. To use #CtkPlug and
  * #CtkSocket, you need to include the `ctk/ctkx.h` header.
  */
@@ -368,7 +368,7 @@ ctk_socket_get_id (CtkSocket *socket)
   if (!ctk_widget_get_realized (CTK_WIDGET (socket)))
     ctk_widget_realize (CTK_WIDGET (socket));
 
-  return GDK_WINDOW_XID (ctk_widget_get_window (CTK_WIDGET (socket)));
+  return CDK_WINDOW_XID (ctk_widget_get_window (CTK_WIDGET (socket)));
 }
 
 /**
@@ -404,29 +404,29 @@ ctk_socket_realize (CtkWidget *widget)
   ctk_widget_set_realized (widget, TRUE);
 
   screen = ctk_widget_get_screen (widget);
-  if (!GDK_IS_X11_SCREEN (screen))
+  if (!CDK_IS_X11_SCREEN (screen))
     g_warning ("CtkSocket: only works under X11");
 
   ctk_widget_get_allocation (widget, &allocation);
 
-  attributes.window_type = GDK_WINDOW_CHILD;
+  attributes.window_type = CDK_WINDOW_CHILD;
   attributes.x = allocation.x;
   attributes.y = allocation.y;
   attributes.width = allocation.width;
   attributes.height = allocation.height;
-  attributes.wclass = GDK_INPUT_OUTPUT;
+  attributes.wclass = CDK_INPUT_OUTPUT;
   attributes.visual = ctk_widget_get_visual (widget);
-  attributes.event_mask = GDK_FOCUS_CHANGE_MASK;
+  attributes.event_mask = CDK_FOCUS_CHANGE_MASK;
 
-  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
+  attributes_mask = CDK_WA_X | CDK_WA_Y | CDK_WA_VISUAL;
 
   window = cdk_window_new (ctk_widget_get_parent_window (widget),
                            &attributes, attributes_mask);
   ctk_widget_set_window (widget, window);
   ctk_widget_register_window (widget, window);
 
-  XGetWindowAttributes (GDK_WINDOW_XDISPLAY (window),
-			GDK_WINDOW_XID (window),
+  XGetWindowAttributes (CDK_WINDOW_XDISPLAY (window),
+			CDK_WINDOW_XID (window),
 			&xattrs);
 
   /* Sooooo, it turns out that mozilla, as per the ctk2xt code selects
@@ -437,8 +437,8 @@ ctk_socket_realize (CtkWidget *widget)
      side children that selects for button press. However, we don't need
      this for CtkSocket, so we unselect it here, fixing the crashes in
      firefox. */
-  XSelectInput (GDK_WINDOW_XDISPLAY (window),
-		GDK_WINDOW_XID (window), 
+  XSelectInput (CDK_WINDOW_XDISPLAY (window),
+		CDK_WINDOW_XID (window), 
 		(xattrs.your_event_mask & ~ButtonPressMask) |
 		SubstructureNotifyMask | SubstructureRedirectMask);
 
@@ -509,8 +509,8 @@ ctk_socket_size_request (CtkSocket *socket)
   private->request_height = 1;
   scale = ctk_widget_get_scale_factor (CTK_WIDGET(socket));
 
-  if (XGetWMNormalHints (GDK_WINDOW_XDISPLAY (private->plug_window),
-			 GDK_WINDOW_XID (private->plug_window),
+  if (XGetWMNormalHints (CDK_WINDOW_XDISPLAY (private->plug_window),
+			 CDK_WINDOW_XID (private->plug_window),
 			 &hints, &supplied))
     {
       if (hints.flags & PMinSize)
@@ -590,8 +590,8 @@ ctk_socket_send_configure_event (CtkSocket *socket)
   memset (&xconfigure, 0, sizeof (xconfigure));
   xconfigure.type = ConfigureNotify;
 
-  xconfigure.event = GDK_WINDOW_XID (socket->priv->plug_window);
-  xconfigure.window = GDK_WINDOW_XID (socket->priv->plug_window);
+  xconfigure.event = CDK_WINDOW_XID (socket->priv->plug_window);
+  xconfigure.window = CDK_WINDOW_XID (socket->priv->plug_window);
 
   /* The ICCCM says that synthetic events should have root relative
    * coordinates. We still aren't really ICCCM compliant, since
@@ -614,8 +614,8 @@ ctk_socket_send_configure_event (CtkSocket *socket)
   xconfigure.override_redirect = False;
 
   cdk_x11_display_error_trap_push (display);
-  XSendEvent (GDK_WINDOW_XDISPLAY (socket->priv->plug_window),
-	      GDK_WINDOW_XID (socket->priv->plug_window),
+  XSendEvent (CDK_WINDOW_XDISPLAY (socket->priv->plug_window),
+	      CDK_WINDOW_XID (socket->priv->plug_window),
 	      False, NoEventMask, (XEvent *)&xconfigure);
   cdk_x11_display_error_trap_pop_ignored (display);
 }
@@ -696,9 +696,9 @@ ctk_socket_send_key_event (CtkSocket *socket,
   CdkScreen *screen = cdk_window_get_screen (socket->priv->plug_window);
 
   memset (&xkey, 0, sizeof (xkey));
-  xkey.type = (cdk_event->type == GDK_KEY_PRESS) ? KeyPress : KeyRelease;
-  xkey.window = GDK_WINDOW_XID (socket->priv->plug_window);
-  xkey.root = GDK_WINDOW_XID (cdk_screen_get_root_window (screen));
+  xkey.type = (cdk_event->type == CDK_KEY_PRESS) ? KeyPress : KeyRelease;
+  xkey.window = CDK_WINDOW_XID (socket->priv->plug_window);
+  xkey.root = CDK_WINDOW_XID (cdk_screen_get_root_window (screen));
   xkey.subwindow = None;
   xkey.time = cdk_event->key.time;
   xkey.x = 0;
@@ -710,8 +710,8 @@ ctk_socket_send_key_event (CtkSocket *socket,
   xkey.same_screen = True;/* FIXME ? */
 
   cdk_x11_display_error_trap_push (cdk_window_get_display (socket->priv->plug_window));
-  XSendEvent (GDK_WINDOW_XDISPLAY (socket->priv->plug_window),
-	      GDK_WINDOW_XID (socket->priv->plug_window),
+  XSendEvent (CDK_WINDOW_XDISPLAY (socket->priv->plug_window),
+	      CDK_WINDOW_XID (socket->priv->plug_window),
 	      False,
 	      (mask_key_presses ? KeyPressMask : NoEventMask),
 	      (XEvent *)&xkey);
@@ -730,7 +730,7 @@ activate_key (CtkAccelGroup  *accel_group,
   CtkSocket *socket = g_object_get_data (G_OBJECT (accel_group), "ctk-socket");
   gboolean retval = FALSE;
 
-  if (cdk_event && cdk_event->type == GDK_KEY_PRESS && socket->priv->plug_window)
+  if (cdk_event && cdk_event->type == CDK_KEY_PRESS && socket->priv->plug_window)
     {
       ctk_socket_send_key_event (socket, cdk_event, FALSE);
       retval = TRUE;
@@ -1051,7 +1051,7 @@ ctk_socket_add_window (CtkSocket       *socket,
   unsigned long version;
   unsigned long flags;
 
-  if (GDK_IS_X11_DISPLAY (display))
+  if (CDK_IS_X11_DISPLAY (display))
     private->plug_window = cdk_x11_window_lookup_for_display (display, xid);
   else
     private->plug_window = NULL;
@@ -1085,7 +1085,7 @@ ctk_socket_add_window (CtkSocket       *socket,
 
       if (!private->plug_window)
         {
-          if (GDK_IS_X11_DISPLAY (display))
+          if (CDK_IS_X11_DISPLAY (display))
             private->plug_window = cdk_x11_window_foreign_new_for_display (display, xid);
           if (!private->plug_window) /* was deleted before we could get it */
             {
@@ -1094,8 +1094,8 @@ ctk_socket_add_window (CtkSocket       *socket,
             }
         }
 
-      XSelectInput (GDK_DISPLAY_XDISPLAY (display),
-                    GDK_WINDOW_XID (private->plug_window),
+      XSelectInput (CDK_DISPLAY_XDISPLAY (display),
+                    CDK_WINDOW_XID (private->plug_window),
                     StructureNotifyMask | PropertyChangeMask);
 
       if (cdk_x11_display_error_trap_pop (display))
@@ -1147,14 +1147,14 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
 #ifdef HAVE_XFIXES
       cdk_x11_display_error_trap_push (display);
-      XFixesChangeSaveSet (GDK_DISPLAY_XDISPLAY (display),
-                           GDK_WINDOW_XID (private->plug_window),
+      XFixesChangeSaveSet (CDK_DISPLAY_XDISPLAY (display),
+                           CDK_WINDOW_XID (private->plug_window),
                            SetModeInsert, SaveSetRoot, SaveSetUnmap);
       cdk_x11_display_error_trap_pop_ignored (display);
 #endif
       _ctk_xembed_send_message (private->plug_window,
                                 XEMBED_EMBEDDED_NOTIFY, 0,
-                                GDK_WINDOW_XID (ctk_widget_get_window (widget)),
+                                CDK_WINDOW_XID (ctk_widget_get_window (widget)),
                                 private->xembed_version);
 
       socket_update_active (socket);
@@ -1297,8 +1297,8 @@ xembed_get_info (CdkWindow     *window,
   int status;
   
   cdk_x11_display_error_trap_push (display);
-  status = XGetWindowProperty (GDK_DISPLAY_XDISPLAY (display),
-			       GDK_WINDOW_XID (window),
+  status = XGetWindowProperty (CDK_DISPLAY_XDISPLAY (display),
+			       CDK_WINDOW_XID (window),
 			       xembed_info_atom,
 			       0, 2, False,
 			       xembed_info_atom, &type, &format,
@@ -1398,8 +1398,8 @@ _ctk_socket_accessible_embed (CtkWidget *socket, CdkWindow *window)
   int status;
 
   cdk_x11_display_error_trap_push (display);
-  status = XGetWindowProperty (GDK_DISPLAY_XDISPLAY (display),
-			       GDK_WINDOW_XID (window),
+  status = XGetWindowProperty (CDK_DISPLAY_XDISPLAY (display),
+			       CDK_WINDOW_XID (window),
 			       net_at_spi_path_atom,
 			       0, INT_MAX / 4, False,
 			       net_at_spi_path_atom, &type, &format,
@@ -1454,7 +1454,7 @@ ctk_socket_filter_func (CdkXEvent *cdk_xevent,
   socket = CTK_SOCKET (data);
   private = socket->priv;
 
-  return_val = GDK_FILTER_CONTINUE;
+  return_val = CDK_FILTER_CONTINUE;
 
   if (private->plug_widget)
     return return_val;
@@ -1477,7 +1477,7 @@ ctk_socket_filter_func (CdkXEvent *cdk_xevent,
 				 xevent->xclient.data.l[0]);
 	  _ctk_xembed_pop_message ();
 	  
-	  return_val = GDK_FILTER_REMOVE;
+	  return_val = CDK_FILTER_REMOVE;
 	}
       break;
 
@@ -1495,7 +1495,7 @@ ctk_socket_filter_func (CdkXEvent *cdk_xevent,
 	      }
 	  }
 	
-	return_val = GDK_FILTER_REMOVE;
+	return_val = CDK_FILTER_REMOVE;
 	
 	break;
       }
@@ -1525,7 +1525,7 @@ ctk_socket_filter_func (CdkXEvent *cdk_xevent,
 	      }
 	    /* Ignore stacking requests. */
 	    
-	    return_val = GDK_FILTER_REMOVE;
+	    return_val = CDK_FILTER_REMOVE;
 	  }
 	break;
       }
@@ -1537,7 +1537,7 @@ ctk_socket_filter_func (CdkXEvent *cdk_xevent,
 	/* Note that we get destroy notifies both from SubstructureNotify on
 	 * our window and StructureNotify on socket->plug_window
 	 */
-	if (private->plug_window && (xdwe->window == GDK_WINDOW_XID (private->plug_window)))
+	if (private->plug_window && (xdwe->window == CDK_WINDOW_XID (private->plug_window)))
 	  {
 	    gboolean result;
 	    
@@ -1552,7 +1552,7 @@ ctk_socket_filter_func (CdkXEvent *cdk_xevent,
 	      ctk_widget_destroy (widget);
 	    g_object_unref (widget);
 	    
-	    return_val = GDK_FILTER_REMOVE;
+	    return_val = CDK_FILTER_REMOVE;
 	  }
 	break;
       }
@@ -1562,10 +1562,10 @@ ctk_socket_filter_func (CdkXEvent *cdk_xevent,
 	{
 	  ctk_socket_claim_focus (socket, TRUE);
 	}
-      return_val = GDK_FILTER_REMOVE;
+      return_val = CDK_FILTER_REMOVE;
       break;
     case FocusOut:
-      return_val = GDK_FILTER_REMOVE;
+      return_val = CDK_FILTER_REMOVE;
       break;
     case MapRequest:
       if (!private->plug_window)
@@ -1578,12 +1578,12 @@ ctk_socket_filter_func (CdkXEvent *cdk_xevent,
 	  CTK_NOTE (PLUGSOCKET, g_message ("CtkSocket - Map Request"));
 
 	  ctk_socket_handle_map_request (socket);
-	  return_val = GDK_FILTER_REMOVE;
+	  return_val = CDK_FILTER_REMOVE;
 	}
       break;
     case PropertyNotify:
       if (private->plug_window &&
-	  xevent->xproperty.window == GDK_WINDOW_XID (private->plug_window))
+	  xevent->xproperty.window == CDK_WINDOW_XID (private->plug_window))
 	{
 	  CdkDragProtocol protocol;
 
@@ -1592,7 +1592,7 @@ ctk_socket_filter_func (CdkXEvent *cdk_xevent,
 	      CTK_NOTE (PLUGSOCKET, g_message ("CtkSocket - received PropertyNotify for plug's WM_NORMAL_HINTS"));
 	      private->have_size = FALSE;
 	      ctk_widget_queue_resize (widget);
-	      return_val = GDK_FILTER_REMOVE;
+	      return_val = CDK_FILTER_REMOVE;
 	    }
 	  else if ((xevent->xproperty.atom == cdk_x11_get_xatom_by_name_for_display (display, "XdndAware")) ||
 	      (xevent->xproperty.atom == cdk_x11_get_xatom_by_name_for_display (display, "_MOTIF_DRAG_RECEIVER_INFO")))
@@ -1607,7 +1607,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 G_GNUC_END_IGNORE_DEPRECATIONS
 
 	      cdk_x11_display_error_trap_pop_ignored (display);
-	      return_val = GDK_FILTER_REMOVE;
+	      return_val = CDK_FILTER_REMOVE;
 	    }
 	  else if (xevent->xproperty.atom == cdk_x11_get_xatom_by_name_for_display (display, "_XEMBED_INFO"))
 	    {
@@ -1632,7 +1632,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 			}
 		    }
 		}
-	      return_val = GDK_FILTER_REMOVE;
+	      return_val = CDK_FILTER_REMOVE;
 	    }
 	}
       break;
@@ -1645,7 +1645,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
 	CTK_NOTE (PLUGSOCKET, g_message ("CtkSocket - ReparentNotify received"));
 	if (!private->plug_window &&
-            xre->parent == GDK_WINDOW_XID (window))
+            xre->parent == CDK_WINDOW_XID (window))
 	  {
 	    ctk_socket_add_window (socket, xre->window, FALSE);
 	    
@@ -1654,13 +1654,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		CTK_NOTE (PLUGSOCKET, g_message ("CtkSocket - window reparented"));
 	      }
 	    
-	    return_val = GDK_FILTER_REMOVE;
+	    return_val = CDK_FILTER_REMOVE;
 	  }
         else
           {
             if (private->plug_window &&
-                xre->window == GDK_WINDOW_XID (private->plug_window) &&
-                xre->parent != GDK_WINDOW_XID (window))
+                xre->window == CDK_WINDOW_XID (private->plug_window) &&
+                xre->parent != CDK_WINDOW_XID (window))
               {
                 gboolean result;
 
@@ -1672,7 +1672,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                   ctk_widget_destroy (widget);
                 g_object_unref (widget);
 
-                return_val = GDK_FILTER_REMOVE;
+                return_val = CDK_FILTER_REMOVE;
               }
           }
 
@@ -1680,12 +1680,12 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       }
     case UnmapNotify:
       if (private->plug_window &&
-	  xevent->xunmap.window == GDK_WINDOW_XID (private->plug_window))
+	  xevent->xunmap.window == CDK_WINDOW_XID (private->plug_window))
 	{
 	  CTK_NOTE (PLUGSOCKET, g_message ("CtkSocket - Unmap notify"));
 
 	  ctk_socket_unmap_notify (socket);
-	  return_val = GDK_FILTER_REMOVE;
+	  return_val = CDK_FILTER_REMOVE;
 	}
       break;
       

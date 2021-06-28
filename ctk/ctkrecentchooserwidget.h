@@ -59,11 +59,11 @@ struct _CtkRecentChooserWidgetClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType      ctk_recent_chooser_widget_get_type        (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *ctk_recent_chooser_widget_new             (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *ctk_recent_chooser_widget_new_for_manager (CtkRecentManager *manager);
 
 G_END_DECLS

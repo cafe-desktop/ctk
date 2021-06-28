@@ -49,7 +49,7 @@ struct _CtkLabelAccessibleClass
   CtkWidgetAccessibleClass parent_class;
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType ctk_label_accessible_get_type (void);
 
 G_END_DECLS

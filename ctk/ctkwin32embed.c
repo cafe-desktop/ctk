@@ -71,7 +71,7 @@ _ctk_win32_embed_send (CdkWindow               *recipient,
 		       WPARAM		        wparam,
 		       LPARAM			lparam)
 {
-  PostMessage (GDK_WINDOW_HWND (recipient),
+  PostMessage (CDK_WINDOW_HWND (recipient),
 	       _ctk_win32_embed_message_type (message),
 	       wparam, lparam);
 }
@@ -86,7 +86,7 @@ _ctk_win32_embed_send_focus_message (CdkWindow               *recipient,
   if (!recipient)
     return;
   
-  g_return_if_fail (GDK_IS_WINDOW (recipient));
+  g_return_if_fail (CDK_IS_WINDOW (recipient));
   g_return_if_fail (message == CTK_WIN32_EMBED_FOCUS_IN ||
 		    message == CTK_WIN32_EMBED_FOCUS_NEXT ||
 		    message == CTK_WIN32_EMBED_FOCUS_PREV);

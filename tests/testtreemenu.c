@@ -20,7 +20,7 @@ create_color_pixbuf (const char *color)
   if (!cdk_rgba_parse (color, &col))
     return NULL;
   
-  pixbuf = cdk_pixbuf_new (GDK_COLORSPACE_RGB,
+  pixbuf = cdk_pixbuf_new (CDK_COLORSPACE_RGB,
 			   FALSE, 8,
 			   16, 16);
   
@@ -49,7 +49,7 @@ create_menu_grid_demo (void)
   CtkCellRenderer *cell = ctk_cell_renderer_pixbuf_new ();
   CtkListStore *store;
   
-  store = ctk_list_store_new (1, GDK_TYPE_PIXBUF);
+  store = ctk_list_store_new (1, CDK_TYPE_PIXBUF);
 
   menu = ctk_tree_menu_new_full (NULL, CTK_TREE_MODEL (store), NULL);
   ctk_cell_layout_pack_start (CTK_CELL_LAYOUT (menu), cell, TRUE);

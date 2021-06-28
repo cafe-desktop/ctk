@@ -235,7 +235,7 @@ _cdk_x11_send_client_message_async (CdkDisplay           *display,
   Display *dpy;
   SendEventState *state;
   
-  dpy = GDK_DISPLAY_XDISPLAY (display);
+  dpy = CDK_DISPLAY_XDISPLAY (display);
 
   state = g_new (SendEventState, 1);
 
@@ -549,7 +549,7 @@ _cdk_x11_get_window_child_info (CdkDisplay       *display,
   *children = NULL;
   *nchildren = 0;
   
-  dpy = GDK_DISPLAY_XDISPLAY (display);
+  dpy = CDK_DISPLAY_XDISPLAY (display);
   if (get_wm_state)
     wm_state_atom = cdk_x11_get_xatom_by_name_for_display (display, "WM_STATE");
   else
@@ -723,7 +723,7 @@ _cdk_x11_roundtrip_async (CdkDisplay           *display,
   Display *dpy;
   RoundtripState *state;
   
-  dpy = GDK_DISPLAY_XDISPLAY (display);
+  dpy = CDK_DISPLAY_XDISPLAY (display);
 
   state = g_new (RoundtripState, 1);
 

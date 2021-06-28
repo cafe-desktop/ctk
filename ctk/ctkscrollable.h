@@ -46,30 +46,30 @@ struct _CtkScrollableInterface
 };
 
 /* Public API */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType                ctk_scrollable_get_type               (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkAdjustment       *ctk_scrollable_get_hadjustment        (CtkScrollable       *scrollable);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                 ctk_scrollable_set_hadjustment        (CtkScrollable       *scrollable,
 							    CtkAdjustment       *hadjustment);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkAdjustment       *ctk_scrollable_get_vadjustment        (CtkScrollable       *scrollable);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                 ctk_scrollable_set_vadjustment        (CtkScrollable       *scrollable,
 							    CtkAdjustment       *vadjustment);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkScrollablePolicy  ctk_scrollable_get_hscroll_policy     (CtkScrollable       *scrollable);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                 ctk_scrollable_set_hscroll_policy     (CtkScrollable       *scrollable,
 							    CtkScrollablePolicy  policy);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkScrollablePolicy  ctk_scrollable_get_vscroll_policy     (CtkScrollable       *scrollable);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                 ctk_scrollable_set_vscroll_policy     (CtkScrollable       *scrollable,
 							    CtkScrollablePolicy  policy);
 
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 gboolean             ctk_scrollable_get_border             (CtkScrollable       *scrollable,
                                                             CtkBorder           *border);
 

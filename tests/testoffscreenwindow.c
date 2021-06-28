@@ -75,7 +75,7 @@ main (int argc, char **argv)
                     G_CALLBACK (offscreen_damage),
                     da);
 
-  ctk_widget_add_events (da, GDK_BUTTON_PRESS_MASK);
+  ctk_widget_add_events (da, CDK_BUTTON_PRESS_MASK);
   g_signal_connect (da, "button_press_event", G_CALLBACK (da_button_press),
                     button);
 

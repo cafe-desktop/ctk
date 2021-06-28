@@ -79,9 +79,9 @@ ctk_text_buffer_register_serialize_format (CtkTextBuffer              *buffer,
   GList   *formats;
   CdkAtom  atom;
 
-  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), GDK_NONE);
-  g_return_val_if_fail (mime_type != NULL && *mime_type != '\0', GDK_NONE);
-  g_return_val_if_fail (function != NULL, GDK_NONE);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), CDK_NONE);
+  g_return_val_if_fail (mime_type != NULL && *mime_type != '\0', CDK_NONE);
+  g_return_val_if_fail (function != NULL, CDK_NONE);
 
   formats = g_object_steal_qdata (G_OBJECT (buffer), serialize_quark ());
 
@@ -133,8 +133,8 @@ ctk_text_buffer_register_serialize_tagset (CtkTextBuffer *buffer,
   gchar   *mime_type = "application/x-ctk-text-buffer-rich-text";
   CdkAtom  format;
 
-  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), GDK_NONE);
-  g_return_val_if_fail (tagset_name == NULL || *tagset_name != '\0', GDK_NONE);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), CDK_NONE);
+  g_return_val_if_fail (tagset_name == NULL || *tagset_name != '\0', CDK_NONE);
 
   if (tagset_name)
     mime_type =
@@ -177,9 +177,9 @@ ctk_text_buffer_register_deserialize_format (CtkTextBuffer                *buffe
   GList   *formats;
   CdkAtom  atom;
 
-  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), GDK_NONE);
-  g_return_val_if_fail (mime_type != NULL && *mime_type != '\0', GDK_NONE);
-  g_return_val_if_fail (function != NULL, GDK_NONE);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), CDK_NONE);
+  g_return_val_if_fail (mime_type != NULL && *mime_type != '\0', CDK_NONE);
+  g_return_val_if_fail (function != NULL, CDK_NONE);
 
   formats = g_object_steal_qdata (G_OBJECT (buffer), deserialize_quark ());
 
@@ -217,8 +217,8 @@ ctk_text_buffer_register_deserialize_tagset (CtkTextBuffer *buffer,
   gchar   *mime_type = "application/x-ctk-text-buffer-rich-text";
   CdkAtom  format;
 
-  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), GDK_NONE);
-  g_return_val_if_fail (tagset_name == NULL || *tagset_name != '\0', GDK_NONE);
+  g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), CDK_NONE);
+  g_return_val_if_fail (tagset_name == NULL || *tagset_name != '\0', CDK_NONE);
 
   if (tagset_name)
     mime_type =
@@ -253,7 +253,7 @@ ctk_text_buffer_unregister_serialize_format (CtkTextBuffer *buffer,
   GList *formats;
 
   g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
-  g_return_if_fail (format != GDK_NONE);
+  g_return_if_fail (format != CDK_NONE);
 
   formats = g_object_steal_qdata (G_OBJECT (buffer), serialize_quark ());
 
@@ -283,7 +283,7 @@ ctk_text_buffer_unregister_deserialize_format (CtkTextBuffer *buffer,
   GList *formats;
 
   g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
-  g_return_if_fail (format != GDK_NONE);
+  g_return_if_fail (format != CDK_NONE);
 
   formats = g_object_steal_qdata (G_OBJECT (buffer), deserialize_quark ());
 
@@ -331,7 +331,7 @@ ctk_text_buffer_deserialize_set_can_create_tags (CtkTextBuffer *buffer,
   gchar *format_name;
 
   g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
-  g_return_if_fail (format != GDK_NONE);
+  g_return_if_fail (format != CDK_NONE);
 
   formats = g_object_get_qdata (G_OBJECT (buffer), deserialize_quark ());
 
@@ -374,7 +374,7 @@ ctk_text_buffer_deserialize_get_can_create_tags (CtkTextBuffer *buffer,
   gchar *format_name;
 
   g_return_val_if_fail (CTK_IS_TEXT_BUFFER (buffer), FALSE);
-  g_return_val_if_fail (format != GDK_NONE, FALSE);
+  g_return_val_if_fail (format != CDK_NONE, FALSE);
 
   formats = g_object_get_qdata (G_OBJECT (buffer), deserialize_quark ());
 
@@ -487,7 +487,7 @@ ctk_text_buffer_serialize (CtkTextBuffer     *register_buffer,
 
   g_return_val_if_fail (CTK_IS_TEXT_BUFFER (register_buffer), NULL);
   g_return_val_if_fail (CTK_IS_TEXT_BUFFER (content_buffer), NULL);
-  g_return_val_if_fail (format != GDK_NONE, NULL);
+  g_return_val_if_fail (format != CDK_NONE, NULL);
   g_return_val_if_fail (start != NULL, NULL);
   g_return_val_if_fail (end != NULL, NULL);
   g_return_val_if_fail (length != NULL, NULL);
@@ -548,7 +548,7 @@ ctk_text_buffer_deserialize (CtkTextBuffer  *register_buffer,
 
   g_return_val_if_fail (CTK_IS_TEXT_BUFFER (register_buffer), FALSE);
   g_return_val_if_fail (CTK_IS_TEXT_BUFFER (content_buffer), FALSE);
-  g_return_val_if_fail (format != GDK_NONE, FALSE);
+  g_return_val_if_fail (format != CDK_NONE, FALSE);
   g_return_val_if_fail (iter != NULL, FALSE);
   g_return_val_if_fail (data != NULL, FALSE);
   g_return_val_if_fail (length > 0, FALSE);

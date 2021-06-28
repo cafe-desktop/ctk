@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -27,7 +27,7 @@
 #include "cdkkeys.h"
 #include "cdktypes.h"
 
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
 #include "win32/cdkwin32.h"
 #include "win32/cdkprivate-win32.h"
 #endif
@@ -835,7 +835,7 @@ static const struct {
   /* Following items added to CTK, not in the xterm table */
 
   /* A few ASCII control characters */
-#ifndef GDK_WINDOWING_WIN32
+#ifndef CDK_WINDOWING_WIN32
   { 0xFF08 /* Backspace */, '\b' },
   { 0xFF09 /* Tab       */, '\t'  },
 #endif
@@ -843,7 +843,7 @@ static const struct {
   { 0xFF0A /* Linefeed  */, '\n' },
   { 0xFF0B /* Vert. Tab */, '\v' },
 
-#ifndef GDK_WINDOWING_WIN32
+#ifndef CDK_WINDOWING_WIN32
   { 0xFF0D /* Return    */, '\r' },
   { 0xFF1B /* Escape    */, '\033' },
 #endif
@@ -871,16 +871,16 @@ static const struct {
 
   /* End numeric keypad */
 
-#ifndef GDK_WINDOWING_WIN32
+#ifndef CDK_WINDOWING_WIN32
   { 0xFFFF /* Delete */, '\177' }
 #endif
 };
 
 /**
  * cdk_keyval_to_unicode:
- * @keyval: a GDK key symbol 
+ * @keyval: a CDK key symbol 
  * 
- * Convert from a GDK key symbol to the corresponding ISO10646 (Unicode)
+ * Convert from a CDK key symbol to the corresponding ISO10646 (Unicode)
  * character.
  * 
  * Returns: the corresponding unicode character, or 0 if there
@@ -903,11 +903,11 @@ cdk_keyval_to_unicode (guint keyval)
   if ((keyval & 0xff000000) == 0x01000000)
     return keyval & 0x00ffffff;
 
-#if defined(GDK_WINDOWING_WIN32)
-  if (GDK_IS_WIN32_DISPLAY (cdk_display_get_default ()) &&
+#if defined(CDK_WINDOWING_WIN32)
+  if (CDK_IS_WIN32_DISPLAY (cdk_display_get_default ()) &&
       keyval == 0xffae)
     {
-      CdkWin32Keymap *keymap = GDK_WIN32_KEYMAP (cdk_keymap_get_default ());
+      CdkWin32Keymap *keymap = CDK_WIN32_KEYMAP (cdk_keymap_get_default ());
 
       return (guint32) _cdk_win32_keymap_get_decimal_mark (keymap);
     }
@@ -1692,7 +1692,7 @@ static const struct {
  * 
  * Convert from a ISO10646 character to a key symbol.
  * 
- * Returns: the corresponding GDK key symbol, if one exists.
+ * Returns: the corresponding CDK key symbol, if one exists.
  *               or, if there is no corresponding symbol, 
  *               wc | 0x01000000
  **/

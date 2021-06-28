@@ -51,7 +51,7 @@ fill_model (CtkTreeModel *model)
     {
       CdkPixbuf *pb;
       size = g_random_int_range (20, 70);
-      pb = cdk_pixbuf_scale_simple (pixbuf, size, size, GDK_INTERP_NEAREST);
+      pb = cdk_pixbuf_scale_simple (pixbuf, size, size, CDK_INTERP_NEAREST);
 
       str = g_strdup_printf ("Icon %d", i);
       str2 = g_strdup_printf ("Icon <b>%d</b>", i);	
@@ -76,7 +76,7 @@ create_model (void)
 {
   CtkListStore *store;
   
-  store = ctk_list_store_new (5, GDK_TYPE_PIXBUF, G_TYPE_STRING, G_TYPE_INT, G_TYPE_STRING, G_TYPE_BOOLEAN);
+  store = ctk_list_store_new (5, CDK_TYPE_PIXBUF, G_TYPE_STRING, G_TYPE_INT, G_TYPE_STRING, G_TYPE_BOOLEAN);
 
   return CTK_TREE_MODEL (store);
 }
@@ -181,7 +181,7 @@ add_large (CtkWidget *button, CtkIconView *icon_list)
   pb = cdk_pixbuf_scale_simple (pixbuf, 
 				2 * cdk_pixbuf_get_width (pixbuf),
 				2 * cdk_pixbuf_get_height (pixbuf),
-				GDK_INTERP_BILINEAR);
+				CDK_INTERP_BILINEAR);
 
   str = g_strdup_printf ("Some really long text");
   ctk_list_store_append (store, &iter);
@@ -197,7 +197,7 @@ add_large (CtkWidget *button, CtkIconView *icon_list)
   pb = cdk_pixbuf_scale_simple (pixbuf, 
 				3 * cdk_pixbuf_get_width (pixbuf),
 				3 * cdk_pixbuf_get_height (pixbuf),
-				GDK_INTERP_BILINEAR);
+				CDK_INTERP_BILINEAR);
 
   str = g_strdup ("see how long text behaves when placed underneath "
 		  "an oversized icon which would allow for long lines");
@@ -214,7 +214,7 @@ add_large (CtkWidget *button, CtkIconView *icon_list)
   pb = cdk_pixbuf_scale_simple (pixbuf, 
 				3 * cdk_pixbuf_get_width (pixbuf),
 				3 * cdk_pixbuf_get_height (pixbuf),
-				GDK_INTERP_BILINEAR);
+				CDK_INTERP_BILINEAR);
 
   str = g_strdup ("short text");
   ctk_list_store_append (store, &iter);
@@ -389,7 +389,7 @@ button_press_event_handler (CtkWidget      *widget,
 {
   /* Ignore double-clicks and triple-clicks */
   if (cdk_event_triggers_context_menu ((CdkEvent *) event) &&
-      event->type == GDK_BUTTON_PRESS)
+      event->type == CDK_BUTTON_PRESS)
     {
       do_popup_menu (widget, event);
       return TRUE;
@@ -517,24 +517,24 @@ main (gint argc, gchar **argv)
   /* Allow DND between the icon view and the tree view */
   
   ctk_icon_view_enable_model_drag_source (CTK_ICON_VIEW (icon_list),
-					  GDK_BUTTON1_MASK,
+					  CDK_BUTTON1_MASK,
 					  item_targets,
 					  G_N_ELEMENTS (item_targets),
-					  GDK_ACTION_MOVE);
+					  CDK_ACTION_MOVE);
   ctk_icon_view_enable_model_drag_dest (CTK_ICON_VIEW (icon_list),
 					item_targets,
 					G_N_ELEMENTS (item_targets),
-					GDK_ACTION_MOVE);
+					CDK_ACTION_MOVE);
 
   ctk_tree_view_enable_model_drag_source (CTK_TREE_VIEW (tv),
-					  GDK_BUTTON1_MASK,
+					  CDK_BUTTON1_MASK,
 					  item_targets,
 					  G_N_ELEMENTS (item_targets),
-					  GDK_ACTION_MOVE);
+					  CDK_ACTION_MOVE);
   ctk_tree_view_enable_model_drag_dest (CTK_TREE_VIEW (tv),
 					item_targets,
 					G_N_ELEMENTS (item_targets),
-					GDK_ACTION_MOVE);
+					CDK_ACTION_MOVE);
 
 			      
   scrolled_window = ctk_scrolled_window_new (NULL, NULL);

@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  * Copyright (C) 1998-2002 Tor Lillqvist
  *
@@ -52,27 +52,27 @@ _cdk_win32_display_manager_atom_intern (CdkDisplayManager *manager,
   if (!retval)
     {
       if (strcmp (atom_name, "PRIMARY") == 0)
-	retval = GDK_SELECTION_PRIMARY;
+	retval = CDK_SELECTION_PRIMARY;
       else if (strcmp (atom_name, "SECONDARY") == 0)
-	retval = GDK_SELECTION_SECONDARY;
+	retval = CDK_SELECTION_SECONDARY;
       else if (strcmp (atom_name, "CLIPBOARD") == 0)
-	retval = GDK_SELECTION_CLIPBOARD;
+	retval = CDK_SELECTION_CLIPBOARD;
       else if (strcmp (atom_name, "ATOM") == 0)
-	retval = GDK_SELECTION_TYPE_ATOM;
+	retval = CDK_SELECTION_TYPE_ATOM;
       else if (strcmp (atom_name, "BITMAP") == 0)
-	retval = GDK_SELECTION_TYPE_BITMAP;
+	retval = CDK_SELECTION_TYPE_BITMAP;
       else if (strcmp (atom_name, "COLORMAP") == 0)
-	retval = GDK_SELECTION_TYPE_COLORMAP;
+	retval = CDK_SELECTION_TYPE_COLORMAP;
       else if (strcmp (atom_name, "DRAWABLE") == 0)
-	retval = GDK_SELECTION_TYPE_DRAWABLE;
+	retval = CDK_SELECTION_TYPE_DRAWABLE;
       else if (strcmp (atom_name, "INTEGER") == 0)
-	retval = GDK_SELECTION_TYPE_INTEGER;
+	retval = CDK_SELECTION_TYPE_INTEGER;
       else if (strcmp (atom_name, "PIXMAP") == 0)
-	retval = GDK_SELECTION_TYPE_PIXMAP;
+	retval = CDK_SELECTION_TYPE_PIXMAP;
       else if (strcmp (atom_name, "WINDOW") == 0)
-	retval = GDK_SELECTION_TYPE_WINDOW;
+	retval = CDK_SELECTION_TYPE_WINDOW;
       else if (strcmp (atom_name, "STRING") == 0)
-	retval = GDK_SELECTION_TYPE_STRING;
+	retval = CDK_SELECTION_TYPE_STRING;
       else
 	{
 	  win32_atom = GlobalAddAtom (atom_name);
@@ -93,18 +93,18 @@ _cdk_win32_display_manager_get_atom_name (CdkDisplayManager *manager,
   ATOM win32_atom;
   gchar name[256];
 
-  if (GDK_NONE == atom) return g_strdup ("<none>");
-  else if (GDK_SELECTION_PRIMARY == atom) return g_strdup ("PRIMARY");
-  else if (GDK_SELECTION_SECONDARY == atom) return g_strdup ("SECONDARY");
-  else if (GDK_SELECTION_CLIPBOARD == atom) return g_strdup ("CLIPBOARD");
-  else if (GDK_SELECTION_TYPE_ATOM == atom) return g_strdup ("ATOM");
-  else if (GDK_SELECTION_TYPE_BITMAP == atom) return g_strdup ("BITMAP");
-  else if (GDK_SELECTION_TYPE_COLORMAP == atom) return g_strdup ("COLORMAP");
-  else if (GDK_SELECTION_TYPE_DRAWABLE == atom) return g_strdup ("DRAWABLE");
-  else if (GDK_SELECTION_TYPE_INTEGER == atom) return g_strdup ("INTEGER");
-  else if (GDK_SELECTION_TYPE_PIXMAP == atom) return g_strdup ("PIXMAP");
-  else if (GDK_SELECTION_TYPE_WINDOW == atom) return g_strdup ("WINDOW");
-  else if (GDK_SELECTION_TYPE_STRING == atom) return g_strdup ("STRING");
+  if (CDK_NONE == atom) return g_strdup ("<none>");
+  else if (CDK_SELECTION_PRIMARY == atom) return g_strdup ("PRIMARY");
+  else if (CDK_SELECTION_SECONDARY == atom) return g_strdup ("SECONDARY");
+  else if (CDK_SELECTION_CLIPBOARD == atom) return g_strdup ("CLIPBOARD");
+  else if (CDK_SELECTION_TYPE_ATOM == atom) return g_strdup ("ATOM");
+  else if (CDK_SELECTION_TYPE_BITMAP == atom) return g_strdup ("BITMAP");
+  else if (CDK_SELECTION_TYPE_COLORMAP == atom) return g_strdup ("COLORMAP");
+  else if (CDK_SELECTION_TYPE_DRAWABLE == atom) return g_strdup ("DRAWABLE");
+  else if (CDK_SELECTION_TYPE_INTEGER == atom) return g_strdup ("INTEGER");
+  else if (CDK_SELECTION_TYPE_PIXMAP == atom) return g_strdup ("PIXMAP");
+  else if (CDK_SELECTION_TYPE_WINDOW == atom) return g_strdup ("WINDOW");
+  else if (CDK_SELECTION_TYPE_STRING == atom) return g_strdup ("STRING");
 
   win32_atom = GPOINTER_TO_UINT (atom);
 
@@ -128,9 +128,9 @@ _cdk_win32_window_get_property (CdkWindow   *window,
 		  guchar     **data)
 {
   g_return_val_if_fail (window != NULL, FALSE);
-  g_return_val_if_fail (GDK_IS_WINDOW (window), FALSE);
+  g_return_val_if_fail (CDK_IS_WINDOW (window), FALSE);
 
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     return FALSE;
 
   g_warning ("cdk_property_get: Not implemented");
@@ -150,23 +150,23 @@ _cdk_win32_window_change_property (CdkWindow         *window,
   CdkWin32Selection *win32_sel = _cdk_win32_selection_get ();
 
   g_return_if_fail (window != NULL);
-  g_return_if_fail (GDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_WINDOW (window));
 
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     return;
 
-  GDK_NOTE (DND, {
+  CDK_NOTE (DND, {
       gchar *prop_name = cdk_atom_name (property);
       gchar *type_name = cdk_atom_name (type);
       gchar *datastring = _cdk_win32_data_to_string (data, MIN (10, format*nelements/8));
 
       g_print ("cdk_property_change: %p %s %s %s %d*%d bits: %s\n",
-	       GDK_WINDOW_HWND (window),
+	       CDK_WINDOW_HWND (window),
 	       prop_name,
 	       type_name,
-	       (mode == GDK_PROP_MODE_REPLACE ? "REPLACE" :
-		(mode == GDK_PROP_MODE_PREPEND ? "PREPEND" :
-		 (mode == GDK_PROP_MODE_APPEND ? "APPEND" :
+	       (mode == CDK_PROP_MODE_REPLACE ? "REPLACE" :
+		(mode == CDK_PROP_MODE_PREPEND ? "PREPEND" :
+		 (mode == CDK_PROP_MODE_APPEND ? "APPEND" :
 		  "???"))),
 	       format, nelements,
 	       datastring);
@@ -177,8 +177,8 @@ _cdk_win32_window_change_property (CdkWindow         *window,
 
 #ifndef G_DISABLE_CHECKS
   /* We should never come here for these types */
-  if (G_UNLIKELY (type == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_COMPOUND_TEXT) ||
-                  type == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_SAVE_TARGETS)))
+  if (G_UNLIKELY (type == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_COMPOUND_TEXT) ||
+                  type == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_SAVE_TARGETS)))
     {
       g_return_if_fail_warning (G_LOG_DOMAIN,
                                 G_STRFUNC,
@@ -187,9 +187,9 @@ _cdk_win32_window_change_property (CdkWindow         *window,
     }
 #endif
 
-  if (property == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_GDK_SELECTION) ||
-      property == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_OLE2_DND) ||
-      property == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_LOCAL_DND_SELECTION))
+  if (property == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_CDK_SELECTION) ||
+      property == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_OLE2_DND) ||
+      property == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_LOCAL_DND_SELECTION))
     {
       _cdk_win32_selection_property_change (win32_sel,
                                             window,
@@ -211,21 +211,21 @@ _cdk_win32_window_delete_property (CdkWindow *window,
   gchar *prop_name;
 
   g_return_if_fail (window != NULL);
-  g_return_if_fail (GDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_WINDOW (window));
 
-  GDK_NOTE (DND, {
+  CDK_NOTE (DND, {
       prop_name = cdk_atom_name (property);
 
       g_print ("cdk_property_delete: %p %s\n",
-	       GDK_WINDOW_HWND (window),
+	       CDK_WINDOW_HWND (window),
 	       prop_name);
       g_free (prop_name);
     });
 
-  if (property == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_GDK_SELECTION) ||
-      property == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_OLE2_DND))
+  if (property == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_CDK_SELECTION) ||
+      property == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_OLE2_DND))
     _cdk_selection_property_delete (window);
-  else if (property == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_WM_TRANSIENT_FOR))
+  else if (property == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_WM_TRANSIENT_FOR))
     {
       CdkScreen *screen;
 
@@ -310,7 +310,7 @@ _cdk_win32_screen_get_setting (CdkScreen   *screen,
                         const gchar *name,
                         GValue      *value)
 {
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), FALSE);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), FALSE);
 
   /*
    * XXX : if these values get changed through the Windoze UI the
@@ -319,51 +319,51 @@ _cdk_win32_screen_get_setting (CdkScreen   *screen,
   if (strcmp ("ctk-double-click-time", name) == 0)
     {
       gint i = GetDoubleClickTime ();
-      GDK_NOTE(MISC, g_print("cdk_screen_get_setting(\"%s\") : %d\n", name, i));
+      CDK_NOTE(MISC, g_print("cdk_screen_get_setting(\"%s\") : %d\n", name, i));
       g_value_set_int (value, i);
       return TRUE;
     }
   else if (strcmp ("ctk-double-click-distance", name) == 0)
     {
       gint i = MAX(GetSystemMetrics (SM_CXDOUBLECLK), GetSystemMetrics (SM_CYDOUBLECLK));
-      GDK_NOTE(MISC, g_print("cdk_screen_get_setting(\"%s\") : %d\n", name, i));
+      CDK_NOTE(MISC, g_print("cdk_screen_get_setting(\"%s\") : %d\n", name, i));
       g_value_set_int (value, i);
       return TRUE;
     }
   else if (strcmp ("ctk-dnd-drag-threshold", name) == 0)
     {
       gint i = MAX(GetSystemMetrics (SM_CXDRAG), GetSystemMetrics (SM_CYDRAG));
-      GDK_NOTE(MISC, g_print("cdk_screen_get_setting(\"%s\") : %d\n", name, i));
+      CDK_NOTE(MISC, g_print("cdk_screen_get_setting(\"%s\") : %d\n", name, i));
       g_value_set_int (value, i);
       return TRUE;
     }
   else if (strcmp ("ctk-split-cursor", name) == 0)
     {
-      GDK_NOTE(MISC, g_print("cdk_screen_get_setting(\"%s\") : FALSE\n", name));
+      CDK_NOTE(MISC, g_print("cdk_screen_get_setting(\"%s\") : FALSE\n", name));
       g_value_set_boolean (value, FALSE);
       return TRUE;
     }
   else if (strcmp ("ctk-alternative-button-order", name) == 0)
     {
-      GDK_NOTE(MISC, g_print("cdk_screen_get_setting(\"%s\") : TRUE\n", name));
+      CDK_NOTE(MISC, g_print("cdk_screen_get_setting(\"%s\") : TRUE\n", name));
       g_value_set_boolean (value, TRUE);
       return TRUE;
     }
   else if (strcmp ("ctk-alternative-sort-arrows", name) == 0)
     {
-      GDK_NOTE(MISC, g_print("cdk_screen_get_setting(\"%s\") : TRUE\n", name));
+      CDK_NOTE(MISC, g_print("cdk_screen_get_setting(\"%s\") : TRUE\n", name));
       g_value_set_boolean (value, TRUE);
       return TRUE;
     }
   else if (strcmp ("ctk-shell-shows-desktop", name) == 0)
     {
-      GDK_NOTE(MISC, g_print("cdk_screen_get_setting(\"%s\") : TRUE\n", name));
+      CDK_NOTE(MISC, g_print("cdk_screen_get_setting(\"%s\") : TRUE\n", name));
       g_value_set_boolean (value, TRUE);
       return TRUE;
     }
   else if (strcmp ("ctk-xft-hinting", name) == 0)
     {
-      GDK_NOTE(MISC, g_print ("cdk_screen_get_setting(\"%s\") : 1\n", name));
+      CDK_NOTE(MISC, g_print ("cdk_screen_get_setting(\"%s\") : 1\n", name));
       g_value_set_int (value, 1);
       return TRUE;
     }
@@ -373,13 +373,13 @@ _cdk_win32_screen_get_setting (CdkScreen   *screen,
       SystemParametersInfoW (SPI_GETFONTSMOOTHING, 0, &val, 0);
       g_value_set_int (value, val ? 1 : 0);
 
-      GDK_NOTE(MISC, g_print ("cdk_screen_get_setting(\"%s\") : %u\n", name, val));
+      CDK_NOTE(MISC, g_print ("cdk_screen_get_setting(\"%s\") : %u\n", name, val));
       return TRUE;
     }
   else if (strcmp ("ctk-xft-hintstyle", name) == 0)
     {
       g_value_set_static_string (value, "hintfull");
-      GDK_NOTE(MISC, g_print ("cdk_screen_get_setting(\"%s\") : %s\n", name, g_value_get_string (value)));
+      CDK_NOTE(MISC, g_print ("cdk_screen_get_setting(\"%s\") : %s\n", name, g_value_get_string (value)));
       return TRUE;
     }
   else if (strcmp ("ctk-xft-rgba", name) == 0)
@@ -390,7 +390,7 @@ _cdk_win32_screen_get_setting (CdkScreen   *screen,
       rgb_value = _cdk_win32_monitor_get_pixel_structure (monitor);
       g_value_set_static_string (value, rgb_value);
 
-      GDK_NOTE(MISC, g_print ("cdk_screen_get_setting(\"%s\") : %s\n", name, g_value_get_string (value)));
+      CDK_NOTE(MISC, g_print ("cdk_screen_get_setting(\"%s\") : %s\n", name, g_value_get_string (value)));
       return TRUE;
     }
   else if (strcmp ("ctk-font-name", name) == 0)
@@ -408,7 +408,7 @@ _cdk_win32_screen_get_setting (CdkScreen   *screen,
               return FALSE;
             }
 
-          GDK_NOTE(MISC, g_print("cdk_screen_get_setting(\"%s\") : %s\n", name, font_name));
+          CDK_NOTE(MISC, g_print("cdk_screen_get_setting(\"%s\") : %s\n", name, font_name));
           g_value_take_string (value, font_name);
           return TRUE;
         }

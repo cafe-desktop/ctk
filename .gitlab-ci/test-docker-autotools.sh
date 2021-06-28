@@ -30,6 +30,6 @@ cd _build
 make -j${N_PROCS}
 
 if [ -n "${DO_DISTCHECK-}" ]; then
-  make -j${N_PROCS} check SKIP_GDKTARGET="echo Not actually running tests for now"
-  make -j${N_PROCS} distcheck SKIP_GDKTARGET="echo Not actually running tests for now"
+  make -j${N_PROCS} check SKIP_CDKTARGET="echo Not actually running tests for now"
+  make -j${N_PROCS} distcheck SKIP_CDKTARGET="echo Not actually running tests for now"
 fi

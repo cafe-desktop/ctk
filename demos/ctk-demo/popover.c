@@ -101,7 +101,7 @@ day_selected_cb (CtkCalendar *calendar,
 
   event = ctk_get_current_event ();
 
-  if (event->type != GDK_BUTTON_PRESS)
+  if (event->type != CDK_BUTTON_PRESS)
     return;
 
   cdk_window_coords_to_parent (event->button.window,

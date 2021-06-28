@@ -74,16 +74,16 @@ struct _CtkFixedChild
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType      ctk_fixed_get_type          (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_fixed_new               (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_fixed_put               (CtkFixed       *fixed,
                                         CtkWidget      *widget,
                                         gint            x,
                                         gint            y);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_fixed_move              (CtkFixed       *fixed,
                                         CtkWidget      *widget,
                                         gint            x,

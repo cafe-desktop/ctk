@@ -133,20 +133,20 @@ msgid "Default Display"
 msgstr "預設顯示區"
 
 #: cdk/cdkdisplaymanager.c:169
-msgid "The default display for GDK"
-msgstr "GDK 的預設顯示區"
+msgid "The default display for CDK"
+msgstr "CDK 的預設顯示區"
 
 #: cdk/cdkglcontext.c:318
-msgid "The GDK display used to create the GL context"
-msgstr "用來建立 GL 脈絡的 GDK 顯示"
+msgid "The CDK display used to create the GL context"
+msgstr "用來建立 GL 脈絡的 CDK 顯示"
 
 #: cdk/cdkglcontext.c:333 ctk/ctkwidget.c:1344
 msgid "Window"
 msgstr "視窗"
 
 #: cdk/cdkglcontext.c:334
-msgid "The GDK window bound to the GL context"
-msgstr "綁定到 GL 脈絡的 GDK 視窗"
+msgid "The CDK window bound to the GL context"
+msgstr "綁定到 GL 脈絡的 CDK 視窗"
 
 #: cdk/cdkglcontext.c:349
 msgid "Shared context"
@@ -9395,8 +9395,8 @@ msgstr "顏色設定檔使用的標題"
 #~ "Whether the sidebar includes a builtin shortcut to  the Trash location"
 #~ msgstr "側邊欄是否包含內建的「回收筒位置」捷徑"
 
-#~ msgid "The GDK display the context is from"
-#~ msgstr "脈絡的 GDK 顯示"
+#~ msgid "The CDK display the context is from"
+#~ msgstr "脈絡的 CDK 顯示"
 
 #~ msgid "Profile"
 #~ msgstr "設定檔"

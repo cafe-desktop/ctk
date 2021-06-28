@@ -1,5 +1,5 @@
-#ifndef __GDK_BROADWAY_SERVER__
-#define __GDK_BROADWAY_SERVER__
+#ifndef __CDK_BROADWAY_SERVER__
+#define __CDK_BROADWAY_SERVER__
 
 #include <cdk/cdktypes.h>
 #include "broadway-protocol.h"
@@ -7,12 +7,12 @@
 typedef struct _CdkBroadwayServer CdkBroadwayServer;
 typedef struct _CdkBroadwayServerClass CdkBroadwayServerClass;
 
-#define GDK_TYPE_BROADWAY_SERVER              (cdk_broadway_server_get_type())
-#define GDK_BROADWAY_SERVER(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_BROADWAY_SERVER, CdkBroadwayServer))
-#define GDK_BROADWAY_SERVER_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_BROADWAY_SERVER, CdkBroadwayServerClass))
-#define GDK_IS_BROADWAY_SERVER(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_BROADWAY_SERVER))
-#define GDK_IS_BROADWAY_SERVER_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_BROADWAY_SERVER))
-#define GDK_BROADWAY_SERVER_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_BROADWAY_SERVER, CdkBroadwayServerClass))
+#define CDK_TYPE_BROADWAY_SERVER              (cdk_broadway_server_get_type())
+#define CDK_BROADWAY_SERVER(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), CDK_TYPE_BROADWAY_SERVER, CdkBroadwayServer))
+#define CDK_BROADWAY_SERVER_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CDK_TYPE_BROADWAY_SERVER, CdkBroadwayServerClass))
+#define CDK_IS_BROADWAY_SERVER(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), CDK_TYPE_BROADWAY_SERVER))
+#define CDK_IS_BROADWAY_SERVER_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CDK_TYPE_BROADWAY_SERVER))
+#define CDK_BROADWAY_SERVER_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CDK_TYPE_BROADWAY_SERVER, CdkBroadwayServerClass))
 
 CdkBroadwayServer *_cdk_broadway_server_new                      (const char         *display,
 								  GError            **error);
@@ -72,4 +72,4 @@ gboolean           _cdk_broadway_server_window_move_resize       (CdkBroadwaySer
 								  int                 width,
 								  int                 height);
 
-#endif /* __GDK_BROADWAY_SERVER__ */
+#endif /* __CDK_BROADWAY_SERVER__ */

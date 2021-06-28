@@ -50,18 +50,18 @@ struct _CtkContainerCellAccessibleClass
   CtkCellAccessibleClass parent_class;
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType                       ctk_container_cell_accessible_get_type     (void);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkContainerCellAccessible *ctk_container_cell_accessible_new          (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                        ctk_container_cell_accessible_add_child    (CtkContainerCellAccessible *container,
                                                                         CtkCellAccessible          *child);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                        ctk_container_cell_accessible_remove_child (CtkContainerCellAccessible *container,
                                                                         CtkCellAccessible          *child);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GList                      *ctk_container_cell_accessible_get_children  (CtkContainerCellAccessible *container);
 
 G_END_DECLS

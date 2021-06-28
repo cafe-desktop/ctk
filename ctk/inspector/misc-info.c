@@ -384,7 +384,7 @@ update_info (gpointer data)
       update_focus_widget (sl);
     }
 
-  if (GDK_IS_FRAME_CLOCK (sl->priv->object))
+  if (CDK_IS_FRAME_CLOCK (sl->priv->object))
     {
       CdkFrameClock *clock;
       gint64 frame;
@@ -394,7 +394,7 @@ update_info (gpointer data)
       gint64 previous_frame_time;
       CdkFrameTimings *previous_timings;
 
-      clock = GDK_FRAME_CLOCK (sl->priv->object);
+      clock = CDK_FRAME_CLOCK (sl->priv->object);
       frame = cdk_frame_clock_get_frame_counter (clock);
       frame_time = cdk_frame_clock_get_frame_time (clock);
 
@@ -510,7 +510,7 @@ ctk_inspector_misc_info_set_object (CtkInspectorMiscInfo *sl,
       ctk_widget_hide (sl->priv->focus_widget_row);
     }
 
-  if (GDK_IS_FRAME_CLOCK (object))
+  if (CDK_IS_FRAME_CLOCK (object))
     {
       ctk_widget_show (sl->priv->framecount_row);
       ctk_widget_show (sl->priv->framerate_row);

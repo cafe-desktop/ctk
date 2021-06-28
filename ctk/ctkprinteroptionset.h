@@ -67,29 +67,29 @@ typedef void (*CtkPrinterOptionSetFunc) (CtkPrinterOption  *option,
 					 gpointer           user_data);
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType   ctk_printer_option_set_get_type       (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkPrinterOptionSet *ctk_printer_option_set_new              (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                 ctk_printer_option_set_add              (CtkPrinterOptionSet     *set,
 							      CtkPrinterOption        *option);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                 ctk_printer_option_set_remove           (CtkPrinterOptionSet     *set,
 							      CtkPrinterOption        *option);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkPrinterOption *   ctk_printer_option_set_lookup           (CtkPrinterOptionSet     *set,
 							      const char              *name);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                 ctk_printer_option_set_foreach          (CtkPrinterOptionSet     *set,
 							      CtkPrinterOptionSetFunc  func,
 							      gpointer                 user_data);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                 ctk_printer_option_set_clear_conflicts  (CtkPrinterOptionSet     *set);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GList *              ctk_printer_option_set_get_groups       (CtkPrinterOptionSet     *set);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                 ctk_printer_option_set_foreach_in_group (CtkPrinterOptionSet     *set,
 							      const char              *group,
 							      CtkPrinterOptionSetFunc  func,

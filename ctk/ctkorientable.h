@@ -47,13 +47,13 @@ struct _CtkOrientableIface
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType          ctk_orientable_get_type        (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_orientable_set_orientation (CtkOrientable  *orientable,
                                                CtkOrientation  orientation);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkOrientation ctk_orientable_get_orientation (CtkOrientable  *orientable);
 
 G_END_DECLS

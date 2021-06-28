@@ -58,68 +58,68 @@ struct _CtkPopoverClass
   gpointer reserved[10];
 };
 
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 GType           ctk_popover_get_type        (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 CtkWidget *     ctk_popover_new             (CtkWidget             *relative_to);
 
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 CtkWidget *     ctk_popover_new_from_model  (CtkWidget             *relative_to,
                                              GMenuModel            *model);
 
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void            ctk_popover_set_relative_to (CtkPopover            *popover,
                                              CtkWidget             *relative_to);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 CtkWidget *     ctk_popover_get_relative_to (CtkPopover            *popover);
 
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void            ctk_popover_set_pointing_to (CtkPopover            *popover,
                                              const CdkRectangle    *rect);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 gboolean        ctk_popover_get_pointing_to (CtkPopover            *popover,
                                              CdkRectangle          *rect);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void            ctk_popover_set_position    (CtkPopover            *popover,
                                              CtkPositionType        position);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 CtkPositionType ctk_popover_get_position    (CtkPopover            *popover);
 
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void            ctk_popover_set_modal       (CtkPopover            *popover,
                                              gboolean               modal);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 gboolean        ctk_popover_get_modal       (CtkPopover            *popover);
 
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void            ctk_popover_bind_model      (CtkPopover            *popover,
                                              GMenuModel            *model,
                                              const gchar           *action_namespace);
 
-GDK_DEPRECATED_IN_3_22
+CDK_DEPRECATED_IN_3_22
 void            ctk_popover_set_transitions_enabled (CtkPopover *popover,
                                                      gboolean    transitions_enabled);
-GDK_DEPRECATED_IN_3_22
+CDK_DEPRECATED_IN_3_22
 gboolean        ctk_popover_get_transitions_enabled (CtkPopover *popover);
 
-GDK_AVAILABLE_IN_3_18
+CDK_AVAILABLE_IN_3_18
 void            ctk_popover_set_default_widget (CtkPopover *popover,
                                                 CtkWidget  *widget);
-GDK_AVAILABLE_IN_3_18
+CDK_AVAILABLE_IN_3_18
 CtkWidget *     ctk_popover_get_default_widget (CtkPopover *popover);
 
-GDK_AVAILABLE_IN_3_20
+CDK_AVAILABLE_IN_3_20
 void                 ctk_popover_set_constrain_to (CtkPopover           *popover,
                                                    CtkPopoverConstraint  constraint);
 
-GDK_AVAILABLE_IN_3_20
+CDK_AVAILABLE_IN_3_20
 CtkPopoverConstraint ctk_popover_get_constrain_to (CtkPopover           *popover);
 
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 void                 ctk_popover_popup            (CtkPopover *popover);
 
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 void                 ctk_popover_popdown          (CtkPopover *popover);
 
 

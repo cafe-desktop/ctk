@@ -8,7 +8,7 @@ if get_option('gtk_doc')
                  dependencies: [libctk_dep, libgailutil],
                  gobject_typesfile: join_paths(meson.current_source_dir(), 'gail-libgail-util3.types'),
                  scan_args: [
-                   '--ignore-decorators=_GDK_EXTERN|G_GNUC_WARN_UNUSED_RESULT',
+                   '--ignore-decorators=_CDK_EXTERN|G_GNUC_WARN_UNUSED_RESULT',
                  ],
                  fixxref_args: [
                    '--html-dir=@0@'.format(docpath),

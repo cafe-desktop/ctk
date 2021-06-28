@@ -237,7 +237,7 @@ popup_key_press (CtkWidget      *popup,
                  CdkEventKey    *event,
                  CtkColorEditor *editor)
 {
-  if (event->keyval == GDK_KEY_Escape)
+  if (event->keyval == CDK_KEY_Escape)
     {
       dismiss_current_popup (editor);
       return TRUE;
@@ -401,10 +401,10 @@ ctk_color_editor_init (CtkColorEditor *editor)
   /* Some post processing is needed in code to set this up */
   ctk_widget_set_events (editor->priv->swatch,
 			 ctk_widget_get_events (editor->priv->swatch)
-                                 & ~(GDK_BUTTON_PRESS_MASK
-                                     | GDK_BUTTON_RELEASE_MASK
-                                     | GDK_KEY_PRESS_MASK
-                                     | GDK_KEY_RELEASE_MASK));
+                                 & ~(CDK_BUTTON_PRESS_MASK
+                                     | CDK_BUTTON_RELEASE_MASK
+                                     | CDK_KEY_PRESS_MASK
+                                     | CDK_KEY_RELEASE_MASK));
 
   if (ctk_widget_get_direction (editor->priv->h_slider) == CTK_TEXT_DIR_RTL)
     ctk_style_context_add_class (ctk_widget_get_style_context (editor->priv->h_slider),

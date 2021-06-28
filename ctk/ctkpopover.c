@@ -113,7 +113,7 @@
 #include "ctkprogresstrackerprivate.h"
 #include "ctksettingsprivate.h"
 
-#ifdef GDK_WINDOWING_WAYLAND
+#ifdef CDK_WINDOWING_WAYLAND
 #include "wayland/cdkwayland.h"
 #endif
 
@@ -416,19 +416,19 @@ ctk_popover_realize (CtkWidget *widget)
   attributes.y = 0;
   attributes.width = allocation.width;
   attributes.height = allocation.height;
-  attributes.window_type = GDK_WINDOW_CHILD;
+  attributes.window_type = CDK_WINDOW_CHILD;
   attributes.visual = ctk_widget_get_visual (widget);
-  attributes.wclass = GDK_INPUT_OUTPUT;
+  attributes.wclass = CDK_INPUT_OUTPUT;
   attributes.event_mask =
     ctk_widget_get_events (widget) |
-    GDK_POINTER_MOTION_MASK |
-    GDK_BUTTON_MOTION_MASK |
-    GDK_BUTTON_PRESS_MASK |
-    GDK_BUTTON_RELEASE_MASK |
-    GDK_ENTER_NOTIFY_MASK |
-    GDK_LEAVE_NOTIFY_MASK;
+    CDK_POINTER_MOTION_MASK |
+    CDK_BUTTON_MOTION_MASK |
+    CDK_BUTTON_PRESS_MASK |
+    CDK_BUTTON_RELEASE_MASK |
+    CDK_ENTER_NOTIFY_MASK |
+    CDK_LEAVE_NOTIFY_MASK;
 
-  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
+  attributes_mask = CDK_WA_X | CDK_WA_Y | CDK_WA_VISUAL;
   window = cdk_window_new (ctk_widget_get_parent_window (widget),
                            &attributes, attributes_mask);
   ctk_widget_set_window (widget, window);
@@ -769,8 +769,8 @@ ctk_popover_get_gap_coords (CtkPopover      *popover,
   ctk_popover_get_pointing_to (popover, &rect);
   ctk_widget_get_allocation (widget, &allocation);
 
-#ifdef GDK_WINDOWING_WAYLAND
-  if (GDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (widget)))
+#ifdef CDK_WINDOWING_WAYLAND
+  if (CDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (widget)))
     {
       gint win_x, win_y;
 
@@ -995,8 +995,8 @@ ctk_popover_update_shape (CtkPopover *popover)
   CdkWindow *win;
   cairo_t *cr;
 
-#ifdef GDK_WINDOWING_WAYLAND
-  if (GDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (widget)))
+#ifdef CDK_WINDOWING_WAYLAND
+  if (CDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (widget)))
     return;
 #endif
 
@@ -1098,8 +1098,8 @@ ctk_popover_update_position (CtkPopover *popover)
   overshoot[CTK_POS_RIGHT] = rect.x + rect.width + req.width - window_alloc.width
                              + window_shadow.right;
 
-#ifdef GDK_WINDOWING_WAYLAND
-  if (GDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (widget)) &&
+#ifdef CDK_WINDOWING_WAYLAND
+  if (CDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (widget)) &&
       priv->constraint == CTK_POPOVER_CONSTRAINT_NONE)
     {
       priv->final_position = priv->preferred_position;
@@ -1260,7 +1260,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   if (child)
     ctk_container_propagate_draw (CTK_CONTAINER (widget), child, cr);
 
-  return GDK_EVENT_PROPAGATE;
+  return CDK_EVENT_PROPAGATE;
 }
 
 static void
@@ -1541,12 +1541,12 @@ ctk_popover_button_press (CtkWidget      *widget,
 {
   CtkPopover *popover = CTK_POPOVER (widget);
 
-  if (event->type != GDK_BUTTON_PRESS)
-    return GDK_EVENT_PROPAGATE;
+  if (event->type != CDK_BUTTON_PRESS)
+    return CDK_EVENT_PROPAGATE;
 
   popover->priv->button_pressed = TRUE;
 
-  return GDK_EVENT_PROPAGATE;
+  return CDK_EVENT_PROPAGATE;
 }
 
 static gboolean
@@ -1559,7 +1559,7 @@ ctk_popover_button_release (CtkWidget      *widget,
   child = ctk_bin_get_child (CTK_BIN (widget));
 
   if (!popover->priv->button_pressed)
-    return GDK_EVENT_PROPAGATE;
+    return CDK_EVENT_PROPAGATE;
 
   event_widget = ctk_get_event_widget ((CdkEvent *) event);
 
@@ -1580,7 +1580,7 @@ ctk_popover_button_release (CtkWidget      *widget,
       ctk_popover_popdown (popover);
     }
 
-  return GDK_EVENT_PROPAGATE;
+  return CDK_EVENT_PROPAGATE;
 }
 
 static gboolean
@@ -1589,14 +1589,14 @@ ctk_popover_key_press (CtkWidget   *widget,
 {
   CtkWidget *toplevel, *focus;
 
-  if (event->keyval == GDK_KEY_Escape)
+  if (event->keyval == CDK_KEY_Escape)
     {
       ctk_popover_popdown (CTK_POPOVER (widget));
-      return GDK_EVENT_STOP;
+      return CDK_EVENT_STOP;
     }
 
   if (!CTK_POPOVER (widget)->priv->modal)
-    return GDK_EVENT_PROPAGATE;
+    return CDK_EVENT_PROPAGATE;
 
   toplevel = ctk_widget_get_toplevel (widget);
 
@@ -1608,7 +1608,7 @@ ctk_popover_key_press (CtkWidget   *widget,
         return ctk_widget_event (focus, (CdkEvent*) event);
     }
 
-  return GDK_EVENT_PROPAGATE;
+  return CDK_EVENT_PROPAGATE;
 }
 
 static void
@@ -1752,7 +1752,7 @@ ctk_popover_class_init (CtkPopoverClass *klass)
       g_param_spec_boxed ("pointing-to",
                           P_("Pointing to"),
                           P_("Rectangle the bubble window points to"),
-                          GDK_TYPE_RECTANGLE,
+                          CDK_TYPE_RECTANGLE,
                           CTK_PARAM_READWRITE);
 
   /**

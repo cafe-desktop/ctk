@@ -40,7 +40,7 @@
 #include "ctklabel.h"
 #include "ctkfilechooserentry.h"
 #include "ctkfilefilterprivate.h"
-#ifdef GDK_WINDOWING_QUARTZ
+#ifdef CDK_WINDOWING_QUARTZ
 #include <cdk/quartz/cdkquartz.h>
 #endif
 
@@ -753,14 +753,14 @@ ctk_file_chooser_native_show (CtkNativeDialog *native)
 
   self->mode = MODE_FALLBACK;
 
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
   if (ctk_file_chooser_native_win32_show (self))
     self->mode = MODE_WIN32;
 #endif
 
-#if defined (GDK_WINDOWING_QUARTZ) && \
+#if defined (CDK_WINDOWING_QUARTZ) && \
   MAC_OS_X_VERSION_MAX_ALLOWED >= 1060
-    if (cdk_quartz_osx_version() >= GDK_OSX_SNOW_LEOPARD &&
+    if (cdk_quartz_osx_version() >= CDK_OSX_SNOW_LEOPARD &&
         ctk_file_chooser_native_quartz_show (self))
     self->mode = MODE_QUARTZ;
 #endif
@@ -784,14 +784,14 @@ ctk_file_chooser_native_hide (CtkNativeDialog *native)
       hide_dialog (self);
       break;
     case MODE_WIN32:
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
       ctk_file_chooser_native_win32_hide (self);
 #endif
       break;
     case MODE_QUARTZ:
-#if defined (GDK_WINDOWING_QUARTZ) && \
+#if defined (CDK_WINDOWING_QUARTZ) && \
   MAC_OS_X_VERSION_MAX_ALLOWED >= 1060
-      if (cdk_quartz_osx_version() >= GDK_OSX_SNOW_LEOPARD)
+      if (cdk_quartz_osx_version() >= CDK_OSX_SNOW_LEOPARD)
         ctk_file_chooser_native_quartz_hide (self);
 #endif
       break;

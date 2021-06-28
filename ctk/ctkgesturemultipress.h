@@ -38,16 +38,16 @@ G_BEGIN_DECLS
 typedef struct _CtkGestureMultiPress CtkGestureMultiPress;
 typedef struct _CtkGestureMultiPressClass CtkGestureMultiPressClass;
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 GType        ctk_gesture_multi_press_get_type (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 CtkGesture * ctk_gesture_multi_press_new      (CtkWidget            *widget);
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 void         ctk_gesture_multi_press_set_area (CtkGestureMultiPress *gesture,
 					       const CdkRectangle   *rect);
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 gboolean     ctk_gesture_multi_press_get_area (CtkGestureMultiPress *gesture,
                                                CdkRectangle         *rect);
 

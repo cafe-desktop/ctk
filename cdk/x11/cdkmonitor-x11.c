@@ -24,7 +24,7 @@
 #include "cdkscreen-x11.h"
 
 
-G_DEFINE_TYPE (CdkX11Monitor, cdk_x11_monitor, GDK_TYPE_MONITOR)
+G_DEFINE_TYPE (CdkX11Monitor, cdk_x11_monitor, CDK_TYPE_MONITOR)
 
 static gboolean
 cdk_monitor_has_fullscreen_window (CdkMonitor *monitor)
@@ -41,10 +41,10 @@ cdk_monitor_has_fullscreen_window (CdkMonitor *monitor)
     {
       window = l->data;
 
-      if ((cdk_window_get_state (window) & GDK_WINDOW_STATE_FULLSCREEN) == 0)
+      if ((cdk_window_get_state (window) & CDK_WINDOW_STATE_FULLSCREEN) == 0)
         continue;
 
-      if (cdk_window_get_fullscreen_mode (window) == GDK_FULLSCREEN_ON_ALL_MONITORS ||
+      if (cdk_window_get_fullscreen_mode (window) == CDK_FULLSCREEN_ON_ALL_MONITORS ||
           cdk_display_get_monitor_at_window (monitor->display, window) == monitor)
         {
           has_fullscreen = TRUE;
@@ -97,14 +97,14 @@ cdk_x11_monitor_init (CdkX11Monitor *monitor)
 static void
 cdk_x11_monitor_class_init (CdkX11MonitorClass *class)
 {
-  GDK_MONITOR_CLASS (class)->get_workarea = cdk_x11_monitor_get_workarea;
+  CDK_MONITOR_CLASS (class)->get_workarea = cdk_x11_monitor_get_workarea;
 }
 
 XID
 cdk_x11_monitor_get_output (CdkMonitor *monitor)
 {
-  g_return_val_if_fail (GDK_IS_X11_MONITOR (monitor), 0);
+  g_return_val_if_fail (CDK_IS_X11_MONITOR (monitor), 0);
 
-  return GDK_X11_MONITOR (monitor)->output;
+  return CDK_X11_MONITOR (monitor)->output;
 }
 

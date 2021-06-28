@@ -75,7 +75,7 @@
  *
  * CtkWidget *child = ctk_bin_get_child (CTK_BIN (menu_item));
  * ctk_label_set_markup (CTK_LABEL (child), "<i>new label</i> with <b>markup</b>");
- * ctk_accel_label_set_accel (CTK_ACCEL_LABEL (child), GDK_KEY_1, 0);
+ * ctk_accel_label_set_accel (CTK_ACCEL_LABEL (child), CDK_KEY_1, 0);
  * ]|
  *
  * # CtkMenuItem as CtkBuildable
@@ -1672,16 +1672,16 @@ ctk_menu_item_realize (CtkWidget *widget)
   attributes.y = allocation.y;
   attributes.width = allocation.width;
   attributes.height = allocation.height;
-  attributes.window_type = GDK_WINDOW_CHILD;
-  attributes.wclass = GDK_INPUT_ONLY;
+  attributes.window_type = CDK_WINDOW_CHILD;
+  attributes.wclass = CDK_INPUT_ONLY;
   attributes.event_mask = (ctk_widget_get_events (widget) |
-                           GDK_BUTTON_PRESS_MASK |
-                           GDK_BUTTON_RELEASE_MASK |
-                           GDK_ENTER_NOTIFY_MASK |
-                           GDK_LEAVE_NOTIFY_MASK |
-                           GDK_POINTER_MOTION_MASK);
+                           CDK_BUTTON_PRESS_MASK |
+                           CDK_BUTTON_RELEASE_MASK |
+                           CDK_ENTER_NOTIFY_MASK |
+                           CDK_LEAVE_NOTIFY_MASK |
+                           CDK_POINTER_MOTION_MASK);
 
-  attributes_mask = GDK_WA_X | GDK_WA_Y;
+  attributes_mask = CDK_WA_X | CDK_WA_Y;
 
   priv->event_window = cdk_window_new (ctk_widget_get_parent_window (widget),
                                        &attributes, attributes_mask);
@@ -1757,7 +1757,7 @@ ctk_real_menu_item_select (CtkMenuItem *menu_item)
     }
 
   if ((!source_device ||
-       cdk_device_get_source (source_device) != GDK_SOURCE_TOUCHSCREEN) &&
+       cdk_device_get_source (source_device) != CDK_SOURCE_TOUCHSCREEN) &&
       priv->submenu &&
       (!ctk_widget_get_mapped (priv->submenu) ||
        CTK_MENU (priv->submenu)->priv->tearoff_active))
@@ -1990,18 +1990,18 @@ ctk_menu_item_real_popup_submenu (CtkWidget      *widget,
             {
             case CTK_TOP_BOTTOM:
               g_object_set (priv->submenu,
-                            "anchor-hints", (GDK_ANCHOR_FLIP_Y |
-                                             GDK_ANCHOR_SLIDE |
-                                             GDK_ANCHOR_RESIZE),
+                            "anchor-hints", (CDK_ANCHOR_FLIP_Y |
+                                             CDK_ANCHOR_SLIDE |
+                                             CDK_ANCHOR_RESIZE),
                             "menu-type-hint", (priv->from_menubar ?
-                                               GDK_WINDOW_TYPE_HINT_DROPDOWN_MENU :
-                                               GDK_WINDOW_TYPE_HINT_POPUP_MENU),
+                                               CDK_WINDOW_TYPE_HINT_DROPDOWN_MENU :
+                                               CDK_WINDOW_TYPE_HINT_POPUP_MENU),
                             NULL);
 
               ctk_menu_popup_at_widget (CTK_MENU (priv->submenu),
                                         widget,
-                                        GDK_GRAVITY_SOUTH_WEST,
-                                        GDK_GRAVITY_NORTH_WEST,
+                                        CDK_GRAVITY_SOUTH_WEST,
+                                        CDK_GRAVITY_NORTH_WEST,
                                         trigger_event);
 
               break;
@@ -2026,9 +2026,9 @@ ctk_menu_item_real_popup_submenu (CtkWidget      *widget,
               ctk_style_context_get_padding (context, ctk_style_context_get_state (context), &menu_padding);
 
               g_object_set (priv->submenu,
-                            "anchor-hints", (GDK_ANCHOR_FLIP_X |
-                                             GDK_ANCHOR_SLIDE |
-                                             GDK_ANCHOR_RESIZE),
+                            "anchor-hints", (CDK_ANCHOR_FLIP_X |
+                                             CDK_ANCHOR_SLIDE |
+                                             CDK_ANCHOR_RESIZE),
                             "rect-anchor-dy", vertical_offset - menu_padding.top,
                             NULL);
 
@@ -2041,8 +2041,8 @@ ctk_menu_item_real_popup_submenu (CtkWidget      *widget,
 
                   ctk_menu_popup_at_widget (CTK_MENU (priv->submenu),
                                             widget,
-                                            GDK_GRAVITY_NORTH_EAST,
-                                            GDK_GRAVITY_NORTH_WEST,
+                                            CDK_GRAVITY_NORTH_EAST,
+                                            CDK_GRAVITY_NORTH_WEST,
                                             trigger_event);
 
                   break;
@@ -2054,8 +2054,8 @@ ctk_menu_item_real_popup_submenu (CtkWidget      *widget,
 
                   ctk_menu_popup_at_widget (CTK_MENU (priv->submenu),
                                             widget,
-                                            GDK_GRAVITY_NORTH_WEST,
-                                            GDK_GRAVITY_NORTH_EAST,
+                                            CDK_GRAVITY_NORTH_WEST,
+                                            CDK_GRAVITY_NORTH_EAST,
                                             trigger_event);
 
                   break;
@@ -2095,8 +2095,8 @@ ctk_menu_item_popup_timeout (gpointer data)
     {
       ctk_menu_item_real_popup_submenu (CTK_WIDGET (menu_item), info->trigger_event, TRUE);
       if (info->trigger_event &&
-          info->trigger_event->type != GDK_BUTTON_PRESS &&
-          info->trigger_event->type != GDK_ENTER_NOTIFY &&
+          info->trigger_event->type != CDK_BUTTON_PRESS &&
+          info->trigger_event->type != CDK_ENTER_NOTIFY &&
           priv->submenu)
         CTK_MENU_SHELL (priv->submenu)->priv->ignore_enter = TRUE;
     }

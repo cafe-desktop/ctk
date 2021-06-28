@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2010 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_APP_LAUNCH_CONTEXT_PRIVATE_H__
-#define __GDK_APP_LAUNCH_CONTEXT_PRIVATE_H__
+#ifndef __CDK_APP_LAUNCH_CONTEXT_PRIVATE_H__
+#define __CDK_APP_LAUNCH_CONTEXT_PRIVATE_H__
 
 #include <gio/gio.h>
 #include "cdkapplaunchcontext.h"
@@ -24,9 +24,9 @@
 
 G_BEGIN_DECLS
 
-#define GDK_APP_LAUNCH_CONTEXT_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST((k), GDK_TYPE_APP_LAUNCH_CONTEXT, CdkAppLaunchContextClass))
-#define GDK_IS_APP_LAUNCH_CONTEXT_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), GDK_TYPE_APP_LAUNCH_CONTEXT))
-#define GDK_APP_LAUNCH_CONTEXT_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_APP_LAUNCH_CONTEXT, CdkAppLaunchContextClass))
+#define CDK_APP_LAUNCH_CONTEXT_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST((k), CDK_TYPE_APP_LAUNCH_CONTEXT, CdkAppLaunchContextClass))
+#define CDK_IS_APP_LAUNCH_CONTEXT_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), CDK_TYPE_APP_LAUNCH_CONTEXT))
+#define CDK_APP_LAUNCH_CONTEXT_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CDK_TYPE_APP_LAUNCH_CONTEXT, CdkAppLaunchContextClass))
 
 
 typedef GAppLaunchContextClass CdkAppLaunchContextClass;

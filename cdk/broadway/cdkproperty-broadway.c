@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -59,12 +59,12 @@ _cdk_broadway_window_change_property (CdkWindow    *window,
 				      const guchar *data,
 				      gint          nelements)
 {
-  g_return_if_fail (!window || GDK_WINDOW_IS_BROADWAY (window));
+  g_return_if_fail (!window || CDK_WINDOW_IS_BROADWAY (window));
 }
 
 void
 _cdk_broadway_window_delete_property (CdkWindow *window,
 				      CdkAtom    property)
 {
-  g_return_if_fail (!window || GDK_WINDOW_IS_BROADWAY (window));
+  g_return_if_fail (!window || CDK_WINDOW_IS_BROADWAY (window));
 }

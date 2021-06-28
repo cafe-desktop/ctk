@@ -49,13 +49,13 @@ enum {
 static guint signals[LAST_SIGNAL];
 
 #define WINDOW_IS_TOPLEVEL_OR_FOREIGN(window) \
-  (GDK_WINDOW_TYPE (window) != GDK_WINDOW_CHILD &&   \
-   GDK_WINDOW_TYPE (window) != GDK_WINDOW_OFFSCREEN)
+  (CDK_WINDOW_TYPE (window) != CDK_WINDOW_CHILD &&   \
+   CDK_WINDOW_TYPE (window) != CDK_WINDOW_OFFSCREEN)
 
 #define WINDOW_IS_TOPLEVEL(window)                   \
-  (GDK_WINDOW_TYPE (window) != GDK_WINDOW_CHILD &&   \
-   GDK_WINDOW_TYPE (window) != GDK_WINDOW_FOREIGN && \
-   GDK_WINDOW_TYPE (window) != GDK_WINDOW_OFFSCREEN)
+  (CDK_WINDOW_TYPE (window) != CDK_WINDOW_CHILD &&   \
+   CDK_WINDOW_TYPE (window) != CDK_WINDOW_FOREIGN && \
+   CDK_WINDOW_TYPE (window) != CDK_WINDOW_OFFSCREEN)
 
 #define MAX_WL_BUFFER_SIZE (4083) /* 4096 minus header, string argument length and NUL byte */
 
@@ -72,7 +72,7 @@ struct _CdkWaylandWindowClass
   CdkWindowClass parent_class;
 };
 
-G_DEFINE_TYPE (CdkWaylandWindow, cdk_wayland_window, GDK_TYPE_WINDOW)
+G_DEFINE_TYPE (CdkWaylandWindow, cdk_wayland_window, CDK_TYPE_WINDOW)
 
 static void
 cdk_wayland_window_class_init (CdkWaylandWindowClass *wayland_window_class)
@@ -84,12 +84,12 @@ cdk_wayland_window_init (CdkWaylandWindow *wayland_window)
 {
 }
 
-#define GDK_TYPE_WINDOW_IMPL_WAYLAND              (_cdk_window_impl_wayland_get_type ())
-#define GDK_WINDOW_IMPL_WAYLAND(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WINDOW_IMPL_WAYLAND, CdkWindowImplWayland))
-#define GDK_WINDOW_IMPL_WAYLAND_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WINDOW_IMPL_WAYLAND, CdkWindowImplWaylandClass))
-#define GDK_IS_WINDOW_IMPL_WAYLAND(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WINDOW_IMPL_WAYLAND))
-#define GDK_IS_WINDOW_IMPL_WAYLAND_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_WINDOW_IMPL_WAYLAND))
-#define GDK_WINDOW_IMPL_WAYLAND_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_WINDOW_IMPL_WAYLAND, CdkWindowImplWaylandClass))
+#define CDK_TYPE_WINDOW_IMPL_WAYLAND              (_cdk_window_impl_wayland_get_type ())
+#define CDK_WINDOW_IMPL_WAYLAND(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), CDK_TYPE_WINDOW_IMPL_WAYLAND, CdkWindowImplWayland))
+#define CDK_WINDOW_IMPL_WAYLAND_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CDK_TYPE_WINDOW_IMPL_WAYLAND, CdkWindowImplWaylandClass))
+#define CDK_IS_WINDOW_IMPL_WAYLAND(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), CDK_TYPE_WINDOW_IMPL_WAYLAND))
+#define CDK_IS_WINDOW_IMPL_WAYLAND_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CDK_TYPE_WINDOW_IMPL_WAYLAND))
+#define CDK_WINDOW_IMPL_WAYLAND_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CDK_TYPE_WINDOW_IMPL_WAYLAND, CdkWindowImplWaylandClass))
 
 typedef struct _CdkWindowImplWayland CdkWindowImplWayland;
 typedef struct _CdkWindowImplWaylandClass CdkWindowImplWaylandClass;
@@ -278,7 +278,7 @@ static gboolean should_map_as_popup (CdkWindow *window);
 
 GType _cdk_window_impl_wayland_get_type (void);
 
-G_DEFINE_TYPE (CdkWindowImplWayland, _cdk_window_impl_wayland, GDK_TYPE_WINDOW_IMPL)
+G_DEFINE_TYPE (CdkWindowImplWayland, _cdk_window_impl_wayland, CDK_TYPE_WINDOW_IMPL)
 
 static void
 _cdk_window_impl_wayland_init (CdkWindowImplWayland *impl)
@@ -293,7 +293,7 @@ static void
 _cdk_wayland_screen_add_orphan_dialog (CdkWindow *window)
 {
   CdkWaylandDisplay *display_wayland =
-    GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+    CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
 
   if (!g_list_find (display_wayland->orphan_dialogs, window))
     display_wayland->orphan_dialogs =
@@ -303,7 +303,7 @@ _cdk_wayland_screen_add_orphan_dialog (CdkWindow *window)
 static void
 drop_cairo_surfaces (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   g_clear_pointer (&impl->staging_cairo_surface, cairo_surface_destroy);
   g_clear_pointer (&impl->backfill_cairo_surface, cairo_surface_destroy);
@@ -318,7 +318,7 @@ static int
 calculate_width_without_margin (CdkWindow *window,
                                 int        width)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   return width - (impl->margin_left + impl->margin_right);
 }
@@ -327,7 +327,7 @@ static int
 calculate_height_without_margin (CdkWindow *window,
                                  int        height)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   return height - (impl->margin_top + impl->margin_bottom);
 }
@@ -336,7 +336,7 @@ static int
 calculate_width_with_margin (CdkWindow *window,
                              int        width)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   return width + impl->margin_left + impl->margin_right;
 }
@@ -345,7 +345,7 @@ static int
 calculate_height_with_margin (CdkWindow *window,
                               int        height)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   return height + impl->margin_top + impl->margin_bottom;
 }
@@ -353,11 +353,11 @@ calculate_height_with_margin (CdkWindow *window,
 static void
 _cdk_wayland_window_save_size (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
-  if (window->state & (GDK_WINDOW_STATE_FULLSCREEN |
-                       GDK_WINDOW_STATE_MAXIMIZED |
-                       GDK_WINDOW_STATE_TILED))
+  if (window->state & (CDK_WINDOW_STATE_FULLSCREEN |
+                       CDK_WINDOW_STATE_MAXIMIZED |
+                       CDK_WINDOW_STATE_TILED))
     return;
 
   impl->saved_width = calculate_width_without_margin (window, window->width);
@@ -367,11 +367,11 @@ _cdk_wayland_window_save_size (CdkWindow *window)
 static void
 _cdk_wayland_window_clear_saved_size (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
-  if (window->state & (GDK_WINDOW_STATE_FULLSCREEN |
-                       GDK_WINDOW_STATE_MAXIMIZED |
-                       GDK_WINDOW_STATE_TILED))
+  if (window->state & (CDK_WINDOW_STATE_FULLSCREEN |
+                       CDK_WINDOW_STATE_MAXIMIZED |
+                       CDK_WINDOW_STATE_TILED))
     return;
 
   impl->saved_width = -1;
@@ -391,7 +391,7 @@ cdk_wayland_window_update_size (CdkWindow *window,
                                 int32_t    height,
                                 int        scale)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   CdkRectangle area;
   cairo_region_t *region;
 
@@ -427,18 +427,18 @@ _cdk_wayland_screen_create_root_window (CdkScreen *screen,
                                         int        height)
 {
   CdkWaylandDisplay *display_wayland =
-    GDK_WAYLAND_DISPLAY (cdk_screen_get_display (screen));
+    CDK_WAYLAND_DISPLAY (cdk_screen_get_display (screen));
   CdkWindow *window;
   CdkWindowImplWayland *impl;
 
-  window = _cdk_display_create_window (GDK_DISPLAY (display_wayland));
-  window->impl = g_object_new (GDK_TYPE_WINDOW_IMPL_WAYLAND, NULL);
+  window = _cdk_display_create_window (CDK_DISPLAY (display_wayland));
+  window->impl = g_object_new (CDK_TYPE_WINDOW_IMPL_WAYLAND, NULL);
   window->impl_window = window;
   window->visual = cdk_screen_get_system_visual (screen);
 
-  impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
-  impl->wrapper = GDK_WINDOW (window);
+  impl->wrapper = CDK_WINDOW (window);
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   if (display_wayland->compositor_version >= WL_SURFACE_HAS_BUFFER_SCALE &&
       cdk_screen_get_n_monitors (screen) > 0)
@@ -454,7 +454,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
   cairo_surface_set_device_scale (impl->staging_cairo_surface, impl->scale, impl->scale);
 
-  window->window_type = GDK_WINDOW_ROOT;
+  window->window_type = CDK_WINDOW_ROOT;
   window->depth = 32;
 
   window->x = 0;
@@ -466,7 +466,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   window->viewable = TRUE;
 
   /* see init_randr_support() in cdkscreen-wayland.c */
-  window->event_mask = GDK_STRUCTURE_MASK;
+  window->event_mask = CDK_STRUCTURE_MASK;
 
   return window;
 }
@@ -532,7 +532,7 @@ fill_presentation_time_from_frame_time (CdkFrameTimings *timings,
 static void
 read_back_cairo_surface (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   cairo_t *cr;
   cairo_region_t *paint_region = NULL;
 
@@ -566,18 +566,18 @@ frame_callback (void               *data,
                 uint32_t            time)
 {
   CdkWindow *window = data;
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   CdkWaylandDisplay *display_wayland =
-    GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+    CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
   CdkFrameClock *clock = cdk_window_get_frame_clock (window);
   CdkFrameTimings *timings;
 
-  GDK_NOTE (EVENTS,
+  CDK_NOTE (EVENTS,
             g_message ("frame %p", window));
 
   wl_callback_destroy (callback);
 
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     return;
 
   if (!impl->awaiting_frame)
@@ -609,7 +609,7 @@ frame_callback (void               *data,
   timings->complete = TRUE;
 
 #ifdef G_ENABLE_DEBUG
-  if ((_cdk_debug_flags & GDK_DEBUG_FRAMES) != 0)
+  if ((_cdk_debug_flags & CDK_DEBUG_FRAMES) != 0)
     _cdk_frame_clock_debug_print_timings (clock, timings);
 
   if (cdk_profiler_is_running ())
@@ -658,7 +658,7 @@ static void
 on_frame_clock_after_paint (CdkFrameClock *clock,
                             CdkWindow     *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   struct wl_callback *callback;
 
   if (!impl->pending_commit)
@@ -701,9 +701,9 @@ on_frame_clock_after_paint (CdkFrameClock *clock,
 static void
 window_update_scale (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   CdkWaylandDisplay *display_wayland =
-    GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+    CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
   guint32 scale;
   GSList *l;
 
@@ -744,16 +744,16 @@ _cdk_wayland_display_create_window_impl (CdkDisplay    *display,
                                          CdkWindowAttr *attributes,
                                          gint           attributes_mask)
 {
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (display);
   CdkWindowImplWayland *impl;
   CdkFrameClock *frame_clock;
   const char *title;
 
-  impl = g_object_new (GDK_TYPE_WINDOW_IMPL_WAYLAND, NULL);
-  window->impl = GDK_WINDOW_IMPL (impl);
+  impl = g_object_new (CDK_TYPE_WINDOW_IMPL_WAYLAND, NULL);
+  window->impl = CDK_WINDOW_IMPL (impl);
   impl->unconfigured_width = window->width;
   impl->unconfigured_height = window->height;
-  impl->wrapper = GDK_WINDOW (window);
+  impl->wrapper = CDK_WINDOW (window);
   impl->shortcuts_inhibitors = g_hash_table_new (NULL, NULL);
   impl->using_csd = TRUE;
 
@@ -779,11 +779,11 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
   impl->title = NULL;
 
-  switch (GDK_WINDOW_TYPE (window))
+  switch (CDK_WINDOW_TYPE (window))
     {
-    case GDK_WINDOW_TOPLEVEL:
-    case GDK_WINDOW_TEMP:
-      if (attributes_mask & GDK_WA_TITLE)
+    case CDK_WINDOW_TOPLEVEL:
+    case CDK_WINDOW_TEMP:
+      if (attributes_mask & CDK_WA_TITLE)
         title = attributes->title;
       else
         title = get_default_title ();
@@ -791,14 +791,14 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       cdk_window_set_title (window, title);
       break;
 
-    case GDK_WINDOW_CHILD:
+    case CDK_WINDOW_CHILD:
     default:
       break;
     }
 
   cdk_wayland_window_create_surface (window);
 
-  if (attributes_mask & GDK_WA_TYPE_HINT)
+  if (attributes_mask & CDK_WA_TYPE_HINT)
     cdk_window_set_type_hint (window, attributes->type_hint);
 
   frame_clock = cdk_window_get_frame_clock (window);
@@ -816,9 +816,9 @@ static void
 cdk_wayland_window_attach_image (CdkWindow *window)
 {
   CdkWaylandDisplay *display;
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     return;
 
   g_assert (_cdk_wayland_is_shm_surface (impl->staging_cairo_surface));
@@ -832,7 +832,7 @@ cdk_wayland_window_attach_image (CdkWindow *window)
   impl->pending_buffer_offset_y = 0;
 
   /* Only set the buffer scale if supported by the compositor */
-  display = GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+  display = CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
   if (display->compositor_version >= WL_SURFACE_HAS_BUFFER_SCALE)
     wl_surface_set_buffer_scale (impl->display_server.wl_surface, impl->scale);
 
@@ -849,7 +849,7 @@ buffer_release_callback (void             *_data,
   cairo_surface_t *cairo_surface = _data;
   CdkWindowImplWayland *impl = cairo_surface_get_user_data (cairo_surface, &cdk_wayland_window_cairo_key);
 
-  g_return_if_fail (GDK_IS_WINDOW_IMPL_WAYLAND (impl));
+  g_return_if_fail (CDK_IS_WINDOW_IMPL_WAYLAND (impl));
 
   /* The released buffer isn't the latest committed one, we have no further
    * use for it, so clean it up.
@@ -906,7 +906,7 @@ static const struct wl_buffer_listener buffer_listener = {
 static void
 cdk_wayland_window_ensure_cairo_surface (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   /* If we are drawing using OpenGL then we only need a logical 1x1 surface. */
   if (impl->display_server.egl_window)
@@ -926,7 +926,7 @@ cdk_wayland_window_ensure_cairo_surface (CdkWindow *window)
     }
   else if (!impl->staging_cairo_surface)
     {
-      CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (cdk_window_get_display (impl->wrapper));
+      CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (cdk_window_get_display (impl->wrapper));
       struct wl_buffer *buffer;
 
       impl->staging_cairo_surface = _cdk_wayland_display_create_shm_surface (display_wayland,
@@ -953,9 +953,9 @@ cdk_wayland_window_ensure_cairo_surface (CdkWindow *window)
 static cairo_surface_t *
 cdk_wayland_window_ref_cairo_surface (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
-  if (GDK_WINDOW_DESTROYED (impl->wrapper))
+  if (CDK_WINDOW_DESTROYED (impl->wrapper))
     return NULL;
 
   cdk_wayland_window_ensure_cairo_surface (window);
@@ -985,11 +985,11 @@ cdk_window_impl_wayland_begin_paint (CdkWindow *window)
 static void
 cdk_window_impl_wayland_end_paint (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   cairo_rectangle_int_t rect;
   int i, n;
 
-  if (!GDK_WINDOW_IS_MAPPED (window))
+  if (!CDK_WINDOW_IS_MAPPED (window))
     return;
 
   if (impl->staging_cairo_surface &&
@@ -1046,9 +1046,9 @@ cdk_window_impl_wayland_finalize (GObject *object)
 {
   CdkWindowImplWayland *impl;
 
-  g_return_if_fail (GDK_IS_WINDOW_IMPL_WAYLAND (object));
+  g_return_if_fail (CDK_IS_WINDOW_IMPL_WAYLAND (object));
 
-  impl = GDK_WINDOW_IMPL_WAYLAND (object);
+  impl = CDK_WINDOW_IMPL_WAYLAND (object);
 
   if (cdk_wayland_window_is_exported (impl->wrapper))
     cdk_wayland_window_unexport_handle (impl->wrapper);
@@ -1083,7 +1083,7 @@ cdk_wayland_window_configure (CdkWindow *window,
   g_return_if_fail (width > 0);
   g_return_if_fail (height > 0);
 
-  event = cdk_event_new (GDK_CONFIGURE);
+  event = cdk_event_new (CDK_CONFIGURE);
   event->configure.window = g_object_ref (window);
   event->configure.send_event = FALSE;
   event->configure.width = width;
@@ -1099,7 +1099,7 @@ cdk_wayland_window_configure (CdkWindow *window,
 static gboolean
 is_realized_shell_surface (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   return (impl->display_server.xdg_surface ||
           impl->display_server.zxdg_surface_v6);
@@ -1108,7 +1108,7 @@ is_realized_shell_surface (CdkWindow *window)
 static gboolean
 is_realized_toplevel (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   return (impl->display_server.xdg_toplevel ||
           impl->display_server.zxdg_toplevel_v6);
@@ -1117,7 +1117,7 @@ is_realized_toplevel (CdkWindow *window)
 static gboolean
 is_realized_popup (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   return (impl->display_server.xdg_popup ||
           impl->display_server.zxdg_popup_v6);
@@ -1126,13 +1126,13 @@ is_realized_popup (CdkWindow *window)
 static gboolean
 should_inhibit_resize (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   if (impl->display_server.wl_subsurface)
     return FALSE;
   else if (impl->use_custom_surface)
     return FALSE;
-  else if (impl->hint == GDK_WINDOW_TYPE_HINT_DND)
+  else if (impl->hint == CDK_WINDOW_TYPE_HINT_DND)
     return FALSE;
   else if (is_realized_popup (window))
     return FALSE;
@@ -1153,7 +1153,7 @@ cdk_wayland_window_maybe_configure (CdkWindow *window,
                                     int        height,
                                     int        scale)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   gboolean is_xdg_popup;
   gboolean is_visible;
 
@@ -1197,8 +1197,8 @@ cdk_wayland_window_sync_parent (CdkWindow *window,
                                 CdkWindow *parent)
 {
   CdkWaylandDisplay *display_wayland =
-    GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+    CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   CdkWindowImplWayland *impl_parent = NULL;
 
   g_assert (parent == NULL ||
@@ -1208,9 +1208,9 @@ cdk_wayland_window_sync_parent (CdkWindow *window,
     return;
 
   if (impl->transient_for)
-    impl_parent = GDK_WINDOW_IMPL_WAYLAND (impl->transient_for->impl);
+    impl_parent = CDK_WINDOW_IMPL_WAYLAND (impl->transient_for->impl);
   else if (parent)
-    impl_parent = GDK_WINDOW_IMPL_WAYLAND (parent->impl);
+    impl_parent = CDK_WINDOW_IMPL_WAYLAND (parent->impl);
 
   /* XXX: Is this correct? */
   if (impl_parent && !impl_parent->display_server.wl_surface)
@@ -1218,7 +1218,7 @@ cdk_wayland_window_sync_parent (CdkWindow *window,
 
   switch (display_wayland->shell_variant)
     {
-    case GDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
+    case CDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
       {
         struct xdg_toplevel *parent_toplevel;
 
@@ -1232,7 +1232,7 @@ cdk_wayland_window_sync_parent (CdkWindow *window,
         break;
       }
       break;
-    case GDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
+    case CDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
       {
         struct zxdg_toplevel_v6 *parent_toplevel;
 
@@ -1251,7 +1251,7 @@ cdk_wayland_window_sync_parent (CdkWindow *window,
 static void
 cdk_wayland_window_sync_parent_of_imported (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   if (!impl->display_server.wl_surface)
     return;
@@ -1270,7 +1270,7 @@ static void
 cdk_wayland_window_update_dialogs (CdkWindow *window)
 {
   CdkWaylandDisplay *display_wayland =
-    GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+    CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
   GList *l;
 
   if (!display_wayland->orphan_dialogs)
@@ -1281,13 +1281,13 @@ cdk_wayland_window_update_dialogs (CdkWindow *window)
       CdkWindow *w = l->data;
       CdkWindowImplWayland *impl;
 
-      if (!GDK_IS_WINDOW_IMPL_WAYLAND(w->impl))
+      if (!CDK_IS_WINDOW_IMPL_WAYLAND(w->impl))
         continue;
 
-      impl = GDK_WINDOW_IMPL_WAYLAND (w->impl);
+      impl = CDK_WINDOW_IMPL_WAYLAND (w->impl);
       if (w == window)
 	continue;
-      if (impl->hint != GDK_WINDOW_TYPE_HINT_DIALOG)
+      if (impl->hint != CDK_WINDOW_TYPE_HINT_DIALOG)
         continue;
       if (impl->transient_for)
         continue;
@@ -1300,9 +1300,9 @@ cdk_wayland_window_update_dialogs (CdkWindow *window)
 static void
 cdk_wayland_window_sync_title (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   CdkWaylandDisplay *display_wayland =
-    GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+    CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
 
   if (!is_realized_toplevel (window))
     return;
@@ -1312,11 +1312,11 @@ cdk_wayland_window_sync_title (CdkWindow *window)
 
   switch (display_wayland->shell_variant)
     {
-    case GDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
+    case CDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
       xdg_toplevel_set_title (impl->display_server.xdg_toplevel,
                               impl->title);
       break;
-    case GDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
+    case CDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
       zxdg_toplevel_v6_set_title (impl->display_server.zxdg_toplevel_v6,
                                   impl->title);
       break;
@@ -1327,7 +1327,7 @@ static void
 cdk_wayland_window_get_window_geometry (CdkWindow    *window,
                                         CdkRectangle *geometry)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   *geometry = (CdkRectangle) {
     .x = impl->margin_left,
@@ -1340,9 +1340,9 @@ cdk_wayland_window_get_window_geometry (CdkWindow    *window,
 static void
 cdk_wayland_window_sync_margin (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   CdkWaylandDisplay *display_wayland =
-    GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+    CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
   CdkRectangle geometry;
 
   if (!is_realized_shell_surface (window))
@@ -1358,14 +1358,14 @@ cdk_wayland_window_sync_margin (CdkWindow *window)
 
   switch (display_wayland->shell_variant)
     {
-    case GDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
+    case CDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
       xdg_surface_set_window_geometry (impl->display_server.xdg_surface,
                                        geometry.x,
                                        geometry.y,
                                        geometry.width,
                                        geometry.height);
       break;
-    case GDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
+    case CDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
       zxdg_surface_v6_set_window_geometry (impl->display_server.zxdg_surface_v6,
                                            geometry.x,
                                            geometry.y,
@@ -1400,7 +1400,7 @@ wl_region_from_cairo_region (CdkWaylandDisplay *display,
 static void
 cdk_wayland_window_sync_opaque_region (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   struct wl_region *wl_region = NULL;
 
   if (!impl->display_server.wl_surface)
@@ -1410,7 +1410,7 @@ cdk_wayland_window_sync_opaque_region (CdkWindow *window)
     return;
 
   if (impl->opaque_region != NULL)
-    wl_region = wl_region_from_cairo_region (GDK_WAYLAND_DISPLAY (cdk_window_get_display (window)),
+    wl_region = wl_region_from_cairo_region (CDK_WAYLAND_DISPLAY (cdk_window_get_display (window)),
                                              impl->opaque_region);
 
   wl_surface_set_opaque_region (impl->display_server.wl_surface, wl_region);
@@ -1424,7 +1424,7 @@ cdk_wayland_window_sync_opaque_region (CdkWindow *window)
 static void
 cdk_wayland_window_sync_input_region (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   struct wl_region *wl_region = NULL;
 
   if (!impl->display_server.wl_surface)
@@ -1434,7 +1434,7 @@ cdk_wayland_window_sync_input_region (CdkWindow *window)
     return;
 
   if (impl->input_region != NULL)
-    wl_region = wl_region_from_cairo_region (GDK_WAYLAND_DISPLAY (cdk_window_get_display (window)),
+    wl_region = wl_region_from_cairo_region (CDK_WAYLAND_DISPLAY (cdk_window_get_display (window)),
                                              impl->input_region);
 
   wl_surface_set_input_region (impl->display_server.wl_surface, wl_region);
@@ -1448,7 +1448,7 @@ cdk_wayland_window_sync_input_region (CdkWindow *window)
 static void
 cdk_wayland_set_input_region_if_empty (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   CdkWaylandDisplay *display;
   struct wl_region *empty;
 
@@ -1461,7 +1461,7 @@ cdk_wayland_set_input_region_if_empty (CdkWindow *window)
   if (!cairo_region_is_empty (impl->input_region))
     return;
 
-  display = GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+  display = CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
   empty = wl_compositor_create_region (display->compositor);
 
   wl_surface_set_input_region (impl->display_server.wl_surface, empty);
@@ -1475,10 +1475,10 @@ surface_enter (void              *data,
                struct wl_surface *wl_surface,
                struct wl_output  *output)
 {
-  CdkWindow *window = GDK_WINDOW (data);
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindow *window = CDK_WINDOW (data);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
-  GDK_NOTE (EVENTS,
+  CDK_NOTE (EVENTS,
             g_message ("surface enter, window %p output %p", window, output));
 
   impl->display_server.outputs = g_slist_prepend (impl->display_server.outputs, output);
@@ -1491,10 +1491,10 @@ surface_leave (void              *data,
                struct wl_surface *wl_surface,
                struct wl_output  *output)
 {
-  CdkWindow *window = GDK_WINDOW (data);
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindow *window = CDK_WINDOW (data);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
-  GDK_NOTE (EVENTS,
+  CDK_NOTE (EVENTS,
             g_message ("surface leave, window %p output %p", window, output));
 
   impl->display_server.outputs = g_slist_remove (impl->display_server.outputs, output);
@@ -1512,7 +1512,7 @@ static void
 on_parent_surface_committed (CdkWindowImplWayland *parent_impl,
                              CdkWindow            *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   g_signal_handler_disconnect (parent_impl,
                                impl->parent_surface_committed_handler);
@@ -1531,7 +1531,7 @@ cdk_wayland_window_set_subsurface_position (CdkWindow *window,
 {
   CdkWindowImplWayland *impl;
 
-  impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   wl_subsurface_set_position (impl->display_server.wl_subsurface, x, y);
   impl->subsurface_x = x;
@@ -1546,7 +1546,7 @@ cdk_wayland_window_create_subsurface (CdkWindow *window)
   CdkWindowImplWayland *impl, *parent_impl = NULL;
   CdkWaylandDisplay *display_wayland;
 
-  impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   if (!impl->display_server.wl_surface)
     return; /* Bail out, surface and subsurface will be created later when shown */
@@ -1555,11 +1555,11 @@ cdk_wayland_window_create_subsurface (CdkWindow *window)
     return;
 
   if (impl->transient_for)
-    parent_impl = GDK_WINDOW_IMPL_WAYLAND (impl->transient_for->impl);
+    parent_impl = CDK_WINDOW_IMPL_WAYLAND (impl->transient_for->impl);
 
   if (parent_impl && parent_impl->display_server.wl_surface)
     {
-      display_wayland = GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+      display_wayland = CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
       impl->display_server.wl_subsurface =
         wl_subcompositor_get_subsurface (display_wayland->subcompositor,
                                          impl->display_server.wl_surface, parent_impl->display_server.wl_surface);
@@ -1582,8 +1582,8 @@ cdk_wayland_window_create_subsurface (CdkWindow *window)
 static void
 cdk_wayland_window_create_surface (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
 
   impl->display_server.wl_surface = wl_compositor_create_surface (display_wayland->compositor);
   wl_surface_add_listener (impl->display_server.wl_surface, &surface_listener, window);
@@ -1592,18 +1592,18 @@ cdk_wayland_window_create_surface (CdkWindow *window)
 static gboolean
 should_use_fixed_size (CdkWindowState state)
 {
-  return state & (GDK_WINDOW_STATE_MAXIMIZED |
-                  GDK_WINDOW_STATE_FULLSCREEN |
-                  GDK_WINDOW_STATE_TILED);
+  return state & (CDK_WINDOW_STATE_MAXIMIZED |
+                  CDK_WINDOW_STATE_FULLSCREEN |
+                  CDK_WINDOW_STATE_TILED);
 }
 
 static void
 cdk_wayland_window_handle_configure (CdkWindow *window,
                                      uint32_t   serial)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   CdkWaylandDisplay *display_wayland =
-    GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+    CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
   CdkWindowState new_state;
   int width = impl->pending.width;
   int height = impl->pending.height;
@@ -1661,7 +1661,7 @@ cdk_wayland_window_handle_configure (CdkWindow *window,
 
       /* Ignore size increments for maximized/fullscreen windows */
       if (fixed_size)
-        geometry_mask &= ~GDK_HINT_RESIZE_INC;
+        geometry_mask &= ~CDK_HINT_RESIZE_INC;
       if (!saved_size)
         {
           /* Do not reapply contrains if we are restoring original size */
@@ -1712,29 +1712,29 @@ cdk_wayland_window_handle_configure (CdkWindow *window,
       impl->fixed_size_height = height;
     }
 
-  GDK_NOTE (EVENTS,
+  CDK_NOTE (EVENTS,
             g_message ("configure, window %p %dx%d,%s%s%s%s",
                        window, width, height,
-                       (new_state & GDK_WINDOW_STATE_FULLSCREEN) ? " fullscreen" : "",
-                       (new_state & GDK_WINDOW_STATE_MAXIMIZED) ? " maximized" : "",
-                       (new_state & GDK_WINDOW_STATE_FOCUSED) ? " focused" : "",
-                       (new_state & GDK_WINDOW_STATE_TILED) ? " tiled" : ""));
+                       (new_state & CDK_WINDOW_STATE_FULLSCREEN) ? " fullscreen" : "",
+                       (new_state & CDK_WINDOW_STATE_MAXIMIZED) ? " maximized" : "",
+                       (new_state & CDK_WINDOW_STATE_FOCUSED) ? " focused" : "",
+                       (new_state & CDK_WINDOW_STATE_TILED) ? " tiled" : ""));
 
   _cdk_set_window_state (window, new_state);
 
   switch (display_wayland->shell_variant)
     {
-    case GDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
+    case CDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
       xdg_surface_ack_configure (impl->display_server.xdg_surface, serial);
       break;
-    case GDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
+    case CDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
       zxdg_surface_v6_ack_configure (impl->display_server.zxdg_surface_v6,
                                      serial);
       break;
     }
 
-  if (impl->hint != GDK_WINDOW_TYPE_HINT_DIALOG &&
-      new_state & GDK_WINDOW_STATE_FOCUSED)
+  if (impl->hint != CDK_WINDOW_TYPE_HINT_DIALOG &&
+      new_state & CDK_WINDOW_STATE_FOCUSED)
     cdk_wayland_window_update_dialogs (window);
 }
 
@@ -1744,7 +1744,7 @@ cdk_wayland_window_handle_configure_toplevel (CdkWindow     *window,
                                               int32_t        height,
                                               CdkWindowState state)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   impl->pending.state |= state;
   impl->pending.width = width;
@@ -1757,10 +1757,10 @@ cdk_wayland_window_handle_close (CdkWindow *window)
   CdkDisplay *display;
   CdkEvent *event;
 
-  GDK_NOTE (EVENTS,
+  CDK_NOTE (EVENTS,
             g_message ("close %p", window));
 
-  event = cdk_event_new (GDK_DELETE);
+  event = cdk_event_new (CDK_DELETE);
   event->any.window = g_object_ref (window);
   event->any.send_event = TRUE;
 
@@ -1773,7 +1773,7 @@ xdg_surface_configure (void               *data,
                        struct xdg_surface *xdg_surface,
                        uint32_t            serial)
 {
-  CdkWindow *window = GDK_WINDOW (data);
+  CdkWindow *window = CDK_WINDOW (data);
 
   cdk_wayland_window_handle_configure (window, serial);
 }
@@ -1789,7 +1789,7 @@ xdg_toplevel_configure (void                *data,
                         int32_t              height,
                         struct wl_array     *states)
 {
-  CdkWindow *window = GDK_WINDOW (data);
+  CdkWindow *window = CDK_WINDOW (data);
   uint32_t *p;
   CdkWindowState pending_state = 0;
 
@@ -1800,13 +1800,13 @@ xdg_toplevel_configure (void                *data,
       switch (state)
         {
         case XDG_TOPLEVEL_STATE_FULLSCREEN:
-          pending_state |= GDK_WINDOW_STATE_FULLSCREEN;
+          pending_state |= CDK_WINDOW_STATE_FULLSCREEN;
           break;
         case XDG_TOPLEVEL_STATE_MAXIMIZED:
-          pending_state |= GDK_WINDOW_STATE_MAXIMIZED;
+          pending_state |= CDK_WINDOW_STATE_MAXIMIZED;
           break;
         case XDG_TOPLEVEL_STATE_ACTIVATED:
-          pending_state |= GDK_WINDOW_STATE_FOCUSED;
+          pending_state |= CDK_WINDOW_STATE_FOCUSED;
           break;
         case XDG_TOPLEVEL_STATE_RESIZING:
           break;
@@ -1824,7 +1824,7 @@ static void
 xdg_toplevel_close (void                *data,
                     struct xdg_toplevel *xdg_toplevel)
 {
-  CdkWindow *window = GDK_WINDOW (data);
+  CdkWindow *window = CDK_WINDOW (data);
 
   cdk_wayland_window_handle_close (window);
 }
@@ -1838,8 +1838,8 @@ static void
 create_xdg_toplevel_resources (CdkWindow *window)
 {
   CdkWaylandDisplay *display_wayland =
-    GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+    CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   impl->display_server.xdg_surface =
     xdg_wm_base_get_xdg_surface (display_wayland->xdg_wm_base,
@@ -1860,7 +1860,7 @@ zxdg_surface_v6_configure (void                   *data,
                            struct zxdg_surface_v6 *xdg_surface,
                            uint32_t                serial)
 {
-  CdkWindow *window = GDK_WINDOW (data);
+  CdkWindow *window = CDK_WINDOW (data);
 
   cdk_wayland_window_handle_configure (window, serial);
 }
@@ -1876,7 +1876,7 @@ zxdg_toplevel_v6_configure (void                    *data,
                             int32_t                  height,
                             struct wl_array         *states)
 {
-  CdkWindow *window = GDK_WINDOW (data);
+  CdkWindow *window = CDK_WINDOW (data);
   uint32_t *p;
   CdkWindowState pending_state = 0;
 
@@ -1887,13 +1887,13 @@ zxdg_toplevel_v6_configure (void                    *data,
       switch (state)
         {
         case ZXDG_TOPLEVEL_V6_STATE_FULLSCREEN:
-          pending_state |= GDK_WINDOW_STATE_FULLSCREEN;
+          pending_state |= CDK_WINDOW_STATE_FULLSCREEN;
           break;
         case ZXDG_TOPLEVEL_V6_STATE_MAXIMIZED:
-          pending_state |= GDK_WINDOW_STATE_MAXIMIZED;
+          pending_state |= CDK_WINDOW_STATE_MAXIMIZED;
           break;
         case ZXDG_TOPLEVEL_V6_STATE_ACTIVATED:
-          pending_state |= GDK_WINDOW_STATE_FOCUSED;
+          pending_state |= CDK_WINDOW_STATE_FOCUSED;
           break;
         case ZXDG_TOPLEVEL_V6_STATE_RESIZING:
           break;
@@ -1911,7 +1911,7 @@ static void
 zxdg_toplevel_v6_close (void                    *data,
                         struct zxdg_toplevel_v6 *xdg_toplevel)
 {
-  CdkWindow *window = GDK_WINDOW (data);
+  CdkWindow *window = CDK_WINDOW (data);
 
   cdk_wayland_window_handle_close (window);
 }
@@ -1925,8 +1925,8 @@ static void
 create_zxdg_toplevel_v6_resources (CdkWindow *window)
 {
   CdkWaylandDisplay *display_wayland =
-    GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+    CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   impl->display_server.zxdg_surface_v6 =
     zxdg_shell_v6_get_xdg_surface (display_wayland->zxdg_shell_v6,
@@ -1950,22 +1950,22 @@ cdk_wayland_window_set_application_id (CdkWindow *window, const char* applicatio
 
   g_return_if_fail (application_id != NULL);
 
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     return;
 
   if (!is_realized_toplevel (window))
     return;
 
-  display_wayland = GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
-  impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  display_wayland = CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+  impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   switch (display_wayland->shell_variant)
     {
-    case GDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
+    case CDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
       xdg_toplevel_set_app_id (impl->display_server.xdg_toplevel,
                                application_id);
       break;
-    case GDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
+    case CDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
       zxdg_toplevel_v6_set_app_id (impl->display_server.zxdg_toplevel_v6,
                                    application_id);
       break;
@@ -1975,8 +1975,8 @@ cdk_wayland_window_set_application_id (CdkWindow *window, const char* applicatio
 static void
 cdk_wayland_window_create_xdg_toplevel (CdkWindow *window)
 {
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   const gchar *app_id;
   CdkScreen *screen = cdk_window_get_screen (window);
   struct wl_output *fullscreen_output = NULL;
@@ -1993,10 +1993,10 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
   switch (display_wayland->shell_variant)
     {
-    case GDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
+    case CDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
       create_xdg_toplevel_resources (window);
       break;
-    case GDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
+    case CDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
       create_zxdg_toplevel_v6_resources (window);
       break;
     }
@@ -2007,17 +2007,17 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
   switch (display_wayland->shell_variant)
     {
-    case GDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
-      if (window->state & GDK_WINDOW_STATE_MAXIMIZED)
+    case CDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
+      if (window->state & CDK_WINDOW_STATE_MAXIMIZED)
         xdg_toplevel_set_maximized (impl->display_server.xdg_toplevel);
-      if (window->state & GDK_WINDOW_STATE_FULLSCREEN)
+      if (window->state & CDK_WINDOW_STATE_FULLSCREEN)
         xdg_toplevel_set_fullscreen (impl->display_server.xdg_toplevel,
                                      fullscreen_output);
       break;
-    case GDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
-      if (window->state & GDK_WINDOW_STATE_MAXIMIZED)
+    case CDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
+      if (window->state & CDK_WINDOW_STATE_MAXIMIZED)
         zxdg_toplevel_v6_set_maximized (impl->display_server.zxdg_toplevel_v6);
-      if (window->state & GDK_WINDOW_STATE_FULLSCREEN)
+      if (window->state & CDK_WINDOW_STATE_FULLSCREEN)
         zxdg_toplevel_v6_set_fullscreen (impl->display_server.zxdg_toplevel_v6,
                                          fullscreen_output);
       break;
@@ -2032,7 +2032,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   maybe_set_ctk_surface_dbus_properties (window);
   maybe_set_ctk_surface_modal (window);
 
-  if (impl->hint == GDK_WINDOW_TYPE_HINT_DIALOG)
+  if (impl->hint == CDK_WINDOW_TYPE_HINT_DIALOG)
     _cdk_wayland_screen_add_orphan_dialog (window);
 
   wl_surface_commit (impl->display_server.wl_surface);
@@ -2045,7 +2045,7 @@ cdk_wayland_window_handle_configure_popup (CdkWindow *window,
                                            int32_t    width,
                                            int32_t    height)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   CdkRectangle flipped_rect;
   CdkRectangle final_rect;
   gboolean flipped_x;
@@ -2080,7 +2080,7 @@ xdg_popup_configure (void             *data,
                      int32_t           width,
                      int32_t           height)
 {
-  CdkWindow *window = GDK_WINDOW (data);
+  CdkWindow *window = CDK_WINDOW (data);
 
   cdk_wayland_window_handle_configure_popup (window, x, y, width, height);
 }
@@ -2089,9 +2089,9 @@ static void
 xdg_popup_done (void             *data,
                 struct xdg_popup *xdg_popup)
 {
-  CdkWindow *window = GDK_WINDOW (data);
+  CdkWindow *window = CDK_WINDOW (data);
 
-  GDK_NOTE (EVENTS,
+  CDK_NOTE (EVENTS,
             g_message ("done %p", window));
 
   cdk_window_hide (window);
@@ -2110,7 +2110,7 @@ zxdg_popup_v6_configure (void                 *data,
                          int32_t               width,
                          int32_t               height)
 {
-  CdkWindow *window = GDK_WINDOW (data);
+  CdkWindow *window = CDK_WINDOW (data);
 
   cdk_wayland_window_handle_configure_popup (window, x, y, width, height);
 }
@@ -2119,9 +2119,9 @@ static void
 zxdg_popup_v6_done (void                 *data,
                     struct zxdg_popup_v6 *xdg_popup)
 {
-  CdkWindow *window = GDK_WINDOW (data);
+  CdkWindow *window = CDK_WINDOW (data);
 
-  GDK_NOTE (EVENTS,
+  CDK_NOTE (EVENTS,
             g_message ("done %p", window));
 
   cdk_window_hide (window);
@@ -2137,24 +2137,24 @@ rect_anchor_to_anchor (CdkGravity rect_anchor)
 {
   switch (rect_anchor)
     {
-    case GDK_GRAVITY_NORTH_WEST:
-    case GDK_GRAVITY_STATIC:
+    case CDK_GRAVITY_NORTH_WEST:
+    case CDK_GRAVITY_STATIC:
       return XDG_POSITIONER_ANCHOR_TOP_LEFT;
-    case GDK_GRAVITY_NORTH:
+    case CDK_GRAVITY_NORTH:
       return XDG_POSITIONER_ANCHOR_TOP;
-    case GDK_GRAVITY_NORTH_EAST:
+    case CDK_GRAVITY_NORTH_EAST:
       return XDG_POSITIONER_ANCHOR_TOP_RIGHT;
-    case GDK_GRAVITY_WEST:
+    case CDK_GRAVITY_WEST:
       return XDG_POSITIONER_ANCHOR_LEFT;
-    case GDK_GRAVITY_CENTER:
+    case CDK_GRAVITY_CENTER:
       return XDG_POSITIONER_ANCHOR_NONE;
-    case GDK_GRAVITY_EAST:
+    case CDK_GRAVITY_EAST:
       return XDG_POSITIONER_ANCHOR_RIGHT;
-    case GDK_GRAVITY_SOUTH_WEST:
+    case CDK_GRAVITY_SOUTH_WEST:
       return XDG_POSITIONER_ANCHOR_BOTTOM_LEFT;
-    case GDK_GRAVITY_SOUTH:
+    case CDK_GRAVITY_SOUTH:
       return XDG_POSITIONER_ANCHOR_BOTTOM;
-    case GDK_GRAVITY_SOUTH_EAST:
+    case CDK_GRAVITY_SOUTH_EAST:
       return XDG_POSITIONER_ANCHOR_BOTTOM_RIGHT;
     default:
       g_assert_not_reached ();
@@ -2166,24 +2166,24 @@ window_anchor_to_gravity (CdkGravity rect_anchor)
 {
   switch (rect_anchor)
     {
-    case GDK_GRAVITY_NORTH_WEST:
-    case GDK_GRAVITY_STATIC:
+    case CDK_GRAVITY_NORTH_WEST:
+    case CDK_GRAVITY_STATIC:
       return XDG_POSITIONER_GRAVITY_BOTTOM_RIGHT;
-    case GDK_GRAVITY_NORTH:
+    case CDK_GRAVITY_NORTH:
       return XDG_POSITIONER_GRAVITY_BOTTOM;
-    case GDK_GRAVITY_NORTH_EAST:
+    case CDK_GRAVITY_NORTH_EAST:
       return XDG_POSITIONER_GRAVITY_BOTTOM_LEFT;
-    case GDK_GRAVITY_WEST:
+    case CDK_GRAVITY_WEST:
       return XDG_POSITIONER_GRAVITY_RIGHT;
-    case GDK_GRAVITY_CENTER:
+    case CDK_GRAVITY_CENTER:
       return XDG_POSITIONER_GRAVITY_NONE;
-    case GDK_GRAVITY_EAST:
+    case CDK_GRAVITY_EAST:
       return XDG_POSITIONER_GRAVITY_LEFT;
-    case GDK_GRAVITY_SOUTH_WEST:
+    case CDK_GRAVITY_SOUTH_WEST:
       return XDG_POSITIONER_GRAVITY_TOP_RIGHT;
-    case GDK_GRAVITY_SOUTH:
+    case CDK_GRAVITY_SOUTH:
       return XDG_POSITIONER_GRAVITY_TOP;
-    case GDK_GRAVITY_SOUTH_EAST:
+    case CDK_GRAVITY_SOUTH_EAST:
       return XDG_POSITIONER_GRAVITY_TOP_LEFT;
     default:
       g_assert_not_reached ();
@@ -2195,27 +2195,27 @@ rect_anchor_to_anchor_legacy (CdkGravity rect_anchor)
 {
   switch (rect_anchor)
     {
-    case GDK_GRAVITY_NORTH_WEST:
-    case GDK_GRAVITY_STATIC:
+    case CDK_GRAVITY_NORTH_WEST:
+    case CDK_GRAVITY_STATIC:
       return (ZXDG_POSITIONER_V6_ANCHOR_TOP |
               ZXDG_POSITIONER_V6_ANCHOR_LEFT);
-    case GDK_GRAVITY_NORTH:
+    case CDK_GRAVITY_NORTH:
       return ZXDG_POSITIONER_V6_ANCHOR_TOP;
-    case GDK_GRAVITY_NORTH_EAST:
+    case CDK_GRAVITY_NORTH_EAST:
       return (ZXDG_POSITIONER_V6_ANCHOR_TOP |
               ZXDG_POSITIONER_V6_ANCHOR_RIGHT);
-    case GDK_GRAVITY_WEST:
+    case CDK_GRAVITY_WEST:
       return ZXDG_POSITIONER_V6_ANCHOR_LEFT;
-    case GDK_GRAVITY_CENTER:
+    case CDK_GRAVITY_CENTER:
       return ZXDG_POSITIONER_V6_ANCHOR_NONE;
-    case GDK_GRAVITY_EAST:
+    case CDK_GRAVITY_EAST:
       return ZXDG_POSITIONER_V6_ANCHOR_RIGHT;
-    case GDK_GRAVITY_SOUTH_WEST:
+    case CDK_GRAVITY_SOUTH_WEST:
       return (ZXDG_POSITIONER_V6_ANCHOR_BOTTOM |
               ZXDG_POSITIONER_V6_ANCHOR_LEFT);
-    case GDK_GRAVITY_SOUTH:
+    case CDK_GRAVITY_SOUTH:
       return ZXDG_POSITIONER_V6_ANCHOR_BOTTOM;
-    case GDK_GRAVITY_SOUTH_EAST:
+    case CDK_GRAVITY_SOUTH_EAST:
       return (ZXDG_POSITIONER_V6_ANCHOR_BOTTOM |
               ZXDG_POSITIONER_V6_ANCHOR_RIGHT);
     default:
@@ -2228,27 +2228,27 @@ window_anchor_to_gravity_legacy (CdkGravity rect_anchor)
 {
   switch (rect_anchor)
     {
-    case GDK_GRAVITY_NORTH_WEST:
-    case GDK_GRAVITY_STATIC:
+    case CDK_GRAVITY_NORTH_WEST:
+    case CDK_GRAVITY_STATIC:
       return (ZXDG_POSITIONER_V6_GRAVITY_BOTTOM |
               ZXDG_POSITIONER_V6_GRAVITY_RIGHT);
-    case GDK_GRAVITY_NORTH:
+    case CDK_GRAVITY_NORTH:
       return ZXDG_POSITIONER_V6_GRAVITY_BOTTOM;
-    case GDK_GRAVITY_NORTH_EAST:
+    case CDK_GRAVITY_NORTH_EAST:
       return (ZXDG_POSITIONER_V6_GRAVITY_BOTTOM |
               ZXDG_POSITIONER_V6_GRAVITY_LEFT);
-    case GDK_GRAVITY_WEST:
+    case CDK_GRAVITY_WEST:
       return ZXDG_POSITIONER_V6_GRAVITY_RIGHT;
-    case GDK_GRAVITY_CENTER:
+    case CDK_GRAVITY_CENTER:
       return ZXDG_POSITIONER_V6_GRAVITY_NONE;
-    case GDK_GRAVITY_EAST:
+    case CDK_GRAVITY_EAST:
       return ZXDG_POSITIONER_V6_GRAVITY_LEFT;
-    case GDK_GRAVITY_SOUTH_WEST:
+    case CDK_GRAVITY_SOUTH_WEST:
       return (ZXDG_POSITIONER_V6_GRAVITY_TOP |
               ZXDG_POSITIONER_V6_GRAVITY_RIGHT);
-    case GDK_GRAVITY_SOUTH:
+    case CDK_GRAVITY_SOUTH:
       return ZXDG_POSITIONER_V6_GRAVITY_TOP;
-    case GDK_GRAVITY_SOUTH_EAST:
+    case CDK_GRAVITY_SOUTH_EAST:
       return (ZXDG_POSITIONER_V6_GRAVITY_TOP |
               ZXDG_POSITIONER_V6_GRAVITY_LEFT);
     default:
@@ -2259,8 +2259,8 @@ window_anchor_to_gravity_legacy (CdkGravity rect_anchor)
 static void
 kwin_server_decoration_mode_set (void *data, struct org_kde_kwin_server_decoration *org_kde_kwin_server_decoration, uint32_t mode)
 {
-  CdkWindow *window = GDK_WINDOW (data);
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindow *window = CDK_WINDOW (data);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   if ((mode == ORG_KDE_KWIN_SERVER_DECORATION_MODE_SERVER && impl->using_csd) ||
         (mode == ORG_KDE_KWIN_SERVER_DECORATION_MODE_CLIENT && !impl->using_csd))
@@ -2274,8 +2274,8 @@ static const struct org_kde_kwin_server_decoration_listener kwin_server_decorati
 static void
 cdk_wayland_window_announce_decoration_mode (CdkWindow *window)
 {
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   if (!display_wayland->server_decoration_manager)
     return;
@@ -2303,7 +2303,7 @@ cdk_wayland_window_announce_decoration_mode (CdkWindow *window)
 void
 cdk_wayland_window_announce_csd (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   impl->using_csd = TRUE;
   if (impl->mapped)
@@ -2313,7 +2313,7 @@ cdk_wayland_window_announce_csd (CdkWindow *window)
 void
 cdk_wayland_window_announce_ssd (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   impl->using_csd = FALSE;
   if (impl->mapped)
@@ -2325,13 +2325,13 @@ get_real_parent_and_translate (CdkWindow *window,
                                gint      *x,
                                gint      *y)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   CdkWindow *parent = impl->transient_for;
 
   while (parent)
     {
       CdkWindowImplWayland *parent_impl =
-        GDK_WINDOW_IMPL_WAYLAND (parent->impl);
+        CDK_WINDOW_IMPL_WAYLAND (parent->impl);
       CdkWindow *effective_parent = cdk_window_get_effective_parent (parent);
 
       if (parent == NULL || (cdk_window_has_native (parent) &&
@@ -2395,7 +2395,7 @@ calculate_popup_rect (CdkWindow    *window,
                       CdkGravity    window_anchor,
                       CdkRectangle *out_rect)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   CdkRectangle geometry;
   CdkRectangle anchor_rect;
   int x = 0, y = 0;
@@ -2413,40 +2413,40 @@ calculate_popup_rect (CdkWindow    *window,
 
   switch (rect_anchor)
     {
-    case GDK_GRAVITY_STATIC:
-    case GDK_GRAVITY_NORTH_WEST:
+    case CDK_GRAVITY_STATIC:
+    case CDK_GRAVITY_NORTH_WEST:
       x = anchor_rect.x;
       y = anchor_rect.y;
       break;
-    case GDK_GRAVITY_NORTH:
+    case CDK_GRAVITY_NORTH:
       x = anchor_rect.x + (anchor_rect.width / 2);
       y = anchor_rect.y;
       break;
-    case GDK_GRAVITY_NORTH_EAST:
+    case CDK_GRAVITY_NORTH_EAST:
       x = anchor_rect.x + anchor_rect.width;
       y = anchor_rect.y;
       break;
-    case GDK_GRAVITY_WEST:
+    case CDK_GRAVITY_WEST:
       x = anchor_rect.x;
       y = anchor_rect.y + (anchor_rect.height / 2);
       break;
-    case GDK_GRAVITY_CENTER:
+    case CDK_GRAVITY_CENTER:
       x = anchor_rect.x + (anchor_rect.width / 2);
       y = anchor_rect.y + (anchor_rect.height / 2);
       break;
-    case GDK_GRAVITY_EAST:
+    case CDK_GRAVITY_EAST:
       x = anchor_rect.x + anchor_rect.width;
       y = anchor_rect.y + (anchor_rect.height / 2);
       break;
-    case GDK_GRAVITY_SOUTH_WEST:
+    case CDK_GRAVITY_SOUTH_WEST:
       x = anchor_rect.x;
       y = anchor_rect.y + anchor_rect.height;
       break;
-    case GDK_GRAVITY_SOUTH:
+    case CDK_GRAVITY_SOUTH:
       x = anchor_rect.x + (anchor_rect.width / 2);
       y = anchor_rect.y + anchor_rect.height;
       break;
-    case GDK_GRAVITY_SOUTH_EAST:
+    case CDK_GRAVITY_SOUTH_EAST:
       x = anchor_rect.x + anchor_rect.width;
       y = anchor_rect.y + anchor_rect.height;
       break;
@@ -2454,34 +2454,34 @@ calculate_popup_rect (CdkWindow    *window,
 
   switch (window_anchor)
     {
-    case GDK_GRAVITY_STATIC:
-    case GDK_GRAVITY_NORTH_WEST:
+    case CDK_GRAVITY_STATIC:
+    case CDK_GRAVITY_NORTH_WEST:
       break;
-    case GDK_GRAVITY_NORTH:
+    case CDK_GRAVITY_NORTH:
       x -= geometry.width / 2;
       break;
-    case GDK_GRAVITY_NORTH_EAST:
+    case CDK_GRAVITY_NORTH_EAST:
       x -= geometry.width;
       break;
-    case GDK_GRAVITY_WEST:
+    case CDK_GRAVITY_WEST:
       y -= geometry.height / 2;
       break;
-    case GDK_GRAVITY_CENTER:
+    case CDK_GRAVITY_CENTER:
       x -= geometry.width / 2;
       y -= geometry.height / 2;
       break;
-    case GDK_GRAVITY_EAST:
+    case CDK_GRAVITY_EAST:
       x -= geometry.width;
       y -= geometry.height / 2;
       break;
-    case GDK_GRAVITY_SOUTH_WEST:
+    case CDK_GRAVITY_SOUTH_WEST:
       y -= geometry.height;
       break;
-    case GDK_GRAVITY_SOUTH:
+    case CDK_GRAVITY_SOUTH:
       x -= geometry.width / 2;
       y -= geometry.height;
       break;
-    case GDK_GRAVITY_SOUTH_EAST:
+    case CDK_GRAVITY_SOUTH_EAST:
       x -= geometry.width;
       y -= geometry.height;
       break;
@@ -2500,25 +2500,25 @@ flip_anchor_horizontally (CdkGravity anchor)
 {
   switch (anchor)
     {
-    case GDK_GRAVITY_STATIC:
-    case GDK_GRAVITY_NORTH_WEST:
-      return GDK_GRAVITY_NORTH_EAST;
-    case GDK_GRAVITY_NORTH:
-      return GDK_GRAVITY_NORTH;
-    case GDK_GRAVITY_NORTH_EAST:
-      return GDK_GRAVITY_NORTH_WEST;
-    case GDK_GRAVITY_WEST:
-      return GDK_GRAVITY_EAST;
-    case GDK_GRAVITY_CENTER:
-      return GDK_GRAVITY_CENTER;
-    case GDK_GRAVITY_EAST:
-      return GDK_GRAVITY_WEST;
-    case GDK_GRAVITY_SOUTH_WEST:
-      return GDK_GRAVITY_SOUTH_EAST;
-    case GDK_GRAVITY_SOUTH:
-      return GDK_GRAVITY_SOUTH;
-    case GDK_GRAVITY_SOUTH_EAST:
-      return GDK_GRAVITY_SOUTH_WEST;
+    case CDK_GRAVITY_STATIC:
+    case CDK_GRAVITY_NORTH_WEST:
+      return CDK_GRAVITY_NORTH_EAST;
+    case CDK_GRAVITY_NORTH:
+      return CDK_GRAVITY_NORTH;
+    case CDK_GRAVITY_NORTH_EAST:
+      return CDK_GRAVITY_NORTH_WEST;
+    case CDK_GRAVITY_WEST:
+      return CDK_GRAVITY_EAST;
+    case CDK_GRAVITY_CENTER:
+      return CDK_GRAVITY_CENTER;
+    case CDK_GRAVITY_EAST:
+      return CDK_GRAVITY_WEST;
+    case CDK_GRAVITY_SOUTH_WEST:
+      return CDK_GRAVITY_SOUTH_EAST;
+    case CDK_GRAVITY_SOUTH:
+      return CDK_GRAVITY_SOUTH;
+    case CDK_GRAVITY_SOUTH_EAST:
+      return CDK_GRAVITY_SOUTH_WEST;
     }
 
   g_assert_not_reached ();
@@ -2529,25 +2529,25 @@ flip_anchor_vertically (CdkGravity anchor)
 {
   switch (anchor)
     {
-    case GDK_GRAVITY_STATIC:
-    case GDK_GRAVITY_NORTH_WEST:
-      return GDK_GRAVITY_SOUTH_WEST;
-    case GDK_GRAVITY_NORTH:
-      return GDK_GRAVITY_SOUTH;
-    case GDK_GRAVITY_NORTH_EAST:
-      return GDK_GRAVITY_SOUTH_EAST;
-    case GDK_GRAVITY_WEST:
-      return GDK_GRAVITY_WEST;
-    case GDK_GRAVITY_CENTER:
-      return GDK_GRAVITY_CENTER;
-    case GDK_GRAVITY_EAST:
-      return GDK_GRAVITY_EAST;
-    case GDK_GRAVITY_SOUTH_WEST:
-      return GDK_GRAVITY_NORTH_WEST;
-    case GDK_GRAVITY_SOUTH:
-      return GDK_GRAVITY_NORTH;
-    case GDK_GRAVITY_SOUTH_EAST:
-      return GDK_GRAVITY_NORTH_EAST;
+    case CDK_GRAVITY_STATIC:
+    case CDK_GRAVITY_NORTH_WEST:
+      return CDK_GRAVITY_SOUTH_WEST;
+    case CDK_GRAVITY_NORTH:
+      return CDK_GRAVITY_SOUTH;
+    case CDK_GRAVITY_NORTH_EAST:
+      return CDK_GRAVITY_SOUTH_EAST;
+    case CDK_GRAVITY_WEST:
+      return CDK_GRAVITY_WEST;
+    case CDK_GRAVITY_CENTER:
+      return CDK_GRAVITY_CENTER;
+    case CDK_GRAVITY_EAST:
+      return CDK_GRAVITY_EAST;
+    case CDK_GRAVITY_SOUTH_WEST:
+      return CDK_GRAVITY_NORTH_WEST;
+    case CDK_GRAVITY_SOUTH:
+      return CDK_GRAVITY_NORTH;
+    case CDK_GRAVITY_SOUTH_EAST:
+      return CDK_GRAVITY_NORTH_EAST;
     }
 
   g_assert_not_reached ();
@@ -2570,10 +2570,10 @@ calculate_moved_to_rect_result (CdkWindow    *window,
   gint window_width, window_height;
   CdkRectangle best_rect;
 
-  g_return_if_fail (GDK_IS_WAYLAND_WINDOW (window));
-  g_return_if_fail (GDK_IS_WINDOW_IMPL_WAYLAND (window->impl));
+  g_return_if_fail (CDK_IS_WAYLAND_WINDOW (window));
+  g_return_if_fail (CDK_IS_WINDOW_IMPL_WAYLAND (window->impl));
 
-  impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   parent = translate_from_real_parent_window_geometry (window, &x, &y);
   *final_rect = (CdkRectangle) {
@@ -2602,7 +2602,7 @@ calculate_moved_to_rect_result (CdkWindow    *window,
   *flipped_rect = best_rect;
 
   if (x != best_rect.x &&
-      impl->pending_move_to_rect.anchor_hints & GDK_ANCHOR_FLIP_X)
+      impl->pending_move_to_rect.anchor_hints & CDK_ANCHOR_FLIP_X)
     {
       CdkRectangle flipped_x_rect;
       CdkGravity flipped_rect_anchor;
@@ -2621,7 +2621,7 @@ calculate_moved_to_rect_result (CdkWindow    *window,
         flipped_rect->x = x;
     }
   if (y != best_rect.y &&
-      impl->pending_move_to_rect.anchor_hints & GDK_ANCHOR_FLIP_Y)
+      impl->pending_move_to_rect.anchor_hints & CDK_ANCHOR_FLIP_Y)
     {
       CdkRectangle flipped_y_rect;
       CdkGravity flipped_rect_anchor;
@@ -2647,9 +2647,9 @@ calculate_moved_to_rect_result (CdkWindow    *window,
 static gpointer
 create_dynamic_positioner (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   CdkWaylandDisplay *display =
-    GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+    CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
   CdkRectangle geometry;
   uint32_t constraint_adjustment = ZXDG_POSITIONER_V6_CONSTRAINT_ADJUSTMENT_NONE;
   gint real_anchor_rect_x, real_anchor_rect_y;
@@ -2668,7 +2668,7 @@ create_dynamic_positioner (CdkWindow *window)
 
   switch (display->shell_variant)
     {
-    case GDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
+    case CDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
       {
         struct xdg_positioner *positioner;
         enum xdg_positioner_anchor anchor;
@@ -2692,24 +2692,24 @@ create_dynamic_positioner (CdkWindow *window)
         gravity = window_anchor_to_gravity (impl->pending_move_to_rect.window_anchor);
         xdg_positioner_set_gravity (positioner, gravity);
 
-        if (impl->pending_move_to_rect.anchor_hints & GDK_ANCHOR_FLIP_X)
+        if (impl->pending_move_to_rect.anchor_hints & CDK_ANCHOR_FLIP_X)
           constraint_adjustment |= XDG_POSITIONER_CONSTRAINT_ADJUSTMENT_FLIP_X;
-        if (impl->pending_move_to_rect.anchor_hints & GDK_ANCHOR_FLIP_Y)
+        if (impl->pending_move_to_rect.anchor_hints & CDK_ANCHOR_FLIP_Y)
           constraint_adjustment |= XDG_POSITIONER_CONSTRAINT_ADJUSTMENT_FLIP_Y;
-        if (impl->pending_move_to_rect.anchor_hints & GDK_ANCHOR_SLIDE_X)
+        if (impl->pending_move_to_rect.anchor_hints & CDK_ANCHOR_SLIDE_X)
           constraint_adjustment |= XDG_POSITIONER_CONSTRAINT_ADJUSTMENT_SLIDE_X;
-        if (impl->pending_move_to_rect.anchor_hints & GDK_ANCHOR_SLIDE_Y)
+        if (impl->pending_move_to_rect.anchor_hints & CDK_ANCHOR_SLIDE_Y)
           constraint_adjustment |= XDG_POSITIONER_CONSTRAINT_ADJUSTMENT_SLIDE_Y;
-        if (impl->pending_move_to_rect.anchor_hints & GDK_ANCHOR_RESIZE_X)
+        if (impl->pending_move_to_rect.anchor_hints & CDK_ANCHOR_RESIZE_X)
           constraint_adjustment |= XDG_POSITIONER_CONSTRAINT_ADJUSTMENT_RESIZE_X;
-        if (impl->pending_move_to_rect.anchor_hints & GDK_ANCHOR_RESIZE_Y)
+        if (impl->pending_move_to_rect.anchor_hints & CDK_ANCHOR_RESIZE_Y)
           constraint_adjustment |= XDG_POSITIONER_CONSTRAINT_ADJUSTMENT_RESIZE_Y;
         xdg_positioner_set_constraint_adjustment (positioner,
                                                   constraint_adjustment);
 
         return positioner;
       }
-    case GDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
+    case CDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
       {
         struct zxdg_positioner_v6 *positioner;
         enum zxdg_positioner_v6_anchor anchor;
@@ -2733,17 +2733,17 @@ create_dynamic_positioner (CdkWindow *window)
         gravity = window_anchor_to_gravity_legacy (impl->pending_move_to_rect.window_anchor);
         zxdg_positioner_v6_set_gravity (positioner, gravity);
 
-        if (impl->pending_move_to_rect.anchor_hints & GDK_ANCHOR_FLIP_X)
+        if (impl->pending_move_to_rect.anchor_hints & CDK_ANCHOR_FLIP_X)
           constraint_adjustment |= ZXDG_POSITIONER_V6_CONSTRAINT_ADJUSTMENT_FLIP_X;
-        if (impl->pending_move_to_rect.anchor_hints & GDK_ANCHOR_FLIP_Y)
+        if (impl->pending_move_to_rect.anchor_hints & CDK_ANCHOR_FLIP_Y)
           constraint_adjustment |= ZXDG_POSITIONER_V6_CONSTRAINT_ADJUSTMENT_FLIP_Y;
-        if (impl->pending_move_to_rect.anchor_hints & GDK_ANCHOR_SLIDE_X)
+        if (impl->pending_move_to_rect.anchor_hints & CDK_ANCHOR_SLIDE_X)
           constraint_adjustment |= ZXDG_POSITIONER_V6_CONSTRAINT_ADJUSTMENT_SLIDE_X;
-        if (impl->pending_move_to_rect.anchor_hints & GDK_ANCHOR_SLIDE_Y)
+        if (impl->pending_move_to_rect.anchor_hints & CDK_ANCHOR_SLIDE_Y)
           constraint_adjustment |= ZXDG_POSITIONER_V6_CONSTRAINT_ADJUSTMENT_SLIDE_Y;
-        if (impl->pending_move_to_rect.anchor_hints & GDK_ANCHOR_RESIZE_X)
+        if (impl->pending_move_to_rect.anchor_hints & CDK_ANCHOR_RESIZE_X)
           constraint_adjustment |= ZXDG_POSITIONER_V6_CONSTRAINT_ADJUSTMENT_RESIZE_X;
-        if (impl->pending_move_to_rect.anchor_hints & GDK_ANCHOR_RESIZE_Y)
+        if (impl->pending_move_to_rect.anchor_hints & CDK_ANCHOR_RESIZE_Y)
           constraint_adjustment |= ZXDG_POSITIONER_V6_CONSTRAINT_ADJUSTMENT_RESIZE_Y;
         zxdg_positioner_v6_set_constraint_adjustment (positioner,
                                                       constraint_adjustment);
@@ -2760,7 +2760,7 @@ create_simple_positioner (CdkWindow *window,
                           CdkWindow *parent)
 {
   CdkWaylandDisplay *display =
-    GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+    CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
   CdkRectangle geometry;
   CdkRectangle parent_geometry;
   int parent_x, parent_y;
@@ -2776,7 +2776,7 @@ create_simple_positioner (CdkWindow *window,
 
   switch (display->shell_variant)
     {
-    case GDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
+    case CDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
       {
         struct xdg_positioner *positioner;
 
@@ -2793,7 +2793,7 @@ create_simple_positioner (CdkWindow *window,
 
         return positioner;
       }
-    case GDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
+    case CDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
       {
         struct zxdg_positioner_v6 *positioner;
 
@@ -2822,9 +2822,9 @@ cdk_wayland_window_create_xdg_popup (CdkWindow      *window,
                                      CdkWindow      *parent,
                                      struct wl_seat *seat)
 {
-  CdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
-  CdkWindowImplWayland *parent_impl = GDK_WINDOW_IMPL_WAYLAND (parent->impl);
+  CdkWaylandDisplay *display = CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *parent_impl = CDK_WINDOW_IMPL_WAYLAND (parent->impl);
   gpointer positioner;
   CdkSeat *cdk_seat;
   guint32 serial;
@@ -2863,7 +2863,7 @@ cdk_wayland_window_create_xdg_popup (CdkWindow      *window,
 
   switch (display->shell_variant)
     {
-    case GDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
+    case CDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
       impl->display_server.xdg_surface =
         xdg_wm_base_get_xdg_surface (display->xdg_wm_base,
                                      impl->display_server.wl_surface);
@@ -2879,7 +2879,7 @@ cdk_wayland_window_create_xdg_popup (CdkWindow      *window,
                               window);
       xdg_positioner_destroy (positioner);
       break;
-    case GDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
+    case CDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
       impl->display_server.zxdg_surface_v6 =
         zxdg_shell_v6_get_xdg_surface (display->zxdg_shell_v6,
                                        impl->display_server.wl_surface);
@@ -2899,15 +2899,15 @@ cdk_wayland_window_create_xdg_popup (CdkWindow      *window,
 
   if (seat)
     {
-      cdk_seat = cdk_display_get_default_seat (GDK_DISPLAY (display));
+      cdk_seat = cdk_display_get_default_seat (CDK_DISPLAY (display));
       serial = _cdk_wayland_seat_get_last_implicit_grab_serial (cdk_seat, NULL);
 
       switch (display->shell_variant)
         {
-        case GDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
+        case CDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
           xdg_popup_grab (impl->display_server.xdg_popup, seat, serial);
           break;
-        case GDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
+        case CDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
           zxdg_popup_v6_grab (impl->display_server.zxdg_popup_v6, seat, serial);
           break;
         }
@@ -2923,7 +2923,7 @@ static struct wl_seat *
 find_grab_input_seat (CdkWindow *window, CdkWindow *transient_for)
 {
   CdkWindow *attached_grab_window;
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   CdkWindowImplWayland *tmp_impl;
 
   /* Use the device that was used for the grab as the device for
@@ -2942,14 +2942,14 @@ find_grab_input_seat (CdkWindow *window, CdkWindow *transient_for)
   attached_grab_window = g_object_get_data (G_OBJECT (window), "cdk-attached-grab-window");
   if (attached_grab_window)
     {
-      tmp_impl = GDK_WINDOW_IMPL_WAYLAND (attached_grab_window->impl);
+      tmp_impl = CDK_WINDOW_IMPL_WAYLAND (attached_grab_window->impl);
       if (tmp_impl->grab_input_seat)
         return cdk_wayland_seat_get_wl_seat (tmp_impl->grab_input_seat);
     }
 
   while (transient_for)
     {
-      tmp_impl = GDK_WINDOW_IMPL_WAYLAND (transient_for->impl);
+      tmp_impl = CDK_WINDOW_IMPL_WAYLAND (transient_for->impl);
 
       if (tmp_impl->grab_input_seat)
         return cdk_wayland_seat_get_wl_seat (tmp_impl->grab_input_seat);
@@ -2963,13 +2963,13 @@ find_grab_input_seat (CdkWindow *window, CdkWindow *transient_for)
 static gboolean
 should_be_mapped (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   /* Don't map crazy temp that CTK+ uses for internal X11 shenanigans. */
-  if (window->window_type == GDK_WINDOW_TEMP && window->x < 0 && window->y < 0)
+  if (window->window_type == CDK_WINDOW_TEMP && window->x < 0 && window->y < 0)
     return FALSE;
 
-  if (impl->hint == GDK_WINDOW_TYPE_HINT_DND)
+  if (impl->hint == CDK_WINDOW_TYPE_HINT_DND)
     return FALSE;
 
   return TRUE;
@@ -2978,10 +2978,10 @@ should_be_mapped (CdkWindow *window)
 static gboolean
 should_map_as_popup (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   /* Ideally, popup would be temp windows with a parent and grab */
-  if (GDK_WINDOW_TYPE (window) == GDK_WINDOW_TEMP)
+  if (CDK_WINDOW_TYPE (window) == CDK_WINDOW_TEMP)
     {
       /* If a temp window has a parent and a grab, we can use a popup */
       if (impl->transient_for)
@@ -2994,9 +2994,9 @@ should_map_as_popup (CdkWindow *window)
   /* Yet we need to keep the window type hint tests for compatibility */
   switch (impl->hint)
     {
-    case GDK_WINDOW_TYPE_HINT_POPUP_MENU:
-    case GDK_WINDOW_TYPE_HINT_DROPDOWN_MENU:
-    case GDK_WINDOW_TYPE_HINT_COMBO:
+    case CDK_WINDOW_TYPE_HINT_POPUP_MENU:
+    case CDK_WINDOW_TYPE_HINT_DROPDOWN_MENU:
+    case CDK_WINDOW_TYPE_HINT_COMBO:
       return TRUE;
 
     default:
@@ -3012,12 +3012,12 @@ should_map_as_popup (CdkWindow *window)
 static gboolean
 should_map_as_subsurface (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
-  if (GDK_WINDOW_TYPE (window) == GDK_WINDOW_SUBSURFACE)
+  if (CDK_WINDOW_TYPE (window) == CDK_WINDOW_SUBSURFACE)
     return TRUE;
 
-  if (GDK_WINDOW_TYPE (window) != GDK_WINDOW_TEMP)
+  if (CDK_WINDOW_TYPE (window) != CDK_WINDOW_TEMP)
     return FALSE;
 
   /* if we want a popup, we do not want a subsurface */
@@ -3028,7 +3028,7 @@ should_map_as_subsurface (CdkWindow *window)
     {
       CdkWindowImplWayland *impl_parent;
 
-      impl_parent = GDK_WINDOW_IMPL_WAYLAND (impl->transient_for->impl);
+      impl_parent = CDK_WINDOW_IMPL_WAYLAND (impl->transient_for->impl);
       /* subsurface require that the parent is mapped */
       if (impl_parent->mapped)
         return TRUE;
@@ -3050,7 +3050,7 @@ get_popup_parent (CdkWindow *window)
 {
   while (window)
     {
-      CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+      CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
       if (is_realized_popup (window) || is_realized_toplevel (window))
         return window;
@@ -3064,7 +3064,7 @@ get_popup_parent (CdkWindow *window)
 static void
 cdk_wayland_window_map (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   CdkWindow *transient_for = NULL;
 
   if (!should_be_mapped (window))
@@ -3073,7 +3073,7 @@ cdk_wayland_window_map (CdkWindow *window)
   if (impl->mapped || impl->use_custom_surface)
     return;
 
-  if (GDK_WINDOW_TYPE (window) == GDK_WINDOW_TEMP)
+  if (CDK_WINDOW_TYPE (window) == CDK_WINDOW_TEMP)
     {
       if (!impl->transient_for)
         {
@@ -3101,7 +3101,7 @@ cdk_wayland_window_map (CdkWindow *window)
        * surface they should be positioned with by finding the surface beneath
        * the device that created the grab for the popup window.
        */
-      if (!impl->transient_for && impl->hint == GDK_WINDOW_TYPE_HINT_POPUP_MENU)
+      if (!impl->transient_for && impl->hint == CDK_WINDOW_TYPE_HINT_POPUP_MENU)
         {
           CdkDevice *grab_device = NULL;
 
@@ -3119,7 +3119,7 @@ cdk_wayland_window_map (CdkWindow *window)
               if (attached_grab_window)
                 {
                   CdkWindowImplWayland *attached_impl =
-                    GDK_WINDOW_IMPL_WAYLAND (attached_grab_window->impl);
+                    CDK_WINDOW_IMPL_WAYLAND (attached_grab_window->impl);
                   grab_device = cdk_seat_get_pointer (attached_impl->grab_input_seat);
                   transient_for =
                     cdk_device_get_window_at_position (grab_device,
@@ -3186,14 +3186,14 @@ static void
 cdk_wayland_window_show (CdkWindow *window,
                          gboolean   already_mapped)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   if (!impl->display_server.wl_surface)
     cdk_wayland_window_create_surface (window);
 
   cdk_wayland_window_map (window);
 
-  _cdk_make_event (window, GDK_MAP, NULL, FALSE);
+  _cdk_make_event (window, CDK_MAP, NULL, FALSE);
 
   if (impl->staging_cairo_surface &&
       _cdk_wayland_is_shm_surface (impl->staging_cairo_surface))
@@ -3203,13 +3203,13 @@ cdk_wayland_window_show (CdkWindow *window,
 static void
 unmap_subsurface (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   CdkWindowImplWayland *parent_impl;
 
   g_return_if_fail (impl->display_server.wl_subsurface);
   g_return_if_fail (impl->transient_for);
 
-  parent_impl = GDK_WINDOW_IMPL_WAYLAND (impl->transient_for->impl);
+  parent_impl = CDK_WINDOW_IMPL_WAYLAND (impl->transient_for->impl);
   wl_subsurface_destroy (impl->display_server.wl_subsurface);
   if (impl->parent_surface_committed_handler)
     {
@@ -3226,11 +3226,11 @@ unmap_popups_for_window (CdkWindow *window)
   CdkWaylandDisplay *display_wayland;
   GList *l;
 
-  display_wayland = GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+  display_wayland = CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
   for (l = display_wayland->current_popups; l; l = l->next)
     {
        CdkWindow *popup = l->data;
-       CdkWindowImplWayland *popup_impl = GDK_WINDOW_IMPL_WAYLAND (popup->impl);
+       CdkWindowImplWayland *popup_impl = CDK_WINDOW_IMPL_WAYLAND (popup->impl);
 
        if (popup_impl->popup_parent == window)
          {
@@ -3245,8 +3245,8 @@ unmap_popups_for_window (CdkWindow *window)
 static void
 cdk_wayland_window_hide_surface (CdkWindow *window)
 {
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   unmap_popups_for_window (window);
 
@@ -3352,7 +3352,7 @@ cdk_wayland_window_hide_surface (CdkWindow *window)
       g_slist_free (impl->display_server.outputs);
       impl->display_server.outputs = NULL;
 
-      if (impl->hint == GDK_WINDOW_TYPE_HINT_DIALOG && !impl->transient_for)
+      if (impl->hint == CDK_WINDOW_TYPE_HINT_DIALOG && !impl->transient_for)
         display_wayland->orphan_dialogs =
           g_list_remove (display_wayland->orphan_dialogs, window);
     }
@@ -3377,10 +3377,10 @@ cdk_window_wayland_withdraw (CdkWindow *window)
 {
   if (!window->destroyed)
     {
-      if (GDK_WINDOW_IS_MAPPED (window))
-        cdk_synthesize_window_state (window, 0, GDK_WINDOW_STATE_WITHDRAWN);
+      if (CDK_WINDOW_IS_MAPPED (window))
+        cdk_synthesize_window_state (window, 0, CDK_WINDOW_STATE_WITHDRAWN);
 
-      g_assert (!GDK_WINDOW_IS_MAPPED (window));
+      g_assert (!CDK_WINDOW_IS_MAPPED (window));
 
       cdk_wayland_window_hide_surface (window);
     }
@@ -3390,16 +3390,16 @@ static void
 cdk_window_wayland_set_events (CdkWindow    *window,
                                CdkEventMask  event_mask)
 {
-  GDK_WINDOW (window)->event_mask = event_mask;
+  CDK_WINDOW (window)->event_mask = event_mask;
 }
 
 static CdkEventMask
 cdk_window_wayland_get_events (CdkWindow *window)
 {
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     return 0;
   else
-    return GDK_WINDOW (window)->event_mask;
+    return CDK_WINDOW (window)->event_mask;
 }
 
 static void
@@ -3431,12 +3431,12 @@ cdk_window_request_transient_parent_commit (CdkWindow *window)
   CdkWindowImplWayland *window_impl, *impl;
   CdkFrameClock *frame_clock;
 
-  window_impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  window_impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   if (!window_impl->transient_for)
     return;
 
-  impl = GDK_WINDOW_IMPL_WAYLAND (window_impl->transient_for->impl);
+  impl = CDK_WINDOW_IMPL_WAYLAND (window_impl->transient_for->impl);
 
   if (!impl->display_server.wl_surface || impl->pending_commit)
     return;
@@ -3448,7 +3448,7 @@ cdk_window_request_transient_parent_commit (CdkWindow *window)
 
   impl->pending_commit = TRUE;
   cdk_frame_clock_request_phase (frame_clock,
-                                 GDK_FRAME_CLOCK_PHASE_AFTER_PAINT);
+                                 CDK_FRAME_CLOCK_PHASE_AFTER_PAINT);
 }
 
 static void
@@ -3459,12 +3459,12 @@ cdk_window_wayland_move_resize (CdkWindow *window,
                                 gint       width,
                                 gint       height)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   if (with_move)
     {
       /* Each toplevel has in its own "root" coordinate system */
-      if (GDK_WINDOW_TYPE (window) != GDK_WINDOW_TOPLEVEL)
+      if (CDK_WINDOW_TYPE (window) != CDK_WINDOW_TOPLEVEL)
         {
           window->x = x;
           window->y = y;
@@ -3481,9 +3481,9 @@ cdk_window_wayland_move_resize (CdkWindow *window,
         }
     }
 
-  if (window->state & (GDK_WINDOW_STATE_FULLSCREEN |
-                       GDK_WINDOW_STATE_MAXIMIZED |
-                       GDK_WINDOW_STATE_TILED))
+  if (window->state & (CDK_WINDOW_STATE_FULLSCREEN |
+                       CDK_WINDOW_STATE_MAXIMIZED |
+                       CDK_WINDOW_STATE_TILED))
     {
       impl->saved_width = width;
       impl->saved_height = height;
@@ -3537,7 +3537,7 @@ cdk_window_wayland_move_to_rect (CdkWindow          *window,
                                  gint                rect_anchor_dx,
                                  gint                rect_anchor_dy)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   impl->pending_move_to_rect.rect = *rect;
   sanitize_anchor_rect (window, &impl->pending_move_to_rect.rect);
@@ -3571,11 +3571,11 @@ cdk_window_wayland_set_device_cursor (CdkWindow *window,
                                       CdkDevice *device,
                                       CdkCursor *cursor)
 {
-  g_return_if_fail (GDK_IS_WINDOW (window));
-  g_return_if_fail (GDK_IS_DEVICE (device));
+  g_return_if_fail (CDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_DEVICE (device));
 
-  if (!GDK_WINDOW_DESTROYED (window))
-    GDK_DEVICE_GET_CLASS (device)->set_window_cursor (device, window, cursor);
+  if (!CDK_WINDOW_DESTROYED (window))
+    CDK_DEVICE_GET_CLASS (device)->set_window_cursor (device, window, cursor);
 }
 
 static void
@@ -3585,7 +3585,7 @@ cdk_window_wayland_get_geometry (CdkWindow *window,
                                  gint      *width,
                                  gint      *height)
 {
-  if (!GDK_WINDOW_DESTROYED (window))
+  if (!CDK_WINDOW_DESTROYED (window))
     {
       if (x)
         *x = window->x;
@@ -3643,15 +3643,15 @@ cdk_window_wayland_get_device_state (CdkWindow       *window,
 {
   gboolean return_val;
 
-  g_return_val_if_fail (window == NULL || GDK_IS_WINDOW (window), FALSE);
+  g_return_val_if_fail (window == NULL || CDK_IS_WINDOW (window), FALSE);
 
   return_val = TRUE;
 
-  if (!GDK_WINDOW_DESTROYED (window))
+  if (!CDK_WINDOW_DESTROYED (window))
     {
       CdkWindow *child;
 
-      GDK_DEVICE_GET_CLASS (device)->query_state (device, window,
+      CDK_DEVICE_GET_CLASS (device)->query_state (device, window,
                                                   NULL, &child,
                                                   NULL, NULL,
                                                   x, y, mask);
@@ -3675,9 +3675,9 @@ cdk_window_wayland_input_shape_combine_region (CdkWindow            *window,
                                                gint                  offset_x,
                                                gint                  offset_y)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     return;
 
   g_clear_pointer (&impl->input_region, cairo_region_destroy);
@@ -3696,7 +3696,7 @@ cdk_wayland_window_destroy (CdkWindow *window,
                             gboolean   recursing,
                             gboolean   foreign_destroy)
 {
-  g_return_if_fail (GDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_WINDOW (window));
 
   /* Wayland windows can't be externally destroyed; we may possibly
    * eventually want to use this path at display close-down
@@ -3727,15 +3727,15 @@ static void
 cdk_wayland_window_focus (CdkWindow *window,
                           guint32    timestamp)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   if (!impl->display_server.ctk_surface)
     return;
 
-  if (timestamp == GDK_CURRENT_TIME)
+  if (timestamp == CDK_CURRENT_TIME)
     {
       CdkWaylandDisplay *display_wayland =
-        GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+        CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
 
       if (display_wayland->ctk_shell_version >= 3)
         {
@@ -3754,9 +3754,9 @@ cdk_wayland_window_set_type_hint (CdkWindow         *window,
 {
   CdkWindowImplWayland *impl;
 
-  impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     return;
 
   impl->hint = hint;
@@ -3767,10 +3767,10 @@ cdk_wayland_window_get_type_hint (CdkWindow *window)
 {
   CdkWindowImplWayland *impl;
 
-  if (GDK_WINDOW_DESTROYED (window))
-    return GDK_WINDOW_TYPE_HINT_NORMAL;
+  if (CDK_WINDOW_DESTROYED (window))
+    return CDK_WINDOW_TYPE_HINT_NORMAL;
 
-  impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   return impl->hint;
 }
@@ -3780,8 +3780,8 @@ ctk_surface_configure (void                *data,
                        struct ctk_surface1 *ctk_surface,
                        struct wl_array     *states)
 {
-  CdkWindow *window = GDK_WINDOW (data);
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindow *window = CDK_WINDOW (data);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   CdkWindowState new_state = 0;
   uint32_t *p;
 
@@ -3792,21 +3792,21 @@ ctk_surface_configure (void                *data,
       switch (state)
         {
         case CTK_SURFACE1_STATE_TILED:
-          new_state |= GDK_WINDOW_STATE_TILED;
+          new_state |= CDK_WINDOW_STATE_TILED;
           break;
 
         /* Since v2 */
         case CTK_SURFACE1_STATE_TILED_TOP:
-          new_state |= (GDK_WINDOW_STATE_TILED | GDK_WINDOW_STATE_TOP_TILED);
+          new_state |= (CDK_WINDOW_STATE_TILED | CDK_WINDOW_STATE_TOP_TILED);
           break;
         case CTK_SURFACE1_STATE_TILED_RIGHT:
-          new_state |= (GDK_WINDOW_STATE_TILED | GDK_WINDOW_STATE_RIGHT_TILED);
+          new_state |= (CDK_WINDOW_STATE_TILED | CDK_WINDOW_STATE_RIGHT_TILED);
           break;
         case CTK_SURFACE1_STATE_TILED_BOTTOM:
-          new_state |= (GDK_WINDOW_STATE_TILED | GDK_WINDOW_STATE_BOTTOM_TILED);
+          new_state |= (CDK_WINDOW_STATE_TILED | CDK_WINDOW_STATE_BOTTOM_TILED);
           break;
         case CTK_SURFACE1_STATE_TILED_LEFT:
-          new_state |= (GDK_WINDOW_STATE_TILED | GDK_WINDOW_STATE_LEFT_TILED);
+          new_state |= (CDK_WINDOW_STATE_TILED | CDK_WINDOW_STATE_LEFT_TILED);
           break;
         default:
           /* Unknown state */
@@ -3822,8 +3822,8 @@ ctk_surface_configure_edges (void                *data,
                              struct ctk_surface1 *ctk_surface,
                              struct wl_array     *edge_constraints)
 {
-  CdkWindow *window = GDK_WINDOW (data);
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindow *window = CDK_WINDOW (data);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   CdkWindowState new_state = 0;
   uint32_t *p;
 
@@ -3834,16 +3834,16 @@ ctk_surface_configure_edges (void                *data,
       switch (constraint)
         {
         case CTK_SURFACE1_EDGE_CONSTRAINT_RESIZABLE_TOP:
-          new_state |= GDK_WINDOW_STATE_TOP_RESIZABLE;
+          new_state |= CDK_WINDOW_STATE_TOP_RESIZABLE;
           break;
         case CTK_SURFACE1_EDGE_CONSTRAINT_RESIZABLE_RIGHT:
-          new_state |= GDK_WINDOW_STATE_RIGHT_RESIZABLE;
+          new_state |= CDK_WINDOW_STATE_RIGHT_RESIZABLE;
           break;
         case CTK_SURFACE1_EDGE_CONSTRAINT_RESIZABLE_BOTTOM:
-          new_state |= GDK_WINDOW_STATE_BOTTOM_RESIZABLE;
+          new_state |= CDK_WINDOW_STATE_BOTTOM_RESIZABLE;
           break;
         case CTK_SURFACE1_EDGE_CONSTRAINT_RESIZABLE_LEFT:
-          new_state |= GDK_WINDOW_STATE_LEFT_RESIZABLE;
+          new_state |= CDK_WINDOW_STATE_LEFT_RESIZABLE;
           break;
         default:
           /* Unknown state */
@@ -3862,9 +3862,9 @@ static const struct ctk_surface1_listener ctk_surface_listener = {
 static void
 cdk_wayland_window_init_ctk_surface (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   CdkWaylandDisplay *display =
-    GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+    CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
 
   if (impl->display_server.ctk_surface != NULL)
     return;
@@ -3887,7 +3887,7 @@ cdk_wayland_window_init_ctk_surface (CdkWindow *window)
 static void
 maybe_set_ctk_surface_modal (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   cdk_wayland_window_init_ctk_surface (window);
   if (impl->display_server.ctk_surface == NULL)
@@ -3935,12 +3935,12 @@ cdk_wayland_window_set_geometry_hints (CdkWindow         *window,
   CdkWindowImplWayland *impl;
   int min_width = 0, min_height = 0, max_width = 0, max_height = 0;
 
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL_OR_FOREIGN (window))
     return;
 
-  impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
-  display_wayland = GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+  impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
+  display_wayland = CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
 
   impl->geometry_hints = *geometry;
   impl->geometry_mask = geom_mask;
@@ -3948,7 +3948,7 @@ cdk_wayland_window_set_geometry_hints (CdkWindow         *window,
   if (!is_realized_toplevel (window))
     return;
 
-  if (geom_mask & GDK_HINT_MIN_SIZE)
+  if (geom_mask & CDK_HINT_MIN_SIZE)
     {
       min_width =
         MAX (0, calculate_width_without_margin (window, geometry->min_width));
@@ -3956,7 +3956,7 @@ cdk_wayland_window_set_geometry_hints (CdkWindow         *window,
         MAX (0, calculate_height_without_margin (window, geometry->min_height));
     }
 
-  if (geom_mask & GDK_HINT_MAX_SIZE)
+  if (geom_mask & CDK_HINT_MAX_SIZE)
     {
       max_width =
         MAX (0, calculate_width_without_margin (window, geometry->max_width));
@@ -3966,13 +3966,13 @@ cdk_wayland_window_set_geometry_hints (CdkWindow         *window,
 
   switch (display_wayland->shell_variant)
     {
-    case GDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
+    case CDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
       xdg_toplevel_set_min_size (impl->display_server.xdg_toplevel,
                                  min_width, min_height);
       xdg_toplevel_set_max_size (impl->display_server.xdg_toplevel,
                                  max_width, max_height);
       break;
-    case GDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
+    case CDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
       zxdg_toplevel_v6_set_min_size (impl->display_server.zxdg_toplevel_v6,
                                      min_width, min_height);
       zxdg_toplevel_v6_set_max_size (impl->display_server.zxdg_toplevel_v6,
@@ -3989,10 +3989,10 @@ cdk_wayland_window_set_title (CdkWindow   *window,
   const char *end;
   g_return_if_fail (title != NULL);
 
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     return;
 
-  impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   if (g_strcmp0 (impl->title, title) == 0)
     return;
@@ -4027,10 +4027,10 @@ check_transient_for_loop (CdkWindow *window,
     {
       CdkWindowImplWayland *impl;
 
-      if (!GDK_IS_WINDOW_IMPL_WAYLAND(parent->impl))
+      if (!CDK_IS_WINDOW_IMPL_WAYLAND(parent->impl))
         return FALSE;
 
-      impl = GDK_WINDOW_IMPL_WAYLAND (parent->impl);
+      impl = CDK_WINDOW_IMPL_WAYLAND (parent->impl);
       if (impl->transient_for == window)
         return TRUE;
       parent = impl->transient_for;
@@ -4042,9 +4042,9 @@ static void
 cdk_wayland_window_set_transient_for (CdkWindow *window,
                                       CdkWindow *parent)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   CdkWaylandDisplay *display_wayland =
-    GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+    CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
   CdkWindow *previous_parent;
   gboolean was_subsurface = FALSE;
 
@@ -4068,7 +4068,7 @@ cdk_wayland_window_set_transient_for (CdkWindow *window,
   previous_parent = impl->transient_for;
   impl->transient_for = parent;
 
-  if (impl->hint == GDK_WINDOW_TYPE_HINT_DIALOG)
+  if (impl->hint == CDK_WINDOW_TYPE_HINT_DIALOG)
     {
       if (!parent)
         _cdk_wayland_screen_add_orphan_dialog (window);
@@ -4123,30 +4123,30 @@ static void
 cdk_wayland_window_set_icon_name (CdkWindow   *window,
                                   const gchar *name)
 {
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     return;
 }
 
 static void
 cdk_wayland_window_iconify (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   CdkWaylandDisplay *display_wayland;
 
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL_OR_FOREIGN (window))
     return;
 
   if (!is_realized_toplevel (window))
     return;
 
-  display_wayland = GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+  display_wayland = CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
   switch (display_wayland->shell_variant)
     {
-    case GDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
+    case CDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
       xdg_toplevel_set_minimized (impl->display_server.xdg_toplevel);
       break;
-    case GDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
+    case CDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
       zxdg_toplevel_v6_set_minimized (impl->display_server.zxdg_toplevel_v6);
       break;
     }
@@ -4155,15 +4155,15 @@ cdk_wayland_window_iconify (CdkWindow *window)
 static void
 cdk_wayland_window_deiconify (CdkWindow *window)
 {
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL_OR_FOREIGN (window))
     return;
 
-  if (GDK_WINDOW_IS_MAPPED (window))
+  if (CDK_WINDOW_IS_MAPPED (window))
     cdk_window_show (window);
   else
     /* Flip our client side flag, the real work happens on map. */
-    cdk_synthesize_window_state (window, GDK_WINDOW_STATE_ICONIFIED, 0);
+    cdk_synthesize_window_state (window, CDK_WINDOW_STATE_ICONIFIED, 0);
 }
 
 static void
@@ -4179,86 +4179,86 @@ cdk_wayland_window_unstick (CdkWindow *window)
 static void
 cdk_wayland_window_maximize (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     return;
 
   _cdk_wayland_window_save_size (window);
   if (is_realized_toplevel (window))
     {
       CdkWaylandDisplay *display_wayland =
-        GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+        CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
 
       switch (display_wayland->shell_variant)
         {
-        case GDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
+        case CDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
           xdg_toplevel_set_maximized (impl->display_server.xdg_toplevel);
           break;
-        case GDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
+        case CDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
           zxdg_toplevel_v6_set_maximized (impl->display_server.zxdg_toplevel_v6);
           break;
         }
     }
   else
     {
-      cdk_synthesize_window_state (window, 0, GDK_WINDOW_STATE_MAXIMIZED);
+      cdk_synthesize_window_state (window, 0, CDK_WINDOW_STATE_MAXIMIZED);
     }
 }
 
 static void
 cdk_wayland_window_unmaximize (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     return;
 
   if (is_realized_toplevel (window))
     {
       CdkWaylandDisplay *display_wayland =
-        GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+        CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
 
       switch (display_wayland->shell_variant)
         {
-        case GDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
+        case CDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
           xdg_toplevel_unset_maximized (impl->display_server.xdg_toplevel);
           break;
-        case GDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
+        case CDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
           zxdg_toplevel_v6_unset_maximized (impl->display_server.zxdg_toplevel_v6);
           break;
         }
     }
   else
     {
-      cdk_synthesize_window_state (window, GDK_WINDOW_STATE_MAXIMIZED, 0);
+      cdk_synthesize_window_state (window, CDK_WINDOW_STATE_MAXIMIZED, 0);
     }
 }
 
 static void
 cdk_wayland_window_fullscreen_on_monitor (CdkWindow *window, gint monitor)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   CdkScreen *screen = cdk_window_get_screen (window);
   struct wl_output *fullscreen_output = 
     _cdk_wayland_screen_get_wl_output (screen, monitor);
   
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     return;
 
   _cdk_wayland_window_save_size (window);
   if (is_realized_toplevel (window))
     {
       CdkWaylandDisplay *display_wayland =
-        GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+        CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
 
       switch (display_wayland->shell_variant)
         {
-        case GDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
+        case CDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
           xdg_toplevel_set_fullscreen (impl->display_server.xdg_toplevel,
                                        fullscreen_output);
           break;
-        case GDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
+        case CDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
           zxdg_toplevel_v6_set_fullscreen (impl->display_server.zxdg_toplevel_v6,
                                            fullscreen_output);
           break;
@@ -4266,7 +4266,7 @@ cdk_wayland_window_fullscreen_on_monitor (CdkWindow *window, gint monitor)
     }
   else
     {
-      cdk_synthesize_window_state (window, 0, GDK_WINDOW_STATE_FULLSCREEN);
+      cdk_synthesize_window_state (window, 0, CDK_WINDOW_STATE_FULLSCREEN);
       impl->initial_fullscreen_monitor = monitor;
     }
 }
@@ -4274,9 +4274,9 @@ cdk_wayland_window_fullscreen_on_monitor (CdkWindow *window, gint monitor)
 static void
 cdk_wayland_window_fullscreen (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     return;
 
   impl->initial_fullscreen_monitor = -1;
@@ -4285,15 +4285,15 @@ cdk_wayland_window_fullscreen (CdkWindow *window)
   if (is_realized_toplevel (window))
     {
       CdkWaylandDisplay *display_wayland =
-        GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+        CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
 
       switch (display_wayland->shell_variant)
         {
-        case GDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
+        case CDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
           xdg_toplevel_set_fullscreen (impl->display_server.xdg_toplevel,
                                        NULL);
           break;
-        case GDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
+        case CDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
           zxdg_toplevel_v6_set_fullscreen (impl->display_server.zxdg_toplevel_v6,
                                            NULL);
           break;
@@ -4301,16 +4301,16 @@ cdk_wayland_window_fullscreen (CdkWindow *window)
     }
   else
     {
-      cdk_synthesize_window_state (window, 0, GDK_WINDOW_STATE_FULLSCREEN);
+      cdk_synthesize_window_state (window, 0, CDK_WINDOW_STATE_FULLSCREEN);
     }
 }
 
 static void
 cdk_wayland_window_unfullscreen (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     return;
 
   impl->initial_fullscreen_monitor = -1;
@@ -4318,21 +4318,21 @@ cdk_wayland_window_unfullscreen (CdkWindow *window)
   if (is_realized_toplevel (window))
     {
       CdkWaylandDisplay *display_wayland =
-        GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+        CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
 
       switch (display_wayland->shell_variant)
         {
-        case GDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
+        case CDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
           xdg_toplevel_unset_fullscreen (impl->display_server.xdg_toplevel);
           break;
-        case GDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
+        case CDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
           zxdg_toplevel_v6_unset_fullscreen (impl->display_server.zxdg_toplevel_v6);
           break;
         }
     }
   else
     {
-      cdk_synthesize_window_state (window, GDK_WINDOW_STATE_FULLSCREEN, 0);
+      cdk_synthesize_window_state (window, CDK_WINDOW_STATE_FULLSCREEN, 0);
     }
 }
 
@@ -4391,41 +4391,41 @@ cdk_wayland_window_begin_resize_drag (CdkWindow     *window,
   CdkEventSequence *sequence;
   uint32_t resize_edges, serial;
 
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL_OR_FOREIGN (window))
     return;
 
   switch (edge)
     {
-    case GDK_WINDOW_EDGE_NORTH_WEST:
+    case CDK_WINDOW_EDGE_NORTH_WEST:
       resize_edges = ZXDG_TOPLEVEL_V6_RESIZE_EDGE_TOP_LEFT;
       break;
 
-    case GDK_WINDOW_EDGE_NORTH:
+    case CDK_WINDOW_EDGE_NORTH:
       resize_edges = ZXDG_TOPLEVEL_V6_RESIZE_EDGE_TOP;
       break;
 
-    case GDK_WINDOW_EDGE_NORTH_EAST:
+    case CDK_WINDOW_EDGE_NORTH_EAST:
       resize_edges = ZXDG_TOPLEVEL_V6_RESIZE_EDGE_TOP_RIGHT;
       break;
 
-    case GDK_WINDOW_EDGE_WEST:
+    case CDK_WINDOW_EDGE_WEST:
       resize_edges = ZXDG_TOPLEVEL_V6_RESIZE_EDGE_LEFT;
       break;
 
-    case GDK_WINDOW_EDGE_EAST:
+    case CDK_WINDOW_EDGE_EAST:
       resize_edges = ZXDG_TOPLEVEL_V6_RESIZE_EDGE_RIGHT;
       break;
 
-    case GDK_WINDOW_EDGE_SOUTH_WEST:
+    case CDK_WINDOW_EDGE_SOUTH_WEST:
       resize_edges = ZXDG_TOPLEVEL_V6_RESIZE_EDGE_BOTTOM_LEFT;
       break;
 
-    case GDK_WINDOW_EDGE_SOUTH:
+    case CDK_WINDOW_EDGE_SOUTH:
       resize_edges = ZXDG_TOPLEVEL_V6_RESIZE_EDGE_BOTTOM;
       break;
 
-    case GDK_WINDOW_EDGE_SOUTH_EAST:
+    case CDK_WINDOW_EDGE_SOUTH_EAST:
       resize_edges = ZXDG_TOPLEVEL_V6_RESIZE_EDGE_BOTTOM_RIGHT;
       break;
 
@@ -4434,8 +4434,8 @@ cdk_wayland_window_begin_resize_drag (CdkWindow     *window,
       return;
     }
 
-  impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
-  display_wayland = GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+  impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
+  display_wayland = CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
 
   if (!is_realized_toplevel (window))
     return;
@@ -4445,12 +4445,12 @@ cdk_wayland_window_begin_resize_drag (CdkWindow     *window,
 
   switch (display_wayland->shell_variant)
     {
-    case GDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
+    case CDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
       xdg_toplevel_resize (impl->display_server.xdg_toplevel,
                            cdk_wayland_device_get_wl_seat (device),
                            serial, resize_edges);
       break;
-    case GDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
+    case CDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
       zxdg_toplevel_v6_resize (impl->display_server.zxdg_toplevel_v6,
                                cdk_wayland_device_get_wl_seat (device),
                                serial, resize_edges);
@@ -4479,12 +4479,12 @@ cdk_wayland_window_begin_move_drag (CdkWindow *window,
   CdkEventSequence *sequence;
   uint32_t serial;
 
-  if (GDK_WINDOW_DESTROYED (window) ||
+  if (CDK_WINDOW_DESTROYED (window) ||
       !WINDOW_IS_TOPLEVEL (window))
     return;
 
-  impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
-  display_wayland = GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+  impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
+  display_wayland = CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
 
   if (!is_realized_toplevel (window))
     return;
@@ -4493,12 +4493,12 @@ cdk_wayland_window_begin_move_drag (CdkWindow *window,
                                                             &sequence);
   switch (display_wayland->shell_variant)
     {
-    case GDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
+    case CDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
       xdg_toplevel_move (impl->display_server.xdg_toplevel,
                          cdk_wayland_device_get_wl_seat (device),
                          serial);
       break;
-    case GDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
+    case CDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
       zxdg_toplevel_v6_move (impl->display_server.zxdg_toplevel_v6,
                              cdk_wayland_device_get_wl_seat (device),
                              serial);
@@ -4529,9 +4529,9 @@ cdk_wayland_window_set_composited (CdkWindow *window,
 static void
 cdk_wayland_window_destroy_notify (CdkWindow *window)
 {
-  if (!GDK_WINDOW_DESTROYED (window))
+  if (!CDK_WINDOW_DESTROYED (window))
     {
-      if (GDK_WINDOW_TYPE (window) != GDK_WINDOW_FOREIGN)
+      if (CDK_WINDOW_TYPE (window) != CDK_WINDOW_FOREIGN)
         g_warning ("CdkWindow %p unexpectedly destroyed", window);
 
       _cdk_window_destroy (window, TRUE);
@@ -4591,7 +4591,7 @@ cdk_wayland_window_change_property (CdkWindow    *window,
                                     const guchar *data,
                                     gint          nelements)
 {
-  if (property == cdk_atom_intern_static_string ("GDK_SELECTION"))
+  if (property == cdk_atom_intern_static_string ("CDK_SELECTION"))
     cdk_wayland_selection_store (window, type, mode, data, nelements * (format / 8));
 }
 
@@ -4604,9 +4604,9 @@ cdk_wayland_window_delete_property (CdkWindow *window,
 static gint
 cdk_wayland_window_get_scale_factor (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     return 1;
 
   return impl->scale;
@@ -4616,9 +4616,9 @@ static void
 cdk_wayland_window_set_opaque_region (CdkWindow      *window,
                                       cairo_region_t *region)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     return;
 
   g_clear_pointer (&impl->opaque_region, cairo_region_destroy);
@@ -4633,10 +4633,10 @@ cdk_wayland_window_set_shadow_width (CdkWindow *window,
                                      int        top,
                                      int        bottom)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   gint new_width, new_height;
 
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     return;
 
   /* Reconfigure window to keep the same window geometry */
@@ -4656,9 +4656,9 @@ static gboolean
 cdk_wayland_window_show_window_menu (CdkWindow *window,
                                      CdkEvent  *event)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   CdkWaylandDisplay *display_wayland =
-    GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+    CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
   struct wl_seat *seat;
   CdkWaylandDevice *device;
   CdkWindow *event_window;
@@ -4667,10 +4667,10 @@ cdk_wayland_window_show_window_menu (CdkWindow *window,
 
   switch (event->type)
     {
-    case GDK_BUTTON_PRESS:
-    case GDK_BUTTON_RELEASE:
-    case GDK_TOUCH_BEGIN:
-    case GDK_TOUCH_END:
+    case CDK_BUTTON_PRESS:
+    case CDK_BUTTON_RELEASE:
+    case CDK_TOUCH_BEGIN:
+    case CDK_TOUCH_END:
       break;
     default:
       return FALSE;
@@ -4679,12 +4679,12 @@ cdk_wayland_window_show_window_menu (CdkWindow *window,
   if (!is_realized_toplevel (window))
     return FALSE;
 
-  device = GDK_WAYLAND_DEVICE (cdk_event_get_device (event));
-  seat = cdk_wayland_device_get_wl_seat (GDK_DEVICE (device));
+  device = CDK_WAYLAND_DEVICE (cdk_event_get_device (event));
+  seat = cdk_wayland_device_get_wl_seat (CDK_DEVICE (device));
 
   cdk_event_get_coords (event, &x, &y);
   event_window = cdk_event_get_window (event);
-  while (cdk_window_get_window_type (event_window) != GDK_WINDOW_TOPLEVEL)
+  while (cdk_window_get_window_type (event_window) != CDK_WINDOW_TOPLEVEL)
     {
       cdk_window_coords_to_parent (event_window, x, y, &x, &y);
       event_window = cdk_window_get_effective_parent (event_window);
@@ -4694,11 +4694,11 @@ cdk_wayland_window_show_window_menu (CdkWindow *window,
 
   switch (display_wayland->shell_variant)
     {
-    case GDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
+    case CDK_WAYLAND_SHELL_VARIANT_XDG_SHELL:
       xdg_toplevel_show_window_menu (impl->display_server.xdg_toplevel,
                                      seat, serial, x, y);
       break;
-    case GDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
+    case CDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6:
       zxdg_toplevel_v6_show_window_menu (impl->display_server.zxdg_toplevel_v6,
                                          seat, serial, x, y);
       break;
@@ -4711,7 +4711,7 @@ static void
 _cdk_window_impl_wayland_class_init (CdkWindowImplWaylandClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  CdkWindowImplClass *impl_class = GDK_WINDOW_IMPL_CLASS (klass);
+  CdkWindowImplClass *impl_class = CDK_WINDOW_IMPL_CLASS (klass);
 
   object_class->finalize = cdk_window_impl_wayland_finalize;
 
@@ -4815,7 +4815,7 @@ _cdk_wayland_window_set_grab_seat (CdkWindow *window,
 
   g_return_if_fail (window != NULL);
 
-  impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   impl->grab_input_seat = seat;
 }
 
@@ -4832,9 +4832,9 @@ _cdk_wayland_window_set_grab_seat (CdkWindow *window,
 struct wl_surface *
 cdk_wayland_window_get_wl_surface (CdkWindow *window)
 {
-  g_return_val_if_fail (GDK_IS_WAYLAND_WINDOW (window), NULL);
+  g_return_val_if_fail (CDK_IS_WAYLAND_WINDOW (window), NULL);
 
-  return GDK_WINDOW_IMPL_WAYLAND (window->impl)->display_server.wl_surface;
+  return CDK_WINDOW_IMPL_WAYLAND (window->impl)->display_server.wl_surface;
 }
 
 struct wl_output *
@@ -4842,9 +4842,9 @@ cdk_wayland_window_get_wl_output (CdkWindow *window)
 {
   CdkWindowImplWayland *impl;
 
-  g_return_val_if_fail (GDK_IS_WAYLAND_WINDOW (window), NULL);
+  g_return_val_if_fail (CDK_IS_WAYLAND_WINDOW (window), NULL);
 
-  impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   /* We pick the head of the list as this is the last entered output */
   if (impl->display_server.outputs)
     return (struct wl_output *) impl->display_server.outputs->data;
@@ -4855,7 +4855,7 @@ cdk_wayland_window_get_wl_output (CdkWindow *window)
 static struct wl_egl_window *
 cdk_wayland_window_get_wl_egl_window (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   if (impl->display_server.egl_window == NULL)
     {
@@ -4873,13 +4873,13 @@ EGLSurface
 cdk_wayland_window_get_egl_surface (CdkWindow *window,
                                     EGLConfig  config)
 {
-  CdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+  CdkWaylandDisplay *display = CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
   CdkWindowImplWayland *impl;
   struct wl_egl_window *egl_window;
 
-  g_return_val_if_fail (GDK_IS_WAYLAND_WINDOW (window), NULL);
+  g_return_val_if_fail (CDK_IS_WAYLAND_WINDOW (window), NULL);
 
-  impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   if (impl->egl_surface == NULL)
     {
@@ -4896,12 +4896,12 @@ EGLSurface
 cdk_wayland_window_get_dummy_egl_surface (CdkWindow *window,
                                           EGLConfig  config)
 {
-  CdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+  CdkWaylandDisplay *display = CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
   CdkWindowImplWayland *impl;
 
-  g_return_val_if_fail (GDK_IS_WAYLAND_WINDOW (window), NULL);
+  g_return_val_if_fail (CDK_IS_WAYLAND_WINDOW (window), NULL);
 
-  impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   if (impl->dummy_egl_surface == NULL)
     {
@@ -4918,9 +4918,9 @@ cdk_wayland_window_get_dummy_egl_surface (CdkWindow *window,
 struct ctk_surface1 *
 cdk_wayland_window_get_ctk_surface (CdkWindow *window)
 {
-  g_return_val_if_fail (GDK_IS_WAYLAND_WINDOW (window), NULL);
+  g_return_val_if_fail (CDK_IS_WAYLAND_WINDOW (window), NULL);
 
-  return GDK_WINDOW_IMPL_WAYLAND (window->impl)->display_server.ctk_surface;
+  return CDK_WINDOW_IMPL_WAYLAND (window->impl)->display_server.ctk_surface;
 }
 
 /**
@@ -4972,9 +4972,9 @@ cdk_wayland_window_set_use_custom_surface (CdkWindow *window)
 {
   CdkWindowImplWayland *impl;
 
-  g_return_if_fail (GDK_IS_WAYLAND_WINDOW (window));
+  g_return_if_fail (CDK_IS_WAYLAND_WINDOW (window));
 
-  impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   if (!impl->display_server.wl_surface)
     cdk_wayland_window_create_surface (window);
@@ -4985,7 +4985,7 @@ cdk_wayland_window_set_use_custom_surface (CdkWindow *window)
 static void
 maybe_set_ctk_surface_dbus_properties (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   if (impl->application.was_set)
     return;
@@ -5023,9 +5023,9 @@ cdk_wayland_window_set_dbus_properties_libctk_only (CdkWindow  *window,
 {
   CdkWindowImplWayland *impl;
 
-  g_return_if_fail (GDK_IS_WAYLAND_WINDOW (window));
+  g_return_if_fail (CDK_IS_WAYLAND_WINDOW (window));
 
-  impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   impl->application.application_id = g_strdup (application_id);
   impl->application.app_menu_path = g_strdup (app_menu_path);
@@ -5045,9 +5045,9 @@ _cdk_wayland_window_offset_next_wl_buffer (CdkWindow *window,
 {
   CdkWindowImplWayland *impl;
 
-  g_return_if_fail (GDK_IS_WAYLAND_WINDOW (window));
+  g_return_if_fail (CDK_IS_WAYLAND_WINDOW (window));
 
-  impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   impl->pending_buffer_offset_x = x;
   impl->pending_buffer_offset_y = y;
@@ -5056,7 +5056,7 @@ _cdk_wayland_window_offset_next_wl_buffer (CdkWindow *window,
 static void
 invoke_exported_closures (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   GList *l;
 
   for (l = impl->exported.closures; l; l = l->next)
@@ -5079,7 +5079,7 @@ xdg_exported_handle (void                    *data,
                      const char              *handle)
 {
   CdkWindow *window = data;
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   impl->exported.handle = g_strdup (handle);
 
@@ -5107,7 +5107,7 @@ static const struct zxdg_exported_v1_listener xdg_exported_listener = {
 static gboolean
 cdk_wayland_window_is_exported (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   return !!impl->display_server.xdg_exported;
 }
@@ -5116,7 +5116,7 @@ static gboolean
 exported_idle (gpointer user_data)
 {
   CdkWindow *window = user_data;
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   invoke_exported_closures (window);
 
@@ -5170,11 +5170,11 @@ cdk_wayland_window_export_handle (CdkWindow                *window,
   CdkDisplay *display = cdk_window_get_display (window);
   ExportedClosure *closure;
 
-  g_return_val_if_fail (GDK_IS_WAYLAND_WINDOW (window), FALSE);
-  g_return_val_if_fail (GDK_IS_WAYLAND_DISPLAY (display), FALSE);
+  g_return_val_if_fail (CDK_IS_WAYLAND_WINDOW (window), FALSE);
+  g_return_val_if_fail (CDK_IS_WAYLAND_DISPLAY (display), FALSE);
 
-  impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
-  display_wayland = GDK_WAYLAND_DISPLAY (display);
+  impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
+  display_wayland = CDK_WAYLAND_DISPLAY (display);
 
   if (!display_wayland->xdg_exporter)
     {
@@ -5212,7 +5212,7 @@ cdk_wayland_window_export_handle (CdkWindow                *window,
 static void
 cdk_wayland_window_unexport (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   GList *l;
 
   g_clear_pointer (&impl->display_server.xdg_exported,
@@ -5257,9 +5257,9 @@ cdk_wayland_window_unexport_handle (CdkWindow *window)
 {
   CdkWindowImplWayland *impl;
 
-  g_return_if_fail (GDK_IS_WAYLAND_WINDOW (window));
+  g_return_if_fail (CDK_IS_WAYLAND_WINDOW (window));
 
-  impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   g_return_if_fail (impl->display_server.xdg_exported);
 
@@ -5271,7 +5271,7 @@ cdk_wayland_window_unexport_handle (CdkWindow *window)
 static void
 unset_transient_for_exported (CdkWindow *window)
 {
-  CdkWindowImplWayland *impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
   g_clear_pointer (&impl->imported_transient_for, zxdg_imported_v1_destroy);
 }
@@ -5314,13 +5314,13 @@ cdk_wayland_window_set_transient_for_exported (CdkWindow *window,
   CdkWaylandDisplay *display_wayland;
   CdkDisplay *display = cdk_window_get_display (window);
 
-  g_return_val_if_fail (GDK_IS_WAYLAND_WINDOW (window), FALSE);
-  g_return_val_if_fail (GDK_IS_WAYLAND_DISPLAY (display), FALSE);
+  g_return_val_if_fail (CDK_IS_WAYLAND_WINDOW (window), FALSE);
+  g_return_val_if_fail (CDK_IS_WAYLAND_DISPLAY (display), FALSE);
   g_return_val_if_fail (!should_map_as_subsurface (window) &&
                         !should_map_as_popup (window), FALSE);
 
-  impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
-  display_wayland = GDK_WAYLAND_DISPLAY (display);
+  impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
+  display_wayland = CDK_WAYLAND_DISPLAY (display);
 
   if (!display_wayland->xdg_importer)
     {
@@ -5352,8 +5352,8 @@ void
 cdk_wayland_window_inhibit_shortcuts (CdkWindow *window,
                                       CdkSeat   *cdk_seat)
 {
-  CdkWindowImplWayland *impl= GDK_WINDOW_IMPL_WAYLAND (window->impl);
-  CdkWaylandDisplay *display = GDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
+  CdkWindowImplWayland *impl= CDK_WINDOW_IMPL_WAYLAND (window->impl);
+  CdkWaylandDisplay *display = CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
   struct wl_surface *surface = impl->display_server.wl_surface;
   struct wl_seat *seat = cdk_wayland_seat_get_wl_seat (cdk_seat);
   struct zwp_keyboard_shortcuts_inhibitor_v1 *inhibitor;
@@ -5379,10 +5379,10 @@ cdk_wayland_window_restore_shortcuts (CdkWindow *window,
   struct wl_seat *seat;
   struct zwp_keyboard_shortcuts_inhibitor_v1 *inhibitor;
 
-  g_return_if_fail (GDK_IS_WAYLAND_WINDOW (window));
-  g_return_if_fail (GDK_IS_WINDOW_IMPL_WAYLAND (window->impl));
+  g_return_if_fail (CDK_IS_WAYLAND_WINDOW (window));
+  g_return_if_fail (CDK_IS_WINDOW_IMPL_WAYLAND (window->impl));
 
-  impl = GDK_WINDOW_IMPL_WAYLAND (window->impl);
+  impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   seat = cdk_wayland_seat_get_wl_seat (cdk_seat);
 
   inhibitor = cdk_wayland_window_get_inhibitor (impl, seat);

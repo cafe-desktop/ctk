@@ -131,31 +131,31 @@ struct _CtkTreeSortableIface
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType    ctk_tree_sortable_get_type              (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_tree_sortable_sort_column_changed   (CtkTreeSortable        *sortable);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_tree_sortable_get_sort_column_id    (CtkTreeSortable        *sortable,
 						  gint                   *sort_column_id,
 						  CtkSortType            *order);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_tree_sortable_set_sort_column_id    (CtkTreeSortable        *sortable,
 						  gint                    sort_column_id,
 						  CtkSortType             order);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_tree_sortable_set_sort_func         (CtkTreeSortable        *sortable,
 						  gint                    sort_column_id,
 						  CtkTreeIterCompareFunc  sort_func,
 						  gpointer                user_data,
 						  GDestroyNotify          destroy);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_tree_sortable_set_default_sort_func (CtkTreeSortable        *sortable,
 						  CtkTreeIterCompareFunc  sort_func,
 						  gpointer                user_data,
 						  GDestroyNotify          destroy);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_tree_sortable_has_default_sort_func (CtkTreeSortable        *sortable);
 
 G_END_DECLS

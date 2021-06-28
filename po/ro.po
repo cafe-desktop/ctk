@@ -71,7 +71,7 @@ msgstr "DISPLAY"
 
 #. Description of --cdk-debug=FLAGS in --help output
 #: cdk/cdk.c:240
-msgid "GDK debugging flags to set"
+msgid "CDK debugging flags to set"
 msgstr "Fanioane de depanare CTK+ de setat"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
@@ -84,12 +84,12 @@ msgstr "FANIOANE"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: cdk/cdk.c:243
-msgid "GDK debugging flags to unset"
+msgid "CDK debugging flags to unset"
 msgstr "Fanioane de depanare CTK+ de desetat"
 
 #: cdk/cdkwindow.c:2851
-msgid "GL support disabled via GDK_DEBUG"
-msgstr "Suportul GL dezactivat via GDK_DEBUG"
+msgid "GL support disabled via CDK_DEBUG"
+msgstr "Suportul GL dezactivat via CDK_DEBUG"
 
 #: cdk/cdkwindow.c:2862
 msgid "The current backend does not support OpenGL"
@@ -4186,8 +4186,8 @@ msgid "CTK+ Version"
 msgstr "Versiune CTK+"
 
 #: ctk/inspector/general.ui:68
-msgid "GDK Backend"
-msgstr "Suport GDK"
+msgid "CDK Backend"
+msgstr "Suport CDK"
 
 #: ctk/inspector/general.ui:373
 msgid "Display"
@@ -4560,10 +4560,10 @@ msgstr "Configurarea e hardcodată de CTK_TEST_TOUCHSCREEN"
 #: ctk/inspector/visual.c:817
 msgid ""
 "Not settable at runtime.\n"
-"Use GDK_GL=always or GDK_GL=disable instead"
+"Use CDK_GL=always or CDK_GL=disable instead"
 msgstr ""
 "Nu este configurabil la rulare.\n"
-"Utilizați GDK_GL=always sau GDK_GL=disable în loc"
+"Utilizați CDK_GL=always sau CDK_GL=disable în loc"
 
 #: ctk/inspector/visual.c:831 ctk/inspector/visual.c:832
 #: ctk/inspector/visual.c:833

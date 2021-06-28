@@ -58,17 +58,17 @@ struct _CtkRecentChooserMenuClass
   void (* ctk_recent4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType      ctk_recent_chooser_menu_get_type         (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *ctk_recent_chooser_menu_new              (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *ctk_recent_chooser_menu_new_for_manager  (CtkRecentManager     *manager);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_recent_chooser_menu_get_show_numbers (CtkRecentChooserMenu *menu);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_recent_chooser_menu_set_show_numbers (CtkRecentChooserMenu *menu,
 						     gboolean              show_numbers);
 

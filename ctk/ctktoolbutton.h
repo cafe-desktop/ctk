@@ -75,43 +75,43 @@ struct _CtkToolButtonClass
   void (* _ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType        ctk_tool_button_get_type       (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkToolItem *ctk_tool_button_new            (CtkWidget   *icon_widget,
 					     const gchar *label);
-GDK_DEPRECATED_IN_3_10_FOR(ctk_tool_button_new)
+CDK_DEPRECATED_IN_3_10_FOR(ctk_tool_button_new)
 CtkToolItem *ctk_tool_button_new_from_stock (const gchar *stock_id);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_tool_button_set_label         (CtkToolButton *button,
 							 const gchar   *label);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *         ctk_tool_button_get_label         (CtkToolButton *button);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_tool_button_set_use_underline (CtkToolButton *button,
 							 gboolean       use_underline);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_tool_button_get_use_underline (CtkToolButton *button);
-GDK_DEPRECATED_IN_3_10_FOR(ctk_tool_button_set_icon_name)
+CDK_DEPRECATED_IN_3_10_FOR(ctk_tool_button_set_icon_name)
 void                  ctk_tool_button_set_stock_id      (CtkToolButton *button,
 							 const gchar   *stock_id);
-GDK_DEPRECATED_IN_3_10_FOR(ctk_tool_button_get_icon_name)
+CDK_DEPRECATED_IN_3_10_FOR(ctk_tool_button_get_icon_name)
 const gchar *         ctk_tool_button_get_stock_id      (CtkToolButton *button);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_tool_button_set_icon_name     (CtkToolButton *button,
 							 const gchar   *icon_name);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *         ctk_tool_button_get_icon_name     (CtkToolButton *button);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_tool_button_set_icon_widget   (CtkToolButton *button,
 							 CtkWidget     *icon_widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *           ctk_tool_button_get_icon_widget   (CtkToolButton *button);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_tool_button_set_label_widget  (CtkToolButton *button,
 							 CtkWidget     *label_widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *           ctk_tool_button_get_label_widget  (CtkToolButton *button);
 
 

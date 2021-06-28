@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1999 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -36,11 +36,11 @@ static struct {
   const gchar  *name;
   CdkCursor    *cursor;
 } drag_cursors[] = {
-  { GDK_ACTION_DEFAULT, NULL,       NULL },
-  { GDK_ACTION_ASK,     "dnd-ask",  NULL },
-  { GDK_ACTION_COPY,    "dnd-copy", NULL },
-  { GDK_ACTION_MOVE,    "dnd-move", NULL },
-  { GDK_ACTION_LINK,    "dnd-link", NULL },
+  { CDK_ACTION_DEFAULT, NULL,       NULL },
+  { CDK_ACTION_ASK,     "dnd-ask",  NULL },
+  { CDK_ACTION_COPY,    "dnd-copy", NULL },
+  { CDK_ACTION_MOVE,    "dnd-move", NULL },
+  { CDK_ACTION_LINK,    "dnd-link", NULL },
   { 0,                  "dnd-none", NULL },
 };
 
@@ -61,7 +61,7 @@ static GList *contexts = NULL;
  * @short_description: Functions for controlling drag and drop handling
  *
  * These functions provide a low level interface for drag and drop.
- * The X backend of GDK supports both the Xdnd and Motif drag and drop
+ * The X backend of CDK supports both the Xdnd and Motif drag and drop
  * protocols transparently, the Win32 backend supports the WM_DROPFILES
  * protocol.
  *
@@ -84,7 +84,7 @@ static GList *contexts = NULL;
 GList *
 cdk_drag_context_list_targets (CdkDragContext *context)
 {
-  g_return_val_if_fail (GDK_IS_DRAG_CONTEXT (context), NULL);
+  g_return_val_if_fail (CDK_IS_DRAG_CONTEXT (context), NULL);
 
   return context->targets;
 }
@@ -94,7 +94,7 @@ cdk_drag_context_list_targets (CdkDragContext *context)
  * @context: a #CdkDragContext
  *
  * Determines the bitmask of actions proposed by the source if
- * cdk_drag_context_get_suggested_action() returns %GDK_ACTION_ASK.
+ * cdk_drag_context_get_suggested_action() returns %CDK_ACTION_ASK.
  *
  * Returns: the #CdkDragAction flags
  *
@@ -103,7 +103,7 @@ cdk_drag_context_list_targets (CdkDragContext *context)
 CdkDragAction
 cdk_drag_context_get_actions (CdkDragContext *context)
 {
-  g_return_val_if_fail (GDK_IS_DRAG_CONTEXT (context), GDK_ACTION_DEFAULT);
+  g_return_val_if_fail (CDK_IS_DRAG_CONTEXT (context), CDK_ACTION_DEFAULT);
 
   return context->actions;
 }
@@ -121,7 +121,7 @@ cdk_drag_context_get_actions (CdkDragContext *context)
 CdkDragAction
 cdk_drag_context_get_suggested_action (CdkDragContext *context)
 {
-  g_return_val_if_fail (GDK_IS_DRAG_CONTEXT (context), 0);
+  g_return_val_if_fail (CDK_IS_DRAG_CONTEXT (context), 0);
 
   return context->suggested_action;
 }
@@ -139,7 +139,7 @@ cdk_drag_context_get_suggested_action (CdkDragContext *context)
 CdkDragAction
 cdk_drag_context_get_selected_action (CdkDragContext *context)
 {
-  g_return_val_if_fail (GDK_IS_DRAG_CONTEXT (context), 0);
+  g_return_val_if_fail (CDK_IS_DRAG_CONTEXT (context), 0);
 
   return context->action;
 }
@@ -157,7 +157,7 @@ cdk_drag_context_get_selected_action (CdkDragContext *context)
 CdkWindow *
 cdk_drag_context_get_source_window (CdkDragContext *context)
 {
-  g_return_val_if_fail (GDK_IS_DRAG_CONTEXT (context), NULL);
+  g_return_val_if_fail (CDK_IS_DRAG_CONTEXT (context), NULL);
 
   return context->source_window;
 }
@@ -175,7 +175,7 @@ cdk_drag_context_get_source_window (CdkDragContext *context)
 CdkWindow *
 cdk_drag_context_get_dest_window (CdkDragContext *context)
 {
-  g_return_val_if_fail (GDK_IS_DRAG_CONTEXT (context), NULL);
+  g_return_val_if_fail (CDK_IS_DRAG_CONTEXT (context), NULL);
 
   return context->dest_window;
 }
@@ -193,7 +193,7 @@ cdk_drag_context_get_dest_window (CdkDragContext *context)
 CdkDragProtocol
 cdk_drag_context_get_protocol (CdkDragContext *context)
 {
-  g_return_val_if_fail (GDK_IS_DRAG_CONTEXT (context), GDK_DRAG_PROTO_NONE);
+  g_return_val_if_fail (CDK_IS_DRAG_CONTEXT (context), CDK_DRAG_PROTO_NONE);
 
   return context->protocol;
 }
@@ -210,8 +210,8 @@ void
 cdk_drag_context_set_device (CdkDragContext *context,
                              CdkDevice      *device)
 {
-  g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
-  g_return_if_fail (GDK_IS_DEVICE (device));
+  g_return_if_fail (CDK_IS_DRAG_CONTEXT (context));
+  g_return_if_fail (CDK_IS_DEVICE (device));
 
   if (context->device)
     g_object_unref (context->device);
@@ -233,7 +233,7 @@ cdk_drag_context_set_device (CdkDragContext *context,
 CdkDevice *
 cdk_drag_context_get_device (CdkDragContext *context)
 {
-  g_return_val_if_fail (GDK_IS_DRAG_CONTEXT (context), NULL);
+  g_return_val_if_fail (CDK_IS_DRAG_CONTEXT (context), NULL);
 
   return context->device;
 }
@@ -249,7 +249,7 @@ cdk_drag_context_init (CdkDragContext *context)
 static void
 cdk_drag_context_finalize (GObject *object)
 {
-  CdkDragContext *context = GDK_DRAG_CONTEXT (object);
+  CdkDragContext *context = CDK_DRAG_CONTEXT (object);
 
   contexts = g_list_remove (contexts, context);
   g_list_free (context->targets);
@@ -290,7 +290,7 @@ cdk_drag_context_class_init (CdkDragContextClass *klass)
                   G_STRUCT_OFFSET (CdkDragContextClass, cancel),
                   NULL, NULL,
                   NULL,
-                  G_TYPE_NONE, 1, GDK_TYPE_DRAG_CANCEL_REASON);
+                  G_TYPE_NONE, 1, CDK_TYPE_DRAG_CANCEL_REASON);
 
   /**
    * CdkDragContext::drop-performed:
@@ -357,7 +357,7 @@ cdk_drag_context_class_init (CdkDragContextClass *klass)
                   G_STRUCT_OFFSET (CdkDragContextClass, action_changed),
                   NULL, NULL,
                   NULL,
-                  G_TYPE_NONE, 1, GDK_TYPE_DRAG_ACTION);
+                  G_TYPE_NONE, 1, CDK_TYPE_DRAG_ACTION);
 }
 
 /**
@@ -388,9 +388,9 @@ cdk_drag_find_window_for_screen (CdkDragContext  *context,
                                  CdkWindow      **dest_window,
                                  CdkDragProtocol *protocol)
 {
-  g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
+  g_return_if_fail (CDK_IS_DRAG_CONTEXT (context));
 
-  *dest_window = GDK_DRAG_CONTEXT_GET_CLASS (context)
+  *dest_window = CDK_DRAG_CONTEXT_GET_CLASS (context)
       ->find_window (context, drag_window, screen, x_root, y_root, protocol);
 }
 
@@ -411,9 +411,9 @@ cdk_drag_status (CdkDragContext *context,
                  CdkDragAction   action,
                  guint32         time_)
 {
-  g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
+  g_return_if_fail (CDK_IS_DRAG_CONTEXT (context));
 
-  GDK_DRAG_CONTEXT_GET_CLASS (context)->drag_status (context, action, time_);
+  CDK_DRAG_CONTEXT_GET_CLASS (context)->drag_status (context, action, time_);
 }
 
 /**
@@ -448,9 +448,9 @@ cdk_drag_motion (CdkDragContext *context,
                  CdkDragAction   possible_actions,
                  guint32         time_)
 {
-  g_return_val_if_fail (GDK_IS_DRAG_CONTEXT (context), FALSE);
+  g_return_val_if_fail (CDK_IS_DRAG_CONTEXT (context), FALSE);
 
-  return GDK_DRAG_CONTEXT_GET_CLASS (context)
+  return CDK_DRAG_CONTEXT_GET_CLASS (context)
        ->drag_motion (context,
                       dest_window,
                       protocol,
@@ -477,9 +477,9 @@ void
 cdk_drag_abort (CdkDragContext *context,
                 guint32         time_)
 {
-  g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
+  g_return_if_fail (CDK_IS_DRAG_CONTEXT (context));
 
-  GDK_DRAG_CONTEXT_GET_CLASS (context)->drag_abort (context, time_);
+  CDK_DRAG_CONTEXT_GET_CLASS (context)->drag_abort (context, time_);
 }
 
 /**
@@ -498,9 +498,9 @@ void
 cdk_drag_drop (CdkDragContext *context,
                guint32         time_)
 {
-  g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
+  g_return_if_fail (CDK_IS_DRAG_CONTEXT (context));
 
-  GDK_DRAG_CONTEXT_GET_CLASS (context)->drag_drop (context, time_);
+  CDK_DRAG_CONTEXT_GET_CLASS (context)->drag_drop (context, time_);
 }
 
 /**
@@ -519,9 +519,9 @@ cdk_drop_reply (CdkDragContext *context,
                 gboolean        accepted,
                 guint32         time_)
 {
-  g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
+  g_return_if_fail (CDK_IS_DRAG_CONTEXT (context));
 
-  GDK_DRAG_CONTEXT_GET_CLASS (context)->drop_reply (context, accepted, time_);
+  CDK_DRAG_CONTEXT_GET_CLASS (context)->drop_reply (context, accepted, time_);
 }
 
 /**
@@ -539,9 +539,9 @@ cdk_drop_finish (CdkDragContext *context,
                  gboolean        success,
                  guint32         time_)
 {
-  g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
+  g_return_if_fail (CDK_IS_DRAG_CONTEXT (context));
 
-  GDK_DRAG_CONTEXT_GET_CLASS (context)->drop_finish (context, success, time_);
+  CDK_DRAG_CONTEXT_GET_CLASS (context)->drop_finish (context, success, time_);
 }
 
 /**
@@ -550,7 +550,7 @@ cdk_drop_finish (CdkDragContext *context,
  *
  * Returns whether the dropped data has been successfully
  * transferred. This function is intended to be used while
- * handling a %GDK_DROP_FINISHED event, its return value is
+ * handling a %CDK_DROP_FINISHED event, its return value is
  * meaningless at other times.
  *
  * Returns: %TRUE if the drop was successful.
@@ -560,9 +560,9 @@ cdk_drop_finish (CdkDragContext *context,
 gboolean
 cdk_drag_drop_succeeded (CdkDragContext *context)
 {
-  g_return_val_if_fail (GDK_IS_DRAG_CONTEXT (context), FALSE);
+  g_return_val_if_fail (CDK_IS_DRAG_CONTEXT (context), FALSE);
 
-  return GDK_DRAG_CONTEXT_GET_CLASS (context)->drop_status (context);
+  return CDK_DRAG_CONTEXT_GET_CLASS (context)->drop_status (context);
 }
 
 /**
@@ -571,14 +571,14 @@ cdk_drag_drop_succeeded (CdkDragContext *context)
  *
  * Returns the selection atom for the current source window.
  *
- * Returns: (transfer none): the selection atom, or %GDK_NONE
+ * Returns: (transfer none): the selection atom, or %CDK_NONE
  */
 CdkAtom
 cdk_drag_get_selection (CdkDragContext *context)
 {
-  g_return_val_if_fail (GDK_IS_DRAG_CONTEXT (context), GDK_NONE);
+  g_return_val_if_fail (CDK_IS_DRAG_CONTEXT (context), CDK_NONE);
 
-  return GDK_DRAG_CONTEXT_GET_CLASS (context)->get_selection (context);
+  return CDK_DRAG_CONTEXT_GET_CLASS (context)->get_selection (context);
 }
 
 /**
@@ -587,7 +587,7 @@ cdk_drag_get_selection (CdkDragContext *context)
  *
  * Returns the window on which the drag icon should be rendered
  * during the drag operation. Note that the window may not be
- * available until the drag operation has begun. GDK will move
+ * available until the drag operation has begun. CDK will move
  * the window in accordance with the ongoing drag operation.
  * The window is owned by @context and will be destroyed when
  * the drag operation is over.
@@ -599,10 +599,10 @@ cdk_drag_get_selection (CdkDragContext *context)
 CdkWindow *
 cdk_drag_context_get_drag_window (CdkDragContext *context)
 {
-  g_return_val_if_fail (GDK_IS_DRAG_CONTEXT (context), NULL);
+  g_return_val_if_fail (CDK_IS_DRAG_CONTEXT (context), NULL);
 
-  if (GDK_DRAG_CONTEXT_GET_CLASS (context)->get_drag_window)
-    return GDK_DRAG_CONTEXT_GET_CLASS (context)->get_drag_window (context);
+  if (CDK_DRAG_CONTEXT_GET_CLASS (context)->get_drag_window)
+    return CDK_DRAG_CONTEXT_GET_CLASS (context)->get_drag_window (context);
 
   return NULL;
 }
@@ -624,10 +624,10 @@ cdk_drag_context_set_hotspot (CdkDragContext *context,
                               gint            hot_x,
                               gint            hot_y)
 {
-  g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
+  g_return_if_fail (CDK_IS_DRAG_CONTEXT (context));
 
-  if (GDK_DRAG_CONTEXT_GET_CLASS (context)->set_hotspot)
-    GDK_DRAG_CONTEXT_GET_CLASS (context)->set_hotspot (context, hot_x, hot_y);
+  if (CDK_DRAG_CONTEXT_GET_CLASS (context)->set_hotspot)
+    CDK_DRAG_CONTEXT_GET_CLASS (context)->set_hotspot (context, hot_x, hot_y);
 }
 
 /**
@@ -635,7 +635,7 @@ cdk_drag_context_set_hotspot (CdkDragContext *context,
  * @context: a #CdkDragContext
  * @success: whether the drag was ultimatively successful
  *
- * Inform GDK if the drop ended successfully. Passing %FALSE
+ * Inform CDK if the drop ended successfully. Passing %FALSE
  * for @success may trigger a drag cancellation animation.
  *
  * This function is called by the drag source, and should
@@ -652,15 +652,15 @@ void
 cdk_drag_drop_done (CdkDragContext *context,
                     gboolean        success)
 {
-  g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
+  g_return_if_fail (CDK_IS_DRAG_CONTEXT (context));
 
   if (context->drop_done)
     return;
 
   context->drop_done = TRUE;
 
-  if (GDK_DRAG_CONTEXT_GET_CLASS (context)->drop_done)
-    GDK_DRAG_CONTEXT_GET_CLASS (context)->drop_done (context, success);
+  if (CDK_DRAG_CONTEXT_GET_CLASS (context)->drop_done)
+    CDK_DRAG_CONTEXT_GET_CLASS (context)->drop_done (context, success);
 }
 
 /**
@@ -695,11 +695,11 @@ cdk_drag_context_manage_dnd (CdkDragContext *context,
                              CdkWindow      *ipc_window,
                              CdkDragAction   actions)
 {
-  g_return_val_if_fail (GDK_IS_DRAG_CONTEXT (context), FALSE);
-  g_return_val_if_fail (GDK_IS_WINDOW (ipc_window), FALSE);
+  g_return_val_if_fail (CDK_IS_DRAG_CONTEXT (context), FALSE);
+  g_return_val_if_fail (CDK_IS_WINDOW (ipc_window), FALSE);
 
-  if (GDK_DRAG_CONTEXT_GET_CLASS (context)->manage_dnd)
-    return GDK_DRAG_CONTEXT_GET_CLASS (context)->manage_dnd (context, ipc_window, actions);
+  if (CDK_DRAG_CONTEXT_GET_CLASS (context)->manage_dnd)
+    return CDK_DRAG_CONTEXT_GET_CLASS (context)->manage_dnd (context, ipc_window, actions);
 
   return FALSE;
 }
@@ -708,17 +708,17 @@ void
 cdk_drag_context_set_cursor (CdkDragContext *context,
                              CdkCursor      *cursor)
 {
-  g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
+  g_return_if_fail (CDK_IS_DRAG_CONTEXT (context));
 
-  if (GDK_DRAG_CONTEXT_GET_CLASS (context)->set_cursor)
-    GDK_DRAG_CONTEXT_GET_CLASS (context)->set_cursor (context, cursor);
+  if (CDK_DRAG_CONTEXT_GET_CLASS (context)->set_cursor)
+    CDK_DRAG_CONTEXT_GET_CLASS (context)->set_cursor (context, cursor);
 }
 
 void
 cdk_drag_context_cancel (CdkDragContext      *context,
                          CdkDragCancelReason  reason)
 {
-  g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
+  g_return_if_fail (CDK_IS_DRAG_CONTEXT (context));
 
   g_signal_emit (context, signals[CANCEL], 0, reason);
 }
@@ -742,10 +742,10 @@ cdk_drag_context_handle_source_event (CdkEvent *event)
       if (!context->is_source)
         continue;
 
-      if (!GDK_DRAG_CONTEXT_GET_CLASS (context)->handle_event)
+      if (!CDK_DRAG_CONTEXT_GET_CLASS (context)->handle_event)
         continue;
 
-      if (GDK_DRAG_CONTEXT_GET_CLASS (context)->handle_event (context, event))
+      if (CDK_DRAG_CONTEXT_GET_CLASS (context)->handle_event (context, event))
         return TRUE;
     }
 
@@ -773,10 +773,10 @@ cdk_drag_context_commit_drag_status (CdkDragContext *context)
 {
   CdkDragContextClass *context_class;
 
-  g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
+  g_return_if_fail (CDK_IS_DRAG_CONTEXT (context));
   g_return_if_fail (!context->is_source);
 
-  context_class = GDK_DRAG_CONTEXT_GET_CLASS (context);
+  context_class = CDK_DRAG_CONTEXT_GET_CLASS (context);
 
   if (context_class->commit_drag_status)
     context_class->commit_drag_status (context);
@@ -790,11 +790,11 @@ cdk_drag_context_handle_dest_event (CdkEvent *event)
 
   switch (event->type)
     {
-    case GDK_DRAG_MOTION:
-    case GDK_DROP_START:
+    case CDK_DRAG_MOTION:
+    case CDK_DROP_START:
       context = event->dnd.context;
       break;
-    case GDK_SELECTION_NOTIFY:
+    case CDK_SELECTION_NOTIFY:
       for (l = contexts; l; l = l->next)
         {
           CdkDragContext *c = l->data;

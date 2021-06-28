@@ -201,28 +201,28 @@ ctk_win32_embed_widget_realize (CtkWidget *widget)
 
   ctk_widget_get_allocation (widget, &allocation);
 
-  attributes.window_type = GDK_WINDOW_CHILD;
+  attributes.window_type = CDK_WINDOW_CHILD;
   attributes.title = (gchar *) ctk_window_get_title (window);
   _ctk_window_get_wmclass (window, &attributes.wmclass_name, &attributes.wmclass_class);
   attributes.width = allocation.width;
   attributes.height = allocation.height;
-  attributes.wclass = GDK_INPUT_OUTPUT;
+  attributes.wclass = CDK_INPUT_OUTPUT;
 
   /* this isn't right - we should match our parent's visual/colormap.
    * though that will require handling "foreign" colormaps */
   attributes.visual = ctk_widget_get_visual (widget);
   attributes.event_mask = ctk_widget_get_events (widget);
-  attributes.event_mask |= (GDK_EXPOSURE_MASK |
-			    GDK_KEY_PRESS_MASK |
-			    GDK_KEY_RELEASE_MASK |
-			    GDK_ENTER_NOTIFY_MASK |
-			    GDK_LEAVE_NOTIFY_MASK |
-			    GDK_STRUCTURE_MASK |
-			    GDK_FOCUS_CHANGE_MASK);
+  attributes.event_mask |= (CDK_EXPOSURE_MASK |
+			    CDK_KEY_PRESS_MASK |
+			    CDK_KEY_RELEASE_MASK |
+			    CDK_ENTER_NOTIFY_MASK |
+			    CDK_LEAVE_NOTIFY_MASK |
+			    CDK_STRUCTURE_MASK |
+			    CDK_FOCUS_CHANGE_MASK);
 
-  attributes_mask = GDK_WA_VISUAL;
-  attributes_mask |= (attributes.title ? GDK_WA_TITLE : 0);
-  attributes_mask |= (attributes.wmclass_name ? GDK_WA_WMCLASS : 0);
+  attributes_mask = CDK_WA_VISUAL;
+  attributes_mask |= (attributes.title ? CDK_WA_TITLE : 0);
+  attributes_mask |= (attributes.wmclass_name ? CDK_WA_WMCLASS : 0);
 
   cdk_window = cdk_window_new (embed_widget->parent_window,
                                &attributes, attributes_mask);
@@ -230,13 +230,13 @@ ctk_win32_embed_widget_realize (CtkWidget *widget)
   ctk_widget_register_window (widget, cdk_window);
 
   embed_widget->old_window_procedure = (gpointer)
-    SetWindowLongPtrW(GDK_WINDOW_HWND (cdk_window),
+    SetWindowLongPtrW(CDK_WINDOW_HWND (cdk_window),
 		      GWLP_WNDPROC,
 		      (LONG_PTR)ctk_win32_embed_widget_window_process);
 
   /* Enable tab to focus the widget */
-  styles = GetWindowLongPtr(GDK_WINDOW_HWND (cdk_window), GWL_STYLE);
-  SetWindowLongPtrW(GDK_WINDOW_HWND (cdk_window), GWL_STYLE, styles | WS_TABSTOP);
+  styles = GetWindowLongPtr(CDK_WINDOW_HWND (cdk_window), GWL_STYLE);
+  SetWindowLongPtrW(CDK_WINDOW_HWND (cdk_window), GWL_STYLE, styles | WS_TABSTOP);
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   ctk_style_context_set_background (ctk_widget_get_style_context (widget),
@@ -369,7 +369,7 @@ ctk_win32_embed_widget_focus (CtkWidget        *widget,
 	  direction == CTK_DIR_LEFT)
 	backwards = TRUE;
       
-      PostMessage(GDK_WINDOW_HWND (embed_widget->parent_window),
+      PostMessage(CDK_WINDOW_HWND (embed_widget->parent_window),
 				   WM_NEXTDLGCTL,
 				   backwards, 0);
     }

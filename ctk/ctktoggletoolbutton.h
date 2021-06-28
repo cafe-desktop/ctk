@@ -71,17 +71,17 @@ struct _CtkToggleToolButtonClass
   void (* _ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType        ctk_toggle_tool_button_get_type       (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkToolItem *ctk_toggle_tool_button_new            (void);
-GDK_DEPRECATED_IN_3_10_FOR(ctk_toggle_tool_button_new)
+CDK_DEPRECATED_IN_3_10_FOR(ctk_toggle_tool_button_new)
 CtkToolItem *ctk_toggle_tool_button_new_from_stock (const gchar *stock_id);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void         ctk_toggle_tool_button_set_active     (CtkToggleToolButton *button,
 						    gboolean             is_active);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean     ctk_toggle_tool_button_get_active     (CtkToggleToolButton *button);
 
 G_END_DECLS

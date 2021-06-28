@@ -62,7 +62,7 @@ msgstr "كۆرسەت"
 
 #. Description of --cdk-debug=FLAGS in --help output
 #: ../cdk/cdk.c:213
-msgid "GDK debugging flags to set"
+msgid "CDK debugging flags to set"
 msgstr "تەڭشەيدىغان CTK+ سازلاش بەلگىسى"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
@@ -75,7 +75,7 @@ msgstr "بەلگە"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: ../cdk/cdk.c:216
-msgid "GDK debugging flags to unset"
+msgid "CDK debugging flags to unset"
 msgstr "قالدۇرماقچى بولغان CTK+ سازلاش بەلگىسى"
 
 #.

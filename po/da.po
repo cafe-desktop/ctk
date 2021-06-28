@@ -90,8 +90,8 @@ msgstr "TERMINAL"
 
 #. Description of --cdk-debug=FLAGS in --help output
 #: cdk/cdk.c:248
-msgid "GDK debugging flags to set"
-msgstr "GDK-fejlfindingsflag der skal angives"
+msgid "CDK debugging flags to set"
+msgstr "CDK-fejlfindingsflag der skal angives"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
@@ -103,12 +103,12 @@ msgstr "FLAG"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: cdk/cdk.c:251
-msgid "GDK debugging flags to unset"
-msgstr "GDK-fejlfindingsflag der skal fjernes"
+msgid "CDK debugging flags to unset"
+msgstr "CDK-fejlfindingsflag der skal fjernes"
 
 #: cdk/cdkwindow.c:2851
-msgid "GL support disabled via GDK_DEBUG"
-msgstr "GL-understøttelse slået fra via GDK_DEBUG"
+msgid "GL support disabled via CDK_DEBUG"
+msgstr "GL-understøttelse slået fra via CDK_DEBUG"
 
 #: cdk/cdkwindow.c:2862
 msgid "The current backend does not support OpenGL"
@@ -4161,8 +4161,8 @@ msgid "CTK+ Version"
 msgstr "CTK+-version"
 
 #: ctk/inspector/general.ui:68
-msgid "GDK Backend"
-msgstr "GDK-motor"
+msgid "CDK Backend"
+msgstr "CDK-motor"
 
 # Tasten på visse bærbare computeres tastaturer, som aktiverer noget projektoragtigt eller på anden vis piller ved skærmindstillingerne
 #: ctk/inspector/general.ui:373
@@ -4550,10 +4550,10 @@ msgstr "Indstillingen er fast angivet ved CTK_TEST_TOUCHSCREEN"
 #: ctk/inspector/visual.c:817
 msgid ""
 "Not settable at runtime.\n"
-"Use GDK_GL=always or GDK_GL=disable instead"
+"Use CDK_GL=always or CDK_GL=disable instead"
 msgstr ""
 "Kan ikke indstilles under kørsel.\n"
-"Brug GDK_GL=always eller GDK_GL=disable i stedet"
+"Brug CDK_GL=always eller CDK_GL=disable i stedet"
 
 #: ctk/inspector/visual.c:831 ctk/inspector/visual.c:832
 #: ctk/inspector/visual.c:833
@@ -9117,10 +9117,10 @@ msgstr "Udskriv til testprinter"
 #~ msgstr "--- Ingen hjælp ---"
 
 #~ msgid "Cdk debugging flags to set"
-#~ msgstr "GDK-fejlretningsflag der skal angives"
+#~ msgstr "CDK-fejlretningsflag der skal angives"
 
 #~ msgid "Cdk debugging flags to unset"
-#~ msgstr "GDK-fejlretningsflag der skal fjernes"
+#~ msgstr "CDK-fejlretningsflag der skal fjernes"
 
 #~ msgid "Image file '%s' contains no data"
 #~ msgstr "Billedfilen “%s” indeholder ingen data"

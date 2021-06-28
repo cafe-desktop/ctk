@@ -36,12 +36,12 @@
 typedef struct _CdkWaylandScreen      CdkWaylandScreen;
 typedef struct _CdkWaylandScreenClass CdkWaylandScreenClass;
 
-#define GDK_TYPE_WAYLAND_SCREEN              (_cdk_wayland_screen_get_type ())
-#define GDK_WAYLAND_SCREEN(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WAYLAND_SCREEN, CdkWaylandScreen))
-#define GDK_WAYLAND_SCREEN_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WAYLAND_SCREEN, CdkWaylandScreenClass))
-#define GDK_IS_WAYLAND_SCREEN(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WAYLAND_SCREEN))
-#define GDK_IS_WAYLAND_SCREEN_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_WAYLAND_SCREEN))
-#define GDK_WAYLAND_SCREEN_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_WAYLAND_SCREEN, CdkWaylandScreenClass))
+#define CDK_TYPE_WAYLAND_SCREEN              (_cdk_wayland_screen_get_type ())
+#define CDK_WAYLAND_SCREEN(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), CDK_TYPE_WAYLAND_SCREEN, CdkWaylandScreen))
+#define CDK_WAYLAND_SCREEN_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CDK_TYPE_WAYLAND_SCREEN, CdkWaylandScreenClass))
+#define CDK_IS_WAYLAND_SCREEN(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), CDK_TYPE_WAYLAND_SCREEN))
+#define CDK_IS_WAYLAND_SCREEN_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CDK_TYPE_WAYLAND_SCREEN))
+#define CDK_WAYLAND_SCREEN_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CDK_TYPE_WAYLAND_SCREEN, CdkWaylandScreenClass))
 
 typedef struct {
         gboolean     antialias;
@@ -94,12 +94,12 @@ struct _CdkWaylandScreenClass
 
 GType _cdk_wayland_screen_get_type (void);
 
-G_DEFINE_TYPE (CdkWaylandScreen, _cdk_wayland_screen, GDK_TYPE_SCREEN)
+G_DEFINE_TYPE (CdkWaylandScreen, _cdk_wayland_screen, CDK_TYPE_SCREEN)
 
 static void
 cdk_wayland_screen_dispose (GObject *object)
 {
-  CdkWaylandScreen *screen_wayland = GDK_WAYLAND_SCREEN (object);
+  CdkWaylandScreen *screen_wayland = CDK_WAYLAND_SCREEN (object);
 
   if (screen_wayland->dbus_proxy && screen_wayland->dbus_setting_change_id > 0)
     {
@@ -119,7 +119,7 @@ cdk_wayland_screen_dispose (GObject *object)
 static void
 cdk_wayland_screen_finalize (GObject *object)
 {
-  CdkWaylandScreen *screen_wayland = GDK_WAYLAND_SCREEN (object);
+  CdkWaylandScreen *screen_wayland = CDK_WAYLAND_SCREEN (object);
 
   g_clear_object (&screen_wayland->dbus_proxy);
   g_clear_object (&screen_wayland->dbus_cancellable);
@@ -142,31 +142,31 @@ cdk_wayland_screen_finalize (GObject *object)
 static CdkDisplay *
 cdk_wayland_screen_get_display (CdkScreen *screen)
 {
-  return GDK_WAYLAND_SCREEN (screen)->display;
+  return CDK_WAYLAND_SCREEN (screen)->display;
 }
 
 static gint
 cdk_wayland_screen_get_width (CdkScreen *screen)
 {
-  return GDK_WAYLAND_SCREEN (screen)->width;
+  return CDK_WAYLAND_SCREEN (screen)->width;
 }
 
 static gint
 cdk_wayland_screen_get_height (CdkScreen *screen)
 {
-  return GDK_WAYLAND_SCREEN (screen)->height;
+  return CDK_WAYLAND_SCREEN (screen)->height;
 }
 
 static gint
 cdk_wayland_screen_get_width_mm (CdkScreen *screen)
 {
-  return GDK_WAYLAND_SCREEN (screen)->width_mm;
+  return CDK_WAYLAND_SCREEN (screen)->width_mm;
 }
 
 static gint
 cdk_wayland_screen_get_height_mm (CdkScreen *screen)
 {
-  return GDK_WAYLAND_SCREEN (screen)->height_mm;
+  return CDK_WAYLAND_SCREEN (screen)->height_mm;
 }
 
 static gint
@@ -178,19 +178,19 @@ cdk_wayland_screen_get_number (CdkScreen *screen)
 static CdkWindow *
 cdk_wayland_screen_get_root_window (CdkScreen *screen)
 {
-  return GDK_WAYLAND_SCREEN (screen)->root_window;
+  return CDK_WAYLAND_SCREEN (screen)->root_window;
 }
 
 static CdkVisual *
 cdk_wayland_screen_get_system_visual (CdkScreen * screen)
 {
-  return (CdkVisual *) GDK_WAYLAND_SCREEN (screen)->visual;
+  return (CdkVisual *) CDK_WAYLAND_SCREEN (screen)->visual;
 }
 
 static CdkVisual *
 cdk_wayland_screen_get_rgba_visual (CdkScreen *screen)
 {
-  return (CdkVisual *) GDK_WAYLAND_SCREEN (screen)->visual;
+  return (CdkVisual *) CDK_WAYLAND_SCREEN (screen)->visual;
 }
 
 static gboolean
@@ -202,7 +202,7 @@ cdk_wayland_screen_is_composited (CdkScreen *screen)
 static gchar *
 cdk_wayland_screen_make_display_name (CdkScreen *screen)
 {
-  return g_strdup (cdk_display_get_name (GDK_WAYLAND_SCREEN (screen)->display));
+  return g_strdup (cdk_display_get_name (CDK_WAYLAND_SCREEN (screen)->display));
 }
 
 static CdkWindow *
@@ -229,10 +229,10 @@ notify_setting (CdkScreen   *screen,
 {
   CdkEvent event;
 
-  event.type = GDK_SETTING;
+  event.type = CDK_SETTING;
   event.setting.window = cdk_screen_get_root_window (screen);
   event.setting.send_event = FALSE;
-  event.setting.action = GDK_SETTING_ACTION_CHANGED;
+  event.setting.action = CDK_SETTING_ACTION_CHANGED;
   event.setting.name = (gchar *)setting;
   cdk_event_put (&event);
 }
@@ -338,7 +338,7 @@ static TranslationEntry * find_translation_entry_by_schema (const char *schema,
 static void
 update_xft_settings (CdkScreen *screen)
 {
-  CdkWaylandScreen *screen_wayland = GDK_WAYLAND_SCREEN (screen);
+  CdkWaylandScreen *screen_wayland = CDK_WAYLAND_SCREEN (screen);
   GSettings *settings;
   GsdFontAntialiasingMode antialiasing;
   GsdFontHinting hinting;
@@ -504,7 +504,7 @@ update_xft_settings (CdkScreen *screen)
 
       screen_wayland->xft_settings.dpi = xft_settings.dpi;
 
-      scale_env = g_getenv ("GDK_DPI_SCALE");
+      scale_env = g_getenv ("CDK_DPI_SCALE");
       if (scale_env)
         {
           scale = g_ascii_strtod (scale_env, NULL);
@@ -702,7 +702,7 @@ static void fontconfig_dbus_proxy_open_cb (GObject      *object,
 static void
 init_settings (CdkScreen *screen)
 {
-  CdkWaylandScreen *screen_wayland = GDK_WAYLAND_SCREEN (screen);
+  CdkWaylandScreen *screen_wayland = CDK_WAYLAND_SCREEN (screen);
   GSettingsSchemaSource *source;
   GSettingsSchema *schema;
   GSettings *settings;
@@ -833,7 +833,7 @@ ctk_shell_handle_capabilities (void              *data,
                                uint32_t           capabilities)
 {
   CdkScreen *screen = data;
-  CdkWaylandScreen *screen_wayland = GDK_WAYLAND_SCREEN (data);
+  CdkWaylandScreen *screen_wayland = CDK_WAYLAND_SCREEN (data);
 
   screen_wayland->shell_capabilities = capabilities;
 
@@ -850,7 +850,7 @@ void
 _cdk_wayland_screen_set_has_ctk_shell (CdkScreen *screen)
 {
   CdkWaylandDisplay *display_wayland =
-    GDK_WAYLAND_DISPLAY (GDK_WAYLAND_SCREEN (screen)->display);
+    CDK_WAYLAND_DISPLAY (CDK_WAYLAND_SCREEN (screen)->display);
 
   ctk_shell1_add_listener (display_wayland->ctk_shell,
                            &cdk_screen_ctk_shell_listener,
@@ -862,7 +862,7 @@ set_value_from_entry (CdkScreen        *screen,
                       TranslationEntry *entry,
                       GValue           *value)
 {
-  CdkWaylandScreen *screen_wayland = GDK_WAYLAND_SCREEN (screen);
+  CdkWaylandScreen *screen_wayland = CDK_WAYLAND_SCREEN (screen);
   GSettings *settings;
 
   if (screen_wayland->settings_portal)
@@ -956,7 +956,7 @@ set_decoration_layout_from_entry (CdkScreen        *screen,
                                   TranslationEntry *entry,
                                   GValue           *value)
 {
-  CdkWaylandScreen *screen_wayland = GDK_WAYLAND_SCREEN (screen);
+  CdkWaylandScreen *screen_wayland = CDK_WAYLAND_SCREEN (screen);
   GSettings *settings = NULL;
   const char *session;
 
@@ -997,7 +997,7 @@ set_capability_setting (CdkScreen                 *screen,
                         GValue                    *value,
                         enum ctk_shell1_capability test)
 {
-  CdkWaylandScreen *wayland_screen = GDK_WAYLAND_SCREEN (screen);
+  CdkWaylandScreen *wayland_screen = CDK_WAYLAND_SCREEN (screen);
 
   g_value_set_boolean (value, (wayland_screen->shell_capabilities & test) == test);
 
@@ -1009,10 +1009,10 @@ cdk_wayland_screen_get_setting (CdkScreen   *screen,
                                 const gchar *name,
                                 GValue      *value)
 {
-  CdkWaylandScreen *wayland_screen = GDK_WAYLAND_SCREEN (screen);
+  CdkWaylandScreen *wayland_screen = CDK_WAYLAND_SCREEN (screen);
   TranslationEntry *entry;
 
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), FALSE);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), FALSE);
 
   if (wayland_screen->settings != NULL &&
       g_hash_table_size (wayland_screen->settings) == 0)
@@ -1076,7 +1076,7 @@ struct _CdkWaylandVisualClass
 
 GType _cdk_wayland_visual_get_type (void);
 
-G_DEFINE_TYPE (CdkWaylandVisual, _cdk_wayland_visual, GDK_TYPE_VISUAL)
+G_DEFINE_TYPE (CdkWaylandVisual, _cdk_wayland_visual, CDK_TYPE_VISUAL)
 
 static void
 _cdk_wayland_visual_class_init (CdkWaylandVisualClass *klass)
@@ -1097,13 +1097,13 @@ cdk_wayland_screen_visual_get_best_depth (CdkScreen *screen)
 static CdkVisualType
 cdk_wayland_screen_visual_get_best_type (CdkScreen *screen)
 {
-  return GDK_VISUAL_TRUE_COLOR;
+  return CDK_VISUAL_TRUE_COLOR;
 }
 
 static CdkVisual*
 cdk_wayland_screen_visual_get_best (CdkScreen *screen)
 {
-  return GDK_WAYLAND_SCREEN (screen)->visual;
+  return CDK_WAYLAND_SCREEN (screen)->visual;
 }
 
 static CdkVisual*
@@ -1111,7 +1111,7 @@ cdk_wayland_screen_visual_get_best_with_depth (CdkScreen *screen,
 					       gint       depth)
 {
   if (depth == 32)
-    return GDK_WAYLAND_SCREEN (screen)->visual;
+    return CDK_WAYLAND_SCREEN (screen)->visual;
   else
     return NULL;
 }
@@ -1120,8 +1120,8 @@ static CdkVisual*
 cdk_wayland_screen_visual_get_best_with_type (CdkScreen     *screen,
 					      CdkVisualType  visual_type)
 {
-  if (visual_type == GDK_VISUAL_TRUE_COLOR)
-    return GDK_WAYLAND_SCREEN (screen)->visual;
+  if (visual_type == CDK_VISUAL_TRUE_COLOR)
+    return CDK_WAYLAND_SCREEN (screen)->visual;
   else
     return NULL;
 }
@@ -1131,8 +1131,8 @@ cdk_wayland_screen_visual_get_best_with_both (CdkScreen     *screen,
 					      gint           depth,
 					      CdkVisualType  visual_type)
 {
-  if (depth == 32 && visual_type == GDK_VISUAL_TRUE_COLOR)
-    return GDK_WAYLAND_SCREEN (screen)->visual;
+  if (depth == 32 && visual_type == CDK_VISUAL_TRUE_COLOR)
+    return CDK_WAYLAND_SCREEN (screen)->visual;
   else
     return NULL;
 }
@@ -1153,7 +1153,7 @@ cdk_wayland_screen_query_visual_types (CdkScreen      *screen,
 				       CdkVisualType **visual_types,
 				       gint           *count)
 {
-  static CdkVisualType static_visual_types[] = { GDK_VISUAL_TRUE_COLOR };
+  static CdkVisualType static_visual_types[] = { CDK_VISUAL_TRUE_COLOR };
 
   *count = G_N_ELEMENTS(static_visual_types);
   *visual_types = static_visual_types;
@@ -1165,16 +1165,16 @@ cdk_wayland_screen_list_visuals (CdkScreen *screen)
   GList *list;
   CdkWaylandScreen *screen_wayland;
 
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
-  screen_wayland = GDK_WAYLAND_SCREEN (screen);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), NULL);
+  screen_wayland = CDK_WAYLAND_SCREEN (screen);
 
   list = g_list_append (NULL, screen_wayland->visual);
 
   return list;
 }
 
-#define GDK_TYPE_WAYLAND_VISUAL              (_cdk_wayland_visual_get_type ())
-#define GDK_WAYLAND_VISUAL(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WAYLAND_VISUAL, CdkWaylandVisual))
+#define CDK_TYPE_WAYLAND_VISUAL              (_cdk_wayland_visual_get_type ())
+#define CDK_WAYLAND_VISUAL(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), CDK_TYPE_WAYLAND_VISUAL, CdkWaylandVisual))
 
 /* Currently, the Wayland backend only ever uses ARGB8888.
  */
@@ -1183,9 +1183,9 @@ cdk_wayland_visual_new (CdkScreen *screen)
 {
   CdkVisual *visual;
 
-  visual = g_object_new (GDK_TYPE_WAYLAND_VISUAL, NULL);
-  visual->screen = GDK_SCREEN (screen);
-  visual->type = GDK_VISUAL_TRUE_COLOR;
+  visual = g_object_new (CDK_TYPE_WAYLAND_VISUAL, NULL);
+  visual->screen = CDK_SCREEN (screen);
+  visual->type = CDK_VISUAL_TRUE_COLOR;
   visual->depth = 32;
   visual->red_mask = 0xff0000;
   visual->green_mask = 0x00ff00;
@@ -1222,7 +1222,7 @@ dbus_properties_change_cb (GDBusProxy         *proxy,
       else if (timestamp > G_MAXUINT)
         g_warning ("Could not handle fontconfig update: timestamp out of bound");
 
-      notify_setting (GDK_SCREEN (screen_wayland), "ctk-fontconfig-timestamp");
+      notify_setting (CDK_SCREEN (screen_wayland), "ctk-fontconfig-timestamp");
 
       g_variant_unref (value);
     }
@@ -1237,7 +1237,7 @@ dbus_properties_change_cb (GDBusProxy         *proxy,
 
       screen_wayland->dbus_settings.modules = g_variant_dup_string (value, NULL);
 
-      notify_setting (GDK_SCREEN (screen_wayland), "ctk-modules");
+      notify_setting (CDK_SCREEN (screen_wayland), "ctk-modules");
 
       g_variant_unref (value);
     }
@@ -1302,9 +1302,9 @@ _cdk_wayland_screen_new (CdkDisplay *display)
   CdkScreen *screen;
   CdkWaylandScreen *screen_wayland;
 
-  screen = g_object_new (GDK_TYPE_WAYLAND_SCREEN, NULL);
+  screen = g_object_new (CDK_TYPE_WAYLAND_SCREEN, NULL);
 
-  screen_wayland = GDK_WAYLAND_SCREEN (screen);
+  screen_wayland = CDK_WAYLAND_SCREEN (screen);
   screen_wayland->display = display;
   screen_wayland->width = 0;
   screen_wayland->height = 0;
@@ -1325,7 +1325,7 @@ static void
 _cdk_wayland_screen_class_init (CdkWaylandScreenClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  CdkScreenClass *screen_class = GDK_SCREEN_CLASS (klass);
+  CdkScreenClass *screen_class = CDK_SCREEN_CLASS (klass);
 
   object_class->dispose = cdk_wayland_screen_dispose;
   object_class->finalize = cdk_wayland_screen_finalize;
@@ -1364,7 +1364,7 @@ _cdk_wayland_screen_init (CdkWaylandScreen *screen_wayland)
 static void
 update_screen_size (CdkWaylandScreen *screen_wayland)
 {
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (screen_wayland->display);
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (screen_wayland->display);
   gboolean emit_changed = FALSE;
   gint width, height;
   gint width_mm, height_mm;
@@ -1467,7 +1467,7 @@ static gboolean
 screen_has_xdg_output_support (CdkScreen *screen)
 {
   CdkDisplay *display = cdk_screen_get_display (screen);
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (display);
 
   return (display_wayland->xdg_output_manager != NULL);
 }
@@ -1481,15 +1481,15 @@ monitor_has_xdg_output (CdkWaylandMonitor *monitor)
 static gboolean
 should_update_monitor (CdkWaylandMonitor *monitor)
 {
-  return (GDK_MONITOR (monitor)->geometry.width != 0 &&
+  return (CDK_MONITOR (monitor)->geometry.width != 0 &&
           monitor->version < OUTPUT_VERSION_WITH_DONE);
 }
 
 static gboolean
 should_expect_xdg_output_done (CdkWaylandMonitor *monitor)
 {
-  CdkDisplay *display = GDK_MONITOR (monitor)->display;
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
+  CdkDisplay *display = CDK_MONITOR (monitor)->display;
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (display);
 
   return (monitor_has_xdg_output (monitor) &&
           display_wayland->xdg_output_version < NO_XDG_OUTPUT_DONE_SINCE_VERSION);
@@ -1498,18 +1498,18 @@ should_expect_xdg_output_done (CdkWaylandMonitor *monitor)
 static void
 apply_monitor_change (CdkWaylandMonitor *monitor)
 {
-  CdkDisplay *display = GDK_MONITOR (monitor)->display;
-  CdkWaylandScreen *screen_wayland = GDK_WAYLAND_SCREEN (cdk_display_get_default_screen (display));
+  CdkDisplay *display = CDK_MONITOR (monitor)->display;
+  CdkWaylandScreen *screen_wayland = CDK_WAYLAND_SCREEN (cdk_display_get_default_screen (display));
 
-  GDK_NOTE (MISC,
+  CDK_NOTE (MISC,
             g_message ("monitor %d changed position %d %d, size %d %d",
                        monitor->id,
                        monitor->x, monitor->y,
                        monitor->width, monitor->height));
 
-  cdk_monitor_set_position (GDK_MONITOR (monitor), monitor->x, monitor->y);
-  cdk_monitor_set_size (GDK_MONITOR (monitor), monitor->width, monitor->height);
-  cdk_monitor_set_connector (GDK_MONITOR (monitor), monitor->name);
+  cdk_monitor_set_position (CDK_MONITOR (monitor), monitor->x, monitor->y);
+  cdk_monitor_set_size (CDK_MONITOR (monitor), monitor->width, monitor->height);
+  cdk_monitor_set_connector (CDK_MONITOR (monitor), monitor->name);
   monitor->wl_output_done = FALSE;
   monitor->xdg_output_done = FALSE;
 
@@ -1525,7 +1525,7 @@ xdg_output_handle_logical_position (void                  *data,
 {
   CdkWaylandMonitor *monitor = (CdkWaylandMonitor *) data;
 
-  GDK_NOTE (MISC,
+  CDK_NOTE (MISC,
             g_message ("handle logical position xdg-output %d, position %d %d",
                        monitor->id, x, y));
   monitor->x = x;
@@ -1540,7 +1540,7 @@ xdg_output_handle_logical_size (void                  *data,
 {
   CdkWaylandMonitor *monitor = (CdkWaylandMonitor *) data;
 
-  GDK_NOTE (MISC,
+  CDK_NOTE (MISC,
             g_message ("handle logical size xdg-output %d, size %d %d",
                        monitor->id, width, height));
   monitor->width = width;
@@ -1553,7 +1553,7 @@ xdg_output_handle_done (void                  *data,
 {
   CdkWaylandMonitor *monitor = (CdkWaylandMonitor *) data;
 
-  GDK_NOTE (MISC,
+  CDK_NOTE (MISC,
             g_message ("handle done xdg-output %d", monitor->id));
 
   monitor->xdg_output_done = TRUE;
@@ -1568,7 +1568,7 @@ xdg_output_handle_name (void                  *data,
 {
   CdkWaylandMonitor *monitor = (CdkWaylandMonitor *) data;
 
-  GDK_NOTE (MISC,
+  CDK_NOTE (MISC,
             g_message ("handle name xdg-output %d", monitor->id));
 
   monitor->name = g_strdup (name);
@@ -1582,7 +1582,7 @@ xdg_output_handle_description (void                  *data,
 #ifdef G_ENABLE_DEBUG
   CdkWaylandMonitor *monitor = (CdkWaylandMonitor *) data;
 
-  GDK_NOTE (MISC,
+  CDK_NOTE (MISC,
             g_message ("handle description xdg-output %d", monitor->id));
 #endif
 }
@@ -1598,10 +1598,10 @@ static const struct zxdg_output_v1_listener xdg_output_listener = {
 static void
 cdk_wayland_screen_get_xdg_output (CdkWaylandMonitor *monitor)
 {
-  CdkDisplay *display = GDK_MONITOR (monitor)->display;
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
+  CdkDisplay *display = CDK_MONITOR (monitor)->display;
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (display);
 
-  GDK_NOTE (MISC,
+  CDK_NOTE (MISC,
             g_message ("get xdg-output for monitor %d", monitor->id));
 
   monitor->xdg_output =
@@ -1627,16 +1627,16 @@ output_handle_geometry (void             *data,
 {
   CdkWaylandMonitor *monitor = (CdkWaylandMonitor *)data;
 
-  GDK_NOTE (MISC,
+  CDK_NOTE (MISC,
             g_message ("handle geometry output %d, position %d %d, phys. size %d %d, subpixel layout %s, manufacturer %s, model %s, transform %s",
                        monitor->id, x, y, physical_width, physical_height, subpixel_to_string (subpixel), make, model, transform_to_string (transform)));
 
   monitor->x = x;
   monitor->y = y;
-  cdk_monitor_set_physical_size (GDK_MONITOR (monitor), physical_width, physical_height);
-  cdk_monitor_set_subpixel_layout (GDK_MONITOR (monitor), subpixel);
-  cdk_monitor_set_manufacturer (GDK_MONITOR (monitor), make);
-  cdk_monitor_set_model (GDK_MONITOR (monitor), model);
+  cdk_monitor_set_physical_size (CDK_MONITOR (monitor), physical_width, physical_height);
+  cdk_monitor_set_subpixel_layout (CDK_MONITOR (monitor), subpixel);
+  cdk_monitor_set_manufacturer (CDK_MONITOR (monitor), make);
+  cdk_monitor_set_model (CDK_MONITOR (monitor), model);
 
   if (should_update_monitor (monitor) || !monitor_has_xdg_output (monitor))
     apply_monitor_change (monitor);
@@ -1648,7 +1648,7 @@ output_handle_done (void             *data,
 {
   CdkWaylandMonitor *monitor = (CdkWaylandMonitor *)data;
 
-  GDK_NOTE (MISC,
+  CDK_NOTE (MISC,
             g_message ("handle done output %d", monitor->id));
 
   monitor->wl_output_done = TRUE;
@@ -1668,14 +1668,14 @@ output_handle_scale (void             *data,
   int width;
   int height;
 
-  GDK_NOTE (MISC,
+  CDK_NOTE (MISC,
             g_message ("handle scale output %d, scale %d", monitor->id, scale));
 
-  cdk_monitor_get_geometry (GDK_MONITOR (monitor), &previous_geometry);
-  previous_scale = cdk_monitor_get_scale_factor (GDK_MONITOR (monitor));
+  cdk_monitor_get_geometry (CDK_MONITOR (monitor), &previous_geometry);
+  previous_scale = cdk_monitor_get_scale_factor (CDK_MONITOR (monitor));
 
   /* Set the scale from wl_output protocol, regardless of xdg-output support */
-  cdk_monitor_set_scale_factor (GDK_MONITOR (monitor), scale);
+  cdk_monitor_set_scale_factor (CDK_MONITOR (monitor), scale);
 
   if (monitor_has_xdg_output (monitor))
     return;
@@ -1701,17 +1701,17 @@ output_handle_mode (void             *data,
   CdkWaylandMonitor *monitor = (CdkWaylandMonitor *)data;
   int scale;
 
-  GDK_NOTE (MISC,
+  CDK_NOTE (MISC,
             g_message ("handle mode output %d, size %d %d, rate %d",
                        monitor->id, width, height, refresh));
 
   if ((flags & WL_OUTPUT_MODE_CURRENT) == 0)
     return;
 
-  scale = cdk_monitor_get_scale_factor (GDK_MONITOR (monitor));
+  scale = cdk_monitor_get_scale_factor (CDK_MONITOR (monitor));
   monitor->width = width / scale;
   monitor->height = height / scale;
-  cdk_monitor_set_refresh_rate (GDK_MONITOR (monitor), refresh);
+  cdk_monitor_set_refresh_rate (CDK_MONITOR (monitor), refresh);
 
   if (should_update_monitor (monitor) || !monitor_has_xdg_output (monitor))
     apply_monitor_change (monitor);
@@ -1734,7 +1734,7 @@ _cdk_wayland_screen_add_output (CdkScreen        *screen,
   CdkDisplay *display = cdk_screen_get_display (screen);
   CdkWaylandMonitor *monitor;
 
-  monitor = g_object_new (GDK_TYPE_WAYLAND_MONITOR,
+  monitor = g_object_new (CDK_TYPE_WAYLAND_MONITOR,
                           "display", display,
                           NULL);
 
@@ -1742,13 +1742,13 @@ _cdk_wayland_screen_add_output (CdkScreen        *screen,
   monitor->output = output;
   monitor->version = version;
 
-  g_ptr_array_add (GDK_WAYLAND_DISPLAY (display)->monitors, monitor);
-  cdk_display_monitor_added (display, GDK_MONITOR (monitor));
+  g_ptr_array_add (CDK_WAYLAND_DISPLAY (display)->monitors, monitor);
+  cdk_display_monitor_added (display, CDK_MONITOR (monitor));
   wl_output_add_listener (output, &output_listener, monitor);
 
-  GDK_NOTE (MISC,
+  CDK_NOTE (MISC,
             g_message ("xdg_output_manager %p",
-                       GDK_WAYLAND_DISPLAY (display)->xdg_output_manager));
+                       CDK_WAYLAND_DISPLAY (display)->xdg_output_manager));
 
   if (screen_has_xdg_output_support (screen))
     cdk_wayland_screen_get_xdg_output (monitor);
@@ -1758,7 +1758,7 @@ struct wl_output *
 _cdk_wayland_screen_get_wl_output (CdkScreen *screen,
                                    gint monitor_num)
 {
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (GDK_WAYLAND_SCREEN (screen)->display);
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (CDK_WAYLAND_SCREEN (screen)->display);
   CdkWaylandMonitor *monitor;
 
   monitor = display_wayland->monitors->pdata[monitor_num];
@@ -1770,7 +1770,7 @@ static CdkWaylandMonitor *
 get_monitor_for_id (CdkWaylandScreen *screen_wayland,
                     guint32           id)
 {
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (screen_wayland->display);
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (screen_wayland->display);
   int i;
 
   for (i = 0; i < display_wayland->monitors->len; i++)
@@ -1788,7 +1788,7 @@ static CdkWaylandMonitor *
 get_monitor_for_output (CdkWaylandScreen *screen_wayland,
                         struct wl_output *output)
 {
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (screen_wayland->display);
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (screen_wayland->display);
   int i;
 
   for (i = 0; i < display_wayland->monitors->len; i++)
@@ -1806,8 +1806,8 @@ void
 _cdk_wayland_screen_remove_output (CdkScreen *screen,
                                    guint32    id)
 {
-  CdkWaylandScreen *screen_wayland = GDK_WAYLAND_SCREEN (screen);
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (screen_wayland->display);
+  CdkWaylandScreen *screen_wayland = CDK_WAYLAND_SCREEN (screen);
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (screen_wayland->display);
   CdkWaylandMonitor *monitor;
 
   monitor = get_monitor_for_id (screen_wayland, id);
@@ -1815,7 +1815,7 @@ _cdk_wayland_screen_remove_output (CdkScreen *screen,
     {
       g_object_ref (monitor);
       g_ptr_array_remove (display_wayland->monitors, monitor);
-      cdk_display_monitor_removed (GDK_DISPLAY (display_wayland), GDK_MONITOR (monitor));
+      cdk_display_monitor_removed (CDK_DISPLAY (display_wayland), CDK_MONITOR (monitor));
       g_object_unref (monitor);
       g_signal_emit_by_name (screen_wayland, "monitors-changed");
       update_screen_size (screen_wayland);
@@ -1826,12 +1826,12 @@ int
 _cdk_wayland_screen_get_output_refresh_rate (CdkScreen        *screen,
                                              struct wl_output *output)
 {
-  CdkWaylandScreen *screen_wayland = GDK_WAYLAND_SCREEN (screen);
+  CdkWaylandScreen *screen_wayland = CDK_WAYLAND_SCREEN (screen);
   CdkWaylandMonitor *monitor;
 
   monitor = get_monitor_for_output (screen_wayland, output);
   if (monitor != NULL)
-    return cdk_monitor_get_refresh_rate (GDK_MONITOR (monitor));
+    return cdk_monitor_get_refresh_rate (CDK_MONITOR (monitor));
 
   return 0;
 }
@@ -1840,12 +1840,12 @@ guint32
 _cdk_wayland_screen_get_output_scale (CdkScreen        *screen,
 				      struct wl_output *output)
 {
-  CdkWaylandScreen *screen_wayland = GDK_WAYLAND_SCREEN (screen);
+  CdkWaylandScreen *screen_wayland = CDK_WAYLAND_SCREEN (screen);
   CdkWaylandMonitor *monitor;
 
   monitor = get_monitor_for_output (screen_wayland, output);
   if (monitor != NULL)
-    return cdk_monitor_get_scale_factor (GDK_MONITOR (monitor));
+    return cdk_monitor_get_scale_factor (CDK_MONITOR (monitor));
 
   return 0;
 }
@@ -1854,10 +1854,10 @@ void
 _cdk_wayland_screen_init_xdg_output (CdkScreen *screen)
 {
   CdkDisplay *display = cdk_screen_get_display (screen);
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (display);
   int i;
 
-  GDK_NOTE (MISC,
+  CDK_NOTE (MISC,
             g_message ("init xdg-output support, %d monitor(s) already present",
                        display_wayland->monitors->len));
 

@@ -141,20 +141,20 @@ msgid "Default Display"
 msgstr "Ekran domyślny"
 
 #: cdk/cdkdisplaymanager.c:163
-msgid "The default display for GDK"
-msgstr "Ekran domyślny dla biblioteki GDK"
+msgid "The default display for CDK"
+msgstr "Ekran domyślny dla biblioteki CDK"
 
 #: cdk/cdkglcontext.c:318
-msgid "The GDK display used to create the GL context"
-msgstr "Ekran biblioteki GDK używany do utworzenia kontekstu GL"
+msgid "The CDK display used to create the GL context"
+msgstr "Ekran biblioteki CDK używany do utworzenia kontekstu GL"
 
 #: cdk/cdkglcontext.c:333 ctk/ctkwidget.c:1347
 msgid "Window"
 msgstr "Okno"
 
 #: cdk/cdkglcontext.c:334
-msgid "The GDK window bound to the GL context"
-msgstr "Okno biblioteki GDK dowiązane do kontekstu GL"
+msgid "The CDK window bound to the GL context"
+msgstr "Okno biblioteki CDK dowiązane do kontekstu GL"
 
 #: cdk/cdkglcontext.c:349
 msgid "Shared context"

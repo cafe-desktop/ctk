@@ -74,9 +74,9 @@ typedef enum {
 
 #endif /* G_ENABLE_DEBUG */
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 guint ctk_get_debug_flags (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void  ctk_set_debug_flags  (guint flags);
 
 G_END_DECLS

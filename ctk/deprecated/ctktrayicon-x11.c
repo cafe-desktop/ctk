@@ -135,7 +135,7 @@ ctk_tray_icon_class_init (CtkTrayIconClass *class)
                                    g_param_spec_boxed ("fg-color",
                                                        P_("Foreground color"),
                                                        P_("Foreground color for symbolic icons"),
-                                                       GDK_TYPE_RGBA,
+                                                       CDK_TYPE_RGBA,
                                                        CTK_PARAM_READABLE));
 
   g_object_class_install_property (gobject_class,
@@ -143,7 +143,7 @@ ctk_tray_icon_class_init (CtkTrayIconClass *class)
                                    g_param_spec_boxed ("error-color",
                                                        P_("Error color"),
                                                        P_("Error color for symbolic icons"),
-                                                       GDK_TYPE_RGBA,
+                                                       CDK_TYPE_RGBA,
                                                        CTK_PARAM_READABLE));
 
   g_object_class_install_property (gobject_class,
@@ -151,7 +151,7 @@ ctk_tray_icon_class_init (CtkTrayIconClass *class)
                                    g_param_spec_boxed ("warning-color",
                                                        P_("Warning color"),
                                                        P_("Warning color for symbolic icons"),
-                                                       GDK_TYPE_RGBA,
+                                                       CDK_TYPE_RGBA,
                                                        CTK_PARAM_READABLE));
 
   g_object_class_install_property (gobject_class,
@@ -159,7 +159,7 @@ ctk_tray_icon_class_init (CtkTrayIconClass *class)
                                    g_param_spec_boxed ("success-color",
                                                        P_("Success color"),
                                                        P_("Success color for symbolic icons"),
-                                                       GDK_TYPE_RGBA,
+                                                       CDK_TYPE_RGBA,
                                                        CTK_PARAM_READABLE));
 
   g_object_class_install_property (gobject_class,
@@ -209,7 +209,7 @@ ctk_tray_icon_init (CtkTrayIcon *icon)
   icon->priv->icon_size = 0;
 
   ctk_widget_set_app_paintable (CTK_WIDGET (icon), TRUE);
-  ctk_widget_add_events (CTK_WIDGET (icon), GDK_PROPERTY_CHANGE_MASK);
+  ctk_widget_add_events (CTK_WIDGET (icon), CDK_PROPERTY_CHANGE_MASK);
 }
 
 static void
@@ -351,7 +351,7 @@ ctk_tray_icon_draw (CtkWidget *widget,
 
   if (icon->priv->manager_visual_rgba ||
       cairo_surface_get_type (target) != CAIRO_SURFACE_TYPE_XLIB ||
-      cairo_xlib_surface_get_drawable (target) != GDK_WINDOW_XID (window))
+      cairo_xlib_surface_get_drawable (target) != CDK_WINDOW_XID (window))
     {
       /* Clear to transparent */
       cairo_set_source_rgba (cr, 0, 0, 0, 0);
@@ -365,12 +365,12 @@ ctk_tray_icon_draw (CtkWidget *widget,
       if (cdk_cairo_get_clip_rectangle (cr, &clip))
         {
           /* Clear to parent-relative pixmap
-           * We need to use direct X access here because GDK doesn't know about
+           * We need to use direct X access here because CDK doesn't know about
            * the parent realtive pixmap. */
           cairo_surface_flush (target);
 
-          XClearArea (GDK_WINDOW_XDISPLAY (window),
-                      GDK_WINDOW_XID (window),
+          XClearArea (CDK_WINDOW_XDISPLAY (window),
+                      CDK_WINDOW_XID (window),
                       clip.x, clip.y,
                       clip.width, clip.height,
                       False);
@@ -404,7 +404,7 @@ ctk_tray_icon_get_orientation_property (CtkTrayIcon *icon)
 {
   CdkScreen *screen = ctk_widget_get_screen (CTK_WIDGET (icon));
   CdkDisplay *display = cdk_screen_get_display (screen);
-  Display *xdisplay = GDK_DISPLAY_XDISPLAY (display);
+  Display *xdisplay = CDK_DISPLAY_XDISPLAY (display);
 
   Atom type;
   int format;
@@ -457,7 +457,7 @@ ctk_tray_icon_get_visual_property (CtkTrayIcon *icon)
 {
   CdkScreen *screen = ctk_widget_get_screen (CTK_WIDGET (icon));
   CdkDisplay *display = cdk_screen_get_display (screen);
-  Display *xdisplay = GDK_DISPLAY_XDISPLAY (display);
+  Display *xdisplay = CDK_DISPLAY_XDISPLAY (display);
 
   Atom type;
   int format;
@@ -521,7 +521,7 @@ ctk_tray_icon_get_colors_property (CtkTrayIcon *icon)
 {
   CdkScreen *screen = ctk_widget_get_screen (CTK_WIDGET (icon));
   CdkDisplay *display = cdk_screen_get_display (screen);
-  Display *xdisplay = GDK_DISPLAY_XDISPLAY (display);
+  Display *xdisplay = CDK_DISPLAY_XDISPLAY (display);
 
   Atom type;
   int format;
@@ -612,7 +612,7 @@ ctk_tray_icon_get_padding_property (CtkTrayIcon *icon)
 {
   CdkScreen *screen = ctk_widget_get_screen (CTK_WIDGET (icon));
   CdkDisplay *display = cdk_screen_get_display (screen);
-  Display *xdisplay = GDK_DISPLAY_XDISPLAY (display);
+  Display *xdisplay = CDK_DISPLAY_XDISPLAY (display);
 
   Atom type;
   int format;
@@ -661,7 +661,7 @@ ctk_tray_icon_get_icon_size_property (CtkTrayIcon *icon)
 {
   CdkScreen *screen = ctk_widget_get_screen (CTK_WIDGET (icon));
   CdkDisplay *display = cdk_screen_get_display (screen);
-  Display *xdisplay = GDK_DISPLAY_XDISPLAY (display);
+  Display *xdisplay = CDK_DISPLAY_XDISPLAY (display);
 
   Atom type;
   int format;
@@ -764,7 +764,7 @@ ctk_tray_icon_manager_filter (CdkXEvent *xevent,
         }
     }
   
-  return GDK_FILTER_CONTINUE;
+  return CDK_FILTER_CONTINUE;
 }
 
 static void
@@ -794,7 +794,7 @@ ctk_tray_icon_send_manager_message (CtkTrayIcon *icon,
   ev.data.l[4] = data3;
 
   display = ctk_widget_get_display (widget);
-  xdisplay = GDK_DISPLAY_XDISPLAY (display);
+  xdisplay = CDK_DISPLAY_XDISPLAY (display);
 
   cdk_x11_display_error_trap_push (display);
   XSendEvent (xdisplay,
@@ -824,7 +824,7 @@ ctk_tray_icon_update_manager_window (CtkTrayIcon *icon)
   CtkWidget *widget = CTK_WIDGET (icon);
   CdkScreen *screen = ctk_widget_get_screen (widget);
   CdkDisplay *display = cdk_screen_get_display (screen);
-  Display *xdisplay = GDK_DISPLAY_XDISPLAY (display);
+  Display *xdisplay = CDK_DISPLAY_XDISPLAY (display);
 
   CTK_NOTE (PLUGSOCKET,
             g_message ("CtkStatusIcon %p: updating tray icon manager window, current manager window: %lx",
@@ -936,7 +936,7 @@ ctk_tray_icon_set_visual (CtkTrayIcon *icon)
    * to be either the screen default visual or a TrueColor visual; ignore it
    * if it is something else
    */
-  if (visual && cdk_visual_get_visual_type (visual) != GDK_VISUAL_TRUE_COLOR)
+  if (visual && cdk_visual_get_visual_type (visual) != CDK_VISUAL_TRUE_COLOR)
     visual = NULL;
 
   if (visual == NULL)
@@ -974,9 +974,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   CTK_NOTE (PLUGSOCKET,
             g_message ("CtkStatusIcon %p: realized, window: %lx, socket window: %lx",
                        widget,
-                       (gulong) GDK_WINDOW_XID (window),
+                       (gulong) CDK_WINDOW_XID (window),
                        ctk_plug_get_socket_window (CTK_PLUG (icon))
-                       ? (gulong) GDK_WINDOW_XID (ctk_plug_get_socket_window (CTK_PLUG (icon)))
+                       ? (gulong) CDK_WINDOW_XID (ctk_plug_get_socket_window (CTK_PLUG (icon)))
                        : 0UL));
 
   if (icon->priv->manager_window != None)
@@ -1021,7 +1021,7 @@ _ctk_tray_icon_send_message (CtkTrayIcon *icon,
 
   /* Now to send the actual message */
   display = ctk_widget_get_display (CTK_WIDGET (icon));
-  xdisplay = GDK_DISPLAY_XDISPLAY (display);
+  xdisplay = CDK_DISPLAY_XDISPLAY (display);
   cdk_x11_display_error_trap_push (display);
   while (len > 0)
     {
@@ -1070,7 +1070,7 @@ CtkTrayIcon *
 _ctk_tray_icon_new_for_screen (CdkScreen  *screen, 
 			       const gchar *name)
 {
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), NULL);
 
   return g_object_new (CTK_TYPE_TRAY_ICON, 
 		       "screen", screen, 

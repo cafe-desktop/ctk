@@ -182,7 +182,7 @@ parse_compose_sequence (CtkComposeData *compose_data,
           compose_data->sequence[n + 1] = 0;
         }
 
-      if (codepoint == GDK_KEY_VoidSymbol)
+      if (codepoint == CDK_KEY_VoidSymbol)
         g_warning ("Could not get code point of keysym %s", match);
       g_free (match);
       n++;

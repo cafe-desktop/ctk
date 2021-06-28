@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2009 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -15,28 +15,28 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_X11_DEVICE_MANAGER_CORE_H__
-#define __GDK_X11_DEVICE_MANAGER_CORE_H__
+#ifndef __CDK_X11_DEVICE_MANAGER_CORE_H__
+#define __CDK_X11_DEVICE_MANAGER_CORE_H__
 
 #include <cdk/cdk.h>
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_X11_DEVICE_MANAGER_CORE         (cdk_x11_device_manager_core_get_type ())
-#define GDK_X11_DEVICE_MANAGER_CORE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_X11_DEVICE_MANAGER_CORE, CdkX11DeviceManagerCore))
-#define GDK_X11_DEVICE_MANAGER_CORE_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_X11_DEVICE_MANAGER_CORE, CdkX11DeviceManagerCoreClass))
-#define GDK_IS_X11_DEVICE_MANAGER_CORE(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_X11_DEVICE_MANAGER_CORE))
-#define GDK_IS_X11_DEVICE_MANAGER_CORE_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), GDK_TYPE_X11_DEVICE_MANAGER_CORE))
-#define GDK_X11_DEVICE_MANAGER_CORE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_X11_DEVICE_MANAGER_CORE, CdkX11DeviceManagerCoreClass))
+#define CDK_TYPE_X11_DEVICE_MANAGER_CORE         (cdk_x11_device_manager_core_get_type ())
+#define CDK_X11_DEVICE_MANAGER_CORE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CDK_TYPE_X11_DEVICE_MANAGER_CORE, CdkX11DeviceManagerCore))
+#define CDK_X11_DEVICE_MANAGER_CORE_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), CDK_TYPE_X11_DEVICE_MANAGER_CORE, CdkX11DeviceManagerCoreClass))
+#define CDK_IS_X11_DEVICE_MANAGER_CORE(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CDK_TYPE_X11_DEVICE_MANAGER_CORE))
+#define CDK_IS_X11_DEVICE_MANAGER_CORE_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), CDK_TYPE_X11_DEVICE_MANAGER_CORE))
+#define CDK_X11_DEVICE_MANAGER_CORE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CDK_TYPE_X11_DEVICE_MANAGER_CORE, CdkX11DeviceManagerCoreClass))
 
 typedef struct _CdkX11DeviceManagerCore CdkX11DeviceManagerCore;
 typedef struct _CdkX11DeviceManagerCoreClass CdkX11DeviceManagerCoreClass;
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType cdk_x11_device_manager_core_get_type (void) G_GNUC_CONST;
 
 
 G_END_DECLS
 
-#endif /* __GDK_X11_DEVICE_MANAGER_CORE_H__ */
+#endif /* __CDK_X11_DEVICE_MANAGER_CORE_H__ */

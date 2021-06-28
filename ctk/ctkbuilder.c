@@ -493,7 +493,7 @@ ctk_builder_get_parameters (CtkBuilder  *builder,
       parameter.name = prop->pspec->name;
 
       if (G_IS_PARAM_SPEC_OBJECT (prop->pspec) &&
-          (G_PARAM_SPEC_VALUE_TYPE (prop->pspec) != GDK_TYPE_PIXBUF) &&
+          (G_PARAM_SPEC_VALUE_TYPE (prop->pspec) != CDK_TYPE_PIXBUF) &&
           (G_PARAM_SPEC_VALUE_TYPE (prop->pspec) != G_TYPE_FILE))
         {
           GObject *object = g_hash_table_lookup (builder->priv->objects,
@@ -2053,7 +2053,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
             }
 G_GNUC_END_IGNORE_DEPRECATIONS
         }
-      else if (G_VALUE_HOLDS (value, GDK_TYPE_RGBA))
+      else if (G_VALUE_HOLDS (value, CDK_TYPE_RGBA))
         {
           CdkRGBA rgba = { 0 };
 
@@ -2086,7 +2086,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       break;
     case G_TYPE_OBJECT:
     case G_TYPE_INTERFACE:
-      if (G_VALUE_HOLDS (value, GDK_TYPE_PIXBUF))
+      if (G_VALUE_HOLDS (value, CDK_TYPE_PIXBUF))
         {
           gchar *filename;
           GError *tmp_error = NULL;

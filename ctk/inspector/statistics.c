@@ -259,9 +259,9 @@ key_press_event (CtkWidget              *window,
 {
   if (ctk_widget_get_mapped (CTK_WIDGET (sl)))
     {
-      if (event->key.keyval == GDK_KEY_Return ||
-          event->key.keyval == GDK_KEY_ISO_Enter ||
-          event->key.keyval == GDK_KEY_KP_Enter)
+      if (event->key.keyval == CDK_KEY_Return ||
+          event->key.keyval == CDK_KEY_ISO_Enter ||
+          event->key.keyval == CDK_KEY_KP_Enter)
         {
           CtkTreeSelection *selection;
           CtkTreeModel *model;
@@ -275,16 +275,16 @@ key_press_event (CtkWidget              *window,
               ctk_tree_view_row_activated (sl->priv->view, path, NULL);
               ctk_tree_path_free (path);
 
-              return GDK_EVENT_STOP;
+              return CDK_EVENT_STOP;
             }
           else
-            return GDK_EVENT_PROPAGATE;
+            return CDK_EVENT_PROPAGATE;
         }
 
       return ctk_search_bar_handle_event (CTK_SEARCH_BAR (sl->priv->search_bar), event);
     }
   else
-    return GDK_EVENT_PROPAGATE;
+    return CDK_EVENT_PROPAGATE;
 }
 
 static gboolean

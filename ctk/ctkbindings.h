@@ -140,50 +140,50 @@ struct _CtkBindingSignal
   CtkBindingArg    *args;
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkBindingSet *ctk_binding_set_new           (const gchar         *set_name);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkBindingSet *ctk_binding_set_by_class      (gpointer             object_class);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkBindingSet *ctk_binding_set_find          (const gchar         *set_name);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean       ctk_bindings_activate         (GObject             *object,
                                               guint                keyval,
                                               CdkModifierType      modifiers);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean       ctk_bindings_activate_event   (GObject             *object,
                                               CdkEventKey         *event);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean       ctk_binding_set_activate      (CtkBindingSet       *binding_set,
                                               guint                keyval,
                                               CdkModifierType      modifiers,
                                               GObject             *object);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_binding_entry_skip        (CtkBindingSet       *binding_set,
                                               guint                keyval,
                                               CdkModifierType      modifiers);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_binding_entry_add_signal  (CtkBindingSet       *binding_set,
                                               guint                keyval,
                                               CdkModifierType      modifiers,
                                               const gchar         *signal_name,
                                               guint                n_args,
                                               ...);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_binding_entry_add_signall (CtkBindingSet       *binding_set,
                                               guint                keyval,
                                               CdkModifierType      modifiers,
                                               const gchar         *signal_name,
                                               GSList              *binding_args);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GTokenType     ctk_binding_entry_add_signal_from_string
                                              (CtkBindingSet       *binding_set,
                                               const gchar         *signal_desc);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_binding_entry_remove      (CtkBindingSet       *binding_set,
                                               guint                keyval,
                                               CdkModifierType      modifiers);

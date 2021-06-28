@@ -75,123 +75,123 @@ struct _CtkComboBoxClass
 
 
 /* construction */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType         ctk_combo_box_get_type                 (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget    *ctk_combo_box_new                      (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget    *ctk_combo_box_new_with_area            (CtkCellArea  *area);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget    *ctk_combo_box_new_with_area_and_entry  (CtkCellArea  *area);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget    *ctk_combo_box_new_with_entry           (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget    *ctk_combo_box_new_with_model           (CtkTreeModel *model);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget    *ctk_combo_box_new_with_model_and_entry (CtkTreeModel *model);
 
 /* grids */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint          ctk_combo_box_get_wrap_width         (CtkComboBox *combo_box);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_combo_box_set_wrap_width         (CtkComboBox *combo_box,
                                                     gint         width);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint          ctk_combo_box_get_row_span_column    (CtkComboBox *combo_box);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_combo_box_set_row_span_column    (CtkComboBox *combo_box,
                                                     gint         row_span);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint          ctk_combo_box_get_column_span_column (CtkComboBox *combo_box);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_combo_box_set_column_span_column (CtkComboBox *combo_box,
                                                     gint         column_span);
 
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 gboolean      ctk_combo_box_get_add_tearoffs       (CtkComboBox *combo_box);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void          ctk_combo_box_set_add_tearoffs       (CtkComboBox *combo_box,
                                                     gboolean     add_tearoffs);
 
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 const gchar * ctk_combo_box_get_title              (CtkComboBox *combo_box);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void          ctk_combo_box_set_title              (CtkComboBox *combo_box,
                                                     const gchar *title);
 
-GDK_DEPRECATED_IN_3_20_FOR(ctk_widget_get_focus_on_click)
+CDK_DEPRECATED_IN_3_20_FOR(ctk_widget_get_focus_on_click)
 gboolean      ctk_combo_box_get_focus_on_click     (CtkComboBox *combo);
-GDK_DEPRECATED_IN_3_20_FOR(ctk_widget_set_focus_on_click)
+CDK_DEPRECATED_IN_3_20_FOR(ctk_widget_set_focus_on_click)
 void          ctk_combo_box_set_focus_on_click     (CtkComboBox *combo,
                                                     gboolean     focus_on_click);
 
 /* get/set active item */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint          ctk_combo_box_get_active       (CtkComboBox     *combo_box);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_combo_box_set_active       (CtkComboBox     *combo_box,
                                               gint             index_);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean      ctk_combo_box_get_active_iter  (CtkComboBox     *combo_box,
                                               CtkTreeIter     *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_combo_box_set_active_iter  (CtkComboBox     *combo_box,
                                               CtkTreeIter     *iter);
 
 /* getters and setters */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_combo_box_set_model        (CtkComboBox     *combo_box,
                                               CtkTreeModel    *model);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreeModel *ctk_combo_box_get_model        (CtkComboBox     *combo_box);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreeViewRowSeparatorFunc ctk_combo_box_get_row_separator_func (CtkComboBox                *combo_box);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                        ctk_combo_box_set_row_separator_func (CtkComboBox                *combo_box,
                                                                   CtkTreeViewRowSeparatorFunc func,
                                                                   gpointer                    data,
                                                                   GDestroyNotify              destroy);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void               ctk_combo_box_set_button_sensitivity (CtkComboBox        *combo_box,
                                                          CtkSensitivityType  sensitivity);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkSensitivityType ctk_combo_box_get_button_sensitivity (CtkComboBox        *combo_box);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean           ctk_combo_box_get_has_entry          (CtkComboBox        *combo_box);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void               ctk_combo_box_set_entry_text_column  (CtkComboBox        *combo_box,
                                                          gint                text_column);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint               ctk_combo_box_get_entry_text_column  (CtkComboBox        *combo_box);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void               ctk_combo_box_set_popup_fixed_width  (CtkComboBox      *combo_box,
                                                          gboolean          fixed);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean           ctk_combo_box_get_popup_fixed_width  (CtkComboBox      *combo_box);
 
 /* programmatic control */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_combo_box_popup            (CtkComboBox     *combo_box);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_combo_box_popup_for_device (CtkComboBox     *combo_box,
                                               CdkDevice       *device);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_combo_box_popdown          (CtkComboBox     *combo_box);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 AtkObject *   ctk_combo_box_get_popup_accessible (CtkComboBox *combo_box);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint          ctk_combo_box_get_id_column        (CtkComboBox *combo_box);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_combo_box_set_id_column        (CtkComboBox *combo_box,
                                                   gint         id_column);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar * ctk_combo_box_get_active_id        (CtkComboBox *combo_box);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean      ctk_combo_box_set_active_id        (CtkComboBox *combo_box,
                                                   const gchar *active_id);
 

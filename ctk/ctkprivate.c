@@ -33,7 +33,7 @@
 #include "ctkresources.h"
 
 
-#if !defined G_OS_WIN32 && !(defined GDK_WINDOWING_QUARTZ && defined QUARTZ_RELOCATION)
+#if !defined G_OS_WIN32 && !(defined CDK_WINDOWING_QUARTZ && defined QUARTZ_RELOCATION)
 
 const gchar *
 _ctk_get_datadir (void)
@@ -165,7 +165,7 @@ _ctk_replace_virtual_modifiers (CdkKeymap       *keymap,
   CdkModifierType result = 0;
   gint            i;
 
-  g_return_val_if_fail (GDK_IS_KEYMAP (keymap), 0);
+  g_return_val_if_fail (CDK_IS_KEYMAP (keymap), 0);
 
   for (i = 0; i < 8; i++) /* SHIFT...MOD5 */
     {
@@ -197,7 +197,7 @@ _ctk_get_primary_accel_mod (void)
       CdkDisplay *display = cdk_display_get_default ();
 
       primary = cdk_keymap_get_modifier_mask (cdk_keymap_get_for_display (display),
-                                              GDK_MODIFIER_INTENT_PRIMARY_ACCELERATOR);
+                                              CDK_MODIFIER_INTENT_PRIMARY_ACCELERATOR);
       primary = _ctk_replace_virtual_modifiers (cdk_keymap_get_for_display (display),
                                                 primary);
     }
@@ -224,7 +224,7 @@ _ctk_translate_keyboard_accel_state (CdkKeymap       *keymap,
    * it is active, disable it for matching
    */
   shift_group_mask = cdk_keymap_get_modifier_mask (keymap,
-                                                   GDK_MODIFIER_INTENT_SHIFT_GROUP);
+                                                   CDK_MODIFIER_INTENT_SHIFT_GROUP);
   if (accel_mask & state & shift_group_mask)
     {
       state &= ~shift_group_mask;

@@ -1413,7 +1413,7 @@ plug_grab_notify (CtkWidget        *widget,
 		  gboolean          was_grabbed,
 		  CtkPrintOperation *op)
 {
-  EnableWindow (GetAncestor (GDK_WINDOW_HWND (ctk_widget_get_window (widget)), GA_ROOT),
+  EnableWindow (GetAncestor (CDK_WINDOW_HWND (ctk_widget_get_window (widget)), GA_ROOT),
 		was_grabbed);
 }
 
@@ -1440,7 +1440,7 @@ pageDlgProc (HWND wnd, UINT message, WPARAM wparam, LPARAM lparam)
       ctk_container_add (CTK_CONTAINER (plug), op->priv->custom_widget);
       ctk_widget_show (op->priv->custom_widget);
       ctk_widget_show (plug);
-      cdk_window_focus (ctk_widget_get_window (plug), GDK_CURRENT_TIME);
+      cdk_window_focus (ctk_widget_get_window (plug), CDK_CURRENT_TIME);
 
       /* This dialog is modal, so we grab the embed widget */
       ctk_grab_add (plug);
@@ -1832,7 +1832,7 @@ ctk_print_operation_run_with_dialog (CtkPrintOperation *op,
 
   callback = print_callback_new ();
   printdlgex->lpCallback = (IUnknown *)callback;
-  got_cdk_events_message = RegisterWindowMessage ("GDK_WIN32_GOT_EVENTS");
+  got_cdk_events_message = RegisterWindowMessage ("CDK_WIN32_GOT_EVENTS");
 
   hResult = PrintDlgExW (printdlgex);
   IUnknown_Release ((IUnknown *)callback);
@@ -2158,7 +2158,7 @@ ctk_print_run_page_setup_dialog (CtkWindow        *parent,
 
   pagesetupdlg->Flags |= PSD_ENABLEPAGESETUPHOOK;
   pagesetupdlg->lpfnPageSetupHook = run_mainloop_hook;
-  got_cdk_events_message = RegisterWindowMessage ("GDK_WIN32_GOT_EVENTS");
+  got_cdk_events_message = RegisterWindowMessage ("CDK_WIN32_GOT_EVENTS");
   
   res = PageSetupDlgW (pagesetupdlg);
   cdk_win32_set_modal_dialog_libctk_only (NULL);

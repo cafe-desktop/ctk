@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2015 Red Hat
  *
  * This library is free software; you can redistribute it and/or
@@ -17,18 +17,18 @@
  * Author: Carlos Garnacho <carlosg@gnome.org>
  */
 
-#ifndef __GDK_SEAT_DEFAULT_PRIVATE_H__
-#define __GDK_SEAT_DEFAULT_PRIVATE_H__
+#ifndef __CDK_SEAT_DEFAULT_PRIVATE_H__
+#define __CDK_SEAT_DEFAULT_PRIVATE_H__
 
 #include "cdkseat.h"
 #include "cdkseatprivate.h"
 
-#define GDK_TYPE_SEAT_DEFAULT         (cdk_seat_default_get_type ())
-#define GDK_SEAT_DEFAULT(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_SEAT_DEFAULT, CdkSeatDefault))
-#define GDK_IS_SEAT_DEFAULT(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_SEAT_DEFAULT))
-#define GDK_SEAT_DEFAULT_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_SEAT_DEFAULT, CdkSeatDefaultClass))
-#define GDK_IS_SEAT_DEFAULT_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), GDK_TYPE_SEAT_DEFAULT))
-#define GDK_SEAT_DEFAULT_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_SEAT_DEFAULT, CdkSeatDefaultClass))
+#define CDK_TYPE_SEAT_DEFAULT         (cdk_seat_default_get_type ())
+#define CDK_SEAT_DEFAULT(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CDK_TYPE_SEAT_DEFAULT, CdkSeatDefault))
+#define CDK_IS_SEAT_DEFAULT(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CDK_TYPE_SEAT_DEFAULT))
+#define CDK_SEAT_DEFAULT_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), CDK_TYPE_SEAT_DEFAULT, CdkSeatDefaultClass))
+#define CDK_IS_SEAT_DEFAULT_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), CDK_TYPE_SEAT_DEFAULT))
+#define CDK_SEAT_DEFAULT_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CDK_TYPE_SEAT_DEFAULT, CdkSeatDefaultClass))
 
 typedef struct _CdkSeatDefault CdkSeatDefault;
 typedef struct _CdkSeatDefaultClass CdkSeatDefaultClass;
@@ -57,4 +57,4 @@ void      cdk_seat_default_add_tool     (CdkSeatDefault *seat,
 void      cdk_seat_default_remove_tool  (CdkSeatDefault *seat,
                                          CdkDeviceTool  *tool);
 
-#endif /* __GDK_SEAT_DEFAULT_PRIVATE_H__ */
+#endif /* __CDK_SEAT_DEFAULT_PRIVATE_H__ */

@@ -1,5 +1,5 @@
 #include <glib.h>
-#define GDK_VERSION_MIN_REQUIRED G_ENCODE_VERSION (3, 8)
+#define CDK_VERSION_MIN_REQUIRED G_ENCODE_VERSION (3, 8)
 #include <ctk/ctk.h>
 
 int main (int argc, char **argv)
@@ -88,7 +88,7 @@ int main (int argc, char **argv)
         ctk_widget_set_halign (label, CTK_ALIGN_FILL);
 
         ctk_widget_add_accelerator (item, "activate", accel_group,
-                                    GDK_KEY_x, GDK_CONTROL_MASK, CTK_ACCEL_VISIBLE);
+                                    CDK_KEY_x, CDK_CONTROL_MASK, CTK_ACCEL_VISIBLE);
         ctk_accel_label_set_accel_widget (CTK_ACCEL_LABEL (label), item);
 	ctk_box_pack_end (CTK_BOX (box), label, TRUE, TRUE, 0);
 	ctk_menu_shell_append (CTK_MENU_SHELL (menu), item);

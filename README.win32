@@ -7,11 +7,11 @@ Building CTK+ on Win32
 ======================
 
 First you obviously need developer packages for the compile-time
-dependencies: GDK-Pixbuf, Pango, atk, glib, gettext-runtime, libiconv at least.
+dependencies: CDK-Pixbuf, Pango, atk, glib, gettext-runtime, libiconv at least.
 See http://ftp.gnome.org/pub/gnome/binaries/win32/dependencies .
 
 For people compiling CTK+ with Visual C++ or later, it is recommended that
-the same compiler is used for at least GDK-Pixbuf, Pango, atk and glib
+the same compiler is used for at least CDK-Pixbuf, Pango, atk and glib
 so that crashes and errors caused by different CRTs can be avoided. Currently
 building with Visual Studio 2008 or later is supported, either via Visual Studio
 project files or via the Meson build system, as described in the below sections.
@@ -153,7 +153,7 @@ would require such for ABI stability).
 There are VS 2008~2019 solution and project files to build CTK+, which
 are maintained by Chun-wei Fan.  They should build CTK+ out of the box,
 provided that the afore-mentioned dependencies are installed.  They will
-build GDK with the Win32 backend, CTK+ itself (with GAIL/a11y built in),
+build CDK with the Win32 backend, CTK+ itself (with GAIL/a11y built in),
 the GAIL-Util library and the ctk-demo program.  Please also refer to the
 README file(s) that reside in win32 on how to enable additional features
 that are not enabled by default, such as EGL support via libANGLE, which
@@ -219,7 +219,7 @@ and run the following:
   meson <path_to_directory_of_this_file> --buildtype=... --prefix=...,
   where buildtype can be release, debugoptimized, debug or plain.  Please
   refer to the Meson documentation for more details.  You may also wish to
-  pass in -Dbroadway_backend=true if building the Broadway GDK backend is
+  pass in -Dbroadway_backend=true if building the Broadway CDK backend is
   desired, and/or pass in -Dbuiltin_immodules=no to build the immodules as
   standalone DLLs that can be loaded by CTK dynamically.  For Visual Studio
   2010, 2015, 2017 and 2019 builds, you may pass in --backend=vs to generate
@@ -277,7 +277,7 @@ Multi-threaded use of CTK+ on Win32
 ===================================
 
 Multi-threaded CTK+ programs might work on Windows in special simple
-cases, but not in general. Sorry. If you have all CTK+ and GDK calls
+cases, but not in general. Sorry. If you have all CTK+ and CDK calls
 in the same thread, it might work. Otherwise, probably not at
 all. Possible ways to fix this are being investigated.
 

@@ -840,8 +840,8 @@ ctk_shortcuts_window_class_init (CtkShortcutsWindowClass *klass)
                                  G_TYPE_NONE,
                                  0);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Escape, 0, "close", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_f, GDK_CONTROL_MASK, "search", 0);
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Escape, 0, "close", 0);
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_f, CDK_CONTROL_MASK, "search", 0);
 
   g_type_ensure (CTK_TYPE_SHORTCUTS_GROUP);
   g_type_ensure (CTK_TYPE_SHORTCUTS_SHORTCUT);
@@ -872,7 +872,7 @@ ctk_shortcuts_window_init (CtkShortcutsWindow *self)
   PangoAttrList *attributes;
 
   ctk_window_set_resizable (CTK_WINDOW (self), FALSE);
-  ctk_window_set_type_hint (CTK_WINDOW (self), GDK_WINDOW_TYPE_HINT_DIALOG);
+  ctk_window_set_type_hint (CTK_WINDOW (self), CDK_WINDOW_TYPE_HINT_DIALOG);
 
   g_signal_connect (self, "key-press-event",
                     G_CALLBACK (window_key_press_event_cb), NULL);

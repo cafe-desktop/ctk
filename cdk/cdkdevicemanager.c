@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2009 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -29,7 +29,7 @@
  * @See_also: #CdkDevice, #CdkEvent
  *
  * In addition to a single pointer and keyboard for user interface input,
- * GDK contains support for a variety of input devices, including graphics
+ * CDK contains support for a variety of input devices, including graphics
  * tablets, touchscreens and multiple pointers/keyboards interacting
  * simultaneously with the user interface. Such input devices often have
  * additional features, such as sub-pixel positioning information and
@@ -37,13 +37,13 @@
  *
  * In order to query the device hierarchy and be aware of changes in the
  * device hierarchy (such as virtual devices being created or removed, or
- * physical devices being plugged or unplugged), GDK provides
+ * physical devices being plugged or unplugged), CDK provides
  * #CdkDeviceManager.
  *
- * By default, and if the platform supports it, GDK is aware of multiple
+ * By default, and if the platform supports it, CDK is aware of multiple
  * keyboard/pointer pairs and multitouch devices. This behavior can be
  * changed by calling cdk_disable_multidevice() before cdk_display_open().
- * There should rarely be a need to do that though, since GDK defaults
+ * There should rarely be a need to do that though, since CDK defaults
  * to a compatibility mode in which it will emit just one enter/leave
  * event pair for all devices on a window. To enable per-device
  * enter/leave events and other multi-pointer interaction features,
@@ -98,15 +98,15 @@
  *     ↳ ThinkPad Extra Buttons                    id=15   [slave  keyboard (3)]
  * ]|
  *
- * By default, GDK will automatically listen for events coming from all
+ * By default, CDK will automatically listen for events coming from all
  * master devices, setting the #CdkDevice for all events coming from input
- * devices. Events containing device information are #GDK_MOTION_NOTIFY,
- * #GDK_BUTTON_PRESS, #GDK_2BUTTON_PRESS, #GDK_3BUTTON_PRESS,
- * #GDK_BUTTON_RELEASE, #GDK_SCROLL, #GDK_KEY_PRESS, #GDK_KEY_RELEASE,
- * #GDK_ENTER_NOTIFY, #GDK_LEAVE_NOTIFY, #GDK_FOCUS_CHANGE,
- * #GDK_PROXIMITY_IN, #GDK_PROXIMITY_OUT, #GDK_DRAG_ENTER, #GDK_DRAG_LEAVE,
- * #GDK_DRAG_MOTION, #GDK_DRAG_STATUS, #GDK_DROP_START, #GDK_DROP_FINISHED
- * and #GDK_GRAB_BROKEN. When dealing with an event on a master device,
+ * devices. Events containing device information are #CDK_MOTION_NOTIFY,
+ * #CDK_BUTTON_PRESS, #CDK_2BUTTON_PRESS, #CDK_3BUTTON_PRESS,
+ * #CDK_BUTTON_RELEASE, #CDK_SCROLL, #CDK_KEY_PRESS, #CDK_KEY_RELEASE,
+ * #CDK_ENTER_NOTIFY, #CDK_LEAVE_NOTIFY, #CDK_FOCUS_CHANGE,
+ * #CDK_PROXIMITY_IN, #CDK_PROXIMITY_OUT, #CDK_DRAG_ENTER, #CDK_DRAG_LEAVE,
+ * #CDK_DRAG_MOTION, #CDK_DRAG_STATUS, #CDK_DROP_START, #CDK_DROP_FINISHED
+ * and #CDK_GRAB_BROKEN. When dealing with an event on a master device,
  * it is possible to get the source (slave) device that the event originated
  * from via cdk_event_get_source_device().
  *
@@ -184,7 +184,7 @@ cdk_device_manager_class_init (CdkDeviceManagerClass *klass)
                                    g_param_spec_object ("display",
                                                         P_("Display"),
                                                         P_("Display for the device manager"),
-                                                        GDK_TYPE_DISPLAY,
+                                                        CDK_TYPE_DISPLAY,
                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY |
                                                         G_PARAM_STATIC_STRINGS));
 
@@ -205,7 +205,7 @@ cdk_device_manager_class_init (CdkDeviceManagerClass *klass)
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 1,
-                  GDK_TYPE_DEVICE);
+                  CDK_TYPE_DEVICE);
 
   /**
    * CdkDeviceManager::device-removed:
@@ -224,7 +224,7 @@ cdk_device_manager_class_init (CdkDeviceManagerClass *klass)
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 1,
-                  GDK_TYPE_DEVICE);
+                  CDK_TYPE_DEVICE);
 
   /**
    * CdkDeviceManager::device-changed:
@@ -239,8 +239,8 @@ cdk_device_manager_class_init (CdkDeviceManagerClass *klass)
    *
    * If a slave device is detached from all master devices
    * (cdk_device_get_associated_device() returns %NULL), its
-   * #CdkDeviceType will change to %GDK_DEVICE_TYPE_FLOATING,
-   * if it's attached, it will change to %GDK_DEVICE_TYPE_SLAVE.
+   * #CdkDeviceType will change to %CDK_DEVICE_TYPE_FLOATING,
+   * if it's attached, it will change to %CDK_DEVICE_TYPE_SLAVE.
    */
   signals [DEVICE_CHANGED] =
     g_signal_new (g_intern_static_string ("device-changed"),
@@ -250,7 +250,7 @@ cdk_device_manager_class_init (CdkDeviceManagerClass *klass)
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE, 1,
-                  GDK_TYPE_DEVICE);
+                  CDK_TYPE_DEVICE);
 }
 
 static void
@@ -267,7 +267,7 @@ cdk_device_manager_set_property (GObject      *object,
   switch (prop_id)
     {
     case PROP_DISPLAY:
-      GDK_DEVICE_MANAGER (object)->display = g_value_get_object (value);
+      CDK_DEVICE_MANAGER (object)->display = g_value_get_object (value);
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -285,7 +285,7 @@ cdk_device_manager_get_property (GObject      *object,
   switch (prop_id)
     {
     case PROP_DISPLAY:
-      g_value_set_object (value, GDK_DEVICE_MANAGER (object)->display);
+      g_value_set_object (value, CDK_DEVICE_MANAGER (object)->display);
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -301,14 +301,14 @@ cdk_device_manager_get_property (GObject      *object,
  *
  * Returns: (nullable) (transfer none): the #CdkDisplay to which
  *          @device_manager is associated to, or %NULL. This memory is
- *          owned by GDK and must not be freed or unreferenced.
+ *          owned by CDK and must not be freed or unreferenced.
  *
  * Since: 3.0
  **/
 CdkDisplay *
 cdk_device_manager_get_display (CdkDeviceManager *device_manager)
 {
-  g_return_val_if_fail (GDK_IS_DEVICE_MANAGER (device_manager), NULL);
+  g_return_val_if_fail (CDK_IS_DEVICE_MANAGER (device_manager), NULL);
 
   return device_manager->display;
 }
@@ -335,9 +335,9 @@ GList *
 cdk_device_manager_list_devices (CdkDeviceManager *device_manager,
                                  CdkDeviceType     type)
 {
-  g_return_val_if_fail (GDK_IS_DEVICE_MANAGER (device_manager), NULL);
+  g_return_val_if_fail (CDK_IS_DEVICE_MANAGER (device_manager), NULL);
 
-  return GDK_DEVICE_MANAGER_GET_CLASS (device_manager)->list_devices (device_manager, type);
+  return CDK_DEVICE_MANAGER_GET_CLASS (device_manager)->list_devices (device_manager, type);
 }
 
 /**
@@ -352,7 +352,7 @@ cdk_device_manager_list_devices (CdkDeviceManager *device_manager,
  * and there aren’t other means to get a meaningful #CdkDevice to operate on.
  *
  * Returns: (transfer none): The client pointer. This memory is
- *          owned by GDK and must not be freed or unreferenced.
+ *          owned by CDK and must not be freed or unreferenced.
  *
  * Since: 3.0
  *
@@ -361,7 +361,7 @@ cdk_device_manager_list_devices (CdkDeviceManager *device_manager,
 CdkDevice *
 cdk_device_manager_get_client_pointer (CdkDeviceManager *device_manager)
 {
-  g_return_val_if_fail (GDK_IS_DEVICE_MANAGER (device_manager), NULL);
+  g_return_val_if_fail (CDK_IS_DEVICE_MANAGER (device_manager), NULL);
 
-  return GDK_DEVICE_MANAGER_GET_CLASS (device_manager)->get_client_pointer (device_manager);
+  return CDK_DEVICE_MANAGER_GET_CLASS (device_manager)->get_client_pointer (device_manager);
 }

@@ -1,4 +1,4 @@
-## Makefile for building the GDK DLL with Microsoft C
+## Makefile for building the CDK DLL with Microsoft C
 ## Use: nmake -f makefile.msc
 
 ## You must first build the Win32-dependent sources in the win32 subdirectory.
@@ -27,17 +27,17 @@ PERL = perl
 
 INCLUDES = -FImsvc_recommended_pragmas.h \
 	-I . -I .. \
-	$(GLIB_CFLAGS) $(PANGO_CFLAGS) $(CAIRO_CFLAGS) $(GDK_PIXBUF_CFLAGS) \
+	$(GLIB_CFLAGS) $(PANGO_CFLAGS) $(CAIRO_CFLAGS) $(CDK_PIXBUF_CFLAGS) \
 
 DEFINES = \
 	-DHAVE_CONFIG_H \
-	-DGDK_VERSION=\"$(CTK_VER)\" \
+	-DCDK_VERSION=\"$(CTK_VER)\" \
 	-DG_LOG_DOMAIN=\"Cdk\" \
-	-DGDK_COMPILATION -DG_LOG_DOMAIN=\"Cdk\"
+	-DCDK_COMPILATION -DG_LOG_DOMAIN=\"Cdk\"
 
 EXTRALIBS = \
 	$(WTKIT)\lib\i386\wntab32x.lib \
-	$(GLIB_LIBS) $(GDK_PIXBUF_LIBS) \
+	$(GLIB_LIBS) $(CDK_PIXBUF_LIBS) \
 	$(CAIRO_LIBS) $(CAIRO_GOBJECT_LIBS) \
 	$(PANGOWIN32_LIBS) $(PANGOCAIRO_LIBS) $(INTL_LIBS)
 
@@ -141,7 +141,7 @@ cdkconfig.h : cdkconfig.h.win32
 
 cdk.def: cdk.symbols
 	echo EXPORTS > cdk.def
-	cl /EP -DG_OS_WIN32 -DGDK_WINDOWING_WIN32 \
+	cl /EP -DG_OS_WIN32 -DCDK_WINDOWING_WIN32 \
 		-DG_GNUC_CONST= \
 		cdk.symbols >> cdk.def
 

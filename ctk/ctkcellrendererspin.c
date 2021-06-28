@@ -281,12 +281,12 @@ ctk_cell_renderer_spin_key_press_event (CtkWidget   *widget,
 {
   if (event->state == 0)
     {
-      if (event->keyval == GDK_KEY_Up)
+      if (event->keyval == CDK_KEY_Up)
 	{
 	  ctk_spin_button_spin (CTK_SPIN_BUTTON (widget), CTK_SPIN_STEP_FORWARD, 1);
 	  return TRUE;
 	}
-      else if (event->keyval == GDK_KEY_Down)
+      else if (event->keyval == CDK_KEY_Down)
 	{
 	  ctk_spin_button_spin (CTK_SPIN_BUTTON (widget), CTK_SPIN_STEP_BACKWARD, 1);
 	  return TRUE;
@@ -304,8 +304,8 @@ ctk_cell_renderer_spin_button_press_event (CtkWidget      *widget,
   /* Block 2BUTTON and 3BUTTON here, so that they won't be eaten
    * by tree view.
    */
-  if (event->type == GDK_2BUTTON_PRESS
-      || event->type == GDK_3BUTTON_PRESS)
+  if (event->type == CDK_2BUTTON_PRESS
+      || event->type == CDK_3BUTTON_PRESS)
     return TRUE;
 
   return FALSE;

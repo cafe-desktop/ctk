@@ -87,14 +87,14 @@ key_press_event (CtkWidget            *window,
                  CtkInspectorPropList *pl)
 {
   if (!ctk_widget_get_mapped (CTK_WIDGET (pl)))
-    return GDK_EVENT_PROPAGATE;
+    return CDK_EVENT_PROPAGATE;
 
   if (ctk_search_entry_handle_event (CTK_SEARCH_ENTRY (pl->priv->search_entry), event))
     {
       ctk_stack_set_visible_child (CTK_STACK (pl->priv->search_stack), pl->priv->search_entry);
-      return GDK_EVENT_STOP;
+      return CDK_EVENT_STOP;
     }
-  return GDK_EVENT_PROPAGATE;
+  return CDK_EVENT_PROPAGATE;
 }
 
 static void

@@ -103,8 +103,8 @@ msgid "Default Display"
 msgstr "Ön Qurğulu Displey"
 
 #: cdk/cdkdisplaymanager.c:103
-msgid "The default display for GDK"
-msgstr "GDK üçün ön qurğulu displey"
+msgid "The default display for CDK"
+msgstr "CDK üçün ön qurğulu displey"
 
 #: cdk/cdkscreen.c:72
 #, fuzzy

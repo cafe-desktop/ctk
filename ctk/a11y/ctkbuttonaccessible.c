@@ -270,8 +270,8 @@ ctk_button_accessible_get_keybinding (AtkAction *action,
   if (CTK_IS_LABEL (label))
     {
       key_val = ctk_label_get_mnemonic_keyval (CTK_LABEL (label));
-      if (key_val != GDK_KEY_VoidSymbol)
-        return_value = ctk_accelerator_name (key_val, GDK_MOD1_MASK);
+      if (key_val != CDK_KEY_VoidSymbol)
+        return_value = ctk_accelerator_name (key_val, CDK_MOD1_MASK);
     }
   if (return_value == NULL)
     {
@@ -297,8 +297,8 @@ ctk_button_accessible_get_keybinding (AtkAction *action,
       if (CTK_IS_LABEL (label))
         {
           key_val = ctk_label_get_mnemonic_keyval (CTK_LABEL (label));
-          if (key_val != GDK_KEY_VoidSymbol)
-            return_value = ctk_accelerator_name (key_val, GDK_MOD1_MASK);
+          if (key_val != CDK_KEY_VoidSymbol)
+            return_value = ctk_accelerator_name (key_val, CDK_MOD1_MASK);
         }
     }
   return return_value;

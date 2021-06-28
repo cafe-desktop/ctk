@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -25,7 +25,7 @@
 #include "config.h"
 
 /* needs to be first because any header might include cdk-pixbuf.h otherwise */
-#define GDK_PIXBUF_ENABLE_BACKEND
+#define CDK_PIXBUF_ENABLE_BACKEND
 #include <cdk-pixbuf/cdk-pixbuf.h>
 
 #include "cdkcursor.h"
@@ -49,7 +49,7 @@ struct _CdkBroadwayCursorClass
 
 /*** CdkBroadwayCursor ***/
 
-G_DEFINE_TYPE (CdkBroadwayCursor, cdk_broadway_cursor, GDK_TYPE_CURSOR)
+G_DEFINE_TYPE (CdkBroadwayCursor, cdk_broadway_cursor, CDK_TYPE_CURSOR)
 
 static cairo_surface_t * cdk_broadway_cursor_get_surface (CdkCursor *cursor,
 							  gdouble   *x_hot,
@@ -64,7 +64,7 @@ cdk_broadway_cursor_finalize (GObject *object)
 static void
 cdk_broadway_cursor_class_init (CdkBroadwayCursorClass *xcursor_class)
 {
-  CdkCursorClass *cursor_class = GDK_CURSOR_CLASS (xcursor_class);
+  CdkCursorClass *cursor_class = CDK_CURSOR_CLASS (xcursor_class);
   GObjectClass *object_class = G_OBJECT_CLASS (xcursor_class);
 
   object_class->finalize = cdk_broadway_cursor_finalize;
@@ -91,14 +91,14 @@ _cdk_broadway_display_get_cursor_for_type (CdkDisplay    *display,
 {
   CdkBroadwayCursor *private;
 
-  g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
+  g_return_val_if_fail (CDK_IS_DISPLAY (display), NULL);
 
-  private = g_object_new (GDK_TYPE_BROADWAY_CURSOR,
+  private = g_object_new (CDK_TYPE_BROADWAY_CURSOR,
                           "cursor-type", cursor_type,
                           "display", display,
 			  NULL);
 
-  return GDK_CURSOR (private);
+  return CDK_CURSOR (private);
 }
 
 static cairo_surface_t *
@@ -126,8 +126,8 @@ _cdk_broadway_display_get_cursor_for_surface (CdkDisplay *display,
   CdkBroadwayCursor *private;
   CdkCursor *cursor;
 
-  private = g_object_new (GDK_TYPE_BROADWAY_CURSOR, 
-                          "cursor-type", GDK_CURSOR_IS_PIXMAP,
+  private = g_object_new (CDK_TYPE_BROADWAY_CURSOR, 
+                          "cursor-type", CDK_CURSOR_IS_PIXMAP,
                           "display", display,
                           NULL);
   cursor = (CdkCursor *) private;
@@ -141,18 +141,18 @@ _cdk_broadway_display_get_cursor_for_name (CdkDisplay  *display,
 {
   CdkBroadwayCursor *private;
 
-  private = g_object_new (GDK_TYPE_BROADWAY_CURSOR,
-                          "cursor-type", GDK_CURSOR_IS_PIXMAP,
+  private = g_object_new (CDK_TYPE_BROADWAY_CURSOR,
+                          "cursor-type", CDK_CURSOR_IS_PIXMAP,
                           "display", display,
                           NULL);
 
-  return GDK_CURSOR (private);
+  return CDK_CURSOR (private);
 }
 
 gboolean
 _cdk_broadway_display_supports_cursor_alpha (CdkDisplay *display)
 {
-  g_return_val_if_fail (GDK_IS_DISPLAY (display), FALSE);
+  g_return_val_if_fail (CDK_IS_DISPLAY (display), FALSE);
 
   return TRUE;
 }
@@ -160,7 +160,7 @@ _cdk_broadway_display_supports_cursor_alpha (CdkDisplay *display)
 gboolean
 _cdk_broadway_display_supports_cursor_color (CdkDisplay *display)
 {
-  g_return_val_if_fail (GDK_IS_DISPLAY (display), FALSE);
+  g_return_val_if_fail (CDK_IS_DISPLAY (display), FALSE);
 
   return TRUE;
 }
@@ -170,7 +170,7 @@ _cdk_broadway_display_get_default_cursor_size (CdkDisplay *display,
 					       guint      *width,
 					       guint      *height)
 {
-  g_return_if_fail (GDK_IS_DISPLAY (display));
+  g_return_if_fail (CDK_IS_DISPLAY (display));
 
   *width = *height = 20;
 }
@@ -180,7 +180,7 @@ _cdk_broadway_display_get_maximal_cursor_size (CdkDisplay *display,
 					       guint       *width,
 					       guint       *height)
 {
-  g_return_if_fail (GDK_IS_DISPLAY (display));
+  g_return_if_fail (CDK_IS_DISPLAY (display));
 
   *width = 128;
   *height = 128;

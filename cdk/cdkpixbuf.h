@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -22,10 +22,10 @@
  * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
-#ifndef __GDK_PIXBUF_H__
-#define __GDK_PIXBUF_H__
+#ifndef __CDK_PIXBUF_H__
+#define __CDK_PIXBUF_H__
 
-#if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined (__CDK_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdk.h> can be included directly."
 #endif
 
@@ -36,14 +36,14 @@
 
 G_BEGIN_DECLS
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkPixbuf *cdk_pixbuf_get_from_window  (CdkWindow       *window,
                                         gint             src_x,
                                         gint             src_y,
                                         gint             width,
                                         gint             height);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkPixbuf *cdk_pixbuf_get_from_surface (cairo_surface_t *surface,
                                         gint             src_x,
                                         gint             src_y,
@@ -52,4 +52,4 @@ CdkPixbuf *cdk_pixbuf_get_from_surface (cairo_surface_t *surface,
 
 G_END_DECLS
 
-#endif /* __GDK_PIXBUF_H__ */
+#endif /* __CDK_PIXBUF_H__ */

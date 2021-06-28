@@ -73,7 +73,7 @@ libcdk_x11 = static_library('cdk-x11', cdkmarshal_h,
                             cdk_x11_sources, cdkconfig, cdkenum_h,
                             include_directories: [ confinc, cdkinc, ],
                             c_args: [
-                              '-DGDK_COMPILATION',
+                              '-DCDK_COMPILATION',
                               '-DG_LOG_DOMAIN="Cdk"',
                             ] + common_cflags,
                             link_args: common_ldflags,

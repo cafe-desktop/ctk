@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -47,7 +47,7 @@ insert_atom_pair (CdkDisplay *display,
 		  CdkAtom     virtual_atom,
 		  Atom        xatom)
 {
-  CdkX11Display *display_x11 = GDK_X11_DISPLAY (display);  
+  CdkX11Display *display_x11 = CDK_X11_DISPLAY (display);  
   
   if (!display_x11->atom_from_virtual)
     {
@@ -56,25 +56,25 @@ insert_atom_pair (CdkDisplay *display,
     }
   
   g_hash_table_insert (display_x11->atom_from_virtual, 
-		       GDK_ATOM_TO_POINTER (virtual_atom), 
+		       CDK_ATOM_TO_POINTER (virtual_atom), 
 		       GUINT_TO_POINTER (xatom));
   g_hash_table_insert (display_x11->atom_to_virtual,
 		       GUINT_TO_POINTER (xatom), 
-		       GDK_ATOM_TO_POINTER (virtual_atom));
+		       CDK_ATOM_TO_POINTER (virtual_atom));
 }
 
 static Atom
 lookup_cached_xatom (CdkDisplay *display,
 		     CdkAtom     atom)
 {
-  CdkX11Display *display_x11 = GDK_X11_DISPLAY (display);
+  CdkX11Display *display_x11 = CDK_X11_DISPLAY (display);
 
   if (ATOM_TO_INDEX (atom) < N_PREDEFINED_ATOMS)
     return ATOM_TO_INDEX (atom);
   
   if (display_x11->atom_from_virtual)
     return GPOINTER_TO_UINT (g_hash_table_lookup (display_x11->atom_from_virtual,
-						  GDK_ATOM_TO_POINTER (atom)));
+						  CDK_ATOM_TO_POINTER (atom)));
 
   return None;
 }
@@ -82,10 +82,10 @@ lookup_cached_xatom (CdkDisplay *display,
 /**
  * cdk_x11_atom_to_xatom_for_display:
  * @display: (type CdkX11Display): A #CdkDisplay
- * @atom: A #CdkAtom, or %GDK_NONE
+ * @atom: A #CdkAtom, or %CDK_NONE
  *
  * Converts from a #CdkAtom to the X atom for a #CdkDisplay
- * with the same string value. The special value %GDK_NONE
+ * with the same string value. The special value %CDK_NONE
  * is converted to %None.
  *
  * Returns: the X atom corresponding to @atom, or %None
@@ -98,9 +98,9 @@ cdk_x11_atom_to_xatom_for_display (CdkDisplay *display,
 {
   Atom xatom = None;
 
-  g_return_val_if_fail (GDK_IS_DISPLAY (display), None);
+  g_return_val_if_fail (CDK_IS_DISPLAY (display), None);
 
-  if (atom == GDK_NONE)
+  if (atom == CDK_NONE)
     return None;
 
   if (cdk_display_is_closed (display))
@@ -112,7 +112,7 @@ cdk_x11_atom_to_xatom_for_display (CdkDisplay *display,
     {
       char *name = cdk_atom_name (atom);
 
-      xatom = XInternAtom (GDK_DISPLAY_XDISPLAY (display), name, FALSE);
+      xatom = XInternAtom (CDK_DISPLAY_XDISPLAY (display), name, FALSE);
       insert_atom_pair (display, atom, xatom);
 
       g_free (name);
@@ -149,7 +149,7 @@ _cdk_x11_precache_atoms (CdkDisplay          *display,
     }
 
   if (n_xatoms)
-    XInternAtoms (GDK_DISPLAY_XDISPLAY (display),
+    XInternAtoms (CDK_DISPLAY_XDISPLAY (display),
                   (char **)xatom_names, n_xatoms, False, xatoms);
 
   for (i = 0; i < n_xatoms; i++)
@@ -164,7 +164,7 @@ _cdk_x11_precache_atoms (CdkDisplay          *display,
  * cdk_x11_atom_to_xatom:
  * @atom: A #CdkAtom 
  * 
- * Converts from a #CdkAtom to the X atom for the default GDK display
+ * Converts from a #CdkAtom to the X atom for the default CDK display
  * with the same string value.
  * 
  * Returns: the X atom corresponding to @atom.
@@ -192,23 +192,23 @@ cdk_x11_xatom_to_atom_for_display (CdkDisplay *display,
 				   Atom	       xatom)
 {
   CdkX11Display *display_x11;
-  CdkAtom virtual_atom = GDK_NONE;
+  CdkAtom virtual_atom = CDK_NONE;
   
-  g_return_val_if_fail (GDK_IS_DISPLAY (display), GDK_NONE);
+  g_return_val_if_fail (CDK_IS_DISPLAY (display), CDK_NONE);
 
   if (xatom == None)
-    return GDK_NONE;
+    return CDK_NONE;
 
   if (cdk_display_is_closed (display))
-    return GDK_NONE;
+    return CDK_NONE;
 
-  display_x11 = GDK_X11_DISPLAY (display);
+  display_x11 = CDK_X11_DISPLAY (display);
   
   if (xatom < N_PREDEFINED_ATOMS)
     return INDEX_TO_ATOM (xatom);
   
   if (display_x11->atom_to_virtual)
-    virtual_atom = GDK_POINTER_TO_ATOM (g_hash_table_lookup (display_x11->atom_to_virtual,
+    virtual_atom = CDK_POINTER_TO_ATOM (g_hash_table_lookup (display_x11->atom_to_virtual,
 							     GUINT_TO_POINTER (xatom)));
   
   if (!virtual_atom)
@@ -218,7 +218,7 @@ cdk_x11_xatom_to_atom_for_display (CdkDisplay *display,
        */
       char *name;
       cdk_x11_display_error_trap_push (display);
-      name = XGetAtomName (GDK_DISPLAY_XDISPLAY (display), xatom);
+      name = XGetAtomName (CDK_DISPLAY_XDISPLAY (display), xatom);
       if (cdk_x11_display_error_trap_pop (display))
 	{
 	  g_warning (G_STRLOC " invalid X atom: %ld", xatom);
@@ -237,7 +237,7 @@ cdk_x11_xatom_to_atom_for_display (CdkDisplay *display,
 
 /**
  * cdk_x11_xatom_to_atom:
- * @xatom: an X atom for the default GDK display
+ * @xatom: an X atom for the default CDK display
  * 
  * Convert from an X atom for the default display to the corresponding
  * #CdkAtom.
@@ -267,7 +267,7 @@ Atom
 cdk_x11_get_xatom_by_name_for_display (CdkDisplay  *display,
 				       const gchar *atom_name)
 {
-  g_return_val_if_fail (GDK_IS_DISPLAY (display), None);
+  g_return_val_if_fail (CDK_IS_DISPLAY (display), None);
   return cdk_x11_atom_to_xatom_for_display (display,
 					    cdk_atom_intern (atom_name, FALSE));
 }
@@ -296,11 +296,11 @@ _cdk_x11_get_xatom_for_display_printf (CdkDisplay    *display,
  * cdk_x11_get_xatom_by_name:
  * @atom_name: a string
  * 
- * Returns the X atom for GDK’s default display corresponding to @atom_name.
+ * Returns the X atom for CDK’s default display corresponding to @atom_name.
  * This function caches the result, so if called repeatedly it is much
  * faster than XInternAtom(), which is a round trip to the server each time.
  * 
- * Returns: a X atom for GDK’s default display.
+ * Returns: a X atom for CDK’s default display.
  **/
 Atom
 cdk_x11_get_xatom_by_name (const gchar *atom_name)
@@ -319,7 +319,7 @@ cdk_x11_get_xatom_by_name (const gchar *atom_name)
  * XAtomName() and cdk_atom_name(), the result doesn’t need to
  * be freed. 
  *
- * Returns: name of the X atom; this string is owned by GDK,
+ * Returns: name of the X atom; this string is owned by CDK,
  *   so it shouldn’t be modifed or freed. 
  *
  * Since: 2.2
@@ -328,16 +328,16 @@ const gchar *
 cdk_x11_get_xatom_name_for_display (CdkDisplay *display,
 				    Atom        xatom)
 {
-  g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
+  g_return_val_if_fail (CDK_IS_DISPLAY (display), NULL);
 
   return _cdk_atom_name_const (cdk_x11_xatom_to_atom_for_display (display, xatom));
 }
 
 /**
  * cdk_x11_get_xatom_name:
- * @xatom: an X atom for GDK’s default display
+ * @xatom: an X atom for CDK’s default display
  * 
- * Returns the name of an X atom for GDK’s default display. This
+ * Returns the name of an X atom for CDK’s default display. This
  * function is meant mainly for debugging, so for convenience, unlike
  * XAtomName() and cdk_atom_name(), the result 
  * doesn’t need to be freed. Also, this function will never return %NULL, 
@@ -376,22 +376,22 @@ _cdk_x11_window_get_property (CdkWindow   *window,
   Atom xtype;
   int res;
 
-  g_return_val_if_fail (!window || GDK_WINDOW_IS_X11 (window), FALSE);
+  g_return_val_if_fail (!window || CDK_WINDOW_IS_X11 (window), FALSE);
 
   if (!window)
     {
       CdkScreen *screen = cdk_screen_get_default ();
       window = cdk_screen_get_root_window (screen);
     }
-  else if (!GDK_WINDOW_IS_X11 (window))
+  else if (!CDK_WINDOW_IS_X11 (window))
     return FALSE;
 
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     return FALSE;
 
   display = cdk_window_get_display (window);
   xproperty = cdk_x11_atom_to_xatom_for_display (display, property);
-  if (type == GDK_NONE)
+  if (type == CDK_NONE)
     xtype = AnyPropertyType;
   else
     xtype = cdk_x11_atom_to_xatom_for_display (display, type);
@@ -416,8 +416,8 @@ _cdk_x11_window_get_property (CdkWindow   *window,
       return FALSE;
     }
 
-  res = XGetWindowProperty (GDK_DISPLAY_XDISPLAY (display),
-			    GDK_WINDOW_XID (window), xproperty,
+  res = XGetWindowProperty (CDK_DISPLAY_XDISPLAY (display),
+			    CDK_WINDOW_XID (window), xproperty,
 			    offset, get_length, pdelete,
 			    xtype, &ret_prop_type, &ret_format,
 			    &ret_nitems, &ret_bytes_after,
@@ -451,7 +451,7 @@ _cdk_x11_window_get_property (CdkWindow   *window,
 	{
 	  /*
 	   * data is an array of X atom, we need to convert it
-	   * to an array of GDK Atoms
+	   * to an array of CDK Atoms
 	   */
 	  gint i;
 	  CdkAtom *ret_atoms = g_new (CdkAtom, ret_nitems);
@@ -510,7 +510,7 @@ _cdk_x11_window_change_property (CdkWindow    *window,
   Atom xproperty;
   Atom xtype;
 
-  g_return_if_fail (!window || GDK_WINDOW_IS_X11 (window));
+  g_return_if_fail (!window || CDK_WINDOW_IS_X11 (window));
 
   if (!window)
     {
@@ -519,10 +519,10 @@ _cdk_x11_window_change_property (CdkWindow    *window,
       screen = cdk_screen_get_default ();
       window = cdk_screen_get_root_window (screen);
     }
-  else if (!GDK_WINDOW_IS_X11 (window))
+  else if (!CDK_WINDOW_IS_X11 (window))
     return;
 
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     return;
 
   cdk_window_ensure_native (window);
@@ -530,7 +530,7 @@ _cdk_x11_window_change_property (CdkWindow    *window,
   display = cdk_window_get_display (window);
   xproperty = cdk_x11_atom_to_xatom_for_display (display, property);
   xtype = cdk_x11_atom_to_xatom_for_display (display, type);
-  xwindow = GDK_WINDOW_XID (window);
+  xwindow = CDK_WINDOW_XID (window);
 
   if (xtype == XA_ATOM ||
       xtype == cdk_x11_get_xatom_by_name_for_display (display, "ATOM_PAIR"))
@@ -547,13 +547,13 @@ _cdk_x11_window_change_property (CdkWindow    *window,
       for (i = 0; i < nelements; i++)
 	xatoms[i] = cdk_x11_atom_to_xatom_for_display (display, atoms[i]);
 
-      XChangeProperty (GDK_DISPLAY_XDISPLAY (display), xwindow,
+      XChangeProperty (CDK_DISPLAY_XDISPLAY (display), xwindow,
 		       xproperty, xtype,
 		       format, mode, (guchar *)xatoms, nelements);
       g_free (xatoms);
     }
   else
-    XChangeProperty (GDK_DISPLAY_XDISPLAY (display), xwindow, xproperty, 
+    XChangeProperty (CDK_DISPLAY_XDISPLAY (display), xwindow, xproperty, 
 		     xtype, format, mode, (guchar *)data, nelements);
 }
 
@@ -561,20 +561,20 @@ void
 _cdk_x11_window_delete_property (CdkWindow *window,
                                  CdkAtom    property)
 {
-  g_return_if_fail (!window || GDK_WINDOW_IS_X11 (window));
+  g_return_if_fail (!window || CDK_WINDOW_IS_X11 (window));
 
   if (!window)
     {
       CdkScreen *screen = cdk_screen_get_default ();
       window = cdk_screen_get_root_window (screen);
     }
-  else if (!GDK_WINDOW_IS_X11 (window))
+  else if (!CDK_WINDOW_IS_X11 (window))
     return;
 
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     return;
 
-  XDeleteProperty (GDK_WINDOW_XDISPLAY (window), GDK_WINDOW_XID (window),
-		   cdk_x11_atom_to_xatom_for_display (GDK_WINDOW_DISPLAY (window),
+  XDeleteProperty (CDK_WINDOW_XDISPLAY (window), CDK_WINDOW_XID (window),
+		   cdk_x11_atom_to_xatom_for_display (CDK_WINDOW_DISPLAY (window),
 						      property));
 }

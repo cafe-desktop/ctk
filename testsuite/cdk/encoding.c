@@ -1,17 +1,17 @@
 #include <cdk/cdk.h>
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
 #include <cdk/x11/cdkx.h>
 #endif
 
 static void
 test_to_text_list (void)
 {
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
   CdkDisplay *display;
 
   display = cdk_display_get_default ();
 
-  if (GDK_IS_X11_DISPLAY (display))
+  if (CDK_IS_X11_DISPLAY (display))
     {
       CdkAtom encoding;
       gint format;

@@ -69,24 +69,24 @@ struct _CtkToggleActionClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 GType            ctk_toggle_action_get_type          (void) G_GNUC_CONST;
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 CtkToggleAction *ctk_toggle_action_new               (const gchar     *name,
                                                       const gchar     *label,
                                                       const gchar     *tooltip,
                                                       const gchar     *stock_id);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void             ctk_toggle_action_toggled           (CtkToggleAction *action);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void             ctk_toggle_action_set_active        (CtkToggleAction *action,
                                                       gboolean         is_active);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 gboolean         ctk_toggle_action_get_active        (CtkToggleAction *action);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void             ctk_toggle_action_set_draw_as_radio (CtkToggleAction *action,
                                                       gboolean         draw_as_radio);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 gboolean         ctk_toggle_action_get_draw_as_radio (CtkToggleAction *action);
 
 /* private */

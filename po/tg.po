@@ -66,8 +66,8 @@ msgstr "ДИСПЛЕЙ"
 
 #. Description of --cdk-debug=FLAGS in --help output
 #: cdk/cdk.c:237
-msgid "GDK debugging flags to set"
-msgstr "Байрақчаҳои ислоҳи хатоҳои GDK барои таъин кардан"
+msgid "CDK debugging flags to set"
+msgstr "Байрақчаҳои ислоҳи хатоҳои CDK барои таъин кардан"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
@@ -79,12 +79,12 @@ msgstr "БАЙРАҚЧАҲО"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: cdk/cdk.c:240
-msgid "GDK debugging flags to unset"
-msgstr "Байрақчаҳои ислоҳи хатоҳои GDK барои бекор кардани таъинот"
+msgid "CDK debugging flags to unset"
+msgstr "Байрақчаҳои ислоҳи хатоҳои CDK барои бекор кардани таъинот"
 
 #: cdk/cdkwindow.c:2739
-msgid "GL support disabled via GDK_DEBUG"
-msgstr "Дастгирии GL ба воситаи GDK_DEBUG ғайрифаъол шуд"
+msgid "GL support disabled via CDK_DEBUG"
+msgstr "Дастгирии GL ба воситаи CDK_DEBUG ғайрифаъол шуд"
 
 #.
 #. * Translators, the strings in the “keyboard label” context are
@@ -3689,8 +3689,8 @@ msgid "CTK+ Version"
 msgstr "Версияи CTK+"
 
 #: ctk/inspector/general.ui:68
-msgid "GDK Backend"
-msgstr "Пӯштибонии GDK"
+msgid "CDK Backend"
+msgstr "Пӯштибонии CDK"
 
 #: ctk/inspector/general.ui:373
 msgid "X display"
@@ -4048,7 +4048,7 @@ msgstr ""
 #: ctk/inspector/visual.c:557
 msgid ""
 "Not settable at runtime.\n"
-"Use GDK_GL=always or GDK_GL=disable instead"
+"Use CDK_GL=always or CDK_GL=disable instead"
 msgstr ""
 
 #: ctk/inspector/visual.c:571 ctk/inspector/visual.c:572

@@ -90,13 +90,13 @@ get_cardinal (CdkDisplay *display,
 
   cdk_x11_display_error_trap_push (display);
   type = None;
-  result = XGetWindowProperty (GDK_DISPLAY_XDISPLAY (display),
+  result = XGetWindowProperty (CDK_DISPLAY_XDISPLAY (display),
                                xwindow,
                                atom,
                                0, G_MAXLONG,
                                False, XA_CARDINAL, &type, &format, &nitems,
                                &bytes_after, (void*)&num);
-  XSync (GDK_DISPLAY_XDISPLAY (display), False);
+  XSync (CDK_DISPLAY_XDISPLAY (display), False);
   err = cdk_x11_display_error_trap_pop (display);
 
   if (err != Success ||
@@ -135,14 +135,14 @@ get_utf8_property (CdkDisplay *display,
   cdk_x11_display_error_trap_push (display);
   type = None;
   val = NULL;
-  result = XGetWindowProperty (GDK_DISPLAY_XDISPLAY (display),
+  result = XGetWindowProperty (CDK_DISPLAY_XDISPLAY (display),
                                xwindow,
                                atom,
                                0, G_MAXLONG,
                                False, utf8_string,
                                &type, &format, &nitems,
                                &bytes_after, (guchar **)&val);
-  XSync (GDK_DISPLAY_XDISPLAY (display), False);
+  XSync (CDK_DISPLAY_XDISPLAY (display), False);
   err = cdk_x11_display_error_trap_pop (display);
 
   if (err != Success ||
@@ -356,13 +356,13 @@ read_rgb_icon (CdkDisplay *display,
   cdk_x11_display_error_trap_push (display);
   type = None;
   data = NULL;
-  result = XGetWindowProperty (GDK_DISPLAY_XDISPLAY (display),
+  result = XGetWindowProperty (CDK_DISPLAY_XDISPLAY (display),
                                xwindow,
                                cdk_x11_get_xatom_by_name ("_NET_WM_ICON"),
                                0, G_MAXLONG,
                                False, XA_CARDINAL, &type, &format, &nitems,
                                &bytes_after, (void*)&data);
-  XSync (GDK_DISPLAY_XDISPLAY (display), False);
+  XSync (CDK_DISPLAY_XDISPLAY (display), False);
   err = cdk_x11_display_error_trap_pop (display);
 
   if (err != Success ||
@@ -410,7 +410,7 @@ scaled_from_pixdata (guchar *pixdata,
   CdkPixbuf *dest;
 
   src = cdk_pixbuf_new_from_data (pixdata,
-                                  GDK_COLORSPACE_RGB,
+                                  CDK_COLORSPACE_RGB,
                                   TRUE,
                                   8,
                                   w, h, w * 4,
@@ -427,7 +427,7 @@ scaled_from_pixdata (guchar *pixdata,
 
       size = MAX (w, h);
 
-      tmp = cdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, size, size);
+      tmp = cdk_pixbuf_new (CDK_COLORSPACE_RGB, TRUE, 8, size, size);
 
       if (tmp != NULL)
         {
@@ -443,7 +443,7 @@ scaled_from_pixdata (guchar *pixdata,
 
   if (w != new_w || h != new_h)
     {
-      dest = cdk_pixbuf_scale_simple (src, new_w, new_h, GDK_INTERP_BILINEAR);
+      dest = cdk_pixbuf_scale_simple (src, new_w, new_h, CDK_INTERP_BILINEAR);
 
       g_object_unref (G_OBJECT (src));
     }
@@ -474,13 +474,13 @@ get_window_list (CdkDisplay *display,
 
   cdk_x11_display_error_trap_push (display);
   type = None;
-  result = XGetWindowProperty (GDK_DISPLAY_XDISPLAY (display),
+  result = XGetWindowProperty (CDK_DISPLAY_XDISPLAY (display),
                                xwindow,
                                atom,
                                0, G_MAXLONG,
                                False, XA_WINDOW, &type, &format, &nitems,
                                &bytes_after, (void*)&data);
-  XSync (GDK_DISPLAY_XDISPLAY (display), False);
+  XSync (CDK_DISPLAY_XDISPLAY (display), False);
   err = cdk_x11_display_error_trap_pop (display);
 
   if (err != Success ||
@@ -532,7 +532,7 @@ _ctk_mount_operation_lookup_context_get (CdkDisplay *display)
   mapping = NULL;
   mapping_length = 0;
   get_window_list (context->display,
-                   GDK_ROOT_WINDOW(),
+                   CDK_ROOT_WINDOW(),
                    cdk_x11_get_xatom_by_name_for_display (context->display,
                                                           "_NET_CLIENT_LIST"),
                    &mapping,

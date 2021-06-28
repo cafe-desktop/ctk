@@ -103,7 +103,7 @@ create_layout (CtkWidget *vbox)
   ctk_scrollable_set_hadjustment (CTK_SCROLLABLE (layout), hadjustment);
   ctk_scrollable_set_vadjustment (CTK_SCROLLABLE (layout), vadjustment);
 
-  ctk_widget_set_events (layout_widget, GDK_EXPOSURE_MASK);
+  ctk_widget_set_events (layout_widget, CDK_EXPOSURE_MASK);
   g_signal_connect (layout, "draw",
 		    G_CALLBACK (layout_draw_handler),
                     NULL);

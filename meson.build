@@ -327,13 +327,13 @@ if get_option('default_library') != 'static'
   if os_win32
     cdata.set('DLL_EXPORT', true)
     if cc.get_id() == 'msvc'
-      cdata.set('_GDK_EXTERN', '__declspec(dllexport) extern')
+      cdata.set('_CDK_EXTERN', '__declspec(dllexport) extern')
     else
-      cdata.set('_GDK_EXTERN', '__attribute__((visibility("default"))) __declspec(dllexport) extern')
+      cdata.set('_CDK_EXTERN', '__attribute__((visibility("default"))) __declspec(dllexport) extern')
       common_cflags += ['-fvisibility=hidden']
     endif
   else
-    cdata.set('_GDK_EXTERN', '__attribute__((visibility("default"))) extern')
+    cdata.set('_CDK_EXTERN', '__attribute__((visibility("default"))) extern')
     common_cflags += ['-fvisibility=hidden']
   endif
 endif
@@ -888,7 +888,7 @@ elif cc.get_id() == 'msvc' and cairogobj_dep.found()
 endif
 
 cdk_packages += cairo_packages
-pkgconf.set('GDK_PACKAGES', cdk_packages)
+pkgconf.set('CDK_PACKAGES', cdk_packages)
 
 if have_gio_unix
   gio_packages = ['gio-unix-2.0', glib_req]
@@ -896,7 +896,7 @@ else
   gio_packages = ['gio-2.0', glib_req]
 endif
 
-pkgconf.set('GDK_PRIVATE_PACKAGES',
+pkgconf.set('CDK_PRIVATE_PACKAGES',
             ' '.join(gio_packages + x11_pkgs + wayland_pkgs + cairo_backends +
                      ['epoxy', epoxy_req] + cloudproviders_packages +
                      ['fribidi', fribidi_req]))
@@ -920,11 +920,11 @@ ctk_private_packages += gio_packages
 
 pkgconf.set('CTK_PRIVATE_PACKAGES', ' '.join(ctk_private_packages))
 
-pkgconf.set('GDK_EXTRA_LIBS', ' '.join(pc_cdk_extra_libs))
+pkgconf.set('CDK_EXTRA_LIBS', ' '.join(pc_cdk_extra_libs))
 pkgconf.set('GSK_EXTRA_LIBS', '')
 pkgconf.set('CTK_EXTRA_LIBS', '')
 
-pkgconf.set('GDK_EXTRA_CFLAGS', '')
+pkgconf.set('CDK_EXTRA_CFLAGS', '')
 pkgconf.set('GSK_EXTRA_CFLAGS', '')
 pkgconf.set('CTK_EXTRA_CFLAGS', '')
 
@@ -944,7 +944,7 @@ foreach backend: [ 'broadway', 'quartz', 'wayland', 'win32', 'x11']
     disabled_backends += [backend]
   endif
 endforeach
-pkgconf.set('GDK_BACKENDS', pkg_targets.strip())
+pkgconf.set('CDK_BACKENDS', pkg_targets.strip())
 
 configure_file(input: 'gail-3.0.pc.in',
                output: 'gail-3.0.pc',

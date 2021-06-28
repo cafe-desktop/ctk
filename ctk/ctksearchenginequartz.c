@@ -287,7 +287,7 @@ _ctk_search_engine_quartz_init (CtkSearchEngineQuartz *engine)
 CtkSearchEngine *
 _ctk_search_engine_quartz_new (void)
 {
-#ifdef GDK_WINDOWING_QUARTZ
+#ifdef CDK_WINDOWING_QUARTZ
   return g_object_new (CTK_TYPE_SEARCH_ENGINE_QUARTZ, NULL);
 #else
   return NULL;

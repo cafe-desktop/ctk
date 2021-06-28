@@ -155,20 +155,20 @@ msgid "Default Display"
 msgstr "Προεπιλεγμένη εμφάνιση"
 
 #: cdk/cdkdisplaymanager.c:173
-msgid "The default display for GDK"
-msgstr "Η προεπιλεγμένη εμφάνιση για GDK"
+msgid "The default display for CDK"
+msgstr "Η προεπιλεγμένη εμφάνιση για CDK"
 
 #: cdk/cdkglcontext.c:318
-msgid "The GDK display used to create the GL context"
-msgstr "Η προβολή GDK χρησιμοποιήθηκε για τη δημιουργία του περιεχομένου GL"
+msgid "The CDK display used to create the GL context"
+msgstr "Η προβολή CDK χρησιμοποιήθηκε για τη δημιουργία του περιεχομένου GL"
 
 #: cdk/cdkglcontext.c:333 ctk/ctkwidget.c:1344
 msgid "Window"
 msgstr "Παράθυρο"
 
 #: cdk/cdkglcontext.c:334
-msgid "The GDK window bound to the GL context"
-msgstr "Το παράθυρο GDK περιορίστηκε στο περιβάλλον GL"
+msgid "The CDK window bound to the GL context"
+msgstr "Το παράθυρο CDK περιορίστηκε στο περιβάλλον GL"
 
 #: cdk/cdkglcontext.c:349
 msgid "Shared context"
@@ -9894,8 +9894,8 @@ msgstr "Ο τίτλος προς χρήση για το χρωματικό πρ�
 #~ msgid "Unmount"
 #~ msgstr "Αποπροσάρτηση"
 
-#~ msgid "The GDK display the context is from"
-#~ msgstr "Η εμφάνιση GDK από την οποία είναι το περιεχόμενο"
+#~ msgid "The CDK display the context is from"
+#~ msgstr "Η εμφάνιση CDK από την οποία είναι το περιεχόμενο"
 
 #~| msgid "Font name"
 #~ msgid "Font map"

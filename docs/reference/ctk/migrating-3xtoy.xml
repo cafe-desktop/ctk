@@ -34,10 +34,10 @@
     <para>
       Scroll events have been separated from button events, and smooth
       scrolling has been added with a separate event mask. Widgets now
-      need to have either GDK_SCROLL_MASK or GDK_SMOOTH_SCROLL_MASK in
+      need to have either CDK_SCROLL_MASK or CDK_SMOOTH_SCROLL_MASK in
       their event mask to receive scroll events. In addition, the
       CdkScrollDirection enumeration has gained a new member,
-      GDK_SCROLL_SMOOTH, so switch statements will have to be amended
+      CDK_SCROLL_SMOOTH, so switch statements will have to be amended
       to cover this case.
     </para>
 
@@ -92,7 +92,7 @@
     </para>
 
     <para>
-      GDK threading support has been deprecated. It is recommended to
+      CDK threading support has been deprecated. It is recommended to
       use g_idle_add(), g_main_context_invoke() and similar funtions
       to make all CTK+ calls from the main thread.
     </para>
@@ -135,7 +135,7 @@
     <title>Changes in CTK+ 3.10</title>
 
     <para>
-      GDK has been changed to allow only a single screen per display.
+      CDK has been changed to allow only a single screen per display.
       Only the X11 backend had multiple screens before, and multi-screen
       setups (not multi-monitor!) are very rare nowadays. If you really
       need multiple X screens, open them as separate displays.

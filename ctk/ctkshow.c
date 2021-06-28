@@ -122,7 +122,7 @@ window_handle_exported (CtkWindow  *window,
  *
  * Ideally the timestamp is taken from the event triggering
  * the ctk_show_uri() call. If timestamp is not known you can take
- * %GDK_CURRENT_TIME.
+ * %CDK_CURRENT_TIME.
  *
  * This is the recommended call to be used as it passes information
  * necessary for sandbox helpers to parent their dialogs properly.

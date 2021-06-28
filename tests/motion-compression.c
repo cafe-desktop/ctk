@@ -44,7 +44,7 @@ main (int argc, char **argv)
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
   ctk_window_set_default_size (CTK_WINDOW (window), 300, 300);
   ctk_widget_set_app_paintable (window, TRUE);
-  ctk_widget_add_events (window, GDK_POINTER_MOTION_MASK);
+  ctk_widget_add_events (window, CDK_POINTER_MOTION_MASK);
   ctk_widget_set_app_paintable (window, TRUE);
 
   vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);

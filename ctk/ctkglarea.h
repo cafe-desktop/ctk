@@ -79,61 +79,61 @@ struct _CtkGLAreaClass
   gpointer _padding[6];
 };
 
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 GType ctk_gl_area_get_type (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 CtkWidget *     ctk_gl_area_new                         (void);
 
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 void            ctk_gl_area_set_use_es                  (CtkGLArea    *area,
                                                          gboolean      use_es);
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 gboolean        ctk_gl_area_get_use_es                  (CtkGLArea    *area);
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 void            ctk_gl_area_set_required_version        (CtkGLArea    *area,
                                                          gint          major,
                                                          gint          minor);
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 void            ctk_gl_area_get_required_version        (CtkGLArea    *area,
                                                          gint         *major,
                                                          gint         *minor);
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 gboolean        ctk_gl_area_get_has_alpha               (CtkGLArea    *area);
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 void            ctk_gl_area_set_has_alpha               (CtkGLArea    *area,
                                                          gboolean      has_alpha);
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 gboolean        ctk_gl_area_get_has_depth_buffer        (CtkGLArea    *area);
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 void            ctk_gl_area_set_has_depth_buffer        (CtkGLArea    *area,
                                                          gboolean      has_depth_buffer);
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 gboolean        ctk_gl_area_get_has_stencil_buffer      (CtkGLArea    *area);
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 void            ctk_gl_area_set_has_stencil_buffer      (CtkGLArea    *area,
                                                          gboolean      has_stencil_buffer);
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 gboolean        ctk_gl_area_get_auto_render             (CtkGLArea    *area);
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 void            ctk_gl_area_set_auto_render             (CtkGLArea    *area,
                                                          gboolean      auto_render);
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 void           ctk_gl_area_queue_render                 (CtkGLArea    *area);
 
 
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 CdkGLContext *  ctk_gl_area_get_context                 (CtkGLArea    *area);
 
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 void            ctk_gl_area_make_current                (CtkGLArea    *area);
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 void            ctk_gl_area_attach_buffers              (CtkGLArea    *area);
 
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 void            ctk_gl_area_set_error                   (CtkGLArea    *area,
                                                          const GError *error);
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 GError *        ctk_gl_area_get_error                   (CtkGLArea    *area);
 
 G_END_DECLS

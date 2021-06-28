@@ -17,8 +17,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_QUARTZ_DND__
-#define __GDK_QUARTZ_DND__
+#ifndef __CDK_QUARTZ_DND__
+#define __CDK_QUARTZ_DND__
 
 #include <cdkdndprivate.h>
 
@@ -41,4 +41,4 @@ struct _CdkQuartzDragContextClass
 
 G_END_DECLS
 
-#endif /* __GDK_QUARTZ_DND__ */
+#endif /* __CDK_QUARTZ_DND__ */

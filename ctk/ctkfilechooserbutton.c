@@ -503,7 +503,7 @@ ctk_file_chooser_button_init (CtkFileChooserButton *button)
   ctk_drag_dest_set (CTK_WIDGET (button),
                      (CTK_DEST_DEFAULT_ALL),
 		     NULL, 0,
-		     GDK_ACTION_COPY);
+		     CDK_ACTION_COPY);
   target_list = ctk_target_list_new (NULL, 0);
   ctk_target_list_add_uri_targets (target_list, TEXT_URI_LIST);
   ctk_target_list_add_text_targets (target_list, TEXT_PLAIN);

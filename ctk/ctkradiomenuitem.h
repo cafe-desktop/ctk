@@ -70,32 +70,32 @@ struct _CtkRadioMenuItemClass
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType      ctk_radio_menu_item_get_type	         (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_radio_menu_item_new                           (GSList           *group);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_radio_menu_item_new_with_label                (GSList           *group,
 							      const gchar      *label);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_radio_menu_item_new_with_mnemonic             (GSList           *group,
 							      const gchar      *label);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_radio_menu_item_new_from_widget               (CtkRadioMenuItem *group);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *ctk_radio_menu_item_new_with_mnemonic_from_widget (CtkRadioMenuItem *group,
 							      const gchar      *label);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *ctk_radio_menu_item_new_with_label_from_widget    (CtkRadioMenuItem *group,
 							      const gchar      *label);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GSList*    ctk_radio_menu_item_get_group                     (CtkRadioMenuItem *radio_menu_item);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_radio_menu_item_set_group                     (CtkRadioMenuItem *radio_menu_item,
 							      GSList           *group);
 
-GDK_AVAILABLE_IN_3_18
+CDK_AVAILABLE_IN_3_18
 void       ctk_radio_menu_item_join_group                    (CtkRadioMenuItem *radio_menu_item,
                                                               CtkRadioMenuItem *group_source);
 

@@ -317,7 +317,7 @@ property_query_event (CtkWidget *widget,
 {
   CtkInspectorWindow *iw = (CtkInspectorWindow *)data;
 
-  if (event->type == GDK_BUTTON_RELEASE)
+  if (event->type == CDK_BUTTON_RELEASE)
     {
       g_signal_handlers_disconnect_by_func (widget, property_query_event, data);
       ctk_grab_remove (widget);
@@ -327,15 +327,15 @@ property_query_event (CtkWidget *widget,
 
       on_inspect_widget (widget, event, data);
     }
-  else if (event->type == GDK_MOTION_NOTIFY)
+  else if (event->type == CDK_MOTION_NOTIFY)
     {
       on_highlight_widget (widget, event, data);
     }
-  else if (event->type == GDK_KEY_PRESS)
+  else if (event->type == CDK_KEY_PRESS)
     {
       CdkEventKey *ke = (CdkEventKey*)event;
 
-      if (ke->keyval == GDK_KEY_Escape)
+      if (ke->keyval == CDK_KEY_Escape)
         {
           g_signal_handlers_disconnect_by_func (widget, property_query_event, data);
           ctk_grab_remove (widget);
@@ -362,11 +362,11 @@ ctk_inspector_on_inspect (CtkWidget          *button,
     {
       iw->invisible = ctk_invisible_new_for_screen (cdk_screen_get_default ());
       ctk_widget_add_events (iw->invisible,
-                             GDK_POINTER_MOTION_MASK |
-                             GDK_BUTTON_PRESS_MASK |
-                             GDK_BUTTON_RELEASE_MASK |
-                             GDK_KEY_PRESS_MASK |
-                             GDK_KEY_RELEASE_MASK);
+                             CDK_POINTER_MOTION_MASK |
+                             CDK_BUTTON_PRESS_MASK |
+                             CDK_BUTTON_RELEASE_MASK |
+                             CDK_KEY_PRESS_MASK |
+                             CDK_KEY_RELEASE_MASK);
       ctk_widget_realize (iw->invisible);
       ctk_widget_show (iw->invisible);
     }
@@ -375,10 +375,10 @@ ctk_inspector_on_inspect (CtkWidget          *button,
   cursor = cdk_cursor_new_from_name (display, "crosshair");
   status = cdk_seat_grab (cdk_display_get_default_seat (display),
                           ctk_widget_get_window (iw->invisible),
-                          GDK_SEAT_CAPABILITY_ALL_POINTING, TRUE,
+                          CDK_SEAT_CAPABILITY_ALL_POINTING, TRUE,
                           cursor, NULL, NULL, NULL);
   g_object_unref (cursor);
-  iw->grabbed = status == GDK_GRAB_SUCCESS;
+  iw->grabbed = status == CDK_GRAB_SUCCESS;
 
   g_signal_connect (iw->invisible, "event", G_CALLBACK (property_query_event), iw);
 

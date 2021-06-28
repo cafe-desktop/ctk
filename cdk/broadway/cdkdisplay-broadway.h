@@ -19,8 +19,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_BROADWAY_DISPLAY__
-#define __GDK_BROADWAY_DISPLAY__
+#ifndef __CDK_BROADWAY_DISPLAY__
+#define __CDK_BROADWAY_DISPLAY__
 
 #include "cdkbroadwaydisplay.h"
 
@@ -68,4 +68,4 @@ struct _CdkBroadwayDisplayClass
 
 G_END_DECLS
 
-#endif				/* __GDK_BROADWAY_DISPLAY__ */
+#endif				/* __CDK_BROADWAY_DISPLAY__ */

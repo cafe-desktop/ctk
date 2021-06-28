@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2010 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_X11_DND_H__
-#define __GDK_X11_DND_H__
+#ifndef __CDK_X11_DND_H__
+#define __CDK_X11_DND_H__
 
-#if !defined (__GDKX_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined (__CDKX_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdkx.h> can be included directly."
 #endif
 
@@ -26,23 +26,23 @@
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_X11_DRAG_CONTEXT              (cdk_x11_drag_context_get_type ())
-#define GDK_X11_DRAG_CONTEXT(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_X11_DRAG_CONTEXT, CdkX11DragContext))
-#define GDK_X11_DRAG_CONTEXT_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_X11_DRAG_CONTEXT, CdkX11DragContextClass))
-#define GDK_IS_X11_DRAG_CONTEXT(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_X11_DRAG_CONTEXT))
-#define GDK_IS_X11_DRAG_CONTEXT_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_X11_DRAG_CONTEXT))
-#define GDK_X11_DRAG_CONTEXT_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_X11_DRAG_CONTEXT, CdkX11DragContextClass))
+#define CDK_TYPE_X11_DRAG_CONTEXT              (cdk_x11_drag_context_get_type ())
+#define CDK_X11_DRAG_CONTEXT(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), CDK_TYPE_X11_DRAG_CONTEXT, CdkX11DragContext))
+#define CDK_X11_DRAG_CONTEXT_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CDK_TYPE_X11_DRAG_CONTEXT, CdkX11DragContextClass))
+#define CDK_IS_X11_DRAG_CONTEXT(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), CDK_TYPE_X11_DRAG_CONTEXT))
+#define CDK_IS_X11_DRAG_CONTEXT_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CDK_TYPE_X11_DRAG_CONTEXT))
+#define CDK_X11_DRAG_CONTEXT_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CDK_TYPE_X11_DRAG_CONTEXT, CdkX11DragContextClass))
 
-#ifdef GDK_COMPILATION
+#ifdef CDK_COMPILATION
 typedef struct _CdkX11DragContext CdkX11DragContext;
 #else
 typedef CdkDragContext CdkX11DragContext;
 #endif
 typedef struct _CdkX11DragContextClass CdkX11DragContextClass;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType    cdk_x11_drag_context_get_type (void);
 
 G_END_DECLS
 
-#endif /* __GDK_X11_DRAG_CONTEXT_H__ */
+#endif /* __CDK_X11_DRAG_CONTEXT_H__ */

@@ -74,31 +74,31 @@ struct _CtkViewportClass
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType          ctk_viewport_get_type        (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget*     ctk_viewport_new             (CtkAdjustment *hadjustment,
 					     CtkAdjustment *vadjustment);
 
-GDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_get_hadjustment)
+CDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_get_hadjustment)
 CtkAdjustment* ctk_viewport_get_hadjustment (CtkViewport   *viewport);
-GDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_get_vadjustment)
+CDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_get_vadjustment)
 CtkAdjustment* ctk_viewport_get_vadjustment (CtkViewport   *viewport);
-GDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_set_hadjustment)
+CDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_set_hadjustment)
 void           ctk_viewport_set_hadjustment (CtkViewport   *viewport,
                                              CtkAdjustment *adjustment);
-GDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_set_vadjustment)
+CDK_DEPRECATED_IN_3_0_FOR(ctk_scrollable_set_vadjustment)
 void           ctk_viewport_set_vadjustment (CtkViewport   *viewport,
                                              CtkAdjustment *adjustment);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_viewport_set_shadow_type (CtkViewport   *viewport,
 					     CtkShadowType  type);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkShadowType  ctk_viewport_get_shadow_type (CtkViewport   *viewport);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkWindow*     ctk_viewport_get_bin_window  (CtkViewport   *viewport);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkWindow*     ctk_viewport_get_view_window (CtkViewport   *viewport);
 
 

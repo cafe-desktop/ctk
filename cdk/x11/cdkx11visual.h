@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -22,10 +22,10 @@
  * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
-#ifndef __GDK_X11_VISUAL_H__
-#define __GDK_X11_VISUAL_H__
+#ifndef __CDK_X11_VISUAL_H__
+#define __CDK_X11_VISUAL_H__
 
-#if !defined (__GDKX_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined (__CDKX_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdkx.h> can be included directly."
 #endif
 
@@ -36,32 +36,32 @@
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_X11_VISUAL              (cdk_x11_visual_get_type ())
-#define GDK_X11_VISUAL(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_X11_VISUAL, CdkX11Visual))
-#define GDK_X11_VISUAL_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_X11_VISUAL, CdkX11VisualClass))
-#define GDK_IS_X11_VISUAL(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_X11_VISUAL))
-#define GDK_IS_X11_VISUAL_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_X11_VISUAL))
-#define GDK_X11_VISUAL_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_X11_VISUAL, CdkX11VisualClass))
+#define CDK_TYPE_X11_VISUAL              (cdk_x11_visual_get_type ())
+#define CDK_X11_VISUAL(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), CDK_TYPE_X11_VISUAL, CdkX11Visual))
+#define CDK_X11_VISUAL_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CDK_TYPE_X11_VISUAL, CdkX11VisualClass))
+#define CDK_IS_X11_VISUAL(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), CDK_TYPE_X11_VISUAL))
+#define CDK_IS_X11_VISUAL_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CDK_TYPE_X11_VISUAL))
+#define CDK_X11_VISUAL_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CDK_TYPE_X11_VISUAL, CdkX11VisualClass))
 
-#ifdef GDK_COMPILATION
+#ifdef CDK_COMPILATION
 typedef struct _CdkX11Visual CdkX11Visual;
 #else
 typedef CdkVisual CdkX11Visual;
 #endif
 typedef struct _CdkX11VisualClass CdkX11VisualClass;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType    cdk_x11_visual_get_type          (void);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 Visual * cdk_x11_visual_get_xvisual       (CdkVisual   *visual);
 
-#define GDK_VISUAL_XVISUAL(visual)    (cdk_x11_visual_get_xvisual (visual))
+#define CDK_VISUAL_XVISUAL(visual)    (cdk_x11_visual_get_xvisual (visual))
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkVisual* cdk_x11_screen_lookup_visual (CdkScreen *screen,
                                          VisualID   xvisualid);
 
 G_END_DECLS
 
-#endif /* __GDK_X11_VISUAL_H__ */
+#endif /* __CDK_X11_VISUAL_H__ */

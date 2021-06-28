@@ -132,20 +132,20 @@ msgid "Default Display"
 msgstr "Schermi predefinît"
 
 #: cdk/cdkdisplaymanager.c:163
-msgid "The default display for GDK"
-msgstr "Il schermi predefinît par GDK"
+msgid "The default display for CDK"
+msgstr "Il schermi predefinît par CDK"
 
 #: cdk/cdkglcontext.c:318
-msgid "The GDK display used to create the GL context"
-msgstr "Il display GDK doprât par creâ il contest GL"
+msgid "The CDK display used to create the GL context"
+msgstr "Il display CDK doprât par creâ il contest GL"
 
 #: cdk/cdkglcontext.c:333 ctk/ctkwidget.c:1347
 msgid "Window"
 msgstr "Barcon"
 
 #: cdk/cdkglcontext.c:334
-msgid "The GDK window bound to the GL context"
-msgstr "Il barcon GDK leât al contest GL"
+msgid "The CDK window bound to the GL context"
+msgstr "Il barcon CDK leât al contest GL"
 
 #: cdk/cdkglcontext.c:349
 msgid "Shared context"

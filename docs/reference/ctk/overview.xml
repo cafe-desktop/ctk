@@ -80,10 +80,10 @@ Use a CdkPixbuf in combination with CtkImage to display images.
 </varlistentry>
 
 <varlistentry>
-<term>GDK</term>
+<term>CDK</term>
 <listitem><para>
-GDK is the abstraction layer that allows CTK+ to support multiple
-windowing systems. GDK provides window system facilities on X11, Windows,
+CDK is the abstraction layer that allows CTK+ to support multiple
+windowing systems. CDK provides window system facilities on X11, Windows,
 and OS X.
 </para></listitem>
 </varlistentry>

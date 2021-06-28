@@ -61,90 +61,90 @@ struct _CtkListStoreClass
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType         ctk_list_store_get_type         (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkListStore *ctk_list_store_new              (gint          n_columns,
 					       ...);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkListStore *ctk_list_store_newv             (gint          n_columns,
 					       GType        *types);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_list_store_set_column_types (CtkListStore *list_store,
 					       gint          n_columns,
 					       GType        *types);
 
 /* NOTE: use ctk_tree_model_get to get values from a CtkListStore */
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_list_store_set_value        (CtkListStore *list_store,
 					       CtkTreeIter  *iter,
 					       gint          column,
 					       GValue       *value);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_list_store_set              (CtkListStore *list_store,
 					       CtkTreeIter  *iter,
 					       ...);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_list_store_set_valuesv      (CtkListStore *list_store,
 					       CtkTreeIter  *iter,
 					       gint         *columns,
 					       GValue       *values,
 					       gint          n_values);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_list_store_set_valist       (CtkListStore *list_store,
 					       CtkTreeIter  *iter,
 					       va_list       var_args);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean      ctk_list_store_remove           (CtkListStore *list_store,
 					       CtkTreeIter  *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_list_store_insert           (CtkListStore *list_store,
 					       CtkTreeIter  *iter,
 					       gint          position);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_list_store_insert_before    (CtkListStore *list_store,
 					       CtkTreeIter  *iter,
 					       CtkTreeIter  *sibling);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_list_store_insert_after     (CtkListStore *list_store,
 					       CtkTreeIter  *iter,
 					       CtkTreeIter  *sibling);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_list_store_insert_with_values  (CtkListStore *list_store,
 						  CtkTreeIter  *iter,
 						  gint          position,
 						  ...);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_list_store_insert_with_valuesv (CtkListStore *list_store,
 						  CtkTreeIter  *iter,
 						  gint          position,
 						  gint         *columns,
 						  GValue       *values,
 						  gint          n_values);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_list_store_prepend          (CtkListStore *list_store,
 					       CtkTreeIter  *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_list_store_append           (CtkListStore *list_store,
 					       CtkTreeIter  *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_list_store_clear            (CtkListStore *list_store);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean      ctk_list_store_iter_is_valid    (CtkListStore *list_store,
                                                CtkTreeIter  *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_list_store_reorder          (CtkListStore *store,
                                                gint         *new_order);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_list_store_swap             (CtkListStore *store,
                                                CtkTreeIter  *a,
                                                CtkTreeIter  *b);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_list_store_move_after       (CtkListStore *store,
                                                CtkTreeIter  *iter,
                                                CtkTreeIter  *position);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_list_store_move_before      (CtkListStore *store,
                                                CtkTreeIter  *iter,
                                                CtkTreeIter  *position);

@@ -182,46 +182,46 @@ struct _CtkCellRendererClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType              ctk_cell_renderer_get_type       (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkSizeRequestMode ctk_cell_renderer_get_request_mode               (CtkCellRenderer    *cell);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void               ctk_cell_renderer_get_preferred_width            (CtkCellRenderer    *cell,
                                                                      CtkWidget          *widget,
                                                                      gint               *minimum_size,
                                                                      gint               *natural_size);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void               ctk_cell_renderer_get_preferred_height_for_width (CtkCellRenderer    *cell,
                                                                      CtkWidget          *widget,
                                                                      gint                width,
                                                                      gint               *minimum_height,
                                                                      gint               *natural_height);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void               ctk_cell_renderer_get_preferred_height           (CtkCellRenderer    *cell,
                                                                      CtkWidget          *widget,
                                                                      gint               *minimum_size,
                                                                      gint               *natural_size);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void               ctk_cell_renderer_get_preferred_width_for_height (CtkCellRenderer    *cell,
                                                                      CtkWidget          *widget,
                                                                      gint                height,
                                                                      gint               *minimum_width,
                                                                      gint               *natural_width);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void               ctk_cell_renderer_get_preferred_size             (CtkCellRenderer    *cell,
                                                                      CtkWidget          *widget,
                                                                      CtkRequisition     *minimum_size,
                                                                      CtkRequisition     *natural_size);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void               ctk_cell_renderer_get_aligned_area               (CtkCellRenderer    *cell,
 								     CtkWidget          *widget,
 								     CtkCellRendererState flags,
 								     const CdkRectangle *cell_area,
 								     CdkRectangle       *aligned_area);
 
-GDK_DEPRECATED_IN_3_0_FOR(ctk_cell_renderer_get_preferred_size)
+CDK_DEPRECATED_IN_3_0_FOR(ctk_cell_renderer_get_preferred_size)
 void             ctk_cell_renderer_get_size       (CtkCellRenderer      *cell,
                                                    CtkWidget            *widget,
                                                    const CdkRectangle   *cell_area,
@@ -229,14 +229,14 @@ void             ctk_cell_renderer_get_size       (CtkCellRenderer      *cell,
                                                    gint                 *y_offset,
                                                    gint                 *width,
                                                    gint                 *height);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_cell_renderer_render         (CtkCellRenderer      *cell,
                                                    cairo_t              *cr,
 						   CtkWidget            *widget,
 						   const CdkRectangle   *background_area,
 						   const CdkRectangle   *cell_area,
 						   CtkCellRendererState  flags);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean         ctk_cell_renderer_activate       (CtkCellRenderer      *cell,
 						   CdkEvent             *event,
 						   CtkWidget            *widget,
@@ -244,7 +244,7 @@ gboolean         ctk_cell_renderer_activate       (CtkCellRenderer      *cell,
 						   const CdkRectangle   *background_area,
 						   const CdkRectangle   *cell_area,
 						   CtkCellRendererState  flags);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkCellEditable *ctk_cell_renderer_start_editing  (CtkCellRenderer      *cell,
 						   CdkEvent             *event,
 						   CtkWidget            *widget,
@@ -253,50 +253,50 @@ CtkCellEditable *ctk_cell_renderer_start_editing  (CtkCellRenderer      *cell,
 						   const CdkRectangle   *cell_area,
 						   CtkCellRendererState  flags);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_cell_renderer_set_fixed_size (CtkCellRenderer      *cell,
 						   gint                  width,
 						   gint                  height);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_cell_renderer_get_fixed_size (CtkCellRenderer      *cell,
 						   gint                 *width,
 						   gint                 *height);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_cell_renderer_set_alignment  (CtkCellRenderer      *cell,
                                                    gfloat                xalign,
                                                    gfloat                yalign);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_cell_renderer_get_alignment  (CtkCellRenderer      *cell,
                                                    gfloat               *xalign,
                                                    gfloat               *yalign);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_cell_renderer_set_padding    (CtkCellRenderer      *cell,
                                                    gint                  xpad,
                                                    gint                  ypad);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_cell_renderer_get_padding    (CtkCellRenderer      *cell,
                                                    gint                 *xpad,
                                                    gint                 *ypad);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_cell_renderer_set_visible    (CtkCellRenderer      *cell,
                                                    gboolean              visible);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean         ctk_cell_renderer_get_visible    (CtkCellRenderer      *cell);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_cell_renderer_set_sensitive  (CtkCellRenderer      *cell,
                                                    gboolean              sensitive);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean         ctk_cell_renderer_get_sensitive  (CtkCellRenderer      *cell);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean         ctk_cell_renderer_is_activatable (CtkCellRenderer      *cell);
 
 /* For use by cell renderer implementations only */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_cell_renderer_stop_editing   (CtkCellRenderer      *cell,
                                                    gboolean              canceled);
 
@@ -309,12 +309,12 @@ void            _ctk_cell_renderer_calc_offset    (CtkCellRenderer      *cell,
                                                    gint                 *x_offset,
                                                    gint                 *y_offset);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkStateFlags   ctk_cell_renderer_get_state       (CtkCellRenderer      *cell,
                                                    CtkWidget            *widget,
                                                    CtkCellRendererState  cell_state);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void            ctk_cell_renderer_class_set_accessible_type 
                                                   (CtkCellRendererClass *renderer_class,
                                                    GType                 type);

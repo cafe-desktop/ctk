@@ -435,7 +435,7 @@ setup_image_dnd (CtkWidget *image)
   CtkWidget *parent;
 
   parent = ctk_widget_get_parent (image);
-  ctk_drag_source_set (parent, GDK_BUTTON1_MASK, NULL, 0, GDK_ACTION_COPY);
+  ctk_drag_source_set (parent, CDK_BUTTON1_MASK, NULL, 0, CDK_ACTION_COPY);
   ctk_drag_source_add_image_targets (parent);
   g_signal_connect (parent, "drag-data-get", G_CALLBACK (get_image_data), NULL);
 }
@@ -446,9 +446,9 @@ setup_scalable_image_dnd (CtkWidget *image)
   CtkWidget *parent;
 
   parent = ctk_widget_get_parent (image);
-  ctk_drag_source_set (parent, GDK_BUTTON1_MASK,
+  ctk_drag_source_set (parent, CDK_BUTTON1_MASK,
                        target_table, G_N_ELEMENTS (target_table),
-                       GDK_ACTION_COPY);
+                       CDK_ACTION_COPY);
 
   g_signal_connect (parent, "drag-data-get", G_CALLBACK (get_scalable_image_data), NULL);
 }
@@ -468,9 +468,9 @@ icon_browser_window_init (IconBrowserWindow *win)
   ctk_target_list_unref (list);
 
   ctk_icon_view_enable_model_drag_source (CTK_ICON_VIEW (win->list),
-                                          GDK_BUTTON1_MASK,
+                                          CDK_BUTTON1_MASK,
                                           targets, n_targets,
-                                          GDK_ACTION_COPY);
+                                          CDK_ACTION_COPY);
 
   ctk_target_table_free (targets, n_targets);
 

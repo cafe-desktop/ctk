@@ -66,8 +66,8 @@ msgstr "AFICHATGE"
 
 #. Description of --cdk-debug=FLAGS in --help output
 #: cdk/cdk.c:241
-msgid "GDK debugging flags to set"
-msgstr "Bandièras de desbugatge GDK de definir"
+msgid "CDK debugging flags to set"
+msgstr "Bandièras de desbugatge CDK de definir"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
@@ -79,12 +79,12 @@ msgstr "BANDIÈRAS"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: cdk/cdk.c:244
-msgid "GDK debugging flags to unset"
-msgstr "Bandièras de desbugatge GDK de definir pas"
+msgid "CDK debugging flags to unset"
+msgstr "Bandièras de desbugatge CDK de definir pas"
 
 #: cdk/cdkwindow.c:2766
-msgid "GL support disabled via GDK_DEBUG"
-msgstr "Presa en carga de GL desactivada via GDK_DEBUG"
+msgid "GL support disabled via CDK_DEBUG"
+msgstr "Presa en carga de GL desactivada via CDK_DEBUG"
 
 #: cdk/cdkwindow.c:2777
 #, fuzzy
@@ -3923,8 +3923,8 @@ msgid "CTK+ Version"
 msgstr "Version de CTK+"
 
 #: ctk/inspector/general.ui:68
-msgid "GDK Backend"
-msgstr "Motor GDK"
+msgid "CDK Backend"
+msgstr "Motor CDK"
 
 #: ctk/inspector/general.ui:373
 msgid "Display"
@@ -4301,10 +4301,10 @@ msgstr "Lo paramètre es immobilizat per CTK_TEST_TOUCHSCREEN"
 #: ctk/inspector/visual.c:752
 msgid ""
 "Not settable at runtime.\n"
-"Use GDK_GL=always or GDK_GL=disable instead"
+"Use CDK_GL=always or CDK_GL=disable instead"
 msgstr ""
 "Pas definitssable en cors de foncionament.\n"
-"Utilizatz puslèu GDK_GL=always o GDK_GL=disable"
+"Utilizatz puslèu CDK_GL=always o CDK_GL=disable"
 
 #: ctk/inspector/visual.c:766 ctk/inspector/visual.c:767
 #: ctk/inspector/visual.c:768

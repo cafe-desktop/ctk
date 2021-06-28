@@ -92,10 +92,10 @@ typedef enum
   CTK_BUTTONS_OK_CANCEL
 } CtkButtonsType;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType      ctk_message_dialog_get_type (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_message_dialog_new      (CtkWindow      *parent,
                                         CtkDialogFlags  flags,
                                         CtkMessageType  type,
@@ -103,7 +103,7 @@ CtkWidget* ctk_message_dialog_new      (CtkWindow      *parent,
                                         const gchar    *message_format,
                                         ...) G_GNUC_PRINTF (5, 6);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_message_dialog_new_with_markup   (CtkWindow      *parent,
                                                  CtkDialogFlags  flags,
                                                  CtkMessageType  type,
@@ -111,28 +111,28 @@ CtkWidget* ctk_message_dialog_new_with_markup   (CtkWindow      *parent,
                                                  const gchar    *message_format,
                                                  ...) G_GNUC_PRINTF (5, 6);
 
-GDK_DEPRECATED_IN_3_12
+CDK_DEPRECATED_IN_3_12
 void       ctk_message_dialog_set_image    (CtkMessageDialog *dialog,
 					    CtkWidget        *image);
 
-GDK_DEPRECATED_IN_3_12
+CDK_DEPRECATED_IN_3_12
 CtkWidget * ctk_message_dialog_get_image   (CtkMessageDialog *dialog);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_message_dialog_set_markup  (CtkMessageDialog *message_dialog,
                                            const gchar      *str);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_message_dialog_format_secondary_text (CtkMessageDialog *message_dialog,
                                                      const gchar      *message_format,
                                                      ...) G_GNUC_PRINTF (2, 3);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_message_dialog_format_secondary_markup (CtkMessageDialog *message_dialog,
                                                        const gchar      *message_format,
                                                        ...) G_GNUC_PRINTF (2, 3);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *ctk_message_dialog_get_message_area (CtkMessageDialog *message_dialog);
 
 G_END_DECLS

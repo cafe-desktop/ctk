@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -22,10 +22,10 @@
  * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
-#ifndef __GDK_COLOR_H__
-#define __GDK_COLOR_H__
+#ifndef __CDK_COLOR_H__
+#define __CDK_COLOR_H__
 
-#if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined (__CDK_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdk.h> can be included directly."
 #endif
 
@@ -59,29 +59,29 @@ struct _CdkColor
   guint16 blue;
 };
 
-#define GDK_TYPE_COLOR (cdk_color_get_type ())
+#define CDK_TYPE_COLOR (cdk_color_get_type ())
 
-GDK_DEPRECATED_IN_3_14_FOR(cdk_rgba_get_type)
+CDK_DEPRECATED_IN_3_14_FOR(cdk_rgba_get_type)
 GType     cdk_color_get_type (void) G_GNUC_CONST;
 
-GDK_DEPRECATED_IN_3_14_FOR(cdk_rgba_copy)
+CDK_DEPRECATED_IN_3_14_FOR(cdk_rgba_copy)
 CdkColor *cdk_color_copy      (const CdkColor *color);
-GDK_DEPRECATED_IN_3_14_FOR(cdk_rgba_free)
+CDK_DEPRECATED_IN_3_14_FOR(cdk_rgba_free)
 void      cdk_color_free      (CdkColor       *color);
 
-GDK_DEPRECATED_IN_3_14_FOR(cdk_rgba_hash)
+CDK_DEPRECATED_IN_3_14_FOR(cdk_rgba_hash)
 guint     cdk_color_hash      (const CdkColor *color);
-GDK_DEPRECATED_IN_3_14_FOR(cdk_rgba_equal)
+CDK_DEPRECATED_IN_3_14_FOR(cdk_rgba_equal)
 gboolean  cdk_color_equal     (const CdkColor *colora,
                                const CdkColor *colorb);
 
-GDK_DEPRECATED_IN_3_14_FOR(cdk_rgba_parse)
+CDK_DEPRECATED_IN_3_14_FOR(cdk_rgba_parse)
 gboolean  cdk_color_parse     (const gchar    *spec,
                                CdkColor       *color);
-GDK_DEPRECATED_IN_3_14_FOR(cdk_rgba_to_string)
+CDK_DEPRECATED_IN_3_14_FOR(cdk_rgba_to_string)
 gchar *   cdk_color_to_string (const CdkColor *color);
 
 
 G_END_DECLS
 
-#endif /* __GDK_COLOR_H__ */
+#endif /* __CDK_COLOR_H__ */

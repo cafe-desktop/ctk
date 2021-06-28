@@ -140,10 +140,10 @@ ctk_drag_dest_set_internal (CtkWidget       *widget,
  *
  *   cdk_window_get_pointer (ctk_widget_get_window (widget),
  *                           NULL, NULL, &mask);
- *   if (mask & GDK_CONTROL_MASK)
- *     cdk_drag_status (context, GDK_ACTION_COPY, time);
+ *   if (mask & CDK_CONTROL_MASK)
+ *     cdk_drag_status (context, CDK_ACTION_COPY, time);
  *   else
- *     cdk_drag_status (context, GDK_ACTION_MOVE, time);
+ *     cdk_drag_status (context, CDK_ACTION_MOVE, time);
  * }
  * ]|
  */
@@ -197,7 +197,7 @@ ctk_drag_dest_set_proxy (CtkWidget       *widget,
   CtkDragDestSite *site;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
-  g_return_if_fail (!proxy_window || GDK_IS_WINDOW (proxy_window));
+  g_return_if_fail (!proxy_window || CDK_IS_WINDOW (proxy_window));
 
   site = g_slice_new (CtkDragDestSite);
 
@@ -447,14 +447,14 @@ ctk_drag_dest_get_track_motion (CtkWidget *widget)
  *
  * Looks for a match between the supported targets of @context and the
  * @dest_target_list, returning the first matching target, otherwise
- * returning %GDK_NONE. @dest_target_list should usually be the return
+ * returning %CDK_NONE. @dest_target_list should usually be the return
  * value from ctk_drag_dest_get_target_list(), but some widgets may
  * have different valid targets for different parts of the widget; in
  * that case, they will have to implement a drag_motion handler that
  * passes the correct target list to this function.
  *
  * Returns: (transfer none): first target that the source offers
- *     and the dest can accept, or %GDK_NONE
+ *     and the dest can accept, or %CDK_NONE
  */
 CdkAtom
 ctk_drag_dest_find_target (CtkWidget      *widget,
@@ -465,15 +465,15 @@ ctk_drag_dest_find_target (CtkWidget      *widget,
   GList *tmp_source = NULL;
   CtkWidget *source_widget;
 
-  g_return_val_if_fail (CTK_IS_WIDGET (widget), GDK_NONE);
-  g_return_val_if_fail (GDK_IS_DRAG_CONTEXT (context), GDK_NONE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), CDK_NONE);
+  g_return_val_if_fail (CDK_IS_DRAG_CONTEXT (context), CDK_NONE);
 
   source_widget = ctk_drag_get_source_widget (context);
   if (target_list == NULL)
     target_list = ctk_drag_dest_get_target_list (widget);
 
   if (target_list == NULL)
-    return GDK_NONE;
+    return CDK_NONE;
 
   tmp_target = target_list->list;
   while (tmp_target)
@@ -497,6 +497,6 @@ ctk_drag_dest_find_target (CtkWidget      *widget,
       tmp_target = tmp_target->next;
     }
 
-  return GDK_NONE;
+  return CDK_NONE;
 }
 

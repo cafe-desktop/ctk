@@ -44,7 +44,7 @@ typedef enum
   CTK_PRINT_BACKEND_ERROR_GENERIC
 } CtkPrintBackendError;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GQuark     ctk_print_backend_error_quark      (void);
 
 #define CTK_TYPE_PRINT_BACKEND                  (ctk_print_backend_get_type ())
@@ -146,28 +146,28 @@ struct _CtkPrintBackendClass
   void (*_ctk_reserved3) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType   ctk_print_backend_get_type       (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GList      *ctk_print_backend_get_printer_list     (CtkPrintBackend         *print_backend);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean    ctk_print_backend_printer_list_is_done (CtkPrintBackend         *print_backend);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkPrinter *ctk_print_backend_find_printer         (CtkPrintBackend         *print_backend,
 						    const gchar             *printer_name);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_print_backend_print_stream         (CtkPrintBackend         *print_backend,
 						    CtkPrintJob             *job,
 						    GIOChannel              *data_io,
 						    CtkPrintJobCompleteFunc  callback,
 						    gpointer                 user_data,
 						    GDestroyNotify           dnotify);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GList *     ctk_print_backend_load_modules         (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_print_backend_destroy              (CtkPrintBackend         *print_backend);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_print_backend_set_password         (CtkPrintBackend         *backend, 
                                                     gchar                  **auth_info_required,
                                                     gchar                  **auth_info,
@@ -175,56 +175,56 @@ void        ctk_print_backend_set_password         (CtkPrintBackend         *bac
 
 /* Backend-only functions for CtkPrintBackend */
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_print_backend_add_printer          (CtkPrintBackend         *print_backend,
 						    CtkPrinter              *printer);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_print_backend_remove_printer       (CtkPrintBackend         *print_backend,
 						    CtkPrinter              *printer);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_print_backend_set_list_done        (CtkPrintBackend         *backend);
 
 
 /* Backend-only functions for CtkPrinter */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean    ctk_printer_is_new                (CtkPrinter      *printer);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_printer_set_accepts_pdf       (CtkPrinter      *printer,
 					       gboolean         val);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_printer_set_accepts_ps        (CtkPrinter      *printer,
 					       gboolean         val);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_printer_set_is_new            (CtkPrinter      *printer,
 					       gboolean         val);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_printer_set_is_active         (CtkPrinter      *printer,
 					       gboolean         val);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean    ctk_printer_set_is_paused         (CtkPrinter      *printer,
 					       gboolean         val);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean    ctk_printer_set_is_accepting_jobs (CtkPrinter      *printer,
 					       gboolean         val);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_printer_set_has_details       (CtkPrinter      *printer,
 					       gboolean         val);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_printer_set_is_default        (CtkPrinter      *printer,
 					       gboolean         val);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_printer_set_icon_name         (CtkPrinter      *printer,
 					       const gchar     *icon);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean    ctk_printer_set_job_count         (CtkPrinter      *printer,
 					       gint             count);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean    ctk_printer_set_location          (CtkPrinter      *printer,
 					       const gchar     *location);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean    ctk_printer_set_description       (CtkPrinter      *printer,
 					       const gchar     *description);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean    ctk_printer_set_state_message     (CtkPrinter      *printer,
 					       const gchar     *message);
 

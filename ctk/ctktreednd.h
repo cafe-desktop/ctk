@@ -64,23 +64,23 @@ struct _CtkTreeDragSourceIface
                                          CtkTreePath       *path);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType           ctk_tree_drag_source_get_type   (void) G_GNUC_CONST;
 
 /* Returns whether the given row can be dragged */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_tree_drag_source_row_draggable    (CtkTreeDragSource *drag_source,
                                                 CtkTreePath       *path);
 
 /* Deletes the given row, or returns FALSE if it can't */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_tree_drag_source_drag_data_delete (CtkTreeDragSource *drag_source,
                                                 CtkTreePath       *path);
 
 /* Fills in selection_data with type selection_data->target based on
  * the row denoted by path, returns TRUE if it does anything
  */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_tree_drag_source_drag_data_get    (CtkTreeDragSource *drag_source,
                                                 CtkTreePath       *path,
                                                 CtkSelectionData  *selection_data);
@@ -119,20 +119,20 @@ struct _CtkTreeDragDestIface
 				       CtkSelectionData  *selection_data);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType           ctk_tree_drag_dest_get_type   (void) G_GNUC_CONST;
 
 /* Inserts a row before dest which contains data in selection_data,
  * or returns FALSE if it can't
  */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_tree_drag_dest_drag_data_received (CtkTreeDragDest   *drag_dest,
 						CtkTreePath       *dest,
 						CtkSelectionData  *selection_data);
 
 
 /* Returns TRUE if we can drop before path; path may not exist. */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_tree_drag_dest_row_drop_possible  (CtkTreeDragDest   *drag_dest,
 						CtkTreePath       *dest_path,
 						CtkSelectionData  *selection_data);
@@ -141,11 +141,11 @@ gboolean ctk_tree_drag_dest_row_drop_possible  (CtkTreeDragDest   *drag_dest,
 /* The selection data would normally have target type CTK_TREE_MODEL_ROW in this
  * case. If the target is wrong these functions return FALSE.
  */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_tree_set_row_drag_data            (CtkSelectionData  *selection_data,
 						CtkTreeModel      *tree_model,
 						CtkTreePath       *path);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_tree_get_row_drag_data            (CtkSelectionData  *selection_data,
 						CtkTreeModel     **tree_model,
 						CtkTreePath      **path);

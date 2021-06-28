@@ -75,7 +75,7 @@ msgstr "ეკრანი"
 #. Description of --cdk-debug=FLAGS in --help output
 #: cdk/cdk.c:164
 #, fuzzy
-msgid "GDK debugging flags to set"
+msgid "CDK debugging flags to set"
 msgstr "CTK+ გამართვის ალმების მითითება"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
@@ -89,7 +89,7 @@ msgstr "ალმები"
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: cdk/cdk.c:167
 #, fuzzy
-msgid "GDK debugging flags to unset"
+msgid "CDK debugging flags to unset"
 msgstr "CTK+ გამართვის ალმების მოხსნა"
 
 #: cdk/keyname-table.h:3940

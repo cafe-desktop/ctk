@@ -104,44 +104,44 @@ struct _CtkRecentFilterInfo
   gint age;
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType                 ctk_recent_filter_get_type (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkRecentFilter *     ctk_recent_filter_new      (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_recent_filter_set_name (CtkRecentFilter *filter,
 						  const gchar     *name);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *         ctk_recent_filter_get_name (CtkRecentFilter *filter);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_recent_filter_add_mime_type      (CtkRecentFilter      *filter,
 					   const gchar          *mime_type);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_recent_filter_add_pattern        (CtkRecentFilter      *filter,
 					   const gchar          *pattern);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_recent_filter_add_pixbuf_formats (CtkRecentFilter      *filter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_recent_filter_add_application    (CtkRecentFilter      *filter,
 					   const gchar          *application);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_recent_filter_add_group          (CtkRecentFilter      *filter,
 					   const gchar          *group);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_recent_filter_add_age            (CtkRecentFilter      *filter,
 					   gint                  days);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_recent_filter_add_custom         (CtkRecentFilter      *filter,
 					   CtkRecentFilterFlags  needed,
 					   CtkRecentFilterFunc   func,
 					   gpointer              data,
 					   GDestroyNotify        data_destroy);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkRecentFilterFlags ctk_recent_filter_get_needed (CtkRecentFilter           *filter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean             ctk_recent_filter_filter     (CtkRecentFilter           *filter,
 						   const CtkRecentFilterInfo *filter_info);
 

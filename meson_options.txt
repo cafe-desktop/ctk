@@ -1,4 +1,4 @@
-# GDK backends
+# CDK backends
 option('x11_backend', type: 'boolean', value: true,
   description : 'Enable the X11 cdk backend (only when building on Unix)')
 option('wayland_backend', type: 'boolean', value: true,

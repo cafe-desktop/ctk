@@ -38,19 +38,19 @@
 #include "ctkutilsprivate.h"
 #include "ctkintl.h"
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
 #include "x11/cdkx.h"
 #endif
 
-#ifdef GDK_WINDOWING_WAYLAND
+#ifdef CDK_WINDOWING_WAYLAND
 #include "wayland/cdkwayland.h"
 #endif
 
-#ifdef GDK_WINDOWING_BROADWAY
+#ifdef CDK_WINDOWING_BROADWAY
 #include "broadway/cdkbroadway.h"
 #endif
 
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
 #include "win32/cdkwin32.h"
 #endif
 
@@ -58,10 +58,10 @@
 #include <windows.h>
 #endif
 
-#undef GDK_DEPRECATED
-#undef GDK_DEPRECATED_FOR
-#define GDK_DEPRECATED
-#define GDK_DEPRECATED_FOR(f)
+#undef CDK_DEPRECATED
+#undef CDK_DEPRECATED_FOR
+#define CDK_DEPRECATED
+#define CDK_DEPRECATED_FOR(f)
 
 #include "deprecated/ctkrc.h"
 
@@ -695,12 +695,12 @@ match_locale (const gchar *locale,
 static gboolean
 match_backend (CtkIMContextInfo *context)
 {
-#ifdef GDK_WINDOWING_WAYLAND
+#ifdef CDK_WINDOWING_WAYLAND
   if (g_strcmp0 (context->context_id, "wayland") == 0)
     {
       CdkDisplay *display = cdk_display_get_default ();
 
-      return GDK_IS_WAYLAND_DISPLAY (display) &&
+      return CDK_IS_WAYLAND_DISPLAY (display) &&
              cdk_wayland_display_query_registry (display,
                                                  "zwp_text_input_manager_v3");
     }
@@ -708,25 +708,25 @@ match_backend (CtkIMContextInfo *context)
     {
       CdkDisplay *display = cdk_display_get_default ();
 
-      return GDK_IS_WAYLAND_DISPLAY (display) &&
+      return CDK_IS_WAYLAND_DISPLAY (display) &&
              cdk_wayland_display_query_registry (display,
                                                  "ctk_text_input_manager");
     }
 #endif
 
-#ifdef GDK_WINDOWING_BROADWAY
+#ifdef CDK_WINDOWING_BROADWAY
   if (g_strcmp0 (context->context_id, "broadway") == 0)
-    return GDK_IS_BROADWAY_DISPLAY (cdk_display_get_default ());
+    return CDK_IS_BROADWAY_DISPLAY (cdk_display_get_default ());
 #endif
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
   if (g_strcmp0 (context->context_id, "xim") == 0)
-    return GDK_IS_X11_DISPLAY (cdk_display_get_default ());
+    return CDK_IS_X11_DISPLAY (cdk_display_get_default ());
 #endif
 
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
   if (g_strcmp0 (context->context_id, "ime") == 0)
-    return GDK_IS_WIN32_DISPLAY (cdk_display_get_default ());
+    return CDK_IS_WIN32_DISPLAY (cdk_display_get_default ());
 #endif
 
   return TRUE;

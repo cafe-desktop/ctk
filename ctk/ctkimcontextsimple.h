@@ -59,17 +59,17 @@ struct _CtkIMContextSimpleClass
   CtkIMContextClass parent_class;
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType         ctk_im_context_simple_get_type  (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkIMContext *ctk_im_context_simple_new       (void);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_im_context_simple_add_table (CtkIMContextSimple *context_simple,
 					       guint16            *data,
 					       gint                max_seq_len,
 					       gint                n_seqs);
-GDK_AVAILABLE_IN_3_20
+CDK_AVAILABLE_IN_3_20
 void          ctk_im_context_simple_add_compose_file (CtkIMContextSimple *context_simple,
                                                       const gchar        *compose_file);
 

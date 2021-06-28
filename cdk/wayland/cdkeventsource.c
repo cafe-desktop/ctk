@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2009 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -170,19 +170,19 @@ _cdk_wayland_display_event_source_new (CdkDisplay *display)
 
   source = g_source_new (&wl_glib_source_funcs,
 			 sizeof (CdkWaylandEventSource));
-  name = g_strdup_printf ("GDK Wayland Event source (%s)",
+  name = g_strdup_printf ("CDK Wayland Event source (%s)",
                           cdk_display_get_name (display));
   g_source_set_name (source, name);
   g_free (name);
   wl_source = (CdkWaylandEventSource *) source;
 
-  display_wayland = GDK_WAYLAND_DISPLAY (display);
+  display_wayland = CDK_WAYLAND_DISPLAY (display);
   wl_source->display = display;
   wl_source->pfd.fd = wl_display_get_fd (display_wayland->wl_display);
   wl_source->pfd.events = G_IO_IN | G_IO_ERR | G_IO_HUP;
   g_source_add_poll (source, &wl_source->pfd);
 
-  g_source_set_priority (source, GDK_PRIORITY_EVENTS);
+  g_source_set_priority (source, CDK_PRIORITY_EVENTS);
   g_source_set_can_recurse (source, TRUE);
   g_source_attach (source, NULL);
 
@@ -195,7 +195,7 @@ _cdk_wayland_display_queue_events (CdkDisplay *display)
   CdkWaylandDisplay *display_wayland;
   CdkWaylandEventSource *source;
 
-  display_wayland = GDK_WAYLAND_DISPLAY (display);
+  display_wayland = CDK_WAYLAND_DISPLAY (display);
   source = (CdkWaylandEventSource *) display_wayland->event_source;
 
   if (wl_display_dispatch_pending (display_wayland->wl_display) < 0)

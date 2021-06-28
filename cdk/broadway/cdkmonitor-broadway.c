@@ -24,7 +24,7 @@
 #include "cdkscreen-broadway.h"
 
 
-G_DEFINE_TYPE (CdkBroadwayMonitor, cdk_broadway_monitor, GDK_TYPE_MONITOR)
+G_DEFINE_TYPE (CdkBroadwayMonitor, cdk_broadway_monitor, CDK_TYPE_MONITOR)
 
 static void
 cdk_broadway_monitor_init (CdkBroadwayMonitor *monitor)

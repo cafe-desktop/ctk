@@ -108,40 +108,40 @@ var showKeyboard = false;
 var showKeyboardChanged = false;
 var firstTouchDownId = null;
 
-var GDK_CROSSING_NORMAL = 0;
-var GDK_CROSSING_GRAB = 1;
-var GDK_CROSSING_UNGRAB = 2;
+var CDK_CROSSING_NORMAL = 0;
+var CDK_CROSSING_GRAB = 1;
+var CDK_CROSSING_UNGRAB = 2;
 
 // CdkModifierType
-var GDK_SHIFT_MASK = 1 << 0;
-var GDK_LOCK_MASK     = 1 << 1;
-var GDK_CONTROL_MASK  = 1 << 2;
-var GDK_MOD1_MASK     = 1 << 3;
-var GDK_MOD2_MASK     = 1 << 4;
-var GDK_MOD3_MASK     = 1 << 5;
-var GDK_MOD4_MASK     = 1 << 6;
-var GDK_MOD5_MASK     = 1 << 7;
-var GDK_BUTTON1_MASK  = 1 << 8;
-var GDK_BUTTON2_MASK  = 1 << 9;
-var GDK_BUTTON3_MASK  = 1 << 10;
-var GDK_BUTTON4_MASK  = 1 << 11;
-var GDK_BUTTON5_MASK  = 1 << 12;
-var GDK_SUPER_MASK    = 1 << 26;
-var GDK_HYPER_MASK    = 1 << 27;
-var GDK_META_MASK     = 1 << 28;
-var GDK_RELEASE_MASK  = 1 << 30;
+var CDK_SHIFT_MASK = 1 << 0;
+var CDK_LOCK_MASK     = 1 << 1;
+var CDK_CONTROL_MASK  = 1 << 2;
+var CDK_MOD1_MASK     = 1 << 3;
+var CDK_MOD2_MASK     = 1 << 4;
+var CDK_MOD3_MASK     = 1 << 5;
+var CDK_MOD4_MASK     = 1 << 6;
+var CDK_MOD5_MASK     = 1 << 7;
+var CDK_BUTTON1_MASK  = 1 << 8;
+var CDK_BUTTON2_MASK  = 1 << 9;
+var CDK_BUTTON3_MASK  = 1 << 10;
+var CDK_BUTTON4_MASK  = 1 << 11;
+var CDK_BUTTON5_MASK  = 1 << 12;
+var CDK_SUPER_MASK    = 1 << 26;
+var CDK_HYPER_MASK    = 1 << 27;
+var CDK_META_MASK     = 1 << 28;
+var CDK_RELEASE_MASK  = 1 << 30;
 
 function getButtonMask (button) {
     if (button == 1)
-	return GDK_BUTTON1_MASK;
+	return CDK_BUTTON1_MASK;
     if (button == 2)
-	return GDK_BUTTON2_MASK;
+	return CDK_BUTTON2_MASK;
     if (button == 3)
-	return GDK_BUTTON3_MASK;
+	return CDK_BUTTON3_MASK;
     if (button == 4)
-	return GDK_BUTTON4_MASK;
+	return CDK_BUTTON4_MASK;
     if (button == 5)
-	return GDK_BUTTON5_MASK;
+	return CDK_BUTTON5_MASK;
     return 0;
 }
 
@@ -784,13 +784,13 @@ function updateKeyboardStatus() {
 }
 
 function updateForEvent(ev) {
-    lastState &= ~(GDK_SHIFT_MASK|GDK_CONTROL_MASK|GDK_MOD1_MASK);
+    lastState &= ~(CDK_SHIFT_MASK|CDK_CONTROL_MASK|CDK_MOD1_MASK);
     if (ev.shiftKey)
-	lastState |= GDK_SHIFT_MASK;
+	lastState |= CDK_SHIFT_MASK;
     if (ev.ctrlKey)
-	lastState |= GDK_CONTROL_MASK;
+	lastState |= CDK_CONTROL_MASK;
     if (ev.altKey)
-	lastState |= GDK_MOD1_MASK;
+	lastState |= CDK_MOD1_MASK;
 
     lastTimeStamp = ev.timeStamp;
 }
@@ -812,7 +812,7 @@ function onMouseOver (ev) {
     var pos = getPositionsFromEvent(ev, id);
     windowWithMouse = id;
     if (windowWithMouse != 0) {
-	sendInput ("e", [realWindowWithMouse, id, pos.rootX, pos.rootY, pos.winX, pos.winY, lastState, GDK_CROSSING_NORMAL]);
+	sendInput ("e", [realWindowWithMouse, id, pos.rootX, pos.rootY, pos.winX, pos.winY, lastState, CDK_CROSSING_NORMAL]);
     }
 }
 
@@ -824,7 +824,7 @@ function onMouseOut (ev) {
     var pos = getPositionsFromEvent(ev, id);
 
     if (id != 0) {
-	sendInput ("l", [realWindowWithMouse, id, pos.rootX, pos.rootY, pos.winX, pos.winY, lastState, GDK_CROSSING_NORMAL]);
+	sendInput ("l", [realWindowWithMouse, id, pos.rootX, pos.rootY, pos.winX, pos.winY, lastState, CDK_CROSSING_NORMAL]);
     }
     realWindowWithMouse = 0;
     windowWithMouse = 0;
@@ -836,10 +836,10 @@ function doGrab(id, ownerEvents, implicit) {
     if (windowWithMouse != id) {
 	if (windowWithMouse != 0) {
 	    pos = getPositionsFromAbsCoord(lastX, lastY, windowWithMouse);
-	    sendInput ("l", [realWindowWithMouse, windowWithMouse, pos.rootX, pos.rootY, pos.winX, pos.winY, lastState, GDK_CROSSING_GRAB]);
+	    sendInput ("l", [realWindowWithMouse, windowWithMouse, pos.rootX, pos.rootY, pos.winX, pos.winY, lastState, CDK_CROSSING_GRAB]);
 	}
 	pos = getPositionsFromAbsCoord(lastX, lastY, id);
-	sendInput ("e", [realWindowWithMouse, id, pos.rootX, pos.rootY, pos.winX, pos.winY, lastState, GDK_CROSSING_GRAB]);
+	sendInput ("e", [realWindowWithMouse, id, pos.rootX, pos.rootY, pos.winX, pos.winY, lastState, CDK_CROSSING_GRAB]);
 	windowWithMouse = id;
     }
 
@@ -853,11 +853,11 @@ function doUngrab() {
     if (realWindowWithMouse != windowWithMouse) {
 	if (windowWithMouse != 0) {
 	    pos = getPositionsFromAbsCoord(lastX, lastY, windowWithMouse);
-	    sendInput ("l", [realWindowWithMouse, windowWithMouse, pos.rootX, pos.rootY, pos.winX, pos.winY, lastState, GDK_CROSSING_UNGRAB]);
+	    sendInput ("l", [realWindowWithMouse, windowWithMouse, pos.rootX, pos.rootY, pos.winX, pos.winY, lastState, CDK_CROSSING_UNGRAB]);
 	}
 	if (realWindowWithMouse != 0) {
 	    pos = getPositionsFromAbsCoord(lastX, lastY, realWindowWithMouse);
-	    sendInput ("e", [realWindowWithMouse, realWindowWithMouse, pos.rootX, pos.rootY, pos.winX, pos.winY, lastState, GDK_CROSSING_UNGRAB]);
+	    sendInput ("e", [realWindowWithMouse, realWindowWithMouse, pos.rootX, pos.rootY, pos.winX, pos.winY, lastState, CDK_CROSSING_UNGRAB]);
 	}
 	windowWithMouse = realWindowWithMouse;
     }
@@ -2500,13 +2500,13 @@ function onTouchStart(ev) {
 
             if (realWindowWithMouse != origId || id != windowWithMouse) {
                 if (id != 0) {
-                    sendInput ("l", [realWindowWithMouse, id, pos.rootX, pos.rootY, pos.winX, pos.winY, lastState, GDK_CROSSING_NORMAL]);
+                    sendInput ("l", [realWindowWithMouse, id, pos.rootX, pos.rootY, pos.winX, pos.winY, lastState, CDK_CROSSING_NORMAL]);
                 }
 
                 windowWithMouse = id;
                 realWindowWithMouse = origId;
 
-                sendInput ("e", [origId, id, pos.rootX, pos.rootY, pos.winX, pos.winY, lastState, GDK_CROSSING_NORMAL]);
+                sendInput ("e", [origId, id, pos.rootX, pos.rootY, pos.winX, pos.winY, lastState, CDK_CROSSING_NORMAL]);
             }
         }
 

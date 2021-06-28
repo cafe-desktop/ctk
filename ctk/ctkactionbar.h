@@ -57,20 +57,20 @@ struct _CtkActionBarClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 GType        ctk_action_bar_get_type          (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 CtkWidget   *ctk_action_bar_new               (void);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 CtkWidget   *ctk_action_bar_get_center_widget (CtkActionBar *action_bar);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void         ctk_action_bar_set_center_widget (CtkActionBar *action_bar,
                                                CtkWidget    *center_widget);
 
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void         ctk_action_bar_pack_start        (CtkActionBar *action_bar,
                                                CtkWidget    *child);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void         ctk_action_bar_pack_end          (CtkActionBar *action_bar,
                                                CtkWidget    *child);
 G_END_DECLS

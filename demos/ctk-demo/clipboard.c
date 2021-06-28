@@ -24,7 +24,7 @@ copy_button_clicked (CtkWidget *button,
 
   /* Get the clipboard object */
   clipboard = ctk_widget_get_clipboard (entry,
-                                        GDK_SELECTION_CLIPBOARD);
+                                        CDK_SELECTION_CLIPBOARD);
 
   /* Set clipboard text */
   ctk_clipboard_set_text (clipboard, ctk_entry_get_text (CTK_ENTRY (entry)), -1);
@@ -55,7 +55,7 @@ paste_button_clicked (CtkWidget *button,
 
   /* Get the clipboard object */
   clipboard = ctk_widget_get_clipboard (entry,
-                                        GDK_SELECTION_CLIPBOARD);
+                                        CDK_SELECTION_CLIPBOARD);
 
   /* Request the contents of the clipboard, contents_received will be
      called when we do get the contents.
@@ -146,7 +146,7 @@ copy_image (CtkMenuItem *item,
   CtkClipboard *clipboard;
   CdkPixbuf *pixbuf;
 
-  clipboard = ctk_clipboard_get (GDK_SELECTION_CLIPBOARD);
+  clipboard = ctk_clipboard_get (CDK_SELECTION_CLIPBOARD);
   pixbuf = get_image_pixbuf (CTK_IMAGE (data));
 
   ctk_clipboard_set_image (clipboard, pixbuf);
@@ -160,7 +160,7 @@ paste_image (CtkMenuItem *item,
   CtkClipboard *clipboard;
   CdkPixbuf *pixbuf;
 
-  clipboard = ctk_clipboard_get (GDK_SELECTION_CLIPBOARD);
+  clipboard = ctk_clipboard_get (CDK_SELECTION_CLIPBOARD);
   pixbuf = ctk_clipboard_wait_for_image (clipboard);
 
   if (pixbuf)
@@ -178,7 +178,7 @@ button_press (CtkWidget      *widget,
   CtkWidget *menu;
   CtkWidget *item;
 
-  if (button->button != GDK_BUTTON_SECONDARY)
+  if (button->button != CDK_BUTTON_SECONDARY)
     return FALSE;
 
   menu = ctk_menu_new ();
@@ -273,7 +273,7 @@ do_clipboard (CtkWidget *do_widget)
       ctk_container_add (CTK_CONTAINER (hbox), ebox);
 
       /* make ebox a drag source */
-      ctk_drag_source_set (ebox, GDK_BUTTON1_MASK, NULL, 0, GDK_ACTION_COPY);
+      ctk_drag_source_set (ebox, CDK_BUTTON1_MASK, NULL, 0, CDK_ACTION_COPY);
       ctk_drag_source_add_image_targets (ebox);
       g_signal_connect (ebox, "drag-begin",
                         G_CALLBACK (drag_begin), image);
@@ -282,7 +282,7 @@ do_clipboard (CtkWidget *do_widget)
 
       /* accept drops on ebox */
       ctk_drag_dest_set (ebox, CTK_DEST_DEFAULT_ALL,
-                         NULL, 0, GDK_ACTION_COPY);
+                         NULL, 0, CDK_ACTION_COPY);
       ctk_drag_dest_add_image_targets (ebox);
       g_signal_connect (ebox, "drag-data-received",
                         G_CALLBACK (drag_data_received), image);
@@ -299,7 +299,7 @@ do_clipboard (CtkWidget *do_widget)
       ctk_container_add (CTK_CONTAINER (hbox), ebox);
 
       /* make ebox a drag source */
-      ctk_drag_source_set (ebox, GDK_BUTTON1_MASK, NULL, 0, GDK_ACTION_COPY);
+      ctk_drag_source_set (ebox, CDK_BUTTON1_MASK, NULL, 0, CDK_ACTION_COPY);
       ctk_drag_source_add_image_targets (ebox);
       g_signal_connect (ebox, "drag-begin",
                         G_CALLBACK (drag_begin), image);
@@ -308,7 +308,7 @@ do_clipboard (CtkWidget *do_widget)
 
       /* accept drops on ebox */
       ctk_drag_dest_set (ebox, CTK_DEST_DEFAULT_ALL,
-                         NULL, 0, GDK_ACTION_COPY);
+                         NULL, 0, CDK_ACTION_COPY);
       ctk_drag_dest_add_image_targets (ebox);
       g_signal_connect (ebox, "drag-data-received",
                         G_CALLBACK (drag_data_received), image);
@@ -318,7 +318,7 @@ do_clipboard (CtkWidget *do_widget)
                         G_CALLBACK (button_press), image);
 
       /* tell the clipboard manager to make the data persistent */
-      clipboard = ctk_clipboard_get (GDK_SELECTION_CLIPBOARD);
+      clipboard = ctk_clipboard_get (CDK_SELECTION_CLIPBOARD);
       ctk_clipboard_set_can_store (clipboard, NULL, 0);
     }
 

@@ -21,7 +21,7 @@ def main(argv):
     cdk_parser.add_argument('--broadway',
                               action='store_const',
                               const=1,
-                              help='GDK with Broadway backend')
+                              help='CDK with Broadway backend')
     cdk_parser.add_argument('--host',
                             required=True,
                             help='Build type')
@@ -45,16 +45,16 @@ def main(argv):
         cdk_backends += ' broadway'
 
     pkg_replace_items = {'@CTK_API_VERSION@': '3.0',
-                         '@GDK_BACKENDS@': cdk_backends}
+                         '@CDK_BACKENDS@': cdk_backends}
 
     pkg_required_packages = 'cdk-pixbuf-2.0 >= ' + cdk_pixbuf_min_ver
 
-    cdk_pc_replace_items = {'@GDK_PACKAGES@': gio_package + ' ' + \
+    cdk_pc_replace_items = {'@CDK_PACKAGES@': gio_package + ' ' + \
                                               'pangowin32 pangocairo' + ' ' + \
                                               pkg_required_packages,
-                            '@GDK_PRIVATE_PACKAGES@': gio_package,
-                            '@GDK_EXTRA_LIBS@': cairo_libs + cdk_win32_sys_libs + broadway_extra_libs,
-                            '@GDK_EXTRA_CFLAGS@': '',
+                            '@CDK_PRIVATE_PACKAGES@': gio_package,
+                            '@CDK_EXTRA_LIBS@': cairo_libs + cdk_win32_sys_libs + broadway_extra_libs,
+                            '@CDK_EXTRA_CFLAGS@': '',
                             'cdk-3': 'cdk-3.0'}
 
     ctk_pc_replace_items = {'@host@': cdk_args.host,

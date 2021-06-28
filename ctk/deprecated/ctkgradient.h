@@ -31,15 +31,15 @@ G_BEGIN_DECLS
 
 #define CTK_TYPE_GRADIENT (ctk_gradient_get_type ())
 
-GDK_DEPRECATED_IN_3_8
+CDK_DEPRECATED_IN_3_8
 GType         ctk_gradient_get_type       (void) G_GNUC_CONST;
 
-GDK_DEPRECATED_IN_3_8
+CDK_DEPRECATED_IN_3_8
 CtkGradient * ctk_gradient_new_linear     (gdouble              x0,
                                            gdouble              y0,
                                            gdouble              x1,
                                            gdouble              y1);
-GDK_DEPRECATED_IN_3_8
+CDK_DEPRECATED_IN_3_8
 CtkGradient * ctk_gradient_new_radial     (gdouble              x0,
                                            gdouble              y0,
                                            gdouble              radius0,
@@ -47,27 +47,27 @@ CtkGradient * ctk_gradient_new_radial     (gdouble              x0,
                                            gdouble              y1,
                                            gdouble              radius1);
 
-GDK_DEPRECATED_IN_3_8
+CDK_DEPRECATED_IN_3_8
 void          ctk_gradient_add_color_stop (CtkGradient         *gradient,
                                            gdouble              offset,
                                            CtkSymbolicColor    *color);
 
-GDK_DEPRECATED_IN_3_8
+CDK_DEPRECATED_IN_3_8
 CtkGradient * ctk_gradient_ref            (CtkGradient         *gradient);
-GDK_DEPRECATED_IN_3_8
+CDK_DEPRECATED_IN_3_8
 void          ctk_gradient_unref          (CtkGradient         *gradient);
 
-GDK_DEPRECATED_IN_3_8
+CDK_DEPRECATED_IN_3_8
 gboolean      ctk_gradient_resolve        (CtkGradient         *gradient,
                                            CtkStyleProperties  *props,
                                            cairo_pattern_t    **resolved_gradient);
-GDK_DEPRECATED_IN_3_8
+CDK_DEPRECATED_IN_3_8
 cairo_pattern_t *
               ctk_gradient_resolve_for_context
                                           (CtkGradient         *gradient,
                                            CtkStyleContext     *context);
 
-GDK_DEPRECATED_IN_3_8
+CDK_DEPRECATED_IN_3_8
 char *        ctk_gradient_to_string      (CtkGradient         *gradient);
 
 G_END_DECLS

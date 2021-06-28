@@ -135,21 +135,21 @@ msgid "Default Display"
 msgstr "An taisbeanadh bunaiteach"
 
 #: cdk/cdkdisplaymanager.c:170
-msgid "The default display for GDK"
-msgstr "An taisbeanadh bunaiteach airson GDK"
+msgid "The default display for CDK"
+msgstr "An taisbeanadh bunaiteach airson CDK"
 
 #: cdk/cdkglcontext.c:318
-msgid "The GDK display used to create the GL context"
+msgid "The CDK display used to create the GL context"
 msgstr ""
-"An sealladh GDK a thèid a chleachdadh gus an co-theacsa GL a chruthachadh"
+"An sealladh CDK a thèid a chleachdadh gus an co-theacsa GL a chruthachadh"
 
 #: cdk/cdkglcontext.c:333 ctk/ctkwidget.c:1344
 msgid "Window"
 msgstr "Uinneag"
 
 #: cdk/cdkglcontext.c:334
-msgid "The GDK window bound to the GL context"
-msgstr "An uinneag GDK a thèid a nasgadh ris a’ cho-theacs GL"
+msgid "The CDK window bound to the GL context"
+msgstr "An uinneag CDK a thèid a nasgadh ris a’ cho-theacs GL"
 
 #: cdk/cdkglcontext.c:349
 msgid "Shared context"

@@ -76,7 +76,7 @@
  *           <property name="stock_id">ctk-about</property>
  *           <signal handler="about_activate" name="activate"/>
  *       </object>
- *       <accelerator key="F1" modifiers="GDK_CONTROL_MASK | GDK_SHIFT_MASK"/>
+ *       <accelerator key="F1" modifiers="CDK_CONTROL_MASK | CDK_SHIFT_MASK"/>
  *   </child>
  * </object>
  * ]|
@@ -86,7 +86,7 @@
 #include "config.h"
 #include <string.h>
 
-#define GDK_DISABLE_DEPRECATION_WARNINGS
+#define CDK_DISABLE_DEPRECATION_WARNINGS
 
 #include "ctkactiongroup.h"
 #include "ctkbuildable.h"
@@ -436,7 +436,7 @@ accelerator_start_element (GMarkupParseContext *context,
 	key = cdk_keyval_from_name (values[i]);
       else if (strcmp (names[i], "modifiers") == 0)
 	{
-	  if (!_ctk_builder_flags_from_string (GDK_TYPE_MODIFIER_TYPE,
+	  if (!_ctk_builder_flags_from_string (CDK_TYPE_MODIFIER_TYPE,
                                                NULL,
 					       values[i],
 					       &modifiers,

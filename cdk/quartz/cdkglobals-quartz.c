@@ -29,14 +29,14 @@ CdkWindow *_cdk_root = NULL;
 CdkOSXVersion
 cdk_quartz_osx_version (void)
 {
-  static gint32 minor = GDK_OSX_UNSUPPORTED;
+  static gint32 minor = CDK_OSX_UNSUPPORTED;
 
-  if (minor == GDK_OSX_UNSUPPORTED)
+  if (minor == CDK_OSX_UNSUPPORTED)
     {
 #if MAC_OS_X_VERSION_MIN_REQUIRED < 101000
       OSErr err = Gestalt (gestaltSystemVersionMinor, (SInt32*)&minor);
 
-      g_return_val_if_fail (err == noErr, GDK_OSX_UNSUPPORTED);
+      g_return_val_if_fail (err == noErr, CDK_OSX_UNSUPPORTED);
 #else
       NSOperatingSystemVersion version;
 
@@ -47,10 +47,10 @@ cdk_quartz_osx_version (void)
 #endif
     }
 
-  if (minor < GDK_OSX_MIN)
-    return GDK_OSX_UNSUPPORTED;
-  else if (minor > GDK_OSX_CURRENT)
-    return GDK_OSX_NEW;
+  if (minor < CDK_OSX_MIN)
+    return CDK_OSX_UNSUPPORTED;
+  else if (minor > CDK_OSX_CURRENT)
+    return CDK_OSX_NEW;
   else
     return minor;
 }

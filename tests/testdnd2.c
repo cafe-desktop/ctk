@@ -227,7 +227,7 @@ make_image (const gchar *icon_name, int hotspot)
   image = ctk_image_new_from_icon_name (icon_name, CTK_ICON_SIZE_DIALOG);
   ebox = ctk_event_box_new ();
 
-  ctk_drag_source_set (ebox, GDK_BUTTON1_MASK, NULL, 0, GDK_ACTION_COPY);
+  ctk_drag_source_set (ebox, CDK_BUTTON1_MASK, NULL, 0, CDK_ACTION_COPY);
   update_source_target_list (ebox, image);
 
   g_object_set_data  (G_OBJECT (image), "hotspot", GINT_TO_POINTER (hotspot));
@@ -235,7 +235,7 @@ make_image (const gchar *icon_name, int hotspot)
   g_signal_connect (ebox, "drag-begin", G_CALLBACK (image_drag_begin), image);
   g_signal_connect (ebox, "drag-data-get", G_CALLBACK (image_drag_data_get), image);
 
-  ctk_drag_dest_set (ebox, CTK_DEST_DEFAULT_ALL, NULL, 0, GDK_ACTION_COPY);
+  ctk_drag_dest_set (ebox, CTK_DEST_DEFAULT_ALL, NULL, 0, CDK_ACTION_COPY);
   g_signal_connect (ebox, "drag-data-received", G_CALLBACK (image_drag_data_received), image);
   update_dest_target_list (ebox);
 
@@ -252,7 +252,7 @@ make_image2 (const gchar *icon_name, int hotspot)
   image = ctk_image_new_from_icon_name (icon_name, CTK_ICON_SIZE_DIALOG);
   ebox = ctk_event_box_new ();
 
-  ctk_drag_source_set (ebox, GDK_BUTTON1_MASK, NULL, 0, GDK_ACTION_COPY);
+  ctk_drag_source_set (ebox, CDK_BUTTON1_MASK, NULL, 0, CDK_ACTION_COPY);
   update_source_target_list (ebox, image);
 
   g_object_set_data  (G_OBJECT (image), "hotspot", GINT_TO_POINTER (hotspot));
@@ -260,7 +260,7 @@ make_image2 (const gchar *icon_name, int hotspot)
   g_signal_connect (ebox, "drag-begin", G_CALLBACK (window_drag_begin), image);
   g_signal_connect (ebox, "drag-data-get", G_CALLBACK (image_drag_data_get), image);
 
-  ctk_drag_dest_set (ebox, CTK_DEST_DEFAULT_ALL, NULL, 0, GDK_ACTION_COPY);
+  ctk_drag_dest_set (ebox, CTK_DEST_DEFAULT_ALL, NULL, 0, CDK_ACTION_COPY);
   g_signal_connect (ebox, "drag-data-received", G_CALLBACK (image_drag_data_received), image);
   update_dest_target_list (ebox);
 
@@ -335,7 +335,7 @@ make_spinner (void)
   ctk_spinner_start (CTK_SPINNER (spinner));
   ebox = ctk_event_box_new ();
 
-  ctk_drag_source_set (ebox, GDK_BUTTON1_MASK, NULL, 0, GDK_ACTION_COPY);
+  ctk_drag_source_set (ebox, CDK_BUTTON1_MASK, NULL, 0, CDK_ACTION_COPY);
   ctk_drag_source_add_text_targets (ebox);
 
   g_signal_connect (ebox, "drag-begin", G_CALLBACK (spinner_drag_begin), spinner);

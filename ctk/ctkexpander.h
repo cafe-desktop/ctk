@@ -73,59 +73,59 @@ struct _CtkExpanderClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType                 ctk_expander_get_type            (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget            *ctk_expander_new                 (const gchar *label);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget            *ctk_expander_new_with_mnemonic   (const gchar *label);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_expander_set_expanded        (CtkExpander *expander,
                                                         gboolean     expanded);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_expander_get_expanded        (CtkExpander *expander);
 
 /* Spacing between the expander/label and the child */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_expander_set_spacing         (CtkExpander *expander,
                                                         gint         spacing);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint                  ctk_expander_get_spacing         (CtkExpander *expander);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_expander_set_label           (CtkExpander *expander,
                                                         const gchar *label);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *         ctk_expander_get_label           (CtkExpander *expander);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_expander_set_use_underline   (CtkExpander *expander,
                                                         gboolean     use_underline);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_expander_get_use_underline   (CtkExpander *expander);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_expander_set_use_markup      (CtkExpander *expander,
                                                         gboolean    use_markup);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_expander_get_use_markup      (CtkExpander *expander);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_expander_set_label_widget    (CtkExpander *expander,
 						        CtkWidget   *label_widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget            *ctk_expander_get_label_widget    (CtkExpander *expander);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_expander_set_label_fill      (CtkExpander *expander,
 						        gboolean     label_fill);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_expander_get_label_fill      (CtkExpander *expander);
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 void                  ctk_expander_set_resize_toplevel (CtkExpander *expander,
                                                         gboolean     resize_toplevel);
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 gboolean              ctk_expander_get_resize_toplevel (CtkExpander *expander);
 
 G_END_DECLS

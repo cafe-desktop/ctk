@@ -132,96 +132,96 @@ struct _CtkAssistantClass
  */
 typedef gint (*CtkAssistantPageFunc) (gint current_page, gpointer data);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType                 ctk_assistant_get_type              (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget            *ctk_assistant_new                   (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_assistant_next_page             (CtkAssistant         *assistant);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_assistant_previous_page         (CtkAssistant         *assistant);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint                  ctk_assistant_get_current_page      (CtkAssistant         *assistant);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_assistant_set_current_page      (CtkAssistant         *assistant,
                                                            gint                  page_num);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint                  ctk_assistant_get_n_pages           (CtkAssistant         *assistant);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget            *ctk_assistant_get_nth_page          (CtkAssistant         *assistant,
                                                            gint                  page_num);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint                  ctk_assistant_prepend_page          (CtkAssistant         *assistant,
                                                            CtkWidget            *page);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint                  ctk_assistant_append_page           (CtkAssistant         *assistant,
                                                            CtkWidget            *page);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint                  ctk_assistant_insert_page           (CtkAssistant         *assistant,
                                                            CtkWidget            *page,
                                                            gint                  position);
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 void                  ctk_assistant_remove_page           (CtkAssistant         *assistant,
                                                            gint                  page_num);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_assistant_set_forward_page_func (CtkAssistant         *assistant,
                                                            CtkAssistantPageFunc  page_func,
                                                            gpointer              data,
                                                            GDestroyNotify        destroy);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_assistant_set_page_type         (CtkAssistant         *assistant,
                                                            CtkWidget            *page,
                                                            CtkAssistantPageType  type);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkAssistantPageType  ctk_assistant_get_page_type         (CtkAssistant         *assistant,
                                                            CtkWidget            *page);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_assistant_set_page_title        (CtkAssistant         *assistant,
                                                            CtkWidget            *page,
                                                            const gchar          *title);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *         ctk_assistant_get_page_title        (CtkAssistant         *assistant,
                                                            CtkWidget            *page);
 
-GDK_DEPRECATED_IN_3_2
+CDK_DEPRECATED_IN_3_2
 void                  ctk_assistant_set_page_header_image (CtkAssistant         *assistant,
                                                            CtkWidget            *page,
                                                            CdkPixbuf            *pixbuf);
-GDK_DEPRECATED_IN_3_2
+CDK_DEPRECATED_IN_3_2
 CdkPixbuf            *ctk_assistant_get_page_header_image (CtkAssistant         *assistant,
                                                            CtkWidget            *page);
-GDK_DEPRECATED_IN_3_2
+CDK_DEPRECATED_IN_3_2
 void                  ctk_assistant_set_page_side_image   (CtkAssistant         *assistant,
                                                            CtkWidget            *page,
                                                            CdkPixbuf            *pixbuf);
-GDK_DEPRECATED_IN_3_2
+CDK_DEPRECATED_IN_3_2
 CdkPixbuf            *ctk_assistant_get_page_side_image   (CtkAssistant         *assistant,
                                                            CtkWidget            *page);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_assistant_set_page_complete     (CtkAssistant         *assistant,
                                                            CtkWidget            *page,
                                                            gboolean              complete);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_assistant_get_page_complete     (CtkAssistant         *assistant,
                                                            CtkWidget            *page);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_assistant_add_action_widget     (CtkAssistant         *assistant,
                                                            CtkWidget            *child);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_assistant_remove_action_widget  (CtkAssistant         *assistant,
                                                            CtkWidget            *child);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_assistant_update_buttons_state  (CtkAssistant *assistant);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_assistant_commit                (CtkAssistant *assistant);
 
-GDK_AVAILABLE_IN_3_18
+CDK_AVAILABLE_IN_3_18
 void                  ctk_assistant_set_page_has_padding  (CtkAssistant *assistant,
                                                            CtkWidget    *page,
                                                            gboolean      has_padding);
-GDK_AVAILABLE_IN_3_18
+CDK_AVAILABLE_IN_3_18
 gboolean              ctk_assistant_get_page_has_padding  (CtkAssistant *assistant,
                                                            CtkWidget    *page);
 

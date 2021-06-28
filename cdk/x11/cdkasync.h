@@ -16,8 +16,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_ASYNC_H__
-#define __GDK_ASYNC_H__
+#ifndef __CDK_ASYNC_H__
+#define __CDK_ASYNC_H__
 
 #include "cdkdisplay.h"
 #include <X11/Xlib.h>
@@ -66,4 +66,4 @@ void _cdk_x11_roundtrip_async           (CdkDisplay           *display,
 
 G_END_DECLS
 
-#endif /* __GDK_ASYNC_H__ */
+#endif /* __CDK_ASYNC_H__ */

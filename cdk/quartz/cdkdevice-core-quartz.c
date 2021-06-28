@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2009 Carlos Garnacho <carlosg@gnome.org>
  * Copyright (C) 2010 Kristian Rietveld <kris@ctk.org>
  *
@@ -87,12 +87,12 @@ static void      cdk_quartz_device_core_select_window_events (CdkDevice       *d
                                                               CdkEventMask     event_mask);
 
 
-G_DEFINE_TYPE (CdkQuartzDeviceCore, cdk_quartz_device_core, GDK_TYPE_DEVICE)
+G_DEFINE_TYPE (CdkQuartzDeviceCore, cdk_quartz_device_core, CDK_TYPE_DEVICE)
 
 static void
 cdk_quartz_device_core_class_init (CdkQuartzDeviceCoreClass *klass)
 {
-  CdkDeviceClass *device_class = GDK_DEVICE_CLASS (klass);
+  CdkDeviceClass *device_class = CDK_DEVICE_CLASS (klass);
 
   device_class->get_history = cdk_quartz_device_core_get_history;
   device_class->get_state = cdk_quartz_device_core_get_state;
@@ -110,10 +110,10 @@ cdk_quartz_device_core_init (CdkQuartzDeviceCore *quartz_device_core)
 {
   CdkDevice *device;
 
-  device = GDK_DEVICE (quartz_device_core);
+  device = CDK_DEVICE (quartz_device_core);
 
-  _cdk_device_add_axis (device, GDK_NONE, GDK_AXIS_X, 0, 0, 1);
-  _cdk_device_add_axis (device, GDK_NONE, GDK_AXIS_Y, 0, 0, 1);
+  _cdk_device_add_axis (device, CDK_NONE, CDK_AXIS_X, 0, 0, 1);
+  _cdk_device_add_axis (device, CDK_NONE, CDK_AXIS_Y, 0, 0, 1);
 }
 
 static gboolean
@@ -175,7 +175,7 @@ cdk_quartz_device_core_set_window_cursor (CdkDevice *device,
 {
   NSCursor *nscursor;
 
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     return;
 
   nscursor = _cdk_quartz_cursor_get_ns_cursor (cursor);
@@ -204,9 +204,9 @@ cdk_quartz_device_core_query_state_helper (CdkWindow       *window,
   gint x_tmp, y_tmp;
   CdkWindow *found_window;
 
-  g_return_val_if_fail (window == NULL || GDK_IS_WINDOW (window), NULL);
+  g_return_val_if_fail (window == NULL || CDK_IS_WINDOW (window), NULL);
 
-  if (GDK_WINDOW_DESTROYED (window))
+  if (CDK_WINDOW_DESTROYED (window))
     {
       *x = 0;
       *y = 0;
@@ -231,7 +231,7 @@ cdk_quartz_device_core_query_state_helper (CdkWindow       *window,
       CdkWindowImplQuartz *impl;
       NSWindow *nswindow;
 
-      impl = GDK_WINDOW_IMPL_QUARTZ (toplevel->impl);
+      impl = CDK_WINDOW_IMPL_QUARTZ (toplevel->impl);
       nswindow = impl->toplevel;
 
       point = [nswindow mouseLocationOutsideOfEventStream];
@@ -305,7 +305,7 @@ cdk_quartz_device_core_grab (CdkDevice    *device,
                              guint32       time_)
 {
   /* Should remain empty */
-  return GDK_GRAB_SUCCESS;
+  return CDK_GRAB_SUCCESS;
 }
 
 static void
@@ -374,7 +374,7 @@ _cdk_quartz_device_core_set_active (CdkDevice  *device,
                                     gboolean    active,
                                     NSUInteger  device_id)
 {
-  CdkQuartzDeviceCore *self = GDK_QUARTZ_DEVICE_CORE (device);
+  CdkQuartzDeviceCore *self = CDK_QUARTZ_DEVICE_CORE (device);
 
   self->active = active;
   self->device_id = device_id;
@@ -384,7 +384,7 @@ gboolean
 _cdk_quartz_device_core_is_active (CdkDevice  *device,
                                    NSUInteger  device_id)
 {
-  CdkQuartzDeviceCore *self = GDK_QUARTZ_DEVICE_CORE (device);
+  CdkQuartzDeviceCore *self = CDK_QUARTZ_DEVICE_CORE (device);
 
   return (self->active && self->device_id == device_id);
 }
@@ -393,11 +393,11 @@ void
 _cdk_quartz_device_core_set_unique (CdkDevice          *device,
                                     unsigned long long  unique_id)
 {
-  GDK_QUARTZ_DEVICE_CORE (device)->unique_id = unique_id;
+  CDK_QUARTZ_DEVICE_CORE (device)->unique_id = unique_id;
 }
 
 unsigned long long
 _cdk_quartz_device_core_get_unique (CdkDevice *device)
 {
-  return GDK_QUARTZ_DEVICE_CORE (device)->unique_id;
+  return CDK_QUARTZ_DEVICE_CORE (device)->unique_id;
 }

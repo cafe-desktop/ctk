@@ -7,9 +7,9 @@
     <CtkBinaryVersion>3.0.0</CtkBinaryVersion>
     <CtkDummyPrefix>/dummy</CtkDummyPrefix>
     <CtkPrefixDefine>CTK_PREFIX=\"$(CtkDummyPrefix)\"</CtkPrefixDefine>
-    <CdkDefines>GDK_COMPILATION;G_LOG_DOMAIN="Cdk"</CdkDefines>
+    <CdkDefines>CDK_COMPILATION;G_LOG_DOMAIN="Cdk"</CdkDefines>
     <CtkIncludedImmodulesDefines>INCLUDE_IM_am_et;INCLUDE_IM_cedilla;INCLUDE_IM_cyrillic_translit;INCLUDE_IM_ime;INCLUDE_IM_inuktitut;INCLUDE_IM_ipa;INCLUDE_IM_multipress;INCLUDE_IM_thai;INCLUDE_IM_ti_er;INCLUDE_IM_ti_et;INCLUDE_IM_viqr</CtkIncludedImmodulesDefines>
-    <CtkDefines>CTK_COMPILATION;G_LOG_DOMAIN="Ctk";CTK_HOST="i686-pc-vs$(VSVer)";CTK_PRINT_BACKENDS="file";CTK_PRINT_BACKEND_ENABLE_UNSUPPORTED;$(CtkIncludedImmodulesDefines);CTK_LIBDIR="$(CtkDummyPrefix)/lib";CTK_DATADIR="$(CtkDummyPrefix)/share";CTK_DATA_PREFIX="$(CtkDummyPrefix)";CTK_SYSCONFDIR="$(CtkDummyPrefix)/etc";MULTIPRESS_CONFDIR="$(CtkDummyPrefix)/etc/ctk-$(ApiVersion)";MULTIPRESS_LOCALEDIR="$(CtkDummyPrefix)/share/locale";CTK_VERSION="$(CtkVersion)/etc";CTK_BINARY_VERSION="$(CtkBinaryVersion)/etc";GDK_DISABLE_DEPRECATED;ISOLATION_AWARE_ENABLED</CtkDefines>
+    <CtkDefines>CTK_COMPILATION;G_LOG_DOMAIN="Ctk";CTK_HOST="i686-pc-vs$(VSVer)";CTK_PRINT_BACKENDS="file";CTK_PRINT_BACKEND_ENABLE_UNSUPPORTED;$(CtkIncludedImmodulesDefines);CTK_LIBDIR="$(CtkDummyPrefix)/lib";CTK_DATADIR="$(CtkDummyPrefix)/share";CTK_DATA_PREFIX="$(CtkDummyPrefix)";CTK_SYSCONFDIR="$(CtkDummyPrefix)/etc";MULTIPRESS_CONFDIR="$(CtkDummyPrefix)/etc/ctk-$(ApiVersion)";MULTIPRESS_LOCALEDIR="$(CtkDummyPrefix)/share/locale";CTK_VERSION="$(CtkVersion)/etc";CTK_BINARY_VERSION="$(CtkBinaryVersion)/etc";CDK_DISABLE_DEPRECATED;ISOLATION_AWARE_ENABLED</CtkDefines>
     <CtkCdkCommonLibs>pangowin32-1.0.lib;fribidi.lib;imm32.lib</CtkCdkCommonLibs>
     <CdkAdditionalLibs>winmm.lib;dwmapi.lib;setupapi.lib;$(CtkCdkCommonLibs)</CdkAdditionalLibs>
     <CdkBroadwayAdditionalLibs>ws2_32.lib</CdkBroadwayAdditionalLibs>
@@ -27,7 +27,7 @@ nmake -f ctk-introspection-msvc.mak CFG=$(Configuration) PREFIX=$(GlibEtcInstall
   <ItemDefinitionGroup>
     <ClCompile>
       <AdditionalIncludeDirectories>..\..;$(GlibEtcInstallRoot)\include\cdk-pixbuf-2.0;$(GlibEtcInstallRoot)\include\pango-1.0;$(GlibEtcInstallRoot)\include\atk-1.0;$(GlibEtcInstallRoot)\include\cairo;$(GlibEtcInstallRoot)\include\gio-win32-2.0;$(GlibEtcInstallRoot)\include\glib-2.0;$(GlibEtcInstallRoot)\lib\glib-2.0\include;$(GlibEtcInstallRoot)\include\fribidi;$(GlibEtcInstallRoot)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>HAVE_CONFIG_H;G_DISABLE_SINGLE_INCLUDES;ATK_DISABLE_SINGLE_INCLUDES;GDK_PIXBUF_DISABLE_SINGLE_INCLUDES;CTK_DISABLE_SINGLE_INCLUDES;_USE_MATH_DEFINES;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>HAVE_CONFIG_H;G_DISABLE_SINGLE_INCLUDES;ATK_DISABLE_SINGLE_INCLUDES;CDK_PIXBUF_DISABLE_SINGLE_INCLUDES;CTK_DISABLE_SINGLE_INCLUDES;_USE_MATH_DEFINES;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ForcedIncludeFiles>msvc_recommended_pragmas.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalOptions>/d2Zi+ %(AdditionalOptions)</AdditionalOptions>

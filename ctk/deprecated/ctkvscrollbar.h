@@ -61,9 +61,9 @@ struct _CtkVScrollbarClass
 };
 
 
-GDK_DEPRECATED_IN_3_2
+CDK_DEPRECATED_IN_3_2
 GType      ctk_vscrollbar_get_type (void) G_GNUC_CONST;
-GDK_DEPRECATED_IN_3_2_FOR(ctk_scrollbar_new)
+CDK_DEPRECATED_IN_3_2_FOR(ctk_scrollbar_new)
 CtkWidget* ctk_vscrollbar_new      (CtkAdjustment *adjustment);
 
 G_END_DECLS

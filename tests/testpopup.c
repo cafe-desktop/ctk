@@ -56,7 +56,7 @@ main (int argc, char *argv[])
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 
-  ctk_widget_set_events (window, GDK_POINTER_MOTION_MASK);
+  ctk_widget_set_events (window, CDK_POINTER_MOTION_MASK);
   g_signal_connect (window, "destroy", ctk_main_quit, NULL);
   g_signal_connect (window, "map-event", G_CALLBACK (on_map_event), NULL);
 

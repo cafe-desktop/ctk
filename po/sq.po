@@ -77,7 +77,7 @@ msgstr "EKRANI"
 #. Description of --cdk-debug=FLAGS in --help output
 #: cdk/cdk.c:164
 #, fuzzy
-msgid "GDK debugging flags to set"
+msgid "CDK debugging flags to set"
 msgstr "Flag e debug të CTK+ për tu caktuar"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
@@ -91,7 +91,7 @@ msgstr "FLAGS"
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: cdk/cdk.c:167
 #, fuzzy
-msgid "GDK debugging flags to unset"
+msgid "CDK debugging flags to unset"
 msgstr "Flag e debug të CTK+ për tu hequr"
 
 #: cdk/keyname-table.h:3940

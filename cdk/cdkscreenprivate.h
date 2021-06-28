@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2010 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -15,17 +15,17 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_SCREEN_PRIVATE_H__
-#define __GDK_SCREEN_PRIVATE_H__
+#ifndef __CDK_SCREEN_PRIVATE_H__
+#define __CDK_SCREEN_PRIVATE_H__
 
 #include "cdkscreen.h"
 #include "cdkvisual.h"
 
 G_BEGIN_DECLS
 
-#define GDK_SCREEN_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_SCREEN, CdkScreenClass))
-#define GDK_IS_SCREEN_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_SCREEN))
-#define GDK_SCREEN_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_SCREEN, CdkScreenClass))
+#define CDK_SCREEN_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CDK_TYPE_SCREEN, CdkScreenClass))
+#define CDK_IS_SCREEN_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CDK_TYPE_SCREEN))
+#define CDK_SCREEN_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CDK_TYPE_SCREEN, CdkScreenClass))
 
 typedef struct _CdkScreenClass CdkScreenClass;
 
@@ -103,4 +103,4 @@ struct _CdkScreenClass
 
 G_END_DECLS
 
-#endif /* __GDK_SCREEN_PRIVATE_H__ */
+#endif /* __CDK_SCREEN_PRIVATE_H__ */

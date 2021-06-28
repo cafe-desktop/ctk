@@ -78,7 +78,7 @@ cdk_app_launch_context_get_property (GObject    *object,
                                      GValue     *value,
                                      GParamSpec *pspec)
 {
-  CdkAppLaunchContext *context = GDK_APP_LAUNCH_CONTEXT (object);
+  CdkAppLaunchContext *context = CDK_APP_LAUNCH_CONTEXT (object);
 
   switch (prop_id)
     {
@@ -96,7 +96,7 @@ cdk_app_launch_context_set_property (GObject      *object,
                                      const GValue *value,
                                      GParamSpec   *pspec)
 {
-  CdkAppLaunchContext *context = GDK_APP_LAUNCH_CONTEXT (object);
+  CdkAppLaunchContext *context = CDK_APP_LAUNCH_CONTEXT (object);
 
   switch (prop_id)
     {
@@ -125,7 +125,7 @@ cdk_app_launch_context_class_init (CdkAppLaunchContextClass *klass)
 
   g_object_class_install_property (gobject_class, PROP_DISPLAY,
     g_param_spec_object ("display", P_("Display"), P_("Display"),
-                         GDK_TYPE_DISPLAY,
+                         CDK_TYPE_DISPLAY,
                          G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_STRINGS));
 }
 
@@ -138,7 +138,7 @@ cdk_app_launch_context_init (CdkAppLaunchContext *context)
 static void
 cdk_app_launch_context_finalize (GObject *object)
 {
-  CdkAppLaunchContext *context = GDK_APP_LAUNCH_CONTEXT (object);
+  CdkAppLaunchContext *context = CDK_APP_LAUNCH_CONTEXT (object);
 
   if (context->display)
     g_object_unref (context->display);
@@ -159,7 +159,7 @@ cdk_app_launch_context_get_display (GAppLaunchContext *context,
                                     GAppInfo          *info,
                                     GList             *files)
 {
-  CdkAppLaunchContext *ctx = GDK_APP_LAUNCH_CONTEXT (context);
+  CdkAppLaunchContext *ctx = CDK_APP_LAUNCH_CONTEXT (context);
   CdkDisplay *display;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
@@ -191,8 +191,8 @@ void
 cdk_app_launch_context_set_display (CdkAppLaunchContext *context,
                                     CdkDisplay          *display)
 {
-  g_return_if_fail (GDK_IS_APP_LAUNCH_CONTEXT (context));
-  g_return_if_fail (display == NULL || GDK_IS_DISPLAY (display));
+  g_return_if_fail (CDK_IS_APP_LAUNCH_CONTEXT (context));
+  g_return_if_fail (display == NULL || CDK_IS_DISPLAY (display));
 
   g_warn_if_fail (display == NULL || display == context->display);
 }
@@ -215,8 +215,8 @@ void
 cdk_app_launch_context_set_screen (CdkAppLaunchContext *context,
                                    CdkScreen           *screen)
 {
-  g_return_if_fail (GDK_IS_APP_LAUNCH_CONTEXT (context));
-  g_return_if_fail (screen == NULL || GDK_IS_SCREEN (screen));
+  g_return_if_fail (CDK_IS_APP_LAUNCH_CONTEXT (context));
+  g_return_if_fail (screen == NULL || CDK_IS_SCREEN (screen));
 
   g_return_if_fail (screen == NULL || cdk_screen_get_display (screen) == context->display);
 
@@ -250,7 +250,7 @@ void
 cdk_app_launch_context_set_desktop (CdkAppLaunchContext *context,
                                     gint                 desktop)
 {
-  g_return_if_fail (GDK_IS_APP_LAUNCH_CONTEXT (context));
+  g_return_if_fail (CDK_IS_APP_LAUNCH_CONTEXT (context));
 
   context->workspace = desktop;
 }
@@ -274,7 +274,7 @@ void
 cdk_app_launch_context_set_timestamp (CdkAppLaunchContext *context,
                                       guint32              timestamp)
 {
-  g_return_if_fail (GDK_IS_APP_LAUNCH_CONTEXT (context));
+  g_return_if_fail (CDK_IS_APP_LAUNCH_CONTEXT (context));
 
   context->timestamp = timestamp;
 }
@@ -298,7 +298,7 @@ void
 cdk_app_launch_context_set_icon (CdkAppLaunchContext *context,
                                  GIcon               *icon)
 {
-  g_return_if_fail (GDK_IS_APP_LAUNCH_CONTEXT (context));
+  g_return_if_fail (CDK_IS_APP_LAUNCH_CONTEXT (context));
   g_return_if_fail (icon == NULL || G_IS_ICON (icon));
 
   if (context->icon)
@@ -331,7 +331,7 @@ void
 cdk_app_launch_context_set_icon_name (CdkAppLaunchContext *context,
                                       const char          *icon_name)
 {
-  g_return_if_fail (GDK_IS_APP_LAUNCH_CONTEXT (context));
+  g_return_if_fail (CDK_IS_APP_LAUNCH_CONTEXT (context));
 
   g_free (context->icon_name);
   context->icon_name = g_strdup (icon_name);

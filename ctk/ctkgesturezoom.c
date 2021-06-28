@@ -94,10 +94,10 @@ _ctk_gesture_zoom_get_distance (CtkGestureZoom *zoom,
 
   last_event = ctk_gesture_get_last_event (gesture, sequences->data);
 
-  if (last_event->type == GDK_TOUCHPAD_PINCH &&
-      (last_event->touchpad_pinch.phase == GDK_TOUCHPAD_GESTURE_PHASE_BEGIN ||
-       last_event->touchpad_pinch.phase == GDK_TOUCHPAD_GESTURE_PHASE_UPDATE ||
-       last_event->touchpad_pinch.phase == GDK_TOUCHPAD_GESTURE_PHASE_END))
+  if (last_event->type == CDK_TOUCHPAD_PINCH &&
+      (last_event->touchpad_pinch.phase == CDK_TOUCHPAD_GESTURE_PHASE_BEGIN ||
+       last_event->touchpad_pinch.phase == CDK_TOUCHPAD_GESTURE_PHASE_UPDATE ||
+       last_event->touchpad_pinch.phase == CDK_TOUCHPAD_GESTURE_PHASE_END))
     {
       /* Touchpad pinch */
       *distance = last_event->touchpad_pinch.scale;
@@ -147,7 +147,7 @@ ctk_gesture_zoom_filter_event (CtkEventController *controller,
                                const CdkEvent     *event)
 {
   /* Let 2-finger touchpad pinch events go through */
-  if (event->type == GDK_TOUCHPAD_PINCH)
+  if (event->type == CDK_TOUCHPAD_PINCH)
     {
       if (event->touchpad_pinch.n_fingers == 2)
         return FALSE;

@@ -20,9 +20,9 @@ Wayland-specific aspects of using CTK+
 <title>Using CTK+ with Wayland</title>
 
 <para>
-The GDK Wayland backend provides support for running CTK+ applications
+The CDK Wayland backend provides support for running CTK+ applications
 under the Wayland display server. To run your application in this way,
-select the Wayland backend by setting <literal>GDK_BACKEND=wayland</literal>.
+select the Wayland backend by setting <literal>CDK_BACKEND=wayland</literal>.
 </para>
 
 <para>
