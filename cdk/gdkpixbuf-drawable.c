@@ -268,7 +268,7 @@ gdk_pixbuf_get_from_surface  (cairo_surface_t *surface,
   g_return_val_if_fail (width > 0 && height > 0, NULL);
 
   content = cairo_surface_get_content (surface) | CAIRO_CONTENT_COLOR;
-  dest = gdk_pixbuf_new (CDK_COLORSPACE_RGB,
+  dest = gdk_pixbuf_new (GDK_COLORSPACE_RGB,
                          !!(content & CAIRO_CONTENT_ALPHA),
                          8,
                          width, height);

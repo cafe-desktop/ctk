@@ -40,7 +40,7 @@ draw_cb (CtkWidget *widget, cairo_t *cr, gpointer data)
   width = ctk_widget_get_allocated_width (widget);
   height = ctk_widget_get_allocated_height (widget);
 
-  dest = gdk_pixbuf_new (CDK_COLORSPACE_RGB, FALSE, 8, width, height);
+  dest = gdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, width, height);
 
   gdk_pixbuf_composite_color (pixbuf, dest,
 			      0, 0, width, height,
