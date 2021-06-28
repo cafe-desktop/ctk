@@ -1391,7 +1391,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
 	      pixbuf = gdk_pixbuf_scale_simple (pixbuf,
 						gdk_pixbuf_get_width (pixbuf) * scale,
 						gdk_pixbuf_get_height (pixbuf) * scale,
-						CDK_INTERP_BILINEAR);
+						GDK_INTERP_BILINEAR);
 	      g_object_unref (tmp);
 	    }
 	  break;

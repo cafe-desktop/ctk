@@ -443,7 +443,7 @@ scaled_from_pixdata (guchar *pixdata,
 
   if (w != new_w || h != new_h)
     {
-      dest = gdk_pixbuf_scale_simple (src, new_w, new_h, CDK_INTERP_BILINEAR);
+      dest = gdk_pixbuf_scale_simple (src, new_w, new_h, GDK_INTERP_BILINEAR);
 
       g_object_unref (G_OBJECT (src));
     }

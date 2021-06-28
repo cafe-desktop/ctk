@@ -14594,7 +14594,7 @@ Overview of Changes from CTK+ 2.5.1 to CTK+ 2.5.2
  - Update the _NET_ACTIVE_WINDOW implementation [Elijah]
 * gdk-pixbuf
  - Avoid infinite loops for bad BMPs [Chris Evans, Manish Singh]
- - Fix a problem with CDK_INTERP_NEAREST scaling which caused
+ - Fix a problem with GDK_INTERP_NEAREST scaling which caused
    Nautilus thumbnails to be misdrawn [Christoph Fergeau]
  - Avoid segfaults in gdk-pixbuf-csource [Matthias]
  - Fix progressive loading of 8bit pcx files [Magnus Bergman]

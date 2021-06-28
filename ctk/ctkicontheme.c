@@ -3801,7 +3801,7 @@ apply_emblems_to_pixbuf (GdkPixbuf   *pixbuf,
             }
 
           gdk_pixbuf_composite (emblem, icon, x, y, ew, eh, x, y,
-                                scale, scale, CDK_INTERP_BILINEAR, 255);
+                                scale, scale, GDK_INTERP_BILINEAR, 255);
        }
    }
 
@@ -4029,7 +4029,7 @@ icon_info_ensure_scale_and_pixbuf (CtkIconInfo *icon_info)
       icon_info->pixbuf = gdk_pixbuf_scale_simple (source_pixbuf,
                                                    MAX (1, 0.5 + image_width * icon_info->scale),
                                                    MAX (1, 0.5 + image_height * icon_info->scale),
-                                                   CDK_INTERP_BILINEAR);
+                                                   GDK_INTERP_BILINEAR);
       g_object_unref (source_pixbuf);
     }
 
@@ -5537,7 +5537,7 @@ ctk_icon_theme_lookup_by_gicon_for_scale (CtkIconTheme       *icon_theme,
           scaled = gdk_pixbuf_scale_simple (pixbuf,
                                             0.5 + width * pixbuf_scale,
                                             0.5 + height * pixbuf_scale,
-                                            CDK_INTERP_BILINEAR);
+                                            GDK_INTERP_BILINEAR);
 
           info = ctk_icon_info_new_for_pixbuf (icon_theme, scaled);
 

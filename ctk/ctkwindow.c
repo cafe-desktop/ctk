@@ -4596,7 +4596,7 @@ icon_from_list (GList *list,
     }
 
   if (best == NULL)
-    best = gdk_pixbuf_scale_simple (GDK_PIXBUF (list->data), size, size, CDK_INTERP_BILINEAR);
+    best = gdk_pixbuf_scale_simple (GDK_PIXBUF (list->data), size, size, GDK_INTERP_BILINEAR);
 
   return best;
 }

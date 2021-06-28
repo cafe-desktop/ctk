@@ -51,7 +51,7 @@ fill_model (CtkTreeModel *model)
     {
       GdkPixbuf *pb;
       size = g_random_int_range (20, 70);
-      pb = gdk_pixbuf_scale_simple (pixbuf, size, size, CDK_INTERP_NEAREST);
+      pb = gdk_pixbuf_scale_simple (pixbuf, size, size, GDK_INTERP_NEAREST);
 
       str = g_strdup_printf ("Icon %d", i);
       str2 = g_strdup_printf ("Icon <b>%d</b>", i);	
@@ -181,7 +181,7 @@ add_large (CtkWidget *button, CtkIconView *icon_list)
   pb = gdk_pixbuf_scale_simple (pixbuf, 
 				2 * gdk_pixbuf_get_width (pixbuf),
 				2 * gdk_pixbuf_get_height (pixbuf),
-				CDK_INTERP_BILINEAR);
+				GDK_INTERP_BILINEAR);
 
   str = g_strdup_printf ("Some really long text");
   ctk_list_store_append (store, &iter);
@@ -197,7 +197,7 @@ add_large (CtkWidget *button, CtkIconView *icon_list)
   pb = gdk_pixbuf_scale_simple (pixbuf, 
 				3 * gdk_pixbuf_get_width (pixbuf),
 				3 * gdk_pixbuf_get_height (pixbuf),
-				CDK_INTERP_BILINEAR);
+				GDK_INTERP_BILINEAR);
 
   str = g_strdup ("see how long text behaves when placed underneath "
 		  "an oversized icon which would allow for long lines");
@@ -214,7 +214,7 @@ add_large (CtkWidget *button, CtkIconView *icon_list)
   pb = gdk_pixbuf_scale_simple (pixbuf, 
 				3 * gdk_pixbuf_get_width (pixbuf),
 				3 * gdk_pixbuf_get_height (pixbuf),
-				CDK_INTERP_BILINEAR);
+				GDK_INTERP_BILINEAR);
 
   str = g_strdup ("short text");
   ctk_list_store_append (store, &iter);

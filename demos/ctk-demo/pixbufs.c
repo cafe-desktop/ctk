@@ -156,7 +156,7 @@ on_tick (CtkWidget     *widget,
                               dest.width, dest.height,
                               xpos, ypos,
                               k, k,
-                              CDK_INTERP_NEAREST,
+                              GDK_INTERP_NEAREST,
                               ((i & 1)
                                ? MAX (127, fabs (255 * sin (f * 2.0 * G_PI)))
                                : MAX (127, fabs (255 * cos (f * 2.0 * G_PI)))));
