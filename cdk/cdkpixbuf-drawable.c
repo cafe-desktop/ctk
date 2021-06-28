@@ -27,7 +27,7 @@
 #include "cdkwindow.h"
 #include "cdkinternals.h"
 
-#include <cdk-pixbuf/cdk-pixbuf.h>
+#include <gdk-pixbuf/gdk-pixbuf.h>
 
 /**
  * SECTION:pixbufs

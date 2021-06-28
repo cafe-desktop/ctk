@@ -9064,8 +9064,8 @@ msgstr "Сынау принтеріне баспаға шығару"
 #~ msgstr "Сурет файлына жазу қатесі: %s"
 
 #~ msgid ""
-#~ "This build of cdk-pixbuf does not support saving the image format: %s"
-#~ msgstr "Осы cdk-pixbuf нұсқасы сурет пішімін сақтауды қолдамайды: %s"
+#~ "This build of gdk-pixbuf does not support saving the image format: %s"
+#~ msgstr "Осы gdk-pixbuf нұсқасы сурет пішімін сақтауды қолдамайды: %s"
 
 #~ msgid "Insufficient memory to save image to callback"
 #~ msgstr "Қайтаруға суретті сақтау үшін жады жеткіліксіз"

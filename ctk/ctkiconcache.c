@@ -22,7 +22,7 @@
 #include "ctkiconcachevalidator.h"
 
 #include <glib/gstdio.h>
-#include <cdk-pixbuf/cdk-pixdata.h>
+#include <gdk-pixbuf/cdk-pixdata.h>
 
 #ifdef HAVE_UNISTD_H
 #include <unistd.h>

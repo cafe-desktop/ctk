@@ -4482,9 +4482,9 @@ msgstr ""
 #~ msgstr "Phošo ya go ngwala faeleng ya seswantšho: %s"
 
 #~ msgid ""
-#~ "This build of cdk-pixbuf does not support saving the image format: %s"
+#~ "This build of gdk-pixbuf does not support saving the image format: %s"
 #~ msgstr ""
-#~ "Kago ye ya cdk-pixbuf ga e thekge go bolokwa ga sebopego sa seswantšho: %s"
+#~ "Kago ye ya gdk-pixbuf ga e thekge go bolokwa ga sebopego sa seswantšho: %s"
 
 #~ msgid "Insufficient memory to save image to callback"
 #~ msgstr "Kgopolo e sa lekanago ya go boloka seswantšho go boea morago"

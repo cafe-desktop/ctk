@@ -564,7 +564,7 @@ PKG_CHECK_MODULES(BASE_DEPENDENCIES,
    fribidi >= fribidi_required_version dnl
    cairo >= cairo_required_version dnl
    cairo-gobject >= cairo_required_version dnl
-   cdk-pixbuf-2.0 >= gdk_pixbuf_required_version])
+   gdk-pixbuf-2.0 >= gdk_pixbuf_required_version])
 
 PKG_CHECK_MODULES(CAIRO_BACKEND, [$cairo_backends])
 
@@ -970,7 +970,7 @@ AC_CHECK_HEADER(sys/sysinfo.h,
                 AC_DEFINE(HAVE_SYS_SYSINFO_H, 1,
                           [Define to 1 if sys/sysinfo.h is available]))
 
-dnl Look for a host system's cdk-pixbuf-csource if we are cross-compiling
+dnl Look for a host system's gdk-pixbuf-csource if we are cross-compiling
 
 AM_CONDITIONAL(CROSS_COMPILING, test $cross_compiling = yes)
 
@@ -1338,7 +1338,7 @@ fi
 CFLAGS="$saved_cflags"
 LDFLAGS="$saved_ldflags"
 
-CDK_PACKAGES="$PANGO_PACKAGES cdk-pixbuf-2.0 >= gdk_pixbuf_required_version cairo >= cairo_required_version cairo-gobject >= cairo_required_version"
+CDK_PACKAGES="$PANGO_PACKAGES gdk-pixbuf-2.0 >= gdk_pixbuf_required_version cairo >= cairo_required_version cairo-gobject >= cairo_required_version"
 CDK_PRIVATE_PACKAGES="$CDK_GIO_PACKAGE $X_PACKAGES $WAYLAND_PACKAGES $cairo_backends epoxy >= epoxy_required_version $CLOUDPROVIDER_PACKAGES $PROFILER_PACKAGES fribidi >= fribidi_required_version"
 
 PKG_CHECK_MODULES(CDK_DEP, $CDK_PACKAGES $CDK_PRIVATE_PACKAGES)
@@ -1372,7 +1372,7 @@ fi
 
 PKG_CHECK_MODULES(ATK, $ATK_PACKAGES)
 
-CTK_PACKAGES="atk >= atk_required_version cairo >= cairo_required_version cairo-gobject >= cairo_required_version cdk-pixbuf-2.0 >= gdk_pixbuf_required_version gio-2.0 >= glib_required_version"
+CTK_PACKAGES="atk >= atk_required_version cairo >= cairo_required_version cairo-gobject >= cairo_required_version gdk-pixbuf-2.0 >= gdk_pixbuf_required_version gio-2.0 >= glib_required_version"
 CTK_PRIVATE_PACKAGES="$ATK_PACKAGES $WAYLAND_PACKAGES epoxy >= epoxy_required_version fribidi >= fribidi_required_version"
 if test "x$enable_x11_backend" = xyes -o "x$enable_wayland_backend" = xyes; then
   CTK_PRIVATE_PACKAGES="$CTK_PRIVATE_PACKAGES pangoft2"
@@ -1475,7 +1475,7 @@ AC_SUBST(ISO_CODES_PREFIX)
 AC_SUBST(CTK_DEBUG_FLAGS)
 AC_SUBST(CTK_XIM_FLAGS)
 
-GDK_PIXBUF_LIBS=`$PKG_CONFIG --libs cdk-pixbuf-2.0`
+GDK_PIXBUF_LIBS=`$PKG_CONFIG --libs gdk-pixbuf-2.0`
 AC_SUBST(GDK_PIXBUF_LIBS)
 
 ################################################################

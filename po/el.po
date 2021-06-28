@@ -9356,9 +9356,9 @@ msgstr "Ακαθόριστο προφίλ"
 #~ msgstr "Σφάλμα κατά την εγγραφή στο αρχείο εικόνας: %s"
 
 #~ msgid ""
-#~ "This build of cdk-pixbuf does not support saving the image format: %s"
+#~ "This build of gdk-pixbuf does not support saving the image format: %s"
 #~ msgstr ""
-#~ "Αυτή η έκδοση του cdk-pixbuf δεν υποστηρίζει αποθήκευση του τύπου "
+#~ "Αυτή η έκδοση του gdk-pixbuf δεν υποστηρίζει αποθήκευση του τύπου "
 #~ "εικόνας : %s"
 
 #~ msgid "Insufficient memory to save image to callback"

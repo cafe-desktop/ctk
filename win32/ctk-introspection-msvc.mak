@@ -4,7 +4,7 @@
 
 APIVERSION = 3.0
 
-CHECK_PACKAGE = cdk-pixbuf-2.0 atk pangocairo gio-2.0
+CHECK_PACKAGE = gdk-pixbuf-2.0 atk pangocairo gio-2.0
 
 built_install_girs =	\
 	vs$(VSVER)\$(CFG)\$(PLAT)\bin\Cdk-$(APIVERSION).gir	\

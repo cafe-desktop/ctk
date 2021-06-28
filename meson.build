@@ -444,8 +444,8 @@ endif
 
 pangocairo_dep = dependency('pangocairo', version: cairo_req,
                             fallback : ['pango', 'libpangocairo_dep'])
-pixbuf_dep     = dependency('cdk-pixbuf-2.0', version: gdk_pixbuf_req,
-                            fallback : ['cdk-pixbuf', 'gdkpixbuf_dep'])
+pixbuf_dep     = dependency('gdk-pixbuf-2.0', version: gdk_pixbuf_req,
+                            fallback : ['gdk-pixbuf', 'gdkpixbuf_dep'])
 epoxy_dep      = dependency('epoxy', version: epoxy_req,
                             fallback: ['libepoxy', 'libepoxy_dep'])
 atk_dep        = dependency('atk', version: atk_req,
@@ -872,7 +872,7 @@ pkgconf.set('host', '@0@-@1@'.format(host_machine.cpu_family(), host_machine.sys
 pango_pkgname = win32_enabled ? 'pangowin32' : 'pango'
 cdk_packages = ' '.join([ pango_pkgname, pango_req,
                        'pangocairo', pango_req,
-                       'cdk-pixbuf-2.0', gdk_pixbuf_req ])
+                       'gdk-pixbuf-2.0', gdk_pixbuf_req ])
 
 cairo_packages = ''
 

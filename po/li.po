@@ -4476,9 +4476,9 @@ msgstr ""
 #~ msgstr "Faeler bie 't interpretere van JPEG-aafbiljing (%s)"
 
 #~ msgid ""
-#~ "This build of cdk-pixbuf does not support saving the image format: %s"
+#~ "This build of gdk-pixbuf does not support saving the image format: %s"
 #~ msgstr ""
-#~ "Dees verzie van cdk-pixbuf haet gein sjtiep veur 't opsjlaon van 't "
+#~ "Dees verzie van gdk-pixbuf haet gein sjtiep veur 't opsjlaon van 't "
 #~ "besjtandjsformaat: %s"
 
 #, fuzzy

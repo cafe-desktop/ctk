@@ -178,10 +178,10 @@ How to compile CTK+ itself
       </listitem>
       <listitem>
         <para>
-          The <ulink url="https://git.gnome.org/browse/cdk-pixbuf/">GdkPixbuf library</ulink>
+          The <ulink url="https://git.gnome.org/browse/gdk-pixbuf/">GdkPixbuf library</ulink>
           provides facilities for loading images in a variety of file formats.
           It is available
-          <ulink url="https://download.gnome.org/sources/cdk-pixbuf/">here</ulink>.
+          <ulink url="https://download.gnome.org/sources/gdk-pixbuf/">here</ulink>.
         </para>
       </listitem>
       <listitem>
@@ -272,10 +272,10 @@ How to compile CTK+ itself
           The <ulink url="https://www.freedesktop.org/wiki/Software/shared-mime-info">shared-mime-info</ulink>
           package is not a hard dependency of CTK+, but it contains definitions
           for mime types that are used by GIO and, indirectly, by CTK+.
-          cdk-pixbuf will use GIO for mime type detection if possible. For this
+          gdk-pixbuf will use GIO for mime type detection if possible. For this
           to work, shared-mime-info needs to be installed and
           <envar>XDG_DATA_DIRS</envar> set accordingly at configure time.
-          Otherwise, cdk-pixbuf falls back to its built-in mime type detection.
+          Otherwise, gdk-pixbuf falls back to its built-in mime type detection.
         </para>
       </listitem>
     </itemizedlist>

@@ -8480,8 +8480,8 @@ msgstr "Cetak untuk Uji Pencetak"
 #~ msgstr "Ralat ketika menulis ke fail imej: %s"
 
 #~ msgid ""
-#~ "This build of cdk-pixbuf does not support saving the image format: %s"
-#~ msgstr "Binaan  cdk-pixbuf ini tak menyokong penyimpanan format imej: %s"
+#~ "This build of gdk-pixbuf does not support saving the image format: %s"
+#~ msgstr "Binaan  gdk-pixbuf ini tak menyokong penyimpanan format imej: %s"
 
 #~ msgid "Insufficient memory to save image to callback"
 #~ msgstr "Tak cukup memori untuk menyimpan imej ke callback"

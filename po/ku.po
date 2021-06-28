@@ -4289,8 +4289,8 @@ msgstr ""
 #~ msgstr "Çewtiya nivisandinê ya pelê wêne : %s"
 
 #~ msgid ""
-#~ "This build of cdk-pixbuf does not support saving the image format: %s"
-#~ msgstr "Ev avakirina cdk-pixbuf destekê nade tomarkirina formata wêne: %s"
+#~ "This build of gdk-pixbuf does not support saving the image format: %s"
+#~ msgstr "Ev avakirina gdk-pixbuf destekê nade tomarkirina formata wêne: %s"
 
 #~ msgid "Insufficient memory to save image to callback"
 #~ msgstr "Ji bo paş de vegerandinê dema wêne dihate tomarkirin bîr têrê nake"

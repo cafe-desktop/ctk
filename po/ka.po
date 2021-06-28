@@ -4460,9 +4460,9 @@ msgstr ""
 #~ msgstr "გამოსახულების ფაილის ჩაწერის შეცდომა: %s"
 
 #~ msgid ""
-#~ "This build of cdk-pixbuf does not support saving the image format: %s"
+#~ "This build of gdk-pixbuf does not support saving the image format: %s"
 #~ msgstr ""
-#~ "ეს ქვესისტემა \"cdk-pixbuf\" ვერ უზრუნველყოფს ფაილის შენახვას ფორმატით: %s"
+#~ "ეს ქვესისტემა \"gdk-pixbuf\" ვერ უზრუნველყოფს ფაილის შენახვას ფორმატით: %s"
 
 #~ msgid "Insufficient memory to save image to callback"
 #~ msgstr "მეხსიერების უკმარისობა გამოსახულების ფაილის შესანახად"

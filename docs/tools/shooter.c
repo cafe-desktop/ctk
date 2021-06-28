@@ -7,7 +7,7 @@
 #include <unistd.h>
 #include <X11/extensions/shape.h>
 
-#include <cdk-pixbuf/cdk-pixbuf.h>
+#include <gdk-pixbuf/gdk-pixbuf.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/wait.h>

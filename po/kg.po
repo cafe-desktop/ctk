@@ -277,966 +277,966 @@ msgctxt "keyboard label"
 msgid "Delete"
 msgstr "vidisa"
 
-#: ../cdk-pixbuf/cdk-pixbuf-animation.c:133
-#: ../cdk-pixbuf/cdk-pixbuf-io.c:982
-#: ../cdk-pixbuf/cdk-pixbuf-io.c:1242
+#: ../gdk-pixbuf/gdk-pixbuf-animation.c:133
+#: ../gdk-pixbuf/gdk-pixbuf-io.c:982
+#: ../gdk-pixbuf/gdk-pixbuf-io.c:1242
 #: ../tests/testfilechooser.c:222
 #, c-format
 msgid "Failed to open file '%s': %s"
 msgstr "kilendi tanga « '%s' » ko: %s"
 
-#: ../cdk-pixbuf/cdk-pixbuf-animation.c:146
-#: ../cdk-pixbuf/cdk-pixbuf-io.c:994
+#: ../gdk-pixbuf/gdk-pixbuf-animation.c:146
+#: ../gdk-pixbuf/gdk-pixbuf-io.c:994
 #, c-format
 msgid "Image file '%s' contains no data"
 msgstr "kilala kia kifuanisu kia %s kina ye kima ko"
 
-#: ../cdk-pixbuf/cdk-pixbuf-animation.c:188
-#: ../cdk-pixbuf/cdk-pixbuf-io.c:1030
-#: ../cdk-pixbuf/cdk-pixbuf-io.c:1294
+#: ../gdk-pixbuf/gdk-pixbuf-animation.c:188
+#: ../gdk-pixbuf/gdk-pixbuf-io.c:1030
+#: ../gdk-pixbuf/gdk-pixbuf-io.c:1294
 #: ../tests/testfilechooser.c:267
 #, c-format
 msgid "Failed to load image '%s': reason not known, probably a corrupt image file"
 msgstr "kilendi tanga « %s » ko : nanga fuani kiki kiapatakasa"
 
-#: ../cdk-pixbuf/cdk-pixbuf-animation.c:221
+#: ../gdk-pixbuf/gdk-pixbuf-animation.c:221
 #, c-format
 #| msgid ""
 #| "Failed to load image '%s': reason not known, probably a corrupt image file"
 msgid "Failed to load animation '%s': reason not known, probably a corrupt animation file"
 msgstr "kilendi tanga « %s » ko : nanga fuani kiki kiapatakasa"
 
-#: ../cdk-pixbuf/cdk-pixbuf-io.c:715
+#: ../gdk-pixbuf/gdk-pixbuf-io.c:715
 #, c-format
 #| msgid "Unable to locate theme engine in module_path: \"%s\","
 msgid "Unable to load image-loading module: %s: %s"
 msgstr "busongi mvuatu bu i namisa wo nkatu: %s: « %s »"
 
-#: ../cdk-pixbuf/cdk-pixbuf-io.c:730
+#: ../gdk-pixbuf/gdk-pixbuf-io.c:730
 #, c-format
 msgid "Image-loading module %s does not export the proper interface; perhaps it's from a different CTK version?"
 msgstr ""
 
-#: ../cdk-pixbuf/cdk-pixbuf-io.c:739
-#: ../cdk-pixbuf/cdk-pixbuf-io.c:790
+#: ../gdk-pixbuf/gdk-pixbuf-io.c:739
+#: ../gdk-pixbuf/gdk-pixbuf-io.c:790
 #, c-format
 msgid "Image type '%s' is not supported"
 msgstr "kizeyi mpila kifuanisu ki %s ko"
 
-#: ../cdk-pixbuf/cdk-pixbuf-io.c:863
+#: ../gdk-pixbuf/gdk-pixbuf-io.c:863
 #, c-format
 #| msgid "Could not get information for file '%s': %s"
 msgid "Couldn't recognize the image file format for file '%s'"
 msgstr "kilendi tanga mambu ma « '%s' » ko"
 
-#: ../cdk-pixbuf/cdk-pixbuf-io.c:871
+#: ../gdk-pixbuf/gdk-pixbuf-io.c:871
 msgid "Unrecognized image file format"
 msgstr "kizeyi mpila kifuanisu kiki ko"
 
-#: ../cdk-pixbuf/cdk-pixbuf-io.c:1039
+#: ../gdk-pixbuf/gdk-pixbuf-io.c:1039
 #, c-format
 #| msgid "Failed to open file '%s': %s"
 msgid "Failed to load image '%s': %s"
 msgstr "kilendi tanga « '%s' » ko: %s"
 
-#: ../cdk-pixbuf/cdk-pixbuf-io.c:1673
-#: ../cdk-pixbuf/io-gdip-utils.c:883
+#: ../gdk-pixbuf/gdk-pixbuf-io.c:1673
+#: ../gdk-pixbuf/io-gdip-utils.c:883
 #, c-format
 #| msgid "Error deleting file '%s': %s"
 msgid "Error writing to image file: %s"
 msgstr "kilala: « %s », bu kivunzuna nkatu"
 
-#: ../cdk-pixbuf/cdk-pixbuf-io.c:1718
-#: ../cdk-pixbuf/cdk-pixbuf-io.c:1848
+#: ../gdk-pixbuf/gdk-pixbuf-io.c:1718
+#: ../gdk-pixbuf/gdk-pixbuf-io.c:1848
 #, c-format
-msgid "This build of cdk-pixbuf does not support saving the image format: %s"
+msgid "This build of gdk-pixbuf does not support saving the image format: %s"
 msgstr ""
 
-#: ../cdk-pixbuf/cdk-pixbuf-io.c:1752
+#: ../gdk-pixbuf/gdk-pixbuf-io.c:1752
 msgid "Insufficient memory to save image to callback"
 msgstr "kifimpilu nkatu"
 
-#: ../cdk-pixbuf/cdk-pixbuf-io.c:1765
+#: ../gdk-pixbuf/gdk-pixbuf-io.c:1765
 #| msgid "Failed to open file %s : %s\n"
 msgid "Failed to open temporary file"
 msgstr "kilala kimvioka bu kizibuka nkatu"
 
-#: ../cdk-pixbuf/cdk-pixbuf-io.c:1791
+#: ../gdk-pixbuf/gdk-pixbuf-io.c:1791
 #| msgid "Failed to write folder index\n"
 msgid "Failed to read from temporary file"
 msgstr "kilala kimvioka bu i tanga kio nkatu"
 
-#: ../cdk-pixbuf/cdk-pixbuf-io.c:2044
+#: ../gdk-pixbuf/gdk-pixbuf-io.c:2044
 #, c-format
 #| msgid "Failed to open file '%s': %s"
 msgid "Failed to open '%s' for writing: %s"
 msgstr "kilendi tanga « '%s' » ko: %s"
 
-#: ../cdk-pixbuf/cdk-pixbuf-io.c:2070
+#: ../gdk-pixbuf/gdk-pixbuf-io.c:2070
 #, c-format
 msgid "Failed to close '%s' while writing image, all data may not have been saved: %s"
 msgstr "bu nkele sokae kifuanisu ki, '%s' kayizolele kangama ko. nanga mafiuma mankaka mavididi:%s"
 
-#: ../cdk-pixbuf/cdk-pixbuf-io.c:2290
-#: ../cdk-pixbuf/cdk-pixbuf-io.c:2341
+#: ../gdk-pixbuf/gdk-pixbuf-io.c:2290
+#: ../gdk-pixbuf/gdk-pixbuf-io.c:2341
 msgid "Insufficient memory to save image into a buffer"
 msgstr "kifimpilu nkatu"
 
-#: ../cdk-pixbuf/cdk-pixbuf-io.c:2387
+#: ../gdk-pixbuf/gdk-pixbuf-io.c:2387
 msgid "Error writing to image stream"
 msgstr ""
 
-#: ../cdk-pixbuf/cdk-pixbuf-loader.c:330
+#: ../gdk-pixbuf/gdk-pixbuf-loader.c:330
 #, c-format
 msgid "Internal error: Image loader module '%s' failed to complete an operation, but didn't give a reason for the failure"
 msgstr ""
 
-#: ../cdk-pixbuf/cdk-pixbuf-loader.c:372
+#: ../gdk-pixbuf/gdk-pixbuf-loader.c:372
 #, c-format
 msgid "Incremental loading of image type '%s' is not supported"
 msgstr ""
 
-#: ../cdk-pixbuf/cdk-pixdata.c:147
+#: ../gdk-pixbuf/cdk-pixdata.c:147
 msgid "Image header corrupt"
 msgstr "mpu a kifuanisu kivuunzuni"
 
-#: ../cdk-pixbuf/cdk-pixdata.c:152
+#: ../gdk-pixbuf/cdk-pixdata.c:152
 msgid "Image format unknown"
 msgstr "kizeye ntindu yi kia kifuanisu ko"
 
-#: ../cdk-pixbuf/cdk-pixdata.c:157
-#: ../cdk-pixbuf/cdk-pixdata.c:488
+#: ../gdk-pixbuf/cdk-pixdata.c:157
+#: ../gdk-pixbuf/cdk-pixdata.c:488
 msgid "Image pixel data corrupt"
 msgstr ""
 
-#: ../cdk-pixbuf/cdk-pixdata.c:432
+#: ../gdk-pixbuf/cdk-pixdata.c:432
 #, c-format
 msgid "failed to allocate image buffer of %u byte"
 msgid_plural "failed to allocate image buffer of %u bytes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../cdk-pixbuf/io-ani.c:244
+#: ../gdk-pixbuf/io-ani.c:244
 msgid "Unexpected icon chunk in animation"
 msgstr ""
 
-#: ../cdk-pixbuf/io-ani.c:337
+#: ../gdk-pixbuf/io-ani.c:337
 msgid "Unsupported animation type"
 msgstr ""
 
-#: ../cdk-pixbuf/io-ani.c:348
-#: ../cdk-pixbuf/io-ani.c:406
-#: ../cdk-pixbuf/io-ani.c:432
-#: ../cdk-pixbuf/io-ani.c:455
-#: ../cdk-pixbuf/io-ani.c:482
-#: ../cdk-pixbuf/io-ani.c:569
+#: ../gdk-pixbuf/io-ani.c:348
+#: ../gdk-pixbuf/io-ani.c:406
+#: ../gdk-pixbuf/io-ani.c:432
+#: ../gdk-pixbuf/io-ani.c:455
+#: ../gdk-pixbuf/io-ani.c:482
+#: ../gdk-pixbuf/io-ani.c:569
 msgid "Invalid header in animation"
 msgstr "mpu ya mbi"
 
-#: ../cdk-pixbuf/io-ani.c:358
-#: ../cdk-pixbuf/io-ani.c:380
-#: ../cdk-pixbuf/io-ani.c:464
-#: ../cdk-pixbuf/io-ani.c:491
-#: ../cdk-pixbuf/io-ani.c:542
-#: ../cdk-pixbuf/io-ani.c:614
+#: ../gdk-pixbuf/io-ani.c:358
+#: ../gdk-pixbuf/io-ani.c:380
+#: ../gdk-pixbuf/io-ani.c:464
+#: ../gdk-pixbuf/io-ani.c:491
+#: ../gdk-pixbuf/io-ani.c:542
+#: ../gdk-pixbuf/io-ani.c:614
 msgid "Not enough memory to load animation"
 msgstr "fifimpilu fike"
 
-#: ../cdk-pixbuf/io-ani.c:398
-#: ../cdk-pixbuf/io-ani.c:424
-#: ../cdk-pixbuf/io-ani.c:443
+#: ../gdk-pixbuf/io-ani.c:398
+#: ../gdk-pixbuf/io-ani.c:424
+#: ../gdk-pixbuf/io-ani.c:443
 msgid "Malformed chunk in animation"
 msgstr ""
 
-#: ../cdk-pixbuf/io-ani.c:711
+#: ../gdk-pixbuf/io-ani.c:711
 msgid "The ANI image format"
 msgstr ""
 
-#: ../cdk-pixbuf/io-bmp.c:230
-#: ../cdk-pixbuf/io-bmp.c:267
-#: ../cdk-pixbuf/io-bmp.c:338
-#: ../cdk-pixbuf/io-bmp.c:370
-#: ../cdk-pixbuf/io-bmp.c:393
-#: ../cdk-pixbuf/io-bmp.c:496
+#: ../gdk-pixbuf/io-bmp.c:230
+#: ../gdk-pixbuf/io-bmp.c:267
+#: ../gdk-pixbuf/io-bmp.c:338
+#: ../gdk-pixbuf/io-bmp.c:370
+#: ../gdk-pixbuf/io-bmp.c:393
+#: ../gdk-pixbuf/io-bmp.c:496
 msgid "BMP image has bogus header data"
 msgstr ""
 
-#: ../cdk-pixbuf/io-bmp.c:241
-#: ../cdk-pixbuf/io-bmp.c:433
+#: ../gdk-pixbuf/io-bmp.c:241
+#: ../gdk-pixbuf/io-bmp.c:433
 msgid "Not enough memory to load bitmap image"
 msgstr "kifimpilu nkatu"
 
-#: ../cdk-pixbuf/io-bmp.c:319
+#: ../gdk-pixbuf/io-bmp.c:319
 msgid "BMP image has unsupported header size"
 msgstr ""
 
-#: ../cdk-pixbuf/io-bmp.c:357
+#: ../gdk-pixbuf/io-bmp.c:357
 msgid "Topdown BMP images cannot be compressed"
 msgstr ""
 
-#: ../cdk-pixbuf/io-bmp.c:717
-#: ../cdk-pixbuf/io-pnm.c:709
+#: ../gdk-pixbuf/io-bmp.c:717
+#: ../gdk-pixbuf/io-pnm.c:709
 msgid "Premature end-of-file encountered"
 msgstr ""
 
-#: ../cdk-pixbuf/io-bmp.c:1329
+#: ../gdk-pixbuf/io-bmp.c:1329
 msgid "Couldn't allocate memory for saving BMP file"
 msgstr "kifimpilu nkatu"
 
-#: ../cdk-pixbuf/io-bmp.c:1370
+#: ../gdk-pixbuf/io-bmp.c:1370
 #| msgid "Could not select file"
 msgid "Couldn't write to BMP file"
 msgstr "bu lundisae kilala nkatu"
 
-#: ../cdk-pixbuf/io-bmp.c:1423
-#: ../cdk-pixbuf/io-gdip-bmp.c:82
+#: ../gdk-pixbuf/io-bmp.c:1423
+#: ../gdk-pixbuf/io-gdip-bmp.c:82
 msgid "The BMP image format"
 msgstr ""
 
-#: ../cdk-pixbuf/io-gif.c:222
+#: ../gdk-pixbuf/io-gif.c:222
 #, c-format
 msgid "Failure reading GIF: %s"
 msgstr "%s: bu itanga kio nkatu"
 
-#: ../cdk-pixbuf/io-gif.c:496
-#: ../cdk-pixbuf/io-gif.c:1481
-#: ../cdk-pixbuf/io-gif.c:1642
+#: ../gdk-pixbuf/io-gif.c:496
+#: ../gdk-pixbuf/io-gif.c:1481
+#: ../gdk-pixbuf/io-gif.c:1642
 msgid "GIF file was missing some data (perhaps it was truncated somehow?)"
 msgstr ""
 
-#: ../cdk-pixbuf/io-gif.c:505
+#: ../gdk-pixbuf/io-gif.c:505
 #, c-format
 msgid "Internal error in the GIF loader (%s)"
 msgstr ""
 
-#: ../cdk-pixbuf/io-gif.c:579
+#: ../gdk-pixbuf/io-gif.c:579
 msgid "Stack overflow"
 msgstr ""
 
-#: ../cdk-pixbuf/io-gif.c:639
+#: ../gdk-pixbuf/io-gif.c:639
 msgid "GIF image loader cannot understand this image."
 msgstr ""
 
-#: ../cdk-pixbuf/io-gif.c:668
+#: ../gdk-pixbuf/io-gif.c:668
 msgid "Bad code encountered"
 msgstr ""
 
-#: ../cdk-pixbuf/io-gif.c:678
+#: ../gdk-pixbuf/io-gif.c:678
 msgid "Circular table entry in GIF file"
 msgstr ""
 
-#: ../cdk-pixbuf/io-gif.c:866
-#: ../cdk-pixbuf/io-gif.c:1468
-#: ../cdk-pixbuf/io-gif.c:1515
-#: ../cdk-pixbuf/io-gif.c:1630
+#: ../gdk-pixbuf/io-gif.c:866
+#: ../gdk-pixbuf/io-gif.c:1468
+#: ../gdk-pixbuf/io-gif.c:1515
+#: ../gdk-pixbuf/io-gif.c:1630
 #| msgid "Not enough free memory"
 msgid "Not enough memory to load GIF file"
 msgstr "nteesilu yike"
 
-#: ../cdk-pixbuf/io-gif.c:960
+#: ../gdk-pixbuf/io-gif.c:960
 msgid "Not enough memory to composite a frame in GIF file"
 msgstr "kifimpilu nkatu"
 
-#: ../cdk-pixbuf/io-gif.c:1132
+#: ../gdk-pixbuf/io-gif.c:1132
 msgid "GIF image is corrupt (incorrect LZW compression)"
 msgstr ""
 
-#: ../cdk-pixbuf/io-gif.c:1182
+#: ../gdk-pixbuf/io-gif.c:1182
 msgid "File does not appear to be a GIF file"
 msgstr "kilala ki, ka kia gif ko"
 
-#: ../cdk-pixbuf/io-gif.c:1194
+#: ../gdk-pixbuf/io-gif.c:1194
 #, c-format
 msgid "Version %s of the GIF file format is not supported"
 msgstr ""
 
-#: ../cdk-pixbuf/io-gif.c:1303
+#: ../gdk-pixbuf/io-gif.c:1303
 msgid "GIF image has no global colormap, and a frame inside it has no local colormap."
 msgstr ""
 
-#: ../cdk-pixbuf/io-gif.c:1537
+#: ../gdk-pixbuf/io-gif.c:1537
 msgid "GIF image was truncated or incomplete."
 msgstr "kifuanisu ki kia GIF kizengolo"
 
-#: ../cdk-pixbuf/io-gif.c:1693
-#: ../cdk-pixbuf/io-gdip-gif.c:80
+#: ../gdk-pixbuf/io-gif.c:1693
+#: ../gdk-pixbuf/io-gdip-gif.c:80
 msgid "The GIF image format"
 msgstr "bifuanisu bia GIF"
 
-#: ../cdk-pixbuf/io-ico.c:211
-#: ../cdk-pixbuf/io-ico.c:225
-#: ../cdk-pixbuf/io-ico.c:277
-#: ../cdk-pixbuf/io-ico.c:290
-#: ../cdk-pixbuf/io-ico.c:359
+#: ../gdk-pixbuf/io-ico.c:211
+#: ../gdk-pixbuf/io-ico.c:225
+#: ../gdk-pixbuf/io-ico.c:277
+#: ../gdk-pixbuf/io-ico.c:290
+#: ../gdk-pixbuf/io-ico.c:359
 #| msgid "Invalid handle to PrintDlgEx"
 msgid "Invalid header in icon"
 msgstr "mpu a kiteki wa mbi kena"
 
-#: ../cdk-pixbuf/io-ico.c:240
-#: ../cdk-pixbuf/io-ico.c:300
-#: ../cdk-pixbuf/io-ico.c:369
-#: ../cdk-pixbuf/io-ico.c:432
-#: ../cdk-pixbuf/io-ico.c:462
+#: ../gdk-pixbuf/io-ico.c:240
+#: ../gdk-pixbuf/io-ico.c:300
+#: ../gdk-pixbuf/io-ico.c:369
+#: ../gdk-pixbuf/io-ico.c:432
+#: ../gdk-pixbuf/io-ico.c:462
 #| msgid "Not enough free memory"
 msgid "Not enough memory to load icon"
 msgstr "nteesilu yike"
 
-#: ../cdk-pixbuf/io-ico.c:322
+#: ../gdk-pixbuf/io-ico.c:322
 msgid "Icon has zero width"
 msgstr "bunene bua kiteki kio wa mpavala yina"
 
-#: ../cdk-pixbuf/io-ico.c:332
+#: ../gdk-pixbuf/io-ico.c:332
 msgid "Icon has zero height"
 msgstr "nkubu a kiteki kio ya mpavala yina"
 
-#: ../cdk-pixbuf/io-ico.c:384
+#: ../gdk-pixbuf/io-ico.c:384
 msgid "Compressed icons are not supported"
 msgstr ""
 
-#: ../cdk-pixbuf/io-ico.c:417
+#: ../gdk-pixbuf/io-ico.c:417
 msgid "Unsupported icon type"
 msgstr ""
 
-#: ../cdk-pixbuf/io-ico.c:511
+#: ../gdk-pixbuf/io-ico.c:511
 #| msgid "Not enough free memory"
 msgid "Not enough memory to load ICO file"
 msgstr "nteesilu yike"
 
-#: ../cdk-pixbuf/io-ico.c:976
+#: ../gdk-pixbuf/io-ico.c:976
 msgid "Image too large to be saved as ICO"
 msgstr "kifuanisu ki kia nene kingi, bu ikitula kio ICO nkatu"
 
-#: ../cdk-pixbuf/io-ico.c:987
+#: ../gdk-pixbuf/io-ico.c:987
 msgid "Cursor hotspot outside image"
 msgstr ""
 
-#: ../cdk-pixbuf/io-ico.c:1010
+#: ../gdk-pixbuf/io-ico.c:1010
 #, c-format
 msgid "Unsupported depth for ICO file: %d"
 msgstr "mpinda yi %d kena ya dedana ye kilala kia ICO ko."
 
-#: ../cdk-pixbuf/io-ico.c:1245
-#: ../cdk-pixbuf/io-gdip-ico.c:59
+#: ../gdk-pixbuf/io-ico.c:1245
+#: ../gdk-pixbuf/io-gdip-ico.c:59
 msgid "The ICO image format"
 msgstr "bifuanisu bia ICO"
 
-#: ../cdk-pixbuf/io-icns.c:347
+#: ../gdk-pixbuf/io-icns.c:347
 #, c-format
 #| msgid "Error loading icon: %s"
 msgid "Error reading ICNS image: %s"
 msgstr "kifuanisu ki bu itanga kio nkatu %s"
 
-#: ../cdk-pixbuf/io-icns.c:364
+#: ../gdk-pixbuf/io-icns.c:364
 #| msgid "Could not select file"
 msgid "Could not decode ICNS file"
 msgstr "kilala ki bu itanga kio nkatu %s"
 
-#: ../cdk-pixbuf/io-icns.c:397
+#: ../gdk-pixbuf/io-icns.c:397
 msgid "The ICNS image format"
 msgstr "bifuanisu bia ICNS"
 
-#: ../cdk-pixbuf/io-jasper.c:75
+#: ../gdk-pixbuf/io-jasper.c:75
 msgid "Couldn't allocate memory for stream"
 msgstr "kifimpilu nkatus"
 
-#: ../cdk-pixbuf/io-jasper.c:105
+#: ../gdk-pixbuf/io-jasper.c:105
 #| msgid "Couldn't convert filename"
 msgid "Couldn't decode image"
 msgstr "kifuanisu ki bu itanga kio nkatu %s"
 
-#: ../cdk-pixbuf/io-jasper.c:123
+#: ../gdk-pixbuf/io-jasper.c:123
 msgid "Transformed JPEG2000 has zero width or height"
 msgstr ""
 
-#: ../cdk-pixbuf/io-jasper.c:137
+#: ../gdk-pixbuf/io-jasper.c:137
 msgid "Image type currently not supported"
 msgstr ""
 
-#: ../cdk-pixbuf/io-jasper.c:149
-#: ../cdk-pixbuf/io-jasper.c:157
+#: ../gdk-pixbuf/io-jasper.c:149
+#: ../gdk-pixbuf/io-jasper.c:157
 msgid "Couldn't allocate memory for color profile"
 msgstr "kifimpilu nkatu"
 
-#: ../cdk-pixbuf/io-jasper.c:183
+#: ../gdk-pixbuf/io-jasper.c:183
 msgid "Insufficient memory to open JPEG 2000 file"
 msgstr "kifimpilu kike muna tanga kilala kio kia JPEG"
 
-#: ../cdk-pixbuf/io-jasper.c:262
+#: ../gdk-pixbuf/io-jasper.c:262
 msgid "Couldn't allocate memory to buffer image data"
 msgstr "kifimpilu nkatu"
 
-#: ../cdk-pixbuf/io-jasper.c:306
+#: ../gdk-pixbuf/io-jasper.c:306
 msgid "The JPEG 2000 image format"
 msgstr ""
 
-#: ../cdk-pixbuf/io-jpeg.c:117
+#: ../gdk-pixbuf/io-jpeg.c:117
 #, c-format
 msgid "Error interpreting JPEG image file (%s)"
 msgstr "kifuanisu ki kia JPEG bu itanga kio nkatu (%s)"
 
-#: ../cdk-pixbuf/io-jpeg.c:528
+#: ../gdk-pixbuf/io-jpeg.c:528
 msgid "Insufficient memory to load image, try exiting some applications to free memory"
 msgstr "kifimpilu nkatu"
 
-#: ../cdk-pixbuf/io-jpeg.c:569
-#: ../cdk-pixbuf/io-jpeg.c:775
+#: ../gdk-pixbuf/io-jpeg.c:569
+#: ../gdk-pixbuf/io-jpeg.c:775
 #, c-format
 msgid "Unsupported JPEG color space (%s)"
 msgstr ""
 
-#: ../cdk-pixbuf/io-jpeg.c:674
-#: ../cdk-pixbuf/io-jpeg.c:944
-#: ../cdk-pixbuf/io-jpeg.c:1177
-#: ../cdk-pixbuf/io-jpeg.c:1186
+#: ../gdk-pixbuf/io-jpeg.c:674
+#: ../gdk-pixbuf/io-jpeg.c:944
+#: ../gdk-pixbuf/io-jpeg.c:1177
+#: ../gdk-pixbuf/io-jpeg.c:1186
 msgid "Couldn't allocate memory for loading JPEG file"
 msgstr "kifimpilu nkatu"
 
-#: ../cdk-pixbuf/io-jpeg.c:919
+#: ../gdk-pixbuf/io-jpeg.c:919
 msgid "Transformed JPEG has zero width or height."
 msgstr "kilala kia JPEG kisobolo, bunene/nkubu andi yi 0"
 
-#: ../cdk-pixbuf/io-jpeg.c:1133
-#: ../cdk-pixbuf/io-gdip-jpeg.c:53
+#: ../gdk-pixbuf/io-jpeg.c:1133
+#: ../gdk-pixbuf/io-gdip-jpeg.c:53
 #, c-format
 msgid "JPEG quality must be a value between 0 and 100; value '%s' could not be parsed."
 msgstr "bumpuenia bua JPEG i ntalu kati kua 0 ye 100. %s kena  ya betila ko"
 
-#: ../cdk-pixbuf/io-jpeg.c:1148
-#: ../cdk-pixbuf/io-gdip-jpeg.c:68
+#: ../gdk-pixbuf/io-jpeg.c:1148
+#: ../gdk-pixbuf/io-gdip-jpeg.c:68
 #, c-format
 msgid "JPEG quality must be a value between 0 and 100; value '%d' is not allowed."
 msgstr "bumpuenia bua JPEG i ntalu kati kua 0 ye 100. %d kena  ya betila ko"
 
-#: ../cdk-pixbuf/io-jpeg.c:1310
-#: ../cdk-pixbuf/io-gdip-jpeg.c:136
+#: ../gdk-pixbuf/io-jpeg.c:1310
+#: ../gdk-pixbuf/io-gdip-jpeg.c:136
 msgid "The JPEG image format"
 msgstr "bifuanisu bia JPEG"
 
-#: ../cdk-pixbuf/io-pcx.c:187
+#: ../gdk-pixbuf/io-pcx.c:187
 msgid "Couldn't allocate memory for header"
 msgstr "kifimpilu nkatu"
 
-#: ../cdk-pixbuf/io-pcx.c:202
-#: ../cdk-pixbuf/io-pcx.c:560
+#: ../gdk-pixbuf/io-pcx.c:202
+#: ../gdk-pixbuf/io-pcx.c:560
 msgid "Couldn't allocate memory for context buffer"
 msgstr "kifimpilu nkatu"
 
-#: ../cdk-pixbuf/io-pcx.c:601
+#: ../gdk-pixbuf/io-pcx.c:601
 msgid "Image has invalid width and/or height"
 msgstr "kifuanisu ki, bunene/nkubu andi kena ya betila ko."
 
-#: ../cdk-pixbuf/io-pcx.c:613
-#: ../cdk-pixbuf/io-pcx.c:674
+#: ../gdk-pixbuf/io-pcx.c:613
+#: ../gdk-pixbuf/io-pcx.c:674
 msgid "Image has unsupported bpp"
 msgstr ""
 
-#: ../cdk-pixbuf/io-pcx.c:618
-#: ../cdk-pixbuf/io-pcx.c:626
+#: ../gdk-pixbuf/io-pcx.c:618
+#: ../gdk-pixbuf/io-pcx.c:626
 #, c-format
 msgid "Image has unsupported number of %d-bit planes"
 msgstr ""
 
-#: ../cdk-pixbuf/io-pcx.c:642
+#: ../gdk-pixbuf/io-pcx.c:642
 #| msgid "Could not read the contents of %s"
 msgid "Couldn't create new pixbuf"
 msgstr "%s bu ivanga kio nkatu"
 
-#: ../cdk-pixbuf/io-pcx.c:650
+#: ../gdk-pixbuf/io-pcx.c:650
 msgid "Couldn't allocate memory for line data"
 msgstr "kifimpilu nkatu"
 
-#: ../cdk-pixbuf/io-pcx.c:657
+#: ../gdk-pixbuf/io-pcx.c:657
 msgid "Couldn't allocate memory for paletted data"
 msgstr "kifimpilu nkatu"
 
-#: ../cdk-pixbuf/io-pcx.c:704
+#: ../gdk-pixbuf/io-pcx.c:704
 msgid "Didn't get all lines of PCX image"
 msgstr "malonga mankaka ma kifuanisu ki, makondolo"
 
-#: ../cdk-pixbuf/io-pcx.c:711
+#: ../gdk-pixbuf/io-pcx.c:711
 msgid "No palette found at end of PCX data"
 msgstr ""
 
-#: ../cdk-pixbuf/io-pcx.c:756
+#: ../gdk-pixbuf/io-pcx.c:756
 msgid "The PCX image format"
 msgstr "bifuanisu bia PCX"
 
-#: ../cdk-pixbuf/io-png.c:55
+#: ../gdk-pixbuf/io-png.c:55
 msgid "Bits per channel of PNG image is invalid."
 msgstr ""
 
-#: ../cdk-pixbuf/io-png.c:136
-#: ../cdk-pixbuf/io-png.c:642
+#: ../gdk-pixbuf/io-png.c:136
+#: ../gdk-pixbuf/io-png.c:642
 msgid "Transformed PNG has zero width or height."
 msgstr ""
 
-#: ../cdk-pixbuf/io-png.c:144
+#: ../gdk-pixbuf/io-png.c:144
 msgid "Bits per channel of transformed PNG is not 8."
 msgstr ""
 
-#: ../cdk-pixbuf/io-png.c:153
+#: ../gdk-pixbuf/io-png.c:153
 msgid "Transformed PNG not RGB or RGBA."
 msgstr ""
 
-#: ../cdk-pixbuf/io-png.c:162
+#: ../gdk-pixbuf/io-png.c:162
 msgid "Transformed PNG has unsupported number of channels, must be 3 or 4."
 msgstr ""
 
-#: ../cdk-pixbuf/io-png.c:183
+#: ../gdk-pixbuf/io-png.c:183
 #, c-format
 msgid "Fatal error in PNG image file: %s"
 msgstr ""
 
-#: ../cdk-pixbuf/io-png.c:316
+#: ../gdk-pixbuf/io-png.c:316
 msgid "Insufficient memory to load PNG file"
 msgstr "kifimpilu nkatu"
 
-#: ../cdk-pixbuf/io-png.c:657
+#: ../gdk-pixbuf/io-png.c:657
 #, c-format
 msgid "Insufficient memory to store a %ld by %ld image; try exiting some applications to reduce memory usage"
 msgstr "kifimpilu nkatu mu sokae kifuaninsu ye teezo bia %ld x %ld."
 
-#: ../cdk-pixbuf/io-png.c:720
+#: ../gdk-pixbuf/io-png.c:720
 msgid "Fatal error reading PNG image file"
 msgstr ""
 
-#: ../cdk-pixbuf/io-png.c:769
+#: ../gdk-pixbuf/io-png.c:769
 #, c-format
 #| msgid "Error renaming file \"%s\": %s"
 msgid "Fatal error reading PNG image file: %s"
 msgstr "kizidi kio kia PNG bu itanga kio nkatu %s"
 
-#: ../cdk-pixbuf/io-png.c:863
+#: ../gdk-pixbuf/io-png.c:863
 msgid "Keys for PNG text chunks must have at least 1 and at most 79 characters."
 msgstr ""
 
-#: ../cdk-pixbuf/io-png.c:872
+#: ../gdk-pixbuf/io-png.c:872
 msgid "Keys for PNG text chunks must be ASCII characters."
 msgstr ""
 
-#: ../cdk-pixbuf/io-png.c:886
-#: ../cdk-pixbuf/io-tiff.c:738
+#: ../gdk-pixbuf/io-png.c:886
+#: ../gdk-pixbuf/io-tiff.c:738
 #, c-format
 msgid "Color profile has invalid length %d."
 msgstr ""
 
-#: ../cdk-pixbuf/io-png.c:899
-#: ../cdk-pixbuf/io-gdip-png.c:56
+#: ../gdk-pixbuf/io-png.c:899
+#: ../gdk-pixbuf/io-gdip-png.c:56
 #, c-format
 msgid "PNG compression level must be a value between 0 and 9; value '%s' could not be parsed."
 msgstr "%s kena ya betila ko. konso ntaandani ufueti solua va kati kua 0 ye 9."
 
-#: ../cdk-pixbuf/io-png.c:912
-#: ../cdk-pixbuf/io-gdip-png.c:68
+#: ../gdk-pixbuf/io-png.c:912
+#: ../gdk-pixbuf/io-gdip-png.c:68
 #, c-format
 msgid "PNG compression level must be a value between 0 and 9; value '%d' is not allowed."
 msgstr "konso ntaandani ufueti solua va kati kua 0 ye 9. %d kena ya betila ko. "
 
-#: ../cdk-pixbuf/io-png.c:951
+#: ../gdk-pixbuf/io-png.c:951
 #, c-format
 msgid "Value for PNG text chunk %s cannot be converted to ISO-8859-1 encoding."
 msgstr ""
 
-#: ../cdk-pixbuf/io-png.c:1112
-#: ../cdk-pixbuf/io-gdip-png.c:133
+#: ../gdk-pixbuf/io-png.c:1112
+#: ../gdk-pixbuf/io-gdip-png.c:133
 msgid "The PNG image format"
 msgstr "bifuanisu bia png"
 
-#: ../cdk-pixbuf/io-pnm.c:250
+#: ../gdk-pixbuf/io-pnm.c:250
 msgid "PNM loader expected to find an integer, but didn't"
 msgstr "yi ntalu ya mvimba, kitanga pnm keta vingila, kansi ka i monekene ko."
 
-#: ../cdk-pixbuf/io-pnm.c:282
+#: ../gdk-pixbuf/io-pnm.c:282
 msgid "PNM file has an incorrect initial byte"
 msgstr ""
 
-#: ../cdk-pixbuf/io-pnm.c:312
+#: ../gdk-pixbuf/io-pnm.c:312
 msgid "PNM file is not in a recognized PNM subformat"
 msgstr ""
 
-#: ../cdk-pixbuf/io-pnm.c:337
+#: ../gdk-pixbuf/io-pnm.c:337
 msgid "PNM file has an image width of 0"
 msgstr "kilala ki, bunene buandi i 0"
 
-#: ../cdk-pixbuf/io-pnm.c:358
+#: ../gdk-pixbuf/io-pnm.c:358
 msgid "PNM file has an image height of 0"
 msgstr "kilala ki, nkubu andi i 0"
 
-#: ../cdk-pixbuf/io-pnm.c:381
+#: ../gdk-pixbuf/io-pnm.c:381
 msgid "Maximum color value in PNM file is 0"
 msgstr ""
 
-#: ../cdk-pixbuf/io-pnm.c:389
+#: ../gdk-pixbuf/io-pnm.c:389
 msgid "Maximum color value in PNM file is too large"
 msgstr ""
 
-#: ../cdk-pixbuf/io-pnm.c:429
-#: ../cdk-pixbuf/io-pnm.c:459
-#: ../cdk-pixbuf/io-pnm.c:504
+#: ../gdk-pixbuf/io-pnm.c:429
+#: ../gdk-pixbuf/io-pnm.c:459
+#: ../gdk-pixbuf/io-pnm.c:504
 msgid "Raw PNM image type is invalid"
 msgstr ""
 
-#: ../cdk-pixbuf/io-pnm.c:654
+#: ../gdk-pixbuf/io-pnm.c:654
 msgid "PNM image loader does not support this PNM subformat"
 msgstr ""
 
-#: ../cdk-pixbuf/io-pnm.c:741
-#: ../cdk-pixbuf/io-pnm.c:968
+#: ../gdk-pixbuf/io-pnm.c:741
+#: ../gdk-pixbuf/io-pnm.c:968
 msgid "Raw PNM formats require exactly one whitespace before sample data"
 msgstr ""
 
-#: ../cdk-pixbuf/io-pnm.c:768
+#: ../gdk-pixbuf/io-pnm.c:768
 msgid "Cannot allocate memory for loading PNM image"
 msgstr "kifimpilu nkatu"
 
-#: ../cdk-pixbuf/io-pnm.c:818
+#: ../gdk-pixbuf/io-pnm.c:818
 msgid "Insufficient memory to load PNM context struct"
 msgstr "kifimpilu nkatu"
 
-#: ../cdk-pixbuf/io-pnm.c:869
+#: ../gdk-pixbuf/io-pnm.c:869
 msgid "Unexpected end of PNM image data"
 msgstr ""
 
-#: ../cdk-pixbuf/io-pnm.c:997
+#: ../gdk-pixbuf/io-pnm.c:997
 msgid "Insufficient memory to load PNM file"
 msgstr "kifimpilu nkatu"
 
-#: ../cdk-pixbuf/io-pnm.c:1081
+#: ../gdk-pixbuf/io-pnm.c:1081
 msgid "The PNM/PBM/PGM/PPM image format family"
 msgstr ""
 
-#: ../cdk-pixbuf/io-qtif.c:128
+#: ../gdk-pixbuf/io-qtif.c:128
 msgid "Input file descriptor is NULL."
 msgstr ""
 
-#: ../cdk-pixbuf/io-qtif.c:143
+#: ../gdk-pixbuf/io-qtif.c:143
 #| msgid "Failed to write header\n"
 msgid "Failed to read QTIF header"
 msgstr "mpu bu itanga yo nkatu"
 
-#: ../cdk-pixbuf/io-qtif.c:152
-#: ../cdk-pixbuf/io-qtif.c:182
-#: ../cdk-pixbuf/io-qtif.c:446
+#: ../gdk-pixbuf/io-qtif.c:152
+#: ../gdk-pixbuf/io-qtif.c:182
+#: ../gdk-pixbuf/io-qtif.c:446
 #, c-format
 msgid "QTIF atom size too large (%d bytes)"
 msgstr ""
 
-#: ../cdk-pixbuf/io-qtif.c:172
+#: ../gdk-pixbuf/io-qtif.c:172
 #, c-format
 msgid "Failed to allocate %d bytes for file read buffer"
 msgstr ""
 
-#: ../cdk-pixbuf/io-qtif.c:196
+#: ../gdk-pixbuf/io-qtif.c:196
 #, c-format
 msgid "File error when reading QTIF atom: %s"
 msgstr ""
 
-#: ../cdk-pixbuf/io-qtif.c:233
+#: ../gdk-pixbuf/io-qtif.c:233
 #, c-format
 msgid "Failed to skip the next %d bytes with seek()."
 msgstr ""
 
-#: ../cdk-pixbuf/io-qtif.c:257
+#: ../gdk-pixbuf/io-qtif.c:257
 msgid "Failed to allocate QTIF context structure."
 msgstr ""
 
-#: ../cdk-pixbuf/io-qtif.c:317
+#: ../gdk-pixbuf/io-qtif.c:317
 #| msgid "Failed to write folder index\n"
 msgid "Failed to create GdkPixbufLoader object."
 msgstr "GdkPixbufLoader bu ivaanga yo nkatu"
 
-#: ../cdk-pixbuf/io-qtif.c:421
+#: ../gdk-pixbuf/io-qtif.c:421
 msgid "Failed to find an image data atom."
 msgstr ""
 
-#: ../cdk-pixbuf/io-qtif.c:602
+#: ../gdk-pixbuf/io-qtif.c:602
 msgid "The QTIF image format"
 msgstr "bifuanisu bia qtif"
 
-#: ../cdk-pixbuf/io-ras.c:126
+#: ../gdk-pixbuf/io-ras.c:126
 msgid "RAS image has bogus header data"
 msgstr "mpu a kizidi ki, kena ya mbote ko"
 
-#: ../cdk-pixbuf/io-ras.c:148
+#: ../gdk-pixbuf/io-ras.c:148
 msgid "RAS image has unknown type"
 msgstr ""
 
-#: ../cdk-pixbuf/io-ras.c:156
+#: ../gdk-pixbuf/io-ras.c:156
 msgid "unsupported RAS image variation"
 msgstr ""
 
-#: ../cdk-pixbuf/io-ras.c:171
-#: ../cdk-pixbuf/io-ras.c:200
+#: ../gdk-pixbuf/io-ras.c:171
+#: ../gdk-pixbuf/io-ras.c:200
 msgid "Not enough memory to load RAS image"
 msgstr "kifimpilu nkatu muna tangae kifuanisu kia ras"
 
-#: ../cdk-pixbuf/io-ras.c:545
+#: ../gdk-pixbuf/io-ras.c:545
 msgid "The Sun raster image format"
 msgstr "bizidi bia sunraster"
 
-#: ../cdk-pixbuf/io-tga.c:154
+#: ../gdk-pixbuf/io-tga.c:154
 msgid "Cannot allocate memory for IOBuffer struct"
 msgstr "kifimpilu nkatu"
 
-#: ../cdk-pixbuf/io-tga.c:173
+#: ../gdk-pixbuf/io-tga.c:173
 msgid "Cannot allocate memory for IOBuffer data"
 msgstr "kifimpilu nkatu"
 
-#: ../cdk-pixbuf/io-tga.c:184
+#: ../gdk-pixbuf/io-tga.c:184
 msgid "Cannot realloc IOBuffer data"
 msgstr ""
 
-#: ../cdk-pixbuf/io-tga.c:214
+#: ../gdk-pixbuf/io-tga.c:214
 msgid "Cannot allocate temporary IOBuffer data"
 msgstr ""
 
-#: ../cdk-pixbuf/io-tga.c:347
+#: ../gdk-pixbuf/io-tga.c:347
 msgid "Cannot allocate new pixbuf"
 msgstr ""
 
-#: ../cdk-pixbuf/io-tga.c:686
+#: ../gdk-pixbuf/io-tga.c:686
 msgid "Image is corrupted or truncated"
 msgstr ""
 
-#: ../cdk-pixbuf/io-tga.c:693
+#: ../gdk-pixbuf/io-tga.c:693
 msgid "Cannot allocate colormap structure"
 msgstr ""
 
-#: ../cdk-pixbuf/io-tga.c:700
+#: ../gdk-pixbuf/io-tga.c:700
 msgid "Cannot allocate colormap entries"
 msgstr "fulu nkatu mu nkubukulu a ntinta"
 
-#: ../cdk-pixbuf/io-tga.c:722
+#: ../gdk-pixbuf/io-tga.c:722
 msgid "Unexpected bitdepth for colormap entries"
 msgstr ""
 
-#: ../cdk-pixbuf/io-tga.c:740
+#: ../gdk-pixbuf/io-tga.c:740
 msgid "Cannot allocate TGA header memory"
 msgstr "kifimpilu kike"
 
-#: ../cdk-pixbuf/io-tga.c:773
+#: ../gdk-pixbuf/io-tga.c:773
 msgid "TGA image has invalid dimensions"
 msgstr "teezo bia kifuanisu ki kabina badetila ko"
 
-#: ../cdk-pixbuf/io-tga.c:779
-#: ../cdk-pixbuf/io-tga.c:788
-#: ../cdk-pixbuf/io-tga.c:798
-#: ../cdk-pixbuf/io-tga.c:808
-#: ../cdk-pixbuf/io-tga.c:815
+#: ../gdk-pixbuf/io-tga.c:779
+#: ../gdk-pixbuf/io-tga.c:788
+#: ../gdk-pixbuf/io-tga.c:798
+#: ../gdk-pixbuf/io-tga.c:808
+#: ../gdk-pixbuf/io-tga.c:815
 msgid "TGA image type not supported"
 msgstr "mpila yi ya kifuanisu, kizete yo ko"
 
-#: ../cdk-pixbuf/io-tga.c:862
+#: ../gdk-pixbuf/io-tga.c:862
 msgid "Cannot allocate memory for TGA context struct"
 msgstr "kifimpilu kike"
 
-#: ../cdk-pixbuf/io-tga.c:927
+#: ../gdk-pixbuf/io-tga.c:927
 msgid "Excess data in file"
 msgstr "mafiuma matiamukini mu kilala ki"
 
-#: ../cdk-pixbuf/io-tga.c:1008
+#: ../gdk-pixbuf/io-tga.c:1008
 msgid "The Targa image format"
 msgstr "bifuanisu bia taraga"
 
-#: ../cdk-pixbuf/io-tiff.c:165
+#: ../gdk-pixbuf/io-tiff.c:165
 msgid "Could not get image width (bad TIFF file)"
 msgstr "kilala kio kia mbi kena, bu i tanga bunene buandi nkatu"
 
-#: ../cdk-pixbuf/io-tiff.c:172
+#: ../gdk-pixbuf/io-tiff.c:172
 msgid "Could not get image height (bad TIFF file)"
 msgstr "kilala kio kia mbi kena, bu i tanga nkubu andi nkatu"
 
-#: ../cdk-pixbuf/io-tiff.c:180
+#: ../gdk-pixbuf/io-tiff.c:180
 msgid "Width or height of TIFF image is zero"
 msgstr "kizidi kiki, evo bunene evo nkubu andi yena ya mpavala"
 
-#: ../cdk-pixbuf/io-tiff.c:189
-#: ../cdk-pixbuf/io-tiff.c:198
+#: ../gdk-pixbuf/io-tiff.c:189
+#: ../gdk-pixbuf/io-tiff.c:198
 msgid "Dimensions of TIFF image too large"
 msgstr "biteezo bia kifuanisu ki kia tifi bisakidi"
 
-#: ../cdk-pixbuf/io-tiff.c:222
-#: ../cdk-pixbuf/io-tiff.c:234
-#: ../cdk-pixbuf/io-tiff.c:561
+#: ../gdk-pixbuf/io-tiff.c:222
+#: ../gdk-pixbuf/io-tiff.c:234
+#: ../gdk-pixbuf/io-tiff.c:561
 msgid "Insufficient memory to open TIFF file"
 msgstr "kifimpilu kike muna tana kilala kio kia TIFF"
 
-#: ../cdk-pixbuf/io-tiff.c:295
+#: ../gdk-pixbuf/io-tiff.c:295
 msgid "Failed to load RGB data from TIFF file"
 msgstr "mafiuma mu kimbuazu ma kilala ki, bu itaga mo nkatu"
 
-#: ../cdk-pixbuf/io-tiff.c:351
+#: ../gdk-pixbuf/io-tiff.c:351
 #| msgid "Failed to open file %s : %s\n"
 msgid "Failed to open TIFF image"
 msgstr "kizidi kio kia TIIF bu itanga kio nkatu"
 
-#: ../cdk-pixbuf/io-tiff.c:363
-#: ../cdk-pixbuf/io-tiff.c:778
+#: ../gdk-pixbuf/io-tiff.c:363
+#: ../gdk-pixbuf/io-tiff.c:778
 msgid "TIFFClose operation failed"
 msgstr ""
 
-#: ../cdk-pixbuf/io-tiff.c:493
-#: ../cdk-pixbuf/io-tiff.c:506
+#: ../gdk-pixbuf/io-tiff.c:493
+#: ../gdk-pixbuf/io-tiff.c:506
 #| msgid "Failed to load icon"
 msgid "Failed to load TIFF image"
 msgstr "kizidi kio kia TIIF bu itanga kio nkatu"
 
-#: ../cdk-pixbuf/io-tiff.c:692
+#: ../gdk-pixbuf/io-tiff.c:692
 msgid "Failed to save TIFF image"
 msgstr "kifuanisu ki kia tif bu iniema kio nkatu"
 
-#: ../cdk-pixbuf/io-tiff.c:727
+#: ../gdk-pixbuf/io-tiff.c:727
 msgid "TIFF compression doesn't refer to a valid codec."
 msgstr ""
 
-#: ../cdk-pixbuf/io-tiff.c:767
+#: ../gdk-pixbuf/io-tiff.c:767
 #| msgid "Failed to write hash table\n"
 msgid "Failed to write TIFF data"
 msgstr "mafiuma ma tifi bu i niema mo nkatu"
 
-#: ../cdk-pixbuf/io-tiff.c:814
+#: ../gdk-pixbuf/io-tiff.c:814
 #| msgid "Could not select file"
 msgid "Couldn't write to TIFF file"
 msgstr "kilala ki bu inieema kio nkatu"
 
-#: ../cdk-pixbuf/io-tiff.c:869
+#: ../gdk-pixbuf/io-tiff.c:869
 msgid "The TIFF image format"
 msgstr "bifuanisu bia tifi"
 
-#: ../cdk-pixbuf/io-wbmp.c:246
+#: ../gdk-pixbuf/io-wbmp.c:246
 msgid "Image has zero width"
 msgstr "kizidi kiki, bunene buandi wa mpavala yena"
 
-#: ../cdk-pixbuf/io-wbmp.c:264
+#: ../gdk-pixbuf/io-wbmp.c:264
 #| msgid "Pages per Sheet"
 msgid "Image has zero height"
 msgstr "kifuanisu ki, nkubu andi ya mpavala"
 
-#: ../cdk-pixbuf/io-wbmp.c:275
+#: ../gdk-pixbuf/io-wbmp.c:275
 #| msgid "Not enough free memory"
 msgid "Not enough memory to load image"
 msgstr "kifimpilu kike"
 
-#: ../cdk-pixbuf/io-wbmp.c:334
+#: ../gdk-pixbuf/io-wbmp.c:334
 #| msgid "Could not send the search request"
 msgid "Couldn't save the rest"
 msgstr "fisidi bu i niata fio nkatu"
 
-#: ../cdk-pixbuf/io-wbmp.c:375
+#: ../gdk-pixbuf/io-wbmp.c:375
 msgid "The WBMP image format"
 msgstr "bifuanisu bia WBMP"
 
-#: ../cdk-pixbuf/io-xbm.c:295
+#: ../gdk-pixbuf/io-xbm.c:295
 #| msgid "Invalid file name"
 msgid "Invalid XBM file"
 msgstr "kilala ki kia XBM kia mbi"
 
-#: ../cdk-pixbuf/io-xbm.c:305
+#: ../gdk-pixbuf/io-xbm.c:305
 msgid "Insufficient memory to load XBM image file"
 msgstr "kifimpilu kikondolo muna tanga kifuanisu kio kia XPM"
 
-#: ../cdk-pixbuf/io-xbm.c:453
+#: ../gdk-pixbuf/io-xbm.c:453
 msgid "Failed to write to temporary file when loading XBM image"
 msgstr "bu itenge kifuanisu ki kia XBM, ndembane niatae kilala kivioka"
 
-#: ../cdk-pixbuf/io-xbm.c:492
+#: ../gdk-pixbuf/io-xbm.c:492
 msgid "The XBM image format"
 msgstr "bizidi bia XBM"
 
-#: ../cdk-pixbuf/io-xpm.c:468
+#: ../gdk-pixbuf/io-xpm.c:468
 #| msgid "No printer found"
 msgid "No XPM header found"
 msgstr "mpu nkatu"
 
-#: ../cdk-pixbuf/io-xpm.c:477
+#: ../gdk-pixbuf/io-xpm.c:477
 #| msgid "Invalid file name"
 msgid "Invalid XPM header"
 msgstr "mpu yi ya XPM ya mbi"
 
-#: ../cdk-pixbuf/io-xpm.c:485
+#: ../gdk-pixbuf/io-xpm.c:485
 msgid "XPM file has image width <= 0"
 msgstr "bunene bua kifuanisu kiki <=0"
 
-#: ../cdk-pixbuf/io-xpm.c:493
+#: ../gdk-pixbuf/io-xpm.c:493
 msgid "XPM file has image height <= 0"
 msgstr "nkubu a kifuanisu kiki <=0"
 
-#: ../cdk-pixbuf/io-xpm.c:501
+#: ../gdk-pixbuf/io-xpm.c:501
 msgid "XPM has invalid number of chars per pixel"
 msgstr ""
 
-#: ../cdk-pixbuf/io-xpm.c:510
+#: ../gdk-pixbuf/io-xpm.c:510
 msgid "XPM file has invalid number of colors"
 msgstr "kilala ki kia XPM, nkubukulu a mbi kia ntinta yina yandi"
 
-#: ../cdk-pixbuf/io-xpm.c:522
-#: ../cdk-pixbuf/io-xpm.c:531
-#: ../cdk-pixbuf/io-xpm.c:583
+#: ../gdk-pixbuf/io-xpm.c:522
+#: ../gdk-pixbuf/io-xpm.c:531
+#: ../gdk-pixbuf/io-xpm.c:583
 msgid "Cannot allocate memory for loading XPM image"
 msgstr "kifimpilu bu i sadila yo mu tanga kizidi kio kia XPM nkatu"
 
-#: ../cdk-pixbuf/io-xpm.c:545
+#: ../gdk-pixbuf/io-xpm.c:545
 msgid "Cannot read XPM colormap"
 msgstr "nkubikulu a zintinta za XPM, bu i tanga yo nkatu"
 
-#: ../cdk-pixbuf/io-xpm.c:777
+#: ../gdk-pixbuf/io-xpm.c:777
 msgid "Failed to write to temporary file when loading XPM image"
 msgstr "buna izubidi kifuanisu kio kia XPM, kilala kivioka  bu i niema kio nkatu"
 
-#: ../cdk-pixbuf/io-xpm.c:816
+#: ../gdk-pixbuf/io-xpm.c:816
 msgid "The XPM image format"
 msgstr "bizidi bia XPM"
 
-#: ../cdk-pixbuf/io-gdip-emf.c:59
+#: ../gdk-pixbuf/io-gdip-emf.c:59
 msgid "The EMF image format"
 msgstr "bizidi bia EMF"
 
-#: ../cdk-pixbuf/io-gdip-utils.c:154
+#: ../gdk-pixbuf/io-gdip-utils.c:154
 #, c-format
 #| msgid "Could not mount %s"
 msgid "Could not allocate memory: %s"
 msgstr "kifimpilu kike %s"
 
-#: ../cdk-pixbuf/io-gdip-utils.c:179
-#: ../cdk-pixbuf/io-gdip-utils.c:293
-#: ../cdk-pixbuf/io-gdip-utils.c:333
+#: ../gdk-pixbuf/io-gdip-utils.c:179
+#: ../gdk-pixbuf/io-gdip-utils.c:293
+#: ../gdk-pixbuf/io-gdip-utils.c:333
 #, c-format
 #| msgid "Could not rename %s to %s: %s\n"
 msgid "Could not create stream: %s"
 msgstr "« %s », bu ivanga kio nkatu"
 
-#: ../cdk-pixbuf/io-gdip-utils.c:193
+#: ../gdk-pixbuf/io-gdip-utils.c:193
 #, c-format
 #| msgid "Could not remove item"
 msgid "Could not seek stream: %s"
 msgstr "%s bu isolola kio nkatu"
 
-#: ../cdk-pixbuf/io-gdip-utils.c:205
+#: ../gdk-pixbuf/io-gdip-utils.c:205
 #, c-format
 #| msgid "Could not rename %s to %s: %s\n"
 msgid "Could not read from stream: %s"
 msgstr "bu itanga mu « %s » nkatu"
 
-#: ../cdk-pixbuf/io-gdip-utils.c:616
-#: ../cdk-pixbuf/io-gdip-utils.c:747
+#: ../gdk-pixbuf/io-gdip-utils.c:616
+#: ../gdk-pixbuf/io-gdip-utils.c:747
 #| msgid "Could not clear list"
 msgid "Couldn't load bitmap"
 msgstr "kilala bu itanga fio nkatu"
 
-#: ../cdk-pixbuf/io-gdip-utils.c:769
+#: ../gdk-pixbuf/io-gdip-utils.c:769
 #| msgid "Could not select file"
 msgid "Couldn't load metafile"
 msgstr "filala bu itanga fio nkatu"
 
-#: ../cdk-pixbuf/io-gdip-utils.c:928
+#: ../gdk-pixbuf/io-gdip-utils.c:928
 msgid "Unsupported image format for GDI+"
 msgstr "kifuanisu kia mpila yi, buibakisuanga mu GDI+ nkatu"
 
-#: ../cdk-pixbuf/io-gdip-utils.c:935
+#: ../gdk-pixbuf/io-gdip-utils.c:935
 msgid "Couldn't save"
 msgstr "ilembane soka kio"
 
-#: ../cdk-pixbuf/io-gdip-wmf.c:58
+#: ../gdk-pixbuf/io-gdip-wmf.c:58
 msgid "The WMF image format"
 msgstr "bifuanisu bi WMF"
 

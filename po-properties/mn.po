@@ -8355,7 +8355,7 @@ msgstr "Төлөвийн самбарыг оруулах аргыг хэрхэн
 #~ msgid "Number of Channels"
 #~ msgstr "Сувгийн тоо"
 
-# cdk-pixbuf/io-xpm.c:1267
+# gdk-pixbuf/io-xpm.c:1267
 #~ msgid "The number of samples per pixel"
 #~ msgstr "samples тоо пикселээр"
 

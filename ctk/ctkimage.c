@@ -127,7 +127,7 @@
  *
  * Sometimes an application will want to avoid depending on external data
  * files, such as image files. CTK+ comes with a program to avoid this,
- * called “cdk-pixbuf-csource”. This library
+ * called “gdk-pixbuf-csource”. This library
  * allows you to convert an image into a C variable declaration, which
  * can then be loaded into a #GdkPixbuf using
  * gdk_pixbuf_new_from_inline().

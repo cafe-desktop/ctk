@@ -24,7 +24,7 @@
 #error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <cdk-pixbuf/cdk-pixbuf.h>
+#include <gdk-pixbuf/gdk-pixbuf.h>
 #include <cdk/cdk.h>
 #include <time.h>
 

@@ -8730,9 +8730,9 @@ msgstr "Presi en prova presilo"
 #~ msgstr "Eraro dum skribado de la bilda dosiero: %s"
 
 #~ msgid ""
-#~ "This build of cdk-pixbuf does not support saving the image format: %s"
+#~ "This build of gdk-pixbuf does not support saving the image format: %s"
 #~ msgstr ""
-#~ "Ĉi tiu konstruo de cdk-pixbuf ne subtenas konservadon de la bildformato: "
+#~ "Ĉi tiu konstruo de gdk-pixbuf ne subtenas konservadon de la bildformato: "
 #~ "%s"
 
 #~ msgid "Insufficient memory to save image to callback"

@@ -4897,7 +4897,7 @@ Overview of Changes in CTK+ 3.13.7 to 3.13.8
  735119 inconsistent order of close/help buttons
  735223 Touch scrolling invalidates more than intended
  735226 Avoid NULL surface access if a window is shown/hidden within a frame 
- 735253 CTK+ requires symbols not available in specified cdk-pixbuf version
+ 735253 CTK+ requires symbols not available in specified gdk-pixbuf version
  735294 No widgets visible in simple applications with ctk+ 3.13.3 and later
  735300 clicking on Actions tab in inspector causes abort
  735301 Duplication of words in comments (for for, the the)
@@ -6630,7 +6630,7 @@ Overview of Changes in CTK+ 3.7 to 3.9
  694339 Fix build of CTK+ on Windows
  694465 Allow backends to fail during initialisation
  695200 Switching apps while a combobox open makes the parent wi...
- 695228 GdkPixbuf:ERROR:cdk-pixbuf-animation.c:242:gdk_pixbuf_an...
+ 695228 GdkPixbuf:ERROR:gdk-pixbuf-animation.c:242:gdk_pixbuf_an...
  695278 Avoid passing a NULL title to setTitle
  695304 CtkTextView: don't popdown a bubble if we don't have one
  695312 Initial 'text' set in the non-numeric-only CtkSpinButton...
@@ -9938,7 +9938,7 @@ Overview of Changes from CTK+ 2.90.3 to 2.90.4
 
 * GSEAL is now enabled by default
 
-* cdk-pixbuf has been moved into a separate module
+* gdk-pixbuf has been moved into a separate module
 
 * The CtkExtendedLayout interface has been renamed to
   CtkSizeRequest
@@ -10096,7 +10096,7 @@ Overview of Changes from CTK+ 2.90.0 to 2.90.1
   been updated to match the CLDR 1.8.1
 
 * The default location for the 'module cache' files (ie the files
-  produced by cdk-pixbuf-query-loaders and ctk-query-immodules) has
+  produced by gdk-pixbuf-query-loaders and ctk-query-immodules) has
   been changed to $libdir/ctk-3.0/3.0.0/{loaders,immodules}.cache.
   This should avoid multilib problems with the previous location.
 
@@ -10457,7 +10457,7 @@ Overview of Changes from CTK+ 2.19.1 to 2.19.2
 ==============================================
 
 * Introspection:
- - Introspection data for cdk-pixbuf, cdk and ctk is now
+ - Introspection data for gdk-pixbuf, cdk and ctk is now
    included in CTK+ itself. As a consequence, the atk dependency
    has been bumped to 2.29.2, and a gobject-introspection dependency
    has been added. configure with --disable-introspection in order
@@ -10479,7 +10479,7 @@ Overview of Changes from CTK+ 2.19.1 to 2.19.2
  - cdk_screen_get_primary_monitor: New function to get the
    'primary' monitor in a multi-monitor setup
 
-* cdk-pixbuf has gained the ability to store and retrieve embedded
+* gdk-pixbuf has gained the ability to store and retrieve embedded
   ICC color profiles in png and tiff images
 
 * Keyboard handling:
@@ -10540,7 +10540,7 @@ Overview of Changes from CTK+ 2.19.0 to 2.19.1
 * CtkToolPalette is a new container to show tool items
   in collapsible groups in a grid
 
-* cdk-pixbuf can now handle compressed TIFF images
+* gdk-pixbuf can now handle compressed TIFF images
 
 * GSEAL work:
  - New accessor: ctk_window_get_window_type()
@@ -10832,7 +10832,7 @@ Overview of Changes from CTK+ 2.17.10 to 2.17.11
  564160 ctk_combo_box_entry_set_text_column too restrictive
  593868 ctk_im_multicontext_set_client_window recreate a new slave...
  593644 cdk_x11_screen_get_window_manager_name should not cache...
- 594178 cdk-pixbuf-query-loaders segfault in write_loader_info
+ 594178 gdk-pixbuf-query-loaders segfault in write_loader_info
  567124 proposal to delay doing something related to immodule...
  588788 CTK+ compilation should work with automake1.10
  584638 Build of ctkupdateiconcache without NLS breaks
@@ -11007,7 +11007,7 @@ Overview of Changes from CTK+ 2.17.6 to 2.17.7
  590084 print to FILE with multiple pages per sheet has bad results
  590086 configure.in is broken on non-X platforms
  590309 Default cover pages for CUPS printers incorrectly set
- 590448 [win32] build fails because cdk-pixbuf manges a path
+ 590448 [win32] build fails because gdk-pixbuf manges a path
  590959 Set child_has_focus flag properly
  591288 compat problem with draw_drawable being NULL
  539377 Unnecessary warnings when CtkTreeView is not realized.
@@ -11722,7 +11722,7 @@ Overview of Changes from CTK+ 2.15.0 to 2.15.1
  568744 Spellfixes in CtkTreeView's documentation
  536965 CtkPlug: crash on theme change
  567124 proposal to delay doing something related to immodule...
- 568305 cdk-pixbuf mishandles BI_BITFIELDS bmps
+ 568305 gdk-pixbuf mishandles BI_BITFIELDS bmps
 
 * New and updated translations:
  Crimean Tatar (crh)
@@ -12080,7 +12080,7 @@ Overview of Changes from CTK+ 2.13.7 to 2.14.0
  528975 Can not maximize the window
  543308 FileChooser size problems since ctk+-2.13.x 
  549322 Typo in gdk_pixbuf_save_to_buffer docs
- 549711 Race condition when loading cdk-pixbuf image modules
+ 549711 Race condition when loading gdk-pixbuf image modules
 
 * Updated translations:
  Czech (cs)
@@ -12222,7 +12222,7 @@ Overview of Changes from CTK+ 2.13.5 to 2.13.6
 Overview of Changes from CTK+ 2.13.4 to 2.13.5
 ==============================================
 
-* cdk-pixbuf:
+* gdk-pixbuf:
  - Use GIO for mime type sniffing when possible
 
 * Printing:
@@ -12487,7 +12487,7 @@ Overview of Changes from CTK+ 2.13.0 to 2.13.1
 Overview of Changes from CTK+ 2.12.x to 2.13.0
 ==============================================
 
- * cdk-pixbuf:
+ * gdk-pixbuf:
   - Support loading the OS X icns format
   - Support loading of JPEG2000 images
   - Support loading from and saving to GIO streams
@@ -12794,7 +12794,7 @@ Overview of Changes from CTK+ 2.11.5 to 2.11.6
  453673 small doc quirk in ctk/ctktreeview.c
  453930 small doc quirk in ctk/ctktooltip.c
  454596 [patch] gdkpixbuf-scale slight api doc improvement
- 454835 [patch] example in cdk-pixbuf-scaling using deprecated gd...
+ 454835 [patch] example in gdk-pixbuf-scaling using deprecated gd...
  457384 critical warning from entrycompletion
  112404 Problem with focus when closing transient window
  172424 Most CtkWidget events have no documentation
@@ -13175,7 +13175,7 @@ Overview of Changes from CTK+ 2.10.x to 2.11
  - New cdk_threads api() to allow fully threadsafe handling of idles 
    and timeouts
 
-* cdk-pixbuf changes: 
+* gdk-pixbuf changes: 
  - Optional support for Sun mediaLib hardware acceleration
  - Support exif rotations in tiffs and jpegs
  - Allow arbitrary split between builtin vs modular loaders
@@ -13842,7 +13842,7 @@ Overview of Changes from CTK+ 2.8.x to 2.9.0
   - cdk_screen_is_composited to check for running compositing manager
   - Support for Super, Hyper and Meta modifiers
 
-* cdk-pixbuf changes: 
+* gdk-pixbuf changes: 
   - Supports saving tiff 
   - Supports loading 16-bit pnm
   - Doesn't load entire gif animation to get first frame
@@ -13918,7 +13918,7 @@ Overview of Changes from CTK+ 2.7.3 to CTK+ 2.7.4
 * Make font rendering xsettings work with pangocairo [Owen]
 * Fix sporadic segfaults in the CtkTreeModelSort [James
   Bramford, Markku Vire, Kristian Rietveld]
-* Improve cdk-pixbuf's ability to recognize 
+* Improve gdk-pixbuf's ability to recognize 
   svg images. [William Jon McCann]
 * Win32 
  - Build fixes [Tor Lillqvist]
@@ -14106,7 +14106,7 @@ Overview of Changes from CTK+ 2.6.x to CTK+ 2.7.0
  - Support Cairo drawing [Owen, Carl Worth]
  - Support Visuals with alpha channel [Owen, Keith Packard]
  - Support named cursors and cursor themes [Matthias]
-* cdk-pixbuf
+* gdk-pixbuf
  - Support saving BMP [Ivan Wong Yat Cheung]
  - Allow to specify compression level when saving
    in PNG format [Sven Neumann]
@@ -14183,7 +14183,7 @@ Overview of Changes from CTK+ 2.6.0 to CTK+ 2.6.1
 * CtkMenu
  - Make items activate immediately on button release [Søren Sandmann]
  - Submenus inherit their cascading direction [Matthias]
-* cdk-pixbuf
+* gdk-pixbuf
  - Fix a possible threading deadlock when loading
    animations [Callum McKenzie]
  - Make Hyper interpolation work again [Dennis Nezic]
@@ -14265,7 +14265,7 @@ Overview of Changes from CTK+ 2.4.x to CTK+ 2.6.0
   - Support do-not-focus-on-map hint
   - Support _NET_WM_USER_TIME
 
-* cdk-pixbuf:
+* gdk-pixbuf:
   - License information for image loaders
   - Disable loaders
   - Simple rotation
@@ -14387,7 +14387,7 @@ Overview of Changes from CTK+ 2.5.5 to CTK+ 2.5.6
 
 Overview of Changes from CTK+ 2.5.4 to CTK+ 2.5.5
 =================================================
-* cdk-pixbuf
+* gdk-pixbuf
   - Make thread safe [Colin Walters]
 * CtkFileChooser
   - Make tooltips work better [Matthias Clasen]
@@ -14525,7 +14525,7 @@ Overview of Changes from CTK+ 2.5.2 to CTK+ 2.5.3
 * Add a configure option to disable the use of ELF visibility 
   attributes for PLT reduction
 * Make selection handling robust against invalid UTF-8 [Owen]
-* cdk-pixbuf
+* gdk-pixbuf
  - Add a variant of gdk_pixbuf_new_from_file_at_size() which 
    optionally ignores aspect ratio [Dom Lachowicz]
  - Fix saving of pixbufs with alpha-channel as jpeg [Emmanuel Pacaud]
@@ -14592,11 +14592,11 @@ Overview of Changes from CTK+ 2.5.1 to CTK+ 2.5.2
  - Support XDND v5 [Owen Taylor, Matthias]
  - Complete the _NEW_WM_USER_TIME implementation [Elijah Newren]
  - Update the _NET_ACTIVE_WINDOW implementation [Elijah]
-* cdk-pixbuf
+* gdk-pixbuf
  - Avoid infinite loops for bad BMPs [Chris Evans, Manish Singh]
  - Fix a problem with CDK_INTERP_NEAREST scaling which caused
    Nautilus thumbnails to be misdrawn [Christoph Fergeau]
- - Avoid segfaults in cdk-pixbuf-csource [Matthias]
+ - Avoid segfaults in gdk-pixbuf-csource [Matthias]
  - Fix progressive loading of 8bit pcx files [Magnus Bergman]
  - Handle edge pixels consistently [Brian Cameron, Matthias]
  - Handle OS/2 BMPs [Jon-Kare Hellan]
@@ -14701,7 +14701,7 @@ Overview of Changes from CTK+ 2.4.1 to CTK+ 2.5.0
 * CDK
  - support do-not-focus-on-map hint [Elijah Newren]
  - fix RGBA cursors [Michael Natterer]
-* cdk-pixbuf
+* gdk-pixbuf
  - reorganize headers [Matthias, Jeff Franks, Havoc Pennington]
  - flag to mark loaded images as scalable [Dom Lachowicz]
  - license information for loaders [Matthias]
@@ -14794,7 +14794,7 @@ Overview of Changes from CTK+ 2.3.6 to CTK+ 2.4.0
  - Improve positioning of popup
  - Miscellaneous bug fixes
 * Win32 [Tor]
- - Handle different install locations for cdk-pixbuf loaders
+ - Handle different install locations for gdk-pixbuf loaders
  - Bug fixes [John Ehresman, Bruce Hochstetler, Dave Neary]
 * Improve handling of foreign CdkWindows on destruction [Soeren, Owen]
 * Require Control-Tab to focus labels [Owen]
@@ -14929,7 +14929,7 @@ Overview of Changes from CTK+ 2.3.2 to CTK+ 2.3.3
  - Fix grid mode, removing of items. [Matthias, Vincent Noel]
  - Make tearoff menu items work anywhere in menus. [Matthias]
  - Improve popup/popdown behaviour. [Soeren]
-* cdk-pixbuf:
+* gdk-pixbuf:
  - Fix some problems with indexed BMPs [Kazuho Okui, Matthias]
  - Work around some libjpeg header file craziness [Manish Singh]
 * Assume gravity works. [Soeren]
@@ -14978,7 +14978,7 @@ Overview of Changes from CTK+ 2.3.1 to CTK+ 2.3.2
  - Add a function to determine the type and size of a file without
    loading it completely.  [Matthias Clasen]
  - Turn pixbuf attributes into construct-only properties. [Matthias]
- - Fix building cdk-pixbuf with --disable-modules --with-included-loaders.
+ - Fix building gdk-pixbuf with --disable-modules --with-included-loaders.
    [Matthias, Owen Taylor]
 * Fix the logic for changing the toplevelness of a window.  [Soeren Sandmann]
 * Do not interpret distant clicks as double clicks, using a
@@ -15034,7 +15034,7 @@ Other contributors: Olivier Andrieu, Herman Bloggs, Anders Carlsson,
 
 Overview of Changes in CTK+-2.3.1
 =================================
-* Improve sanity checks on cdk-pixbuf loaders [Matthias Clasen]
+* Improve sanity checks on gdk-pixbuf loaders [Matthias Clasen]
 * CDK
  - Add CDK_DEBUG=xinerama that fakes a 2x2 Xinerama mode [Matthias]
  - Make cdk_drawable_copy_to_image public [Matthias, Peter Zelezny]
@@ -15090,7 +15090,7 @@ Overview of Changes in CTK+-2.3.1
   [IBM L3 NLS Support Team]
 * Fix string setters for self-assignment [Matthias, Soeren]
 * Finish multi-head handling in ctk-demo [Matthias]
-* Fix install rules for generating cdk-pixbuf.loaders [Manish Singh]
+* Fix install rules for generating gdk-pixbuf.loaders [Manish Singh]
 * Reference doc improvements [Matthias, Soeren,
   Federico Mena Quintero, Michael Natterer, Owen Taylor, Olexiy Avramchenko]
 * FAQ updates [Tony Gale]
@@ -15171,7 +15171,7 @@ Overview of Changes from CTK+-2.2.x to CTK+-2.3.0
    get rid of ctk-tree-model-drop-append.
  - Add a filtering tree model: CtkTreeModelFilter [Kristian]
 
-* cdk-pixbuf
+* gdk-pixbuf
  - Add a loader for PCX files [Josh Beam]
  - Improve calculation of filter weights for scaling [Brian Cameron, Owen]
  - Support TGA files with arbitrary origins [Matthias]
@@ -15247,9 +15247,9 @@ Overview of Changes in CTK+ 2.2.3
  - Fix some problems with overflows when scaling down [Tomas Ögren]
  - Many GIF bug fixes [Matthias, Federico Mena Quintero]
  - Prefer 32-bpp ICOs, fix bugs with them
- - Fix problem with absolute filenames and cdk-pixbuf-query-loaders
+ - Fix problem with absolute filenames and gdk-pixbuf-query-loaders
    [Jens Elker]
- - Make cdk-pixbuf-csource include alignment magic [Brian Cameron]
+ - Make gdk-pixbuf-csource include alignment magic [Brian Cameron]
 * Win32 [Tor Lillqvist]
  - Add multiple monitor support
  - Major event and key handling rewrite, including IME fixes
@@ -15303,7 +15303,7 @@ Overview of Changes in CTK+ 2.2.3
 * Ignore Caps-lock when matching accelerators
 * Fix 5-year-old bug where toplevels didn't fully refresh properly
   on theme change [Owen, Rajkumar Siva]
-* Don't require precompiled cdk-pixbuf-csource when cross-compiling
+* Don't require precompiled gdk-pixbuf-csource when cross-compiling
   from a tarball [Owen]
 * Documentation improvements [Matthias, Noah Levitt, Tor, Doug Quale, 
   Morten Welinder]
@@ -15651,7 +15651,7 @@ CTK+:
 * Allow icon sizes to be changed via a CtkSetting [Bill Haneman, Brian Cameron, Owen]
 
 GdkPixbuf:
-* Improve cdk-pixbuf loader tests [Soeren Sandmann]
+* Improve gdk-pixbuf loader tests [Soeren Sandmann]
 * Use iTXT chunks when necessary in PNG image saver [Matthias]
 * Add incremental loading for progressive jpegs [Matthias]
 * Add load-at-size functionality [Matthias]
@@ -15697,7 +15697,7 @@ Overview of Changes in CTK+ 2.0.8
 
 Overview of Changes in CTK+ 2.0.7
 =================================
-* Fix some memory leaks in cdk-pixbuf [Sven Neumann]
+* Fix some memory leaks in gdk-pixbuf [Sven Neumann]
 * Pixbuf loader fixes  [Federico Mena Quintero, Elliot Lee]
 * Support depth 8 StaticColor in CdkRGB [Matthias Clasen]
 * Win32 fixes and improvements [Tor Lillqvist]
@@ -15793,7 +15793,7 @@ Overview of Changes in CTK+ 2.0.3
 * Allow use of a pixmap as the drawable in cdk_pixmap_new(). (Kristian)
 * GdkPixbuf fixes (Matthias Clasen, Michael Natterer, Federico Mena Quintero)
 * CtkMenu fixes. (Soeren Sandmann)
-* Find cdk-pixbuf-csource when cross-compiling. (Michael Natterer)
+* Find gdk-pixbuf-csource when cross-compiling. (Michael Natterer)
 * Misc input-method related fixes (Yao Zhang, Federico)
 * Fix stuck grab during DND. (Dave Camp, Owen)
 * Remove in-bevel from scrolled-offscreen menus. (Ettore Perazzoli)
@@ -16120,7 +16120,7 @@ Overview of Changes in CTK+ 1.3.7
 =================================
 
 * Many Pixbuf (loader) improvements [Matthias Clasen, Soeren Sandmann]
-* Added publically installed utility cdk-pixbuf-csource to generate
+* Added publically installed utility gdk-pixbuf-csource to generate
   inlined pixbufs in C source code [Tim Janik]
 * Optional movement of button children on press [Soeren, Owen Taylor]
 * Interactive searching in CtkTreeView [Kristian Rietveld]
@@ -16279,11 +16279,11 @@ Internationalization:
 * VIQR, Thai, and Inuktitut input methods. [Robert]
 * Convert po files to UTF-8. [Robert]
 
-cdk-pixbuf:
+gdk-pixbuf:
 
-* Full-alpha compositing for cdk-pixbuf on drawable. [Havoc]
-* Add simple saving to cdk-pixbuf. [David Welton/Havoc]
-* Add improved error handling with GError to cdk-pixbuf. [Havoc]
+* Full-alpha compositing for gdk-pixbuf on drawable. [Havoc]
+* Add simple saving to gdk-pixbuf. [David Welton/Havoc]
+* Add improved error handling with GError to gdk-pixbuf. [Havoc]
 
 Ports:
 
@@ -16301,7 +16301,7 @@ Overview of Changes in CTK+ 1.3.1:
 * CTK+ now uses the Pango library for text manipulation. All
   strings in CTK+ now are in Unicode, languages written
   from right-to-left, and complex-text languages are now supported.
-* The cdk-pixbuf library for image loading and manipulation is 
+* The gdk-pixbuf library for image loading and manipulation is 
   has been integrated with CTK+.
 * The CTK+ object system has mostly been moved to GLib, separating
   it from the GUI code. Many significant enhancements have been

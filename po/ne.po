@@ -7423,8 +7423,8 @@ msgstr "परीक्षण मुद्रकमा मुद्रण गर
 #~ msgid "Error writing to image file: %s"
 #~ msgstr "छवि फाइलमा लेख्दा त्रुटि: %s"
 
-#~ msgid "This build of cdk-pixbuf does not support saving the image format: %s"
-#~ msgstr "cdk-pixbuf को निर्माणले छवि ढाँचा बचत गर्न समर्थन गर्दैन: %s"
+#~ msgid "This build of gdk-pixbuf does not support saving the image format: %s"
+#~ msgstr "gdk-pixbuf को निर्माणले छवि ढाँचा बचत गर्न समर्थन गर्दैन: %s"
 
 #~ msgid "Insufficient memory to save image to callback"
 #~ msgstr "कलब्याकमा छवि बचत गर्न अपर्याप्त स्मृति"

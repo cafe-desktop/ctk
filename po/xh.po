@@ -4462,8 +4462,8 @@ msgstr ""
 #~ msgstr "Impazamo ekubhaleni umfanekiso: %s"
 
 #~ msgid ""
-#~ "This build of cdk-pixbuf does not support saving the image format: %s"
-#~ msgstr "Isakhiwo se-cdk-pixbuf asikuxhasi ukugcinwa kobume bemifanekiso: %s"
+#~ "This build of gdk-pixbuf does not support saving the image format: %s"
+#~ msgstr "Isakhiwo se-gdk-pixbuf asikuxhasi ukugcinwa kobume bemifanekiso: %s"
 
 #~ msgid "Insufficient memory to save image to callback"
 #~ msgstr ""

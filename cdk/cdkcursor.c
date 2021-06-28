@@ -25,7 +25,7 @@
 #include "config.h"
 
 #define GDK_PIXBUF_ENABLE_BACKEND
-#include <cdk-pixbuf/cdk-pixbuf.h>
+#include <gdk-pixbuf/gdk-pixbuf.h>
 
 #include "cdkcursor.h"
 #include "cdkcursorprivate.h"

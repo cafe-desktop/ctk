@@ -22,7 +22,7 @@
 #error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <cdk-pixbuf/cdk-pixbuf.h>
+#include <gdk-pixbuf/gdk-pixbuf.h>
 #include <cdk/cdk.h>
 #include <ctk/ctkstylecontext.h>
 
@@ -99,9 +99,9 @@ struct _CtkIconThemeClass
 
 /**
  * CtkIconLookupFlags:
- * @CTK_ICON_LOOKUP_NO_SVG: Never get SVG icons, even if cdk-pixbuf
+ * @CTK_ICON_LOOKUP_NO_SVG: Never get SVG icons, even if gdk-pixbuf
  *   supports them. Cannot be used together with %CTK_ICON_LOOKUP_FORCE_SVG.
- * @CTK_ICON_LOOKUP_FORCE_SVG: Get SVG icons, even if cdk-pixbuf
+ * @CTK_ICON_LOOKUP_FORCE_SVG: Get SVG icons, even if gdk-pixbuf
  *   doesn’t support them.
  *   Cannot be used together with %CTK_ICON_LOOKUP_NO_SVG.
  * @CTK_ICON_LOOKUP_USE_BUILTIN: When passed to

@@ -4606,7 +4606,7 @@ msgstr ""
 #~ msgstr "གཟུགས་བརྙན་ཡིག་སྣོད་ %s ལུ་ འབྲི་ནི་ལུ་འཛོལ་བ།"
 
 #~ msgid ""
-#~ "This build of cdk-pixbuf does not support saving the image format: %s"
+#~ "This build of gdk-pixbuf does not support saving the image format: %s"
 #~ msgstr "ཇི་ཌི་ཀེ་པར་ཁོངས་འདི་གིས་ གཟུགས་བརྙན་རྩ་སྒྲིག་ %s དེ་ བསྲུང་ནི་ལུ་ རྒྱབ་སྐྱོར་མིན་འདུག"
 
 #~ msgid "Insufficient memory to save image to callback"

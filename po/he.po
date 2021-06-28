@@ -9115,8 +9115,8 @@ msgstr "הדפסה למדפסת בדיקה"
 #~ msgstr "שגיאה בכתיבה לקובץ תמונה: %s"
 
 #~ msgid ""
-#~ "This build of cdk-pixbuf does not support saving the image format: %s"
-#~ msgstr "בניה זו של cdk-pixbuf לא תומכת בשמירת התמונה בפורמט: %s"
+#~ "This build of gdk-pixbuf does not support saving the image format: %s"
+#~ msgstr "בניה זו של gdk-pixbuf לא תומכת בשמירת התמונה בפורמט: %s"
 
 #~ msgid "Insufficient memory to save image to callback"
 #~ msgstr "Insufficient memory to save image to callback"

@@ -6077,8 +6077,8 @@ msgstr "ஒலியளவை குறைக்கவும்"
 #~ msgstr "உருவ கோப்புக்கு எழுதும்போது பிழை: %s"
 
 #~ msgid ""
-#~ "This build of cdk-pixbuf does not support saving the image format: %s"
-#~ msgstr "இந்த cdk-pixbuf அமைப்பில், இந்த உருவ வகையில் சேமிப்பதற்கு ஆதரவில்லை: %s"
+#~ "This build of gdk-pixbuf does not support saving the image format: %s"
+#~ msgstr "இந்த gdk-pixbuf அமைப்பில், இந்த உருவ வகையில் சேமிப்பதற்கு ஆதரவில்லை: %s"
 
 #~ msgid "Insufficient memory to save image to callback"
 #~ msgstr "உருவத்தை callback-இல் சேமிப்பதற்கு நினைவகம் போதாது"

@@ -4257,7 +4257,7 @@ msgstr "बिंब '%s' केँ लोड करबामे असफल, �
 #~ msgstr "बिंब फाइलमे लिखबामे त्रुटि: %s"
 
 #~ msgid ""
-#~ "This build of cdk-pixbuf does not support saving the image format: %s"
+#~ "This build of gdk-pixbuf does not support saving the image format: %s"
 #~ msgstr "cdk-pixbf  क' ई बिल्ड बिंब प्रारूप: %s केँ सहेजनाइकेँ समर्थन नहि करैत अछि"
 
 #~ msgid "Insufficient memory to save image to callback"

@@ -18,7 +18,7 @@
 #ifndef __GDK_PIXBUF_UTILS_PRIVATE_H__
 #define __GDK_PIXBUF_UTILS_PRIVATE_H__
 
-#include <cdk-pixbuf/cdk-pixbuf.h>
+#include <gdk-pixbuf/gdk-pixbuf.h>
 
 G_BEGIN_DECLS
 

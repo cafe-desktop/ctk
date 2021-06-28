@@ -15,84 +15,84 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n!=1;\n"
 
-#: ../cdk-pixbuf/cdk-pixbuf-simple-anim.c:165
+#: ../gdk-pixbuf/gdk-pixbuf-simple-anim.c:165
 msgid "Loop"
 msgstr "𐑤𐑵𐑐"
 
-#: ../cdk-pixbuf/cdk-pixbuf-simple-anim.c:166
+#: ../gdk-pixbuf/gdk-pixbuf-simple-anim.c:166
 msgid "Whether the animation should loop when it reaches the end"
 msgstr "𐑢𐑧𐑞𐑼 𐑞 𐑨𐑯𐑩𐑥𐑱𐑖𐑩𐑯 𐑖𐑫𐑛 𐑤𐑵𐑐 𐑢𐑧𐑯 𐑦𐑑 𐑮𐑰𐑗𐑩𐑟 𐑞 𐑧𐑯𐑛"
 
-#: ../cdk-pixbuf/cdk-pixbuf.c:89
+#: ../gdk-pixbuf/gdk-pixbuf.c:89
 msgid "Number of Channels"
 msgstr "𐑯𐑳𐑥𐑚𐑼 𐑝 𐑗𐑨𐑯𐑩𐑤𐑟"
 
-#: ../cdk-pixbuf/cdk-pixbuf.c:90
+#: ../gdk-pixbuf/gdk-pixbuf.c:90
 msgid "The number of samples per pixel"
 msgstr "𐑞 𐑯𐑳𐑥𐑚𐑼 𐑝 𐑕𐑭𐑥𐑐𐑩𐑤𐑟 𐑐𐑻 𐑐𐑦𐑒𐑕𐑩𐑤"
 
 #, fuzzy
-#: ../cdk-pixbuf/cdk-pixbuf.c:99
+#: ../gdk-pixbuf/gdk-pixbuf.c:99
 msgid "Colorspace"
 msgstr "Colorspace"
 
 #, fuzzy
-#: ../cdk-pixbuf/cdk-pixbuf.c:100
+#: ../gdk-pixbuf/gdk-pixbuf.c:100
 msgid "The colorspace in which the samples are interpreted"
 msgstr "𐑞 colorspace 𐑦𐑯 𐑢𐑦𐑗 𐑞 𐑕𐑭𐑥𐑐𐑩𐑤𐑟 𐑸 𐑦𐑯𐑑𐑻𐑐𐑮𐑩𐑑𐑩𐑛"
 
-#: ../cdk-pixbuf/cdk-pixbuf.c:108
+#: ../gdk-pixbuf/gdk-pixbuf.c:108
 msgid "Has Alpha"
 msgstr "𐑣𐑨𐑟 𐑨𐑤𐑓𐑩"
 
 #, fuzzy
-#: ../cdk-pixbuf/cdk-pixbuf.c:109
+#: ../gdk-pixbuf/gdk-pixbuf.c:109
 msgid "Whether the pixbuf has an alpha channel"
 msgstr "𐑢𐑧𐑞𐑼 𐑞 pixbuf 𐑣𐑨𐑟 𐑩𐑯 𐑨𐑤𐑓𐑩 𐑗𐑨𐑯𐑩𐑤"
 
-#: ../cdk-pixbuf/cdk-pixbuf.c:122
+#: ../gdk-pixbuf/gdk-pixbuf.c:122
 msgid "Bits per Sample"
 msgstr "𐑚𐑦𐑑𐑕 𐑐𐑻 𐑕𐑭𐑥𐑐𐑩𐑤"
 
-#: ../cdk-pixbuf/cdk-pixbuf.c:123
+#: ../gdk-pixbuf/gdk-pixbuf.c:123
 msgid "The number of bits per sample"
 msgstr "𐑞 𐑯𐑳𐑥𐑚𐑼 𐑝 𐑚𐑦𐑑𐑕 𐑐𐑻 𐑕𐑭𐑥𐑐𐑩𐑤"
 
-#: ../cdk-pixbuf/cdk-pixbuf.c:132 ../ctk/ctklayout.c:597
+#: ../gdk-pixbuf/gdk-pixbuf.c:132 ../ctk/ctklayout.c:597
 #: ../ctk/ctktreeviewcolumn.c:208
 msgid "Width"
 msgstr "𐑢𐑦𐑛𐑔"
 
 #, fuzzy
-#: ../cdk-pixbuf/cdk-pixbuf.c:133
+#: ../gdk-pixbuf/gdk-pixbuf.c:133
 msgid "The number of columns of the pixbuf"
 msgstr "𐑞 𐑯𐑳𐑥𐑚𐑼 𐑝 𐑒𐑪𐑤𐑩𐑥𐑟 𐑝 𐑞 pixbuf"
 
-#: ../cdk-pixbuf/cdk-pixbuf.c:142 ../ctk/ctklayout.c:606
+#: ../gdk-pixbuf/gdk-pixbuf.c:142 ../ctk/ctklayout.c:606
 msgid "Height"
 msgstr "𐑣𐑲𐑑"
 
 #, fuzzy
-#: ../cdk-pixbuf/cdk-pixbuf.c:143
+#: ../gdk-pixbuf/gdk-pixbuf.c:143
 msgid "The number of rows of the pixbuf"
 msgstr "𐑞 𐑯𐑳𐑥𐑚𐑼 𐑝 𐑮𐑴𐑟 𐑝 𐑞 pixbuf"
 
 #, fuzzy
-#: ../cdk-pixbuf/cdk-pixbuf.c:159
+#: ../gdk-pixbuf/gdk-pixbuf.c:159
 msgid "Rowstride"
 msgstr "Rowstride"
 
-#: ../cdk-pixbuf/cdk-pixbuf.c:160
+#: ../gdk-pixbuf/gdk-pixbuf.c:160
 msgid ""
 "The number of bytes between the start of a row and the start of the next row"
 msgstr "𐑞 𐑯𐑳𐑥𐑚𐑼 𐑝 𐑚𐑲𐑑𐑕 𐑚𐑦𐑑𐑢𐑰𐑯 𐑞 𐑕𐑑𐑸𐑑 𐑝 𐑩 𐑮𐑴 𐑯 𐑞 𐑕𐑑𐑸𐑑 𐑝 𐑞 𐑯𐑧𐑒𐑕𐑑 𐑮𐑴"
 
-#: ../cdk-pixbuf/cdk-pixbuf.c:169
+#: ../gdk-pixbuf/gdk-pixbuf.c:169
 msgid "Pixels"
 msgstr "𐑐𐑦𐑒𐑕𐑩𐑤𐑟"
 
 #, fuzzy
-#: ../cdk-pixbuf/cdk-pixbuf.c:170
+#: ../gdk-pixbuf/gdk-pixbuf.c:170
 msgid "A pointer to the pixel data of the pixbuf"
 msgstr "𐑩 𐑐𐑶𐑯𐑑𐑼 𐑑 𐑞 𐑐𐑦𐑒𐑕𐑩𐑤 𐑛𐑱𐑑𐑩 𐑝 𐑞 pixbuf"
 

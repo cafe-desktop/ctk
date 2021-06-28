@@ -20,7 +20,7 @@
 #include "ctkstylepropertyprivate.h"
 
 #include <gobject/gvaluecollector.h>
-#include <cdk-pixbuf/cdk-pixbuf.h>
+#include <gdk-pixbuf/gdk-pixbuf.h>
 #include <cairo-gobject.h>
 #include <math.h>
 

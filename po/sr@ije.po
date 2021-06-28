@@ -4497,8 +4497,8 @@ msgstr ""
 #~ msgstr "Грешка при упису у датотеку слике: %s"
 
 #~ msgid ""
-#~ "This build of cdk-pixbuf does not support saving the image format: %s"
-#~ msgstr "Ово издање програма cdk-pixbuf не подржава ову слику врсте %s"
+#~ "This build of gdk-pixbuf does not support saving the image format: %s"
+#~ msgstr "Ово издање програма gdk-pixbuf не подржава ову слику врсте %s"
 
 #~ msgid "Insufficient memory to save image to callback"
 #~ msgstr "Нема довољно меморије за чување слике у позивну функцију"

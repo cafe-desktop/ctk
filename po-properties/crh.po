@@ -18,89 +18,89 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: cdk-pixbuf/cdk-pixbuf-simple-anim.c:165
+#: gdk-pixbuf/gdk-pixbuf-simple-anim.c:165
 msgid "Loop"
 msgstr "İlik"
 
 # ctk/ctkcolorsel.c:1669
 # tüklü
-#: cdk-pixbuf/cdk-pixbuf-simple-anim.c:166
+#: gdk-pixbuf/gdk-pixbuf-simple-anim.c:166
 msgid "Whether the animation should loop when it reaches the end"
 msgstr "Canlandırmanıñ soñuna irişken soñ ilik yapıp yapmaycağı"
 
-#: cdk-pixbuf/cdk-pixbuf.c:89
+#: gdk-pixbuf/gdk-pixbuf.c:89
 msgid "Number of Channels"
 msgstr "Kanal Sayısı"
 
-# cdk-pixbuf/io-xpm.c:1265
-#: cdk-pixbuf/cdk-pixbuf.c:90
+# gdk-pixbuf/io-xpm.c:1265
+#: gdk-pixbuf/gdk-pixbuf.c:90
 msgid "The number of samples per pixel"
 msgstr "Piksel başına nümüne sayısı"
 
 # ctk/ctkcolorsel.c:1833
-#: cdk-pixbuf/cdk-pixbuf.c:99
+#: gdk-pixbuf/gdk-pixbuf.c:99
 msgid "Colorspace"
 msgstr "Tüs-fezası"
 
-#: cdk-pixbuf/cdk-pixbuf.c:100
+#: gdk-pixbuf/gdk-pixbuf.c:100
 msgid "The colorspace in which the samples are interpreted"
 msgstr "Nümünelerniñ içinde tefsir etilecegi tüs-fezası"
 
 # ctk/ctklabel.c:212
-#: cdk-pixbuf/cdk-pixbuf.c:108
+#: gdk-pixbuf/gdk-pixbuf.c:108
 msgid "Has Alpha"
 msgstr "Alfası Bar"
 
-#: cdk-pixbuf/cdk-pixbuf.c:109
+#: gdk-pixbuf/gdk-pixbuf.c:109
 msgid "Whether the pixbuf has an alpha channel"
 msgstr "Piksel buferiniñ (pixbuf) alfa kanalına sahip olıp olmağanı"
 
-#: cdk-pixbuf/cdk-pixbuf.c:122
+#: gdk-pixbuf/gdk-pixbuf.c:122
 msgid "Bits per Sample"
 msgstr "Nümüne başına Bit"
 
 # ctk/ctktable.c:157
-#: cdk-pixbuf/cdk-pixbuf.c:123
+#: gdk-pixbuf/gdk-pixbuf.c:123
 msgid "The number of bits per sample"
 msgstr "Nümüne başına bit sayısı"
 
 # ctk/ctklayout.c:435 ctk/ctktreeviewcolumn.c:188 ctk/ctkwidget.c:424
-#: cdk-pixbuf/cdk-pixbuf.c:132 ctk/ctklayout.c:633 ctk/ctktreeviewcolumn.c:208
+#: gdk-pixbuf/gdk-pixbuf.c:132 ctk/ctklayout.c:633 ctk/ctktreeviewcolumn.c:208
 msgid "Width"
 msgstr "Kenişlik"
 
 # ctk/ctktable.c:166
-#: cdk-pixbuf/cdk-pixbuf.c:133
+#: gdk-pixbuf/gdk-pixbuf.c:133
 msgid "The number of columns of the pixbuf"
 msgstr "Piksel buferindeki (pixbuf) sutun sayısı"
 
 # ctk/ctklayout.c:444 ctk/ctkwidget.c:433
-#: cdk-pixbuf/cdk-pixbuf.c:142 ctk/ctklayout.c:642
+#: gdk-pixbuf/gdk-pixbuf.c:142 ctk/ctklayout.c:642
 msgid "Height"
 msgstr "Yükseklik"
 
 # ctk/ctktable.c:157
-#: cdk-pixbuf/cdk-pixbuf.c:143
+#: gdk-pixbuf/gdk-pixbuf.c:143
 msgid "The number of rows of the pixbuf"
 msgstr "Piksel buferindeki (pixbuf) saf sayısı"
 
 # ctk/ctktable.c:156
-#: cdk-pixbuf/cdk-pixbuf.c:159
+#: gdk-pixbuf/gdk-pixbuf.c:159
 msgid "Rowstride"
 msgstr "Saf-adımlaması"
 
 # ctk/ctkentry.c:447
-#: cdk-pixbuf/cdk-pixbuf.c:160
+#: gdk-pixbuf/gdk-pixbuf.c:160
 msgid ""
 "The number of bytes between the start of a row and the start of the next row"
 msgstr ""
 "Bir safnıñ başlanğıçı ile soñraki safnıñ başlanğıçı arasındaki bayt sayısı"
 
-#: cdk-pixbuf/cdk-pixbuf.c:169
+#: gdk-pixbuf/gdk-pixbuf.c:169
 msgid "Pixels"
 msgstr "Piksel"
 
-#: cdk-pixbuf/cdk-pixbuf.c:170
+#: gdk-pixbuf/gdk-pixbuf.c:170
 msgid "A pointer to the pixel data of the pixbuf"
 msgstr "Piksel buferiniñ (pixbuf) piksel verilerine bir noqtacı"
 
@@ -3708,7 +3708,7 @@ msgstr "Maska"
 msgid "Mask bitmap to use with CdkImage or CdkPixmap"
 msgstr "CdkImage ya da CdkPixmap ile qullanılacaq maska bit-haritası"
 
-# cdk-pixbuf/io-tiff.c:411
+# gdk-pixbuf/io-tiff.c:411
 #: ctk/ctkimage.c:255 ctk/ctkstatusicon.c:222
 msgid "Filename to load and display"
 msgstr "Yüklenip kösterilecek dosye adı"

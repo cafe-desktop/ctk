@@ -5153,7 +5153,7 @@ msgstr "ପରୀକ୍ଷା ମୁଦ୍ରଣୀରେ ମୁଦ୍ରଣ କ
 #~ msgstr "ଚିତ୍ର ଫାଇଲକୁ ଲେଖିବାରେ ତୃଟି: %s"
 
 #~ msgid ""
-#~ "This build of cdk-pixbuf does not support saving the image format: %s"
+#~ "This build of gdk-pixbuf does not support saving the image format: %s"
 #~ msgstr "ଜି.ଡି.କେ.-ପିକ୍ସବଫର ଏହି ସଂସ୍କରଣ ଚିତ୍ର ଶୈଳୀ ସଂରକ୍ଷଣକୁ ସମର୍ଥନ କରୁନାହିଁ:%s"
 
 #~ msgid "Insufficient memory to save image to callback"

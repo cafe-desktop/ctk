@@ -4802,7 +4802,7 @@ msgstr "Kuri Ibirimo Ishusho OYA a Ishusho IDOSIYE"
 
 #, fuzzy
 #~ msgid ""
-#~ "This build of cdk-pixbuf does not support saving the image format: %s"
+#~ "This build of gdk-pixbuf does not support saving the image format: %s"
 #~ msgstr "Bya OYA Gushigikira Mu kubika Ishusho Imiterere"
 
 #, fuzzy

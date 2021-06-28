@@ -4288,9 +4288,9 @@ msgstr ""
 #~ msgstr "Pamyłka pry zapisie ŭ fajł vyjavy: %s"
 
 #~ msgid ""
-#~ "This build of cdk-pixbuf does not support saving the image format: %s"
+#~ "This build of gdk-pixbuf does not support saving the image format: %s"
 #~ msgstr ""
-#~ "Hetaja kopija cdk-pixbuf nie dazvalaje zapisvać vyjavu ŭ farmacie: %s"
+#~ "Hetaja kopija gdk-pixbuf nie dazvalaje zapisvać vyjavu ŭ farmacie: %s"
 
 # Pravieryć u kiryličnych
 #~ msgid "Insufficient memory to save image to callback"

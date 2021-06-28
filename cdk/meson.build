@@ -312,7 +312,7 @@ if build_gir
   cdk_gir_inc = [ 'cairo-1.0', 'Gio-2.0', ]
 
   if pixbuf_dep.type_name() == 'internal'
-    cdk_gir_inc += subproject('cdk-pixbuf').get_variable('gdkpixbuf_gir').get(0)
+    cdk_gir_inc += subproject('gdk-pixbuf').get_variable('gdkpixbuf_gir').get(0)
   else
     cdk_gir_inc += 'GdkPixbuf-2.0'
   endif
