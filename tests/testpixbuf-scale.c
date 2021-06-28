@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-CdkInterpType interp_type = GDK_INTERP_BILINEAR;
+GdkInterpType interp_type = GDK_INTERP_BILINEAR;
 int overall_alpha = 255;
 GdkPixbuf *pixbuf;
 CtkWidget *darea;
