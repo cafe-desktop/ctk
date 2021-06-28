@@ -37,7 +37,7 @@
 
 #include <glib.h>
 #include <glib/gstdio.h>
-#include <cdk-pixbuf/cdk-pixdata.h>
+#include <gdk-pixbuf/cdk-pixdata.h>
 #include <glib/gi18n.h>
 #include "ctkiconcachevalidator.h"
 

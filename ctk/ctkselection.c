@@ -98,7 +98,7 @@
 #include "ctkdebug.h"
 #include "ctktextbufferrichtext.h"
 #include "ctkintl.h"
-#include "cdk-pixbuf/cdk-pixbuf.h"
+#include "gdk-pixbuf/gdk-pixbuf.h"
 
 #ifdef CDK_WINDOWING_X11
 #include "x11/cdkx.h"

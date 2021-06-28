@@ -4472,9 +4472,9 @@ msgstr ""
 #~ msgstr "Error writing to image file: %s"
 
 #~ msgid ""
-#~ "This build of cdk-pixbuf does not support saving the image format: %s"
+#~ "This build of gdk-pixbuf does not support saving the image format: %s"
 #~ msgstr ""
-#~ "This build of cdk-pixbuf does not support saving the image format: %s"
+#~ "This build of gdk-pixbuf does not support saving the image format: %s"
 
 #~ msgid "Insufficient memory to save image to callback"
 #~ msgstr "Insufficient memory to save image to callback"

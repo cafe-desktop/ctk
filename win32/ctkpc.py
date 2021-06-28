@@ -47,7 +47,7 @@ def main(argv):
     pkg_replace_items = {'@CTK_API_VERSION@': '3.0',
                          '@CDK_BACKENDS@': cdk_backends}
 
-    pkg_required_packages = 'cdk-pixbuf-2.0 >= ' + gdk_pixbuf_min_ver
+    pkg_required_packages = 'gdk-pixbuf-2.0 >= ' + gdk_pixbuf_min_ver
 
     cdk_pc_replace_items = {'@CDK_PACKAGES@': gio_package + ' ' + \
                                               'pangowin32 pangocairo' + ' ' + \

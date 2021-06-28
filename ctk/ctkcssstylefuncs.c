@@ -24,7 +24,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <cdk-pixbuf/cdk-pixbuf.h>
+#include <gdk-pixbuf/gdk-pixbuf.h>
 #include <cairo-gobject.h>
 
 #include "ctkcsscolorvalueprivate.h"

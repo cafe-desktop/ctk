@@ -7240,9 +7240,9 @@ msgstr "Druk na toetsdrukker"
 #~ msgstr "Fout met skryf na beeldlêer: %s"
 
 #~ msgid ""
-#~ "This build of cdk-pixbuf does not support saving the image format: %s"
+#~ "This build of gdk-pixbuf does not support saving the image format: %s"
 #~ msgstr ""
-#~ "Hierdie bou van cdk-pixbuf ondersteun nie die stoor van die beeldformaat "
+#~ "Hierdie bou van gdk-pixbuf ondersteun nie die stoor van die beeldformaat "
 #~ "%s nie"
 
 #, fuzzy

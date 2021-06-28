@@ -246,7 +246,7 @@
 246|CTK+ and friends|CTKtoolkit|#GSettings / #dconf is ready: http://mail.gnome.org/archives/desktop-devel-list/2010-June/msg00226.html . Please port your modules! #ctk|1277909398|0||0|1
 247|CTK+ and friends|CTKtoolkit|More work in height-for-width layout system for CTK+ : http://blogs.gnome.org/tvb/2010/06/30/ctk-learns-height-for-width-episode-ii/ #ctk|1277909313|0||0|0
 248|CTK+ and friends|CTKtoolkit|GLib 2.25.10 (unstable) released: http://ur1.ca/0ee7o WARNING: There have been API changes in GDBus. #ctk|1277685452|0||0|1
-249|CTK+ and friends|CTKtoolkit|cdk-pixbuf is now a standalone package: http://mail.gnome.org/archives/ctk-devel-list/2010-June/msg00172.html #ctk|1277685365|0||0|1
+249|CTK+ and friends|CTKtoolkit|gdk-pixbuf is now a standalone package: http://mail.gnome.org/archives/ctk-devel-list/2010-June/msg00172.html #ctk|1277685365|0||0|1
 250|CTK+ and friends|CTKtoolkit|CTK+ 2.90.4 (unstable) released: http://mail.gnome.org/archives/ctk-devel-list/2010-June/msg00182.html #ctk|1277685274|0||0|0
 251|CTK+ and friends|CTKtoolkit|CTK+ 2.21.3 (unstable) released: http://mail.gnome.org/archives/ctk-devel-list/2010-June/msg00183.html #ctk|1277685237|0||0|0
 252|CTK+ and friends|CTKtoolkit|We are open to fix API that make the life of #bindings harder but only by addition+rename, or addition+deprecation. File bugs, please #ctk|1277312749|0||0|0

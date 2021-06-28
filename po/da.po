@@ -9158,9 +9158,9 @@ msgstr "Udskriv til testprinter"
 #~ msgstr "Fejl ved skrivning af billedfil: %s"
 
 #~ msgid ""
-#~ "This build of cdk-pixbuf does not support saving the image format: %s"
+#~ "This build of gdk-pixbuf does not support saving the image format: %s"
 #~ msgstr ""
-#~ "Denne bygning af cdk-pixbuf understøtter ikke gemning af billedformatet: "
+#~ "Denne bygning af gdk-pixbuf understøtter ikke gemning af billedformatet: "
 #~ "%s"
 
 #~ msgid "Insufficient memory to save image to callback"

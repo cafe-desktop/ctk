@@ -14,8 +14,8 @@ RUN dnf -y install \
     fribidi-devel \
     gcc \
     gcc-c++ \
-    cdk-pixbuf2-devel \
-    cdk-pixbuf2-modules \
+    gdk-pixbuf2-devel \
+    gdk-pixbuf2-modules \
     gettext \
     gettext-devel \
     git \

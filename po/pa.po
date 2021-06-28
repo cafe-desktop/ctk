@@ -8958,8 +8958,8 @@ msgstr "ਟੈਸਟ ਪਰਿੰਟਰ ਲਈ ਪਰਿੰਟ ਕਰੋ"
 #~ msgstr "ਚਿੱਤਰ ਫਾਇਲ 'ਤੇ ਲਿਖਣ ਵਿੱਚ ਗਲਤੀ: %s"
 
 #~ msgid ""
-#~ "This build of cdk-pixbuf does not support saving the image format: %s"
-#~ msgstr "cdk-pixbuf ਦਾ ਇਹ ਬਿਲੱਡ, ਚਿੱਤਰ ਫਾਰਮੈਟ ਵਿੱਚ ਸੰਭਾਲਣ ਲਈ ਸਹਾਇਕ ਨਹੀਂ ਹੈ: %s"
+#~ "This build of gdk-pixbuf does not support saving the image format: %s"
+#~ msgstr "gdk-pixbuf ਦਾ ਇਹ ਬਿਲੱਡ, ਚਿੱਤਰ ਫਾਰਮੈਟ ਵਿੱਚ ਸੰਭਾਲਣ ਲਈ ਸਹਾਇਕ ਨਹੀਂ ਹੈ: %s"
 
 #~ msgid "Insufficient memory to save image to callback"
 #~ msgstr "ਚਿੱਤਰ ਨੂੰ ਮੁੜ-ਲਿਆਉਣ ਲਈ ਸੰਭਾਲ ਵਾਸਤੇ ਲੋੜੀਦੀ ਮੈਮੋਰੀ ਨਹੀਂ ਹੈ"

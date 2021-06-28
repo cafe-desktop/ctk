@@ -1,5 +1,5 @@
 
-/* testpixbuf -- test program for cdk-pixbuf code
+/* testpixbuf -- test program for gdk-pixbuf code
  * Copyright (C) 1999 Mark Crichton, Larry Ewing
  *
  * This library is free software; you can redistribute it and/or

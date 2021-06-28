@@ -4265,9 +4265,9 @@ msgstr ""
 #~ msgstr "Error al escribir al ficheru d'imaxe: %s"
 
 #~ msgid ""
-#~ "This build of cdk-pixbuf does not support saving the image format: %s"
+#~ "This build of gdk-pixbuf does not support saving the image format: %s"
 #~ msgstr ""
-#~ "Esti bloque de cdk-pixbuf nun soporta guardar el formatu de imaxe: %s"
+#~ "Esti bloque de gdk-pixbuf nun soporta guardar el formatu de imaxe: %s"
 
 #~ msgid "Insufficient memory to save image to callback"
 #~ msgstr "Memoria insuficiente pa guardar imaxe pa rellamada"

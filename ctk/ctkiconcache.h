@@ -17,7 +17,7 @@
 #ifndef __CTK_ICON_CACHE_H__
 #define __CTK_ICON_CACHE_H__
 
-#include <cdk-pixbuf/cdk-pixbuf.h>
+#include <gdk-pixbuf/gdk-pixbuf.h>
 #include <cdk/cdk.h>
 
 typedef struct _CtkIconCache CtkIconCache;

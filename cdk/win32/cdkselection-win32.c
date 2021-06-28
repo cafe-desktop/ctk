@@ -970,7 +970,7 @@ get_compatibility_formats_for_target (CdkAtom target)
       if (target != win32_sel->known_pixbuf_formats[i])
         continue;
 
-      /* Any format known to cdk-pixbuf can be presented as PNG or BMP */
+      /* Any format known to gdk-pixbuf can be presented as PNG or BMP */
       result = g_hash_table_lookup (win32_sel->compatibility_formats,
                                     _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_IMAGE_PNG));
       break;
@@ -990,11 +990,11 @@ _cdk_win32_selection_get_compatibility_targets_for_format (UINT format)
   if (result != NULL)
     return result;
 
-  /* TODO: reverse cdk-pixbuf conversion? We have to somehow
-   * match cdk-pixbuf format names to the corresponding clipboard
+  /* TODO: reverse gdk-pixbuf conversion? We have to somehow
+   * match gdk-pixbuf format names to the corresponding clipboard
    * format names. The former are known only at runtime,
    * the latter are presently unknown...
-   * Maybe try to get the data and then just feed it to cdk-pixbuf,
+   * Maybe try to get the data and then just feed it to gdk-pixbuf,
    * see if it knows what it is?
    */
 
@@ -1315,7 +1315,7 @@ transmute_cf_dib_to_image_bmp (const guchar    *data,
                                gint            *set_data_length,
                                GDestroyNotify  *set_data_destroy)
 {
-  /* Need to add a BMP file header so cdk-pixbuf can load
+  /* Need to add a BMP file header so gdk-pixbuf can load
    * it.
    *
    * If the data is from Mozilla Firefox or IE7, and
@@ -1324,14 +1324,14 @@ transmute_cf_dib_to_image_bmp (const guchar    *data,
    * biBitCount==32, we assume that the "extra" byte in
    * each pixel in fact is alpha.
    *
-   * The cdk-pixbuf bmp loader doesn't trust 32-bit BI_RGB
+   * The gdk-pixbuf bmp loader doesn't trust 32-bit BI_RGB
    * bitmaps to in fact have alpha, so we have to convince
    * it by changing the bitmap header to a version 5
    * BI_BITFIELDS one with explicit alpha mask indicated.
    *
    * The RGB bytes that are in bitmaps on the clipboard
    * originating from Firefox or IE7 seem to be
-   * premultiplied with alpha. The cdk-pixbuf bmp loader
+   * premultiplied with alpha. The gdk-pixbuf bmp loader
    * of course doesn't expect that, so we have to undo the
    * premultiplication before feeding the bitmap to the
    * bmp loader.
@@ -1376,7 +1376,7 @@ transmute_cf_dib_to_image_bmp (const guchar    *data,
       TRUE)
     {
       /* We turn the BITMAPINFOHEADER into a
-       * BITMAPV5HEADER before feeding it to cdk-pixbuf.
+       * BITMAPV5HEADER before feeding it to gdk-pixbuf.
        */
       new_length = (data_length +
 		    sizeof (BITMAPFILEHEADER) +

@@ -7147,8 +7147,8 @@ msgstr "พิมพ์ออกยังเครื่องพิมพ์ท
 #~ msgstr "เกิดข้อผิดพลาดขณะเขียนแฟ้มรูปภาพ: %s"
 
 #~ msgid ""
-#~ "This build of cdk-pixbuf does not support saving the image format: %s"
-#~ msgstr "คนคอมไพล์ cdk-pixbuf ไม่ได้เลือกรองรับการบันทึกแฟ้มชนิด: %s"
+#~ "This build of gdk-pixbuf does not support saving the image format: %s"
+#~ msgstr "คนคอมไพล์ gdk-pixbuf ไม่ได้เลือกรองรับการบันทึกแฟ้มชนิด: %s"
 
 #~ msgid "Insufficient memory to save image to callback"
 #~ msgstr "หน่วยความจำไม่พอสำหรับบันทึกข้อมูลภาพผ่านฟังก์ชันเรียกกลับ"

@@ -1242,7 +1242,7 @@ ctk_arrow_draw (CtkWidget *widget,
   <title>Install CTK+ modules in the right place</title>
   <para>
     Some software packages install loadable CTK+ modules such as theme engines,
-    cdk-pixbuf loaders or input methods. Since CTK+ 3 is parallel-installable
+    gdk-pixbuf loaders or input methods. Since CTK+ 3 is parallel-installable
     with CTK+ 2.x, the two CTK+ versions have separate locations for their
     loadable modules. The location for CTK+ 2.x is
     <filename><replaceable>libdir</replaceable>/ctk-2.0</filename>
@@ -1261,7 +1261,7 @@ ctk_arrow_draw (CtkWidget *widget,
     suffix to make them parallel-installable.
   </para>
   <para>
-    Note that CTK+ modules often link against libctk, libcdk-pixbuf, etc.
+    Note that CTK+ modules often link against libctk, libgdk-pixbuf, etc.
     If that is the case for your module, you have to be careful to link the
     CTK+ 2.x version of your module against the 2.x version of the libraries,
     and the CTK+ 3 version against hte 3.x versions. Loading a module linked

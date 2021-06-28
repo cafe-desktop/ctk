@@ -4493,9 +4493,9 @@ msgstr ""
 #~ msgstr "Грешка при снимање на сликата: %s"
 
 #~ msgid ""
-#~ "This build of cdk-pixbuf does not support saving the image format: %s"
+#~ "This build of gdk-pixbuf does not support saving the image format: %s"
 #~ msgstr ""
-#~ "Градењето на cdk-pixbuf не поддржува зачувување на форматот на сликата: %s"
+#~ "Градењето на gdk-pixbuf не поддржува зачувување на форматот на сликата: %s"
 
 #~ msgid "Insufficient memory to save image to callback"
 #~ msgstr "Нема доволно меморија за да ја зачувам сликата во callback"

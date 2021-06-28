@@ -8863,8 +8863,8 @@ msgstr "چاپ به چاپگر آزمایشی"
 #~ msgid "Error writing to image file: %s"
 #~ msgstr "خطا در نوشتن در پرونده‌ی تصویر: %s"
 
-#~ msgid "This build of cdk-pixbuf does not support saving the image format: %s"
-#~ msgstr "این ساخت cdk-pixbuf از ذخیره‌ی این قالب تصویری پشتیبانی نمی‌کند: %s"
+#~ msgid "This build of gdk-pixbuf does not support saving the image format: %s"
+#~ msgstr "این ساخت gdk-pixbuf از ذخیره‌ی این قالب تصویری پشتیبانی نمی‌کند: %s"
 
 #~ msgid "Failed to open temporary file"
 #~ msgstr "باز کردن پرونده‌ی موقت شکست خورد"

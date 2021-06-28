@@ -18,7 +18,7 @@
 #include "ctkiconcachevalidator.h"
 
 #include <glib.h>
-#include <cdk-pixbuf/cdk-pixdata.h>
+#include <gdk-pixbuf/cdk-pixdata.h>
 
 
 #define VERBOSE(x)

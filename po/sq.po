@@ -4381,9 +4381,9 @@ msgstr ""
 #~ msgstr "Gabim gjatë shkrimit tek file i figurës: %s"
 
 #~ msgid ""
-#~ "This build of cdk-pixbuf does not support saving the image format: %s"
+#~ "This build of gdk-pixbuf does not support saving the image format: %s"
 #~ msgstr ""
-#~ "Ky variant i cdk-pixbuf nuk suporton ruajtjen e figurës në formatin: %s"
+#~ "Ky variant i gdk-pixbuf nuk suporton ruajtjen e figurës në formatin: %s"
 
 #~ msgid "Insufficient memory to save image to callback"
 #~ msgstr "Kujtesë e pamjaftueshme për të ruajtur figurën që duhet rithirrur"

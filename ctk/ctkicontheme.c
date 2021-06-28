@@ -1814,7 +1814,7 @@ real_choose_icon (CtkIconTheme       *icon_theme,
           if (!warned_once)
             {
               g_warning ("Found an icon but could not load it. "
-                         "Most likely cdk-pixbuf does not provide SVG support.");
+                         "Most likely gdk-pixbuf does not provide SVG support.");
               warned_once = TRUE;
             }
 

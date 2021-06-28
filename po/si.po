@@ -4450,8 +4450,8 @@ msgstr "'%s'පිළිඹිබුව පූරණය දෝෂසහිතය
 #~ msgstr "පිළිඹිබුවට ලිවීම දෝෂ සහිතයි : %s"
 
 #~ msgid ""
-#~ "This build of cdk-pixbuf does not support saving the image format: %s"
-#~ msgstr "cdk-pixbuf ගොඩ නැගීම පිළිඹිබු සංයුතිය සුරකීමට සහාය නොදක්වයි: %s"
+#~ "This build of gdk-pixbuf does not support saving the image format: %s"
+#~ msgstr "gdk-pixbuf ගොඩ නැගීම පිළිඹිබු සංයුතිය සුරකීමට සහාය නොදක්වයි: %s"
 
 #~ msgid "Insufficient memory to save image to callback"
 #~ msgstr "callback වෙත පිළිඹිබුව සුරකීමට ප්‍රමාණවත් මතකයක් නැත"

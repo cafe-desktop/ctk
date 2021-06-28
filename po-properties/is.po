@@ -9399,9 +9399,9 @@ msgstr ""
 #~ msgstr "Gat ekki lesið myndina '%s': %s"
 
 #~ msgid ""
-#~ "This build of cdk-pixbuf does not support saving the image format: %s"
+#~ "This build of gdk-pixbuf does not support saving the image format: %s"
 #~ msgstr ""
-#~ "Þessi útgáfa af cdk-pixbuf styður ekki að vista myndum á sniðinu: %s"
+#~ "Þessi útgáfa af gdk-pixbuf styður ekki að vista myndum á sniðinu: %s"
 
 #~ msgid "Failed to open '%s' for writing: %s"
 #~ msgstr "Gat ekki opnað '%s' til skriftar: %s"

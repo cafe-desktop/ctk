@@ -4316,9 +4316,9 @@ msgstr ""
 #~ msgstr "Gwall wrth ysgrifennu at ffeil delwedd: %s"
 
 #~ msgid ""
-#~ "This build of cdk-pixbuf does not support saving the image format: %s"
+#~ "This build of gdk-pixbuf does not support saving the image format: %s"
 #~ msgstr ""
-#~ "Nid yw'r gosodiad yma o cdk-pixbuf yn cynnal cadw'r fformat delwedd: %s"
+#~ "Nid yw'r gosodiad yma o gdk-pixbuf yn cynnal cadw'r fformat delwedd: %s"
 
 #~ msgid "Insufficient memory to save image to callback"
 #~ msgstr "Dim digon o gof er mwyn cadw delwedd at adalwad"

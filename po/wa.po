@@ -4446,9 +4446,9 @@ msgstr ""
 #~ msgstr "Åk n' a nén stî come dji scrijheut e fitchî imådje: %s"
 
 #~ msgid ""
-#~ "This build of cdk-pixbuf does not support saving the image format: %s"
+#~ "This build of gdk-pixbuf does not support saving the image format: %s"
 #~ msgstr ""
-#~ "Cisse modêye ci di cdk-pixbuf come elle a stî copilêye èn sopoite nén li "
+#~ "Cisse modêye ci di gdk-pixbuf come elle a stî copilêye èn sopoite nén li "
 #~ "schapaedje d' imådjes del sôre: %s"
 
 #~ msgid "Insufficient memory to save image to callback"

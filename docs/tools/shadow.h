@@ -1,7 +1,7 @@
 #ifndef __SHADOW_H__
 #define __SHADOW_H__
 
-#include <cdk-pixbuf/cdk-pixbuf.h>
+#include <gdk-pixbuf/gdk-pixbuf.h>
 
 GdkPixbuf *create_shadowed_pixbuf (GdkPixbuf *src);
 

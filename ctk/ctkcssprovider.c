@@ -20,7 +20,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include <cdk-pixbuf/cdk-pixbuf.h>
+#include <gdk-pixbuf/gdk-pixbuf.h>
 #include <cairo-gobject.h>
 
 #include "ctkcssproviderprivate.h"

@@ -4257,8 +4257,8 @@ msgstr "ရုပ်ပုံ %s': ဖွင့်လို့ မရတဲ့ �
 #~ msgstr "ရေးသားချက် ချို့ယွင်းတဲ့ ရုပ်ပုံဖိုင် - %s"
 
 #~ msgid ""
-#~ "This build of cdk-pixbuf does not support saving the image format: %s"
-#~ msgstr "cdk-pixbuf တည်ဆောက်မှုက လက်မခံတဲ့ ရုပ်ပုံ အမျိုးအစား သိမ်းဆည်းမှု - %s"
+#~ "This build of gdk-pixbuf does not support saving the image format: %s"
+#~ msgstr "gdk-pixbuf တည်ဆောက်မှုက လက်မခံတဲ့ ရုပ်ပုံ အမျိုးအစား သိမ်းဆည်းမှု - %s"
 
 #~ msgid "Insufficient memory to save image to callback"
 #~ msgstr "တန်ပြန်ခေါ်ဆိုရန် ရုပ်ပုံကို သိမ်းဆည်းဖို့ မှတ်ဉာဏ် မလုံလောက်ဘူး"
