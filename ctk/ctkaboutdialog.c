@@ -1789,7 +1789,7 @@ ctk_about_dialog_set_logo (CtkAboutDialog *about,
       if (pixbufs != NULL)
         {
           ctk_image_set_from_pixbuf (CTK_IMAGE (priv->logo_image),
-                                     CDK_PIXBUF (pixbufs->data));
+                                     GDK_PIXBUF (pixbufs->data));
 
           g_list_free (pixbufs);
         }

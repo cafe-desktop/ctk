@@ -22,8 +22,8 @@
  * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
-#ifndef __CDK_PIXBUF_H__
-#define __CDK_PIXBUF_H__
+#ifndef __GDK_PIXBUF_H__
+#define __GDK_PIXBUF_H__
 
 #if !defined (__CDK_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdk.h> can be included directly."
@@ -52,4 +52,4 @@ GdkPixbuf *gdk_pixbuf_get_from_surface (cairo_surface_t *surface,
 
 G_END_DECLS
 
-#endif /* __CDK_PIXBUF_H__ */
+#endif /* __GDK_PIXBUF_H__ */

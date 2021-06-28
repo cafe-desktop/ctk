@@ -69,14 +69,14 @@ GLIB_REQUIRED_VERSION=glib_required_version
 PANGO_REQUIRED_VERSION=pango_required_version
 ATK_REQUIRED_VERSION=atk_required_version
 CAIRO_REQUIRED_VERSION=cairo_required_version
-CDK_PIXBUF_REQUIRED_VERSION=gdk_pixbuf_required_version
+GDK_PIXBUF_REQUIRED_VERSION=gdk_pixbuf_required_version
 INTROSPECTION_REQUIRED_VERSION=introspection_required_version
 
 AC_SUBST(GLIB_REQUIRED_VERSION)
 AC_SUBST(PANGO_REQUIRED_VERSION)
 AC_SUBST(ATK_REQUIRED_VERSION)
 AC_SUBST(CAIRO_REQUIRED_VERSION)
-AC_SUBST(CDK_PIXBUF_REQUIRED_VERSION)
+AC_SUBST(GDK_PIXBUF_REQUIRED_VERSION)
 AC_SUBST(INTROSPECTION_REQUIRED_VERSION)
 
 # Save this value here, since automake will set cflags later
@@ -1475,8 +1475,8 @@ AC_SUBST(ISO_CODES_PREFIX)
 AC_SUBST(CTK_DEBUG_FLAGS)
 AC_SUBST(CTK_XIM_FLAGS)
 
-CDK_PIXBUF_LIBS=`$PKG_CONFIG --libs cdk-pixbuf-2.0`
-AC_SUBST(CDK_PIXBUF_LIBS)
+GDK_PIXBUF_LIBS=`$PKG_CONFIG --libs cdk-pixbuf-2.0`
+AC_SUBST(GDK_PIXBUF_LIBS)
 
 ################################################################
 # Printing system checks

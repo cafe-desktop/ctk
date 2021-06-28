@@ -23,7 +23,7 @@ CTK_BINARY_VERSION = @CTK_BINARY_VERSION@
 PERL = perl
 AWK = gawk
 
-INCLUDES = -FImsvc_recommended_pragmas.h -I . -I .. -I ../cdk $(CDK_PIXBUF_CFLAGS)
+INCLUDES = -FImsvc_recommended_pragmas.h -I . -I .. -I ../cdk $(GDK_PIXBUF_CFLAGS)
 DEPCFLAGS = $(PANGO_CFLAGS) $(GLIB_CFLAGS) $(LIBICONV_CFLAGS) \
 		$(INTL_CFLAGS) $(ATK_CFLAGS) $(CAIRO_CFLAGS)
 LDFLAGS = $(ATK_LIBS) /link /machine:ix86 $(LINKDEBUG)
@@ -43,7 +43,7 @@ DEFINES = \
 
 EXTRALIBS = \
 	$(CDK_LIBS) \
-	$(CDK_PIXBUF_LIBS) \
+	$(GDK_PIXBUF_LIBS) \
 	$(PANGO_LIBS) $(INTL_LIBS) \
 	$(GLIB_LIBS) $(GMODULE_LIBS) $(GIO_LIBS) \
 	$(CAIRO_LIBS) $(PANGOCAIRO_LIBS) $(CAIRO_GOBJECT_LIBS) \
@@ -632,10 +632,10 @@ ctk-query-immodules-$(CTK_VER).exe : queryimmodules.obj
 	$(CC) $(CFLAGS) -Fe$@ queryimmodules.obj $(CTK_LIBS) $(GLIB_LIBS) $(PANGO_LIBS) $(LDFLAGS)
 
 ctk-update-icon-cache.exe : updateiconcache.obj
-	$(CC) $(CFLAGS) -Fe$@ updateiconcache.obj $(CDK_PIXBUF_LIBS) $(GLIB_LIBS) $(INTL_LIBS) $(PANGO_LIBS) $(LDFLAGS)
+	$(CC) $(CFLAGS) -Fe$@ updateiconcache.obj $(GDK_PIXBUF_LIBS) $(GLIB_LIBS) $(INTL_LIBS) $(PANGO_LIBS) $(LDFLAGS)
 
 ctk-x11-$(CTK_VER).dll : $(ctk_OBJECTS) ctk.def
-	$(CC) $(CFLAGS) -LD -Fm -Fectk-x11-$(CTK_VER).dll $(ctk_OBJECTS) ../cdk/cdk-x11-$(CTK_VER).lib $(CDK_PIXBUF_LIBS) $(PANGO_LIBS) $(INTL_LIBS) $(GLIB_LIBS) gdi32.lib user32.lib advapi32.lib $(LDFLAGS) /def:ctk.def
+	$(CC) $(CFLAGS) -LD -Fm -Fectk-x11-$(CTK_VER).dll $(ctk_OBJECTS) ../cdk/cdk-x11-$(CTK_VER).lib $(GDK_PIXBUF_LIBS) $(PANGO_LIBS) $(INTL_LIBS) $(GLIB_LIBS) gdi32.lib user32.lib advapi32.lib $(LDFLAGS) /def:ctk.def
 
 # General rule for compiling the objects into the DLL
 .c.obj :

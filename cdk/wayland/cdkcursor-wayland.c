@@ -24,7 +24,7 @@
 
 #include "config.h"
 
-#define CDK_PIXBUF_ENABLE_BACKEND
+#define GDK_PIXBUF_ENABLE_BACKEND
 
 #include <string.h>
 

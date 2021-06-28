@@ -999,8 +999,8 @@ ctk_image_set_from_file   (CtkImage    *image,
   g_object_thaw_notify (G_OBJECT (image));
 }
 
-#ifndef CDK_PIXBUF_MAGIC_NUMBER
-#define CDK_PIXBUF_MAGIC_NUMBER (0x47646b50)    /* 'CdkP' */
+#ifndef GDK_PIXBUF_MAGIC_NUMBER
+#define GDK_PIXBUF_MAGIC_NUMBER (0x47646b50)    /* 'CdkP' */
 #endif
 
 static gboolean
@@ -1021,7 +1021,7 @@ resource_is_pixdata (const gchar *resource_path)
     goto out;
 
   magic = (stream[0] << 24) + (stream[1] << 16) + (stream[2] << 8) + stream[3];
-  if (magic == CDK_PIXBUF_MAGIC_NUMBER)
+  if (magic == GDK_PIXBUF_MAGIC_NUMBER)
     ret = TRUE;
 
 out:

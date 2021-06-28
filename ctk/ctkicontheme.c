@@ -5521,7 +5521,7 @@ ctk_icon_theme_lookup_by_gicon_for_scale (CtkIconTheme       *icon_theme,
     {
       GdkPixbuf *pixbuf;
 
-      pixbuf = CDK_PIXBUF (icon);
+      pixbuf = GDK_PIXBUF (icon);
 
       if ((flags & CTK_ICON_LOOKUP_FORCE_SIZE) != 0)
         {

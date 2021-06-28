@@ -17,7 +17,7 @@
  */
 
 #include "config.h"
-#define CDK_PIXBUF_ENABLE_BACKEND /* Ugly? */
+#define GDK_PIXBUF_ENABLE_BACKEND /* Ugly? */
 #include "cdkdisplay.h"
 #include "cdkscreen.h"
 #include "cdkcursor.h"

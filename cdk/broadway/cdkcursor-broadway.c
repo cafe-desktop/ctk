@@ -25,7 +25,7 @@
 #include "config.h"
 
 /* needs to be first because any header might include cdk-pixbuf.h otherwise */
-#define CDK_PIXBUF_ENABLE_BACKEND
+#define GDK_PIXBUF_ENABLE_BACKEND
 #include <cdk-pixbuf/cdk-pixbuf.h>
 
 #include "cdkcursor.h"
