@@ -150,7 +150,7 @@ struct _CtkTextLineSegment {
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTextLineSegment  *ctk_text_line_segment_split (const CtkTextIter *iter);
 
 CtkTextLineSegment *_ctk_char_segment_new                  (const gchar    *text,

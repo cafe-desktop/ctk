@@ -136,20 +136,20 @@ msgid "Default Display"
 msgstr "Alapértelmezett képernyő"
 
 #: cdk/cdkdisplaymanager.c:163
-msgid "The default display for GDK"
-msgstr "A GDK alapértelmezett képernyője"
+msgid "The default display for CDK"
+msgstr "A CDK alapértelmezett képernyője"
 
 #: cdk/cdkglcontext.c:318
-msgid "The GDK display used to create the GL context"
-msgstr "A GL környezet létrehozásához használt GDK kijelző"
+msgid "The CDK display used to create the GL context"
+msgstr "A GL környezet létrehozásához használt CDK kijelző"
 
 #: cdk/cdkglcontext.c:333 ctk/ctkwidget.c:1347
 msgid "Window"
 msgstr "Ablak"
 
 #: cdk/cdkglcontext.c:334
-msgid "The GDK window bound to the GL context"
-msgstr "A GL környezethez kötött GDK ablak"
+msgid "The CDK window bound to the GL context"
+msgstr "A GL környezethez kötött CDK ablak"
 
 #: cdk/cdkglcontext.c:349
 msgid "Shared context"

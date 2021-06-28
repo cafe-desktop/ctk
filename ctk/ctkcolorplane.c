@@ -315,22 +315,22 @@ plane_key_press (CtkWidget   *widget,
   CtkColorPlane *plane = CTK_COLOR_PLANE (widget);
   gdouble step;
 
-  if ((event->state & GDK_MOD1_MASK) != 0)
+  if ((event->state & CDK_MOD1_MASK) != 0)
     step = 0.1;
   else
     step = 0.01;
 
-  if (event->keyval == GDK_KEY_Up ||
-      event->keyval == GDK_KEY_KP_Up)
+  if (event->keyval == CDK_KEY_Up ||
+      event->keyval == CDK_KEY_KP_Up)
     sv_move (plane, step, 0);
-  else if (event->keyval == GDK_KEY_Down ||
-           event->keyval == GDK_KEY_KP_Down)
+  else if (event->keyval == CDK_KEY_Down ||
+           event->keyval == CDK_KEY_KP_Down)
     sv_move (plane, -step, 0);
-  else if (event->keyval == GDK_KEY_Left ||
-           event->keyval == GDK_KEY_KP_Left)
+  else if (event->keyval == CDK_KEY_Left ||
+           event->keyval == CDK_KEY_KP_Left)
     sv_move (plane, 0, -step);
-  else if (event->keyval == GDK_KEY_Right ||
-           event->keyval == GDK_KEY_KP_Right)
+  else if (event->keyval == CDK_KEY_Right ||
+           event->keyval == CDK_KEY_KP_Right)
     sv_move (plane, 0, step);
   else
     return CTK_WIDGET_CLASS (ctk_color_plane_parent_class)->key_press_event (widget, event);
@@ -348,14 +348,14 @@ plane_drag_gesture_begin (CtkGestureDrag *gesture,
 
   button = ctk_gesture_single_get_current_button (CTK_GESTURE_SINGLE (gesture));
 
-  if (button == GDK_BUTTON_SECONDARY)
+  if (button == CDK_BUTTON_SECONDARY)
     {
       gboolean handled;
 
       g_signal_emit_by_name (plane, "popup-menu", &handled);
     }
 
-  if (button != GDK_BUTTON_PRIMARY)
+  if (button != CDK_BUTTON_PRIMARY)
     {
       ctk_gesture_set_state (CTK_GESTURE (gesture), CTK_EVENT_SEQUENCE_DENIED);
       return;
@@ -397,11 +397,11 @@ ctk_color_plane_init (CtkColorPlane *plane)
   plane->priv = ctk_color_plane_get_instance_private (plane);
 
   ctk_widget_set_can_focus (CTK_WIDGET (plane), TRUE);
-  ctk_widget_set_events (CTK_WIDGET (plane), GDK_KEY_PRESS_MASK
-                                             | GDK_TOUCH_MASK
-                                             | GDK_BUTTON_PRESS_MASK
-                                             | GDK_BUTTON_RELEASE_MASK
-                                             | GDK_POINTER_MOTION_MASK);
+  ctk_widget_set_events (CTK_WIDGET (plane), CDK_KEY_PRESS_MASK
+                                             | CDK_TOUCH_MASK
+                                             | CDK_BUTTON_PRESS_MASK
+                                             | CDK_BUTTON_RELEASE_MASK
+                                             | CDK_POINTER_MOTION_MASK);
 
   atk_obj = ctk_widget_get_accessible (CTK_WIDGET (plane));
   if (CTK_IS_ACCESSIBLE (atk_obj))

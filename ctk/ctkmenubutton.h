@@ -61,46 +61,46 @@ struct _CtkMenuButtonClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 GType        ctk_menu_button_get_type       (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 CtkWidget   *ctk_menu_button_new            (void);
 
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 void         ctk_menu_button_set_popup      (CtkMenuButton *menu_button,
                                              CtkWidget     *menu);
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 CtkMenu     *ctk_menu_button_get_popup      (CtkMenuButton *menu_button);
 
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void         ctk_menu_button_set_popover    (CtkMenuButton *menu_button,
                                              CtkWidget     *popover);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 CtkPopover  *ctk_menu_button_get_popover    (CtkMenuButton *menu_button);
 
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 void         ctk_menu_button_set_direction  (CtkMenuButton *menu_button,
                                              CtkArrowType   direction);
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 CtkArrowType ctk_menu_button_get_direction  (CtkMenuButton *menu_button);
 
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 void         ctk_menu_button_set_menu_model (CtkMenuButton *menu_button,
                                              GMenuModel    *menu_model);
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 GMenuModel  *ctk_menu_button_get_menu_model (CtkMenuButton *menu_button);
 
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 void         ctk_menu_button_set_align_widget (CtkMenuButton *menu_button,
                                                CtkWidget     *align_widget);
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 CtkWidget   *ctk_menu_button_get_align_widget (CtkMenuButton *menu_button);
 
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void         ctk_menu_button_set_use_popover (CtkMenuButton *menu_button,
                                               gboolean       use_popover);
 
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 gboolean     ctk_menu_button_get_use_popover (CtkMenuButton *menu_button);
 
 

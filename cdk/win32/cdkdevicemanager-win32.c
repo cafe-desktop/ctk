@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2009 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -68,7 +68,7 @@ static t_WTQueueSizeSet p_WTQueueSizeSet;
 
 static gboolean default_display_opened = FALSE;
 
-G_DEFINE_TYPE (CdkDeviceManagerWin32, cdk_device_manager_win32, GDK_TYPE_DEVICE_MANAGER)
+G_DEFINE_TYPE (CdkDeviceManagerWin32, cdk_device_manager_win32, CDK_TYPE_DEVICE_MANAGER)
 
 static CdkDevice *
 create_pointer (CdkDeviceManager *device_manager,
@@ -79,9 +79,9 @@ create_pointer (CdkDeviceManager *device_manager,
   return g_object_new (g_type,
                        "name", name,
                        "type", type,
-                       "input-source", GDK_SOURCE_MOUSE,
-                       "input-mode", GDK_MODE_SCREEN,
-                       "has-cursor", type == GDK_DEVICE_TYPE_MASTER,
+                       "input-source", CDK_SOURCE_MOUSE,
+                       "input-mode", CDK_MODE_SCREEN,
+                       "has-cursor", type == CDK_DEVICE_TYPE_MASTER,
                        "display", cdk_device_manager_get_display (device_manager),
                        "device-manager", device_manager,
                        NULL);
@@ -96,8 +96,8 @@ create_keyboard (CdkDeviceManager *device_manager,
   return g_object_new (g_type,
                        "name", name,
                        "type", type,
-                       "input-source", GDK_SOURCE_KEYBOARD,
-                       "input-mode", GDK_MODE_SCREEN,
+                       "input-source", CDK_SOURCE_KEYBOARD,
+                       "input-mode", CDK_MODE_SCREEN,
                        "has-cursor", FALSE,
                        "display", cdk_device_manager_get_display (device_manager),
                        "device-manager", device_manager,
@@ -114,7 +114,7 @@ cdk_device_manager_win32_finalize (GObject *object)
 {
   CdkDeviceManagerWin32 *device_manager_win32;
 
-  device_manager_win32 = GDK_DEVICE_MANAGER_WIN32 (object);
+  device_manager_win32 = CDK_DEVICE_MANAGER_WIN32 (object);
 
   g_object_unref (device_manager_win32->core_pointer);
   g_object_unref (device_manager_win32->core_keyboard);
@@ -352,7 +352,7 @@ print_cursor (int index)
 static void
 wintab_init_check (CdkDeviceManagerWin32 *device_manager)
 {
-  CdkDisplay *display = cdk_device_manager_get_display (GDK_DEVICE_MANAGER (device_manager));
+  CdkDisplay *display = cdk_device_manager_get_display (CDK_DEVICE_MANAGER (device_manager));
   CdkWindow *root = cdk_screen_get_root_window (cdk_display_get_default_screen (display));
   static gboolean wintab_initialized = FALSE;
   CdkDeviceWintab *device;
@@ -427,23 +427,23 @@ wintab_init_check (CdkDeviceManagerWin32 *device_manager)
     return;
 
   (*p_WTInfoA) (WTI_INTERFACE, IFC_SPECVERSION, &specversion);
-  GDK_NOTE (INPUT, g_print ("Wintab interface version %d.%d\n",
+  CDK_NOTE (INPUT, g_print ("Wintab interface version %d.%d\n",
 			    HIBYTE (specversion), LOBYTE (specversion)));
   (*p_WTInfoA) (WTI_INTERFACE, IFC_NDEVICES, &ndevices);
   (*p_WTInfoA) (WTI_INTERFACE, IFC_NCURSORS, &ncursors);
 #if DEBUG_WINTAB
-  GDK_NOTE (INPUT, g_print ("NDEVICES: %d, NCURSORS: %d\n",
+  CDK_NOTE (INPUT, g_print ("NDEVICES: %d, NCURSORS: %d\n",
 			    ndevices, ncursors));
 #endif
   /* Create a dummy window to receive wintab events */
-  wa.wclass = GDK_INPUT_OUTPUT;
-  wa.event_mask = GDK_ALL_EVENTS_MASK;
+  wa.wclass = CDK_INPUT_OUTPUT;
+  wa.event_mask = CDK_ALL_EVENTS_MASK;
   wa.width = 2;
   wa.height = 2;
   wa.x = -100;
   wa.y = -100;
-  wa.window_type = GDK_WINDOW_TOPLEVEL;
-  if ((wintab_window = cdk_window_new (root, &wa, GDK_WA_X | GDK_WA_Y)) == NULL)
+  wa.window_type = CDK_WINDOW_TOPLEVEL;
+  if ((wintab_window = cdk_window_new (root, &wa, CDK_WA_X | CDK_WA_Y)) == NULL)
     {
       g_warning ("cdk_input_wintab_init: cdk_window_new failed");
       return;
@@ -463,7 +463,7 @@ wintab_init_check (CdkDeviceManagerWin32 *device_manager)
       (*p_WTInfoW) (WTI_DEVICES + devix, DVC_NAME, devname);
       devname_utf8 = g_utf16_to_utf8 (devname, -1, NULL, NULL, NULL);
 #ifdef DEBUG_WINTAB
-      GDK_NOTE (INPUT, (g_print("Device %u: %s\n", devix, devname_utf8)));
+      CDK_NOTE (INPUT, (g_print("Device %u: %s\n", devix, devname_utf8)));
 #endif
       (*p_WTInfoA) (WTI_DEVICES + devix, DVC_NCSRTYPES, &ncsrtypes);
       (*p_WTInfoA) (WTI_DEVICES + devix, DVC_FIRSTCSR, &firstcsr);
@@ -482,16 +482,16 @@ wintab_init_check (CdkDeviceManagerWin32 *device_manager)
             defcontext_done = TRUE;
 #if DEBUG_WINTAB
           if (defcontext_done)
-            GDK_NOTE (INPUT, (g_print("Using device-specific default context\n")));
+            CDK_NOTE (INPUT, (g_print("Using device-specific default context\n")));
           else
-            GDK_NOTE (INPUT, (g_print("Note: Driver did not provide device specific default context info despite claiming to support version 1.1\n")));
+            CDK_NOTE (INPUT, (g_print("Note: Driver did not provide device specific default context info despite claiming to support version 1.1\n")));
 #endif
         }
 
       if (!defcontext_done)
         (*p_WTInfoA) (WTI_DEFSYSCTX, 0, &lc);
 #if DEBUG_WINTAB
-      GDK_NOTE (INPUT, (g_print("Default context:\n"), print_lc(&lc)));
+      CDK_NOTE (INPUT, (g_print("Default context:\n"), print_lc(&lc)));
 #endif
       lc.lcOptions |= CXO_MESSAGES | CXO_CSRMESSAGES;
       lc.lcStatus = 0;
@@ -507,16 +507,16 @@ wintab_init_check (CdkDeviceManagerWin32 *device_manager)
       lc.lcOutExtY = axis_y.axMax - axis_y.axMin + 1;
       lc.lcOutExtY = -lc.lcOutExtY; /* We want Y growing downward */
 #if DEBUG_WINTAB
-      GDK_NOTE (INPUT, (g_print("context for device %u:\n", devix),
+      CDK_NOTE (INPUT, (g_print("context for device %u:\n", devix),
 			print_lc(&lc)));
 #endif
       hctx = g_new (HCTX, 1);
-      if ((*hctx = (*p_WTOpenA) (GDK_WINDOW_HWND (wintab_window), &lc, TRUE)) == NULL)
+      if ((*hctx = (*p_WTOpenA) (CDK_WINDOW_HWND (wintab_window), &lc, TRUE)) == NULL)
         {
           g_warning ("cdk_input_wintab_init: WTOpen failed");
           return;
         }
-      GDK_NOTE (INPUT, g_print ("opened Wintab device %u %p\n",
+      CDK_NOTE (INPUT, g_print ("opened Wintab device %u %p\n",
                                 devix, *hctx));
 
       wintab_contexts = g_list_append (wintab_contexts, hctx);
@@ -526,28 +526,28 @@ wintab_init_check (CdkDeviceManagerWin32 *device_manager)
       (*p_WTOverlap) (*hctx, TRUE);
 
 #if DEBUG_WINTAB
-      GDK_NOTE (INPUT, (g_print("context for device %u after WTOpen:\n", devix),
+      CDK_NOTE (INPUT, (g_print("context for device %u after WTOpen:\n", devix),
 			print_lc(&lc)));
 #endif
       /* Increase packet queue size to reduce the risk of lost packets.
        * According to the specs, if the function fails we must try again
        * with a smaller queue size.
        */
-      GDK_NOTE (INPUT, g_print("Attempting to increase queue size\n"));
+      CDK_NOTE (INPUT, g_print("Attempting to increase queue size\n"));
       for (i = 128; i >= 1; i >>= 1)
         {
           if ((*p_WTQueueSizeSet) (*hctx, i))
             {
-              GDK_NOTE (INPUT, g_print("Queue size set to %d\n", i));
+              CDK_NOTE (INPUT, g_print("Queue size set to %d\n", i));
               break;
             }
         }
       if (!i)
-        GDK_NOTE (INPUT, g_print("Whoops, no queue size could be set\n"));
+        CDK_NOTE (INPUT, g_print("Whoops, no queue size could be set\n"));
       for (cursorix = firstcsr; cursorix < firstcsr + ncsrtypes; cursorix++)
         {
 #ifdef DEBUG_WINTAB
-          GDK_NOTE (INPUT, (g_print("Cursor %u:\n", cursorix), print_cursor (cursorix)));
+          CDK_NOTE (INPUT, (g_print("Cursor %u:\n", cursorix), print_cursor (cursorix)));
 #endif
           active = FALSE;
           (*p_WTInfoA) (WTI_CURSORS + cursorix, CSR_ACTIVE, &active);
@@ -570,11 +570,11 @@ wintab_init_check (CdkDeviceManagerWin32 *device_manager)
           csrname_utf8 = g_utf16_to_utf8 (csrname, -1, NULL, NULL, NULL);
           device_name = g_strconcat (devname_utf8, " ", csrname_utf8, NULL);
 
-          device = g_object_new (GDK_TYPE_DEVICE_WINTAB,
+          device = g_object_new (CDK_TYPE_DEVICE_WINTAB,
                                  "name", device_name,
-                                 "type", GDK_DEVICE_TYPE_FLOATING,
-                                 "input-source", GDK_SOURCE_PEN,
-                                 "input-mode", GDK_MODE_SCREEN,
+                                 "type", CDK_DEVICE_TYPE_FLOATING,
+                                 "input-source", CDK_SOURCE_PEN,
+                                 "input-mode", CDK_MODE_SCREEN,
                                  "has-cursor", lc.lcOptions & CXO_SYSTEM,
                                  "display", display,
                                  "device-manager", device_manager,
@@ -583,8 +583,8 @@ wintab_init_check (CdkDeviceManagerWin32 *device_manager)
 	  device->sends_core = lc.lcOptions & CXO_SYSTEM;
 	  if (device->sends_core)
 	    {
-	      _cdk_device_set_associated_device (device_manager->system_pointer, GDK_DEVICE (device));
-	      _cdk_device_add_slave (device_manager->core_pointer, GDK_DEVICE (device));
+	      _cdk_device_set_associated_device (device_manager->system_pointer, CDK_DEVICE (device));
+	      _cdk_device_add_slave (device_manager->core_pointer, CDK_DEVICE (device));
 	    }
 
           g_free (csrname_utf8);
@@ -595,9 +595,9 @@ wintab_init_check (CdkDeviceManagerWin32 *device_manager)
 
           if (device->pktdata & PK_X)
             {
-              _cdk_device_add_axis (GDK_DEVICE (device),
-                                    GDK_NONE,
-                                    GDK_AXIS_X,
+              _cdk_device_add_axis (CDK_DEVICE (device),
+                                    CDK_NONE,
+                                    CDK_AXIS_X,
                                     axis_x.axMin,
                                     axis_x.axMax,
                                     axis_x.axResolution / 65535);
@@ -606,9 +606,9 @@ wintab_init_check (CdkDeviceManagerWin32 *device_manager)
 
           if (device->pktdata & PK_Y)
             {
-              _cdk_device_add_axis (GDK_DEVICE (device),
-                                    GDK_NONE,
-                                    GDK_AXIS_Y,
+              _cdk_device_add_axis (CDK_DEVICE (device),
+                                    CDK_NONE,
+                                    CDK_AXIS_Y,
                                     axis_y.axMin,
                                     axis_y.axMax,
                                     axis_y.axResolution / 65535);
@@ -618,9 +618,9 @@ wintab_init_check (CdkDeviceManagerWin32 *device_manager)
 
           if (device->pktdata & PK_NORMAL_PRESSURE)
             {
-              _cdk_device_add_axis (GDK_DEVICE (device),
-                                    GDK_NONE,
-                                    GDK_AXIS_PRESSURE,
+              _cdk_device_add_axis (CDK_DEVICE (device),
+                                    CDK_NONE,
+                                    CDK_AXIS_PRESSURE,
                                     axis_npressure.axMin,
                                     axis_npressure.axMax,
                                     axis_npressure.axResolution / 65535);
@@ -635,16 +635,16 @@ wintab_init_check (CdkDeviceManagerWin32 *device_manager)
               /* Wintab gives us azimuth and altitude, which
                * we convert to x and y tilt in the -1000..1000 range
                */
-              _cdk_device_add_axis (GDK_DEVICE (device),
-                                    GDK_NONE,
-                                    GDK_AXIS_XTILT,
+              _cdk_device_add_axis (CDK_DEVICE (device),
+                                    CDK_NONE,
+                                    CDK_AXIS_XTILT,
                                     -1000,
                                     1000,
                                     1000);
 
-              _cdk_device_add_axis (GDK_DEVICE (device),
-                                    GDK_NONE,
-                                    GDK_AXIS_YTILT,
+              _cdk_device_add_axis (CDK_DEVICE (device),
+                                    CDK_NONE,
+                                    CDK_AXIS_YTILT,
                                     -1000,
                                     1000,
                                     1000);
@@ -653,14 +653,14 @@ wintab_init_check (CdkDeviceManagerWin32 *device_manager)
 
           device->last_axis_data = g_new (gint, num_axes);
 
-          GDK_NOTE (INPUT, g_print ("device: (%u) %s axes: %d\n",
+          CDK_NOTE (INPUT, g_print ("device: (%u) %s axes: %d\n",
                                     cursorix,
                                     device_name,
                                     num_axes));
 
 #if 0
           for (i = 0; i < cdkdev->info.num_axes; i++)
-            GDK_NOTE (INPUT, g_print ("... axis %d: %d--%d@%d\n",
+            CDK_NOTE (INPUT, g_print ("... axis %d: %d--%d@%d\n",
                                       i,
                                       cdkdev->axes[i].min_value,
                                       cdkdev->axes[i].max_value,
@@ -680,7 +680,7 @@ wintab_init_check (CdkDeviceManagerWin32 *device_manager)
 /* Only initialize Wintab after the default display is set for
  * the first time. WTOpenA() executes code beyond our control,
  * and it can cause messages to be sent to the application even
- * before a window is opened. GDK has to be in a fit state to
+ * before a window is opened. CDK has to be in a fit state to
  * handle them when they come.
  *
  * https://bugzilla.gnome.org/show_bug.cgi?id=774379
@@ -697,12 +697,12 @@ wintab_default_display_notify_cb (CdkDisplayManager *display_manager)
   g_assert (display != NULL);
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-  device_manager = GDK_DEVICE_MANAGER_WIN32 (cdk_display_get_device_manager (display));
+  device_manager = CDK_DEVICE_MANAGER_WIN32 (cdk_display_get_device_manager (display));
 G_GNUC_END_IGNORE_DEPRECATIONS;
   g_assert (display_manager != NULL);
 
   default_display_opened = TRUE;
-  GDK_NOTE (INPUT, g_print ("wintab init: doing delayed initialization\n"));
+  CDK_NOTE (INPUT, g_print ("wintab init: doing delayed initialization\n"));
   wintab_init_check (device_manager);
 }
 
@@ -714,32 +714,32 @@ cdk_device_manager_win32_constructed (GObject *object)
   CdkDisplayManager *display_manager = NULL;
   CdkDisplay *default_display = NULL;
 
-  device_manager = GDK_DEVICE_MANAGER_WIN32 (object);
+  device_manager = CDK_DEVICE_MANAGER_WIN32 (object);
   device_manager->core_pointer =
-    create_pointer (GDK_DEVICE_MANAGER (device_manager),
-		    GDK_TYPE_DEVICE_VIRTUAL,
+    create_pointer (CDK_DEVICE_MANAGER (device_manager),
+		    CDK_TYPE_DEVICE_VIRTUAL,
 		    "Virtual Core Pointer",
-		    GDK_DEVICE_TYPE_MASTER);
+		    CDK_DEVICE_TYPE_MASTER);
   device_manager->system_pointer =
-    create_pointer (GDK_DEVICE_MANAGER (device_manager),
-		    GDK_TYPE_DEVICE_WIN32,
+    create_pointer (CDK_DEVICE_MANAGER (device_manager),
+		    CDK_TYPE_DEVICE_WIN32,
 		    "System Aggregated Pointer",
-		    GDK_DEVICE_TYPE_SLAVE);
+		    CDK_DEVICE_TYPE_SLAVE);
   _cdk_device_virtual_set_active (device_manager->core_pointer,
 				  device_manager->system_pointer);
   _cdk_device_set_associated_device (device_manager->system_pointer, device_manager->core_pointer);
   _cdk_device_add_slave (device_manager->core_pointer, device_manager->system_pointer);
 
   device_manager->core_keyboard =
-    create_keyboard (GDK_DEVICE_MANAGER (device_manager),
-		     GDK_TYPE_DEVICE_VIRTUAL,
+    create_keyboard (CDK_DEVICE_MANAGER (device_manager),
+		     CDK_TYPE_DEVICE_VIRTUAL,
 		     "Virtual Core Keyboard",
-		     GDK_DEVICE_TYPE_MASTER);
+		     CDK_DEVICE_TYPE_MASTER);
   device_manager->system_keyboard =
-    create_keyboard (GDK_DEVICE_MANAGER (device_manager),
-		    GDK_TYPE_DEVICE_WIN32,
+    create_keyboard (CDK_DEVICE_MANAGER (device_manager),
+		    CDK_TYPE_DEVICE_WIN32,
 		     "System Aggregated Keyboard",
-		     GDK_DEVICE_TYPE_SLAVE);
+		     CDK_DEVICE_TYPE_SLAVE);
   _cdk_device_virtual_set_active (device_manager->core_keyboard,
 				  device_manager->system_keyboard);
   _cdk_device_set_associated_device (device_manager->system_keyboard, device_manager->core_keyboard);
@@ -750,9 +750,9 @@ cdk_device_manager_win32_constructed (GObject *object)
 
   seat = cdk_seat_default_new_for_master_pair (device_manager->core_pointer,
                                                device_manager->core_keyboard);
-  cdk_display_add_seat (cdk_device_manager_get_display (GDK_DEVICE_MANAGER (object)), seat);
-  cdk_seat_default_add_slave (GDK_SEAT_DEFAULT (seat), device_manager->system_pointer);
-  cdk_seat_default_add_slave (GDK_SEAT_DEFAULT (seat), device_manager->system_keyboard);
+  cdk_display_add_seat (cdk_device_manager_get_display (CDK_DEVICE_MANAGER (object)), seat);
+  cdk_seat_default_add_slave (CDK_SEAT_DEFAULT (seat), device_manager->system_pointer);
+  cdk_seat_default_add_slave (CDK_SEAT_DEFAULT (seat), device_manager->system_keyboard);
   g_object_unref (seat);
 
   /* Only call Wintab init stuff after the default display
@@ -778,14 +778,14 @@ cdk_device_manager_win32_list_devices (CdkDeviceManager *device_manager,
 
   device_manager_win32 = (CdkDeviceManagerWin32 *) device_manager;
 
-  if (type == GDK_DEVICE_TYPE_MASTER)
+  if (type == CDK_DEVICE_TYPE_MASTER)
     {
       devices = g_list_prepend (devices, device_manager_win32->core_keyboard);
       devices = g_list_prepend (devices, device_manager_win32->core_pointer);
     }
   else
     {
-      if (type == GDK_DEVICE_TYPE_SLAVE)
+      if (type == CDK_DEVICE_TYPE_SLAVE)
 	{
 	  devices = g_list_prepend (devices, device_manager_win32->system_keyboard);
 	  devices = g_list_prepend (devices, device_manager_win32->system_pointer);
@@ -815,7 +815,7 @@ cdk_device_manager_win32_get_client_pointer (CdkDeviceManager *device_manager)
 static void
 cdk_device_manager_win32_class_init (CdkDeviceManagerWin32Class *klass)
 {
-  CdkDeviceManagerClass *device_manager_class = GDK_DEVICE_MANAGER_CLASS (klass);
+  CdkDeviceManagerClass *device_manager_class = CDK_DEVICE_MANAGER_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   object_class->finalize = cdk_device_manager_win32_finalize;
@@ -836,7 +836,7 @@ _cdk_input_set_tablet_active (void)
   if (!wintab_contexts)
     return; /* No tablet devices found, or Wintab not initialized yet */
 
-  GDK_NOTE (INPUT, g_print ("_cdk_input_set_tablet_active: "
+  CDK_NOTE (INPUT, g_print ("_cdk_input_set_tablet_active: "
                             "Bringing Wintab contexts to the top of the overlap order\n"));
 
   tmp_list = wintab_contexts;
@@ -865,7 +865,7 @@ decode_tilt (gint   *axis_data,
    *
    * The same is true of the Huion H610PRO, but in this case
    * it's the altitude resolution that's zero. CdkEvents with
-   * sensible tilts will need both, so only add the GDK tilt axes
+   * sensible tilts will need both, so only add the CDK tilt axes
    * if both wintab axes are going to be well-behaved in use.
    */
   if ((axes == NULL) ||
@@ -907,13 +907,13 @@ get_modifier_key_state (void)
   state = 0;
   /* High-order bit is up/down, low order bit is toggled/untoggled */
   if (GetKeyState (VK_CONTROL) < 0)
-    state |= GDK_CONTROL_MASK;
+    state |= CDK_CONTROL_MASK;
   if (GetKeyState (VK_SHIFT) < 0)
-    state |= GDK_SHIFT_MASK;
+    state |= CDK_SHIFT_MASK;
   if (GetKeyState (VK_MENU) < 0)
-    state |= GDK_MOD1_MASK;
+    state |= CDK_MOD1_MASK;
   if (GetKeyState (VK_CAPITAL) & 0x1)
-    state |= GDK_LOCK_MASK;
+    state |= CDK_LOCK_MASK;
 
   return state;
 }
@@ -957,7 +957,7 @@ cdk_input_other_event (CdkDisplay *display,
   gint num_axes;
   gint x, y;
   guint translated_buttons, button_diff, button_mask;
-  /* Translation from tablet button state to GDK button state for
+  /* Translation from tablet button state to CDK button state for
    * buttons 1-3 - swap button 2 and 3.
    */
   static guint button_map[8] = {0, 1, 4, 5, 2, 3, 6, 7};
@@ -969,7 +969,7 @@ cdk_input_other_event (CdkDisplay *display,
     }
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-  device_manager = GDK_DEVICE_MANAGER_WIN32 (cdk_display_get_device_manager (display));
+  device_manager = CDK_DEVICE_MANAGER_WIN32 (cdk_display_get_device_manager (display));
 G_GNUC_END_IGNORE_DEPRECATIONS;
   window = cdk_device_get_window_at_position (device_manager->core_pointer, &x, &y);
   if (window == NULL)
@@ -977,9 +977,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
 
   g_object_ref (window);
 
-  GDK_NOTE (EVENTS_OR_INPUT,
+  CDK_NOTE (EVENTS_OR_INPUT,
 	    g_print ("cdk_input_other_event: window=%p %+d%+d\n",
-               GDK_WINDOW_HWND (window), x, y));
+               CDK_WINDOW_HWND (window), x, y));
 
   if (msg->message == WT_PACKET || msg->message == WT_CSRCHANGE)
     {
@@ -1005,16 +1005,16 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
 
 	  if (source_device != NULL &&
 	      source_device->sends_core &&
-	      cdk_device_get_mode (GDK_DEVICE (source_device)) != GDK_MODE_DISABLED)
+	      cdk_device_get_mode (CDK_DEVICE (source_device)) != CDK_MODE_DISABLED)
 	    {
 	      _cdk_device_virtual_set_active (device_manager->core_pointer,
-					      GDK_DEVICE (source_device));
+					      CDK_DEVICE (source_device));
 	      _cdk_input_ignore_core += 1;
 	    }
 	}
       else if (source_device != NULL &&
 	       source_device->sends_core &&
-	       cdk_device_get_mode (GDK_DEVICE (source_device)) != GDK_MODE_DISABLED &&
+	       cdk_device_get_mode (CDK_DEVICE (source_device)) != CDK_MODE_DISABLED &&
                _cdk_input_ignore_core == 0)
         {
           /* A fallback for cases when two devices (disabled and enabled)
@@ -1030,24 +1030,24 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
            * in proximity might briefly make the core pointer active/visible.
            */
 	  _cdk_device_virtual_set_active (device_manager->core_pointer,
-					  GDK_DEVICE (source_device));
+					  CDK_DEVICE (source_device));
 	  _cdk_input_ignore_core += 1;
         }
 
       if (source_device == NULL ||
-	  cdk_device_get_mode (GDK_DEVICE (source_device)) == GDK_MODE_DISABLED)
+	  cdk_device_get_mode (CDK_DEVICE (source_device)) == CDK_MODE_DISABLED)
 	return FALSE;
 
       /* Don't produce any button or motion events while a window is being
        * moved or resized, see bug #151090.
        */
-      if (_modal_operation_in_progress & GDK_WIN32_MODAL_OP_SIZEMOVE_MASK)
+      if (_modal_operation_in_progress & CDK_WIN32_MODAL_OP_SIZEMOVE_MASK)
         {
-          GDK_NOTE (EVENTS_OR_INPUT, g_print ("... ignored when moving/sizing\n"));
+          CDK_NOTE (EVENTS_OR_INPUT, g_print ("... ignored when moving/sizing\n"));
           return FALSE;
         }
 
-      last_grab = _cdk_display_get_last_device_grab (display, GDK_DEVICE (source_device));
+      last_grab = _cdk_display_get_last_device_grab (display, CDK_DEVICE (source_device));
 
       if (last_grab && last_grab->window)
         {
@@ -1058,7 +1058,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
 
       if (window == cdk_get_default_root_window ())
         {
-          GDK_NOTE (EVENTS_OR_INPUT, g_print ("... is root\n"));
+          CDK_NOTE (EVENTS_OR_INPUT, g_print ("... is root\n"));
           return FALSE;
         }
 
@@ -1102,64 +1102,64 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
 
           if (!(translated_buttons & button_mask))
             {
-              event->any.type = GDK_BUTTON_RELEASE;
-              masktest = GDK_BUTTON_RELEASE_MASK;
+              event->any.type = CDK_BUTTON_RELEASE;
+              masktest = CDK_BUTTON_RELEASE_MASK;
             }
           else
             {
-              event->any.type = GDK_BUTTON_PRESS;
-              masktest = GDK_BUTTON_PRESS_MASK;
+              event->any.type = CDK_BUTTON_PRESS;
+              masktest = CDK_BUTTON_PRESS_MASK;
             }
           source_device->button_state ^= button_mask;
         }
       else
         {
-          event->any.type = GDK_MOTION_NOTIFY;
-          masktest = GDK_POINTER_MOTION_MASK;
+          event->any.type = CDK_MOTION_NOTIFY;
+          masktest = CDK_POINTER_MOTION_MASK;
           if (source_device->button_state & (1 << 0))
-            masktest |= GDK_BUTTON_MOTION_MASK | GDK_BUTTON1_MOTION_MASK;
+            masktest |= CDK_BUTTON_MOTION_MASK | CDK_BUTTON1_MOTION_MASK;
           if (source_device->button_state & (1 << 1))
-            masktest |= GDK_BUTTON_MOTION_MASK | GDK_BUTTON2_MOTION_MASK;
+            masktest |= CDK_BUTTON_MOTION_MASK | CDK_BUTTON2_MOTION_MASK;
           if (source_device->button_state & (1 << 2))
-            masktest |= GDK_BUTTON_MOTION_MASK | GDK_BUTTON3_MOTION_MASK;
+            masktest |= CDK_BUTTON_MOTION_MASK | CDK_BUTTON3_MOTION_MASK;
         }
 
       /* Now we can check if the window wants the event, and
        * propagate if necessary.
        */
-      while ((cdk_window_get_device_events (window, GDK_DEVICE (source_device)) & masktest) == 0 &&
-	     (cdk_device_get_device_type (GDK_DEVICE (source_device)) == GDK_DEVICE_TYPE_SLAVE &&
+      while ((cdk_window_get_device_events (window, CDK_DEVICE (source_device)) & masktest) == 0 &&
+	     (cdk_device_get_device_type (CDK_DEVICE (source_device)) == CDK_DEVICE_TYPE_SLAVE &&
 	      (cdk_window_get_events (window) & masktest) == 0))
         {
-          GDK_NOTE (EVENTS_OR_INPUT, g_print ("... not selected\n"));
+          CDK_NOTE (EVENTS_OR_INPUT, g_print ("... not selected\n"));
 
           if (window->parent == cdk_get_default_root_window () || window->parent == NULL)
             return FALSE;
 
-          impl = GDK_WINDOW_IMPL_WIN32 (window->impl);
+          impl = CDK_WINDOW_IMPL_WIN32 (window->impl);
           pt.x = x * impl->window_scale;
           pt.y = y * impl->window_scale;
-          ClientToScreen (GDK_WINDOW_HWND (window), &pt);
+          ClientToScreen (CDK_WINDOW_HWND (window), &pt);
           g_object_unref (window);
           window = window->parent;
-          impl = GDK_WINDOW_IMPL_WIN32 (window->impl);
+          impl = CDK_WINDOW_IMPL_WIN32 (window->impl);
           g_object_ref (window);
-          ScreenToClient (GDK_WINDOW_HWND (window), &pt);
+          ScreenToClient (CDK_WINDOW_HWND (window), &pt);
           x = pt.x / impl->window_scale;
           y = pt.y / impl->window_scale;
-          GDK_NOTE (EVENTS_OR_INPUT, g_print ("... propagating to %p %+d%+d\n",
-                                              GDK_WINDOW_HWND (window), x, y));
+          CDK_NOTE (EVENTS_OR_INPUT, g_print ("... propagating to %p %+d%+d\n",
+                                              CDK_WINDOW_HWND (window), x, y));
         }
 
       event->any.window = window;
       key_state = get_modifier_key_state ();
-      if (event->any.type == GDK_BUTTON_PRESS ||
-          event->any.type == GDK_BUTTON_RELEASE)
+      if (event->any.type == CDK_BUTTON_PRESS ||
+          event->any.type == CDK_BUTTON_RELEASE)
         {
           event->button.time = _cdk_win32_get_next_tick (msg->time);
 	  if (source_device->sends_core)
 	    cdk_event_set_device (event, device_manager->core_pointer);
-          cdk_event_set_source_device (event, GDK_DEVICE (source_device));
+          cdk_event_set_source_device (event, CDK_DEVICE (source_device));
           cdk_event_set_seat (event, cdk_device_get_seat (device_manager->core_pointer));
 
           event->button.axes = g_new (gdouble, num_axes);
@@ -1176,13 +1176,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
 
           event->button.state =
             key_state | ((source_device->button_state << 8)
-                         & (GDK_BUTTON1_MASK | GDK_BUTTON2_MASK
-                            | GDK_BUTTON3_MASK | GDK_BUTTON4_MASK
-                            | GDK_BUTTON5_MASK));
+                         & (CDK_BUTTON1_MASK | CDK_BUTTON2_MASK
+                            | CDK_BUTTON3_MASK | CDK_BUTTON4_MASK
+                            | CDK_BUTTON5_MASK));
 
-          GDK_NOTE (EVENTS_OR_INPUT,
+          CDK_NOTE (EVENTS_OR_INPUT,
                     g_print ("WINTAB button %s:%d %g,%g\n",
-                             (event->button.type == GDK_BUTTON_PRESS ?
+                             (event->button.type == CDK_BUTTON_PRESS ?
                               "press" : "release"),
                              event->button.button,
                              event->button.x, event->button.y));
@@ -1192,7 +1192,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
           event->motion.time = _cdk_win32_get_next_tick (msg->time);
           event->motion.is_hint = FALSE;
           cdk_event_set_device (event, device_manager->core_pointer);
-          cdk_event_set_source_device (event, GDK_DEVICE (source_device));
+          cdk_event_set_source_device (event, CDK_DEVICE (source_device));
           cdk_event_set_seat (event, cdk_device_get_seat (device_manager->core_pointer));
 
           event->motion.axes = g_new (gdouble, num_axes);
@@ -1209,11 +1209,11 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
 
           event->motion.state =
             key_state | ((source_device->button_state << 8)
-                         & (GDK_BUTTON1_MASK | GDK_BUTTON2_MASK
-                            | GDK_BUTTON3_MASK | GDK_BUTTON4_MASK
-                            | GDK_BUTTON5_MASK));
+                         & (CDK_BUTTON1_MASK | CDK_BUTTON2_MASK
+                            | CDK_BUTTON3_MASK | CDK_BUTTON4_MASK
+                            | CDK_BUTTON5_MASK));
 
-          GDK_NOTE (EVENTS_OR_INPUT,
+          CDK_NOTE (EVENTS_OR_INPUT,
                     g_print ("WINTAB motion: %g,%g\n",
                              event->motion.x, event->motion.y));
         }
@@ -1229,10 +1229,10 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
 	return FALSE;
 
       if (source_device->sends_core &&
-	  cdk_device_get_mode (GDK_DEVICE (source_device)) != GDK_MODE_DISABLED)
+	  cdk_device_get_mode (CDK_DEVICE (source_device)) != CDK_MODE_DISABLED)
 	{
 	  _cdk_device_virtual_set_active (device_manager->core_pointer,
-					  GDK_DEVICE (source_device));
+					  CDK_DEVICE (source_device));
 	  _cdk_input_ignore_core += 1;
 	}
 

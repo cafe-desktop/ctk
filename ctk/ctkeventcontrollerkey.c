@@ -94,7 +94,7 @@ ctk_event_controller_key_handle_event (CtkEventController *controller,
   guint keyval;
   gboolean handled = FALSE;
 
-  if (event_type == GDK_FOCUS_CHANGE)
+  if (event_type == CDK_FOCUS_CHANGE)
     {
       if (event->focus_change.in)
         g_signal_emit (controller, signals[FOCUS_IN], 0);
@@ -104,7 +104,7 @@ ctk_event_controller_key_handle_event (CtkEventController *controller,
       return FALSE;
     }
 
-  if (event_type != GDK_KEY_PRESS && event_type != GDK_KEY_RELEASE)
+  if (event_type != CDK_KEY_PRESS && event_type != CDK_KEY_RELEASE)
     return FALSE;
 
   if (key->im_context &&
@@ -128,14 +128,14 @@ ctk_event_controller_key_handle_event (CtkEventController *controller,
   cdk_event_get_keycode (event, &keycode);
   cdk_event_get_keyval (event, &keyval);
 
-  if (event_type == GDK_KEY_PRESS)
+  if (event_type == CDK_KEY_PRESS)
     {
       g_signal_emit (controller, signals[KEY_PRESSED], 0,
                      keyval, keycode, state, &handled);
       if (handled)
         g_hash_table_add (key->pressed_keys, GUINT_TO_POINTER (keyval));
     }
-  else if (event_type == GDK_KEY_RELEASE)
+  else if (event_type == CDK_KEY_RELEASE)
     {
       g_signal_emit (controller, signals[KEY_RELEASED], 0,
                      keyval, keycode, state);
@@ -179,7 +179,7 @@ ctk_event_controller_key_class_init (CtkEventControllerKeyClass *klass)
                   G_SIGNAL_RUN_LAST,
                   0, _ctk_boolean_handled_accumulator, NULL,
                   _ctk_marshal_BOOLEAN__UINT_UINT_FLAGS,
-                  G_TYPE_BOOLEAN, 3, G_TYPE_UINT, G_TYPE_UINT, GDK_TYPE_MODIFIER_TYPE);
+                  G_TYPE_BOOLEAN, 3, G_TYPE_UINT, G_TYPE_UINT, CDK_TYPE_MODIFIER_TYPE);
   g_signal_set_va_marshaller (signals[KEY_PRESSED],
                               G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_BOOLEAN__UINT_UINT_FLAGSv);
@@ -201,7 +201,7 @@ ctk_event_controller_key_class_init (CtkEventControllerKeyClass *klass)
                   G_SIGNAL_RUN_LAST,
                   0, NULL, NULL,
                   _ctk_marshal_VOID__UINT_UINT_FLAGS,
-                  G_TYPE_NONE, 3, G_TYPE_UINT, G_TYPE_UINT, GDK_TYPE_MODIFIER_TYPE);
+                  G_TYPE_NONE, 3, G_TYPE_UINT, G_TYPE_UINT, CDK_TYPE_MODIFIER_TYPE);
   g_signal_set_va_marshaller (signals[KEY_RELEASED],
                               G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_VOID__UINT_UINT_FLAGSv);
@@ -213,7 +213,7 @@ ctk_event_controller_key_class_init (CtkEventControllerKeyClass *klass)
                   0, NULL,
                   NULL,
                   _ctk_marshal_BOOLEAN__FLAGS,
-                  G_TYPE_BOOLEAN, 1, GDK_TYPE_MODIFIER_TYPE);
+                  G_TYPE_BOOLEAN, 1, CDK_TYPE_MODIFIER_TYPE);
   g_signal_set_va_marshaller (signals[MODIFIERS],
                               G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_BOOLEAN__FLAGSv);

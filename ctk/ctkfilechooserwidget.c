@@ -1307,10 +1307,10 @@ key_is_left_or_right (CdkEventKey *event)
 
   modifiers = ctk_accelerator_get_default_mod_mask ();
 
-  return ((event->keyval == GDK_KEY_Right
-           || event->keyval == GDK_KEY_KP_Right
-           || event->keyval == GDK_KEY_Left
-           || event->keyval == GDK_KEY_KP_Left)
+  return ((event->keyval == CDK_KEY_Right
+           || event->keyval == CDK_KEY_KP_Right
+           || event->keyval == CDK_KEY_Left
+           || event->keyval == CDK_KEY_KP_Left)
           && (event->state & modifiers) == 0);
 }
 
@@ -1324,13 +1324,13 @@ should_trigger_location_entry (CtkFileChooserWidget *impl,
     return FALSE;
 
   no_text_input_mask =
-    ctk_widget_get_modifier_mask (CTK_WIDGET (impl), GDK_MODIFIER_INTENT_NO_TEXT_INPUT);
+    ctk_widget_get_modifier_mask (CTK_WIDGET (impl), CDK_MODIFIER_INTENT_NO_TEXT_INPUT);
 
-  if ((event->keyval == GDK_KEY_slash
-       || event->keyval == GDK_KEY_KP_Divide
-       || event->keyval == GDK_KEY_period
+  if ((event->keyval == CDK_KEY_slash
+       || event->keyval == CDK_KEY_KP_Divide
+       || event->keyval == CDK_KEY_period
 #ifdef G_OS_UNIX
-       || event->keyval == GDK_KEY_asciitilde
+       || event->keyval == CDK_KEY_asciitilde
 #endif
        ) && !(event->state & no_text_input_mask))
     return TRUE;
@@ -1351,7 +1351,7 @@ browse_files_key_press_event_cb (CtkWidget   *widget,
   CtkFileChooserWidgetPrivate *priv = impl->priv;
 
   if (priv->browse_files_interaction_frozen)
-    return GDK_EVENT_STOP;
+    return CDK_EVENT_STOP;
 
   if (should_trigger_location_entry (impl, event) &&
       (priv->action == CTK_FILE_CHOOSER_ACTION_OPEN ||
@@ -1367,11 +1367,11 @@ browse_files_key_press_event_cb (CtkWidget   *widget,
         return TRUE;
     }
 
-  if ((event->keyval == GDK_KEY_Return
-       || event->keyval == GDK_KEY_ISO_Enter
-       || event->keyval == GDK_KEY_KP_Enter
-       || event->keyval == GDK_KEY_space
-       || event->keyval == GDK_KEY_KP_Space)
+  if ((event->keyval == CDK_KEY_Return
+       || event->keyval == CDK_KEY_ISO_Enter
+       || event->keyval == CDK_KEY_KP_Enter
+       || event->keyval == CDK_KEY_space
+       || event->keyval == CDK_KEY_KP_Space)
       && !(event->state & ctk_accelerator_get_default_mod_mask ())
       && !(priv->action == CTK_FILE_CHOOSER_ACTION_SELECT_FOLDER ||
            priv->action == CTK_FILE_CHOOSER_ACTION_CREATE_FOLDER))
@@ -1396,7 +1396,7 @@ browse_files_key_press_event_cb (CtkWidget   *widget,
         }
     }
 
-  if (event->keyval == GDK_KEY_Escape &&
+  if (event->keyval == CDK_KEY_Escape &&
       priv->operation_mode == OPERATION_MODE_SEARCH)
     {
       ctk_search_entry_handle_event (CTK_SEARCH_ENTRY (priv->search_entry), (CdkEvent *)event);
@@ -1775,7 +1775,7 @@ copy_file_location_cb (GSimpleAction *action,
       CtkTargetEntry *targets;
       int n_targets;
 
-      clipboard = ctk_widget_get_clipboard (CTK_WIDGET (impl), GDK_SELECTION_CLIPBOARD);
+      clipboard = ctk_widget_get_clipboard (CTK_WIDGET (impl), CDK_SELECTION_CLIPBOARD);
 
       target_list = ctk_target_list_new (NULL, 0);
       ctk_target_list_add_text_targets (target_list, SELECTION_TEXT);
@@ -2452,7 +2452,7 @@ list_button_press_event_cb (CtkWidget            *widget,
   static gboolean in_press = FALSE;
 
   if (priv->browse_files_interaction_frozen)
-    return GDK_EVENT_STOP;
+    return CDK_EVENT_STOP;
 
   if (in_press)
     return FALSE;
@@ -6959,7 +6959,7 @@ static void
 location_popup_on_paste_handler (CtkFileChooserWidget *impl)
 {
   CtkClipboard *clipboard = ctk_widget_get_clipboard (CTK_WIDGET (impl),
-                                                      GDK_SELECTION_CLIPBOARD);
+                                                      CDK_SELECTION_CLIPBOARD);
   ctk_clipboard_request_text (clipboard,
                               (CtkClipboardTextReceivedFunc) paste_text_received,
                               impl);
@@ -8301,7 +8301,7 @@ add_normal_and_shifted_binding (CtkBindingSet   *binding_set,
                                 signal_name, 0);
 
   ctk_binding_entry_add_signal (binding_set,
-                                keyval, modifiers | GDK_SHIFT_MASK,
+                                keyval, modifiers | CDK_SHIFT_MASK,
                                 signal_name, 0);
 }
 
@@ -8309,7 +8309,7 @@ static void
 ctk_file_chooser_widget_class_init (CtkFileChooserWidgetClass *class)
 {
   static const guint quick_bookmark_keyvals[10] = {
-    GDK_KEY_1, GDK_KEY_2, GDK_KEY_3, GDK_KEY_4, GDK_KEY_5, GDK_KEY_6, GDK_KEY_7, GDK_KEY_8, GDK_KEY_9, GDK_KEY_0
+    CDK_KEY_1, CDK_KEY_2, CDK_KEY_3, CDK_KEY_4, CDK_KEY_5, CDK_KEY_6, CDK_KEY_7, CDK_KEY_8, CDK_KEY_9, CDK_KEY_0
   };
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
   CtkWidgetClass *widget_class = CTK_WIDGET_CLASS (class);
@@ -8600,66 +8600,66 @@ ctk_file_chooser_widget_class_init (CtkFileChooserWidgetClass *class)
   binding_set = ctk_binding_set_by_class (class);
 
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_l, GDK_CONTROL_MASK,
+                                CDK_KEY_l, CDK_CONTROL_MASK,
                                 "location-toggle-popup",
                                 0);
 
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_v, GDK_CONTROL_MASK,
+                                CDK_KEY_v, CDK_CONTROL_MASK,
                                 "location-popup-on-paste",
                                 0);
 
   add_normal_and_shifted_binding (binding_set,
-                                  GDK_KEY_Up, GDK_MOD1_MASK,
+                                  CDK_KEY_Up, CDK_MOD1_MASK,
                                   "up-folder");
 
   add_normal_and_shifted_binding (binding_set,
-                                  GDK_KEY_KP_Up, GDK_MOD1_MASK,
+                                  CDK_KEY_KP_Up, CDK_MOD1_MASK,
                                   "up-folder");
 
   add_normal_and_shifted_binding (binding_set,
-                                  GDK_KEY_Down, GDK_MOD1_MASK,
+                                  CDK_KEY_Down, CDK_MOD1_MASK,
                                   "down-folder");
   add_normal_and_shifted_binding (binding_set,
-                                  GDK_KEY_KP_Down, GDK_MOD1_MASK,
+                                  CDK_KEY_KP_Down, CDK_MOD1_MASK,
                                   "down-folder");
 
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_Home, GDK_MOD1_MASK,
+                                CDK_KEY_Home, CDK_MOD1_MASK,
                                 "home-folder",
                                 0);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_KP_Home, GDK_MOD1_MASK,
+                                CDK_KEY_KP_Home, CDK_MOD1_MASK,
                                 "home-folder",
                                 0);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_d, GDK_MOD1_MASK,
+                                CDK_KEY_d, CDK_MOD1_MASK,
                                 "desktop-folder",
                                 0);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_h, GDK_CONTROL_MASK,
+                                CDK_KEY_h, CDK_CONTROL_MASK,
                                 "show-hidden",
                                 0);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_s, GDK_MOD1_MASK,
+                                CDK_KEY_s, CDK_MOD1_MASK,
                                 "search-shortcut",
                                 0);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_f, GDK_CONTROL_MASK,
+                                CDK_KEY_f, CDK_CONTROL_MASK,
                                 "search-shortcut",
                                 0);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_r, GDK_MOD1_MASK,
+                                CDK_KEY_r, CDK_MOD1_MASK,
                                 "recent-shortcut",
                                 0);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_p, GDK_MOD1_MASK,
+                                CDK_KEY_p, CDK_MOD1_MASK,
                                 "places-shortcut",
                                 0);
 
   for (i = 0; i < 10; i++)
     ctk_binding_entry_add_signal (binding_set,
-                                  quick_bookmark_keyvals[i], GDK_MOD1_MASK,
+                                  quick_bookmark_keyvals[i], CDK_MOD1_MASK,
                                   "quick-bookmark",
                                   1, G_TYPE_INT, i);
 
@@ -8774,15 +8774,15 @@ post_process_ui (CtkFileChooserWidget *impl)
                                           list_select_func,
                                           impl, NULL);
   ctk_tree_view_enable_model_drag_source (CTK_TREE_VIEW (impl->priv->browse_files_tree_view),
-                                          GDK_BUTTON1_MASK,
+                                          CDK_BUTTON1_MASK,
                                           NULL, 0,
-                                          GDK_ACTION_COPY | GDK_ACTION_MOVE);
+                                          CDK_ACTION_COPY | CDK_ACTION_MOVE);
   ctk_drag_source_add_uri_targets (impl->priv->browse_files_tree_view);
 
   ctk_drag_dest_set (impl->priv->browse_files_tree_view,
                      CTK_DEST_DEFAULT_ALL,
                      NULL, 0,
-                     GDK_ACTION_COPY | GDK_ACTION_MOVE);
+                     CDK_ACTION_COPY | CDK_ACTION_MOVE);
   ctk_drag_dest_add_uri_targets (impl->priv->browse_files_tree_view);
 
   /* File browser treemodel columns are shared between CtkFileChooser implementations,

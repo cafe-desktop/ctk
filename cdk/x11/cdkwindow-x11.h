@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -22,8 +22,8 @@
  * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
-#ifndef __GDK_WINDOW_X11_H__
-#define __GDK_WINDOW_X11_H__
+#ifndef __CDK_WINDOW_X11_H__
+#define __CDK_WINDOW_X11_H__
 
 #include "cdk/x11/cdkprivate-x11.h"
 #include "cdk/cdkwindowimpl.h"
@@ -49,12 +49,12 @@ typedef struct _CdkXPositionInfo CdkXPositionInfo;
 /* Window implementation for X11
  */
 
-#define GDK_TYPE_WINDOW_IMPL_X11              (cdk_window_impl_x11_get_type ())
-#define GDK_WINDOW_IMPL_X11(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WINDOW_IMPL_X11, CdkWindowImplX11))
-#define GDK_WINDOW_IMPL_X11_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WINDOW_IMPL_X11, CdkWindowImplX11Class))
-#define GDK_IS_WINDOW_IMPL_X11(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WINDOW_IMPL_X11))
-#define GDK_IS_WINDOW_IMPL_X11_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_WINDOW_IMPL_X11))
-#define GDK_WINDOW_IMPL_X11_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_WINDOW_IMPL_X11, CdkWindowImplX11Class))
+#define CDK_TYPE_WINDOW_IMPL_X11              (cdk_window_impl_x11_get_type ())
+#define CDK_WINDOW_IMPL_X11(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), CDK_TYPE_WINDOW_IMPL_X11, CdkWindowImplX11))
+#define CDK_WINDOW_IMPL_X11_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CDK_TYPE_WINDOW_IMPL_X11, CdkWindowImplX11Class))
+#define CDK_IS_WINDOW_IMPL_X11(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), CDK_TYPE_WINDOW_IMPL_X11))
+#define CDK_IS_WINDOW_IMPL_X11_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CDK_TYPE_WINDOW_IMPL_X11))
+#define CDK_WINDOW_IMPL_X11_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CDK_TYPE_WINDOW_IMPL_X11, CdkWindowImplX11Class))
 
 struct _CdkWindowImplX11
 {
@@ -208,4 +208,4 @@ void            _cdk_x11_window_set_window_scale    (CdkWindow *window,
 
 G_END_DECLS
 
-#endif /* __GDK_WINDOW_X11_H__ */
+#endif /* __CDK_WINDOW_X11_H__ */

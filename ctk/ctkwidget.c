@@ -281,7 +281,7 @@
  * An example of a UI definition fragment specifying an accelerator:
  * |[
  * <object class="CtkButton">
- *   <accelerator key="q" modifiers="GDK_CONTROL_MASK" signal="clicked"/>
+ *   <accelerator key="q" modifiers="CDK_CONTROL_MASK" signal="clicked"/>
  * </object>
  * ]|
  *
@@ -1254,8 +1254,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       g_param_spec_flags ("events",
                           P_("Events"),
                           P_("The event mask that decides what kind of CdkEvents this widget gets"),
-                          GDK_TYPE_EVENT_MASK,
-                          GDK_STRUCTURE_MASK,
+                          CDK_TYPE_EVENT_MASK,
+                          CDK_STRUCTURE_MASK,
                           CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   widget_props[PROP_NO_SHOW_ALL] =
@@ -1346,7 +1346,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       g_param_spec_object ("window",
                            P_("Window"),
                            P_("The widget's window if it is realized"),
-                           GDK_TYPE_WINDOW,
+                           CDK_TYPE_WINDOW,
                            CTK_PARAM_READABLE);
 
   /**
@@ -1780,7 +1780,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1,
-		  GDK_TYPE_RECTANGLE | G_SIGNAL_TYPE_STATIC_SCOPE);
+		  CDK_TYPE_RECTANGLE | G_SIGNAL_TYPE_STATIC_SCOPE);
 
   /**
    * CtkWidget::state-changed:
@@ -2123,7 +2123,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * @widget: the object which received the signal.
    * @event: the #CdkEvent which triggered this signal
    *
-   * The CTK+ main loop will emit three signals for each GDK event delivered
+   * The CTK+ main loop will emit three signals for each CDK event delivered
    * to a widget: one generic ::event signal, another, more specific,
    * signal that matches the type of event delivered (e.g.
    * #CtkWidget::key-press-event) and finally a generic
@@ -2143,7 +2143,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
-		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
+		  CDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
   g_signal_set_va_marshaller (widget_signals[EVENT], G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
@@ -2165,7 +2165,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1,
-		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
+		  CDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
 
   /**
    * CtkWidget::button-press-event:
@@ -2177,7 +2177,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * (typically from a mouse) is pressed.
    *
    * To receive this signal, the #CdkWindow associated to the
-   * widget needs to enable the #GDK_BUTTON_PRESS_MASK mask.
+   * widget needs to enable the #CDK_BUTTON_PRESS_MASK mask.
    *
    * This signal will be sent to the grab widget if there is one.
    *
@@ -2192,7 +2192,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
-		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
+		  CDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
   g_signal_set_va_marshaller (widget_signals[BUTTON_PRESS_EVENT], G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
@@ -2206,7 +2206,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * (typically from a mouse) is released.
    *
    * To receive this signal, the #CdkWindow associated to the
-   * widget needs to enable the #GDK_BUTTON_RELEASE_MASK mask.
+   * widget needs to enable the #CDK_BUTTON_RELEASE_MASK mask.
    *
    * This signal will be sent to the grab widget if there is one.
    *
@@ -2221,7 +2221,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
-		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
+		  CDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
   g_signal_set_va_marshaller (widget_signals[BUTTON_RELEASE_EVENT], G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
@@ -2233,7 +2233,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                   _ctk_boolean_handled_accumulator, NULL,
                   _ctk_marshal_BOOLEAN__BOXED,
                   G_TYPE_BOOLEAN, 1,
-                  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
+                  CDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
   g_signal_set_va_marshaller (widget_signals[TOUCH_EVENT], G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
@@ -2248,7 +2248,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * button press events for buttons 4 and 5 when the wheel is turned.
    *
    * To receive this signal, the #CdkWindow associated to the widget needs
-   * to enable the #GDK_SCROLL_MASK mask.
+   * to enable the #CDK_SCROLL_MASK mask.
    *
    * This signal will be sent to the grab widget if there is one.
    *
@@ -2263,7 +2263,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
-		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
+		  CDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
   g_signal_set_va_marshaller (widget_signals[SCROLL_EVENT], G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
@@ -2277,7 +2277,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * over the widget's #CdkWindow.
    *
    * To receive this signal, the #CdkWindow associated to the widget
-   * needs to enable the #GDK_POINTER_MOTION_MASK mask.
+   * needs to enable the #CDK_POINTER_MOTION_MASK mask.
    *
    * This signal will be sent to the grab widget if there is one.
    *
@@ -2292,7 +2292,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
-		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
+		  CDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
   g_signal_set_va_marshaller (widget_signals[MOTION_NOTIFY_EVENT], G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
@@ -2337,7 +2337,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
-		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
+		  CDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
   g_signal_set_va_marshaller (widget_signals[DELETE_EVENT], G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
@@ -2352,7 +2352,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * window at destroy time.
    *
    * To receive this signal, the #CdkWindow associated to the widget needs
-   * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
+   * to enable the #CDK_STRUCTURE_MASK mask. CDK will enable this mask
    * automatically for all new windows.
    *
    * Returns: %TRUE to stop other handlers from being invoked for the event.
@@ -2366,7 +2366,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
-		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
+		  CDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
   g_signal_set_va_marshaller (widget_signals[DESTROY_EVENT], G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
@@ -2379,7 +2379,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * emission will reoccur at the key-repeat rate when the key is kept pressed.
    *
    * To receive this signal, the #CdkWindow associated to the widget needs
-   * to enable the #GDK_KEY_PRESS_MASK mask.
+   * to enable the #CDK_KEY_PRESS_MASK mask.
    *
    * This signal will be sent to the grab widget if there is one.
    *
@@ -2394,7 +2394,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
-		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
+		  CDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
   g_signal_set_va_marshaller (widget_signals[KEY_PRESS_EVENT], G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
@@ -2406,7 +2406,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * The ::key-release-event signal is emitted when a key is released.
    *
    * To receive this signal, the #CdkWindow associated to the widget needs
-   * to enable the #GDK_KEY_RELEASE_MASK mask.
+   * to enable the #CDK_KEY_RELEASE_MASK mask.
    *
    * This signal will be sent to the grab widget if there is one.
    *
@@ -2421,7 +2421,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
-		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
+		  CDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
   g_signal_set_va_marshaller (widget_signals[KEY_RELEASE_EVENT], G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
@@ -2435,7 +2435,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * the @widget's window.
    *
    * To receive this signal, the #CdkWindow associated to the widget needs
-   * to enable the #GDK_ENTER_NOTIFY_MASK mask.
+   * to enable the #CDK_ENTER_NOTIFY_MASK mask.
    *
    * This signal will be sent to the grab widget if there is one.
    *
@@ -2450,7 +2450,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
-		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
+		  CDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
   g_signal_set_va_marshaller (widget_signals[ENTER_NOTIFY_EVENT], G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
@@ -2464,7 +2464,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * the @widget's window.
    *
    * To receive this signal, the #CdkWindow associated to the widget needs
-   * to enable the #GDK_LEAVE_NOTIFY_MASK mask.
+   * to enable the #CDK_LEAVE_NOTIFY_MASK mask.
    *
    * This signal will be sent to the grab widget if there is one.
    *
@@ -2479,7 +2479,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
-		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
+		  CDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
   g_signal_set_va_marshaller (widget_signals[LEAVE_NOTIFY_EVENT], G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
@@ -2493,7 +2493,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * stacking of the @widget's window has changed.
    *
    * To receive this signal, the #CdkWindow associated to the widget needs
-   * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
+   * to enable the #CDK_STRUCTURE_MASK mask. CDK will enable this mask
    * automatically for all new windows.
    *
    * Returns: %TRUE to stop other handlers from being invoked for the event.
@@ -2507,7 +2507,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
-		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
+		  CDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
   g_signal_set_va_marshaller (widget_signals[CONFIGURE_EVENT], G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
@@ -2521,7 +2521,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * enters the @widget's window.
    *
    * To receive this signal, the #CdkWindow associated to the widget needs
-   * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+   * to enable the #CDK_FOCUS_CHANGE_MASK mask.
    *
    * Returns: %TRUE to stop other handlers from being invoked for the event.
    *   %FALSE to propagate the event further.
@@ -2534,7 +2534,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
-		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
+		  CDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
   g_signal_set_va_marshaller (widget_signals[FOCUS_IN_EVENT], G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
@@ -2548,7 +2548,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * leaves the @widget's window.
    *
    * To receive this signal, the #CdkWindow associated to the widget needs
-   * to enable the #GDK_FOCUS_CHANGE_MASK mask.
+   * to enable the #CDK_FOCUS_CHANGE_MASK mask.
    *
    * Returns: %TRUE to stop other handlers from being invoked for the event.
    *   %FALSE to propagate the event further.
@@ -2561,7 +2561,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
-		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
+		  CDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
   g_signal_set_va_marshaller (widget_signals[FOCUS_OUT_EVENT], G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
@@ -2574,7 +2574,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * mapped. A window is mapped when it becomes visible on the screen.
    *
    * To receive this signal, the #CdkWindow associated to the widget needs
-   * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
+   * to enable the #CDK_STRUCTURE_MASK mask. CDK will enable this mask
    * automatically for all new windows.
    *
    * Returns: %TRUE to stop other handlers from being invoked for the event.
@@ -2588,7 +2588,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
-		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
+		  CDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
   g_signal_set_va_marshaller (widget_signals[MAP_EVENT], G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
@@ -2601,7 +2601,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * unmapped. A window is unmapped when it becomes invisible on the screen.
    *
    * To receive this signal, the #CdkWindow associated to the widget needs
-   * to enable the #GDK_STRUCTURE_MASK mask. GDK will enable this mask
+   * to enable the #CDK_STRUCTURE_MASK mask. CDK will enable this mask
    * automatically for all new windows.
    *
    * Returns: %TRUE to stop other handlers from being invoked for the event.
@@ -2615,7 +2615,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
-		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
+		  CDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
   g_signal_set_va_marshaller (widget_signals[UNMAP_EVENT], G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
@@ -2629,7 +2629,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * the @widget's window has been changed or deleted.
    *
    * To receive this signal, the #CdkWindow associated to the widget needs
-   * to enable the #GDK_PROPERTY_CHANGE_MASK mask.
+   * to enable the #CDK_PROPERTY_CHANGE_MASK mask.
    *
    * Returns: %TRUE to stop other handlers from being invoked for the event.
    *   %FALSE to propagate the event further.
@@ -2642,7 +2642,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
-		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
+		  CDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
   g_signal_set_va_marshaller (widget_signals[PROPERTY_NOTIFY_EVENT], G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
@@ -2666,7 +2666,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
-		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
+		  CDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
   g_signal_set_va_marshaller (widget_signals[SELECTION_CLEAR_EVENT], G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
@@ -2691,7 +2691,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
-		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
+		  CDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
   g_signal_set_va_marshaller (widget_signals[SELECTION_REQUEST_EVENT], G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
@@ -2710,7 +2710,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
-		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
+		  CDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
   g_signal_set_va_marshaller (widget_signals[SELECTION_NOTIFY_EVENT], G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
@@ -2763,7 +2763,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    *   this signal.
    *
    * To receive this signal the #CdkWindow associated to the widget needs
-   * to enable the #GDK_PROXIMITY_IN_MASK mask.
+   * to enable the #CDK_PROXIMITY_IN_MASK mask.
    *
    * This signal will be sent to the grab widget if there is one.
    *
@@ -2778,7 +2778,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
-		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
+		  CDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
   g_signal_set_va_marshaller (widget_signals[PROXIMITY_IN_EVENT], G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
@@ -2789,7 +2789,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    *   this signal.
    *
    * To receive this signal the #CdkWindow associated to the widget needs
-   * to enable the #GDK_PROXIMITY_OUT_MASK mask.
+   * to enable the #CDK_PROXIMITY_OUT_MASK mask.
    *
    * This signal will be sent to the grab widget if there is one.
    *
@@ -2804,7 +2804,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
-		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
+		  CDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
   g_signal_set_va_marshaller (widget_signals[PROXIMITY_OUT_EVENT], G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
@@ -2832,7 +2832,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  NULL, NULL,
 		  _ctk_marshal_VOID__OBJECT_UINT,
 		  G_TYPE_NONE, 2,
-		  GDK_TYPE_DRAG_CONTEXT,
+		  CDK_TYPE_DRAG_CONTEXT,
 		  G_TYPE_UINT);
   g_signal_set_va_marshaller (widget_signals[DRAG_LEAVE],
                               G_TYPE_FROM_CLASS (klass),
@@ -2859,7 +2859,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1,
-		  GDK_TYPE_DRAG_CONTEXT);
+		  CDK_TYPE_DRAG_CONTEXT);
 
   /**
    * CtkWidget::drag-end:
@@ -2878,7 +2878,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1,
-		  GDK_TYPE_DRAG_CONTEXT);
+		  CDK_TYPE_DRAG_CONTEXT);
 
   /**
    * CtkWidget::drag-data-delete:
@@ -2886,7 +2886,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * @context: the drag context
    *
    * The ::drag-data-delete signal is emitted on the drag source when a drag
-   * with the action %GDK_ACTION_MOVE is successfully completed. The signal
+   * with the action %CDK_ACTION_MOVE is successfully completed. The signal
    * handler is responsible for deleting the data that has been dropped. What
    * "delete" means depends on the context of the drag operation.
    */
@@ -2898,7 +2898,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1,
-		  GDK_TYPE_DRAG_CONTEXT);
+		  CDK_TYPE_DRAG_CONTEXT);
 
   /**
    * CtkWidget::drag-failed:
@@ -2924,7 +2924,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__OBJECT_ENUM,
 		  G_TYPE_BOOLEAN, 2,
-		  GDK_TYPE_DRAG_CONTEXT,
+		  CDK_TYPE_DRAG_CONTEXT,
 		  CTK_TYPE_DRAG_RESULT);
   g_signal_set_va_marshaller (widget_signals[DRAG_FAILED],
                               G_TYPE_FROM_CLASS (klass),
@@ -2978,7 +2978,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    *    }
    *
    *   target = ctk_drag_dest_find_target (widget, context, NULL);
-   *   if (target == GDK_NONE)
+   *   if (target == CDK_NONE)
    *     cdk_drag_status (context, 0, time);
    *   else
    *    {
@@ -3035,7 +3035,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__OBJECT_INT_INT_UINT,
 		  G_TYPE_BOOLEAN, 4,
-		  GDK_TYPE_DRAG_CONTEXT,
+		  CDK_TYPE_DRAG_CONTEXT,
 		  G_TYPE_INT,
 		  G_TYPE_INT,
 		  G_TYPE_UINT);
@@ -3072,7 +3072,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__OBJECT_INT_INT_UINT,
 		  G_TYPE_BOOLEAN, 4,
-		  GDK_TYPE_DRAG_CONTEXT,
+		  CDK_TYPE_DRAG_CONTEXT,
 		  G_TYPE_INT,
 		  G_TYPE_INT,
 		  G_TYPE_UINT);
@@ -3103,7 +3103,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  NULL, NULL,
 		  _ctk_marshal_VOID__OBJECT_BOXED_UINT_UINT,
 		  G_TYPE_NONE, 4,
-		  GDK_TYPE_DRAG_CONTEXT,
+		  CDK_TYPE_DRAG_CONTEXT,
 		  CTK_TYPE_SELECTION_DATA | G_SIGNAL_TYPE_STATIC_SCOPE,
 		  G_TYPE_UINT,
 		  G_TYPE_UINT);
@@ -3137,7 +3137,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    *
    * The handler may inspect the selected action with
    * cdk_drag_context_get_selected_action() before calling
-   * ctk_drag_finish(), e.g. to implement %GDK_ACTION_ASK as
+   * ctk_drag_finish(), e.g. to implement %CDK_ACTION_ASK as
    * shown in the following example:
    * |[<!-- language="C" -->
    * void
@@ -3156,7 +3156,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    *       // handle data here
    *
    *       action = cdk_drag_context_get_selected_action (context);
-   *       if (action == GDK_ACTION_ASK)
+   *       if (action == CDK_ACTION_ASK)
    *         {
    *           CtkWidget *dialog;
    *           gint response;
@@ -3171,12 +3171,12 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    *           ctk_widget_destroy (dialog);
    *
    *           if (response == CTK_RESPONSE_YES)
-   *             action = GDK_ACTION_MOVE;
+   *             action = CDK_ACTION_MOVE;
    *           else
-   *             action = GDK_ACTION_COPY;
+   *             action = CDK_ACTION_COPY;
    *          }
    *
-   *       ctk_drag_finish (context, TRUE, action == GDK_ACTION_MOVE, time);
+   *       ctk_drag_finish (context, TRUE, action == CDK_ACTION_MOVE, time);
    *     }
    *   else
    *     ctk_drag_finish (context, FALSE, FALSE, time);
@@ -3191,7 +3191,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  NULL, NULL,
 		  _ctk_marshal_VOID__OBJECT_INT_INT_BOXED_UINT_UINT,
 		  G_TYPE_NONE, 6,
-		  GDK_TYPE_DRAG_CONTEXT,
+		  CDK_TYPE_DRAG_CONTEXT,
 		  G_TYPE_INT,
 		  G_TYPE_INT,
 		  CTK_TYPE_SELECTION_DATA | G_SIGNAL_TYPE_STATIC_SCOPE,
@@ -3211,7 +3211,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * window is obscured or unobscured.
    *
    * To receive this signal the #CdkWindow associated to the widget needs
-   * to enable the #GDK_VISIBILITY_NOTIFY_MASK mask.
+   * to enable the #CDK_VISIBILITY_NOTIFY_MASK mask.
    *
    * Returns: %TRUE to stop other handlers from being invoked for the event.
    *   %FALSE to propagate the event further.
@@ -3229,7 +3229,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
-		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
+		  CDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
   g_signal_set_va_marshaller (widget_signals[VISIBILITY_NOTIFY_EVENT],
                               G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_BOOLEAN__BOXEDv);
@@ -3244,7 +3244,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * toplevel window associated to the @widget changes.
    *
    * To receive this signal the #CdkWindow associated to the widget
-   * needs to enable the #GDK_STRUCTURE_MASK mask. GDK will enable
+   * needs to enable the #CDK_STRUCTURE_MASK mask. CDK will enable
    * this mask automatically for all new windows.
    *
    * Returns: %TRUE to stop other handlers from being invoked for the
@@ -3258,7 +3258,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
-		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
+		  CDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
   g_signal_set_va_marshaller (widget_signals[WINDOW_STATE_EVENT], G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
@@ -3284,7 +3284,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
-		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
+		  CDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
   g_signal_set_va_marshaller (widget_signals[DAMAGE_EVENT], G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
@@ -3313,7 +3313,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  _ctk_boolean_handled_accumulator, NULL,
 		  _ctk_marshal_BOOLEAN__BOXED,
 		  G_TYPE_BOOLEAN, 1,
-		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
+		  CDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
   g_signal_set_va_marshaller (widget_signals[GRAB_BROKEN_EVENT], G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_BOOLEAN__BOXEDv);
 
@@ -3437,7 +3437,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1,
-		  GDK_TYPE_SCREEN);
+		  CDK_TYPE_SCREEN);
 
   /**
    * CtkWidget::can-activate-accel:
@@ -3462,24 +3462,24 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                   G_TYPE_BOOLEAN, 1, G_TYPE_UINT);
 
   binding_set = ctk_binding_set_by_class (klass);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_F10, GDK_SHIFT_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_F10, CDK_SHIFT_MASK,
                                 "popup-menu", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Menu, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Menu, 0,
                                 "popup-menu", 0);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_F1, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_F1, CDK_CONTROL_MASK,
                                 "show-help", 1,
                                 CTK_TYPE_WIDGET_HELP_TYPE,
                                 CTK_WIDGET_HELP_TOOLTIP);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_F1, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_F1, CDK_CONTROL_MASK,
                                 "show-help", 1,
                                 CTK_TYPE_WIDGET_HELP_TYPE,
                                 CTK_WIDGET_HELP_TOOLTIP);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_F1, GDK_SHIFT_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_F1, CDK_SHIFT_MASK,
                                 "show-help", 1,
                                 CTK_TYPE_WIDGET_HELP_TYPE,
                                 CTK_WIDGET_HELP_WHATS_THIS);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_F1, GDK_SHIFT_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_F1, CDK_SHIFT_MASK,
                                 "show-help", 1,
                                 CTK_TYPE_WIDGET_HELP_TYPE,
                                 CTK_WIDGET_HELP_WHATS_THIS);
@@ -3554,7 +3554,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 					   g_param_spec_boxed ("cursor-color",
 							       P_("Cursor color"),
 							       P_("Color with which to draw insertion cursor"),
-							       GDK_TYPE_COLOR,
+							       CDK_TYPE_COLOR,
 							       CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
   /**
    * CtkWidget:secondary-cursor-color:
@@ -3568,7 +3568,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 					   g_param_spec_boxed ("secondary-cursor-color",
 							       P_("Secondary cursor color"),
 							       P_("Color with which to draw the secondary insertion cursor when editing mixed right-to-left and left-to-right text"),
-							       GDK_TYPE_COLOR,
+							       CDK_TYPE_COLOR,
 							       CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 G_GNUC_END_IGNORE_DEPRECATIONS
   ctk_widget_class_install_style_property (klass,
@@ -3600,7 +3600,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 					   g_param_spec_boxed ("link-color",
 							       P_("Unvisited Link Color"),
 							       P_("Color of unvisited links"),
-							       GDK_TYPE_COLOR,
+							       CDK_TYPE_COLOR,
 							       CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 
   /**
@@ -3617,7 +3617,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 					   g_param_spec_boxed ("visited-link-color",
 							       P_("Visited Link Color"),
 							       P_("Color of visited links"),
-							       GDK_TYPE_COLOR,
+							       CDK_TYPE_COLOR,
 							       CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
 G_GNUC_END_IGNORE_DEPRECATIONS
 
@@ -4107,22 +4107,22 @@ _ctk_widget_emulate_press (CtkWidget      *widget,
   if (event_widget == widget)
     return;
 
-  if (event->type == GDK_TOUCH_BEGIN ||
-      event->type == GDK_TOUCH_UPDATE ||
-      event->type == GDK_TOUCH_END)
+  if (event->type == CDK_TOUCH_BEGIN ||
+      event->type == CDK_TOUCH_UPDATE ||
+      event->type == CDK_TOUCH_END)
     {
       press = cdk_event_copy (event);
-      press->type = GDK_TOUCH_BEGIN;
+      press->type = CDK_TOUCH_BEGIN;
     }
-  else if (event->type == GDK_BUTTON_PRESS ||
-           event->type == GDK_BUTTON_RELEASE)
+  else if (event->type == CDK_BUTTON_PRESS ||
+           event->type == CDK_BUTTON_RELEASE)
     {
       press = cdk_event_copy (event);
-      press->type = GDK_BUTTON_PRESS;
+      press->type = CDK_BUTTON_PRESS;
     }
-  else if (event->type == GDK_MOTION_NOTIFY)
+  else if (event->type == CDK_MOTION_NOTIFY)
     {
-      press = cdk_event_new (GDK_BUTTON_PRESS);
+      press = cdk_event_new (CDK_BUTTON_PRESS);
       press->button.window = g_object_ref (event->motion.window);
       press->button.time = event->motion.time;
       press->button.x = event->motion.x;
@@ -4135,13 +4135,13 @@ _ctk_widget_emulate_press (CtkWidget      *widget,
                                      sizeof (gdouble) *
                                      cdk_device_get_n_axes (event->motion.device));
 
-      if (event->motion.state & GDK_BUTTON3_MASK)
+      if (event->motion.state & CDK_BUTTON3_MASK)
         press->button.button = 3;
-      else if (event->motion.state & GDK_BUTTON2_MASK)
+      else if (event->motion.state & CDK_BUTTON2_MASK)
         press->button.button = 2;
       else
         {
-          if ((event->motion.state & GDK_BUTTON1_MASK) == 0)
+          if ((event->motion.state & CDK_BUTTON1_MASK) == 0)
             g_critical ("Guessing button number 1 on generated button press event");
 
           press->button.button = 1;
@@ -4212,9 +4212,9 @@ _ctk_widget_get_emulating_sequence (CtkWidget         *widget,
       last_event = _ctk_widget_get_last_event (widget, sequence);
 
       if (last_event &&
-          (last_event->type == GDK_TOUCH_BEGIN ||
-           last_event->type == GDK_TOUCH_UPDATE ||
-           last_event->type == GDK_TOUCH_END) &&
+          (last_event->type == CDK_TOUCH_BEGIN ||
+           last_event->type == CDK_TOUCH_UPDATE ||
+           last_event->type == CDK_TOUCH_END) &&
           last_event->touch.emulating_pointer)
         return TRUE;
     }
@@ -5189,7 +5189,7 @@ ctk_widget_update_devices_mask (CtkWidget *widget,
   enabled_devices = g_object_get_qdata (G_OBJECT (widget), quark_enabled_devices);
 
   for (l = enabled_devices; l; l = l->next)
-    ctk_widget_set_device_enabled_internal (widget, GDK_DEVICE (l->data), recurse, TRUE);
+    ctk_widget_set_device_enabled_internal (widget, CDK_DEVICE (l->data), recurse, TRUE);
 }
 
 typedef struct _CtkTickCallbackInfo CtkTickCallbackInfo;
@@ -5463,7 +5463,7 @@ ctk_widget_disconnect_frame_clock (CtkWidget     *widget,
  * ctk_widget_realize:
  * @widget: a #CtkWidget
  *
- * Creates the GDK (windowing system) resources associated with a
+ * Creates the CDK (windowing system) resources associated with a
  * widget.  For example, @widget->window will be created when a widget
  * is realized.  Normally realization happens implicitly; if you show
  * a widget and all its parent containers, then the widget will be
@@ -5550,7 +5550,7 @@ ctk_widget_realize (CtkWidget *widget)
  * @widget: a #CtkWidget
  *
  * This function is only useful in widget implementations.
- * Causes a widget to be unrealized (frees all GDK resources
+ * Causes a widget to be unrealized (frees all CDK resources
  * associated with the widget, such as @widget->window).
  **/
 void
@@ -6670,7 +6670,7 @@ widget_new_accel_closure (CtkWidget *widget,
  * @widget:       widget to install an accelerator on
  * @accel_signal: widget signal to emit on accelerator activation
  * @accel_group:  accel group for this widget, added to its toplevel
- * @accel_key:    GDK keyval of the accelerator
+ * @accel_key:    CDK keyval of the accelerator
  * @accel_mods:   modifier key combination of the accelerator
  * @accel_flags:  flag accelerators, e.g. %CTK_ACCEL_VISIBLE
  *
@@ -6732,7 +6732,7 @@ ctk_widget_add_accelerator (CtkWidget      *widget,
  * ctk_widget_remove_accelerator:
  * @widget:       widget to install an accelerator on
  * @accel_group:  accel group for this widget
- * @accel_key:    GDK keyval of the accelerator
+ * @accel_key:    CDK keyval of the accelerator
  * @accel_mods:   modifier key combination of the accelerator
  *
  * Removes an accelerator from @widget, previously installed with
@@ -6995,7 +6995,7 @@ ctk_cairo_should_draw_window (cairo_t   *cr,
   CdkWindow *tmp;
 
   g_return_val_if_fail (cr != NULL, FALSE);
-  g_return_val_if_fail (GDK_IS_WINDOW (window), FALSE);
+  g_return_val_if_fail (CDK_IS_WINDOW (window), FALSE);
 
   if (ctk_cairo_is_marked_for_draw (cr))
     return TRUE;
@@ -7219,7 +7219,7 @@ ctk_widget_real_key_press_event (CtkWidget         *widget,
 {
   if (_ctk_widget_run_controllers (widget, (CdkEvent *) event,
                                    CTK_PHASE_BUBBLE))
-    return GDK_EVENT_STOP;
+    return CDK_EVENT_STOP;
 
   return ctk_bindings_activate_event (G_OBJECT (widget), event);
 }
@@ -7230,7 +7230,7 @@ ctk_widget_real_key_release_event (CtkWidget         *widget,
 {
   if (_ctk_widget_run_controllers (widget, (CdkEvent *) event,
                                    CTK_PHASE_BUBBLE))
-    return GDK_EVENT_STOP;
+    return CDK_EVENT_STOP;
 
   return ctk_bindings_activate_event (G_OBJECT (widget), event);
 }
@@ -7264,10 +7264,10 @@ ctk_widget_real_touch_event (CtkWidget     *widget,
     return _ctk_widget_run_controllers (widget, (CdkEvent*) event,
                                         CTK_PHASE_BUBBLE);
 
-  if (event->type == GDK_TOUCH_UPDATE ||
-      event->type == GDK_TOUCH_BEGIN)
+  if (event->type == CDK_TOUCH_UPDATE ||
+      event->type == CDK_TOUCH_BEGIN)
     {
-      bevent = cdk_event_new (GDK_MOTION_NOTIFY);
+      bevent = cdk_event_new (CDK_MOTION_NOTIFY);
       bevent->any.window = g_object_ref (event->window);
       bevent->any.send_event = FALSE;
       bevent->motion.time = event->time;
@@ -7282,28 +7282,28 @@ ctk_widget_real_touch_event (CtkWidget     *widget,
                                       sizeof (gdouble) * cdk_device_get_n_axes (event->device));
       cdk_event_set_source_device (bevent, cdk_event_get_source_device ((CdkEvent*)event));
 
-      if (event->type == GDK_TOUCH_UPDATE)
-        bevent->motion.state |= GDK_BUTTON1_MASK;
+      if (event->type == CDK_TOUCH_UPDATE)
+        bevent->motion.state |= CDK_BUTTON1_MASK;
 
       g_signal_emit (widget, widget_signals[MOTION_NOTIFY_EVENT], 0, bevent, &return_val);
 
       cdk_event_free (bevent);
     }
 
-  if (event->type == GDK_TOUCH_BEGIN ||
-      event->type == GDK_TOUCH_END)
+  if (event->type == CDK_TOUCH_BEGIN ||
+      event->type == CDK_TOUCH_END)
     {
       CdkEventType type;
       gint signum;
 
-      if (event->type == GDK_TOUCH_BEGIN)
+      if (event->type == CDK_TOUCH_BEGIN)
         {
-          type = GDK_BUTTON_PRESS;
+          type = CDK_BUTTON_PRESS;
           signum = BUTTON_PRESS_EVENT;
         }
       else
         {
-          type = GDK_BUTTON_RELEASE;
+          type = CDK_BUTTON_RELEASE;
           signum = BUTTON_RELEASE_EVENT;
         }
       bevent = cdk_event_new (type);
@@ -7321,8 +7321,8 @@ ctk_widget_real_touch_event (CtkWidget     *widget,
                                       sizeof (gdouble) * cdk_device_get_n_axes (event->device));
       cdk_event_set_source_device (bevent, cdk_event_get_source_device ((CdkEvent*)event));
 
-      if (event->type == GDK_TOUCH_END)
-        bevent->button.state |= GDK_BUTTON1_MASK;
+      if (event->type == CDK_TOUCH_END)
+        bevent->button.state |= CDK_BUTTON1_MASK;
 
       g_signal_emit (widget, widget_signals[signum], 0, bevent, &return_val);
 
@@ -7341,7 +7341,7 @@ ctk_widget_real_grab_broken_event (CtkWidget          *widget,
 }
 
 #define WIDGET_REALIZED_FOR_EVENT(widget, event) \
-     (event->type == GDK_FOCUS_CHANGE || _ctk_widget_get_realized(widget))
+     (event->type == CDK_FOCUS_CHANGE || _ctk_widget_get_realized(widget))
 
 /**
  * ctk_widget_event:
@@ -7367,9 +7367,9 @@ ctk_widget_event (CtkWidget *widget,
   g_return_val_if_fail (CTK_IS_WIDGET (widget), TRUE);
   g_return_val_if_fail (WIDGET_REALIZED_FOR_EVENT (widget, event), TRUE);
 
-  if (event->type == GDK_EXPOSE)
+  if (event->type == CDK_EXPOSE)
     {
-      g_warning ("Events of type GDK_EXPOSE cannot be synthesized. To get "
+      g_warning ("Events of type CDK_EXPOSE cannot be synthesized. To get "
 		 "the same effect, call cdk_window_invalidate_rect/region(), "
 		 "followed by cdk_window_process_updates().");
       return TRUE;
@@ -7483,9 +7483,9 @@ _ctk_widget_captured_event (CtkWidget *widget,
   g_return_val_if_fail (CTK_IS_WIDGET (widget), TRUE);
   g_return_val_if_fail (WIDGET_REALIZED_FOR_EVENT (widget, event), TRUE);
 
-  if (event->type == GDK_EXPOSE)
+  if (event->type == CDK_EXPOSE)
     {
-      g_warning ("Events of type GDK_EXPOSE cannot be synthesized. To get "
+      g_warning ("Events of type CDK_EXPOSE cannot be synthesized. To get "
 		 "the same effect, call cdk_window_invalidate_rect/region(), "
 		 "followed by cdk_window_process_updates().");
       return TRUE;
@@ -7510,10 +7510,10 @@ _ctk_widget_captured_event (CtkWidget *widget,
    * not, so ensure we get further motion events.
    */
   if (return_val &&
-      event->type == GDK_MOTION_NOTIFY &&
+      event->type == CDK_MOTION_NOTIFY &&
       event->motion.is_hint &&
       (cdk_window_get_events (event->any.window) &
-       GDK_POINTER_MOTION_HINT_MASK) != 0)
+       CDK_POINTER_MOTION_HINT_MASK) != 0)
     cdk_event_request_motions (&event->motion);
 
   g_object_unref (widget);
@@ -7589,7 +7589,7 @@ ctk_cairo_transform_to_window (cairo_t   *cr,
 
   g_return_if_fail (cr != NULL);
   g_return_if_fail (CTK_IS_WIDGET (widget));
-  g_return_if_fail (GDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_WINDOW (window));
 
   if (_ctk_widget_get_translation_to_window (widget, window, &x, &y))
     cairo_translate (cr, x, y);
@@ -7626,7 +7626,7 @@ ctk_widget_send_expose (CtkWidget *widget,
   g_return_val_if_fail (CTK_IS_WIDGET (widget), TRUE);
   g_return_val_if_fail (ctk_widget_get_realized (widget), TRUE);
   g_return_val_if_fail (event != NULL, TRUE);
-  g_return_val_if_fail (event->type == GDK_EXPOSE, TRUE);
+  g_return_val_if_fail (event->type == CDK_EXPOSE, TRUE);
 
   ctk_widget_render (widget, event->any.window, event->expose.region);
 
@@ -7643,15 +7643,15 @@ event_window_is_still_viewable (CdkEvent *event)
    */
   switch (event->type)
     {
-    case GDK_EXPOSE:
-    case GDK_MOTION_NOTIFY:
-    case GDK_BUTTON_PRESS:
-    case GDK_2BUTTON_PRESS:
-    case GDK_3BUTTON_PRESS:
-    case GDK_KEY_PRESS:
-    case GDK_ENTER_NOTIFY:
-    case GDK_PROXIMITY_IN:
-    case GDK_SCROLL:
+    case CDK_EXPOSE:
+    case CDK_MOTION_NOTIFY:
+    case CDK_BUTTON_PRESS:
+    case CDK_2BUTTON_PRESS:
+    case CDK_3BUTTON_PRESS:
+    case CDK_KEY_PRESS:
+    case CDK_ENTER_NOTIFY:
+    case CDK_PROXIMITY_IN:
+    case CDK_SCROLL:
       return event->any.window && cdk_window_is_viewable (event->any.window);
 
 #if 0
@@ -7659,10 +7659,10 @@ event_window_is_still_viewable (CdkEvent *event)
      * we always deliver them to deal with widgets that clean up
      * on the second half.
      */
-    case GDK_BUTTON_RELEASE:
-    case GDK_KEY_RELEASE:
-    case GDK_LEAVE_NOTIFY:
-    case GDK_PROXIMITY_OUT:
+    case CDK_BUTTON_RELEASE:
+    case CDK_KEY_RELEASE:
+    case CDK_LEAVE_NOTIFY:
+    case CDK_PROXIMITY_OUT:
 #endif
 
     default:
@@ -7700,102 +7700,102 @@ ctk_widget_event_internal (CtkWidget *widget,
 
       switch (event->type)
 	{
-        case GDK_TOUCHPAD_SWIPE:
-        case GDK_TOUCHPAD_PINCH:
+        case CDK_TOUCHPAD_SWIPE:
+        case CDK_TOUCHPAD_PINCH:
           return_val |= _ctk_widget_run_controllers (widget, event, CTK_PHASE_BUBBLE);
           /* Fall through */
-        case GDK_PAD_BUTTON_PRESS:
-        case GDK_PAD_BUTTON_RELEASE:
-        case GDK_PAD_RING:
-        case GDK_PAD_STRIP:
-        case GDK_PAD_GROUP_MODE:
-	case GDK_EXPOSE:
-	case GDK_NOTHING:
+        case CDK_PAD_BUTTON_PRESS:
+        case CDK_PAD_BUTTON_RELEASE:
+        case CDK_PAD_RING:
+        case CDK_PAD_STRIP:
+        case CDK_PAD_GROUP_MODE:
+	case CDK_EXPOSE:
+	case CDK_NOTHING:
 	  signal_num = -1;
 	  break;
-	case GDK_BUTTON_PRESS:
-	case GDK_2BUTTON_PRESS:
-	case GDK_3BUTTON_PRESS:
+	case CDK_BUTTON_PRESS:
+	case CDK_2BUTTON_PRESS:
+	case CDK_3BUTTON_PRESS:
 	  signal_num = BUTTON_PRESS_EVENT;
           break;
-        case GDK_TOUCH_BEGIN:
-        case GDK_TOUCH_UPDATE:
-        case GDK_TOUCH_END:
-        case GDK_TOUCH_CANCEL:
+        case CDK_TOUCH_BEGIN:
+        case CDK_TOUCH_UPDATE:
+        case CDK_TOUCH_END:
+        case CDK_TOUCH_CANCEL:
 	  signal_num = TOUCH_EVENT;
 	  break;
-	case GDK_SCROLL:
+	case CDK_SCROLL:
 	  signal_num = SCROLL_EVENT;
 	  break;
-	case GDK_BUTTON_RELEASE:
+	case CDK_BUTTON_RELEASE:
 	  signal_num = BUTTON_RELEASE_EVENT;
 	  break;
-	case GDK_MOTION_NOTIFY:
+	case CDK_MOTION_NOTIFY:
 	  signal_num = MOTION_NOTIFY_EVENT;
 	  break;
-	case GDK_DELETE:
+	case CDK_DELETE:
 	  signal_num = DELETE_EVENT;
 	  break;
-	case GDK_DESTROY:
+	case CDK_DESTROY:
 	  signal_num = DESTROY_EVENT;
 	  _ctk_tooltip_hide (widget);
 	  break;
-	case GDK_KEY_PRESS:
+	case CDK_KEY_PRESS:
 	  signal_num = KEY_PRESS_EVENT;
 	  break;
-	case GDK_KEY_RELEASE:
+	case CDK_KEY_RELEASE:
 	  signal_num = KEY_RELEASE_EVENT;
 	  break;
-	case GDK_ENTER_NOTIFY:
+	case CDK_ENTER_NOTIFY:
 	  signal_num = ENTER_NOTIFY_EVENT;
 	  break;
-	case GDK_LEAVE_NOTIFY:
+	case CDK_LEAVE_NOTIFY:
 	  signal_num = LEAVE_NOTIFY_EVENT;
 	  break;
-	case GDK_FOCUS_CHANGE:
+	case CDK_FOCUS_CHANGE:
 	  signal_num = event->focus_change.in ? FOCUS_IN_EVENT : FOCUS_OUT_EVENT;
 	  if (event->focus_change.in)
 	    _ctk_tooltip_focus_in (widget);
 	  else
 	    _ctk_tooltip_focus_out (widget);
 	  break;
-	case GDK_CONFIGURE:
+	case CDK_CONFIGURE:
 	  signal_num = CONFIGURE_EVENT;
 	  break;
-	case GDK_MAP:
+	case CDK_MAP:
 	  signal_num = MAP_EVENT;
 	  break;
-	case GDK_UNMAP:
+	case CDK_UNMAP:
 	  signal_num = UNMAP_EVENT;
 	  break;
-	case GDK_WINDOW_STATE:
+	case CDK_WINDOW_STATE:
 	  signal_num = WINDOW_STATE_EVENT;
 	  break;
-	case GDK_PROPERTY_NOTIFY:
+	case CDK_PROPERTY_NOTIFY:
 	  signal_num = PROPERTY_NOTIFY_EVENT;
 	  break;
-	case GDK_SELECTION_CLEAR:
+	case CDK_SELECTION_CLEAR:
 	  signal_num = SELECTION_CLEAR_EVENT;
 	  break;
-	case GDK_SELECTION_REQUEST:
+	case CDK_SELECTION_REQUEST:
 	  signal_num = SELECTION_REQUEST_EVENT;
 	  break;
-	case GDK_SELECTION_NOTIFY:
+	case CDK_SELECTION_NOTIFY:
 	  signal_num = SELECTION_NOTIFY_EVENT;
 	  break;
-	case GDK_PROXIMITY_IN:
+	case CDK_PROXIMITY_IN:
 	  signal_num = PROXIMITY_IN_EVENT;
 	  break;
-	case GDK_PROXIMITY_OUT:
+	case CDK_PROXIMITY_OUT:
 	  signal_num = PROXIMITY_OUT_EVENT;
 	  break;
-	case GDK_VISIBILITY_NOTIFY:
+	case CDK_VISIBILITY_NOTIFY:
 	  signal_num = VISIBILITY_NOTIFY_EVENT;
 	  break;
-	case GDK_GRAB_BROKEN:
+	case CDK_GRAB_BROKEN:
 	  signal_num = GRAB_BROKEN_EVENT;
 	  break;
-	case GDK_DAMAGE:
+	case CDK_DAMAGE:
 	  signal_num = DAMAGE_EVENT;
 	  break;
 	default:
@@ -8751,7 +8751,7 @@ ctk_widget_device_is_shadowed (CtkWidget *widget,
   CtkWidget *grab_widget, *toplevel;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
-  g_return_val_if_fail (GDK_IS_DEVICE (device), FALSE);
+  g_return_val_if_fail (CDK_IS_DEVICE (device), FALSE);
 
   if (!_ctk_widget_get_realized (widget))
     return TRUE;
@@ -9413,9 +9413,9 @@ ctk_widget_get_app_paintable (CtkWidget *widget)
  * pixmap will not happen automatically (as it is done in
  * cdk_window_begin_draw_frame()).
  *
- * In 3.10 CTK and GDK have been restructured for translucent drawing. Since
+ * In 3.10 CTK and CDK have been restructured for translucent drawing. Since
  * then expose events for double-buffered widgets are culled into a single
- * event to the toplevel GDK window. If you now unset double buffering, you
+ * event to the toplevel CDK window. If you now unset double buffering, you
  * will cause a separate rendering pass for every widget. This will likely
  * cause rendering problems - in particular related to stacking - and usually
  * increases rendering times significantly.
@@ -10729,7 +10729,7 @@ ctk_widget_set_parent_window (CtkWidget *widget,
        * this is the primary entry point to allow toplevels to be
        * embeddable.
        */
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
       is_plug = CTK_IS_PLUG (widget);
 #else
       is_plug = FALSE;
@@ -11368,7 +11368,7 @@ ctk_widget_set_device_events (CtkWidget    *widget,
   GHashTable *device_events;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
-  g_return_if_fail (GDK_IS_DEVICE (device));
+  g_return_if_fail (CDK_IS_DEVICE (device));
   g_return_if_fail (!_ctk_widget_get_realized (widget));
 
   device_events = g_object_get_qdata (G_OBJECT (widget), quark_device_event_mask);
@@ -11406,7 +11406,7 @@ ctk_widget_set_device_enabled (CtkWidget *widget,
   GList *enabled_devices;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
-  g_return_if_fail (GDK_IS_DEVICE (device));
+  g_return_if_fail (CDK_IS_DEVICE (device));
 
   enabled_devices = g_object_get_qdata (G_OBJECT (widget), quark_enabled_devices);
   enabled_devices = g_list_append (enabled_devices, device);
@@ -11437,7 +11437,7 @@ ctk_widget_get_device_enabled (CtkWidget *widget,
   GList *enabled_devices;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
-  g_return_val_if_fail (GDK_IS_DEVICE (device), FALSE);
+  g_return_val_if_fail (CDK_IS_DEVICE (device), FALSE);
 
   enabled_devices = g_object_get_qdata (G_OBJECT (widget), quark_enabled_devices);
 
@@ -11553,7 +11553,7 @@ ctk_widget_add_device_events (CtkWidget    *widget,
   GHashTable *device_events;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
-  g_return_if_fail (GDK_IS_DEVICE (device));
+  g_return_if_fail (CDK_IS_DEVICE (device));
 
   old_events = ctk_widget_get_device_events (widget, device);
 
@@ -11675,7 +11675,7 @@ ctk_widget_set_visual (CtkWidget *widget,
                        CdkVisual *visual)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
-  g_return_if_fail (visual == NULL || GDK_IS_VISUAL (visual));
+  g_return_if_fail (visual == NULL || CDK_IS_VISUAL (visual));
 
   if (visual)
     g_return_if_fail (ctk_widget_get_screen (widget) == cdk_visual_get_screen (visual));
@@ -11787,7 +11787,7 @@ ctk_widget_get_device_events (CtkWidget *widget,
   GHashTable *device_events;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), 0);
-  g_return_val_if_fail (GDK_IS_DEVICE (device), 0);
+  g_return_val_if_fail (CDK_IS_DEVICE (device), 0);
 
   device_events = g_object_get_qdata (G_OBJECT (widget), quark_device_event_mask);
 
@@ -12583,9 +12583,9 @@ _ctk_widget_get_device_window (CtkWidget *widget,
   CdkWindow *window;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), NULL);
-  g_return_val_if_fail (GDK_IS_DEVICE (device), NULL);
+  g_return_val_if_fail (CDK_IS_DEVICE (device), NULL);
 
-  if (cdk_device_get_source (device) == GDK_SOURCE_KEYBOARD)
+  if (cdk_device_get_source (device) == CDK_SOURCE_KEYBOARD)
     return NULL;
 
   window = cdk_device_get_last_event_window (device);
@@ -12611,7 +12611,7 @@ list_devices (CtkWidget        *widget,
   for (l = devices; l; l = l->next)
     {
       CdkDevice *device = l->data;
-      if (cdk_device_get_source (device) != GDK_SOURCE_KEYBOARD)
+      if (cdk_device_get_source (device) != CDK_SOURCE_KEYBOARD)
         {
           CdkWindow *window = cdk_device_get_last_event_window (device);
           if (window && is_my_window (widget, window))
@@ -12647,9 +12647,9 @@ _ctk_widget_list_devices (CtkWidget *widget)
   device_manager = cdk_display_get_device_manager (display);
   G_GNUC_END_IGNORE_DEPRECATIONS;
 
-  list_devices (widget, device_manager, GDK_DEVICE_TYPE_MASTER, &result);
+  list_devices (widget, device_manager, CDK_DEVICE_TYPE_MASTER, &result);
   /* Rare, but we can get events for grabbed slave devices */
-  list_devices (widget, device_manager, GDK_DEVICE_TYPE_SLAVE, &result);
+  list_devices (widget, device_manager, CDK_DEVICE_TYPE_SLAVE, &result);
 
   return result;
 }
@@ -12669,7 +12669,7 @@ synth_crossing (CtkWidget       *widget,
   event->crossing.window = g_object_ref (window);
   event->crossing.send_event = TRUE;
   event->crossing.subwindow = g_object_ref (window);
-  event->crossing.time = GDK_CURRENT_TIME;
+  event->crossing.time = CDK_CURRENT_TIME;
   cdk_device_get_position_double (device,
                                   NULL,
                                   &event->crossing.x_root,
@@ -12766,12 +12766,12 @@ _ctk_widget_synthesize_crossing (CtkWidget       *from,
           from_ancestors = g_list_prepend (from_ancestors, from_ancestor);
 	}
 
-      synth_crossing (from, GDK_LEAVE_NOTIFY, from_window,
-		      device, mode, GDK_NOTIFY_ANCESTOR);
+      synth_crossing (from, CDK_LEAVE_NOTIFY, from_window,
+		      device, mode, CDK_NOTIFY_ANCESTOR);
       for (list = g_list_last (from_ancestors); list; list = list->prev)
 	{
-	  synth_crossing (NULL, GDK_LEAVE_NOTIFY, (CdkWindow *) list->data,
-			  device, mode, GDK_NOTIFY_VIRTUAL);
+	  synth_crossing (NULL, CDK_LEAVE_NOTIFY, (CdkWindow *) list->data,
+			  device, mode, CDK_NOTIFY_VIRTUAL);
 	}
 
       /* XXX: enter/inferior on root window? */
@@ -12795,11 +12795,11 @@ _ctk_widget_synthesize_crossing (CtkWidget       *from,
 
       for (list = to_ancestors; list; list = list->next)
 	{
-	  synth_crossing (NULL, GDK_ENTER_NOTIFY, (CdkWindow *) list->data,
-			  device, mode, GDK_NOTIFY_VIRTUAL);
+	  synth_crossing (NULL, CDK_ENTER_NOTIFY, (CdkWindow *) list->data,
+			  device, mode, CDK_NOTIFY_VIRTUAL);
 	}
-      synth_crossing (to, GDK_ENTER_NOTIFY, to_window,
-		      device, mode, GDK_NOTIFY_ANCESTOR);
+      synth_crossing (to, CDK_ENTER_NOTIFY, to_window,
+		      device, mode, CDK_NOTIFY_ANCESTOR);
 
       g_list_free (to_ancestors);
     }
@@ -12831,27 +12831,27 @@ _ctk_widget_synthesize_crossing (CtkWidget       *from,
 	}
       if (to_ancestor == from_window)
 	{
-	  if (mode != GDK_CROSSING_CTK_UNGRAB)
-	    synth_crossing (from, GDK_LEAVE_NOTIFY, from_window,
-			    device, mode, GDK_NOTIFY_INFERIOR);
+	  if (mode != CDK_CROSSING_CTK_UNGRAB)
+	    synth_crossing (from, CDK_LEAVE_NOTIFY, from_window,
+			    device, mode, CDK_NOTIFY_INFERIOR);
 	  for (list = to_ancestors; list; list = list->next)
-	    synth_crossing (NULL, GDK_ENTER_NOTIFY, (CdkWindow *) list->data,
-			    device, mode, GDK_NOTIFY_VIRTUAL);
-	  synth_crossing (to, GDK_ENTER_NOTIFY, to_window,
-			  device, mode, GDK_NOTIFY_ANCESTOR);
+	    synth_crossing (NULL, CDK_ENTER_NOTIFY, (CdkWindow *) list->data,
+			    device, mode, CDK_NOTIFY_VIRTUAL);
+	  synth_crossing (to, CDK_ENTER_NOTIFY, to_window,
+			  device, mode, CDK_NOTIFY_ANCESTOR);
 	}
       else if (from_ancestor == to_window)
 	{
-	  synth_crossing (from, GDK_LEAVE_NOTIFY, from_window,
-			  device, mode, GDK_NOTIFY_ANCESTOR);
+	  synth_crossing (from, CDK_LEAVE_NOTIFY, from_window,
+			  device, mode, CDK_NOTIFY_ANCESTOR);
 	  for (list = g_list_last (from_ancestors); list; list = list->prev)
 	    {
-	      synth_crossing (NULL, GDK_LEAVE_NOTIFY, (CdkWindow *) list->data,
-			      device, mode, GDK_NOTIFY_VIRTUAL);
+	      synth_crossing (NULL, CDK_LEAVE_NOTIFY, (CdkWindow *) list->data,
+			      device, mode, CDK_NOTIFY_VIRTUAL);
 	    }
-	  if (mode != GDK_CROSSING_CTK_GRAB)
-	    synth_crossing (to, GDK_ENTER_NOTIFY, to_window,
-			    device, mode, GDK_NOTIFY_INFERIOR);
+	  if (mode != CDK_CROSSING_CTK_GRAB)
+	    synth_crossing (to, CDK_ENTER_NOTIFY, to_window,
+			    device, mode, CDK_NOTIFY_INFERIOR);
 	}
       else
 	{
@@ -12863,21 +12863,21 @@ _ctk_widget_synthesize_crossing (CtkWidget       *from,
 	      to_ancestors = g_list_delete_link (to_ancestors, to_ancestors);
 	    }
 
-	  synth_crossing (from, GDK_LEAVE_NOTIFY, from_window,
-			  device, mode, GDK_NOTIFY_NONLINEAR);
+	  synth_crossing (from, CDK_LEAVE_NOTIFY, from_window,
+			  device, mode, CDK_NOTIFY_NONLINEAR);
 
 	  for (list = g_list_last (from_ancestors); list; list = list->prev)
 	    {
-	      synth_crossing (NULL, GDK_LEAVE_NOTIFY, (CdkWindow *) list->data,
-			      device, mode, GDK_NOTIFY_NONLINEAR_VIRTUAL);
+	      synth_crossing (NULL, CDK_LEAVE_NOTIFY, (CdkWindow *) list->data,
+			      device, mode, CDK_NOTIFY_NONLINEAR_VIRTUAL);
 	    }
 	  for (list = to_ancestors; list; list = list->next)
 	    {
-	      synth_crossing (NULL, GDK_ENTER_NOTIFY, (CdkWindow *) list->data,
-			      device, mode, GDK_NOTIFY_NONLINEAR_VIRTUAL);
+	      synth_crossing (NULL, CDK_ENTER_NOTIFY, (CdkWindow *) list->data,
+			      device, mode, CDK_NOTIFY_NONLINEAR_VIRTUAL);
 	    }
-	  synth_crossing (to, GDK_ENTER_NOTIFY, to_window,
-			  device, mode, GDK_NOTIFY_NONLINEAR);
+	  synth_crossing (to, CDK_ENTER_NOTIFY, to_window,
+			  device, mode, CDK_NOTIFY_NONLINEAR);
 	}
       g_list_free (from_ancestors);
       g_list_free (to_ancestors);
@@ -12956,10 +12956,10 @@ ctk_widget_propagate_state (CtkWidget    *widget,
 
               if (!ctk_widget_is_sensitive (widget))
                 _ctk_widget_synthesize_crossing (widget, NULL, d->data,
-                                                 GDK_CROSSING_STATE_CHANGED);
+                                                 CDK_CROSSING_STATE_CHANGED);
               else
                 _ctk_widget_synthesize_crossing (NULL, widget, d->data,
-                                                 GDK_CROSSING_STATE_CHANGED);
+                                                 CDK_CROSSING_STATE_CHANGED);
 
               event_windows = g_list_prepend (event_windows, window);
             }
@@ -12994,7 +12994,7 @@ ctk_widget_propagate_state (CtkWidget    *widget,
  * @widget: a #CtkWidget
  * @region: (allow-none): shape to be added, or %NULL to remove an existing shape
  *
- * Sets a shape for this widget’s GDK window. This allows for
+ * Sets a shape for this widget’s CDK window. This allows for
  * transparent windows etc., see cdk_window_shape_combine_region()
  * for more information.
  *
@@ -13007,7 +13007,7 @@ ctk_widget_shape_combine_region (CtkWidget *widget,
   CtkWidgetPrivate *priv;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
-  /*  set_shape doesn't work on widgets without GDK window */
+  /*  set_shape doesn't work on widgets without CDK window */
   g_return_if_fail (_ctk_widget_get_has_window (widget));
 
   priv = widget->priv;
@@ -13029,7 +13029,7 @@ ctk_widget_shape_combine_region (CtkWidget *widget,
                                cairo_region_copy (region),
 			       (GDestroyNotify) cairo_region_destroy);
 
-      /* set shape if widget has a GDK window already.
+      /* set shape if widget has a CDK window already.
        * otherwise the shape is scheduled to be set by ctk_widget_realize().
        */
       if (priv->window)
@@ -13042,7 +13042,7 @@ ctk_widget_update_input_shape (CtkWidget *widget)
 {
   CtkWidgetPrivate *priv = widget->priv;
 
-  /* set shape if widget has a GDK window already.
+  /* set shape if widget has a CDK window already.
    * otherwise the shape is scheduled to be set by ctk_widget_realize().
    */
   if (priv->window)
@@ -13095,7 +13095,7 @@ ctk_widget_set_csd_input_shape (CtkWidget            *widget,
  * @widget: a #CtkWidget
  * @region: (allow-none): shape to be added, or %NULL to remove an existing shape
  *
- * Sets an input shape for this widget’s GDK window. This allows for
+ * Sets an input shape for this widget’s CDK window. This allows for
  * windows which react to mouse click in a nonrectangular region, see
  * cdk_window_input_shape_combine_region() for more information.
  *
@@ -13106,7 +13106,7 @@ ctk_widget_input_shape_combine_region (CtkWidget      *widget,
                                        cairo_region_t *region)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
-  /*  set_shape doesn't work on widgets without GDK window */
+  /*  set_shape doesn't work on widgets without CDK window */
   g_return_if_fail (_ctk_widget_get_has_window (widget));
 
   if (region == NULL)
@@ -14385,7 +14385,7 @@ accel_group_start_element (GMarkupParseContext  *context,
 
           aliases[0].value = _ctk_get_primary_accel_mod ();
 
-          if (!_ctk_builder_flags_from_string (GDK_TYPE_MODIFIER_TYPE, aliases,
+          if (!_ctk_builder_flags_from_string (CDK_TYPE_MODIFIER_TYPE, aliases,
                                                modifiers_str, &modifiers, error))
             {
               _ctk_builder_prefix_error (data->builder, context, error);
@@ -15113,9 +15113,9 @@ ctk_widget_set_margin_bottom (CtkWidget *widget,
  * ctk_widget_get_clipboard:
  * @widget: a #CtkWidget
  * @selection: a #CdkAtom which identifies the clipboard
- *             to use. %GDK_SELECTION_CLIPBOARD gives the
+ *             to use. %CDK_SELECTION_CLIPBOARD gives the
  *             default clipboard. Another common value
- *             is %GDK_SELECTION_PRIMARY, which gives
+ *             is %CDK_SELECTION_PRIMARY, which gives
  *             the primary X selection.
  *
  * Returns the clipboard object for the given selection to
@@ -15301,13 +15301,13 @@ ctk_widget_real_set_has_tooltip (CtkWidget *widget,
 	  if (_ctk_widget_get_realized (widget) && !_ctk_widget_get_has_window (widget))
 	    cdk_window_set_events (priv->window,
 				   cdk_window_get_events (priv->window) |
-				   GDK_LEAVE_NOTIFY_MASK |
-				   GDK_POINTER_MOTION_MASK);
+				   CDK_LEAVE_NOTIFY_MASK |
+				   CDK_POINTER_MOTION_MASK);
 
 	  if (_ctk_widget_get_has_window (widget))
 	      ctk_widget_add_events (widget,
-				     GDK_LEAVE_NOTIFY_MASK |
-				     GDK_POINTER_MOTION_MASK);
+				     CDK_LEAVE_NOTIFY_MASK |
+				     CDK_POINTER_MOTION_MASK);
 	}
 
       g_object_notify_by_pspec (G_OBJECT (widget), widget_props[PROP_HAS_TOOLTIP]);
@@ -15935,7 +15935,7 @@ ctk_widget_set_window (CtkWidget *widget,
   CtkWidgetPrivate *priv;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
-  g_return_if_fail (window == NULL || GDK_IS_WINDOW (window));
+  g_return_if_fail (window == NULL || CDK_IS_WINDOW (window));
 
   priv = widget->priv;
 
@@ -15971,7 +15971,7 @@ ctk_widget_register_window (CtkWidget    *widget,
   gpointer user_data;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
-  g_return_if_fail (GDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_WINDOW (window));
 
   cdk_window_get_user_data (window, &user_data);
   g_assert (user_data == NULL);
@@ -16001,7 +16001,7 @@ ctk_widget_unregister_window (CtkWidget    *widget,
   gpointer user_data;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
-  g_return_if_fail (GDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_WINDOW (window));
 
   priv = widget->priv;
 
@@ -16193,7 +16193,7 @@ _ctk_widget_set_has_focus (CtkWidget *widget,
 /**
  * ctk_widget_send_focus_change:
  * @widget: a #CtkWidget
- * @event: a #CdkEvent of type GDK_FOCUS_CHANGE
+ * @event: a #CdkEvent of type CDK_FOCUS_CHANGE
  *
  * Sends the focus change @event to @widget
  *
@@ -16206,9 +16206,9 @@ _ctk_widget_set_has_focus (CtkWidget *widget,
  * An example of its usage is:
  *
  * |[<!-- language="C" -->
- *   CdkEvent *fevent = cdk_event_new (GDK_FOCUS_CHANGE);
+ *   CdkEvent *fevent = cdk_event_new (CDK_FOCUS_CHANGE);
  *
- *   fevent->focus_change.type = GDK_FOCUS_CHANGE;
+ *   fevent->focus_change.type = CDK_FOCUS_CHANGE;
  *   fevent->focus_change.in = TRUE;
  *   fevent->focus_change.window = _ctk_widget_get_window (widget);
  *   if (fevent->focus_change.window != NULL)
@@ -16231,7 +16231,7 @@ ctk_widget_send_focus_change (CtkWidget *widget,
   gboolean res;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
-  g_return_val_if_fail (event != NULL && event->type == GDK_FOCUS_CHANGE, FALSE);
+  g_return_val_if_fail (event != NULL && event->type == CDK_FOCUS_CHANGE, FALSE);
 
   g_object_ref (widget);
 

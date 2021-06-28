@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2009 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -59,7 +59,7 @@ struct _CdkX11DeviceXI2Class
   CdkDeviceClass parent_class;
 };
 
-G_DEFINE_TYPE (CdkX11DeviceXI2, cdk_x11_device_xi2, GDK_TYPE_DEVICE)
+G_DEFINE_TYPE (CdkX11DeviceXI2, cdk_x11_device_xi2, CDK_TYPE_DEVICE)
 
 
 static void cdk_x11_device_xi2_finalize     (GObject      *object);
@@ -122,7 +122,7 @@ static void
 cdk_x11_device_xi2_class_init (CdkX11DeviceXI2Class *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  CdkDeviceClass *device_class = GDK_DEVICE_CLASS (klass);
+  CdkDeviceClass *device_class = CDK_DEVICE_CLASS (klass);
 
   object_class->finalize = cdk_x11_device_xi2_finalize;
   object_class->get_property = cdk_x11_device_xi2_get_property;
@@ -155,7 +155,7 @@ cdk_x11_device_xi2_init (CdkX11DeviceXI2 *device)
 static void
 cdk_x11_device_xi2_finalize (GObject *object)
 {
-  CdkX11DeviceXI2 *device = GDK_X11_DEVICE_XI2 (object);
+  CdkX11DeviceXI2 *device = CDK_X11_DEVICE_XI2 (object);
 
   g_array_free (device->scroll_valuators, TRUE);
   g_free (device->last_axes);
@@ -169,7 +169,7 @@ cdk_x11_device_xi2_get_property (GObject    *object,
                                  GValue     *value,
                                  GParamSpec *pspec)
 {
-  CdkX11DeviceXI2 *device_xi2 = GDK_X11_DEVICE_XI2 (object);
+  CdkX11DeviceXI2 *device_xi2 = CDK_X11_DEVICE_XI2 (object);
 
   switch (prop_id)
     {
@@ -188,7 +188,7 @@ cdk_x11_device_xi2_set_property (GObject      *object,
                                  const GValue *value,
                                  GParamSpec   *pspec)
 {
-  CdkX11DeviceXI2 *device_xi2 = GDK_X11_DEVICE_XI2 (object);
+  CdkX11DeviceXI2 *device_xi2 = CDK_X11_DEVICE_XI2 (object);
 
   switch (prop_id)
     {
@@ -207,7 +207,7 @@ cdk_x11_device_xi2_get_state (CdkDevice       *device,
                               gdouble         *axes,
                               CdkModifierType *mask)
 {
-  CdkX11DeviceXI2 *device_xi2 = GDK_X11_DEVICE_XI2 (device);
+  CdkX11DeviceXI2 *device_xi2 = CDK_X11_DEVICE_XI2 (device);
 
   if (axes)
     {
@@ -218,7 +218,7 @@ cdk_x11_device_xi2_get_state (CdkDevice       *device,
       display = cdk_device_get_display (device);
 
       cdk_x11_display_error_trap_push (display);
-      info = XIQueryDevice (GDK_DISPLAY_XDISPLAY (display),
+      info = XIQueryDevice (CDK_DISPLAY_XDISPLAY (display),
                             device_xi2->device_id, &ndevices);
       cdk_x11_display_error_trap_pop_ignored (display);
 
@@ -236,10 +236,10 @@ cdk_x11_device_xi2_get_state (CdkDevice       *device,
 
           switch (use)
             {
-            case GDK_AXIS_X:
-            case GDK_AXIS_Y:
-            case GDK_AXIS_IGNORE:
-              if (cdk_device_get_mode (device) == GDK_MODE_WINDOW)
+            case CDK_AXIS_X:
+            case CDK_AXIS_Y:
+            case CDK_AXIS_IGNORE:
+              if (cdk_device_get_mode (device) == CDK_MODE_WINDOW)
                 _cdk_device_translate_window_coord (device, window, j, value, &axes[j]);
               else
                 {
@@ -278,21 +278,21 @@ cdk_x11_device_xi2_set_window_cursor (CdkDevice *device,
                                       CdkWindow *window,
                                       CdkCursor *cursor)
 {
-  CdkX11DeviceXI2 *device_xi2 = GDK_X11_DEVICE_XI2 (device);
+  CdkX11DeviceXI2 *device_xi2 = CDK_X11_DEVICE_XI2 (device);
 
   /* Non-master devices don't have a cursor */
-  if (cdk_device_get_device_type (device) != GDK_DEVICE_TYPE_MASTER)
+  if (cdk_device_get_device_type (device) != CDK_DEVICE_TYPE_MASTER)
     return;
 
   if (cursor)
-    XIDefineCursor (GDK_WINDOW_XDISPLAY (window),
+    XIDefineCursor (CDK_WINDOW_XDISPLAY (window),
                     device_xi2->device_id,
-                    GDK_WINDOW_XID (window),
+                    CDK_WINDOW_XID (window),
                     cdk_x11_cursor_get_xcursor (cursor));
   else
-    XIUndefineCursor (GDK_WINDOW_XDISPLAY (window),
+    XIUndefineCursor (CDK_WINDOW_XDISPLAY (window),
                       device_xi2->device_id,
-                      GDK_WINDOW_XID (window));
+                      CDK_WINDOW_XID (window));
 }
 
 static void
@@ -301,17 +301,17 @@ cdk_x11_device_xi2_warp (CdkDevice *device,
                          gdouble    x,
                          gdouble    y)
 {
-  CdkX11DeviceXI2 *device_xi2 = GDK_X11_DEVICE_XI2 (device);
+  CdkX11DeviceXI2 *device_xi2 = CDK_X11_DEVICE_XI2 (device);
   Window dest;
 
-  dest = GDK_WINDOW_XID (cdk_screen_get_root_window (screen));
+  dest = CDK_WINDOW_XID (cdk_screen_get_root_window (screen));
 
-  XIWarpPointer (GDK_SCREEN_XDISPLAY (screen),
+  XIWarpPointer (CDK_SCREEN_XDISPLAY (screen),
                  device_xi2->device_id,
                  None, dest,
                  0, 0, 0, 0,
-                 round (x * GDK_X11_SCREEN(screen)->window_scale),
-                 round (y * GDK_X11_SCREEN(screen)->window_scale));
+                 round (x * CDK_X11_SCREEN(screen)->window_scale),
+                 round (y * CDK_X11_SCREEN(screen)->window_scale));
 }
 
 static void
@@ -325,8 +325,8 @@ cdk_x11_device_xi2_query_state (CdkDevice        *device,
                                 gdouble          *win_y,
                                 CdkModifierType  *mask)
 {
-  CdkWindowImplX11 *impl = GDK_WINDOW_IMPL_X11 (window->impl);
-  CdkX11DeviceXI2 *device_xi2 = GDK_X11_DEVICE_XI2 (device);
+  CdkWindowImplX11 *impl = CDK_WINDOW_IMPL_X11 (window->impl);
+  CdkX11DeviceXI2 *device_xi2 = CDK_X11_DEVICE_XI2 (device);
   CdkDisplay *display;
   CdkScreen *default_screen;
   Window xroot_window, xchild_window;
@@ -338,7 +338,7 @@ cdk_x11_device_xi2_query_state (CdkDevice        *device,
   display = cdk_window_get_display (window);
   default_screen = cdk_display_get_default_screen (display);
 
-  if (cdk_device_get_device_type (device) == GDK_DEVICE_TYPE_SLAVE)
+  if (cdk_device_get_device_type (device) == CDK_DEVICE_TYPE_SLAVE)
     {
       CdkDevice *master = cdk_device_get_associated_device (device);
 
@@ -348,10 +348,10 @@ cdk_x11_device_xi2_query_state (CdkDevice        *device,
       return;
     }
 
-  if (!GDK_X11_DISPLAY (display)->trusted_client ||
-      !XIQueryPointer (GDK_WINDOW_XDISPLAY (window),
+  if (!CDK_X11_DISPLAY (display)->trusted_client ||
+      !XIQueryPointer (CDK_WINDOW_XDISPLAY (window),
                        device_xi2->device_id,
-                       GDK_WINDOW_XID (window),
+                       CDK_WINDOW_XID (window),
                        &xroot_window,
                        &xchild_window,
                        &xroot_x, &xroot_y,
@@ -365,8 +365,8 @@ cdk_x11_device_xi2_query_state (CdkDevice        *device,
       Window xwindow, w;
 
       /* FIXME: untrusted clients not multidevice-safe */
-      xdisplay = GDK_SCREEN_XDISPLAY (default_screen);
-      xwindow = GDK_SCREEN_XROOTWIN (default_screen);
+      xdisplay = CDK_SCREEN_XDISPLAY (default_screen);
+      xwindow = CDK_SCREEN_XROOTWIN (default_screen);
 
       w = XCreateWindow (xdisplay, xwindow, 0, 0, 1, 1, 0,
                          CopyFromParent, InputOnly, CopyFromParent,
@@ -416,7 +416,7 @@ cdk_x11_device_xi2_grab (CdkDevice    *device,
                          CdkCursor    *cursor,
                          guint32       time_)
 {
-  CdkX11DeviceXI2 *device_xi2 = GDK_X11_DEVICE_XI2 (device);
+  CdkX11DeviceXI2 *device_xi2 = CDK_X11_DEVICE_XI2 (device);
   CdkX11DeviceManagerXI2 *device_manager_xi2;
   CdkDisplay *display;
   XIEventMask mask;
@@ -426,12 +426,12 @@ cdk_x11_device_xi2_grab (CdkDevice    *device,
 
   display = cdk_device_get_display (device);
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-  device_manager_xi2 = GDK_X11_DEVICE_MANAGER_XI2 (cdk_display_get_device_manager (display));
+  device_manager_xi2 = CDK_X11_DEVICE_MANAGER_XI2 (cdk_display_get_device_manager (display));
   G_GNUC_END_IGNORE_DEPRECATIONS;
 
   /* FIXME: confine_to is actually unused */
 
-  xwindow = GDK_WINDOW_XID (window);
+  xwindow = CDK_WINDOW_XID (window);
 
   if (!cursor)
     xcursor = None;
@@ -447,11 +447,11 @@ cdk_x11_device_xi2_grab (CdkDevice    *device,
                                                         &mask.mask_len);
 
 #ifdef G_ENABLE_DEBUG
-  if (GDK_DEBUG_CHECK (NOGRABS))
+  if (CDK_DEBUG_CHECK (NOGRABS))
     status = GrabSuccess;
   else
 #endif
-  status = XIGrabDevice (GDK_DISPLAY_XDISPLAY (display),
+  status = XIGrabDevice (CDK_DISPLAY_XDISPLAY (display),
                          device_xi2->device_id,
                          xwindow,
                          time_,
@@ -471,14 +471,14 @@ static void
 cdk_x11_device_xi2_ungrab (CdkDevice *device,
                            guint32    time_)
 {
-  CdkX11DeviceXI2 *device_xi2 = GDK_X11_DEVICE_XI2 (device);
+  CdkX11DeviceXI2 *device_xi2 = CDK_X11_DEVICE_XI2 (device);
   CdkDisplay *display;
   gulong serial;
 
   display = cdk_device_get_display (device);
-  serial = NextRequest (GDK_DISPLAY_XDISPLAY (display));
+  serial = NextRequest (CDK_DISPLAY_XDISPLAY (display));
 
-  XIUngrabDevice (GDK_DISPLAY_XDISPLAY (display), device_xi2->device_id, time_);
+  XIUngrabDevice (CDK_DISPLAY_XDISPLAY (display), device_xi2->device_id, time_);
 
   _cdk_x11_display_update_grab_info_ungrab (display, device, time_, serial);
 }
@@ -491,7 +491,7 @@ cdk_x11_device_xi2_window_at_position (CdkDevice       *device,
                                        gboolean         get_toplevel)
 {
   CdkWindowImplX11 *impl;
-  CdkX11DeviceXI2 *device_xi2 = GDK_X11_DEVICE_XI2 (device);
+  CdkX11DeviceXI2 *device_xi2 = CDK_X11_DEVICE_XI2 (device);
   CdkDisplay *display;
   CdkScreen *screen;
   Display *xdisplay;
@@ -515,10 +515,10 @@ cdk_x11_device_xi2_window_at_position (CdkDevice       *device,
    */
   cdk_x11_display_grab (display);
 
-  xdisplay = GDK_SCREEN_XDISPLAY (screen);
-  xwindow = GDK_SCREEN_XROOTWIN (screen);
+  xdisplay = CDK_SCREEN_XDISPLAY (screen);
+  xwindow = CDK_SCREEN_XROOTWIN (screen);
 
-  if (G_LIKELY (GDK_X11_DISPLAY (display)->trusted_client))
+  if (G_LIKELY (CDK_X11_DISPLAY (display)->trusted_client))
     {
       XIQueryPointer (xdisplay,
                       device_xi2->device_id,
@@ -548,8 +548,8 @@ cdk_x11_device_xi2_window_at_position (CdkDevice       *device,
       toplevels = cdk_screen_get_toplevel_windows (screen);
       for (list = toplevels; list != NULL; list = list->next)
         {
-          window = GDK_WINDOW (list->data);
-          xwindow = GDK_WINDOW_XID (window);
+          window = CDK_WINDOW (list->data);
+          xwindow = CDK_WINDOW_XID (window);
 
           /* Free previous button mask, if any */
           g_free (button_state.mask);
@@ -628,7 +628,7 @@ cdk_x11_device_xi2_window_at_position (CdkDevice       *device,
 
       if (get_toplevel && last != root &&
           (window = cdk_x11_window_lookup_for_display (display, last)) != NULL &&
-          GDK_WINDOW_TYPE (window) != GDK_WINDOW_FOREIGN)
+          CDK_WINDOW_TYPE (window) != CDK_WINDOW_FOREIGN)
         {
           xwindow = last;
           break;
@@ -642,7 +642,7 @@ cdk_x11_device_xi2_window_at_position (CdkDevice       *device,
       window = cdk_x11_window_lookup_for_display (display, last);
       impl = NULL;
       if (window)
-        impl = GDK_WINDOW_IMPL_X11 (window->impl);
+        impl = CDK_WINDOW_IMPL_X11 (window->impl);
 
       if (mask)
         *mask = _cdk_x11_device_xi2_translate_state (&mod_state, &button_state, &group_state);
@@ -672,14 +672,14 @@ cdk_x11_device_xi2_select_window_events (CdkDevice    *device,
                                          CdkWindow    *window,
                                          CdkEventMask  event_mask)
 {
-  CdkX11DeviceXI2 *device_xi2 = GDK_X11_DEVICE_XI2 (device);
+  CdkX11DeviceXI2 *device_xi2 = CDK_X11_DEVICE_XI2 (device);
   CdkX11DeviceManagerXI2 *device_manager_xi2;
   CdkDisplay *display;
   XIEventMask evmask;
 
   display = cdk_device_get_display (device);
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-  device_manager_xi2 = GDK_X11_DEVICE_MANAGER_XI2 (cdk_display_get_device_manager (display));
+  device_manager_xi2 = CDK_X11_DEVICE_MANAGER_XI2 (cdk_display_get_device_manager (display));
   G_GNUC_END_IGNORE_DEPRECATIONS;
 
   evmask.deviceid = device_xi2->device_id;
@@ -687,8 +687,8 @@ cdk_x11_device_xi2_select_window_events (CdkDevice    *device,
                                                           event_mask,
                                                           &evmask.mask_len);
 
-  XISelectEvents (GDK_WINDOW_XDISPLAY (window),
-                  GDK_WINDOW_XID (window),
+  XISelectEvents (CDK_WINDOW_XDISPLAY (window),
+                  CDK_WINDOW_XID (window),
                   &evmask, 1);
 
   g_free (evmask.mask);
@@ -707,45 +707,45 @@ _cdk_x11_device_xi2_translate_event_mask (CdkX11DeviceManagerXI2 *device_manager
   *len = XIMaskLen (XI_LASTEVENT);
   mask = g_new0 (guchar, *len);
 
-  if (event_mask & GDK_POINTER_MOTION_MASK ||
-      event_mask & GDK_POINTER_MOTION_HINT_MASK)
+  if (event_mask & CDK_POINTER_MOTION_MASK ||
+      event_mask & CDK_POINTER_MOTION_HINT_MASK)
     XISetMask (mask, XI_Motion);
 
-  if (event_mask & GDK_BUTTON_MOTION_MASK ||
-      event_mask & GDK_BUTTON1_MOTION_MASK ||
-      event_mask & GDK_BUTTON2_MOTION_MASK ||
-      event_mask & GDK_BUTTON3_MOTION_MASK)
+  if (event_mask & CDK_BUTTON_MOTION_MASK ||
+      event_mask & CDK_BUTTON1_MOTION_MASK ||
+      event_mask & CDK_BUTTON2_MOTION_MASK ||
+      event_mask & CDK_BUTTON3_MOTION_MASK)
     {
       XISetMask (mask, XI_ButtonPress);
       XISetMask (mask, XI_ButtonRelease);
       XISetMask (mask, XI_Motion);
     }
 
-  if (event_mask & GDK_SCROLL_MASK)
+  if (event_mask & CDK_SCROLL_MASK)
     {
       XISetMask (mask, XI_ButtonPress);
       XISetMask (mask, XI_ButtonRelease);
     }
 
-  if (event_mask & GDK_BUTTON_PRESS_MASK)
+  if (event_mask & CDK_BUTTON_PRESS_MASK)
     XISetMask (mask, XI_ButtonPress);
 
-  if (event_mask & GDK_BUTTON_RELEASE_MASK)
+  if (event_mask & CDK_BUTTON_RELEASE_MASK)
     XISetMask (mask, XI_ButtonRelease);
 
-  if (event_mask & GDK_KEY_PRESS_MASK)
+  if (event_mask & CDK_KEY_PRESS_MASK)
     XISetMask (mask, XI_KeyPress);
 
-  if (event_mask & GDK_KEY_RELEASE_MASK)
+  if (event_mask & CDK_KEY_RELEASE_MASK)
     XISetMask (mask, XI_KeyRelease);
 
-  if (event_mask & GDK_ENTER_NOTIFY_MASK)
+  if (event_mask & CDK_ENTER_NOTIFY_MASK)
     XISetMask (mask, XI_Enter);
 
-  if (event_mask & GDK_LEAVE_NOTIFY_MASK)
+  if (event_mask & CDK_LEAVE_NOTIFY_MASK)
     XISetMask (mask, XI_Leave);
 
-  if (event_mask & GDK_FOCUS_CHANGE_MASK)
+  if (event_mask & CDK_FOCUS_CHANGE_MASK)
     {
       XISetMask (mask, XI_FocusIn);
       XISetMask (mask, XI_FocusOut);
@@ -754,7 +754,7 @@ _cdk_x11_device_xi2_translate_event_mask (CdkX11DeviceManagerXI2 *device_manager
 #ifdef XINPUT_2_2
   /* XInput 2.2 includes multitouch support */
   if (minor >= 2 &&
-      event_mask & GDK_TOUCH_MASK)
+      event_mask & CDK_TOUCH_MASK)
     {
       XISetMask (mask, XI_TouchBegin);
       XISetMask (mask, XI_TouchUpdate);
@@ -790,13 +790,13 @@ _cdk_x11_device_xi2_translate_state (XIModifierState *mods_state,
           switch (i)
             {
             case 1:
-              state |= GDK_BUTTON1_MASK;
+              state |= CDK_BUTTON1_MASK;
               break;
             case 2:
-              state |= GDK_BUTTON2_MASK;
+              state |= CDK_BUTTON2_MASK;
               break;
             case 3:
-              state |= GDK_BUTTON3_MASK;
+              state |= CDK_BUTTON3_MASK;
               break;
             default:
               break;
@@ -818,8 +818,8 @@ _cdk_x11_device_xi2_add_scroll_valuator (CdkX11DeviceXI2    *device,
 {
   ScrollValuator scroll;
 
-  g_return_if_fail (GDK_IS_X11_DEVICE_XI2 (device));
-  g_return_if_fail (n_valuator < cdk_device_get_n_axes (GDK_DEVICE (device)));
+  g_return_if_fail (CDK_IS_X11_DEVICE_XI2 (device));
+  g_return_if_fail (n_valuator < cdk_device_get_n_axes (CDK_DEVICE (device)));
 
   scroll.n_valuator = n_valuator;
   scroll.direction = direction;
@@ -838,8 +838,8 @@ _cdk_x11_device_xi2_get_scroll_delta (CdkX11DeviceXI2    *device,
 {
   guint i;
 
-  g_return_val_if_fail (GDK_IS_X11_DEVICE_XI2 (device), FALSE);
-  g_return_val_if_fail (n_valuator < cdk_device_get_n_axes (GDK_DEVICE (device)), FALSE);
+  g_return_val_if_fail (CDK_IS_X11_DEVICE_XI2 (device), FALSE);
+  g_return_val_if_fail (n_valuator < cdk_device_get_n_axes (CDK_DEVICE (device)), FALSE);
 
   for (i = 0; i < device->scroll_valuators->len; i++)
     {
@@ -900,7 +900,7 @@ _cdk_device_xi2_unset_scroll_valuators (CdkX11DeviceXI2 *device)
 gint
 _cdk_x11_device_xi2_get_id (CdkX11DeviceXI2 *device)
 {
-  g_return_val_if_fail (GDK_IS_X11_DEVICE_XI2 (device), 0);
+  g_return_val_if_fail (CDK_IS_X11_DEVICE_XI2 (device), 0);
 
   return device->device_id;
 }
@@ -909,7 +909,7 @@ gdouble
 cdk_x11_device_xi2_get_last_axis_value (CdkX11DeviceXI2 *device,
                                         gint             n_axis)
 {
-  if (n_axis >= cdk_device_get_n_axes (GDK_DEVICE (device)))
+  if (n_axis >= cdk_device_get_n_axes (CDK_DEVICE (device)))
     return 0;
 
   if (!device->last_axes)

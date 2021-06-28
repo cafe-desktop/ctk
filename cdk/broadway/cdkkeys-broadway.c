@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2000 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -42,9 +42,9 @@
 typedef struct _CdkBroadwayKeymap   CdkBroadwayKeymap;
 typedef struct _CdkKeymapClass CdkBroadwayKeymapClass;
 
-#define GDK_TYPE_BROADWAY_KEYMAP          (cdk_broadway_keymap_get_type ())
-#define GDK_BROADWAY_KEYMAP(object)       (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_BROADWAY_KEYMAP, CdkBroadwayKeymap))
-#define GDK_IS_BROADWAY_KEYMAP(object)    (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_BROADWAY_KEYMAP))
+#define CDK_TYPE_BROADWAY_KEYMAP          (cdk_broadway_keymap_get_type ())
+#define CDK_BROADWAY_KEYMAP(object)       (G_TYPE_CHECK_INSTANCE_CAST ((object), CDK_TYPE_BROADWAY_KEYMAP, CdkBroadwayKeymap))
+#define CDK_IS_BROADWAY_KEYMAP(object)    (G_TYPE_CHECK_INSTANCE_TYPE ((object), CDK_TYPE_BROADWAY_KEYMAP))
 
 static GType cdk_broadway_keymap_get_type (void);
 
@@ -60,7 +60,7 @@ struct _CdkBroadwayKeymapClass
   CdkKeymapClass keymap_class;
 };
 
-G_DEFINE_TYPE (CdkBroadwayKeymap, cdk_broadway_keymap, GDK_TYPE_KEYMAP)
+G_DEFINE_TYPE (CdkBroadwayKeymap, cdk_broadway_keymap, CDK_TYPE_KEYMAP)
 
 static void  cdk_broadway_keymap_finalize   (GObject           *object);
 
@@ -80,8 +80,8 @@ _cdk_broadway_display_get_keymap (CdkDisplay *display)
 {
   CdkBroadwayDisplay *broadway_display;
 
-  g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
-  broadway_display = GDK_BROADWAY_DISPLAY (display);
+  g_return_val_if_fail (CDK_IS_DISPLAY (display), NULL);
+  broadway_display = CDK_BROADWAY_DISPLAY (display);
 
   if (!broadway_display->keymap)
     broadway_display->keymap = g_object_new (cdk_broadway_keymap_get_type (), NULL);
@@ -204,7 +204,7 @@ static void
 cdk_broadway_keymap_class_init (CdkBroadwayKeymapClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  CdkKeymapClass *keymap_class = GDK_KEYMAP_CLASS (klass);
+  CdkKeymapClass *keymap_class = CDK_KEYMAP_CLASS (klass);
 
   object_class->finalize = cdk_broadway_keymap_finalize;
 

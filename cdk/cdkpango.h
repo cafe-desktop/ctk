@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2000 Red Hat, Inc. 
  *
  * This library is free software; you can redistribute it and/or
@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_PANGO_H__
-#define __GDK_PANGO_H__
+#ifndef __CDK_PANGO_H__
+#define __CDK_PANGO_H__
 
-#if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined (__CDK_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdk.h> can be included directly."
 #endif
 
@@ -29,11 +29,11 @@ G_BEGIN_DECLS
 
 /************************************************************************/
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 PangoContext *cdk_pango_context_get_for_screen (CdkScreen    *screen);
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 PangoContext *cdk_pango_context_get_for_display (CdkDisplay *display);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 PangoContext *cdk_pango_context_get            (void);
 
 
@@ -43,13 +43,13 @@ PangoContext *cdk_pango_context_get            (void);
  * draw with the region as clip, only the given ranges are drawn.
  */
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 cairo_region_t    *cdk_pango_layout_line_get_clip_region (PangoLayoutLine *line,
                                                      gint             x_origin,
                                                      gint             y_origin,
                                                      const gint      *index_ranges,
                                                      gint             n_ranges);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 cairo_region_t    *cdk_pango_layout_get_clip_region      (PangoLayout     *layout,
                                                      gint             x_origin,
                                                      gint             y_origin,
@@ -58,4 +58,4 @@ cairo_region_t    *cdk_pango_layout_get_clip_region      (PangoLayout     *layou
 
 G_END_DECLS
 
-#endif /* __GDK_PANGO_H__ */
+#endif /* __CDK_PANGO_H__ */

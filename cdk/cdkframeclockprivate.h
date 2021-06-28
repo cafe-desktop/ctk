@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -22,10 +22,10 @@
  * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
-/* Uninstalled header, internal to GDK */
+/* Uninstalled header, internal to CDK */
 
-#ifndef __GDK_FRAME_CLOCK_PRIVATE_H__
-#define __GDK_FRAME_CLOCK_PRIVATE_H__
+#ifndef __CDK_FRAME_CLOCK_PRIVATE_H__
+#define __CDK_FRAME_CLOCK_PRIVATE_H__
 
 #include <cdk/cdkframeclock.h>
 
@@ -128,4 +128,4 @@ void _cdk_frame_clock_emit_resume_events (CdkFrameClock *frame_clock);
 
 G_END_DECLS
 
-#endif /* __GDK_FRAME_CLOCK_PRIVATE_H__ */
+#endif /* __CDK_FRAME_CLOCK_PRIVATE_H__ */

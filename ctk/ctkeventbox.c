@@ -226,11 +226,11 @@ ctk_event_box_get_visible_window (CtkEventBox *event_box)
  * window. The default is to use visible windows.
  *
  * In an invisible window event box, the window that the
- * event box creates is a %GDK_INPUT_ONLY window, which
+ * event box creates is a %CDK_INPUT_ONLY window, which
  * means that it is invisible and only serves to receive
  * events.
  *
- * A visible window event box creates a visible (%GDK_INPUT_OUTPUT)
+ * A visible window event box creates a visible (%CDK_INPUT_OUTPUT)
  * window that acts as the parent window for all the widgets
  * contained in the event box.
  *
@@ -404,14 +404,14 @@ ctk_event_box_realize (CtkWidget *widget)
   attributes.y = allocation.y;
   attributes.width = allocation.width;
   attributes.height = allocation.height;
-  attributes.window_type = GDK_WINDOW_CHILD;
+  attributes.window_type = CDK_WINDOW_CHILD;
   attributes.event_mask = ctk_widget_get_events (widget)
-                        | GDK_BUTTON_MOTION_MASK
-                        | GDK_BUTTON_PRESS_MASK
-                        | GDK_BUTTON_RELEASE_MASK
-                        | GDK_EXPOSURE_MASK
-                        | GDK_ENTER_NOTIFY_MASK
-                        | GDK_LEAVE_NOTIFY_MASK;
+                        | CDK_BUTTON_MOTION_MASK
+                        | CDK_BUTTON_PRESS_MASK
+                        | CDK_BUTTON_RELEASE_MASK
+                        | CDK_EXPOSURE_MASK
+                        | CDK_ENTER_NOTIFY_MASK
+                        | CDK_LEAVE_NOTIFY_MASK;
 
   priv = CTK_EVENT_BOX (widget)->priv;
 
@@ -419,9 +419,9 @@ ctk_event_box_realize (CtkWidget *widget)
   if (visible_window)
     {
       attributes.visual = ctk_widget_get_visual (widget);
-      attributes.wclass = GDK_INPUT_OUTPUT;
+      attributes.wclass = CDK_INPUT_OUTPUT;
 
-      attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
+      attributes_mask = CDK_WA_X | CDK_WA_Y | CDK_WA_VISUAL;
 
       window = cdk_window_new (ctk_widget_get_parent_window (widget),
                                &attributes, attributes_mask);
@@ -437,9 +437,9 @@ ctk_event_box_realize (CtkWidget *widget)
 
   if (!visible_window || priv->above_child)
     {
-      attributes.wclass = GDK_INPUT_ONLY;
+      attributes.wclass = CDK_INPUT_ONLY;
       if (!visible_window)
-        attributes_mask = GDK_WA_X | GDK_WA_Y;
+        attributes_mask = CDK_WA_X | CDK_WA_Y;
       else
         attributes_mask = 0;
 

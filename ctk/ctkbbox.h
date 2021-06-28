@@ -100,26 +100,26 @@ typedef enum
 } CtkButtonBoxStyle;
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType             ctk_button_box_get_type            (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget       * ctk_button_box_new                 (CtkOrientation     orientation);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkButtonBoxStyle ctk_button_box_get_layout          (CtkButtonBox      *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_button_box_set_layout          (CtkButtonBox      *widget,
                                                       CtkButtonBoxStyle  layout_style);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean          ctk_button_box_get_child_secondary (CtkButtonBox      *widget,
                                                       CtkWidget         *child);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_button_box_set_child_secondary (CtkButtonBox      *widget,
                                                       CtkWidget         *child,
                                                       gboolean           is_secondary);
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 gboolean          ctk_button_box_get_child_non_homogeneous (CtkButtonBox *widget,
                                                             CtkWidget    *child);
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 void              ctk_button_box_set_child_non_homogeneous (CtkButtonBox *widget,
                                                             CtkWidget    *child,
                                                             gboolean      non_homogeneous);

@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2009 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -27,13 +27,13 @@
 #include "cdkdevice-win32.h"
 #include "cdkwin32.h"
 
-G_DEFINE_TYPE (CdkDeviceVirtual, cdk_device_virtual, GDK_TYPE_DEVICE)
+G_DEFINE_TYPE (CdkDeviceVirtual, cdk_device_virtual, CDK_TYPE_DEVICE)
 
 void
 _cdk_device_virtual_set_active (CdkDevice *device,
 				CdkDevice *new_active)
 {
-  CdkDeviceVirtual *virtual = GDK_DEVICE_VIRTUAL (device);
+  CdkDeviceVirtual *virtual = CDK_DEVICE_VIRTUAL (device);
   int n_axes, i;
   CdkAtom label_atom;
   CdkAxisUse use;
@@ -44,7 +44,7 @@ _cdk_device_virtual_set_active (CdkDevice *device,
 
   virtual->active_device = new_active;
 
-  if (cdk_device_get_source (device) != GDK_SOURCE_KEYBOARD)
+  if (cdk_device_get_source (device) != CDK_SOURCE_KEYBOARD)
     {
       _cdk_device_reset_axes (device);
       n_axes = cdk_device_get_n_axes (new_active);
@@ -80,10 +80,10 @@ cdk_device_virtual_get_state (CdkDevice       *device,
 			      gdouble         *axes,
 			      CdkModifierType *mask)
 {
-  CdkDeviceVirtual *virtual = GDK_DEVICE_VIRTUAL (device);
+  CdkDeviceVirtual *virtual = CDK_DEVICE_VIRTUAL (device);
   CdkDevice *active = virtual->active_device;
 
-  GDK_DEVICE_GET_CLASS (active)->get_state (active,
+  CDK_DEVICE_GET_CLASS (active)->get_state (active,
 					    window, axes, mask);
 }
 
@@ -92,15 +92,15 @@ cdk_device_virtual_set_window_cursor (CdkDevice *device,
 				      CdkWindow *window,
 				      CdkCursor *cursor)
 {
-  CdkWindowImplWin32 *impl = GDK_WINDOW_IMPL_WIN32 (window->impl);
+  CdkWindowImplWin32 *impl = CDK_WINDOW_IMPL_WIN32 (window->impl);
   CdkCursor *previous_cursor = impl->cursor;
 
-  if (cursor != NULL && GDK_WIN32_CURSOR (cursor)->hcursor != NULL)
+  if (cursor != NULL && CDK_WIN32_CURSOR (cursor)->hcursor != NULL)
     {
-      SetCursor (GDK_WIN32_CURSOR (cursor)->hcursor);
+      SetCursor (CDK_WIN32_CURSOR (cursor)->hcursor);
     }
   else if (previous_cursor != NULL &&
-           GetCursor () == GDK_WIN32_CURSOR (previous_cursor)->hcursor)
+           GetCursor () == CDK_WIN32_CURSOR (previous_cursor)->hcursor)
     {
       /* The caller will unref previous_cursor shortly,
        * but it holds the handle to currently-used cursor,
@@ -108,7 +108,7 @@ cdk_device_virtual_set_window_cursor (CdkDevice *device,
        */
       g_warning (G_STRLOC ": Refusing to replace cursor %p (handle %p) with NULL. "
                  "Expect ugly results.",
-                 previous_cursor, GDK_WIN32_CURSOR (previous_cursor)->hcursor);
+                 previous_cursor, CDK_WIN32_CURSOR (previous_cursor)->hcursor);
     }
   else
     {
@@ -141,7 +141,7 @@ cdk_device_virtual_query_state (CdkDevice        *device,
 				gdouble          *win_y,
 				CdkModifierType  *mask)
 {
-  CdkDeviceVirtual *virtual = GDK_DEVICE_VIRTUAL (device);
+  CdkDeviceVirtual *virtual = CDK_DEVICE_VIRTUAL (device);
 
   _cdk_device_query_state (virtual->active_device,
 			   window, root_window, child_window,
@@ -159,29 +159,29 @@ cdk_device_virtual_grab (CdkDevice    *device,
 			 CdkCursor    *cursor,
 			 guint32       time_)
 {
-  CdkWindowImplWin32 *impl = GDK_WINDOW_IMPL_WIN32 (window->impl);
+  CdkWindowImplWin32 *impl = CDK_WINDOW_IMPL_WIN32 (window->impl);
 
-  if (cdk_device_get_source (device) != GDK_SOURCE_KEYBOARD)
+  if (cdk_device_get_source (device) != CDK_SOURCE_KEYBOARD)
     {
       if (_cdk_win32_grab_cursor != NULL)
 	{
-	  if (GetCursor () == GDK_WIN32_CURSOR (_cdk_win32_grab_cursor)->hcursor)
+	  if (GetCursor () == CDK_WIN32_CURSOR (_cdk_win32_grab_cursor)->hcursor)
 	    SetCursor (NULL);
 	}
 
       g_set_object (&_cdk_win32_grab_cursor, cursor);
 
       if (_cdk_win32_grab_cursor != NULL)
-	SetCursor (GDK_WIN32_CURSOR (_cdk_win32_grab_cursor)->hcursor);
+	SetCursor (CDK_WIN32_CURSOR (_cdk_win32_grab_cursor)->hcursor);
       else if (impl->cursor != NULL)
-	SetCursor (GDK_WIN32_CURSOR (impl->cursor)->hcursor);
+	SetCursor (CDK_WIN32_CURSOR (impl->cursor)->hcursor);
       else
 	SetCursor (LoadCursor (NULL, IDC_ARROW));
 
-      SetCapture (GDK_WINDOW_HWND (window));
+      SetCapture (CDK_WINDOW_HWND (window));
     }
 
-  return GDK_GRAB_SUCCESS;
+  return CDK_GRAB_SUCCESS;
 }
 
 static void
@@ -197,11 +197,11 @@ cdk_device_virtual_ungrab (CdkDevice *device,
   if (info)
     info->serial_end = 0;
 
-  if (cdk_device_get_source (device) != GDK_SOURCE_KEYBOARD)
+  if (cdk_device_get_source (device) != CDK_SOURCE_KEYBOARD)
     {
       if (_cdk_win32_grab_cursor != NULL)
 	{
-	  if (GetCursor () == GDK_WIN32_CURSOR (_cdk_win32_grab_cursor)->hcursor)
+	  if (GetCursor () == CDK_WIN32_CURSOR (_cdk_win32_grab_cursor)->hcursor)
 	    SetCursor (NULL);
 	}
       g_clear_object (&_cdk_win32_grab_cursor);
@@ -222,7 +222,7 @@ cdk_device_virtual_select_window_events (CdkDevice    *device,
 static void
 cdk_device_virtual_class_init (CdkDeviceVirtualClass *klass)
 {
-  CdkDeviceClass *device_class = GDK_DEVICE_CLASS (klass);
+  CdkDeviceClass *device_class = CDK_DEVICE_CLASS (klass);
 
   device_class->get_history = cdk_device_virtual_get_history;
   device_class->get_state = cdk_device_virtual_get_state;

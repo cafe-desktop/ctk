@@ -121,7 +121,7 @@ main (int argc, char **argv)
   geo.max_width = 800;
   geo.max_height = 600;
 
-  ctk_window_set_geometry_hints (CTK_WINDOW (window), NULL, &geo, GDK_HINT_MIN_SIZE | GDK_HINT_MAX_SIZE);
+  ctk_window_set_geometry_hints (CTK_WINDOW (window), NULL, &geo, CDK_HINT_MIN_SIZE | CDK_HINT_MAX_SIZE);
 
   grid = ctk_grid_new ();
   ctk_container_add (CTK_CONTAINER (window), grid);
@@ -141,9 +141,9 @@ main (int argc, char **argv)
   ctk_container_add (CTK_CONTAINER (box), image);
   ctk_grid_attach (CTK_GRID (grid), box, 2, 1, 1, 1);
 
-  ctk_drag_source_set (box, GDK_BUTTON1_MASK, 
+  ctk_drag_source_set (box, CDK_BUTTON1_MASK, 
 		       NULL, 0,
-		       GDK_ACTION_COPY);
+		       CDK_ACTION_COPY);
   ctk_drag_source_add_image_targets (box);
   g_signal_connect (box, "drag_begin", G_CALLBACK (drag_begin), image);
   g_signal_connect (box, "drag_data_get", G_CALLBACK (drag_data_get), image);
@@ -152,7 +152,7 @@ main (int argc, char **argv)
                      CTK_DEST_DEFAULT_MOTION |
                      CTK_DEST_DEFAULT_HIGHLIGHT |
                      CTK_DEST_DEFAULT_DROP,
-                     NULL, 0, GDK_ACTION_COPY);
+                     NULL, 0, CDK_ACTION_COPY);
   ctk_drag_dest_add_image_targets (box);
   g_signal_connect (box, "drag_data_received", 
 		    G_CALLBACK (drag_data_received), image);

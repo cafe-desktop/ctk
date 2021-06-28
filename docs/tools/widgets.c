@@ -1,6 +1,6 @@
 #include "config.h"
 
-#define GDK_DISABLE_DEPRECATION_WARNINGS
+#define CDK_DISABLE_DEPRECATION_WARNINGS
 #undef CTK_DISABLE_DEPRECATED
 
 #include <ctk/ctkunixprint.h>
@@ -303,7 +303,7 @@ create_accel_label (void)
 
   info = new_widget_info ("accel-label", box, SMALL);
 
-  ctk_widget_add_accelerator (button, "activate", accel_group, GDK_KEY_Q, GDK_CONTROL_MASK,
+  ctk_widget_add_accelerator (button, "activate", accel_group, CDK_KEY_Q, CDK_CONTROL_MASK,
 			      CTK_ACCEL_VISIBLE | CTK_ACCEL_LOCKED);
 
   return info;
@@ -555,7 +555,7 @@ create_icon_view (void)
 
   widget = ctk_frame_new (NULL);
   ctk_frame_set_shadow_type (CTK_FRAME (widget), CTK_SHADOW_IN);
-  list_store = ctk_list_store_new (2, G_TYPE_STRING, GDK_TYPE_PIXBUF);
+  list_store = ctk_list_store_new (2, G_TYPE_STRING, CDK_TYPE_PIXBUF);
   ctk_list_store_append (list_store, &iter);
   pixbuf = cdk_pixbuf_new_from_file ("folder.png", NULL);
   ctk_list_store_set (list_store, &iter, 0, "One", 1, pixbuf, -1);

@@ -507,7 +507,7 @@ ctk_assistant_class_init (CtkAssistantClass *class)
                                 G_TYPE_NONE, 0);
 
   binding_set = ctk_binding_set_by_class (class);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Escape, 0, "escape", 0);
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Escape, 0, "escape", 0);
 
   /**
    * CtkAssistant:use-header-bar:
@@ -606,7 +606,7 @@ ctk_assistant_class_init (CtkAssistantClass *class)
                                               g_param_spec_object ("header-image",
                                                                    P_("Header image"),
                                                                    P_("Header image for the assistant page"),
-                                                                   GDK_TYPE_PIXBUF,
+                                                                   CDK_TYPE_PIXBUF,
                                                                    CTK_PARAM_READWRITE));
 
   /**
@@ -623,7 +623,7 @@ ctk_assistant_class_init (CtkAssistantClass *class)
                                               g_param_spec_object ("sidebar-image",
                                                                    P_("Sidebar image"),
                                                                    P_("Sidebar image for the assistant page"),
-                                                                   GDK_TYPE_PIXBUF,
+                                                                   CDK_TYPE_PIXBUF,
                                                                    CTK_PARAM_READWRITE));
 
   /**
@@ -2173,7 +2173,7 @@ ctk_assistant_set_page_header_image (CtkAssistant *assistant,
 {
   g_return_if_fail (CTK_IS_ASSISTANT (assistant));
   g_return_if_fail (CTK_IS_WIDGET (page));
-  g_return_if_fail (pixbuf == NULL || GDK_IS_PIXBUF (pixbuf));
+  g_return_if_fail (pixbuf == NULL || CDK_IS_PIXBUF (pixbuf));
 
   ctk_assistant_do_set_page_header_image (assistant, page, pixbuf);
 }
@@ -2264,7 +2264,7 @@ ctk_assistant_set_page_side_image (CtkAssistant *assistant,
 {
   g_return_if_fail (CTK_IS_ASSISTANT (assistant));
   g_return_if_fail (CTK_IS_WIDGET (page));
-  g_return_if_fail (pixbuf == NULL || GDK_IS_PIXBUF (pixbuf));
+  g_return_if_fail (pixbuf == NULL || CDK_IS_PIXBUF (pixbuf));
 
   ctk_assistant_do_set_page_side_image (assistant, page, pixbuf);
 }

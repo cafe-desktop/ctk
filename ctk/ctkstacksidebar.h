@@ -58,14 +58,14 @@ struct _CtkStackSidebarClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 GType       ctk_stack_sidebar_get_type  (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 CtkWidget * ctk_stack_sidebar_new       (void);
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 void        ctk_stack_sidebar_set_stack (CtkStackSidebar *sidebar,
                                          CtkStack        *stack);
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 CtkStack *  ctk_stack_sidebar_get_stack (CtkStackSidebar *sidebar);
 
 G_END_DECLS

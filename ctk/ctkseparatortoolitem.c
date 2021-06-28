@@ -289,18 +289,18 @@ ctk_separator_tool_item_realize (CtkWidget *widget)
 
   ctk_widget_get_allocation (widget, &allocation);
 
-  attributes.window_type = GDK_WINDOW_CHILD;
+  attributes.window_type = CDK_WINDOW_CHILD;
   attributes.x = allocation.x;
   attributes.y = allocation.y;
   attributes.width = allocation.width;
   attributes.height = allocation.height;
-  attributes.wclass = GDK_INPUT_ONLY;
+  attributes.wclass = CDK_INPUT_ONLY;
   attributes.visual = ctk_widget_get_visual (widget);
   attributes.event_mask = ctk_widget_get_events (widget) |
-                          GDK_BUTTON_PRESS_MASK |
-                          GDK_BUTTON_RELEASE_MASK |
-                          GDK_POINTER_MOTION_MASK;
-  attributes_mask = GDK_WA_X | GDK_WA_Y;
+                          CDK_BUTTON_PRESS_MASK |
+                          CDK_BUTTON_RELEASE_MASK |
+                          CDK_POINTER_MOTION_MASK;
+  attributes_mask = CDK_WA_X | CDK_WA_Y;
 
   window = ctk_widget_get_parent_window (widget);
   ctk_widget_set_window (widget, window);

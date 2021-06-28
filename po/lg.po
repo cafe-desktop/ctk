@@ -60,8 +60,8 @@ msgstr "MULIMU"
 
 #. Description of --cdk-debug=FLAGS in --help output
 #: ../cdk/cdk.c:210
-msgid "GDK debugging flags to set"
-msgstr "Kano kategeka obutuuti GDK bw'en'ekozesa mu kunoonya nsobi"
+msgid "CDK debugging flags to set"
+msgstr "Kano kategeka obutuuti CDK bw'en'ekozesa mu kunoonya nsobi"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
@@ -73,7 +73,7 @@ msgstr "BUTUUTI"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: ../cdk/cdk.c:213
-msgid "GDK debugging flags to unset"
+msgid "CDK debugging flags to unset"
 msgstr ""
 "Kano ke kalaga obutuuti obweyambisibwa mu kunoonya nsobi obunaategekululwa"
 

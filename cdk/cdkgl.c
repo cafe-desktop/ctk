@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2014 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -22,7 +22,7 @@
 
 #include "cdkinternals.h"
 
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
 # include "win32/cdkwin32.h"
 #endif
 
@@ -408,7 +408,7 @@ cdk_cairo_draw_from_gl (cairo_t              *cr,
 
   /* For direct paint of non-alpha renderbuffer, we can
      just do a bitblit */
-  if ((_cdk_gl_flags & GDK_GL_SOFTWARE_DRAW_GL) == 0 &&
+  if ((_cdk_gl_flags & CDK_GL_SOFTWARE_DRAW_GL) == 0 &&
       source_type == GL_RENDERBUFFER &&
       alpha_size == 0 &&
       direct_window != NULL &&
@@ -511,7 +511,7 @@ cdk_cairo_draw_from_gl (cairo_t              *cr,
 
     }
   /* For direct paint of alpha or non-alpha textures we can use texturing */
-  else if ((_cdk_gl_flags & GDK_GL_SOFTWARE_DRAW_GL) == 0 &&
+  else if ((_cdk_gl_flags & CDK_GL_SOFTWARE_DRAW_GL) == 0 &&
            source_type == GL_TEXTURE &&
            direct_window != NULL &&
            direct_window->current_paint.use_gl &&
@@ -647,9 +647,9 @@ cdk_cairo_draw_from_gl (cairo_t              *cr,
       int major, minor, version;
       gboolean es_read_bgra = FALSE;
 
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
       /* on ANGLE GLES, we need to set the glReadPixel() format as GL_BGRA instead */
-      if (GDK_WIN32_IS_GL_CONTEXT(paint_context))
+      if (CDK_WIN32_IS_GL_CONTEXT(paint_context))
         es_read_bgra = TRUE;
 #endif
 
@@ -739,10 +739,10 @@ cdk_gl_texture_from_surface (cairo_surface_t *surface,
   gboolean use_texture_rectangle;
   guint target;
   paint_context = cdk_gl_context_get_current ();
-  if ((_cdk_gl_flags & GDK_GL_SOFTWARE_DRAW_SURFACE) == 0 &&
+  if ((_cdk_gl_flags & CDK_GL_SOFTWARE_DRAW_SURFACE) == 0 &&
       paint_context &&
-      GDK_GL_CONTEXT_GET_CLASS (paint_context)->texture_from_surface &&
-      GDK_GL_CONTEXT_GET_CLASS (paint_context)->texture_from_surface (paint_context, surface, region))
+      CDK_GL_CONTEXT_GET_CLASS (paint_context)->texture_from_surface &&
+      CDK_GL_CONTEXT_GET_CLASS (paint_context)->texture_from_surface (paint_context, surface, region))
     return;
 
   /* Software fallback */

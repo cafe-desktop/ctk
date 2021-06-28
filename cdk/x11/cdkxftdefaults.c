@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright © 2005 Red Hat, Inc
  *
  * This library is free software; you can redistribute it and/or
@@ -149,8 +149,8 @@ get_integer_default (Display *dpy,
 static void
 init_xft_settings (CdkScreen *screen)
 {
-  CdkX11Screen *x11_screen = GDK_X11_SCREEN (screen);
-  Display *xdisplay = GDK_SCREEN_XDISPLAY (screen);
+  CdkX11Screen *x11_screen = CDK_X11_SCREEN (screen);
+  Display *xdisplay = CDK_SCREEN_XDISPLAY (screen);
   double dpi_double;
   gboolean b;
 
@@ -184,7 +184,7 @@ _cdk_x11_get_xft_setting (CdkScreen   *screen,
 			  const gchar *name,
 			  GValue      *value)
 {
-  CdkX11Screen *x11_screen = GDK_X11_SCREEN (screen);
+  CdkX11Screen *x11_screen = CDK_X11_SCREEN (screen);
   
   if (strncmp (name, "ctk-xft-", 8) != 0)
     return FALSE;

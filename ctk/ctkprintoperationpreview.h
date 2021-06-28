@@ -66,15 +66,15 @@ struct _CtkPrintOperationPreviewIface
   void (*_ctk_reserved8) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType   ctk_print_operation_preview_get_type       (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_print_operation_preview_render_page (CtkPrintOperationPreview *preview,
 						  gint                      page_nr);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_print_operation_preview_end_preview (CtkPrintOperationPreview *preview);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_print_operation_preview_is_selected (CtkPrintOperationPreview *preview,
 						  gint                      page_nr);
 

@@ -96,7 +96,7 @@ msgid "Default Display"
 msgstr ""
 
 #: ../cdk/cdkdisplaymanager.c:103
-msgid "The default display for GDK"
+msgid "The default display for CDK"
 msgstr ""
 
 #: ../cdk/cdkscreen.c:72
@@ -7245,16 +7245,16 @@ msgstr ""
 #~ msgid "SCREEN"
 #~ msgstr "muinu"
 
-#~| msgid "GDK debugging flags to set"
+#~| msgid "CDK debugging flags to set"
 #~ msgid "Cdk debugging flags to set"
-#~ msgstr "bendila biobio bia GDK, si sasila bio"
+#~ msgstr "bendila biobio bia CDK, si sasila bio"
 
 #~ msgid "FLAGS"
 #~ msgstr "bisinsu"
 
-#~| msgid "GDK debugging flags to unset"
+#~| msgid "CDK debugging flags to unset"
 #~ msgid "Cdk debugging flags to unset"
-#~ msgstr "bendila biobio bia GDK, kusasidi bio ko"
+#~ msgstr "bendila biobio bia CDK, kusasidi bio ko"
 
 #~ msgctxt "keyboard label"
 #~ msgid "BackSpace"

@@ -12,10 +12,10 @@ TOP = ..\..
 # Possibly override versions from build/win32/module.defs
 CTK_VER = 3.0
 
-GDK_LIBS = ../cdk/cdk-win32-$(CTK_VER).lib
+CDK_LIBS = ../cdk/cdk-win32-$(CTK_VER).lib
 CTK_LIBS = ../ctk/ctk-win32-$(CTK_VER).lib
 
-INCLUDES = -I . -I .. -I ../cdk -I ../ctk $(GDK_PIXBUF_CFLAGS)
+INCLUDES = -I . -I .. -I ../cdk -I ../ctk $(CDK_PIXBUF_CFLAGS)
 DEPCFLAGS = $(PANGO_CFLAGS) $(GLIB_CFLAGS) $(LIBICONV_CFLAGS) $(INTL_CFLAGS) $(ATK_CFLAGS) $(CAIRO_CFLAGS)
 LDFLAGS = /link /machine:ix86 $(LINKDEBUG)
 DEFINES = -DG_LOG_DOMAIN=\"CtkTest\" -DCTK_VERSION=\"$(CTK_VER)\"
@@ -105,7 +105,7 @@ EXTRA_OBJETCS = testsocket_common.obj
 !ENDIF
 
 $(TESTAPP).exe : ../ctk/ctk-win32-$(CTK_VER).lib $(TESTAPP).obj $(EXTRA_OBJETCS)
-	$(CC) $(CFLAGS) $(TESTAPP).obj $(EXTRA_OBJETCS) $(CTK_LIBS) $(GDK_LIBS) $(GDK_PIXBUF_LIBS) \
+	$(CC) $(CFLAGS) $(TESTAPP).obj $(EXTRA_OBJETCS) $(CTK_LIBS) $(CDK_LIBS) $(CDK_PIXBUF_LIBS) \
 	$(PANGO_LIBS) $(PANGOCAIRO_LIBS) $(GLIB_LIBS) $(CAIRO_LIBS) $(EXTRA_LIBS) $(LDFLAGS)
 
 $(TESTAPP).obj : $(TESTAPP).c

@@ -2,7 +2,7 @@
 #
 # Generate cdk.gresources.xml
 #
-# Usage: gen-cdk-gresources-xml SRCDIR_GDK [OUTPUT-FILE]
+# Usage: gen-cdk-gresources-xml SRCDIR_CDK [OUTPUT-FILE]
 
 import os, sys
 

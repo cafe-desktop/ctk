@@ -428,7 +428,7 @@ toolbar_drag_motion (CtkToolbar     *toolbar,
       g_object_ref_sink (g_object_ref (drag_item));
     }
   
-  cdk_drag_status (context, GDK_ACTION_MOVE, time);
+  cdk_drag_status (context, CDK_ACTION_MOVE, time);
 
   index = ctk_toolbar_get_drop_index (toolbar, x, y);
   
@@ -715,12 +715,12 @@ main (gint argc, gchar **argv)
 
   ctk_box_pack_end (CTK_BOX (hbox), checkbox, FALSE, FALSE, 0);
   
-  ctk_drag_source_set (button, GDK_BUTTON1_MASK,
+  ctk_drag_source_set (button, CDK_BUTTON1_MASK,
 		       target_table, G_N_ELEMENTS (target_table),
-		       GDK_ACTION_MOVE);
+		       CDK_ACTION_MOVE);
   ctk_drag_dest_set (toolbar, CTK_DEST_DEFAULT_DROP,
 		     target_table, G_N_ELEMENTS (target_table),
-		     GDK_ACTION_MOVE);
+		     CDK_ACTION_MOVE);
   g_signal_connect (toolbar, "drag_motion",
 		    G_CALLBACK (toolbar_drag_motion), NULL);
   g_signal_connect (toolbar, "drag_leave",

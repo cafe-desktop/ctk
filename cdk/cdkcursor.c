@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -24,7 +24,7 @@
 
 #include "config.h"
 
-#define GDK_PIXBUF_ENABLE_BACKEND
+#define CDK_PIXBUF_ENABLE_BACKEND
 #include <cdk-pixbuf/cdk-pixbuf.h>
 
 #include "cdkcursor.h"
@@ -77,7 +77,7 @@ cdk_cursor_get_property (GObject    *object,
                          GValue     *value,
                          GParamSpec *pspec)
 {
-  CdkCursor *cursor = GDK_CURSOR (object);
+  CdkCursor *cursor = CDK_CURSOR (object);
 
   switch (prop_id)
     {
@@ -99,7 +99,7 @@ cdk_cursor_set_property (GObject      *object,
                          const GValue *value,
                          GParamSpec   *pspec)
 {
-  CdkCursor *cursor = GDK_CURSOR (object);
+  CdkCursor *cursor = CDK_CURSOR (object);
 
   switch (prop_id)
     {
@@ -130,7 +130,7 @@ cdk_cursor_class_init (CdkCursorClass *cursor_class)
 				   g_param_spec_enum ("cursor-type",
                                                       P_("Cursor type"),
                                                       P_("Standard cursor type"),
-                                                      GDK_TYPE_CURSOR_TYPE, GDK_X_CURSOR,
+                                                      CDK_TYPE_CURSOR_TYPE, CDK_X_CURSOR,
                                                       G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 
   g_object_class_install_property (object_class,
@@ -138,7 +138,7 @@ cdk_cursor_class_init (CdkCursorClass *cursor_class)
 				   g_param_spec_object ("display",
                                                         P_("Display"),
                                                         P_("Display of this cursor"),
-                                                        GDK_TYPE_DISPLAY,
+                                                        CDK_TYPE_DISPLAY,
                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
 }
 
@@ -189,7 +189,7 @@ cdk_cursor_unref (CdkCursor *cursor)
  * Creates a new cursor from the set of builtin cursors for the default display.
  * See cdk_cursor_new_for_display().
  *
- * To make the cursor invisible, use %GDK_BLANK_CURSOR.
+ * To make the cursor invisible, use %CDK_BLANK_CURSOR.
  *
  * Returns: a new #CdkCursor
  *
@@ -214,7 +214,7 @@ cdk_cursor_new (CdkCursorType cursor_type)
 CdkCursorType
 cdk_cursor_get_cursor_type (CdkCursor *cursor)
 {
-  g_return_val_if_fail (cursor != NULL, GDK_BLANK_CURSOR);
+  g_return_val_if_fail (cursor != NULL, CDK_BLANK_CURSOR);
 
   return cursor->type;
 }
@@ -234,9 +234,9 @@ CdkCursor*
 cdk_cursor_new_for_display (CdkDisplay    *display,
                             CdkCursorType  cursor_type)
 {
-  g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
+  g_return_val_if_fail (CDK_IS_DISPLAY (display), NULL);
 
-  return GDK_DISPLAY_GET_CLASS (display)->get_cursor_for_type (display, cursor_type);
+  return CDK_DISPLAY_GET_CLASS (display)->get_cursor_for_type (display, cursor_type);
 }
 
 /**
@@ -295,9 +295,9 @@ CdkCursor*
 cdk_cursor_new_from_name (CdkDisplay  *display,
                           const gchar *name)
 {
-  g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
+  g_return_val_if_fail (CDK_IS_DISPLAY (display), NULL);
 
-  return GDK_DISPLAY_GET_CLASS (display)->get_cursor_for_name (display, name);
+  return CDK_DISPLAY_GET_CLASS (display)->get_cursor_for_name (display, name);
 }
 
 /**
@@ -309,7 +309,7 @@ cdk_cursor_new_from_name (CdkDisplay  *display,
  *
  * Creates a new cursor from a pixbuf.
  *
- * Not all GDK backends support RGBA cursors. If they are not
+ * Not all CDK backends support RGBA cursors. If they are not
  * supported, a monochrome approximation will be displayed.
  * The functions cdk_display_supports_cursor_alpha() and
  * cdk_display_supports_cursor_color() can be used to determine
@@ -342,8 +342,8 @@ cdk_cursor_new_from_pixbuf (CdkDisplay *display,
   gint64 value;
   CdkCursor *cursor;
  
-  g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
-  g_return_val_if_fail (GDK_IS_PIXBUF (pixbuf), NULL);
+  g_return_val_if_fail (CDK_IS_DISPLAY (display), NULL);
+  g_return_val_if_fail (CDK_IS_PIXBUF (pixbuf), NULL);
 
   if (x == -1 && (option = cdk_pixbuf_get_option (pixbuf, "x_hot")))
     {
@@ -369,7 +369,7 @@ cdk_cursor_new_from_pixbuf (CdkDisplay *display,
 
   surface = cdk_cairo_surface_create_from_pixbuf (pixbuf, 1, NULL);
   
-  cursor = GDK_DISPLAY_GET_CLASS (display)->get_cursor_for_surface (display, surface, x, y);
+  cursor = CDK_DISPLAY_GET_CLASS (display)->get_cursor_for_surface (display, surface, x, y);
 
   cairo_surface_destroy (surface);
 
@@ -385,7 +385,7 @@ cdk_cursor_new_from_pixbuf (CdkDisplay *display,
  *
  * Creates a new cursor from a cairo image surface.
  *
- * Not all GDK backends support RGBA cursors. If they are not
+ * Not all CDK backends support RGBA cursors. If they are not
  * supported, a monochrome approximation will be displayed.
  * The functions cdk_display_supports_cursor_alpha() and
  * cdk_display_supports_cursor_color() can be used to determine
@@ -407,13 +407,13 @@ cdk_cursor_new_from_surface (CdkDisplay      *display,
 			     gdouble          x,
 			     gdouble          y)
 {
-  g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
+  g_return_val_if_fail (CDK_IS_DISPLAY (display), NULL);
   g_return_val_if_fail (surface != NULL, NULL);
   g_return_val_if_fail (cairo_surface_get_type (surface) == CAIRO_SURFACE_TYPE_IMAGE, NULL);
   g_return_val_if_fail (0 <= x && x < cairo_image_surface_get_width (surface), NULL);
   g_return_val_if_fail (0 <= y && y < cairo_image_surface_get_height (surface), NULL);
 
-  return GDK_DISPLAY_GET_CLASS (display)->get_cursor_for_surface (display,
+  return CDK_DISPLAY_GET_CLASS (display)->get_cursor_for_surface (display,
 								  surface, x, y);
 }
 /**
@@ -430,7 +430,7 @@ cdk_cursor_new_from_surface (CdkDisplay      *display,
 CdkDisplay *
 cdk_cursor_get_display (CdkCursor *cursor)
 {
-  g_return_val_if_fail (GDK_IS_CURSOR (cursor), NULL);
+  g_return_val_if_fail (CDK_IS_CURSOR (cursor), NULL);
 
   return cursor->display;
 }
@@ -442,7 +442,7 @@ cdk_cursor_get_display (CdkCursor *cursor)
  * Returns a #CdkPixbuf with the image used to display the cursor.
  *
  * Note that depending on the capabilities of the windowing system and 
- * on the cursor, GDK may not be able to obtain the image data. In this 
+ * on the cursor, CDK may not be able to obtain the image data. In this 
  * case, %NULL is returned.
  *
  * Returns: (nullable) (transfer full): a #CdkPixbuf representing
@@ -460,7 +460,7 @@ cdk_cursor_get_image (CdkCursor *cursor)
   double x_hot, y_hot;
   double x_scale, y_scale;
 
-  g_return_val_if_fail (GDK_IS_CURSOR (cursor), NULL);
+  g_return_val_if_fail (CDK_IS_CURSOR (cursor), NULL);
 
   surface = cdk_cursor_get_surface (cursor, &x_hot, &y_hot);
   if (surface == NULL)
@@ -482,7 +482,7 @@ cdk_cursor_get_image (CdkCursor *cursor)
       old = pixbuf;
       pixbuf = cdk_pixbuf_scale_simple (old,
 					w / x_scale, h / y_scale,
-					GDK_INTERP_HYPER);
+					CDK_INTERP_HYPER);
       g_object_unref (old);
     }
 
@@ -507,7 +507,7 @@ cdk_cursor_get_image (CdkCursor *cursor)
  * Returns a cairo image surface with the image used to display the cursor.
  *
  * Note that depending on the capabilities of the windowing system and
- * on the cursor, GDK may not be able to obtain the image data. In this
+ * on the cursor, CDK may not be able to obtain the image data. In this
  * case, %NULL is returned.
  *
  * Returns: (nullable) (transfer full): a #cairo_surface_t
@@ -520,7 +520,7 @@ cdk_cursor_get_surface (CdkCursor *cursor,
 			gdouble   *x_hot,
 			gdouble   *y_hot)
 {
-  g_return_val_if_fail (GDK_IS_CURSOR (cursor), NULL);
+  g_return_val_if_fail (CDK_IS_CURSOR (cursor), NULL);
 
-  return GDK_CURSOR_GET_CLASS (cursor)->get_surface (cursor, x_hot, y_hot);
+  return CDK_CURSOR_GET_CLASS (cursor)->get_surface (cursor, x_hot, y_hot);
 }

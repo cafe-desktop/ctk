@@ -147,20 +147,20 @@ msgid "Default Display"
 msgstr "默认显示"
 
 #: cdk/cdkdisplaymanager.c:163
-msgid "The default display for GDK"
-msgstr "GDK 的默认显示"
+msgid "The default display for CDK"
+msgstr "CDK 的默认显示"
 
 #: cdk/cdkglcontext.c:318
-msgid "The GDK display used to create the GL context"
-msgstr "用于创建 GL 上下文的 GDK 显示器"
+msgid "The CDK display used to create the GL context"
+msgstr "用于创建 GL 上下文的 CDK 显示器"
 
 #: cdk/cdkglcontext.c:333 ctk/ctkwidget.c:1347
 msgid "Window"
 msgstr "窗口"
 
 #: cdk/cdkglcontext.c:334
-msgid "The GDK window bound to the GL context"
-msgstr "绑定到 GL 上下文的 GDK 窗口"
+msgid "The CDK window bound to the GL context"
+msgstr "绑定到 GL 上下文的 CDK 窗口"
 
 #: cdk/cdkglcontext.c:349
 msgid "Shared context"
@@ -9429,8 +9429,8 @@ msgstr "要使用的颜色配置的标题"
 #~ msgstr "侧边栏是否包含内置的“回收筒位置”捷径"
 
 #, fuzzy
-#~ msgid "The GDK display the context is from"
-#~ msgstr "脉络的 GDK 显示"
+#~ msgid "The CDK display the context is from"
+#~ msgstr "脉络的 CDK 显示"
 
 #, fuzzy
 #~ msgid "Profile"

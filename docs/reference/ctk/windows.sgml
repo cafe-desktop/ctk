@@ -20,7 +20,7 @@ Windows-specific aspects of using CTK+
 <title>Using CTK+ on Windows</title>
 
 <para>
-The Windows port of CTK+ is an implementation of GDK (and therefore CTK+)
+The Windows port of CTK+ is an implementation of CDK (and therefore CTK+)
 on top of the Win32 API. When compiling CTK+ on Windows, this backend is
 the default.
 </para>
@@ -29,7 +29,7 @@ the default.
 <title>Windows-specific commandline options</title>
 
 <para>
-The Windows GDK backend can be influenced with some
+The Windows CDK backend can be influenced with some
 additional command line arguments.
 </para>
 
@@ -74,12 +74,12 @@ the specified number of colors. This option is obsolete.
 <title>Windows-specific environment variables</title>
 
 <para>
-The Win32 GDK backend can be influenced with some
+The Win32 CDK backend can be influenced with some
 additional environment variables.
 </para>
 
 <formalpara>
-<title><envar>GDK_IGNORE_WINTAB</envar></title>
+<title><envar>CDK_IGNORE_WINTAB</envar></title>
 
 <para>
 If this variable is set, CTK+ doesn't use 
@@ -88,7 +88,7 @@ the Wintab API for tablet support.
 </formalpara>
 
 <formalpara>
-<title><envar>GDK_USE_WINTAB</envar></title>
+<title><envar>CDK_USE_WINTAB</envar></title>
 
 <para>
 If this variable is set, CTK+ uses the Wintab API for 
@@ -97,7 +97,7 @@ tablet support.  This is the default.
 </formalpara>
 
 <formalpara>
-<title><envar>GDK_WIN32_MAX_COLORS</envar></title>
+<title><envar>CDK_WIN32_MAX_COLORS</envar></title>
 
 <para>
 Specifies the size of the color palette used

@@ -72,21 +72,21 @@ struct _CtkMountOperationClass
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType            ctk_mount_operation_get_type   (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GMountOperation *ctk_mount_operation_new        (CtkWindow         *parent);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean         ctk_mount_operation_is_showing (CtkMountOperation *op);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_mount_operation_set_parent (CtkMountOperation *op,
                                                  CtkWindow         *parent);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWindow *      ctk_mount_operation_get_parent (CtkMountOperation *op);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_mount_operation_set_screen (CtkMountOperation *op,
                                                  CdkScreen         *screen);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkScreen       *ctk_mount_operation_get_screen (CtkMountOperation *op);
 
 G_END_DECLS

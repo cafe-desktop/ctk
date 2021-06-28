@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  * Copyright (C) 1998-2002 Tor Lillqvist
  *
@@ -25,8 +25,8 @@
 
 /*
 CTK+ selection works like this:
-There are three selections that matter - GDK_SELECTION_CLIPBOARD,
-GDK_SELECTION_PRIMARY and DND. Primary selection is only handled
+There are three selections that matter - CDK_SELECTION_CLIPBOARD,
+CDK_SELECTION_PRIMARY and DND. Primary selection is only handled
 internally by CTK+ (it's not portable to Windows). DND is actually
 represented by two selections - LOCAL and OLE2, one for each DnD protocol,
 but they work the same way.
@@ -69,7 +69,7 @@ On X11 cdk_selection_convert() just calls
 C:XConvertSelection(),
 which sends SelectionRequest xevent to the window that owns the selection.
 The client gives its clipboard window as the requestor for that event,
-and gives the property as GDK_SELECTION.
+and gives the property as CDK_SELECTION.
 
 Server-side CTK+ catches SelectionRequest in a
 S:_ctk_selection_request()
@@ -78,7 +78,7 @@ S:ctk_selection_invoke_handler()
 to get the data, and then calls
 S:cdk_property_change() (_cdk_x11_window_change_property())
 to submit the data, by setting the property given by the message sender
-(GDK_SELECTION) on the requestor window (our client clipboard window).
+(CDK_SELECTION) on the requestor window (our client clipboard window).
 
 On X11 data submission takes from of
 S:XChangeProperty()
@@ -100,7 +100,7 @@ If data must be stored on the clipboard, because the application is quitting,
 CTK+ will call
 S:cdk_clipboard_store() -> cdk_display_store_clipboard() (cdk_x11_display_store_clipboard())
 on all the clipboards it owns.
-X11 cdk_display_store_clipboard() puts a list of storeable targets into GDK_SELECTION
+X11 cdk_display_store_clipboard() puts a list of storeable targets into CDK_SELECTION
 property of the clipboard window, then calls
 S:XConvertSelection()
 on the clipboard manager window (retrieved from the CLIPBOARD_MANAGER atom),
@@ -108,7 +108,7 @@ and the clipboard manager responds by requesting all these formats and storing t
 then responds with SelectionNotify xevent to allow the application to quit.
 
 When clipboard owner changes, the old owner receives SelectionClear xevent,
-CTK+ handles it by clearing the clipboard object on its own level, GDK
+CTK+ handles it by clearing the clipboard object on its own level, CDK
 is not involved.
 
 On Windows:
@@ -125,11 +125,11 @@ message, it should respond by opening the clipboard and rendering
 into it all the data that it offers, as if responding to multiple WM_RENDERFORMAT
 messages.
 
-On GDK-Win32:
+On CDK-Win32:
 CTK+ calls ctk_clipboard_set_contents(), which first ensures the
 clipboard is owned by the clipboard widget (calls OpenClipboard(),
 then EmptyClipboard() to become the owner, then
-sends a TARGETS GDK_SELECTION_REQUEST to itself, without closing the clipboard),
+sends a TARGETS CDK_SELECTION_REQUEST to itself, without closing the clipboard),
 then clears the old supported targets from the clipboard, then adds all the
 targets it's given to the clipboard. No data is sent anywhere.
 
@@ -161,7 +161,7 @@ If that shortcut isn't possible (selection is owned by another process),
 ctk_selection_convert() calls
 C:cdk_selection_convert() (_cdk_win32_display_convert_selection())
 
-On GDK-Win32 cdk_selection_convert() just calls
+On CDK-Win32 cdk_selection_convert() just calls
 C:OpenClipboard()
 to open clipboard (if that fails, it shedules a timeout to regularly
 try to open clipboard for the next 30 seconds, and do the actions
@@ -179,16 +179,16 @@ either only supports just one format that it asks for,
 or supports multiple formats and asks for them in sequence (from
 the most preferred to the least preferred), until one call succeeds,
 or supports multiple formats and asks for the TARGETS format first,
-and then figures out what to ask for - GDK can't know that.
-Either way, GDK has to call
+and then figures out what to ask for - CDK can't know that.
+Either way, CDK has to call
 C:GetClipboardData()
 to get the data (this causes WM_RENDERFORMAT to be sent to the owner,
 if the owner uses delayed rendering for the requested format, otherwise
 it just picks the data right from the OS)
 
-Server-side GDK catches WM_RENDERFORMAT, figures out a target
+Server-side CDK catches WM_RENDERFORMAT, figures out a target
 to request (this one is easier, as it has the list of supported
-targets saved up), and posts a GDK_SELECTION_REQUEST event, then runs the main loop,
+targets saved up), and posts a CDK_SELECTION_REQUEST event, then runs the main loop,
 while CTK+ catches the event in a
 S:_ctk_selection_request()
 event handler, which calls
@@ -209,20 +209,20 @@ window property to that data (unlike change_property!),
 calls
 C:CloseClipboard() (if there are no more clipboard opeartions
 scheduled)
-and posts a GDK_SELECTION_NOTIFY event, which CTK+ catches in
+and posts a CDK_SELECTION_NOTIFY event, which CTK+ catches in
 C:_ctk_selection_notify()
 event handler, which calls
 C:ctk_selection_retrieval_report()
 to report back to the caller. The caller gets the property
 data from the window, and returns it up the stack.
 
-On GDK-Win32 the "TARGETS" target might be given in a GDK_SELECTION_REQUEST to request
+On CDK-Win32 the "TARGETS" target might be given in a CDK_SELECTION_REQUEST to request
 all supported targets for a selection.
 Note that this server side -
 client side should call cdk_selection_convert() -> cdk_selection_convert() with "TARGETS" target
-to get the list of targets offered by the clipboard holder. It never causes GDK_SELECTION_REQUEST
+to get the list of targets offered by the clipboard holder. It never causes CDK_SELECTION_REQUEST
 to be generated, just queries the system clipboard.
-On server side GDK_SELECTION_REQUEST is only generated internally:
+On server side CDK_SELECTION_REQUEST is only generated internally:
 in response to WM_RENDERFORMAT (it renders a target),
 in response to idataobject_getdata() (it renders a target),
 after DnD ends (with a DELETE target, this is caught by CTK to make it delete the selection),
@@ -233,11 +233,11 @@ If data must be stored on the clipboard, because the application is quitting,
 CTK+ will call
 S:cdk_clipboard_store() -> cdk_display_store_clipboard() (cdk_win32_display_store_clipboard())
 on all the clipboards it owns.
-GDK-Win32 cdk_display_store_clipboard() sends WM_RENDERALLFORMATS to the window,
-then posts a GDK_SELECTION_NOTIFY event allow the application to quit.
+CDK-Win32 cdk_display_store_clipboard() sends WM_RENDERALLFORMATS to the window,
+then posts a CDK_SELECTION_NOTIFY event allow the application to quit.
 
 When clipboard owner changes, the old owner receives WM_DESTROYCLIPBOARD message,
-GDK handles it by posting a GDK_SELECTION_CLEAR event, which
+CDK handles it by posting a CDK_SELECTION_CLEAR event, which
 CTK+ handles by clearing the clipboard object on its own level.
 
 Any operations that require OpenClipboard()/CloseClipboard() combo (i.e.
@@ -250,12 +250,12 @@ and remove the queue items that are older than 30 seconds.
 Once the queue is empty, the clipboard is closed.
 
 DND:
-GDK-Win32:
+CDK-Win32:
 S:idataobject_getdata()
-sends a GDK_SELECTION_REQUEST event, which results in a call to
+sends a CDK_SELECTION_REQUEST event, which results in a call to
 S:_cdk_win32_window_change_property()
 which passes clipboard data back via the selection singleton.
-GDK-Win32 uses delayed rendering for all formats, even text.
+CDK-Win32 uses delayed rendering for all formats, even text.
 
 CTK+ will call
 C:ctk_selection_convert() -> cdk_selection_convert() (_cdk_win32_display_convert_selection())
@@ -265,7 +265,7 @@ but with a OLE2_DND selection instead of CLIPBOARD selection.
 _cdk_win32_display_convert_selection() queries the droptarget global variable,
 which should already contain a matched list of supported formats and targets,
 picks a format there, then queries it from the IDataObject that the droptarget kept around.
-Then optionally transmutes the data, and sets the property. Then posts GDK_SELECTION_NOTIFY.
+Then optionally transmutes the data, and sets the property. Then posts CDK_SELECTION_NOTIFY.
 
 CTK+ catches that event and processes it, causeing "selection-received" signal to
 be emitted on the selection widget, and its handler is
@@ -298,8 +298,8 @@ typedef enum _CdkWin32ClipboardQueueAction CdkWin32ClipboardQueueAction;
 
 enum _CdkWin32ClipboardQueueAction
 {
-  GDK_WIN32_CLIPBOARD_QUEUE_ACTION_CONVERT = 0,
-  GDK_WIN32_CLIPBOARD_QUEUE_ACTION_TARGETS
+  CDK_WIN32_CLIPBOARD_QUEUE_ACTION_CONVERT = 0,
+  CDK_WIN32_CLIPBOARD_QUEUE_ACTION_TARGETS
 };
 
 struct _CdkWin32ClipboardQueueInfo
@@ -335,7 +335,7 @@ cdk_win32_selection_class_init (CdkWin32SelectionClass *klass)
 void
 _cdk_win32_selection_init (void)
 {
-  _win32_selection = GDK_WIN32_SELECTION (g_object_new (GDK_TYPE_WIN32_SELECTION, NULL));
+  _win32_selection = CDK_WIN32_SELECTION (g_object_new (CDK_TYPE_WIN32_SELECTION, NULL));
 }
 
 static void
@@ -352,74 +352,74 @@ cdk_win32_selection_init (CdkWin32Selection *win32_selection)
   win32_selection->ignore_destroy_clipboard = FALSE;
   win32_selection->clipboard_opened_for = INVALID_HANDLE_VALUE;
 
-  win32_selection->dnd_target_state = GDK_WIN32_DND_NONE;
-  win32_selection->dnd_source_state = GDK_WIN32_DND_NONE;
+  win32_selection->dnd_target_state = CDK_WIN32_DND_NONE;
+  win32_selection->dnd_source_state = CDK_WIN32_DND_NONE;
   win32_selection->dnd_data_object_target = NULL;
   win32_selection->property_change_format = 0;
   win32_selection->property_change_data = NULL;
   win32_selection->property_change_target_atom = 0;
 
-  atoms = g_array_sized_new (FALSE, TRUE, sizeof (CdkAtom), GDK_WIN32_ATOM_INDEX_LAST);
-  g_array_set_size (atoms, GDK_WIN32_ATOM_INDEX_LAST);
-  cfs = g_array_sized_new (FALSE, TRUE, sizeof (UINT), GDK_WIN32_CF_INDEX_LAST);
-  g_array_set_size (cfs, GDK_WIN32_CF_INDEX_LAST);
+  atoms = g_array_sized_new (FALSE, TRUE, sizeof (CdkAtom), CDK_WIN32_ATOM_INDEX_LAST);
+  g_array_set_size (atoms, CDK_WIN32_ATOM_INDEX_LAST);
+  cfs = g_array_sized_new (FALSE, TRUE, sizeof (UINT), CDK_WIN32_CF_INDEX_LAST);
+  g_array_set_size (cfs, CDK_WIN32_CF_INDEX_LAST);
 
   win32_selection->known_atoms = atoms;
   win32_selection->known_clipboard_formats = cfs;
 
-  _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_GDK_SELECTION) = cdk_atom_intern_static_string ("GDK_SELECTION");
-  _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_CLIPBOARD_MANAGER) = cdk_atom_intern_static_string ("CLIPBOARD_MANAGER");
-  _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_WM_TRANSIENT_FOR) = cdk_atom_intern_static_string ("WM_TRANSIENT_FOR");
-  _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_TARGETS) = cdk_atom_intern_static_string ("TARGETS");
-  _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_DELETE) = cdk_atom_intern_static_string ("DELETE");
-  _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_SAVE_TARGETS) = cdk_atom_intern_static_string ("SAVE_TARGETS");
-  _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_UTF8_STRING) = cdk_atom_intern_static_string ("UTF8_STRING");
-  _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_TEXT) = cdk_atom_intern_static_string ("TEXT");
-  _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_COMPOUND_TEXT) = cdk_atom_intern_static_string ("COMPOUND_TEXT");
-  _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_TEXT_URI_LIST) = cdk_atom_intern_static_string ("text/uri-list");
-  _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_TEXT_HTML) = cdk_atom_intern_static_string ("text/html");
-  _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_IMAGE_PNG) = cdk_atom_intern_static_string ("image/png");
-  _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_IMAGE_JPEG) = cdk_atom_intern_static_string ("image/jpeg");
-  _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_IMAGE_BMP) = cdk_atom_intern_static_string ("image/bmp");
-  _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_IMAGE_GIF) = cdk_atom_intern_static_string ("image/gif");
+  _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_CDK_SELECTION) = cdk_atom_intern_static_string ("CDK_SELECTION");
+  _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_CLIPBOARD_MANAGER) = cdk_atom_intern_static_string ("CLIPBOARD_MANAGER");
+  _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_WM_TRANSIENT_FOR) = cdk_atom_intern_static_string ("WM_TRANSIENT_FOR");
+  _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_TARGETS) = cdk_atom_intern_static_string ("TARGETS");
+  _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_DELETE) = cdk_atom_intern_static_string ("DELETE");
+  _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_SAVE_TARGETS) = cdk_atom_intern_static_string ("SAVE_TARGETS");
+  _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_UTF8_STRING) = cdk_atom_intern_static_string ("UTF8_STRING");
+  _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_TEXT) = cdk_atom_intern_static_string ("TEXT");
+  _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_COMPOUND_TEXT) = cdk_atom_intern_static_string ("COMPOUND_TEXT");
+  _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_TEXT_URI_LIST) = cdk_atom_intern_static_string ("text/uri-list");
+  _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_TEXT_HTML) = cdk_atom_intern_static_string ("text/html");
+  _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_IMAGE_PNG) = cdk_atom_intern_static_string ("image/png");
+  _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_IMAGE_JPEG) = cdk_atom_intern_static_string ("image/jpeg");
+  _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_IMAGE_BMP) = cdk_atom_intern_static_string ("image/bmp");
+  _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_IMAGE_GIF) = cdk_atom_intern_static_string ("image/gif");
 
-  _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_LOCAL_DND_SELECTION) = cdk_atom_intern_static_string ("LocalDndSelection");
-  _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_DROPFILES_DND) = cdk_atom_intern_static_string ("DROPFILES_DND");
-  _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_OLE2_DND) = cdk_atom_intern_static_string ("OLE2_DND");
+  _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_LOCAL_DND_SELECTION) = cdk_atom_intern_static_string ("LocalDndSelection");
+  _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_DROPFILES_DND) = cdk_atom_intern_static_string ("DROPFILES_DND");
+  _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_OLE2_DND) = cdk_atom_intern_static_string ("OLE2_DND");
 
-  _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_PNG)= cdk_atom_intern_static_string ("PNG");
-  _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_JFIF) = cdk_atom_intern_static_string ("JFIF");
-  _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_GIF) = cdk_atom_intern_static_string ("GIF");
+  _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_PNG)= cdk_atom_intern_static_string ("PNG");
+  _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_JFIF) = cdk_atom_intern_static_string ("JFIF");
+  _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_GIF) = cdk_atom_intern_static_string ("GIF");
 
   /* These are a bit unusual. It's here to allow CTK+ applications
    * to actually support CF_DIB and Shell ID List clipboard formats on their own,
-   * instead of allowing GDK to use them internally for interoperability.
+   * instead of allowing CDK to use them internally for interoperability.
    */
-  _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_CF_DIB) = cdk_atom_intern_static_string ("CF_DIB");
-  _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_CFSTR_SHELLIDLIST) = cdk_atom_intern_static_string (CFSTR_SHELLIDLIST);
-  _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_CF_UNICODETEXT) = cdk_atom_intern_static_string ("CF_UNICODETEXT");
-  _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_CF_TEXT) = cdk_atom_intern_static_string ("CF_TEXT");
+  _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_CF_DIB) = cdk_atom_intern_static_string ("CF_DIB");
+  _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_CFSTR_SHELLIDLIST) = cdk_atom_intern_static_string (CFSTR_SHELLIDLIST);
+  _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_CF_UNICODETEXT) = cdk_atom_intern_static_string ("CF_UNICODETEXT");
+  _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_CF_TEXT) = cdk_atom_intern_static_string ("CF_TEXT");
 
   /* MS Office 2007, at least, offers images in common file formats
    * using clipboard format names like "PNG" and "JFIF". So we follow
-   * the lead and map the GDK target name "image/png" to the clipboard
+   * the lead and map the CDK target name "image/png" to the clipboard
    * format name "PNG" etc.
    */
-  _cdk_cf_array_index (cfs, GDK_WIN32_CF_INDEX_PNG) = RegisterClipboardFormatA ("PNG");
-  _cdk_cf_array_index (cfs, GDK_WIN32_CF_INDEX_JFIF) = RegisterClipboardFormatA ("JFIF");
-  _cdk_cf_array_index (cfs, GDK_WIN32_CF_INDEX_GIF) = RegisterClipboardFormatA ("GIF");
+  _cdk_cf_array_index (cfs, CDK_WIN32_CF_INDEX_PNG) = RegisterClipboardFormatA ("PNG");
+  _cdk_cf_array_index (cfs, CDK_WIN32_CF_INDEX_JFIF) = RegisterClipboardFormatA ("JFIF");
+  _cdk_cf_array_index (cfs, CDK_WIN32_CF_INDEX_GIF) = RegisterClipboardFormatA ("GIF");
 
-  _cdk_cf_array_index (cfs, GDK_WIN32_CF_INDEX_UNIFORMRESOURCELOCATORW) = RegisterClipboardFormatA ("UniformResourceLocatorW");
-  _cdk_cf_array_index (cfs, GDK_WIN32_CF_INDEX_CFSTR_SHELLIDLIST) = RegisterClipboardFormatA (CFSTR_SHELLIDLIST);
-  _cdk_cf_array_index (cfs, GDK_WIN32_CF_INDEX_HTML_FORMAT) = RegisterClipboardFormatA ("HTML Format");
-  _cdk_cf_array_index (cfs, GDK_WIN32_CF_INDEX_TEXT_HTML) = RegisterClipboardFormatA ("text/html");
+  _cdk_cf_array_index (cfs, CDK_WIN32_CF_INDEX_UNIFORMRESOURCELOCATORW) = RegisterClipboardFormatA ("UniformResourceLocatorW");
+  _cdk_cf_array_index (cfs, CDK_WIN32_CF_INDEX_CFSTR_SHELLIDLIST) = RegisterClipboardFormatA (CFSTR_SHELLIDLIST);
+  _cdk_cf_array_index (cfs, CDK_WIN32_CF_INDEX_HTML_FORMAT) = RegisterClipboardFormatA ("HTML Format");
+  _cdk_cf_array_index (cfs, CDK_WIN32_CF_INDEX_TEXT_HTML) = RegisterClipboardFormatA ("text/html");
 
-  _cdk_cf_array_index (cfs, GDK_WIN32_CF_INDEX_IMAGE_PNG) = RegisterClipboardFormatA ("image/png");
-  _cdk_cf_array_index (cfs, GDK_WIN32_CF_INDEX_IMAGE_JPEG) = RegisterClipboardFormatA ("image/jpeg");
-  _cdk_cf_array_index (cfs, GDK_WIN32_CF_INDEX_IMAGE_BMP) = RegisterClipboardFormatA ("image/bmp");
-  _cdk_cf_array_index (cfs, GDK_WIN32_CF_INDEX_IMAGE_GIF) = RegisterClipboardFormatA ("image/gif");
-  _cdk_cf_array_index (cfs, GDK_WIN32_CF_INDEX_TEXT_URI_LIST) = RegisterClipboardFormatA ("text/uri-list");
-  _cdk_cf_array_index (cfs, GDK_WIN32_CF_INDEX_UTF8_STRING) = RegisterClipboardFormatA ("UTF8_STRING");
+  _cdk_cf_array_index (cfs, CDK_WIN32_CF_INDEX_IMAGE_PNG) = RegisterClipboardFormatA ("image/png");
+  _cdk_cf_array_index (cfs, CDK_WIN32_CF_INDEX_IMAGE_JPEG) = RegisterClipboardFormatA ("image/jpeg");
+  _cdk_cf_array_index (cfs, CDK_WIN32_CF_INDEX_IMAGE_BMP) = RegisterClipboardFormatA ("image/bmp");
+  _cdk_cf_array_index (cfs, CDK_WIN32_CF_INDEX_IMAGE_GIF) = RegisterClipboardFormatA ("image/gif");
+  _cdk_cf_array_index (cfs, CDK_WIN32_CF_INDEX_TEXT_URI_LIST) = RegisterClipboardFormatA ("text/uri-list");
+  _cdk_cf_array_index (cfs, CDK_WIN32_CF_INDEX_UTF8_STRING) = RegisterClipboardFormatA ("UTF8_STRING");
 
   win32_selection->sel_prop_table = g_hash_table_new (NULL, NULL);
   win32_selection->sel_owner_table = g_hash_table_new (NULL, NULL);
@@ -464,9 +464,9 @@ cdk_win32_selection_init (CdkWin32Selection *win32_selection)
    * W32-compatible rich text format, but that's too complex to address right now.
    */
   comp = g_array_sized_new (FALSE, FALSE, sizeof (CdkSelTargetFormat), 3);
-  fmt.target = _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_UTF8_STRING);
+  fmt.target = _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_UTF8_STRING);
 
-  fmt.format = _cdk_cf_array_index (cfs, GDK_WIN32_CF_INDEX_UTF8_STRING);
+  fmt.format = _cdk_cf_array_index (cfs, CDK_WIN32_CF_INDEX_UTF8_STRING);
   fmt.transmute = FALSE;
   g_array_append_val (comp, fmt);
 
@@ -481,48 +481,48 @@ cdk_win32_selection_init (CdkWin32Selection *win32_selection)
 
 
   comp = g_array_sized_new (FALSE, FALSE, sizeof (CdkSelTargetFormat), 3);
-  fmt.target = _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_IMAGE_PNG);
+  fmt.target = _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_IMAGE_PNG);
 
-  fmt.format = _cdk_cf_array_index (cfs, GDK_WIN32_CF_INDEX_IMAGE_PNG);
+  fmt.format = _cdk_cf_array_index (cfs, CDK_WIN32_CF_INDEX_IMAGE_PNG);
   fmt.transmute = FALSE;
   g_array_append_val (comp, fmt);
 
-  fmt.format = _cdk_cf_array_index (cfs, GDK_WIN32_CF_INDEX_PNG);
+  fmt.format = _cdk_cf_array_index (cfs, CDK_WIN32_CF_INDEX_PNG);
   g_array_append_val (comp, fmt);
 
   g_hash_table_replace (win32_selection->compatibility_formats, fmt.target, comp);
 
 
   comp = g_array_sized_new (FALSE, FALSE, sizeof (CdkSelTargetFormat), 4);
-  fmt.target = _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_IMAGE_JPEG);
+  fmt.target = _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_IMAGE_JPEG);
 
-  fmt.format = _cdk_cf_array_index (cfs, GDK_WIN32_CF_INDEX_IMAGE_JPEG);
+  fmt.format = _cdk_cf_array_index (cfs, CDK_WIN32_CF_INDEX_IMAGE_JPEG);
   fmt.transmute = FALSE;
   g_array_append_val (comp, fmt);
 
-  fmt.format = _cdk_cf_array_index (cfs, GDK_WIN32_CF_INDEX_JFIF);
+  fmt.format = _cdk_cf_array_index (cfs, CDK_WIN32_CF_INDEX_JFIF);
   g_array_append_val (comp, fmt);
 
   g_hash_table_replace (win32_selection->compatibility_formats, fmt.target, comp);
 
 
   comp = g_array_sized_new (FALSE, FALSE, sizeof (CdkSelTargetFormat), 4);
-  fmt.target = _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_IMAGE_GIF);
+  fmt.target = _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_IMAGE_GIF);
 
-  fmt.format = _cdk_cf_array_index (cfs, GDK_WIN32_CF_INDEX_IMAGE_GIF);
+  fmt.format = _cdk_cf_array_index (cfs, CDK_WIN32_CF_INDEX_IMAGE_GIF);
   fmt.transmute = FALSE;
   g_array_append_val (comp, fmt);
 
-  fmt.format = _cdk_cf_array_index (cfs, GDK_WIN32_CF_INDEX_GIF);
+  fmt.format = _cdk_cf_array_index (cfs, CDK_WIN32_CF_INDEX_GIF);
   g_array_append_val (comp, fmt);
 
   g_hash_table_replace (win32_selection->compatibility_formats, fmt.target, comp);
 
 
   comp = g_array_sized_new (FALSE, FALSE, sizeof (CdkSelTargetFormat), 2);
-  fmt.target = _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_IMAGE_BMP);
+  fmt.target = _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_IMAGE_BMP);
 
-  fmt.format = _cdk_cf_array_index (cfs, GDK_WIN32_CF_INDEX_IMAGE_BMP);
+  fmt.format = _cdk_cf_array_index (cfs, CDK_WIN32_CF_INDEX_IMAGE_BMP);
   fmt.transmute = FALSE;
   g_array_append_val (comp, fmt);
 
@@ -535,13 +535,13 @@ cdk_win32_selection_init (CdkWin32Selection *win32_selection)
 
 /* Not implemented, but definitely possible
   comp = g_array_sized_new (FALSE, FALSE, 2);
-  fmt.target = _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_TEXT_URI_LIST);
+  fmt.target = _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_TEXT_URI_LIST);
 
-  fmt.format = _cdk_cf_array_index (cfs, GDK_WIN32_CF_INDEX_TEXT_URI_LIST);
+  fmt.format = _cdk_cf_array_index (cfs, CDK_WIN32_CF_INDEX_TEXT_URI_LIST);
   fmt.transmute = FALSE;
   g_array_append_val (comp, fmt);
 
-  fmt.format = _cdk_cf_array_index (cfs, GDK_WIN32_CF_INDEX_CFSTR_SHELLIDLIST);
+  fmt.format = _cdk_cf_array_index (cfs, CDK_WIN32_CF_INDEX_CFSTR_SHELLIDLIST);
   fmt.transmute = TRUE;
   g_array_append_val (comp, fmt);
 
@@ -554,10 +554,10 @@ cdk_win32_selection_init (CdkWin32Selection *win32_selection)
   fmt.format = CF_TEXT;
   fmt.transmute = FALSE;
 
-  fmt.target = _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_CF_TEXT);
+  fmt.target = _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_CF_TEXT);
   g_array_append_val (comp, fmt);
 
-  fmt.target = _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_UTF8_STRING);
+  fmt.target = _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_UTF8_STRING);
   fmt.transmute = TRUE;
   g_array_append_val (comp, fmt);
 
@@ -568,10 +568,10 @@ cdk_win32_selection_init (CdkWin32Selection *win32_selection)
   fmt.format = CF_UNICODETEXT;
   fmt.transmute = FALSE;
 
-  fmt.target = _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_CF_UNICODETEXT);
+  fmt.target = _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_CF_UNICODETEXT);
   g_array_append_val (comp, fmt);
 
-  fmt.target = _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_UTF8_STRING);
+  fmt.target = _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_UTF8_STRING);
   fmt.transmute = TRUE;
   g_array_append_val (comp, fmt);
 
@@ -579,52 +579,52 @@ cdk_win32_selection_init (CdkWin32Selection *win32_selection)
 
 
   comp = g_array_sized_new (FALSE, FALSE, sizeof (CdkSelTargetFormat), 3);
-  fmt.format = _cdk_cf_array_index (cfs, GDK_WIN32_CF_INDEX_PNG);
+  fmt.format = _cdk_cf_array_index (cfs, CDK_WIN32_CF_INDEX_PNG);
   fmt.transmute = FALSE;
 
-  fmt.target = _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_PNG);
+  fmt.target = _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_PNG);
   g_array_append_val (comp, fmt);
 
-  fmt.target = _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_IMAGE_PNG);
+  fmt.target = _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_IMAGE_PNG);
   g_array_append_val (comp, fmt);
 
-  g_hash_table_replace (win32_selection->compatibility_targets, GINT_TO_POINTER (_cdk_cf_array_index (cfs, GDK_WIN32_CF_INDEX_PNG)), comp);
+  g_hash_table_replace (win32_selection->compatibility_targets, GINT_TO_POINTER (_cdk_cf_array_index (cfs, CDK_WIN32_CF_INDEX_PNG)), comp);
 
 
   comp = g_array_sized_new (FALSE, FALSE, sizeof (CdkSelTargetFormat), 4);
-  fmt.format = _cdk_cf_array_index (cfs, GDK_WIN32_CF_INDEX_JFIF);
+  fmt.format = _cdk_cf_array_index (cfs, CDK_WIN32_CF_INDEX_JFIF);
   fmt.transmute = FALSE;
 
-  fmt.target = _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_JFIF);
+  fmt.target = _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_JFIF);
   g_array_append_val (comp, fmt);
 
-  fmt.target = _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_IMAGE_JPEG);
+  fmt.target = _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_IMAGE_JPEG);
   g_array_append_val (comp, fmt);
 
-  g_hash_table_replace (win32_selection->compatibility_targets, GINT_TO_POINTER (_cdk_cf_array_index (cfs, GDK_WIN32_CF_INDEX_JFIF)), comp);
+  g_hash_table_replace (win32_selection->compatibility_targets, GINT_TO_POINTER (_cdk_cf_array_index (cfs, CDK_WIN32_CF_INDEX_JFIF)), comp);
 
 
   comp = g_array_sized_new (FALSE, FALSE, sizeof (CdkSelTargetFormat), 4);
-  fmt.format = _cdk_cf_array_index (cfs, GDK_WIN32_CF_INDEX_GIF);
+  fmt.format = _cdk_cf_array_index (cfs, CDK_WIN32_CF_INDEX_GIF);
   fmt.transmute = FALSE;
 
-  fmt.target = _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_GIF);
+  fmt.target = _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_GIF);
   g_array_append_val (comp, fmt);
 
-  fmt.target = _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_IMAGE_GIF);
+  fmt.target = _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_IMAGE_GIF);
   g_array_append_val (comp, fmt);
 
-  g_hash_table_replace (win32_selection->compatibility_targets, GINT_TO_POINTER (_cdk_cf_array_index (cfs, GDK_WIN32_CF_INDEX_GIF)), comp);
+  g_hash_table_replace (win32_selection->compatibility_targets, GINT_TO_POINTER (_cdk_cf_array_index (cfs, CDK_WIN32_CF_INDEX_GIF)), comp);
 
 
   comp = g_array_sized_new (FALSE, FALSE, sizeof (CdkSelTargetFormat), 3);
   fmt.format = CF_DIB;
   fmt.transmute = FALSE;
 
-  fmt.target = _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_CF_DIB);
+  fmt.target = _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_CF_DIB);
   g_array_append_val (comp, fmt);
 
-  fmt.target = _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_IMAGE_BMP);
+  fmt.target = _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_IMAGE_BMP);
   fmt.transmute = TRUE;
   g_array_append_val (comp, fmt);
 
@@ -632,17 +632,17 @@ cdk_win32_selection_init (CdkWin32Selection *win32_selection)
 
 
   comp = g_array_sized_new (FALSE, FALSE, sizeof (CdkSelTargetFormat), 3);
-  fmt.format = _cdk_cf_array_index (cfs, GDK_WIN32_CF_INDEX_CFSTR_SHELLIDLIST);
+  fmt.format = _cdk_cf_array_index (cfs, CDK_WIN32_CF_INDEX_CFSTR_SHELLIDLIST);
   fmt.transmute = FALSE;
 
-  fmt.target = _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_CFSTR_SHELLIDLIST);
+  fmt.target = _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_CFSTR_SHELLIDLIST);
   g_array_append_val (comp, fmt);
 
-  fmt.target = _cdk_atom_array_index (atoms, GDK_WIN32_ATOM_INDEX_TEXT_URI_LIST);
+  fmt.target = _cdk_atom_array_index (atoms, CDK_WIN32_ATOM_INDEX_TEXT_URI_LIST);
   fmt.transmute = TRUE;
   g_array_append_val (comp, fmt);
 
-  g_hash_table_replace (win32_selection->compatibility_targets, GINT_TO_POINTER (_cdk_cf_array_index (cfs, GDK_WIN32_CF_INDEX_CFSTR_SHELLIDLIST)), comp);
+  g_hash_table_replace (win32_selection->compatibility_targets, GINT_TO_POINTER (_cdk_cf_array_index (cfs, CDK_WIN32_CF_INDEX_CFSTR_SHELLIDLIST)), comp);
 }
 
 /* The specifications for COMPOUND_TEXT and STRING specify that C0 and
@@ -721,13 +721,13 @@ selection_property_store (CdkWindow *owner,
   CdkSelProp *prop;
   CdkWin32Selection *win32_sel = _cdk_win32_selection_get ();
 
-  prop = g_hash_table_lookup (win32_sel->sel_prop_table, GDK_WINDOW_HWND (owner));
+  prop = g_hash_table_lookup (win32_sel->sel_prop_table, CDK_WINDOW_HWND (owner));
 
   if (prop != NULL)
     {
       g_free (prop->data);
       g_free (prop);
-      g_hash_table_remove (win32_sel->sel_prop_table, GDK_WINDOW_HWND (owner));
+      g_hash_table_remove (win32_sel->sel_prop_table, CDK_WINDOW_HWND (owner));
     }
 
   prop = g_new (CdkSelProp, 1);
@@ -737,7 +737,7 @@ selection_property_store (CdkWindow *owner,
   prop->bitness = format;
   prop->target = type;
 
-  g_hash_table_insert (win32_sel->sel_prop_table, GDK_WINDOW_HWND (owner), prop);
+  g_hash_table_insert (win32_sel->sel_prop_table, CDK_WINDOW_HWND (owner), prop);
 }
 
 void
@@ -753,7 +753,7 @@ _cdk_dropfiles_store (gchar *data)
       win32_sel->dropfiles_prop->data = (guchar *) data;
       win32_sel->dropfiles_prop->length = strlen (data) + 1;
       win32_sel->dropfiles_prop->bitness = 8;
-      win32_sel->dropfiles_prop->target = _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_TEXT_URI_LIST);
+      win32_sel->dropfiles_prop->target = _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_TEXT_URI_LIST);
     }
   else
     {
@@ -776,7 +776,7 @@ generate_selection_notify (CdkWindow *requestor,
   CdkEvent tmp_event;
 
   memset (&tmp_event, 0, sizeof (tmp_event));
-  tmp_event.selection.type = GDK_SELECTION_NOTIFY;
+  tmp_event.selection.type = CDK_SELECTION_NOTIFY;
   tmp_event.selection.window = requestor;
   tmp_event.selection.send_event = FALSE;
   tmp_event.selection.selection = selection;
@@ -795,7 +795,7 @@ _cdk_win32_clear_clipboard_queue ()
   CdkWin32ClipboardQueueInfo *info;
   CdkWin32Selection *win32_sel = _cdk_win32_selection_get ();
 
-  GDK_NOTE (DND, g_print ("Clear clipboard queue\n"));
+  CDK_NOTE (DND, g_print ("Clear clipboard queue\n"));
 
   for (tmp_list = clipboard_queue; tmp_list; tmp_list = next)
     {
@@ -805,10 +805,10 @@ _cdk_win32_clear_clipboard_queue ()
       g_list_free (tmp_list);
       switch (info->action)
         {
-        case GDK_WIN32_CLIPBOARD_QUEUE_ACTION_TARGETS:
+        case CDK_WIN32_CLIPBOARD_QUEUE_ACTION_TARGETS:
           break;
-        case GDK_WIN32_CLIPBOARD_QUEUE_ACTION_CONVERT:
-          generate_selection_notify (info->requestor, info->selection, info->target, GDK_NONE, info->time);
+        case CDK_WIN32_CLIPBOARD_QUEUE_ACTION_CONVERT:
+          generate_selection_notify (info->requestor, info->selection, info->target, CDK_NONE, info->time);
           break;
         }
       g_clear_object (&info->requestor);
@@ -833,31 +833,31 @@ send_targets_request (guint time)
     return;
 
   owner = _cdk_win32_display_get_selection_owner (cdk_display_get_default (),
-                                                  GDK_SELECTION_CLIPBOARD);
+                                                  CDK_SELECTION_CLIPBOARD);
 
   if (owner == NULL)
     return;
 
   if (win32_sel->clipboard_opened_for == INVALID_HANDLE_VALUE)
     {
-      if (OpenClipboard (GDK_WINDOW_HWND (owner)))
+      if (OpenClipboard (CDK_WINDOW_HWND (owner)))
         {
-          win32_sel->clipboard_opened_for = GDK_WINDOW_HWND (owner);
-          GDK_NOTE (DND, g_print ("Opened clipboard for 0x%p @ %s:%d\n", win32_sel->clipboard_opened_for, __FILE__, __LINE__));
+          win32_sel->clipboard_opened_for = CDK_WINDOW_HWND (owner);
+          CDK_NOTE (DND, g_print ("Opened clipboard for 0x%p @ %s:%d\n", win32_sel->clipboard_opened_for, __FILE__, __LINE__));
         }
     }
 
-  GDK_NOTE (DND, g_print ("... sending GDK_SELECTION_REQUEST to ourselves\n"));
+  CDK_NOTE (DND, g_print ("... sending CDK_SELECTION_REQUEST to ourselves\n"));
   memset (&tmp_event, 0, sizeof (tmp_event));
-  tmp_event.selection.type = GDK_SELECTION_REQUEST;
+  tmp_event.selection.type = CDK_SELECTION_REQUEST;
   tmp_event.selection.window = owner;
   tmp_event.selection.send_event = FALSE;
-  tmp_event.selection.selection = GDK_SELECTION_CLIPBOARD;
-  tmp_event.selection.target = _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_TARGETS);
-  tmp_event.selection.property = _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_GDK_SELECTION);
+  tmp_event.selection.selection = CDK_SELECTION_CLIPBOARD;
+  tmp_event.selection.target = _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_TARGETS);
+  tmp_event.selection.property = _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_CDK_SELECTION);
   tmp_event.selection.requestor = owner;
   tmp_event.selection.time = time;
-  win32_sel->property_change_target_atom = _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_TARGETS);
+  win32_sel->property_change_target_atom = _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_TARGETS);
 
   cdk_event_put (&tmp_event);
   win32_sel->targets_request_pending = TRUE;
@@ -972,7 +972,7 @@ get_compatibility_formats_for_target (CdkAtom target)
 
       /* Any format known to cdk-pixbuf can be presented as PNG or BMP */
       result = g_hash_table_lookup (win32_sel->compatibility_formats,
-                                    _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_IMAGE_PNG));
+                                    _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_IMAGE_PNG));
       break;
     }
 
@@ -1016,7 +1016,7 @@ _cdk_win32_add_format_to_targets (UINT     format,
   if (format_name != NULL)
     {
       target_atom = cdk_atom_intern (format_name, FALSE);
-      GDK_NOTE (DND, g_print ("Maybe add as-is format %s (0x%p)\n", format_name, target_atom));
+      CDK_NOTE (DND, g_print ("Maybe add as-is format %s (0x%p)\n", format_name, target_atom));
       g_free (format_name);
       if (array && target_atom != 0)
         {
@@ -1562,34 +1562,34 @@ transmute_selection_format (UINT          from_format,
                             guchar      **set_data,
                             gint         *set_data_length)
 {
-  if ((to_target == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_IMAGE_PNG) &&
-       from_format == _cdk_win32_selection_cf (GDK_WIN32_CF_INDEX_PNG)) ||
-      (to_target == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_IMAGE_JPEG) &&
-       from_format == _cdk_win32_selection_cf (GDK_WIN32_CF_INDEX_JFIF)) ||
-      (to_target == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_GIF) &&
-       from_format == _cdk_win32_selection_cf (GDK_WIN32_CF_INDEX_GIF)))
+  if ((to_target == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_IMAGE_PNG) &&
+       from_format == _cdk_win32_selection_cf (CDK_WIN32_CF_INDEX_PNG)) ||
+      (to_target == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_IMAGE_JPEG) &&
+       from_format == _cdk_win32_selection_cf (CDK_WIN32_CF_INDEX_JFIF)) ||
+      (to_target == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_GIF) &&
+       from_format == _cdk_win32_selection_cf (CDK_WIN32_CF_INDEX_GIF)))
     {
       /* No transmutation needed */
       *set_data = g_memdup (data, length);
       *set_data_length = length;
     }
-  else if (to_target == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_UTF8_STRING) &&
+  else if (to_target == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_UTF8_STRING) &&
            from_format == CF_UNICODETEXT)
     {
       transmute_cf_unicodetext_to_utf8_string (data, length, set_data, set_data_length, NULL);
     }
-  else if (to_target == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_UTF8_STRING) &&
+  else if (to_target == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_UTF8_STRING) &&
            from_format == CF_TEXT)
     {
       transmute_cf_text_to_utf8_string (data, length, set_data, set_data_length, NULL);
     }
-  else if (to_target == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_IMAGE_BMP) &&
+  else if (to_target == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_IMAGE_BMP) &&
            (from_format == CF_DIB || from_format == CF_DIBV5))
     {
       transmute_cf_dib_to_image_bmp (data, length, set_data, set_data_length, NULL);
     }
-  else if (to_target == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_TEXT_URI_LIST) &&
-           from_format == _cdk_win32_selection_cf (GDK_WIN32_CF_INDEX_CFSTR_SHELLIDLIST))
+  else if (to_target == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_TEXT_URI_LIST) &&
+           from_format == _cdk_win32_selection_cf (CDK_WIN32_CF_INDEX_CFSTR_SHELLIDLIST))
     {
       transmute_cf_shell_id_list_to_text_uri_list (data, length, set_data, set_data_length, NULL);
     }
@@ -1607,40 +1607,40 @@ transmute_selection_target (CdkAtom       from_target,
                             guchar      **set_data,
                             gint         *set_data_length)
 {
-  if ((from_target == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_IMAGE_PNG) &&
-       to_format == _cdk_win32_selection_cf (GDK_WIN32_CF_INDEX_PNG)) ||
-      (from_target == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_IMAGE_JPEG) &&
-       to_format == _cdk_win32_selection_cf (GDK_WIN32_CF_INDEX_JFIF)) ||
-      (from_target == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_GIF) &&
-       to_format == _cdk_win32_selection_cf (GDK_WIN32_CF_INDEX_GIF)))
+  if ((from_target == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_IMAGE_PNG) &&
+       to_format == _cdk_win32_selection_cf (CDK_WIN32_CF_INDEX_PNG)) ||
+      (from_target == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_IMAGE_JPEG) &&
+       to_format == _cdk_win32_selection_cf (CDK_WIN32_CF_INDEX_JFIF)) ||
+      (from_target == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_GIF) &&
+       to_format == _cdk_win32_selection_cf (CDK_WIN32_CF_INDEX_GIF)))
     {
       /* No conversion needed */
       *set_data = g_memdup (data, length);
       *set_data_length = length;
     }
-  else if (from_target == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_UTF8_STRING) &&
+  else if (from_target == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_UTF8_STRING) &&
            to_format == CF_UNICODETEXT)
     {
       transmute_utf8_string_to_cf_unicodetext (data, length, set_data, set_data_length, NULL);
     }
-  else if (from_target == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_UTF8_STRING) &&
+  else if (from_target == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_UTF8_STRING) &&
            to_format == CF_TEXT)
     {
       transmute_utf8_string_to_cf_text (data, length, set_data, set_data_length, NULL);
     }
-  else if (from_target == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_IMAGE_BMP) &&
+  else if (from_target == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_IMAGE_BMP) &&
            to_format == CF_DIB)
     {
       transmute_image_bmp_to_cf_dib (data, length, set_data, set_data_length, NULL);
     }
-  else if (from_target == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_IMAGE_BMP) &&
+  else if (from_target == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_IMAGE_BMP) &&
            to_format == CF_DIBV5)
     {
       transmute_image_bmp_to_cf_dib (data, length, set_data, set_data_length, NULL);
     }
 /*
-  else if (from_target == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_TEXT_URI_LIST) &&
-           to_format == _cdk_win32_selection_cf (GDK_WIN32_CF_INDEX_CFSTR_SHELLIDLIST))
+  else if (from_target == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_TEXT_URI_LIST) &&
+           to_format == _cdk_win32_selection_cf (CDK_WIN32_CF_INDEX_CFSTR_SHELLIDLIST))
     {
       transmute_text_uri_list_to_shell_id_list (data, length, set_data, set_data_length, NULL);
     }
@@ -1662,7 +1662,7 @@ convert_clipboard_selection_to_targets_target (CdkWindow *requestor)
   for (fmt = 0; 0 != (fmt = EnumClipboardFormats (fmt)); )
     _cdk_win32_add_format_to_targets (fmt, targets, NULL);
 
-  GDK_NOTE (DND, {
+  CDK_NOTE (DND, {
       g_print ("... ");
       for (i = 0; i < targets->len; i++)
         {
@@ -1685,15 +1685,15 @@ convert_clipboard_selection_to_targets_target (CdkWindow *requestor)
         targets_only[i] = g_array_index (targets, CdkSelTargetFormat, i).target;
 
       g_array_free (targets, TRUE);
-      selection_property_store (requestor, GDK_SELECTION_TYPE_ATOM,
+      selection_property_store (requestor, CDK_SELECTION_TYPE_ATOM,
                                 32, (guchar *) targets_only,
                                 len * sizeof (CdkAtom));
-      return _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_GDK_SELECTION);
+      return _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_CDK_SELECTION);
     }
   else
     {
       g_array_free (targets, TRUE);
-      return GDK_NONE;
+      return CDK_NONE;
     }
 }
 
@@ -1706,7 +1706,7 @@ convert_clipboard_selection_to_target (CdkWindow *requestor,
   guchar *ptr;
   gint length;
   gboolean transmute = FALSE;
-  CdkAtom result = _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_GDK_SELECTION);
+  CdkAtom result = _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_CDK_SELECTION);
   gboolean found;
   gchar *atom_name;
 
@@ -1745,10 +1745,10 @@ convert_clipboard_selection_to_target (CdkWindow *requestor,
     }
 
   if (format == 0)
-    return GDK_NONE;
+    return CDK_NONE;
 
   if ((hdata = GetClipboardData (format)) == NULL)
-    return GDK_NONE;
+    return CDK_NONE;
 
   if ((ptr = GlobalLock (hdata)) != NULL)
     {
@@ -1756,7 +1756,7 @@ convert_clipboard_selection_to_target (CdkWindow *requestor,
       gint data_len = 0;
       length = GlobalSize (hdata);
 
-      GDK_NOTE (DND, g_print ("... format 0x%x: %d bytes\n", format, length));
+      CDK_NOTE (DND, g_print ("... format 0x%x: %d bytes\n", format, length));
 
       if (transmute)
         {
@@ -1772,7 +1772,7 @@ convert_clipboard_selection_to_target (CdkWindow *requestor,
         selection_property_store (requestor, target,
                                   8, data, data_len);
       else
-        result = GDK_NONE;
+        result = CDK_NONE;
 
       GlobalUnlock (hdata);
     }
@@ -1788,7 +1788,7 @@ convert_selection_with_opened_clipboard (CdkDisplay *display,
 {
   CdkAtom property;
 
-  if (target == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_TARGETS))
+  if (target == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_TARGETS))
     property = convert_clipboard_selection_to_targets_target (requestor);
   else
     property = convert_clipboard_selection_to_target (requestor, target);
@@ -1820,7 +1820,7 @@ open_clipboard_timeout (gpointer data)
   CdkWin32ClipboardQueueInfo *info;
   CdkWin32Selection *win32_sel = _cdk_win32_selection_get ();
 
-  GDK_NOTE (DND, g_print ("Open clipboard timeout ticks\n"));
+  CDK_NOTE (DND, g_print ("Open clipboard timeout ticks\n"));
 
   /* Clear out old and invalid entries */
   for (tmp_list = clipboard_queue; tmp_list; tmp_list = next)
@@ -1828,17 +1828,17 @@ open_clipboard_timeout (gpointer data)
       info = (CdkWin32ClipboardQueueInfo *) tmp_list->data;
       next = g_list_next (tmp_list);
 
-      if (GDK_WINDOW_DESTROYED (info->requestor) ||
+      if (CDK_WINDOW_DESTROYED (info->requestor) ||
           info->idle_time >= CLIPBOARD_IDLE_ABORT_TIME)
         {
           clipboard_queue = g_list_remove_link (clipboard_queue, tmp_list);
           g_list_free (tmp_list);
           switch (info->action)
             {
-            case GDK_WIN32_CLIPBOARD_QUEUE_ACTION_TARGETS:
+            case CDK_WIN32_CLIPBOARD_QUEUE_ACTION_TARGETS:
               break;
-            case GDK_WIN32_CLIPBOARD_QUEUE_ACTION_CONVERT:
-              generate_selection_notify (info->requestor, info->selection, info->target, GDK_NONE, info->time);
+            case CDK_WIN32_CLIPBOARD_QUEUE_ACTION_CONVERT:
+              generate_selection_notify (info->requestor, info->selection, info->target, CDK_NONE, info->time);
               break;
             }
           g_clear_object (&info->requestor);
@@ -1848,13 +1848,13 @@ open_clipboard_timeout (gpointer data)
 
   if (clipboard_queue == NULL)
     {
-      GDK_NOTE (DND, g_print ("Stopping open clipboard timer\n"));
+      CDK_NOTE (DND, g_print ("Stopping open clipboard timer\n"));
 
       if (win32_sel->clipboard_opened_for != INVALID_HANDLE_VALUE)
         {
           API_CALL (CloseClipboard, ());
           win32_sel->clipboard_opened_for = INVALID_HANDLE_VALUE;
-          GDK_NOTE (DND, g_print ("Closed clipboard @ %s:%d\n", __FILE__, __LINE__));
+          CDK_NOTE (DND, g_print ("Closed clipboard @ %s:%d\n", __FILE__, __LINE__));
         }
 
       return FALSE;
@@ -1871,23 +1871,23 @@ open_clipboard_timeout (gpointer data)
        * but TARGETS needs to open the clipboard with the hande of the
        * owner window.
        */
-      if (info->action == GDK_WIN32_CLIPBOARD_QUEUE_ACTION_TARGETS &&
+      if (info->action == CDK_WIN32_CLIPBOARD_QUEUE_ACTION_TARGETS &&
           win32_sel->clipboard_opened_for == NULL)
         {
-          GDK_NOTE (DND, g_print ("Need to re-open clipboard, closing\n"));
+          CDK_NOTE (DND, g_print ("Need to re-open clipboard, closing\n"));
           API_CALL (CloseClipboard, ());
           win32_sel->clipboard_opened_for = INVALID_HANDLE_VALUE;
         }
 
       if (win32_sel->clipboard_opened_for == INVALID_HANDLE_VALUE)
         {
-          if (!OpenClipboard (GDK_WINDOW_HWND (info->requestor)))
+          if (!OpenClipboard (CDK_WINDOW_HWND (info->requestor)))
             {
               info->idle_time += 1;
               continue;
             }
-          win32_sel->clipboard_opened_for = GDK_WINDOW_HWND (info->requestor);
-          GDK_NOTE (DND, g_print ("Opened clipboard for 0x%p @ %s:%d\n", win32_sel->clipboard_opened_for, __FILE__, __LINE__));
+          win32_sel->clipboard_opened_for = CDK_WINDOW_HWND (info->requestor);
+          CDK_NOTE (DND, g_print ("Opened clipboard for 0x%p @ %s:%d\n", win32_sel->clipboard_opened_for, __FILE__, __LINE__));
         }
 
       clipboard_queue = g_list_remove_link (clipboard_queue, tmp_list);
@@ -1895,18 +1895,18 @@ open_clipboard_timeout (gpointer data)
 
       switch (info->action)
         {
-        case GDK_WIN32_CLIPBOARD_QUEUE_ACTION_CONVERT:
+        case CDK_WIN32_CLIPBOARD_QUEUE_ACTION_CONVERT:
           property = convert_selection_with_opened_clipboard (info->display,
                                                               info->requestor,
                                                               info->target,
                                                               info->time);
           generate_selection_notify (info->requestor,
-                                     GDK_SELECTION_CLIPBOARD,
+                                     CDK_SELECTION_CLIPBOARD,
                                      info->target,
                                      property,
                                      info->time);
           break;
-        case GDK_WIN32_CLIPBOARD_QUEUE_ACTION_TARGETS:
+        case CDK_WIN32_CLIPBOARD_QUEUE_ACTION_TARGETS:
           announce_delayrendered_targets_with_opened_clipboard (win32_sel);
           break;
         default:
@@ -1924,10 +1924,10 @@ open_clipboard_timeout (gpointer data)
     {
       API_CALL (CloseClipboard, ());
       win32_sel->clipboard_opened_for = INVALID_HANDLE_VALUE;
-      GDK_NOTE (DND, g_print ("Closed clipboard @ %s:%d\n", __FILE__, __LINE__));
+      CDK_NOTE (DND, g_print ("Closed clipboard @ %s:%d\n", __FILE__, __LINE__));
     }
 
-  GDK_NOTE (DND, g_print ("Stopping open clipboard timer\n"));
+  CDK_NOTE (DND, g_print ("Stopping open clipboard timer\n"));
 
   return FALSE;
 }
@@ -1958,20 +1958,20 @@ queue_open_clipboard (CdkWin32ClipboardQueueAction  action,
 
   info->display = display;
   g_set_object (&info->requestor, requestor);
-  info->selection = GDK_SELECTION_CLIPBOARD;
+  info->selection = CDK_SELECTION_CLIPBOARD;
   info->target = target;
   info->idle_time = 0;
   info->time = time;
   info->action = action;
 
-  GDK_NOTE (DND, g_print ("Queueing open clipboard\n"));
+  CDK_NOTE (DND, g_print ("Queueing open clipboard\n"));
 
   if (win32_sel->clipboard_opened_for == INVALID_HANDLE_VALUE &&
       clipboard_queue == NULL)
     {
       id = cdk_threads_add_timeout_seconds (1, (GSourceFunc) open_clipboard_timeout, NULL);
       g_source_set_name_by_id (id, "[cdk-win32] open_clipboard_timeout");
-      GDK_NOTE (DND, g_print ("Started open clipboard timer\n"));
+      CDK_NOTE (DND, g_print ("Started open clipboard timer\n"));
     }
 
   clipboard_queue = g_list_append (clipboard_queue, info);
@@ -1987,21 +1987,21 @@ _cdk_win32_display_set_selection_owner (CdkDisplay *display,
   HWND hwnd;
   CdkWin32Selection *win32_sel = _cdk_win32_selection_get ();
 
-  g_return_val_if_fail (selection != GDK_NONE, FALSE);
+  g_return_val_if_fail (selection != CDK_NONE, FALSE);
 
-  GDK_NOTE (DND, {
+  CDK_NOTE (DND, {
       gchar *sel_name = cdk_atom_name (selection);
 
       g_print ("cdk_selection_owner_set_for_display: %p %s\n",
-	       (owner ? GDK_WINDOW_HWND (owner) : NULL),
+	       (owner ? CDK_WINDOW_HWND (owner) : NULL),
 	       sel_name);
       g_free (sel_name);
     });
 
-  if (selection != GDK_SELECTION_CLIPBOARD)
+  if (selection != CDK_SELECTION_CLIPBOARD)
     {
       if (owner != NULL)
-        g_hash_table_insert (win32_sel->sel_owner_table, selection, GDK_WINDOW_HWND (owner));
+        g_hash_table_insert (win32_sel->sel_owner_table, selection, CDK_WINDOW_HWND (owner));
       else
         g_hash_table_remove (win32_sel->sel_owner_table, selection);
 
@@ -2011,10 +2011,10 @@ _cdk_win32_display_set_selection_owner (CdkDisplay *display,
   /* Rest of this function handles the CLIPBOARD selection */
   if (owner != NULL)
     {
-      if (GDK_WINDOW_DESTROYED (owner))
+      if (CDK_WINDOW_DESTROYED (owner))
 	return FALSE;
 
-      hwnd = GDK_WINDOW_HWND (owner);
+      hwnd = CDK_WINDOW_HWND (owner);
     }
   else
     hwnd = NULL;
@@ -2024,7 +2024,7 @@ _cdk_win32_display_set_selection_owner (CdkDisplay *display,
     {
       API_CALL (CloseClipboard, ());
       win32_sel->clipboard_opened_for = INVALID_HANDLE_VALUE;
-      GDK_NOTE (DND, g_print ("Closed clipboard @ %s:%d\n", __FILE__, __LINE__));
+      CDK_NOTE (DND, g_print ("Closed clipboard @ %s:%d\n", __FILE__, __LINE__));
     }
 
   if (!OpenClipboard (hwnd))
@@ -2036,15 +2036,15 @@ _cdk_win32_display_set_selection_owner (CdkDisplay *display,
     }
 
   win32_sel->clipboard_opened_for = hwnd;
-  GDK_NOTE (DND, g_print ("Opened clipboard for 0x%p @ %s:%d\n", win32_sel->clipboard_opened_for, __FILE__, __LINE__));
+  CDK_NOTE (DND, g_print ("Opened clipboard for 0x%p @ %s:%d\n", win32_sel->clipboard_opened_for, __FILE__, __LINE__));
   win32_sel->ignore_destroy_clipboard = TRUE;
-  GDK_NOTE (DND, g_print ("... EmptyClipboard()\n"));
+  CDK_NOTE (DND, g_print ("... EmptyClipboard()\n"));
   if (!API_CALL (EmptyClipboard, ()))
     {
       win32_sel->ignore_destroy_clipboard = FALSE;
       API_CALL (CloseClipboard, ());
       win32_sel->clipboard_opened_for = INVALID_HANDLE_VALUE;
-      GDK_NOTE (DND, g_print ("Closed clipboard @ %s:%d\n", __FILE__, __LINE__));
+      CDK_NOTE (DND, g_print ("Closed clipboard @ %s:%d\n", __FILE__, __LINE__));
       return FALSE;
     }
   win32_sel->ignore_destroy_clipboard = FALSE;
@@ -2055,14 +2055,14 @@ _cdk_win32_display_set_selection_owner (CdkDisplay *display,
   _cdk_win32_clear_clipboard_queue ();
 
   /* This is kind of risky, but we don't close the clipboard
-   * to ensure that it's still open when GDK_SELECTION_REQUEST
+   * to ensure that it's still open when CDK_SELECTION_REQUEST
    * is handled.
    */
   if (owner == NULL)
     {
       if (!API_CALL (CloseClipboard, ()))
         return FALSE;
-      GDK_NOTE (DND, g_print ("Closed clipboard @ %s:%d\n", __FILE__, __LINE__));
+      CDK_NOTE (DND, g_print ("Closed clipboard @ %s:%d\n", __FILE__, __LINE__));
       win32_sel->clipboard_opened_for = INVALID_HANDLE_VALUE;
     }
 
@@ -2079,9 +2079,9 @@ _cdk_win32_display_get_selection_owner (CdkDisplay *display,
   HWND selection_owner;
   CdkWin32Selection *win32_sel = _cdk_win32_selection_get ();
 
-  g_return_val_if_fail (selection != GDK_NONE, NULL);
+  g_return_val_if_fail (selection != CDK_NONE, NULL);
 
-  if (selection == GDK_SELECTION_CLIPBOARD)
+  if (selection == CDK_SELECTION_CLIPBOARD)
     selection_owner = GetClipboardOwner ();
   else
     selection_owner = g_hash_table_lookup (win32_sel->sel_owner_table, selection);
@@ -2092,12 +2092,12 @@ _cdk_win32_display_get_selection_owner (CdkDisplay *display,
   else
     window = NULL;
 
-  GDK_NOTE (DND, {
+  CDK_NOTE (DND, {
       gchar *sel_name = cdk_atom_name (selection);
 
       g_print ("cdk_selection_owner_get: %s = %p\n",
 	       sel_name,
-	       (window ? GDK_WINDOW_HWND (window) : NULL));
+	       (window ? CDK_WINDOW_HWND (window) : NULL));
       g_free (sel_name);
     });
 
@@ -2118,12 +2118,12 @@ convert_dnd_selection_to_target (CdkAtom    target,
   FORMATETC fmt;
   STGMEDIUM storage;
   HRESULT hr;
-  CdkAtom result = _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_OLE2_DND);
+  CdkAtom result = _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_OLE2_DND);
 
   g_assert (win32_sel->target_drag_context != NULL);
   g_assert (win32_sel->dnd_data_object_target != NULL);
 
-  context_win32 = GDK_WIN32_DRAG_CONTEXT (win32_sel->target_drag_context);
+  context_win32 = CDK_WIN32_DRAG_CONTEXT (win32_sel->target_drag_context);
 
   fmt.ptd = NULL;
   fmt.dwAspect = DVASPECT_CONTENT;
@@ -2136,7 +2136,7 @@ convert_dnd_selection_to_target (CdkAtom    target,
    * actually send anything here. Just report back without storing
    * any data.
    */
-  if (target == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_DELETE))
+  if (target == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_DELETE))
     return result;
 
   for (format = 0, with_transmute = 0; format == 0 && with_transmute < 2; with_transmute++)
@@ -2165,12 +2165,12 @@ convert_dnd_selection_to_target (CdkAtom    target,
     }
 
   if (format == 0)
-    return GDK_NONE;
+    return CDK_NONE;
 
   hr = IDataObject_GetData (win32_sel->dnd_data_object_target, &fmt, &storage);
 
   if (!SUCCEEDED (hr) || hr != S_OK)
-    return GDK_NONE;
+    return CDK_NONE;
 
   if ((ptr = GlobalLock (storage.hGlobal)) != NULL)
     {
@@ -2196,15 +2196,15 @@ convert_dnd_selection_to_target (CdkAtom    target,
             selection_property_store (requestor, target, 8,
                                       data, data_len);
           else
-            result = GDK_NONE;
+            result = CDK_NONE;
         }
       else
-        result = GDK_NONE;
+        result = CDK_NONE;
 
       GlobalUnlock (storage.hGlobal);
     }
   else
-    result = GDK_NONE;
+    result = CDK_NONE;
 
   ReleaseStgMedium (&storage);
 
@@ -2219,48 +2219,48 @@ _cdk_win32_display_convert_selection (CdkDisplay *display,
 				      guint32    time)
 {
   CdkWin32Selection *win32_sel = _cdk_win32_selection_get ();
-  CdkAtom property = _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_GDK_SELECTION);
+  CdkAtom property = _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_CDK_SELECTION);
 
-  g_return_if_fail (selection != GDK_NONE);
+  g_return_if_fail (selection != CDK_NONE);
   g_return_if_fail (requestor != NULL);
 
-  if (GDK_WINDOW_DESTROYED (requestor))
+  if (CDK_WINDOW_DESTROYED (requestor))
     return;
 
-  GDK_NOTE (DND, {
+  CDK_NOTE (DND, {
       gchar *sel_name = cdk_atom_name (selection);
       gchar *tgt_name = cdk_atom_name (target);
 
       g_print ("cdk_selection_convert: %p %s %s\n",
-	       GDK_WINDOW_HWND (requestor),
+	       CDK_WINDOW_HWND (requestor),
 	       sel_name, tgt_name);
       g_free (sel_name);
       g_free (tgt_name);
     });
 
-  if (selection == GDK_SELECTION_CLIPBOARD)
+  if (selection == CDK_SELECTION_CLIPBOARD)
     {
       if (win32_sel->clipboard_opened_for != INVALID_HANDLE_VALUE ||
-          OpenClipboard (GDK_WINDOW_HWND (requestor)))
+          OpenClipboard (CDK_WINDOW_HWND (requestor)))
         {
           if (win32_sel->clipboard_opened_for == INVALID_HANDLE_VALUE)
             {
-              win32_sel->clipboard_opened_for = GDK_WINDOW_HWND (requestor);
-              GDK_NOTE (DND, g_print ("Opened clipboard for 0x%p @ %s:%d\n", win32_sel->clipboard_opened_for, __FILE__, __LINE__));
+              win32_sel->clipboard_opened_for = CDK_WINDOW_HWND (requestor);
+              CDK_NOTE (DND, g_print ("Opened clipboard for 0x%p @ %s:%d\n", win32_sel->clipboard_opened_for, __FILE__, __LINE__));
             }
 
-          queue_open_clipboard (GDK_WIN32_CLIPBOARD_QUEUE_ACTION_CONVERT, display, requestor, target, time);
+          queue_open_clipboard (CDK_WIN32_CLIPBOARD_QUEUE_ACTION_CONVERT, display, requestor, target, time);
           open_clipboard_timeout (NULL);
           return;
         }
       else
         {
-          queue_open_clipboard (GDK_WIN32_CLIPBOARD_QUEUE_ACTION_CONVERT, display, requestor, target, time);
+          queue_open_clipboard (CDK_WIN32_CLIPBOARD_QUEUE_ACTION_CONVERT, display, requestor, target, time);
           /* Do not generate a selection notify message */
           return;
         }
     }
-  else if (selection == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_DROPFILES_DND))
+  else if (selection == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_DROPFILES_DND))
     {
       /* This means he wants the names of the dropped files.
        * cdk_dropfiles_filter already has stored the text/uri-list
@@ -2274,16 +2274,16 @@ _cdk_win32_display_convert_selection (CdkDisplay *display,
 	  g_clear_pointer (&win32_sel->dropfiles_prop, g_free);
 	}
     }
-  else if (selection == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_OLE2_DND))
+  else if (selection == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_OLE2_DND))
     {
       property = convert_dnd_selection_to_target (target, requestor);
     }
   else
-    property = GDK_NONE;
+    property = CDK_NONE;
 
   /* Generate a selection notify message so that we actually fetch the
-   * data (if property == GDK_SELECTION) or indicating failure (if
-   * property == GDK_NONE).
+   * data (if property == CDK_SELECTION) or indicating failure (if
+   * property == CDK_NONE).
    */
   generate_selection_notify (requestor, selection, target, property, time);
 }
@@ -2298,38 +2298,38 @@ _cdk_win32_selection_property_change (CdkWin32Selection *win32_sel,
                                       const guchar      *data,
                                       gint               nelements)
 {
-  if (property == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_GDK_SELECTION) &&
-      win32_sel->property_change_target_atom == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_TARGETS))
+  if (property == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_CDK_SELECTION) &&
+      win32_sel->property_change_target_atom == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_TARGETS))
     {
       win32_sel->property_change_target_atom = 0;
 
       if (win32_sel->clipboard_opened_for == INVALID_HANDLE_VALUE &&
-          OpenClipboard (GDK_WINDOW_HWND (window)))
+          OpenClipboard (CDK_WINDOW_HWND (window)))
         {
-          win32_sel->clipboard_opened_for = GDK_WINDOW_HWND (window);
-          GDK_NOTE (DND, g_print ("Opened clipboard for 0x%p @ %s:%d\n", win32_sel->clipboard_opened_for, __FILE__, __LINE__));
+          win32_sel->clipboard_opened_for = CDK_WINDOW_HWND (window);
+          CDK_NOTE (DND, g_print ("Opened clipboard for 0x%p @ %s:%d\n", win32_sel->clipboard_opened_for, __FILE__, __LINE__));
         }
 
       if (win32_sel->clipboard_opened_for == INVALID_HANDLE_VALUE)
         {
-          queue_open_clipboard (GDK_WIN32_CLIPBOARD_QUEUE_ACTION_TARGETS, NULL, window, type, GDK_CURRENT_TIME);
+          queue_open_clipboard (CDK_WIN32_CLIPBOARD_QUEUE_ACTION_TARGETS, NULL, window, type, CDK_CURRENT_TIME);
           return;
         }
       else
         {
-          queue_open_clipboard (GDK_WIN32_CLIPBOARD_QUEUE_ACTION_TARGETS, NULL, window, type, GDK_CURRENT_TIME);
+          queue_open_clipboard (CDK_WIN32_CLIPBOARD_QUEUE_ACTION_TARGETS, NULL, window, type, CDK_CURRENT_TIME);
           open_clipboard_timeout (NULL);
         }
     }
-  else if ((property == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_OLE2_DND) ||
-            property == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_LOCAL_DND_SELECTION)) &&
-           mode == GDK_PROP_MODE_REPLACE &&
-           win32_sel->property_change_target_atom == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_DELETE))
+  else if ((property == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_OLE2_DND) ||
+            property == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_LOCAL_DND_SELECTION)) &&
+           mode == CDK_PROP_MODE_REPLACE &&
+           win32_sel->property_change_target_atom == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_DELETE))
     {
       /* no-op on Windows */
       win32_sel->property_change_target_atom = 0;
     }
-  else if (mode == GDK_PROP_MODE_REPLACE &&
+  else if (mode == CDK_PROP_MODE_REPLACE &&
            (win32_sel->property_change_target_atom == 0 ||
             win32_sel->property_change_data == NULL ||
             win32_sel->property_change_format == 0))
@@ -2339,7 +2339,7 @@ _cdk_win32_selection_property_change (CdkWin32Selection *win32_sel,
                  win32_sel->property_change_format,
                  win32_sel->property_change_target_atom);
     }
-  else if (mode == GDK_PROP_MODE_REPLACE &&
+  else if (mode == CDK_PROP_MODE_REPLACE &&
            win32_sel->property_change_data != NULL &&
            win32_sel->property_change_format != 0)
     {
@@ -2388,16 +2388,16 @@ _cdk_win32_selection_property_change (CdkWin32Selection *win32_sel,
     }
   else
     {
-      GDK_NOTE (DND, {
+      CDK_NOTE (DND, {
           gchar *prop_name = cdk_atom_name (property);
           gchar *type_name = cdk_atom_name (type);
           gchar *datastring = _cdk_win32_data_to_string (data, MIN (10, format*nelements/8));
 
           g_warning ("Unsupported property change on window 0x%p, %s property %s, %d-bit, target 0x%x of %d bytes: %s",
                      window,
-                     (mode == GDK_PROP_MODE_REPLACE ? "REPLACE" :
-                      (mode == GDK_PROP_MODE_PREPEND ? "PREPEND" :
-                       (mode == GDK_PROP_MODE_APPEND ? "APPEND" :
+                     (mode == CDK_PROP_MODE_REPLACE ? "REPLACE" :
+                      (mode == CDK_PROP_MODE_PREPEND ? "PREPEND" :
+                       (mode == CDK_PROP_MODE_APPEND ? "APPEND" :
                         "???"))),
                      prop_name,
                      format,
@@ -2422,19 +2422,19 @@ _cdk_win32_display_get_selection_property (CdkDisplay *display,
   CdkSelProp *prop;
 
   g_return_val_if_fail (requestor != NULL, 0);
-  g_return_val_if_fail (GDK_IS_WINDOW (requestor), 0);
+  g_return_val_if_fail (CDK_IS_WINDOW (requestor), 0);
 
-  if (GDK_WINDOW_DESTROYED (requestor))
+  if (CDK_WINDOW_DESTROYED (requestor))
     return 0;
 
-  GDK_NOTE (DND, g_print ("cdk_selection_property_get: %p",
-			   GDK_WINDOW_HWND (requestor)));
+  CDK_NOTE (DND, g_print ("cdk_selection_property_get: %p",
+			   CDK_WINDOW_HWND (requestor)));
 
-  prop = g_hash_table_lookup (win32_sel->sel_prop_table, GDK_WINDOW_HWND (requestor));
+  prop = g_hash_table_lookup (win32_sel->sel_prop_table, CDK_WINDOW_HWND (requestor));
 
   if (prop == NULL)
     {
-      GDK_NOTE (DND, g_print (" (nothing)\n"));
+      CDK_NOTE (DND, g_print (" (nothing)\n"));
       *data = NULL;
 
       return 0;
@@ -2445,7 +2445,7 @@ _cdk_win32_display_get_selection_property (CdkDisplay *display,
   if (prop->length > 0)
     memmove (*data, prop->data, prop->length);
 
-  GDK_NOTE (DND, {
+  CDK_NOTE (DND, {
       gchar *type_name = cdk_atom_name (prop->target);
 
       g_print (" %s format:%d length:%"G_GSIZE_FORMAT"\n", type_name, prop->bitness, prop->length);
@@ -2464,16 +2464,16 @@ _cdk_win32_display_get_selection_property (CdkDisplay *display,
 void
 _cdk_selection_property_delete (CdkWindow *window)
 {
-  GDK_NOTE (DND, g_print ("_cdk_selection_property_delete: %p (no-op)\n",
-			   GDK_WINDOW_HWND (window)));
+  CDK_NOTE (DND, g_print ("_cdk_selection_property_delete: %p (no-op)\n",
+			   CDK_WINDOW_HWND (window)));
 
 #if 0
-  prop = g_hash_table_lookup (sel_prop_table, GDK_WINDOW_HWND (window));
+  prop = g_hash_table_lookup (sel_prop_table, CDK_WINDOW_HWND (window));
   if (prop != NULL)
     {
       g_free (prop->data);
       g_free (prop);
-      g_hash_table_remove (sel_prop_table, GDK_WINDOW_HWND (window));
+      g_hash_table_remove (sel_prop_table, CDK_WINDOW_HWND (window));
     }
 #endif
 }
@@ -2486,7 +2486,7 @@ _cdk_win32_display_send_selection_notify (CdkDisplay   *display,
 					  CdkAtom     	property,
 					  guint32     	time)
 {
-  GDK_NOTE (DND, {
+  CDK_NOTE (DND, {
       gchar *sel_name = cdk_atom_name (selection);
       gchar *tgt_name = cdk_atom_name (target);
       gchar *prop_name = cdk_atom_name (property);
@@ -2515,7 +2515,7 @@ cdk_text_property_to_text_list_for_display (CdkDisplay   *display,
   const gchar *charset;
   gchar *source_charset;
 
-  GDK_NOTE (DND, {
+  CDK_NOTE (DND, {
       gchar *enc_name = cdk_atom_name (encoding);
 
       g_print ("cdk_text_property_to_text_list_for_display: %s %d %.20s %d\n",
@@ -2526,9 +2526,9 @@ cdk_text_property_to_text_list_for_display (CdkDisplay   *display,
   if (!list)
     return 0;
 
-  if (encoding == GDK_TARGET_STRING)
+  if (encoding == CDK_TARGET_STRING)
     source_charset = g_strdup ("ISO-8859-1");
-  else if (encoding == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_UTF8_STRING))
+  else if (encoding == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_UTF8_STRING))
     source_charset = g_strdup ("UTF-8");
   else
     source_charset = cdk_atom_name (encoding);
@@ -2637,11 +2637,11 @@ _cdk_win32_display_text_property_to_utf8_list (CdkDisplay    *display,
   g_return_val_if_fail (text != NULL, 0);
   g_return_val_if_fail (length >= 0, 0);
 
-  if (encoding == GDK_TARGET_STRING)
+  if (encoding == CDK_TARGET_STRING)
     {
       return make_list ((gchar *)text, length, TRUE, list);
     }
-  else if (encoding == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_UTF8_STRING))
+  else if (encoding == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_UTF8_STRING))
     {
       return make_list ((gchar *)text, length, FALSE, list);
     }
@@ -2672,16 +2672,16 @@ cdk_win32_selection_clear_targets (CdkDisplay *display,
 {
   CdkWin32Selection *win32_sel = _cdk_win32_selection_get ();
 
-  if (selection == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_OLE2_DND) ||
-      selection == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_LOCAL_DND_SELECTION))
+  if (selection == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_OLE2_DND) ||
+      selection == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_LOCAL_DND_SELECTION))
     {
       g_array_set_size (win32_sel->dnd_selection_targets, 0);
     }
-  else if (selection == GDK_SELECTION_CLIPBOARD)
+  else if (selection == CDK_SELECTION_CLIPBOARD)
     {
       g_array_set_size (win32_sel->clipboard_selection_targets, 0);
     }
-  else if (selection == GDK_SELECTION_PRIMARY)
+  else if (selection == CDK_SELECTION_PRIMARY)
     {
       /* Do nothing */
     }
@@ -2714,8 +2714,8 @@ _cdk_win32_add_target_to_selformats (CdkAtom  target,
   if (i < array->len)
     return added_count;
 
-  if (target == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_TARGETS) ||
-      target == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_COMPOUND_TEXT) || target == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_SAVE_TARGETS))
+  if (target == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_TARGETS) ||
+      target == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_COMPOUND_TEXT) || target == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_SAVE_TARGETS))
     {
       /* Add the "we don't really support transferring that to
        * other processes" format, just to keep the taget around.
@@ -2741,7 +2741,7 @@ _cdk_win32_add_target_to_selformats (CdkAtom  target,
     return added_count;
 
   fmt.format = RegisterClipboardFormatW (target_name_w);
-  GDK_NOTE (DND, g_print ("Registered clipboard format %S as 0x%x\n", target_name_w, fmt.format));
+  CDK_NOTE (DND, g_print ("Registered clipboard format %S as 0x%x\n", target_name_w, fmt.format));
   g_free (target_name_w);
   fmt.target = target;
   fmt.transmute = FALSE;
@@ -2798,11 +2798,11 @@ cdk_win32_selection_add_targets (CdkWindow  *owner,
   CdkWin32Selection *win32_sel = _cdk_win32_selection_get ();
   gint i;
 
-  GDK_NOTE (DND, {
+  CDK_NOTE (DND, {
       gchar *sel_name = cdk_atom_name (selection);
 
       g_print ("cdk_win32_selection_add_targets: %p: %s: ",
-	       owner ? GDK_WINDOW_HWND (owner) : NULL,
+	       owner ? CDK_WINDOW_HWND (owner) : NULL,
 	       sel_name);
       g_free (sel_name);
 
@@ -2818,14 +2818,14 @@ cdk_win32_selection_add_targets (CdkWindow  *owner,
       g_print ("\n");
     });
 
-  if (selection == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_OLE2_DND) ||
-      selection == _cdk_win32_selection_atom (GDK_WIN32_ATOM_INDEX_LOCAL_DND_SELECTION) ||
-      selection == GDK_SELECTION_CLIPBOARD)
+  if (selection == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_OLE2_DND) ||
+      selection == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_LOCAL_DND_SELECTION) ||
+      selection == CDK_SELECTION_CLIPBOARD)
     {
       GArray *fmts = NULL;
       gint added_count = 0;
 
-      if (selection == GDK_SELECTION_CLIPBOARD)
+      if (selection == CDK_SELECTION_CLIPBOARD)
         fmts = win32_sel->clipboard_selection_targets;
       else
         fmts = win32_sel->dnd_selection_targets;
@@ -2835,9 +2835,9 @@ cdk_win32_selection_add_targets (CdkWindow  *owner,
 
       /* Re-announce our list of supported formats */
       if (added_count > 0)
-        send_targets_request (GDK_CURRENT_TIME);
+        send_targets_request (CDK_CURRENT_TIME);
     }
-  else if (selection == GDK_SELECTION_PRIMARY)
+  else if (selection == CDK_SELECTION_PRIMARY)
     {
       /* Do nothing */
     }

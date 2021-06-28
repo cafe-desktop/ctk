@@ -608,7 +608,7 @@ ctk_entry_completion_constructed (GObject *object)
   ctk_window_set_use_subsurface (CTK_WINDOW (priv->popup_window), TRUE);
   ctk_window_set_resizable (CTK_WINDOW (priv->popup_window), FALSE);
   ctk_window_set_type_hint (CTK_WINDOW(priv->popup_window),
-                            GDK_WINDOW_TYPE_HINT_COMBO);
+                            CDK_WINDOW_TYPE_HINT_COMBO);
 
   g_signal_connect (priv->popup_window, "key-press-event",
                     G_CALLBACK (ctk_entry_completion_popup_key_event),
@@ -1118,7 +1118,7 @@ ctk_entry_completion_popup (CtkEntryCompletion *completion)
       ctk_grab_add (completion->priv->popup_window);
       cdk_seat_grab (cdk_device_get_seat (completion->priv->device),
                      ctk_widget_get_window (completion->priv->popup_window),
-                     GDK_SEAT_CAPABILITY_POINTER | GDK_SEAT_CAPABILITY_TOUCH,
+                     CDK_SEAT_CAPABILITY_POINTER | CDK_SEAT_CAPABILITY_TOUCH,
                      TRUE, NULL, NULL,
                      prepare_popup_func, completion);
 
@@ -2203,16 +2203,16 @@ ctk_entry_completion_timeout (gpointer data)
 static inline gboolean
 keyval_is_cursor_move (guint keyval)
 {
-  if (keyval == GDK_KEY_Up || keyval == GDK_KEY_KP_Up)
+  if (keyval == CDK_KEY_Up || keyval == CDK_KEY_KP_Up)
     return TRUE;
 
-  if (keyval == GDK_KEY_Down || keyval == GDK_KEY_KP_Down)
+  if (keyval == CDK_KEY_Down || keyval == CDK_KEY_KP_Down)
     return TRUE;
 
-  if (keyval == GDK_KEY_Page_Up)
+  if (keyval == CDK_KEY_Page_Up)
     return TRUE;
 
-  if (keyval == GDK_KEY_Page_Down)
+  if (keyval == CDK_KEY_Page_Down)
     return TRUE;
 
   return FALSE;
@@ -2229,10 +2229,10 @@ ctk_entry_completion_key_press (CtkWidget   *widget,
   if (!completion->priv->popup_completion)
     return FALSE;
 
-  if (event->keyval == GDK_KEY_Return ||
-      event->keyval == GDK_KEY_KP_Enter ||
-      event->keyval == GDK_KEY_ISO_Enter ||
-      event->keyval == GDK_KEY_Escape)
+  if (event->keyval == CDK_KEY_Return ||
+      event->keyval == CDK_KEY_KP_Enter ||
+      event->keyval == CDK_KEY_ISO_Enter ||
+      event->keyval == CDK_KEY_Escape)
     {
       if (completion->priv->completion_timeout)
         {
@@ -2253,21 +2253,21 @@ ctk_entry_completion_key_press (CtkWidget   *widget,
     {
       CtkTreePath *path = NULL;
 
-      if (event->keyval == GDK_KEY_Up || event->keyval == GDK_KEY_KP_Up)
+      if (event->keyval == CDK_KEY_Up || event->keyval == CDK_KEY_KP_Up)
         {
           if (completion->priv->current_selected < 0)
             completion->priv->current_selected = matches + actions - 1;
           else
             completion->priv->current_selected--;
         }
-      else if (event->keyval == GDK_KEY_Down || event->keyval == GDK_KEY_KP_Down)
+      else if (event->keyval == CDK_KEY_Down || event->keyval == CDK_KEY_KP_Down)
         {
           if (completion->priv->current_selected < matches + actions - 1)
             completion->priv->current_selected++;
           else
             completion->priv->current_selected = -1;
         }
-      else if (event->keyval == GDK_KEY_Page_Up)
+      else if (event->keyval == CDK_KEY_Page_Up)
         {
           if (completion->priv->current_selected < 0)
             completion->priv->current_selected = matches + actions - 1;
@@ -2286,7 +2286,7 @@ ctk_entry_completion_key_press (CtkWidget   *widget,
                 completion->priv->current_selected = matches - 1;
             }
         }
-      else if (event->keyval == GDK_KEY_Page_Down)
+      else if (event->keyval == CDK_KEY_Page_Down)
         {
           if (completion->priv->current_selected < 0)
             completion->priv->current_selected = 0;
@@ -2372,11 +2372,11 @@ ctk_entry_completion_key_press (CtkWidget   *widget,
 
       return TRUE;
     }
-  else if (event->keyval == GDK_KEY_Escape ||
-           event->keyval == GDK_KEY_Left ||
-           event->keyval == GDK_KEY_KP_Left ||
-           event->keyval == GDK_KEY_Right ||
-           event->keyval == GDK_KEY_KP_Right)
+  else if (event->keyval == CDK_KEY_Escape ||
+           event->keyval == CDK_KEY_Left ||
+           event->keyval == CDK_KEY_KP_Left ||
+           event->keyval == CDK_KEY_Right ||
+           event->keyval == CDK_KEY_KP_Right)
     {
       gboolean retval = TRUE;
 
@@ -2391,7 +2391,7 @@ ctk_entry_completion_key_press (CtkWidget   *widget,
       else if (completion->priv->inline_selection)
         {
           /* Escape rejects the tentative completion */
-          if (event->keyval == GDK_KEY_Escape)
+          if (event->keyval == CDK_KEY_Escape)
             {
               if (completion->priv->completion_prefix)
                 ctk_entry_set_text (CTK_ENTRY (completion->priv->entry),
@@ -2401,9 +2401,9 @@ ctk_entry_completion_key_press (CtkWidget   *widget,
             }
 
           /* Move the cursor to the end for Right/Esc */
-          if (event->keyval == GDK_KEY_Right ||
-              event->keyval == GDK_KEY_KP_Right ||
-              event->keyval == GDK_KEY_Escape)
+          if (event->keyval == CDK_KEY_Right ||
+              event->keyval == CDK_KEY_KP_Right ||
+              event->keyval == CDK_KEY_Escape)
             ctk_editable_set_position (CTK_EDITABLE (widget), -1);
           /* Let the default keybindings run for Left, i.e. either move to the
  *            * previous character or select word if a modifier is used */
@@ -2420,9 +2420,9 @@ keypress_completion_out:
 
       return retval;
     }
-  else if (event->keyval == GDK_KEY_Tab ||
-           event->keyval == GDK_KEY_KP_Tab ||
-           event->keyval == GDK_KEY_ISO_Left_Tab)
+  else if (event->keyval == CDK_KEY_Tab ||
+           event->keyval == CDK_KEY_KP_Tab ||
+           event->keyval == CDK_KEY_ISO_Left_Tab)
     {
       ctk_entry_reset_im_context (CTK_ENTRY (widget));
       _ctk_entry_completion_popdown (completion);
@@ -2432,9 +2432,9 @@ keypress_completion_out:
 
       return FALSE;
     }
-  else if (event->keyval == GDK_KEY_ISO_Enter ||
-           event->keyval == GDK_KEY_KP_Enter ||
-           event->keyval == GDK_KEY_Return)
+  else if (event->keyval == CDK_KEY_ISO_Enter ||
+           event->keyval == CDK_KEY_KP_Enter ||
+           event->keyval == CDK_KEY_Return)
     {
       CtkTreeIter iter;
       CtkTreeModel *model = NULL;
@@ -2535,7 +2535,7 @@ ctk_entry_completion_changed (CtkWidget *widget,
 
   device = ctk_get_current_event_device ();
 
-  if (device && cdk_device_get_source (device) == GDK_SOURCE_KEYBOARD)
+  if (device && cdk_device_get_source (device) == CDK_SOURCE_KEYBOARD)
     device = cdk_device_get_associated_device (device);
 
   if (device)

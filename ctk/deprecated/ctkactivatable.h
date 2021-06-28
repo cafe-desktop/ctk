@@ -69,27 +69,27 @@ struct _CtkActivatableIface
 };
 
 
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 GType      ctk_activatable_get_type                   (void) G_GNUC_CONST;
 
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void       ctk_activatable_sync_action_properties     (CtkActivatable *activatable,
 						       CtkAction      *action);
 
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void       ctk_activatable_set_related_action         (CtkActivatable *activatable,
 						       CtkAction      *action);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 CtkAction *ctk_activatable_get_related_action         (CtkActivatable *activatable);
 
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void       ctk_activatable_set_use_action_appearance  (CtkActivatable *activatable,
 						       gboolean        use_appearance);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 gboolean   ctk_activatable_get_use_action_appearance  (CtkActivatable *activatable);
 
 /* For use in activatable implementations */
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void       ctk_activatable_do_set_related_action      (CtkActivatable *activatable,
 						       CtkAction      *action);
 

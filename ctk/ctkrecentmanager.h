@@ -156,112 +156,112 @@ typedef enum
  * Since: 2.10
  */
 #define CTK_RECENT_MANAGER_ERROR	(ctk_recent_manager_error_quark ())
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GQuark 	ctk_recent_manager_error_quark (void);
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType 		  ctk_recent_manager_get_type       (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkRecentManager *ctk_recent_manager_new            (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkRecentManager *ctk_recent_manager_get_default    (void);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean          ctk_recent_manager_add_item       (CtkRecentManager     *manager,
 						     const gchar          *uri);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean          ctk_recent_manager_add_full       (CtkRecentManager     *manager,
 						     const gchar          *uri,
 						     const CtkRecentData  *recent_data);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean          ctk_recent_manager_remove_item    (CtkRecentManager     *manager,
 						     const gchar          *uri,
 						     GError              **error);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkRecentInfo *   ctk_recent_manager_lookup_item    (CtkRecentManager     *manager,
 						     const gchar          *uri,
 						     GError              **error);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean          ctk_recent_manager_has_item       (CtkRecentManager     *manager,
 						     const gchar          *uri);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean          ctk_recent_manager_move_item      (CtkRecentManager     *manager,
 						     const gchar          *uri,
 						     const gchar          *new_uri,
 						     GError              **error);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GList *           ctk_recent_manager_get_items      (CtkRecentManager     *manager);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint              ctk_recent_manager_purge_items    (CtkRecentManager     *manager,
 						     GError              **error);
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType	              ctk_recent_info_get_type             (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkRecentInfo *       ctk_recent_info_ref                  (CtkRecentInfo  *info);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_recent_info_unref                (CtkRecentInfo  *info);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *         ctk_recent_info_get_uri              (CtkRecentInfo  *info);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *         ctk_recent_info_get_display_name     (CtkRecentInfo  *info);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *         ctk_recent_info_get_description      (CtkRecentInfo  *info);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *         ctk_recent_info_get_mime_type        (CtkRecentInfo  *info);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 time_t                ctk_recent_info_get_added            (CtkRecentInfo  *info);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 time_t                ctk_recent_info_get_modified         (CtkRecentInfo  *info);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 time_t                ctk_recent_info_get_visited          (CtkRecentInfo  *info);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_recent_info_get_private_hint     (CtkRecentInfo  *info);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_recent_info_get_application_info (CtkRecentInfo  *info,
 							    const gchar    *app_name,
 							    const gchar   **app_exec,
 							    guint          *count,
 							    time_t         *time_);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GAppInfo *            ctk_recent_info_create_app_info      (CtkRecentInfo  *info,
                                                             const gchar    *app_name,
                                                             GError        **error);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gchar **              ctk_recent_info_get_applications     (CtkRecentInfo  *info,
 							    gsize          *length) G_GNUC_MALLOC;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gchar *               ctk_recent_info_last_application     (CtkRecentInfo  *info) G_GNUC_MALLOC;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_recent_info_has_application      (CtkRecentInfo  *info,
 							    const gchar    *app_name);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gchar **              ctk_recent_info_get_groups           (CtkRecentInfo  *info,
 							    gsize          *length) G_GNUC_MALLOC;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_recent_info_has_group            (CtkRecentInfo  *info,
 							    const gchar    *group_name);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkPixbuf *           ctk_recent_info_get_icon             (CtkRecentInfo  *info,
 							    gint            size);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GIcon *               ctk_recent_info_get_gicon            (CtkRecentInfo  *info);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gchar *               ctk_recent_info_get_short_name       (CtkRecentInfo  *info) G_GNUC_MALLOC;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gchar *               ctk_recent_info_get_uri_display      (CtkRecentInfo  *info) G_GNUC_MALLOC;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint                  ctk_recent_info_get_age              (CtkRecentInfo  *info);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_recent_info_is_local             (CtkRecentInfo  *info);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_recent_info_exists               (CtkRecentInfo  *info);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_recent_info_match                (CtkRecentInfo  *info_a,
 							    CtkRecentInfo  *info_b);
 

@@ -48,7 +48,7 @@ struct _CtkPopoverAccessibleClass
   CtkContainerAccessibleClass parent_class;
 };
 
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 GType ctk_popover_accessible_get_type (void);
 
 G_END_DECLS

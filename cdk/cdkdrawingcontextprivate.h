@@ -1,13 +1,13 @@
-#ifndef __GDK_DRAWING_CONTEXT_PRIVATE_H__
-#define __GDK_DRAWING_CONTEXT_PRIVATE_H__
+#ifndef __CDK_DRAWING_CONTEXT_PRIVATE_H__
+#define __CDK_DRAWING_CONTEXT_PRIVATE_H__
 
 #include "cdkdrawingcontext.h"
 
 G_BEGIN_DECLS
 
-#define GDK_DRAWING_CONTEXT_CLASS(klass)        (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_DRAWING_CONTEXT, CdkDrawingContextClass))
-#define GDK_IS_DRAWING_CONTEXT_CLASS(klass)     (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_DRAWING_CONTEXT))
-#define GDK_DRAWING_CONTEXT_GET_CLASS(obj)      (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_DRAWING_CONTEXT, CdkDrawingContextClass))
+#define CDK_DRAWING_CONTEXT_CLASS(klass)        (G_TYPE_CHECK_CLASS_CAST ((klass), CDK_TYPE_DRAWING_CONTEXT, CdkDrawingContextClass))
+#define CDK_IS_DRAWING_CONTEXT_CLASS(klass)     (G_TYPE_CHECK_CLASS_TYPE ((klass), CDK_TYPE_DRAWING_CONTEXT))
+#define CDK_DRAWING_CONTEXT_GET_CLASS(obj)      (G_TYPE_INSTANCE_GET_CLASS ((obj), CDK_TYPE_DRAWING_CONTEXT, CdkDrawingContextClass))
 
 struct _CdkDrawingContext
 {
@@ -26,4 +26,4 @@ struct _CdkDrawingContextClass
 
 G_END_DECLS
 
-#endif /* __GDK_DRAWING_CONTEXT_PRIVATE_H__ */
+#endif /* __CDK_DRAWING_CONTEXT_PRIVATE_H__ */

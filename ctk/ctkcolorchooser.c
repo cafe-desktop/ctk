@@ -66,7 +66,7 @@ ctk_color_chooser_default_init (CtkColorChooserInterface *iface)
       g_param_spec_boxed ("rgba",
                           P_("Color"),
                           P_("Current color, as a CdkRGBA"),
-                          GDK_TYPE_RGBA,
+                          CDK_TYPE_RGBA,
                           CTK_PARAM_READWRITE));
 
   /**
@@ -109,7 +109,7 @@ ctk_color_chooser_default_init (CtkColorChooserInterface *iface)
                   NULL, NULL,
                   NULL,
                   G_TYPE_NONE,
-                  1, GDK_TYPE_RGBA);
+                  1, CDK_TYPE_RGBA);
 }
 
 void

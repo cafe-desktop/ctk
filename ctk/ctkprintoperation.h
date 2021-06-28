@@ -223,92 +223,92 @@ typedef enum
   CTK_PRINT_ERROR_INVALID_FILE
 } CtkPrintError;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GQuark ctk_print_error_quark (void);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType                   ctk_print_operation_get_type               (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkPrintOperation *     ctk_print_operation_new                    (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                    ctk_print_operation_set_default_page_setup (CtkPrintOperation  *op,
                                                                     CtkPageSetup       *default_page_setup);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkPageSetup *          ctk_print_operation_get_default_page_setup (CtkPrintOperation  *op);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                    ctk_print_operation_set_print_settings     (CtkPrintOperation  *op,
                                                                     CtkPrintSettings   *print_settings);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkPrintSettings *      ctk_print_operation_get_print_settings     (CtkPrintOperation  *op);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                    ctk_print_operation_set_job_name           (CtkPrintOperation  *op,
                                                                     const gchar        *job_name);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                    ctk_print_operation_set_n_pages            (CtkPrintOperation  *op,
                                                                     gint                n_pages);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                    ctk_print_operation_set_current_page       (CtkPrintOperation  *op,
                                                                     gint                current_page);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                    ctk_print_operation_set_use_full_page      (CtkPrintOperation  *op,
                                                                     gboolean            full_page);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                    ctk_print_operation_set_unit               (CtkPrintOperation  *op,
                                                                     CtkUnit             unit);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                    ctk_print_operation_set_export_filename    (CtkPrintOperation  *op,
                                                                     const gchar        *filename);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                    ctk_print_operation_set_track_print_status (CtkPrintOperation  *op,
                                                                     gboolean            track_status);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                    ctk_print_operation_set_show_progress      (CtkPrintOperation  *op,
                                                                     gboolean            show_progress);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                    ctk_print_operation_set_allow_async        (CtkPrintOperation  *op,
                                                                     gboolean            allow_async);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                    ctk_print_operation_set_custom_tab_label   (CtkPrintOperation  *op,
                                                                     const gchar        *label);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkPrintOperationResult ctk_print_operation_run                    (CtkPrintOperation  *op,
                                                                     CtkPrintOperationAction action,
                                                                     CtkWindow          *parent,
                                                                     GError            **error);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                    ctk_print_operation_get_error              (CtkPrintOperation  *op,
                                                                     GError            **error);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkPrintStatus          ctk_print_operation_get_status             (CtkPrintOperation  *op);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *           ctk_print_operation_get_status_string      (CtkPrintOperation  *op);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean                ctk_print_operation_is_finished            (CtkPrintOperation  *op);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                    ctk_print_operation_cancel                 (CtkPrintOperation  *op);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                    ctk_print_operation_draw_page_finish       (CtkPrintOperation  *op);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                    ctk_print_operation_set_defer_drawing      (CtkPrintOperation  *op);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                    ctk_print_operation_set_support_selection  (CtkPrintOperation  *op,
                                                                     gboolean            support_selection);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean                ctk_print_operation_get_support_selection  (CtkPrintOperation  *op);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                    ctk_print_operation_set_has_selection      (CtkPrintOperation  *op,
                                                                     gboolean            has_selection);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean                ctk_print_operation_get_has_selection      (CtkPrintOperation  *op);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                    ctk_print_operation_set_embed_page_setup   (CtkPrintOperation  *op,
                                                                     gboolean            embed);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean                ctk_print_operation_get_embed_page_setup   (CtkPrintOperation  *op);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint                    ctk_print_operation_get_n_pages_to_print   (CtkPrintOperation  *op);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkPageSetup           *ctk_print_run_page_setup_dialog            (CtkWindow          *parent,
                                                                     CtkPageSetup       *page_setup,
                                                                     CtkPrintSettings   *settings);
@@ -328,7 +328,7 @@ CtkPageSetup           *ctk_print_run_page_setup_dialog            (CtkWindow   
 typedef void  (* CtkPageSetupDoneFunc) (CtkPageSetup *page_setup,
                                         gpointer      data);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                    ctk_print_run_page_setup_dialog_async      (CtkWindow            *parent,
                                                                     CtkPageSetup         *page_setup,
                                                                     CtkPrintSettings     *settings,

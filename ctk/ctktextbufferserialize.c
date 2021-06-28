@@ -64,7 +64,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
       return tmp;
     }
-  else if (value->g_type == GDK_TYPE_COLOR)
+  else if (value->g_type == CDK_TYPE_COLOR)
     {
       CdkColor *color = g_value_get_boxed (value);
 
@@ -136,7 +136,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
       return TRUE;
     }
-  else if (value->g_type == GDK_TYPE_COLOR)
+  else if (value->g_type == CDK_TYPE_COLOR)
     {
       CdkColor color;
       const gchar *old;

@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2016 Red Hat
  *
  * This library is free software; you can redistribute it and/or
@@ -23,7 +23,7 @@
  * @Title: CtkDevicePad
  *
  * #CdkDevicePad is an interface implemented by devices of type
- * %GDK_SOURCE_TABLET_PAD, it allows querying the features provided
+ * %CDK_SOURCE_TABLET_PAD, it allows querying the features provided
  * by the pad device.
  *
  * Tablet pads may contain one or more groups, each containing a subset
@@ -48,7 +48,7 @@
 #include "cdkdevicepadprivate.h"
 #include "cdkdeviceprivate.h"
 
-G_DEFINE_INTERFACE (CdkDevicePad, cdk_device_pad, GDK_TYPE_DEVICE)
+G_DEFINE_INTERFACE (CdkDevicePad, cdk_device_pad, CDK_TYPE_DEVICE)
 
 static void
 cdk_device_pad_default_init (CdkDevicePadInterface *pad)
@@ -71,9 +71,9 @@ cdk_device_pad_default_init (CdkDevicePadInterface *pad)
 gint
 cdk_device_pad_get_n_groups (CdkDevicePad *pad)
 {
-  CdkDevicePadInterface *iface = GDK_DEVICE_PAD_GET_IFACE (pad);
+  CdkDevicePadInterface *iface = CDK_DEVICE_PAD_GET_IFACE (pad);
 
-  g_return_val_if_fail (GDK_IS_DEVICE_PAD (pad), 0);
+  g_return_val_if_fail (CDK_IS_DEVICE_PAD (pad), 0);
 
   return iface->get_n_groups (pad);
 }
@@ -93,9 +93,9 @@ gint
 cdk_device_pad_get_group_n_modes (CdkDevicePad *pad,
                                   gint          group_idx)
 {
-  CdkDevicePadInterface *iface = GDK_DEVICE_PAD_GET_IFACE (pad);
+  CdkDevicePadInterface *iface = CDK_DEVICE_PAD_GET_IFACE (pad);
 
-  g_return_val_if_fail (GDK_IS_DEVICE_PAD (pad), 0);
+  g_return_val_if_fail (CDK_IS_DEVICE_PAD (pad), 0);
   g_return_val_if_fail (group_idx >= 0, 0);
 
   return iface->get_group_n_modes (pad, group_idx);
@@ -116,9 +116,9 @@ gint
 cdk_device_pad_get_n_features (CdkDevicePad        *pad,
                                CdkDevicePadFeature  feature)
 {
-  CdkDevicePadInterface *iface = GDK_DEVICE_PAD_GET_IFACE (pad);
+  CdkDevicePadInterface *iface = CDK_DEVICE_PAD_GET_IFACE (pad);
 
-  g_return_val_if_fail (GDK_IS_DEVICE_PAD (pad), 0);
+  g_return_val_if_fail (CDK_IS_DEVICE_PAD (pad), 0);
 
   return iface->get_n_features (pad, feature);
 }
@@ -141,9 +141,9 @@ cdk_device_pad_get_feature_group (CdkDevicePad        *pad,
                                   CdkDevicePadFeature  feature,
                                   gint                 idx)
 {
-  CdkDevicePadInterface *iface = GDK_DEVICE_PAD_GET_IFACE (pad);
+  CdkDevicePadInterface *iface = CDK_DEVICE_PAD_GET_IFACE (pad);
 
-  g_return_val_if_fail (GDK_IS_DEVICE_PAD (pad), -1);
+  g_return_val_if_fail (CDK_IS_DEVICE_PAD (pad), -1);
   g_return_val_if_fail (idx >= 0, -1);
 
   return iface->get_feature_group (pad, feature, idx);

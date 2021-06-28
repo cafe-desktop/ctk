@@ -16,10 +16,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_QUARTZ_DND_H__
-#define __GDK_QUARTZ_DND_H__
+#ifndef __CDK_QUARTZ_DND_H__
+#define __CDK_QUARTZ_DND_H__
 
-#if !defined (CTK_COMPILATION) && !defined (GDK_COMPILATION)
+#if !defined (CTK_COMPILATION) && !defined (CDK_COMPILATION)
 #error "cdkquartzdnd.h is for Ctk's internal use only"
 #endif
 
@@ -27,14 +27,14 @@
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_QUARTZ_DRAG_CONTEXT              (cdk_quartz_drag_context_get_type ())
-#define GDK_QUARTZ_DRAG_CONTEXT(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_QUARTZ_DRAG_CONTEXT, CdkQuartzDragContext))
-#define GDK_QUARTZ_DRAG_CONTEXT_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_QUARTZ_DRAG_CONTEXT, CdkQuartzDragContextClass))
-#define GDK_IS_QUARTZ_DRAG_CONTEXT(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_QUARTZ_DRAG_CONTEXT))
-#define GDK_IS_QUARTZ_DRAG_CONTEXT_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_QUARTZ_DRAG_CONTEXT))
-#define GDK_QUARTZ_DRAG_CONTEXT_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_QUARTZ_DRAG_CONTEXT, CdkQuartzDragContextClass))
+#define CDK_TYPE_QUARTZ_DRAG_CONTEXT              (cdk_quartz_drag_context_get_type ())
+#define CDK_QUARTZ_DRAG_CONTEXT(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), CDK_TYPE_QUARTZ_DRAG_CONTEXT, CdkQuartzDragContext))
+#define CDK_QUARTZ_DRAG_CONTEXT_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CDK_TYPE_QUARTZ_DRAG_CONTEXT, CdkQuartzDragContextClass))
+#define CDK_IS_QUARTZ_DRAG_CONTEXT(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), CDK_TYPE_QUARTZ_DRAG_CONTEXT))
+#define CDK_IS_QUARTZ_DRAG_CONTEXT_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CDK_TYPE_QUARTZ_DRAG_CONTEXT))
+#define CDK_QUARTZ_DRAG_CONTEXT_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CDK_TYPE_QUARTZ_DRAG_CONTEXT, CdkQuartzDragContextClass))
 
-#ifdef GDK_COMPILATION
+#ifdef CDK_COMPILATION
 typedef struct _CdkQuartzDragContext CdkQuartzDragContext;
 #else
 typedef CdkDragContext CdkQuartzDragContext;
@@ -42,15 +42,15 @@ typedef CdkDragContext CdkQuartzDragContext;
 typedef struct _CdkQuartzDragContextClass CdkQuartzDragContextClass;
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType     cdk_quartz_drag_context_get_type (void);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 id        cdk_quartz_drag_context_get_dragging_info_libctk_only (CdkDragContext *context);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkDragContext *cdk_quartz_drag_source_context_libctk_only (void);
 
 G_END_DECLS
 
-#endif /* __GDK_QUARTZ_DRAG_CONTEXT_H__ */
+#endif /* __CDK_QUARTZ_DRAG_CONTEXT_H__ */

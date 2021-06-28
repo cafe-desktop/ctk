@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  *
  * cdkglcontext-x11.h: Private X11 specific OpenGL wrappers
  * 
@@ -18,8 +18,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_X11_GL_CONTEXT__
-#define __GDK_X11_GL_CONTEXT__
+#ifndef __CDK_X11_GL_CONTEXT__
+#define __CDK_X11_GL_CONTEXT__
 
 #include <X11/X.h>
 #include <X11/Xlib.h>
@@ -68,4 +68,4 @@ gboolean        cdk_x11_display_make_gl_context_current         (CdkDisplay     
 
 G_END_DECLS
 
-#endif /* __GDK_X11_GL_CONTEXT__ */
+#endif /* __CDK_X11_GL_CONTEXT__ */

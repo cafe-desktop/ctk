@@ -101,8 +101,8 @@ msgid "Default Display"
 msgstr "Dira gore Ponagatšo e Hlaelele"
 
 #: cdk/cdkdisplaymanager.c:103
-msgid "The default display for GDK"
-msgstr "Ponagatšo e hlaelelago ya GDK"
+msgid "The default display for CDK"
+msgstr "Ponagatšo e hlaelelago ya CDK"
 
 #: cdk/cdkscreen.c:72
 #, fuzzy

@@ -119,7 +119,7 @@ accel8 (void)
 static void
 keysyms (void)
 {
-  g_assert (cdk_keyval_from_name ("KP_7") == GDK_KEY_KP_7);
+  g_assert (cdk_keyval_from_name ("KP_7") == CDK_KEY_KP_7);
 }
 
 int

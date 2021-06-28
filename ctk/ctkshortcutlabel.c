@@ -66,12 +66,12 @@ get_modifier_label (guint key)
 
   switch (key)
     {
-    case GDK_KEY_Shift_L:
-    case GDK_KEY_Control_L:
-    case GDK_KEY_Alt_L:
-    case GDK_KEY_Meta_L:
-    case GDK_KEY_Super_L:
-    case GDK_KEY_Hyper_L:
+    case CDK_KEY_Shift_L:
+    case CDK_KEY_Control_L:
+    case CDK_KEY_Alt_L:
+    case CDK_KEY_Meta_L:
+    case CDK_KEY_Super_L:
+    case CDK_KEY_Hyper_L:
       /* Translators: This string is used to mark left/right variants of modifier
        * keys in the shortcut window (e.g. Control_L vs Control_R). Please keep
        * this string very short, ideally just a single character, since it will
@@ -79,12 +79,12 @@ get_modifier_label (guint key)
        */
       subscript = C_("keyboard side marker", "L");
       break;
-    case GDK_KEY_Shift_R:
-    case GDK_KEY_Control_R:
-    case GDK_KEY_Alt_R:
-    case GDK_KEY_Meta_R:
-    case GDK_KEY_Super_R:
-    case GDK_KEY_Hyper_R:
+    case CDK_KEY_Shift_R:
+    case CDK_KEY_Control_R:
+    case CDK_KEY_Alt_R:
+    case CDK_KEY_Meta_R:
+    case CDK_KEY_Super_R:
+    case CDK_KEY_Hyper_R:
       /* Translators: This string is used to mark left/right variants of modifier
        * keys in the shortcut window (e.g. Control_L vs Control_R). Please keep
        * this string very short, ideally just a single character, since it will
@@ -98,22 +98,22 @@ get_modifier_label (guint key)
 
  switch (key)
    {
-   case GDK_KEY_Shift_L:   case GDK_KEY_Shift_R:
+   case CDK_KEY_Shift_L:   case CDK_KEY_Shift_R:
      label = C_("keyboard label", "Shift");
      break;
-   case GDK_KEY_Control_L: case GDK_KEY_Control_R:
+   case CDK_KEY_Control_L: case CDK_KEY_Control_R:
      label = C_("keyboard label", "Ctrl");
      break;
-   case GDK_KEY_Alt_L:     case GDK_KEY_Alt_R:
+   case CDK_KEY_Alt_L:     case CDK_KEY_Alt_R:
      label = C_("keyboard label", "Alt");
      break;
-   case GDK_KEY_Meta_L:    case GDK_KEY_Meta_R:
+   case CDK_KEY_Meta_L:    case CDK_KEY_Meta_R:
      label = C_("keyboard label", "Meta");
      break;
-   case GDK_KEY_Super_L:   case GDK_KEY_Super_R:
+   case CDK_KEY_Super_L:   case CDK_KEY_Super_R:
      label = C_("keyboard label", "Super");
      break;
-   case GDK_KEY_Hyper_L:   case GDK_KEY_Hyper_R:
+   case CDK_KEY_Hyper_L:   case CDK_KEY_Hyper_R:
      label = C_("keyboard label", "Hyper");
      break;
     default:
@@ -134,25 +134,25 @@ get_labels (guint key, CdkModifierType modifier, guint *n_mods)
   gint i = 0;
   gchar **retval;
 
-  if (modifier & GDK_SHIFT_MASK)
+  if (modifier & CDK_SHIFT_MASK)
     labels[i++] = C_("keyboard label", "Shift");
-  if (modifier & GDK_CONTROL_MASK)
+  if (modifier & CDK_CONTROL_MASK)
     labels[i++] = C_("keyboard label", "Ctrl");
-  if (modifier & GDK_MOD1_MASK)
+  if (modifier & CDK_MOD1_MASK)
     labels[i++] = C_("keyboard label", "Alt");
-  if (modifier & GDK_MOD2_MASK)
+  if (modifier & CDK_MOD2_MASK)
     labels[i++] = "Mod2";
-  if (modifier & GDK_MOD3_MASK)
+  if (modifier & CDK_MOD3_MASK)
     labels[i++] = "Mod3";
-  if (modifier & GDK_MOD4_MASK)
+  if (modifier & CDK_MOD4_MASK)
     labels[i++] = "Mod4";
-  if (modifier & GDK_MOD5_MASK)
+  if (modifier & CDK_MOD5_MASK)
     labels[i++] = "Mod5";
-  if (modifier & GDK_SUPER_MASK)
+  if (modifier & CDK_SUPER_MASK)
     labels[i++] = C_("keyboard label", "Super");
-  if (modifier & GDK_HYPER_MASK)
+  if (modifier & CDK_HYPER_MASK)
     labels[i++] = C_("keyboard label", "Hyper");
-  if (modifier & GDK_META_MASK)
+  if (modifier & CDK_META_MASK)
     labels[i++] = C_("keyboard label", "Meta");
 
   *n_mods = i;
@@ -191,37 +191,37 @@ get_labels (guint key, CdkModifierType modifier, guint *n_mods)
     {
       switch (key)
         {
-        case GDK_KEY_Shift_L:   case GDK_KEY_Shift_R:
-        case GDK_KEY_Control_L: case GDK_KEY_Control_R:
-        case GDK_KEY_Alt_L:     case GDK_KEY_Alt_R:
-        case GDK_KEY_Meta_L:    case GDK_KEY_Meta_R:
-        case GDK_KEY_Super_L:   case GDK_KEY_Super_R:
-        case GDK_KEY_Hyper_L:   case GDK_KEY_Hyper_R:
+        case CDK_KEY_Shift_L:   case CDK_KEY_Shift_R:
+        case CDK_KEY_Control_L: case CDK_KEY_Control_R:
+        case CDK_KEY_Alt_L:     case CDK_KEY_Alt_R:
+        case CDK_KEY_Meta_L:    case CDK_KEY_Meta_R:
+        case CDK_KEY_Super_L:   case CDK_KEY_Super_R:
+        case CDK_KEY_Hyper_L:   case CDK_KEY_Hyper_R:
           freeme = g_list_prepend (freeme, get_modifier_label (key));
           labels[i++] = (const gchar*)freeme->data;
            break;
-        case GDK_KEY_Left:
+        case CDK_KEY_Left:
           labels[i++] = "\xe2\x86\x90";
           break;
-        case GDK_KEY_Up:
+        case CDK_KEY_Up:
           labels[i++] = "\xe2\x86\x91";
           break;
-        case GDK_KEY_Right:
+        case CDK_KEY_Right:
           labels[i++] = "\xe2\x86\x92";
           break;
-        case GDK_KEY_Down:
+        case CDK_KEY_Down:
           labels[i++] = "\xe2\x86\x93";
           break;
-        case GDK_KEY_space:
+        case CDK_KEY_space:
           labels[i++] = "\xe2\x90\xa3";
           break;
-        case GDK_KEY_Return:
+        case CDK_KEY_Return:
           labels[i++] = "\xe2\x8f\x8e";
           break;
-        case GDK_KEY_Page_Up:
+        case CDK_KEY_Page_Up:
           labels[i++] = C_("keyboard label", "Page_Up");
           break;
-        case GDK_KEY_Page_Down:
+        case CDK_KEY_Page_Down:
           labels[i++] = C_("keyboard label", "Page_Down");
           break;
         default:

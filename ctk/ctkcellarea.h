@@ -276,24 +276,24 @@ struct _CtkCellAreaClass
   void (*_ctk_reserved8) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType                 ctk_cell_area_get_type                       (void) G_GNUC_CONST;
 
 /* Basic methods */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_cell_area_add                            (CtkCellArea          *area,
                                                                     CtkCellRenderer      *renderer);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_cell_area_remove                         (CtkCellArea          *area,
                                                                     CtkCellRenderer      *renderer);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_cell_area_has_renderer                   (CtkCellArea          *area,
                                                                     CtkCellRenderer      *renderer);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_cell_area_foreach                        (CtkCellArea          *area,
                                                                     CtkCellCallback       callback,
                                                                     gpointer              callback_data);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_cell_area_foreach_alloc                  (CtkCellArea          *area,
                                                                     CtkCellAreaContext   *context,
                                                                     CtkWidget            *widget,
@@ -301,14 +301,14 @@ void                  ctk_cell_area_foreach_alloc                  (CtkCellArea 
                                                                     const CdkRectangle   *background_area,
                                                                     CtkCellAllocCallback  callback,
                                                                     gpointer              callback_data);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint                  ctk_cell_area_event                          (CtkCellArea          *area,
                                                                     CtkCellAreaContext   *context,
                                                                     CtkWidget            *widget,
                                                                     CdkEvent             *event,
                                                                     const CdkRectangle   *cell_area,
                                                                     CtkCellRendererState  flags);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_cell_area_render                         (CtkCellArea          *area,
                                                                     CtkCellAreaContext   *context,
                                                                     CtkWidget            *widget,
@@ -318,14 +318,14 @@ void                  ctk_cell_area_render                         (CtkCellArea 
                                                                     CtkCellRendererState  flags,
                                                                     gboolean              paint_focus);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_cell_area_get_cell_allocation            (CtkCellArea          *area,
                                                                     CtkCellAreaContext   *context,
                                                                     CtkWidget            *widget,
                                                                     CtkCellRenderer      *renderer,
                                                                     const CdkRectangle   *cell_area,
                                                                     CdkRectangle         *allocation);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkCellRenderer      *ctk_cell_area_get_cell_at_position           (CtkCellArea          *area,
                                                                     CtkCellAreaContext   *context,
                                                                     CtkWidget            *widget,
@@ -335,179 +335,179 @@ CtkCellRenderer      *ctk_cell_area_get_cell_at_position           (CtkCellArea 
                                                                     CdkRectangle         *alloc_area);
 
 /* Geometry */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkCellAreaContext   *ctk_cell_area_create_context                 (CtkCellArea        *area);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkCellAreaContext   *ctk_cell_area_copy_context                   (CtkCellArea        *area,
                                                                     CtkCellAreaContext *context);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkSizeRequestMode    ctk_cell_area_get_request_mode               (CtkCellArea        *area);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_cell_area_get_preferred_width            (CtkCellArea        *area,
                                                                     CtkCellAreaContext *context,
                                                                     CtkWidget          *widget,
                                                                     gint               *minimum_width,
                                                                     gint               *natural_width);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_cell_area_get_preferred_height_for_width (CtkCellArea        *area,
                                                                     CtkCellAreaContext *context,
                                                                     CtkWidget          *widget,
                                                                     gint                width,
                                                                     gint               *minimum_height,
                                                                     gint               *natural_height);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_cell_area_get_preferred_height           (CtkCellArea        *area,
                                                                     CtkCellAreaContext *context,
                                                                     CtkWidget          *widget,
                                                                     gint               *minimum_height,
                                                                     gint               *natural_height);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_cell_area_get_preferred_width_for_height (CtkCellArea        *area,
                                                                     CtkCellAreaContext *context,
                                                                     CtkWidget          *widget,
                                                                     gint                height,
                                                                     gint               *minimum_width,
                                                                     gint               *natural_width);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *         ctk_cell_area_get_current_path_string        (CtkCellArea        *area);
 
 
 /* Attributes */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_cell_area_apply_attributes               (CtkCellArea        *area,
                                                                     CtkTreeModel       *tree_model,
                                                                     CtkTreeIter        *iter,
                                                                     gboolean            is_expander,
                                                                     gboolean            is_expanded);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_cell_area_attribute_connect              (CtkCellArea        *area,
                                                                     CtkCellRenderer    *renderer,
                                                                     const gchar        *attribute,
                                                                     gint                column);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_cell_area_attribute_disconnect           (CtkCellArea        *area,
                                                                     CtkCellRenderer    *renderer,
                                                                     const gchar        *attribute);
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 gint                  ctk_cell_area_attribute_get_column           (CtkCellArea        *area,
                                                                     CtkCellRenderer    *renderer,
                                                                     const gchar        *attribute);
 
 
 /* Cell Properties */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_cell_area_class_install_cell_property    (CtkCellAreaClass   *aclass,
                                                                     guint               property_id,
                                                                     GParamSpec         *pspec);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GParamSpec*           ctk_cell_area_class_find_cell_property       (CtkCellAreaClass   *aclass,
                                                                     const gchar        *property_name);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GParamSpec**          ctk_cell_area_class_list_cell_properties     (CtkCellAreaClass   *aclass,
                                                                     guint                   *n_properties);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_cell_area_add_with_properties            (CtkCellArea        *area,
                                                                     CtkCellRenderer    *renderer,
                                                                     const gchar     *first_prop_name,
                                                                     ...) G_GNUC_NULL_TERMINATED;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_cell_area_cell_set                       (CtkCellArea        *area,
                                                                     CtkCellRenderer    *renderer,
                                                                     const gchar        *first_prop_name,
                                                                     ...) G_GNUC_NULL_TERMINATED;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_cell_area_cell_get                       (CtkCellArea        *area,
                                                                     CtkCellRenderer    *renderer,
                                                                     const gchar        *first_prop_name,
                                                                     ...) G_GNUC_NULL_TERMINATED;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_cell_area_cell_set_valist                (CtkCellArea        *area,
                                                                     CtkCellRenderer    *renderer,
                                                                     const gchar        *first_property_name,
                                                                     va_list             var_args);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_cell_area_cell_get_valist                (CtkCellArea        *area,
                                                                     CtkCellRenderer    *renderer,
                                                                     const gchar        *first_property_name,
                                                                     va_list             var_args);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_cell_area_cell_set_property              (CtkCellArea        *area,
                                                                     CtkCellRenderer    *renderer,
                                                                     const gchar        *property_name,
                                                                     const GValue       *value);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_cell_area_cell_get_property              (CtkCellArea        *area,
                                                                     CtkCellRenderer    *renderer,
                                                                     const gchar        *property_name,
                                                                     GValue             *value);
 
 /* Focus */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_cell_area_is_activatable                 (CtkCellArea         *area);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_cell_area_activate                       (CtkCellArea         *area,
                                                                     CtkCellAreaContext  *context,
                                                                     CtkWidget           *widget,
                                                                     const CdkRectangle  *cell_area,
                                                                     CtkCellRendererState flags,
                                                                     gboolean             edit_only);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_cell_area_focus                          (CtkCellArea         *area,
                                                                     CtkDirectionType     direction);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_cell_area_set_focus_cell                 (CtkCellArea          *area,
                                                                     CtkCellRenderer      *renderer);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkCellRenderer      *ctk_cell_area_get_focus_cell                 (CtkCellArea          *area);
 
 
 /* Focus siblings */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_cell_area_add_focus_sibling              (CtkCellArea          *area,
                                                                     CtkCellRenderer      *renderer,
                                                                     CtkCellRenderer      *sibling);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_cell_area_remove_focus_sibling           (CtkCellArea          *area,
                                                                     CtkCellRenderer      *renderer,
                                                                     CtkCellRenderer      *sibling);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_cell_area_is_focus_sibling               (CtkCellArea          *area,
                                                                     CtkCellRenderer      *renderer,
                                                                     CtkCellRenderer      *sibling);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const GList *         ctk_cell_area_get_focus_siblings             (CtkCellArea          *area,
                                                                     CtkCellRenderer      *renderer);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkCellRenderer      *ctk_cell_area_get_focus_from_sibling         (CtkCellArea          *area,
                                                                     CtkCellRenderer      *renderer);
 
 /* Cell Activation/Editing */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkCellRenderer      *ctk_cell_area_get_edited_cell                (CtkCellArea          *area);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkCellEditable      *ctk_cell_area_get_edit_widget                (CtkCellArea          *area);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_cell_area_activate_cell                  (CtkCellArea          *area,
                                                                     CtkWidget            *widget,
                                                                     CtkCellRenderer      *renderer,
                                                                     CdkEvent             *event,
                                                                     const CdkRectangle   *cell_area,
                                                                     CtkCellRendererState  flags);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_cell_area_stop_editing                   (CtkCellArea          *area,
                                                                     gboolean              canceled);
 
 /* Functions for area implementations */
 
 /* Distinguish the inner cell area from the whole requested area including margins */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_cell_area_inner_cell_area                (CtkCellArea        *area,
                                                                     CtkWidget          *widget,
                                                                     const CdkRectangle *cell_area,
                                                                     CdkRectangle       *inner_area);
 
 /* Request the size of a cell while respecting the cell margins (requests are margin inclusive) */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_cell_area_request_renderer               (CtkCellArea        *area,
                                                                     CtkCellRenderer    *renderer,
                                                                     CtkOrientation      orientation,

@@ -986,7 +986,7 @@ populate_flowbox (CtkWidget *flowbox)
 
   g_object_set_data (G_OBJECT (flowbox), "populated", GUINT_TO_POINTER (1));
 
-  pixbuf = cdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, 110, 70);
+  pixbuf = cdk_pixbuf_new (CDK_COLORSPACE_RGB, FALSE, 8, 110, 70);
   cdk_pixbuf_fill (pixbuf, 0xffffffff);
   child = ctk_image_new_from_pixbuf (pixbuf);
   ctk_widget_show (child);
@@ -1227,7 +1227,7 @@ handle_cutcopypaste (CtkWidget *button, CtkWidget *textview)
   CtkClipboard *clipboard;
   const gchar *id;
 
-  clipboard = ctk_widget_get_clipboard (textview, GDK_SELECTION_CLIPBOARD);
+  clipboard = ctk_widget_get_clipboard (textview, CDK_SELECTION_CLIPBOARD);
   buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (textview));
   id = ctk_buildable_get_name (CTK_BUILDABLE (button));
 
@@ -1279,7 +1279,7 @@ osd_frame_button_press (CtkWidget *frame, CdkEventButton *event, gpointer data)
   visible = ctk_widget_get_visible (osd);
   ctk_widget_set_visible (osd, !visible);
 
-  return GDK_EVENT_STOP;
+  return CDK_EVENT_STOP;
 }
 
 static gboolean
@@ -1954,7 +1954,7 @@ activate (GApplication *app)
                     G_CALLBACK (textbuffer_notify_selection), widget);
   widget = (CtkWidget *)ctk_builder_get_object (builder, "pastebutton");
   g_signal_connect (widget, "clicked", G_CALLBACK (handle_cutcopypaste), widget2);
-  g_signal_connect_object (ctk_widget_get_clipboard (widget2, GDK_SELECTION_CLIPBOARD), "owner-change",
+  g_signal_connect_object (ctk_widget_get_clipboard (widget2, CDK_SELECTION_CLIPBOARD), "owner-change",
                            G_CALLBACK (clipboard_owner_change), widget, 0);
 
   widget = (CtkWidget *)ctk_builder_get_object (builder, "osd_frame");

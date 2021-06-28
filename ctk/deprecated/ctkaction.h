@@ -92,53 +92,53 @@ struct _CtkActionClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 GType        ctk_action_get_type               (void) G_GNUC_CONST;
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 CtkAction   *ctk_action_new                    (const gchar *name,
 						const gchar *label,
 						const gchar *tooltip,
 						const gchar *stock_id);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 const gchar* ctk_action_get_name               (CtkAction     *action);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 gboolean     ctk_action_is_sensitive           (CtkAction     *action);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 gboolean     ctk_action_get_sensitive          (CtkAction     *action);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void         ctk_action_set_sensitive          (CtkAction     *action,
 						gboolean       sensitive);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 gboolean     ctk_action_is_visible             (CtkAction     *action);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 gboolean     ctk_action_get_visible            (CtkAction     *action);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void         ctk_action_set_visible            (CtkAction     *action,
 						gboolean       visible);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void         ctk_action_activate               (CtkAction     *action);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 CtkWidget *  ctk_action_create_icon            (CtkAction     *action,
 						CtkIconSize    icon_size);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 CtkWidget *  ctk_action_create_menu_item       (CtkAction     *action);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 CtkWidget *  ctk_action_create_tool_item       (CtkAction     *action);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 CtkWidget *  ctk_action_create_menu            (CtkAction     *action);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 GSList *     ctk_action_get_proxies            (CtkAction     *action);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void         ctk_action_connect_accelerator    (CtkAction     *action);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void         ctk_action_disconnect_accelerator (CtkAction     *action);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 const gchar *ctk_action_get_accel_path         (CtkAction     *action);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 GClosure    *ctk_action_get_accel_closure      (CtkAction     *action);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void         ctk_action_block_activate         (CtkAction     *action);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void         ctk_action_unblock_activate       (CtkAction     *action);
 
 void         _ctk_action_add_to_proxy_list     (CtkAction     *action,
@@ -150,65 +150,65 @@ void         _ctk_action_remove_from_proxy_list(CtkAction     *action,
 void         _ctk_action_emit_activate         (CtkAction     *action);
 
 /* protected ... for use by action groups */
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void         ctk_action_set_accel_path         (CtkAction     *action,
 						const gchar   *accel_path);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void         ctk_action_set_accel_group        (CtkAction     *action,
 						CtkAccelGroup *accel_group);
 void         _ctk_action_sync_menu_visible     (CtkAction     *action,
 						CtkWidget     *proxy,
 						gboolean       empty);
 
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void                  ctk_action_set_label              (CtkAction   *action,
                                                          const gchar *label);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 const gchar *         ctk_action_get_label              (CtkAction   *action);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void                  ctk_action_set_short_label        (CtkAction   *action,
                                                          const gchar *short_label);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 const gchar *         ctk_action_get_short_label        (CtkAction   *action);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void                  ctk_action_set_tooltip            (CtkAction   *action,
                                                          const gchar *tooltip);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 const gchar *         ctk_action_get_tooltip            (CtkAction   *action);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void                  ctk_action_set_stock_id           (CtkAction   *action,
                                                          const gchar *stock_id);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 const gchar *         ctk_action_get_stock_id           (CtkAction   *action);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void                  ctk_action_set_gicon              (CtkAction   *action,
                                                          GIcon       *icon);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 GIcon                *ctk_action_get_gicon              (CtkAction   *action);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void                  ctk_action_set_icon_name          (CtkAction   *action,
                                                          const gchar *icon_name);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 const gchar *         ctk_action_get_icon_name          (CtkAction   *action);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void                  ctk_action_set_visible_horizontal (CtkAction   *action,
                                                          gboolean     visible_horizontal);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 gboolean              ctk_action_get_visible_horizontal (CtkAction   *action);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void                  ctk_action_set_visible_vertical   (CtkAction   *action,
                                                          gboolean     visible_vertical);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 gboolean              ctk_action_get_visible_vertical   (CtkAction   *action);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void                  ctk_action_set_is_important       (CtkAction   *action,
                                                          gboolean     is_important);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 gboolean              ctk_action_get_is_important       (CtkAction   *action);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void                  ctk_action_set_always_show_image  (CtkAction   *action,
                                                          gboolean     always_show);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 gboolean              ctk_action_get_always_show_image  (CtkAction   *action);
 
 

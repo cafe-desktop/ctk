@@ -58,26 +58,26 @@ struct _CtkRevealerClass {
   CtkBinClass parent_class;
 };
 
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 GType                      ctk_revealer_get_type                (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 CtkWidget*                 ctk_revealer_new                     (void);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 gboolean                   ctk_revealer_get_reveal_child        (CtkRevealer               *revealer);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void                       ctk_revealer_set_reveal_child        (CtkRevealer               *revealer,
                                                                  gboolean                   reveal_child);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 gboolean                   ctk_revealer_get_child_revealed      (CtkRevealer               *revealer);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 guint                      ctk_revealer_get_transition_duration (CtkRevealer               *revealer);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void                       ctk_revealer_set_transition_duration (CtkRevealer               *revealer,
                                                                  guint                      duration);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void                       ctk_revealer_set_transition_type     (CtkRevealer               *revealer,
                                                                  CtkRevealerTransitionType  transition);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 CtkRevealerTransitionType  ctk_revealer_get_transition_type     (CtkRevealer               *revealer);
 
 

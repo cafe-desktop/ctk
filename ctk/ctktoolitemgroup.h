@@ -69,56 +69,56 @@ struct _CtkToolItemGroupClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType                 ctk_tool_item_group_get_type          (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget*            ctk_tool_item_group_new               (const gchar        *label);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_tool_item_group_set_label         (CtkToolItemGroup   *group,
                                                              const gchar        *label);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_tool_item_group_set_label_widget  (CtkToolItemGroup   *group,
                                                              CtkWidget          *label_widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_tool_item_group_set_collapsed      (CtkToolItemGroup  *group,
                                                              gboolean            collapsed);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_tool_item_group_set_ellipsize     (CtkToolItemGroup   *group,
                                                              PangoEllipsizeMode  ellipsize);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_tool_item_group_set_header_relief (CtkToolItemGroup   *group,
                                                              CtkReliefStyle      style);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *         ctk_tool_item_group_get_label         (CtkToolItemGroup   *group);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget            *ctk_tool_item_group_get_label_widget  (CtkToolItemGroup   *group);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_tool_item_group_get_collapsed     (CtkToolItemGroup   *group);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 PangoEllipsizeMode    ctk_tool_item_group_get_ellipsize     (CtkToolItemGroup   *group);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkReliefStyle        ctk_tool_item_group_get_header_relief (CtkToolItemGroup   *group);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_tool_item_group_insert            (CtkToolItemGroup   *group,
                                                              CtkToolItem        *item,
                                                              gint                position);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_tool_item_group_set_item_position (CtkToolItemGroup   *group,
                                                              CtkToolItem        *item,
                                                              gint                position);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint                  ctk_tool_item_group_get_item_position (CtkToolItemGroup   *group,
                                                              CtkToolItem        *item);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 guint                 ctk_tool_item_group_get_n_items       (CtkToolItemGroup   *group);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkToolItem*          ctk_tool_item_group_get_nth_item      (CtkToolItemGroup   *group,
                                                              guint               index);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkToolItem*          ctk_tool_item_group_get_drop_item     (CtkToolItemGroup   *group,
                                                              gint                x,
                                                              gint                y);

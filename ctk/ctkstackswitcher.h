@@ -55,14 +55,14 @@ struct _CtkStackSwitcherClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 GType        ctk_stack_switcher_get_type          (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 CtkWidget *  ctk_stack_switcher_new               (void);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void         ctk_stack_switcher_set_stack         (CtkStackSwitcher *switcher,
                                                    CtkStack         *stack);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 CtkStack *   ctk_stack_switcher_get_stack         (CtkStackSwitcher *switcher);
 
 G_END_DECLS

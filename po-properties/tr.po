@@ -143,20 +143,20 @@ msgid "Default Display"
 msgstr "Öntanımlı Görüntü"
 
 #: cdk/cdkdisplaymanager.c:163
-msgid "The default display for GDK"
-msgstr "GDK için öntanımlı görüntü"
+msgid "The default display for CDK"
+msgstr "CDK için öntanımlı görüntü"
 
 #: cdk/cdkglcontext.c:318
-msgid "The GDK display used to create the GL context"
-msgstr "GL bağlamını oluşturmak için kullanılan GDK ekranı"
+msgid "The CDK display used to create the GL context"
+msgstr "GL bağlamını oluşturmak için kullanılan CDK ekranı"
 
 #: cdk/cdkglcontext.c:333 ctk/ctkwidget.c:1347
 msgid "Window"
 msgstr "Pencere"
 
 #: cdk/cdkglcontext.c:334
-msgid "The GDK window bound to the GL context"
-msgstr "GL bağlamına bağlı GDK penceresi"
+msgid "The CDK window bound to the GL context"
+msgstr "GL bağlamına bağlı CDK penceresi"
 
 #: cdk/cdkglcontext.c:349
 msgid "Shared context"

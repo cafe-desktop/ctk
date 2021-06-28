@@ -20,7 +20,7 @@
 #define __CTK_FILE_CHOOSER_NATIVE_PRIVATE_H__
 
 #include <ctk/ctkfilechoosernative.h>
-#ifdef GDK_WINDOWING_QUARTZ
+#ifdef CDK_WINDOWING_QUARTZ
 #include <AvailabilityMacros.h>
 #endif
 
@@ -61,7 +61,7 @@ struct _CtkFileChooserNative
 gboolean ctk_file_chooser_native_win32_show (CtkFileChooserNative *self);
 void ctk_file_chooser_native_win32_hide (CtkFileChooserNative *self);
 
-#if defined GDK_WINDOWING_QUARTZ && MAC_OS_X_VERSION_MAX_ALLOWED >= 1060
+#if defined CDK_WINDOWING_QUARTZ && MAC_OS_X_VERSION_MAX_ALLOWED >= 1060
 gboolean ctk_file_chooser_native_quartz_show (CtkFileChooserNative *self);
 void ctk_file_chooser_native_quartz_hide (CtkFileChooserNative *self);
 #endif

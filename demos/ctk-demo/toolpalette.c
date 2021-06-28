@@ -263,7 +263,7 @@ interactive_canvas_drag_motion (CtkWidget      *widget,
       drop_item->y = y;
 
       ctk_widget_queue_draw (widget);
-      cdk_drag_status (context, GDK_ACTION_COPY, time);
+      cdk_drag_status (context, CDK_ACTION_COPY, time);
     }
   else
     {
@@ -331,7 +331,7 @@ interactive_canvas_drag_data_received (CtkWidget        *widget,
     } else
     {
       drop_item = item;
-      cdk_drag_status (context, GDK_ACTION_COPY, time);
+      cdk_drag_status (context, CDK_ACTION_COPY, time);
     }
 
   ctk_widget_queue_draw (widget);
@@ -562,7 +562,7 @@ do_toolpalette (CtkWidget *do_widget)
                                       CTK_DEST_DEFAULT_ALL,
                                       CTK_TOOL_PALETTE_DRAG_ITEMS |
                                       CTK_TOOL_PALETTE_DRAG_GROUPS,
-                                      GDK_ACTION_MOVE);
+                                      CDK_ACTION_MOVE);
 
       /* ===== passive DnD dest ===== */
 
@@ -578,7 +578,7 @@ do_toolpalette (CtkWidget *do_widget)
                                       contents,
                                       CTK_DEST_DEFAULT_ALL,
                                       CTK_TOOL_PALETTE_DRAG_ITEMS,
-                                      GDK_ACTION_COPY);
+                                      CDK_ACTION_COPY);
 
       contents_scroller = ctk_scrolled_window_new (NULL, NULL);
       ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (contents_scroller),
@@ -608,7 +608,7 @@ do_toolpalette (CtkWidget *do_widget)
                                       contents,
                                       CTK_DEST_DEFAULT_HIGHLIGHT,
                                       CTK_TOOL_PALETTE_DRAG_ITEMS,
-                                      GDK_ACTION_COPY);
+                                      CDK_ACTION_COPY);
 
       contents_scroller = ctk_scrolled_window_new (NULL, NULL);
       ctk_scrolled_window_set_policy (CTK_SCROLLED_WINDOW (contents_scroller),

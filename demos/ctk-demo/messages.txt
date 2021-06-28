@@ -107,7 +107,7 @@
 107|CTK+ and friends|CTKtoolkit|More features/ideas for ctk+ 3.2: pictures: https://mail.gnome.org/archives/ctk-devel-list/2011-February/msg00038.html #ctk|1297815657|0||1|2
 108|CTK+ and friends|CTKtoolkit|New features/ideas for ctk+ 3.2: Translucent TextViews : http://blogs.gnome.org/tvb/2011/02/14/translucent-textviews/ #ctk|1297707521|0||1|2
 109|CTK+ and friends|CTKtoolkit|Blog post of our tireless maintainer, Matthias Clasen: http://blogs.fedoraproject.org/wp/mclasen/2011/02/10/ctk-3-is-here/ #ctk #ctk3|1297378021|0||0|5
-110|CTK+ and friends|CTKtoolkit|Highlights: Cairo-based, XI2, new theming API, Flexible geometry management, Multiple backend support for GDK, easy application support ...|1297373117|0||0|3
+110|CTK+ and friends|CTKtoolkit|Highlights: Cairo-based, XI2, new theming API, Flexible geometry management, Multiple backend support for CDK, easy application support ...|1297373117|0||0|3
 111|CTK+ and friends|CTKtoolkit|CTK+ 3.0 released!! : http://mail.gnome.org/archives/ctk-devel-list/2011-February/msg00020.html ctk!|1297372977|0||1|20
 112|CTK+ and friends|CTKtoolkit|GLib 2.28.0 (stable) released: https://mail.gnome.org/archives/ctk-devel-list/2011-February/msg00014.html #ctk #glib|1297196093|0||0|2
 113|CTK+ and friends|CTKtoolkit|CTK+ 2.99.3 released: latest beta before CTK+3 http://mail.gnome.org/archives/ctk-devel-list/2011-February/msg00004.html #ctk|1296609072|0||1|1
@@ -117,14 +117,14 @@
 117|CTK+ and friends|CTKtoolkit|RT @prcutler RT @fcrozat: First shot at GNOME3 evaluation usb stick : http://bit.ly/i1wM8X #gnome #gnome3 #gnome-shell #opensuse #gnome|1295186033|0||1|0
 118|CTK+ and friends|CTKtoolkit|If you want to try the #wayland backend, checkout this branch: http://git.gnome.org/browse/ctk+/log/?h=cdk-backend-wayland #ctk|1294739562|0||1|5
 119|CTK+ and friends|CTKtoolkit|CTK+ 2.99.1 (unstable) released: http://mail.gnome.org/archives/ctk-devel-list/2011-January/msg00005.html #ctk|1294738413|0||0|0
-120|CTK+ and friends|CTKtoolkit|CTK+ 2.99: It is now possible to include multiple GDK backends in a single library. Use --enable-{x11,win32,quartz}-backend #ctk|1294344201|0||0|0
+120|CTK+ and friends|CTKtoolkit|CTK+ 2.99: It is now possible to include multiple CDK backends in a single library. Use --enable-{x11,win32,quartz}-backend #ctk|1294344201|0||0|0
 121|CTK+ and friends|CTKtoolkit|CTK+ 2.99: The removal of GSEALEd struct members has been completed in this release #ctk|1294344070|0||0|1
 122|CTK+ and friends|CTKtoolkit|CTK+ 2.99.0 (unstable) released http://mail.gnome.org/archives/ctk-devel-list/2011-January/msg00001.html #ctk|1294344044|0||0|2
 123|CTK+ and friends|CTKtoolkit|GLib 2.27.90 (unstable) released: http://mail.gnome.org/archives/ctk-devel-list/2011-January/msg00000.html #glib|1294343933|0||0|0
 124|CTK+ and friends|CTKtoolkit|Glade 3.9.0 (unstalbe) released: snapshot leading up to Glade 3.10 that will depend on CTK+3 http://ur1.ca/2rir0 #ctk #rad|1294343894|0||0|1
 125|CTK+ and friends|CTKtoolkit|Glade 3.7.3 (unstable) released: snapshot leading up to Glade 3.8 that\nwill depend on CTK+ 2.24 http://ur1.ca/2riqg #ctk|1294343835|0||0|0
-126|CTK+ and friends|CTKtoolkit|RT @hoegsberg: Multi-backend support in CTK+: http://bit.ly/gDwugJ - switch between #Wayland and X11 by setting GDK_BACKEND #ctk|1294201849|0||0|0
-127|CTK+ and friends|CTKtoolkit|RT @krietvel Blog post \"GDK 3.0 on Mac OS X\" http://bit.ly/ihr9kH or how GDK became awesome in CTK+ 3.0. #ctk #osx|1293728637|0||0|1
+126|CTK+ and friends|CTKtoolkit|RT @hoegsberg: Multi-backend support in CTK+: http://bit.ly/gDwugJ - switch between #Wayland and X11 by setting CDK_BACKEND #ctk|1294201849|0||0|0
+127|CTK+ and friends|CTKtoolkit|RT @krietvel Blog post \"CDK 3.0 on Mac OS X\" http://bit.ly/ihr9kH or how CDK became awesome in CTK+ 3.0. #ctk #osx|1293728637|0||0|1
 128|CTK+ and friends|CTKtoolkit|RT @krietvel Blog post \"Refactoring CtkTreeView using CtkCellArea\" http://bit.ly/g9aArE #ctk|1293728607|0||0|0
 129|CTK+ and friends|CTKtoolkit|Also, the treeview-refactor branch has been merged too|1293036166|0||1|0
 130|CTK+ and friends|CTKtoolkit|New in CTK+ 2.91.7: cdk-backend branch have been merged: the goal is allowing to build a single cdk library that contains multiple backends|1293036118|0||0|0

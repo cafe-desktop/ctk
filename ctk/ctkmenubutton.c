@@ -244,8 +244,8 @@ popup_menu (CtkMenuButton *menu_button,
             CdkEvent      *event)
 {
   CtkMenuButtonPrivate *priv = menu_button->priv;
-  CdkGravity widget_anchor = GDK_GRAVITY_SOUTH_WEST;
-  CdkGravity menu_anchor = GDK_GRAVITY_NORTH_WEST;
+  CdkGravity widget_anchor = CDK_GRAVITY_SOUTH_WEST;
+  CdkGravity menu_anchor = CDK_GRAVITY_NORTH_WEST;
 
   if (priv->func)
     priv->func (priv->user_data);
@@ -257,9 +257,9 @@ popup_menu (CtkMenuButton *menu_button,
     {
     case CTK_ARROW_UP:
       g_object_set (priv->menu,
-                    "anchor-hints", (GDK_ANCHOR_FLIP_Y |
-                                     GDK_ANCHOR_SLIDE |
-                                     GDK_ANCHOR_RESIZE),
+                    "anchor-hints", (CDK_ANCHOR_FLIP_Y |
+                                     CDK_ANCHOR_SLIDE |
+                                     CDK_ANCHOR_RESIZE),
                     NULL);
 
       switch (ctk_widget_get_halign (priv->menu))
@@ -267,18 +267,18 @@ popup_menu (CtkMenuButton *menu_button,
         case CTK_ALIGN_FILL:
         case CTK_ALIGN_START:
         case CTK_ALIGN_BASELINE:
-          widget_anchor = GDK_GRAVITY_NORTH_WEST;
-          menu_anchor = GDK_GRAVITY_SOUTH_WEST;
+          widget_anchor = CDK_GRAVITY_NORTH_WEST;
+          menu_anchor = CDK_GRAVITY_SOUTH_WEST;
           break;
 
         case CTK_ALIGN_END:
-          widget_anchor = GDK_GRAVITY_NORTH_EAST;
-          menu_anchor = GDK_GRAVITY_SOUTH_EAST;
+          widget_anchor = CDK_GRAVITY_NORTH_EAST;
+          menu_anchor = CDK_GRAVITY_SOUTH_EAST;
           break;
 
         case CTK_ALIGN_CENTER:
-          widget_anchor = GDK_GRAVITY_NORTH;
-          menu_anchor = GDK_GRAVITY_SOUTH;
+          widget_anchor = CDK_GRAVITY_NORTH;
+          menu_anchor = CDK_GRAVITY_SOUTH;
           break;
         }
 
@@ -290,10 +290,10 @@ popup_menu (CtkMenuButton *menu_button,
        * of the shadows.
        */
       g_object_set (priv->menu,
-                    "anchor-hints", (GDK_ANCHOR_FLIP_Y |
-                                     GDK_ANCHOR_SLIDE |
-                                     GDK_ANCHOR_RESIZE),
-                    "menu-type-hint", GDK_WINDOW_TYPE_HINT_DROPDOWN_MENU,
+                    "anchor-hints", (CDK_ANCHOR_FLIP_Y |
+                                     CDK_ANCHOR_SLIDE |
+                                     CDK_ANCHOR_RESIZE),
+                    "menu-type-hint", CDK_WINDOW_TYPE_HINT_DROPDOWN_MENU,
                     NULL);
 
       switch (ctk_widget_get_halign (priv->menu))
@@ -301,18 +301,18 @@ popup_menu (CtkMenuButton *menu_button,
         case CTK_ALIGN_FILL:
         case CTK_ALIGN_START:
         case CTK_ALIGN_BASELINE:
-          widget_anchor = GDK_GRAVITY_SOUTH_WEST;
-          menu_anchor = GDK_GRAVITY_NORTH_WEST;
+          widget_anchor = CDK_GRAVITY_SOUTH_WEST;
+          menu_anchor = CDK_GRAVITY_NORTH_WEST;
           break;
 
         case CTK_ALIGN_END:
-          widget_anchor = GDK_GRAVITY_SOUTH_EAST;
-          menu_anchor = GDK_GRAVITY_NORTH_EAST;
+          widget_anchor = CDK_GRAVITY_SOUTH_EAST;
+          menu_anchor = CDK_GRAVITY_NORTH_EAST;
           break;
 
         case CTK_ALIGN_CENTER:
-          widget_anchor = GDK_GRAVITY_SOUTH;
-          menu_anchor = GDK_GRAVITY_NORTH;
+          widget_anchor = CDK_GRAVITY_SOUTH;
+          menu_anchor = CDK_GRAVITY_NORTH;
           break;
         }
 
@@ -320,9 +320,9 @@ popup_menu (CtkMenuButton *menu_button,
 
     case CTK_ARROW_LEFT:
       g_object_set (priv->menu,
-                    "anchor-hints", (GDK_ANCHOR_FLIP_X |
-                                     GDK_ANCHOR_SLIDE |
-                                     GDK_ANCHOR_RESIZE),
+                    "anchor-hints", (CDK_ANCHOR_FLIP_X |
+                                     CDK_ANCHOR_SLIDE |
+                                     CDK_ANCHOR_RESIZE),
                     NULL);
 
       switch (ctk_widget_get_valign (priv->menu))
@@ -330,18 +330,18 @@ popup_menu (CtkMenuButton *menu_button,
         case CTK_ALIGN_FILL:
         case CTK_ALIGN_START:
         case CTK_ALIGN_BASELINE:
-          widget_anchor = GDK_GRAVITY_NORTH_WEST;
-          menu_anchor = GDK_GRAVITY_NORTH_EAST;
+          widget_anchor = CDK_GRAVITY_NORTH_WEST;
+          menu_anchor = CDK_GRAVITY_NORTH_EAST;
           break;
 
         case CTK_ALIGN_END:
-          widget_anchor = GDK_GRAVITY_SOUTH_WEST;
-          menu_anchor = GDK_GRAVITY_SOUTH_EAST;
+          widget_anchor = CDK_GRAVITY_SOUTH_WEST;
+          menu_anchor = CDK_GRAVITY_SOUTH_EAST;
           break;
 
         case CTK_ALIGN_CENTER:
-          widget_anchor = GDK_GRAVITY_WEST;
-          menu_anchor = GDK_GRAVITY_EAST;
+          widget_anchor = CDK_GRAVITY_WEST;
+          menu_anchor = CDK_GRAVITY_EAST;
           break;
         }
 
@@ -349,9 +349,9 @@ popup_menu (CtkMenuButton *menu_button,
 
     case CTK_ARROW_RIGHT:
       g_object_set (priv->menu,
-                    "anchor-hints", (GDK_ANCHOR_FLIP_X |
-                                     GDK_ANCHOR_SLIDE |
-                                     GDK_ANCHOR_RESIZE),
+                    "anchor-hints", (CDK_ANCHOR_FLIP_X |
+                                     CDK_ANCHOR_SLIDE |
+                                     CDK_ANCHOR_RESIZE),
                     NULL);
 
       switch (ctk_widget_get_valign (priv->menu))
@@ -359,18 +359,18 @@ popup_menu (CtkMenuButton *menu_button,
         case CTK_ALIGN_FILL:
         case CTK_ALIGN_START:
         case CTK_ALIGN_BASELINE:
-          widget_anchor = GDK_GRAVITY_NORTH_EAST;
-          menu_anchor = GDK_GRAVITY_NORTH_WEST;
+          widget_anchor = CDK_GRAVITY_NORTH_EAST;
+          menu_anchor = CDK_GRAVITY_NORTH_WEST;
           break;
 
         case CTK_ALIGN_END:
-          widget_anchor = GDK_GRAVITY_SOUTH_EAST;
-          menu_anchor = GDK_GRAVITY_SOUTH_WEST;
+          widget_anchor = CDK_GRAVITY_SOUTH_EAST;
+          menu_anchor = CDK_GRAVITY_SOUTH_WEST;
           break;
 
         case CTK_ALIGN_CENTER:
-          widget_anchor = GDK_GRAVITY_EAST;
-          menu_anchor = GDK_GRAVITY_WEST;
+          widget_anchor = CDK_GRAVITY_EAST;
+          menu_anchor = CDK_GRAVITY_WEST;
           break;
         }
 
@@ -378,9 +378,9 @@ popup_menu (CtkMenuButton *menu_button,
 
     case CTK_ARROW_NONE:
       g_object_set (priv->menu,
-                    "anchor-hints", (GDK_ANCHOR_FLIP_Y |
-                                     GDK_ANCHOR_SLIDE |
-                                     GDK_ANCHOR_RESIZE),
+                    "anchor-hints", (CDK_ANCHOR_FLIP_Y |
+                                     CDK_ANCHOR_SLIDE |
+                                     CDK_ANCHOR_RESIZE),
                     NULL);
 
       break;
@@ -411,8 +411,8 @@ ctk_menu_button_toggled (CtkToggleButton *button)
           popup_menu (menu_button, event);
 
           if (!event ||
-              event->type == GDK_KEY_PRESS ||
-              event->type == GDK_KEY_RELEASE)
+              event->type == CDK_KEY_PRESS ||
+              event->type == CDK_KEY_RELEASE)
             ctk_menu_shell_select_first (CTK_MENU_SHELL (priv->menu), FALSE);
 
           if (event)

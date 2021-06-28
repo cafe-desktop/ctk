@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -147,7 +147,7 @@ _cdk_broadway_display_get_selection_property (CdkDisplay *display,
 					      gint       *ret_format)
 {
   if (ret_type)
-    *ret_type = GDK_NONE;
+    *ret_type = CDK_NONE;
   if (ret_format)
     *ret_format = 0;
   if (data)
@@ -166,7 +166,7 @@ _cdk_broadway_display_send_selection_notify (CdkDisplay      *display,
 					     CdkAtom          property, 
 					     guint32          time)
 {
-  g_return_if_fail (GDK_IS_DISPLAY (display));
+  g_return_if_fail (CDK_IS_DISPLAY (display));
 
   g_warning ("send_selection_notify not implemented");
 }
@@ -260,9 +260,9 @@ _cdk_broadway_display_text_property_to_utf8_list (CdkDisplay    *display,
 {
   g_return_val_if_fail (text != NULL, 0);
   g_return_val_if_fail (length >= 0, 0);
-  g_return_val_if_fail (GDK_IS_DISPLAY (display), 0);
+  g_return_val_if_fail (CDK_IS_DISPLAY (display), 0);
 
-  if (encoding == GDK_TARGET_STRING)
+  if (encoding == CDK_TARGET_STRING)
     {
       return make_list ((gchar *)text, length, TRUE, list);
     }

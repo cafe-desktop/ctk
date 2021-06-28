@@ -68,8 +68,8 @@ msgstr "SKJÁR"
 
 #. Description of --cdk-debug=FLAGS in --help output
 #: cdk/cdk.c:245
-msgid "GDK debugging flags to set"
-msgstr "GDK aflúsunarflögg sem þú vilt nota"
+msgid "CDK debugging flags to set"
+msgstr "CDK aflúsunarflögg sem þú vilt nota"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
@@ -81,12 +81,12 @@ msgstr "FLÖGG"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: cdk/cdk.c:248
-msgid "GDK debugging flags to unset"
-msgstr "GDK aflúsunarflögg sem þú vilt fjarlægja"
+msgid "CDK debugging flags to unset"
+msgstr "CDK aflúsunarflögg sem þú vilt fjarlægja"
 
 #: cdk/cdkwindow.c:2829
-msgid "GL support disabled via GDK_DEBUG"
-msgstr "GL stuðningur gerður óvirkur með GDK_DEBUG"
+msgid "GL support disabled via CDK_DEBUG"
+msgstr "GL stuðningur gerður óvirkur með CDK_DEBUG"
 
 #: cdk/cdkwindow.c:2840
 msgid "The current backend does not support OpenGL"
@@ -4050,8 +4050,8 @@ msgid "CTK+ Version"
 msgstr "CTK+ útgáfa"
 
 #: ctk/inspector/general.ui:68
-msgid "GDK Backend"
-msgstr "GDK bakendi"
+msgid "CDK Backend"
+msgstr "CDK bakendi"
 
 #: ctk/inspector/general.ui:373
 msgid "Display"
@@ -4424,10 +4424,10 @@ msgstr "Stilling er harðkóðuð með CTK_TEST_TOUCHSCREEN"
 #: ctk/inspector/visual.c:791
 msgid ""
 "Not settable at runtime.\n"
-"Use GDK_GL=always or GDK_GL=disable instead"
+"Use CDK_GL=always or CDK_GL=disable instead"
 msgstr ""
 "Ekki stillanlegt í upphafi keyrslu.\n"
-"Nota GDK_GL=always eða GDK_GL=disable í staðinn"
+"Nota CDK_GL=always eða CDK_GL=disable í staðinn"
 
 #: ctk/inspector/visual.c:805 ctk/inspector/visual.c:806
 #: ctk/inspector/visual.c:807

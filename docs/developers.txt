@@ -39,13 +39,13 @@ perform any operations through Cdk calls on it.
 Events that a likely to trigger a missing check for the window pointer
 currently are (and correspond to the trailing signals):
 
-GDK_SELECTION_CLEAR     CtkWidget::selection_clear_event
-GDK_FOCUS_CHANGE        CtkWidget::focus_in_event
+CDK_SELECTION_CLEAR     CtkWidget::selection_clear_event
+CDK_FOCUS_CHANGE        CtkWidget::focus_in_event
                         CtkWidget::focus_out_event
 
 Events that are assured to have a valid CdkEvent.any.window field are
 
-GDK_EXPOSE		CtkWidget::expose_event
+CDK_EXPOSE		CtkWidget::expose_event
 
 
 Writing Cdk functions

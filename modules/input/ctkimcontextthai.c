@@ -109,31 +109,31 @@ static gboolean
 is_context_lost_key(guint keyval)
 {
   return ((keyval & 0xFF00) == 0xFF00) &&
-         (keyval == GDK_KEY_BackSpace ||
-          keyval == GDK_KEY_Tab ||
-          keyval == GDK_KEY_Linefeed ||
-          keyval == GDK_KEY_Clear ||
-          keyval == GDK_KEY_Return ||
-          keyval == GDK_KEY_Pause ||
-          keyval == GDK_KEY_Scroll_Lock ||
-          keyval == GDK_KEY_Sys_Req ||
-          keyval == GDK_KEY_Escape ||
-          keyval == GDK_KEY_Delete ||
-          (GDK_KEY_Home <= keyval && keyval <= GDK_KEY_Begin) || /* IsCursorkey */
-          (GDK_KEY_KP_Space <= keyval && keyval <= GDK_KEY_KP_Delete) || /* IsKeypadKey, non-chars only */
-          (GDK_KEY_Select <= keyval && keyval <= GDK_KEY_Break) || /* IsMiscFunctionKey */
-          (GDK_KEY_F1 <= keyval && keyval <= GDK_KEY_F35)); /* IsFunctionKey */
+         (keyval == CDK_KEY_BackSpace ||
+          keyval == CDK_KEY_Tab ||
+          keyval == CDK_KEY_Linefeed ||
+          keyval == CDK_KEY_Clear ||
+          keyval == CDK_KEY_Return ||
+          keyval == CDK_KEY_Pause ||
+          keyval == CDK_KEY_Scroll_Lock ||
+          keyval == CDK_KEY_Sys_Req ||
+          keyval == CDK_KEY_Escape ||
+          keyval == CDK_KEY_Delete ||
+          (CDK_KEY_Home <= keyval && keyval <= CDK_KEY_Begin) || /* IsCursorkey */
+          (CDK_KEY_KP_Space <= keyval && keyval <= CDK_KEY_KP_Delete) || /* IsKeypadKey, non-chars only */
+          (CDK_KEY_Select <= keyval && keyval <= CDK_KEY_Break) || /* IsMiscFunctionKey */
+          (CDK_KEY_F1 <= keyval && keyval <= CDK_KEY_F35)); /* IsFunctionKey */
 }
 
 static gboolean
 is_context_intact_key(guint keyval)
 {
   return (((keyval & 0xFF00) == 0xFF00) &&
-           ((GDK_KEY_Shift_L <= keyval && keyval <= GDK_KEY_Hyper_R) || /* IsModifierKey */
-            (keyval == GDK_KEY_Mode_switch) ||
-            (keyval == GDK_KEY_Num_Lock))) ||
+           ((CDK_KEY_Shift_L <= keyval && keyval <= CDK_KEY_Hyper_R) || /* IsModifierKey */
+            (keyval == CDK_KEY_Mode_switch) ||
+            (keyval == CDK_KEY_Num_Lock))) ||
          (((keyval & 0xFE00) == 0xFE00) &&
-          (GDK_KEY_ISO_Lock <= keyval && keyval <= GDK_KEY_ISO_Last_Group_Lock));
+          (CDK_KEY_ISO_Lock <= keyval && keyval <= CDK_KEY_ISO_Last_Group_Lock));
 }
 
 static gboolean
@@ -282,11 +282,11 @@ ctk_im_context_thai_filter_keypress (CtkIMContext *context,
   gboolean is_reject;
   CtkIMContextThaiISCMode isc_mode;
 
-  if (event->type != GDK_KEY_PRESS)
+  if (event->type != CDK_KEY_PRESS)
     return FALSE;
 
-  if (event->state & (GDK_MODIFIER_MASK
-                      & ~(GDK_SHIFT_MASK | GDK_LOCK_MASK | GDK_MOD2_MASK)) ||
+  if (event->state & (CDK_MODIFIER_MASK
+                      & ~(CDK_SHIFT_MASK | CDK_LOCK_MASK | CDK_MOD2_MASK)) ||
       is_context_lost_key (event->keyval))
     {
 #ifndef CTK_IM_CONTEXT_THAI_NO_FALLBACK

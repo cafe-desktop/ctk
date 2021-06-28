@@ -55,51 +55,51 @@ struct _CtkHeaderBarClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 GType        ctk_header_bar_get_type          (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 CtkWidget   *ctk_header_bar_new               (void);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void         ctk_header_bar_set_title         (CtkHeaderBar *bar,
                                                const gchar  *title);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 const gchar *ctk_header_bar_get_title         (CtkHeaderBar *bar);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void         ctk_header_bar_set_subtitle      (CtkHeaderBar *bar,
                                                const gchar  *subtitle);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 const gchar *ctk_header_bar_get_subtitle      (CtkHeaderBar *bar);
 
 
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void         ctk_header_bar_set_custom_title  (CtkHeaderBar *bar,
                                                CtkWidget    *title_widget);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 CtkWidget   *ctk_header_bar_get_custom_title  (CtkHeaderBar *bar);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void         ctk_header_bar_pack_start        (CtkHeaderBar *bar,
                                                CtkWidget    *child);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void         ctk_header_bar_pack_end          (CtkHeaderBar *bar,
                                                CtkWidget    *child);
 
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 gboolean     ctk_header_bar_get_show_close_button (CtkHeaderBar *bar);
 
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void         ctk_header_bar_set_show_close_button (CtkHeaderBar *bar,
                                                    gboolean      setting);
 
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void         ctk_header_bar_set_has_subtitle (CtkHeaderBar *bar,
                                               gboolean      setting);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 gboolean     ctk_header_bar_get_has_subtitle (CtkHeaderBar *bar);
 
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void         ctk_header_bar_set_decoration_layout (CtkHeaderBar *bar,
                                                    const gchar  *layout);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 const gchar *ctk_header_bar_get_decoration_layout (CtkHeaderBar *bar);
 
 G_END_DECLS

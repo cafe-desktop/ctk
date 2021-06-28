@@ -135,20 +135,20 @@ msgid "Default Display"
 msgstr "Типовий дисплей"
 
 #: cdk/cdkdisplaymanager.c:163
-msgid "The default display for GDK"
-msgstr "Типовий дисплей для підсистеми GDK"
+msgid "The default display for CDK"
+msgstr "Типовий дисплей для підсистеми CDK"
 
 #: cdk/cdkglcontext.c:318
-msgid "The GDK display used to create the GL context"
-msgstr "Дисплей GDK використано для створення контексту GL"
+msgid "The CDK display used to create the GL context"
+msgstr "Дисплей CDK використано для створення контексту GL"
 
 #: cdk/cdkglcontext.c:333 ctk/ctkwidget.c:1347
 msgid "Window"
 msgstr "Вікно"
 
 #: cdk/cdkglcontext.c:334
-msgid "The GDK window bound to the GL context"
-msgstr "Вікно GDK пов'язано із контекстом GL"
+msgid "The CDK window bound to the GL context"
+msgstr "Вікно CDK пов'язано із контекстом GL"
 
 #: cdk/cdkglcontext.c:349
 msgid "Shared context"

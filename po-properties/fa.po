@@ -118,8 +118,8 @@ msgid "Default Display"
 msgstr "صفحه‌نمایش پیش‌فرض"
 
 #: ../cdk/cdkdisplaymanager.c:163
-msgid "The default display for GDK"
-msgstr "صفحه‌نمایش پیش‌فرض GDK"
+msgid "The default display for CDK"
+msgstr "صفحه‌نمایش پیش‌فرض CDK"
 
 #: ../cdk/cdkscreen.c:92
 msgid "Font options"

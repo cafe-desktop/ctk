@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -22,10 +22,10 @@
  * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
-#ifndef __GDK_RECTANGLE_H__
-#define __GDK_RECTANGLE_H__
+#ifndef __CDK_RECTANGLE_H__
+#define __CDK_RECTANGLE_H__
 
-#if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined (__CDK_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdk.h> can be included directly."
 #endif
 
@@ -36,24 +36,24 @@ G_BEGIN_DECLS
 
 /* Rectangle utilities
  */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean cdk_rectangle_intersect (const CdkRectangle *src1,
                                   const CdkRectangle *src2,
                                   CdkRectangle       *dest);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     cdk_rectangle_union     (const CdkRectangle *src1,
                                   const CdkRectangle *src2,
                                   CdkRectangle       *dest);
 
-GDK_AVAILABLE_IN_3_20
+CDK_AVAILABLE_IN_3_20
 gboolean cdk_rectangle_equal     (const CdkRectangle *rect1,
                                   const CdkRectangle *rect2);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType cdk_rectangle_get_type (void) G_GNUC_CONST;
 
-#define GDK_TYPE_RECTANGLE (cdk_rectangle_get_type ())
+#define CDK_TYPE_RECTANGLE (cdk_rectangle_get_type ())
 
 G_END_DECLS
 
-#endif /* __GDK__RECTANGLE_H__ */
+#endif /* __CDK__RECTANGLE_H__ */

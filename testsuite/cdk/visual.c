@@ -35,7 +35,7 @@ test_rgba_visual (void)
   cdk_visual_get_blue_pixel_details (visual, &b_mask, &b_shift, &b_precision);
 
   g_assert_cmpint (depth, ==, 32);
-  g_assert_cmpint (type, ==, GDK_VISUAL_TRUE_COLOR);
+  g_assert_cmpint (type, ==, CDK_VISUAL_TRUE_COLOR);
 
   g_assert_cmphex (r_mask, ==, 0x00ff0000);
   g_assert_cmphex (g_mask, ==, 0x0000ff00);
@@ -75,7 +75,7 @@ test_list_visuals (void)
         found_system = TRUE;
       if (visual == rgba_visual)
         found_rgba = TRUE;
-      g_assert_true (GDK_IS_VISUAL (visual));
+      g_assert_true (CDK_IS_VISUAL (visual));
 
       g_assert_true (cdk_visual_get_screen (visual) == screen);
     }
@@ -140,8 +140,8 @@ test_type (void)
   g_assert_cmpint (n_types, >, 0);
   for (i = 0; i < n_types; i++)
     {
-      g_assert_cmpint (types[i], >=, GDK_VISUAL_STATIC_GRAY);
-      g_assert_cmpint (types[i], <=, GDK_VISUAL_DIRECT_COLOR);
+      g_assert_cmpint (types[i], >=, CDK_VISUAL_STATIC_GRAY);
+      g_assert_cmpint (types[i], <=, CDK_VISUAL_DIRECT_COLOR);
 
       visual = cdk_visual_get_best_with_type (types[i]);
 
@@ -149,7 +149,7 @@ test_type (void)
       g_assert_cmpint (cdk_visual_get_visual_type (visual), ==, types[i]);
     }
 
-  for (i = GDK_VISUAL_STATIC_GRAY; i <= GDK_VISUAL_DIRECT_COLOR; i++)
+  for (i = CDK_VISUAL_STATIC_GRAY; i <= CDK_VISUAL_DIRECT_COLOR; i++)
     {
       is_type = FALSE;
       for (j = 0; j < n_types; j++)

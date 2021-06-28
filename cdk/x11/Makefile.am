@@ -7,15 +7,15 @@ libcdkx11includedir = $(includedir)/ctk-3.0/cdk/x11
 AM_CPPFLAGS = 				\
 	-DG_LOG_DOMAIN=\"Cdk\"		\
 	-DG_LOG_USE_STRUCTURED=1	\
-	-DGDK_COMPILATION		\
+	-DCDK_COMPILATION		\
 	-I$(top_srcdir)			\
 	-I$(top_srcdir)/cdk		\
 	-I$(top_builddir)/cdk		\
-	$(GDK_HIDDEN_VISIBILITY_CFLAGS) \
+	$(CDK_HIDDEN_VISIBILITY_CFLAGS) \
 	$(CTK_DEBUG_FLAGS) 		\
-	$(GDK_DEP_CFLAGS)
+	$(CDK_DEP_CFLAGS)
 
-LDADDS = $(GDK_DEP_LIBS)
+LDADDS = $(CDK_DEP_LIBS)
 
 noinst_LTLIBRARIES = libcdk-x11.la
 

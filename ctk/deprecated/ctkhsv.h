@@ -77,29 +77,29 @@ struct _CtkHSVClass
 };
 
 
-GDK_DEPRECATED_IN_3_4
+CDK_DEPRECATED_IN_3_4
 GType      ctk_hsv_get_type     (void) G_GNUC_CONST;
-GDK_DEPRECATED_IN_3_4
+CDK_DEPRECATED_IN_3_4
 CtkWidget* ctk_hsv_new          (void);
-GDK_DEPRECATED_IN_3_4
+CDK_DEPRECATED_IN_3_4
 void       ctk_hsv_set_color    (CtkHSV    *hsv,
 				 double     h,
 				 double     s,
 				 double     v);
-GDK_DEPRECATED_IN_3_4
+CDK_DEPRECATED_IN_3_4
 void       ctk_hsv_get_color    (CtkHSV    *hsv,
 				 gdouble   *h,
 				 gdouble   *s,
 				 gdouble   *v);
-GDK_DEPRECATED_IN_3_4
+CDK_DEPRECATED_IN_3_4
 void       ctk_hsv_set_metrics  (CtkHSV    *hsv,
 				 gint       size,
 				 gint       ring_width);
-GDK_DEPRECATED_IN_3_4
+CDK_DEPRECATED_IN_3_4
 void       ctk_hsv_get_metrics  (CtkHSV    *hsv,
 				 gint      *size,
 				 gint      *ring_width);
-GDK_DEPRECATED_IN_3_4
+CDK_DEPRECATED_IN_3_4
 gboolean   ctk_hsv_is_adjusting (CtkHSV    *hsv);
 
 G_END_DECLS

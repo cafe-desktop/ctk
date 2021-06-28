@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  * Copyright (C) 1998-2002 Tor Lillqvist
  *
@@ -44,7 +44,7 @@ UINT		  _cdk_input_codepage;
 gint		  _cdk_input_ignore_wintab = FALSE;
 gint		  _cdk_max_colors = 0;
 
-CdkWin32ModalOpKind	  _modal_operation_in_progress = GDK_WIN32_MODAL_OP_NONE;
+CdkWin32ModalOpKind	  _modal_operation_in_progress = CDK_WIN32_MODAL_OP_NONE;
 HWND              _modal_move_resize_window = NULL;
 
 /* The singleton selection object pointer */

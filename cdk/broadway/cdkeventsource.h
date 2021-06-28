@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2009 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_BROADWAY_EVENT_SOURCE_H__
-#define __GDK_BROADWAY_EVENT_SOURCE_H__
+#ifndef __CDK_BROADWAY_EVENT_SOURCE_H__
+#define __CDK_BROADWAY_EVENT_SOURCE_H__
 
 #include "cdkprivate-broadway.h"
 
@@ -29,4 +29,4 @@ GSource * _cdk_broadway_event_source_new            (CdkDisplay *display);
 
 G_END_DECLS
 
-#endif /* __GDK_BROADWAY_EVENT_SOURCE_H__ */
+#endif /* __CDK_BROADWAY_EVENT_SOURCE_H__ */

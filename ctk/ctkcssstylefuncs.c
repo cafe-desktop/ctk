@@ -212,7 +212,7 @@ rgba_value_compute (CtkStyleProviderPrivate *provider,
       else
         rgba = white;
 
-      g_value_init (&new_value, GDK_TYPE_RGBA);
+      g_value_init (&new_value, CDK_TYPE_RGBA);
       g_value_set_boxed (&new_value, &rgba);
       return _ctk_css_typed_value_new_take (&new_value);
     }
@@ -307,7 +307,7 @@ color_value_compute (CtkStyleProviderPrivate *provider,
           _ctk_css_value_unref (val);
         }
 
-      g_value_init (&new_value, GDK_TYPE_COLOR);
+      g_value_init (&new_value, CDK_TYPE_COLOR);
       g_value_set_boxed (&new_value, &color);
       return _ctk_css_typed_value_new_take (&new_value);
     }
@@ -974,14 +974,14 @@ ctk_css_style_funcs_init (void)
   print_funcs = g_hash_table_new (NULL, NULL);
   compute_funcs = g_hash_table_new (NULL, NULL);
 
-  register_conversion_function (GDK_TYPE_RGBA,
+  register_conversion_function (CDK_TYPE_RGBA,
                                 rgba_value_parse,
                                 rgba_value_print,
                                 rgba_value_compute);
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
-  register_conversion_function (GDK_TYPE_COLOR,
+  register_conversion_function (CDK_TYPE_COLOR,
                                 color_value_parse,
                                 color_value_print,
                                 color_value_compute);

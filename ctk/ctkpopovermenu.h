@@ -46,13 +46,13 @@ struct _CtkPopoverMenuClass
   gpointer reserved[10];
 };
 
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 GType       ctk_popover_menu_get_type (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 CtkWidget * ctk_popover_menu_new      (void);
 
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 void        ctk_popover_menu_open_submenu (CtkPopoverMenu *popover,
                                            const gchar    *name);
 

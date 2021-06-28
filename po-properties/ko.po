@@ -140,20 +140,20 @@ msgid "Default Display"
 msgstr "기본 디스플레이"
 
 #: cdk/cdkdisplaymanager.c:163
-msgid "The default display for GDK"
-msgstr "GDK 기본 디스플레이"
+msgid "The default display for CDK"
+msgstr "CDK 기본 디스플레이"
 
 #: cdk/cdkglcontext.c:318
-msgid "The GDK display used to create the GL context"
-msgstr "GL 컨텍스트를 만드는데 사용할 GDK 디스플레이"
+msgid "The CDK display used to create the GL context"
+msgstr "GL 컨텍스트를 만드는데 사용할 CDK 디스플레이"
 
 #: cdk/cdkglcontext.c:333 ctk/ctkwidget.c:1347
 msgid "Window"
 msgstr "창"
 
 #: cdk/cdkglcontext.c:334
-msgid "The GDK window bound to the GL context"
-msgstr "GL 컨텍스트에 연결된 GDK 윈도우"
+msgid "The CDK window bound to the GL context"
+msgstr "GL 컨텍스트에 연결된 CDK 윈도우"
 
 #: cdk/cdkglcontext.c:349
 msgid "Shared context"

@@ -13,7 +13,7 @@ TOP = ..\..
 CTK_VER = 3.0
 
 
-GDK_LIBS = ../cdk/cdk-win32-$(CTK_VER).lib
+CDK_LIBS = ../cdk/cdk-win32-$(CTK_VER).lib
 CTK_LIBS = ctk-win32-$(CTK_VER).lib
 CTK_BINARY_VERSION = @CTK_BINARY_VERSION@
 
@@ -23,7 +23,7 @@ CTK_BINARY_VERSION = @CTK_BINARY_VERSION@
 PERL = perl
 AWK = gawk
 
-INCLUDES = -FImsvc_recommended_pragmas.h -I . -I .. -I ../cdk $(GDK_PIXBUF_CFLAGS)
+INCLUDES = -FImsvc_recommended_pragmas.h -I . -I .. -I ../cdk $(CDK_PIXBUF_CFLAGS)
 DEPCFLAGS = $(PANGO_CFLAGS) $(GLIB_CFLAGS) $(LIBICONV_CFLAGS) \
 		$(INTL_CFLAGS) $(ATK_CFLAGS) $(CAIRO_CFLAGS)
 LDFLAGS = $(ATK_LIBS) /link /machine:ix86 $(LINKDEBUG)
@@ -42,8 +42,8 @@ DEFINES = \
 	-DCTK_LIBDIR=\"/magic/path/replaced/at/runtime\"
 
 EXTRALIBS = \
-	$(GDK_LIBS) \
-	$(GDK_PIXBUF_LIBS) \
+	$(CDK_LIBS) \
+	$(CDK_PIXBUF_LIBS) \
 	$(PANGO_LIBS) $(INTL_LIBS) \
 	$(GLIB_LIBS) $(GMODULE_LIBS) $(GIO_LIBS) \
 	$(CAIRO_LIBS) $(PANGOCAIRO_LIBS) $(CAIRO_GOBJECT_LIBS) \
@@ -547,7 +547,7 @@ ctk_extra_sources = \
 
 ctk.def: ctk.symbols makefile.msc
 	echo EXPORTS > ctk.def
-	cl /EP -DG_OS_WIN32 -DGDK_WINDOWING_WIN32 \
+	cl /EP -DG_OS_WIN32 -DCDK_WINDOWING_WIN32 \
 		-DG_GNUC_MALLOC= -DG_GNUC_CONST= -DG_GNUC_NULL_TERMINATED= -DG_GNUC_NORETURN= \
 		-DG_GNUC_PRINTF=;G_GNUC_PRINTF ctk.symbols >> ctk.def
 
@@ -632,10 +632,10 @@ ctk-query-immodules-$(CTK_VER).exe : queryimmodules.obj
 	$(CC) $(CFLAGS) -Fe$@ queryimmodules.obj $(CTK_LIBS) $(GLIB_LIBS) $(PANGO_LIBS) $(LDFLAGS)
 
 ctk-update-icon-cache.exe : updateiconcache.obj
-	$(CC) $(CFLAGS) -Fe$@ updateiconcache.obj $(GDK_PIXBUF_LIBS) $(GLIB_LIBS) $(INTL_LIBS) $(PANGO_LIBS) $(LDFLAGS)
+	$(CC) $(CFLAGS) -Fe$@ updateiconcache.obj $(CDK_PIXBUF_LIBS) $(GLIB_LIBS) $(INTL_LIBS) $(PANGO_LIBS) $(LDFLAGS)
 
 ctk-x11-$(CTK_VER).dll : $(ctk_OBJECTS) ctk.def
-	$(CC) $(CFLAGS) -LD -Fm -Fectk-x11-$(CTK_VER).dll $(ctk_OBJECTS) ../cdk/cdk-x11-$(CTK_VER).lib $(GDK_PIXBUF_LIBS) $(PANGO_LIBS) $(INTL_LIBS) $(GLIB_LIBS) gdi32.lib user32.lib advapi32.lib $(LDFLAGS) /def:ctk.def
+	$(CC) $(CFLAGS) -LD -Fm -Fectk-x11-$(CTK_VER).dll $(ctk_OBJECTS) ../cdk/cdk-x11-$(CTK_VER).lib $(CDK_PIXBUF_LIBS) $(PANGO_LIBS) $(INTL_LIBS) $(GLIB_LIBS) gdi32.lib user32.lib advapi32.lib $(LDFLAGS) /def:ctk.def
 
 # General rule for compiling the objects into the DLL
 .c.obj :
@@ -645,5 +645,5 @@ $(EXAMPLE).obj : ..\examples\$(EXAMPLE)\$(EXAMPLE).c
 	$(CC) $(CFLAGS) -c -DG_LOG_DOMAIN=\"$(EXAMPLE)\" ..\examples\$(EXAMPLE)\$(EXAMPLE).c
 
 $(EXAMPLE).exe : $(EXAMPLE).obj
-	$(CC) $(CFLAGS) $(EXAMPLE).obj $(CTK_LIBS) $(GDK_LIBS) $(GLIB_LIBS) $(LDFLAGS)
+	$(CC) $(CFLAGS) $(EXAMPLE).obj $(CTK_LIBS) $(CDK_LIBS) $(GLIB_LIBS) $(LDFLAGS)
 

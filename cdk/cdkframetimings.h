@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2012 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_FRAME_TIMINGS_H__
-#define __GDK_FRAME_TIMINGS_H__
+#ifndef __CDK_FRAME_TIMINGS_H__
+#define __CDK_FRAME_TIMINGS_H__
 
-#if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined (__CDK_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdk.h> can be included directly."
 #endif
 
@@ -29,28 +29,28 @@ G_BEGIN_DECLS
 
 typedef struct _CdkFrameTimings CdkFrameTimings;
 
-GDK_AVAILABLE_IN_3_8
+CDK_AVAILABLE_IN_3_8
 GType            cdk_frame_timings_get_type (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_3_8
+CDK_AVAILABLE_IN_3_8
 CdkFrameTimings *cdk_frame_timings_ref   (CdkFrameTimings *timings);
-GDK_AVAILABLE_IN_3_8
+CDK_AVAILABLE_IN_3_8
 void             cdk_frame_timings_unref (CdkFrameTimings *timings);
 
-GDK_AVAILABLE_IN_3_8
+CDK_AVAILABLE_IN_3_8
 gint64           cdk_frame_timings_get_frame_counter     (CdkFrameTimings *timings);
-GDK_AVAILABLE_IN_3_8
+CDK_AVAILABLE_IN_3_8
 gboolean         cdk_frame_timings_get_complete          (CdkFrameTimings *timings);
-GDK_AVAILABLE_IN_3_8
+CDK_AVAILABLE_IN_3_8
 gint64           cdk_frame_timings_get_frame_time        (CdkFrameTimings *timings);
-GDK_AVAILABLE_IN_3_8
+CDK_AVAILABLE_IN_3_8
 gint64           cdk_frame_timings_get_presentation_time (CdkFrameTimings *timings);
-GDK_AVAILABLE_IN_3_8
+CDK_AVAILABLE_IN_3_8
 gint64           cdk_frame_timings_get_refresh_interval  (CdkFrameTimings *timings);
 
-GDK_AVAILABLE_IN_3_8
+CDK_AVAILABLE_IN_3_8
 gint64           cdk_frame_timings_get_predicted_presentation_time (CdkFrameTimings *timings);
 
 G_END_DECLS
 
-#endif /* __GDK_FRAME_TIMINGS_H__ */
+#endif /* __CDK_FRAME_TIMINGS_H__ */

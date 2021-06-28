@@ -29,15 +29,15 @@
 #include "ctktextbufferrichtext.h"
 #include "ctkintl.h"
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
 #include "x11/cdkx.h"
 #endif
 
-#ifdef GDK_WINDOWING_BROADWAY
+#ifdef CDK_WINDOWING_BROADWAY
 #include "broadway/cdkbroadway.h"
 #endif
 
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
 #include "win32/cdkwin32.h"
 #endif
 
@@ -247,7 +247,7 @@ ctk_clipboard_class_init (CtkClipboardClass *class)
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 1,
-		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
+		  CDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
 }
 
 static void
@@ -316,23 +316,23 @@ clipboard_display_closed (CdkDisplay   *display,
  *
  * Returns the clipboard object for the given selection.
  * Cut/copy/paste menu items and keyboard shortcuts should use
- * the default clipboard, returned by passing %GDK_SELECTION_CLIPBOARD for @selection.
- * (%GDK_NONE is supported as a synonym for GDK_SELECTION_CLIPBOARD
+ * the default clipboard, returned by passing %CDK_SELECTION_CLIPBOARD for @selection.
+ * (%CDK_NONE is supported as a synonym for CDK_SELECTION_CLIPBOARD
  * for backwards compatibility reasons.)
  * The currently-selected object or text should be provided on the clipboard
- * identified by #GDK_SELECTION_PRIMARY. Cut/copy/paste menu items
- * conceptually copy the contents of the #GDK_SELECTION_PRIMARY clipboard
+ * identified by #CDK_SELECTION_PRIMARY. Cut/copy/paste menu items
+ * conceptually copy the contents of the #CDK_SELECTION_PRIMARY clipboard
  * to the default clipboard, i.e. they copy the selection to what the
  * user sees as the clipboard.
  *
- * (Passing #GDK_NONE is the same as using `cdk_atom_intern
+ * (Passing #CDK_NONE is the same as using `cdk_atom_intern
  * ("CLIPBOARD", FALSE)`.
  *
  * See the
  * [FreeDesktop Clipboard Specification](http://www.freedesktop.org/Standards/clipboards-spec)
  * for a detailed discussion of the “CLIPBOARD” vs. “PRIMARY”
  * selections under the X window system. On Win32 the
- * #GDK_SELECTION_PRIMARY clipboard is essentially ignored.)
+ * #CDK_SELECTION_PRIMARY clipboard is essentially ignored.)
  *
  * It’s possible to have arbitrary named clipboards; if you do invent
  * new clipboards, you should prefix the selection name with an
@@ -353,7 +353,7 @@ ctk_clipboard_get_for_display (CdkDisplay *display,
 			       CdkAtom     selection)
 {
   g_return_val_if_fail (display != NULL, NULL); /* See bgo#463773; this is needed because Flash Player sucks */
-  g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
+  g_return_val_if_fail (CDK_IS_DISPLAY (display), NULL);
   g_return_val_if_fail (!cdk_display_is_closed (display), NULL);
 
   return clipboard_peek (display, selection, FALSE);
@@ -393,9 +393,9 @@ CtkClipboard *
 ctk_clipboard_get_default (CdkDisplay *display)
 {
   g_return_val_if_fail (display != NULL, NULL);
-  g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
+  g_return_val_if_fail (CDK_IS_DISPLAY (display), NULL);
 
-  return ctk_clipboard_get_for_display (display, GDK_SELECTION_CLIPBOARD);
+  return ctk_clipboard_get_for_display (display, CDK_SELECTION_CLIPBOARD);
 }
 
 static void 
@@ -441,7 +441,7 @@ make_clipboard_widget (CdkDisplay *display,
   if (provider)
     {
       /* We need this for cdk_x11_get_server_time() */
-      ctk_widget_add_events (widget, GDK_PROPERTY_CHANGE_MASK);
+      ctk_widget_add_events (widget, CDK_PROPERTY_CHANGE_MASK);
       
       g_signal_connect (widget, "selection-get",
 			G_CALLBACK (selection_get_cb), NULL);
@@ -487,25 +487,25 @@ clipboard_get_timestamp (CtkClipboard *clipboard)
   guint32 timestamp = ctk_get_current_event_time ();
   CdkWindow *window;
 
-  if (timestamp == GDK_CURRENT_TIME)
+  if (timestamp == CDK_CURRENT_TIME)
     {
       window = ctk_widget_get_window (clipboard_widget);
-#ifdef GDK_WINDOWING_X11
-      if (GDK_IS_X11_WINDOW (window))
+#ifdef CDK_WINDOWING_X11
+      if (CDK_IS_X11_WINDOW (window))
 	{
 	  timestamp = cdk_x11_get_server_time (ctk_widget_get_window (clipboard_widget));
 	}
       else
 #endif
-#if defined GDK_WINDOWING_WIN32
-      if (GDK_IS_WIN32_WINDOW (window))
+#if defined CDK_WINDOWING_WIN32
+      if (CDK_IS_WIN32_WINDOW (window))
 	{
 	  timestamp = GetMessageTime ();
 	}
       else
 #endif
-#if defined GDK_WINDOWING_BROADWAY
-      if (GDK_IS_BROADWAY_WINDOW (window))
+#if defined CDK_WINDOWING_BROADWAY
+      if (CDK_IS_BROADWAY_WINDOW (window))
 	{
 	  timestamp = cdk_broadway_get_last_seen_time (window);
 	}
@@ -517,7 +517,7 @@ clipboard_get_timestamp (CtkClipboard *clipboard)
     }
   else
     {
-      if (clipboard->timestamp != GDK_CURRENT_TIME)
+      if (clipboard->timestamp != CDK_CURRENT_TIME)
 	{
 	  /* Check to see if clipboard->timestamp is newer than
 	   * timestamp, accounting for wraparound.
@@ -913,7 +913,7 @@ ctk_clipboard_set_image (CtkClipboard *clipboard,
   gint n_targets;
 
   g_return_if_fail (clipboard != NULL);
-  g_return_if_fail (GDK_IS_PIXBUF (pixbuf));
+  g_return_if_fail (CDK_IS_PIXBUF (pixbuf));
 
   list = ctk_target_list_new (NULL, 0);
   ctk_target_list_add_image_targets (list, 0, TRUE);
@@ -988,7 +988,7 @@ ctk_clipboard_request_contents (CtkClipboard            *clipboard,
 				gpointer                 user_data)
 {
   g_return_if_fail (clipboard != NULL);
-  g_return_if_fail (target != GDK_NONE);
+  g_return_if_fail (target != CDK_NONE);
   g_return_if_fail (callback != NULL);
 
   CTK_CLIPBOARD_GET_CLASS (clipboard)->request_contents (clipboard,
@@ -1059,7 +1059,7 @@ request_text_received_func (CtkClipboard     *clipboard,
       else if (target == cdk_atom_intern_static_string ("COMPOUND_TEXT"))
 	{
 	  ctk_clipboard_request_contents (clipboard,
-					  GDK_TARGET_STRING, 
+					  CDK_TARGET_STRING, 
 					  request_text_received_func, info);
 	  return;
 	}
@@ -1421,7 +1421,7 @@ ctk_clipboard_wait_for_contents (CtkClipboard *clipboard,
   WaitResults results;
 
   g_return_val_if_fail (clipboard != NULL, NULL);
-  g_return_val_if_fail (target != GDK_NONE, NULL);
+  g_return_val_if_fail (target != CDK_NONE, NULL);
   
   results.data = NULL;
   results.loop = g_main_loop_new (NULL, TRUE);
@@ -1924,8 +1924,8 @@ clipboard_peek (CdkDisplay *display,
   GSList *clipboards;
   GSList *tmp_list;
 
-  if (selection == GDK_NONE)
-    selection = GDK_SELECTION_CLIPBOARD;
+  if (selection == CDK_NONE)
+    selection = CDK_SELECTION_CLIPBOARD;
 
   clipboards = g_object_get_data (G_OBJECT (display), "ctk-clipboard-list");
 
@@ -2081,7 +2081,7 @@ ctk_clipboard_real_set_can_store (CtkClipboard         *clipboard,
     { "SAVE_TARGETS", 0, TARGET_SAVE_TARGETS }
   };
   
-  if (clipboard->selection != GDK_SELECTION_CLIPBOARD)
+  if (clipboard->selection != CDK_SELECTION_CLIPBOARD)
     return;
   
   g_free (clipboard->storable_targets);
@@ -2205,7 +2205,7 @@ _ctk_clipboard_store_all (void)
     {
       CdkDisplay *display = list->data;
 
-      clipboard = clipboard_peek (display, GDK_SELECTION_CLIPBOARD, TRUE);
+      clipboard = clipboard_peek (display, CDK_SELECTION_CLIPBOARD, TRUE);
 
       if (clipboard)
 	ctk_clipboard_store (clipboard);
@@ -2229,7 +2229,7 @@ _ctk_clipboard_store_all (void)
 CdkAtom
 ctk_clipboard_get_selection (CtkClipboard *clipboard)
 {
-  g_return_val_if_fail (CTK_IS_CLIPBOARD (clipboard), GDK_NONE);
+  g_return_val_if_fail (CTK_IS_CLIPBOARD (clipboard), CDK_NONE);
 
   return clipboard->selection;
 }

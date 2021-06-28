@@ -31,28 +31,28 @@
 
 G_BEGIN_DECLS
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_render_check       (CtkStyleContext     *context,
                                     cairo_t             *cr,
                                     gdouble              x,
                                     gdouble              y,
                                     gdouble              width,
                                     gdouble              height);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_render_option      (CtkStyleContext     *context,
                                     cairo_t             *cr,
                                     gdouble              x,
                                     gdouble              y,
                                     gdouble              width,
                                     gdouble              height);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_render_arrow       (CtkStyleContext     *context,
                                     cairo_t             *cr,
                                     gdouble              angle,
                                     gdouble              x,
                                     gdouble              y,
                                     gdouble              size);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_render_background  (CtkStyleContext     *context,
                                     cairo_t             *cr,
                                     gdouble              x,
@@ -60,7 +60,7 @@ void        ctk_render_background  (CtkStyleContext     *context,
                                     gdouble              width,
                                     gdouble              height);
 
-GDK_AVAILABLE_IN_3_20
+CDK_AVAILABLE_IN_3_20
 void        ctk_render_background_get_clip  (CtkStyleContext     *context,
                                              gdouble              x,
                                              gdouble              y,
@@ -68,41 +68,41 @@ void        ctk_render_background_get_clip  (CtkStyleContext     *context,
                                              gdouble              height,
                                              CdkRectangle        *out_clip);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_render_frame       (CtkStyleContext     *context,
                                     cairo_t             *cr,
                                     gdouble              x,
                                     gdouble              y,
                                     gdouble              width,
                                     gdouble              height);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_render_expander    (CtkStyleContext     *context,
                                     cairo_t             *cr,
                                     gdouble              x,
                                     gdouble              y,
                                     gdouble              width,
                                     gdouble              height);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_render_focus       (CtkStyleContext     *context,
                                     cairo_t             *cr,
                                     gdouble              x,
                                     gdouble              y,
                                     gdouble              width,
                                     gdouble              height);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_render_layout      (CtkStyleContext     *context,
                                     cairo_t             *cr,
                                     gdouble              x,
                                     gdouble              y,
                                     PangoLayout         *layout);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_render_line        (CtkStyleContext     *context,
                                     cairo_t             *cr,
                                     gdouble              x0,
                                     gdouble              y0,
                                     gdouble              x1,
                                     gdouble              y1);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_render_slider      (CtkStyleContext     *context,
                                     cairo_t             *cr,
                                     gdouble              x,
@@ -110,7 +110,7 @@ void        ctk_render_slider      (CtkStyleContext     *context,
                                     gdouble              width,
                                     gdouble              height,
                                     CtkOrientation       orientation);
-GDK_DEPRECATED_IN_3_24_FOR(ctk_render_frame)
+CDK_DEPRECATED_IN_3_24_FOR(ctk_render_frame)
 void        ctk_render_frame_gap   (CtkStyleContext     *context,
                                     cairo_t             *cr,
                                     gdouble              x,
@@ -120,7 +120,7 @@ void        ctk_render_frame_gap   (CtkStyleContext     *context,
                                     CtkPositionType      gap_side,
                                     gdouble              xy0_gap,
                                     gdouble              xy1_gap);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_render_extension   (CtkStyleContext     *context,
                                     cairo_t             *cr,
                                     gdouble              x,
@@ -128,31 +128,31 @@ void        ctk_render_extension   (CtkStyleContext     *context,
                                     gdouble              width,
                                     gdouble              height,
                                     CtkPositionType      gap_side);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_render_handle      (CtkStyleContext     *context,
                                     cairo_t             *cr,
                                     gdouble              x,
                                     gdouble              y,
                                     gdouble              width,
                                     gdouble              height);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_render_activity    (CtkStyleContext     *context,
                                     cairo_t             *cr,
                                     gdouble              x,
                                     gdouble              y,
                                     gdouble              width,
                                     gdouble              height);
-GDK_DEPRECATED_IN_3_10_FOR(ctk_icon_theme_load_icon)
+CDK_DEPRECATED_IN_3_10_FOR(ctk_icon_theme_load_icon)
 CdkPixbuf * ctk_render_icon_pixbuf (CtkStyleContext     *context,
                                     const CtkIconSource *source,
                                     CtkIconSize          size);
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 void        ctk_render_icon        (CtkStyleContext     *context,
                                     cairo_t             *cr,
                                     CdkPixbuf           *pixbuf,
                                     gdouble              x,
                                     gdouble              y);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void        ctk_render_icon_surface (CtkStyleContext    *context,
 				     cairo_t            *cr,
 				     cairo_surface_t    *surface,

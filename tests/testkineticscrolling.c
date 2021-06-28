@@ -77,14 +77,14 @@ kinetic_scrolling (void)
 
   treeview = ctk_tree_view_new ();
   ctk_tree_view_enable_model_drag_source (CTK_TREE_VIEW (treeview),
-                                          GDK_BUTTON1_MASK,
+                                          CDK_BUTTON1_MASK,
                                           row_targets,
                                           G_N_ELEMENTS (row_targets),
-                                          GDK_ACTION_MOVE | GDK_ACTION_COPY);
+                                          CDK_ACTION_MOVE | CDK_ACTION_COPY);
   ctk_tree_view_enable_model_drag_dest (CTK_TREE_VIEW (treeview),
                                         row_targets,
                                         G_N_ELEMENTS (row_targets),
-                                        GDK_ACTION_MOVE | GDK_ACTION_COPY);
+                                        CDK_ACTION_MOVE | CDK_ACTION_COPY);
 
   renderer = ctk_cell_renderer_text_new ();
   g_object_set (renderer, "editable", TRUE, NULL);

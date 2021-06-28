@@ -31,7 +31,7 @@
 
 #include <cdk/cdk.h>
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
 
 #include <cdk/cdkx.h>
 
@@ -73,31 +73,31 @@ struct _CtkPlugClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType      ctk_plug_get_type              (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_plug_construct             (CtkPlug    *plug,
                                            Window      socket_id);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *ctk_plug_new                   (Window      socket_id);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_plug_construct_for_display (CtkPlug    *plug,
                                            CdkDisplay *display,
                                            Window      socket_id);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *ctk_plug_new_for_display       (CdkDisplay *display,
                                            Window      socket_id);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 Window     ctk_plug_get_id                (CtkPlug    *plug);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_plug_get_embedded          (CtkPlug    *plug);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkWindow *ctk_plug_get_socket_window     (CtkPlug    *plug);
 
 G_END_DECLS
 
-#endif /* GDK_WINDOWING_X11 */
+#endif /* CDK_WINDOWING_X11 */
 
 #endif /* __CTK_PLUG_H__ */

@@ -72,7 +72,7 @@ msgstr "مِعراض"
 
 #. Description of --cdk-debug=FLAGS in --help output
 #: cdk/cdk.c:243
-msgid "GDK debugging flags to set"
+msgid "CDK debugging flags to set"
 msgstr "شارات تنقيح ج‌د‌ك+ التي ستضبط"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
@@ -85,12 +85,12 @@ msgstr "شارات"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: cdk/cdk.c:246
-msgid "GDK debugging flags to unset"
+msgid "CDK debugging flags to unset"
 msgstr "شارات تنقيح ج‌د‌ك+ التي ستُصفّر"
 
 #: cdk/cdkwindow.c:2829
-msgid "GL support disabled via GDK_DEBUG"
-msgstr "عُطّل دعم GL باستخدام GDK_DEBUG"
+msgid "GL support disabled via CDK_DEBUG"
+msgstr "عُطّل دعم GL باستخدام CDK_DEBUG"
 
 #: cdk/cdkwindow.c:2840
 msgid "The current backend does not support OpenGL"
@@ -3911,7 +3911,7 @@ msgid "CTK+ Version"
 msgstr "إصدارة ج‌ت‌ك+"
 
 #: ctk/inspector/general.ui:68
-msgid "GDK Backend"
+msgid "CDK Backend"
 msgstr "خلفية ج‌دك"
 
 #: ctk/inspector/general.ui:373
@@ -4291,7 +4291,7 @@ msgstr ""
 #: ctk/inspector/visual.c:791
 msgid ""
 "Not settable at runtime.\n"
-"Use GDK_GL=always or GDK_GL=disable instead"
+"Use CDK_GL=always or CDK_GL=disable instead"
 msgstr ""
 
 #: ctk/inspector/visual.c:805 ctk/inspector/visual.c:806

@@ -64,14 +64,14 @@ struct _CtkSeparatorToolItemClass
   void (* _ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType        ctk_separator_tool_item_get_type (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkToolItem *ctk_separator_tool_item_new      (void);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean     ctk_separator_tool_item_get_draw (CtkSeparatorToolItem *item);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void         ctk_separator_tool_item_set_draw (CtkSeparatorToolItem *item,
 					       gboolean              draw);
 

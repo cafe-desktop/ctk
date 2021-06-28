@@ -17,10 +17,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_QUARTZ_DISPLAY_MANAGER_H__
-#define __GDK_QUARTZ_DISPLAY_MANAGER_H__
+#ifndef __CDK_QUARTZ_DISPLAY_MANAGER_H__
+#define __CDK_QUARTZ_DISPLAY_MANAGER_H__
 
-#if !defined(__GDKQUARTZ_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined(__CDKQUARTZ_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdkquartz.h> can be included directly."
 #endif
 
@@ -28,10 +28,10 @@
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_QUARTZ_DISPLAY_MANAGER    (cdk_quartz_display_manager_get_type ())
-#define GDK_QUARTZ_DISPLAY_MANAGER(object) (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_QUARTZ_DISPLAY_MANAGER, CdkQuartzDisplayManager))
+#define CDK_TYPE_QUARTZ_DISPLAY_MANAGER    (cdk_quartz_display_manager_get_type ())
+#define CDK_QUARTZ_DISPLAY_MANAGER(object) (G_TYPE_CHECK_INSTANCE_CAST ((object), CDK_TYPE_QUARTZ_DISPLAY_MANAGER, CdkQuartzDisplayManager))
 
-#ifdef GDK_COMPILATION
+#ifdef CDK_COMPILATION
 typedef struct _CdkQuartzDisplayManager CdkQuartzDisplayManager;
 #else
 typedef CdkDisplayManager _CdkQuartzDisplayManager;
@@ -39,9 +39,9 @@ typedef CdkDisplayManager _CdkQuartzDisplayManager;
 typedef struct _CdkDisplayManagerClass CdkQuartzDisplayManagerClass;
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType cdk_quartz_display_manager_get_type (void);
 
 G_END_DECLS
 
-#endif /* __GDK_QUARTZ_DISPLAY_MANAGER_H__ */
+#endif /* __CDK_QUARTZ_DISPLAY_MANAGER_H__ */

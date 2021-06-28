@@ -74,7 +74,7 @@ ctk_window_set_position():
 
 ctk_window_parse_geometry():
  - parses a standard X geometry string
- - toggles on one or both of GDK_HINT_USER_SIZE, GDK_HINT_USER_POS
+ - toggles on one or both of CDK_HINT_USER_SIZE, CDK_HINT_USER_POS
  - "xprop" shows user size/position are set on the window
  - calls ctk_window_set_default_size() to set the window size
  - calls ctk_window_move() to set the window position

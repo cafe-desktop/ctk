@@ -66,7 +66,7 @@ msgstr "DÎMEN"
 #. Description of --cdk-debug=FLAGS in --help output
 #: ../cdk/cdk.c:213
 #, fuzzy
-msgid "GDK debugging flags to set"
+msgid "CDK debugging flags to set"
 msgstr "Nîşenekên neqandina çewtiyên CTK+ yên wê werine tayînkirin"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
@@ -80,7 +80,7 @@ msgstr "Al"
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: ../cdk/cdk.c:216
 #, fuzzy
-msgid "GDK debugging flags to unset"
+msgid "CDK debugging flags to unset"
 msgstr "Nîşenekên neqandina çewtiyên CTK+ yên wê werine rakirin"
 
 #: ../cdk/keyname-table.h:3940

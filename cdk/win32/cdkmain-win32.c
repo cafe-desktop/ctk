@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  * Copyright (C) 1998-2002 Tor Lillqvist
  *
@@ -81,9 +81,9 @@ _cdk_win32_windowing_init (void)
 {
   gchar buf[10];
 
-  if (getenv ("GDK_IGNORE_WINTAB") != NULL)
+  if (getenv ("CDK_IGNORE_WINTAB") != NULL)
     _cdk_input_ignore_wintab = TRUE;
-  else if (getenv ("GDK_USE_WINTAB") != NULL)
+  else if (getenv ("CDK_USE_WINTAB") != NULL)
     _cdk_input_ignore_wintab = FALSE;
 
   if (cdk_synchronize)
@@ -92,12 +92,12 @@ _cdk_win32_windowing_init (void)
   _cdk_app_hmodule = GetModuleHandle (NULL);
   _cdk_display_hdc = CreateDC ("DISPLAY", NULL, NULL, NULL);
   _cdk_input_locale = GetKeyboardLayout (0);
-  _cdk_win32_keymap_set_active_layout (GDK_WIN32_KEYMAP (_cdk_win32_display_get_keymap (_cdk_display)), _cdk_input_locale);
+  _cdk_win32_keymap_set_active_layout (CDK_WIN32_KEYMAP (_cdk_win32_display_get_keymap (_cdk_display)), _cdk_input_locale);
   GetLocaleInfo (MAKELCID (LOWORD (_cdk_input_locale), SORT_DEFAULT),
 		 LOCALE_IDEFAULTANSICODEPAGE,
 		 buf, sizeof (buf));
   _cdk_input_codepage = atoi (buf);
-  GDK_NOTE (EVENTS, g_print ("input_locale:%p, codepage:%d\n",
+  CDK_NOTE (EVENTS, g_print ("input_locale:%p, codepage:%d\n",
 			     _cdk_input_locale, _cdk_input_codepage));
 
   _cdk_win32_selection_init ();
@@ -284,7 +284,7 @@ _cdk_win32_drag_protocol_to_string (CdkDragProtocol protocol)
 {
   switch (protocol)
     {
-#define CASE(x) case GDK_DRAG_PROTO_##x: return #x
+#define CASE(x) case CDK_DRAG_PROTO_##x: return #x
       CASE (MOTIF);
       CASE (XDND);
       CASE (ROOTWIN);
@@ -309,11 +309,11 @@ _cdk_win32_window_state_to_string (CdkWindowState state)
   buf[0] = '\0';
 
 #define BIT(x)						\
-  if (state & GDK_WINDOW_STATE_ ## x)			\
+  if (state & CDK_WINDOW_STATE_ ## x)			\
     (bufp += sprintf (bufp, "%s" #x, s), s = "|")
 
   /* For clarity, also show the complement of WITHDRAWN, i.e. "MAPPED" */
-  if (!(state & GDK_WINDOW_STATE_WITHDRAWN))
+  if (!(state & CDK_WINDOW_STATE_WITHDRAWN))
     (bufp += sprintf (bufp, "MAPPED"), s = "|");
 
   BIT (WITHDRAWN);
@@ -455,7 +455,7 @@ _cdk_win32_drag_action_to_string (CdkDragAction actions)
   buf[0] = '\0';
 
 #define BIT(x)						\
-  if (actions & GDK_ACTION_ ## x)				\
+  if (actions & CDK_ACTION_ ## x)				\
     (bufp += sprintf (bufp, "%s" #x, s), s = "|")
 
   BIT (DEFAULT);
@@ -933,14 +933,14 @@ _cdk_win32_cairo_region_to_string (const cairo_region_t *rgn)
 gchar *
 _cdk_win32_window_description (CdkWindow *d)
 {
-  g_return_val_if_fail (GDK_IS_WINDOW (d), NULL);
+  g_return_val_if_fail (CDK_IS_WINDOW (d), NULL);
 
   return static_printf ("%s:%p:%dx%dx%d",
 			G_OBJECT_TYPE_NAME (d),
-			GDK_WINDOW_HWND (d),
-			cdk_window_get_width (GDK_WINDOW (d)),
-                        cdk_window_get_height (GDK_WINDOW (d)),
-                        cdk_visual_get_depth (cdk_window_get_visual (GDK_WINDOW (d))));
+			CDK_WINDOW_HWND (d),
+			cdk_window_get_width (CDK_WINDOW (d)),
+                        cdk_window_get_height (CDK_WINDOW (d)),
+                        cdk_visual_get_depth (cdk_window_get_visual (CDK_WINDOW (d))));
 }
 
 #endif /* G_ENABLE_DEBUG */

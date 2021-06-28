@@ -42,7 +42,7 @@ funcs = sorted(funcs)
 
 for f in funcs:
   if f.startswith('cdk_x11') or f.startswith('ctk_socket') or f.startswith('ctk_plug'):
-    file_output += '#ifdef GDK_WINDOWING_X11\n'
+    file_output += '#ifdef CDK_WINDOWING_X11\n'
     file_output += '*tp++ = {0}();\n'.format(f)
     file_output += '#endif\n'
   else:

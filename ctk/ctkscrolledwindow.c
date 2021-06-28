@@ -424,7 +424,7 @@ add_scroll_binding (CtkBindingSet  *binding_set,
 		    CtkScrollType   scroll,
 		    gboolean        horizontal)
 {
-  guint keypad_keyval = keyval - GDK_KEY_Left + GDK_KEY_KP_Left;
+  guint keypad_keyval = keyval - CDK_KEY_Left + CDK_KEY_KP_Left;
   
   ctk_binding_entry_add_signal (binding_set, keyval, mask,
                                 "scroll-child", 2,
@@ -441,10 +441,10 @@ add_tab_bindings (CtkBindingSet    *binding_set,
 		  CdkModifierType   modifiers,
 		  CtkDirectionType  direction)
 {
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Tab, modifiers,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Tab, modifiers,
                                 "move-focus-out", 1,
                                 CTK_TYPE_DIRECTION_TYPE, direction);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Tab, modifiers,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Tab, modifiers,
                                 "move-focus-out", 1,
                                 CTK_TYPE_DIRECTION_TYPE, direction);
 }
@@ -455,13 +455,13 @@ ctk_scrolled_window_leave_notify (CtkWidget        *widget,
 {
   CtkScrolledWindowPrivate *priv = CTK_SCROLLED_WINDOW (widget)->priv;
 
-  if (priv->use_indicators && event->detail != GDK_NOTIFY_INFERIOR)
+  if (priv->use_indicators && event->detail != CDK_NOTIFY_INFERIOR)
     {
       indicator_set_over (&priv->hindicator, FALSE);
       indicator_set_over (&priv->vindicator, FALSE);
     }
 
-  return GDK_EVENT_PROPAGATE;
+  return CDK_EVENT_PROPAGATE;
 }
 
 static void
@@ -683,7 +683,7 @@ ctk_scrolled_window_class_init (CtkScrolledWindowClass *class)
    * CtkScrolledWindow:kinetic-scrolling:
    *
    * Whether kinetic scrolling is enabled or not. Kinetic scrolling
-   * only applies to devices with source %GDK_SOURCE_TOUCHSCREEN.
+   * only applies to devices with source %CDK_SOURCE_TOUCHSCREEN.
    *
    * Since: 3.4
    */
@@ -878,23 +878,23 @@ ctk_scrolled_window_class_init (CtkScrolledWindowClass *class)
 
   binding_set = ctk_binding_set_by_class (class);
 
-  add_scroll_binding (binding_set, GDK_KEY_Left,  GDK_CONTROL_MASK, CTK_SCROLL_STEP_BACKWARD, TRUE);
-  add_scroll_binding (binding_set, GDK_KEY_Right, GDK_CONTROL_MASK, CTK_SCROLL_STEP_FORWARD,  TRUE);
-  add_scroll_binding (binding_set, GDK_KEY_Up,    GDK_CONTROL_MASK, CTK_SCROLL_STEP_BACKWARD, FALSE);
-  add_scroll_binding (binding_set, GDK_KEY_Down,  GDK_CONTROL_MASK, CTK_SCROLL_STEP_FORWARD,  FALSE);
+  add_scroll_binding (binding_set, CDK_KEY_Left,  CDK_CONTROL_MASK, CTK_SCROLL_STEP_BACKWARD, TRUE);
+  add_scroll_binding (binding_set, CDK_KEY_Right, CDK_CONTROL_MASK, CTK_SCROLL_STEP_FORWARD,  TRUE);
+  add_scroll_binding (binding_set, CDK_KEY_Up,    CDK_CONTROL_MASK, CTK_SCROLL_STEP_BACKWARD, FALSE);
+  add_scroll_binding (binding_set, CDK_KEY_Down,  CDK_CONTROL_MASK, CTK_SCROLL_STEP_FORWARD,  FALSE);
 
-  add_scroll_binding (binding_set, GDK_KEY_Page_Up,   GDK_CONTROL_MASK, CTK_SCROLL_PAGE_BACKWARD, TRUE);
-  add_scroll_binding (binding_set, GDK_KEY_Page_Down, GDK_CONTROL_MASK, CTK_SCROLL_PAGE_FORWARD,  TRUE);
-  add_scroll_binding (binding_set, GDK_KEY_Page_Up,   0,                CTK_SCROLL_PAGE_BACKWARD, FALSE);
-  add_scroll_binding (binding_set, GDK_KEY_Page_Down, 0,                CTK_SCROLL_PAGE_FORWARD,  FALSE);
+  add_scroll_binding (binding_set, CDK_KEY_Page_Up,   CDK_CONTROL_MASK, CTK_SCROLL_PAGE_BACKWARD, TRUE);
+  add_scroll_binding (binding_set, CDK_KEY_Page_Down, CDK_CONTROL_MASK, CTK_SCROLL_PAGE_FORWARD,  TRUE);
+  add_scroll_binding (binding_set, CDK_KEY_Page_Up,   0,                CTK_SCROLL_PAGE_BACKWARD, FALSE);
+  add_scroll_binding (binding_set, CDK_KEY_Page_Down, 0,                CTK_SCROLL_PAGE_FORWARD,  FALSE);
 
-  add_scroll_binding (binding_set, GDK_KEY_Home, GDK_CONTROL_MASK, CTK_SCROLL_START, TRUE);
-  add_scroll_binding (binding_set, GDK_KEY_End,  GDK_CONTROL_MASK, CTK_SCROLL_END,   TRUE);
-  add_scroll_binding (binding_set, GDK_KEY_Home, 0,                CTK_SCROLL_START, FALSE);
-  add_scroll_binding (binding_set, GDK_KEY_End,  0,                CTK_SCROLL_END,   FALSE);
+  add_scroll_binding (binding_set, CDK_KEY_Home, CDK_CONTROL_MASK, CTK_SCROLL_START, TRUE);
+  add_scroll_binding (binding_set, CDK_KEY_End,  CDK_CONTROL_MASK, CTK_SCROLL_END,   TRUE);
+  add_scroll_binding (binding_set, CDK_KEY_Home, 0,                CTK_SCROLL_START, FALSE);
+  add_scroll_binding (binding_set, CDK_KEY_End,  0,                CTK_SCROLL_END,   FALSE);
 
-  add_tab_bindings (binding_set, GDK_CONTROL_MASK, CTK_DIR_TAB_FORWARD);
-  add_tab_bindings (binding_set, GDK_CONTROL_MASK | GDK_SHIFT_MASK, CTK_DIR_TAB_BACKWARD);
+  add_tab_bindings (binding_set, CDK_CONTROL_MASK, CTK_DIR_TAB_FORWARD);
+  add_tab_bindings (binding_set, CDK_CONTROL_MASK | CDK_SHIFT_MASK, CTK_DIR_TAB_BACKWARD);
 
   ctk_widget_class_set_accessible_type (widget_class, CTK_TYPE_SCROLLED_WINDOW_ACCESSIBLE);
   ctk_widget_class_set_css_name (widget_class, "scrolledwindow");
@@ -1105,12 +1105,12 @@ scrolled_window_long_press_cancelled_cb (CtkScrolledWindow *scrolled_window,
   sequence = ctk_gesture_get_last_updated_sequence (gesture);
   event = ctk_gesture_get_last_event (gesture, sequence);
 
-  if (event->type == GDK_TOUCH_BEGIN ||
-      event->type == GDK_BUTTON_PRESS)
+  if (event->type == CDK_TOUCH_BEGIN ||
+      event->type == CDK_BUTTON_PRESS)
     ctk_gesture_set_sequence_state (gesture, sequence,
                                     CTK_EVENT_SEQUENCE_DENIED);
-  else if (event->type != GDK_TOUCH_END &&
-           event->type != GDK_BUTTON_RELEASE)
+  else if (event->type != CDK_TOUCH_END &&
+           event->type != CDK_BUTTON_RELEASE)
     priv->in_drag = TRUE;
 }
 
@@ -1262,9 +1262,9 @@ check_update_scrollbar_proximity (CtkScrolledWindow *sw,
 
   indicator_close = event_close_to_indicator (sw, indicator, event);
   on_scrollbar = (event_widget == indicator->scrollbar &&
-                  event->type != GDK_LEAVE_NOTIFY);
+                  event->type != CDK_LEAVE_NOTIFY);
   on_other_scrollbar = (!on_scrollbar &&
-                        event->type != GDK_LEAVE_NOTIFY &&
+                        event->type != CDK_LEAVE_NOTIFY &&
                         (event_widget == priv->hindicator.scrollbar ||
                          event_widget == priv->vindicator.scrollbar));
 
@@ -1290,7 +1290,7 @@ get_scroll_unit (CtkScrolledWindow *sw,
 {
   gdouble scroll_unit;
 
-#ifndef GDK_WINDOWING_QUARTZ
+#ifndef CDK_WINDOWING_QUARTZ
   CtkScrolledWindowPrivate *priv = sw->priv;
   CtkRange *scrollbar;
   CtkAdjustment *adj;
@@ -1327,7 +1327,7 @@ scroll_history_push (CtkScrolledWindow *sw,
   ScrollHistoryElem new_item;
   guint i;
 
-  if (event->direction != GDK_SCROLL_SMOOTH)
+  if (event->direction != CDK_SCROLL_SMOOTH)
     return;
 
   for (i = 0; i < priv->scroll_history->len; i++)
@@ -1428,7 +1428,7 @@ captured_event_cb (CtkWidget *widget,
   priv = sw->priv;
   source_device = cdk_event_get_source_device (event);
 
-  if (event->type == GDK_SCROLL)
+  if (event->type == CDK_SCROLL)
     {
       CtkWidget *scrollable_child = ctk_bin_get_child (CTK_BIN (widget));
 
@@ -1438,27 +1438,27 @@ captured_event_cb (CtkWidget *widget,
       if (ctk_get_event_widget (event) != scrollable_child)
         uninstall_scroll_cursor (sw);
 
-      return GDK_EVENT_PROPAGATE;
+      return CDK_EVENT_PROPAGATE;
     }
 
   if (!priv->use_indicators)
-    return GDK_EVENT_PROPAGATE;
+    return CDK_EVENT_PROPAGATE;
 
-  if (event->type != GDK_MOTION_NOTIFY &&
-      event->type != GDK_LEAVE_NOTIFY)
-    return GDK_EVENT_PROPAGATE;
+  if (event->type != CDK_MOTION_NOTIFY &&
+      event->type != CDK_LEAVE_NOTIFY)
+    return CDK_EVENT_PROPAGATE;
 
   input_source = cdk_device_get_source (source_device);
 
-  if (input_source == GDK_SOURCE_KEYBOARD ||
-      input_source == GDK_SOURCE_TOUCHSCREEN)
-    return GDK_EVENT_PROPAGATE;
+  if (input_source == CDK_SOURCE_KEYBOARD ||
+      input_source == CDK_SOURCE_TOUCHSCREEN)
+    return CDK_EVENT_PROPAGATE;
 
   event_widget = ctk_get_event_widget (event);
   on_scrollbar = (event_widget == priv->hindicator.scrollbar ||
                   event_widget == priv->vindicator.scrollbar);
 
-  if (event->type == GDK_MOTION_NOTIFY)
+  if (event->type == CDK_MOTION_NOTIFY)
     {
       if (priv->hscrollbar_visible)
         indicator_start_fade (&priv->hindicator, 1.0);
@@ -1467,14 +1467,14 @@ captured_event_cb (CtkWidget *widget,
 
       if (!on_scrollbar &&
            (event->motion.state &
-            (GDK_BUTTON1_MASK | GDK_BUTTON2_MASK | GDK_BUTTON3_MASK)) != 0)
+            (CDK_BUTTON1_MASK | CDK_BUTTON2_MASK | CDK_BUTTON3_MASK)) != 0)
         {
           indicator_set_over (&priv->hindicator, FALSE);
           indicator_set_over (&priv->vindicator, FALSE);
         }
-      else if (input_source == GDK_SOURCE_PEN ||
-               input_source == GDK_SOURCE_ERASER ||
-               input_source == GDK_SOURCE_TRACKPOINT)
+      else if (input_source == CDK_SOURCE_PEN ||
+               input_source == CDK_SOURCE_ERASER ||
+               input_source == CDK_SOURCE_TRACKPOINT)
         {
           indicator_set_over (&priv->hindicator, TRUE);
           indicator_set_over (&priv->vindicator, TRUE);
@@ -1487,14 +1487,14 @@ captured_event_cb (CtkWidget *widget,
             indicator_set_over (&priv->hindicator, FALSE);
         }
     }
-  else if (event->type == GDK_LEAVE_NOTIFY && on_scrollbar &&
-           event->crossing.mode == GDK_CROSSING_UNGRAB)
+  else if (event->type == CDK_LEAVE_NOTIFY && on_scrollbar &&
+           event->crossing.mode == CDK_CROSSING_UNGRAB)
     {
       check_update_scrollbar_proximity (sw, &priv->vindicator, event);
       check_update_scrollbar_proximity (sw, &priv->hindicator, event);
     }
 
-  return GDK_EVENT_PROPAGATE;
+  return CDK_EVENT_PROPAGATE;
 }
 
 /*
@@ -2693,7 +2693,7 @@ ctk_scrolled_window_get_shadow_type (CtkScrolledWindow *scrolled_window)
  *
  * Turns kinetic scrolling on or off.
  * Kinetic scrolling only applies to devices with source
- * %GDK_SOURCE_TOUCHSCREEN.
+ * %CDK_SOURCE_TOUCHSCREEN.
  *
  * Since: 3.4
  **/
@@ -3493,7 +3493,7 @@ ctk_scrolled_window_scroll_event (CtkWidget      *widget,
   CdkDevice *source_device;
   CdkInputSource input_source;
 
-  shifted = (event->state & GDK_SHIFT_MASK) != 0;
+  shifted = (event->state & CDK_SHIFT_MASK) != 0;
 
   scrolled_window = CTK_SCROLLED_WINDOW (widget);
   priv = scrolled_window->priv;
@@ -3512,8 +3512,8 @@ ctk_scrolled_window_scroll_event (CtkWidget      *widget,
 
       scroll_history_push (scrolled_window, event, shifted);
 
-      if (input_source == GDK_SOURCE_TRACKPOINT ||
-          input_source == GDK_SOURCE_TOUCHPAD)
+      if (input_source == CDK_SOURCE_TRACKPOINT ||
+          input_source == CDK_SOURCE_TOUCHPAD)
         install_scroll_cursor (scrolled_window, cdk_event_get_window ((CdkEvent *)event));
 
       if (shifted)
@@ -3572,8 +3572,8 @@ ctk_scrolled_window_scroll_event (CtkWidget      *widget,
       CtkWidget *range;
       gboolean may_scroll;
 
-      if ((!shifted && (direction == GDK_SCROLL_UP || direction == GDK_SCROLL_DOWN)) ||
-          (shifted && (direction == GDK_SCROLL_LEFT || direction == GDK_SCROLL_RIGHT)))
+      if ((!shifted && (direction == CDK_SCROLL_UP || direction == CDK_SCROLL_DOWN)) ||
+          (shifted && (direction == CDK_SCROLL_LEFT || direction == CDK_SCROLL_RIGHT)))
         {
           range = priv->vscrollbar;
           may_scroll = may_vscroll (scrolled_window);
@@ -4235,15 +4235,15 @@ create_indicator_window (CtkScrolledWindow *scrolled_window,
 
   ctk_scrolled_window_allocate_scrollbar (scrolled_window, child, &allocation);
 
-  attributes.window_type = GDK_WINDOW_CHILD;
-  attributes.wclass = GDK_INPUT_OUTPUT;
+  attributes.window_type = CDK_WINDOW_CHILD;
+  attributes.wclass = CDK_INPUT_OUTPUT;
 
   attributes.width = allocation.width;
   attributes.height = allocation.height;
   attributes.x = allocation.x;
   attributes.y = allocation.y;
   attributes.visual = ctk_widget_get_visual (widget);
-  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
+  attributes_mask = CDK_WA_X | CDK_WA_Y | CDK_WA_VISUAL;
   attributes.event_mask = ctk_widget_get_events (widget);
 
   window = cdk_window_new (ctk_widget_get_window (widget),
@@ -4516,17 +4516,17 @@ ctk_scrolled_window_realize (CtkWidget *widget)
 
   ctk_widget_get_allocation (widget, &allocation);
 
-  attributes.window_type = GDK_WINDOW_CHILD;
-  attributes.wclass = GDK_INPUT_OUTPUT;
+  attributes.window_type = CDK_WINDOW_CHILD;
+  attributes.wclass = CDK_INPUT_OUTPUT;
 
   attributes.width = allocation.width;
   attributes.height = allocation.height;
   attributes.x = allocation.x;
   attributes.y = allocation.y;
   attributes.visual = ctk_widget_get_visual (widget);
-  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
+  attributes_mask = CDK_WA_X | CDK_WA_Y | CDK_WA_VISUAL;
   attributes.event_mask = ctk_widget_get_events (widget) |
-    GDK_ENTER_NOTIFY_MASK | GDK_LEAVE_NOTIFY_MASK | GDK_POINTER_MOTION_MASK;
+    CDK_ENTER_NOTIFY_MASK | CDK_LEAVE_NOTIFY_MASK | CDK_POINTER_MOTION_MASK;
 
   window = cdk_window_new (ctk_widget_get_parent_window (widget),
                            &attributes, attributes_mask);

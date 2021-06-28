@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2005 Red Hat, Inc. 
  *
  * This library is free software; you can redistribute it and/or
@@ -30,9 +30,9 @@
  *
  * [Cairo](http://cairographics.org) is a graphics
  * library that supports vector graphics and image compositing that
- * can be used with GDK. CTK+ does all of its drawing using cairo.
+ * can be used with CDK. CTK+ does all of its drawing using cairo.
  *
- * GDK does not wrap the cairo API, instead it allows to create cairo
+ * CDK does not wrap the cairo API, instead it allows to create cairo
  * contexts which can be used to draw on #CdkWindows. Additional
  * functions allow use #CdkRectangles with cairo and to use #CdkColors,
  * #CdkRGBAs, #CdkPixbufs and #CdkWindows as sources for drawing
@@ -287,9 +287,9 @@ cdk_cairo_surface_create_from_pixbuf (const CdkPixbuf *pixbuf,
   cairo_format_t format;
   cairo_surface_t *surface;
 
-  g_return_val_if_fail (GDK_IS_PIXBUF (pixbuf), NULL);
+  g_return_val_if_fail (CDK_IS_PIXBUF (pixbuf), NULL);
   g_return_val_if_fail (scale >= 0, NULL);
-  g_return_val_if_fail (for_window == NULL || GDK_IS_WINDOW (for_window), NULL);
+  g_return_val_if_fail (for_window == NULL || CDK_IS_WINDOW (for_window), NULL);
 
   if (cdk_pixbuf_get_n_channels (pixbuf) == 3)
     format = CAIRO_FORMAT_RGB24;
@@ -374,7 +374,7 @@ cdk_cairo_set_source_window (cairo_t   *cr,
   cairo_surface_t *surface;
 
   g_return_if_fail (cr != NULL);
-  g_return_if_fail (GDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_WINDOW (window));
 
   surface = _cdk_window_ref_cairo_surface (window);
   cairo_set_source_surface (cr, surface, x, y);
@@ -436,7 +436,7 @@ _cdk_cairo_surface_extents (cairo_surface_t *surface,
 /* This function originally from Jean-Edouard Lachand-Robert, and
  * available at www.codeguru.com. Simplified for our needs, not sure
  * how much of the original code left any longer. Now handles just
- * one-bit deep bitmaps (in Window parlance, ie those that GDK calls
+ * one-bit deep bitmaps (in Window parlance, ie those that CDK calls
  * bitmaps (and not pixmaps), with zero pixels being transparent.
  */
 /**

@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * cdkdisplaymanager-x11.c
  *
  * Copyright 2010 Red Hat, Inc.
@@ -38,7 +38,7 @@ struct _CdkX11DisplayManagerClass
   CdkDisplayManagerClass parent_class;
 };
 
-G_DEFINE_TYPE (CdkX11DisplayManager, cdk_x11_display_manager, GDK_TYPE_DISPLAY_MANAGER)
+G_DEFINE_TYPE (CdkX11DisplayManager, cdk_x11_display_manager, CDK_TYPE_DISPLAY_MANAGER)
 
 static void
 cdk_x11_display_manager_init (CdkX11DisplayManager *manager)

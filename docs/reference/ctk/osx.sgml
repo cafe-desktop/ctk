@@ -20,7 +20,7 @@ OS X-specific aspects of using CTK+
 <title>Using CTK+ on Mac OS X</title>
 
 <para>
-The Mac OS X port of CTK+ is an implementation of GDK (and therefore CTK+)
+The Mac OS X port of CTK+ is an implementation of CDK (and therefore CTK+)
 on top of the Quarz API.
 </para>
 

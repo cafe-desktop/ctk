@@ -115,8 +115,8 @@ msgid "Default Display"
 msgstr "डिफ़ॉल्ट प्रदर्शक"
 
 #: ../cdk/cdkdisplaymanager.c:164
-msgid "The default display for GDK"
-msgstr "GDK के लिये मूलभूत प्रदर्शक"
+msgid "The default display for CDK"
+msgstr "CDK के लिये मूलभूत प्रदर्शक"
 
 #: ../cdk/cdkscreen.c:90
 msgid "Font options"

@@ -75,8 +75,8 @@ msgstr "ప్రదర్శకం"
 
 #. Description of --cdk-debug=FLAGS in --help output
 #: ../cdk/cdk.c:223
-msgid "GDK debugging flags to set"
-msgstr "GDK దోషనిర్మూలన గుర్తులు చేతనం"
+msgid "CDK debugging flags to set"
+msgstr "CDK దోషనిర్మూలన గుర్తులు చేతనం"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
@@ -88,8 +88,8 @@ msgstr "గుర్తులు"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: ../cdk/cdk.c:226
-msgid "GDK debugging flags to unset"
-msgstr "GDK దోషనిర్మూలన గుర్తులు అచేతనం"
+msgid "CDK debugging flags to unset"
+msgstr "CDK దోషనిర్మూలన గుర్తులు అచేతనం"
 
 #.
 #. * Translators, the strings in the “keyboard label” context are
@@ -3498,8 +3498,8 @@ msgid "CTK+ Version"
 msgstr "CTK+ వర్షన్"
 
 #: ../ctk/inspector/general.ui.h:2
-msgid "GDK Backend"
-msgstr "GDK వెనుకకు"
+msgid "CDK Backend"
+msgstr "CDK వెనుకకు"
 
 #: ../ctk/inspector/gestures.c:128
 msgid "Capture"

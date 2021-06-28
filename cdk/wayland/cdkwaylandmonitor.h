@@ -19,10 +19,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_WAYLAND_MONITOR_H__
-#define __GDK_WAYLAND_MONITOR_H__
+#ifndef __CDK_WAYLAND_MONITOR_H__
+#define __CDK_WAYLAND_MONITOR_H__
 
-#if !defined (__GDKWAYLAND_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined (__CDKWAYLAND_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdkwayland.h> can be included directly."
 #endif
 
@@ -30,19 +30,19 @@
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_WAYLAND_MONITOR           (cdk_wayland_monitor_get_type ())
-#define GDK_WAYLAND_MONITOR(object)        (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WAYLAND_MONITOR, CdkWaylandMonitor))
-#define GDK_IS_WAYLAND_MONITOR(object)     (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WAYLAND_MONITOR))
+#define CDK_TYPE_WAYLAND_MONITOR           (cdk_wayland_monitor_get_type ())
+#define CDK_WAYLAND_MONITOR(object)        (G_TYPE_CHECK_INSTANCE_CAST ((object), CDK_TYPE_WAYLAND_MONITOR, CdkWaylandMonitor))
+#define CDK_IS_WAYLAND_MONITOR(object)     (G_TYPE_CHECK_INSTANCE_TYPE ((object), CDK_TYPE_WAYLAND_MONITOR))
 
 typedef struct _CdkWaylandMonitor      CdkWaylandMonitor;
 typedef struct _CdkWaylandMonitorClass CdkWaylandMonitorClass;
 
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 GType             cdk_wayland_monitor_get_type            (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 struct wl_output *cdk_wayland_monitor_get_wl_output       (CdkMonitor *monitor);
 
 G_END_DECLS
 
-#endif  /* __GDK_WAYLAND_MONITOR_H__ */
+#endif  /* __CDK_WAYLAND_MONITOR_H__ */

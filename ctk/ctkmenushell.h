@@ -84,47 +84,47 @@ struct _CtkMenuShellClass
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType    ctk_menu_shell_get_type       (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_menu_shell_append         (CtkMenuShell *menu_shell,
                                         CtkWidget    *child);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_menu_shell_prepend        (CtkMenuShell *menu_shell,
                                         CtkWidget    *child);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_menu_shell_insert         (CtkMenuShell *menu_shell,
                                         CtkWidget    *child,
                                         gint          position);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_menu_shell_deactivate     (CtkMenuShell *menu_shell);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_menu_shell_select_item    (CtkMenuShell *menu_shell,
                                         CtkWidget    *menu_item);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_menu_shell_deselect       (CtkMenuShell *menu_shell);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_menu_shell_activate_item  (CtkMenuShell *menu_shell,
                                         CtkWidget    *menu_item,
                                         gboolean      force_deactivate);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_menu_shell_select_first   (CtkMenuShell *menu_shell,
                                         gboolean      search_sensitive);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_menu_shell_cancel         (CtkMenuShell *menu_shell);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_menu_shell_get_take_focus (CtkMenuShell *menu_shell);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_menu_shell_set_take_focus (CtkMenuShell *menu_shell,
                                         gboolean      take_focus);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *ctk_menu_shell_get_selected_item (CtkMenuShell *menu_shell);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *ctk_menu_shell_get_parent_shell  (CtkMenuShell *menu_shell);
 
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 void       ctk_menu_shell_bind_model   (CtkMenuShell *menu_shell,
                                         GMenuModel   *model,
                                         const gchar  *action_namespace,

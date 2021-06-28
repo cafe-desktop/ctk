@@ -155,7 +155,7 @@ ctk_color_scale_init (CtkColorScale *scale)
 
   scale->priv = ctk_color_scale_get_instance_private (scale);
 
-  ctk_widget_add_events (CTK_WIDGET (scale), GDK_TOUCH_MASK);
+  ctk_widget_add_events (CTK_WIDGET (scale), CDK_TOUCH_MASK);
 
   scale->priv->long_press_gesture = ctk_gesture_long_press_new (CTK_WIDGET (scale));
   g_signal_connect (scale->priv->long_press_gesture, "pressed",

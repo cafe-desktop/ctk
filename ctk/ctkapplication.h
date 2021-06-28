@@ -72,42 +72,42 @@ struct _CtkApplicationClass
   gpointer padding[12];
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType            ctk_application_get_type      (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkApplication * ctk_application_new           (const gchar       *application_id,
                                                 GApplicationFlags  flags);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_application_add_window    (CtkApplication    *application,
                                                 CtkWindow         *window);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_application_remove_window (CtkApplication    *application,
                                                 CtkWindow         *window);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GList *          ctk_application_get_windows   (CtkApplication    *application);
 
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 GMenuModel *     ctk_application_get_app_menu  (CtkApplication    *application);
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 void             ctk_application_set_app_menu  (CtkApplication    *application,
                                                 GMenuModel        *app_menu);
 
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 GMenuModel *     ctk_application_get_menubar   (CtkApplication    *application);
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 void             ctk_application_set_menubar   (CtkApplication    *application,
                                                 GMenuModel        *menubar);
 
-GDK_DEPRECATED_IN_3_14_FOR(ctk_application_set_accels_for_action)
+CDK_DEPRECATED_IN_3_14_FOR(ctk_application_set_accels_for_action)
 void             ctk_application_add_accelerator    (CtkApplication  *application,
                                                      const gchar     *accelerator,
                                                      const gchar     *action_name,
                                                      GVariant        *parameter);
 
-GDK_DEPRECATED_IN_3_14_FOR(ctk_application_set_accels_for_action)
+CDK_DEPRECATED_IN_3_14_FOR(ctk_application_set_accels_for_action)
 void             ctk_application_remove_accelerator (CtkApplication *application,
                                                      const gchar    *action_name,
                                                      GVariant       *parameter);
@@ -120,45 +120,45 @@ typedef enum
   CTK_APPLICATION_INHIBIT_IDLE    = (1 << 3)
 } CtkApplicationInhibitFlags;
 
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 guint            ctk_application_inhibit            (CtkApplication             *application,
                                                      CtkWindow                  *window,
                                                      CtkApplicationInhibitFlags  flags,
                                                      const gchar                *reason);
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 void             ctk_application_uninhibit          (CtkApplication             *application,
                                                      guint                       cookie);
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 gboolean         ctk_application_is_inhibited       (CtkApplication             *application,
                                                      CtkApplicationInhibitFlags  flags);
 
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 CtkWindow *      ctk_application_get_window_by_id   (CtkApplication             *application,
                                                      guint                       id);
 
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 CtkWindow *      ctk_application_get_active_window  (CtkApplication             *application);
 
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 gchar **         ctk_application_list_action_descriptions        (CtkApplication       *application);
 
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 gchar **         ctk_application_get_accels_for_action           (CtkApplication       *application,
                                                                   const gchar          *detailed_action_name);
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 gchar **         ctk_application_get_actions_for_accel           (CtkApplication       *application,
                                                                   const gchar          *accel);
 
 
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void             ctk_application_set_accels_for_action           (CtkApplication       *application,
                                                                   const gchar          *detailed_action_name,
                                                                   const gchar * const  *accels);
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 gboolean         ctk_application_prefers_app_menu                (CtkApplication       *application);
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 GMenu *          ctk_application_get_menu_by_id                  (CtkApplication       *application,
                                                                   const gchar          *id);
 

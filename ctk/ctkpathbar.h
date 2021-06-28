@@ -52,7 +52,7 @@ struct _CtkPathBarClass
 			 gboolean     child_is_hidden);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType    ctk_path_bar_get_type (void) G_GNUC_CONST;
 void     _ctk_path_bar_set_file_system (CtkPathBar         *path_bar,
 					CtkFileSystem      *file_system);

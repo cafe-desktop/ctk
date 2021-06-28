@@ -67,8 +67,8 @@ msgstr "畫面"
 
 #. Description of --cdk-debug=FLAGS in --help output
 #: cdk/cdk.c:240
-msgid "GDK debugging flags to set"
-msgstr "準備設定的 GDK 偵錯旗標"
+msgid "CDK debugging flags to set"
+msgstr "準備設定的 CDK 偵錯旗標"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
@@ -80,12 +80,12 @@ msgstr "旗標"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: cdk/cdk.c:243
-msgid "GDK debugging flags to unset"
-msgstr "準備去除的 GDK 偵錯旗標"
+msgid "CDK debugging flags to unset"
+msgstr "準備去除的 CDK 偵錯旗標"
 
 #: cdk/cdkwindow.c:2851
-msgid "GL support disabled via GDK_DEBUG"
-msgstr "GL 支援已透過 GDK_DEBUG 停用"
+msgid "GL support disabled via CDK_DEBUG"
+msgstr "GL 支援已透過 CDK_DEBUG 停用"
 
 #: cdk/cdkwindow.c:2862
 msgid "The current backend does not support OpenGL"
@@ -4101,8 +4101,8 @@ msgid "CTK+ Version"
 msgstr "CTK+ 版本"
 
 #: ctk/inspector/general.ui:68
-msgid "GDK Backend"
-msgstr "GDK 後端"
+msgid "CDK Backend"
+msgstr "CDK 後端"
 
 #: ctk/inspector/general.ui:373
 msgid "Display"
@@ -4475,10 +4475,10 @@ msgstr "設定值是由 CTK_TEST_TOUCHSCREEN 所設定"
 #: ctk/inspector/visual.c:817
 msgid ""
 "Not settable at runtime.\n"
-"Use GDK_GL=always or GDK_GL=disable instead"
+"Use CDK_GL=always or CDK_GL=disable instead"
 msgstr ""
 "在執行階段不能設定。\n"
-"使用 GDK_GL=always 或 GDK_GL=disable 代替"
+"使用 CDK_GL=always 或 CDK_GL=disable 代替"
 
 #: ctk/inspector/visual.c:831 ctk/inspector/visual.c:832
 #: ctk/inspector/visual.c:833
@@ -8382,8 +8382,8 @@ msgstr "列印至測試印表機"
 #~ msgid "No compatible formats to transfer contents."
 #~ msgstr "沒有可傳輸內容的相容格式。"
 
-#~ msgid "Vulkan support disabled via GDK_DEBUG"
-#~ msgstr "Vulkan 支援已透過 GDK_DEBUG 停用"
+#~ msgid "Vulkan support disabled via CDK_DEBUG"
+#~ msgstr "Vulkan 支援已透過 CDK_DEBUG 停用"
 
 #~ msgid "Not implemented on OS X"
 #~ msgstr "尚未實作於 OSX"
@@ -8452,8 +8452,8 @@ msgstr "列印至測試印表機"
 #~ msgid "Cannot get DnD data. Failed to allocate %lu bytes to store the data."
 #~ msgstr "無法取得 DnD 資料。無法配置 %lu 位元組的資料儲存區。"
 
-#~ msgid "GDK surface 0x%p is not registered as a drop target"
-#~ msgstr "GDK surface 0x%p 未註冊為 drop 目標"
+#~ msgid "CDK surface 0x%p is not registered as a drop target"
+#~ msgstr "CDK surface 0x%p 未註冊為 drop 目標"
 
 #~ msgid "Target context record 0x%p has no data object"
 #~ msgstr "目標情境記錄 0x%p 沒有資料物件"

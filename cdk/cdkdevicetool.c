@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2009 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -43,7 +43,7 @@ cdk_device_tool_set_property (GObject      *object,
                               const GValue *value,
                               GParamSpec   *pspec)
 {
-  CdkDeviceTool *tool = GDK_DEVICE_TOOL (object);
+  CdkDeviceTool *tool = CDK_DEVICE_TOOL (object);
 
   switch (prop_id)
     {
@@ -71,7 +71,7 @@ cdk_device_tool_get_property (GObject    *object,
                               GValue     *value,
                               GParamSpec *pspec)
 {
-  CdkDeviceTool *tool = GDK_DEVICE_TOOL (object);
+  CdkDeviceTool *tool = CDK_DEVICE_TOOL (object);
 
   switch (prop_id)
     {
@@ -110,14 +110,14 @@ cdk_device_tool_class_init (CdkDeviceToolClass *klass)
   tool_props[TOOL_PROP_TOOL_TYPE] = g_param_spec_enum ("tool-type",
                                                        "Tool type",
                                                        "Tool type",
-                                                       GDK_TYPE_DEVICE_TOOL_TYPE,
-                                                       GDK_DEVICE_TOOL_TYPE_UNKNOWN,
+                                                       CDK_TYPE_DEVICE_TOOL_TYPE,
+                                                       CDK_DEVICE_TOOL_TYPE_UNKNOWN,
                                                        G_PARAM_READWRITE |
                                                        G_PARAM_CONSTRUCT_ONLY);
   tool_props[TOOL_PROP_AXES] = g_param_spec_flags ("axes",
                                                    "Axes",
                                                    "Tool axes",
-                                                   GDK_TYPE_AXIS_FLAGS, 0,
+                                                   CDK_TYPE_AXIS_FLAGS, 0,
                                                    G_PARAM_READWRITE |
                                                    G_PARAM_CONSTRUCT_ONLY);
   tool_props[TOOL_PROP_HARDWARE_ID] = g_param_spec_uint64 ("hardware-id",
@@ -141,7 +141,7 @@ cdk_device_tool_new (guint64           serial,
                      CdkDeviceToolType type,
                      CdkAxisFlags      tool_axes)
 {
-  return g_object_new (GDK_TYPE_DEVICE_TOOL,
+  return g_object_new (CDK_TYPE_DEVICE_TOOL,
                        "serial", serial,
                        "hardware-id", hw_id,
                        "tool-type", type,
@@ -208,7 +208,7 @@ cdk_device_tool_get_hardware_id (CdkDeviceTool *tool)
 CdkDeviceToolType
 cdk_device_tool_get_tool_type (CdkDeviceTool *tool)
 {
-  g_return_val_if_fail (tool != NULL, GDK_DEVICE_TOOL_TYPE_UNKNOWN);
+  g_return_val_if_fail (tool != NULL, CDK_DEVICE_TOOL_TYPE_UNKNOWN);
 
   return tool->type;
 }

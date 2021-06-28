@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2009 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_QUARTZ_DEVICE_CORE_H__
-#define __GDK_QUARTZ_DEVICE_CORE_H__
+#ifndef __CDK_QUARTZ_DEVICE_CORE_H__
+#define __CDK_QUARTZ_DEVICE_CORE_H__
 
-#if !defined(__GDKQUARTZ_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined(__CDKQUARTZ_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdkquartz.h> can be included directly."
 #endif
 
@@ -26,19 +26,19 @@
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_QUARTZ_DEVICE_CORE         (cdk_quartz_device_core_get_type ())
-#define GDK_QUARTZ_DEVICE_CORE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_QUARTZ_DEVICE_CORE, CdkQuartzDeviceCore))
-#define GDK_QUARTZ_DEVICE_CORE_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_QUARTZ_DEVICE_CORE, CdkQuartzDeviceCoreClass))
-#define GDK_IS_QUARTZ_DEVICE_CORE(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_QUARTZ_DEVICE_CORE))
-#define GDK_IS_QUARTZ_DEVICE_CORE_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), GDK_TYPE_QUARTZ_DEVICE_CORE))
-#define GDK_QUARTZ_DEVICE_CORE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_QUARTZ_DEVICE_CORE, CdkQuartzDeviceCoreClass))
+#define CDK_TYPE_QUARTZ_DEVICE_CORE         (cdk_quartz_device_core_get_type ())
+#define CDK_QUARTZ_DEVICE_CORE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CDK_TYPE_QUARTZ_DEVICE_CORE, CdkQuartzDeviceCore))
+#define CDK_QUARTZ_DEVICE_CORE_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), CDK_TYPE_QUARTZ_DEVICE_CORE, CdkQuartzDeviceCoreClass))
+#define CDK_IS_QUARTZ_DEVICE_CORE(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CDK_TYPE_QUARTZ_DEVICE_CORE))
+#define CDK_IS_QUARTZ_DEVICE_CORE_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), CDK_TYPE_QUARTZ_DEVICE_CORE))
+#define CDK_QUARTZ_DEVICE_CORE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CDK_TYPE_QUARTZ_DEVICE_CORE, CdkQuartzDeviceCoreClass))
 
 typedef struct _CdkQuartzDeviceCore CdkQuartzDeviceCore;
 typedef struct _CdkQuartzDeviceCoreClass CdkQuartzDeviceCoreClass;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType cdk_quartz_device_core_get_type (void) G_GNUC_CONST;
 
 G_END_DECLS
 
-#endif /* __GDK_QUARTZ_DEVICE_CORE_H__ */
+#endif /* __CDK_QUARTZ_DEVICE_CORE_H__ */

@@ -71,8 +71,8 @@ cdk_xsettings_notify (CdkX11Screen     *x11_screen,
   if (!g_str_has_prefix (name, "ctk-"))
     return;
 
-  new_event.type = GDK_SETTING;
-  new_event.setting.window = cdk_screen_get_root_window (GDK_SCREEN (x11_screen));
+  new_event.type = CDK_SETTING;
+  new_event.setting.window = cdk_screen_get_root_window (CDK_SCREEN (x11_screen));
   new_event.setting.send_event = FALSE;
   new_event.setting.action = action;
   new_event.setting.name = (char*) name;
@@ -117,9 +117,9 @@ notify_changes (CdkX11Screen *x11_screen,
 	  old_setting = old_list ? g_hash_table_lookup (old_list, name) : NULL;
 
 	  if (old_setting == NULL)
-	    cdk_xsettings_notify (x11_screen, name, GDK_SETTING_ACTION_NEW);
+	    cdk_xsettings_notify (x11_screen, name, CDK_SETTING_ACTION_NEW);
 	  else if (!value_equal (setting, old_setting))
-	    cdk_xsettings_notify (x11_screen, name, GDK_SETTING_ACTION_CHANGED);
+	    cdk_xsettings_notify (x11_screen, name, CDK_SETTING_ACTION_CHANGED);
 	    
 	  /* remove setting from old_list */
 	  if (old_setting != NULL)
@@ -132,7 +132,7 @@ notify_changes (CdkX11Screen *x11_screen,
       /* old_list now contains only deleted settings */
       g_hash_table_iter_init (&iter, old_list);
       while (g_hash_table_iter_next (&iter, (gpointer *) &name, (gpointer*) &old_setting))
-	cdk_xsettings_notify (x11_screen, name, GDK_SETTING_ACTION_DELETED);
+	cdk_xsettings_notify (x11_screen, name, CDK_SETTING_ACTION_DELETED);
     }
 }
 
@@ -276,7 +276,7 @@ parse_settings (unsigned char *data,
       !fetch_card32 (&buffer, &n_entries))
     goto out;
 
-  GDK_NOTE(SETTINGS, g_message ("reading %u settings (serial %u byte order %u)", n_entries, serial, buffer.byte_order));
+  CDK_NOTE(SETTINGS, g_message ("reading %u settings (serial %u byte order %u)", n_entries, serial, buffer.byte_order));
 
   for (i = 0; i < n_entries; i++)
     {
@@ -307,7 +307,7 @@ parse_settings (unsigned char *data,
           g_value_init (value, G_TYPE_INT);
           g_value_set_int (value, (gint32) v_int);
 
-          GDK_NOTE(SETTINGS, g_message ("  %s = %d", x_name, (gint32) v_int));
+          CDK_NOTE(SETTINGS, g_message ("  %s = %d", x_name, (gint32) v_int));
 	  break;
 	case XSETTINGS_TYPE_STRING:
           {
@@ -321,7 +321,7 @@ parse_settings (unsigned char *data,
             g_value_init (value, G_TYPE_STRING);
             g_value_take_string (value, s);
 
-            GDK_NOTE(SETTINGS, g_message ("  %s = \"%s\"", x_name, s));
+            CDK_NOTE(SETTINGS, g_message ("  %s = \"%s\"", x_name, s));
           }
 	  break;
 	case XSETTINGS_TYPE_COLOR:
@@ -344,12 +344,12 @@ parse_settings (unsigned char *data,
             g_value_init (value, G_TYPE_STRING);
             g_value_set_boxed (value, &rgba);
 
-            GDK_NOTE(SETTINGS, g_message ("  %s = #%02X%02X%02X%02X", x_name, alpha,red, green, blue));
+            CDK_NOTE(SETTINGS, g_message ("  %s = #%02X%02X%02X%02X", x_name, alpha,red, green, blue));
           }
 	  break;
 	default:
 	  /* Quietly ignore unknown types */
-          GDK_NOTE(SETTINGS, g_message ("  %s = ignored (unknown type %u)", x_name, type));
+          CDK_NOTE(SETTINGS, g_message ("  %s = ignored (unknown type %u)", x_name, type));
 	  break;
 	}
 
@@ -359,12 +359,12 @@ parse_settings (unsigned char *data,
 
       if (cdk_name == NULL)
         {
-          GDK_NOTE(SETTINGS, g_message ("    ==> unknown to CTK"));
+          CDK_NOTE(SETTINGS, g_message ("    ==> unknown to CTK"));
           free_value (value);
         }
       else
         {
-          GDK_NOTE(SETTINGS, g_message ("    ==> storing as '%s'", cdk_name));
+          CDK_NOTE(SETTINGS, g_message ("    ==> storing as '%s'", cdk_name));
 
           if (settings == NULL)
             settings = g_hash_table_new_full (g_str_hash, g_str_equal,
@@ -402,7 +402,7 @@ static void
 read_settings (CdkX11Screen *x11_screen,
                gboolean      do_notify)
 {
-  CdkScreen *screen = GDK_SCREEN (x11_screen);
+  CdkScreen *screen = CDK_SCREEN (x11_screen);
 
   Atom type;
   int format;
@@ -483,7 +483,7 @@ read_settings (CdkX11Screen *x11_screen,
       const char *scale_env;
       double scale;
 
-      if (cdk_screen_get_setting (GDK_SCREEN (x11_screen),
+      if (cdk_screen_get_setting (CDK_SCREEN (x11_screen),
                                   "ctk-xft-dpi", &value))
         dpi_int = g_value_get_int (&value);
 
@@ -492,7 +492,7 @@ read_settings (CdkX11Screen *x11_screen,
       else
         dpi = -1.;
 
-      scale_env = g_getenv ("GDK_DPI_SCALE");
+      scale_env = g_getenv ("CDK_DPI_SCALE");
       if (scale_env)
         {
           scale = g_ascii_strtod (scale_env, NULL);
@@ -504,7 +504,7 @@ read_settings (CdkX11Screen *x11_screen,
     }
 
   if (!x11_screen->fixed_window_scale &&
-      cdk_screen_get_setting (GDK_SCREEN (x11_screen),
+      cdk_screen_get_setting (CDK_SCREEN (x11_screen),
 			      "cdk-window-scaling-factor", &value))
     _cdk_x11_screen_set_window_scale (x11_screen,
 				      g_value_get_int (&value));
@@ -581,10 +581,10 @@ cdk_xsettings_root_window_filter (CdkXEvent *xevent,
       xev->xclient.data.l[1] == get_selection_atom (x11_screen))
     {
       check_manager_window (x11_screen, TRUE);
-      return GDK_FILTER_REMOVE;
+      return CDK_FILTER_REMOVE;
     }
   
-  return GDK_FILTER_CONTINUE;
+  return CDK_FILTER_CONTINUE;
 }
 
 static CdkFilterReturn
@@ -598,22 +598,22 @@ cdk_xsettings_manager_window_filter (CdkXEvent *xevent,
   if (xev->xany.type == DestroyNotify)
     {
       check_manager_window (x11_screen, TRUE);
-      /* let GDK do its cleanup */
-      return GDK_FILTER_CONTINUE; 
+      /* let CDK do its cleanup */
+      return CDK_FILTER_CONTINUE; 
     }
   else if (xev->xany.type == PropertyNotify)
     {
       read_settings (x11_screen, TRUE);
-      return GDK_FILTER_REMOVE;
+      return CDK_FILTER_REMOVE;
     }
   
-  return GDK_FILTER_CONTINUE;;
+  return CDK_FILTER_CONTINUE;;
 }
 
 void
 _cdk_x11_xsettings_init (CdkX11Screen *x11_screen)
 {
-  cdk_window_add_filter (cdk_screen_get_root_window (GDK_SCREEN (x11_screen)), cdk_xsettings_root_window_filter, x11_screen);
+  cdk_window_add_filter (cdk_screen_get_root_window (CDK_SCREEN (x11_screen)), cdk_xsettings_root_window_filter, x11_screen);
 
   check_manager_window (x11_screen, FALSE);
 }
@@ -627,7 +627,7 @@ _cdk_x11_settings_force_reread (CdkX11Screen *x11_screen)
 void
 _cdk_x11_xsettings_finish (CdkX11Screen *x11_screen)
 {
-  cdk_window_remove_filter (cdk_screen_get_root_window (GDK_SCREEN (x11_screen)), cdk_xsettings_root_window_filter, x11_screen);
+  cdk_window_remove_filter (cdk_screen_get_root_window (CDK_SCREEN (x11_screen)), cdk_xsettings_root_window_filter, x11_screen);
   if (x11_screen->xsettings_manager_window)
     {
       cdk_window_remove_filter (x11_screen->xsettings_manager_window, cdk_xsettings_manager_window_filter, x11_screen);

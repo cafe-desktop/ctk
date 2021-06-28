@@ -66,8 +66,8 @@ msgstr "BISTARATZEA"
 
 #. Description of --cdk-debug=FLAGS in --help output
 #: cdk/cdk.c:240
-msgid "GDK debugging flags to set"
-msgstr "Ezarri beharreko GDK arazketa-banderak"
+msgid "CDK debugging flags to set"
+msgstr "Ezarri beharreko CDK arazketa-banderak"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
@@ -79,12 +79,12 @@ msgstr "BANDERAK"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: cdk/cdk.c:243
-msgid "GDK debugging flags to unset"
-msgstr "Ezarpenetik kendu beharreko GDK arazketa-banderak"
+msgid "CDK debugging flags to unset"
+msgstr "Ezarpenetik kendu beharreko CDK arazketa-banderak"
 
 #: cdk/cdkwindow.c:2851
-msgid "GL support disabled via GDK_DEBUG"
-msgstr "GL euskarria desgaituta GDK_DEBUG bidez"
+msgid "GL support disabled via CDK_DEBUG"
+msgstr "GL euskarria desgaituta CDK_DEBUG bidez"
 
 #: cdk/cdkwindow.c:2862
 msgid "The current backend does not support OpenGL"
@@ -4129,8 +4129,8 @@ msgid "CTK+ Version"
 msgstr "CTK+ bertsioa"
 
 #: ctk/inspector/general.ui:68
-msgid "GDK Backend"
-msgstr "GDK motorra"
+msgid "CDK Backend"
+msgstr "CDK motorra"
 
 #: ctk/inspector/general.ui:373
 msgid "Display"
@@ -4503,9 +4503,9 @@ msgstr "Ezarpena CTK_TEST_TOUCHSCREEN-ek kodean txertatuta dago"
 #: ctk/inspector/visual.c:817
 msgid ""
 "Not settable at runtime.\n"
-"Use GDK_GL=always or GDK_GL=disable instead"
+"Use CDK_GL=always or CDK_GL=disable instead"
 msgstr "Ezin da exekuzio-denbora ezarri.\n"
-"Erabili 'GDK_GL=always' edo 'GDK_GL=disable' horren ordez"
+"Erabili 'CDK_GL=always' edo 'CDK_GL=disable' horren ordez"
 
 #: ctk/inspector/visual.c:831 ctk/inspector/visual.c:832
 #: ctk/inspector/visual.c:833

@@ -8,23 +8,23 @@
 
 # Copy the pre-defined cdkconfig.h.[win32|win32_broadway]
 !if "$(CFG)" == "release" || "$(CFG)" == "Release"
-GDK_OLD_CFG = debug
+CDK_OLD_CFG = debug
 !else
-GDK_OLD_CFG = release
+CDK_OLD_CFG = release
 !endif
 
 !ifdef BROADWAY
-GDK_CONFIG = broadway
-GDK_DEL_CONFIG = win32
-GDK_CONFIG_TEMPLATE = ..\cdk\cdkconfig.h.win32_broadway
+CDK_CONFIG = broadway
+CDK_DEL_CONFIG = win32
+CDK_CONFIG_TEMPLATE = ..\cdk\cdkconfig.h.win32_broadway
 !else
-GDK_CONFIG = win32
-GDK_DEL_CONFIG = broadway
-GDK_CONFIG_TEMPLATE = ..\cdk\cdkconfig.h.win32
+CDK_CONFIG = win32
+CDK_DEL_CONFIG = broadway
+CDK_CONFIG_TEMPLATE = ..\cdk\cdkconfig.h.win32
 !endif
 
-GDK_MARSHALERS_FLAGS = --prefix=_cdk_marshal --valist-marshallers
-GDK_RESOURCES_ARGS = ..\cdk\cdk.gresource.xml --target=$@ --sourcedir=..\cdk --c-name _cdk --manual-register
+CDK_MARSHALERS_FLAGS = --prefix=_cdk_marshal --valist-marshallers
+CDK_RESOURCES_ARGS = ..\cdk\cdk.gresource.xml --target=$@ --sourcedir=..\cdk --c-name _cdk --manual-register
 CTK_MARSHALERS_FLAGS = --prefix=_ctk_marshal --valist-marshallers
 CTK_RESOURCES_ARGS = ..\ctk\ctk.gresource.xml --target=$@ --sourcedir=..\ctk --c-name _ctk --manual-register
 
@@ -55,13 +55,13 @@ all:	\
 ..\demos\ctk-demo\demos.h: ..\demos\ctk-demo\demos.h.win32
 ..\ctk\ctk-win32.rc: ..\ctk\ctk-win32.rc.body
 
-..\cdk-$(CFG)-$(GDK_CONFIG)-build: $(GDK_CONFIG_TEMPLATE)
-	@if exist ..\cdk-$(GDK_OLD_CFG)-$(GDK_DEL_CONFIG)-build del ..\cdk-$(GDK_OLD_CFG)-$(GDK_DEL_CONFIG)-build
-	@if exist ..\cdk-$(GDK_OLD_CFG)-$(GDK_CONFIG)-build del ..\cdk-$(GDK_OLD_CFG)-$(GDK_CONFIG)-build
-	@if exist ..\cdk-$(CFG)-$(GDK_DEL_CONFIG)-build del ..\cdk-$(CFG)-$(GDK_DEL_CONFIG)-build
+..\cdk-$(CFG)-$(CDK_CONFIG)-build: $(CDK_CONFIG_TEMPLATE)
+	@if exist ..\cdk-$(CDK_OLD_CFG)-$(CDK_DEL_CONFIG)-build del ..\cdk-$(CDK_OLD_CFG)-$(CDK_DEL_CONFIG)-build
+	@if exist ..\cdk-$(CDK_OLD_CFG)-$(CDK_CONFIG)-build del ..\cdk-$(CDK_OLD_CFG)-$(CDK_CONFIG)-build
+	@if exist ..\cdk-$(CFG)-$(CDK_DEL_CONFIG)-build del ..\cdk-$(CFG)-$(CDK_DEL_CONFIG)-build
 	@copy $** $@
 	
-..\cdk\cdkconfig.h: ..\cdk-$(CFG)-$(GDK_CONFIG)-build
+..\cdk\cdkconfig.h: ..\cdk-$(CFG)-$(CDK_CONFIG)-build
 
 ..\config.h	\
 ..\cdk\cdkconfig.h	\
@@ -76,15 +76,15 @@ all:	\
 
 ..\cdk\cdkmarshalers.h: ..\cdk\cdkmarshalers.list
 	@echo Generating $@...
-	@$(PYTHON) $(GLIB_GENMARSHAL) $(GDK_MARSHALERS_FLAGS) --header $** > $@.tmp
+	@$(PYTHON) $(GLIB_GENMARSHAL) $(CDK_MARSHALERS_FLAGS) --header $** > $@.tmp
 	@move $@.tmp $@
 
 ..\cdk\cdkmarshalers.c: ..\cdk\cdkmarshalers.list
 	@echo Generating $@...
-	@$(PYTHON) $(GLIB_GENMARSHAL) $(GDK_MARSHALERS_FLAGS) --body $** > $@.tmp
+	@$(PYTHON) $(GLIB_GENMARSHAL) $(CDK_MARSHALERS_FLAGS) --body $** > $@.tmp
 	@move $@.tmp $@
 
-..\cdk\cdk.gresource.xml: $(GDK_RESOURCES)
+..\cdk\cdk.gresource.xml: $(CDK_RESOURCES)
 	@echo Generating $@...
 	@echo ^<?xml version='1.0' encoding='UTF-8'?^> >$@
 	@echo ^<gresources^> >> $@
@@ -97,15 +97,15 @@ all:	\
 	@echo Generating $@...
 	@if not "$(XMLLINT)" == "" set XMLLINT=$(XMLLINT)
 	@if not "$(JSON_GLIB_FORMAT)" == "" set JSON_GLIB_FORMAT=$(JSON_GLIB_FORMAT)
-	@if not "$(GDK_PIXBUF_PIXDATA)" == "" set GDK_PIXBUF_PIXDATA=$(GDK_PIXBUF_PIXDATA)
-	@start /min $(GLIB_COMPILE_RESOURCES) $(GDK_RESOURCES_ARGS) --generate-header
+	@if not "$(CDK_PIXBUF_PIXDATA)" == "" set CDK_PIXBUF_PIXDATA=$(CDK_PIXBUF_PIXDATA)
+	@start /min $(GLIB_COMPILE_RESOURCES) $(CDK_RESOURCES_ARGS) --generate-header
 
-..\cdk\cdkresources.c: ..\cdk\cdk.gresource.xml $(GDK_RESOURCES)
+..\cdk\cdkresources.c: ..\cdk\cdk.gresource.xml $(CDK_RESOURCES)
 	@echo Generating $@...
 	@if not "$(XMLLINT)" == "" set XMLLINT=$(XMLLINT)
 	@if not "$(JSON_GLIB_FORMAT)" == "" set JSON_GLIB_FORMAT=$(JSON_GLIB_FORMAT)
-	@if not "$(GDK_PIXBUF_PIXDATA)" == "" set GDK_PIXBUF_PIXDATA=$(GDK_PIXBUF_PIXDATA)
-	@start /min $(GLIB_COMPILE_RESOURCES) $(GDK_RESOURCES_ARGS) --generate-source
+	@if not "$(CDK_PIXBUF_PIXDATA)" == "" set CDK_PIXBUF_PIXDATA=$(CDK_PIXBUF_PIXDATA)
+	@start /min $(GLIB_COMPILE_RESOURCES) $(CDK_RESOURCES_ARGS) --generate-source
 
 ..\ctk\libctk3.manifest: ..\ctk\libctk3.manifest.in
 	@echo Generating $@...
@@ -164,14 +164,14 @@ all:	\
 	@echo Generating $@...
 	@if not "$(XMLLINT)" == "" set XMLLINT=$(XMLLINT)
 	@if not "$(JSON_GLIB_FORMAT)" == "" set JSON_GLIB_FORMAT=$(JSON_GLIB_FORMAT)
-	@if not "$(GDK_PIXBUF_PIXDATA)" == "" set GDK_PIXBUF_PIXDATA=$(GDK_PIXBUF_PIXDATA)
+	@if not "$(CDK_PIXBUF_PIXDATA)" == "" set CDK_PIXBUF_PIXDATA=$(CDK_PIXBUF_PIXDATA)
 	@start /min $(GLIB_COMPILE_RESOURCES) $(CTK_RESOURCES_ARGS) --generate-header
 
 ..\ctk\ctkresources.c: ..\ctk\ctk.gresource.xml $(CTK_RESOURCES)
 	@echo Generating $@...
 	@if not "$(XMLLINT)" == "" set XMLLINT=$(XMLLINT)
 	@if not "$(JSON_GLIB_FORMAT)" == "" set JSON_GLIB_FORMAT=$(JSON_GLIB_FORMAT)
-	@if not "$(GDK_PIXBUF_PIXDATA)" == "" set GDK_PIXBUF_PIXDATA=$(GDK_PIXBUF_PIXDATA)
+	@if not "$(CDK_PIXBUF_PIXDATA)" == "" set CDK_PIXBUF_PIXDATA=$(CDK_PIXBUF_PIXDATA)
 	@start /min $(GLIB_COMPILE_RESOURCES) $(CTK_RESOURCES_ARGS) --generate-source
 
 ..\ctk\ctkmarshalers.h: ..\ctk\ctkmarshalers.list
@@ -215,8 +215,8 @@ clean:
 	@-del /f /q ..\cdk\cdkmarshalers.h
 	@-del /f /q ..\cdk\cdkversionmacros.h
 	@-del /f /q ..\cdk\cdkconfig.h
-	@if exist ..\cdk-$(CFG)-$(GDK_CONFIG)-build del ..\cdk-$(CFG)-$(GDK_CONFIG)-build
-	@if exist ..\cdk-$(GDK_OLD_CFG)-$(GDK_DEL_CONFIG)-build del ..\cdk-$(GDK_OLD_CFG)-$(GDK_DEL_CONFIG)-build
-	@if exist ..\cdk-$(GDK_OLD_CFG)-$(GDK_CONFIG)-build del ..\cdk-$(GDK_OLD_CFG)-$(GDK_CONFIG)-build
-	@if exist ..\cdk-$(CFG)-$(GDK_DEL_CONFIG)-build del ..\cdk-$(CFG)-$(GDK_DEL_CONFIG)-build
+	@if exist ..\cdk-$(CFG)-$(CDK_CONFIG)-build del ..\cdk-$(CFG)-$(CDK_CONFIG)-build
+	@if exist ..\cdk-$(CDK_OLD_CFG)-$(CDK_DEL_CONFIG)-build del ..\cdk-$(CDK_OLD_CFG)-$(CDK_DEL_CONFIG)-build
+	@if exist ..\cdk-$(CDK_OLD_CFG)-$(CDK_CONFIG)-build del ..\cdk-$(CDK_OLD_CFG)-$(CDK_CONFIG)-build
+	@if exist ..\cdk-$(CFG)-$(CDK_DEL_CONFIG)-build del ..\cdk-$(CFG)-$(CDK_DEL_CONFIG)-build
 	@-del /f /q ..\config.h

@@ -105,50 +105,50 @@ struct _CtkTreeModelFilterClass
 };
 
 /* base */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType         ctk_tree_model_filter_get_type                   (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreeModel *ctk_tree_model_filter_new                        (CtkTreeModel                 *child_model,
                                                                 CtkTreePath                  *root);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_tree_model_filter_set_visible_func           (CtkTreeModelFilter           *filter,
                                                                 CtkTreeModelFilterVisibleFunc func,
                                                                 gpointer                      data,
                                                                 GDestroyNotify                destroy);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_tree_model_filter_set_modify_func            (CtkTreeModelFilter           *filter,
                                                                 gint                          n_columns,
                                                                 GType                        *types,
                                                                 CtkTreeModelFilterModifyFunc  func,
                                                                 gpointer                      data,
                                                                 GDestroyNotify                destroy);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_tree_model_filter_set_visible_column         (CtkTreeModelFilter           *filter,
                                                                 gint                          column);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreeModel *ctk_tree_model_filter_get_model                  (CtkTreeModelFilter           *filter);
 
 /* conversion */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean      ctk_tree_model_filter_convert_child_iter_to_iter (CtkTreeModelFilter           *filter,
                                                                 CtkTreeIter                  *filter_iter,
                                                                 CtkTreeIter                  *child_iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_tree_model_filter_convert_iter_to_child_iter (CtkTreeModelFilter           *filter,
                                                                 CtkTreeIter                  *child_iter,
                                                                 CtkTreeIter                  *filter_iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreePath  *ctk_tree_model_filter_convert_child_path_to_path (CtkTreeModelFilter           *filter,
                                                                 CtkTreePath                  *child_path);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreePath  *ctk_tree_model_filter_convert_path_to_child_path (CtkTreeModelFilter           *filter,
                                                                 CtkTreePath                  *filter_path);
 
 /* extras */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_tree_model_filter_refilter                   (CtkTreeModelFilter           *filter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_tree_model_filter_clear_cache                (CtkTreeModelFilter           *filter);
 
 G_END_DECLS

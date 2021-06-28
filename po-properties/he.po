@@ -134,20 +134,20 @@ msgid "Default Display"
 msgstr "Default Display"
 
 #: cdk/cdkdisplaymanager.c:163
-msgid "The default display for GDK"
-msgstr "The default display for GDK"
+msgid "The default display for CDK"
+msgstr "The default display for CDK"
 
 #: cdk/cdkglcontext.c:318
-msgid "The GDK display used to create the GL context"
-msgstr "The GDK display used to create the GL context"
+msgid "The CDK display used to create the GL context"
+msgstr "The CDK display used to create the GL context"
 
 #: cdk/cdkglcontext.c:333 ctk/ctkwidget.c:1347
 msgid "Window"
 msgstr "Window"
 
 #: cdk/cdkglcontext.c:334
-msgid "The GDK window bound to the GL context"
-msgstr "The GDK window bound to the GL context"
+msgid "The CDK window bound to the GL context"
+msgstr "The CDK window bound to the GL context"
 
 #: cdk/cdkglcontext.c:349
 msgid "Shared context"
@@ -9605,8 +9605,8 @@ msgstr "The title of the color profile to use"
 #~ msgid "Whether the combo box grabs focus when it is clicked with the mouse"
 #~ msgstr "Whether the combo box grabs focus when it is clicked with the mouse"
 
-#~ msgid "The GDK display the context is from"
-#~ msgstr "The GDK display the context is from"
+#~ msgid "The CDK display the context is from"
+#~ msgstr "The CDK display the context is from"
 
 #~ msgid "Profile"
 #~ msgstr "Profile"

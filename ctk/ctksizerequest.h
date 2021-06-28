@@ -47,7 +47,7 @@ struct _CtkRequestedSize
 
 
 /* General convenience function to aid in allocating natural sizes */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint                ctk_distribute_natural_allocation               (gint              extra_space,
                                                                      guint             n_requested_sizes,
                                                                      CtkRequestedSize *sizes);

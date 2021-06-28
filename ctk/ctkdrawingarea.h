@@ -66,9 +66,9 @@ struct _CtkDrawingAreaClass
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType      ctk_drawing_area_get_type (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_drawing_area_new      (void);
 
 G_END_DECLS

@@ -187,104 +187,104 @@ struct _CtkThemingEngineClass
   gpointer padding[14];
 };
 
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 GType ctk_theming_engine_get_type (void) G_GNUC_CONST;
 
 /* function implemented in ctkcsscustomproperty.c */
-GDK_DEPRECATED_IN_3_8
+CDK_DEPRECATED_IN_3_8
 void ctk_theming_engine_register_property (const gchar            *name_space,
                                            CtkStylePropertyParser  parse_func,
                                            GParamSpec             *pspec);
 
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 void ctk_theming_engine_get_property (CtkThemingEngine *engine,
                                       const gchar      *property,
                                       CtkStateFlags     state,
                                       GValue           *value);
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 void ctk_theming_engine_get_valist   (CtkThemingEngine *engine,
                                       CtkStateFlags     state,
                                       va_list           args);
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 void ctk_theming_engine_get          (CtkThemingEngine *engine,
                                       CtkStateFlags     state,
                                       ...) G_GNUC_NULL_TERMINATED;
 
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 void ctk_theming_engine_get_style_property (CtkThemingEngine *engine,
                                             const gchar      *property_name,
                                             GValue           *value);
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 void ctk_theming_engine_get_style_valist   (CtkThemingEngine *engine,
                                             va_list           args);
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 void ctk_theming_engine_get_style          (CtkThemingEngine *engine,
                                             ...);
 
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 gboolean ctk_theming_engine_lookup_color (CtkThemingEngine *engine,
                                           const gchar      *color_name,
                                           CdkRGBA          *color);
 
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 const CtkWidgetPath * ctk_theming_engine_get_path (CtkThemingEngine *engine);
 
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 gboolean ctk_theming_engine_has_class  (CtkThemingEngine *engine,
                                         const gchar      *style_class);
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 gboolean ctk_theming_engine_has_region (CtkThemingEngine *engine,
                                         const gchar      *style_region,
                                         CtkRegionFlags   *flags);
 
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 CtkStateFlags ctk_theming_engine_get_state        (CtkThemingEngine *engine);
-GDK_DEPRECATED_IN_3_6
+CDK_DEPRECATED_IN_3_6
 gboolean      ctk_theming_engine_state_is_running (CtkThemingEngine *engine,
                                                    CtkStateType      state,
                                                    gdouble          *progress);
 
-GDK_DEPRECATED_IN_3_8_FOR(ctk_theming_engine_get_state)
+CDK_DEPRECATED_IN_3_8_FOR(ctk_theming_engine_get_state)
 CtkTextDirection ctk_theming_engine_get_direction (CtkThemingEngine *engine);
 
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 CtkJunctionSides ctk_theming_engine_get_junction_sides (CtkThemingEngine *engine);
 
 /* Helper functions */
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 void ctk_theming_engine_get_color            (CtkThemingEngine *engine,
                                               CtkStateFlags     state,
                                               CdkRGBA          *color);
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 void ctk_theming_engine_get_background_color (CtkThemingEngine *engine,
                                               CtkStateFlags     state,
                                               CdkRGBA          *color);
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 void ctk_theming_engine_get_border_color     (CtkThemingEngine *engine,
                                               CtkStateFlags     state,
                                               CdkRGBA          *color);
 
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 void ctk_theming_engine_get_border  (CtkThemingEngine *engine,
                                      CtkStateFlags     state,
                                      CtkBorder        *border);
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 void ctk_theming_engine_get_padding (CtkThemingEngine *engine,
                                      CtkStateFlags     state,
                                      CtkBorder        *padding);
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 void ctk_theming_engine_get_margin  (CtkThemingEngine *engine,
                                      CtkStateFlags     state,
                                      CtkBorder        *margin);
 
-GDK_DEPRECATED_IN_3_8_FOR(ctk_theming_engine_get)
+CDK_DEPRECATED_IN_3_8_FOR(ctk_theming_engine_get)
 const PangoFontDescription * ctk_theming_engine_get_font (CtkThemingEngine *engine,
                                                           CtkStateFlags     state);
 
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 CtkThemingEngine * ctk_theming_engine_load (const gchar *name);
 
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 CdkScreen * ctk_theming_engine_get_screen (CtkThemingEngine *engine);
 
 G_END_DECLS

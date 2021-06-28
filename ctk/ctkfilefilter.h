@@ -90,41 +90,41 @@ struct _CtkFileFilterInfo
   const gchar *mime_type;
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType ctk_file_filter_get_type (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkFileFilter *       ctk_file_filter_new      (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_file_filter_set_name (CtkFileFilter *filter,
 						const gchar   *name);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *         ctk_file_filter_get_name (CtkFileFilter *filter);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_file_filter_add_mime_type      (CtkFileFilter      *filter,
 					 const gchar        *mime_type);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_file_filter_add_pattern        (CtkFileFilter      *filter,
 					 const gchar        *pattern);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_file_filter_add_pixbuf_formats (CtkFileFilter      *filter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_file_filter_add_custom         (CtkFileFilter      *filter,
 					 CtkFileFilterFlags  needed,
 					 CtkFileFilterFunc   func,
 					 gpointer            data,
 					 GDestroyNotify      notify);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkFileFilterFlags ctk_file_filter_get_needed (CtkFileFilter           *filter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean           ctk_file_filter_filter     (CtkFileFilter           *filter,
 					       const CtkFileFilterInfo *filter_info);
 
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 GVariant      *ctk_file_filter_to_gvariant       (CtkFileFilter *filter);
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 CtkFileFilter *ctk_file_filter_new_from_gvariant (GVariant      *variant);
 
 G_END_DECLS

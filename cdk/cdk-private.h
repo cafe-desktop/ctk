@@ -1,10 +1,10 @@
-#ifndef __GDK__PRIVATE_H__
-#define __GDK__PRIVATE_H__
+#ifndef __CDK__PRIVATE_H__
+#define __CDK__PRIVATE_H__
 
 #include <cdk/cdk.h>
 #include "cdk/cdkinternals.h"
 
-#define GDK_PRIVATE_CALL(symbol)        (cdk__private__ ()->symbol)
+#define CDK_PRIVATE_CALL(symbol)        (cdk__private__ ()->symbol)
 
 CdkDisplay *    cdk_display_open_default        (void);
 
@@ -68,10 +68,10 @@ typedef struct {
   void     (* cdk_profiler_stop)       (void);
 } CdkPrivateVTable;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkPrivateVTable *      cdk__private__  (void);
 
 gboolean cdk_running_in_sandbox (void);
 gboolean cdk_should_use_portal (void);
 
-#endif /* __GDK__PRIVATE_H__ */
+#endif /* __CDK__PRIVATE_H__ */

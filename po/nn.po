@@ -71,7 +71,7 @@ msgstr "DISPLAY"
 #. Description of --cdk-debug=FLAGS in --help output
 #: ../cdk/cdk.c:211
 #, fuzzy
-msgid "GDK debugging flags to set"
+msgid "CDK debugging flags to set"
 msgstr "Feilsøkingsflagg som skal setjes for CTK+"
 
 #
@@ -87,7 +87,7 @@ msgstr "FLAGG"
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: ../cdk/cdk.c:214
 #, fuzzy
-msgid "GDK debugging flags to unset"
+msgid "CDK debugging flags to unset"
 msgstr "Feilsøkingsflagg som skal fjernes for CTK+"
 
 #.

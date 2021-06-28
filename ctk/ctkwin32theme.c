@@ -155,12 +155,12 @@ invalidate_win32_themes (CdkXEvent *xevent,
   gpointer theme;
   MSG *msg;
 
-  if (!GDK_IS_WIN32_WINDOW (event->any.window))
-    return GDK_FILTER_CONTINUE;
+  if (!CDK_IS_WIN32_WINDOW (event->any.window))
+    return CDK_FILTER_CONTINUE;
 
   msg = (MSG *) xevent;
   if (msg->message != WM_THEMECHANGED)
-    return GDK_FILTER_CONTINUE;
+    return CDK_FILTER_CONTINUE;
 
   g_hash_table_iter_init (&iter, themes_by_class);
   while (g_hash_table_iter_next (&iter, NULL, &theme))
@@ -170,7 +170,7 @@ invalidate_win32_themes (CdkXEvent *xevent,
   if (theme_was_open)
     ctk_style_context_reset_widgets (cdk_display_get_default_screen (cdk_window_get_display (event->any.window)));
 
-  return GDK_FILTER_CONTINUE;
+  return CDK_FILTER_CONTINUE;
 }
 
 static void

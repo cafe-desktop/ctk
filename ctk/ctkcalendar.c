@@ -797,7 +797,7 @@ ctk_calendar_init (CtkCalendar *calendar)
   priv->in_drag = 0;
   priv->drag_highlight = 0;
 
-  ctk_drag_dest_set (widget, 0, NULL, 0, GDK_ACTION_COPY);
+  ctk_drag_dest_set (widget, 0, NULL, 0, CDK_ACTION_COPY);
   ctk_drag_dest_add_text_targets (widget);
 
   priv->year_before = 0;
@@ -1556,12 +1556,12 @@ calendar_realize_arrows (CtkCalendar *calendar)
     {
       ctk_widget_get_allocation (widget, &allocation);
 
-      attributes.wclass = GDK_INPUT_ONLY;
-      attributes.window_type = GDK_WINDOW_CHILD;
+      attributes.wclass = CDK_INPUT_ONLY;
+      attributes.window_type = CDK_WINDOW_CHILD;
       attributes.event_mask = (ctk_widget_get_events (widget)
-                               | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK
-                               | GDK_ENTER_NOTIFY_MASK | GDK_LEAVE_NOTIFY_MASK);
-      attributes_mask = GDK_WA_X | GDK_WA_Y;
+                               | CDK_BUTTON_PRESS_MASK | CDK_BUTTON_RELEASE_MASK
+                               | CDK_ENTER_NOTIFY_MASK | CDK_LEAVE_NOTIFY_MASK);
+      attributes_mask = CDK_WA_X | CDK_WA_Y;
       for (i = 0; i < 4; i++)
         {
           CdkRectangle rect;
@@ -1655,14 +1655,14 @@ ctk_calendar_realize (CtkWidget *widget)
 
   CTK_WIDGET_CLASS (ctk_calendar_parent_class)->realize (widget);
 
-  attributes.wclass = GDK_INPUT_ONLY;
-  attributes.window_type = GDK_WINDOW_CHILD;
+  attributes.wclass = CDK_INPUT_ONLY;
+  attributes.window_type = CDK_WINDOW_CHILD;
   attributes.event_mask = (ctk_widget_get_events (widget)
-                           | GDK_SCROLL_MASK
-                           | GDK_BUTTON_PRESS_MASK
-                           | GDK_BUTTON_RELEASE_MASK
-                           | GDK_POINTER_MOTION_MASK
-                           | GDK_LEAVE_NOTIFY_MASK);
+                           | CDK_SCROLL_MASK
+                           | CDK_BUTTON_PRESS_MASK
+                           | CDK_BUTTON_RELEASE_MASK
+                           | CDK_POINTER_MOTION_MASK
+                           | CDK_LEAVE_NOTIFY_MASK);
 
   if (ctk_widget_get_direction (widget) == CTK_TEXT_DIR_LTR)
     attributes.x = priv->week_width + padding.left + inner_border;
@@ -1676,7 +1676,7 @@ ctk_calendar_realize (CtkWidget *widget)
     attributes.width -= priv->week_width;
 
   attributes.height = priv->main_h;
-  attributes_mask = GDK_WA_X | GDK_WA_Y;
+  attributes_mask = CDK_WA_X | CDK_WA_Y;
 
   attributes.x += allocation.x;
   attributes.y += allocation.y;
@@ -2939,7 +2939,7 @@ calendar_main_button_press (CtkCalendar    *calendar,
 
   day_month = priv->day_month[row][col];
 
-  if (event->type == GDK_BUTTON_PRESS)
+  if (event->type == CDK_BUTTON_PRESS)
     {
       day = priv->day[row][col];
 
@@ -2951,7 +2951,7 @@ calendar_main_button_press (CtkCalendar    *calendar,
       if (!ctk_widget_has_focus (widget))
         ctk_widget_grab_focus (widget);
 
-      if (event->button == GDK_BUTTON_PRIMARY)
+      if (event->button == CDK_BUTTON_PRIMARY)
         {
           priv->in_drag = 1;
           priv->drag_start_x = x;
@@ -2960,7 +2960,7 @@ calendar_main_button_press (CtkCalendar    *calendar,
 
       calendar_select_and_focus_day (calendar, day);
     }
-  else if (event->type == GDK_2BUTTON_PRESS)
+  else if (event->type == CDK_2BUTTON_PRESS)
     {
       priv->in_drag = 0;
       if (day_month == MONTH_CURRENT)
@@ -2990,9 +2990,9 @@ ctk_calendar_button_press (CtkWidget      *widget,
         {
 
           /* only call the action on single click, not double */
-          if (event->type == GDK_BUTTON_PRESS)
+          if (event->type == CDK_BUTTON_PRESS)
             {
-              if (event->button == GDK_BUTTON_PRIMARY)
+              if (event->button == CDK_BUTTON_PRIMARY)
                 calendar_start_spinning (calendar, arrow);
 
               calendar_arrow_action (calendar, arrow);
@@ -3012,7 +3012,7 @@ ctk_calendar_button_release (CtkWidget    *widget,
   CtkCalendar *calendar = CTK_CALENDAR (widget);
   CtkCalendarPrivate *priv = calendar->priv;
 
-  if (event->button == GDK_BUTTON_PRIMARY)
+  if (event->button == CDK_BUTTON_PRIMARY)
     {
       calendar_stop_spinning (calendar);
 
@@ -3038,7 +3038,7 @@ ctk_calendar_motion_notify (CtkWidget      *widget,
           CdkDragContext *context;
           CtkTargetList *target_list = ctk_target_list_new (NULL, 0);
           ctk_target_list_add_text_targets (target_list, 0);
-          context = ctk_drag_begin_with_coordinates (widget, target_list, GDK_ACTION_COPY,
+          context = ctk_drag_begin_with_coordinates (widget, target_list, CDK_ACTION_COPY,
                                                      1, (CdkEvent *)event,
                                                      priv->drag_start_x, priv->drag_start_y);
 
@@ -3125,13 +3125,13 @@ ctk_calendar_scroll (CtkWidget      *widget,
 {
   CtkCalendar *calendar = CTK_CALENDAR (widget);
 
-  if (event->direction == GDK_SCROLL_UP)
+  if (event->direction == CDK_SCROLL_UP)
     {
       if (!ctk_widget_has_focus (widget))
         ctk_widget_grab_focus (widget);
       calendar_set_month_prev (calendar);
     }
-  else if (event->direction == GDK_SCROLL_DOWN)
+  else if (event->direction == CDK_SCROLL_DOWN)
     {
       if (!ctk_widget_has_focus (widget))
         ctk_widget_grab_focus (widget);
@@ -3206,10 +3206,10 @@ ctk_calendar_key_press (CtkWidget   *widget,
 
   switch (event->keyval)
     {
-    case GDK_KEY_KP_Left:
-    case GDK_KEY_Left:
+    case CDK_KEY_KP_Left:
+    case CDK_KEY_Left:
       return_val = TRUE;
-      if (event->state & GDK_CONTROL_MASK)
+      if (event->state & CDK_CONTROL_MASK)
         calendar_set_month_prev (calendar);
       else
         {
@@ -3219,10 +3219,10 @@ ctk_calendar_key_press (CtkWidget   *widget,
                                    priv->focus_col);
         }
       break;
-    case GDK_KEY_KP_Right:
-    case GDK_KEY_Right:
+    case CDK_KEY_KP_Right:
+    case CDK_KEY_Right:
       return_val = TRUE;
-      if (event->state & GDK_CONTROL_MASK)
+      if (event->state & CDK_CONTROL_MASK)
         calendar_set_month_next (calendar);
       else
         {
@@ -3232,10 +3232,10 @@ ctk_calendar_key_press (CtkWidget   *widget,
                                    priv->focus_col);
         }
       break;
-    case GDK_KEY_KP_Up:
-    case GDK_KEY_Up:
+    case CDK_KEY_KP_Up:
+    case CDK_KEY_Up:
       return_val = TRUE;
-      if (event->state & GDK_CONTROL_MASK)
+      if (event->state & CDK_CONTROL_MASK)
         calendar_set_year_prev (calendar);
       else
         {
@@ -3250,10 +3250,10 @@ ctk_calendar_key_press (CtkWidget   *widget,
                                    priv->focus_col);
         }
       break;
-    case GDK_KEY_KP_Down:
-    case GDK_KEY_Down:
+    case CDK_KEY_KP_Down:
+    case CDK_KEY_Down:
       return_val = TRUE;
-      if (event->state & GDK_CONTROL_MASK)
+      if (event->state & CDK_CONTROL_MASK)
         calendar_set_year_next (calendar);
       else
         {
@@ -3266,8 +3266,8 @@ ctk_calendar_key_press (CtkWidget   *widget,
                                    priv->focus_col);
         }
       break;
-    case GDK_KEY_KP_Space:
-    case GDK_KEY_space:
+    case CDK_KEY_KP_Space:
+    case CDK_KEY_space:
       row = priv->focus_row;
       col = priv->focus_col;
 
@@ -3403,7 +3403,7 @@ ctk_calendar_drag_motion (CtkWidget      *widget,
     }
 
   target = ctk_drag_dest_find_target (widget, context, NULL);
-  if (target == GDK_NONE || cdk_drag_context_get_suggested_action (context) == 0)
+  if (target == CDK_NONE || cdk_drag_context_get_suggested_action (context) == 0)
     cdk_drag_status (context, 0, time);
   else
     {
@@ -3424,7 +3424,7 @@ ctk_calendar_drag_drop (CtkWidget      *widget,
   CdkAtom target;
 
   target = ctk_drag_dest_find_target (widget, context, NULL);
-  if (target != GDK_NONE)
+  if (target != CDK_NONE)
     {
       ctk_drag_get_data (widget, context,
                          target,

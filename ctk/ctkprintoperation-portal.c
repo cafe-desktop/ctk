@@ -677,6 +677,6 @@ ctk_print_operation_portal_launch_preview (CtkPrintOperation *op,
   char *uri;
 
   uri = g_filename_to_uri (filename, NULL, NULL);
-  ctk_show_uri_on_window (parent, uri, GDK_CURRENT_TIME, NULL);
+  ctk_show_uri_on_window (parent, uri, CDK_CURRENT_TIME, NULL);
   g_free (uri);
 }

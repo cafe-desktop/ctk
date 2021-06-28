@@ -233,7 +233,7 @@ struct _CtkWidget
  * @focus:
  * @move_focus: Signal emitted when a change of focus is requested
  * @keynav_failed: Signal emitted if keyboard navigation fails.
- * @event: The CTK+ main loop will emit three signals for each GDK
+ * @event: The CTK+ main loop will emit three signals for each CDK
  *   event delivered to a widget: one generic ::event signal, another,
  *   more specific, signal that matches the type of event delivered
  *   (e.g. "key-press-event") and finally a generic "event-after"
@@ -291,7 +291,7 @@ struct _CtkWidget
  * @drag_data_get: Signal emitted on the drag source when the drop
  *   site requests the data which is dragged.
  * @drag_data_delete: Signal emitted on the drag source when a drag
- *   with the action %GDK_ACTION_MOVE is successfully completed.
+ *   with the action %CDK_ACTION_MOVE is successfully completed.
  * @drag_leave: Signal emitted on the drop site when the cursor leaves
  *   the widget.
  * @drag_motion: signal emitted on the drop site when the user moves
@@ -609,524 +609,524 @@ struct _CtkWidgetClass
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType	   ctk_widget_get_type		  (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_widget_new		  (GType		type,
 					   const gchar	       *first_property_name,
 					   ...);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void	   ctk_widget_destroy		  (CtkWidget	       *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void	   ctk_widget_destroyed		  (CtkWidget	       *widget,
 					   CtkWidget	      **widget_pointer);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void	   ctk_widget_unparent		  (CtkWidget	       *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_widget_show                (CtkWidget           *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_widget_hide                (CtkWidget           *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_widget_show_now            (CtkWidget           *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_widget_show_all            (CtkWidget           *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_widget_set_no_show_all     (CtkWidget           *widget,
                                            gboolean             no_show_all);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_widget_get_no_show_all     (CtkWidget           *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void	   ctk_widget_map		  (CtkWidget	       *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void	   ctk_widget_unmap		  (CtkWidget	       *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void	   ctk_widget_realize		  (CtkWidget	       *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void	   ctk_widget_unrealize		  (CtkWidget	       *widget);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_widget_draw                (CtkWidget           *widget,
                                            cairo_t             *cr);
 /* Queuing draws */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void	   ctk_widget_queue_draw	  (CtkWidget	       *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void	   ctk_widget_queue_draw_area	  (CtkWidget	       *widget,
 					   gint                 x,
 					   gint                 y,
 					   gint                 width,
 					   gint                 height);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void	   ctk_widget_queue_draw_region   (CtkWidget	       *widget,
                                            const cairo_region_t*region);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void	   ctk_widget_queue_resize	  (CtkWidget	       *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void	   ctk_widget_queue_resize_no_redraw (CtkWidget *widget);
-GDK_AVAILABLE_IN_3_20
+CDK_AVAILABLE_IN_3_20
 void       ctk_widget_queue_allocate      (CtkWidget           *widget);
-GDK_AVAILABLE_IN_3_8
+CDK_AVAILABLE_IN_3_8
 CdkFrameClock* ctk_widget_get_frame_clock (CtkWidget           *widget);
 
-GDK_DEPRECATED_IN_3_0_FOR(ctk_widget_get_preferred_size)
+CDK_DEPRECATED_IN_3_0_FOR(ctk_widget_get_preferred_size)
 void       ctk_widget_size_request        (CtkWidget           *widget,
                                            CtkRequisition      *requisition);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void	   ctk_widget_size_allocate	  (CtkWidget	       *widget,
 					   CtkAllocation       *allocation);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void	   ctk_widget_size_allocate_with_baseline	  (CtkWidget	       *widget,
 							   CtkAllocation       *allocation,
 							   gint                 baseline);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkSizeRequestMode  ctk_widget_get_request_mode               (CtkWidget      *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                ctk_widget_get_preferred_width            (CtkWidget      *widget,
                                                                gint           *minimum_width,
                                                                gint           *natural_width);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                ctk_widget_get_preferred_height_for_width (CtkWidget      *widget,
                                                                gint            width,
                                                                gint           *minimum_height,
                                                                gint           *natural_height);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                ctk_widget_get_preferred_height           (CtkWidget      *widget,
                                                                gint           *minimum_height,
                                                                gint           *natural_height);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                ctk_widget_get_preferred_width_for_height (CtkWidget      *widget,
                                                                gint            height,
                                                                gint           *minimum_width,
                                                                gint           *natural_width);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void   ctk_widget_get_preferred_height_and_baseline_for_width (CtkWidget     *widget,
 							       gint           width,
 							       gint          *minimum_height,
 							       gint          *natural_height,
 							       gint          *minimum_baseline,
 							       gint          *natural_baseline);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                ctk_widget_get_preferred_size             (CtkWidget      *widget,
                                                                CtkRequisition *minimum_size,
                                                                CtkRequisition *natural_size);
 
-GDK_DEPRECATED_IN_3_0_FOR(ctk_widget_get_preferred_size)
+CDK_DEPRECATED_IN_3_0_FOR(ctk_widget_get_preferred_size)
 void       ctk_widget_get_child_requisition (CtkWidget         *widget,
                                              CtkRequisition    *requisition);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void	   ctk_widget_add_accelerator	  (CtkWidget           *widget,
 					   const gchar         *accel_signal,
 					   CtkAccelGroup       *accel_group,
 					   guint                accel_key,
 					   CdkModifierType      accel_mods,
 					   CtkAccelFlags        accel_flags);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_widget_remove_accelerator  (CtkWidget           *widget,
 					   CtkAccelGroup       *accel_group,
 					   guint                accel_key,
 					   CdkModifierType      accel_mods);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_widget_set_accel_path      (CtkWidget           *widget,
 					   const gchar         *accel_path,
 					   CtkAccelGroup       *accel_group);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GList*     ctk_widget_list_accel_closures (CtkWidget	       *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_widget_can_activate_accel  (CtkWidget           *widget,
                                            guint                signal_id);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_widget_mnemonic_activate   (CtkWidget           *widget,
 					   gboolean             group_cycling);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_widget_event		  (CtkWidget	       *widget,
 					   CdkEvent	       *event);
-GDK_DEPRECATED_IN_3_22
+CDK_DEPRECATED_IN_3_22
 gint       ctk_widget_send_expose         (CtkWidget           *widget,
 					   CdkEvent            *event);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_widget_send_focus_change   (CtkWidget           *widget,
                                            CdkEvent            *event);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_widget_activate		     (CtkWidget	       *widget);
      
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 void	   ctk_widget_reparent		  (CtkWidget	       *widget,
 					   CtkWidget	       *new_parent);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_widget_intersect		  (CtkWidget	       *widget,
 					   const CdkRectangle  *area,
 					   CdkRectangle	       *intersection);
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 cairo_region_t *ctk_widget_region_intersect	  (CtkWidget	       *widget,
 					   const cairo_region_t     *region);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void	ctk_widget_freeze_child_notify	  (CtkWidget	       *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void	ctk_widget_child_notify		  (CtkWidget	       *widget,
 					   const gchar	       *child_property);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void	ctk_widget_thaw_child_notify	  (CtkWidget	       *widget);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_widget_set_can_focus       (CtkWidget           *widget,
                                            gboolean             can_focus);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_widget_get_can_focus       (CtkWidget           *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_widget_has_focus           (CtkWidget           *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_widget_is_focus            (CtkWidget           *widget);
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 gboolean   ctk_widget_has_visible_focus   (CtkWidget           *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_widget_grab_focus          (CtkWidget           *widget);
-GDK_AVAILABLE_IN_3_20
+CDK_AVAILABLE_IN_3_20
 void       ctk_widget_set_focus_on_click  (CtkWidget           *widget,
                                            gboolean             focus_on_click);
-GDK_AVAILABLE_IN_3_20
+CDK_AVAILABLE_IN_3_20
 gboolean   ctk_widget_get_focus_on_click  (CtkWidget           *widget);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_widget_set_can_default     (CtkWidget           *widget,
                                            gboolean             can_default);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_widget_get_can_default     (CtkWidget           *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_widget_has_default         (CtkWidget           *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_widget_grab_default        (CtkWidget           *widget);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void      ctk_widget_set_receives_default (CtkWidget           *widget,
                                            gboolean             receives_default);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean  ctk_widget_get_receives_default (CtkWidget           *widget);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_widget_has_grab            (CtkWidget           *widget);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_widget_device_is_shadowed  (CtkWidget           *widget,
                                            CdkDevice           *device);
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_widget_set_name               (CtkWidget    *widget,
 							 const gchar  *name);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *         ctk_widget_get_name               (CtkWidget    *widget);
 
-GDK_DEPRECATED_IN_3_0_FOR(ctk_widget_set_state_flags)
+CDK_DEPRECATED_IN_3_0_FOR(ctk_widget_set_state_flags)
 void                  ctk_widget_set_state              (CtkWidget    *widget,
 							 CtkStateType  state);
 
-GDK_DEPRECATED_IN_3_0_FOR(ctk_widget_get_state_flags)
+CDK_DEPRECATED_IN_3_0_FOR(ctk_widget_get_state_flags)
 CtkStateType          ctk_widget_get_state              (CtkWidget    *widget);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_widget_set_state_flags        (CtkWidget     *widget,
                                                          CtkStateFlags  flags,
                                                          gboolean       clear);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_widget_unset_state_flags      (CtkWidget     *widget,
                                                          CtkStateFlags  flags);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkStateFlags         ctk_widget_get_state_flags        (CtkWidget     *widget);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_widget_set_sensitive          (CtkWidget    *widget,
 							 gboolean      sensitive);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_widget_get_sensitive          (CtkWidget    *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_widget_is_sensitive           (CtkWidget    *widget);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_widget_set_visible            (CtkWidget    *widget,
                                                          gboolean      visible);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_widget_get_visible            (CtkWidget    *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_widget_is_visible             (CtkWidget    *widget);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_widget_set_has_window         (CtkWidget    *widget,
                                                          gboolean      has_window);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_widget_get_has_window         (CtkWidget    *widget);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_widget_is_toplevel            (CtkWidget    *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_widget_is_drawable            (CtkWidget    *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_widget_set_realized           (CtkWidget    *widget,
                                                          gboolean      realized);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_widget_get_realized           (CtkWidget    *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_widget_set_mapped             (CtkWidget    *widget,
                                                          gboolean      mapped);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_widget_get_mapped             (CtkWidget    *widget);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_widget_set_app_paintable      (CtkWidget    *widget,
 							 gboolean      app_paintable);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_widget_get_app_paintable      (CtkWidget    *widget);
 
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 void                  ctk_widget_set_double_buffered    (CtkWidget    *widget,
 							 gboolean      double_buffered);
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 gboolean              ctk_widget_get_double_buffered    (CtkWidget    *widget);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_widget_set_redraw_on_allocate (CtkWidget    *widget,
 							 gboolean      redraw_on_allocate);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_widget_set_parent             (CtkWidget    *widget,
 							 CtkWidget    *parent);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget           * ctk_widget_get_parent             (CtkWidget    *widget);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_widget_set_parent_window      (CtkWidget    *widget,
 							 CdkWindow    *parent_window);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkWindow           * ctk_widget_get_parent_window      (CtkWidget    *widget);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_widget_set_child_visible      (CtkWidget    *widget,
 							 gboolean      is_visible);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_widget_get_child_visible      (CtkWidget    *widget);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_widget_set_window             (CtkWidget    *widget,
                                                          CdkWindow    *window);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkWindow           * ctk_widget_get_window             (CtkWidget    *widget);
-GDK_AVAILABLE_IN_3_8
+CDK_AVAILABLE_IN_3_8
 void                  ctk_widget_register_window        (CtkWidget    *widget,
                                                          CdkWindow    *window);
-GDK_AVAILABLE_IN_3_8
+CDK_AVAILABLE_IN_3_8
 void                  ctk_widget_unregister_window      (CtkWidget    *widget,
                                                          CdkWindow    *window);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 int                   ctk_widget_get_allocated_width    (CtkWidget     *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 int                   ctk_widget_get_allocated_height   (CtkWidget     *widget);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 int                   ctk_widget_get_allocated_baseline (CtkWidget     *widget);
-GDK_AVAILABLE_IN_3_20
+CDK_AVAILABLE_IN_3_20
 void                  ctk_widget_get_allocated_size     (CtkWidget     *widget,
                                                          CtkAllocation *allocation,
                                                          int           *baseline);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_widget_get_allocation         (CtkWidget     *widget,
                                                          CtkAllocation *allocation);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_widget_set_allocation         (CtkWidget     *widget,
                                                          const CtkAllocation *allocation);
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 void                  ctk_widget_set_clip               (CtkWidget     *widget,
                                                          const CtkAllocation *clip);
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 void                  ctk_widget_get_clip               (CtkWidget     *widget,
                                                          CtkAllocation *clip);
 
-GDK_DEPRECATED_IN_3_0_FOR(ctk_widget_get_preferred_width & ctk_widget_get_preferred_height)
+CDK_DEPRECATED_IN_3_0_FOR(ctk_widget_get_preferred_width & ctk_widget_get_preferred_height)
 
 void                  ctk_widget_get_requisition        (CtkWidget     *widget,
                                                          CtkRequisition *requisition);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_widget_child_focus         (CtkWidget           *widget,
                                            CtkDirectionType     direction);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_widget_keynav_failed       (CtkWidget           *widget,
                                            CtkDirectionType     direction);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_widget_error_bell          (CtkWidget           *widget);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_widget_set_size_request    (CtkWidget           *widget,
                                            gint                 width,
                                            gint                 height);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_widget_get_size_request    (CtkWidget           *widget,
                                            gint                *width,
                                            gint                *height);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void	   ctk_widget_set_events	  (CtkWidget	       *widget,
 					   gint			events);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_widget_add_events          (CtkWidget           *widget,
 					   gint	                events);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void	   ctk_widget_set_device_events	  (CtkWidget	       *widget,
                                            CdkDevice           *device,
 					   CdkEventMask		events);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_widget_add_device_events   (CtkWidget           *widget,
                                            CdkDevice           *device,
 					   CdkEventMask         events);
-GDK_AVAILABLE_IN_3_8
+CDK_AVAILABLE_IN_3_8
 void	   ctk_widget_set_opacity	  (CtkWidget	       *widget,
 					   double		opacity);
-GDK_AVAILABLE_IN_3_8
+CDK_AVAILABLE_IN_3_8
 double	   ctk_widget_get_opacity	  (CtkWidget	       *widget);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_widget_set_device_enabled  (CtkWidget    *widget,
                                            CdkDevice    *device,
                                            gboolean      enabled);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_widget_get_device_enabled  (CtkWidget    *widget,
                                            CdkDevice    *device);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget*   ctk_widget_get_toplevel	(CtkWidget	*widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget*   ctk_widget_get_ancestor	(CtkWidget	*widget,
 					 GType		 widget_type);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkVisual*   ctk_widget_get_visual	(CtkWidget	*widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void         ctk_widget_set_visual	(CtkWidget	*widget,
                                          CdkVisual      *visual);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkScreen *   ctk_widget_get_screen      (CtkWidget *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean      ctk_widget_has_screen      (CtkWidget *widget);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 gint          ctk_widget_get_scale_factor (CtkWidget *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkDisplay *  ctk_widget_get_display     (CtkWidget *widget);
-GDK_DEPRECATED_IN_3_12
+CDK_DEPRECATED_IN_3_12
 CdkWindow *   ctk_widget_get_root_window (CtkWidget *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkSettings*  ctk_widget_get_settings    (CtkWidget *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkClipboard *ctk_widget_get_clipboard   (CtkWidget *widget,
 					  CdkAtom    selection);
 
 
 /* Expand flags and related support */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_widget_get_hexpand          (CtkWidget      *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_widget_set_hexpand          (CtkWidget      *widget,
                                           gboolean        expand);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_widget_get_hexpand_set      (CtkWidget      *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_widget_set_hexpand_set      (CtkWidget      *widget,
                                           gboolean        set);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_widget_get_vexpand          (CtkWidget      *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_widget_set_vexpand          (CtkWidget      *widget,
                                           gboolean        expand);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_widget_get_vexpand_set      (CtkWidget      *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_widget_set_vexpand_set      (CtkWidget      *widget,
                                           gboolean        set);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_widget_queue_compute_expand (CtkWidget      *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_widget_compute_expand       (CtkWidget      *widget,
                                           CtkOrientation  orientation);
 
 
 /* Multidevice support */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean         ctk_widget_get_support_multidevice (CtkWidget      *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_widget_set_support_multidevice (CtkWidget      *widget,
                                                      gboolean        support_multidevice);
 
 /* Accessibility support */
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 void             ctk_widget_class_set_accessible_type    (CtkWidgetClass     *widget_class,
                                                           GType               type);
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 void             ctk_widget_class_set_accessible_role    (CtkWidgetClass     *widget_class,
                                                           AtkRole             role);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 AtkObject*       ctk_widget_get_accessible               (CtkWidget          *widget);
 
 
 /* Margin and alignment */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkAlign ctk_widget_get_halign        (CtkWidget *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_widget_set_halign        (CtkWidget *widget,
                                        CtkAlign   align);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkAlign ctk_widget_get_valign        (CtkWidget *widget);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 CtkAlign ctk_widget_get_valign_with_baseline (CtkWidget *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_widget_set_valign        (CtkWidget *widget,
                                        CtkAlign   align);
-GDK_DEPRECATED_IN_3_12_FOR(ctk_widget_get_margin_start)
+CDK_DEPRECATED_IN_3_12_FOR(ctk_widget_get_margin_start)
 gint     ctk_widget_get_margin_left   (CtkWidget *widget);
-GDK_DEPRECATED_IN_3_12_FOR(ctk_widget_set_margin_start)
+CDK_DEPRECATED_IN_3_12_FOR(ctk_widget_set_margin_start)
 void     ctk_widget_set_margin_left   (CtkWidget *widget,
                                        gint       margin);
-GDK_DEPRECATED_IN_3_12_FOR(ctk_widget_get_margin_end)
+CDK_DEPRECATED_IN_3_12_FOR(ctk_widget_get_margin_end)
 gint     ctk_widget_get_margin_right  (CtkWidget *widget);
-GDK_DEPRECATED_IN_3_12_FOR(ctk_widget_set_margin_end)
+CDK_DEPRECATED_IN_3_12_FOR(ctk_widget_set_margin_end)
 void     ctk_widget_set_margin_right  (CtkWidget *widget,
                                        gint       margin);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 gint     ctk_widget_get_margin_start  (CtkWidget *widget);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void     ctk_widget_set_margin_start  (CtkWidget *widget,
                                        gint       margin);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 gint     ctk_widget_get_margin_end    (CtkWidget *widget);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void     ctk_widget_set_margin_end    (CtkWidget *widget,
                                        gint       margin);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint     ctk_widget_get_margin_top    (CtkWidget *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_widget_set_margin_top    (CtkWidget *widget,
                                        gint       margin);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint     ctk_widget_get_margin_bottom (CtkWidget *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_widget_set_margin_bottom (CtkWidget *widget,
                                        gint       margin);
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint	     ctk_widget_get_events	(CtkWidget	*widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkEventMask ctk_widget_get_device_events (CtkWidget	*widget,
                                            CdkDevice    *device);
-GDK_DEPRECATED_IN_3_4_FOR(cdk_window_get_device_position)
+CDK_DEPRECATED_IN_3_4_FOR(cdk_window_get_device_position)
 void	     ctk_widget_get_pointer	(CtkWidget	*widget,
 					 gint		*x,
 					 gint		*y);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean     ctk_widget_is_ancestor	(CtkWidget	*widget,
 					 CtkWidget	*ancestor);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean     ctk_widget_translate_coordinates (CtkWidget  *src_widget,
 					       CtkWidget  *dest_widget,
 					       gint        src_x,
@@ -1136,49 +1136,49 @@ gboolean     ctk_widget_translate_coordinates (CtkWidget  *src_widget,
 
 /* Hide widget and return TRUE.
  */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean     ctk_widget_hide_on_delete	(CtkWidget	*widget);
 
 /* Functions to override widget styling */
-GDK_DEPRECATED_IN_3_16
+CDK_DEPRECATED_IN_3_16
 void         ctk_widget_override_color            (CtkWidget     *widget,
                                                    CtkStateFlags  state,
                                                    const CdkRGBA *color);
-GDK_DEPRECATED_IN_3_16
+CDK_DEPRECATED_IN_3_16
 void         ctk_widget_override_background_color (CtkWidget     *widget,
                                                    CtkStateFlags  state,
                                                    const CdkRGBA *color);
 
-GDK_DEPRECATED_IN_3_16
+CDK_DEPRECATED_IN_3_16
 void         ctk_widget_override_font             (CtkWidget                  *widget,
                                                    const PangoFontDescription *font_desc);
 
-GDK_DEPRECATED_IN_3_16
+CDK_DEPRECATED_IN_3_16
 void         ctk_widget_override_symbolic_color   (CtkWidget     *widget,
                                                    const gchar   *name,
                                                    const CdkRGBA *color);
-GDK_DEPRECATED_IN_3_16
+CDK_DEPRECATED_IN_3_16
 void         ctk_widget_override_cursor           (CtkWidget       *widget,
                                                    const CdkRGBA   *cursor,
                                                    const CdkRGBA   *secondary_cursor);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_widget_reset_style       (CtkWidget      *widget);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 PangoContext *ctk_widget_create_pango_context (CtkWidget   *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 PangoContext *ctk_widget_get_pango_context    (CtkWidget   *widget);
-GDK_AVAILABLE_IN_3_18
+CDK_AVAILABLE_IN_3_18
 void ctk_widget_set_font_options (CtkWidget                  *widget,
                                   const cairo_font_options_t *options);
-GDK_AVAILABLE_IN_3_18
+CDK_AVAILABLE_IN_3_18
 const cairo_font_options_t *ctk_widget_get_font_options (CtkWidget *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 PangoLayout  *ctk_widget_create_pango_layout  (CtkWidget   *widget,
 					       const gchar *text);
 
-GDK_DEPRECATED_IN_3_10_FOR(ctk_icon_theme_load_icon)
+CDK_DEPRECATED_IN_3_10_FOR(ctk_icon_theme_load_icon)
 CdkPixbuf    *ctk_widget_render_icon_pixbuf   (CtkWidget   *widget,
                                                const gchar *stock_id,
                                                CtkIconSize  size);
@@ -1186,157 +1186,157 @@ CdkPixbuf    *ctk_widget_render_icon_pixbuf   (CtkWidget   *widget,
 /* handle composite names for CTK_COMPOSITE_CHILD widgets,
  * the returned name is newly allocated.
  */
-GDK_DEPRECATED_IN_3_10_FOR(ctk_widget_class_set_template)
+CDK_DEPRECATED_IN_3_10_FOR(ctk_widget_class_set_template)
 void   ctk_widget_set_composite_name	(CtkWidget	*widget,
 					 const gchar   	*name);
-GDK_DEPRECATED_IN_3_10_FOR(ctk_widget_class_set_template)
+CDK_DEPRECATED_IN_3_10_FOR(ctk_widget_class_set_template)
 gchar* ctk_widget_get_composite_name	(CtkWidget	*widget);
      
 /* Push/pop pairs, to change default values upon a widget's creation.
  * This will override the values that got set by the
  * ctk_widget_set_default_* () functions.
  */
-GDK_DEPRECATED_IN_3_10_FOR(ctk_widget_class_set_template)
+CDK_DEPRECATED_IN_3_10_FOR(ctk_widget_class_set_template)
 void	     ctk_widget_push_composite_child (void);
-GDK_DEPRECATED_IN_3_10_FOR(ctk_widget_class_set_template)
+CDK_DEPRECATED_IN_3_10_FOR(ctk_widget_class_set_template)
 void	     ctk_widget_pop_composite_child  (void);
 
 /* widget style properties
  */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_widget_class_install_style_property        (CtkWidgetClass     *klass,
 						     GParamSpec         *pspec);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_widget_class_install_style_property_parser (CtkWidgetClass     *klass,
 						     GParamSpec         *pspec,
 						     CtkRcPropertyParser parser);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GParamSpec*  ctk_widget_class_find_style_property   (CtkWidgetClass     *klass,
 						     const gchar        *property_name);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GParamSpec** ctk_widget_class_list_style_properties (CtkWidgetClass     *klass,
 						     guint              *n_properties);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_widget_style_get_property (CtkWidget	     *widget,
 				    const gchar    *property_name,
 				    GValue	     *value);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_widget_style_get_valist   (CtkWidget	     *widget,
 				    const gchar    *first_property_name,
 				    va_list         var_args);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_widget_style_get          (CtkWidget	     *widget,
 				    const gchar    *first_property_name,
 				    ...) G_GNUC_NULL_TERMINATED;
 
 /* Functions for setting directionality for widgets */
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_widget_set_direction         (CtkWidget        *widget,
 						   CtkTextDirection  dir);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTextDirection ctk_widget_get_direction         (CtkWidget        *widget);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_widget_set_default_direction (CtkTextDirection  dir);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTextDirection ctk_widget_get_default_direction (void);
 
 /* Compositing manager functionality */
-GDK_DEPRECATED_IN_3_22_FOR(cdk_screen_is_composited)
+CDK_DEPRECATED_IN_3_22_FOR(cdk_screen_is_composited)
 gboolean ctk_widget_is_composited (CtkWidget *widget);
 
 /* Counterpart to cdk_window_shape_combine_region.
  */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void	     ctk_widget_shape_combine_region (CtkWidget *widget,
                                               cairo_region_t *region);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void	     ctk_widget_input_shape_combine_region (CtkWidget *widget,
                                                     cairo_region_t *region);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GList* ctk_widget_list_mnemonic_labels  (CtkWidget *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void   ctk_widget_add_mnemonic_label    (CtkWidget *widget,
 					 CtkWidget *label);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void   ctk_widget_remove_mnemonic_label (CtkWidget *widget,
 					 CtkWidget *label);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_widget_set_tooltip_window    (CtkWidget   *widget,
                                                         CtkWindow   *custom_window);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWindow *ctk_widget_get_tooltip_window    (CtkWidget   *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_widget_trigger_tooltip_query (CtkWidget   *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_widget_set_tooltip_text      (CtkWidget   *widget,
                                              const gchar *text);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gchar *    ctk_widget_get_tooltip_text      (CtkWidget   *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_widget_set_tooltip_markup    (CtkWidget   *widget,
                                              const gchar *markup);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gchar *    ctk_widget_get_tooltip_markup    (CtkWidget   *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_widget_set_has_tooltip       (CtkWidget   *widget,
 					     gboolean     has_tooltip);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_widget_get_has_tooltip       (CtkWidget   *widget);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_cairo_should_draw_window     (cairo_t     *cr,
                                              CdkWindow   *window);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_cairo_transform_to_window    (cairo_t     *cr,
                                              CtkWidget   *widget,
                                              CdkWindow   *window);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType           ctk_requisition_get_type (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkRequisition *ctk_requisition_new      (void) G_GNUC_MALLOC;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkRequisition *ctk_requisition_copy     (const CtkRequisition *requisition);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void            ctk_requisition_free     (CtkRequisition       *requisition);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean     ctk_widget_in_destruction (CtkWidget *widget);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkStyleContext * ctk_widget_get_style_context (CtkWidget *widget);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidgetPath *   ctk_widget_get_path (CtkWidget *widget);
 
-GDK_AVAILABLE_IN_3_20
+CDK_AVAILABLE_IN_3_20
 void              ctk_widget_class_set_css_name (CtkWidgetClass *widget_class,
                                                  const char     *name);
-GDK_AVAILABLE_IN_3_20
+CDK_AVAILABLE_IN_3_20
 const char *      ctk_widget_class_get_css_name (CtkWidgetClass *widget_class);
 
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 CdkModifierType   ctk_widget_get_modifier_mask (CtkWidget         *widget,
                                                 CdkModifierIntent  intent);
 
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 void                    ctk_widget_insert_action_group                  (CtkWidget    *widget,
                                                                          const gchar  *name,
                                                                          GActionGroup *group);
 
 
 
-GDK_AVAILABLE_IN_3_8
+CDK_AVAILABLE_IN_3_8
 guint ctk_widget_add_tick_callback (CtkWidget       *widget,
                                     CtkTickCallback  callback,
                                     gpointer         user_data,
                                     GDestroyNotify   notify);
 
-GDK_AVAILABLE_IN_3_8
+CDK_AVAILABLE_IN_3_8
 void ctk_widget_remove_tick_callback (CtkWidget       *widget,
                                       guint            id);
 
@@ -1450,44 +1450,44 @@ void ctk_widget_remove_tick_callback (CtkWidget       *widget,
                                              TRUE, \
                                              G_PRIVATE_OFFSET (TypeName, member_name))
 
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void    ctk_widget_init_template                        (CtkWidget             *widget);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 GObject *ctk_widget_get_template_child                  (CtkWidget             *widget,
 						         GType                  widget_type,
 						         const gchar           *name);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void    ctk_widget_class_set_template                   (CtkWidgetClass        *widget_class,
 						         GBytes                *template_bytes);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void    ctk_widget_class_set_template_from_resource     (CtkWidgetClass        *widget_class,
 						         const gchar           *resource_name);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void    ctk_widget_class_bind_template_callback_full    (CtkWidgetClass        *widget_class,
 						         const gchar           *callback_name,
 						         GCallback              callback_symbol);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void    ctk_widget_class_set_connect_func               (CtkWidgetClass        *widget_class,
 						         CtkBuilderConnectFunc  connect_func,
 						         gpointer               connect_data,
 						         GDestroyNotify         connect_data_destroy);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void    ctk_widget_class_bind_template_child_full       (CtkWidgetClass        *widget_class,
 						         const gchar           *name,
 						         gboolean               internal_child,
 						         gssize                 struct_offset);
 
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 GActionGroup           *ctk_widget_get_action_group     (CtkWidget             *widget,
                                                          const gchar           *prefix);
 
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 const gchar **          ctk_widget_list_action_prefixes (CtkWidget             *widget);
 
-GDK_AVAILABLE_IN_3_18
+CDK_AVAILABLE_IN_3_18
 void                    ctk_widget_set_font_map         (CtkWidget             *widget,
                                                          PangoFontMap          *font_map);
-GDK_AVAILABLE_IN_3_18
+CDK_AVAILABLE_IN_3_18
 PangoFontMap *          ctk_widget_get_font_map         (CtkWidget             *widget);
 
 G_DEFINE_AUTOPTR_CLEANUP_FUNC(CtkWidget, g_object_unref)

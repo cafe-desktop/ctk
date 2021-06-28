@@ -46,7 +46,7 @@
 
 #include "cdkprivate-win32.h"
 
-G_DEFINE_TYPE (CdkWin32Monitor, cdk_win32_monitor, GDK_TYPE_MONITOR)
+G_DEFINE_TYPE (CdkWin32Monitor, cdk_win32_monitor, CDK_TYPE_MONITOR)
 
 /* MinGW-w64 carelessly put DISPLAYCONFIG_OUTPUT_TECHNOLOGY_OTHER = -1 into this
  * enum, as documented by MSDN. However, with
@@ -309,8 +309,8 @@ get_monitor_devices (CdkWin32Display *win32_display)
           continue;
         }
 
-      w32mon = g_object_new (GDK_TYPE_WIN32_MONITOR, "display", win32_display, NULL);
-      mon = GDK_MONITOR (w32mon);
+      w32mon = g_object_new (CDK_TYPE_WIN32_MONITOR, "display", win32_display, NULL);
+      mon = CDK_MONITOR (w32mon);
 
       g_ptr_array_add (monitor_array, w32mon);
 
@@ -511,7 +511,7 @@ populate_monitor_devices_from_display_config (GPtrArray *monitors)
       if (w32mon == NULL)
         continue;
 
-      mon = GDK_MONITOR (w32mon);
+      mon = CDK_MONITOR (w32mon);
 
       if (!tdn.flags.friendlyNameForced)
         {
@@ -580,7 +580,7 @@ enum_monitor (HMONITOR hmonitor,
       dm.dmSize = sizeof (dm);
       dm.dmDriverExtra = 0;
       frequency = 0;
-      orientation = GDK_WIN32_MONITOR_ROTATION_UNKNOWN;
+      orientation = CDK_WIN32_MONITOR_ROTATION_UNKNOWN;
 
       /* Grab refresh rate for this adapter while we're at it */
       if (EnumDisplaySettingsExW (dd.DeviceName, ENUM_CURRENT_SETTINGS, &dm, 0))
@@ -591,16 +591,16 @@ enum_monitor (HMONITOR hmonitor,
                 {
                 default:
                 case DMDO_DEFAULT:
-                  orientation = GDK_WIN32_MONITOR_ROTATION_0;
+                  orientation = CDK_WIN32_MONITOR_ROTATION_0;
                   break;
                 case DMDO_90:
-                  orientation = GDK_WIN32_MONITOR_ROTATION_90;
+                  orientation = CDK_WIN32_MONITOR_ROTATION_90;
                   break;
                 case DMDO_180:
-                  orientation = GDK_WIN32_MONITOR_ROTATION_180;
+                  orientation = CDK_WIN32_MONITOR_ROTATION_180;
                   break;
                 case DMDO_270:
-                  orientation = GDK_WIN32_MONITOR_ROTATION_270;
+                  orientation = CDK_WIN32_MONITOR_ROTATION_270;
                   break;
                 }
             }
@@ -659,13 +659,13 @@ enum_monitor (HMONITOR hmonitor,
               /* Headless PC or a virtual machine, it has no monitor devices.
                * Make one up.
                */
-              w32mon = g_object_new (GDK_TYPE_WIN32_MONITOR, "display", data->display, NULL);
+              w32mon = g_object_new (CDK_TYPE_WIN32_MONITOR, "display", data->display, NULL);
               g_ptr_array_add (data->monitors, w32mon);
               i = data->monitors->len - 1;
               w32mon->madeup = TRUE;
             }
 
-          mon = GDK_MONITOR (w32mon);
+          mon = CDK_MONITOR (w32mon);
 
           if (cdk_monitor_get_model (mon) == NULL)
             {
@@ -806,7 +806,7 @@ _cdk_win32_monitor_get_pixel_structure (CdkMonitor *monitor)
 
   g_return_val_if_fail (monitor != NULL, NULL);
 
-  w32_m = GDK_WIN32_MONITOR (monitor);
+  w32_m = CDK_WIN32_MONITOR (monitor);
 
   SystemParametersInfoW (SPI_GETFONTSMOOTHING, 0, &enabled, 0);
   SystemParametersInfoW (SPI_GETFONTSMOOTHINGTYPE, 0, &cleartype, 0);
@@ -820,30 +820,30 @@ _cdk_win32_monitor_get_pixel_structure (CdkMonitor *monitor)
     switch (w32_m->orientation)
       {
       default:
-      case GDK_WIN32_MONITOR_ROTATION_UNKNOWN:
+      case CDK_WIN32_MONITOR_ROTATION_UNKNOWN:
         return "none";
-      case GDK_WIN32_MONITOR_ROTATION_0:
+      case CDK_WIN32_MONITOR_ROTATION_0:
         return "bgr";
-      case GDK_WIN32_MONITOR_ROTATION_90:
+      case CDK_WIN32_MONITOR_ROTATION_90:
         return "vbgr";
-      case GDK_WIN32_MONITOR_ROTATION_180:
+      case CDK_WIN32_MONITOR_ROTATION_180:
         return "rgb";
-      case GDK_WIN32_MONITOR_ROTATION_270:
+      case CDK_WIN32_MONITOR_ROTATION_270:
         return "vrgb";
       }
   else
     switch (w32_m->orientation)
       {
       default:
-      case GDK_WIN32_MONITOR_ROTATION_UNKNOWN:
+      case CDK_WIN32_MONITOR_ROTATION_UNKNOWN:
         return "none";
-      case GDK_WIN32_MONITOR_ROTATION_0:
+      case CDK_WIN32_MONITOR_ROTATION_0:
         return "rgb";
-      case GDK_WIN32_MONITOR_ROTATION_90:
+      case CDK_WIN32_MONITOR_ROTATION_90:
         return "vrgb";
-      case GDK_WIN32_MONITOR_ROTATION_180:
+      case CDK_WIN32_MONITOR_ROTATION_180:
         return "bgr";
-      case GDK_WIN32_MONITOR_ROTATION_270:
+      case CDK_WIN32_MONITOR_ROTATION_270:
         return "vbgr";
       }
 }
@@ -892,15 +892,15 @@ _cdk_win32_display_get_monitor_list (CdkWin32Display *win32_display)
       m = g_ptr_array_index (data.monitors, i);
 
       /* Calculate offset */
-      cdk_monitor_get_geometry (GDK_MONITOR (m), &rect);
+      cdk_monitor_get_geometry (CDK_MONITOR (m), &rect);
       _cdk_offset_x = MAX (_cdk_offset_x, -rect.x);
       _cdk_offset_y = MAX (_cdk_offset_y, -rect.y);
     }
 
-  GDK_NOTE (MISC, g_print ("Multi-monitor offset: (%d,%d)\n",
+  CDK_NOTE (MISC, g_print ("Multi-monitor offset: (%d,%d)\n",
                            _cdk_offset_x, _cdk_offset_y));
 
-  /* Translate monitor coords into GDK coordinate space */
+  /* Translate monitor coords into CDK coordinate space */
   for (i = 0; i < data.monitors->len; i++)
     {
       CdkWin32Monitor *m;
@@ -908,15 +908,15 @@ _cdk_win32_display_get_monitor_list (CdkWin32Display *win32_display)
 
       m = g_ptr_array_index (data.monitors, i);
 
-      cdk_monitor_get_geometry (GDK_MONITOR (m), &rect);
+      cdk_monitor_get_geometry (CDK_MONITOR (m), &rect);
       rect.x += _cdk_offset_x;
       rect.y += _cdk_offset_y;
-      cdk_monitor_set_position (GDK_MONITOR (m), rect.x, rect.y);
+      cdk_monitor_set_position (CDK_MONITOR (m), rect.x, rect.y);
 
       m->work_rect.x += _cdk_offset_x;
       m->work_rect.y += _cdk_offset_y;
 
-      GDK_NOTE (MISC, g_print ("Monitor %d: %dx%d@%+d%+d\n", i,
+      CDK_NOTE (MISC, g_print ("Monitor %d: %dx%d@%+d%+d\n", i,
                                rect.width, rect.height, rect.x, rect.y));
     }
 
@@ -926,7 +926,7 @@ _cdk_win32_display_get_monitor_list (CdkWin32Display *win32_display)
 static void
 cdk_win32_monitor_finalize (GObject *object)
 {
-  CdkWin32Monitor *win32_monitor = GDK_WIN32_MONITOR (object);
+  CdkWin32Monitor *win32_monitor = CDK_WIN32_MONITOR (object);
 
   g_free (win32_monitor->instance_path);
 
@@ -948,7 +948,7 @@ static void
 cdk_win32_monitor_get_workarea (CdkMonitor   *monitor,
                                 CdkRectangle *dest)
 {
-  CdkWin32Monitor *win32_monitor = GDK_WIN32_MONITOR (monitor);
+  CdkWin32Monitor *win32_monitor = CDK_WIN32_MONITOR (monitor);
 
   *dest = win32_monitor->work_rect;
 }
@@ -963,5 +963,5 @@ cdk_win32_monitor_class_init (CdkWin32MonitorClass *class)
 {
   G_OBJECT_CLASS (class)->finalize = cdk_win32_monitor_finalize;
 
-  GDK_MONITOR_CLASS (class)->get_workarea = cdk_win32_monitor_get_workarea;
+  CDK_MONITOR_CLASS (class)->get_workarea = cdk_win32_monitor_get_workarea;
 }

@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2009 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -25,7 +25,7 @@
 #include "cdkwin32.h"
 #include "cdkdevice-wintab.h"
 
-G_DEFINE_TYPE (CdkDeviceWintab, cdk_device_wintab, GDK_TYPE_DEVICE)
+G_DEFINE_TYPE (CdkDeviceWintab, cdk_device_wintab, CDK_TYPE_DEVICE)
 
 static gboolean
 cdk_device_wintab_get_history (CdkDevice      *device,
@@ -47,19 +47,19 @@ get_current_mask (void)
   GetKeyboardState (kbd);
   mask = 0;
   if (kbd[VK_SHIFT] & 0x80)
-    mask |= GDK_SHIFT_MASK;
+    mask |= CDK_SHIFT_MASK;
   if (kbd[VK_CAPITAL] & 0x80)
-    mask |= GDK_LOCK_MASK;
+    mask |= CDK_LOCK_MASK;
   if (kbd[VK_CONTROL] & 0x80)
-    mask |= GDK_CONTROL_MASK;
+    mask |= CDK_CONTROL_MASK;
   if (kbd[VK_MENU] & 0x80)
-    mask |= GDK_MOD1_MASK;
+    mask |= CDK_MOD1_MASK;
   if (kbd[VK_LBUTTON] & 0x80)
-    mask |= GDK_BUTTON1_MASK;
+    mask |= CDK_BUTTON1_MASK;
   if (kbd[VK_MBUTTON] & 0x80)
-    mask |= GDK_BUTTON2_MASK;
+    mask |= CDK_BUTTON2_MASK;
   if (kbd[VK_RBUTTON] & 0x80)
-    mask |= GDK_BUTTON3_MASK;
+    mask |= CDK_BUTTON3_MASK;
 
   return mask;
 }
@@ -72,7 +72,7 @@ cdk_device_wintab_get_state (CdkDevice       *device,
 {
   CdkDeviceWintab *device_wintab;
 
-  device_wintab = GDK_DEVICE_WINTAB (device);
+  device_wintab = CDK_DEVICE_WINTAB (device);
 
   /* For now just use the last known button and axis state of the device.
    * Since graphical tablets send an insane amount of motion events each
@@ -82,9 +82,9 @@ cdk_device_wintab_get_state (CdkDevice       *device,
       *mask = get_current_mask ();
       *mask &= 0xFF; /* Mask away core pointer buttons */
       *mask |= ((device_wintab->button_state << 8)
-                & (GDK_BUTTON1_MASK | GDK_BUTTON2_MASK
-                   | GDK_BUTTON3_MASK | GDK_BUTTON4_MASK
-                   | GDK_BUTTON5_MASK));
+                & (CDK_BUTTON1_MASK | CDK_BUTTON2_MASK
+                   | CDK_BUTTON3_MASK | CDK_BUTTON4_MASK
+                   | CDK_BUTTON5_MASK));
     }
 
   if (axes && device_wintab->last_axis_data)
@@ -123,11 +123,11 @@ cdk_device_wintab_query_state (CdkDevice        *device,
   HWND hwnd, hwndc;
   CdkWindowImplWin32 *impl;
 
-  device_wintab = GDK_DEVICE_WINTAB (device);
+  device_wintab = CDK_DEVICE_WINTAB (device);
   screen = cdk_window_get_screen (window);
-  impl = GDK_WINDOW_IMPL_WIN32 (window->impl);
+  impl = CDK_WINDOW_IMPL_WIN32 (window->impl);
 
-  hwnd = GDK_WINDOW_HWND (window);
+  hwnd = CDK_WINDOW_HWND (window);
   GetCursorPos (&point);
 
   if (root_x)
@@ -171,9 +171,9 @@ cdk_device_wintab_query_state (CdkDevice        *device,
       *mask = get_current_mask ();
       *mask &= 0xFF; /* Mask away core pointer buttons */
       *mask |= ((device_wintab->button_state << 8)
-                & (GDK_BUTTON1_MASK | GDK_BUTTON2_MASK
-                   | GDK_BUTTON3_MASK | GDK_BUTTON4_MASK
-                   | GDK_BUTTON5_MASK));
+                & (CDK_BUTTON1_MASK | CDK_BUTTON2_MASK
+                   | CDK_BUTTON3_MASK | CDK_BUTTON4_MASK
+                   | CDK_BUTTON5_MASK));
 
     }
 }
@@ -187,7 +187,7 @@ cdk_device_wintab_grab (CdkDevice    *device,
                         CdkCursor    *cursor,
                         guint32       time_)
 {
-  return GDK_GRAB_SUCCESS;
+  return CDK_GRAB_SUCCESS;
 }
 
 static void
@@ -226,7 +226,7 @@ _cdk_device_wintab_translate_axes (CdkDeviceWintab *device_wintab,
   gdouble temp_x, temp_y;
   gint i;
 
-  device = GDK_DEVICE (device_wintab);
+  device = CDK_DEVICE (device_wintab);
   impl_window = _cdk_window_get_impl_window (window);
   temp_x = temp_y = 0;
 
@@ -240,9 +240,9 @@ _cdk_device_wintab_translate_axes (CdkDeviceWintab *device_wintab,
 
       switch (use)
         {
-        case GDK_AXIS_X:
-        case GDK_AXIS_Y:
-          if (cdk_device_get_mode (device) == GDK_MODE_WINDOW)
+        case CDK_AXIS_X:
+        case CDK_AXIS_Y:
+          if (cdk_device_get_mode (device) == CDK_MODE_WINDOW)
             _cdk_device_translate_window_coord (device, window, i,
                                                 device_wintab->last_axis_data[i],
                                                 &axes[i]);
@@ -251,9 +251,9 @@ _cdk_device_wintab_translate_axes (CdkDeviceWintab *device_wintab,
                                                 root_x, root_y, i,
                                                 device_wintab->last_axis_data[i],
                                                 &axes[i]);
-          if (use == GDK_AXIS_X)
+          if (use == CDK_AXIS_X)
             temp_x = axes[i];
-          else if (use == GDK_AXIS_Y)
+          else if (use == CDK_AXIS_Y)
             temp_y = axes[i];
 
           break;
@@ -275,7 +275,7 @@ _cdk_device_wintab_translate_axes (CdkDeviceWintab *device_wintab,
 static void
 cdk_device_wintab_class_init (CdkDeviceWintabClass *klass)
 {
-  CdkDeviceClass *device_class = GDK_DEVICE_CLASS (klass);
+  CdkDeviceClass *device_class = CDK_DEVICE_CLASS (klass);
 
   device_class->get_history = cdk_device_wintab_get_history;
   device_class->get_state = cdk_device_wintab_get_state;

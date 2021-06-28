@@ -107,59 +107,59 @@ struct _CtkMenuItemClass
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType      ctk_menu_item_get_type             (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_menu_item_new                  (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_menu_item_new_with_label       (const gchar         *label);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_menu_item_new_with_mnemonic    (const gchar         *label);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_menu_item_set_submenu          (CtkMenuItem         *menu_item,
                                                CtkWidget           *submenu);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_menu_item_get_submenu          (CtkMenuItem         *menu_item);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_menu_item_select               (CtkMenuItem         *menu_item);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_menu_item_deselect             (CtkMenuItem         *menu_item);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_menu_item_activate             (CtkMenuItem         *menu_item);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_menu_item_toggle_size_request  (CtkMenuItem         *menu_item,
                                                gint                *requisition);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_menu_item_toggle_size_allocate (CtkMenuItem         *menu_item,
                                                gint                 allocation);
-GDK_DEPRECATED_IN_3_2
+CDK_DEPRECATED_IN_3_2
 void       ctk_menu_item_set_right_justified  (CtkMenuItem         *menu_item,
                                                gboolean             right_justified);
-GDK_DEPRECATED_IN_3_2
+CDK_DEPRECATED_IN_3_2
 gboolean   ctk_menu_item_get_right_justified  (CtkMenuItem         *menu_item);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_menu_item_set_accel_path    (CtkMenuItem         *menu_item,
                                                const gchar         *accel_path);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar * ctk_menu_item_get_accel_path    (CtkMenuItem    *menu_item);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_menu_item_set_label         (CtkMenuItem         *menu_item,
                                                const gchar         *label);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar * ctk_menu_item_get_label         (CtkMenuItem         *menu_item);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_menu_item_set_use_underline    (CtkMenuItem         *menu_item,
                                                gboolean             setting);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_menu_item_get_use_underline    (CtkMenuItem         *menu_item);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_menu_item_set_reserve_indicator (CtkMenuItem        *menu_item,
                                                 gboolean            reserve);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_menu_item_get_reserve_indicator (CtkMenuItem        *menu_item);
 
 G_END_DECLS

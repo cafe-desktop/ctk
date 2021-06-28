@@ -228,14 +228,14 @@ ctk_style_context_class_init (CtkStyleContextClass *klass)
       g_param_spec_object ("screen",
                            P_("Screen"),
                            P_("The associated CdkScreen"),
-                           GDK_TYPE_SCREEN,
+                           CDK_TYPE_SCREEN,
                            CTK_PARAM_READWRITE);
 
   properties[PROP_FRAME_CLOCK] =
       g_param_spec_object ("paint-clock",
                            P_("FrameClock"),
                            P_("The associated CdkFrameClock"),
-                           GDK_TYPE_FRAME_CLOCK,
+                           CDK_TYPE_FRAME_CLOCK,
                            CTK_PARAM_READWRITE);
 
   properties[PROP_DIRECTION] =
@@ -712,7 +712,7 @@ ctk_style_context_add_provider_for_screen (CdkScreen        *screen,
 {
   CtkStyleCascade *cascade;
 
-  g_return_if_fail (GDK_IS_SCREEN (screen));
+  g_return_if_fail (CDK_IS_SCREEN (screen));
   g_return_if_fail (CTK_IS_STYLE_PROVIDER (provider));
   g_return_if_fail (!CTK_IS_SETTINGS (provider) || _ctk_settings_get_screen (CTK_SETTINGS (provider)) == screen);
 
@@ -735,7 +735,7 @@ ctk_style_context_remove_provider_for_screen (CdkScreen        *screen,
 {
   CtkStyleCascade *cascade;
 
-  g_return_if_fail (GDK_IS_SCREEN (screen));
+  g_return_if_fail (CDK_IS_SCREEN (screen));
   g_return_if_fail (CTK_IS_STYLE_PROVIDER (provider));
   g_return_if_fail (!CTK_IS_SETTINGS (provider));
 
@@ -1678,14 +1678,14 @@ _ctk_style_context_peek_style_property (CtkStyleContext *context,
 
               g_value_unset (&pcache->value);
 
-              if (G_PARAM_SPEC_VALUE_TYPE (pspec) == GDK_TYPE_RGBA)
-                g_value_init (&pcache->value, GDK_TYPE_RGBA);
+              if (G_PARAM_SPEC_VALUE_TYPE (pspec) == CDK_TYPE_RGBA)
+                g_value_init (&pcache->value, CDK_TYPE_RGBA);
               else
-                g_value_init (&pcache->value, GDK_TYPE_COLOR);
+                g_value_init (&pcache->value, CDK_TYPE_COLOR);
 
               if (_ctk_style_context_resolve_color (context, _ctk_symbolic_color_get_css_value (color), &rgba))
                 {
-                  if (G_PARAM_SPEC_VALUE_TYPE (pspec) == GDK_TYPE_RGBA)
+                  if (G_PARAM_SPEC_VALUE_TYPE (pspec) == CDK_TYPE_RGBA)
                     g_value_set_boxed (&pcache->value, &rgba);
                   else
                     {
@@ -1978,7 +1978,7 @@ ctk_style_context_set_screen (CtkStyleContext *context,
   CtkStyleCascade *screen_cascade;
 
   g_return_if_fail (CTK_IS_STYLE_CONTEXT (context));
-  g_return_if_fail (GDK_IS_SCREEN (screen));
+  g_return_if_fail (CDK_IS_SCREEN (screen));
 
   priv = context->priv;
   if (priv->screen == screen)
@@ -2037,7 +2037,7 @@ ctk_style_context_set_frame_clock (CtkStyleContext *context,
                                    CdkFrameClock   *frame_clock)
 {
   g_return_if_fail (CTK_IS_STYLE_CONTEXT (context));
-  g_return_if_fail (frame_clock == NULL || GDK_IS_FRAME_CLOCK (frame_clock));
+  g_return_if_fail (frame_clock == NULL || CDK_IS_FRAME_CLOCK (frame_clock));
 
   if (g_set_object (&context->priv->frame_clock, frame_clock))
     g_object_notify_by_pspec (G_OBJECT (context), properties[PROP_FRAME_CLOCK]);
@@ -2298,7 +2298,7 @@ ctk_style_context_notify_state_change (CtkStyleContext *context,
                                        gboolean         state_value)
 {
   g_return_if_fail (CTK_IS_STYLE_CONTEXT (context));
-  g_return_if_fail (GDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_WINDOW (window));
   g_return_if_fail (state > CTK_STATE_NORMAL && state <= CTK_STATE_FOCUSED);
 }
 
@@ -2353,7 +2353,7 @@ ctk_style_context_scroll_animations (CtkStyleContext *context,
                                      gint             dy)
 {
   g_return_if_fail (CTK_IS_STYLE_CONTEXT (context));
-  g_return_if_fail (GDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_WINDOW (window));
 }
 
 /**
@@ -2469,11 +2469,11 @@ ctk_style_context_set_background (CtkStyleContext *context,
                                   CdkWindow       *window)
 {
   g_return_if_fail (CTK_IS_STYLE_CONTEXT (context));
-  g_return_if_fail (GDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_WINDOW (window));
 
   /* This is a sophisticated optimization.
-   * If we know the GDK window's background will be opaque, we mark
-   * it as opaque. This is so GDK can do all the optimizations it does
+   * If we know the CDK window's background will be opaque, we mark
+   * it as opaque. This is so CDK can do all the optimizations it does
    * for opaque windows and be fast.
    * This is mainly used when scrolling.
    *

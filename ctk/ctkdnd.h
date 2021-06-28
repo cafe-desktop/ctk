@@ -39,28 +39,28 @@ G_BEGIN_DECLS
 
 /* Destination side */
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_drag_get_data (CtkWidget      *widget,
 			CdkDragContext *context,
 			CdkAtom         target,
 			guint32         time_);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_drag_finish   (CdkDragContext *context,
 			gboolean        success,
 			gboolean        del,
 			guint32         time_);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *ctk_drag_get_source_widget (CdkDragContext *context);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_drag_highlight   (CtkWidget  *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_drag_unhighlight (CtkWidget  *widget);
 
 /* Source side */
 
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 CdkDragContext *ctk_drag_begin_with_coordinates (CtkWidget         *widget,
                                                  CtkTargetList     *targets,
                                                  CdkDragAction      actions,
@@ -69,49 +69,49 @@ CdkDragContext *ctk_drag_begin_with_coordinates (CtkWidget         *widget,
                                                  gint               x,
                                                  gint               y);
 
-GDK_DEPRECATED_IN_3_10_FOR(ctk_drag_begin_with_coordinates)
+CDK_DEPRECATED_IN_3_10_FOR(ctk_drag_begin_with_coordinates)
 CdkDragContext *ctk_drag_begin (CtkWidget         *widget,
 				CtkTargetList     *targets,
 				CdkDragAction      actions,
 				gint               button,
 				CdkEvent          *event);
 
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 void ctk_drag_cancel           (CdkDragContext *context);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_drag_set_icon_widget (CdkDragContext *context,
 			       CtkWidget      *widget,
 			       gint            hot_x,
 			       gint            hot_y);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_drag_set_icon_pixbuf (CdkDragContext *context,
 			       CdkPixbuf      *pixbuf,
 			       gint            hot_x,
 			       gint            hot_y);
-GDK_DEPRECATED_IN_3_10_FOR(ctk_drag_set_icon_name)
+CDK_DEPRECATED_IN_3_10_FOR(ctk_drag_set_icon_name)
 void ctk_drag_set_icon_stock  (CdkDragContext *context,
 			       const gchar    *stock_id,
 			       gint            hot_x,
 			       gint            hot_y);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_drag_set_icon_surface(CdkDragContext *context,
 			       cairo_surface_t *surface);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_drag_set_icon_name   (CdkDragContext *context,
 			       const gchar    *icon_name,
 			       gint            hot_x,
 			       gint            hot_y);
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 void ctk_drag_set_icon_gicon  (CdkDragContext *context,
 			       GIcon          *icon,
 			       gint            hot_x,
 			       gint            hot_y);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_drag_set_icon_default (CdkDragContext    *context);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_drag_check_threshold (CtkWidget *widget,
 				   gint       start_x,
 				   gint       start_y,

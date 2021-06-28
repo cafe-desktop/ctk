@@ -80,24 +80,24 @@ struct _CtkLinkButtonClass
   void (*_ctk_padding4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType                 ctk_link_button_get_type          (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *           ctk_link_button_new               (const gchar   *uri);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *           ctk_link_button_new_with_label    (const gchar   *uri,
 						         const gchar   *label);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *         ctk_link_button_get_uri           (CtkLinkButton *link_button);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_link_button_set_uri           (CtkLinkButton *link_button,
 						         const gchar   *uri);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_link_button_get_visited       (CtkLinkButton *link_button);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_link_button_set_visited       (CtkLinkButton *link_button,
                                                          gboolean       visited);
 

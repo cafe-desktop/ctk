@@ -137,20 +137,20 @@ msgid "Default Display"
 msgstr "Standarddisplay"
 
 #: cdk/cdkdisplaymanager.c:163
-msgid "The default display for GDK"
-msgstr "Standarddisplay för GDK"
+msgid "The default display for CDK"
+msgstr "Standarddisplay för CDK"
 
 #: cdk/cdkglcontext.c:318
-msgid "The GDK display used to create the GL context"
-msgstr "GDK-fönstret använt för att skapa GL-kontexten"
+msgid "The CDK display used to create the GL context"
+msgstr "CDK-fönstret använt för att skapa GL-kontexten"
 
 #: cdk/cdkglcontext.c:333 ctk/ctkwidget.c:1347
 msgid "Window"
 msgstr "Fönster"
 
 #: cdk/cdkglcontext.c:334
-msgid "The GDK window bound to the GL context"
-msgstr "GDK-fönstret bundet till GL-kontexten"
+msgid "The CDK window bound to the GL context"
+msgstr "CDK-fönstret bundet till GL-kontexten"
 
 #: cdk/cdkglcontext.c:349
 msgid "Shared context"
@@ -9722,5 +9722,5 @@ msgstr "Titeln på färgprofilen att använda"
 #~ msgid "Name of default font to use"
 #~ msgstr "Namn på standardtypsnittet att använda"
 
-#~ msgid "The GDK display the context is from"
-#~ msgstr "Den GDK-display som kontexten är från"
+#~ msgid "The CDK display the context is from"
+#~ msgstr "Den CDK-display som kontexten är från"

@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2009 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -32,13 +32,13 @@
 typedef enum
 {
 #if MAC_OS_X_VERSION_MIN_REQUIRED < 101200
-  GDK_QUARTZ_POINTER_DEVICE_TYPE_CURSOR = NSCursorPointingDevice,
-  GDK_QUARTZ_POINTER_DEVICE_TYPE_ERASER = NSEraserPointingDevice,
-  GDK_QUARTZ_POINTER_DEVICE_TYPE_PEN = NSPenPointingDevice,
+  CDK_QUARTZ_POINTER_DEVICE_TYPE_CURSOR = NSCursorPointingDevice,
+  CDK_QUARTZ_POINTER_DEVICE_TYPE_ERASER = NSEraserPointingDevice,
+  CDK_QUARTZ_POINTER_DEVICE_TYPE_PEN = NSPenPointingDevice,
 #else
-  GDK_QUARTZ_POINTER_DEVICE_TYPE_CURSOR = NSPointingDeviceTypeCursor,
-  GDK_QUARTZ_POINTER_DEVICE_TYPE_ERASER = NSPointingDeviceTypeEraser,
-  GDK_QUARTZ_POINTER_DEVICE_TYPE_PEN = NSPointingDeviceTypePen,
+  CDK_QUARTZ_POINTER_DEVICE_TYPE_CURSOR = NSPointingDeviceTypeCursor,
+  CDK_QUARTZ_POINTER_DEVICE_TYPE_ERASER = NSPointingDeviceTypeEraser,
+  CDK_QUARTZ_POINTER_DEVICE_TYPE_PEN = NSPointingDeviceTypePen,
 #endif
 } CdkQuartzPointerDeviceType;
 
@@ -53,12 +53,12 @@ static GList * cdk_quartz_device_manager_core_list_devices (CdkDeviceManager *de
 static CdkDevice * cdk_quartz_device_manager_core_get_client_pointer (CdkDeviceManager *device_manager);
 
 
-G_DEFINE_TYPE (CdkQuartzDeviceManagerCore, cdk_quartz_device_manager_core, GDK_TYPE_DEVICE_MANAGER)
+G_DEFINE_TYPE (CdkQuartzDeviceManagerCore, cdk_quartz_device_manager_core, CDK_TYPE_DEVICE_MANAGER)
 
 static void
 cdk_quartz_device_manager_core_class_init (CdkQuartzDeviceManagerCoreClass *klass)
 {
-  CdkDeviceManagerClass *device_manager_class = GDK_DEVICE_MANAGER_CLASS (klass);
+  CdkDeviceManagerClass *device_manager_class = CDK_DEVICE_MANAGER_CLASS (klass);
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   object_class->finalize = cdk_quartz_device_manager_core_finalize;
@@ -71,11 +71,11 @@ static CdkDevice *
 create_core_pointer (CdkDeviceManager *device_manager,
                      CdkDisplay       *display)
 {
-  return g_object_new (GDK_TYPE_QUARTZ_DEVICE_CORE,
+  return g_object_new (CDK_TYPE_QUARTZ_DEVICE_CORE,
                        "name", "Core Pointer",
-                       "type", GDK_DEVICE_TYPE_MASTER,
-                       "input-source", GDK_SOURCE_MOUSE,
-                       "input-mode", GDK_MODE_SCREEN,
+                       "type", CDK_DEVICE_TYPE_MASTER,
+                       "input-source", CDK_SOURCE_MOUSE,
+                       "input-mode", CDK_MODE_SCREEN,
                        "has-cursor", TRUE,
                        "display", display,
                        "device-manager", device_manager,
@@ -86,11 +86,11 @@ static CdkDevice *
 create_core_keyboard (CdkDeviceManager *device_manager,
                       CdkDisplay       *display)
 {
-  return g_object_new (GDK_TYPE_QUARTZ_DEVICE_CORE,
+  return g_object_new (CDK_TYPE_QUARTZ_DEVICE_CORE,
                        "name", "Core Keyboard",
-                       "type", GDK_DEVICE_TYPE_MASTER,
-                       "input-source", GDK_SOURCE_KEYBOARD,
-                       "input-mode", GDK_MODE_SCREEN,
+                       "type", CDK_DEVICE_TYPE_MASTER,
+                       "input-source", CDK_SOURCE_KEYBOARD,
+                       "input-mode", CDK_MODE_SCREEN,
                        "has-cursor", FALSE,
                        "display", display,
                        "device-manager", device_manager,
@@ -108,7 +108,7 @@ cdk_quartz_device_manager_core_finalize (GObject *object)
 {
   CdkQuartzDeviceManagerCore *quartz_device_manager_core;
 
-  quartz_device_manager_core = GDK_QUARTZ_DEVICE_MANAGER_CORE (object);
+  quartz_device_manager_core = CDK_QUARTZ_DEVICE_MANAGER_CORE (object);
 
   g_object_unref (quartz_device_manager_core->core_pointer);
   g_object_unref (quartz_device_manager_core->core_keyboard);
@@ -125,10 +125,10 @@ cdk_quartz_device_manager_core_constructed (GObject *object)
   CdkDisplay *display;
   CdkSeat *seat;
 
-  device_manager = GDK_QUARTZ_DEVICE_MANAGER_CORE (object);
-  display = cdk_device_manager_get_display (GDK_DEVICE_MANAGER (object));
-  device_manager->core_pointer = create_core_pointer (GDK_DEVICE_MANAGER (device_manager), display);
-  device_manager->core_keyboard = create_core_keyboard (GDK_DEVICE_MANAGER (device_manager), display);
+  device_manager = CDK_QUARTZ_DEVICE_MANAGER_CORE (object);
+  display = cdk_device_manager_get_display (CDK_DEVICE_MANAGER (object));
+  device_manager->core_pointer = create_core_pointer (CDK_DEVICE_MANAGER (device_manager), display);
+  device_manager->core_keyboard = create_core_keyboard (CDK_DEVICE_MANAGER (device_manager), display);
 
   _cdk_device_set_associated_device (device_manager->core_pointer, device_manager->core_keyboard);
   _cdk_device_set_associated_device (device_manager->core_keyboard, device_manager->core_pointer);
@@ -147,9 +147,9 @@ cdk_quartz_device_manager_core_list_devices (CdkDeviceManager *device_manager,
   GList *devices = NULL;
   GList *l;
 
-  self = GDK_QUARTZ_DEVICE_MANAGER_CORE (device_manager);
+  self = CDK_QUARTZ_DEVICE_MANAGER_CORE (device_manager);
 
-  if (type == GDK_DEVICE_TYPE_MASTER)
+  if (type == CDK_DEVICE_TYPE_MASTER)
     {
       devices = g_list_prepend (devices, self->core_keyboard);
       devices = g_list_prepend (devices, self->core_pointer);
@@ -157,7 +157,7 @@ cdk_quartz_device_manager_core_list_devices (CdkDeviceManager *device_manager,
 
   for (l = self->known_tablet_devices; l; l = g_list_next (l))
     {
-      devices = g_list_prepend (devices, GDK_DEVICE (l->data));
+      devices = g_list_prepend (devices, CDK_DEVICE (l->data));
     }
 
   devices = g_list_reverse (devices);
@@ -180,19 +180,19 @@ create_core_device (CdkDeviceManager *device_manager,
                     CdkInputSource    source)
 {
   CdkDisplay *display = cdk_device_manager_get_display (device_manager);
-  CdkDevice *device = g_object_new (GDK_TYPE_QUARTZ_DEVICE_CORE,
+  CdkDevice *device = g_object_new (CDK_TYPE_QUARTZ_DEVICE_CORE,
                                     "name", device_name,
-                                    "type", GDK_DEVICE_TYPE_SLAVE,
+                                    "type", CDK_DEVICE_TYPE_SLAVE,
                                     "input-source", source,
-                                    "input-mode", GDK_MODE_DISABLED,
+                                    "input-mode", CDK_MODE_DISABLED,
                                     "has-cursor", FALSE,
                                     "display", display,
                                     "device-manager", device_manager,
                                     NULL);
 
-  _cdk_device_add_axis (device, GDK_NONE, GDK_AXIS_PRESSURE, 0.0, 1.0, 0.001);
-  _cdk_device_add_axis (device, GDK_NONE, GDK_AXIS_XTILT, -1.0, 1.0, 0.001);
-  _cdk_device_add_axis (device, GDK_NONE, GDK_AXIS_YTILT, -1.0, 1.0, 0.001);
+  _cdk_device_add_axis (device, CDK_NONE, CDK_AXIS_PRESSURE, 0.0, 1.0, 0.001);
+  _cdk_device_add_axis (device, CDK_NONE, CDK_AXIS_XTILT, -1.0, 1.0, 0.001);
+  _cdk_device_add_axis (device, CDK_NONE, CDK_AXIS_YTILT, -1.0, 1.0, 0.001);
 
   return device;
 }
@@ -234,8 +234,8 @@ translate_device_axes (CdkDevice *source_device,
     }
   else
     {
-      _cdk_device_add_axis (core_pointer, GDK_NONE, GDK_AXIS_X, 0, 0, 1);
-      _cdk_device_add_axis (core_pointer, GDK_NONE, GDK_AXIS_Y, 0, 0, 1);
+      _cdk_device_add_axis (core_pointer, CDK_NONE, CDK_AXIS_X, 0, 0, 1);
+      _cdk_device_add_axis (core_pointer, CDK_NONE, CDK_AXIS_Y, 0, 0, 1);
     }
 
   g_object_thaw_notify (G_OBJECT (core_pointer));
@@ -245,26 +245,26 @@ void
 _cdk_quartz_device_manager_register_device_for_ns_event (CdkDeviceManager *device_manager,
                                                          NSEvent          *nsevent)
 {
-  CdkQuartzDeviceManagerCore *self = GDK_QUARTZ_DEVICE_MANAGER_CORE (device_manager);
+  CdkQuartzDeviceManagerCore *self = CDK_QUARTZ_DEVICE_MANAGER_CORE (device_manager);
   GList *l = NULL;
-  CdkInputSource input_source = GDK_SOURCE_MOUSE;
+  CdkInputSource input_source = CDK_SOURCE_MOUSE;
   CdkDevice *device = NULL;
 
   /* Only handle device updates for proximity events */
-  if ([nsevent type] != GDK_QUARTZ_EVENT_TABLET_PROXIMITY &&
-      [nsevent subtype] != GDK_QUARTZ_EVENT_SUBTYPE_TABLET_PROXIMITY)
+  if ([nsevent type] != CDK_QUARTZ_EVENT_TABLET_PROXIMITY &&
+      [nsevent subtype] != CDK_QUARTZ_EVENT_SUBTYPE_TABLET_PROXIMITY)
     return;
 
-  if ([nsevent pointingDeviceType] == GDK_QUARTZ_POINTER_DEVICE_TYPE_PEN)
-    input_source = GDK_SOURCE_PEN;
-  else if ([nsevent pointingDeviceType] == GDK_QUARTZ_POINTER_DEVICE_TYPE_CURSOR)
-    input_source = GDK_SOURCE_CURSOR;
-  else if ([nsevent pointingDeviceType] == GDK_QUARTZ_POINTER_DEVICE_TYPE_ERASER)
-    input_source = GDK_SOURCE_ERASER;
+  if ([nsevent pointingDeviceType] == CDK_QUARTZ_POINTER_DEVICE_TYPE_PEN)
+    input_source = CDK_SOURCE_PEN;
+  else if ([nsevent pointingDeviceType] == CDK_QUARTZ_POINTER_DEVICE_TYPE_CURSOR)
+    input_source = CDK_SOURCE_CURSOR;
+  else if ([nsevent pointingDeviceType] == CDK_QUARTZ_POINTER_DEVICE_TYPE_ERASER)
+    input_source = CDK_SOURCE_ERASER;
 
   for (l = self->known_tablet_devices; l; l = g_list_next (l))
     {
-      CdkDevice *device_to_check = GDK_DEVICE (l->data);
+      CdkDevice *device_to_check = CDK_DEVICE (l->data);
 
       if (input_source == cdk_device_get_source (device_to_check) &&
           [nsevent uniqueID] == _cdk_quartz_device_core_get_unique (device_to_check))
@@ -294,31 +294,31 @@ _cdk_quartz_device_manager_register_device_for_ns_event (CdkDeviceManager *devic
 
       switch (input_source)
         {
-        case GDK_SOURCE_PEN:
+        case CDK_SOURCE_PEN:
           device = create_core_device (device_manager,
                                        "Quartz Pen",
-                                       GDK_SOURCE_PEN);
+                                       CDK_SOURCE_PEN);
           break;
-        case GDK_SOURCE_CURSOR:
+        case CDK_SOURCE_CURSOR:
           device = create_core_device (device_manager,
                                        "Quartz Cursor",
-                                       GDK_SOURCE_CURSOR);
+                                       CDK_SOURCE_CURSOR);
           break;
-        case GDK_SOURCE_ERASER:
+        case CDK_SOURCE_ERASER:
           device = create_core_device (device_manager,
                                        "Quartz Eraser",
-                                       GDK_SOURCE_ERASER);
+                                       CDK_SOURCE_ERASER);
           break;
         default:
-          g_warning ("GDK Quarz unknown input source: %i", input_source);
+          g_warning ("CDK Quarz unknown input source: %i", input_source);
           break;
         }
 
-      _cdk_device_set_associated_device (GDK_DEVICE (device), self->core_pointer);
-      _cdk_device_add_slave (self->core_pointer, GDK_DEVICE (device));
+      _cdk_device_set_associated_device (CDK_DEVICE (device), self->core_pointer);
+      _cdk_device_add_slave (self->core_pointer, CDK_DEVICE (device));
 
       seat = cdk_device_get_seat (self->core_pointer);
-      cdk_seat_default_add_slave (GDK_SEAT_DEFAULT (seat), device);
+      cdk_seat_default_add_slave (CDK_SEAT_DEFAULT (seat), device);
 
       _cdk_quartz_device_core_set_unique (device, [nsevent uniqueID]);
       _cdk_quartz_device_core_set_active (device, TRUE, [nsevent deviceID]);
@@ -346,19 +346,19 @@ CdkDevice *
 _cdk_quartz_device_manager_core_device_for_ns_event (CdkDeviceManager *device_manager,
                                                      NSEvent          *nsevent)
 {
-  CdkQuartzDeviceManagerCore *self = GDK_QUARTZ_DEVICE_MANAGER_CORE (device_manager);
+  CdkQuartzDeviceManagerCore *self = CDK_QUARTZ_DEVICE_MANAGER_CORE (device_manager);
   CdkDevice *device = NULL;
 
-  if ([nsevent type] == GDK_QUARTZ_EVENT_TABLET_PROXIMITY ||
-      [nsevent subtype] == GDK_QUARTZ_EVENT_SUBTYPE_TABLET_PROXIMITY ||
-      [nsevent subtype] == GDK_QUARTZ_EVENT_SUBTYPE_TABLET_POINT)
+  if ([nsevent type] == CDK_QUARTZ_EVENT_TABLET_PROXIMITY ||
+      [nsevent subtype] == CDK_QUARTZ_EVENT_SUBTYPE_TABLET_PROXIMITY ||
+      [nsevent subtype] == CDK_QUARTZ_EVENT_SUBTYPE_TABLET_POINT)
     {
       /* Find the device based on deviceID */
       GList *l = NULL;
 
       for (l = self->known_tablet_devices; l && !device; l = g_list_next (l))
         {
-          CdkDevice *device_to_check = GDK_DEVICE (l->data);
+          CdkDevice *device_to_check = CDK_DEVICE (l->data);
 
           if (_cdk_quartz_device_core_is_active (device_to_check, [nsevent deviceID]))
             device = device_to_check;

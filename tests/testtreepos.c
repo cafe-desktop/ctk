@@ -58,7 +58,7 @@ release_event (CtkTreeView    *tv,
 {
   CtkTreePath *path;
 
-  if (event->type != GDK_BUTTON_RELEASE)
+  if (event->type != CDK_BUTTON_RELEASE)
     return TRUE;
 
   if (clicked_icon (tv, event->x, event->y, &path))

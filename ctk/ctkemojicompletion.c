@@ -337,13 +337,13 @@ entry_key_press (CtkEntry           *entry,
 
   cdk_event_get_keyval ((CdkEvent*)event, &keyval);
 
-  if (keyval == GDK_KEY_Escape)
+  if (keyval == CDK_KEY_Escape)
     {
       ctk_popover_popdown (CTK_POPOVER (completion));
       return TRUE;
     }
 
-  if (keyval == GDK_KEY_Tab)
+  if (keyval == CDK_KEY_Tab)
     {
       guint offset;
       show_variations (completion, completion->active, FALSE);
@@ -355,7 +355,7 @@ entry_key_press (CtkEntry           *entry,
       return TRUE;
     }
 
-  if (keyval == GDK_KEY_Up)
+  if (keyval == CDK_KEY_Up)
     {
       show_variations (completion, completion->active, FALSE);
 
@@ -363,7 +363,7 @@ entry_key_press (CtkEntry           *entry,
       return TRUE;
     }
 
-  if (keyval == GDK_KEY_Down)
+  if (keyval == CDK_KEY_Down)
     {
       show_variations (completion, completion->active, FALSE);
 
@@ -371,22 +371,22 @@ entry_key_press (CtkEntry           *entry,
       return TRUE;
     }
 
-  if (keyval == GDK_KEY_Return ||
-      keyval == GDK_KEY_KP_Enter ||
-      keyval == GDK_KEY_ISO_Enter)
+  if (keyval == CDK_KEY_Return ||
+      keyval == CDK_KEY_KP_Enter ||
+      keyval == CDK_KEY_ISO_Enter)
     {
       activate_active_row (completion);
       return TRUE;
     }
 
-  if (keyval == GDK_KEY_Right)
+  if (keyval == CDK_KEY_Right)
     {
       show_variations (completion, completion->active, TRUE);
       move_active_variation (completion, 1);
       return TRUE;
     }
 
-  if (keyval == GDK_KEY_Left)
+  if (keyval == CDK_KEY_Left)
     {
       if (!move_active_variation (completion, -1))
         show_variations (completion, completion->active, FALSE);

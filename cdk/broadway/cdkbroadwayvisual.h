@@ -16,21 +16,21 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_BROADWAY_VISUAL_H__
-#define __GDK_BROADWAY_VISUAL_H__
+#ifndef __CDK_BROADWAY_VISUAL_H__
+#define __CDK_BROADWAY_VISUAL_H__
 
 #include <cdk/cdk.h>
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_BROADWAY_VISUAL              (cdk_broadway_visual_get_type ())
-#define GDK_BROADWAY_VISUAL(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_BROADWAY_VISUAL, CdkBroadwayVisual))
-#define GDK_BROADWAY_VISUAL_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_BROADWAY_VISUAL, CdkBroadwayVisualClass))
-#define GDK_IS_BROADWAY_VISUAL(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_BROADWAY_VISUAL))
-#define GDK_IS_BROADWAY_VISUAL_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_BROADWAY_VISUAL))
-#define GDK_BROADWAY_VISUAL_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_BROADWAY_VISUAL, CdkBroadwayVisualClass))
+#define CDK_TYPE_BROADWAY_VISUAL              (cdk_broadway_visual_get_type ())
+#define CDK_BROADWAY_VISUAL(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), CDK_TYPE_BROADWAY_VISUAL, CdkBroadwayVisual))
+#define CDK_BROADWAY_VISUAL_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CDK_TYPE_BROADWAY_VISUAL, CdkBroadwayVisualClass))
+#define CDK_IS_BROADWAY_VISUAL(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), CDK_TYPE_BROADWAY_VISUAL))
+#define CDK_IS_BROADWAY_VISUAL_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CDK_TYPE_BROADWAY_VISUAL))
+#define CDK_BROADWAY_VISUAL_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CDK_TYPE_BROADWAY_VISUAL, CdkBroadwayVisualClass))
 
-#ifdef GDK_COMPILATION
+#ifdef CDK_COMPILATION
 typedef struct _CdkBroadwayVisual CdkBroadwayVisual;
 #else
 typedef CdkVisual CdkBroadwayVisual;
@@ -38,9 +38,9 @@ typedef CdkVisual CdkBroadwayVisual;
 typedef struct _CdkBroadwayVisualClass CdkBroadwayVisualClass;
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType cdk_broadway_visual_get_type (void);
 
 G_END_DECLS
 
-#endif /* __GDK_BROADWAY_VISUAL_H__ */
+#endif /* __CDK_BROADWAY_VISUAL_H__ */

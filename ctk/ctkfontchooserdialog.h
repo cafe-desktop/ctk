@@ -62,9 +62,9 @@ struct _CtkFontChooserDialogClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 GType      ctk_font_chooser_dialog_get_type         (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 CtkWidget* ctk_font_chooser_dialog_new              (const gchar          *title,
                                                      CtkWindow            *parent);
 

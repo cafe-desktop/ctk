@@ -82,7 +82,7 @@ broadway_focus_in (CtkIMContext *context)
   if (bw->client_window)
     {
       display = cdk_window_get_display (bw->client_window);
-      cdk_broadway_display_show_keyboard (GDK_BROADWAY_DISPLAY (display));
+      cdk_broadway_display_show_keyboard (CDK_BROADWAY_DISPLAY (display));
     }
 }
 
@@ -95,7 +95,7 @@ broadway_focus_out (CtkIMContext *context)
   if (bw->client_window)
     {
       display = cdk_window_get_display (bw->client_window);
-      cdk_broadway_display_hide_keyboard (GDK_BROADWAY_DISPLAY (display));
+      cdk_broadway_display_hide_keyboard (CDK_BROADWAY_DISPLAY (display));
     }
 }
 

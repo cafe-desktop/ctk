@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  *
  * cdkglcontext-quartz.c: Quartz specific OpenGL wrappers
  *
@@ -34,7 +34,7 @@
 
 #include "cdkintl.h"
 
-G_DEFINE_TYPE (CdkQuartzGLContext, cdk_quartz_gl_context, GDK_TYPE_GL_CONTEXT)
+G_DEFINE_TYPE (CdkQuartzGLContext, cdk_quartz_gl_context, CDK_TYPE_GL_CONTEXT)
 
 static void cdk_quartz_gl_context_dispose (GObject *gobject);
 
@@ -70,7 +70,7 @@ cdk_quartz_gl_context_end_frame (CdkGLContext *context,
                                  cairo_region_t *painted,
                                  cairo_region_t *damage)
 {
-  CdkQuartzGLContext *context_quartz = GDK_QUARTZ_GL_CONTEXT (context);
+  CdkQuartzGLContext *context_quartz = CDK_QUARTZ_GL_CONTEXT (context);
 
   [context_quartz->gl_context flushBuffer];
 }
@@ -78,7 +78,7 @@ cdk_quartz_gl_context_end_frame (CdkGLContext *context,
 static void
 cdk_quartz_gl_context_class_init (CdkQuartzGLContextClass *klass)
 {
-  CdkGLContextClass *context_class = GDK_GL_CONTEXT_CLASS (klass);
+  CdkGLContextClass *context_class = CDK_GL_CONTEXT_CLASS (klass);
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
 
   context_class->realize = cdk_quartz_gl_context_realize;
@@ -118,18 +118,18 @@ cdk_quartz_window_create_gl_context (CdkWindow     *window,
 
   if (format == NULL)
     {
-      g_set_error_literal (error, GDK_GL_ERROR,
-                           GDK_GL_ERROR_NOT_AVAILABLE,
+      g_set_error_literal (error, CDK_GL_ERROR,
+                           CDK_GL_ERROR_NOT_AVAILABLE,
                            _("Unable to create a GL pixel format"));
       return NULL;
     }
 
   ctx = [[NSOpenGLContext alloc] initWithFormat:format
-                                 shareContext:share ? GDK_QUARTZ_GL_CONTEXT (share)->gl_context : nil];
+                                 shareContext:share ? CDK_QUARTZ_GL_CONTEXT (share)->gl_context : nil];
   if (ctx == NULL)
     {
-      g_set_error_literal (error, GDK_GL_ERROR,
-                           GDK_GL_ERROR_NOT_AVAILABLE,
+      g_set_error_literal (error, CDK_GL_ERROR,
+                           CDK_GL_ERROR_NOT_AVAILABLE,
                            _("Unable to create a GL context"));
       return NULL;
     }
@@ -149,10 +149,10 @@ cdk_quartz_window_create_gl_context (CdkWindow     *window,
       [ctx setView:view];
     }
 
-  GDK_NOTE (OPENGL,
+  CDK_NOTE (OPENGL,
             g_print ("Created NSOpenGLContext[%p]\n", ctx));
 
-  context = g_object_new (GDK_TYPE_QUARTZ_GL_CONTEXT,
+  context = g_object_new (CDK_TYPE_QUARTZ_GL_CONTEXT,
                           "window", window,
                           "display", display,
                           "shared-context", share,
@@ -161,13 +161,13 @@ cdk_quartz_window_create_gl_context (CdkWindow     *window,
   context->gl_context = ctx;
   context->is_attached = attached;
 
-  return GDK_GL_CONTEXT (context);
+  return CDK_GL_CONTEXT (context);
 }
 
 static void
 cdk_quartz_gl_context_dispose (GObject *gobject)
 {
-  CdkQuartzGLContext *context_quartz = GDK_QUARTZ_GL_CONTEXT (gobject);
+  CdkQuartzGLContext *context_quartz = CDK_QUARTZ_GL_CONTEXT (gobject);
 
   if (context_quartz->gl_context != NULL)
     {
@@ -191,7 +191,7 @@ cdk_quartz_display_make_gl_context_current (CdkDisplay   *display,
       return TRUE;
     }
 
-  context_quartz = GDK_QUARTZ_GL_CONTEXT (context);
+  context_quartz = CDK_QUARTZ_GL_CONTEXT (context);
 
   [context_quartz->gl_context makeCurrentContext];
 

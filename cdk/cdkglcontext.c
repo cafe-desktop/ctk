@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  *
  * cdkglcontext.c: GL context abstraction
  * 
@@ -31,10 +31,10 @@
  * the #CdkVisual of the window.
  *
  * A #CdkGLContext is not tied to any particular normal framebuffer.
- * For instance, it cannot draw to the #CdkWindow back buffer. The GDK
+ * For instance, it cannot draw to the #CdkWindow back buffer. The CDK
  * repaint system is in full control of the painting to that. Instead,
  * you can create render buffers or textures and use cdk_cairo_draw_from_gl()
- * in the draw function of your widget to draw them. Then GDK will handle
+ * in the draw function of your widget to draw them. Then CDK will handle
  * the integration of your rendering with that of other widgets.
  *
  * Support for #CdkGLContext is platform-specific, context creation
@@ -132,7 +132,7 @@ static GPrivate thread_current_context = G_PRIVATE_INIT (g_object_unref);
 static void
 cdk_gl_context_dispose (GObject *gobject)
 {
-  CdkGLContext *context = GDK_GL_CONTEXT (gobject);
+  CdkGLContext *context = CDK_GL_CONTEXT (gobject);
   CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
   CdkGLContext *current;
 
@@ -150,7 +150,7 @@ cdk_gl_context_dispose (GObject *gobject)
 static void
 cdk_gl_context_finalize (GObject *gobject)
 {
-  CdkGLContext *context = GDK_GL_CONTEXT (gobject);
+  CdkGLContext *context = CDK_GL_CONTEXT (gobject);
   CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
 
   g_clear_pointer (&priv->paint_data, g_free);
@@ -245,7 +245,7 @@ cdk_gl_context_upload_texture (CdkGLContext    *context,
 {
   CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
 
-  g_return_if_fail (GDK_IS_GL_CONTEXT (context));
+  g_return_if_fail (CDK_IS_GL_CONTEXT (context));
 
   /* GL_UNPACK_ROW_LENGTH is available on desktop GL, OpenGL ES >= 3.0, or if
    * the GL_EXT_unpack_subimage extension for OpenGL ES 2.0 is available
@@ -292,7 +292,7 @@ static gboolean
 cdk_gl_context_real_realize (CdkGLContext  *self,
                              GError       **error)
 {
-  g_set_error_literal (error, GDK_GL_ERROR, GDK_GL_ERROR_NOT_AVAILABLE,
+  g_set_error_literal (error, CDK_GL_ERROR, CDK_GL_ERROR_NOT_AVAILABLE,
                        "The current backend does not support OpenGL");
 
   return FALSE;
@@ -315,8 +315,8 @@ cdk_gl_context_class_init (CdkGLContextClass *klass)
   obj_pspecs[PROP_DISPLAY] =
     g_param_spec_object ("display",
                          P_("Display"),
-                         P_("The GDK display used to create the GL context"),
-                         GDK_TYPE_DISPLAY,
+                         P_("The CDK display used to create the GL context"),
+                         CDK_TYPE_DISPLAY,
                          G_PARAM_READWRITE |
                          G_PARAM_CONSTRUCT_ONLY |
                          G_PARAM_STATIC_STRINGS);
@@ -331,8 +331,8 @@ cdk_gl_context_class_init (CdkGLContextClass *klass)
   obj_pspecs[PROP_WINDOW] =
     g_param_spec_object ("window",
                          P_("Window"),
-                         P_("The GDK window bound to the GL context"),
-                         GDK_TYPE_WINDOW,
+                         P_("The CDK window bound to the GL context"),
+                         CDK_TYPE_WINDOW,
                          G_PARAM_READWRITE |
                          G_PARAM_CONSTRUCT_ONLY |
                          G_PARAM_STATIC_STRINGS);
@@ -348,7 +348,7 @@ cdk_gl_context_class_init (CdkGLContextClass *klass)
     g_param_spec_object ("shared-context",
                          P_("Shared context"),
                          P_("The GL context this context shares data with"),
-                         GDK_TYPE_GL_CONTEXT,
+                         CDK_TYPE_GL_CONTEXT,
                          G_PARAM_READWRITE |
                          G_PARAM_CONSTRUCT_ONLY |
                          G_PARAM_STATIC_STRINGS);
@@ -388,9 +388,9 @@ cdk_gl_context_end_frame (CdkGLContext   *context,
                           cairo_region_t *painted,
                           cairo_region_t *damage)
 {
-  g_return_if_fail (GDK_IS_GL_CONTEXT (context));
+  g_return_if_fail (CDK_IS_GL_CONTEXT (context));
 
-  GDK_GL_CONTEXT_GET_CLASS (context)->end_frame (context, painted, damage);
+  CDK_GL_CONTEXT_GET_CLASS (context)->end_frame (context, painted, damage);
 }
 
 CdkGLContextPaintData *
@@ -461,7 +461,7 @@ cdk_gl_context_set_debug_enabled (CdkGLContext *context,
 {
   CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
 
-  g_return_if_fail (GDK_IS_GL_CONTEXT (context));
+  g_return_if_fail (CDK_IS_GL_CONTEXT (context));
   g_return_if_fail (!priv->realized);
 
   enabled = !!enabled;
@@ -484,7 +484,7 @@ cdk_gl_context_get_debug_enabled (CdkGLContext *context)
 {
   CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
 
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT (context), FALSE);
+  g_return_val_if_fail (CDK_IS_GL_CONTEXT (context), FALSE);
 
   return priv->debug_enabled;
 }
@@ -512,7 +512,7 @@ cdk_gl_context_set_forward_compatible (CdkGLContext *context,
 {
   CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
 
-  g_return_if_fail (GDK_IS_GL_CONTEXT (context));
+  g_return_if_fail (CDK_IS_GL_CONTEXT (context));
   g_return_if_fail (!priv->realized);
 
   compatible = !!compatible;
@@ -535,7 +535,7 @@ cdk_gl_context_get_forward_compatible (CdkGLContext *context)
 {
   CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
 
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT (context), FALSE);
+  g_return_val_if_fail (CDK_IS_GL_CONTEXT (context), FALSE);
 
   return priv->forward_compatible;
 }
@@ -563,7 +563,7 @@ cdk_gl_context_set_required_version (CdkGLContext *context,
   CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
   int version, min_ver;
 
-  g_return_if_fail (GDK_IS_GL_CONTEXT (context));
+  g_return_if_fail (CDK_IS_GL_CONTEXT (context));
   g_return_if_fail (!priv->realized);
 
   /* this will take care of the default */
@@ -577,7 +577,7 @@ cdk_gl_context_set_required_version (CdkGLContext *context,
   /* Enforce a minimum context version number of 3.2 */
   version = (major * 100) + minor;
 
-  if (priv->use_es > 0 || (_cdk_gl_flags & GDK_GL_GLES) != 0)
+  if (priv->use_es > 0 || (_cdk_gl_flags & CDK_GL_GLES) != 0)
     min_ver = 200;
   else
     min_ver = 302;
@@ -611,9 +611,9 @@ cdk_gl_context_get_required_version (CdkGLContext *context,
   int default_major, default_minor;
   int maj, min;
 
-  g_return_if_fail (GDK_IS_GL_CONTEXT (context));
+  g_return_if_fail (CDK_IS_GL_CONTEXT (context));
 
-  if (priv->use_es > 0 || (_cdk_gl_flags & GDK_GL_GLES) != 0)
+  if (priv->use_es > 0 || (_cdk_gl_flags & CDK_GL_GLES) != 0)
     {
       default_major = 2;
       default_minor = 0;
@@ -648,13 +648,13 @@ cdk_gl_context_get_required_version (CdkGLContext *context,
  *
  * The #CdkGLContext must be realized before calling this function.
  *
- * When realizing a GL context, GDK will try to use the OpenGL 3.2 core
+ * When realizing a GL context, CDK will try to use the OpenGL 3.2 core
  * profile; this profile removes all the OpenGL API that was deprecated
  * prior to the 3.2 version of the specification. If the realization is
  * successful, this function will return %FALSE.
  *
  * If the underlying OpenGL implementation does not support core profiles,
- * GDK will fall back to a pre-3.2 compatibility profile, and this function
+ * CDK will fall back to a pre-3.2 compatibility profile, and this function
  * will return %TRUE.
  *
  * You can use the value returned by this function to decide which kind
@@ -670,7 +670,7 @@ cdk_gl_context_is_legacy (CdkGLContext *context)
 {
   CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
 
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT (context), FALSE);
+  g_return_val_if_fail (CDK_IS_GL_CONTEXT (context), FALSE);
   g_return_val_if_fail (priv->realized, FALSE);
 
   return priv->is_legacy;
@@ -691,12 +691,12 @@ cdk_gl_context_set_is_legacy (CdkGLContext *context,
  * @use_es: whether the context should use OpenGL ES instead of OpenGL,
  *   or -1 to allow auto-detection
  *
- * Requests that GDK create a OpenGL ES context instead of an OpenGL one,
+ * Requests that CDK create a OpenGL ES context instead of an OpenGL one,
  * if the platform and windowing system allows it.
  *
  * The @context must not have been realized.
  *
- * By default, GDK will attempt to automatically detect whether the
+ * By default, CDK will attempt to automatically detect whether the
  * underlying GL implementation is OpenGL or OpenGL ES once the @context
  * is realized.
  *
@@ -712,7 +712,7 @@ cdk_gl_context_set_use_es (CdkGLContext *context,
 {
   CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
 
-  g_return_if_fail (GDK_IS_GL_CONTEXT (context));
+  g_return_if_fail (CDK_IS_GL_CONTEXT (context));
   g_return_if_fail (!priv->realized);
 
   if (priv->use_es != use_es)
@@ -734,7 +734,7 @@ cdk_gl_context_get_use_es (CdkGLContext *context)
 {
   CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
 
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT (context), FALSE);
+  g_return_val_if_fail (CDK_IS_GL_CONTEXT (context), FALSE);
 
   if (!priv->realized)
     return FALSE;
@@ -761,12 +761,12 @@ cdk_gl_context_realize (CdkGLContext  *context,
 {
   CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
 
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT (context), FALSE);
+  g_return_val_if_fail (CDK_IS_GL_CONTEXT (context), FALSE);
 
   if (priv->realized)
     return TRUE;
 
-  priv->realized = GDK_GL_CONTEXT_GET_CLASS (context)->realize (context, error);
+  priv->realized = CDK_GL_CONTEXT_GET_CLASS (context)->realize (context, error);
 
   return priv->realized;
 }
@@ -824,7 +824,7 @@ cdk_gl_context_check_extensions (CdkGLContext *context)
         priv->is_legacy = TRUE;
     }
 
-  if (!priv->use_es && G_UNLIKELY (_cdk_gl_flags & GDK_GL_TEXTURE_RECTANGLE))
+  if (!priv->use_es && G_UNLIKELY (_cdk_gl_flags & CDK_GL_TEXTURE_RECTANGLE))
     priv->use_texture_rectangle = TRUE;
   else if (has_npot)
     priv->use_texture_rectangle = FALSE;
@@ -833,7 +833,7 @@ cdk_gl_context_check_extensions (CdkGLContext *context)
   else
     g_warning ("GL implementation doesn't support any form of non-power-of-two textures");
 
-  GDK_NOTE (OPENGL,
+  CDK_NOTE (OPENGL,
             g_message ("%s version: %d.%d (%s)\n"
                        "* GLSL version: %s\n"
                        "* Extensions checked:\n"
@@ -869,7 +869,7 @@ cdk_gl_context_make_current (CdkGLContext *context)
   CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
   CdkGLContext *current;
 
-  g_return_if_fail (GDK_IS_GL_CONTEXT (context));
+  g_return_if_fail (CDK_IS_GL_CONTEXT (context));
 
   current = g_private_get (&thread_current_context);
   if (current == context)
@@ -911,7 +911,7 @@ cdk_gl_context_get_display (CdkGLContext *context)
 {
   CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
 
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT (context), NULL);
+  g_return_val_if_fail (CDK_IS_GL_CONTEXT (context), NULL);
 
   return priv->display;
 }
@@ -931,7 +931,7 @@ cdk_gl_context_get_window (CdkGLContext *context)
 {
   CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
 
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT (context), NULL);
+  g_return_val_if_fail (CDK_IS_GL_CONTEXT (context), NULL);
 
   return priv->window;
 }
@@ -951,7 +951,7 @@ cdk_gl_context_get_shared_context (CdkGLContext *context)
 {
   CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
 
-  g_return_val_if_fail (GDK_IS_GL_CONTEXT (context), NULL);
+  g_return_val_if_fail (CDK_IS_GL_CONTEXT (context), NULL);
 
   return priv->shared_context;
 }
@@ -975,7 +975,7 @@ cdk_gl_context_get_version (CdkGLContext *context,
 {
   CdkGLContextPrivate *priv = cdk_gl_context_get_instance_private (context);
 
-  g_return_if_fail (GDK_IS_GL_CONTEXT (context));
+  g_return_if_fail (CDK_IS_GL_CONTEXT (context));
   g_return_if_fail (priv->realized);
 
   if (major != NULL)

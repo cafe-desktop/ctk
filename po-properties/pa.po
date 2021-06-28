@@ -138,20 +138,20 @@ msgid "Default Display"
 msgstr "ਡਿਫਾਲਟ ਡਿਸਪਲੇਅ"
 
 #: cdk/cdkdisplaymanager.c:173
-msgid "The default display for GDK"
-msgstr "GDK ਲਈ ਡਿਫਾਲਟ ਡਿਸਪਲੇਅ"
+msgid "The default display for CDK"
+msgstr "CDK ਲਈ ਡਿਫਾਲਟ ਡਿਸਪਲੇਅ"
 
 #: cdk/cdkglcontext.c:318
-msgid "The GDK display used to create the GL context"
-msgstr "GDK ਡਿਸਪਲੇਅ ਨੂੰ GL ਪ੍ਰਸੰਗ ਨਾਲ ਨਾਲ ਬਣਾਇਆ ਜਾਂਦਾ ਹੈ"
+msgid "The CDK display used to create the GL context"
+msgstr "CDK ਡਿਸਪਲੇਅ ਨੂੰ GL ਪ੍ਰਸੰਗ ਨਾਲ ਨਾਲ ਬਣਾਇਆ ਜਾਂਦਾ ਹੈ"
 
 #: cdk/cdkglcontext.c:333 ctk/ctkwidget.c:1344
 msgid "Window"
 msgstr "ਵਿੰਡੋ"
 
 #: cdk/cdkglcontext.c:334
-msgid "The GDK window bound to the GL context"
-msgstr "GDK ਵਿੰਡੋ GL ਪ੍ਰਸੰਗ ਨਾਲ ਬਾਊਂਡ ਹੈ"
+msgid "The CDK window bound to the GL context"
+msgstr "CDK ਵਿੰਡੋ GL ਪ੍ਰਸੰਗ ਨਾਲ ਬਾਊਂਡ ਹੈ"
 
 #: cdk/cdkglcontext.c:349
 msgid "Shared context"
@@ -9584,8 +9584,8 @@ msgstr "ਵਰਤਣ ਲਈ ਰੰਗ ਪਰੋਫਾਇਲ ਦਾ ਨਾਂ"
 #~ msgid "Sans 12"
 #~ msgstr "ਸਨਸ ੧੨"
 
-#~ msgid "The GDK display the context is from"
-#~ msgstr "ਇਸ ਤੋਂ ਪ੍ਰਸੰਗ GDK ਡਿਸਪਲੇਅ"
+#~ msgid "The CDK display the context is from"
+#~ msgstr "ਇਸ ਤੋਂ ਪ੍ਰਸੰਗ CDK ਡਿਸਪਲੇਅ"
 
 #~ msgid "Whether the combo box grabs focus when it is clicked with the mouse"
 #~ msgstr "ਕੀ ਕੰਬੋ-ਬਕਸ ਫੋਕਸ ਹੋ ਜਾਵੇ, ਜਦੋਂ ਕਿ ਇਹ ਮਾਊਸ ਨਾਲ ਦਬਾਇਆ ਜਾਵੇ"

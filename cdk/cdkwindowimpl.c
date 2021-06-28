@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -99,21 +99,21 @@ get_anchor_x_sign (CdkGravity anchor)
 {
   switch (anchor)
     {
-    case GDK_GRAVITY_STATIC:
-    case GDK_GRAVITY_NORTH_WEST:
-    case GDK_GRAVITY_WEST:
-    case GDK_GRAVITY_SOUTH_WEST:
+    case CDK_GRAVITY_STATIC:
+    case CDK_GRAVITY_NORTH_WEST:
+    case CDK_GRAVITY_WEST:
+    case CDK_GRAVITY_SOUTH_WEST:
       return -1;
 
     default:
-    case GDK_GRAVITY_NORTH:
-    case GDK_GRAVITY_CENTER:
-    case GDK_GRAVITY_SOUTH:
+    case CDK_GRAVITY_NORTH:
+    case CDK_GRAVITY_CENTER:
+    case CDK_GRAVITY_SOUTH:
       return 0;
 
-    case GDK_GRAVITY_NORTH_EAST:
-    case GDK_GRAVITY_EAST:
-    case GDK_GRAVITY_SOUTH_EAST:
+    case CDK_GRAVITY_NORTH_EAST:
+    case CDK_GRAVITY_EAST:
+    case CDK_GRAVITY_SOUTH_EAST:
       return 1;
     }
 }
@@ -123,21 +123,21 @@ get_anchor_y_sign (CdkGravity anchor)
 {
   switch (anchor)
     {
-    case GDK_GRAVITY_STATIC:
-    case GDK_GRAVITY_NORTH_WEST:
-    case GDK_GRAVITY_NORTH:
-    case GDK_GRAVITY_NORTH_EAST:
+    case CDK_GRAVITY_STATIC:
+    case CDK_GRAVITY_NORTH_WEST:
+    case CDK_GRAVITY_NORTH:
+    case CDK_GRAVITY_NORTH_EAST:
       return -1;
 
     default:
-    case GDK_GRAVITY_WEST:
-    case GDK_GRAVITY_CENTER:
-    case GDK_GRAVITY_EAST:
+    case CDK_GRAVITY_WEST:
+    case CDK_GRAVITY_CENTER:
+    case CDK_GRAVITY_EAST:
       return 0;
 
-    case GDK_GRAVITY_SOUTH_WEST:
-    case GDK_GRAVITY_SOUTH:
-    case GDK_GRAVITY_SOUTH_EAST:
+    case CDK_GRAVITY_SOUTH_WEST:
+    case CDK_GRAVITY_SOUTH:
+    case CDK_GRAVITY_SOUTH_EAST:
       return 1;
     }
 }
@@ -185,7 +185,7 @@ traverse_to_toplevel (CdkWindow *window,
   gdouble yf = y;
 
   while ((parent = cdk_window_get_effective_parent (window)) != NULL &&
-         (cdk_window_get_window_type (parent) != GDK_WINDOW_ROOT))
+         (cdk_window_get_window_type (parent) != CDK_WINDOW_ROOT))
     {
       cdk_window_coords_to_parent (window, xf, yf, &xf, &yf);
       window = parent;
@@ -246,7 +246,7 @@ cdk_window_impl_move_to_rect (CdkWindow          *window,
                                         get_anchor_x_sign (rect_anchor),
                                         get_anchor_x_sign (window_anchor),
                                         rect_anchor_dx,
-                                        anchor_hints & GDK_ANCHOR_FLIP_X,
+                                        anchor_hints & CDK_ANCHOR_FLIP_X,
                                         &flipped_x);
   flipped_rect.y = maybe_flip_position (bounds.y,
                                         bounds.height,
@@ -256,12 +256,12 @@ cdk_window_impl_move_to_rect (CdkWindow          *window,
                                         get_anchor_y_sign (rect_anchor),
                                         get_anchor_y_sign (window_anchor),
                                         rect_anchor_dy,
-                                        anchor_hints & GDK_ANCHOR_FLIP_Y,
+                                        anchor_hints & CDK_ANCHOR_FLIP_Y,
                                         &flipped_y);
 
   final_rect = flipped_rect;
 
-  if (anchor_hints & GDK_ANCHOR_SLIDE_X)
+  if (anchor_hints & CDK_ANCHOR_SLIDE_X)
     {
       if (final_rect.x + final_rect.width > bounds.x + bounds.width)
         final_rect.x = bounds.x + bounds.width - final_rect.width;
@@ -270,7 +270,7 @@ cdk_window_impl_move_to_rect (CdkWindow          *window,
         final_rect.x = bounds.x;
     }
 
-  if (anchor_hints & GDK_ANCHOR_SLIDE_Y)
+  if (anchor_hints & CDK_ANCHOR_SLIDE_Y)
     {
       if (final_rect.y + final_rect.height > bounds.y + bounds.height)
         final_rect.y = bounds.y + bounds.height - final_rect.height;
@@ -279,7 +279,7 @@ cdk_window_impl_move_to_rect (CdkWindow          *window,
         final_rect.y = bounds.y;
     }
 
-  if (anchor_hints & GDK_ANCHOR_RESIZE_X)
+  if (anchor_hints & CDK_ANCHOR_RESIZE_X)
     {
       if (final_rect.x < bounds.x)
         {
@@ -291,7 +291,7 @@ cdk_window_impl_move_to_rect (CdkWindow          *window,
         final_rect.width = bounds.x + bounds.width - final_rect.x;
     }
 
-  if (anchor_hints & GDK_ANCHOR_RESIZE_Y)
+  if (anchor_hints & CDK_ANCHOR_RESIZE_Y)
     {
       if (final_rect.y < bounds.y)
         {

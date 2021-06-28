@@ -416,7 +416,7 @@ ctk_icon_view_class_init (CtkIconViewClass *klass)
    *
    * The ::pixbuf-column property contains the number of the model column
    * containing the pixbufs which are displayed. The pixbuf column must be 
-   * of type #GDK_TYPE_PIXBUF. Setting this property to -1 turns off the
+   * of type #CDK_TYPE_PIXBUF. Setting this property to -1 turns off the
    * display of pixbufs.
    *
    * Since: 2.6
@@ -899,70 +899,70 @@ ctk_icon_view_class_init (CtkIconViewClass *klass)
                               _ctk_marshal_BOOLEAN__ENUM_INTv);
 
   /* Key bindings */
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_a, GDK_CONTROL_MASK, 
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_a, CDK_CONTROL_MASK, 
 				"select-all", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_a, GDK_CONTROL_MASK | GDK_SHIFT_MASK, 
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_a, CDK_CONTROL_MASK | CDK_SHIFT_MASK, 
 				"unselect-all", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_space, GDK_CONTROL_MASK, 
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_space, CDK_CONTROL_MASK, 
 				"toggle-cursor-item", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Space, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Space, CDK_CONTROL_MASK,
 				"toggle-cursor-item", 0);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_space, 0, 
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_space, 0, 
 				"activate-cursor-item", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Space, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Space, 0,
 				"activate-cursor-item", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Return, 0, 
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Return, 0, 
 				"activate-cursor-item", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_ISO_Enter, 0, 
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_ISO_Enter, 0, 
 				"activate-cursor-item", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Enter, 0, 
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Enter, 0, 
 				"activate-cursor-item", 0);
 
-  ctk_icon_view_add_move_binding (binding_set, GDK_KEY_Up, 0,
+  ctk_icon_view_add_move_binding (binding_set, CDK_KEY_Up, 0,
 				  CTK_MOVEMENT_DISPLAY_LINES, -1);
-  ctk_icon_view_add_move_binding (binding_set, GDK_KEY_KP_Up, 0,
-				  CTK_MOVEMENT_DISPLAY_LINES, -1);
-
-  ctk_icon_view_add_move_binding (binding_set, GDK_KEY_Down, 0,
-				  CTK_MOVEMENT_DISPLAY_LINES, 1);
-  ctk_icon_view_add_move_binding (binding_set, GDK_KEY_KP_Down, 0,
-				  CTK_MOVEMENT_DISPLAY_LINES, 1);
-
-  ctk_icon_view_add_move_binding (binding_set, GDK_KEY_p, GDK_CONTROL_MASK,
+  ctk_icon_view_add_move_binding (binding_set, CDK_KEY_KP_Up, 0,
 				  CTK_MOVEMENT_DISPLAY_LINES, -1);
 
-  ctk_icon_view_add_move_binding (binding_set, GDK_KEY_n, GDK_CONTROL_MASK,
+  ctk_icon_view_add_move_binding (binding_set, CDK_KEY_Down, 0,
+				  CTK_MOVEMENT_DISPLAY_LINES, 1);
+  ctk_icon_view_add_move_binding (binding_set, CDK_KEY_KP_Down, 0,
 				  CTK_MOVEMENT_DISPLAY_LINES, 1);
 
-  ctk_icon_view_add_move_binding (binding_set, GDK_KEY_Home, 0,
+  ctk_icon_view_add_move_binding (binding_set, CDK_KEY_p, CDK_CONTROL_MASK,
+				  CTK_MOVEMENT_DISPLAY_LINES, -1);
+
+  ctk_icon_view_add_move_binding (binding_set, CDK_KEY_n, CDK_CONTROL_MASK,
+				  CTK_MOVEMENT_DISPLAY_LINES, 1);
+
+  ctk_icon_view_add_move_binding (binding_set, CDK_KEY_Home, 0,
 				  CTK_MOVEMENT_BUFFER_ENDS, -1);
-  ctk_icon_view_add_move_binding (binding_set, GDK_KEY_KP_Home, 0,
+  ctk_icon_view_add_move_binding (binding_set, CDK_KEY_KP_Home, 0,
 				  CTK_MOVEMENT_BUFFER_ENDS, -1);
 
-  ctk_icon_view_add_move_binding (binding_set, GDK_KEY_End, 0,
+  ctk_icon_view_add_move_binding (binding_set, CDK_KEY_End, 0,
 				  CTK_MOVEMENT_BUFFER_ENDS, 1);
-  ctk_icon_view_add_move_binding (binding_set, GDK_KEY_KP_End, 0,
+  ctk_icon_view_add_move_binding (binding_set, CDK_KEY_KP_End, 0,
 				  CTK_MOVEMENT_BUFFER_ENDS, 1);
 
-  ctk_icon_view_add_move_binding (binding_set, GDK_KEY_Page_Up, 0,
+  ctk_icon_view_add_move_binding (binding_set, CDK_KEY_Page_Up, 0,
 				  CTK_MOVEMENT_PAGES, -1);
-  ctk_icon_view_add_move_binding (binding_set, GDK_KEY_KP_Page_Up, 0,
+  ctk_icon_view_add_move_binding (binding_set, CDK_KEY_KP_Page_Up, 0,
 				  CTK_MOVEMENT_PAGES, -1);
 
-  ctk_icon_view_add_move_binding (binding_set, GDK_KEY_Page_Down, 0,
+  ctk_icon_view_add_move_binding (binding_set, CDK_KEY_Page_Down, 0,
 				  CTK_MOVEMENT_PAGES, 1);
-  ctk_icon_view_add_move_binding (binding_set, GDK_KEY_KP_Page_Down, 0,
+  ctk_icon_view_add_move_binding (binding_set, CDK_KEY_KP_Page_Down, 0,
 				  CTK_MOVEMENT_PAGES, 1);
 
-  ctk_icon_view_add_move_binding (binding_set, GDK_KEY_Right, 0, 
+  ctk_icon_view_add_move_binding (binding_set, CDK_KEY_Right, 0, 
 				  CTK_MOVEMENT_VISUAL_POSITIONS, 1);
-  ctk_icon_view_add_move_binding (binding_set, GDK_KEY_Left, 0, 
+  ctk_icon_view_add_move_binding (binding_set, CDK_KEY_Left, 0, 
 				  CTK_MOVEMENT_VISUAL_POSITIONS, -1);
 
-  ctk_icon_view_add_move_binding (binding_set, GDK_KEY_KP_Right, 0, 
+  ctk_icon_view_add_move_binding (binding_set, CDK_KEY_KP_Right, 0, 
 				  CTK_MOVEMENT_VISUAL_POSITIONS, 1);
-  ctk_icon_view_add_move_binding (binding_set, GDK_KEY_KP_Left, 0, 
+  ctk_icon_view_add_move_binding (binding_set, CDK_KEY_KP_Left, 0, 
 				  CTK_MOVEMENT_VISUAL_POSITIONS, -1);
 
   ctk_widget_class_set_accessible_type (widget_class, CTK_TYPE_ICON_VIEW_ACCESSIBLE);
@@ -1314,16 +1314,16 @@ ctk_icon_view_realize (CtkWidget *widget)
   ctk_widget_get_allocation (widget, &allocation);
 
   /* Make the main, clipping window */
-  attributes.window_type = GDK_WINDOW_CHILD;
+  attributes.window_type = CDK_WINDOW_CHILD;
   attributes.x = allocation.x;
   attributes.y = allocation.y;
   attributes.width = allocation.width;
   attributes.height = allocation.height;
-  attributes.wclass = GDK_INPUT_OUTPUT;
+  attributes.wclass = CDK_INPUT_OUTPUT;
   attributes.visual = ctk_widget_get_visual (widget);
-  attributes.event_mask = GDK_VISIBILITY_NOTIFY_MASK;
+  attributes.event_mask = CDK_VISIBILITY_NOTIFY_MASK;
 
-  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
+  attributes_mask = CDK_WA_X | CDK_WA_Y | CDK_WA_VISUAL;
 
   window = cdk_window_new (ctk_widget_get_parent_window (widget),
                            &attributes, attributes_mask);
@@ -1337,14 +1337,14 @@ ctk_icon_view_realize (CtkWidget *widget)
   attributes.y = 0;
   attributes.width = MAX (icon_view->priv->width, allocation.width);
   attributes.height = MAX (icon_view->priv->height, allocation.height);
-  attributes.event_mask = (GDK_SCROLL_MASK |
-                           GDK_SMOOTH_SCROLL_MASK |
-                           GDK_POINTER_MOTION_MASK |
-                           GDK_LEAVE_NOTIFY_MASK |
-                           GDK_BUTTON_PRESS_MASK |
-                           GDK_BUTTON_RELEASE_MASK |
-                           GDK_KEY_PRESS_MASK |
-                           GDK_KEY_RELEASE_MASK) |
+  attributes.event_mask = (CDK_SCROLL_MASK |
+                           CDK_SMOOTH_SCROLL_MASK |
+                           CDK_POINTER_MOTION_MASK |
+                           CDK_LEAVE_NOTIFY_MASK |
+                           CDK_BUTTON_PRESS_MASK |
+                           CDK_BUTTON_RELEASE_MASK |
+                           CDK_KEY_PRESS_MASK |
+                           CDK_KEY_RELEASE_MASK) |
     ctk_widget_get_events (widget);
   
   icon_view->priv->bin_window = cdk_window_new (window,
@@ -2303,16 +2303,16 @@ ctk_icon_view_button_press (CtkWidget      *widget,
   if (!ctk_widget_has_focus (widget))
     ctk_widget_grab_focus (widget);
 
-  if (event->button == GDK_BUTTON_PRIMARY && event->type == GDK_BUTTON_PRESS)
+  if (event->button == CDK_BUTTON_PRIMARY && event->type == CDK_BUTTON_PRESS)
     {
       CdkModifierType extend_mod_mask;
       CdkModifierType modify_mod_mask;
 
       extend_mod_mask =
-        ctk_widget_get_modifier_mask (widget, GDK_MODIFIER_INTENT_EXTEND_SELECTION);
+        ctk_widget_get_modifier_mask (widget, CDK_MODIFIER_INTENT_EXTEND_SELECTION);
 
       modify_mod_mask =
-        ctk_widget_get_modifier_mask (widget, GDK_MODIFIER_INTENT_MODIFY_SELECTION);
+        ctk_widget_get_modifier_mask (widget, CDK_MODIFIER_INTENT_MODIFY_SELECTION);
 
       item = _ctk_icon_view_get_item_at_coords (icon_view, 
 					       event->x, event->y,
@@ -2416,8 +2416,8 @@ ctk_icon_view_button_press (CtkWidget      *widget,
     }
 
   if (!icon_view->priv->activate_on_single_click
-      && event->button == GDK_BUTTON_PRIMARY
-      && event->type == GDK_2BUTTON_PRESS)
+      && event->button == CDK_BUTTON_PRIMARY
+      && event->type == CDK_2BUTTON_PRESS)
     {
       item = _ctk_icon_view_get_item_at_coords (icon_view,
 					       event->x, event->y,
@@ -2440,13 +2440,13 @@ ctk_icon_view_button_press (CtkWidget      *widget,
   if (dirty)
     g_signal_emit (icon_view, icon_view_signals[SELECTION_CHANGED], 0);
 
-  return event->button == GDK_BUTTON_PRIMARY;
+  return event->button == CDK_BUTTON_PRIMARY;
 }
 
 static gboolean
 button_event_modifies_selection (CdkEventButton *event)
 {
-        return (event->state & (GDK_CONTROL_MASK | GDK_SHIFT_MASK)) != 0;
+        return (event->state & (CDK_CONTROL_MASK | CDK_SHIFT_MASK)) != 0;
 }
 
 static gboolean
@@ -2464,7 +2464,7 @@ ctk_icon_view_button_release (CtkWidget      *widget,
 
   remove_scroll_timeout (icon_view);
 
-  if (event->button == GDK_BUTTON_PRIMARY
+  if (event->button == CDK_BUTTON_PRIMARY
       && icon_view->priv->activate_on_single_click
       && !button_event_modifies_selection (event)
       && icon_view->priv->last_single_clicked != NULL)
@@ -2497,7 +2497,7 @@ ctk_icon_view_key_press (CtkWidget      *widget,
 
   if (icon_view->priv->doing_rubberband)
     {
-      if (event->keyval == GDK_KEY_Escape)
+      if (event->keyval == CDK_KEY_Escape)
 	ctk_icon_view_stop_rubberbanding (icon_view);
 
       return TRUE;
@@ -3646,20 +3646,20 @@ ctk_icon_view_add_move_binding (CtkBindingSet  *binding_set,
                                 G_TYPE_ENUM, step,
                                 G_TYPE_INT, count);
 
-  ctk_binding_entry_add_signal (binding_set, keyval, GDK_SHIFT_MASK,
+  ctk_binding_entry_add_signal (binding_set, keyval, CDK_SHIFT_MASK,
                                 "move-cursor", 2,
                                 G_TYPE_ENUM, step,
                                 G_TYPE_INT, count);
 
-  if ((modmask & GDK_CONTROL_MASK) == GDK_CONTROL_MASK)
+  if ((modmask & CDK_CONTROL_MASK) == CDK_CONTROL_MASK)
    return;
 
-  ctk_binding_entry_add_signal (binding_set, keyval, GDK_CONTROL_MASK | GDK_SHIFT_MASK,
+  ctk_binding_entry_add_signal (binding_set, keyval, CDK_CONTROL_MASK | CDK_SHIFT_MASK,
                                 "move-cursor", 2,
                                 G_TYPE_ENUM, step,
                                 G_TYPE_INT, count);
 
-  ctk_binding_entry_add_signal (binding_set, keyval, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, keyval, CDK_CONTROL_MASK,
                                 "move-cursor", 2,
                                 G_TYPE_ENUM, step,
                                 G_TYPE_INT, count);
@@ -3692,10 +3692,10 @@ ctk_icon_view_real_move_cursor (CtkIconView     *icon_view,
 
       extend_mod_mask =
         ctk_widget_get_modifier_mask (CTK_WIDGET (icon_view),
-                                      GDK_MODIFIER_INTENT_EXTEND_SELECTION);
+                                      CDK_MODIFIER_INTENT_EXTEND_SELECTION);
       modify_mod_mask =
         ctk_widget_get_modifier_mask (CTK_WIDGET (icon_view),
-                                      GDK_MODIFIER_INTENT_MODIFY_SELECTION);
+                                      CDK_MODIFIER_INTENT_MODIFY_SELECTION);
 
       if ((state & modify_mod_mask) == modify_mod_mask)
         icon_view->priv->modify_selection_pressed = TRUE;
@@ -5006,7 +5006,7 @@ ctk_icon_view_set_model (CtkIconView *icon_view,
 	  column_type = ctk_tree_model_get_column_type (model,
 							icon_view->priv->pixbuf_column);	  
 
-	  g_return_if_fail (column_type == GDK_TYPE_PIXBUF);
+	  g_return_if_fail (column_type == CDK_TYPE_PIXBUF);
 	}
 
       if (icon_view->priv->text_column != -1)
@@ -5333,7 +5333,7 @@ ctk_icon_view_get_markup_column (CtkIconView  *icon_view)
  * @column: A column in the currently used model, or -1 to disable
  * 
  * Sets the column with pixbufs for @icon_view to be @column. The pixbuf
- * column must be of type #GDK_TYPE_PIXBUF
+ * column must be of type #CDK_TYPE_PIXBUF
  *
  * Since: 2.6 
  **/
@@ -5354,7 +5354,7 @@ ctk_icon_view_set_pixbuf_column (CtkIconView *icon_view,
 	  
 	  column_type = ctk_tree_model_get_column_type (icon_view->priv->model, column);
 
-	  g_return_if_fail (column_type == GDK_TYPE_PIXBUF);
+	  g_return_if_fail (column_type == CDK_TYPE_PIXBUF);
 	}
       
       icon_view->priv->pixbuf_column = column;
@@ -6273,7 +6273,7 @@ set_destination (CtkIconView    *icon_view,
   widget = CTK_WIDGET (icon_view);
 
   *suggested_action = 0;
-  *target = GDK_NONE;
+  *target = CDK_NONE;
 
   if (!icon_view->priv->dest_set)
     {
@@ -6292,7 +6292,7 @@ set_destination (CtkIconView    *icon_view,
 
   *target = ctk_drag_dest_find_target (widget, context,
                                        ctk_drag_dest_get_target_list (widget));
-  if (*target == GDK_NONE)
+  if (*target == CDK_NONE)
     return FALSE;
 
   if (!ctk_icon_view_get_dest_item_at_pos (icon_view, x, y, &path, &pos)) 
@@ -6352,8 +6352,8 @@ out:
           /* Default to MOVE, unless the user has
            * pressed ctrl or shift to affect available actions
            */
-          if ((cdk_drag_context_get_actions (context) & GDK_ACTION_MOVE) != 0)
-            *suggested_action = GDK_ACTION_MOVE;
+          if ((cdk_drag_context_get_actions (context) & CDK_ACTION_MOVE) != 0)
+            *suggested_action = CDK_ACTION_MOVE;
         }
 
       ctk_icon_view_set_drag_dest_item (CTK_ICON_VIEW (widget),
@@ -6689,7 +6689,7 @@ ctk_icon_view_drag_drop (CtkWidget      *widget,
   CtkIconView *icon_view;
   CtkTreePath *path;
   CdkDragAction suggested_action = 0;
-  CdkAtom target = GDK_NONE;
+  CdkAtom target = CDK_NONE;
   CtkTreeModel *model;
   gboolean drop_append_mode;
 
@@ -6709,7 +6709,7 @@ ctk_icon_view_drag_drop (CtkWidget      *widget,
   
   path = get_logical_destination (icon_view, &drop_append_mode);
 
-  if (target != GDK_NONE && path != NULL)
+  if (target != CDK_NONE && path != NULL)
     {
       /* in case a motion had requested drag data, change things so we
        * treat drag data receives as a drop.
@@ -6725,7 +6725,7 @@ ctk_icon_view_drag_drop (CtkWidget      *widget,
   /* Unset this thing */
   ctk_icon_view_set_drag_dest_item (icon_view, NULL, CTK_ICON_VIEW_DROP_LEFT);
 
-  if (target != GDK_NONE)
+  if (target != CDK_NONE)
     {
       ctk_drag_get_data (widget, context, target, time);
       return TRUE;
@@ -6811,7 +6811,7 @@ ctk_icon_view_drag_data_received (CtkWidget        *widget,
 
   ctk_drag_finish (context,
                    accepted,
-                   (cdk_drag_context_get_selected_action (context) == GDK_ACTION_MOVE),
+                   (cdk_drag_context_get_selected_action (context) == CDK_ACTION_MOVE),
                    time);
 
   ctk_tree_path_free (dest_row);
@@ -7211,14 +7211,14 @@ ctk_icon_view_set_reorderable (CtkIconView *icon_view,
   if (reorderable)
     {
       ctk_icon_view_enable_model_drag_source (icon_view,
-					      GDK_BUTTON1_MASK,
+					      CDK_BUTTON1_MASK,
 					      item_targets,
 					      G_N_ELEMENTS (item_targets),
-					      GDK_ACTION_MOVE);
+					      CDK_ACTION_MOVE);
       ctk_icon_view_enable_model_drag_dest (icon_view,
 					    item_targets,
 					    G_N_ELEMENTS (item_targets),
-					    GDK_ACTION_MOVE);
+					    CDK_ACTION_MOVE);
     }
   else
     {

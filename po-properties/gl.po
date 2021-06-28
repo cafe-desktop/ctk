@@ -144,20 +144,20 @@ msgid "Default Display"
 msgstr "Pantalla predeterminada"
 
 #: cdk/cdkdisplaymanager.c:163
-msgid "The default display for GDK"
-msgstr "Pantalla predeterminada para GDK"
+msgid "The default display for CDK"
+msgstr "Pantalla predeterminada para CDK"
 
 #: cdk/cdkglcontext.c:318
-msgid "The GDK display used to create the GL context"
-msgstr "A pantalla GDK usada para crear o contexto GL"
+msgid "The CDK display used to create the GL context"
+msgstr "A pantalla CDK usada para crear o contexto GL"
 
 #: cdk/cdkglcontext.c:333 ctk/ctkwidget.c:1347
 msgid "Window"
 msgstr "Xanela"
 
 #: cdk/cdkglcontext.c:334
-msgid "The GDK window bound to the GL context"
-msgstr "A xanela GDK ligada ao contexto GL"
+msgid "The CDK window bound to the GL context"
+msgstr "A xanela CDK ligada ao contexto GL"
 
 #: cdk/cdkglcontext.c:349
 msgid "Shared context"

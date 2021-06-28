@@ -226,19 +226,19 @@ struct _CtkTextAttributes
 #endif
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTextAttributes* ctk_text_attributes_new         (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTextAttributes* ctk_text_attributes_copy        (CtkTextAttributes *src);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void               ctk_text_attributes_copy_values (CtkTextAttributes *src,
                                                     CtkTextAttributes *dest);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void               ctk_text_attributes_unref       (CtkTextAttributes *values);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTextAttributes *ctk_text_attributes_ref         (CtkTextAttributes *values);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType              ctk_text_attributes_get_type    (void) G_GNUC_CONST;
 
 

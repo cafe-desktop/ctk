@@ -326,7 +326,7 @@ test_chase (void)
   ctk_window_set_title (CTK_WINDOW (win), "Chase");
 
   overlay = ctk_overlay_new ();
-  ctk_widget_set_events (overlay, GDK_ENTER_NOTIFY_MASK|GDK_LEAVE_NOTIFY_MASK);
+  ctk_widget_set_events (overlay, CDK_ENTER_NOTIFY_MASK|CDK_LEAVE_NOTIFY_MASK);
   ctk_container_add (CTK_CONTAINER (win), overlay);
 
   sw = ctk_scrolled_window_new (NULL, NULL);

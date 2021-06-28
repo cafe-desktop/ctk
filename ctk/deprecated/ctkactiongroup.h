@@ -169,73 +169,73 @@ struct _CtkRadioActionEntry
   gint   value; 
 };
 
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 GType           ctk_action_group_get_type                (void) G_GNUC_CONST;
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 CtkActionGroup *ctk_action_group_new                     (const gchar                *name);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 const gchar    *ctk_action_group_get_name                (CtkActionGroup             *action_group);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 gboolean        ctk_action_group_get_sensitive           (CtkActionGroup             *action_group);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void            ctk_action_group_set_sensitive           (CtkActionGroup             *action_group,
 							  gboolean                    sensitive);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 gboolean        ctk_action_group_get_visible             (CtkActionGroup             *action_group);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void            ctk_action_group_set_visible             (CtkActionGroup             *action_group,
 							  gboolean                    visible);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 CtkAccelGroup  *ctk_action_group_get_accel_group         (CtkActionGroup             *action_group);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void            ctk_action_group_set_accel_group         (CtkActionGroup             *action_group,
                                                           CtkAccelGroup              *accel_group);
 
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 CtkAction      *ctk_action_group_get_action              (CtkActionGroup             *action_group,
 							  const gchar                *action_name);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 GList          *ctk_action_group_list_actions            (CtkActionGroup             *action_group);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void            ctk_action_group_add_action              (CtkActionGroup             *action_group,
 							  CtkAction                  *action);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void            ctk_action_group_add_action_with_accel   (CtkActionGroup             *action_group,
 							  CtkAction                  *action,
 							  const gchar                *accelerator);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void            ctk_action_group_remove_action           (CtkActionGroup             *action_group,
 							  CtkAction                  *action);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void            ctk_action_group_add_actions             (CtkActionGroup             *action_group,
 							  const CtkActionEntry       *entries,
 							  guint                       n_entries,
 							  gpointer                    user_data);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void            ctk_action_group_add_toggle_actions      (CtkActionGroup             *action_group,
 							  const CtkToggleActionEntry *entries,
 							  guint                       n_entries,
 							  gpointer                    user_data);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void            ctk_action_group_add_radio_actions       (CtkActionGroup             *action_group,
 							  const CtkRadioActionEntry  *entries,
 							  guint                       n_entries,
 							  gint                        value,
 							  GCallback                   on_change,
 							  gpointer                    user_data);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void            ctk_action_group_add_actions_full        (CtkActionGroup             *action_group,
 							  const CtkActionEntry       *entries,
 							  guint                       n_entries,
 							  gpointer                    user_data,
 							  GDestroyNotify              destroy);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void            ctk_action_group_add_toggle_actions_full (CtkActionGroup             *action_group,
 							  const CtkToggleActionEntry *entries,
 							  guint                       n_entries,
 							  gpointer                    user_data,
 							  GDestroyNotify              destroy);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void            ctk_action_group_add_radio_actions_full  (CtkActionGroup             *action_group,
 							  const CtkRadioActionEntry  *entries,
 							  guint                       n_entries,
@@ -243,15 +243,15 @@ void            ctk_action_group_add_radio_actions_full  (CtkActionGroup        
 							  GCallback                   on_change,
 							  gpointer                    user_data,
 							  GDestroyNotify              destroy);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void            ctk_action_group_set_translate_func      (CtkActionGroup             *action_group,
 							  CtkTranslateFunc            func,
 							  gpointer                    data,
 							  GDestroyNotify              notify);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void            ctk_action_group_set_translation_domain  (CtkActionGroup             *action_group,
 							  const gchar                *domain);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 const gchar *   ctk_action_group_translate_string        (CtkActionGroup             *action_group,
   	                                                  const gchar                *string);
 

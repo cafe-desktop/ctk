@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -22,10 +22,10 @@
  * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
-#ifndef __GDK_WIN32_H__
-#define __GDK_WIN32_H__
+#ifndef __CDK_WIN32_H__
+#define __CDK_WIN32_H__
 
-#define __GDKWIN32_H_INSIDE__
+#define __CDKWIN32_H_INSIDE__
 
 #include <cdk/win32/cdkwin32cursor.h>
 #include <cdk/win32/cdkwin32display.h>
@@ -38,6 +38,6 @@
 #include <cdk/win32/cdkwin32monitor.h>
 #include <cdk/win32/cdkwin32glcontext.h>
 
-#undef __GDKWIN32_H_INSIDE__
+#undef __CDKWIN32_H_INSIDE__
 
-#endif /* __GDK_WIN32_H__ */
+#endif /* __CDK_WIN32_H__ */

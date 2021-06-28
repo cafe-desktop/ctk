@@ -77,8 +77,8 @@ msgstr "DISPLAY"
 
 #. Description of --cdk-debug=FLAGS in --help output
 #: cdk/cdk.c:240
-msgid "GDK debugging flags to set"
-msgstr "有効にする GDK のデバッグフラグを指定する"
+msgid "CDK debugging flags to set"
+msgstr "有効にする CDK のデバッグフラグを指定する"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
@@ -90,12 +90,12 @@ msgstr "FLAGS"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: cdk/cdk.c:243
-msgid "GDK debugging flags to unset"
-msgstr "無効にする GDK のデバッグフラグを指定する"
+msgid "CDK debugging flags to unset"
+msgstr "無効にする CDK のデバッグフラグを指定する"
 
 #: cdk/cdkwindow.c:2851
-msgid "GL support disabled via GDK_DEBUG"
-msgstr "GL サポートは GDK_DEBUG から無効化されています"
+msgid "GL support disabled via CDK_DEBUG"
+msgstr "GL サポートは CDK_DEBUG から無効化されています"
 
 #: cdk/cdkwindow.c:2862
 msgid "The current backend does not support OpenGL"
@@ -4131,8 +4131,8 @@ msgid "CTK+ Version"
 msgstr "CTK+ バージョン"
 
 #: ctk/inspector/general.ui:68
-msgid "GDK Backend"
-msgstr "GDK バックエンド"
+msgid "CDK Backend"
+msgstr "CDK バックエンド"
 
 #: ctk/inspector/general.ui:373
 msgid "Display"
@@ -4508,10 +4508,10 @@ msgstr "設定は CTK_TEST_TOUCHSCREEN によってハードコードされて�
 #: ctk/inspector/visual.c:817
 msgid ""
 "Not settable at runtime.\n"
-"Use GDK_GL=always or GDK_GL=disable instead"
+"Use CDK_GL=always or CDK_GL=disable instead"
 msgstr ""
 "実行時に設定できません。\n"
-"代わりに GDK_GL=always または GDK_GL=disable を使用してください"
+"代わりに CDK_GL=always または CDK_GL=disable を使用してください"
 
 #: ctk/inspector/visual.c:831 ctk/inspector/visual.c:832
 #: ctk/inspector/visual.c:833

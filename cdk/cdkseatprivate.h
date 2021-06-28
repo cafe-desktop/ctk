@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2015 Red Hat
  *
  * This library is free software; you can redistribute it and/or
@@ -17,16 +17,16 @@
  * Author: Carlos Garnacho <carlosg@gnome.org>
  */
 
-#ifndef __GDK_SEAT_PRIVATE_H__
-#define __GDK_SEAT_PRIVATE_H__
+#ifndef __CDK_SEAT_PRIVATE_H__
+#define __CDK_SEAT_PRIVATE_H__
 
 typedef struct _CdkSeatClass CdkSeatClass;
 
 #include "cdkseat.h"
 
-#define GDK_SEAT_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_SEAT, CdkSeatClass))
-#define GDK_IS_SEAT_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), GDK_TYPE_SEAT))
-#define GDK_SEAT_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_SEAT, CdkSeatClass))
+#define CDK_SEAT_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), CDK_TYPE_SEAT, CdkSeatClass))
+#define CDK_IS_SEAT_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), CDK_TYPE_SEAT))
+#define CDK_SEAT_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CDK_TYPE_SEAT, CdkSeatClass))
 
 struct _CdkSeatClass
 {
@@ -76,4 +76,4 @@ CdkDeviceTool *
                               guint64    serial,
                               guint64    hw_id);
 
-#endif /* __GDK_SEAT_PRIVATE_H__ */
+#endif /* __CDK_SEAT_PRIVATE_H__ */

@@ -119,7 +119,7 @@ keypress_check (CtkWidget *widget, CdkEventKey *evt, gpointer data)
         if (evt->keyval == 'q')
                 ctk_main_quit ();
 
-        if (evt->keyval == 's' && (evt->state & GDK_CONTROL_MASK)) {
+        if (evt->keyval == 's' && (evt->state & CDK_CONTROL_MASK)) {
                 /* save to callback */
                 if (pixbuf == NULL) {
                         fprintf (stderr, "PIXBUF NULL\n");
@@ -175,7 +175,7 @@ keypress_check (CtkWidget *widget, CdkEventKey *evt, gpointer data)
                 }
         }
 
-        if (evt->keyval == 'p' && (evt->state & GDK_CONTROL_MASK)) {
+        if (evt->keyval == 'p' && (evt->state & CDK_CONTROL_MASK)) {
                 /* save to callback */
                 if (pixbuf == NULL) {
                         fprintf (stderr, "PIXBUF NULL\n");
@@ -230,7 +230,7 @@ keypress_check (CtkWidget *widget, CdkEventKey *evt, gpointer data)
                 }
         }
 
-        if (evt->keyval == 'i' && (evt->state & GDK_CONTROL_MASK)) {
+        if (evt->keyval == 'i' && (evt->state & CDK_CONTROL_MASK)) {
                 /* save to callback */
                 if (pixbuf == NULL) {
                         fprintf (stderr, "PIXBUF NULL\n");

@@ -581,16 +581,16 @@ ctk_spin_button_class_init (CtkSpinButtonClass *class)
 
   binding_set = ctk_binding_set_by_class (class);
 
-  add_spin_binding (binding_set, GDK_KEY_Up, 0, CTK_SCROLL_STEP_UP);
-  add_spin_binding (binding_set, GDK_KEY_KP_Up, 0, CTK_SCROLL_STEP_UP);
-  add_spin_binding (binding_set, GDK_KEY_Down, 0, CTK_SCROLL_STEP_DOWN);
-  add_spin_binding (binding_set, GDK_KEY_KP_Down, 0, CTK_SCROLL_STEP_DOWN);
-  add_spin_binding (binding_set, GDK_KEY_Page_Up, 0, CTK_SCROLL_PAGE_UP);
-  add_spin_binding (binding_set, GDK_KEY_Page_Down, 0, CTK_SCROLL_PAGE_DOWN);
-  add_spin_binding (binding_set, GDK_KEY_End, GDK_CONTROL_MASK, CTK_SCROLL_END);
-  add_spin_binding (binding_set, GDK_KEY_Home, GDK_CONTROL_MASK, CTK_SCROLL_START);
-  add_spin_binding (binding_set, GDK_KEY_Page_Up, GDK_CONTROL_MASK, CTK_SCROLL_END);
-  add_spin_binding (binding_set, GDK_KEY_Page_Down, GDK_CONTROL_MASK, CTK_SCROLL_START);
+  add_spin_binding (binding_set, CDK_KEY_Up, 0, CTK_SCROLL_STEP_UP);
+  add_spin_binding (binding_set, CDK_KEY_KP_Up, 0, CTK_SCROLL_STEP_UP);
+  add_spin_binding (binding_set, CDK_KEY_Down, 0, CTK_SCROLL_STEP_DOWN);
+  add_spin_binding (binding_set, CDK_KEY_KP_Down, 0, CTK_SCROLL_STEP_DOWN);
+  add_spin_binding (binding_set, CDK_KEY_Page_Up, 0, CTK_SCROLL_PAGE_UP);
+  add_spin_binding (binding_set, CDK_KEY_Page_Down, 0, CTK_SCROLL_PAGE_DOWN);
+  add_spin_binding (binding_set, CDK_KEY_End, CDK_CONTROL_MASK, CTK_SCROLL_END);
+  add_spin_binding (binding_set, CDK_KEY_Home, CDK_CONTROL_MASK, CTK_SCROLL_START);
+  add_spin_binding (binding_set, CDK_KEY_Page_Up, CDK_CONTROL_MASK, CTK_SCROLL_END);
+  add_spin_binding (binding_set, CDK_KEY_Page_Down, CDK_CONTROL_MASK, CTK_SCROLL_START);
 
   ctk_widget_class_set_accessible_type (widget_class, CTK_TYPE_SPIN_BUTTON_ACCESSIBLE);
   ctk_widget_class_set_css_name (widget_class, "spinbutton");
@@ -836,7 +836,7 @@ ctk_spin_button_init (CtkSpinButton *spin_button)
   update_node_ordering (spin_button);
   update_node_state (spin_button);
 
-  ctk_widget_add_events (CTK_WIDGET (spin_button), GDK_SCROLL_MASK);
+  ctk_widget_add_events (CTK_WIDGET (spin_button), CDK_SCROLL_MASK);
 
   priv->swipe_gesture = ctk_gesture_swipe_new (CTK_WIDGET (spin_button));
   ctk_gesture_single_set_touch_only (CTK_GESTURE_SINGLE (priv->swipe_gesture), TRUE);
@@ -977,18 +977,18 @@ ctk_spin_button_realize (CtkWidget *widget)
   gboolean return_val;
 
   ctk_widget_set_events (widget, ctk_widget_get_events (widget) |
-                         GDK_KEY_RELEASE_MASK);
+                         CDK_KEY_RELEASE_MASK);
   CTK_WIDGET_CLASS (ctk_spin_button_parent_class)->realize (widget);
 
-  attributes.window_type = GDK_WINDOW_CHILD;
-  attributes.wclass = GDK_INPUT_ONLY;
+  attributes.window_type = CDK_WINDOW_CHILD;
+  attributes.wclass = CDK_INPUT_ONLY;
   attributes.visual = ctk_widget_get_visual (widget);
   attributes.event_mask = ctk_widget_get_events (widget);
-  attributes.event_mask |= GDK_BUTTON_PRESS_MASK
-    | GDK_BUTTON_RELEASE_MASK | GDK_LEAVE_NOTIFY_MASK | GDK_ENTER_NOTIFY_MASK
-    | GDK_POINTER_MOTION_MASK;
+  attributes.event_mask |= CDK_BUTTON_PRESS_MASK
+    | CDK_BUTTON_RELEASE_MASK | CDK_LEAVE_NOTIFY_MASK | CDK_ENTER_NOTIFY_MASK
+    | CDK_POINTER_MOTION_MASK;
 
-  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
+  attributes_mask = CDK_WA_X | CDK_WA_Y | CDK_WA_VISUAL;
 
   ctk_css_gadget_get_border_allocation (priv->up_button, &up_allocation, NULL);
   ctk_css_gadget_get_border_allocation (priv->down_button, &down_allocation, NULL);
@@ -1249,7 +1249,7 @@ ctk_spin_button_draw (CtkWidget *widget,
 {
   ctk_css_gadget_draw (CTK_SPIN_BUTTON(widget)->priv->gadget, cr);
 
-  return GDK_EVENT_PROPAGATE;
+  return CDK_EVENT_PROPAGATE;
 }
 
 static gint
@@ -1335,13 +1335,13 @@ ctk_spin_button_scroll (CtkWidget      *widget,
   CtkSpinButton *spin = CTK_SPIN_BUTTON (widget);
   CtkSpinButtonPrivate *priv = spin->priv;
 
-  if (event->direction == GDK_SCROLL_UP)
+  if (event->direction == CDK_SCROLL_UP)
     {
       if (!ctk_widget_has_focus (widget))
         ctk_widget_grab_focus (widget);
       ctk_spin_button_real_spin (spin, ctk_adjustment_get_step_increment (priv->adjustment));
     }
-  else if (event->direction == GDK_SCROLL_DOWN)
+  else if (event->direction == CDK_SCROLL_DOWN)
     {
       if (!ctk_widget_has_focus (widget))
         ctk_widget_grab_focus (widget);
@@ -1421,9 +1421,9 @@ ctk_spin_button_button_press (CtkWidget      *widget,
           if (ctk_editable_get_editable (CTK_EDITABLE (widget))) {
             ctk_spin_button_update (spin);
 
-            if (event->button == GDK_BUTTON_PRIMARY)
+            if (event->button == CDK_BUTTON_PRIMARY)
               start_spinning (spin, event->window, ctk_adjustment_get_step_increment (priv->adjustment));
-            else if (event->button == GDK_BUTTON_MIDDLE)
+            else if (event->button == CDK_BUTTON_MIDDLE)
               start_spinning (spin, event->window, ctk_adjustment_get_page_increment (priv->adjustment));
             else
               priv->click_child = event->window;
@@ -1453,7 +1453,7 @@ ctk_spin_button_button_release (CtkWidget      *widget,
 
       ctk_spin_button_stop_spinning (spin);
 
-      if (event->button == GDK_BUTTON_SECONDARY)
+      if (event->button == CDK_BUTTON_SECONDARY)
         {
           gdouble diff;
 

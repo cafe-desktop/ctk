@@ -323,7 +323,7 @@ static gboolean
 ctk_info_bar_enter_notify (CtkWidget        *widget,
                            CdkEventCrossing *event)
 {
-  if (event->detail != GDK_NOTIFY_INFERIOR)
+  if (event->detail != CDK_NOTIFY_INFERIOR)
     update_state (widget, TRUE);
 
   return FALSE;
@@ -333,7 +333,7 @@ static gboolean
 ctk_info_bar_leave_notify (CtkWidget        *widget,
                            CdkEventCrossing *event)
 {
-  if (event->detail != GDK_NOTIFY_INFERIOR)
+  if (event->detail != CDK_NOTIFY_INFERIOR)
     update_state (widget, FALSE);
 
   return FALSE;
@@ -351,20 +351,20 @@ ctk_info_bar_realize (CtkWidget *widget)
 
   ctk_widget_set_realized (widget, TRUE);
 
-  attributes.window_type = GDK_WINDOW_CHILD;
+  attributes.window_type = CDK_WINDOW_CHILD;
   attributes.x = allocation.x;
   attributes.y = allocation.y;
   attributes.width = allocation.width;
   attributes.height = allocation.height;
-  attributes.wclass = GDK_INPUT_ONLY;
+  attributes.wclass = CDK_INPUT_ONLY;
   attributes.event_mask = ctk_widget_get_events (widget);
-  attributes.event_mask |= (GDK_BUTTON_PRESS_MASK |
-                            GDK_BUTTON_RELEASE_MASK |
-                            GDK_TOUCH_MASK |
-                            GDK_ENTER_NOTIFY_MASK |
-                            GDK_LEAVE_NOTIFY_MASK);
+  attributes.event_mask |= (CDK_BUTTON_PRESS_MASK |
+                            CDK_BUTTON_RELEASE_MASK |
+                            CDK_TOUCH_MASK |
+                            CDK_ENTER_NOTIFY_MASK |
+                            CDK_LEAVE_NOTIFY_MASK);
 
-  attributes_mask = GDK_WA_X | GDK_WA_Y;
+  attributes_mask = CDK_WA_X | CDK_WA_Y;
 
   window = cdk_window_new (ctk_widget_get_parent_window (widget), &attributes, attributes_mask);
   ctk_widget_register_window (widget, window);
@@ -588,7 +588,7 @@ ctk_info_bar_class_init (CtkInfoBarClass *klass)
 
   binding_set = ctk_binding_set_by_class (klass);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Escape, 0, "close", 0);
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Escape, 0, "close", 0);
 
   /* Bind class to template
    */
@@ -643,7 +643,7 @@ ctk_info_bar_init (CtkInfoBar *info_bar)
                     G_CALLBACK (close_button_clicked_cb), info_bar);
 
   priv->gesture = ctk_gesture_multi_press_new (widget);
-  ctk_gesture_single_set_button (CTK_GESTURE_SINGLE (priv->gesture), GDK_BUTTON_PRIMARY);
+  ctk_gesture_single_set_button (CTK_GESTURE_SINGLE (priv->gesture), CDK_BUTTON_PRIMARY);
   g_signal_connect (priv->gesture, "pressed", G_CALLBACK (click_pressed_cb), widget);
 }
 

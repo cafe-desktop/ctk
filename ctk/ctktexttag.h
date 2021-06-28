@@ -98,21 +98,21 @@ struct _CtkTextTagClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType        ctk_text_tag_get_type     (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTextTag  *ctk_text_tag_new          (const gchar       *name);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint         ctk_text_tag_get_priority (CtkTextTag        *tag);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void         ctk_text_tag_set_priority (CtkTextTag        *tag,
                                         gint               priority);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean     ctk_text_tag_event        (CtkTextTag        *tag,
                                         GObject           *event_object,
                                         CdkEvent          *event,
                                         const CtkTextIter *iter);
-GDK_AVAILABLE_IN_3_20
+CDK_AVAILABLE_IN_3_20
 void         ctk_text_tag_changed      (CtkTextTag        *tag,
                                         gboolean           size_changed);
 

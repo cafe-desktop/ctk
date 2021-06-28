@@ -34,23 +34,23 @@ G_BEGIN_DECLS
 typedef struct _CtkShortcutLabel      CtkShortcutLabel;
 typedef struct _CtkShortcutLabelClass CtkShortcutLabelClass;
 
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 GType        ctk_shortcut_label_get_type        (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 CtkWidget   *ctk_shortcut_label_new             (const gchar      *accelerator);
 
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 const gchar *ctk_shortcut_label_get_accelerator (CtkShortcutLabel *self);
 
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 void         ctk_shortcut_label_set_accelerator (CtkShortcutLabel *self,
                                                  const gchar      *accelerator);
 
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 const gchar *ctk_shortcut_label_get_disabled_text (CtkShortcutLabel *self);
 
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 void         ctk_shortcut_label_set_disabled_text (CtkShortcutLabel *self,
                                                    const gchar      *disabled_text);
 

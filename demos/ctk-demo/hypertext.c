@@ -113,8 +113,8 @@ key_press_event (CtkWidget *text_view,
 
   switch (event->keyval)
     {
-      case GDK_KEY_Return:
-      case GDK_KEY_KP_Enter:
+      case CDK_KEY_Return:
+      case CDK_KEY_KP_Enter:
         buffer = ctk_text_view_get_buffer (CTK_TEXT_VIEW (text_view));
         ctk_text_buffer_get_iter_at_mark (buffer, &iter,
                                           ctk_text_buffer_get_insert (buffer));
@@ -139,18 +139,18 @@ event_after (CtkWidget *text_view,
   gdouble ex, ey;
   gint x, y;
 
-  if (ev->type == GDK_BUTTON_RELEASE)
+  if (ev->type == CDK_BUTTON_RELEASE)
     {
       CdkEventButton *event;
 
       event = (CdkEventButton *)ev;
-      if (event->button != GDK_BUTTON_PRIMARY)
+      if (event->button != CDK_BUTTON_PRIMARY)
         return FALSE;
 
       ex = event->x;
       ey = event->y;
     }
-  else if (ev->type == GDK_TOUCH_END)
+  else if (ev->type == CDK_TOUCH_END)
     {
       CdkEventTouch *event;
 

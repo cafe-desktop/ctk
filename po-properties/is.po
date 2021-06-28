@@ -134,11 +134,11 @@ msgid "Default Display"
 msgstr "Sjálfgefinn skjár"
 
 #: cdk/cdkdisplaymanager.c:170
-msgid "The default display for GDK"
-msgstr "Sjálfgefinn skjár fyrir GDK"
+msgid "The default display for CDK"
+msgstr "Sjálfgefinn skjár fyrir CDK"
 
 #: cdk/cdkglcontext.c:318
-msgid "The GDK display used to create the GL context"
+msgid "The CDK display used to create the GL context"
 msgstr ""
 
 #: cdk/cdkglcontext.c:333 ctk/ctkwidget.c:1338
@@ -146,7 +146,7 @@ msgid "Window"
 msgstr "Gluggi"
 
 #: cdk/cdkglcontext.c:334
-msgid "The GDK window bound to the GL context"
+msgid "The CDK window bound to the GL context"
 msgstr ""
 
 #: cdk/cdkglcontext.c:349

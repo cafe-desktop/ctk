@@ -362,12 +362,12 @@ ctk_revealer_real_realize (CtkWidget *widget)
   attributes.y = allocation.y;
   attributes.width = allocation.width;
   attributes.height = allocation.height;
-  attributes.window_type = GDK_WINDOW_CHILD;
-  attributes.wclass = GDK_INPUT_OUTPUT;
+  attributes.window_type = CDK_WINDOW_CHILD;
+  attributes.wclass = CDK_INPUT_OUTPUT;
   attributes.visual = ctk_widget_get_visual (widget);
   attributes.event_mask =
     ctk_widget_get_events (widget);
-  attributes_mask = (GDK_WA_X | GDK_WA_Y) | GDK_WA_VISUAL;
+  attributes_mask = (CDK_WA_X | CDK_WA_Y) | CDK_WA_VISUAL;
 
   priv->view_window =
     cdk_window_new (ctk_widget_get_parent_window ((CtkWidget*) revealer),
@@ -678,7 +678,7 @@ ctk_revealer_real_draw (CtkWidget *widget,
   if (ctk_cairo_should_draw_window (cr, priv->bin_window))
     CTK_WIDGET_CLASS (ctk_revealer_parent_class)->draw (widget, cr);
 
-  return GDK_EVENT_PROPAGATE;
+  return CDK_EVENT_PROPAGATE;
 }
 
 /**

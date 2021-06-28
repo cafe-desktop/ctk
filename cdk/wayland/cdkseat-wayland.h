@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2015 Red Hat
  *
  * This library is free software; you can redistribute it and/or
@@ -17,19 +17,19 @@
  * Author: Carlos Garnacho <carlosg@gnome.org>
  */
 
-#ifndef __GDK_WAYLAND_SEAT_H__
-#define __GDK_WAYLAND_SEAT_H__
+#ifndef __CDK_WAYLAND_SEAT_H__
+#define __CDK_WAYLAND_SEAT_H__
 
 #include "config.h"
 
 #include <cdk/cdkseatprivate.h>
 
-#define GDK_TYPE_WAYLAND_SEAT         (cdk_wayland_seat_get_type ())
-#define GDK_WAYLAND_SEAT(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_WAYLAND_SEAT, CdkWaylandSeat))
-#define GDK_WAYLAND_SEAT_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_WAYLAND_SEAT, CdkWaylandSeatClass))
-#define GDK_IS_WAYLAND_SEAT(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_WAYLAND_SEAT))
-#define GDK_IS_WAYLAND_SEAT_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), GDK_TYPE_WAYLAND_SEAT))
-#define GDK_WAYLAND_SEAT_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_WAYLAND_SEAT, CdkWaylandSeatClass))
+#define CDK_TYPE_WAYLAND_SEAT         (cdk_wayland_seat_get_type ())
+#define CDK_WAYLAND_SEAT(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CDK_TYPE_WAYLAND_SEAT, CdkWaylandSeat))
+#define CDK_WAYLAND_SEAT_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), CDK_TYPE_WAYLAND_SEAT, CdkWaylandSeatClass))
+#define CDK_IS_WAYLAND_SEAT(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CDK_TYPE_WAYLAND_SEAT))
+#define CDK_IS_WAYLAND_SEAT_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), CDK_TYPE_WAYLAND_SEAT))
+#define CDK_WAYLAND_SEAT_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CDK_TYPE_WAYLAND_SEAT, CdkWaylandSeatClass))
 
 typedef struct _CdkWaylandSeat CdkWaylandSeat;
 typedef struct _CdkWaylandSeatClass CdkWaylandSeatClass;
@@ -41,4 +41,4 @@ struct _CdkWaylandSeatClass
 
 GType cdk_wayland_seat_get_type (void) G_GNUC_CONST;
 
-#endif /* __GDK_WAYLAND_SEAT_H__ */
+#endif /* __CDK_WAYLAND_SEAT_H__ */

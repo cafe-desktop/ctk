@@ -23,7 +23,7 @@
 #include "cdkinternal-quartz.h"
 #include "cdkquartz-ctk-only.h"
 
-G_DEFINE_TYPE (CdkQuartzDragContext, cdk_quartz_drag_context, GDK_TYPE_DRAG_CONTEXT)
+G_DEFINE_TYPE (CdkQuartzDragContext, cdk_quartz_drag_context, CDK_TYPE_DRAG_CONTEXT)
 
 
 CdkDragContext *_cdk_quartz_drag_source_context = NULL;
@@ -44,7 +44,7 @@ _cdk_quartz_window_drag_begin (CdkWindow *window,
   g_assert (_cdk_quartz_drag_source_context == NULL);
 
   /* Create fake context */
-  _cdk_quartz_drag_source_context = g_object_new (GDK_TYPE_QUARTZ_DRAG_CONTEXT,
+  _cdk_quartz_drag_source_context = g_object_new (CDK_TYPE_QUARTZ_DRAG_CONTEXT,
                                                   NULL);
   _cdk_quartz_drag_source_context->display = cdk_window_get_display (window);
   _cdk_quartz_drag_source_context->is_source = TRUE;
@@ -133,7 +133,7 @@ static CdkAtom
 cdk_quartz_drag_context_get_selection (CdkDragContext *context)
 {
   /* FIXME: Implement */
-  return GDK_NONE;
+  return CDK_NONE;
 }
 
 static gboolean
@@ -146,7 +146,7 @@ cdk_quartz_drag_context_drop_status (CdkDragContext *context)
 id
 cdk_quartz_drag_context_get_dragging_info_libctk_only (CdkDragContext *context)
 {
-  return GDK_QUARTZ_DRAG_CONTEXT (context)->dragging_info;
+  return CDK_QUARTZ_DRAG_CONTEXT (context)->dragging_info;
 }
 
 static void
@@ -164,7 +164,7 @@ static void
 cdk_quartz_drag_context_class_init (CdkQuartzDragContextClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  CdkDragContextClass *context_class = GDK_DRAG_CONTEXT_CLASS (klass);
+  CdkDragContextClass *context_class = CDK_DRAG_CONTEXT_CLASS (klass);
 
   object_class->finalize = cdk_quartz_drag_context_finalize;
 

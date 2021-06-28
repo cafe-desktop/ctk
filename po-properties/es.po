@@ -143,20 +143,20 @@ msgid "Default Display"
 msgstr "Visor predeterminado"
 
 #: cdk/cdkdisplaymanager.c:163
-msgid "The default display for GDK"
-msgstr "El visor predeterminado para GDK"
+msgid "The default display for CDK"
+msgstr "El visor predeterminado para CDK"
 
 #: cdk/cdkglcontext.c:318
-msgid "The GDK display used to create the GL context"
-msgstr "La ventana GDK usada para crear el contexto GL"
+msgid "The CDK display used to create the GL context"
+msgstr "La ventana CDK usada para crear el contexto GL"
 
 #: cdk/cdkglcontext.c:333 ctk/ctkwidget.c:1347
 msgid "Window"
 msgstr "Ventana"
 
 #: cdk/cdkglcontext.c:334
-msgid "The GDK window bound to the GL context"
-msgstr "La ventana GDK asociada al contexto GL"
+msgid "The CDK window bound to the GL context"
+msgstr "La ventana CDK asociada al contexto GL"
 
 #: cdk/cdkglcontext.c:349
 msgid "Shared context"
@@ -9879,8 +9879,8 @@ msgstr "El título del perfil de color que usar"
 #~ msgid "Unmount"
 #~ msgstr "Desmontar"
 
-#~ msgid "The GDK display the context is from"
-#~ msgstr "El contexto del que proviene la visualización GDK"
+#~ msgid "The CDK display the context is from"
+#~ msgstr "El contexto del que proviene la visualización CDK"
 
 #~ msgid "Font map"
 #~ msgstr "Mapa de tipografías"

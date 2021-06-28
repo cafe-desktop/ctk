@@ -172,7 +172,7 @@ main (int argc, char **argv)
   ctk_target_list_add_text_targets (tlist, 0);
   ctk_entry_set_icon_drag_source (CTK_ENTRY (entry),
                                   CTK_ENTRY_ICON_PRIMARY,
-                                  tlist, GDK_ACTION_COPY); 
+                                  tlist, CDK_ACTION_COPY); 
   g_signal_connect_after (entry, "drag-begin", 
                           G_CALLBACK (drag_begin_cb), NULL);
   g_signal_connect (entry, "drag-data-get", 

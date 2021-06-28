@@ -77,8 +77,8 @@ msgstr "EKRAN"
 
 #. Description of --cdk-debug=FLAGS in --help output
 #: cdk/cdk.c:240
-msgid "GDK debugging flags to set"
-msgstr "GDK hata ayıklama bayraklarını ayarlamak için"
+msgid "CDK debugging flags to set"
+msgstr "CDK hata ayıklama bayraklarını ayarlamak için"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
@@ -90,12 +90,12 @@ msgstr "İMLER"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: cdk/cdk.c:243
-msgid "GDK debugging flags to unset"
-msgstr "GDK hata ayıklama bayraklarını kaldırmak için"
+msgid "CDK debugging flags to unset"
+msgstr "CDK hata ayıklama bayraklarını kaldırmak için"
 
 #: cdk/cdkwindow.c:2851
-msgid "GL support disabled via GDK_DEBUG"
-msgstr "GL desteği GDK_DEBUG yoluyla devre dışı bırakılmış"
+msgid "GL support disabled via CDK_DEBUG"
+msgstr "GL desteği CDK_DEBUG yoluyla devre dışı bırakılmış"
 
 #: cdk/cdkwindow.c:2862
 msgid "The current backend does not support OpenGL"
@@ -4008,8 +4008,8 @@ msgid "CTK+ Version"
 msgstr "CTK+ Sürümü"
 
 #: ctk/inspector/general.ui:68
-msgid "GDK Backend"
-msgstr "GDK Arkaucu"
+msgid "CDK Backend"
+msgstr "CDK Arkaucu"
 
 #: ctk/inspector/general.ui:373
 msgid "Display"
@@ -4382,10 +4382,10 @@ msgstr "Ayar CTK_TEST_TOUCHSCREEN ile kodlanmış"
 #: ctk/inspector/visual.c:817
 msgid ""
 "Not settable at runtime.\n"
-"Use GDK_GL=always or GDK_GL=disable instead"
+"Use CDK_GL=always or CDK_GL=disable instead"
 msgstr ""
 "Çalışma zamanında belirlenemez.\n"
-"Bunun yerine GDK_GL=always veya GDK_GL=disable kullanın"
+"Bunun yerine CDK_GL=always veya CDK_GL=disable kullanın"
 
 #: ctk/inspector/visual.c:831 ctk/inspector/visual.c:832
 #: ctk/inspector/visual.c:833
@@ -8391,8 +8391,8 @@ msgstr "Sınama Yazıcısına Yazdır"
 #~ msgid "Reading not implemented."
 #~ msgstr "Okuma henüz gerçeklenmemiş."
 
-#~ msgid "Vulkan support disabled via GDK_DEBUG"
-#~ msgstr "Vulkan desteği GDK_DEBUG yoluyla devre dışı bırakılmış"
+#~ msgid "Vulkan support disabled via CDK_DEBUG"
+#~ msgstr "Vulkan desteği CDK_DEBUG yoluyla devre dışı bırakılmış"
 
 #~ msgid "No compatible transfer format found"
 #~ msgstr "Uyumlu aktarım biçimi bulunamadı"

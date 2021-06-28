@@ -138,7 +138,7 @@ create_store (void)
   store = ctk_list_store_new (NUM_COLS,
                               G_TYPE_STRING,
                               G_TYPE_STRING,
-                              GDK_TYPE_PIXBUF,
+                              CDK_TYPE_PIXBUF,
                               G_TYPE_BOOLEAN);
 
   /* Set sort column and function */

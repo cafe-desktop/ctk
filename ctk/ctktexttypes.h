@@ -59,11 +59,11 @@ extern G_GNUC_INTERNAL const CtkTextLineSegmentClass ctk_text_child_type;
 
 #define CTK_TEXT_UNKNOWN_CHAR 0xFFFC
 #define CTK_TEXT_UNKNOWN_CHAR_UTF8_LEN 3
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *ctk_text_unknown_char_utf8_ctk_tests_only (void);
 extern const gchar _ctk_text_unknown_char_utf8[CTK_TEXT_UNKNOWN_CHAR_UTF8_LEN+1];
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_text_byte_begins_utf8_char (const gchar *byte);
 
 G_END_DECLS

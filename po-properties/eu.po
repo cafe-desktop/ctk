@@ -138,12 +138,12 @@ msgid "Default Display"
 msgstr "Bistaratze lehenetsia"
 
 #: cdk/cdkdisplaymanager.c:163
-msgid "The default display for GDK"
-msgstr "GDKren bistaratze lehenetsia"
+msgid "The default display for CDK"
+msgstr "CDKren bistaratze lehenetsia"
 
 #: cdk/cdkglcontext.c:318
-msgid "The GDK display used to create the GL context"
-msgstr "GDK leihoa GL testuingurua sortzeko erabilita"
+msgid "The CDK display used to create the GL context"
+msgstr "CDK leihoa GL testuingurua sortzeko erabilita"
 
 #
 #: cdk/cdkglcontext.c:333 ctk/ctkwidget.c:1347
@@ -151,8 +151,8 @@ msgid "Window"
 msgstr "Leihoa"
 
 #: cdk/cdkglcontext.c:334
-msgid "The GDK window bound to the GL context"
-msgstr "GDK leihoa GL testuinguruari lotuta dago"
+msgid "The CDK window bound to the GL context"
+msgstr "CDK leihoa GL testuinguruari lotuta dago"
 
 #: cdk/cdkglcontext.c:349
 msgid "Shared context"
@@ -9510,8 +9510,8 @@ msgstr "Erabiliko den kolore-profilaren titulua"
 #~ msgid "Name of default font to use"
 #~ msgstr "Erabili behar den letra-tipo lehenetsiaren izena"
 
-#~ msgid "The GDK display the context is from"
-#~ msgstr "GDK-ak dagokion testuingurua bistaratzen du"
+#~ msgid "The CDK display the context is from"
+#~ msgstr "CDK-ak dagokion testuingurua bistaratzen du"
 
 #~ msgid "Profile"
 #~ msgstr "Profila"

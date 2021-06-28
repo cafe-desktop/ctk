@@ -59,7 +59,7 @@ list_ignore_properties (gboolean buglist)
     { "CtkCList",               "selection-mode",       (void*) CTK_SELECTION_NONE, },
     { "CtkWidget",              "has-default",          (void*) TRUE, },                /* conflicts with toplevel-less widgets */
     { "CtkWidget",              "screen",               NULL, },
-    { "CtkWindow",              "type-hint",            (void*) GDK_WINDOW_TYPE_HINT_DND, }, /* conflicts with ::visible=TRUE */
+    { "CtkWindow",              "type-hint",            (void*) CDK_WINDOW_TYPE_HINT_DND, }, /* conflicts with ::visible=TRUE */
     { "CtkCellView",            "background",           (void*) "", },                  /* "" is not a valid background color */
     { "CtkColorButton",         "color",                (void*) NULL, },                /* not a valid boxed color */
     { "CtkInputDialog",         "has-separator",        (void*) MATCH_ANY_VALUE, },     /* property disabled */
@@ -171,9 +171,9 @@ pspec_select_value (GParamSpec *pspec,
       if (!G_TYPE_IS_ABSTRACT (pspec->value_type) &&
           !G_TYPE_IS_INTERFACE (pspec->value_type))
         {
-          if (g_type_is_a (pspec->value_type, GDK_TYPE_PIXBUF))
-            object = cdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, 32, 32);
-          else if (g_type_is_a (pspec->value_type, GDK_TYPE_PIXBUF_ANIMATION))
+          if (g_type_is_a (pspec->value_type, CDK_TYPE_PIXBUF))
+            object = cdk_pixbuf_new (CDK_COLORSPACE_RGB, FALSE, 8, 32, 32);
+          else if (g_type_is_a (pspec->value_type, CDK_TYPE_PIXBUF_ANIMATION))
             object = cdk_pixbuf_simple_anim_new (32, 32, 15);
           else
             object = g_object_new (pspec->value_type, NULL);

@@ -98,11 +98,11 @@ create_row (const gchar *text)
   label = ctk_label_new (text);
   ctk_container_add_with_properties (CTK_CONTAINER (box), label, "expand", TRUE, NULL);
 
-  ctk_drag_source_set (handle, GDK_BUTTON1_MASK, entries, 1, GDK_ACTION_MOVE);
+  ctk_drag_source_set (handle, CDK_BUTTON1_MASK, entries, 1, CDK_ACTION_MOVE);
   g_signal_connect (handle, "drag-begin", G_CALLBACK (drag_begin), NULL);
   g_signal_connect (handle, "drag-data-get", G_CALLBACK (drag_data_get), NULL);
 
-  ctk_drag_dest_set (row, CTK_DEST_DEFAULT_ALL, entries, 1, GDK_ACTION_MOVE);
+  ctk_drag_dest_set (row, CTK_DEST_DEFAULT_ALL, entries, 1, CDK_ACTION_MOVE);
   g_signal_connect (row, "drag-data-received", G_CALLBACK (drag_data_received), NULL);
 
   return row;

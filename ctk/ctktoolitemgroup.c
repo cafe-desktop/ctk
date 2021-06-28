@@ -1247,18 +1247,18 @@ ctk_tool_item_group_realize (CtkWidget *widget)
   border_width = ctk_container_get_border_width (CTK_CONTAINER (widget));
   ctk_widget_get_allocation (widget, &allocation);
 
-  attributes.window_type = GDK_WINDOW_CHILD;
+  attributes.window_type = CDK_WINDOW_CHILD;
   attributes.x = allocation.x + border_width;
   attributes.y = allocation.y + border_width;
   attributes.width = allocation.width - border_width * 2;
   attributes.height = allocation.height - border_width * 2;
-  attributes.wclass = GDK_INPUT_OUTPUT;
+  attributes.wclass = CDK_INPUT_OUTPUT;
   attributes.visual = ctk_widget_get_visual (widget);
   attributes.event_mask = ctk_widget_get_events (widget)
-                         | GDK_VISIBILITY_NOTIFY_MASK
-                         | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK
-                         | GDK_BUTTON_MOTION_MASK;
-  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
+                         | CDK_VISIBILITY_NOTIFY_MASK
+                         | CDK_BUTTON_PRESS_MASK | CDK_BUTTON_RELEASE_MASK
+                         | CDK_BUTTON_MOTION_MASK;
+  attributes_mask = CDK_WA_X | CDK_WA_Y | CDK_WA_VISUAL;
 
   window = cdk_window_new (ctk_widget_get_parent_window (widget),
                            &attributes, attributes_mask);

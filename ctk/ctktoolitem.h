@@ -77,83 +77,83 @@ struct _CtkToolItemClass
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType        ctk_tool_item_get_type (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkToolItem *ctk_tool_item_new      (void);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void            ctk_tool_item_set_homogeneous          (CtkToolItem *tool_item,
 							gboolean     homogeneous);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean        ctk_tool_item_get_homogeneous          (CtkToolItem *tool_item);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void            ctk_tool_item_set_expand               (CtkToolItem *tool_item,
 							gboolean     expand);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean        ctk_tool_item_get_expand               (CtkToolItem *tool_item);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void            ctk_tool_item_set_tooltip_text         (CtkToolItem *tool_item,
 							const gchar *text);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void            ctk_tool_item_set_tooltip_markup       (CtkToolItem *tool_item,
 							const gchar *markup);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void            ctk_tool_item_set_use_drag_window      (CtkToolItem *tool_item,
 							gboolean     use_drag_window);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean        ctk_tool_item_get_use_drag_window      (CtkToolItem *tool_item);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void            ctk_tool_item_set_visible_horizontal   (CtkToolItem *tool_item,
 							gboolean     visible_horizontal);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean        ctk_tool_item_get_visible_horizontal   (CtkToolItem *tool_item);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void            ctk_tool_item_set_visible_vertical     (CtkToolItem *tool_item,
 							gboolean     visible_vertical);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean        ctk_tool_item_get_visible_vertical     (CtkToolItem *tool_item);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean        ctk_tool_item_get_is_important         (CtkToolItem *tool_item);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void            ctk_tool_item_set_is_important         (CtkToolItem *tool_item,
 							gboolean     is_important);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 PangoEllipsizeMode ctk_tool_item_get_ellipsize_mode    (CtkToolItem *tool_item);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkIconSize     ctk_tool_item_get_icon_size            (CtkToolItem *tool_item);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkOrientation  ctk_tool_item_get_orientation          (CtkToolItem *tool_item);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkToolbarStyle ctk_tool_item_get_toolbar_style        (CtkToolItem *tool_item);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkReliefStyle  ctk_tool_item_get_relief_style         (CtkToolItem *tool_item);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gfloat          ctk_tool_item_get_text_alignment       (CtkToolItem *tool_item);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkOrientation  ctk_tool_item_get_text_orientation     (CtkToolItem *tool_item);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkSizeGroup *  ctk_tool_item_get_text_size_group      (CtkToolItem *tool_item);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *     ctk_tool_item_retrieve_proxy_menu_item (CtkToolItem *tool_item);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *     ctk_tool_item_get_proxy_menu_item      (CtkToolItem *tool_item,
 							const gchar *menu_item_id);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void            ctk_tool_item_set_proxy_menu_item      (CtkToolItem *tool_item,
 							const gchar *menu_item_id,
 							CtkWidget   *menu_item);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void		ctk_tool_item_rebuild_menu	       (CtkToolItem *tool_item);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void            ctk_tool_item_toolbar_reconfigured     (CtkToolItem *tool_item);
 
 /* private */

@@ -95,8 +95,8 @@ msgstr "DISPLAY"
 
 #. Description of --cdk-debug=FLAGS in --help output
 #: ../cdk/cdk.c:223
-msgid "GDK debugging flags to set"
-msgstr "સુયોજિત કરવા માટેના GDK ડિબગીંગ ફ્લેગ"
+msgid "CDK debugging flags to set"
+msgstr "સુયોજિત કરવા માટેના CDK ડિબગીંગ ફ્લેગ"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
@@ -108,8 +108,8 @@ msgstr "FLAGS"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: ../cdk/cdk.c:226
-msgid "GDK debugging flags to unset"
-msgstr "સુયોજિત ન કરવા માટેના GDK ડિબગીંગ ફ્લેગ"
+msgid "CDK debugging flags to unset"
+msgstr "સુયોજિત ન કરવા માટેના CDK ડિબગીંગ ફ્લેગ"
 
 #.
 #. * Translators, the strings in the “keyboard label” context are
@@ -3520,8 +3520,8 @@ msgstr "CTK+ આવૃત્તિ"
 
 #: ../ctk/inspector/general.ui.h:2
 #| msgid "Go _Back"
-msgid "GDK Backend"
-msgstr "GDK બેકઍન્ડ"
+msgid "CDK Backend"
+msgstr "CDK બેકઍન્ડ"
 
 #: ../ctk/inspector/gestures.c:128
 msgid "Capture"

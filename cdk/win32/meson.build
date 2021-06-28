@@ -36,10 +36,10 @@ cdk_win32_public_headers = files(
   'cdkwin32window.h',
 )
 
-GDK_WIN32_CFLAGS = ['-DGDK_COMPILATION', '-DG_LOG_DOMAIN="Cdk"', '-DINSIDE_GDK_WIN32']
+CDK_WIN32_CFLAGS = ['-DCDK_COMPILATION', '-DG_LOG_DOMAIN="Cdk"', '-DINSIDE_CDK_WIN32']
 
 if win32_has_egl
-  GDK_WIN32_CFLAGS += '-DGDK_WIN32_ENABLE_EGL'
+  CDK_WIN32_CFLAGS += '-DCDK_WIN32_ENABLE_EGL'
 endif
 
 
@@ -53,5 +53,5 @@ cdk_win32_deps = [ # FIXME
 libcdk_win32 = static_library('cdk-win32',
   cdk_win32_sources, cdkconfig, cdkenum_h,
   include_directories: [confinc, cdkinc],
-  c_args: GDK_WIN32_CFLAGS,
+  c_args: CDK_WIN32_CFLAGS,
   dependencies: [cdk_deps, cdk_win32_deps])

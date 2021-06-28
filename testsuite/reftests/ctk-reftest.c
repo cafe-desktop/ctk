@@ -397,7 +397,7 @@ main (int argc, char **argv)
    * so unless you explicitly set it to something else, we
    * will use Cairo's image surface.
    */
-  g_setenv ("GDK_RENDERING", "image", FALSE);
+  g_setenv ("CDK_RENDERING", "image", FALSE);
 
   if (!parse_command_line (&argc, &argv))
     return 1;

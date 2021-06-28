@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -50,7 +50,7 @@ static gboolean cdk_visual_equal          (Visual    *a,
 					   Visual    *b);
 
 
-G_DEFINE_TYPE (CdkX11Visual, cdk_x11_visual, GDK_TYPE_VISUAL)
+G_DEFINE_TYPE (CdkX11Visual, cdk_x11_visual, CDK_TYPE_VISUAL)
 
 static void
 cdk_x11_visual_init (CdkX11Visual *x11_visual)
@@ -65,7 +65,7 @@ cdk_x11_visual_finalize (GObject *object)
   CdkX11Visual *x11_visual = (CdkX11Visual *)object;
 
   if (x11_visual->colormap != None)
-    XFreeColormap (GDK_SCREEN_XDISPLAY (visual->screen), x11_visual->colormap);
+    XFreeColormap (CDK_SCREEN_XDISPLAY (visual->screen), x11_visual->colormap);
 
   G_OBJECT_CLASS (cdk_x11_visual_parent_class)->finalize (object);
 }
@@ -78,7 +78,7 @@ cdk_x11_visual_dispose (GObject *object)
 
   if (x11_visual->colormap != None)
     {
-      XFreeColormap (GDK_SCREEN_XDISPLAY (visual->screen), x11_visual->colormap);
+      XFreeColormap (CDK_SCREEN_XDISPLAY (visual->screen), x11_visual->colormap);
       x11_visual->colormap = None;
     }
 
@@ -100,12 +100,12 @@ _cdk_x11_screen_init_visuals (CdkScreen *screen)
   static const gint possible_depths[8] = { 32, 30, 24, 16, 15, 8, 4, 1 };
   static const CdkVisualType possible_types[6] =
     {
-      GDK_VISUAL_DIRECT_COLOR,
-      GDK_VISUAL_TRUE_COLOR,
-      GDK_VISUAL_PSEUDO_COLOR,
-      GDK_VISUAL_STATIC_COLOR,
-      GDK_VISUAL_GRAYSCALE,
-      GDK_VISUAL_STATIC_GRAY
+      CDK_VISUAL_DIRECT_COLOR,
+      CDK_VISUAL_TRUE_COLOR,
+      CDK_VISUAL_PSEUDO_COLOR,
+      CDK_VISUAL_STATIC_COLOR,
+      CDK_VISUAL_GRAYSCALE,
+      CDK_VISUAL_STATIC_GRAY
     };
 
   CdkX11Screen *x11_screen;
@@ -118,8 +118,8 @@ _cdk_x11_screen_init_visuals (CdkScreen *screen)
   int nvisuals;
   int i, j;
 
-  g_return_if_fail (GDK_IS_SCREEN (screen));
-  x11_screen = GDK_X11_SCREEN (screen);
+  g_return_if_fail (CDK_IS_SCREEN (screen));
+  x11_screen = CDK_X11_SCREEN (screen);
 
   nxvisuals = 0;
   visual_template.screen = x11_screen->screen_num;
@@ -127,7 +127,7 @@ _cdk_x11_screen_init_visuals (CdkScreen *screen)
 
   visuals = g_new (CdkVisual *, nxvisuals);
   for (i = 0; i < nxvisuals; i++)
-    visuals[i] = g_object_new (GDK_TYPE_X11_VISUAL, NULL);
+    visuals[i] = g_object_new (CDK_TYPE_X11_VISUAL, NULL);
 
   default_xvisual = DefaultVisual (x11_screen->xdisplay, x11_screen->screen_num);
 
@@ -145,38 +145,38 @@ _cdk_x11_screen_init_visuals (CdkScreen *screen)
 #endif /* __cplusplus */
 	    {
 	    case StaticGray:
-	      visuals[nvisuals]->type = GDK_VISUAL_STATIC_GRAY;
+	      visuals[nvisuals]->type = CDK_VISUAL_STATIC_GRAY;
 	      break;
 	    case GrayScale:
-	      visuals[nvisuals]->type = GDK_VISUAL_GRAYSCALE;
+	      visuals[nvisuals]->type = CDK_VISUAL_GRAYSCALE;
 	      break;
 	    case StaticColor:
-	      visuals[nvisuals]->type = GDK_VISUAL_STATIC_COLOR;
+	      visuals[nvisuals]->type = CDK_VISUAL_STATIC_COLOR;
 	      break;
 	    case PseudoColor:
-	      visuals[nvisuals]->type = GDK_VISUAL_PSEUDO_COLOR;
+	      visuals[nvisuals]->type = CDK_VISUAL_PSEUDO_COLOR;
 	      break;
 	    case TrueColor:
-	      visuals[nvisuals]->type = GDK_VISUAL_TRUE_COLOR;
+	      visuals[nvisuals]->type = CDK_VISUAL_TRUE_COLOR;
 	      break;
 	    case DirectColor:
-	      visuals[nvisuals]->type = GDK_VISUAL_DIRECT_COLOR;
+	      visuals[nvisuals]->type = CDK_VISUAL_DIRECT_COLOR;
 	      break;
 	    }
 
 	  visuals[nvisuals]->depth = visual_list[i].depth;
 	  visuals[nvisuals]->byte_order =
 	    (ImageByteOrder(x11_screen->xdisplay) == LSBFirst) ?
-	    GDK_LSB_FIRST : GDK_MSB_FIRST;
+	    CDK_LSB_FIRST : CDK_MSB_FIRST;
 	  visuals[nvisuals]->red_mask = visual_list[i].red_mask;
 	  visuals[nvisuals]->green_mask = visual_list[i].green_mask;
 	  visuals[nvisuals]->blue_mask = visual_list[i].blue_mask;
 	  visuals[nvisuals]->colormap_size = visual_list[i].colormap_size;
 	  visuals[nvisuals]->bits_per_rgb = visual_list[i].bits_per_rgb;
-	  GDK_X11_VISUAL (visuals[nvisuals])->xvisual = visual_list[i].visual;
+	  CDK_X11_VISUAL (visuals[nvisuals])->xvisual = visual_list[i].visual;
 
-	  if ((visuals[nvisuals]->type != GDK_VISUAL_TRUE_COLOR) &&
-	      (visuals[nvisuals]->type != GDK_VISUAL_DIRECT_COLOR))
+	  if ((visuals[nvisuals]->type != CDK_VISUAL_TRUE_COLOR) &&
+	      (visuals[nvisuals]->type != CDK_VISUAL_DIRECT_COLOR))
 	    {
 	      visuals[nvisuals]->red_mask = 0;
 	      visuals[nvisuals]->green_mask = 0;
@@ -198,13 +198,13 @@ _cdk_x11_screen_init_visuals (CdkScreen *screen)
 	    {
 	      if ((visuals[j]->depth == 8) && (visuals[i]->depth == 8))
 		{
-		  if (visuals[j]->type == GDK_VISUAL_PSEUDO_COLOR)
+		  if (visuals[j]->type == CDK_VISUAL_PSEUDO_COLOR)
 		    {
 		      temp_visual = visuals[j];
 		      visuals[j] = visuals[i];
 		      visuals[i] = temp_visual;
 		    }
-		  else if ((visuals[i]->type != GDK_VISUAL_PSEUDO_COLOR) &&
+		  else if ((visuals[i]->type != CDK_VISUAL_PSEUDO_COLOR) &&
 			   visuals[j]->type > visuals[i]->type)
 		    {
 		      temp_visual = visuals[j];
@@ -226,10 +226,10 @@ _cdk_x11_screen_init_visuals (CdkScreen *screen)
 
   for (i = 0; i < nvisuals; i++)
     {
-      if (default_xvisual->visualid == GDK_X11_VISUAL (visuals[i])->xvisual->visualid)
+      if (default_xvisual->visualid == CDK_X11_VISUAL (visuals[i])->xvisual->visualid)
          {
            x11_screen->system_visual = visuals[i];
-           GDK_X11_VISUAL (visuals[i])->colormap =
+           CDK_X11_VISUAL (visuals[i])->colormap =
                DefaultColormap (x11_screen->xdisplay, x11_screen->screen_num);
          }
 
@@ -248,7 +248,7 @@ _cdk_x11_screen_init_visuals (CdkScreen *screen)
     }
 
 #ifdef G_ENABLE_DEBUG
-  if (GDK_DEBUG_CHECK (MISC))
+  if (CDK_DEBUG_CHECK (MISC))
     {
       static const gchar *const visual_names[] =
       {
@@ -312,27 +312,27 @@ _cdk_x11_screen_init_visuals (CdkScreen *screen)
 gint
 _cdk_x11_screen_visual_get_best_depth (CdkScreen *screen)
 {
-  return GDK_X11_SCREEN (screen)->available_depths[0];
+  return CDK_X11_SCREEN (screen)->available_depths[0];
 }
 
 CdkVisualType
 _cdk_x11_screen_visual_get_best_type (CdkScreen *screen)
 {
-  return GDK_X11_SCREEN (screen)->available_types[0];
+  return CDK_X11_SCREEN (screen)->available_types[0];
 }
 
 CdkVisual *
 _cdk_x11_screen_get_system_visual (CdkScreen *screen)
 {
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), NULL);
 
-  return ((CdkVisual *) GDK_X11_SCREEN (screen)->system_visual);
+  return ((CdkVisual *) CDK_X11_SCREEN (screen)->system_visual);
 }
 
 CdkVisual*
 _cdk_x11_screen_visual_get_best (CdkScreen *screen)
 {
-  CdkX11Screen *x11_screen = GDK_X11_SCREEN (screen);
+  CdkX11Screen *x11_screen = CDK_X11_SCREEN (screen);
 
   return x11_screen->visuals[0];
 }
@@ -341,7 +341,7 @@ CdkVisual*
 _cdk_x11_screen_visual_get_best_with_depth (CdkScreen *screen,
                                             gint       depth)
 {
-  CdkX11Screen *x11_screen = GDK_X11_SCREEN (screen);
+  CdkX11Screen *x11_screen = CDK_X11_SCREEN (screen);
   CdkVisual *return_val;
   int i;
   
@@ -360,7 +360,7 @@ CdkVisual*
 _cdk_x11_screen_visual_get_best_with_type (CdkScreen     *screen,
                                            CdkVisualType  visual_type)
 {
-  CdkX11Screen *x11_screen = GDK_X11_SCREEN (screen);
+  CdkX11Screen *x11_screen = CDK_X11_SCREEN (screen);
   CdkVisual *return_val;
   int i;
 
@@ -380,7 +380,7 @@ _cdk_x11_screen_visual_get_best_with_both (CdkScreen     *screen,
                                            gint           depth,
                                            CdkVisualType  visual_type)
 {
-  CdkX11Screen *x11_screen = GDK_X11_SCREEN (screen);
+  CdkX11Screen *x11_screen = CDK_X11_SCREEN (screen);
   CdkVisual *return_val;
   int i;
 
@@ -401,7 +401,7 @@ _cdk_x11_screen_query_depths  (CdkScreen  *screen,
                                gint      **depths,
                                gint       *count)
 {
-  CdkX11Screen *x11_screen = GDK_X11_SCREEN (screen);
+  CdkX11Screen *x11_screen = CDK_X11_SCREEN (screen);
 
   *count = x11_screen->navailable_depths;
   *depths = x11_screen->available_depths;
@@ -412,7 +412,7 @@ _cdk_x11_screen_query_visual_types (CdkScreen      *screen,
                                     CdkVisualType **visual_types,
                                     gint           *count)
 {
-  CdkX11Screen *x11_screen = GDK_X11_SCREEN (screen);
+  CdkX11Screen *x11_screen = CDK_X11_SCREEN (screen);
 
   *count = x11_screen->navailable_types;
   *visual_types = x11_screen->available_types;
@@ -425,8 +425,8 @@ _cdk_x11_screen_list_visuals (CdkScreen *screen)
   CdkX11Screen *x11_screen;
   guint i;
 
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
-  x11_screen = GDK_X11_SCREEN (screen);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), NULL);
+  x11_screen = CDK_X11_SCREEN (screen);
 
   list = NULL;
 
@@ -454,11 +454,11 @@ cdk_x11_screen_lookup_visual (CdkScreen *screen,
 {
   int i;
   CdkX11Screen *x11_screen;
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
-  x11_screen = GDK_X11_SCREEN (screen);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), NULL);
+  x11_screen = CDK_X11_SCREEN (screen);
 
   for (i = 0; i < x11_screen->nvisuals; i++)
-    if (xvisualid == GDK_X11_VISUAL (x11_screen->visuals[i])->xvisual->visualid)
+    if (xvisualid == CDK_X11_VISUAL (x11_screen->visuals[i])->xvisual->visualid)
       return x11_screen->visuals[i];
 
   return NULL;
@@ -467,13 +467,13 @@ cdk_x11_screen_lookup_visual (CdkScreen *screen,
 static void
 cdk_visual_add (CdkVisual *visual)
 {
-  CdkX11Screen *x11_screen = GDK_X11_SCREEN (visual->screen);
+  CdkX11Screen *x11_screen = CDK_X11_SCREEN (visual->screen);
 
   if (!x11_screen->visual_hash)
     x11_screen->visual_hash = g_hash_table_new ((GHashFunc) cdk_visual_hash,
                                                 (GEqualFunc) cdk_visual_equal);
 
-  g_hash_table_insert (x11_screen->visual_hash, GDK_X11_VISUAL (visual)->xvisual, visual);
+  g_hash_table_insert (x11_screen->visual_hash, CDK_X11_VISUAL (visual)->xvisual, visual);
 }
 
 static guint
@@ -502,14 +502,14 @@ _cdk_visual_get_x11_colormap (CdkVisual *visual)
 {
   CdkX11Visual *x11_visual;
 
-  g_return_val_if_fail (GDK_IS_VISUAL (visual), None);
+  g_return_val_if_fail (CDK_IS_VISUAL (visual), None);
 
-  x11_visual = GDK_X11_VISUAL (visual);
+  x11_visual = CDK_X11_VISUAL (visual);
 
   if (x11_visual->colormap == None)
     {
-      x11_visual->colormap = XCreateColormap (GDK_SCREEN_XDISPLAY (visual->screen),
-                                              GDK_SCREEN_XROOTWIN (visual->screen),
+      x11_visual->colormap = XCreateColormap (CDK_SCREEN_XDISPLAY (visual->screen),
+                                              CDK_SCREEN_XROOTWIN (visual->screen),
                                               x11_visual->xvisual,
                                               AllocNone);
     }
@@ -528,7 +528,7 @@ _cdk_visual_get_x11_colormap (CdkVisual *visual)
 Visual *
 cdk_x11_visual_get_xvisual (CdkVisual *visual)
 {
-  g_return_val_if_fail (GDK_IS_VISUAL (visual), NULL);
+  g_return_val_if_fail (CDK_IS_VISUAL (visual), NULL);
 
-  return GDK_X11_VISUAL (visual)->xvisual;
+  return CDK_X11_VISUAL (visual)->xvisual;
 }

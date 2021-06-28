@@ -606,10 +606,10 @@ add_tab_bindings (CtkBindingSet    *binding_set,
                   CdkModifierType   modifiers,
                   CtkDirectionType  direction)
 {
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Tab, modifiers,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Tab, modifiers,
                                 "move_focus_out", 1,
                                 CTK_TYPE_DIRECTION_TYPE, direction);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Tab, modifiers,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Tab, modifiers,
                                 "move_focus_out", 1,
                                 CTK_TYPE_DIRECTION_TYPE, direction);
 }
@@ -619,12 +619,12 @@ add_arrow_bindings (CtkBindingSet    *binding_set,
                     guint             keysym,
                     CtkDirectionType  direction)
 {
-  guint keypad_keysym = keysym - GDK_KEY_Left + GDK_KEY_KP_Left;
+  guint keypad_keysym = keysym - CDK_KEY_Left + CDK_KEY_KP_Left;
 
-  ctk_binding_entry_add_signal (binding_set, keysym, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, keysym, CDK_CONTROL_MASK,
                                 "move_focus_out", 1,
                                 CTK_TYPE_DIRECTION_TYPE, direction);
-  ctk_binding_entry_add_signal (binding_set, keypad_keysym, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, keypad_keysym, CDK_CONTROL_MASK,
                                 "move_focus_out", 1,
                                 CTK_TYPE_DIRECTION_TYPE, direction);
 }
@@ -635,13 +635,13 @@ add_reorder_bindings (CtkBindingSet    *binding_set,
                       CtkDirectionType  direction,
                       gboolean          move_to_last)
 {
-  guint keypad_keysym = keysym - GDK_KEY_Left + GDK_KEY_KP_Left;
+  guint keypad_keysym = keysym - CDK_KEY_Left + CDK_KEY_KP_Left;
 
-  ctk_binding_entry_add_signal (binding_set, keysym, GDK_MOD1_MASK,
+  ctk_binding_entry_add_signal (binding_set, keysym, CDK_MOD1_MASK,
                                 "reorder_tab", 2,
                                 CTK_TYPE_DIRECTION_TYPE, direction,
                                 G_TYPE_BOOLEAN, move_to_last);
-  ctk_binding_entry_add_signal (binding_set, keypad_keysym, GDK_MOD1_MASK,
+  ctk_binding_entry_add_signal (binding_set, keypad_keysym, CDK_MOD1_MASK,
                                 "reorder_tab", 2,
                                 CTK_TYPE_DIRECTION_TYPE, direction,
                                 G_TYPE_BOOLEAN, move_to_last);
@@ -1219,65 +1219,65 @@ ctk_notebook_class_init (CtkNotebookClass *class)
 
   binding_set = ctk_binding_set_by_class (class);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_space, 0,
+                                CDK_KEY_space, 0,
                                 "select-page", 1,
                                 G_TYPE_BOOLEAN, FALSE);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_KP_Space, 0,
+                                CDK_KEY_KP_Space, 0,
                                 "select-page", 1,
                                 G_TYPE_BOOLEAN, FALSE);
 
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_Home, 0,
+                                CDK_KEY_Home, 0,
                                 "focus-tab", 1,
                                 CTK_TYPE_NOTEBOOK_TAB, CTK_NOTEBOOK_TAB_FIRST);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_KP_Home, 0,
+                                CDK_KEY_KP_Home, 0,
                                 "focus-tab", 1,
                                 CTK_TYPE_NOTEBOOK_TAB, CTK_NOTEBOOK_TAB_FIRST);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_End, 0,
+                                CDK_KEY_End, 0,
                                 "focus-tab", 1,
                                 CTK_TYPE_NOTEBOOK_TAB, CTK_NOTEBOOK_TAB_LAST);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_KP_End, 0,
+                                CDK_KEY_KP_End, 0,
                                 "focus-tab", 1,
                                 CTK_TYPE_NOTEBOOK_TAB, CTK_NOTEBOOK_TAB_LAST);
 
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_Page_Up, GDK_CONTROL_MASK,
+                                CDK_KEY_Page_Up, CDK_CONTROL_MASK,
                                 "change-current-page", 1,
                                 G_TYPE_INT, -1);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_Page_Down, GDK_CONTROL_MASK,
+                                CDK_KEY_Page_Down, CDK_CONTROL_MASK,
                                 "change-current-page", 1,
                                 G_TYPE_INT, 1);
 
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_Page_Up, GDK_CONTROL_MASK | GDK_MOD1_MASK,
+                                CDK_KEY_Page_Up, CDK_CONTROL_MASK | CDK_MOD1_MASK,
                                 "change-current-page", 1,
                                 G_TYPE_INT, -1);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_Page_Down, GDK_CONTROL_MASK | GDK_MOD1_MASK,
+                                CDK_KEY_Page_Down, CDK_CONTROL_MASK | CDK_MOD1_MASK,
                                 "change-current-page", 1,
                                 G_TYPE_INT, 1);
 
-  add_arrow_bindings (binding_set, GDK_KEY_Up, CTK_DIR_UP);
-  add_arrow_bindings (binding_set, GDK_KEY_Down, CTK_DIR_DOWN);
-  add_arrow_bindings (binding_set, GDK_KEY_Left, CTK_DIR_LEFT);
-  add_arrow_bindings (binding_set, GDK_KEY_Right, CTK_DIR_RIGHT);
+  add_arrow_bindings (binding_set, CDK_KEY_Up, CTK_DIR_UP);
+  add_arrow_bindings (binding_set, CDK_KEY_Down, CTK_DIR_DOWN);
+  add_arrow_bindings (binding_set, CDK_KEY_Left, CTK_DIR_LEFT);
+  add_arrow_bindings (binding_set, CDK_KEY_Right, CTK_DIR_RIGHT);
 
-  add_reorder_bindings (binding_set, GDK_KEY_Up, CTK_DIR_UP, FALSE);
-  add_reorder_bindings (binding_set, GDK_KEY_Down, CTK_DIR_DOWN, FALSE);
-  add_reorder_bindings (binding_set, GDK_KEY_Left, CTK_DIR_LEFT, FALSE);
-  add_reorder_bindings (binding_set, GDK_KEY_Right, CTK_DIR_RIGHT, FALSE);
-  add_reorder_bindings (binding_set, GDK_KEY_Home, CTK_DIR_LEFT, TRUE);
-  add_reorder_bindings (binding_set, GDK_KEY_Home, CTK_DIR_UP, TRUE);
-  add_reorder_bindings (binding_set, GDK_KEY_End, CTK_DIR_RIGHT, TRUE);
-  add_reorder_bindings (binding_set, GDK_KEY_End, CTK_DIR_DOWN, TRUE);
+  add_reorder_bindings (binding_set, CDK_KEY_Up, CTK_DIR_UP, FALSE);
+  add_reorder_bindings (binding_set, CDK_KEY_Down, CTK_DIR_DOWN, FALSE);
+  add_reorder_bindings (binding_set, CDK_KEY_Left, CTK_DIR_LEFT, FALSE);
+  add_reorder_bindings (binding_set, CDK_KEY_Right, CTK_DIR_RIGHT, FALSE);
+  add_reorder_bindings (binding_set, CDK_KEY_Home, CTK_DIR_LEFT, TRUE);
+  add_reorder_bindings (binding_set, CDK_KEY_Home, CTK_DIR_UP, TRUE);
+  add_reorder_bindings (binding_set, CDK_KEY_End, CTK_DIR_RIGHT, TRUE);
+  add_reorder_bindings (binding_set, CDK_KEY_End, CTK_DIR_DOWN, TRUE);
 
-  add_tab_bindings (binding_set, GDK_CONTROL_MASK, CTK_DIR_TAB_FORWARD);
-  add_tab_bindings (binding_set, GDK_CONTROL_MASK | GDK_SHIFT_MASK, CTK_DIR_TAB_BACKWARD);
+  add_tab_bindings (binding_set, CDK_CONTROL_MASK, CTK_DIR_TAB_FORWARD);
+  add_tab_bindings (binding_set, CDK_CONTROL_MASK | CDK_SHIFT_MASK, CTK_DIR_TAB_BACKWARD);
 
   ctk_container_class_handle_border_width (container_class);
 
@@ -1331,7 +1331,7 @@ ctk_notebook_init (CtkNotebook *notebook)
 
   ctk_drag_dest_set (CTK_WIDGET (notebook), 0,
                      dst_notebook_targets, G_N_ELEMENTS (dst_notebook_targets),
-                     GDK_ACTION_MOVE);
+                     CDK_ACTION_MOVE);
 
   ctk_drag_dest_set_track_motion (CTK_WIDGET (notebook), TRUE);
 
@@ -1976,17 +1976,17 @@ ctk_notebook_realize (CtkWidget *widget)
   ctk_widget_set_window (widget, window);
   g_object_ref (window);
 
-  attributes.window_type = GDK_WINDOW_CHILD;
+  attributes.window_type = CDK_WINDOW_CHILD;
   attributes.x = event_window_pos.x;
   attributes.y = event_window_pos.y;
   attributes.width = event_window_pos.width;
   attributes.height = event_window_pos.height;
-  attributes.wclass = GDK_INPUT_ONLY;
+  attributes.wclass = CDK_INPUT_ONLY;
   attributes.event_mask = ctk_widget_get_events (widget);
-  attributes.event_mask |= (GDK_BUTTON_PRESS_MASK |
-                            GDK_BUTTON_RELEASE_MASK | GDK_KEY_PRESS_MASK |
-                            GDK_POINTER_MOTION_MASK | GDK_ENTER_NOTIFY_MASK | GDK_LEAVE_NOTIFY_MASK);
-  attributes_mask = GDK_WA_X | GDK_WA_Y;
+  attributes.event_mask |= (CDK_BUTTON_PRESS_MASK |
+                            CDK_BUTTON_RELEASE_MASK | CDK_KEY_PRESS_MASK |
+                            CDK_POINTER_MOTION_MASK | CDK_ENTER_NOTIFY_MASK | CDK_LEAVE_NOTIFY_MASK);
+  attributes_mask = CDK_WA_X | CDK_WA_Y;
 
   priv->event_window = cdk_window_new (ctk_widget_get_parent_window (widget),
                                            &attributes, attributes_mask);
@@ -2672,14 +2672,14 @@ ctk_notebook_arrow_button_press (CtkNotebook      *notebook,
   priv->pressed_button = button;
   priv->click_child = arrow;
 
-  if (button == GDK_BUTTON_PRIMARY)
+  if (button == CDK_BUTTON_PRIMARY)
     {
       ctk_notebook_do_arrow (notebook, arrow);
       ctk_notebook_set_scroll_timer (notebook);
     }
-  else if (button == GDK_BUTTON_MIDDLE)
+  else if (button == CDK_BUTTON_MIDDLE)
     ctk_notebook_page_select (notebook, TRUE);
-  else if (button == GDK_BUTTON_SECONDARY)
+  else if (button == CDK_BUTTON_SECONDARY)
     ctk_notebook_switch_focus_tab (notebook,
                                    ctk_notebook_search_page (notebook,
                                                              NULL,
@@ -2771,7 +2771,7 @@ ctk_notebook_button_press (CtkWidget      *widget,
   CtkNotebookArrow arrow;
   gdouble x, y;
 
-  if (event->type != GDK_BUTTON_PRESS || !priv->children)
+  if (event->type != CDK_BUTTON_PRESS || !priv->children)
     return FALSE;
 
   if (!get_widget_coordinates (widget, (CdkEvent *)event, &x, &y))
@@ -2787,7 +2787,7 @@ ctk_notebook_button_press (CtkWidget      *widget,
       return TRUE;
     }
 
-  if (event->button != GDK_BUTTON_PRIMARY)
+  if (event->button != CDK_BUTTON_PRIMARY)
     return FALSE;
 
   if ((tab = get_tab_at_pos (notebook, x, y)) != NULL)
@@ -2845,28 +2845,28 @@ ctk_notebook_popup_menu (CtkWidget *widget)
       if (tab_label)
         {
           g_object_set (priv->menu,
-                        "anchor-hints", (GDK_ANCHOR_FLIP_Y |
-                                         GDK_ANCHOR_SLIDE |
-                                         GDK_ANCHOR_RESIZE),
+                        "anchor-hints", (CDK_ANCHOR_FLIP_Y |
+                                         CDK_ANCHOR_SLIDE |
+                                         CDK_ANCHOR_RESIZE),
                         NULL);
 
           ctk_menu_popup_at_widget (CTK_MENU (priv->menu),
                                     tab_label,
-                                    GDK_GRAVITY_SOUTH_WEST,
-                                    GDK_GRAVITY_NORTH_WEST,
+                                    CDK_GRAVITY_SOUTH_WEST,
+                                    CDK_GRAVITY_NORTH_WEST,
                                     NULL);
         }
       else
         {
           g_object_set (priv->menu,
-                        "anchor-hints", (GDK_ANCHOR_SLIDE |
-                                         GDK_ANCHOR_RESIZE),
+                        "anchor-hints", (CDK_ANCHOR_SLIDE |
+                                         CDK_ANCHOR_RESIZE),
                         NULL);
 
           ctk_menu_popup_at_widget (CTK_MENU (priv->menu),
                                     widget,
-                                    GDK_GRAVITY_NORTH_WEST,
-                                    GDK_GRAVITY_NORTH_WEST,
+                                    CDK_GRAVITY_NORTH_WEST,
+                                    CDK_GRAVITY_NORTH_WEST,
                                     NULL);
         }
 
@@ -2983,11 +2983,11 @@ show_drag_window (CtkNotebook        *notebook,
       attributes.y = priv->drag_window_y;
       attributes.width = allocation.width;
       attributes.height = allocation.height;
-      attributes.window_type = GDK_WINDOW_CHILD;
-      attributes.wclass = GDK_INPUT_OUTPUT;
+      attributes.window_type = CDK_WINDOW_CHILD;
+      attributes.wclass = CDK_INPUT_OUTPUT;
       attributes.visual = ctk_widget_get_visual (widget);
-      attributes.event_mask = GDK_VISIBILITY_NOTIFY_MASK | GDK_POINTER_MOTION_MASK;
-      attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
+      attributes.event_mask = CDK_VISIBILITY_NOTIFY_MASK | CDK_POINTER_MOTION_MASK;
+      attributes_mask = CDK_WA_X | CDK_WA_Y | CDK_WA_VISUAL;
 
       priv->drag_window = cdk_window_new (ctk_widget_get_parent_window (widget),
                                           &attributes,
@@ -3007,7 +3007,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
   /* the grab will dissapear when the window is hidden */
   cdk_seat_grab (cdk_device_get_seat (device), priv->drag_window,
-                 GDK_SEAT_CAPABILITY_ALL, FALSE,
+                 CDK_SEAT_CAPABILITY_ALL, FALSE,
                  NULL, NULL, prepare_drag_window, notebook);
 }
 
@@ -3109,7 +3109,7 @@ ctk_notebook_button_release (CtkWidget      *widget,
   CtkNotebook *notebook;
   CtkNotebookPrivate *priv;
 
-  if (event->type != GDK_BUTTON_RELEASE)
+  if (event->type != CDK_BUTTON_RELEASE)
     return FALSE;
 
   notebook = CTK_NOTEBOOK (widget);
@@ -3311,7 +3311,7 @@ ctk_notebook_motion_notify (CtkWidget      *widget,
   if (!page)
     return FALSE;
 
-  if (!(event->state & GDK_BUTTON1_MASK) &&
+  if (!(event->state & CDK_BUTTON1_MASK) &&
       priv->pressed_button != 0)
     {
       ctk_notebook_stop_reorder (notebook);
@@ -3343,7 +3343,7 @@ ctk_notebook_motion_notify (CtkWidget      *widget,
     {
       priv->detached_tab = priv->cur_page;
 
-      ctk_drag_begin_with_coordinates (widget, priv->source_targets, GDK_ACTION_MOVE,
+      ctk_drag_begin_with_coordinates (widget, priv->source_targets, CDK_ACTION_MOVE,
                                        priv->pressed_button, (CdkEvent*) event,
                                        priv->drag_begin_x, priv->drag_begin_y);
       return TRUE;
@@ -3863,7 +3863,7 @@ ctk_notebook_drag_motion (CtkWidget      *widget,
           !(widget == source_child ||
             ctk_widget_is_ancestor (widget, source_child)))
         {
-          cdk_drag_status (context, GDK_ACTION_MOVE, time);
+          cdk_drag_status (context, CDK_ACTION_MOVE, time);
           goto out;
         }
       else

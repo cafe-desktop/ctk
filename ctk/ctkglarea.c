@@ -289,15 +289,15 @@ ctk_gl_area_realize (CtkWidget *widget)
 
   ctk_widget_get_allocation (widget, &allocation);
 
-  attributes.window_type = GDK_WINDOW_CHILD;
+  attributes.window_type = CDK_WINDOW_CHILD;
   attributes.x = allocation.x;
   attributes.y = allocation.y;
   attributes.width = allocation.width;
   attributes.height = allocation.height;
-  attributes.wclass = GDK_INPUT_ONLY;
+  attributes.wclass = CDK_INPUT_ONLY;
   attributes.event_mask = ctk_widget_get_events (widget);
 
-  attributes_mask = GDK_WA_X | GDK_WA_Y;
+  attributes_mask = CDK_WA_X | CDK_WA_Y;
 
   priv->event_window = cdk_window_new (ctk_widget_get_parent_window (widget),
                                        &attributes, attributes_mask);
@@ -309,8 +309,8 @@ ctk_gl_area_realize (CtkWidget *widget)
 
   /* In case the signal failed, but did not set an error */
   if (priv->context == NULL && priv->error == NULL)
-    g_set_error_literal (&priv->error, GDK_GL_ERROR,
-                         GDK_GL_ERROR_NOT_AVAILABLE,
+    g_set_error_literal (&priv->error, CDK_GL_ERROR,
+                         CDK_GL_ERROR_NOT_AVAILABLE,
                          _("OpenGL context creation failed"));
 
   priv->needs_resize = TRUE;
@@ -783,7 +783,7 @@ ctk_gl_area_class_init (CtkGLAreaClass *klass)
     g_param_spec_object ("context",
                          P_("Context"),
                          P_("The GL context"),
-                         GDK_TYPE_GL_CONTEXT,
+                         CDK_TYPE_GL_CONTEXT,
                          G_PARAM_READABLE |
                          G_PARAM_STATIC_STRINGS);
 
@@ -916,7 +916,7 @@ ctk_gl_area_class_init (CtkGLAreaClass *klass)
                   _ctk_boolean_handled_accumulator, NULL,
                   _ctk_marshal_BOOLEAN__OBJECT,
                   G_TYPE_BOOLEAN, 1,
-                  GDK_TYPE_GL_CONTEXT);
+                  CDK_TYPE_GL_CONTEXT);
   g_signal_set_va_marshaller (area_signals[RENDER],
                               G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_BOOLEAN__OBJECTv);
@@ -978,7 +978,7 @@ ctk_gl_area_class_init (CtkGLAreaClass *klass)
                   G_STRUCT_OFFSET (CtkGLAreaClass, create_context),
                   create_context_accumulator, NULL,
                   _ctk_marshal_OBJECT__VOID,
-                  GDK_TYPE_GL_CONTEXT, 0);
+                  CDK_TYPE_GL_CONTEXT, 0);
   g_signal_set_va_marshaller (area_signals[CREATE_CONTEXT],
                               G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_OBJECT__VOIDv);

@@ -62,16 +62,16 @@ typedef enum {
   CTK_EVENT_CONTROLLER_SCROLL_BOTH_AXES  = (CTK_EVENT_CONTROLLER_SCROLL_VERTICAL | CTK_EVENT_CONTROLLER_SCROLL_HORIZONTAL),
 } CtkEventControllerScrollFlags;
 
-GDK_AVAILABLE_IN_3_24
+CDK_AVAILABLE_IN_3_24
 GType               ctk_event_controller_scroll_get_type  (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_3_24
+CDK_AVAILABLE_IN_3_24
 CtkEventController *ctk_event_controller_scroll_new (CtkWidget                     *widget,
                                                      CtkEventControllerScrollFlags  flags);
-GDK_AVAILABLE_IN_3_24
+CDK_AVAILABLE_IN_3_24
 void                ctk_event_controller_scroll_set_flags (CtkEventControllerScroll      *controller,
                                                            CtkEventControllerScrollFlags  flags);
-GDK_AVAILABLE_IN_3_24
+CDK_AVAILABLE_IN_3_24
 CtkEventControllerScrollFlags
                     ctk_event_controller_scroll_get_flags (CtkEventControllerScroll      *controller);
 

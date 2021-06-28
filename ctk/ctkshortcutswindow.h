@@ -48,7 +48,7 @@ struct _CtkShortcutsWindowClass
   void (*search) (CtkShortcutsWindow *self);
 };
 
-GDK_AVAILABLE_IN_3_20
+CDK_AVAILABLE_IN_3_20
 GType ctk_shortcuts_window_get_type (void) G_GNUC_CONST;
 
 G_DEFINE_AUTOPTR_CLEANUP_FUNC(CtkShortcutsWindow, g_object_unref)

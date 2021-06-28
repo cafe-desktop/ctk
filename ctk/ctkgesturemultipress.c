@@ -211,9 +211,9 @@ ctk_gesture_multi_press_begin (CtkGesture       *gesture,
   current = ctk_gesture_single_get_current_sequence (CTK_GESTURE_SINGLE (gesture));
   device = cdk_event_get_source_device (event);
 
-  if (event->type == GDK_BUTTON_PRESS)
+  if (event->type == CDK_BUTTON_PRESS)
     button = event->button.button;
-  else if (event->type == GDK_TOUCH_BEGIN)
+  else if (event->type == CDK_TOUCH_BEGIN)
     button = 1;
   else
     return;

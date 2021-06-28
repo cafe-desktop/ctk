@@ -35,13 +35,13 @@
  * @Short_description: Object representing a physical screen
  * @Title: CdkScreen
  *
- * #CdkScreen objects are the GDK representation of the screen on
+ * #CdkScreen objects are the CDK representation of the screen on
  * which windows can be displayed and on which the pointer moves.
  * X originally identified screens with physical screens, but
  * nowadays it is more common to have a single #CdkScreen which
  * combines several physical monitors (see cdk_screen_get_n_monitors()).
  *
- * CdkScreen is used throughout GDK and CTK+ to specify which screen
+ * CdkScreen is used throughout CDK and CTK+ to specify which screen
  * the top level windows are to be displayed on. it is also used to
  * query the screen specification and default settings such as
  * the default visual (cdk_screen_get_system_visual()), the dimensions
@@ -176,7 +176,7 @@ cdk_screen_init (CdkScreen *screen)
 static void
 cdk_screen_finalize (GObject *object)
 {
-  CdkScreen *screen = GDK_SCREEN (object);
+  CdkScreen *screen = CDK_SCREEN (object);
 
   if (screen->font_options)
       cairo_font_options_destroy (screen->font_options);
@@ -187,7 +187,7 @@ cdk_screen_finalize (GObject *object)
 void 
 _cdk_screen_close (CdkScreen *screen)
 {
-  g_return_if_fail (GDK_IS_SCREEN (screen));
+  g_return_if_fail (CDK_IS_SCREEN (screen));
 
   if (!screen->closed)
     {
@@ -235,7 +235,7 @@ cdk_screen_get_monitor_at_point (CdkScreen *screen,
   CdkDisplay *display;
   CdkMonitor *monitor;
 
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), -1);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), -1);
 
   display = cdk_screen_get_display (screen);
   monitor = cdk_display_get_monitor_at_point (display, x, y);
@@ -265,8 +265,8 @@ cdk_screen_get_monitor_at_window (CdkScreen *screen,
   CdkDisplay *display;
   CdkMonitor *monitor;
 
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), -1);
-  g_return_val_if_fail (GDK_IS_WINDOW (window), -1);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), -1);
+  g_return_val_if_fail (CDK_IS_WINDOW (window), -1);
 
   display = cdk_screen_get_display (screen);
   monitor = cdk_display_get_monitor_at_window (display, window);
@@ -367,7 +367,7 @@ void
 cdk_screen_set_font_options (CdkScreen                  *screen,
 			     const cairo_font_options_t *options)
 {
-  g_return_if_fail (GDK_IS_SCREEN (screen));
+  g_return_if_fail (CDK_IS_SCREEN (screen));
 
   if (screen->font_options != options)
     {
@@ -397,7 +397,7 @@ cdk_screen_set_font_options (CdkScreen                  *screen,
 const cairo_font_options_t *
 cdk_screen_get_font_options (CdkScreen *screen)
 {
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), NULL);
 
   return screen->font_options;
 }
@@ -419,7 +419,7 @@ void
 cdk_screen_set_resolution (CdkScreen *screen,
 			   gdouble    dpi)
 {
-  g_return_if_fail (GDK_IS_SCREEN (screen));
+  g_return_if_fail (CDK_IS_SCREEN (screen));
 
   if (dpi < 0)
     dpi = -1.0;
@@ -444,7 +444,7 @@ void
 _cdk_screen_set_resolution (CdkScreen *screen,
                             gdouble    dpi)
 {
-  g_return_if_fail (GDK_IS_SCREEN (screen));
+  g_return_if_fail (CDK_IS_SCREEN (screen));
 
   if (dpi < 0)
     dpi = -1.0;
@@ -472,7 +472,7 @@ _cdk_screen_set_resolution (CdkScreen *screen,
 gdouble
 cdk_screen_get_resolution (CdkScreen *screen)
 {
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), -1.0);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), -1.0);
 
   return screen->resolution;
 }
@@ -483,7 +483,7 @@ cdk_screen_get_property (GObject      *object,
 			 GValue       *value,
 			 GParamSpec   *pspec)
 {
-  CdkScreen *screen = GDK_SCREEN (object);
+  CdkScreen *screen = CDK_SCREEN (object);
 
   switch (prop_id)
     {
@@ -505,7 +505,7 @@ cdk_screen_set_property (GObject      *object,
 			 const GValue *value,
 			 GParamSpec   *pspec)
 {
-  CdkScreen *screen = GDK_SCREEN (object);
+  CdkScreen *screen = CDK_SCREEN (object);
 
   switch (prop_id)
     {
@@ -534,9 +534,9 @@ cdk_screen_set_property (GObject      *object,
 CdkDisplay *
 cdk_screen_get_display (CdkScreen *screen)
 {
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), NULL);
 
-  return GDK_SCREEN_GET_CLASS (screen)->get_display (screen);
+  return CDK_SCREEN_GET_CLASS (screen)->get_display (screen);
 }
 
 
@@ -557,9 +557,9 @@ cdk_screen_get_display (CdkScreen *screen)
 gint
 cdk_screen_get_width (CdkScreen *screen)
 {
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), 0);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), 0);
 
-  return GDK_SCREEN_GET_CLASS (screen)->get_width (screen);
+  return CDK_SCREEN_GET_CLASS (screen)->get_width (screen);
 }
 
 /**
@@ -579,9 +579,9 @@ cdk_screen_get_width (CdkScreen *screen)
 gint
 cdk_screen_get_height (CdkScreen *screen)
 {
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), 0);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), 0);
 
-  return GDK_SCREEN_GET_CLASS (screen)->get_height (screen);
+  return CDK_SCREEN_GET_CLASS (screen)->get_height (screen);
 }
 
 /**
@@ -603,9 +603,9 @@ cdk_screen_get_height (CdkScreen *screen)
 gint
 cdk_screen_get_width_mm (CdkScreen *screen)
 {
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), 0);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), 0);
 
-  return GDK_SCREEN_GET_CLASS (screen)->get_width_mm (screen);
+  return CDK_SCREEN_GET_CLASS (screen)->get_width_mm (screen);
 }
 
 /**
@@ -627,9 +627,9 @@ cdk_screen_get_width_mm (CdkScreen *screen)
 gint
 cdk_screen_get_height_mm (CdkScreen *screen)
 {
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), 0);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), 0);
 
-  return GDK_SCREEN_GET_CLASS (screen)->get_height_mm (screen);
+  return CDK_SCREEN_GET_CLASS (screen)->get_height_mm (screen);
 }
 
 /**
@@ -648,9 +648,9 @@ cdk_screen_get_height_mm (CdkScreen *screen)
 gint
 cdk_screen_get_number (CdkScreen *screen)
 {
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), 0);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), 0);
 
-  return GDK_SCREEN_GET_CLASS (screen)->get_number (screen);
+  return CDK_SCREEN_GET_CLASS (screen)->get_number (screen);
 }
 
 /**
@@ -666,9 +666,9 @@ cdk_screen_get_number (CdkScreen *screen)
 CdkWindow *
 cdk_screen_get_root_window (CdkScreen *screen)
 {
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), NULL);
 
-  return GDK_SCREEN_GET_CLASS (screen)->get_root_window (screen);
+  return CDK_SCREEN_GET_CLASS (screen)->get_root_window (screen);
 }
 
 static CdkMonitor *
@@ -698,7 +698,7 @@ cdk_screen_get_n_monitors (CdkScreen *screen)
 {
   CdkDisplay *display;
 
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), 0);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), 0);
 
   display = cdk_screen_get_display (screen);
   return cdk_display_get_n_monitors (display);
@@ -729,7 +729,7 @@ cdk_screen_get_primary_monitor (CdkScreen *screen)
   CdkDisplay *display;
   CdkMonitor *primary;
 
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), 0);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), 0);
 
   display = cdk_screen_get_display (screen);
   primary = cdk_display_get_primary_monitor (display);
@@ -758,7 +758,7 @@ cdk_screen_get_monitor_width_mm	(CdkScreen *screen,
 {
   CdkMonitor *monitor;
 
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), -1);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), -1);
 
   monitor = get_monitor (screen, monitor_num);
 
@@ -786,7 +786,7 @@ cdk_screen_get_monitor_height_mm (CdkScreen *screen,
 {
   CdkMonitor *monitor;
 
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), -1);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), -1);
 
   monitor = get_monitor (screen, monitor_num);
 
@@ -817,7 +817,7 @@ cdk_screen_get_monitor_plug_name (CdkScreen *screen,
 {
   CdkMonitor *monitor;
 
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), NULL);
 
   monitor = get_monitor (screen, monitor_num);
 
@@ -855,7 +855,7 @@ cdk_screen_get_monitor_geometry (CdkScreen    *screen,
 {
   CdkMonitor *monitor;
 
-  g_return_if_fail (GDK_IS_SCREEN (screen));
+  g_return_if_fail (CDK_IS_SCREEN (screen));
 
   monitor = get_monitor (screen, monitor_num);
 
@@ -898,7 +898,7 @@ cdk_screen_get_monitor_workarea (CdkScreen    *screen,
 {
   CdkMonitor *monitor;
 
-  g_return_if_fail (GDK_IS_SCREEN (screen));
+  g_return_if_fail (CDK_IS_SCREEN (screen));
 
   monitor = get_monitor (screen, monitor_num);
 
@@ -926,9 +926,9 @@ cdk_screen_get_monitor_workarea (CdkScreen    *screen,
 GList *
 cdk_screen_list_visuals (CdkScreen *screen)
 {
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), NULL);
 
-  return GDK_SCREEN_GET_CLASS (screen)->list_visuals (screen);
+  return CDK_SCREEN_GET_CLASS (screen)->list_visuals (screen);
 }
 
 /**
@@ -946,9 +946,9 @@ cdk_screen_list_visuals (CdkScreen *screen)
 CdkVisual *
 cdk_screen_get_system_visual (CdkScreen * screen)
 {
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), NULL);
 
-  return GDK_SCREEN_GET_CLASS (screen)->get_system_visual (screen);
+  return CDK_SCREEN_GET_CLASS (screen)->get_system_visual (screen);
 }
 
 /**
@@ -978,9 +978,9 @@ cdk_screen_get_system_visual (CdkScreen * screen)
 CdkVisual *
 cdk_screen_get_rgba_visual (CdkScreen *screen)
 {
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), NULL);
 
-  return GDK_SCREEN_GET_CLASS (screen)->get_rgba_visual (screen);
+  return CDK_SCREEN_GET_CLASS (screen)->get_rgba_visual (screen);
 }
 
 /**
@@ -1002,9 +1002,9 @@ cdk_screen_get_rgba_visual (CdkScreen *screen)
 gboolean
 cdk_screen_is_composited (CdkScreen *screen)
 {
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), FALSE);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), FALSE);
 
-  return GDK_SCREEN_GET_CLASS (screen)->is_composited (screen);
+  return CDK_SCREEN_GET_CLASS (screen)->is_composited (screen);
 }
 
 /**
@@ -1023,9 +1023,9 @@ cdk_screen_is_composited (CdkScreen *screen)
 gchar *
 cdk_screen_make_display_name (CdkScreen *screen)
 {
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), NULL);
 
-  return GDK_SCREEN_GET_CLASS (screen)->make_display_name (screen);
+  return CDK_SCREEN_GET_CLASS (screen)->make_display_name (screen);
 }
 
 /**
@@ -1057,9 +1057,9 @@ cdk_screen_make_display_name (CdkScreen *screen)
 CdkWindow *
 cdk_screen_get_active_window (CdkScreen *screen)
 {
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), NULL);
 
-  return GDK_SCREEN_GET_CLASS (screen)->get_active_window (screen);
+  return CDK_SCREEN_GET_CLASS (screen)->get_active_window (screen);
 }
 
 /**
@@ -1090,9 +1090,9 @@ cdk_screen_get_active_window (CdkScreen *screen)
 GList *
 cdk_screen_get_window_stack (CdkScreen *screen)
 {
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), NULL);
 
-  return GDK_SCREEN_GET_CLASS (screen)->get_window_stack (screen);
+  return CDK_SCREEN_GET_CLASS (screen)->get_window_stack (screen);
 }
 
 /**
@@ -1117,11 +1117,11 @@ cdk_screen_get_setting (CdkScreen   *screen,
 			const gchar *name,
 			GValue      *value)
 {
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), FALSE);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), FALSE);
   g_return_val_if_fail (name != NULL, FALSE);
   g_return_val_if_fail (value != NULL, FALSE);
 
-  return GDK_SCREEN_GET_CLASS (screen)->get_setting (screen, name, value);
+  return CDK_SCREEN_GET_CLASS (screen)->get_setting (screen, name, value);
 }
 
 /**
@@ -1149,7 +1149,7 @@ cdk_screen_get_monitor_scale_factor (CdkScreen *screen,
 {
   CdkMonitor *monitor;
 
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), 1);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), 1);
   g_return_val_if_fail (monitor_num >= 0, 1);
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   g_return_val_if_fail (monitor_num < cdk_screen_get_n_monitors (screen), 1);

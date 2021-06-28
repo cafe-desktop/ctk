@@ -69,29 +69,29 @@ struct _CtkSearchBarClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 GType       ctk_search_bar_get_type        (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 CtkWidget*  ctk_search_bar_new             (void);
 
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void        ctk_search_bar_connect_entry   (CtkSearchBar *bar,
                                             CtkEntry     *entry);
 
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 gboolean    ctk_search_bar_get_search_mode (CtkSearchBar *bar);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void        ctk_search_bar_set_search_mode (CtkSearchBar *bar,
                                             gboolean      search_mode);
 
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 gboolean    ctk_search_bar_get_show_close_button (CtkSearchBar *bar);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void        ctk_search_bar_set_show_close_button (CtkSearchBar *bar,
                                                   gboolean      visible);
 
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 gboolean    ctk_search_bar_handle_event    (CtkSearchBar *bar,
                                             CdkEvent     *event);
 

@@ -109,8 +109,8 @@ msgid "Default Display"
 msgstr "സ്വതവേയുളള ഡിസ്പ്ലെെ"
 
 #: cdk/cdkdisplaymanager.c:103
-msgid "The default display for GDK"
-msgstr "GDK യ്‌ക്ക് വേണ്ടി സ്വതവേയുളള ഡിസ്പ്ലെെ"
+msgid "The default display for CDK"
+msgstr "CDK യ്‌ക്ക് വേണ്ടി സ്വതവേയുളള ഡിസ്പ്ലെെ"
 
 #: cdk/cdkscreen.c:72
 msgid "Font options"

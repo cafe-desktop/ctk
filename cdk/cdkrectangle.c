@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -33,7 +33,7 @@
  * @Short_description: Simple graphical data types
  * @Title: Points and Rectangles
  *
- * GDK provides the #CdkPoint and #CdkRectangle data types for representing pixels
+ * CDK provides the #CdkPoint and #CdkRectangle data types for representing pixels
  * and sets of pixels on the screen. Together with Cairo’s #cairo_region_t data
  * type, they make up the central types for representing graphical data.
  *
@@ -183,7 +183,7 @@ cdk_rectangle_register_value_transform_funcs (GType gtype_cdk_rectangle)
   /* This function is called from the first call to cdk_rectangle_get_type(),
    * before g_once_init_leave() has been called.
    * If cdk_rectangle_get_type() is called from here (e.g. via
-   * GDK_TYPE_RECTANGLE), the program will wait indefinitely at
+   * CDK_TYPE_RECTANGLE), the program will wait indefinitely at
    * g_once_init_enter() in cdk_rectangle_get_type().
    */
   g_value_register_transform_func (CAIRO_GOBJECT_TYPE_RECTANGLE_INT,

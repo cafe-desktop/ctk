@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -22,10 +22,10 @@
  * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
-#ifndef __GDK_X11_CURSOR_H__
-#define __GDK_X11_CURSOR_H__
+#ifndef __CDK_X11_CURSOR_H__
+#define __CDK_X11_CURSOR_H__
 
-#if !defined (__GDKX_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined (__CDKX_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdkx.h> can be included directly."
 #endif
 
@@ -36,48 +36,48 @@
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_X11_CURSOR              (cdk_x11_cursor_get_type ())
-#define GDK_X11_CURSOR(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_X11_CURSOR, CdkX11Cursor))
-#define GDK_X11_CURSOR_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_X11_CURSOR, CdkX11CursorClass))
-#define GDK_IS_X11_CURSOR(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_X11_CURSOR))
-#define GDK_IS_X11_CURSOR_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_X11_CURSOR))
-#define GDK_X11_CURSOR_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_X11_CURSOR, CdkX11CursorClass))
+#define CDK_TYPE_X11_CURSOR              (cdk_x11_cursor_get_type ())
+#define CDK_X11_CURSOR(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), CDK_TYPE_X11_CURSOR, CdkX11Cursor))
+#define CDK_X11_CURSOR_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CDK_TYPE_X11_CURSOR, CdkX11CursorClass))
+#define CDK_IS_X11_CURSOR(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), CDK_TYPE_X11_CURSOR))
+#define CDK_IS_X11_CURSOR_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CDK_TYPE_X11_CURSOR))
+#define CDK_X11_CURSOR_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CDK_TYPE_X11_CURSOR, CdkX11CursorClass))
 
-#ifdef GDK_COMPILATION
+#ifdef CDK_COMPILATION
 typedef struct _CdkX11Cursor CdkX11Cursor;
 #else
 typedef CdkCursor CdkX11Cursor;
 #endif
 typedef struct _CdkX11CursorClass CdkX11CursorClass;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType    cdk_x11_cursor_get_type          (void);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 Display *cdk_x11_cursor_get_xdisplay      (CdkCursor   *cursor);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 Cursor   cdk_x11_cursor_get_xcursor       (CdkCursor   *cursor);
 
 /**
- * GDK_CURSOR_XDISPLAY:
+ * CDK_CURSOR_XDISPLAY:
  * @cursor: a #CdkCursor.
  *
  * Returns the display of a #CdkCursor.
  *
  * Returns: an Xlib Display*.
  */
-#define GDK_CURSOR_XDISPLAY(cursor)   (cdk_x11_cursor_get_xdisplay (cursor))
+#define CDK_CURSOR_XDISPLAY(cursor)   (cdk_x11_cursor_get_xdisplay (cursor))
 
 /**
- * GDK_CURSOR_XCURSOR:
+ * CDK_CURSOR_XCURSOR:
  * @cursor: a #CdkCursor.
  *
  * Returns the X cursor belonging to a #CdkCursor.
  *
  * Returns: an Xlib Cursor.
  */
-#define GDK_CURSOR_XCURSOR(cursor)    (cdk_x11_cursor_get_xcursor (cursor))
+#define CDK_CURSOR_XCURSOR(cursor)    (cdk_x11_cursor_get_xcursor (cursor))
 
 G_END_DECLS
 
-#endif /* __GDK_X11_CURSOR_H__ */
+#endif /* __CDK_X11_CURSOR_H__ */

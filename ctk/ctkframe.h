@@ -79,34 +79,34 @@ struct _CtkFrameClass
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType      ctk_frame_get_type         (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_frame_new              (const gchar   *label);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_frame_set_label (CtkFrame    *frame,
                                    const gchar *label);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar * ctk_frame_get_label (CtkFrame    *frame);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_frame_set_label_widget (CtkFrame      *frame,
 				       CtkWidget     *label_widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *ctk_frame_get_label_widget (CtkFrame      *frame);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_frame_set_label_align  (CtkFrame      *frame,
 				       gfloat         xalign,
 				       gfloat         yalign);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_frame_get_label_align  (CtkFrame      *frame,
 				       gfloat        *xalign,
 				       gfloat        *yalign);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_frame_set_shadow_type  (CtkFrame      *frame,
 				       CtkShadowType  type);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkShadowType ctk_frame_get_shadow_type (CtkFrame    *frame);
 
 

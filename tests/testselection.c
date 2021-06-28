@@ -114,7 +114,7 @@ init_atoms (void)
 {
   int i;
 
-  seltypes[SEL_TYPE_NONE] = GDK_NONE;
+  seltypes[SEL_TYPE_NONE] = CDK_NONE;
   seltypes[APPLE_PICT] = cdk_atom_intern ("APPLE_PICT",FALSE);
   seltypes[ATOM]       = cdk_atom_intern ("ATOM",FALSE);
   seltypes[ATOM_PAIR]  = cdk_atom_intern ("ATOM_PAIR",FALSE);
@@ -141,8 +141,8 @@ selection_toggled (CtkWidget *widget)
   if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (widget)))
     {
       have_selection = ctk_selection_owner_set (selection_widget,
-						GDK_SELECTION_PRIMARY,
-						GDK_CURRENT_TIME);
+						CDK_SELECTION_PRIMARY,
+						CDK_CURRENT_TIME);
       if (!have_selection)
 	ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON(widget), FALSE);
     }
@@ -150,9 +150,9 @@ selection_toggled (CtkWidget *widget)
     {
       if (have_selection)
 	{
-          if (cdk_selection_owner_get (GDK_SELECTION_PRIMARY) == ctk_widget_get_window (widget))
-	    ctk_selection_owner_set (NULL, GDK_SELECTION_PRIMARY,
-				     GDK_CURRENT_TIME);
+          if (cdk_selection_owner_get (CDK_SELECTION_PRIMARY) == ctk_widget_get_window (widget))
+	    ctk_selection_owner_set (NULL, CDK_SELECTION_PRIMARY,
+				     CDK_CURRENT_TIME);
 	  have_selection = FALSE;
 	}
     }
@@ -167,7 +167,7 @@ selection_get (CtkWidget *widget,
 {
   guchar *buffer;
   gint len;
-  CdkAtom type = GDK_NONE;
+  CdkAtom type = CDK_NONE;
 
   if (!selection_string)
     {
@@ -368,14 +368,14 @@ paste (CtkWidget *dialog, gint response, CtkWidget *entry)
   name = ctk_entry_get_text (CTK_ENTRY(entry));
   atom = cdk_atom_intern (name, FALSE);
 
-  if (atom == GDK_NONE)
+  if (atom == CDK_NONE)
     {
       g_print("Could not create atom: \"%s\"\n",name);
       return;
     }
 
-  ctk_selection_convert (selection_widget, GDK_SELECTION_PRIMARY, atom, 
-			 GDK_CURRENT_TIME);
+  ctk_selection_convert (selection_widget, CDK_SELECTION_PRIMARY, atom, 
+			 CDK_CURRENT_TIME);
 }
 
 void
@@ -434,7 +434,7 @@ main (int argc, char *argv[])
   g_signal_connect (selection_widget, "selection_received",
 		    G_CALLBACK (selection_received), NULL);
 
-  ctk_selection_add_targets (selection_widget, GDK_SELECTION_PRIMARY,
+  ctk_selection_add_targets (selection_widget, CDK_SELECTION_PRIMARY,
 			     targetlist, ntargets);
 
   g_signal_connect (selection_widget, "selection_get",

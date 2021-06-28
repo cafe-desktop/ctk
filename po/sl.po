@@ -71,8 +71,8 @@ msgstr "PRIKAZ"
 
 #. Description of --cdk-debug=FLAGS in --help output
 #: cdk/cdk.c:240
-msgid "GDK debugging flags to set"
-msgstr "Zastavice razhroščevanja GDK, ki naj bodo nastavljene"
+msgid "CDK debugging flags to set"
+msgstr "Zastavice razhroščevanja CDK, ki naj bodo nastavljene"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
@@ -84,12 +84,12 @@ msgstr "ZASTAVICE"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: cdk/cdk.c:243
-msgid "GDK debugging flags to unset"
-msgstr "Zastavice rahroščevanja GDK, ki naj ne bodo nastavljene"
+msgid "CDK debugging flags to unset"
+msgstr "Zastavice rahroščevanja CDK, ki naj ne bodo nastavljene"
 
 #: cdk/cdkwindow.c:2851
-msgid "GL support disabled via GDK_DEBUG"
-msgstr "Podpora GL je onemogočena prek GDK_DEBUG"
+msgid "GL support disabled via CDK_DEBUG"
+msgstr "Podpora GL je onemogočena prek CDK_DEBUG"
 
 #: cdk/cdkwindow.c:2862
 msgid "The current backend does not support OpenGL"
@@ -4167,8 +4167,8 @@ msgid "CTK+ Version"
 msgstr "Različica CTK+"
 
 #: ctk/inspector/general.ui:68
-msgid "GDK Backend"
-msgstr "Ozadnji program GDK"
+msgid "CDK Backend"
+msgstr "Ozadnji program CDK"
 
 #: ctk/inspector/general.ui:373
 msgid "Display"
@@ -4541,10 +4541,10 @@ msgstr "Nastavitev je vključena v privzeto vrednost CTK_TEST_TOUCHSCREEN"
 #: ctk/inspector/visual.c:817
 msgid ""
 "Not settable at runtime.\n"
-"Use GDK_GL=always or GDK_GL=disable instead"
+"Use CDK_GL=always or CDK_GL=disable instead"
 msgstr ""
 "Možnost ni nastavljiva med delovanjem.\n"
-"Uporabiti je treba nastavitvi GDK_GL=always ali GDK_GL=disable"
+"Uporabiti je treba nastavitvi CDK_GL=always ali CDK_GL=disable"
 
 #: ctk/inspector/visual.c:831 ctk/inspector/visual.c:832
 #: ctk/inspector/visual.c:833
@@ -8503,8 +8503,8 @@ msgstr "Natisni na preizkusnem tiskalniku"
 #~ msgid "No compatible formats to transfer contents."
 #~ msgstr "Ni skladnih zapisov za prenos vsebine."
 
-#~ msgid "Vulkan support disabled via GDK_DEBUG"
-#~ msgstr "Podpora Vulkan je onemogočena prek GDK_DEBUG"
+#~ msgid "Vulkan support disabled via CDK_DEBUG"
+#~ msgstr "Podpora Vulkan je onemogočena prek CDK_DEBUG"
 
 #~ msgid "Format %s not supported"
 #~ msgstr "Zapis %s ni podprt."

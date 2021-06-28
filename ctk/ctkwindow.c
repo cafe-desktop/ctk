@@ -69,19 +69,19 @@
 
 #include "cdk/cdk-private.h"
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
 #include "x11/cdkx.h"
 #endif
 
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
 #include "win32/cdkwin32.h"
 #endif
 
-#ifdef GDK_WINDOWING_WAYLAND
+#ifdef CDK_WINDOWING_WAYLAND
 #include "wayland/cdkwayland.h"
 #endif
 
-#ifdef GDK_WINDOWING_BROADWAY
+#ifdef CDK_WINDOWING_BROADWAY
 #include "broadway/cdkbroadway.h"
 #endif
 
@@ -275,7 +275,7 @@ struct _CtkWindowPrivate
   CtkCssNode *decoration_node;
 };
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
 static const CtkTargetEntry dnd_dest_targets [] = {
   { "application/x-rootwindow-drop", 0, 0 },
 };
@@ -518,7 +518,7 @@ static CtkKeyHash *ctk_window_get_key_hash        (CtkWindow   *window);
 static void        ctk_window_free_key_hash       (CtkWindow   *window);
 static void	   ctk_window_on_composited_changed (CdkScreen *screen,
 						     CtkWindow *window);
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
 static void        ctk_window_on_theme_variant_changed (CtkSettings *settings,
                                                         GParamSpec  *pspec,
                                                         CtkWindow   *window);
@@ -620,10 +620,10 @@ add_tab_bindings (CtkBindingSet    *binding_set,
 		  CdkModifierType   modifiers,
 		  CtkDirectionType  direction)
 {
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Tab, modifiers,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Tab, modifiers,
                                 "move-focus", 1,
                                 CTK_TYPE_DIRECTION_TYPE, direction);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Tab, modifiers,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Tab, modifiers,
                                 "move-focus", 1,
                                 CTK_TYPE_DIRECTION_TYPE, direction);
 }
@@ -633,18 +633,18 @@ add_arrow_bindings (CtkBindingSet    *binding_set,
 		    guint             keysym,
 		    CtkDirectionType  direction)
 {
-  guint keypad_keysym = keysym - GDK_KEY_Left + GDK_KEY_KP_Left;
+  guint keypad_keysym = keysym - CDK_KEY_Left + CDK_KEY_KP_Left;
   
   ctk_binding_entry_add_signal (binding_set, keysym, 0,
                                 "move-focus", 1,
                                 CTK_TYPE_DIRECTION_TYPE, direction);
-  ctk_binding_entry_add_signal (binding_set, keysym, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, keysym, CDK_CONTROL_MASK,
                                 "move-focus", 1,
                                 CTK_TYPE_DIRECTION_TYPE, direction);
   ctk_binding_entry_add_signal (binding_set, keypad_keysym, 0,
                                 "move-focus", 1,
                                 CTK_TYPE_DIRECTION_TYPE, direction);
-  ctk_binding_entry_add_signal (binding_set, keypad_keysym, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, keypad_keysym, CDK_CONTROL_MASK,
                                 "move-focus", 1,
                                 CTK_TYPE_DIRECTION_TYPE, direction);
 }
@@ -653,7 +653,7 @@ static guint32
 extract_time_from_startup_id (const gchar* startup_id)
 {
   gchar *timestr = g_strrstr (startup_id, "_TIME");
-  guint32 retval = GDK_CURRENT_TIME;
+  guint32 retval = CDK_CURRENT_TIME;
 
   if (timestr)
     {
@@ -840,7 +840,7 @@ ctk_window_class_init (CtkWindowClass *klass)
       g_param_spec_object ("icon",
                            P_("Icon"),
                            P_("Icon for this window"),
-                           GDK_TYPE_PIXBUF,
+                           CDK_TYPE_PIXBUF,
                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
@@ -896,7 +896,7 @@ ctk_window_class_init (CtkWindowClass *klass)
       g_param_spec_object ("screen",
                            P_("Screen"),
                            P_("The screen where this window will be displayed"),
-                           GDK_TYPE_SCREEN,
+                           CDK_TYPE_SCREEN,
                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   window_props[PROP_IS_ACTIVE] =
@@ -917,8 +917,8 @@ ctk_window_class_init (CtkWindowClass *klass)
       g_param_spec_enum ("type-hint",
                          P_("Type hint"),
                          P_("Hint to help the desktop environment understand what kind of window this is and how to treat it."),
-                         GDK_TYPE_WINDOW_TYPE_HINT,
-                         GDK_WINDOW_TYPE_HINT_NORMAL,
+                         CDK_TYPE_WINDOW_TYPE_HINT,
+                         CDK_WINDOW_TYPE_HINT_NORMAL,
                          CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   window_props[PROP_SKIP_TASKBAR_HINT] =
@@ -1047,8 +1047,8 @@ ctk_window_class_init (CtkWindowClass *klass)
       g_param_spec_enum ("gravity",
                          P_("Gravity"),
                          P_("The window gravity of the window"),
-                         GDK_TYPE_GRAVITY,
-                         GDK_GRAVITY_NORTH_WEST,
+                         CDK_TYPE_GRAVITY,
+                         CDK_GRAVITY_NORTH_WEST,
                          CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
@@ -1240,34 +1240,34 @@ ctk_window_class_init (CtkWindowClass *klass)
 
   binding_set = ctk_binding_set_by_class (klass);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_space, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_space, 0,
                                 "activate-focus", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Space, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Space, 0,
                                 "activate-focus", 0);
   
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Return, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Return, 0,
                                 "activate-default", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_ISO_Enter, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_ISO_Enter, 0,
                                 "activate-default", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Enter, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Enter, 0,
                                 "activate-default", 0);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_I, GDK_CONTROL_MASK|GDK_SHIFT_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_I, CDK_CONTROL_MASK|CDK_SHIFT_MASK,
                                 "enable-debugging", 1,
                                 G_TYPE_BOOLEAN, FALSE);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_D, GDK_CONTROL_MASK|GDK_SHIFT_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_D, CDK_CONTROL_MASK|CDK_SHIFT_MASK,
                                 "enable-debugging", 1,
                                 G_TYPE_BOOLEAN, TRUE);
 
-  add_arrow_bindings (binding_set, GDK_KEY_Up, CTK_DIR_UP);
-  add_arrow_bindings (binding_set, GDK_KEY_Down, CTK_DIR_DOWN);
-  add_arrow_bindings (binding_set, GDK_KEY_Left, CTK_DIR_LEFT);
-  add_arrow_bindings (binding_set, GDK_KEY_Right, CTK_DIR_RIGHT);
+  add_arrow_bindings (binding_set, CDK_KEY_Up, CTK_DIR_UP);
+  add_arrow_bindings (binding_set, CDK_KEY_Down, CTK_DIR_DOWN);
+  add_arrow_bindings (binding_set, CDK_KEY_Left, CTK_DIR_LEFT);
+  add_arrow_bindings (binding_set, CDK_KEY_Right, CTK_DIR_RIGHT);
 
   add_tab_bindings (binding_set, 0, CTK_DIR_TAB_FORWARD);
-  add_tab_bindings (binding_set, GDK_CONTROL_MASK, CTK_DIR_TAB_FORWARD);
-  add_tab_bindings (binding_set, GDK_SHIFT_MASK, CTK_DIR_TAB_BACKWARD);
-  add_tab_bindings (binding_set, GDK_CONTROL_MASK | GDK_SHIFT_MASK, CTK_DIR_TAB_BACKWARD);
+  add_tab_bindings (binding_set, CDK_CONTROL_MASK, CTK_DIR_TAB_FORWARD);
+  add_tab_bindings (binding_set, CDK_SHIFT_MASK, CTK_DIR_TAB_BACKWARD);
+  add_tab_bindings (binding_set, CDK_CONTROL_MASK | CDK_SHIFT_MASK, CTK_DIR_TAB_BACKWARD);
 
   ctk_widget_class_set_accessible_type (widget_class, CTK_TYPE_WINDOW_ACCESSIBLE);
   ctk_widget_class_set_css_name (widget_class, "window");
@@ -1324,7 +1324,7 @@ send_delete_event (gpointer data)
     {
       CdkEvent *event;
 
-      event = cdk_event_new (GDK_DELETE);
+      event = cdk_event_new (CDK_DELETE);
       event->any.window = g_object_ref (cdk_window);
       event->any.send_event = TRUE;
 
@@ -1389,14 +1389,14 @@ ctk_window_titlebar_action (CtkWindow      *window,
   settings = ctk_widget_get_settings (CTK_WIDGET (window));
   switch (button)
     {
-    case GDK_BUTTON_PRIMARY:
+    case CDK_BUTTON_PRIMARY:
       if (n_press == 2)
         g_object_get (settings, "ctk-titlebar-double-click", &action, NULL);
       break;
-    case GDK_BUTTON_MIDDLE:
+    case CDK_BUTTON_MIDDLE:
       g_object_get (settings, "ctk-titlebar-middle-click", &action, NULL);
       break;
-    case GDK_BUTTON_SECONDARY:
+    case CDK_BUTTON_SECONDARY:
       g_object_get (settings, "ctk-titlebar-right-click", &action, NULL);
       break;
     }
@@ -1414,7 +1414,7 @@ ctk_window_titlebar_action (CtkWindow      *window,
        * consistency.
        */
       if (ctk_window_get_resizable (window) &&
-          ctk_window_get_type_hint (window) == GDK_WINDOW_TYPE_HINT_NORMAL)
+          ctk_window_get_type_hint (window) == CDK_WINDOW_TYPE_HINT_NORMAL)
             _ctk_window_toggle_maximized (window);
     }
   else if (g_str_equal (action, "lower"))
@@ -1470,7 +1470,7 @@ multipress_gesture_pressed_cb (CtkGestureMultiPress *gesture,
       return;
     }
 
-  if (button == GDK_BUTTON_SECONDARY && region == CTK_WINDOW_REGION_TITLE)
+  if (button == CDK_BUTTON_SECONDARY && region == CTK_WINDOW_REGION_TITLE)
     {
       if (ctk_window_titlebar_action (window, event, button, n_press))
         ctk_gesture_set_sequence_state (CTK_GESTURE (gesture),
@@ -1480,14 +1480,14 @@ multipress_gesture_pressed_cb (CtkGestureMultiPress *gesture,
       ctk_event_controller_reset (CTK_EVENT_CONTROLLER (priv->drag_gesture));
       return;
     }
-  else if (button == GDK_BUTTON_MIDDLE && region == CTK_WINDOW_REGION_TITLE)
+  else if (button == CDK_BUTTON_MIDDLE && region == CTK_WINDOW_REGION_TITLE)
     {
       if (ctk_window_titlebar_action (window, event, button, n_press))
         ctk_gesture_set_sequence_state (CTK_GESTURE (gesture),
                                         sequence, CTK_EVENT_SEQUENCE_CLAIMED);
       return;
     }
-  else if (button != GDK_BUTTON_PRIMARY)
+  else if (button != CDK_BUTTON_PRIMARY)
     return;
 
   event_widget = ctk_get_event_widget ((CdkEvent *) event);
@@ -1528,7 +1528,7 @@ multipress_gesture_pressed_cb (CtkGestureMultiPress *gesture,
           cdk_window_begin_resize_drag_for_device (_ctk_widget_get_window (widget),
                                                    (CdkWindowEdge) region,
                                                    cdk_event_get_device ((CdkEvent *) event),
-                                                   GDK_BUTTON_PRIMARY,
+                                                   CDK_BUTTON_PRIMARY,
                                                    x_root, y_root,
                                                    cdk_event_get_time (event));
 
@@ -1685,17 +1685,17 @@ ctk_window_init (CtkWindow *window)
   priv->need_default_size = TRUE;
   priv->need_default_position = TRUE;
   priv->modal = FALSE;
-  priv->gravity = GDK_GRAVITY_NORTH_WEST;
+  priv->gravity = CDK_GRAVITY_NORTH_WEST;
   priv->decorated = TRUE;
-  priv->mnemonic_modifier = GDK_MOD1_MASK;
+  priv->mnemonic_modifier = CDK_MOD1_MASK;
   priv->screen = cdk_screen_get_default ();
 
   priv->accept_focus = TRUE;
   priv->focus_on_map = TRUE;
   priv->deletable = TRUE;
-  priv->type_hint = GDK_WINDOW_TYPE_HINT_NORMAL;
+  priv->type_hint = CDK_WINDOW_TYPE_HINT_NORMAL;
   priv->startup_id = NULL;
-  priv->initial_timestamp = GDK_CURRENT_TIME;
+  priv->initial_timestamp = CDK_CURRENT_TIME;
   priv->mnemonics_visible = TRUE;
   priv->focus_visible = TRUE;
   priv->initial_fullscreen_monitor = -1;
@@ -1710,7 +1710,7 @@ ctk_window_init (CtkWindow *window)
       g_signal_connect (priv->screen, "composited-changed",
                         G_CALLBACK (ctk_window_on_composited_changed), window);
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
       g_signal_connect (ctk_settings_get_for_screen (priv->screen),
                         "notify::ctk-application-prefer-dark-theme",
                         G_CALLBACK (ctk_window_on_theme_variant_changed), window);
@@ -1729,11 +1729,11 @@ ctk_window_init (CtkWindow *window)
 
   priv->scale = ctk_widget_get_scale_factor (widget);
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
   ctk_drag_dest_set (CTK_WIDGET (window),
                      CTK_DEST_DEFAULT_MOTION | CTK_DEST_DEFAULT_DROP,
                      dnd_dest_targets, G_N_ELEMENTS (dnd_dest_targets),
-                     GDK_ACTION_MOVE);
+                     CDK_ACTION_MOVE);
 #endif
 }
 
@@ -1746,7 +1746,7 @@ ctk_window_constructed (GObject *object)
 
   G_OBJECT_CLASS (ctk_window_parent_class)->constructed (object);
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
   is_plug = CTK_IS_PLUG (window);
 #else
   is_plug = FALSE;
@@ -2527,8 +2527,8 @@ ctk_window_set_startup_id (CtkWindow   *window,
 
       cdk_window = _ctk_widget_get_window (widget);
 
-#ifdef GDK_WINDOWING_X11
-      if (timestamp != GDK_CURRENT_TIME && GDK_IS_X11_WINDOW(cdk_window))
+#ifdef CDK_WINDOWING_X11
+      if (timestamp != CDK_CURRENT_TIME && CDK_IS_X11_WINDOW(cdk_window))
 	cdk_x11_window_set_user_time (cdk_window, timestamp);
 #endif
 
@@ -2901,7 +2901,7 @@ ctk_window_set_mnemonic_modifier (CtkWindow      *window,
   CtkWindowPrivate *priv;
 
   g_return_if_fail (CTK_IS_WINDOW (window));
-  g_return_if_fail ((modifier & ~GDK_MODIFIER_MASK) == 0);
+  g_return_if_fail ((modifier & ~CDK_MODIFIER_MASK) == 0);
 
   priv = window->priv;
 
@@ -3286,7 +3286,7 @@ ctk_window_unset_transient_for  (CtkWindow *window)
  * On Wayland, this function can also be used to attach a new
  * #CTK_WINDOW_POPUP to a #CTK_WINDOW_TOPLEVEL parent already mapped
  * on screen so that the #CTK_WINDOW_POPUP will be created as a
- * subsurface-based window #GDK_WINDOW_SUBSURFACE which can be
+ * subsurface-based window #CDK_WINDOW_SUBSURFACE which can be
  * positioned at will relatively to the #CTK_WINDOW_TOPLEVEL surface.
  *
  * On Windows, this function puts the child window on top of the parent,
@@ -3628,7 +3628,7 @@ ctk_window_set_type_hint (CtkWindow           *window,
 CdkWindowTypeHint
 ctk_window_get_type_hint (CtkWindow *window)
 {
-  g_return_val_if_fail (CTK_IS_WINDOW (window), GDK_WINDOW_TYPE_HINT_NORMAL);
+  g_return_val_if_fail (CTK_IS_WINDOW (window), CDK_WINDOW_TYPE_HINT_NORMAL);
 
   return window->priv->type_hint;
 }
@@ -3945,14 +3945,14 @@ ctk_window_get_destroy_with_parent (CtkWindow *window)
 static void
 ctk_window_apply_hide_titlebar_when_maximized (CtkWindow *window)
 {
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
   CdkWindow *cdk_window;
   gboolean setting;
 
   setting = window->priv->hide_titlebar_when_maximized;
   cdk_window = _ctk_widget_get_window (CTK_WIDGET (window));
 
-  if (GDK_IS_X11_WINDOW (cdk_window))
+  if (CDK_IS_X11_WINDOW (cdk_window))
     cdk_x11_window_set_hide_titlebar_when_maximized (cdk_window, setting);
 #endif
 }
@@ -4073,12 +4073,12 @@ ctk_window_set_geometry_hints (CtkWindow       *window,
     info->geometry = *geometry;
 
   /* We store gravity in priv->gravity not in the hints. */
-  info->mask = geom_mask & ~(GDK_HINT_WIN_GRAVITY);
+  info->mask = geom_mask & ~(CDK_HINT_WIN_GRAVITY);
 
   if (geometry_widget)
-    info->mask &= ~(GDK_HINT_BASE_SIZE | GDK_HINT_RESIZE_INC);
+    info->mask &= ~(CDK_HINT_BASE_SIZE | CDK_HINT_RESIZE_INC);
 
-  if (geom_mask & GDK_HINT_WIN_GRAVITY)
+  if (geom_mask & CDK_HINT_WIN_GRAVITY)
     ctk_window_set_gravity (window, geometry->win_gravity);
 
   ctk_widget_queue_resize_no_redraw (CTK_WIDGET (window));
@@ -4110,8 +4110,8 @@ ctk_window_supports_client_shadow (CtkWindow *window)
   screen = _ctk_window_get_screen (window);
   display = cdk_screen_get_display (screen);
 
-#ifdef GDK_WINDOWING_X11
-  if (GDK_IS_X11_DISPLAY (display))
+#ifdef CDK_WINDOWING_X11
+  if (CDK_IS_X11_DISPLAY (display))
     {
       if (!cdk_screen_is_composited (screen))
         return FALSE;
@@ -4126,8 +4126,8 @@ ctk_window_supports_client_shadow (CtkWindow *window)
     }
 #endif
 
-#ifdef GDK_WINDOWING_WIN32
-  if (GDK_IS_WIN32_DISPLAY (display))
+#ifdef CDK_WINDOWING_WIN32
+  if (CDK_IS_WIN32_DISPLAY (display))
     {
       if (!cdk_screen_is_composited (screen))
         return FALSE;
@@ -4327,7 +4327,7 @@ ctk_window_set_decorated (CtkWindow *window,
           if (priv->client_decorated)
             cdk_window_set_decorations (cdk_window, 0);
           else
-            cdk_window_set_decorations (cdk_window, GDK_DECOR_ALL);
+            cdk_window_set_decorations (cdk_window, CDK_DECOR_ALL);
         }
       else
         cdk_window_set_decorations (cdk_window, 0);
@@ -4397,10 +4397,10 @@ ctk_window_set_deletable (CtkWindow *window,
     {
       if (priv->deletable)
         cdk_window_set_functions (cdk_window,
-				  GDK_FUNC_ALL);
+				  CDK_FUNC_ALL);
       else
         cdk_window_set_functions (cdk_window,
-				  GDK_FUNC_ALL | GDK_FUNC_CLOSE);
+				  CDK_FUNC_ALL | CDK_FUNC_CLOSE);
     }
 
   update_window_buttons (window);
@@ -4596,7 +4596,7 @@ icon_from_list (GList *list,
     }
 
   if (best == NULL)
-    best = cdk_pixbuf_scale_simple (GDK_PIXBUF (list->data), size, size, GDK_INTERP_BILINEAR);
+    best = cdk_pixbuf_scale_simple (CDK_PIXBUF (list->data), size, size, CDK_INTERP_BILINEAR);
 
   return best;
 }
@@ -4782,7 +4782,7 @@ ctk_window_set_icon (CtkWindow  *window,
   GList *list;
   
   g_return_if_fail (CTK_IS_WINDOW (window));
-  g_return_if_fail (icon == NULL || GDK_IS_PIXBUF (icon));
+  g_return_if_fail (icon == NULL || CDK_IS_PIXBUF (icon));
 
   list = NULL;
 
@@ -4888,7 +4888,7 @@ ctk_window_get_icon (CtkWindow  *window)
 
   info = get_icon_info (window);
   if (info && info->icon_list)
-    return GDK_PIXBUF (info->icon_list->data);
+    return CDK_PIXBUF (info->icon_list->data);
   else
     return NULL;
 }
@@ -5019,7 +5019,7 @@ ctk_window_set_default_icon (CdkPixbuf *icon)
 {
   GList *list;
   
-  g_return_if_fail (GDK_IS_PIXBUF (icon));
+  g_return_if_fail (CDK_IS_PIXBUF (icon));
 
   list = g_list_prepend (NULL, icon);
   ctk_window_set_default_icon_list (list);
@@ -5576,18 +5576,18 @@ ctk_window_translate_csd_pos (CtkWindow *window,
 
       switch (priv->gravity)
         {
-        case GDK_GRAVITY_NORTH:
-        case GDK_GRAVITY_CENTER:
-        case GDK_GRAVITY_SOUTH:
+        case CDK_GRAVITY_NORTH:
+        case CDK_GRAVITY_CENTER:
+        case CDK_GRAVITY_SOUTH:
           dx = (window_border.left + window_border.right) / 2;
           break;
 
-        case GDK_GRAVITY_NORTH_WEST:
-        case GDK_GRAVITY_WEST:
-        case GDK_GRAVITY_SOUTH_WEST:
-        case GDK_GRAVITY_SOUTH_EAST:
-        case GDK_GRAVITY_EAST:
-        case GDK_GRAVITY_NORTH_EAST:
+        case CDK_GRAVITY_NORTH_WEST:
+        case CDK_GRAVITY_WEST:
+        case CDK_GRAVITY_SOUTH_WEST:
+        case CDK_GRAVITY_SOUTH_EAST:
+        case CDK_GRAVITY_EAST:
+        case CDK_GRAVITY_NORTH_EAST:
           dx = window_border.left;
           break;
 
@@ -5598,21 +5598,21 @@ ctk_window_translate_csd_pos (CtkWindow *window,
 
       switch (priv->gravity)
         {
-        case GDK_GRAVITY_WEST:
-        case GDK_GRAVITY_CENTER:
-        case GDK_GRAVITY_EAST:
+        case CDK_GRAVITY_WEST:
+        case CDK_GRAVITY_CENTER:
+        case CDK_GRAVITY_EAST:
           dy = (window_border.top + title_height + window_border.bottom) / 2;
           break;
 
-        case GDK_GRAVITY_NORTH_WEST:
-        case GDK_GRAVITY_NORTH:
-        case GDK_GRAVITY_NORTH_EAST:
+        case CDK_GRAVITY_NORTH_WEST:
+        case CDK_GRAVITY_NORTH:
+        case CDK_GRAVITY_NORTH_EAST:
           dy = window_border.top;
           break;
 
-        case GDK_GRAVITY_SOUTH_WEST:
-        case GDK_GRAVITY_SOUTH:
-        case GDK_GRAVITY_SOUTH_EAST:
+        case CDK_GRAVITY_SOUTH_WEST:
+        case CDK_GRAVITY_SOUTH:
+        case CDK_GRAVITY_SOUTH_EAST:
           dy = window_border.top + title_height;
           break;
 
@@ -5646,15 +5646,15 @@ ctk_window_translate_csd_pos (CtkWindow *window,
  * coordinates; and second, which point on the window is positioned at
  * the reference point.
  *
- * By default the gravity is #GDK_GRAVITY_NORTH_WEST, so the reference
+ * By default the gravity is #CDK_GRAVITY_NORTH_WEST, so the reference
  * point is simply the @x, @y supplied to ctk_window_move(). The
  * top-left corner of the window decorations (aka window frame or
  * border) will be placed at @x, @y.  Therefore, to position a window
  * at the top left of the screen, you want to use the default gravity
- * (which is #GDK_GRAVITY_NORTH_WEST) and move the window to 0,0.
+ * (which is #CDK_GRAVITY_NORTH_WEST) and move the window to 0,0.
  *
  * To position a window at the bottom right corner of the screen, you
- * would set #GDK_GRAVITY_SOUTH_EAST, which means that the reference
+ * would set #CDK_GRAVITY_SOUTH_EAST, which means that the reference
  * point is at @x + the window width and @y + the window height, and
  * the bottom-right corner of the window border will be placed at that
  * reference point. So, to place a window in the bottom right corner
@@ -5752,12 +5752,12 @@ ctk_window_move (CtkWindow *window,
  * returned by this function.
  *
  * If you haven’t changed the window gravity, its gravity will be
- * #GDK_GRAVITY_NORTH_WEST. This means that ctk_window_get_position()
+ * #CDK_GRAVITY_NORTH_WEST. This means that ctk_window_get_position()
  * gets the position of the top-left corner of the window manager
  * frame for the window. ctk_window_move() sets the position of this
  * same top-left corner.
  *
- * If a window has gravity #GDK_GRAVITY_STATIC the window manager
+ * If a window has gravity #CDK_GRAVITY_STATIC the window manager
  * frame is not relevant, and thus ctk_window_get_position() will
  * always produce accurate results. However you can’t use static
  * gravity to do things like place a window in a corner of the screen,
@@ -5788,7 +5788,7 @@ ctk_window_get_position (CtkWindow *window,
   widget = CTK_WIDGET (window);
   cdk_window = _ctk_widget_get_window (widget);
 
-  if (priv->gravity == GDK_GRAVITY_STATIC)
+  if (priv->gravity == CDK_GRAVITY_STATIC)
     {
       if (_ctk_widget_get_mapped (widget))
         {
@@ -5850,18 +5850,18 @@ ctk_window_get_position (CtkWindow *window,
       ctk_window_translate_csd_pos (window, &x, &y, INCLUDE_CSD_SIZE);
       switch (priv->gravity)
         {
-        case GDK_GRAVITY_NORTH:
-        case GDK_GRAVITY_CENTER:
-        case GDK_GRAVITY_SOUTH:
+        case CDK_GRAVITY_NORTH:
+        case CDK_GRAVITY_CENTER:
+        case CDK_GRAVITY_SOUTH:
           /* Find center of frame. */
           x += frame_extents.width / 2;
           /* Center client window on that point. */
           x -= w / 2;
           break;
 
-        case GDK_GRAVITY_SOUTH_EAST:
-        case GDK_GRAVITY_EAST:
-        case GDK_GRAVITY_NORTH_EAST:
+        case CDK_GRAVITY_SOUTH_EAST:
+        case CDK_GRAVITY_EAST:
+        case CDK_GRAVITY_NORTH_EAST:
           /* Find right edge of frame */
           x += frame_extents.width;
           /* Align left edge of client at that point. */
@@ -5873,17 +5873,17 @@ ctk_window_get_position (CtkWindow *window,
 
       switch (priv->gravity)
         {
-        case GDK_GRAVITY_WEST:
-        case GDK_GRAVITY_CENTER:
-        case GDK_GRAVITY_EAST:
+        case CDK_GRAVITY_WEST:
+        case CDK_GRAVITY_CENTER:
+        case CDK_GRAVITY_EAST:
           /* Find center of frame. */
           y += frame_extents.height / 2;
           /* Center client window there. */
           y -= h / 2;
           break;
-        case GDK_GRAVITY_SOUTH_WEST:
-        case GDK_GRAVITY_SOUTH:
-        case GDK_GRAVITY_SOUTH_EAST:
+        case CDK_GRAVITY_SOUTH_WEST:
+        case CDK_GRAVITY_SOUTH:
+        case CDK_GRAVITY_SOUTH_EAST:
           /* Find south edge of frame */
           y += frame_extents.height;
           /* Place bottom edge of client there */
@@ -5997,7 +5997,7 @@ ctk_window_finalize (GObject *object)
     {
       g_signal_handlers_disconnect_by_func (priv->screen,
                                             ctk_window_on_composited_changed, window);
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
       g_signal_handlers_disconnect_by_func (ctk_settings_get_for_screen (priv->screen),
                                             ctk_window_on_theme_variant_changed,
                                             window);
@@ -6112,22 +6112,22 @@ ctk_window_should_use_csd (CtkWindow *window)
 
   csd_env = g_getenv ("CTK_CSD");
 
-#ifdef GDK_WINDOWING_BROADWAY
-  if (GDK_IS_BROADWAY_DISPLAY (ctk_widget_get_display (CTK_WIDGET (window))))
+#ifdef CDK_WINDOWING_BROADWAY
+  if (CDK_IS_BROADWAY_DISPLAY (ctk_widget_get_display (CTK_WIDGET (window))))
     return TRUE;
 #endif
 
-#ifdef GDK_WINDOWING_WAYLAND
-  if (GDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (CTK_WIDGET (window))))
+#ifdef CDK_WINDOWING_WAYLAND
+  if (CDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (CTK_WIDGET (window))))
     {
       CdkDisplay *cdk_display = ctk_widget_get_display (CTK_WIDGET (window));
       return !cdk_wayland_display_prefers_ssd (cdk_display);
     }
 #endif
 
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
   if (g_strcmp0 (csd_env, "0") != 0 &&
-      GDK_IS_WIN32_DISPLAY (ctk_widget_get_display (CTK_WIDGET (window))))
+      CDK_IS_WIN32_DISPLAY (ctk_widget_get_display (CTK_WIDGET (window))))
     return TRUE;
 #endif
 
@@ -6186,8 +6186,8 @@ ctk_window_show (CtkWidget *widget)
 
   /* Try to make sure that we have some focused widget
    */
-#ifdef GDK_WINDOWING_X11
-  is_plug = GDK_IS_X11_WINDOW (_ctk_widget_get_window (widget)) &&
+#ifdef CDK_WINDOWING_X11
+  is_plug = CDK_IS_X11_WINDOW (_ctk_widget_get_window (widget)) &&
     CTK_IS_PLUG (window);
 #else
   is_plug = FALSE;
@@ -6427,7 +6427,7 @@ ctk_window_unmap (CtkWidget *widget)
   while (priv->configure_request_count > 0)
     {
       priv->configure_request_count--;
-      GDK_PRIVATE_CALL (cdk_window_thaw_toplevel_updates) (_ctk_widget_get_window (widget));
+      CDK_PRIVATE_CALL (cdk_window_thaw_toplevel_updates) (_ctk_widget_get_window (widget));
     }
   priv->configure_notify_received = FALSE;
 
@@ -6447,11 +6447,11 @@ ctk_window_unmap (CtkWidget *widget)
     }
 
   state = cdk_window_get_state (cdk_window);
-  priv->iconify_initially = (state & GDK_WINDOW_STATE_ICONIFIED) != 0;
-  priv->maximize_initially = (state & GDK_WINDOW_STATE_MAXIMIZED) != 0;
-  priv->stick_initially = (state & GDK_WINDOW_STATE_STICKY) != 0;
-  priv->above_initially = (state & GDK_WINDOW_STATE_ABOVE) != 0;
-  priv->below_initially = (state & GDK_WINDOW_STATE_BELOW) != 0;
+  priv->iconify_initially = (state & CDK_WINDOW_STATE_ICONIFIED) != 0;
+  priv->maximize_initially = (state & CDK_WINDOW_STATE_MAXIMIZED) != 0;
+  priv->stick_initially = (state & CDK_WINDOW_STATE_STICKY) != 0;
+  priv->above_initially = (state & CDK_WINDOW_STATE_ABOVE) != 0;
+  priv->below_initially = (state & CDK_WINDOW_STATE_BELOW) != 0;
 
   if (priv->title_box != NULL)
     ctk_widget_unmap (priv->title_box);
@@ -6714,34 +6714,34 @@ popover_realize (CtkWidget        *widget,
 
   popover_get_rect (popover, window, &rect);
 
-#ifdef GDK_WINDOWING_WAYLAND
-  if (GDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (widget)))
+#ifdef CDK_WINDOWING_WAYLAND
+  if (CDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (widget)))
     {
-      attributes.window_type = GDK_WINDOW_SUBSURFACE;
+      attributes.window_type = CDK_WINDOW_SUBSURFACE;
       parent_window = cdk_screen_get_root_window (_ctk_window_get_screen (window));
     }
   else
 #endif
     {
-      attributes.window_type = GDK_WINDOW_CHILD;
+      attributes.window_type = CDK_WINDOW_CHILD;
       parent_window = _ctk_widget_get_window (CTK_WIDGET (window));
     }
 
-  attributes.wclass = GDK_INPUT_OUTPUT;
+  attributes.wclass = CDK_INPUT_OUTPUT;
   attributes.x = rect.x;
   attributes.y = rect.y;
   attributes.width = rect.width;
   attributes.height = rect.height;
   attributes.visual = ctk_widget_get_visual (CTK_WIDGET (window));
   attributes.event_mask = ctk_widget_get_events (popover->widget) |
-    GDK_EXPOSURE_MASK;
-  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
+    CDK_EXPOSURE_MASK;
+  attributes_mask = CDK_WA_X | CDK_WA_Y | CDK_WA_VISUAL;
 
   popover->window = cdk_window_new (parent_window, &attributes, attributes_mask);
   ctk_widget_register_window (CTK_WIDGET (window), popover->window);
 
-#ifdef GDK_WINDOWING_WAYLAND
-  if (GDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (widget)))
+#ifdef CDK_WINDOWING_WAYLAND
+  if (CDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (widget)))
     cdk_window_set_transient_for (popover->window,
                                   _ctk_widget_get_window (CTK_WIDGET (window)));
 #endif
@@ -6868,7 +6868,7 @@ update_corner_windows (CtkWindow *window,
   /* North-West */
   if (resize_n && resize_w)
     {
-      cdk_window_move_resize (priv->border_window[GDK_WINDOW_EDGE_NORTH_WEST],
+      cdk_window_move_resize (priv->border_window[CDK_WINDOW_EDGE_NORTH_WEST],
                               window_border.left - border.left, window_border.top - border.top,
                               border.left + handle_h, border.top + handle_v);
 
@@ -6882,22 +6882,22 @@ update_corner_windows (CtkWindow *window,
       rect.width = handle_h;
       rect.height = handle_v;
       cairo_region_subtract_rectangle (region, &rect);
-      cdk_window_shape_combine_region (priv->border_window[GDK_WINDOW_EDGE_NORTH_WEST],
+      cdk_window_shape_combine_region (priv->border_window[CDK_WINDOW_EDGE_NORTH_WEST],
                                        region, 0, 0);
       cairo_region_destroy (region);
 
-      cdk_window_show_unraised (priv->border_window[GDK_WINDOW_EDGE_NORTH_WEST]);
+      cdk_window_show_unraised (priv->border_window[CDK_WINDOW_EDGE_NORTH_WEST]);
     }
   else
     {
-      cdk_window_hide (priv->border_window[GDK_WINDOW_EDGE_NORTH_WEST]);
+      cdk_window_hide (priv->border_window[CDK_WINDOW_EDGE_NORTH_WEST]);
     }
 
 
   /* North-East */
   if (resize_n && resize_e)
     {
-      cdk_window_move_resize (priv->border_window[GDK_WINDOW_EDGE_NORTH_EAST],
+      cdk_window_move_resize (priv->border_window[CDK_WINDOW_EDGE_NORTH_EAST],
                               window_border.left + width - handle_h, window_border.top - border.top,
                               border.right + handle_h, border.top + handle_v);
 
@@ -6911,21 +6911,21 @@ update_corner_windows (CtkWindow *window,
       rect.width = handle_h;
       rect.height = handle_v;
       cairo_region_subtract_rectangle (region, &rect);
-      cdk_window_shape_combine_region (priv->border_window[GDK_WINDOW_EDGE_NORTH_EAST],
+      cdk_window_shape_combine_region (priv->border_window[CDK_WINDOW_EDGE_NORTH_EAST],
                                        region, 0, 0);
       cairo_region_destroy (region);
 
-      cdk_window_show_unraised (priv->border_window[GDK_WINDOW_EDGE_NORTH_EAST]);
+      cdk_window_show_unraised (priv->border_window[CDK_WINDOW_EDGE_NORTH_EAST]);
     }
   else
     {
-      cdk_window_hide (priv->border_window[GDK_WINDOW_EDGE_NORTH_EAST]);
+      cdk_window_hide (priv->border_window[CDK_WINDOW_EDGE_NORTH_EAST]);
     }
 
   /* South-West */
   if (resize_s && resize_w)
     {
-      cdk_window_move_resize (priv->border_window[GDK_WINDOW_EDGE_SOUTH_WEST],
+      cdk_window_move_resize (priv->border_window[CDK_WINDOW_EDGE_SOUTH_WEST],
                               window_border.left - border.left, window_border.top + height - handle_v,
                               border.left + handle_h, border.bottom + handle_v);
 
@@ -6939,21 +6939,21 @@ update_corner_windows (CtkWindow *window,
       rect.width = handle_h;
       rect.height = handle_v;
       cairo_region_subtract_rectangle (region, &rect);
-      cdk_window_shape_combine_region (priv->border_window[GDK_WINDOW_EDGE_SOUTH_WEST],
+      cdk_window_shape_combine_region (priv->border_window[CDK_WINDOW_EDGE_SOUTH_WEST],
                                        region, 0, 0);
       cairo_region_destroy (region);
 
-      cdk_window_show_unraised (priv->border_window[GDK_WINDOW_EDGE_SOUTH_WEST]);
+      cdk_window_show_unraised (priv->border_window[CDK_WINDOW_EDGE_SOUTH_WEST]);
     }
   else
     {
-      cdk_window_hide (priv->border_window[GDK_WINDOW_EDGE_SOUTH_WEST]);
+      cdk_window_hide (priv->border_window[CDK_WINDOW_EDGE_SOUTH_WEST]);
     }
 
   /* South-East */
   if (resize_s && resize_e)
     {
-      cdk_window_move_resize (priv->border_window[GDK_WINDOW_EDGE_SOUTH_EAST],
+      cdk_window_move_resize (priv->border_window[CDK_WINDOW_EDGE_SOUTH_EAST],
                               window_border.left + width - handle_h, window_border.top + height - handle_v,
                               border.right + handle_h, border.bottom + handle_v);
 
@@ -6967,15 +6967,15 @@ update_corner_windows (CtkWindow *window,
       rect.width = handle_h;
       rect.height = handle_v;
       cairo_region_subtract_rectangle (region, &rect);
-      cdk_window_shape_combine_region (priv->border_window[GDK_WINDOW_EDGE_SOUTH_EAST],
+      cdk_window_shape_combine_region (priv->border_window[CDK_WINDOW_EDGE_SOUTH_EAST],
                                        region, 0, 0);
       cairo_region_destroy (region);
 
-      cdk_window_show_unraised (priv->border_window[GDK_WINDOW_EDGE_SOUTH_EAST]);
+      cdk_window_show_unraised (priv->border_window[CDK_WINDOW_EDGE_SOUTH_EAST]);
     }
   else
     {
-      cdk_window_hide (priv->border_window[GDK_WINDOW_EDGE_SOUTH_EAST]);
+      cdk_window_hide (priv->border_window[CDK_WINDOW_EDGE_SOUTH_EAST]);
     }
 }
 
@@ -7060,10 +7060,10 @@ update_border_windows (CtkWindow *window)
        */
       if (priv->edge_constraints)
         {
-          resize_n = priv->edge_constraints & GDK_WINDOW_STATE_TOP_RESIZABLE;
-          resize_e = priv->edge_constraints & GDK_WINDOW_STATE_RIGHT_RESIZABLE;
-          resize_s = priv->edge_constraints & GDK_WINDOW_STATE_BOTTOM_RESIZABLE;
-          resize_w = priv->edge_constraints & GDK_WINDOW_STATE_LEFT_RESIZABLE;
+          resize_n = priv->edge_constraints & CDK_WINDOW_STATE_TOP_RESIZABLE;
+          resize_e = priv->edge_constraints & CDK_WINDOW_STATE_RIGHT_RESIZABLE;
+          resize_s = priv->edge_constraints & CDK_WINDOW_STATE_BOTTOM_RESIZABLE;
+          resize_w = priv->edge_constraints & CDK_WINDOW_STATE_LEFT_RESIZABLE;
         }
       else
         {
@@ -7078,7 +7078,7 @@ update_border_windows (CtkWindow *window)
           CdkGeometry *geometry = &priv->geometry_info->geometry;
           CdkWindowHints flags = priv->geometry_info->mask;
 
-          if ((flags & GDK_HINT_MIN_SIZE) && (flags & GDK_HINT_MAX_SIZE))
+          if ((flags & CDK_HINT_MIN_SIZE) && (flags & CDK_HINT_MAX_SIZE))
             {
               resize_e = resize_w = geometry->min_width != geometry->max_width;
               resize_n = resize_s = geometry->min_height != geometry->max_height;
@@ -7144,57 +7144,57 @@ update_border_windows (CtkWindow *window)
   /* North */
   if (resize_n)
     {
-      cdk_window_move_resize (priv->border_window[GDK_WINDOW_EDGE_NORTH],
+      cdk_window_move_resize (priv->border_window[CDK_WINDOW_EDGE_NORTH],
                               x, window_border.top - border.top,
                               w, border.top);
 
-      cdk_window_show_unraised (priv->border_window[GDK_WINDOW_EDGE_NORTH]);
+      cdk_window_show_unraised (priv->border_window[CDK_WINDOW_EDGE_NORTH]);
     }
   else
     {
-      cdk_window_hide (priv->border_window[GDK_WINDOW_EDGE_NORTH]);
+      cdk_window_hide (priv->border_window[CDK_WINDOW_EDGE_NORTH]);
     }
 
   /* South */
   if (resize_s)
     {
-      cdk_window_move_resize (priv->border_window[GDK_WINDOW_EDGE_SOUTH],
+      cdk_window_move_resize (priv->border_window[CDK_WINDOW_EDGE_SOUTH],
                               x, window_border.top + height,
                               w, border.bottom);
 
-      cdk_window_show_unraised (priv->border_window[GDK_WINDOW_EDGE_SOUTH]);
+      cdk_window_show_unraised (priv->border_window[CDK_WINDOW_EDGE_SOUTH]);
     }
   else
     {
-      cdk_window_hide (priv->border_window[GDK_WINDOW_EDGE_SOUTH]);
+      cdk_window_hide (priv->border_window[CDK_WINDOW_EDGE_SOUTH]);
     }
 
   /* East */
   if (resize_e)
     {
-      cdk_window_move_resize (priv->border_window[GDK_WINDOW_EDGE_EAST],
+      cdk_window_move_resize (priv->border_window[CDK_WINDOW_EDGE_EAST],
                               window_border.left + width, y,
                               border.right, h);
 
-      cdk_window_show_unraised (priv->border_window[GDK_WINDOW_EDGE_EAST]);
+      cdk_window_show_unraised (priv->border_window[CDK_WINDOW_EDGE_EAST]);
     }
   else
     {
-      cdk_window_hide (priv->border_window[GDK_WINDOW_EDGE_EAST]);
+      cdk_window_hide (priv->border_window[CDK_WINDOW_EDGE_EAST]);
     }
 
   /* West */
   if (resize_w)
     {
-      cdk_window_move_resize (priv->border_window[GDK_WINDOW_EDGE_WEST],
+      cdk_window_move_resize (priv->border_window[CDK_WINDOW_EDGE_WEST],
                               window_border.left - border.left, y,
                               border.left, h);
 
-      cdk_window_show_unraised (priv->border_window[GDK_WINDOW_EDGE_WEST]);
+      cdk_window_show_unraised (priv->border_window[CDK_WINDOW_EDGE_WEST]);
     }
   else
     {
-      cdk_window_hide (priv->border_window[GDK_WINDOW_EDGE_WEST]);
+      cdk_window_hide (priv->border_window[CDK_WINDOW_EDGE_WEST]);
     }
 
   update_corner_windows (window, border, window_border, width, height, handle_h, handle_v,
@@ -7378,14 +7378,14 @@ ctk_window_realize (CtkWidget *widget)
       attributes.y = allocation.y;
       attributes.width = allocation.width;
       attributes.height = allocation.height;
-      attributes.window_type = GDK_WINDOW_CHILD;
+      attributes.window_type = CDK_WINDOW_CHILD;
 
-      attributes.event_mask = ctk_widget_get_events (widget) | GDK_EXPOSURE_MASK | GDK_STRUCTURE_MASK;
+      attributes.event_mask = ctk_widget_get_events (widget) | CDK_EXPOSURE_MASK | CDK_STRUCTURE_MASK;
 
       attributes.visual = ctk_widget_get_visual (widget);
-      attributes.wclass = GDK_INPUT_OUTPUT;
+      attributes.wclass = CDK_INPUT_OUTPUT;
 
-      attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
+      attributes_mask = CDK_WA_X | CDK_WA_Y | CDK_WA_VISUAL;
 
       cdk_window = cdk_window_new (ctk_widget_get_parent_window (widget),
 				   &attributes, attributes_mask);
@@ -7439,26 +7439,26 @@ ctk_window_realize (CtkWidget *widget)
       switch (priv->type)
         {
         case CTK_WINDOW_TOPLEVEL:
-          attributes.window_type = GDK_WINDOW_TOPLEVEL;
+          attributes.window_type = CDK_WINDOW_TOPLEVEL;
           break;
         case CTK_WINDOW_POPUP:
-          attributes.window_type = GDK_WINDOW_TEMP;
+          attributes.window_type = CDK_WINDOW_TEMP;
           break;
         default:
           g_warning (G_STRLOC": Unknown window type %d!", priv->type);
           break;
         }
 
-#ifdef GDK_WINDOWING_WAYLAND
+#ifdef CDK_WINDOWING_WAYLAND
       if (priv->use_subsurface &&
-          GDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (widget)))
-        attributes.window_type = GDK_WINDOW_SUBSURFACE;
+          CDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (widget)))
+        attributes.window_type = CDK_WINDOW_SUBSURFACE;
 #endif
 
       attributes.title = priv->title;
       attributes.wmclass_name = priv->wmclass_name;
       attributes.wmclass_class = priv->wmclass_class;
-      attributes.wclass = GDK_INPUT_OUTPUT;
+      attributes.wclass = CDK_INPUT_OUTPUT;
       attributes.visual = ctk_widget_get_visual (widget);
 
       attributes_mask = 0;
@@ -7468,25 +7468,25 @@ ctk_window_realize (CtkWidget *widget)
       attributes.width = allocation.width;
       attributes.height = allocation.height;
       attributes.event_mask = ctk_widget_get_events (widget);
-      attributes.event_mask |= (GDK_EXPOSURE_MASK |
-                                GDK_BUTTON_PRESS_MASK |
-                                GDK_BUTTON_RELEASE_MASK |
-                                GDK_BUTTON_MOTION_MASK |
-                                GDK_KEY_PRESS_MASK |
-                                GDK_KEY_RELEASE_MASK |
-                                GDK_ENTER_NOTIFY_MASK |
-                                GDK_LEAVE_NOTIFY_MASK |
-                                GDK_FOCUS_CHANGE_MASK |
-                                GDK_STRUCTURE_MASK);
+      attributes.event_mask |= (CDK_EXPOSURE_MASK |
+                                CDK_BUTTON_PRESS_MASK |
+                                CDK_BUTTON_RELEASE_MASK |
+                                CDK_BUTTON_MOTION_MASK |
+                                CDK_KEY_PRESS_MASK |
+                                CDK_KEY_RELEASE_MASK |
+                                CDK_ENTER_NOTIFY_MASK |
+                                CDK_LEAVE_NOTIFY_MASK |
+                                CDK_FOCUS_CHANGE_MASK |
+                                CDK_STRUCTURE_MASK);
 
       if (priv->decorated && priv->client_decorated)
-        attributes.event_mask |= GDK_POINTER_MOTION_MASK;
+        attributes.event_mask |= CDK_POINTER_MOTION_MASK;
 
       attributes.type_hint = priv->type_hint;
 
-      attributes_mask |= GDK_WA_VISUAL | GDK_WA_TYPE_HINT;
-      attributes_mask |= (priv->title ? GDK_WA_TITLE : 0);
-      attributes_mask |= (priv->wmclass_name ? GDK_WA_WMCLASS : 0);
+      attributes_mask |= CDK_WA_VISUAL | CDK_WA_TYPE_HINT;
+      attributes_mask |= (priv->title ? CDK_WA_TITLE : 0);
+      attributes_mask |= (priv->wmclass_name ? CDK_WA_WMCLASS : 0);
 
       cdk_window = cdk_window_new (parent_window, &attributes, attributes_mask);
     }
@@ -7499,14 +7499,14 @@ ctk_window_realize (CtkWidget *widget)
   attributes.y = allocation.y;
   attributes.width = allocation.width;
   attributes.height = allocation.height;
-  attributes.window_type = GDK_WINDOW_CHILD;
+  attributes.window_type = CDK_WINDOW_CHILD;
 
-  attributes.event_mask = ctk_widget_get_events (widget) | GDK_EXPOSURE_MASK | GDK_STRUCTURE_MASK;
+  attributes.event_mask = ctk_widget_get_events (widget) | CDK_EXPOSURE_MASK | CDK_STRUCTURE_MASK;
 
   attributes.visual = ctk_widget_get_visual (widget);
-  attributes.wclass = GDK_INPUT_OUTPUT;
+  attributes.wclass = CDK_INPUT_OUTPUT;
 
-  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
+  attributes_mask = CDK_WA_X | CDK_WA_Y | CDK_WA_VISUAL;
 
   if (priv->client_decorated && priv->type == CTK_WINDOW_TOPLEVEL)
     {
@@ -7516,11 +7516,11 @@ ctk_window_realize (CtkWidget *widget)
         "sw-resize", "s-resize", "se-resize"
       };
 
-      attributes.wclass = GDK_INPUT_ONLY;
+      attributes.wclass = CDK_INPUT_ONLY;
       attributes.width = 1;
       attributes.height = 1;
-      attributes.event_mask = GDK_BUTTON_PRESS_MASK;
-      attributes_mask = GDK_WA_CURSOR;
+      attributes.event_mask = CDK_BUTTON_PRESS_MASK;
+      attributes_mask = CDK_WA_CURSOR;
 
       for (i = 0; i < 8; i++)
         {
@@ -7544,8 +7544,8 @@ ctk_window_realize (CtkWidget *widget)
   if (!priv->decorated || priv->client_decorated)
     cdk_window_set_decorations (cdk_window, 0);
 
-#ifdef GDK_WINDOWING_WAYLAND
-  if (GDK_IS_WAYLAND_WINDOW (cdk_window))
+#ifdef CDK_WINDOWING_WAYLAND
+  if (CDK_IS_WAYLAND_WINDOW (cdk_window))
     {
       if (priv->client_decorated)
         cdk_wayland_window_announce_csd (cdk_window);
@@ -7555,7 +7555,7 @@ ctk_window_realize (CtkWidget *widget)
 #endif
 
   if (!priv->deletable)
-    cdk_window_set_functions (cdk_window, GDK_FUNC_ALL | GDK_FUNC_CLOSE);
+    cdk_window_set_functions (cdk_window, CDK_FUNC_ALL | CDK_FUNC_CLOSE);
 
   if (ctk_window_get_skip_pager_hint (window))
     cdk_window_set_skip_pager_hint (cdk_window, TRUE);
@@ -7580,11 +7580,11 @@ ctk_window_realize (CtkWidget *widget)
 
   if (priv->startup_id)
     {
-#ifdef GDK_WINDOWING_X11
-      if (GDK_IS_X11_WINDOW (cdk_window))
+#ifdef CDK_WINDOWING_X11
+      if (CDK_IS_X11_WINDOW (cdk_window))
         {
           guint32 timestamp = extract_time_from_startup_id (priv->startup_id);
-          if (timestamp != GDK_CURRENT_TIME)
+          if (timestamp != CDK_CURRENT_TIME)
             cdk_x11_window_set_user_time (cdk_window, timestamp);
         }
 #endif
@@ -7592,10 +7592,10 @@ ctk_window_realize (CtkWidget *widget)
         cdk_window_set_startup_id (cdk_window, priv->startup_id);
     }
 
-#ifdef GDK_WINDOWING_X11
-  if (priv->initial_timestamp != GDK_CURRENT_TIME)
+#ifdef CDK_WINDOWING_X11
+  if (priv->initial_timestamp != CDK_CURRENT_TIME)
     {
-      if (GDK_IS_X11_WINDOW (cdk_window))
+      if (CDK_IS_X11_WINDOW (cdk_window))
         cdk_x11_window_set_user_time (cdk_window, priv->initial_timestamp);
     }
 #endif
@@ -7632,8 +7632,8 @@ popover_unrealize (CtkWidget        *widget,
                    CtkWindowPopover *popover,
                    CtkWindow        *window)
 {
-#ifdef GDK_WINDOWING_WAYLAND
-  if (GDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (widget)))
+#ifdef CDK_WINDOWING_WAYLAND
+  if (CDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (widget)))
     cdk_window_set_transient_for (popover->window, NULL);
 #endif
 
@@ -7722,22 +7722,22 @@ update_window_style_classes (CtkWindow *window)
     {
       guint edge_constraints = priv->edge_constraints;
 
-      if (edge_constraints & GDK_WINDOW_STATE_TOP_TILED)
+      if (edge_constraints & CDK_WINDOW_STATE_TOP_TILED)
         ctk_style_context_add_class (context, "tiled-top");
       else
         ctk_style_context_remove_class (context, "tiled-top");
 
-      if (edge_constraints & GDK_WINDOW_STATE_RIGHT_TILED)
+      if (edge_constraints & CDK_WINDOW_STATE_RIGHT_TILED)
         ctk_style_context_add_class (context, "tiled-right");
       else
         ctk_style_context_remove_class (context, "tiled-right");
 
-      if (edge_constraints & GDK_WINDOW_STATE_BOTTOM_TILED)
+      if (edge_constraints & CDK_WINDOW_STATE_BOTTOM_TILED)
         ctk_style_context_add_class (context, "tiled-bottom");
       else
         ctk_style_context_remove_class (context, "tiled-bottom");
 
-      if (edge_constraints & GDK_WINDOW_STATE_LEFT_TILED)
+      if (edge_constraints & CDK_WINDOW_STATE_LEFT_TILED)
         ctk_style_context_add_class (context, "tiled-left");
       else
         ctk_style_context_remove_class (context, "tiled-left");
@@ -7971,7 +7971,7 @@ ctk_window_configure_event (CtkWidget         *widget,
     {
       priv->configure_request_count -= 1;
 
-      GDK_PRIVATE_CALL (cdk_window_thaw_toplevel_updates) (_ctk_widget_get_window (widget));
+      CDK_PRIVATE_CALL (cdk_window_thaw_toplevel_updates) (_ctk_widget_get_window (widget));
     }
 
   /*
@@ -7998,16 +7998,16 @@ update_edge_constraints (CtkWindow           *window,
   CtkWindowPrivate *priv = window->priv;
   CdkWindowState state = event->new_window_state;
 
-  priv->edge_constraints = (state & GDK_WINDOW_STATE_TOP_TILED) |
-                           (state & GDK_WINDOW_STATE_TOP_RESIZABLE) |
-                           (state & GDK_WINDOW_STATE_RIGHT_TILED) |
-                           (state & GDK_WINDOW_STATE_RIGHT_RESIZABLE) |
-                           (state & GDK_WINDOW_STATE_BOTTOM_TILED) |
-                           (state & GDK_WINDOW_STATE_BOTTOM_RESIZABLE) |
-                           (state & GDK_WINDOW_STATE_LEFT_TILED) |
-                           (state & GDK_WINDOW_STATE_LEFT_RESIZABLE);
+  priv->edge_constraints = (state & CDK_WINDOW_STATE_TOP_TILED) |
+                           (state & CDK_WINDOW_STATE_TOP_RESIZABLE) |
+                           (state & CDK_WINDOW_STATE_RIGHT_TILED) |
+                           (state & CDK_WINDOW_STATE_RIGHT_RESIZABLE) |
+                           (state & CDK_WINDOW_STATE_BOTTOM_TILED) |
+                           (state & CDK_WINDOW_STATE_BOTTOM_RESIZABLE) |
+                           (state & CDK_WINDOW_STATE_LEFT_TILED) |
+                           (state & CDK_WINDOW_STATE_LEFT_RESIZABLE);
 
-  priv->tiled = (state & GDK_WINDOW_STATE_TILED) ? 1 : 0;
+  priv->tiled = (state & CDK_WINDOW_STATE_TILED) ? 1 : 0;
 }
 
 static gboolean
@@ -8017,31 +8017,31 @@ ctk_window_state_event (CtkWidget           *widget,
   CtkWindow *window = CTK_WINDOW (widget);
   CtkWindowPrivate *priv = window->priv;
 
-  if (event->changed_mask & GDK_WINDOW_STATE_FOCUSED)
+  if (event->changed_mask & CDK_WINDOW_STATE_FOCUSED)
     ensure_state_flag_backdrop (widget);
 
-  if (event->changed_mask & GDK_WINDOW_STATE_FULLSCREEN)
+  if (event->changed_mask & CDK_WINDOW_STATE_FULLSCREEN)
     {
       priv->fullscreen =
-        (event->new_window_state & GDK_WINDOW_STATE_FULLSCREEN) ? 1 : 0;
+        (event->new_window_state & CDK_WINDOW_STATE_FULLSCREEN) ? 1 : 0;
     }
 
-  if (event->changed_mask & GDK_WINDOW_STATE_MAXIMIZED)
+  if (event->changed_mask & CDK_WINDOW_STATE_MAXIMIZED)
     {
       priv->maximized =
-        (event->new_window_state & GDK_WINDOW_STATE_MAXIMIZED) ? 1 : 0;
+        (event->new_window_state & CDK_WINDOW_STATE_MAXIMIZED) ? 1 : 0;
       g_object_notify_by_pspec (G_OBJECT (widget), window_props[PROP_IS_MAXIMIZED]);
     }
 
   update_edge_constraints (window, event);
 
-  if (event->changed_mask & (GDK_WINDOW_STATE_FULLSCREEN |
-                             GDK_WINDOW_STATE_MAXIMIZED |
-                             GDK_WINDOW_STATE_TILED |
-                             GDK_WINDOW_STATE_TOP_TILED |
-                             GDK_WINDOW_STATE_RIGHT_TILED |
-                             GDK_WINDOW_STATE_BOTTOM_TILED |
-                             GDK_WINDOW_STATE_LEFT_TILED))
+  if (event->changed_mask & (CDK_WINDOW_STATE_FULLSCREEN |
+                             CDK_WINDOW_STATE_MAXIMIZED |
+                             CDK_WINDOW_STATE_TILED |
+                             CDK_WINDOW_STATE_TOP_TILED |
+                             CDK_WINDOW_STATE_RIGHT_TILED |
+                             CDK_WINDOW_STATE_BOTTOM_TILED |
+                             CDK_WINDOW_STATE_LEFT_TILED))
     {
       update_window_style_classes (window);
       update_window_buttons (window);
@@ -8159,8 +8159,8 @@ _ctk_window_query_nonaccels (CtkWindow      *window,
   if (!accel_mods)
     {
       static const guint bindings[] = {
-	GDK_KEY_space, GDK_KEY_KP_Space, GDK_KEY_Return, GDK_KEY_ISO_Enter, GDK_KEY_KP_Enter, GDK_KEY_Up, GDK_KEY_KP_Up, GDK_KEY_Down, GDK_KEY_KP_Down,
-	GDK_KEY_Left, GDK_KEY_KP_Left, GDK_KEY_Right, GDK_KEY_KP_Right, GDK_KEY_Tab, GDK_KEY_KP_Tab, GDK_KEY_ISO_Left_Tab,
+	CDK_KEY_space, CDK_KEY_KP_Space, CDK_KEY_Return, CDK_KEY_ISO_Enter, CDK_KEY_KP_Enter, CDK_KEY_Up, CDK_KEY_KP_Up, CDK_KEY_Down, CDK_KEY_KP_Down,
+	CDK_KEY_Left, CDK_KEY_KP_Left, CDK_KEY_Right, CDK_KEY_KP_Right, CDK_KEY_Tab, CDK_KEY_KP_Tab, CDK_KEY_ISO_Left_Tab,
       };
       guint i;
       
@@ -8333,12 +8333,12 @@ ctk_window_handle_wm_event (CtkWindow *window,
                             CdkEvent  *event,
                             gboolean   run_drag)
 {
-  gboolean retval = GDK_EVENT_PROPAGATE;
+  gboolean retval = CDK_EVENT_PROPAGATE;
   CtkWindowPrivate *priv;
 
-  if (event->type == GDK_BUTTON_PRESS || event->type == GDK_BUTTON_RELEASE ||
-      event->type == GDK_TOUCH_BEGIN || event->type == GDK_TOUCH_UPDATE ||
-      event->type == GDK_MOTION_NOTIFY || event->type == GDK_TOUCH_END)
+  if (event->type == CDK_BUTTON_PRESS || event->type == CDK_BUTTON_RELEASE ||
+      event->type == CDK_TOUCH_BEGIN || event->type == CDK_TOUCH_UPDATE ||
+      event->type == CDK_MOTION_NOTIFY || event->type == CDK_TOUCH_END)
     {
       priv = window->priv;
 
@@ -8366,20 +8366,20 @@ _ctk_window_check_handle_wm_event (CdkEvent *event)
     widget = ctk_widget_get_toplevel (widget);
 
   if (!CTK_IS_WINDOW (widget))
-    return GDK_EVENT_PROPAGATE;
+    return CDK_EVENT_PROPAGATE;
 
   priv = CTK_WINDOW (widget)->priv;
 
   if (!priv->multipress_gesture)
-    return GDK_EVENT_PROPAGATE;
+    return CDK_EVENT_PROPAGATE;
 
-  if (event->type != GDK_BUTTON_PRESS && event->type != GDK_BUTTON_RELEASE &&
-      event->type != GDK_MOTION_NOTIFY && event->type != GDK_TOUCH_BEGIN &&
-      event->type != GDK_TOUCH_END && event->type != GDK_TOUCH_UPDATE)
-    return GDK_EVENT_PROPAGATE;
+  if (event->type != CDK_BUTTON_PRESS && event->type != CDK_BUTTON_RELEASE &&
+      event->type != CDK_MOTION_NOTIFY && event->type != CDK_TOUCH_BEGIN &&
+      event->type != CDK_TOUCH_END && event->type != CDK_TOUCH_UPDATE)
+    return CDK_EVENT_PROPAGATE;
 
   if (ctk_widget_event (widget, event))
-    return GDK_EVENT_STOP;
+    return CDK_EVENT_STOP;
 
   return ctk_window_handle_wm_event (CTK_WINDOW (widget), event, TRUE);
 }
@@ -8391,7 +8391,7 @@ ctk_window_event (CtkWidget *widget,
   if (widget != ctk_get_event_widget (event))
     return ctk_window_handle_wm_event (CTK_WINDOW (widget), event, FALSE);
 
-  return GDK_EVENT_PROPAGATE;
+  return CDK_EVENT_PROPAGATE;
 }
 
 static void
@@ -8418,9 +8418,9 @@ do_focus_change (CtkWidget *widget,
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   device_manager = cdk_display_get_device_manager (ctk_widget_get_display (widget));
-  devices = cdk_device_manager_list_devices (device_manager, GDK_DEVICE_TYPE_MASTER);
-  devices = g_list_concat (devices, cdk_device_manager_list_devices (device_manager, GDK_DEVICE_TYPE_SLAVE));
-  devices = g_list_concat (devices, cdk_device_manager_list_devices (device_manager, GDK_DEVICE_TYPE_FLOATING));
+  devices = cdk_device_manager_list_devices (device_manager, CDK_DEVICE_TYPE_MASTER);
+  devices = g_list_concat (devices, cdk_device_manager_list_devices (device_manager, CDK_DEVICE_TYPE_SLAVE));
+  devices = g_list_concat (devices, cdk_device_manager_list_devices (device_manager, CDK_DEVICE_TYPE_FLOATING));
   G_GNUC_END_IGNORE_DEPRECATIONS;
 
   for (d = devices; d; d = d->next)
@@ -8428,20 +8428,20 @@ do_focus_change (CtkWidget *widget,
       CdkDevice *dev = d->data;
       CdkEvent *fevent;
 
-      if (cdk_device_get_source (dev) != GDK_SOURCE_KEYBOARD)
+      if (cdk_device_get_source (dev) != CDK_SOURCE_KEYBOARD)
         continue;
 
       /* Skip non-master keyboards that haven't
        * selected for events from this window
        */
       window = _ctk_widget_get_window (widget);
-      if (cdk_device_get_device_type (dev) != GDK_DEVICE_TYPE_MASTER &&
+      if (cdk_device_get_device_type (dev) != CDK_DEVICE_TYPE_MASTER &&
           window && !cdk_window_get_device_events (window, dev))
         continue;
 
-      fevent = cdk_event_new (GDK_FOCUS_CHANGE);
+      fevent = cdk_event_new (CDK_FOCUS_CHANGE);
 
-      fevent->focus_change.type = GDK_FOCUS_CHANGE;
+      fevent->focus_change.type = CDK_FOCUS_CHANGE;
       fevent->focus_change.window = window;
       if (window)
         g_object_ref (window);
@@ -9180,7 +9180,7 @@ restore_window_clicked (CtkMenuItem *menuitem,
 
   state = ctk_window_get_state (window);
 
-  if (state & GDK_WINDOW_STATE_ICONIFIED)
+  if (state & CDK_WINDOW_STATE_ICONIFIED)
     ctk_window_deiconify (window);
 }
 
@@ -9193,7 +9193,7 @@ move_window_clicked (CtkMenuItem *menuitem,
   ctk_window_begin_move_drag (window,
                               0, /* 0 means "use keyboard" */
                               0, 0,
-                              GDK_CURRENT_TIME);
+                              CDK_CURRENT_TIME);
 }
 
 static void
@@ -9206,7 +9206,7 @@ resize_window_clicked (CtkMenuItem *menuitem,
                                  0,
                                  0, /* 0 means "use keyboard" */
                                  0, 0,
-                                 GDK_CURRENT_TIME);
+                                 CDK_CURRENT_TIME);
 }
 
 static void
@@ -9232,7 +9232,7 @@ maximize_window_clicked (CtkMenuItem *menuitem,
 
   state = ctk_window_get_state (window);
 
-  if (state & GDK_WINDOW_STATE_ICONIFIED)
+  if (state & CDK_WINDOW_STATE_ICONIFIED)
     ctk_window_deiconify (window);
 
   ctk_window_maximize (window);
@@ -9271,7 +9271,7 @@ ctk_window_do_popup_fallback (CtkWindow      *window,
 
   state = ctk_window_get_state (window);
 
-  iconified = (state & GDK_WINDOW_STATE_ICONIFIED) == GDK_WINDOW_STATE_ICONIFIED;
+  iconified = (state & CDK_WINDOW_STATE_ICONIFIED) == CDK_WINDOW_STATE_ICONIFIED;
   maximized = priv->maximized && !iconified;
 
   priv->popup_menu = ctk_menu_new ();
@@ -9294,7 +9294,7 @@ ctk_window_do_popup_fallback (CtkWindow      *window,
   if ((ctk_widget_is_visible (CTK_WIDGET (window)) &&
        !(maximized || iconified)) ||
       (!iconified && !priv->resizable) ||
-      priv->type_hint != GDK_WINDOW_TYPE_HINT_NORMAL)
+      priv->type_hint != CDK_WINDOW_TYPE_HINT_NORMAL)
     ctk_widget_set_sensitive (menuitem, FALSE);
   g_signal_connect (G_OBJECT (menuitem), "activate",
                     G_CALLBACK (restore_window_clicked), window);
@@ -9319,7 +9319,7 @@ ctk_window_do_popup_fallback (CtkWindow      *window,
   menuitem = ctk_menu_item_new_with_label (_("Minimize"));
   ctk_widget_show (menuitem);
   if (iconified ||
-      priv->type_hint != GDK_WINDOW_TYPE_HINT_NORMAL)
+      priv->type_hint != CDK_WINDOW_TYPE_HINT_NORMAL)
     ctk_widget_set_sensitive (menuitem, FALSE);
   g_signal_connect (G_OBJECT (menuitem), "activate",
                     G_CALLBACK (minimize_window_clicked), window);
@@ -9329,7 +9329,7 @@ ctk_window_do_popup_fallback (CtkWindow      *window,
   ctk_widget_show (menuitem);
   if (maximized ||
       !priv->resizable ||
-      priv->type_hint != GDK_WINDOW_TYPE_HINT_NORMAL)
+      priv->type_hint != CDK_WINDOW_TYPE_HINT_NORMAL)
     ctk_widget_set_sensitive (menuitem, FALSE);
   g_signal_connect (G_OBJECT (menuitem), "activate",
                     G_CALLBACK (maximize_window_clicked), window);
@@ -9388,17 +9388,17 @@ geometry_size_to_pixels (CdkGeometry *geometry,
   gint width_inc = 1;
   gint height_inc = 1;
 
-  if (flags & GDK_HINT_BASE_SIZE)
+  if (flags & CDK_HINT_BASE_SIZE)
     {
       base_width = geometry->base_width;
       base_height = geometry->base_height;
     }
-  if (flags & GDK_HINT_MIN_SIZE)
+  if (flags & CDK_HINT_MIN_SIZE)
     {
       min_width = geometry->min_width;
       min_height = geometry->min_height;
     }
-  if (flags & GDK_HINT_RESIZE_INC)
+  if (flags & CDK_HINT_RESIZE_INC)
     {
       width_inc = geometry->width_inc;
       height_inc = geometry->height_inc;
@@ -9973,9 +9973,9 @@ ctk_window_move_resize (CtkWindow *window)
        info->initial_pos_set ||
        (priv->need_default_position &&
         get_effective_position (window) != CTK_WIN_POS_NONE)) &&
-      (new_flags & GDK_HINT_POS) == 0)
+      (new_flags & CDK_HINT_POS) == 0)
     {
-      new_flags |= GDK_HINT_POS;
+      new_flags |= CDK_HINT_POS;
       hints_changed = TRUE;
     }
   
@@ -10108,7 +10108,7 @@ ctk_window_move_resize (CtkWindow *window)
 	  /* Increment the number of have-not-yet-received-notify requests */
 	  priv->configure_request_count += 1;
 
-          GDK_PRIVATE_CALL (cdk_window_freeze_toplevel_updates) (cdk_window);
+          CDK_PRIVATE_CALL (cdk_window_freeze_toplevel_updates) (cdk_window);
 
 	  /* for CTK_RESIZE_QUEUE toplevels, we are now awaiting a new
 	   * configure event in response to our resizing request.
@@ -10172,32 +10172,32 @@ ctk_window_compare_hints (CdkGeometry *geometry_a,
   if (flags_a != flags_b)
     return FALSE;
   
-  if ((flags_a & GDK_HINT_MIN_SIZE) &&
+  if ((flags_a & CDK_HINT_MIN_SIZE) &&
       (geometry_a->min_width != geometry_b->min_width ||
        geometry_a->min_height != geometry_b->min_height))
     return FALSE;
 
-  if ((flags_a & GDK_HINT_MAX_SIZE) &&
+  if ((flags_a & CDK_HINT_MAX_SIZE) &&
       (geometry_a->max_width != geometry_b->max_width ||
        geometry_a->max_height != geometry_b->max_height))
     return FALSE;
 
-  if ((flags_a & GDK_HINT_BASE_SIZE) &&
+  if ((flags_a & CDK_HINT_BASE_SIZE) &&
       (geometry_a->base_width != geometry_b->base_width ||
        geometry_a->base_height != geometry_b->base_height))
     return FALSE;
 
-  if ((flags_a & GDK_HINT_ASPECT) &&
+  if ((flags_a & CDK_HINT_ASPECT) &&
       (geometry_a->min_aspect != geometry_b->min_aspect ||
        geometry_a->max_aspect != geometry_b->max_aspect))
     return FALSE;
 
-  if ((flags_a & GDK_HINT_RESIZE_INC) &&
+  if ((flags_a & CDK_HINT_RESIZE_INC) &&
       (geometry_a->width_inc != geometry_b->width_inc ||
        geometry_a->height_inc != geometry_b->height_inc))
     return FALSE;
 
-  if ((flags_a & GDK_HINT_WIN_GRAVITY) &&
+  if ((flags_a & CDK_HINT_WIN_GRAVITY) &&
       geometry_a->win_gravity != geometry_b->win_gravity)
     return FALSE;
 
@@ -10218,7 +10218,7 @@ ctk_window_constrain_size (CtkWindow   *window,
 
   /* ignore size increments for windows that fit in a fixed space */
   if (priv->maximized || priv->fullscreen || priv->tiled)
-    geometry_flags = flags & ~GDK_HINT_RESIZE_INC;
+    geometry_flags = flags & ~CDK_HINT_RESIZE_INC;
   else
     geometry_flags = flags;
 
@@ -10308,12 +10308,12 @@ ctk_window_compute_hints (CtkWindow   *window,
       *new_flags = 0;
     }
   
-  /* We don't want to set GDK_HINT_POS in here, we just set it
+  /* We don't want to set CDK_HINT_POS in here, we just set it
    * in ctk_window_move_resize() when we want the position
    * honored.
    */
   
-  if (*new_flags & GDK_HINT_BASE_SIZE)
+  if (*new_flags & CDK_HINT_BASE_SIZE)
     {
       new_geometry->base_width += extra_width;
       new_geometry->base_height += extra_height;
@@ -10324,14 +10324,14 @@ ctk_window_compute_hints (CtkWindow   *window,
        * don't expect it to have any visible effect.
        * (Note: geometry_size_to_pixels() depends on this.)
        */
-      *new_flags |= GDK_HINT_BASE_SIZE;
+      *new_flags |= CDK_HINT_BASE_SIZE;
 
       new_geometry->base_width = extra_width;
       new_geometry->base_height = extra_height;
 
       /* As for X, if BASE_SIZE is not set but MIN_SIZE is set, then the
        * base size is the minimum size */
-      if (*new_flags & GDK_HINT_MIN_SIZE)
+      if (*new_flags & CDK_HINT_MIN_SIZE)
 	{
 	  if (new_geometry->min_width > 0)
 	    new_geometry->base_width += new_geometry->min_width;
@@ -10344,7 +10344,7 @@ ctk_window_compute_hints (CtkWindow   *window,
   if (!priv->resizable)
     ctk_window_guess_default_size (window, &requisition.width, &requisition.height);
 
-  if (*new_flags & GDK_HINT_MIN_SIZE)
+  if (*new_flags & CDK_HINT_MIN_SIZE)
     {
       if (new_geometry->min_width < 0)
 	new_geometry->min_width = requisition.width;
@@ -10358,13 +10358,13 @@ ctk_window_compute_hints (CtkWindow   *window,
     }
   else
     {
-      *new_flags |= GDK_HINT_MIN_SIZE;
+      *new_flags |= CDK_HINT_MIN_SIZE;
       
       new_geometry->min_width = requisition.width;
       new_geometry->min_height = requisition.height;
     }
   
-  if (*new_flags & GDK_HINT_MAX_SIZE)
+  if (*new_flags & CDK_HINT_MAX_SIZE)
     {
       if (new_geometry->max_width >= 0)
 	new_geometry->max_width += extra_width;
@@ -10377,13 +10377,13 @@ ctk_window_compute_hints (CtkWindow   *window,
     }
   else if (!priv->resizable)
     {
-      *new_flags |= GDK_HINT_MAX_SIZE;
+      *new_flags |= CDK_HINT_MAX_SIZE;
 
       new_geometry->max_width = new_geometry->min_width;
       new_geometry->max_height = new_geometry->min_height;
     }
 
-  *new_flags |= GDK_HINT_WIN_GRAVITY;
+  *new_flags |= CDK_HINT_WIN_GRAVITY;
   new_geometry->win_gravity = priv->gravity;
 }
 
@@ -10499,7 +10499,7 @@ ctk_window_draw (CtkWidget *widget,
 void
 ctk_window_present (CtkWindow *window)
 {
-  ctk_window_present_with_time (window, GDK_CURRENT_TIME);
+  ctk_window_present_with_time (window, CDK_CURRENT_TIME);
 }
 
 /**
@@ -10550,11 +10550,11 @@ ctk_window_present_with_time (CtkWindow *window,
 
       cdk_window_show (cdk_window);
 
-      /* Translate a timestamp of GDK_CURRENT_TIME appropriately */
-      if (timestamp == GDK_CURRENT_TIME)
+      /* Translate a timestamp of CDK_CURRENT_TIME appropriately */
+      if (timestamp == CDK_CURRENT_TIME)
         {
-#ifdef GDK_WINDOWING_X11
-	  if (GDK_IS_X11_WINDOW(cdk_window))
+#ifdef CDK_WINDOWING_X11
+	  if (CDK_IS_X11_WINDOW(cdk_window))
 	    {
 	      CdkDisplay *display;
 
@@ -10818,7 +10818,7 @@ ctk_window_fullscreen_on_monitor (CtkWindow *window,
   CdkWindow *toplevel;
 
   g_return_if_fail (CTK_IS_WINDOW (window));
-  g_return_if_fail (GDK_IS_SCREEN (screen));
+  g_return_if_fail (CDK_IS_SCREEN (screen));
   g_return_if_fail (cdk_display_get_monitor (cdk_screen_get_display (screen), monitor) != NULL);
 
   priv = window->priv;
@@ -11019,7 +11019,7 @@ ctk_window_get_resizable (CtkWindow *window)
  * ctk_window_move(). See ctk_window_move() and #CdkGravity for
  * more details.
  *
- * The default window gravity is #GDK_GRAVITY_NORTH_WEST which will
+ * The default window gravity is #CDK_GRAVITY_NORTH_WEST which will
  * typically “do what you mean.”
  *
  **/
@@ -11071,10 +11071,10 @@ ctk_window_get_gravity (CtkWindow *window)
  * @timestamp: timestamp from the click event that initiated the drag
  *
  * Starts resizing a window. This function is used if an application
- * has window resizing controls. When GDK can support it, the resize
+ * has window resizing controls. When CDK can support it, the resize
  * will be done using the standard mechanism for the
  * [window manager][ctk-X11-arch] or windowing
- * system. Otherwise, GDK will try to emulate window resizing,
+ * system. Otherwise, CDK will try to emulate window resizing,
  * potentially not all that well, depending on the windowing system.
  */
 void
@@ -11109,10 +11109,10 @@ ctk_window_begin_resize_drag  (CtkWindow     *window,
  * @timestamp: timestamp from the click event that initiated the drag
  *
  * Starts moving a window. This function is used if an application has
- * window movement grips. When GDK can support it, the window movement
+ * window movement grips. When CDK can support it, the window movement
  * will be done using the standard mechanism for the
  * [window manager][ctk-X11-arch] or windowing
- * system. Otherwise, GDK will try to emulate window movement,
+ * system. Otherwise, CDK will try to emulate window movement,
  * potentially not all that well, depending on the windowing system.
  */
 void
@@ -11159,7 +11159,7 @@ ctk_window_set_screen (CtkWindow *window,
   gboolean was_mapped;
 
   g_return_if_fail (CTK_IS_WINDOW (window));
-  g_return_if_fail (GDK_IS_SCREEN (screen));
+  g_return_if_fail (CDK_IS_SCREEN (screen));
 
   priv = window->priv;
 
@@ -11193,14 +11193,14 @@ ctk_window_set_screen (CtkWindow *window,
         {
           g_signal_handlers_disconnect_by_func (previous_screen,
                                                 ctk_window_on_composited_changed, window);
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
           g_signal_handlers_disconnect_by_func (ctk_settings_get_for_screen (previous_screen),
                                                 ctk_window_on_theme_variant_changed, window);
 #endif
         }
       g_signal_connect (screen, "composited-changed",
                         G_CALLBACK (ctk_window_on_composited_changed), window);
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
       g_signal_connect (ctk_settings_get_for_screen (screen),
                         "notify::ctk-application-prefer-dark-theme",
                         G_CALLBACK (ctk_window_on_theme_variant_changed), window);
@@ -11229,7 +11229,7 @@ ctk_window_set_screen (CtkWindow *window,
 static void
 ctk_window_set_theme_variant (CtkWindow *window)
 {
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
   CdkWindow *cdk_window;
   gboolean   dark_theme_requested;
 
@@ -11239,13 +11239,13 @@ ctk_window_set_theme_variant (CtkWindow *window)
 
   cdk_window = _ctk_widget_get_window (CTK_WIDGET (window));
 
-  if (GDK_IS_X11_WINDOW (cdk_window))
+  if (CDK_IS_X11_WINDOW (cdk_window))
     cdk_x11_window_set_theme_variant (cdk_window,
                                       dark_theme_requested ? "dark" : NULL);
 #endif
 }
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
 static void
 ctk_window_on_theme_variant_changed (CtkSettings *settings,
                                      GParamSpec  *pspec,
@@ -11606,7 +11606,7 @@ ctk_XParseGeometry (const char   *string,
  * to resize/move the window.
  *
  * If ctk_window_parse_geometry() returns %TRUE, it will also
- * set the #GDK_HINT_USER_POS and/or #GDK_HINT_USER_SIZE hints
+ * set the #CDK_HINT_USER_POS and/or #CDK_HINT_USER_SIZE hints
  * indicating to the window manager that the size/position of
  * the window was user-specified. This causes most window
  * managers to honor the geometry.
@@ -11630,7 +11630,7 @@ ctk_XParseGeometry (const char   *string,
  *   CtkWidget *window, *vbox;
  *   CdkGeometry size_hints = {
  *     100, 50, 0, 0, 100, 50, 10,
- *     10, 0.0, 0.0, GDK_GRAVITY_NORTH_WEST
+ *     10, 0.0, 0.0, CDK_GRAVITY_NORTH_WEST
  *   };
  *
  *   ctk_init (&argc, &argv);
@@ -11645,9 +11645,9 @@ ctk_XParseGeometry (const char   *string,
  *   ctk_window_set_geometry_hints (CTK_WINDOW (window),
  * 	  			    NULL,
  * 				    &size_hints,
- * 				    GDK_HINT_MIN_SIZE |
- * 				    GDK_HINT_BASE_SIZE |
- * 				    GDK_HINT_RESIZE_INC);
+ * 				    CDK_HINT_MIN_SIZE |
+ * 				    CDK_HINT_BASE_SIZE |
+ * 				    CDK_HINT_RESIZE_INC);
  *
  *   if (argc > 1)
  *     {
@@ -11707,14 +11707,14 @@ ctk_window_parse_geometry (CtkWindow   *window,
 
   ctk_window_get_size (window, (gint *)&w, (gint *)&h);
   
-  grav = GDK_GRAVITY_NORTH_WEST;
+  grav = CDK_GRAVITY_NORTH_WEST;
 
   if ((result & XNegative) && (result & YNegative))
-    grav = GDK_GRAVITY_SOUTH_EAST;
+    grav = CDK_GRAVITY_SOUTH_EAST;
   else if (result & XNegative)
-    grav = GDK_GRAVITY_NORTH_EAST;
+    grav = CDK_GRAVITY_NORTH_EAST;
   else if (result & YNegative)
-    grav = GDK_GRAVITY_SOUTH_WEST;
+    grav = CDK_GRAVITY_SOUTH_WEST;
 
   if ((result & XValue) == 0)
     x = 0;
@@ -11723,12 +11723,12 @@ ctk_window_parse_geometry (CtkWindow   *window,
     y = 0;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-  if (grav == GDK_GRAVITY_SOUTH_WEST ||
-      grav == GDK_GRAVITY_SOUTH_EAST)
+  if (grav == CDK_GRAVITY_SOUTH_WEST ||
+      grav == CDK_GRAVITY_SOUTH_EAST)
     y = cdk_screen_get_height (screen) - h + y;
 
-  if (grav == GDK_GRAVITY_SOUTH_EAST ||
-      grav == GDK_GRAVITY_NORTH_EAST)
+  if (grav == CDK_GRAVITY_SOUTH_EAST ||
+      grav == CDK_GRAVITY_NORTH_EAST)
     x = cdk_screen_get_width (screen) - w + x;
 G_GNUC_END_IGNORE_DEPRECATIONS
 
@@ -11757,9 +11757,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       info = ctk_window_get_geometry_info (window, TRUE);
 
       if (pos_set)
-        info->mask |= GDK_HINT_USER_POS;
+        info->mask |= CDK_HINT_USER_POS;
       if (size_set)
-        info->mask |= GDK_HINT_USER_SIZE;
+        info->mask |= CDK_HINT_USER_SIZE;
     }
   
   return result != 0;
@@ -11938,10 +11938,10 @@ add_to_key_hash (CtkWindow      *window,
   /* CtkAccelGroup stores lowercased accelerators. To deal
    * with this, if <Shift> was specified, uppercase.
    */
-  if (modifiers & GDK_SHIFT_MASK)
+  if (modifiers & CDK_SHIFT_MASK)
     {
-      if (keyval == GDK_KEY_Tab)
-	keyval = GDK_KEY_ISO_Left_Tab;
+      if (keyval == CDK_KEY_Tab)
+	keyval = CDK_KEY_ISO_Left_Tab;
       else
 	keyval = cdk_keyval_to_upper (keyval);
     }
@@ -12454,7 +12454,7 @@ ensure_state_flag_backdrop (CtkWidget *widget)
 
   window = _ctk_widget_get_window (widget);
 
-  window_focused = cdk_window_get_state (window) & GDK_WINDOW_STATE_FOCUSED;
+  window_focused = cdk_window_get_state (window) & CDK_WINDOW_STATE_FOCUSED;
 
   if (!window_focused)
     ctk_widget_set_state_flags (widget, CTK_STATE_FLAG_BACKDROP, FALSE);
@@ -12922,7 +12922,7 @@ ctk_window_set_hardcoded_window (CtkWindow *window,
   g_set_object (&priv->hardcoded_window, cdk_window);
 }
 
-#ifdef GDK_WINDOWING_WAYLAND
+#ifdef CDK_WINDOWING_WAYLAND
 typedef struct {
   CtkWindow *window;
   CtkWindowHandleExported callback;
@@ -12949,8 +12949,8 @@ ctk_window_export_handle (CtkWindow               *window,
                           gpointer                 user_data)
 {
 
-#ifdef GDK_WINDOWING_X11
-  if (GDK_IS_X11_DISPLAY (ctk_widget_get_display (CTK_WIDGET (window))))
+#ifdef CDK_WINDOWING_X11
+  if (CDK_IS_X11_DISPLAY (ctk_widget_get_display (CTK_WIDGET (window))))
     {
       CdkWindow *cdk_window = ctk_widget_get_window (CTK_WIDGET (window));
       char *handle_str;
@@ -12962,8 +12962,8 @@ ctk_window_export_handle (CtkWindow               *window,
       return TRUE;
     }
 #endif
-#ifdef GDK_WINDOWING_WAYLAND
-  if (GDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (CTK_WIDGET (window))))
+#ifdef CDK_WINDOWING_WAYLAND
+  if (CDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (CTK_WIDGET (window))))
     {
       CdkWindow *cdk_window = ctk_widget_get_window (CTK_WIDGET (window));
       WaylandWindowHandleExportedData *data;
@@ -12996,8 +12996,8 @@ ctk_window_export_handle (CtkWindow               *window,
 void
 ctk_window_unexport_handle (CtkWindow *window)
 {
-#ifdef GDK_WINDOWING_WAYLAND
-  if (GDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (CTK_WIDGET (window))))
+#ifdef CDK_WINDOWING_WAYLAND
+  if (CDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (CTK_WIDGET (window))))
     {
       CdkWindow *cdk_window = ctk_widget_get_window (CTK_WIDGET (window));
 

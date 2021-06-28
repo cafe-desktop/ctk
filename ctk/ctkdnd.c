@@ -34,7 +34,7 @@
 
 #include "cdk/cdk.h"
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
 #include <X11/Xlib.h>
 #include <X11/keysym.h>
 #include "cdk/x11/cdkx.h"
@@ -43,11 +43,11 @@
 #endif
 #endif
 
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
 #include <cdk/win32/cdkwin32.h>
 #endif
 
-#ifdef GDK_WINDOWING_WAYLAND
+#ifdef CDK_WINDOWING_WAYLAND
 #include <cdk/wayland/cdkwayland.h>
 #endif
 
@@ -278,11 +278,11 @@ static struct {
   CdkPixbuf    *pixbuf;
   CdkCursor    *cursor;
 } drag_cursors[] = {
-  { GDK_ACTION_DEFAULT, NULL },
-  { GDK_ACTION_ASK,   "dnd-ask",  NULL, NULL },
-  { GDK_ACTION_COPY,  "copy", NULL, NULL },
-  { GDK_ACTION_MOVE,  "move", NULL, NULL },
-  { GDK_ACTION_LINK,  "alias", NULL, NULL },
+  { CDK_ACTION_DEFAULT, NULL },
+  { CDK_ACTION_ASK,   "dnd-ask",  NULL, NULL },
+  { CDK_ACTION_COPY,  "copy", NULL, NULL },
+  { CDK_ACTION_MOVE,  "move", NULL, NULL },
+  { CDK_ACTION_LINK,  "alias", NULL, NULL },
   { 0              ,  "no-drop", NULL, NULL },
 };
 
@@ -339,7 +339,7 @@ ctk_drag_get_ipc_widget (CtkWidget *widget)
   return result;
 }
 
-#if defined (GDK_WINDOWING_X11)
+#if defined (CDK_WINDOWING_X11)
 
 /*
  * We want to handle a handful of keys during DND, e.g. Escape to abort.
@@ -350,7 +350,7 @@ ctk_drag_get_ipc_widget (CtkWidget *widget)
  * in order for them to still work when the focus is moved to another
  * app/workspace.
  *
- * GDK needs a little help to successfully deliver root key events...
+ * CDK needs a little help to successfully deliver root key events...
  */
 
 static CdkFilterReturn
@@ -376,7 +376,7 @@ root_key_filter (CdkXEvent *xevent,
         dev->event = (Window)data;
     }
 
-  return GDK_FILTER_CONTINUE;
+  return CDK_FILTER_CONTINUE;
 }
 
 typedef struct {
@@ -426,13 +426,13 @@ grab_dnd_keys (CtkWidget *widget,
   gboolean using_xi2;
 
   window = ctk_widget_get_window (widget);
-  if (!GDK_IS_X11_WINDOW (window))
+  if (!CDK_IS_X11_WINDOW (window))
     {
       G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       cdk_device_grab (device,
                        ctk_widget_get_window (widget),
-                       GDK_OWNERSHIP_APPLICATION, FALSE,
-                       GDK_KEY_PRESS_MASK | GDK_KEY_RELEASE_MASK,
+                       CDK_OWNERSHIP_APPLICATION, FALSE,
+                       CDK_KEY_PRESS_MASK | CDK_KEY_RELEASE_MASK,
                        NULL, time);
       G_GNUC_END_IGNORE_DEPRECATIONS;
       return;
@@ -440,7 +440,7 @@ grab_dnd_keys (CtkWidget *widget,
 
   deviceid = cdk_x11_device_get_id (device);
 
-  if (GDK_IS_X11_DEVICE_XI2 (device))
+  if (CDK_IS_X11_DEVICE_XI2 (device))
     using_xi2 = TRUE;
   else
     using_xi2 = FALSE;
@@ -453,7 +453,7 @@ grab_dnd_keys (CtkWidget *widget,
 
   for (i = 0; i < G_N_ELEMENTS (grab_keys); ++i)
     {
-      keycode = XKeysymToKeycode (GDK_WINDOW_XDISPLAY (window), grab_keys[i].keysym);
+      keycode = XKeysymToKeycode (CDK_WINDOW_XDISPLAY (window), grab_keys[i].keysym);
       if (keycode == NoSymbol)
         continue;
 
@@ -471,10 +471,10 @@ grab_dnd_keys (CtkWidget *widget,
           num_mods = 1;
           mods.modifiers = grab_keys[i].modifiers;
 
-          XIGrabKeycode (GDK_WINDOW_XDISPLAY (window),
+          XIGrabKeycode (CDK_WINDOW_XDISPLAY (window),
                          deviceid,
                          keycode,
-                         GDK_WINDOW_XID (root),
+                         CDK_WINDOW_XID (root),
                          GrabModeAsync,
                          GrabModeAsync,
                          False,
@@ -484,9 +484,9 @@ grab_dnd_keys (CtkWidget *widget,
         }
       else
 #endif
-        XGrabKey (GDK_WINDOW_XDISPLAY (window),
+        XGrabKey (CDK_WINDOW_XDISPLAY (window),
                   keycode, grab_keys[i].modifiers,
-                  GDK_WINDOW_XID (root),
+                  CDK_WINDOW_XID (root),
                   FALSE,
                   GrabModeAsync,
                   GrabModeAsync);
@@ -495,7 +495,7 @@ grab_dnd_keys (CtkWidget *widget,
   cdk_display_flush (display);
   cdk_x11_display_error_trap_pop_ignored (display);
 
-  cdk_window_add_filter (NULL, root_key_filter, (gpointer) GDK_WINDOW_XID (window));
+  cdk_window_add_filter (NULL, root_key_filter, (gpointer) CDK_WINDOW_XID (window));
 }
 
 static void
@@ -514,7 +514,7 @@ ungrab_dnd_keys (CtkWidget *widget,
   gboolean using_xi2;
 
   window = ctk_widget_get_window (widget);
-  if (!GDK_IS_X11_WINDOW (window))
+  if (!CDK_IS_X11_WINDOW (window))
     {
       G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       cdk_device_ungrab (device, time);
@@ -524,7 +524,7 @@ ungrab_dnd_keys (CtkWidget *widget,
 
   deviceid = cdk_x11_device_get_id (device);
 
-  if (GDK_IS_X11_DEVICE_XI2 (device))
+  if (CDK_IS_X11_DEVICE_XI2 (device))
     using_xi2 = TRUE;
   else
     using_xi2 = FALSE;
@@ -533,13 +533,13 @@ ungrab_dnd_keys (CtkWidget *widget,
   display = ctk_widget_get_display (widget);
   root = cdk_screen_get_root_window (ctk_widget_get_screen (widget));
 
-  cdk_window_remove_filter (NULL, root_key_filter, (gpointer) GDK_WINDOW_XID (window));
+  cdk_window_remove_filter (NULL, root_key_filter, (gpointer) CDK_WINDOW_XID (window));
 
   cdk_x11_display_error_trap_push (display);
 
   for (i = 0; i < G_N_ELEMENTS (grab_keys); ++i)
     {
-      keycode = XKeysymToKeycode (GDK_WINDOW_XDISPLAY (window), grab_keys[i].keysym);
+      keycode = XKeysymToKeycode (CDK_WINDOW_XDISPLAY (window), grab_keys[i].keysym);
       if (keycode == NoSymbol)
         continue;
 
@@ -549,25 +549,25 @@ ungrab_dnd_keys (CtkWidget *widget,
           num_mods = 1;
           mods.modifiers = grab_keys[i].modifiers;
 
-          XIUngrabKeycode (GDK_WINDOW_XDISPLAY (window),
+          XIUngrabKeycode (CDK_WINDOW_XDISPLAY (window),
                            deviceid,
                            keycode,
-                           GDK_WINDOW_XID (root),
+                           CDK_WINDOW_XID (root),
                            num_mods,
                            &mods);
         }
       else
 #endif
-        XUngrabKey (GDK_WINDOW_XDISPLAY (window),
+        XUngrabKey (CDK_WINDOW_XDISPLAY (window),
                     keycode, grab_keys[i].modifiers,
-                    GDK_WINDOW_XID (root));
+                    CDK_WINDOW_XID (root));
     }
 
   cdk_display_flush (display);
   cdk_x11_display_error_trap_pop_ignored (display);
 }
 
-#else /* !GDK_WINDOWING_X11 */
+#else /* !CDK_WINDOWING_X11 */
 
 static void
 grab_dnd_keys (CtkWidget *widget,
@@ -577,8 +577,8 @@ grab_dnd_keys (CtkWidget *widget,
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   cdk_device_grab (device,
                    ctk_widget_get_window (widget),
-                   GDK_OWNERSHIP_APPLICATION, FALSE,
-                   GDK_KEY_PRESS_MASK | GDK_KEY_RELEASE_MASK,
+                   CDK_OWNERSHIP_APPLICATION, FALSE,
+                   CDK_KEY_PRESS_MASK | CDK_KEY_RELEASE_MASK,
                    NULL, time);
   G_GNUC_END_IGNORE_DEPRECATIONS;
 }
@@ -593,7 +593,7 @@ ungrab_dnd_keys (CtkWidget *widget,
   G_GNUC_END_IGNORE_DEPRECATIONS;
 }
 
-#endif /* GDK_WINDOWING_X11 */
+#endif /* CDK_WINDOWING_X11 */
 
 /*
  * ctk_drag_release_ipc_widget:
@@ -617,7 +617,7 @@ ctk_drag_release_ipc_widget (CtkWidget *widget)
       keyboard = cdk_device_get_associated_device (pointer);
 
       if (keyboard)
-        ungrab_dnd_keys (widget, keyboard, GDK_CURRENT_TIME);
+        ungrab_dnd_keys (widget, keyboard, CDK_CURRENT_TIME);
     }
 
   if (ctk_window_has_group (window))
@@ -632,32 +632,32 @@ ctk_drag_release_ipc_widget (CtkWidget *widget)
 static guint32
 ctk_drag_get_event_time (CdkEvent *event)
 {
-  guint32 tm = GDK_CURRENT_TIME;
+  guint32 tm = CDK_CURRENT_TIME;
   
   if (event)
     switch (event->type)
       {
-      case GDK_MOTION_NOTIFY:
+      case CDK_MOTION_NOTIFY:
         tm = event->motion.time; break;
-      case GDK_BUTTON_PRESS:
-      case GDK_2BUTTON_PRESS:
-      case GDK_3BUTTON_PRESS:
-      case GDK_BUTTON_RELEASE:
+      case CDK_BUTTON_PRESS:
+      case CDK_2BUTTON_PRESS:
+      case CDK_3BUTTON_PRESS:
+      case CDK_BUTTON_RELEASE:
         tm = event->button.time; break;
-      case GDK_KEY_PRESS:
-      case GDK_KEY_RELEASE:
+      case CDK_KEY_PRESS:
+      case CDK_KEY_RELEASE:
         tm = event->key.time; break;
-      case GDK_ENTER_NOTIFY:
-      case GDK_LEAVE_NOTIFY:
+      case CDK_ENTER_NOTIFY:
+      case CDK_LEAVE_NOTIFY:
         tm = event->crossing.time; break;
-      case GDK_PROPERTY_NOTIFY:
+      case CDK_PROPERTY_NOTIFY:
         tm = event->property.time; break;
-      case GDK_SELECTION_CLEAR:
-      case GDK_SELECTION_REQUEST:
-      case GDK_SELECTION_NOTIFY:
+      case CDK_SELECTION_CLEAR:
+      case CDK_SELECTION_REQUEST:
+      case CDK_SELECTION_NOTIFY:
         tm = event->selection.time; break;
-      case GDK_PROXIMITY_IN:
-      case GDK_PROXIMITY_OUT:
+      case CDK_PROXIMITY_IN:
+      case CDK_PROXIMITY_OUT:
         tm = event->proximity.time; break;
       default:                  /* use current time */
         break;
@@ -682,56 +682,56 @@ ctk_drag_get_event_actions (const CdkEvent *event,
       
       switch (event->type)
         {
-        case GDK_MOTION_NOTIFY:
+        case CDK_MOTION_NOTIFY:
           state = event->motion.state;
           break;
-        case GDK_BUTTON_PRESS:
-        case GDK_2BUTTON_PRESS:
-        case GDK_3BUTTON_PRESS:
-        case GDK_BUTTON_RELEASE:
+        case CDK_BUTTON_PRESS:
+        case CDK_2BUTTON_PRESS:
+        case CDK_3BUTTON_PRESS:
+        case CDK_BUTTON_RELEASE:
           state = event->button.state;
           break;
-        case GDK_KEY_PRESS:
-        case GDK_KEY_RELEASE:
+        case CDK_KEY_PRESS:
+        case CDK_KEY_RELEASE:
           state = event->key.state;
           break;
-        case GDK_ENTER_NOTIFY:
-        case GDK_LEAVE_NOTIFY:
+        case CDK_ENTER_NOTIFY:
+        case CDK_LEAVE_NOTIFY:
           state = event->crossing.state;
           break;
         default:
           break;
         }
 
-      if ((button == GDK_BUTTON_MIDDLE || button == GDK_BUTTON_SECONDARY) && (actions & GDK_ACTION_ASK))
+      if ((button == CDK_BUTTON_MIDDLE || button == CDK_BUTTON_SECONDARY) && (actions & CDK_ACTION_ASK))
         {
-          *suggested_action = GDK_ACTION_ASK;
+          *suggested_action = CDK_ACTION_ASK;
           *possible_actions = actions;
         }
-      else if (state & (GDK_SHIFT_MASK | GDK_CONTROL_MASK))
+      else if (state & (CDK_SHIFT_MASK | CDK_CONTROL_MASK))
         {
-          if ((state & GDK_SHIFT_MASK) && (state & GDK_CONTROL_MASK))
+          if ((state & CDK_SHIFT_MASK) && (state & CDK_CONTROL_MASK))
             {
-              if (actions & GDK_ACTION_LINK)
+              if (actions & CDK_ACTION_LINK)
                 {
-                  *suggested_action = GDK_ACTION_LINK;
-                  *possible_actions = GDK_ACTION_LINK;
+                  *suggested_action = CDK_ACTION_LINK;
+                  *possible_actions = CDK_ACTION_LINK;
                 }
             }
-          else if (state & GDK_CONTROL_MASK)
+          else if (state & CDK_CONTROL_MASK)
             {
-              if (actions & GDK_ACTION_COPY)
+              if (actions & CDK_ACTION_COPY)
                 {
-                  *suggested_action = GDK_ACTION_COPY;
-                  *possible_actions = GDK_ACTION_COPY;
+                  *suggested_action = CDK_ACTION_COPY;
+                  *possible_actions = CDK_ACTION_COPY;
                 }
             }
           else
             {
-              if (actions & GDK_ACTION_MOVE)
+              if (actions & CDK_ACTION_MOVE)
                 {
-                  *suggested_action = GDK_ACTION_MOVE;
-                  *possible_actions = GDK_ACTION_MOVE;
+                  *suggested_action = CDK_ACTION_MOVE;
+                  *possible_actions = CDK_ACTION_MOVE;
                 }
             }
         }
@@ -739,26 +739,26 @@ ctk_drag_get_event_actions (const CdkEvent *event,
         {
           *possible_actions = actions;
 
-          if ((state & (GDK_MOD1_MASK)) && (actions & GDK_ACTION_ASK))
-            *suggested_action = GDK_ACTION_ASK;
-          else if (actions & GDK_ACTION_COPY)
-            *suggested_action =  GDK_ACTION_COPY;
-          else if (actions & GDK_ACTION_MOVE)
-            *suggested_action = GDK_ACTION_MOVE;
-          else if (actions & GDK_ACTION_LINK)
-            *suggested_action = GDK_ACTION_LINK;
+          if ((state & (CDK_MOD1_MASK)) && (actions & CDK_ACTION_ASK))
+            *suggested_action = CDK_ACTION_ASK;
+          else if (actions & CDK_ACTION_COPY)
+            *suggested_action =  CDK_ACTION_COPY;
+          else if (actions & CDK_ACTION_MOVE)
+            *suggested_action = CDK_ACTION_MOVE;
+          else if (actions & CDK_ACTION_LINK)
+            *suggested_action = CDK_ACTION_LINK;
         }
     }
   else
     {
       *possible_actions = actions;
       
-      if (actions & GDK_ACTION_COPY)
-        *suggested_action =  GDK_ACTION_COPY;
-      else if (actions & GDK_ACTION_MOVE)
-        *suggested_action = GDK_ACTION_MOVE;
-      else if (actions & GDK_ACTION_LINK)
-        *suggested_action = GDK_ACTION_LINK;
+      if (actions & CDK_ACTION_COPY)
+        *suggested_action =  CDK_ACTION_COPY;
+      else if (actions & CDK_ACTION_MOVE)
+        *suggested_action = CDK_ACTION_MOVE;
+      else if (actions & CDK_ACTION_LINK)
+        *suggested_action = CDK_ACTION_LINK;
     }
 }
 
@@ -845,8 +845,8 @@ ctk_drag_update_cursor (CtkDragSourceInfo *info)
       G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       cdk_device_grab (pointer,
                        ctk_widget_get_window (info->ipc_widget),
-                       GDK_OWNERSHIP_APPLICATION, FALSE,
-                       GDK_POINTER_MOTION_MASK | GDK_BUTTON_RELEASE_MASK,
+                       CDK_OWNERSHIP_APPLICATION, FALSE,
+                       CDK_POINTER_MOTION_MASK | CDK_BUTTON_RELEASE_MASK,
                        cursor, info->grab_time);
       G_GNUC_END_IGNORE_DEPRECATIONS;
       info->cursor = cursor;
@@ -885,7 +885,7 @@ ctk_drag_get_data (CtkWidget      *widget,
   CtkWidget *selection_widget;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
-  g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
+  g_return_if_fail (CDK_IS_DRAG_CONTEXT (context));
 
   selection_widget = ctk_drag_get_ipc_widget (widget);
 
@@ -918,7 +918,7 @@ ctk_drag_get_source_widget (CdkDragContext *context)
 {
   GSList *tmp_list;
 
-  g_return_val_if_fail (GDK_IS_DRAG_CONTEXT (context), NULL);
+  g_return_val_if_fail (CDK_IS_DRAG_CONTEXT (context), NULL);
   
   tmp_list = source_widgets;
   while (tmp_list)
@@ -956,16 +956,16 @@ ctk_drag_finish (CdkDragContext *context,
                  gboolean        del,
                  guint32         time)
 {
-  CdkAtom target = GDK_NONE;
+  CdkAtom target = CDK_NONE;
 
-  g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
+  g_return_if_fail (CDK_IS_DRAG_CONTEXT (context));
 
   if (success && del)
     {
       target = cdk_atom_intern_static_string ("DELETE");
     }
 
-  if (target != GDK_NONE)
+  if (target != CDK_NONE)
     {
       CtkWidget *selection_widget = ctk_drag_get_ipc_widget_for_screen (cdk_window_get_screen (cdk_drag_context_get_source_window (context)));
 
@@ -1042,10 +1042,10 @@ _ctk_drag_dest_handle_event (CtkWidget *toplevel,
   /* Find the widget for the event */
   switch (event->type)
     {
-    case GDK_DRAG_ENTER:
+    case CDK_DRAG_ENTER:
       break;
       
-    case GDK_DRAG_LEAVE:
+    case CDK_DRAG_LEAVE:
       if (info->widget)
         {
           ctk_drag_dest_leave (info->widget, context, event->dnd.time);
@@ -1053,14 +1053,14 @@ _ctk_drag_dest_handle_event (CtkWidget *toplevel,
         }
       break;
       
-    case GDK_DRAG_MOTION:
-    case GDK_DROP_START:
+    case CDK_DRAG_MOTION:
+    case CDK_DROP_START:
       {
         CdkWindow *window;
         gint tx, ty;
         gboolean found;
 
-        if (event->type == GDK_DROP_START)
+        if (event->type == CDK_DROP_START)
           {
             info->dropped = TRUE;
             /* We send a leave here so that the widget unhighlights
@@ -1075,7 +1075,7 @@ _ctk_drag_dest_handle_event (CtkWidget *toplevel,
 
         window = ctk_widget_get_window (toplevel);
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
         /* Hackaround for: http://bugzilla.gnome.org/show_bug.cgi?id=136112
          *
          * Currently cdk_window_get_position doesn't provide reliable
@@ -1085,7 +1085,7 @@ _ctk_drag_dest_handle_event (CtkWidget *toplevel,
         if (CTK_IS_PLUG (toplevel))
           cdk_window_get_origin (window, &tx, &ty);
         else
-#endif /* GDK_WINDOWING_X11 */
+#endif /* CDK_WINDOWING_X11 */
           cdk_window_get_position (window, &tx, &ty);
 
         found = ctk_drag_find_widget (toplevel,
@@ -1094,7 +1094,7 @@ _ctk_drag_dest_handle_event (CtkWidget *toplevel,
                                       event->dnd.x_root - tx,
                                       event->dnd.y_root - ty,
                                       event->dnd.time,
-                                      (event->type == GDK_DRAG_MOTION) ?
+                                      (event->type == CDK_DRAG_MOTION) ?
                                       ctk_drag_dest_motion :
                                       ctk_drag_dest_drop);
 
@@ -1106,12 +1106,12 @@ _ctk_drag_dest_handle_event (CtkWidget *toplevel,
         
         /* Send a reply.
          */
-        if (event->type == GDK_DRAG_MOTION)
+        if (event->type == CDK_DRAG_MOTION)
           {
             if (!found)
               cdk_drag_status (context, 0, event->dnd.time);
           }
-        else if (event->type == GDK_DROP_START && !info->proxy_source)
+        else if (event->type == CDK_DROP_START && !info->proxy_source)
           {
             cdk_drop_reply (context, found, event->dnd.time);
           }
@@ -1198,7 +1198,7 @@ ctk_drag_selection_received (CtkWidget        *widget,
 
           ctk_drag_finish (context, 
                            (ctk_selection_data_get_length (selection_data) >= 0),
-                           (cdk_drag_context_get_selected_action (context) == GDK_ACTION_MOVE),
+                           (cdk_drag_context_get_selected_action (context) == CDK_ACTION_MOVE),
                            time);
         }
       
@@ -1343,7 +1343,7 @@ ctk_drag_proxy_begin (CtkWidget       *widget,
   while (tmp_list)
     {
       ctk_target_list_add (source_info->target_list,
-                           GDK_POINTER_TO_ATOM (tmp_list->data), 0, 0);
+                           CDK_POINTER_TO_ATOM (tmp_list->data), 0, 0);
       tmp_list = tmp_list->next;
     }
 
@@ -1597,7 +1597,7 @@ ctk_drag_dest_drop (CtkWidget      *widget,
   if (site->do_proxy)
     {
       if (info->proxy_source || 
-          (cdk_drag_context_get_protocol (info->context) == GDK_DRAG_PROTO_ROOTWIN))
+          (cdk_drag_context_get_protocol (info->context) == CDK_DRAG_PROTO_ROOTWIN))
         {
           ctk_drag_drop (info->proxy_source, time);
         }
@@ -1662,7 +1662,7 @@ ctk_drag_dest_drop (CtkWidget      *widget,
         {
           CdkAtom target = ctk_drag_dest_find_target (widget, context, NULL);
 
-          if (target == GDK_NONE)
+          if (target == CDK_NONE)
             {
               ctk_drag_finish (context, FALSE, FALSE, time);
               return TRUE;
@@ -1687,14 +1687,14 @@ static gboolean
 ctk_drag_is_managed (CtkWidget *source_widget)
 {
   return
-#ifdef GDK_WINDOWING_X11
-    GDK_IS_X11_DISPLAY (ctk_widget_get_display (source_widget)) ||
+#ifdef CDK_WINDOWING_X11
+    CDK_IS_X11_DISPLAY (ctk_widget_get_display (source_widget)) ||
 #endif
-#ifdef GDK_WINDOWING_WAYLAND
-    GDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (source_widget)) ||
+#ifdef CDK_WINDOWING_WAYLAND
+    CDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (source_widget)) ||
 #endif
-#ifdef GDK_WINDOWING_WIN32
-    GDK_IS_WIN32_DISPLAY (ctk_widget_get_display (source_widget)) ||
+#ifdef CDK_WINDOWING_WIN32
+    CDK_IS_WIN32_DISPLAY (ctk_widget_get_display (source_widget)) ||
 #endif
     FALSE;
 }
@@ -1717,7 +1717,7 @@ ctk_drag_begin_internal (CtkWidget           *widget,
   CtkDragSourceInfo *info;
   GList *targets = NULL;
   GList *tmp_list;
-  guint32 time = GDK_CURRENT_TIME;
+  guint32 time = CDK_CURRENT_TIME;
   CdkDragAction possible_actions, suggested_action;
   CdkDragContext *context;
   CtkWidget *ipc_widget;
@@ -1744,12 +1744,12 @@ ctk_drag_begin_internal (CtkWidget           *widget,
   if (event)
     {
       time = cdk_event_get_time (event);
-      if (time == GDK_CURRENT_TIME)
+      if (time == CDK_CURRENT_TIME)
         time = ctk_get_current_event_time ();
 
       pointer = cdk_event_get_device (event);
 
-      if (cdk_device_get_source (pointer) == GDK_SOURCE_KEYBOARD)
+      if (cdk_device_get_source (pointer) == CDK_SOURCE_KEYBOARD)
         {
           keyboard = pointer;
           pointer = cdk_device_get_associated_device (keyboard);
@@ -1777,10 +1777,10 @@ ctk_drag_begin_internal (CtkWidget           *widget,
 
       G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       grabbed = cdk_device_grab (pointer, ipc_window,
-                                 GDK_OWNERSHIP_APPLICATION, FALSE,
-                                 GDK_POINTER_MOTION_MASK |
-                                 GDK_BUTTON_RELEASE_MASK,
-                                 cursor, time) == GDK_GRAB_SUCCESS;
+                                 CDK_OWNERSHIP_APPLICATION, FALSE,
+                                 CDK_POINTER_MOTION_MASK |
+                                 CDK_BUTTON_RELEASE_MASK,
+                                 cursor, time) == CDK_GRAB_SUCCESS;
       G_GNUC_END_IGNORE_DEPRECATIONS;
 
       if (!grabbed)
@@ -1817,7 +1817,7 @@ ctk_drag_begin_internal (CtkWidget           *widget,
       cdk_window_get_root_coords (ctk_widget_get_window (toplevel),
                                   x, y, &start_x, &start_y);
     }
-  else if (event && event->type == GDK_MOTION_NOTIFY)
+  else if (event && event->type == CDK_MOTION_NOTIFY)
     {
       start_x = event->motion.x_root;
       start_y = event->motion.y_root;
@@ -1905,7 +1905,7 @@ ctk_drag_begin_internal (CtkWidget           *widget,
       info->cur_x = info->start_x;
       info->cur_y = info->start_y;
 
-      if (event && event->type == GDK_MOTION_NOTIFY)
+      if (event && event->type == CDK_MOTION_NOTIFY)
         ctk_drag_motion_cb (info->ipc_widget, (CdkEventMotion *)event, info);
       else
         ctk_drag_update (info, info->cur_screen, info->cur_x, info->cur_y, event);
@@ -1954,7 +1954,7 @@ ctk_drag_begin_internal (CtkWidget           *widget,
  * ctk_drag_source_set() is used.
  *
  * The @event is used to retrieve the timestamp that will be used internally to
- * grab the pointer.  If @event is %NULL, then %GDK_CURRENT_TIME will be used.
+ * grab the pointer.  If @event is %NULL, then %CDK_CURRENT_TIME will be used.
  * However, you should try to pass a real event in all cases, since that can be
  * used to get information about the drag.
  *
@@ -2096,12 +2096,12 @@ ctk_drag_set_icon_widget_internal (CdkDragContext *context,
       has_rgba = visual != NULL && cdk_screen_is_composited (screen);
 
       info->icon_window = ctk_window_new (CTK_WINDOW_POPUP);
-      ctk_window_set_type_hint (CTK_WINDOW (info->icon_window), GDK_WINDOW_TYPE_HINT_DND);
+      ctk_window_set_type_hint (CTK_WINDOW (info->icon_window), CDK_WINDOW_TYPE_HINT_DND);
       ctk_window_set_screen (CTK_WINDOW (info->icon_window), screen);
       ctk_widget_set_size_request (info->icon_window, 24, 24);
       if (visual)
         ctk_widget_set_visual (info->icon_window, visual);
-      ctk_widget_set_events (info->icon_window, GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK);
+      ctk_widget_set_events (info->icon_window, CDK_BUTTON_PRESS_MASK | CDK_BUTTON_RELEASE_MASK);
 
       if (has_rgba)
         ctk_widget_set_app_paintable (info->icon_window, TRUE);
@@ -2147,7 +2147,7 @@ ctk_drag_set_icon_widget (CdkDragContext *context,
                           gint            hot_x,
                           gint            hot_y)
 {
-  g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
+  g_return_if_fail (CDK_IS_DRAG_CONTEXT (context));
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
   ctk_drag_set_icon_widget_internal (context, widget, hot_x, hot_y, FALSE);
@@ -2203,7 +2203,7 @@ ctk_drag_set_icon_definition (CdkDragContext     *context,
                               gint                hot_x,
                               gint                hot_y)
 {
-  g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
+  g_return_if_fail (CDK_IS_DRAG_CONTEXT (context));
   g_return_if_fail (def != NULL);
 
   set_icon_helper (context, def, hot_x, hot_y);
@@ -2227,8 +2227,8 @@ ctk_drag_set_icon_pixbuf (CdkDragContext *context,
 {
   CtkImageDefinition *def;
 
-  g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
-  g_return_if_fail (GDK_IS_PIXBUF (pixbuf));
+  g_return_if_fail (CDK_IS_DRAG_CONTEXT (context));
+  g_return_if_fail (CDK_IS_PIXBUF (pixbuf));
 
   def = ctk_image_definition_new_pixbuf (pixbuf, 1);
   set_icon_helper (context, def, hot_x, hot_y);
@@ -2256,7 +2256,7 @@ ctk_drag_set_icon_stock (CdkDragContext *context,
 {
   CtkImageDefinition *def;
 
-  g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
+  g_return_if_fail (CDK_IS_DRAG_CONTEXT (context));
   g_return_if_fail (stock_id != NULL);
 
   def = ctk_image_definition_new_stock (stock_id);
@@ -2330,7 +2330,7 @@ ctk_drag_set_icon_surface (CdkDragContext  *context,
   gboolean has_rgba;
   cairo_matrix_t matrix;
 
-  g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
+  g_return_if_fail (CDK_IS_DRAG_CONTEXT (context));
   g_return_if_fail (surface != NULL);
 
   _ctk_cairo_surface_extents (surface, &extents);
@@ -2346,9 +2346,9 @@ ctk_drag_set_icon_surface (CdkDragContext  *context,
   if (has_rgba)
     ctk_widget_set_visual (CTK_WIDGET (window), rgba_visual);
 
-  ctk_window_set_type_hint (CTK_WINDOW (window), GDK_WINDOW_TYPE_HINT_DND);
+  ctk_window_set_type_hint (CTK_WINDOW (window), CDK_WINDOW_TYPE_HINT_DND);
 
-  ctk_widget_set_events (window, GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK);
+  ctk_widget_set_events (window, CDK_BUTTON_PRESS_MASK | CDK_BUTTON_RELEASE_MASK);
   ctk_widget_set_app_paintable (window, TRUE);
 
   ctk_widget_set_size_request (window, extents.width, extents.height);
@@ -2393,7 +2393,7 @@ ctk_drag_set_icon_name (CdkDragContext *context,
 {
   CtkImageDefinition *def;
 
-  g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
+  g_return_if_fail (CDK_IS_DRAG_CONTEXT (context));
   g_return_if_fail (icon_name != NULL && icon_name[0] != '\0');
 
   def = ctk_image_definition_new_icon_name (icon_name);
@@ -2424,7 +2424,7 @@ ctk_drag_set_icon_gicon (CdkDragContext *context,
 {
   CtkImageDefinition *def;
 
-  g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
+  g_return_if_fail (CDK_IS_DRAG_CONTEXT (context));
   g_return_if_fail (icon != NULL);
 
   def = ctk_image_definition_new_gicon (icon);
@@ -2444,7 +2444,7 @@ ctk_drag_set_icon_gicon (CdkDragContext *context,
 void 
 ctk_drag_set_icon_default (CdkDragContext *context)
 {
-  g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
+  g_return_if_fail (CDK_IS_DRAG_CONTEXT (context));
 
   ctk_drag_set_icon_name (context, "text-x-generic", -2, -2);
 }
@@ -2474,7 +2474,7 @@ _ctk_drag_source_handle_event (CtkWidget *widget,
 
   switch (event->type)
     {
-    case GDK_DRAG_STATUS:
+    case CDK_DRAG_STATUS:
       {
         CdkCursor *cursor;
         if (info->proxy_dest)
@@ -2513,8 +2513,8 @@ _ctk_drag_source_handle_event (CtkWidget *widget,
                 pointer = cdk_drag_context_get_device (context);
                 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
                 cdk_device_grab (pointer, ctk_widget_get_window (widget),
-                                 GDK_OWNERSHIP_APPLICATION, FALSE,
-                                 GDK_POINTER_MOTION_MASK | GDK_BUTTON_RELEASE_MASK,
+                                 CDK_OWNERSHIP_APPLICATION, FALSE,
+                                 CDK_POINTER_MOTION_MASK | CDK_BUTTON_RELEASE_MASK,
                                  cursor, info->grab_time);
                 G_GNUC_END_IGNORE_DEPRECATIONS;
                 info->cursor = cursor;
@@ -2525,7 +2525,7 @@ _ctk_drag_source_handle_event (CtkWidget *widget,
       }
       break;
       
-    case GDK_DROP_FINISHED:
+    case CDK_DROP_FINISHED:
       ctk_drag_drop_finished (info, CTK_DRAG_RESULT_SUCCESS, event->dnd.time);
       break;
     default:
@@ -2543,7 +2543,7 @@ ctk_drag_source_check_selection (CtkDragSourceInfo *info,
   tmp_list = info->selections;
   while (tmp_list)
     {
-      if (GDK_POINTER_TO_ATOM (tmp_list->data) == selection)
+      if (CDK_POINTER_TO_ATOM (tmp_list->data) == selection)
         return;
       tmp_list = tmp_list->next;
     }
@@ -2612,7 +2612,7 @@ ctk_drag_source_release_selections (CtkDragSourceInfo *info,
   
   while (tmp_list)
     {
-      CdkAtom selection = GDK_POINTER_TO_ATOM (tmp_list->data);
+      CdkAtom selection = CDK_POINTER_TO_ATOM (tmp_list->data);
       if (cdk_selection_owner_get_for_display (display, selection) == ctk_widget_get_window (info->ipc_widget))
         ctk_selection_owner_set_for_display (display, NULL, selection, time);
 
@@ -2627,7 +2627,7 @@ static void
 ctk_drag_drop (CtkDragSourceInfo *info, 
                guint32            time)
 {
-  if (cdk_drag_context_get_protocol (info->context) == GDK_DRAG_PROTO_ROOTWIN)
+  if (cdk_drag_context_get_protocol (info->context) == CDK_DRAG_PROTO_ROOTWIN)
     {
       CtkSelectionData selection_data;
       GList *tmp_list;
@@ -2644,7 +2644,7 @@ ctk_drag_drop (CtkDragSourceInfo *info,
           
           if (pair->target == target1 || pair->target == target2)
             {
-              selection_data.selection = GDK_NONE;
+              selection_data.selection = CDK_NONE;
               selection_data.target = pair->target;
               selection_data.data = NULL;
               selection_data.length = -1;
@@ -2686,7 +2686,7 @@ ctk_drag_selection_get (CtkWidget        *widget,
                         gpointer          data)
 {
   CtkDragSourceInfo *info = data;
-  static CdkAtom null_atom = GDK_NONE;
+  static CdkAtom null_atom = CDK_NONE;
   guint target_info;
 
   if (!null_atom)
@@ -2884,12 +2884,12 @@ ctk_drag_update_idle (gpointer data)
 static void
 ctk_drag_add_update_idle (CtkDragSourceInfo *info)
 {
-  /* We use an idle lower than GDK_PRIORITY_REDRAW so that exposes
+  /* We use an idle lower than CDK_PRIORITY_REDRAW so that exposes
    * from the last move can catch up before we move again.
    */
   if (!info->update_idle)
     {
-      info->update_idle = cdk_threads_add_idle_full (GDK_PRIORITY_REDRAW + 5,
+      info->update_idle = cdk_threads_add_idle_full (CDK_PRIORITY_REDRAW + 5,
                                                      ctk_drag_update_idle,
                                                      info,
                                                      NULL);
@@ -2942,8 +2942,8 @@ ctk_drag_end (CtkDragSourceInfo *info,
   keyboard = cdk_device_get_associated_device (pointer);
 
   /* Prevent ungrab before grab (see bug 623865) */
-  if (info->grab_time == GDK_CURRENT_TIME)
-    time = GDK_CURRENT_TIME;
+  if (info->grab_time == CDK_CURRENT_TIME)
+    time = CDK_CURRENT_TIME;
 
   if (info->update_idle)
     {
@@ -3014,18 +3014,18 @@ ctk_drag_context_cancel_cb (CdkDragContext      *context,
 
   switch (reason)
     {
-    case GDK_DRAG_CANCEL_NO_TARGET:
+    case CDK_DRAG_CANCEL_NO_TARGET:
       result = CTK_DRAG_RESULT_NO_TARGET;
       break;
-    case GDK_DRAG_CANCEL_USER_CANCELLED:
+    case CDK_DRAG_CANCEL_USER_CANCELLED:
       result = CTK_DRAG_RESULT_USER_CANCELLED;
       break;
-    case GDK_DRAG_CANCEL_ERROR:
+    case CDK_DRAG_CANCEL_ERROR:
     default:
       result = CTK_DRAG_RESULT_ERROR;
       break;
     }
-  ctk_drag_cancel_internal (info, result, GDK_CURRENT_TIME);
+  ctk_drag_cancel_internal (info, result, CDK_CURRENT_TIME);
 }
 
 static void
@@ -3050,7 +3050,7 @@ ctk_drag_context_action_cb (CdkDragContext    *context,
         {
           cdk_drag_status (info->proxy_dest->context,
                            cdk_drag_context_get_selected_action (context),
-                           GDK_CURRENT_TIME);
+                           CDK_CURRENT_TIME);
         }
 
       g_signal_stop_emission_by_name (context, "action");
@@ -3061,7 +3061,7 @@ static void
 ctk_drag_context_dnd_finished_cb (CdkDragContext    *context,
                                   CtkDragSourceInfo *info)
 {
-  ctk_drag_source_release_selections (info, GDK_CURRENT_TIME);
+  ctk_drag_source_release_selections (info, CDK_CURRENT_TIME);
 
   if (info->proxy_dest)
     {
@@ -3118,19 +3118,19 @@ ctk_drag_key_cb (CtkWidget   *widget,
   state = event->state & ctk_accelerator_get_default_mod_mask ();
   pointer = cdk_device_get_associated_device (cdk_event_get_device ((CdkEvent *) event));
 
-  if (event->type == GDK_KEY_PRESS)
+  if (event->type == CDK_KEY_PRESS)
     {
       switch (event->keyval)
         {
-        case GDK_KEY_Escape:
+        case CDK_KEY_Escape:
           ctk_drag_cancel_internal (info, CTK_DRAG_RESULT_USER_CANCELLED, event->time);
           return TRUE;
 
-        case GDK_KEY_space:
-        case GDK_KEY_Return:
-        case GDK_KEY_ISO_Enter:
-        case GDK_KEY_KP_Enter:
-        case GDK_KEY_KP_Space:
+        case CDK_KEY_space:
+        case CDK_KEY_Return:
+        case CDK_KEY_ISO_Enter:
+        case CDK_KEY_KP_Enter:
+        case CDK_KEY_KP_Space:
           if ((cdk_drag_context_get_selected_action (info->context) != 0) &&
               (cdk_drag_context_get_dest_window (info->context) != NULL))
             {
@@ -3144,24 +3144,24 @@ ctk_drag_key_cb (CtkWidget   *widget,
 
           return TRUE;
 
-        case GDK_KEY_Up:
-        case GDK_KEY_KP_Up:
-          dy = (state & GDK_MOD1_MASK) ? -BIG_STEP : -SMALL_STEP;
+        case CDK_KEY_Up:
+        case CDK_KEY_KP_Up:
+          dy = (state & CDK_MOD1_MASK) ? -BIG_STEP : -SMALL_STEP;
           break;
 
-        case GDK_KEY_Down:
-        case GDK_KEY_KP_Down:
-          dy = (state & GDK_MOD1_MASK) ? BIG_STEP : SMALL_STEP;
+        case CDK_KEY_Down:
+        case CDK_KEY_KP_Down:
+          dy = (state & CDK_MOD1_MASK) ? BIG_STEP : SMALL_STEP;
           break;
 
-        case GDK_KEY_Left:
-        case GDK_KEY_KP_Left:
-          dx = (state & GDK_MOD1_MASK) ? -BIG_STEP : -SMALL_STEP;
+        case CDK_KEY_Left:
+        case CDK_KEY_KP_Left:
+          dx = (state & CDK_MOD1_MASK) ? -BIG_STEP : -SMALL_STEP;
           break;
 
-        case GDK_KEY_Right:
-        case GDK_KEY_KP_Right:
-          dx = (state & GDK_MOD1_MASK) ? BIG_STEP : SMALL_STEP;
+        case CDK_KEY_Right:
+        case CDK_KEY_KP_Right:
+          dx = (state & CDK_MOD1_MASK) ? BIG_STEP : SMALL_STEP;
           break;
         }
     }
@@ -3260,7 +3260,7 @@ static gboolean
 ctk_drag_abort_timeout (gpointer data)
 {
   CtkDragSourceInfo *info = data;
-  guint32 time = GDK_CURRENT_TIME;
+  guint32 time = CDK_CURRENT_TIME;
 
   if (info->proxy_dest)
     time = info->proxy_dest->proxy_drop_time;
@@ -3326,7 +3326,7 @@ ctk_drag_cancel (CdkDragContext *context)
 {
   CtkDragSourceInfo *info;
 
-  g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
+  g_return_if_fail (CDK_IS_DRAG_CONTEXT (context));
 
   info = ctk_drag_get_source_info (context, FALSE);
   if (info != NULL)

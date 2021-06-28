@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -22,12 +22,12 @@
  * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
-#ifndef __GDK_BROADWAY_H__
-#define __GDK_BROADWAY_H__
+#ifndef __CDK_BROADWAY_H__
+#define __CDK_BROADWAY_H__
 
 #include <cdk/cdk.h>
 
-#define __GDKBROADWAY_H_INSIDE__
+#define __CDKBROADWAY_H_INSIDE__
 
 #include <cdk/broadway/cdkbroadwaydisplay.h>
 #include <cdk/broadway/cdkbroadwaywindow.h>
@@ -35,6 +35,6 @@
 #include <cdk/broadway/cdkbroadwaymonitor.h>
 #include <cdk/broadway/cdkbroadwayvisual.h>
 
-#undef __GDKBROADWAY_H_INSIDE__
+#undef __CDKBROADWAY_H_INSIDE__
 
-#endif /* __GDK_BROADWAY_H__ */
+#endif /* __CDK_BROADWAY_H__ */

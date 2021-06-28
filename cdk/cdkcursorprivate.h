@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -22,16 +22,16 @@
  * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
-#ifndef __GDK_CURSOR_PRIVATE_H__
-#define __GDK_CURSOR_PRIVATE_H__
+#ifndef __CDK_CURSOR_PRIVATE_H__
+#define __CDK_CURSOR_PRIVATE_H__
 
 #include <cdk/cdkcursor.h>
 
 G_BEGIN_DECLS
 
-#define GDK_CURSOR_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_CURSOR, CdkCursorClass))
-#define GDK_IS_CURSOR_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_CURSOR))
-#define GDK_CURSOR_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_CURSOR, CdkCursorClass))
+#define CDK_CURSOR_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CDK_TYPE_CURSOR, CdkCursorClass))
+#define CDK_IS_CURSOR_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CDK_TYPE_CURSOR))
+#define CDK_CURSOR_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CDK_TYPE_CURSOR, CdkCursorClass))
 
 typedef struct _CdkCursorClass CdkCursorClass;
 
@@ -54,4 +54,4 @@ struct _CdkCursorClass
 
 G_END_DECLS
 
-#endif /* __GDK_CURSOR_PRIVATE_H__ */
+#endif /* __CDK_CURSOR_PRIVATE_H__ */

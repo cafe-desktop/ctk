@@ -67,8 +67,8 @@ msgstr "DISPLAY"
 
 #. Description of --cdk-debug=FLAGS in --help output
 #: ../cdk/cdk.c:193
-msgid "GDK debugging flags to set"
-msgstr "মান নির্ধারণের উদ্দেশ্যে চিহ্নিত GDK ডিবাগিং ফ্ল্যাগ"
+msgid "CDK debugging flags to set"
+msgstr "মান নির্ধারণের উদ্দেশ্যে চিহ্নিত CDK ডিবাগিং ফ্ল্যাগ"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
@@ -80,8 +80,8 @@ msgstr "FLAGS"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: ../cdk/cdk.c:196
-msgid "GDK debugging flags to unset"
-msgstr "মান মুছে ফেলার উদ্দেশ্যে চিহ্নিত GDK ডিবাগিং ফ্ল্যাগ"
+msgid "CDK debugging flags to unset"
+msgstr "মান মুছে ফেলার উদ্দেশ্যে চিহ্নিত CDK ডিবাগিং ফ্ল্যাগ"
 
 #.
 #. * Translators, the strings in the 'keyboard label' context are

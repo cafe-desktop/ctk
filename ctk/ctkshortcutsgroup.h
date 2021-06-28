@@ -34,7 +34,7 @@ G_BEGIN_DECLS
 typedef struct _CtkShortcutsGroup         CtkShortcutsGroup;
 typedef struct _CtkShortcutsGroupClass    CtkShortcutsGroupClass;
 
-GDK_AVAILABLE_IN_3_20
+CDK_AVAILABLE_IN_3_20
 GType ctk_shortcuts_group_get_type (void) G_GNUC_CONST;
 
 G_END_DECLS

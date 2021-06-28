@@ -75,50 +75,50 @@ struct _CtkScaleClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType             ctk_scale_get_type           (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget       * ctk_scale_new                (CtkOrientation   orientation,
                                                 CtkAdjustment   *adjustment);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget       * ctk_scale_new_with_range     (CtkOrientation   orientation,
                                                 gdouble          min,
                                                 gdouble          max,
                                                 gdouble          step);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_scale_set_digits         (CtkScale        *scale,
                                                 gint             digits);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint              ctk_scale_get_digits         (CtkScale        *scale);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_scale_set_draw_value     (CtkScale        *scale,
                                                 gboolean         draw_value);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean          ctk_scale_get_draw_value     (CtkScale        *scale);
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 void              ctk_scale_set_has_origin     (CtkScale        *scale,
                                                 gboolean         has_origin);
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 gboolean          ctk_scale_get_has_origin     (CtkScale        *scale);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_scale_set_value_pos      (CtkScale        *scale,
                                                 CtkPositionType  pos);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkPositionType   ctk_scale_get_value_pos      (CtkScale        *scale);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 PangoLayout     * ctk_scale_get_layout         (CtkScale        *scale);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_scale_get_layout_offsets (CtkScale        *scale,
                                                 gint            *x,
                                                 gint            *y);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_scale_add_mark           (CtkScale        *scale,
                                                 gdouble          value,
                                                 CtkPositionType  position,
                                                 const gchar     *markup);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_scale_clear_marks        (CtkScale        *scale);
 
 

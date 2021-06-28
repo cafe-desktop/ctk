@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2009 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -15,19 +15,19 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_DEVICE_MANAGER_BROADWAY_H__
-#define __GDK_DEVICE_MANAGER_BROADWAY_H__
+#ifndef __CDK_DEVICE_MANAGER_BROADWAY_H__
+#define __CDK_DEVICE_MANAGER_BROADWAY_H__
 
 #include <cdk/cdkdevicemanagerprivate.h>
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_BROADWAY_DEVICE_MANAGER         (cdk_broadway_device_manager_get_type ())
-#define GDK_BROADWAY_DEVICE_MANAGER(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_BROADWAY_DEVICE_MANAGER, CdkBroadwayDeviceManager))
-#define GDK_BROADWAY_DEVICE_MANAGER_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_BROADWAY_DEVICE_MANAGER, CdkBroadwayDeviceManagerClass))
-#define GDK_IS_BROADWAY_DEVICE_MANAGER(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_BROADWAY_DEVICE_MANAGER))
-#define GDK_IS_BROADWAY_DEVICE_MANAGER_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), GDK_TYPE_BROADWAY_DEVICE_MANAGER))
-#define GDK_BROADWAY_DEVICE_MANAGER_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_BROADWAY_DEVICE_MANAGER, CdkBroadwayDeviceManagerClass))
+#define CDK_TYPE_BROADWAY_DEVICE_MANAGER         (cdk_broadway_device_manager_get_type ())
+#define CDK_BROADWAY_DEVICE_MANAGER(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CDK_TYPE_BROADWAY_DEVICE_MANAGER, CdkBroadwayDeviceManager))
+#define CDK_BROADWAY_DEVICE_MANAGER_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), CDK_TYPE_BROADWAY_DEVICE_MANAGER, CdkBroadwayDeviceManagerClass))
+#define CDK_IS_BROADWAY_DEVICE_MANAGER(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CDK_TYPE_BROADWAY_DEVICE_MANAGER))
+#define CDK_IS_BROADWAY_DEVICE_MANAGER_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), CDK_TYPE_BROADWAY_DEVICE_MANAGER))
+#define CDK_BROADWAY_DEVICE_MANAGER_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CDK_TYPE_BROADWAY_DEVICE_MANAGER, CdkBroadwayDeviceManagerClass))
 
 typedef struct _CdkBroadwayDeviceManager CdkBroadwayDeviceManager;
 typedef struct _CdkBroadwayDeviceManagerClass CdkBroadwayDeviceManagerClass;
@@ -50,4 +50,4 @@ CdkDeviceManager *_cdk_broadway_device_manager_new (CdkDisplay *display);
 
 G_END_DECLS
 
-#endif /* __GDK_DEVICE_MANAGER_BROADWAY_H__ */
+#endif /* __CDK_DEVICE_MANAGER_BROADWAY_H__ */

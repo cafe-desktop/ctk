@@ -98,9 +98,9 @@ do_css_multiplebgs (CtkWidget *do_widget)
 
       container = ctk_overlay_new ();
       ctk_widget_add_events (container,
-                             GDK_ENTER_NOTIFY_MASK |
-                             GDK_LEAVE_NOTIFY_MASK |
-                             GDK_POINTER_MOTION_MASK);
+                             CDK_ENTER_NOTIFY_MASK |
+                             CDK_LEAVE_NOTIFY_MASK |
+                             CDK_POINTER_MOTION_MASK);
       ctk_container_add (CTK_CONTAINER (window), container);
 
       child = ctk_drawing_area_new ();
@@ -111,9 +111,9 @@ do_css_multiplebgs (CtkWidget *do_widget)
 
       child = ctk_button_new ();
       ctk_widget_add_events (child,
-                             GDK_ENTER_NOTIFY_MASK |
-                             GDK_LEAVE_NOTIFY_MASK |
-                             GDK_POINTER_MOTION_MASK);
+                             CDK_ENTER_NOTIFY_MASK |
+                             CDK_LEAVE_NOTIFY_MASK |
+                             CDK_POINTER_MOTION_MASK);
       ctk_overlay_add_overlay (CTK_OVERLAY (container), child);
       ctk_widget_set_name (child, "bricks-button");
       ctk_widget_set_halign (child, CTK_ALIGN_CENTER);

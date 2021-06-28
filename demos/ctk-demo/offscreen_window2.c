@@ -184,20 +184,20 @@ ctk_mirror_bin_realize (CtkWidget *widget)
   attributes.y = allocation.y + border_width;
   attributes.width = allocation.width - 2 * border_width;
   attributes.height = allocation.height - 2 * border_width;
-  attributes.window_type = GDK_WINDOW_CHILD;
+  attributes.window_type = CDK_WINDOW_CHILD;
   attributes.event_mask = ctk_widget_get_events (widget)
-                        | GDK_EXPOSURE_MASK
-                        | GDK_POINTER_MOTION_MASK
-                        | GDK_BUTTON_PRESS_MASK
-                        | GDK_BUTTON_RELEASE_MASK
-                        | GDK_SCROLL_MASK
-                        | GDK_ENTER_NOTIFY_MASK
-                        | GDK_LEAVE_NOTIFY_MASK;
+                        | CDK_EXPOSURE_MASK
+                        | CDK_POINTER_MOTION_MASK
+                        | CDK_BUTTON_PRESS_MASK
+                        | CDK_BUTTON_RELEASE_MASK
+                        | CDK_SCROLL_MASK
+                        | CDK_ENTER_NOTIFY_MASK
+                        | CDK_LEAVE_NOTIFY_MASK;
 
   attributes.visual = ctk_widget_get_visual (widget);
-  attributes.wclass = GDK_INPUT_OUTPUT;
+  attributes.wclass = CDK_INPUT_OUTPUT;
 
-  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
+  attributes_mask = CDK_WA_X | CDK_WA_Y | CDK_WA_VISUAL;
 
   window = cdk_window_new (ctk_widget_get_parent_window (widget),
                            &attributes, attributes_mask);
@@ -206,7 +206,7 @@ ctk_mirror_bin_realize (CtkWidget *widget)
   g_signal_connect (window, "pick-embedded-child",
                     G_CALLBACK (pick_offscreen_child), bin);
 
-  attributes.window_type = GDK_WINDOW_OFFSCREEN;
+  attributes.window_type = CDK_WINDOW_OFFSCREEN;
 
   child_requisition.width = child_requisition.height = 0;
   if (bin->child && ctk_widget_get_visible (bin->child))

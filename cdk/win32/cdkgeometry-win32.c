@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -51,7 +51,7 @@ tmp_unset_bg (CdkWindow *window)
 {
   CdkWindowImplWin32 *impl;
 
-  impl = GDK_WINDOW_IMPL_WIN32 (window->impl);
+  impl = CDK_WINDOW_IMPL_WIN32 (window->impl);
 
   impl->no_bg = TRUE;
 }
@@ -61,7 +61,7 @@ tmp_reset_bg (CdkWindow *window)
 {
   CdkWindowImplWin32 *impl;
 
-  impl = GDK_WINDOW_IMPL_WIN32 (window->impl);
+  impl = CDK_WINDOW_IMPL_WIN32 (window->impl);
 
   impl->no_bg = FALSE;
 }
@@ -76,10 +76,10 @@ _cdk_window_move_resize_child (CdkWindow *window,
   CdkWindowImplWin32 *impl;
 
   g_return_if_fail (window != NULL);
-  g_return_if_fail (GDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_WINDOW (window));
 
-  impl = GDK_WINDOW_IMPL_WIN32 (window->impl);
-  GDK_NOTE (MISC, g_print ("_cdk_window_move_resize_child: %s@%+d%+d %dx%d@%+d%+d\n",
+  impl = CDK_WINDOW_IMPL_WIN32 (window->impl);
+  CDK_NOTE (MISC, g_print ("_cdk_window_move_resize_child: %s@%+d%+d %dx%d@%+d%+d\n",
 			   _cdk_win32_window_description (window),
 			   window->x, window->y, width, height, x, y));
 
@@ -103,15 +103,15 @@ _cdk_window_move_resize_child (CdkWindow *window,
   _cdk_win32_window_tmp_unset_parent_bg (window);
   _cdk_win32_window_tmp_unset_bg (window, TRUE);
 
-  GDK_NOTE (MISC, g_print ("... SetWindowPos(%p,NULL,%d,%d,%d,%d,"
+  CDK_NOTE (MISC, g_print ("... SetWindowPos(%p,NULL,%d,%d,%d,%d,"
 			   "NOACTIVATE|NOZORDER)\n",
-			   GDK_WINDOW_HWND (window),
+			   CDK_WINDOW_HWND (window),
 			   (window->x + window->parent->abs_x) * impl->window_scale,
 			   (window->y + window->parent->abs_y) * impl->window_scale,
 			   impl->unscaled_width,
 			   impl->unscaled_height));
 
-  API_CALL (SetWindowPos, (GDK_WINDOW_HWND (window), NULL,
+  API_CALL (SetWindowPos, (CDK_WINDOW_HWND (window), NULL,
 			   (window->x + window->parent->abs_x) * impl->window_scale,
 			   (window->y + window->parent->abs_y) * impl->window_scale,
 			   impl->unscaled_width,
@@ -125,17 +125,17 @@ void
 _cdk_win32_window_tmp_unset_bg (CdkWindow *window,
 				gboolean recurse)
 {
-  g_return_if_fail (GDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_WINDOW (window));
 
   if (window->input_only || window->destroyed ||
-      (window->window_type != GDK_WINDOW_ROOT &&
-       !GDK_WINDOW_IS_MAPPED (window)))
+      (window->window_type != CDK_WINDOW_ROOT &&
+       !CDK_WINDOW_IS_MAPPED (window)))
     return;
 
   if (_cdk_window_has_impl (window) &&
-      GDK_WINDOW_IS_WIN32 (window) &&
-      window->window_type != GDK_WINDOW_ROOT &&
-      window->window_type != GDK_WINDOW_FOREIGN)
+      CDK_WINDOW_IS_WIN32 (window) &&
+      window->window_type != CDK_WINDOW_ROOT &&
+      window->window_type != CDK_WINDOW_FOREIGN)
     tmp_unset_bg (window);
 
   if (recurse)
@@ -150,7 +150,7 @@ _cdk_win32_window_tmp_unset_bg (CdkWindow *window,
 void
 _cdk_win32_window_tmp_unset_parent_bg (CdkWindow *window)
 {
-  if (GDK_WINDOW_TYPE (window->parent) == GDK_WINDOW_ROOT)
+  if (CDK_WINDOW_TYPE (window->parent) == CDK_WINDOW_ROOT)
     return;
 
   window = _cdk_window_get_impl_window (window->parent);
@@ -161,16 +161,16 @@ void
 _cdk_win32_window_tmp_reset_bg (CdkWindow *window,
 				gboolean   recurse)
 {
-  g_return_if_fail (GDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_WINDOW (window));
 
   if (window->input_only || window->destroyed ||
-      (window->window_type != GDK_WINDOW_ROOT && !GDK_WINDOW_IS_MAPPED (window)))
+      (window->window_type != CDK_WINDOW_ROOT && !CDK_WINDOW_IS_MAPPED (window)))
     return;
 
   if (_cdk_window_has_impl (window) &&
-      GDK_WINDOW_IS_WIN32 (window) &&
-      window->window_type != GDK_WINDOW_ROOT &&
-      window->window_type != GDK_WINDOW_FOREIGN)
+      CDK_WINDOW_IS_WIN32 (window) &&
+      window->window_type != CDK_WINDOW_ROOT &&
+      window->window_type != CDK_WINDOW_FOREIGN)
     {
       tmp_reset_bg (window);
     }

@@ -108,8 +108,8 @@ msgid "Default Display"
 msgstr "Стандартен дисплей"
 
 #: ../cdk/cdkdisplaymanager.c:164
-msgid "The default display for GDK"
-msgstr "Стандартният за GDK дисплей"
+msgid "The default display for CDK"
+msgstr "Стандартният за CDK дисплей"
 
 #: ../cdk/cdkscreen.c:91
 msgid "Font options"

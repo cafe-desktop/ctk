@@ -111,13 +111,13 @@ test_find_widget_input_windows (CtkWidget *widget,
   window = ctk_widget_get_window (widget);
 
   cdk_window_get_user_data (window, &udata);
-  if (udata == widget && (!input_only || (GDK_IS_WINDOW (window) && cdk_window_is_input_only (GDK_WINDOW (window)))))
+  if (udata == widget && (!input_only || (CDK_IS_WINDOW (window) && cdk_window_is_input_only (CDK_WINDOW (window)))))
     matches = g_slist_prepend (matches, window);
   children = cdk_window_get_children (ctk_widget_get_parent_window (widget));
   for (node = children; node; node = node->next)
     {
       cdk_window_get_user_data (node->data, &udata);
-      if (udata == widget && (!input_only || (GDK_IS_WINDOW (node->data) && cdk_window_is_input_only (GDK_WINDOW (node->data)))))
+      if (udata == widget && (!input_only || (CDK_IS_WINDOW (node->data) && cdk_window_is_input_only (CDK_WINDOW (node->data)))))
         matches = g_slist_prepend (matches, node->data);
     }
   return g_slist_reverse (matches);
@@ -194,8 +194,8 @@ ctk_test_widget_send_key (CtkWidget      *widget,
     iwindows = test_find_widget_input_windows (widget, TRUE);
   if (!iwindows)
     return FALSE;
-  k1res = cdk_test_simulate_key (iwindows->data, -1, -1, keyval, modifiers, GDK_KEY_PRESS);
-  k2res = cdk_test_simulate_key (iwindows->data, -1, -1, keyval, modifiers, GDK_KEY_RELEASE);
+  k1res = cdk_test_simulate_key (iwindows->data, -1, -1, keyval, modifiers, CDK_KEY_PRESS);
+  k2res = cdk_test_simulate_key (iwindows->data, -1, -1, keyval, modifiers, CDK_KEY_RELEASE);
   g_slist_free (iwindows);
   return k1res && k2res;
 }
@@ -233,8 +233,8 @@ ctk_test_widget_click (CtkWidget      *widget,
     iwindows = test_find_widget_input_windows (widget, TRUE);
   if (!iwindows)
     return FALSE;
-  b1res = cdk_test_simulate_button (iwindows->data, -1, -1, button, modifiers, GDK_BUTTON_PRESS);
-  b2res = cdk_test_simulate_button (iwindows->data, -1, -1, button, modifiers, GDK_BUTTON_RELEASE);
+  b1res = cdk_test_simulate_button (iwindows->data, -1, -1, button, modifiers, CDK_BUTTON_PRESS);
+  b2res = cdk_test_simulate_button (iwindows->data, -1, -1, button, modifiers, CDK_BUTTON_RELEASE);
   g_slist_free (iwindows);
   return b1res && b2res;
 }
@@ -270,8 +270,8 @@ ctk_test_spin_button_click (CtkSpinButton  *spinner,
   if (panel)
     {
       gint width = cdk_window_get_width (panel);
-      b1res = cdk_test_simulate_button (panel, width - 1, 1, button, 0, GDK_BUTTON_PRESS);
-      b2res = cdk_test_simulate_button (panel, width - 1, 1, button, 0, GDK_BUTTON_RELEASE);
+      b1res = cdk_test_simulate_button (panel, width - 1, 1, button, 0, CDK_BUTTON_PRESS);
+      b2res = cdk_test_simulate_button (panel, width - 1, 1, button, 0, CDK_BUTTON_RELEASE);
     }
   return b1res && b2res;
 }

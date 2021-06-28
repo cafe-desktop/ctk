@@ -198,7 +198,7 @@ ctk_text_handle_widget_event (CtkWidget     *widget,
   if (pos < 0)
     return FALSE;
 
-  if (event->type == GDK_BUTTON_PRESS)
+  if (event->type == CDK_BUTTON_PRESS)
     {
       priv->windows[pos].dx = event->button.x;
       priv->windows[pos].dy = event->button.y;
@@ -206,23 +206,23 @@ ctk_text_handle_widget_event (CtkWidget     *widget,
       ctk_text_handle_set_state (handle, pos, CTK_STATE_FLAG_ACTIVE);
       g_signal_emit (handle, signals[DRAG_STARTED], 0, pos);
     }
-  else if (event->type == GDK_BUTTON_RELEASE)
+  else if (event->type == CDK_BUTTON_RELEASE)
     {
       g_signal_emit (handle, signals[DRAG_FINISHED], 0, pos);
       priv->windows[pos].dragged = FALSE;
       ctk_text_handle_unset_state (handle, pos, CTK_STATE_FLAG_ACTIVE);
     }
-  else if (event->type == GDK_ENTER_NOTIFY)
+  else if (event->type == CDK_ENTER_NOTIFY)
     ctk_text_handle_set_state (handle, pos, CTK_STATE_FLAG_PRELIGHT);
-  else if (event->type == GDK_LEAVE_NOTIFY)
+  else if (event->type == CDK_LEAVE_NOTIFY)
     {
       if (!priv->windows[pos].dragged &&
-          (event->crossing.mode == GDK_CROSSING_NORMAL ||
-           event->crossing.mode == GDK_CROSSING_UNGRAB))
+          (event->crossing.mode == CDK_CROSSING_NORMAL ||
+           event->crossing.mode == CDK_CROSSING_UNGRAB))
         ctk_text_handle_unset_state (handle, pos, CTK_STATE_FLAG_PRELIGHT);
     }
-  else if (event->type == GDK_MOTION_NOTIFY &&
-           event->motion.state & GDK_BUTTON1_MASK &&
+  else if (event->type == CDK_MOTION_NOTIFY &&
+           event->motion.state & CDK_BUTTON1_MASK &&
            priv->windows[pos].dragged)
     {
       gint x, y, handle_width, handle_height;
@@ -288,11 +288,11 @@ _ctk_text_handle_ensure_widget (CtkTextHandle         *handle,
       widget = ctk_event_box_new ();
       ctk_event_box_set_visible_window (CTK_EVENT_BOX (widget), TRUE);
       ctk_widget_set_events (widget,
-                             GDK_BUTTON_PRESS_MASK |
-                             GDK_BUTTON_RELEASE_MASK |
-                             GDK_ENTER_NOTIFY_MASK |
-                             GDK_LEAVE_NOTIFY_MASK |
-                             GDK_POINTER_MOTION_MASK);
+                             CDK_BUTTON_PRESS_MASK |
+                             CDK_BUTTON_RELEASE_MASK |
+                             CDK_ENTER_NOTIFY_MASK |
+                             CDK_LEAVE_NOTIFY_MASK |
+                             CDK_POINTER_MOTION_MASK);
 
       ctk_widget_set_direction (widget, priv->windows[pos].dir);
 

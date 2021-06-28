@@ -173,12 +173,12 @@ ctk_offscreen_window_realize (CtkWidget *widget)
   attributes.y = allocation.y;
   attributes.width = allocation.width;
   attributes.height = allocation.height;
-  attributes.window_type = GDK_WINDOW_OFFSCREEN;
-  attributes.event_mask = ctk_widget_get_events (widget) | GDK_EXPOSURE_MASK;
+  attributes.window_type = CDK_WINDOW_OFFSCREEN;
+  attributes.event_mask = ctk_widget_get_events (widget) | CDK_EXPOSURE_MASK;
   attributes.visual = ctk_widget_get_visual (widget);
-  attributes.wclass = GDK_INPUT_OUTPUT;
+  attributes.wclass = CDK_INPUT_OUTPUT;
 
-  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
+  attributes_mask = CDK_WA_X | CDK_WA_Y | CDK_WA_VISUAL;
 
   window = cdk_window_new (ctk_widget_get_parent_window (widget),
                            &attributes, attributes_mask);

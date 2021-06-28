@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * cdkvisual.c
  *
  * Copyright 2001 Sun Microsystems Inc.
@@ -47,11 +47,11 @@
  * A number of functions are provided for determining the “best” available
  * visual. For the purposes of making this determination, higher bit depths
  * are considered better, and for visuals of the same bit depth,
- * %GDK_VISUAL_PSEUDO_COLOR is preferred at 8bpp, otherwise, the visual
+ * %CDK_VISUAL_PSEUDO_COLOR is preferred at 8bpp, otherwise, the visual
  * types are ranked in the order of(highest to lowest)
- * %GDK_VISUAL_DIRECT_COLOR, %GDK_VISUAL_TRUE_COLOR,
- * %GDK_VISUAL_PSEUDO_COLOR, %GDK_VISUAL_STATIC_COLOR,
- * %GDK_VISUAL_GRAYSCALE, then %GDK_VISUAL_STATIC_GRAY.
+ * %CDK_VISUAL_DIRECT_COLOR, %CDK_VISUAL_TRUE_COLOR,
+ * %CDK_VISUAL_PSEUDO_COLOR, %CDK_VISUAL_STATIC_COLOR,
+ * %CDK_VISUAL_GRAYSCALE, then %CDK_VISUAL_STATIC_GRAY.
  */
 
 G_DEFINE_TYPE (CdkVisual, cdk_visual, G_TYPE_OBJECT)
@@ -100,7 +100,7 @@ cdk_list_visuals (void)
 /**
  * cdk_visual_get_system:
  *
- * Get the system’s default visual for the default GDK screen.
+ * Get the system’s default visual for the default CDK screen.
  * This is the visual for the root window of the display.
  * The return value should not be freed.
  *
@@ -117,7 +117,7 @@ cdk_visual_get_system (void)
 /**
  * cdk_visual_get_best_depth:
  *
- * Get the best available depth for the default GDK screen.  “Best”
+ * Get the best available depth for the default CDK screen.  “Best”
  * means “largest,” i.e. 32 preferred over 24 preferred over 8 bits
  * per pixel.
  *
@@ -131,13 +131,13 @@ cdk_visual_get_best_depth (void)
 {
   CdkScreen *screen = cdk_screen_get_default();
 
-  return GDK_SCREEN_GET_CLASS(screen)->visual_get_best_depth (screen);
+  return CDK_SCREEN_GET_CLASS(screen)->visual_get_best_depth (screen);
 }
 
 /**
  * cdk_visual_get_best_type:
  *
- * Return the best available visual type for the default GDK screen.
+ * Return the best available visual type for the default CDK screen.
  *
  * Returns: best visual type
  *
@@ -149,14 +149,14 @@ cdk_visual_get_best_type (void)
 {
   CdkScreen *screen = cdk_screen_get_default();
 
-  return GDK_SCREEN_GET_CLASS(screen)->visual_get_best_type (screen);
+  return CDK_SCREEN_GET_CLASS(screen)->visual_get_best_type (screen);
 }
 
 /**
  * cdk_visual_get_best:
  *
  * Get the visual with the most available colors for the default
- * GDK screen. The return value should not be freed.
+ * CDK screen. The return value should not be freed.
  *
  * Returns: (transfer none): best visual
  *
@@ -168,14 +168,14 @@ cdk_visual_get_best (void)
 {
   CdkScreen *screen = cdk_screen_get_default();
 
-  return GDK_SCREEN_GET_CLASS(screen)->visual_get_best (screen);
+  return CDK_SCREEN_GET_CLASS(screen)->visual_get_best (screen);
 }
 
 /**
  * cdk_visual_get_best_with_depth:
  * @depth: a bit depth
  *
- * Get the best visual with depth @depth for the default GDK screen.
+ * Get the best visual with depth @depth for the default CDK screen.
  * Color visuals and visuals with mutable colormaps are preferred
  * over grayscale or fixed-colormap visuals. The return value should
  * not be freed. %NULL may be returned if no visual supports @depth.
@@ -190,14 +190,14 @@ cdk_visual_get_best_with_depth (gint depth)
 {
   CdkScreen *screen = cdk_screen_get_default();
 
-  return GDK_SCREEN_GET_CLASS(screen)->visual_get_best_with_depth (screen, depth);
+  return CDK_SCREEN_GET_CLASS(screen)->visual_get_best_with_depth (screen, depth);
 }
 
 /**
  * cdk_visual_get_best_with_type:
  * @visual_type: a visual type
  *
- * Get the best visual of the given @visual_type for the default GDK screen.
+ * Get the best visual of the given @visual_type for the default CDK screen.
  * Visuals with higher color depths are considered better. The return value
  * should not be freed. %NULL may be returned if no visual has type
  * @visual_type.
@@ -212,7 +212,7 @@ cdk_visual_get_best_with_type (CdkVisualType visual_type)
 {
   CdkScreen *screen = cdk_screen_get_default();
 
-  return GDK_SCREEN_GET_CLASS(screen)->visual_get_best_with_type (screen,
+  return CDK_SCREEN_GET_CLASS(screen)->visual_get_best_with_type (screen,
                                                                   visual_type);
 }
 
@@ -236,7 +236,7 @@ cdk_visual_get_best_with_both (gint          depth,
 {
   CdkScreen *screen = cdk_screen_get_default();
 
-  return GDK_SCREEN_GET_CLASS(screen)->visual_get_best_with_both (screen, depth, visual_type);
+  return CDK_SCREEN_GET_CLASS(screen)->visual_get_best_with_both (screen, depth, visual_type);
 }
 
 /**
@@ -261,7 +261,7 @@ cdk_query_depths (gint **depths,
 {
   CdkScreen *screen = cdk_screen_get_default();
 
-  GDK_SCREEN_GET_CLASS(screen)->query_depths (screen, depths, count);
+  CDK_SCREEN_GET_CLASS(screen)->query_depths (screen, depths, count);
 }
 
 /**
@@ -286,7 +286,7 @@ cdk_query_visual_types (CdkVisualType **visual_types,
 {
   CdkScreen *screen = cdk_screen_get_default();
 
-  GDK_SCREEN_GET_CLASS(screen)->query_visual_types (screen, visual_types, count);
+  CDK_SCREEN_GET_CLASS(screen)->query_visual_types (screen, visual_types, count);
 }
 
 /**
@@ -302,7 +302,7 @@ cdk_query_visual_types (CdkVisualType **visual_types,
 CdkVisualType
 cdk_visual_get_visual_type (CdkVisual *visual)
 {
-  g_return_val_if_fail (GDK_IS_VISUAL (visual), 0);
+  g_return_val_if_fail (CDK_IS_VISUAL (visual), 0);
 
   return visual->type;
 }
@@ -320,7 +320,7 @@ cdk_visual_get_visual_type (CdkVisual *visual)
 gint
 cdk_visual_get_depth (CdkVisual *visual)
 {
-  g_return_val_if_fail (GDK_IS_VISUAL (visual), 0);
+  g_return_val_if_fail (CDK_IS_VISUAL (visual), 0);
 
   return visual->depth;
 }
@@ -344,7 +344,7 @@ cdk_visual_get_depth (CdkVisual *visual)
 CdkByteOrder
 cdk_visual_get_byte_order (CdkVisual *visual)
 {
-  g_return_val_if_fail (GDK_IS_VISUAL (visual), 0);
+  g_return_val_if_fail (CDK_IS_VISUAL (visual), 0);
 
   return visual->byte_order;
 }
@@ -361,13 +361,13 @@ cdk_visual_get_byte_order (CdkVisual *visual)
  *
  * Since: 2.22
  *
- * Deprecated: 3.22: This information is not useful, since GDK does not
+ * Deprecated: 3.22: This information is not useful, since CDK does not
  *     provide APIs to operate on colormaps.
  */
 gint
 cdk_visual_get_colormap_size (CdkVisual *visual)
 {
-  g_return_val_if_fail (GDK_IS_VISUAL (visual), 0);
+  g_return_val_if_fail (CDK_IS_VISUAL (visual), 0);
 
   return visual->colormap_size;
 }
@@ -378,7 +378,7 @@ cdk_visual_get_colormap_size (CdkVisual *visual)
  *
  * Returns the number of significant bits per red, green and blue value.
  *
- * Not all GDK backend provide a meaningful value for this function.
+ * Not all CDK backend provide a meaningful value for this function.
  *
  * Returns: The number of significant bits per color value for @visual.
  *
@@ -390,7 +390,7 @@ cdk_visual_get_colormap_size (CdkVisual *visual)
 gint
 cdk_visual_get_bits_per_rgb (CdkVisual *visual)
 {
-  g_return_val_if_fail (GDK_IS_VISUAL (visual), 0);
+  g_return_val_if_fail (CDK_IS_VISUAL (visual), 0);
 
   return visual->bits_per_rgb;
 }
@@ -453,7 +453,7 @@ cdk_visual_get_red_pixel_details (CdkVisual *visual,
                                   gint      *shift,
                                   gint      *precision)
 {
-  g_return_if_fail (GDK_IS_VISUAL (visual));
+  g_return_if_fail (CDK_IS_VISUAL (visual));
 
   cdk_visual_get_pixel_details (visual, visual->red_mask, mask, shift, precision);
 }
@@ -479,7 +479,7 @@ cdk_visual_get_green_pixel_details (CdkVisual *visual,
                                     gint      *shift,
                                     gint      *precision)
 {
-  g_return_if_fail (GDK_IS_VISUAL (visual));
+  g_return_if_fail (CDK_IS_VISUAL (visual));
 
   cdk_visual_get_pixel_details (visual, visual->green_mask, mask, shift, precision);
 }
@@ -505,7 +505,7 @@ cdk_visual_get_blue_pixel_details (CdkVisual *visual,
                                    gint      *shift,
                                    gint      *precision)
 {
-  g_return_if_fail (GDK_IS_VISUAL (visual));
+  g_return_if_fail (CDK_IS_VISUAL (visual));
 
   cdk_visual_get_pixel_details (visual, visual->blue_mask, mask, shift, precision);
 }
@@ -523,7 +523,7 @@ cdk_visual_get_blue_pixel_details (CdkVisual *visual,
 CdkScreen *
 cdk_visual_get_screen (CdkVisual *visual)
 {
-  g_return_val_if_fail (GDK_IS_VISUAL (visual), NULL);
+  g_return_val_if_fail (CDK_IS_VISUAL (visual), NULL);
 
   return visual->screen;
 }

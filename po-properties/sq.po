@@ -103,8 +103,8 @@ msgid "Default Display"
 msgstr "Ekrani i prezgjedhur"
 
 #: cdk/cdkdisplaymanager.c:103
-msgid "The default display for GDK"
-msgstr "Ekrani i prezgjedhur për GDK"
+msgid "The default display for CDK"
+msgstr "Ekrani i prezgjedhur për CDK"
 
 #: cdk/cdkscreen.c:72
 msgid "Font options"

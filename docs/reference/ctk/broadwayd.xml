@@ -40,7 +40,7 @@
 <refsect1><title>Description</title>
 <para>
 <command>broadwayd</command> is a display server for the Broadway
-GDK backend. It allows multiple CTK+ applications to display their
+CDK backend. It allows multiple CTK+ applications to display their
 windows in the same web browser, by connecting to broadwayd.
 </para>
 <para>
@@ -52,7 +52,7 @@ broadwayd :5
 Then point your web browser at <literal>http://127.0.0.1:8085</literal>.
 Start your applications like this:
 <programlisting>
-GDK_BACKEND=broadway BROADWAY_DISPLAY=:5 ctk3-demo
+CDK_BACKEND=broadway BROADWAY_DISPLAY=:5 ctk3-demo
 </programlisting>
 
 You can add password protection for your session by creating a file in

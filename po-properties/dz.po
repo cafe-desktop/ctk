@@ -104,7 +104,7 @@ msgid "Default Display"
 msgstr "སྔོན་སྒྲིག་བཀྲམ་སྟོན་"
 
 #: cdk/cdkdisplaymanager.c:103
-msgid "The default display for GDK"
+msgid "The default display for CDK"
 msgstr "ཇི་ཌི་ཀེ་གི་དོན་ལུ་ སྔོན་སྒྲིག་བཀྲམ་སྟོན།"
 
 #: cdk/cdkscreen.c:72

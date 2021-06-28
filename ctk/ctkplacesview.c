@@ -1788,7 +1788,7 @@ on_button_press_event (CtkPlacesViewRow *row,
 {
   if (row &&
       cdk_event_triggers_context_menu ((CdkEvent*) event) &&
-      event->type == GDK_BUTTON_PRESS)
+      event->type == CDK_BUTTON_PRESS)
     {
       popup_menu (row, event);
 
@@ -1813,10 +1813,10 @@ on_key_press_event (CtkWidget     *widget,
 
       modifiers = ctk_accelerator_get_default_mod_mask ();
 
-      if (event->keyval == GDK_KEY_Return ||
-          event->keyval == GDK_KEY_KP_Enter ||
-          event->keyval == GDK_KEY_ISO_Enter ||
-          event->keyval == GDK_KEY_space)
+      if (event->keyval == CDK_KEY_Return ||
+          event->keyval == CDK_KEY_KP_Enter ||
+          event->keyval == CDK_KEY_ISO_Enter ||
+          event->keyval == CDK_KEY_space)
         {
           CtkWidget *focus_widget;
           CtkWindow *toplevel;
@@ -1832,9 +1832,9 @@ on_key_press_event (CtkWidget     *widget,
           if (!CTK_IS_PLACES_VIEW_ROW (focus_widget))
             return FALSE;
 
-          if ((event->state & modifiers) == GDK_SHIFT_MASK)
+          if ((event->state & modifiers) == CDK_SHIFT_MASK)
             priv->current_open_flags = CTK_PLACES_OPEN_NEW_TAB;
-          else if ((event->state & modifiers) == GDK_CONTROL_MASK)
+          else if ((event->state & modifiers) == CDK_CONTROL_MASK)
             priv->current_open_flags = CTK_PLACES_OPEN_NEW_WINDOW;
 
           activate_row (view, CTK_PLACES_VIEW_ROW (focus_widget), priv->current_open_flags);
@@ -1980,7 +1980,7 @@ on_listbox_row_activated (CtkPlacesView    *view,
   event = ctk_get_current_event ();
   cdk_event_get_button (event, &button);
 
-  if (cdk_event_get_event_type (event) == GDK_BUTTON_RELEASE && button == GDK_BUTTON_MIDDLE)
+  if (cdk_event_get_event_type (event) == CDK_BUTTON_RELEASE && button == CDK_BUTTON_MIDDLE)
     open_flags = CTK_PLACES_OPEN_NEW_TAB;
   else
     open_flags = priv->current_open_flags;

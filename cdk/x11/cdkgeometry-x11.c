@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -45,9 +45,9 @@ _cdk_x11_window_move_resize_child (CdkWindow *window,
   CdkWindowImplX11 *impl;
 
   g_return_if_fail (window != NULL);
-  g_return_if_fail (GDK_IS_WINDOW (window));
+  g_return_if_fail (CDK_IS_WINDOW (window));
 
-  impl = GDK_WINDOW_IMPL_X11 (window->impl);
+  impl = CDK_WINDOW_IMPL_X11 (window->impl);
 
   if (width * impl->window_scale > 65535 ||
       height * impl->window_scale > 65535)
@@ -73,8 +73,8 @@ _cdk_x11_window_move_resize_child (CdkWindow *window,
    */
   _cdk_x11_window_tmp_unset_parent_bg (window);
   _cdk_x11_window_tmp_unset_bg (window, TRUE);
-  XMoveResizeWindow (GDK_WINDOW_XDISPLAY (window),
-                     GDK_WINDOW_XID (window),
+  XMoveResizeWindow (CDK_WINDOW_XDISPLAY (window),
+                     CDK_WINDOW_XID (window),
                      (window->x + window->parent->abs_x) * impl->window_scale,
                      (window->y + window->parent->abs_y) * impl->window_scale,
                      width * impl->window_scale,
@@ -139,7 +139,7 @@ queue_item_free (CdkWindowQueueItem *item)
 void
 _cdk_x11_display_free_translate_queue (CdkDisplay *display)
 {
-  CdkX11Display *display_x11 = GDK_X11_DISPLAY (display);
+  CdkX11Display *display_x11 = CDK_X11_DISPLAY (display);
 
   if (display_x11->translate_queue)
     {
@@ -153,7 +153,7 @@ static void
 cdk_window_queue (CdkWindow          *window,
 		  CdkWindowQueueItem *new_item)
 {
-  CdkX11Display *display_x11 = GDK_X11_DISPLAY (GDK_WINDOW_DISPLAY (window));
+  CdkX11Display *display_x11 = CDK_X11_DISPLAY (CDK_WINDOW_DISPLAY (window));
   
   if (!display_x11->translate_queue)
     display_x11->translate_queue = g_queue_new ();
@@ -164,7 +164,7 @@ cdk_window_queue (CdkWindow          *window,
    */
   if (display_x11->translate_queue->length >= 64)
     {
-      gulong serial = find_current_serial (GDK_WINDOW_XDISPLAY (window));
+      gulong serial = find_current_serial (CDK_WINDOW_XDISPLAY (window));
       GList *tmp_list = display_x11->translate_queue->head;
       
       while (tmp_list)
@@ -206,7 +206,7 @@ cdk_window_queue (CdkWindow          *window,
     }
 
   new_item->window = window;
-  new_item->serial = NextRequest (GDK_WINDOW_XDISPLAY (window));
+  new_item->serial = NextRequest (CDK_WINDOW_XDISPLAY (window));
   
   g_object_add_weak_pointer (G_OBJECT (window),
 			     (gpointer *)&(new_item->window));
@@ -230,7 +230,7 @@ _cdk_x11_window_process_expose (CdkWindow    *window,
                                 CdkRectangle *area)
 {
   cairo_region_t *invalidate_region = cairo_region_create_rectangle (area);
-  CdkX11Display *display_x11 = GDK_X11_DISPLAY (GDK_WINDOW_DISPLAY (window));
+  CdkX11Display *display_x11 = CDK_X11_DISPLAY (CDK_WINDOW_DISPLAY (window));
 
   if (display_x11->translate_queue)
     {

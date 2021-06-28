@@ -37,21 +37,21 @@ G_BEGIN_DECLS
 typedef struct _CtkGestureStylus CtkGestureStylus;
 typedef struct _CtkGestureStylusClass CtkGestureStylusClass;
 
-GDK_AVAILABLE_IN_3_24
+CDK_AVAILABLE_IN_3_24
 GType             ctk_gesture_stylus_get_type (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_3_24
+CDK_AVAILABLE_IN_3_24
 CtkGesture *      ctk_gesture_stylus_new      (CtkWidget *widget);
 
-GDK_AVAILABLE_IN_3_24
+CDK_AVAILABLE_IN_3_24
 gboolean          ctk_gesture_stylus_get_axis (CtkGestureStylus *gesture,
 					       CdkAxisUse        axis,
 					       gdouble          *value);
-GDK_AVAILABLE_IN_3_24
+CDK_AVAILABLE_IN_3_24
 gboolean          ctk_gesture_stylus_get_axes (CtkGestureStylus  *gesture,
 					       CdkAxisUse         axes[],
 					       gdouble          **values);
-GDK_AVAILABLE_IN_3_24
+CDK_AVAILABLE_IN_3_24
 CdkDeviceTool *   ctk_gesture_stylus_get_device_tool (CtkGestureStylus *gesture);
 
 G_END_DECLS

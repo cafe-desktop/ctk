@@ -77,27 +77,27 @@ typedef enum
  */
 typedef struct _CtkCssSection CtkCssSection;
 
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 GType              ctk_css_section_get_type            (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 CtkCssSection *    ctk_css_section_ref                 (CtkCssSection        *section);
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 void               ctk_css_section_unref               (CtkCssSection        *section);
 
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 CtkCssSectionType  ctk_css_section_get_section_type    (const CtkCssSection  *section);
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 CtkCssSection *    ctk_css_section_get_parent          (const CtkCssSection  *section);
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 GFile *            ctk_css_section_get_file            (const CtkCssSection  *section);
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 guint              ctk_css_section_get_start_line      (const CtkCssSection  *section);
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 guint              ctk_css_section_get_start_position  (const CtkCssSection  *section);
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 guint              ctk_css_section_get_end_line        (const CtkCssSection  *section);
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 guint              ctk_css_section_get_end_position    (const CtkCssSection  *section);
 
 G_END_DECLS

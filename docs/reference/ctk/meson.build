@@ -462,7 +462,7 @@ if get_option('gtk_doc')
                    configuration: types_conf,
                  ),
                  scan_args: [
-                   '--ignore-decorators=_GDK_EXTERN|G_GNUC_WARN_UNUSED_RESULT',
+                   '--ignore-decorators=_CDK_EXTERN|G_GNUC_WARN_UNUSED_RESULT',
                    '--ignore-headers=' + ' '.join(private_headers),
                  ],
                  mkdb_args: [

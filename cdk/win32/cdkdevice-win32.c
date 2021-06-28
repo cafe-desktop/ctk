@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2009 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -26,7 +26,7 @@
 #include "cdkdevice-win32.h"
 #include "cdkwin32.h"
 
-G_DEFINE_TYPE (CdkDeviceWin32, cdk_device_win32, GDK_TYPE_DEVICE)
+G_DEFINE_TYPE (CdkDeviceWin32, cdk_device_win32, CDK_TYPE_DEVICE)
 
 static gboolean
 cdk_device_win32_get_history (CdkDevice      *device,
@@ -80,19 +80,19 @@ get_current_mask (void)
   GetKeyboardState (kbd);
   mask = 0;
   if (kbd[VK_SHIFT] & 0x80)
-    mask |= GDK_SHIFT_MASK;
+    mask |= CDK_SHIFT_MASK;
   if (kbd[VK_CAPITAL] & 0x80)
-    mask |= GDK_LOCK_MASK;
+    mask |= CDK_LOCK_MASK;
   if (kbd[VK_CONTROL] & 0x80)
-    mask |= GDK_CONTROL_MASK;
+    mask |= CDK_CONTROL_MASK;
   if (kbd[VK_MENU] & 0x80)
-    mask |= GDK_MOD1_MASK;
+    mask |= CDK_MOD1_MASK;
   if (kbd[VK_LBUTTON] & 0x80)
-    mask |= GDK_BUTTON1_MASK;
+    mask |= CDK_BUTTON1_MASK;
   if (kbd[VK_MBUTTON] & 0x80)
-    mask |= GDK_BUTTON2_MASK;
+    mask |= CDK_BUTTON2_MASK;
   if (kbd[VK_RBUTTON] & 0x80)
-    mask |= GDK_BUTTON3_MASK;
+    mask |= CDK_BUTTON3_MASK;
 
   return mask;
 }
@@ -114,9 +114,9 @@ cdk_device_win32_query_state (CdkDevice        *device,
   CdkWindowImplWin32 *impl;
 
   screen = cdk_window_get_screen (window);
-  impl = GDK_WINDOW_IMPL_WIN32 (window->impl);
+  impl = CDK_WINDOW_IMPL_WIN32 (window->impl);
 
-  hwnd = GDK_WINDOW_HWND (window);
+  hwnd = CDK_WINDOW_HWND (window);
   GetCursorPos (&point);
 
   if (root_x)
@@ -175,7 +175,7 @@ cdk_device_win32_grab (CdkDevice    *device,
                        guint32       time_)
 {
   /* No support for grabbing the slave atm */
-  return GDK_GRAB_NOT_VIEWABLE;
+  return CDK_GRAB_NOT_VIEWABLE;
 }
 
 static void
@@ -219,8 +219,8 @@ _cdk_device_win32_window_at_position (CdkDevice       *device,
         window = cdk_win32_handle_table_lookup (hwnd);
 
         if (window != NULL &&
-            GDK_WINDOW_TYPE (window) != GDK_WINDOW_ROOT &&
-            GDK_WINDOW_TYPE (window) != GDK_WINDOW_FOREIGN)
+            CDK_WINDOW_TYPE (window) != CDK_WINDOW_ROOT &&
+            CDK_WINDOW_TYPE (window) != CDK_WINDOW_FOREIGN)
           break;
 
         screen_to_client (hwnd, screen_pt, &client_pt);
@@ -253,7 +253,7 @@ _cdk_device_win32_window_at_position (CdkDevice       *device,
       if (hwnd == NULL)
         {
           window = cdk_get_default_root_window ();
-          impl = GDK_WINDOW_IMPL_WIN32 (window->impl);
+          impl = CDK_WINDOW_IMPL_WIN32 (window->impl);
 
           if (win_x)
             *win_x = (screen_pt.x + _cdk_offset_x) / impl->window_scale;
@@ -268,7 +268,7 @@ _cdk_device_win32_window_at_position (CdkDevice       *device,
 
   if (window && (win_x || win_y))
     {
-      impl = GDK_WINDOW_IMPL_WIN32 (window->impl);
+      impl = CDK_WINDOW_IMPL_WIN32 (window->impl);
 
       if (win_x)
         *win_x = client_pt.x / impl->window_scale;
@@ -289,7 +289,7 @@ cdk_device_win32_select_window_events (CdkDevice    *device,
 static void
 cdk_device_win32_class_init (CdkDeviceWin32Class *klass)
 {
-  CdkDeviceClass *device_class = GDK_DEVICE_CLASS (klass);
+  CdkDeviceClass *device_class = CDK_DEVICE_CLASS (klass);
 
   device_class->get_history = cdk_device_win32_get_history;
   device_class->get_state = cdk_device_win32_get_state;
@@ -307,8 +307,8 @@ cdk_device_win32_init (CdkDeviceWin32 *device_win32)
 {
   CdkDevice *device;
 
-  device = GDK_DEVICE (device_win32);
+  device = CDK_DEVICE (device_win32);
 
-  _cdk_device_add_axis (device, GDK_NONE, GDK_AXIS_X, 0, 0, 1);
-  _cdk_device_add_axis (device, GDK_NONE, GDK_AXIS_Y, 0, 0, 1);
+  _cdk_device_add_axis (device, CDK_NONE, CDK_AXIS_X, 0, 0, 1);
+  _cdk_device_add_axis (device, CDK_NONE, CDK_AXIS_Y, 0, 0, 1);
 }

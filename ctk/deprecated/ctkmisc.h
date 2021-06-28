@@ -66,21 +66,21 @@ struct _CtkMiscClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 GType   ctk_misc_get_type      (void) G_GNUC_CONST;
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 void	ctk_misc_set_alignment (CtkMisc *misc,
 				gfloat	 xalign,
 				gfloat	 yalign);
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 void    ctk_misc_get_alignment (CtkMisc *misc,
 				gfloat  *xalign,
 				gfloat  *yalign);
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 void	ctk_misc_set_padding   (CtkMisc *misc,
 				gint	 xpad,
 				gint	 ypad);
-GDK_DEPRECATED_IN_3_14
+CDK_DEPRECATED_IN_3_14
 void    ctk_misc_get_padding   (CtkMisc *misc,
 				gint    *xpad,
 				gint    *ypad);

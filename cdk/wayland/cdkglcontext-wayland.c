@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  *
  * cdkglcontext-wayland.c: Wayland specific OpenGL wrappers
  *
@@ -33,7 +33,7 @@
 
 #include "cdkintl.h"
 
-G_DEFINE_TYPE (CdkWaylandGLContext, cdk_wayland_gl_context, GDK_TYPE_GL_CONTEXT)
+G_DEFINE_TYPE (CdkWaylandGLContext, cdk_wayland_gl_context, CDK_TYPE_GL_CONTEXT)
 
 static void cdk_x11_gl_context_dispose (GObject *gobject);
 
@@ -43,7 +43,7 @@ cdk_wayland_window_invalidate_for_new_frame (CdkWindow      *window,
 {
   cairo_rectangle_int_t window_rect;
   CdkDisplay *display = cdk_window_get_display (window);
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (display);
   CdkWaylandGLContext *context_wayland;
   int buffer_age;
   gboolean invalidate_all;
@@ -53,7 +53,7 @@ cdk_wayland_window_invalidate_for_new_frame (CdkWindow      *window,
   if (window->gl_paint_context == NULL)
     return;
 
-  context_wayland = GDK_WAYLAND_GL_CONTEXT (window->gl_paint_context);
+  context_wayland = CDK_WAYLAND_GL_CONTEXT (window->gl_paint_context);
   buffer_age = 0;
 
   egl_surface = cdk_wayland_window_get_egl_surface (window->impl_window,
@@ -107,10 +107,10 @@ static gboolean
 cdk_wayland_gl_context_realize (CdkGLContext *context,
                                 GError      **error)
 {
-  CdkWaylandGLContext *context_wayland = GDK_WAYLAND_GL_CONTEXT (context);
+  CdkWaylandGLContext *context_wayland = CDK_WAYLAND_GL_CONTEXT (context);
   CdkDisplay *display = cdk_gl_context_get_display (context);
   CdkGLContext *share = cdk_gl_context_get_shared_context (context);
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (display);
   EGLContext ctx;
   EGLint context_attribs[N_EGL_ATTRS];
   int major, minor, flags;
@@ -120,9 +120,9 @@ cdk_wayland_gl_context_realize (CdkGLContext *context,
   cdk_gl_context_get_required_version (context, &major, &minor);
   debug_bit = cdk_gl_context_get_debug_enabled (context);
   forward_bit = cdk_gl_context_get_forward_compatible (context);
-  legacy_bit = (_cdk_gl_flags & GDK_GL_LEGACY) != 0 ||
+  legacy_bit = (_cdk_gl_flags & CDK_GL_LEGACY) != 0 ||
                (share != NULL && cdk_gl_context_is_legacy (share));
-  use_es = (_cdk_gl_flags & GDK_GL_GLES) != 0 ||
+  use_es = (_cdk_gl_flags & CDK_GL_GLES) != 0 ||
            (share != NULL && cdk_gl_context_get_use_es (share));
 
   flags = 0;
@@ -166,7 +166,7 @@ cdk_wayland_gl_context_realize (CdkGLContext *context,
   context_attribs[i++] = EGL_NONE;
   g_assert (i < N_EGL_ATTRS);
 
-  GDK_NOTE (OPENGL, g_message ("Creating EGL context version %d.%d (debug:%s, forward:%s, legacy:%s, es:%s)",
+  CDK_NOTE (OPENGL, g_message ("Creating EGL context version %d.%d (debug:%s, forward:%s, legacy:%s, es:%s)",
                                major, minor,
                                debug_bit ? "yes" : "no",
                                forward_bit ? "yes" : "no",
@@ -175,7 +175,7 @@ cdk_wayland_gl_context_realize (CdkGLContext *context,
 
   ctx = eglCreateContext (display_wayland->egl_display,
                           context_wayland->egl_config,
-                          share != NULL ? GDK_WAYLAND_GL_CONTEXT (share)->egl_context
+                          share != NULL ? CDK_WAYLAND_GL_CONTEXT (share)->egl_context
                                         : EGL_NO_CONTEXT,
                           context_attribs);
 
@@ -193,23 +193,23 @@ cdk_wayland_gl_context_realize (CdkGLContext *context,
       legacy_bit = TRUE;
       use_es = FALSE;
 
-      GDK_NOTE (OPENGL, g_message ("eglCreateContext failed, switching to legacy"));
+      CDK_NOTE (OPENGL, g_message ("eglCreateContext failed, switching to legacy"));
       ctx = eglCreateContext (display_wayland->egl_display,
                               context_wayland->egl_config,
-                              share != NULL ? GDK_WAYLAND_GL_CONTEXT (share)->egl_context
+                              share != NULL ? CDK_WAYLAND_GL_CONTEXT (share)->egl_context
                                             : EGL_NO_CONTEXT,
                               context_attribs);
     }
 
   if (ctx == NULL)
     {
-      g_set_error_literal (error, GDK_GL_ERROR,
-                           GDK_GL_ERROR_NOT_AVAILABLE,
+      g_set_error_literal (error, CDK_GL_ERROR,
+                           CDK_GL_ERROR_NOT_AVAILABLE,
                            _("Unable to create a GL context"));
       return FALSE;
     }
 
-  GDK_NOTE (OPENGL, g_message ("Created EGL context[%p]", ctx));
+  CDK_NOTE (OPENGL, g_message ("Created EGL context[%p]", ctx));
 
   context_wayland->egl_context = ctx;
 
@@ -226,8 +226,8 @@ cdk_wayland_gl_context_end_frame (CdkGLContext   *context,
 {
   CdkWindow *window = cdk_gl_context_get_window (context);
   CdkDisplay *display = cdk_window_get_display (window);
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
-  CdkWaylandGLContext *context_wayland = GDK_WAYLAND_GL_CONTEXT (context);
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (display);
+  CdkWaylandGLContext *context_wayland = CDK_WAYLAND_GL_CONTEXT (context);
   EGLSurface egl_surface;
 
   cdk_gl_context_make_current (context);
@@ -261,7 +261,7 @@ static void
 cdk_wayland_gl_context_class_init (CdkWaylandGLContextClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
-  CdkGLContextClass *context_class = GDK_GL_CONTEXT_CLASS (klass);
+  CdkGLContextClass *context_class = CDK_GL_CONTEXT_CLASS (klass);
 
   gobject_class->dispose = cdk_x11_gl_context_dispose;
 
@@ -311,7 +311,7 @@ cdk_wayland_get_display (CdkWaylandDisplay *display_wayland)
 gboolean
 cdk_wayland_display_init_gl (CdkDisplay *display)
 {
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (display);
   EGLint major, minor;
   EGLDisplay dpy;
 
@@ -347,7 +347,7 @@ cdk_wayland_display_init_gl (CdkDisplay *display)
   display_wayland->have_egl_surfaceless_context =
     epoxy_has_egl_extension (dpy, "EGL_KHR_surfaceless_context");
 
-  GDK_NOTE (OPENGL,
+  CDK_NOTE (OPENGL,
             g_message ("EGL API version %d.%d found\n"
                        " - Vendor: %s\n"
                        " - Version: %s\n"
@@ -373,7 +373,7 @@ find_eglconfig_for_window (CdkWindow  *window,
                            GError    **error)
 {
   CdkDisplay *display = cdk_window_get_display (window);
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (display);
   CdkVisual *visual = cdk_window_get_visual (window);
   EGLint attrs[MAX_EGL_ATTRS];
   EGLint count;
@@ -413,8 +413,8 @@ find_eglconfig_for_window (CdkWindow  *window,
 
   if (!eglChooseConfig (display_wayland->egl_display, attrs, NULL, 0, &count) || count < 1)
     {
-      g_set_error_literal (error, GDK_GL_ERROR,
-                           GDK_GL_ERROR_UNSUPPORTED_FORMAT,
+      g_set_error_literal (error, CDK_GL_ERROR,
+                           CDK_GL_ERROR_UNSUPPORTED_FORMAT,
                            _("No available configurations for the given pixel format"));
       return FALSE;
     }
@@ -423,8 +423,8 @@ find_eglconfig_for_window (CdkWindow  *window,
 
   if (!eglChooseConfig (display_wayland->egl_display, attrs, configs, count, &count) || count < 1)
     {
-      g_set_error_literal (error, GDK_GL_ERROR,
-                           GDK_GL_ERROR_UNSUPPORTED_FORMAT,
+      g_set_error_literal (error, CDK_GL_ERROR,
+                           CDK_GL_ERROR_UNSUPPORTED_FORMAT,
                            _("No available configurations for the given pixel format"));
       return FALSE;
     }
@@ -435,8 +435,8 @@ find_eglconfig_for_window (CdkWindow  *window,
   if (!eglGetConfigAttrib (display_wayland->egl_display, chosen_config,
                            EGL_MIN_SWAP_INTERVAL, min_swap_interval_out))
     {
-      g_set_error_literal (error, GDK_GL_ERROR,
-                           GDK_GL_ERROR_NOT_AVAILABLE,
+      g_set_error_literal (error, CDK_GL_ERROR,
+                           CDK_GL_ERROR_NOT_AVAILABLE,
                            "Could not retrieve the minimum swap interval");
       g_free (configs);
       return FALSE;
@@ -457,22 +457,22 @@ cdk_wayland_window_create_gl_context (CdkWindow     *window,
                                       GError       **error)
 {
   CdkDisplay *display = cdk_window_get_display (window);
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (display);
   CdkWaylandGLContext *context;
   EGLConfig config;
 
   if (!cdk_wayland_display_init_gl (display))
     {
-      g_set_error_literal (error, GDK_GL_ERROR,
-                           GDK_GL_ERROR_NOT_AVAILABLE,
+      g_set_error_literal (error, CDK_GL_ERROR,
+                           CDK_GL_ERROR_NOT_AVAILABLE,
                            _("No GL implementation is available"));
       return NULL;
     }
 
   if (!display_wayland->have_egl_khr_create_context)
     {
-      g_set_error_literal (error, GDK_GL_ERROR,
-                           GDK_GL_ERROR_UNSUPPORTED_PROFILE,
+      g_set_error_literal (error, CDK_GL_ERROR,
+                           CDK_GL_ERROR_UNSUPPORTED_PROFILE,
                            _("Core GL is not available on EGL implementation"));
       return NULL;
     }
@@ -482,7 +482,7 @@ cdk_wayland_window_create_gl_context (CdkWindow     *window,
                                   error))
     return NULL;
 
-  context = g_object_new (GDK_TYPE_WAYLAND_GL_CONTEXT,
+  context = g_object_new (CDK_TYPE_WAYLAND_GL_CONTEXT,
                           "display", display,
                           "window", window,
                           "shared-context", share,
@@ -491,26 +491,26 @@ cdk_wayland_window_create_gl_context (CdkWindow     *window,
   context->egl_config = config;
   context->is_attached = attached;
 
-  return GDK_GL_CONTEXT (context);
+  return CDK_GL_CONTEXT (context);
 }
 
 static void
 cdk_x11_gl_context_dispose (GObject *gobject)
 {
-  CdkWaylandGLContext *context_wayland = GDK_WAYLAND_GL_CONTEXT (gobject);
+  CdkWaylandGLContext *context_wayland = CDK_WAYLAND_GL_CONTEXT (gobject);
 
   if (context_wayland->egl_context != NULL)
     {
-      CdkGLContext *context = GDK_GL_CONTEXT (gobject);
+      CdkGLContext *context = CDK_GL_CONTEXT (gobject);
       CdkWindow *window = cdk_gl_context_get_window (context);
       CdkDisplay *display = cdk_window_get_display (window);
-      CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
+      CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (display);
 
       if (eglGetCurrentContext () == context_wayland->egl_context)
         eglMakeCurrent(display_wayland->egl_display, EGL_NO_SURFACE, EGL_NO_SURFACE,
                        EGL_NO_CONTEXT);
 
-      GDK_NOTE (OPENGL, g_message ("Destroying EGL context"));
+      CDK_NOTE (OPENGL, g_message ("Destroying EGL context"));
 
       eglDestroyContext (display_wayland->egl_display,
                          context_wayland->egl_context);
@@ -524,7 +524,7 @@ gboolean
 cdk_wayland_display_make_gl_context_current (CdkDisplay   *display,
                                              CdkGLContext *context)
 {
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (display);
   CdkWaylandGLContext *context_wayland;
   CdkWindow *window;
   EGLSurface egl_surface;
@@ -536,7 +536,7 @@ cdk_wayland_display_make_gl_context_current (CdkDisplay   *display,
       return TRUE;
     }
 
-  context_wayland = GDK_WAYLAND_GL_CONTEXT (context);
+  context_wayland = CDK_WAYLAND_GL_CONTEXT (context);
   window = cdk_gl_context_get_window (context);
 
   if (context_wayland->is_attached)

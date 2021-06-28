@@ -112,20 +112,20 @@ msgid "Default Display"
 msgstr "Forvalgt skjerm"
 
 #: ../cdk/cdkdisplaymanager.c:170
-msgid "The default display for GDK"
-msgstr "Forvalgt skjerm for GDK"
+msgid "The default display for CDK"
+msgstr "Forvalgt skjerm for CDK"
 
 #: ../cdk/cdkglcontext.c:274
-msgid "The GDK display the context is from"
-msgstr "GDK-skjerm konteksten er fra"
+msgid "The CDK display the context is from"
+msgstr "CDK-skjerm konteksten er fra"
 
 #: ../cdk/cdkglcontext.c:289 ../ctk/ctkwidget.c:1448
 msgid "Window"
 msgstr "Vindu"
 
 #: ../cdk/cdkglcontext.c:290
-msgid "The GDK window bound to the GL context"
-msgstr "GDK-vindu som er bundet til GL-konteksten"
+msgid "The CDK window bound to the GL context"
+msgstr "CDK-vindu som er bundet til GL-konteksten"
 
 #: ../cdk/cdkglcontext.c:305 ../ctk/ctkglarea.c:763
 msgid "Profile"

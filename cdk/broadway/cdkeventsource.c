@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2009 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -106,7 +106,7 @@ _cdk_broadway_events_got_input (BroadwayInputMsg *message)
   list = cdk_display_manager_list_displays (cdk_display_manager_get ());
   for (d = list; d; d = d->next)
     {
-      if (GDK_IS_BROADWAY_DISPLAY (d->data))
+      if (CDK_IS_BROADWAY_DISPLAY (d->data))
         {
           display = d->data;
           break;
@@ -116,9 +116,9 @@ _cdk_broadway_events_got_input (BroadwayInputMsg *message)
 
   g_assert (display != NULL);
 
-  display_broadway = GDK_BROADWAY_DISPLAY (display);
+  display_broadway = CDK_BROADWAY_DISPLAY (display);
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-  device_manager = GDK_BROADWAY_DEVICE_MANAGER (cdk_display_get_device_manager (display));
+  device_manager = CDK_BROADWAY_DEVICE_MANAGER (cdk_display_get_device_manager (display));
   G_GNUC_END_IGNORE_DEPRECATIONS;
 
   switch (message->base.type) {
@@ -126,7 +126,7 @@ _cdk_broadway_events_got_input (BroadwayInputMsg *message)
     window = g_hash_table_lookup (display_broadway->id_ht, GINT_TO_POINTER (message->pointer.event_window_id));
     if (window)
       {
-	event = cdk_event_new (GDK_ENTER_NOTIFY);
+	event = cdk_event_new (CDK_ENTER_NOTIFY);
 	event->crossing.window = g_object_ref (window);
 	event->crossing.time = message->base.time;
 	event->crossing.x = message->pointer.win_x;
@@ -135,7 +135,7 @@ _cdk_broadway_events_got_input (BroadwayInputMsg *message)
 	event->crossing.y_root = message->pointer.root_y;
 	event->crossing.state = message->pointer.state;
 	event->crossing.mode = message->crossing.mode;
-	event->crossing.detail = GDK_NOTIFY_ANCESTOR;
+	event->crossing.detail = CDK_NOTIFY_ANCESTOR;
 	cdk_event_set_device (event, device_manager->core_pointer);
 	cdk_event_set_seat (event, cdk_device_get_seat (device_manager->core_pointer));
 
@@ -147,7 +147,7 @@ _cdk_broadway_events_got_input (BroadwayInputMsg *message)
     window = g_hash_table_lookup (display_broadway->id_ht, GINT_TO_POINTER (message->pointer.event_window_id));
     if (window)
       {
-	event = cdk_event_new (GDK_LEAVE_NOTIFY);
+	event = cdk_event_new (CDK_LEAVE_NOTIFY);
 	event->crossing.window = g_object_ref (window);
 	event->crossing.time = message->base.time;
 	event->crossing.x = message->pointer.win_x;
@@ -156,7 +156,7 @@ _cdk_broadway_events_got_input (BroadwayInputMsg *message)
 	event->crossing.y_root = message->pointer.root_y;
 	event->crossing.state = message->pointer.state;
 	event->crossing.mode = message->crossing.mode;
-	event->crossing.detail = GDK_NOTIFY_ANCESTOR;
+	event->crossing.detail = CDK_NOTIFY_ANCESTOR;
 	cdk_event_set_device (event, device_manager->core_pointer);
 	cdk_event_set_seat (event, cdk_device_get_seat (device_manager->core_pointer));
 
@@ -171,7 +171,7 @@ _cdk_broadway_events_got_input (BroadwayInputMsg *message)
     window = g_hash_table_lookup (display_broadway->id_ht, GINT_TO_POINTER (message->pointer.event_window_id));
     if (window)
       {
-	event = cdk_event_new (GDK_MOTION_NOTIFY);
+	event = cdk_event_new (CDK_MOTION_NOTIFY);
 	event->motion.window = g_object_ref (window);
 	event->motion.time = message->base.time;
 	event->motion.x = message->pointer.win_x;
@@ -196,7 +196,7 @@ _cdk_broadway_events_got_input (BroadwayInputMsg *message)
     window = g_hash_table_lookup (display_broadway->id_ht, GINT_TO_POINTER (message->pointer.event_window_id));
     if (window)
       {
-	event = cdk_event_new (message->base.type == 'b' ? GDK_BUTTON_PRESS : GDK_BUTTON_RELEASE);
+	event = cdk_event_new (message->base.type == 'b' ? CDK_BUTTON_PRESS : CDK_BUTTON_RELEASE);
 	event->button.window = g_object_ref (window);
 	event->button.time = message->base.time;
 	event->button.x = message->pointer.win_x;
@@ -217,7 +217,7 @@ _cdk_broadway_events_got_input (BroadwayInputMsg *message)
     window = g_hash_table_lookup (display_broadway->id_ht, GINT_TO_POINTER (message->pointer.event_window_id));
     if (window)
       {
-	event = cdk_event_new (GDK_SCROLL);
+	event = cdk_event_new (CDK_SCROLL);
 	event->scroll.window = g_object_ref (window);
 	event->scroll.time = message->base.time;
 	event->scroll.x = message->pointer.win_x;
@@ -225,7 +225,7 @@ _cdk_broadway_events_got_input (BroadwayInputMsg *message)
 	event->scroll.x_root = message->pointer.root_x;
 	event->scroll.y_root = message->pointer.root_y;
         event->scroll.state = message->pointer.state;
-	event->scroll.direction = message->scroll.dir == 0 ? GDK_SCROLL_UP : GDK_SCROLL_DOWN;
+	event->scroll.direction = message->scroll.dir == 0 ? CDK_SCROLL_UP : CDK_SCROLL_DOWN;
 	cdk_event_set_device (event, device_manager->core_pointer);
 	cdk_event_set_seat (event, cdk_device_get_seat (device_manager->core_pointer));
 
@@ -242,19 +242,19 @@ _cdk_broadway_events_got_input (BroadwayInputMsg *message)
 
         switch (message->touch.touch_type) {
         case 0:
-          event_type = GDK_TOUCH_BEGIN;
+          event_type = CDK_TOUCH_BEGIN;
           break;
         case 1:
-          event_type = GDK_TOUCH_UPDATE;
+          event_type = CDK_TOUCH_UPDATE;
           break;
         case 2:
-          event_type = GDK_TOUCH_END;
+          event_type = CDK_TOUCH_END;
           break;
         default:
           g_printerr ("_cdk_broadway_events_got_input - Unknown touch type %d\n", message->touch.touch_type);
         }
 
-        if (event_type != GDK_TOUCH_BEGIN &&
+        if (event_type != CDK_TOUCH_BEGIN &&
             message->touch.is_emulated && _cdk_broadway_moveresize_handle_event (display, message))
           break;
 
@@ -276,8 +276,8 @@ _cdk_broadway_events_got_input (BroadwayInputMsg *message)
         if (message->touch.is_emulated)
           cdk_event_set_pointer_emulated (event, TRUE);
 
-        if (event_type == GDK_TOUCH_BEGIN || event_type == GDK_TOUCH_UPDATE)
-          event->touch.state |= GDK_BUTTON1_MASK;
+        if (event_type == CDK_TOUCH_BEGIN || event_type == CDK_TOUCH_UPDATE)
+          event->touch.state |= CDK_BUTTON1_MASK;
 
 	node = _cdk_event_queue_append (display, event);
 	_cdk_windowing_got_event (display, node, event, message->base.serial);
@@ -290,7 +290,7 @@ _cdk_broadway_events_got_input (BroadwayInputMsg *message)
 				  GINT_TO_POINTER (message->key.window_id));
     if (window)
       {
-	event = cdk_event_new (message->base.type == 'k' ? GDK_KEY_PRESS : GDK_KEY_RELEASE);
+	event = cdk_event_new (message->base.type == 'k' ? CDK_KEY_PRESS : CDK_KEY_RELEASE);
 	event->key.window = g_object_ref (window);
 	event->key.time = message->base.time;
 	event->key.keyval = message->key.key;
@@ -318,7 +318,7 @@ _cdk_broadway_events_got_input (BroadwayInputMsg *message)
 	window->x = message->configure_notify.x;
 	window->y = message->configure_notify.y;
 
-	event = cdk_event_new (GDK_CONFIGURE);
+	event = cdk_event_new (CDK_CONFIGURE);
 	event->configure.window = g_object_ref (window);
 	event->configure.x = message->configure_notify.x;
 	event->configure.y = message->configure_notify.y;
@@ -342,7 +342,7 @@ _cdk_broadway_events_got_input (BroadwayInputMsg *message)
     window = g_hash_table_lookup (display_broadway->id_ht, GINT_TO_POINTER (message->delete_notify.id));
     if (window)
       {
-	event = cdk_event_new (GDK_DELETE);
+	event = cdk_event_new (CDK_DELETE);
 	event->any.window = g_object_ref (window);
 
 	node = _cdk_event_queue_append (display, event);
@@ -364,7 +364,7 @@ _cdk_broadway_events_got_input (BroadwayInputMsg *message)
     window = g_hash_table_lookup (display_broadway->id_ht, GINT_TO_POINTER (message->focus.old_id));
     if (window)
       {
-	event = cdk_event_new (GDK_FOCUS_CHANGE);
+	event = cdk_event_new (CDK_FOCUS_CHANGE);
 	event->focus_change.window = g_object_ref (window);
 	event->focus_change.in = FALSE;
 	cdk_event_set_device (event, device_manager->core_pointer);
@@ -375,7 +375,7 @@ _cdk_broadway_events_got_input (BroadwayInputMsg *message)
     window = g_hash_table_lookup (display_broadway->id_ht, GINT_TO_POINTER (message->focus.new_id));
     if (window)
       {
-	event = cdk_event_new (GDK_FOCUS_CHANGE);
+	event = cdk_event_new (CDK_FOCUS_CHANGE);
 	event->focus_change.window = g_object_ref (window);
 	event->focus_change.in = TRUE;
 	cdk_event_set_device (event, device_manager->core_pointer);
@@ -436,14 +436,14 @@ _cdk_broadway_event_source_new (CdkDisplay *display)
   char *name;
 
   source = g_source_new (&event_funcs, sizeof (CdkEventSource));
-  name = g_strdup_printf ("GDK Broadway Event source (%s)",
+  name = g_strdup_printf ("CDK Broadway Event source (%s)",
 			  cdk_display_get_name (display));
   g_source_set_name (source, name);
   g_free (name);
   event_source = (CdkEventSource *) source;
   event_source->display = display;
 
-  g_source_set_priority (source, GDK_PRIORITY_EVENTS);
+  g_source_set_priority (source, CDK_PRIORITY_EVENTS);
   g_source_set_can_recurse (source, TRUE);
   g_source_attach (source, NULL);
 

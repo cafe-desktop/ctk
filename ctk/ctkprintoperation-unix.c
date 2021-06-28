@@ -313,7 +313,7 @@ ctk_print_operation_unix_launch_preview (CtkPrintOperation *op,
       g_error_free (error);
       error = NULL;
       uri = g_filename_to_uri (filename, NULL, NULL);
-      ctk_show_uri (screen, uri, GDK_CURRENT_TIME, &error);
+      ctk_show_uri (screen, uri, CDK_CURRENT_TIME, &error);
       g_free (uri);
     }
 

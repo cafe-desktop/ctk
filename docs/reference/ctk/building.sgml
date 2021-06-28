@@ -607,7 +607,7 @@ How to compile CTK+ itself
           <systemitem>--disable-wayland-backend</systemitem></title>
 
         <para>
-          Enables specific backends for GDK.  If none of these options
+          Enables specific backends for CDK.  If none of these options
           are given, the x11 backend will be enabled by default,
           unless the platform is Windows, in which case the default is
           win32.  If any backend is explicitly enabled or disabled, no

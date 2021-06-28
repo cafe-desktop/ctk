@@ -78,39 +78,39 @@ do_builder (CtkWidget *do_widget)
 
       item = (CtkWidget*)ctk_builder_get_object (builder, "new_item");
       ctk_widget_add_accelerator (item, "activate", accel_group,
-                                  GDK_KEY_n, GDK_CONTROL_MASK, CTK_ACCEL_VISIBLE);
+                                  CDK_KEY_n, CDK_CONTROL_MASK, CTK_ACCEL_VISIBLE);
 
       item = (CtkWidget*)ctk_builder_get_object (builder, "open_item");
       ctk_widget_add_accelerator (item, "activate", accel_group,
-                                  GDK_KEY_o, GDK_CONTROL_MASK, CTK_ACCEL_VISIBLE);
+                                  CDK_KEY_o, CDK_CONTROL_MASK, CTK_ACCEL_VISIBLE);
 
       item = (CtkWidget*)ctk_builder_get_object (builder, "save_item");
       ctk_widget_add_accelerator (item, "activate", accel_group,
-                                  GDK_KEY_s, GDK_CONTROL_MASK, CTK_ACCEL_VISIBLE);
+                                  CDK_KEY_s, CDK_CONTROL_MASK, CTK_ACCEL_VISIBLE);
 
       item = (CtkWidget*)ctk_builder_get_object (builder, "quit_item");
       ctk_widget_add_accelerator (item, "activate", accel_group,
-                                  GDK_KEY_q, GDK_CONTROL_MASK, CTK_ACCEL_VISIBLE);
+                                  CDK_KEY_q, CDK_CONTROL_MASK, CTK_ACCEL_VISIBLE);
 
       item = (CtkWidget*)ctk_builder_get_object (builder, "copy_item");
       ctk_widget_add_accelerator (item, "activate", accel_group,
-                                  GDK_KEY_c, GDK_CONTROL_MASK, CTK_ACCEL_VISIBLE);
+                                  CDK_KEY_c, CDK_CONTROL_MASK, CTK_ACCEL_VISIBLE);
 
       item = (CtkWidget*)ctk_builder_get_object (builder, "cut_item");
       ctk_widget_add_accelerator (item, "activate", accel_group,
-                                  GDK_KEY_x, GDK_CONTROL_MASK, CTK_ACCEL_VISIBLE);
+                                  CDK_KEY_x, CDK_CONTROL_MASK, CTK_ACCEL_VISIBLE);
 
       item = (CtkWidget*)ctk_builder_get_object (builder, "paste_item");
       ctk_widget_add_accelerator (item, "activate", accel_group,
-                                  GDK_KEY_v, GDK_CONTROL_MASK, CTK_ACCEL_VISIBLE);
+                                  CDK_KEY_v, CDK_CONTROL_MASK, CTK_ACCEL_VISIBLE);
 
       item = (CtkWidget*)ctk_builder_get_object (builder, "help_item");
       ctk_widget_add_accelerator (item, "activate", accel_group,
-                                  GDK_KEY_F1, 0, CTK_ACCEL_VISIBLE);
+                                  CDK_KEY_F1, 0, CTK_ACCEL_VISIBLE);
 
       item = (CtkWidget*)ctk_builder_get_object (builder, "about_item");
       ctk_widget_add_accelerator (item, "activate", accel_group,
-                                  GDK_KEY_F7, 0, CTK_ACCEL_VISIBLE);
+                                  CDK_KEY_F7, 0, CTK_ACCEL_VISIBLE);
 
       g_object_set_data_full (G_OBJECT(window), "builder", builder, g_object_unref);
     }

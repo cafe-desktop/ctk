@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2010, Red Hat, Inc
  *
  * This library is free software; you can redistribute it and/or
@@ -15,17 +15,17 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_DND_PRIVATE_H__
-#define __GDK_DND_PRIVATE_H__
+#ifndef __CDK_DND_PRIVATE_H__
+#define __CDK_DND_PRIVATE_H__
 
 #include "cdkdnd.h"
 
 G_BEGIN_DECLS
 
 
-#define GDK_DRAG_CONTEXT_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_DRAG_CONTEXT, CdkDragContextClass))
-#define GDK_IS_DRAG_CONTEXT_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_DRAG_CONTEXT))
-#define GDK_DRAG_CONTEXT_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_DRAG_CONTEXT, CdkDragContextClass))
+#define CDK_DRAG_CONTEXT_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CDK_TYPE_DRAG_CONTEXT, CdkDragContextClass))
+#define CDK_IS_DRAG_CONTEXT_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CDK_TYPE_DRAG_CONTEXT))
+#define CDK_DRAG_CONTEXT_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CDK_TYPE_DRAG_CONTEXT, CdkDragContextClass))
 
 typedef struct _CdkDragContextClass CdkDragContextClass;
 

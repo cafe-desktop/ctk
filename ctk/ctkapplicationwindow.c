@@ -57,9 +57,9 @@
  * can also activate these actions, if they implement the
  * #CtkActionable interface.
  *
- * As with #CtkApplication, the GDK lock will be acquired when
+ * As with #CtkApplication, the CDK lock will be acquired when
  * processing actions arriving from other processes and should therefore
- * be held when activating actions locally (if GDK threads are enabled).
+ * be held when activating actions locally (if CDK threads are enabled).
  *
  * The settings #CtkSettings:ctk-shell-shows-app-menu and
  * #CtkSettings:ctk-shell-shows-menubar tell CTK+ whether the

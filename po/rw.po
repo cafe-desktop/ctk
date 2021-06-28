@@ -80,7 +80,7 @@ msgstr "Ikirahuri"
 #. Description of --cdk-debug=FLAGS in --help output
 #: cdk/cdk.c:164
 #, fuzzy
-msgid "GDK debugging flags to set"
+msgid "CDK debugging flags to set"
 msgstr "Amabendera Kuri Gushyiraho"
 
 # svx/source\gallery2\galtheme.src:RID_GALLERYSTR_THEME_FLAGS.text
@@ -96,7 +96,7 @@ msgstr "Amabendera"
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: cdk/cdk.c:167
 #, fuzzy
-msgid "GDK debugging flags to unset"
+msgid "CDK debugging flags to unset"
 msgstr "Amabendera Kuri"
 
 # basctl/source\basicide\basidesh.src:RID_POPUP_TABBAR.SID_BASICIDE_RENAMECURRENT.text

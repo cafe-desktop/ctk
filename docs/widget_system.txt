@@ -427,7 +427,7 @@ Commentary:
 
   The destroy signal probably shouldn't exist at all. A widget
   should merely be unrealized and removed from its parent
-  when the user calls ctk_widget_destroy or a GDK_DESTROY event
+  when the user calls ctk_widget_destroy or a CDK_DESTROY event
   is received. However, a large body of code depends on
   getting a definitive signal when a widget goes away.
 
@@ -439,7 +439,7 @@ Commentary:
   be called. 
 
   Also, if we made that the finalization step, we would have
-  to propagate the GDK_DESTROY event in any case, since it is
+  to propagate the CDK_DESTROY event in any case, since it is
   at that point at which user-visible actions need to be taken.
 
 

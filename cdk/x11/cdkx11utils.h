@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -22,10 +22,10 @@
  * CTK+ at ftp://ftp.ctk.org/pub/ctk/. 
  */
 
-#ifndef __GDK_X11_UTILS_H__
-#define __GDK_X11_UTILS_H__
+#ifndef __CDK_X11_UTILS_H__
+#define __CDK_X11_UTILS_H__
 
-#if !defined (__GDKX_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined (__CDKX_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdkx.h> can be included directly."
 #endif
 
@@ -36,45 +36,45 @@
 
 G_BEGIN_DECLS
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 Window   cdk_x11_get_default_root_xwindow (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 Display *cdk_x11_get_default_xdisplay     (void);
 
 /**
- * GDK_ROOT_WINDOW:
+ * CDK_ROOT_WINDOW:
  *
  * Obtains the Xlib window id of the root window of the current screen.
  */
-#define GDK_ROOT_WINDOW()             (cdk_x11_get_default_root_xwindow ())
+#define CDK_ROOT_WINDOW()             (cdk_x11_get_default_root_xwindow ())
 
 /**
- * GDK_XID_TO_POINTER:
+ * CDK_XID_TO_POINTER:
  * @xid: XID to stuff into the pointer
  *
  * Converts an XID into a @gpointer. This is useful with data structures
- * that use pointer arguments such as #GHashTable. Use GDK_POINTER_TO_XID()
+ * that use pointer arguments such as #GHashTable. Use CDK_POINTER_TO_XID()
  * to convert the argument back to an XID.
  */
-#define GDK_XID_TO_POINTER(xid) GUINT_TO_POINTER(xid)
+#define CDK_XID_TO_POINTER(xid) GUINT_TO_POINTER(xid)
 
 /**
- * GDK_POINTER_TO_XID:
+ * CDK_POINTER_TO_XID:
  * @pointer: pointer to extract an XID from
  *
  * Converts a @gpointer back to an XID that was previously converted
- * using GDK_XID_TO_POINTER().
+ * using CDK_XID_TO_POINTER().
  */
-#define GDK_POINTER_TO_XID(pointer) GPOINTER_TO_UINT(pointer)
+#define CDK_POINTER_TO_XID(pointer) GPOINTER_TO_UINT(pointer)
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          cdk_x11_grab_server    (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          cdk_x11_ungrab_server  (void);
 
-GDK_DEPRECATED_IN_3_24
+CDK_DEPRECATED_IN_3_24
 cairo_pattern_t *cdk_x11_get_parent_relative_pattern (void);
 
 G_END_DECLS
 
-#endif /* __GDK_X11_UTILS_H__ */
+#endif /* __CDK_X11_UTILS_H__ */

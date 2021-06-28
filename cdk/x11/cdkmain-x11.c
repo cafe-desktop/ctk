@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -51,31 +51,31 @@
  * @Short_description: X backend-specific functions
  * @Title: X Window System Interaction
  *
- * The functions in this section are specific to the GDK X11 backend.
+ * The functions in this section are specific to the CDK X11 backend.
  * To use them, you need to include the `<cdk/cdkx.h>` header and use
  * the X11-specific pkg-config files to build your application (either
  * `cdk-x11-3.0` or `ctk+-x11-3.0`).
  *
- * To make your code compile with other GDK backends, guard backend-specific
- * calls by an ifdef as follows. Since GDK may be built with multiple
+ * To make your code compile with other CDK backends, guard backend-specific
+ * calls by an ifdef as follows. Since CDK may be built with multiple
  * backends, you should also check for the backend that is in use (e.g. by
- * using the GDK_IS_X11_DISPLAY() macro).
+ * using the CDK_IS_X11_DISPLAY() macro).
  * |[
- * #ifdef GDK_WINDOWING_X11
- *   if (GDK_IS_X11_DISPLAY (display))
+ * #ifdef CDK_WINDOWING_X11
+ *   if (CDK_IS_X11_DISPLAY (display))
  *     {
  *       // make X11-specific calls here
  *     }
  *   else
  * #endif
- * #ifdef GDK_WINDOWING_QUARTZ
- *   if (GDK_IS_QUARTZ_DISPLAY (display))
+ * #ifdef CDK_WINDOWING_QUARTZ
+ *   if (CDK_IS_QUARTZ_DISPLAY (display))
  *     {
  *       // make Quartz-specific calls here
  *     }
  *   else
  * #endif
- *   g_error ("Unsupported GDK backend");
+ *   g_error ("Unsupported CDK backend");
  * ]|
  */
 
@@ -87,10 +87,10 @@ struct _CdkPredicate
   gpointer data;
 };
 
-/* non-GDK previous error handler */
+/* non-CDK previous error handler */
 typedef int (*CdkXErrorHandler) (Display *, XErrorEvent *);
 static CdkXErrorHandler _cdk_old_error_handler;
-/* number of times we've pushed the GDK error handler */
+/* number of times we've pushed the CDK error handler */
 static int _cdk_error_handler_push_count = 0;
 
 /*
@@ -121,15 +121,15 @@ _cdk_x11_convert_grab_status (gint status)
   switch (status)
     {
     case GrabSuccess:
-      return GDK_GRAB_SUCCESS;
+      return CDK_GRAB_SUCCESS;
     case AlreadyGrabbed:
-      return GDK_GRAB_ALREADY_GRABBED;
+      return CDK_GRAB_ALREADY_GRABBED;
     case GrabInvalidTime:
-      return GDK_GRAB_INVALID_TIME;
+      return CDK_GRAB_INVALID_TIME;
     case GrabNotViewable:
-      return GDK_GRAB_NOT_VIEWABLE;
+      return CDK_GRAB_NOT_VIEWABLE;
     case GrabFrozen:
-      return GDK_GRAB_FROZEN;
+      return CDK_GRAB_FROZEN;
     }
 
   g_assert_not_reached();
@@ -159,9 +159,9 @@ _cdk_x11_window_grab_check_unmap (CdkWindow *window,
   device_manager = cdk_display_get_device_manager (display);
 
   /* Get all devices */
-  devices = cdk_device_manager_list_devices (device_manager, GDK_DEVICE_TYPE_MASTER);
-  devices = g_list_concat (devices, cdk_device_manager_list_devices (device_manager, GDK_DEVICE_TYPE_SLAVE));
-  devices = g_list_concat (devices, cdk_device_manager_list_devices (device_manager, GDK_DEVICE_TYPE_FLOATING));
+  devices = cdk_device_manager_list_devices (device_manager, CDK_DEVICE_TYPE_MASTER);
+  devices = g_list_concat (devices, cdk_device_manager_list_devices (device_manager, CDK_DEVICE_TYPE_SLAVE));
+  devices = g_list_concat (devices, cdk_device_manager_list_devices (device_manager, CDK_DEVICE_TYPE_FLOATING));
   G_GNUC_END_IGNORE_DEPRECATIONS;
 
   /* End all grabs on the newly hidden window */
@@ -190,9 +190,9 @@ _cdk_x11_window_grab_check_destroy (CdkWindow *window)
   device_manager = cdk_display_get_device_manager (display);
 
   /* Get all devices */
-  devices = cdk_device_manager_list_devices (device_manager, GDK_DEVICE_TYPE_MASTER);
-  devices = g_list_concat (devices, cdk_device_manager_list_devices (device_manager, GDK_DEVICE_TYPE_SLAVE));
-  devices = g_list_concat (devices, cdk_device_manager_list_devices (device_manager, GDK_DEVICE_TYPE_FLOATING));
+  devices = cdk_device_manager_list_devices (device_manager, CDK_DEVICE_TYPE_MASTER);
+  devices = g_list_concat (devices, cdk_device_manager_list_devices (device_manager, CDK_DEVICE_TYPE_SLAVE));
+  devices = g_list_concat (devices, cdk_device_manager_list_devices (device_manager, CDK_DEVICE_TYPE_FLOATING));
   G_GNUC_END_IGNORE_DEPRECATIONS;
 
   for (d = devices; d; d = d->next)
@@ -283,10 +283,10 @@ cdk_x_error (Display	 *xdisplay,
         {
           CdkX11Display *cdk_display = displays->data;
 
-          if (GDK_IS_X11_DISPLAY (cdk_display) &&
+          if (CDK_IS_X11_DISPLAY (cdk_display) &&
               xdisplay == cdk_display->xdisplay)
             {
-              error_display = GDK_DISPLAY (cdk_display);
+              error_display = CDK_DISPLAY (cdk_display);
               g_slist_free (displays);
               displays = NULL;
             }
@@ -298,7 +298,7 @@ cdk_x_error (Display	 *xdisplay,
 
       if (error_display == NULL)
         {
-          /* Error on an X display not opened by GDK. Ignore. */
+          /* Error on an X display not opened by CDK. Ignore. */
 
           return 0;
         }
@@ -321,7 +321,7 @@ _cdk_x11_error_handler_push (void)
   if (_cdk_error_handler_push_count > 0)
     {
       if (previous != cdk_x_error)
-        g_warning ("XSetErrorHandler() called with a GDK error trap pushed. Don't do that.");
+        g_warning ("XSetErrorHandler() called with a CDK error trap pushed. Don't do that.");
     }
   else
     {
@@ -358,9 +358,9 @@ _cdk_x11_display_send_xevent (CdkDisplay *display,
     return FALSE;
 
   cdk_x11_display_error_trap_push (display);
-  result = XSendEvent (GDK_DISPLAY_XDISPLAY (display), window,
+  result = XSendEvent (CDK_DISPLAY_XDISPLAY (display), window,
                        propagate, event_mask, event_send);
-  XSync (GDK_DISPLAY_XDISPLAY (display), False);
+  XSync (CDK_DISPLAY_XDISPLAY (display), False);
 
   if (cdk_x11_display_error_trap_pop (display))
     return FALSE;
@@ -448,7 +448,7 @@ cdk_x11_get_default_screen (void)
 Window
 cdk_x11_get_default_root_xwindow (void)
 {
-  return GDK_SCREEN_XROOTWIN (cdk_screen_get_default ());
+  return CDK_SCREEN_XROOTWIN (cdk_screen_get_default ());
 }
 
 /**
@@ -463,7 +463,7 @@ cdk_x11_get_default_root_xwindow (void)
 Display *
 cdk_x11_get_default_xdisplay (void)
 {
-  return GDK_DISPLAY_XDISPLAY (cdk_display_get_default ());
+  return CDK_DISPLAY_XDISPLAY (cdk_display_get_default ());
 }
 
 /**

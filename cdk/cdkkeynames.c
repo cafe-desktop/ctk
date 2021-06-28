@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -35,7 +35,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define GDK_NUM_KEYS G_N_ELEMENTS (cdk_keys_by_keyval)
+#define CDK_NUM_KEYS G_N_ELEMENTS (cdk_keys_by_keyval)
 
 static int
 cdk_keys_keyval_compare (const void *pkey, const void *pbase)
@@ -57,7 +57,7 @@ _cdk_keyval_name (guint keyval)
     }
 
   found = bsearch (&keyval, cdk_keys_by_keyval,
-		   GDK_NUM_KEYS, sizeof (cdk_key),
+		   CDK_NUM_KEYS, sizeof (cdk_key),
 		   cdk_keys_keyval_compare);
 
   if (found != NULL)
@@ -95,10 +95,10 @@ _cdk_keyval_from_name (const gchar *keyval_name)
     keyval_name += 4;
 
   found = bsearch (keyval_name, cdk_keys_by_name,
-		   GDK_NUM_KEYS, sizeof (cdk_key),
+		   CDK_NUM_KEYS, sizeof (cdk_key),
 		   cdk_keys_name_compare);
   if (found != NULL)
     return found->keyval;
   else
-    return GDK_KEY_VoidSymbol;
+    return CDK_KEY_VoidSymbol;
 }

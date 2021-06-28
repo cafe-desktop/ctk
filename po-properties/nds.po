@@ -102,8 +102,8 @@ msgid "Default Display"
 msgstr "Vorgavansicht"
 
 #: cdk/cdkdisplaymanager.c:103
-msgid "The default display for GDK"
-msgstr "De Vorgavanzeige för GDK"
+msgid "The default display for CDK"
+msgstr "De Vorgavanzeige för CDK"
 
 #: cdk/cdkscreen.c:72
 msgid "Font options"

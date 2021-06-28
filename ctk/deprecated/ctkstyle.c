@@ -24,7 +24,7 @@
 
 #include "config.h"
 
-#define GDK_DISABLE_DEPRECATION_WARNINGS
+#define CDK_DISABLE_DEPRECATION_WARNINGS
 
 #include <math.h>
 #include <stdlib.h>
@@ -2830,28 +2830,28 @@ ctk_default_draw_resize_grip (CtkStyle       *style,
 
   switch (edge)
     {
-    case GDK_WINDOW_EDGE_NORTH_WEST:
+    case CDK_WINDOW_EDGE_NORTH_WEST:
       sides = CTK_JUNCTION_CORNER_TOPLEFT;
       break;
-    case GDK_WINDOW_EDGE_NORTH:
+    case CDK_WINDOW_EDGE_NORTH:
       sides = CTK_JUNCTION_TOP;
       break;
-    case GDK_WINDOW_EDGE_NORTH_EAST:
+    case CDK_WINDOW_EDGE_NORTH_EAST:
       sides = CTK_JUNCTION_CORNER_TOPRIGHT;
       break;
-    case GDK_WINDOW_EDGE_WEST:
+    case CDK_WINDOW_EDGE_WEST:
       sides = CTK_JUNCTION_LEFT;
       break;
-    case GDK_WINDOW_EDGE_EAST:
+    case CDK_WINDOW_EDGE_EAST:
       sides = CTK_JUNCTION_RIGHT;
       break;
-    case GDK_WINDOW_EDGE_SOUTH_WEST:
+    case CDK_WINDOW_EDGE_SOUTH_WEST:
       sides = CTK_JUNCTION_CORNER_BOTTOMLEFT;
       break;
-    case GDK_WINDOW_EDGE_SOUTH:
+    case CDK_WINDOW_EDGE_SOUTH:
       sides = CTK_JUNCTION_BOTTOM;
       break;
-    case GDK_WINDOW_EDGE_SOUTH_EAST:
+    case CDK_WINDOW_EDGE_SOUTH_EAST:
       sides = CTK_JUNCTION_CORNER_BOTTOMRIGHT;
       break;
     }

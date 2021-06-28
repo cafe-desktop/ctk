@@ -117,8 +117,8 @@ msgid "Default Display"
 msgstr "Стандарт дисплей"
 
 #: cdk/cdkdisplaymanager.c:103
-msgid "The default display for GDK"
-msgstr "GDK дэд системийн анхдагч дисплей"
+msgid "The default display for CDK"
+msgstr "CDK дэд системийн анхдагч дисплей"
 
 # ctk/ctkcellrenderertext.c:311 ctk/ctktexttag.c:368
 #: cdk/cdkscreen.c:72

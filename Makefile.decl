@@ -19,10 +19,10 @@ XIDS = 101 102 103 104 105 106 107 197 199 211 223 227 293 307 308 309 310 311 \
   9995 9996 9997 9998 9999
 
 if USE_X11
-SKIP_GDKTARGET = \
+SKIP_CDKTARGET = \
 	false
 else
-SKIP_GDKTARGET = \
+SKIP_CDKTARGET = \
 	echo "Ctk+Tests:INFO: Skipping GUI tests for non-X11 target."
 endif
 
@@ -43,7 +43,7 @@ XVFB_START = \
 test: test-cwd test-recurse
 # test-cwd: run tests in cwd
 test-cwd: ${TEST_PROGS}
-	@$(SKIP_GDKTARGET) || test -z "${TEST_PROGS}" || { \
+	@$(SKIP_CDKTARGET) || test -z "${TEST_PROGS}" || { \
 	  $(XVFB_START) && { set -e; $(TESTS_ENVIRONMENT) G_TEST_SRCDIR="${abs_srcdir}" G_TEST_BUILDDIR="${abs_builddir}" ${GTESTER} --verbose ${TEST_PROGS}; }; \
 	}
 # test-recurse: run tests in subdirs
@@ -65,7 +65,7 @@ test-report perf-report full-report:	${TEST_PROGS}
 	    test "$$subdir" = "." -o "$$subdir" = "po" -o "$$subdir" = "po-properties" || \
 	    ( cd $$subdir && $(MAKE) $(AM_MAKEFLAGS) $@ ) || exit $? ; \
 	  done ; \
-	  $(SKIP_GDKTARGET) || test -z "${TEST_PROGS}" || { \
+	  $(SKIP_CDKTARGET) || test -z "${TEST_PROGS}" || { \
 	    case $@ in \
 	    test-report) test_options="-k";; \
 	    perf-report) test_options="-k -m=perf";; \

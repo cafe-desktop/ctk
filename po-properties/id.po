@@ -138,20 +138,20 @@ msgid "Default Display"
 msgstr "Tampilan Baku"
 
 #: cdk/cdkdisplaymanager.c:163
-msgid "The default display for GDK"
-msgstr "Tampilan baku untuk GDK"
+msgid "The default display for CDK"
+msgstr "Tampilan baku untuk CDK"
 
 #: cdk/cdkglcontext.c:318
-msgid "The GDK display used to create the GL context"
-msgstr "Tampilan GDK yang dipakai untuk membuat konteks GL"
+msgid "The CDK display used to create the GL context"
+msgstr "Tampilan CDK yang dipakai untuk membuat konteks GL"
 
 #: cdk/cdkglcontext.c:333 ctk/ctkwidget.c:1347
 msgid "Window"
 msgstr "Jendela"
 
 #: cdk/cdkglcontext.c:334
-msgid "The GDK window bound to the GL context"
-msgstr "Jendela GDK yang diikat ke konteks GL"
+msgid "The CDK window bound to the GL context"
+msgstr "Jendela CDK yang diikat ke konteks GL"
 
 #: cdk/cdkglcontext.c:349
 msgid "Shared context"

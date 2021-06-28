@@ -142,100 +142,100 @@ typedef enum
 } CtkPolicyType;
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType          ctk_scrolled_window_get_type          (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget*     ctk_scrolled_window_new               (CtkAdjustment     *hadjustment,
 						      CtkAdjustment     *vadjustment);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_scrolled_window_set_hadjustment   (CtkScrolledWindow *scrolled_window,
 						      CtkAdjustment     *hadjustment);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_scrolled_window_set_vadjustment   (CtkScrolledWindow *scrolled_window,
 						      CtkAdjustment     *vadjustment);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkAdjustment* ctk_scrolled_window_get_hadjustment   (CtkScrolledWindow *scrolled_window);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkAdjustment* ctk_scrolled_window_get_vadjustment   (CtkScrolledWindow *scrolled_window);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget*     ctk_scrolled_window_get_hscrollbar    (CtkScrolledWindow *scrolled_window);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget*     ctk_scrolled_window_get_vscrollbar    (CtkScrolledWindow *scrolled_window);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_scrolled_window_set_policy        (CtkScrolledWindow *scrolled_window,
 						      CtkPolicyType      hscrollbar_policy,
 						      CtkPolicyType      vscrollbar_policy);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_scrolled_window_get_policy        (CtkScrolledWindow *scrolled_window,
 						      CtkPolicyType     *hscrollbar_policy,
 						      CtkPolicyType     *vscrollbar_policy);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_scrolled_window_set_placement     (CtkScrolledWindow *scrolled_window,
 						      CtkCornerType      window_placement);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_scrolled_window_unset_placement   (CtkScrolledWindow *scrolled_window);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkCornerType  ctk_scrolled_window_get_placement     (CtkScrolledWindow *scrolled_window);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_scrolled_window_set_shadow_type   (CtkScrolledWindow *scrolled_window,
 						      CtkShadowType      type);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkShadowType  ctk_scrolled_window_get_shadow_type   (CtkScrolledWindow *scrolled_window);
-GDK_DEPRECATED_IN_3_8_FOR(ctk_container_add)
+CDK_DEPRECATED_IN_3_8_FOR(ctk_container_add)
 void	       ctk_scrolled_window_add_with_viewport (CtkScrolledWindow *scrolled_window,
 						      CtkWidget		*child);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint           ctk_scrolled_window_get_min_content_width  (CtkScrolledWindow *scrolled_window);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_scrolled_window_set_min_content_width  (CtkScrolledWindow *scrolled_window,
                                                            gint               width);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint           ctk_scrolled_window_get_min_content_height (CtkScrolledWindow *scrolled_window);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_scrolled_window_set_min_content_height (CtkScrolledWindow *scrolled_window,
                                                            gint               height);
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 void           ctk_scrolled_window_set_kinetic_scrolling  (CtkScrolledWindow *scrolled_window,
                                                            gboolean           kinetic_scrolling);
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 gboolean       ctk_scrolled_window_get_kinetic_scrolling  (CtkScrolledWindow *scrolled_window);
 
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 void           ctk_scrolled_window_set_capture_button_press (CtkScrolledWindow *scrolled_window,
                                                              gboolean           capture_button_press);
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 gboolean       ctk_scrolled_window_get_capture_button_press (CtkScrolledWindow *scrolled_window);
 
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 void           ctk_scrolled_window_set_overlay_scrolling  (CtkScrolledWindow *scrolled_window,
                                                            gboolean           overlay_scrolling);
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 gboolean       ctk_scrolled_window_get_overlay_scrolling (CtkScrolledWindow   *scrolled_window);
 
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 void           ctk_scrolled_window_set_max_content_width  (CtkScrolledWindow *scrolled_window,
                                                            gint               width);
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 gint           ctk_scrolled_window_get_max_content_width  (CtkScrolledWindow *scrolled_window);
 
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 void           ctk_scrolled_window_set_max_content_height (CtkScrolledWindow *scrolled_window,
                                                            gint               height);
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 gint           ctk_scrolled_window_get_max_content_height (CtkScrolledWindow *scrolled_window);
 
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 void           ctk_scrolled_window_set_propagate_natural_width  (CtkScrolledWindow *scrolled_window,
 								 gboolean           propagate);
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 gboolean       ctk_scrolled_window_get_propagate_natural_width  (CtkScrolledWindow *scrolled_window);
 
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 void           ctk_scrolled_window_set_propagate_natural_height (CtkScrolledWindow *scrolled_window,
 								 gboolean           propagate);
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 gboolean       ctk_scrolled_window_get_propagate_natural_height (CtkScrolledWindow *scrolled_window);
 
 G_END_DECLS

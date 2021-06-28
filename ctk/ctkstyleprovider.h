@@ -115,21 +115,21 @@ struct _CtkStyleProviderIface
 					 CtkWidgetPath    *path);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType ctk_style_provider_get_type (void) G_GNUC_CONST;
 
-GDK_DEPRECATED_IN_3_8
+CDK_DEPRECATED_IN_3_8
 CtkStyleProperties *ctk_style_provider_get_style (CtkStyleProvider *provider,
                                                   CtkWidgetPath    *path);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_style_provider_get_style_property (CtkStyleProvider *provider,
                                                 CtkWidgetPath    *path,
                                                 CtkStateFlags     state,
                                                 GParamSpec       *pspec,
                                                 GValue           *value);
 
-GDK_DEPRECATED_IN_3_8_FOR(NULL)
+CDK_DEPRECATED_IN_3_8_FOR(NULL)
 CtkIconFactory * ctk_style_provider_get_icon_factory (CtkStyleProvider *provider,
 						      CtkWidgetPath    *path);
 

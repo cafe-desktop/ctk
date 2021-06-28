@@ -66,42 +66,42 @@ typedef enum {
   CTK_DEST_DEFAULT_ALL        = 0x07
 } CtkDestDefaults;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_drag_dest_set   (CtkWidget            *widget,
                           CtkDestDefaults       flags,
                           const CtkTargetEntry *targets,
                           gint                  n_targets,
                           CdkDragAction         actions);
 
-GDK_DEPRECATED_IN_3_22
+CDK_DEPRECATED_IN_3_22
 void ctk_drag_dest_set_proxy (CtkWidget      *widget,
                               CdkWindow      *proxy_window,
                               CdkDragProtocol protocol,
                               gboolean        use_coordinates);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_drag_dest_unset (CtkWidget          *widget);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkAtom        ctk_drag_dest_find_target     (CtkWidget      *widget,
                                               CdkDragContext *context,
                                               CtkTargetList  *target_list);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTargetList* ctk_drag_dest_get_target_list (CtkWidget      *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_drag_dest_set_target_list (CtkWidget      *widget,
                                               CtkTargetList  *target_list);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_drag_dest_add_text_targets  (CtkWidget    *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_drag_dest_add_image_targets (CtkWidget    *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_drag_dest_add_uri_targets   (CtkWidget    *widget);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_drag_dest_set_track_motion  (CtkWidget *widget,
                                                 gboolean   track_motion);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean       ctk_drag_dest_get_track_motion  (CtkWidget *widget);
 
 

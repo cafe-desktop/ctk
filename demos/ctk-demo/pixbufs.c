@@ -156,7 +156,7 @@ on_tick (CtkWidget     *widget,
                               dest.width, dest.height,
                               xpos, ypos,
                               k, k,
-                              GDK_INTERP_NEAREST,
+                              CDK_INTERP_NEAREST,
                               ((i & 1)
                                ? MAX (127, fabs (255 * sin (f * 2.0 * G_PI)))
                                : MAX (127, fabs (255 * cos (f * 2.0 * G_PI)))));
@@ -206,7 +206,7 @@ do_pixbufs (CtkWidget *do_widget)
         {
           ctk_widget_set_size_request (window, back_width, back_height);
 
-          frame = cdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, back_width, back_height);
+          frame = cdk_pixbuf_new (CDK_COLORSPACE_RGB, FALSE, 8, back_width, back_height);
 
           da = ctk_drawing_area_new ();
 

@@ -146,20 +146,20 @@ msgid "Default Display"
 msgstr "Tela padrão"
 
 #: cdk/cdkdisplaymanager.c:163
-msgid "The default display for GDK"
-msgstr "A tela padrão para o GDK"
+msgid "The default display for CDK"
+msgstr "A tela padrão para o CDK"
 
 #: cdk/cdkglcontext.c:318
-msgid "The GDK display used to create the GL context"
-msgstr "A janela GDK usada para criar o contexto GL"
+msgid "The CDK display used to create the GL context"
+msgstr "A janela CDK usada para criar o contexto GL"
 
 #: cdk/cdkglcontext.c:333 ctk/ctkwidget.c:1347
 msgid "Window"
 msgstr "Janela"
 
 #: cdk/cdkglcontext.c:334
-msgid "The GDK window bound to the GL context"
-msgstr "A janela GDK ligada ao contexto GL"
+msgid "The CDK window bound to the GL context"
+msgstr "A janela CDK ligada ao contexto GL"
 
 #: cdk/cdkglcontext.c:349
 msgid "Shared context"
@@ -9719,8 +9719,8 @@ msgstr "O título do perfil de cores para usar"
 #~ msgid "Name of default font to use"
 #~ msgstr "Nome da fonte padrão a usar"
 
-#~ msgid "The GDK display the context is from"
-#~ msgstr "A tela GDK o contexto é de"
+#~ msgid "The CDK display the context is from"
+#~ msgstr "A tela CDK o contexto é de"
 
 #~| msgid "Font name"
 #~ msgid "Font map"

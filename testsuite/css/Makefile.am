@@ -11,7 +11,7 @@ AM_CPPFLAGS =				\
 	-I$(top_srcdir)                 \
 	-I$(top_builddir)/cdk           \
 	-I$(top_srcdir)/cdk             \
-	-DGDK_DISABLE_DEPRECATED        \
+	-DCDK_DISABLE_DEPRECATED        \
 	-DCTK_DISABLE_DEPRECATED        \
 	-DCTK_VERSION=\"$(CTK_VERSION)\"\
 	$(CTK_DEBUG_FLAGS)              \

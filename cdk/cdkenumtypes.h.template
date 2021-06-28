@@ -1,8 +1,8 @@
 /*** BEGIN file-header ***/
-#ifndef __GDK_ENUM_TYPES_H__
-#define __GDK_ENUM_TYPES_H__
+#ifndef __CDK_ENUM_TYPES_H__
+#define __CDK_ENUM_TYPES_H__
 
-#if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined (__CDK_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdk.h> can be included directly."
 #endif
 
@@ -18,12 +18,12 @@ G_BEGIN_DECLS
 /*** END file-production ***/
 
 /*** BEGIN value-header ***/
-GDK_AVAILABLE_IN_ALL GType @enum_name@_get_type (void) G_GNUC_CONST;
+CDK_AVAILABLE_IN_ALL GType @enum_name@_get_type (void) G_GNUC_CONST;
 #define @ENUMPREFIX@_TYPE_@ENUMSHORT@ (@enum_name@_get_type ())
 /*** END value-header ***/
 
 /*** BEGIN file-tail ***/
 G_END_DECLS
 
-#endif /* __GDK_ENUM_TYPES_H__ */
+#endif /* __CDK_ENUM_TYPES_H__ */
 /*** END file-tail ***/

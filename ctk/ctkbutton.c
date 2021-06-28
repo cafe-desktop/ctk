@@ -737,7 +737,7 @@ ctk_button_init (CtkButton *button)
   priv->gesture = ctk_gesture_multi_press_new (CTK_WIDGET (button));
   ctk_gesture_single_set_touch_only (CTK_GESTURE_SINGLE (priv->gesture), FALSE);
   ctk_gesture_single_set_exclusive (CTK_GESTURE_SINGLE (priv->gesture), TRUE);
-  ctk_gesture_single_set_button (CTK_GESTURE_SINGLE (priv->gesture), GDK_BUTTON_PRIMARY);
+  ctk_gesture_single_set_button (CTK_GESTURE_SINGLE (priv->gesture), CDK_BUTTON_PRIMARY);
   g_signal_connect (priv->gesture, "pressed", G_CALLBACK (multipress_pressed_cb), button);
   g_signal_connect (priv->gesture, "released", G_CALLBACK (multipress_released_cb), button);
   g_signal_connect (priv->gesture, "update", G_CALLBACK (multipress_gesture_update_cb), button);
@@ -1642,20 +1642,20 @@ ctk_button_realize (CtkWidget *widget)
 
   ctk_widget_set_realized (widget, TRUE);
 
-  attributes.window_type = GDK_WINDOW_CHILD;
+  attributes.window_type = CDK_WINDOW_CHILD;
   attributes.x = allocation.x;
   attributes.y = allocation.y;
   attributes.width = allocation.width;
   attributes.height = allocation.height;
-  attributes.wclass = GDK_INPUT_ONLY;
+  attributes.wclass = CDK_INPUT_ONLY;
   attributes.event_mask = ctk_widget_get_events (widget);
-  attributes.event_mask |= (GDK_BUTTON_PRESS_MASK |
-                            GDK_BUTTON_RELEASE_MASK |
-                            GDK_TOUCH_MASK |
-                            GDK_ENTER_NOTIFY_MASK |
-                            GDK_LEAVE_NOTIFY_MASK);
+  attributes.event_mask |= (CDK_BUTTON_PRESS_MASK |
+                            CDK_BUTTON_RELEASE_MASK |
+                            CDK_TOUCH_MASK |
+                            CDK_ENTER_NOTIFY_MASK |
+                            CDK_LEAVE_NOTIFY_MASK);
 
-  attributes_mask = GDK_WA_X | GDK_WA_Y;
+  attributes_mask = CDK_WA_X | CDK_WA_Y;
 
   window = ctk_widget_get_parent_window (widget);
   ctk_widget_set_window (widget, window);
@@ -1885,7 +1885,7 @@ ctk_button_enter_notify (CtkWidget        *widget,
   CtkButtonPrivate *priv = button->priv;
 
   if ((event->window == button->priv->event_window) &&
-      (event->detail != GDK_NOTIFY_INFERIOR))
+      (event->detail != CDK_NOTIFY_INFERIOR))
     {
       priv->in_button = TRUE;
       g_signal_emit (button, button_signals[ENTER], 0);
@@ -1902,7 +1902,7 @@ ctk_button_leave_notify (CtkWidget        *widget,
   CtkButtonPrivate *priv = button->priv;
 
   if ((event->window == button->priv->event_window) &&
-      (event->detail != GDK_NOTIFY_INFERIOR))
+      (event->detail != CDK_NOTIFY_INFERIOR))
     {
       priv->in_button = FALSE;
       g_signal_emit (button, button_signals[LEAVE], 0);
@@ -1937,7 +1937,7 @@ touch_release_in_button (CtkButton *button)
   if (!event)
     return FALSE;
 
-  if (event->type != GDK_TOUCH_END ||
+  if (event->type != CDK_TOUCH_END ||
       event->touch.window != priv->event_window)
     {
       cdk_event_free (event);
@@ -1995,7 +1995,7 @@ ctk_real_button_activate (CtkButton *button)
 
   device = ctk_get_current_event_device ();
 
-  if (device && cdk_device_get_source (device) != GDK_SOURCE_KEYBOARD)
+  if (device && cdk_device_get_source (device) != CDK_SOURCE_KEYBOARD)
     device = cdk_device_get_associated_device (device);
 
   if (ctk_widget_get_realized (widget) && !priv->activate_timeout)
@@ -2003,7 +2003,7 @@ ctk_real_button_activate (CtkButton *button)
       /* bgo#626336 - Only grab if we have a device (from an event), not if we
        * were activated programmatically when no event is available.
        */
-      if (device && cdk_device_get_source (device) == GDK_SOURCE_KEYBOARD)
+      if (device && cdk_device_get_source (device) == CDK_SOURCE_KEYBOARD)
 	{
           ctk_device_grab_add (widget, device, TRUE);
           priv->grab_keyboard = device;

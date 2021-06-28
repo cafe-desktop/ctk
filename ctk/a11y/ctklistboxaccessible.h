@@ -50,7 +50,7 @@ struct _CtkListBoxAccessibleClass
   CtkContainerAccessibleClass parent_class;
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType ctk_list_box_accessible_get_type (void);
 
 G_END_DECLS

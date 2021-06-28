@@ -25,7 +25,7 @@
 
 #include "config.h"
 
-#define GDK_DISABLE_DEPRECATION_WARNINGS
+#define CDK_DISABLE_DEPRECATION_WARNINGS
 
 #include "ctkcolorsel.h"
 
@@ -346,7 +346,7 @@ ctk_color_selection_class_init (CtkColorSelectionClass *klass)
                                    g_param_spec_boxed ("current-color",
                                                        P_("Current Color"),
                                                        P_("The current color"),
-                                                       GDK_TYPE_COLOR,
+                                                       CDK_TYPE_COLOR,
                                                        CTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
   g_object_class_install_property (gobject_class,
                                    PROP_CURRENT_ALPHA,
@@ -368,7 +368,7 @@ ctk_color_selection_class_init (CtkColorSelectionClass *klass)
                                    g_param_spec_boxed ("current-rgba",
                                                        P_("Current RGBA"),
                                                        P_("The current RGBA color"),
-                                                       GDK_TYPE_RGBA,
+                                                       CDK_TYPE_RGBA,
                                                        CTK_PARAM_READWRITE));
 
   /**
@@ -438,7 +438,7 @@ ctk_color_selection_init (CtkColorSelection *colorsel)
 
   button = ctk_button_new ();
 
-  ctk_widget_set_events (button, GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK);
+  ctk_widget_set_events (button, CDK_POINTER_MOTION_MASK | CDK_POINTER_MOTION_HINT_MASK);
   g_object_set_data (G_OBJECT (button), I_("COLORSEL"), colorsel);
   g_signal_connect (button, "clicked",
                     G_CALLBACK (get_screen_color), NULL);
@@ -794,7 +794,7 @@ set_color_icon (CdkDragContext *context,
   CdkPixbuf *pixbuf;
   guint32 pixel;
 
-  pixbuf = cdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE,
+  pixbuf = cdk_pixbuf_new (CDK_COLORSPACE_RGB, FALSE,
                            8, 48, 32);
 
   pixel = (((UNSCALE (colors[COLORSEL_RED])   & 0xff00) << 16) |
@@ -1028,9 +1028,9 @@ color_sample_setup_dnd (CtkColorSelection *colorsel, CtkWidget *sample)
   priv = colorsel->private_data;
 
   ctk_drag_source_set (sample,
-                       GDK_BUTTON1_MASK | GDK_BUTTON3_MASK,
+                       CDK_BUTTON1_MASK | CDK_BUTTON3_MASK,
                        targets, 1,
-                       GDK_ACTION_COPY | GDK_ACTION_MOVE);
+                       CDK_ACTION_COPY | CDK_ACTION_MOVE);
 
   g_signal_connect (sample, "drag-begin",
                     G_CALLBACK (color_sample_drag_begin),
@@ -1043,7 +1043,7 @@ color_sample_setup_dnd (CtkColorSelection *colorsel, CtkWidget *sample)
                          CTK_DEST_DEFAULT_MOTION |
                          CTK_DEST_DEFAULT_DROP,
                          targets, 1,
-                         GDK_ACTION_COPY);
+                         CDK_ACTION_COPY);
 
       g_signal_connect (sample, "drag-end",
                         G_CALLBACK (color_sample_drag_end),
@@ -1398,9 +1398,9 @@ palette_set_color (CtkWidget         *drawing_area,
         { "application/x-color", 0 }
       };
       ctk_drag_source_set (drawing_area,
-                           GDK_BUTTON1_MASK | GDK_BUTTON3_MASK,
+                           CDK_BUTTON1_MASK | CDK_BUTTON3_MASK,
                            targets, 1,
-                           GDK_ACTION_COPY | GDK_ACTION_MOVE);
+                           CDK_ACTION_COPY | CDK_ACTION_MOVE);
 
       g_signal_connect (drawing_area, "drag-begin",
                         G_CALLBACK (palette_drag_begin),
@@ -1470,8 +1470,8 @@ do_popup (CtkColorSelection *colorsel,
   else
     ctk_menu_popup_at_widget (CTK_MENU (menu),
                               drawing_area,
-                              GDK_GRAVITY_CENTER,
-                              GDK_GRAVITY_NORTH_WEST,
+                              CDK_GRAVITY_CENTER,
+                              CDK_GRAVITY_NORTH_WEST,
                               trigger_event);
 }
 
@@ -1527,7 +1527,7 @@ palette_release (CtkWidget      *drawing_area,
 
   ctk_widget_grab_focus (drawing_area);
 
-  if (event->button == GDK_BUTTON_PRIMARY &&
+  if (event->button == CDK_BUTTON_PRIMARY &&
       g_object_get_data (G_OBJECT (drawing_area),
                          "ctk-colorsel-have-pointer") != NULL)
     {
@@ -1587,11 +1587,11 @@ palette_activate (CtkWidget   *widget,
                   gpointer     data)
 {
   /* should have a drawing area subclass with an activate signal */
-  if ((event->keyval == GDK_KEY_space) ||
-      (event->keyval == GDK_KEY_Return) ||
-      (event->keyval == GDK_KEY_ISO_Enter) ||
-      (event->keyval == GDK_KEY_KP_Enter) ||
-      (event->keyval == GDK_KEY_KP_Space))
+  if ((event->keyval == CDK_KEY_space) ||
+      (event->keyval == CDK_KEY_Return) ||
+      (event->keyval == CDK_KEY_ISO_Enter) ||
+      (event->keyval == CDK_KEY_KP_Enter) ||
+      (event->keyval == CDK_KEY_KP_Space))
     {
       if (GPOINTER_TO_INT (g_object_get_data (G_OBJECT (widget), "color_set")) != 0)
         {
@@ -1628,10 +1628,10 @@ palette_new (CtkColorSelection *colorsel)
   ctk_widget_set_can_focus (retval, TRUE);
 
   g_object_set_data (G_OBJECT (retval), I_("color_set"), GINT_TO_POINTER (0));
-  ctk_widget_set_events (retval, GDK_BUTTON_PRESS_MASK
-                         | GDK_BUTTON_RELEASE_MASK
-                         | GDK_ENTER_NOTIFY_MASK
-                         | GDK_LEAVE_NOTIFY_MASK);
+  ctk_widget_set_events (retval, CDK_BUTTON_PRESS_MASK
+                         | CDK_BUTTON_RELEASE_MASK
+                         | CDK_ENTER_NOTIFY_MASK
+                         | CDK_LEAVE_NOTIFY_MASK);
 
   g_signal_connect (retval, "draw",
                     G_CALLBACK (palette_draw), colorsel);
@@ -1653,7 +1653,7 @@ palette_new (CtkColorSelection *colorsel)
                      CTK_DEST_DEFAULT_MOTION |
                      CTK_DEST_DEFAULT_DROP,
                      targets, 1,
-                     GDK_ACTION_COPY);
+                     CDK_ACTION_COPY);
 
   g_signal_connect (retval, "drag-end",
                     G_CALLBACK (palette_drag_end), NULL);
@@ -1683,7 +1683,7 @@ make_picker_cursor (CdkScreen *screen)
       CdkPixbuf *pixbuf;
 
       pixbuf = cdk_pixbuf_new_from_data (dropper_bits,
-                                         GDK_COLORSPACE_RGB, TRUE, 8,
+                                         CDK_COLORSPACE_RGB, TRUE, 8,
                                          DROPPER_WIDTH, DROPPER_HEIGHT,
                                          DROPPER_STRIDE,
                                          NULL, NULL);
@@ -1787,7 +1787,7 @@ mouse_release (CtkWidget      *invisible,
 {
   /* CtkColorSelection *colorsel = data; */
 
-  if (event->button != GDK_BUTTON_PRIMARY)
+  if (event->button != CDK_BUTTON_PRIMARY)
     return FALSE;
 
   grab_color_at_pointer (cdk_event_get_screen ((CdkEvent *) event),
@@ -1828,15 +1828,15 @@ key_press (CtkWidget   *invisible,
 
   switch (event->keyval)
     {
-    case GDK_KEY_space:
-    case GDK_KEY_Return:
-    case GDK_KEY_ISO_Enter:
-    case GDK_KEY_KP_Enter:
-    case GDK_KEY_KP_Space:
+    case CDK_KEY_space:
+    case CDK_KEY_Return:
+    case CDK_KEY_ISO_Enter:
+    case CDK_KEY_KP_Enter:
+    case CDK_KEY_KP_Space:
       grab_color_at_pointer (screen, pointer_device, x, y, data);
       /* fall through */
 
-    case GDK_KEY_Escape:
+    case CDK_KEY_Escape:
       shutdown_eyedropper (data);
 
       g_signal_handlers_disconnect_by_func (invisible,
@@ -1848,24 +1848,24 @@ key_press (CtkWidget   *invisible,
 
       return TRUE;
 
-    case GDK_KEY_Up:
-    case GDK_KEY_KP_Up:
-      dy = state == GDK_MOD1_MASK ? -BIG_STEP : -1;
+    case CDK_KEY_Up:
+    case CDK_KEY_KP_Up:
+      dy = state == CDK_MOD1_MASK ? -BIG_STEP : -1;
       break;
 
-    case GDK_KEY_Down:
-    case GDK_KEY_KP_Down:
-      dy = state == GDK_MOD1_MASK ? BIG_STEP : 1;
+    case CDK_KEY_Down:
+    case CDK_KEY_KP_Down:
+      dy = state == CDK_MOD1_MASK ? BIG_STEP : 1;
       break;
 
-    case GDK_KEY_Left:
-    case GDK_KEY_KP_Left:
-      dx = state == GDK_MOD1_MASK ? -BIG_STEP : -1;
+    case CDK_KEY_Left:
+    case CDK_KEY_KP_Left:
+      dx = state == CDK_MOD1_MASK ? -BIG_STEP : -1;
       break;
 
-    case GDK_KEY_Right:
-    case GDK_KEY_KP_Right:
-      dx = state == GDK_MOD1_MASK ? BIG_STEP : 1;
+    case CDK_KEY_Right:
+    case CDK_KEY_KP_Right:
+      dx = state == CDK_MOD1_MASK ? BIG_STEP : 1;
       break;
 
     default:
@@ -1883,7 +1883,7 @@ mouse_press (CtkWidget      *invisible,
              CdkEventButton *event,
              gpointer        data)
 {
-  if (event->type == GDK_BUTTON_PRESS && event->button == GDK_BUTTON_PRIMARY)
+  if (event->type == CDK_BUTTON_PRESS && event->button == CDK_BUTTON_PRIMARY)
     {
       g_signal_connect (invisible, "motion-notify-event",
                         G_CALLBACK (mouse_motion), data);
@@ -1918,7 +1918,7 @@ get_screen_color (CtkWidget *button)
 
   device = ctk_get_current_event_device ();
 
-  if (cdk_device_get_source (device) == GDK_SOURCE_KEYBOARD)
+  if (cdk_device_get_source (device) == CDK_SOURCE_KEYBOARD)
     {
       keyb_device = device;
       pointer_device = cdk_device_get_associated_device (device);
@@ -1938,7 +1938,7 @@ get_screen_color (CtkWidget *button)
       ctk_widget_show (grab_widget);
 
       ctk_widget_add_events (grab_widget,
-                             GDK_BUTTON_RELEASE_MASK | GDK_BUTTON_PRESS_MASK | GDK_POINTER_MOTION_MASK);
+                             CDK_BUTTON_RELEASE_MASK | CDK_BUTTON_PRESS_MASK | CDK_POINTER_MOTION_MASK);
 
       toplevel = ctk_widget_get_toplevel (CTK_WIDGET (colorsel));
 
@@ -1956,22 +1956,22 @@ get_screen_color (CtkWidget *button)
 
   if (cdk_device_grab (keyb_device,
                        window,
-                       GDK_OWNERSHIP_APPLICATION, FALSE,
-                       GDK_KEY_PRESS_MASK | GDK_KEY_RELEASE_MASK,
-                       NULL, time) != GDK_GRAB_SUCCESS)
+                       CDK_OWNERSHIP_APPLICATION, FALSE,
+                       CDK_KEY_PRESS_MASK | CDK_KEY_RELEASE_MASK,
+                       NULL, time) != CDK_GRAB_SUCCESS)
     return;
 
   picker_cursor = make_picker_cursor (screen);
   grab_status = cdk_device_grab (pointer_device,
                                  window,
-                                 GDK_OWNERSHIP_APPLICATION,
+                                 CDK_OWNERSHIP_APPLICATION,
                                  FALSE,
-                                 GDK_BUTTON_RELEASE_MASK | GDK_BUTTON_PRESS_MASK | GDK_POINTER_MOTION_MASK,
+                                 CDK_BUTTON_RELEASE_MASK | CDK_BUTTON_PRESS_MASK | CDK_POINTER_MOTION_MASK,
                                  picker_cursor,
                                  time);
   g_object_unref (picker_cursor);
 
-  if (grab_status != GDK_GRAB_SUCCESS)
+  if (grab_status != CDK_GRAB_SUCCESS)
     {
       cdk_device_ungrab (keyb_device, time);
       return;

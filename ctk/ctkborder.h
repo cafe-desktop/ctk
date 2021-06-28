@@ -56,13 +56,13 @@ struct _CtkBorder
   gint16 bottom;
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType      ctk_border_get_type (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkBorder *ctk_border_new      (void) G_GNUC_MALLOC;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkBorder *ctk_border_copy     (const CtkBorder *border_);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_border_free     (CtkBorder       *border_);
 
 G_DEFINE_AUTOPTR_CLEANUP_FUNC(CtkBorder, ctk_border_free)

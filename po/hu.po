@@ -69,8 +69,8 @@ msgstr "MEGJELENÍTŐ"
 
 #. Description of --cdk-debug=FLAGS in --help output
 #: cdk/cdk.c:240
-msgid "GDK debugging flags to set"
-msgstr "Beállítandó GDK hibakeresési jelzőbitek"
+msgid "CDK debugging flags to set"
+msgstr "Beállítandó CDK hibakeresési jelzőbitek"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
@@ -82,12 +82,12 @@ msgstr "JELZŐK"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: cdk/cdk.c:243
-msgid "GDK debugging flags to unset"
-msgstr "Kikapcsolandó GDK jelzőbitek"
+msgid "CDK debugging flags to unset"
+msgstr "Kikapcsolandó CDK jelzőbitek"
 
 #: cdk/cdkwindow.c:2851
-msgid "GL support disabled via GDK_DEBUG"
-msgstr "GL támogatás letiltva a GDK_DEBUG beállításon keresztül"
+msgid "GL support disabled via CDK_DEBUG"
+msgstr "GL támogatás letiltva a CDK_DEBUG beállításon keresztül"
 
 #: cdk/cdkwindow.c:2862
 msgid "The current backend does not support OpenGL"
@@ -4013,8 +4013,8 @@ msgid "CTK+ Version"
 msgstr "CTK+ verzió"
 
 #: ctk/inspector/general.ui:68
-msgid "GDK Backend"
-msgstr "GDK háttérprogram"
+msgid "CDK Backend"
+msgstr "CDK háttérprogram"
 
 #: ctk/inspector/general.ui:373
 msgid "Display"
@@ -4387,10 +4387,10 @@ msgstr "A beállítás bedrótozva a CTK_TEST_TOUCHSCREEN-ben"
 #: ctk/inspector/visual.c:817
 msgid ""
 "Not settable at runtime.\n"
-"Use GDK_GL=always or GDK_GL=disable instead"
+"Use CDK_GL=always or CDK_GL=disable instead"
 msgstr ""
 "Nem állítható be futási időben.\n"
-"GDK_GL=always vagy GDK_GL=disable értéket használjon helyette"
+"CDK_GL=always vagy CDK_GL=disable értéket használjon helyette"
 
 #: ctk/inspector/visual.c:831 ctk/inspector/visual.c:832
 #: ctk/inspector/visual.c:833

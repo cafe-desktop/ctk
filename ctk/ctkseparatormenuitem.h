@@ -69,9 +69,9 @@ struct _CtkSeparatorMenuItemClass
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType	   ctk_separator_menu_item_get_type	   (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_separator_menu_item_new	           (void);
 
 

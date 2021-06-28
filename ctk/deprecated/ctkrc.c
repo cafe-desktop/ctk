@@ -37,7 +37,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define GDK_DISABLE_DEPRECATION_WARNINGS
+#define CDK_DISABLE_DEPRECATION_WARNINGS
 
 #include <glib.h>
 #include <glib/gstdio.h>

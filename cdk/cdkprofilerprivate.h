@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2018 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_PROFILER_PRIVATE_H__
-#define __GDK_PROFILER_PRIVATE_H__
+#ifndef __CDK_PROFILER_PRIVATE_H__
+#define __CDK_PROFILER_PRIVATE_H__
 
 #include "cdk/cdkframeclock.h"
 #include "cdk/cdkdisplay.h"
@@ -43,4 +43,4 @@ void     cdk_profiler_set_int_counter    (guint       id,
 
 G_END_DECLS
 
-#endif  /* __GDK_PROFILER_PRIVATE_H__ */
+#endif  /* __CDK_PROFILER_PRIVATE_H__ */

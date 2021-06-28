@@ -66,7 +66,7 @@ endif
 if x11_enabled
   tests += [
     ['clipboard'],
-    ['objects-finalize', ['../../cdk/x11/cdkdisplaymanager-x11.c'], ['-DGDK_COMPILATION', '-UG_ENABLE_DEBUG']],
+    ['objects-finalize', ['../../cdk/x11/cdkdisplaymanager-x11.c'], ['-DCDK_COMPILATION', '-UG_ENABLE_DEBUG']],
   ]
 endif
 

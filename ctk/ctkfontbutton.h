@@ -70,41 +70,41 @@ struct _CtkFontButtonClass {
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType                 ctk_font_button_get_type       (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget            *ctk_font_button_new            (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget            *ctk_font_button_new_with_font  (const gchar   *fontname);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *         ctk_font_button_get_title      (CtkFontButton *font_button);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_font_button_set_title      (CtkFontButton *font_button,
                                                       const gchar   *title);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_font_button_get_use_font   (CtkFontButton *font_button);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_font_button_set_use_font   (CtkFontButton *font_button,
                                                       gboolean       use_font);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_font_button_get_use_size   (CtkFontButton *font_button);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_font_button_set_use_size   (CtkFontButton *font_button,
                                                       gboolean       use_size);
-GDK_DEPRECATED_IN_3_22
+CDK_DEPRECATED_IN_3_22
 const gchar *         ctk_font_button_get_font_name  (CtkFontButton *font_button);
-GDK_DEPRECATED_IN_3_22
+CDK_DEPRECATED_IN_3_22
 gboolean              ctk_font_button_set_font_name  (CtkFontButton *font_button,
                                                       const gchar   *fontname);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_font_button_get_show_style (CtkFontButton *font_button);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_font_button_set_show_style (CtkFontButton *font_button,
                                                       gboolean       show_style);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_font_button_get_show_size  (CtkFontButton *font_button);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                  ctk_font_button_set_show_size  (CtkFontButton *font_button,
                                                       gboolean       show_size);
 

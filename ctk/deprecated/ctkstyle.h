@@ -436,22 +436,22 @@ struct _CtkStyleClass
   void (*_ctk_reserved11) (void);
 };
 
-GDK_DEPRECATED_IN_3_0
+CDK_DEPRECATED_IN_3_0
 GType     ctk_style_get_type                 (void) G_GNUC_CONST;
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 CtkStyle* ctk_style_new                      (void);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 CtkStyle* ctk_style_copy                     (CtkStyle     *style);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 CtkStyle* ctk_style_attach                   (CtkStyle     *style,
                                               CdkWindow    *window);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 void      ctk_style_detach                   (CtkStyle     *style);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 void      ctk_style_set_background           (CtkStyle     *style,
                                               CdkWindow    *window,
                                               CtkStateType  state_type);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_background)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_background)
 void      ctk_style_apply_default_background (CtkStyle     *style,
                                               cairo_t      *cr,
                                               CdkWindow    *window,
@@ -461,15 +461,15 @@ void      ctk_style_apply_default_background (CtkStyle     *style,
                                               gint          width,
                                               gint          height);
 
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and a style class)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and a style class)
 CtkIconSet* ctk_style_lookup_icon_set        (CtkStyle     *style,
                                               const gchar  *stock_id);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and a style class)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and a style class)
 gboolean    ctk_style_lookup_color           (CtkStyle     *style,
                                               const gchar  *color_name,
                                               CdkColor     *color);
 
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_icon)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_icon)
 CdkPixbuf*  ctk_style_render_icon     (CtkStyle            *style,
                                        const CtkIconSource *source,
                                        CtkTextDirection     direction,
@@ -478,7 +478,7 @@ CdkPixbuf*  ctk_style_render_icon     (CtkStyle            *style,
                                        CtkWidget           *widget,
                                        const gchar         *detail);
 
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_line)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_line)
 void ctk_paint_hline             (CtkStyle           *style,
                                   cairo_t            *cr,
                                   CtkStateType        state_type,
@@ -487,7 +487,7 @@ void ctk_paint_hline             (CtkStyle           *style,
                                   gint                x1,
                                   gint                x2,
                                   gint                y);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_line)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_line)
 void ctk_paint_vline             (CtkStyle           *style,
                                   cairo_t            *cr,
                                   CtkStateType        state_type,
@@ -496,7 +496,7 @@ void ctk_paint_vline             (CtkStyle           *style,
                                   gint                y1_,
                                   gint                y2_,
                                   gint                x);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_background)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_background)
 void ctk_paint_shadow            (CtkStyle           *style,
                                   cairo_t            *cr,
                                   CtkStateType        state_type,
@@ -507,7 +507,7 @@ void ctk_paint_shadow            (CtkStyle           *style,
                                   gint                y,
                                   gint                width,
                                   gint                height);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_arrow)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_arrow)
 void ctk_paint_arrow             (CtkStyle           *style,
                                   cairo_t            *cr,
                                   CtkStateType        state_type,
@@ -520,7 +520,7 @@ void ctk_paint_arrow             (CtkStyle           *style,
                                   gint                y,
                                   gint                width,
                                   gint                height);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_icon)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_icon)
 void ctk_paint_diamond           (CtkStyle           *style,
                                   cairo_t            *cr,
                                   CtkStateType        state_type,
@@ -531,7 +531,7 @@ void ctk_paint_diamond           (CtkStyle           *style,
                                   gint                y,
                                   gint                width,
                                   gint                height);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_frame)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_frame)
 void ctk_paint_box               (CtkStyle           *style,
                                   cairo_t            *cr,
                                   CtkStateType        state_type,
@@ -542,7 +542,7 @@ void ctk_paint_box               (CtkStyle           *style,
                                   gint                y,
                                   gint                width,
                                   gint                height);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_background)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_background)
 void ctk_paint_flat_box          (CtkStyle           *style,
                                   cairo_t            *cr,
                                   CtkStateType        state_type,
@@ -553,7 +553,7 @@ void ctk_paint_flat_box          (CtkStyle           *style,
                                   gint                y,
                                   gint                width,
                                   gint                height);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_check)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_check)
 void ctk_paint_check             (CtkStyle           *style,
                                   cairo_t            *cr,
                                   CtkStateType        state_type,
@@ -564,7 +564,7 @@ void ctk_paint_check             (CtkStyle           *style,
                                   gint                y,
                                   gint                width,
                                   gint                height);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_option)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_option)
 void ctk_paint_option            (CtkStyle           *style,
                                   cairo_t            *cr,
                                   CtkStateType        state_type,
@@ -575,7 +575,7 @@ void ctk_paint_option            (CtkStyle           *style,
                                   gint                y,
                                   gint                width,
                                   gint                height);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_background)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_background)
 void ctk_paint_tab               (CtkStyle           *style,
                                   cairo_t            *cr,
                                   CtkStateType        state_type,
@@ -586,7 +586,7 @@ void ctk_paint_tab               (CtkStyle           *style,
                                   gint                y,
                                   gint                width,
                                   gint                height);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 void ctk_paint_shadow_gap        (CtkStyle           *style,
                                   cairo_t            *cr,
                                   CtkStateType        state_type,
@@ -600,7 +600,7 @@ void ctk_paint_shadow_gap        (CtkStyle           *style,
                                   CtkPositionType     gap_side,
                                   gint                gap_x,
                                   gint                gap_width);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 void ctk_paint_box_gap           (CtkStyle           *style,
                                   cairo_t            *cr,
                                   CtkStateType        state_type,
@@ -614,7 +614,7 @@ void ctk_paint_box_gap           (CtkStyle           *style,
                                   CtkPositionType     gap_side,
                                   gint                gap_x,
                                   gint                gap_width);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_extension)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_extension)
 void ctk_paint_extension         (CtkStyle           *style,
                                   cairo_t            *cr,
                                   CtkStateType        state_type,
@@ -626,7 +626,7 @@ void ctk_paint_extension         (CtkStyle           *style,
                                   gint                width,
                                   gint                height,
                                   CtkPositionType     gap_side);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_focus)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_focus)
 void ctk_paint_focus             (CtkStyle           *style,
                                   cairo_t            *cr,
                                   CtkStateType        state_type,
@@ -636,7 +636,7 @@ void ctk_paint_focus             (CtkStyle           *style,
                                   gint                y,
                                   gint                width,
                                   gint                height);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_focus)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_focus)
 void ctk_paint_slider            (CtkStyle           *style,
                                   cairo_t            *cr,
                                   CtkStateType        state_type,
@@ -648,7 +648,7 @@ void ctk_paint_slider            (CtkStyle           *style,
                                   gint                width,
                                   gint                height,
                                   CtkOrientation      orientation);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_handle)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_handle)
 void ctk_paint_handle            (CtkStyle           *style,
                                   cairo_t            *cr,
                                   CtkStateType        state_type,
@@ -660,7 +660,7 @@ void ctk_paint_handle            (CtkStyle           *style,
                                   gint                width,
                                   gint                height,
                                   CtkOrientation      orientation);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_expander)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_expander)
 void ctk_paint_expander          (CtkStyle           *style,
                                   cairo_t            *cr,
                                   CtkStateType        state_type,
@@ -669,7 +669,7 @@ void ctk_paint_expander          (CtkStyle           *style,
                                   gint                x,
                                   gint                y,
                                   CtkExpanderStyle    expander_style);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_layout)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_layout)
 void ctk_paint_layout            (CtkStyle           *style,
                                   cairo_t            *cr,
                                   CtkStateType        state_type,
@@ -679,7 +679,7 @@ void ctk_paint_layout            (CtkStyle           *style,
                                   gint                x,
                                   gint                y,
                                   PangoLayout        *layout);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_handle)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_handle)
 void ctk_paint_resize_grip       (CtkStyle           *style,
                                   cairo_t            *cr,
                                   CtkStateType        state_type,
@@ -690,7 +690,7 @@ void ctk_paint_resize_grip       (CtkStyle           *style,
                                   gint                y,
                                   gint                width,
                                   gint                height);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_icon)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_render_icon)
 void ctk_paint_spinner           (CtkStyle           *style,
                                   cairo_t            *cr,
                                   CtkStateType        state_type,
@@ -702,17 +702,17 @@ void ctk_paint_spinner           (CtkStyle           *style,
                                   gint                width,
                                   gint                height);
 
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_style_context_get_property)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_style_context_get_property)
 void ctk_style_get_style_property (CtkStyle    *style,
                                    GType        widget_type,
                                    const gchar *property_name,
                                    GValue      *value);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_style_context_get_property)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_style_context_get_property)
 void ctk_style_get_valist         (CtkStyle    *style,
                                    GType        widget_type,
                                    const gchar *first_property_name,
                                    va_list      var_args);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_style_context_get_property)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext and ctk_style_context_get_property)
 void ctk_style_get                (CtkStyle    *style,
                                    GType        widget_type,
                                    const gchar *first_property_name,
@@ -726,63 +726,63 @@ void          _ctk_style_shade            (const CdkColor     *a,
                                            CdkColor           *b,
                                            gdouble             k);
 
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 gboolean    ctk_style_has_context         (CtkStyle *style);
 
-GDK_DEPRECATED_IN_3_0
+CDK_DEPRECATED_IN_3_0
 void        ctk_widget_style_attach       (CtkWidget     *widget);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 gboolean    ctk_widget_has_rc_style       (CtkWidget            *widget);
-GDK_DEPRECATED_IN_3_0
+CDK_DEPRECATED_IN_3_0
 void        ctk_widget_set_style          (CtkWidget            *widget,
                                            CtkStyle             *style);
-GDK_DEPRECATED_IN_3_0
+CDK_DEPRECATED_IN_3_0
 void        ctk_widget_ensure_style       (CtkWidget            *widget);
-GDK_DEPRECATED_IN_3_0_FOR(ctk_widget_get_style_context)
+CDK_DEPRECATED_IN_3_0_FOR(ctk_widget_get_style_context)
 CtkStyle *  ctk_widget_get_style          (CtkWidget            *widget);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 void        ctk_widget_modify_style       (CtkWidget            *widget,
                                            CtkRcStyle           *style);
-GDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
+CDK_DEPRECATED_IN_3_0_FOR(CtkStyleContext)
 CtkRcStyle *ctk_widget_get_modifier_style (CtkWidget            *widget);
-GDK_DEPRECATED_IN_3_0_FOR(ctk_widget_override_color)
+CDK_DEPRECATED_IN_3_0_FOR(ctk_widget_override_color)
 void        ctk_widget_modify_fg          (CtkWidget            *widget,
                                            CtkStateType          state,
                                            const CdkColor       *color);
-GDK_DEPRECATED_IN_3_0_FOR(ctk_widget_override_background_color)
+CDK_DEPRECATED_IN_3_0_FOR(ctk_widget_override_background_color)
 void        ctk_widget_modify_bg          (CtkWidget            *widget,
                                            CtkStateType          state,
                                            const CdkColor       *color);
-GDK_DEPRECATED_IN_3_0_FOR(CSS style classes)
+CDK_DEPRECATED_IN_3_0_FOR(CSS style classes)
 void        ctk_widget_modify_text        (CtkWidget            *widget,
                                            CtkStateType          state,
                                            const CdkColor       *color);
-GDK_DEPRECATED_IN_3_0_FOR(CSS style classes)
+CDK_DEPRECATED_IN_3_0_FOR(CSS style classes)
 void        ctk_widget_modify_base        (CtkWidget            *widget,
                                            CtkStateType          state,
                                            const CdkColor       *color);
-GDK_DEPRECATED_IN_3_0_FOR(CSS style classes)
+CDK_DEPRECATED_IN_3_0_FOR(CSS style classes)
 void        ctk_widget_modify_cursor      (CtkWidget            *widget,
                                            const CdkColor       *primary,
                                            const CdkColor       *secondary);
-GDK_DEPRECATED_IN_3_0_FOR(ctk_widget_override_font)
+CDK_DEPRECATED_IN_3_0_FOR(ctk_widget_override_font)
 void        ctk_widget_modify_font        (CtkWidget            *widget,
                                            PangoFontDescription *font_desc);
-GDK_DEPRECATED_IN_3_0_FOR(ctk_widget_reset_style)
+CDK_DEPRECATED_IN_3_0_FOR(ctk_widget_reset_style)
 void       ctk_widget_reset_rc_styles     (CtkWidget      *widget);
-GDK_DEPRECATED_IN_3_0_FOR(ctk_style_context_new)
+CDK_DEPRECATED_IN_3_0_FOR(ctk_style_context_new)
 CtkStyle*  ctk_widget_get_default_style   (void);
-GDK_DEPRECATED_IN_3_0_FOR(ctk_widget_get_path)
+CDK_DEPRECATED_IN_3_0_FOR(ctk_widget_get_path)
 void       ctk_widget_path                (CtkWidget *widget,
                                            guint     *path_length,
                                            gchar    **path,
                                            gchar    **path_reversed);
-GDK_DEPRECATED_IN_3_0
+CDK_DEPRECATED_IN_3_0
 void       ctk_widget_class_path          (CtkWidget *widget,
                                            guint     *path_length,
                                            gchar    **path,
                                            gchar    **path_reversed);
-GDK_DEPRECATED_IN_3_0_FOR(ctk_widget_render_icon_pixbuf)
+CDK_DEPRECATED_IN_3_0_FOR(ctk_widget_render_icon_pixbuf)
 CdkPixbuf *ctk_widget_render_icon         (CtkWidget   *widget,
                                            const gchar *stock_id,
                                            CtkIconSize  size,

@@ -15,7 +15,7 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#if !defined (__GDKX_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined (__CDKX_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdkx.h> can be included directly."
 #endif
 

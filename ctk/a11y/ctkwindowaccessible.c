@@ -80,7 +80,7 @@ window_state_event_cb (CtkWidget           *widget,
 
   obj = ctk_widget_get_accessible (widget);
   atk_object_notify_state_change (obj, ATK_STATE_ICONIFIED,
-                                  (event->new_window_state & GDK_WINDOW_STATE_ICONIFIED) != 0);
+                                  (event->new_window_state & CDK_WINDOW_STATE_ICONIFIED) != 0);
 
   return FALSE;
 }
@@ -258,7 +258,7 @@ ctk_window_accessible_ref_state_set (AtkObject *accessible)
   if (cdk_window)
     {
       state = cdk_window_get_state (cdk_window);
-      if (state & GDK_WINDOW_STATE_ICONIFIED)
+      if (state & CDK_WINDOW_STATE_ICONIFIED)
         atk_state_set_add_state (state_set, ATK_STATE_ICONIFIED);
     }
   if (ctk_window_get_modal (window))
@@ -333,7 +333,7 @@ ctk_widget_accessible_get_attributes (AtkObject *obj)
   window = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   hint = ctk_window_get_type_hint (CTK_WINDOW (window));
 
-  class = g_type_class_ref (GDK_TYPE_WINDOW_TYPE_HINT);
+  class = g_type_class_ref (CDK_TYPE_WINDOW_TYPE_HINT);
   for (value = class->values; value->value_name; value++)
     {
       if (hint == value->value)

@@ -67,8 +67,8 @@ msgstr "ਡਿਸਪਲੇਅ"
 
 #. Description of --cdk-debug=FLAGS in --help output
 #: cdk/cdk.c:248
-msgid "GDK debugging flags to set"
-msgstr "ਸੈੱਟ ਕਰਨ ਲਈ GDK+ ਡੀਬੱਗਿੰਗ ਨਿਸ਼ਾਨ"
+msgid "CDK debugging flags to set"
+msgstr "ਸੈੱਟ ਕਰਨ ਲਈ CDK+ ਡੀਬੱਗਿੰਗ ਨਿਸ਼ਾਨ"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
@@ -80,12 +80,12 @@ msgstr "ਫਲੈਗ"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: cdk/cdk.c:251
-msgid "GDK debugging flags to unset"
-msgstr "ਅਣ-ਸੈੱਟ ਕਰਨ ਲਈ GDK+ ਡੀਬੱਗਿੰਗ ਨਿਸ਼ਾਨ"
+msgid "CDK debugging flags to unset"
+msgstr "ਅਣ-ਸੈੱਟ ਕਰਨ ਲਈ CDK+ ਡੀਬੱਗਿੰਗ ਨਿਸ਼ਾਨ"
 
 #: cdk/cdkwindow.c:2850
-msgid "GL support disabled via GDK_DEBUG"
-msgstr "GDK_DEBUG ਰਾਹੀਂ GL ਸਹਿਯੋਗ ਬੰਦ ਕੀਤਾ ਹੈ"
+msgid "GL support disabled via CDK_DEBUG"
+msgstr "CDK_DEBUG ਰਾਹੀਂ GL ਸਹਿਯੋਗ ਬੰਦ ਕੀਤਾ ਹੈ"
 
 #: cdk/cdkwindow.c:2861
 #| msgid "Backend does not support window scaling"
@@ -4102,8 +4102,8 @@ msgid "CTK+ Version"
 msgstr "CTK+ ਵਰਜਨ"
 
 #: ctk/inspector/general.ui:68
-msgid "GDK Backend"
-msgstr "GDK ਬੈਕਐਂਡ"
+msgid "CDK Backend"
+msgstr "CDK ਬੈਕਐਂਡ"
 
 #: ctk/inspector/general.ui:373
 msgid "Display"
@@ -4477,10 +4477,10 @@ msgstr "ਸੈਟਿੰਗ ਨੂੰ CTK_TEST_TOUCHSCREEN ਰਾਹੀਂ ਪੱ
 #: ctk/inspector/visual.c:817
 msgid ""
 "Not settable at runtime.\n"
-"Use GDK_GL=always or GDK_GL=disable instead"
+"Use CDK_GL=always or CDK_GL=disable instead"
 msgstr ""
 "ਰਨਟਾਈਮ ਲਈ ਸੈਟ ਕਰਨ ਯੋਗ ਨਹੀਂ।\n"
-"ਇਸ ਦੀ ਬਜਾਏ GDK_GL=always ਜਾਂ GDK_GL=disable ਵਰਤੋਂ"
+"ਇਸ ਦੀ ਬਜਾਏ CDK_GL=always ਜਾਂ CDK_GL=disable ਵਰਤੋਂ"
 
 #: ctk/inspector/visual.c:831 ctk/inspector/visual.c:832
 #: ctk/inspector/visual.c:833

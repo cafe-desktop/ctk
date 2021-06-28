@@ -182,7 +182,7 @@ ctk_mount_operation_class_init (CtkMountOperationClass *klass)
                                    g_param_spec_object ("screen",
                                                         P_("Screen"),
                                                         P_("The screen where this window will be displayed."),
-                                                        GDK_TYPE_SCREEN,
+                                                        CDK_TYPE_SCREEN,
                                                         CTK_PARAM_READWRITE));
 }
 
@@ -1564,7 +1564,7 @@ create_show_processes_dialog (CtkMountOperation *op,
                     op);
 
   list_store = ctk_list_store_new (3,
-                                   GDK_TYPE_PIXBUF,
+                                   CDK_TYPE_PIXBUF,
                                    G_TYPE_STRING,
                                    G_TYPE_INT);
 
@@ -1847,7 +1847,7 @@ ctk_mount_operation_set_screen (CtkMountOperation *op,
   CtkMountOperationPrivate *priv;
 
   g_return_if_fail (CTK_IS_MOUNT_OPERATION (op));
-  g_return_if_fail (GDK_IS_SCREEN (screen));
+  g_return_if_fail (CDK_IS_SCREEN (screen));
 
   priv = op->priv;
 

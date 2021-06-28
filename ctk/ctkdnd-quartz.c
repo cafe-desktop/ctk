@@ -116,7 +116,7 @@ struct _CtkDragFindData
   guint target_info;
   CtkSelectionData selection_data;
 
-  selection_data.selection = GDK_NONE;
+  selection_data.selection = CDK_NONE;
   selection_data.data = NULL;
   selection_data.length = -1;
   selection_data.target = cdk_quartz_pasteboard_type_to_atom_libctk_only (type);
@@ -214,7 +214,7 @@ ctk_drag_get_data (CtkWidget      *widget,
     {
       ctk_drag_finish (context, 
 		       (selection_data->length >= 0),
-		       (cdk_drag_context_get_selected_action (context) == GDK_ACTION_MOVE),
+		       (cdk_drag_context_get_selected_action (context) == CDK_ACTION_MOVE),
 		       time);
     }      
 }
@@ -861,7 +861,7 @@ ctk_drag_dest_drop (CtkWidget	     *widget,
     {
       CdkAtom target = ctk_drag_dest_find_target (widget, context, NULL);
 
-      if (target == GDK_NONE)
+      if (target == CDK_NONE)
 	{
 	  ctk_drag_finish (context, FALSE, FALSE, time);
 	  return TRUE;
@@ -932,10 +932,10 @@ _ctk_drag_dest_handle_event (CtkWidget *toplevel,
   /* Find the widget for the event */
   switch (event->type)
     {
-    case GDK_DRAG_ENTER:
+    case CDK_DRAG_ENTER:
       break;
 
-    case GDK_DRAG_LEAVE:
+    case CDK_DRAG_LEAVE:
       if (info->widget)
 	{
 	  ctk_drag_dest_leave (info->widget, context, event->dnd.time);
@@ -943,13 +943,13 @@ _ctk_drag_dest_handle_event (CtkWidget *toplevel,
 	}
       break;
 
-    case GDK_DRAG_MOTION:
-    case GDK_DROP_START:
+    case CDK_DRAG_MOTION:
+    case CDK_DROP_START:
       {
 	CtkDragFindData data;
 	gint tx, ty;
 
-	if (event->type == GDK_DROP_START)
+	if (event->type == CDK_DROP_START)
 	  {
 	    info->dropped = TRUE;
 	    /* We send a leave here so that the widget unhighlights
@@ -970,7 +970,7 @@ _ctk_drag_dest_handle_event (CtkWidget *toplevel,
 	data.info = info;
 	data.found = FALSE;
 	data.toplevel = TRUE;
-	data.callback = (event->type == GDK_DRAG_MOTION) ?
+	data.callback = (event->type == CDK_DRAG_MOTION) ?
 	  ctk_drag_dest_motion : ctk_drag_dest_drop;
 	data.time = event->dnd.time;
 	
@@ -984,7 +984,7 @@ _ctk_drag_dest_handle_event (CtkWidget *toplevel,
 
 	/* Send a reply.
 	 */
-	if (event->type == GDK_DRAG_MOTION)
+	if (event->type == CDK_DRAG_MOTION)
 	  {
 	    if (!data.found)
 	      cdk_drag_status (context, 0, event->dnd.time);
@@ -1019,8 +1019,8 @@ ctk_drag_dest_find_target (CtkWidget      *widget,
   GList *tmp_source = NULL;
   GList *source_targets;
 
-  g_return_val_if_fail (CTK_IS_WIDGET (widget), GDK_NONE);
-  g_return_val_if_fail (GDK_IS_DRAG_CONTEXT (context), GDK_NONE);
+  g_return_val_if_fail (CTK_IS_WIDGET (widget), CDK_NONE);
+  g_return_val_if_fail (CDK_IS_DRAG_CONTEXT (context), CDK_NONE);
 
   dragging_info = cdk_quartz_drag_context_get_dragging_info_libctk_only (context);
   pasteboard = [dragging_info draggingPasteboard];
@@ -1031,7 +1031,7 @@ ctk_drag_dest_find_target (CtkWidget      *widget,
     target_list = ctk_drag_dest_get_target_list (widget);
   
   if (target_list == NULL)
-    return GDK_NONE;
+    return CDK_NONE;
 
   source_targets = _ctk_quartz_pasteboard_types_to_atom_list ([pasteboard types]);
   tmp_target = target_list->list;
@@ -1058,7 +1058,7 @@ ctk_drag_dest_find_target (CtkWidget      *widget,
     }
 
   g_list_free (source_targets);
-  return GDK_NONE;
+  return CDK_NONE;
 }
 
 static gboolean
@@ -1310,7 +1310,7 @@ ctk_drag_cancel (CdkDragContext *context)
 {
   CtkDragSourceInfo *info;
 
-  g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
+  g_return_if_fail (CDK_IS_DRAG_CONTEXT (context));
 
   info = ctk_drag_get_source_info (context, FALSE);
   if (info != NULL)
@@ -1337,7 +1337,7 @@ ctk_drag_set_icon_widget (CdkDragContext    *context,
 			  gint               hot_x,
 			  gint               hot_y)
 {
-  g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
+  g_return_if_fail (CDK_IS_DRAG_CONTEXT (context));
   g_return_if_fail (CTK_IS_WIDGET (widget));
 
   g_warning ("ctk_drag_set_icon_widget is not supported on Mac OS X");
@@ -1438,8 +1438,8 @@ ctk_drag_set_icon_pixbuf  (CdkDragContext *context,
 			   gint            hot_x,
 			   gint            hot_y)
 {
-  g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
-  g_return_if_fail (GDK_IS_PIXBUF (pixbuf));
+  g_return_if_fail (CDK_IS_DRAG_CONTEXT (context));
+  g_return_if_fail (CDK_IS_PIXBUF (pixbuf));
 
   set_icon_stock_pixbuf (context, NULL, pixbuf, hot_x, hot_y);
 }
@@ -1461,7 +1461,7 @@ ctk_drag_set_icon_stock  (CdkDragContext *context,
 			  gint            hot_y)
 {
 
-  g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
+  g_return_if_fail (CDK_IS_DRAG_CONTEXT (context));
   g_return_if_fail (stock_id != NULL);
 
   set_icon_stock_pixbuf (context, stock_id, NULL, hot_x, hot_y);
@@ -1489,7 +1489,7 @@ ctk_drag_set_icon_surface (CdkDragContext  *context,
   double x_offset, y_offset;
   CtkDragSourceInfo *info;
 
-  g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
+  g_return_if_fail (CDK_IS_DRAG_CONTEXT (context));
   g_return_if_fail (surface != NULL);
 
   cairo_surface_get_device_offset (surface, &x_offset, &y_offset);
@@ -1531,7 +1531,7 @@ ctk_drag_set_icon_name (CdkDragContext *context,
   CdkPixbuf *pixbuf;
   gint width, height, icon_size;
 
-  g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
+  g_return_if_fail (CDK_IS_DRAG_CONTEXT (context));
   g_return_if_fail (icon_name != NULL);
 
   screen = cdk_window_get_screen (cdk_drag_context_get_source_window (context));
@@ -1561,7 +1561,7 @@ ctk_drag_set_icon_name (CdkDragContext *context,
 void 
 ctk_drag_set_icon_default (CdkDragContext    *context)
 {
-  g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
+  g_return_if_fail (CDK_IS_DRAG_CONTEXT (context));
 
   ctk_drag_set_icon_name (context, "text-x-generic", -2, -2);
 }
@@ -1662,7 +1662,7 @@ _ctk_drag_source_handle_event (CtkWidget *widget,
 
   switch (event->type)
     {
-    case GDK_DROP_FINISHED:
+    case CDK_DROP_FINISHED:
       result = (cdk_drag_context_get_dest_window (context) != NULL) ? CTK_DRAG_RESULT_SUCCESS : CTK_DRAG_RESULT_NO_TARGET;
       ctk_drag_drop_finished (info, result);
       break;

@@ -98,8 +98,8 @@ msgid "Default Display"
 msgstr "Sjtanderd display"
 
 #: cdk/cdkdisplaymanager.c:103
-msgid "The default display for GDK"
-msgstr "'t sjtanderd display veur GDK"
+msgid "The default display for CDK"
+msgstr "'t sjtanderd display veur CDK"
 
 #: cdk/cdkscreen.c:72
 #, fuzzy

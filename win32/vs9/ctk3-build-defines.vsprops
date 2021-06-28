@@ -10,7 +10,7 @@
 	<Tool
 		Name="VCCLCompilerTool"
 		AdditionalIncludeDirectories="..\..;$(GlibEtcInstallRoot)\include\cdk-pixbuf-2.0;$(GlibEtcInstallRoot)\include\pango-1.0;$(GlibEtcInstallRoot)\include\atk-1.0;$(GlibEtcInstallRoot)\include\cairo;$(GlibEtcInstallRoot)\include\gio-win32-2.0;$(GlibEtcInstallRoot)\include\glib-2.0;$(GlibEtcInstallRoot)\lib\glib-2.0\include;$(GlibEtcInstallRoot)\include\fribidi;$(GlibEtcInstallRoot)\include"
-		PreprocessorDefinitions="HAVE_CONFIG_H;G_DISABLE_SINGLE_INCLUDES;ATK_DISABLE_SINGLE_INCLUDES;GDK_PIXBUF_DISABLE_SINGLE_INCLUDES;CTK_DISABLE_SINGLE_INCLUDES;_USE_MATH_DEFINES"
+		PreprocessorDefinitions="HAVE_CONFIG_H;G_DISABLE_SINGLE_INCLUDES;ATK_DISABLE_SINGLE_INCLUDES;CDK_PIXBUF_DISABLE_SINGLE_INCLUDES;CTK_DISABLE_SINGLE_INCLUDES;_USE_MATH_DEFINES"
 		ForcedIncludeFiles="msvc_recommended_pragmas.h"
 		AdditionalOptions="/MP"
 	/>
@@ -33,7 +33,7 @@
 	/>
 	<UserMacro
 		Name="CdkDefines"
-		Value="GDK_COMPILATION;G_LOG_DOMAIN=\&quot;Cdk\&quot;"
+		Value="CDK_COMPILATION;G_LOG_DOMAIN=\&quot;Cdk\&quot;"
 	/>
 	<UserMacro
 		Name="CtkIncludedImmodulesDefines"
@@ -41,7 +41,7 @@
 	/>
 	<UserMacro
 		Name="CtkDefines"
-		Value="CTK_COMPILATION;G_LOG_DOMAIN=\&quot;Ctk\&quot;;CTK_HOST=\&quot;i686-pc-vs$(VSVer)\&quot;;CTK_PRINT_BACKENDS=\&quot;file\&quot;;CTK_PRINT_BACKEND_ENABLE_UNSUPPORTED;$(CtkIncludedImmodulesDefines);CTK_LIBDIR=\&quot;$(CtkDummyPrefix)/lib\&quot;;CTK_DATADIR=\&quot;$(CtkDummyPrefix)/share\&quot;CTK_DATA_PREFIX=\&quot;$(CtkDummyPrefix)\&quot;;CTK_SYSCONFDIR=\&quot;$(CtkDummyPrefix)/etc\&quot;;MULTIPRESS_CONFDIR=\&quot;$(CtkDummyPrefix)/etc/ctk-$(ApiVersion)\&quot;;MULTIPRESS_LOCALEDIR=\&quot;$(CtkDummyPrefix)/share/locale\&quot;;CTK_VERSION=\&quot;$(CtkVersion)/etc\&quot;;CTK_BINARY_VERSION=\&quot;$(CtkBinaryVersion)/etc\&quot;;GDK_DISABLE_DEPRECATED;ISOLATION_AWARE_ENABLED"
+		Value="CTK_COMPILATION;G_LOG_DOMAIN=\&quot;Ctk\&quot;;CTK_HOST=\&quot;i686-pc-vs$(VSVer)\&quot;;CTK_PRINT_BACKENDS=\&quot;file\&quot;;CTK_PRINT_BACKEND_ENABLE_UNSUPPORTED;$(CtkIncludedImmodulesDefines);CTK_LIBDIR=\&quot;$(CtkDummyPrefix)/lib\&quot;;CTK_DATADIR=\&quot;$(CtkDummyPrefix)/share\&quot;CTK_DATA_PREFIX=\&quot;$(CtkDummyPrefix)\&quot;;CTK_SYSCONFDIR=\&quot;$(CtkDummyPrefix)/etc\&quot;;MULTIPRESS_CONFDIR=\&quot;$(CtkDummyPrefix)/etc/ctk-$(ApiVersion)\&quot;;MULTIPRESS_LOCALEDIR=\&quot;$(CtkDummyPrefix)/share/locale\&quot;;CTK_VERSION=\&quot;$(CtkVersion)/etc\&quot;;CTK_BINARY_VERSION=\&quot;$(CtkBinaryVersion)/etc\&quot;;CDK_DISABLE_DEPRECATED;ISOLATION_AWARE_ENABLED"
 	/>
 	<UserMacro
 		Name="CtkCdkCommonLibs"

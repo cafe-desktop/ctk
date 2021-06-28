@@ -19,7 +19,7 @@
 #error "Only <ctk/ctkx.h> can be included directly."
 #endif
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
 
 #ifndef __GI_SCANNER__
 

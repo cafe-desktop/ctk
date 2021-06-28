@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -26,8 +26,8 @@
  * Private uninstalled header defining things local to the Wayland backend
  */
 
-#ifndef __GDK_PRIVATE_WAYLAND_H__
-#define __GDK_PRIVATE_WAYLAND_H__
+#ifndef __CDK_PRIVATE_WAYLAND_H__
+#define __CDK_PRIVATE_WAYLAND_H__
 
 #include <cdk/cdkcursor.h>
 #include <cdk/cdkprivate.h>
@@ -44,7 +44,7 @@
 #define WL_SURFACE_HAS_BUFFER_SCALE 3
 #define WL_POINTER_HAS_FRAME 5
 
-#define GDK_WINDOW_IS_WAYLAND(win)    (GDK_IS_WINDOW_IMPL_WAYLAND (((CdkWindow *)win)->impl))
+#define CDK_WINDOW_IS_WAYLAND(win)    (CDK_IS_WINDOW_IMPL_WAYLAND (((CdkWindow *)win)->impl))
 
 CdkKeymap *_cdk_wayland_keymap_new (void);
 void       _cdk_wayland_keymap_update_from_fd (CdkKeymap *keymap,
@@ -288,4 +288,4 @@ void cdk_wayland_window_inhibit_shortcuts (CdkWindow *window,
 void cdk_wayland_window_restore_shortcuts (CdkWindow *window,
                                            CdkSeat   *cdk_seat);
 
-#endif /* __GDK_PRIVATE_WAYLAND_H__ */
+#endif /* __CDK_PRIVATE_WAYLAND_H__ */

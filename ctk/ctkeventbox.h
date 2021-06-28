@@ -71,18 +71,18 @@ struct _CtkEventBoxClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType      ctk_event_box_get_type           (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_event_box_new                (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_event_box_get_visible_window (CtkEventBox *event_box);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_event_box_set_visible_window (CtkEventBox *event_box,
                                              gboolean     visible_window);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_event_box_get_above_child    (CtkEventBox *event_box);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_event_box_set_above_child    (CtkEventBox *event_box,
                                              gboolean     above_child);
 

@@ -76,21 +76,21 @@ struct _CtkOverlayClass
   void (*_ctk_reserved8) (void);
 };
 
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 GType      ctk_overlay_get_type    (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 CtkWidget *ctk_overlay_new         (void);
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 void       ctk_overlay_add_overlay (CtkOverlay *overlay,
                                     CtkWidget  *widget);
-GDK_AVAILABLE_IN_3_18
+CDK_AVAILABLE_IN_3_18
 void       ctk_overlay_reorder_overlay (CtkOverlay *overlay,
                                         CtkWidget  *child,
                                         int         index_);
-GDK_AVAILABLE_IN_3_18
+CDK_AVAILABLE_IN_3_18
 gboolean   ctk_overlay_get_overlay_pass_through (CtkOverlay *overlay,
 						 CtkWidget  *widget);
-GDK_AVAILABLE_IN_3_18
+CDK_AVAILABLE_IN_3_18
 void       ctk_overlay_set_overlay_pass_through (CtkOverlay *overlay,
 						 CtkWidget  *widget,
 						 gboolean    pass_through);

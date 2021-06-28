@@ -162,65 +162,65 @@ struct _CtkTextBufferClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType        ctk_text_buffer_get_type       (void) G_GNUC_CONST;
 
 
 
 /* table is NULL to create a new one */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTextBuffer *ctk_text_buffer_new            (CtkTextTagTable *table);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint           ctk_text_buffer_get_line_count (CtkTextBuffer   *buffer);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint           ctk_text_buffer_get_char_count (CtkTextBuffer   *buffer);
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTextTagTable* ctk_text_buffer_get_tag_table (CtkTextBuffer  *buffer);
 
 /* Delete whole buffer, then insert */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_buffer_set_text          (CtkTextBuffer *buffer,
                                         const gchar   *text,
                                         gint           len);
 
 /* Insert into the buffer */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_buffer_insert            (CtkTextBuffer *buffer,
                                         CtkTextIter   *iter,
                                         const gchar   *text,
                                         gint           len);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_buffer_insert_at_cursor  (CtkTextBuffer *buffer,
                                         const gchar   *text,
                                         gint           len);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_text_buffer_insert_interactive           (CtkTextBuffer *buffer,
                                                        CtkTextIter   *iter,
                                                        const gchar   *text,
                                                        gint           len,
                                                        gboolean       default_editable);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_text_buffer_insert_interactive_at_cursor (CtkTextBuffer *buffer,
                                                        const gchar   *text,
                                                        gint           len,
                                                        gboolean       default_editable);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_text_buffer_insert_range             (CtkTextBuffer     *buffer,
                                                    CtkTextIter       *iter,
                                                    const CtkTextIter *start,
                                                    const CtkTextIter *end);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_text_buffer_insert_range_interactive (CtkTextBuffer     *buffer,
                                                    CtkTextIter       *iter,
                                                    const CtkTextIter *start,
                                                    const CtkTextIter *end,
                                                    gboolean           default_editable);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void    ctk_text_buffer_insert_with_tags          (CtkTextBuffer     *buffer,
                                                    CtkTextIter       *iter,
                                                    const gchar       *text,
@@ -228,7 +228,7 @@ void    ctk_text_buffer_insert_with_tags          (CtkTextBuffer     *buffer,
                                                    CtkTextTag        *first_tag,
                                                    ...) G_GNUC_NULL_TERMINATED;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void    ctk_text_buffer_insert_with_tags_by_name  (CtkTextBuffer     *buffer,
                                                    CtkTextIter       *iter,
                                                    const gchar       *text,
@@ -236,97 +236,97 @@ void    ctk_text_buffer_insert_with_tags_by_name  (CtkTextBuffer     *buffer,
                                                    const gchar       *first_tag_name,
                                                    ...) G_GNUC_NULL_TERMINATED;
 
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 void     ctk_text_buffer_insert_markup            (CtkTextBuffer     *buffer,
                                                    CtkTextIter       *iter,
                                                    const gchar       *markup,
                                                    gint               len);
 
 /* Delete from the buffer */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_text_buffer_delete             (CtkTextBuffer *buffer,
 					     CtkTextIter   *start,
 					     CtkTextIter   *end);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_text_buffer_delete_interactive (CtkTextBuffer *buffer,
 					     CtkTextIter   *start_iter,
 					     CtkTextIter   *end_iter,
 					     gboolean       default_editable);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_text_buffer_backspace          (CtkTextBuffer *buffer,
 					     CtkTextIter   *iter,
 					     gboolean       interactive,
 					     gboolean       default_editable);
 
 /* Obtain strings from the buffer */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gchar          *ctk_text_buffer_get_text            (CtkTextBuffer     *buffer,
                                                      const CtkTextIter *start,
                                                      const CtkTextIter *end,
                                                      gboolean           include_hidden_chars);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gchar          *ctk_text_buffer_get_slice           (CtkTextBuffer     *buffer,
                                                      const CtkTextIter *start,
                                                      const CtkTextIter *end,
                                                      gboolean           include_hidden_chars);
 
 /* Insert a pixbuf */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_buffer_insert_pixbuf         (CtkTextBuffer *buffer,
                                             CtkTextIter   *iter,
                                             CdkPixbuf     *pixbuf);
 
 /* Insert a child anchor */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void               ctk_text_buffer_insert_child_anchor (CtkTextBuffer      *buffer,
                                                         CtkTextIter        *iter,
                                                         CtkTextChildAnchor *anchor);
 
 /* Convenience, create and insert a child anchor */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTextChildAnchor *ctk_text_buffer_create_child_anchor (CtkTextBuffer *buffer,
                                                          CtkTextIter   *iter);
 
 /* Mark manipulation */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_text_buffer_add_mark    (CtkTextBuffer     *buffer,
                                             CtkTextMark       *mark,
                                             const CtkTextIter *where);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTextMark   *ctk_text_buffer_create_mark (CtkTextBuffer     *buffer,
                                             const gchar       *mark_name,
                                             const CtkTextIter *where,
                                             gboolean           left_gravity);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_text_buffer_move_mark   (CtkTextBuffer     *buffer,
                                             CtkTextMark       *mark,
                                             const CtkTextIter *where);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_text_buffer_delete_mark (CtkTextBuffer     *buffer,
                                             CtkTextMark       *mark);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTextMark*   ctk_text_buffer_get_mark    (CtkTextBuffer     *buffer,
                                             const gchar       *name);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_buffer_move_mark_by_name   (CtkTextBuffer     *buffer,
                                           const gchar       *name,
                                           const CtkTextIter *where);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_buffer_delete_mark_by_name (CtkTextBuffer     *buffer,
                                           const gchar       *name);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTextMark* ctk_text_buffer_get_insert          (CtkTextBuffer *buffer);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTextMark* ctk_text_buffer_get_selection_bound (CtkTextBuffer *buffer);
 
 /* efficiently move insert and selection_bound at the same time */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_buffer_place_cursor (CtkTextBuffer     *buffer,
                                    const CtkTextIter *where);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_buffer_select_range (CtkTextBuffer     *buffer,
                                    const CtkTextIter *ins,
 				   const CtkTextIter *bound);
@@ -334,27 +334,27 @@ void ctk_text_buffer_select_range (CtkTextBuffer     *buffer,
 
 
 /* Tag manipulation */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_buffer_apply_tag             (CtkTextBuffer     *buffer,
                                             CtkTextTag        *tag,
                                             const CtkTextIter *start,
                                             const CtkTextIter *end);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_buffer_remove_tag            (CtkTextBuffer     *buffer,
                                             CtkTextTag        *tag,
                                             const CtkTextIter *start,
                                             const CtkTextIter *end);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_buffer_apply_tag_by_name     (CtkTextBuffer     *buffer,
                                             const gchar       *name,
                                             const CtkTextIter *start,
                                             const CtkTextIter *end);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_buffer_remove_tag_by_name    (CtkTextBuffer     *buffer,
                                             const gchar       *name,
                                             const CtkTextIter *start,
                                             const CtkTextIter *end);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_buffer_remove_all_tags       (CtkTextBuffer     *buffer,
                                             const CtkTextIter *start,
                                             const CtkTextIter *end);
@@ -363,7 +363,7 @@ void ctk_text_buffer_remove_all_tags       (CtkTextBuffer     *buffer,
 /* You can either ignore the return value, or use it to
  * set the attributes of the tag. tag_name can be NULL
  */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTextTag    *ctk_text_buffer_create_tag (CtkTextBuffer *buffer,
                                            const gchar   *tag_name,
                                            const gchar   *first_property_name,
@@ -372,40 +372,40 @@ CtkTextTag    *ctk_text_buffer_create_tag (CtkTextBuffer *buffer,
 /* Obtain iterators pointed at various places, then you can move the
  * iterator around using the CtkTextIter operators
  */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_buffer_get_iter_at_line_offset (CtkTextBuffer *buffer,
                                               CtkTextIter   *iter,
                                               gint           line_number,
                                               gint           char_offset);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_buffer_get_iter_at_line_index  (CtkTextBuffer *buffer,
                                               CtkTextIter   *iter,
                                               gint           line_number,
                                               gint           byte_index);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_buffer_get_iter_at_offset      (CtkTextBuffer *buffer,
                                               CtkTextIter   *iter,
                                               gint           char_offset);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_buffer_get_iter_at_line        (CtkTextBuffer *buffer,
                                               CtkTextIter   *iter,
                                               gint           line_number);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_buffer_get_start_iter          (CtkTextBuffer *buffer,
                                               CtkTextIter   *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_buffer_get_end_iter            (CtkTextBuffer *buffer,
                                               CtkTextIter   *iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_buffer_get_bounds              (CtkTextBuffer *buffer,
                                               CtkTextIter   *start,
                                               CtkTextIter   *end);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_buffer_get_iter_at_mark        (CtkTextBuffer *buffer,
                                               CtkTextIter   *iter,
                                               CtkTextMark   *mark);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_buffer_get_iter_at_child_anchor (CtkTextBuffer      *buffer,
                                                CtkTextIter        *iter,
                                                CtkTextChildAnchor *anchor);
@@ -419,53 +419,53 @@ void ctk_text_buffer_get_iter_at_child_anchor (CtkTextBuffer      *buffer,
    flag, but if you would like them to you can connect a handler to
    the tag/mark signals and call set_modified in your handler */
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean        ctk_text_buffer_get_modified            (CtkTextBuffer *buffer);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void            ctk_text_buffer_set_modified            (CtkTextBuffer *buffer,
                                                          gboolean       setting);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean        ctk_text_buffer_get_has_selection       (CtkTextBuffer *buffer);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_buffer_add_selection_clipboard    (CtkTextBuffer     *buffer,
 						 CtkClipboard      *clipboard);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_text_buffer_remove_selection_clipboard (CtkTextBuffer     *buffer,
 						 CtkClipboard      *clipboard);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void            ctk_text_buffer_cut_clipboard           (CtkTextBuffer *buffer,
 							 CtkClipboard  *clipboard,
                                                          gboolean       default_editable);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void            ctk_text_buffer_copy_clipboard          (CtkTextBuffer *buffer,
 							 CtkClipboard  *clipboard);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void            ctk_text_buffer_paste_clipboard         (CtkTextBuffer *buffer,
 							 CtkClipboard  *clipboard,
 							 CtkTextIter   *override_location,
                                                          gboolean       default_editable);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean        ctk_text_buffer_get_selection_bounds    (CtkTextBuffer *buffer,
                                                          CtkTextIter   *start,
                                                          CtkTextIter   *end);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean        ctk_text_buffer_delete_selection        (CtkTextBuffer *buffer,
                                                          gboolean       interactive,
                                                          gboolean       default_editable);
 
 /* Called to specify atomic user actions, used to implement undo */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void            ctk_text_buffer_begin_user_action       (CtkTextBuffer *buffer);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void            ctk_text_buffer_end_user_action         (CtkTextBuffer *buffer);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTargetList * ctk_text_buffer_get_copy_target_list    (CtkTextBuffer *buffer);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTargetList * ctk_text_buffer_get_paste_target_list   (CtkTextBuffer *buffer);
 
 

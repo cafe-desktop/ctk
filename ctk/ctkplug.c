@@ -65,7 +65,7 @@
  * in CTK+ or vice versa.
  *
  * The #CtkPlug and #CtkSocket widgets are only available when CTK+
- * is compiled for the X11 platform and %GDK_WINDOWING_X11 is defined.
+ * is compiled for the X11 platform and %CDK_WINDOWING_X11 is defined.
  * They can only be used on a #CdkX11Display. To use #CtkPlug and
  * #CtkSocket, you need to include the `ctk/ctkx.h` header.
  */
@@ -212,7 +212,7 @@ ctk_plug_class_init (CtkPlugClass *class)
 				   g_param_spec_object ("socket-window",
 							P_("Socket Window"),
 							P_("The window of the socket the plug is embedded in"),
-							GDK_TYPE_WINDOW,
+							CDK_TYPE_WINDOW,
 							CTK_PARAM_READABLE));
 
   /**
@@ -358,7 +358,7 @@ ctk_plug_get_id (CtkPlug *plug)
   if (!ctk_widget_get_realized (CTK_WIDGET (plug)))
     ctk_widget_realize (CTK_WIDGET (plug));
 
-  return GDK_WINDOW_XID (ctk_widget_get_window (CTK_WIDGET (plug)));
+  return CDK_WINDOW_XID (ctk_widget_get_window (CTK_WIDGET (plug)));
 }
 
 /**
@@ -447,14 +447,14 @@ _ctk_plug_add_to_socket (CtkPlug   *plug,
  * ctk_plug_send_delete_event:
  * @widget: a #CtkWidget
  *
- * Send a GDK_DELETE event to the @widget and destroy it if
+ * Send a CDK_DELETE event to the @widget and destroy it if
  * necessary. Internal CTK function, called from this file or the
  * backend-specific CtkPlug implementation.
  */
 static void
 ctk_plug_send_delete_event (CtkWidget *widget)
 {
-  CdkEvent *event = cdk_event_new (GDK_DELETE);
+  CdkEvent *event = cdk_event_new (CDK_DELETE);
 
   event->any.window = g_object_ref (ctk_widget_get_window (widget));
   event->any.send_event = FALSE;
@@ -578,7 +578,7 @@ ctk_plug_construct_for_display (CtkPlug    *plug,
   CtkPlugPrivate *priv;
 
   g_return_if_fail (CTK_IS_PLUG (plug));
-  g_return_if_fail (GDK_IS_DISPLAY (display));
+  g_return_if_fail (CDK_IS_DISPLAY (display));
 
   priv = plug->priv;
 
@@ -586,7 +586,7 @@ ctk_plug_construct_for_display (CtkPlug    *plug,
     {
       gpointer user_data = NULL;
 
-      if (GDK_IS_X11_DISPLAY (display))
+      if (CDK_IS_X11_DISPLAY (display))
         priv->socket_window = cdk_x11_window_lookup_for_display (display, socket_id);
       else
         priv->socket_window = NULL;
@@ -608,7 +608,7 @@ ctk_plug_construct_for_display (CtkPlug    *plug,
 	  else
 	    g_object_ref (priv->socket_window);
 	}
-      else if (GDK_IS_X11_DISPLAY (display))
+      else if (CDK_IS_X11_DISPLAY (display))
         priv->socket_window = cdk_x11_window_foreign_new_for_display (display, socket_id);
 
       if (priv->socket_window) {
@@ -652,7 +652,7 @@ ctk_plug_new_for_display (CdkDisplay *display,
 {
   CtkPlug *plug;
 
-  g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
+  g_return_val_if_fail (CDK_IS_DISPLAY (display), NULL);
 
   plug = g_object_new (CTK_TYPE_PLUG, NULL);
   ctk_plug_construct_for_display (plug, display, socket_id);
@@ -709,8 +709,8 @@ xembed_set_info (CdkWindow     *window,
   buffer[0] = CTK_XEMBED_PROTOCOL_VERSION;
   buffer[1] = flags;
 
-  XChangeProperty (GDK_DISPLAY_XDISPLAY (display),
-		   GDK_WINDOW_XID (window),
+  XChangeProperty (CDK_DISPLAY_XDISPLAY (display),
+		   CDK_WINDOW_XID (window),
 		   xembed_info_atom, xembed_info_atom, 32,
 		   PropModeReplace,
 		   (unsigned char *)buffer, 2);
@@ -727,8 +727,8 @@ _ctk_plug_accessible_embed_set_info (CtkWidget *widget, CdkWindow *window)
   if (!buffer)
     return;
 
-  XChangeProperty (GDK_DISPLAY_XDISPLAY (display),
-		   GDK_WINDOW_XID (window),
+  XChangeProperty (CDK_DISPLAY_XDISPLAY (display),
+		   CDK_WINDOW_XID (window),
 		   net_at_spi_path_atom, net_at_spi_path_atom, 8,
 		   PropModeReplace,
 		   (unsigned char *)buffer, strlen(buffer));
@@ -848,7 +848,7 @@ ctk_plug_filter_func (CdkXEvent *cdk_xevent,
   gpointer key;
   CdkFilterReturn return_val;
 
-  return_val = GDK_FILTER_CONTINUE;
+  return_val = CDK_FILTER_CONTINUE;
 
   switch (xevent->type)
     {
@@ -864,7 +864,7 @@ ctk_plug_filter_func (CdkXEvent *cdk_xevent,
 				 xevent->xclient.data.l[0]);
 	  _ctk_xembed_pop_message ();
 
-	  return_val = GDK_FILTER_REMOVE;
+	  return_val = CDK_FILTER_REMOVE;
 	}
       else if (xevent->xclient.message_type == cdk_x11_get_xatom_by_name_for_display (display, "WM_DELETE_WINDOW"))
 	{
@@ -872,7 +872,7 @@ ctk_plug_filter_func (CdkXEvent *cdk_xevent,
 	   * root window as the reliable end of the embedding protocol
 	   */
 
-	  return_val = GDK_FILTER_REMOVE;
+	  return_val = CDK_FILTER_REMOVE;
 	}
       break;
     case ReparentNotify:
@@ -882,7 +882,7 @@ ctk_plug_filter_func (CdkXEvent *cdk_xevent,
 
 	CTK_NOTE (PLUGSOCKET, g_message("CtkPlug: ReparentNotify received"));
 
-	return_val = GDK_FILTER_REMOVE;
+	return_val = CDK_FILTER_REMOVE;
 	
 	g_object_ref (plug);
 	
@@ -896,7 +896,7 @@ ctk_plug_filter_func (CdkXEvent *cdk_xevent,
 	     * Probably need check in _ctk_plug_add_to_socket
 	     */
 
-            if (xre->parent != GDK_WINDOW_XID (priv->socket_window))
+            if (xre->parent != CDK_WINDOW_XID (priv->socket_window))
 	      {
 		CtkWidget *widget = CTK_WIDGET (plug);
 
@@ -912,7 +912,7 @@ ctk_plug_filter_func (CdkXEvent *cdk_xevent,
 		 * be invisible to the app.
 		 */
 
-		if (xre->parent == GDK_WINDOW_XID (cdk_screen_get_root_window (screen)))
+		if (xre->parent == CDK_WINDOW_XID (cdk_screen_get_root_window (screen)))
 		  {
 		    CTK_NOTE (PLUGSOCKET, g_message ("CtkPlug: calling ctk_plug_send_delete_event()"));
 		    ctk_plug_send_delete_event (widget);
@@ -924,7 +924,7 @@ ctk_plug_filter_func (CdkXEvent *cdk_xevent,
 	      goto done;
 	  }
 
-	if (xre->parent != GDK_WINDOW_XID (cdk_screen_get_root_window (screen)))
+	if (xre->parent != CDK_WINDOW_XID (cdk_screen_get_root_window (screen)))
 	  {
 	    /* Start of embedding protocol */
 
@@ -985,16 +985,16 @@ ctk_plug_filter_func (CdkXEvent *cdk_xevent,
         CdkSeat *seat;
 
         if (xevent->type == KeyPress)
-          event->key.type = GDK_KEY_PRESS;
+          event->key.type = CDK_KEY_PRESS;
         else
-          event->key.type = GDK_KEY_RELEASE;
+          event->key.type = CDK_KEY_RELEASE;
 
         event->key.window = cdk_x11_window_lookup_for_display (display, xevent->xany.window);
         event->key.send_event = TRUE;
         event->key.time = xevent->xkey.time;
         event->key.state = (CdkModifierType) xevent->xkey.state;
         event->key.hardware_keycode = xevent->xkey.keycode;
-        event->key.keyval = GDK_KEY_VoidSymbol;
+        event->key.keyval = CDK_KEY_VoidSymbol;
 
         seat = cdk_display_get_default_seat (display);
         keyboard = cdk_seat_get_keyboard (seat);
@@ -1019,7 +1019,7 @@ ctk_plug_filter_func (CdkXEvent *cdk_xevent,
         event->key.length = 0;
         event->key.string = g_strdup ("");
 
-        return_val = GDK_FILTER_TRANSLATE;
+        return_val = CDK_FILTER_TRANSLATE;
       }
     }
 
@@ -1042,41 +1042,41 @@ ctk_plug_realize (CtkWidget *widget)
   ctk_widget_set_realized (widget, TRUE);
 
   screen = ctk_widget_get_screen (widget);
-  if (!GDK_IS_X11_SCREEN (screen))
+  if (!CDK_IS_X11_SCREEN (screen))
     g_warning ("CtkPlug only works under X11");
 
   title = ctk_window_get_title (window);
   _ctk_window_get_wmclass (window, &wmclass_name, &wmclass_class);
   ctk_widget_get_allocation (widget, &allocation);
 
-  attributes.window_type = GDK_WINDOW_CHILD;	/* XXX GDK_WINDOW_PLUG ? */
+  attributes.window_type = CDK_WINDOW_CHILD;	/* XXX CDK_WINDOW_PLUG ? */
   attributes.title = (gchar *) title;
   attributes.wmclass_name = wmclass_name;
   attributes.wmclass_class = wmclass_class;
   attributes.width = allocation.width;
   attributes.height = allocation.height;
-  attributes.wclass = GDK_INPUT_OUTPUT;
+  attributes.wclass = CDK_INPUT_OUTPUT;
 
   /* this isn't right - we should match our parent's visual/colormap.
    * though that will require handling "foreign" colormaps */
   attributes.visual = ctk_widget_get_visual (widget);
   attributes.event_mask = ctk_widget_get_events (widget);
-  attributes.event_mask |= (GDK_EXPOSURE_MASK |
-			    GDK_KEY_PRESS_MASK |
-			    GDK_KEY_RELEASE_MASK |
-			    GDK_ENTER_NOTIFY_MASK |
-			    GDK_LEAVE_NOTIFY_MASK |
-			    GDK_STRUCTURE_MASK);
+  attributes.event_mask |= (CDK_EXPOSURE_MASK |
+			    CDK_KEY_PRESS_MASK |
+			    CDK_KEY_RELEASE_MASK |
+			    CDK_ENTER_NOTIFY_MASK |
+			    CDK_LEAVE_NOTIFY_MASK |
+			    CDK_STRUCTURE_MASK);
 
-  attributes_mask = GDK_WA_VISUAL;
-  attributes_mask |= (title ? GDK_WA_TITLE : 0);
-  attributes_mask |= (wmclass_name ? GDK_WA_WMCLASS : 0);
+  attributes_mask = CDK_WA_VISUAL;
+  attributes_mask |= (title ? CDK_WA_TITLE : 0);
+  attributes_mask |= (wmclass_name ? CDK_WA_WMCLASS : 0);
 
   if (ctk_widget_is_toplevel (widget))
     {
       CdkDisplay *display = ctk_widget_get_display (widget);
       CdkWindow *root_window;
-      attributes.window_type = GDK_WINDOW_TOPLEVEL;
+      attributes.window_type = CDK_WINDOW_TOPLEVEL;
 
       root_window = cdk_screen_get_root_window (screen);
 
@@ -1173,7 +1173,7 @@ ctk_plug_map (CtkWidget *widget)
       xembed_set_info (ctk_widget_get_window (CTK_WIDGET (plug)), XEMBED_MAPPED);
 
       cdk_synthesize_window_state (ctk_widget_get_window (widget),
-				   GDK_WINDOW_STATE_WITHDRAWN,
+				   CDK_WINDOW_STATE_WITHDRAWN,
 				   0);
     }
   else
@@ -1203,7 +1203,7 @@ ctk_plug_unmap (CtkWidget *widget)
 
       cdk_synthesize_window_state (window,
 				   0,
-				   GDK_WINDOW_STATE_WITHDRAWN);
+				   CDK_WINDOW_STATE_WITHDRAWN);
     }
   else
     CTK_WIDGET_CLASS (bin_class)->unmap (widget);

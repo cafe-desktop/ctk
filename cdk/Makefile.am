@@ -11,7 +11,7 @@ INTROSPECTION_COMPILER_ARGS = \
    --includedir=$(srcdir) \
    --includedir=.
 
-SUBDIRS = $(GDK_BACKENDS) .
+SUBDIRS = $(CDK_BACKENDS) .
 
 DIST_SUBDIRS = win32 x11 quartz broadway wayland
 
@@ -36,19 +36,19 @@ EXTRA_DIST += 			\
 	gen-cdk-gresources-xml.py \
 	cdkconfig.h.meson
 
-GDK_CFLAGS_DEFINES =	\
+CDK_CFLAGS_DEFINES =	\
 	-DG_LOG_USE_STRUCTURED=1	\
-	-DGDK_COMPILATION
+	-DCDK_COMPILATION
 
 
 AM_CPPFLAGS =				\
 	-DG_LOG_DOMAIN=\"Cdk\"		\
-	$(GDK_CFLAGS_DEFINES)		\
+	$(CDK_CFLAGS_DEFINES)		\
 	-I$(top_builddir)		\
 	-I$(top_builddir)/cdk		\
 	-I$(top_srcdir)			\
 	$(CTK_DEBUG_FLAGS)		\
-	$(GDK_DEP_CFLAGS)
+	$(CDK_DEP_CFLAGS)
 
 # libtool stuff: set version and export symbols for resolving
 # since automake doesn't support conditionalized libsomething_la_LDFLAGS
@@ -64,7 +64,7 @@ LDADD = 					\
 # setup source file variables
 #
 #
-# GDK header files for public installation (non-generated)
+# CDK header files for public installation (non-generated)
 #
 #
 cdk_public_h_sources = 				\
@@ -193,7 +193,7 @@ cdk_built_sources = 				\
 	cdkversionmacros.h
 
 #
-# setup GDK sources and their dependencies
+# setup CDK sources and their dependencies
 #
 
 cdkincludedir = $(includedir)/ctk-3.0/cdk
@@ -213,8 +213,8 @@ common_sources = 		\
 	cdkresources.c
 
 libcdk_3_la_SOURCES = $(common_sources)
-libcdk_3_la_CFLAGS = $(AM_CFLAGS) $(GDK_HIDDEN_VISIBILITY_CFLAGS)
-libcdk_3_la_LIBADD = $(GDK_DEP_LIBS) $(SHM_LIBS)
+libcdk_3_la_CFLAGS = $(AM_CFLAGS) $(CDK_HIDDEN_VISIBILITY_CFLAGS)
+libcdk_3_la_LIBADD = $(CDK_DEP_LIBS) $(SHM_LIBS)
 libcdk_3_la_LDFLAGS = $(LDADD)
 
 if USE_X11
@@ -517,7 +517,7 @@ if HAVE_INTROSPECTION
 MSVC_INTROSPECT_GIRS = Cdk-3.0.gir CdkWin32-3.0.gir
 
 BASE_MSVC_GIR_CFLAGS =			\
-	$(GDK_CFLAGS_DEFINES)		\
+	$(CDK_CFLAGS_DEFINES)		\
 	-I.. -I../cdk -I../cdk/win32
 
 INTROSPECTION_INTERMEDIATE_ITEMS = \

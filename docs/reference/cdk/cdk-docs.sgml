@@ -6,12 +6,12 @@
 ]>
 <book id="index" xmlns:xi="http://www.w3.org/2003/XInclude">
   <bookinfo>
-    <title>GDK 3 Reference Manual</title>
+    <title>CDK 3 Reference Manual</title>
     <releaseinfo>
-      This document is for the GDK 3 library, version &version;
+      This document is for the CDK 3 library, version &version;
       The latest versions can be found online at
       <ulink role="online-location" url="https://developer.gnome.org/cdk3/">https://developer.gnome.org/cdk3/</ulink>.
-      If you are looking for the older GDK 2 series of libraries,
+      If you are looking for the older CDK 2 series of libraries,
       see <ulink role="online-location" url="https://developer.gnome.org/cdk2/">https://developer.gnome.org/cdk2/</ulink>.
     </releaseinfo>
   </bookinfo>

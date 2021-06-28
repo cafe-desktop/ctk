@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -22,10 +22,10 @@
  * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
-#ifndef __GDK_RGBA_H__
-#define __GDK_RGBA_H__
+#ifndef __CDK_RGBA_H__
+#define __CDK_RGBA_H__
 
-#if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined (__CDK_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdk.h> can be included directly."
 #endif
 
@@ -42,29 +42,29 @@ struct _CdkRGBA
   gdouble alpha;
 };
 
-#define GDK_TYPE_RGBA (cdk_rgba_get_type ())
+#define CDK_TYPE_RGBA (cdk_rgba_get_type ())
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType     cdk_rgba_get_type  (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkRGBA * cdk_rgba_copy      (const CdkRGBA *rgba);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void      cdk_rgba_free      (CdkRGBA       *rgba);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 guint     cdk_rgba_hash      (gconstpointer  p);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean  cdk_rgba_equal     (gconstpointer  p1,
                               gconstpointer  p2);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean  cdk_rgba_parse     (CdkRGBA       *rgba,
                               const gchar   *spec);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gchar *   cdk_rgba_to_string (const CdkRGBA *rgba);
 
 
 G_END_DECLS
 
-#endif /* __GDK_RGBA_H__ */
+#endif /* __CDK_RGBA_H__ */

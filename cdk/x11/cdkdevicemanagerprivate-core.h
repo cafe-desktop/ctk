@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2009 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_DEVICE_MANAGER_PRIVATE_CORE_H__
-#define __GDK_DEVICE_MANAGER_PRIVATE_CORE_H__
+#ifndef __CDK_DEVICE_MANAGER_PRIVATE_CORE_H__
+#define __CDK_DEVICE_MANAGER_PRIVATE_CORE_H__
 
 #include <X11/Xlib.h>
 
@@ -47,4 +47,4 @@ void            _cdk_device_manager_core_handle_focus           (CdkWindow   *wi
 
 G_END_DECLS
 
-#endif /* __GDK_DEVICE_MANAGER_PRIVATE_CORE_H__ */
+#endif /* __CDK_DEVICE_MANAGER_PRIVATE_CORE_H__ */

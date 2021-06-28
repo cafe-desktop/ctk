@@ -79,27 +79,27 @@ struct _CtkAccelLabelClass
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType	   ctk_accel_label_get_type	     (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_accel_label_new		     (const gchar   *string);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_accel_label_get_accel_widget  (CtkAccelLabel *accel_label);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 guint	   ctk_accel_label_get_accel_width   (CtkAccelLabel *accel_label);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void	   ctk_accel_label_set_accel_widget  (CtkAccelLabel *accel_label,
 					      CtkWidget	    *accel_widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void	   ctk_accel_label_set_accel_closure (CtkAccelLabel *accel_label,
 					      GClosure	    *accel_closure);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_accel_label_refetch           (CtkAccelLabel *accel_label);
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 void       ctk_accel_label_set_accel         (CtkAccelLabel   *accel_label,
                                               guint            accelerator_key,
                                               CdkModifierType  accelerator_mods);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void       ctk_accel_label_get_accel         (CtkAccelLabel   *accel_label,
                                               guint           *accelerator_key,
                                               CdkModifierType *accelerator_mods);

@@ -72,36 +72,36 @@ struct _CtkStockItem
   gchar *translation_domain;
 };
 
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void     ctk_stock_add        (const CtkStockItem  *items,
                                guint                n_items);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void     ctk_stock_add_static (const CtkStockItem  *items,
                                guint                n_items);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 gboolean ctk_stock_lookup     (const gchar         *stock_id,
                                CtkStockItem        *item);
 
 /* Should free the list (and free each string in it also).
  * This function is only useful for GUI builders and such.
  */
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 GSList*  ctk_stock_list_ids  (void);
 
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 CtkStockItem *ctk_stock_item_copy (const CtkStockItem *item);
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void          ctk_stock_item_free (CtkStockItem       *item);
 
-GDK_DEPRECATED_IN_3_10
+CDK_DEPRECATED_IN_3_10
 void          ctk_stock_set_translate_func (const gchar      *domain,
 					    CtkTranslateFunc  func,
 					    gpointer          data,
 					    GDestroyNotify    notify);
 
 /* the following type exists just so we can get deprecation warnings */
-#ifndef GDK_DISABLE_DEPRECATION_WARNINGS
-#if GDK_VERSION_MIN_REQUIRED >= GDK_VERSION_3_10
+#ifndef CDK_DISABLE_DEPRECATION_WARNINGS
+#if CDK_VERSION_MIN_REQUIRED >= CDK_VERSION_3_10
 G_DEPRECATED
 #endif
 #endif

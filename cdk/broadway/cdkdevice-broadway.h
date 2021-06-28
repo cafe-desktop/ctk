@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2009 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -15,19 +15,19 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_DEVICE_BROADWAY_H__
-#define __GDK_DEVICE_BROADWAY_H__
+#ifndef __CDK_DEVICE_BROADWAY_H__
+#define __CDK_DEVICE_BROADWAY_H__
 
 #include <cdk/cdkdeviceprivate.h>
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_BROADWAY_DEVICE         (cdk_broadway_device_get_type ())
-#define GDK_BROADWAY_DEVICE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_BROADWAY_DEVICE, CdkBroadwayDevice))
-#define GDK_BROADWAY_DEVICE_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_BROADWAY_DEVICE, CdkBroadwayDeviceClass))
-#define GDK_IS_BROADWAY_DEVICE(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_BROADWAY_DEVICE))
-#define GDK_IS_BROADWAY_DEVICE_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), GDK_TYPE_BROADWAY_DEVICE))
-#define GDK_BROADWAY_DEVICE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_BROADWAY_DEVICE, CdkBroadwayDeviceClass))
+#define CDK_TYPE_BROADWAY_DEVICE         (cdk_broadway_device_get_type ())
+#define CDK_BROADWAY_DEVICE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CDK_TYPE_BROADWAY_DEVICE, CdkBroadwayDevice))
+#define CDK_BROADWAY_DEVICE_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), CDK_TYPE_BROADWAY_DEVICE, CdkBroadwayDeviceClass))
+#define CDK_IS_BROADWAY_DEVICE(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CDK_TYPE_BROADWAY_DEVICE))
+#define CDK_IS_BROADWAY_DEVICE_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), CDK_TYPE_BROADWAY_DEVICE))
+#define CDK_BROADWAY_DEVICE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CDK_TYPE_BROADWAY_DEVICE, CdkBroadwayDeviceClass))
 
 typedef struct _CdkBroadwayDevice CdkBroadwayDevice;
 typedef struct _CdkBroadwayDeviceClass CdkBroadwayDeviceClass;
@@ -47,4 +47,4 @@ GType cdk_broadway_device_get_type (void) G_GNUC_CONST;
 
 G_END_DECLS
 
-#endif /* __GDK_DEVICE_BROADWAY_H__ */
+#endif /* __CDK_DEVICE_BROADWAY_H__ */

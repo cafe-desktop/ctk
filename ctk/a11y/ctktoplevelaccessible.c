@@ -208,7 +208,7 @@ show_event_watcher (GSignalInvocationHint *ihint,
   widget = CTK_WIDGET (object);
   if (ctk_widget_get_parent (widget) ||
       is_attached_menu_window (widget) ||
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
       CTK_IS_PLUG (widget) ||
 #endif
       is_combo_window (widget))
@@ -270,7 +270,7 @@ ctk_toplevel_accessible_init (CtkToplevelAccessible *toplevel)
       if (!window ||
           !ctk_widget_get_visible (widget) ||
           is_attached_menu_window (widget) ||
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
           CTK_IS_PLUG (window) ||
 #endif
           ctk_widget_get_parent (CTK_WIDGET (window)))

@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -22,10 +22,10 @@
  * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
-#ifndef __GDK_PROPERTY_H__
-#define __GDK_PROPERTY_H__
+#ifndef __CDK_PROPERTY_H__
+#define __CDK_PROPERTY_H__
 
-#if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined (__CDK_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdk.h> can be included directly."
 #endif
 
@@ -37,31 +37,31 @@ G_BEGIN_DECLS
 
 /**
  * CdkPropMode:
- * @GDK_PROP_MODE_REPLACE: the new data replaces the existing data.
- * @GDK_PROP_MODE_PREPEND: the new data is prepended to the existing data.
- * @GDK_PROP_MODE_APPEND: the new data is appended to the existing data.
+ * @CDK_PROP_MODE_REPLACE: the new data replaces the existing data.
+ * @CDK_PROP_MODE_PREPEND: the new data is prepended to the existing data.
+ * @CDK_PROP_MODE_APPEND: the new data is appended to the existing data.
  *
  * Describes how existing data is combined with new data when
  * using cdk_property_change().
  */
 typedef enum
 {
-  GDK_PROP_MODE_REPLACE,
-  GDK_PROP_MODE_PREPEND,
-  GDK_PROP_MODE_APPEND
+  CDK_PROP_MODE_REPLACE,
+  CDK_PROP_MODE_PREPEND,
+  CDK_PROP_MODE_APPEND
 } CdkPropMode;
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkAtom cdk_atom_intern (const gchar *atom_name,
                          gboolean     only_if_exists);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkAtom cdk_atom_intern_static_string (const gchar *atom_name);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gchar*  cdk_atom_name   (CdkAtom      atom);
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean cdk_property_get    (CdkWindow     *window,
                               CdkAtom        property,
                               CdkAtom        type,
@@ -72,7 +72,7 @@ gboolean cdk_property_get    (CdkWindow     *window,
                               gint          *actual_format,
                               gint          *actual_length,
                               guchar       **data);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     cdk_property_change (CdkWindow     *window,
                               CdkAtom        property,
                               CdkAtom        type,
@@ -80,11 +80,11 @@ void     cdk_property_change (CdkWindow     *window,
                               CdkPropMode    mode,
                               const guchar  *data,
                               gint           nelements);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     cdk_property_delete (CdkWindow     *window,
                               CdkAtom        property);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint   cdk_text_property_to_utf8_list_for_display (CdkDisplay     *display,
                                                    CdkAtom         encoding,
                                                    gint            format,
@@ -92,9 +92,9 @@ gint   cdk_text_property_to_utf8_list_for_display (CdkDisplay     *display,
                                                    gint            length,
                                                    gchar        ***list);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gchar *cdk_utf8_to_string_target                  (const gchar    *str);
 
 G_END_DECLS
 
-#endif /* __GDK_PROPERTY_H__ */
+#endif /* __CDK_PROPERTY_H__ */

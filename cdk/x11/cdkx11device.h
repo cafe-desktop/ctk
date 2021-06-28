@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2011 Carlos Garnacho
  *
  * This library is free software; you can redistribute it and/or
@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_X11_DEVICE_H__
-#define __GDK_X11_DEVICE_H__
+#ifndef __CDK_X11_DEVICE_H__
+#define __CDK_X11_DEVICE_H__
 
-#if !defined (__GDKX_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined (__CDKX_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdkx.h> can be included directly."
 #endif
 
@@ -26,9 +26,9 @@
 
 G_BEGIN_DECLS
 
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 gint  cdk_x11_device_get_id  (CdkDevice *device);
 
 G_END_DECLS
 
-#endif /* __GDK_X11_DEVICE_H__ */
+#endif /* __CDK_X11_DEVICE_H__ */

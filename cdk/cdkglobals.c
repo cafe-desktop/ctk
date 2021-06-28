@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -35,4 +35,4 @@ gchar              *_cdk_display_name = NULL;
 gchar              *_cdk_display_arg_name = NULL;
 gboolean            _cdk_disable_multidevice = FALSE;
 guint               _cdk_gl_flags = 0;
-CdkRenderingMode    _cdk_rendering_mode = GDK_RENDERING_MODE_SIMILAR;
+CdkRenderingMode    _cdk_rendering_mode = CDK_RENDERING_MODE_SIMILAR;

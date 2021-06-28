@@ -342,7 +342,7 @@ main (int argc, char *argv[])
 
   ctk_widget_set_tooltip_window (button, CTK_WINDOW (tooltip_window));
   ctk_window_set_type_hint (CTK_WINDOW (tooltip_window),
-                            GDK_WINDOW_TYPE_HINT_TOOLTIP);
+                            CDK_WINDOW_TYPE_HINT_TOOLTIP);
   ctk_window_set_transient_for (CTK_WINDOW (tooltip_window),
                                 CTK_WINDOW (window));
 

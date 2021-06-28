@@ -152,7 +152,7 @@ _cdk_quartz_display_text_property_to_utf8_list (CdkDisplay    *display,
   g_return_val_if_fail (text != NULL, 0);
   g_return_val_if_fail (length >= 0, 0);
 
-  if (encoding == GDK_TARGET_STRING)
+  if (encoding == CDK_TARGET_STRING)
     {
       return make_list ((gchar *)text, length, TRUE, list);
     }
@@ -175,27 +175,27 @@ _cdk_quartz_display_text_property_to_utf8_list (CdkDisplay    *display,
 }
 
 #if MAC_OS_X_VERSION_MIN_REQUIRED < 101400
-#define GDK_QUARTZ_URL_PBOARD_TYPE     NSURLPboardType
-#define GDK_QUARTZ_COLOR_PBOARD_TYPE   NSColorPboardType
-#define GDK_QUARTZ_STRING_PBOARD_TYPE  NSStringPboardType
-#define GDK_QUARTZ_TIFF_PBOARD_TYPE    NSTIFFPboardType
+#define CDK_QUARTZ_URL_PBOARD_TYPE     NSURLPboardType
+#define CDK_QUARTZ_COLOR_PBOARD_TYPE   NSColorPboardType
+#define CDK_QUARTZ_STRING_PBOARD_TYPE  NSStringPboardType
+#define CDK_QUARTZ_TIFF_PBOARD_TYPE    NSTIFFPboardType
 #else
-#define GDK_QUARTZ_URL_PBOARD_TYPE     NSPasteboardTypeURL
-#define GDK_QUARTZ_COLOR_PBOARD_TYPE   NSPasteboardTypeColor
-#define GDK_QUARTZ_STRING_PBOARD_TYPE  NSPasteboardTypeString
-#define GDK_QUARTZ_TIFF_PBOARD_TYPE    NSPasteboardTypeTIFF
+#define CDK_QUARTZ_URL_PBOARD_TYPE     NSPasteboardTypeURL
+#define CDK_QUARTZ_COLOR_PBOARD_TYPE   NSPasteboardTypeColor
+#define CDK_QUARTZ_STRING_PBOARD_TYPE  NSPasteboardTypeString
+#define CDK_QUARTZ_TIFF_PBOARD_TYPE    NSPasteboardTypeTIFF
 #endif
 
 CdkAtom
 cdk_quartz_pasteboard_type_to_atom_libctk_only (NSString *type)
 {
-  if ([type isEqualToString:GDK_QUARTZ_STRING_PBOARD_TYPE])
+  if ([type isEqualToString:CDK_QUARTZ_STRING_PBOARD_TYPE])
     return cdk_atom_intern_static_string ("UTF8_STRING");
-  else if ([type isEqualToString:GDK_QUARTZ_TIFF_PBOARD_TYPE])
+  else if ([type isEqualToString:CDK_QUARTZ_TIFF_PBOARD_TYPE])
     return cdk_atom_intern_static_string ("image/tiff");
-  else if ([type isEqualToString:GDK_QUARTZ_COLOR_PBOARD_TYPE])
+  else if ([type isEqualToString:CDK_QUARTZ_COLOR_PBOARD_TYPE])
     return cdk_atom_intern_static_string ("application/x-color");
-  else if ([type isEqualToString:GDK_QUARTZ_URL_PBOARD_TYPE])
+  else if ([type isEqualToString:CDK_QUARTZ_URL_PBOARD_TYPE])
     return cdk_atom_intern_static_string ("text/uri-list");
   else
     return cdk_atom_intern ([type UTF8String], FALSE);
@@ -205,13 +205,13 @@ NSString *
 cdk_quartz_target_to_pasteboard_type_libctk_only (const char *target)
 {
   if (strcmp (target, "UTF8_STRING") == 0)
-    return GDK_QUARTZ_STRING_PBOARD_TYPE;
+    return CDK_QUARTZ_STRING_PBOARD_TYPE;
   else if (strcmp (target, "image/tiff") == 0)
-    return GDK_QUARTZ_TIFF_PBOARD_TYPE;
+    return CDK_QUARTZ_TIFF_PBOARD_TYPE;
   else if (strcmp (target, "application/x-color") == 0)
-    return GDK_QUARTZ_COLOR_PBOARD_TYPE;
+    return CDK_QUARTZ_COLOR_PBOARD_TYPE;
   else if (strcmp (target, "text/uri-list") == 0)
-    return GDK_QUARTZ_URL_PBOARD_TYPE;
+    return CDK_QUARTZ_URL_PBOARD_TYPE;
   else
     return [NSString stringWithUTF8String:target];
 }

@@ -47,7 +47,7 @@ struct _CtkFlowBoxChildAccessibleClass
   CtkContainerAccessibleClass parent_class;
 };
 
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 GType ctk_flow_box_child_accessible_get_type (void);
 
 G_END_DECLS

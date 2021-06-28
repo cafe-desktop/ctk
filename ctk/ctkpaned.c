@@ -291,9 +291,9 @@ static void
 add_tab_bindings (CtkBindingSet    *binding_set,
 		  CdkModifierType   modifiers)
 {
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Tab, modifiers,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Tab, modifiers,
                                 "toggle-handle-focus", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Tab, modifiers,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Tab, modifiers,
 				"toggle-handle-focus", 0);
 }
 
@@ -617,80 +617,80 @@ ctk_paned_class_init (CtkPanedClass *class)
 
   /* F6 and friends */
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_F6, 0,
+                                CDK_KEY_F6, 0,
                                 "cycle-child-focus", 1, 
                                 G_TYPE_BOOLEAN, FALSE);
   ctk_binding_entry_add_signal (binding_set,
-				GDK_KEY_F6, GDK_SHIFT_MASK,
+				CDK_KEY_F6, CDK_SHIFT_MASK,
 				"cycle-child-focus", 1,
 				G_TYPE_BOOLEAN, TRUE);
 
   /* F8 and friends */
   ctk_binding_entry_add_signal (binding_set,
-				GDK_KEY_F8, 0,
+				CDK_KEY_F8, 0,
 				"cycle-handle-focus", 1,
 				G_TYPE_BOOLEAN, FALSE);
  
   ctk_binding_entry_add_signal (binding_set,
-				GDK_KEY_F8, GDK_SHIFT_MASK,
+				CDK_KEY_F8, CDK_SHIFT_MASK,
 				"cycle-handle-focus", 1,
 				G_TYPE_BOOLEAN, TRUE);
  
   add_tab_bindings (binding_set, 0);
-  add_tab_bindings (binding_set, GDK_CONTROL_MASK);
-  add_tab_bindings (binding_set, GDK_SHIFT_MASK);
-  add_tab_bindings (binding_set, GDK_CONTROL_MASK | GDK_SHIFT_MASK);
+  add_tab_bindings (binding_set, CDK_CONTROL_MASK);
+  add_tab_bindings (binding_set, CDK_SHIFT_MASK);
+  add_tab_bindings (binding_set, CDK_CONTROL_MASK | CDK_SHIFT_MASK);
 
   /* accept and cancel positions */
   ctk_binding_entry_add_signal (binding_set,
-				GDK_KEY_Escape, 0,
+				CDK_KEY_Escape, 0,
 				"cancel-position", 0);
 
   ctk_binding_entry_add_signal (binding_set,
-				GDK_KEY_Return, 0,
+				CDK_KEY_Return, 0,
 				"accept-position", 0);
   ctk_binding_entry_add_signal (binding_set,
-				GDK_KEY_ISO_Enter, 0,
+				CDK_KEY_ISO_Enter, 0,
 				"accept-position", 0);
   ctk_binding_entry_add_signal (binding_set,
-				GDK_KEY_KP_Enter, 0,
+				CDK_KEY_KP_Enter, 0,
 				"accept-position", 0);
   ctk_binding_entry_add_signal (binding_set,
-				GDK_KEY_space, 0,
+				CDK_KEY_space, 0,
 				"accept-position", 0);
   ctk_binding_entry_add_signal (binding_set,
-				GDK_KEY_KP_Space, 0,
+				CDK_KEY_KP_Space, 0,
 				"accept-position", 0);
 
   /* move handle */
-  add_move_binding (binding_set, GDK_KEY_Left, 0, CTK_SCROLL_STEP_LEFT);
-  add_move_binding (binding_set, GDK_KEY_KP_Left, 0, CTK_SCROLL_STEP_LEFT);
-  add_move_binding (binding_set, GDK_KEY_Left, GDK_CONTROL_MASK, CTK_SCROLL_PAGE_LEFT);
-  add_move_binding (binding_set, GDK_KEY_KP_Left, GDK_CONTROL_MASK, CTK_SCROLL_PAGE_LEFT);
+  add_move_binding (binding_set, CDK_KEY_Left, 0, CTK_SCROLL_STEP_LEFT);
+  add_move_binding (binding_set, CDK_KEY_KP_Left, 0, CTK_SCROLL_STEP_LEFT);
+  add_move_binding (binding_set, CDK_KEY_Left, CDK_CONTROL_MASK, CTK_SCROLL_PAGE_LEFT);
+  add_move_binding (binding_set, CDK_KEY_KP_Left, CDK_CONTROL_MASK, CTK_SCROLL_PAGE_LEFT);
 
-  add_move_binding (binding_set, GDK_KEY_Right, 0, CTK_SCROLL_STEP_RIGHT);
-  add_move_binding (binding_set, GDK_KEY_Right, GDK_CONTROL_MASK, CTK_SCROLL_PAGE_RIGHT);
-  add_move_binding (binding_set, GDK_KEY_KP_Right, 0, CTK_SCROLL_STEP_RIGHT);
-  add_move_binding (binding_set, GDK_KEY_KP_Right, GDK_CONTROL_MASK, CTK_SCROLL_PAGE_RIGHT);
+  add_move_binding (binding_set, CDK_KEY_Right, 0, CTK_SCROLL_STEP_RIGHT);
+  add_move_binding (binding_set, CDK_KEY_Right, CDK_CONTROL_MASK, CTK_SCROLL_PAGE_RIGHT);
+  add_move_binding (binding_set, CDK_KEY_KP_Right, 0, CTK_SCROLL_STEP_RIGHT);
+  add_move_binding (binding_set, CDK_KEY_KP_Right, CDK_CONTROL_MASK, CTK_SCROLL_PAGE_RIGHT);
 
-  add_move_binding (binding_set, GDK_KEY_Up, 0, CTK_SCROLL_STEP_UP);
-  add_move_binding (binding_set, GDK_KEY_Up, GDK_CONTROL_MASK, CTK_SCROLL_PAGE_UP);
-  add_move_binding (binding_set, GDK_KEY_KP_Up, 0, CTK_SCROLL_STEP_UP);
-  add_move_binding (binding_set, GDK_KEY_KP_Up, GDK_CONTROL_MASK, CTK_SCROLL_PAGE_UP);
-  add_move_binding (binding_set, GDK_KEY_Page_Up, 0, CTK_SCROLL_PAGE_UP);
-  add_move_binding (binding_set, GDK_KEY_KP_Page_Up, 0, CTK_SCROLL_PAGE_UP);
+  add_move_binding (binding_set, CDK_KEY_Up, 0, CTK_SCROLL_STEP_UP);
+  add_move_binding (binding_set, CDK_KEY_Up, CDK_CONTROL_MASK, CTK_SCROLL_PAGE_UP);
+  add_move_binding (binding_set, CDK_KEY_KP_Up, 0, CTK_SCROLL_STEP_UP);
+  add_move_binding (binding_set, CDK_KEY_KP_Up, CDK_CONTROL_MASK, CTK_SCROLL_PAGE_UP);
+  add_move_binding (binding_set, CDK_KEY_Page_Up, 0, CTK_SCROLL_PAGE_UP);
+  add_move_binding (binding_set, CDK_KEY_KP_Page_Up, 0, CTK_SCROLL_PAGE_UP);
 
-  add_move_binding (binding_set, GDK_KEY_Down, 0, CTK_SCROLL_STEP_DOWN);
-  add_move_binding (binding_set, GDK_KEY_Down, GDK_CONTROL_MASK, CTK_SCROLL_PAGE_DOWN);
-  add_move_binding (binding_set, GDK_KEY_KP_Down, 0, CTK_SCROLL_STEP_DOWN);
-  add_move_binding (binding_set, GDK_KEY_KP_Down, GDK_CONTROL_MASK, CTK_SCROLL_PAGE_DOWN);
-  add_move_binding (binding_set, GDK_KEY_Page_Down, 0, CTK_SCROLL_PAGE_RIGHT);
-  add_move_binding (binding_set, GDK_KEY_KP_Page_Down, 0, CTK_SCROLL_PAGE_RIGHT);
+  add_move_binding (binding_set, CDK_KEY_Down, 0, CTK_SCROLL_STEP_DOWN);
+  add_move_binding (binding_set, CDK_KEY_Down, CDK_CONTROL_MASK, CTK_SCROLL_PAGE_DOWN);
+  add_move_binding (binding_set, CDK_KEY_KP_Down, 0, CTK_SCROLL_STEP_DOWN);
+  add_move_binding (binding_set, CDK_KEY_KP_Down, CDK_CONTROL_MASK, CTK_SCROLL_PAGE_DOWN);
+  add_move_binding (binding_set, CDK_KEY_Page_Down, 0, CTK_SCROLL_PAGE_RIGHT);
+  add_move_binding (binding_set, CDK_KEY_KP_Page_Down, 0, CTK_SCROLL_PAGE_RIGHT);
 
-  add_move_binding (binding_set, GDK_KEY_Home, 0, CTK_SCROLL_START);
-  add_move_binding (binding_set, GDK_KEY_KP_Home, 0, CTK_SCROLL_START);
-  add_move_binding (binding_set, GDK_KEY_End, 0, CTK_SCROLL_END);
-  add_move_binding (binding_set, GDK_KEY_KP_End, 0, CTK_SCROLL_END);
+  add_move_binding (binding_set, CDK_KEY_Home, 0, CTK_SCROLL_START);
+  add_move_binding (binding_set, CDK_KEY_KP_Home, 0, CTK_SCROLL_START);
+  add_move_binding (binding_set, CDK_KEY_End, 0, CTK_SCROLL_END);
+  add_move_binding (binding_set, CDK_KEY_KP_End, 0, CTK_SCROLL_END);
 
   ctk_widget_class_set_accessible_type (widget_class, CTK_TYPE_PANED_ACCESSIBLE);
   ctk_widget_class_set_css_name (widget_class, "paned");
@@ -764,8 +764,8 @@ gesture_drag_begin_cb (CtkGestureDrag *gesture,
   ctk_css_gadget_get_content_allocation (priv->gadget, &allocation, NULL);
   paned->priv->panning = FALSE;
 
-  is_touch = (event->type == GDK_TOUCH_BEGIN ||
-              cdk_device_get_source (device) == GDK_SOURCE_TOUCHSCREEN);
+  is_touch = (event->type == CDK_TOUCH_BEGIN ||
+              cdk_device_get_source (device) == CDK_SOURCE_TOUCHSCREEN);
 
   if ((is_touch && CTK_GESTURE (gesture) == priv->drag_gesture) ||
       (!is_touch && CTK_GESTURE (gesture) == priv->pan_gesture))
@@ -1611,8 +1611,8 @@ ctk_paned_create_child_window (CtkPaned  *paned,
   CdkWindowAttr attributes;
   gint attributes_mask;
 
-  attributes.window_type = GDK_WINDOW_CHILD;
-  attributes.wclass = GDK_INPUT_OUTPUT;
+  attributes.window_type = CDK_WINDOW_CHILD;
+  attributes.wclass = CDK_INPUT_OUTPUT;
   attributes.event_mask = ctk_widget_get_events (widget);
   attributes.visual = ctk_widget_get_visual (widget);
   if (child)
@@ -1643,13 +1643,13 @@ ctk_paned_create_child_window (CtkPaned  *paned,
       ctk_widget_get_allocation (child, &allocation);
       attributes.width = allocation.width;
       attributes.height = allocation.height;
-      attributes_mask = GDK_WA_X | GDK_WA_Y| GDK_WA_VISUAL;
+      attributes_mask = CDK_WA_X | CDK_WA_Y| CDK_WA_VISUAL;
     }
   else
     {
       attributes.width = 1;
       attributes.height = 1;
-      attributes_mask = GDK_WA_VISUAL;
+      attributes_mask = CDK_WA_VISUAL;
     }
 
   window = cdk_window_new (ctk_widget_get_window (widget),
@@ -1677,26 +1677,26 @@ ctk_paned_realize (CtkWidget *widget)
   ctk_widget_set_window (widget, window);
   g_object_ref (window);
 
-  attributes.window_type = GDK_WINDOW_CHILD;
-  attributes.wclass = GDK_INPUT_ONLY;
+  attributes.window_type = CDK_WINDOW_CHILD;
+  attributes.wclass = CDK_INPUT_ONLY;
   attributes.x = priv->handle_pos.x;
   attributes.y = priv->handle_pos.y;
   attributes.width = priv->handle_pos.width;
   attributes.height = priv->handle_pos.height;
   attributes.event_mask = ctk_widget_get_events (widget);
-  attributes.event_mask |= (GDK_BUTTON_PRESS_MASK |
-			    GDK_BUTTON_RELEASE_MASK |
-			    GDK_ENTER_NOTIFY_MASK |
-			    GDK_LEAVE_NOTIFY_MASK |
-			    GDK_POINTER_MOTION_MASK);
+  attributes.event_mask |= (CDK_BUTTON_PRESS_MASK |
+			    CDK_BUTTON_RELEASE_MASK |
+			    CDK_ENTER_NOTIFY_MASK |
+			    CDK_LEAVE_NOTIFY_MASK |
+			    CDK_POINTER_MOTION_MASK);
   attributes.cursor = NULL;
-  attributes_mask = GDK_WA_X | GDK_WA_Y;
+  attributes_mask = CDK_WA_X | CDK_WA_Y;
   if (ctk_widget_is_sensitive (widget))
     {
       attributes.cursor = cdk_cursor_new_from_name (ctk_widget_get_display (widget),
 						    priv->orientation == CTK_ORIENTATION_HORIZONTAL
                                                     ? "col-resize" : "row-resize");
-      attributes_mask |= GDK_WA_CURSOR;
+      attributes_mask |= CDK_WA_CURSOR;
     }
 
   priv->handle = cdk_window_new (window,

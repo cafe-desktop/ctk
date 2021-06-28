@@ -152,14 +152,14 @@ ctk_overlay_create_child_window (CtkOverlay *overlay,
 
   ctk_overlay_compute_child_allocation (overlay, child, &allocation, NULL);
 
-  attributes.window_type = GDK_WINDOW_CHILD;
-  attributes.wclass = GDK_INPUT_OUTPUT;
+  attributes.window_type = CDK_WINDOW_CHILD;
+  attributes.wclass = CDK_INPUT_OUTPUT;
   attributes.width = allocation.width;
   attributes.height = allocation.height;
   attributes.x = allocation.x;
   attributes.y = allocation.y;
   attributes.visual = ctk_widget_get_visual (widget);
-  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
+  attributes_mask = CDK_WA_X | CDK_WA_Y | CDK_WA_VISUAL;
   attributes.event_mask = ctk_widget_get_events (widget);
 
   window = cdk_window_new (ctk_widget_get_window (widget),
@@ -831,7 +831,7 @@ ctk_overlay_class_init (CtkOverlayClass *klass)
                   _ctk_marshal_BOOLEAN__OBJECT_BOXED,
                   G_TYPE_BOOLEAN, 2,
                   CTK_TYPE_WIDGET,
-                  GDK_TYPE_RECTANGLE | G_SIGNAL_TYPE_STATIC_SCOPE);
+                  CDK_TYPE_RECTANGLE | G_SIGNAL_TYPE_STATIC_SCOPE);
   g_signal_set_va_marshaller (signals[GET_CHILD_POSITION],
                               G_TYPE_FROM_CLASS (object_class),
                               _ctk_marshal_BOOLEAN__OBJECT_BOXEDv);

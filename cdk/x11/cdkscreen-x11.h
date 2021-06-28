@@ -19,8 +19,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_X11_SCREEN__
-#define __GDK_X11_SCREEN__
+#ifndef __CDK_X11_SCREEN__
+#define __CDK_X11_SCREEN__
 
 #include "cdkscreenprivate.h"
 #include "cdkx11screen.h"
@@ -64,7 +64,7 @@ struct _CdkX11Screen
   /* X Settings */
   CdkWindow *xsettings_manager_window;
   Atom xsettings_selection_atom;
-  GHashTable *xsettings; /* string of GDK settings name => GValue */
+  GHashTable *xsettings; /* string of CDK settings name => GValue */
 
   /* TRUE if wmspec_check_window has changed since last
    * fetch of _NET_SUPPORTED
@@ -130,4 +130,4 @@ gint cdk_x11_screen_get_number              (CdkScreen *screen);
 
 G_END_DECLS
 
-#endif /* __GDK_X11_SCREEN__ */
+#endif /* __CDK_X11_SCREEN__ */

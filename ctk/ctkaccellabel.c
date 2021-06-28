@@ -94,7 +94,7 @@
  *   // CtkMenuItem accelerators. We just need to make sure we use
  *   // CTK_ACCEL_VISIBLE here.
  *   ctk_widget_add_accelerator (save_item, "activate", accel_group,
- *                               GDK_KEY_s, GDK_CONTROL_MASK, CTK_ACCEL_VISIBLE);
+ *                               CDK_KEY_s, CDK_CONTROL_MASK, CTK_ACCEL_VISIBLE);
  * ]|
  *
  * # CSS nodes
@@ -172,7 +172,7 @@ ctk_accel_label_class_init (CtkAccelLabelClass *class)
   class->signal_quote1 = g_strdup ("<:");
   class->signal_quote2 = g_strdup (":>");
 
-#ifndef GDK_WINDOWING_QUARTZ
+#ifndef CDK_WINDOWING_QUARTZ
   /* This is the text that should appear next to menu accelerators
    * that use the shift key. If the text on this key isn't typically
    * translated on keyboards used for your language, don't translate
@@ -192,7 +192,7 @@ ctk_accel_label_class_init (CtkAccelLabelClass *class)
    */
   class->mod_name_alt = g_strdup (C_("keyboard label", "Alt"));
   class->mod_separator = g_strdup ("+");
-#else /* GDK_WINDOWING_QUARTZ */
+#else /* CDK_WINDOWING_QUARTZ */
 
   /* U+21E7 UPWARDS WHITE ARROW */
   class->mod_name_shift = g_strdup ("\xe2\x87\xa7");
@@ -202,7 +202,7 @@ ctk_accel_label_class_init (CtkAccelLabelClass *class)
   class->mod_name_alt = g_strdup ("\xe2\x8c\xa5");
   class->mod_separator = g_strdup ("");
 
-#endif /* GDK_WINDOWING_QUARTZ */
+#endif /* CDK_WINDOWING_QUARTZ */
 
   props[PROP_ACCEL_CLOSURE] =
     g_param_spec_boxed ("accel-closure",
@@ -694,70 +694,70 @@ static gboolean
 append_keyval_symbol (guint    accelerator_key,
                       GString *gstring)
 {
-#ifdef GDK_WINDOWING_QUARTZ
+#ifdef CDK_WINDOWING_QUARTZ
   switch (accelerator_key)
   {
-  case GDK_KEY_Return:
+  case CDK_KEY_Return:
     /* U+21A9 LEFTWARDS ARROW WITH HOOK */
     g_string_append (gstring, "\xe2\x86\xa9");
     return TRUE;
 
-  case GDK_KEY_ISO_Enter:
+  case CDK_KEY_ISO_Enter:
     /* U+2324 UP ARROWHEAD BETWEEN TWO HORIZONTAL BARS */
     g_string_append (gstring, "\xe2\x8c\xa4");
     return TRUE;
 
-  case GDK_KEY_Left:
+  case CDK_KEY_Left:
     /* U+2190 LEFTWARDS ARROW */
     g_string_append (gstring, "\xe2\x86\x90");
     return TRUE;
 
-  case GDK_KEY_Up:
+  case CDK_KEY_Up:
     /* U+2191 UPWARDS ARROW */
     g_string_append (gstring, "\xe2\x86\x91");
     return TRUE;
 
-  case GDK_KEY_Right:
+  case CDK_KEY_Right:
     /* U+2192 RIGHTWARDS ARROW */
     g_string_append (gstring, "\xe2\x86\x92");
     return TRUE;
 
-  case GDK_KEY_Down:
+  case CDK_KEY_Down:
     /* U+2193 DOWNWARDS ARROW */
     g_string_append (gstring, "\xe2\x86\x93");
     return TRUE;
 
-  case GDK_KEY_Page_Up:
+  case CDK_KEY_Page_Up:
     /* U+21DE UPWARDS ARROW WITH DOUBLE STROKE */
     g_string_append (gstring, "\xe2\x87\x9e");
     return TRUE;
 
-  case GDK_KEY_Page_Down:
+  case CDK_KEY_Page_Down:
     /* U+21DF DOWNWARDS ARROW WITH DOUBLE STROKE */
     g_string_append (gstring, "\xe2\x87\x9f");
     return TRUE;
 
-  case GDK_KEY_Home:
+  case CDK_KEY_Home:
     /* U+2196 NORTH WEST ARROW */
     g_string_append (gstring, "\xe2\x86\x96");
     return TRUE;
 
-  case GDK_KEY_End:
+  case CDK_KEY_End:
     /* U+2198 SOUTH EAST ARROW */
     g_string_append (gstring, "\xe2\x86\x98");
     return TRUE;
 
-  case GDK_KEY_Escape:
+  case CDK_KEY_Escape:
     /* U+238B BROKEN CIRCLE WITH NORTHWEST ARROW */
     g_string_append (gstring, "\xe2\x8e\x8b");
     return TRUE;
 
-  case GDK_KEY_BackSpace:
+  case CDK_KEY_BackSpace:
     /* U+232B ERASE TO THE LEFT */
     g_string_append (gstring, "\xe2\x8c\xab");
     return TRUE;
 
-  case GDK_KEY_Delete:
+  case CDK_KEY_Delete:
     /* U+2326 ERASE TO THE RIGHT */
     g_string_append (gstring, "\xe2\x8c\xa6");
     return TRUE;
@@ -765,7 +765,7 @@ append_keyval_symbol (guint    accelerator_key,
   default:
     return FALSE;
   }
-#else /* !GDK_WINDOWING_QUARTZ */
+#else /* !CDK_WINDOWING_QUARTZ */
   return FALSE;
 #endif
 }
@@ -781,26 +781,26 @@ _ctk_accel_label_class_get_accelerator_label (CtkAccelLabelClass *klass,
   
   gstring = g_string_new ("");
   
-  if (accelerator_mods & GDK_SHIFT_MASK)
+  if (accelerator_mods & CDK_SHIFT_MASK)
     {
       g_string_append (gstring, klass->mod_name_shift);
       seen_mod = TRUE;
     }
-  if (accelerator_mods & GDK_CONTROL_MASK)
+  if (accelerator_mods & CDK_CONTROL_MASK)
     {
       if (seen_mod)
 	g_string_append (gstring, klass->mod_separator);
       g_string_append (gstring, klass->mod_name_control);
       seen_mod = TRUE;
     }
-  if (accelerator_mods & GDK_MOD1_MASK)
+  if (accelerator_mods & CDK_MOD1_MASK)
     {
       if (seen_mod)
 	g_string_append (gstring, klass->mod_separator);
       g_string_append (gstring, klass->mod_name_alt);
       seen_mod = TRUE;
     }
-  if (accelerator_mods & GDK_MOD2_MASK)
+  if (accelerator_mods & CDK_MOD2_MASK)
     {
       if (seen_mod)
 	g_string_append (gstring, klass->mod_separator);
@@ -808,7 +808,7 @@ _ctk_accel_label_class_get_accelerator_label (CtkAccelLabelClass *klass,
       g_string_append (gstring, "Mod2");
       seen_mod = TRUE;
     }
-  if (accelerator_mods & GDK_MOD3_MASK)
+  if (accelerator_mods & CDK_MOD3_MASK)
     {
       if (seen_mod)
 	g_string_append (gstring, klass->mod_separator);
@@ -816,7 +816,7 @@ _ctk_accel_label_class_get_accelerator_label (CtkAccelLabelClass *klass,
       g_string_append (gstring, "Mod3");
       seen_mod = TRUE;
     }
-  if (accelerator_mods & GDK_MOD4_MASK)
+  if (accelerator_mods & CDK_MOD4_MASK)
     {
       if (seen_mod)
 	g_string_append (gstring, klass->mod_separator);
@@ -824,7 +824,7 @@ _ctk_accel_label_class_get_accelerator_label (CtkAccelLabelClass *klass,
       g_string_append (gstring, "Mod4");
       seen_mod = TRUE;
     }
-  if (accelerator_mods & GDK_MOD5_MASK)
+  if (accelerator_mods & CDK_MOD5_MASK)
     {
       if (seen_mod)
 	g_string_append (gstring, klass->mod_separator);
@@ -832,7 +832,7 @@ _ctk_accel_label_class_get_accelerator_label (CtkAccelLabelClass *klass,
       g_string_append (gstring, "Mod5");
       seen_mod = TRUE;
     }
-  if (accelerator_mods & GDK_SUPER_MASK)
+  if (accelerator_mods & CDK_SUPER_MASK)
     {
       if (seen_mod)
 	g_string_append (gstring, klass->mod_separator);
@@ -845,7 +845,7 @@ _ctk_accel_label_class_get_accelerator_label (CtkAccelLabelClass *klass,
       g_string_append (gstring, C_("keyboard label", "Super"));
       seen_mod = TRUE;
     }
-  if (accelerator_mods & GDK_HYPER_MASK)
+  if (accelerator_mods & CDK_HYPER_MASK)
     {
       if (seen_mod)
 	g_string_append (gstring, klass->mod_separator);
@@ -858,12 +858,12 @@ _ctk_accel_label_class_get_accelerator_label (CtkAccelLabelClass *klass,
       g_string_append (gstring, C_("keyboard label", "Hyper"));
       seen_mod = TRUE;
     }
-  if (accelerator_mods & GDK_META_MASK)
+  if (accelerator_mods & CDK_META_MASK)
     {
       if (seen_mod)
 	g_string_append (gstring, klass->mod_separator);
 
-#ifndef GDK_WINDOWING_QUARTZ
+#ifndef CDK_WINDOWING_QUARTZ
       /* This is the text that should appear next to menu accelerators
        * that use the meta key. If the text on this key isn't typically
        * translated on keyboards used for your language, don't translate

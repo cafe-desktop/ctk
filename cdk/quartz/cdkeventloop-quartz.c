@@ -22,7 +22,7 @@
  * When the GLib main loop is in control we integrate in native event
  * handling in two ways: first we add a GSource that handles checking
  * whether there are native events available, translating native events
- * to GDK events, and dispatching GDK events. Second we replace the
+ * to CDK events, and dispatching CDK events. Second we replace the
  * "poll function" of the GLib main loop with our own version that knows
  * how to wait for both the file descriptors and timeouts that GLib is
  * interested in and also for incoming native events.
@@ -156,12 +156,12 @@ static const char *const state_names[]  = {
 #if MAC_OS_X_VERSION_MIN_REQUIRED < 101200
 typedef enum
   {
-   GDK_QUARTZ_EVENT_MASK_ANY = NSAnyEventMask,
+   CDK_QUARTZ_EVENT_MASK_ANY = NSAnyEventMask,
   } CdkQuartzEventMask;
 #else
 typedef enum
   {
-   GDK_QUARTZ_EVENT_MASK_ANY = NSEventMaskAny,
+   CDK_QUARTZ_EVENT_MASK_ANY = NSEventMaskAny,
   } CdkQuartzEventMask;
 #endif
 
@@ -202,7 +202,7 @@ select_thread_set_state (SelectThreadState new_state)
   if (select_thread_state == new_state)
     return;
 
-  GDK_NOTE (EVENTLOOP, g_message ("EventLoop: Select thread state: %s => %s", state_names[select_thread_state], state_names[new_state]));
+  CDK_NOTE (EVENTLOOP, g_message ("EventLoop: Select thread state: %s => %s", state_names[select_thread_state], state_names[new_state]));
 
   old_state = select_thread_state;
   select_thread_state = new_state;
@@ -213,7 +213,7 @@ select_thread_set_state (SelectThreadState new_state)
 static void
 signal_main_thread (void)
 {
-  GDK_NOTE (EVENTLOOP, g_message ("EventLoop: Waking up main thread"));
+  CDK_NOTE (EVENTLOOP, g_message ("EventLoop: Waking up main thread"));
 
   /* If we are in nextEventMatchingMask, then we need to make sure an
    * event gets queued, otherwise it's enough to simply wake up the
@@ -306,9 +306,9 @@ select_thread_func (void *arg)
 }
 
 #if MAC_OS_X_VERSION_MIN_REQUIRED < 101200
-#define GDK_QUARTZ_APPLICATION_DEFINED NSApplicationDefined
+#define CDK_QUARTZ_APPLICATION_DEFINED NSApplicationDefined
 #else
-#define GDK_QUARTZ_APPLICATION_DEFINED NSEventTypeApplicationDefined
+#define CDK_QUARTZ_APPLICATION_DEFINED NSEventTypeApplicationDefined
 #endif
 
 static void 
@@ -317,13 +317,13 @@ got_fd_activity (void *info)
   NSEvent *event;
 
   /* Post a message so we'll break out of the message loop */
-  event = [NSEvent otherEventWithType: GDK_QUARTZ_APPLICATION_DEFINED
+  event = [NSEvent otherEventWithType: CDK_QUARTZ_APPLICATION_DEFINED
 	                     location: NSZeroPoint
 	                modifierFlags: 0
 	                    timestamp: 0
 	                 windowNumber: 0
 	                      context: nil
-                              subtype: GDK_QUARTZ_EVENT_SUBTYPE_EVENTLOOP
+                              subtype: CDK_QUARTZ_EVENT_SUBTYPE_EVENTLOOP
 	                        data1: 0 
 	                        data2: 0];
 
@@ -432,7 +432,7 @@ select_thread_start_poll (GPollFD *ufds,
   if (nfds == 0 ||
       (nfds == 1 && poll_fd_index >= 0))
     {
-      GDK_NOTE (EVENTLOOP, g_message ("EventLoop: Nothing to poll"));
+      CDK_NOTE (EVENTLOOP, g_message ("EventLoop: Nothing to poll"));
       return 0;
     }
 
@@ -449,7 +449,7 @@ select_thread_start_poll (GPollFD *ufds,
   if (n_ready > 0 || timeout == 0)
     {
 #ifdef G_ENABLE_DEBUG
-      if ((_cdk_debug_flags & GDK_DEBUG_EVENTLOOP) && n_ready > 0)
+      if ((_cdk_debug_flags & CDK_DEBUG_EVENTLOOP) && n_ready > 0)
 	{
 	  g_message ("EventLoop: Found ready file descriptors before waiting");
 	  dump_poll_result (ufds, nfds);
@@ -530,7 +530,7 @@ select_thread_start_poll (GPollFD *ufds,
 
   if (have_new_pollfds)
     {
-      GDK_NOTE (EVENTLOOP, g_message ("EventLoop: Submitting a new set of file descriptor to the select thread"));
+      CDK_NOTE (EVENTLOOP, g_message ("EventLoop: Submitting a new set of file descriptor to the select thread"));
       
       g_assert (next_pollfds == NULL);
       
@@ -593,7 +593,7 @@ select_thread_collect_poll (GPollFD *ufds, guint nfds)
 	}
       
 #ifdef G_ENABLE_DEBUG
-      if (_cdk_debug_flags & GDK_DEBUG_EVENTLOOP)
+      if (_cdk_debug_flags & CDK_DEBUG_EVENTLOOP)
 	{
 	  g_message ("EventLoop: Found ready file descriptors after waiting");
 	  dump_poll_result (ufds, nfds);
@@ -734,9 +734,9 @@ static GSourceFuncs event_funcs = {
  ************************************************************/
 
 #if MAC_OS_X_VERSION_MIN_REQUIRED < 101200
-#define GDK_QUARTZ_EVENT_MASK_ANY NSAnyEventMask
+#define CDK_QUARTZ_EVENT_MASK_ANY NSAnyEventMask
 #else
-#define GDK_QUARTZ_EVENT_MASK_ANY NSEventMaskAny
+#define CDK_QUARTZ_EVENT_MASK_ANY NSEventMaskAny
 #endif
 
 static gint
@@ -764,7 +764,7 @@ poll_func (GPollFD *ufds,
     limit_date = [NSDate dateWithTimeIntervalSinceNow:timeout_/1000.0];
 
   getting_events++;
-  event = [NSApp nextEventMatchingMask: GDK_QUARTZ_EVENT_MASK_ANY
+  event = [NSApp nextEventMatchingMask: CDK_QUARTZ_EVENT_MASK_ANY
 	                     untilDate: limit_date
 	                        inMode: NSDefaultRunLoopMode
                                dequeue: YES];
@@ -783,8 +783,8 @@ poll_func (GPollFD *ufds,
     n_ready = select_thread_collect_poll (ufds, nfds);
       
   if (event &&
-      [event type] == GDK_QUARTZ_APPLICATION_DEFINED &&
-      [event subtype] == GDK_QUARTZ_EVENT_SUBTYPE_EVENTLOOP)
+      [event type] == CDK_QUARTZ_APPLICATION_DEFINED &&
+      [event subtype] == CDK_QUARTZ_EVENT_SUBTYPE_EVENTLOOP)
     {
       /* Just used to wake us up; if an event and a FD arrived at the same
        * time; could have come from a previous iteration in some cases,
@@ -842,7 +842,7 @@ run_loop_entry (void)
     {
       if (g_main_context_acquire (NULL))
 	{
-	  GDK_NOTE (EVENTLOOP, g_message ("EventLoop: Beginning tracking run loop activity"));
+	  CDK_NOTE (EVENTLOOP, g_message ("EventLoop: Beginning tracking run loop activity"));
 	  acquired_loop_level = current_loop_level;
 	}
       else
@@ -850,14 +850,14 @@ run_loop_entry (void)
 	  /* If we fail to acquire the main context, that means someone is iterating
 	   * the main context in a different thread; we simply wait until this loop
 	   * exits and then try again at next entry. In general, iterating the loop
-	   * from a different thread is rare: it is only possible when GDK threading
+	   * from a different thread is rare: it is only possible when CDK threading
 	   * is initialized and is not frequently used even then. So, we hope that
 	   * having GLib main loop iteration blocked in the combination of that and
 	   * a native modal operation is a minimal problem. We could imagine using a
 	   * thread that does g_main_context_wait() and then wakes us back up, but
 	   * the gain doesn't seem worth the complexity.
 	   */
-	  GDK_NOTE (EVENTLOOP, g_message ("EventLoop: Can't acquire main loop; skipping tracking run loop activity"));
+	  CDK_NOTE (EVENTLOOP, g_message ("EventLoop: Can't acquire main loop; skipping tracking run loop activity"));
 	}
     }
 }
@@ -895,7 +895,7 @@ run_loop_before_sources (void)
   
   if (g_main_context_check (context, max_priority, run_loop_pollfds, nfds))
     {
-      GDK_NOTE (EVENTLOOP, g_message ("EventLoop: Dispatching high priority sources"));
+      CDK_NOTE (EVENTLOOP, g_message ("EventLoop: Dispatching high priority sources"));
       g_main_context_dispatch (context);
     }
 }
@@ -938,7 +938,7 @@ run_loop_before_waiting (void)
        * expires. We do this by adding a dummy timer that we'll remove immediately
        * after the wait wakes up.
        */
-      GDK_NOTE (EVENTLOOP, g_message ("EventLoop: Adding timer to wake us up in %d milliseconds", timeout));
+      CDK_NOTE (EVENTLOOP, g_message ("EventLoop: Adding timer to wake us up in %d milliseconds", timeout));
       
       run_loop_timer = CFRunLoopTimerCreate (NULL, /* allocator */
 					     CFAbsoluteTimeGetCurrent () + timeout / 1000.,
@@ -978,7 +978,7 @@ run_loop_after_waiting (void)
   
   if (g_main_context_check (context, run_loop_max_priority, run_loop_pollfds, run_loop_n_pollfds))
     {
-      GDK_NOTE (EVENTLOOP, g_message ("EventLoop: Dispatching after waiting"));
+      CDK_NOTE (EVENTLOOP, g_message ("EventLoop: Dispatching after waiting"));
       g_main_context_dispatch (context);
     }
 }
@@ -991,7 +991,7 @@ run_loop_exit (void)
     {
       g_main_context_release (NULL);
       acquired_loop_level = -1;
-      GDK_NOTE (EVENTLOOP, g_message ("EventLoop: Ended tracking run loop activity"));
+      CDK_NOTE (EVENTLOOP, g_message ("EventLoop: Ended tracking run loop activity"));
     }
 }
 
@@ -1055,9 +1055,9 @@ _cdk_quartz_event_loop_init (void)
   event_poll_fd.fd = -1;
 
   source = g_source_new (&event_funcs, sizeof (GSource));
-  g_source_set_name (source, "GDK Quartz event source"); 
+  g_source_set_name (source, "CDK Quartz event source"); 
   g_source_add_poll (source, &event_poll_fd);
-  g_source_set_priority (source, GDK_PRIORITY_EVENTS);
+  g_source_set_priority (source, CDK_PRIORITY_EVENTS);
   g_source_set_can_recurse (source, TRUE);
   g_source_attach (source, NULL);
 

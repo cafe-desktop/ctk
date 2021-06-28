@@ -21,15 +21,15 @@
 
 #include "ctkapplicationprivate.h"
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
 #include <cdk/x11/cdkx.h>
 #endif
 
-#ifdef GDK_WINDOWING_WAYLAND
+#ifdef CDK_WINDOWING_WAYLAND
 #include <cdk/wayland/cdkwayland.h>
 #endif
 
-#ifdef GDK_WINDOWING_QUARTZ
+#ifdef CDK_WINDOWING_QUARTZ
 #include <cdk/quartz/cdkquartz.h>
 #endif
 
@@ -170,18 +170,18 @@ ctk_application_impl_new (CtkApplication *application,
 
   impl_type = ctk_application_impl_get_type ();
 
-#ifdef GDK_WINDOWING_X11
-  if (GDK_IS_X11_DISPLAY (display))
+#ifdef CDK_WINDOWING_X11
+  if (CDK_IS_X11_DISPLAY (display))
     impl_type = ctk_application_impl_x11_get_type ();
 #endif
 
-#ifdef GDK_WINDOWING_WAYLAND
-  if (GDK_IS_WAYLAND_DISPLAY (display))
+#ifdef CDK_WINDOWING_WAYLAND
+  if (CDK_IS_WAYLAND_DISPLAY (display))
     impl_type = ctk_application_impl_wayland_get_type ();
 #endif
 
-#ifdef GDK_WINDOWING_QUARTZ
-  if (GDK_IS_QUARTZ_DISPLAY (display))
+#ifdef CDK_WINDOWING_QUARTZ
+  if (CDK_IS_QUARTZ_DISPLAY (display))
     impl_type = ctk_application_impl_quartz_get_type ();
 #endif
 

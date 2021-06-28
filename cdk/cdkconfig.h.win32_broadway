@@ -3,10 +3,10 @@
  * This is a generated file.  Please modify `configure.ac'
  */
 
-#ifndef __GDKCONFIG_H__
-#define __GDKCONFIG_H__
+#ifndef __CDKCONFIG_H__
+#define __CDKCONFIG_H__
 
-#if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined (__CDK_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdk.h> can be included directly."
 #endif
 
@@ -15,9 +15,9 @@
 G_BEGIN_DECLS
 
 
-#define GDK_WINDOWING_WIN32
-#define GDK_WINDOWING_BROADWAY
+#define CDK_WINDOWING_WIN32
+#define CDK_WINDOWING_BROADWAY
 
 G_END_DECLS
 
-#endif  /* __GDKCONFIG_H__ */
+#endif  /* __CDKCONFIG_H__ */

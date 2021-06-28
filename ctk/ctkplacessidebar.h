@@ -75,85 +75,85 @@ typedef enum {
   CTK_PLACES_OPEN_NEW_WINDOW = 1 << 2
 } CtkPlacesOpenFlags;
 
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 GType              ctk_places_sidebar_get_type                   (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 CtkWidget *        ctk_places_sidebar_new                        (void);
 
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 CtkPlacesOpenFlags ctk_places_sidebar_get_open_flags             (CtkPlacesSidebar   *sidebar);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void               ctk_places_sidebar_set_open_flags             (CtkPlacesSidebar   *sidebar,
                                                                   CtkPlacesOpenFlags  flags);
 
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 GFile *            ctk_places_sidebar_get_location               (CtkPlacesSidebar   *sidebar);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void               ctk_places_sidebar_set_location               (CtkPlacesSidebar   *sidebar,
                                                                   GFile              *location);
 
-GDK_AVAILABLE_IN_3_18
+CDK_AVAILABLE_IN_3_18
 gboolean           ctk_places_sidebar_get_show_recent            (CtkPlacesSidebar   *sidebar);
-GDK_AVAILABLE_IN_3_18
+CDK_AVAILABLE_IN_3_18
 void               ctk_places_sidebar_set_show_recent            (CtkPlacesSidebar   *sidebar,
                                                                   gboolean            show_recent);
 
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 gboolean           ctk_places_sidebar_get_show_desktop           (CtkPlacesSidebar   *sidebar);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void               ctk_places_sidebar_set_show_desktop           (CtkPlacesSidebar   *sidebar,
                                                                   gboolean            show_desktop);
 
-GDK_DEPRECATED_IN_3_18
+CDK_DEPRECATED_IN_3_18
 gboolean           ctk_places_sidebar_get_show_connect_to_server (CtkPlacesSidebar   *sidebar);
-GDK_DEPRECATED_IN_3_18
+CDK_DEPRECATED_IN_3_18
 void               ctk_places_sidebar_set_show_connect_to_server (CtkPlacesSidebar   *sidebar,
                                                                   gboolean            show_connect_to_server);
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 gboolean           ctk_places_sidebar_get_show_enter_location    (CtkPlacesSidebar   *sidebar);
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 void               ctk_places_sidebar_set_show_enter_location    (CtkPlacesSidebar   *sidebar,
                                                                   gboolean            show_enter_location);
 
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void                 ctk_places_sidebar_set_local_only           (CtkPlacesSidebar   *sidebar,
                                                                   gboolean            local_only);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 gboolean             ctk_places_sidebar_get_local_only           (CtkPlacesSidebar   *sidebar);
 
 
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void               ctk_places_sidebar_add_shortcut               (CtkPlacesSidebar   *sidebar,
                                                                   GFile              *location);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void               ctk_places_sidebar_remove_shortcut            (CtkPlacesSidebar   *sidebar,
                                                                   GFile              *location);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 GSList *           ctk_places_sidebar_list_shortcuts             (CtkPlacesSidebar   *sidebar);
 
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 GFile *            ctk_places_sidebar_get_nth_bookmark           (CtkPlacesSidebar   *sidebar,
                                                                   gint                n);
-GDK_AVAILABLE_IN_3_18
+CDK_AVAILABLE_IN_3_18
 void               ctk_places_sidebar_set_drop_targets_visible   (CtkPlacesSidebar   *sidebar,
                                                                   gboolean            visible,
                                                                   CdkDragContext     *context);
-GDK_AVAILABLE_IN_3_18
+CDK_AVAILABLE_IN_3_18
 gboolean           ctk_places_sidebar_get_show_trash             (CtkPlacesSidebar   *sidebar);
-GDK_AVAILABLE_IN_3_18
+CDK_AVAILABLE_IN_3_18
 void               ctk_places_sidebar_set_show_trash             (CtkPlacesSidebar   *sidebar,
                                                                   gboolean            show_trash);
 
-GDK_AVAILABLE_IN_3_18
+CDK_AVAILABLE_IN_3_18
 void                 ctk_places_sidebar_set_show_other_locations (CtkPlacesSidebar   *sidebar,
                                                                   gboolean            show_other_locations);
-GDK_AVAILABLE_IN_3_18
+CDK_AVAILABLE_IN_3_18
 gboolean             ctk_places_sidebar_get_show_other_locations (CtkPlacesSidebar   *sidebar);
 
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 void                 ctk_places_sidebar_set_show_starred_location (CtkPlacesSidebar   *sidebar,
                                                                    gboolean            show_starred_location);
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 gboolean             ctk_places_sidebar_get_show_starred_location (CtkPlacesSidebar   *sidebar);
 G_END_DECLS
 

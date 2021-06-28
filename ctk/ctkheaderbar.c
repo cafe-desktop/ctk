@@ -325,7 +325,7 @@ _ctk_header_bar_update_window_buttons (CtkHeaderBar *bar)
 
   is_sovereign_window = (!ctk_window_get_modal (window) &&
                           ctk_window_get_transient_for (window) == NULL &&
-                          ctk_window_get_type_hint (window) == GDK_WINDOW_TYPE_HINT_NORMAL);
+                          ctk_window_get_type_hint (window) == CDK_WINDOW_TYPE_HINT_NORMAL);
 
   tokens = g_strsplit (layout_desc, ":", 2);
   if (tokens)
@@ -1935,13 +1935,13 @@ window_state_changed (CtkWidget           *window,
 {
   CtkHeaderBar *bar = CTK_HEADER_BAR (data);
 
-  if (event->changed_mask & (GDK_WINDOW_STATE_FULLSCREEN |
-                             GDK_WINDOW_STATE_MAXIMIZED |
-                             GDK_WINDOW_STATE_TILED |
-                             GDK_WINDOW_STATE_TOP_TILED |
-                             GDK_WINDOW_STATE_RIGHT_TILED |
-                             GDK_WINDOW_STATE_BOTTOM_TILED |
-                             GDK_WINDOW_STATE_LEFT_TILED))
+  if (event->changed_mask & (CDK_WINDOW_STATE_FULLSCREEN |
+                             CDK_WINDOW_STATE_MAXIMIZED |
+                             CDK_WINDOW_STATE_TILED |
+                             CDK_WINDOW_STATE_TOP_TILED |
+                             CDK_WINDOW_STATE_RIGHT_TILED |
+                             CDK_WINDOW_STATE_BOTTOM_TILED |
+                             CDK_WINDOW_STATE_LEFT_TILED))
     _ctk_header_bar_update_window_buttons (bar);
 
   return FALSE;

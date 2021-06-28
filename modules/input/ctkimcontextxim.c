@@ -384,10 +384,10 @@ xim_info_try_im (CtkXIMInfo *info)
     {
       if (!XSetLocaleModifiers (""))
 	g_warning ("Unable to set locale modifiers with XSetLocaleModifiers()");
-      info->im = XOpenIM (GDK_DISPLAY_XDISPLAY (display), NULL, NULL, NULL);
+      info->im = XOpenIM (CDK_DISPLAY_XDISPLAY (display), NULL, NULL, NULL);
       if (!info->im)
 	{
-	  XRegisterIMInstantiateCallback (GDK_DISPLAY_XDISPLAY(display),
+	  XRegisterIMInstantiateCallback (CDK_DISPLAY_XDISPLAY(display),
 					  NULL, NULL, NULL,
 					  xim_instantiate_callback,
 					  (XPointer)info);
@@ -512,7 +512,7 @@ ctk_im_context_xim_finalize (GObject *obj)
 	  CdkDisplay *display;
 
 	  display = cdk_screen_get_display (context_xim->im_info->screen);
-	  XUnregisterIMInstantiateCallback (GDK_DISPLAY_XDISPLAY (display),
+	  XUnregisterIMInstantiateCallback (CDK_DISPLAY_XDISPLAY (display),
 					    NULL, NULL, NULL,
 					    xim_instantiate_callback,
 					    (XPointer)context_xim->im_info);
@@ -597,7 +597,7 @@ ctk_im_context_xim_new (void)
   CtkIMContextXIM *result;
   const gchar *charset;
 
-  if (!GDK_IS_X11_DISPLAY(cdk_display_get_default()))
+  if (!CDK_IS_X11_DISPLAY(cdk_display_get_default()))
     return NULL;
   result = g_object_new (CTK_TYPE_IM_CONTEXT_XIM, NULL);
 
@@ -653,18 +653,18 @@ ctk_im_context_xim_filter_keypress (CtkIMContext *context,
   if (context_xim->client_window == NULL)
     return FALSE;
 
-  if (event->type == GDK_KEY_RELEASE && !context_xim->filter_key_release)
+  if (event->type == CDK_KEY_RELEASE && !context_xim->filter_key_release)
     return FALSE;
 
   root_window = cdk_screen_get_root_window (cdk_window_get_screen (event->window));
   window = cdk_window_get_toplevel (event->window);
 
-  xevent.type = (event->type == GDK_KEY_PRESS) ? KeyPress : KeyRelease;
+  xevent.type = (event->type == CDK_KEY_PRESS) ? KeyPress : KeyRelease;
   xevent.serial = 0;		/* hope it doesn't matter */
   xevent.send_event = event->send_event;
-  xevent.display = GDK_WINDOW_XDISPLAY (window);
-  xevent.window = GDK_WINDOW_XID (window);
-  xevent.root = GDK_WINDOW_XID (root_window);
+  xevent.display = CDK_WINDOW_XDISPLAY (window);
+  xevent.window = CDK_WINDOW_XID (window);
+  xevent.root = CDK_WINDOW_XID (root_window);
   xevent.subwindow = xevent.window;
   xevent.time = event->time;
   xevent.x = xevent.x_root = 0;
@@ -673,11 +673,11 @@ ctk_im_context_xim_filter_keypress (CtkIMContext *context,
   xevent.keycode = event->hardware_keycode;
   xevent.same_screen = True;
   
-  if (XFilterEvent ((XEvent *)&xevent, GDK_WINDOW_XID (context_xim->client_window)))
+  if (XFilterEvent ((XEvent *)&xevent, CDK_WINDOW_XID (context_xim->client_window)))
     return TRUE;
   
   if (event->state &
-      (ctk_accelerator_get_default_mod_mask () & ~(GDK_SHIFT_MASK | GDK_CONTROL_MASK))) 
+      (ctk_accelerator_get_default_mod_mask () & ~(CDK_SHIFT_MASK | CDK_CONTROL_MASK))) 
     return FALSE;
 
  again:
@@ -1392,7 +1392,7 @@ ctk_im_context_xim_get_ic (CtkIMContextXIM *context_xim)
 
       xic = XCreateIC (context_xim->im_info->im,
 		       XNInputStyle, im_style,
-		       XNClientWindow, GDK_WINDOW_XID (context_xim->client_window),
+		       XNClientWindow, CDK_WINDOW_XID (context_xim->client_window),
 		       name1, list1,
 		       name2, list2,
 		       NULL);

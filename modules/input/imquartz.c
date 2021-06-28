@@ -213,7 +213,7 @@ quartz_filter_keypress (CtkIMContext *context,
 
   CTK_NOTE (MISC, g_print ("quartz_filter_keypress\n"));
 
-  if (!GDK_IS_QUARTZ_WINDOW (qc->client_window))
+  if (!CDK_IS_QUARTZ_WINDOW (qc->client_window))
     return FALSE;
 
   NSEvent *nsevent = cdk_quartz_event_get_nsevent ((CdkEvent *)event);
@@ -233,7 +233,7 @@ quartz_filter_keypress (CtkIMContext *context,
   CTK_NOTE (MISC, g_print ("client_window: %p, win: %p, nsview: %p\n",
                            qc->client_window, win, nsview));
 
-  if (event->type == GDK_KEY_RELEASE)
+  if (event->type == CDK_KEY_RELEASE)
     return FALSE;
 
   if (event->hardware_keycode == 55)	/* Command */
@@ -269,7 +269,7 @@ discard_preedit (CtkIMContext *context)
   if (!qc->client_window)
     return;
 
-  if (!GDK_IS_QUARTZ_WINDOW (qc->client_window))
+  if (!CDK_IS_QUARTZ_WINDOW (qc->client_window))
     return;
 
   NSView *nsview = cdk_quartz_window_get_nsview (qc->client_window);
@@ -358,7 +358,7 @@ quartz_set_cursor_location (CtkIMContext *context, CdkRectangle *area)
   qc->cursor_rect->x = area->x + x;
   qc->cursor_rect->y = area->y + y;
 
-  if (!GDK_IS_QUARTZ_WINDOW (qc->client_window))
+  if (!CDK_IS_QUARTZ_WINDOW (qc->client_window))
     return;
 
   nsview = cdk_quartz_window_get_nsview (qc->client_window);

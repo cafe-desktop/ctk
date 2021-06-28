@@ -96,7 +96,7 @@
  * - Stopping event propagation after the gesture group handles the event.
  *
  * Note: if a sequence is set early to #CTK_EVENT_SEQUENCE_CLAIMED on
- * #GDK_TOUCH_BEGIN/#GDK_BUTTON_PRESS (so those events are captured before
+ * #CDK_TOUCH_BEGIN/#CDK_BUTTON_PRESS (so those events are captured before
  * reaching the event widget, this implies #CTK_PHASE_CAPTURE), one similar
  * event will emulated if the sequence changes to #CTK_EVENT_SEQUENCE_DENIED.
  * This way event coherence is preserved before event propagation is unstopped
@@ -110,9 +110,9 @@
  * On the platforms that support it, #CtkGesture will handle transparently
  * touchpad gesture events. The only precautions users of #CtkGesture should do
  * to enable this support are:
- * - Enabling %GDK_TOUCHPAD_GESTURE_MASK on their #CdkWindows
+ * - Enabling %CDK_TOUCHPAD_GESTURE_MASK on their #CdkWindows
  * - If the gesture has %CTK_PHASE_NONE, ensuring events of type
- *   %GDK_TOUCHPAD_SWIPE and %GDK_TOUCHPAD_PINCH are handled by the #CtkGesture
+ *   %CDK_TOUCHPAD_SWIPE and %CDK_TOUCHPAD_PINCH are handled by the #CtkGesture
  */
 
 #include "config.h"
@@ -172,10 +172,10 @@ struct _CtkGesturePrivate
 
 static guint signals[N_SIGNALS] = { 0 };
 
-#define BUTTONS_MASK (GDK_BUTTON1_MASK | GDK_BUTTON2_MASK | GDK_BUTTON3_MASK)
+#define BUTTONS_MASK (CDK_BUTTON1_MASK | CDK_BUTTON2_MASK | CDK_BUTTON3_MASK)
 
-#define EVENT_IS_TOUCHPAD_GESTURE(e) ((e)->type == GDK_TOUCHPAD_SWIPE || \
-                                      (e)->type == GDK_TOUCHPAD_PINCH)
+#define EVENT_IS_TOUCHPAD_GESTURE(e) ((e)->type == CDK_TOUCHPAD_SWIPE || \
+                                      (e)->type == CDK_TOUCHPAD_PINCH)
 
 GList * _ctk_gesture_get_group_link (CtkGesture *gesture);
 
@@ -257,17 +257,17 @@ _ctk_gesture_get_n_touchpad_points (CtkGesture *gesture,
 
   if (only_active &&
       (data->state == CTK_EVENT_SEQUENCE_DENIED ||
-       (data->event->type == GDK_TOUCHPAD_SWIPE &&
-        data->event->touchpad_swipe.phase == GDK_TOUCHPAD_GESTURE_PHASE_END) ||
-       (data->event->type == GDK_TOUCHPAD_PINCH &&
-        data->event->touchpad_pinch.phase == GDK_TOUCHPAD_GESTURE_PHASE_END)))
+       (data->event->type == CDK_TOUCHPAD_SWIPE &&
+        data->event->touchpad_swipe.phase == CDK_TOUCHPAD_GESTURE_PHASE_END) ||
+       (data->event->type == CDK_TOUCHPAD_PINCH &&
+        data->event->touchpad_pinch.phase == CDK_TOUCHPAD_GESTURE_PHASE_END)))
     return 0;
 
   switch (data->event->type)
     {
-    case GDK_TOUCHPAD_SWIPE:
+    case CDK_TOUCHPAD_SWIPE:
       return data->event->touchpad_swipe.n_fingers;
-    case GDK_TOUCHPAD_PINCH:
+    case CDK_TOUCHPAD_PINCH:
       return data->event->touchpad_pinch.n_fingers;
     default:
       return 0;
@@ -290,8 +290,8 @@ _ctk_gesture_get_n_touch_points (CtkGesture *gesture,
     {
       if (only_active &&
           (data->state == CTK_EVENT_SEQUENCE_DENIED ||
-           data->event->type == GDK_TOUCH_END ||
-           data->event->type == GDK_BUTTON_RELEASE))
+           data->event->type == CDK_TOUCH_END ||
+           data->event->type == CDK_BUTTON_RELEASE))
         continue;
 
       n_points++;
@@ -423,21 +423,21 @@ _update_touchpad_deltas (PointData *data)
   if (!event)
     return;
 
-  if (event->type == GDK_TOUCHPAD_SWIPE)
+  if (event->type == CDK_TOUCHPAD_SWIPE)
     {
-      if (event->touchpad_swipe.phase == GDK_TOUCHPAD_GESTURE_PHASE_BEGIN)
+      if (event->touchpad_swipe.phase == CDK_TOUCHPAD_GESTURE_PHASE_BEGIN)
         data->accum_dx = data->accum_dy = 0;
-      else if (event->touchpad_swipe.phase == GDK_TOUCHPAD_GESTURE_PHASE_UPDATE)
+      else if (event->touchpad_swipe.phase == CDK_TOUCHPAD_GESTURE_PHASE_UPDATE)
         {
           data->accum_dx += event->touchpad_swipe.dx;
           data->accum_dy += event->touchpad_swipe.dy;
         }
     }
-  else if (event->type == GDK_TOUCHPAD_PINCH)
+  else if (event->type == CDK_TOUCHPAD_PINCH)
     {
-      if (event->touchpad_pinch.phase == GDK_TOUCHPAD_GESTURE_PHASE_BEGIN)
+      if (event->touchpad_pinch.phase == CDK_TOUCHPAD_GESTURE_PHASE_BEGIN)
         data->accum_dx = data->accum_dy = 0;
-      else if (event->touchpad_pinch.phase == GDK_TOUCHPAD_GESTURE_PHASE_UPDATE)
+      else if (event->touchpad_pinch.phase == CDK_TOUCHPAD_GESTURE_PHASE_UPDATE)
         {
           data->accum_dx += event->touchpad_pinch.dx;
           data->accum_dy += event->touchpad_pinch.dy;
@@ -731,12 +731,12 @@ ctk_gesture_handle_event (CtkEventController *controller,
   if (ctk_gesture_get_sequence_state (gesture, sequence) != CTK_EVENT_SEQUENCE_DENIED)
     priv->last_sequence = sequence;
 
-  if (event->type == GDK_BUTTON_PRESS ||
-      event->type == GDK_TOUCH_BEGIN ||
-      (event->type == GDK_TOUCHPAD_SWIPE &&
-       event->touchpad_swipe.phase == GDK_TOUCHPAD_GESTURE_PHASE_BEGIN) ||
-      (event->type == GDK_TOUCHPAD_PINCH &&
-       event->touchpad_pinch.phase == GDK_TOUCHPAD_GESTURE_PHASE_BEGIN))
+  if (event->type == CDK_BUTTON_PRESS ||
+      event->type == CDK_TOUCH_BEGIN ||
+      (event->type == CDK_TOUCHPAD_SWIPE &&
+       event->touchpad_swipe.phase == CDK_TOUCHPAD_GESTURE_PHASE_BEGIN) ||
+      (event->type == CDK_TOUCHPAD_PINCH &&
+       event->touchpad_pinch.phase == CDK_TOUCHPAD_GESTURE_PHASE_BEGIN))
     {
       if (_ctk_gesture_update_point (gesture, event, TRUE))
         {
@@ -765,12 +765,12 @@ ctk_gesture_handle_event (CtkEventController *controller,
             }
         }
     }
-  else if (event->type == GDK_BUTTON_RELEASE ||
-           event->type == GDK_TOUCH_END ||
-           (event->type == GDK_TOUCHPAD_SWIPE &&
-            event->touchpad_swipe.phase == GDK_TOUCHPAD_GESTURE_PHASE_END) ||
-           (event->type == GDK_TOUCHPAD_PINCH &&
-            event->touchpad_pinch.phase == GDK_TOUCHPAD_GESTURE_PHASE_END))
+  else if (event->type == CDK_BUTTON_RELEASE ||
+           event->type == CDK_TOUCH_END ||
+           (event->type == CDK_TOUCHPAD_SWIPE &&
+            event->touchpad_swipe.phase == CDK_TOUCHPAD_GESTURE_PHASE_END) ||
+           (event->type == CDK_TOUCHPAD_PINCH &&
+            event->touchpad_pinch.phase == CDK_TOUCHPAD_GESTURE_PHASE_END))
     {
       if (_ctk_gesture_update_point (gesture, event, FALSE))
         {
@@ -781,14 +781,14 @@ ctk_gesture_handle_event (CtkEventController *controller,
           _ctk_gesture_remove_point (gesture, event);
         }
     }
-  else if (event->type == GDK_MOTION_NOTIFY ||
-           event->type == GDK_TOUCH_UPDATE ||
-           (event->type == GDK_TOUCHPAD_SWIPE &&
-            event->touchpad_swipe.phase == GDK_TOUCHPAD_GESTURE_PHASE_UPDATE) ||
-           (event->type == GDK_TOUCHPAD_PINCH &&
-            event->touchpad_pinch.phase == GDK_TOUCHPAD_GESTURE_PHASE_UPDATE))
+  else if (event->type == CDK_MOTION_NOTIFY ||
+           event->type == CDK_TOUCH_UPDATE ||
+           (event->type == CDK_TOUCHPAD_SWIPE &&
+            event->touchpad_swipe.phase == CDK_TOUCHPAD_GESTURE_PHASE_UPDATE) ||
+           (event->type == CDK_TOUCHPAD_PINCH &&
+            event->touchpad_pinch.phase == CDK_TOUCHPAD_GESTURE_PHASE_UPDATE))
     {
-      if (event->type == GDK_MOTION_NOTIFY)
+      if (event->type == CDK_MOTION_NOTIFY)
         {
           if ((event->motion.state & BUTTONS_MASK) == 0)
             return FALSE;
@@ -801,20 +801,20 @@ ctk_gesture_handle_event (CtkEventController *controller,
           _ctk_gesture_check_recognized (gesture, sequence))
         g_signal_emit (gesture, signals[UPDATE], 0, sequence);
     }
-  else if (event->type == GDK_TOUCH_CANCEL)
+  else if (event->type == CDK_TOUCH_CANCEL)
     {
       if (!priv->touchpad)
         _ctk_gesture_cancel_sequence (gesture, sequence);
     }
-  else if ((event->type == GDK_TOUCHPAD_SWIPE &&
-            event->touchpad_swipe.phase == GDK_TOUCHPAD_GESTURE_PHASE_CANCEL) ||
-           (event->type == GDK_TOUCHPAD_PINCH &&
-            event->touchpad_pinch.phase == GDK_TOUCHPAD_GESTURE_PHASE_CANCEL))
+  else if ((event->type == CDK_TOUCHPAD_SWIPE &&
+            event->touchpad_swipe.phase == CDK_TOUCHPAD_GESTURE_PHASE_CANCEL) ||
+           (event->type == CDK_TOUCHPAD_PINCH &&
+            event->touchpad_pinch.phase == CDK_TOUCHPAD_GESTURE_PHASE_CANCEL))
     {
       if (priv->touchpad)
         _ctk_gesture_cancel_sequence (gesture, sequence);
     }
-  else if (event->type == GDK_GRAB_BROKEN)
+  else if (event->type == CDK_GRAB_BROKEN)
     {
       if (!event->grab_broken.grab_window ||
           !gesture_within_window (gesture, event->grab_broken.grab_window))
@@ -886,7 +886,7 @@ ctk_gesture_class_init (CtkGestureClass *klass)
                                    g_param_spec_object ("window",
                                                         P_("CdkWindow to receive events about"),
                                                         P_("CdkWindow to receive events about"),
-                                                        GDK_TYPE_WINDOW,
+                                                        CDK_TYPE_WINDOW,
                                                         CTK_PARAM_READWRITE));
   /**
    * CtkGesture::begin:
@@ -909,7 +909,7 @@ ctk_gesture_class_init (CtkGestureClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (CtkGestureClass, begin),
                   NULL, NULL, NULL,
-                  G_TYPE_NONE, 1, GDK_TYPE_EVENT_SEQUENCE);
+                  G_TYPE_NONE, 1, CDK_TYPE_EVENT_SEQUENCE);
   /**
    * CtkGesture::end:
    * @gesture: the object which received the signal
@@ -933,7 +933,7 @@ ctk_gesture_class_init (CtkGestureClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (CtkGestureClass, end),
                   NULL, NULL, NULL,
-                  G_TYPE_NONE, 1, GDK_TYPE_EVENT_SEQUENCE);
+                  G_TYPE_NONE, 1, CDK_TYPE_EVENT_SEQUENCE);
   /**
    * CtkGesture::update:
    * @gesture: the object which received the signal
@@ -950,7 +950,7 @@ ctk_gesture_class_init (CtkGestureClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (CtkGestureClass, update),
                   NULL, NULL, NULL,
-                  G_TYPE_NONE, 1, GDK_TYPE_EVENT_SEQUENCE);
+                  G_TYPE_NONE, 1, CDK_TYPE_EVENT_SEQUENCE);
   /**
    * CtkGesture::cancel:
    * @gesture: the object which received the signal
@@ -971,7 +971,7 @@ ctk_gesture_class_init (CtkGestureClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (CtkGestureClass, cancel),
                   NULL, NULL, NULL,
-                  G_TYPE_NONE, 1, GDK_TYPE_EVENT_SEQUENCE);
+                  G_TYPE_NONE, 1, CDK_TYPE_EVENT_SEQUENCE);
   /**
    * CtkGesture::sequence-state-changed:
    * @gesture: the object which received the signal
@@ -991,7 +991,7 @@ ctk_gesture_class_init (CtkGestureClass *klass)
                   G_STRUCT_OFFSET (CtkGestureClass, sequence_state_changed),
                   NULL, NULL,
                   _ctk_marshal_VOID__BOXED_ENUM,
-                  G_TYPE_NONE, 2, GDK_TYPE_EVENT_SEQUENCE,
+                  G_TYPE_NONE, 2, CDK_TYPE_EVENT_SEQUENCE,
                   CTK_TYPE_EVENT_SEQUENCE_STATE);
   g_signal_set_va_marshaller (signals[SEQUENCE_STATE_CHANGED],
                               G_TYPE_FROM_CLASS (klass),
@@ -1018,8 +1018,8 @@ ctk_gesture_init (CtkGesture *gesture)
   priv->points = g_hash_table_new_full (NULL, NULL, NULL,
                                         (GDestroyNotify) free_point_data);
   ctk_event_controller_set_event_mask (CTK_EVENT_CONTROLLER (gesture),
-                                       GDK_TOUCH_MASK |
-                                       GDK_TOUCHPAD_GESTURE_MASK);
+                                       CDK_TOUCH_MASK |
+                                       CDK_TOUCHPAD_GESTURE_MASK);
 
   priv->group_link = g_list_prepend (NULL, gesture);
 }
@@ -1240,8 +1240,8 @@ ctk_gesture_get_sequences (CtkGesture *gesture)
     {
       if (data->state == CTK_EVENT_SEQUENCE_DENIED)
         continue;
-      if (data->event->type == GDK_TOUCH_END ||
-          data->event->type == GDK_BUTTON_RELEASE)
+      if (data->event->type == CDK_TOUCH_END ||
+          data->event->type == CDK_BUTTON_RELEASE)
         continue;
 
       sequences = g_list_prepend (sequences, sequence);
@@ -1411,8 +1411,8 @@ ctk_gesture_get_bounding_box (CtkGesture   *gesture,
 
       if (data->state == CTK_EVENT_SEQUENCE_DENIED)
         continue;
-      if (data->event->type == GDK_TOUCH_END ||
-          data->event->type == GDK_BUTTON_RELEASE)
+      if (data->event->type == CDK_TOUCH_END ||
+          data->event->type == CDK_BUTTON_RELEASE)
         continue;
 
       cdk_event_get_coords (data->event, &x, &y);
@@ -1629,7 +1629,7 @@ ctk_gesture_set_window (CtkGesture *gesture,
   CtkGesturePrivate *priv;
 
   g_return_if_fail (CTK_IS_GESTURE (gesture));
-  g_return_if_fail (!window || GDK_IS_WINDOW (window));
+  g_return_if_fail (!window || CDK_IS_WINDOW (window));
 
   priv = ctk_gesture_get_instance_private (gesture);
 
@@ -1822,15 +1822,15 @@ _ctk_gesture_get_pointer_emulating_sequence (CtkGesture        *gesture,
     {
       switch (data->event->type)
         {
-        case GDK_TOUCH_BEGIN:
-        case GDK_TOUCH_UPDATE:
-        case GDK_TOUCH_END:
+        case CDK_TOUCH_BEGIN:
+        case CDK_TOUCH_UPDATE:
+        case CDK_TOUCH_END:
           if (!data->event->touch.emulating_pointer)
             continue;
           /* Fall through */
-        case GDK_BUTTON_PRESS:
-        case GDK_BUTTON_RELEASE:
-        case GDK_MOTION_NOTIFY:
+        case CDK_BUTTON_PRESS:
+        case CDK_BUTTON_RELEASE:
+        case CDK_MOTION_NOTIFY:
           *sequence = seq;
           return TRUE;
         default:

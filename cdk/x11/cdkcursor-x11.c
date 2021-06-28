@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -25,7 +25,7 @@
 #include "config.h"
 
 /* needs to be first because any header might include cdk-pixbuf.h otherwise */
-#define GDK_PIXBUF_ENABLE_BACKEND
+#define CDK_PIXBUF_ENABLE_BACKEND
 #include <cdk-pixbuf/cdk-pixbuf.h>
 
 #include "cdkcursor.h"
@@ -99,20 +99,20 @@ cache_compare_func (gconstpointer listelem,
   struct cursor_cache_key* key = (struct cursor_cache_key*)target;
 
   if ((cursor->cursor.type != key->type) ||
-      (cdk_cursor_get_display (GDK_CURSOR (cursor)) != key->display))
+      (cdk_cursor_get_display (CDK_CURSOR (cursor)) != key->display))
     return 1; /* No match */
   
   /* Elements marked as pixmap must be named cursors 
    * (since we don't store normal pixmap cursors 
    */
-  if (key->type == GDK_CURSOR_IS_PIXMAP)
+  if (key->type == CDK_CURSOR_IS_PIXMAP)
     return strcmp (key->name, cursor->name);
 
   return 0; /* Match */
 }
 
 /* Returns the cursor if there is a match, NULL if not
- * For named cursors type shall be GDK_CURSOR_IS_PIXMAP
+ * For named cursors type shall be CDK_CURSOR_IS_PIXMAP
  * For unnamed, typed cursors, name shall be NULL
  */
 static CdkX11Cursor*
@@ -148,7 +148,7 @@ _cdk_x11_cursor_display_finalize (CdkDisplay *display)
   while (item)
     {
       CdkX11Cursor* cursor = (CdkX11Cursor*)(item->data);
-      if (cdk_cursor_get_display (GDK_CURSOR (cursor)) == display)
+      if (cdk_cursor_get_display (CDK_CURSOR (cursor)) == display)
         {
           GSList* olditem;
           g_object_unref ((CdkCursor*) cursor);
@@ -168,7 +168,7 @@ _cdk_x11_cursor_display_finalize (CdkDisplay *display)
 
 /*** CdkX11Cursor ***/
 
-G_DEFINE_TYPE (CdkX11Cursor, cdk_x11_cursor, GDK_TYPE_CURSOR)
+G_DEFINE_TYPE (CdkX11Cursor, cdk_x11_cursor, CDK_TYPE_CURSOR)
 
 static cairo_surface_t *cdk_x11_cursor_get_surface (CdkCursor *cursor,
 						    gdouble   *x_hot,
@@ -177,12 +177,12 @@ static cairo_surface_t *cdk_x11_cursor_get_surface (CdkCursor *cursor,
 static void
 cdk_x11_cursor_finalize (GObject *object)
 {
-  CdkX11Cursor *private = GDK_X11_CURSOR (object);
+  CdkX11Cursor *private = CDK_X11_CURSOR (object);
   CdkDisplay *display;
 
-  display = cdk_cursor_get_display (GDK_CURSOR (object));
+  display = cdk_cursor_get_display (CDK_CURSOR (object));
   if (private->xcursor && !cdk_display_is_closed (display))
-    XFreeCursor (GDK_DISPLAY_XDISPLAY (display), private->xcursor);
+    XFreeCursor (CDK_DISPLAY_XDISPLAY (display), private->xcursor);
 
   g_free (private->name);
 
@@ -192,7 +192,7 @@ cdk_x11_cursor_finalize (GObject *object)
 static void
 cdk_x11_cursor_class_init (CdkX11CursorClass *xcursor_class)
 {
-  CdkCursorClass *cursor_class = GDK_CURSOR_CLASS (xcursor_class);
+  CdkCursorClass *cursor_class = CDK_CURSOR_CLASS (xcursor_class);
   GObjectClass *object_class = G_OBJECT_CLASS (xcursor_class);
 
   object_class->finalize = cdk_x11_cursor_finalize;
@@ -231,7 +231,7 @@ get_blank_cursor (CdkDisplay *display)
   if (cdk_display_is_closed (display))
     cursor = None;
   else
-    cursor = XCreatePixmapCursor (GDK_DISPLAY_XDISPLAY (display),
+    cursor = XCreatePixmapCursor (CDK_DISPLAY_XDISPLAY (display),
                                   pixmap, pixmap,
                                   &color, &color, 1, 1);
   cairo_surface_destroy (surface);
@@ -263,15 +263,15 @@ _cdk_x11_display_get_cursor_for_type (CdkDisplay    *display,
         }
       else
         {
-          if (cursor_type != GDK_BLANK_CURSOR)
-            xcursor = XCreateFontCursor (GDK_DISPLAY_XDISPLAY (display),
+          if (cursor_type != CDK_BLANK_CURSOR)
+            xcursor = XCreateFontCursor (CDK_DISPLAY_XDISPLAY (display),
                                          cursor_type);
           else
             xcursor = get_blank_cursor (display);
        }
     }
 
-  private = g_object_new (GDK_TYPE_X11_CURSOR,
+  private = g_object_new (CDK_TYPE_X11_CURSOR,
                           "cursor-type", cursor_type,
                           "display", display,
                           NULL);
@@ -282,7 +282,7 @@ _cdk_x11_display_get_cursor_for_type (CdkDisplay    *display,
   if (xcursor != None)
     add_to_cache (private);
 
-  return GDK_CURSOR (private);
+  return CDK_CURSOR (private);
 }
 
 /**
@@ -298,7 +298,7 @@ cdk_x11_cursor_get_xdisplay (CdkCursor *cursor)
 {
   g_return_val_if_fail (cursor != NULL, NULL);
 
-  return GDK_DISPLAY_XDISPLAY (cdk_cursor_get_display (cursor));
+  return CDK_DISPLAY_XDISPLAY (cdk_cursor_get_display (cursor));
 }
 
 /**
@@ -334,15 +334,15 @@ cdk_x11_cursor_get_surface (CdkCursor *cursor,
   gint scale;
   gchar *theme;
   
-  private = GDK_X11_CURSOR (cursor);
+  private = CDK_X11_CURSOR (cursor);
 
   display = cdk_cursor_get_display (cursor);
-  xdisplay = GDK_DISPLAY_XDISPLAY (display);
+  xdisplay = CDK_DISPLAY_XDISPLAY (display);
 
   size = XcursorGetDefaultSize (xdisplay);
   theme = XcursorGetTheme (xdisplay);
 
-  if (cursor->type == GDK_CURSOR_IS_PIXMAP)
+  if (cursor->type == CDK_CURSOR_IS_PIXMAP)
     {
       if (private->name)
         images = XcursorLibraryLoadImages (private->name, theme, size);
@@ -392,8 +392,8 @@ _cdk_x11_cursor_update_theme (CdkCursor *cursor)
   CdkX11Display *display_x11;
 
   private = (CdkX11Cursor *) cursor;
-  display_x11 = GDK_X11_DISPLAY (cdk_cursor_get_display (cursor));
-  xdisplay = GDK_DISPLAY_XDISPLAY (display_x11);
+  display_x11 = CDK_X11_DISPLAY (cdk_cursor_get_display (cursor));
+  xdisplay = CDK_DISPLAY_XDISPLAY (display_x11);
 
   if (!display_x11->have_xfixes)
     return;
@@ -405,10 +405,10 @@ _cdk_x11_cursor_update_theme (CdkCursor *cursor)
 
   if (private->xcursor != None)
     {
-      if (cursor->type == GDK_BLANK_CURSOR)
+      if (cursor->type == CDK_BLANK_CURSOR)
         return;
 
-      if (cursor->type == GDK_CURSOR_IS_PIXMAP)
+      if (cursor->type == CDK_CURSOR_IS_PIXMAP)
         {
           if (private->name)
             new_cursor = XcursorLibraryLoadCursor (xdisplay, private->name);
@@ -468,9 +468,9 @@ cdk_x11_display_set_cursor_theme (CdkDisplay  *display,
   gchar *old_theme;
   gint old_size;
 
-  g_return_if_fail (GDK_IS_DISPLAY (display));
+  g_return_if_fail (CDK_IS_DISPLAY (display));
 
-  xdisplay = GDK_DISPLAY_XDISPLAY (display);
+  xdisplay = CDK_DISPLAY_XDISPLAY (display);
 
   old_theme = XcursorGetTheme (xdisplay);
   old_size = XcursorGetDefaultSize (xdisplay);
@@ -504,7 +504,7 @@ cdk_x11_display_set_cursor_theme (CdkDisplay  *display,
                                   const gchar *theme,
                                   const gint   size)
 {
-  g_return_if_fail (GDK_IS_DISPLAY (display));
+  g_return_if_fail (CDK_IS_DISPLAY (display));
 }
 
 void
@@ -597,19 +597,19 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 G_GNUC_END_IGNORE_DEPRECATIONS
 
       xcimage = create_cursor_image (surface, x, y, target_scale);
-      xcursor = XcursorImageLoadCursor (GDK_DISPLAY_XDISPLAY (display), xcimage);
+      xcursor = XcursorImageLoadCursor (CDK_DISPLAY_XDISPLAY (display), xcimage);
       XcursorImageDestroy (xcimage);
     }
 
-  private = g_object_new (GDK_TYPE_X11_CURSOR, 
-                          "cursor-type", GDK_CURSOR_IS_PIXMAP,
+  private = g_object_new (CDK_TYPE_X11_CURSOR, 
+                          "cursor-type", CDK_CURSOR_IS_PIXMAP,
                           "display", display,
                           NULL);
   private->xcursor = xcursor;
   private->name = NULL;
   private->serial = theme_serial;
 
-  return GDK_CURSOR (private);
+  return CDK_CURSOR (private);
 }
 
 static const struct {
@@ -682,9 +682,9 @@ _cdk_x11_display_get_cursor_for_name (CdkDisplay  *display,
   else
     {
       if (strcmp (name, "none") == 0)
-        return _cdk_x11_display_get_cursor_for_type (display, GDK_BLANK_CURSOR);
+        return _cdk_x11_display_get_cursor_for_type (display, CDK_BLANK_CURSOR);
 
-      private = find_in_cache (display, GDK_CURSOR_IS_PIXMAP, name);
+      private = find_in_cache (display, CDK_CURSOR_IS_PIXMAP, name);
 
       if (private)
         {
@@ -694,7 +694,7 @@ _cdk_x11_display_get_cursor_for_name (CdkDisplay  *display,
           return (CdkCursor*) private;
         }
 
-      xdisplay = GDK_DISPLAY_XDISPLAY (display);
+      xdisplay = CDK_DISPLAY_XDISPLAY (display);
       xcursor = XcursorLibraryLoadCursor (xdisplay, name);
       if (xcursor == None)
         {
@@ -712,8 +712,8 @@ _cdk_x11_display_get_cursor_for_name (CdkDisplay  *display,
         return NULL;
     }
 
-  private = g_object_new (GDK_TYPE_X11_CURSOR,
-                          "cursor-type", GDK_CURSOR_IS_PIXMAP,
+  private = g_object_new (CDK_TYPE_X11_CURSOR,
+                          "cursor-type", CDK_CURSOR_IS_PIXMAP,
                           "display", display,
                           NULL);
   private->xcursor = xcursor;
@@ -722,19 +722,19 @@ _cdk_x11_display_get_cursor_for_name (CdkDisplay  *display,
 
   add_to_cache (private);
 
-  return GDK_CURSOR (private);
+  return CDK_CURSOR (private);
 }
 
 gboolean
 _cdk_x11_display_supports_cursor_alpha (CdkDisplay *display)
 {
-  return XcursorSupportsARGB (GDK_DISPLAY_XDISPLAY (display));
+  return XcursorSupportsARGB (CDK_DISPLAY_XDISPLAY (display));
 }
 
 gboolean
 _cdk_x11_display_supports_cursor_color (CdkDisplay *display)
 {
-  return XcursorSupportsARGB (GDK_DISPLAY_XDISPLAY (display));
+  return XcursorSupportsARGB (CDK_DISPLAY_XDISPLAY (display));
 }
 
 void
@@ -742,7 +742,7 @@ _cdk_x11_display_get_default_cursor_size (CdkDisplay *display,
                                           guint      *width,
                                           guint      *height)
 {
-  *width = *height = XcursorGetDefaultSize (GDK_DISPLAY_XDISPLAY (display));
+  *width = *height = XcursorGetDefaultSize (CDK_DISPLAY_XDISPLAY (display));
 }
 
 #else
@@ -774,17 +774,17 @@ cdk_cursor_new_from_pixmap (CdkDisplay     *display,
   if (cdk_display_is_closed (display))
     xcursor = None;
   else
-    xcursor = XCreatePixmapCursor (GDK_DISPLAY_XDISPLAY (display),
+    xcursor = XCreatePixmapCursor (CDK_DISPLAY_XDISPLAY (display),
                                    source_pixmap, mask_pixmap, &xfg, &xbg, x, y);
-  private = g_object_new (GDK_TYPE_X11_CURSOR,
-                          "cursor-type", GDK_CURSOR_IS_PIXMAP,
+  private = g_object_new (CDK_TYPE_X11_CURSOR,
+                          "cursor-type", CDK_CURSOR_IS_PIXMAP,
                           "display", display,
                           NULL);
   private->xcursor = xcursor;
   private->name = NULL;
   private->serial = theme_serial;
 
-  return GDK_CURSOR (private);
+  return CDK_CURSOR (private);
 }
 
 CdkCursor *
@@ -925,11 +925,11 @@ _cdk_x11_display_get_maximal_cursor_size (CdkDisplay *display,
   CdkScreen *screen;
   CdkWindow *window;
 
-  g_return_if_fail (GDK_IS_DISPLAY (display));
+  g_return_if_fail (CDK_IS_DISPLAY (display));
 
   screen = cdk_display_get_default_screen (display);
   window = cdk_screen_get_root_window (screen);
-  XQueryBestCursor (GDK_DISPLAY_XDISPLAY (display),
-                    GDK_WINDOW_XID (window),
+  XQueryBestCursor (CDK_DISPLAY_XDISPLAY (display),
+                    CDK_WINDOW_XID (window),
                     128, 128, width, height);
 }

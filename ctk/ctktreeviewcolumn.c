@@ -823,7 +823,7 @@ ctk_tree_view_column_create_button (CtkTreeViewColumn *tree_column)
   ctk_widget_set_focus_on_click (priv->button, FALSE);
 
   ctk_widget_show (priv->button);
-  ctk_widget_add_events (priv->button, GDK_POINTER_MOTION_MASK);
+  ctk_widget_add_events (priv->button, CDK_POINTER_MOTION_MASK);
 
   g_signal_connect (priv->button, "event",
 		    G_CALLBACK (ctk_tree_view_column_button_event),
@@ -1047,9 +1047,9 @@ ctk_tree_view_column_button_event (CtkWidget *widget,
 
   g_return_val_if_fail (event != NULL, FALSE);
 
-  if (event->type == GDK_BUTTON_PRESS &&
+  if (event->type == CDK_BUTTON_PRESS &&
       priv->reorderable &&
-      ((CdkEventButton *)event)->button == GDK_BUTTON_PRIMARY)
+      ((CdkEventButton *)event)->button == CDK_BUTTON_PRIMARY)
     {
       priv->maybe_reordered = TRUE;
       priv->drag_x = event->button.x;
@@ -1057,11 +1057,11 @@ ctk_tree_view_column_button_event (CtkWidget *widget,
       ctk_widget_grab_focus (widget);
     }
 
-  if (event->type == GDK_BUTTON_RELEASE ||
-      event->type == GDK_LEAVE_NOTIFY)
+  if (event->type == CDK_BUTTON_RELEASE ||
+      event->type == CDK_LEAVE_NOTIFY)
     priv->maybe_reordered = FALSE;
   
-  if (event->type == GDK_MOTION_NOTIFY &&
+  if (event->type == CDK_MOTION_NOTIFY &&
       priv->maybe_reordered &&
       (ctk_drag_check_threshold (widget,
 				 priv->drag_x,
@@ -1079,13 +1079,13 @@ ctk_tree_view_column_button_event (CtkWidget *widget,
     {
       switch (event->type)
 	{
-	case GDK_BUTTON_PRESS:
-	case GDK_2BUTTON_PRESS:
-	case GDK_3BUTTON_PRESS:
-	case GDK_MOTION_NOTIFY:
-	case GDK_BUTTON_RELEASE:
-	case GDK_ENTER_NOTIFY:
-	case GDK_LEAVE_NOTIFY:
+	case CDK_BUTTON_PRESS:
+	case CDK_2BUTTON_PRESS:
+	case CDK_3BUTTON_PRESS:
+	case CDK_MOTION_NOTIFY:
+	case CDK_BUTTON_RELEASE:
+	case CDK_ENTER_NOTIFY:
+	case CDK_LEAVE_NOTIFY:
 	  return TRUE;
 	default:
 	  return FALSE;
@@ -1327,15 +1327,15 @@ _ctk_tree_view_column_realize_button (CtkTreeViewColumn *column)
   g_return_if_fail (_ctk_tree_view_get_header_window (tree_view) != NULL);
   ctk_widget_set_parent_window (priv->button, _ctk_tree_view_get_header_window (tree_view));
 
-  attr.window_type = GDK_WINDOW_CHILD;
-  attr.wclass = GDK_INPUT_ONLY;
+  attr.window_type = CDK_WINDOW_CHILD;
+  attr.wclass = CDK_INPUT_ONLY;
   attr.visual = ctk_widget_get_visual (CTK_WIDGET (tree_view));
   attr.event_mask = ctk_widget_get_events (CTK_WIDGET (tree_view)) |
-                    (GDK_BUTTON_PRESS_MASK |
-		     GDK_BUTTON_RELEASE_MASK |
-		     GDK_POINTER_MOTION_MASK |
-		     GDK_KEY_PRESS_MASK);
-  attributes_mask = GDK_WA_CURSOR | GDK_WA_X | GDK_WA_Y;
+                    (CDK_BUTTON_PRESS_MASK |
+		     CDK_BUTTON_RELEASE_MASK |
+		     CDK_POINTER_MOTION_MASK |
+		     CDK_KEY_PRESS_MASK);
+  attributes_mask = CDK_WA_CURSOR | CDK_WA_X | CDK_WA_Y;
   display = cdk_window_get_display (_ctk_tree_view_get_header_window (tree_view));
   attr.cursor = cdk_cursor_new_from_name (display, "col-resize");
   attr.y = 0;

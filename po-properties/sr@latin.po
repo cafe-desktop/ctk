@@ -139,20 +139,20 @@ msgstr "Podrazumevani prikaz"
 
 # U zavisnosti od smisla, može biti i Ekran, i slično
 #: cdk/cdkdisplaymanager.c:170
-msgid "The default display for GDK"
-msgstr "Podrazumevani prikaz za GDK"
+msgid "The default display for CDK"
+msgstr "Podrazumevani prikaz za CDK"
 
 #: cdk/cdkglcontext.c:318
-msgid "The GDK display used to create the GL context"
-msgstr "GDK prikaz u upotrebi za pravljenje GL konteksta"
+msgid "The CDK display used to create the GL context"
+msgstr "CDK prikaz u upotrebi za pravljenje GL konteksta"
 
 #: cdk/cdkglcontext.c:333 ctk/ctkwidget.c:1344
 msgid "Window"
 msgstr "Prozor"
 
 #: cdk/cdkglcontext.c:334
-msgid "The GDK window bound to the GL context"
-msgstr "GDK prozor koji je vezan za GL kontekst"
+msgid "The CDK window bound to the GL context"
+msgstr "CDK prozor koji je vezan za GL kontekst"
 
 #: cdk/cdkglcontext.c:349
 msgid "Shared context"

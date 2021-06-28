@@ -58,28 +58,28 @@ struct _CtkSizeGroupClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType            ctk_size_group_get_type      (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkSizeGroup *   ctk_size_group_new           (CtkSizeGroupMode  mode);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_size_group_set_mode      (CtkSizeGroup     *size_group,
 					       CtkSizeGroupMode  mode);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkSizeGroupMode ctk_size_group_get_mode      (CtkSizeGroup     *size_group);
-GDK_DEPRECATED_IN_3_22
+CDK_DEPRECATED_IN_3_22
 void             ctk_size_group_set_ignore_hidden (CtkSizeGroup *size_group,
 						   gboolean      ignore_hidden);
-GDK_DEPRECATED_IN_3_22
+CDK_DEPRECATED_IN_3_22
 gboolean         ctk_size_group_get_ignore_hidden (CtkSizeGroup *size_group);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_size_group_add_widget    (CtkSizeGroup     *size_group,
 					       CtkWidget        *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_size_group_remove_widget (CtkSizeGroup     *size_group,
 					       CtkWidget        *widget);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GSList *         ctk_size_group_get_widgets   (CtkSizeGroup     *size_group);
 
 G_END_DECLS

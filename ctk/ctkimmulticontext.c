@@ -373,9 +373,9 @@ ctk_im_multicontext_filter_keypress (CtkIMContext *context,
 
       no_text_input_mask =
         cdk_keymap_get_modifier_mask (cdk_keymap_get_for_display (display),
-                                      GDK_MODIFIER_INTENT_NO_TEXT_INPUT);
+                                      CDK_MODIFIER_INTENT_NO_TEXT_INPUT);
 
-      if (event->type == GDK_KEY_PRESS &&
+      if (event->type == CDK_KEY_PRESS &&
           (event->state & no_text_input_mask) == 0)
         {
           gunichar ch;

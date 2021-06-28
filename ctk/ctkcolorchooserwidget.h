@@ -66,10 +66,10 @@ struct _CtkColorChooserWidgetClass
   void (*_ctk_reserved8) (void);
 };
 
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 GType       ctk_color_chooser_widget_get_type (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 CtkWidget * ctk_color_chooser_widget_new      (void);
 
 G_END_DECLS

@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2001 Stefan Ondrejicka
  *
  * This library is free software; you can redistribute it and/or

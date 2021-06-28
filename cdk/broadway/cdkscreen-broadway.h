@@ -19,8 +19,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_BROADWAY_SCREEN_H__
-#define __GDK_BROADWAY_SCREEN_H__
+#ifndef __CDK_BROADWAY_SCREEN_H__
+#define __CDK_BROADWAY_SCREEN_H__
 
 #include <cdk/cdkscreenprivate.h>
 #include <cdk/cdkvisual.h>
@@ -31,12 +31,12 @@ G_BEGIN_DECLS
 typedef struct _CdkBroadwayScreen CdkBroadwayScreen;
 typedef struct _CdkBroadwayScreenClass CdkBroadwayScreenClass;
 
-#define GDK_TYPE_BROADWAY_SCREEN              (cdk_broadway_screen_get_type ())
-#define GDK_BROADWAY_SCREEN(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_BROADWAY_SCREEN, CdkBroadwayScreen))
-#define GDK_BROADWAY_SCREEN_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_BROADWAY_SCREEN, CdkBroadwayScreenClass))
-#define GDK_IS_BROADWAY_SCREEN(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_BROADWAY_SCREEN))
-#define GDK_IS_BROADWAY_SCREEN_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_BROADWAY_SCREEN))
-#define GDK_BROADWAY_SCREEN_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_BROADWAY_SCREEN, CdkBroadwayScreenClass))
+#define CDK_TYPE_BROADWAY_SCREEN              (cdk_broadway_screen_get_type ())
+#define CDK_BROADWAY_SCREEN(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), CDK_TYPE_BROADWAY_SCREEN, CdkBroadwayScreen))
+#define CDK_BROADWAY_SCREEN_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CDK_TYPE_BROADWAY_SCREEN, CdkBroadwayScreenClass))
+#define CDK_IS_BROADWAY_SCREEN(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), CDK_TYPE_BROADWAY_SCREEN))
+#define CDK_IS_BROADWAY_SCREEN_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CDK_TYPE_BROADWAY_SCREEN))
+#define CDK_BROADWAY_SCREEN_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CDK_TYPE_BROADWAY_SCREEN, CdkBroadwayScreenClass))
 
 typedef struct _CdkBroadwayMonitor CdkBroadwayMonitor;
 
@@ -75,4 +75,4 @@ void _cdk_broadway_screen_setup           (CdkScreen *screen);
 
 G_END_DECLS
 
-#endif /* __GDK_BROADWAY_SCREEN_H__ */
+#endif /* __CDK_BROADWAY_SCREEN_H__ */

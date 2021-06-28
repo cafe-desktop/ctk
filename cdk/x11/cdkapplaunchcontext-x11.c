@@ -279,7 +279,7 @@ cdk_x11_app_launch_context_get_startup_notify_id (GAppLaunchContext *context,
   GFileInfo *fileinfo;
   CdkAppLaunchContext *ctx;
 
-  ctx = GDK_APP_LAUNCH_CONTEXT (context);
+  ctx = CDK_APP_LAUNCH_CONTEXT (context);
 
   display = ctx->display;
   if (ctx->screen)
@@ -343,7 +343,7 @@ cdk_x11_app_launch_context_get_startup_notify_id (GAppLaunchContext *context,
   binary_name = g_app_info_get_executable (info);
 
   timestamp = ctx->timestamp;
-  if (timestamp == GDK_CURRENT_TIME)
+  if (timestamp == CDK_CURRENT_TIME)
     timestamp = cdk_x11_display_get_user_time (display);
 
   screen_str = g_strdup_printf ("%d", cdk_x11_screen_get_number (screen));
@@ -400,7 +400,7 @@ cdk_x11_app_launch_context_launch_failed (GAppLaunchContext *context,
   StartupNotificationData *sn_data;
   GSList *l;
 
-  ctx = GDK_APP_LAUNCH_CONTEXT (context);
+  ctx = CDK_APP_LAUNCH_CONTEXT (context);
 
   if (ctx->screen)
     screen = ctx->screen;
@@ -443,7 +443,7 @@ struct _CdkX11AppLaunchContextClass
 };
 
 
-G_DEFINE_TYPE (CdkX11AppLaunchContext, cdk_x11_app_launch_context, GDK_TYPE_APP_LAUNCH_CONTEXT)
+G_DEFINE_TYPE (CdkX11AppLaunchContext, cdk_x11_app_launch_context, CDK_TYPE_APP_LAUNCH_CONTEXT)
 
 static void
 cdk_x11_app_launch_context_class_init (CdkX11AppLaunchContextClass *klass)
@@ -465,7 +465,7 @@ _cdk_x11_display_get_app_launch_context (CdkDisplay *display)
   CdkAppLaunchContext *ctx;
   const gchar *display_name;
 
-  ctx = g_object_new (GDK_TYPE_X11_APP_LAUNCH_CONTEXT,
+  ctx = g_object_new (CDK_TYPE_X11_APP_LAUNCH_CONTEXT,
                       "display", display,
                       NULL);
 

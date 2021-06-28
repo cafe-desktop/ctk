@@ -65,7 +65,7 @@ msgstr "نیشاندان"
 
 #. Description of --cdk-debug=FLAGS in --help output
 #: cdk/cdk.c:248
-msgid "GDK debugging flags to set"
+msgid "CDK debugging flags to set"
 msgstr ""
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
@@ -78,11 +78,11 @@ msgstr "ئاڵاكان"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: cdk/cdk.c:251
-msgid "GDK debugging flags to unset"
+msgid "CDK debugging flags to unset"
 msgstr ""
 
 #: cdk/cdkwindow.c:2851
-msgid "GL support disabled via GDK_DEBUG"
+msgid "GL support disabled via CDK_DEBUG"
 msgstr ""
 
 #: cdk/cdkwindow.c:2862
@@ -4047,7 +4047,7 @@ msgid "CTK+ Version"
 msgstr "وەشانی CTK+"
 
 #: ctk/inspector/general.ui:68
-msgid "GDK Backend"
+msgid "CDK Backend"
 msgstr ""
 
 #: ctk/inspector/general.ui:373
@@ -4421,7 +4421,7 @@ msgstr ""
 #: ctk/inspector/visual.c:817
 msgid ""
 "Not settable at runtime.\n"
-"Use GDK_GL=always or GDK_GL=disable instead"
+"Use CDK_GL=always or CDK_GL=disable instead"
 msgstr ""
 
 #: ctk/inspector/visual.c:831 ctk/inspector/visual.c:832

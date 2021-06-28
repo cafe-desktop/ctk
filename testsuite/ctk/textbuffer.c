@@ -1368,7 +1368,7 @@ test_clipboard (void)
   CtkTextIter end;
   CtkTextTag *tag;
 
-  clipboard = ctk_clipboard_get (GDK_SELECTION_CLIPBOARD);
+  clipboard = ctk_clipboard_get (CDK_SELECTION_CLIPBOARD);
 
   buffer = ctk_text_buffer_new (NULL);
   ctk_text_buffer_set_text (buffer, "abcdef", -1);

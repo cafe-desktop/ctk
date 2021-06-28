@@ -351,7 +351,7 @@ ctk_window_group_get_current_device_grab (CtkWindowGroup *window_group,
   GSList *list;
 
   g_return_val_if_fail (CTK_IS_WINDOW_GROUP (window_group), NULL);
-  g_return_val_if_fail (GDK_IS_DEVICE (device), NULL);
+  g_return_val_if_fail (CDK_IS_DEVICE (device), NULL);
 
   priv = window_group->priv;
   list = priv->device_grabs;

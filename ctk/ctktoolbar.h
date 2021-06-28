@@ -95,54 +95,54 @@ struct _CtkToolbarClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType           ctk_toolbar_get_type                (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *     ctk_toolbar_new                     (void);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void            ctk_toolbar_insert                  (CtkToolbar      *toolbar,
 						     CtkToolItem     *item,
 						     gint             pos);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint            ctk_toolbar_get_item_index          (CtkToolbar      *toolbar,
 						     CtkToolItem     *item);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint            ctk_toolbar_get_n_items             (CtkToolbar      *toolbar);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkToolItem *   ctk_toolbar_get_nth_item            (CtkToolbar      *toolbar,
 						     gint             n);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean        ctk_toolbar_get_show_arrow          (CtkToolbar      *toolbar);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void            ctk_toolbar_set_show_arrow          (CtkToolbar      *toolbar,
 						     gboolean         show_arrow);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkToolbarStyle ctk_toolbar_get_style               (CtkToolbar      *toolbar);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void            ctk_toolbar_set_style               (CtkToolbar      *toolbar,
 						     CtkToolbarStyle  style);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void            ctk_toolbar_unset_style             (CtkToolbar      *toolbar);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkIconSize     ctk_toolbar_get_icon_size           (CtkToolbar      *toolbar);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void            ctk_toolbar_set_icon_size           (CtkToolbar      *toolbar,
                                                      CtkIconSize      icon_size);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void            ctk_toolbar_unset_icon_size         (CtkToolbar      *toolbar);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkReliefStyle  ctk_toolbar_get_relief_style        (CtkToolbar      *toolbar);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint            ctk_toolbar_get_drop_index          (CtkToolbar      *toolbar,
 						     gint             x,
 						     gint             y);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void            ctk_toolbar_set_drop_highlight_item (CtkToolbar      *toolbar,
 						     CtkToolItem     *tool_item,
 						     gint             index_);

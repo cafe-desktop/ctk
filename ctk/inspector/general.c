@@ -31,25 +31,25 @@
 #include "ctkadjustment.h"
 #include "ctkbox.h"
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
 #include "x11/cdkx.h"
 #include <epoxy/glx.h>
 #endif
 
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
 #include "win32/cdkwin32.h"
 #endif
 
-#ifdef GDK_WINDOWING_QUARTZ
+#ifdef CDK_WINDOWING_QUARTZ
 #include "quartz/cdkquartz.h"
 #endif
 
-#ifdef GDK_WINDOWING_WAYLAND
+#ifdef CDK_WINDOWING_WAYLAND
 #include "wayland/cdkwayland.h"
 #include <epoxy/egl.h>
 #endif
 
-#ifdef GDK_WINDOWING_BROADWAY
+#ifdef CDK_WINDOWING_BROADWAY
 #include "broadway/cdkbroadway.h"
 #endif
 
@@ -88,28 +88,28 @@ init_version (CtkInspectorGeneral *gen)
 
   display = cdk_display_get_default ();
 
-#ifdef GDK_WINDOWING_X11
-  if (GDK_IS_X11_DISPLAY (display))
+#ifdef CDK_WINDOWING_X11
+  if (CDK_IS_X11_DISPLAY (display))
     backend = "X11";
   else
 #endif
-#ifdef GDK_WINDOWING_WAYLAND
-  if (GDK_IS_WAYLAND_DISPLAY (display))
+#ifdef CDK_WINDOWING_WAYLAND
+  if (CDK_IS_WAYLAND_DISPLAY (display))
     backend = "Wayland";
   else
 #endif
-#ifdef GDK_WINDOWING_BROADWAY
-  if (GDK_IS_BROADWAY_DISPLAY (display))
+#ifdef CDK_WINDOWING_BROADWAY
+  if (CDK_IS_BROADWAY_DISPLAY (display))
     backend = "Broadway";
   else
 #endif
-#ifdef GDK_WINDOWING_WIN32
-  if (GDK_IS_WIN32_DISPLAY (display))
+#ifdef CDK_WINDOWING_WIN32
+  if (CDK_IS_WIN32_DISPLAY (display))
     backend = "Windows";
   else
 #endif
-#ifdef GDK_WINDOWING_QUARTZ
-  if (GDK_IS_QUARTZ_DISPLAY (display))
+#ifdef CDK_WINDOWING_QUARTZ
+  if (CDK_IS_QUARTZ_DISPLAY (display))
     backend = "Quartz";
   else
 #endif
@@ -196,7 +196,7 @@ add_label_row (CtkInspectorGeneral *gen,
   ctk_size_group_add_widget (CTK_SIZE_GROUP (gen->priv->labels), label);
 }
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
 static void
 append_glx_extension_row (CtkInspectorGeneral *gen,
                           Display             *dpy,
@@ -206,7 +206,7 @@ append_glx_extension_row (CtkInspectorGeneral *gen,
 }
 #endif
 
-#ifdef GDK_WINDOWING_WAYLAND
+#ifdef CDK_WINDOWING_WAYLAND
 static void
 append_egl_extension_row (CtkInspectorGeneral *gen,
                           EGLDisplay          dpy,
@@ -254,11 +254,11 @@ wayland_get_display (struct wl_display *wl_display)
 static void
 init_gl (CtkInspectorGeneral *gen)
 {
-#ifdef GDK_WINDOWING_X11
-  if (GDK_IS_X11_DISPLAY (cdk_display_get_default ()))
+#ifdef CDK_WINDOWING_X11
+  if (CDK_IS_X11_DISPLAY (cdk_display_get_default ()))
     {
       CdkDisplay *display = cdk_display_get_default ();
-      Display *dpy = GDK_DISPLAY_XDISPLAY (display);
+      Display *dpy = CDK_DISPLAY_XDISPLAY (display);
       int error_base, event_base;
       gchar *version;
       if (!glXQueryExtension (dpy, &error_base, &event_base))
@@ -280,8 +280,8 @@ init_gl (CtkInspectorGeneral *gen)
     }
   else
 #endif
-#ifdef GDK_WINDOWING_WAYLAND
-  if (GDK_IS_WAYLAND_DISPLAY (cdk_display_get_default ()))
+#ifdef CDK_WINDOWING_WAYLAND
+  if (CDK_IS_WAYLAND_DISPLAY (cdk_display_get_default ()))
     {
       CdkDisplay *display = cdk_display_get_default ();
       EGLDisplay dpy;
@@ -361,12 +361,12 @@ translate_subpixel_layout (CdkSubpixelLayout subpixel)
 {
   switch (subpixel)
     {
-    case GDK_SUBPIXEL_LAYOUT_NONE: return "none";
-    case GDK_SUBPIXEL_LAYOUT_UNKNOWN: return "unknown";
-    case GDK_SUBPIXEL_LAYOUT_HORIZONTAL_RGB: return "horizontal rgb";
-    case GDK_SUBPIXEL_LAYOUT_HORIZONTAL_BGR: return "horizontal bgr";
-    case GDK_SUBPIXEL_LAYOUT_VERTICAL_RGB: return "vertical rgb";
-    case GDK_SUBPIXEL_LAYOUT_VERTICAL_BGR: return "vertical bgr";
+    case CDK_SUBPIXEL_LAYOUT_NONE: return "none";
+    case CDK_SUBPIXEL_LAYOUT_UNKNOWN: return "unknown";
+    case CDK_SUBPIXEL_LAYOUT_HORIZONTAL_RGB: return "horizontal rgb";
+    case CDK_SUBPIXEL_LAYOUT_HORIZONTAL_BGR: return "horizontal bgr";
+    case CDK_SUBPIXEL_LAYOUT_VERTICAL_RGB: return "vertical rgb";
+    case CDK_SUBPIXEL_LAYOUT_VERTICAL_BGR: return "vertical bgr";
     default: g_assert_not_reached ();
     }
 }
@@ -522,7 +522,7 @@ add_device (CtkInspectorGeneral *gen,
   str = g_string_new ("");
 
   axes = cdk_device_get_axes (device);
-  for (i = GDK_AXIS_X; i < GDK_AXIS_LAST; i++)
+  for (i = CDK_AXIS_X; i < CDK_AXIS_LAST; i++)
     {
       if ((axes & (1 << i)) != 0)
         {
@@ -553,10 +553,10 @@ get_seat_capabilities (CdkSeat *seat)
     CdkSeatCapabilities cap;
     const char *name;
   } caps[] = {
-    { GDK_SEAT_CAPABILITY_POINTER,       "Pointer" },
-    { GDK_SEAT_CAPABILITY_TOUCH,         "Touch" },
-    { GDK_SEAT_CAPABILITY_TABLET_STYLUS, "Tablet" },
-    { GDK_SEAT_CAPABILITY_KEYBOARD,      "Keyboard" },
+    { CDK_SEAT_CAPABILITY_POINTER,       "Pointer" },
+    { CDK_SEAT_CAPABILITY_TOUCH,         "Touch" },
+    { CDK_SEAT_CAPABILITY_TABLET_STYLUS, "Tablet" },
+    { CDK_SEAT_CAPABILITY_KEYBOARD,      "Keyboard" },
     { 0, NULL }
   };
   GString *str;
@@ -601,10 +601,10 @@ add_seat (CtkInspectorGeneral *gen,
   g_free (text);
   g_free (caps);
 
-  list = cdk_seat_get_slaves (seat, GDK_SEAT_CAPABILITY_ALL);
+  list = cdk_seat_get_slaves (seat, CDK_SEAT_CAPABILITY_ALL);
 
   for (l = list; l; l = l->next)
-    add_device (gen, GDK_DEVICE (l->data));
+    add_device (gen, CDK_DEVICE (l->data));
 
   g_list_free (list);
 }
@@ -624,7 +624,7 @@ populate_seats (CtkInspectorGeneral *gen)
   list = cdk_display_list_seats (display);
 
   for (l = list, i = 0; l; l = l->next, i++)
-    add_seat (gen, GDK_SEAT (l->data), i);
+    add_seat (gen, CDK_SEAT (l->data), i);
 
   g_list_free (list);
 }

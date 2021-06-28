@@ -41,22 +41,22 @@ G_BEGIN_DECLS
 #define CTK_EVENT_CONTROLLER_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CTK_TYPE_EVENT_CONTROLLER, CtkEventControllerClass))
 
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 GType        ctk_event_controller_get_type       (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 CtkWidget  * ctk_event_controller_get_widget     (CtkEventController *controller);
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 gboolean     ctk_event_controller_handle_event   (CtkEventController *controller,
                                                   const CdkEvent     *event);
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 void         ctk_event_controller_reset          (CtkEventController *controller);
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 CtkPropagationPhase ctk_event_controller_get_propagation_phase (CtkEventController *controller);
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 void                ctk_event_controller_set_propagation_phase (CtkEventController  *controller,
                                                                 CtkPropagationPhase  phase);
 

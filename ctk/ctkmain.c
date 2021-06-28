@@ -654,7 +654,7 @@ do_pre_parse_initialization (int    *argc,
   if (_ctk_module_has_mixed_deps (NULL))
     g_error ("CTK+ 2.x symbols detected. Using CTK+ 2.x and CTK+ 3 in the same process is not supported");
 
-  GDK_PRIVATE_CALL (cdk_pre_parse) ();
+  CDK_PRIVATE_CALL (cdk_pre_parse) ();
   cdk_event_handler_set ((CdkEventFunc)ctk_main_do_event, NULL, NULL);
 
   env_string = g_getenv ("CTK_DEBUG");
@@ -801,7 +801,7 @@ post_parse_hook (GOptionContext *context,
   
   if (info->open_default_display)
     {
-      if (GDK_PRIVATE_CALL (cdk_display_open_default) () == NULL)
+      if (CDK_PRIVATE_CALL (cdk_display_open_default) () == NULL)
         {
           const char *display_name = cdk_get_display_arg_name ();
           g_set_error (error,
@@ -897,7 +897,7 @@ ctk_simulate_touchscreen (void)
  *     when parsing the commandline arguments
  *
  * Returns a #GOptionGroup for the commandline arguments recognized
- * by CTK+ and GDK.
+ * by CTK+ and CDK.
  *
  * You should add this group to your #GOptionContext
  * with g_option_context_add_group(), if you are using
@@ -922,7 +922,7 @@ ctk_get_option_group (gboolean open_default_display)
   group = g_option_group_new ("ctk", _("CTK+ Options"), _("Show CTK+ Options"), info, g_free);
   g_option_group_set_parse_hooks (group, pre_parse_hook, post_parse_hook);
 
-  GDK_PRIVATE_CALL (cdk_add_option_entries) (group);
+  CDK_PRIVATE_CALL (cdk_add_option_entries) (group);
   g_option_group_add_entries (group, ctk_args);
   g_option_group_set_translation_domain (group, GETTEXT_PACKAGE);
   
@@ -995,7 +995,7 @@ ctk_init_with_args (gint                 *argc,
     return FALSE;
 
 done:
-  if (GDK_PRIVATE_CALL (cdk_display_open_default) () == NULL)
+  if (CDK_PRIVATE_CALL (cdk_display_open_default) () == NULL)
     {
       const char *display_name = cdk_get_display_arg_name ();
       g_set_error (error,
@@ -1024,7 +1024,7 @@ done:
  * attributes of CTK+, but does not actually open a connection
  * to a display. (See cdk_display_open(), cdk_get_display_arg_name())
  *
- * Any arguments used by CTK+ or GDK are removed from the array and
+ * Any arguments used by CTK+ or CDK are removed from the array and
  * @argc and @argv are updated accordingly.
  *
  * There is no need to call this function explicitly if you are using
@@ -1106,7 +1106,7 @@ ctk_init_check (int    *argc,
   if (!ctk_parse_args (argc, argv))
     return FALSE;
 
-  ret = GDK_PRIVATE_CALL (cdk_display_open_default) () != NULL;
+  ret = CDK_PRIVATE_CALL (cdk_display_open_default) () != NULL;
 
   if (ctk_get_debug_flags () & CTK_DEBUG_INTERACTIVE)
     ctk_window_set_interactive_debugging (TRUE);
@@ -1486,48 +1486,48 @@ rewrite_event_for_window (CdkEvent  *event,
 
   switch (event->type)
     {
-    case GDK_SCROLL:
+    case CDK_SCROLL:
       rewrite_events_translate (event->any.window,
                                 new_window,
                                 &event->scroll.x, &event->scroll.y);
       break;
-    case GDK_BUTTON_PRESS:
-    case GDK_2BUTTON_PRESS:
-    case GDK_3BUTTON_PRESS:
-    case GDK_BUTTON_RELEASE:
+    case CDK_BUTTON_PRESS:
+    case CDK_2BUTTON_PRESS:
+    case CDK_3BUTTON_PRESS:
+    case CDK_BUTTON_RELEASE:
       rewrite_events_translate (event->any.window,
                                 new_window,
                                 &event->button.x, &event->button.y);
       break;
-    case GDK_MOTION_NOTIFY:
+    case CDK_MOTION_NOTIFY:
       rewrite_events_translate (event->any.window,
                                 new_window,
                                 &event->motion.x, &event->motion.y);
       break;
-    case GDK_TOUCH_BEGIN:
-    case GDK_TOUCH_UPDATE:
-    case GDK_TOUCH_END:
-    case GDK_TOUCH_CANCEL:
+    case CDK_TOUCH_BEGIN:
+    case CDK_TOUCH_UPDATE:
+    case CDK_TOUCH_END:
+    case CDK_TOUCH_CANCEL:
       rewrite_events_translate (event->any.window,
                                 new_window,
                                 &event->touch.x, &event->touch.y);
       break;
-    case GDK_TOUCHPAD_SWIPE:
+    case CDK_TOUCHPAD_SWIPE:
       rewrite_events_translate (event->any.window,
                                 new_window,
                                 &event->touchpad_swipe.x,
                                 &event->touchpad_swipe.y);
       break;
-    case GDK_TOUCHPAD_PINCH:
+    case CDK_TOUCHPAD_PINCH:
       rewrite_events_translate (event->any.window,
                                 new_window,
                                 &event->touchpad_pinch.x,
                                 &event->touchpad_pinch.y);
       break;
-    case GDK_KEY_PRESS:
-    case GDK_KEY_RELEASE:
-    case GDK_PROXIMITY_IN:
-    case GDK_PROXIMITY_OUT:
+    case CDK_KEY_PRESS:
+    case CDK_KEY_RELEASE:
+    case CDK_PROXIMITY_IN:
+    case CDK_PROXIMITY_OUT:
       break;
 
     default:
@@ -1559,26 +1559,26 @@ rewrite_event_for_grabs (CdkEvent *event)
 
   switch (event->type)
     {
-    case GDK_SCROLL:
-    case GDK_BUTTON_PRESS:
-    case GDK_2BUTTON_PRESS:
-    case GDK_3BUTTON_PRESS:
-    case GDK_BUTTON_RELEASE:
-    case GDK_MOTION_NOTIFY:
-    case GDK_PROXIMITY_IN:
-    case GDK_PROXIMITY_OUT:
-    case GDK_KEY_PRESS:
-    case GDK_KEY_RELEASE:
-    case GDK_TOUCH_BEGIN:
-    case GDK_TOUCH_UPDATE:
-    case GDK_TOUCH_END:
-    case GDK_TOUCH_CANCEL:
-    case GDK_TOUCHPAD_SWIPE:
-    case GDK_TOUCHPAD_PINCH:
+    case CDK_SCROLL:
+    case CDK_BUTTON_PRESS:
+    case CDK_2BUTTON_PRESS:
+    case CDK_3BUTTON_PRESS:
+    case CDK_BUTTON_RELEASE:
+    case CDK_MOTION_NOTIFY:
+    case CDK_PROXIMITY_IN:
+    case CDK_PROXIMITY_OUT:
+    case CDK_KEY_PRESS:
+    case CDK_KEY_RELEASE:
+    case CDK_TOUCH_BEGIN:
+    case CDK_TOUCH_UPDATE:
+    case CDK_TOUCH_END:
+    case CDK_TOUCH_CANCEL:
+    case CDK_TOUCHPAD_SWIPE:
+    case CDK_TOUCHPAD_PINCH:
       display = cdk_window_get_display (event->any.window);
       device = cdk_event_get_device (event);
 
-      if (!GDK_PRIVATE_CALL (cdk_device_grab_info) (display, device, &grab_window, &owner_events) ||
+      if (!CDK_PRIVATE_CALL (cdk_device_grab_info) (display, device, &grab_window, &owner_events) ||
           !owner_events)
         return NULL;
       break;
@@ -1647,11 +1647,11 @@ check_event_in_child_popover (CtkWidget *event_widget,
 
 /**
  * ctk_main_do_event:
- * @event: An event to process (normally passed by GDK)
+ * @event: An event to process (normally passed by CDK)
  *
- * Processes a single GDK event.
+ * Processes a single CDK event.
  *
- * This is public only to allow filtering of events between GDK and CTK+.
+ * This is public only to allow filtering of events between CDK and CTK+.
  * You will not usually need to call this function directly.
  *
  * While you should not call this function directly, you might want to
@@ -1659,7 +1659,7 @@ check_event_in_child_popover (CtkWidget *event_widget,
  * does with the event:
  *
  * 1. Compress enter/leave notify events. If the event passed build an
- *    enter/leave pair together with the next event (peeked from GDK), both
+ *    enter/leave pair together with the next event (peeked from CDK), both
  *    events are thrown away. This is to avoid a backlog of (de-)highlighting
  *    widgets crossed by the pointer.
  * 
@@ -1697,13 +1697,13 @@ ctk_main_do_event (CdkEvent *event)
   CdkDevice *device;
   GList *tmp_list;
 
-  if (event->type == GDK_SETTING)
+  if (event->type == CDK_SETTING)
     {
       _ctk_settings_handle_event (&event->setting);
       return;
     }
 
-  if (event->type == GDK_OWNER_CHANGE)
+  if (event->type == CDK_OWNER_CHANGE)
     {
       _ctk_clipboard_handle_event (&event->owner_change);
       return;
@@ -1711,7 +1711,7 @@ ctk_main_do_event (CdkEvent *event)
 
   /* Find the widget which got the event. We store the widget
    * in the user_data field of CdkWindow's. Ignore the event
-   * if we don't have a widget for it, except for GDK_PROPERTY_NOTIFY
+   * if we don't have a widget for it, except for CDK_PROPERTY_NOTIFY
    * events which are handled specially. Though this happens rarely,
    * bogus events can occur for e.g. destroyed CdkWindows.
    */
@@ -1724,7 +1724,7 @@ ctk_main_do_event (CdkEvent *event)
        * There won't be a widget though, so we have to handle
        * them specially
        */
-      if (event->type == GDK_PROPERTY_NOTIFY)
+      if (event->type == CDK_PROPERTY_NOTIFY)
         _ctk_selection_incr_event (event->any.window,
                                    &event->property);
 
@@ -1782,7 +1782,7 @@ ctk_main_do_event (CdkEvent *event)
    * This is the key to implementing modality.
    */
   if (!grab_widget ||
-      ((ctk_widget_is_sensitive (event_widget) || event->type == GDK_SCROLL) &&
+      ((ctk_widget_is_sensitive (event_widget) || event->type == CDK_SCROLL) &&
        ctk_widget_is_ancestor (event_widget, grab_widget)))
     grab_widget = event_widget;
 
@@ -1813,10 +1813,10 @@ ctk_main_do_event (CdkEvent *event)
    */
   switch (event->type)
     {
-    case GDK_NOTHING:
+    case CDK_NOTHING:
       break;
 
-    case GDK_DELETE:
+    case CDK_DELETE:
       g_object_ref (event_widget);
       if ((!ctk_window_group_get_current_grab (window_group) || ctk_widget_get_toplevel (ctk_window_group_get_current_grab (window_group)) == event_widget) &&
           !ctk_widget_event (event_widget, event))
@@ -1824,9 +1824,9 @@ ctk_main_do_event (CdkEvent *event)
       g_object_unref (event_widget);
       break;
 
-    case GDK_DESTROY:
-      /* Unexpected GDK_DESTROY from the outside, ignore for
-       * child windows, handle like a GDK_DELETE for toplevels
+    case CDK_DESTROY:
+      /* Unexpected CDK_DESTROY from the outside, ignore for
+       * child windows, handle like a CDK_DELETE for toplevels
        */
       if (!ctk_widget_get_parent (event_widget))
         {
@@ -1838,30 +1838,30 @@ ctk_main_do_event (CdkEvent *event)
         }
       break;
 
-    case GDK_EXPOSE:
+    case CDK_EXPOSE:
       if (event->any.window)
         ctk_widget_render (event_widget, event->any.window, event->expose.region);
       break;
 
-    case GDK_PROPERTY_NOTIFY:
-    case GDK_FOCUS_CHANGE:
-    case GDK_CONFIGURE:
-    case GDK_MAP:
-    case GDK_UNMAP:
-    case GDK_SELECTION_CLEAR:
-    case GDK_SELECTION_REQUEST:
-    case GDK_SELECTION_NOTIFY:
-    case GDK_CLIENT_EVENT:
-    case GDK_VISIBILITY_NOTIFY:
-    case GDK_WINDOW_STATE:
-    case GDK_GRAB_BROKEN:
-    case GDK_DAMAGE:
+    case CDK_PROPERTY_NOTIFY:
+    case CDK_FOCUS_CHANGE:
+    case CDK_CONFIGURE:
+    case CDK_MAP:
+    case CDK_UNMAP:
+    case CDK_SELECTION_CLEAR:
+    case CDK_SELECTION_REQUEST:
+    case CDK_SELECTION_NOTIFY:
+    case CDK_CLIENT_EVENT:
+    case CDK_VISIBILITY_NOTIFY:
+    case CDK_WINDOW_STATE:
+    case CDK_GRAB_BROKEN:
+    case CDK_DAMAGE:
       if (!_ctk_widget_captured_event (event_widget, event))
         ctk_widget_event (event_widget, event);
       break;
 
-    case GDK_KEY_PRESS:
-    case GDK_KEY_RELEASE:
+    case CDK_KEY_PRESS:
+    case CDK_KEY_RELEASE:
       if (ctk_invoke_key_snoopers (grab_widget, event))
         break;
 
@@ -1878,14 +1878,14 @@ ctk_main_do_event (CdkEvent *event)
        * menus are handled elsewhere
        * FIXME: this does not work with mnemonic modifiers other than Alt
        */
-      if ((event->key.keyval == GDK_KEY_Alt_L || event->key.keyval == GDK_KEY_Alt_R) &&
-          ((event->key.state & (ctk_accelerator_get_default_mod_mask ()) & ~(GDK_RELEASE_MASK|GDK_MOD1_MASK)) == 0) &&
+      if ((event->key.keyval == CDK_KEY_Alt_L || event->key.keyval == CDK_KEY_Alt_R) &&
+          ((event->key.state & (ctk_accelerator_get_default_mod_mask ()) & ~(CDK_RELEASE_MASK|CDK_MOD1_MASK)) == 0) &&
           !CTK_IS_MENU_SHELL (grab_widget))
         {
           gboolean mnemonics_visible;
           CtkWidget *window;
 
-          mnemonics_visible = (event->type == GDK_KEY_PRESS);
+          mnemonics_visible = (event->type == CDK_KEY_PRESS);
 
           window = ctk_widget_get_toplevel (grab_widget);
           if (CTK_IS_WINDOW (window))
@@ -1897,44 +1897,44 @@ ctk_main_do_event (CdkEvent *event)
             }
         }
       /* else fall through */
-    case GDK_SCROLL:
-    case GDK_BUTTON_PRESS:
-    case GDK_2BUTTON_PRESS:
-    case GDK_3BUTTON_PRESS:
-    case GDK_TOUCH_BEGIN:
-    case GDK_MOTION_NOTIFY:
-    case GDK_BUTTON_RELEASE:
-    case GDK_PROXIMITY_IN:
-    case GDK_PROXIMITY_OUT:
-    case GDK_TOUCH_UPDATE:
-    case GDK_TOUCH_END:
-    case GDK_TOUCH_CANCEL:
-    case GDK_TOUCHPAD_SWIPE:
-    case GDK_TOUCHPAD_PINCH:
-    case GDK_PAD_BUTTON_PRESS:
-    case GDK_PAD_BUTTON_RELEASE:
-    case GDK_PAD_RING:
-    case GDK_PAD_STRIP:
-    case GDK_PAD_GROUP_MODE:
+    case CDK_SCROLL:
+    case CDK_BUTTON_PRESS:
+    case CDK_2BUTTON_PRESS:
+    case CDK_3BUTTON_PRESS:
+    case CDK_TOUCH_BEGIN:
+    case CDK_MOTION_NOTIFY:
+    case CDK_BUTTON_RELEASE:
+    case CDK_PROXIMITY_IN:
+    case CDK_PROXIMITY_OUT:
+    case CDK_TOUCH_UPDATE:
+    case CDK_TOUCH_END:
+    case CDK_TOUCH_CANCEL:
+    case CDK_TOUCHPAD_SWIPE:
+    case CDK_TOUCHPAD_PINCH:
+    case CDK_PAD_BUTTON_PRESS:
+    case CDK_PAD_BUTTON_RELEASE:
+    case CDK_PAD_RING:
+    case CDK_PAD_STRIP:
+    case CDK_PAD_GROUP_MODE:
       if (!_ctk_propagate_captured_event (grab_widget, event, topmost_widget))
         ctk_propagate_event (grab_widget, event);
       break;
 
-    case GDK_ENTER_NOTIFY:
-    case GDK_LEAVE_NOTIFY:
+    case CDK_ENTER_NOTIFY:
+    case CDK_LEAVE_NOTIFY:
       if (ctk_widget_is_sensitive (grab_widget) &&
           !_ctk_propagate_captured_event (grab_widget, event, topmost_widget))
         ctk_widget_event (grab_widget, event);
       break;
 
-    case GDK_DRAG_STATUS:
-    case GDK_DROP_FINISHED:
+    case CDK_DRAG_STATUS:
+    case CDK_DROP_FINISHED:
       _ctk_drag_source_handle_event (event_widget, event);
       break;
-    case GDK_DRAG_ENTER:
-    case GDK_DRAG_LEAVE:
-    case GDK_DRAG_MOTION:
-    case GDK_DROP_START:
+    case CDK_DRAG_ENTER:
+    case CDK_DRAG_LEAVE:
+    case CDK_DRAG_MOTION:
+    case CDK_DROP_START:
       _ctk_drag_dest_handle_event (event_widget, event);
       break;
     default:
@@ -1942,17 +1942,17 @@ ctk_main_do_event (CdkEvent *event)
       break;
     }
 
-  if (event->type == GDK_ENTER_NOTIFY
-      || event->type == GDK_LEAVE_NOTIFY
-      || event->type == GDK_BUTTON_PRESS
-      || event->type == GDK_2BUTTON_PRESS
-      || event->type == GDK_3BUTTON_PRESS
-      || event->type == GDK_KEY_PRESS
-      || event->type == GDK_DRAG_ENTER
-      || event->type == GDK_GRAB_BROKEN
-      || event->type == GDK_MOTION_NOTIFY
-      || event->type == GDK_TOUCH_UPDATE
-      || event->type == GDK_SCROLL)
+  if (event->type == CDK_ENTER_NOTIFY
+      || event->type == CDK_LEAVE_NOTIFY
+      || event->type == CDK_BUTTON_PRESS
+      || event->type == CDK_2BUTTON_PRESS
+      || event->type == CDK_3BUTTON_PRESS
+      || event->type == CDK_KEY_PRESS
+      || event->type == CDK_DRAG_ENTER
+      || event->type == CDK_GRAB_BROKEN
+      || event->type == CDK_MOTION_NOTIFY
+      || event->type == CDK_TOUCH_UPDATE
+      || event->type == CDK_SCROLL)
     {
       _ctk_tooltip_handle_event (event);
     }
@@ -2152,7 +2152,7 @@ ctk_grab_notify_foreach (CtkWidget *child,
           ctk_widget_is_sensitive (child))
         synth_crossing_for_grab_notify (child, info->new_grab_widget,
                                         info, devices,
-                                        GDK_CROSSING_CTK_GRAB);
+                                        CDK_CROSSING_CTK_GRAB);
     }
   else
     {
@@ -2161,8 +2161,8 @@ ctk_grab_notify_foreach (CtkWidget *child,
           ctk_widget_is_sensitive (child))
         synth_crossing_for_grab_notify (info->old_grab_widget, child,
                                         info, devices,
-                                        info->from_grab ? GDK_CROSSING_CTK_GRAB :
-                                        GDK_CROSSING_CTK_UNGRAB);
+                                        info->from_grab ? CDK_CROSSING_CTK_GRAB :
+                                        CDK_CROSSING_CTK_UNGRAB);
     }
 
   if (was_shadowed != is_shadowed)
@@ -2323,7 +2323,7 @@ ctk_device_grab_add (CtkWidget *widget,
   CtkWidget *old_grab_widget;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
-  g_return_if_fail (GDK_IS_DEVICE (device));
+  g_return_if_fail (CDK_IS_DEVICE (device));
 
   group = ctk_main_get_window_group (widget);
   old_grab_widget = ctk_window_group_get_current_device_grab (group, device);
@@ -2354,7 +2354,7 @@ ctk_device_grab_remove (CtkWidget *widget,
   CtkWidget *new_grab_widget;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
-  g_return_if_fail (GDK_IS_DEVICE (device));
+  g_return_if_fail (CDK_IS_DEVICE (device));
 
   group = ctk_main_get_window_group (widget);
   _ctk_window_group_remove_device_grab (group, widget, device);
@@ -2475,10 +2475,10 @@ ctk_get_current_event (void)
  * ctk_get_current_event_time:
  *
  * If there is a current event and it has a timestamp,
- * return that timestamp, otherwise return %GDK_CURRENT_TIME.
+ * return that timestamp, otherwise return %CDK_CURRENT_TIME.
  *
  * Returns: the timestamp from the current event,
- *     or %GDK_CURRENT_TIME.
+ *     or %CDK_CURRENT_TIME.
  */
 guint32
 ctk_get_current_event_time (void)
@@ -2486,7 +2486,7 @@ ctk_get_current_event_time (void)
   if (current_events)
     return cdk_event_get_time (current_events->data);
   else
-    return GDK_CURRENT_TIME;
+    return CDK_CURRENT_TIME;
 }
 
 /**
@@ -2550,7 +2550,7 @@ ctk_get_event_widget (CdkEvent *event)
 
   widget = NULL;
   if (event && event->any.window &&
-      (event->type == GDK_DESTROY || !cdk_window_is_destroyed (event->any.window)))
+      (event->type == CDK_DESTROY || !cdk_window_is_destroyed (event->any.window)))
     {
       cdk_window_get_user_data (event->any.window, &widget_ptr);
       widget = widget_ptr;
@@ -2582,7 +2582,7 @@ propagate_event_up (CtkWidget *widget,
        * event
        */
       if (!ctk_widget_is_sensitive (widget))
-        handled_event = event->type != GDK_SCROLL;
+        handled_event = event->type != CDK_SCROLL;
       else
         handled_event = ctk_widget_event (widget, event);
 
@@ -2632,7 +2632,7 @@ propagate_event_down (CtkWidget *widget,
           /* stop propagating on SCROLL, but don't handle the event, so it
            * can propagate up again and reach its handling widget
            */
-          if (event->type == GDK_SCROLL)
+          if (event->type == CDK_SCROLL)
             break;
           else
             handled_event = TRUE;
@@ -2656,7 +2656,7 @@ propagate_event (CtkWidget *widget,
 
   propagate_func = captured ? _ctk_widget_captured_event : ctk_widget_event;
 
-  if (event->type == GDK_KEY_PRESS || event->type == GDK_KEY_RELEASE)
+  if (event->type == CDK_KEY_PRESS || event->type == CDK_KEY_RELEASE)
     {
       /* Only send key events within Window widgets to the Window
        * The Window widget will in turn pass the
@@ -2698,7 +2698,7 @@ propagate_event (CtkWidget *widget,
  * Sends an event to a widget, propagating the event to parent widgets
  * if the event remains unhandled.
  *
- * Events received by CTK+ from GDK normally begin in ctk_main_do_event().
+ * Events received by CTK+ from CDK normally begin in ctk_main_do_event().
  * Depending on the type of event, existence of modal dialogs, grabs, etc.,
  * the event may be propagated; if so, this function is used.
  *

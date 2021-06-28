@@ -742,7 +742,7 @@ add_move_binding (CtkBindingSet  *binding_set,
 		  CtkMovementStep step,
 		  gint            count)
 {
-  g_return_if_fail ((modmask & GDK_SHIFT_MASK) == 0);
+  g_return_if_fail ((modmask & CDK_SHIFT_MASK) == 0);
   
   ctk_binding_entry_add_signal (binding_set, keyval, modmask,
 				"move-cursor", 3,
@@ -751,7 +751,7 @@ add_move_binding (CtkBindingSet  *binding_set,
 				G_TYPE_BOOLEAN, FALSE);
 
   /* Selection-extending version */
-  ctk_binding_entry_add_signal (binding_set, keyval, modmask | GDK_SHIFT_MASK,
+  ctk_binding_entry_add_signal (binding_set, keyval, modmask | CDK_SHIFT_MASK,
 				"move-cursor", 3,
 				G_TYPE_ENUM, step,
 				G_TYPE_INT, count,
@@ -1122,7 +1122,7 @@ ctk_entry_class_init (CtkEntryClass *class)
       g_param_spec_object ("primary-icon-pixbuf",
                            P_("Primary pixbuf"),
                            P_("Primary pixbuf for the entry"),
-                           GDK_TYPE_PIXBUF,
+                           CDK_TYPE_PIXBUF,
                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
@@ -1136,7 +1136,7 @@ ctk_entry_class_init (CtkEntryClass *class)
       g_param_spec_object ("secondary-icon-pixbuf",
                            P_("Secondary pixbuf"),
                            P_("Secondary pixbuf for the entry"),
-                           GDK_TYPE_PIXBUF,
+                           CDK_TYPE_PIXBUF,
                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
@@ -1867,7 +1867,7 @@ ctk_entry_class_init (CtkEntryClass *class)
                   _ctk_marshal_VOID__ENUM_BOXED,
                   G_TYPE_NONE, 2,
                   CTK_TYPE_ENTRY_ICON_POSITION,
-                  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
+                  CDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
   
   /**
    * CtkEntry::icon-release:
@@ -1889,7 +1889,7 @@ ctk_entry_class_init (CtkEntryClass *class)
                   _ctk_marshal_VOID__ENUM_BOXED,
                   G_TYPE_NONE, 2,
                   CTK_TYPE_ENTRY_ICON_POSITION,
-                  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
+                  CDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
 
   /**
    * CtkEntry::preedit-changed:
@@ -1941,85 +1941,85 @@ ctk_entry_class_init (CtkEntryClass *class)
   binding_set = ctk_binding_set_by_class (class);
 
   /* Moving the insertion point */
-  add_move_binding (binding_set, GDK_KEY_Right, 0,
+  add_move_binding (binding_set, CDK_KEY_Right, 0,
 		    CTK_MOVEMENT_VISUAL_POSITIONS, 1);
   
-  add_move_binding (binding_set, GDK_KEY_Left, 0,
+  add_move_binding (binding_set, CDK_KEY_Left, 0,
 		    CTK_MOVEMENT_VISUAL_POSITIONS, -1);
 
-  add_move_binding (binding_set, GDK_KEY_KP_Right, 0,
+  add_move_binding (binding_set, CDK_KEY_KP_Right, 0,
 		    CTK_MOVEMENT_VISUAL_POSITIONS, 1);
   
-  add_move_binding (binding_set, GDK_KEY_KP_Left, 0,
+  add_move_binding (binding_set, CDK_KEY_KP_Left, 0,
 		    CTK_MOVEMENT_VISUAL_POSITIONS, -1);
   
-  add_move_binding (binding_set, GDK_KEY_Right, GDK_CONTROL_MASK,
+  add_move_binding (binding_set, CDK_KEY_Right, CDK_CONTROL_MASK,
 		    CTK_MOVEMENT_WORDS, 1);
 
-  add_move_binding (binding_set, GDK_KEY_Left, GDK_CONTROL_MASK,
+  add_move_binding (binding_set, CDK_KEY_Left, CDK_CONTROL_MASK,
 		    CTK_MOVEMENT_WORDS, -1);
 
-  add_move_binding (binding_set, GDK_KEY_KP_Right, GDK_CONTROL_MASK,
+  add_move_binding (binding_set, CDK_KEY_KP_Right, CDK_CONTROL_MASK,
 		    CTK_MOVEMENT_WORDS, 1);
 
-  add_move_binding (binding_set, GDK_KEY_KP_Left, GDK_CONTROL_MASK,
+  add_move_binding (binding_set, CDK_KEY_KP_Left, CDK_CONTROL_MASK,
 		    CTK_MOVEMENT_WORDS, -1);
   
-  add_move_binding (binding_set, GDK_KEY_Home, 0,
+  add_move_binding (binding_set, CDK_KEY_Home, 0,
 		    CTK_MOVEMENT_DISPLAY_LINE_ENDS, -1);
 
-  add_move_binding (binding_set, GDK_KEY_End, 0,
+  add_move_binding (binding_set, CDK_KEY_End, 0,
 		    CTK_MOVEMENT_DISPLAY_LINE_ENDS, 1);
 
-  add_move_binding (binding_set, GDK_KEY_KP_Home, 0,
+  add_move_binding (binding_set, CDK_KEY_KP_Home, 0,
 		    CTK_MOVEMENT_DISPLAY_LINE_ENDS, -1);
 
-  add_move_binding (binding_set, GDK_KEY_KP_End, 0,
+  add_move_binding (binding_set, CDK_KEY_KP_End, 0,
 		    CTK_MOVEMENT_DISPLAY_LINE_ENDS, 1);
   
-  add_move_binding (binding_set, GDK_KEY_Home, GDK_CONTROL_MASK,
+  add_move_binding (binding_set, CDK_KEY_Home, CDK_CONTROL_MASK,
 		    CTK_MOVEMENT_BUFFER_ENDS, -1);
 
-  add_move_binding (binding_set, GDK_KEY_End, GDK_CONTROL_MASK,
+  add_move_binding (binding_set, CDK_KEY_End, CDK_CONTROL_MASK,
 		    CTK_MOVEMENT_BUFFER_ENDS, 1);
 
-  add_move_binding (binding_set, GDK_KEY_KP_Home, GDK_CONTROL_MASK,
+  add_move_binding (binding_set, CDK_KEY_KP_Home, CDK_CONTROL_MASK,
 		    CTK_MOVEMENT_BUFFER_ENDS, -1);
 
-  add_move_binding (binding_set, GDK_KEY_KP_End, GDK_CONTROL_MASK,
+  add_move_binding (binding_set, CDK_KEY_KP_End, CDK_CONTROL_MASK,
 		    CTK_MOVEMENT_BUFFER_ENDS, 1);
 
   /* Select all
    */
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_a, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_a, CDK_CONTROL_MASK,
                                 "move-cursor", 3,
                                 CTK_TYPE_MOVEMENT_STEP, CTK_MOVEMENT_BUFFER_ENDS,
                                 G_TYPE_INT, -1,
 				G_TYPE_BOOLEAN, FALSE);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_a, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_a, CDK_CONTROL_MASK,
                                 "move-cursor", 3,
                                 CTK_TYPE_MOVEMENT_STEP, CTK_MOVEMENT_BUFFER_ENDS,
                                 G_TYPE_INT, 1,
 				G_TYPE_BOOLEAN, TRUE);  
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_slash, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_slash, CDK_CONTROL_MASK,
                                 "move-cursor", 3,
                                 CTK_TYPE_MOVEMENT_STEP, CTK_MOVEMENT_BUFFER_ENDS,
                                 G_TYPE_INT, -1,
 				G_TYPE_BOOLEAN, FALSE);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_slash, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_slash, CDK_CONTROL_MASK,
                                 "move-cursor", 3,
                                 CTK_TYPE_MOVEMENT_STEP, CTK_MOVEMENT_BUFFER_ENDS,
                                 G_TYPE_INT, 1,
 				G_TYPE_BOOLEAN, TRUE);  
   /* Unselect all 
    */
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_backslash, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_backslash, CDK_CONTROL_MASK,
                                 "move-cursor", 3,
                                 CTK_TYPE_MOVEMENT_STEP, CTK_MOVEMENT_VISUAL_POSITIONS,
                                 G_TYPE_INT, 0,
 				G_TYPE_BOOLEAN, FALSE);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_a, GDK_SHIFT_MASK | GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_a, CDK_SHIFT_MASK | CDK_CONTROL_MASK,
                                 "move-cursor", 3,
                                 CTK_TYPE_MOVEMENT_STEP, CTK_MOVEMENT_VISUAL_POSITIONS,
                                 G_TYPE_INT, 0,
@@ -2027,78 +2027,78 @@ ctk_entry_class_init (CtkEntryClass *class)
 
   /* Activate
    */
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Return, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Return, 0,
 				"activate", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_ISO_Enter, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_ISO_Enter, 0,
 				"activate", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Enter, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Enter, 0,
 				"activate", 0);
   
   /* Deleting text */
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Delete, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Delete, 0,
 				"delete-from-cursor", 2,
 				G_TYPE_ENUM, CTK_DELETE_CHARS,
 				G_TYPE_INT, 1);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Delete, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Delete, 0,
 				"delete-from-cursor", 2,
 				G_TYPE_ENUM, CTK_DELETE_CHARS,
 				G_TYPE_INT, 1);
   
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_BackSpace, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_BackSpace, 0,
 				"backspace", 0);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_u, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_u, CDK_CONTROL_MASK,
 				"delete-from-cursor", 2,
 				G_TYPE_ENUM, CTK_DELETE_PARAGRAPH_ENDS,
 				G_TYPE_INT, -1);
 
   /* Make this do the same as Backspace, to help with mis-typing */
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_BackSpace, GDK_SHIFT_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_BackSpace, CDK_SHIFT_MASK,
 				"backspace", 0);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Delete, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Delete, CDK_CONTROL_MASK,
 				"delete-from-cursor", 2,
 				G_TYPE_ENUM, CTK_DELETE_WORD_ENDS,
 				G_TYPE_INT, 1);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Delete, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Delete, CDK_CONTROL_MASK,
 				"delete-from-cursor", 2,
 				G_TYPE_ENUM, CTK_DELETE_WORD_ENDS,
 				G_TYPE_INT, 1);
   
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_BackSpace, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_BackSpace, CDK_CONTROL_MASK,
 				"delete-from-cursor", 2,
 				G_TYPE_ENUM, CTK_DELETE_WORD_ENDS,
 				G_TYPE_INT, -1);
 
   /* Cut/copy/paste */
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_x, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_x, CDK_CONTROL_MASK,
 				"cut-clipboard", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_c, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_c, CDK_CONTROL_MASK,
 				"copy-clipboard", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_v, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_v, CDK_CONTROL_MASK,
 				"paste-clipboard", 0);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Delete, GDK_SHIFT_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Delete, CDK_SHIFT_MASK,
 				"cut-clipboard", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Insert, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Insert, CDK_CONTROL_MASK,
 				"copy-clipboard", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Insert, GDK_SHIFT_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Insert, CDK_SHIFT_MASK,
 				"paste-clipboard", 0);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Delete, GDK_SHIFT_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Delete, CDK_SHIFT_MASK,
                                 "cut-clipboard", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Insert, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Insert, CDK_CONTROL_MASK,
                                 "copy-clipboard", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Insert, GDK_SHIFT_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Insert, CDK_SHIFT_MASK,
                                 "paste-clipboard", 0);
 
   /* Overwrite */
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Insert, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Insert, 0,
 				"toggle-overwrite", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Insert, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Insert, 0,
 				"toggle-overwrite", 0);
 
   /**
@@ -2120,9 +2120,9 @@ ctk_entry_class_init (CtkEntryClass *class)
                                                                CTK_PARAM_READABLE |
                                                                G_PARAM_DEPRECATED));
   /* Emoji */
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_period, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_period, CDK_CONTROL_MASK,
                                 "insert-emoji", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_semicolon, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_semicolon, CDK_CONTROL_MASK,
                                 "insert-emoji", 0);
 
   ctk_widget_class_set_accessible_type (widget_class, CTK_TYPE_ENTRY_ACCESSIBLE);
@@ -2802,7 +2802,7 @@ ctk_entry_init (CtkEntry *entry)
   priv->progress_pulse_fraction = 0.1;
 
   ctk_drag_dest_set (CTK_WIDGET (entry), 0, NULL, 0,
-                     GDK_ACTION_COPY | GDK_ACTION_MOVE);
+                     CDK_ACTION_COPY | CDK_ACTION_MOVE);
   ctk_drag_dest_add_text_targets (CTK_WIDGET (entry));
 
   /* This object is completely private. No external entity can gain a reference
@@ -3204,17 +3204,17 @@ realize_icon_info (CtkWidget            *widget,
   attributes.y = 0;
   attributes.width = 1;
   attributes.height = 1;
-  attributes.window_type = GDK_WINDOW_CHILD;
-  attributes.wclass = GDK_INPUT_ONLY;
+  attributes.window_type = CDK_WINDOW_CHILD;
+  attributes.wclass = CDK_INPUT_ONLY;
   attributes.event_mask = ctk_widget_get_events (widget);
-  attributes.event_mask |= (GDK_BUTTON_PRESS_MASK |
-                                GDK_BUTTON_RELEASE_MASK |
-                                GDK_BUTTON1_MOTION_MASK |
-                                GDK_BUTTON3_MOTION_MASK |
-                                GDK_POINTER_MOTION_MASK |
-                                GDK_ENTER_NOTIFY_MASK |
-                            GDK_LEAVE_NOTIFY_MASK);
-  attributes_mask = GDK_WA_X | GDK_WA_Y;
+  attributes.event_mask |= (CDK_BUTTON_PRESS_MASK |
+                                CDK_BUTTON_RELEASE_MASK |
+                                CDK_BUTTON1_MOTION_MASK |
+                                CDK_BUTTON3_MOTION_MASK |
+                                CDK_POINTER_MOTION_MASK |
+                                CDK_ENTER_NOTIFY_MASK |
+                            CDK_LEAVE_NOTIFY_MASK);
+  attributes_mask = CDK_WA_X | CDK_WA_Y;
 
   icon_info->window = cdk_window_new (ctk_widget_get_window (widget),
                                       &attributes,
@@ -3413,17 +3413,17 @@ ctk_entry_realize (CtkWidget *widget)
   entry = CTK_ENTRY (widget);
   priv = entry->priv;
 
-  attributes.window_type = GDK_WINDOW_CHILD;
-  attributes.wclass = GDK_INPUT_ONLY;
+  attributes.window_type = CDK_WINDOW_CHILD;
+  attributes.wclass = CDK_INPUT_ONLY;
   attributes.event_mask = ctk_widget_get_events (widget);
-  attributes.event_mask |= (GDK_BUTTON_PRESS_MASK |
-			    GDK_BUTTON_RELEASE_MASK |
-			    GDK_BUTTON1_MOTION_MASK |
-			    GDK_BUTTON3_MOTION_MASK |
-			    GDK_POINTER_MOTION_MASK |
-                            GDK_ENTER_NOTIFY_MASK |
-			    GDK_LEAVE_NOTIFY_MASK);
-  attributes_mask = GDK_WA_X | GDK_WA_Y;
+  attributes.event_mask |= (CDK_BUTTON_PRESS_MASK |
+			    CDK_BUTTON_RELEASE_MASK |
+			    CDK_BUTTON1_MOTION_MASK |
+			    CDK_BUTTON3_MOTION_MASK |
+			    CDK_POINTER_MOTION_MASK |
+                            CDK_ENTER_NOTIFY_MASK |
+			    CDK_LEAVE_NOTIFY_MASK);
+  attributes_mask = CDK_WA_X | CDK_WA_Y;
 
   attributes.x = priv->text_allocation.x;
   attributes.y = priv->text_allocation.y;
@@ -3433,7 +3433,7 @@ ctk_entry_realize (CtkWidget *widget)
   if (ctk_widget_is_sensitive (widget))
     {
       attributes.cursor = cdk_cursor_new_from_name (ctk_widget_get_display (widget), "text");
-      attributes_mask |= GDK_WA_CURSOR;
+      attributes_mask |= CDK_WA_CURSOR;
     }
 
   priv->text_area = cdk_window_new (ctk_widget_get_window (widget),
@@ -3442,7 +3442,7 @@ ctk_entry_realize (CtkWidget *widget)
 
   ctk_widget_register_window (widget, priv->text_area);
 
-  if (attributes_mask & GDK_WA_CURSOR)
+  if (attributes_mask & CDK_WA_CURSOR)
     g_clear_object (&attributes.cursor);
 
   ctk_im_context_set_client_window (priv->im_context, priv->text_area);
@@ -3477,7 +3477,7 @@ ctk_entry_unrealize (CtkWidget *widget)
   
   ctk_im_context_set_client_window (priv->im_context, NULL);
 
-  clipboard = ctk_widget_get_clipboard (widget, GDK_SELECTION_PRIMARY);
+  clipboard = ctk_widget_get_clipboard (widget, CDK_SELECTION_PRIMARY);
   if (ctk_clipboard_get_owner (clipboard) == G_OBJECT (entry))
     ctk_clipboard_clear (clipboard);
   
@@ -3957,7 +3957,7 @@ ctk_entry_draw (CtkWidget *widget,
 {
   ctk_css_gadget_draw (CTK_ENTRY (widget)->priv->gadget, cr);
 
-  return GDK_EVENT_PROPAGATE;
+  return CDK_EVENT_PROPAGATE;
 }
 
 #define UNDERSHOOT_SIZE 20
@@ -4098,7 +4098,7 @@ ctk_entry_enter_notify (CtkWidget        *widget,
         }
     }
 
-    return GDK_EVENT_PROPAGATE;
+    return CDK_EVENT_PROPAGATE;
 }
 
 static gint
@@ -4116,7 +4116,7 @@ ctk_entry_leave_notify (CtkWidget        *widget,
       if (icon_info != NULL && event->window == icon_info->window)
         {
           /* a grab means that we may never see the button release */
-          if (event->mode == GDK_CROSSING_GRAB || event->mode == GDK_CROSSING_CTK_GRAB)
+          if (event->mode == CDK_CROSSING_GRAB || event->mode == CDK_CROSSING_CTK_GRAB)
             icon_info->pressed = FALSE;
 
           if (should_prelight (entry, i))
@@ -4130,7 +4130,7 @@ ctk_entry_leave_notify (CtkWidget        *widget,
         }
     }
 
-  return GDK_EVENT_PROPAGATE;
+  return CDK_EVENT_PROPAGATE;
 }
 
 static void
@@ -4308,7 +4308,7 @@ ctk_entry_event (CtkWidget *widget,
   gdouble x, y;
   gint i;
 
-  if (event->type == GDK_MOTION_NOTIFY &&
+  if (event->type == CDK_MOTION_NOTIFY &&
       priv->mouse_cursor_obscured &&
       event->any.window == priv->text_area)
     {
@@ -4318,7 +4318,7 @@ ctk_entry_event (CtkWidget *widget,
       cdk_window_set_cursor (priv->text_area, cursor);
       g_object_unref (cursor);
       priv->mouse_cursor_obscured = FALSE;
-      return GDK_EVENT_PROPAGATE;
+      return CDK_EVENT_PROPAGATE;
     }
 
   for (i = 0; i < MAX_ICONS; i++)
@@ -4333,10 +4333,10 @@ ctk_entry_event (CtkWidget *widget,
     }
 
   if (!icon_info)
-    return GDK_EVENT_PROPAGATE;
+    return CDK_EVENT_PROPAGATE;
 
   if (icon_info->insensitive)
-    return GDK_EVENT_STOP;
+    return CDK_EVENT_STOP;
 
   sequence = cdk_event_get_event_sequence (event);
   device = cdk_event_get_device (event);
@@ -4344,15 +4344,15 @@ ctk_entry_event (CtkWidget *widget,
 
   switch (event->type)
     {
-    case GDK_TOUCH_BEGIN:
+    case CDK_TOUCH_BEGIN:
       if (icon_info->current_sequence)
         break;
 
       icon_info->current_sequence = sequence;
       /* Fall through */
-    case GDK_BUTTON_PRESS:
-    case GDK_2BUTTON_PRESS:
-    case GDK_3BUTTON_PRESS:
+    case CDK_BUTTON_PRESS:
+    case CDK_2BUTTON_PRESS:
+    case CDK_3BUTTON_PRESS:
       if (should_prelight (CTK_ENTRY (widget), i))
         {
           icon_info->prelight = FALSE;
@@ -4369,12 +4369,12 @@ ctk_entry_event (CtkWidget *widget,
         g_signal_emit (widget, signals[ICON_PRESS], 0, i, event);
 
       break;
-    case GDK_TOUCH_UPDATE:
+    case CDK_TOUCH_UPDATE:
       if (icon_info->device != device ||
           icon_info->current_sequence != sequence)
         break;
       /* Fall through */
-    case GDK_MOTION_NOTIFY:
+    case CDK_MOTION_NOTIFY:
       if (icon_info->pressed &&
           icon_info->target_list != NULL &&
               ctk_drag_check_threshold (widget,
@@ -4393,14 +4393,14 @@ ctk_entry_event (CtkWidget *widget,
         }
 
       break;
-    case GDK_TOUCH_END:
+    case CDK_TOUCH_END:
       if (icon_info->device != device ||
           icon_info->current_sequence != sequence)
         break;
 
       icon_info->current_sequence = NULL;
       /* Fall through */
-    case GDK_BUTTON_RELEASE:
+    case CDK_BUTTON_RELEASE:
       icon_info->pressed = FALSE;
       icon_info->device = NULL;
 
@@ -4419,10 +4419,10 @@ ctk_entry_event (CtkWidget *widget,
 
       break;
     default:
-      return GDK_EVENT_PROPAGATE;
+      return CDK_EVENT_PROPAGATE;
     }
 
-  return GDK_EVENT_STOP;
+  return CDK_EVENT_STOP;
 }
 
 static void
@@ -4483,20 +4483,20 @@ ctk_entry_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
     {
       ctk_entry_do_popup (entry, event);
     }
-  else if (n_press == 1 && button == GDK_BUTTON_MIDDLE &&
+  else if (n_press == 1 && button == CDK_BUTTON_MIDDLE &&
            get_middle_click_paste (entry))
     {
       if (priv->editable)
         {
           priv->insert_pos = tmp_pos;
-          ctk_entry_paste (entry, GDK_SELECTION_PRIMARY);
+          ctk_entry_paste (entry, CDK_SELECTION_PRIMARY);
         }
       else
         {
           ctk_widget_error_bell (widget);
         }
     }
-  else if (button == GDK_BUTTON_PRIMARY)
+  else if (button == CDK_BUTTON_PRIMARY)
     {
       gboolean have_selection = ctk_editable_get_selection_bounds (editable, &sel_start, &sel_end);
       CtkTextHandleMode mode;
@@ -4505,7 +4505,7 @@ ctk_entry_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
 
       source = cdk_event_get_source_device (event);
       is_touchscreen = ctk_simulate_touchscreen () ||
-                       cdk_device_get_source (source) == GDK_SOURCE_TOUCHSCREEN;
+                       cdk_device_get_source (source) == CDK_SOURCE_TOUCHSCREEN;
 
       if (!is_touchscreen)
         mode = CTK_TEXT_HANDLE_MODE_NONE;
@@ -4524,7 +4524,7 @@ ctk_entry_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
       extend_selection =
         (event->button.state &
          ctk_widget_get_modifier_mask (widget,
-                                       GDK_MODIFIER_INTENT_EXTEND_SELECTION));
+                                       CDK_MODIFIER_INTENT_EXTEND_SELECTION));
 
       if (extend_selection)
         ctk_entry_reset_im_context (entry);
@@ -4714,7 +4714,7 @@ ctk_entry_drag_gesture_update (CtkGestureDrag *gesture,
           gint *ranges;
           gint n_ranges;
           CtkTargetList  *target_list = ctk_target_list_new (NULL, 0);
-          guint actions = priv->editable ? GDK_ACTION_COPY | GDK_ACTION_MOVE : GDK_ACTION_COPY;
+          guint actions = priv->editable ? CDK_ACTION_COPY | CDK_ACTION_MOVE : CDK_ACTION_COPY;
           guint button;
 
           ctk_target_list_add_text_targets (target_list, 0);
@@ -4795,7 +4795,7 @@ ctk_entry_drag_gesture_update (CtkGestureDrag *gesture,
 
       /* Update touch handles' position */
       if (ctk_simulate_touchscreen () ||
-          input_source == GDK_SOURCE_TOUCHSCREEN)
+          input_source == CDK_SOURCE_TOUCHSCREEN)
         {
           ctk_entry_ensure_text_handles (entry);
           ctk_entry_update_handles (entry,
@@ -4833,7 +4833,7 @@ ctk_entry_drag_gesture_end (CtkGestureDrag *gesture,
   event = ctk_gesture_get_last_event (CTK_GESTURE (gesture), sequence);
   source = cdk_event_get_source_device (event);
   is_touchscreen = ctk_simulate_touchscreen () ||
-                   cdk_device_get_source (source) == GDK_SOURCE_TOUCHSCREEN;
+                   cdk_device_get_source (source) == CDK_SOURCE_TOUCHSCREEN;
 
   if (in_drag)
     {
@@ -4903,10 +4903,10 @@ ctk_entry_key_press (CtkWidget   *widget,
 	}
     }
 
-  if (event->keyval == GDK_KEY_Return ||
-      event->keyval == GDK_KEY_KP_Enter ||
-      event->keyval == GDK_KEY_ISO_Enter ||
-      event->keyval == GDK_KEY_Escape)
+  if (event->keyval == CDK_KEY_Return ||
+      event->keyval == CDK_KEY_KP_Enter ||
+      event->keyval == CDK_KEY_ISO_Enter ||
+      event->keyval == CDK_KEY_Escape)
     ctk_entry_reset_im_context (entry);
 
   if (CTK_WIDGET_CLASS (ctk_entry_parent_class)->key_press_event (widget, event))
@@ -4987,7 +4987,7 @@ ctk_entry_focus_in (CtkWidget     *widget,
       ctk_entry_check_cursor_blink (entry);
     }
 
-  return GDK_EVENT_PROPAGATE;
+  return CDK_EVENT_PROPAGATE;
 }
 
 static gint
@@ -5033,7 +5033,7 @@ ctk_entry_focus_out (CtkWidget     *widget,
   if (completion)
     _ctk_entry_completion_popdown (completion);
 
-  return GDK_EVENT_PROPAGATE;
+  return CDK_EVENT_PROPAGATE;
 }
 
 void
@@ -5324,25 +5324,25 @@ ctk_cell_editable_key_press_event (CtkEntry    *entry,
 {
   CtkEntryPrivate *priv = entry->priv;
 
-  if (key_event->keyval == GDK_KEY_Escape)
+  if (key_event->keyval == CDK_KEY_Escape)
     {
       priv->editing_canceled = TRUE;
       ctk_cell_editable_editing_done (CTK_CELL_EDITABLE (entry));
       ctk_cell_editable_remove_widget (CTK_CELL_EDITABLE (entry));
 
-      return GDK_EVENT_STOP;
+      return CDK_EVENT_STOP;
     }
 
   /* override focus */
-  if (key_event->keyval == GDK_KEY_Up || key_event->keyval == GDK_KEY_Down)
+  if (key_event->keyval == CDK_KEY_Up || key_event->keyval == CDK_KEY_Down)
     {
       ctk_cell_editable_editing_done (CTK_CELL_EDITABLE (entry));
       ctk_cell_editable_remove_widget (CTK_CELL_EDITABLE (entry));
 
-      return GDK_EVENT_STOP;
+      return CDK_EVENT_STOP;
     }
 
-  return GDK_EVENT_PROPAGATE;
+  return CDK_EVENT_PROPAGATE;
 }
 
 static void
@@ -5930,7 +5930,7 @@ ctk_entry_copy_clipboard (CtkEntry *entry)
 
       str = _ctk_entry_get_display_text (entry, start, end);
       ctk_clipboard_set_text (ctk_widget_get_clipboard (CTK_WIDGET (entry),
-							GDK_SELECTION_CLIPBOARD),
+							CDK_SELECTION_CLIPBOARD),
 			      str, -1);
       g_free (str);
     }
@@ -5980,7 +5980,7 @@ ctk_entry_paste_clipboard (CtkEntry *entry)
   CtkEntryPrivate *priv = entry->priv;
 
   if (priv->editable)
-    ctk_entry_paste (entry, GDK_SELECTION_CLIPBOARD);
+    ctk_entry_paste (entry, CDK_SELECTION_CLIPBOARD);
   else
     ctk_widget_error_bell (CTK_WIDGET (entry));
 
@@ -7332,7 +7332,7 @@ paste_received (CtkClipboard *clipboard,
 
   button = ctk_gesture_single_get_current_button (CTK_GESTURE_SINGLE (priv->multipress_gesture));
 
-  if (button == GDK_BUTTON_MIDDLE)
+  if (button == CDK_BUTTON_MIDDLE)
     {
       gint pos, start, end;
       pos = priv->insert_pos;
@@ -7436,7 +7436,7 @@ ctk_entry_update_primary_selection (CtkEntry *entry)
 
   targets = ctk_target_table_new_from_list (list, &n_targets);
 
-  clipboard = ctk_widget_get_clipboard (CTK_WIDGET (entry), GDK_SELECTION_PRIMARY);
+  clipboard = ctk_widget_get_clipboard (CTK_WIDGET (entry), CDK_SELECTION_PRIMARY);
   
   if (ctk_editable_get_selection_bounds (CTK_EDITABLE (entry), &start, &end))
     {
@@ -7474,7 +7474,7 @@ ctk_entry_clear_icon (CtkEntry             *entry,
   /* Explicitly check, as the pointer may become invalidated
    * during destruction.
    */
-  if (GDK_IS_WINDOW (icon_info->window))
+  if (CDK_IS_WINDOW (icon_info->window))
     cdk_window_hide (icon_info->window);
 
   storage_type = _ctk_icon_helper_get_storage_type (icon_helper);
@@ -9493,7 +9493,7 @@ ctk_entry_mnemonic_activate (CtkWidget *widget,
 			     gboolean   group_cycling)
 {
   ctk_widget_grab_focus (widget);
-  return GDK_EVENT_STOP;
+  return CDK_EVENT_STOP;
 }
 
 static void
@@ -9643,8 +9643,8 @@ popup_targets_received (CtkClipboard     *clipboard,
           ctk_menu_popup_at_rect (CTK_MENU (menu),
                                   info_entry_priv->text_area,
                                   &rect,
-                                  GDK_GRAVITY_SOUTH_EAST,
-                                  GDK_GRAVITY_NORTH_WEST,
+                                  CDK_GRAVITY_SOUTH_EAST,
+                                  CDK_GRAVITY_NORTH_WEST,
                                   info->trigger_event);
 
           ctk_menu_shell_select_first (CTK_MENU_SHELL (menu), FALSE);
@@ -9669,7 +9669,7 @@ ctk_entry_do_popup (CtkEntry       *entry,
   info->entry = g_object_ref (entry);
   info->trigger_event = event ? cdk_event_copy (event) : ctk_get_current_event ();
 
-  ctk_clipboard_request_contents (ctk_widget_get_clipboard (CTK_WIDGET (entry), GDK_SELECTION_CLIPBOARD),
+  ctk_clipboard_request_contents (ctk_widget_get_clipboard (CTK_WIDGET (entry), CDK_SELECTION_CLIPBOARD),
 				  cdk_atom_intern_static_string ("TARGETS"),
 				  popup_targets_received,
 				  info);
@@ -9679,7 +9679,7 @@ static gboolean
 ctk_entry_popup_menu (CtkWidget *widget)
 {
   ctk_entry_do_popup (CTK_ENTRY (widget), NULL);
-  return GDK_EVENT_STOP;
+  return CDK_EVENT_STOP;
 }
 
 static void
@@ -9849,7 +9849,7 @@ ctk_entry_selection_bubble_popup_show (gpointer user_data)
 {
   CtkEntry *entry = user_data;
 
-  ctk_clipboard_request_contents (ctk_widget_get_clipboard (CTK_WIDGET (entry), GDK_SELECTION_CLIPBOARD),
+  ctk_clipboard_request_contents (ctk_widget_get_clipboard (CTK_WIDGET (entry), CDK_SELECTION_CLIPBOARD),
                                   cdk_atom_intern_static_string ("TARGETS"),
                                   bubble_targets_received,
                                   entry);
@@ -9975,12 +9975,12 @@ ctk_entry_drag_drop  (CtkWidget        *widget,
 {
   CtkEntry *entry = CTK_ENTRY (widget);
   CtkEntryPrivate *priv = entry->priv;
-  CdkAtom target = GDK_NONE;
+  CdkAtom target = CDK_NONE;
 
   if (priv->editable)
     target = ctk_drag_dest_find_target (widget, context, NULL);
 
-  if (target != GDK_NONE)
+  if (target != CDK_NONE)
     ctk_drag_get_data (widget, context, target, time);
   else
     ctk_drag_finish (context, FALSE, FALSE, time);
@@ -10006,7 +10006,7 @@ ctk_entry_drag_motion (CtkWidget        *widget,
   new_position = ctk_entry_find_position (entry, x + priv->scroll_offset);
 
   if (priv->editable &&
-      ctk_drag_dest_find_target (widget, context, NULL) != GDK_NONE)
+      ctk_drag_dest_find_target (widget, context, NULL) != CDK_NONE)
     {
       source_widget = ctk_drag_get_source_widget (context);
       suggested_action = cdk_drag_context_get_suggested_action (context);
@@ -10019,8 +10019,8 @@ ctk_entry_drag_motion (CtkWidget        *widget,
 	      /* Default to MOVE, unless the user has
 	       * pressed ctrl or alt to affect available actions
 	       */
-	      if ((cdk_drag_context_get_actions (context) & GDK_ACTION_MOVE) != 0)
-	        suggested_action = GDK_ACTION_MOVE;
+	      if ((cdk_drag_context_get_actions (context) & CDK_ACTION_MOVE) != 0)
+	        suggested_action = CDK_ACTION_MOVE;
 	    }
 
           priv->dnd_position = new_position;
@@ -10096,7 +10096,7 @@ ctk_entry_drag_data_received (CtkWidget        *widget,
           end_change (entry);
 	}
       
-      ctk_drag_finish (context, TRUE, cdk_drag_context_get_selected_action (context) == GDK_ACTION_MOVE, time);
+      ctk_drag_finish (context, TRUE, cdk_drag_context_get_selected_action (context) == CDK_ACTION_MOVE, time);
     }
   else
     {
@@ -10285,7 +10285,7 @@ blink_cb (gpointer data)
     {
       g_warning ("CtkEntry - did not receive focus-out-event. If you\n"
 		 "connect a handler to this signal, it must return\n"
-		 "GDK_EVENT_PROPAGATE so the entry gets the event as well");
+		 "CDK_EVENT_PROPAGATE so the entry gets the event as well");
 
       ctk_entry_check_cursor_blink (entry);
 

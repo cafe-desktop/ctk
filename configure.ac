@@ -69,14 +69,14 @@ GLIB_REQUIRED_VERSION=glib_required_version
 PANGO_REQUIRED_VERSION=pango_required_version
 ATK_REQUIRED_VERSION=atk_required_version
 CAIRO_REQUIRED_VERSION=cairo_required_version
-GDK_PIXBUF_REQUIRED_VERSION=cdk_pixbuf_required_version
+CDK_PIXBUF_REQUIRED_VERSION=cdk_pixbuf_required_version
 INTROSPECTION_REQUIRED_VERSION=introspection_required_version
 
 AC_SUBST(GLIB_REQUIRED_VERSION)
 AC_SUBST(PANGO_REQUIRED_VERSION)
 AC_SUBST(ATK_REQUIRED_VERSION)
 AC_SUBST(CAIRO_REQUIRED_VERSION)
-AC_SUBST(GDK_PIXBUF_REQUIRED_VERSION)
+AC_SUBST(CDK_PIXBUF_REQUIRED_VERSION)
 AC_SUBST(INTROSPECTION_REQUIRED_VERSION)
 
 # Save this value here, since automake will set cflags later
@@ -370,32 +370,32 @@ AC_ARG_ENABLE(quartz-relocation,
 cairo_backends=
 backend_immodules=
 have_gio_unix=no
-GDK_BACKENDS=
-GDK_EXTRA_LIBS=
-GDK_EXTRA_CFLAGS=
-GDK_WINDOWING=
+CDK_BACKENDS=
+CDK_EXTRA_LIBS=
+CDK_EXTRA_CFLAGS=
+CDK_WINDOWING=
 PANGO_PACKAGES="pango pangocairo"
 
 ENABLE_ON_X11='%'
 if test "$enable_x11_backend" = "yes"; then
-  # GDK calls the xlib backend "x11," cairo calls it "xlib." Other
+  # CDK calls the xlib backend "x11," cairo calls it "xlib." Other
   # backend names are identical.
   cairo_backends="$cairo_backends cairo-xlib"
-  GDK_BACKENDS="$GDK_BACKENDS x11"
+  CDK_BACKENDS="$CDK_BACKENDS x11"
   backend_immodules="$backend_immodules,xim"
-  GDK_WINDOWING="$GDK_WINDOWING
-#define GDK_WINDOWING_X11"
+  CDK_WINDOWING="$CDK_WINDOWING
+#define CDK_WINDOWING_X11"
   ENABLE_ON_X11=''
 fi
 AC_SUBST(ENABLE_ON_X11)
 
 if test "$enable_win32_backend" = "yes"; then
   cairo_backends="$cairo_backends cairo-win32"
-  GDK_BACKENDS="$GDK_BACKENDS win32"
+  CDK_BACKENDS="$CDK_BACKENDS win32"
   backend_immodules="$backend_immodules,ime"
-  GDK_WINDOWING="$GDK_WINDOWING
-#define GDK_WINDOWING_WIN32"
-  GDK_EXTRA_LIBS="$GDK_EXTRA_LIBS -lgdi32 -limm32 -lshell32 -lole32 -Wl,-luuid -lwinmm -ldwmapi -lsetupapi -lcfgmgr32"
+  CDK_WINDOWING="$CDK_WINDOWING
+#define CDK_WINDOWING_WIN32"
+  CDK_EXTRA_LIBS="$CDK_EXTRA_LIBS -lgdi32 -limm32 -lshell32 -lole32 -Wl,-luuid -lwinmm -ldwmapi -lsetupapi -lcfgmgr32"
   AM_CONDITIONAL(USE_WIN32, true)
   PANGO_PACKAGES="pangowin32 pangocairo"
 else
@@ -405,11 +405,11 @@ fi
 DISABLE_ON_QUARTZ=''
 if test "x$enable_quartz_backend" = xyes; then
   cairo_backends="$cairo_backends cairo-quartz"
-  GDK_BACKENDS="$GDK_BACKENDS quartz"
+  CDK_BACKENDS="$CDK_BACKENDS quartz"
   backend_immodules="$backend_immodules,quartz"
-  GDK_WINDOWING="$GDK_WINDOWING
-#define GDK_WINDOWING_QUARTZ"
-  GDK_EXTRA_LIBS="$GDK_EXTRA_LIBS -Wl,-framework,Cocoa"
+  CDK_WINDOWING="$CDK_WINDOWING
+#define CDK_WINDOWING_QUARTZ"
+  CDK_EXTRA_LIBS="$CDK_EXTRA_LIBS -Wl,-framework,Cocoa"
   DISABLE_ON_QUARTZ='%'
   AM_CONDITIONAL(USE_QUARTZ, true)
   if test "x$quartz_relocation" = xyes; then
@@ -426,12 +426,12 @@ AC_SUBST(SHM_LIBS)
 AC_CHECK_FUNCS(posix_fallocate flockfile _lock_file)
 
 if test "x$enable_broadway_backend" = xyes; then
-  GDK_BACKENDS="$GDK_BACKENDS broadway"
+  CDK_BACKENDS="$CDK_BACKENDS broadway"
   cairo_backends="$cairo_backends cairo"
   backend_immodules="$backend_immodules,broadway"
-  GDK_WINDOWING="$GDK_WINDOWING
-#define GDK_WINDOWING_BROADWAY"
-  GDK_EXTRA_LIBS="$GDK_EXTRA_LIBS -lz"
+  CDK_WINDOWING="$CDK_WINDOWING
+#define CDK_WINDOWING_BROADWAY"
+  CDK_EXTRA_LIBS="$CDK_EXTRA_LIBS -lz"
   AM_CONDITIONAL(USE_BROADWAY, true)
 else
   AM_CONDITIONAL(USE_BROADWAY, false)
@@ -456,9 +456,9 @@ if test "$enable_wayland_backend" = "yes"; then
   # For the cairo image backend
   cairo_backends="$cairo_backends cairo"
   AC_SUBST(WAYLAND_PROTOCOLS_DATADIR, `$PKG_CONFIG --variable=pkgdatadir wayland-protocols`)
-  GDK_BACKENDS="$GDK_BACKENDS wayland"
-  GDK_WINDOWING="$GDK_WINDOWING
-#define GDK_WINDOWING_WAYLAND"
+  CDK_BACKENDS="$CDK_BACKENDS wayland"
+  CDK_WINDOWING="$CDK_WINDOWING
+#define CDK_WINDOWING_WAYLAND"
   backend_immodules="$backend_immodules,wayland"
   WAYLAND_PACKAGES="$WAYLAND_DEPENDENCIES"
   AC_PATH_PROG([WAYLAND_SCANNER],[wayland-scanner],[no])
@@ -472,12 +472,12 @@ else
 fi
 
 # strip leading space
-GDK_BACKENDS=${GDK_BACKENDS#* }
+CDK_BACKENDS=${CDK_BACKENDS#* }
 
-AC_SUBST(GDK_BACKENDS)
+AC_SUBST(CDK_BACKENDS)
 
-if test -z "$GDK_BACKENDS"; then
-  AC_MSG_ERROR([No GDK backends selected.])
+if test -z "$CDK_BACKENDS"; then
+  AC_MSG_ERROR([No CDK backends selected.])
 fi
 
 if test "x$enable_debug" = "xyes"; then
@@ -1244,9 +1244,9 @@ if test "x$enable_x11_backend" = xyes; then
   fi
 
   if $have_base_x_pc ; then
-    GDK_EXTRA_LIBS="$x_extra_libs"
+    CDK_EXTRA_LIBS="$x_extra_libs"
   else
-    GDK_EXTRA_LIBS="$X_LIBS $x_extra_libs -lXext -lX11 $GDK_EXTRA_LIBS"
+    CDK_EXTRA_LIBS="$X_LIBS $x_extra_libs -lXext -lX11 $CDK_EXTRA_LIBS"
   fi
 
   CPPFLAGS="$ctk_save_cppflags"
@@ -1270,11 +1270,11 @@ if test "$os_win32" != "yes"; then
   have_gio_unix=yes
 fi
 if test "$have_gio_unix" = "yes"; then
-  GDK_GIO_PACKAGE="gio-unix-2.0 >= glib_required_version"
+  CDK_GIO_PACKAGE="gio-unix-2.0 >= glib_required_version"
   AC_DEFINE([HAVE_GIO_UNIX], [1],
             [Define if gio-unix is available])
 else
-  GDK_GIO_PACKAGE="gio-2.0 >= glib_required_version"
+  CDK_GIO_PACKAGE="gio-2.0 >= glib_required_version"
 fi
 
 # Check for Pango flags
@@ -1338,26 +1338,26 @@ fi
 CFLAGS="$saved_cflags"
 LDFLAGS="$saved_ldflags"
 
-GDK_PACKAGES="$PANGO_PACKAGES cdk-pixbuf-2.0 >= cdk_pixbuf_required_version cairo >= cairo_required_version cairo-gobject >= cairo_required_version"
-GDK_PRIVATE_PACKAGES="$GDK_GIO_PACKAGE $X_PACKAGES $WAYLAND_PACKAGES $cairo_backends epoxy >= epoxy_required_version $CLOUDPROVIDER_PACKAGES $PROFILER_PACKAGES fribidi >= fribidi_required_version"
+CDK_PACKAGES="$PANGO_PACKAGES cdk-pixbuf-2.0 >= cdk_pixbuf_required_version cairo >= cairo_required_version cairo-gobject >= cairo_required_version"
+CDK_PRIVATE_PACKAGES="$CDK_GIO_PACKAGE $X_PACKAGES $WAYLAND_PACKAGES $cairo_backends epoxy >= epoxy_required_version $CLOUDPROVIDER_PACKAGES $PROFILER_PACKAGES fribidi >= fribidi_required_version"
 
-PKG_CHECK_MODULES(GDK_DEP, $GDK_PACKAGES $GDK_PRIVATE_PACKAGES)
-GDK_DEP_LIBS="$GDK_EXTRA_LIBS $GDK_DEP_LIBS $MATH_LIB"
-GDK_DEP_CFLAGS="$GDK_DEP_CFLAGS $GDK_EXTRA_CFLAGS"
+PKG_CHECK_MODULES(CDK_DEP, $CDK_PACKAGES $CDK_PRIVATE_PACKAGES)
+CDK_DEP_LIBS="$CDK_EXTRA_LIBS $CDK_DEP_LIBS $MATH_LIB"
+CDK_DEP_CFLAGS="$CDK_DEP_CFLAGS $CDK_EXTRA_CFLAGS"
 #
 # If we aren't writing explicit dependencies, then don't put the extra libraries we need
 # into the pkg-config files
 #
 if test $enable_explicit_deps != yes ; then
-  GDK_EXTRA_LIBS=
+  CDK_EXTRA_LIBS=
 fi
 
-AC_SUBST(GDK_PACKAGES)
-AC_SUBST(GDK_PRIVATE_PACKAGES)
-AC_SUBST(GDK_EXTRA_LIBS)
-AC_SUBST(GDK_EXTRA_CFLAGS)
-AC_SUBST(GDK_DEP_LIBS)
-AC_SUBST(GDK_DEP_CFLAGS)
+AC_SUBST(CDK_PACKAGES)
+AC_SUBST(CDK_PRIVATE_PACKAGES)
+AC_SUBST(CDK_EXTRA_LIBS)
+AC_SUBST(CDK_EXTRA_CFLAGS)
+AC_SUBST(CDK_DEP_LIBS)
+AC_SUBST(CDK_DEP_CFLAGS)
 
 
 ########################################
@@ -1384,8 +1384,8 @@ CTK_EXTRA_LIBS=
 
 CTK_EXTRA_CFLAGS=
 PKG_CHECK_MODULES(CTK_DEP, $PANGO_PACKAGES $CTK_PACKAGES_FOR_X $CTK_PACKAGES $CTK_PRIVATE_PACKAGES)
-CTK_DEP_LIBS="$GDK_EXTRA_LIBS $CTK_DEP_LIBS_FOR_X $CTK_DEP_LIBS $CTK_EXTRA_LIBS $MATH_LIB"
-CTK_DEP_CFLAGS="$CTK_DEP_CFLAGS $GDK_EXTRA_CFLAGS $CTK_EXTRA_CFLAGS"
+CTK_DEP_LIBS="$CDK_EXTRA_LIBS $CTK_DEP_LIBS_FOR_X $CTK_DEP_LIBS $CTK_EXTRA_LIBS $MATH_LIB"
+CTK_DEP_CFLAGS="$CTK_DEP_CFLAGS $CDK_EXTRA_CFLAGS $CTK_EXTRA_CFLAGS"
 
 if test x"$os_win32" = xyes; then
   CTK_EXTRA_CFLAGS="$msnative_struct"
@@ -1475,8 +1475,8 @@ AC_SUBST(ISO_CODES_PREFIX)
 AC_SUBST(CTK_DEBUG_FLAGS)
 AC_SUBST(CTK_XIM_FLAGS)
 
-GDK_PIXBUF_LIBS=`$PKG_CONFIG --libs cdk-pixbuf-2.0`
-AC_SUBST(GDK_PIXBUF_LIBS)
+CDK_PIXBUF_LIBS=`$PKG_CONFIG --libs cdk-pixbuf-2.0`
+AC_SUBST(CDK_PIXBUF_LIBS)
 
 ################################################################
 # Printing system checks
@@ -1609,7 +1609,7 @@ if test "x$enable_cloudprint" = "xyes" -a "x$have_json_glib" = "xno"; then
 fi
 
 ctk_save_cppflags="$CPPFLAGS"
-CPPFLAGS="$CPPFLAGS $CTK_DEP_CFLAGS $GDK_DEP_CFLAGS"
+CPPFLAGS="$CPPFLAGS $CTK_DEP_CFLAGS $CDK_DEP_CFLAGS"
 
 AC_CHECK_HEADER(cairo-pdf.h,,AC_MSG_ERROR([
 *** Can't find cairo-pdf.h. You must build Cairo with the pdf
@@ -1671,7 +1671,7 @@ AC_SUBST(CTK_PRINT_BACKENDS)
 export SED
 export_dynamic=`(./libtool --config; echo eval echo \\$export_dynamic_flag_spec) | sh`
 if test -n "$export_dynamic"; then
-  GDK_DEP_LIBS=`echo $GDK_DEP_LIBS | sed -e "s/$export_dynamic//"`
+  CDK_DEP_LIBS=`echo $CDK_DEP_LIBS | sed -e "s/$export_dynamic//"`
   CTK_DEP_LIBS=`echo $CTK_DEP_LIBS | sed -e "s/$export_dynamic//"`
 fi
 
@@ -1797,11 +1797,11 @@ AM_CONDITIONAL(ENABLE_DOC_CROSS_REFERENCES, test x$enable_doc_cross_references !
 # Visibility handling
 ##################################################
 
-GDK_HIDDEN_VISIBILITY_CFLAGS=""
+CDK_HIDDEN_VISIBILITY_CFLAGS=""
 case "$host" in
   *-*-mingw*)
     dnl on mingw32 we do -fvisibility=hidden and __declspec(dllexport)
-    AC_DEFINE([_GDK_EXTERN], [__attribute__((visibility("default"))) __declspec(dllexport) extern],
+    AC_DEFINE([_CDK_EXTERN], [__attribute__((visibility("default"))) __declspec(dllexport) extern],
               [defines how to decorate public symbols while building])
     CFLAGS="${CFLAGS} -fvisibility=hidden"
     ;;
@@ -1818,13 +1818,13 @@ case "$host" in
     CFLAGS="${SAVED_CFLAGS}"
 
     AS_IF([test "${enable_fvisibility_hidden}" = "yes"], [
-      AC_DEFINE([_GDK_EXTERN], [__attribute__((visibility("default"))) extern],
+      AC_DEFINE([_CDK_EXTERN], [__attribute__((visibility("default"))) extern],
                 [defines how to decorate public symbols while building])
-      GDK_HIDDEN_VISIBILITY_CFLAGS="-fvisibility=hidden"
+      CDK_HIDDEN_VISIBILITY_CFLAGS="-fvisibility=hidden"
     ])
     ;;
 esac
-AC_SUBST(GDK_HIDDEN_VISIBILITY_CFLAGS)
+AC_SUBST(CDK_HIDDEN_VISIBILITY_CFLAGS)
 
 ##################################################
 # Theming
@@ -1846,10 +1846,10 @@ AC_CONFIG_COMMANDS([cdk/cdkconfig.h], [
  * This is a generated file.  Please modify `configure.ac'
  */
 
-#ifndef __GDKCONFIG_H__
-#define __GDKCONFIG_H__
+#ifndef __CDKCONFIG_H__
+#define __CDKCONFIG_H__
 
-#if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined (__CDK_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdk.h> can be included directly."
 #endif
 
@@ -1867,7 +1867,7 @@ _______EOF
 
 G_END_DECLS
 
-#endif  /* __GDKCONFIG_H__ */
+#endif  /* __CDKCONFIG_H__ */
 _______EOF
 
 
@@ -1878,7 +1878,7 @@ _______EOF
 	  mv $outfile cdk/cdkconfig.h
 	fi
 ],[
-cdk_windowing='$GDK_WINDOWING'
+cdk_windowing='$CDK_WINDOWING'
 ])
 
 dnl
@@ -2011,7 +2011,7 @@ echo ""
 echo "        CTK+ $CTK_VERSION"
 echo "        ==========="
 echo ""
-echo "        GDK backends:         $GDK_BACKENDS"
+echo "        CDK backends:         $CDK_BACKENDS"
 if test "$enable_x11_backend" = "yes"; then
 echo "        X11 extensions:       $X_EXTENSIONS"
 fi

@@ -36,25 +36,25 @@ typedef struct _CtkPrintContext CtkPrintContext;
 #define CTK_PRINT_CONTEXT(obj)    (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_PRINT_CONTEXT, CtkPrintContext))
 #define CTK_IS_PRINT_CONTEXT(obj) (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_PRINT_CONTEXT))
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType          ctk_print_context_get_type (void) G_GNUC_CONST;
 
 
 /* Rendering */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 cairo_t      *ctk_print_context_get_cairo_context    (CtkPrintContext *context);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkPageSetup *ctk_print_context_get_page_setup       (CtkPrintContext *context);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gdouble       ctk_print_context_get_width            (CtkPrintContext *context);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gdouble       ctk_print_context_get_height           (CtkPrintContext *context);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gdouble       ctk_print_context_get_dpi_x            (CtkPrintContext *context);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gdouble       ctk_print_context_get_dpi_y            (CtkPrintContext *context);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean      ctk_print_context_get_hard_margins     (CtkPrintContext *context,
 						      gdouble         *top,
 						      gdouble         *bottom,
@@ -62,15 +62,15 @@ gboolean      ctk_print_context_get_hard_margins     (CtkPrintContext *context,
 						      gdouble         *right);
 
 /* Fonts */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 PangoFontMap *ctk_print_context_get_pango_fontmap    (CtkPrintContext *context);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 PangoContext *ctk_print_context_create_pango_context (CtkPrintContext *context);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 PangoLayout  *ctk_print_context_create_pango_layout  (CtkPrintContext *context);
 
 /* Needed for preview implementations */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void         ctk_print_context_set_cairo_context     (CtkPrintContext *context,
 						      cairo_t         *cr,
 						      double           dpi_x,

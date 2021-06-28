@@ -655,7 +655,7 @@ ctk_dialog_class_init (CtkDialogClass *class)
                                                      CTK_PARAM_READWRITE|G_PARAM_CONSTRUCT_ONLY));
 
   binding_set = ctk_binding_set_by_class (class);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Escape, 0, "close", 0);
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Escape, 0, "close", 0);
 
   /* Bind class to template
    */

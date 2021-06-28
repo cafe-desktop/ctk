@@ -144,14 +144,14 @@ _ctk_xembed_send_message (CdkWindow        *recipient,
   if (!recipient)
     return;
 	  
-  g_return_if_fail (GDK_IS_WINDOW (recipient));
+  g_return_if_fail (CDK_IS_WINDOW (recipient));
 
   display = cdk_window_get_display (recipient);
   CTK_NOTE (PLUGSOCKET,
 	    g_message ("Sending %s", _ctk_xembed_message_name (message)));
 
   memset (&xclient, 0, sizeof (xclient));
-  xclient.window = GDK_WINDOW_XID (recipient);
+  xclient.window = CDK_WINDOW_XID (recipient);
   xclient.type = ClientMessage;
   xclient.message_type = cdk_x11_get_xatom_by_name_for_display (display, "_XEMBED");
   xclient.format = 32;
@@ -162,8 +162,8 @@ _ctk_xembed_send_message (CdkWindow        *recipient,
   xclient.data.l[4] = data2;
 
   cdk_x11_display_error_trap_push (display);
-  XSendEvent (GDK_WINDOW_XDISPLAY(recipient),
-	      GDK_WINDOW_XID (recipient),
+  XSendEvent (CDK_WINDOW_XDISPLAY(recipient),
+	      CDK_WINDOW_XID (recipient),
 	      False, NoEventMask, (XEvent *)&xclient);
   cdk_x11_display_error_trap_pop_ignored (display);
 }
@@ -189,7 +189,7 @@ _ctk_xembed_send_focus_message (CdkWindow        *recipient,
   if (!recipient)
     return;
 
-  g_return_if_fail (GDK_IS_WINDOW (recipient));
+  g_return_if_fail (CDK_IS_WINDOW (recipient));
   g_return_if_fail (message_type == XEMBED_FOCUS_IN ||
                     message_type == XEMBED_FOCUS_NEXT ||
                     message_type == XEMBED_FOCUS_PREV);

@@ -79,7 +79,7 @@ main (int   argc,
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 
   display = ctk_widget_get_display (window);
-  if (!GDK_IS_WAYLAND_DISPLAY (display))
+  if (!CDK_IS_WAYLAND_DISPLAY (display))
     g_error ("This test is only works on Wayland");
 
   vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 10);

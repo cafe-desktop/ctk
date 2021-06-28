@@ -9,7 +9,7 @@ DOC_MODULE=cdk3
 DOC_MAIN_SGML_FILE=cdk-docs.sgml
 
 # Extra options to supply to gtkdoc-scan
-SCAN_OPTIONS=--deprecated-guards=GDK_DISABLE_DEPRECATED \
+SCAN_OPTIONS=--deprecated-guards=CDK_DISABLE_DEPRECATED \
              --ignore-decorators=G_GNUC_WARN_UNUSED_RESULT
 
 # The directory containing the source code. Relative to $(srcdir)
@@ -59,9 +59,9 @@ AM_CPPFLAGS = 			\
 	-I$(top_builddir)	\
 	-I$(top_builddir)/cdk	\
 	$(CTK_DEBUG_FLAGS)	\
-	$(GDK_DEP_CFLAGS)
+	$(CDK_DEP_CFLAGS)
 
-GTKDOC_LIBS = $(top_builddir)/cdk/libcdk-3.la $(GDK_DEP_LIBS)
+GTKDOC_LIBS = $(top_builddir)/cdk/libcdk-3.la $(CDK_DEP_LIBS)
 
 # Extra options to supply to gtkdoc-mkdb
 MKDB_OPTIONS=--output-format=xml --name-space=cdk

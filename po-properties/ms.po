@@ -129,20 +129,20 @@ msgid "Default Display"
 msgstr "Paparan Lalai"
 
 #: cdk/cdkdisplaymanager.c:163
-msgid "The default display for GDK"
-msgstr "Paparan lalai untuk GDK"
+msgid "The default display for CDK"
+msgstr "Paparan lalai untuk CDK"
 
 #: cdk/cdkglcontext.c:318
-msgid "The GDK display used to create the GL context"
-msgstr "Paparan GDK yang digunakan untuk mencipta konteks GL"
+msgid "The CDK display used to create the GL context"
+msgstr "Paparan CDK yang digunakan untuk mencipta konteks GL"
 
 #: cdk/cdkglcontext.c:333 ctk/ctkwidget.c:1347
 msgid "Window"
 msgstr "Tetingkap"
 
 #: cdk/cdkglcontext.c:334
-msgid "The GDK window bound to the GL context"
-msgstr "Tetingkap GDK terikat pada konteks GL"
+msgid "The CDK window bound to the GL context"
+msgstr "Tetingkap CDK terikat pada konteks GL"
 
 #: cdk/cdkglcontext.c:349
 msgid "Shared context"

@@ -101,8 +101,8 @@ msgid "Default Display"
 msgstr "ප්‍රකෘති දැක්ම"
 
 #: cdk/cdkdisplaymanager.c:103
-msgid "The default display for GDK"
-msgstr "GDK සඳහා ප්‍රකෘති දැක්ම"
+msgid "The default display for CDK"
+msgstr "CDK සඳහා ප්‍රකෘති දැක්ම"
 
 #: cdk/cdkscreen.c:72
 msgid "Font options"

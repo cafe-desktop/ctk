@@ -72,25 +72,25 @@ struct _CtkTextTagTableClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType          ctk_text_tag_table_get_type (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTextTagTable *ctk_text_tag_table_new      (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean         ctk_text_tag_table_add      (CtkTextTagTable        *table,
                                               CtkTextTag             *tag);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_text_tag_table_remove   (CtkTextTagTable        *table,
                                               CtkTextTag             *tag);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTextTag      *ctk_text_tag_table_lookup   (CtkTextTagTable        *table,
                                               const gchar            *name);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_text_tag_table_foreach  (CtkTextTagTable        *table,
                                               CtkTextTagTableForeach  func,
                                               gpointer                data);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint             ctk_text_tag_table_get_size (CtkTextTagTable        *table);
 
 G_END_DECLS

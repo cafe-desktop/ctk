@@ -171,254 +171,254 @@ struct _CtkEntryClass
   void (*_ctk_reserved6)      (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType      ctk_entry_get_type       		(void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_entry_new            		(void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_entry_new_with_buffer            (CtkEntryBuffer *buffer);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkEntryBuffer* ctk_entry_get_buffer            (CtkEntry       *entry);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_entry_set_buffer                 (CtkEntry       *entry,
                                                  CtkEntryBuffer *buffer);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_entry_get_text_area              (CtkEntry       *entry,
                                                  CdkRectangle   *text_area);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_entry_set_visibility 		(CtkEntry      *entry,
 						 gboolean       visible);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_entry_get_visibility             (CtkEntry      *entry);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_entry_set_invisible_char         (CtkEntry      *entry,
                                                  gunichar       ch);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gunichar   ctk_entry_get_invisible_char         (CtkEntry      *entry);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_entry_unset_invisible_char       (CtkEntry      *entry);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_entry_set_has_frame              (CtkEntry      *entry,
                                                  gboolean       setting);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_entry_get_has_frame              (CtkEntry      *entry);
 
-GDK_DEPRECATED_IN_3_4
+CDK_DEPRECATED_IN_3_4
 void             ctk_entry_set_inner_border     (CtkEntry        *entry,
                                                  const CtkBorder *border);
-GDK_DEPRECATED_IN_3_4
+CDK_DEPRECATED_IN_3_4
 const CtkBorder* ctk_entry_get_inner_border     (CtkEntry        *entry);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_entry_set_overwrite_mode         (CtkEntry      *entry,
                                                  gboolean       overwrite);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_entry_get_overwrite_mode         (CtkEntry      *entry);
 
 /* text is truncated if needed */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_entry_set_max_length 		(CtkEntry      *entry,
 						 gint           max);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint       ctk_entry_get_max_length             (CtkEntry      *entry);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 guint16    ctk_entry_get_text_length            (CtkEntry      *entry);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_entry_set_activates_default      (CtkEntry      *entry,
                                                  gboolean       setting);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_entry_get_activates_default      (CtkEntry      *entry);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_entry_set_width_chars            (CtkEntry      *entry,
                                                  gint           n_chars);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint       ctk_entry_get_width_chars            (CtkEntry      *entry);
 
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void       ctk_entry_set_max_width_chars        (CtkEntry      *entry,
                                                  gint           n_chars);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 gint       ctk_entry_get_max_width_chars        (CtkEntry      *entry);
 
 /* Somewhat more convenient than the CtkEditable generic functions
  */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_entry_set_text                   (CtkEntry      *entry,
                                                  const gchar   *text);
 /* returns a reference to the text */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar* ctk_entry_get_text        (CtkEntry      *entry);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 PangoLayout* ctk_entry_get_layout               (CtkEntry      *entry);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void         ctk_entry_get_layout_offsets       (CtkEntry      *entry,
                                                  gint          *x,
                                                  gint          *y);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_entry_set_alignment              (CtkEntry      *entry,
                                                  gfloat         xalign);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gfloat     ctk_entry_get_alignment              (CtkEntry      *entry);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void                ctk_entry_set_completion (CtkEntry           *entry,
                                               CtkEntryCompletion *completion);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkEntryCompletion *ctk_entry_get_completion (CtkEntry           *entry);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint       ctk_entry_layout_index_to_text_index (CtkEntry      *entry,
                                                  gint           layout_index);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint       ctk_entry_text_index_to_layout_index (CtkEntry      *entry,
                                                  gint           text_index);
 
 /* For scrolling cursor appropriately
  */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_entry_set_cursor_hadjustment (CtkEntry      *entry,
                                                  CtkAdjustment *adjustment);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkAdjustment* ctk_entry_get_cursor_hadjustment (CtkEntry      *entry);
 
 /* Progress API
  */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_entry_set_progress_fraction   (CtkEntry     *entry,
                                                   gdouble       fraction);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gdouble        ctk_entry_get_progress_fraction   (CtkEntry     *entry);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_entry_set_progress_pulse_step (CtkEntry     *entry,
                                                   gdouble       fraction);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gdouble        ctk_entry_get_progress_pulse_step (CtkEntry     *entry);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_entry_progress_pulse          (CtkEntry     *entry);
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 const gchar*   ctk_entry_get_placeholder_text    (CtkEntry             *entry);
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 void           ctk_entry_set_placeholder_text    (CtkEntry             *entry,
                                                   const gchar          *text);
 /* Setting and managing icons
  */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_entry_set_icon_from_pixbuf            (CtkEntry             *entry,
 							  CtkEntryIconPosition  icon_pos,
 							  CdkPixbuf            *pixbuf);
-GDK_DEPRECATED_IN_3_10_FOR(ctk_entry_set_icon_from_icon_name)
+CDK_DEPRECATED_IN_3_10_FOR(ctk_entry_set_icon_from_icon_name)
 void           ctk_entry_set_icon_from_stock             (CtkEntry             *entry,
 							  CtkEntryIconPosition  icon_pos,
 							  const gchar          *stock_id);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_entry_set_icon_from_icon_name         (CtkEntry             *entry,
 							  CtkEntryIconPosition  icon_pos,
 							  const gchar          *icon_name);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_entry_set_icon_from_gicon             (CtkEntry             *entry,
 							  CtkEntryIconPosition  icon_pos,
 							  GIcon                *icon);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkImageType ctk_entry_get_icon_storage_type             (CtkEntry             *entry,
 							  CtkEntryIconPosition  icon_pos);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkPixbuf*   ctk_entry_get_icon_pixbuf                   (CtkEntry             *entry,
 							  CtkEntryIconPosition  icon_pos);
-GDK_DEPRECATED_IN_3_10_FOR(ctk_entry_get_icon_name)
+CDK_DEPRECATED_IN_3_10_FOR(ctk_entry_get_icon_name)
 const gchar* ctk_entry_get_icon_stock                    (CtkEntry             *entry,
 							  CtkEntryIconPosition  icon_pos);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar* ctk_entry_get_icon_name                     (CtkEntry             *entry,
 							  CtkEntryIconPosition  icon_pos);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GIcon*       ctk_entry_get_icon_gicon                    (CtkEntry             *entry,
 							  CtkEntryIconPosition  icon_pos);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void         ctk_entry_set_icon_activatable              (CtkEntry             *entry,
 							  CtkEntryIconPosition  icon_pos,
 							  gboolean              activatable);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean     ctk_entry_get_icon_activatable              (CtkEntry             *entry,
 							  CtkEntryIconPosition  icon_pos);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void         ctk_entry_set_icon_sensitive                (CtkEntry             *entry,
 							  CtkEntryIconPosition  icon_pos,
 							  gboolean              sensitive);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean     ctk_entry_get_icon_sensitive                (CtkEntry             *entry,
 							  CtkEntryIconPosition  icon_pos);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint         ctk_entry_get_icon_at_pos                   (CtkEntry             *entry,
 							  gint                  x,
 							  gint                  y);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void         ctk_entry_set_icon_tooltip_text             (CtkEntry             *entry,
 							  CtkEntryIconPosition  icon_pos,
 							  const gchar          *tooltip);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gchar *      ctk_entry_get_icon_tooltip_text             (CtkEntry             *entry,
                                                           CtkEntryIconPosition  icon_pos);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void         ctk_entry_set_icon_tooltip_markup           (CtkEntry             *entry,
 							  CtkEntryIconPosition  icon_pos,
 							  const gchar          *tooltip);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gchar *      ctk_entry_get_icon_tooltip_markup           (CtkEntry             *entry,
                                                           CtkEntryIconPosition  icon_pos);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void         ctk_entry_set_icon_drag_source              (CtkEntry             *entry,
 							  CtkEntryIconPosition  icon_pos,
 							  CtkTargetList        *target_list,
 							  CdkDragAction         actions);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint         ctk_entry_get_current_icon_drag_source      (CtkEntry             *entry);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void         ctk_entry_get_icon_area                     (CtkEntry             *entry,
                                                           CtkEntryIconPosition  icon_pos,
                                                           CdkRectangle         *icon_area);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean    ctk_entry_im_context_filter_keypress         (CtkEntry             *entry,
                                                           CdkEventKey          *event);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_entry_reset_im_context                   (CtkEntry             *entry);
 
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 void            ctk_entry_set_input_purpose                  (CtkEntry             *entry,
                                                               CtkInputPurpose       purpose);
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 CtkInputPurpose ctk_entry_get_input_purpose                  (CtkEntry             *entry);
 
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 void            ctk_entry_set_input_hints                    (CtkEntry             *entry,
                                                               CtkInputHints         hints);
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 CtkInputHints   ctk_entry_get_input_hints                    (CtkEntry             *entry);
 
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 void            ctk_entry_set_attributes                     (CtkEntry             *entry,
                                                               PangoAttrList        *attrs);
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 PangoAttrList  *ctk_entry_get_attributes                     (CtkEntry             *entry);
 
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void            ctk_entry_set_tabs                           (CtkEntry             *entry,
                                                               PangoTabArray        *tabs);
 
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 PangoTabArray  *ctk_entry_get_tabs                           (CtkEntry             *entry);
 
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 void           ctk_entry_grab_focus_without_selecting        (CtkEntry             *entry);
 
 G_END_DECLS

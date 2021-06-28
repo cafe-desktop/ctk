@@ -34,31 +34,31 @@
 #include "ctkversion.h"
 #include "ctkscrolledwindow.h"
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
 #include "x11/cdkx.h"
 #include <pango/pangofc-fontmap.h>
 #endif
 
-#ifdef GDK_WINDOWING_WAYLAND
+#ifdef CDK_WINDOWING_WAYLAND
 #include "wayland/cdkwayland.h"
 #include <pango/pangofc-fontmap.h>
 #endif
 
-#ifdef GDK_WINDOWING_BROADWAY
+#ifdef CDK_WINDOWING_BROADWAY
 #include "broadway/cdkbroadway.h"
 #endif
 
-#ifdef GDK_WINDOWING_QUARTZ
+#ifdef CDK_WINDOWING_QUARTZ
 #include "quartz/cdkquartz.h"
 #endif
 
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
 #include "win32/cdkwin32.h"
 #endif
 
 #include "deprecated/ctkrc.h"
 
-#ifdef GDK_WINDOWING_QUARTZ
+#ifdef CDK_WINDOWING_QUARTZ
 #define PRINT_PREVIEW_COMMAND "open -b com.apple.Preview %f"
 #else
 #define PRINT_PREVIEW_COMMAND "evince --unlink-tempfile --preview --print-settings %s %f"
@@ -1940,8 +1940,8 @@ ctk_settings_create_for_display (CdkDisplay *display)
   CtkSettings *settings;
   DisplaySettings v;
 
-#ifdef GDK_WINDOWING_QUARTZ
-  if (GDK_IS_QUARTZ_DISPLAY (display))
+#ifdef CDK_WINDOWING_QUARTZ
+  if (CDK_IS_QUARTZ_DISPLAY (display))
     settings = g_object_new (CTK_TYPE_SETTINGS,
                              "ctk-key-theme-name", "Mac",
                              "ctk-shell-shows-app-menu", TRUE,
@@ -1949,15 +1949,15 @@ ctk_settings_create_for_display (CdkDisplay *display)
                              NULL);
   else
 #endif
-#ifdef GDK_WINDOWING_BROADWAY
-    if (GDK_IS_BROADWAY_DISPLAY (display))
+#ifdef CDK_WINDOWING_BROADWAY
+    if (CDK_IS_BROADWAY_DISPLAY (display))
       settings = g_object_new (CTK_TYPE_SETTINGS,
                                "ctk-im-module", "broadway",
                                NULL);
   else
 #endif
-#ifdef GDK_WINDOWING_WAYLAND
-    if (GDK_IS_WAYLAND_DISPLAY (display))
+#ifdef CDK_WINDOWING_WAYLAND
+    if (CDK_IS_WAYLAND_DISPLAY (display))
       {
         if (cdk_wayland_display_query_registry (display,
                                                 "zwp_text_input_manager_v3"))
@@ -2041,7 +2041,7 @@ ctk_settings_get_for_display (CdkDisplay *display)
 CtkSettings *
 ctk_settings_get_for_screen (CdkScreen *screen)
 {
-  g_return_val_if_fail (GDK_IS_SCREEN (screen), NULL);
+  g_return_val_if_fail (CDK_IS_SCREEN (screen), NULL);
 
   return ctk_settings_get_for_display (cdk_screen_get_display (screen));
 }
@@ -2049,7 +2049,7 @@ ctk_settings_get_for_screen (CdkScreen *screen)
 /**
  * ctk_settings_get_default:
  *
- * Gets the #CtkSettings object for the default GDK screen, creating
+ * Gets the #CtkSettings object for the default CDK screen, creating
  * it if necessary. See ctk_settings_get_for_screen().
  *
  * Returns: (nullable) (transfer none): a #CtkSettings object. If there is
@@ -2628,7 +2628,7 @@ ctk_rc_property_parse_color (const GParamSpec *pspec,
   gboolean success;
 
   g_return_val_if_fail (G_IS_PARAM_SPEC (pspec), FALSE);
-  g_return_val_if_fail (G_VALUE_HOLDS (property_value, GDK_TYPE_COLOR), FALSE);
+  g_return_val_if_fail (G_VALUE_HOLDS (property_value, CDK_TYPE_COLOR), FALSE);
 
   scanner = ctk_rc_scanner_new ();
   g_scanner_input_text (scanner, gstring->str, gstring->len);
@@ -3048,7 +3048,7 @@ settings_update_cursor_theme (CtkSettings *settings)
 {
   gchar *theme = NULL;
   gint size = 0;
-#if defined(GDK_WINDOWING_X11) || defined(GDK_WINDOWING_WAYLAND) || defined(GDK_WINDOWING_WIN32)
+#if defined(CDK_WINDOWING_X11) || defined(CDK_WINDOWING_WAYLAND) || defined(CDK_WINDOWING_WIN32)
   CdkDisplay *display = cdk_screen_get_display (settings->priv->screen);
 #endif
 
@@ -3058,22 +3058,22 @@ settings_update_cursor_theme (CtkSettings *settings)
                 NULL);
   if (theme == NULL)
     return;
-#ifdef GDK_WINDOWING_X11
-  if (GDK_IS_X11_DISPLAY (display))
+#ifdef CDK_WINDOWING_X11
+  if (CDK_IS_X11_DISPLAY (display))
     cdk_x11_display_set_cursor_theme (display, theme, size);
   else
 #endif
-#ifdef GDK_WINDOWING_WAYLAND
-  if (GDK_IS_WAYLAND_DISPLAY (display))
+#ifdef CDK_WINDOWING_WAYLAND
+  if (CDK_IS_WAYLAND_DISPLAY (display))
     cdk_wayland_display_set_cursor_theme (display, theme, size);
   else
 #endif
-#ifdef GDK_WINDOWING_WIN32
-  if (GDK_IS_WIN32_DISPLAY (display))
+#ifdef CDK_WINDOWING_WIN32
+  if (CDK_IS_WIN32_DISPLAY (display))
     cdk_win32_display_set_cursor_theme (display, theme, size);
   else
 #endif
-    g_warning ("CtkSettings Cursor Theme: Unsupported GDK backend");
+    g_warning ("CtkSettings Cursor Theme: Unsupported CDK backend");
   g_free (theme);
 }
 
@@ -3165,7 +3165,7 @@ settings_update_font_options (CtkSettings *settings)
 static gboolean
 settings_update_fontconfig (CtkSettings *settings)
 {
-#if defined(GDK_WINDOWING_X11) || defined(GDK_WINDOWING_WAYLAND)
+#if defined(CDK_WINDOWING_X11) || defined(CDK_WINDOWING_WAYLAND)
   static guint    last_update_timestamp;
   static gboolean last_update_needed;
 
@@ -3199,7 +3199,7 @@ settings_update_fontconfig (CtkSettings *settings)
   return last_update_needed;
 #else
   return FALSE;
-#endif /* GDK_WINDOWING_X11 || GDK_WINDOWING_WAYLAND */
+#endif /* CDK_WINDOWING_X11 || CDK_WINDOWING_WAYLAND */
 }
 
 static void
@@ -3226,7 +3226,7 @@ settings_update_resolution (CtkSettings *settings)
       else
         dpi = -1.;
 
-      scale_env = g_getenv ("GDK_DPI_SCALE");
+      scale_env = g_getenv ("CDK_DPI_SCALE");
       if (scale_env)
         {
           scale = g_ascii_strtod (scale_env, NULL);
@@ -3519,7 +3519,7 @@ settings_update_xsetting (CtkSettings *settings,
   if ((g_value_type_transformable (G_TYPE_INT, value_type) &&
        !(fundamental_type == G_TYPE_ENUM || fundamental_type == G_TYPE_FLAGS)) ||
       g_value_type_transformable (G_TYPE_STRING, value_type) ||
-      g_value_type_transformable (GDK_TYPE_RGBA, value_type))
+      g_value_type_transformable (CDK_TYPE_RGBA, value_type))
     {
       GValue val = G_VALUE_INIT;
 

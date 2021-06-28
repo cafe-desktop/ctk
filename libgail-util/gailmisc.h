@@ -24,11 +24,11 @@
 
 G_BEGIN_DECLS
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 AtkAttributeSet* gail_misc_add_attribute          (AtkAttributeSet   *attrib_set,
                                                    AtkTextAttribute   attr,
                                                    gchar             *value);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 AtkAttributeSet* gail_misc_layout_get_run_attributes
                                                   (AtkAttributeSet   *attrib_set,
                                                    PangoLayout       *layout,
@@ -37,12 +37,12 @@ AtkAttributeSet* gail_misc_layout_get_run_attributes
                                                    gint              *start_offset,
                                                    gint              *end_offset);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 AtkAttributeSet* gail_misc_get_default_attributes (AtkAttributeSet   *attrib_set,
                                                    PangoLayout       *layout,
                                                    CtkWidget         *widget);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             gail_misc_get_extents_from_pango_rectangle
                                                   (CtkWidget         *widget,
                                                    PangoRectangle    *char_rect,
@@ -54,7 +54,7 @@ void             gail_misc_get_extents_from_pango_rectangle
                                                    gint              *height,
                                                    AtkCoordType      coords);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint             gail_misc_get_index_at_point_in_layout
                                                   (CtkWidget         *widget,
                                                    PangoLayout       *layout, 
@@ -64,14 +64,14 @@ gint             gail_misc_get_index_at_point_in_layout
                                                    gint              y,
                                                    AtkCoordType      coords);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void		 gail_misc_get_origins            (CtkWidget         *widget,
                                                    gint              *x_window,
 					           gint              *y_window,
 					           gint              *x_toplevel,
 					           gint              *y_toplevel);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 AtkAttributeSet* gail_misc_buffer_get_run_attributes
                                                   (CtkTextBuffer     *buffer,
                                                    gint              offset,

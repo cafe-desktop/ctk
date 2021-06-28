@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -103,13 +103,13 @@ _cdk_event_queue_find_first (CdkDisplay *display)
     {
       CdkEventPrivate *event = tmp_list->data;
 
-      if ((event->flags & GDK_EVENT_PENDING) == 0 &&
-	  (!paused || (event->flags & GDK_EVENT_FLUSHED) != 0))
+      if ((event->flags & CDK_EVENT_PENDING) == 0 &&
+	  (!paused || (event->flags & CDK_EVENT_FLUSHED) != 0))
         {
           if (pending_motion)
             return pending_motion;
 
-          if (event->event.type == GDK_MOTION_NOTIFY && (event->flags & GDK_EVENT_FLUSHED) == 0)
+          if (event->event.type == CDK_MOTION_NOTIFY && (event->flags & CDK_EVENT_FLUSHED) == 0)
             pending_motion = tmp_list;
           else
             return tmp_list;
@@ -268,10 +268,10 @@ _cdk_event_queue_handle_motion_compression (CdkDisplay *display)
     {
       CdkEventPrivate *event = tmp_list->data;
 
-      if (event->flags & GDK_EVENT_PENDING)
+      if (event->flags & CDK_EVENT_PENDING)
         break;
 
-      if (event->event.type != GDK_MOTION_NOTIFY)
+      if (event->event.type != CDK_MOTION_NOTIFY)
         break;
 
       if (pending_motion_window != NULL &&
@@ -307,7 +307,7 @@ _cdk_event_queue_handle_motion_compression (CdkDisplay *display)
     {
       CdkFrameClock *clock = cdk_window_get_frame_clock (pending_motion_window);
       if (clock) /* might be NULL if window was destroyed */
-	cdk_frame_clock_request_phase (clock, GDK_FRAME_CLOCK_PHASE_FLUSH_EVENTS);
+	cdk_frame_clock_request_phase (clock, CDK_FRAME_CLOCK_PHASE_FLUSH_EVENTS);
     }
 }
 
@@ -319,18 +319,18 @@ _cdk_event_queue_flush (CdkDisplay *display)
   for (tmp_list = display->queued_events; tmp_list; tmp_list = tmp_list->next)
     {
       CdkEventPrivate *event = tmp_list->data;
-      event->flags |= GDK_EVENT_FLUSHED;
+      event->flags |= CDK_EVENT_FLUSHED;
     }
 }
 
 /**
  * cdk_event_handler_set:
- * @func: the function to call to handle events from GDK.
+ * @func: the function to call to handle events from CDK.
  * @data: user data to pass to the function. 
  * @notify: the function to call when the handler function is removed, i.e. when
  *          cdk_event_handler_set() is called with another event handler.
  * 
- * Sets the function to call to handle all events from GDK.
+ * Sets the function to call to handle all events from CDK.
  *
  * Note that CTK+ uses this to install its own event handler, so it is
  * usually not useful for CTK+ applications. (Although an application
@@ -520,31 +520,31 @@ cdk_event_new (CdkEventType type)
    */
   switch (type)
     {
-    case GDK_MOTION_NOTIFY:
+    case CDK_MOTION_NOTIFY:
       new_event->motion.x = 0.;
       new_event->motion.y = 0.;
       new_event->motion.x_root = 0.;
       new_event->motion.y_root = 0.;
       break;
-    case GDK_BUTTON_PRESS:
-    case GDK_2BUTTON_PRESS:
-    case GDK_3BUTTON_PRESS:
-    case GDK_BUTTON_RELEASE:
+    case CDK_BUTTON_PRESS:
+    case CDK_2BUTTON_PRESS:
+    case CDK_3BUTTON_PRESS:
+    case CDK_BUTTON_RELEASE:
       new_event->button.x = 0.;
       new_event->button.y = 0.;
       new_event->button.x_root = 0.;
       new_event->button.y_root = 0.;
       break;
-    case GDK_TOUCH_BEGIN:
-    case GDK_TOUCH_UPDATE:
-    case GDK_TOUCH_END:
-    case GDK_TOUCH_CANCEL:
+    case CDK_TOUCH_BEGIN:
+    case CDK_TOUCH_UPDATE:
+    case CDK_TOUCH_END:
+    case CDK_TOUCH_CANCEL:
       new_event->touch.x = 0.;
       new_event->touch.y = 0.;
       new_event->touch.x_root = 0.;
       new_event->touch.y_root = 0.;
       break;
-    case GDK_SCROLL:
+    case CDK_SCROLL:
       new_event->scroll.x = 0.;
       new_event->scroll.y = 0.;
       new_event->scroll.x_root = 0.;
@@ -553,14 +553,14 @@ cdk_event_new (CdkEventType type)
       new_event->scroll.delta_y = 0.;
       new_event->scroll.is_stop = FALSE;
       break;
-    case GDK_ENTER_NOTIFY:
-    case GDK_LEAVE_NOTIFY:
+    case CDK_ENTER_NOTIFY:
+    case CDK_LEAVE_NOTIFY:
       new_event->crossing.x = 0.;
       new_event->crossing.y = 0.;
       new_event->crossing.x_root = 0.;
       new_event->crossing.y_root = 0.;
       break;
-    case GDK_TOUCHPAD_SWIPE:
+    case CDK_TOUCHPAD_SWIPE:
       new_event->touchpad_swipe.x = 0;
       new_event->touchpad_swipe.y = 0;
       new_event->touchpad_swipe.dx = 0;
@@ -568,7 +568,7 @@ cdk_event_new (CdkEventType type)
       new_event->touchpad_swipe.x_root = 0;
       new_event->touchpad_swipe.y_root = 0;
       break;
-    case GDK_TOUCHPAD_PINCH:
+    case CDK_TOUCHPAD_PINCH:
       new_event->touchpad_pinch.x = 0;
       new_event->touchpad_pinch.y = 0;
       new_event->touchpad_pinch.dx = 0;
@@ -603,9 +603,9 @@ cdk_event_set_pointer_emulated (CdkEvent *event,
       CdkEventPrivate *private = (CdkEventPrivate *) event;
 
       if (emulated)
-        private->flags |= GDK_EVENT_POINTER_EMULATED;
+        private->flags |= CDK_EVENT_POINTER_EMULATED;
       else
-        private->flags &= ~(GDK_EVENT_POINTER_EMULATED);
+        private->flags &= ~(CDK_EVENT_POINTER_EMULATED);
     }
 }
 
@@ -624,7 +624,7 @@ gboolean
 cdk_event_get_pointer_emulated (CdkEvent *event)
 {
   if (cdk_event_is_allocated (event))
-    return (((CdkEventPrivate *) event)->flags & GDK_EVENT_POINTER_EMULATED) != 0;
+    return (((CdkEventPrivate *) event)->flags & CDK_EVENT_POINTER_EMULATED) != 0;
 
   return FALSE;
 }
@@ -647,7 +647,7 @@ cdk_event_copy (const CdkEvent *event)
 
   g_return_val_if_fail (event != NULL, NULL);
 
-  new_event = cdk_event_new (GDK_NOTHING);
+  new_event = cdk_event_new (CDK_NOTHING);
   new_private = (CdkEventPrivate *)new_event;
 
   *new_event = *event;
@@ -664,7 +664,7 @@ cdk_event_copy (const CdkEvent *event)
       new_private->seat = private->seat;
       new_private->tool = private->tool;
 
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
       new_private->translation_len = private->translation_len;
       new_private->translation = g_memdup (private->translation, private->translation_len * sizeof (private->translation[0]));
 #endif
@@ -672,69 +672,69 @@ cdk_event_copy (const CdkEvent *event)
 
   switch (event->any.type)
     {
-    case GDK_KEY_PRESS:
-    case GDK_KEY_RELEASE:
+    case CDK_KEY_PRESS:
+    case CDK_KEY_RELEASE:
       new_event->key.string = g_strdup (event->key.string);
       break;
 
-    case GDK_ENTER_NOTIFY:
-    case GDK_LEAVE_NOTIFY:
+    case CDK_ENTER_NOTIFY:
+    case CDK_LEAVE_NOTIFY:
       if (event->crossing.subwindow != NULL)
         g_object_ref (event->crossing.subwindow);
       break;
 
-    case GDK_DRAG_ENTER:
-    case GDK_DRAG_LEAVE:
-    case GDK_DRAG_MOTION:
-    case GDK_DRAG_STATUS:
-    case GDK_DROP_START:
-    case GDK_DROP_FINISHED:
+    case CDK_DRAG_ENTER:
+    case CDK_DRAG_LEAVE:
+    case CDK_DRAG_MOTION:
+    case CDK_DRAG_STATUS:
+    case CDK_DROP_START:
+    case CDK_DROP_FINISHED:
       g_object_ref (event->dnd.context);
       break;
 
-    case GDK_EXPOSE:
-    case GDK_DAMAGE:
+    case CDK_EXPOSE:
+    case CDK_DAMAGE:
       if (event->expose.region)
         new_event->expose.region = cairo_region_copy (event->expose.region);
       break;
 
-    case GDK_SETTING:
+    case CDK_SETTING:
       new_event->setting.name = g_strdup (new_event->setting.name);
       break;
 
-    case GDK_BUTTON_PRESS:
-    case GDK_2BUTTON_PRESS:
-    case GDK_3BUTTON_PRESS:
-    case GDK_BUTTON_RELEASE:
+    case CDK_BUTTON_PRESS:
+    case CDK_2BUTTON_PRESS:
+    case CDK_3BUTTON_PRESS:
+    case CDK_BUTTON_RELEASE:
       if (event->button.axes)
         new_event->button.axes = g_memdup (event->button.axes,
                                            sizeof (gdouble) * cdk_device_get_n_axes (event->button.device));
       break;
 
-    case GDK_TOUCH_BEGIN:
-    case GDK_TOUCH_UPDATE:
-    case GDK_TOUCH_END:
-    case GDK_TOUCH_CANCEL:
+    case CDK_TOUCH_BEGIN:
+    case CDK_TOUCH_UPDATE:
+    case CDK_TOUCH_END:
+    case CDK_TOUCH_CANCEL:
       if (event->touch.axes)
         new_event->touch.axes = g_memdup (event->touch.axes,
                                            sizeof (gdouble) * cdk_device_get_n_axes (event->touch.device));
       break;
 
-    case GDK_MOTION_NOTIFY:
+    case CDK_MOTION_NOTIFY:
       if (event->motion.axes)
         new_event->motion.axes = g_memdup (event->motion.axes,
                                            sizeof (gdouble) * cdk_device_get_n_axes (event->motion.device));
       break;
 
-    case GDK_OWNER_CHANGE:
+    case CDK_OWNER_CHANGE:
       new_event->owner_change.owner = event->owner_change.owner;
       if (new_event->owner_change.owner)
         g_object_ref (new_event->owner_change.owner);
       break;
 
-    case GDK_SELECTION_CLEAR:
-    case GDK_SELECTION_NOTIFY:
-    case GDK_SELECTION_REQUEST:
+    case CDK_SELECTION_CLEAR:
+    case CDK_SELECTION_NOTIFY:
+    case CDK_SELECTION_REQUEST:
       new_event->selection.requestor = event->selection.requestor;
       if (new_event->selection.requestor)
         g_object_ref (new_event->selection.requestor);
@@ -772,70 +772,70 @@ cdk_event_free (CdkEvent *event)
       private = (CdkEventPrivate *) event;
       g_clear_object (&private->device);
       g_clear_object (&private->source_device);
-#ifdef GDK_WINDOWING_WIN32
+#ifdef CDK_WINDOWING_WIN32
       g_free (private->translation);
 #endif
     }
 
   switch (event->any.type)
     {
-    case GDK_KEY_PRESS:
-    case GDK_KEY_RELEASE:
+    case CDK_KEY_PRESS:
+    case CDK_KEY_RELEASE:
       g_free (event->key.string);
       break;
       
-    case GDK_ENTER_NOTIFY:
-    case GDK_LEAVE_NOTIFY:
+    case CDK_ENTER_NOTIFY:
+    case CDK_LEAVE_NOTIFY:
       if (event->crossing.subwindow != NULL)
 	g_object_unref (event->crossing.subwindow);
       break;
       
-    case GDK_DRAG_ENTER:
-    case GDK_DRAG_LEAVE:
-    case GDK_DRAG_MOTION:
-    case GDK_DRAG_STATUS:
-    case GDK_DROP_START:
-    case GDK_DROP_FINISHED:
+    case CDK_DRAG_ENTER:
+    case CDK_DRAG_LEAVE:
+    case CDK_DRAG_MOTION:
+    case CDK_DRAG_STATUS:
+    case CDK_DROP_START:
+    case CDK_DROP_FINISHED:
       if (event->dnd.context != NULL)
         g_object_unref (event->dnd.context);
       break;
 
-    case GDK_BUTTON_PRESS:
-    case GDK_2BUTTON_PRESS:
-    case GDK_3BUTTON_PRESS:
-    case GDK_BUTTON_RELEASE:
+    case CDK_BUTTON_PRESS:
+    case CDK_2BUTTON_PRESS:
+    case CDK_3BUTTON_PRESS:
+    case CDK_BUTTON_RELEASE:
       g_free (event->button.axes);
       break;
 
-    case GDK_TOUCH_BEGIN:
-    case GDK_TOUCH_UPDATE:
-    case GDK_TOUCH_END:
-    case GDK_TOUCH_CANCEL:
+    case CDK_TOUCH_BEGIN:
+    case CDK_TOUCH_UPDATE:
+    case CDK_TOUCH_END:
+    case CDK_TOUCH_CANCEL:
       g_free (event->touch.axes);
       break;
 
-    case GDK_EXPOSE:
-    case GDK_DAMAGE:
+    case CDK_EXPOSE:
+    case CDK_DAMAGE:
       if (event->expose.region)
 	cairo_region_destroy (event->expose.region);
       break;
       
-    case GDK_MOTION_NOTIFY:
+    case CDK_MOTION_NOTIFY:
       g_free (event->motion.axes);
       break;
       
-    case GDK_SETTING:
+    case CDK_SETTING:
       g_free (event->setting.name);
       break;
       
-    case GDK_OWNER_CHANGE:
+    case CDK_OWNER_CHANGE:
       if (event->owner_change.owner)
         g_object_unref (event->owner_change.owner);
       break;
 
-    case GDK_SELECTION_CLEAR:
-    case GDK_SELECTION_NOTIFY:
-    case GDK_SELECTION_REQUEST:
+    case CDK_SELECTION_CLEAR:
+    case CDK_SELECTION_NOTIFY:
+    case CDK_SELECTION_REQUEST:
       if (event->selection.requestor)
         g_object_unref (event->selection.requestor);
       break;
@@ -878,7 +878,7 @@ cdk_event_get_window (const CdkEvent *event)
  * @event: a #CdkEvent
  * 
  * Returns the time stamp from @event, if there is one; otherwise
- * returns #GDK_CURRENT_TIME. If @event is %NULL, returns #GDK_CURRENT_TIME.
+ * returns #CDK_CURRENT_TIME. If @event is %NULL, returns #CDK_CURRENT_TIME.
  * 
  * Returns: time stamp field from @event
  **/
@@ -888,75 +888,75 @@ cdk_event_get_time (const CdkEvent *event)
   if (event)
     switch (event->type)
       {
-      case GDK_MOTION_NOTIFY:
+      case CDK_MOTION_NOTIFY:
 	return event->motion.time;
-      case GDK_BUTTON_PRESS:
-      case GDK_2BUTTON_PRESS:
-      case GDK_3BUTTON_PRESS:
-      case GDK_BUTTON_RELEASE:
+      case CDK_BUTTON_PRESS:
+      case CDK_2BUTTON_PRESS:
+      case CDK_3BUTTON_PRESS:
+      case CDK_BUTTON_RELEASE:
 	return event->button.time;
-      case GDK_TOUCH_BEGIN:
-      case GDK_TOUCH_UPDATE:
-      case GDK_TOUCH_END:
-      case GDK_TOUCH_CANCEL:
+      case CDK_TOUCH_BEGIN:
+      case CDK_TOUCH_UPDATE:
+      case CDK_TOUCH_END:
+      case CDK_TOUCH_CANCEL:
         return event->touch.time;
-      case GDK_TOUCHPAD_SWIPE:
+      case CDK_TOUCHPAD_SWIPE:
         return event->touchpad_swipe.time;
-      case GDK_TOUCHPAD_PINCH:
+      case CDK_TOUCHPAD_PINCH:
         return event->touchpad_pinch.time;
-      case GDK_SCROLL:
+      case CDK_SCROLL:
         return event->scroll.time;
-      case GDK_KEY_PRESS:
-      case GDK_KEY_RELEASE:
+      case CDK_KEY_PRESS:
+      case CDK_KEY_RELEASE:
 	return event->key.time;
-      case GDK_ENTER_NOTIFY:
-      case GDK_LEAVE_NOTIFY:
+      case CDK_ENTER_NOTIFY:
+      case CDK_LEAVE_NOTIFY:
 	return event->crossing.time;
-      case GDK_PROPERTY_NOTIFY:
+      case CDK_PROPERTY_NOTIFY:
 	return event->property.time;
-      case GDK_SELECTION_CLEAR:
-      case GDK_SELECTION_REQUEST:
-      case GDK_SELECTION_NOTIFY:
+      case CDK_SELECTION_CLEAR:
+      case CDK_SELECTION_REQUEST:
+      case CDK_SELECTION_NOTIFY:
 	return event->selection.time;
-      case GDK_PROXIMITY_IN:
-      case GDK_PROXIMITY_OUT:
+      case CDK_PROXIMITY_IN:
+      case CDK_PROXIMITY_OUT:
 	return event->proximity.time;
-      case GDK_DRAG_ENTER:
-      case GDK_DRAG_LEAVE:
-      case GDK_DRAG_MOTION:
-      case GDK_DRAG_STATUS:
-      case GDK_DROP_START:
-      case GDK_DROP_FINISHED:
+      case CDK_DRAG_ENTER:
+      case CDK_DRAG_LEAVE:
+      case CDK_DRAG_MOTION:
+      case CDK_DRAG_STATUS:
+      case CDK_DROP_START:
+      case CDK_DROP_FINISHED:
 	return event->dnd.time;
-      case GDK_PAD_BUTTON_PRESS:
-      case GDK_PAD_BUTTON_RELEASE:
+      case CDK_PAD_BUTTON_PRESS:
+      case CDK_PAD_BUTTON_RELEASE:
         return event->pad_button.time;
-      case GDK_PAD_RING:
-      case GDK_PAD_STRIP:
+      case CDK_PAD_RING:
+      case CDK_PAD_STRIP:
         return event->pad_axis.time;
-      case GDK_PAD_GROUP_MODE:
+      case CDK_PAD_GROUP_MODE:
         return event->pad_group_mode.time;
-      case GDK_CLIENT_EVENT:
-      case GDK_VISIBILITY_NOTIFY:
-      case GDK_CONFIGURE:
-      case GDK_FOCUS_CHANGE:
-      case GDK_NOTHING:
-      case GDK_DAMAGE:
-      case GDK_DELETE:
-      case GDK_DESTROY:
-      case GDK_EXPOSE:
-      case GDK_MAP:
-      case GDK_UNMAP:
-      case GDK_WINDOW_STATE:
-      case GDK_SETTING:
-      case GDK_OWNER_CHANGE:
-      case GDK_GRAB_BROKEN:
-      case GDK_EVENT_LAST:
+      case CDK_CLIENT_EVENT:
+      case CDK_VISIBILITY_NOTIFY:
+      case CDK_CONFIGURE:
+      case CDK_FOCUS_CHANGE:
+      case CDK_NOTHING:
+      case CDK_DAMAGE:
+      case CDK_DELETE:
+      case CDK_DESTROY:
+      case CDK_EXPOSE:
+      case CDK_MAP:
+      case CDK_UNMAP:
+      case CDK_WINDOW_STATE:
+      case CDK_SETTING:
+      case CDK_OWNER_CHANGE:
+      case CDK_GRAB_BROKEN:
+      case CDK_EVENT_LAST:
         /* return current time */
         break;
       }
   
-  return GDK_CURRENT_TIME;
+  return CDK_CURRENT_TIME;
 }
 
 /**
@@ -980,71 +980,71 @@ cdk_event_get_state (const CdkEvent        *event,
   if (event)
     switch (event->type)
       {
-      case GDK_MOTION_NOTIFY:
+      case CDK_MOTION_NOTIFY:
 	*state = event->motion.state;
         return TRUE;
-      case GDK_BUTTON_PRESS:
-      case GDK_2BUTTON_PRESS:
-      case GDK_3BUTTON_PRESS:
-      case GDK_BUTTON_RELEASE:
+      case CDK_BUTTON_PRESS:
+      case CDK_2BUTTON_PRESS:
+      case CDK_3BUTTON_PRESS:
+      case CDK_BUTTON_RELEASE:
         *state = event->button.state;
         return TRUE;
-      case GDK_TOUCH_BEGIN:
-      case GDK_TOUCH_UPDATE:
-      case GDK_TOUCH_END:
-      case GDK_TOUCH_CANCEL:
+      case CDK_TOUCH_BEGIN:
+      case CDK_TOUCH_UPDATE:
+      case CDK_TOUCH_END:
+      case CDK_TOUCH_CANCEL:
         *state = event->touch.state;
         return TRUE;
-      case GDK_TOUCHPAD_SWIPE:
+      case CDK_TOUCHPAD_SWIPE:
         *state = event->touchpad_swipe.state;
         return TRUE;
-      case GDK_TOUCHPAD_PINCH:
+      case CDK_TOUCHPAD_PINCH:
         *state = event->touchpad_pinch.state;
         return TRUE;
-      case GDK_SCROLL:
+      case CDK_SCROLL:
 	*state =  event->scroll.state;
         return TRUE;
-      case GDK_KEY_PRESS:
-      case GDK_KEY_RELEASE:
+      case CDK_KEY_PRESS:
+      case CDK_KEY_RELEASE:
 	*state =  event->key.state;
         return TRUE;
-      case GDK_ENTER_NOTIFY:
-      case GDK_LEAVE_NOTIFY:
+      case CDK_ENTER_NOTIFY:
+      case CDK_LEAVE_NOTIFY:
 	*state =  event->crossing.state;
         return TRUE;
-      case GDK_PROPERTY_NOTIFY:
-      case GDK_VISIBILITY_NOTIFY:
-      case GDK_CLIENT_EVENT:
-      case GDK_CONFIGURE:
-      case GDK_FOCUS_CHANGE:
-      case GDK_SELECTION_CLEAR:
-      case GDK_SELECTION_REQUEST:
-      case GDK_SELECTION_NOTIFY:
-      case GDK_PROXIMITY_IN:
-      case GDK_PROXIMITY_OUT:
-      case GDK_DAMAGE:
-      case GDK_DRAG_ENTER:
-      case GDK_DRAG_LEAVE:
-      case GDK_DRAG_MOTION:
-      case GDK_DRAG_STATUS:
-      case GDK_DROP_START:
-      case GDK_DROP_FINISHED:
-      case GDK_NOTHING:
-      case GDK_DELETE:
-      case GDK_DESTROY:
-      case GDK_EXPOSE:
-      case GDK_MAP:
-      case GDK_UNMAP:
-      case GDK_WINDOW_STATE:
-      case GDK_SETTING:
-      case GDK_OWNER_CHANGE:
-      case GDK_GRAB_BROKEN:
-      case GDK_PAD_BUTTON_PRESS:
-      case GDK_PAD_BUTTON_RELEASE:
-      case GDK_PAD_RING:
-      case GDK_PAD_STRIP:
-      case GDK_PAD_GROUP_MODE:
-      case GDK_EVENT_LAST:
+      case CDK_PROPERTY_NOTIFY:
+      case CDK_VISIBILITY_NOTIFY:
+      case CDK_CLIENT_EVENT:
+      case CDK_CONFIGURE:
+      case CDK_FOCUS_CHANGE:
+      case CDK_SELECTION_CLEAR:
+      case CDK_SELECTION_REQUEST:
+      case CDK_SELECTION_NOTIFY:
+      case CDK_PROXIMITY_IN:
+      case CDK_PROXIMITY_OUT:
+      case CDK_DAMAGE:
+      case CDK_DRAG_ENTER:
+      case CDK_DRAG_LEAVE:
+      case CDK_DRAG_MOTION:
+      case CDK_DRAG_STATUS:
+      case CDK_DROP_START:
+      case CDK_DROP_FINISHED:
+      case CDK_NOTHING:
+      case CDK_DELETE:
+      case CDK_DESTROY:
+      case CDK_EXPOSE:
+      case CDK_MAP:
+      case CDK_UNMAP:
+      case CDK_WINDOW_STATE:
+      case CDK_SETTING:
+      case CDK_OWNER_CHANGE:
+      case CDK_GRAB_BROKEN:
+      case CDK_PAD_BUTTON_PRESS:
+      case CDK_PAD_BUTTON_RELEASE:
+      case CDK_PAD_RING:
+      case CDK_PAD_STRIP:
+      case CDK_PAD_GROUP_MODE:
+      case CDK_EVENT_LAST:
         /* no state field */
         break;
       }
@@ -1075,42 +1075,42 @@ cdk_event_get_coords (const CdkEvent *event,
 
   switch (event->type)
     {
-    case GDK_CONFIGURE:
+    case CDK_CONFIGURE:
       x = event->configure.x;
       y = event->configure.y;
       break;
-    case GDK_ENTER_NOTIFY:
-    case GDK_LEAVE_NOTIFY:
+    case CDK_ENTER_NOTIFY:
+    case CDK_LEAVE_NOTIFY:
       x = event->crossing.x;
       y = event->crossing.y;
       break;
-    case GDK_SCROLL:
+    case CDK_SCROLL:
       x = event->scroll.x;
       y = event->scroll.y;
       break;
-    case GDK_BUTTON_PRESS:
-    case GDK_2BUTTON_PRESS:
-    case GDK_3BUTTON_PRESS:
-    case GDK_BUTTON_RELEASE:
+    case CDK_BUTTON_PRESS:
+    case CDK_2BUTTON_PRESS:
+    case CDK_3BUTTON_PRESS:
+    case CDK_BUTTON_RELEASE:
       x = event->button.x;
       y = event->button.y;
       break;
-    case GDK_TOUCH_BEGIN:
-    case GDK_TOUCH_UPDATE:
-    case GDK_TOUCH_END:
-    case GDK_TOUCH_CANCEL:
+    case CDK_TOUCH_BEGIN:
+    case CDK_TOUCH_UPDATE:
+    case CDK_TOUCH_END:
+    case CDK_TOUCH_CANCEL:
       x = event->touch.x;
       y = event->touch.y;
       break;
-    case GDK_MOTION_NOTIFY:
+    case CDK_MOTION_NOTIFY:
       x = event->motion.x;
       y = event->motion.y;
       break;
-    case GDK_TOUCHPAD_SWIPE:
+    case CDK_TOUCHPAD_SWIPE:
       x = event->touchpad_swipe.x;
       y = event->touchpad_swipe.y;
       break;
-    case GDK_TOUCHPAD_PINCH:
+    case CDK_TOUCHPAD_PINCH:
       x = event->touchpad_pinch.x;
       y = event->touchpad_pinch.y;
       break;
@@ -1149,47 +1149,47 @@ cdk_event_get_root_coords (const CdkEvent *event,
 
   switch (event->type)
     {
-    case GDK_MOTION_NOTIFY:
+    case CDK_MOTION_NOTIFY:
       x = event->motion.x_root;
       y = event->motion.y_root;
       break;
-    case GDK_SCROLL:
+    case CDK_SCROLL:
       x = event->scroll.x_root;
       y = event->scroll.y_root;
       break;
-    case GDK_BUTTON_PRESS:
-    case GDK_2BUTTON_PRESS:
-    case GDK_3BUTTON_PRESS:
-    case GDK_BUTTON_RELEASE:
+    case CDK_BUTTON_PRESS:
+    case CDK_2BUTTON_PRESS:
+    case CDK_3BUTTON_PRESS:
+    case CDK_BUTTON_RELEASE:
       x = event->button.x_root;
       y = event->button.y_root;
       break;
-    case GDK_TOUCH_BEGIN:
-    case GDK_TOUCH_UPDATE:
-    case GDK_TOUCH_END:
-    case GDK_TOUCH_CANCEL:
+    case CDK_TOUCH_BEGIN:
+    case CDK_TOUCH_UPDATE:
+    case CDK_TOUCH_END:
+    case CDK_TOUCH_CANCEL:
       x = event->touch.x_root;
       y = event->touch.y_root;
       break;
-    case GDK_ENTER_NOTIFY:
-    case GDK_LEAVE_NOTIFY:
+    case CDK_ENTER_NOTIFY:
+    case CDK_LEAVE_NOTIFY:
       x = event->crossing.x_root;
       y = event->crossing.y_root;
       break;
-    case GDK_DRAG_ENTER:
-    case GDK_DRAG_LEAVE:
-    case GDK_DRAG_MOTION:
-    case GDK_DRAG_STATUS:
-    case GDK_DROP_START:
-    case GDK_DROP_FINISHED:
+    case CDK_DRAG_ENTER:
+    case CDK_DRAG_LEAVE:
+    case CDK_DRAG_MOTION:
+    case CDK_DRAG_STATUS:
+    case CDK_DROP_START:
+    case CDK_DROP_FINISHED:
       x = event->dnd.x_root;
       y = event->dnd.y_root;
       break;
-    case GDK_TOUCHPAD_SWIPE:
+    case CDK_TOUCHPAD_SWIPE:
       x = event->touchpad_swipe.x_root;
       y = event->touchpad_swipe.y_root;
       break;
-    case GDK_TOUCHPAD_PINCH:
+    case CDK_TOUCHPAD_PINCH:
       x = event->touchpad_pinch.x_root;
       y = event->touchpad_pinch.y_root;
       break;
@@ -1228,14 +1228,14 @@ cdk_event_get_button (const CdkEvent *event,
   
   switch (event->type)
     {
-    case GDK_BUTTON_PRESS:
-    case GDK_2BUTTON_PRESS:
-    case GDK_3BUTTON_PRESS:
-    case GDK_BUTTON_RELEASE:
+    case CDK_BUTTON_PRESS:
+    case CDK_2BUTTON_PRESS:
+    case CDK_3BUTTON_PRESS:
+    case CDK_BUTTON_RELEASE:
       number = event->button.button;
       break;
-    case GDK_PAD_BUTTON_PRESS:
-    case GDK_PAD_BUTTON_RELEASE:
+    case CDK_PAD_BUTTON_PRESS:
+    case CDK_PAD_BUTTON_RELEASE:
       number = event->pad_button.button;
       break;
     default:
@@ -1271,14 +1271,14 @@ cdk_event_get_click_count (const CdkEvent *event,
 
   switch (event->type)
     {
-    case GDK_BUTTON_PRESS:
-    case GDK_BUTTON_RELEASE:
+    case CDK_BUTTON_PRESS:
+    case CDK_BUTTON_RELEASE:
       number = 1;
       break;
-    case GDK_2BUTTON_PRESS:
+    case CDK_2BUTTON_PRESS:
       number = 2;
       break;
-    case GDK_3BUTTON_PRESS:
+    case CDK_3BUTTON_PRESS:
       number = 3;
       break;
     default:
@@ -1312,8 +1312,8 @@ cdk_event_get_keyval (const CdkEvent *event,
 
   switch (event->type)
     {
-    case GDK_KEY_PRESS:
-    case GDK_KEY_RELEASE:
+    case CDK_KEY_PRESS:
+    case CDK_KEY_RELEASE:
       number = event->key.keyval;
       break;
     default:
@@ -1349,8 +1349,8 @@ cdk_event_get_keycode (const CdkEvent *event,
 
   switch (event->type)
     {
-    case GDK_KEY_PRESS:
-    case GDK_KEY_RELEASE:
+    case CDK_KEY_PRESS:
+    case CDK_KEY_RELEASE:
       number = event->key.hardware_keycode;
       break;
     default:
@@ -1371,7 +1371,7 @@ cdk_event_get_keycode (const CdkEvent *event,
  *
  * Extracts the scroll direction from an event.
  *
- * If @event is not of type %GDK_SCROLL, the contents of @direction
+ * If @event is not of type %CDK_SCROLL, the contents of @direction
  * are undefined.
  *
  * If you wish to handle both discrete and smooth scrolling, you
@@ -1390,10 +1390,10 @@ cdk_event_get_keycode (const CdkEvent *event,
  *
  *       switch (direction)
  *         {
- *         case GDK_SCROLL_UP:
+ *         case CDK_SCROLL_UP:
  *           vscroll_factor = -delta;
  *           break;
- *         case GDK_SCROLL_DOWN:
+ *         case CDK_SCROLL_DOWN:
  *           vscroll_factor = delta;
  *           break;
  *         default:
@@ -1422,8 +1422,8 @@ cdk_event_get_scroll_direction (const CdkEvent *event,
 
   switch (event->type)
     {
-    case GDK_SCROLL:
-      if (event->scroll.direction == GDK_SCROLL_SMOOTH)
+    case CDK_SCROLL:
+      if (event->scroll.direction == CDK_SCROLL_SMOOTH)
         fetched = FALSE;
       else
         dir = event->scroll.direction;
@@ -1465,8 +1465,8 @@ cdk_event_get_scroll_deltas (const CdkEvent *event,
 
   switch (event->type)
     {
-    case GDK_SCROLL:
-      if (event->scroll.direction == GDK_SCROLL_SMOOTH)
+    case CDK_SCROLL:
+      if (event->scroll.direction == CDK_SCROLL_SMOOTH)
         {
           dx = event->scroll.delta_x;
           dy = event->scroll.delta_y;
@@ -1531,34 +1531,34 @@ cdk_event_get_axis (const CdkEvent *event,
   
   g_return_val_if_fail (event != NULL, FALSE);
   
-  if (axis_use == GDK_AXIS_X || axis_use == GDK_AXIS_Y)
+  if (axis_use == CDK_AXIS_X || axis_use == CDK_AXIS_Y)
     {
       gdouble x, y;
       
       switch (event->type)
 	{
-        case GDK_MOTION_NOTIFY:
+        case CDK_MOTION_NOTIFY:
 	  x = event->motion.x;
 	  y = event->motion.y;
 	  break;
-	case GDK_SCROLL:
+	case CDK_SCROLL:
 	  x = event->scroll.x;
 	  y = event->scroll.y;
 	  break;
-	case GDK_BUTTON_PRESS:
-	case GDK_BUTTON_RELEASE:
+	case CDK_BUTTON_PRESS:
+	case CDK_BUTTON_RELEASE:
 	  x = event->button.x;
 	  y = event->button.y;
 	  break;
-        case GDK_TOUCH_BEGIN:
-        case GDK_TOUCH_UPDATE:
-        case GDK_TOUCH_END:
-        case GDK_TOUCH_CANCEL:
+        case CDK_TOUCH_BEGIN:
+        case CDK_TOUCH_UPDATE:
+        case CDK_TOUCH_END:
+        case CDK_TOUCH_CANCEL:
 	  x = event->touch.x;
 	  y = event->touch.y;
 	  break;
-	case GDK_ENTER_NOTIFY:
-	case GDK_LEAVE_NOTIFY:
+	case CDK_ENTER_NOTIFY:
+	case CDK_LEAVE_NOTIFY:
 	  x = event->crossing.x;
 	  y = event->crossing.y;
 	  break;
@@ -1567,28 +1567,28 @@ cdk_event_get_axis (const CdkEvent *event,
 	  return FALSE;
 	}
 
-      if (axis_use == GDK_AXIS_X && value)
+      if (axis_use == CDK_AXIS_X && value)
 	*value = x;
-      if (axis_use == GDK_AXIS_Y && value)
+      if (axis_use == CDK_AXIS_Y && value)
 	*value = y;
 
       return TRUE;
     }
-  else if (event->type == GDK_BUTTON_PRESS ||
-	   event->type == GDK_BUTTON_RELEASE)
+  else if (event->type == CDK_BUTTON_PRESS ||
+	   event->type == CDK_BUTTON_RELEASE)
     {
       device = event->button.device;
       axes = event->button.axes;
     }
-  else if (event->type == GDK_TOUCH_BEGIN ||
-           event->type == GDK_TOUCH_UPDATE ||
-           event->type == GDK_TOUCH_END ||
-           event->type == GDK_TOUCH_CANCEL)
+  else if (event->type == CDK_TOUCH_BEGIN ||
+           event->type == CDK_TOUCH_UPDATE ||
+           event->type == CDK_TOUCH_END ||
+           event->type == CDK_TOUCH_CANCEL)
     {
       device = event->touch.device;
       axes = event->touch.axes;
     }
-  else if (event->type == GDK_MOTION_NOTIFY)
+  else if (event->type == CDK_MOTION_NOTIFY)
     {
       device = event->motion.device;
       axes = event->motion.axes;
@@ -1624,26 +1624,26 @@ cdk_event_set_device (CdkEvent  *event,
 
   switch (event->type)
     {
-    case GDK_MOTION_NOTIFY:
+    case CDK_MOTION_NOTIFY:
       event->motion.device = device;
       break;
-    case GDK_BUTTON_PRESS:
-    case GDK_2BUTTON_PRESS:
-    case GDK_3BUTTON_PRESS:
-    case GDK_BUTTON_RELEASE:
+    case CDK_BUTTON_PRESS:
+    case CDK_2BUTTON_PRESS:
+    case CDK_3BUTTON_PRESS:
+    case CDK_BUTTON_RELEASE:
       event->button.device = device;
       break;
-    case GDK_TOUCH_BEGIN:
-    case GDK_TOUCH_UPDATE:
-    case GDK_TOUCH_END:
-    case GDK_TOUCH_CANCEL:
+    case CDK_TOUCH_BEGIN:
+    case CDK_TOUCH_UPDATE:
+    case CDK_TOUCH_END:
+    case CDK_TOUCH_CANCEL:
       event->touch.device = device;
       break;
-    case GDK_SCROLL:
+    case CDK_SCROLL:
       event->scroll.device = device;
       break;
-    case GDK_PROXIMITY_IN:
-    case GDK_PROXIMITY_OUT:
+    case CDK_PROXIMITY_IN:
+    case CDK_PROXIMITY_OUT:
       event->proximity.device = device;
       break;
     default:
@@ -1677,22 +1677,22 @@ cdk_event_get_device (const CdkEvent *event)
 
   switch (event->type)
     {
-    case GDK_MOTION_NOTIFY:
+    case CDK_MOTION_NOTIFY:
       return event->motion.device;
-    case GDK_BUTTON_PRESS:
-    case GDK_2BUTTON_PRESS:
-    case GDK_3BUTTON_PRESS:
-    case GDK_BUTTON_RELEASE:
+    case CDK_BUTTON_PRESS:
+    case CDK_2BUTTON_PRESS:
+    case CDK_3BUTTON_PRESS:
+    case CDK_BUTTON_RELEASE:
       return event->button.device;
-    case GDK_TOUCH_BEGIN:
-    case GDK_TOUCH_UPDATE:
-    case GDK_TOUCH_END:
-    case GDK_TOUCH_CANCEL:
+    case CDK_TOUCH_BEGIN:
+    case CDK_TOUCH_UPDATE:
+    case CDK_TOUCH_END:
+    case CDK_TOUCH_CANCEL:
       return event->touch.device;
-    case GDK_SCROLL:
+    case CDK_SCROLL:
       return event->scroll.device;
-    case GDK_PROXIMITY_IN:
-    case GDK_PROXIMITY_OUT:
+    case CDK_PROXIMITY_IN:
+    case CDK_PROXIMITY_OUT:
       return event->proximity.device;
     default:
       break;
@@ -1701,30 +1701,30 @@ cdk_event_get_device (const CdkEvent *event)
   /* Fallback if event has no device set */
   switch (event->type)
     {
-    case GDK_MOTION_NOTIFY:
-    case GDK_BUTTON_PRESS:
-    case GDK_2BUTTON_PRESS:
-    case GDK_3BUTTON_PRESS:
-    case GDK_BUTTON_RELEASE:
-    case GDK_TOUCH_BEGIN:
-    case GDK_TOUCH_UPDATE:
-    case GDK_TOUCH_END:
-    case GDK_TOUCH_CANCEL:
-    case GDK_ENTER_NOTIFY:
-    case GDK_LEAVE_NOTIFY:
-    case GDK_FOCUS_CHANGE:
-    case GDK_PROXIMITY_IN:
-    case GDK_PROXIMITY_OUT:
-    case GDK_DRAG_ENTER:
-    case GDK_DRAG_LEAVE:
-    case GDK_DRAG_MOTION:
-    case GDK_DRAG_STATUS:
-    case GDK_DROP_START:
-    case GDK_DROP_FINISHED:
-    case GDK_SCROLL:
-    case GDK_GRAB_BROKEN:
-    case GDK_KEY_PRESS:
-    case GDK_KEY_RELEASE:
+    case CDK_MOTION_NOTIFY:
+    case CDK_BUTTON_PRESS:
+    case CDK_2BUTTON_PRESS:
+    case CDK_3BUTTON_PRESS:
+    case CDK_BUTTON_RELEASE:
+    case CDK_TOUCH_BEGIN:
+    case CDK_TOUCH_UPDATE:
+    case CDK_TOUCH_END:
+    case CDK_TOUCH_CANCEL:
+    case CDK_ENTER_NOTIFY:
+    case CDK_LEAVE_NOTIFY:
+    case CDK_FOCUS_CHANGE:
+    case CDK_PROXIMITY_IN:
+    case CDK_PROXIMITY_OUT:
+    case CDK_DRAG_ENTER:
+    case CDK_DRAG_LEAVE:
+    case CDK_DRAG_MOTION:
+    case CDK_DRAG_STATUS:
+    case CDK_DROP_START:
+    case CDK_DROP_FINISHED:
+    case CDK_SCROLL:
+    case CDK_GRAB_BROKEN:
+    case CDK_KEY_PRESS:
+    case CDK_KEY_RELEASE:
       {
         CdkDisplay *display;
         CdkSeat *seat;
@@ -1736,8 +1736,8 @@ cdk_event_get_device (const CdkEvent *event)
         display = cdk_window_get_display (event->any.window);
         seat = cdk_display_get_default_seat (display);
 
-        if (event->type == GDK_KEY_PRESS ||
-            event->type == GDK_KEY_RELEASE)
+        if (event->type == CDK_KEY_PRESS ||
+            event->type == CDK_KEY_RELEASE)
           return cdk_seat_get_keyboard (seat);
         else
           return cdk_seat_get_pointer (seat);
@@ -1767,7 +1767,7 @@ cdk_event_set_source_device (CdkEvent  *event,
   CdkEventPrivate *private;
 
   g_return_if_fail (cdk_event_is_allocated (event));
-  g_return_if_fail (GDK_IS_DEVICE (device));
+  g_return_if_fail (CDK_IS_DEVICE (device));
 
   private = (CdkEventPrivate *) event;
 
@@ -1821,7 +1821,7 @@ cdk_event_get_source_device (const CdkEvent *event)
  * request further motion notifies, because it also works for extension
  * events where motion notifies are provided for devices other than the
  * core pointer. Coordinate extraction, processing and requesting more
- * motion events from a %GDK_MOTION_NOTIFY event usually works like this:
+ * motion events from a %CDK_MOTION_NOTIFY event usually works like this:
  *
  * |[<!-- language="C" -->
  * {
@@ -1842,7 +1842,7 @@ cdk_event_request_motions (const CdkEventMotion *event)
   
   g_return_if_fail (event != NULL);
   
-  if (event->type == GDK_MOTION_NOTIFY && event->is_hint)
+  if (event->type == CDK_MOTION_NOTIFY && event->is_hint)
     {
       cdk_device_get_state (event->device, event->window, NULL, NULL);
       
@@ -1859,11 +1859,11 @@ cdk_event_request_motions (const CdkEventMotion *event)
  * context menu, according to platform conventions. The right mouse
  * button always triggers context menus. Additionally, if
  * cdk_keymap_get_modifier_mask() returns a non-0 mask for
- * %GDK_MODIFIER_INTENT_CONTEXT_MENU, then the left mouse button will
+ * %CDK_MODIFIER_INTENT_CONTEXT_MENU, then the left mouse button will
  * also trigger a context menu if this modifier is pressed.
  *
  * This function should always be used instead of simply checking for
- * event->button == %GDK_BUTTON_SECONDARY.
+ * event->button == %CDK_BUTTON_SECONDARY.
  *
  * Returns: %TRUE if the event should trigger a context menu.
  *
@@ -1874,26 +1874,26 @@ cdk_event_triggers_context_menu (const CdkEvent *event)
 {
   g_return_val_if_fail (event != NULL, FALSE);
 
-  if (event->type == GDK_BUTTON_PRESS)
+  if (event->type == CDK_BUTTON_PRESS)
     {
       const CdkEventButton *bevent = (const CdkEventButton *) event;
       CdkDisplay *display;
       CdkModifierType modifier;
 
-      g_return_val_if_fail (GDK_IS_WINDOW (bevent->window), FALSE);
+      g_return_val_if_fail (CDK_IS_WINDOW (bevent->window), FALSE);
 
-      if (bevent->button == GDK_BUTTON_SECONDARY &&
-          ! (bevent->state & (GDK_BUTTON1_MASK | GDK_BUTTON2_MASK)))
+      if (bevent->button == CDK_BUTTON_SECONDARY &&
+          ! (bevent->state & (CDK_BUTTON1_MASK | CDK_BUTTON2_MASK)))
         return TRUE;
 
       display = cdk_window_get_display (bevent->window);
 
       modifier = cdk_keymap_get_modifier_mask (cdk_keymap_get_for_display (display),
-                                               GDK_MODIFIER_INTENT_CONTEXT_MENU);
+                                               CDK_MODIFIER_INTENT_CONTEXT_MENU);
 
       if (modifier != 0 &&
-          bevent->button == GDK_BUTTON_PRIMARY &&
-          ! (bevent->state & (GDK_BUTTON2_MASK | GDK_BUTTON3_MASK)) &&
+          bevent->button == CDK_BUTTON_PRIMARY &&
+          ! (bevent->state & (CDK_BUTTON2_MASK | CDK_BUTTON3_MASK)) &&
           (bevent->state & modifier))
         return TRUE;
     }
@@ -2093,8 +2093,8 @@ cdk_event_get_screen (const CdkEvent *event)
  * cdk_event_get_event_sequence:
  * @event: a #CdkEvent
  *
- * If @event if of type %GDK_TOUCH_BEGIN, %GDK_TOUCH_UPDATE,
- * %GDK_TOUCH_END or %GDK_TOUCH_CANCEL, returns the #CdkEventSequence
+ * If @event if of type %CDK_TOUCH_BEGIN, %CDK_TOUCH_UPDATE,
+ * %CDK_TOUCH_END or %CDK_TOUCH_CANCEL, returns the #CdkEventSequence
  * to which the event belongs. Otherwise, return %NULL.
  *
  * Returns: (transfer none): the event sequence that the event belongs to
@@ -2107,10 +2107,10 @@ cdk_event_get_event_sequence (const CdkEvent *event)
   if (!event)
     return NULL;
 
-  if (event->type == GDK_TOUCH_BEGIN ||
-      event->type == GDK_TOUCH_UPDATE ||
-      event->type == GDK_TOUCH_END ||
-      event->type == GDK_TOUCH_CANCEL)
+  if (event->type == CDK_TOUCH_BEGIN ||
+      event->type == CDK_TOUCH_UPDATE ||
+      event->type == CDK_TOUCH_END ||
+      event->type == CDK_TOUCH_CANCEL)
     return event->touch.sequence;
 
   return NULL;
@@ -2129,9 +2129,9 @@ void
 cdk_set_show_events (gboolean show_events)
 {
   if (show_events)
-    _cdk_debug_flags |= GDK_DEBUG_EVENTS;
+    _cdk_debug_flags |= CDK_DEBUG_EVENTS;
   else
-    _cdk_debug_flags &= ~GDK_DEBUG_EVENTS;
+    _cdk_debug_flags &= ~CDK_DEBUG_EVENTS;
 }
 
 /**
@@ -2144,7 +2144,7 @@ cdk_set_show_events (gboolean show_events)
 gboolean
 cdk_get_show_events (void)
 {
-  return (_cdk_debug_flags & GDK_DEBUG_EVENTS) != 0;
+  return (_cdk_debug_flags & CDK_DEBUG_EVENTS) != 0;
 }
 
 static void
@@ -2155,7 +2155,7 @@ cdk_synthesize_click (CdkDisplay *display,
   CdkEvent *event_copy;
 
   event_copy = cdk_event_copy (event);
-  event_copy->type = (nclicks == 2) ? GDK_2BUTTON_PRESS : GDK_3BUTTON_PRESS;
+  event_copy->type = (nclicks == 2) ? CDK_2BUTTON_PRESS : CDK_3BUTTON_PRESS;
 
   _cdk_event_queue_append (display, event_copy);
 }
@@ -2167,7 +2167,7 @@ _cdk_event_button_generate (CdkDisplay *display,
   CdkMultipleClickInfo *info;
   CdkDevice *source_device;
 
-  g_return_if_fail (event->type == GDK_BUTTON_PRESS);
+  g_return_if_fail (event->type == CDK_BUTTON_PRESS);
 
   source_device = cdk_event_get_source_device (event);
   info = g_hash_table_lookup (display->multiple_click_info, event->button.device);
@@ -2247,7 +2247,7 @@ cdk_get_pending_window_state_event_link (CdkWindow *window)
     {
       CdkEventPrivate *event = tmp_list->data;
 
-      if (event->event.type == GDK_WINDOW_STATE &&
+      if (event->event.type == CDK_WINDOW_STATE &&
           event->event.window_state.window == window)
         return tmp_list;
     }
@@ -2267,7 +2267,7 @@ _cdk_set_window_state (CdkWindow      *window,
   g_return_if_fail (window != NULL);
 
   temp_event.window_state.window = window;
-  temp_event.window_state.type = GDK_WINDOW_STATE;
+  temp_event.window_state.type = CDK_WINDOW_STATE;
   temp_event.window_state.send_event = FALSE;
   temp_event.window_state.new_window_state = new_state;
 
@@ -2297,23 +2297,23 @@ _cdk_set_window_state (CdkWindow      *window,
 
   window->state = new_state;
 
-  if (temp_event.window_state.changed_mask & GDK_WINDOW_STATE_WITHDRAWN)
+  if (temp_event.window_state.changed_mask & CDK_WINDOW_STATE_WITHDRAWN)
     _cdk_window_update_viewable (window);
 
   /* We only really send the event to toplevels, since
    * all the window states don't apply to non-toplevels.
-   * Non-toplevels do use the GDK_WINDOW_STATE_WITHDRAWN flag
+   * Non-toplevels do use the CDK_WINDOW_STATE_WITHDRAWN flag
    * internally so we needed to update window->state.
    */
   switch (window->window_type)
     {
-    case GDK_WINDOW_TOPLEVEL:
-    case GDK_WINDOW_TEMP: /* ? */
+    case CDK_WINDOW_TOPLEVEL:
+    case CDK_WINDOW_TEMP: /* ? */
       cdk_display_put_event (display, &temp_event);
       break;
-    case GDK_WINDOW_FOREIGN:
-    case GDK_WINDOW_ROOT:
-    case GDK_WINDOW_CHILD:
+    case CDK_WINDOW_FOREIGN:
+    case CDK_WINDOW_ROOT:
+    case CDK_WINDOW_CHILD:
       break;
     }
 }
@@ -2334,7 +2334,7 @@ cdk_synthesize_window_state (CdkWindow     *window,
  * @msec: double click time in milliseconds (thousandths of a second) 
  * 
  * Sets the double click time (two clicks within this time interval
- * count as a double click and result in a #GDK_2BUTTON_PRESS event).
+ * count as a double click and result in a #CDK_2BUTTON_PRESS event).
  * Applications should not set this, it is a global 
  * user-configured setting.
  *
@@ -2369,7 +2369,7 @@ cdk_set_double_click_time (guint msec)
  * @distance: distance in pixels
  * 
  * Sets the double click distance (two clicks within this distance
- * count as a double click and result in a #GDK_2BUTTON_PRESS event).
+ * count as a double click and result in a #CDK_2BUTTON_PRESS event).
  * See also cdk_display_set_double_click_time().
  * Applications should not set this, it is a global 
  * user-configured setting.
@@ -2434,7 +2434,7 @@ cdk_setting_get (const gchar *name,
 CdkEventType
 cdk_event_get_event_type (const CdkEvent *event)
 {
-  g_return_val_if_fail (event != NULL, GDK_NOTHING);
+  g_return_val_if_fail (event != NULL, CDK_NOTHING);
 
   return event->type;
 }

@@ -39,7 +39,7 @@
 #include "ctkwidgetprivate.h"
 #include "ctkaccessible.h"
 
-#ifdef GDK_WINDOWING_WAYLAND
+#ifdef CDK_WINDOWING_WAYLAND
 #include "wayland/cdkwayland.h"
 #endif
 
@@ -282,7 +282,7 @@ ctk_tooltip_set_icon (CtkTooltip *tooltip,
 		      CdkPixbuf  *pixbuf)
 {
   g_return_if_fail (CTK_IS_TOOLTIP (tooltip));
-  g_return_if_fail (pixbuf == NULL || GDK_IS_PIXBUF (pixbuf));
+  g_return_if_fail (pixbuf == NULL || CDK_IS_PIXBUF (pixbuf));
 
   ctk_tooltip_window_set_image_icon (CTK_TOOLTIP_WINDOW (tooltip->window), pixbuf);
 }
@@ -447,7 +447,7 @@ ctk_tooltip_trigger_tooltip_query (CdkDisplay *display)
   if (!window)
     return;
 
-  event.type = GDK_MOTION_NOTIFY;
+  event.type = CDK_MOTION_NOTIFY;
   event.motion.window = window;
   event.motion.x = x;
   event.motion.y = y;
@@ -621,7 +621,7 @@ _ctk_widget_find_at_coords (CdkWindow *window,
   CtkWidget *event_widget;
   struct ChildLocation child_loc = { NULL, NULL, 0, 0 };
 
-  g_return_val_if_fail (GDK_IS_WINDOW (window), NULL);
+  g_return_val_if_fail (CDK_IS_WINDOW (window), NULL);
 
   cdk_window_get_user_data (window, (void **)&event_widget);
 
@@ -960,9 +960,9 @@ ctk_tooltip_position (CtkTooltip *tooltip,
 
   cdk_window_move_to_rect (window,
                            &anchor_rect,
-                           GDK_GRAVITY_SOUTH,
-                           GDK_GRAVITY_NORTH,
-                           GDK_ANCHOR_FLIP_Y | GDK_ANCHOR_SLIDE_X,
+                           CDK_GRAVITY_SOUTH,
+                           CDK_GRAVITY_NORTH,
+                           CDK_ANCHOR_FLIP_Y | CDK_ANCHOR_SLIDE_X,
                            rect_anchor_dx, 0);
   ctk_widget_show (CTK_WIDGET (tooltip->current_window));
 }
@@ -992,7 +992,7 @@ ctk_tooltip_show_tooltip (CdkDisplay *display)
 
       window = tooltip->last_window;
 
-      if (!GDK_IS_WINDOW (window))
+      if (!CDK_IS_WINDOW (window))
         return;
 
       device = cdk_seat_get_pointer (cdk_display_get_default_seat (display));
@@ -1103,7 +1103,7 @@ tooltip_popup_timeout (gpointer data)
   CdkDisplay *display;
   CtkTooltip *tooltip;
 
-  display = GDK_DISPLAY (data);
+  display = CDK_DISPLAY (data);
   tooltip = g_object_get_qdata (G_OBJECT (display), quark_current_tooltip);
 
   /* This usually does not happen.  However, it does occur in language
@@ -1164,7 +1164,7 @@ _ctk_tooltip_focus_in (CtkWidget *widget)
 
   device = ctk_get_current_event_device ();
 
-  if (device && cdk_device_get_source (device) == GDK_SOURCE_KEYBOARD)
+  if (device && cdk_device_get_source (device) == CDK_SOURCE_KEYBOARD)
     device = cdk_device_get_associated_device (device);
 
   /* This function should be called by either a focus in event,
@@ -1306,7 +1306,7 @@ tooltips_enabled (CdkEvent *event)
 
   source = cdk_device_get_source (source_device);
 
-  if (source != GDK_SOURCE_TOUCHSCREEN)
+  if (source != CDK_SOURCE_TOUCHSCREEN)
     return TRUE;
 
   return FALSE;
@@ -1373,19 +1373,19 @@ ctk_tooltip_handle_event_internal (CdkEvent *event)
 
   switch (event->type)
     {
-      case GDK_BUTTON_PRESS:
-      case GDK_2BUTTON_PRESS:
-      case GDK_3BUTTON_PRESS:
-      case GDK_KEY_PRESS:
-      case GDK_DRAG_ENTER:
-      case GDK_GRAB_BROKEN:
-      case GDK_SCROLL:
+      case CDK_BUTTON_PRESS:
+      case CDK_2BUTTON_PRESS:
+      case CDK_3BUTTON_PRESS:
+      case CDK_KEY_PRESS:
+      case CDK_DRAG_ENTER:
+      case CDK_GRAB_BROKEN:
+      case CDK_SCROLL:
 	ctk_tooltip_hide_tooltip (current_tooltip);
 	break;
 
-      case GDK_MOTION_NOTIFY:
-      case GDK_ENTER_NOTIFY:
-      case GDK_LEAVE_NOTIFY:
+      case CDK_MOTION_NOTIFY:
+      case CDK_ENTER_NOTIFY:
+      case CDK_LEAVE_NOTIFY:
 	if (current_tooltip)
 	  {
 	    gboolean tip_area_set;
@@ -1400,7 +1400,7 @@ ctk_tooltip_handle_event_internal (CdkEvent *event)
                                      &x, &y);
 
 	    /* Leave notify should override the query function */
-	    hide_tooltip = (event->type == GDK_LEAVE_NOTIFY);
+	    hide_tooltip = (event->type == CDK_LEAVE_NOTIFY);
 
 	    /* Is the pointer above another widget now? */
 	    if (CTK_TOOLTIP_VISIBLE (current_tooltip))

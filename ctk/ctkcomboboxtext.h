@@ -57,40 +57,40 @@ struct _CtkComboBoxTextClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType         ctk_combo_box_text_get_type        (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget*    ctk_combo_box_text_new             (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget*    ctk_combo_box_text_new_with_entry  (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_combo_box_text_append_text     (CtkComboBoxText     *combo_box,
                                                   const gchar         *text);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_combo_box_text_insert_text     (CtkComboBoxText     *combo_box,
                                                   gint                 position,
                                                   const gchar         *text);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_combo_box_text_prepend_text    (CtkComboBoxText     *combo_box,
                                                   const gchar         *text);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_combo_box_text_remove          (CtkComboBoxText     *combo_box,
                                                   gint                 position);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_combo_box_text_remove_all      (CtkComboBoxText     *combo_box);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gchar        *ctk_combo_box_text_get_active_text (CtkComboBoxText     *combo_box);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_combo_box_text_insert          (CtkComboBoxText     *combo_box,
                                                   gint                 position,
                                                   const gchar         *id,
                                                   const gchar         *text);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_combo_box_text_append          (CtkComboBoxText     *combo_box,
                                                   const gchar         *id,
                                                   const gchar         *text);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_combo_box_text_prepend         (CtkComboBoxText     *combo_box,
                                                   const gchar         *id,
                                                   const gchar         *text);

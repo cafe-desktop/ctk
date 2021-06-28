@@ -17,8 +17,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_QUARTZ_DEVICE_MANAGER_CORE__
-#define __GDK_QUARTZ_DEVICE_MANAGER_CORE__
+#ifndef __CDK_QUARTZ_DEVICE_MANAGER_CORE__
+#define __CDK_QUARTZ_DEVICE_MANAGER_CORE__
 
 #include <cdkdevicemanagerprivate.h>
 #include "cdkquartzdevicemanager-core.h"
@@ -49,4 +49,4 @@ CdkDevice *_cdk_quartz_device_manager_core_device_for_ns_event (CdkDeviceManager
 
 G_END_DECLS
 
-#endif /* __GDK_QUARTZ_DEVICE_MANAGER__ */
+#endif /* __CDK_QUARTZ_DEVICE_MANAGER__ */

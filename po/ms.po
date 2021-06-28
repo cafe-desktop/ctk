@@ -63,8 +63,8 @@ msgstr "PAPARAN"
 
 #. Description of --cdk-debug=FLAGS in --help output
 #: cdk/cdk.c:248
-msgid "GDK debugging flags to set"
-msgstr "Bendera penyahpepijatan GDK yang ditetapkan"
+msgid "CDK debugging flags to set"
+msgstr "Bendera penyahpepijatan CDK yang ditetapkan"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
@@ -76,12 +76,12 @@ msgstr "BENDERA"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: cdk/cdk.c:251
-msgid "GDK debugging flags to unset"
-msgstr "Bendera penyahpepijatan GDK yang dinyahtetapkan"
+msgid "CDK debugging flags to unset"
+msgstr "Bendera penyahpepijatan CDK yang dinyahtetapkan"
 
 #: cdk/cdkwindow.c:2851
-msgid "GL support disabled via GDK_DEBUG"
-msgstr "Sokongan GL dilumpuhkan melalui GDK_DEBUG"
+msgid "GL support disabled via CDK_DEBUG"
+msgstr "Sokongan GL dilumpuhkan melalui CDK_DEBUG"
 
 #: cdk/cdkwindow.c:2862
 msgid "The current backend does not support OpenGL"
@@ -2882,12 +2882,12 @@ msgstr "Jadikan semua amaran mati"
 #. Description of --ctk-debug=FLAGS in --help output
 #: ctk/ctkmain.c:470
 msgid "CTK+ debugging flags to set"
-msgstr "Bendera penyahpepijatan GDK+ untuk ditetapkan"
+msgstr "Bendera penyahpepijatan CDK+ untuk ditetapkan"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
 #: ctk/ctkmain.c:473
 msgid "CTK+ debugging flags to unset"
-msgstr "Bendera penyahpepijatan GDK+ untuk dinyahtetapkan"
+msgstr "Bendera penyahpepijatan CDK+ untuk dinyahtetapkan"
 
 #: ctk/ctkmain.c:810 ctk/ctkmain.c:1004
 #, c-format
@@ -4105,8 +4105,8 @@ msgid "CTK+ Version"
 msgstr "Versi CTK+"
 
 #: ctk/inspector/general.ui:68
-msgid "GDK Backend"
-msgstr "Bahagian Belakang GDK"
+msgid "CDK Backend"
+msgstr "Bahagian Belakang CDK"
 
 #: ctk/inspector/general.ui:373
 msgid "Display"
@@ -4479,10 +4479,10 @@ msgstr "Tetapan dikodkan oleh CTK_TEST_TOUCHSCREEN"
 #: ctk/inspector/visual.c:817
 msgid ""
 "Not settable at runtime.\n"
-"Use GDK_GL=always or GDK_GL=disable instead"
+"Use CDK_GL=always or CDK_GL=disable instead"
 msgstr ""
 "Tidak boleh tetap pada masa jalan.\n"
-"Guna GDK_GL=always atau GDK_GL=disable sebagai ganti"
+"Guna CDK_GL=always atau CDK_GL=disable sebagai ganti"
 
 #: ctk/inspector/visual.c:831 ctk/inspector/visual.c:832
 #: ctk/inspector/visual.c:833

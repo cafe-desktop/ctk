@@ -59,32 +59,32 @@ struct _CtkTreeModelSortClass
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType         ctk_tree_model_sort_get_type                   (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreeModel *ctk_tree_model_sort_new_with_model             (CtkTreeModel     *child_model);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreeModel *ctk_tree_model_sort_get_model                  (CtkTreeModelSort *tree_model);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreePath  *ctk_tree_model_sort_convert_child_path_to_path (CtkTreeModelSort *tree_model_sort,
 							      CtkTreePath      *child_path);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean      ctk_tree_model_sort_convert_child_iter_to_iter (CtkTreeModelSort *tree_model_sort,
 							      CtkTreeIter      *sort_iter,
 							      CtkTreeIter      *child_iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreePath  *ctk_tree_model_sort_convert_path_to_child_path (CtkTreeModelSort *tree_model_sort,
 							      CtkTreePath      *sorted_path);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_tree_model_sort_convert_iter_to_child_iter (CtkTreeModelSort *tree_model_sort,
 							      CtkTreeIter      *child_iter,
 							      CtkTreeIter      *sorted_iter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_tree_model_sort_reset_default_sort_func    (CtkTreeModelSort *tree_model_sort);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void          ctk_tree_model_sort_clear_cache                (CtkTreeModelSort *tree_model_sort);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean      ctk_tree_model_sort_iter_is_valid              (CtkTreeModelSort *tree_model_sort,
                                                               CtkTreeIter      *iter);
 

@@ -97,8 +97,8 @@ msgid "Default Display"
 msgstr "Andoza displey"
 
 #: cdk/cdkdisplaymanager.c:103
-msgid "The default display for GDK"
-msgstr "GDK uchun andoza displey"
+msgid "The default display for CDK"
+msgstr "CDK uchun andoza displey"
 
 #: cdk/cdkscreen.c:72
 msgid "Font options"

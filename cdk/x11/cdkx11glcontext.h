@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  *
  * cdkglcontext-x11.c: X11 specific OpenGL wrappers
  * 
@@ -18,10 +18,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_X11_GL_CONTEXT_H__
-#define __GDK_X11_GL_CONTEXT_H__
+#ifndef __CDK_X11_GL_CONTEXT_H__
+#define __CDK_X11_GL_CONTEXT_H__
 
-#if !defined (__GDKX_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined (__CDKX_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdkx.h> can be included directly."
 #endif
 
@@ -29,21 +29,21 @@
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_X11_GL_CONTEXT		(cdk_x11_gl_context_get_type ())
-#define GDK_X11_GL_CONTEXT(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), GDK_TYPE_X11_GL_CONTEXT, CdkX11GLContext))
-#define GDK_X11_IS_GL_CONTEXT(obj)	(G_TYPE_CHECK_INSTANCE_TYPE ((obj), GDK_TYPE_X11_GL_CONTEXT))
+#define CDK_TYPE_X11_GL_CONTEXT		(cdk_x11_gl_context_get_type ())
+#define CDK_X11_GL_CONTEXT(obj)		(G_TYPE_CHECK_INSTANCE_CAST ((obj), CDK_TYPE_X11_GL_CONTEXT, CdkX11GLContext))
+#define CDK_X11_IS_GL_CONTEXT(obj)	(G_TYPE_CHECK_INSTANCE_TYPE ((obj), CDK_TYPE_X11_GL_CONTEXT))
 
 typedef struct _CdkX11GLContext		CdkX11GLContext;
 typedef struct _CdkX11GLContextClass	CdkX11GLContextClass;
 
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 GType cdk_x11_gl_context_get_type (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 gboolean        cdk_x11_display_get_glx_version (CdkDisplay *display,
                                                  gint       *major,
                                                  gint       *minor);
 
 G_END_DECLS
 
-#endif /* __GDK_X11_GL_CONTEXT_H__ */
+#endif /* __CDK_X11_GL_CONTEXT_H__ */

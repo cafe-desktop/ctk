@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2009 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_EVENT_TRANSLATOR_H__
-#define __GDK_EVENT_TRANSLATOR_H__
+#ifndef __CDK_EVENT_TRANSLATOR_H__
+#define __CDK_EVENT_TRANSLATOR_H__
 
 #include "cdktypes.h"
 #include "cdkdisplay.h"
@@ -25,10 +25,10 @@
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_EVENT_TRANSLATOR         (_cdk_x11_event_translator_get_type ())
-#define GDK_EVENT_TRANSLATOR(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_EVENT_TRANSLATOR, CdkEventTranslator))
-#define GDK_IS_EVENT_TRANSLATOR(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_EVENT_TRANSLATOR))
-#define GDK_EVENT_TRANSLATOR_GET_IFACE(o) (G_TYPE_INSTANCE_GET_INTERFACE  ((o), GDK_TYPE_EVENT_TRANSLATOR, CdkEventTranslatorIface))
+#define CDK_TYPE_EVENT_TRANSLATOR         (_cdk_x11_event_translator_get_type ())
+#define CDK_EVENT_TRANSLATOR(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CDK_TYPE_EVENT_TRANSLATOR, CdkEventTranslator))
+#define CDK_IS_EVENT_TRANSLATOR(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CDK_TYPE_EVENT_TRANSLATOR))
+#define CDK_EVENT_TRANSLATOR_GET_IFACE(o) (G_TYPE_INSTANCE_GET_INTERFACE  ((o), CDK_TYPE_EVENT_TRANSLATOR, CdkEventTranslatorIface))
 
 typedef struct _CdkEventTranslatorIface CdkEventTranslatorIface;
 typedef struct _CdkEventTranslator CdkEventTranslator; /* Dummy typedef */
@@ -66,4 +66,4 @@ CdkWindow *  _cdk_x11_event_translator_get_window           (CdkEventTranslator 
 
 G_END_DECLS
 
-#endif /* __GDK_EVENT_TRANSLATOR_H__ */
+#endif /* __CDK_EVENT_TRANSLATOR_H__ */

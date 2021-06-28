@@ -92,7 +92,7 @@ typedef enum
   CTK_RECENT_CHOOSER_ERROR_INVALID_URI
 } CtkRecentChooserError;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GQuark  ctk_recent_chooser_error_quark (void);
 
 
@@ -160,53 +160,53 @@ struct _CtkRecentChooserIface
   void		    (* selection_changed)  (CtkRecentChooser  *chooser);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType   ctk_recent_chooser_get_type    (void) G_GNUC_CONST;
 
 /*
  * Configuration
  */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_recent_chooser_set_show_private    (CtkRecentChooser  *chooser,
 							  gboolean           show_private);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean          ctk_recent_chooser_get_show_private    (CtkRecentChooser  *chooser);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_recent_chooser_set_show_not_found  (CtkRecentChooser  *chooser,
 							  gboolean           show_not_found);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean          ctk_recent_chooser_get_show_not_found  (CtkRecentChooser  *chooser);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_recent_chooser_set_select_multiple (CtkRecentChooser  *chooser,
 							  gboolean           select_multiple);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean          ctk_recent_chooser_get_select_multiple (CtkRecentChooser  *chooser);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_recent_chooser_set_limit           (CtkRecentChooser  *chooser,
 							  gint               limit);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint              ctk_recent_chooser_get_limit           (CtkRecentChooser  *chooser);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_recent_chooser_set_local_only      (CtkRecentChooser  *chooser,
 							  gboolean           local_only);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean          ctk_recent_chooser_get_local_only      (CtkRecentChooser  *chooser);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_recent_chooser_set_show_tips       (CtkRecentChooser  *chooser,
 							  gboolean           show_tips);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean          ctk_recent_chooser_get_show_tips       (CtkRecentChooser  *chooser);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_recent_chooser_set_show_icons      (CtkRecentChooser  *chooser,
 							  gboolean           show_icons);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean          ctk_recent_chooser_get_show_icons      (CtkRecentChooser  *chooser);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_recent_chooser_set_sort_type       (CtkRecentChooser  *chooser,
 							  CtkRecentSortType  sort_type);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkRecentSortType ctk_recent_chooser_get_sort_type       (CtkRecentChooser  *chooser);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_recent_chooser_set_sort_func       (CtkRecentChooser  *chooser,
 							  CtkRecentSortFunc  sort_func,
 							  gpointer           sort_data,
@@ -215,46 +215,46 @@ void              ctk_recent_chooser_set_sort_func       (CtkRecentChooser  *cho
 /*
  * Items handling
  */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean       ctk_recent_chooser_set_current_uri  (CtkRecentChooser  *chooser,
 						    const gchar       *uri,
 						    GError           **error);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gchar *        ctk_recent_chooser_get_current_uri  (CtkRecentChooser  *chooser);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkRecentInfo *ctk_recent_chooser_get_current_item (CtkRecentChooser  *chooser);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean       ctk_recent_chooser_select_uri       (CtkRecentChooser  *chooser,
 						    const gchar       *uri,
 						    GError           **error);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_recent_chooser_unselect_uri     (CtkRecentChooser  *chooser,
 					            const gchar       *uri);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_recent_chooser_select_all       (CtkRecentChooser  *chooser);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void           ctk_recent_chooser_unselect_all     (CtkRecentChooser  *chooser);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GList *        ctk_recent_chooser_get_items        (CtkRecentChooser  *chooser);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gchar **       ctk_recent_chooser_get_uris         (CtkRecentChooser  *chooser,
 						    gsize             *length);
 
 /*
  * Filters
  */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void 		 ctk_recent_chooser_add_filter    (CtkRecentChooser *chooser,
 			 			   CtkRecentFilter  *filter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void 		 ctk_recent_chooser_remove_filter (CtkRecentChooser *chooser,
 						   CtkRecentFilter  *filter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GSList * 	 ctk_recent_chooser_list_filters  (CtkRecentChooser *chooser);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void 		 ctk_recent_chooser_set_filter    (CtkRecentChooser *chooser,
 						   CtkRecentFilter  *filter);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkRecentFilter *ctk_recent_chooser_get_filter    (CtkRecentChooser *chooser);
 
 

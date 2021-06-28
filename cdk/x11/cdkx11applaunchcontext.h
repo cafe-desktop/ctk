@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2010 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -15,10 +15,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_X11_APP_LAUNCH_CONTEXT_H__
-#define __GDK_X11_APP_LAUNCH_CONTEXT_H__
+#ifndef __CDK_X11_APP_LAUNCH_CONTEXT_H__
+#define __CDK_X11_APP_LAUNCH_CONTEXT_H__
 
-#if !defined (__GDKX_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined (__CDKX_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdkx.h> can be included directly."
 #endif
 
@@ -26,23 +26,23 @@
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_X11_APP_LAUNCH_CONTEXT              (cdk_x11_app_launch_context_get_type ())
-#define GDK_X11_APP_LAUNCH_CONTEXT(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_X11_APP_LAUNCH_CONTEXT, CdkX11AppLaunchContext))
-#define GDK_X11_APP_LAUNCH_CONTEXT_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_X11_APP_LAUNCH_CONTEXT, CdkX11AppLaunchContextClass))
-#define GDK_IS_X11_APP_LAUNCH_CONTEXT(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_X11_APP_LAUNCH_CONTEXT))
-#define GDK_IS_X11_APP_LAUNCH_CONTEXT_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_X11_APP_LAUNCH_CONTEXT))
-#define GDK_X11_APP_LAUNCH_CONTEXT_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_X11_APP_LAUNCH_CONTEXT, CdkX11AppLaunchContextClass))
+#define CDK_TYPE_X11_APP_LAUNCH_CONTEXT              (cdk_x11_app_launch_context_get_type ())
+#define CDK_X11_APP_LAUNCH_CONTEXT(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), CDK_TYPE_X11_APP_LAUNCH_CONTEXT, CdkX11AppLaunchContext))
+#define CDK_X11_APP_LAUNCH_CONTEXT_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CDK_TYPE_X11_APP_LAUNCH_CONTEXT, CdkX11AppLaunchContextClass))
+#define CDK_IS_X11_APP_LAUNCH_CONTEXT(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), CDK_TYPE_X11_APP_LAUNCH_CONTEXT))
+#define CDK_IS_X11_APP_LAUNCH_CONTEXT_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CDK_TYPE_X11_APP_LAUNCH_CONTEXT))
+#define CDK_X11_APP_LAUNCH_CONTEXT_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CDK_TYPE_X11_APP_LAUNCH_CONTEXT, CdkX11AppLaunchContextClass))
 
-#ifdef GDK_COMPILATION
+#ifdef CDK_COMPILATION
 typedef struct _CdkX11AppLaunchContext CdkX11AppLaunchContext;
 #else
 typedef CdkAppLaunchContext CdkX11AppLaunchContext;
 #endif
 typedef struct _CdkX11AppLaunchContextClass CdkX11AppLaunchContextClass;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType    cdk_x11_app_launch_context_get_type (void);
 
 G_END_DECLS
 
-#endif /* __GDK_X11_APP_LAUNCH_CONTEXT_H__ */
+#endif /* __CDK_X11_APP_LAUNCH_CONTEXT_H__ */

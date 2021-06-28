@@ -29,13 +29,13 @@
 
 G_BEGIN_DECLS
 
-GDK_DEPRECATED_IN_3_22_FOR(ctk_show_uri_on_window)
+CDK_DEPRECATED_IN_3_22_FOR(ctk_show_uri_on_window)
 gboolean ctk_show_uri  (CdkScreen   *screen,
                         const gchar *uri,
                         guint32      timestamp,
                         GError     **error);
 
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 gboolean ctk_show_uri_on_window (CtkWindow   *parent,
                                  const char  *uri,
                                  guint32      timestamp,

@@ -336,7 +336,7 @@ target_drag_motion	   (CtkWidget	       *widget,
   tmp_list = cdk_drag_context_list_targets (context);
   while (tmp_list)
     {
-      char *name = cdk_atom_name (GDK_POINTER_TO_ATOM (tmp_list->data));
+      char *name = cdk_atom_name (CDK_POINTER_TO_ATOM (tmp_list->data));
       g_print ("%s\n", name);
       g_free (name);
       
@@ -363,7 +363,7 @@ target_drag_drop	   (CtkWidget	       *widget,
   if (cdk_drag_context_list_targets (context))
     {
       ctk_drag_get_data (widget, context,
-			 GDK_POINTER_TO_ATOM (cdk_drag_context_list_targets (context)->data),
+			 CDK_POINTER_TO_ATOM (cdk_drag_context_list_targets (context)->data),
 			 time);
       return TRUE;
     }
@@ -515,7 +515,7 @@ popup_cb (gpointer data)
 		ctk_drag_dest_set (button,
 				   CTK_DEST_DEFAULT_ALL,
 				   target_table, n_targets - 1, /* no rootwin */
-				   GDK_ACTION_COPY | GDK_ACTION_MOVE);
+				   CDK_ACTION_COPY | CDK_ACTION_MOVE);
 		g_signal_connect (button, "drag_motion",
 				  G_CALLBACK (popup_motion), NULL);
 		g_signal_connect (button, "drag_leave",
@@ -609,7 +609,7 @@ main (int argc, char **argv)
   ctk_drag_dest_set (label,
 		     CTK_DEST_DEFAULT_ALL,
 		     target_table, n_targets - 1, /* no rootwin */
-		     GDK_ACTION_COPY | GDK_ACTION_MOVE);
+		     CDK_ACTION_COPY | CDK_ACTION_MOVE);
 
   g_signal_connect (label, "drag_data_received",
 		    G_CALLBACK( label_drag_data_received), NULL);
@@ -623,7 +623,7 @@ main (int argc, char **argv)
   ctk_drag_dest_set (label,
 		     CTK_DEST_DEFAULT_ALL,
 		     target_table, n_targets - 1, /* no rootwin */
-		     GDK_ACTION_COPY | GDK_ACTION_MOVE);
+		     CDK_ACTION_COPY | CDK_ACTION_MOVE);
 
   ctk_widget_set_hexpand (label, TRUE);
   ctk_widget_set_vexpand (label, TRUE);
@@ -656,9 +656,9 @@ main (int argc, char **argv)
 
   button = ctk_button_new_with_label ("Drag Here\n");
 
-  ctk_drag_source_set (button, GDK_BUTTON1_MASK | GDK_BUTTON3_MASK,
+  ctk_drag_source_set (button, CDK_BUTTON1_MASK | CDK_BUTTON3_MASK,
 		       target_table, n_targets, 
-		       GDK_ACTION_COPY | GDK_ACTION_MOVE);
+		       CDK_ACTION_COPY | CDK_ACTION_MOVE);
   ctk_drag_source_set_icon_pixbuf (button, drag_icon);
 
   g_object_unref (drag_icon);

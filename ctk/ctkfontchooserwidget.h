@@ -66,10 +66,10 @@ struct _CtkFontChooserWidgetClass
   void (*_ctk_reserved8) (void);
 };
 
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 GType        ctk_font_chooser_widget_get_type                 (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_3_2
+CDK_AVAILABLE_IN_3_2
 CtkWidget*   ctk_font_chooser_widget_new                      (void);
 
 G_END_DECLS

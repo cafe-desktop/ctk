@@ -1,5 +1,5 @@
 #include <ctk/ctk.h>
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
 #include <X11/Xlib.h>
 #endif
 
@@ -26,17 +26,17 @@ create_window (CdkWindow *parent,
   attributes.y = y;
   attributes.width = w;
   attributes.height = h;
-  attributes.window_type = GDK_WINDOW_CHILD;
-  attributes.event_mask = GDK_STRUCTURE_MASK
-			| GDK_BUTTON_MOTION_MASK
-			| GDK_BUTTON_PRESS_MASK
-			| GDK_BUTTON_RELEASE_MASK
-			| GDK_EXPOSURE_MASK
-			| GDK_ENTER_NOTIFY_MASK
-			| GDK_LEAVE_NOTIFY_MASK;
-  attributes.wclass = GDK_INPUT_OUTPUT;
+  attributes.window_type = CDK_WINDOW_CHILD;
+  attributes.event_mask = CDK_STRUCTURE_MASK
+			| CDK_BUTTON_MOTION_MASK
+			| CDK_BUTTON_PRESS_MASK
+			| CDK_BUTTON_RELEASE_MASK
+			| CDK_EXPOSURE_MASK
+			| CDK_ENTER_NOTIFY_MASK
+			| CDK_LEAVE_NOTIFY_MASK;
+  attributes.wclass = CDK_INPUT_OUTPUT;
       
-  attributes_mask = GDK_WA_X | GDK_WA_Y;
+  attributes_mask = CDK_WA_X | CDK_WA_Y;
       
   window = cdk_window_new (parent, &attributes, attributes_mask);
   cdk_window_set_user_data (window, darea);
@@ -732,7 +732,7 @@ static gboolean
 darea_button_release_event (CtkWidget *widget,
 			    CdkEventButton *event)
 {
-  if ((event->state & GDK_CONTROL_MASK) != 0)
+  if ((event->state & CDK_CONTROL_MASK) != 0)
     {
       toggle_selection_window (event->window);
     }
@@ -836,7 +836,7 @@ main (int argc, char **argv)
   ctk_widget_show (frame);
 
   darea =  ctk_drawing_area_new ();
-  ctk_widget_add_events (darea, GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK);
+  ctk_widget_add_events (darea, CDK_BUTTON_PRESS_MASK | CDK_BUTTON_RELEASE_MASK);
   ctk_widget_set_size_request (darea, 500, 500);
   g_signal_connect (darea, "button_release_event", 
 		    G_CALLBACK (darea_button_release_event), 
@@ -855,7 +855,7 @@ main (int argc, char **argv)
 		      5);
   ctk_widget_show (vbox);
 
-  window_store = ctk_tree_store_new (1, GDK_TYPE_WINDOW);
+  window_store = ctk_tree_store_new (1, CDK_TYPE_WINDOW);
   
   treeview = ctk_tree_view_new_with_model (CTK_TREE_MODEL (window_store));
   ctk_tree_selection_set_mode (ctk_tree_view_get_selection (CTK_TREE_VIEW (treeview)),

@@ -115,9 +115,9 @@ static void
 atk_key_event_from_cdk_event_key (CdkEventKey       *key,
                                   AtkKeyEventStruct *event)
 {
-  if (key->type == GDK_KEY_PRESS)
+  if (key->type == CDK_KEY_PRESS)
     event->type = ATK_KEY_EVENT_PRESS;
-  else if (key->type == GDK_KEY_RELEASE)
+  else if (key->type == CDK_KEY_RELEASE)
     event->type = ATK_KEY_EVENT_RELEASE;
   else
     g_assert_not_reached ();

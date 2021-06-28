@@ -49,10 +49,10 @@ struct _CtkEntryAccessibleClass
   CtkWidgetAccessibleClass parent_class;
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType ctk_entry_accessible_get_type (void);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType ctk_entry_icon_accessible_get_type (void);
 
 G_END_DECLS

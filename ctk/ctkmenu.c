@@ -68,10 +68,10 @@
  *   // g_signal_connect_swapped() was called.
  *   menu = CTK_MENU (widget);
  *
- *   if (event->type == GDK_BUTTON_PRESS)
+ *   if (event->type == CDK_BUTTON_PRESS)
  *     {
  *       event_button = (CdkEventButton *) event;
- *       if (event_button->button == GDK_BUTTON_SECONDARY)
+ *       if (event_button->button == CDK_BUTTON_SECONDARY)
  *         {
  *           ctk_menu_popup (menu, NULL, NULL, NULL, NULL, 
  *                           event_button->button, event_button->time);
@@ -768,8 +768,8 @@ ctk_menu_class_init (CtkMenuClass *class)
    *
    * ![](popup-flip.png)
    *
-   * For example, %GDK_ANCHOR_FLIP_Y will replace %GDK_GRAVITY_NORTH_WEST with
-   * %GDK_GRAVITY_SOUTH_WEST and vice versa if the menu extends beyond the
+   * For example, %CDK_ANCHOR_FLIP_Y will replace %CDK_GRAVITY_NORTH_WEST with
+   * %CDK_GRAVITY_SOUTH_WEST and vice versa if the menu extends beyond the
    * bottom edge of the monitor.
    *
    * See ctk_menu_popup_at_rect (), ctk_menu_popup_at_widget (),
@@ -783,10 +783,10 @@ ctk_menu_class_init (CtkMenuClass *class)
                                    g_param_spec_flags ("anchor-hints",
                                                        P_("Anchor hints"),
                                                        P_("Positioning hints for when the menu might fall off-screen"),
-                                                       GDK_TYPE_ANCHOR_HINTS,
-                                                       GDK_ANCHOR_FLIP |
-                                                       GDK_ANCHOR_SLIDE |
-                                                       GDK_ANCHOR_RESIZE,
+                                                       CDK_TYPE_ANCHOR_HINTS,
+                                                       CDK_ANCHOR_FLIP |
+                                                       CDK_ANCHOR_SLIDE |
+                                                       CDK_ANCHOR_RESIZE,
                                                        G_PARAM_READWRITE |
                                                        G_PARAM_CONSTRUCT |
                                                        G_PARAM_STATIC_NAME |
@@ -863,8 +863,8 @@ ctk_menu_class_init (CtkMenuClass *class)
                                    g_param_spec_enum ("menu-type-hint",
                                                       P_("Menu type hint"),
                                                       P_("Menu window type hint"),
-                                                      GDK_TYPE_WINDOW_TYPE_HINT,
-                                                      GDK_WINDOW_TYPE_HINT_POPUP_MENU,
+                                                      CDK_TYPE_WINDOW_TYPE_HINT,
+                                                      CDK_WINDOW_TYPE_HINT_POPUP_MENU,
                                                       G_PARAM_READWRITE |
                                                       G_PARAM_CONSTRUCT |
                                                       G_PARAM_STATIC_NAME |
@@ -1010,82 +1010,82 @@ ctk_menu_class_init (CtkMenuClass *class)
 
   binding_set = ctk_binding_set_by_class (class);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_Up, 0,
+                                CDK_KEY_Up, 0,
                                 I_("move-current"), 1,
                                 CTK_TYPE_MENU_DIRECTION_TYPE,
                                 CTK_MENU_DIR_PREV);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_KP_Up, 0,
+                                CDK_KEY_KP_Up, 0,
                                 "move-current", 1,
                                 CTK_TYPE_MENU_DIRECTION_TYPE,
                                 CTK_MENU_DIR_PREV);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_Down, 0,
+                                CDK_KEY_Down, 0,
                                 "move-current", 1,
                                 CTK_TYPE_MENU_DIRECTION_TYPE,
                                 CTK_MENU_DIR_NEXT);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_KP_Down, 0,
+                                CDK_KEY_KP_Down, 0,
                                 "move-current", 1,
                                 CTK_TYPE_MENU_DIRECTION_TYPE,
                                 CTK_MENU_DIR_NEXT);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_Left, 0,
+                                CDK_KEY_Left, 0,
                                 "move-current", 1,
                                 CTK_TYPE_MENU_DIRECTION_TYPE,
                                 CTK_MENU_DIR_PARENT);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_KP_Left, 0,
+                                CDK_KEY_KP_Left, 0,
                                 "move-current", 1,
                                 CTK_TYPE_MENU_DIRECTION_TYPE,
                                 CTK_MENU_DIR_PARENT);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_Right, 0,
+                                CDK_KEY_Right, 0,
                                 "move-current", 1,
                                 CTK_TYPE_MENU_DIRECTION_TYPE,
                                 CTK_MENU_DIR_CHILD);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_KP_Right, 0,
+                                CDK_KEY_KP_Right, 0,
                                 "move-current", 1,
                                 CTK_TYPE_MENU_DIRECTION_TYPE,
                                 CTK_MENU_DIR_CHILD);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_Home, 0,
+                                CDK_KEY_Home, 0,
                                 "move-scroll", 1,
                                 CTK_TYPE_SCROLL_TYPE,
                                 CTK_SCROLL_START);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_KP_Home, 0,
+                                CDK_KEY_KP_Home, 0,
                                 "move-scroll", 1,
                                 CTK_TYPE_SCROLL_TYPE,
                                 CTK_SCROLL_START);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_End, 0,
+                                CDK_KEY_End, 0,
                                 "move-scroll", 1,
                                 CTK_TYPE_SCROLL_TYPE,
                                 CTK_SCROLL_END);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_KP_End, 0,
+                                CDK_KEY_KP_End, 0,
                                 "move-scroll", 1,
                                 CTK_TYPE_SCROLL_TYPE,
                                 CTK_SCROLL_END);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_Page_Up, 0,
+                                CDK_KEY_Page_Up, 0,
                                 "move-scroll", 1,
                                 CTK_TYPE_SCROLL_TYPE,
                                 CTK_SCROLL_PAGE_UP);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_KP_Page_Up, 0,
+                                CDK_KEY_KP_Page_Up, 0,
                                 "move-scroll", 1,
                                 CTK_TYPE_SCROLL_TYPE,
                                 CTK_SCROLL_PAGE_UP);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_Page_Down, 0,
+                                CDK_KEY_Page_Down, 0,
                                 "move-scroll", 1,
                                 CTK_TYPE_SCROLL_TYPE,
                                 CTK_SCROLL_PAGE_DOWN);
   ctk_binding_entry_add_signal (binding_set,
-                                GDK_KEY_KP_Page_Down, 0,
+                                CDK_KEY_KP_Page_Down, 0,
                                 "move-scroll", 1,
                                 CTK_TYPE_SCROLL_TYPE,
                                 CTK_SCROLL_PAGE_DOWN);
@@ -1308,17 +1308,17 @@ ctk_menu_window_event (CtkWidget *window,
 
   switch (event->type)
     {
-    case GDK_KEY_PRESS:
-    case GDK_KEY_RELEASE:
+    case CDK_KEY_PRESS:
+    case CDK_KEY_RELEASE:
       handled = ctk_widget_event (menu, event);
       break;
-    case GDK_WINDOW_STATE:
-      /* Window for the menu has been closed by the display server or by GDK.
+    case CDK_WINDOW_STATE:
+      /* Window for the menu has been closed by the display server or by CDK.
        * Update the internal state as if the user had clicked outside the
        * menu
        */
-      if (event->window_state.new_window_state & GDK_WINDOW_STATE_WITHDRAWN &&
-          event->window_state.changed_mask & GDK_WINDOW_STATE_WITHDRAWN)
+      if (event->window_state.new_window_state & CDK_WINDOW_STATE_WITHDRAWN &&
+          event->window_state.changed_mask & CDK_WINDOW_STATE_WITHDRAWN)
         ctk_menu_shell_deactivate (CTK_MENU_SHELL(menu));
       break;
     default:
@@ -1361,10 +1361,10 @@ ctk_menu_init (CtkMenu *menu)
   priv->monitor_num = -1;
   priv->drag_start_y = -1;
 
-  priv->anchor_hints = GDK_ANCHOR_FLIP | GDK_ANCHOR_SLIDE | GDK_ANCHOR_RESIZE;
+  priv->anchor_hints = CDK_ANCHOR_FLIP | CDK_ANCHOR_SLIDE | CDK_ANCHOR_RESIZE;
   priv->rect_anchor_dx = 0;
   priv->rect_anchor_dy = 0;
-  priv->menu_type_hint = GDK_WINDOW_TYPE_HINT_POPUP_MENU;
+  priv->menu_type_hint = CDK_WINDOW_TYPE_HINT_POPUP_MENU;
 
   _ctk_widget_set_captured_event_handler (CTK_WIDGET (menu), ctk_menu_captured_event);
 
@@ -1779,14 +1779,14 @@ popup_grab_on_window (CdkWindow *window,
   seat = cdk_device_get_seat (pointer);
 
 /* Let CtkMenu use pointer emulation instead of touch events under X11. */
-#define GDK_SEAT_CAPABILITY_NO_TOUCH (GDK_SEAT_CAPABILITY_POINTER | \
-                                      GDK_SEAT_CAPABILITY_TABLET_STYLUS | \
-                                      GDK_SEAT_CAPABILITY_KEYBOARD)
+#define CDK_SEAT_CAPABILITY_NO_TOUCH (CDK_SEAT_CAPABILITY_POINTER | \
+                                      CDK_SEAT_CAPABILITY_TABLET_STYLUS | \
+                                      CDK_SEAT_CAPABILITY_KEYBOARD)
   status = cdk_seat_grab (seat, window,
-                          GDK_SEAT_CAPABILITY_NO_TOUCH, TRUE,
+                          CDK_SEAT_CAPABILITY_NO_TOUCH, TRUE,
                           NULL, NULL, NULL, NULL);
 
-  return status == GDK_GRAB_SUCCESS;
+  return status == CDK_GRAB_SUCCESS;
 }
 
 static void
@@ -1828,7 +1828,7 @@ ctk_menu_popup_internal (CtkMenu             *menu,
   CdkDisplay *display;
 
   g_return_if_fail (CTK_IS_MENU (menu));
-  g_return_if_fail (device == NULL || GDK_IS_DEVICE (device));
+  g_return_if_fail (device == NULL || CDK_IS_DEVICE (device));
 
   _ctk_tooltip_hide_in_display (ctk_widget_get_display (CTK_WIDGET (menu)));
   display = ctk_widget_get_display (CTK_WIDGET (menu));
@@ -1845,7 +1845,7 @@ ctk_menu_popup_internal (CtkMenu             *menu,
   widget = CTK_WIDGET (menu);
   menu_shell = CTK_MENU_SHELL (menu);
 
-  if (cdk_device_get_source (device) == GDK_SOURCE_KEYBOARD)
+  if (cdk_device_get_source (device) == CDK_SOURCE_KEYBOARD)
     pointer = cdk_device_get_associated_device (device);
   else
     pointer = device;
@@ -1943,8 +1943,8 @@ ctk_menu_popup_internal (CtkMenu             *menu,
   current_event = ctk_get_current_event ();
   if (current_event)
     {
-      if ((current_event->type != GDK_BUTTON_PRESS) &&
-          (current_event->type != GDK_ENTER_NOTIFY))
+      if ((current_event->type != CDK_BUTTON_PRESS) &&
+          (current_event->type != CDK_ENTER_NOTIFY))
         menu_shell->priv->ignore_enter = TRUE;
 
       source_device = cdk_event_get_source_device (current_event);
@@ -1997,7 +1997,7 @@ ctk_menu_popup_internal (CtkMenu             *menu,
 
   /* if no item is selected, select the first one */
   if (!menu_shell->priv->active_menu_item &&
-      source_device && cdk_device_get_source (source_device) == GDK_SOURCE_TOUCHSCREEN)
+      source_device && cdk_device_get_source (source_device) == CDK_SOURCE_TOUCHSCREEN)
     ctk_menu_shell_select_first (menu_shell, TRUE);
 
   /* Once everything is set up correctly, map the toplevel */
@@ -2057,7 +2057,7 @@ ctk_menu_popup_internal (CtkMenu             *menu,
  * Only if no such event is available, ctk_get_current_event_time() can
  * be used instead.
  *
- * Note that this function does not work very well on GDK backends that
+ * Note that this function does not work very well on CDK backends that
  * do not have global coordinates, such as Wayland or Mir. You should
  * probably use one of the ctk_menu_popup_at_ variants, which do not
  * have this problem.
@@ -2130,7 +2130,7 @@ ctk_menu_popup_for_device (CtkMenu             *menu,
  * Only if no such event is available, ctk_get_current_event_time() can
  * be used instead.
  *
- * Note that this function does not work very well on GDK backends that
+ * Note that this function does not work very well on CDK backends that
  * do not have global coordinates, such as Wayland or Mir. You should
  * probably use one of the ctk_menu_popup_at_ variants, which do not
  * have this problem.
@@ -2238,10 +2238,10 @@ ctk_menu_popup_at_rect (CtkMenu            *menu,
   CdkEvent *current_event = NULL;
   CdkDevice *device = NULL;
   guint button = 0;
-  guint32 activate_time = GDK_CURRENT_TIME;
+  guint32 activate_time = CDK_CURRENT_TIME;
 
   g_return_if_fail (CTK_IS_MENU (menu));
-  g_return_if_fail (GDK_IS_WINDOW (rect_window));
+  g_return_if_fail (CDK_IS_WINDOW (rect_window));
   g_return_if_fail (rect);
 
   priv = menu->priv;
@@ -2322,7 +2322,7 @@ ctk_menu_popup_at_widget (CtkMenu        *menu,
   CdkEvent *current_event = NULL;
   CdkDevice *device = NULL;
   guint button = 0;
-  guint32 activate_time = GDK_CURRENT_TIME;
+  guint32 activate_time = CDK_CURRENT_TIME;
   CtkWidget *parent_menu_shell = NULL;
   CtkWidget *parent_menu_item = NULL;
 
@@ -2417,7 +2417,7 @@ ctk_menu_popup_at_pointer (CtkMenu        *menu,
         {
           device = get_device_for_event (trigger_event);
 
-          if (device && cdk_device_get_source (device) == GDK_SOURCE_KEYBOARD)
+          if (device && cdk_device_get_source (device) == CDK_SOURCE_KEYBOARD)
             device = cdk_device_get_associated_device (device);
 
           if (device)
@@ -2430,8 +2430,8 @@ ctk_menu_popup_at_pointer (CtkMenu        *menu,
   ctk_menu_popup_at_rect (menu,
                           rect_window,
                           &rect,
-                          GDK_GRAVITY_SOUTH_EAST,
-                          GDK_GRAVITY_NORTH_WEST,
+                          CDK_GRAVITY_SOUTH_EAST,
+                          CDK_GRAVITY_NORTH_WEST,
                           trigger_event);
 
   g_clear_pointer (&current_event, cdk_event_free);
@@ -2892,7 +2892,7 @@ ctk_menu_set_tearoff_hints (CtkMenu *menu,
   ctk_window_set_geometry_hints (CTK_WINDOW (priv->tearoff_window),
                                  NULL,
                                  &geometry_hints,
-                                 GDK_HINT_MAX_SIZE|GDK_HINT_MIN_SIZE);
+                                 CDK_HINT_MAX_SIZE|CDK_HINT_MIN_SIZE);
 }
 
 static void
@@ -3000,7 +3000,7 @@ ctk_menu_set_tearoff_state (CtkMenu  *menu,
                                                    NULL);
 
               ctk_window_set_type_hint (CTK_WINDOW (priv->tearoff_window),
-                                        GDK_WINDOW_TYPE_HINT_MENU);
+                                        CDK_WINDOW_TYPE_HINT_MENU);
               ctk_window_set_mnemonic_modifier (CTK_WINDOW (priv->tearoff_window), 0);
               g_signal_connect (priv->tearoff_window, "destroy",
                                 G_CALLBACK (tearoff_window_destroyed), menu);
@@ -3225,18 +3225,18 @@ ctk_menu_realize (CtkWidget *widget)
 
   ctk_widget_get_allocation (widget, &allocation);
 
-  attributes.window_type = GDK_WINDOW_CHILD;
+  attributes.window_type = CDK_WINDOW_CHILD;
   attributes.x = allocation.x;
   attributes.y = allocation.y;
   attributes.width = allocation.width;
   attributes.height = allocation.height;
-  attributes.wclass = GDK_INPUT_OUTPUT;
+  attributes.wclass = CDK_INPUT_OUTPUT;
   attributes.visual = ctk_widget_get_visual (widget);
   attributes.event_mask = ctk_widget_get_events (widget);
-  attributes.event_mask |= (GDK_KEY_PRESS_MASK |
-                            GDK_ENTER_NOTIFY_MASK | GDK_LEAVE_NOTIFY_MASK );
+  attributes.event_mask |= (CDK_KEY_PRESS_MASK |
+                            CDK_ENTER_NOTIFY_MASK | CDK_LEAVE_NOTIFY_MASK );
 
-  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
+  attributes_mask = CDK_WA_X | CDK_WA_Y | CDK_WA_VISUAL;
 
   window = cdk_window_new (ctk_widget_get_parent_window (widget),
                            &attributes, attributes_mask);
@@ -3325,12 +3325,12 @@ menu_grab_transfer_window_get (CtkMenu *menu)
       attributes.y = -100;
       attributes.width = 10;
       attributes.height = 10;
-      attributes.window_type = GDK_WINDOW_TEMP;
-      attributes.wclass = GDK_INPUT_ONLY;
+      attributes.window_type = CDK_WINDOW_TEMP;
+      attributes.wclass = CDK_INPUT_ONLY;
       attributes.override_redirect = TRUE;
       attributes.event_mask = 0;
 
-      attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_NOREDIR;
+      attributes_mask = CDK_WA_X | CDK_WA_Y | CDK_WA_NOREDIR;
 
       parent = cdk_screen_get_root_window (ctk_widget_get_screen (CTK_WIDGET (menu)));
       window = cdk_window_new (parent,
@@ -3929,7 +3929,7 @@ ctk_menu_button_press (CtkWidget      *widget,
   CtkWidget *event_widget;
   CtkMenu *menu;
 
-  if (event->type != GDK_BUTTON_PRESS)
+  if (event->type != CDK_BUTTON_PRESS)
     return FALSE;
 
   source_device = cdk_event_get_source_device ((CdkEvent *) event);
@@ -3948,7 +3948,7 @@ ctk_menu_button_press (CtkWidget      *widget,
     return TRUE;
 
   if (CTK_IS_MENU_ITEM (event_widget) &&
-      cdk_device_get_source (source_device) == GDK_SOURCE_TOUCHSCREEN &&
+      cdk_device_get_source (source_device) == CDK_SOURCE_TOUCHSCREEN &&
       CTK_MENU_ITEM (event_widget)->priv->submenu != NULL &&
       !ctk_widget_is_drawable (CTK_MENU_ITEM (event_widget)->priv->submenu))
     menu->priv->ignore_button_release = TRUE;
@@ -3968,7 +3968,7 @@ ctk_menu_button_release (CtkWidget      *widget,
       return FALSE;
     }
 
-  if (event->type != GDK_BUTTON_RELEASE)
+  if (event->type != CDK_BUTTON_RELEASE)
     return FALSE;
 
   /*  Don't pass down to menu shell if a non-menuitem part of the menu
@@ -4062,7 +4062,7 @@ ctk_menu_motion_notify (CtkWidget      *widget,
   source_device = cdk_event_get_source_device ((CdkEvent *) event);
 
   if (CTK_IS_MENU (widget) &&
-      cdk_device_get_source (source_device) != GDK_SOURCE_TOUCHSCREEN)
+      cdk_device_get_source (source_device) != CDK_SOURCE_TOUCHSCREEN)
     {
       CtkMenuPrivate *priv = CTK_MENU(widget)->priv;
 
@@ -4123,7 +4123,7 @@ ctk_menu_motion_notify (CtkWidget      *widget,
       if (event->x >= 0 && event->x < cdk_window_get_width (event->window) &&
           event->y >= 0 && event->y < cdk_window_get_height (event->window))
         {
-          CdkEvent *send_event = cdk_event_new (GDK_ENTER_NOTIFY);
+          CdkEvent *send_event = cdk_event_new (CDK_ENTER_NOTIFY);
           gboolean result;
 
           send_event->crossing.window = g_object_ref (event->window);
@@ -4210,25 +4210,25 @@ ctk_menu_scroll (CtkWidget      *widget,
   CtkMenu *menu = CTK_MENU (widget);
 
   if (cdk_event_get_pointer_emulated ((CdkEvent *) event))
-    return GDK_EVENT_PROPAGATE;
+    return CDK_EVENT_PROPAGATE;
 
   switch (event->direction)
     {
-    case GDK_SCROLL_DOWN:
+    case CDK_SCROLL_DOWN:
       ctk_menu_scroll_by (menu, MENU_SCROLL_STEP2);
       break;
-    case GDK_SCROLL_UP:
+    case CDK_SCROLL_UP:
       ctk_menu_scroll_by (menu, - MENU_SCROLL_STEP2);
       break;
-    case GDK_SCROLL_SMOOTH:
+    case CDK_SCROLL_SMOOTH:
       ctk_menu_scroll_by (menu, event->delta_y * MENU_SCROLL_STEP2);
       break;
     default:
-      return GDK_EVENT_PROPAGATE;
+      return CDK_EVENT_PROPAGATE;
       break;
     }
 
-  return GDK_EVENT_STOP;
+  return CDK_EVENT_STOP;
 }
 
 static void
@@ -4460,16 +4460,16 @@ ctk_menu_enter_notify (CtkWidget        *widget,
   CtkWidget *parent;
   CdkDevice *source_device;
 
-  if (event->mode == GDK_CROSSING_CTK_GRAB ||
-      event->mode == GDK_CROSSING_CTK_UNGRAB ||
-      event->mode == GDK_CROSSING_STATE_CHANGED)
+  if (event->mode == CDK_CROSSING_CTK_GRAB ||
+      event->mode == CDK_CROSSING_CTK_UNGRAB ||
+      event->mode == CDK_CROSSING_STATE_CHANGED)
     return TRUE;
 
   source_device = cdk_event_get_source_device ((CdkEvent *) event);
   menu_item = ctk_get_event_widget ((CdkEvent*) event);
 
   if (CTK_IS_MENU (widget) &&
-      cdk_device_get_source (source_device) != GDK_SOURCE_TOUCHSCREEN)
+      cdk_device_get_source (source_device) != CDK_SOURCE_TOUCHSCREEN)
     {
       CtkMenuShell *menu_shell = CTK_MENU_SHELL (widget);
 
@@ -4478,7 +4478,7 @@ ctk_menu_enter_notify (CtkWidget        *widget,
                                    event->x_root, event->y_root, TRUE, TRUE);
     }
 
-  if (cdk_device_get_source (source_device) != GDK_SOURCE_TOUCHSCREEN &&
+  if (cdk_device_get_source (source_device) != CDK_SOURCE_TOUCHSCREEN &&
       CTK_IS_MENU_ITEM (menu_item))
     {
       CtkWidget *menu = ctk_widget_get_parent (menu_item);
@@ -4496,8 +4496,8 @@ ctk_menu_enter_notify (CtkWidget        *widget,
                */
               menu_shell->priv->activate_time = 0;
             }
-          else if ((event->detail != GDK_NOTIFY_NONLINEAR &&
-                    event->detail != GDK_NOTIFY_NONLINEAR_VIRTUAL))
+          else if ((event->detail != CDK_NOTIFY_NONLINEAR &&
+                    event->detail != CDK_NOTIFY_NONLINEAR_VIRTUAL))
             {
               if (definitely_within_item (menu_item, event->x, event->y))
                 {
@@ -4538,9 +4538,9 @@ ctk_menu_leave_notify (CtkWidget        *widget,
   CtkWidget *event_widget;
   CdkDevice *source_device;
 
-  if (event->mode == GDK_CROSSING_CTK_GRAB ||
-      event->mode == GDK_CROSSING_CTK_UNGRAB ||
-      event->mode == GDK_CROSSING_STATE_CHANGED)
+  if (event->mode == CDK_CROSSING_CTK_GRAB ||
+      event->mode == CDK_CROSSING_CTK_UNGRAB ||
+      event->mode == CDK_CROSSING_STATE_CHANGED)
     return TRUE;
 
   menu = CTK_MENU (widget);
@@ -4551,7 +4551,7 @@ ctk_menu_leave_notify (CtkWidget        *widget,
 
   source_device = cdk_event_get_source_device ((CdkEvent *) event);
 
-  if (cdk_device_get_source (source_device) != GDK_SOURCE_TOUCHSCREEN)
+  if (cdk_device_get_source (source_device) != CDK_SOURCE_TOUCHSCREEN)
     ctk_menu_handle_scrolling (menu, event->x_root, event->y_root, FALSE, TRUE);
 
   event_widget = ctk_get_event_widget ((CdkEvent*) event);
@@ -4630,10 +4630,10 @@ ctk_menu_captured_event (CtkWidget *widget,
 
   switch (event->type)
     {
-    case GDK_TOUCH_BEGIN:
-    case GDK_BUTTON_PRESS:
+    case CDK_TOUCH_BEGIN:
+    case CDK_BUTTON_PRESS:
       if ((!cdk_event_get_button (event, &button) || button == 1) &&
-          cdk_device_get_source (source_device) == GDK_SOURCE_TOUCHSCREEN &&
+          cdk_device_get_source (source_device) == CDK_SOURCE_TOUCHSCREEN &&
           pointer_on_menu_widget (menu, x_root, y_root))
         {
           priv->drag_start_y = event->button.y_root;
@@ -4645,8 +4645,8 @@ ctk_menu_captured_event (CtkWidget *widget,
 
       priv->drag_already_pressed = TRUE;
       break;
-    case GDK_TOUCH_END:
-    case GDK_BUTTON_RELEASE:
+    case CDK_TOUCH_END:
+    case CDK_BUTTON_RELEASE:
       if (priv->drag_scroll_started)
         {
           priv->drag_scroll_started = FALSE;
@@ -4655,10 +4655,10 @@ ctk_menu_captured_event (CtkWidget *widget,
           retval = TRUE;
         }
       break;
-    case GDK_TOUCH_UPDATE:
-    case GDK_MOTION_NOTIFY:
-      if ((!cdk_event_get_state (event, &state) || (state & GDK_BUTTON1_MASK) != 0) &&
-          cdk_device_get_source (source_device) == GDK_SOURCE_TOUCHSCREEN)
+    case CDK_TOUCH_UPDATE:
+    case CDK_MOTION_NOTIFY:
+      if ((!cdk_event_get_state (event, &state) || (state & CDK_BUTTON1_MASK) != 0) &&
+          cdk_device_get_source (source_device) == CDK_SOURCE_TOUCHSCREEN)
         {
           if (!priv->drag_already_pressed)
             {
@@ -4713,8 +4713,8 @@ ctk_menu_captured_event (CtkWidget *widget,
             }
         }
       break;
-    case GDK_ENTER_NOTIFY:
-    case GDK_LEAVE_NOTIFY:
+    case CDK_ENTER_NOTIFY:
+    case CDK_LEAVE_NOTIFY:
       if (priv->drag_scroll_started)
         retval = TRUE;
       break;
@@ -4763,10 +4763,10 @@ ctk_menu_stop_navigating_submenu_cb (gpointer user_data)
 
       if (child_window)
         {
-          CdkEvent *send_event = cdk_event_new (GDK_ENTER_NOTIFY);
+          CdkEvent *send_event = cdk_event_new (CDK_ENTER_NOTIFY);
 
           send_event->crossing.window = g_object_ref (child_window);
-          send_event->crossing.time = GDK_CURRENT_TIME; /* Bogus */
+          send_event->crossing.time = CDK_CURRENT_TIME; /* Bogus */
           send_event->crossing.send_event = TRUE;
           cdk_event_set_device (send_event, popdown_data->device);
 
@@ -4982,7 +4982,7 @@ ctk_menu_position_legacy (CtkMenu  *menu,
    * to set a different hint
    */
   if (!ctk_widget_get_visible (priv->toplevel))
-    ctk_window_set_type_hint (CTK_WINDOW (priv->toplevel), GDK_WINDOW_TYPE_HINT_POPUP_MENU);
+    ctk_window_set_type_hint (CTK_WINDOW (priv->toplevel), CDK_WINDOW_TYPE_HINT_POPUP_MENU);
 
   if (priv->position_func)
     {
@@ -5172,25 +5172,25 @@ get_horizontally_flipped_anchor (CdkGravity anchor)
 {
   switch (anchor)
     {
-    case GDK_GRAVITY_STATIC:
-    case GDK_GRAVITY_NORTH_WEST:
-      return GDK_GRAVITY_NORTH_EAST;
-    case GDK_GRAVITY_NORTH:
-      return GDK_GRAVITY_NORTH;
-    case GDK_GRAVITY_NORTH_EAST:
-      return GDK_GRAVITY_NORTH_WEST;
-    case GDK_GRAVITY_WEST:
-      return GDK_GRAVITY_EAST;
-    case GDK_GRAVITY_CENTER:
-      return GDK_GRAVITY_CENTER;
-    case GDK_GRAVITY_EAST:
-      return GDK_GRAVITY_WEST;
-    case GDK_GRAVITY_SOUTH_WEST:
-      return GDK_GRAVITY_SOUTH_EAST;
-    case GDK_GRAVITY_SOUTH:
-      return GDK_GRAVITY_SOUTH;
-    case GDK_GRAVITY_SOUTH_EAST:
-      return GDK_GRAVITY_SOUTH_WEST;
+    case CDK_GRAVITY_STATIC:
+    case CDK_GRAVITY_NORTH_WEST:
+      return CDK_GRAVITY_NORTH_EAST;
+    case CDK_GRAVITY_NORTH:
+      return CDK_GRAVITY_NORTH;
+    case CDK_GRAVITY_NORTH_EAST:
+      return CDK_GRAVITY_NORTH_WEST;
+    case CDK_GRAVITY_WEST:
+      return CDK_GRAVITY_EAST;
+    case CDK_GRAVITY_CENTER:
+      return CDK_GRAVITY_CENTER;
+    case CDK_GRAVITY_EAST:
+      return CDK_GRAVITY_WEST;
+    case CDK_GRAVITY_SOUTH_WEST:
+      return CDK_GRAVITY_SOUTH_EAST;
+    case CDK_GRAVITY_SOUTH:
+      return CDK_GRAVITY_SOUTH;
+    case CDK_GRAVITY_SOUTH_EAST:
+      return CDK_GRAVITY_SOUTH_WEST;
     }
 
   g_warning ("unknown CdkGravity: %d", anchor);
@@ -5254,9 +5254,9 @@ ctk_menu_position (CtkMenu  *menu,
           cdk_window_get_device_position (rect_window, grab_device,
                                           &rect.x, &rect.y, NULL);
           text_direction = ctk_widget_get_direction (attach_widget);
-          rect_anchor = GDK_GRAVITY_SOUTH_EAST;
-          menu_anchor = GDK_GRAVITY_NORTH_WEST;
-          anchor_hints = GDK_ANCHOR_FLIP | GDK_ANCHOR_SLIDE | GDK_ANCHOR_RESIZE;
+          rect_anchor = CDK_GRAVITY_SOUTH_EAST;
+          menu_anchor = CDK_GRAVITY_NORTH_WEST;
+          anchor_hints = CDK_ANCHOR_FLIP | CDK_ANCHOR_SLIDE | CDK_ANCHOR_RESIZE;
           rect_anchor_dx = 0;
           rect_anchor_dy = 0;
           emulated_move_to_rect = TRUE;
@@ -5272,8 +5272,8 @@ ctk_menu_position (CtkMenu  *menu,
     }
 
   ctk_window_set_unlimited_guessed_size (CTK_WINDOW (priv->toplevel),
-                                         !!(anchor_hints & GDK_ANCHOR_RESIZE_X),
-                                         !!(anchor_hints & GDK_ANCHOR_RESIZE_Y));
+                                         !!(anchor_hints & CDK_ANCHOR_RESIZE_X),
+                                         !!(anchor_hints & CDK_ANCHOR_RESIZE_Y));
 
   if (!ctk_widget_get_visible (priv->toplevel))
     ctk_window_set_type_hint (CTK_WINDOW (priv->toplevel), priv->menu_type_hint);
@@ -5694,7 +5694,7 @@ ctk_menu_set_screen (CtkMenu   *menu,
                      CdkScreen *screen)
 {
   g_return_if_fail (CTK_IS_MENU (menu));
-  g_return_if_fail (screen == NULL || GDK_IS_SCREEN (screen));
+  g_return_if_fail (screen == NULL || CDK_IS_SCREEN (screen));
 
   g_object_set_data (G_OBJECT (menu), I_("ctk-menu-explicit-screen"), screen);
 

@@ -54,31 +54,31 @@
  * @Short_description: Wayland backend-specific functions
  * @Title: Wayland Interaction
  *
- * The functions in this section are specific to the GDK Wayland backend.
+ * The functions in this section are specific to the CDK Wayland backend.
  * To use them, you need to include the `<cdk/cdkwayland.h>` header and use
  * the Wayland-specific pkg-config files to build your application (either
  * `cdk-wayland-3.0` or `ctk+-wayland-3.0`).
  *
- * To make your code compile with other GDK backends, guard backend-specific
- * calls by an ifdef as follows. Since GDK may be built with multiple
+ * To make your code compile with other CDK backends, guard backend-specific
+ * calls by an ifdef as follows. Since CDK may be built with multiple
  * backends, you should also check for the backend that is in use (e.g. by
- * using the GDK_IS_WAYLAND_DISPLAY() macro).
+ * using the CDK_IS_WAYLAND_DISPLAY() macro).
  * |[<!-- language="C" -->
- * #ifdef GDK_WINDOWING_WAYLAND
- *   if (GDK_IS_WAYLAND_DISPLAY (display))
+ * #ifdef CDK_WINDOWING_WAYLAND
+ *   if (CDK_IS_WAYLAND_DISPLAY (display))
  *     {
  *       // make Wayland-specific calls here
  *     }
  *   else
  * #endif
- * #ifdef GDK_WINDOWING_X11
- *   if (GDK_IS_X11_DISPLAY (display))
+ * #ifdef CDK_WINDOWING_X11
+ *   if (CDK_IS_X11_DISPLAY (display))
  *     {
  *       // make X11-specific calls here
  *     }
  *   else
  * #endif
- *   g_error ("Unsupported GDK backend");
+ *   g_error ("Unsupported CDK backend");
  * ]|
  */
 
@@ -88,7 +88,7 @@
 
 static void _cdk_wayland_display_load_cursor_theme (CdkWaylandDisplay *display_wayland);
 
-G_DEFINE_TYPE (CdkWaylandDisplay, cdk_wayland_display, GDK_TYPE_DISPLAY)
+G_DEFINE_TYPE (CdkWaylandDisplay, cdk_wayland_display, CDK_TYPE_DISPLAY)
 
 static void
 async_roundtrip_callback (void               *data,
@@ -128,7 +128,7 @@ xdg_wm_base_ping (void               *data,
 
   _cdk_wayland_display_update_serial (display_wayland, serial);
 
-  GDK_NOTE (EVENTS,
+  CDK_NOTE (EVENTS,
             g_message ("ping, shell %p, serial %u\n", xdg_wm_base, serial));
 
   xdg_wm_base_pong (xdg_wm_base, serial);
@@ -147,7 +147,7 @@ zxdg_shell_v6_ping (void                 *data,
 
   _cdk_wayland_display_update_serial (display_wayland, serial);
 
-  GDK_NOTE (EVENTS,
+  CDK_NOTE (EVENTS,
             g_message ("ping, shell %p, serial %u\n", xdg_shell, serial));
 
   zxdg_shell_v6_pong (xdg_shell, serial);
@@ -232,7 +232,7 @@ _cdk_wayland_display_add_seat (CdkWaylandDisplay *display_wayland,
                                uint32_t id,
                                uint32_t version)
 {
-  CdkDisplay *cdk_display = GDK_DISPLAY_OBJECT (display_wayland);
+  CdkDisplay *cdk_display = CDK_DISPLAY_OBJECT (display_wayland);
   struct wl_seat *seat;
 
   display_wayland->seat_version = MIN (version, 5);
@@ -347,7 +347,7 @@ wl_shm_format (void          *data,
                struct wl_shm *wl_shm,
                uint32_t       format)
 {
-  GDK_NOTE (MISC, g_message ("supported pixel format %s", get_format_name (format)));
+  CDK_NOTE (MISC, g_message ("supported pixel format %s", get_format_name (format)));
 }
 
 static const struct wl_shm_listener wl_shm_listener = {
@@ -377,7 +377,7 @@ static const struct org_kde_kwin_server_decoration_manager_listener server_decor
 gboolean
 cdk_wayland_display_prefers_ssd (CdkDisplay *display)
 {
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (display);
   if (display_wayland->server_decoration_manager)
     return display_wayland->server_decoration_mode == ORG_KDE_KWIN_SERVER_DECORATION_MANAGER_MODE_SERVER;
   return FALSE;
@@ -393,7 +393,7 @@ cdk_registry_handle_global (void               *data,
   CdkWaylandDisplay *display_wayland = data;
   struct wl_output *output;
 
-  GDK_NOTE (MISC,
+  CDK_NOTE (MISC,
             g_message ("add global %u, interface %s, version %u", id, interface, version));
 
   if (strcmp (interface, "wl_compositor") == 0)
@@ -468,7 +468,7 @@ cdk_registry_handle_global (void               *data,
         wl_registry_bind (display_wayland->wl_registry, id, &wl_subcompositor_interface, 1);
     }
   else if (strcmp (interface, "zwp_pointer_gestures_v1") == 0 &&
-           version == GDK_ZWP_POINTER_GESTURES_V1_VERSION)
+           version == CDK_ZWP_POINTER_GESTURES_V1_VERSION)
     {
       display_wayland->pointer_gestures =
         wl_registry_bind (display_wayland->wl_registry,
@@ -543,9 +543,9 @@ cdk_registry_handle_global_remove (void               *data,
                                    uint32_t            id)
 {
   CdkWaylandDisplay *display_wayland = data;
-  CdkDisplay *display = GDK_DISPLAY (display_wayland);
+  CdkDisplay *display = CDK_DISPLAY (display_wayland);
 
-  GDK_NOTE (MISC, g_message ("remove global %u", id));
+  CDK_NOTE (MISC, g_message ("remove global %u", id));
   _cdk_wayland_device_manager_remove_seat (display->device_manager, id);
   _cdk_wayland_screen_remove_output (display_wayland->screen, id);
 
@@ -594,7 +594,7 @@ _cdk_wayland_display_open (const gchar *display_name)
   CdkDisplay *display;
   CdkWaylandDisplay *display_wayland;
 
-  GDK_NOTE (MISC, g_message ("opening display %s", display_name ? display_name : ""));
+  CDK_NOTE (MISC, g_message ("opening display %s", display_name ? display_name : ""));
 
   /* If this variable is unset then wayland initialisation will surely
    * fail, logging a fatal error in the process.  Save ourselves from
@@ -609,10 +609,10 @@ _cdk_wayland_display_open (const gchar *display_name)
   if (!wl_display)
     return NULL;
 
-  display = g_object_new (GDK_TYPE_WAYLAND_DISPLAY, NULL);
+  display = g_object_new (CDK_TYPE_WAYLAND_DISPLAY, NULL);
   display->device_manager = _cdk_wayland_device_manager_new (display);
 
-  display_wayland = GDK_WAYLAND_DISPLAY (display);
+  display_wayland = CDK_WAYLAND_DISPLAY (display);
   display_wayland->wl_display = wl_display;
   display_wayland->screen = _cdk_wayland_screen_new (display);
   display_wayland->event_source = _cdk_wayland_display_event_source_new (display);
@@ -641,7 +641,7 @@ _cdk_wayland_display_open (const gchar *display_name)
 
   if (display_wayland->xdg_wm_base_id)
     {
-      display_wayland->shell_variant = GDK_WAYLAND_SHELL_VARIANT_XDG_SHELL;
+      display_wayland->shell_variant = CDK_WAYLAND_SHELL_VARIANT_XDG_SHELL;
       display_wayland->xdg_wm_base =
         wl_registry_bind (display_wayland->wl_registry,
                           display_wayland->xdg_wm_base_id,
@@ -652,7 +652,7 @@ _cdk_wayland_display_open (const gchar *display_name)
     }
   else if (display_wayland->zxdg_shell_v6_id)
     {
-      display_wayland->shell_variant = GDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6;
+      display_wayland->shell_variant = CDK_WAYLAND_SHELL_VARIANT_ZXDG_SHELL_V6;
       display_wayland->zxdg_shell_v6 =
         wl_registry_bind (display_wayland->wl_registry,
                           display_wayland->zxdg_shell_v6_id,
@@ -680,7 +680,7 @@ _cdk_wayland_display_open (const gchar *display_name)
 static void
 cdk_wayland_display_dispose (GObject *object)
 {
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (object);
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (object);
 
   _cdk_screen_close (display_wayland->screen);
 
@@ -713,7 +713,7 @@ cdk_wayland_display_dispose (GObject *object)
 static void
 cdk_wayland_display_finalize (GObject *object)
 {
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (object);
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (object);
   guint i;
 
   _cdk_wayland_display_finalize_cursors (display_wayland);
@@ -724,7 +724,7 @@ cdk_wayland_display_finalize (GObject *object)
   g_free (display_wayland->cursor_theme_name);
   xkb_context_unref (display_wayland->xkb_context);
 
-  for (i = 0; i < GDK_WAYLAND_THEME_SCALES_COUNT; i++)
+  for (i = 0; i < CDK_WAYLAND_THEME_SCALES_COUNT; i++)
     {
       if (display_wayland->scaled_cursor_themes[i])
         {
@@ -755,9 +755,9 @@ cdk_wayland_display_get_name (CdkDisplay *display)
 static CdkScreen *
 cdk_wayland_display_get_default_screen (CdkDisplay *display)
 {
-  g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
+  g_return_val_if_fail (CDK_IS_DISPLAY (display), NULL);
 
-  return GDK_WAYLAND_DISPLAY (display)->screen;
+  return CDK_WAYLAND_DISPLAY (display)->screen;
 }
 
 void
@@ -768,9 +768,9 @@ cdk_wayland_display_system_bell (CdkDisplay *display,
   struct ctk_surface1 *ctk_surface;
   gint64 now_ms;
 
-  g_return_if_fail (GDK_IS_DISPLAY (display));
+  g_return_if_fail (CDK_IS_DISPLAY (display));
 
-  display_wayland = GDK_WAYLAND_DISPLAY (display);
+  display_wayland = CDK_WAYLAND_DISPLAY (display);
 
   if (!display_wayland->ctk_shell)
     return;
@@ -800,9 +800,9 @@ cdk_wayland_display_sync (CdkDisplay *display)
 {
   CdkWaylandDisplay *display_wayland;
 
-  g_return_if_fail (GDK_IS_DISPLAY (display));
+  g_return_if_fail (CDK_IS_DISPLAY (display));
 
-  display_wayland = GDK_WAYLAND_DISPLAY (display);
+  display_wayland = CDK_WAYLAND_DISPLAY (display);
 
   wl_display_roundtrip (display_wayland->wl_display);
 }
@@ -810,16 +810,16 @@ cdk_wayland_display_sync (CdkDisplay *display)
 static void
 cdk_wayland_display_flush (CdkDisplay *display)
 {
-  g_return_if_fail (GDK_IS_DISPLAY (display));
+  g_return_if_fail (CDK_IS_DISPLAY (display));
 
   if (!display->closed)
-    wl_display_flush (GDK_WAYLAND_DISPLAY (display)->wl_display);
+    wl_display_flush (CDK_WAYLAND_DISPLAY (display)->wl_display);
 }
 
 static void
 cdk_wayland_display_make_default (CdkDisplay *display)
 {
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (display);
   const gchar *startup_id;
 
   g_free (display_wayland->startup_notification_id);
@@ -839,7 +839,7 @@ cdk_wayland_display_has_pending (CdkDisplay *display)
 static CdkWindow *
 cdk_wayland_display_get_default_group (CdkDisplay *display)
 {
-  g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
+  g_return_val_if_fail (CDK_IS_DISPLAY (display), NULL);
 
   return NULL;
 }
@@ -931,7 +931,7 @@ void
 cdk_wayland_display_set_startup_notification_id (CdkDisplay *display,
                                                  const char *startup_id)
 {
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (display);
 
   g_free (display_wayland->startup_notification_id);
   display_wayland->startup_notification_id = g_strdup (startup_id);
@@ -941,7 +941,7 @@ static void
 cdk_wayland_display_notify_startup_complete (CdkDisplay  *display,
 					     const gchar *startup_id)
 {
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (display);
 
   if (startup_id == NULL)
     {
@@ -993,7 +993,7 @@ cdk_wayland_display_pop_error_trap (CdkDisplay *display,
 static int
 cdk_wayland_display_get_n_monitors (CdkDisplay *display)
 {
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (display);
 
   return display_wayland->monitors->len;
 }
@@ -1002,7 +1002,7 @@ static CdkMonitor *
 cdk_wayland_display_get_monitor (CdkDisplay *display,
                                  int         monitor_num)
 {
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (display);
 
   if (monitor_num < 0 || monitor_num >= display_wayland->monitors->len)
     return NULL;
@@ -1014,11 +1014,11 @@ static CdkMonitor *
 cdk_wayland_display_get_monitor_at_window (CdkDisplay *display,
                                            CdkWindow  *window)
 {
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (display);
   struct wl_output *output;
   int i;
 
-  g_return_val_if_fail (GDK_IS_WAYLAND_WINDOW (window), NULL);
+  g_return_val_if_fail (CDK_IS_WAYLAND_WINDOW (window), NULL);
 
   output = cdk_wayland_window_get_wl_output (window);
   if (output == NULL)
@@ -1039,7 +1039,7 @@ static void
 cdk_wayland_display_class_init (CdkWaylandDisplayClass *class)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (class);
-  CdkDisplayClass *display_class = GDK_DISPLAY_CLASS (class);
+  CdkDisplayClass *display_class = CDK_DISPLAY_CLASS (class);
 
   object_class->dispose = cdk_wayland_display_dispose;
   object_class->finalize = cdk_wayland_display_finalize;
@@ -1105,7 +1105,7 @@ cdk_wayland_display_set_cursor_theme (CdkDisplay  *display,
                                       const gchar *name,
                                       gint         size)
 {
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY(display);
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY(display);
   struct wl_cursor_theme *theme;
   int i;
 
@@ -1123,7 +1123,7 @@ cdk_wayland_display_set_cursor_theme (CdkDisplay  *display,
       return;
     }
 
-  for (i = 0; i < GDK_WAYLAND_THEME_SCALES_COUNT; i++)
+  for (i = 0; i < CDK_WAYLAND_THEME_SCALES_COUNT; i++)
     {
       if (display_wayland->scaled_cursor_themes[i])
         {
@@ -1147,7 +1147,7 @@ _cdk_wayland_display_get_scaled_cursor_theme (CdkWaylandDisplay *display_wayland
   struct wl_cursor_theme *theme;
 
   g_assert (display_wayland->cursor_theme_name);
-  g_assert (scale <= GDK_WAYLAND_MAX_THEME_SCALE);
+  g_assert (scale <= CDK_WAYLAND_MAX_THEME_SCALE);
   g_assert (scale >= 1);
 
   theme = display_wayland->scaled_cursor_themes[scale - 1];
@@ -1191,7 +1191,7 @@ _cdk_wayland_display_load_cursor_theme (CdkWaylandDisplay *display_wayland)
   else
     name = "default";
 
-  cdk_wayland_display_set_cursor_theme (GDK_DISPLAY (display_wayland), name, size);
+  cdk_wayland_display_set_cursor_theme (CDK_DISPLAY (display_wayland), name, size);
   g_value_unset (&v);
 }
 
@@ -1221,9 +1221,9 @@ _cdk_wayland_display_update_serial (CdkWaylandDisplay *display_wayland,
 struct wl_display *
 cdk_wayland_display_get_wl_display (CdkDisplay *display)
 {
-  g_return_val_if_fail (GDK_IS_WAYLAND_DISPLAY (display), NULL);
+  g_return_val_if_fail (CDK_IS_WAYLAND_DISPLAY (display), NULL);
 
-  return GDK_WAYLAND_DISPLAY (display)->wl_display;
+  return CDK_WAYLAND_DISPLAY (display)->wl_display;
 }
 
 /**
@@ -1239,9 +1239,9 @@ cdk_wayland_display_get_wl_display (CdkDisplay *display)
 struct wl_compositor *
 cdk_wayland_display_get_wl_compositor (CdkDisplay *display)
 {
-  g_return_val_if_fail (GDK_IS_WAYLAND_DISPLAY (display), NULL);
+  g_return_val_if_fail (CDK_IS_WAYLAND_DISPLAY (display), NULL);
 
-  return GDK_WAYLAND_DISPLAY (display)->compositor;
+  return CDK_WAYLAND_DISPLAY (display)->compositor;
 }
 
 static const cairo_user_data_key_t cdk_wayland_shm_surface_cairo_key;
@@ -1427,7 +1427,7 @@ _cdk_wayland_is_shm_surface (cairo_surface_t *surface)
 CdkWaylandSelection *
 cdk_wayland_display_get_selection (CdkDisplay *display)
 {
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (display);
 
   return display_wayland->selection;
 }
@@ -1448,11 +1448,11 @@ gboolean
 cdk_wayland_display_query_registry (CdkDisplay  *display,
 				    const gchar *global)
 {
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (display);
   GHashTableIter iter;
   gchar *value;
 
-  g_return_val_if_fail (GDK_IS_WAYLAND_DISPLAY (display), FALSE);
+  g_return_val_if_fail (CDK_IS_WAYLAND_DISPLAY (display), FALSE);
   g_return_val_if_fail (global != NULL, FALSE);
 
   g_hash_table_iter_init (&iter, display_wayland->known_globals);

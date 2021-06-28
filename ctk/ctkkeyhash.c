@@ -395,12 +395,12 @@ _ctk_key_hash_lookup (CtkKeyHash      *key_hash,
   CdkModifierType consumed_modifiers;
   CdkModifierType shift_group_mask;
   gboolean group_mod_is_accel_mod = FALSE;
-  const CdkModifierType xmods = GDK_MOD2_MASK|GDK_MOD3_MASK|GDK_MOD4_MASK|GDK_MOD5_MASK;
-  const CdkModifierType vmods = GDK_SUPER_MASK|GDK_HYPER_MASK|GDK_META_MASK;
+  const CdkModifierType xmods = CDK_MOD2_MASK|CDK_MOD3_MASK|CDK_MOD4_MASK|CDK_MOD5_MASK;
+  const CdkModifierType vmods = CDK_SUPER_MASK|CDK_HYPER_MASK|CDK_META_MASK;
 
   /* We don't want Caps_Lock to affect keybinding lookups.
    */
-  state &= ~GDK_LOCK_MASK;
+  state &= ~CDK_LOCK_MASK;
 
   _ctk_translate_keyboard_accel_state (key_hash->keymap,
                                        hardware_keycode, state, mask, group,
@@ -411,7 +411,7 @@ _ctk_key_hash_lookup (CtkKeyHash      *key_hash,
    * mask, and it is active, disable it for matching
    */
   shift_group_mask = cdk_keymap_get_modifier_mask (key_hash->keymap,
-                                                   GDK_MODIFIER_INTENT_SHIFT_GROUP);
+                                                   CDK_MODIFIER_INTENT_SHIFT_GROUP);
   if (mask & shift_group_mask)
     group_mod_is_accel_mod = TRUE;
 

@@ -61,7 +61,7 @@ msgstr "VISOR"
 
 #. Description of --cdk-debug=FLAGS in --help output
 #: ../cdk/cdk.c:215
-msgid "GDK debugging flags to set"
+msgid "CDK debugging flags to set"
 msgstr "Banderas de depuración CTK+ que establir"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
@@ -74,7 +74,7 @@ msgstr "Banderas"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: ../cdk/cdk.c:218
-msgid "GDK debugging flags to unset"
+msgid "CDK debugging flags to unset"
 msgstr "Banderas de depuración CTK+ que sacar"
 
 #.

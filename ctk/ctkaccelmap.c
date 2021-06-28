@@ -1016,7 +1016,7 @@ ctk_accel_map_class_init (CtkAccelMapClass *accel_map_class)
 					     NULL, NULL,
 					     _ctk_marshal_VOID__STRING_UINT_FLAGS,
 					     G_TYPE_NONE, 3,
-					     G_TYPE_STRING, G_TYPE_UINT, GDK_TYPE_MODIFIER_TYPE);
+					     G_TYPE_STRING, G_TYPE_UINT, CDK_TYPE_MODIFIER_TYPE);
 }
 
 static void

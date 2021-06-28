@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -78,7 +78,7 @@ struct _CdkFrameClockIdlePrivate
 static gboolean cdk_frame_clock_flush_idle (void *data);
 static gboolean cdk_frame_clock_paint_idle (void *data);
 
-G_DEFINE_TYPE_WITH_PRIVATE (CdkFrameClockIdle, cdk_frame_clock_idle, GDK_TYPE_FRAME_CLOCK)
+G_DEFINE_TYPE_WITH_PRIVATE (CdkFrameClockIdle, cdk_frame_clock_idle, CDK_TYPE_FRAME_CLOCK)
 
 static gint64 sleep_serial;
 static gint64 sleep_source_prepare_time;
@@ -147,7 +147,7 @@ cdk_frame_clock_idle_init (CdkFrameClockIdle *frame_clock_idle)
 static void
 cdk_frame_clock_idle_dispose (GObject *object)
 {
-  CdkFrameClockIdlePrivate *priv = GDK_FRAME_CLOCK_IDLE (object)->priv;
+  CdkFrameClockIdlePrivate *priv = CDK_FRAME_CLOCK_IDLE (object)->priv;
 
   if (priv->flush_idle_id != 0)
     {
@@ -181,7 +181,7 @@ compute_smooth_frame_time (CdkFrameClock *clock,
                            gint64 smoothed_frame_time_base,
                            gint64 frame_interval)
 {
-  CdkFrameClockIdlePrivate *priv = GDK_FRAME_CLOCK_IDLE (clock)->priv;
+  CdkFrameClockIdlePrivate *priv = CDK_FRAME_CLOCK_IDLE (clock)->priv;
   int frames_passed;
   gint64 new_smoothed_time;
   gint64 current_error;
@@ -245,14 +245,14 @@ compute_smooth_frame_time (CdkFrameClock *clock,
 static gint64
 cdk_frame_clock_idle_get_frame_time (CdkFrameClock *clock)
 {
-  CdkFrameClockIdlePrivate *priv = GDK_FRAME_CLOCK_IDLE (clock)->priv;
+  CdkFrameClockIdlePrivate *priv = CDK_FRAME_CLOCK_IDLE (clock)->priv;
   gint64 now;
   gint64 new_smoothed_time;
 
   /* can't change frame time during a paint */
-  if (priv->phase != GDK_FRAME_CLOCK_PHASE_NONE &&
-      priv->phase != GDK_FRAME_CLOCK_PHASE_FLUSH_EVENTS &&
-      (priv->phase != GDK_FRAME_CLOCK_PHASE_BEFORE_PAINT || priv->in_paint_idle))
+  if (priv->phase != CDK_FRAME_CLOCK_PHASE_NONE &&
+      priv->phase != CDK_FRAME_CLOCK_PHASE_FLUSH_EVENTS &&
+      (priv->phase != CDK_FRAME_CLOCK_PHASE_BEFORE_PAINT || priv->in_paint_idle))
     return priv->smoothed_frame_time_base;
 
   /* Outside a paint, pick something smoothed close to now */
@@ -277,16 +277,16 @@ cdk_frame_clock_idle_get_frame_time (CdkFrameClock *clock)
 
 #define RUN_FLUSH_IDLE(priv)                                            \
   ((priv)->freeze_count == 0 &&                                         \
-   ((priv)->requested & GDK_FRAME_CLOCK_PHASE_FLUSH_EVENTS) != 0)
+   ((priv)->requested & CDK_FRAME_CLOCK_PHASE_FLUSH_EVENTS) != 0)
 
 /* The reason why we track updating_count separately here and don't
- * just add GDK_FRAME_CLOCK_PHASE_UPDATE into ->request on every frame
+ * just add CDK_FRAME_CLOCK_PHASE_UPDATE into ->request on every frame
  * is so that we can avoid doing one more frame when an animation
  * is cancelled.
  */
 #define RUN_PAINT_IDLE(priv)                                            \
   ((priv)->freeze_count == 0 &&                                         \
-   (((priv)->requested & ~GDK_FRAME_CLOCK_PHASE_FLUSH_EVENTS) != 0 ||   \
+   (((priv)->requested & ~CDK_FRAME_CLOCK_PHASE_FLUSH_EVENTS) != 0 ||   \
     (priv)->updating_count > 0))
 
 static void
@@ -308,7 +308,7 @@ maybe_start_idle (CdkFrameClockIdle *clock_idle,
 
       if (priv->flush_idle_id == 0 && RUN_FLUSH_IDLE (priv))
         {
-          priv->flush_idle_id = cdk_threads_add_timeout_full (GDK_PRIORITY_EVENTS + 1,
+          priv->flush_idle_id = cdk_threads_add_timeout_full (CDK_PRIORITY_EVENTS + 1,
                                                               min_interval,
                                                               cdk_frame_clock_flush_idle,
                                                               g_object_ref (clock_idle),
@@ -320,7 +320,7 @@ maybe_start_idle (CdkFrameClockIdle *clock_idle,
 	  priv->paint_idle_id == 0 && RUN_PAINT_IDLE (priv))
         {
           priv->paint_is_thaw = caused_by_thaw;
-          priv->paint_idle_id = cdk_threads_add_timeout_full (GDK_PRIORITY_REDRAW,
+          priv->paint_idle_id = cdk_threads_add_timeout_full (CDK_PRIORITY_REDRAW,
                                                               min_interval,
                                                               cdk_frame_clock_paint_idle,
                                                               g_object_ref (clock_idle),
@@ -351,25 +351,25 @@ maybe_stop_idle (CdkFrameClockIdle *clock_idle)
 static gboolean
 cdk_frame_clock_flush_idle (void *data)
 {
-  CdkFrameClock *clock = GDK_FRAME_CLOCK (data);
-  CdkFrameClockIdle *clock_idle = GDK_FRAME_CLOCK_IDLE (clock);
+  CdkFrameClock *clock = CDK_FRAME_CLOCK (data);
+  CdkFrameClockIdle *clock_idle = CDK_FRAME_CLOCK_IDLE (clock);
   CdkFrameClockIdlePrivate *priv = clock_idle->priv;
 
   priv->flush_idle_id = 0;
 
-  if (priv->phase != GDK_FRAME_CLOCK_PHASE_NONE)
+  if (priv->phase != CDK_FRAME_CLOCK_PHASE_NONE)
     return FALSE;
 
-  priv->phase = GDK_FRAME_CLOCK_PHASE_FLUSH_EVENTS;
-  priv->requested &= ~GDK_FRAME_CLOCK_PHASE_FLUSH_EVENTS;
+  priv->phase = CDK_FRAME_CLOCK_PHASE_FLUSH_EVENTS;
+  priv->requested &= ~CDK_FRAME_CLOCK_PHASE_FLUSH_EVENTS;
 
   _cdk_frame_clock_emit_flush_events (clock);
 
-  if ((priv->requested & ~GDK_FRAME_CLOCK_PHASE_FLUSH_EVENTS) != 0 ||
+  if ((priv->requested & ~CDK_FRAME_CLOCK_PHASE_FLUSH_EVENTS) != 0 ||
       priv->updating_count > 0)
-    priv->phase = GDK_FRAME_CLOCK_PHASE_BEFORE_PAINT;
+    priv->phase = CDK_FRAME_CLOCK_PHASE_BEFORE_PAINT;
   else
-    priv->phase = GDK_FRAME_CLOCK_PHASE_NONE;
+    priv->phase = CDK_FRAME_CLOCK_PHASE_NONE;
 
   return FALSE;
 }
@@ -396,8 +396,8 @@ positive_modulo (int i, int n)
 static gboolean
 cdk_frame_clock_paint_idle (void *data)
 {
-  CdkFrameClock *clock = GDK_FRAME_CLOCK (data);
-  CdkFrameClockIdle *clock_idle = GDK_FRAME_CLOCK_IDLE (clock);
+  CdkFrameClock *clock = CDK_FRAME_CLOCK (data);
+  CdkFrameClockIdle *clock_idle = CDK_FRAME_CLOCK_IDLE (clock);
   CdkFrameClockIdlePrivate *priv = clock_idle->priv;
   gboolean skip_to_resume_events;
   CdkFrameTimings *timings = NULL;
@@ -407,10 +407,10 @@ cdk_frame_clock_paint_idle (void *data)
   priv->min_next_frame_time = 0;
 
   skip_to_resume_events =
-    (priv->requested & ~(GDK_FRAME_CLOCK_PHASE_FLUSH_EVENTS | GDK_FRAME_CLOCK_PHASE_RESUME_EVENTS)) == 0 &&
+    (priv->requested & ~(CDK_FRAME_CLOCK_PHASE_FLUSH_EVENTS | CDK_FRAME_CLOCK_PHASE_RESUME_EVENTS)) == 0 &&
     priv->updating_count == 0;
 
-  if (priv->phase > GDK_FRAME_CLOCK_PHASE_BEFORE_PAINT)
+  if (priv->phase > CDK_FRAME_CLOCK_PHASE_BEFORE_PAINT)
     {
       timings = cdk_frame_clock_get_current_timings (clock);
     }
@@ -419,10 +419,10 @@ cdk_frame_clock_paint_idle (void *data)
     {
       switch (priv->phase)
         {
-        case GDK_FRAME_CLOCK_PHASE_FLUSH_EVENTS:
+        case CDK_FRAME_CLOCK_PHASE_FLUSH_EVENTS:
           break;
-        case GDK_FRAME_CLOCK_PHASE_NONE:
-        case GDK_FRAME_CLOCK_PHASE_BEFORE_PAINT:
+        case CDK_FRAME_CLOCK_PHASE_NONE:
+        case CDK_FRAME_CLOCK_PHASE_BEFORE_PAINT:
           if (priv->freeze_count == 0)
             {
               gint64 frame_interval = FRAME_INTERVAL;
@@ -525,115 +525,115 @@ cdk_frame_clock_paint_idle (void *data)
               timings->smoothed_frame_time = priv->smoothed_frame_time_base;
               timings->slept_before = priv->sleep_serial != get_sleep_serial ();
 
-              priv->phase = GDK_FRAME_CLOCK_PHASE_BEFORE_PAINT;
+              priv->phase = CDK_FRAME_CLOCK_PHASE_BEFORE_PAINT;
 
               /* We always emit ::before-paint and ::after-paint if
                * any of the intermediate phases are requested and
                * they don't get repeated if you freeze/thaw while
                * in them.
                */
-              priv->requested &= ~GDK_FRAME_CLOCK_PHASE_BEFORE_PAINT;
+              priv->requested &= ~CDK_FRAME_CLOCK_PHASE_BEFORE_PAINT;
               _cdk_frame_clock_emit_before_paint (clock);
-              priv->phase = GDK_FRAME_CLOCK_PHASE_UPDATE;
+              priv->phase = CDK_FRAME_CLOCK_PHASE_UPDATE;
             }
           /* fallthrough */
-        case GDK_FRAME_CLOCK_PHASE_UPDATE:
+        case CDK_FRAME_CLOCK_PHASE_UPDATE:
           if (priv->freeze_count == 0)
             {
-              if ((priv->requested & GDK_FRAME_CLOCK_PHASE_UPDATE) != 0 ||
+              if ((priv->requested & CDK_FRAME_CLOCK_PHASE_UPDATE) != 0 ||
                   priv->updating_count > 0)
                 {
-                  priv->requested &= ~GDK_FRAME_CLOCK_PHASE_UPDATE;
+                  priv->requested &= ~CDK_FRAME_CLOCK_PHASE_UPDATE;
                   _cdk_frame_clock_emit_update (clock);
                 }
             }
           /* fallthrough */
-        case GDK_FRAME_CLOCK_PHASE_LAYOUT:
+        case CDK_FRAME_CLOCK_PHASE_LAYOUT:
           if (priv->freeze_count == 0)
             {
 	      int iter;
 #ifdef G_ENABLE_DEBUG
-              if (GDK_DEBUG_CHECK (FRAMES) || cdk_profiler_is_running ())
+              if (CDK_DEBUG_CHECK (FRAMES) || cdk_profiler_is_running ())
                 {
-                  if (priv->phase != GDK_FRAME_CLOCK_PHASE_LAYOUT &&
-                      (priv->requested & GDK_FRAME_CLOCK_PHASE_LAYOUT))
+                  if (priv->phase != CDK_FRAME_CLOCK_PHASE_LAYOUT &&
+                      (priv->requested & CDK_FRAME_CLOCK_PHASE_LAYOUT))
                     timings->layout_start_time = g_get_monotonic_time ();
                 }
 #endif /* G_ENABLE_DEBUG */
 
-              priv->phase = GDK_FRAME_CLOCK_PHASE_LAYOUT;
+              priv->phase = CDK_FRAME_CLOCK_PHASE_LAYOUT;
 	      /* We loop in the layout phase, because we don't want to progress
 	       * into the paint phase with invalid size allocations. This may
 	       * happen in some situation like races between user window
 	       * resizes and natural size changes.
 	       */
 	      iter = 0;
-              while ((priv->requested & GDK_FRAME_CLOCK_PHASE_LAYOUT) &&
+              while ((priv->requested & CDK_FRAME_CLOCK_PHASE_LAYOUT) &&
 		     priv->freeze_count == 0 && iter++ < 4)
                 {
-                  priv->requested &= ~GDK_FRAME_CLOCK_PHASE_LAYOUT;
+                  priv->requested &= ~CDK_FRAME_CLOCK_PHASE_LAYOUT;
                   _cdk_frame_clock_emit_layout (clock);
                 }
 	      if (iter == 5)
 		g_warning ("cdk-frame-clock: layout continuously requested, giving up after 4 tries");
             }
           /* fallthrough */
-        case GDK_FRAME_CLOCK_PHASE_PAINT:
+        case CDK_FRAME_CLOCK_PHASE_PAINT:
           if (priv->freeze_count == 0)
             {
 #ifdef G_ENABLE_DEBUG
-              if (GDK_DEBUG_CHECK (FRAMES) || cdk_profiler_is_running ())
+              if (CDK_DEBUG_CHECK (FRAMES) || cdk_profiler_is_running ())
                 {
-                  if (priv->phase != GDK_FRAME_CLOCK_PHASE_PAINT &&
-                      (priv->requested & GDK_FRAME_CLOCK_PHASE_PAINT))
+                  if (priv->phase != CDK_FRAME_CLOCK_PHASE_PAINT &&
+                      (priv->requested & CDK_FRAME_CLOCK_PHASE_PAINT))
                     timings->paint_start_time = g_get_monotonic_time ();
                 }
 #endif /* G_ENABLE_DEBUG */
 
-              priv->phase = GDK_FRAME_CLOCK_PHASE_PAINT;
-              if (priv->requested & GDK_FRAME_CLOCK_PHASE_PAINT)
+              priv->phase = CDK_FRAME_CLOCK_PHASE_PAINT;
+              if (priv->requested & CDK_FRAME_CLOCK_PHASE_PAINT)
                 {
-                  priv->requested &= ~GDK_FRAME_CLOCK_PHASE_PAINT;
+                  priv->requested &= ~CDK_FRAME_CLOCK_PHASE_PAINT;
                   _cdk_frame_clock_emit_paint (clock);
                 }
             }
           /* fallthrough */
-        case GDK_FRAME_CLOCK_PHASE_AFTER_PAINT:
+        case CDK_FRAME_CLOCK_PHASE_AFTER_PAINT:
           if (priv->freeze_count == 0)
             {
-              priv->requested &= ~GDK_FRAME_CLOCK_PHASE_AFTER_PAINT;
+              priv->requested &= ~CDK_FRAME_CLOCK_PHASE_AFTER_PAINT;
               _cdk_frame_clock_emit_after_paint (clock);
               /* the ::after-paint phase doesn't get repeated on freeze/thaw,
                */
-              priv->phase = GDK_FRAME_CLOCK_PHASE_NONE;
+              priv->phase = CDK_FRAME_CLOCK_PHASE_NONE;
 
 #ifdef G_ENABLE_DEBUG
-              if (GDK_DEBUG_CHECK (FRAMES) || cdk_profiler_is_running ())
+              if (CDK_DEBUG_CHECK (FRAMES) || cdk_profiler_is_running ())
                 timings->frame_end_time = g_get_monotonic_time ();
 #endif /* G_ENABLE_DEBUG */
             }
           /* fallthrough */
-        case GDK_FRAME_CLOCK_PHASE_RESUME_EVENTS:
+        case CDK_FRAME_CLOCK_PHASE_RESUME_EVENTS:
           ;
         }
     }
 
 #ifdef G_ENABLE_DEBUG
-  if (GDK_DEBUG_CHECK (FRAMES))
+  if (CDK_DEBUG_CHECK (FRAMES))
     {
       if (timings && timings->complete)
         _cdk_frame_clock_debug_print_timings (clock, timings);
     }
 #endif /* G_ENABLE_DEBUG */
 
-  if (priv->requested & GDK_FRAME_CLOCK_PHASE_RESUME_EVENTS)
+  if (priv->requested & CDK_FRAME_CLOCK_PHASE_RESUME_EVENTS)
     {
-      priv->requested &= ~GDK_FRAME_CLOCK_PHASE_RESUME_EVENTS;
+      priv->requested &= ~CDK_FRAME_CLOCK_PHASE_RESUME_EVENTS;
       _cdk_frame_clock_emit_resume_events (clock);
     }
 
   if (priv->freeze_count == 0)
-    priv->phase = GDK_FRAME_CLOCK_PHASE_NONE;
+    priv->phase = CDK_FRAME_CLOCK_PHASE_NONE;
 
   priv->in_paint_idle = FALSE;
 
@@ -669,7 +669,7 @@ static void
 cdk_frame_clock_idle_request_phase (CdkFrameClock      *clock,
                                     CdkFrameClockPhase  phase)
 {
-  CdkFrameClockIdle *clock_idle = GDK_FRAME_CLOCK_IDLE (clock);
+  CdkFrameClockIdle *clock_idle = CDK_FRAME_CLOCK_IDLE (clock);
   CdkFrameClockIdlePrivate *priv = clock_idle->priv;
 
   priv->requested |= phase;
@@ -679,7 +679,7 @@ cdk_frame_clock_idle_request_phase (CdkFrameClock      *clock,
 static void
 cdk_frame_clock_idle_begin_updating (CdkFrameClock *clock)
 {
-  CdkFrameClockIdle *clock_idle = GDK_FRAME_CLOCK_IDLE (clock);
+  CdkFrameClockIdle *clock_idle = CDK_FRAME_CLOCK_IDLE (clock);
   CdkFrameClockIdlePrivate *priv = clock_idle->priv;
 
 #ifdef G_OS_WIN32
@@ -703,7 +703,7 @@ cdk_frame_clock_idle_begin_updating (CdkFrameClock *clock)
 static void
 cdk_frame_clock_idle_end_updating (CdkFrameClock *clock)
 {
-  CdkFrameClockIdle *clock_idle = GDK_FRAME_CLOCK_IDLE (clock);
+  CdkFrameClockIdle *clock_idle = CDK_FRAME_CLOCK_IDLE (clock);
   CdkFrameClockIdlePrivate *priv = clock_idle->priv;
 
   g_return_if_fail (priv->updating_count > 0);
@@ -728,7 +728,7 @@ cdk_frame_clock_idle_end_updating (CdkFrameClock *clock)
 static void
 cdk_frame_clock_idle_freeze (CdkFrameClock *clock)
 {
-  CdkFrameClockIdle *clock_idle = GDK_FRAME_CLOCK_IDLE (clock);
+  CdkFrameClockIdle *clock_idle = CDK_FRAME_CLOCK_IDLE (clock);
   CdkFrameClockIdlePrivate *priv = clock_idle->priv;
 
 #ifdef G_ENABLE_DEBUG
@@ -746,7 +746,7 @@ cdk_frame_clock_idle_freeze (CdkFrameClock *clock)
 static void
 cdk_frame_clock_idle_thaw (CdkFrameClock *clock)
 {
-  CdkFrameClockIdle *clock_idle = GDK_FRAME_CLOCK_IDLE (clock);
+  CdkFrameClockIdle *clock_idle = CDK_FRAME_CLOCK_IDLE (clock);
   CdkFrameClockIdlePrivate *priv = clock_idle->priv;
 
   g_return_if_fail (priv->freeze_count > 0);
@@ -760,7 +760,7 @@ cdk_frame_clock_idle_thaw (CdkFrameClock *clock)
        * run and do it for us.
        */
       if (priv->paint_idle_id == 0)
-        priv->phase = GDK_FRAME_CLOCK_PHASE_NONE;
+        priv->phase = CDK_FRAME_CLOCK_PHASE_NONE;
 
       priv->sleep_serial = get_sleep_serial ();
 
@@ -801,7 +801,7 @@ _cdk_frame_clock_idle_new (void)
 {
   CdkFrameClockIdle *clock;
 
-  clock = g_object_new (GDK_TYPE_FRAME_CLOCK_IDLE, NULL);
+  clock = g_object_new (CDK_TYPE_FRAME_CLOCK_IDLE, NULL);
 
-  return GDK_FRAME_CLOCK (clock);
+  return CDK_FRAME_CLOCK (clock);
 }

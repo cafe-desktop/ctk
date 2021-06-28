@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  *
  * cdkglcontext-win32.h: Private Win32 specific OpenGL wrappers
  *
@@ -18,13 +18,13 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_WIN32_GL_CONTEXT__
-#define __GDK_WIN32_GL_CONTEXT__
+#ifndef __CDK_WIN32_GL_CONTEXT__
+#define __CDK_WIN32_GL_CONTEXT__
 
 #include <epoxy/gl.h>
 #include <epoxy/wgl.h>
 
-#ifdef GDK_WIN32_ENABLE_EGL
+#ifdef CDK_WIN32_ENABLE_EGL
 # include <epoxy/egl.h>
 #endif
 
@@ -51,7 +51,7 @@ struct _CdkWin32GLContext
   guint do_frame_sync : 1;
   guint do_blit_swap : 1;
 
-#ifdef GDK_WIN32_ENABLE_EGL
+#ifdef CDK_WIN32_ENABLE_EGL
   /* EGL (Angle) Context Items */
   EGLContext egl_context;
   EGLConfig egl_config;
@@ -91,4 +91,4 @@ _cdk_win32_window_invalidate_egl_framebuffer (CdkWindow *window);
 
 G_END_DECLS
 
-#endif /* __GDK_WIN32_GL_CONTEXT__ */
+#endif /* __CDK_WIN32_GL_CONTEXT__ */

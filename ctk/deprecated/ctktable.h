@@ -113,17 +113,17 @@ typedef enum
 } CtkAttachOptions;
 
 
-GDK_DEPRECATED_IN_3_4
+CDK_DEPRECATED_IN_3_4
 GType	   ctk_table_get_type	      (void) G_GNUC_CONST;
-GDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
+CDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
 CtkWidget* ctk_table_new	      (guint		rows,
 				       guint		columns,
 				       gboolean		homogeneous);
-GDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
+CDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
 void	   ctk_table_resize	      (CtkTable	       *table,
 				       guint            rows,
 				       guint            columns);
-GDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
+CDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
 void	   ctk_table_attach	      (CtkTable	       *table,
 				       CtkWidget       *child,
 				       guint		left_attach,
@@ -134,43 +134,43 @@ void	   ctk_table_attach	      (CtkTable	       *table,
 				       CtkAttachOptions yoptions,
 				       guint		xpadding,
 				       guint		ypadding);
-GDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
+CDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
 void	   ctk_table_attach_defaults  (CtkTable	       *table,
 				       CtkWidget       *widget,
 				       guint		left_attach,
 				       guint		right_attach,
 				       guint		top_attach,
 				       guint		bottom_attach);
-GDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
+CDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
 void	   ctk_table_set_row_spacing  (CtkTable	       *table,
 				       guint		row,
 				       guint		spacing);
-GDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
+CDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
 guint      ctk_table_get_row_spacing  (CtkTable        *table,
 				       guint            row);
-GDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
+CDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
 void	   ctk_table_set_col_spacing  (CtkTable	       *table,
 				       guint		column,
 				       guint		spacing);
-GDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
+CDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
 guint      ctk_table_get_col_spacing  (CtkTable        *table,
 				       guint            column);
-GDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
+CDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
 void	   ctk_table_set_row_spacings (CtkTable	       *table,
 				       guint		spacing);
-GDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
+CDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
 guint      ctk_table_get_default_row_spacing (CtkTable        *table);
-GDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
+CDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
 void	   ctk_table_set_col_spacings (CtkTable	       *table,
 				       guint		spacing);
-GDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
+CDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
 guint      ctk_table_get_default_col_spacing (CtkTable        *table);
-GDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
+CDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
 void	   ctk_table_set_homogeneous  (CtkTable	       *table,
 				       gboolean		homogeneous);
-GDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
+CDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
 gboolean   ctk_table_get_homogeneous  (CtkTable        *table);
-GDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
+CDK_DEPRECATED_IN_3_4_FOR(CtkGrid)
 void       ctk_table_get_size         (CtkTable        *table,
                                        guint           *rows,
                                        guint           *columns);

@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2010 Red Hat, Inc
  *
  * This library is free software; you can redistribute it and/or
@@ -15,17 +15,17 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_DEVICE_MANAGER_PRIVATE_H__
-#define __GDK_DEVICE_MANAGER_PRIVATE_H__
+#ifndef __CDK_DEVICE_MANAGER_PRIVATE_H__
+#define __CDK_DEVICE_MANAGER_PRIVATE_H__
 
 #include "cdkdevicemanager.h"
 
 G_BEGIN_DECLS
 
 
-#define GDK_DEVICE_MANAGER_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_DEVICE_MANAGER, CdkDeviceManagerClass))
-#define GDK_IS_DEVICE_MANAGER_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), GDK_TYPE_DEVICE_MANAGER))
-#define GDK_DEVICE_MANAGER_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_DEVICE_MANAGER, CdkDeviceManagerClass))
+#define CDK_DEVICE_MANAGER_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), CDK_TYPE_DEVICE_MANAGER, CdkDeviceManagerClass))
+#define CDK_IS_DEVICE_MANAGER_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), CDK_TYPE_DEVICE_MANAGER))
+#define CDK_DEVICE_MANAGER_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CDK_TYPE_DEVICE_MANAGER, CdkDeviceManagerClass))
 
 
 typedef struct _CdkDeviceManagerClass CdkDeviceManagerClass;

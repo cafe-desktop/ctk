@@ -299,11 +299,11 @@ swatch_key_press (CtkWidget   *widget,
 {
   CtkColorSwatch *swatch = CTK_COLOR_SWATCH (widget);
 
-  if (event->keyval == GDK_KEY_space ||
-      event->keyval == GDK_KEY_Return ||
-      event->keyval == GDK_KEY_ISO_Enter||
-      event->keyval == GDK_KEY_KP_Enter ||
-      event->keyval == GDK_KEY_KP_Space)
+  if (event->keyval == CDK_KEY_space ||
+      event->keyval == CDK_KEY_Return ||
+      event->keyval == CDK_KEY_ISO_Enter||
+      event->keyval == CDK_KEY_KP_Enter ||
+      event->keyval == CDK_KEY_KP_Space)
     {
       if (swatch->priv->has_color &&
           swatch->priv->selectable &&
@@ -411,14 +411,14 @@ tap_action (CtkGestureMultiPress *gesture,
 
   button = ctk_gesture_single_get_current_button (CTK_GESTURE_SINGLE (gesture));
 
-  if (button == GDK_BUTTON_PRIMARY)
+  if (button == CDK_BUTTON_PRIMARY)
     {
       if (n_press == 1)
         swatch_primary_action (swatch);
       else if (n_press > 1)
         g_signal_emit (swatch, signals[ACTIVATE], 0);
     }
-  else if (button == GDK_BUTTON_SECONDARY)
+  else if (button == CDK_BUTTON_SECONDARY)
     {
       if (swatch->priv->has_color && swatch->priv->has_menu)
         do_popup (swatch);
@@ -459,20 +459,20 @@ swatch_realize (CtkWidget *widget)
   ctk_widget_get_allocation (widget, &allocation);
   ctk_widget_set_realized (widget, TRUE);
 
-  attributes.window_type = GDK_WINDOW_CHILD;
+  attributes.window_type = CDK_WINDOW_CHILD;
   attributes.x = allocation.x;
   attributes.y = allocation.y;
   attributes.width = allocation.width;
   attributes.height = allocation.height;
-  attributes.wclass = GDK_INPUT_ONLY;
+  attributes.wclass = CDK_INPUT_ONLY;
   attributes.event_mask = ctk_widget_get_events (widget);
-  attributes.event_mask |= GDK_BUTTON_PRESS_MASK
-                           | GDK_BUTTON_RELEASE_MASK
-                           | GDK_ENTER_NOTIFY_MASK
-                           | GDK_LEAVE_NOTIFY_MASK
-                           | GDK_TOUCH_MASK;
+  attributes.event_mask |= CDK_BUTTON_PRESS_MASK
+                           | CDK_BUTTON_RELEASE_MASK
+                           | CDK_ENTER_NOTIFY_MASK
+                           | CDK_LEAVE_NOTIFY_MASK
+                           | CDK_TOUCH_MASK;
 
-  attributes_mask = GDK_WA_X | GDK_WA_Y;
+  attributes_mask = CDK_WA_X | CDK_WA_Y;
 
   window = ctk_widget_get_parent_window (widget);
   ctk_widget_set_window (widget, window);
@@ -717,7 +717,7 @@ ctk_color_swatch_class_init (CtkColorSwatchClass *class)
 
   g_object_class_install_property (object_class, PROP_RGBA,
       g_param_spec_boxed ("rgba", P_("RGBA Color"), P_("Color as RGBA"),
-                          GDK_TYPE_RGBA, CTK_PARAM_READWRITE));
+                          CDK_TYPE_RGBA, CTK_PARAM_READWRITE));
   g_object_class_install_property (object_class, PROP_SELECTABLE,
       g_param_spec_boolean ("selectable", P_("Selectable"), P_("Whether the swatch is selectable"),
                             TRUE, CTK_PARAM_READWRITE));
@@ -792,9 +792,9 @@ ctk_color_swatch_set_rgba (CtkColorSwatch *swatch,
   if (!swatch->priv->has_color)
     {
       ctk_drag_source_set (CTK_WIDGET (swatch),
-                           GDK_BUTTON1_MASK | GDK_BUTTON3_MASK,
+                           CDK_BUTTON1_MASK | CDK_BUTTON3_MASK,
                            dnd_targets, G_N_ELEMENTS (dnd_targets),
-                           GDK_ACTION_COPY | GDK_ACTION_MOVE);
+                           CDK_ACTION_COPY | CDK_ACTION_MOVE);
     }
 
   swatch->priv->has_color = TRUE;
@@ -857,7 +857,7 @@ ctk_color_swatch_set_can_drop (CtkColorSwatch *swatch,
                          CTK_DEST_DEFAULT_MOTION |
                          CTK_DEST_DEFAULT_DROP,
                          dnd_targets, G_N_ELEMENTS (dnd_targets),
-                         GDK_ACTION_COPY);
+                         CDK_ACTION_COPY);
     }
   else
     {

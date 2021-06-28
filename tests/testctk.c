@@ -479,17 +479,17 @@ create_pattern (CtkWidget   *widget,
 	      
 	      CdkWindowAttr attributes;
 
-	      attributes.window_type = GDK_WINDOW_CHILD;
+	      attributes.window_type = CDK_WINDOW_CHILD;
 	      attributes.x = x;
 	      attributes.y = y;
 	      attributes.width = w;
 	      attributes.height = h;
-	      attributes.wclass = GDK_INPUT_OUTPUT;
-	      attributes.event_mask = GDK_EXPOSURE_MASK;
+	      attributes.wclass = CDK_INPUT_OUTPUT;
+	      attributes.event_mask = CDK_EXPOSURE_MASK;
 	      attributes.visual = ctk_widget_get_visual (widget);
 	      
 	      child = cdk_window_new (parent, &attributes,
-				      GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL);
+				      CDK_WA_X | CDK_WA_Y | CDK_WA_VISUAL);
 
 	      pattern_set_bg (widget, child, level);
 
@@ -1891,7 +1891,7 @@ void create_labels (CtkWidget *widget)
 					  "but this _word is <span foreground=\"purple\"><big>purple</big></span>\n"
 					  "<span underline=\"double\">We like <sup>superscript</sup> and <sub>subscript</sub> too</span>");
 
-      g_assert (ctk_label_get_mnemonic_keyval (CTK_LABEL (label)) == GDK_KEY_s);
+      g_assert (ctk_label_get_mnemonic_keyval (CTK_LABEL (label)) == CDK_KEY_s);
       
       ctk_container_add (CTK_CONTAINER (frame), label);
       ctk_box_pack_start (CTK_BOX (vbox), frame, FALSE, FALSE, 0);
@@ -2234,13 +2234,13 @@ create_reparent (CtkWidget *widget)
 static gboolean
 grippy_button_press (CtkWidget *area, CdkEventButton *event, CdkWindowEdge edge)
 {
-  if (event->type == GDK_BUTTON_PRESS) 
+  if (event->type == CDK_BUTTON_PRESS) 
     {
-      if (event->button == GDK_BUTTON_PRIMARY)
+      if (event->button == CDK_BUTTON_PRIMARY)
 	ctk_window_begin_resize_drag (CTK_WINDOW (ctk_widget_get_toplevel (area)), edge,
 				      event->button, event->x_root, event->y_root,
 				      event->time);
-      else if (event->button == GDK_BUTTON_MIDDLE)
+      else if (event->button == CDK_BUTTON_MIDDLE)
 	ctk_window_begin_move_drag (CTK_WINDOW (ctk_widget_get_toplevel (area)), 
 				    event->button, event->x_root, event->y_root,
 				    event->time);
@@ -2256,28 +2256,28 @@ grippy_draw (CtkWidget *area, cairo_t *cr, CdkWindowEdge edge)
 
   switch (edge)
     {
-    case GDK_WINDOW_EDGE_NORTH_WEST:
+    case CDK_WINDOW_EDGE_NORTH_WEST:
       sides = CTK_JUNCTION_CORNER_TOPLEFT;
       break;
-    case GDK_WINDOW_EDGE_NORTH:
+    case CDK_WINDOW_EDGE_NORTH:
       sides = CTK_JUNCTION_TOP;
       break;
-    case GDK_WINDOW_EDGE_NORTH_EAST:
+    case CDK_WINDOW_EDGE_NORTH_EAST:
       sides = CTK_JUNCTION_CORNER_TOPRIGHT;
       break;
-    case GDK_WINDOW_EDGE_WEST:
+    case CDK_WINDOW_EDGE_WEST:
       sides = CTK_JUNCTION_LEFT;
       break;
-    case GDK_WINDOW_EDGE_EAST:
+    case CDK_WINDOW_EDGE_EAST:
       sides = CTK_JUNCTION_RIGHT;
       break;
-    case GDK_WINDOW_EDGE_SOUTH_WEST:
+    case CDK_WINDOW_EDGE_SOUTH_WEST:
       sides = CTK_JUNCTION_CORNER_BOTTOMLEFT;
       break;
-    case GDK_WINDOW_EDGE_SOUTH:
+    case CDK_WINDOW_EDGE_SOUTH:
       sides = CTK_JUNCTION_BOTTOM;
       break;
-    case GDK_WINDOW_EDGE_SOUTH_EAST:
+    case CDK_WINDOW_EDGE_SOUTH_EAST:
       sides = CTK_JUNCTION_CORNER_BOTTOMRIGHT;
       break;
     default:
@@ -2325,42 +2325,42 @@ create_resize_grips (CtkWidget *widget)
 
       /* North west */
       area = ctk_drawing_area_new ();
-      ctk_widget_add_events (area, GDK_BUTTON_PRESS_MASK);
+      ctk_widget_add_events (area, CDK_BUTTON_PRESS_MASK);
       ctk_box_pack_start (CTK_BOX (hbox), area, TRUE, TRUE, 0);
       g_signal_connect (area, "draw", G_CALLBACK (grippy_draw),
-			GINT_TO_POINTER (GDK_WINDOW_EDGE_NORTH_WEST));
+			GINT_TO_POINTER (CDK_WINDOW_EDGE_NORTH_WEST));
       g_signal_connect (area, "button_press_event", G_CALLBACK (grippy_button_press),
-			GINT_TO_POINTER (GDK_WINDOW_EDGE_NORTH_WEST));
+			GINT_TO_POINTER (CDK_WINDOW_EDGE_NORTH_WEST));
       
       /* North */
       area = ctk_drawing_area_new ();
-      ctk_widget_add_events (area, GDK_BUTTON_PRESS_MASK);
+      ctk_widget_add_events (area, CDK_BUTTON_PRESS_MASK);
       ctk_box_pack_start (CTK_BOX (hbox), area, TRUE, TRUE, 0);
       g_signal_connect (area, "draw", G_CALLBACK (grippy_draw),
-			GINT_TO_POINTER (GDK_WINDOW_EDGE_NORTH));
+			GINT_TO_POINTER (CDK_WINDOW_EDGE_NORTH));
       g_signal_connect (area, "button_press_event", G_CALLBACK (grippy_button_press),
-			GINT_TO_POINTER (GDK_WINDOW_EDGE_NORTH));
+			GINT_TO_POINTER (CDK_WINDOW_EDGE_NORTH));
 
       /* North east */
       area = ctk_drawing_area_new ();
-      ctk_widget_add_events (area, GDK_BUTTON_PRESS_MASK);
+      ctk_widget_add_events (area, CDK_BUTTON_PRESS_MASK);
       ctk_box_pack_start (CTK_BOX (hbox), area, TRUE, TRUE, 0);
       g_signal_connect (area, "draw", G_CALLBACK (grippy_draw),
-			GINT_TO_POINTER (GDK_WINDOW_EDGE_NORTH_EAST));
+			GINT_TO_POINTER (CDK_WINDOW_EDGE_NORTH_EAST));
       g_signal_connect (area, "button_press_event", G_CALLBACK (grippy_button_press),
-			GINT_TO_POINTER (GDK_WINDOW_EDGE_NORTH_EAST));
+			GINT_TO_POINTER (CDK_WINDOW_EDGE_NORTH_EAST));
 
       hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
       ctk_box_pack_start (CTK_BOX (vbox), hbox, TRUE, TRUE, 0);
 
       /* West */
       area = ctk_drawing_area_new ();
-      ctk_widget_add_events (area, GDK_BUTTON_PRESS_MASK);
+      ctk_widget_add_events (area, CDK_BUTTON_PRESS_MASK);
       ctk_box_pack_start (CTK_BOX (hbox), area, TRUE, TRUE, 0);
       g_signal_connect (area, "draw", G_CALLBACK (grippy_draw),
-			GINT_TO_POINTER (GDK_WINDOW_EDGE_WEST));
+			GINT_TO_POINTER (CDK_WINDOW_EDGE_WEST));
       g_signal_connect (area, "button_press_event", G_CALLBACK (grippy_button_press),
-			GINT_TO_POINTER (GDK_WINDOW_EDGE_WEST));
+			GINT_TO_POINTER (CDK_WINDOW_EDGE_WEST));
 
       /* Middle */
       area = ctk_drawing_area_new ();
@@ -2368,12 +2368,12 @@ create_resize_grips (CtkWidget *widget)
 
       /* East */
       area = ctk_drawing_area_new ();
-      ctk_widget_add_events (area, GDK_BUTTON_PRESS_MASK);
+      ctk_widget_add_events (area, CDK_BUTTON_PRESS_MASK);
       ctk_box_pack_start (CTK_BOX (hbox), area, TRUE, TRUE, 0);
       g_signal_connect (area, "draw", G_CALLBACK (grippy_draw),
-			GINT_TO_POINTER (GDK_WINDOW_EDGE_EAST));
+			GINT_TO_POINTER (CDK_WINDOW_EDGE_EAST));
       g_signal_connect (area, "button_press_event", G_CALLBACK (grippy_button_press),
-			GINT_TO_POINTER (GDK_WINDOW_EDGE_EAST));
+			GINT_TO_POINTER (CDK_WINDOW_EDGE_EAST));
 
 
       hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
@@ -2381,29 +2381,29 @@ create_resize_grips (CtkWidget *widget)
 
       /* South west */
       area = ctk_drawing_area_new ();
-      ctk_widget_add_events (area, GDK_BUTTON_PRESS_MASK);
+      ctk_widget_add_events (area, CDK_BUTTON_PRESS_MASK);
       ctk_box_pack_start (CTK_BOX (hbox), area, TRUE, TRUE, 0);
       g_signal_connect (area, "draw", G_CALLBACK (grippy_draw),
-			GINT_TO_POINTER (GDK_WINDOW_EDGE_SOUTH_WEST));
+			GINT_TO_POINTER (CDK_WINDOW_EDGE_SOUTH_WEST));
       g_signal_connect (area, "button_press_event", G_CALLBACK (grippy_button_press),
-			GINT_TO_POINTER (GDK_WINDOW_EDGE_SOUTH_WEST));
+			GINT_TO_POINTER (CDK_WINDOW_EDGE_SOUTH_WEST));
       /* South */
       area = ctk_drawing_area_new ();
-      ctk_widget_add_events (area, GDK_BUTTON_PRESS_MASK);
+      ctk_widget_add_events (area, CDK_BUTTON_PRESS_MASK);
       ctk_box_pack_start (CTK_BOX (hbox), area, TRUE, TRUE, 0);
       g_signal_connect (area, "draw", G_CALLBACK (grippy_draw),
-			GINT_TO_POINTER (GDK_WINDOW_EDGE_SOUTH));
+			GINT_TO_POINTER (CDK_WINDOW_EDGE_SOUTH));
       g_signal_connect (area, "button_press_event", G_CALLBACK (grippy_button_press),
-			GINT_TO_POINTER (GDK_WINDOW_EDGE_SOUTH));
+			GINT_TO_POINTER (CDK_WINDOW_EDGE_SOUTH));
       
       /* South east */
       area = ctk_drawing_area_new ();
-      ctk_widget_add_events (area, GDK_BUTTON_PRESS_MASK);
+      ctk_widget_add_events (area, CDK_BUTTON_PRESS_MASK);
       ctk_box_pack_start (CTK_BOX (hbox), area, TRUE, TRUE, 0);
       g_signal_connect (area, "draw", G_CALLBACK (grippy_draw),
-			GINT_TO_POINTER (GDK_WINDOW_EDGE_SOUTH_EAST));
+			GINT_TO_POINTER (CDK_WINDOW_EDGE_SOUTH_EAST));
       g_signal_connect (area, "button_press_event", G_CALLBACK (grippy_button_press),
-			GINT_TO_POINTER (GDK_WINDOW_EDGE_SOUTH_EAST));
+			GINT_TO_POINTER (CDK_WINDOW_EDGE_SOUTH_EAST));
     }
 
   if (!ctk_widget_get_visible (window))
@@ -3324,7 +3324,7 @@ create_menus (CtkWidget *widget)
       ctk_widget_add_accelerator (menuitem,
 				  "activate",
 				  accel_group,
-				  GDK_KEY_F1,
+				  CDK_KEY_F1,
 				  0,
 				  CTK_ACCEL_VISIBLE);
       menuitem = ctk_check_menu_item_new_with_label ("Accelerator Locked");
@@ -3333,7 +3333,7 @@ create_menus (CtkWidget *widget)
       ctk_widget_add_accelerator (menuitem,
 				  "activate",
 				  accel_group,
-				  GDK_KEY_F2,
+				  CDK_KEY_F2,
 				  0,
 				  CTK_ACCEL_VISIBLE | CTK_ACCEL_LOCKED);
       menuitem = ctk_check_menu_item_new_with_label ("Accelerators Frozen");
@@ -3342,13 +3342,13 @@ create_menus (CtkWidget *widget)
       ctk_widget_add_accelerator (menuitem,
 				  "activate",
 				  accel_group,
-				  GDK_KEY_F2,
+				  CDK_KEY_F2,
 				  0,
 				  CTK_ACCEL_VISIBLE);
       ctk_widget_add_accelerator (menuitem,
 				  "activate",
 				  accel_group,
-				  GDK_KEY_F3,
+				  CDK_KEY_F3,
 				  0,
 				  CTK_ACCEL_VISIBLE);
 
@@ -4898,11 +4898,11 @@ cursor_event (CtkWidget *widget,
   else
     i = 0;
 
-  if ((event->type == GDK_BUTTON_PRESS) &&
-      ((event->button.button == GDK_BUTTON_PRIMARY) ||
-       (event->button.button == GDK_BUTTON_SECONDARY)))
+  if ((event->type == CDK_BUTTON_PRESS) &&
+      ((event->button.button == CDK_BUTTON_PRIMARY) ||
+       (event->button.button == CDK_BUTTON_SECONDARY)))
     {
-      if (event->button.button == GDK_BUTTON_PRIMARY)
+      if (event->button.button == CDK_BUTTON_PRIMARY)
         i = (i + 1) % n;
       else
         i = (i + n - 1) % n;
@@ -4928,7 +4928,7 @@ set_cursor_from_name (CtkWidget *entry,
   if (cursor == NULL)
     {
       name = NULL;
-      cursor = cdk_cursor_new_for_display (ctk_widget_get_display (widget), GDK_BLANK_CURSOR);
+      cursor = cdk_cursor_new_for_display (ctk_widget_get_display (widget), CDK_BLANK_CURSOR);
     }
 
   cdk_window_set_cursor (ctk_widget_get_window (widget), cursor);
@@ -4937,10 +4937,10 @@ set_cursor_from_name (CtkWidget *entry,
   g_object_set_data_full (G_OBJECT (widget), "name", g_strdup (name), g_free);
 }
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
 #include "x11/cdkx.h"
 #endif
-#ifdef GDK_WINDOWING_WAYLAND
+#ifdef CDK_WINDOWING_WAYLAND
 #include "wayland/cdkwayland.h"
 #endif
 
@@ -4948,7 +4948,7 @@ static void
 change_cursor_theme (CtkWidget *widget,
 		     gpointer   data)
 {
-#if defined(GDK_WINDOWING_X11) || defined (GDK_WINDOWING_WAYLAND)
+#if defined(CDK_WINDOWING_X11) || defined (CDK_WINDOWING_WAYLAND)
   const gchar *theme;
   gint size;
   GList *children;
@@ -4962,12 +4962,12 @@ change_cursor_theme (CtkWidget *widget,
   g_list_free (children);
 
   display = ctk_widget_get_display (widget);
-#ifdef GDK_WINDOWING_X11
-  if (GDK_IS_X11_DISPLAY (display))
+#ifdef CDK_WINDOWING_X11
+  if (CDK_IS_X11_DISPLAY (display))
     cdk_x11_display_set_cursor_theme (display, theme, size);
 #endif
-#ifdef GDK_WINDOWING_WAYLAND
-  if (GDK_IS_WAYLAND_DISPLAY (display))
+#ifdef CDK_WINDOWING_WAYLAND
+  if (CDK_IS_WAYLAND_DISPLAY (display))
     cdk_wayland_display_set_cursor_theme (display, theme, size);
 #endif
 #endif
@@ -5018,12 +5018,12 @@ create_cursors (CtkWidget *widget)
 			"CtkWidget::visible", TRUE,
 			NULL);
 
-#ifdef GDK_WINDOWING_X11
-      if (GDK_IS_X11_DISPLAY (ctk_widget_get_display (vbox)))
+#ifdef CDK_WINDOWING_X11
+      if (CDK_IS_X11_DISPLAY (ctk_widget_get_display (vbox)))
         cursor_demo = TRUE;
 #endif
-#ifdef GDK_WINDOWING_WAYLAND
-      if (GDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (vbox)))
+#ifdef CDK_WINDOWING_WAYLAND
+      if (CDK_IS_WAYLAND_DISPLAY (ctk_widget_get_display (vbox)))
         cursor_demo = TRUE;
 #endif
 
@@ -5089,7 +5089,7 @@ create_cursors (CtkWidget *widget)
 			"draw",
 			G_CALLBACK (cursor_draw),
 			NULL);
-      ctk_widget_set_events (darea, GDK_EXPOSURE_MASK | GDK_BUTTON_PRESS_MASK);
+      ctk_widget_set_events (darea, CDK_EXPOSURE_MASK | CDK_BUTTON_PRESS_MASK);
       g_signal_connect (darea, "button_press_event",
 			G_CALLBACK (cursor_event), entry);
       ctk_widget_show (darea);
@@ -6846,7 +6846,7 @@ shape_pressed (CtkWidget *widget, CdkEventButton *event)
   CursorOffset *p;
 
   /* ignore double and triple click */
-  if (event->type != GDK_BUTTON_PRESS)
+  if (event->type != CDK_BUTTON_PRESS)
     return;
 
   p = g_object_get_data (G_OBJECT (widget), "cursor_offset");
@@ -6856,7 +6856,7 @@ shape_pressed (CtkWidget *widget, CdkEventButton *event)
   ctk_grab_add (widget);
   cdk_seat_grab (cdk_event_get_seat ((CdkEvent *) event),
                  ctk_widget_get_window (widget),
-                 GDK_SEAT_CAPABILITY_ALL_POINTING,
+                 CDK_SEAT_CAPABILITY_ALL_POINTING,
                  TRUE, NULL, (CdkEvent *) event, NULL, NULL);
 }
 
@@ -6906,7 +6906,7 @@ shape_create_icon (CdkScreen *screen,
   cairo_t *cr;
 
   /*
-   * GDK_WINDOW_TOPLEVEL works also, giving you a title border
+   * CDK_WINDOW_TOPLEVEL works also, giving you a title border
    */
   window = ctk_window_new (window_type);
   ctk_window_set_screen (CTK_WINDOW (window), screen);
@@ -6918,8 +6918,8 @@ shape_create_icon (CdkScreen *screen,
   
   ctk_widget_set_events (window, 
 			 ctk_widget_get_events (window) |
-			 GDK_BUTTON_MOTION_MASK |
-			 GDK_BUTTON_PRESS_MASK);
+			 CDK_BUTTON_MOTION_MASK |
+			 CDK_BUTTON_PRESS_MASK);
 
   ctk_widget_realize (window);
 
@@ -7107,8 +7107,8 @@ create_wmhints (CtkWidget *widget)
 
       cdk_window_set_icon_name (cdk_window, "WMHints Test Icon");
   
-      cdk_window_set_decorations (cdk_window, GDK_DECOR_ALL | GDK_DECOR_MENU);
-      cdk_window_set_functions (cdk_window, GDK_FUNC_ALL | GDK_FUNC_RESIZE);
+      cdk_window_set_decorations (cdk_window, CDK_DECOR_ALL | CDK_DECOR_MENU);
+      cdk_window_set_functions (cdk_window, CDK_FUNC_ALL | CDK_FUNC_RESIZE);
       
       box1 = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
       ctk_container_add (CTK_CONTAINER (window), box1);
@@ -7163,19 +7163,19 @@ window_state_callback (CtkWidget *widget,
   gchar *msg;
 
   msg = g_strconcat (ctk_window_get_title (CTK_WINDOW (widget)), ": ",
-                     (event->new_window_state & GDK_WINDOW_STATE_WITHDRAWN) ?
+                     (event->new_window_state & CDK_WINDOW_STATE_WITHDRAWN) ?
                      "withdrawn" : "not withdrawn", ", ",
-                     (event->new_window_state & GDK_WINDOW_STATE_ICONIFIED) ?
+                     (event->new_window_state & CDK_WINDOW_STATE_ICONIFIED) ?
                      "iconified" : "not iconified", ", ",
-                     (event->new_window_state & GDK_WINDOW_STATE_STICKY) ?
+                     (event->new_window_state & CDK_WINDOW_STATE_STICKY) ?
                      "sticky" : "not sticky", ", ",
-                     (event->new_window_state & GDK_WINDOW_STATE_MAXIMIZED) ?
+                     (event->new_window_state & CDK_WINDOW_STATE_MAXIMIZED) ?
                      "maximized" : "not maximized", ", ",
-                     (event->new_window_state & GDK_WINDOW_STATE_FULLSCREEN) ?
+                     (event->new_window_state & CDK_WINDOW_STATE_FULLSCREEN) ?
                      "fullscreen" : "not fullscreen",
-                     (event->new_window_state & GDK_WINDOW_STATE_ABOVE) ?
+                     (event->new_window_state & CDK_WINDOW_STATE_ABOVE) ?
                      "above" : "not above", ", ",
-                     (event->new_window_state & GDK_WINDOW_STATE_BELOW) ?
+                     (event->new_window_state & CDK_WINDOW_STATE_BELOW) ?
                      "below" : "not below", ", ",
                      NULL);
   
@@ -7605,7 +7605,7 @@ gravity_selected (CtkWidget *widget,
                   gpointer   data)
 {
   ctk_window_set_gravity (CTK_WINDOW (g_object_get_data (data, "target")),
-                          ctk_combo_box_get_active (CTK_COMBO_BOX (widget)) + GDK_GRAVITY_NORTH_WEST);
+                          ctk_combo_box_get_active (CTK_COMBO_BOX (widget)) + CDK_GRAVITY_NORTH_WEST);
 }
 
 static void
@@ -7642,52 +7642,52 @@ get_screen_corner (CtkWindow *window,
 
   switch (ctk_window_get_gravity (window))
     {
-    case GDK_GRAVITY_SOUTH_EAST:
+    case CDK_GRAVITY_SOUTH_EAST:
       *x = cdk_screen_get_width (screen) - w;
       *y = cdk_screen_get_height (screen) - h;
       break;
 
-    case GDK_GRAVITY_NORTH_EAST:
+    case CDK_GRAVITY_NORTH_EAST:
       *x = cdk_screen_get_width (screen) - w;
       *y = 0;
       break;
 
-    case GDK_GRAVITY_SOUTH_WEST:
+    case CDK_GRAVITY_SOUTH_WEST:
       *x = 0;
       *y = cdk_screen_get_height (screen) - h;
       break;
 
-    case GDK_GRAVITY_NORTH_WEST:
+    case CDK_GRAVITY_NORTH_WEST:
       *x = 0;
       *y = 0;
       break;
       
-    case GDK_GRAVITY_SOUTH:
+    case CDK_GRAVITY_SOUTH:
       *x = (cdk_screen_get_width (screen) - w) / 2;
       *y = cdk_screen_get_height (screen) - h;
       break;
 
-    case GDK_GRAVITY_NORTH:
+    case CDK_GRAVITY_NORTH:
       *x = (cdk_screen_get_width (screen) - w) / 2;
       *y = 0;
       break;
 
-    case GDK_GRAVITY_WEST:
+    case CDK_GRAVITY_WEST:
       *x = 0;
       *y = (cdk_screen_get_height (screen) - h) / 2;
       break;
 
-    case GDK_GRAVITY_EAST:
+    case CDK_GRAVITY_EAST:
       *x = cdk_screen_get_width (screen) - w;
       *y = (cdk_screen_get_height (screen) - h) / 2;
       break;
 
-    case GDK_GRAVITY_CENTER:
+    case CDK_GRAVITY_CENTER:
       *x = (cdk_screen_get_width (screen) - w) / 2;
       *y = (cdk_screen_get_height (screen) - h) / 2;
       break;
 
-    case GDK_GRAVITY_STATIC:
+    case CDK_GRAVITY_STATIC:
       /* pick some random numbers */
       *x = 350;
       *y = 350;
@@ -7764,12 +7764,12 @@ make_gravity_window (CtkWidget   *destroy_with,
   /* Pretend this is the result of --geometry.
    * DO NOT COPY THIS CODE unless you are setting --geometry results,
    * and in that case you probably should just use ctk_window_parse_geometry().
-   * AGAIN, DO NOT SET GDK_HINT_USER_POS! It violates the ICCCM unless
+   * AGAIN, DO NOT SET CDK_HINT_USER_POS! It violates the ICCCM unless
    * you are parsing --geometry or equivalent.
    */
   ctk_window_set_geometry_hints (CTK_WINDOW (window),
                                  NULL, NULL,
-                                 GDK_HINT_USER_POS);
+                                 CDK_HINT_USER_POS);
 
   ctk_window_set_default_size (CTK_WINDOW (window),
                                200, 200);
@@ -7790,45 +7790,45 @@ do_gravity_test (CtkWidget *widget,
   CtkWidget *window;
   
   /* We put a window at each gravity point on the screen. */
-  window = make_gravity_window (destroy_with, GDK_GRAVITY_NORTH_WEST,
+  window = make_gravity_window (destroy_with, CDK_GRAVITY_NORTH_WEST,
                                 "NorthWest");
   ctk_widget_show (window);
   
-  window = make_gravity_window (destroy_with, GDK_GRAVITY_SOUTH_EAST,
+  window = make_gravity_window (destroy_with, CDK_GRAVITY_SOUTH_EAST,
                                 "SouthEast");
   ctk_widget_show (window);
 
-  window = make_gravity_window (destroy_with, GDK_GRAVITY_NORTH_EAST,
+  window = make_gravity_window (destroy_with, CDK_GRAVITY_NORTH_EAST,
                                 "NorthEast");
   ctk_widget_show (window);
 
-  window = make_gravity_window (destroy_with, GDK_GRAVITY_SOUTH_WEST,
+  window = make_gravity_window (destroy_with, CDK_GRAVITY_SOUTH_WEST,
                                 "SouthWest");
   ctk_widget_show (window);
 
-  window = make_gravity_window (destroy_with, GDK_GRAVITY_SOUTH,
+  window = make_gravity_window (destroy_with, CDK_GRAVITY_SOUTH,
                                 "South");
   ctk_widget_show (window);
 
-  window = make_gravity_window (destroy_with, GDK_GRAVITY_NORTH,
+  window = make_gravity_window (destroy_with, CDK_GRAVITY_NORTH,
                                 "North");
   ctk_widget_show (window);
 
   
-  window = make_gravity_window (destroy_with, GDK_GRAVITY_WEST,
+  window = make_gravity_window (destroy_with, CDK_GRAVITY_WEST,
                                 "West");
   ctk_widget_show (window);
 
     
-  window = make_gravity_window (destroy_with, GDK_GRAVITY_EAST,
+  window = make_gravity_window (destroy_with, CDK_GRAVITY_EAST,
                                 "East");
   ctk_widget_show (window);
 
-  window = make_gravity_window (destroy_with, GDK_GRAVITY_CENTER,
+  window = make_gravity_window (destroy_with, CDK_GRAVITY_CENTER,
                                 "Center");
   ctk_widget_show (window);
 
-  window = make_gravity_window (destroy_with, GDK_GRAVITY_STATIC,
+  window = make_gravity_window (destroy_with, CDK_GRAVITY_STATIC,
                                 "Static");
   ctk_widget_show (window);
 }
@@ -7999,16 +7999,16 @@ window_controls (CtkWidget *window)
   while (i < 10)
     {
       static gchar *names[] = {
-        "GDK_GRAVITY_NORTH_WEST",
-        "GDK_GRAVITY_NORTH",
-        "GDK_GRAVITY_NORTH_EAST",
-        "GDK_GRAVITY_WEST",
-        "GDK_GRAVITY_CENTER",
-        "GDK_GRAVITY_EAST",
-        "GDK_GRAVITY_SOUTH_WEST",
-        "GDK_GRAVITY_SOUTH",
-        "GDK_GRAVITY_SOUTH_EAST",
-        "GDK_GRAVITY_STATIC",
+        "CDK_GRAVITY_NORTH_WEST",
+        "CDK_GRAVITY_NORTH",
+        "CDK_GRAVITY_NORTH_EAST",
+        "CDK_GRAVITY_WEST",
+        "CDK_GRAVITY_CENTER",
+        "CDK_GRAVITY_EAST",
+        "CDK_GRAVITY_SOUTH_WEST",
+        "CDK_GRAVITY_SOUTH",
+        "CDK_GRAVITY_SOUTH_EAST",
+        "CDK_GRAVITY_STATIC",
         NULL
       };
 
@@ -8577,7 +8577,7 @@ snapshot_widget_event (CtkWidget	       *widget,
   if (!data->in_query)
     return FALSE;
   
-  if (event->type == GDK_BUTTON_RELEASE)
+  if (event->type == CDK_BUTTON_RELEASE)
     {
       ctk_grab_remove (widget);
       cdk_seat_ungrab (cdk_event_get_seat (event));
@@ -8636,11 +8636,11 @@ snapshot_widget (CtkButton *button,
 
   if (!data->cursor)
     data->cursor = cdk_cursor_new_for_display (ctk_widget_get_display (widget),
-					       GDK_TARGET);
+					       CDK_TARGET);
 
   cdk_seat_grab (cdk_device_get_seat (device),
                  ctk_widget_get_window (widget),
-                 GDK_SEAT_CAPABILITY_ALL_POINTING,
+                 CDK_SEAT_CAPABILITY_ALL_POINTING,
                  TRUE, data->cursor, NULL, NULL, NULL);
 
   g_signal_connect (button, "event",
@@ -8721,7 +8721,7 @@ selection_test_received (CtkWidget        *tree_view,
       g_print ("Selection retrieval failed\n");
       return;
     }
-  if (ctk_selection_data_get_data_type (selection_data) != GDK_SELECTION_TYPE_ATOM)
+  if (ctk_selection_data_get_data_type (selection_data) != CDK_SELECTION_TYPE_ATOM)
     {
       g_print ("Selection \"TARGETS\" was not returned as atoms!\n");
       return;
@@ -8759,7 +8759,7 @@ selection_test_received (CtkWidget        *tree_view,
 void
 selection_test_get_targets (CtkWidget *dialog, gint response, CtkWidget *tree_view)
 {
-  static CdkAtom targets_atom = GDK_NONE;
+  static CdkAtom targets_atom = CDK_NONE;
 
   if (response != CTK_RESPONSE_APPLY)
     {
@@ -8767,11 +8767,11 @@ selection_test_get_targets (CtkWidget *dialog, gint response, CtkWidget *tree_vi
       return;
     }
 
-  if (targets_atom == GDK_NONE)
+  if (targets_atom == CDK_NONE)
     targets_atom = cdk_atom_intern ("TARGETS", FALSE);
 
-  ctk_selection_convert (tree_view, GDK_SELECTION_PRIMARY, targets_atom,
-			 GDK_CURRENT_TIME);
+  ctk_selection_convert (tree_view, CDK_SELECTION_PRIMARY, targets_atom,
+			 CDK_CURRENT_TIME);
 }
 
 void
@@ -8887,7 +8887,7 @@ static gint
 scroll_test_scroll (CtkWidget *widget, CdkEventScroll *event,
 		    CtkAdjustment *adjustment)
 {
-  gdouble new_value = ctk_adjustment_get_value (adjustment) + ((event->direction == GDK_SCROLL_UP) ?
+  gdouble new_value = ctk_adjustment_get_value (adjustment) + ((event->direction == CDK_SCROLL_UP) ?
 				    -ctk_adjustment_get_page_increment (adjustment) / 2:
 				    ctk_adjustment_get_page_increment (adjustment) / 2);
   new_value = CLAMP (new_value, ctk_adjustment_get_lower (adjustment), ctk_adjustment_get_upper (adjustment) - ctk_adjustment_get_page_size (adjustment));
@@ -8967,7 +8967,7 @@ create_scroll_test (CtkWidget *widget)
       ctk_box_pack_start (CTK_BOX (hbox), drawing_area, TRUE, TRUE, 0);
       ctk_widget_show (drawing_area);
 
-      ctk_widget_set_events (drawing_area, GDK_EXPOSURE_MASK | GDK_SCROLL_MASK);
+      ctk_widget_set_events (drawing_area, CDK_EXPOSURE_MASK | CDK_SCROLL_MASK);
 
       adjustment = ctk_adjustment_new (0.0, 0.0, 1000.0, 1.0, 180.0, 200.0);
       scroll_test_pos = 0.0;
@@ -8998,9 +8998,9 @@ create_scroll_test (CtkWidget *widget)
 
       /* Set up gridded geometry */
 
-      geometry_mask = GDK_HINT_MIN_SIZE | 
-	               GDK_HINT_BASE_SIZE | 
-	               GDK_HINT_RESIZE_INC;
+      geometry_mask = CDK_HINT_MIN_SIZE | 
+	               CDK_HINT_BASE_SIZE | 
+	               CDK_HINT_RESIZE_INC;
 
       geometry.min_width = 20;
       geometry.min_height = 20;
@@ -9274,7 +9274,7 @@ void create_layout (CtkWidget *widget)
       ctk_scrollable_set_hadjustment (CTK_SCROLLABLE (layout), hadjustment);
       ctk_scrollable_set_vadjustment (CTK_SCROLLABLE (layout), vadjustment);
 
-      ctk_widget_set_events (layout_widget, GDK_EXPOSURE_MASK);
+      ctk_widget_set_events (layout_widget, CDK_EXPOSURE_MASK);
       g_signal_connect (layout, "draw",
 			G_CALLBACK (layout_draw_handler), NULL);
 
@@ -9788,7 +9788,7 @@ create_main_window (void)
   geometry.max_height = G_MAXSHORT;
   ctk_window_set_geometry_hints (CTK_WINDOW (window), NULL,
 				 &geometry,
-				 GDK_HINT_MIN_SIZE | GDK_HINT_MAX_SIZE);
+				 CDK_HINT_MIN_SIZE | CDK_HINT_MAX_SIZE);
 
   g_signal_connect (window, "destroy",
 		    G_CALLBACK (ctk_main_quit),
@@ -10011,13 +10011,13 @@ main (int argc, char *argv[])
                                              CTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
   g_object_unref (provider);
 
-  ctk_accelerator_set_default_mod_mask (GDK_SHIFT_MASK |
-					GDK_CONTROL_MASK |
-					GDK_MOD1_MASK | 
-					GDK_META_MASK |
-					GDK_SUPER_MASK |
-					GDK_HYPER_MASK |
-					GDK_MOD4_MASK);
+  ctk_accelerator_set_default_mod_mask (CDK_SHIFT_MASK |
+					CDK_CONTROL_MASK |
+					CDK_MOD1_MASK | 
+					CDK_META_MASK |
+					CDK_SUPER_MASK |
+					CDK_HYPER_MASK |
+					CDK_MOD4_MASK);
   /*  benchmarking
    */
   for (i = 1; i < argc; i++)
@@ -10065,7 +10065,7 @@ main (int argc, char *argv[])
    */
   binding_set = ctk_binding_set_by_class (g_type_class_ref (CTK_TYPE_WIDGET));
   ctk_binding_entry_add_signal (binding_set,
-				'9', GDK_CONTROL_MASK | GDK_RELEASE_MASK,
+				'9', CDK_CONTROL_MASK | CDK_RELEASE_MASK,
 				"debug_msg",
 				1,
 				G_TYPE_STRING, "CtkWidgetClass <ctrl><release>9 test");

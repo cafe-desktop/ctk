@@ -54,13 +54,13 @@ else
 die "Could not open file keysymdef.h: $!\n" unless open(IN_KEYSYMDEF, "<:utf8", "keysymdef.h");
 
 # Output: ctk+/cdk/cdkkeysyms.h
-die "Could not open file cdkkeysyms.h: $!\n" unless open(OUT_GDKKEYSYMS, ">:utf8", "cdkkeysyms.h");
+die "Could not open file cdkkeysyms.h: $!\n" unless open(OUT_CDKKEYSYMS, ">:utf8", "cdkkeysyms.h");
 
 # Output: ctk+/cdk/cdkkeysyms-compat.h
-die "Could not open file cdkkeysyms-compat.h: $!\n" unless open(OUT_GDKKEYSYMS_COMPAT, ">:utf8", "cdkkeysyms-compat.h");
+die "Could not open file cdkkeysyms-compat.h: $!\n" unless open(OUT_CDKKEYSYMS_COMPAT, ">:utf8", "cdkkeysyms-compat.h");
 
 my $LICENSE_HEADER= <<EOF;
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  * Copyright (C) 2005, 2006, 2007, 2009 GNOME Foundation
  *
@@ -80,10 +80,10 @@ my $LICENSE_HEADER= <<EOF;
 
 EOF
 
-print OUT_GDKKEYSYMS $LICENSE_HEADER;
-print OUT_GDKKEYSYMS_COMPAT $LICENSE_HEADER;
+print OUT_CDKKEYSYMS $LICENSE_HEADER;
+print OUT_CDKKEYSYMS_COMPAT $LICENSE_HEADER;
 
-print OUT_GDKKEYSYMS<<EOF;
+print OUT_CDKKEYSYMS<<EOF;
 
 /*
  * File auto-generated from script http://git.gnome.org/browse/ctk+/tree/cdk/cdkkeysyms-update.pl
@@ -100,13 +100,13 @@ print OUT_GDKKEYSYMS<<EOF;
  * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
-#ifndef __GDK_KEYSYMS_H__
-#define __GDK_KEYSYMS_H__
+#ifndef __CDK_KEYSYMS_H__
+#define __CDK_KEYSYMS_H__
 
 
 EOF
 
-print OUT_GDKKEYSYMS_COMPAT<<EOF;
+print OUT_CDKKEYSYMS_COMPAT<<EOF;
 /*
  * Compatibility version of cdkkeysyms.h.
  *
@@ -115,8 +115,8 @@ print OUT_GDKKEYSYMS_COMPAT<<EOF;
  * porting to the new names instead.
  */
 
-#ifndef __GDK_KEYSYMS_COMPAT_H__
-#define __GDK_KEYSYMS_COMPAT_H__
+#ifndef __CDK_KEYSYMS_COMPAT_H__
+#define __CDK_KEYSYMS_COMPAT_H__
 
 EOF
 
@@ -135,12 +135,12 @@ while (<IN_KEYSYMDEF>)
 
 	my $element = $keysymelements[1];
 	my $binding = $element;
-	$binding =~ s/^XK_/GDK_KEY_/g;
+	$binding =~ s/^XK_/CDK_KEY_/g;
 	my $compat_binding = $element;
-	$compat_binding =~ s/^XK_/GDK_/g;
+	$compat_binding =~ s/^XK_/CDK_/g;
 
-	printf OUT_GDKKEYSYMS "#define %s 0x%03x\n", $binding, hex($keysymelements[2]);
-	printf OUT_GDKKEYSYMS_COMPAT "#define %s 0x%03x\n", $compat_binding, hex($keysymelements[2]);
+	printf OUT_CDKKEYSYMS "#define %s 0x%03x\n", $binding, hex($keysymelements[2]);
+	printf OUT_CDKKEYSYMS_COMPAT "#define %s 0x%03x\n", $compat_binding, hex($keysymelements[2]);
 }
 
 close IN_KEYSYMDEF;
@@ -177,25 +177,25 @@ while (<IN_XF86KEYSYM>)
 
 	my $element = $keysymelements[1];
 	my $binding = $element;
-	$binding =~ s/^XF86XK_/GDK_KEY_/g;
+	$binding =~ s/^XF86XK_/CDK_KEY_/g;
 	my $compat_binding = $element;
-	$compat_binding =~ s/^XF86XK_/GDK_/g;
+	$compat_binding =~ s/^XF86XK_/CDK_/g;
 
-	printf OUT_GDKKEYSYMS "#define %s 0x%03x\n", $binding, hex($keysymelements[2]);
-	printf OUT_GDKKEYSYMS_COMPAT "#define %s 0x%03x\n", $compat_binding, hex($keysymelements[2]);
+	printf OUT_CDKKEYSYMS "#define %s 0x%03x\n", $binding, hex($keysymelements[2]);
+	printf OUT_CDKKEYSYMS_COMPAT "#define %s 0x%03x\n", $compat_binding, hex($keysymelements[2]);
 }
 
 close IN_XF86KEYSYM;
 
 
-print OUT_GDKKEYSYMS<<EOF;
+print OUT_CDKKEYSYMS<<EOF;
 
-#endif /* __GDK_KEYSYMS_H__ */
+#endif /* __CDK_KEYSYMS_H__ */
 EOF
 
-print OUT_GDKKEYSYMS_COMPAT<<EOF;
+print OUT_CDKKEYSYMS_COMPAT<<EOF;
 
-#endif /* __GDK_KEYSYMS_COMPAT_H__ */
+#endif /* __CDK_KEYSYMS_COMPAT_H__ */
 EOF
 
 printf "We just finished converting keysymdef.h to cdkkeysyms.h and cdkkeysyms-compat.h\nThank you\n";

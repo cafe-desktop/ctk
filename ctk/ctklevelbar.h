@@ -85,55 +85,55 @@ struct _CtkLevelBarClass {
   gpointer padding[16];
 };
 
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 GType      ctk_level_bar_get_type           (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 CtkWidget *ctk_level_bar_new                (void);
 
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 CtkWidget *ctk_level_bar_new_for_interval   (gdouble      min_value,
                                              gdouble      max_value);
 
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 void       ctk_level_bar_set_mode           (CtkLevelBar *self,
                                              CtkLevelBarMode mode);
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 CtkLevelBarMode ctk_level_bar_get_mode      (CtkLevelBar *self);
 
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 void       ctk_level_bar_set_value          (CtkLevelBar *self,
                                              gdouble      value);
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 gdouble    ctk_level_bar_get_value          (CtkLevelBar *self);
 
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 void       ctk_level_bar_set_min_value      (CtkLevelBar *self,
                                              gdouble      value);
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 gdouble    ctk_level_bar_get_min_value      (CtkLevelBar *self);
 
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 void       ctk_level_bar_set_max_value      (CtkLevelBar *self,
                                              gdouble      value);
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 gdouble    ctk_level_bar_get_max_value      (CtkLevelBar *self);
 
-GDK_AVAILABLE_IN_3_8
+CDK_AVAILABLE_IN_3_8
 void       ctk_level_bar_set_inverted       (CtkLevelBar *self,
                                              gboolean     inverted);
 
-GDK_AVAILABLE_IN_3_8
+CDK_AVAILABLE_IN_3_8
 gboolean   ctk_level_bar_get_inverted       (CtkLevelBar *self);
 
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 void       ctk_level_bar_add_offset_value   (CtkLevelBar *self,
                                              const gchar *name,
                                              gdouble      value);
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 void       ctk_level_bar_remove_offset_value (CtkLevelBar *self,
                                               const gchar *name);
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 gboolean   ctk_level_bar_get_offset_value   (CtkLevelBar *self,
                                              const gchar *name,
                                              gdouble     *value);

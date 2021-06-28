@@ -31,21 +31,21 @@ point_press (PointState *point,
 
   if (point == &mouse_state)
     {
-      ev = cdk_event_new (GDK_BUTTON_PRESS);
+      ev = cdk_event_new (CDK_BUTTON_PRESS);
       ev->any.window = g_object_ref (ctk_widget_get_window (widget));
-      ev->button.time = GDK_CURRENT_TIME;
+      ev->button.time = CDK_CURRENT_TIME;
       ev->button.x = point->x;
       ev->button.y = point->y;
       ev->button.button = button;
       ev->button.state = point->state;
 
-      point->state |= GDK_BUTTON1_MASK << (button - 1);
+      point->state |= CDK_BUTTON1_MASK << (button - 1);
     }
   else
     {
-      ev = cdk_event_new (GDK_TOUCH_BEGIN);
+      ev = cdk_event_new (CDK_TOUCH_BEGIN);
       ev->any.window = g_object_ref (ctk_widget_get_window (widget));
-      ev->touch.time = GDK_CURRENT_TIME;
+      ev->touch.time = CDK_CURRENT_TIME;
       ev->touch.x = point->x;
       ev->touch.y = point->y;
       ev->touch.sequence = EVENT_SEQUENCE (point);
@@ -83,9 +83,9 @@ point_update (PointState *point,
 
   if (point == &mouse_state)
     {
-      ev = cdk_event_new (GDK_MOTION_NOTIFY);
+      ev = cdk_event_new (CDK_MOTION_NOTIFY);
       ev->any.window = g_object_ref (ctk_widget_get_window (widget));
-      ev->button.time = GDK_CURRENT_TIME;
+      ev->button.time = CDK_CURRENT_TIME;
       ev->motion.x = x;
       ev->motion.y = y;
       ev->motion.state = point->state;
@@ -95,9 +95,9 @@ point_update (PointState *point,
       if (!point->widget || widget != point->widget)
         return;
 
-      ev = cdk_event_new (GDK_TOUCH_UPDATE);
+      ev = cdk_event_new (CDK_TOUCH_UPDATE);
       ev->any.window = g_object_ref (ctk_widget_get_window (widget));
-      ev->touch.time = GDK_CURRENT_TIME;
+      ev->touch.time = CDK_CURRENT_TIME;
       ev->touch.x = x;
       ev->touch.y = y;
       ev->touch.sequence = EVENT_SEQUENCE (point);
@@ -135,23 +135,23 @@ point_release (PointState *point,
 
   if (point == &mouse_state)
     {
-      if ((point->state & (GDK_BUTTON1_MASK << (button - 1))) == 0)
+      if ((point->state & (CDK_BUTTON1_MASK << (button - 1))) == 0)
         return;
 
-      ev = cdk_event_new (GDK_BUTTON_RELEASE);
+      ev = cdk_event_new (CDK_BUTTON_RELEASE);
       ev->any.window = g_object_ref (ctk_widget_get_window (point->widget));
-      ev->button.time = GDK_CURRENT_TIME;
+      ev->button.time = CDK_CURRENT_TIME;
       ev->button.x = point->x;
       ev->button.y = point->y;
       ev->button.state = point->state;
 
-      point->state &= ~(GDK_BUTTON1_MASK << (button - 1));
+      point->state &= ~(CDK_BUTTON1_MASK << (button - 1));
     }
   else
     {
-      ev = cdk_event_new (GDK_TOUCH_END);
+      ev = cdk_event_new (CDK_TOUCH_END);
       ev->any.window = g_object_ref (ctk_widget_get_window (point->widget));
-      ev->touch.time = GDK_CURRENT_TIME;
+      ev->touch.time = CDK_CURRENT_TIME;
       ev->touch.x = point->x;
       ev->touch.y = point->y;
       ev->touch.sequence = EVENT_SEQUENCE (point);
@@ -453,9 +453,9 @@ test_mixed (void)
   add_gesture (B, "b3", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_NONE);
   add_gesture (C, "c3", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_NONE);
 
-  add_legacy (A, str, GDK_EVENT_PROPAGATE);
-  add_legacy (B, str, GDK_EVENT_PROPAGATE);
-  add_legacy (C, str, GDK_EVENT_PROPAGATE);
+  add_legacy (A, str, CDK_EVENT_PROPAGATE);
+  add_legacy (B, str, CDK_EVENT_PROPAGATE);
+  add_legacy (C, str, CDK_EVENT_PROPAGATE);
 
   point_update (&mouse_state, C, 10, 10);
   point_press (&mouse_state, C, 1);
@@ -507,9 +507,9 @@ test_early_exit (void)
   add_gesture (B, "b3", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_NONE);
   add_gesture (C, "c3", CTK_PHASE_BUBBLE, str, CTK_EVENT_SEQUENCE_NONE);
 
-  add_legacy (A, str, GDK_EVENT_PROPAGATE);
-  add_legacy (B, str, GDK_EVENT_STOP);
-  add_legacy (C, str, GDK_EVENT_PROPAGATE);
+  add_legacy (A, str, CDK_EVENT_PROPAGATE);
+  add_legacy (B, str, CDK_EVENT_STOP);
+  add_legacy (C, str, CDK_EVENT_PROPAGATE);
 
   point_update (&mouse_state, C, 10, 10);
   point_press (&mouse_state, C, 1);

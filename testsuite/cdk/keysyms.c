@@ -9,13 +9,13 @@ test_keysyms_basic (void)
     const gchar *name;
     const gchar *other_name;
   } tests[] = {
-    { GDK_KEY_space, "space", NULL },
-    { GDK_KEY_a, "a", NULL },
-    { GDK_KEY_Thorn, "Thorn", "THORN" },
-    { GDK_KEY_Hangul_J_RieulTieut, "Hangul_J_RieulTieut", NULL },
-    { GDK_KEY_Page_Up, "Page_Up", NULL },
-    { GDK_KEY_KP_Multiply, "KP_Multiply", NULL },
-    { GDK_KEY_MonBrightnessUp, "MonBrightnessUp", NULL },
+    { CDK_KEY_space, "space", NULL },
+    { CDK_KEY_a, "a", NULL },
+    { CDK_KEY_Thorn, "Thorn", "THORN" },
+    { CDK_KEY_Hangul_J_RieulTieut, "Hangul_J_RieulTieut", NULL },
+    { CDK_KEY_Page_Up, "Page_Up", NULL },
+    { CDK_KEY_KP_Multiply, "KP_Multiply", NULL },
+    { CDK_KEY_MonBrightnessUp, "MonBrightnessUp", NULL },
     { 0, NULL }
   };
   gint i;
@@ -32,26 +32,26 @@ test_keysyms_basic (void)
 static void
 test_keysyms_void (void)
 {
-  g_assert_cmpuint (cdk_keyval_from_name ("NoSuchKeysym"), ==, GDK_KEY_VoidSymbol);
-  g_assert_cmpstr (cdk_keyval_name (GDK_KEY_VoidSymbol), ==, "0xffffff");
+  g_assert_cmpuint (cdk_keyval_from_name ("NoSuchKeysym"), ==, CDK_KEY_VoidSymbol);
+  g_assert_cmpstr (cdk_keyval_name (CDK_KEY_VoidSymbol), ==, "0xffffff");
 }
 
 static void
 test_keysyms_xf86 (void)
 {
-  g_assert_cmpuint (cdk_keyval_from_name ("XF86MonBrightnessUp"), ==, GDK_KEY_MonBrightnessUp);
-  g_assert_cmpuint (cdk_keyval_from_name ("XF86MonBrightnessDown"), ==, GDK_KEY_MonBrightnessDown);
-  g_assert_cmpuint (cdk_keyval_from_name ("XF86KbdBrightnessUp"), ==, GDK_KEY_KbdBrightnessUp);
-  g_assert_cmpuint (cdk_keyval_from_name ("XF86KbdBrightnessDown"), ==, GDK_KEY_KbdBrightnessDown);
-  g_assert_cmpuint (cdk_keyval_from_name ("XF86Battery"), ==, GDK_KEY_Battery);
-  g_assert_cmpuint (cdk_keyval_from_name ("XF86Display"), ==, GDK_KEY_Display);
+  g_assert_cmpuint (cdk_keyval_from_name ("XF86MonBrightnessUp"), ==, CDK_KEY_MonBrightnessUp);
+  g_assert_cmpuint (cdk_keyval_from_name ("XF86MonBrightnessDown"), ==, CDK_KEY_MonBrightnessDown);
+  g_assert_cmpuint (cdk_keyval_from_name ("XF86KbdBrightnessUp"), ==, CDK_KEY_KbdBrightnessUp);
+  g_assert_cmpuint (cdk_keyval_from_name ("XF86KbdBrightnessDown"), ==, CDK_KEY_KbdBrightnessDown);
+  g_assert_cmpuint (cdk_keyval_from_name ("XF86Battery"), ==, CDK_KEY_Battery);
+  g_assert_cmpuint (cdk_keyval_from_name ("XF86Display"), ==, CDK_KEY_Display);
 
-  g_assert_cmpuint (cdk_keyval_from_name ("MonBrightnessUp"), ==, GDK_KEY_MonBrightnessUp);
-  g_assert_cmpuint (cdk_keyval_from_name ("MonBrightnessDown"), ==, GDK_KEY_MonBrightnessDown);
-  g_assert_cmpuint (cdk_keyval_from_name ("KbdBrightnessUp"), ==, GDK_KEY_KbdBrightnessUp);
-  g_assert_cmpuint (cdk_keyval_from_name ("KbdBrightnessDown"), ==, GDK_KEY_KbdBrightnessDown);
-  g_assert_cmpuint (cdk_keyval_from_name ("Battery"), ==, GDK_KEY_Battery);
-  g_assert_cmpuint (cdk_keyval_from_name ("Display"), ==, GDK_KEY_Display);
+  g_assert_cmpuint (cdk_keyval_from_name ("MonBrightnessUp"), ==, CDK_KEY_MonBrightnessUp);
+  g_assert_cmpuint (cdk_keyval_from_name ("MonBrightnessDown"), ==, CDK_KEY_MonBrightnessDown);
+  g_assert_cmpuint (cdk_keyval_from_name ("KbdBrightnessUp"), ==, CDK_KEY_KbdBrightnessUp);
+  g_assert_cmpuint (cdk_keyval_from_name ("KbdBrightnessDown"), ==, CDK_KEY_KbdBrightnessDown);
+  g_assert_cmpuint (cdk_keyval_from_name ("Battery"), ==, CDK_KEY_Battery);
+  g_assert_cmpuint (cdk_keyval_from_name ("Display"), ==, CDK_KEY_Display);
 }
 
 int main (int argc, char *argv[])

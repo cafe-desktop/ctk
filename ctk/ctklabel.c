@@ -605,7 +605,7 @@ add_move_binding (CtkBindingSet  *binding_set,
 		  CtkMovementStep step,
 		  gint            count)
 {
-  g_return_if_fail ((modmask & GDK_SHIFT_MASK) == 0);
+  g_return_if_fail ((modmask & CDK_SHIFT_MASK) == 0);
   
   ctk_binding_entry_add_signal (binding_set, keyval, modmask,
 				"move-cursor", 3,
@@ -614,7 +614,7 @@ add_move_binding (CtkBindingSet  *binding_set,
 				G_TYPE_BOOLEAN, FALSE);
 
   /* Selection-extending version */
-  ctk_binding_entry_add_signal (binding_set, keyval, modmask | GDK_SHIFT_MASK,
+  ctk_binding_entry_add_signal (binding_set, keyval, modmask | CDK_SHIFT_MASK,
 				"move-cursor", 3,
 				G_TYPE_ENUM, step,
 				G_TYPE_INT, count,
@@ -915,7 +915,7 @@ ctk_label_class_init (CtkLabelClass *class)
                          P_("Mnemonic key"),
                          P_("The mnemonic accelerator key for this label"),
                          0, G_MAXUINT,
-                         GDK_KEY_VoidSymbol,
+                         CDK_KEY_VoidSymbol,
                          CTK_PARAM_READABLE);
 
   label_props[PROP_MNEMONIC_WIDGET] =
@@ -1084,113 +1084,113 @@ ctk_label_class_init (CtkLabelClass *class)
   binding_set = ctk_binding_set_by_class (class);
 
   /* Moving the insertion point */
-  add_move_binding (binding_set, GDK_KEY_Right, 0,
+  add_move_binding (binding_set, CDK_KEY_Right, 0,
 		    CTK_MOVEMENT_VISUAL_POSITIONS, 1);
 
-  add_move_binding (binding_set, GDK_KEY_Left, 0,
+  add_move_binding (binding_set, CDK_KEY_Left, 0,
 		    CTK_MOVEMENT_VISUAL_POSITIONS, -1);
 
-  add_move_binding (binding_set, GDK_KEY_KP_Right, 0,
+  add_move_binding (binding_set, CDK_KEY_KP_Right, 0,
 		    CTK_MOVEMENT_VISUAL_POSITIONS, 1);
   
-  add_move_binding (binding_set, GDK_KEY_KP_Left, 0,
+  add_move_binding (binding_set, CDK_KEY_KP_Left, 0,
 		    CTK_MOVEMENT_VISUAL_POSITIONS, -1);
   
-  add_move_binding (binding_set, GDK_KEY_f, GDK_CONTROL_MASK,
+  add_move_binding (binding_set, CDK_KEY_f, CDK_CONTROL_MASK,
 		    CTK_MOVEMENT_LOGICAL_POSITIONS, 1);
   
-  add_move_binding (binding_set, GDK_KEY_b, GDK_CONTROL_MASK,
+  add_move_binding (binding_set, CDK_KEY_b, CDK_CONTROL_MASK,
 		    CTK_MOVEMENT_LOGICAL_POSITIONS, -1);
   
-  add_move_binding (binding_set, GDK_KEY_Right, GDK_CONTROL_MASK,
+  add_move_binding (binding_set, CDK_KEY_Right, CDK_CONTROL_MASK,
 		    CTK_MOVEMENT_WORDS, 1);
 
-  add_move_binding (binding_set, GDK_KEY_Left, GDK_CONTROL_MASK,
+  add_move_binding (binding_set, CDK_KEY_Left, CDK_CONTROL_MASK,
 		    CTK_MOVEMENT_WORDS, -1);
 
-  add_move_binding (binding_set, GDK_KEY_KP_Right, GDK_CONTROL_MASK,
+  add_move_binding (binding_set, CDK_KEY_KP_Right, CDK_CONTROL_MASK,
 		    CTK_MOVEMENT_WORDS, 1);
 
-  add_move_binding (binding_set, GDK_KEY_KP_Left, GDK_CONTROL_MASK,
+  add_move_binding (binding_set, CDK_KEY_KP_Left, CDK_CONTROL_MASK,
 		    CTK_MOVEMENT_WORDS, -1);
 
   /* select all */
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_a, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_a, CDK_CONTROL_MASK,
 				"move-cursor", 3,
 				G_TYPE_ENUM, CTK_MOVEMENT_PARAGRAPH_ENDS,
 				G_TYPE_INT, -1,
 				G_TYPE_BOOLEAN, FALSE);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_a, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_a, CDK_CONTROL_MASK,
 				"move-cursor", 3,
 				G_TYPE_ENUM, CTK_MOVEMENT_PARAGRAPH_ENDS,
 				G_TYPE_INT, 1,
 				G_TYPE_BOOLEAN, TRUE);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_slash, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_slash, CDK_CONTROL_MASK,
 				"move-cursor", 3,
 				G_TYPE_ENUM, CTK_MOVEMENT_PARAGRAPH_ENDS,
 				G_TYPE_INT, -1,
 				G_TYPE_BOOLEAN, FALSE);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_slash, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_slash, CDK_CONTROL_MASK,
 				"move-cursor", 3,
 				G_TYPE_ENUM, CTK_MOVEMENT_PARAGRAPH_ENDS,
 				G_TYPE_INT, 1,
 				G_TYPE_BOOLEAN, TRUE);
 
   /* unselect all */
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_a, GDK_SHIFT_MASK | GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_a, CDK_SHIFT_MASK | CDK_CONTROL_MASK,
 				"move-cursor", 3,
 				G_TYPE_ENUM, CTK_MOVEMENT_PARAGRAPH_ENDS,
 				G_TYPE_INT, 0,
 				G_TYPE_BOOLEAN, FALSE);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_backslash, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_backslash, CDK_CONTROL_MASK,
 				"move-cursor", 3,
 				G_TYPE_ENUM, CTK_MOVEMENT_PARAGRAPH_ENDS,
 				G_TYPE_INT, 0,
 				G_TYPE_BOOLEAN, FALSE);
 
-  add_move_binding (binding_set, GDK_KEY_f, GDK_MOD1_MASK,
+  add_move_binding (binding_set, CDK_KEY_f, CDK_MOD1_MASK,
 		    CTK_MOVEMENT_WORDS, 1);
 
-  add_move_binding (binding_set, GDK_KEY_b, GDK_MOD1_MASK,
+  add_move_binding (binding_set, CDK_KEY_b, CDK_MOD1_MASK,
 		    CTK_MOVEMENT_WORDS, -1);
 
-  add_move_binding (binding_set, GDK_KEY_Home, 0,
+  add_move_binding (binding_set, CDK_KEY_Home, 0,
 		    CTK_MOVEMENT_DISPLAY_LINE_ENDS, -1);
 
-  add_move_binding (binding_set, GDK_KEY_End, 0,
+  add_move_binding (binding_set, CDK_KEY_End, 0,
 		    CTK_MOVEMENT_DISPLAY_LINE_ENDS, 1);
 
-  add_move_binding (binding_set, GDK_KEY_KP_Home, 0,
+  add_move_binding (binding_set, CDK_KEY_KP_Home, 0,
 		    CTK_MOVEMENT_DISPLAY_LINE_ENDS, -1);
 
-  add_move_binding (binding_set, GDK_KEY_KP_End, 0,
+  add_move_binding (binding_set, CDK_KEY_KP_End, 0,
 		    CTK_MOVEMENT_DISPLAY_LINE_ENDS, 1);
   
-  add_move_binding (binding_set, GDK_KEY_Home, GDK_CONTROL_MASK,
+  add_move_binding (binding_set, CDK_KEY_Home, CDK_CONTROL_MASK,
 		    CTK_MOVEMENT_BUFFER_ENDS, -1);
 
-  add_move_binding (binding_set, GDK_KEY_End, GDK_CONTROL_MASK,
+  add_move_binding (binding_set, CDK_KEY_End, CDK_CONTROL_MASK,
 		    CTK_MOVEMENT_BUFFER_ENDS, 1);
 
-  add_move_binding (binding_set, GDK_KEY_KP_Home, GDK_CONTROL_MASK,
+  add_move_binding (binding_set, CDK_KEY_KP_Home, CDK_CONTROL_MASK,
 		    CTK_MOVEMENT_BUFFER_ENDS, -1);
 
-  add_move_binding (binding_set, GDK_KEY_KP_End, GDK_CONTROL_MASK,
+  add_move_binding (binding_set, CDK_KEY_KP_End, CDK_CONTROL_MASK,
 		    CTK_MOVEMENT_BUFFER_ENDS, 1);
 
   /* copy */
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_c, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_c, CDK_CONTROL_MASK,
 				"copy-clipboard", 0);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Return, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Return, 0,
 				"activate-current-link", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_ISO_Enter, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_ISO_Enter, 0,
 				"activate-current-link", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_KP_Enter, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_KP_Enter, 0,
 				"activate-current-link", 0);
 
   ctk_widget_class_set_accessible_type (widget_class, CTK_TYPE_LABEL_ACCESSIBLE);
@@ -1385,7 +1385,7 @@ ctk_label_init (CtkLabel *label)
   priv->pattern_set = FALSE;
   priv->track_links = TRUE;
 
-  priv->mnemonic_keyval = GDK_KEY_VoidSymbol;
+  priv->mnemonic_keyval = CDK_KEY_VoidSymbol;
   priv->layout = NULL;
   priv->text = g_strdup ("");
   priv->attrs = NULL;
@@ -1520,28 +1520,28 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
       /* PangoAttrColor */
     case PANGO_ATTR_FOREGROUND:
-      if (ctk_builder_value_from_string_type (builder, GDK_TYPE_COLOR, value, &val, error))
+      if (ctk_builder_value_from_string_type (builder, CDK_TYPE_COLOR, value, &val, error))
 	{
 	  color = g_value_get_boxed (&val);
 	  attribute = pango_attr_foreground_new (color->red, color->green, color->blue);
 	}
       break;
     case PANGO_ATTR_BACKGROUND:
-      if (ctk_builder_value_from_string_type (builder, GDK_TYPE_COLOR, value, &val, error))
+      if (ctk_builder_value_from_string_type (builder, CDK_TYPE_COLOR, value, &val, error))
 	{
 	  color = g_value_get_boxed (&val);
 	  attribute = pango_attr_background_new (color->red, color->green, color->blue);
 	}
       break;
     case PANGO_ATTR_UNDERLINE_COLOR:
-      if (ctk_builder_value_from_string_type (builder, GDK_TYPE_COLOR, value, &val, error))
+      if (ctk_builder_value_from_string_type (builder, CDK_TYPE_COLOR, value, &val, error))
 	{
 	  color = g_value_get_boxed (&val);
 	  attribute = pango_attr_underline_color_new (color->red, color->green, color->blue);
 	}
       break;
     case PANGO_ATTR_STRIKETHROUGH_COLOR:
-      if (ctk_builder_value_from_string_type (builder, GDK_TYPE_COLOR, value, &val, error))
+      if (ctk_builder_value_from_string_type (builder, CDK_TYPE_COLOR, value, &val, error))
 	{
 	  color = g_value_get_boxed (&val);
 	  attribute = pango_attr_strikethrough_color_new (color->red, color->green, color->blue);
@@ -1847,7 +1847,7 @@ ctk_label_setup_mnemonic (CtkLabel *label,
   
   mnemonic_menu = g_object_get_qdata (G_OBJECT (label), quark_mnemonic_menu);
   
-  if (last_key != GDK_KEY_VoidSymbol)
+  if (last_key != CDK_KEY_VoidSymbol)
     {
       if (priv->mnemonic_window)
 	{
@@ -1865,7 +1865,7 @@ ctk_label_setup_mnemonic (CtkLabel *label,
 	}
     }
   
-  if (priv->mnemonic_keyval == GDK_KEY_VoidSymbol)
+  if (priv->mnemonic_keyval == CDK_KEY_VoidSymbol)
       goto done;
 
   connect_mnemonics_visible_notify (CTK_LABEL (widget));
@@ -2121,14 +2121,14 @@ ctk_label_get_mnemonic_widget (CtkLabel *label)
  *
  * If the label has been set so that it has an mnemonic key this function
  * returns the keyval used for the mnemonic accelerator. If there is no
- * mnemonic set up it returns #GDK_KEY_VoidSymbol.
+ * mnemonic set up it returns #CDK_KEY_VoidSymbol.
  *
- * Returns: GDK keyval usable for accelerators, or #GDK_KEY_VoidSymbol
+ * Returns: CDK keyval usable for accelerators, or #CDK_KEY_VoidSymbol
  **/
 guint
 ctk_label_get_mnemonic_keyval (CtkLabel *label)
 {
-  g_return_val_if_fail (CTK_IS_LABEL (label), GDK_KEY_VoidSymbol);
+  g_return_val_if_fail (CTK_IS_LABEL (label), CDK_KEY_VoidSymbol);
 
   return label->priv->mnemonic_keyval;
 }
@@ -2232,7 +2232,7 @@ ctk_label_recalculate (CtkLabel *label)
     }
 
   if (!priv->use_underline)
-    priv->mnemonic_keyval = GDK_KEY_VoidSymbol;
+    priv->mnemonic_keyval = CDK_KEY_VoidSymbol;
 
   if (keyval != priv->mnemonic_keyval)
     {
@@ -2761,7 +2761,7 @@ ctk_label_set_markup_internal (CtkLabel    *label,
   if (accel_char != 0)
     priv->mnemonic_keyval = cdk_keyval_to_lower (cdk_unicode_to_keyval (accel_char));
   else
-    priv->mnemonic_keyval = GDK_KEY_VoidSymbol;
+    priv->mnemonic_keyval = CDK_KEY_VoidSymbol;
 }
 
 /**
@@ -4442,7 +4442,7 @@ separate_uline_pattern (const gchar  *str,
   gchar *dest;
   gchar *pattern_dest;
 
-  *accel_key = GDK_KEY_VoidSymbol;
+  *accel_key = CDK_KEY_VoidSymbol;
   *new_str = g_new (gchar, strlen (str) + 1);
   *pattern = g_new (gchar, g_utf8_strlen (str, -1) + 1);
 
@@ -4475,7 +4475,7 @@ separate_uline_pattern (const gchar  *str,
 	  else
 	    {
 	      *pattern_dest++ = '_';
-	      if (*accel_key == GDK_KEY_VoidSymbol)
+	      if (*accel_key == CDK_KEY_VoidSymbol)
 		*accel_key = cdk_keyval_to_lower (cdk_unicode_to_keyval (c));
 	    }
 
@@ -4512,7 +4512,7 @@ ctk_label_set_uline_text_internal (CtkLabel    *label,
 				   const gchar *str)
 {
   CtkLabelPrivate *priv = label->priv;
-  guint accel_key = GDK_KEY_VoidSymbol;
+  guint accel_key = CDK_KEY_VoidSymbol;
   gchar *new_str;
   gchar *pattern;
 
@@ -4992,7 +4992,7 @@ ctk_label_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
           ctk_label_do_popup (label, event);
           return;
         }
-      else if (button == GDK_BUTTON_PRIMARY)
+      else if (button == CDK_BUTTON_PRIMARY)
         {
           info->link_clicked = 1;
           update_link_state (label);
@@ -5013,7 +5013,7 @@ ctk_label_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
 
   if (cdk_event_triggers_context_menu (event))
     ctk_label_do_popup (label, event);
-  else if (button == GDK_BUTTON_PRIMARY)
+  else if (button == CDK_BUTTON_PRIMARY)
     {
       if (!ctk_widget_has_focus (widget))
         {
@@ -5184,7 +5184,7 @@ ctk_label_drag_gesture_begin (CtkGestureDrag *gesture,
   cdk_event_get_state (event, &state_mask);
 
   if ((info->selection_anchor != info->selection_end) &&
-      (state_mask & GDK_SHIFT_MASK))
+      (state_mask & CDK_SHIFT_MASK))
     {
       if (index > min && index < max)
         {
@@ -5260,7 +5260,7 @@ ctk_label_drag_gesture_update (CtkGestureDrag *gesture,
           g_signal_connect (widget, "drag-begin",
                             G_CALLBACK (drag_begin_cb), NULL);
 	  ctk_drag_begin_with_coordinates (widget, target_list,
-                                           GDK_ACTION_COPY,
+                                           CDK_ACTION_COPY,
                                            1, (CdkEvent*) event,
                                            info->drag_start_x,
                                            info->drag_start_y);
@@ -5435,21 +5435,21 @@ ctk_label_create_window (CtkLabel *label)
   attributes.y = allocation.y;
   attributes.width = allocation.width;
   attributes.height = allocation.height;
-  attributes.window_type = GDK_WINDOW_CHILD;
-  attributes.wclass = GDK_INPUT_ONLY;
+  attributes.window_type = CDK_WINDOW_CHILD;
+  attributes.wclass = CDK_INPUT_ONLY;
   attributes.override_redirect = TRUE;
   attributes.event_mask = ctk_widget_get_events (widget) |
-    GDK_BUTTON_PRESS_MASK        |
-    GDK_BUTTON_RELEASE_MASK      |
-    GDK_LEAVE_NOTIFY_MASK        |
-    GDK_BUTTON_MOTION_MASK       |
-    GDK_POINTER_MOTION_MASK;
-  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_NOREDIR;
+    CDK_BUTTON_PRESS_MASK        |
+    CDK_BUTTON_RELEASE_MASK      |
+    CDK_LEAVE_NOTIFY_MASK        |
+    CDK_BUTTON_MOTION_MASK       |
+    CDK_POINTER_MOTION_MASK;
+  attributes_mask = CDK_WA_X | CDK_WA_Y | CDK_WA_NOREDIR;
   if (ctk_widget_is_sensitive (widget) && priv->select_info->selectable)
     {
       attributes.cursor = cdk_cursor_new_for_display (ctk_widget_get_display (widget),
-						      GDK_XTERM);
-      attributes_mask |= GDK_WA_CURSOR;
+						      CDK_XTERM);
+      attributes_mask |= CDK_WA_CURSOR;
     }
 
 
@@ -5457,7 +5457,7 @@ ctk_label_create_window (CtkLabel *label)
                                                &attributes, attributes_mask);
   ctk_widget_register_window (widget, priv->select_info->window);
 
-  if (attributes_mask & GDK_WA_CURSOR)
+  if (attributes_mask & CDK_WA_CURSOR)
     g_object_unref (attributes.cursor);
 }
 
@@ -5818,7 +5818,7 @@ ctk_label_select_region_index (CtkLabel *label,
 
       if (ctk_widget_has_screen (CTK_WIDGET (label)))
         clipboard = ctk_widget_get_clipboard (CTK_WIDGET (label),
-                                              GDK_SELECTION_PRIMARY);
+                                              CDK_SELECTION_PRIMARY);
       else
         clipboard = NULL;
 
@@ -6527,7 +6527,7 @@ ctk_label_copy_clipboard (CtkLabel *label)
       if (start > len)
         start = len;
 
-      clipboard = ctk_widget_get_clipboard (CTK_WIDGET (label), GDK_SELECTION_CLIPBOARD);
+      clipboard = ctk_widget_get_clipboard (CTK_WIDGET (label), CDK_SELECTION_CLIPBOARD);
 
       if (start != end)
 	ctk_clipboard_set_text (clipboard, priv->text + start, end - start);
@@ -6608,7 +6608,7 @@ copy_link_activate_cb (CtkMenuItem *menuitem,
   CtkClipboard *clipboard;
 
   link = g_object_get_qdata (G_OBJECT (menuitem), quark_link);
-  clipboard = ctk_widget_get_clipboard (CTK_WIDGET (label), GDK_SELECTION_CLIPBOARD);
+  clipboard = ctk_widget_get_clipboard (CTK_WIDGET (label), CDK_SELECTION_CLIPBOARD);
   ctk_clipboard_set_text (clipboard, link->uri, -1);
 }
 
@@ -6705,8 +6705,8 @@ ctk_label_do_popup (CtkLabel       *label,
     {
       ctk_menu_popup_at_widget (CTK_MENU (menu),
                                 CTK_WIDGET (label),
-                                GDK_GRAVITY_SOUTH,
-                                GDK_GRAVITY_NORTH_WEST,
+                                CDK_GRAVITY_SOUTH,
+                                CDK_GRAVITY_NORTH_WEST,
                                 event);
 
       ctk_menu_shell_select_first (CTK_MENU_SHELL (menu), FALSE);

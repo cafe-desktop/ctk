@@ -138,20 +138,20 @@ msgid "Default Display"
 msgstr "Predvolený displej"
 
 #: cdk/cdkdisplaymanager.c:163
-msgid "The default display for GDK"
-msgstr "Predvolený displej pre GDK"
+msgid "The default display for CDK"
+msgstr "Predvolený displej pre CDK"
 
 #: cdk/cdkglcontext.c:318
-msgid "The GDK display used to create the GL context"
-msgstr "Displej GDK použitý na vytvorenie kontextu GL"
+msgid "The CDK display used to create the GL context"
+msgstr "Displej CDK použitý na vytvorenie kontextu GL"
 
 #: cdk/cdkglcontext.c:333 ctk/ctkwidget.c:1347
 msgid "Window"
 msgstr "Okno"
 
 #: cdk/cdkglcontext.c:334
-msgid "The GDK window bound to the GL context"
-msgstr "Okno GDK previazané na kontext GL"
+msgid "The CDK window bound to the GL context"
+msgstr "Okno CDK previazané na kontext GL"
 
 #: cdk/cdkglcontext.c:349
 msgid "Shared context"
@@ -4188,7 +4188,7 @@ msgstr "Počet bodov, potrebných na spustenie gesta"
 
 #: ctk/ctkgesture.c:887 ctk/ctkgesture.c:888
 msgid "CdkWindow to receive events about"
-msgstr "Okno GDK, ktoré bude dostávať udalosti o"
+msgstr "Okno CDK, ktoré bude dostávať udalosti o"
 
 #: ctk/ctkgesturelongpress.c:285
 msgid "Delay factor"
@@ -9704,8 +9704,8 @@ msgstr "Názov profilu farieb, ktorý sa má použiť"
 #~ msgid "Unmount"
 #~ msgstr "Vysunie"
 
-#~ msgid "The GDK display the context is from"
-#~ msgstr "Displej GDK, z ktorého pochádza kontext"
+#~ msgid "The CDK display the context is from"
+#~ msgstr "Displej CDK, z ktorého pochádza kontext"
 
 #~ msgid "Affects font"
 #~ msgstr "Ovplyvňuje písmo"

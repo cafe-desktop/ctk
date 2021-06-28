@@ -67,21 +67,21 @@ struct _CtkMenuBarClass
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType      ctk_menu_bar_get_type        (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_menu_bar_new             (void);
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 CtkWidget* ctk_menu_bar_new_from_model  (GMenuModel *model);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkPackDirection ctk_menu_bar_get_pack_direction (CtkMenuBar       *menubar);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_menu_bar_set_pack_direction (CtkMenuBar       *menubar,
 						  CtkPackDirection  pack_dir);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkPackDirection ctk_menu_bar_get_child_pack_direction (CtkMenuBar       *menubar);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_menu_bar_set_child_pack_direction (CtkMenuBar       *menubar,
 							CtkPackDirection  child_pack_dir);
 

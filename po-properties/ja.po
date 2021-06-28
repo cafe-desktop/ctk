@@ -146,11 +146,11 @@ msgid "Default Display"
 msgstr "デフォルトのディスプレイ"
 
 #: cdk/cdkdisplaymanager.c:163
-msgid "The default display for GDK"
-msgstr "GDK が使用するデフォルトのディスプレイです"
+msgid "The default display for CDK"
+msgstr "CDK が使用するデフォルトのディスプレイです"
 
 #: cdk/cdkglcontext.c:318
-msgid "The GDK display used to create the GL context"
+msgid "The CDK display used to create the GL context"
 msgstr ""
 
 #: cdk/cdkglcontext.c:333 ctk/ctkwidget.c:1347
@@ -158,7 +158,7 @@ msgid "Window"
 msgstr "ウィンドウの種別"
 
 #: cdk/cdkglcontext.c:334
-msgid "The GDK window bound to the GL context"
+msgid "The CDK window bound to the GL context"
 msgstr ""
 
 #: cdk/cdkglcontext.c:349

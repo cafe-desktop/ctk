@@ -378,7 +378,7 @@ typedef struct {
   GDestroyNotify dnotify;
 } _PrintStreamData;
 
-/* expects GDK lock to be held */
+/* expects CDK lock to be held */
 static void
 file_print_cb_locked (CtkPrintBackendFile *print_backend,
                       GError              *error,

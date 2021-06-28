@@ -65,24 +65,24 @@ struct _CtkApplicationWindowClass
   gpointer padding[14];
 };
 
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 GType       ctk_application_window_get_type          (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 CtkWidget * ctk_application_window_new               (CtkApplication      *application);
 
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 void        ctk_application_window_set_show_menubar (CtkApplicationWindow *window,
                                                      gboolean              show_menubar);
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 gboolean    ctk_application_window_get_show_menubar (CtkApplicationWindow *window);
 
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 guint       ctk_application_window_get_id           (CtkApplicationWindow *window);
 
-GDK_AVAILABLE_IN_3_20
+CDK_AVAILABLE_IN_3_20
 void        ctk_application_window_set_help_overlay (CtkApplicationWindow *window,
                                                      CtkShortcutsWindow   *help_overlay);
-GDK_AVAILABLE_IN_3_20
+CDK_AVAILABLE_IN_3_20
 CtkShortcutsWindow *
             ctk_application_window_get_help_overlay (CtkApplicationWindow *window);
 

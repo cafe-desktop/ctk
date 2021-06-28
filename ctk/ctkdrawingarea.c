@@ -44,7 +44,7 @@
  *
  * - The #CtkWidget::realize signal to take any necessary actions
  *   when the widget is instantiated on a particular display.
- *   (Create GDK resources in response to this signal.)
+ *   (Create CDK resources in response to this signal.)
  *
  * - The #CtkWidget::size-allocate signal to take any necessary
  *   actions when the widget changes size.
@@ -56,7 +56,7 @@
  * area to display a circle in the normal widget foreground
  * color.
  *
- * Note that GDK automatically clears the exposed area before sending
+ * Note that CDK automatically clears the exposed area before sending
  * the expose event, and that drawing is implicitly clipped to the exposed
  * area. If you want to have a theme-provided background, you need
  * to call ctk_render_background() in your ::draw method.
@@ -107,7 +107,7 @@
  * You’ll then get a draw signal for the invalid region.
  *
  * The available routines for drawing are documented on the
- * [GDK Drawing Primitives][cdk3-Cairo-Interaction] page
+ * [CDK Drawing Primitives][cdk3-Cairo-Interaction] page
  * and the cairo documentation.
  *
  * To receive mouse events on a drawing area, you will need to enable
@@ -202,16 +202,16 @@ ctk_drawing_area_realize (CtkWidget *widget)
 
       ctk_widget_get_allocation (widget, &allocation);
 
-      attributes.window_type = GDK_WINDOW_CHILD;
+      attributes.window_type = CDK_WINDOW_CHILD;
       attributes.x = allocation.x;
       attributes.y = allocation.y;
       attributes.width = allocation.width;
       attributes.height = allocation.height;
-      attributes.wclass = GDK_INPUT_OUTPUT;
+      attributes.wclass = CDK_INPUT_OUTPUT;
       attributes.visual = ctk_widget_get_visual (widget);
-      attributes.event_mask = ctk_widget_get_events (widget) | GDK_EXPOSURE_MASK;
+      attributes.event_mask = ctk_widget_get_events (widget) | CDK_EXPOSURE_MASK;
 
-      attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
+      attributes_mask = CDK_WA_X | CDK_WA_Y | CDK_WA_VISUAL;
 
       window = cdk_window_new (ctk_widget_get_parent_window (widget),
                                &attributes, attributes_mask);
@@ -249,7 +249,7 @@ ctk_drawing_area_send_configure (CtkDrawingArea *darea)
 {
   CtkAllocation allocation;
   CtkWidget *widget;
-  CdkEvent *event = cdk_event_new (GDK_CONFIGURE);
+  CdkEvent *event = cdk_event_new (CDK_CONFIGURE);
 
   widget = CTK_WIDGET (darea);
   ctk_widget_get_allocation (widget, &allocation);

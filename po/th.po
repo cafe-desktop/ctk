@@ -65,8 +65,8 @@ msgstr "DISPLAY"
 
 #. Description of --cdk-debug=FLAGS in --help output
 #: cdk/cdk.c:241
-msgid "GDK debugging flags to set"
-msgstr "แฟล็กการดีบั๊กของ GDK ที่จะเปิดใช้"
+msgid "CDK debugging flags to set"
+msgstr "แฟล็กการดีบั๊กของ CDK ที่จะเปิดใช้"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
@@ -78,12 +78,12 @@ msgstr "FLAGS"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: cdk/cdk.c:244
-msgid "GDK debugging flags to unset"
-msgstr "แฟล็กการดีบั๊กของ GDK ที่จะปิด"
+msgid "CDK debugging flags to unset"
+msgstr "แฟล็กการดีบั๊กของ CDK ที่จะปิด"
 
 #: cdk/cdkwindow.c:2766
-msgid "GL support disabled via GDK_DEBUG"
-msgstr "การรองรับ GL ถูกปิดใช้งานผ่าน GDK_DEBUG"
+msgid "GL support disabled via CDK_DEBUG"
+msgstr "การรองรับ GL ถูกปิดใช้งานผ่าน CDK_DEBUG"
 
 #: cdk/cdkwindow.c:2777
 msgid "The current backend does not support OpenGL"
@@ -3864,8 +3864,8 @@ msgid "CTK+ Version"
 msgstr "รุ่น CTK+"
 
 #: ctk/inspector/general.ui:68
-msgid "GDK Backend"
-msgstr "แบกเอนด์ GDK"
+msgid "CDK Backend"
+msgstr "แบกเอนด์ CDK"
 
 #: ctk/inspector/general.ui:373
 msgid "Display"
@@ -4240,10 +4240,10 @@ msgstr "ค่าตั้งถูกกำหนดตายตัวด้ว
 #: ctk/inspector/visual.c:752
 msgid ""
 "Not settable at runtime.\n"
-"Use GDK_GL=always or GDK_GL=disable instead"
+"Use CDK_GL=always or CDK_GL=disable instead"
 msgstr ""
 "ไม่สามารถกำหนดค่าระหว่างทำงานได้\n"
-"กรุณาใช้ GDK_GL=always หรือ GDK_GL=disable แทน"
+"กรุณาใช้ CDK_GL=always หรือ CDK_GL=disable แทน"
 
 #: ctk/inspector/visual.c:766 ctk/inspector/visual.c:767
 #: ctk/inspector/visual.c:768
@@ -7107,10 +7107,10 @@ msgstr "พิมพ์ออกยังเครื่องพิมพ์ท
 #~ msgstr "เปิดแฟ้มรูปภาพ '%s' ไม่สำเร็จ: ไม่แน่ใจว่าเพราะอะไร แต่อาจเป็นเพราะแฟ้มเสียหาย"
 
 #~ msgid "Cdk debugging flags to set"
-#~ msgstr "แฟล็กการดีบั๊กของ GDK ที่จะเปิดใช้"
+#~ msgstr "แฟล็กการดีบั๊กของ CDK ที่จะเปิดใช้"
 
 #~ msgid "Cdk debugging flags to unset"
-#~ msgstr "แฟล็กการดีบั๊กของ GDK ที่จะปิด"
+#~ msgstr "แฟล็กการดีบั๊กของ CDK ที่จะปิด"
 
 #~ msgid "Image file '%s' contains no data"
 #~ msgstr "แฟ้มรูปภาพ '%s' ไม่มีข้อมูล"

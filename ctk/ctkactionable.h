@@ -51,27 +51,27 @@ struct _CtkActionableInterface
                                                  GVariant      *target_value);
 };
 
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 GType                   ctk_actionable_get_type                         (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 const gchar *           ctk_actionable_get_action_name                  (CtkActionable *actionable);
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 void                    ctk_actionable_set_action_name                  (CtkActionable *actionable,
                                                                          const gchar   *action_name);
 
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 GVariant *              ctk_actionable_get_action_target_value          (CtkActionable *actionable);
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 void                    ctk_actionable_set_action_target_value          (CtkActionable *actionable,
                                                                          GVariant      *target_value);
 
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 void                    ctk_actionable_set_action_target                (CtkActionable *actionable,
                                                                          const gchar   *format_string,
                                                                          ...);
 
-GDK_AVAILABLE_IN_3_4
+CDK_AVAILABLE_IN_3_4
 void                    ctk_actionable_set_detailed_action_name         (CtkActionable *actionable,
                                                                          const gchar   *detailed_action_name);
 

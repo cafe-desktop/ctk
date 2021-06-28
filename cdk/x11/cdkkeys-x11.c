@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2000 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -99,10 +99,10 @@ struct _CdkX11KeymapClass
   CdkKeymapClass parent_class;
 };
 
-#define KEYMAP_USE_XKB(keymap) GDK_X11_DISPLAY ((keymap)->display)->use_xkb
-#define KEYMAP_XDISPLAY(keymap) GDK_DISPLAY_XDISPLAY ((keymap)->display)
+#define KEYMAP_USE_XKB(keymap) CDK_X11_DISPLAY ((keymap)->display)->use_xkb
+#define KEYMAP_XDISPLAY(keymap) CDK_DISPLAY_XDISPLAY ((keymap)->display)
 
-G_DEFINE_TYPE (CdkX11Keymap, cdk_x11_keymap, GDK_TYPE_KEYMAP)
+G_DEFINE_TYPE (CdkX11Keymap, cdk_x11_keymap, CDK_TYPE_KEYMAP)
 
 static void
 cdk_x11_keymap_init (CdkX11Keymap *keymap)
@@ -117,7 +117,7 @@ cdk_x11_keymap_init (CdkX11Keymap *keymap)
   keymap->num_lock_mask = 0;
   keymap->scroll_lock_mask = 0;
   keymap->group_switch_mask = 0;
-  keymap->lock_keysym = GDK_KEY_Caps_Lock;
+  keymap->lock_keysym = CDK_KEY_Caps_Lock;
   keymap->have_direction = FALSE;
   keymap->have_lock_state = FALSE;
   keymap->current_serial = 0;
@@ -133,7 +133,7 @@ cdk_x11_keymap_init (CdkX11Keymap *keymap)
 static void
 cdk_x11_keymap_finalize (GObject *object)
 {
-  CdkX11Keymap *keymap_x11 = GDK_X11_KEYMAP (object);
+  CdkX11Keymap *keymap_x11 = CDK_X11_KEYMAP (object);
 
   if (keymap_x11->keymap)
     XFree (keymap_x11->keymap);
@@ -153,7 +153,7 @@ static inline void
 update_keyrange (CdkX11Keymap *keymap_x11)
 {
   if (keymap_x11->max_keycode == 0)
-    XDisplayKeycodes (KEYMAP_XDISPLAY (GDK_KEYMAP (keymap_x11)),
+    XDisplayKeycodes (KEYMAP_XDISPLAY (CDK_KEYMAP (keymap_x11)),
                       &keymap_x11->min_keycode, &keymap_x11->max_keycode);
 }
 
@@ -168,9 +168,9 @@ update_modmap (Display      *display,
     Atom atom;
     CdkModifierType mask;
   } vmods[] = {
-    { "Meta", 0, GDK_META_MASK },
-    { "Super", 0, GDK_SUPER_MASK },
-    { "Hyper", 0, GDK_HYPER_MASK },
+    { "Meta", 0, CDK_META_MASK },
+    { "Super", 0, CDK_SUPER_MASK },
+    { "Hyper", 0, CDK_HYPER_MASK },
     { NULL, 0, 0 }
   };
 
@@ -202,7 +202,7 @@ update_modmap (Display      *display,
 static XkbDescPtr
 get_xkb (CdkX11Keymap *keymap_x11)
 {
-  CdkX11Display *display_x11 = GDK_X11_DISPLAY (GDK_KEYMAP (keymap_x11)->display);
+  CdkX11Display *display_x11 = CDK_X11_DISPLAY (CDK_KEYMAP (keymap_x11)->display);
   Display *xdisplay = display_x11->xdisplay;
 
   update_keyrange (keymap_x11);
@@ -232,10 +232,10 @@ get_xkb (CdkX11Keymap *keymap_x11)
   keymap_x11->current_serial = display_x11->keymap_serial;
 
   if (keymap_x11->num_lock_mask == 0)
-    keymap_x11->num_lock_mask = XkbKeysymToModifiers (KEYMAP_XDISPLAY (GDK_KEYMAP (keymap_x11)), GDK_KEY_Num_Lock);
+    keymap_x11->num_lock_mask = XkbKeysymToModifiers (KEYMAP_XDISPLAY (CDK_KEYMAP (keymap_x11)), CDK_KEY_Num_Lock);
 
   if (keymap_x11->scroll_lock_mask == 0)
-    keymap_x11->scroll_lock_mask = XkbKeysymToModifiers (KEYMAP_XDISPLAY (GDK_KEYMAP (keymap_x11)), GDK_KEY_Scroll_Lock);
+    keymap_x11->scroll_lock_mask = XkbKeysymToModifiers (KEYMAP_XDISPLAY (CDK_KEYMAP (keymap_x11)), CDK_KEY_Scroll_Lock);
 
 
   return keymap_x11->xkb_desc;
@@ -290,11 +290,11 @@ set_symbol (KeySym       *syms,
 static void
 update_keymaps (CdkX11Keymap *keymap_x11)
 {
-  CdkX11Display *display_x11 = GDK_X11_DISPLAY (GDK_KEYMAP (keymap_x11)->display);
+  CdkX11Display *display_x11 = CDK_X11_DISPLAY (CDK_KEYMAP (keymap_x11)->display);
   Display *xdisplay = display_x11->xdisplay;
 
 #ifdef HAVE_XKB
-  g_assert (!KEYMAP_USE_XKB (GDK_KEYMAP (keymap_x11)));
+  g_assert (!KEYMAP_USE_XKB (CDK_KEYMAP (keymap_x11)));
 #endif
 
   if (keymap_x11->keymap == NULL ||
@@ -319,9 +319,9 @@ update_keymaps (CdkX11Keymap *keymap_x11)
                                                 &keymap_x11->keysyms_per_keycode);
 
 
-      /* GDK_KEY_ISO_Left_Tab, as usually configured through XKB, really messes
+      /* CDK_KEY_ISO_Left_Tab, as usually configured through XKB, really messes
        * up the whole idea of "consumed modifiers" because shift is consumed.
-       * However, <shift>Tab is not usually GDK_KEY_ISO_Left_Tab without XKB,
+       * However, <shift>Tab is not usually CDK_KEY_ISO_Left_Tab without XKB,
        * we we fudge the map here.
        */
       keycode = keymap_x11->min_keycode;
@@ -331,8 +331,8 @@ update_keymaps (CdkX11Keymap *keymap_x11)
           /* Check both groups */
           for (i = 0 ; i < 2 ; i++)
             {
-              if (get_symbol (syms, keymap_x11, i, 0) == GDK_KEY_Tab)
-                set_symbol (syms, keymap_x11, i, 1, GDK_KEY_ISO_Left_Tab);
+              if (get_symbol (syms, keymap_x11, i, 0) == CDK_KEY_Tab)
+                set_symbol (syms, keymap_x11, i, 1, CDK_KEY_ISO_Left_Tab);
             }
 
           /*
@@ -357,7 +357,7 @@ update_keymaps (CdkX11Keymap *keymap_x11)
 
       keymap_x11->mod_keymap = XGetModifierMapping (xdisplay);
 
-      keymap_x11->lock_keysym = GDK_KEY_VoidSymbol;
+      keymap_x11->lock_keysym = CDK_KEY_VoidSymbol;
       keymap_x11->group_switch_mask = 0;
       keymap_x11->num_lock_mask = 0;
       keymap_x11->scroll_lock_mask = 0;
@@ -387,27 +387,27 @@ update_keymaps (CdkX11Keymap *keymap_x11)
           mask = 0;
           for (j = 0; j < keymap_x11->keysyms_per_keycode; j++)
             {
-              if (syms[j] == GDK_KEY_Meta_L ||
-                  syms[j] == GDK_KEY_Meta_R)
-                mask |= GDK_META_MASK;
-              else if (syms[j] == GDK_KEY_Hyper_L ||
-                       syms[j] == GDK_KEY_Hyper_R)
-                mask |= GDK_HYPER_MASK;
-              else if (syms[j] == GDK_KEY_Super_L ||
-                       syms[j] == GDK_KEY_Super_R)
-                mask |= GDK_SUPER_MASK;
+              if (syms[j] == CDK_KEY_Meta_L ||
+                  syms[j] == CDK_KEY_Meta_R)
+                mask |= CDK_META_MASK;
+              else if (syms[j] == CDK_KEY_Hyper_L ||
+                       syms[j] == CDK_KEY_Hyper_R)
+                mask |= CDK_HYPER_MASK;
+              else if (syms[j] == CDK_KEY_Super_L ||
+                       syms[j] == CDK_KEY_Super_R)
+                mask |= CDK_SUPER_MASK;
             }
 
           keymap_x11->modmap[i / keymap_x11->mod_keymap->max_keypermod] |= mask;
 
-          /* The fourth modifier, GDK_MOD1_MASK is 1 << 3.
+          /* The fourth modifier, CDK_MOD1_MASK is 1 << 3.
            * Each group of max_keypermod entries refers to the same modifier.
            */
           mask = 1 << (i / keymap_x11->mod_keymap->max_keypermod);
 
           switch (mask)
             {
-            case GDK_LOCK_MASK:
+            case CDK_LOCK_MASK:
               /* Get the Lock keysym.  If any keysym bound to the Lock modifier
                * is Caps_Lock, we will interpret the modifier as Caps_Lock;
                * otherwise, if any is bound to Shift_Lock, we will interpret
@@ -416,17 +416,17 @@ update_keymaps (CdkX11Keymap *keymap_x11)
                */
               for (j = 0; j < keymap_x11->keysyms_per_keycode; j++)
                 {
-                  if (syms[j] == GDK_KEY_Caps_Lock)
-                    keymap_x11->lock_keysym = GDK_KEY_Caps_Lock;
-                  else if (syms[j] == GDK_KEY_Shift_Lock &&
-                           keymap_x11->lock_keysym == GDK_KEY_VoidSymbol)
-                    keymap_x11->lock_keysym = GDK_KEY_Shift_Lock;
+                  if (syms[j] == CDK_KEY_Caps_Lock)
+                    keymap_x11->lock_keysym = CDK_KEY_Caps_Lock;
+                  else if (syms[j] == CDK_KEY_Shift_Lock &&
+                           keymap_x11->lock_keysym == CDK_KEY_VoidSymbol)
+                    keymap_x11->lock_keysym = CDK_KEY_Shift_Lock;
                 }
               break;
 
-            case GDK_CONTROL_MASK:
-            case GDK_SHIFT_MASK:
-            case GDK_MOD1_MASK:
+            case CDK_CONTROL_MASK:
+            case CDK_SHIFT_MASK:
+            case CDK_MOD1_MASK:
               /* Some keyboard maps are known to map Mode_Switch as an
                * extra Mod1 key. In circumstances like that, it won't be
                * used to switch groups.
@@ -437,17 +437,17 @@ update_keymaps (CdkX11Keymap *keymap_x11)
               /* Find the Mode_Switch, Num_Lock and Scroll_Lock modifiers. */
               for (j = 0; j < keymap_x11->keysyms_per_keycode; j++)
                 {
-                  if (syms[j] == GDK_KEY_Mode_switch)
+                  if (syms[j] == CDK_KEY_Mode_switch)
                     {
                       /* This modifier swaps groups */
                       keymap_x11->group_switch_mask |= mask;
                     }
-                  else if (syms[j] == GDK_KEY_Num_Lock)
+                  else if (syms[j] == CDK_KEY_Num_Lock)
                     {
                       /* This modifier is used for Num_Lock */
                       keymap_x11->num_lock_mask |= mask;
                     }
-                  else if (syms[j] == GDK_KEY_Scroll_Lock)
+                  else if (syms[j] == CDK_KEY_Scroll_Lock)
                     {
                       /* This modifier is used for Scroll_Lock */
                       keymap_x11->scroll_lock_mask |= mask;
@@ -620,7 +620,7 @@ update_lock_state (CdkX11Keymap *keymap_x11,
   modifier_state = keymap_x11->modifier_state;
 
   keymap_x11->have_lock_state = TRUE;
-  keymap_x11->caps_lock_state = (locked_mods & GDK_LOCK_MASK) != 0;
+  keymap_x11->caps_lock_state = (locked_mods & CDK_LOCK_MASK) != 0;
   keymap_x11->num_lock_state = (locked_mods & keymap_x11->num_lock_mask) != 0;
   keymap_x11->scroll_lock_state = (locked_mods & keymap_x11->scroll_lock_mask) != 0;
   /* FIXME: sanitize this */
@@ -640,12 +640,12 @@ void
 _cdk_x11_keymap_state_changed (CdkDisplay *display,
                                XEvent     *xevent)
 {
-  CdkX11Display *display_x11 = GDK_X11_DISPLAY (display);
+  CdkX11Display *display_x11 = CDK_X11_DISPLAY (display);
   XkbEvent *xkb_event = (XkbEvent *)xevent;
 
   if (display_x11->keymap)
     {
-      CdkX11Keymap *keymap_x11 = GDK_X11_KEYMAP (display_x11->keymap);
+      CdkX11Keymap *keymap_x11 = CDK_X11_KEYMAP (display_x11->keymap);
 
       if (update_direction (keymap_x11, XkbStateGroup (&xkb_event->state)))
         g_signal_emit_by_name (keymap_x11, "direction-changed");
@@ -665,14 +665,14 @@ ensure_lock_state (CdkKeymap *keymap)
 #ifdef HAVE_XKB
   if (KEYMAP_USE_XKB (keymap))
     {
-      CdkX11Keymap *keymap_x11 = GDK_X11_KEYMAP (keymap);
+      CdkX11Keymap *keymap_x11 = CDK_X11_KEYMAP (keymap);
 
       if (!keymap_x11->have_lock_state)
         {
           CdkDisplay *display = keymap->display;
           XkbStateRec state_rec;
 
-          XkbGetState (GDK_DISPLAY_XDISPLAY (display), XkbUseCoreKbd, &state_rec);
+          XkbGetState (CDK_DISPLAY_XDISPLAY (display), XkbUseCoreKbd, &state_rec);
           update_lock_state (keymap_x11, state_rec.locked_mods, state_rec.mods);
         }
     }
@@ -682,7 +682,7 @@ ensure_lock_state (CdkKeymap *keymap)
 void
 _cdk_x11_keymap_keys_changed (CdkDisplay *display)
 {
-  CdkX11Display *display_x11 = GDK_X11_DISPLAY (display);
+  CdkX11Display *display_x11 = CDK_X11_DISPLAY (display);
 
   ++display_x11->keymap_serial;
 
@@ -696,14 +696,14 @@ cdk_x11_keymap_get_direction (CdkKeymap *keymap)
 #ifdef HAVE_XKB
   if (KEYMAP_USE_XKB (keymap))
     {
-      CdkX11Keymap *keymap_x11 = GDK_X11_KEYMAP (keymap);
+      CdkX11Keymap *keymap_x11 = CDK_X11_KEYMAP (keymap);
 
       if (!keymap_x11->have_direction)
         {
           CdkDisplay *display = keymap->display;
           XkbStateRec state_rec;
 
-          XkbGetState (GDK_DISPLAY_XDISPLAY (display), XkbUseCoreKbd,
+          XkbGetState (CDK_DISPLAY_XDISPLAY (display), XkbUseCoreKbd,
                        &state_rec);
           update_direction (keymap_x11, XkbStateGroup (&state_rec));
         }
@@ -721,7 +721,7 @@ cdk_x11_keymap_have_bidi_layouts (CdkKeymap *keymap)
 #ifdef HAVE_XKB
   if (KEYMAP_USE_XKB (keymap))
     {
-      CdkX11Keymap *keymap_x11 = GDK_X11_KEYMAP (keymap);
+      CdkX11Keymap *keymap_x11 = CDK_X11_KEYMAP (keymap);
       XkbDescPtr xkb = get_xkb (keymap_x11);
       int num_groups = get_num_groups (keymap, xkb);
 
@@ -747,7 +747,7 @@ cdk_x11_keymap_have_bidi_layouts (CdkKeymap *keymap)
 static gboolean
 cdk_x11_keymap_get_caps_lock_state (CdkKeymap *keymap)
 {
-  CdkX11Keymap *keymap_x11 = GDK_X11_KEYMAP (keymap);
+  CdkX11Keymap *keymap_x11 = CDK_X11_KEYMAP (keymap);
 
   ensure_lock_state (keymap);
 
@@ -757,7 +757,7 @@ cdk_x11_keymap_get_caps_lock_state (CdkKeymap *keymap)
 static gboolean
 cdk_x11_keymap_get_num_lock_state (CdkKeymap *keymap)
 {
-  CdkX11Keymap *keymap_x11 = GDK_X11_KEYMAP (keymap);
+  CdkX11Keymap *keymap_x11 = CDK_X11_KEYMAP (keymap);
 
   ensure_lock_state (keymap);
 
@@ -767,7 +767,7 @@ cdk_x11_keymap_get_num_lock_state (CdkKeymap *keymap)
 static gboolean
 cdk_x11_keymap_get_scroll_lock_state (CdkKeymap *keymap)
 {
-  CdkX11Keymap *keymap_x11 = GDK_X11_KEYMAP (keymap);
+  CdkX11Keymap *keymap_x11 = CDK_X11_KEYMAP (keymap);
 
   ensure_lock_state (keymap);
 
@@ -777,7 +777,7 @@ cdk_x11_keymap_get_scroll_lock_state (CdkKeymap *keymap)
 static guint
 cdk_x11_keymap_get_modifier_state (CdkKeymap *keymap)
 {
-  CdkX11Keymap *keymap_x11 = GDK_X11_KEYMAP (keymap);
+  CdkX11Keymap *keymap_x11 = CDK_X11_KEYMAP (keymap);
 
   ensure_lock_state (keymap);
 
@@ -790,7 +790,7 @@ cdk_x11_keymap_get_entries_for_keyval (CdkKeymap     *keymap,
                                        CdkKeymapKey **keys,
                                        gint          *n_keys)
 {
-  CdkX11Keymap *keymap_x11 = GDK_X11_KEYMAP (keymap);
+  CdkX11Keymap *keymap_x11 = CDK_X11_KEYMAP (keymap);
   GArray *retval;
 
   retval = g_array_new (FALSE, FALSE, sizeof (CdkKeymapKey));
@@ -912,7 +912,7 @@ cdk_x11_keymap_get_entries_for_keycode (CdkKeymap     *keymap,
                                         guint        **keyvals,
                                         gint          *n_entries)
 {
-  CdkX11Keymap *keymap_x11 = GDK_X11_KEYMAP (keymap);
+  CdkX11Keymap *keymap_x11 = CDK_X11_KEYMAP (keymap);
   GArray *key_array;
   GArray *keyval_array;
 
@@ -1044,7 +1044,7 @@ static guint
 cdk_x11_keymap_lookup_key (CdkKeymap          *keymap,
                            const CdkKeymapKey *key)
 {
-  CdkX11Keymap *keymap_x11 = GDK_X11_KEYMAP (keymap);
+  CdkX11Keymap *keymap_x11 = CDK_X11_KEYMAP (keymap);
 
   g_return_val_if_fail (key->group < 4, 0);
 
@@ -1125,7 +1125,7 @@ MyEnhancedXkbTranslateKeyCode(register XkbDescPtr     xkb,
     if (type->map) { /* find the column (shift level) within the group */
         register int i;
         register XkbKTMapEntryPtr entry;
-        /* ---- Begin section modified for GDK  ---- */
+        /* ---- Begin section modified for CDK  ---- */
         int found = 0;
 
         for (i=0,entry=type->map;i<type->map_count;i++,entry++) {
@@ -1167,17 +1167,17 @@ MyEnhancedXkbTranslateKeyCode(register XkbDescPtr     xkb,
                 found = 1;
             }
         }
-        /* ---- End section modified for GDK ---- */
+        /* ---- End section modified for CDK ---- */
     }
 
     if (keysym_rtrn!=NULL)
         *keysym_rtrn= syms[found_col];
     if (mods_rtrn) {
-        /* ---- Begin section modified for GDK  ---- */
+        /* ---- Begin section modified for CDK  ---- */
         *mods_rtrn &= ~preserve;
-        /* ---- End section modified for GDK ---- */
+        /* ---- End section modified for CDK ---- */
 
-        /* ---- Begin stuff GDK comments out of the original Xlib version ---- */
+        /* ---- Begin stuff CDK comments out of the original Xlib version ---- */
         /* This is commented out because xkb_info is a private struct */
 
 #if 0
@@ -1193,15 +1193,15 @@ MyEnhancedXkbTranslateKeyCode(register XkbDescPtr     xkb,
         }
 #endif
 
-        /* ---- End stuff GDK comments out of the original Xlib version ---- */
+        /* ---- End stuff CDK comments out of the original Xlib version ---- */
     }
 
-    /* ---- Begin stuff GDK adds to the original Xlib version ---- */
+    /* ---- Begin stuff CDK adds to the original Xlib version ---- */
 
     if (group_rtrn)
       *group_rtrn = effectiveGroup;
 
-    /* ---- End stuff GDK adds to the original Xlib version ---- */
+    /* ---- End stuff CDK adds to the original Xlib version ---- */
 
     return (syms[found_col] != NoSymbol);
 }
@@ -1227,9 +1227,9 @@ translate_keysym (CdkX11Keymap   *keymap_x11,
   gint shift_level;
   guint tmp_keyval;
 
-  shift_modifiers = GDK_SHIFT_MASK;
-  if (keymap_x11->lock_keysym == GDK_KEY_Shift_Lock)
-    shift_modifiers |= GDK_LOCK_MASK;
+  shift_modifiers = CDK_SHIFT_MASK;
+  if (keymap_x11->lock_keysym == CDK_KEY_Shift_Lock)
+    shift_modifiers |= CDK_LOCK_MASK;
 
   /* Fall back to the first group if the passed in group is empty
    */
@@ -1259,7 +1259,7 @@ translate_keysym (CdkX11Keymap   *keymap_x11,
 
       tmp_keyval = SYM (keymap_x11, group, shift_level);
 
-      if (keymap_x11->lock_keysym == GDK_KEY_Caps_Lock && (state & GDK_LOCK_MASK) != 0)
+      if (keymap_x11->lock_keysym == CDK_KEY_Caps_Lock && (state & CDK_LOCK_MASK) != 0)
         {
           guint upper = cdk_keyval_to_upper (tmp_keyval);
           if (upper != tmp_keyval)
@@ -1288,7 +1288,7 @@ cdk_x11_keymap_translate_keyboard_state (CdkKeymap       *keymap,
                                          gint            *level,
                                          CdkModifierType *consumed_modifiers)
 {
-  CdkX11Keymap *keymap_x11 = GDK_X11_KEYMAP (keymap);
+  CdkX11Keymap *keymap_x11 = CDK_X11_KEYMAP (keymap);
   KeySym tmp_keyval = NoSymbol;
   guint tmp_modifiers;
 
@@ -1344,7 +1344,7 @@ cdk_x11_keymap_translate_keyboard_state (CdkKeymap       *keymap,
       /* We see what modifiers matter by trying the translation with
        * and without each possible modifier
        */
-      for (bit = GDK_SHIFT_MASK; bit < GDK_BUTTON1_MASK; bit <<= 1)
+      for (bit = CDK_SHIFT_MASK; bit < CDK_BUTTON1_MASK; bit <<= 1)
         {
           /* Handling of the group here is a bit funky; a traditional
            * X keyboard map can have more than two groups, but no way
@@ -1398,10 +1398,10 @@ cdk_x11_keymap_get_group_for_state (CdkKeymap *keymap,
   CdkDisplay *display;
   CdkX11Display *display_x11;
 
-  g_return_val_if_fail (GDK_IS_X11_KEYMAP (keymap), 0);
+  g_return_val_if_fail (CDK_IS_X11_KEYMAP (keymap), 0);
 
   display = keymap->display;
-  display_x11 = GDK_X11_DISPLAY (display);
+  display_x11 = CDK_X11_DISPLAY (display);
 
 #ifdef HAVE_XKB
   if (display_x11->use_xkb)
@@ -1411,7 +1411,7 @@ cdk_x11_keymap_get_group_for_state (CdkKeymap *keymap,
   else
 #endif
     {
-      CdkX11Keymap *keymap_impl = GDK_X11_KEYMAP (cdk_keymap_get_for_display (display));
+      CdkX11Keymap *keymap_impl = CDK_X11_KEYMAP (cdk_keymap_get_for_display (display));
       update_keymaps (keymap_impl);
       return (state & keymap_impl->group_switch_mask) ? 1 : 0;
     }
@@ -1421,7 +1421,7 @@ void
 _cdk_x11_keymap_add_virt_mods (CdkKeymap       *keymap,
                                CdkModifierType *modifiers)
 {
-  CdkX11Keymap *keymap_x11 = GDK_X11_KEYMAP (keymap);
+  CdkX11Keymap *keymap_x11 = CDK_X11_KEYMAP (keymap);
   int i;
 
   /* See comment in add_virtual_modifiers() */
@@ -1429,12 +1429,12 @@ _cdk_x11_keymap_add_virt_mods (CdkKeymap       *keymap,
     {
       if ((1 << i) & *modifiers)
         {
-          if (keymap_x11->modmap[i] & GDK_SUPER_MASK)
-            *modifiers |= GDK_SUPER_MASK;
-          else if (keymap_x11->modmap[i] & GDK_HYPER_MASK)
-            *modifiers |= GDK_HYPER_MASK;
-          else if (keymap_x11->modmap[i] & GDK_META_MASK)
-            *modifiers |= GDK_META_MASK;
+          if (keymap_x11->modmap[i] & CDK_SUPER_MASK)
+            *modifiers |= CDK_SUPER_MASK;
+          else if (keymap_x11->modmap[i] & CDK_HYPER_MASK)
+            *modifiers |= CDK_HYPER_MASK;
+          else if (keymap_x11->modmap[i] & CDK_META_MASK)
+            *modifiers |= CDK_META_MASK;
         }
     }
 }
@@ -1443,7 +1443,7 @@ static void
 cdk_x11_keymap_add_virtual_modifiers (CdkKeymap       *keymap,
                                       CdkModifierType *state)
 {
-  CdkX11Keymap *keymap_x11 = GDK_X11_KEYMAP (keymap);
+  CdkX11Keymap *keymap_x11 = CDK_X11_KEYMAP (keymap);
   int i;
 
   /*  This loop used to start at 3, which included MOD1 in the
@@ -1456,12 +1456,12 @@ cdk_x11_keymap_add_virtual_modifiers (CdkKeymap       *keymap,
     {
       if ((1 << i) & *state)
         {
-          if (keymap_x11->modmap[i] & GDK_SUPER_MASK)
-            *state |= GDK_SUPER_MASK;
-          if (keymap_x11->modmap[i] & GDK_HYPER_MASK)
-            *state |= GDK_HYPER_MASK;
-          if (keymap_x11->modmap[i] & GDK_META_MASK)
-            *state |= GDK_META_MASK;
+          if (keymap_x11->modmap[i] & CDK_SUPER_MASK)
+            *state |= CDK_SUPER_MASK;
+          if (keymap_x11->modmap[i] & CDK_HYPER_MASK)
+            *state |= CDK_HYPER_MASK;
+          if (keymap_x11->modmap[i] & CDK_META_MASK)
+            *state |= CDK_META_MASK;
         }
     }
 }
@@ -1486,10 +1486,10 @@ gboolean
 cdk_x11_keymap_key_is_modifier (CdkKeymap *keymap,
                                 guint      keycode)
 {
-  CdkX11Keymap *keymap_x11 = GDK_X11_KEYMAP (keymap);
+  CdkX11Keymap *keymap_x11 = CDK_X11_KEYMAP (keymap);
   gint i;
 
-  g_return_val_if_fail (GDK_IS_X11_KEYMAP (keymap), FALSE);
+  g_return_val_if_fail (CDK_IS_X11_KEYMAP (keymap), FALSE);
 
   update_keyrange (keymap_x11);
   if (keycode < keymap_x11->min_keycode ||
@@ -1521,8 +1521,8 @@ static gboolean
 cdk_x11_keymap_map_virtual_modifiers (CdkKeymap       *keymap,
                                       CdkModifierType *state)
 {
-  CdkX11Keymap *keymap_x11 = GDK_X11_KEYMAP (keymap);
-  const guint vmods[] = { GDK_SUPER_MASK, GDK_HYPER_MASK, GDK_META_MASK };
+  CdkX11Keymap *keymap_x11 = CDK_X11_KEYMAP (keymap);
+  const guint vmods[] = { CDK_SUPER_MASK, CDK_HYPER_MASK, CDK_META_MASK };
   int i, j;
   gboolean retval;
 
@@ -1558,15 +1558,15 @@ static CdkModifierType
 cdk_x11_keymap_get_modifier_mask (CdkKeymap         *keymap,
                                   CdkModifierIntent  intent)
 {
-  CdkX11Keymap *keymap_x11 = GDK_X11_KEYMAP (keymap);
+  CdkX11Keymap *keymap_x11 = CDK_X11_KEYMAP (keymap);
 
   switch (intent)
     {
-    case GDK_MODIFIER_INTENT_SHIFT_GROUP:
+    case CDK_MODIFIER_INTENT_SHIFT_GROUP:
       return keymap_x11->group_switch_mask;
 
     default:
-      return GDK_KEYMAP_CLASS (cdk_x11_keymap_parent_class)->get_modifier_mask (keymap,
+      return CDK_KEYMAP_CLASS (cdk_x11_keymap_parent_class)->get_modifier_mask (keymap,
                                                                                 intent);
     }
 }
@@ -1575,7 +1575,7 @@ static void
 cdk_x11_keymap_class_init (CdkX11KeymapClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  CdkKeymapClass *keymap_class = GDK_KEYMAP_CLASS (klass);
+  CdkKeymapClass *keymap_class = CDK_KEYMAP_CLASS (klass);
 
   object_class->finalize = cdk_x11_keymap_finalize;
 

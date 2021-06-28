@@ -40,22 +40,22 @@ G_BEGIN_DECLS
 typedef struct _CtkEventControllerKey CtkEventControllerKey;
 typedef struct _CtkEventControllerKeyClass CtkEventControllerKeyClass;
 
-GDK_AVAILABLE_IN_3_24
+CDK_AVAILABLE_IN_3_24
 GType               ctk_event_controller_key_get_type  (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_3_24
+CDK_AVAILABLE_IN_3_24
 CtkEventController *ctk_event_controller_key_new (CtkWidget *widget);
 
-GDK_AVAILABLE_IN_3_24
+CDK_AVAILABLE_IN_3_24
 void                ctk_event_controller_key_set_im_context (CtkEventControllerKey *controller,
                                                              CtkIMContext          *im_context);
-GDK_AVAILABLE_IN_3_24
+CDK_AVAILABLE_IN_3_24
 CtkIMContext *      ctk_event_controller_key_get_im_context (CtkEventControllerKey *controller);
 
-GDK_AVAILABLE_IN_3_24
+CDK_AVAILABLE_IN_3_24
 gboolean            ctk_event_controller_key_forward        (CtkEventControllerKey *controller,
                                                              CtkWidget             *widget);
-GDK_AVAILABLE_IN_3_24
+CDK_AVAILABLE_IN_3_24
 guint               ctk_event_controller_key_get_group      (CtkEventControllerKey *controller);
 
 G_END_DECLS

@@ -71,8 +71,8 @@ msgstr "PRIKAZ"
 
 #. Description of --cdk-debug=FLAGS in --help output
 #: cdk/cdk.c:243
-msgid "GDK debugging flags to set"
-msgstr "GDK opcije za uklanjanje grešaka za postavljanje"
+msgid "CDK debugging flags to set"
+msgstr "CDK opcije za uklanjanje grešaka za postavljanje"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
@@ -84,12 +84,12 @@ msgstr "OPCIJE"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: cdk/cdk.c:246
-msgid "GDK debugging flags to unset"
-msgstr "GDK opcije za otklanjanje grešaka za uklanjanje"
+msgid "CDK debugging flags to unset"
+msgstr "CDK opcije za otklanjanje grešaka za uklanjanje"
 
 #: cdk/cdkwindow.c:2829
-msgid "GL support disabled via GDK_DEBUG"
-msgstr "GL podrška je onemogućena sa „GDK_DEBUG“"
+msgid "GL support disabled via CDK_DEBUG"
+msgstr "GL podrška je onemogućena sa „CDK_DEBUG“"
 
 #: cdk/cdkwindow.c:2840
 msgid "The current backend does not support OpenGL"
@@ -3976,8 +3976,8 @@ msgid "CTK+ Version"
 msgstr "Ctk+ izdanje"
 
 #: ctk/inspector/general.ui:68
-msgid "GDK Backend"
-msgstr "GDK pozadinac"
+msgid "CDK Backend"
+msgstr "CDK pozadinac"
 
 #: ctk/inspector/general.ui:373
 msgid "Display"
@@ -4360,10 +4360,10 @@ msgstr "Podešavanje je striktno kodirano sa „CTK_TEST_TOUCHSCREEN“"
 #: ctk/inspector/visual.c:791
 msgid ""
 "Not settable at runtime.\n"
-"Use GDK_GL=always or GDK_GL=disable instead"
+"Use CDK_GL=always or CDK_GL=disable instead"
 msgstr ""
 "Ne može se izabrati prilikom pokretanja.\n"
-"Koristite „GDK_GL=always“ (uvek) ili „GDK_GL=disable“ (onemogući)"
+"Koristite „CDK_GL=always“ (uvek) ili „CDK_GL=disable“ (onemogući)"
 
 #: ctk/inspector/visual.c:805 ctk/inspector/visual.c:806
 #: ctk/inspector/visual.c:807
@@ -6915,11 +6915,11 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgstr "Prikaz za upravnika uređaja"
 
 # U zavisnosti od smisla, može biti i Ekran, i slično
-#~ msgid "The default display for GDK"
-#~ msgstr "Podrazumevani prikaz za GDK"
+#~ msgid "The default display for CDK"
+#~ msgstr "Podrazumevani prikaz za CDK"
 
-#~ msgid "The GDK window bound to the GL context"
-#~ msgstr "GDK prozor koji je vezan za GL kontekst"
+#~ msgid "The CDK window bound to the GL context"
+#~ msgstr "CDK prozor koji je vezan za GL kontekst"
 
 #~ msgid "Shared context"
 #~ msgstr "Deljeni kontekst"

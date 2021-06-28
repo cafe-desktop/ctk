@@ -72,7 +72,7 @@ msgstr "SGRÎN"
 #. Description of --cdk-debug=FLAGS in --help output
 #: cdk/cdk.c:164
 #, fuzzy
-msgid "GDK debugging flags to set"
+msgid "CDK debugging flags to set"
 msgstr "Opsiynau datnamu CTK+ i'w gosod"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
@@ -86,7 +86,7 @@ msgstr "OPSIYNAU"
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: cdk/cdk.c:167
 #, fuzzy
-msgid "GDK debugging flags to unset"
+msgid "CDK debugging flags to unset"
 msgstr "Opsiynau datnamu CTK+ i'w dadosod"
 
 #: cdk/keyname-table.h:3940
@@ -6128,8 +6128,8 @@ msgstr ""
 #~ msgid "Default Display"
 #~ msgstr "Dangosydd Rhagosodedig"
 
-#~ msgid "The default display for GDK"
-#~ msgstr "SgrÃ®n rhagosodedig GDK"
+#~ msgid "The default display for CDK"
+#~ msgstr "SgrÃ®n rhagosodedig CDK"
 
 #~ msgid "Accelerator Closure"
 #~ msgstr "Amgaead Cyflymydd"

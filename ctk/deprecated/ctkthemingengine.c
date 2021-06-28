@@ -196,7 +196,7 @@ struct CtkThemingModuleClass
 #define CTK_THEMING_MODULE(o)    (G_TYPE_CHECK_INSTANCE_CAST ((o), CTK_TYPE_THEMING_MODULE, CtkThemingModule))
 #define CTK_IS_THEMING_MODULE(o) (G_TYPE_CHECK_INSTANCE_TYPE ((o), CTK_TYPE_THEMING_MODULE))
 
-_GDK_EXTERN
+_CDK_EXTERN
 GType ctk_theming_module_get_type (void);
 
 G_DEFINE_TYPE (CtkThemingModule, ctk_theming_module, G_TYPE_TYPE_MODULE);

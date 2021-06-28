@@ -33,7 +33,7 @@ G_BEGIN_DECLS
 #define CTK_TYPE_COLOR_PICKER_SHELL ctk_color_picker_shell_get_type ()
 G_DECLARE_FINAL_TYPE (CtkColorPickerShell, ctk_color_picker_shell, CTK, COLOR_PICKER_SHELL, GObject)
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkColorPicker * ctk_color_picker_shell_new (void);
 
 G_END_DECLS

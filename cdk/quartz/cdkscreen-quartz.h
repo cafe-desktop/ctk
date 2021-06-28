@@ -16,8 +16,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_QUARTZ_SCREEN__
-#define __GDK_QUARTZ_SCREEN__
+#ifndef __CDK_QUARTZ_SCREEN__
+#define __CDK_QUARTZ_SCREEN__
 
 #include <cdkscreenprivate.h>
 
@@ -50,4 +50,4 @@ struct _CdkQuartzScreenClass
 
 G_END_DECLS
 
-#endif /* __GDK_QUARTZ_SCREEN__ */
+#endif /* __CDK_QUARTZ_SCREEN__ */

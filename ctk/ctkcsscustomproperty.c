@@ -104,7 +104,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     g_value_set_object (&value, ctk_theming_engine_load (NULL));
   else if (pspec->value_type == PANGO_TYPE_FONT_DESCRIPTION)
     g_value_take_boxed (&value, pango_font_description_from_string ("Sans 10"));
-  else if (pspec->value_type == GDK_TYPE_RGBA)
+  else if (pspec->value_type == CDK_TYPE_RGBA)
     {
       CdkRGBA color;
       cdk_rgba_parse (&color, "pink");

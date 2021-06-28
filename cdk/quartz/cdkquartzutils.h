@@ -17,10 +17,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_QUARTZ_UTILS_H__
-#define __GDK_QUARTZ_UTILS_H__
+#ifndef __CDK_QUARTZ_UTILS_H__
+#define __CDK_QUARTZ_UTILS_H__
 
-#if !defined (__GDKQUARTZ_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined (__CDKQUARTZ_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdkquartz.h> can be included directly."
 #endif
 
@@ -28,9 +28,9 @@
 
 G_BEGIN_DECLS
 
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 gunichar  cdk_quartz_get_key_equivalent                         (guint           key);
 
 G_END_DECLS
 
-#endif /* __GDK_QUARTZ_UTILS_H__ */
+#endif /* __CDK_QUARTZ_UTILS_H__ */

@@ -19,16 +19,16 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_MONITOR_PRIVATE_H__
-#define __GDK_MONITOR_PRIVATE_H__
+#ifndef __CDK_MONITOR_PRIVATE_H__
+#define __CDK_MONITOR_PRIVATE_H__
 
 #include "cdkmonitor.h"
 
 G_BEGIN_DECLS
 
-#define GDK_MONITOR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_MONITOR, CdkMonitorClass))
-#define GDK_IS_MONITOR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_MONITOR))
-#define GDK_MONITOR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_MONITOR, CdkMonitorClass))
+#define CDK_MONITOR_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CDK_TYPE_MONITOR, CdkMonitorClass))
+#define CDK_IS_MONITOR_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CDK_TYPE_MONITOR))
+#define CDK_MONITOR_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CDK_TYPE_MONITOR, CdkMonitorClass))
 
 struct _CdkMonitor {
   GObject parent;
@@ -80,4 +80,4 @@ void            cdk_monitor_invalidate          (CdkMonitor *monitor);
 
 G_END_DECLS
 
-#endif  /* __GDK_MONITOR_PRIVATE_H__ */
+#endif  /* __CDK_MONITOR_PRIVATE_H__ */

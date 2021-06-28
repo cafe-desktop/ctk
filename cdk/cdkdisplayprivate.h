@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2010 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_DISPLAY_PRIVATE_H__
-#define __GDK_DISPLAY_PRIVATE_H__
+#ifndef __CDK_DISPLAY_PRIVATE_H__
+#define __CDK_DISPLAY_PRIVATE_H__
 
 #include "cdkdisplay.h"
 #include "cdkwindow.h"
@@ -26,9 +26,9 @@
 
 G_BEGIN_DECLS
 
-#define GDK_DISPLAY_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_DISPLAY, CdkDisplayClass))
-#define GDK_IS_DISPLAY_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_DISPLAY))
-#define GDK_DISPLAY_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_DISPLAY, CdkDisplayClass))
+#define CDK_DISPLAY_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CDK_TYPE_DISPLAY, CdkDisplayClass))
+#define CDK_IS_DISPLAY_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CDK_TYPE_DISPLAY))
+#define CDK_DISPLAY_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CDK_TYPE_DISPLAY, CdkDisplayClass))
 
 
 typedef struct _CdkDisplayClass CdkDisplayClass;
@@ -343,4 +343,4 @@ void                cdk_display_monitor_removed       (CdkDisplay       *display
 
 G_END_DECLS
 
-#endif  /* __GDK_DISPLAY_PRIVATE_H__ */
+#endif  /* __CDK_DISPLAY_PRIVATE_H__ */

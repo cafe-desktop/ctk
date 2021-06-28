@@ -20,10 +20,10 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_WIN32_MONITOR_H__
-#define __GDK_WIN32_MONITOR_H__
+#ifndef __CDK_WIN32_MONITOR_H__
+#define __CDK_WIN32_MONITOR_H__
 
-#if !defined (__GDKWIN32_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined (__CDKWIN32_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdkwin32.h> can be included directly."
 #endif
 
@@ -31,20 +31,20 @@
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_WIN32_MONITOR           (cdk_win32_monitor_get_type ())
-#define GDK_WIN32_MONITOR(object)        (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WIN32_MONITOR, CdkWin32Monitor))
-#define GDK_IS_WIN32_MONITOR(object)     (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WIN32_MONITOR))
+#define CDK_TYPE_WIN32_MONITOR           (cdk_win32_monitor_get_type ())
+#define CDK_WIN32_MONITOR(object)        (G_TYPE_CHECK_INSTANCE_CAST ((object), CDK_TYPE_WIN32_MONITOR, CdkWin32Monitor))
+#define CDK_IS_WIN32_MONITOR(object)     (G_TYPE_CHECK_INSTANCE_TYPE ((object), CDK_TYPE_WIN32_MONITOR))
 
-#ifdef GDK_COMPILATION
+#ifdef CDK_COMPILATION
 typedef struct _CdkWin32Monitor      CdkWin32Monitor;
 #else
 typedef CdkMonitor CdkWin32Monitor;
 #endif
 typedef struct _CdkWin32MonitorClass CdkWin32MonitorClass;
 
-GDK_AVAILABLE_IN_3_22
+CDK_AVAILABLE_IN_3_22
 GType             cdk_win32_monitor_get_type            (void) G_GNUC_CONST;
 
 G_END_DECLS
 
-#endif  /* __GDK_WIN32_MONITOR_H__ */
+#endif  /* __CDK_WIN32_MONITOR_H__ */

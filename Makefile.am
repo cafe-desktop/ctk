@@ -58,8 +58,8 @@ cdk-x11-3.0.pc cdk-win32-3.0.pc cdk-quartz-3.0.pc cdk-broadway-3.0.pc cdk-waylan
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = cdk-3.0.pc ctk+-3.0.pc gail-3.0.pc
-pkgconfig_DATA += ${GDK_BACKENDS:%=ctk+-%-3.0.pc}
-pkgconfig_DATA += ${GDK_BACKENDS:%=cdk-%-3.0.pc}
+pkgconfig_DATA += ${CDK_BACKENDS:%=ctk+-%-3.0.pc}
+pkgconfig_DATA += ${CDK_BACKENDS:%=cdk-%-3.0.pc}
 
 if OS_UNIX
 pkgconfig_DATA += ctk+-unix-print-3.0.pc

@@ -275,7 +275,7 @@ ctk_im_context_ime_set_client_window (CtkIMContext *context,
   g_return_if_fail (CTK_IS_IM_CONTEXT_IME (context));
   context_ime = CTK_IM_CONTEXT_IME (context);
 
-  if (client_window != NULL && !GDK_IS_WINDOW (client_window))
+  if (client_window != NULL && !CDK_IS_WINDOW (client_window))
     {
       g_warning ("client_window is not a CdkWindow!");
       client_window = NULL;
@@ -285,7 +285,7 @@ ctk_im_context_ime_set_client_window (CtkIMContext *context,
     {
       toplevel = cdk_window_get_toplevel (client_window);
 
-      if (GDK_IS_WINDOW (toplevel))
+      if (CDK_IS_WINDOW (toplevel))
         {
           HWND hwnd = cdk_win32_window_get_impl_hwnd (toplevel);
           HIMC himc = ImmGetContext (hwnd);
@@ -313,7 +313,7 @@ ctk_im_context_ime_set_client_window (CtkIMContext *context,
   context_ime->toplevel = toplevel;
 
   if (client_window)
-    g_return_if_fail (GDK_IS_WINDOW (context_ime->toplevel));
+    g_return_if_fail (CDK_IS_WINDOW (context_ime->toplevel));
 }
 
 static gboolean
@@ -350,10 +350,10 @@ ctk_im_context_ime_reset (CtkIMContext *context)
   HWND hwnd;
   HIMC himc;
 
-  if (!GDK_IS_WINDOW (context_ime->client_window))
+  if (!CDK_IS_WINDOW (context_ime->client_window))
     return;
 
-  g_return_if_fail (GDK_IS_WINDOW (context_ime->toplevel));
+  g_return_if_fail (CDK_IS_WINDOW (context_ime->toplevel));
 
   hwnd = cdk_win32_window_get_impl_hwnd (context_ime->toplevel);
   himc = ImmGetContext (hwnd);
@@ -388,7 +388,7 @@ get_utf8_preedit_string (CtkIMContextIME *context_ime,
   if (pos_ret)
     *pos_ret = 0;
 
-  if (!GDK_IS_WINDOW (context_ime->toplevel))
+  if (!CDK_IS_WINDOW (context_ime->toplevel))
     return g_strdup ("");
   hwnd = cdk_win32_window_get_impl_hwnd (context_ime->toplevel);
   himc = ImmGetContext (hwnd);
@@ -446,10 +446,10 @@ get_pango_attr_list (CtkIMContextIME *context_ime, const gchar *utf8str)
   HIMC himc;
   guint8 *buf = NULL;
 
-  if (!GDK_IS_WINDOW (context_ime->client_window))
+  if (!CDK_IS_WINDOW (context_ime->client_window))
     return attrs;
 
-  g_return_val_if_fail (GDK_IS_WINDOW (context_ime->toplevel), attrs);
+  g_return_val_if_fail (CDK_IS_WINDOW (context_ime->toplevel), attrs);
 
   hwnd = cdk_win32_window_get_impl_hwnd (context_ime->toplevel);
   himc = ImmGetContext (hwnd);
@@ -581,14 +581,14 @@ ctk_im_context_ime_focus_in (CtkIMContext *context)
   HWND hwnd;
   HIMC himc;
 
-  if (!GDK_IS_WINDOW (context_ime->client_window))
+  if (!CDK_IS_WINDOW (context_ime->client_window))
     return;
 
   /* swtich current context */
   context_ime->focus = TRUE;
 
   toplevel = cdk_window_get_toplevel (context_ime->client_window);
-  if (!GDK_IS_WINDOW (toplevel))
+  if (!CDK_IS_WINDOW (toplevel))
     {
       g_warning ("Could not find toplevel window.");
       context_ime->toplevel = NULL;
@@ -653,7 +653,7 @@ ctk_im_context_ime_focus_out (CtkIMContext *context)
   CtkWidget *widget = NULL;
   gboolean was_preediting;
 
-  if (!GDK_IS_WINDOW (context_ime->client_window))
+  if (!CDK_IS_WINDOW (context_ime->client_window))
     return;
 
   was_preediting = context_ime->preediting;
@@ -708,7 +708,7 @@ ctk_im_context_ime_focus_out (CtkIMContext *context)
     }
 
   /* remove filter */
-  if (GDK_IS_WINDOW (context_ime->toplevel))
+  if (CDK_IS_WINDOW (context_ime->toplevel))
     {
       cdk_window_remove_filter (context_ime->toplevel,
                                 ctk_im_context_ime_message_filter,
@@ -919,7 +919,7 @@ ctk_im_context_ime_message_filter (CdkXEvent *xevent,
   HWND hwnd;
   HIMC himc;
   MSG *msg = (MSG *) xevent;
-  CdkFilterReturn retval = GDK_FILTER_CONTINUE;
+  CdkFilterReturn retval = CDK_FILTER_CONTINUE;
 
   g_return_val_if_fail (CTK_IS_IM_CONTEXT_IME (data), retval);
 
@@ -929,7 +929,7 @@ ctk_im_context_ime_message_filter (CdkXEvent *xevent,
   if (!context_ime->focus)
     return retval;
 
-  g_return_val_if_fail (GDK_IS_WINDOW (context_ime->toplevel), retval);
+  g_return_val_if_fail (CDK_IS_WINDOW (context_ime->toplevel), retval);
 
   hwnd = cdk_win32_window_get_impl_hwnd (context_ime->toplevel);
   himc = ImmGetContext (hwnd);
@@ -1040,7 +1040,7 @@ get_window_position (CdkWindow *win, gint *x, gint *y)
   CdkWindow *parent, *toplevel;
   gint wx, wy;
 
-  g_return_if_fail (GDK_IS_WINDOW (win));
+  g_return_if_fail (CDK_IS_WINDOW (win));
   g_return_if_fail (x && y);
 
   cdk_window_get_position (win, &wx, &wy);
@@ -1079,7 +1079,7 @@ cb_client_widget_hierarchy_changed (CtkWidget       *widget,
     return;
 
   /* remove filter from old toplevel */
-  if (GDK_IS_WINDOW (context_ime->toplevel))
+  if (CDK_IS_WINDOW (context_ime->toplevel))
     {
       cdk_window_remove_filter (context_ime->toplevel,
                                 ctk_im_context_ime_message_filter,
@@ -1087,7 +1087,7 @@ cb_client_widget_hierarchy_changed (CtkWidget       *widget,
     }
 
   /* add filter to new toplevel */
-  if (GDK_IS_WINDOW (new_toplevel))
+  if (CDK_IS_WINDOW (new_toplevel))
     {
       cdk_window_add_filter (new_toplevel,
                              ctk_im_context_ime_message_filter, context_ime);

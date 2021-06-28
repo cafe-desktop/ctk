@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  *
  * cdkglcontext-quartz.h: Private Quartz specific OpenGL wrappers
  *
@@ -20,8 +20,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_QUARTZ_GL_CONTEXT__
-#define __GDK_QUARTZ_GL_CONTEXT__
+#ifndef __CDK_QUARTZ_GL_CONTEXT__
+#define __CDK_QUARTZ_GL_CONTEXT__
 
 #include "cdkglcontextprivate.h"
 #include "cdkdisplayprivate.h"
@@ -61,4 +61,4 @@ gboolean        cdk_quartz_display_make_gl_context_current         (CdkDisplay  
 
 G_END_DECLS
 
-#endif /* __GDK_QUARTZ_GL_CONTEXT__ */
+#endif /* __CDK_QUARTZ_GL_CONTEXT__ */

@@ -61,13 +61,13 @@ struct _CtkSearchEntryClass
   void (*stop_search)    (CtkSearchEntry *entry);
 };
 
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 GType           ctk_search_entry_get_type       (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_3_6
+CDK_AVAILABLE_IN_3_6
 CtkWidget*      ctk_search_entry_new            (void);
 
-GDK_AVAILABLE_IN_3_16
+CDK_AVAILABLE_IN_3_16
 gboolean        ctk_search_entry_handle_event   (CtkSearchEntry *entry,
                                                  CdkEvent       *event);
 

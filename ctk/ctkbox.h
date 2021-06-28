@@ -74,54 +74,54 @@ struct _CtkBoxClass
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType       ctk_box_get_type            (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget*  ctk_box_new                 (CtkOrientation  orientation,
                                          gint            spacing);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_box_pack_start          (CtkBox         *box,
                                          CtkWidget      *child,
                                          gboolean        expand,
                                          gboolean        fill,
                                          guint           padding);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_box_pack_end            (CtkBox         *box,
                                          CtkWidget      *child,
                                          gboolean        expand,
                                          gboolean        fill,
                                          guint           padding);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_box_set_homogeneous     (CtkBox         *box,
                                          gboolean        homogeneous);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean    ctk_box_get_homogeneous     (CtkBox         *box);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_box_set_spacing         (CtkBox         *box,
                                          gint            spacing);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint        ctk_box_get_spacing         (CtkBox         *box);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 void        ctk_box_set_baseline_position (CtkBox             *box,
 					   CtkBaselinePosition position);
-GDK_AVAILABLE_IN_3_10
+CDK_AVAILABLE_IN_3_10
 CtkBaselinePosition ctk_box_get_baseline_position (CtkBox         *box);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_box_reorder_child       (CtkBox         *box,
                                          CtkWidget      *child,
                                          gint            position);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_box_query_child_packing (CtkBox         *box,
                                          CtkWidget      *child,
                                          gboolean       *expand,
                                          gboolean       *fill,
                                          guint          *padding,
                                          CtkPackType    *pack_type);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void        ctk_box_set_child_packing   (CtkBox         *box,
                                          CtkWidget      *child,
                                          gboolean        expand,
@@ -129,10 +129,10 @@ void        ctk_box_set_child_packing   (CtkBox         *box,
                                          guint           padding,
                                          CtkPackType     pack_type);
 
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 void        ctk_box_set_center_widget   (CtkBox         *box,
                                          CtkWidget      *widget);
-GDK_AVAILABLE_IN_3_12
+CDK_AVAILABLE_IN_3_12
 CtkWidget  *ctk_box_get_center_widget   (CtkBox         *box);
 
 G_END_DECLS

@@ -35,10 +35,10 @@ _cdk_broadway_window_simulate_key (CdkWindow      *window,
 				   CdkModifierType modifiers,
 				   CdkEventType    key_pressrelease)
 {
-  g_return_val_if_fail (key_pressrelease == GDK_KEY_PRESS || key_pressrelease == GDK_KEY_RELEASE, FALSE);
+  g_return_val_if_fail (key_pressrelease == CDK_KEY_PRESS || key_pressrelease == CDK_KEY_RELEASE, FALSE);
   g_return_val_if_fail (window != NULL, FALSE);
 
-  if (!GDK_WINDOW_IS_MAPPED (window))
+  if (!CDK_WINDOW_IS_MAPPED (window))
     return FALSE;
 
   /* FIXME: Implement. */
@@ -54,10 +54,10 @@ _cdk_broadway_window_simulate_button (CdkWindow      *window,
 				      CdkModifierType modifiers,
 				      CdkEventType    button_pressrelease)
 {
-  g_return_val_if_fail (button_pressrelease == GDK_BUTTON_PRESS || button_pressrelease == GDK_BUTTON_RELEASE, FALSE);
+  g_return_val_if_fail (button_pressrelease == CDK_BUTTON_PRESS || button_pressrelease == CDK_BUTTON_RELEASE, FALSE);
   g_return_val_if_fail (window != NULL, FALSE);
 
-  if (!GDK_WINDOW_IS_MAPPED (window))
+  if (!CDK_WINDOW_IS_MAPPED (window))
     return FALSE;
 
   /* FIXME: Implement. */

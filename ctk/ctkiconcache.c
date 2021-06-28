@@ -521,8 +521,8 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
     }
 G_GNUC_END_IGNORE_DEPRECATIONS
 
-  pixbuf = cdk_pixbuf_new_from_data (pixdata.pixel_data, GDK_COLORSPACE_RGB,
-				     (pixdata.pixdata_type & GDK_PIXDATA_COLOR_TYPE_MASK) == GDK_PIXDATA_COLOR_TYPE_RGBA,
+  pixbuf = cdk_pixbuf_new_from_data (pixdata.pixel_data, CDK_COLORSPACE_RGB,
+				     (pixdata.pixdata_type & CDK_PIXDATA_COLOR_TYPE_MASK) == CDK_PIXDATA_COLOR_TYPE_RGBA,
 				     8, pixdata.width, pixdata.height, pixdata.rowstride,
 				     (CdkPixbufDestroyNotify)pixbuf_destroy_cb, 
 				     cache);

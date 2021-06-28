@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2009 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_DEVICE_PRIVATE_H__
-#define __GDK_DEVICE_PRIVATE_H__
+#ifndef __CDK_DEVICE_PRIVATE_H__
+#define __CDK_DEVICE_PRIVATE_H__
 
 #include "cdkdevice.h"
 #include "cdkdevicetool.h"
@@ -26,9 +26,9 @@
 
 G_BEGIN_DECLS
 
-#define GDK_DEVICE_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_DEVICE, CdkDeviceClass))
-#define GDK_IS_DEVICE_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), GDK_TYPE_DEVICE))
-#define GDK_DEVICE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_DEVICE, CdkDeviceClass))
+#define CDK_DEVICE_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), CDK_TYPE_DEVICE, CdkDeviceClass))
+#define CDK_IS_DEVICE_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), CDK_TYPE_DEVICE))
+#define CDK_DEVICE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CDK_TYPE_DEVICE, CdkDeviceClass))
 
 typedef struct _CdkDeviceClass CdkDeviceClass;
 typedef struct _CdkDeviceKey CdkDeviceKey;
@@ -193,4 +193,4 @@ CdkInputMode cdk_device_get_input_mode (CdkDevice *device);
 
 G_END_DECLS
 
-#endif /* __GDK_DEVICE_PRIVATE_H__ */
+#endif /* __CDK_DEVICE_PRIVATE_H__ */

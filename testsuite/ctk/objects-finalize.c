@@ -19,7 +19,7 @@
 #include <ctk/ctk.h>
 #include <string.h>
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
 # include <cdk/cdkx.h>
 #endif
 
@@ -108,19 +108,19 @@ main (int argc, char **argv)
       if (g_type_is_a (all_types[i], G_TYPE_OBJECT) &&
 	  G_TYPE_IS_INSTANTIATABLE (all_types[i]) &&
 	  !G_TYPE_IS_ABSTRACT (all_types[i]) &&
-#ifdef GDK_WINDOWING_X11
-	  all_types[i] != GDK_TYPE_X11_WINDOW &&
-	  all_types[i] != GDK_TYPE_X11_CURSOR &&
-	  all_types[i] != GDK_TYPE_X11_SCREEN &&
-	  all_types[i] != GDK_TYPE_X11_DISPLAY &&
-	  all_types[i] != GDK_TYPE_X11_DEVICE_MANAGER_CORE &&
-	  all_types[i] != GDK_TYPE_X11_DEVICE_MANAGER_XI2 &&
-	  all_types[i] != GDK_TYPE_X11_DISPLAY_MANAGER &&
-	  all_types[i] != GDK_TYPE_X11_GL_CONTEXT &&
+#ifdef CDK_WINDOWING_X11
+	  all_types[i] != CDK_TYPE_X11_WINDOW &&
+	  all_types[i] != CDK_TYPE_X11_CURSOR &&
+	  all_types[i] != CDK_TYPE_X11_SCREEN &&
+	  all_types[i] != CDK_TYPE_X11_DISPLAY &&
+	  all_types[i] != CDK_TYPE_X11_DEVICE_MANAGER_CORE &&
+	  all_types[i] != CDK_TYPE_X11_DEVICE_MANAGER_XI2 &&
+	  all_types[i] != CDK_TYPE_X11_DISPLAY_MANAGER &&
+	  all_types[i] != CDK_TYPE_X11_GL_CONTEXT &&
 #endif
 	  /* Not allowed to finalize a CdkPixbufLoader without calling cdk_pixbuf_loader_close() */
-	  all_types[i] != GDK_TYPE_PIXBUF_LOADER &&
-	  all_types[i] != GDK_TYPE_DRAWING_CONTEXT &&
+	  all_types[i] != CDK_TYPE_PIXBUF_LOADER &&
+	  all_types[i] != CDK_TYPE_DRAWING_CONTEXT &&
 	  all_types[i] != cdk_pixbuf_simple_anim_iter_get_type())
 	{
 	  gchar *test_path = g_strdup_printf ("/FinalizeObject/%s", g_type_name (all_types[i]));

@@ -30,12 +30,12 @@
 
 #include <string.h>
 
-#define GDK_TYPE_WAYLAND_DRAG_CONTEXT              (cdk_wayland_drag_context_get_type ())
-#define GDK_WAYLAND_DRAG_CONTEXT(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), GDK_TYPE_WAYLAND_DRAG_CONTEXT, CdkWaylandDragContext))
-#define GDK_WAYLAND_DRAG_CONTEXT_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_WAYLAND_DRAG_CONTEXT, CdkWaylandDragContextClass))
-#define GDK_IS_WAYLAND_DRAG_CONTEXT(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), GDK_TYPE_WAYLAND_DRAG_CONTEXT))
-#define GDK_IS_WAYLAND_DRAG_CONTEXT_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_WAYLAND_DRAG_CONTEXT))
-#define GDK_WAYLAND_DRAG_CONTEXT_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_WAYLAND_DRAG_CONTEXT, CdkWaylandDragContextClass))
+#define CDK_TYPE_WAYLAND_DRAG_CONTEXT              (cdk_wayland_drag_context_get_type ())
+#define CDK_WAYLAND_DRAG_CONTEXT(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), CDK_TYPE_WAYLAND_DRAG_CONTEXT, CdkWaylandDragContext))
+#define CDK_WAYLAND_DRAG_CONTEXT_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), CDK_TYPE_WAYLAND_DRAG_CONTEXT, CdkWaylandDragContextClass))
+#define CDK_IS_WAYLAND_DRAG_CONTEXT(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), CDK_TYPE_WAYLAND_DRAG_CONTEXT))
+#define CDK_IS_WAYLAND_DRAG_CONTEXT_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), CDK_TYPE_WAYLAND_DRAG_CONTEXT))
+#define CDK_WAYLAND_DRAG_CONTEXT_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), CDK_TYPE_WAYLAND_DRAG_CONTEXT, CdkWaylandDragContextClass))
 
 typedef struct _CdkWaylandDragContext CdkWaylandDragContext;
 typedef struct _CdkWaylandDragContextClass CdkWaylandDragContextClass;
@@ -63,13 +63,13 @@ static GList *contexts;
 
 GType cdk_wayland_drag_context_get_type (void);
 
-G_DEFINE_TYPE (CdkWaylandDragContext, cdk_wayland_drag_context, GDK_TYPE_DRAG_CONTEXT)
+G_DEFINE_TYPE (CdkWaylandDragContext, cdk_wayland_drag_context, CDK_TYPE_DRAG_CONTEXT)
 
 static void
 cdk_wayland_drag_context_finalize (GObject *object)
 {
-  CdkWaylandDragContext *wayland_context = GDK_WAYLAND_DRAG_CONTEXT (object);
-  CdkDragContext *context = GDK_DRAG_CONTEXT (object);
+  CdkWaylandDragContext *wayland_context = CDK_WAYLAND_DRAG_CONTEXT (object);
+  CdkDragContext *context = CDK_DRAG_CONTEXT (object);
   CdkWindow *dnd_window;
 
   contexts = g_list_remove (contexts, context);
@@ -109,12 +109,12 @@ _cdk_wayland_drag_context_emit_event (CdkDragContext *context,
 
   switch (type)
     {
-    case GDK_DRAG_ENTER:
-    case GDK_DRAG_LEAVE:
-    case GDK_DRAG_MOTION:
-    case GDK_DRAG_STATUS:
-    case GDK_DROP_START:
-    case GDK_DROP_FINISHED:
+    case CDK_DRAG_ENTER:
+    case CDK_DRAG_LEAVE:
+    case CDK_DRAG_MOTION:
+    case CDK_DRAG_STATUS:
+    case CDK_DROP_START:
+    case CDK_DROP_FINISHED:
       break;
     default:
       return;
@@ -129,8 +129,8 @@ _cdk_wayland_drag_context_emit_event (CdkDragContext *context,
   event->dnd.window = g_object_ref (window);
   event->dnd.context = g_object_ref (context);
   event->dnd.time = time_;
-  event->dnd.x_root = GDK_WAYLAND_DRAG_CONTEXT (context)->x;
-  event->dnd.y_root = GDK_WAYLAND_DRAG_CONTEXT (context)->y;
+  event->dnd.x_root = CDK_WAYLAND_DRAG_CONTEXT (context)->x;
+  event->dnd.y_root = CDK_WAYLAND_DRAG_CONTEXT (context)->y;
   cdk_event_set_device (event, cdk_drag_context_get_device (context));
 
   cdk_event_put (event);
@@ -154,7 +154,7 @@ cdk_wayland_drag_context_find_window (CdkDragContext  *context,
   if (window)
     {
       window = cdk_window_get_toplevel (window);
-      *protocol = GDK_DRAG_PROTO_WAYLAND;
+      *protocol = CDK_DRAG_PROTO_WAYLAND;
       return g_object_ref (window);
     }
 
@@ -166,11 +166,11 @@ cdk_to_wl_actions (CdkDragAction action)
 {
   uint32_t dnd_actions = 0;
 
-  if (action & (GDK_ACTION_COPY | GDK_ACTION_LINK | GDK_ACTION_PRIVATE))
+  if (action & (CDK_ACTION_COPY | CDK_ACTION_LINK | CDK_ACTION_PRIVATE))
     dnd_actions |= WL_DATA_DEVICE_MANAGER_DND_ACTION_COPY;
-  if (action & GDK_ACTION_MOVE)
+  if (action & CDK_ACTION_MOVE)
     dnd_actions |= WL_DATA_DEVICE_MANAGER_DND_ACTION_MOVE;
-  if (action & GDK_ACTION_ASK)
+  if (action & CDK_ACTION_ASK)
     dnd_actions |= WL_DATA_DEVICE_MANAGER_DND_ACTION_ASK;
 
   return dnd_actions;
@@ -197,7 +197,7 @@ cdk_wayland_drag_context_drag_motion (CdkDragContext *context,
     {
       context->dest_window = dest_window ? g_object_ref (dest_window) : NULL;
       _cdk_wayland_drag_context_set_coords (context, x_root, y_root);
-      _cdk_wayland_drag_context_emit_event (context, GDK_DRAG_STATUS, time);
+      _cdk_wayland_drag_context_emit_event (context, CDK_DRAG_STATUS, time);
     }
 
   cdk_wayland_drag_context_set_action (context, suggested_action);
@@ -230,7 +230,7 @@ cdk_wayland_drop_context_set_status (CdkDragContext *context,
   if (!context->dest_window)
     return;
 
-  context_wayland = GDK_WAYLAND_DRAG_CONTEXT (context);
+  context_wayland = CDK_WAYLAND_DRAG_CONTEXT (context);
 
   display = cdk_device_get_display (cdk_drag_context_get_device (context));
   wl_offer = cdk_wayland_selection_get_offer (display,
@@ -269,7 +269,7 @@ cdk_wayland_drag_context_commit_status (CdkDragContext *context)
   CdkDisplay *display;
   uint32_t dnd_actions;
 
-  wayland_context = GDK_WAYLAND_DRAG_CONTEXT (context);
+  wayland_context = CDK_WAYLAND_DRAG_CONTEXT (context);
   display = cdk_device_get_display (cdk_drag_context_get_device (context));
 
   dnd_actions = cdk_to_wl_actions (wayland_context->selected_action);
@@ -285,7 +285,7 @@ cdk_wayland_drag_context_drag_status (CdkDragContext *context,
 {
   CdkWaylandDragContext *wayland_context;
 
-  wayland_context = GDK_WAYLAND_DRAG_CONTEXT (context);
+  wayland_context = CDK_WAYLAND_DRAG_CONTEXT (context);
   wayland_context->selected_action = action;
 }
 
@@ -304,17 +304,17 @@ cdk_wayland_drag_context_drop_finish (CdkDragContext *context,
 				      guint32         time)
 {
   CdkDisplay *display = cdk_device_get_display (cdk_drag_context_get_device (context));
-  CdkWaylandDisplay *display_wayland = GDK_WAYLAND_DISPLAY (display);
+  CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (display);
   CdkWaylandDragContext *wayland_context;
   struct wl_data_offer *wl_offer;
   CdkAtom selection;
 
-  wayland_context = GDK_WAYLAND_DRAG_CONTEXT (context);
+  wayland_context = CDK_WAYLAND_DRAG_CONTEXT (context);
   selection = cdk_drag_get_selection (context);
   wl_offer = cdk_wayland_selection_get_offer (display, selection);
 
   if (wl_offer && success && wayland_context->selected_action &&
-      wayland_context->selected_action != GDK_ACTION_ASK)
+      wayland_context->selected_action != CDK_ACTION_ASK)
     {
       cdk_wayland_drag_context_commit_status (context);
 
@@ -343,18 +343,18 @@ cdk_wayland_drag_context_init (CdkWaylandDragContext *context_wayland)
 {
   CdkDragContext *context;
 
-  context = GDK_DRAG_CONTEXT (context_wayland);
+  context = CDK_DRAG_CONTEXT (context_wayland);
   contexts = g_list_prepend (contexts, context);
 
-  context->action = GDK_ACTION_COPY;
-  context->suggested_action = GDK_ACTION_COPY;
-  context->actions = GDK_ACTION_COPY | GDK_ACTION_MOVE;
+  context->action = CDK_ACTION_COPY;
+  context->suggested_action = CDK_ACTION_COPY;
+  context->actions = CDK_ACTION_COPY | CDK_ACTION_MOVE;
 }
 
 static CdkWindow *
 cdk_wayland_drag_context_get_drag_window (CdkDragContext *context)
 {
-  return GDK_WAYLAND_DRAG_CONTEXT (context)->dnd_window;
+  return CDK_WAYLAND_DRAG_CONTEXT (context)->dnd_window;
 }
 
 static void
@@ -362,7 +362,7 @@ cdk_wayland_drag_context_set_hotspot (CdkDragContext *context,
                                       gint            hot_x,
                                       gint            hot_y)
 {
-  CdkWaylandDragContext *context_wayland = GDK_WAYLAND_DRAG_CONTEXT (context);
+  CdkWaylandDragContext *context_wayland = CDK_WAYLAND_DRAG_CONTEXT (context);
   gint prev_hot_x = context_wayland->hot_x;
   gint prev_hot_y = context_wayland->hot_y;
   const CdkRectangle damage_rect = { .width = 1, .height = 1 };
@@ -389,10 +389,10 @@ cdk_wayland_drag_context_manage_dnd (CdkDragContext *context,
   CdkWindow *toplevel;
 
   device = cdk_drag_context_get_device (context);
-  display_wayland = GDK_WAYLAND_DISPLAY (cdk_device_get_display (device));
+  display_wayland = CDK_WAYLAND_DISPLAY (cdk_device_get_display (device));
   toplevel = _cdk_device_window_at_position (device, NULL, NULL, NULL, TRUE);
 
-  context_wayland = GDK_WAYLAND_DRAG_CONTEXT (context);
+  context_wayland = CDK_WAYLAND_DRAG_CONTEXT (context);
 
   if (display_wayland->data_device_manager_version >=
       WL_DATA_SOURCE_SET_ACTIONS_SINCE_VERSION)
@@ -449,7 +449,7 @@ static void
 cdk_wayland_drag_context_drop_done (CdkDragContext *context,
                                     gboolean        success)
 {
-  CdkWaylandDragContext *context_wayland = GDK_WAYLAND_DRAG_CONTEXT (context);
+  CdkWaylandDragContext *context_wayland = CDK_WAYLAND_DRAG_CONTEXT (context);
 
   if (success)
     {
@@ -462,7 +462,7 @@ static void
 cdk_wayland_drag_context_class_init (CdkWaylandDragContextClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  CdkDragContextClass *context_class = GDK_DRAG_CONTEXT_CLASS (klass);
+  CdkDragContextClass *context_class = CDK_DRAG_CONTEXT_CLASS (klass);
 
   object_class->finalize = cdk_wayland_drag_context_finalize;
 
@@ -489,7 +489,7 @@ cdk_wayland_drag_context_class_init (CdkWaylandDragContextClass *klass)
 CdkDragProtocol
 _cdk_wayland_window_get_drag_protocol (CdkWindow *window, CdkWindow **target)
 {
-  return GDK_DRAG_PROTO_WAYLAND;
+  return CDK_DRAG_PROTO_WAYLAND;
 }
 
 void
@@ -505,12 +505,12 @@ create_dnd_window (CdkScreen *screen)
 
   attrs.x = attrs.y = 0;
   attrs.width = attrs.height = 100;
-  attrs.wclass = GDK_INPUT_OUTPUT;
-  attrs.window_type = GDK_WINDOW_TEMP;
-  attrs.type_hint = GDK_WINDOW_TYPE_HINT_DND;
+  attrs.wclass = CDK_INPUT_OUTPUT;
+  attrs.window_type = CDK_WINDOW_TEMP;
+  attrs.type_hint = CDK_WINDOW_TYPE_HINT_DND;
   attrs.visual = cdk_screen_get_system_visual (screen);
 
-  mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL | GDK_WA_TYPE_HINT;
+  mask = CDK_WA_X | CDK_WA_Y | CDK_WA_VISUAL | CDK_WA_TYPE_HINT;
 
   return cdk_window_new (cdk_screen_get_root_window (screen), &attrs, mask);
 }
@@ -526,8 +526,8 @@ _cdk_wayland_window_drag_begin (CdkWindow *window,
   CdkDragContext *context;
   GList *l;
 
-  context_wayland = g_object_new (GDK_TYPE_WAYLAND_DRAG_CONTEXT, NULL);
-  context = GDK_DRAG_CONTEXT (context_wayland);
+  context_wayland = g_object_new (CDK_TYPE_WAYLAND_DRAG_CONTEXT, NULL);
+  context = CDK_DRAG_CONTEXT (context_wayland);
   context->display = cdk_window_get_display (window);
   context->source_window = g_object_ref (window);
   context->is_source = TRUE;
@@ -568,8 +568,8 @@ _cdk_wayland_drop_context_new (CdkDisplay            *display,
   CdkWaylandDragContext *context_wayland;
   CdkDragContext *context;
 
-  context_wayland = g_object_new (GDK_TYPE_WAYLAND_DRAG_CONTEXT, NULL);
-  context = GDK_DRAG_CONTEXT (context_wayland);
+  context_wayland = g_object_new (CDK_TYPE_WAYLAND_DRAG_CONTEXT, NULL);
+  context = CDK_DRAG_CONTEXT (context_wayland);
   context->display = display;
   context->is_source = FALSE;
 
@@ -596,7 +596,7 @@ _cdk_wayland_drag_context_set_coords (CdkDragContext *context,
 {
   CdkWaylandDragContext *context_wayland;
 
-  context_wayland = GDK_WAYLAND_DRAG_CONTEXT (context);
+  context_wayland = CDK_WAYLAND_DRAG_CONTEXT (context);
   context_wayland->x = x;
   context_wayland->y = y;
 }
@@ -620,7 +620,7 @@ _cdk_wayland_drag_context_set_dest_window (CdkDragContext *context,
     g_object_unref (context->dest_window);
 
   context->dest_window = dest_window ? g_object_ref (dest_window) : NULL;
-  GDK_WAYLAND_DRAG_CONTEXT (context)->serial = serial;
+  CDK_WAYLAND_DRAG_CONTEXT (context)->serial = serial;
   cdk_wayland_drop_context_update_targets (context);
 }
 
@@ -657,5 +657,5 @@ cdk_wayland_drag_context_lookup_by_source_window (CdkWindow *window)
 struct wl_data_source *
 cdk_wayland_drag_context_get_data_source (CdkDragContext *context)
 {
-  return GDK_WAYLAND_DRAG_CONTEXT (context)->data_source;
+  return CDK_WAYLAND_DRAG_CONTEXT (context)->data_source;
 }

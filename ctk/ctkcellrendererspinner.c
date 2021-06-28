@@ -34,10 +34,10 @@
 #include "ctksettings.h"
 #include "ctktypebuiltins.h"
 
-#undef GDK_DEPRECATED
-#undef GDK_DEPRECATED_FOR
-#define GDK_DEPRECATED
-#define GDK_DEPRECATED_FOR(f)
+#undef CDK_DEPRECATED
+#undef CDK_DEPRECATED_FOR
+#define CDK_DEPRECATED
+#define CDK_DEPRECATED_FOR(f)
 
 #include "deprecated/ctkstyle.h"
 

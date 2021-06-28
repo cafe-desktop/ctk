@@ -38,10 +38,10 @@ G_BEGIN_DECLS
 typedef struct _CtkGestureLongPress CtkGestureLongPress;
 typedef struct _CtkGestureLongPressClass CtkGestureLongPressClass;
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 GType        ctk_gesture_long_press_get_type   (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 CtkGesture * ctk_gesture_long_press_new        (CtkWidget *widget);
 
 G_END_DECLS

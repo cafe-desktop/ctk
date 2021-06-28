@@ -125,8 +125,8 @@ ctk_gesture_long_press_begin (CtkGesture       *gesture,
   event = ctk_gesture_get_last_event (gesture, sequence);
 
   if (!event ||
-      (event->type != GDK_BUTTON_PRESS &&
-       event->type != GDK_TOUCH_BEGIN))
+      (event->type != CDK_BUTTON_PRESS &&
+       event->type != CDK_TOUCH_BEGIN))
     return;
 
   widget = ctk_event_controller_get_widget (CTK_EVENT_CONTROLLER (gesture));

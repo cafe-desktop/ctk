@@ -51,10 +51,10 @@ test_dialog_override_property (void)
   CtkWidget *dialog;
 
   dialog = g_object_new (CTK_TYPE_DIALOG,
-			 "type-hint", GDK_WINDOW_TYPE_HINT_UTILITY,
+			 "type-hint", CDK_WINDOW_TYPE_HINT_UTILITY,
 			 NULL);
   g_assert (CTK_IS_DIALOG (dialog));
-  g_assert (ctk_window_get_type_hint (CTK_WINDOW (dialog)) == GDK_WINDOW_TYPE_HINT_UTILITY);
+  g_assert (ctk_window_get_type_hint (CTK_WINDOW (dialog)) == CDK_WINDOW_TYPE_HINT_UTILITY);
 
   ctk_widget_destroy (dialog);
 }

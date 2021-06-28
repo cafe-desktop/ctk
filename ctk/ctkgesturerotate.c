@@ -96,10 +96,10 @@ _ctk_gesture_rotate_get_angle (CtkGestureRotate *rotate,
     goto out;
 
   last_event = ctk_gesture_get_last_event (gesture, sequences->data);
-  if (last_event->type == GDK_TOUCHPAD_PINCH &&
-      (last_event->touchpad_pinch.phase == GDK_TOUCHPAD_GESTURE_PHASE_BEGIN ||
-       last_event->touchpad_pinch.phase == GDK_TOUCHPAD_GESTURE_PHASE_UPDATE ||
-       last_event->touchpad_pinch.phase == GDK_TOUCHPAD_GESTURE_PHASE_END))
+  if (last_event->type == CDK_TOUCHPAD_PINCH &&
+      (last_event->touchpad_pinch.phase == CDK_TOUCHPAD_GESTURE_PHASE_BEGIN ||
+       last_event->touchpad_pinch.phase == CDK_TOUCHPAD_GESTURE_PHASE_UPDATE ||
+       last_event->touchpad_pinch.phase == CDK_TOUCHPAD_GESTURE_PHASE_END))
     {
       *angle = priv->accum_touchpad_angle;
     }
@@ -172,7 +172,7 @@ ctk_gesture_rotate_filter_event (CtkEventController *controller,
                                  const CdkEvent     *event)
 {
   /* Let 2-finger touchpad pinch events go through */
-  if (event->type == GDK_TOUCHPAD_PINCH)
+  if (event->type == CDK_TOUCHPAD_PINCH)
     {
       if (event->touchpad_pinch.n_fingers == 2)
         return FALSE;
@@ -192,12 +192,12 @@ ctk_gesture_rotate_handle_event (CtkEventController *controller,
 
   priv = ctk_gesture_rotate_get_instance_private (rotate);
 
-  if (event->type == GDK_TOUCHPAD_PINCH)
+  if (event->type == CDK_TOUCHPAD_PINCH)
     {
-      if (event->touchpad_pinch.phase == GDK_TOUCHPAD_GESTURE_PHASE_BEGIN ||
-          event->touchpad_pinch.phase == GDK_TOUCHPAD_GESTURE_PHASE_END)
+      if (event->touchpad_pinch.phase == CDK_TOUCHPAD_GESTURE_PHASE_BEGIN ||
+          event->touchpad_pinch.phase == CDK_TOUCHPAD_GESTURE_PHASE_END)
         priv->accum_touchpad_angle = 0;
-      else if (event->touchpad_pinch.phase == GDK_TOUCHPAD_GESTURE_PHASE_UPDATE)
+      else if (event->touchpad_pinch.phase == CDK_TOUCHPAD_GESTURE_PHASE_UPDATE)
         priv->accum_touchpad_angle += event->touchpad_pinch.angle_delta;
     }
 

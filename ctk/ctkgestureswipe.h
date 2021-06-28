@@ -39,13 +39,13 @@ G_BEGIN_DECLS
 typedef struct _CtkGestureSwipe CtkGestureSwipe;
 typedef struct _CtkGestureSwipeClass CtkGestureSwipeClass;
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 GType        ctk_gesture_swipe_get_type  (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 CtkGesture * ctk_gesture_swipe_new       (CtkWidget *widget);
 
-GDK_AVAILABLE_IN_3_14
+CDK_AVAILABLE_IN_3_14
 gboolean     ctk_gesture_swipe_get_velocity (CtkGestureSwipe *gesture,
                                              gdouble         *velocity_x,
                                              gdouble         *velocity_y);

@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2000 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -43,7 +43,7 @@
  * `cdk/cdkkeysyms.h` header file.
  *
  * Key values are regularly updated from the upstream X.org X11 implementation,
- * so new values are added regularly. They will be prefixed with GDK_KEY_ rather
+ * so new values are added regularly. They will be prefixed with CDK_KEY_ rather
  * than XF86XK_ or XK_ (for older symbols).
  *
  * Key values can be converted into a string representation using
@@ -299,9 +299,9 @@ cdk_keymap_get_default (void)
 PangoDirection
 cdk_keymap_get_direction (CdkKeymap *keymap)
 {
-  g_return_val_if_fail (GDK_IS_KEYMAP (keymap), PANGO_DIRECTION_LTR);
+  g_return_val_if_fail (CDK_IS_KEYMAP (keymap), PANGO_DIRECTION_LTR);
 
-  return GDK_KEYMAP_GET_CLASS (keymap)->get_direction (keymap);
+  return CDK_KEYMAP_GET_CLASS (keymap)->get_direction (keymap);
 }
 
 /**
@@ -318,9 +318,9 @@ cdk_keymap_get_direction (CdkKeymap *keymap)
 gboolean
 cdk_keymap_have_bidi_layouts (CdkKeymap *keymap)
 {
-  g_return_val_if_fail (GDK_IS_KEYMAP (keymap), FALSE);
+  g_return_val_if_fail (CDK_IS_KEYMAP (keymap), FALSE);
 
-  return GDK_KEYMAP_GET_CLASS (keymap)->have_bidi_layouts (keymap);
+  return CDK_KEYMAP_GET_CLASS (keymap)->have_bidi_layouts (keymap);
 }
 
 /**
@@ -336,9 +336,9 @@ cdk_keymap_have_bidi_layouts (CdkKeymap *keymap)
 gboolean
 cdk_keymap_get_caps_lock_state (CdkKeymap *keymap)
 {
-  g_return_val_if_fail (GDK_IS_KEYMAP (keymap), FALSE);
+  g_return_val_if_fail (CDK_IS_KEYMAP (keymap), FALSE);
 
-  return GDK_KEYMAP_GET_CLASS (keymap)->get_caps_lock_state (keymap);
+  return CDK_KEYMAP_GET_CLASS (keymap)->get_caps_lock_state (keymap);
 }
 
 /**
@@ -354,9 +354,9 @@ cdk_keymap_get_caps_lock_state (CdkKeymap *keymap)
 gboolean
 cdk_keymap_get_num_lock_state (CdkKeymap *keymap)
 {
-  g_return_val_if_fail (GDK_IS_KEYMAP (keymap), FALSE);
+  g_return_val_if_fail (CDK_IS_KEYMAP (keymap), FALSE);
 
-  return GDK_KEYMAP_GET_CLASS (keymap)->get_num_lock_state (keymap);
+  return CDK_KEYMAP_GET_CLASS (keymap)->get_num_lock_state (keymap);
 }
 
 /**
@@ -372,9 +372,9 @@ cdk_keymap_get_num_lock_state (CdkKeymap *keymap)
 gboolean
 cdk_keymap_get_scroll_lock_state (CdkKeymap *keymap)
 {
-  g_return_val_if_fail (GDK_IS_KEYMAP (keymap), FALSE);
+  g_return_val_if_fail (CDK_IS_KEYMAP (keymap), FALSE);
 
-  return GDK_KEYMAP_GET_CLASS (keymap)->get_scroll_lock_state (keymap);
+  return CDK_KEYMAP_GET_CLASS (keymap)->get_scroll_lock_state (keymap);
 }
 
 /**
@@ -390,10 +390,10 @@ cdk_keymap_get_scroll_lock_state (CdkKeymap *keymap)
 guint
 cdk_keymap_get_modifier_state (CdkKeymap *keymap)
 {
-  g_return_val_if_fail (GDK_IS_KEYMAP (keymap), FALSE);
+  g_return_val_if_fail (CDK_IS_KEYMAP (keymap), FALSE);
 
-  if (GDK_KEYMAP_GET_CLASS (keymap)->get_modifier_state)
-    return GDK_KEYMAP_GET_CLASS (keymap)->get_modifier_state (keymap);
+  if (CDK_KEYMAP_GET_CLASS (keymap)->get_modifier_state)
+    return CDK_KEYMAP_GET_CLASS (keymap)->get_modifier_state (keymap);
 
   return 0;
 }
@@ -401,7 +401,7 @@ cdk_keymap_get_modifier_state (CdkKeymap *keymap)
 /**
  * cdk_keymap_get_entries_for_keyval:
  * @keymap: a #CdkKeymap
- * @keyval: a keyval, such as %GDK_KEY_a, %GDK_KEY_Up, %GDK_KEY_Return, etc.
+ * @keyval: a keyval, such as %CDK_KEY_a, %CDK_KEY_Up, %CDK_KEY_Return, etc.
  * @keys: (out) (array length=n_keys) (transfer full): return location
  *     for an array of #CdkKeymapKey
  * @n_keys: return location for number of elements in returned array
@@ -426,12 +426,12 @@ cdk_keymap_get_entries_for_keyval (CdkKeymap     *keymap,
                                    CdkKeymapKey **keys,
                                    gint          *n_keys)
 {
-  g_return_val_if_fail (GDK_IS_KEYMAP (keymap), FALSE);
+  g_return_val_if_fail (CDK_IS_KEYMAP (keymap), FALSE);
   g_return_val_if_fail (keys != NULL, FALSE);
   g_return_val_if_fail (n_keys != NULL, FALSE);
   g_return_val_if_fail (keyval != 0, FALSE);
 
-  return GDK_KEYMAP_GET_CLASS (keymap)->get_entries_for_keyval (keymap, keyval,
+  return CDK_KEYMAP_GET_CLASS (keymap)->get_entries_for_keyval (keymap, keyval,
                                                                 keys, n_keys);
 }
 
@@ -461,10 +461,10 @@ cdk_keymap_get_entries_for_keycode (CdkKeymap     *keymap,
                                     guint        **keyvals,
                                     gint          *n_entries)
 {
-  g_return_val_if_fail (GDK_IS_KEYMAP (keymap), FALSE);
+  g_return_val_if_fail (CDK_IS_KEYMAP (keymap), FALSE);
   g_return_val_if_fail (n_entries != NULL, FALSE);
 
-  return GDK_KEYMAP_GET_CLASS (keymap)->get_entries_for_keycode (keymap, hardware_keycode,
+  return CDK_KEYMAP_GET_CLASS (keymap)->get_entries_for_keycode (keymap, hardware_keycode,
                                                                  keys, keyvals, n_entries);
 }
 
@@ -485,10 +485,10 @@ guint
 cdk_keymap_lookup_key (CdkKeymap          *keymap,
                        const CdkKeymapKey *key)
 {
-  g_return_val_if_fail (GDK_IS_KEYMAP (keymap), 0);
+  g_return_val_if_fail (CDK_IS_KEYMAP (keymap), 0);
   g_return_val_if_fail (key != NULL, 0);
 
-  return GDK_KEYMAP_GET_CLASS (keymap)->lookup_key (keymap, key);
+  return CDK_KEYMAP_GET_CLASS (keymap)->lookup_key (keymap, key);
 }
 
 /**
@@ -522,12 +522,12 @@ cdk_keymap_lookup_key (CdkKeymap          *keymap,
  *
  * |[<!-- language="C" -->
  * // We want to ignore irrelevant modifiers like ScrollLock
- * #define ALL_ACCELS_MASK (GDK_CONTROL_MASK | GDK_SHIFT_MASK | GDK_MOD1_MASK)
+ * #define ALL_ACCELS_MASK (CDK_CONTROL_MASK | CDK_SHIFT_MASK | CDK_MOD1_MASK)
  * cdk_keymap_translate_keyboard_state (keymap, event->hardware_keycode,
  *                                      event->state, event->group,
  *                                      &keyval, NULL, NULL, &consumed);
- * if (keyval == GDK_PLUS &&
- *     (event->state & ~consumed & ALL_ACCELS_MASK) == GDK_CONTROL_MASK)
+ * if (keyval == CDK_PLUS &&
+ *     (event->state & ~consumed & ALL_ACCELS_MASK) == CDK_CONTROL_MASK)
  *   // Control was pressed
  * ]|
  * 
@@ -564,9 +564,9 @@ cdk_keymap_translate_keyboard_state (CdkKeymap       *keymap,
                                      gint            *level,
                                      CdkModifierType *consumed_modifiers)
 {
-  g_return_val_if_fail (GDK_IS_KEYMAP (keymap), FALSE);
+  g_return_val_if_fail (CDK_IS_KEYMAP (keymap), FALSE);
 
-  return GDK_KEYMAP_GET_CLASS (keymap)->translate_keyboard_state (keymap,
+  return CDK_KEYMAP_GET_CLASS (keymap)->translate_keyboard_state (keymap,
 								  hardware_keycode,
 								  state,
 								  group,
@@ -585,7 +585,7 @@ cdk_keymap_translate_keyboard_state (CdkKeymap       *keymap,
  * in @state to the virtual modifiers (i.e. Super, Hyper and Meta) and
  * set the corresponding bits in @state.
  *
- * GDK already does this before delivering key events, but for
+ * CDK already does this before delivering key events, but for
  * compatibility reasons, it only sets the first virtual modifier
  * it finds, whereas this function sets all matching virtual modifiers.
  *
@@ -598,9 +598,9 @@ void
 cdk_keymap_add_virtual_modifiers (CdkKeymap       *keymap,
 			          CdkModifierType *state)
 {
-  g_return_if_fail (GDK_IS_KEYMAP (keymap));
+  g_return_if_fail (CDK_IS_KEYMAP (keymap));
 
-  GDK_KEYMAP_GET_CLASS (keymap)->add_virtual_modifiers (keymap, state);
+  CDK_KEYMAP_GET_CLASS (keymap)->add_virtual_modifiers (keymap, state);
 }
 
 /**
@@ -626,9 +626,9 @@ gboolean
 cdk_keymap_map_virtual_modifiers (CdkKeymap       *keymap,
                                   CdkModifierType *state)
 {
-  g_return_val_if_fail (GDK_IS_KEYMAP (keymap), FALSE);
+  g_return_val_if_fail (CDK_IS_KEYMAP (keymap), FALSE);
 
-  return GDK_KEYMAP_GET_CLASS(keymap)->map_virtual_modifiers (keymap, state);
+  return CDK_KEYMAP_GET_CLASS(keymap)->map_virtual_modifiers (keymap, state);
 }
 
 static CdkModifierType
@@ -637,27 +637,27 @@ cdk_keymap_real_get_modifier_mask (CdkKeymap         *keymap,
 {
   switch (intent)
     {
-    case GDK_MODIFIER_INTENT_PRIMARY_ACCELERATOR:
-      return GDK_CONTROL_MASK;
+    case CDK_MODIFIER_INTENT_PRIMARY_ACCELERATOR:
+      return CDK_CONTROL_MASK;
 
-    case GDK_MODIFIER_INTENT_CONTEXT_MENU:
+    case CDK_MODIFIER_INTENT_CONTEXT_MENU:
       return 0;
 
-    case GDK_MODIFIER_INTENT_EXTEND_SELECTION:
-      return GDK_SHIFT_MASK;
+    case CDK_MODIFIER_INTENT_EXTEND_SELECTION:
+      return CDK_SHIFT_MASK;
 
-    case GDK_MODIFIER_INTENT_MODIFY_SELECTION:
-      return GDK_CONTROL_MASK;
+    case CDK_MODIFIER_INTENT_MODIFY_SELECTION:
+      return CDK_CONTROL_MASK;
 
-    case GDK_MODIFIER_INTENT_NO_TEXT_INPUT:
-      return GDK_MOD1_MASK | GDK_CONTROL_MASK;
+    case CDK_MODIFIER_INTENT_NO_TEXT_INPUT:
+      return CDK_MOD1_MASK | CDK_CONTROL_MASK;
 
-    case GDK_MODIFIER_INTENT_SHIFT_GROUP:
+    case CDK_MODIFIER_INTENT_SHIFT_GROUP:
       return 0;
 
-    case GDK_MODIFIER_INTENT_DEFAULT_MOD_MASK:
-      return (GDK_SHIFT_MASK   | GDK_CONTROL_MASK | GDK_MOD1_MASK    |
-	      GDK_SUPER_MASK   | GDK_HYPER_MASK   | GDK_META_MASK);
+    case CDK_MODIFIER_INTENT_DEFAULT_MOD_MASK:
+      return (CDK_SHIFT_MASK   | CDK_CONTROL_MASK | CDK_MOD1_MASK    |
+	      CDK_SUPER_MASK   | CDK_HYPER_MASK   | CDK_META_MASK);
 
     default:
       g_return_val_if_reached (0);
@@ -673,8 +673,8 @@ cdk_keymap_real_get_modifier_mask (CdkKeymap         *keymap,
  * uses for a particular purpose.
  *
  * Note that this function always returns real hardware modifiers, not
- * virtual ones (e.g. it will return #GDK_MOD1_MASK rather than
- * #GDK_META_MASK if the backend maps MOD1 to META), so there are use
+ * virtual ones (e.g. it will return #CDK_MOD1_MASK rather than
+ * #CDK_META_MASK if the backend maps MOD1 to META), so there are use
  * cases where the return value of this function has to be transformed
  * by cdk_keymap_add_virtual_modifiers() in order to contain the
  * expected result.
@@ -687,9 +687,9 @@ CdkModifierType
 cdk_keymap_get_modifier_mask (CdkKeymap         *keymap,
                               CdkModifierIntent  intent)
 {
-  g_return_val_if_fail (GDK_IS_KEYMAP (keymap), 0);
+  g_return_val_if_fail (CDK_IS_KEYMAP (keymap), 0);
 
-  return GDK_KEYMAP_GET_CLASS (keymap)->get_modifier_mask (keymap, intent);
+  return CDK_KEYMAP_GET_CLASS (keymap)->get_modifier_mask (keymap, intent);
 }
 
 #include "cdkkeynames.c"
@@ -702,7 +702,7 @@ cdk_keymap_get_modifier_mask (CdkKeymap         *keymap,
  *
  * The names are the same as those in the
  * `cdk/cdkkeysyms.h` header file
- * but without the leading “GDK_KEY_”.
+ * but without the leading “CDK_KEY_”.
  *
  * Returns: (nullable) (transfer none): a string containing the name
  *     of the key, or %NULL if @keyval is not a valid key. The string
@@ -722,9 +722,9 @@ cdk_keyval_name (guint keyval)
  *
  * The names are the same as those in the
  * `cdk/cdkkeysyms.h` header file
- * but without the leading “GDK_KEY_”.
+ * but without the leading “CDK_KEY_”.
  *
- * Returns: the corresponding key value, or %GDK_KEY_VoidSymbol
+ * Returns: the corresponding key value, or %CDK_KEY_VoidSymbol
  *     if the key name is not a valid key
  */
 guint
@@ -740,7 +740,7 @@ cdk_keyval_from_name (const gchar *keyval_name)
  * @upper: (out): return location for uppercase version of @symbol
  *
  * Obtains the upper- and lower-case versions of the keyval @symbol.
- * Examples of keyvals are #GDK_KEY_a, #GDK_KEY_Enter, #GDK_KEY_F1, etc.
+ * Examples of keyvals are #CDK_KEY_a, #CDK_KEY_Enter, #CDK_KEY_F1, etc.
  */
 void
 cdk_keyval_convert_case (guint symbol,
@@ -765,101 +765,101 @@ cdk_keyval_convert_case (guint symbol,
   switch (symbol >> 8)
     {
     case 0: /* Latin 1 */
-      if ((symbol >= GDK_KEY_A) && (symbol <= GDK_KEY_Z))
-        xlower += (GDK_KEY_a - GDK_KEY_A);
-      else if ((symbol >= GDK_KEY_a) && (symbol <= GDK_KEY_z))
-        xupper -= (GDK_KEY_a - GDK_KEY_A);
-      else if ((symbol >= GDK_KEY_Agrave) && (symbol <= GDK_KEY_Odiaeresis))
-        xlower += (GDK_KEY_agrave - GDK_KEY_Agrave);
-      else if ((symbol >= GDK_KEY_agrave) && (symbol <= GDK_KEY_odiaeresis))
-        xupper -= (GDK_KEY_agrave - GDK_KEY_Agrave);
-      else if ((symbol >= GDK_KEY_Ooblique) && (symbol <= GDK_KEY_Thorn))
-        xlower += (GDK_KEY_oslash - GDK_KEY_Ooblique);
-      else if ((symbol >= GDK_KEY_oslash) && (symbol <= GDK_KEY_thorn))
-        xupper -= (GDK_KEY_oslash - GDK_KEY_Ooblique);
+      if ((symbol >= CDK_KEY_A) && (symbol <= CDK_KEY_Z))
+        xlower += (CDK_KEY_a - CDK_KEY_A);
+      else if ((symbol >= CDK_KEY_a) && (symbol <= CDK_KEY_z))
+        xupper -= (CDK_KEY_a - CDK_KEY_A);
+      else if ((symbol >= CDK_KEY_Agrave) && (symbol <= CDK_KEY_Odiaeresis))
+        xlower += (CDK_KEY_agrave - CDK_KEY_Agrave);
+      else if ((symbol >= CDK_KEY_agrave) && (symbol <= CDK_KEY_odiaeresis))
+        xupper -= (CDK_KEY_agrave - CDK_KEY_Agrave);
+      else if ((symbol >= CDK_KEY_Ooblique) && (symbol <= CDK_KEY_Thorn))
+        xlower += (CDK_KEY_oslash - CDK_KEY_Ooblique);
+      else if ((symbol >= CDK_KEY_oslash) && (symbol <= CDK_KEY_thorn))
+        xupper -= (CDK_KEY_oslash - CDK_KEY_Ooblique);
       break;
 
     case 1: /* Latin 2 */
       /* Assume the KeySym is a legal value (ignore discontinuities) */
-      if (symbol == GDK_KEY_Aogonek)
-        xlower = GDK_KEY_aogonek;
-      else if (symbol >= GDK_KEY_Lstroke && symbol <= GDK_KEY_Sacute)
-        xlower += (GDK_KEY_lstroke - GDK_KEY_Lstroke);
-      else if (symbol >= GDK_KEY_Scaron && symbol <= GDK_KEY_Zacute)
-        xlower += (GDK_KEY_scaron - GDK_KEY_Scaron);
-      else if (symbol >= GDK_KEY_Zcaron && symbol <= GDK_KEY_Zabovedot)
-        xlower += (GDK_KEY_zcaron - GDK_KEY_Zcaron);
-      else if (symbol == GDK_KEY_aogonek)
-        xupper = GDK_KEY_Aogonek;
-      else if (symbol >= GDK_KEY_lstroke && symbol <= GDK_KEY_sacute)
-        xupper -= (GDK_KEY_lstroke - GDK_KEY_Lstroke);
-      else if (symbol >= GDK_KEY_scaron && symbol <= GDK_KEY_zacute)
-        xupper -= (GDK_KEY_scaron - GDK_KEY_Scaron);
-      else if (symbol >= GDK_KEY_zcaron && symbol <= GDK_KEY_zabovedot)
-        xupper -= (GDK_KEY_zcaron - GDK_KEY_Zcaron);
-      else if (symbol >= GDK_KEY_Racute && symbol <= GDK_KEY_Tcedilla)
-        xlower += (GDK_KEY_racute - GDK_KEY_Racute);
-      else if (symbol >= GDK_KEY_racute && symbol <= GDK_KEY_tcedilla)
-        xupper -= (GDK_KEY_racute - GDK_KEY_Racute);
+      if (symbol == CDK_KEY_Aogonek)
+        xlower = CDK_KEY_aogonek;
+      else if (symbol >= CDK_KEY_Lstroke && symbol <= CDK_KEY_Sacute)
+        xlower += (CDK_KEY_lstroke - CDK_KEY_Lstroke);
+      else if (symbol >= CDK_KEY_Scaron && symbol <= CDK_KEY_Zacute)
+        xlower += (CDK_KEY_scaron - CDK_KEY_Scaron);
+      else if (symbol >= CDK_KEY_Zcaron && symbol <= CDK_KEY_Zabovedot)
+        xlower += (CDK_KEY_zcaron - CDK_KEY_Zcaron);
+      else if (symbol == CDK_KEY_aogonek)
+        xupper = CDK_KEY_Aogonek;
+      else if (symbol >= CDK_KEY_lstroke && symbol <= CDK_KEY_sacute)
+        xupper -= (CDK_KEY_lstroke - CDK_KEY_Lstroke);
+      else if (symbol >= CDK_KEY_scaron && symbol <= CDK_KEY_zacute)
+        xupper -= (CDK_KEY_scaron - CDK_KEY_Scaron);
+      else if (symbol >= CDK_KEY_zcaron && symbol <= CDK_KEY_zabovedot)
+        xupper -= (CDK_KEY_zcaron - CDK_KEY_Zcaron);
+      else if (symbol >= CDK_KEY_Racute && symbol <= CDK_KEY_Tcedilla)
+        xlower += (CDK_KEY_racute - CDK_KEY_Racute);
+      else if (symbol >= CDK_KEY_racute && symbol <= CDK_KEY_tcedilla)
+        xupper -= (CDK_KEY_racute - CDK_KEY_Racute);
       break;
 
     case 2: /* Latin 3 */
       /* Assume the KeySym is a legal value (ignore discontinuities) */
-      if (symbol >= GDK_KEY_Hstroke && symbol <= GDK_KEY_Hcircumflex)
-        xlower += (GDK_KEY_hstroke - GDK_KEY_Hstroke);
-      else if (symbol >= GDK_KEY_Gbreve && symbol <= GDK_KEY_Jcircumflex)
-        xlower += (GDK_KEY_gbreve - GDK_KEY_Gbreve);
-      else if (symbol >= GDK_KEY_hstroke && symbol <= GDK_KEY_hcircumflex)
-        xupper -= (GDK_KEY_hstroke - GDK_KEY_Hstroke);
-      else if (symbol >= GDK_KEY_gbreve && symbol <= GDK_KEY_jcircumflex)
-        xupper -= (GDK_KEY_gbreve - GDK_KEY_Gbreve);
-      else if (symbol >= GDK_KEY_Cabovedot && symbol <= GDK_KEY_Scircumflex)
-        xlower += (GDK_KEY_cabovedot - GDK_KEY_Cabovedot);
-      else if (symbol >= GDK_KEY_cabovedot && symbol <= GDK_KEY_scircumflex)
-        xupper -= (GDK_KEY_cabovedot - GDK_KEY_Cabovedot);
+      if (symbol >= CDK_KEY_Hstroke && symbol <= CDK_KEY_Hcircumflex)
+        xlower += (CDK_KEY_hstroke - CDK_KEY_Hstroke);
+      else if (symbol >= CDK_KEY_Gbreve && symbol <= CDK_KEY_Jcircumflex)
+        xlower += (CDK_KEY_gbreve - CDK_KEY_Gbreve);
+      else if (symbol >= CDK_KEY_hstroke && symbol <= CDK_KEY_hcircumflex)
+        xupper -= (CDK_KEY_hstroke - CDK_KEY_Hstroke);
+      else if (symbol >= CDK_KEY_gbreve && symbol <= CDK_KEY_jcircumflex)
+        xupper -= (CDK_KEY_gbreve - CDK_KEY_Gbreve);
+      else if (symbol >= CDK_KEY_Cabovedot && symbol <= CDK_KEY_Scircumflex)
+        xlower += (CDK_KEY_cabovedot - CDK_KEY_Cabovedot);
+      else if (symbol >= CDK_KEY_cabovedot && symbol <= CDK_KEY_scircumflex)
+        xupper -= (CDK_KEY_cabovedot - CDK_KEY_Cabovedot);
       break;
 
     case 3: /* Latin 4 */
       /* Assume the KeySym is a legal value (ignore discontinuities) */
-      if (symbol >= GDK_KEY_Rcedilla && symbol <= GDK_KEY_Tslash)
-        xlower += (GDK_KEY_rcedilla - GDK_KEY_Rcedilla);
-      else if (symbol >= GDK_KEY_rcedilla && symbol <= GDK_KEY_tslash)
-        xupper -= (GDK_KEY_rcedilla - GDK_KEY_Rcedilla);
-      else if (symbol == GDK_KEY_ENG)
-        xlower = GDK_KEY_eng;
-      else if (symbol == GDK_KEY_eng)
-        xupper = GDK_KEY_ENG;
-      else if (symbol >= GDK_KEY_Amacron && symbol <= GDK_KEY_Umacron)
-        xlower += (GDK_KEY_amacron - GDK_KEY_Amacron);
-      else if (symbol >= GDK_KEY_amacron && symbol <= GDK_KEY_umacron)
-        xupper -= (GDK_KEY_amacron - GDK_KEY_Amacron);
+      if (symbol >= CDK_KEY_Rcedilla && symbol <= CDK_KEY_Tslash)
+        xlower += (CDK_KEY_rcedilla - CDK_KEY_Rcedilla);
+      else if (symbol >= CDK_KEY_rcedilla && symbol <= CDK_KEY_tslash)
+        xupper -= (CDK_KEY_rcedilla - CDK_KEY_Rcedilla);
+      else if (symbol == CDK_KEY_ENG)
+        xlower = CDK_KEY_eng;
+      else if (symbol == CDK_KEY_eng)
+        xupper = CDK_KEY_ENG;
+      else if (symbol >= CDK_KEY_Amacron && symbol <= CDK_KEY_Umacron)
+        xlower += (CDK_KEY_amacron - CDK_KEY_Amacron);
+      else if (symbol >= CDK_KEY_amacron && symbol <= CDK_KEY_umacron)
+        xupper -= (CDK_KEY_amacron - CDK_KEY_Amacron);
       break;
 
     case 6: /* Cyrillic */
       /* Assume the KeySym is a legal value (ignore discontinuities) */
-      if (symbol >= GDK_KEY_Serbian_DJE && symbol <= GDK_KEY_Serbian_DZE)
-        xlower -= (GDK_KEY_Serbian_DJE - GDK_KEY_Serbian_dje);
-      else if (symbol >= GDK_KEY_Serbian_dje && symbol <= GDK_KEY_Serbian_dze)
-        xupper += (GDK_KEY_Serbian_DJE - GDK_KEY_Serbian_dje);
-      else if (symbol >= GDK_KEY_Cyrillic_YU && symbol <= GDK_KEY_Cyrillic_HARDSIGN)
-        xlower -= (GDK_KEY_Cyrillic_YU - GDK_KEY_Cyrillic_yu);
-      else if (symbol >= GDK_KEY_Cyrillic_yu && symbol <= GDK_KEY_Cyrillic_hardsign)
-        xupper += (GDK_KEY_Cyrillic_YU - GDK_KEY_Cyrillic_yu);
+      if (symbol >= CDK_KEY_Serbian_DJE && symbol <= CDK_KEY_Serbian_DZE)
+        xlower -= (CDK_KEY_Serbian_DJE - CDK_KEY_Serbian_dje);
+      else if (symbol >= CDK_KEY_Serbian_dje && symbol <= CDK_KEY_Serbian_dze)
+        xupper += (CDK_KEY_Serbian_DJE - CDK_KEY_Serbian_dje);
+      else if (symbol >= CDK_KEY_Cyrillic_YU && symbol <= CDK_KEY_Cyrillic_HARDSIGN)
+        xlower -= (CDK_KEY_Cyrillic_YU - CDK_KEY_Cyrillic_yu);
+      else if (symbol >= CDK_KEY_Cyrillic_yu && symbol <= CDK_KEY_Cyrillic_hardsign)
+        xupper += (CDK_KEY_Cyrillic_YU - CDK_KEY_Cyrillic_yu);
       break;
 
     case 7: /* Greek */
       /* Assume the KeySym is a legal value (ignore discontinuities) */
-      if (symbol >= GDK_KEY_Greek_ALPHAaccent && symbol <= GDK_KEY_Greek_OMEGAaccent)
-        xlower += (GDK_KEY_Greek_alphaaccent - GDK_KEY_Greek_ALPHAaccent);
-      else if (symbol >= GDK_KEY_Greek_alphaaccent && symbol <= GDK_KEY_Greek_omegaaccent &&
-               symbol != GDK_KEY_Greek_iotaaccentdieresis &&
-               symbol != GDK_KEY_Greek_upsilonaccentdieresis)
-        xupper -= (GDK_KEY_Greek_alphaaccent - GDK_KEY_Greek_ALPHAaccent);
-      else if (symbol >= GDK_KEY_Greek_ALPHA && symbol <= GDK_KEY_Greek_OMEGA)
-        xlower += (GDK_KEY_Greek_alpha - GDK_KEY_Greek_ALPHA);
-      else if (symbol >= GDK_KEY_Greek_alpha && symbol <= GDK_KEY_Greek_omega &&
-               symbol != GDK_KEY_Greek_finalsmallsigma)
-        xupper -= (GDK_KEY_Greek_alpha - GDK_KEY_Greek_ALPHA);
+      if (symbol >= CDK_KEY_Greek_ALPHAaccent && symbol <= CDK_KEY_Greek_OMEGAaccent)
+        xlower += (CDK_KEY_Greek_alphaaccent - CDK_KEY_Greek_ALPHAaccent);
+      else if (symbol >= CDK_KEY_Greek_alphaaccent && symbol <= CDK_KEY_Greek_omegaaccent &&
+               symbol != CDK_KEY_Greek_iotaaccentdieresis &&
+               symbol != CDK_KEY_Greek_upsilonaccentdieresis)
+        xupper -= (CDK_KEY_Greek_alphaaccent - CDK_KEY_Greek_ALPHAaccent);
+      else if (symbol >= CDK_KEY_Greek_ALPHA && symbol <= CDK_KEY_Greek_OMEGA)
+        xlower += (CDK_KEY_Greek_alpha - CDK_KEY_Greek_ALPHA);
+      else if (symbol >= CDK_KEY_Greek_alpha && symbol <= CDK_KEY_Greek_omega &&
+               symbol != CDK_KEY_Greek_finalsmallsigma)
+        xupper -= (CDK_KEY_Greek_alpha - CDK_KEY_Greek_ALPHA);
       break;
     }
 

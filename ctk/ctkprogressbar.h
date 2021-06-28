@@ -65,46 +65,46 @@ struct _CtkProgressBarClass
 };
 
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType      ctk_progress_bar_get_type             (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_progress_bar_new                  (void);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_progress_bar_pulse                (CtkProgressBar *pbar);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_progress_bar_set_text             (CtkProgressBar *pbar,
                                                   const gchar    *text);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_progress_bar_set_fraction         (CtkProgressBar *pbar,
                                                   gdouble         fraction);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_progress_bar_set_pulse_step       (CtkProgressBar *pbar,
                                                   gdouble         fraction);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_progress_bar_set_inverted         (CtkProgressBar *pbar,
                                                   gboolean        inverted);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 const gchar *      ctk_progress_bar_get_text       (CtkProgressBar *pbar);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gdouble            ctk_progress_bar_get_fraction   (CtkProgressBar *pbar);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gdouble            ctk_progress_bar_get_pulse_step (CtkProgressBar *pbar);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean           ctk_progress_bar_get_inverted    (CtkProgressBar *pbar);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void               ctk_progress_bar_set_ellipsize (CtkProgressBar     *pbar,
                                                    PangoEllipsizeMode  mode);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 PangoEllipsizeMode ctk_progress_bar_get_ellipsize (CtkProgressBar     *pbar);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void               ctk_progress_bar_set_show_text (CtkProgressBar     *pbar,
                                                    gboolean            show_text);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean           ctk_progress_bar_get_show_text (CtkProgressBar     *pbar);
 
 G_END_DECLS

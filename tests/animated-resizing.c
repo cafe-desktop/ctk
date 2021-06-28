@@ -192,7 +192,7 @@ main(int argc, char **argv)
   frame_stats_ensure (CTK_WINDOW (window));
 
   ctk_window_set_keep_above (CTK_WINDOW (window), TRUE);
-  ctk_window_set_gravity (CTK_WINDOW (window), GDK_GRAVITY_CENTER);
+  ctk_window_set_gravity (CTK_WINDOW (window), CDK_GRAVITY_CENTER);
   ctk_widget_set_app_paintable (window, TRUE);
 
   g_signal_connect (window, "draw",

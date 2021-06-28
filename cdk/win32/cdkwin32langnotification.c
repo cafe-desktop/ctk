@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2019 Руслан Ижбулатов <lrn1986@gmail.com>
  *
  * This library is free software; you can redistribute it and/or

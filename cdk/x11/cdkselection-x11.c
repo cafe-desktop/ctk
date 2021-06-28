@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -84,7 +84,7 @@ _cdk_x11_selection_filter_clear_event (XSelectionClearEvent *event)
       if (cdk_window_get_display (info->owner) == display &&
           info->selection == cdk_x11_xatom_to_atom_for_display (display, event->selection))
         {
-          if ((GDK_WINDOW_XID (info->owner) == event->window &&
+          if ((CDK_WINDOW_XID (info->owner) == event->window &&
                event->serial >= info->serial))
             {
               owner_list = g_slist_remove (owner_list, info);
@@ -118,16 +118,16 @@ _cdk_x11_display_set_selection_owner (CdkDisplay *display,
 
   if (owner)
     {
-      if (GDK_WINDOW_DESTROYED (owner) || !GDK_WINDOW_IS_X11 (owner))
+      if (CDK_WINDOW_DESTROYED (owner) || !CDK_WINDOW_IS_X11 (owner))
         return FALSE;
 
       cdk_window_ensure_native (owner);
-      xdisplay = GDK_WINDOW_XDISPLAY (owner);
-      xwindow = GDK_WINDOW_XID (owner);
+      xdisplay = CDK_WINDOW_XDISPLAY (owner);
+      xwindow = CDK_WINDOW_XID (owner);
     }
   else
     {
-      xdisplay = GDK_DISPLAY_XDISPLAY (display);
+      xdisplay = CDK_DISPLAY_XDISPLAY (display);
       xwindow = None;
     }
 
@@ -150,7 +150,7 @@ _cdk_x11_display_set_selection_owner (CdkDisplay *display,
     {
       info = g_new (OwnerInfo, 1);
       info->owner = owner;
-      info->serial = NextRequest (GDK_WINDOW_XDISPLAY (owner));
+      info->serial = NextRequest (CDK_WINDOW_XDISPLAY (owner));
       info->selection = selection;
 
       owner_list = g_slist_prepend (owner_list, info);
@@ -170,7 +170,7 @@ _cdk_x11_display_get_selection_owner (CdkDisplay *display,
   if (cdk_display_is_closed (display))
     return NULL;
 
-  xwindow = XGetSelectionOwner (GDK_DISPLAY_XDISPLAY (display),
+  xwindow = XGetSelectionOwner (CDK_DISPLAY_XDISPLAY (display),
                                 cdk_x11_atom_to_xatom_for_display (display,
                                                                    selection));
   if (xwindow == None)
@@ -186,18 +186,18 @@ _cdk_x11_display_convert_selection (CdkDisplay *display,
                                     CdkAtom     target,
                                     guint32     time)
 {
-  g_return_if_fail (selection != GDK_NONE);
+  g_return_if_fail (selection != CDK_NONE);
 
-  if (GDK_WINDOW_DESTROYED (requestor) || !GDK_WINDOW_IS_X11 (requestor))
+  if (CDK_WINDOW_DESTROYED (requestor) || !CDK_WINDOW_IS_X11 (requestor))
     return;
 
   cdk_window_ensure_native (requestor);
 
-  XConvertSelection (GDK_WINDOW_XDISPLAY (requestor),
+  XConvertSelection (CDK_WINDOW_XDISPLAY (requestor),
                      cdk_x11_atom_to_xatom_for_display (display, selection),
                      cdk_x11_atom_to_xatom_for_display (display, target),
-                     cdk_x11_get_xatom_by_name_for_display (display, "GDK_SELECTION"),
-                     GDK_WINDOW_XID (requestor), time);
+                     cdk_x11_get_xatom_by_name_for_display (display, "CDK_SELECTION"),
+                     CDK_WINDOW_XID (requestor), time);
 }
 
 gint
@@ -214,7 +214,7 @@ _cdk_x11_display_get_selection_property (CdkDisplay  *display,
   gint prop_format;
   guchar *t = NULL;
 
-  if (GDK_WINDOW_DESTROYED (requestor) || !GDK_WINDOW_IS_X11 (requestor))
+  if (CDK_WINDOW_DESTROYED (requestor) || !CDK_WINDOW_IS_X11 (requestor))
     goto err;
 
   t = NULL;
@@ -223,9 +223,9 @@ _cdk_x11_display_get_selection_property (CdkDisplay  *display,
      protocol, in which case the client has to make sure they'll be
      notified of PropertyChange events _before_ the property is deleted.
      Otherwise there's no guarantee we'll win the race ... */
-  if (XGetWindowProperty (GDK_WINDOW_XDISPLAY (requestor),
-                          GDK_WINDOW_XID (requestor),
-                          cdk_x11_get_xatom_by_name_for_display (display, "GDK_SELECTION"),
+  if (XGetWindowProperty (CDK_WINDOW_XDISPLAY (requestor),
+                          CDK_WINDOW_XID (requestor),
+                          cdk_x11_get_xatom_by_name_for_display (display, "CDK_SELECTION"),
                           0, 0x1FFFFFFF /* MAXINT32 / 4 */, False,
                           AnyPropertyType, &prop_type, &prop_format,
                           &nitems, &nbytes, &t) != Success)
@@ -295,7 +295,7 @@ _cdk_x11_display_get_selection_property (CdkDisplay  *display,
 
  err:
   if (ret_type)
-    *ret_type = GDK_NONE;
+    *ret_type = CDK_NONE;
   if (ret_format)
     *ret_format = 0;
   if (data)
@@ -317,10 +317,10 @@ _cdk_x11_display_send_selection_notify (CdkDisplay       *display,
   xevent.type = SelectionNotify;
   xevent.serial = 0;
   xevent.send_event = True;
-  xevent.requestor = GDK_WINDOW_XID (requestor);
+  xevent.requestor = CDK_WINDOW_XID (requestor);
   xevent.selection = cdk_x11_atom_to_xatom_for_display (display, selection);
   xevent.target = cdk_x11_atom_to_xatom_for_display (display, target);
-  if (property == GDK_NONE)
+  if (property == CDK_NONE)
     xevent.property = None;
   else
     xevent.property = cdk_x11_atom_to_xatom_for_display (display, property);
@@ -364,7 +364,7 @@ cdk_x11_display_text_property_to_text_list (CdkDisplay   *display,
   gint count = 0;
   gint res;
   gchar **local_list;
-  g_return_val_if_fail (GDK_IS_DISPLAY (display), 0);
+  g_return_val_if_fail (CDK_IS_DISPLAY (display), 0);
 
   if (list)
     *list = NULL;
@@ -376,7 +376,7 @@ cdk_x11_display_text_property_to_text_list (CdkDisplay   *display,
   property.encoding = cdk_x11_atom_to_xatom_for_display (display, encoding);
   property.format = format;
   property.nitems = length;
-  res = XmbTextPropertyToTextList (GDK_DISPLAY_XDISPLAY (display), &property,
+  res = XmbTextPropertyToTextList (CDK_DISPLAY_XDISPLAY (display), &property,
                                    &local_list, &count);
   if (res == XNoMemory || res == XLocaleNotSupported || res == XConverterNotFound)
     return 0;
@@ -495,7 +495,7 @@ _cdk_x11_display_text_property_to_utf8_list (CdkDisplay    *display,
                                              gint           length,
                                              gchar       ***list)
 {
-  if (encoding == GDK_TARGET_STRING)
+  if (encoding == CDK_TARGET_STRING)
     {
       return make_list ((gchar *)text, length, TRUE, list);
     }
@@ -599,12 +599,12 @@ cdk_x11_display_string_to_compound_text (CdkDisplay  *display,
   gint res;
   XTextProperty property;
 
-  g_return_val_if_fail (GDK_IS_DISPLAY (display), 0);
+  g_return_val_if_fail (CDK_IS_DISPLAY (display), 0);
 
   if (cdk_display_is_closed (display))
     res = XLocaleNotSupported;
   else
-    res = XmbTextListToTextProperty (GDK_DISPLAY_XDISPLAY (display),
+    res = XmbTextListToTextProperty (CDK_DISPLAY_XDISPLAY (display),
                                      (char **)&str, 1, XCompoundTextStyle,
                                      &property);
   if (res != Success)
@@ -723,7 +723,7 @@ cdk_x11_display_utf8_to_compound_text (CdkDisplay  *display,
   gboolean result;
 
   g_return_val_if_fail (str != NULL, FALSE);
-  g_return_val_if_fail (GDK_IS_DISPLAY (display), FALSE);
+  g_return_val_if_fail (CDK_IS_DISPLAY (display), FALSE);
 
   need_conversion = !g_get_charset (&charset);
 

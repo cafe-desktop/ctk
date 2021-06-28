@@ -62,23 +62,23 @@ struct _CtkWindowGroupClass
 
 /* Window groups
  */
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType            ctk_window_group_get_type      (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWindowGroup * ctk_window_group_new           (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_window_group_add_window    (CtkWindowGroup     *window_group,
                                                  CtkWindow          *window);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_window_group_remove_window (CtkWindowGroup     *window_group,
                                                  CtkWindow          *window);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GList *          ctk_window_group_list_windows  (CtkWindowGroup     *window_group);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *      ctk_window_group_get_current_grab (CtkWindowGroup *window_group);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *      ctk_window_group_get_current_device_grab (CtkWindowGroup *window_group,
                                                            CdkDevice      *device);
 

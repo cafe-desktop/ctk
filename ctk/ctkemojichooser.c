@@ -321,7 +321,7 @@ update_hover (CtkWidget *widget,
               CdkEvent  *event,
               gpointer   data)
 {
-  if (event->type == GDK_ENTER_NOTIFY)
+  if (event->type == CDK_ENTER_NOTIFY)
     ctk_widget_set_state_flags (widget, CTK_STATE_FLAG_PRELIGHT, FALSE);
   else
     ctk_widget_unset_state_flags (widget, CTK_STATE_FLAG_PRELIGHT);
@@ -427,7 +427,7 @@ add_emoji (CtkWidget    *box,
     g_object_set_data (G_OBJECT (child), "modifier", GUINT_TO_POINTER (modifier));
 
   ebox = ctk_event_box_new ();
-  ctk_widget_add_events (ebox, GDK_ENTER_NOTIFY_MASK | GDK_LEAVE_NOTIFY_MASK);
+  ctk_widget_add_events (ebox, CDK_ENTER_NOTIFY_MASK | CDK_LEAVE_NOTIFY_MASK);
   g_signal_connect (ebox, "enter-notify-event", G_CALLBACK (update_hover), FALSE);
   g_signal_connect (ebox, "leave-notify-event", G_CALLBACK (update_hover), FALSE);
   ctk_container_add (CTK_CONTAINER (child), ebox);
@@ -699,19 +699,19 @@ ctk_emoji_chooser_init (CtkEmojiChooser *chooser)
   chooser->recent_long_press = ctk_gesture_long_press_new (chooser->recent.box);
   g_signal_connect (chooser->recent_long_press, "pressed", G_CALLBACK (long_pressed_cb), chooser);
   chooser->recent_multi_press = ctk_gesture_multi_press_new (chooser->recent.box);
-  ctk_gesture_single_set_button (CTK_GESTURE_SINGLE (chooser->recent_multi_press), GDK_BUTTON_SECONDARY);
+  ctk_gesture_single_set_button (CTK_GESTURE_SINGLE (chooser->recent_multi_press), CDK_BUTTON_SECONDARY);
   g_signal_connect (chooser->recent_multi_press, "pressed", G_CALLBACK (pressed_cb), chooser);
 
   chooser->people_long_press = ctk_gesture_long_press_new (chooser->people.box);
   g_signal_connect (chooser->people_long_press, "pressed", G_CALLBACK (long_pressed_cb), chooser);
   chooser->people_multi_press = ctk_gesture_multi_press_new (chooser->people.box);
-  ctk_gesture_single_set_button (CTK_GESTURE_SINGLE (chooser->people_multi_press), GDK_BUTTON_SECONDARY);
+  ctk_gesture_single_set_button (CTK_GESTURE_SINGLE (chooser->people_multi_press), CDK_BUTTON_SECONDARY);
   g_signal_connect (chooser->people_multi_press, "pressed", G_CALLBACK (pressed_cb), chooser);
 
   chooser->body_long_press = ctk_gesture_long_press_new (chooser->body.box);
   g_signal_connect (chooser->body_long_press, "pressed", G_CALLBACK (long_pressed_cb), chooser);
   chooser->body_multi_press = ctk_gesture_multi_press_new (chooser->body.box);
-  ctk_gesture_single_set_button (CTK_GESTURE_SINGLE (chooser->body_multi_press), GDK_BUTTON_SECONDARY);
+  ctk_gesture_single_set_button (CTK_GESTURE_SINGLE (chooser->body_multi_press), CDK_BUTTON_SECONDARY);
   g_signal_connect (chooser->body_multi_press, "pressed", G_CALLBACK (pressed_cb), chooser);
 
   adj = ctk_scrolled_window_get_vadjustment (CTK_SCROLLED_WINDOW (chooser->scrolled_window));

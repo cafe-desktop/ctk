@@ -84,26 +84,26 @@ struct _CtkHandleBoxClass
 };
 
 
-GDK_DEPRECATED_IN_3_4
+CDK_DEPRECATED_IN_3_4
 GType         ctk_handle_box_get_type             (void) G_GNUC_CONST;
-GDK_DEPRECATED_IN_3_4
+CDK_DEPRECATED_IN_3_4
 CtkWidget*    ctk_handle_box_new                  (void);
-GDK_DEPRECATED_IN_3_4
+CDK_DEPRECATED_IN_3_4
 void          ctk_handle_box_set_shadow_type      (CtkHandleBox    *handle_box,
                                                    CtkShadowType    type);
-GDK_DEPRECATED_IN_3_4
+CDK_DEPRECATED_IN_3_4
 CtkShadowType ctk_handle_box_get_shadow_type      (CtkHandleBox    *handle_box);
-GDK_DEPRECATED_IN_3_4
+CDK_DEPRECATED_IN_3_4
 void          ctk_handle_box_set_handle_position  (CtkHandleBox    *handle_box,
 					           CtkPositionType  position);
-GDK_DEPRECATED_IN_3_4
+CDK_DEPRECATED_IN_3_4
 CtkPositionType ctk_handle_box_get_handle_position(CtkHandleBox    *handle_box);
-GDK_DEPRECATED_IN_3_4
+CDK_DEPRECATED_IN_3_4
 void          ctk_handle_box_set_snap_edge        (CtkHandleBox    *handle_box,
 						   CtkPositionType  edge);
-GDK_DEPRECATED_IN_3_4
+CDK_DEPRECATED_IN_3_4
 CtkPositionType ctk_handle_box_get_snap_edge      (CtkHandleBox    *handle_box);
-GDK_DEPRECATED_IN_3_4
+CDK_DEPRECATED_IN_3_4
 gboolean      ctk_handle_box_get_child_detached   (CtkHandleBox    *handle_box);
 
 G_END_DECLS

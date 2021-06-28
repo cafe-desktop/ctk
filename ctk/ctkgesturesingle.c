@@ -29,7 +29,7 @@
  * is accessible through ctk_gesture_single_get_current_sequence() while the
  * gesture is being interacted with.
  *
- * By default gestures react to both %GDK_BUTTON_PRIMARY and touch
+ * By default gestures react to both %CDK_BUTTON_PRIMARY and touch
  * events, ctk_gesture_single_set_touch_only() can be used to change the
  * touch behavior. Callers may also specify a different mouse button number
  * to interact with through ctk_gesture_single_set_button(), or react to any
@@ -148,42 +148,42 @@ ctk_gesture_single_handle_event (CtkEventController *controller,
   priv = ctk_gesture_single_get_instance_private (CTK_GESTURE_SINGLE (controller));
   source = cdk_device_get_source (source_device);
 
-  if (source != GDK_SOURCE_TOUCHSCREEN)
+  if (source != CDK_SOURCE_TOUCHSCREEN)
     test_touchscreen = ctk_simulate_touchscreen ();
 
   switch (event->type)
     {
-    case GDK_TOUCH_BEGIN:
-    case GDK_TOUCH_END:
-    case GDK_TOUCH_UPDATE:
+    case CDK_TOUCH_BEGIN:
+    case CDK_TOUCH_END:
+    case CDK_TOUCH_UPDATE:
       if (priv->exclusive && !event->touch.emulating_pointer)
         return FALSE;
 
       sequence = event->touch.sequence;
       button = 1;
       break;
-    case GDK_BUTTON_PRESS:
-    case GDK_BUTTON_RELEASE:
-      if (priv->touch_only && !test_touchscreen && source != GDK_SOURCE_TOUCHSCREEN)
+    case CDK_BUTTON_PRESS:
+    case CDK_BUTTON_RELEASE:
+      if (priv->touch_only && !test_touchscreen && source != CDK_SOURCE_TOUCHSCREEN)
         return FALSE;
 
       button = event->button.button;
       break;
-    case GDK_MOTION_NOTIFY:
+    case CDK_MOTION_NOTIFY:
       if (!ctk_gesture_handles_sequence (CTK_GESTURE (controller), sequence))
         return FALSE;
-      if (priv->touch_only && !test_touchscreen && source != GDK_SOURCE_TOUCHSCREEN)
+      if (priv->touch_only && !test_touchscreen && source != CDK_SOURCE_TOUCHSCREEN)
         return FALSE;
 
       if (priv->current_button > 0 && priv->current_button <= 5 &&
-          (event->motion.state & (GDK_BUTTON1_MASK << (priv->current_button - 1))))
+          (event->motion.state & (CDK_BUTTON1_MASK << (priv->current_button - 1))))
         button = priv->current_button;
       else if (priv->current_button == 0)
         {
           /* No current button, find out from the mask */
           for (i = 0; i < 3; i++)
             {
-              if ((event->motion.state & (GDK_BUTTON1_MASK << i)) == 0)
+              if ((event->motion.state & (CDK_BUTTON1_MASK << i)) == 0)
                 continue;
               button = i + 1;
               break;
@@ -191,9 +191,9 @@ ctk_gesture_single_handle_event (CtkEventController *controller,
         }
 
       break;
-    case GDK_TOUCH_CANCEL:
-    case GDK_GRAB_BROKEN:
-    case GDK_TOUCHPAD_SWIPE:
+    case CDK_TOUCH_CANCEL:
+    case CDK_GRAB_BROKEN:
+    case CDK_TOUCHPAD_SWIPE:
       return CTK_EVENT_CONTROLLER_CLASS (ctk_gesture_single_parent_class)->handle_event (controller,
                                                                                          event);
       break;
@@ -210,8 +210,8 @@ ctk_gesture_single_handle_event (CtkEventController *controller,
       return FALSE;
     }
 
-  if (event->type == GDK_BUTTON_PRESS || event->type == GDK_TOUCH_BEGIN ||
-      event->type == GDK_MOTION_NOTIFY || event->type == GDK_TOUCH_UPDATE)
+  if (event->type == CDK_BUTTON_PRESS || event->type == CDK_TOUCH_BEGIN ||
+      event->type == CDK_MOTION_NOTIFY || event->type == CDK_TOUCH_UPDATE)
     {
       if (!ctk_gesture_is_active (CTK_GESTURE (controller)))
         priv->current_sequence = sequence;
@@ -222,14 +222,14 @@ ctk_gesture_single_handle_event (CtkEventController *controller,
   retval = CTK_EVENT_CONTROLLER_CLASS (ctk_gesture_single_parent_class)->handle_event (controller, event);
 
   if (sequence == priv->current_sequence &&
-      (event->type == GDK_BUTTON_RELEASE || event->type == GDK_TOUCH_END))
+      (event->type == CDK_BUTTON_RELEASE || event->type == CDK_TOUCH_END))
     priv->current_button = 0;
   else if (priv->current_sequence == sequence &&
            !ctk_gesture_handles_sequence (CTK_GESTURE (controller), sequence))
     {
-      if (button == priv->current_button && event->type == GDK_BUTTON_PRESS)
+      if (button == priv->current_button && event->type == CDK_BUTTON_PRESS)
         priv->current_button = 0;
-      else if (sequence == priv->current_sequence && event->type == GDK_TOUCH_BEGIN)
+      else if (sequence == priv->current_sequence && event->type == CDK_TOUCH_BEGIN)
         priv->current_sequence = NULL;
     }
 
@@ -291,7 +291,7 @@ ctk_gesture_single_class_init (CtkGestureSingleClass *klass)
                          P_("Button number"),
                          P_("Button number to listen to"),
                          0, G_MAXUINT,
-                         GDK_BUTTON_PRIMARY,
+                         CDK_BUTTON_PRIMARY,
                          CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   g_object_class_install_properties (object_class, LAST_PROP, properties);
@@ -304,11 +304,11 @@ _ctk_gesture_single_update_evmask (CtkGestureSingle *gesture)
   CdkEventMask evmask;
 
   priv = ctk_gesture_single_get_instance_private (gesture);
-  evmask = GDK_TOUCH_MASK;
+  evmask = CDK_TOUCH_MASK;
 
   if (!priv->touch_only || ctk_simulate_touchscreen ())
-    evmask |= GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK |
-      GDK_BUTTON_MOTION_MASK;
+    evmask |= CDK_BUTTON_PRESS_MASK | CDK_BUTTON_RELEASE_MASK |
+      CDK_BUTTON_MOTION_MASK;
 
   ctk_event_controller_set_event_mask (CTK_EVENT_CONTROLLER (gesture), evmask);
 }
@@ -320,7 +320,7 @@ ctk_gesture_single_init (CtkGestureSingle *gesture)
 
   priv = ctk_gesture_single_get_instance_private (gesture);
   priv->touch_only = FALSE;
-  priv->button = GDK_BUTTON_PRIMARY;
+  priv->button = CDK_BUTTON_PRIMARY;
   _ctk_gesture_single_update_evmask (gesture);
 }
 
@@ -352,7 +352,7 @@ ctk_gesture_single_get_touch_only (CtkGestureSingle *gesture)
  * @touch_only: whether @gesture handles only touch events
  *
  * If @touch_only is %TRUE, @gesture will only handle events of type
- * #GDK_TOUCH_BEGIN, #GDK_TOUCH_UPDATE or #GDK_TOUCH_END. If %FALSE,
+ * #CDK_TOUCH_BEGIN, #CDK_TOUCH_UPDATE or #CDK_TOUCH_END. If %FALSE,
  * mouse events will be handled too.
  *
  * Since: 3.14

@@ -80,46 +80,46 @@ struct _CtkEditableInterface
   gint (* get_position)             (CtkEditable    *editable);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType    ctk_editable_get_type             (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_editable_select_region        (CtkEditable *editable,
 					    gint         start_pos,
 					    gint         end_pos);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_editable_get_selection_bounds (CtkEditable *editable,
 					    gint        *start_pos,
 					    gint        *end_pos);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_editable_insert_text          (CtkEditable *editable,
 					    const gchar *new_text,
 					    gint         new_text_length,
 					    gint        *position);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_editable_delete_text          (CtkEditable *editable,
 					    gint         start_pos,
 					    gint         end_pos);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gchar*   ctk_editable_get_chars            (CtkEditable *editable,
 					    gint         start_pos,
 					    gint         end_pos);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_editable_cut_clipboard        (CtkEditable *editable);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_editable_copy_clipboard       (CtkEditable *editable);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_editable_paste_clipboard      (CtkEditable *editable);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_editable_delete_selection     (CtkEditable *editable);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_editable_set_position         (CtkEditable *editable,
 					    gint         position);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gint     ctk_editable_get_position         (CtkEditable *editable);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void     ctk_editable_set_editable         (CtkEditable *editable,
 					    gboolean     is_editable);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_editable_get_editable         (CtkEditable *editable);
 
 G_END_DECLS

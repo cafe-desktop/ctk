@@ -19,12 +19,12 @@
 
 #include "cdkdisplayprivate.h"
 
-#ifdef GDK_WIN32_ENABLE_EGL
+#ifdef CDK_WIN32_ENABLE_EGL
 # include <epoxy/egl.h>
 #endif
 
-#ifndef __GDK_DISPLAY__WIN32_H__
-#define __GDK_DISPLAY__WIN32_H__
+#ifndef __CDK_DISPLAY__WIN32_H__
+#define __CDK_DISPLAY__WIN32_H__
 
 /* Define values used to set DPI-awareness */
 typedef enum _CdkWin32ProcessDpiAwareness {
@@ -86,7 +86,7 @@ struct _CdkWin32Display
   guint gl_version;
   HWND gl_hwnd;
 
-#ifdef GDK_WIN32_ENABLE_EGL
+#ifdef CDK_WIN32_ENABLE_EGL
   /* EGL (Angle) Items */
   guint have_egl : 1;
   guint egl_version;
@@ -102,7 +102,7 @@ struct _CdkWin32Display
   guint hasWglARBPixelFormat : 1;
   guint hasWglARBmultisample : 1;
 
-#ifdef GDK_WIN32_ENABLE_EGL
+#ifdef CDK_WIN32_ENABLE_EGL
   guint hasEglKHRCreateContext : 1;
   guint hasEglSurfacelessContext : 1;
   EGLint egl_min_swap_interval;
@@ -135,4 +135,4 @@ guint      _cdk_win32_display_get_monitor_scale_factor (CdkWin32Display *win32_d
                                                         HMONITOR         hmonitor,
                                                         HWND             hwnd,
                                                         gint             *dpi);
-#endif /* __GDK_DISPLAY__WIN32_H__ */
+#endif /* __CDK_DISPLAY__WIN32_H__ */

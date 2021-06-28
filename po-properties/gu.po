@@ -135,8 +135,8 @@ msgid "Default Display"
 msgstr "મૂળભૂત ડિસ્પ્લે"
 
 #: ../cdk/cdkdisplaymanager.c:166
-msgid "The default display for GDK"
-msgstr "GDK માટેનો મૂળભૂત ડિસ્પ્લે"
+msgid "The default display for CDK"
+msgstr "CDK માટેનો મૂળભૂત ડિસ્પ્લે"
 
 #: ../cdk/cdkscreen.c:91
 msgid "Font options"

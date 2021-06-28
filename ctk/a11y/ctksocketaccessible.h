@@ -49,10 +49,10 @@ struct _CtkSocketAccessibleClass
   CtkContainerAccessibleClass parent_class;
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType ctk_socket_accessible_get_type (void);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void ctk_socket_accessible_embed (CtkSocketAccessible *socket, gchar *path);
 
 G_END_DECLS

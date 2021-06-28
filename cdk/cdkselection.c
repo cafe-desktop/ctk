@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -35,7 +35,7 @@
  * @Short_description: Functions for transferring data between programs
  * @Title: Selections
  *
- * GDK’s selection functions, based on the [X selection mechanism](
+ * CDK’s selection functions, based on the [X selection mechanism](
  * https://www.x.org/releases/X11R7.6/doc/xorg-docs/specs/ICCCM/icccm.html),
  * provide a way to transfer arbitrary chunks of
  * data between programs. A “selection” is a essentially
@@ -63,7 +63,7 @@
  * https://www.x.org/releases/X11R7.6/doc/xorg-docs/specs/ICCCM/icccm.html).
  *
  * Note that although much of the selection API design is based on that of X,
- * it will work on other GDK backends too.
+ * it will work on other CDK backends too.
  */
 
 /**
@@ -121,7 +121,7 @@ cdk_selection_owner_get (CdkAtom selection)
  * @selection: selection that was requested.
  * @target: target that was selected.
  * @property: property in which the selection owner stored the
- *   data, or %GDK_NONE to indicate that the request
+ *   data, or %CDK_NONE to indicate that the request
  *   was rejected.
  * @time_: timestamp.
  *
@@ -165,10 +165,10 @@ cdk_selection_owner_set_for_display (CdkDisplay *display,
                                      guint32     time,
                                      gboolean    send_event)
 {
-  g_return_val_if_fail (GDK_IS_DISPLAY (display), FALSE);
-  g_return_val_if_fail (selection != GDK_NONE, FALSE);
+  g_return_val_if_fail (CDK_IS_DISPLAY (display), FALSE);
+  g_return_val_if_fail (selection != CDK_NONE, FALSE);
 
-  return GDK_DISPLAY_GET_CLASS (display)
+  return CDK_DISPLAY_GET_CLASS (display)
            ->set_selection_owner (display, owner, selection, time, send_event);
 }
 
@@ -194,10 +194,10 @@ CdkWindow *
 cdk_selection_owner_get_for_display (CdkDisplay *display,
                                      CdkAtom     selection)
 {
-  g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
-  g_return_val_if_fail (selection != GDK_NONE, NULL);
+  g_return_val_if_fail (CDK_IS_DISPLAY (display), NULL);
+  g_return_val_if_fail (selection != CDK_NONE, NULL);
 
-  return GDK_DISPLAY_GET_CLASS (display)->get_selection_owner (display, selection);
+  return CDK_DISPLAY_GET_CLASS (display)->get_selection_owner (display, selection);
 }
 
 /**
@@ -207,7 +207,7 @@ cdk_selection_owner_get_for_display (CdkDisplay *display,
  * @selection: selection that was requested
  * @target: target that was selected
  * @property: property in which the selection owner stored the data,
- *            or %GDK_NONE to indicate that the request was rejected
+ *            or %CDK_NONE to indicate that the request was rejected
  * @time_: timestamp
  *
  * Send a response to SelectionRequest event.
@@ -222,9 +222,9 @@ cdk_selection_send_notify_for_display (CdkDisplay       *display,
                                        CdkAtom          property,
                                        guint32          time_)
 {
-  g_return_if_fail (GDK_IS_DISPLAY (display));
+  g_return_if_fail (CDK_IS_DISPLAY (display));
 
-  GDK_DISPLAY_GET_CLASS (display)
+  CDK_DISPLAY_GET_CLASS (display)
     ->send_selection_notify (display, requestor, selection,target, property, time_);
 }
 
@@ -256,11 +256,11 @@ cdk_selection_property_get (CdkWindow  *requestor,
 {
   CdkDisplay *display;
 
-  g_return_val_if_fail (GDK_IS_WINDOW (requestor), 0);
+  g_return_val_if_fail (CDK_IS_WINDOW (requestor), 0);
 
   display = cdk_window_get_display (requestor);
 
-  return GDK_DISPLAY_GET_CLASS (display)
+  return CDK_DISPLAY_GET_CLASS (display)
            ->get_selection_property (display, requestor, data, ret_type, ret_format);
 }
 
@@ -272,11 +272,11 @@ cdk_selection_convert (CdkWindow *requestor,
 {
   CdkDisplay *display;
 
-  g_return_if_fail (selection != GDK_NONE);
+  g_return_if_fail (selection != CDK_NONE);
 
   display = cdk_window_get_display (requestor);
 
-  GDK_DISPLAY_GET_CLASS (display)
+  CDK_DISPLAY_GET_CLASS (display)
     ->convert_selection (display, requestor, selection, target, time);
 }
 
@@ -308,9 +308,9 @@ cdk_text_property_to_utf8_list_for_display (CdkDisplay     *display,
 {
   g_return_val_if_fail (text != NULL, 0);
   g_return_val_if_fail (length >= 0, 0);
-  g_return_val_if_fail (GDK_IS_DISPLAY (display), 0);
+  g_return_val_if_fail (CDK_IS_DISPLAY (display), 0);
 
-  return GDK_DISPLAY_GET_CLASS (display)
+  return CDK_DISPLAY_GET_CLASS (display)
            ->text_property_to_utf8_list (display, encoding, format, text, length, list);
 }
 
@@ -333,5 +333,5 @@ cdk_utf8_to_string_target (const gchar *str)
 {
   CdkDisplay *display = cdk_display_get_default ();
 
-  return GDK_DISPLAY_GET_CLASS (display)->utf8_to_string_target (display, str);
+  return CDK_DISPLAY_GET_CLASS (display)->utf8_to_string_target (display, str);
 }

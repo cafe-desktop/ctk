@@ -61,26 +61,26 @@ struct _CtkCellRendererToggleClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType            ctk_cell_renderer_toggle_get_type       (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkCellRenderer *ctk_cell_renderer_toggle_new            (void);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean         ctk_cell_renderer_toggle_get_radio      (CtkCellRendererToggle *toggle);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void             ctk_cell_renderer_toggle_set_radio      (CtkCellRendererToggle *toggle,
                                                           gboolean               radio);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean        ctk_cell_renderer_toggle_get_active      (CtkCellRendererToggle *toggle);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void            ctk_cell_renderer_toggle_set_active      (CtkCellRendererToggle *toggle,
                                                           gboolean               setting);
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean        ctk_cell_renderer_toggle_get_activatable (CtkCellRendererToggle *toggle);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void            ctk_cell_renderer_toggle_set_activatable (CtkCellRendererToggle *toggle,
                                                           gboolean               setting);
 

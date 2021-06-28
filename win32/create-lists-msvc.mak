@@ -33,9 +33,9 @@
 
 NULL=
 
-# For GDK resources
+# For CDK resources
 
-!if [call create-lists.bat header resources_sources.mak GDK_RESOURCES]
+!if [call create-lists.bat header resources_sources.mak CDK_RESOURCES]
 !endif
 
 !if [for %f in (..\cdk\resources\glsl\*.glsl) do @call create-lists.bat file resources_sources.mak %f]

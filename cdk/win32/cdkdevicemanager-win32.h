@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 2009 Carlos Garnacho <carlosg@gnome.org>
  *
  * This library is free software; you can redistribute it and/or
@@ -15,19 +15,19 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GDK_DEVICE_MANAGER_WIN32_H__
-#define __GDK_DEVICE_MANAGER_WIN32_H__
+#ifndef __CDK_DEVICE_MANAGER_WIN32_H__
+#define __CDK_DEVICE_MANAGER_WIN32_H__
 
 #include <cdk/cdkdevicemanagerprivate.h>
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_DEVICE_MANAGER_WIN32         (cdk_device_manager_win32_get_type ())
-#define GDK_DEVICE_MANAGER_WIN32(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), GDK_TYPE_DEVICE_MANAGER_WIN32, CdkDeviceManagerWin32))
-#define GDK_DEVICE_MANAGER_WIN32_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), GDK_TYPE_DEVICE_MANAGER_WIN32, CdkDeviceManagerWin32Class))
-#define GDK_IS_DEVICE_MANAGER_WIN32(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), GDK_TYPE_DEVICE_MANAGER_WIN32))
-#define GDK_IS_DEVICE_MANAGER_WIN32_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), GDK_TYPE_DEVICE_MANAGER_WIN32))
-#define GDK_DEVICE_MANAGER_WIN32_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), GDK_TYPE_DEVICE_MANAGER_WIN32, CdkDeviceManagerWin32Class))
+#define CDK_TYPE_DEVICE_MANAGER_WIN32         (cdk_device_manager_win32_get_type ())
+#define CDK_DEVICE_MANAGER_WIN32(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), CDK_TYPE_DEVICE_MANAGER_WIN32, CdkDeviceManagerWin32))
+#define CDK_DEVICE_MANAGER_WIN32_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), CDK_TYPE_DEVICE_MANAGER_WIN32, CdkDeviceManagerWin32Class))
+#define CDK_IS_DEVICE_MANAGER_WIN32(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), CDK_TYPE_DEVICE_MANAGER_WIN32))
+#define CDK_IS_DEVICE_MANAGER_WIN32_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), CDK_TYPE_DEVICE_MANAGER_WIN32))
+#define CDK_DEVICE_MANAGER_WIN32_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), CDK_TYPE_DEVICE_MANAGER_WIN32, CdkDeviceManagerWin32Class))
 
 typedef struct _CdkDeviceManagerWin32 CdkDeviceManagerWin32;
 typedef struct _CdkDeviceManagerWin32Class CdkDeviceManagerWin32Class;
@@ -65,4 +65,4 @@ gboolean cdk_input_other_event        (CdkDisplay *display,
 
 G_END_DECLS
 
-#endif /* __GDK_DEVICE_MANAGER_WIN32_H__ */
+#endif /* __CDK_DEVICE_MANAGER_WIN32_H__ */

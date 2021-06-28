@@ -66,48 +66,48 @@ struct _CtkCellViewClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType             ctk_cell_view_get_type                (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget        *ctk_cell_view_new                     (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget        *ctk_cell_view_new_with_context        (CtkCellArea        *area,
                                                          CtkCellAreaContext *context);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget        *ctk_cell_view_new_with_text           (const gchar     *text);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget        *ctk_cell_view_new_with_markup         (const gchar     *markup);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget        *ctk_cell_view_new_with_pixbuf         (CdkPixbuf       *pixbuf);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_cell_view_set_model               (CtkCellView     *cell_view,
                                                          CtkTreeModel    *model);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreeModel     *ctk_cell_view_get_model               (CtkCellView     *cell_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_cell_view_set_displayed_row       (CtkCellView     *cell_view,
                                                          CtkTreePath     *path);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkTreePath      *ctk_cell_view_get_displayed_row       (CtkCellView     *cell_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_cell_view_set_background_rgba     (CtkCellView     *cell_view,
                                                          const CdkRGBA   *rgba);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean          ctk_cell_view_get_draw_sensitive      (CtkCellView     *cell_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_cell_view_set_draw_sensitive      (CtkCellView     *cell_view,
                                                          gboolean         draw_sensitive);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 gboolean          ctk_cell_view_get_fit_model           (CtkCellView     *cell_view);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void              ctk_cell_view_set_fit_model           (CtkCellView     *cell_view,
                                                          gboolean         fit_model);
 
-GDK_DEPRECATED_IN_3_0_FOR(ctk_widget_get_preferred_size)
+CDK_DEPRECATED_IN_3_0_FOR(ctk_widget_get_preferred_size)
 gboolean          ctk_cell_view_get_size_of_row         (CtkCellView     *cell_view,
                                                          CtkTreePath     *path,
                                                          CtkRequisition  *requisition);
-GDK_DEPRECATED_IN_3_4_FOR(ctk_cell_view_set_background_rgba)
+CDK_DEPRECATED_IN_3_4_FOR(ctk_cell_view_set_background_rgba)
 void              ctk_cell_view_set_background_color    (CtkCellView     *cell_view,
                                                          const CdkColor  *color);
 

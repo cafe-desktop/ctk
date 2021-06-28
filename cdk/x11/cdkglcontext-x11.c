@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  *
  * cdkglcontext-x11.c: X11 specific OpenGL wrappers
  *
@@ -41,7 +41,7 @@
 
 #include <epoxy/glx.h>
 
-G_DEFINE_TYPE (CdkX11GLContext, cdk_x11_gl_context, GDK_TYPE_GL_CONTEXT)
+G_DEFINE_TYPE (CdkX11GLContext, cdk_x11_gl_context, CDK_TYPE_GL_CONTEXT)
 
 typedef struct {
   CdkDisplay *display;
@@ -97,7 +97,7 @@ static void
 maybe_wait_for_vblank (CdkDisplay  *display,
                        GLXDrawable  drawable)
 {
-  CdkX11Display *display_x11 = GDK_X11_DISPLAY (display);
+  CdkX11Display *display_x11 = CDK_X11_DISPLAY (display);
   Display *dpy = cdk_x11_display_get_xdisplay (display);
 
   if (display_x11->has_glx_sync_control)
@@ -124,7 +124,7 @@ cdk_x11_window_invalidate_for_new_frame (CdkWindow      *window,
 {
   cairo_rectangle_int_t window_rect;
   CdkDisplay *display = cdk_window_get_display (window);
-  CdkX11Display *display_x11 = GDK_X11_DISPLAY (display);
+  CdkX11Display *display_x11 = CDK_X11_DISPLAY (display);
   Display *dpy = cdk_x11_display_get_xdisplay (display);
   CdkX11GLContext *context_x11;
   unsigned int buffer_age;
@@ -134,7 +134,7 @@ cdk_x11_window_invalidate_for_new_frame (CdkWindow      *window,
   if (window->gl_paint_context == NULL)
     return;
 
-  context_x11 = GDK_X11_GL_CONTEXT (window->gl_paint_context);
+  context_x11 = CDK_X11_GL_CONTEXT (window->gl_paint_context);
 
   buffer_age = 0;
 
@@ -221,11 +221,11 @@ cdk_x11_gl_context_end_frame (CdkGLContext *context,
                               cairo_region_t *painted,
                               cairo_region_t *damage)
 {
-  CdkX11GLContext *context_x11 = GDK_X11_GL_CONTEXT (context);
+  CdkX11GLContext *context_x11 = CDK_X11_GL_CONTEXT (context);
   CdkWindow *window = cdk_gl_context_get_window (context);
   CdkDisplay *display = cdk_gl_context_get_display (context);
   Display *dpy = cdk_x11_display_get_xdisplay (display);
-  CdkX11Display *display_x11 = GDK_X11_DISPLAY (display);
+  CdkX11Display *display_x11 = CDK_X11_DISPLAY (display);
   DrawableInfo *info;
   GLXDrawable drawable;
 
@@ -235,7 +235,7 @@ cdk_x11_gl_context_end_frame (CdkGLContext *context,
 
   drawable = context_x11->drawable;
 
-  GDK_NOTE (OPENGL,
+  CDK_NOTE (OPENGL,
             g_message ("Flushing GLX buffers for drawable %lu (window: %lu), frame sync: %s",
                        (unsigned long) drawable,
                        (unsigned long) cdk_x11_window_get_xid (window),
@@ -442,7 +442,7 @@ cdk_x11_gl_context_texture_from_surface (CdkGLContext *paint_context,
   CdkTexturedQuad *quads;
   CdkX11Display *display_x11;
 
-  display_x11 = GDK_X11_DISPLAY (cdk_gl_context_get_display (paint_context));
+  display_x11 = CDK_X11_DISPLAY (cdk_gl_context_get_display (paint_context));
   if (!display_x11->has_glx_texture_from_pixmap)
     return FALSE;
 
@@ -459,7 +459,7 @@ cdk_x11_gl_context_texture_from_surface (CdkGLContext *paint_context,
   if (glx_pixmap == NULL)
     return FALSE;
 
-  GDK_NOTE (OPENGL, g_message ("Using GLX_EXT_texture_from_pixmap to draw surface"));
+  CDK_NOTE (OPENGL, g_message ("Using GLX_EXT_texture_from_pixmap to draw surface"));
 
   window = cdk_gl_context_get_window (paint_context)->impl_window;
   window_scale = cdk_window_get_scale_factor (window);
@@ -575,7 +575,7 @@ create_gl3_context (CdkDisplay   *display,
   CdkX11GLContext *share_x11 = NULL;
 
   if (share != NULL)
-    share_x11 = GDK_X11_GL_CONTEXT (share);
+    share_x11 = CDK_X11_GL_CONTEXT (share);
 
   cdk_x11_display_error_trap_push (display);
 
@@ -600,7 +600,7 @@ create_legacy_context (CdkDisplay   *display,
   GLXContext res;
 
   if (share != NULL)
-    share_x11 = GDK_X11_GL_CONTEXT (share);
+    share_x11 = CDK_X11_GL_CONTEXT (share);
 
   cdk_x11_display_error_trap_push (display);
 
@@ -635,8 +635,8 @@ cdk_x11_gl_context_realize (CdkGLContext  *context,
   window = cdk_gl_context_get_window (context);
   display = cdk_window_get_display (window);
   dpy = cdk_x11_display_get_xdisplay (display);
-  context_x11 = GDK_X11_GL_CONTEXT (context);
-  display_x11 = GDK_X11_DISPLAY (display);
+  context_x11 = CDK_X11_GL_CONTEXT (context);
+  display_x11 = CDK_X11_DISPLAY (display);
   share = cdk_gl_context_get_shared_context (context);
 
   cdk_gl_context_get_required_version (context, &major, &minor);
@@ -645,9 +645,9 @@ cdk_x11_gl_context_realize (CdkGLContext  *context,
 
   /* If there is no glXCreateContextAttribsARB() then we default to legacy */
   legacy_bit = !display_x11->has_glx_create_context ||
-               (_cdk_gl_flags & GDK_GL_LEGACY) != 0;
+               (_cdk_gl_flags & CDK_GL_LEGACY) != 0;
 
-  es_bit = ((_cdk_gl_flags & GDK_GL_GLES) != 0 ||
+  es_bit = ((_cdk_gl_flags & CDK_GL_GLES) != 0 ||
             (share != NULL && cdk_gl_context_get_use_es (share))) &&
            (display_x11->has_glx_create_context && display_x11->has_glx_create_es2_context);
 
@@ -664,7 +664,7 @@ cdk_x11_gl_context_realize (CdkGLContext  *context,
   if (compat_bit)
     flags |= GLX_CONTEXT_FORWARD_COMPATIBLE_BIT_ARB;
 
-  GDK_NOTE (OPENGL,
+  CDK_NOTE (OPENGL,
             g_message ("Creating GLX context (version:%d.%d, debug:%s, forward:%s, legacy:%s, es:%s)",
                        major, minor,
                        debug_bit ? "yes" : "no",
@@ -676,9 +676,9 @@ cdk_x11_gl_context_realize (CdkGLContext  *context,
    * a compatibility profile; if we don't, then we have to fall back to the
    * old GLX 1.3 API.
    */
-  if (legacy_bit && !GDK_X11_DISPLAY (display)->has_glx_create_context)
+  if (legacy_bit && !CDK_X11_DISPLAY (display)->has_glx_create_context)
     {
-      GDK_NOTE (OPENGL, g_message ("Creating legacy GL context on request"));
+      CDK_NOTE (OPENGL, g_message ("Creating legacy GL context on request"));
       context_x11->glx_context = create_legacy_context (display, context_x11->glx_config, share);
     }
   else
@@ -701,7 +701,7 @@ cdk_x11_gl_context_realize (CdkGLContext  *context,
           minor = 0;
         }
 
-      GDK_NOTE (OPENGL, g_message ("Creating GL3 context"));
+      CDK_NOTE (OPENGL, g_message ("Creating GL3 context"));
       context_x11->glx_context = create_gl3_context (display,
                                                      context_x11->glx_config,
                                                      share,
@@ -710,7 +710,7 @@ cdk_x11_gl_context_realize (CdkGLContext  *context,
       /* Fall back to legacy in case the GL3 context creation failed */
       if (context_x11->glx_context == NULL)
         {
-          GDK_NOTE (OPENGL, g_message ("Creating fallback legacy context"));
+          CDK_NOTE (OPENGL, g_message ("Creating fallback legacy context"));
           context_x11->glx_context = create_legacy_context (display, context_x11->glx_config, share);
           legacy_bit = TRUE;
           es_bit = FALSE;
@@ -719,8 +719,8 @@ cdk_x11_gl_context_realize (CdkGLContext  *context,
 
   if (context_x11->glx_context == NULL)
     {
-      g_set_error_literal (error, GDK_GL_ERROR,
-                           GDK_GL_ERROR_NOT_AVAILABLE,
+      g_set_error_literal (error, CDK_GL_ERROR,
+                           CDK_GL_ERROR_NOT_AVAILABLE,
                            _("Unable to create a GL context"));
       return FALSE;
     }
@@ -759,7 +759,7 @@ cdk_x11_gl_context_realize (CdkGLContext  *context,
                                         &attrs);
       XMapWindow(dpy, info->dummy_xwin);
 
-      if (GDK_X11_DISPLAY (display)->glx_version >= 13)
+      if (CDK_X11_DISPLAY (display)->glx_version >= 13)
         {
           info->glx_drawable = glXCreateWindow (dpy, context_x11->glx_config,
                                                 cdk_x11_window_get_xid (window->impl_window),
@@ -769,8 +769,8 @@ cdk_x11_gl_context_realize (CdkGLContext  *context,
 
       if (cdk_x11_display_error_trap_pop (display))
         {
-          g_set_error_literal (error, GDK_GL_ERROR,
-                               GDK_GL_ERROR_NOT_AVAILABLE,
+          g_set_error_literal (error, CDK_GL_ERROR,
+                               CDK_GL_ERROR_NOT_AVAILABLE,
                                _("Unable to create a GL context"));
 
           XFree (xvisinfo);
@@ -794,7 +794,7 @@ cdk_x11_gl_context_realize (CdkGLContext  *context,
   context_x11->is_direct = glXIsDirect (dpy, context_x11->glx_context);
   context_x11->drawable = drawable;
 
-  GDK_NOTE (OPENGL,
+  CDK_NOTE (OPENGL,
             g_message ("Realized GLX context[%p], %s",
                        context_x11->glx_context,
                        context_x11->is_direct ? "direct" : "indirect"));
@@ -805,18 +805,18 @@ cdk_x11_gl_context_realize (CdkGLContext  *context,
 static void
 cdk_x11_gl_context_dispose (GObject *gobject)
 {
-  CdkX11GLContext *context_x11 = GDK_X11_GL_CONTEXT (gobject);
+  CdkX11GLContext *context_x11 = CDK_X11_GL_CONTEXT (gobject);
 
   if (context_x11->glx_context != NULL)
     {
-      CdkGLContext *context = GDK_GL_CONTEXT (gobject);
+      CdkGLContext *context = CDK_GL_CONTEXT (gobject);
       CdkDisplay *display = cdk_gl_context_get_display (context);
       Display *dpy = cdk_x11_display_get_xdisplay (display);
 
       if (glXGetCurrentContext () == context_x11->glx_context)
         glXMakeContextCurrent (dpy, None, None, NULL);
 
-      GDK_NOTE (OPENGL, g_message ("Destroying GLX context"));
+      CDK_NOTE (OPENGL, g_message ("Destroying GLX context"));
       glXDestroyContext (dpy, context_x11->glx_context);
       context_x11->glx_context = NULL;
     }
@@ -827,7 +827,7 @@ cdk_x11_gl_context_dispose (GObject *gobject)
 static void
 cdk_x11_gl_context_class_init (CdkX11GLContextClass *klass)
 {
-  CdkGLContextClass *context_class = GDK_GL_CONTEXT_CLASS (klass);
+  CdkGLContextClass *context_class = CDK_GL_CONTEXT_CLASS (klass);
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
 
   context_class->realize = cdk_x11_gl_context_realize;
@@ -847,7 +847,7 @@ gboolean
 cdk_x11_screen_init_gl (CdkScreen *screen)
 {
   CdkDisplay *display = cdk_screen_get_display (screen);
-  CdkX11Display *display_x11 = GDK_X11_DISPLAY (display);
+  CdkX11Display *display_x11 = CDK_X11_DISPLAY (display);
   Display *dpy;
   int error_base, event_base;
   int screen_num;
@@ -855,7 +855,7 @@ cdk_x11_screen_init_gl (CdkScreen *screen)
   if (display_x11->have_glx)
     return TRUE;
 
-  if (_cdk_gl_flags & GDK_GL_DISABLE)
+  if (_cdk_gl_flags & CDK_GL_DISABLE)
     return FALSE;
 
   dpy = cdk_x11_display_get_xdisplay (display);
@@ -866,7 +866,7 @@ cdk_x11_screen_init_gl (CdkScreen *screen)
   if (!glXQueryExtension (dpy, &error_base, &event_base))
     return FALSE;
 
-  screen_num = GDK_X11_SCREEN (screen)->screen_num;
+  screen_num = CDK_X11_SCREEN (screen)->screen_num;
 
   display_x11->have_glx = TRUE;
 
@@ -893,7 +893,7 @@ cdk_x11_screen_init_gl (CdkScreen *screen)
   display_x11->has_glx_visual_rating =
     epoxy_has_glx_extension (dpy, screen_num, "GLX_EXT_visual_rating");
 
-  GDK_NOTE (OPENGL,
+  CDK_NOTE (OPENGL,
             g_message ("GLX version %d.%d found\n"
                        " - Vendor: %s\n"
                        " - Checked extensions:\n"
@@ -970,8 +970,8 @@ find_fbconfig_for_visual (CdkDisplay   *display,
   configs = glXChooseFBConfig (dpy, DefaultScreen (dpy), attrs, &n_configs);
   if (configs == NULL || n_configs == 0)
     {
-      g_set_error_literal (error, GDK_GL_ERROR,
-                           GDK_GL_ERROR_UNSUPPORTED_FORMAT,
+      g_set_error_literal (error, CDK_GL_ERROR,
+                           CDK_GL_ERROR_UNSUPPORTED_FORMAT,
                            _("No available configurations for the given pixel format"));
       return FALSE;
     }
@@ -998,8 +998,8 @@ find_fbconfig_for_visual (CdkDisplay   *display,
       goto out;
     }
 
-  g_set_error (error, GDK_GL_ERROR,
-               GDK_GL_ERROR_UNSUPPORTED_FORMAT,
+  g_set_error (error, CDK_GL_ERROR,
+               CDK_GL_ERROR_UNSUPPORTED_FORMAT,
                _("No available configurations for the given RGBA pixel format"));
 
 out:
@@ -1136,7 +1136,7 @@ get_cached_gl_visuals (CdkDisplay *display, int *system, int *rgba)
 
   cdk_x11_display_error_trap_push (display);
   if (XGetWindowProperty (dpy, DefaultRootWindow (dpy),
-                          cdk_x11_get_xatom_by_name_for_display (display, "GDK_VISUALS"),
+                          cdk_x11_get_xatom_by_name_for_display (display, "CDK_VISUALS"),
                           0, 2, False, XA_INTEGER, &type_return,
                           &format_return, &nitems_return,
                           &bytes_after_return, &data) == Success)
@@ -1174,7 +1174,7 @@ save_cached_gl_visuals (CdkDisplay *display, int system, int rgba)
 
   cdk_x11_display_error_trap_push (display);
   XChangeProperty (dpy, DefaultRootWindow (dpy),
-                   cdk_x11_get_xatom_by_name_for_display (display, "GDK_VISUALS"),
+                   cdk_x11_get_xatom_by_name_for_display (display, "CDK_VISUALS"),
                    XA_INTEGER, 32, PropModeReplace,
                    (unsigned char *)visualdata, 2);
   cdk_x11_display_error_trap_pop_ignored (display);
@@ -1191,9 +1191,9 @@ _cdk_x11_screen_update_visuals_for_gl (CdkScreen *screen)
   int i;
   int system_visual_id, rgba_visual_id;
 
-  x11_screen = GDK_X11_SCREEN (screen);
+  x11_screen = CDK_X11_SCREEN (screen);
   display = x11_screen->display;
-  display_x11 = GDK_X11_DISPLAY (display);
+  display_x11 = CDK_X11_DISPLAY (display);
   dpy = cdk_x11_display_get_xdisplay (display);
 
   /* We save the default visuals as a property on the root window to avoid
@@ -1276,8 +1276,8 @@ cdk_x11_window_create_gl_context (CdkWindow    *window,
 
   if (!cdk_x11_screen_init_gl (cdk_window_get_screen (window)))
     {
-      g_set_error_literal (error, GDK_GL_ERROR,
-                           GDK_GL_ERROR_NOT_AVAILABLE,
+      g_set_error_literal (error, CDK_GL_ERROR,
+                           CDK_GL_ERROR_NOT_AVAILABLE,
                            _("No GL implementation is available"));
       return NULL;
     }
@@ -1286,7 +1286,7 @@ cdk_x11_window_create_gl_context (CdkWindow    *window,
   if (!find_fbconfig_for_visual (display, visual, &config, error))
     return NULL;
 
-  context = g_object_new (GDK_TYPE_X11_GL_CONTEXT,
+  context = g_object_new (CDK_TYPE_X11_GL_CONTEXT,
                           "display", display,
                           "window", window,
                           "shared-context", share,
@@ -1295,7 +1295,7 @@ cdk_x11_window_create_gl_context (CdkWindow    *window,
   context->glx_config = config;
   context->is_attached = attached;
 
-  return GDK_GL_CONTEXT (context);
+  return CDK_GL_CONTEXT (context);
 }
 
 gboolean
@@ -1314,7 +1314,7 @@ cdk_x11_display_make_gl_context_current (CdkDisplay   *display,
       return TRUE;
     }
 
-  context_x11 = GDK_X11_GL_CONTEXT (context);
+  context_x11 = CDK_X11_GL_CONTEXT (context);
   if (context_x11->glx_context == NULL)
     {
       g_critical ("No GLX context associated to the CdkGLContext; you must "
@@ -1322,19 +1322,19 @@ cdk_x11_display_make_gl_context_current (CdkDisplay   *display,
       return FALSE;
     }
 
-  GDK_NOTE (OPENGL,
+  CDK_NOTE (OPENGL,
             g_message ("Making GLX context current to drawable %lu",
                        (unsigned long) context_x11->drawable));
 
   if (!glXMakeContextCurrent (dpy, context_x11->drawable, context_x11->drawable,
                               context_x11->glx_context))
     {
-      GDK_NOTE (OPENGL,
+      CDK_NOTE (OPENGL,
                 g_message ("Making GLX context current failed"));
       return FALSE;
     }
 
-  if (context_x11->is_attached && GDK_X11_DISPLAY (display)->has_glx_swap_interval)
+  if (context_x11->is_attached && CDK_X11_DISPLAY (display)->has_glx_swap_interval)
     {
       window = cdk_gl_context_get_window (context);
 
@@ -1376,18 +1376,18 @@ cdk_x11_display_get_glx_version (CdkDisplay *display,
                                  gint       *major,
                                  gint       *minor)
 {
-  g_return_val_if_fail (GDK_IS_DISPLAY (display), FALSE);
+  g_return_val_if_fail (CDK_IS_DISPLAY (display), FALSE);
 
-  if (!GDK_IS_X11_DISPLAY (display))
+  if (!CDK_IS_X11_DISPLAY (display))
     return FALSE;
 
   if (!cdk_x11_screen_init_gl (cdk_display_get_default_screen (display)))
     return FALSE;
 
   if (major != NULL)
-    *major = GDK_X11_DISPLAY (display)->glx_version / 10;
+    *major = CDK_X11_DISPLAY (display)->glx_version / 10;
   if (minor != NULL)
-    *minor = GDK_X11_DISPLAY (display)->glx_version % 10;
+    *minor = CDK_X11_DISPLAY (display)->glx_version % 10;
 
   return TRUE;
 }

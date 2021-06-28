@@ -29,7 +29,7 @@
 #error "Only <ctk/ctkx.h> can be included directly."
 #endif
 
-#ifdef GDK_WINDOWING_X11
+#ifdef CDK_WINDOWING_X11
 
 #include <cdk/cdkx.h>
 
@@ -70,20 +70,20 @@ struct _CtkSocketClass
   void (*_ctk_reserved4) (void);
 };
 
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 GType      ctk_socket_get_type        (void) G_GNUC_CONST;
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CtkWidget *ctk_socket_new             (void);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 void       ctk_socket_add_id          (CtkSocket *socket_,
                                        Window     window);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 Window     ctk_socket_get_id          (CtkSocket *socket_);
-GDK_AVAILABLE_IN_ALL
+CDK_AVAILABLE_IN_ALL
 CdkWindow *ctk_socket_get_plug_window (CtkSocket *socket_);
 
 G_END_DECLS
 
-#endif /* GDK_WINDOWING_X11 */
+#endif /* CDK_WINDOWING_X11 */
 
 #endif /* __CTK_SOCKET_H__ */

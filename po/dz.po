@@ -72,7 +72,7 @@ msgstr "གསལ་གཞི། "
 #. Description of --cdk-debug=FLAGS in --help output
 #: cdk/cdk.c:164
 #, fuzzy
-msgid "GDK debugging flags to set"
+msgid "CDK debugging flags to set"
 msgstr "ཇི་ཊི་ཀེ་+གིས་ གཞི་སྒྲིག་འབད་ནི་ལུ་ ཟུར་རྟགས་ཚུ་རྐྱེན་སེལ་འབད་དོ།"
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
@@ -86,7 +86,7 @@ msgstr "ཟུར་རྟགས། "
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: cdk/cdk.c:167
 #, fuzzy
-msgid "GDK debugging flags to unset"
+msgid "CDK debugging flags to unset"
 msgstr "ཇི་ཊི་ཀེ་+གིས་ སྒྲིག་བཤོལ་འབད་ནི་ལུ་ ཟུར་རྟགས་ཚུ་ རྐྱེན་སེལ་འབད་དོ།"
 
 #: cdk/keyname-table.h:3940

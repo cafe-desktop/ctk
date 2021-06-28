@@ -254,11 +254,11 @@ ctk_search_entry_class_init (CtkSearchEntryClass *klass)
 
   binding_set = ctk_binding_set_by_class (klass);
 
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_g, GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_g, CDK_CONTROL_MASK,
                                 "next-match", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_g, GDK_SHIFT_MASK | GDK_CONTROL_MASK,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_g, CDK_SHIFT_MASK | CDK_CONTROL_MASK,
                                 "previous-match", 0);
-  ctk_binding_entry_add_signal (binding_set, GDK_KEY_Escape, 0,
+  ctk_binding_entry_add_signal (binding_set, CDK_KEY_Escape, 0,
                                 "stop-search", 0);
 }
 
@@ -400,16 +400,16 @@ ctk_search_entry_is_keynav_event (CdkEvent *event)
 
   cdk_event_get_state (event, &state);
 
-  if (keyval == GDK_KEY_Tab       || keyval == GDK_KEY_KP_Tab ||
-      keyval == GDK_KEY_Up        || keyval == GDK_KEY_KP_Up ||
-      keyval == GDK_KEY_Down      || keyval == GDK_KEY_KP_Down ||
-      keyval == GDK_KEY_Left      || keyval == GDK_KEY_KP_Left ||
-      keyval == GDK_KEY_Right     || keyval == GDK_KEY_KP_Right ||
-      keyval == GDK_KEY_Home      || keyval == GDK_KEY_KP_Home ||
-      keyval == GDK_KEY_End       || keyval == GDK_KEY_KP_End ||
-      keyval == GDK_KEY_Page_Up   || keyval == GDK_KEY_KP_Page_Up ||
-      keyval == GDK_KEY_Page_Down || keyval == GDK_KEY_KP_Page_Down ||
-      ((state & (GDK_CONTROL_MASK | GDK_MOD1_MASK)) != 0))
+  if (keyval == CDK_KEY_Tab       || keyval == CDK_KEY_KP_Tab ||
+      keyval == CDK_KEY_Up        || keyval == CDK_KEY_KP_Up ||
+      keyval == CDK_KEY_Down      || keyval == CDK_KEY_KP_Down ||
+      keyval == CDK_KEY_Left      || keyval == CDK_KEY_KP_Left ||
+      keyval == CDK_KEY_Right     || keyval == CDK_KEY_KP_Right ||
+      keyval == CDK_KEY_Home      || keyval == CDK_KEY_KP_Home ||
+      keyval == CDK_KEY_End       || keyval == CDK_KEY_KP_End ||
+      keyval == CDK_KEY_Page_Up   || keyval == CDK_KEY_KP_Page_Up ||
+      keyval == CDK_KEY_Page_Down || keyval == CDK_KEY_KP_Page_Down ||
+      ((state & (CDK_CONTROL_MASK | CDK_MOD1_MASK)) != 0))
         return TRUE;
 
   /* Other navigation events should get automatically
@@ -431,12 +431,12 @@ ctk_search_entry_is_keynav_event (CdkEvent *event)
  * function.
  *
  * If the key event is handled by the search entry and starts
- * or continues a search, %GDK_EVENT_STOP will be returned.
+ * or continues a search, %CDK_EVENT_STOP will be returned.
  * The caller should ensure that the entry is shown in this
  * case, and not propagate the event further.
  *
- * Returns: %GDK_EVENT_STOP if the key press event resulted
- *     in a search beginning or continuing, %GDK_EVENT_PROPAGATE
+ * Returns: %CDK_EVENT_STOP if the key press event resulted
+ *     in a search beginning or continuing, %CDK_EVENT_PROPAGATE
  *     otherwise.
  *
  * Since: 3.16
@@ -452,14 +452,14 @@ ctk_search_entry_handle_event (CtkSearchEntry *entry,
     ctk_widget_realize (CTK_WIDGET (entry));
 
   if (ctk_search_entry_is_keynav_event (event) ||
-      event->key.keyval == GDK_KEY_space ||
-      event->key.keyval == GDK_KEY_Menu)
-    return GDK_EVENT_PROPAGATE;
+      event->key.keyval == CDK_KEY_space ||
+      event->key.keyval == CDK_KEY_Menu)
+    return CDK_EVENT_PROPAGATE;
 
   priv->content_changed = FALSE;
   priv->search_stopped = FALSE;
 
   handled = ctk_widget_event (CTK_WIDGET (entry), event);
 
-  return handled && priv->content_changed && !priv->search_stopped ? GDK_EVENT_STOP : GDK_EVENT_PROPAGATE;
+  return handled && priv->content_changed && !priv->search_stopped ? CDK_EVENT_STOP : CDK_EVENT_PROPAGATE;
 }

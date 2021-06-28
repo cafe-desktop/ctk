@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * cdkdisplaymanager-quartz.c
  *
  * Copyright (C) 2005 Imendio AB
@@ -37,7 +37,7 @@ struct _CdkQuartzDisplayManager
 };
 
 
-G_DEFINE_TYPE (CdkQuartzDisplayManager, cdk_quartz_display_manager, GDK_TYPE_DISPLAY_MANAGER)
+G_DEFINE_TYPE (CdkQuartzDisplayManager, cdk_quartz_display_manager, CDK_TYPE_DISPLAY_MANAGER)
 
 static void
 cdk_quartz_display_manager_init (CdkQuartzDisplayManager *manager)

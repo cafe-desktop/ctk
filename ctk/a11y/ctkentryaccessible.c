@@ -243,11 +243,11 @@ ctk_entry_icon_accessible_do_action (AtkAction *action,
 
   ctk_entry_get_icon_area (ctk_entry, icon->pos, &icon_area);
   memset (&event, 0, sizeof (event));
-  event.button.type = GDK_BUTTON_PRESS;
+  event.button.type = CDK_BUTTON_PRESS;
   event.button.window = ctk_widget_get_window (widget);
   event.button.button = 1;
   event.button.send_event = TRUE;
-  event.button.time = GDK_CURRENT_TIME;
+  event.button.time = CDK_CURRENT_TIME;
   event.button.x = icon_area.x;
   event.button.y = icon_area.y;
 
@@ -1270,7 +1270,7 @@ ctk_entry_accessible_copy_text (AtkEditableText *text,
 
   editable = CTK_EDITABLE (widget);
   str = ctk_editable_get_chars (editable, start_pos, end_pos);
-  clipboard = ctk_widget_get_clipboard (widget, GDK_SELECTION_CLIPBOARD);
+  clipboard = ctk_widget_get_clipboard (widget, CDK_SELECTION_CLIPBOARD);
   ctk_clipboard_set_text (clipboard, str, -1);
   g_free (str);
 }
@@ -1297,7 +1297,7 @@ ctk_entry_accessible_cut_text (AtkEditableText *text,
     return;
 
   str = ctk_editable_get_chars (editable, start_pos, end_pos);
-  clipboard = ctk_widget_get_clipboard (widget, GDK_SELECTION_CLIPBOARD);
+  clipboard = ctk_widget_get_clipboard (widget, CDK_SELECTION_CLIPBOARD);
   ctk_clipboard_set_text (clipboard, str, -1);
   ctk_editable_delete_text (editable, start_pos, end_pos);
 }
@@ -1367,7 +1367,7 @@ ctk_entry_accessible_paste_text (AtkEditableText *text,
   paste->position = position;
 
   g_object_ref (paste->entry);
-  clipboard = ctk_widget_get_clipboard (widget, GDK_SELECTION_CLIPBOARD);
+  clipboard = ctk_widget_get_clipboard (widget, CDK_SELECTION_CLIPBOARD);
   ctk_clipboard_request_text (clipboard, paste_received_cb, paste);
 }
 
@@ -1533,8 +1533,8 @@ ctk_entry_accessible_get_keybinding (AtkAction *action,
   if (CTK_IS_LABEL (label))
     {
       key_val = ctk_label_get_mnemonic_keyval (CTK_LABEL (label));
-      if (key_val != GDK_KEY_VoidSymbol)
-        return ctk_accelerator_name (key_val, GDK_MOD1_MASK);
+      if (key_val != CDK_KEY_VoidSymbol)
+        return ctk_accelerator_name (key_val, CDK_MOD1_MASK);
     }
 
   return NULL;

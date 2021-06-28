@@ -1,4 +1,4 @@
-/* GDK - The GIMP Drawing Kit
+/* CDK - The GIMP Drawing Kit
  * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
  *
  * This library is free software; you can redistribute it and/or
@@ -22,10 +22,10 @@
  * CTK+ at ftp://ftp.ctk.org/pub/ctk/.
  */
 
-#ifndef __GDK_FRAME_CLOCK_H__
-#define __GDK_FRAME_CLOCK_H__
+#ifndef __CDK_FRAME_CLOCK_H__
+#define __CDK_FRAME_CLOCK_H__
 
-#if !defined (__GDK_H_INSIDE__) && !defined (GDK_COMPILATION)
+#if !defined (__CDK_H_INSIDE__) && !defined (CDK_COMPILATION)
 #error "Only <cdk/cdk.h> can be included directly."
 #endif
 
@@ -33,12 +33,12 @@
 
 G_BEGIN_DECLS
 
-#define GDK_TYPE_FRAME_CLOCK            (cdk_frame_clock_get_type ())
-#define GDK_FRAME_CLOCK(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), GDK_TYPE_FRAME_CLOCK, CdkFrameClock))
-#define GDK_FRAME_CLOCK_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GDK_TYPE_FRAME_CLOCK, CdkFrameClockClass))
-#define GDK_IS_FRAME_CLOCK(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GDK_TYPE_FRAME_CLOCK))
-#define GDK_IS_FRAME_CLOCK_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_FRAME_CLOCK))
-#define GDK_FRAME_CLOCK_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_FRAME_CLOCK, CdkFrameClockClass))
+#define CDK_TYPE_FRAME_CLOCK            (cdk_frame_clock_get_type ())
+#define CDK_FRAME_CLOCK(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CDK_TYPE_FRAME_CLOCK, CdkFrameClock))
+#define CDK_FRAME_CLOCK_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CDK_TYPE_FRAME_CLOCK, CdkFrameClockClass))
+#define CDK_IS_FRAME_CLOCK(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CDK_TYPE_FRAME_CLOCK))
+#define CDK_IS_FRAME_CLOCK_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CDK_TYPE_FRAME_CLOCK))
+#define CDK_FRAME_CLOCK_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CDK_TYPE_FRAME_CLOCK, CdkFrameClockClass))
 
 typedef struct _CdkFrameClock              CdkFrameClock;
 typedef struct _CdkFrameClockPrivate       CdkFrameClockPrivate;
@@ -46,14 +46,14 @@ typedef struct _CdkFrameClockClass         CdkFrameClockClass;
 
 /**
  * CdkFrameClockPhase:
- * @GDK_FRAME_CLOCK_PHASE_NONE: no phase
- * @GDK_FRAME_CLOCK_PHASE_FLUSH_EVENTS: corresponds to CdkFrameClock::flush-events. Should not be handled by applications.
- * @GDK_FRAME_CLOCK_PHASE_BEFORE_PAINT: corresponds to CdkFrameClock::before-paint. Should not be handled by applications.
- * @GDK_FRAME_CLOCK_PHASE_UPDATE: corresponds to CdkFrameClock::update.
- * @GDK_FRAME_CLOCK_PHASE_LAYOUT: corresponds to CdkFrameClock::layout.
- * @GDK_FRAME_CLOCK_PHASE_PAINT: corresponds to CdkFrameClock::paint.
- * @GDK_FRAME_CLOCK_PHASE_RESUME_EVENTS: corresponds to CdkFrameClock::resume-events. Should not be handled by applications.
- * @GDK_FRAME_CLOCK_PHASE_AFTER_PAINT: corresponds to CdkFrameClock::after-paint. Should not be handled by applications.
+ * @CDK_FRAME_CLOCK_PHASE_NONE: no phase
+ * @CDK_FRAME_CLOCK_PHASE_FLUSH_EVENTS: corresponds to CdkFrameClock::flush-events. Should not be handled by applications.
+ * @CDK_FRAME_CLOCK_PHASE_BEFORE_PAINT: corresponds to CdkFrameClock::before-paint. Should not be handled by applications.
+ * @CDK_FRAME_CLOCK_PHASE_UPDATE: corresponds to CdkFrameClock::update.
+ * @CDK_FRAME_CLOCK_PHASE_LAYOUT: corresponds to CdkFrameClock::layout.
+ * @CDK_FRAME_CLOCK_PHASE_PAINT: corresponds to CdkFrameClock::paint.
+ * @CDK_FRAME_CLOCK_PHASE_RESUME_EVENTS: corresponds to CdkFrameClock::resume-events. Should not be handled by applications.
+ * @CDK_FRAME_CLOCK_PHASE_AFTER_PAINT: corresponds to CdkFrameClock::after-paint. Should not be handled by applications.
  *
  * #CdkFrameClockPhase is used to represent the different paint clock
  * phases that can be requested. The elements of the enumeration
@@ -62,44 +62,44 @@ typedef struct _CdkFrameClockClass         CdkFrameClockClass;
  * Since: 3.8
  **/
 typedef enum {
-  GDK_FRAME_CLOCK_PHASE_NONE          = 0,
-  GDK_FRAME_CLOCK_PHASE_FLUSH_EVENTS  = 1 << 0,
-  GDK_FRAME_CLOCK_PHASE_BEFORE_PAINT  = 1 << 1,
-  GDK_FRAME_CLOCK_PHASE_UPDATE        = 1 << 2,
-  GDK_FRAME_CLOCK_PHASE_LAYOUT        = 1 << 3,
-  GDK_FRAME_CLOCK_PHASE_PAINT         = 1 << 4,
-  GDK_FRAME_CLOCK_PHASE_RESUME_EVENTS = 1 << 5,
-  GDK_FRAME_CLOCK_PHASE_AFTER_PAINT   = 1 << 6
+  CDK_FRAME_CLOCK_PHASE_NONE          = 0,
+  CDK_FRAME_CLOCK_PHASE_FLUSH_EVENTS  = 1 << 0,
+  CDK_FRAME_CLOCK_PHASE_BEFORE_PAINT  = 1 << 1,
+  CDK_FRAME_CLOCK_PHASE_UPDATE        = 1 << 2,
+  CDK_FRAME_CLOCK_PHASE_LAYOUT        = 1 << 3,
+  CDK_FRAME_CLOCK_PHASE_PAINT         = 1 << 4,
+  CDK_FRAME_CLOCK_PHASE_RESUME_EVENTS = 1 << 5,
+  CDK_FRAME_CLOCK_PHASE_AFTER_PAINT   = 1 << 6
 } CdkFrameClockPhase;
 
-GDK_AVAILABLE_IN_3_8
+CDK_AVAILABLE_IN_3_8
 GType    cdk_frame_clock_get_type             (void) G_GNUC_CONST;
 
-GDK_AVAILABLE_IN_3_8
+CDK_AVAILABLE_IN_3_8
 gint64   cdk_frame_clock_get_frame_time            (CdkFrameClock *frame_clock);
 
-GDK_AVAILABLE_IN_3_8
+CDK_AVAILABLE_IN_3_8
 void               cdk_frame_clock_request_phase (CdkFrameClock      *frame_clock,
                                                   CdkFrameClockPhase  phase);
 
-GDK_AVAILABLE_IN_3_8
+CDK_AVAILABLE_IN_3_8
 void               cdk_frame_clock_begin_updating (CdkFrameClock      *frame_clock);
-GDK_AVAILABLE_IN_3_8
+CDK_AVAILABLE_IN_3_8
 void               cdk_frame_clock_end_updating   (CdkFrameClock      *frame_clock);
 
 /* Frame history */
-GDK_AVAILABLE_IN_3_8
+CDK_AVAILABLE_IN_3_8
 gint64           cdk_frame_clock_get_frame_counter (CdkFrameClock *frame_clock);
-GDK_AVAILABLE_IN_3_8
+CDK_AVAILABLE_IN_3_8
 gint64           cdk_frame_clock_get_history_start (CdkFrameClock *frame_clock);
-GDK_AVAILABLE_IN_3_8
+CDK_AVAILABLE_IN_3_8
 CdkFrameTimings *cdk_frame_clock_get_timings       (CdkFrameClock *frame_clock,
                                                     gint64         frame_counter);
 
-GDK_AVAILABLE_IN_3_8
+CDK_AVAILABLE_IN_3_8
 CdkFrameTimings *cdk_frame_clock_get_current_timings (CdkFrameClock *frame_clock);
 
-GDK_AVAILABLE_IN_3_8
+CDK_AVAILABLE_IN_3_8
 void cdk_frame_clock_get_refresh_info (CdkFrameClock *frame_clock,
                                        gint64         base_time,
                                        gint64        *refresh_interval_return,
@@ -107,4 +107,4 @@ void cdk_frame_clock_get_refresh_info (CdkFrameClock *frame_clock,
 
 G_END_DECLS
 
-#endif /* __GDK_FRAME_CLOCK_H__ */
+#endif /* __CDK_FRAME_CLOCK_H__ */

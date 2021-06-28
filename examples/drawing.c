@@ -86,11 +86,11 @@ button_press_event_cb (CtkWidget      *widget,
   if (surface == NULL)
     return FALSE;
 
-  if (event->button == GDK_BUTTON_PRIMARY)
+  if (event->button == CDK_BUTTON_PRIMARY)
     {
       draw_brush (widget, event->x, event->y);
     }
-  else if (event->button == GDK_BUTTON_SECONDARY)
+  else if (event->button == CDK_BUTTON_SECONDARY)
     {
       clear_surface ();
       ctk_widget_queue_draw (widget);
@@ -113,7 +113,7 @@ motion_notify_event_cb (CtkWidget      *widget,
   if (surface == NULL)
     return FALSE;
 
-  if (event->state & GDK_BUTTON1_MASK)
+  if (event->state & CDK_BUTTON1_MASK)
     draw_brush (widget, event->x, event->y);
 
   /* We've handled it, stop processing */
@@ -169,8 +169,8 @@ activate (CtkApplication *app,
    * button press and motion notify events that want to handle.
    */
   ctk_widget_set_events (drawing_area, ctk_widget_get_events (drawing_area)
-                                     | GDK_BUTTON_PRESS_MASK
-                                     | GDK_POINTER_MOTION_MASK);
+                                     | CDK_BUTTON_PRESS_MASK
+                                     | CDK_POINTER_MOTION_MASK);
 
   ctk_widget_show_all (window);
 }

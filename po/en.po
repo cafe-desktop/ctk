@@ -59,7 +59,7 @@ msgstr ""
 
 #. Description of --cdk-debug=FLAGS in --help output
 #: cdk/cdk.c:209
-msgid "GDK debugging flags to set"
+msgid "CDK debugging flags to set"
 msgstr ""
 
 #. Placeholder in --cdk-debug=FLAGS in --help output
@@ -72,7 +72,7 @@ msgstr ""
 
 #. Description of --cdk-no-debug=FLAGS in --help output
 #: cdk/cdk.c:212
-msgid "GDK debugging flags to unset"
+msgid "CDK debugging flags to unset"
 msgstr ""
 
 #.
