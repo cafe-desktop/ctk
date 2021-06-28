@@ -877,8 +877,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:256
-msgid "A CdkPixbuf to display"
-msgstr "'n CdkPixbuf om te vertoon"
+msgid "A GdkPixbuf to display"
+msgstr "'n GdkPixbuf om te vertoon"
 
 #: ctk/deprecated/ctkstatusicon.c:242 ctk/ctkimage.c:269
 #: ctk/ctkrecentmanager.c:289
@@ -4940,8 +4940,8 @@ msgid "Animation"
 msgstr "Animasie"
 
 #: ctk/ctkimage.c:328
-msgid "CdkPixbufAnimation to display"
-msgstr "CdkPixbufAnimation om te vertoon"
+msgid "GdkPixbufAnimation to display"
+msgstr "GdkPixbufAnimation om te vertoon"
 
 #: ctk/ctkimage.c:372
 msgid "Resource"

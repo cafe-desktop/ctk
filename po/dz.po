@@ -5026,7 +5026,7 @@ msgstr ""
 #~ msgstr "ཊི་ཇི་ཨེ་གི་ སྐབས་འབབ་གཞི་བཀོད་ཀྱི་དོན་ལུ་ དྲན་ཚད་སྤྲོད་མི་ཚུགས་པས།"
 
 #, fuzzy
-#~ msgid "Failed to create CdkPixbufLoader object."
+#~ msgid "Failed to create GdkPixbufLoader object."
 #~ msgstr "ཚིག་མཛོད་ཟུར་ཐོ་ འབྲི་མ་ཚུགས།\n"
 
 #, fuzzy

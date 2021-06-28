@@ -1002,7 +1002,7 @@ ctk_text_iter_get_visible_text (const CtkTextIter  *start,
  *
  * Returns: (transfer none): the pixbuf at @iter
  **/
-CdkPixbuf*
+GdkPixbuf*
 ctk_text_iter_get_pixbuf (const CtkTextIter *iter)
 {
   CtkTextRealIter *real;

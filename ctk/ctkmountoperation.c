@@ -1152,7 +1152,7 @@ add_pid_to_process_list_store (CtkMountOperation              *mount_operation,
 {
   gchar *command_line;
   gchar *name;
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
   gchar *markup;
   CtkTreeIter iter;
 

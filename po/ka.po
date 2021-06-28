@@ -4862,7 +4862,7 @@ msgstr ""
 #~ msgstr "ვერ ვიყენებ მეხსიერებას TGA შიგთავსის სტრუქტურისთვის"
 
 #, fuzzy
-#~ msgid "Failed to create CdkPixbufLoader object."
+#~ msgid "Failed to create GdkPixbufLoader object."
 #~ msgstr "ვერ განხორციელდა დასტის ინდექსის ჩაწერა\n"
 
 #, fuzzy

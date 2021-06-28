@@ -35,7 +35,7 @@
  * CDK does not wrap the cairo API, instead it allows to create cairo
  * contexts which can be used to draw on #CdkWindows. Additional
  * functions allow use #CdkRectangles with cairo and to use #CdkColors,
- * #CdkRGBAs, #CdkPixbufs and #CdkWindows as sources for drawing
+ * #CdkRGBAs, #GdkPixbufs and #CdkWindows as sources for drawing
  * operations.
  */
 
@@ -177,7 +177,7 @@ cdk_cairo_region (cairo_t              *cr,
 
 static void
 cdk_cairo_surface_paint_pixbuf (cairo_surface_t *surface,
-                                const CdkPixbuf *pixbuf)
+                                const GdkPixbuf *pixbuf)
 {
   gint width, height;
   guchar *cdk_pixels, *cairo_pixels;
@@ -268,7 +268,7 @@ cdk_cairo_surface_paint_pixbuf (cairo_surface_t *surface,
 
 /**
  * cdk_cairo_surface_create_from_pixbuf:
- * @pixbuf: a #CdkPixbuf
+ * @pixbuf: a #GdkPixbuf
  * @scale: the scale of the new surface, or 0 to use same as @window
  * @for_window: (allow-none): The window this will be drawn to, or %NULL
  *
@@ -280,7 +280,7 @@ cdk_cairo_surface_paint_pixbuf (cairo_surface_t *surface,
  * Since: 3.10
  */
 cairo_surface_t *
-cdk_cairo_surface_create_from_pixbuf (const CdkPixbuf *pixbuf,
+cdk_cairo_surface_create_from_pixbuf (const GdkPixbuf *pixbuf,
                                       int              scale,
                                       CdkWindow       *for_window)
 {
@@ -311,7 +311,7 @@ cdk_cairo_surface_create_from_pixbuf (const CdkPixbuf *pixbuf,
 /**
  * cdk_cairo_set_source_pixbuf:
  * @cr: a cairo context
- * @pixbuf: a #CdkPixbuf
+ * @pixbuf: a #GdkPixbuf
  * @pixbuf_x: X coordinate of location to place upper left corner of @pixbuf
  * @pixbuf_y: Y coordinate of location to place upper left corner of @pixbuf
  *
@@ -324,7 +324,7 @@ cdk_cairo_surface_create_from_pixbuf (const CdkPixbuf *pixbuf,
  */
 void
 cdk_cairo_set_source_pixbuf (cairo_t         *cr,
-                             const CdkPixbuf *pixbuf,
+                             const GdkPixbuf *pixbuf,
                              gdouble          pixbuf_x,
                              gdouble          pixbuf_y)
 {

@@ -314,7 +314,7 @@ if build_gir
   if pixbuf_dep.type_name() == 'internal'
     cdk_gir_inc += subproject('cdk-pixbuf').get_variable('cdkpixbuf_gir').get(0)
   else
-    cdk_gir_inc += 'CdkPixbuf-2.0'
+    cdk_gir_inc += 'GdkPixbuf-2.0'
   endif
 
   if pango_dep.type_name() == 'internal'

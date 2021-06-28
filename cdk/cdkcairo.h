@@ -43,7 +43,7 @@ void       cdk_cairo_set_source_rgba    (cairo_t              *cr,
                                          const CdkRGBA        *rgba);
 CDK_AVAILABLE_IN_ALL
 void       cdk_cairo_set_source_pixbuf  (cairo_t              *cr,
-                                         const CdkPixbuf      *pixbuf,
+                                         const GdkPixbuf      *pixbuf,
                                          gdouble               pixbuf_x,
                                          gdouble               pixbuf_y);
 CDK_AVAILABLE_IN_ALL
@@ -69,7 +69,7 @@ void       cdk_cairo_set_source_color   (cairo_t              *cr,
                                          const CdkColor       *color);
 
 CDK_AVAILABLE_IN_3_10
-cairo_surface_t * cdk_cairo_surface_create_from_pixbuf      (const CdkPixbuf *pixbuf,
+cairo_surface_t * cdk_cairo_surface_create_from_pixbuf      (const GdkPixbuf *pixbuf,
                                                              int scale,
                                                              CdkWindow *for_window);
 CDK_AVAILABLE_IN_3_16

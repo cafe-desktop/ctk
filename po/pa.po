@@ -9359,8 +9359,8 @@ msgstr "ਟੈਸਟ ਪਰਿੰਟਰ ਲਈ ਪਰਿੰਟ ਕਰੋ"
 #~ msgid "Failed to allocate QTIF context structure."
 #~ msgstr "QTIF context struct ਲਈ ਲਈ ਲੋੜੀਦੀ ਮੈਮੋਰੀ ਨਹੀਂ ਹੈ"
 
-#~ msgid "Failed to create CdkPixbufLoader object."
-#~ msgstr "CdkPixbufLoader ਆਬਜੈਕਟ ਬਣਾਉਣ ਲਈ ਫੇਲ੍ਹ ਹੈ।"
+#~ msgid "Failed to create GdkPixbufLoader object."
+#~ msgstr "GdkPixbufLoader ਆਬਜੈਕਟ ਬਣਾਉਣ ਲਈ ਫੇਲ੍ਹ ਹੈ।"
 
 #~ msgid "Failed to find an image data atom."
 #~ msgstr "ਚਿੱਤਰ ਡਾਟਾ ਐਟਮ ਲੱਭਣ ਲਈ ਫੇਲ੍ਹ ਹੈ।"

@@ -3660,8 +3660,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ../ctk/ctkimage.c:217 ../ctk/ctkstatusicon.c:224
-msgid "A CdkPixbuf to display"
-msgstr "كۆرسىتىدىغان CdkPixbuf"
+msgid "A GdkPixbuf to display"
+msgstr "كۆرسىتىدىغان GdkPixbuf"
 
 #: ../ctk/ctkimage.c:224 ../ctk/ctkrecentmanager.c:293
 #: ../ctk/ctkstatusicon.c:231
@@ -3706,8 +3706,8 @@ msgid "Animation"
 msgstr "جانلاندۇرۇم"
 
 #: ../ctk/ctkimage.c:276
-msgid "CdkPixbufAnimation to display"
-msgstr "كۆرسىتىدىغان CdkPixbufAnimation"
+msgid "GdkPixbufAnimation to display"
+msgstr "كۆرسىتىدىغان GdkPixbufAnimation"
 
 #: ../ctk/ctkimage.c:316 ../ctk/ctkstatusicon.c:271
 msgid "Storage type"

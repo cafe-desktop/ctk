@@ -24,7 +24,7 @@ enum
 };
 
 
-static CdkPixbuf *file_pixbuf, *folder_pixbuf;
+static GdkPixbuf *file_pixbuf, *folder_pixbuf;
 gchar *parent;
 CtkToolItem *up_button;
 

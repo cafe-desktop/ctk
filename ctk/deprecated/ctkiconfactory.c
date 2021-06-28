@@ -148,10 +148,10 @@ struct _CtkIconSource
   union {
     gchar *icon_name;
     gchar *filename;
-    CdkPixbuf *pixbuf;
+    GdkPixbuf *pixbuf;
   } source;
 
-  CdkPixbuf *filename_pixbuf;
+  GdkPixbuf *filename_pixbuf;
 
   CtkTextDirection direction;
   CtkStateType state;
@@ -981,9 +981,9 @@ struct _CtkIconSet
  * ctk_icon_set_new:
  *
  * Creates a new #CtkIconSet. A #CtkIconSet represents a single icon
- * in various sizes and widget states. It can provide a #CdkPixbuf
+ * in various sizes and widget states. It can provide a #GdkPixbuf
  * for a given size and state on request, and automatically caches
- * some of the rendered #CdkPixbuf objects.
+ * some of the rendered #GdkPixbuf objects.
  *
  * Normally you would use ctk_widget_render_icon_pixbuf() instead of
  * using #CtkIconSet directly. The one case where you’d use
@@ -1009,7 +1009,7 @@ ctk_icon_set_new (void)
 
 /**
  * ctk_icon_set_new_from_pixbuf:
- * @pixbuf: a #CdkPixbuf
+ * @pixbuf: a #GdkPixbuf
  *
  * Creates a new #CtkIconSet with @pixbuf as the default/fallback
  * source image. If you don’t add any additional #CtkIconSource to the
@@ -1022,7 +1022,7 @@ ctk_icon_set_new (void)
  * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
 CtkIconSet *
-ctk_icon_set_new_from_pixbuf (CdkPixbuf *pixbuf)
+ctk_icon_set_new_from_pixbuf (GdkPixbuf *pixbuf)
 {
   CtkIconSet *set;
 
@@ -1222,14 +1222,14 @@ ensure_filename_pixbuf (CtkIconSet    *icon_set,
   return TRUE;
 }
 
-static CdkPixbuf *
+static GdkPixbuf *
 render_icon_name_pixbuf (CtkIconSource *icon_source,
 			 CtkCssStyle   *style,
 			 CtkIconSize    size,
                          gint           scale)
 {
-  CdkPixbuf *pixbuf;
-  CdkPixbuf *tmp_pixbuf;
+  GdkPixbuf *pixbuf;
+  GdkPixbuf *tmp_pixbuf;
   CtkIconTheme *icon_theme;
   gint width, height, pixel_size;
   gint *sizes, *s, dist;
@@ -1336,7 +1336,7 @@ render_icon_name_pixbuf (CtkIconSource *icon_source,
   return pixbuf;
 }
 
-static CdkPixbuf *
+static GdkPixbuf *
 find_and_render_icon_source (CtkIconSet       *icon_set,
 			     CtkCssStyle      *style,
 			     CtkTextDirection  direction,
@@ -1345,7 +1345,7 @@ find_and_render_icon_source (CtkIconSet       *icon_set,
 			     gint              scale)
 {
   GSList *failed = NULL;
-  CdkPixbuf *pixbuf = NULL;
+  GdkPixbuf *pixbuf = NULL;
 
   /* We treat failure in two different ways:
    *
@@ -1387,7 +1387,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
 
 	  if (scale != 1)
 	    {
-	      CdkPixbuf *tmp = pixbuf;
+	      GdkPixbuf *tmp = pixbuf;
 	      pixbuf = cdk_pixbuf_scale_simple (pixbuf,
 						cdk_pixbuf_get_width (pixbuf) * scale,
 						cdk_pixbuf_get_height (pixbuf) * scale,
@@ -1412,7 +1412,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
   return pixbuf;
 }
 
-static CdkPixbuf*
+static GdkPixbuf*
 render_fallback_image (CtkCssStyle       *style,
                        CtkTextDirection   direction,
                        CtkStateType       state,
@@ -1431,14 +1431,14 @@ render_fallback_image (CtkCssStyle       *style,
   return render_icon_name_pixbuf (&fallback_source, style, size, 1);
 }
 
-CdkPixbuf*
+GdkPixbuf*
 ctk_icon_set_render_icon_pixbuf_for_scale (CtkIconSet       *icon_set,
 					   CtkCssStyle      *style,
                                            CtkTextDirection  direction,
 					   CtkIconSize       size,
 					   gint              scale)
 {
-  CdkPixbuf *icon = NULL;
+  GdkPixbuf *icon = NULL;
   CtkStateType state;
   CtkCssIconEffect effect;
 
@@ -1487,13 +1487,13 @@ ctk_icon_set_render_icon_pixbuf_for_scale (CtkIconSet       *icon_set,
  * (perhaps because an image file fails to load), a default "missing
  * image" icon will be returned instead.
  *
- * Returns: (transfer full): a #CdkPixbuf to be displayed
+ * Returns: (transfer full): a #GdkPixbuf to be displayed
  *
  * Since: 3.0
  *
  * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
-CdkPixbuf *
+GdkPixbuf *
 ctk_icon_set_render_icon_pixbuf (CtkIconSet        *icon_set,
                                  CtkStyleContext   *context,
                                  CtkIconSize        size)
@@ -1539,7 +1539,7 @@ ctk_icon_set_render_icon_surface  (CtkIconSet      *icon_set,
 				   gint             scale,
 				   CdkWindow       *for_window)
 {
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
   cairo_surface_t *surface;
 
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
@@ -1578,11 +1578,11 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
  * (perhaps because an image file fails to load), a default "missing
  * image" icon will be returned instead.
  *
- * Returns: (transfer full): a #CdkPixbuf to be displayed
+ * Returns: (transfer full): a #GdkPixbuf to be displayed
  *
  * Deprecated: 3.0: Use ctk_icon_set_render_icon_pixbuf() instead
  */
-CdkPixbuf*
+GdkPixbuf*
 ctk_icon_set_render_icon (CtkIconSet        *icon_set,
                           CtkStyle          *style,
                           CtkTextDirection   direction,
@@ -1591,7 +1591,7 @@ ctk_icon_set_render_icon (CtkIconSet        *icon_set,
                           CtkWidget         *widget,
                           const char        *detail)
 {
-  CdkPixbuf *icon;
+  GdkPixbuf *icon;
   CtkStyleContext *context = NULL;
   CtkStateFlags flags = 0;
 
@@ -1805,7 +1805,7 @@ ctk_icon_set_get_sizes (CtkIconSet   *icon_set,
 /**
  * ctk_icon_source_new:
  *
- * Creates a new #CtkIconSource. A #CtkIconSource contains a #CdkPixbuf (or
+ * Creates a new #CtkIconSource. A #CtkIconSource contains a #GdkPixbuf (or
  * image filename) that serves as the base image for one or more of the
  * icons in a #CtkIconSet, along with a specification for which icons in the
  * icon set will be based on that pixbuf or image file. An icon set contains
@@ -2024,7 +2024,7 @@ ctk_icon_source_set_icon_name (CtkIconSource *source,
  */
 void
 ctk_icon_source_set_pixbuf (CtkIconSource *source,
-                            CdkPixbuf     *pixbuf)
+                            GdkPixbuf     *pixbuf)
 {
   g_return_if_fail (source != NULL);
   g_return_if_fail (pixbuf == NULL || CDK_IS_PIXBUF (pixbuf));
@@ -2106,7 +2106,7 @@ ctk_icon_source_get_icon_name (const CtkIconSource *source)
  *
  * Deprecated: 3.10: Use #CtkIconTheme instead.
  */
-CdkPixbuf*
+GdkPixbuf*
 ctk_icon_source_get_pixbuf (const CtkIconSource *source)
 {
   g_return_val_if_fail (source != NULL, NULL);

@@ -4299,7 +4299,7 @@ msgstr ""
 #~ msgstr "Сарлавҳа ёзишда хатолик юз берди\n"
 
 #, fuzzy
-#~ msgid "Failed to create CdkPixbufLoader object."
+#~ msgid "Failed to create GdkPixbufLoader object."
 #~ msgstr "Жилд индексини ёзишда хатолик юз берди\n"
 
 #, fuzzy

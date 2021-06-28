@@ -122,7 +122,7 @@ ctk_tooltip_window_set_label_text (CtkTooltipWindow *window,
 
 void
 ctk_tooltip_window_set_image_icon (CtkTooltipWindow *window,
-                                   CdkPixbuf        *pixbuf)
+                                   GdkPixbuf        *pixbuf)
 {
 
   if (pixbuf != NULL)

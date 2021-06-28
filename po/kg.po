@@ -942,8 +942,8 @@ msgstr ""
 
 #: ../cdk-pixbuf/io-qtif.c:317
 #| msgid "Failed to write folder index\n"
-msgid "Failed to create CdkPixbufLoader object."
-msgstr "CdkPixbufLoader bu ivaanga yo nkatu"
+msgid "Failed to create GdkPixbufLoader object."
+msgstr "GdkPixbufLoader bu ivaanga yo nkatu"
 
 #: ../cdk-pixbuf/io-qtif.c:421
 msgid "Failed to find an image data atom."

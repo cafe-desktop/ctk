@@ -34,7 +34,7 @@
  * @Title: CtkCellRendererPixbuf
  *
  * A #CtkCellRendererPixbuf can be used to render an image in a cell. It allows
- * to render either a given #CdkPixbuf (set via the
+ * to render either a given #GdkPixbuf (set via the
  * #CtkCellRendererPixbuf:pixbuf property) or a named icon (set via the
  * #CtkCellRendererPixbuf:icon-name property).
  *
@@ -91,8 +91,8 @@ struct _CtkCellRendererPixbufPrivate
   CtkImageDefinition *image_def;
   CtkIconSize         icon_size;
 
-  CdkPixbuf *pixbuf_expander_open;
-  CdkPixbuf *pixbuf_expander_closed;
+  GdkPixbuf *pixbuf_expander_open;
+  GdkPixbuf *pixbuf_expander_closed;
 
   gboolean follow_state;
 
@@ -402,12 +402,12 @@ ctk_cell_renderer_pixbuf_set_property (GObject      *object,
     case PROP_PIXBUF_EXPANDER_OPEN:
       if (priv->pixbuf_expander_open)
         g_object_unref (priv->pixbuf_expander_open);
-      priv->pixbuf_expander_open = (CdkPixbuf*) g_value_dup_object (value);
+      priv->pixbuf_expander_open = (GdkPixbuf*) g_value_dup_object (value);
       break;
     case PROP_PIXBUF_EXPANDER_CLOSED:
       if (priv->pixbuf_expander_closed)
         g_object_unref (priv->pixbuf_expander_closed);
-      priv->pixbuf_expander_closed = (CdkPixbuf*) g_value_dup_object (value);
+      priv->pixbuf_expander_closed = (GdkPixbuf*) g_value_dup_object (value);
       break;
     case PROP_SURFACE:
       take_image_definition (cellpixbuf, ctk_image_definition_new_surface (g_value_get_boxed (value)));

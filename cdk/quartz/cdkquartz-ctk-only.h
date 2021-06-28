@@ -37,7 +37,7 @@ NSString *cdk_quartz_atom_to_pasteboard_type_libctk_only        (CdkAtom        
 
 /* Utilities */
 CDK_AVAILABLE_IN_ALL
-NSImage  *cdk_quartz_pixbuf_to_ns_image_libctk_only (CdkPixbuf *pixbuf);
+NSImage  *cdk_quartz_pixbuf_to_ns_image_libctk_only (GdkPixbuf *pixbuf);
 CDK_AVAILABLE_IN_ALL
 NSEvent  *cdk_quartz_event_get_nsevent              (CdkEvent  *event);
 

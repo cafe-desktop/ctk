@@ -226,13 +226,13 @@ CtkIconInfo * ctk_icon_theme_choose_icon_for_scale (CtkIconTheme                
                                                     gint                         scale,
 						    CtkIconLookupFlags           flags);
 CDK_AVAILABLE_IN_ALL
-CdkPixbuf *   ctk_icon_theme_load_icon             (CtkIconTheme                *icon_theme,
+GdkPixbuf *   ctk_icon_theme_load_icon             (CtkIconTheme                *icon_theme,
 						    const gchar                 *icon_name,
 						    gint                         size,
 						    CtkIconLookupFlags           flags,
 						    GError                     **error);
 CDK_AVAILABLE_IN_3_10
-CdkPixbuf *   ctk_icon_theme_load_icon_for_scale   (CtkIconTheme                *icon_theme,
+GdkPixbuf *   ctk_icon_theme_load_icon_for_scale   (CtkIconTheme                *icon_theme,
                                                     const gchar                 *icon_name,
                                                     gint                         size,
                                                     gint                         scale,
@@ -274,7 +274,7 @@ gboolean      ctk_icon_theme_rescan_if_needed      (CtkIconTheme                
 CDK_DEPRECATED_IN_3_14_FOR(ctk_icon_theme_add_resource_path)
 void          ctk_icon_theme_add_builtin_icon      (const gchar *icon_name,
 					            gint         size,
-					            CdkPixbuf   *pixbuf);
+					            GdkPixbuf   *pixbuf);
 
 CDK_AVAILABLE_IN_ALL
 GType                 ctk_icon_info_get_type           (void) G_GNUC_CONST;
@@ -285,7 +285,7 @@ void                  ctk_icon_info_free               (CtkIconInfo  *icon_info)
 
 CDK_AVAILABLE_IN_ALL
 CtkIconInfo *         ctk_icon_info_new_for_pixbuf     (CtkIconTheme  *icon_theme,
-                                                        CdkPixbuf     *pixbuf);
+                                                        GdkPixbuf     *pixbuf);
 
 CDK_AVAILABLE_IN_ALL
 gint                  ctk_icon_info_get_base_size      (CtkIconInfo   *icon_info);
@@ -294,11 +294,11 @@ gint                  ctk_icon_info_get_base_scale     (CtkIconInfo   *icon_info
 CDK_AVAILABLE_IN_ALL
 const gchar *         ctk_icon_info_get_filename       (CtkIconInfo   *icon_info);
 CDK_DEPRECATED_IN_3_14
-CdkPixbuf *           ctk_icon_info_get_builtin_pixbuf (CtkIconInfo   *icon_info);
+GdkPixbuf *           ctk_icon_info_get_builtin_pixbuf (CtkIconInfo   *icon_info);
 CDK_AVAILABLE_IN_3_12
 gboolean              ctk_icon_info_is_symbolic        (CtkIconInfo   *icon_info);
 CDK_AVAILABLE_IN_ALL
-CdkPixbuf *           ctk_icon_info_load_icon          (CtkIconInfo   *icon_info,
+GdkPixbuf *           ctk_icon_info_load_icon          (CtkIconInfo   *icon_info,
 							GError       **error);
 CDK_AVAILABLE_IN_3_10
 cairo_surface_t *     ctk_icon_info_load_surface       (CtkIconInfo   *icon_info,
@@ -310,11 +310,11 @@ void                  ctk_icon_info_load_icon_async   (CtkIconInfo          *ico
 						       GAsyncReadyCallback   callback,
 						       gpointer              user_data);
 CDK_AVAILABLE_IN_3_8
-CdkPixbuf *           ctk_icon_info_load_icon_finish  (CtkIconInfo          *icon_info,
+GdkPixbuf *           ctk_icon_info_load_icon_finish  (CtkIconInfo          *icon_info,
 						       GAsyncResult         *res,
 						       GError              **error);
 CDK_AVAILABLE_IN_ALL
-CdkPixbuf *           ctk_icon_info_load_symbolic      (CtkIconInfo   *icon_info,
+GdkPixbuf *           ctk_icon_info_load_symbolic      (CtkIconInfo   *icon_info,
                                                         const CdkRGBA *fg,
                                                         const CdkRGBA *success_color,
                                                         const CdkRGBA *warning_color,
@@ -331,12 +331,12 @@ void                  ctk_icon_info_load_symbolic_async (CtkIconInfo   *icon_inf
 							 GAsyncReadyCallback   callback,
 							 gpointer              user_data);
 CDK_AVAILABLE_IN_3_8
-CdkPixbuf *           ctk_icon_info_load_symbolic_finish (CtkIconInfo   *icon_info,
+GdkPixbuf *           ctk_icon_info_load_symbolic_finish (CtkIconInfo   *icon_info,
 							  GAsyncResult         *res,
 							  gboolean      *was_symbolic,
 							  GError       **error);
 CDK_AVAILABLE_IN_ALL
-CdkPixbuf *           ctk_icon_info_load_symbolic_for_context (CtkIconInfo      *icon_info,
+GdkPixbuf *           ctk_icon_info_load_symbolic_for_context (CtkIconInfo      *icon_info,
                                                                CtkStyleContext  *context,
                                                                gboolean         *was_symbolic,
                                                                GError          **error);
@@ -347,12 +347,12 @@ void                  ctk_icon_info_load_symbolic_for_context_async (CtkIconInfo
 								     GAsyncReadyCallback callback,
 								     gpointer          user_data);
 CDK_AVAILABLE_IN_3_8
-CdkPixbuf *           ctk_icon_info_load_symbolic_for_context_finish (CtkIconInfo      *icon_info,
+GdkPixbuf *           ctk_icon_info_load_symbolic_for_context_finish (CtkIconInfo      *icon_info,
 								      GAsyncResult     *res,
 								      gboolean         *was_symbolic,
 								      GError          **error);
 CDK_DEPRECATED_IN_3_0_FOR(ctk_icon_info_load_symbol_for_context)
-CdkPixbuf *           ctk_icon_info_load_symbolic_for_style  (CtkIconInfo   *icon_info,
+GdkPixbuf *           ctk_icon_info_load_symbolic_for_style  (CtkIconInfo   *icon_info,
                                                               CtkStyle      *style,
                                                               CtkStateType   state,
                                                               gboolean      *was_symbolic,

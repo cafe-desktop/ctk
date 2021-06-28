@@ -430,7 +430,7 @@ cdk_win32_selection_init (CdkWin32Selection *win32_selection)
   for (rover = pixbuf_formats; rover != NULL; rover = rover->next)
     {
       gchar **mime_types =
-	cdk_pixbuf_format_get_mime_types ((CdkPixbufFormat *) rover->data);
+	cdk_pixbuf_format_get_mime_types ((GdkPixbufFormat *) rover->data);
 
       gchar **mime_type;
 
@@ -444,7 +444,7 @@ cdk_win32_selection_init (CdkWin32Selection *win32_selection)
   for (rover = pixbuf_formats; rover != NULL; rover = rover->next)
     {
       gchar **mime_types =
-	cdk_pixbuf_format_get_mime_types ((CdkPixbufFormat *) rover->data);
+	cdk_pixbuf_format_get_mime_types ((GdkPixbufFormat *) rover->data);
 
       gchar **mime_type;
 

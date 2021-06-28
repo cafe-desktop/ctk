@@ -824,8 +824,8 @@ msgid "Pixbuf"
 msgstr "Bufor pikseli"
 
 #: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:257
-msgid "A CdkPixbuf to display"
-msgstr "Obiekt CdkPixbuf do wyświetlenia"
+msgid "A GdkPixbuf to display"
+msgstr "Obiekt GdkPixbuf do wyświetlenia"
 
 #: ctk/deprecated/ctkstatusicon.c:242 ctk/ctkimage.c:270
 #: ctk/ctkrecentmanager.c:289
@@ -4566,8 +4566,8 @@ msgid "Animation"
 msgstr "Animacja"
 
 #: ctk/ctkimage.c:329
-msgid "CdkPixbufAnimation to display"
-msgstr "Obiekt CdkPixbufAnimation do wyświetlenia"
+msgid "GdkPixbufAnimation to display"
+msgstr "Obiekt GdkPixbufAnimation do wyświetlenia"
 
 #: ctk/ctkimage.c:373
 msgid "Resource"

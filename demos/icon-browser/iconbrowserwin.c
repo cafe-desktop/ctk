@@ -76,12 +76,12 @@ search_text_changed (CtkEntry *entry, IconBrowserWindow *win)
   ctk_tree_model_filter_refilter (win->filter_model);
 }
 
-static CdkPixbuf *
+static GdkPixbuf *
 get_icon (CtkWidget *image, const gchar *name, gint size)
 {
   CtkIconInfo *info;
   CtkStyleContext *context;
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
 
   context = ctk_widget_get_style_context (image);
   info = ctk_icon_theme_lookup_icon (ctk_icon_theme_get_default (), name, size, 0);
@@ -94,7 +94,7 @@ get_icon (CtkWidget *image, const gchar *name, gint size)
 static void
 set_image (CtkWidget *image, const gchar *name, gint size)
 {
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
 
   ctk_image_set_from_icon_name (CTK_IMAGE (image), name, 1);
   ctk_image_set_pixel_size (CTK_IMAGE (image), size);
@@ -388,7 +388,7 @@ get_image_data (CtkWidget        *widget,
   CtkWidget *image;
   const gchar *name;
   gint size;
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
 
   image = ctk_bin_get_child (CTK_BIN (widget));
 

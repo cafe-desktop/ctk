@@ -4907,7 +4907,7 @@ msgstr "'%s' rəsmi yüklənə bilmədi: səbəbi bilinmir, xəsərli fayl ola b
 #~ msgstr "TGA məzmun quruluşu üçün yaddaş ayrıla bilir"
 
 #, fuzzy
-#~ msgid "Failed to create CdkPixbufLoader object."
+#~ msgid "Failed to create GdkPixbufLoader object."
 #~ msgstr "Müvəqqəti fayl oxuna bilmədi"
 
 #, fuzzy

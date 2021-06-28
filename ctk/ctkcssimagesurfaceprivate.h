@@ -52,7 +52,7 @@ struct _CtkCssImageSurfaceClass
 GType          _ctk_css_image_surface_get_type             (void) G_GNUC_CONST;
 
 CtkCssImage *  _ctk_css_image_surface_new                  (cairo_surface_t *surface);
-CtkCssImage *  _ctk_css_image_surface_new_for_pixbuf       (CdkPixbuf       *pixbuf);
+CtkCssImage *  _ctk_css_image_surface_new_for_pixbuf       (GdkPixbuf       *pixbuf);
 
 G_END_DECLS
 

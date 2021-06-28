@@ -1346,7 +1346,7 @@ ctk_drag_set_icon_widget (CdkDragContext    *context,
 static void
 set_icon_stock_pixbuf (CdkDragContext    *context,
 		       const gchar       *stock_id,
-		       CdkPixbuf         *pixbuf,
+		       GdkPixbuf         *pixbuf,
 		       gint               hot_x,
 		       gint               hot_y)
 {
@@ -1426,7 +1426,7 @@ ctk_drag_set_icon_definition (CdkDragContext     *context,
  * ctk_drag_set_icon_pixbuf:
  * @context: the context for a drag. (This must be called 
  *            with a  context for the source side of a drag)
- * @pixbuf: the #CdkPixbuf to use as the drag icon.
+ * @pixbuf: the #GdkPixbuf to use as the drag icon.
  * @hot_x: the X offset within @widget of the hotspot.
  * @hot_y: the Y offset within @widget of the hotspot.
  * 
@@ -1434,7 +1434,7 @@ ctk_drag_set_icon_definition (CdkDragContext     *context,
  **/
 void 
 ctk_drag_set_icon_pixbuf  (CdkDragContext *context,
-			   CdkPixbuf      *pixbuf,
+			   GdkPixbuf      *pixbuf,
 			   gint            hot_x,
 			   gint            hot_y)
 {
@@ -1528,7 +1528,7 @@ ctk_drag_set_icon_name (CdkDragContext *context,
 {
   CdkScreen *screen;
   CtkIconTheme *icon_theme;
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
   gint width, height, icon_size;
 
   g_return_if_fail (CDK_IS_DRAG_CONTEXT (context));

@@ -829,8 +829,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:257
-msgid "A CdkPixbuf to display"
-msgstr "表示する CdkPixbuf です"
+msgid "A GdkPixbuf to display"
+msgstr "表示する GdkPixbuf です"
 
 #: ctk/deprecated/ctkstatusicon.c:242 ctk/ctkimage.c:270
 #: ctk/ctkrecentmanager.c:289
@@ -4796,8 +4796,8 @@ msgid "Animation"
 msgstr "アニメーション"
 
 #: ctk/ctkimage.c:329
-msgid "CdkPixbufAnimation to display"
-msgstr "表示する CdkPixbufAnimation"
+msgid "GdkPixbufAnimation to display"
+msgstr "表示する GdkPixbufAnimation"
 
 #: ctk/ctkimage.c:373
 #, fuzzy

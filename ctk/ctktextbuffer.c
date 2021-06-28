@@ -131,7 +131,7 @@ static void ctk_text_buffer_real_insert_text           (CtkTextBuffer     *buffe
                                                         gint               len);
 static void ctk_text_buffer_real_insert_pixbuf         (CtkTextBuffer     *buffer,
                                                         CtkTextIter       *iter,
-                                                        CdkPixbuf         *pixbuf);
+                                                        GdkPixbuf         *pixbuf);
 static void ctk_text_buffer_real_insert_anchor         (CtkTextBuffer     *buffer,
                                                         CtkTextIter       *iter,
                                                         CtkTextChildAnchor *anchor);
@@ -322,9 +322,9 @@ ctk_text_buffer_class_init (CtkTextBufferClass *klass)
    * CtkTextBuffer::insert-pixbuf:
    * @textbuffer: the object which received the signal
    * @location: position to insert @pixbuf in @textbuffer
-   * @pixbuf: the #CdkPixbuf to be inserted
+   * @pixbuf: the #GdkPixbuf to be inserted
    * 
-   * The ::insert-pixbuf signal is emitted to insert a #CdkPixbuf 
+   * The ::insert-pixbuf signal is emitted to insert a #GdkPixbuf 
    * in a #CtkTextBuffer. Insertion actually occurs in the default handler.
    * 
    * Note that if your handler runs before the default handler it must not 
@@ -1209,7 +1209,7 @@ insert_range_untagged (CtkTextBuffer     *buffer,
             }
           else if (ctk_text_iter_get_char (&range_end) == CTK_TEXT_UNKNOWN_CHAR)
             {
-              CdkPixbuf *pixbuf = NULL;
+              GdkPixbuf *pixbuf = NULL;
               CtkTextChildAnchor *anchor = NULL;
               pixbuf = ctk_text_iter_get_pixbuf (&range_end);
               anchor = ctk_text_iter_get_child_anchor (&range_end);
@@ -1914,7 +1914,7 @@ ctk_text_buffer_get_slice (CtkTextBuffer     *buffer,
 static void
 ctk_text_buffer_real_insert_pixbuf (CtkTextBuffer *buffer,
                                     CtkTextIter   *iter,
-                                    CdkPixbuf     *pixbuf)
+                                    GdkPixbuf     *pixbuf)
 { 
   _ctk_text_btree_insert_pixbuf (iter, pixbuf);
 
@@ -1925,7 +1925,7 @@ ctk_text_buffer_real_insert_pixbuf (CtkTextBuffer *buffer,
  * ctk_text_buffer_insert_pixbuf:
  * @buffer: a #CtkTextBuffer
  * @iter: location to insert the pixbuf
- * @pixbuf: a #CdkPixbuf
+ * @pixbuf: a #GdkPixbuf
  *
  * Inserts an image into the text buffer at @iter. The image will be
  * counted as one character in character counts, and when obtaining
@@ -1939,7 +1939,7 @@ ctk_text_buffer_real_insert_pixbuf (CtkTextBuffer *buffer,
 void
 ctk_text_buffer_insert_pixbuf (CtkTextBuffer *buffer,
                                CtkTextIter   *iter,
-                               CdkPixbuf     *pixbuf)
+                               GdkPixbuf     *pixbuf)
 {
   g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
   g_return_if_fail (iter != NULL);

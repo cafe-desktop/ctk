@@ -6,7 +6,7 @@
 
 CdkInterpType interp_type = CDK_INTERP_BILINEAR;
 int overall_alpha = 255;
-CdkPixbuf *pixbuf;
+GdkPixbuf *pixbuf;
 CtkWidget *darea;
   
 void
@@ -34,7 +34,7 @@ overall_changed_cb (CtkAdjustment *adjustment, gpointer data)
 gboolean
 draw_cb (CtkWidget *widget, cairo_t *cr, gpointer data)
 {
-  CdkPixbuf *dest;
+  GdkPixbuf *dest;
   int width, height;
 
   width = ctk_widget_get_allocated_width (widget);

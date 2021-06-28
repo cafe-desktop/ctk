@@ -22,11 +22,11 @@
 
 G_BEGIN_DECLS
 
-CdkPixbuf *_cdk_pixbuf_new_from_stream_scaled   (GInputStream  *stream,
+GdkPixbuf *_cdk_pixbuf_new_from_stream_scaled   (GInputStream  *stream,
                                                  gdouble        scale,
                                                  GCancellable  *cancellable,
                                                  GError       **error);
-CdkPixbuf *_cdk_pixbuf_new_from_resource_scaled (const gchar   *resource_path,
+GdkPixbuf *_cdk_pixbuf_new_from_resource_scaled (const gchar   *resource_path,
                                                  gdouble        scale,
                                                  GError       **error);
 

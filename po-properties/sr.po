@@ -822,7 +822,7 @@ msgid "Pixbuf"
 msgstr "Сличица"
 
 #: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:257
-msgid "A CdkPixbuf to display"
+msgid "A GdkPixbuf to display"
 msgstr "Гдк сличица за приказ"
 
 #: ctk/deprecated/ctkstatusicon.c:242 ctk/ctkimage.c:270
@@ -4526,7 +4526,7 @@ msgid "Animation"
 msgstr "Анимација"
 
 #: ctk/ctkimage.c:329
-msgid "CdkPixbufAnimation to display"
+msgid "GdkPixbufAnimation to display"
 msgstr "Гдк анимирана сличица за приказ"
 
 #: ctk/ctkimage.c:373

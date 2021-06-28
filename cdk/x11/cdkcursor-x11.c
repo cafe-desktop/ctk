@@ -802,7 +802,7 @@ _cdk_x11_display_get_cursor_for_surface (CdkDisplay *display,
   CdkScreen *screen;
   cairo_surface_t *image;
   cairo_t *cr;
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
 
   width = cairo_image_surface_get_width (surface);
   height = cairo_image_surface_get_height (surface);

@@ -4646,7 +4646,7 @@ msgstr "ရုပ်ပုံ %s': ဖွင့်လို့ မရတဲ့ �
 #~ msgstr "TGA အကြောင်းအချက် တည်ဆောက်မှု အတွက် မှတ်ဉာဏ်ကို မခွဲဝေနိုင်ဘူး"
 
 #, fuzzy
-#~ msgid "Failed to create CdkPixbufLoader object."
+#~ msgid "Failed to create GdkPixbufLoader object."
 #~ msgstr "ဖိုင်တွဲ အညွှန်းကို ရေးဖို့ မအောင်မြင်ဘူး\n"
 
 #, fuzzy

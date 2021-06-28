@@ -3087,7 +3087,7 @@ msgid "Pixbuf"
 msgstr ""
 
 #: ../ctk/ctkimage.c:228 ../ctk/ctkstatusicon.c:213
-msgid "A CdkPixbuf to display"
+msgid "A GdkPixbuf to display"
 msgstr ""
 
 #: ../ctk/ctkimage.c:235 ../ctk/ctkrecentmanager.c:290
@@ -3139,7 +3139,7 @@ msgid "Animation"
 msgstr "kisalasala"
 
 #: ../ctk/ctkimage.c:287
-msgid "CdkPixbufAnimation to display"
+msgid "GdkPixbufAnimation to display"
 msgstr ""
 
 #: ../ctk/ctkimage.c:327 ../ctk/ctkstatusicon.c:260
@@ -7633,8 +7633,8 @@ msgstr ""
 #~ msgstr "mpu bu itanga yo nkatu"
 
 #~| msgid "Failed to write folder index\n"
-#~ msgid "Failed to create CdkPixbufLoader object."
-#~ msgstr "CdkPixbufLoader bu ivaanga yo nkatu"
+#~ msgid "Failed to create GdkPixbufLoader object."
+#~ msgstr "GdkPixbufLoader bu ivaanga yo nkatu"
 
 #~ msgid "The QTIF image format"
 #~ msgstr "bifuanisu bia qtif"

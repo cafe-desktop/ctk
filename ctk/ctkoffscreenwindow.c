@@ -36,7 +36,7 @@
  *
  * The idea is to take a widget and manually set the state of it,
  * add it to a CtkOffscreenWindow and then retrieve the snapshot
- * as a #cairo_surface_t or #CdkPixbuf.
+ * as a #cairo_surface_t or #GdkPixbuf.
  *
  * CtkOffscreenWindow derives from #CtkWindow only as an implementation
  * detail.  Applications should not use any API specific to #CtkWindow
@@ -315,19 +315,19 @@ ctk_offscreen_window_get_surface (CtkOffscreenWindow *offscreen)
  * @offscreen: the #CtkOffscreenWindow contained widget.
  *
  * Retrieves a snapshot of the contained widget in the form of
- * a #CdkPixbuf.  This is a new pixbuf with a reference count of 1,
+ * a #GdkPixbuf.  This is a new pixbuf with a reference count of 1,
  * and the application should unreference it once it is no longer
  * needed.
  *
- * Returns: (nullable) (transfer full): A #CdkPixbuf pointer, or %NULL.
+ * Returns: (nullable) (transfer full): A #GdkPixbuf pointer, or %NULL.
  *
  * Since: 2.20
  */
-CdkPixbuf *
+GdkPixbuf *
 ctk_offscreen_window_get_pixbuf (CtkOffscreenWindow *offscreen)
 {
   cairo_surface_t *surface;
-  CdkPixbuf *pixbuf = NULL;
+  GdkPixbuf *pixbuf = NULL;
   CdkWindow *window;
 
   g_return_val_if_fail (CTK_IS_OFFSCREEN_WINDOW (offscreen), NULL);

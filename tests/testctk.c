@@ -1141,7 +1141,7 @@ new_pixbuf (char      *filename,
 	    CdkWindow *window)
 {
   CtkWidget *widget;
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
 
   if (strcmp (filename, "test.xpm") == 0)
     pixbuf = NULL;
@@ -1982,7 +1982,7 @@ on_rotated_text_unrealize (CtkWidget *widget)
 static gboolean
 on_rotated_text_draw (CtkWidget *widget,
                       cairo_t   *cr,
-	              CdkPixbuf *tile_pixbuf)
+	              GdkPixbuf *tile_pixbuf)
 {
   static const gchar *words[] = { "The", "grand", "old", "Duke", "of", "York",
                                   "had", "10,000", "men" };
@@ -2054,7 +2054,7 @@ create_rotated_text (CtkWidget *widget)
       CtkRequisition requisition;
       CtkWidget *content_area;
       CtkWidget *drawing_area;
-      CdkPixbuf *tile_pixbuf;
+      GdkPixbuf *tile_pixbuf;
 
       window = ctk_dialog_new_with_buttons ("Rotated Text",
 					    CTK_WINDOW (ctk_widget_get_toplevel (widget)), 0,
@@ -2769,7 +2769,7 @@ create_image (CtkWidget *widget)
   if (window == NULL)
     {
       CtkWidget *vbox;
-      CdkPixbuf *pixbuf;
+      GdkPixbuf *pixbuf;
         
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       
@@ -5957,12 +5957,12 @@ static const char * book_closed_xpm[] = {
 "      ..        ",
 "                "};
 
-CdkPixbuf *book_open;
-CdkPixbuf *book_closed;
+GdkPixbuf *book_open;
+GdkPixbuf *book_closed;
 CtkWidget *sample_notebook;
 
 static void
-set_page_image (CtkNotebook *notebook, gint page_num, CdkPixbuf *pixbuf)
+set_page_image (CtkNotebook *notebook, gint page_num, GdkPixbuf *pixbuf)
 {
   CtkWidget *page_widget;
   CtkWidget *pixwid;
@@ -6902,7 +6902,7 @@ shape_create_icon (CdkScreen *screen,
   CursorOffset* icon_pos;
   cairo_surface_t *mask;
   cairo_region_t *mask_region;
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
   cairo_t *cr;
 
   /*
@@ -7076,7 +7076,7 @@ create_wmhints (CtkWidget *widget)
   CtkWidget *box1;
   CtkWidget *box2;
   CdkWindow *cdk_window;
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
   GList *list;
 
   if (!window)
@@ -8589,7 +8589,7 @@ snapshot_widget_event (CtkWidget	       *widget,
 	{
 	  cairo_surface_t *surface;
 	  CtkWidget *window, *image;
-          CdkPixbuf *pixbuf;
+          GdkPixbuf *pixbuf;
           int width, height;
           cairo_t *cr;
 

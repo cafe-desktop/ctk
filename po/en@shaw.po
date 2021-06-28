@@ -937,8 +937,8 @@ msgstr "𐑓𐑱𐑤𐑛 𐑑 𐑨𐑤𐑴𐑒𐑱𐑑 QTIF 𐑒𐑪𐑯𐑑𐑧
 
 #, fuzzy
 #: ../cdk-pixbuf/io-qtif.c:317
-msgid "Failed to create CdkPixbufLoader object."
-msgstr "𐑓𐑱𐑤𐑛 𐑑 𐑒𐑮𐑦𐑱𐑑 CdkPixbufLoader 𐑩𐑚𐑡𐑧𐑒𐑑."
+msgid "Failed to create GdkPixbufLoader object."
+msgstr "𐑓𐑱𐑤𐑛 𐑑 𐑒𐑮𐑦𐑱𐑑 GdkPixbufLoader 𐑩𐑚𐑡𐑧𐑒𐑑."
 
 #: ../cdk-pixbuf/io-qtif.c:421
 msgid "Failed to find an image data atom."

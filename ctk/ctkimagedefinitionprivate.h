@@ -26,11 +26,11 @@ G_BEGIN_DECLS
 typedef union _CtkImageDefinition CtkImageDefinition;
 
 CtkImageDefinition *    ctk_image_definition_new_empty          (void);
-CtkImageDefinition *    ctk_image_definition_new_pixbuf         (CdkPixbuf                      *pixbuf,
+CtkImageDefinition *    ctk_image_definition_new_pixbuf         (GdkPixbuf                      *pixbuf,
                                                                  int                             scale);
 CtkImageDefinition *    ctk_image_definition_new_stock          (const char                     *stock_id);
 CtkImageDefinition *    ctk_image_definition_new_icon_set       (CtkIconSet                     *icon_set);
-CtkImageDefinition *    ctk_image_definition_new_animation      (CdkPixbufAnimation             *animation,
+CtkImageDefinition *    ctk_image_definition_new_animation      (GdkPixbufAnimation             *animation,
                                                                  int                             scale);
 CtkImageDefinition *    ctk_image_definition_new_icon_name      (const char                     *icon_name);
 CtkImageDefinition *    ctk_image_definition_new_gicon          (GIcon                          *gicon);
@@ -41,10 +41,10 @@ void                    ctk_image_definition_unref              (CtkImageDefinit
 
 CtkImageType            ctk_image_definition_get_storage_type   (const CtkImageDefinition       *def);
 gint                    ctk_image_definition_get_scale          (const CtkImageDefinition       *def);
-CdkPixbuf *             ctk_image_definition_get_pixbuf         (const CtkImageDefinition       *def);
+GdkPixbuf *             ctk_image_definition_get_pixbuf         (const CtkImageDefinition       *def);
 const gchar *           ctk_image_definition_get_stock          (const CtkImageDefinition       *def);
 CtkIconSet *            ctk_image_definition_get_icon_set       (const CtkImageDefinition       *def);
-CdkPixbufAnimation *    ctk_image_definition_get_animation      (const CtkImageDefinition       *def);
+GdkPixbufAnimation *    ctk_image_definition_get_animation      (const CtkImageDefinition       *def);
 const gchar *           ctk_image_definition_get_icon_name      (const CtkImageDefinition       *def);
 GIcon *                 ctk_image_definition_get_gicon          (const CtkImageDefinition       *def);
 cairo_surface_t *       ctk_image_definition_get_surface        (const CtkImageDefinition       *def);

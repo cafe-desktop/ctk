@@ -445,7 +445,7 @@ file of unknown type.
 </para>
 <para>
 To load an image or animation file asynchronously (without blocking), use
-#CdkPixbufLoader.
+#GdkPixbufLoader.
 </para>
 </answer>
 
@@ -975,12 +975,12 @@ Render extension).
 
 <qandaentry>
 <question><para>
-Can I use cairo to draw on a #CdkPixbuf ?
+Can I use cairo to draw on a #GdkPixbuf ?
 </para></question>
 
 <answer><para>
 No, at least not yet. The cairo image surface does not support the
-pixel format used by CdkPixbuf.
+pixel format used by GdkPixbuf.
 </para></answer>
 </qandaentry>
 

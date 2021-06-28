@@ -4697,7 +4697,7 @@ msgstr ""
 #~ msgstr "Nikare bîrekê ji TGA re veqetîne"
 
 #, fuzzy
-#~ msgid "Failed to create CdkPixbufLoader object."
+#~ msgid "Failed to create GdkPixbufLoader object."
 #~ msgstr "Nivisîna pêrista peldankê biserneket\n"
 
 #, fuzzy

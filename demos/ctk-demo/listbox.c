@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-static CdkPixbuf *avatar_pixbuf_other;
+static GdkPixbuf *avatar_pixbuf_other;
 static CtkWidget *window = NULL;
 
 #define CTK_TYPE_MESSAGE		  (ctk_message_get_type ())

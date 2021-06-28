@@ -247,7 +247,7 @@
       was replaced.
     </para>
     <example>
-       <title>Drawing a CdkPixbuf onto a CdkWindow</title>
+       <title>Drawing a GdkPixbuf onto a CdkWindow</title>
          <para>
            Drawing a pixbuf onto a drawable used to be done like this:
            <informalexample><programlisting>
@@ -747,7 +747,7 @@ g_object_unref (pixmap);
 CdkCursor *cursor;
 cairo_surface_t *s;
 cairo_t *cr;
-CdkPixbuf *pixbuf;
+GdkPixbuf *pixbuf;
 
 s = cairo_image_surface_create (CAIRO_FORMAT_A1, 3, 3);
 cr = cairo_create (s);
@@ -826,7 +826,7 @@ on_alpha_screen_changed (CtkWindow *window,
       #CdkDrawable has been removed in CTK+ 3, together with #CdkPixmap
       and #CdkImage. The only remaining drawable class is #CdkWindow.
       For dealing with image data, you should use a #cairo_surface_t or
-      a #CdkPixbuf.
+      a #GdkPixbuf.
     </para>
 
     <para>

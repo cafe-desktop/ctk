@@ -310,7 +310,7 @@ ctk_tree_store_init (CtkTreeStore *tree_store)
  *
  * As an example, `ctk_tree_store_new (3, G_TYPE_INT, G_TYPE_STRING,
  * CDK_TYPE_PIXBUF);` will create a new #CtkTreeStore with three columns, of type
- * #gint, #gchararray, and #CdkPixbuf respectively.
+ * #gint, #gchararray, and #GdkPixbuf respectively.
  *
  * Returns: a new #CtkTreeStore
  **/

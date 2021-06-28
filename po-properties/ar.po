@@ -3082,8 +3082,8 @@ msgid "Pixbuf"
 msgstr "بكسبف"
 
 #: ctk/ctkimage.c:228 ctk/ctkstatusicon.c:213
-msgid "A CdkPixbuf to display"
-msgstr "CdkPixbuf لعرضه"
+msgid "A GdkPixbuf to display"
+msgstr "GdkPixbuf لعرضه"
 
 #: ctk/ctkimage.c:235 ctk/ctkrecentmanager.c:290 ctk/ctkstatusicon.c:220
 msgid "Filename"
@@ -3127,8 +3127,8 @@ msgid "Animation"
 msgstr "رسوم متحركة"
 
 #: ctk/ctkimage.c:287
-msgid "CdkPixbufAnimation to display"
-msgstr "CdkPixbufAnimation لعرضها"
+msgid "GdkPixbufAnimation to display"
+msgstr "GdkPixbufAnimation لعرضها"
 
 #: ctk/ctkimage.c:327 ctk/ctkstatusicon.c:260
 msgid "Storage type"

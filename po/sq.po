@@ -4798,7 +4798,7 @@ msgstr ""
 #~ msgstr "I pamundur sigurimi i kujtesës për strukturën kontekste TGA"
 
 #, fuzzy
-#~ msgid "Failed to create CdkPixbufLoader object."
+#~ msgid "Failed to create GdkPixbufLoader object."
 #~ msgstr "Shkrimi i treguesit të kartelës dështoi\n"
 
 #, fuzzy

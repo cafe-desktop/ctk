@@ -4450,7 +4450,7 @@ msgstr "Tósǽlde tó hládenne onlícnesse '%s': "
 #~ msgstr "Gesweðrung in rǽdunge GIF: %s"
 
 #, fuzzy
-#~ msgid "Failed to create CdkPixbufLoader object."
+#~ msgid "Failed to create GdkPixbufLoader object."
 #~ msgstr "Tósǽlde tó rǽdenne fram hwílwendne cranic"
 
 #, fuzzy

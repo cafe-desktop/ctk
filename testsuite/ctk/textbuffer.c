@@ -637,7 +637,7 @@ fill_buffer (CtkTextBuffer *buffer)
   CdkRGBA color2;
   CtkTextIter iter;
   CtkTextIter iter2;
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
   int i;
 
   color.red = 0.0;

@@ -9774,8 +9774,8 @@ msgstr "Ακαθόριστο προφίλ"
 #~ msgid "Failed to allocate QTIF context structure."
 #~ msgstr "Αδυναμία διάθεσης μνήμης για τη δομή περιεχομένων του QTIF."
 
-#~ msgid "Failed to create CdkPixbufLoader object."
-#~ msgstr "Αποτυχία δημιουργίας αντικειμένου CdkPixbufLoader."
+#~ msgid "Failed to create GdkPixbufLoader object."
+#~ msgstr "Αποτυχία δημιουργίας αντικειμένου GdkPixbufLoader."
 
 #~ msgid "Failed to find an image data atom."
 #~ msgstr "Αποτυχία εύρεσης ατόμου δεδομένων εικόνας."

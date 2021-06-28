@@ -228,7 +228,7 @@ CDK_DEPRECATED_IN_3_16_FOR(cdk_cursor_new_for_display)
 CdkCursor* cdk_cursor_new		 (CdkCursorType	   cursor_type);
 CDK_AVAILABLE_IN_ALL
 CdkCursor* cdk_cursor_new_from_pixbuf	 (CdkDisplay      *display,
-					  CdkPixbuf       *pixbuf,
+					  GdkPixbuf       *pixbuf,
 					  gint             x,
 					  gint             y);
 CDK_AVAILABLE_IN_3_10
@@ -246,7 +246,7 @@ CdkCursor * cdk_cursor_ref               (CdkCursor       *cursor);
 CDK_DEPRECATED_IN_3_0_FOR(g_object_unref)
 void        cdk_cursor_unref             (CdkCursor       *cursor);
 CDK_AVAILABLE_IN_ALL
-CdkPixbuf*  cdk_cursor_get_image         (CdkCursor       *cursor);
+GdkPixbuf*  cdk_cursor_get_image         (CdkCursor       *cursor);
 CDK_AVAILABLE_IN_3_10
 cairo_surface_t *cdk_cursor_get_surface  (CdkCursor       *cursor,
 					  gdouble         *x_hot,

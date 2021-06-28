@@ -4821,7 +4821,7 @@ msgstr ""
 #~ msgstr "Dji n' a savou alouwer del memwere pol sitructeure di contecse TGA"
 
 #, fuzzy
-#~ msgid "Failed to create CdkPixbufLoader object."
+#~ msgid "Failed to create GdkPixbufLoader object."
 #~ msgstr "Li scrijhaedje di l' indecse do ridant a fwait berwete\n"
 
 #, fuzzy

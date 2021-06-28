@@ -96,7 +96,7 @@ on_notebook_drag_begin (CtkWidget      *widget,
                         CdkDragContext *context,
                         gpointer        data)
 {
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
   guint page_num;
 
   page_num = ctk_notebook_get_current_page (CTK_NOTEBOOK (widget));

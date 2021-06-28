@@ -336,8 +336,8 @@ extern CdkCursor *_cdk_win32_grab_cursor;
 /* Convert a pixbuf to an HICON (or HCURSOR).  Supports alpha under
  * Windows XP, thresholds alpha otherwise.
  */
-HICON _cdk_win32_pixbuf_to_hicon   (CdkPixbuf *pixbuf);
-HICON _cdk_win32_pixbuf_to_hcursor (CdkPixbuf *pixbuf,
+HICON _cdk_win32_pixbuf_to_hicon   (GdkPixbuf *pixbuf);
+HICON _cdk_win32_pixbuf_to_hcursor (GdkPixbuf *pixbuf,
 				    gint       x_hotspot,
 				    gint       y_hotspot);
 

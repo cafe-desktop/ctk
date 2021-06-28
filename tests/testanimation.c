@@ -33,7 +33,7 @@ struct _LoadContext
 {
   gchar *filename;
   CtkWidget *window;
-  CdkPixbufLoader *pixbuf_loader;
+  GdkPixbufLoader *pixbuf_loader;
   guint load_timeout;
   FILE* image_stream;
 };
@@ -81,10 +81,10 @@ get_load_context (CtkWidget *image)
 }
 
 static void
-progressive_prepared_callback (CdkPixbufLoader* loader,
+progressive_prepared_callback (GdkPixbufLoader* loader,
                                gpointer         data)
 {
-  CdkPixbuf* pixbuf;
+  GdkPixbuf* pixbuf;
   CtkWidget* image;
 
   image = CTK_WIDGET (data);
@@ -104,7 +104,7 @@ progressive_prepared_callback (CdkPixbufLoader* loader,
 }
 
 static void
-progressive_updated_callback (CdkPixbufLoader* loader,
+progressive_updated_callback (GdkPixbufLoader* loader,
                               gint x, gint y, gint width, gint height,
                               gpointer data)
 {

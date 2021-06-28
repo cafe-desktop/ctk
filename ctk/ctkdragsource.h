@@ -61,7 +61,7 @@ void           ctk_drag_source_add_uri_targets   (CtkWidget    *widget);
 
 CDK_AVAILABLE_IN_ALL
 void ctk_drag_source_set_icon_pixbuf  (CtkWidget       *widget,
-				       CdkPixbuf       *pixbuf);
+				       GdkPixbuf       *pixbuf);
 CDK_DEPRECATED_IN_3_10_FOR(ctk_drag_source_set_icon_name)
 void ctk_drag_source_set_icon_stock   (CtkWidget       *widget,
 				       const gchar     *stock_id);

@@ -1,4 +1,4 @@
-/* CdkPixbuf library - convert X drawable information to RGB
+/* GdkPixbuf library - convert X drawable information to RGB
  *
  * Copyright (C) 1999 Michael Zucchi
  *
@@ -35,7 +35,7 @@
  * @Title: Pixbufs
  *
  * Pixbufs are client-side images. For details on how to create
- * and manipulate pixbufs, see the #CdkPixbuf API documentation.
+ * and manipulate pixbufs, see the #GdkPixbuf API documentation.
  *
  * The functions described here allow to obtain pixbufs from
  * #CdkWindows and cairo surfaces.
@@ -51,7 +51,7 @@
  * @height: Height in pixels of region to get
  *
  * Transfers image data from a #CdkWindow and converts it to an RGB(A)
- * representation inside a #CdkPixbuf. In other words, copies
+ * representation inside a #GdkPixbuf. In other words, copies
  * image data from a server-side drawable to a client-side RGB(A) buffer.
  * This allows you to efficiently read individual pixels on the client side.
  *
@@ -80,7 +80,7 @@
  * Returns: (nullable) (transfer full): A newly-created pixbuf with a
  *     reference count of 1, or %NULL on error
  */
-CdkPixbuf *
+GdkPixbuf *
 cdk_pixbuf_get_from_window (CdkWindow *src,
                             gint       src_x,
                             gint       src_y,
@@ -90,7 +90,7 @@ cdk_pixbuf_get_from_window (CdkWindow *src,
   cairo_surface_t *surface;
   cairo_surface_t *copy;
   cairo_t *cr;
-  CdkPixbuf *dest;
+  GdkPixbuf *dest;
   int scale;
 
   g_return_val_if_fail (CDK_IS_WINDOW (src), NULL);
@@ -243,7 +243,7 @@ convert_no_alpha (guchar *dest_data,
  * @height: Height in pixels of region to get
  *
  * Transfers image data from a #cairo_surface_t and converts it to an RGB(A)
- * representation inside a #CdkPixbuf. This allows you to efficiently read
+ * representation inside a #GdkPixbuf. This allows you to efficiently read
  * individual pixels from cairo surfaces. For #CdkWindows, use
  * cdk_pixbuf_get_from_window() instead.
  *
@@ -253,7 +253,7 @@ convert_no_alpha (guchar *dest_data,
  * Returns: (nullable) (transfer full): A newly-created pixbuf with a
  *     reference count of 1, or %NULL on error
  */
-CdkPixbuf *
+GdkPixbuf *
 cdk_pixbuf_get_from_surface  (cairo_surface_t *surface,
                               gint             src_x,
                               gint             src_y,
@@ -261,7 +261,7 @@ cdk_pixbuf_get_from_surface  (cairo_surface_t *surface,
                               gint             height)
 {
   cairo_content_t content;
-  CdkPixbuf *dest;
+  GdkPixbuf *dest;
 
   /* General sanity checks */
   g_return_val_if_fail (surface != NULL, NULL);

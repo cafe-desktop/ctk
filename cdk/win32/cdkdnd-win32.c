@@ -77,7 +77,7 @@
  * * If CTK+ application provides image/png, image/gif or image/jpeg,
  *   CDK will claim to also provide "PNG", "GIF" or "JFIF" respectively,
  *   and will pass these along verbatim.
- * * If CTK+ application provides any CdkPixbuf-compatible target,
+ * * If CTK+ application provides any GdkPixbuf-compatible target,
  *   CDK will also offer "PNG" and CF_DIB W32 formats.
  * * If CTK+ application provides UTF8_STRING, CDK will also offer
  *   CF_UNICODETEXT (UTF-16-encoded) and CF_TEXT (encoded with thread-

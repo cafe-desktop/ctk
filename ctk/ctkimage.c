@@ -50,11 +50,11 @@
  * SECTION:ctkimage
  * @Short_description: A widget displaying an image
  * @Title: CtkImage
- * @See_also:#CdkPixbuf
+ * @See_also:#GdkPixbuf
  *
  * The #CtkImage widget displays an image. Various kinds of object
  * can be displayed as an image; most typically, you would load a
- * #CdkPixbuf ("pixel buffer") from a file, and then display that.
+ * #GdkPixbuf ("pixel buffer") from a file, and then display that.
  * There’s a convenience function to do this, ctk_image_new_from_file(),
  * used as follows:
  * |[<!-- language="C" -->
@@ -69,7 +69,7 @@
  * ctk_image_new_from_pixbuf().
  *
  * The image file may contain an animation, if so the #CtkImage will
- * display an animation (#CdkPixbufAnimation) instead of a static image.
+ * display an animation (#GdkPixbufAnimation) instead of a static image.
  *
  * #CtkImage is a subclass of #CtkMisc, which implies that you can
  * align it (center, left, right) and add padding to it, using
@@ -129,7 +129,7 @@
  * files, such as image files. CTK+ comes with a program to avoid this,
  * called “cdk-pixbuf-csource”. This library
  * allows you to convert an image into a C variable declaration, which
- * can then be loaded into a #CdkPixbuf using
+ * can then be loaded into a #GdkPixbuf using
  * cdk_pixbuf_new_from_inline().
  *
  * # CSS nodes
@@ -143,7 +143,7 @@ struct _CtkImagePrivate
 {
   CtkIconHelper *icon_helper;
 
-  CdkPixbufAnimationIter *animation_iter;
+  GdkPixbufAnimationIter *animation_iter;
   gint animation_timeout;
 
   CtkCssGadget *gadget;
@@ -254,7 +254,7 @@ ctk_image_class_init (CtkImageClass *class)
   image_props[PROP_PIXBUF] =
       g_param_spec_object ("pixbuf",
                            P_("Pixbuf"),
-                           P_("A CdkPixbuf to display"),
+                           P_("A GdkPixbuf to display"),
                            CDK_TYPE_PIXBUF,
                            CTK_PARAM_READWRITE);
 
@@ -326,7 +326,7 @@ ctk_image_class_init (CtkImageClass *class)
   image_props[PROP_PIXBUF_ANIMATION] =
       g_param_spec_object ("pixbuf-animation",
                            P_("Animation"),
-                           P_("CdkPixbufAnimation to display"),
+                           P_("GdkPixbufAnimation to display"),
                            CDK_TYPE_PIXBUF_ANIMATION,
                            CTK_PARAM_READWRITE);
 
@@ -645,7 +645,7 @@ ctk_image_new_from_resource (const gchar *resource_path)
 
 /**
  * ctk_image_new_from_pixbuf:
- * @pixbuf: (allow-none): a #CdkPixbuf, or %NULL
+ * @pixbuf: (allow-none): a #GdkPixbuf, or %NULL
  *
  * Creates a new #CtkImage displaying @pixbuf.
  * The #CtkImage does not assume a reference to the
@@ -659,7 +659,7 @@ ctk_image_new_from_resource (const gchar *resource_path)
  * Returns: a new #CtkImage
  **/
 CtkWidget*
-ctk_image_new_from_pixbuf (CdkPixbuf *pixbuf)
+ctk_image_new_from_pixbuf (GdkPixbuf *pixbuf)
 {
   CtkImage *image;
 
@@ -781,7 +781,7 @@ ctk_image_new_from_icon_set (CtkIconSet     *icon_set,
  * Returns: a new #CtkImage widget
  **/
 CtkWidget*
-ctk_image_new_from_animation (CdkPixbufAnimation *animation)
+ctk_image_new_from_animation (GdkPixbufAnimation *animation)
 {
   CtkImage *image;
 
@@ -854,14 +854,14 @@ typedef struct {
 } LoaderData;
 
 static void
-on_loader_size_prepared (CdkPixbufLoader *loader,
+on_loader_size_prepared (GdkPixbufLoader *loader,
 			 gint             width,
 			 gint             height,
 			 gpointer         user_data)
 {
   LoaderData *loader_data = user_data;
   gint scale_factor;
-  CdkPixbufFormat *format;
+  GdkPixbufFormat *format;
 
   /* Let the regular icon helper code path handle non-scalable images */
   format = cdk_pixbuf_loader_get_format (loader);
@@ -876,18 +876,18 @@ on_loader_size_prepared (CdkPixbufLoader *loader,
   loader_data->scale_factor = scale_factor;
 }
 
-static CdkPixbufAnimation *
+static GdkPixbufAnimation *
 load_scalable_with_loader (CtkImage    *image,
 			   const gchar *file_path,
 			   const gchar *resource_path,
 			   gint        *scale_factor_out)
 {
-  CdkPixbufLoader *loader;
+  GdkPixbufLoader *loader;
   GBytes *bytes;
   char *contents;
   gsize length;
   gboolean res;
-  CdkPixbufAnimation *animation;
+  GdkPixbufAnimation *animation;
   LoaderData loader_data;
 
   animation = NULL;
@@ -950,7 +950,7 @@ ctk_image_set_from_file   (CtkImage    *image,
                            const gchar *filename)
 {
   CtkImagePrivate *priv;
-  CdkPixbufAnimation *anim;
+  GdkPixbufAnimation *anim;
   gint scale_factor;
   
   g_return_if_fail (CTK_IS_IMAGE (image));
@@ -1041,7 +1041,7 @@ ctk_image_set_from_resource (CtkImage    *image,
 			     const gchar *resource_path)
 {
   CtkImagePrivate *priv;
-  CdkPixbufAnimation *animation;
+  GdkPixbufAnimation *animation;
   gint scale_factor = 1;
 
   g_return_if_fail (CTK_IS_IMAGE (image));
@@ -1092,13 +1092,13 @@ ctk_image_set_from_resource (CtkImage    *image,
 /**
  * ctk_image_set_from_pixbuf:
  * @image: a #CtkImage
- * @pixbuf: (allow-none): a #CdkPixbuf or %NULL
+ * @pixbuf: (allow-none): a #GdkPixbuf or %NULL
  *
  * See ctk_image_new_from_pixbuf() for details.
  **/
 void
 ctk_image_set_from_pixbuf (CtkImage  *image,
-                           CdkPixbuf *pixbuf)
+                           GdkPixbuf *pixbuf)
 {
   CtkImagePrivate *priv;
 
@@ -1206,14 +1206,14 @@ ctk_image_set_from_icon_set  (CtkImage       *image,
 /**
  * ctk_image_set_from_animation:
  * @image: a #CtkImage
- * @animation: the #CdkPixbufAnimation
+ * @animation: the #GdkPixbufAnimation
  * 
  * Causes the #CtkImage to display the given animation (or display
  * nothing, if you set the animation to %NULL).
  **/
 void
 ctk_image_set_from_animation (CtkImage           *image,
-                              CdkPixbufAnimation *animation)
+                              GdkPixbufAnimation *animation)
 {
   CtkImagePrivate *priv;
 
@@ -1374,7 +1374,7 @@ ctk_image_get_storage_type (CtkImage *image)
  * ctk_image_get_pixbuf:
  * @image: a #CtkImage
  *
- * Gets the #CdkPixbuf being displayed by the #CtkImage.
+ * Gets the #GdkPixbuf being displayed by the #CtkImage.
  * The storage type of the image must be %CTK_IMAGE_EMPTY or
  * %CTK_IMAGE_PIXBUF (see ctk_image_get_storage_type()).
  * The caller of this function does not own a reference to the
@@ -1383,7 +1383,7 @@ ctk_image_get_storage_type (CtkImage *image)
  * Returns: (nullable) (transfer none): the displayed pixbuf, or %NULL if
  * the image is empty
  **/
-CdkPixbuf*
+GdkPixbuf*
 ctk_image_get_pixbuf (CtkImage *image)
 {
   g_return_val_if_fail (CTK_IS_IMAGE (image), NULL);
@@ -1461,7 +1461,7 @@ ctk_image_get_icon_set  (CtkImage        *image,
  * ctk_image_get_animation:
  * @image: a #CtkImage
  *
- * Gets the #CdkPixbufAnimation being displayed by the #CtkImage.
+ * Gets the #GdkPixbufAnimation being displayed by the #CtkImage.
  * The storage type of the image must be %CTK_IMAGE_EMPTY or
  * %CTK_IMAGE_ANIMATION (see ctk_image_get_storage_type()).
  * The caller of this function does not own a reference to the
@@ -1470,7 +1470,7 @@ ctk_image_get_icon_set  (CtkImage        *image,
  * Returns: (nullable) (transfer none): the displayed animation, or %NULL if
  * the image is empty
  **/
-CdkPixbufAnimation*
+GdkPixbufAnimation*
 ctk_image_get_animation (CtkImage *image)
 {
   CtkImagePrivate *priv;
@@ -1648,7 +1648,7 @@ animation_timeout (gpointer data)
   return FALSE;
 }
 
-static CdkPixbuf *
+static GdkPixbuf *
 get_animation_frame (CtkImage *image)
 {
   CtkImagePrivate *priv = image->priv;
@@ -1789,7 +1789,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   if (ctk_image_get_storage_type (image) == CTK_IMAGE_ANIMATION)
     {
       CtkStyleContext *context = ctk_widget_get_style_context (widget);
-      CdkPixbuf *pixbuf = get_animation_frame (image);
+      GdkPixbuf *pixbuf = get_animation_frame (image);
 
       ctk_render_icon (context, cr, pixbuf, x, y);
       g_object_unref (pixbuf);

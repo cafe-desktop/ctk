@@ -367,7 +367,7 @@ additional environment variables.
 </formalpara>
 
 <para>
-The following environment variables are used by CdkPixbuf, CDK or
+The following environment variables are used by GdkPixbuf, CDK or
 Pango, not by CTK+ itself, but we list them here for completeness
 nevertheless.
 </para>
@@ -376,7 +376,7 @@ nevertheless.
   <title><envar>CDK_PIXBUF_MODULE_FILE</envar></title>
 
   <para>
-    Specifies the file listing the CdkPixbuf loader modules to load.
+    Specifies the file listing the GdkPixbuf loader modules to load.
     This environment variable overrides the default value
     <filename><replaceable>libdir</replaceable>/ctk-3.0/3.0.0/loaders.cache</filename>
     (<replaceable>libdir</replaceable> is the sysconfdir specified when

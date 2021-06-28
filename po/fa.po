@@ -9268,7 +9268,7 @@ msgstr "چاپ به چاپگر آزمایشی"
 #~ msgstr "نمی‌توان برای ساختار زمینه‌ی TGA حافظه تخصیص داد"
 
 #, fuzzy
-#~ msgid "Failed to create CdkPixbufLoader object."
+#~ msgid "Failed to create GdkPixbufLoader object."
 #~ msgstr "خواندن از پرونده‌ی موقت شکست خورد"
 
 #, fuzzy

@@ -25,10 +25,10 @@ CtkWidget *label;
 
 static void
 image_request_cb (CtkClipboard *clipboard,
-                  CdkPixbuf *pixbuf,
+                  GdkPixbuf *pixbuf,
                   gpointer data)
 {
-  CdkPixbuf *copy;
+  GdkPixbuf *copy;
   int height;
   int width;
   gdouble factor;
@@ -79,7 +79,7 @@ on_response (CtkDialog *dialog,
       /* copy large */
       {
         CtkIconTheme *theme;
-        CdkPixbuf *pixbuf;
+        GdkPixbuf *pixbuf;
         theme = ctk_icon_theme_get_default ();
         pixbuf = ctk_icon_theme_load_icon (theme, "utilities-terminal", 1600, 0, NULL);
         g_assert_nonnull (pixbuf);
@@ -90,7 +90,7 @@ on_response (CtkDialog *dialog,
       /* copy small */
       {
         CtkIconTheme *theme;
-        CdkPixbuf *pixbuf;
+        GdkPixbuf *pixbuf;
         theme = ctk_icon_theme_get_default ();
         pixbuf = ctk_icon_theme_load_icon (theme, "utilities-terminal", 48, 0, NULL);
         g_assert_nonnull (pixbuf);

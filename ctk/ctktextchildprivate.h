@@ -58,10 +58,10 @@ typedef struct _CtkTextPixbuf CtkTextPixbuf;
 
 struct _CtkTextPixbuf
 {
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
 };
 
-CtkTextLineSegment *_ctk_pixbuf_segment_new (CdkPixbuf *pixbuf);
+CtkTextLineSegment *_ctk_pixbuf_segment_new (GdkPixbuf *pixbuf);
 
 typedef struct _CtkTextChildBody CtkTextChildBody;
 

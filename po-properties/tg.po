@@ -4027,8 +4027,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ../ctk/ctkimage.c:231 ../ctk/ctkstatusicon.c:223
-msgid "A CdkPixbuf to display"
-msgstr "CdkPixbuf барои намоиш"
+msgid "A GdkPixbuf to display"
+msgstr "GdkPixbuf барои намоиш"
 
 #: ../ctk/ctkimage.c:238
 msgid "Surface"
@@ -4083,8 +4083,8 @@ msgid "Animation"
 msgstr "Аниматсия"
 
 #: ../ctk/ctkimage.c:310
-msgid "CdkPixbufAnimation to display"
-msgstr "CdkPixbufAnimation барои намоиш"
+msgid "GdkPixbufAnimation to display"
+msgstr "GdkPixbufAnimation барои намоиш"
 
 #: ../ctk/ctkimage.c:357
 msgid "Resource"

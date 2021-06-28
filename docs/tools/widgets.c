@@ -550,7 +550,7 @@ create_icon_view (void)
   CtkWidget *icon_view;
   CtkListStore *list_store;
   CtkTreeIter iter;
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
   WidgetInfo *info;
 
   widget = ctk_frame_new (NULL);

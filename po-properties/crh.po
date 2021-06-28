@@ -3679,8 +3679,8 @@ msgid "Pixbuf"
 msgstr "Piksel Buferi (Pixbuf)"
 
 #: ctk/ctkimage.c:223 ctk/ctkstatusicon.c:214
-msgid "A CdkPixbuf to display"
-msgstr "Kösterilecek CdkPixbuf"
+msgid "A GdkPixbuf to display"
+msgstr "Kösterilecek GdkPixbuf"
 
 #: ctk/ctkimage.c:230
 msgid "Pixmap"
@@ -3753,8 +3753,8 @@ msgid "Animation"
 msgstr "Canlandırma"
 
 #: ctk/ctkimage.c:306
-msgid "CdkPixbufAnimation to display"
-msgstr "Kösterilecek CdkPixbufAnimation"
+msgid "GdkPixbufAnimation to display"
+msgstr "Kösterilecek GdkPixbufAnimation"
 
 # ctk/ctkcurve.c:120
 #: ctk/ctkimage.c:346 ctk/ctkstatusicon.c:261

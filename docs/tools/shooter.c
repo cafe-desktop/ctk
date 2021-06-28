@@ -50,10 +50,10 @@ find_toplevel_window (Window xid)
   while (TRUE);
 }
 
-static CdkPixbuf *
-add_border_to_shot (CdkPixbuf *pixbuf)
+static GdkPixbuf *
+add_border_to_shot (GdkPixbuf *pixbuf)
 {
-  CdkPixbuf *retval;
+  GdkPixbuf *retval;
   CdkColorspace colorspace;
   int bits;
 
@@ -74,11 +74,11 @@ add_border_to_shot (CdkPixbuf *pixbuf)
   return retval;
 }
 
-static CdkPixbuf *
-remove_shaped_area (CdkPixbuf *pixbuf,
+static GdkPixbuf *
+remove_shaped_area (GdkPixbuf *pixbuf,
 		    Window     window)
 {
-  CdkPixbuf *retval;
+  GdkPixbuf *retval;
   XRectangle *rectangles;
   int rectangle_count, rectangle_order;
   int i;
@@ -132,7 +132,7 @@ typedef enum {
   DECOR_WINDOW_FRAME
 } DecorationType;
 
-static CdkPixbuf *
+static GdkPixbuf *
 take_window_shot (Window         child,
                   DecorationType decor)
 {
@@ -142,8 +142,8 @@ take_window_shot (Window         child,
   gint x = 0, y = 0;
   gint width, height;
 
-  CdkPixbuf *tmp, *tmp2;
-  CdkPixbuf *retval = NULL;
+  GdkPixbuf *tmp, *tmp2;
+  GdkPixbuf *retval = NULL;
 
   if (decor == DECOR_WINDOW_FRAME)
     xid = find_toplevel_window (child);
@@ -219,7 +219,7 @@ shoot_one (WidgetInfo *info)
 {
   CdkWindow *window;
   XID id;
-  CdkPixbuf *screenshot = NULL;
+  GdkPixbuf *screenshot = NULL;
   DecorationType decor = DECOR_FRAME;
 
   if (g_list_find (toplevels, info) == NULL)

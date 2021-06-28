@@ -27,7 +27,7 @@ test_cdk_cairo_set_source_pixbuf (void)
 {
   cairo_surface_t *surface;
   cairo_t *cr;
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
 
   pixbuf = cdk_pixbuf_new (CDK_COLORSPACE_RGB, FALSE, 8, 5, 5);
   surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, 10, 10);

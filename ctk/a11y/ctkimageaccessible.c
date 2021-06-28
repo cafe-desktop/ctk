@@ -288,7 +288,7 @@ ctk_image_accessible_get_image_size (AtkImage *image,
     {
     case CTK_IMAGE_PIXBUF:
       {
-        CdkPixbuf *pixbuf;
+        GdkPixbuf *pixbuf;
 
         pixbuf = ctk_image_get_pixbuf (ctk_image);
         *height = cdk_pixbuf_get_height (pixbuf);
@@ -308,7 +308,7 @@ ctk_image_accessible_get_image_size (AtkImage *image,
       }
     case CTK_IMAGE_ANIMATION:
       {
-        CdkPixbufAnimation *animation;
+        GdkPixbufAnimation *animation;
 
         animation = ctk_image_get_animation (ctk_image);
         *height = cdk_pixbuf_animation_get_height (animation);

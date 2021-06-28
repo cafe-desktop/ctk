@@ -81,7 +81,7 @@ assert_icon_lookup_size (const char         *icon_name,
 
   if (pixbuf_size > 0)
     {
-      CdkPixbuf *pixbuf;
+      GdkPixbuf *pixbuf;
       GError *error = NULL;
 
       pixbuf = ctk_icon_info_load_icon (info, &error);
@@ -622,7 +622,7 @@ load_icon (GObject      *source,
 {
   CtkIconInfo *info = (CtkIconInfo *)source;
   GError *error = NULL;
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
 
   pixbuf = ctk_icon_info_load_icon_finish (info, res, &error);
   g_assert (pixbuf != NULL);
@@ -640,7 +640,7 @@ load_symbolic (GObject      *source,
   CtkIconInfo *info = (CtkIconInfo *)source;
   GError *error = NULL;
   gboolean symbolic;
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
 
   pixbuf = ctk_icon_info_load_symbolic_finish (info, res, &symbolic, &error);
   g_assert (pixbuf != NULL);
@@ -742,7 +742,7 @@ test_nonsquare_symbolic (void)
 				  NULL);
 
   /* load the original image for reference */
-  CdkPixbuf *pixbuf = cdk_pixbuf_new_from_file (path, &error);
+  GdkPixbuf *pixbuf = cdk_pixbuf_new_from_file (path, &error);
   g_assert_no_error (error);
   g_assert_nonnull (pixbuf);
 

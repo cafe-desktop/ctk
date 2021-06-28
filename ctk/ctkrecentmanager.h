@@ -247,7 +247,7 @@ CDK_AVAILABLE_IN_ALL
 gboolean              ctk_recent_info_has_group            (CtkRecentInfo  *info,
 							    const gchar    *group_name);
 CDK_AVAILABLE_IN_ALL
-CdkPixbuf *           ctk_recent_info_get_icon             (CtkRecentInfo  *info,
+GdkPixbuf *           ctk_recent_info_get_icon             (CtkRecentInfo  *info,
 							    gint            size);
 CDK_AVAILABLE_IN_ALL
 GIcon *               ctk_recent_info_get_gicon            (CtkRecentInfo  *info);

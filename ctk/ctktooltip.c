@@ -270,7 +270,7 @@ ctk_tooltip_set_text (CtkTooltip  *tooltip,
 /**
  * ctk_tooltip_set_icon:
  * @tooltip: a #CtkTooltip
- * @pixbuf: (allow-none): a #CdkPixbuf, or %NULL
+ * @pixbuf: (allow-none): a #GdkPixbuf, or %NULL
  *
  * Sets the icon of the tooltip (which is in front of the text) to be
  * @pixbuf.  If @pixbuf is %NULL, the image will be hidden.
@@ -279,7 +279,7 @@ ctk_tooltip_set_text (CtkTooltip  *tooltip,
  */
 void
 ctk_tooltip_set_icon (CtkTooltip *tooltip,
-		      CdkPixbuf  *pixbuf)
+		      GdkPixbuf  *pixbuf)
 {
   g_return_if_fail (CTK_IS_TOOLTIP (tooltip));
   g_return_if_fail (pixbuf == NULL || CDK_IS_PIXBUF (pixbuf));

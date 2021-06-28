@@ -118,7 +118,7 @@
  * |[<!-- language="C" -->
  * GError *error = NULL;
  * CtkIconTheme *icon_theme;
- * CdkPixbuf *pixbuf;
+ * GdkPixbuf *pixbuf;
  *
  * icon_theme = ctk_icon_theme_get_default ();
  * pixbuf = ctk_icon_theme_load_icon (icon_theme,
@@ -209,8 +209,8 @@ typedef struct {
 typedef struct _SymbolicPixbufCache SymbolicPixbufCache;
 
 struct _SymbolicPixbufCache {
-  CdkPixbuf *pixbuf;
-  CdkPixbuf *proxy_pixbuf;
+  GdkPixbuf *pixbuf;
+  GdkPixbuf *proxy_pixbuf;
   CdkRGBA  fg;
   CdkRGBA  success_color;
   CdkRGBA  warning_color;
@@ -238,7 +238,7 @@ struct _CtkIconInfo
   GSList *emblem_infos;
 
   /* Cache pixbuf (if there is any) */
-  CdkPixbuf *cache_pixbuf;
+  GdkPixbuf *cache_pixbuf;
 
   /* Information about the directory where
    * the source was found
@@ -261,8 +261,8 @@ struct _CtkIconInfo
   /* Cached information if we go ahead and try to load
    * the icon.
    */
-  CdkPixbuf *pixbuf;
-  CdkPixbuf *proxy_pixbuf;
+  GdkPixbuf *pixbuf;
+  GdkPixbuf *proxy_pixbuf;
   GError *load_error;
   gdouble unscaled_scale;
   gdouble scale;
@@ -315,7 +315,7 @@ typedef struct
 typedef struct
 {
   gint size;
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
 } BuiltinIcon;
 
 typedef struct 
@@ -660,7 +660,7 @@ ctk_icon_theme_set_screen (CtkIconTheme *icon_theme,
 }
 
 /* Checks whether a loader for SVG files has been registered
- * with CdkPixbuf.
+ * with GdkPixbuf.
  */
 static gboolean
 pixbuf_supports_svg (void)
@@ -1577,7 +1577,7 @@ remove_from_lru_cache (CtkIconTheme *icon_theme,
 }
 
 static SymbolicPixbufCache *
-symbolic_pixbuf_cache_new (CdkPixbuf           *pixbuf,
+symbolic_pixbuf_cache_new (GdkPixbuf           *pixbuf,
                            const CdkRGBA       *fg,
                            const CdkRGBA       *success_color,
                            const CdkRGBA       *warning_color,
@@ -2283,7 +2283,7 @@ ctk_icon_theme_error_quark (void)
  *
  * Since: 2.4
  */
-CdkPixbuf *
+GdkPixbuf *
 ctk_icon_theme_load_icon (CtkIconTheme         *icon_theme,
                           const gchar          *icon_name,
                           gint                  size,
@@ -2332,7 +2332,7 @@ ctk_icon_theme_load_icon (CtkIconTheme         *icon_theme,
  *
  * Since: 3.10
  */
-CdkPixbuf *
+GdkPixbuf *
 ctk_icon_theme_load_icon_for_scale (CtkIconTheme        *icon_theme,
                                     const gchar         *icon_name,
                                     gint                 size,
@@ -2341,7 +2341,7 @@ ctk_icon_theme_load_icon_for_scale (CtkIconTheme        *icon_theme,
                                     GError             **error)
 {
   CtkIconInfo *icon_info;
-  CdkPixbuf *pixbuf = NULL;
+  GdkPixbuf *pixbuf = NULL;
   
   g_return_val_if_fail (CTK_IS_ICON_THEME (icon_theme), NULL);
   g_return_val_if_fail (icon_name != NULL, NULL);
@@ -3696,7 +3696,7 @@ ctk_icon_info_get_filename (CtkIconInfo *icon_info)
  * Deprecated: 3.14: This function is deprecated, use
  *     ctk_icon_theme_add_resource_path() instead of builtin icons.
  */
-CdkPixbuf *
+GdkPixbuf *
 ctk_icon_info_get_builtin_pixbuf (CtkIconInfo *icon_info)
 {
   g_return_val_if_fail (icon_info != NULL, NULL);
@@ -3737,11 +3737,11 @@ ctk_icon_info_is_symbolic (CtkIconInfo *icon_info)
   return is_symbolic;
 }
 
-static CdkPixbuf *
-apply_emblems_to_pixbuf (CdkPixbuf   *pixbuf,
+static GdkPixbuf *
+apply_emblems_to_pixbuf (GdkPixbuf   *pixbuf,
                          CtkIconInfo *info)
 {
-  CdkPixbuf *icon = NULL;
+  GdkPixbuf *icon = NULL;
   gint w, h, pos;
   GSList *l;
 
@@ -3757,7 +3757,7 @@ apply_emblems_to_pixbuf (CdkPixbuf   *pixbuf,
 
       if (icon_info_ensure_scale_and_pixbuf (emblem_info))
         {
-          CdkPixbuf *emblem = emblem_info->pixbuf;
+          GdkPixbuf *emblem = emblem_info->pixbuf;
           gint ew, eh;
           gint x = 0, y = 0; /* silence compiler */
           gdouble scale;
@@ -3815,7 +3815,7 @@ apply_emblems_to_pixbuf (CdkPixbuf   *pixbuf,
 static void 
 apply_emblems (CtkIconInfo *info)
 {
-  CdkPixbuf *icon;
+  GdkPixbuf *icon;
 
   if (info->emblems_applied)
     return;
@@ -3855,7 +3855,7 @@ icon_info_ensure_scale_and_pixbuf (CtkIconInfo *icon_info)
 {
   gint image_width, image_height, image_size;
   gint scaled_desired_size;
-  CdkPixbuf *source_pixbuf;
+  GdkPixbuf *source_pixbuf;
   gdouble dir_scale;
 
   if (icon_info->pixbuf)
@@ -4079,7 +4079,7 @@ proxy_pixbuf_destroy (guchar *pixels, gpointer data)
  *
  * Since: 2.4
  */
-CdkPixbuf *
+GdkPixbuf *
 ctk_icon_info_load_icon (CtkIconInfo *icon_info,
                          GError     **error)
 {
@@ -4157,7 +4157,7 @@ ctk_icon_info_load_surface (CtkIconInfo  *icon_info,
                             CdkWindow    *for_window,
                             GError      **error)
 {
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
   cairo_surface_t *surface;
 
   g_return_val_if_fail (icon_info != NULL, NULL);
@@ -4209,7 +4209,7 @@ ctk_icon_info_load_icon_async (CtkIconInfo         *icon_info,
                                gpointer             user_data)
 {
   GTask *task;
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
   CtkIconInfo *dup;
   GError *error = NULL;
 
@@ -4249,7 +4249,7 @@ ctk_icon_info_load_icon_async (CtkIconInfo         *icon_info,
  *
  * Since: 3.8
  */
-CdkPixbuf *
+GdkPixbuf *
 ctk_icon_info_load_icon_finish (CtkIconInfo   *icon_info,
                                 GAsyncResult  *result,
                                 GError       **error)
@@ -4314,7 +4314,7 @@ proxy_symbolic_pixbuf_destroy (guchar   *pixels,
   g_object_unref (icon_info);
 }
 
-static CdkPixbuf *
+static GdkPixbuf *
 symbolic_cache_get_proxy (SymbolicPixbufCache *symbolic_cache,
                           CtkIconInfo         *icon_info)
 {
@@ -4356,8 +4356,8 @@ rgba_to_pixel(const CdkRGBA  *rgba,
   pixel[3] = 255;
 }
 
-CdkPixbuf *
-ctk_icon_theme_color_symbolic_pixbuf (CdkPixbuf     *symbolic,
+GdkPixbuf *
+ctk_icon_theme_color_symbolic_pixbuf (GdkPixbuf     *symbolic,
                                       const CdkRGBA *fg_color,
                                       const CdkRGBA *success_color,
                                       const CdkRGBA *warning_color,
@@ -4367,7 +4367,7 @@ ctk_icon_theme_color_symbolic_pixbuf (CdkPixbuf     *symbolic,
   guchar *src_data, *dst_data;
   guchar *src_row, *dst_row;
   int alpha;
-  CdkPixbuf *colored;
+  GdkPixbuf *colored;
   guint8 fg_pixel[4], success_pixel[4], warning_pixel[4], error_pixel[4];
 
   alpha = fg_color->alpha * 255;
@@ -4440,7 +4440,7 @@ ctk_icon_theme_color_symbolic_pixbuf (CdkPixbuf     *symbolic,
   return colored;
 }
 
-static CdkPixbuf *
+static GdkPixbuf *
 ctk_icon_info_load_symbolic_png (CtkIconInfo    *icon_info,
                                  const CdkRGBA  *fg,
                                  const CdkRGBA  *success_color,
@@ -4478,7 +4478,7 @@ ctk_icon_info_load_symbolic_png (CtkIconInfo    *icon_info,
                                                error_color ? error_color : &error_default);
 }
 
-static CdkPixbuf *
+static GdkPixbuf *
 ctk_icon_info_load_symbolic_svg (CtkIconInfo    *icon_info,
                                  const CdkRGBA  *fg,
                                  const CdkRGBA  *success_color,
@@ -4487,7 +4487,7 @@ ctk_icon_info_load_symbolic_svg (CtkIconInfo    *icon_info,
                                  GError        **error)
 {
   GInputStream *stream;
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
   gchar *css_fg;
   gchar *css_success;
   gchar *css_warning;
@@ -4625,7 +4625,7 @@ ctk_icon_info_load_symbolic_svg (CtkIconInfo    *icon_info,
 }
 
 
-static CdkPixbuf *
+static GdkPixbuf *
 ctk_icon_info_load_symbolic_internal (CtkIconInfo    *icon_info,
 				      const CdkRGBA  *fg,
 				      const CdkRGBA  *success_color,
@@ -4634,7 +4634,7 @@ ctk_icon_info_load_symbolic_internal (CtkIconInfo    *icon_info,
 				      gboolean        use_cache,
 				      GError        **error)
 {
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
   SymbolicPixbufCache *symbolic_cache;
   char *icon_uri;
 
@@ -4661,7 +4661,7 @@ ctk_icon_info_load_symbolic_internal (CtkIconInfo    *icon_info,
 
   if (pixbuf != NULL)
     {
-      CdkPixbuf *icon;
+      GdkPixbuf *icon;
 
       icon = apply_emblems_to_pixbuf (pixbuf, icon_info);
       if (icon != NULL)
@@ -4718,11 +4718,11 @@ ctk_icon_info_load_symbolic_internal (CtkIconInfo    *icon_info,
  * See the [Symbolic Icons Specification](http://www.freedesktop.org/wiki/SymbolicIcons)
  * for more information about symbolic icons.
  *
- * Returns: (transfer full): a #CdkPixbuf representing the loaded icon
+ * Returns: (transfer full): a #GdkPixbuf representing the loaded icon
  *
  * Since: 3.0
  */
-CdkPixbuf *
+GdkPixbuf *
 ctk_icon_info_load_symbolic (CtkIconInfo    *icon_info,
                              const CdkRGBA  *fg,
                              const CdkRGBA  *success_color,
@@ -4805,11 +4805,11 @@ ctk_icon_theme_lookup_symbolic_colors (CtkCssStyle *style,
  *
  * See ctk_icon_info_load_symbolic() for more details.
  *
- * Returns: (transfer full): a #CdkPixbuf representing the loaded icon
+ * Returns: (transfer full): a #GdkPixbuf representing the loaded icon
  *
  * Since: 3.0
  */
-CdkPixbuf *
+GdkPixbuf *
 ctk_icon_info_load_symbolic_for_context (CtkIconInfo      *icon_info,
                                          CtkStyleContext  *context,
                                          gboolean         *was_symbolic,
@@ -4872,7 +4872,7 @@ async_load_no_symbolic_cb (GObject      *source_object,
   CtkIconInfo *icon_info = CTK_ICON_INFO (source_object);
   GTask *task = user_data;
   GError *error = NULL;
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
 
   pixbuf = ctk_icon_info_load_icon_finish (icon_info, res, &error);
   if (pixbuf == NULL)
@@ -4890,7 +4890,7 @@ load_symbolic_icon_thread  (GTask        *task,
 {
   AsyncSymbolicData *data = task_data;
   GError *error;
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
 
   error = NULL;
   pixbuf = ctk_icon_info_load_symbolic_internal (data->dup,
@@ -4943,7 +4943,7 @@ ctk_icon_info_load_symbolic_async (CtkIconInfo          *icon_info,
   GTask *task;
   AsyncSymbolicData *data;
   SymbolicPixbufCache *symbolic_cache;
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
 
   g_return_if_fail (icon_info != NULL);
   g_return_if_fail (fg != NULL);
@@ -5020,7 +5020,7 @@ ctk_icon_info_load_symbolic_async (CtkIconInfo          *icon_info,
  *
  * Since: 3.8
  */
-CdkPixbuf *
+GdkPixbuf *
 ctk_icon_info_load_symbolic_finish (CtkIconInfo   *icon_info,
                                     GAsyncResult  *result,
                                     gboolean      *was_symbolic,
@@ -5029,7 +5029,7 @@ ctk_icon_info_load_symbolic_finish (CtkIconInfo   *icon_info,
   GTask *task = G_TASK (result);
   AsyncSymbolicData *data = g_task_get_task_data (task);
   SymbolicPixbufCache *symbolic_cache;
-  CdkPixbuf *pixbuf;
+  GdkPixbuf *pixbuf;
 
   if (was_symbolic)
     *was_symbolic = data->is_symbolic;
@@ -5127,7 +5127,7 @@ ctk_icon_info_load_symbolic_for_context_async (CtkIconInfo         *icon_info,
  *
  * Since: 3.8
  */
-CdkPixbuf *
+GdkPixbuf *
 ctk_icon_info_load_symbolic_for_context_finish (CtkIconInfo   *icon_info,
                                                 GAsyncResult  *result,
                                                 gboolean      *was_symbolic,
@@ -5166,13 +5166,13 @@ color_to_rgba (CdkColor *color,
  *
  * See ctk_icon_info_load_symbolic() for more details.
  *
- * Returns: (transfer full): a #CdkPixbuf representing the loaded icon
+ * Returns: (transfer full): a #GdkPixbuf representing the loaded icon
  *
  * Since: 3.0
  *
  * Deprecated: 3.0: Use ctk_icon_info_load_symbolic_for_context() instead
  */
-CdkPixbuf *
+GdkPixbuf *
 ctk_icon_info_load_symbolic_for_style (CtkIconInfo   *icon_info,
                                        CtkStyle      *style,
                                        CtkStateType   state,
@@ -5326,7 +5326,7 @@ ctk_icon_info_get_display_name (CtkIconInfo *icon_info)
  * @icon_name: the name of the icon to register
  * @size: the size in pixels at which to register the icon (different
  *     images can be registered for the same icon name at different sizes.)
- * @pixbuf: #CdkPixbuf that contains the image to use for @icon_name
+ * @pixbuf: #GdkPixbuf that contains the image to use for @icon_name
  * 
  * Registers a built-in icon for icon theme lookups. The idea
  * of built-in icons is to allow an application or library
@@ -5350,7 +5350,7 @@ ctk_icon_info_get_display_name (CtkIconInfo *icon_info)
 void
 ctk_icon_theme_add_builtin_icon (const gchar *icon_name,
                                  gint         size,
-                                 CdkPixbuf   *pixbuf)
+                                 GdkPixbuf   *pixbuf)
 {
   BuiltinIcon *default_icon;
   GSList *icons;
@@ -5519,7 +5519,7 @@ ctk_icon_theme_lookup_by_gicon_for_scale (CtkIconTheme       *icon_theme,
 
   if (CDK_IS_PIXBUF (icon))
     {
-      CdkPixbuf *pixbuf;
+      GdkPixbuf *pixbuf;
 
       pixbuf = CDK_PIXBUF (icon);
 
@@ -5527,7 +5527,7 @@ ctk_icon_theme_lookup_by_gicon_for_scale (CtkIconTheme       *icon_theme,
         {
           gint width, height, max;
           gdouble pixbuf_scale;
-          CdkPixbuf *scaled;
+          GdkPixbuf *scaled;
 
           width = cdk_pixbuf_get_width (pixbuf);
           height = cdk_pixbuf_get_height (pixbuf);
@@ -5621,7 +5621,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
  * @icon_theme: a #CtkIconTheme
  * @pixbuf: the pixbuf to wrap in a #CtkIconInfo
  *
- * Creates a #CtkIconInfo for a #CdkPixbuf.
+ * Creates a #CtkIconInfo for a #GdkPixbuf.
  *
  * Returns: (transfer full): a #CtkIconInfo
  *
@@ -5629,7 +5629,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
  */
 CtkIconInfo *
 ctk_icon_info_new_for_pixbuf (CtkIconTheme *icon_theme,
-                              CdkPixbuf    *pixbuf)
+                              GdkPixbuf    *pixbuf)
 {
   CtkIconInfo *info;
 

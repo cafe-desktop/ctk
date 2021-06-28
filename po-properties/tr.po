@@ -810,8 +810,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:257
-msgid "A CdkPixbuf to display"
-msgstr "Gösterilecek CdkPixbuf"
+msgid "A GdkPixbuf to display"
+msgstr "Gösterilecek GdkPixbuf"
 
 #: ctk/deprecated/ctkstatusicon.c:242 ctk/ctkimage.c:270
 #: ctk/ctkrecentmanager.c:289
@@ -4508,8 +4508,8 @@ msgid "Animation"
 msgstr "Canlandırma"
 
 #: ctk/ctkimage.c:329
-msgid "CdkPixbufAnimation to display"
-msgstr "Gösterilecek CdkPixbufAnimation"
+msgid "GdkPixbufAnimation to display"
+msgstr "Gösterilecek GdkPixbufAnimation"
 
 #: ctk/ctkimage.c:373
 msgid "Resource"

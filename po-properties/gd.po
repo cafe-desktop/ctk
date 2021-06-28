@@ -839,8 +839,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:256
-msgid "A CdkPixbuf to display"
-msgstr "An CdkPixbuf a thèid a thaisbeanadh"
+msgid "A GdkPixbuf to display"
+msgstr "An GdkPixbuf a thèid a thaisbeanadh"
 
 #: ctk/deprecated/ctkstatusicon.c:242 ctk/ctkimage.c:269
 #: ctk/ctkrecentmanager.c:289
@@ -4587,8 +4587,8 @@ msgid "Animation"
 msgstr "Beòthachadh"
 
 #: ctk/ctkimage.c:328
-msgid "CdkPixbufAnimation to display"
-msgstr "An CdkPixbufAnimation a thèid a thaisbeanadh"
+msgid "GdkPixbufAnimation to display"
+msgstr "An GdkPixbufAnimation a thèid a thaisbeanadh"
 
 #: ctk/ctkimage.c:372
 msgid "Resource"

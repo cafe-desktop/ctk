@@ -31,7 +31,7 @@ CtkIconInfo *ctk_icon_info_new_for_file (GFile *file,
                                          gint   size,
                                          gint   scale);
 
-CdkPixbuf * ctk_icon_theme_color_symbolic_pixbuf (CdkPixbuf     *symbolic,
+GdkPixbuf * ctk_icon_theme_color_symbolic_pixbuf (GdkPixbuf     *symbolic,
                                                   const CdkRGBA *fg_color,
                                                   const CdkRGBA *success_color,
                                                   const CdkRGBA *warning_color,

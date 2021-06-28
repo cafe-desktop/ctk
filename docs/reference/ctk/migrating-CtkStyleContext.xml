@@ -129,7 +129,7 @@
         a progressbar or a spinner.
       </member>
       <member>
-        ctk_render_icon_pixbuf(): Renders an icon into a #CdkPixbuf.
+        ctk_render_icon_pixbuf(): Renders an icon into a #GdkPixbuf.
       </member>
     </simplelist>
 

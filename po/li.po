@@ -4905,7 +4905,7 @@ msgstr ""
 #~ msgstr "Allokasie van ónthaud veur TGA-conteks struct mislök"
 
 #, fuzzy
-#~ msgid "Failed to create CdkPixbufLoader object."
+#~ msgid "Failed to create GdkPixbufLoader object."
 #~ msgstr ""
 #~ "Neet mäögelik om nao tiedelik besjtandj te sjrieve bie 't laje van XBM-"
 #~ "aafbiljing"

@@ -5290,7 +5290,7 @@ msgstr "Kuri Ibirimo Ishusho OYA a Ishusho IDOSIYE"
 #~ msgstr "Ububiko kugirango Imvugiro"
 
 #, fuzzy
-#~ msgid "Failed to create CdkPixbufLoader object."
+#~ msgid "Failed to create GdkPixbufLoader object."
 #~ msgstr "Kuri Gusoma Bivuye By'igihe gito IDOSIYE"
 
 #, fuzzy

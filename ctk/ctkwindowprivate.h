@@ -125,7 +125,7 @@ CtkWidget * _ctk_window_get_popover_parent (CtkWindow *window,
 gboolean    _ctk_window_is_popover_widget  (CtkWindow *window,
                                             CtkWidget *popover);
 
-CdkPixbuf *ctk_window_get_icon_for_size (CtkWindow *window,
+GdkPixbuf *ctk_window_get_icon_for_size (CtkWindow *window,
                                          gint       size);
 
 void       ctk_window_set_use_subsurface (CtkWindow *window,

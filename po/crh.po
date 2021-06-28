@@ -5591,8 +5591,8 @@ msgstr "Bastırıcını Sınamaq içün Bastır"
 #~ msgstr "TGA kontekst yapısı içün hafiza tahsis etilamay"
 
 # cdk-pixbuf/io-xbm.c:429
-#~ msgid "Failed to create CdkPixbufLoader object."
-#~ msgstr "CdkPixbufLoader nesnesi icat etilamadı."
+#~ msgid "Failed to create GdkPixbufLoader object."
+#~ msgstr "GdkPixbufLoader nesnesi icat etilamadı."
 
 # cdk-pixbuf/io-tiff.c:264
 #, fuzzy

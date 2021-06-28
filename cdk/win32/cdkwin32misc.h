@@ -105,11 +105,11 @@ CdkWindow *   cdk_win32_window_lookup_for_display (CdkDisplay *display,
 
 /* For internal CTK use only */
 CDK_AVAILABLE_IN_ALL
-CdkPixbuf    *cdk_win32_icon_to_pixbuf_libctk_only (HICON hicon,
+GdkPixbuf    *cdk_win32_icon_to_pixbuf_libctk_only (HICON hicon,
                                                     gdouble *x_hot,
                                                     gdouble *y_hot);
 CDK_AVAILABLE_IN_ALL
-HICON         cdk_win32_pixbuf_to_hicon_libctk_only (CdkPixbuf *pixbuf);
+HICON         cdk_win32_pixbuf_to_hicon_libctk_only (GdkPixbuf *pixbuf);
 CDK_AVAILABLE_IN_ALL
 void          cdk_win32_set_modal_dialog_libctk_only (HWND window);
 

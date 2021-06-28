@@ -4875,7 +4875,7 @@ msgstr ""
 #~ msgstr "Cannot allocate memory for TGA context struct"
 
 #, fuzzy
-#~ msgid "Failed to create CdkPixbufLoader object."
+#~ msgid "Failed to create GdkPixbufLoader object."
 #~ msgstr "Failed to write folder index\n"
 
 #, fuzzy
