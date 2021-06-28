@@ -409,20 +409,20 @@ msgstr ""
 msgid "Incremental loading of image type '%s' is not supported"
 msgstr "𐑦𐑯𐑒𐑮𐑩𐑥𐑧𐑯𐑑𐑩𐑤 𐑤𐑴𐑛𐑦𐑙 𐑝 𐑦𐑥𐑦𐑡 𐑑𐑲𐑐 '%s' 𐑦𐑟 𐑯𐑪𐑑 𐑕𐑩𐑐𐑹𐑑𐑩𐑛"
 
-#: ../gdk-pixbuf/cdk-pixdata.c:147
+#: ../gdk-pixbuf/gdk-pixdata.c:147
 msgid "Image header corrupt"
 msgstr "𐑦𐑥𐑦𐑡 𐑣𐑧𐑛𐑼 𐑒𐑼𐑳𐑐𐑑"
 
-#: ../gdk-pixbuf/cdk-pixdata.c:152
+#: ../gdk-pixbuf/gdk-pixdata.c:152
 msgid "Image format unknown"
 msgstr "𐑦𐑥𐑦𐑡 𐑓𐑹𐑥𐑨𐑑 𐑳𐑯𐑴𐑯"
 
-#: ../gdk-pixbuf/cdk-pixdata.c:157 ../gdk-pixbuf/cdk-pixdata.c:488
+#: ../gdk-pixbuf/gdk-pixdata.c:157 ../gdk-pixbuf/gdk-pixdata.c:488
 msgid "Image pixel data corrupt"
 msgstr "𐑦𐑥𐑦𐑡 𐑐𐑦𐑒𐑕𐑩𐑤 𐑛𐑱𐑑𐑩 𐑒𐑼𐑳𐑐𐑑"
 
 #, c-format
-#: ../gdk-pixbuf/cdk-pixdata.c:432
+#: ../gdk-pixbuf/gdk-pixdata.c:432
 msgid "failed to allocate image buffer of %u byte"
 msgid_plural "failed to allocate image buffer of %u bytes"
 msgstr[0] "𐑓𐑱𐑤𐑛 𐑑 𐑨𐑤𐑴𐑒𐑱𐑑 𐑦𐑥𐑦𐑡 𐑚𐑳𐑓𐑼 𐑝 %u 𐑚𐑲𐑑"

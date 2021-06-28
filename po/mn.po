@@ -4824,15 +4824,15 @@ msgstr ""
 #~ msgid "Image header corrupt"
 #~ msgstr "Зургийн толгой эвдэрсэн"
 
-# gdk-pixbuf/cdk-pixdata.c:151
+# gdk-pixbuf/gdk-pixdata.c:151
 #~ msgid "Image format unknown"
 #~ msgstr "Зургийн тодорхойгүй төрөл"
 
-# gdk-pixbuf/cdk-pixdata.c:156 gdk-pixbuf/cdk-pixdata.c:457
+# gdk-pixbuf/gdk-pixdata.c:156 gdk-pixbuf/gdk-pixdata.c:457
 #~ msgid "Image pixel data corrupt"
 #~ msgstr "Зургийн цэгэн өгөгдөл эвдэрсэн"
 
-# gdk-pixbuf/cdk-pixdata.c:403
+# gdk-pixbuf/gdk-pixdata.c:403
 #~ msgid "failed to allocate image buffer of %u byte"
 #~ msgid_plural "failed to allocate image buffer of %u bytes"
 #~ msgstr[0] "Зургийн %u байтын буфер байрлуулж чадсангүй"
@@ -4857,7 +4857,7 @@ msgstr ""
 #~ msgid "Malformed chunk in animation"
 #~ msgstr "Хөдөлгөөнт зурагт кадр дутуу байна"
 
-# gdk-pixbuf/cdk-pixdata.c:151
+# gdk-pixbuf/gdk-pixdata.c:151
 #~ msgid "The ANI image format"
 #~ msgstr "ANI зургийн төрөл "
 
@@ -4954,7 +4954,7 @@ msgstr ""
 #~ msgid "GIF image was truncated or incomplete."
 #~ msgstr "GIF зураг тасархай эсвэл дутуу болсон"
 
-# gdk-pixbuf/cdk-pixdata.c:151
+# gdk-pixbuf/gdk-pixdata.c:151
 #~ msgid "The GIF image format"
 #~ msgstr "GIF зургийн төрөл"
 
@@ -4996,7 +4996,7 @@ msgstr ""
 #~ msgid "Unsupported depth for ICO file: %d"
 #~ msgstr "ICO файлын өнгөний гүн дэмжигдээгүй: %d"
 
-# gdk-pixbuf/cdk-pixdata.c:151
+# gdk-pixbuf/gdk-pixdata.c:151
 #~ msgid "The ICO image format"
 #~ msgstr "ICO зургийн төрөл"
 
@@ -5011,7 +5011,7 @@ msgstr ""
 #~ "%s-г тэмдэглэж чадсангүй:\n"
 #~ "%s"
 
-# gdk-pixbuf/cdk-pixdata.c:151
+# gdk-pixbuf/gdk-pixdata.c:151
 #, fuzzy
 #~ msgid "The ICNS image format"
 #~ msgstr "ICO зургийн төрөл"
@@ -5287,7 +5287,7 @@ msgstr ""
 #~ msgid "Failed to read QTIF header"
 #~ msgstr "TIFF зураг онгойсонгүй "
 
-# gdk-pixbuf/cdk-pixdata.c:403
+# gdk-pixbuf/gdk-pixdata.c:403
 #, fuzzy
 #~ msgid "Failed to allocate %d bytes for file read buffer"
 #~ msgstr "Зургийн %u байтын буфер байрлуулж чадсангүй"

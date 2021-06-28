@@ -28,7 +28,7 @@
 #include <stdlib.h>
 #include <errno.h>
 
-#include "gdk-pixbuf/cdk-pixdata.h"
+#include "gdk-pixbuf/gdk-pixdata.h"
 #include "ctktextbufferserialize.h"
 #include "ctktexttagprivate.h"
 #include "ctkintl.h"

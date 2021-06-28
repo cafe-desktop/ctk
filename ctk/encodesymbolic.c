@@ -18,7 +18,7 @@
 #include "config.h"
 
 #include <glib.h>
-#include <gdk-pixbuf/cdk-pixdata.h>
+#include <gdk-pixbuf/gdk-pixdata.h>
 #include <cdk/cdk.h>
 #include <glib/gi18n.h>
 
