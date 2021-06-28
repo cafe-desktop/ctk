@@ -5141,19 +5141,19 @@ msgstr "Bastırıcını Sınamaq içün Bastır"
 #~ msgstr "'%s' suret türüniñ artımlı yüklenüvi desteklenmey"
 
 # tüklü
-# gdk-pixbuf/cdk-pixdata.c:145
+# gdk-pixbuf/gdk-pixdata.c:145
 #~ msgid "Image header corrupt"
 #~ msgstr "Suret başlığı bozuq"
 
-# gdk-pixbuf/cdk-pixdata.c:150
+# gdk-pixbuf/gdk-pixdata.c:150
 #~ msgid "Image format unknown"
 #~ msgstr "Suret formatı bilinmey"
 
-# gdk-pixbuf/cdk-pixdata.c:155 gdk-pixbuf/cdk-pixdata.c:432
+# gdk-pixbuf/gdk-pixdata.c:155 gdk-pixbuf/gdk-pixdata.c:432
 #~ msgid "Image pixel data corrupt"
 #~ msgstr "Suret piksel verileri bozuq"
 
-# gdk-pixbuf/cdk-pixdata.c:378
+# gdk-pixbuf/gdk-pixdata.c:378
 #~ msgid "failed to allocate image buffer of %u byte"
 #~ msgid_plural "failed to allocate image buffer of %u bytes"
 #~ msgstr[0] "%u baytlıq suret buferi tahsis etilamadı"
@@ -5176,7 +5176,7 @@ msgstr "Bastırıcını Sınamaq içün Bastır"
 #~ msgid "Malformed chunk in animation"
 #~ msgstr "Canlandırmada yañlış-şekilli tomar"
 
-# gdk-pixbuf/cdk-pixdata.c:150
+# gdk-pixbuf/gdk-pixdata.c:150
 #~ msgid "The ANI image format"
 #~ msgstr "ANI suret formatı"
 
@@ -5272,7 +5272,7 @@ msgstr "Bastırıcını Sınamaq içün Bastır"
 #~ msgid "GIF image was truncated or incomplete."
 #~ msgstr "GIF sureti ya pıtalğan ya da tamamlanmağan."
 
-# gdk-pixbuf/cdk-pixdata.c:150
+# gdk-pixbuf/gdk-pixdata.c:150
 #~ msgid "The GIF image format"
 #~ msgstr "GIF suret formatı"
 
@@ -5311,7 +5311,7 @@ msgstr "Bastırıcını Sınamaq içün Bastır"
 #~ msgid "Unsupported depth for ICO file: %d"
 #~ msgstr "ICO dosyesi içün desteklenmegen terenlik: %d"
 
-# gdk-pixbuf/cdk-pixdata.c:150
+# gdk-pixbuf/gdk-pixdata.c:150
 #~ msgid "The ICO image format"
 #~ msgstr "ICO suret formatı"
 
@@ -5322,7 +5322,7 @@ msgstr "Bastırıcını Sınamaq içün Bastır"
 #~ msgid "Could not decode ICNS file"
 #~ msgstr "ICNS dosyesi ğayrı-kodlandırılamadı"
 
-# gdk-pixbuf/cdk-pixdata.c:150
+# gdk-pixbuf/gdk-pixdata.c:150
 #~ msgid "The ICNS image format"
 #~ msgstr "ICNS suret formatı"
 
@@ -5576,7 +5576,7 @@ msgstr "Bastırıcını Sınamaq içün Bastır"
 #~ msgid "Failed to read QTIF header"
 #~ msgstr "QTIF başlığı oqulamadı"
 
-# gdk-pixbuf/cdk-pixdata.c:378
+# gdk-pixbuf/gdk-pixdata.c:378
 #~ msgid "Failed to allocate %d bytes for file read buffer"
 #~ msgstr "%d baytlıq suret oquv buferi tahsis etilamadı"
 
@@ -5606,7 +5606,7 @@ msgstr "Bastırıcını Sınamaq içün Bastır"
 #~ msgid "RAS image has bogus header data"
 #~ msgstr "RAS sureti sahte başlıq verilerine sahip"
 
-# gdk-pixbuf/cdk-pixdata.c:150
+# gdk-pixbuf/gdk-pixdata.c:150
 #~ msgid "RAS image has unknown type"
 #~ msgstr "RAS sureti bilinmegen türge sahip"
 

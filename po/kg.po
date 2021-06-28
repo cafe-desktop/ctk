@@ -396,20 +396,20 @@ msgstr ""
 msgid "Incremental loading of image type '%s' is not supported"
 msgstr ""
 
-#: ../gdk-pixbuf/cdk-pixdata.c:147
+#: ../gdk-pixbuf/gdk-pixdata.c:147
 msgid "Image header corrupt"
 msgstr "mpu a kifuanisu kivuunzuni"
 
-#: ../gdk-pixbuf/cdk-pixdata.c:152
+#: ../gdk-pixbuf/gdk-pixdata.c:152
 msgid "Image format unknown"
 msgstr "kizeye ntindu yi kia kifuanisu ko"
 
-#: ../gdk-pixbuf/cdk-pixdata.c:157
-#: ../gdk-pixbuf/cdk-pixdata.c:488
+#: ../gdk-pixbuf/gdk-pixdata.c:157
+#: ../gdk-pixbuf/gdk-pixdata.c:488
 msgid "Image pixel data corrupt"
 msgstr ""
 
-#: ../gdk-pixbuf/cdk-pixdata.c:432
+#: ../gdk-pixbuf/gdk-pixdata.c:432
 #, c-format
 msgid "failed to allocate image buffer of %u byte"
 msgid_plural "failed to allocate image buffer of %u bytes"
