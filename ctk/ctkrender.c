@@ -1005,7 +1005,7 @@ scale_or_ref (GdkPixbuf *src,
   else
     return gdk_pixbuf_scale_simple (src,
                                     width, height,
-                                    CDK_INTERP_BILINEAR);
+                                    GDK_INTERP_BILINEAR);
 }
 
 GdkPixbuf *

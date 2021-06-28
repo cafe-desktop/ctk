@@ -482,7 +482,7 @@ cdk_cursor_get_image (CdkCursor *cursor)
       old = pixbuf;
       pixbuf = gdk_pixbuf_scale_simple (old,
 					w / x_scale, h / y_scale,
-					CDK_INTERP_HYPER);
+					GDK_INTERP_HYPER);
       g_object_unref (old);
     }
 
