@@ -382,7 +382,7 @@ ctk_sources = files(
   'ctkwindowgroup.c',
   'ctkwin32draw.c',
   'ctkwin32theme.c',
-  'cdkpixbufutils.c',
+  'gdkpixbufutils.c',
   'language-names.c',
   'script-names.c',
 )

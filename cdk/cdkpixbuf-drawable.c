@@ -22,7 +22,7 @@
 
 #include "config.h"
 
-#include "cdkpixbuf.h"
+#include "gdkpixbuf.h"
 
 #include "cdkwindow.h"
 #include "cdkinternals.h"

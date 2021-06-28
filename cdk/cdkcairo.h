@@ -26,7 +26,7 @@
 #include <cdk/deprecated/cdkcolor.h>
 #include <cdk/cdkrgba.h>
 #include <cdk/cdkdrawingcontext.h>
-#include <cdk/cdkpixbuf.h>
+#include <cdk/gdkpixbuf.h>
 #include <pango/pangocairo.h>
 
 G_BEGIN_DECLS

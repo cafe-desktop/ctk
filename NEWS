@@ -12793,7 +12793,7 @@ Overview of Changes from CTK+ 2.11.5 to 2.11.6
  453316 small documentation fix in CtkDrawingArea API documentation
  453673 small doc quirk in ctk/ctktreeview.c
  453930 small doc quirk in ctk/ctktooltip.c
- 454596 [patch] cdkpixbuf-scale slight api doc improvement
+ 454596 [patch] gdkpixbuf-scale slight api doc improvement
  454835 [patch] example in cdk-pixbuf-scaling using deprecated gd...
  457384 critical warning from entrycompletion
  112404 Problem with focus when closing transient window

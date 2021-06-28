@@ -50,7 +50,7 @@
 #include <cdk/cdkmain.h>
 #include <cdk/cdkmonitor.h>
 #include <cdk/cdkpango.h>
-#include <cdk/cdkpixbuf.h>
+#include <cdk/gdkpixbuf.h>
 #include <cdk/cdkproperty.h>
 #include <cdk/cdkrectangle.h>
 #include <cdk/cdkrgba.h>

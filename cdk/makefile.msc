@@ -79,7 +79,7 @@ cdk_OBJECTS = \
 	cdkmarshalers.obj \
 	cdkoffscreenwindow.obj \
 	cdkpango.obj \
-	cdkpixbuf-drawable.obj \
+	gdkpixbuf-drawable.obj \
 	cdkrectangle.obj \
 	cdkrgba.obj \
 	cdkscreen.obj \
@@ -105,7 +105,7 @@ cdk_public_h_sources = 				\
 	cdkkeysyms-compat.h			\
 	cdkmain.h				\
 	cdkpango.h				\
-	cdkpixbuf.h				\
+	gdkpixbuf.h				\
 	cdkprivate.h				\
 	cdkproperty.h				\
 	cdkrectangle.h				\

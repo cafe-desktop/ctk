@@ -189,7 +189,7 @@
 189|Kristian Rietveld|krietvel|RT @krietvel: Just pushed the last patch that finishes the transition of the OS X backend to the new rendering goodness. #ctk|1286297494|0|CTKtoolkit|0|1
 190|CTK+ and friends|CTKtoolkit|ANNOUNCE: ctkmm 2.91.0 (#C++ bindings) released: http://mail.gnome.org/archives/ctkmm-list/2010-October/msg00000.html #ctk|1286128646|0||0|1
 191|CTK+ and friends|CTKtoolkit|CTK+ 2.91.0 (unstable) released: http://ur1.ca/1xbzr The rendering cleanup work has landed. Porting guide here: http://ur1.ca/1xbzs #ctk|1286073059|0||0|0
-192|CTK+ and friends|CTKtoolkit|Anyone up to the challenge of writing a WebP cdkpixbuf loader?|1285950573|0||0|3
+192|CTK+ and friends|CTKtoolkit|Anyone up to the challenge of writing a WebP gdkpixbuf loader?|1285950573|0||0|3
 193|Clutter Toolkit|cluttertoolkit|RT @cluttertoolkit: Clutter 1.4.0 - new stable release! grab it while it's hot, on www.clutter-project.org|1285731448|0|CTKtoolkit|0|10
 194|CTK+ and friends|CTKtoolkit|We strongly recommend not using PyCTK for new projects and to port existing applications from #PyCTK to #PyGObject #python #ctk|1285721997|0||5|39
 195|CTK+ and friends|CTKtoolkit|ANNOUNCE: PyGObject 2.26.0 released:http://mail.gnome.org/archives/python-hackers-list/2010-September/msg00019.html #ctk #python #bindings|1285721968|0||0|0
