@@ -332,7 +332,7 @@ _ctk_style_cascade_set_parent (CtkStyleCascade *cascade,
     {
       g_object_ref (parent);
       g_signal_connect_swapped (parent,
-                                "-ctk-private-changed",
+                                "-gtk-private-changed",
                                 G_CALLBACK (_ctk_style_provider_private_changed),
                                 cascade);
     }
@@ -363,7 +363,7 @@ _ctk_style_cascade_add_provider (CtkStyleCascade  *cascade,
   data.provider = g_object_ref (provider);
   data.priority = priority;
   data.changed_signal_id = g_signal_connect_swapped (provider,
-                                                     "-ctk-private-changed",
+                                                     "-gtk-private-changed",
                                                      G_CALLBACK (_ctk_style_provider_private_changed),
                                                      cascade);
 

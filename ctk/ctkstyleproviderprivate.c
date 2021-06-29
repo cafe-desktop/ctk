@@ -35,7 +35,7 @@ static guint signals[LAST_SIGNAL];
 static void
 _ctk_style_provider_private_default_init (CtkStyleProviderPrivateInterface *iface)
 {
-  signals[CHANGED] = g_signal_new (I_("-ctk-private-changed"),
+  signals[CHANGED] = g_signal_new (I_("-gtk-private-changed"),
                                    G_TYPE_FROM_INTERFACE (iface),
                                    G_SIGNAL_RUN_LAST,
                                    G_STRUCT_OFFSET (CtkStyleProviderPrivateInterface, changed),

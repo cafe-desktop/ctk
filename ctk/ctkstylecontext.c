@@ -324,7 +324,7 @@ ctk_style_context_set_cascade (CtkStyleContext *context,
     {
       g_object_ref (cascade);
       priv->cascade_changed_id = g_signal_connect (cascade,
-                                                   "-ctk-private-changed",
+                                                   "-gtk-private-changed",
                                                    G_CALLBACK (ctk_style_context_cascade_changed),
                                                    context);
     }
