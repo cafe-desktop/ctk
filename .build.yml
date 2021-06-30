@@ -3,50 +3,29 @@
 ##########################################################
 requires:
   debian:
-    - autoconf
-    - autoconf-archive
-    - automake
-    - autopoint
-    - autotools-dev
-    - adwaita-icon-theme
-    - build-essential
-    - ccache
-    - clang
-    - clang-tools
     - cppcheck
-    - dconf-gsettings-backend
-    - dh-autoreconf
-    - docbook
-    - docbook-dsssl
-    - docbook-ebnf
-    - docbook-slides
-    - docbook-website
-    - docbook-to-man
-    - docbook-utils
-    - docbook-xml
-    - docbook-xsl
-    - g++
-    - gcc
-    - gettext
-    - git
+    - clang-tools
+    - adwaita-icon-theme
+    - at-spi2-core
+    - dbus
+    - debhelper-compat
+    - dh-sequence-gir
+    - fonts-cantarell
+    - fonts-dejavu-core
+    - gnome-pkg-tools
     - gobject-introspection
-    - gettext
-    - gvfs
+    - gsettings-desktop-schemas
     - gtk-doc-tools
-    - hicolor-icon-theme
-    - itstool
     - libatk-bridge2.0-dev
     - libatk1.0-dev
-    - libc6-dev
     - libcairo2-dev
-    - libcairo-gobject2
     - libcolord-dev
     - libcups2-dev
     - libegl1-mesa-dev
     - libepoxy-dev
     - libfontconfig1-dev
-    - libfreetype6-dev
-    - libgdk-pixbuf2.0-dev
+    - libfribidi-dev
+    - libgdk-pixbuf-2.0-dev
     - libgirepository1.0-dev
 #    - libglib2.0-dev
     - libharfbuzz-dev
@@ -54,9 +33,6 @@ requires:
     - libpango1.0-dev
     - librest-dev
     - librsvg2-common
-    - libsoup2.4-dev
-    - libtool
-    - libtool-bin
     - libwayland-dev
     - libx11-dev
     - libxcomposite-dev
@@ -67,25 +43,14 @@ requires:
     - libxi-dev
     - libxinerama-dev
     - libxkbcommon-dev
-    - libxkbcommon-x11-dev
+    - libxkbfile-dev
     - libxml2-utils
-    - libxml2-dev
     - libxrandr-dev
-    - locales
-    - meson
-    - ninja-build
     - pkg-config
-    - python3
-    - python3-pip
-    - python3-setuptools
-    - python3-wheel
-    - shared-mime-info
+    - sassc
     - wayland-protocols
     - xauth
     - xvfb
-    - xml-core
-    - systemtap-sdt-dev
-    - libfam-dev
 
 build_scripts:
 #  - git clone https://github.com/cafe-desktop/clib
