@@ -48,7 +48,7 @@ requires:
     - libfreetype6-dev
     - libgdk-pixbuf2.0-dev
     - libgirepository1.0-dev
-    - libglib2.0-dev
+#    - libglib2.0-dev
     - libharfbuzz-dev
     - libjson-glib-dev
     - libpango1.0-dev
