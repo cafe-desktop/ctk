@@ -48,7 +48,7 @@ requires:
     - libfreetype6-dev
     - libgdk-pixbuf2.0-dev
     - libgirepository1.0-dev
-    - libglib2.0-dev
+#    - libglib2.0-dev
     - libharfbuzz-dev
     - libjson-glib-dev
     - libpango1.0-dev
@@ -72,6 +72,7 @@ requires:
     - libxml2-dev
     - libxrandr-dev
     - locales
+    - meson
     - ninja-build
     - pkg-config
     - python3
@@ -83,19 +84,20 @@ requires:
     - xauth
     - xvfb
     - xml-core
+    - systemtap-sdt-dev
+    - libfam-dev
 
 build_scripts:
+  - git clone https://github.com/cafe-desktop/clib
+  - cd clib
+  - meson . _build
+  - ninja -C _build
+  - ninja -C _build install
+  - cd ..
   - NOCONFIGURE=1 ./autogen.sh
-  - scan-build $CHECKERS ./configure --disable-dependency-tracking --enable-broadway-backend --enable-x11-backend --enable-gtk-doc --enable-man --enable-shared --enable-introspection --enable-cloudprint --disable-static --enable-installed-tests
-  - if [ $CPU_COUNT -gt 1 ]; then
-  -     scan-build $CHECKERS --keep-cc -o html-report make -j $(( $CPU_COUNT + 1 ))
-  - else
-  -     scan-build $CHECKERS --keep-cc -o html-report make
-  - fi
-  - if [ ${DISTRO_NAME} == "debian" ];then
-  -     cppcheck --enable=warning,style,performance,portability,information,missingInclude .
-  - fi
-  - make install
+  - ./configure --disable-dependency-tracking --enable-broadway-backend --enable-x11-backend --enable-gtk-doc --enable-man --enable-shared --enable-introspection --enable-cloudprint --disable-static --enable-installed-tests
+  - make
+  - make check
 
 after_scripts:
 #  - make check
