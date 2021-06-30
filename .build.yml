@@ -72,6 +72,7 @@ requires:
     - libxml2-dev
     - libxrandr-dev
     - locales
+    - meson
     - ninja-build
     - pkg-config
     - python3
