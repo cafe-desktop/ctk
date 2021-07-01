@@ -26,7 +26,7 @@ fi
 pkg-config --print-errors gobject-introspection-1.0
 if [ $? != 0 ]; then
 	echo "You probably need to install 'libgirepository1.0-dev'"
-	exit 1
+#	exit 1
 fi
 
 # README and INSTALL are required by automake, but may be deleted by clean
