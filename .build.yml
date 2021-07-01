@@ -53,6 +53,8 @@ requires:
     - xvfb
     - libgirepository1.0-dev
     - meson
+     - systemtap-sdt-dev
+     - libfam-dev
 
 build_scripts:
   - apt-get purge libglib2.0-dev -y
