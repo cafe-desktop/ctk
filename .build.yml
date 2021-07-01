@@ -51,6 +51,7 @@ requires:
     - wayland-protocols
     - xauth
     - xvfb
+    - libgirepository1.0-dev
 
 build_scripts:
 #  - git clone https://github.com/cafe-desktop/clib
