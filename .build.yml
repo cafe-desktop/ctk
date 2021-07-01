@@ -52,6 +52,7 @@ requires:
     - xauth
     - xvfb
     - libgirepository1.0-dev
+    - meson
 
 build_scripts:
   - apt-get purge libglib2.0-dev -y
