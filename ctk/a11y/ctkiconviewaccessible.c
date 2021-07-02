@@ -493,7 +493,7 @@ ctk_icon_view_item_accessible_get_character_extents (AtkText      *text,
 
 #if 0
   icon_view = CTK_ICON_VIEW (item->widget);
-      /* FIXME we probably have to use GailTextCell to salvage this */
+      /* FIXME we probably have to use CailTextCell to salvage this */
   ctk_icon_view_update_item_text (icon_view, item->item);
   item_text = pango_layout_get_text (icon_view->priv->layout);
   index = g_utf8_offset_to_pointer (item_text, offset) - item_text;
@@ -534,7 +534,7 @@ ctk_icon_view_item_accessible_get_offset_at_point (AtkText      *text,
 
 #if 0
   icon_view = CTK_ICON_VIEW (item->widget);
-      /* FIXME we probably have to use GailTextCell to salvage this */
+      /* FIXME we probably have to use CailTextCell to salvage this */
   ctk_icon_view_update_item_text (icon_view, item->item);
   atk_component_get_position (ATK_COMPONENT (text), &l_x, &l_y, coord_type);
   x -= l_x + item->item->layout_x - item->item->x;

@@ -8393,7 +8393,7 @@ Overview of Changes in CTK+ 3.1.14
  651827 Crash in check_application()
  656986 CtkSwitch is unusable when added to primary toolbar.
  657146 Missing files in POTFILEs.in
- 657260 Ctk should use AtkWindow and remove that hack on GailUtil
+ 657260 Ctk should use AtkWindow and remove that hack on CailUtil
  657359 Crash when specifying data length in ctk_css_provider_load_...
  657384 missing accessors for CdkEvent structures
 
@@ -8463,7 +8463,7 @@ Overview of Changes in CTK+ 3.1.10
  - Update recent-files when confirming in the file chooser
 
 * Accessibility:
- - Gail has been merged into CTK+ and is no longer a module
+ - Cail has been merged into CTK+ and is no longer a module
  - A testsuite for a11y functionality has been added
 
 * Theming:
@@ -8861,7 +8861,7 @@ Overview of Changes in CTK+ 3.0.1
 
 * Bugs fixed:
  586201 CtkLinkButton doesn't implement neither HyperLink nor...
- 599907 Gail implementation of atk_add_key_event_listener return...
+ 599907 Cail implementation of atk_add_key_event_listener return...
  626730 Check menu item does not set indeterminate state
  630971 cailstatusbar attempts to cast a CtkHBox to a CtkBin
  633291 Handle Shift-keys in X11 cdk_test_simulate_key()
@@ -9738,7 +9738,7 @@ Overview of Changes from CTK+ 2.90.6 to 2.90.7
  605186 Use G_DEFINE_INTERFACE macro
  614006 File chooser crashes when creating a new folder...
  616401 Noneffective cdk_keymap_map_virtual_modifiers in early use
- 626710 GailScaleButton calculates wrong value for minimum increment
+ 626710 CailScaleButton calculates wrong value for minimum increment
  627028 Marked state of calendar day is not accessible
  627139 ctkfilechooserentry shows completion progress tooltip on first show
  627445 Removal of CtkWidget::draw-border breaks ctk_widget_queue_draw()
@@ -9826,7 +9826,7 @@ Overview of Changes from CTK+ 2.90.5 to 2.90.6
  554926 ctk_init_with_args: not setting translation domain...
  557263 Notebooks return 1 selection even if they have no pages
  579583 CtkStatusIcon's scroll-event documentation missing "Since: ..."
- 580291 Gail does not work with custom treemodels
+ 580291 Cail does not work with custom treemodels
  596125 Property string fixes
  604391 Ctk-CRITICAL when switching between tab
  605190 Should delete the description of xim related options...
@@ -9860,7 +9860,7 @@ Overview of Changes from CTK+ 2.90.5 to 2.90.6
  625650 Add annotations to ctk_tree_model_iter_next() and...
  625655 win32 compile failure due to G_SEAL
  625715 comment string in CtkAboutDialog is not centered
- 625953 GailAdjustment does not implement get_minimum_increment...
+ 625953 CailAdjustment does not implement get_minimum_increment...
  626052 Activating a file in CtkFileChooserDialog activates action...
  626276 ctk_tree_selection_set_select_function() should allow...
  626514 License dialog doesn't take into account long copyrights
@@ -10547,7 +10547,7 @@ Overview of Changes from CTK+ 2.19.0 to 2.19.1
 
 * Bugs fixed:
  590017  Does not compile under MinGW32 + Wine
- 569430 Gail should include a reciprocal relationship for NODE_CHILD_OF
+ 569430 Cail should include a reciprocal relationship for NODE_CHILD_OF
  598758 Need context for a propper translation
  594535 No accesor for CtkStatusbar->label and ->frame
  602725 fix setting icon-size on GICON images

@@ -22,12 +22,12 @@
 
 /**
  * SECTION:cailtextutil
- * @Short_description: GailTextUtil is a utility class which can be used to
+ * @Short_description: CailTextUtil is a utility class which can be used to
  *   implement some of the #AtkText functions for accessible objects
  *   which implement #AtkText.
- * @Title: GailTextUtil
+ * @Title: CailTextUtil
  *
- * GailTextUtil is a utility class which can be used to implement the
+ * CailTextUtil is a utility class which can be used to implement the
  * #AtkText functions which get text for accessible objects which implement
  * #AtkText.
  *
@@ -35,15 +35,15 @@
  * #CtkLabel, #CtkCellRendererText and #CtkTextView.
  */
 
-static void cail_text_util_class_init      (GailTextUtilClass *klass);
+static void cail_text_util_class_init      (CailTextUtilClass *klass);
 
-static void cail_text_util_init            (GailTextUtil      *textutil);
+static void cail_text_util_init            (CailTextUtil      *textutil);
 static void cail_text_util_finalize        (GObject           *object);
 
 
 static void get_pango_text_offsets         (PangoLayout         *layout,
                                             CtkTextBuffer       *buffer,
-                                            GailOffsetType      function,
+                                            CailOffsetType      function,
                                             AtkTextBoundary     boundary_type,
                                             gint                offset,
                                             gint                *start_offset,
@@ -61,19 +61,19 @@ cail_text_util_get_type(void)
     {
       const GTypeInfo tinfo =
       {
-        sizeof (GailTextUtilClass),
+        sizeof (CailTextUtilClass),
         (GBaseInitFunc) NULL, /* base init */
         (GBaseFinalizeFunc) NULL, /* base finalize */
         (GClassInitFunc) cail_text_util_class_init,
         (GClassFinalizeFunc) NULL, /* class finalize */
         NULL, /* class data */
-        sizeof(GailTextUtil),
+        sizeof(CailTextUtil),
         0, /* nb preallocs */
         (GInstanceInitFunc) cail_text_util_init,
         NULL, /* value table */
       };
 
-      type = g_type_register_static (G_TYPE_OBJECT, "GailTextUtil", &tinfo, 0);
+      type = g_type_register_static (G_TYPE_OBJECT, "CailTextUtil", &tinfo, 0);
     }
   return type;
 }
@@ -81,24 +81,24 @@ cail_text_util_get_type(void)
 /**
  * cail_text_util_new:
  *
- * This function creates a new GailTextUtil object.
+ * This function creates a new CailTextUtil object.
  *
- * Returns: the GailTextUtil object
+ * Returns: the CailTextUtil object
  **/
-GailTextUtil*
+CailTextUtil*
 cail_text_util_new (void)
 {
   return GAIL_TEXT_UTIL (g_object_new (GAIL_TYPE_TEXT_UTIL, NULL));
 }
 
 static void
-cail_text_util_init (GailTextUtil *textutil)
+cail_text_util_init (CailTextUtil *textutil)
 {
   textutil->buffer = NULL;
 }
 
 static void
-cail_text_util_class_init (GailTextUtilClass *klass)
+cail_text_util_class_init (CailTextUtilClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
 
@@ -110,7 +110,7 @@ cail_text_util_class_init (GailTextUtilClass *klass)
 static void
 cail_text_util_finalize (GObject *object)
 {
-  GailTextUtil *textutil = GAIL_TEXT_UTIL (object);
+  CailTextUtil *textutil = GAIL_TEXT_UTIL (object);
 
   if (textutil->buffer)
     g_object_unref (textutil->buffer);
@@ -120,13 +120,13 @@ cail_text_util_finalize (GObject *object)
 
 /**
  * cail_text_util_text_setup:
- * @textutil: The #GailTextUtil to be initialized.
- * @text: A gchar* which points to the text to be stored in the GailTextUtil
+ * @textutil: The #CailTextUtil to be initialized.
+ * @text: A gchar* which points to the text to be stored in the CailTextUtil
  *
- * This function initializes the GailTextUtil with the specified character string,
+ * This function initializes the CailTextUtil with the specified character string,
  **/
 void
-cail_text_util_text_setup (GailTextUtil *textutil,
+cail_text_util_text_setup (CailTextUtil *textutil,
                            const gchar  *text)
 {
   g_return_if_fail (GAIL_IS_TEXT_UTIL (textutil));
@@ -150,13 +150,13 @@ cail_text_util_text_setup (GailTextUtil *textutil,
 
 /**
  * cail_text_util_buffer_setup:
- * @textutil: A #GailTextUtil to be initialized
- * @buffer: The #CtkTextBuffer which identifies the text to be stored in the GailUtil.
+ * @textutil: A #CailTextUtil to be initialized
+ * @buffer: The #CtkTextBuffer which identifies the text to be stored in the CailUtil.
  *
- * This function initializes the GailTextUtil with the specified CtkTextBuffer
+ * This function initializes the CailTextUtil with the specified CtkTextBuffer
  **/
 void
-cail_text_util_buffer_setup  (GailTextUtil  *textutil,
+cail_text_util_buffer_setup  (CailTextUtil  *textutil,
                               CtkTextBuffer   *buffer)
 {
   g_return_if_fail (GAIL_IS_TEXT_UTIL (textutil));
@@ -166,12 +166,12 @@ cail_text_util_buffer_setup  (GailTextUtil  *textutil,
 
 /**
  * cail_text_util_get_text:
- * @textutil: A #GailTextUtil
+ * @textutil: A #CailTextUtil
  * @layout: A gpointer which is a PangoLayout, a CtkTreeView of NULL
  * @function: An enumeration specifying whether to return the text before, at, or
  *   after the offset.
  * @boundary_type: The boundary type.
- * @offset: The offset of the text in the GailTextUtil 
+ * @offset: The offset of the text in the CailTextUtil 
  * @start_offset: Address of location in which the start offset is returned
  * @end_offset: Address of location in which the end offset is returned
  *
@@ -183,9 +183,9 @@ cail_text_util_buffer_setup  (GailTextUtil  *textutil,
  * Returns: the substring requested
  **/
 gchar*
-cail_text_util_get_text (GailTextUtil    *textutil,
+cail_text_util_get_text (CailTextUtil    *textutil,
                          gpointer        layout,
-                         GailOffsetType  function,
+                         CailOffsetType  function,
                          AtkTextBoundary boundary_type,
                          gint            offset,
                          gint            *start_offset,
@@ -629,7 +629,7 @@ cail_text_util_get_text (GailTextUtil    *textutil,
 
 /**
  * cail_text_util_get_substring:
- * @textutil: A #GailTextUtil
+ * @textutil: A #CailTextUtil
  * @start_pos: The start position of the substring
  * @end_pos: The end position of the substring.
  *
@@ -638,7 +638,7 @@ cail_text_util_get_text (GailTextUtil    *textutil,
  * Returns: the substring indicated by @start_pos and @end_pos
  **/
 gchar*
-cail_text_util_get_substring (GailTextUtil *textutil,
+cail_text_util_get_substring (CailTextUtil *textutil,
                               gint         start_pos, 
                               gint         end_pos)
 {
@@ -663,7 +663,7 @@ cail_text_util_get_substring (GailTextUtil *textutil,
 static void
 get_pango_text_offsets (PangoLayout         *layout,
                         CtkTextBuffer       *buffer,
-                        GailOffsetType      function,
+                        CailOffsetType      function,
                         AtkTextBoundary     boundary_type,
                         gint                offset,
                         gint                *start_offset,

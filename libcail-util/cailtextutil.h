@@ -24,14 +24,14 @@
 G_BEGIN_DECLS
 
 #define GAIL_TYPE_TEXT_UTIL                  (cail_text_util_get_type ())
-#define GAIL_TEXT_UTIL(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GAIL_TYPE_TEXT_UTIL, GailTextUtil))
-#define GAIL_TEXT_UTIL_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GAIL_TYPE_TEXT_UTIL, GailTextUtilClass))
+#define GAIL_TEXT_UTIL(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GAIL_TYPE_TEXT_UTIL, CailTextUtil))
+#define GAIL_TEXT_UTIL_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GAIL_TYPE_TEXT_UTIL, CailTextUtilClass))
 #define GAIL_IS_TEXT_UTIL(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GAIL_TYPE_TEXT_UTIL))
 #define GAIL_IS_TEXT_UTIL_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), GAIL_TYPE_TEXT_UTIL))
-#define GAIL_TEXT_UTIL_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), GAIL_TYPE_TEXT_UTIL, GailTextUtilClass))
+#define GAIL_TEXT_UTIL_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), GAIL_TYPE_TEXT_UTIL, CailTextUtilClass))
 
 /**
- *GailOffsetType:
+ *CailOffsetType:
  *@GAIL_BEFORE_OFFSET: Text before offset is required.
  *@GAIL_AT_OFFSET: Text at offset is required,
  *@GAIL_AFTER_OFFSET: Text after offset is required.
@@ -45,19 +45,19 @@ typedef enum
   GAIL_BEFORE_OFFSET,
   GAIL_AT_OFFSET,
   GAIL_AFTER_OFFSET
-}GailOffsetType;
+}CailOffsetType;
 
-typedef struct _GailTextUtil		GailTextUtil;
-typedef struct _GailTextUtilClass	GailTextUtilClass;
+typedef struct _CailTextUtil		CailTextUtil;
+typedef struct _CailTextUtilClass	CailTextUtilClass;
 
-struct _GailTextUtil
+struct _CailTextUtil
 {
   GObject parent;
 
   CtkTextBuffer *buffer;
 };
 
-struct _GailTextUtilClass
+struct _CailTextUtilClass
 {
   GObjectClass parent_class;
 };
@@ -65,24 +65,24 @@ struct _GailTextUtilClass
 CDK_AVAILABLE_IN_ALL
 GType         cail_text_util_get_type      (void);
 CDK_AVAILABLE_IN_ALL
-GailTextUtil* cail_text_util_new           (void);
+CailTextUtil* cail_text_util_new           (void);
 
 CDK_AVAILABLE_IN_ALL
-void          cail_text_util_text_setup    (GailTextUtil    *textutil,
+void          cail_text_util_text_setup    (CailTextUtil    *textutil,
                                             const gchar     *text);
 CDK_AVAILABLE_IN_ALL
-void          cail_text_util_buffer_setup  (GailTextUtil    *textutil,
+void          cail_text_util_buffer_setup  (CailTextUtil    *textutil,
                                             CtkTextBuffer   *buffer);
 CDK_AVAILABLE_IN_ALL
-gchar*        cail_text_util_get_text      (GailTextUtil    *textutil,
+gchar*        cail_text_util_get_text      (CailTextUtil    *textutil,
                                              gpointer        layout,
-                                            GailOffsetType  function,
+                                            CailOffsetType  function,
                                             AtkTextBoundary boundary_type,
                                             gint            offset,
                                             gint            *start_offset,
                                             gint            *end_offset);
 CDK_AVAILABLE_IN_ALL
-gchar*        cail_text_util_get_substring (GailTextUtil    *textutil,
+gchar*        cail_text_util_get_substring (CailTextUtil    *textutil,
                                             gint            start_pos,
                                             gint            end_pos);
 

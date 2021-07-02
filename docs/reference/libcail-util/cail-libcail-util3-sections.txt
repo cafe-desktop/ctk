@@ -1,15 +1,15 @@
 <SECTION>
 <FILE>cailtextutil</FILE>
-<TITLE>GailTextUtil</TITLE>
-GailTextUtil
-GailOffsetType
+<TITLE>CailTextUtil</TITLE>
+CailTextUtil
+CailOffsetType
 cail_text_util_new
 cail_text_util_text_setup
 cail_text_util_buffer_setup
 cail_text_util_get_text
 cail_text_util_get_substring
 <SUBSECTION Standard>
-GailTextUtilClass
+CailTextUtilClass
 GAIL_TEXT_UTIL
 GAIL_IS_TEXT_UTIL
 GAIL_TYPE_TEXT_UTIL
@@ -22,7 +22,7 @@ cail_text_util_get_type
 
 <SECTION>
 <FILE>cailmisc</FILE>
-<TITLE>GailMisc</TITLE>
+<TITLE>CailMisc</TITLE>
 cail_misc_add_attribute
 cail_misc_layout_get_run_attributes
 cail_misc_get_default_attributes

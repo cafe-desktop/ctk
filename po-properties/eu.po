@@ -40,33 +40,33 @@ msgstr "Bistaratu kurtsore hau"
 #
 #: cdk/cdkdevice.c:123
 msgid "Device Display"
-msgstr "Gailuaren pantaila"
+msgstr "Cailuaren pantaila"
 
 #: cdk/cdkdevice.c:124
 msgid "Display which the device belongs to"
-msgstr "Gailuari dagokion pantaila"
+msgstr "Cailuari dagokion pantaila"
 
 #: cdk/cdkdevice.c:138
 msgid "Device manager"
-msgstr "Gailuen kudeatzailea"
+msgstr "Cailuen kudeatzailea"
 
 #: cdk/cdkdevice.c:139
 msgid "Device manager which the device belongs to"
-msgstr "Gailuen kudeatzailea (cailua horren mendeko dena)"
+msgstr "Cailuen kudeatzailea (cailua horren mendeko dena)"
 
 #
 #: cdk/cdkdevice.c:152 cdk/cdkdevice.c:153
 msgid "Device name"
-msgstr "Gailuaren izena"
+msgstr "Cailuaren izena"
 
 #
 #: cdk/cdkdevice.c:166
 msgid "Device type"
-msgstr "Gailu mota"
+msgstr "Cailu mota"
 
 #: cdk/cdkdevice.c:167
 msgid "Device role in the device manager"
-msgstr "Gailuaren betekizuna cailuen kudeatzailean"
+msgstr "Cailuaren betekizuna cailuen kudeatzailean"
 
 #: cdk/cdkdevice.c:183
 msgid "Associated device"
@@ -74,7 +74,7 @@ msgstr "Esleitutako cailua"
 
 #: cdk/cdkdevice.c:184
 msgid "Associated pointer or keyboard with this device"
-msgstr "Gailu honekin esleitutako erakusle edo teklatua"
+msgstr "Cailu honekin esleitutako erakusle edo teklatua"
 
 #: cdk/cdkdevice.c:197
 msgid "Input source"
@@ -82,19 +82,19 @@ msgstr "Sarrerako iturburua"
 
 #: cdk/cdkdevice.c:198
 msgid "Source type for the device"
-msgstr "Gailuaren iturburu mota"
+msgstr "Cailuaren iturburu mota"
 
 #: cdk/cdkdevice.c:213 cdk/cdkdevice.c:214
 msgid "Input mode for the device"
-msgstr "Gailuaren sarrera modua"
+msgstr "Cailuaren sarrera modua"
 
 #: cdk/cdkdevice.c:229
 msgid "Whether the device has a cursor"
-msgstr "Gailuak kurtsorea duen edo ez"
+msgstr "Cailuak kurtsorea duen edo ez"
 
 #: cdk/cdkdevice.c:230
 msgid "Whether there is a visible cursor following device motion"
-msgstr "Gailuaren mugimenduari jarraitzen dion kurtsore ikusgai bat dagoen edo ez"
+msgstr "Cailuaren mugimenduari jarraitzen dion kurtsore ikusgai bat dagoen edo ez"
 
 #: cdk/cdkdevice.c:244 cdk/cdkdevice.c:245
 msgid "Number of axes in the device"
@@ -126,11 +126,11 @@ msgstr "Tresna"
 
 #: cdk/cdkdevice.c:329
 msgid "The tool that is currently used with this device"
-msgstr "Gailu honekin erabiltzen ari den uneko tresna"
+msgstr "Cailu honekin erabiltzen ari den uneko tresna"
 
 #: cdk/cdkdevicemanager.c:186
 msgid "Display for the device manager"
-msgstr "Gailuen kudeatzailearen pantaila"
+msgstr "Cailuen kudeatzailearen pantaila"
 
 #
 #: cdk/cdkdisplaymanager.c:162
@@ -212,11 +212,11 @@ msgstr "Txikiaren bertsio-zenbakia"
 
 #: cdk/x11/cdkdevice-xi2.c:143
 msgid "Device ID"
-msgstr "Gailuaren IDa"
+msgstr "Cailuaren IDa"
 
 #: cdk/x11/cdkdevice-xi2.c:144
 msgid "Device identifier"
-msgstr "Gailuaren identifikatzailea"
+msgstr "Cailuaren identifikatzailea"
 
 #: ctk/a11y/ctkrenderercellaccessible.c:97
 msgid "Cell renderer"

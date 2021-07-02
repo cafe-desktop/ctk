@@ -28,11 +28,11 @@
 
 /**
  * SECTION:cailmisc
- * @Short_description: GailMisc is a set of utility functions which may be
+ * @Short_description: CailMisc is a set of utility functions which may be
  *   useful to implementors of Atk interfaces for custom widgets.
- * @Title: GailMisc
+ * @Title: CailMisc
  *
- * GailMisc is a set of utility function which are used in the implemementation
+ * CailMisc is a set of utility function which are used in the implemementation
  * of Atk interfaces for CTK+ widgets. They may be useful to implementors of
  * Atk interfaces for custom widgets.
  */
