@@ -23,7 +23,7 @@
 
 G_BEGIN_DECLS
 
-#define GAIL_TYPE_TEXT_UTIL                  (gail_text_util_get_type ())
+#define GAIL_TYPE_TEXT_UTIL                  (cail_text_util_get_type ())
 #define GAIL_TEXT_UTIL(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GAIL_TYPE_TEXT_UTIL, GailTextUtil))
 #define GAIL_TEXT_UTIL_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GAIL_TYPE_TEXT_UTIL, GailTextUtilClass))
 #define GAIL_IS_TEXT_UTIL(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GAIL_TYPE_TEXT_UTIL))
@@ -38,7 +38,7 @@ G_BEGIN_DECLS
  *
  * Specifies which of the functions atk_text_get_text_before_offset(),
  * atk_text_get_text_at_offset(), atk_text_get_text_after_offset() the
- * function gail_text_util_get_text() is being called for.
+ * function cail_text_util_get_text() is being called for.
  **/
 typedef enum
 {
@@ -63,18 +63,18 @@ struct _GailTextUtilClass
 };
 
 CDK_AVAILABLE_IN_ALL
-GType         gail_text_util_get_type      (void);
+GType         cail_text_util_get_type      (void);
 CDK_AVAILABLE_IN_ALL
-GailTextUtil* gail_text_util_new           (void);
+GailTextUtil* cail_text_util_new           (void);
 
 CDK_AVAILABLE_IN_ALL
-void          gail_text_util_text_setup    (GailTextUtil    *textutil,
+void          cail_text_util_text_setup    (GailTextUtil    *textutil,
                                             const gchar     *text);
 CDK_AVAILABLE_IN_ALL
-void          gail_text_util_buffer_setup  (GailTextUtil    *textutil,
+void          cail_text_util_buffer_setup  (GailTextUtil    *textutil,
                                             CtkTextBuffer   *buffer);
 CDK_AVAILABLE_IN_ALL
-gchar*        gail_text_util_get_text      (GailTextUtil    *textutil,
+gchar*        cail_text_util_get_text      (GailTextUtil    *textutil,
                                              gpointer        layout,
                                             GailOffsetType  function,
                                             AtkTextBoundary boundary_type,
@@ -82,7 +82,7 @@ gchar*        gail_text_util_get_text      (GailTextUtil    *textutil,
                                             gint            *start_offset,
                                             gint            *end_offset);
 CDK_AVAILABLE_IN_ALL
-gchar*        gail_text_util_get_substring (GailTextUtil    *textutil,
+gchar*        cail_text_util_get_substring (GailTextUtil    *textutil,
                                             gint            start_pos,
                                             gint            end_pos);
 

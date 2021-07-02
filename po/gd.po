@@ -935,7 +935,7 @@ msgstr "Ù_r"
 #: ctk/a11y/ctkimageaccessible.c:104 ctk/deprecated/ctkstock.c:418
 msgctxt "Stock label"
 msgid "_Open"
-msgstr "_Fosgail"
+msgstr "_Foscail"
 
 #: ctk/a11y/ctkimageaccessible.c:105 ctk/deprecated/ctkstock.c:428
 msgctxt "Stock label"
@@ -1329,7 +1329,7 @@ msgstr "_Sguir dheth"
 #: ctk/deprecated/ctkstock.c:349
 msgctxt "Stock label"
 msgid "C_onnect"
-msgstr "C_eangail"
+msgstr "C_eancail"
 
 #: ctk/deprecated/ctkstock.c:350
 msgctxt "Stock label"
@@ -1710,7 +1710,7 @@ msgstr "Aplacaidean a mholamaid"
 
 #: ctk/ctkappchooserwidget.c:774
 msgid "Related Applications"
-msgstr "Aplacaidean co-cheangailte"
+msgstr "Aplacaidean co-cheancailte"
 
 #: ctk/ctkappchooserwidget.c:788
 msgid "Other Applications"
@@ -2296,7 +2296,7 @@ msgstr "_Ainm"
 #: ctk/ctkplacessidebar.c:3594 ctk/ctkplacessidebar.c:3662
 #: ctk/ctkplacesview.c:1629
 msgid "_Open"
-msgstr "F_osgail"
+msgstr "F_oscail"
 
 #: ctk/ctkfilechoosernative.c:626 ctk/inspector/css-editor.c:202
 msgid "_Save"
@@ -2456,7 +2456,7 @@ msgstr "_Tadhail air an fhaidhle seo"
 
 #: ctk/ctkfilechooserwidget.c:2273
 msgid "_Open With File Manager"
-msgstr "F_osgail le manaidsear nam faidhlichean"
+msgstr "F_oscail le manaidsear nam faidhlichean"
 
 #: ctk/ctkfilechooserwidget.c:2274
 msgid "_Copy Location"
@@ -2684,12 +2684,12 @@ msgstr "Mearachd"
 #. Open Link
 #: ctk/ctklabel.c:6661
 msgid "_Open Link"
-msgstr "_Fosgail an ceangal"
+msgstr "_Foscail an ceangal"
 
 #. Copy Link Address
 #: ctk/ctklabel.c:6670
 msgid "Copy _Link Address"
-msgstr "Dèan lethbhreac de sheòladh a’ _cheangail"
+msgstr "Dèan lethbhreac de sheòladh a’ _cheancail"
 
 #: ctk/ctk-launch.c:40
 msgid "Show program version"
@@ -2979,7 +2979,7 @@ msgstr "Root an t-siostaim fhaidhlichean"
 #, c-format
 #| msgid "Open '%s'"
 msgid "Open %s"
-msgstr "Fosgail %s"
+msgstr "Foscail %s"
 
 #: ctk/ctkplacessidebar.c:1070
 msgid "Recent"
@@ -3003,11 +3003,11 @@ msgstr "Na faidhlichean as fhearr leat"
 
 #: ctk/ctkplacessidebar.c:1096
 msgid "Open your personal folder"
-msgstr "Fosgail am pasgan pearsanta agad"
+msgstr "Foscail am pasgan pearsanta agad"
 
 #: ctk/ctkplacessidebar.c:1111
 msgid "Open the contents of your desktop in a folder"
-msgstr "Fosgail susbaint an deasga agad ann am pasgan"
+msgstr "Foscail susbaint an deasga agad ann am pasgan"
 
 #: ctk/ctkplacessidebar.c:1125
 msgid "Enter Location"
@@ -3023,17 +3023,17 @@ msgstr "Sgudal"
 
 #: ctk/ctkplacessidebar.c:1139
 msgid "Open the trash"
-msgstr "Fosgail an sgudal"
+msgstr "Foscail an sgudal"
 
 #: ctk/ctkplacessidebar.c:1248 ctk/ctkplacessidebar.c:1276
 #: ctk/ctkplacessidebar.c:1484
 #, c-format
 msgid "Mount and open “%s”"
-msgstr "Munntaich is fosgail “%s”"
+msgstr "Munntaich is foscail “%s”"
 
 #: ctk/ctkplacessidebar.c:1364
 msgid "Open the contents of the file system"
-msgstr "Fosgail susbaint an t-siosaim-fhaidhlichean"
+msgstr "Foscail susbaint an t-siosaim-fhaidhlichean"
 
 #: ctk/ctkplacessidebar.c:1448
 msgid "New bookmark"
@@ -3045,11 +3045,11 @@ msgstr "Cuir comharra-lìn ùr ris"
 
 #: ctk/ctkplacessidebar.c:1463
 msgid "Connect to Server"
-msgstr "Ceangail ri frithealaiche"
+msgstr "Ceancail ri frithealaiche"
 
 #: ctk/ctkplacessidebar.c:1465
 msgid "Connect to a network server address"
-msgstr "Ceangail ris an t-seòladh aig frithealaiche lìonraidh"
+msgstr "Ceancail ris an t-seòladh aig frithealaiche lìonraidh"
 
 #: ctk/ctkplacessidebar.c:1527
 msgid "Other Locations"
@@ -3150,12 +3150,12 @@ msgstr "Cha ghabh “%s” a phòladh airson atharrachadh a’ mheadhain"
 #: ctk/ctkplacessidebar.c:3599 ctk/ctkplacessidebar.c:3665
 #: ctk/ctkplacesview.c:1639
 msgid "Open in New _Tab"
-msgstr "Fosgail ann an _taba ùr"
+msgstr "Foscail ann an _taba ùr"
 
 #: ctk/ctkplacessidebar.c:3605 ctk/ctkplacessidebar.c:3668
 #: ctk/ctkplacesview.c:1650
 msgid "Open in New _Window"
-msgstr "Fosgail ann an _uinneag ùr"
+msgstr "Foscail ann an _uinneag ùr"
 
 #: ctk/ctkplacessidebar.c:3672
 msgid "_Add Bookmark"
@@ -3205,7 +3205,7 @@ msgstr "Cha ghabh an t-ionad inntrigeadh"
 #. Restore from Cancel to Connect
 #: ctk/ctkplacesview.c:1246 ctk/ui/ctkplacesview.ui:449
 msgid "Con_nect"
-msgstr "C_eangail"
+msgstr "C_eancail"
 
 #. if it wasn't cancelled show a dialog
 #: ctk/ctkplacesview.c:1366
@@ -3219,11 +3219,11 @@ msgstr "_Sguir dheth"
 
 #: ctk/ctkplacesview.c:1674
 msgid "_Disconnect"
-msgstr "_Dì-cheangail"
+msgstr "_Dì-cheancail"
 
 #: ctk/ctkplacesview.c:1684
 msgid "_Connect"
-msgstr "_Ceangail"
+msgstr "_Ceancail"
 
 #: ctk/ctkplacesview.c:1825
 msgid "Unable to get remote server location"
@@ -3252,7 +3252,7 @@ msgstr[3] "%s / %s ri fhaighinn"
 
 #: ctk/ctkplacesviewrow.c:481
 msgid "Disconnect"
-msgstr "Dì-cheangail"
+msgstr "Dì-cheancail"
 
 #: ctk/ctkplacesviewrow.c:481 ctk/ui/ctkplacesviewrow.ui:72
 #: ctk/ui/ctksidebarrow.ui:60
@@ -3368,7 +3368,7 @@ msgstr "Tha an clò-bhualadair far loidhne"
 
 #: ctk/ctkprintoperation-win32.c:619
 msgid "Out of paper"
-msgstr "Chan eil pàipear air fhàgail"
+msgstr "Chan eil pàipear air fhàcail"
 
 #. Translators: this is a printer status.
 #: ctk/ctkprintoperation-win32.c:621
@@ -3562,7 +3562,7 @@ msgstr ""
 #: ctk/ctkrecentchoosermenu.c:789
 #, c-format
 msgid "Open '%s'"
-msgstr "Fosgail “%s”"
+msgstr "Foscail “%s”"
 
 #: ctk/ctkrecentchoosermenu.c:819
 msgid "Unknown item"
@@ -4079,7 +4079,7 @@ msgstr "Àireamh nan iomraidhean"
 
 #: ctk/inspector/misc-info.ui:136
 msgid "Buildable ID"
-msgstr "ID a ghabhas togail"
+msgstr "ID a ghabhas tocail"
 
 #: ctk/inspector/misc-info.ui:170
 msgid "Default Widget"
@@ -4305,7 +4305,7 @@ msgstr "Siognail"
 
 #: ctk/inspector/signals-list.ui:50
 msgid "Connected"
-msgstr "Ceangailte"
+msgstr "Ceancailte"
 
 #: ctk/inspector/size-groups.c:224
 msgid "Ignore hidden"
@@ -5810,7 +5810,7 @@ msgstr "Cha deach toradh a lorg"
 
 #: ctk/ui/ctkplacesview.ui:439
 msgid "Connect to _Server"
-msgstr "Ceangail ri _frithealaiche"
+msgstr "Ceancail ri _frithealaiche"
 
 #: ctk/ui/ctkplacesview.ui:472
 msgid "Enter server address…"
@@ -6365,31 +6365,31 @@ msgstr ""
 #: modules/printbackends/cups/ctkprintbackendcups.c:2525
 #, c-format
 msgid "Printer “%s” is low on toner."
-msgstr "Chan eil cus tònair air fhàgail aig a’ chlò-bhualadair “%s”."
+msgstr "Chan eil cus tònair air fhàcail aig a’ chlò-bhualadair “%s”."
 
 #: modules/printbackends/cups/ctkprintbackendcups.c:2529
 #, c-format
 msgid "Printer “%s” has no toner left."
-msgstr "Chan eil tònair air fhàgail aig a’ chlò-bhualadair “%s”."
+msgstr "Chan eil tònair air fhàcail aig a’ chlò-bhualadair “%s”."
 
 #. Translators: "Developer" like on photo development context
 #: modules/printbackends/cups/ctkprintbackendcups.c:2534
 #, c-format
 msgid "Printer “%s” is low on developer."
-msgstr "Chan eil cus leasaicheir air fhàgail aig a’ chlò-bhualadair “%s”."
+msgstr "Chan eil cus leasaicheir air fhàcail aig a’ chlò-bhualadair “%s”."
 
 #. Translators: "Developer" like on photo development context
 #: modules/printbackends/cups/ctkprintbackendcups.c:2539
 #, c-format
 msgid "Printer “%s” is out of developer."
-msgstr "Chan eil leasaichear air fhàgail aig a’ chlò-bhualadair “%s”."
+msgstr "Chan eil leasaichear air fhàcail aig a’ chlò-bhualadair “%s”."
 
 #. Translators: "marker" is one color bin of the printer
 #: modules/printbackends/cups/ctkprintbackendcups.c:2544
 #, c-format
 msgid "Printer “%s” is low on at least one marker supply."
 msgstr ""
-"Tha co-dhiù aon solar comharraiche ann nach eil cus air fhàgail dheth aig a’ "
+"Tha co-dhiù aon solar comharraiche ann nach eil cus air fhàcail dheth aig a’ "
 "chlò-bhualadair “%s”."
 
 #. Translators: "marker" is one color bin of the printer
@@ -6397,28 +6397,28 @@ msgstr ""
 #, c-format
 msgid "Printer “%s” is out of at least one marker supply."
 msgstr ""
-"Tha co-dhiù aon solar comharraiche ann nach eil gin air fhàgail dheth aig a’ "
+"Tha co-dhiù aon solar comharraiche ann nach eil gin air fhàcail dheth aig a’ "
 "chlò-bhualadair “%s”."
 
 #: modules/printbackends/cups/ctkprintbackendcups.c:2553
 #, c-format
 msgid "The cover is open on printer “%s”."
-msgstr "Tha mullach a’ chlò-bhualadair “%s” fosgailte."
+msgstr "Tha mullach a’ chlò-bhualadair “%s” foscailte."
 
 #: modules/printbackends/cups/ctkprintbackendcups.c:2557
 #, c-format
 msgid "The door is open on printer “%s”."
-msgstr "Tha doras a’ chlò-bhualadair “%s” fosgailte."
+msgstr "Tha doras a’ chlò-bhualadair “%s” foscailte."
 
 #: modules/printbackends/cups/ctkprintbackendcups.c:2561
 #, c-format
 msgid "Printer “%s” is low on paper."
-msgstr "Chan eil cus pàipeir air fhàgail aig a’ chlò-bhualadair “%s”."
+msgstr "Chan eil cus pàipeir air fhàcail aig a’ chlò-bhualadair “%s”."
 
 #: modules/printbackends/cups/ctkprintbackendcups.c:2565
 #, c-format
 msgid "Printer “%s” is out of paper."
-msgstr "Chan eil pàipear air fhàgail aig a’ chlò-bhualadair “%s”."
+msgstr "Chan eil pàipear air fhàcail aig a’ chlò-bhualadair “%s”."
 
 #: modules/printbackends/cups/ctkprintbackendcups.c:2569
 #, c-format
@@ -7203,7 +7203,7 @@ msgstr "Clò-bhuail gus an clò-bhualadair a chur fo dheuchainn"
 #~ "\n"
 #~ "%s"
 #~ msgstr ""
-#~ "Chan urrainn dha %s fàgail aig an àm seo:\n"
+#~ "Chan urrainn dha %s fàcail aig an àm seo:\n"
 #~ "\n"
 #~ "%s"
 

@@ -41,35 +41,35 @@
 #include <atk-bridge.h>
 #endif
 
-static gboolean gail_focus_watcher      (GSignalInvocationHint *ihint,
+static gboolean cail_focus_watcher      (GSignalInvocationHint *ihint,
                                          guint                  n_param_values,
                                          const GValue          *param_values,
                                          gpointer               data);
-static gboolean gail_select_watcher     (GSignalInvocationHint *ihint,
+static gboolean cail_select_watcher     (GSignalInvocationHint *ihint,
                                          guint                  n_param_values,
                                          const GValue          *param_values,
                                          gpointer               data);
-static gboolean gail_deselect_watcher   (GSignalInvocationHint *ihint,
+static gboolean cail_deselect_watcher   (GSignalInvocationHint *ihint,
                                          guint                  n_param_values,
                                          const GValue          *param_values,
                                          gpointer               data);
-static gboolean gail_switch_page_watcher(GSignalInvocationHint *ihint,
+static gboolean cail_switch_page_watcher(GSignalInvocationHint *ihint,
                                          guint                  n_param_values,
                                          const GValue          *param_values,
                                          gpointer               data);
-static void     gail_finish_select       (CtkWidget            *widget);
-static void     gail_map_cb              (CtkWidget            *widget);
-static void     gail_map_submenu_cb      (CtkWidget            *widget);
-static gint     gail_focus_idle_handler  (gpointer             data);
-static void     gail_focus_notify        (CtkWidget            *widget);
-static void     gail_focus_notify_when_idle (CtkWidget            *widget);
+static void     cail_finish_select       (CtkWidget            *widget);
+static void     cail_map_cb              (CtkWidget            *widget);
+static void     cail_map_submenu_cb      (CtkWidget            *widget);
+static gint     cail_focus_idle_handler  (gpointer             data);
+static void     cail_focus_notify        (CtkWidget            *widget);
+static void     cail_focus_notify_when_idle (CtkWidget            *widget);
 
-static void     gail_focus_tracker_init (void);
-static void     gail_focus_object_destroyed (gpointer data);
-static void     gail_focus_tracker (AtkObject *object);
-static void     gail_set_focus_widget (CtkWidget *focus_widget,
+static void     cail_focus_tracker_init (void);
+static void     cail_focus_object_destroyed (gpointer data);
+static void     cail_focus_tracker (AtkObject *object);
+static void     cail_set_focus_widget (CtkWidget *focus_widget,
                                        CtkWidget *widget);
-static void     gail_set_focus_object (AtkObject *focus_obj,
+static void     cail_set_focus_object (AtkObject *focus_obj,
                                        AtkObject *obj);
 
 CtkWidget* _focus_widget = NULL;
@@ -113,7 +113,7 @@ get_accessible_for_widget (CtkWidget *widget,
       CtkWidget *other_widget = ctk_widget_get_parent (widget);
       if (CTK_IS_COMBO_BOX (other_widget))
         {
-          gail_set_focus_widget (other_widget, widget);
+          cail_set_focus_widget (other_widget, widget);
           widget = other_widget;
         }
     }
@@ -141,7 +141,7 @@ get_accessible_for_widget (CtkWidget *widget,
 }
 
 static gboolean
-gail_focus_watcher (GSignalInvocationHint *ihint,
+cail_focus_watcher (GSignalInvocationHint *ihint,
                     guint                  n_param_values,
                     const GValue          *param_values,
                     gpointer               data)
@@ -268,12 +268,12 @@ gail_focus_watcher (GSignalInvocationHint *ihint,
   /*
    * The widget may not yet be visible on the screen so we wait until it is.
    */
-  gail_focus_notify_when_idle (widget);
+  cail_focus_notify_when_idle (widget);
   return TRUE; 
 }
 
 static gboolean
-gail_select_watcher (GSignalInvocationHint *ihint,
+cail_select_watcher (GSignalInvocationHint *ihint,
                      guint                  n_param_values,
                      const GValue          *param_values,
                      gpointer               data)
@@ -289,17 +289,17 @@ gail_select_watcher (GSignalInvocationHint *ihint,
   if (!ctk_widget_get_mapped (widget))
     {
       g_signal_connect (widget, "map",
-                        G_CALLBACK (gail_map_cb),
+                        G_CALLBACK (cail_map_cb),
                         NULL);
     }
   else
-    gail_finish_select (widget);
+    cail_finish_select (widget);
 
   return TRUE;
 }
 
 static void
-gail_finish_select (CtkWidget *widget)
+cail_finish_select (CtkWidget *widget)
 {
   if (CTK_IS_MENU_ITEM (widget))
     {
@@ -323,11 +323,11 @@ gail_finish_select (CtkWidget *widget)
                                                                CTK_TYPE_WINDOW),
                                               0,
                                               NULL,
-                                              (gpointer) gail_map_submenu_cb,
+                                              (gpointer) cail_map_submenu_cb,
                                               NULL); 
           if (!handler_id)
             g_signal_connect (submenu, "map",
-                              G_CALLBACK (gail_map_submenu_cb),
+                              G_CALLBACK (cail_map_submenu_cb),
                               NULL);
 
           return;
@@ -363,19 +363,19 @@ gail_finish_select (CtkWidget *widget)
       g_object_add_weak_pointer (G_OBJECT (focus_before_menu), vp_focus_before_menu);
 
     } 
-  gail_focus_notify_when_idle (widget);
+  cail_focus_notify_when_idle (widget);
 
   return; 
 }
 
 static void
-gail_map_cb (CtkWidget *widget)
+cail_map_cb (CtkWidget *widget)
 {
-  gail_finish_select (widget);
+  cail_finish_select (widget);
 }
 
 static void
-gail_map_submenu_cb (CtkWidget *widget)
+cail_map_submenu_cb (CtkWidget *widget)
 {
   if (CTK_IS_MENU (widget))
     {
@@ -383,13 +383,13 @@ gail_map_submenu_cb (CtkWidget *widget)
 
       parent_menu_item = ctk_menu_get_attach_widget (CTK_MENU (widget));
       if (parent_menu_item)
-        gail_finish_select (parent_menu_item);
+        cail_finish_select (parent_menu_item);
     }
 }
 
 
 static gboolean
-gail_deselect_watcher (GSignalInvocationHint *ihint,
+cail_deselect_watcher (GSignalInvocationHint *ihint,
                        guint                  n_param_values,
                        const GValue          *param_values,
                        gpointer               data)
@@ -422,14 +422,14 @@ gail_deselect_watcher (GSignalInvocationHint *ihint,
           active_menu_item = ctk_menu_shell_get_selected_item (CTK_MENU_SHELL (parent_menu_shell));
           if (active_menu_item)
             {
-              gail_focus_notify_when_idle (active_menu_item);
+              cail_focus_notify_when_idle (active_menu_item);
             }
         }
       else
         {
           if (!CTK_IS_MENU_BAR (menu_shell))
             {
-              gail_focus_notify_when_idle (menu_shell);
+              cail_focus_notify_when_idle (menu_shell);
             }
         }
     }
@@ -438,7 +438,7 @@ gail_deselect_watcher (GSignalInvocationHint *ihint,
 }
 
 static gboolean 
-gail_switch_page_watcher (GSignalInvocationHint *ihint,
+cail_switch_page_watcher (GSignalInvocationHint *ihint,
                           guint                  n_param_values,
                           const GValue          *param_values,
                           gpointer               data)
@@ -457,12 +457,12 @@ gail_switch_page_watcher (GSignalInvocationHint *ihint,
   if (ctk_notebook_get_current_page (CTK_NOTEBOOK (widget)) == -1)
     return TRUE;
 
-  gail_focus_notify_when_idle (widget);
+  cail_focus_notify_when_idle (widget);
   return TRUE;
 }
 
 static gboolean
-gail_focus_idle_handler (gpointer data)
+cail_focus_idle_handler (gpointer data)
 {
   focus_notify_handler = 0;
   /*
@@ -480,13 +480,13 @@ gail_focus_idle_handler (gpointer data)
       next_focus_widget = NULL;
     }
     
-  gail_focus_notify (data);
+  cail_focus_notify (data);
 
   return FALSE;
 }
 
 static void
-gail_focus_notify (CtkWidget *widget)
+cail_focus_notify (CtkWidget *widget)
 {
   AtkObject *atk_obj;
   gboolean transient;
@@ -514,7 +514,7 @@ gail_focus_notify (CtkWidget *widget)
               focus_before_menu = NULL;
             }
         }
-      gail_focus_notify_when_idle (_focus_widget);
+      cail_focus_notify_when_idle (_focus_widget);
     }
   else
     {
@@ -536,13 +536,13 @@ gail_focus_notify (CtkWidget *widget)
         {
           CtkWidget *tmp_widget = subsequent_focus_widget;
           subsequent_focus_widget = NULL;
-          gail_focus_notify_when_idle (tmp_widget);
+          cail_focus_notify_when_idle (tmp_widget);
         }
     }
 }
 
 static void
-gail_focus_notify_when_idle (CtkWidget *widget)
+cail_focus_notify_when_idle (CtkWidget *widget)
 {
   if (focus_notify_handler)
     {
@@ -603,12 +603,12 @@ gail_focus_notify_when_idle (CtkWidget *widget)
         }
     }
 
-  focus_notify_handler = cdk_threads_add_idle (gail_focus_idle_handler, widget);
-  g_source_set_name_by_id (focus_notify_handler, "[ctk+] gail_focus_idle_handler");
+  focus_notify_handler = cdk_threads_add_idle (cail_focus_idle_handler, widget);
+  g_source_set_name_by_id (focus_notify_handler, "[ctk+] cail_focus_idle_handler");
 }
 
 static gboolean
-gail_deactivate_watcher (GSignalInvocationHint *ihint,
+cail_deactivate_watcher (GSignalInvocationHint *ihint,
                          guint                  n_param_values,
                          const GValue          *param_values,
                          gpointer               data)
@@ -644,13 +644,13 @@ gail_deactivate_watcher (GSignalInvocationHint *ihint,
       focus_notify_handler = 0;
       was_deselect = FALSE;
     }
-  gail_focus_notify_when_idle (focus);
+  cail_focus_notify_when_idle (focus);
 
   return TRUE; 
 }
 
 static void
-gail_focus_tracker_init (void)
+cail_focus_tracker_init (void)
 {
   static gboolean  emission_hooks_added = FALSE;
 
@@ -670,7 +670,7 @@ gail_focus_tracker_init (void)
        */
       g_signal_add_emission_hook (
              g_signal_lookup ("event-after", CTK_TYPE_WIDGET), 0,
-             gail_focus_watcher, NULL, (GDestroyNotify) NULL);
+             cail_focus_watcher, NULL, (GDestroyNotify) NULL);
       /*
        * A "select" signal is emitted when arrow key is used to
        * move to a list item in the popup window of a CtkCombo or
@@ -678,7 +678,7 @@ gail_focus_tracker_init (void)
        */
       g_signal_add_emission_hook (
              g_signal_lookup ("select", CTK_TYPE_MENU_ITEM), 0,
-             gail_select_watcher, NULL, (GDestroyNotify) NULL);
+             cail_select_watcher, NULL, (GDestroyNotify) NULL);
 
       /*
        * A "deselect" signal is emitted when arrow key is used to
@@ -686,7 +686,7 @@ gail_focus_tracker_init (void)
        */
       g_signal_add_emission_hook (
              g_signal_lookup ("deselect", CTK_TYPE_MENU_ITEM), 0,
-             gail_deselect_watcher, NULL, (GDestroyNotify) NULL);
+             cail_deselect_watcher, NULL, (GDestroyNotify) NULL);
 
       /*
        * We listen for deactivate signals on menushells to determine
@@ -694,7 +694,7 @@ gail_focus_tracker_init (void)
        */
       g_signal_add_emission_hook (
              g_signal_lookup ("deactivate", CTK_TYPE_MENU_SHELL), 0,
-             gail_deactivate_watcher, NULL, (GDestroyNotify) NULL);
+             cail_deactivate_watcher, NULL, (GDestroyNotify) NULL);
 
       /*
        * We listen for "switch-page" signal on a CtkNotebook to notify
@@ -702,13 +702,13 @@ gail_focus_tracker_init (void)
        */
       g_signal_add_emission_hook (
              g_signal_lookup ("switch-page", CTK_TYPE_NOTEBOOK), 0,
-             gail_switch_page_watcher, NULL, (GDestroyNotify) NULL);
+             cail_switch_page_watcher, NULL, (GDestroyNotify) NULL);
       emission_hooks_added = TRUE;
     }
 }
 
 static void
-gail_focus_object_destroyed (gpointer data)
+cail_focus_object_destroyed (gpointer data)
 {
   GObject *obj;
 
@@ -718,7 +718,7 @@ gail_focus_object_destroyed (gpointer data)
 }
 
 static void
-gail_focus_tracker (AtkObject *focus_object)
+cail_focus_tracker (AtkObject *focus_object)
 {
   /*
    * Do not report focus on redundant object
@@ -744,7 +744,7 @@ gail_focus_tracker (AtkObject *focus_object)
 
           if (parent)
             {
-              gail_set_focus_object (focus_object, parent);
+              cail_set_focus_object (focus_object, parent);
             }
         }
       else
@@ -753,7 +753,7 @@ gail_focus_tracker (AtkObject *focus_object)
           if (old_focus_object)
             {
               g_object_weak_unref (G_OBJECT (old_focus_object),
-                                   (GWeakNotify) gail_focus_object_destroyed,
+                                   (GWeakNotify) cail_focus_object_destroyed,
                                    focus_object);
               g_object_set_qdata (G_OBJECT (focus_object), quark_focus_object, NULL);
               g_object_unref (G_OBJECT (focus_object));
@@ -763,7 +763,7 @@ gail_focus_tracker (AtkObject *focus_object)
 }
 
 static void 
-gail_set_focus_widget (CtkWidget *focus_widget,
+cail_set_focus_widget (CtkWidget *focus_widget,
                        CtkWidget *widget)
 {
   AtkObject *focus_obj;
@@ -771,11 +771,11 @@ gail_set_focus_widget (CtkWidget *focus_widget,
 
   focus_obj = ctk_widget_get_accessible (focus_widget);
   obj = ctk_widget_get_accessible (widget);
-  gail_set_focus_object (focus_obj, obj);
+  cail_set_focus_object (focus_obj, obj);
 }
 
 static void 
-gail_set_focus_object (AtkObject *focus_obj,
+cail_set_focus_object (AtkObject *focus_obj,
                        AtkObject *obj)
 {
   AtkObject *old_focus_obj;
@@ -785,19 +785,19 @@ gail_set_focus_object (AtkObject *focus_obj,
     {
       if (old_focus_obj)
         g_object_weak_unref (G_OBJECT (old_focus_obj),
-                             (GWeakNotify) gail_focus_object_destroyed,
+                             (GWeakNotify) cail_focus_object_destroyed,
                              obj);
       else
         /*
          * We call g_object_ref as if obj is destroyed 
          * while the weak reference exists then destroying the 
-         * focus_obj would cause gail_focus_object_destroyed to be 
+         * focus_obj would cause cail_focus_object_destroyed to be 
          * called when obj is not a valid GObject.
          */
         g_object_ref (obj);
 
       g_object_weak_ref (G_OBJECT (focus_obj),
-                         (GWeakNotify) gail_focus_object_destroyed,
+                         (GWeakNotify) cail_focus_object_destroyed,
                          obj);
       g_object_set_qdata (G_OBJECT (obj), quark_focus_object, focus_obj);
     }
@@ -978,11 +978,11 @@ _ctk_accessibility_init (void)
     return;
 
   initialized = TRUE;
-  quark_focus_object = g_quark_from_static_string ("gail-focus-object");
+  quark_focus_object = g_quark_from_static_string ("cail-focus-object");
 
   G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-  atk_focus_tracker_init (gail_focus_tracker_init);
-  focus_tracker_id = atk_add_focus_tracker (gail_focus_tracker);
+  atk_focus_tracker_init (cail_focus_tracker_init);
+  focus_tracker_id = atk_add_focus_tracker (cail_focus_tracker);
   G_GNUC_END_IGNORE_DEPRECATIONS;
 
   _ctk_accessibility_override_atk_util ();

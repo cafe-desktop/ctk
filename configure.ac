@@ -133,13 +133,13 @@ LT_CURRENT_MINUS_AGE=m4_eval(lt_current - lt_age)
 AC_SUBST(LT_VERSION_INFO)
 AC_SUBST(LT_CURRENT_MINUS_AGE)
 
-m4_define([gail_lt_current],[0])
-m4_define([gail_lt_revision],[0])
-m4_define([gail_lt_age],[0])
-m4_define([gail_lt_version_info],[gail_lt_current:gail_lt_revision:gail_lt_age])
-m4_define([gail_lt_current_minus_age],[m4_eval(gail_lt_current - gail_lt_age)])
-AC_SUBST([GAIL_LT_VERSION_INFO],[gail_lt_version_info])
-AC_SUBST([GAIL_LT_CURRENT_MINUS_AGE],[gail_lt_current_minus_age])
+m4_define([cail_lt_current],[0])
+m4_define([cail_lt_revision],[0])
+m4_define([cail_lt_age],[0])
+m4_define([cail_lt_version_info],[cail_lt_current:cail_lt_revision:cail_lt_age])
+m4_define([cail_lt_current_minus_age],[m4_eval(cail_lt_current - cail_lt_age)])
+AC_SUBST([GAIL_LT_VERSION_INFO],[cail_lt_version_info])
+AC_SUBST([GAIL_LT_CURRENT_MINUS_AGE],[cail_lt_current_minus_age])
 
 # Workaround for https://bugzilla.gnome.org/show_bug.cgi?id=721346 until fixed upstream in autoconf-archive
 if test "$cross_compiling" = "no"; then
@@ -1919,7 +1919,7 @@ Makefile
 cdk-3.0.pc
 ctk+-3.0.pc
 ctk+-unix-print-3.0.pc
-gail-3.0.pc
+cail-3.0.pc
 m4macros/Makefile
 po/Makefile.in
 po-properties/Makefile.in
@@ -1961,8 +1961,8 @@ docs/reference/ctk/Makefile
 docs/reference/ctk/ctk3.types
 docs/reference/ctk/version.xml
 docs/reference/ctk/getting_started.xml
-docs/reference/libgail-util/Makefile
-docs/reference/libgail-util/version.xml
+docs/reference/libcail-util/Makefile
+docs/reference/libcail-util/version.xml
 docs/tools/Makefile
 win32/Makefile
 win32/config-msvc.mak
@@ -1989,7 +1989,7 @@ ctk/makefile.msc
 ctk/ctkversion.h
 ctk/ctk-win32.rc.body
 ctk/libctk3.manifest
-libgail-util/Makefile
+libcail-util/Makefile
 modules/Makefile
 modules/input/Makefile
 modules/printbackends/Makefile

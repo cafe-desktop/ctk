@@ -1,2 +1,2 @@
-#include <libgail-util/gailmisc.h>
-#include <libgail-util/gailtextutil.h>
+#include <libcail-util/cailmisc.h>
+#include <libcail-util/cailtextutil.h>

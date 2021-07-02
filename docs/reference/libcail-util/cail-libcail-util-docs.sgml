@@ -10,12 +10,12 @@
     <releaseinfo>
       Version &version;
       The latest version of this documentation can be found on-line at
-      <ulink role="online-location" url="http://developer.gnome.org/gail-libgail-util/unstable/">http://developer.gnome.org/gail-libgail-util/unstable/</ulink>.
+      <ulink role="online-location" url="http://developer.gnome.org/cail-libcail-util/unstable/">http://developer.gnome.org/cail-libcail-util/unstable/</ulink>.
     </releaseinfo>
   </bookinfo>
-  <chapter id="libgail-util-main">
-    <title>GAIL libgail-util Library</title>
-    <xi:include href="xml/gailtextutil.xml" />
-    <xi:include href="xml/gailmisc.xml" />
+  <chapter id="libcail-util-main">
+    <title>GAIL libcail-util Library</title>
+    <xi:include href="xml/cailtextutil.xml" />
+    <xi:include href="xml/cailmisc.xml" />
   </chapter>
 </book>

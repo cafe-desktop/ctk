@@ -1,7 +1,7 @@
 # English (British) translation
 # Copyright (C) 2004 CTK+'s COPYRIGHT HOLDER
 # This file is distributed under the same licence as the ctk+ package.
-# Abigail Brady <morwen@evilmagic.org>, Gareth Owen <gowen72@yahoo.com> 2004
+# Abicail Brady <morwen@evilmagic.org>, Gareth Owen <gowen72@yahoo.com> 2004
 # Philip Withnall <philip@tecnocode.co.uk>, 2010, 2012.
 # Zander Brown <zbrown@gnome.org>, 2019-2020.
 # Bruce Cowan <bruce@bcowan.me.uk>, 2009-2020.

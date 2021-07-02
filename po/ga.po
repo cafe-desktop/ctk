@@ -2944,7 +2944,7 @@ msgstr "Nasc le Freastalaí"
 
 #: ../ctk/ctkplacessidebar.c:1246
 msgid "Connect to a network server address"
-msgstr "Ceangail le seoladh fhreastalaí líonra"
+msgstr "Ceancail le seoladh fhreastalaí líonra"
 
 #: ../ctk/ctkplacessidebar.c:1308
 msgid "Other Locations"
@@ -2974,11 +2974,11 @@ msgstr "Bain Tiomántán go _Sábháilte"
 
 #: ../ctk/ctkplacessidebar.c:2112
 msgid "_Connect Drive"
-msgstr "_Ceangail Tiomántán"
+msgstr "_Ceancail Tiomántán"
 
 #: ../ctk/ctkplacessidebar.c:2113
 msgid "_Disconnect Drive"
-msgstr "_Dícheangail Tiomántán"
+msgstr "_Dícheancail Tiomántán"
 
 #: ../ctk/ctkplacessidebar.c:2117
 msgid "_Start Multi-disk Device"

@@ -1934,7 +1934,7 @@ mark_set_cb (CtkTextBuffer *buffer,
 }
 
 static gint
-gail_streamable_content_get_n_mime_types (AtkStreamableContent *streamable)
+cail_streamable_content_get_n_mime_types (AtkStreamableContent *streamable)
 {
   CtkWidget *widget;
   CtkTextBuffer *buffer;
@@ -1963,7 +1963,7 @@ gail_streamable_content_get_n_mime_types (AtkStreamableContent *streamable)
 }
 
 static const gchar *
-gail_streamable_content_get_mime_type (AtkStreamableContent *streamable,
+cail_streamable_content_get_mime_type (AtkStreamableContent *streamable,
                                        gint                  i)
 {
   CtkWidget *widget;
@@ -1990,7 +1990,7 @@ gail_streamable_content_get_mime_type (AtkStreamableContent *streamable,
 }
 
 static GIOChannel *
-gail_streamable_content_get_stream (AtkStreamableContent *streamable,
+cail_streamable_content_get_stream (AtkStreamableContent *streamable,
                                     const gchar          *mime_type)
 {
   CtkWidget *widget;
@@ -2068,9 +2068,9 @@ gail_streamable_content_get_stream (AtkStreamableContent *streamable,
 static void
 atk_streamable_content_interface_init (AtkStreamableContentIface *iface)
 {
-  iface->get_n_mime_types = gail_streamable_content_get_n_mime_types;
-  iface->get_mime_type = gail_streamable_content_get_mime_type;
-  iface->get_stream = gail_streamable_content_get_stream;
+  iface->get_n_mime_types = cail_streamable_content_get_n_mime_types;
+  iface->get_mime_type = cail_streamable_content_get_mime_type;
+  iface->get_stream = cail_streamable_content_get_stream;
 }
 
 void

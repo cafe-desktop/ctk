@@ -248,7 +248,7 @@ static gboolean
 module_is_blacklisted (const gchar *name,
                        gboolean     verbose)
 {
-  if (g_str_equal (name, "gail") ||
+  if (g_str_equal (name, "cail") ||
       g_str_equal (name, "atk-bridge"))
     {
       if (verbose)

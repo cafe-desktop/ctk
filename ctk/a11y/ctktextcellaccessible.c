@@ -379,11 +379,11 @@ create_pango_layout (CtkTextCellAccessible *text)
   gchar *renderer_text;
   gdouble scale;
   gint rise;
-  CtkRendererCellAccessible *gail_renderer;
+  CtkRendererCellAccessible *cail_renderer;
   CtkCellRendererText *ctk_renderer;
 
-  gail_renderer = CTK_RENDERER_CELL_ACCESSIBLE (text);
-  g_object_get (gail_renderer, "renderer", &ctk_renderer, NULL);
+  cail_renderer = CTK_RENDERER_CELL_ACCESSIBLE (text);
+  g_object_get (cail_renderer, "renderer", &ctk_renderer, NULL);
 
   g_object_get (ctk_renderer,
                 "text", &renderer_text,
@@ -506,7 +506,7 @@ ctk_text_cell_accessible_get_character_extents (AtkText      *text,
                                                 gint         *height,
                                                 AtkCoordType  coords)
 {
-  CtkRendererCellAccessible *gail_renderer;
+  CtkRendererCellAccessible *cail_renderer;
   CtkRequisition min_size;
   CtkCellRendererText *ctk_renderer;
   CdkRectangle rendered_rect;
@@ -530,8 +530,8 @@ ctk_text_cell_accessible_get_character_extents (AtkText      *text,
       *x = *y = *height = *width = 0;
       return;
     }
-  gail_renderer = CTK_RENDERER_CELL_ACCESSIBLE (text);
-  g_object_get (gail_renderer, "renderer", &ctk_renderer, NULL);
+  cail_renderer = CTK_RENDERER_CELL_ACCESSIBLE (text);
+  g_object_get (cail_renderer, "renderer", &ctk_renderer, NULL);
   g_object_get (ctk_renderer, "text", &renderer_text, NULL);
   if (renderer_text == NULL)
     {
@@ -594,7 +594,7 @@ ctk_text_cell_accessible_get_offset_at_point (AtkText      *text,
                                               AtkCoordType  coords)
 {
   AtkObject *parent;
-  CtkRendererCellAccessible *gail_renderer;
+  CtkRendererCellAccessible *cail_renderer;
   CtkCellRendererText *ctk_renderer;
   CtkRequisition min_size;
   CtkWidget *widget;
@@ -611,8 +611,8 @@ ctk_text_cell_accessible_get_offset_at_point (AtkText      *text,
   if (!CTK_TEXT_CELL_ACCESSIBLE (text)->priv->cell_text)
     return -1;
 
-  gail_renderer = CTK_RENDERER_CELL_ACCESSIBLE (text);
-  g_object_get (gail_renderer, "renderer", &ctk_renderer, NULL);
+  cail_renderer = CTK_RENDERER_CELL_ACCESSIBLE (text);
+  g_object_get (cail_renderer, "renderer", &ctk_renderer, NULL);
   parent = atk_object_get_parent (ATK_OBJECT (text));
 
   g_object_get (ctk_renderer, "text", &renderer_text, NULL);

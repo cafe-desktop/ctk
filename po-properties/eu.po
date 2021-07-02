@@ -52,7 +52,7 @@ msgstr "Gailuen kudeatzailea"
 
 #: cdk/cdkdevice.c:139
 msgid "Device manager which the device belongs to"
-msgstr "Gailuen kudeatzailea (gailua horren mendeko dena)"
+msgstr "Gailuen kudeatzailea (cailua horren mendeko dena)"
 
 #
 #: cdk/cdkdevice.c:152 cdk/cdkdevice.c:153
@@ -66,11 +66,11 @@ msgstr "Gailu mota"
 
 #: cdk/cdkdevice.c:167
 msgid "Device role in the device manager"
-msgstr "Gailuaren betekizuna gailuen kudeatzailean"
+msgstr "Gailuaren betekizuna cailuen kudeatzailean"
 
 #: cdk/cdkdevice.c:183
 msgid "Associated device"
-msgstr "Esleitutako gailua"
+msgstr "Esleitutako cailua"
 
 #: cdk/cdkdevice.c:184
 msgid "Associated pointer or keyboard with this device"
@@ -98,7 +98,7 @@ msgstr "Gailuaren mugimenduari jarraitzen dion kurtsore ikusgai bat dagoen edo e
 
 #: cdk/cdkdevice.c:244 cdk/cdkdevice.c:245
 msgid "Number of axes in the device"
-msgstr "Ardatz kopurua gailuan"
+msgstr "Ardatz kopurua cailuan"
 
 #: cdk/cdkdevice.c:259 cdk/cdkdevice.c:260
 msgid "Vendor ID"
@@ -5473,11 +5473,11 @@ msgstr "Ekintza-taldea hortik ekintzak abiarazteko"
 
 #: ctk/ctkpadcontroller.c:379
 msgid "Pad device"
-msgstr "Tableta gailua"
+msgstr "Tableta cailua"
 
 #: ctk/ctkpadcontroller.c:380
 msgid "Pad device to control"
-msgstr "Tableta gailua kontrolatzeko"
+msgstr "Tableta cailua kontrolatzeko"
 
 #: ctk/ctkpaned.c:369
 msgid ""
@@ -5761,7 +5761,7 @@ msgstr "Azpimenuaren izena"
 
 #: ctk/ctkprinter.c:122
 msgid "Name of the printer"
-msgstr "Inprimagailuaren izena"
+msgstr "Inprimacailuaren izena"
 
 #: ctk/ctkprinter.c:128
 msgid "Backend"
@@ -5769,7 +5769,7 @@ msgstr "Motorra"
 
 #: ctk/ctkprinter.c:129
 msgid "Backend for the printer"
-msgstr "Inprimagailuaren motorra"
+msgstr "Inprimacailuaren motorra"
 
 #: ctk/ctkprinter.c:135
 msgid "Is Virtual"
@@ -5777,7 +5777,7 @@ msgstr "Birtuala da"
 
 #: ctk/ctkprinter.c:136
 msgid "FALSE if this represents a real hardware printer"
-msgstr "FALTSUA honek egiazko inprimagailu-hardwarea adierazten badu"
+msgstr "FALTSUA honek egiazko inprimacailu-hardwarea adierazten badu"
 
 #: ctk/ctkprinter.c:142
 msgid "Accepts PDF"
@@ -5785,7 +5785,7 @@ msgstr "PDF onartzen du"
 
 #: ctk/ctkprinter.c:143
 msgid "TRUE if this printer can accept PDF"
-msgstr "EGIA inprimagailuak PDF onartzen badu"
+msgstr "EGIA inprimacailuak PDF onartzen badu"
 
 #: ctk/ctkprinter.c:149
 msgid "Accepts PostScript"
@@ -5793,7 +5793,7 @@ msgstr "PostScript onartzen du"
 
 #: ctk/ctkprinter.c:150
 msgid "TRUE if this printer can accept PostScript"
-msgstr "EGIA inprimagailuak PostScript onartzen badu"
+msgstr "EGIA inprimacailuak PostScript onartzen badu"
 
 #: ctk/ctkprinter.c:156
 msgid "State Message"
@@ -5801,7 +5801,7 @@ msgstr "Mezuaren egoera"
 
 #: ctk/ctkprinter.c:157
 msgid "String giving the current state of the printer"
-msgstr "Inprimagailuaren uneko egoera azaltzen duen esaldia"
+msgstr "Inprimacailuaren uneko egoera azaltzen duen esaldia"
 
 #
 #: ctk/ctkprinter.c:163
@@ -5810,11 +5810,11 @@ msgstr "Kokalekua"
 
 #: ctk/ctkprinter.c:164
 msgid "The location of the printer"
-msgstr "Inprimagailuaren kokalekua"
+msgstr "Inprimacailuaren kokalekua"
 
 #: ctk/ctkprinter.c:171
 msgid "The icon name to use for the printer"
-msgstr "Inprimagailuan erabiliko den ikonoaren izena"
+msgstr "Inprimacailuan erabiliko den ikonoaren izena"
 
 #: ctk/ctkprinter.c:177
 msgid "Job Count"
@@ -5822,15 +5822,15 @@ msgstr "Lan kopurua"
 
 #: ctk/ctkprinter.c:178
 msgid "Number of jobs queued in the printer"
-msgstr "Inprimagailuaren ilaran dagoen lan kopurua"
+msgstr "Inprimacailuaren ilaran dagoen lan kopurua"
 
 #: ctk/ctkprinter.c:196
 msgid "Paused Printer"
-msgstr "Inprimagailua pausarazita"
+msgstr "Inprimacailua pausarazita"
 
 #: ctk/ctkprinter.c:197
 msgid "TRUE if this printer is paused"
-msgstr "EGIA inprimagailua pausarazita badago"
+msgstr "EGIA inprimacailua pausarazita badago"
 
 #: ctk/ctkprinter.c:210
 msgid "Accepting Jobs"
@@ -5838,7 +5838,7 @@ msgstr "Lanak onartzen"
 
 #: ctk/ctkprinter.c:211
 msgid "TRUE if this printer is accepting new jobs"
-msgstr "EGIA inprimagailuak lan berriak onartzen baditu"
+msgstr "EGIA inprimacailuak lan berriak onartzen baditu"
 
 #: ctk/ctkprinteroption.c:103
 msgid "Option Value"
@@ -5863,11 +5863,11 @@ msgstr "Inprimatze-lanaren titulua"
 
 #: ctk/ctkprintjob.c:142
 msgid "Printer"
-msgstr "Inprimagailua"
+msgstr "Inprimacailua"
 
 #: ctk/ctkprintjob.c:143
 msgid "Printer to print the job to"
-msgstr "Inprimagailua lanak inprimatzeko"
+msgstr "Inprimacailua lanak inprimatzeko"
 
 #: ctk/ctkprintjob.c:151
 msgid "Settings"
@@ -5875,7 +5875,7 @@ msgstr "Ezarpenak"
 
 #: ctk/ctkprintjob.c:152
 msgid "Printer settings"
-msgstr "Inprimagailuaren ezarpenak"
+msgstr "Inprimacailuaren ezarpenak"
 
 #
 #: ctk/ctkprintjob.c:160 ctk/ctkprintjob.c:161 ctk/ctkprintunixdialog.c:413
@@ -5890,7 +5890,7 @@ msgstr "Inprimatze-egoeraren jarraipena"
 msgid ""
 "TRUE if the print job will continue to emit status-changed signals after the "
 "print data has been sent to the printer or print server."
-msgstr "EGIA inprimatze-eragiketak inprimatze-lanaren egoeraren berri ematen jarraitzen badu inprimatze-datuak inprimagailura edo inprimatze-zerbitzarira bidali ondoren."
+msgstr "EGIA inprimatze-eragiketak inprimatze-lanaren egoeraren berri ematen jarraitzen badu inprimatze-datuak inprimacailura edo inprimatze-zerbitzarira bidali ondoren."
 
 #: ctk/ctkprintoperation.c:1109
 msgid "Default Page Setup"
@@ -5946,7 +5946,7 @@ msgstr "EGIA testuinguruaren jatorria orrialdearen ertza izan behar badu eta ez 
 msgid ""
 "TRUE if the print operation will continue to report on the print job status "
 "after the print data has been sent to the printer or print server."
-msgstr "EGIA inprimatze-eragiketak inprimatze-lanaren egoeraren berri ematen jarraitzen badu inprimatze-datuak inprimagailura edo inprimatze-zerbitzarira bidali ondoren."
+msgstr "EGIA inprimatze-eragiketak inprimatze-lanaren egoeraren berri ematen jarraitzen badu inprimatze-datuak inprimacailura edo inprimatze-zerbitzarira bidali ondoren."
 
 #: ctk/ctkprintoperation.c:1255
 msgid "Unit"
@@ -6039,7 +6039,7 @@ msgstr "CtkPageSetup erabiltzeko"
 
 #: ctk/ctkprintunixdialog.c:439
 msgid "Selected Printer"
-msgstr "Hautatutako inprimagailua"
+msgstr "Hautatutako inprimacailua"
 
 #: ctk/ctkprintunixdialog.c:440
 msgid "The CtkPrinter which is selected"
@@ -9481,11 +9481,11 @@ msgstr "CtkCloudprintAccount instantzia"
 
 #: modules/printbackends/cloudprint/ctkprintercloudprint.c:147
 msgid "Printer ID"
-msgstr "Inprimagailuaren IDa"
+msgstr "Inprimacailuaren IDa"
 
 #: modules/printbackends/cloudprint/ctkprintercloudprint.c:148
 msgid "Cloud Print printer ID"
-msgstr "Cloud Print inprimagailuaren IDa"
+msgstr "Cloud Print inprimacailuaren IDa"
 
 #: modules/printbackends/cups/ctkprintercups.c:93
 msgid "Color Profile Title"

@@ -68,11 +68,11 @@ msgstr "Dreuchd an uidheim ann am manaidsear nan uidheaman"
 
 #: cdk/cdkdevice.c:183
 msgid "Associated device"
-msgstr "Uidheam co-cheangailte"
+msgstr "Uidheam co-cheancailte"
 
 #: cdk/cdkdevice.c:184
 msgid "Associated pointer or keyboard with this device"
-msgstr "Tomhaire no meur-chlàr a tha co-cheangailte ris an uidheam seo"
+msgstr "Tomhaire no meur-chlàr a tha co-cheancailte ris an uidheam seo"
 
 #: cdk/cdkdevice.c:197
 msgid "Input source"
@@ -374,7 +374,7 @@ msgid ""
 "The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
 msgstr ""
-"An CtkActionGroup tha an CtkAction seo ceangailte ris no NULL (airson "
+"An CtkActionGroup tha an CtkAction seo ceancailte ris no NULL (airson "
 "cleachdadh inntearnail)."
 
 #: ctk/deprecated/ctkaction.c:519 ctk/deprecated/ctkimagemenuitem.c:264
@@ -411,7 +411,7 @@ msgstr ""
 
 #: ctk/deprecated/ctkactivatable.c:290
 msgid "Related Action"
-msgstr "Gnìomh co-cheangailte"
+msgstr "Gnìomh co-cheancailte"
 
 #: ctk/deprecated/ctkactivatable.c:291
 msgid "The action this activatable will activate and receive updates from"
@@ -426,7 +426,7 @@ msgstr "Cleachd dreach a’ ghnìomha"
 #: ctk/deprecated/ctkactivatable.c:316
 msgid "Whether to use the related actions appearance properties"
 msgstr ""
-"Co-dhiù an dèid roghainnean dreach a’ ghnìomha cho-cheangailte a chleachdadh "
+"Co-dhiù an dèid roghainnean dreach a’ ghnìomha cho-cheancailte a chleachdadh "
 "gus nach dèid"
 
 #: ctk/deprecated/ctkalignment.c:151
@@ -680,7 +680,7 @@ msgid ""
 "A boolean value indicating whether the handlebox's child is attached or "
 "detached."
 msgstr ""
-"Luach Booleanach a dh’innseas a bheil bogsa pàiste an làmhrachain ceangailte "
+"Luach Booleanach a dh’innseas a bheil bogsa pàiste an làmhrachain ceancailte "
 "ris no dealaichte."
 
 #: ctk/deprecated/ctkimagemenuitem.c:226 ctk/ctkbutton.c:360
@@ -1215,7 +1215,7 @@ msgstr "URL na làraich-lìn"
 
 #: ctk/ctkaboutdialog.c:453
 msgid "The URL for the link to the website of the program"
-msgstr "An URL airson a’ cheangail ri làrach-lìn a’ phrògraim"
+msgstr "An URL airson a’ cheancail ri làrach-lìn a’ phrògraim"
 
 #: ctk/ctkaboutdialog.c:466
 msgid "Website label"
@@ -1223,7 +1223,7 @@ msgstr "Leubail na làraich-lìn"
 
 #: ctk/ctkaboutdialog.c:467
 msgid "The label for the link to the website of the program"
-msgstr "An leubail airson a’ cheangail ri làrach-lìn a’ phògraim"
+msgstr "An leubail airson a’ cheancail ri làrach-lìn a’ phògraim"
 
 #: ctk/ctkaboutdialog.c:482
 msgid "Authors"
@@ -1322,7 +1322,7 @@ msgstr "Ainm a’ ghnìomha"
 
 #: ctk/ctkactionable.c:72
 msgid "The name of the associated action, like 'app.quit'"
-msgstr "Ainm a’ ghnìomha a tha ceangailte ris, mar ’app.quit’"
+msgstr "Ainm a’ ghnìomha a tha ceancailte ris, mar ’app.quit’"
 
 #: ctk/ctkactionable.c:76
 msgid "Action target value"
@@ -1440,7 +1440,7 @@ msgstr "Seòrsa na susbaint"
 
 #: ctk/ctkappchooser.c:74
 msgid "The content type used by the open with object"
-msgstr "Seòrsa na susbaint a chleachdas an àithne “Fosgail leis an oibseact”"
+msgstr "Seòrsa na susbaint a chleachdas an àithne “Foscail leis an oibseact”"
 
 #: ctk/ctkappchooserdialog.c:671
 msgid "GFile"
@@ -2296,11 +2296,11 @@ msgstr "Am pixbuf a thèid a reandaradh"
 
 #: ctk/ctkcellrendererpixbuf.c:160
 msgid "Pixbuf Expander Open"
-msgstr "Meudaichear Pixbuf fosgailte"
+msgstr "Meudaichear Pixbuf foscailte"
 
 #: ctk/ctkcellrendererpixbuf.c:161
 msgid "Pixbuf for open expander"
-msgstr "Am Pixbuf airson meudaichear fosgailte"
+msgstr "Am Pixbuf airson meudaichear foscailte"
 
 #: ctk/ctkcellrendererpixbuf.c:168
 msgid "Pixbuf Expander Closed"
@@ -3362,7 +3362,7 @@ msgstr "Ionad làithreach a’ chùrsair ann an caractaran"
 
 #: ctk/ctkentry.c:850 ctk/ctklabel.c:938
 msgid "Selection Bound"
-msgstr "Ceangailte ris an taghadh"
+msgstr "Ceancailte ris an taghadh"
 
 #: ctk/ctkentry.c:851 ctk/ctklabel.c:939
 msgid ""
@@ -3837,7 +3837,7 @@ msgstr ""
 
 #: ctk/ctkeventcontroller.c:169
 msgid "Widget the gesture relates to"
-msgstr "A’ widget a bhios an gluasad co-cheangailte ris"
+msgstr "A’ widget a bhios an gluasad co-cheancailte ris"
 
 #: ctk/ctkeventcontroller.c:181
 msgid "Propagation phase"
@@ -4575,7 +4575,7 @@ msgstr ""
 
 #: ctk/ctkimage.c:319
 msgid "Pixel size"
-msgstr "Meud nam piosgail"
+msgstr "Meud nam pioscail"
 
 #: ctk/ctkimage.c:320
 msgid "Pixel size to use for named icon"
@@ -4825,7 +4825,7 @@ msgstr "URI"
 
 #: ctk/ctklinkbutton.c:169
 msgid "The URI bound to this button"
-msgstr "An URI a tha ceangailte ris a’ phutan seo"
+msgstr "An URI a tha ceancailte ris a’ phutan seo"
 
 #: ctk/ctklinkbutton.c:184
 msgid "Visited"
@@ -5017,7 +5017,7 @@ msgstr ""
 
 #: ctk/ctkmenu.c:679
 msgid "Attach Widget"
-msgstr "Ceangail widget ris"
+msgstr "Ceancail widget ris"
 
 #: ctk/ctkmenu.c:680
 msgid "The widget the menu is attached to"
@@ -5153,11 +5153,11 @@ msgstr "Innsidh seo càit an cuirear na saighdean sgrolaidh"
 
 #: ctk/ctkmenu.c:961
 msgid "Left Attach"
-msgstr "Ceangail ris an taobh chlì"
+msgstr "Ceancail ris an taobh chlì"
 
 #: ctk/ctkmenu.c:969
 msgid "Right Attach"
-msgstr "Ceangail ris an taobh deas"
+msgstr "Ceancail ris an taobh deas"
 
 #: ctk/ctkmenu.c:970
 msgid "The column number to attach the right side of the child to"
@@ -5165,7 +5165,7 @@ msgstr "An àireamh de cholbhan a thèid taobh deas a’ phàiste a cheangal ris
 
 #: ctk/ctkmenu.c:977
 msgid "Top Attach"
-msgstr "Ceangail ris a’ bharr"
+msgstr "Ceancail ris a’ bharr"
 
 #: ctk/ctkmenu.c:978
 msgid "The row number to attach the top of the child to"
@@ -5173,7 +5173,7 @@ msgstr "An àireamh de ràghan a thèid barr a’ phàiste a cheangal ris"
 
 #: ctk/ctkmenu.c:985
 msgid "Bottom Attach"
-msgstr "Ceangail ris a’ bhonn"
+msgstr "Ceancail ris a’ bhonn"
 
 #: ctk/ctkmenu.c:1003
 msgid "Arbitrary constant to scale down the size of the scroll arrow"
@@ -5197,7 +5197,7 @@ msgstr "Fo-chlàr-taice"
 #: ctk/ctkmenuitem.c:760
 msgid "The submenu attached to the menu item, or NULL if it has none"
 msgstr ""
-"Am fo-chlàr-taice a tha ceangailte ri ball a’ chlàir-thaice no NULL mur eil "
+"Am fo-chlàr-taice a tha ceancailte ri ball a’ chlàir-thaice no NULL mur eil "
 "gin aige"
 
 #: ctk/ctkmenuitem.c:776
@@ -5728,7 +5728,7 @@ msgstr ""
 
 #: ctk/ctkplacessidebar.c:4791
 msgid "Show 'Connect to Server'"
-msgstr "Seall “Ceangail ri frithealaiche”"
+msgstr "Seall “Ceancail ri frithealaiche”"
 
 #: ctk/ctkplacessidebar.c:4792
 msgid ""
@@ -6470,7 +6470,7 @@ msgid ""
 "spacing"
 msgstr ""
 "Co-dhiù an dèid an t-amar a tharraing airson làn fhaid na rainse no an dèid "
-"na ceumadairean agus am beàrnadh fhàgail às"
+"na ceumadairean agus am beàrnadh fhàcail às"
 
 #: ctk/ctkrange.c:656
 msgid "Arrow scaling"
@@ -7921,7 +7921,7 @@ msgstr "Staca"
 
 #: ctk/ctkstacksidebar.c:450
 msgid "Associated stack for this CtkStackSidebar"
-msgstr "Staca co-cheangailte ris a’ CtkStackSidebar seo"
+msgstr "Staca co-cheancailte ris a’ CtkStackSidebar seo"
 
 #: ctk/ctkstackswitcher.c:687
 msgid "Symbolic size to use for named icon"
@@ -7934,7 +7934,7 @@ msgstr "Stoidhle a’ bheibheil timcheall air teacsa bàr na staide"
 
 #: ctk/ctkstylecontext.c:229
 msgid "The associated CdkScreen"
-msgstr "An CdkScreen co-cheangailte"
+msgstr "An CdkScreen co-cheancailte"
 
 #: ctk/ctkstylecontext.c:235
 msgid "FrameClock"
@@ -7942,7 +7942,7 @@ msgstr "FrameClock"
 
 #: ctk/ctkstylecontext.c:236
 msgid "The associated CdkFrameClock"
-msgstr "An CdkFrameClock co-cheangailte"
+msgstr "An CdkFrameClock co-cheancailte"
 
 #: ctk/ctkstylecontext.c:243 ctk/ctktexttag.c:299
 msgid "Text direction"
@@ -9522,7 +9522,7 @@ msgstr ""
 
 #: ctk/ctkwidget.c:3553
 msgid "Unvisited Link Color"
-msgstr "Dath ceangail nach deach a thadhal air"
+msgstr "Dath ceancail nach deach a thadhal air"
 
 #: ctk/ctkwidget.c:3554
 msgid "Color of unvisited links"
@@ -9530,7 +9530,7 @@ msgstr "Dath nan ceanglaichean nach deach a thadhal air"
 
 #: ctk/ctkwidget.c:3570
 msgid "Visited Link Color"
-msgstr "Dath ceangail a chaidh a thadhal air"
+msgstr "Dath ceancail a chaidh a thadhal air"
 
 #: ctk/ctkwidget.c:3571
 msgid "Color of visited links"
@@ -9829,11 +9829,11 @@ msgstr "Iom-tharraing uinneige aig an uinneag"
 
 #: ctk/ctkwindow.c:1081
 msgid "Attached to Widget"
-msgstr "Ceangailte ris a’ widget"
+msgstr "Ceancailte ris a’ widget"
 
 #: ctk/ctkwindow.c:1082
 msgid "The widget where the window is attached"
-msgstr "A’ widget far a bheil an uinneag ceangailte ris"
+msgstr "A’ widget far a bheil an uinneag ceancailte ris"
 
 #: ctk/ctkwindow.c:1088
 msgid "Is maximized"

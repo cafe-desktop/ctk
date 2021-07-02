@@ -19,10 +19,10 @@ if "$(Configuration)" == "Release_Broadway" goto DO_BROADWAY_BIN
 if "$(Configuration)" == "Debug_Broadway" goto DO_BROADWAY_BIN
 copy "$(BinDir)\$(CtkDllPrefix)ctk-3$(CtkDllSuffix).dll" $(CopyDir)\bin
 copy "$(BinDir)\$(CtkDllPrefix)ctk-3$(CtkDllSuffix).pdb" $(CopyDir)\bin
-copy "$(BinDir)\$(CtkDllPrefix)gailutil-3$(CtkDllSuffix).dll" $(CopyDir)\bin
-copy "$(BinDir)\$(CtkDllPrefix)gailutil-3$(CtkDllSuffix).pdb" $(CopyDir)\bin
+copy "$(BinDir)\$(CtkDllPrefix)cailutil-3$(CtkDllSuffix).dll" $(CopyDir)\bin
+copy "$(BinDir)\$(CtkDllPrefix)cailutil-3$(CtkDllSuffix).pdb" $(CopyDir)\bin
 copy "$(BinDir)\ctk-$(ApiVersion).lib" $(CopyDir)\lib
-copy "$(BinDir)\gailutil-$(ApiVersion).lib" $(CopyDir)\lib
+copy "$(BinDir)\cailutil-$(ApiVersion).lib" $(CopyDir)\lib
 copy "$(BinDir)\ctk3-demo.exe" $(CopyDir)\bin
 copy "$(BinDir)\ctk3-demo.pdb" $(CopyDir)\bin
 copy "$(BinDir)\ctk3-demo-application.exe" $(CopyDir)\bin
@@ -54,10 +54,10 @@ if "$(Configuration)" == "Debug_Broadway" goto DO_BROADWAY_DEBUG
 :DO_BROADWAY_RELEASE
 copy .\Release\$(Platform)\bin\$(CtkDllPrefix)ctk-3$(CtkDllSuffix).dll $(CopyDir)\bin
 copy .\Release\$(Platform)\bin\$(CtkDllPrefix)ctk-3$(CtkDllSuffix).pdb $(CopyDir)\bin
-copy .\Release\$(Platform)\bin\$(CtkDllPrefix)gailutil-3$(CtkDllSuffix).dll $(CopyDir)\bin
-copy .\Release\$(Platform)\bin\$(CtkDllPrefix)gailutil-3$(CtkDllSuffix).pdb $(CopyDir)\bin
+copy .\Release\$(Platform)\bin\$(CtkDllPrefix)cailutil-3$(CtkDllSuffix).dll $(CopyDir)\bin
+copy .\Release\$(Platform)\bin\$(CtkDllPrefix)cailutil-3$(CtkDllSuffix).pdb $(CopyDir)\bin
 copy .\Release\$(Platform)\bin\ctk-$(ApiVersion).lib $(CopyDir)\lib
-copy .\Release\$(Platform)\bin\gailutil-$(ApiVersion).lib $(CopyDir)\lib
+copy .\Release\$(Platform)\bin\cailutil-$(ApiVersion).lib $(CopyDir)\lib
 copy .\Release\$(Platform)\bin\ctk3-demo.exe $(CopyDir)\bin
 copy .\Release\$(Platform)\bin\ctk3-demo.pdb $(CopyDir)\bin
 copy .\Release\$(Platform)\bin\ctk3-demo-application.exe $(CopyDir)\bin
@@ -84,10 +84,10 @@ goto DONE_BIN
 :DO_BROADWAY_DEBUG
 copy .\Debug\$(Platform)\bin\$(CtkDllPrefix)ctk-3$(CtkDllSuffix).dll $(CopyDir)\bin
 copy .\Debug\$(Platform)\bin\$(CtkDllPrefix)ctk-3$(CtkDllSuffix).pdb $(CopyDir)\bin
-copy .\Debug\$(Platform)\bin\$(CtkDllPrefix)gailutil-3$(CtkDllSuffix).dll $(CopyDir)\bin
-copy .\Debug\$(Platform)\bin\$(CtkDllPrefix)gailutil-3$(CtkDllSuffix).pdb $(CopyDir)\bin
+copy .\Debug\$(Platform)\bin\$(CtkDllPrefix)cailutil-3$(CtkDllSuffix).dll $(CopyDir)\bin
+copy .\Debug\$(Platform)\bin\$(CtkDllPrefix)cailutil-3$(CtkDllSuffix).pdb $(CopyDir)\bin
 copy .\Debug\$(Platform)\bin\ctk-$(ApiVersion).lib $(CopyDir)\lib
-copy .\Debug\$(Platform)\bin\gailutil-$(ApiVersion).lib $(CopyDir)\lib
+copy .\Debug\$(Platform)\bin\cailutil-$(ApiVersion).lib $(CopyDir)\lib
 copy .\Debug\$(Platform)\bin\ctk3-demo.exe $(CopyDir)\bin
 copy .\Debug\$(Platform)\bin\ctk3-demo.pdb $(CopyDir)\bin
 copy .\Debug\$(Platform)\bin\ctk3-demo-application.exe $(CopyDir)\bin
@@ -115,7 +115,7 @@ copy ..\cdk-3.0.pc $(CopyDir)\lib\pkgconfig
 copy ..\cdk-3.0.pc $(CopyDir)\lib\pkgconfig\cdk-win32-3.0.pc
 copy "..\ctk+-3.0.pc" $(CopyDir)\lib\pkgconfig
 copy "..\ctk+-3.0.pc" "$(CopyDir)\lib\pkgconfig\ctk+-3.0.pc"
-copy ..\gail-3.0.pc $(CopyDir)\lib\pkgconfig
+copy ..\cail-3.0.pc $(CopyDir)\lib\pkgconfig
     </CtkDoInstallBin>
     <CtkDoInstall>
 echo off
@@ -129,8 +129,8 @@ mkdir $(CopyDir)\include\ctk-$(ApiVersion)\ctk\a11y
 mkdir $(CopyDir)\include\ctk-$(ApiVersion)\ctk\deprecated
 #include "ctk-3.vs10.headers"
 
-mkdir $(CopyDir)\include\gail-$(ApiVersion)\libgail-util
-#include "gailutil-3.vs10.headers"
+mkdir $(CopyDir)\include\cail-$(ApiVersion)\libcail-util
+#include "cailutil-3.vs10.headers"
 
 
 for &#37;&#37;s in (16 22 24 32 48 256) do ((mkdir $(CopyDir)\share\icons\hicolor\&#37;&#37;sx&#37;&#37;s\apps) &amp; (copy /b ..\..\demos\ctk-demo\data\&#37;&#37;sx&#37;&#37;s\ctk3-demo.png $(CopyDir)\share\icons\hicolor\&#37;&#37;sx&#37;&#37;s\apps))
@@ -156,7 +156,7 @@ $(CopyDir)\bin\ctk-update-icon-cache.exe --ignore-theme-index --force "$(CopyDir
     </CtkPostInstall>
     <GenerateCtkPC>$(PythonDir)\python ..\ctkpc.py --prefix=$(CopyDir) --version=$(CtkVersion) --host=i686-pc-vs$(VSVer)</GenerateCtkPC>
     <GenerateCtkPCX64>$(PythonDir)\python ..\ctkpc.py --prefix=$(CopyDir) --version=$(CtkVersion) --host=x86_64-pc-vs$(VSVer)</GenerateCtkPCX64>
-    <CtkPCFiles>..\cdk-3.0.pc;..\ctk+-3.0.pc;..\gail-3.0.pc</CtkPCFiles>
+    <CtkPCFiles>..\cdk-3.0.pc;..\ctk+-3.0.pc;..\cail-3.0.pc</CtkPCFiles>
   </PropertyGroup>
   <PropertyGroup>
     <_PropertySheetDisplayName>ctk3installsprops</_PropertySheetDisplayName>

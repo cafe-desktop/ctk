@@ -46,7 +46,7 @@ ctk_button_accessible_initialize (AtkObject *obj,
        * CtkTreeViewColumn's button is the CtkTreeView we set
        * the accessible parent for column header to be the table
        * to ensure that atk_object_get_index_in_parent() returns
-       * the correct value; see gail_widget_get_index_in_parent().
+       * the correct value; see cail_widget_get_index_in_parent().
        */
       atk_object_set_parent (obj, ctk_widget_get_accessible (parent));
       obj->role = ATK_ROLE_TABLE_COLUMN_HEADER;

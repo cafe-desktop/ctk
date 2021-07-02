@@ -380,7 +380,7 @@ msgstr "Arakatzailea"
 #: cdk/keyname-table.h:6899
 msgctxt "keyboard label"
 msgid "Calculator"
-msgstr "Kalkulagailua"
+msgstr "Kalkulacailua"
 
 #: cdk/keyname-table.h:6900
 msgctxt "keyboard label"
@@ -1101,7 +1101,7 @@ msgstr "Hautatu nahi duzun kolorea kanpoko biribiletik. Hautatu kolore horren il
 msgid ""
 "Click the eyedropper, then click a color anywhere on your screen to select "
 "that color."
-msgstr "Egin klik tanta-kontagailuan, eta egin klik zure pantailako edozein koloretan kolore hori hautatzeko."
+msgstr "Egin klik tanta-kontacailuan, eta egin klik zure pantailako edozein koloretan kolore hori hautatzeko."
 
 #: ctk/deprecated/ctkcolorsel.c:461
 msgid "_Hue:"
@@ -2199,7 +2199,7 @@ msgstr "mm"
 
 #: ctk/ctkcustompaperunixdialog.c:615
 msgid "Margins from Printer…"
-msgstr "Marjinak inprimagailutik…"
+msgstr "Marjinak inprimacailutik…"
 
 #: ctk/ctkcustompaperunixdialog.c:781
 #, c-format
@@ -3066,7 +3066,7 @@ msgstr "Ez da orria konfiguratzeko baliozko fitxategia"
 
 #: ctk/ctkpagesetupunixdialog.c:211
 msgid "Any Printer"
-msgstr "Edozein inprimagailu"
+msgstr "Edozein inprimacailu"
 
 #: ctk/ctkpagesetupunixdialog.c:211
 msgid "For portable documents"
@@ -3208,20 +3208,20 @@ msgstr "_Deskonektatu unitatea"
 
 #: ctk/ctkplacessidebar.c:2352
 msgid "_Start Multi-disk Device"
-msgstr "_Abiatu disko anitzeko gailua"
+msgstr "_Abiatu disko anitzeko cailua"
 
 #: ctk/ctkplacessidebar.c:2353
 msgid "_Stop Multi-disk Device"
-msgstr "_Gelditu disko anitzeko gailua"
+msgstr "_Gelditu disko anitzeko cailua"
 
 #. stop() for type G_DRIVE_START_STOP_TYPE_PASSWORD is normally not used
 #: ctk/ctkplacessidebar.c:2358
 msgid "_Unlock Device"
-msgstr "_Desblokeatu gailua"
+msgstr "_Desblokeatu cailua"
 
 #: ctk/ctkplacessidebar.c:2359
 msgid "_Lock Device"
-msgstr "_Blokeatu gailua"
+msgstr "_Blokeatu cailua"
 
 #: ctk/ctkplacessidebar.c:2397 ctk/ctkplacessidebar.c:3394
 #, c-format
@@ -3313,7 +3313,7 @@ msgstr "_Detektatu euskarria"
 
 #: ctk/ctkplacessidebar.c:4158 ctk/ctkplacesview.c:1122
 msgid "Computer"
-msgstr "Ordenagailua"
+msgstr "Ordenacailua"
 
 #: ctk/ctkplacesview.c:898
 msgid "Searching for network locations"
@@ -3400,7 +3400,7 @@ msgstr "Sareak"
 
 #: ctk/ctkplacesview.c:2087 ctk/ctkplacesview.c:2096
 msgid "On This Computer"
-msgstr "Ordenagailu honetan"
+msgstr "Ordenacailu honetan"
 
 #. Translators: respectively, free and total space of the drive. The plural form
 #. * should be based on the free space available.
@@ -3525,7 +3525,7 @@ msgstr "Inprimatu"
 
 #: ctk/ctkprintoperation-win32.c:631
 msgid "Printer offline"
-msgstr "Inprimagailua lineaz kanpo"
+msgstr "Inprimacailua lineaz kanpo"
 
 #: ctk/ctkprintoperation-win32.c:633
 msgid "Out of paper"
@@ -3547,7 +3547,7 @@ msgstr "Tamaina pertsonalizatua"
 
 #: ctk/ctkprintoperation-win32.c:1613
 msgid "No printer found"
-msgstr "Ez da inprimagailurik aurkitu"
+msgstr "Ez da inprimacailurik aurkitu"
 
 #: ctk/ctkprintoperation-win32.c:1640
 msgid "Invalid argument to CreateDC"
@@ -3588,11 +3588,11 @@ msgstr "I_nprimatu"
 
 #: ctk/ctkprintunixdialog.c:861
 msgid "Getting printer information failed"
-msgstr "Huts egin du inprimagailuaren informazioa lortzean"
+msgstr "Huts egin du inprimacailuaren informazioa lortzean"
 
 #: ctk/ctkprintunixdialog.c:2071
 msgid "Getting printer information…"
-msgstr "Inprimagailuaren informazioa lortzen…"
+msgstr "Inprimacailuaren informazioa lortzen…"
 
 #. Translators: These strings name the possible arrangements of
 #. * multiple pages on a sheet when printing (same as in ctkprintbackendcups.c)
@@ -4783,12 +4783,12 @@ msgstr "Glifoen konposizioa/deskonposizioa"
 #: ctk/open-type-layout.h:25
 msgctxt "OpenType layout"
 msgid "Conjunct Form After Ro"
-msgstr "Juntagailu forma Ro ondoren"
+msgstr "Juntacailu forma Ro ondoren"
 
 #: ctk/open-type-layout.h:26
 msgctxt "OpenType layout"
 msgid "Conjunct Forms"
-msgstr "Juntagailu formak"
+msgstr "Juntacailu formak"
 
 #: ctk/open-type-layout.h:27
 msgctxt "OpenType layout"
@@ -7283,7 +7283,7 @@ msgstr "Sartu zerbitzariaren helbidea…"
 
 #: ctk/ui/ctkprintunixdialog.ui:112
 msgid "Printer"
-msgstr "Inprimagailua"
+msgstr "Inprimacailua"
 
 #. this is the header for the printer status column in the print dialog
 #: ctk/ui/ctkprintunixdialog.ui:134
@@ -7751,7 +7751,7 @@ msgstr "Pasahitza:"
 #: modules/printbackends/cups/ctkprintbackendcups.c:1460
 #, c-format
 msgid "Authentication is required to print document “%s” on printer %s"
-msgstr "Autentifikazioa behar da '%s' dokumentua '%s' inprimagailuan inprimatzeko"
+msgstr "Autentifikazioa behar da '%s' dokumentua '%s' inprimacailuan inprimatzeko"
 
 #: modules/printbackends/cups/ctkprintbackendcups.c:1171
 #, c-format
@@ -7770,21 +7770,21 @@ msgstr "Autentifikazioa behar da lan baten atributuak lortzeko"
 #: modules/printbackends/cups/ctkprintbackendcups.c:1181
 #, c-format
 msgid "Authentication is required to get attributes of printer %s"
-msgstr "Autentifikazioa behar da '%s' inprimagailuaren atributuak lortzeko"
+msgstr "Autentifikazioa behar da '%s' inprimacailuaren atributuak lortzeko"
 
 #: modules/printbackends/cups/ctkprintbackendcups.c:1183
 msgid "Authentication is required to get attributes of a printer"
-msgstr "Autentifikazioa behar da inprimagailu baten atributuak lortzeko"
+msgstr "Autentifikazioa behar da inprimacailu baten atributuak lortzeko"
 
 #: modules/printbackends/cups/ctkprintbackendcups.c:1186
 #, c-format
 msgid "Authentication is required to get default printer of %s"
-msgstr "Autentifikazioa behar da %s(r)en inprimagailu lehenetsia lortzeko"
+msgstr "Autentifikazioa behar da %s(r)en inprimacailu lehenetsia lortzeko"
 
 #: modules/printbackends/cups/ctkprintbackendcups.c:1189
 #, c-format
 msgid "Authentication is required to get printers from %s"
-msgstr "Autentifikazioa behar da %s(e)tik inprimagailuak lortzeko"
+msgstr "Autentifikazioa behar da %s(e)tik inprimacailuak lortzeko"
 
 #: modules/printbackends/cups/ctkprintbackendcups.c:1194
 #, c-format
@@ -7808,7 +7808,7 @@ msgstr "Autentifikazioa behar da '%s' dokumentua inprimatzeko"
 #: modules/printbackends/cups/ctkprintbackendcups.c:1467
 #, c-format
 msgid "Authentication is required to print this document on printer %s"
-msgstr "Autentifikazioa behar da dokumentu hau '%s' inprimagailuan inprimatzeko"
+msgstr "Autentifikazioa behar da dokumentu hau '%s' inprimacailuan inprimatzeko"
 
 #: modules/printbackends/cups/ctkprintbackendcups.c:1469
 msgid "Authentication is required to print this document"
@@ -7817,66 +7817,66 @@ msgstr "Autentifikazioa behar da dokumentu hau inprimatzeko"
 #: modules/printbackends/cups/ctkprintbackendcups.c:2553
 #, c-format
 msgid "Printer “%s” is low on toner."
-msgstr "'%s' inprimagailuak toner baxua du."
+msgstr "'%s' inprimacailuak toner baxua du."
 
 #: modules/printbackends/cups/ctkprintbackendcups.c:2557
 #, c-format
 msgid "Printer “%s” has no toner left."
-msgstr "'%s' inprimagailuak ez du tonerrik."
+msgstr "'%s' inprimacailuak ez du tonerrik."
 
 #. Translators: "Developer" like on photo development context
 #: modules/printbackends/cups/ctkprintbackendcups.c:2562
 #, c-format
 msgid "Printer “%s” is low on developer."
-msgstr "'%s' inprimagailuak errebelatzaile baxua du."
+msgstr "'%s' inprimacailuak errebelatzaile baxua du."
 
 #. Translators: "Developer" like on photo development context
 #: modules/printbackends/cups/ctkprintbackendcups.c:2567
 #, c-format
 msgid "Printer “%s” is out of developer."
-msgstr "'%s' inprimagailuak ez du errebelatzailerik."
+msgstr "'%s' inprimacailuak ez du errebelatzailerik."
 
 #. Translators: "marker" is one color bin of the printer
 #: modules/printbackends/cups/ctkprintbackendcups.c:2572
 #, c-format
 msgid "Printer “%s” is low on at least one marker supply."
-msgstr "'%s' inprimagailuak gutxienez tinta-kartutxo bat baxua du."
+msgstr "'%s' inprimacailuak gutxienez tinta-kartutxo bat baxua du."
 
 #. Translators: "marker" is one color bin of the printer
 #: modules/printbackends/cups/ctkprintbackendcups.c:2577
 #, c-format
 msgid "Printer “%s” is out of at least one marker supply."
-msgstr "'%s' inprimagailuak gutxienez tinta-kartutxo bat gabe dago."
+msgstr "'%s' inprimacailuak gutxienez tinta-kartutxo bat gabe dago."
 
 #: modules/printbackends/cups/ctkprintbackendcups.c:2581
 #, c-format
 msgid "The cover is open on printer “%s”."
-msgstr "'%s' inprimagailuaren estalkia irekita dago."
+msgstr "'%s' inprimacailuaren estalkia irekita dago."
 
 #: modules/printbackends/cups/ctkprintbackendcups.c:2585
 #, c-format
 msgid "The door is open on printer “%s”."
-msgstr "'%s' inprimagailuaren atea irekita dago."
+msgstr "'%s' inprimacailuaren atea irekita dago."
 
 #: modules/printbackends/cups/ctkprintbackendcups.c:2589
 #, c-format
 msgid "Printer “%s” is low on paper."
-msgstr "'%s' inprimagailuak paper gutxi du."
+msgstr "'%s' inprimacailuak paper gutxi du."
 
 #: modules/printbackends/cups/ctkprintbackendcups.c:2593
 #, c-format
 msgid "Printer “%s” is out of paper."
-msgstr "'%s' inprimagailuak ez du paperik."
+msgstr "'%s' inprimacailuak ez du paperik."
 
 #: modules/printbackends/cups/ctkprintbackendcups.c:2597
 #, c-format
 msgid "Printer “%s” is currently offline."
-msgstr "'%s' inprimagailua unean lineaz kanpo dago."
+msgstr "'%s' inprimacailua unean lineaz kanpo dago."
 
 #: modules/printbackends/cups/ctkprintbackendcups.c:2601
 #, c-format
 msgid "There is a problem on printer “%s”."
-msgstr "Arazoa dago '%s' inprimagailuarekin."
+msgstr "Arazoa dago '%s' inprimacailuarekin."
 
 #. Translators: this is a printer status.
 #: modules/printbackends/cups/ctkprintbackendcups.c:2621
@@ -7958,7 +7958,7 @@ msgstr "Hautapen automatikoa"
 #: modules/printbackends/cups/ctkprintbackendcups.c:4471
 msgctxt "printing option value"
 msgid "Printer Default"
-msgstr "Inprimagailu lehenetsia"
+msgstr "Inprimacailu lehenetsia"
 
 #. Translators: this is an option of "GhostScript"
 #: modules/printbackends/cups/ctkprintbackendcups.c:4473
@@ -8103,7 +8103,7 @@ msgstr "%d. erretilua"
 
 #: modules/printbackends/cups/ctkprintbackendcups.c:5047
 msgid "Printer Default"
-msgstr "Inprimagailu lehenetsia"
+msgstr "Inprimacailu lehenetsia"
 
 #. Translators: These strings name the possible values of the
 #. * job priority option in the print dialog
@@ -8235,7 +8235,7 @@ msgstr "%sx%s pertsonalizatua"
 #: modules/printbackends/cups/ctkprintbackendcups.c:5831
 msgctxt "printer option"
 msgid "Printer Profile"
-msgstr "Inprimagailuaren profila"
+msgstr "Inprimacailuaren profila"
 
 #. TRANSLATORS: this is when color profile information is unavailable
 #: modules/printbackends/cups/ctkprintbackendcups.c:5838
@@ -8302,7 +8302,7 @@ msgstr "Komando-lerroa"
 #. SUN_BRANDING
 #: modules/printbackends/papi/ctkprintbackendpapi.c:786
 msgid "printer offline"
-msgstr "inprimagailua lineaz kanpo"
+msgstr "inprimacailua lineaz kanpo"
 
 #. SUN_BRANDING
 #: modules/printbackends/papi/ctkprintbackendpapi.c:804
@@ -8332,7 +8332,7 @@ msgstr "irteerako-proba.%s"
 
 #: modules/printbackends/test/ctkprintbackendtest.c:465
 msgid "Print to Test Printer"
-msgstr "Inprimatu probako inprimagailuan"
+msgstr "Inprimatu probako inprimacailuan"
 
 #~ msgctxt "Color name"
 #~ msgid "Dark"

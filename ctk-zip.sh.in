@@ -22,13 +22,13 @@ etc/ctk-@CTK_API_VERSION@/ctkrc
 etc/ctk-@CTK_API_VERSION@/im-multipress.conf
 bin/libcdk-win32-@CTK_API_VERSION@-@LT_CURRENT_MINUS_AGE@.dll
 bin/libctk-win32-@CTK_API_VERSION@-@LT_CURRENT_MINUS_AGE@.dll
-bin/libgailutil-@CTK_API_VERSION@-@GAIL_LT_CURRENT_MINUS_AGE@.dll
+bin/libcailutil-@CTK_API_VERSION@-@GAIL_LT_CURRENT_MINUS_AGE@.dll
 bin/ctk-query-immodules-@CTK_API_VERSION@.exe
 lib/ctk-@CTK_API_VERSION@/3.0.0/loaders.cache
 lib/ctk-@CTK_API_VERSION@/3.0.0/immodules.cache
 EOF
 
-zip $ZIP lib/ctk-@CTK_API_VERSION@/modules/libgail.dll lib/ctk-@CTK_API_VERSION@/@CTK_BINARY_VERSION@/loaders/*.dll lib/ctk-@CTK_API_VERSION@/@CTK_BINARY_VERSION@/immodules/*.dll lib/ctk-@CTK_API_VERSION@/@CTK_BINARY_VERSION@/engines/*.dll
+zip $ZIP lib/ctk-@CTK_API_VERSION@/modules/libcail.dll lib/ctk-@CTK_API_VERSION@/@CTK_BINARY_VERSION@/loaders/*.dll lib/ctk-@CTK_API_VERSION@/@CTK_BINARY_VERSION@/immodules/*.dll lib/ctk-@CTK_API_VERSION@/@CTK_BINARY_VERSION@/engines/*.dll
 
 zip $ZIP share/themes/Raleigh/ctk-@CTK_API_VERSION@/ctkrc
 zip $ZIP share/themes/Default/ctk-@CTK_API_VERSION@-key/ctkrc
@@ -43,7 +43,7 @@ zip -r -D $ZIP share/doc/ctk+-@CTK_VERSION@
 rm $DEVZIP
 zip -r -D $DEVZIP -@ <<EOF
 include/ctk-@CTK_API_VERSION@
-include/gail-1.0
+include/cail-1.0
 bin/ctk-builder-convert
 bin/ctk${APIVERSIONMAJOR}-demo.exe
 bin/ctk-update-icon-cache.exe
@@ -52,8 +52,8 @@ lib/libcdk-win32-@CTK_API_VERSION@.dll.a
 lib/cdk-win32-@CTK_API_VERSION@.lib
 lib/libctk-win32-@CTK_API_VERSION@.dll.a
 lib/ctk-win32-@CTK_API_VERSION@.lib
-lib/libgailutil.dll.a
-lib/gailutil.lib
+lib/libcailutil.dll.a
+lib/cailutil.lib
 lib/ctk-@CTK_API_VERSION@/include
 lib/pkgconfig
 share/aclocal

@@ -6878,7 +6878,7 @@ Overview of Changes in CTK+ 3.7.8
  693015 Deprecate ctk_scrolled_window_add_with_viewport()
  693066 CTK notification code attempts to create an X notifi...
  525226 All actions' names and descriptions should be transl...
- 553334 gailrange exposes an action which does nothing
+ 553334 cailrange exposes an action which does nothing
  658148 The pop-up window in a CtkEntryCompletion lacks an a...
  680048 Prefer symbolic icons for the default message dialog...
  687825 weight-set in CtkCellRendererText not working
@@ -7192,7 +7192,7 @@ Overview of Changes in CTK+ 3.5.18
  - Adjust scrollbar and scale behavior according to platform
 
 * Bugs fixed
- 643611 Leak on gail_widget_get_description
+ 643611 Leak on cail_widget_get_description
  658694 CtkAssistant: Unable to change current page in prepare...
  670390 -CtkMenuBar-shadow-type: none disables background inst...
  671786 Glade XML files cannot set an ImageMenuItem accelerato...
@@ -8349,7 +8349,7 @@ Overview of Changes in CTK+ 3.1.18
  658008 Centered text alignment in CtkAssistant is wrong
  658077 Add theming support to CtkPathBar
  658111 ctk_label_set_pattern() is reset by a call to ctk_box_pack_...
- 658168 Ctk-Message: Failed to load module "gail"
+ 658168 Ctk-Message: Failed to load module "cail"
  658200 ctk_toolbar_finalize() does stuff it shouldn't
         Fix colord support in the print dialog
 
@@ -8863,7 +8863,7 @@ Overview of Changes in CTK+ 3.0.1
  586201 CtkLinkButton doesn't implement neither HyperLink nor...
  599907 Gail implementation of atk_add_key_event_listener return...
  626730 Check menu item does not set indeterminate state
- 630971 gailstatusbar attempts to cast a CtkHBox to a CtkBin
+ 630971 cailstatusbar attempts to cast a CtkHBox to a CtkBin
  633291 Handle Shift-keys in X11 cdk_test_simulate_key()
  642213 ctk_widget_render_icon_pixbuf fails with non-standard...
  642263 undefined reference to "CTK_IS_SOCKET" and "CTK_IS_PLUG"
@@ -8874,7 +8874,7 @@ Overview of Changes in CTK+ 3.0.1
  642771 Fix tiny leak in tracker backend
  642772 CTK does not correctly process input sent via SendInput...
  642778 TextView broken for large files
- 642782 gail_misc_buffer_get_run_attributes doesn't set background-cdk...
+ 642782 cail_misc_buffer_get_run_attributes doesn't set background-cdk...
  642791 Fix a typo in ctk_socket_notify
 
 
@@ -9001,7 +9001,7 @@ Overview of Changes in CTK+ 2.99.3
  634677 assertion in finalize assuring that buffer is NULL...
  635287 Specify packages when generating GIR
  636691 Rendering icons with prelight state doesn't...
- 638920 gail should provide toolkit as an AtkAttribute
+ 638920 cail should provide toolkit as an AtkAttribute
  639139 Subclassing CtkIconView broken lately in master
  639186 ctk_paper_size_new fails to recognize valid name
  639325 Generated introspection broken
@@ -9106,7 +9106,7 @@ Overview of Changes from CTK+ 2.99.0 to 2.99.1
  638017 CtkTextView: Crash in ctk_text_view_set_tabs()
  638119 CtkSpinner animation not correctly stopped...
  638880 Need a setter for has_user_ref_count
- 639030 Small cleanup in gailtextview code.
+ 639030 Small cleanup in cailtextview code.
  639047 Fix remaining usage of g[dk]ktargetlib.
  639079 Obtain the fg color from the renderer
  639105 Port CtkTextDisplay to StyleContext.
@@ -10245,7 +10245,7 @@ Overview of Changes from CTK+ 2.19.6 to 2.19.7
   69872 CTK_WIDGET_SET_FLAGS should be deprecated
  612066 empathy hangs when clicked on information about contact...
  557420 Some compose sequences don't work anymore...
- 569042 gailbooleancell does not seem to attend to changes...
+ 569042 cailbooleancell does not seem to attend to changes...
  600992 File chooser reference counting issues
  610905 ctk_drag_source_set need instrospection hint
  611051 Search Entry Clear Icon not accessible
@@ -10254,7 +10254,7 @@ Overview of Changes from CTK+ 2.19.6 to 2.19.7
  611319 ctk_window_set_transient_for undocumented NULL value for parent
  611658 Update documentation for ctkvscrollbar
  611662 Update documentation for ctkvseparator
- 611686 focus_in/focus_out in gailtreeview.c should return FALSE...
+ 611686 focus_in/focus_out in cailtreeview.c should return FALSE...
  611831 Move documentation to inline comments: CtkVBox
  612119 Do not scroll when middle pasting
 
@@ -10566,7 +10566,7 @@ Overview of Changes from CTK+ 2.19.0 to 2.19.1
  596473 Second double-click of CtkTreeView row doesn't emit...
  601869 CtkUIManager assumes too much about popup menus
  581145 Wrong positioning for fullscreen gedit toolbar animation
- 602724 gailimage doesn't handle CTK_IMAGE_{GICON,ICON_NAME}...
+ 602724 cailimage doesn't handle CTK_IMAGE_{GICON,ICON_NAME}...
  561130 get_monitor_geometry segfaults if called with non-existant...
  597026 Missing include for memset()
  585383 Segfault in gdk_pixbuf__ico_image_save
@@ -11337,7 +11337,7 @@ Overview of Changes from CTK+ 2.16.x to 2.17.0
  553385 ctk-builder-convert creates untranslated combobox models
  580814 CtkTextLayout incorrectly assumes pango iterates in logi...
  579366 ctkbuilderparser leaks RequiresInfo objects
- 579741 gailcombox should emit property-changed:accessible-name...
+ 579741 cailcombox should emit property-changed:accessible-name...
  574386 Remove deprecated call to ctk_status_icon_set_tooltip...
  384940 handle rejecting jobs and authentication meaningfully
 
@@ -11381,7 +11381,7 @@ Overview of Changes from CTK+ 2.16.0 to 2.16.1
  577224 crash when setting new icon after setting icon...
  576150 Doc bug for CtkMenuPositionFunc
  562863 CtkVscrollbar is hardly documented
- 575644 Cygwin gail build patch
+ 575644 Cygwin cail build patch
  571374 Add 30-bit visuals to the list of supported depths
  577650 ctkitemfactory.h fails to compile
  578094 ProcessIdToSessionId needs to be declared as WINAPI
@@ -11502,7 +11502,7 @@ Overview of Changes from CTK+ 2.15.4 to 2.15.5
  571001 STATE_SHOWING missing on table items
  520395 event.any_data incorrect with spin buttons and combo boxes...
  325809 getAccessibleAtPoint for tables does not seem to take column...
- 561631 gailbutton.c:571:idle_do_action: code should not be reached
+ 561631 cailbutton.c:571:idle_do_action: code should not be reached
  519090 Add accessibility support to CtkScaleButton
 
 * Updated translations:
@@ -11546,7 +11546,7 @@ Overview of Changes from CTK+ 2.15.3 to 2.15.4
  571873 Compile error with cdk/win32/cdkselection-win32.c
  572041 Focus should change when advancing forward in CtkAssistant
  572040 CtkAssistant does not expose page titles
- 570406 gailutil.def is in srcdir, but used from builddir
+ 570406 cailutil.def is in srcdir, but used from builddir
 
 * Updated translations:
  Belarusian Latin (be@latin)
@@ -11955,11 +11955,11 @@ Overview of Changes from CTK+ 2.14.x to 2.15.0
  559009 ctk_radio_button_get_group documentation needs to say...
  523264 Update CTK+ reference documentation screenshots
  563876 [Regression] CTK_MODULES env var is no longer relevant
- 554950 gail must make itself resident
+ 554950 cail must make itself resident
  555953 libferret missing link against libctk-x11
  554002 Orca App-Preferences dialog page tabs are "off" by one...
  353088 ctk_expander_get_label should return the full label text
- 512743 Applications with lists crash in libgail
+ 512743 Applications with lists crash in libcail
  564555 synaptic cannot be started...
  565203 icons are misplaced when horizontal ctkiconview is...
  549251 CTK icon view accessible issue 
@@ -12330,7 +12330,7 @@ Overview of Changes from CTK+ 2.13.3 to 2.13.4
  536966 Paper selector crashes
  378158 cdk_win32_selection_add_targets uses uninitialized hwnd v...
  516092 use ctk_drag_*_add_*_targets instead of hardcoded target ...
- 536430 Libs and Cflags paths in gail-uninstalled.pc.in are out o...
+ 536430 Libs and Cflags paths in cail-uninstalled.pc.in are out o...
  538378 CtkFileSystemError should be public
  539095 directfb functions need to be renamed due to the offscree...
  539470 Fix critical warnings when the GIcon can't be found for a...
@@ -12383,7 +12383,7 @@ Overview of Changes from CTK+ 2.13.2 to 2.13.3
  531960 crash in eog-image.c:1154: (priv->image != NULL)
  408154 Change CtkEntryCompletion max-items to style property...
  506853 ctk_tree_view_enable_model_drag_[source|dest] problem
- 536430 Libs and Cflags paths in gail-uninstalled.pc.in are out o...
+ 536430 Libs and Cflags paths in cail-uninstalled.pc.in are out o...
  537685 print to file crashes when the target can not be written 
 
 * Updated translations:
@@ -12499,7 +12499,7 @@ Overview of Changes from CTK+ 2.12.x to 2.13.0
     more monitor information
 
  * Accessibility:
-  - The gail module is now shipped as part of CTK+
+  - The cail module is now shipped as part of CTK+
   - CtkStatusIcon supports keyboard navigation 
 
  * CtkCalendar:
@@ -15123,7 +15123,7 @@ Overview of Changes from CTK+-2.2.x to CTK+-2.3.0
    ones are displayed themeable. [Matthias]
  - CtkCalendar improvements: make the arrows spin, support RTL flipping,
    automatic week start selection, DND support, improve API 
-   for setting options [Matthias]; mousewheel support [Abigail Brady]
+   for setting options [Matthias]; mousewheel support [Abicail Brady]
  - New properties: CtkButton::focus_on_click, CtkCheckMenuItem::draw_as_radio
    [Soeren, Matthias]
  - New functions: ctk_window_set_default_icon(), 
@@ -15524,7 +15524,7 @@ Widget improvements:
     Morten Welinder, Robert Kinsella, Soeren]
 
 Input Methods:
-* Sort the input method list in the right click popup [Abigail Brady]
+* Sort the input method list in the right click popup [Abicail Brady]
 * CtkIMContextXIM bug fixes [HideToshi Tajima]
 
 General:
@@ -15802,7 +15802,7 @@ Overview of Changes in CTK+ 2.0.3
 * Handle Xlib internal connections (HideToshi Tajima)
 * Many miscellaneous bug fixes.
 
-Other contributors: Jacob Berkman, Abigail Brady, Rich Burridge, 
+Other contributors: Jacob Berkman, Abicail Brady, Rich Burridge, 
 Anders Carlsson, Murray Cumming, Nalin Dahyabhai, James Henstridge, 
 David Highley, Ben Liblitt, Tim Janik, Bill Jannsen, Lauris Kaplinski, 
 Sergey Kuzminov, Alex Larsson, Sven Neumann, Havoc Pennington, Gareth Pearce, 

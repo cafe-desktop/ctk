@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{A1FCED61-4E51-4015-A70C-5373404D1BA0}</ProjectGuid>
-    <RootNamespace>gailutil</RootNamespace>
+    <RootNamespace>cailutil</RootNamespace>
     <Keyword>Win32Proj</Keyword>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -88,7 +88,7 @@
     <Link>
       <AdditionalDependencies>atk-1.0.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).dll</OutputFile>
-      <ModuleDefinitionFile>..\..\libgail-util\gailutil.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>..\..\libcail-util\cailutil.def</ModuleDefinitionFile>
       <ImportLibrary>$(TargetDir)$(ProjectName).0.lib</ImportLibrary>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(OutDir)$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).pdb</ProgramDatabaseFile>
@@ -112,7 +112,7 @@
     <Link>
       <AdditionalDependencies>atk-1.0.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).dll</OutputFile>
-      <ModuleDefinitionFile>..\..\libgail-util\gailutil.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>..\..\libcail-util\cailutil.def</ModuleDefinitionFile>
       <ImportLibrary>$(TargetDir)$(ProjectName).0.lib</ImportLibrary>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(OutDir)$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).pdb</ProgramDatabaseFile>
@@ -138,7 +138,7 @@
     <Link>
       <AdditionalDependencies>atk-1.0.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).dll</OutputFile>
-      <ModuleDefinitionFile>..\..\libgail-util\gailutil.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>..\..\libcail-util\cailutil.def</ModuleDefinitionFile>
       <ImportLibrary>$(TargetDir)$(ProjectName).0.lib</ImportLibrary>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(OutDir)$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).pdb</ProgramDatabaseFile>
@@ -159,7 +159,7 @@
     <Link>
       <AdditionalDependencies>atk-1.0.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).dll</OutputFile>
-      <ModuleDefinitionFile>..\..\libgail-util\gailutil.def</ModuleDefinitionFile>
+      <ModuleDefinitionFile>..\..\libcail-util\cailutil.def</ModuleDefinitionFile>
       <ImportLibrary>$(TargetDir)$(ProjectName).0.lib</ImportLibrary>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(OutDir)$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).pdb</ProgramDatabaseFile>
@@ -170,7 +170,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-#include "gailutil-3.vs10.sourcefiles"
+#include "cailutil-3.vs10.sourcefiles"
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="cdk-3.vcxproj">

@@ -1,12 +1,12 @@
 if get_option('gtk_doc')
     configure_file(input: 'version.xml.in', output: 'version.xml', configuration: version_conf)
 
-    gnome.gtkdoc('gail-libgail-util3',
+    gnome.gtkdoc('cail-libcail-util3',
                  mode: 'none',
-                 main_xml: 'gail-libgail-util-docs.sgml',
-                 src_dir: libgailutilinc,
-                 dependencies: [libctk_dep, libgailutil],
-                 gobject_typesfile: join_paths(meson.current_source_dir(), 'gail-libgail-util3.types'),
+                 main_xml: 'cail-libcail-util-docs.sgml',
+                 src_dir: libcailutilinc,
+                 dependencies: [libctk_dep, libcailutil],
+                 gobject_typesfile: join_paths(meson.current_source_dir(), 'cail-libcail-util3.types'),
                  scan_args: [
                    '--ignore-decorators=_CDK_EXTERN|G_GNUC_WARN_UNUSED_RESULT',
                  ],

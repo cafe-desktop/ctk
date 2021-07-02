@@ -229,7 +229,7 @@
       <Project>{95a4b53d-2773-4406-a2c1-8fd2840bbad8}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-    <ProjectReference Include="gailutil-3.vcxproj">
+    <ProjectReference Include="cailutil-3.vcxproj">
       <Project>{a1fced61-4e51-4015-a70c-5373404d1ba0}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>

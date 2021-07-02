@@ -20,7 +20,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ctk3-icon-browser", "ctk3-i
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ctk-encode-symbolic-svg", "ctk-encode-symbolic-svg.vcxproj", "{F280BF1A-777A-4FB5-8005-DFBE04621EDB}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gailutil-3", "gailutil-3.vcxproj", "{A1FCED61-4E51-4015-A70C-5373404D1BA0}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cailutil-3", "cailutil-3.vcxproj", "{A1FCED61-4E51-4015-A70C-5373404D1BA0}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ctk-update-icon-cache", "ctk-update-icon-cache.vcxproj", "{FC98AF16-4C68-42DF-906B-93A6804C198A}"
 EndProject

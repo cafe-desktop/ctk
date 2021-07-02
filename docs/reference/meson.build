@@ -19,4 +19,4 @@ endif
 
 subdir('cdk')
 subdir('ctk')
-subdir('libgail-util')
+subdir('libcail-util')

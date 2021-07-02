@@ -17,8 +17,8 @@ GENERATED_ITEMS = \
 	ctk3-demo-application.vcxproj.filters	\
 	ctk3-icon-browser.vcxproj		\
 	ctk3-icon-browser.vcxproj.filters	\
-	gailutil-3.vcxproj			\
-	gailutil-3.vcxproj.filters		\
+	cailutil-3.vcxproj			\
+	cailutil-3.vcxproj.filters		\
 	ctk3-install.props			\
 	ctk3-version-paths.props
 
@@ -27,7 +27,7 @@ MSVC10_HEADERS_LISTS =	\
 	cdk3-broadway.vs10.headers	\
 	cdk-3.vs10.headers		\
 	ctk-3.vs10.headers		\
-	gailutil-3.vs10.headers
+	cailutil-3.vs10.headers
 
 EXTRA_DIST += \
 	README.txt				\
@@ -57,8 +57,8 @@ EXTRA_DIST += \
 	ctk3-demo-application.vcxproj.filtersin	\
 	ctk3-icon-browser.vcxprojin		\
 	ctk3-icon-browser.vcxproj.filtersin	\
-	gailutil-3.vcxprojin			\
-	gailutil-3.vcxproj.filtersin		\
+	cailutil-3.vcxprojin			\
+	cailutil-3.vcxproj.filtersin		\
 	ctk3-install.vcxproj			\
 	ctk3-install.vcxproj.filters		\
 	ctk3-introspect.vcxproj			\

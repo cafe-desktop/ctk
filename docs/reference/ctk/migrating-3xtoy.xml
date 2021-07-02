@@ -23,7 +23,7 @@
 
     <para>
       The accessible implementations for CTK+ widgets have been integrated
-      into libctk itself, and the gail module does not exist anymore. This
+      into libctk itself, and the cail module does not exist anymore. This
       change should not affect applications very much.
     </para>
   </section>

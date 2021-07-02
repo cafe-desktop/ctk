@@ -5,7 +5,7 @@ MSVC_HEADERS_LISTS =	\
 	cdk3-broadway.headers	\
 	cdk-3.headers		\
 	ctk-3.headers		\
-	gailutil-3.headers
+	cailutil-3.headers
 
 GENERATED_ITEMS = \
 	cdk3-win32.vcproj		\
@@ -16,7 +16,7 @@ GENERATED_ITEMS = \
 	ctk3-demo.vcproj		\
 	ctk3-demo-application.vcproj	\
 	ctk3-icon-browser.vcproj	\
-	gailutil-3.vcproj		\
+	cailutil-3.vcproj		\
 	ctk3-install.vsprops		\
 	ctk3-version-paths.vsprops
 
@@ -34,7 +34,7 @@ EXTRA_DIST += \
 	ctk3-demo.vcprojin		\
 	ctk3-demo-application.vcprojin	\
 	ctk3-icon-browser.vcprojin	\
-	gailutil-3.vcprojin		\
+	cailutil-3.vcprojin		\
 	ctk3-install.vcproj		\
 	ctk3-introspect.vcproj		\
 	broadwayd.vcprojin		\

@@ -108,7 +108,7 @@ ctk_widget_accessible_focus_event (AtkObject *obj,
 {
   AtkObject *focus_obj;
 
-  focus_obj = g_object_get_data (G_OBJECT (obj), "gail-focus-object");
+  focus_obj = g_object_get_data (G_OBJECT (obj), "cail-focus-object");
   if (focus_obj == NULL)
     focus_obj = obj;
   atk_object_notify_state_change (focus_obj, ATK_STATE_FOCUSED, focus_in);
@@ -380,7 +380,7 @@ ctk_widget_accessible_ref_state_set (AtkObject *accessible)
         {
           AtkObject *focus_obj;
 
-          focus_obj = g_object_get_data (G_OBJECT (accessible), "gail-focus-object");
+          focus_obj = g_object_get_data (G_OBJECT (accessible), "cail-focus-object");
           if (focus_obj == NULL)
             atk_state_set_add_state (state_set, ATK_STATE_FOCUSED);
         }

@@ -257,7 +257,7 @@ main (int argc, char *argv[])
   add_child_tests (ctk_text_view_new ());
   add_child_tests (ctk_tree_view_new ());
 #if 0
-  /* gail doesn't handle non-label children in these */
+  /* cail doesn't handle non-label children in these */
   add_child_tests (ctk_button_new ());
   add_child_tests (ctk_statusbar_new ());
 #endif

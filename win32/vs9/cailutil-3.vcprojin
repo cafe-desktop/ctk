@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="gailutil-3"
+	Name="cailutil-3"
 	ProjectGUID="{A1FCED61-4E51-4015-A70C-5373404D1BA0}"
-	RootNamespace="gailutil3"
+	RootNamespace="cailutil3"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="196613"
 	>
@@ -46,7 +46,7 @@
 				AdditionalDependencies="atk-1.0.lib"
 				OutputFile="$(OutDir)\$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).dll"
 				GenerateDebugInformation="true"
-				ModuleDefinitionFile="..\..\libgail-util\gailutil.def"
+				ModuleDefinitionFile="..\..\libcail-util\cailutil.def"
 				ImportLibrary="$(TargetDir)$(ProjectName).0.lib"
 				SubSystem="2"
 				TargetMachine="1"
@@ -78,7 +78,7 @@
 				AdditionalDependencies="atk-1.0.lib"
 				OutputFile="$(OutDir)\$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).dll"
 				LinkIncremental="1"
-				ModuleDefinitionFile="..\..\libgail-util\gailutil.def"
+				ModuleDefinitionFile="..\..\libcail-util\cailutil.def"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				ImportLibrary="$(TargetDir)$(ProjectName).0.lib"
@@ -113,7 +113,7 @@
 				AdditionalDependencies="atk-1.0.lib"
 				OutputFile="$(OutDir)\$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).dll"
 				GenerateDebugInformation="true"
-				ModuleDefinitionFile="..\..\libgail-util\gailutil.def"
+				ModuleDefinitionFile="..\..\libcail-util\cailutil.def"
 				ImportLibrary="$(TargetDir)$(ProjectName).0.lib"
 				SubSystem="2"
 				OptimizeReferences="2"
@@ -145,7 +145,7 @@
 				AdditionalDependencies="atk-1.0.lib"
 				OutputFile="$(OutDir)\$(CtkDllPrefix)$(ProjectName)$(CtkDllSuffix).dll"
 				LinkIncremental="1"
-				ModuleDefinitionFile="..\..\libgail-util\gailutil.def"
+				ModuleDefinitionFile="..\..\libcail-util\cailutil.def"
 				GenerateDebugInformation="true"
 				SubSystem="2"
 				OptimizeReferences="2"
@@ -163,7 +163,7 @@
 			Filter="cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
-#include "gailutil-3.sourcefiles"
+#include "cailutil-3.sourcefiles"
 		</Filter>
 		<Filter
 			Name="Headers"

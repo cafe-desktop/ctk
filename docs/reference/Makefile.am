@@ -1,7 +1,7 @@
 ## Process this file with automake to produce Makefile.in
 include $(top_srcdir)/Makefile.decl
 
-SUBDIRS = cdk ctk libgail-util
+SUBDIRS = cdk ctk libcail-util
 
 GITIGNOREFILES = */*.1
 

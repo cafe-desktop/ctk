@@ -1,7 +1,7 @@
 ## Makefile.am for CTK+
 include $(top_srcdir)/Makefile.decl
 
-SRC_SUBDIRS = cdk ctk libgail-util modules demos tests testsuite examples
+SRC_SUBDIRS = cdk ctk libcail-util modules demos tests testsuite examples
 SUBDIRS = po po-properties $(SRC_SUBDIRS) docs m4macros win32
 
 ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
@@ -57,7 +57,7 @@ cdk-x11-3.0.pc cdk-win32-3.0.pc cdk-quartz-3.0.pc cdk-broadway-3.0.pc cdk-waylan
 	cp cdk-3.0.pc $@
 
 pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = cdk-3.0.pc ctk+-3.0.pc gail-3.0.pc
+pkgconfig_DATA = cdk-3.0.pc ctk+-3.0.pc cail-3.0.pc
 pkgconfig_DATA += ${CDK_BACKENDS:%=ctk+-%-3.0.pc}
 pkgconfig_DATA += ${CDK_BACKENDS:%=cdk-%-3.0.pc}
 
@@ -79,7 +79,7 @@ DISTCLEANFILES = \
 	cdk-quartz-3.0.pc		\
 	cdk-broadway-3.0.pc		\
 	cdk-wayland-3.0.pc		\
-	gail-3.0.pc			\
+	cail-3.0.pc			\
 	config.lt
 
 dist-hook:

@@ -20,14 +20,14 @@
 #include <math.h>
 #include <stdlib.h>
 #include <ctk/ctk.h>
-#include "gailmisc.h"
+#include "cailmisc.h"
 
 /* IMPORTANT!!! This source file does NOT contain the implementation
- * code for AtkUtil - for that code, please see gail/gail.c.
+ * code for AtkUtil - for that code, please see cail/cail.c.
  */
 
 /**
- * SECTION:gailmisc
+ * SECTION:cailmisc
  * @Short_description: GailMisc is a set of utility functions which may be
  *   useful to implementors of Atk interfaces for custom widgets.
  * @Title: GailMisc
@@ -39,7 +39,7 @@
 
 
 /**
- * gail_misc_get_extents_from_pango_rectangle:
+ * cail_misc_get_extents_from_pango_rectangle:
  * @widget: The widget that contains the PangoLayout, that contains
  *   the PangoRectangle
  * @char_rect: The #PangoRectangle from which to calculate extents
@@ -58,7 +58,7 @@
  * specified by @coords.
  **/
 void
-gail_misc_get_extents_from_pango_rectangle (CtkWidget      *widget,
+cail_misc_get_extents_from_pango_rectangle (CtkWidget      *widget,
                                             PangoRectangle *char_rect,
                                             gint           x_layout,
                                             gint           y_layout,
@@ -70,7 +70,7 @@ gail_misc_get_extents_from_pango_rectangle (CtkWidget      *widget,
 {
   gint x_window, y_window, x_toplevel, y_toplevel;
 
-  gail_misc_get_origins (widget, &x_window, &y_window, 
+  cail_misc_get_origins (widget, &x_window, &y_window, 
                          &x_toplevel, &y_toplevel);
 
   *x = (char_rect->x / PANGO_SCALE) + x_layout + x_window;
@@ -95,7 +95,7 @@ gail_misc_get_extents_from_pango_rectangle (CtkWidget      *widget,
 }
 
 /**
- * gail_misc_get_index_at_point_in_layout:
+ * cail_misc_get_index_at_point_in_layout:
  * @widget: A #CtkWidget
  * @layout: The #PangoLayout from which to get the index at the
  *   specified point.
@@ -115,7 +115,7 @@ gail_misc_get_extents_from_pango_rectangle (CtkWidget      *widget,
  *   #PangoLayout
  **/
 gint
-gail_misc_get_index_at_point_in_layout (CtkWidget   *widget,
+cail_misc_get_index_at_point_in_layout (CtkWidget   *widget,
                                         PangoLayout *layout,
                                         gint        x_layout,
                                         gint        y_layout,
@@ -127,7 +127,7 @@ gail_misc_get_index_at_point_in_layout (CtkWidget   *widget,
   gint x_temp, y_temp;
   gboolean ret;
 
-  gail_misc_get_origins (widget, &x_window, &y_window, 
+  cail_misc_get_origins (widget, &x_window, &y_window, 
                          &x_toplevel, &y_toplevel);
   x_temp =  x - x_layout - x_window;
   y_temp =  y - y_layout - y_window;
@@ -154,7 +154,7 @@ gail_misc_get_index_at_point_in_layout (CtkWidget   *widget,
 }
 
 /**
- * gail_misc_add_attribute:
+ * cail_misc_add_attribute:
  * @attrib_set: The #AtkAttributeSet to add the attribute to
  * @attr: The AtkTextAttrribute which identifies the attribute to be added
  * @value: The attribute value
@@ -165,7 +165,7 @@ gail_misc_get_index_at_point_in_layout (CtkWidget   *widget,
  * Returns: A pointer to the new #AtkAttributeSet.
  **/
 AtkAttributeSet*
-gail_misc_add_attribute (AtkAttributeSet *attrib_set,
+cail_misc_add_attribute (AtkAttributeSet *attrib_set,
                          AtkTextAttribute attr,
                          gchar           *value)
 {
@@ -178,7 +178,7 @@ gail_misc_add_attribute (AtkAttributeSet *attrib_set,
 }
 
 /**
- * gail_misc_layout_get_run_attributes:
+ * cail_misc_layout_get_run_attributes:
  * @attrib_set: The #AtkAttributeSet to add the attribute to
  * @layout: The PangoLayout from which the attributes will be obtained
  * @text: The text 
@@ -192,7 +192,7 @@ gail_misc_add_attribute (AtkAttributeSet *attrib_set,
  * Returns: A pointer to the #AtkAttributeSet.
  **/
 AtkAttributeSet* 
-gail_misc_layout_get_run_attributes (AtkAttributeSet *attrib_set,
+cail_misc_layout_get_run_attributes (AtkAttributeSet *attrib_set,
                                      PangoLayout     *layout,
                                      const gchar     *text,
                                      gint            offset,
@@ -251,14 +251,14 @@ gail_misc_layout_get_run_attributes (AtkAttributeSet *attrib_set,
                                    PANGO_ATTR_FAMILY)) != NULL)
     {
       value = g_strdup_printf("%s", pango_string->value);
-      attrib_set = gail_misc_add_attribute (attrib_set, 
+      attrib_set = cail_misc_add_attribute (attrib_set, 
                                             ATK_TEXT_ATTR_FAMILY_NAME, 
                                             value);
     } 
   if ((pango_int = (PangoAttrInt*) pango_attr_iterator_get (iter, 
                                    PANGO_ATTR_STYLE)) != NULL)
     {
-      attrib_set = gail_misc_add_attribute (attrib_set, 
+      attrib_set = cail_misc_add_attribute (attrib_set, 
                                             ATK_TEXT_ATTR_STYLE, 
       g_strdup (atk_text_attribute_get_value (ATK_TEXT_ATTR_STYLE, pango_int->value)));
     } 
@@ -266,21 +266,21 @@ gail_misc_layout_get_run_attributes (AtkAttributeSet *attrib_set,
                                    PANGO_ATTR_WEIGHT)) != NULL)
     {
       value = g_strdup_printf("%i", pango_int->value);
-      attrib_set = gail_misc_add_attribute (attrib_set, 
+      attrib_set = cail_misc_add_attribute (attrib_set, 
                                             ATK_TEXT_ATTR_WEIGHT, 
                                             value);
     } 
   if ((pango_int = (PangoAttrInt*) pango_attr_iterator_get (iter, 
                                    PANGO_ATTR_VARIANT)) != NULL)
     {
-      attrib_set = gail_misc_add_attribute (attrib_set, 
+      attrib_set = cail_misc_add_attribute (attrib_set, 
                                             ATK_TEXT_ATTR_VARIANT, 
        g_strdup (atk_text_attribute_get_value (ATK_TEXT_ATTR_VARIANT, pango_int->value)));
     } 
   if ((pango_int = (PangoAttrInt*) pango_attr_iterator_get (iter, 
                                    PANGO_ATTR_STRETCH)) != NULL)
     {
-      attrib_set = gail_misc_add_attribute (attrib_set, 
+      attrib_set = cail_misc_add_attribute (attrib_set, 
                                             ATK_TEXT_ATTR_STRETCH, 
        g_strdup (atk_text_attribute_get_value (ATK_TEXT_ATTR_STRETCH, pango_int->value)));
     } 
@@ -288,21 +288,21 @@ gail_misc_layout_get_run_attributes (AtkAttributeSet *attrib_set,
                                    PANGO_ATTR_SIZE)) != NULL)
     {
       value = g_strdup_printf("%i", pango_int->value / PANGO_SCALE);
-      attrib_set = gail_misc_add_attribute (attrib_set, 
+      attrib_set = cail_misc_add_attribute (attrib_set, 
                                             ATK_TEXT_ATTR_SIZE,
                                             value);
     } 
   if ((pango_int = (PangoAttrInt*) pango_attr_iterator_get (iter, 
                                    PANGO_ATTR_UNDERLINE)) != NULL)
     {
-      attrib_set = gail_misc_add_attribute (attrib_set, 
+      attrib_set = cail_misc_add_attribute (attrib_set, 
                                             ATK_TEXT_ATTR_UNDERLINE, 
        g_strdup (atk_text_attribute_get_value (ATK_TEXT_ATTR_UNDERLINE, pango_int->value)));
     } 
   if ((pango_int = (PangoAttrInt*) pango_attr_iterator_get (iter, 
                                    PANGO_ATTR_STRIKETHROUGH)) != NULL)
     {
-      attrib_set = gail_misc_add_attribute (attrib_set, 
+      attrib_set = cail_misc_add_attribute (attrib_set, 
                                             ATK_TEXT_ATTR_STRIKETHROUGH, 
        g_strdup (atk_text_attribute_get_value (ATK_TEXT_ATTR_STRIKETHROUGH, pango_int->value)));
     } 
@@ -310,7 +310,7 @@ gail_misc_layout_get_run_attributes (AtkAttributeSet *attrib_set,
                                    PANGO_ATTR_RISE)) != NULL)
     {
       value = g_strdup_printf("%i", pango_int->value);
-      attrib_set = gail_misc_add_attribute (attrib_set, 
+      attrib_set = cail_misc_add_attribute (attrib_set, 
                                             ATK_TEXT_ATTR_RISE,
                                             value);
     } 
@@ -318,7 +318,7 @@ gail_misc_layout_get_run_attributes (AtkAttributeSet *attrib_set,
                                    PANGO_ATTR_LANGUAGE)) != NULL)
     {
       value = g_strdup( pango_language_to_string( pango_lang->value));
-      attrib_set = gail_misc_add_attribute (attrib_set, 
+      attrib_set = cail_misc_add_attribute (attrib_set, 
                                             ATK_TEXT_ATTR_LANGUAGE, 
                                             value);
     } 
@@ -326,7 +326,7 @@ gail_misc_layout_get_run_attributes (AtkAttributeSet *attrib_set,
                                    PANGO_ATTR_SCALE)) != NULL)
     {
       value = g_strdup_printf("%g", pango_float->value);
-      attrib_set = gail_misc_add_attribute (attrib_set, 
+      attrib_set = cail_misc_add_attribute (attrib_set, 
                                             ATK_TEXT_ATTR_SCALE, 
                                             value);
     } 
@@ -337,7 +337,7 @@ gail_misc_layout_get_run_attributes (AtkAttributeSet *attrib_set,
                                pango_color->color.red, 
                                pango_color->color.green, 
                                pango_color->color.blue);
-      attrib_set = gail_misc_add_attribute (attrib_set, 
+      attrib_set = cail_misc_add_attribute (attrib_set, 
                                             ATK_TEXT_ATTR_FG_COLOR, 
                                             value);
     } 
@@ -348,7 +348,7 @@ gail_misc_layout_get_run_attributes (AtkAttributeSet *attrib_set,
                                pango_color->color.red, 
                                pango_color->color.green, 
                                pango_color->color.blue);
-      attrib_set = gail_misc_add_attribute (attrib_set, 
+      attrib_set = cail_misc_add_attribute (attrib_set, 
                                             ATK_TEXT_ATTR_BG_COLOR, 
                                             value);
     } 
@@ -357,7 +357,7 @@ gail_misc_layout_get_run_attributes (AtkAttributeSet *attrib_set,
 }
 
 /**
- * gail_misc_get_default_attributes:
+ * cail_misc_get_default_attributes:
  * @attrib_set: The #AtkAttributeSet to add the attribute to
  * @layout: The PangoLayout from which the attributes will be obtained
  * @widget: The CtkWidget for which the default attributes are required.
@@ -367,7 +367,7 @@ gail_misc_layout_get_run_attributes (AtkAttributeSet *attrib_set,
  * Returns: A pointer to the #AtkAttributeSet.
  **/
 AtkAttributeSet* 
-gail_misc_get_default_attributes (AtkAttributeSet *attrib_set,
+cail_misc_get_default_attributes (AtkAttributeSet *attrib_set,
                                   PangoLayout     *layout,
                                   CtkWidget       *widget)
 {
@@ -378,7 +378,7 @@ gail_misc_get_default_attributes (AtkAttributeSet *attrib_set,
   CdkRGBA color;
   gchar *value;
 
-  attrib_set = gail_misc_add_attribute (attrib_set, 
+  attrib_set = cail_misc_add_attribute (attrib_set, 
                                         ATK_TEXT_ATTR_DIRECTION,
      g_strdup (atk_text_attribute_get_value (ATK_TEXT_ATTR_DIRECTION, 
                                         ctk_widget_get_direction (widget))));
@@ -392,33 +392,33 @@ gail_misc_get_default_attributes (AtkAttributeSet *attrib_set,
       language = pango_context_get_language (context);
       if (language)
         {
-          attrib_set = gail_misc_add_attribute (attrib_set,
+          attrib_set = cail_misc_add_attribute (attrib_set,
                                                 ATK_TEXT_ATTR_LANGUAGE,
                       g_strdup (pango_language_to_string (language)));
         }
       font = pango_context_get_font_description (context);
       if (font)
         {
-          attrib_set = gail_misc_add_attribute (attrib_set,
+          attrib_set = cail_misc_add_attribute (attrib_set,
                                                 ATK_TEXT_ATTR_STYLE,
               g_strdup (atk_text_attribute_get_value (ATK_TEXT_ATTR_STYLE,
                                    pango_font_description_get_style (font))));
-          attrib_set = gail_misc_add_attribute (attrib_set,
+          attrib_set = cail_misc_add_attribute (attrib_set,
                                                 ATK_TEXT_ATTR_VARIANT,
               g_strdup (atk_text_attribute_get_value (ATK_TEXT_ATTR_VARIANT,
                                    pango_font_description_get_variant (font))));
-          attrib_set = gail_misc_add_attribute (attrib_set,
+          attrib_set = cail_misc_add_attribute (attrib_set,
                                                 ATK_TEXT_ATTR_STRETCH,
               g_strdup (atk_text_attribute_get_value (ATK_TEXT_ATTR_STRETCH,
                                    pango_font_description_get_stretch (font))));
-          attrib_set = gail_misc_add_attribute (attrib_set,
+          attrib_set = cail_misc_add_attribute (attrib_set,
                                                 ATK_TEXT_ATTR_FAMILY_NAME,
               g_strdup (pango_font_description_get_family (font)));
-          attrib_set = gail_misc_add_attribute (attrib_set,
+          attrib_set = cail_misc_add_attribute (attrib_set,
                                                 ATK_TEXT_ATTR_WEIGHT,
                     g_strdup_printf ("%d",
                                    pango_font_description_get_weight (font)));
-          attrib_set = gail_misc_add_attribute (attrib_set,
+          attrib_set = cail_misc_add_attribute (attrib_set,
                                                 ATK_TEXT_ATTR_SIZE,
                     g_strdup_printf ("%i",
                                    pango_font_description_get_size (font) / PANGO_SCALE));
@@ -440,7 +440,7 @@ gail_misc_get_default_attributes (AtkAttributeSet *attrib_set,
       else /* if (align == PANGO_ALIGN_RIGHT) */
         int_value = 1;
     }
-  attrib_set = gail_misc_add_attribute (attrib_set,
+  attrib_set = cail_misc_add_attribute (attrib_set,
                                         ATK_TEXT_ATTR_JUSTIFICATION,
               g_strdup (atk_text_attribute_get_value (ATK_TEXT_ATTR_JUSTIFICATION, 
                                                       int_value))); 
@@ -449,7 +449,7 @@ gail_misc_get_default_attributes (AtkAttributeSet *attrib_set,
     int_value = 2;
   else /* if (mode == PANGO_WRAP_CHAR) */
     int_value = 1;
-  attrib_set = gail_misc_add_attribute (attrib_set,
+  attrib_set = cail_misc_add_attribute (attrib_set,
                                         ATK_TEXT_ATTR_WRAP_MODE,
               g_strdup (atk_text_attribute_get_value (ATK_TEXT_ATTR_WRAP_MODE, 
                                                       int_value))); 
@@ -463,7 +463,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                            (guint) ceil (color.red * 65536 - color.red),
                            (guint) ceil (color.green * 65536 - color.green),
                            (guint) ceil (color.blue * 65536 - color.blue));
-  attrib_set = gail_misc_add_attribute (attrib_set,
+  attrib_set = cail_misc_add_attribute (attrib_set,
                                         ATK_TEXT_ATTR_BG_COLOR,
                                         value); 
 
@@ -472,66 +472,66 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                            (guint) ceil (color.red * 65536 - color.red),
                            (guint) ceil (color.green * 65536 - color.green),
                            (guint) ceil (color.blue * 65536 - color.blue));
-  attrib_set = gail_misc_add_attribute (attrib_set,
+  attrib_set = cail_misc_add_attribute (attrib_set,
                                         ATK_TEXT_ATTR_FG_COLOR,
                                         value); 
 
-  attrib_set = gail_misc_add_attribute (attrib_set,
+  attrib_set = cail_misc_add_attribute (attrib_set,
                                         ATK_TEXT_ATTR_FG_STIPPLE,
               g_strdup (atk_text_attribute_get_value (ATK_TEXT_ATTR_FG_STIPPLE, 
                                                       0))); 
-  attrib_set = gail_misc_add_attribute (attrib_set,
+  attrib_set = cail_misc_add_attribute (attrib_set,
                                         ATK_TEXT_ATTR_BG_STIPPLE,
               g_strdup (atk_text_attribute_get_value (ATK_TEXT_ATTR_BG_STIPPLE, 
                                                       0))); 
-  attrib_set = gail_misc_add_attribute (attrib_set,
+  attrib_set = cail_misc_add_attribute (attrib_set,
                                         ATK_TEXT_ATTR_STRIKETHROUGH,
               g_strdup (atk_text_attribute_get_value (ATK_TEXT_ATTR_STRIKETHROUGH, 
                                                       0))); 
-  attrib_set = gail_misc_add_attribute (attrib_set,
+  attrib_set = cail_misc_add_attribute (attrib_set,
                                         ATK_TEXT_ATTR_UNDERLINE,
               g_strdup (atk_text_attribute_get_value (ATK_TEXT_ATTR_UNDERLINE, 
                                                       0))); 
-  attrib_set = gail_misc_add_attribute (attrib_set,
+  attrib_set = cail_misc_add_attribute (attrib_set,
                                         ATK_TEXT_ATTR_RISE,
                                                g_strdup_printf ("%i", 0));
-  attrib_set = gail_misc_add_attribute (attrib_set,
+  attrib_set = cail_misc_add_attribute (attrib_set,
                                         ATK_TEXT_ATTR_SCALE,
                                                g_strdup_printf ("%g", 1.0));
-  attrib_set = gail_misc_add_attribute (attrib_set,
+  attrib_set = cail_misc_add_attribute (attrib_set,
                                         ATK_TEXT_ATTR_BG_FULL_HEIGHT,
                                                g_strdup_printf ("%i", 0));
-  attrib_set = gail_misc_add_attribute (attrib_set,
+  attrib_set = cail_misc_add_attribute (attrib_set,
                                         ATK_TEXT_ATTR_PIXELS_INSIDE_WRAP,
                                                g_strdup_printf ("%i", 0));
-  attrib_set = gail_misc_add_attribute (attrib_set,
+  attrib_set = cail_misc_add_attribute (attrib_set,
                                         ATK_TEXT_ATTR_PIXELS_BELOW_LINES,
                                         g_strdup_printf ("%i", 0));
-  attrib_set = gail_misc_add_attribute (attrib_set,
+  attrib_set = cail_misc_add_attribute (attrib_set,
                                         ATK_TEXT_ATTR_PIXELS_ABOVE_LINES,
                                         g_strdup_printf ("%i", 0));
-  attrib_set = gail_misc_add_attribute (attrib_set,
+  attrib_set = cail_misc_add_attribute (attrib_set,
                                         ATK_TEXT_ATTR_EDITABLE,
               g_strdup (atk_text_attribute_get_value (ATK_TEXT_ATTR_EDITABLE, 
                                                       0))); 
-  attrib_set = gail_misc_add_attribute (attrib_set,
+  attrib_set = cail_misc_add_attribute (attrib_set,
                                         ATK_TEXT_ATTR_INVISIBLE,
               g_strdup (atk_text_attribute_get_value (ATK_TEXT_ATTR_INVISIBLE, 
                                                       0))); 
-  attrib_set = gail_misc_add_attribute (attrib_set,
+  attrib_set = cail_misc_add_attribute (attrib_set,
                                         ATK_TEXT_ATTR_INDENT,
                                         g_strdup_printf ("%i", 0));
-  attrib_set = gail_misc_add_attribute (attrib_set,
+  attrib_set = cail_misc_add_attribute (attrib_set,
                                         ATK_TEXT_ATTR_RIGHT_MARGIN,
                                         g_strdup_printf ("%i", 0));
-  attrib_set = gail_misc_add_attribute (attrib_set,
+  attrib_set = cail_misc_add_attribute (attrib_set,
                                         ATK_TEXT_ATTR_LEFT_MARGIN,
                                         g_strdup_printf ("%i", 0));
   return attrib_set;
 }
 
 /**
- * gail_misc_get_origins:
+ * cail_misc_get_origins:
  * @widget: a #CtkWidget
  * @x_window: the x-origin of the widget->window
  * @y_window: the y-origin of the widget->window
@@ -542,7 +542,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
  * widgets top-level window.
  **/
 void
-gail_misc_get_origins (CtkWidget *widget,
+cail_misc_get_origins (CtkWidget *widget,
                        gint      *x_window,
                        gint      *y_window,
                        gint      *x_toplevel,
@@ -561,7 +561,7 @@ gail_misc_get_origins (CtkWidget *widget,
 }
 
 /**
- * gail_misc_buffer_get_run_attributes:
+ * cail_misc_buffer_get_run_attributes:
  * @buffer: The #CtkTextBuffer for which the attributes will be obtained
  * @offset: The offset at which the attributes are required
  * @start_offset: The start offset of the current run
@@ -573,7 +573,7 @@ gail_misc_get_origins (CtkWidget *widget,
  * Returns: A pointer to the #AtkAttributeSet.
  **/
 AtkAttributeSet*
-gail_misc_buffer_get_run_attributes (CtkTextBuffer *buffer,
+cail_misc_buffer_get_run_attributes (CtkTextBuffer *buffer,
                                      gint          offset,
                                      gint	    *start_offset,
                                      gint          *end_offset)
@@ -611,7 +611,7 @@ gail_misc_buffer_get_run_attributes (CtkTextBuffer *buffer,
 
           g_object_get (tag, "style", &style, NULL);
           value = g_strdup (atk_text_attribute_get_value (ATK_TEXT_ATTR_STYLE, style));
-          attrib_set = gail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_STYLE, value);
+          attrib_set = cail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_STYLE, value);
         }
       temp_tags = temp_tags->next;
     }
@@ -630,7 +630,7 @@ gail_misc_buffer_get_run_attributes (CtkTextBuffer *buffer,
 
           g_object_get (tag, "variant", &variant, NULL);
           value = g_strdup (atk_text_attribute_get_value (ATK_TEXT_ATTR_VARIANT, variant));
-          attrib_set = gail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_VARIANT, value);
+          attrib_set = cail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_VARIANT, value);
         }
       temp_tags = temp_tags->next;
     }
@@ -649,7 +649,7 @@ gail_misc_buffer_get_run_attributes (CtkTextBuffer *buffer,
 
           g_object_get (tag, "stretch", &stretch, NULL);
           value = g_strdup (atk_text_attribute_get_value (ATK_TEXT_ATTR_STRETCH, stretch));
-          attrib_set = gail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_STRETCH, value);
+          attrib_set = cail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_STRETCH, value);
         }
       temp_tags = temp_tags->next;
     }
@@ -668,7 +668,7 @@ gail_misc_buffer_get_run_attributes (CtkTextBuffer *buffer,
 
           g_object_get (tag, "justification", &justification, NULL);
           value = g_strdup (atk_text_attribute_get_value (ATK_TEXT_ATTR_JUSTIFICATION, justification));
-          attrib_set = gail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_JUSTIFICATION, value);
+          attrib_set = cail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_JUSTIFICATION, value);
         }
       temp_tags = temp_tags->next;
     }
@@ -687,7 +687,7 @@ gail_misc_buffer_get_run_attributes (CtkTextBuffer *buffer,
           gchar *value;
           val_set = TRUE;
           value = g_strdup (atk_text_attribute_get_value (ATK_TEXT_ATTR_DIRECTION, direction));
-          attrib_set = gail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_DIRECTION, value);
+          attrib_set = cail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_DIRECTION, value);
         }
       temp_tags = temp_tags->next;
     }
@@ -706,7 +706,7 @@ gail_misc_buffer_get_run_attributes (CtkTextBuffer *buffer,
 
           g_object_get (tag, "wrap-mode", &wrap_mode, NULL);
           value = g_strdup (atk_text_attribute_get_value (ATK_TEXT_ATTR_WRAP_MODE, wrap_mode));
-          attrib_set = gail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_WRAP_MODE, value);
+          attrib_set = cail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_WRAP_MODE, value);
         }
       temp_tags = temp_tags->next;
     }
@@ -729,7 +729,7 @@ gail_misc_buffer_get_run_attributes (CtkTextBuffer *buffer,
                                    (guint) rgba->green * 65535,
                                    (guint) rgba->blue * 65535);
           cdk_rgba_free (rgba);
-          attrib_set = gail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_FG_COLOR, value);
+          attrib_set = cail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_FG_COLOR, value);
         }
       temp_tags = temp_tags->next;
     }
@@ -752,7 +752,7 @@ gail_misc_buffer_get_run_attributes (CtkTextBuffer *buffer,
                                    (guint) rgba->green * 65535,
                                    (guint) rgba->blue * 65535);
           cdk_rgba_free (rgba);
-          attrib_set = gail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_BG_COLOR, value);
+          attrib_set = cail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_BG_COLOR, value);
         }
       temp_tags = temp_tags->next;
     }
@@ -769,7 +769,7 @@ gail_misc_buffer_get_run_attributes (CtkTextBuffer *buffer,
         {
           gchar *value;
           g_object_get (tag, "family", &value, NULL);
-          attrib_set = gail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_FAMILY_NAME, value);
+          attrib_set = cail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_FAMILY_NAME, value);
         }
       temp_tags = temp_tags->next;
     }
@@ -786,7 +786,7 @@ gail_misc_buffer_get_run_attributes (CtkTextBuffer *buffer,
         {
           gchar *value;
           g_object_get (tag, "language", &value, NULL);
-          attrib_set = gail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_LANGUAGE, value);
+          attrib_set = cail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_LANGUAGE, value);
         }
       temp_tags = temp_tags->next;
     }
@@ -806,7 +806,7 @@ gail_misc_buffer_get_run_attributes (CtkTextBuffer *buffer,
 
           g_object_get (tag, "weight", &weight, NULL);
           value = g_strdup_printf ("%d", weight);
-          attrib_set = gail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_WEIGHT, value);
+          attrib_set = cail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_WEIGHT, value);
         }
       temp_tags = temp_tags->next;
     }
@@ -855,7 +855,7 @@ gail_misc_buffer_get_run_attributes (CtkTextBuffer *buffer,
           gchar *value;
           g_object_get (tag, "size", &size, NULL);
           value = g_strdup_printf ("%i", size);
-          attrib_set = gail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_SIZE, value);
+          attrib_set = cail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_SIZE, value);
         }
       temp_tags = temp_tags->next;
     }
@@ -873,7 +873,7 @@ gail_misc_buffer_get_run_attributes (CtkTextBuffer *buffer,
           gchar *value;
           g_object_get (tag, "strikethrough", &strikethrough, NULL);
           value = g_strdup (atk_text_attribute_get_value (ATK_TEXT_ATTR_STRIKETHROUGH, strikethrough));
-          attrib_set = gail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_STRIKETHROUGH, value);
+          attrib_set = cail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_STRIKETHROUGH, value);
         }
       temp_tags = temp_tags->next;
     }
@@ -891,7 +891,7 @@ gail_misc_buffer_get_run_attributes (CtkTextBuffer *buffer,
           gchar *value;
           g_object_get (tag, "underline", &underline, NULL);
           value = g_strdup (atk_text_attribute_get_value (ATK_TEXT_ATTR_UNDERLINE, underline));
-          attrib_set = gail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_UNDERLINE, value);
+          attrib_set = cail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_UNDERLINE, value);
         }
       temp_tags = temp_tags->next;
     }
@@ -909,7 +909,7 @@ gail_misc_buffer_get_run_attributes (CtkTextBuffer *buffer,
           gchar *value;
           g_object_get (tag, "rise", &rise, NULL);
           value = g_strdup_printf ("%i", rise);
-          attrib_set = gail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_RISE, value);
+          attrib_set = cail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_RISE, value);
         }
       temp_tags = temp_tags->next;
     }
@@ -927,7 +927,7 @@ gail_misc_buffer_get_run_attributes (CtkTextBuffer *buffer,
           gchar *value;
           g_object_get (tag, "background-full-height", &bg_full_height, NULL);
           value = g_strdup (atk_text_attribute_get_value (ATK_TEXT_ATTR_BG_FULL_HEIGHT, bg_full_height));
-          attrib_set = gail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_BG_FULL_HEIGHT, value);
+          attrib_set = cail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_BG_FULL_HEIGHT, value);
         }
       temp_tags = temp_tags->next;
     }
@@ -945,7 +945,7 @@ gail_misc_buffer_get_run_attributes (CtkTextBuffer *buffer,
           gchar *value;
           g_object_get (tag, "pixels-inside-wrap", &pixels, NULL);
           value = g_strdup_printf ("%i", pixels);
-          attrib_set = gail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_PIXELS_INSIDE_WRAP, value);
+          attrib_set = cail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_PIXELS_INSIDE_WRAP, value);
         }
       temp_tags = temp_tags->next;
     }
@@ -963,7 +963,7 @@ gail_misc_buffer_get_run_attributes (CtkTextBuffer *buffer,
           gchar *value;
           g_object_get (tag, "pixels-below-lines", &pixels, NULL);
           value = g_strdup_printf ("%i", pixels);
-          attrib_set = gail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_PIXELS_BELOW_LINES, value);
+          attrib_set = cail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_PIXELS_BELOW_LINES, value);
         }
       temp_tags = temp_tags->next;
     }
@@ -981,7 +981,7 @@ gail_misc_buffer_get_run_attributes (CtkTextBuffer *buffer,
           gchar *value;
           g_object_get (tag, "pixels-above-lines", &pixels, NULL);
           value = g_strdup_printf ("%i", pixels);
-          attrib_set = gail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_PIXELS_ABOVE_LINES, value);
+          attrib_set = cail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_PIXELS_ABOVE_LINES, value);
         }
       temp_tags = temp_tags->next;
     }
@@ -999,7 +999,7 @@ gail_misc_buffer_get_run_attributes (CtkTextBuffer *buffer,
           gchar *value;
           g_object_get (tag, "editable", &editable, NULL);
           value = g_strdup (atk_text_attribute_get_value (ATK_TEXT_ATTR_EDITABLE, editable));
-          attrib_set = gail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_EDITABLE, value);
+          attrib_set = cail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_EDITABLE, value);
         }
       temp_tags = temp_tags->next;
     }
@@ -1017,7 +1017,7 @@ gail_misc_buffer_get_run_attributes (CtkTextBuffer *buffer,
           gchar *value;
           g_object_get (tag, "invisible", &invisible, NULL);
           value = g_strdup (atk_text_attribute_get_value (ATK_TEXT_ATTR_INVISIBLE, invisible));
-          attrib_set = gail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_INVISIBLE, value);
+          attrib_set = cail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_INVISIBLE, value);
         }
       temp_tags = temp_tags->next;
     }
@@ -1035,7 +1035,7 @@ gail_misc_buffer_get_run_attributes (CtkTextBuffer *buffer,
           gchar *value;
           g_object_get (tag, "indent", &indent, NULL);
           value = g_strdup_printf ("%i", indent);
-          attrib_set = gail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_INDENT, value);
+          attrib_set = cail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_INDENT, value);
         }
       temp_tags = temp_tags->next;
     }
@@ -1053,7 +1053,7 @@ gail_misc_buffer_get_run_attributes (CtkTextBuffer *buffer,
           gchar *value;
           g_object_get (tag, "right-margin", &margin, NULL);
           value = g_strdup_printf ("%i", margin);
-          attrib_set = gail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_RIGHT_MARGIN, value);
+          attrib_set = cail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_RIGHT_MARGIN, value);
         }
       temp_tags = temp_tags->next;
     }
@@ -1071,7 +1071,7 @@ gail_misc_buffer_get_run_attributes (CtkTextBuffer *buffer,
           gchar *value;
           g_object_get (tag, "left-margin", &margin, NULL);
           value = g_strdup_printf ("%i", margin);
-          attrib_set = gail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_LEFT_MARGIN, value);
+          attrib_set = cail_misc_add_attribute (attrib_set, ATK_TEXT_ATTR_LEFT_MARGIN, value);
         }
       temp_tags = temp_tags->next;
     }

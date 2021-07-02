@@ -113,14 +113,14 @@ endif
 # Maintain compatibility with the Autotools build
 
 ctk_library_version = ''
-gail_library_version = ''
+cail_library_version = ''
 if cc.get_id() == 'msvc'
   ctk_library_version = ctk_major_version.to_string()
-  gail_library_version = ctk_major_version.to_string()
+  cail_library_version = ctk_major_version.to_string()
 else
   current = ctk_binary_age - ctk_interface_age
   ctk_library_version = '@0@.@1@.@2@'.format(ctk_soversion, current, ctk_interface_age)
-  gail_library_version = '0.0.0'
+  cail_library_version = '0.0.0'
 endif
 
 osx_current = ctk_binary_age - ctk_interface_age + 1
@@ -351,7 +351,7 @@ endif
 confinc = include_directories('.')
 cdkinc = include_directories('cdk')
 ctkinc = include_directories('ctk')
-libgailutilinc = include_directories('libgail-util')
+libcailutilinc = include_directories('libcail-util')
 testinc = include_directories('tests')
 
 # Dependencies
@@ -839,7 +839,7 @@ build_gir = get_option('introspection')
 subdir('cdk')
 subdir('ctk')
 subdir('modules')
-subdir('libgail-util')
+subdir('libcail-util')
 if get_option('demos')
   subdir('demos')
 endif
@@ -946,8 +946,8 @@ foreach backend: [ 'broadway', 'quartz', 'wayland', 'win32', 'x11']
 endforeach
 pkgconf.set('CDK_BACKENDS', pkg_targets.strip())
 
-configure_file(input: 'gail-3.0.pc.in',
-               output: 'gail-3.0.pc',
+configure_file(input: 'cail-3.0.pc.in',
+               output: 'cail-3.0.pc',
                configuration: pkgconf,
                install_dir: pkg_install_dir)
 

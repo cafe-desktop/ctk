@@ -1,58 +1,58 @@
 include $(top_srcdir)/Makefile.decl
 
 EXTRA_DIST += \
-	gailutil.def \
+	cailutil.def \
 	meson.build
 
 if OS_WIN32
-export_symbols = -export-symbols $(srcdir)/gailutil.def
-gailutil.def: libgailutil-3.la
-	echo "LIBRARY libgailutil-$(CTK_MAJOR_VERSION)-$(GAIL_LT_CURRENT_MINUS_AGE)" >$@
+export_symbols = -export-symbols $(srcdir)/cailutil.def
+cailutil.def: libcailutil-3.la
+	echo "LIBRARY libcailutil-$(CTK_MAJOR_VERSION)-$(GAIL_LT_CURRENT_MINUS_AGE)" >$@
 	echo "EXPORTS" >>$@
-	objdump -p .libs/libgailutil-$(CTK_MAJOR_VERSION)-$(GAIL_LT_CURRENT_MINUS_AGE).dll | sed -n -e 's/\t\[\s\+\([0-9]\+\)\]\s\([A-Za-z_][A-Za-z0-9_]\)/\2/p' >>$@
-install-def-file: gailutil.def
-	$(INSTALL) gailutil.def $(DESTDIR)$(libdir)
+	objdump -p .libs/libcailutil-$(CTK_MAJOR_VERSION)-$(GAIL_LT_CURRENT_MINUS_AGE).dll | sed -n -e 's/\t\[\s\+\([0-9]\+\)\]\s\([A-Za-z_][A-Za-z0-9_]\)/\2/p' >>$@
+install-def-file: cailutil.def
+	$(INSTALL) cailutil.def $(DESTDIR)$(libdir)
 uninstall-def-file:
-	-rm $(DESTDIR)$(libdir)/gailutil.def
+	-rm $(DESTDIR)$(libdir)/cailutil.def
 else
 install-def-file:
 uninstall-def-file:
 endif
 
 if MS_LIB_AVAILABLE
-noinst_DATA = gailutil.lib
+noinst_DATA = cailutil.lib
 
 install-ms-lib:
-	$(INSTALL) gailutil.lib $(DESTDIR)$(libdir)
+	$(INSTALL) cailutil.lib $(DESTDIR)$(libdir)
 
 uninstall-ms-lib:
-	-rm $(DESTDIR)$(libdir)/gailutil.lib
+	-rm $(DESTDIR)$(libdir)/cailutil.lib
 else
 install-ms-lib:
 uninstall-ms-lib:
 endif
 
 
-lib_LTLIBRARIES = libgailutil-3.la
+lib_LTLIBRARIES = libcailutil-3.la
 
 util_c_sources =		\
-	gailmisc.c		\
-	gailtextutil.c
+	cailmisc.c		\
+	cailtextutil.c
 
-libgailutilincludedir=$(includedir)/gail-3.0/libgail-util
+libcailutilincludedir=$(includedir)/cail-3.0/libcail-util
 
 util_public_h_sources =		\
-	gailmisc.h		\
-	gailtextutil.h		\
-	gail-util.h
+	cailmisc.h		\
+	cailtextutil.h		\
+	cail-util.h
 
-libgailutil_3_la_SOURCES = 	\
+libcailutil_3_la_SOURCES = 	\
 	$(util_c_sources)
 
-libgailutilinclude_HEADERS =	\
+libcailutilinclude_HEADERS =	\
 	$(util_public_h_sources)
 
-libgailutil_3_la_CPPFLAGS = \
+libcailutil_3_la_CPPFLAGS = \
 	-I$(top_srcdir)		\
 	-I$(top_srcdir)/cdk	\
 	-I$(top_builddir)/cdk	\
@@ -62,44 +62,44 @@ libgailutil_3_la_CPPFLAGS = \
 	-DCDK_DISABLE_DEPRECATED\
 	-DCTK_DISABLE_DEPRECATED
 
-libgailutil_3_la_CFLAGS = \
+libcailutil_3_la_CFLAGS = \
 	$(CTK_DEP_CFLAGS)	\
 	$(CTK_DEBUG_FLAGS)	\
 	$(AM_CFLAGS)
 
-libgailutil_3_la_LIBADD = \
+libcailutil_3_la_LIBADD = \
 	$(top_builddir)/ctk/libctk-3.la	\
 	$(top_builddir)/cdk/libcdk-3.la	\
 	$(CTK_DEP_LIBS)
 
-libgailutil_3_la_LDFLAGS = \
+libcailutil_3_la_LDFLAGS = \
 	-version-info $(GAIL_LT_VERSION_INFO)	\
 	$(no_undefined)				\
         $(LDFLAGS)
 
-gailutil.lib: libgailutil-3.la gailutil.def
-	lib -machine:@LIB_EXE_MACHINE_FLAG@ -name:libgailutil-3.0-$(GAIL_LT_CURRENT_MINUS_AGE).dll -def:gailutil.def -out:$@
+cailutil.lib: libcailutil-3.la cailutil.def
+	lib -machine:@LIB_EXE_MACHINE_FLAG@ -name:libcailutil-3.0-$(GAIL_LT_CURRENT_MINUS_AGE).dll -def:cailutil.def -out:$@
 
 install-data-local: install-ms-lib install-def-file
 
 uninstall-local: uninstall-ms-lib uninstall-def-file
 
 # ------------------- MSVC Build Items ----------------
-MSVCPROJS = gailutil-3
+MSVCPROJS = cailutil-3
 
-gailutil_3_FILES = $(libgailutil_3_la_SOURCES)
+cailutil_3_FILES = $(libcailutil_3_la_SOURCES)
 
-gailutil_3_EXCLUDES = dummy
-gailutil_3_HEADERS_DIR = $(libgailutilincludedir)
+cailutil_3_EXCLUDES = dummy
+cailutil_3_HEADERS_DIR = $(libcailutilincludedir)
 
-gailutil_3_HEADERS_INST = $(libgailutilinclude_HEADERS)
+cailutil_3_HEADERS_INST = $(libcailutilinclude_HEADERS)
 
-gailutil_3_HEADERS_EXCLUDES = dummy
+cailutil_3_HEADERS_EXCLUDES = dummy
 
 include $(top_srcdir)/win32/Makefile.msvcproj
 
 dist-hook: \
-	$(top_builddir)/win32/vs9/gailutil-3.vcproj	\
-	$(top_builddir)/win32/vs9/gailutil-3.headers
+	$(top_builddir)/win32/vs9/cailutil-3.vcproj	\
+	$(top_builddir)/win32/vs9/cailutil-3.headers
 
 -include $(top_srcdir)/git.mk

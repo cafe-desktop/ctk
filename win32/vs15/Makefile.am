@@ -24,8 +24,8 @@ EXTRA_DIST +=	\
 	ctk3-demo-application.vcxproj.filters	\
 	ctk3-icon-browser.vcxproj	\
 	ctk3-icon-browser.vcxproj.filters	\
-	gailutil-3.vcxproj	\
-	gailutil-3.vcxproj.filters	\
+	cailutil-3.vcxproj	\
+	cailutil-3.vcxproj.filters	\
 	ctk3-install.vcxproj	\
 	ctk3-install.vcxproj.filters	\
 	ctk3-introspect.vcxproj		\

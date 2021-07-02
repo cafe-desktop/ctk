@@ -1,32 +1,32 @@
-gailutil_sources = files(
-  'gailmisc.c',
-  'gailtextutil.c',
+cailutil_sources = files(
+  'cailmisc.c',
+  'cailtextutil.c',
 )
 
-gailutil_public_headers = files(
-  'gailmisc.h',
-  'gailtextutil.h',
-  'gail-util.h',
+cailutil_public_headers = files(
+  'cailmisc.h',
+  'cailtextutil.h',
+  'cail-util.h',
   )
 
-install_headers(gailutil_public_headers, subdir : 'gail-3.0/libgail-util')
+install_headers(cailutil_public_headers, subdir : 'cail-3.0/libcail-util')
 
-gailutil_link_args = common_ldflags
+cailutil_link_args = common_ldflags
 
 if cc.get_id() == 'msvc'
-  gailutil_link_args += '-def:@0@/gailutil.def'.format(meson.current_source_dir())
+  cailutil_link_args += '-def:@0@/cailutil.def'.format(meson.current_source_dir())
 endif
 
-libgailutil = library('gailutil-3',
+libcailutil = library('cailutil-3',
                       soversion: ctk_soversion,
-                      version: gail_library_version,
+                      version: cail_library_version,
                       darwin_versions: ['1', '1.0'],
-                      sources: [gailutil_sources],
+                      sources: [cailutil_sources],
                       dependencies: libctk_dep,
                       include_directories: [confinc, ctkinc],
                       c_args: [
                         '-DCDK_DISABLE_DEPRECATED',
                         '-DCTK_DISABLE_DEPRECATED',
                       ] + common_cflags,
-                      link_args: gailutil_link_args,
+                      link_args: cailutil_link_args,
                       install: true)

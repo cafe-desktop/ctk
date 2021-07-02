@@ -2,14 +2,14 @@ window1
   "window"
   index: 0
   state: enabled resizable sensitive showing visible
-  toolkit: gail
+  toolkit: cail
   button1
     "push button"
     parent: window1
     index: 0
     name: Accessible name
     state: enabled focusable sensitive showing visible
-    toolkit: gail
+    toolkit: cail
     text: Hello World!
     character count: 12
     caret offset: 0

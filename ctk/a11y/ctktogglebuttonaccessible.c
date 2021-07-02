@@ -69,7 +69,7 @@ ctk_toggle_button_accessible_notify_ctk (GObject    *obj,
     }
   else if (strcmp (pspec->name, "sensitive") == 0)
     {
-      /* Need to override gailwidget behavior of notifying for ENABLED */
+      /* Need to override cailwidget behavior of notifying for ENABLED */
       atk_object_notify_state_change (atk_obj, ATK_STATE_SENSITIVE, sensitive);
       atk_object_notify_state_change (atk_obj, ATK_STATE_ENABLED, (sensitive && !inconsistent));
     }
