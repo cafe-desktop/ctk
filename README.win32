@@ -153,8 +153,8 @@ would require such for ABI stability).
 There are VS 2008~2019 solution and project files to build CTK+, which
 are maintained by Chun-wei Fan.  They should build CTK+ out of the box,
 provided that the afore-mentioned dependencies are installed.  They will
-build CDK with the Win32 backend, CTK+ itself (with GAIL/a11y built in),
-the GAIL-Util library and the ctk-demo program.  Please also refer to the
+build CDK with the Win32 backend, CTK+ itself (with CAIL/a11y built in),
+the CAIL-Util library and the ctk-demo program.  Please also refer to the
 README file(s) that reside in win32 on how to enable additional features
 that are not enabled by default, such as EGL support via libANGLE, which
 emulate the GL/EGL calls using Direct3D 9/11.

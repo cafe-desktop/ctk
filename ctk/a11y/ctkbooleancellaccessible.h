@@ -29,7 +29,7 @@ G_BEGIN_DECLS
 
 #define CTK_TYPE_BOOLEAN_CELL_ACCESSIBLE            (ctk_boolean_cell_accessible_get_type ())
 #define CTK_BOOLEAN_CELL_ACCESSIBLE(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), CTK_TYPE_BOOLEAN_CELL_ACCESSIBLE, CtkBooleanCellAccessible))
-#define CTK_BOOLEAN_CELL_ACCESSIBLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), GAIL_BOOLEAN_CELL, CtkBooleanCellAccessibleClass))
+#define CTK_BOOLEAN_CELL_ACCESSIBLE_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), CAIL_BOOLEAN_CELL, CtkBooleanCellAccessibleClass))
 #define CTK_IS_BOOLEAN_CELL_ACCESSIBLE(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CTK_TYPE_BOOLEAN_CELL_ACCESSIBLE))
 #define CTK_IS_BOOLEAN_CELL_ACCESSIBLE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), CTK_TYPE_BOOLEAN_CELL_ACCESSIBLE))
 #define CTK_BOOLEAN_CELL_ACCESSIBLE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), CTK_TYPE_BOOLEAN_CELL_ACCESSIBLE, CtkBooleanCellAccessibleClass))
@@ -55,4 +55,4 @@ GType      ctk_boolean_cell_accessible_get_type (void);
 
 G_END_DECLS
 
-#endif /* __GAIL_TREE_VIEW_BOOLEAN_CELL_H__ */
+#endif /* __CAIL_TREE_VIEW_BOOLEAN_CELL_H__ */

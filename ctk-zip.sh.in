@@ -22,7 +22,7 @@ etc/ctk-@CTK_API_VERSION@/ctkrc
 etc/ctk-@CTK_API_VERSION@/im-multipress.conf
 bin/libcdk-win32-@CTK_API_VERSION@-@LT_CURRENT_MINUS_AGE@.dll
 bin/libctk-win32-@CTK_API_VERSION@-@LT_CURRENT_MINUS_AGE@.dll
-bin/libcailutil-@CTK_API_VERSION@-@GAIL_LT_CURRENT_MINUS_AGE@.dll
+bin/libcailutil-@CTK_API_VERSION@-@CAIL_LT_CURRENT_MINUS_AGE@.dll
 bin/ctk-query-immodules-@CTK_API_VERSION@.exe
 lib/ctk-@CTK_API_VERSION@/3.0.0/loaders.cache
 lib/ctk-@CTK_API_VERSION@/3.0.0/immodules.cache

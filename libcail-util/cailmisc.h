@@ -1,4 +1,4 @@
-/* GAIL - The GNOME Accessibility Implementation Library
+/* CAIL - The GNOME Accessibility Implementation Library
  * Copyright 2001 Sun Microsystems Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -15,8 +15,8 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GAIL_MISC_H__
-#define __GAIL_MISC_H__
+#ifndef __CAIL_MISC_H__
+#define __CAIL_MISC_H__
 
 #include <glib-object.h>
 #include <ctk/ctk.h>
@@ -80,4 +80,4 @@ AtkAttributeSet* cail_misc_buffer_get_run_attributes
 
 G_END_DECLS
 
-#endif /*__GAIL_MISC_H__ */
+#endif /*__CAIL_MISC_H__ */

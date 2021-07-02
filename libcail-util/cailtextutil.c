@@ -1,4 +1,4 @@
-/* GAIL - The GNOME Accessibility Implementation Library
+/* CAIL - The GNOME Accessibility Implementation Library
  * Copyright 2001 Sun Microsystems Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -31,7 +31,7 @@
  * #AtkText functions which get text for accessible objects which implement
  * #AtkText.
  *
- * In GAIL it is used by the accsesible objects for #GnomeCanvasText, #CtkEntry,
+ * In CAIL it is used by the accsesible objects for #GnomeCanvasText, #CtkEntry,
  * #CtkLabel, #CtkCellRendererText and #CtkTextView.
  */
 
@@ -88,7 +88,7 @@ cail_text_util_get_type(void)
 CailTextUtil*
 cail_text_util_new (void)
 {
-  return GAIL_TEXT_UTIL (g_object_new (GAIL_TYPE_TEXT_UTIL, NULL));
+  return CAIL_TEXT_UTIL (g_object_new (CAIL_TYPE_TEXT_UTIL, NULL));
 }
 
 static void
@@ -110,7 +110,7 @@ cail_text_util_class_init (CailTextUtilClass *klass)
 static void
 cail_text_util_finalize (GObject *object)
 {
-  CailTextUtil *textutil = GAIL_TEXT_UTIL (object);
+  CailTextUtil *textutil = CAIL_TEXT_UTIL (object);
 
   if (textutil->buffer)
     g_object_unref (textutil->buffer);
@@ -129,7 +129,7 @@ void
 cail_text_util_text_setup (CailTextUtil *textutil,
                            const gchar  *text)
 {
-  g_return_if_fail (GAIL_IS_TEXT_UTIL (textutil));
+  g_return_if_fail (CAIL_IS_TEXT_UTIL (textutil));
 
   if (textutil->buffer)
     {
@@ -159,7 +159,7 @@ void
 cail_text_util_buffer_setup  (CailTextUtil  *textutil,
                               CtkTextBuffer   *buffer)
 {
-  g_return_if_fail (GAIL_IS_TEXT_UTIL (textutil));
+  g_return_if_fail (CAIL_IS_TEXT_UTIL (textutil));
 
   textutil->buffer = g_object_ref (buffer);
 }
@@ -195,7 +195,7 @@ cail_text_util_get_text (CailTextUtil    *textutil,
   gint line_number;
   CtkTextBuffer *buffer;
 
-  g_return_val_if_fail (GAIL_IS_TEXT_UTIL (textutil), NULL);
+  g_return_val_if_fail (CAIL_IS_TEXT_UTIL (textutil), NULL);
 
   buffer = textutil->buffer;
   if (buffer == NULL)
@@ -218,7 +218,7 @@ cail_text_util_get_text (CailTextUtil    *textutil,
 
   switch (function)
     {
-    case GAIL_BEFORE_OFFSET:
+    case CAIL_BEFORE_OFFSET:
       switch (boundary_type)
         {
         case ATK_TEXT_BOUNDARY_CHAR:
@@ -363,7 +363,7 @@ cail_text_util_get_text (CailTextUtil    *textutil,
         }
       break;
  
-    case GAIL_AT_OFFSET:
+    case CAIL_AT_OFFSET:
       switch (boundary_type)
         {
         case ATK_TEXT_BOUNDARY_CHAR:
@@ -500,7 +500,7 @@ cail_text_util_get_text (CailTextUtil    *textutil,
         }
       break;
   
-    case GAIL_AFTER_OFFSET:
+    case CAIL_AFTER_OFFSET:
       switch (boundary_type)
         {
         case ATK_TEXT_BOUNDARY_CHAR:
@@ -645,7 +645,7 @@ cail_text_util_get_substring (CailTextUtil *textutil,
   CtkTextIter start, end;
   CtkTextBuffer *buffer;
 
-  g_return_val_if_fail(GAIL_IS_TEXT_UTIL (textutil), NULL);
+  g_return_val_if_fail(CAIL_IS_TEXT_UTIL (textutil), NULL);
 
   buffer = textutil->buffer;
   if (buffer == NULL)
@@ -693,7 +693,7 @@ get_pango_text_offsets (PangoLayout         *layout,
            */
           switch (function)
             {
-            case GAIL_BEFORE_OFFSET:
+            case CAIL_BEFORE_OFFSET:
                   /*
                    * We want the previous line
                    */
@@ -718,7 +718,7 @@ get_pango_text_offsets (PangoLayout         *layout,
               else
                 start_index = end_index = 0;
               break;
-            case GAIL_AT_OFFSET:
+            case CAIL_AT_OFFSET:
               switch (boundary_type)
                 {
                 case ATK_TEXT_BOUNDARY_LINE_START:
@@ -734,7 +734,7 @@ get_pango_text_offsets (PangoLayout         *layout,
                   g_assert_not_reached();
                 }
               break;
-            case GAIL_AFTER_OFFSET:
+            case CAIL_AFTER_OFFSET:
                /*
                 * We want the next line
                 */

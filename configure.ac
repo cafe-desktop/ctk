@@ -138,8 +138,8 @@ m4_define([cail_lt_revision],[0])
 m4_define([cail_lt_age],[0])
 m4_define([cail_lt_version_info],[cail_lt_current:cail_lt_revision:cail_lt_age])
 m4_define([cail_lt_current_minus_age],[m4_eval(cail_lt_current - cail_lt_age)])
-AC_SUBST([GAIL_LT_VERSION_INFO],[cail_lt_version_info])
-AC_SUBST([GAIL_LT_CURRENT_MINUS_AGE],[cail_lt_current_minus_age])
+AC_SUBST([CAIL_LT_VERSION_INFO],[cail_lt_version_info])
+AC_SUBST([CAIL_LT_CURRENT_MINUS_AGE],[cail_lt_current_minus_age])
 
 # Workaround for https://bugzilla.gnome.org/show_bug.cgi?id=721346 until fixed upstream in autoconf-archive
 if test "$cross_compiling" = "no"; then

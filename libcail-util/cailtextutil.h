@@ -1,4 +1,4 @@
-/* GAIL - The GNOME Accessibility Implementation Library
+/* CAIL - The GNOME Accessibility Implementation Library
  * Copyright 2001 Sun Microsystems Inc.
  *
  * This library is free software; you can redistribute it and/or
@@ -15,26 +15,26 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef __GAIL_TEXT_UTIL_H__
-#define __GAIL_TEXT_UTIL_H__
+#ifndef __CAIL_TEXT_UTIL_H__
+#define __CAIL_TEXT_UTIL_H__
 
 #include <glib-object.h>
 #include <ctk/ctk.h>
 
 G_BEGIN_DECLS
 
-#define GAIL_TYPE_TEXT_UTIL                  (cail_text_util_get_type ())
-#define GAIL_TEXT_UTIL(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), GAIL_TYPE_TEXT_UTIL, CailTextUtil))
-#define GAIL_TEXT_UTIL_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), GAIL_TYPE_TEXT_UTIL, CailTextUtilClass))
-#define GAIL_IS_TEXT_UTIL(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GAIL_TYPE_TEXT_UTIL))
-#define GAIL_IS_TEXT_UTIL_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), GAIL_TYPE_TEXT_UTIL))
-#define GAIL_TEXT_UTIL_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), GAIL_TYPE_TEXT_UTIL, CailTextUtilClass))
+#define CAIL_TYPE_TEXT_UTIL                  (cail_text_util_get_type ())
+#define CAIL_TEXT_UTIL(obj)                  (G_TYPE_CHECK_INSTANCE_CAST ((obj), CAIL_TYPE_TEXT_UTIL, CailTextUtil))
+#define CAIL_TEXT_UTIL_CLASS(klass)          (G_TYPE_CHECK_CLASS_CAST ((klass), CAIL_TYPE_TEXT_UTIL, CailTextUtilClass))
+#define CAIL_IS_TEXT_UTIL(obj)               (G_TYPE_CHECK_INSTANCE_TYPE ((obj), CAIL_TYPE_TEXT_UTIL))
+#define CAIL_IS_TEXT_UTIL_CLASS(klass)       (G_TYPE_CHECK_CLASS_TYPE ((klass), CAIL_TYPE_TEXT_UTIL))
+#define CAIL_TEXT_UTIL_GET_CLASS(obj)        (G_TYPE_INSTANCE_GET_CLASS ((obj), CAIL_TYPE_TEXT_UTIL, CailTextUtilClass))
 
 /**
  *CailOffsetType:
- *@GAIL_BEFORE_OFFSET: Text before offset is required.
- *@GAIL_AT_OFFSET: Text at offset is required,
- *@GAIL_AFTER_OFFSET: Text after offset is required.
+ *@CAIL_BEFORE_OFFSET: Text before offset is required.
+ *@CAIL_AT_OFFSET: Text at offset is required,
+ *@CAIL_AFTER_OFFSET: Text after offset is required.
  *
  * Specifies which of the functions atk_text_get_text_before_offset(),
  * atk_text_get_text_at_offset(), atk_text_get_text_after_offset() the
@@ -42,9 +42,9 @@ G_BEGIN_DECLS
  **/
 typedef enum
 {
-  GAIL_BEFORE_OFFSET,
-  GAIL_AT_OFFSET,
-  GAIL_AFTER_OFFSET
+  CAIL_BEFORE_OFFSET,
+  CAIL_AT_OFFSET,
+  CAIL_AFTER_OFFSET
 }CailOffsetType;
 
 typedef struct _CailTextUtil		CailTextUtil;
@@ -88,4 +88,4 @@ gchar*        cail_text_util_get_substring (CailTextUtil    *textutil,
 
 G_END_DECLS
 
-#endif /*__GAIL_TEXT_UTIL_H__ */
+#endif /*__CAIL_TEXT_UTIL_H__ */

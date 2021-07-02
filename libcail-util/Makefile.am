@@ -7,9 +7,9 @@ EXTRA_DIST += \
 if OS_WIN32
 export_symbols = -export-symbols $(srcdir)/cailutil.def
 cailutil.def: libcailutil-3.la
-	echo "LIBRARY libcailutil-$(CTK_MAJOR_VERSION)-$(GAIL_LT_CURRENT_MINUS_AGE)" >$@
+	echo "LIBRARY libcailutil-$(CTK_MAJOR_VERSION)-$(CAIL_LT_CURRENT_MINUS_AGE)" >$@
 	echo "EXPORTS" >>$@
-	objdump -p .libs/libcailutil-$(CTK_MAJOR_VERSION)-$(GAIL_LT_CURRENT_MINUS_AGE).dll | sed -n -e 's/\t\[\s\+\([0-9]\+\)\]\s\([A-Za-z_][A-Za-z0-9_]\)/\2/p' >>$@
+	objdump -p .libs/libcailutil-$(CTK_MAJOR_VERSION)-$(CAIL_LT_CURRENT_MINUS_AGE).dll | sed -n -e 's/\t\[\s\+\([0-9]\+\)\]\s\([A-Za-z_][A-Za-z0-9_]\)/\2/p' >>$@
 install-def-file: cailutil.def
 	$(INSTALL) cailutil.def $(DESTDIR)$(libdir)
 uninstall-def-file:
@@ -73,12 +73,12 @@ libcailutil_3_la_LIBADD = \
 	$(CTK_DEP_LIBS)
 
 libcailutil_3_la_LDFLAGS = \
-	-version-info $(GAIL_LT_VERSION_INFO)	\
+	-version-info $(CAIL_LT_VERSION_INFO)	\
 	$(no_undefined)				\
         $(LDFLAGS)
 
 cailutil.lib: libcailutil-3.la cailutil.def
-	lib -machine:@LIB_EXE_MACHINE_FLAG@ -name:libcailutil-3.0-$(GAIL_LT_CURRENT_MINUS_AGE).dll -def:cailutil.def -out:$@
+	lib -machine:@LIB_EXE_MACHINE_FLAG@ -name:libcailutil-3.0-$(CAIL_LT_CURRENT_MINUS_AGE).dll -def:cailutil.def -out:$@
 
 install-data-local: install-ms-lib install-def-file
 

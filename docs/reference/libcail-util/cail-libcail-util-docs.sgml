@@ -6,7 +6,7 @@
 ]>
 <book id="index" xmlns:xi="http://www.w3.org/2003/XInclude">
   <bookinfo>
-    <title>GAIL Reference Manual</title>
+    <title>CAIL Reference Manual</title>
     <releaseinfo>
       Version &version;
       The latest version of this documentation can be found on-line at
@@ -14,7 +14,7 @@
     </releaseinfo>
   </bookinfo>
   <chapter id="libcail-util-main">
-    <title>GAIL libcail-util Library</title>
+    <title>CAIL libcail-util Library</title>
     <xi:include href="xml/cailtextutil.xml" />
     <xi:include href="xml/cailmisc.xml" />
   </chapter>
