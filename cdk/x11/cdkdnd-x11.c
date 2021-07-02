@@ -634,12 +634,14 @@ cdk_window_cache_new (CdkScreen *screen)
    */
   if (cdk_screen_is_composited (screen))
     {
+      cdk_x11_display_error_trap_push (CDK_X11_SCREEN (screen)->display);
       cow = XCompositeGetOverlayWindow (xdisplay, CDK_WINDOW_XID (root_window));
       cdk_window_cache_add (result, cow, 0, 0, 
 			    cdk_x11_screen_get_width (screen) * CDK_X11_SCREEN(screen)->window_scale, 
 			    cdk_x11_screen_get_height (screen) * CDK_X11_SCREEN(screen)->window_scale, 
 			    TRUE);
       XCompositeReleaseOverlayWindow (xdisplay, CDK_WINDOW_XID (root_window));
+      cdk_x11_display_error_trap_pop_ignored (CDK_X11_SCREEN (screen)->display);
     }
 #endif
 
