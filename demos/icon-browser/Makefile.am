@@ -20,11 +20,12 @@ ctk3_icon_browser_SOURCES = \
 	main.c \
 	iconbrowserapp.c iconbrowserapp.h \
 	iconbrowserwin.c iconbrowserwin.h \
-	iconstore.c iconstore.h \
+	iconstore.c iconstore.h
+nodist_ctk3_icon_browser_SOURCES = \
 	resources.c
 
-BUILT_SOURCES = \
-	resources.c
+BUILT_SOURCES = $(nodist_ctk3_icon_browser_SOURCES)
+CLEANFILES = $(BUILT_SOURCES)
 
 resources.c: iconbrowser.gresource.xml $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/iconbrowser.gresource.xml)
 	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) $(srcdir)/iconbrowser.gresource.xml \
@@ -40,7 +41,7 @@ EXTRA_DIST = \
 # ------------------- MSVC Build Items ----------------
 MSVCPROJS = ctk3-icon-browser
 
-ctk3_icon_browser_FILES = $(ctk3_icon_browser_SOURCES)
+ctk3_icon_browser_FILES = $(ctk3_icon_browser_SOURCES) $(nodist_ctk3_icon_browser_SOURCES)
 ctk3_icon_browser_EXCLUDES = dummy
 
 include $(top_srcdir)/win32/Makefile.msvcproj

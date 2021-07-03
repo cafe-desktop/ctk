@@ -133,13 +133,14 @@ demos.h: $(demos) geninclude.pl
 demos.h.win32: $(demos_base) geninclude.pl
 	 $(AM_V_GEN) (here=`pwd` ; cd $(srcdir) && $(PERL) $$here/geninclude.pl $(demos_base)) > demos.h.win32
 
-nodist_ctk3_demo_SOURCES = demos.h
+nodist_ctk3_demo_SOURCES =	\
+	demos.h			\
+	demo_resources.c
 
 ctk3_demo_SOURCES = 		\
 	$(demos)		\
 	ctkfishbowl.c		\
 	ctkfishbowl.h		\
-	demo_resources.c	\
 	main.c
 
 ctk3_demo_DEPENDENCIES = $(DEPS)
@@ -147,8 +148,11 @@ ctk3_demo_LDADD = $(LDADDS)
 ctk3_demo_LDFLAGS = -export-dynamic
 
 ctk3_demo_application_SOURCES = \
-	application.c 		\
+	application.c
+nodist_ctk3_demo_application_SOURCES = \
 	demo_resources.c
+
+CLEANFILES = $(BUILT_SOURCES)
 
 ctk3_demo_application_LDADD = $(LDADDS)
 
@@ -190,10 +194,10 @@ uninstall-update-icon-cache:
 # ------------------- MSVC Build Items ----------------
 MSVCPROJS = ctk3-demo ctk3-demo-application
 
-ctk3_demo_FILES = $(ctk3_demo_SOURCES)
+ctk3_demo_FILES = $(ctk3_demo_SOURCES) $(nodist_ctk3_demo_SOURCES)
 ctk3_demo_EXCLUDES = font_features.c|pagesetup.c
 
-ctk3_demo_application_FILES = $(ctk3_demo_application_SOURCES)
+ctk3_demo_application_FILES = $(ctk3_demo_application_SOURCES) $(nodist_ctk3_demo_application_SOURCES)
 ctk3_demo_application_EXCLUDES = dummy
 
 include $(top_srcdir)/win32/Makefile.msvcproj

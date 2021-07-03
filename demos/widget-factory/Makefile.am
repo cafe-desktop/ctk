@@ -5,12 +5,11 @@ bin_PROGRAMS = ctk3-widget-factory
 desktopdir = $(datadir)/applications
 dist_desktop_DATA = ctk3-widget-factory.desktop
 
-ctk3_widget_factory_SOURCES = 		\
-	widget-factory.c		\
-	widget_factory_resources.c
+ctk3_widget_factory_SOURCES = widget-factory.c
+nodist_ctk3_widget_factory_SOURCES = widget_factory_resources.c
 
-BUILT_SOURCES = 			\
-	widget_factory_resources.c
+BUILT_SOURCES = $(nodist_ctk3_widget_factory_SOURCES)
+CLEANFILES = $(nodist_ctk3_widget_factory_SOURCES)
 
 ctk3_widget_factory_DEPENDENCIES = 	\
 	$(top_builddir)/ctk/libctk-3.la

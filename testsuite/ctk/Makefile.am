@@ -150,8 +150,10 @@ keyhash_CFLAGS =					\
 keyhash_SOURCES	=		\
 	keyhash.c 		\
 	ctkkeyhash.c 		\
-	ctkresources.c 		\
 	ctkprivate.c 		\
+	$(NULL)
+nodist_keyhash_SOURCES	=	\
+	ctkresources.c 		\
 	$(NULL)
 
 ctkkeyhash.c: $(top_srcdir)/ctk/ctkkeyhash.c
