@@ -1964,6 +1964,9 @@ _cdk_x11_display_update_grab_info_ungrab (CdkDisplay *display,
 static void
 cdk_x11_display_beep (CdkDisplay *display)
 {
+  if (!CDK_X11_DISPLAY (display)->trusted_client)
+    return;
+
 #ifdef HAVE_XKB
   XkbBell (CDK_DISPLAY_XDISPLAY (display), None, 0, None);
 #else

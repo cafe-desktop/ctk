@@ -5472,6 +5472,9 @@ cdk_x11_window_beep (CdkWindow *window)
 
   display = CDK_WINDOW_DISPLAY (window);
 
+  if (!CDK_X11_DISPLAY (display)->trusted_client)
+    return FALSE;
+
 #ifdef HAVE_XKB
   if (CDK_X11_DISPLAY (display)->use_xkb)
     {
