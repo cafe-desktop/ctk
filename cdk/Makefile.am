@@ -203,16 +203,8 @@ nodist_cdkinclude_HEADERS = cdkconfig.h cdkenumtypes.h cdkversionmacros.h
 deprecatedincludedir = $(includedir)/ctk-3.0/cdk/deprecated
 deprecatedinclude_HEADERS = $(deprecated_h_sources)
 
-common_sources = 		\
-	$(cdk_private_headers)	\
-	$(cdk_c_sources)	\
-	cdkenumtypes.c		\
-	cdkmarshalers.c		\
-	cdkmarshalers.h		\
-	cdkresources.h		\
-	cdkresources.c
-
-libcdk_3_la_SOURCES = $(common_sources)
+libcdk_3_la_SOURCES = $(cdk_private_headers) $(cdk_c_sources)
+nodist_libcdk_3_la_SOURCES = $(cdk_built_sources)
 libcdk_3_la_CFLAGS = $(AM_CFLAGS) $(CDK_HIDDEN_VISIBILITY_CFLAGS)
 libcdk_3_la_LIBADD = $(CDK_DEP_LIBS) $(SHM_LIBS)
 libcdk_3_la_LDFLAGS = $(LDADD)
@@ -412,10 +404,8 @@ endif
 
 lib_LTLIBRARIES = libcdk-3.la
 
-MAINTAINERCLEANFILES = $(cdk_built_sources) stamp-cdkenumtypes.h
-EXTRA_DIST += \
-	$(cdk_built_sources)	\
-	fallback-c89.c
+DISTCLEANFILES = $(cdk_built_sources) stamp-cdkenumtypes.h
+EXTRA_DIST += fallback-c89.c
 
 install-exec-hook:
 if DISABLE_EXPLICIT_DEPS
@@ -499,7 +489,7 @@ cdkresources.c: cdk.gresource.xml $(resource_files)
 # ------------------- MSVC Build Items ----------------
 MSVCPROJS = cdk-3
 
-cdk_3_FILES = $(libcdk_3_la_SOURCES)
+cdk_3_FILES = $(libcdk_3_la_SOURCES) $(nodist_libcdk_3_la_SOURCES)
 cdk_3_EXCLUDES = dummy
 cdk_3_HEADERS_DIR = $(cdkincludedir)
 
@@ -553,19 +543,12 @@ dist-hook: \
 	$(top_builddir)/win32/vs9/cdk-3.headers	\
 	$(INTROSPECTION_INTERMEDIATE_ITEMS)
 
-DISTCLEANFILES = cdkconfig.h stamp-gc-h
+DISTCLEANFILES += cdkconfig.h stamp-gc-h
 
 install-data-local: install-ms-lib install-def-file
 
 uninstall-local: uninstall-ms-lib uninstall-def-file
 	rm -f $(DESTDIR)$(configexecincludedir)/cdkconfig.h
-
-# if srcdir!=builddir, clean out maintainer-clean files from builddir
-# this allows dist to pass.
-distclean-local:
-	if test $(srcdir) != .; then \
-	  rm -f $(MAINTAINERCLEANFILES); \
-	fi
 
 .PHONY: files
 
