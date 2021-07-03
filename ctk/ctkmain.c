@@ -2326,9 +2326,14 @@ ctk_device_grab_add (CtkWidget *widget,
 {
   CtkWindowGroup *group;
   CtkWidget *old_grab_widget;
+  CdkWindow *toplevel;
 
   g_return_if_fail (CTK_IS_WIDGET (widget));
   g_return_if_fail (CDK_IS_DEVICE (device));
+
+  toplevel = cdk_window_get_toplevel (ctk_widget_get_window (widget));
+  if (toplevel && cdk_window_get_window_type (toplevel) == CDK_WINDOW_OFFSCREEN)
+    return;
 
   group = ctk_main_get_window_group (widget);
   old_grab_widget = ctk_window_group_get_current_device_grab (group, device);
