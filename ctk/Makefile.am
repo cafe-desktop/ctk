@@ -554,7 +554,6 @@ ctk_private_h_sources =		\
 	ctkrenderborderprivate.h \
 	ctkrendericonprivate.h	\
 	ctkrenderprivate.h	\
-	ctkresources.h		\
 	ctkroundedboxprivate.h	\
 	ctksearchengine.h	\
 	ctksearchenginesimple.h	\
@@ -1179,20 +1178,18 @@ ctk_extra_sources =				\
 #
 # setup CTK+ sources and their dependencies
 #
-MAINTAINERCLEANFILES = \
+DISTCLEANFILES = \
 	$(ctk_built_sources) 			\
 	$(ctk_dbus_built_sources)		\
 	$(print_portal_built_sources)		\
-	$(stamp_files)
-
-DISTCLEANFILES = ctktypefuncs.inc
+	$(stamp_files)				\
+	ctktypefuncs.inc
 
 if OS_WIN32
 DISTCLEANFILES += ctk-win32.rc
 endif
 
 EXTRA_DIST += $(ctk_all_private_h_sources) $(ctk_extra_sources)
-EXTRA_DIST += $(ctk_built_sources)
 
 
 pkgdatadir = $(datadir)/ctk-$(CTK_API_VERSION)
@@ -1463,7 +1460,8 @@ $(srcdir)/ctktestutils.c: ctktypefuncs.inc
 lib_LTLIBRARIES = libctk-3.la
 
 ctkincludedir = $(includedir)/ctk-3.0/ctk
-ctkinclude_HEADERS = $(ctk_public_h_sources) $(ctk_semi_private_h_sources) $(ctk_built_public_sources) ctkversion.h
+ctkinclude_HEADERS = $(ctk_public_h_sources) $(ctk_semi_private_h_sources)
+nodist_ctkinclude_HEADERS = $(ctk_built_public_sources) ctkversion.h
 
 a11yincludedir = $(includedir)/ctk-3.0/ctk/a11y
 a11yinclude_HEADERS= $(a11y_h_sources)
@@ -1522,6 +1520,7 @@ ctk_3_HEADERS_DIR = $(ctkincludedir)
 
 ctk_3_HEADERS_INST = \
 	$(ctkinclude_HEADERS)	\
+	$(nodist_ctkinclude_HEADERS)	\
 	$(a11y_h_sources)	\
 	$(deprecated_h_sources)
 
@@ -1603,7 +1602,7 @@ distclean-local:
 	fi
 
 if HAVE_INTROSPECTION
-introspected_pub_headers = $(filter-out %private.h ctktextdisplay.h ctktextlayout.h ctkx.h, $(ctkinclude_HEADERS) $(a11yinclude_HEADERS) $(deprecatedinclude_HEADERS))
+introspected_pub_headers = $(filter-out %private.h ctktextdisplay.h ctktextlayout.h ctkx.h, $(ctkinclude_HEADERS) $(a11yinclude_HEADERS) $(deprecatedinclude_HEADERS) $(nodist_ctkinclude_HEADERS))
 
 introspection_files = \
     $(introspected_pub_headers) \
