@@ -28,8 +28,6 @@ TESTS_ENVIRONMENT = 			\
 	CTK_CSD=1			\
 	G_ENABLE_DIAGNOSTIC=0
 
-TEST_PROGS += accessibility-dump
-
 TEST_PROGS += tree-performance
 
 TEST_PROGS += text
@@ -89,7 +87,6 @@ testdata = \
 	$(NULL)
 
 test_in_files = \
-	a11ytests.test.in \
 	a11ychildren.test.in \
 	a11ytree.test.in \
 	a11yvalue.test.in \
