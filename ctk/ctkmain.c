@@ -2233,8 +2233,13 @@ ctk_grab_add (CtkWidget *widget)
 {
   CtkWindowGroup *group;
   CtkWidget *old_grab_widget;
+  CtkWidget *toplevel;
 
   g_return_if_fail (widget != NULL);
+
+  toplevel = ctk_widget_get_toplevel (widget);
+  if (toplevel && cdk_window_get_window_type (ctk_widget_get_window (toplevel)) == CDK_WINDOW_OFFSCREEN)
+    return;
 
   if (!ctk_widget_has_grab (widget) && ctk_widget_is_sensitive (widget))
     {
