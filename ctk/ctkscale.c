@@ -2020,23 +2020,26 @@ ctk_scale_get_layout (CtkScale *scale)
 
   if (!priv->layout && priv->draw_value)
     {
+      PangoLayout *layout;
       int min_layout_width;
 
-      priv->layout = ctk_widget_create_pango_layout (CTK_WIDGET (scale), NULL);
-      ctk_css_node_update_layout_attributes (ctk_css_gadget_get_node (priv->value_gadget), priv->layout);
-
+      layout = ctk_widget_create_pango_layout (CTK_WIDGET (scale), NULL);
+      ctk_css_node_update_layout_attributes (ctk_css_gadget_get_node (priv->value_gadget), layout);
       ctk_css_gadget_get_preferred_size (priv->value_gadget,
                                          CTK_ORIENTATION_HORIZONTAL, -1,
                                          &min_layout_width, NULL,
                                          NULL, NULL);
-      pango_layout_set_width (priv->layout, min_layout_width * PANGO_SCALE);
+
+      pango_layout_set_width (layout, min_layout_width * PANGO_SCALE);
 
       if (priv->value_pos == CTK_POS_LEFT)
-        pango_layout_set_alignment (priv->layout, PANGO_ALIGN_RIGHT);
+        pango_layout_set_alignment (layout, PANGO_ALIGN_RIGHT);
       else if (priv->value_pos == CTK_POS_RIGHT)
-        pango_layout_set_alignment (priv->layout, PANGO_ALIGN_LEFT);
+        pango_layout_set_alignment (layout, PANGO_ALIGN_LEFT);
       else
-        pango_layout_set_alignment (priv->layout, PANGO_ALIGN_CENTER);
+        pango_layout_set_alignment (layout, PANGO_ALIGN_CENTER);
+
+      priv->layout = layout;
     }
 
   if (priv->draw_value)
