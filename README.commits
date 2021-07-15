@@ -1,5 +1,5 @@
-CTK+ is part of the GNOME git repository. At the current time, any
-person with write access to the GNOME repository, can make changes to
+CTK+ is part of the CAFE git repository. At the current time, any
+person with write access to the CAFE repository, can make changes to
 CTK+. This is a good thing, in that it encourages many people to work
 on CTK+, and progress can be made quickly. However, CTK+ is a fairly
 large and complicated package that many other things depend on, so to
@@ -13,15 +13,8 @@ people committing to CTK+ to follow a few rules:
    to ask. But when in doubt, ask. Even if your change is correct,
    somebody may know a better way to do things.
 
-   If you are making changes to CTK+, you should be subscribed
-   to ctk-devel-list@gnome.org. (Subscription address:
-   ctk-devel-list-request@gnome.org.) This is a good place to ask
-   about intended changes.
-
-   #ctk+ on GIMPNet (irc.gimp.org, irc.us.gimp.org, irc.eu.gimp.org, ...)
-   is also a good place to find CTK+ developers to discuss changes with,
-   however, email to ctk-devel-list is the most certain and preferred
-   method.
+   #ctk on Libera.​Chat (irc.libera.chat)
+   is also a good place to find CTK+ developers to discuss changes.
 
 1) Ask _first_.
 
@@ -62,11 +55,3 @@ tracker reference if applicable) and so forth. Be concise but not too brief.
 
   - When committing code on behalf of others use the --author option, e.g.
     git commit -a --author "Joe Coder <joe@coder.org>" and --signoff.
-
-
-Owen Taylor
-13 Aug 1998
-17 Apr 2001
-
-Matthias Clasen
-31 Mar 2009
