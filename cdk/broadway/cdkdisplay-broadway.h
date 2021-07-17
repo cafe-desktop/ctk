@@ -22,7 +22,7 @@
 #ifndef __CDK_BROADWAY_DISPLAY__
 #define __CDK_BROADWAY_DISPLAY__
 
-#include "cdkcdkbroadwaydisplay.h"
+#include "cdkbroadwaydisplay.h"
 
 #include "cdkdisplayprivate.h"
 #include "cdkkeys.h"

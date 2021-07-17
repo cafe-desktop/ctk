@@ -18,7 +18,7 @@ cdk_broadway_sources = files(
 )
 
 cdk_broadway_public_headers = files(
-  'cdkcdkbroadwaydisplay.h',
+  'cdkbroadwaydisplay.h',
   'cdkbroadwaywindow.h',
   'cdkbroadwaycursor.h',
   'cdkbroadwaymonitor.h',

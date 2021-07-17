@@ -29,7 +29,7 @@
 
 #define __CDKBROADWAY_H_INSIDE__
 
-#include <cdk/broadway/cdkcdkbroadwaydisplay.h>
+#include <cdk/broadway/cdkbroadwaydisplay.h>
 #include <cdk/broadway/cdkbroadwaywindow.h>
 #include <cdk/broadway/cdkbroadwaycursor.h>
 #include <cdk/broadway/cdkbroadwaymonitor.h>

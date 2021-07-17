@@ -27,7 +27,7 @@ libcdkinclude_HEADERS = 	\
 	cdkbroadway.h
 
 libcdkbroadwayinclude_HEADERS = 	\
-	cdkcdkbroadwaydisplay.h		\
+	cdkbroadwaydisplay.h		\
 	cdkbroadwaywindow.h		\
 	cdkbroadwaycursor.h		\
 	cdkbroadwaymonitor.h		\
