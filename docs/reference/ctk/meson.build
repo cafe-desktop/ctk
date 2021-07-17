@@ -381,7 +381,7 @@ images = [
 
 content_files = [
   'broadway.xml',
-  'broadwayd.xml',
+  'cdkbroadwayd.xml',
   'building.sgml',
   'css-overview.xml',
   'css-properties.xml',
@@ -512,7 +512,7 @@ if get_option('man') and xsltproc.found()
   ]
 
   if broadway_enabled
-    man_files += [[ 'broadwayd', '1', ]]
+    man_files += [[ 'cdkbroadwayd', '1', ]]
   endif
 
   foreach man: man_files

@@ -18,7 +18,7 @@ cdk_broadway_sources = files(
 )
 
 cdk_broadway_public_headers = files(
-  'cdkbroadwaydisplay.h',
+  'cdkcdkbroadwaydisplay.h',
   'cdkbroadwaywindow.h',
   'cdkbroadwaycursor.h',
   'cdkbroadwaymonitor.h',
@@ -65,14 +65,14 @@ libcdk_broadway = static_library('cdk-broadway',
   link_args: common_ldflags,
   dependencies: [cdk_deps, cdk_broadway_deps])
 
-# ctk4-broadwayd
+# ctk4-cdkbroadwayd
 
-broadwayd_syslib = os_win32 ? cc.find_library('ws2_32') : shmlib
+cdkbroadwayd_syslib = os_win32 ? cc.find_library('ws2_32') : shmlib
 
-executable('broadwayd',
+executable('cdkbroadwayd',
   clienthtml_h, broadwayjs_h,
-  'broadwayd.c', 'broadway-server.c', 'broadway-buffer.c', 'broadway-output.c',
+  'cdkbroadwayd.c', 'broadway-server.c', 'broadway-buffer.c', 'broadway-output.c',
   include_directories: [confinc, cdkinc, include_directories('.')],
   c_args: ['-DCDK_COMPILATION', '-DG_LOG_DOMAIN="Cdk"', ],
-  dependencies : [broadwayd_syslib, cdk_deps],
+  dependencies : [cdkbroadwayd_syslib, cdk_deps],
   install : true)

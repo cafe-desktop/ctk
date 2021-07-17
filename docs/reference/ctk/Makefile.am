@@ -281,7 +281,7 @@ MKDB_OPTIONS=--output-format=xml --name-space=ctk --default-includes=ctk/ctk.h
 # Extra SGML files that are included by $(DOC_MAIN_SGML_FILE)
 content_files =					\
 	broadway.xml				\
-	broadwayd.xml				\
+	cdkbroadwayd.xml				\
 	building.sgml				\
 	compiling.sgml				\
 	css-overview.xml			\
@@ -509,7 +509,7 @@ man_MANS = 				\
 	ctk3-demo-application.1		\
 	ctk3-widget-factory.1		\
 	ctk3-icon-browser.1		\
-	broadwayd.1			\
+	cdkbroadwayd.1			\
 	ctk-builder-tool.1 		\
 	ctk-query-settings.1
 

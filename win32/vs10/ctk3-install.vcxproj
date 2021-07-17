@@ -241,7 +241,7 @@
       <Project>{343333c4-d46c-4c97-a986-959cca6f1de0}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-    <ProjectReference Include="broadwayd.vcxproj">
+    <ProjectReference Include="cdkbroadwayd.vcxproj">
       <Project>{e9687d21-e214-4a0c-9eb4-8b38ebb783e5}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>

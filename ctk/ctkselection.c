@@ -1187,7 +1187,7 @@ ctk_selection_convert (CtkWidget *widget,
 
 #if defined CDK_WINDOWING_BROADWAY
   /* This patch is a workaround to circumvent unimplemented
-     clipboard functionality in broadwayd. It eliminates
+     clipboard functionality in cdkbroadwayd. It eliminates
      35s delay on popup menu before first clipboard copy,
      by preventing conversion to be started.
    

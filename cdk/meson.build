@@ -124,7 +124,7 @@ cdk_broadway_sources = files([
   'broadway/cdkglobals-broadway.c',
   'broadway/cdkeventsource.c',
   'broadway/cdkdnd-broadway.c',
-  'broadway/broadwayd.c',
+  'broadway/cdkbroadwayd.c',
   'broadway/cdkdevicemanager-broadway.c',
   'broadway/cdkdevice-broadway.c',
   'broadway/broadway-buffer.c',

@@ -29,8 +29,8 @@ EXTRA_DIST +=	\
 	ctk3-install.vcxproj	\
 	ctk3-install.vcxproj.filters	\
 	ctk3-introspect.vcxproj		\
-	broadwayd.vcxproj	\
-	broadwayd.vcxproj.filters	\
+	cdkbroadwayd.vcxproj	\
+	cdkbroadwayd.vcxproj.filters	\
 	cdk3-broadway.vcxproj	\
 	cdk3-broadway.vcxproj.filters	\
 	ctk3-build-defines.props	\

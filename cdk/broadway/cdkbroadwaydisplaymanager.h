@@ -1,4 +1,4 @@
-/* cdkbroadwaydisplaymanager.h
+/* cdkcdkbroadwaydisplaymanager.h
  *
  * Copyright (C) 2005-2007  Imendio AB
  * Copyright 2010 Red Hat, Inc.

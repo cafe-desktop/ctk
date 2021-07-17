@@ -28,7 +28,7 @@
 #include "cdkwindow-broadway.h"
 #include "cdkscreen-broadway.h"
 
-#include "cdkbroadwaydisplay.h"
+#include "cdkcdkbroadwaydisplay.h"
 #include "cdkdisplay.h"
 #include "cdkwindow.h"
 #include "cdkwindowimpl.h"

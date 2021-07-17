@@ -38,10 +38,10 @@ port that you want to use.
 <para>
 It is also possible to use multiple CTK+ applications in the same
 web browser window, by using the Broadway server,
-<command>broadwayd</command>, that ships with CTK+.
-To use broadwayd, start it like this:
+<command>cdkbroadwayd</command>, that ships with CTK+.
+To use cdkbroadwayd, start it like this:
 <programlisting>
-broadwayd :5
+cdkbroadwayd :5
 </programlisting>
 Then point your web browser at <literal>http://127.0.0.1:8085</literal>.
 Start your applications like this:

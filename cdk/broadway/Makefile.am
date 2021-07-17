@@ -21,13 +21,13 @@ LDADDS = $(CDK_DEP_LIBS) -lrt
 
 noinst_LTLIBRARIES = libcdk-broadway.la
 
-bin_PROGRAMS = broadwayd
+bin_PROGRAMS = cdkbroadwayd
 
 libcdkinclude_HEADERS = 	\
 	cdkbroadway.h
 
 libcdkbroadwayinclude_HEADERS = 	\
-	cdkbroadwaydisplay.h		\
+	cdkcdkbroadwaydisplay.h		\
 	cdkbroadwaywindow.h		\
 	cdkbroadwaycursor.h		\
 	cdkbroadwaymonitor.h		\
@@ -87,9 +87,9 @@ libcdk_broadway_la_LIBADD = \
 	$(NULL)
 endif
 
-broadwayd_SOURCES = \
+cdkbroadwayd_SOURCES = \
 	broadway-protocol.h		\
-	broadwayd.c 			\
+	cdkbroadwayd.c 			\
 	broadway-server.h		\
 	broadway-server.c		\
 	broadway-buffer.c		\
@@ -98,9 +98,9 @@ broadwayd_SOURCES = \
 	broadway-output.c
 
 if OS_WIN32
-broadwayd_LDADD = $(CDK_DEP_LIBS) -lws2_32
+cdkbroadwayd_LDADD = $(CDK_DEP_LIBS) -lws2_32
 else
-broadwayd_LDADD = $(CDK_DEP_LIBS) @SHM_LIBS@
+cdkbroadwayd_LDADD = $(CDK_DEP_LIBS) @SHM_LIBS@
 endif
 
 MAINTAINERCLEANFILES = $(broadway_built_sources)
@@ -113,7 +113,7 @@ EXTRA_DIST += \
 	gen-c-array.py
 
 # ------------------- MSVC Build Items ----------------
-MSVCPROJS = cdk3-broadway broadwayd
+MSVCPROJS = cdk3-broadway cdkbroadwayd
 
 cdk3_broadway_FILES = $(libcdk_broadway_la_SOURCES)
 cdk3_broadway_EXCLUDES = dummy
@@ -123,14 +123,14 @@ cdk3_broadway_HEADERS_INST = $(libcdkbroadwayinclude_HEADERS)
 
 cdk3_broadway_HEADERS_EXCLUDES = dummy
 
-broadwayd_FILES = $(broadwayd_SOURCES)
-broadwayd_EXCLUDES = dummy
+cdkbroadwayd_FILES = $(cdkbroadwayd_SOURCES)
+cdkbroadwayd_EXCLUDES = dummy
 
 include $(top_srcdir)/win32/Makefile.msvcproj
 
 dist-hook: \
 	$(top_builddir)/win32/vs9/cdk3-broadway.vcproj		\
-	$(top_builddir)/win32/vs9/broadwayd.vcproj		\
+	$(top_builddir)/win32/vs9/cdkbroadwayd.vcproj		\
 	$(top_builddir)/win32/vs9/cdk3-broadway.headers
 
 -include $(top_srcdir)/git.mk

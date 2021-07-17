@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="broadwayd"
+	Name="cdkbroadwayd"
 	ProjectGUID="{E9687D21-E214-4A0C-9EB4-8B38EBB783E5}"
-	RootNamespace="broadwayd"
+	RootNamespace="cdkbroadwayd"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="196613"
 	>
@@ -156,7 +156,7 @@
 			Filter="cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
-#include "broadwayd.sourcefiles"
+#include "cdkbroadwayd.sourcefiles"
 		</Filter>
 		<Filter
 			Name="Headers"

@@ -48,8 +48,8 @@ if exist $(ConfigurationName)\$(PlatformName)\bin\Ctk-3.0.typelib copy $(Configu
 goto DONE_BIN&#x0D;&#x0A;
 
 :DO_BROADWAY_BIN&#x0D;&#x0A;
-copy $(ConfigurationName)\$(PlatformName)\bin\broadwayd.exe $(CopyDir)\bin&#x0D;&#x0A;
-copy $(ConfigurationName)\$(PlatformName)\bin\broadwayd.pdb $(CopyDir)\bin&#x0D;&#x0A;
+copy $(ConfigurationName)\$(PlatformName)\bin\cdkbroadwayd.exe $(CopyDir)\bin&#x0D;&#x0A;
+copy $(ConfigurationName)\$(PlatformName)\bin\cdkbroadwayd.pdb $(CopyDir)\bin&#x0D;&#x0A;
 
 if &quot;$(ConfigurationName)&quot; == &quot;Release_Broadway&quot; goto DO_BROADWAY_RELEASE&#x0D;&#x0A;
 if &quot;$(ConfigurationName)&quot; == &quot;Debug_Broadway&quot; goto DO_BROADWAY_DEBUG&#x0D;&#x0A;

@@ -5,8 +5,8 @@ GENERATED_ITEMS = \
 	cdk3-win32.vcxproj.filters		\
 	cdk3-broadway.vcxproj			\
 	cdk3-broadway.vcxproj.filters		\
-	broadwayd.vcxproj			\
-	broadwayd.vcxproj.filters		\
+	cdkbroadwayd.vcxproj			\
+	cdkbroadwayd.vcxproj.filters		\
 	cdk-3.vcxproj				\
 	cdk-3.vcxproj.filters			\
 	ctk-3.vcxproj				\
@@ -37,8 +37,8 @@ EXTRA_DIST += \
 	cdk3-win32.vcxproj.filtersin		\
 	cdk3-broadway.vcxprojin			\
 	cdk3-broadway.vcxproj.filtersin		\
-	broadwayd.vcxprojin			\
-	broadwayd.vcxproj.filtersin		\
+	cdkbroadwayd.vcxprojin			\
+	cdkbroadwayd.vcxproj.filtersin		\
 	cdk-3.vcxprojin				\
 	cdk-3.vcxproj.filtersin			\
 	ctk-3.vcxprojin				\

@@ -10,7 +10,7 @@ MSVC_HEADERS_LISTS =	\
 GENERATED_ITEMS = \
 	cdk3-win32.vcproj		\
 	cdk3-broadway.vcproj		\
-	broadwayd.vcproj		\
+	cdkbroadwayd.vcproj		\
 	cdk-3.vcproj			\
 	ctk-3.vcproj			\
 	ctk3-demo.vcproj		\
@@ -37,7 +37,7 @@ EXTRA_DIST += \
 	cailutil-3.vcprojin		\
 	ctk3-install.vcproj		\
 	ctk3-introspect.vcproj		\
-	broadwayd.vcprojin		\
+	cdkbroadwayd.vcprojin		\
 	cdk3-broadway.vcprojin		\
 	ctk3-build-defines.vsprops	\
 	ctk3-copy-cdk-broadway.vsprops	\

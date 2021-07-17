@@ -46,8 +46,8 @@ if exist $(BinDir)\Ctk-3.0.typelib copy "$(BinDir)\Ctk-3.0.typelib" $(CopyDir)\l
 goto DONE_BIN
 
 :DO_BROADWAY_BIN
-copy "$(BinDir)\broadwayd.exe" $(CopyDir)\bin
-copy "$(BinDir)\broadwayd.pdb" $(CopyDir)\bin
+copy "$(BinDir)\cdkbroadwayd.exe" $(CopyDir)\bin
+copy "$(BinDir)\cdkbroadwayd.pdb" $(CopyDir)\bin
 
 if "$(Configuration)" == "Release_Broadway" goto DO_BROADWAY_RELEASE
 if "$(Configuration)" == "Debug_Broadway" goto DO_BROADWAY_DEBUG

@@ -2,10 +2,10 @@
 <!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
                "http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd" [
 ]>
-<refentry id="broadwayd">
+<refentry id="cdkbroadwayd">
 
 <refentryinfo>
-  <title>broadwayd</title>
+  <title>cdkbroadwayd</title>
   <productname>CTK+</productname>
   <authorgroup>
     <author>
@@ -17,19 +17,19 @@
 </refentryinfo>
 
 <refmeta>
-  <refentrytitle>broadwayd</refentrytitle>
+  <refentrytitle>cdkbroadwayd</refentrytitle>
   <manvolnum>1</manvolnum>
   <refmiscinfo class="manual">User Commands</refmiscinfo>
 </refmeta>
 
 <refnamediv>
-  <refname>broadwayd</refname>
+  <refname>cdkbroadwayd</refname>
   <refpurpose>Broadway display server</refpurpose>
 </refnamediv>
 
 <refsynopsisdiv>
 <cmdsynopsis>
-<command>broadwayd</command>
+<command>cdkbroadwayd</command>
 <arg choice="opt">--port <replaceable>PORT</replaceable></arg>
 <arg choice="opt">--address <replaceable>ADDRESS</replaceable></arg>
 <arg choice="opt">--unixsocket <replaceable>ADDRESS</replaceable></arg>
@@ -39,15 +39,15 @@
 
 <refsect1><title>Description</title>
 <para>
-<command>broadwayd</command> is a display server for the Broadway
+<command>cdkbroadwayd</command> is a display server for the Broadway
 CDK backend. It allows multiple CTK+ applications to display their
-windows in the same web browser, by connecting to broadwayd.
+windows in the same web browser, by connecting to cdkbroadwayd.
 </para>
 <para>
-When using broadwayd, specify the display number to use, prefixed
+When using cdkbroadwayd, specify the display number to use, prefixed
 with a colon, similar to X. The default display number is 0.
 <programlisting>
-broadwayd :5
+cdkbroadwayd :5
 </programlisting>
 Then point your web browser at <literal>http://127.0.0.1:8085</literal>.
 Start your applications like this:

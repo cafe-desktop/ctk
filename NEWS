@@ -2804,7 +2804,7 @@ Overview of Changes in CTK+ 3.19.7
  759898 W32: There's a gap between tooltip window and its shadow
  760350 Cast the return value of g_array_free to void* before casting to...
  760388 MS lib files cannot be generated (with patch)
- 760416 broadwayd --help shows translated characters as question marks o...
+ 760416 cdkbroadwayd --help shows translated characters as question marks o...
  760427 Adwaita: Separators in popovers shouldn't always have margins
  760445 regression: openQA no longer able to press ctrl-alt-del to get t...
  760509 CdkWindow positions/sizes include css margins
@@ -4593,7 +4593,7 @@ Overview of Changes in CTK+ 3.15.1
  738886 Out of bounds access in MyEnhancedXkbTranslateKeyCode
  738955 Client-side decoration window menus appear at wrong positio...
  738982 Add support for ATK_STATE_HAS_TOOLTIP
- 739001 Fix Build of broadwayd on Visual Studio
+ 739001 Fix Build of cdkbroadwayd on Visual Studio
  739005 ctkstatusicon.c won't build with both X11 and Quartz backen...
  739111 CtkFontChooserDialog fixes
  739150 Dragging bookmark crashes nautilus
@@ -6919,7 +6919,7 @@ Overview of Changes in CTK+ 3.7.6
 
 * CtkFrame now draws a background.
 
-* The Broadway backend now installs a separate server: broadwayd.
+* The Broadway backend now installs a separate server: cdkbroadwayd.
 
 * Bug fixes:
  687025 iconhelper: Treat empty string as NULL stock-id

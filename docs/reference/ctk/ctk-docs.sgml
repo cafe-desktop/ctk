@@ -424,7 +424,7 @@
     <xi:include href="ctk-builder-tool.xml" />
     <xi:include href="ctk-launch.xml" />
     <xi:include href="ctk-query-settings.xml" />
-    <xi:include href="broadwayd.xml" />
+    <xi:include href="cdkbroadwayd.xml" />
   </part>
 
   <part id="platform-support">
