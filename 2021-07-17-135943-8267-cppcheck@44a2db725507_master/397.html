@@ -1,0 +1,255 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cppcheck - HTML report - ctk (cppcheck 2.3-1)</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+pre { line-height: 125%; margin: 0; }
+td.linenos pre { color: #000000; background-color: #f0f0f0; padding: 0 5px 0 5px; }
+span.linenos { color: #000000; background-color: #f0f0f0; padding: 0 5px 0 5px; }
+td.linenos pre.special { color: #000000; background-color: #ffffc0; padding: 0 5px 0 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding: 0 5px 0 5px; }
+.highlight .hll { background-color: #ffffcc }
+.highlight { background: #ffffff; }
+.highlight .c { color: #888888 } /* Comment */
+.highlight .err { color: #FF0000; background-color: #FFAAAA } /* Error */
+.highlight .k { color: #008800; font-weight: bold } /* Keyword */
+.highlight .o { color: #333333 } /* Operator */
+.highlight .ch { color: #888888 } /* Comment.Hashbang */
+.highlight .cm { color: #888888 } /* Comment.Multiline */
+.highlight .cp { color: #557799 } /* Comment.Preproc */
+.highlight .cpf { color: #888888 } /* Comment.PreprocFile */
+.highlight .c1 { color: #888888 } /* Comment.Single */
+.highlight .cs { color: #cc0000; font-weight: bold } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #c65d09; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008800; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008800; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008800; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #003388; font-weight: bold } /* Keyword.Pseudo */
+.highlight .kr { color: #008800; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #333399; font-weight: bold } /* Keyword.Type */
+.highlight .m { color: #6600EE; font-weight: bold } /* Literal.Number */
+.highlight .s { background-color: #fff0f0 } /* Literal.String */
+.highlight .na { color: #0000CC } /* Name.Attribute */
+.highlight .nb { color: #007020 } /* Name.Builtin */
+.highlight .nc { color: #BB0066; font-weight: bold } /* Name.Class */
+.highlight .no { color: #003366; font-weight: bold } /* Name.Constant */
+.highlight .nd { color: #555555; font-weight: bold } /* Name.Decorator */
+.highlight .ni { color: #880000; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #FF0000; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0066BB; font-weight: bold } /* Name.Function */
+.highlight .nl { color: #997700; font-weight: bold } /* Name.Label */
+.highlight .nn { color: #0e84b5; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #007700 } /* Name.Tag */
+.highlight .nv { color: #996633 } /* Name.Variable */
+.highlight .ow { color: #000000; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #6600EE; font-weight: bold } /* Literal.Number.Bin */
+.highlight .mf { color: #6600EE; font-weight: bold } /* Literal.Number.Float */
+.highlight .mh { color: #005588; font-weight: bold } /* Literal.Number.Hex */
+.highlight .mi { color: #0000DD; font-weight: bold } /* Literal.Number.Integer */
+.highlight .mo { color: #4400EE; font-weight: bold } /* Literal.Number.Oct */
+.highlight .sa { background-color: #fff0f0 } /* Literal.String.Affix */
+.highlight .sb { background-color: #fff0f0 } /* Literal.String.Backtick */
+.highlight .sc { color: #0044DD } /* Literal.String.Char */
+.highlight .dl { background-color: #fff0f0 } /* Literal.String.Delimiter */
+.highlight .sd { color: #DD4422 } /* Literal.String.Doc */
+.highlight .s2 { background-color: #fff0f0 } /* Literal.String.Double */
+.highlight .se { color: #666666; font-weight: bold; background-color: #fff0f0 } /* Literal.String.Escape */
+.highlight .sh { background-color: #fff0f0 } /* Literal.String.Heredoc */
+.highlight .si { background-color: #eeeeee } /* Literal.String.Interpol */
+.highlight .sx { color: #DD2200; background-color: #fff0f0 } /* Literal.String.Other */
+.highlight .sr { color: #000000; background-color: #fff0ff } /* Literal.String.Regex */
+.highlight .s1 { background-color: #fff0f0 } /* Literal.String.Single */
+.highlight .ss { color: #AA6600 } /* Literal.String.Symbol */
+.highlight .bp { color: #007020 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0066BB; font-weight: bold } /* Name.Function.Magic */
+.highlight .vc { color: #336699 } /* Name.Variable.Class */
+.highlight .vg { color: #dd7700; font-weight: bold } /* Name.Variable.Global */
+.highlight .vi { color: #3333BB } /* Name.Variable.Instance */
+.highlight .vm { color: #996633 } /* Name.Variable.Magic */
+.highlight .il { color: #0000DD; font-weight: bold } /* Literal.Number.Integer.Long */
+    </style>
+    <script>
+      function getStyle(el, styleProp) {
+        var y;
+
+        if (el.currentStyle) {
+          y = el.currentStyle[styleProp];
+        } else if (window.getComputedStyle) {
+          y = document.defaultView.getComputedStyle(el, null).getPropertyValue(styleProp);
+        }
+
+        return y;
+      }
+
+      function toggle() {
+        var el = this.expandable_content;
+        var mark = this.expandable_marker;
+
+        if (el.style.display === "block") {
+          el.style.display = "none";
+          mark.textContent = "[+]";
+        } else {
+          el.style.display = "block";
+          mark.textContent = "[-]";
+        }
+      }
+
+      function initExpandables() {
+        var elements = document.querySelectorAll(".expandable");
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          var el = elements[i];
+          var clickable = el.querySelector("span");
+          var marker = clickable.querySelector(".marker");
+          var content = el.querySelector(".content");
+          var width = clickable.clientWidth - parseInt(getStyle(content, "padding-left")) - parseInt(getStyle(content, "padding-right"));
+          content.style.width = width + "px";
+          clickable.expandable_content = content;
+          clickable.expandable_marker = marker;
+          clickable.addEventListener("click", toggle);
+        }
+      }
+
+      function toggleDisplay(id) {
+        var elements = document.querySelectorAll("." + id);
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          elements[i].classList.toggle("d-none");
+        }
+      }
+
+      function toggleAll() {
+        var elements = document.querySelectorAll("input");
+
+        // starting from 1 since 0 is the "toggle all" input
+        for (var i = 1, len = elements.length; i < len; i++) {
+          var el = elements[i];
+
+          if (el.checked) {
+            el.checked = false;
+          } else {
+            el.checked = true;
+          }
+
+          toggleDisplay(el.id);
+        }
+      }
+      window.addEventListener("load", initExpandables);
+    </script>
+  </head>
+  <body>
+    <div id="header" class="header">
+      <h1>Cppcheck report - ctk (cppcheck 2.3-1): testsuite/cdk/cairo.c</h1>
+    </div>
+    <div class="wrapper">
+      <div id="menu">
+       <p id="filename"><a href="index.html">Defects:</a> cairo.c</p>
+<a href="397.html#line-16"> syntaxError 16</a>
+    </div>
+    <div id="content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40</pre></div></td><td class="code"><div class="highlight"><pre><span></span><a name="line-1"></a><span class="cp">#include</span> <span class="cpf">&lt;cdk/cdk.h&gt;</span><span class="cp"></span>
+<a name="line-2"></a>
+<a name="line-3"></a><span class="k">static</span> <span class="kt">void</span>
+<a name="line-4"></a><span class="n">test_set_source_big_pixbuf</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<a name="line-5"></a><span class="p">{</span>
+<a name="line-6"></a>  <span class="n">cairo_surface_t</span> <span class="o">*</span><span class="n">surface</span><span class="p">;</span>
+<a name="line-7"></a>  <span class="n">GdkPixbuf</span> <span class="o">*</span><span class="n">pixbuf</span><span class="p">;</span>
+<a name="line-8"></a>  <span class="n">cairo_t</span> <span class="o">*</span><span class="n">cr</span><span class="p">;</span>
+<a name="line-9"></a>
+<a name="line-10"></a><span class="cp">#define WAY_TOO_BIG 65540</span>
+<a name="line-11"></a>
+<a name="line-12"></a>  <span class="cm">/* Check that too big really is to big.</span>
+<a name="line-13"></a><span class="cm">   * If this check fails, somebody improved Cairo and this test is useless.</span>
+<a name="line-14"></a><span class="cm">   */</span>
+<a name="line-15"></a>  <span class="n">surface</span> <span class="o">=</span> <span class="n">cairo_image_surface_create</span> <span class="p">(</span><span class="n">CAIRO_FORMAT_ARGB32</span><span class="p">,</span> <span class="n">WAY_TOO_BIG</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<a name="line-16"></a><span class="hll">  <span class="n">g_assert_cmpint</span> <span class="p">(</span><span class="n">cairo_surface_status</span> <span class="p">(</span><span class="n">surface</span><span class="p">),</span> <span class="o">!=</span><span class="p">,</span> <span class="n">CAIRO_STATUS_SUCCESS</span><span class="p">);</span><span class="error2">&lt;--- syntax error</span>
+</span><a name="line-17"></a>  <span class="n">cairo_surface_destroy</span> <span class="p">(</span><span class="n">surface</span><span class="p">);</span>
+<a name="line-18"></a>
+<a name="line-19"></a>  <span class="n">surface</span> <span class="o">=</span> <span class="n">cairo_image_surface_create</span> <span class="p">(</span><span class="n">CAIRO_FORMAT_ARGB32</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<a name="line-20"></a>  <span class="n">cr</span> <span class="o">=</span> <span class="n">cairo_create</span> <span class="p">(</span><span class="n">surface</span><span class="p">);</span>
+<a name="line-21"></a>  <span class="n">pixbuf</span> <span class="o">=</span> <span class="n">gdk_pixbuf_new</span> <span class="p">(</span><span class="n">GDK_COLORSPACE_RGB</span><span class="p">,</span> <span class="n">FALSE</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">WAY_TOO_BIG</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<a name="line-22"></a>
+<a name="line-23"></a>  <span class="n">cdk_cairo_set_source_pixbuf</span> <span class="p">(</span><span class="n">cr</span><span class="p">,</span> <span class="n">pixbuf</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<a name="line-24"></a>  <span class="n">g_assert_cmpint</span> <span class="p">(</span><span class="n">cairo_status</span> <span class="p">(</span><span class="n">cr</span><span class="p">),</span> <span class="o">!=</span><span class="p">,</span> <span class="n">CAIRO_STATUS_SUCCESS</span><span class="p">);</span>
+<a name="line-25"></a>
+<a name="line-26"></a>  <span class="n">g_object_unref</span> <span class="p">(</span><span class="n">pixbuf</span><span class="p">);</span>
+<a name="line-27"></a>  <span class="n">cairo_destroy</span> <span class="p">(</span><span class="n">cr</span><span class="p">);</span>
+<a name="line-28"></a>  <span class="n">cairo_surface_destroy</span> <span class="p">(</span><span class="n">surface</span><span class="p">);</span>
+<a name="line-29"></a><span class="p">}</span>
+<a name="line-30"></a>
+<a name="line-31"></a><span class="kt">int</span>
+<a name="line-32"></a><span class="n">main</span> <span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<a name="line-33"></a><span class="p">{</span>
+<a name="line-34"></a>  <span class="n">g_test_init</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">argv</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+<a name="line-35"></a>  <span class="n">cdk_init</span> <span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">argv</span><span class="p">);</span>
+<a name="line-36"></a>
+<a name="line-37"></a>  <span class="n">g_test_add_func</span> <span class="p">(</span><span class="s">&quot;/drawing/set-source-big-pixbuf&quot;</span><span class="p">,</span> <span class="n">test_set_source_big_pixbuf</span><span class="p">);</span>
+<a name="line-38"></a>
+<a name="line-39"></a>  <span class="k">return</span> <span class="nf">g_test_run</span> <span class="p">();</span>
+<a name="line-40"></a><span class="p">}</span>
+</pre></div>
+</td></tr></table>
+      </div> <!-- /.wrapper -->
+    </div>
+    <div id="footer" class="footer">
+      <p>
+        Cppcheck 2.3 - a tool for static C/C++ code analysis<br>
+        <br>
+        Internet: <a href="http://cppcheck.net">http://cppcheck.net</a><br>
+        IRC: <a href="irc://irc.freenode.net/cppcheck">irc://irc.freenode.net/cppcheck</a><br>
+      </p>
+    </div>
+  </body>
+</html>

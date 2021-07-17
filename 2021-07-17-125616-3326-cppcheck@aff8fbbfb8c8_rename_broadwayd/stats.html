@@ -1,0 +1,154 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cppcheck - HTML report - ctk (cppcheck 2.3-1)</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+    </style>
+    <script>
+      function getStyle(el, styleProp) {
+        var y;
+
+        if (el.currentStyle) {
+          y = el.currentStyle[styleProp];
+        } else if (window.getComputedStyle) {
+          y = document.defaultView.getComputedStyle(el, null).getPropertyValue(styleProp);
+        }
+
+        return y;
+      }
+
+      function toggle() {
+        var el = this.expandable_content;
+        var mark = this.expandable_marker;
+
+        if (el.style.display === "block") {
+          el.style.display = "none";
+          mark.textContent = "[+]";
+        } else {
+          el.style.display = "block";
+          mark.textContent = "[-]";
+        }
+      }
+
+      function initExpandables() {
+        var elements = document.querySelectorAll(".expandable");
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          var el = elements[i];
+          var clickable = el.querySelector("span");
+          var marker = clickable.querySelector(".marker");
+          var content = el.querySelector(".content");
+          var width = clickable.clientWidth - parseInt(getStyle(content, "padding-left")) - parseInt(getStyle(content, "padding-right"));
+          content.style.width = width + "px";
+          clickable.expandable_content = content;
+          clickable.expandable_marker = marker;
+          clickable.addEventListener("click", toggle);
+        }
+      }
+
+      function toggleDisplay(id) {
+        var elements = document.querySelectorAll("." + id);
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          elements[i].classList.toggle("d-none");
+        }
+      }
+
+      function toggleAll() {
+        var elements = document.querySelectorAll("input");
+
+        // starting from 1 since 0 is the "toggle all" input
+        for (var i = 1, len = elements.length; i < len; i++) {
+          var el = elements[i];
+
+          if (el.checked) {
+            el.checked = false;
+          } else {
+            el.checked = true;
+          }
+
+          toggleDisplay(el.id);
+        }
+      }
+      window.addEventListener("load", initExpandables);
+    </script>
+  </head>
+  <body>
+    <div id="header" class="header">
+      <h1>Cppcheck report - ctk (cppcheck 2.3-1): Statistics</h1>
+    </div>
+    <div class="wrapper">
+      <div id="menu_index">
+       <p id="filename"><a href="index.html">Back to summary</a> </p>
+
+    </div>
+    <div id="content_index">
+<p>Top 10 files for error severity, total findings: 475<br>
+&#160;&#160;&#160;63&#160;<a href="119.html">  ctk/ctkcellrenderertext.c</a><br>
+&#160;&#160;&#160;37&#160;<a href="92.html">  ctk/ctkwidget.h</a><br>
+&#160;&#160;&#160;31&#160;<a href="103.html">  ctk/ctkstylecontext.h</a><br>
+&#160;&#160;&#160;19&#160;<a href="91.html">  ctk/ctkwindow.h</a><br>
+&#160;&#160;&#160;19&#160;<a href="95.html">  ctk/ctklabel.h</a><br>
+&#160;&#160;&#160;17&#160;<a href="8.html">  cdk/cdkdisplay.h</a><br>
+&#160;&#160;&#160;13&#160;<a href="96.html">  ctk/ctktreeview.h</a><br>
+&#160;&#160;&#160;13&#160;<a href="110.html">  ctk/ctkdnd.h</a><br>
+&#160;&#160;&#160;11&#160;<a href="132.html">  ctk/ctkicontheme.h</a><br>
+&#160;&#160;&#160;10&#160;<a href="111.html">  ctk/ctkrender.h</a><br>
+</p>
+<p>Top 10 files for warning severity, total findings: 28<br>
+&#160;&#160;&#160;7&#160;<a href="197.html">  ctk/ctktreemodelfilter.c</a><br>
+&#160;&#160;&#160;4&#160;<a href="198.html">  ctk/ctktreemodelsort.c</a><br>
+&#160;&#160;&#160;3&#160;<a href="200.html">  ctk/ctktreestore.c</a><br>
+&#160;&#160;&#160;3&#160;<a href="128.html">  ctk/ctkcomposetable.c</a><br>
+&#160;&#160;&#160;2&#160;<a href="52.html">  cdk/win32/cdkselection-win32.c</a><br>
+&#160;&#160;&#160;2&#160;<a href="42.html">  cdk/win32/cdkcursor-win32.c</a><br>
+&#160;&#160;&#160;1&#160;<a href="323.html">  modules/input/ctkimcontextxim.c</a><br>
+&#160;&#160;&#160;1&#160;<a href="237.html">  ctk/gdkpixbufutils.c</a><br>
+&#160;&#160;&#160;1&#160;<a href="217.html">  ctk/deprecated/ctkhsv.c</a><br>
+&#160;&#160;&#160;1&#160;<a href="158.html">  ctk/ctkmountoperation-x11.c</a><br>
+</p>
+<p>Top 10 files for portability severity, total findings: 9<br>
+&#160;&#160;&#160;8&#160;<a href="86.html">  ctk/ctk-builder-tool.c</a><br>
+&#160;&#160;&#160;1&#160;<a href="58.html">  cdk/x11/cdkdisplay-x11.c</a><br>
+</p>
+<p>Top 10 files for style severity, total findings: 1088<br>
+&#160;&#160;&#160;231&#160;<a href="351.html">  tests/testctk.c</a><br>
+&#160;&#160;&#160;33&#160;&#160;<a href="330.html">  modules/printbackends/cups/ctkprintbackendcups.c</a><br>
+&#160;&#160;&#160;22&#160;&#160;<a href="388.html">  tests/testwindows.c</a><br>
+&#160;&#160;&#160;12&#160;&#160;<a href="357.html">  tests/testflowbox.c</a><br>
+&#160;&#160;&#160;12&#160;&#160;<a href="64.html">  cdk/x11/cdkwindow-x11.c</a><br>
+&#160;&#160;&#160;12&#160;&#160;<a href="59.html">  cdk/x11/cdkdnd-x11.c</a><br>
+&#160;&#160;&#160;11&#160;&#160;<a href="337.html">  tests/print-editor.c</a><br>
+&#160;&#160;&#160;11&#160;&#160;<a href="249.html">  ctk/inspector/prop-editor.c</a><br>
+&#160;&#160;&#160;11&#160;&#160;<a href="47.html">  cdk/win32/cdkevents-win32.c</a><br>
+&#160;&#160;&#160;10&#160;&#160;<a href="374.html">  tests/testoverlay.c</a><br>
+</p>
+<p>Top 10 files for information severity, total findings: 71<br>
+&#160;&#160;&#160;45&#160;<a href="43.html">  cdk/win32/wintab.h</a><br>
+&#160;&#160;&#160;9&#160;&#160;<a href="44.html">  cdk/win32/cdkdevicemanager-win32.c</a><br>
+&#160;&#160;&#160;1&#160;&#160;<a href="204.html">  ctk/ctkwindow.c</a><br>
+&#160;&#160;&#160;1&#160;&#160;<a href="185.html">  ctk/ctksettings.c</a><br>
+&#160;&#160;&#160;1&#160;&#160;<a href="171.html">  ctk/ctkprintunixdialog.c</a><br>
+&#160;&#160;&#160;1&#160;&#160;<a href="169.html">  ctk/ctkprintoperation-unix.c</a><br>
+&#160;&#160;&#160;1&#160;&#160;<a href="168.html">  ctk/ctkprintoperation-portal.c</a><br>
+&#160;&#160;&#160;1&#160;&#160;<a href="167.html">  ctk/ctkprintjob.c</a><br>
+&#160;&#160;&#160;1&#160;&#160;<a href="166.html">  ctk/ctkprinteroptionwidget.c</a><br>
+&#160;&#160;&#160;1&#160;&#160;<a href="164.html">  ctk/ctkprinter.c</a><br>
+</p>
+
+      </div> <!-- /.wrapper -->
+    </div>
+    <div id="footer" class="footer">
+      <p>
+        Cppcheck 2.3 - a tool for static C/C++ code analysis<br>
+        <br>
+        Internet: <a href="http://cppcheck.net">http://cppcheck.net</a><br>
+        IRC: <a href="irc://irc.freenode.net/cppcheck">irc://irc.freenode.net/cppcheck</a><br>
+      </p>
+    </div>
+  </body>
+</html>
