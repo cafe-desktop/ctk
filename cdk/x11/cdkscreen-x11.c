@@ -1500,7 +1500,7 @@ fetch_net_wm_check_window (CdkScreen *screen)
   CdkX11Screen *x11_screen;
   CdkDisplay *display;
   Window window;
-  GTimeVal tv;
+  guint64 now;
   gint error;
 
   x11_screen = CDK_X11_SCREEN (screen);
@@ -1511,9 +1511,9 @@ fetch_net_wm_check_window (CdkScreen *screen)
   if (x11_screen->wmspec_check_window != None)
     return; /* already have it */
 
-  g_get_current_time (&tv);
+  now = g_get_monotonic_time ();
 
-  if (ABS  (tv.tv_sec - x11_screen->last_wmspec_check_time) < 15)
+  if ((now - x11_screen->last_wmspec_check_time) / 1e6 < 15)
     return; /* we've checked recently */
 
   window = get_net_supporting_wm_check (x11_screen, x11_screen->xroot_window);
@@ -1540,7 +1540,7 @@ fetch_net_wm_check_window (CdkScreen *screen)
         return;
 
       x11_screen->wmspec_check_window = window;
-      x11_screen->last_wmspec_check_time = tv.tv_sec;
+      x11_screen->last_wmspec_check_time = now;
       x11_screen->need_refetch_net_supported = TRUE;
       x11_screen->need_refetch_wm_name = TRUE;
 

@@ -57,7 +57,7 @@ struct _CdkX11Screen
   gint xft_dpi;
 
   /* Window manager */
-  long last_wmspec_check_time;
+  gint64 last_wmspec_check_time;
   Window wmspec_check_window;
   char *window_manager_name;
 
