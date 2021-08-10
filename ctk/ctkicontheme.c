@@ -193,7 +193,7 @@ struct _CtkIconThemePrivate
   CdkScreen *screen;
 
   /* time when we last stat:ed for theme changes */
-  glong last_stat_time;
+  gint64 last_stat_time;
   GList *dir_mtimes;
 
   gulong theme_changed_idle;
@@ -1362,7 +1362,6 @@ load_themes (CtkIconTheme *icon_theme)
   gint base;
   gchar *dir;
   const gchar *file;
-  GTimeVal tv;
   IconThemeDirMtime *dir_mtime;
   GStatBuf stat_buf;
   GList *d;
@@ -1436,8 +1435,7 @@ load_themes (CtkIconTheme *icon_theme)
 
   priv->themes_valid = TRUE;
   
-  g_get_current_time (&tv);
-  priv->last_stat_time = tv.tv_sec;
+  priv->last_stat_time = g_get_monotonic_time ();
 
   CTK_NOTE (ICONTHEME, {
     GList *l;
@@ -1458,7 +1456,6 @@ static void
 ensure_valid_themes (CtkIconTheme *icon_theme)
 {
   CtkIconThemePrivate *priv = icon_theme->priv;
-  GTimeVal tv;
   gboolean was_valid = priv->themes_valid;
 
   if (priv->loading_themes)
@@ -1467,9 +1464,9 @@ ensure_valid_themes (CtkIconTheme *icon_theme)
 
   if (priv->themes_valid)
     {
-      g_get_current_time (&tv);
+      gint64 now = g_get_monotonic_time ();
 
-      if (ABS (tv.tv_sec - priv->last_stat_time) > 5 &&
+      if ((now - priv->last_stat_time) / G_USEC_PER_SEC > 5 &&
           rescan_themes (icon_theme))
         {
           g_hash_table_remove_all (priv->info_cache);
@@ -2754,7 +2751,6 @@ rescan_themes (CtkIconTheme *icon_theme)
   GList *d;
   gint stat_res;
   GStatBuf stat_buf;
-  GTimeVal tv;
 
   priv = icon_theme->priv;
 
@@ -2777,8 +2773,7 @@ rescan_themes (CtkIconTheme *icon_theme)
       return TRUE;
     }
 
-  g_get_current_time (&tv);
-  priv->last_stat_time = tv.tv_sec;
+  priv->last_stat_time = g_get_monotonic_time ();
 
   return FALSE;
 }
