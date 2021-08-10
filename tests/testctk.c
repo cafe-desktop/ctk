@@ -9897,7 +9897,7 @@ bench_iteration (CtkWidget *widget, void (* fn) (CtkWidget *widget))
 void
 do_real_bench (CtkWidget *widget, void (* fn) (CtkWidget *widget), char *name, int num)
 {
-  GTimeVal tv0, tv1;
+  gint64 t0, t1;
   double dt_first;
   double dt;
   int n;
@@ -9909,19 +9909,17 @@ do_real_bench (CtkWidget *widget, void (* fn) (CtkWidget *widget), char *name, i
     printed_headers = TRUE;
   }
 
-  g_get_current_time (&tv0);
-  bench_iteration (widget, fn); 
-  g_get_current_time (&tv1);
+  t0 = g_get_monotonic_time ();
+  bench_iteration (widget, fn);
+  t1 = g_get_monotonic_time ();
 
-  dt_first = ((double)tv1.tv_sec - tv0.tv_sec) * 1000.0
-	+ (tv1.tv_usec - tv0.tv_usec) / 1000.0;
+  dt_first = ((double)(t1 - t0)) / 1000.0;
 
-  g_get_current_time (&tv0);
+  t0 = g_get_monotonic_time ();
   for (n = 0; n < num - 1; n++)
-    bench_iteration (widget, fn); 
-  g_get_current_time (&tv1);
-  dt = ((double)tv1.tv_sec - tv0.tv_sec) * 1000.0
-	+ (tv1.tv_usec - tv0.tv_usec) / 1000.0;
+    bench_iteration (widget, fn);
+  t1 = g_get_monotonic_time ();
+  dt = ((double)(t1 - t0)) / 1000.0;
 
   g_print ("%s %5d ", pad (name, 20), num);
   if (num > 1)
