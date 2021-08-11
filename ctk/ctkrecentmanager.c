@@ -126,7 +126,7 @@ typedef struct
 
   guint count;
 
-  time_t stamp;
+  GDateTime *stamp;
 } RecentAppInfo;
 
 /**
@@ -147,9 +147,9 @@ struct _CtkRecentInfo
   gchar *display_name;
   gchar *description;
 
-  time_t added;
-  time_t modified;
-  time_t visited;
+  GDateTime *added;
+  GDateTime *modified;
+  GDateTime *visited;
 
   gchar *mime_type;
 
@@ -1118,9 +1118,9 @@ build_recent_info (GBookmarkFile *bookmarks,
 
   info->is_private = g_bookmark_file_get_is_private (bookmarks, info->uri, NULL);
 
-  info->added = g_bookmark_file_get_added (bookmarks, info->uri, NULL);
-  info->modified = g_bookmark_file_get_modified (bookmarks, info->uri, NULL);
-  info->visited = g_bookmark_file_get_visited (bookmarks, info->uri, NULL);
+  info->added = g_bookmark_file_get_added_date_time (bookmarks, info->uri, NULL);
+  info->modified = g_bookmark_file_get_modified_date_time (bookmarks, info->uri, NULL);
+  info->visited = g_bookmark_file_get_visited_date_time (bookmarks, info->uri, NULL);
 
   groups = g_bookmark_file_get_groups (bookmarks, info->uri, &groups_len, NULL);
   info->groups = g_malloc (sizeof (char *) * groups_len);
@@ -1138,17 +1138,17 @@ build_recent_info (GBookmarkFile *bookmarks,
     {
       gchar *app_name, *app_exec;
       guint count;
-      time_t stamp;
+      GDateTime *stamp;
       RecentAppInfo *app_info;
       gboolean res;
 
       app_name = apps[i];
 
-      res = g_bookmark_file_get_app_info (bookmarks, info->uri, app_name,
-                                          &app_exec,
-                                          &count,
-                                          &stamp,
-                                          NULL);
+      res = g_bookmark_file_get_application_info (bookmarks, info->uri, app_name,
+                                                  &app_exec,
+                                                  &count,
+                                                  &stamp,
+                                                  NULL);
       if (!res)
         continue;
 
@@ -1156,7 +1156,7 @@ build_recent_info (GBookmarkFile *bookmarks,
       app_info->name= g_strdup (app_name);
       app_info->exec = app_exec;
       app_info->count = count;
-      app_info->stamp = stamp;
+      app_info->stamp = g_date_time_ref (stamp);
 
       g_hash_table_replace (info->apps_lookup, app_info->name, app_info);
 
@@ -1447,23 +1447,24 @@ ctk_recent_manager_clamp_to_age (CtkRecentManager *manager,
   CtkRecentManagerPrivate *priv = manager->priv;
   gchar **uris;
   gsize n_uris, i;
-  time_t now;
+  GDateTime *now;
 
   if (G_UNLIKELY (!priv->recent_items))
     return;
 
-  now = time (NULL);
+  now = g_date_time_new_now_utc ();
 
   uris = g_bookmark_file_get_uris (priv->recent_items, &n_uris);
 
   for (i = 0; i < n_uris; i++)
     {
       const gchar *uri = uris[i];
-      time_t modified;
+      GDateTime *modified;
       gint item_age;
 
-      modified = g_bookmark_file_get_modified (priv->recent_items, uri, NULL);
-      item_age = (gint) ((now - modified) / (60 * 60 * 24));
+      modified = g_bookmark_file_get_modified_date_time (priv->recent_items, uri, NULL);
+
+      item_age = (int) (g_date_time_difference (now, modified) / (double)G_TIME_SPAN_DAY);
       if (item_age > age)
         g_bookmark_file_remove_item (priv->recent_items, uri, NULL);
     }
@@ -1546,6 +1547,7 @@ ctk_recent_info_free (CtkRecentInfo *recent_info)
 
       g_free (app_info->name);
       g_free (app_info->exec);
+      g_date_time_unref (app_info->stamp);
     }
   g_free (recent_info->applications);
 
@@ -1693,18 +1695,18 @@ ctk_recent_info_get_mime_type (CtkRecentInfo *info)
  * ctk_recent_info_get_added:
  * @info: a #CtkRecentInfo
  *
- * Gets the timestamp (seconds from system’s Epoch) when the resource
+ * Gets the the time when the resource
  * was added to the recently used resources list.
  *
- * Returns: the number of seconds elapsed from system’s Epoch when
- *   the resource was added to the list, or -1 on failure.
+ * Returns: (transfer none): a #GDateTime for the time
+ *    when the resource was added
  *
  * Since: 2.10
  */
-time_t
+GDateTime *
 ctk_recent_info_get_added (CtkRecentInfo *info)
 {
-  g_return_val_if_fail (info != NULL, (time_t) -1);
+  g_return_val_if_fail (info != NULL, NULL);
 
   return info->added;
 }
@@ -1713,18 +1715,18 @@ ctk_recent_info_get_added (CtkRecentInfo *info)
  * ctk_recent_info_get_modified:
  * @info: a #CtkRecentInfo
  *
- * Gets the timestamp (seconds from system’s Epoch) when the meta-data
+ * Gets the time when the meta-data
  * for the resource was last modified.
  *
- * Returns: the number of seconds elapsed from system’s Epoch when
- *   the resource was last modified, or -1 on failure.
+ * Returns: (transfer none): a #GDateTime for the time
+ *    when the resource was last modified
  *
  * Since: 2.10
  */
-time_t
+GDateTime *
 ctk_recent_info_get_modified (CtkRecentInfo *info)
 {
-  g_return_val_if_fail (info != NULL, (time_t) -1);
+  g_return_val_if_fail (info != NULL, NULL);
 
   return info->modified;
 }
@@ -1733,18 +1735,18 @@ ctk_recent_info_get_modified (CtkRecentInfo *info)
  * ctk_recent_info_get_visited:
  * @info: a #CtkRecentInfo
  *
- * Gets the timestamp (seconds from system’s Epoch) when the meta-data
+ * Gets the time when the meta-data
  * for the resource was last visited.
  *
- * Returns: the number of seconds elapsed from system’s Epoch when
- *   the resource was last visited, or -1 on failure.
+ * Returns: (transfer none): a #GDateTime for the time
+ *    when the resource was last visited
  *
  * Since: 2.10
  */
-time_t
+GDateTime *
 ctk_recent_info_get_visited (CtkRecentInfo *info)
 {
-  g_return_val_if_fail (info != NULL, (time_t) -1);
+  g_return_val_if_fail (info != NULL, NULL);
 
   return info->visited;
 }
@@ -1776,8 +1778,8 @@ ctk_recent_info_get_private_hint (CtkRecentInfo *info)
  * @app_exec: (transfer none) (out): return location for the string containing
  *    the command line
  * @count: (out): return location for the number of times this item was registered
- * @time_: (out): return location for the timestamp this item was last registered
- *    for this application
+ * @stamp: (out) (transfer none): return location for the time this item was last
+ *    registered for this application
  *
  * Gets the data regarding the application that has registered the resource
  * pointed by @info.
@@ -1797,7 +1799,7 @@ ctk_recent_info_get_application_info (CtkRecentInfo  *info,
                                       const gchar    *app_name,
                                       const gchar   **app_exec,
                                       guint          *count,
-                                      time_t         *time_)
+                                      GDateTime     **stamp)
 {
   RecentAppInfo *ai;
 
@@ -1821,8 +1823,8 @@ ctk_recent_info_get_application_info (CtkRecentInfo  *info,
   if (count)
     *count = ai->count;
 
-  if (time_)
-    *time_ = ai->stamp;
+  if (stamp)
+    *stamp = ai->stamp;
 
   return TRUE;
 }
@@ -1912,7 +1914,7 @@ gchar *
 ctk_recent_info_last_application (CtkRecentInfo *info)
 {
   int i;
-  time_t last_stamp = (time_t) -1;
+  GDateTime *last_stamp = NULL;
   gchar *name = NULL;
 
   g_return_val_if_fail (info != NULL, NULL);
@@ -1921,7 +1923,8 @@ ctk_recent_info_last_application (CtkRecentInfo *info)
     {
       const RecentAppInfo *ai = &info->applications[i];
 
-      if (ai->stamp > last_stamp)
+      if (last_stamp == NULL ||
+          g_date_time_compare (ai->stamp, last_stamp) > 0)
         {
           name = ai->name;
           last_stamp = ai->stamp;
@@ -2335,18 +2338,13 @@ ctk_recent_info_get_uri_display (CtkRecentInfo *info)
 gint
 ctk_recent_info_get_age (CtkRecentInfo *info)
 {
-  time_t now, delta;
-  gint retval;
+  GDateTime *now;
 
   g_return_val_if_fail (info != NULL, -1);
 
-  now = time (NULL);
+  now = g_date_time_new_now_utc ();
 
-  delta = now - info->modified;
-
-  retval = (gint) (delta / (60 * 60 * 24));
-
-  return retval;
+  return (int) (g_date_time_difference (now, info->modified) / (double)G_TIME_SPAN_DAY);
 }
 
 /**

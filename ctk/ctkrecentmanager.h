@@ -215,19 +215,19 @@ const gchar *         ctk_recent_info_get_description      (CtkRecentInfo  *info
 CDK_AVAILABLE_IN_ALL
 const gchar *         ctk_recent_info_get_mime_type        (CtkRecentInfo  *info);
 CDK_AVAILABLE_IN_ALL
-time_t                ctk_recent_info_get_added            (CtkRecentInfo  *info);
+GDateTime *           ctk_recent_info_get_added            (CtkRecentInfo  *info);
 CDK_AVAILABLE_IN_ALL
-time_t                ctk_recent_info_get_modified         (CtkRecentInfo  *info);
+GDateTime *           ctk_recent_info_get_modified         (CtkRecentInfo  *info);
 CDK_AVAILABLE_IN_ALL
-time_t                ctk_recent_info_get_visited          (CtkRecentInfo  *info);
+GDateTime *           ctk_recent_info_get_visited          (CtkRecentInfo  *info);
 CDK_AVAILABLE_IN_ALL
 gboolean              ctk_recent_info_get_private_hint     (CtkRecentInfo  *info);
 CDK_AVAILABLE_IN_ALL
 gboolean              ctk_recent_info_get_application_info (CtkRecentInfo  *info,
-							    const gchar    *app_name,
-							    const gchar   **app_exec,
-							    guint          *count,
-							    time_t         *time_);
+                                                           const char     *app_name,
+                                                           const char    **app_exec,
+                                                           guint          *count,
+                                                           GDateTime     **stamp);
 CDK_AVAILABLE_IN_ALL
 GAppInfo *            ctk_recent_info_create_app_info      (CtkRecentInfo  *info,
                                                             const gchar    *app_name,
