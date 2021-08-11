@@ -299,7 +299,7 @@ sort_recent_items_mru (CtkRecentInfo *a,
 {
   g_assert (a != NULL && b != NULL);
   
-  return ctk_recent_info_get_modified (b) - ctk_recent_info_get_modified (a);
+  return g_date_time_to_unix (ctk_recent_info_get_modified (b)) - g_date_time_to_unix (ctk_recent_info_get_modified (a));
 }
 
 static gint
@@ -309,7 +309,7 @@ sort_recent_items_lru (CtkRecentInfo *a,
 {
   g_assert (a != NULL && b != NULL);
   
-  return -1 * (ctk_recent_info_get_modified (b) - ctk_recent_info_get_modified (a));
+  return -1 * (g_date_time_to_unix (ctk_recent_info_get_modified (b)) - g_date_time_to_unix (ctk_recent_info_get_modified (a)));
 }
 
 typedef struct
