@@ -1900,9 +1900,9 @@ ctk_real_menu_item_get_label (CtkMenuItem *menu_item)
 }
 
 static void
-free_timeval (gint64 *val)
+free_timeval (GDateTime *val)
 {
-  g_slice_free (gint64, val);
+  g_slice_free (GDateTime, val);
 }
 
 static void
@@ -1967,9 +1967,9 @@ ctk_menu_item_real_popup_submenu (CtkWidget      *widget,
 
       if (remember_exact_time)
         {
-          gint64 *popup_time = g_slice_new0 (gint64);
+          GDateTime *popup_time = g_slice_new0 (GDateTime);
 
-          popup_time = g_get_real_time ();
+          popup_time = g_date_time_new_now_utc ();
 
           g_object_set_data_full (G_OBJECT (priv->submenu),
                                   "ctk-menu-exact-popup-time", popup_time,
