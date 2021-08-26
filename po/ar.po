@@ -658,32 +658,32 @@ msgstr "يُنشّط المُوسّع"
 #. FIXME these need accelerators when appropriate, and
 #. * need the mnemonics to be rationalized
 #.
-#: ctk/a11y/ctkimageaccessible.c:53 ctk/deprecated/ctkstock.c:341
+#: ctk/a11y/ctkimageaccessible.c:53 ctk/ctkstock.c:341
 msgctxt "Stock label"
 msgid "_About"
 msgstr "_عنْ"
 
-#: ctk/a11y/ctkimageaccessible.c:54 ctk/deprecated/ctkstock.c:342
+#: ctk/a11y/ctkimageaccessible.c:54 ctk/ctkstock.c:342
 msgctxt "Stock label"
 msgid "_Add"
 msgstr "أ_ضف"
 
-#: ctk/a11y/ctkimageaccessible.c:55 ctk/deprecated/ctkstock.c:344
+#: ctk/a11y/ctkimageaccessible.c:55 ctk/ctkstock.c:344
 msgctxt "Stock label"
 msgid "_Bold"
 msgstr "_عريض"
 
-#: ctk/a11y/ctkimageaccessible.c:56 ctk/deprecated/ctkstock.c:346
+#: ctk/a11y/ctkimageaccessible.c:56 ctk/ctkstock.c:346
 msgctxt "Stock label"
 msgid "_CD-ROM"
 msgstr "ا_سطوانة"
 
-#: ctk/a11y/ctkimageaccessible.c:57 ctk/deprecated/ctkstock.c:347
+#: ctk/a11y/ctkimageaccessible.c:57 ctk/ctkstock.c:347
 msgctxt "Stock label"
 msgid "_Clear"
 msgstr "ا_مسح"
 
-#: ctk/a11y/ctkimageaccessible.c:58 ctk/deprecated/ctkstock.c:348
+#: ctk/a11y/ctkimageaccessible.c:58 ctk/ctkstock.c:348
 msgctxt "Stock label"
 msgid "_Close"
 msgstr "أ_غلق"
@@ -700,364 +700,364 @@ msgstr "كبِّر"
 msgid "Restore"
 msgstr "استعِد"
 
-#: ctk/a11y/ctkimageaccessible.c:62 ctk/deprecated/ctkstock.c:351
+#: ctk/a11y/ctkimageaccessible.c:62 ctk/ctkstock.c:351
 msgctxt "Stock label"
 msgid "_Copy"
 msgstr "ا_نسخ"
 
-#: ctk/a11y/ctkimageaccessible.c:63 ctk/deprecated/ctkstock.c:352
+#: ctk/a11y/ctkimageaccessible.c:63 ctk/ctkstock.c:352
 msgctxt "Stock label"
 msgid "Cu_t"
 msgstr "_قصّ"
 
-#: ctk/a11y/ctkimageaccessible.c:64 ctk/deprecated/ctkstock.c:353
+#: ctk/a11y/ctkimageaccessible.c:64 ctk/ctkstock.c:353
 msgctxt "Stock label"
 msgid "_Delete"
 msgstr "ا_حذف"
 
-#: ctk/a11y/ctkimageaccessible.c:65 ctk/deprecated/ctkstock.c:335
+#: ctk/a11y/ctkimageaccessible.c:65 ctk/ctkstock.c:335
 msgctxt "Stock label"
 msgid "Error"
 msgstr "خطأ"
 
 #. KEEP IN SYNC with ctkiconfactory.c stock icons, when appropriate
-#: ctk/a11y/ctkimageaccessible.c:66 ctk/deprecated/ctkstock.c:333
+#: ctk/a11y/ctkimageaccessible.c:66 ctk/ctkstock.c:333
 msgctxt "Stock label"
 msgid "Information"
 msgstr "معلومات"
 
-#: ctk/a11y/ctkimageaccessible.c:67 ctk/deprecated/ctkstock.c:336
+#: ctk/a11y/ctkimageaccessible.c:67 ctk/ctkstock.c:336
 msgctxt "Stock label"
 msgid "Question"
 msgstr "سؤال"
 
-#: ctk/a11y/ctkimageaccessible.c:68 ctk/deprecated/ctkstock.c:334
+#: ctk/a11y/ctkimageaccessible.c:68 ctk/ctkstock.c:334
 msgctxt "Stock label"
 msgid "Warning"
 msgstr "تحذير"
 
-#: ctk/a11y/ctkimageaccessible.c:69 ctk/deprecated/ctkstock.c:356
+#: ctk/a11y/ctkimageaccessible.c:69 ctk/ctkstock.c:356
 msgctxt "Stock label"
 msgid "_Execute"
 msgstr "_نفِّذ"
 
-#: ctk/a11y/ctkimageaccessible.c:70 ctk/deprecated/ctkstock.c:358
+#: ctk/a11y/ctkimageaccessible.c:70 ctk/ctkstock.c:358
 msgctxt "Stock label"
 msgid "_File"
 msgstr "_ملف"
 
-#: ctk/a11y/ctkimageaccessible.c:71 ctk/deprecated/ctkstock.c:359
+#: ctk/a11y/ctkimageaccessible.c:71 ctk/ctkstock.c:359
 msgctxt "Stock label"
 msgid "_Find"
 msgstr "ا_بحث"
 
-#: ctk/a11y/ctkimageaccessible.c:72 ctk/deprecated/ctkstock.c:360
+#: ctk/a11y/ctkimageaccessible.c:72 ctk/ctkstock.c:360
 msgctxt "Stock label"
 msgid "Find and _Replace"
 msgstr "ابحث وا_ستبدِل"
 
-#: ctk/a11y/ctkimageaccessible.c:73 ctk/deprecated/ctkstock.c:361
+#: ctk/a11y/ctkimageaccessible.c:73 ctk/ctkstock.c:361
 msgctxt "Stock label"
 msgid "_Floppy"
 msgstr "ق_رص مرن"
 
-#: ctk/a11y/ctkimageaccessible.c:74 ctk/deprecated/ctkstock.c:362
+#: ctk/a11y/ctkimageaccessible.c:74 ctk/ctkstock.c:362
 msgctxt "Stock label"
 msgid "_Fullscreen"
 msgstr "ملء ال_شاشة"
 
 #. This is a navigation label as in "go to the bottom of the page"
-#: ctk/a11y/ctkimageaccessible.c:75 ctk/deprecated/ctkstock.c:365
+#: ctk/a11y/ctkimageaccessible.c:75 ctk/ctkstock.c:365
 msgctxt "Stock label, navigation"
 msgid "_Bottom"
 msgstr "_قعر"
 
 #. This is a navigation label as in "go to the first page"
-#: ctk/a11y/ctkimageaccessible.c:76 ctk/deprecated/ctkstock.c:367
+#: ctk/a11y/ctkimageaccessible.c:76 ctk/ctkstock.c:367
 msgctxt "Stock label, navigation"
 msgid "_First"
 msgstr "أ_ول"
 
 #. This is a navigation label as in "go to the last page"
-#: ctk/a11y/ctkimageaccessible.c:77 ctk/deprecated/ctkstock.c:369
+#: ctk/a11y/ctkimageaccessible.c:77 ctk/ctkstock.c:369
 msgctxt "Stock label, navigation"
 msgid "_Last"
 msgstr "آ_خر"
 
 #. This is a navigation label as in "go to the top of the page"
-#: ctk/a11y/ctkimageaccessible.c:78 ctk/deprecated/ctkstock.c:371
+#: ctk/a11y/ctkimageaccessible.c:78 ctk/ctkstock.c:371
 msgctxt "Stock label, navigation"
 msgid "_Top"
 msgstr "_قمة"
 
 #. This is a navigation label as in "go back"
-#: ctk/a11y/ctkimageaccessible.c:79 ctk/deprecated/ctkstock.c:373
+#: ctk/a11y/ctkimageaccessible.c:79 ctk/ctkstock.c:373
 msgctxt "Stock label, navigation"
 msgid "_Back"
 msgstr "خل_ف"
 
 #. This is a navigation label as in "go down"
-#: ctk/a11y/ctkimageaccessible.c:80 ctk/deprecated/ctkstock.c:375
+#: ctk/a11y/ctkimageaccessible.c:80 ctk/ctkstock.c:375
 msgctxt "Stock label, navigation"
 msgid "_Down"
 msgstr "أ_سفل"
 
 #. This is a navigation label as in "go forward"
-#: ctk/a11y/ctkimageaccessible.c:81 ctk/deprecated/ctkstock.c:377
+#: ctk/a11y/ctkimageaccessible.c:81 ctk/ctkstock.c:377
 msgctxt "Stock label, navigation"
 msgid "_Forward"
 msgstr "أ_مام"
 
 #. This is a navigation label as in "go up"
-#: ctk/a11y/ctkimageaccessible.c:82 ctk/deprecated/ctkstock.c:379
+#: ctk/a11y/ctkimageaccessible.c:82 ctk/ctkstock.c:379
 msgctxt "Stock label, navigation"
 msgid "_Up"
 msgstr "ف_وق"
 
-#: ctk/a11y/ctkimageaccessible.c:83 ctk/deprecated/ctkstock.c:380
+#: ctk/a11y/ctkimageaccessible.c:83 ctk/ctkstock.c:380
 msgctxt "Stock label"
 msgid "_Hard Disk"
 msgstr "قرص _صلب"
 
-#: ctk/a11y/ctkimageaccessible.c:84 ctk/deprecated/ctkstock.c:381
+#: ctk/a11y/ctkimageaccessible.c:84 ctk/ctkstock.c:381
 msgctxt "Stock label"
 msgid "_Help"
 msgstr "م_ساعدة"
 
-#: ctk/a11y/ctkimageaccessible.c:85 ctk/deprecated/ctkstock.c:382
+#: ctk/a11y/ctkimageaccessible.c:85 ctk/ctkstock.c:382
 msgctxt "Stock label"
 msgid "_Home"
 msgstr "ال_منزل"
 
-#: ctk/a11y/ctkimageaccessible.c:86 ctk/deprecated/ctkstock.c:383
+#: ctk/a11y/ctkimageaccessible.c:86 ctk/ctkstock.c:383
 msgctxt "Stock label"
 msgid "Increase Indent"
 msgstr "زِد المحاذاة"
 
-#: ctk/a11y/ctkimageaccessible.c:87 ctk/deprecated/ctkstock.c:387
+#: ctk/a11y/ctkimageaccessible.c:87 ctk/ctkstock.c:387
 msgctxt "Stock label"
 msgid "_Italic"
 msgstr "_مائل"
 
-#: ctk/a11y/ctkimageaccessible.c:88 ctk/deprecated/ctkstock.c:388
+#: ctk/a11y/ctkimageaccessible.c:88 ctk/ctkstock.c:388
 msgctxt "Stock label"
 msgid "_Jump to"
 msgstr "ا_قفز إلى"
 
 #. This is about text justification, "centered text"
-#: ctk/a11y/ctkimageaccessible.c:89 ctk/deprecated/ctkstock.c:390
+#: ctk/a11y/ctkimageaccessible.c:89 ctk/ctkstock.c:390
 msgctxt "Stock label"
 msgid "_Center"
 msgstr "_وسّط"
 
 #. This is about text justification
-#: ctk/a11y/ctkimageaccessible.c:90 ctk/deprecated/ctkstock.c:392
+#: ctk/a11y/ctkimageaccessible.c:90 ctk/ctkstock.c:392
 msgctxt "Stock label"
 msgid "_Fill"
 msgstr "ا_ملأ"
 
 #. This is about text justification, "left-justified text"
-#: ctk/a11y/ctkimageaccessible.c:91 ctk/deprecated/ctkstock.c:394
+#: ctk/a11y/ctkimageaccessible.c:91 ctk/ctkstock.c:394
 msgctxt "Stock label"
 msgid "_Left"
 msgstr "_يسار"
 
 #. This is about text justification, "right-justified text"
-#: ctk/a11y/ctkimageaccessible.c:92 ctk/deprecated/ctkstock.c:396
+#: ctk/a11y/ctkimageaccessible.c:92 ctk/ctkstock.c:396
 msgctxt "Stock label"
 msgid "_Right"
 msgstr "ي_مين"
 
-#: ctk/a11y/ctkimageaccessible.c:93 ctk/deprecated/ctkstock.c:363
+#: ctk/a11y/ctkimageaccessible.c:93 ctk/ctkstock.c:363
 msgctxt "Stock label"
 msgid "_Leave Fullscreen"
 msgstr "_غادر ملء الشاشة"
 
 #. Media label, as in "fast forward"
-#: ctk/a11y/ctkimageaccessible.c:94 ctk/deprecated/ctkstock.c:399
+#: ctk/a11y/ctkimageaccessible.c:94 ctk/ctkstock.c:399
 msgctxt "Stock label, media"
 msgid "_Forward"
 msgstr "أ_مام"
 
 #. Media label, as in "next song"
-#: ctk/a11y/ctkimageaccessible.c:95 ctk/deprecated/ctkstock.c:401
+#: ctk/a11y/ctkimageaccessible.c:95 ctk/ctkstock.c:401
 msgctxt "Stock label, media"
 msgid "_Next"
 msgstr "_جديد"
 
 #. Media label, as in "pause music"
-#: ctk/a11y/ctkimageaccessible.c:96 ctk/deprecated/ctkstock.c:403
+#: ctk/a11y/ctkimageaccessible.c:96 ctk/ctkstock.c:403
 msgctxt "Stock label, media"
 msgid "P_ause"
 msgstr "أُلبِ_ث"
 
 #. Media label, as in "play music"
-#: ctk/a11y/ctkimageaccessible.c:97 ctk/deprecated/ctkstock.c:405
+#: ctk/a11y/ctkimageaccessible.c:97 ctk/ctkstock.c:405
 msgctxt "Stock label, media"
 msgid "_Play"
 msgstr "_شغّل"
 
 #. Media label, as in  "previous song"
-#: ctk/a11y/ctkimageaccessible.c:98 ctk/deprecated/ctkstock.c:407
+#: ctk/a11y/ctkimageaccessible.c:98 ctk/ctkstock.c:407
 msgctxt "Stock label, media"
 msgid "Pre_vious"
 msgstr "ال_سابق"
 
 #. Media label
-#: ctk/a11y/ctkimageaccessible.c:99 ctk/deprecated/ctkstock.c:409
+#: ctk/a11y/ctkimageaccessible.c:99 ctk/ctkstock.c:409
 msgctxt "Stock label, media"
 msgid "_Record"
 msgstr "س_جّل"
 
 #. Media label
-#: ctk/a11y/ctkimageaccessible.c:100 ctk/deprecated/ctkstock.c:411
+#: ctk/a11y/ctkimageaccessible.c:100 ctk/ctkstock.c:411
 msgctxt "Stock label, media"
 msgid "R_ewind"
 msgstr "_رجوع"
 
 #. Media label
-#: ctk/a11y/ctkimageaccessible.c:101 ctk/deprecated/ctkstock.c:413
+#: ctk/a11y/ctkimageaccessible.c:101 ctk/ctkstock.c:413
 msgctxt "Stock label, media"
 msgid "_Stop"
 msgstr "_قف"
 
-#: ctk/a11y/ctkimageaccessible.c:102 ctk/deprecated/ctkstock.c:414
+#: ctk/a11y/ctkimageaccessible.c:102 ctk/ctkstock.c:414
 msgctxt "Stock label"
 msgid "_Network"
 msgstr "_شبكة"
 
-#: ctk/a11y/ctkimageaccessible.c:103 ctk/deprecated/ctkstock.c:415
+#: ctk/a11y/ctkimageaccessible.c:103 ctk/ctkstock.c:415
 msgctxt "Stock label"
 msgid "_New"
 msgstr "_جديد"
 
-#: ctk/a11y/ctkimageaccessible.c:104 ctk/deprecated/ctkstock.c:418
+#: ctk/a11y/ctkimageaccessible.c:104 ctk/ctkstock.c:418
 msgctxt "Stock label"
 msgid "_Open"
 msgstr "ا_فتح"
 
-#: ctk/a11y/ctkimageaccessible.c:105 ctk/deprecated/ctkstock.c:428
+#: ctk/a11y/ctkimageaccessible.c:105 ctk/ctkstock.c:428
 msgctxt "Stock label"
 msgid "_Paste"
 msgstr "أ_لصق"
 
-#: ctk/a11y/ctkimageaccessible.c:106 ctk/deprecated/ctkstock.c:430
+#: ctk/a11y/ctkimageaccessible.c:106 ctk/ctkstock.c:430
 msgctxt "Stock label"
 msgid "_Print"
 msgstr "ا_طبع"
 
-#: ctk/a11y/ctkimageaccessible.c:107 ctk/deprecated/ctkstock.c:431
+#: ctk/a11y/ctkimageaccessible.c:107 ctk/ctkstock.c:431
 msgctxt "Stock label"
 msgid "Print Pre_view"
 msgstr "_معاينة الطباعة"
 
-#: ctk/a11y/ctkimageaccessible.c:108 ctk/deprecated/ctkstock.c:432
+#: ctk/a11y/ctkimageaccessible.c:108 ctk/ctkstock.c:432
 msgctxt "Stock label"
 msgid "_Properties"
 msgstr "_الخصائص"
 
-#: ctk/a11y/ctkimageaccessible.c:109 ctk/deprecated/ctkstock.c:433
+#: ctk/a11y/ctkimageaccessible.c:109 ctk/ctkstock.c:433
 msgctxt "Stock label"
 msgid "_Quit"
 msgstr "أ_نهِ"
 
-#: ctk/a11y/ctkimageaccessible.c:110 ctk/deprecated/ctkstock.c:434
+#: ctk/a11y/ctkimageaccessible.c:110 ctk/ctkstock.c:434
 msgctxt "Stock label"
 msgid "_Redo"
 msgstr "أ_عد"
 
-#: ctk/a11y/ctkimageaccessible.c:111 ctk/deprecated/ctkstock.c:435
+#: ctk/a11y/ctkimageaccessible.c:111 ctk/ctkstock.c:435
 msgctxt "Stock label"
 msgid "_Refresh"
 msgstr "_حدِّث"
 
-#: ctk/a11y/ctkimageaccessible.c:112 ctk/deprecated/ctkstock.c:436
+#: ctk/a11y/ctkimageaccessible.c:112 ctk/ctkstock.c:436
 msgctxt "Stock label"
 msgid "_Remove"
 msgstr "ا_حذِف"
 
-#: ctk/a11y/ctkimageaccessible.c:113 ctk/deprecated/ctkstock.c:437
+#: ctk/a11y/ctkimageaccessible.c:113 ctk/ctkstock.c:437
 msgctxt "Stock label"
 msgid "_Revert"
 msgstr "ا_عكس"
 
-#: ctk/a11y/ctkimageaccessible.c:114 ctk/deprecated/ctkstock.c:438
+#: ctk/a11y/ctkimageaccessible.c:114 ctk/ctkstock.c:438
 msgctxt "Stock label"
 msgid "_Save"
 msgstr "ا_حفظ"
 
-#: ctk/a11y/ctkimageaccessible.c:115 ctk/deprecated/ctkstock.c:439
+#: ctk/a11y/ctkimageaccessible.c:115 ctk/ctkstock.c:439
 msgctxt "Stock label"
 msgid "Save _As"
 msgstr "احفظ با_سم"
 
-#: ctk/a11y/ctkimageaccessible.c:116 ctk/deprecated/ctkstock.c:440
+#: ctk/a11y/ctkimageaccessible.c:116 ctk/ctkstock.c:440
 msgctxt "Stock label"
 msgid "Select _All"
 msgstr "اختر ال_كل"
 
 #. Sorting direction
-#: ctk/a11y/ctkimageaccessible.c:117 ctk/deprecated/ctkstock.c:444
+#: ctk/a11y/ctkimageaccessible.c:117 ctk/ctkstock.c:444
 msgctxt "Stock label"
 msgid "_Ascending"
 msgstr "_تصاعدي"
 
 #. Sorting direction
-#: ctk/a11y/ctkimageaccessible.c:118 ctk/deprecated/ctkstock.c:446
+#: ctk/a11y/ctkimageaccessible.c:118 ctk/ctkstock.c:446
 msgctxt "Stock label"
 msgid "_Descending"
 msgstr "_تنازلي"
 
-#: ctk/a11y/ctkimageaccessible.c:119 ctk/deprecated/ctkstock.c:447
+#: ctk/a11y/ctkimageaccessible.c:119 ctk/ctkstock.c:447
 msgctxt "Stock label"
 msgid "_Spell Check"
 msgstr "_تدقيق إملائي"
 
-#: ctk/a11y/ctkimageaccessible.c:120 ctk/deprecated/ctkstock.c:448
+#: ctk/a11y/ctkimageaccessible.c:120 ctk/ctkstock.c:448
 msgctxt "Stock label"
 msgid "_Stop"
 msgstr "_قف"
 
 #. Font variant
-#: ctk/a11y/ctkimageaccessible.c:121 ctk/deprecated/ctkstock.c:450
+#: ctk/a11y/ctkimageaccessible.c:121 ctk/ctkstock.c:450
 msgctxt "Stock label"
 msgid "_Strikethrough"
 msgstr "اش_طب"
 
 #. Font variant
-#: ctk/a11y/ctkimageaccessible.c:122 ctk/deprecated/ctkstock.c:453
+#: ctk/a11y/ctkimageaccessible.c:122 ctk/ctkstock.c:453
 msgctxt "Stock label"
 msgid "_Underline"
 msgstr "_سطِّر"
 
-#: ctk/a11y/ctkimageaccessible.c:123 ctk/deprecated/ctkstock.c:454
+#: ctk/a11y/ctkimageaccessible.c:123 ctk/ctkstock.c:454
 msgctxt "Stock label"
 msgid "_Undo"
 msgstr "_تراجع"
 
-#: ctk/a11y/ctkimageaccessible.c:124 ctk/deprecated/ctkstock.c:384
+#: ctk/a11y/ctkimageaccessible.c:124 ctk/ctkstock.c:384
 msgctxt "Stock label"
 msgid "Decrease Indent"
 msgstr "اخفض المحاذاة"
 
 #. Zoom
-#: ctk/a11y/ctkimageaccessible.c:125 ctk/deprecated/ctkstock.c:457
+#: ctk/a11y/ctkimageaccessible.c:125 ctk/ctkstock.c:457
 msgctxt "Stock label"
 msgid "_Normal Size"
 msgstr "_الحجم العادي"
 
 #. Zoom
-#: ctk/a11y/ctkimageaccessible.c:126 ctk/deprecated/ctkstock.c:459
+#: ctk/a11y/ctkimageaccessible.c:126 ctk/ctkstock.c:459
 msgctxt "Stock label"
 msgid "Best _Fit"
 msgstr "أفضل _ملاءمة"
 
-#: ctk/a11y/ctkimageaccessible.c:127 ctk/deprecated/ctkstock.c:460
+#: ctk/a11y/ctkimageaccessible.c:127 ctk/ctkstock.c:460
 msgctxt "Stock label"
 msgid "Zoom _In"
 msgstr "_قرّب"
 
-#: ctk/a11y/ctkimageaccessible.c:128 ctk/deprecated/ctkstock.c:461
+#: ctk/a11y/ctkimageaccessible.c:128 ctk/ctkstock.c:461
 msgctxt "Stock label"
 msgid "Zoom _Out"
 msgstr "_بعّد"
@@ -1307,111 +1307,111 @@ msgctxt "Number format"
 msgid "%d"
 msgstr "%d"
 
-#: ctk/deprecated/ctkstock.c:343
+#: ctk/ctkstock.c:343
 msgctxt "Stock label"
 msgid "_Apply"
 msgstr "_طبّق"
 
-#: ctk/deprecated/ctkstock.c:345
+#: ctk/ctkstock.c:345
 msgctxt "Stock label"
 msgid "_Cancel"
 msgstr "أل_غِ"
 
-#: ctk/deprecated/ctkstock.c:349
+#: ctk/ctkstock.c:349
 msgctxt "Stock label"
 msgid "C_onnect"
 msgstr "ا_تّصل"
 
-#: ctk/deprecated/ctkstock.c:350
+#: ctk/ctkstock.c:350
 msgctxt "Stock label"
 msgid "_Convert"
 msgstr "_حوّل"
 
-#: ctk/deprecated/ctkstock.c:354
+#: ctk/ctkstock.c:354
 msgctxt "Stock label"
 msgid "_Discard"
 msgstr "ت_جاهل"
 
-#: ctk/deprecated/ctkstock.c:355
+#: ctk/ctkstock.c:355
 msgctxt "Stock label"
 msgid "_Disconnect"
 msgstr "ا_قطع الاتصال"
 
-#: ctk/deprecated/ctkstock.c:357
+#: ctk/ctkstock.c:357
 msgctxt "Stock label"
 msgid "_Edit"
 msgstr "_حرِّر"
 
-#: ctk/deprecated/ctkstock.c:385
+#: ctk/ctkstock.c:385
 msgctxt "Stock label"
 msgid "_Index"
 msgstr "_فهرس"
 
-#: ctk/deprecated/ctkstock.c:386
+#: ctk/ctkstock.c:386
 msgctxt "Stock label"
 msgid "_Information"
 msgstr "_معلومات"
 
-#: ctk/deprecated/ctkstock.c:416
+#: ctk/ctkstock.c:416
 msgctxt "Stock label"
 msgid "_No"
 msgstr "_لا"
 
-#: ctk/deprecated/ctkstock.c:417
+#: ctk/ctkstock.c:417
 msgctxt "Stock label"
 msgid "_OK"
 msgstr "_نعم"
 
 #. Page orientation
-#: ctk/deprecated/ctkstock.c:420
+#: ctk/ctkstock.c:420
 msgctxt "Stock label"
 msgid "Landscape"
 msgstr "عرضيّ"
 
 #. Page orientation
-#: ctk/deprecated/ctkstock.c:422
+#: ctk/ctkstock.c:422
 msgctxt "Stock label"
 msgid "Portrait"
 msgstr "طوليّ"
 
 #. Page orientation
-#: ctk/deprecated/ctkstock.c:424
+#: ctk/ctkstock.c:424
 msgctxt "Stock label"
 msgid "Reverse landscape"
 msgstr "عرضيّ مقلوب"
 
 #. Page orientation
-#: ctk/deprecated/ctkstock.c:426
+#: ctk/ctkstock.c:426
 msgctxt "Stock label"
 msgid "Reverse portrait"
 msgstr "طوليّ مقلوب"
 
-#: ctk/deprecated/ctkstock.c:427
+#: ctk/ctkstock.c:427
 msgctxt "Stock label"
 msgid "Page Set_up"
 msgstr "إعداد ال_صفحة"
 
-#: ctk/deprecated/ctkstock.c:429
+#: ctk/ctkstock.c:429
 msgctxt "Stock label"
 msgid "_Preferences"
 msgstr "_التفضيلات"
 
-#: ctk/deprecated/ctkstock.c:441
+#: ctk/ctkstock.c:441
 msgctxt "Stock label"
 msgid "_Color"
 msgstr "_اللون"
 
-#: ctk/deprecated/ctkstock.c:442
+#: ctk/ctkstock.c:442
 msgctxt "Stock label"
 msgid "_Font"
 msgstr "_الخط"
 
-#: ctk/deprecated/ctkstock.c:451
+#: ctk/ctkstock.c:451
 msgctxt "Stock label"
 msgid "_Undelete"
 msgstr "_تراجع عن الحذف"
 
-#: ctk/deprecated/ctkstock.c:455
+#: ctk/ctkstock.c:455
 msgctxt "Stock label"
 msgid "_Yes"
 msgstr "_نعم"

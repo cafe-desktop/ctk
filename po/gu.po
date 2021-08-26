@@ -603,32 +603,32 @@ msgstr "વિસ્તારકને સક્રિય કરે છે"
 #. FIXME these need accelerators when appropriate, and
 #. * need the mnemonics to be rationalized
 #.
-#: ../ctk/a11y/ctkimageaccessible.c:53 ../ctk/deprecated/ctkstock.c:340
+#: ../ctk/a11y/ctkimageaccessible.c:53 ../ctk/ctkstock.c:340
 msgctxt "Stock label"
 msgid "_About"
 msgstr "વિશે (_A)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:54 ../ctk/deprecated/ctkstock.c:341
+#: ../ctk/a11y/ctkimageaccessible.c:54 ../ctk/ctkstock.c:341
 msgctxt "Stock label"
 msgid "_Add"
 msgstr "ઉમેરો (_A)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:55 ../ctk/deprecated/ctkstock.c:343
+#: ../ctk/a11y/ctkimageaccessible.c:55 ../ctk/ctkstock.c:343
 msgctxt "Stock label"
 msgid "_Bold"
 msgstr "ઘટ્ટ (_B)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:56 ../ctk/deprecated/ctkstock.c:345
+#: ../ctk/a11y/ctkimageaccessible.c:56 ../ctk/ctkstock.c:345
 msgctxt "Stock label"
 msgid "_CD-ROM"
 msgstr "CD-ROM (_C)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:57 ../ctk/deprecated/ctkstock.c:346
+#: ../ctk/a11y/ctkimageaccessible.c:57 ../ctk/ctkstock.c:346
 msgctxt "Stock label"
 msgid "_Clear"
 msgstr "સાફ કરો (_C)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:58 ../ctk/deprecated/ctkstock.c:347
+#: ../ctk/a11y/ctkimageaccessible.c:58 ../ctk/ctkstock.c:347
 msgctxt "Stock label"
 msgid "_Close"
 msgstr "બંધ કરો (_C)"
@@ -645,369 +645,369 @@ msgstr "મહત્તમ કરો"
 msgid "Restore"
 msgstr "પુનઃસંગ્રહો"
 
-#: ../ctk/a11y/ctkimageaccessible.c:62 ../ctk/deprecated/ctkstock.c:350
+#: ../ctk/a11y/ctkimageaccessible.c:62 ../ctk/ctkstock.c:350
 msgctxt "Stock label"
 msgid "_Copy"
 msgstr "નકલ કરો (_C)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:63 ../ctk/deprecated/ctkstock.c:351
+#: ../ctk/a11y/ctkimageaccessible.c:63 ../ctk/ctkstock.c:351
 msgctxt "Stock label"
 msgid "Cu_t"
 msgstr "કાપો (_t)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:64 ../ctk/deprecated/ctkstock.c:352
+#: ../ctk/a11y/ctkimageaccessible.c:64 ../ctk/ctkstock.c:352
 msgctxt "Stock label"
 msgid "_Delete"
 msgstr "કાઢી નાંખો (_D)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:65 ../ctk/deprecated/ctkstock.c:334
+#: ../ctk/a11y/ctkimageaccessible.c:65 ../ctk/ctkstock.c:334
 msgctxt "Stock label"
 msgid "Error"
 msgstr "ભૂલ"
 
 #. KEEP IN SYNC with ctkiconfactory.c stock icons, when appropriate
-#: ../ctk/a11y/ctkimageaccessible.c:66 ../ctk/deprecated/ctkstock.c:332
+#: ../ctk/a11y/ctkimageaccessible.c:66 ../ctk/ctkstock.c:332
 msgctxt "Stock label"
 msgid "Information"
 msgstr "જાણકારી"
 
-#: ../ctk/a11y/ctkimageaccessible.c:67 ../ctk/deprecated/ctkstock.c:335
+#: ../ctk/a11y/ctkimageaccessible.c:67 ../ctk/ctkstock.c:335
 msgctxt "Stock label"
 msgid "Question"
 msgstr "પ્રશ્ર્ન"
 
-#: ../ctk/a11y/ctkimageaccessible.c:68 ../ctk/deprecated/ctkstock.c:333
+#: ../ctk/a11y/ctkimageaccessible.c:68 ../ctk/ctkstock.c:333
 msgctxt "Stock label"
 msgid "Warning"
 msgstr "ચેતવણી"
 
-#: ../ctk/a11y/ctkimageaccessible.c:69 ../ctk/deprecated/ctkstock.c:355
+#: ../ctk/a11y/ctkimageaccessible.c:69 ../ctk/ctkstock.c:355
 msgctxt "Stock label"
 msgid "_Execute"
 msgstr "ચલાવો (_E)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:70 ../ctk/deprecated/ctkstock.c:357
+#: ../ctk/a11y/ctkimageaccessible.c:70 ../ctk/ctkstock.c:357
 msgctxt "Stock label"
 msgid "_File"
 msgstr "ફાઈલ (_F)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:71 ../ctk/deprecated/ctkstock.c:358
+#: ../ctk/a11y/ctkimageaccessible.c:71 ../ctk/ctkstock.c:358
 msgctxt "Stock label"
 msgid "_Find"
 msgstr "શોધો (_F)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:72 ../ctk/deprecated/ctkstock.c:359
+#: ../ctk/a11y/ctkimageaccessible.c:72 ../ctk/ctkstock.c:359
 msgctxt "Stock label"
 msgid "Find and _Replace"
 msgstr "શોધો અને બદલો (_R)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:73 ../ctk/deprecated/ctkstock.c:360
+#: ../ctk/a11y/ctkimageaccessible.c:73 ../ctk/ctkstock.c:360
 msgctxt "Stock label"
 msgid "_Floppy"
 msgstr "ફ્લોપી (_F)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:74 ../ctk/deprecated/ctkstock.c:361
+#: ../ctk/a11y/ctkimageaccessible.c:74 ../ctk/ctkstock.c:361
 msgctxt "Stock label"
 msgid "_Fullscreen"
 msgstr "પૂર્ણ સ્ક્રીન (_F)"
 
 #. This is a navigation label as in "go to the bottom of the page"
-#: ../ctk/a11y/ctkimageaccessible.c:75 ../ctk/deprecated/ctkstock.c:364
+#: ../ctk/a11y/ctkimageaccessible.c:75 ../ctk/ctkstock.c:364
 msgctxt "Stock label, navigation"
 msgid "_Bottom"
 msgstr "તળિયું (_B)"
 
 #. This is a navigation label as in "go to the first page"
-#: ../ctk/a11y/ctkimageaccessible.c:76 ../ctk/deprecated/ctkstock.c:366
+#: ../ctk/a11y/ctkimageaccessible.c:76 ../ctk/ctkstock.c:366
 msgctxt "Stock label, navigation"
 msgid "_First"
 msgstr "પહેલુ (_F)"
 
 #. This is a navigation label as in "go to the last page"
-#: ../ctk/a11y/ctkimageaccessible.c:77 ../ctk/deprecated/ctkstock.c:368
+#: ../ctk/a11y/ctkimageaccessible.c:77 ../ctk/ctkstock.c:368
 msgctxt "Stock label, navigation"
 msgid "_Last"
 msgstr "છેલ્લુ (_L)"
 
 #. This is a navigation label as in "go to the top of the page"
-#: ../ctk/a11y/ctkimageaccessible.c:78 ../ctk/deprecated/ctkstock.c:370
+#: ../ctk/a11y/ctkimageaccessible.c:78 ../ctk/ctkstock.c:370
 msgctxt "Stock label, navigation"
 msgid "_Top"
 msgstr "ટોચ (_T)"
 
 #. This is a navigation label as in "go back"
-#: ../ctk/a11y/ctkimageaccessible.c:79 ../ctk/deprecated/ctkstock.c:372
+#: ../ctk/a11y/ctkimageaccessible.c:79 ../ctk/ctkstock.c:372
 msgctxt "Stock label, navigation"
 msgid "_Back"
 msgstr "પાછળ કરો (_B)"
 
 #. This is a navigation label as in "go down"
-#: ../ctk/a11y/ctkimageaccessible.c:80 ../ctk/deprecated/ctkstock.c:374
+#: ../ctk/a11y/ctkimageaccessible.c:80 ../ctk/ctkstock.c:374
 msgctxt "Stock label, navigation"
 msgid "_Down"
 msgstr "નીચે કરો (_D)"
 
 #. This is a navigation label as in "go forward"
-#: ../ctk/a11y/ctkimageaccessible.c:81 ../ctk/deprecated/ctkstock.c:376
+#: ../ctk/a11y/ctkimageaccessible.c:81 ../ctk/ctkstock.c:376
 msgctxt "Stock label, navigation"
 msgid "_Forward"
 msgstr "આગળ ધપાવો (_F)"
 
 #. This is a navigation label as in "go up"
-#: ../ctk/a11y/ctkimageaccessible.c:82 ../ctk/deprecated/ctkstock.c:378
+#: ../ctk/a11y/ctkimageaccessible.c:82 ../ctk/ctkstock.c:378
 msgctxt "Stock label, navigation"
 msgid "_Up"
 msgstr "ઉપર કરો (_U)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:83 ../ctk/deprecated/ctkstock.c:379
+#: ../ctk/a11y/ctkimageaccessible.c:83 ../ctk/ctkstock.c:379
 msgctxt "Stock label"
 msgid "_Hard Disk"
 msgstr "હાર્ડ ડિસ્ક (_H)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:84 ../ctk/deprecated/ctkstock.c:380
+#: ../ctk/a11y/ctkimageaccessible.c:84 ../ctk/ctkstock.c:380
 msgctxt "Stock label"
 msgid "_Help"
 msgstr "મદદ (_H)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:85 ../ctk/deprecated/ctkstock.c:381
+#: ../ctk/a11y/ctkimageaccessible.c:85 ../ctk/ctkstock.c:381
 msgctxt "Stock label"
 msgid "_Home"
 msgstr "ઘર (_H)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:86 ../ctk/deprecated/ctkstock.c:382
+#: ../ctk/a11y/ctkimageaccessible.c:86 ../ctk/ctkstock.c:382
 msgctxt "Stock label"
 msgid "Increase Indent"
 msgstr "હાંસ્યો વધારો"
 
-#: ../ctk/a11y/ctkimageaccessible.c:87 ../ctk/deprecated/ctkstock.c:385
+#: ../ctk/a11y/ctkimageaccessible.c:87 ../ctk/ctkstock.c:385
 msgctxt "Stock label"
 msgid "_Information"
 msgstr "જાણકારી (_I)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:88 ../ctk/deprecated/ctkstock.c:386
+#: ../ctk/a11y/ctkimageaccessible.c:88 ../ctk/ctkstock.c:386
 msgctxt "Stock label"
 msgid "_Italic"
 msgstr "ઇટાલિક (_I)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:89 ../ctk/deprecated/ctkstock.c:387
+#: ../ctk/a11y/ctkimageaccessible.c:89 ../ctk/ctkstock.c:387
 msgctxt "Stock label"
 msgid "_Jump to"
 msgstr "અહીં કૂદકો મારો (_J)"
 
 #. This is about text justification, "centered text"
-#: ../ctk/a11y/ctkimageaccessible.c:90 ../ctk/deprecated/ctkstock.c:389
+#: ../ctk/a11y/ctkimageaccessible.c:90 ../ctk/ctkstock.c:389
 msgctxt "Stock label"
 msgid "_Center"
 msgstr "કેન્દ્ર (_C)"
 
 #. This is about text justification
-#: ../ctk/a11y/ctkimageaccessible.c:91 ../ctk/deprecated/ctkstock.c:391
+#: ../ctk/a11y/ctkimageaccessible.c:91 ../ctk/ctkstock.c:391
 msgctxt "Stock label"
 msgid "_Fill"
 msgstr "ભરો (_F)"
 
 #. This is about text justification, "left-justified text"
-#: ../ctk/a11y/ctkimageaccessible.c:92 ../ctk/deprecated/ctkstock.c:393
+#: ../ctk/a11y/ctkimageaccessible.c:92 ../ctk/ctkstock.c:393
 msgctxt "Stock label"
 msgid "_Left"
 msgstr "ડાબું (_L)"
 
 #. This is about text justification, "right-justified text"
-#: ../ctk/a11y/ctkimageaccessible.c:93 ../ctk/deprecated/ctkstock.c:395
+#: ../ctk/a11y/ctkimageaccessible.c:93 ../ctk/ctkstock.c:395
 msgctxt "Stock label"
 msgid "_Right"
 msgstr "જમણું (_R)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:94 ../ctk/deprecated/ctkstock.c:362
+#: ../ctk/a11y/ctkimageaccessible.c:94 ../ctk/ctkstock.c:362
 msgctxt "Stock label"
 msgid "_Leave Fullscreen"
 msgstr "પૂર્ણ સ્ક્રીન છોડો (_L)"
 
 #. Media label, as in "fast forward"
-#: ../ctk/a11y/ctkimageaccessible.c:95 ../ctk/deprecated/ctkstock.c:398
+#: ../ctk/a11y/ctkimageaccessible.c:95 ../ctk/ctkstock.c:398
 msgctxt "Stock label, media"
 msgid "_Forward"
 msgstr "આગળ ધપાવો (_F)"
 
 #. Media label, as in "next song"
-#: ../ctk/a11y/ctkimageaccessible.c:96 ../ctk/deprecated/ctkstock.c:400
+#: ../ctk/a11y/ctkimageaccessible.c:96 ../ctk/ctkstock.c:400
 msgctxt "Stock label, media"
 msgid "_Next"
 msgstr "પછી (_N)"
 
 #. Media label, as in "pause music"
-#: ../ctk/a11y/ctkimageaccessible.c:97 ../ctk/deprecated/ctkstock.c:402
+#: ../ctk/a11y/ctkimageaccessible.c:97 ../ctk/ctkstock.c:402
 msgctxt "Stock label, media"
 msgid "P_ause"
 msgstr "અટકાવો (_a)"
 
 #. Media label, as in "play music"
-#: ../ctk/a11y/ctkimageaccessible.c:98 ../ctk/deprecated/ctkstock.c:404
+#: ../ctk/a11y/ctkimageaccessible.c:98 ../ctk/ctkstock.c:404
 msgctxt "Stock label, media"
 msgid "_Play"
 msgstr "ચલાવો (_P)"
 
 #. Media label, as in  "previous song"
-#: ../ctk/a11y/ctkimageaccessible.c:99 ../ctk/deprecated/ctkstock.c:406
+#: ../ctk/a11y/ctkimageaccessible.c:99 ../ctk/ctkstock.c:406
 msgctxt "Stock label, media"
 msgid "Pre_vious"
 msgstr "પહેલાંનુ (_v)"
 
 #. Media label
-#: ../ctk/a11y/ctkimageaccessible.c:100 ../ctk/deprecated/ctkstock.c:408
+#: ../ctk/a11y/ctkimageaccessible.c:100 ../ctk/ctkstock.c:408
 msgctxt "Stock label, media"
 msgid "_Record"
 msgstr "રેકોર્ડ (_R)"
 
 #. Media label
-#: ../ctk/a11y/ctkimageaccessible.c:101 ../ctk/deprecated/ctkstock.c:410
+#: ../ctk/a11y/ctkimageaccessible.c:101 ../ctk/ctkstock.c:410
 msgctxt "Stock label, media"
 msgid "R_ewind"
 msgstr "ફરી ચલાવો (_e)"
 
 #. Media label
-#: ../ctk/a11y/ctkimageaccessible.c:102 ../ctk/deprecated/ctkstock.c:412
+#: ../ctk/a11y/ctkimageaccessible.c:102 ../ctk/ctkstock.c:412
 msgctxt "Stock label, media"
 msgid "_Stop"
 msgstr "થોભો (_S)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:103 ../ctk/deprecated/ctkstock.c:413
+#: ../ctk/a11y/ctkimageaccessible.c:103 ../ctk/ctkstock.c:413
 msgctxt "Stock label"
 msgid "_Network"
 msgstr "નેટવર્ક (_N)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:104 ../ctk/deprecated/ctkstock.c:414
+#: ../ctk/a11y/ctkimageaccessible.c:104 ../ctk/ctkstock.c:414
 msgctxt "Stock label"
 msgid "_New"
 msgstr "નવું (_N)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:105 ../ctk/deprecated/ctkstock.c:417
+#: ../ctk/a11y/ctkimageaccessible.c:105 ../ctk/ctkstock.c:417
 msgctxt "Stock label"
 msgid "_Open"
 msgstr "ખોલો (_O)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:106 ../ctk/deprecated/ctkstock.c:427
+#: ../ctk/a11y/ctkimageaccessible.c:106 ../ctk/ctkstock.c:427
 msgctxt "Stock label"
 msgid "_Paste"
 msgstr "ચોંટાડો (_P)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:107 ../ctk/deprecated/ctkstock.c:429
+#: ../ctk/a11y/ctkimageaccessible.c:107 ../ctk/ctkstock.c:429
 msgctxt "Stock label"
 msgid "_Print"
 msgstr "છાપો (_P)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:108 ../ctk/deprecated/ctkstock.c:430
+#: ../ctk/a11y/ctkimageaccessible.c:108 ../ctk/ctkstock.c:430
 msgctxt "Stock label"
 msgid "Print Pre_view"
 msgstr "છાપવા માટેનું પૂર્વદર્શન (_v)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:109 ../ctk/deprecated/ctkstock.c:431
+#: ../ctk/a11y/ctkimageaccessible.c:109 ../ctk/ctkstock.c:431
 msgctxt "Stock label"
 msgid "_Properties"
 msgstr "ગુણધર્મો (_P)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:110 ../ctk/deprecated/ctkstock.c:432
+#: ../ctk/a11y/ctkimageaccessible.c:110 ../ctk/ctkstock.c:432
 msgctxt "Stock label"
 msgid "_Quit"
 msgstr "બહાર નીકળો (_Q)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:111 ../ctk/deprecated/ctkstock.c:433
+#: ../ctk/a11y/ctkimageaccessible.c:111 ../ctk/ctkstock.c:433
 msgctxt "Stock label"
 msgid "_Redo"
 msgstr "ફરીથી કરો (_R)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:112 ../ctk/deprecated/ctkstock.c:434
+#: ../ctk/a11y/ctkimageaccessible.c:112 ../ctk/ctkstock.c:434
 msgctxt "Stock label"
 msgid "_Refresh"
 msgstr "ફરી તાજુ કરો (_R)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:113 ../ctk/deprecated/ctkstock.c:435
+#: ../ctk/a11y/ctkimageaccessible.c:113 ../ctk/ctkstock.c:435
 msgctxt "Stock label"
 msgid "_Remove"
 msgstr "દૂર કરો (_R)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:114 ../ctk/deprecated/ctkstock.c:436
+#: ../ctk/a11y/ctkimageaccessible.c:114 ../ctk/ctkstock.c:436
 msgctxt "Stock label"
 msgid "_Revert"
 msgstr "ઉલટાવો (_R)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:115 ../ctk/deprecated/ctkstock.c:437
+#: ../ctk/a11y/ctkimageaccessible.c:115 ../ctk/ctkstock.c:437
 msgctxt "Stock label"
 msgid "_Save"
 msgstr "સંગ્રહ કરો (_S)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:116 ../ctk/deprecated/ctkstock.c:438
+#: ../ctk/a11y/ctkimageaccessible.c:116 ../ctk/ctkstock.c:438
 msgctxt "Stock label"
 msgid "Save _As"
 msgstr "આ રીતે સંગ્રહ કરો (_A)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:117 ../ctk/deprecated/ctkstock.c:439
+#: ../ctk/a11y/ctkimageaccessible.c:117 ../ctk/ctkstock.c:439
 msgctxt "Stock label"
 msgid "Select _All"
 msgstr "બધું પસંદ કરો (_A)"
 
 #. Sorting direction
-#: ../ctk/a11y/ctkimageaccessible.c:118 ../ctk/deprecated/ctkstock.c:443
+#: ../ctk/a11y/ctkimageaccessible.c:118 ../ctk/ctkstock.c:443
 msgctxt "Stock label"
 msgid "_Ascending"
 msgstr "ચડતાક્રમમાં (_A)"
 
 #. Sorting direction
-#: ../ctk/a11y/ctkimageaccessible.c:119 ../ctk/deprecated/ctkstock.c:445
+#: ../ctk/a11y/ctkimageaccessible.c:119 ../ctk/ctkstock.c:445
 msgctxt "Stock label"
 msgid "_Descending"
 msgstr "ઊતરતાક્રમમાં (_D)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:120 ../ctk/deprecated/ctkstock.c:446
+#: ../ctk/a11y/ctkimageaccessible.c:120 ../ctk/ctkstock.c:446
 msgctxt "Stock label"
 msgid "_Spell Check"
 msgstr "જોડણી ચકાસો (_S)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:121 ../ctk/deprecated/ctkstock.c:447
+#: ../ctk/a11y/ctkimageaccessible.c:121 ../ctk/ctkstock.c:447
 msgctxt "Stock label"
 msgid "_Stop"
 msgstr "થોભો (_S)"
 
 #. Font variant
-#: ../ctk/a11y/ctkimageaccessible.c:122 ../ctk/deprecated/ctkstock.c:449
+#: ../ctk/a11y/ctkimageaccessible.c:122 ../ctk/ctkstock.c:449
 msgctxt "Stock label"
 msgid "_Strikethrough"
 msgstr "ચેકી નાખો (_S)"
 
 #. Font variant
-#: ../ctk/a11y/ctkimageaccessible.c:123 ../ctk/deprecated/ctkstock.c:452
+#: ../ctk/a11y/ctkimageaccessible.c:123 ../ctk/ctkstock.c:452
 msgctxt "Stock label"
 msgid "_Underline"
 msgstr "નીચે લીટી કરો (_U)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:124 ../ctk/deprecated/ctkstock.c:453
+#: ../ctk/a11y/ctkimageaccessible.c:124 ../ctk/ctkstock.c:453
 msgctxt "Stock label"
 msgid "_Undo"
 msgstr "છેલ્લી ક્રિયા રદ કરો (_U)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:125 ../ctk/deprecated/ctkstock.c:383
+#: ../ctk/a11y/ctkimageaccessible.c:125 ../ctk/ctkstock.c:383
 msgctxt "Stock label"
 msgid "Decrease Indent"
 msgstr "હાંસ્યો ઘટાડો"
 
 #. Zoom
-#: ../ctk/a11y/ctkimageaccessible.c:126 ../ctk/deprecated/ctkstock.c:456
+#: ../ctk/a11y/ctkimageaccessible.c:126 ../ctk/ctkstock.c:456
 msgctxt "Stock label"
 msgid "_Normal Size"
 msgstr "સામાન્ય માપ (_N)"
 
 #. Zoom
-#: ../ctk/a11y/ctkimageaccessible.c:127 ../ctk/deprecated/ctkstock.c:458
+#: ../ctk/a11y/ctkimageaccessible.c:127 ../ctk/ctkstock.c:458
 msgctxt "Stock label"
 msgid "Best _Fit"
 msgstr "શ્રેષ્ઠ રીતે બંધબેસતુ (_F)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:128 ../ctk/deprecated/ctkstock.c:459
+#: ../ctk/a11y/ctkimageaccessible.c:128 ../ctk/ctkstock.c:459
 msgctxt "Stock label"
 msgid "Zoom _In"
 msgstr "મોટું કરો (_I)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:129 ../ctk/deprecated/ctkstock.c:460
+#: ../ctk/a11y/ctkimageaccessible.c:129 ../ctk/ctkstock.c:460
 msgctxt "Stock label"
 msgid "Zoom _Out"
 msgstr "નાનું કરો (_O)"
@@ -1259,106 +1259,106 @@ msgctxt "Number format"
 msgid "%d"
 msgstr "%d"
 
-#: ../ctk/deprecated/ctkstock.c:342
+#: ../ctk/ctkstock.c:342
 msgctxt "Stock label"
 msgid "_Apply"
 msgstr "અમલમાં મૂકો (_A)"
 
-#: ../ctk/deprecated/ctkstock.c:344
+#: ../ctk/ctkstock.c:344
 msgctxt "Stock label"
 msgid "_Cancel"
 msgstr "રદ કરો (_C)"
 
-#: ../ctk/deprecated/ctkstock.c:348
+#: ../ctk/ctkstock.c:348
 msgctxt "Stock label"
 msgid "C_onnect"
 msgstr "જોડો (_o)"
 
-#: ../ctk/deprecated/ctkstock.c:349
+#: ../ctk/ctkstock.c:349
 msgctxt "Stock label"
 msgid "_Convert"
 msgstr "રુપાંતર કરો (_C)"
 
-#: ../ctk/deprecated/ctkstock.c:353
+#: ../ctk/ctkstock.c:353
 msgctxt "Stock label"
 msgid "_Discard"
 msgstr "અવગણો (_D)"
 
-#: ../ctk/deprecated/ctkstock.c:354
+#: ../ctk/ctkstock.c:354
 msgctxt "Stock label"
 msgid "_Disconnect"
 msgstr "જોડાણ તોડો (_D)"
 
-#: ../ctk/deprecated/ctkstock.c:356
+#: ../ctk/ctkstock.c:356
 msgctxt "Stock label"
 msgid "_Edit"
 msgstr "ફેરફાર કરો (_E)"
 
-#: ../ctk/deprecated/ctkstock.c:384
+#: ../ctk/ctkstock.c:384
 msgctxt "Stock label"
 msgid "_Index"
 msgstr "અનુક્રમાંક (_I)"
 
-#: ../ctk/deprecated/ctkstock.c:415
+#: ../ctk/ctkstock.c:415
 msgctxt "Stock label"
 msgid "_No"
 msgstr "ના (_N)"
 
-#: ../ctk/deprecated/ctkstock.c:416
+#: ../ctk/ctkstock.c:416
 msgctxt "Stock label"
 msgid "_OK"
 msgstr "બરાબર (_O)"
 
 #. Page orientation
-#: ../ctk/deprecated/ctkstock.c:419
+#: ../ctk/ctkstock.c:419
 msgctxt "Stock label"
 msgid "Landscape"
 msgstr "આડું"
 
 #. Page orientation
-#: ../ctk/deprecated/ctkstock.c:421
+#: ../ctk/ctkstock.c:421
 msgctxt "Stock label"
 msgid "Portrait"
 msgstr "છબી"
 
 #. Page orientation
-#: ../ctk/deprecated/ctkstock.c:423
+#: ../ctk/ctkstock.c:423
 msgctxt "Stock label"
 msgid "Reverse landscape"
 msgstr "ઉલટું આડું"
 
 #. Page orientation
-#: ../ctk/deprecated/ctkstock.c:425
+#: ../ctk/ctkstock.c:425
 msgctxt "Stock label"
 msgid "Reverse portrait"
 msgstr "ઉલટી છબી"
 
-#: ../ctk/deprecated/ctkstock.c:426
+#: ../ctk/ctkstock.c:426
 msgctxt "Stock label"
 msgid "Page Set_up"
 msgstr "પાનાં સુયોજન (_u)"
 
-#: ../ctk/deprecated/ctkstock.c:428
+#: ../ctk/ctkstock.c:428
 msgctxt "Stock label"
 msgid "_Preferences"
 msgstr "પસંદગીઓ (_P)"
 
-#: ../ctk/deprecated/ctkstock.c:440
+#: ../ctk/ctkstock.c:440
 msgctxt "Stock label"
 msgid "_Color"
 msgstr "રંગ (_C)"
 
-#: ../ctk/deprecated/ctkstock.c:441
+#: ../ctk/ctkstock.c:441
 msgctxt "Stock label"
 msgid "_Font"
 msgstr "ફોન્ટ (_F)"
 
-#: ../ctk/deprecated/ctkstock.c:450
+#: ../ctk/ctkstock.c:450
 msgctxt "Stock label"
 msgid "_Undelete"
 msgstr "કાઢી નાખેલું પાછુ લાવો (_U)"
 
-#: ../ctk/deprecated/ctkstock.c:454
+#: ../ctk/ctkstock.c:454
 msgctxt "Stock label"
 msgid "_Yes"
 msgstr "હા (_Y)"

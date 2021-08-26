@@ -45,7 +45,7 @@
 #include "ctkbuilderprivate.h"
 #include "ctksettings.h"
 #include "ctktypebuiltins.h"
-#include "deprecated/ctkstock.h"
+#include "ctkstock.h"
 #include "ctksizegroup.h"
 
 /**

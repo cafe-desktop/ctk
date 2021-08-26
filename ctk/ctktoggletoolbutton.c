@@ -22,7 +22,7 @@
 #include "ctkcheckmenuitem.h"
 #include "ctklabel.h"
 #include "ctktogglebutton.h"
-#include "deprecated/ctkstock.h"
+#include "ctkstock.h"
 #include "ctkintl.h"
 #include "ctkradiotoolbutton.h"
 #include "deprecated/ctktoggleaction.h"

@@ -223,7 +223,7 @@
 #include "ctkwindow.h"
 #include "ctkicontheme.h"
 #include "ctktestutils.h"
-#include "deprecated/ctkstock.h"
+#include "ctkstock.h"
 
 
 static void ctk_builder_class_init     (CtkBuilderClass *klass);

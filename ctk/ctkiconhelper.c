@@ -32,7 +32,7 @@
 #include "ctkiconthemeprivate.h"
 #include "ctkrendericonprivate.h"
 #include "deprecated/ctkiconfactoryprivate.h"
-#include "deprecated/ctkstock.h"
+#include "ctkstock.h"
 
 struct _CtkIconHelperPrivate {
   CtkImageDefinition *def;

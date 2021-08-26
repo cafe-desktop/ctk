@@ -30,7 +30,7 @@
 #include "ctkfontchooserwidgetprivate.h"
 #include "ctkfontchooserutils.h"
 #include "ctkbox.h"
-#include "deprecated/ctkstock.h"
+#include "ctkstock.h"
 #include "ctkintl.h"
 #include "ctkaccessible.h"
 #include "ctkbuildable.h"

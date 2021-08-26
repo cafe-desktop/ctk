@@ -24,7 +24,7 @@
 #include "ctkimage.h"
 #include "deprecated/ctkimagemenuitem.h"
 #include "ctklabel.h"
-#include "deprecated/ctkstock.h"
+#include "ctkstock.h"
 #include "ctkbox.h"
 #include "ctkintl.h"
 #include "ctktoolbarprivate.h"

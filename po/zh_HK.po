@@ -574,32 +574,32 @@ msgstr "使用擴展器"
 #. FIXME these need accelerators when appropriate, and
 #. * need the mnemonics to be rationalized
 #.
-#: ../ctk/a11y/ctkimageaccessible.c:53 ../ctk/deprecated/ctkstock.c:340
+#: ../ctk/a11y/ctkimageaccessible.c:53 ../ctk/ctkstock.c:340
 msgctxt "Stock label"
 msgid "_About"
 msgstr "關於(_A)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:54 ../ctk/deprecated/ctkstock.c:341
+#: ../ctk/a11y/ctkimageaccessible.c:54 ../ctk/ctkstock.c:341
 msgctxt "Stock label"
 msgid "_Add"
 msgstr "加入(_A)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:55 ../ctk/deprecated/ctkstock.c:343
+#: ../ctk/a11y/ctkimageaccessible.c:55 ../ctk/ctkstock.c:343
 msgctxt "Stock label"
 msgid "_Bold"
 msgstr "粗體(_B)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:56 ../ctk/deprecated/ctkstock.c:345
+#: ../ctk/a11y/ctkimageaccessible.c:56 ../ctk/ctkstock.c:345
 msgctxt "Stock label"
 msgid "_CD-ROM"
 msgstr "_CD-ROM"
 
-#: ../ctk/a11y/ctkimageaccessible.c:57 ../ctk/deprecated/ctkstock.c:346
+#: ../ctk/a11y/ctkimageaccessible.c:57 ../ctk/ctkstock.c:346
 msgctxt "Stock label"
 msgid "_Clear"
 msgstr "清除(_C)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:58 ../ctk/deprecated/ctkstock.c:347
+#: ../ctk/a11y/ctkimageaccessible.c:58 ../ctk/ctkstock.c:347
 msgctxt "Stock label"
 msgid "_Close"
 msgstr "關閉(_C)"
@@ -616,371 +616,371 @@ msgstr "最大化"
 msgid "Restore"
 msgstr "還原"
 
-#: ../ctk/a11y/ctkimageaccessible.c:62 ../ctk/deprecated/ctkstock.c:350
+#: ../ctk/a11y/ctkimageaccessible.c:62 ../ctk/ctkstock.c:350
 msgctxt "Stock label"
 msgid "_Copy"
 msgstr "複製(_C)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:63 ../ctk/deprecated/ctkstock.c:351
+#: ../ctk/a11y/ctkimageaccessible.c:63 ../ctk/ctkstock.c:351
 msgctxt "Stock label"
 msgid "Cu_t"
 msgstr "剪下(_T)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:64 ../ctk/deprecated/ctkstock.c:352
+#: ../ctk/a11y/ctkimageaccessible.c:64 ../ctk/ctkstock.c:352
 msgctxt "Stock label"
 msgid "_Delete"
 msgstr "刪除(_D)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:65 ../ctk/deprecated/ctkstock.c:334
+#: ../ctk/a11y/ctkimageaccessible.c:65 ../ctk/ctkstock.c:334
 msgctxt "Stock label"
 msgid "Error"
 msgstr "錯誤"
 
 #. KEEP IN SYNC with ctkiconfactory.c stock icons, when appropriate
-#: ../ctk/a11y/ctkimageaccessible.c:66 ../ctk/deprecated/ctkstock.c:332
+#: ../ctk/a11y/ctkimageaccessible.c:66 ../ctk/ctkstock.c:332
 msgctxt "Stock label"
 msgid "Information"
 msgstr "Information"
 
-#: ../ctk/a11y/ctkimageaccessible.c:67 ../ctk/deprecated/ctkstock.c:335
+#: ../ctk/a11y/ctkimageaccessible.c:67 ../ctk/ctkstock.c:335
 msgctxt "Stock label"
 msgid "Question"
 msgstr "問題"
 
-#: ../ctk/a11y/ctkimageaccessible.c:68 ../ctk/deprecated/ctkstock.c:333
+#: ../ctk/a11y/ctkimageaccessible.c:68 ../ctk/ctkstock.c:333
 msgctxt "Stock label"
 msgid "Warning"
 msgstr "警告"
 
-#: ../ctk/a11y/ctkimageaccessible.c:69 ../ctk/deprecated/ctkstock.c:355
+#: ../ctk/a11y/ctkimageaccessible.c:69 ../ctk/ctkstock.c:355
 msgctxt "Stock label"
 msgid "_Execute"
 msgstr "執行(_E)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:70 ../ctk/deprecated/ctkstock.c:357
+#: ../ctk/a11y/ctkimageaccessible.c:70 ../ctk/ctkstock.c:357
 msgctxt "Stock label"
 msgid "_File"
 msgstr "檔案(_F)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:71 ../ctk/deprecated/ctkstock.c:358
+#: ../ctk/a11y/ctkimageaccessible.c:71 ../ctk/ctkstock.c:358
 msgctxt "Stock label"
 msgid "_Find"
 msgstr "尋找(_F)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:72 ../ctk/deprecated/ctkstock.c:359
+#: ../ctk/a11y/ctkimageaccessible.c:72 ../ctk/ctkstock.c:359
 msgctxt "Stock label"
 msgid "Find and _Replace"
 msgstr "尋找與取代(_R)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:73 ../ctk/deprecated/ctkstock.c:360
+#: ../ctk/a11y/ctkimageaccessible.c:73 ../ctk/ctkstock.c:360
 msgctxt "Stock label"
 msgid "_Floppy"
 msgstr "軟碟(_F)"
 
 # (Abel) 「全螢幕模式」佔 ctktoolbar 按鈕的位置太闊了
-#: ../ctk/a11y/ctkimageaccessible.c:74 ../ctk/deprecated/ctkstock.c:361
+#: ../ctk/a11y/ctkimageaccessible.c:74 ../ctk/ctkstock.c:361
 msgctxt "Stock label"
 msgid "_Fullscreen"
 msgstr "全螢幕(_F)"
 
 #. This is a navigation label as in "go to the bottom of the page"
-#: ../ctk/a11y/ctkimageaccessible.c:75 ../ctk/deprecated/ctkstock.c:364
+#: ../ctk/a11y/ctkimageaccessible.c:75 ../ctk/ctkstock.c:364
 msgctxt "Stock label, navigation"
 msgid "_Bottom"
 msgstr "頁尾(_B)"
 
 #. This is a navigation label as in "go to the first page"
-#: ../ctk/a11y/ctkimageaccessible.c:76 ../ctk/deprecated/ctkstock.c:366
+#: ../ctk/a11y/ctkimageaccessible.c:76 ../ctk/ctkstock.c:366
 msgctxt "Stock label, navigation"
 msgid "_First"
 msgstr "第一頁(_F)"
 
 #. This is a navigation label as in "go to the last page"
-#: ../ctk/a11y/ctkimageaccessible.c:77 ../ctk/deprecated/ctkstock.c:368
+#: ../ctk/a11y/ctkimageaccessible.c:77 ../ctk/ctkstock.c:368
 msgctxt "Stock label, navigation"
 msgid "_Last"
 msgstr "最後一頁(_L)"
 
 #. This is a navigation label as in "go to the top of the page"
-#: ../ctk/a11y/ctkimageaccessible.c:78 ../ctk/deprecated/ctkstock.c:370
+#: ../ctk/a11y/ctkimageaccessible.c:78 ../ctk/ctkstock.c:370
 msgctxt "Stock label, navigation"
 msgid "_Top"
 msgstr "頁首(_T)"
 
 #. This is a navigation label as in "go back"
-#: ../ctk/a11y/ctkimageaccessible.c:79 ../ctk/deprecated/ctkstock.c:372
+#: ../ctk/a11y/ctkimageaccessible.c:79 ../ctk/ctkstock.c:372
 msgctxt "Stock label, navigation"
 msgid "_Back"
 msgstr "返回(_B)"
 
 #. This is a navigation label as in "go down"
-#: ../ctk/a11y/ctkimageaccessible.c:80 ../ctk/deprecated/ctkstock.c:374
+#: ../ctk/a11y/ctkimageaccessible.c:80 ../ctk/ctkstock.c:374
 msgctxt "Stock label, navigation"
 msgid "_Down"
 msgstr "向下(_D)"
 
 #. This is a navigation label as in "go forward"
-#: ../ctk/a11y/ctkimageaccessible.c:81 ../ctk/deprecated/ctkstock.c:376
+#: ../ctk/a11y/ctkimageaccessible.c:81 ../ctk/ctkstock.c:376
 msgctxt "Stock label, navigation"
 msgid "_Forward"
 msgstr "前進(_F)"
 
 #. This is a navigation label as in "go up"
-#: ../ctk/a11y/ctkimageaccessible.c:82 ../ctk/deprecated/ctkstock.c:378
+#: ../ctk/a11y/ctkimageaccessible.c:82 ../ctk/ctkstock.c:378
 msgctxt "Stock label, navigation"
 msgid "_Up"
 msgstr "向上(_U)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:83 ../ctk/deprecated/ctkstock.c:379
+#: ../ctk/a11y/ctkimageaccessible.c:83 ../ctk/ctkstock.c:379
 msgctxt "Stock label"
 msgid "_Hard Disk"
 msgstr "硬碟(_H)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:84 ../ctk/deprecated/ctkstock.c:380
+#: ../ctk/a11y/ctkimageaccessible.c:84 ../ctk/ctkstock.c:380
 msgctxt "Stock label"
 msgid "_Help"
 msgstr "求助(_H)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:85 ../ctk/deprecated/ctkstock.c:381
+#: ../ctk/a11y/ctkimageaccessible.c:85 ../ctk/ctkstock.c:381
 msgctxt "Stock label"
 msgid "_Home"
 msgstr "首頁(_H)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:86 ../ctk/deprecated/ctkstock.c:382
+#: ../ctk/a11y/ctkimageaccessible.c:86 ../ctk/ctkstock.c:382
 msgctxt "Stock label"
 msgid "Increase Indent"
 msgstr "增加縮排"
 
-#: ../ctk/a11y/ctkimageaccessible.c:87 ../ctk/deprecated/ctkstock.c:385
+#: ../ctk/a11y/ctkimageaccessible.c:87 ../ctk/ctkstock.c:385
 msgctxt "Stock label"
 msgid "_Information"
 msgstr "資訊(_I)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:88 ../ctk/deprecated/ctkstock.c:386
+#: ../ctk/a11y/ctkimageaccessible.c:88 ../ctk/ctkstock.c:386
 msgctxt "Stock label"
 msgid "_Italic"
 msgstr "斜體(_I)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:89 ../ctk/deprecated/ctkstock.c:387
+#: ../ctk/a11y/ctkimageaccessible.c:89 ../ctk/ctkstock.c:387
 msgctxt "Stock label"
 msgid "_Jump to"
 msgstr "跳轉到(_J)"
 
 #. This is about text justification, "centered text"
-#: ../ctk/a11y/ctkimageaccessible.c:90 ../ctk/deprecated/ctkstock.c:389
+#: ../ctk/a11y/ctkimageaccessible.c:90 ../ctk/ctkstock.c:389
 msgctxt "Stock label"
 msgid "_Center"
 msgstr "置中(_C)"
 
 #. This is about text justification
-#: ../ctk/a11y/ctkimageaccessible.c:91 ../ctk/deprecated/ctkstock.c:391
+#: ../ctk/a11y/ctkimageaccessible.c:91 ../ctk/ctkstock.c:391
 msgctxt "Stock label"
 msgid "_Fill"
 msgstr "左右填滿(_F)"
 
 #. This is about text justification, "left-justified text"
-#: ../ctk/a11y/ctkimageaccessible.c:92 ../ctk/deprecated/ctkstock.c:393
+#: ../ctk/a11y/ctkimageaccessible.c:92 ../ctk/ctkstock.c:393
 msgctxt "Stock label"
 msgid "_Left"
 msgstr "靠左(_L)"
 
 #. This is about text justification, "right-justified text"
-#: ../ctk/a11y/ctkimageaccessible.c:93 ../ctk/deprecated/ctkstock.c:395
+#: ../ctk/a11y/ctkimageaccessible.c:93 ../ctk/ctkstock.c:395
 msgctxt "Stock label"
 msgid "_Right"
 msgstr "靠右(_R)"
 
 # (Abel) 「離開全螢幕模式」佔 ctktoolbar 按鈕的位置太闊了
-#: ../ctk/a11y/ctkimageaccessible.c:94 ../ctk/deprecated/ctkstock.c:362
+#: ../ctk/a11y/ctkimageaccessible.c:94 ../ctk/ctkstock.c:362
 msgctxt "Stock label"
 msgid "_Leave Fullscreen"
 msgstr "離開全螢幕(_L)"
 
 #. Media label, as in "fast forward"
-#: ../ctk/a11y/ctkimageaccessible.c:95 ../ctk/deprecated/ctkstock.c:398
+#: ../ctk/a11y/ctkimageaccessible.c:95 ../ctk/ctkstock.c:398
 msgctxt "Stock label, media"
 msgid "_Forward"
 msgstr "快轉(_F)"
 
 #. Media label, as in "next song"
-#: ../ctk/a11y/ctkimageaccessible.c:96 ../ctk/deprecated/ctkstock.c:400
+#: ../ctk/a11y/ctkimageaccessible.c:96 ../ctk/ctkstock.c:400
 msgctxt "Stock label, media"
 msgid "_Next"
 msgstr "下一首(_N)"
 
 #. Media label, as in "pause music"
-#: ../ctk/a11y/ctkimageaccessible.c:97 ../ctk/deprecated/ctkstock.c:402
+#: ../ctk/a11y/ctkimageaccessible.c:97 ../ctk/ctkstock.c:402
 msgctxt "Stock label, media"
 msgid "P_ause"
 msgstr "暫停(_A)"
 
 #. Media label, as in "play music"
-#: ../ctk/a11y/ctkimageaccessible.c:98 ../ctk/deprecated/ctkstock.c:404
+#: ../ctk/a11y/ctkimageaccessible.c:98 ../ctk/ctkstock.c:404
 msgctxt "Stock label, media"
 msgid "_Play"
 msgstr "播放(_P)"
 
 #. Media label, as in  "previous song"
-#: ../ctk/a11y/ctkimageaccessible.c:99 ../ctk/deprecated/ctkstock.c:406
+#: ../ctk/a11y/ctkimageaccessible.c:99 ../ctk/ctkstock.c:406
 msgctxt "Stock label, media"
 msgid "Pre_vious"
 msgstr "上一首(_V)"
 
 #. Media label
-#: ../ctk/a11y/ctkimageaccessible.c:100 ../ctk/deprecated/ctkstock.c:408
+#: ../ctk/a11y/ctkimageaccessible.c:100 ../ctk/ctkstock.c:408
 msgctxt "Stock label, media"
 msgid "_Record"
 msgstr "錄製(_R)"
 
 #. Media label
-#: ../ctk/a11y/ctkimageaccessible.c:101 ../ctk/deprecated/ctkstock.c:410
+#: ../ctk/a11y/ctkimageaccessible.c:101 ../ctk/ctkstock.c:410
 msgctxt "Stock label, media"
 msgid "R_ewind"
 msgstr "倒轉(_E)"
 
 #. Media label
-#: ../ctk/a11y/ctkimageaccessible.c:102 ../ctk/deprecated/ctkstock.c:412
+#: ../ctk/a11y/ctkimageaccessible.c:102 ../ctk/ctkstock.c:412
 msgctxt "Stock label, media"
 msgid "_Stop"
 msgstr "停止(_S)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:103 ../ctk/deprecated/ctkstock.c:413
+#: ../ctk/a11y/ctkimageaccessible.c:103 ../ctk/ctkstock.c:413
 msgctxt "Stock label"
 msgid "_Network"
 msgstr "網絡(_N)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:104 ../ctk/deprecated/ctkstock.c:414
+#: ../ctk/a11y/ctkimageaccessible.c:104 ../ctk/ctkstock.c:414
 msgctxt "Stock label"
 msgid "_New"
 msgstr "新增(_N)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:105 ../ctk/deprecated/ctkstock.c:417
+#: ../ctk/a11y/ctkimageaccessible.c:105 ../ctk/ctkstock.c:417
 msgctxt "Stock label"
 msgid "_Open"
 msgstr "開啟(_O)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:106 ../ctk/deprecated/ctkstock.c:427
+#: ../ctk/a11y/ctkimageaccessible.c:106 ../ctk/ctkstock.c:427
 msgctxt "Stock label"
 msgid "_Paste"
 msgstr "貼上(_P)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:107 ../ctk/deprecated/ctkstock.c:429
+#: ../ctk/a11y/ctkimageaccessible.c:107 ../ctk/ctkstock.c:429
 msgctxt "Stock label"
 msgid "_Print"
 msgstr "打印(_P)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:108 ../ctk/deprecated/ctkstock.c:430
+#: ../ctk/a11y/ctkimageaccessible.c:108 ../ctk/ctkstock.c:430
 msgctxt "Stock label"
 msgid "Print Pre_view"
 msgstr "預覽打印(_V)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:109 ../ctk/deprecated/ctkstock.c:431
+#: ../ctk/a11y/ctkimageaccessible.c:109 ../ctk/ctkstock.c:431
 msgctxt "Stock label"
 msgid "_Properties"
 msgstr "屬性(_P)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:110 ../ctk/deprecated/ctkstock.c:432
+#: ../ctk/a11y/ctkimageaccessible.c:110 ../ctk/ctkstock.c:432
 msgctxt "Stock label"
 msgid "_Quit"
 msgstr "結束(_Q)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:111 ../ctk/deprecated/ctkstock.c:433
+#: ../ctk/a11y/ctkimageaccessible.c:111 ../ctk/ctkstock.c:433
 msgctxt "Stock label"
 msgid "_Redo"
 msgstr "取消復原(_R)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:112 ../ctk/deprecated/ctkstock.c:434
+#: ../ctk/a11y/ctkimageaccessible.c:112 ../ctk/ctkstock.c:434
 msgctxt "Stock label"
 msgid "_Refresh"
 msgstr "重新整理(_R)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:113 ../ctk/deprecated/ctkstock.c:435
+#: ../ctk/a11y/ctkimageaccessible.c:113 ../ctk/ctkstock.c:435
 msgctxt "Stock label"
 msgid "_Remove"
 msgstr "移除(_R)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:114 ../ctk/deprecated/ctkstock.c:436
+#: ../ctk/a11y/ctkimageaccessible.c:114 ../ctk/ctkstock.c:436
 msgctxt "Stock label"
 msgid "_Revert"
 msgstr "還原(_R)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:115 ../ctk/deprecated/ctkstock.c:437
+#: ../ctk/a11y/ctkimageaccessible.c:115 ../ctk/ctkstock.c:437
 msgctxt "Stock label"
 msgid "_Save"
 msgstr "儲存(_S)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:116 ../ctk/deprecated/ctkstock.c:438
+#: ../ctk/a11y/ctkimageaccessible.c:116 ../ctk/ctkstock.c:438
 msgctxt "Stock label"
 msgid "Save _As"
 msgstr "另存新檔(_A)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:117 ../ctk/deprecated/ctkstock.c:439
+#: ../ctk/a11y/ctkimageaccessible.c:117 ../ctk/ctkstock.c:439
 msgctxt "Stock label"
 msgid "Select _All"
 msgstr "全部選取(_A)"
 
 #. Sorting direction
-#: ../ctk/a11y/ctkimageaccessible.c:118 ../ctk/deprecated/ctkstock.c:443
+#: ../ctk/a11y/ctkimageaccessible.c:118 ../ctk/ctkstock.c:443
 msgctxt "Stock label"
 msgid "_Ascending"
 msgstr "遞增(_A)"
 
 #. Sorting direction
-#: ../ctk/a11y/ctkimageaccessible.c:119 ../ctk/deprecated/ctkstock.c:445
+#: ../ctk/a11y/ctkimageaccessible.c:119 ../ctk/ctkstock.c:445
 msgctxt "Stock label"
 msgid "_Descending"
 msgstr "遞減(_D)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:120 ../ctk/deprecated/ctkstock.c:446
+#: ../ctk/a11y/ctkimageaccessible.c:120 ../ctk/ctkstock.c:446
 msgctxt "Stock label"
 msgid "_Spell Check"
 msgstr "拼字檢查(_S)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:121 ../ctk/deprecated/ctkstock.c:447
+#: ../ctk/a11y/ctkimageaccessible.c:121 ../ctk/ctkstock.c:447
 msgctxt "Stock label"
 msgid "_Stop"
 msgstr "停止(_S)"
 
 #. Font variant
-#: ../ctk/a11y/ctkimageaccessible.c:122 ../ctk/deprecated/ctkstock.c:449
+#: ../ctk/a11y/ctkimageaccessible.c:122 ../ctk/ctkstock.c:449
 msgctxt "Stock label"
 msgid "_Strikethrough"
 msgstr "刪除線(_S)"
 
 #. Font variant
-#: ../ctk/a11y/ctkimageaccessible.c:123 ../ctk/deprecated/ctkstock.c:452
+#: ../ctk/a11y/ctkimageaccessible.c:123 ../ctk/ctkstock.c:452
 msgctxt "Stock label"
 msgid "_Underline"
 msgstr "底線(_U)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:124 ../ctk/deprecated/ctkstock.c:453
+#: ../ctk/a11y/ctkimageaccessible.c:124 ../ctk/ctkstock.c:453
 msgctxt "Stock label"
 msgid "_Undo"
 msgstr "復原(_U)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:125 ../ctk/deprecated/ctkstock.c:383
+#: ../ctk/a11y/ctkimageaccessible.c:125 ../ctk/ctkstock.c:383
 msgctxt "Stock label"
 msgid "Decrease Indent"
 msgstr "減少縮排"
 
 #. Zoom
-#: ../ctk/a11y/ctkimageaccessible.c:126 ../ctk/deprecated/ctkstock.c:456
+#: ../ctk/a11y/ctkimageaccessible.c:126 ../ctk/ctkstock.c:456
 msgctxt "Stock label"
 msgid "_Normal Size"
 msgstr "一般大小(_N)"
 
 #. Zoom
-#: ../ctk/a11y/ctkimageaccessible.c:127 ../ctk/deprecated/ctkstock.c:458
+#: ../ctk/a11y/ctkimageaccessible.c:127 ../ctk/ctkstock.c:458
 msgctxt "Stock label"
 msgid "Best _Fit"
 msgstr "最適大小(_F)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:128 ../ctk/deprecated/ctkstock.c:459
+#: ../ctk/a11y/ctkimageaccessible.c:128 ../ctk/ctkstock.c:459
 msgctxt "Stock label"
 msgid "Zoom _In"
 msgstr "拉近(_I)"
 
-#: ../ctk/a11y/ctkimageaccessible.c:129 ../ctk/deprecated/ctkstock.c:460
+#: ../ctk/a11y/ctkimageaccessible.c:129 ../ctk/ctkstock.c:460
 msgctxt "Stock label"
 msgid "Zoom _Out"
 msgstr "拉遠(_O)"
@@ -1227,106 +1227,106 @@ msgctxt "Number format"
 msgid "%d"
 msgstr "%d"
 
-#: ../ctk/deprecated/ctkstock.c:342
+#: ../ctk/ctkstock.c:342
 msgctxt "Stock label"
 msgid "_Apply"
 msgstr "套用(_A)"
 
-#: ../ctk/deprecated/ctkstock.c:344
+#: ../ctk/ctkstock.c:344
 msgctxt "Stock label"
 msgid "_Cancel"
 msgstr "取消(_C)"
 
-#: ../ctk/deprecated/ctkstock.c:348
+#: ../ctk/ctkstock.c:348
 msgctxt "Stock label"
 msgid "C_onnect"
 msgstr "連線(_O)"
 
-#: ../ctk/deprecated/ctkstock.c:349
+#: ../ctk/ctkstock.c:349
 msgctxt "Stock label"
 msgid "_Convert"
 msgstr "轉換(_C)"
 
-#: ../ctk/deprecated/ctkstock.c:353
+#: ../ctk/ctkstock.c:353
 msgctxt "Stock label"
 msgid "_Discard"
 msgstr "放棄(_D)"
 
-#: ../ctk/deprecated/ctkstock.c:354
+#: ../ctk/ctkstock.c:354
 msgctxt "Stock label"
 msgid "_Disconnect"
 msgstr "斷線(_D)"
 
-#: ../ctk/deprecated/ctkstock.c:356
+#: ../ctk/ctkstock.c:356
 msgctxt "Stock label"
 msgid "_Edit"
 msgstr "編輯(_E)"
 
-#: ../ctk/deprecated/ctkstock.c:384
+#: ../ctk/ctkstock.c:384
 msgctxt "Stock label"
 msgid "_Index"
 msgstr "索引(_I)"
 
-#: ../ctk/deprecated/ctkstock.c:415
+#: ../ctk/ctkstock.c:415
 msgctxt "Stock label"
 msgid "_No"
 msgstr "否(_N)"
 
-#: ../ctk/deprecated/ctkstock.c:416
+#: ../ctk/ctkstock.c:416
 msgctxt "Stock label"
 msgid "_OK"
 msgstr "確定(_O)"
 
 #. Page orientation
-#: ../ctk/deprecated/ctkstock.c:419
+#: ../ctk/ctkstock.c:419
 msgctxt "Stock label"
 msgid "Landscape"
 msgstr "橫向"
 
 #. Page orientation
-#: ../ctk/deprecated/ctkstock.c:421
+#: ../ctk/ctkstock.c:421
 msgctxt "Stock label"
 msgid "Portrait"
 msgstr "直向"
 
 #. Page orientation
-#: ../ctk/deprecated/ctkstock.c:423
+#: ../ctk/ctkstock.c:423
 msgctxt "Stock label"
 msgid "Reverse landscape"
 msgstr "橫向倒轉"
 
 #. Page orientation
-#: ../ctk/deprecated/ctkstock.c:425
+#: ../ctk/ctkstock.c:425
 msgctxt "Stock label"
 msgid "Reverse portrait"
 msgstr "直向倒轉"
 
-#: ../ctk/deprecated/ctkstock.c:426
+#: ../ctk/ctkstock.c:426
 msgctxt "Stock label"
 msgid "Page Set_up"
 msgstr "頁面設定(_U)"
 
-#: ../ctk/deprecated/ctkstock.c:428
+#: ../ctk/ctkstock.c:428
 msgctxt "Stock label"
 msgid "_Preferences"
 msgstr "偏好設定(_P)"
 
-#: ../ctk/deprecated/ctkstock.c:440
+#: ../ctk/ctkstock.c:440
 msgctxt "Stock label"
 msgid "_Color"
 msgstr "顏色(_C)"
 
-#: ../ctk/deprecated/ctkstock.c:441
+#: ../ctk/ctkstock.c:441
 msgctxt "Stock label"
 msgid "_Font"
 msgstr "字型(_F)"
 
-#: ../ctk/deprecated/ctkstock.c:450
+#: ../ctk/ctkstock.c:450
 msgctxt "Stock label"
 msgid "_Undelete"
 msgstr "還原刪除(_U)"
 
-#: ../ctk/deprecated/ctkstock.c:454
+#: ../ctk/ctkstock.c:454
 msgctxt "Stock label"
 msgid "_Yes"
 msgstr "是(_Y)"

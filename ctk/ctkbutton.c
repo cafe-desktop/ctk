@@ -63,7 +63,7 @@
 #include "ctkmarshalers.h"
 #include "ctkimage.h"
 #include "ctkbox.h"
-#include "deprecated/ctkstock.h"
+#include "ctkstock.h"
 #include "deprecated/ctkactivatable.h"
 #include "ctksizerequest.h"
 #include "ctktypebuiltins.h"

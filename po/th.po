@@ -618,32 +618,32 @@ msgstr "เรียกใช้งานช่องพับเก็บ"
 #. FIXME these need accelerators when appropriate, and
 #. * need the mnemonics to be rationalized
 #.
-#: ctk/a11y/ctkimageaccessible.c:53 ctk/deprecated/ctkstock.c:341
+#: ctk/a11y/ctkimageaccessible.c:53 ctk/ctkstock.c:341
 msgctxt "Stock label"
 msgid "_About"
 msgstr "เ_กี่ยวกับ"
 
-#: ctk/a11y/ctkimageaccessible.c:54 ctk/deprecated/ctkstock.c:342
+#: ctk/a11y/ctkimageaccessible.c:54 ctk/ctkstock.c:342
 msgctxt "Stock label"
 msgid "_Add"
 msgstr "เ_พิ่ม"
 
-#: ctk/a11y/ctkimageaccessible.c:55 ctk/deprecated/ctkstock.c:344
+#: ctk/a11y/ctkimageaccessible.c:55 ctk/ctkstock.c:344
 msgctxt "Stock label"
 msgid "_Bold"
 msgstr "ตัวห_นา"
 
-#: ctk/a11y/ctkimageaccessible.c:56 ctk/deprecated/ctkstock.c:346
+#: ctk/a11y/ctkimageaccessible.c:56 ctk/ctkstock.c:346
 msgctxt "Stock label"
 msgid "_CD-ROM"
 msgstr "ซีดี_รอม"
 
-#: ctk/a11y/ctkimageaccessible.c:57 ctk/deprecated/ctkstock.c:347
+#: ctk/a11y/ctkimageaccessible.c:57 ctk/ctkstock.c:347
 msgctxt "Stock label"
 msgid "_Clear"
 msgstr "_ล้าง"
 
-#: ctk/a11y/ctkimageaccessible.c:58 ctk/deprecated/ctkstock.c:348
+#: ctk/a11y/ctkimageaccessible.c:58 ctk/ctkstock.c:348
 msgctxt "Stock label"
 msgid "_Close"
 msgstr "ปิ_ด"
@@ -660,364 +660,364 @@ msgstr "ขยายแผ่"
 msgid "Restore"
 msgstr "คืนขนาด"
 
-#: ctk/a11y/ctkimageaccessible.c:62 ctk/deprecated/ctkstock.c:351
+#: ctk/a11y/ctkimageaccessible.c:62 ctk/ctkstock.c:351
 msgctxt "Stock label"
 msgid "_Copy"
 msgstr "_คัดลอก"
 
-#: ctk/a11y/ctkimageaccessible.c:63 ctk/deprecated/ctkstock.c:352
+#: ctk/a11y/ctkimageaccessible.c:63 ctk/ctkstock.c:352
 msgctxt "Stock label"
 msgid "Cu_t"
 msgstr "_ตัด"
 
-#: ctk/a11y/ctkimageaccessible.c:64 ctk/deprecated/ctkstock.c:353
+#: ctk/a11y/ctkimageaccessible.c:64 ctk/ctkstock.c:353
 msgctxt "Stock label"
 msgid "_Delete"
 msgstr "_ลบ"
 
-#: ctk/a11y/ctkimageaccessible.c:65 ctk/deprecated/ctkstock.c:335
+#: ctk/a11y/ctkimageaccessible.c:65 ctk/ctkstock.c:335
 msgctxt "Stock label"
 msgid "Error"
 msgstr "ผิดพลาด"
 
 #. KEEP IN SYNC with ctkiconfactory.c stock icons, when appropriate
-#: ctk/a11y/ctkimageaccessible.c:66 ctk/deprecated/ctkstock.c:333
+#: ctk/a11y/ctkimageaccessible.c:66 ctk/ctkstock.c:333
 msgctxt "Stock label"
 msgid "Information"
 msgstr "ข้อมูล"
 
-#: ctk/a11y/ctkimageaccessible.c:67 ctk/deprecated/ctkstock.c:336
+#: ctk/a11y/ctkimageaccessible.c:67 ctk/ctkstock.c:336
 msgctxt "Stock label"
 msgid "Question"
 msgstr "คำถาม"
 
-#: ctk/a11y/ctkimageaccessible.c:68 ctk/deprecated/ctkstock.c:334
+#: ctk/a11y/ctkimageaccessible.c:68 ctk/ctkstock.c:334
 msgctxt "Stock label"
 msgid "Warning"
 msgstr "คำเตือน"
 
-#: ctk/a11y/ctkimageaccessible.c:69 ctk/deprecated/ctkstock.c:356
+#: ctk/a11y/ctkimageaccessible.c:69 ctk/ctkstock.c:356
 msgctxt "Stock label"
 msgid "_Execute"
 msgstr "เ_รียกใช้"
 
-#: ctk/a11y/ctkimageaccessible.c:70 ctk/deprecated/ctkstock.c:358
+#: ctk/a11y/ctkimageaccessible.c:70 ctk/ctkstock.c:358
 msgctxt "Stock label"
 msgid "_File"
 msgstr "แ_ฟ้ม"
 
-#: ctk/a11y/ctkimageaccessible.c:71 ctk/deprecated/ctkstock.c:359
+#: ctk/a11y/ctkimageaccessible.c:71 ctk/ctkstock.c:359
 msgctxt "Stock label"
 msgid "_Find"
 msgstr "_หา"
 
-#: ctk/a11y/ctkimageaccessible.c:72 ctk/deprecated/ctkstock.c:360
+#: ctk/a11y/ctkimageaccessible.c:72 ctk/ctkstock.c:360
 msgctxt "Stock label"
 msgid "Find and _Replace"
 msgstr "หาและแ_ทนที่"
 
-#: ctk/a11y/ctkimageaccessible.c:73 ctk/deprecated/ctkstock.c:361
+#: ctk/a11y/ctkimageaccessible.c:73 ctk/ctkstock.c:361
 msgctxt "Stock label"
 msgid "_Floppy"
 msgstr "_ฟลอปปี้"
 
-#: ctk/a11y/ctkimageaccessible.c:74 ctk/deprecated/ctkstock.c:362
+#: ctk/a11y/ctkimageaccessible.c:74 ctk/ctkstock.c:362
 msgctxt "Stock label"
 msgid "_Fullscreen"
 msgstr "เ_ต็มจอ"
 
 #. This is a navigation label as in "go to the bottom of the page"
-#: ctk/a11y/ctkimageaccessible.c:75 ctk/deprecated/ctkstock.c:365
+#: ctk/a11y/ctkimageaccessible.c:75 ctk/ctkstock.c:365
 msgctxt "Stock label, navigation"
 msgid "_Bottom"
 msgstr "ล่า_งสุด"
 
 #. This is a navigation label as in "go to the first page"
-#: ctk/a11y/ctkimageaccessible.c:76 ctk/deprecated/ctkstock.c:367
+#: ctk/a11y/ctkimageaccessible.c:76 ctk/ctkstock.c:367
 msgctxt "Stock label, navigation"
 msgid "_First"
 msgstr "แ_รกสุด"
 
 #. This is a navigation label as in "go to the last page"
-#: ctk/a11y/ctkimageaccessible.c:77 ctk/deprecated/ctkstock.c:369
+#: ctk/a11y/ctkimageaccessible.c:77 ctk/ctkstock.c:369
 msgctxt "Stock label, navigation"
 msgid "_Last"
 msgstr "_ท้ายสุด"
 
 #. This is a navigation label as in "go to the top of the page"
-#: ctk/a11y/ctkimageaccessible.c:78 ctk/deprecated/ctkstock.c:371
+#: ctk/a11y/ctkimageaccessible.c:78 ctk/ctkstock.c:371
 msgctxt "Stock label, navigation"
 msgid "_Top"
 msgstr "_บนสุด"
 
 #. This is a navigation label as in "go back"
-#: ctk/a11y/ctkimageaccessible.c:79 ctk/deprecated/ctkstock.c:373
+#: ctk/a11y/ctkimageaccessible.c:79 ctk/ctkstock.c:373
 msgctxt "Stock label, navigation"
 msgid "_Back"
 msgstr "_ถอยกลับ"
 
 #. This is a navigation label as in "go down"
-#: ctk/a11y/ctkimageaccessible.c:80 ctk/deprecated/ctkstock.c:375
+#: ctk/a11y/ctkimageaccessible.c:80 ctk/ctkstock.c:375
 msgctxt "Stock label, navigation"
 msgid "_Down"
 msgstr "_ลง"
 
 #. This is a navigation label as in "go forward"
-#: ctk/a11y/ctkimageaccessible.c:81 ctk/deprecated/ctkstock.c:377
+#: ctk/a11y/ctkimageaccessible.c:81 ctk/ctkstock.c:377
 msgctxt "Stock label, navigation"
 msgid "_Forward"
 msgstr "ถั_ดไป"
 
 #. This is a navigation label as in "go up"
-#: ctk/a11y/ctkimageaccessible.c:82 ctk/deprecated/ctkstock.c:379
+#: ctk/a11y/ctkimageaccessible.c:82 ctk/ctkstock.c:379
 msgctxt "Stock label, navigation"
 msgid "_Up"
 msgstr "_ขึ้น"
 
-#: ctk/a11y/ctkimageaccessible.c:83 ctk/deprecated/ctkstock.c:380
+#: ctk/a11y/ctkimageaccessible.c:83 ctk/ctkstock.c:380
 msgctxt "Stock label"
 msgid "_Hard Disk"
 msgstr "ฮาร์_ดดิสก์"
 
-#: ctk/a11y/ctkimageaccessible.c:84 ctk/deprecated/ctkstock.c:381
+#: ctk/a11y/ctkimageaccessible.c:84 ctk/ctkstock.c:381
 msgctxt "Stock label"
 msgid "_Help"
 msgstr "_วิธีใช้"
 
-#: ctk/a11y/ctkimageaccessible.c:85 ctk/deprecated/ctkstock.c:382
+#: ctk/a11y/ctkimageaccessible.c:85 ctk/ctkstock.c:382
 msgctxt "Stock label"
 msgid "_Home"
 msgstr "_บ้าน"
 
-#: ctk/a11y/ctkimageaccessible.c:86 ctk/deprecated/ctkstock.c:383
+#: ctk/a11y/ctkimageaccessible.c:86 ctk/ctkstock.c:383
 msgctxt "Stock label"
 msgid "Increase Indent"
 msgstr "เพิ่มระยะร่น"
 
-#: ctk/a11y/ctkimageaccessible.c:87 ctk/deprecated/ctkstock.c:387
+#: ctk/a11y/ctkimageaccessible.c:87 ctk/ctkstock.c:387
 msgctxt "Stock label"
 msgid "_Italic"
 msgstr "ตัวเ_อียง"
 
-#: ctk/a11y/ctkimageaccessible.c:88 ctk/deprecated/ctkstock.c:388
+#: ctk/a11y/ctkimageaccessible.c:88 ctk/ctkstock.c:388
 msgctxt "Stock label"
 msgid "_Jump to"
 msgstr "_กระโดดไป"
 
 #. This is about text justification, "centered text"
-#: ctk/a11y/ctkimageaccessible.c:89 ctk/deprecated/ctkstock.c:390
+#: ctk/a11y/ctkimageaccessible.c:89 ctk/ctkstock.c:390
 msgctxt "Stock label"
 msgid "_Center"
 msgstr "_กึ่งกลาง"
 
 #. This is about text justification
-#: ctk/a11y/ctkimageaccessible.c:90 ctk/deprecated/ctkstock.c:392
+#: ctk/a11y/ctkimageaccessible.c:90 ctk/ctkstock.c:392
 msgctxt "Stock label"
 msgid "_Fill"
 msgstr "เ_ต็มกรอบ"
 
 #. This is about text justification, "left-justified text"
-#: ctk/a11y/ctkimageaccessible.c:91 ctk/deprecated/ctkstock.c:394
+#: ctk/a11y/ctkimageaccessible.c:91 ctk/ctkstock.c:394
 msgctxt "Stock label"
 msgid "_Left"
 msgstr "ชิด_ซ้าย"
 
 #. This is about text justification, "right-justified text"
-#: ctk/a11y/ctkimageaccessible.c:92 ctk/deprecated/ctkstock.c:396
+#: ctk/a11y/ctkimageaccessible.c:92 ctk/ctkstock.c:396
 msgctxt "Stock label"
 msgid "_Right"
 msgstr "ชิด_ขวา"
 
-#: ctk/a11y/ctkimageaccessible.c:93 ctk/deprecated/ctkstock.c:363
+#: ctk/a11y/ctkimageaccessible.c:93 ctk/ctkstock.c:363
 msgctxt "Stock label"
 msgid "_Leave Fullscreen"
 msgstr "เ_ลิกแสดงเต็มจอ"
 
 #. Media label, as in "fast forward"
-#: ctk/a11y/ctkimageaccessible.c:94 ctk/deprecated/ctkstock.c:399
+#: ctk/a11y/ctkimageaccessible.c:94 ctk/ctkstock.c:399
 msgctxt "Stock label, media"
 msgid "_Forward"
 msgstr "กรอไ_ป"
 
 #. Media label, as in "next song"
-#: ctk/a11y/ctkimageaccessible.c:95 ctk/deprecated/ctkstock.c:401
+#: ctk/a11y/ctkimageaccessible.c:95 ctk/ctkstock.c:401
 msgctxt "Stock label, media"
 msgid "_Next"
 msgstr "_ถัดไป"
 
 #. Media label, as in "pause music"
-#: ctk/a11y/ctkimageaccessible.c:96 ctk/deprecated/ctkstock.c:403
+#: ctk/a11y/ctkimageaccessible.c:96 ctk/ctkstock.c:403
 msgctxt "Stock label, media"
 msgid "P_ause"
 msgstr "_พัก"
 
 #. Media label, as in "play music"
-#: ctk/a11y/ctkimageaccessible.c:97 ctk/deprecated/ctkstock.c:405
+#: ctk/a11y/ctkimageaccessible.c:97 ctk/ctkstock.c:405
 msgctxt "Stock label, media"
 msgid "_Play"
 msgstr "เ_ล่น"
 
 #. Media label, as in  "previous song"
-#: ctk/a11y/ctkimageaccessible.c:98 ctk/deprecated/ctkstock.c:407
+#: ctk/a11y/ctkimageaccessible.c:98 ctk/ctkstock.c:407
 msgctxt "Stock label, media"
 msgid "Pre_vious"
 msgstr "ก่อ_นหน้า"
 
 #. Media label
-#: ctk/a11y/ctkimageaccessible.c:99 ctk/deprecated/ctkstock.c:409
+#: ctk/a11y/ctkimageaccessible.c:99 ctk/ctkstock.c:409
 msgctxt "Stock label, media"
 msgid "_Record"
 msgstr "_อัด"
 
 #. Media label
-#: ctk/a11y/ctkimageaccessible.c:100 ctk/deprecated/ctkstock.c:411
+#: ctk/a11y/ctkimageaccessible.c:100 ctk/ctkstock.c:411
 msgctxt "Stock label, media"
 msgid "R_ewind"
 msgstr "กรอ_กลับ"
 
 #. Media label
-#: ctk/a11y/ctkimageaccessible.c:101 ctk/deprecated/ctkstock.c:413
+#: ctk/a11y/ctkimageaccessible.c:101 ctk/ctkstock.c:413
 msgctxt "Stock label, media"
 msgid "_Stop"
 msgstr "_หยุด"
 
-#: ctk/a11y/ctkimageaccessible.c:102 ctk/deprecated/ctkstock.c:414
+#: ctk/a11y/ctkimageaccessible.c:102 ctk/ctkstock.c:414
 msgctxt "Stock label"
 msgid "_Network"
 msgstr "เค_รือข่าย"
 
-#: ctk/a11y/ctkimageaccessible.c:103 ctk/deprecated/ctkstock.c:415
+#: ctk/a11y/ctkimageaccessible.c:103 ctk/ctkstock.c:415
 msgctxt "Stock label"
 msgid "_New"
 msgstr "ใ_หม่"
 
-#: ctk/a11y/ctkimageaccessible.c:104 ctk/deprecated/ctkstock.c:418
+#: ctk/a11y/ctkimageaccessible.c:104 ctk/ctkstock.c:418
 msgctxt "Stock label"
 msgid "_Open"
 msgstr "_เปิด"
 
-#: ctk/a11y/ctkimageaccessible.c:105 ctk/deprecated/ctkstock.c:428
+#: ctk/a11y/ctkimageaccessible.c:105 ctk/ctkstock.c:428
 msgctxt "Stock label"
 msgid "_Paste"
 msgstr "_แปะ"
 
-#: ctk/a11y/ctkimageaccessible.c:106 ctk/deprecated/ctkstock.c:430
+#: ctk/a11y/ctkimageaccessible.c:106 ctk/ctkstock.c:430
 msgctxt "Stock label"
 msgid "_Print"
 msgstr "_พิมพ์"
 
-#: ctk/a11y/ctkimageaccessible.c:107 ctk/deprecated/ctkstock.c:431
+#: ctk/a11y/ctkimageaccessible.c:107 ctk/ctkstock.c:431
 msgctxt "Stock label"
 msgid "Print Pre_view"
 msgstr "_ตัวอย่างก่อนพิมพ์"
 
-#: ctk/a11y/ctkimageaccessible.c:108 ctk/deprecated/ctkstock.c:432
+#: ctk/a11y/ctkimageaccessible.c:108 ctk/ctkstock.c:432
 msgctxt "Stock label"
 msgid "_Properties"
 msgstr "คุณ_สมบัติ"
 
-#: ctk/a11y/ctkimageaccessible.c:109 ctk/deprecated/ctkstock.c:433
+#: ctk/a11y/ctkimageaccessible.c:109 ctk/ctkstock.c:433
 msgctxt "Stock label"
 msgid "_Quit"
 msgstr "_ออก"
 
-#: ctk/a11y/ctkimageaccessible.c:110 ctk/deprecated/ctkstock.c:434
+#: ctk/a11y/ctkimageaccessible.c:110 ctk/ctkstock.c:434
 msgctxt "Stock label"
 msgid "_Redo"
 msgstr "_ทำซ้ำ"
 
-#: ctk/a11y/ctkimageaccessible.c:111 ctk/deprecated/ctkstock.c:435
+#: ctk/a11y/ctkimageaccessible.c:111 ctk/ctkstock.c:435
 msgctxt "Stock label"
 msgid "_Refresh"
 msgstr "เ_รียกใหม่"
 
-#: ctk/a11y/ctkimageaccessible.c:112 ctk/deprecated/ctkstock.c:436
+#: ctk/a11y/ctkimageaccessible.c:112 ctk/ctkstock.c:436
 msgctxt "Stock label"
 msgid "_Remove"
 msgstr "เ_อาออก"
 
-#: ctk/a11y/ctkimageaccessible.c:113 ctk/deprecated/ctkstock.c:437
+#: ctk/a11y/ctkimageaccessible.c:113 ctk/ctkstock.c:437
 msgctxt "Stock label"
 msgid "_Revert"
 msgstr "คืน_กลับ"
 
-#: ctk/a11y/ctkimageaccessible.c:114 ctk/deprecated/ctkstock.c:438
+#: ctk/a11y/ctkimageaccessible.c:114 ctk/ctkstock.c:438
 msgctxt "Stock label"
 msgid "_Save"
 msgstr "_บันทึก"
 
-#: ctk/a11y/ctkimageaccessible.c:115 ctk/deprecated/ctkstock.c:439
+#: ctk/a11y/ctkimageaccessible.c:115 ctk/ctkstock.c:439
 msgctxt "Stock label"
 msgid "Save _As"
 msgstr "บันทึกเป็_น"
 
-#: ctk/a11y/ctkimageaccessible.c:116 ctk/deprecated/ctkstock.c:440
+#: ctk/a11y/ctkimageaccessible.c:116 ctk/ctkstock.c:440
 msgctxt "Stock label"
 msgid "Select _All"
 msgstr "เลือกทั้ง_หมด"
 
 #. Sorting direction
-#: ctk/a11y/ctkimageaccessible.c:117 ctk/deprecated/ctkstock.c:444
+#: ctk/a11y/ctkimageaccessible.c:117 ctk/ctkstock.c:444
 msgctxt "Stock label"
 msgid "_Ascending"
 msgstr "_น้อยไปมาก"
 
 #. Sorting direction
-#: ctk/a11y/ctkimageaccessible.c:118 ctk/deprecated/ctkstock.c:446
+#: ctk/a11y/ctkimageaccessible.c:118 ctk/ctkstock.c:446
 msgctxt "Stock label"
 msgid "_Descending"
 msgstr "_มากไปน้อย"
 
-#: ctk/a11y/ctkimageaccessible.c:119 ctk/deprecated/ctkstock.c:447
+#: ctk/a11y/ctkimageaccessible.c:119 ctk/ctkstock.c:447
 msgctxt "Stock label"
 msgid "_Spell Check"
 msgstr "ต_รวจตัวสะกด"
 
-#: ctk/a11y/ctkimageaccessible.c:120 ctk/deprecated/ctkstock.c:448
+#: ctk/a11y/ctkimageaccessible.c:120 ctk/ctkstock.c:448
 msgctxt "Stock label"
 msgid "_Stop"
 msgstr "_หยุด"
 
 #. Font variant
-#: ctk/a11y/ctkimageaccessible.c:121 ctk/deprecated/ctkstock.c:450
+#: ctk/a11y/ctkimageaccessible.c:121 ctk/ctkstock.c:450
 msgctxt "Stock label"
 msgid "_Strikethrough"
 msgstr "ขีด_ทับ"
 
 #. Font variant
-#: ctk/a11y/ctkimageaccessible.c:122 ctk/deprecated/ctkstock.c:453
+#: ctk/a11y/ctkimageaccessible.c:122 ctk/ctkstock.c:453
 msgctxt "Stock label"
 msgid "_Underline"
 msgstr "_ขีดเส้นใต้"
 
-#: ctk/a11y/ctkimageaccessible.c:123 ctk/deprecated/ctkstock.c:454
+#: ctk/a11y/ctkimageaccessible.c:123 ctk/ctkstock.c:454
 msgctxt "Stock label"
 msgid "_Undo"
 msgstr "เรี_ยกคืน"
 
-#: ctk/a11y/ctkimageaccessible.c:124 ctk/deprecated/ctkstock.c:384
+#: ctk/a11y/ctkimageaccessible.c:124 ctk/ctkstock.c:384
 msgctxt "Stock label"
 msgid "Decrease Indent"
 msgstr "ลดระยะร่น"
 
 #. Zoom
-#: ctk/a11y/ctkimageaccessible.c:125 ctk/deprecated/ctkstock.c:457
+#: ctk/a11y/ctkimageaccessible.c:125 ctk/ctkstock.c:457
 msgctxt "Stock label"
 msgid "_Normal Size"
 msgstr "ขนาด_ปกติ"
 
 #. Zoom
-#: ctk/a11y/ctkimageaccessible.c:126 ctk/deprecated/ctkstock.c:459
+#: ctk/a11y/ctkimageaccessible.c:126 ctk/ctkstock.c:459
 msgctxt "Stock label"
 msgid "Best _Fit"
 msgstr "ขนาด_พอดี"
 
-#: ctk/a11y/ctkimageaccessible.c:127 ctk/deprecated/ctkstock.c:460
+#: ctk/a11y/ctkimageaccessible.c:127 ctk/ctkstock.c:460
 msgctxt "Stock label"
 msgid "Zoom _In"
 msgstr "แสดงขย_าย"
 
-#: ctk/a11y/ctkimageaccessible.c:128 ctk/deprecated/ctkstock.c:461
+#: ctk/a11y/ctkimageaccessible.c:128 ctk/ctkstock.c:461
 msgctxt "Stock label"
 msgid "Zoom _Out"
 msgstr "แสดง_ย่อ"
@@ -1261,111 +1261,111 @@ msgctxt "Number format"
 msgid "%d"
 msgstr "%d"
 
-#: ctk/deprecated/ctkstock.c:343
+#: ctk/ctkstock.c:343
 msgctxt "Stock label"
 msgid "_Apply"
 msgstr "เริ่มใ_ช้"
 
-#: ctk/deprecated/ctkstock.c:345
+#: ctk/ctkstock.c:345
 msgctxt "Stock label"
 msgid "_Cancel"
 msgstr "_ยกเลิก"
 
-#: ctk/deprecated/ctkstock.c:349
+#: ctk/ctkstock.c:349
 msgctxt "Stock label"
 msgid "C_onnect"
 msgstr "เ_ชื่อมต่อ"
 
-#: ctk/deprecated/ctkstock.c:350
+#: ctk/ctkstock.c:350
 msgctxt "Stock label"
 msgid "_Convert"
 msgstr "แปล_ง"
 
-#: ctk/deprecated/ctkstock.c:354
+#: ctk/ctkstock.c:354
 msgctxt "Stock label"
 msgid "_Discard"
 msgstr "_ละทิ้ง"
 
-#: ctk/deprecated/ctkstock.c:355
+#: ctk/ctkstock.c:355
 msgctxt "Stock label"
 msgid "_Disconnect"
 msgstr "เลิ_กเชื่อมต่อ"
 
-#: ctk/deprecated/ctkstock.c:357
+#: ctk/ctkstock.c:357
 msgctxt "Stock label"
 msgid "_Edit"
 msgstr "แ_ก้ไข"
 
-#: ctk/deprecated/ctkstock.c:385
+#: ctk/ctkstock.c:385
 msgctxt "Stock label"
 msgid "_Index"
 msgstr "_ดัชนี"
 
-#: ctk/deprecated/ctkstock.c:386
+#: ctk/ctkstock.c:386
 msgctxt "Stock label"
 msgid "_Information"
 msgstr "_ข้อมูล"
 
-#: ctk/deprecated/ctkstock.c:416
+#: ctk/ctkstock.c:416
 msgctxt "Stock label"
 msgid "_No"
 msgstr "ไ_ม่"
 
-#: ctk/deprecated/ctkstock.c:417
+#: ctk/ctkstock.c:417
 msgctxt "Stock label"
 msgid "_OK"
 msgstr "_ตกลง"
 
 #. Page orientation
-#: ctk/deprecated/ctkstock.c:420
+#: ctk/ctkstock.c:420
 msgctxt "Stock label"
 msgid "Landscape"
 msgstr "แนวนอน"
 
 #. Page orientation
-#: ctk/deprecated/ctkstock.c:422
+#: ctk/ctkstock.c:422
 msgctxt "Stock label"
 msgid "Portrait"
 msgstr "แนวตั้ง"
 
 #. Page orientation
-#: ctk/deprecated/ctkstock.c:424
+#: ctk/ctkstock.c:424
 msgctxt "Stock label"
 msgid "Reverse landscape"
 msgstr "แนวนอนกลับด้าน"
 
 #. Page orientation
-#: ctk/deprecated/ctkstock.c:426
+#: ctk/ctkstock.c:426
 msgctxt "Stock label"
 msgid "Reverse portrait"
 msgstr "แนวตั้งกลับด้าน"
 
-#: ctk/deprecated/ctkstock.c:427
+#: ctk/ctkstock.c:427
 msgctxt "Stock label"
 msgid "Page Set_up"
 msgstr "ตั้ง_หน้ากระดาษ"
 
-#: ctk/deprecated/ctkstock.c:429
+#: ctk/ctkstock.c:429
 msgctxt "Stock label"
 msgid "_Preferences"
 msgstr "_ปรับแต่ง"
 
-#: ctk/deprecated/ctkstock.c:441
+#: ctk/ctkstock.c:441
 msgctxt "Stock label"
 msgid "_Color"
 msgstr "_สี"
 
-#: ctk/deprecated/ctkstock.c:442
+#: ctk/ctkstock.c:442
 msgctxt "Stock label"
 msgid "_Font"
 msgstr "_แบบอักษร"
 
-#: ctk/deprecated/ctkstock.c:451
+#: ctk/ctkstock.c:451
 msgctxt "Stock label"
 msgid "_Undelete"
 msgstr "เลิ_กลบ"
 
-#: ctk/deprecated/ctkstock.c:455
+#: ctk/ctkstock.c:455
 msgctxt "Stock label"
 msgid "_Yes"
 msgstr "ใ_ช่"
