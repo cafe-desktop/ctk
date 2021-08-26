@@ -273,7 +273,7 @@
 #include <ctk/deprecated/ctkrc.h>
 #include <ctk/deprecated/ctkrecentaction.h>
 #include <ctk/deprecated/ctkstatusicon.h>
-#include <ctk/deprecated/ctkstock.h>
+#include <ctk/ctkstock.h>
 #include <ctk/deprecated/ctkstyle.h>
 #include <ctk/deprecated/ctkstyleproperties.h>
 #include <ctk/deprecated/ctksymboliccolor.h>

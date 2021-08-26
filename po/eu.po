@@ -644,32 +644,32 @@ msgstr "Zabaltzailea aktibatzen du"
 #. FIXME these need accelerators when appropriate, and
 #. * need the mnemonics to be rationalized
 #.
-#: ctk/a11y/ctkimageaccessible.c:53 ctk/deprecated/ctkstock.c:345
+#: ctk/a11y/ctkimageaccessible.c:53 ctk/ctkstock.c:345
 msgctxt "Stock label"
 msgid "_About"
 msgstr "Honi _buruz"
 
-#: ctk/a11y/ctkimageaccessible.c:54 ctk/deprecated/ctkstock.c:346
+#: ctk/a11y/ctkimageaccessible.c:54 ctk/ctkstock.c:346
 msgctxt "Stock label"
 msgid "_Add"
 msgstr "_Gehitu"
 
-#: ctk/a11y/ctkimageaccessible.c:55 ctk/deprecated/ctkstock.c:348
+#: ctk/a11y/ctkimageaccessible.c:55 ctk/ctkstock.c:348
 msgctxt "Stock label"
 msgid "_Bold"
 msgstr "_Lodia"
 
-#: ctk/a11y/ctkimageaccessible.c:56 ctk/deprecated/ctkstock.c:350
+#: ctk/a11y/ctkimageaccessible.c:56 ctk/ctkstock.c:350
 msgctxt "Stock label"
 msgid "_CD-ROM"
 msgstr "CD-ROMa"
 
-#: ctk/a11y/ctkimageaccessible.c:57 ctk/deprecated/ctkstock.c:351
+#: ctk/a11y/ctkimageaccessible.c:57 ctk/ctkstock.c:351
 msgctxt "Stock label"
 msgid "_Clear"
 msgstr "_Garbitu"
 
-#: ctk/a11y/ctkimageaccessible.c:58 ctk/deprecated/ctkstock.c:352
+#: ctk/a11y/ctkimageaccessible.c:58 ctk/ctkstock.c:352
 msgctxt "Stock label"
 msgid "_Close"
 msgstr "It_xi"
@@ -686,364 +686,364 @@ msgstr "Maximizatu"
 msgid "Restore"
 msgstr "Leheneratu"
 
-#: ctk/a11y/ctkimageaccessible.c:62 ctk/deprecated/ctkstock.c:355
+#: ctk/a11y/ctkimageaccessible.c:62 ctk/ctkstock.c:355
 msgctxt "Stock label"
 msgid "_Copy"
 msgstr "_Kopiatu"
 
-#: ctk/a11y/ctkimageaccessible.c:63 ctk/deprecated/ctkstock.c:356
+#: ctk/a11y/ctkimageaccessible.c:63 ctk/ctkstock.c:356
 msgctxt "Stock label"
 msgid "Cu_t"
 msgstr "_Moztu"
 
-#: ctk/a11y/ctkimageaccessible.c:64 ctk/deprecated/ctkstock.c:357
+#: ctk/a11y/ctkimageaccessible.c:64 ctk/ctkstock.c:357
 msgctxt "Stock label"
 msgid "_Delete"
 msgstr "Ez_abatu"
 
-#: ctk/a11y/ctkimageaccessible.c:65 ctk/deprecated/ctkstock.c:339
+#: ctk/a11y/ctkimageaccessible.c:65 ctk/ctkstock.c:339
 msgctxt "Stock label"
 msgid "Error"
 msgstr "Errorea"
 
 #. KEEP IN SYNC with ctkiconfactory.c stock icons, when appropriate
-#: ctk/a11y/ctkimageaccessible.c:66 ctk/deprecated/ctkstock.c:337
+#: ctk/a11y/ctkimageaccessible.c:66 ctk/ctkstock.c:337
 msgctxt "Stock label"
 msgid "Information"
 msgstr "Informazioa"
 
-#: ctk/a11y/ctkimageaccessible.c:67 ctk/deprecated/ctkstock.c:340
+#: ctk/a11y/ctkimageaccessible.c:67 ctk/ctkstock.c:340
 msgctxt "Stock label"
 msgid "Question"
 msgstr "Galdera"
 
-#: ctk/a11y/ctkimageaccessible.c:68 ctk/deprecated/ctkstock.c:338
+#: ctk/a11y/ctkimageaccessible.c:68 ctk/ctkstock.c:338
 msgctxt "Stock label"
 msgid "Warning"
 msgstr "Abisua"
 
-#: ctk/a11y/ctkimageaccessible.c:69 ctk/deprecated/ctkstock.c:360
+#: ctk/a11y/ctkimageaccessible.c:69 ctk/ctkstock.c:360
 msgctxt "Stock label"
 msgid "_Execute"
 msgstr "_Exekutatu"
 
-#: ctk/a11y/ctkimageaccessible.c:70 ctk/deprecated/ctkstock.c:362
+#: ctk/a11y/ctkimageaccessible.c:70 ctk/ctkstock.c:362
 msgctxt "Stock label"
 msgid "_File"
 msgstr "_Fitxategia"
 
-#: ctk/a11y/ctkimageaccessible.c:71 ctk/deprecated/ctkstock.c:363
+#: ctk/a11y/ctkimageaccessible.c:71 ctk/ctkstock.c:363
 msgctxt "Stock label"
 msgid "_Find"
 msgstr "A_urkitu"
 
-#: ctk/a11y/ctkimageaccessible.c:72 ctk/deprecated/ctkstock.c:364
+#: ctk/a11y/ctkimageaccessible.c:72 ctk/ctkstock.c:364
 msgctxt "Stock label"
 msgid "Find and _Replace"
 msgstr "Bilatu eta _ordeztu"
 
-#: ctk/a11y/ctkimageaccessible.c:73 ctk/deprecated/ctkstock.c:365
+#: ctk/a11y/ctkimageaccessible.c:73 ctk/ctkstock.c:365
 msgctxt "Stock label"
 msgid "_Floppy"
 msgstr "_Disketea"
 
-#: ctk/a11y/ctkimageaccessible.c:74 ctk/deprecated/ctkstock.c:366
+#: ctk/a11y/ctkimageaccessible.c:74 ctk/ctkstock.c:366
 msgctxt "Stock label"
 msgid "_Fullscreen"
 msgstr "_Pantaila osoa"
 
 #. This is a navigation label as in "go to the bottom of the page"
-#: ctk/a11y/ctkimageaccessible.c:75 ctk/deprecated/ctkstock.c:369
+#: ctk/a11y/ctkimageaccessible.c:75 ctk/ctkstock.c:369
 msgctxt "Stock label, navigation"
 msgid "_Bottom"
 msgstr "_Behean"
 
 #. This is a navigation label as in "go to the first page"
-#: ctk/a11y/ctkimageaccessible.c:76 ctk/deprecated/ctkstock.c:371
+#: ctk/a11y/ctkimageaccessible.c:76 ctk/ctkstock.c:371
 msgctxt "Stock label, navigation"
 msgid "_First"
 msgstr "_Aurrenekora"
 
 #. This is a navigation label as in "go to the last page"
-#: ctk/a11y/ctkimageaccessible.c:77 ctk/deprecated/ctkstock.c:373
+#: ctk/a11y/ctkimageaccessible.c:77 ctk/ctkstock.c:373
 msgctxt "Stock label, navigation"
 msgid "_Last"
 msgstr "_Azkenera"
 
 #. This is a navigation label as in "go to the top of the page"
-#: ctk/a11y/ctkimageaccessible.c:78 ctk/deprecated/ctkstock.c:375
+#: ctk/a11y/ctkimageaccessible.c:78 ctk/ctkstock.c:375
 msgctxt "Stock label, navigation"
 msgid "_Top"
 msgstr "_Goian"
 
 #. This is a navigation label as in "go back"
-#: ctk/a11y/ctkimageaccessible.c:79 ctk/deprecated/ctkstock.c:377
+#: ctk/a11y/ctkimageaccessible.c:79 ctk/ctkstock.c:377
 msgctxt "Stock label, navigation"
 msgid "_Back"
 msgstr "At_zera"
 
 #. This is a navigation label as in "go down"
-#: ctk/a11y/ctkimageaccessible.c:80 ctk/deprecated/ctkstock.c:379
+#: ctk/a11y/ctkimageaccessible.c:80 ctk/ctkstock.c:379
 msgctxt "Stock label, navigation"
 msgid "_Down"
 msgstr "_Behera"
 
 #. This is a navigation label as in "go forward"
-#: ctk/a11y/ctkimageaccessible.c:81 ctk/deprecated/ctkstock.c:381
+#: ctk/a11y/ctkimageaccessible.c:81 ctk/ctkstock.c:381
 msgctxt "Stock label, navigation"
 msgid "_Forward"
 msgstr "A_urrera"
 
 #. This is a navigation label as in "go up"
-#: ctk/a11y/ctkimageaccessible.c:82 ctk/deprecated/ctkstock.c:383
+#: ctk/a11y/ctkimageaccessible.c:82 ctk/ctkstock.c:383
 msgctxt "Stock label, navigation"
 msgid "_Up"
 msgstr "_Gora"
 
-#: ctk/a11y/ctkimageaccessible.c:83 ctk/deprecated/ctkstock.c:384
+#: ctk/a11y/ctkimageaccessible.c:83 ctk/ctkstock.c:384
 msgctxt "Stock label"
 msgid "_Hard Disk"
 msgstr "_Disko gogorra"
 
-#: ctk/a11y/ctkimageaccessible.c:84 ctk/deprecated/ctkstock.c:385
+#: ctk/a11y/ctkimageaccessible.c:84 ctk/ctkstock.c:385
 msgctxt "Stock label"
 msgid "_Help"
 msgstr "_Laguntza"
 
-#: ctk/a11y/ctkimageaccessible.c:85 ctk/deprecated/ctkstock.c:386
+#: ctk/a11y/ctkimageaccessible.c:85 ctk/ctkstock.c:386
 msgctxt "Stock label"
 msgid "_Home"
 msgstr "_Karpeta nagusia"
 
-#: ctk/a11y/ctkimageaccessible.c:86 ctk/deprecated/ctkstock.c:387
+#: ctk/a11y/ctkimageaccessible.c:86 ctk/ctkstock.c:387
 msgctxt "Stock label"
 msgid "Increase Indent"
 msgstr "Handitu koska"
 
-#: ctk/a11y/ctkimageaccessible.c:87 ctk/deprecated/ctkstock.c:391
+#: ctk/a11y/ctkimageaccessible.c:87 ctk/ctkstock.c:391
 msgctxt "Stock label"
 msgid "_Italic"
 msgstr "_Etzana"
 
-#: ctk/a11y/ctkimageaccessible.c:88 ctk/deprecated/ctkstock.c:392
+#: ctk/a11y/ctkimageaccessible.c:88 ctk/ctkstock.c:392
 msgctxt "Stock label"
 msgid "_Jump to"
 msgstr "_Jauzi hona"
 
 #. This is about text justification, "centered text"
-#: ctk/a11y/ctkimageaccessible.c:89 ctk/deprecated/ctkstock.c:394
+#: ctk/a11y/ctkimageaccessible.c:89 ctk/ctkstock.c:394
 msgctxt "Stock label"
 msgid "_Center"
 msgstr "_Zentratuta"
 
 #. This is about text justification
-#: ctk/a11y/ctkimageaccessible.c:90 ctk/deprecated/ctkstock.c:396
+#: ctk/a11y/ctkimageaccessible.c:90 ctk/ctkstock.c:396
 msgctxt "Stock label"
 msgid "_Fill"
 msgstr "_Bete"
 
 #. This is about text justification, "left-justified text"
-#: ctk/a11y/ctkimageaccessible.c:91 ctk/deprecated/ctkstock.c:398
+#: ctk/a11y/ctkimageaccessible.c:91 ctk/ctkstock.c:398
 msgctxt "Stock label"
 msgid "_Left"
 msgstr "E_zkerrean"
 
 #. This is about text justification, "right-justified text"
-#: ctk/a11y/ctkimageaccessible.c:92 ctk/deprecated/ctkstock.c:400
+#: ctk/a11y/ctkimageaccessible.c:92 ctk/ctkstock.c:400
 msgctxt "Stock label"
 msgid "_Right"
 msgstr "E_skuinean"
 
-#: ctk/a11y/ctkimageaccessible.c:93 ctk/deprecated/ctkstock.c:367
+#: ctk/a11y/ctkimageaccessible.c:93 ctk/ctkstock.c:367
 msgctxt "Stock label"
 msgid "_Leave Fullscreen"
 msgstr "_Irten pantaila osotik"
 
 #. Media label, as in "fast forward"
-#: ctk/a11y/ctkimageaccessible.c:94 ctk/deprecated/ctkstock.c:403
+#: ctk/a11y/ctkimageaccessible.c:94 ctk/ctkstock.c:403
 msgctxt "Stock label, media"
 msgid "_Forward"
 msgstr "A_urrera"
 
 #. Media label, as in "next song"
-#: ctk/a11y/ctkimageaccessible.c:95 ctk/deprecated/ctkstock.c:405
+#: ctk/a11y/ctkimageaccessible.c:95 ctk/ctkstock.c:405
 msgctxt "Stock label, media"
 msgid "_Next"
 msgstr "_Hurrengoa"
 
 #. Media label, as in "pause music"
-#: ctk/a11y/ctkimageaccessible.c:96 ctk/deprecated/ctkstock.c:407
+#: ctk/a11y/ctkimageaccessible.c:96 ctk/ctkstock.c:407
 msgctxt "Stock label, media"
 msgid "P_ause"
 msgstr "_Pausatu"
 
 #. Media label, as in "play music"
-#: ctk/a11y/ctkimageaccessible.c:97 ctk/deprecated/ctkstock.c:409
+#: ctk/a11y/ctkimageaccessible.c:97 ctk/ctkstock.c:409
 msgctxt "Stock label, media"
 msgid "_Play"
 msgstr "_Erreproduzitu"
 
 #. Media label, as in  "previous song"
-#: ctk/a11y/ctkimageaccessible.c:98 ctk/deprecated/ctkstock.c:411
+#: ctk/a11y/ctkimageaccessible.c:98 ctk/ctkstock.c:411
 msgctxt "Stock label, media"
 msgid "Pre_vious"
 msgstr "_Aurrekoa"
 
 #. Media label
-#: ctk/a11y/ctkimageaccessible.c:99 ctk/deprecated/ctkstock.c:413
+#: ctk/a11y/ctkimageaccessible.c:99 ctk/ctkstock.c:413
 msgctxt "Stock label, media"
 msgid "_Record"
 msgstr "_Grabatu"
 
 #. Media label
-#: ctk/a11y/ctkimageaccessible.c:100 ctk/deprecated/ctkstock.c:415
+#: ctk/a11y/ctkimageaccessible.c:100 ctk/ctkstock.c:415
 msgctxt "Stock label, media"
 msgid "R_ewind"
 msgstr "_Birbobinatu"
 
 #. Media label
-#: ctk/a11y/ctkimageaccessible.c:101 ctk/deprecated/ctkstock.c:417
+#: ctk/a11y/ctkimageaccessible.c:101 ctk/ctkstock.c:417
 msgctxt "Stock label, media"
 msgid "_Stop"
 msgstr "_Gelditu"
 
-#: ctk/a11y/ctkimageaccessible.c:102 ctk/deprecated/ctkstock.c:418
+#: ctk/a11y/ctkimageaccessible.c:102 ctk/ctkstock.c:418
 msgctxt "Stock label"
 msgid "_Network"
 msgstr "_Sarea"
 
-#: ctk/a11y/ctkimageaccessible.c:103 ctk/deprecated/ctkstock.c:419
+#: ctk/a11y/ctkimageaccessible.c:103 ctk/ctkstock.c:419
 msgctxt "Stock label"
 msgid "_New"
 msgstr "_Berria"
 
-#: ctk/a11y/ctkimageaccessible.c:104 ctk/deprecated/ctkstock.c:422
+#: ctk/a11y/ctkimageaccessible.c:104 ctk/ctkstock.c:422
 msgctxt "Stock label"
 msgid "_Open"
 msgstr "_Ireki"
 
-#: ctk/a11y/ctkimageaccessible.c:105 ctk/deprecated/ctkstock.c:432
+#: ctk/a11y/ctkimageaccessible.c:105 ctk/ctkstock.c:432
 msgctxt "Stock label"
 msgid "_Paste"
 msgstr "_Itsatsi"
 
-#: ctk/a11y/ctkimageaccessible.c:106 ctk/deprecated/ctkstock.c:434
+#: ctk/a11y/ctkimageaccessible.c:106 ctk/ctkstock.c:434
 msgctxt "Stock label"
 msgid "_Print"
 msgstr "I_nprimatu"
 
-#: ctk/a11y/ctkimageaccessible.c:107 ctk/deprecated/ctkstock.c:435
+#: ctk/a11y/ctkimageaccessible.c:107 ctk/ctkstock.c:435
 msgctxt "Stock label"
 msgid "Print Pre_view"
 msgstr "Inprimatzeko _aurrebista"
 
-#: ctk/a11y/ctkimageaccessible.c:108 ctk/deprecated/ctkstock.c:436
+#: ctk/a11y/ctkimageaccessible.c:108 ctk/ctkstock.c:436
 msgctxt "Stock label"
 msgid "_Properties"
 msgstr "_Propietateak"
 
-#: ctk/a11y/ctkimageaccessible.c:109 ctk/deprecated/ctkstock.c:437
+#: ctk/a11y/ctkimageaccessible.c:109 ctk/ctkstock.c:437
 msgctxt "Stock label"
 msgid "_Quit"
 msgstr "I_rten"
 
-#: ctk/a11y/ctkimageaccessible.c:110 ctk/deprecated/ctkstock.c:438
+#: ctk/a11y/ctkimageaccessible.c:110 ctk/ctkstock.c:438
 msgctxt "Stock label"
 msgid "_Redo"
 msgstr "_Berregin"
 
-#: ctk/a11y/ctkimageaccessible.c:111 ctk/deprecated/ctkstock.c:439
+#: ctk/a11y/ctkimageaccessible.c:111 ctk/ctkstock.c:439
 msgctxt "Stock label"
 msgid "_Refresh"
 msgstr "_Freskatu"
 
-#: ctk/a11y/ctkimageaccessible.c:112 ctk/deprecated/ctkstock.c:440
+#: ctk/a11y/ctkimageaccessible.c:112 ctk/ctkstock.c:440
 msgctxt "Stock label"
 msgid "_Remove"
 msgstr "_Kendu"
 
-#: ctk/a11y/ctkimageaccessible.c:113 ctk/deprecated/ctkstock.c:441
+#: ctk/a11y/ctkimageaccessible.c:113 ctk/ctkstock.c:441
 msgctxt "Stock label"
 msgid "_Revert"
 msgstr "_Leheneratu"
 
-#: ctk/a11y/ctkimageaccessible.c:114 ctk/deprecated/ctkstock.c:442
+#: ctk/a11y/ctkimageaccessible.c:114 ctk/ctkstock.c:442
 msgctxt "Stock label"
 msgid "_Save"
 msgstr "_Gorde"
 
-#: ctk/a11y/ctkimageaccessible.c:115 ctk/deprecated/ctkstock.c:443
+#: ctk/a11y/ctkimageaccessible.c:115 ctk/ctkstock.c:443
 msgctxt "Stock label"
 msgid "Save _As"
 msgstr "Gorde _honela"
 
-#: ctk/a11y/ctkimageaccessible.c:116 ctk/deprecated/ctkstock.c:444
+#: ctk/a11y/ctkimageaccessible.c:116 ctk/ctkstock.c:444
 msgctxt "Stock label"
 msgid "Select _All"
 msgstr "Hautatu _dena"
 
 #. Sorting direction
-#: ctk/a11y/ctkimageaccessible.c:117 ctk/deprecated/ctkstock.c:448
+#: ctk/a11y/ctkimageaccessible.c:117 ctk/ctkstock.c:448
 msgctxt "Stock label"
 msgid "_Ascending"
 msgstr "Go_rantz"
 
 #. Sorting direction
-#: ctk/a11y/ctkimageaccessible.c:118 ctk/deprecated/ctkstock.c:450
+#: ctk/a11y/ctkimageaccessible.c:118 ctk/ctkstock.c:450
 msgctxt "Stock label"
 msgid "_Descending"
 msgstr "Be_herantz"
 
-#: ctk/a11y/ctkimageaccessible.c:119 ctk/deprecated/ctkstock.c:451
+#: ctk/a11y/ctkimageaccessible.c:119 ctk/ctkstock.c:451
 msgctxt "Stock label"
 msgid "_Spell Check"
 msgstr "Ortogra_fia-egiaztapena"
 
-#: ctk/a11y/ctkimageaccessible.c:120 ctk/deprecated/ctkstock.c:452
+#: ctk/a11y/ctkimageaccessible.c:120 ctk/ctkstock.c:452
 msgctxt "Stock label"
 msgid "_Stop"
 msgstr "_Gelditu"
 
 #. Font variant
-#: ctk/a11y/ctkimageaccessible.c:121 ctk/deprecated/ctkstock.c:454
+#: ctk/a11y/ctkimageaccessible.c:121 ctk/ctkstock.c:454
 msgctxt "Stock label"
 msgid "_Strikethrough"
 msgstr "_Marratua"
 
 #. Font variant
-#: ctk/a11y/ctkimageaccessible.c:122 ctk/deprecated/ctkstock.c:457
+#: ctk/a11y/ctkimageaccessible.c:122 ctk/ctkstock.c:457
 msgctxt "Stock label"
 msgid "_Underline"
 msgstr "_Azpimarratua"
 
-#: ctk/a11y/ctkimageaccessible.c:123 ctk/deprecated/ctkstock.c:458
+#: ctk/a11y/ctkimageaccessible.c:123 ctk/ctkstock.c:458
 msgctxt "Stock label"
 msgid "_Undo"
 msgstr "_Desegin"
 
-#: ctk/a11y/ctkimageaccessible.c:124 ctk/deprecated/ctkstock.c:388
+#: ctk/a11y/ctkimageaccessible.c:124 ctk/ctkstock.c:388
 msgctxt "Stock label"
 msgid "Decrease Indent"
 msgstr "Txikitu koska"
 
 #. Zoom
-#: ctk/a11y/ctkimageaccessible.c:125 ctk/deprecated/ctkstock.c:461
+#: ctk/a11y/ctkimageaccessible.c:125 ctk/ctkstock.c:461
 msgctxt "Stock label"
 msgid "_Normal Size"
 msgstr "Tamaina _normala"
 
 #. Zoom
-#: ctk/a11y/ctkimageaccessible.c:126 ctk/deprecated/ctkstock.c:463
+#: ctk/a11y/ctkimageaccessible.c:126 ctk/ctkstock.c:463
 msgctxt "Stock label"
 msgid "Best _Fit"
 msgstr "_Egokiena"
 
-#: ctk/a11y/ctkimageaccessible.c:127 ctk/deprecated/ctkstock.c:464
+#: ctk/a11y/ctkimageaccessible.c:127 ctk/ctkstock.c:464
 msgctxt "Stock label"
 msgid "Zoom _In"
 msgstr "_Zooma handiagotu"
 
-#: ctk/a11y/ctkimageaccessible.c:128 ctk/deprecated/ctkstock.c:465
+#: ctk/a11y/ctkimageaccessible.c:128 ctk/ctkstock.c:465
 msgctxt "Stock label"
 msgid "Zoom _Out"
 msgstr "_Txikiagotu"
@@ -1283,111 +1283,111 @@ msgctxt "Number format"
 msgid "%d"
 msgstr "%d"
 
-#: ctk/deprecated/ctkstock.c:347
+#: ctk/ctkstock.c:347
 msgctxt "Stock label"
 msgid "_Apply"
 msgstr "_Aplikatu"
 
-#: ctk/deprecated/ctkstock.c:349
+#: ctk/ctkstock.c:349
 msgctxt "Stock label"
 msgid "_Cancel"
 msgstr "_Utzi"
 
-#: ctk/deprecated/ctkstock.c:353
+#: ctk/ctkstock.c:353
 msgctxt "Stock label"
 msgid "C_onnect"
 msgstr "_Konektatu"
 
-#: ctk/deprecated/ctkstock.c:354
+#: ctk/ctkstock.c:354
 msgctxt "Stock label"
 msgid "_Convert"
 msgstr "_Bihurtu"
 
-#: ctk/deprecated/ctkstock.c:358
+#: ctk/ctkstock.c:358
 msgctxt "Stock label"
 msgid "_Discard"
 msgstr "_Baztertu"
 
-#: ctk/deprecated/ctkstock.c:359
+#: ctk/ctkstock.c:359
 msgctxt "Stock label"
 msgid "_Disconnect"
 msgstr "_Deskonektatu"
 
-#: ctk/deprecated/ctkstock.c:361
+#: ctk/ctkstock.c:361
 msgctxt "Stock label"
 msgid "_Edit"
 msgstr "_Editatu"
 
-#: ctk/deprecated/ctkstock.c:389
+#: ctk/ctkstock.c:389
 msgctxt "Stock label"
 msgid "_Index"
 msgstr "_Indizea"
 
-#: ctk/deprecated/ctkstock.c:390
+#: ctk/ctkstock.c:390
 msgctxt "Stock label"
 msgid "_Information"
 msgstr "_Informazioa"
 
-#: ctk/deprecated/ctkstock.c:420
+#: ctk/ctkstock.c:420
 msgctxt "Stock label"
 msgid "_No"
 msgstr "_Ez"
 
-#: ctk/deprecated/ctkstock.c:421
+#: ctk/ctkstock.c:421
 msgctxt "Stock label"
 msgid "_OK"
 msgstr "_Ados"
 
 #. Page orientation
-#: ctk/deprecated/ctkstock.c:424
+#: ctk/ctkstock.c:424
 msgctxt "Stock label"
 msgid "Landscape"
 msgstr "Horizontala"
 
 #. Page orientation
-#: ctk/deprecated/ctkstock.c:426
+#: ctk/ctkstock.c:426
 msgctxt "Stock label"
 msgid "Portrait"
 msgstr "Bertikala"
 
 #. Page orientation
-#: ctk/deprecated/ctkstock.c:428
+#: ctk/ctkstock.c:428
 msgctxt "Stock label"
 msgid "Reverse landscape"
 msgstr "Alderantzizko horizontala"
 
 #. Page orientation
-#: ctk/deprecated/ctkstock.c:430
+#: ctk/ctkstock.c:430
 msgctxt "Stock label"
 msgid "Reverse portrait"
 msgstr "Alderantzizko bertikala"
 
-#: ctk/deprecated/ctkstock.c:431
+#: ctk/ctkstock.c:431
 msgctxt "Stock label"
 msgid "Page Set_up"
 msgstr "Prestatu _orrialdea"
 
-#: ctk/deprecated/ctkstock.c:433
+#: ctk/ctkstock.c:433
 msgctxt "Stock label"
 msgid "_Preferences"
 msgstr "_Hobespenak"
 
-#: ctk/deprecated/ctkstock.c:445
+#: ctk/ctkstock.c:445
 msgctxt "Stock label"
 msgid "_Color"
 msgstr "_Kolorea"
 
-#: ctk/deprecated/ctkstock.c:446
+#: ctk/ctkstock.c:446
 msgctxt "Stock label"
 msgid "_Font"
 msgstr "_Letra-tipoa"
 
-#: ctk/deprecated/ctkstock.c:455
+#: ctk/ctkstock.c:455
 msgctxt "Stock label"
 msgid "_Undelete"
 msgstr "_Desezabatu"
 
-#: ctk/deprecated/ctkstock.c:459
+#: ctk/ctkstock.c:459
 msgctxt "Stock label"
 msgid "_Yes"
 msgstr "_Bai"

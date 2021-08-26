@@ -49,7 +49,7 @@
 #include "ctkrender.h"
 #include "ctktypebuiltins.h"
 #include "ctkwidgetprivate.h"
-#include "deprecated/ctkstock.h"
+#include "ctkstock.h"
 #include "ctkgesturemultipress.h"
 
 /**

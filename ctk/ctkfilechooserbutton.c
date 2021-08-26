@@ -42,7 +42,7 @@
 #include "ctkimage.h"
 #include "ctklabel.h"
 #include "ctkliststore.h"
-#include "deprecated/ctkstock.h"
+#include "ctkstock.h"
 #include "ctktreemodelfilter.h"
 #include "ctkseparator.h"
 #include "ctkfilechooserdialog.h"

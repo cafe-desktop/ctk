@@ -37,7 +37,7 @@
 #include "ctkdebug.h"
 #include "ctkicontheme.h"
 #include "ctksettingsprivate.h"
-#include "deprecated/ctkstock.h"
+#include "ctkstock.h"
 #include "ctkwidget.h"
 #include "ctkintl.h"
 #include "ctkbuildable.h"

@@ -34,7 +34,7 @@
 #endif
 
 #include <ctk/deprecated/ctkaction.h>
-#include <ctk/deprecated/ctkstock.h>
+#include <ctk/ctkstock.h>
 
 G_BEGIN_DECLS
 

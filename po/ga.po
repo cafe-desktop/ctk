@@ -634,32 +634,32 @@ msgstr ""
 #. FIXME these need accelerators when appropriate, and
 #. * need the mnemonics to be rationalized
 #.
-#: ../ctk/a11y/ctkimageaccessible.c:53 ../ctk/deprecated/ctkstock.c:340
+#: ../ctk/a11y/ctkimageaccessible.c:53 ../ctk/ctkstock.c:340
 msgctxt "Stock label"
 msgid "_About"
 msgstr "_Maidir Leis Seo"
 
-#: ../ctk/a11y/ctkimageaccessible.c:54 ../ctk/deprecated/ctkstock.c:341
+#: ../ctk/a11y/ctkimageaccessible.c:54 ../ctk/ctkstock.c:341
 msgctxt "Stock label"
 msgid "_Add"
 msgstr "Cuir _Leis"
 
-#: ../ctk/a11y/ctkimageaccessible.c:55 ../ctk/deprecated/ctkstock.c:343
+#: ../ctk/a11y/ctkimageaccessible.c:55 ../ctk/ctkstock.c:343
 msgctxt "Stock label"
 msgid "_Bold"
 msgstr "_Trom"
 
-#: ../ctk/a11y/ctkimageaccessible.c:56 ../ctk/deprecated/ctkstock.c:345
+#: ../ctk/a11y/ctkimageaccessible.c:56 ../ctk/ctkstock.c:345
 msgctxt "Stock label"
 msgid "_CD-ROM"
 msgstr "_CD-ROM"
 
-#: ../ctk/a11y/ctkimageaccessible.c:57 ../ctk/deprecated/ctkstock.c:346
+#: ../ctk/a11y/ctkimageaccessible.c:57 ../ctk/ctkstock.c:346
 msgctxt "Stock label"
 msgid "_Clear"
 msgstr "_Glan"
 
-#: ../ctk/a11y/ctkimageaccessible.c:58 ../ctk/deprecated/ctkstock.c:347
+#: ../ctk/a11y/ctkimageaccessible.c:58 ../ctk/ctkstock.c:347
 msgctxt "Stock label"
 msgid "_Close"
 msgstr "_Dún"
@@ -676,364 +676,364 @@ msgstr "Uasmhéadaigh"
 msgid "Restore"
 msgstr ""
 
-#: ../ctk/a11y/ctkimageaccessible.c:62 ../ctk/deprecated/ctkstock.c:350
+#: ../ctk/a11y/ctkimageaccessible.c:62 ../ctk/ctkstock.c:350
 msgctxt "Stock label"
 msgid "_Copy"
 msgstr "_Cóipeáil"
 
-#: ../ctk/a11y/ctkimageaccessible.c:63 ../ctk/deprecated/ctkstock.c:351
+#: ../ctk/a11y/ctkimageaccessible.c:63 ../ctk/ctkstock.c:351
 msgctxt "Stock label"
 msgid "Cu_t"
 msgstr "_Gearr"
 
-#: ../ctk/a11y/ctkimageaccessible.c:64 ../ctk/deprecated/ctkstock.c:352
+#: ../ctk/a11y/ctkimageaccessible.c:64 ../ctk/ctkstock.c:352
 msgctxt "Stock label"
 msgid "_Delete"
 msgstr "_Scrios"
 
-#: ../ctk/a11y/ctkimageaccessible.c:65 ../ctk/deprecated/ctkstock.c:334
+#: ../ctk/a11y/ctkimageaccessible.c:65 ../ctk/ctkstock.c:334
 msgctxt "Stock label"
 msgid "Error"
 msgstr "Earráid"
 
 #. KEEP IN SYNC with ctkiconfactory.c stock icons, when appropriate
-#: ../ctk/a11y/ctkimageaccessible.c:66 ../ctk/deprecated/ctkstock.c:332
+#: ../ctk/a11y/ctkimageaccessible.c:66 ../ctk/ctkstock.c:332
 msgctxt "Stock label"
 msgid "Information"
 msgstr "Eolas"
 
-#: ../ctk/a11y/ctkimageaccessible.c:67 ../ctk/deprecated/ctkstock.c:335
+#: ../ctk/a11y/ctkimageaccessible.c:67 ../ctk/ctkstock.c:335
 msgctxt "Stock label"
 msgid "Question"
 msgstr "Ceist"
 
-#: ../ctk/a11y/ctkimageaccessible.c:68 ../ctk/deprecated/ctkstock.c:333
+#: ../ctk/a11y/ctkimageaccessible.c:68 ../ctk/ctkstock.c:333
 msgctxt "Stock label"
 msgid "Warning"
 msgstr "Rabhadh"
 
-#: ../ctk/a11y/ctkimageaccessible.c:69 ../ctk/deprecated/ctkstock.c:355
+#: ../ctk/a11y/ctkimageaccessible.c:69 ../ctk/ctkstock.c:355
 msgctxt "Stock label"
 msgid "_Execute"
 msgstr "_Rith"
 
-#: ../ctk/a11y/ctkimageaccessible.c:70 ../ctk/deprecated/ctkstock.c:357
+#: ../ctk/a11y/ctkimageaccessible.c:70 ../ctk/ctkstock.c:357
 msgctxt "Stock label"
 msgid "_File"
 msgstr "_Comhad"
 
-#: ../ctk/a11y/ctkimageaccessible.c:71 ../ctk/deprecated/ctkstock.c:358
+#: ../ctk/a11y/ctkimageaccessible.c:71 ../ctk/ctkstock.c:358
 msgctxt "Stock label"
 msgid "_Find"
 msgstr "_Aimsigh"
 
-#: ../ctk/a11y/ctkimageaccessible.c:72 ../ctk/deprecated/ctkstock.c:359
+#: ../ctk/a11y/ctkimageaccessible.c:72 ../ctk/ctkstock.c:359
 msgctxt "Stock label"
 msgid "Find and _Replace"
 msgstr "Aimsigh agus _Ionadaigh"
 
-#: ../ctk/a11y/ctkimageaccessible.c:73 ../ctk/deprecated/ctkstock.c:360
+#: ../ctk/a11y/ctkimageaccessible.c:73 ../ctk/ctkstock.c:360
 msgctxt "Stock label"
 msgid "_Floppy"
 msgstr "Diosca _Bog"
 
-#: ../ctk/a11y/ctkimageaccessible.c:74 ../ctk/deprecated/ctkstock.c:361
+#: ../ctk/a11y/ctkimageaccessible.c:74 ../ctk/ctkstock.c:361
 msgctxt "Stock label"
 msgid "_Fullscreen"
 msgstr "_Lánscáileán"
 
 #. This is a navigation label as in "go to the bottom of the page"
-#: ../ctk/a11y/ctkimageaccessible.c:75 ../ctk/deprecated/ctkstock.c:364
+#: ../ctk/a11y/ctkimageaccessible.c:75 ../ctk/ctkstock.c:364
 msgctxt "Stock label, navigation"
 msgid "_Bottom"
 msgstr "_Bun:"
 
 #. This is a navigation label as in "go to the first page"
-#: ../ctk/a11y/ctkimageaccessible.c:76 ../ctk/deprecated/ctkstock.c:366
+#: ../ctk/a11y/ctkimageaccessible.c:76 ../ctk/ctkstock.c:366
 msgctxt "Stock label, navigation"
 msgid "_First"
 msgstr "An _Chéad"
 
 #. This is a navigation label as in "go to the last page"
-#: ../ctk/a11y/ctkimageaccessible.c:77 ../ctk/deprecated/ctkstock.c:368
+#: ../ctk/a11y/ctkimageaccessible.c:77 ../ctk/ctkstock.c:368
 msgctxt "Stock label, navigation"
 msgid "_Last"
 msgstr "An _Deireanach"
 
 #. This is a navigation label as in "go to the top of the page"
-#: ../ctk/a11y/ctkimageaccessible.c:78 ../ctk/deprecated/ctkstock.c:370
+#: ../ctk/a11y/ctkimageaccessible.c:78 ../ctk/ctkstock.c:370
 msgctxt "Stock label, navigation"
 msgid "_Top"
 msgstr "Ba_rr:"
 
 #. This is a navigation label as in "go back"
-#: ../ctk/a11y/ctkimageaccessible.c:79 ../ctk/deprecated/ctkstock.c:372
+#: ../ctk/a11y/ctkimageaccessible.c:79 ../ctk/ctkstock.c:372
 msgctxt "Stock label, navigation"
 msgid "_Back"
 msgstr "Ar A_is"
 
 #. This is a navigation label as in "go down"
-#: ../ctk/a11y/ctkimageaccessible.c:80 ../ctk/deprecated/ctkstock.c:374
+#: ../ctk/a11y/ctkimageaccessible.c:80 ../ctk/ctkstock.c:374
 msgctxt "Stock label, navigation"
 msgid "_Down"
 msgstr "_Síos"
 
 #. This is a navigation label as in "go forward"
-#: ../ctk/a11y/ctkimageaccessible.c:81 ../ctk/deprecated/ctkstock.c:376
+#: ../ctk/a11y/ctkimageaccessible.c:81 ../ctk/ctkstock.c:376
 msgctxt "Stock label, navigation"
 msgid "_Forward"
 msgstr "Ar A_ghaidh"
 
 #. This is a navigation label as in "go up"
-#: ../ctk/a11y/ctkimageaccessible.c:82 ../ctk/deprecated/ctkstock.c:378
+#: ../ctk/a11y/ctkimageaccessible.c:82 ../ctk/ctkstock.c:378
 msgctxt "Stock label, navigation"
 msgid "_Up"
 msgstr "_Siar"
 
-#: ../ctk/a11y/ctkimageaccessible.c:83 ../ctk/deprecated/ctkstock.c:379
+#: ../ctk/a11y/ctkimageaccessible.c:83 ../ctk/ctkstock.c:379
 msgctxt "Stock label"
 msgid "_Hard Disk"
 msgstr "Diosca _Crua"
 
-#: ../ctk/a11y/ctkimageaccessible.c:84 ../ctk/deprecated/ctkstock.c:380
+#: ../ctk/a11y/ctkimageaccessible.c:84 ../ctk/ctkstock.c:380
 msgctxt "Stock label"
 msgid "_Help"
 msgstr "Cab_hair"
 
-#: ../ctk/a11y/ctkimageaccessible.c:85 ../ctk/deprecated/ctkstock.c:381
+#: ../ctk/a11y/ctkimageaccessible.c:85 ../ctk/ctkstock.c:381
 msgctxt "Stock label"
 msgid "_Home"
 msgstr "_Baile"
 
-#: ../ctk/a11y/ctkimageaccessible.c:86 ../ctk/deprecated/ctkstock.c:382
+#: ../ctk/a11y/ctkimageaccessible.c:86 ../ctk/ctkstock.c:382
 msgctxt "Stock label"
 msgid "Increase Indent"
 msgstr "Méadaigh Eang"
 
-#: ../ctk/a11y/ctkimageaccessible.c:87 ../ctk/deprecated/ctkstock.c:386
+#: ../ctk/a11y/ctkimageaccessible.c:87 ../ctk/ctkstock.c:386
 msgctxt "Stock label"
 msgid "_Italic"
 msgstr "Cló _Iodálach"
 
-#: ../ctk/a11y/ctkimageaccessible.c:88 ../ctk/deprecated/ctkstock.c:387
+#: ../ctk/a11y/ctkimageaccessible.c:88 ../ctk/ctkstock.c:387
 msgctxt "Stock label"
 msgid "_Jump to"
 msgstr "_Léim Go"
 
 #. This is about text justification, "centered text"
-#: ../ctk/a11y/ctkimageaccessible.c:89 ../ctk/deprecated/ctkstock.c:389
+#: ../ctk/a11y/ctkimageaccessible.c:89 ../ctk/ctkstock.c:389
 msgctxt "Stock label"
 msgid "_Center"
 msgstr "_Láraigh"
 
 #. This is about text justification
-#: ../ctk/a11y/ctkimageaccessible.c:90 ../ctk/deprecated/ctkstock.c:391
+#: ../ctk/a11y/ctkimageaccessible.c:90 ../ctk/ctkstock.c:391
 msgctxt "Stock label"
 msgid "_Fill"
 msgstr "_Líon"
 
 #. This is about text justification, "left-justified text"
-#: ../ctk/a11y/ctkimageaccessible.c:91 ../ctk/deprecated/ctkstock.c:393
+#: ../ctk/a11y/ctkimageaccessible.c:91 ../ctk/ctkstock.c:393
 msgctxt "Stock label"
 msgid "_Left"
 msgstr "Ar _Chlé"
 
 #. This is about text justification, "right-justified text"
-#: ../ctk/a11y/ctkimageaccessible.c:92 ../ctk/deprecated/ctkstock.c:395
+#: ../ctk/a11y/ctkimageaccessible.c:92 ../ctk/ctkstock.c:395
 msgctxt "Stock label"
 msgid "_Right"
 msgstr "Ar _Dheis"
 
-#: ../ctk/a11y/ctkimageaccessible.c:93 ../ctk/deprecated/ctkstock.c:362
+#: ../ctk/a11y/ctkimageaccessible.c:93 ../ctk/ctkstock.c:362
 msgctxt "Stock label"
 msgid "_Leave Fullscreen"
 msgstr "_Fág Lánscáileán"
 
 #. Media label, as in "fast forward"
-#: ../ctk/a11y/ctkimageaccessible.c:94 ../ctk/deprecated/ctkstock.c:398
+#: ../ctk/a11y/ctkimageaccessible.c:94 ../ctk/ctkstock.c:398
 msgctxt "Stock label, media"
 msgid "_Forward"
 msgstr "_Ar Aghaidh"
 
 #. Media label, as in "next song"
-#: ../ctk/a11y/ctkimageaccessible.c:95 ../ctk/deprecated/ctkstock.c:400
+#: ../ctk/a11y/ctkimageaccessible.c:95 ../ctk/ctkstock.c:400
 msgctxt "Stock label, media"
 msgid "_Next"
 msgstr "Ar _Aghaidh"
 
 #. Media label, as in "pause music"
-#: ../ctk/a11y/ctkimageaccessible.c:96 ../ctk/deprecated/ctkstock.c:402
+#: ../ctk/a11y/ctkimageaccessible.c:96 ../ctk/ctkstock.c:402
 msgctxt "Stock label, media"
 msgid "P_ause"
 msgstr "_Sos"
 
 #. Media label, as in "play music"
-#: ../ctk/a11y/ctkimageaccessible.c:97 ../ctk/deprecated/ctkstock.c:404
+#: ../ctk/a11y/ctkimageaccessible.c:97 ../ctk/ctkstock.c:404
 msgctxt "Stock label, media"
 msgid "_Play"
 msgstr "_Seinn"
 
 #. Media label, as in  "previous song"
-#: ../ctk/a11y/ctkimageaccessible.c:98 ../ctk/deprecated/ctkstock.c:406
+#: ../ctk/a11y/ctkimageaccessible.c:98 ../ctk/ctkstock.c:406
 msgctxt "Stock label, media"
 msgid "Pre_vious"
 msgstr "_Roimhe Seo"
 
 #. Media label
-#: ../ctk/a11y/ctkimageaccessible.c:99 ../ctk/deprecated/ctkstock.c:408
+#: ../ctk/a11y/ctkimageaccessible.c:99 ../ctk/ctkstock.c:408
 msgctxt "Stock label, media"
 msgid "_Record"
 msgstr "_Taifead"
 
 #. Media label
-#: ../ctk/a11y/ctkimageaccessible.c:100 ../ctk/deprecated/ctkstock.c:410
+#: ../ctk/a11y/ctkimageaccessible.c:100 ../ctk/ctkstock.c:410
 msgctxt "Stock label, media"
 msgid "R_ewind"
 msgstr "At_ochrais"
 
 #. Media label
-#: ../ctk/a11y/ctkimageaccessible.c:101 ../ctk/deprecated/ctkstock.c:412
+#: ../ctk/a11y/ctkimageaccessible.c:101 ../ctk/ctkstock.c:412
 msgctxt "Stock label, media"
 msgid "_Stop"
 msgstr "_Stad"
 
-#: ../ctk/a11y/ctkimageaccessible.c:102 ../ctk/deprecated/ctkstock.c:413
+#: ../ctk/a11y/ctkimageaccessible.c:102 ../ctk/ctkstock.c:413
 msgctxt "Stock label"
 msgid "_Network"
 msgstr "Lío_nra"
 
-#: ../ctk/a11y/ctkimageaccessible.c:103 ../ctk/deprecated/ctkstock.c:414
+#: ../ctk/a11y/ctkimageaccessible.c:103 ../ctk/ctkstock.c:414
 msgctxt "Stock label"
 msgid "_New"
 msgstr "_Nua"
 
-#: ../ctk/a11y/ctkimageaccessible.c:104 ../ctk/deprecated/ctkstock.c:417
+#: ../ctk/a11y/ctkimageaccessible.c:104 ../ctk/ctkstock.c:417
 msgctxt "Stock label"
 msgid "_Open"
 msgstr "_Oscail"
 
-#: ../ctk/a11y/ctkimageaccessible.c:105 ../ctk/deprecated/ctkstock.c:427
+#: ../ctk/a11y/ctkimageaccessible.c:105 ../ctk/ctkstock.c:427
 msgctxt "Stock label"
 msgid "_Paste"
 msgstr "G_reamaigh"
 
-#: ../ctk/a11y/ctkimageaccessible.c:106 ../ctk/deprecated/ctkstock.c:429
+#: ../ctk/a11y/ctkimageaccessible.c:106 ../ctk/ctkstock.c:429
 msgctxt "Stock label"
 msgid "_Print"
 msgstr "_Priontáil"
 
-#: ../ctk/a11y/ctkimageaccessible.c:107 ../ctk/deprecated/ctkstock.c:430
+#: ../ctk/a11y/ctkimageaccessible.c:107 ../ctk/ctkstock.c:430
 msgctxt "Stock label"
 msgid "Print Pre_view"
 msgstr "Réamh_amharc Priontála"
 
-#: ../ctk/a11y/ctkimageaccessible.c:108 ../ctk/deprecated/ctkstock.c:431
+#: ../ctk/a11y/ctkimageaccessible.c:108 ../ctk/ctkstock.c:431
 msgctxt "Stock label"
 msgid "_Properties"
 msgstr "_Airíonna"
 
-#: ../ctk/a11y/ctkimageaccessible.c:109 ../ctk/deprecated/ctkstock.c:432
+#: ../ctk/a11y/ctkimageaccessible.c:109 ../ctk/ctkstock.c:432
 msgctxt "Stock label"
 msgid "_Quit"
 msgstr "_Scoir"
 
-#: ../ctk/a11y/ctkimageaccessible.c:110 ../ctk/deprecated/ctkstock.c:433
+#: ../ctk/a11y/ctkimageaccessible.c:110 ../ctk/ctkstock.c:433
 msgctxt "Stock label"
 msgid "_Redo"
 msgstr "_Athfheidhmigh"
 
-#: ../ctk/a11y/ctkimageaccessible.c:111 ../ctk/deprecated/ctkstock.c:434
+#: ../ctk/a11y/ctkimageaccessible.c:111 ../ctk/ctkstock.c:434
 msgctxt "Stock label"
 msgid "_Refresh"
 msgstr "_Athnuaigh"
 
-#: ../ctk/a11y/ctkimageaccessible.c:112 ../ctk/deprecated/ctkstock.c:435
+#: ../ctk/a11y/ctkimageaccessible.c:112 ../ctk/ctkstock.c:435
 msgctxt "Stock label"
 msgid "_Remove"
 msgstr "_Bain"
 
-#: ../ctk/a11y/ctkimageaccessible.c:113 ../ctk/deprecated/ctkstock.c:436
+#: ../ctk/a11y/ctkimageaccessible.c:113 ../ctk/ctkstock.c:436
 msgctxt "Stock label"
 msgid "_Revert"
 msgstr "_Fill"
 
-#: ../ctk/a11y/ctkimageaccessible.c:114 ../ctk/deprecated/ctkstock.c:437
+#: ../ctk/a11y/ctkimageaccessible.c:114 ../ctk/ctkstock.c:437
 msgctxt "Stock label"
 msgid "_Save"
 msgstr "_Sábháil"
 
-#: ../ctk/a11y/ctkimageaccessible.c:115 ../ctk/deprecated/ctkstock.c:438
+#: ../ctk/a11y/ctkimageaccessible.c:115 ../ctk/ctkstock.c:438
 msgctxt "Stock label"
 msgid "Save _As"
 msgstr "Sábháil M_ar"
 
-#: ../ctk/a11y/ctkimageaccessible.c:116 ../ctk/deprecated/ctkstock.c:439
+#: ../ctk/a11y/ctkimageaccessible.c:116 ../ctk/ctkstock.c:439
 msgctxt "Stock label"
 msgid "Select _All"
 msgstr "Roghnaigh _Gach Rud"
 
 #. Sorting direction
-#: ../ctk/a11y/ctkimageaccessible.c:117 ../ctk/deprecated/ctkstock.c:443
+#: ../ctk/a11y/ctkimageaccessible.c:117 ../ctk/ctkstock.c:443
 msgctxt "Stock label"
 msgid "_Ascending"
 msgstr "_Ardaitheach"
 
 #. Sorting direction
-#: ../ctk/a11y/ctkimageaccessible.c:118 ../ctk/deprecated/ctkstock.c:445
+#: ../ctk/a11y/ctkimageaccessible.c:118 ../ctk/ctkstock.c:445
 msgctxt "Stock label"
 msgid "_Descending"
 msgstr "Í_slitheach"
 
-#: ../ctk/a11y/ctkimageaccessible.c:119 ../ctk/deprecated/ctkstock.c:446
+#: ../ctk/a11y/ctkimageaccessible.c:119 ../ctk/ctkstock.c:446
 msgctxt "Stock label"
 msgid "_Spell Check"
 msgstr "_Litriú"
 
-#: ../ctk/a11y/ctkimageaccessible.c:120 ../ctk/deprecated/ctkstock.c:447
+#: ../ctk/a11y/ctkimageaccessible.c:120 ../ctk/ctkstock.c:447
 msgctxt "Stock label"
 msgid "_Stop"
 msgstr "_Stad"
 
 #. Font variant
-#: ../ctk/a11y/ctkimageaccessible.c:121 ../ctk/deprecated/ctkstock.c:449
+#: ../ctk/a11y/ctkimageaccessible.c:121 ../ctk/ctkstock.c:449
 msgctxt "Stock label"
 msgid "_Strikethrough"
 msgstr "Líne _Trí"
 
 #. Font variant
-#: ../ctk/a11y/ctkimageaccessible.c:122 ../ctk/deprecated/ctkstock.c:452
+#: ../ctk/a11y/ctkimageaccessible.c:122 ../ctk/ctkstock.c:452
 msgctxt "Stock label"
 msgid "_Underline"
 msgstr "_Líne Faoi"
 
-#: ../ctk/a11y/ctkimageaccessible.c:123 ../ctk/deprecated/ctkstock.c:453
+#: ../ctk/a11y/ctkimageaccessible.c:123 ../ctk/ctkstock.c:453
 msgctxt "Stock label"
 msgid "_Undo"
 msgstr "Cea_laigh"
 
-#: ../ctk/a11y/ctkimageaccessible.c:124 ../ctk/deprecated/ctkstock.c:383
+#: ../ctk/a11y/ctkimageaccessible.c:124 ../ctk/ctkstock.c:383
 msgctxt "Stock label"
 msgid "Decrease Indent"
 msgstr "Laghdaigh Eang"
 
 #. Zoom
-#: ../ctk/a11y/ctkimageaccessible.c:125 ../ctk/deprecated/ctkstock.c:456
+#: ../ctk/a11y/ctkimageaccessible.c:125 ../ctk/ctkstock.c:456
 msgctxt "Stock label"
 msgid "_Normal Size"
 msgstr "_Gnáthmhéid"
 
 #. Zoom
-#: ../ctk/a11y/ctkimageaccessible.c:126 ../ctk/deprecated/ctkstock.c:458
+#: ../ctk/a11y/ctkimageaccessible.c:126 ../ctk/ctkstock.c:458
 msgctxt "Stock label"
 msgid "Best _Fit"
 msgstr "_Scothoiriúint"
 
-#: ../ctk/a11y/ctkimageaccessible.c:127 ../ctk/deprecated/ctkstock.c:459
+#: ../ctk/a11y/ctkimageaccessible.c:127 ../ctk/ctkstock.c:459
 msgctxt "Stock label"
 msgid "Zoom _In"
 msgstr "Súmáil _Isteach"
 
-#: ../ctk/a11y/ctkimageaccessible.c:128 ../ctk/deprecated/ctkstock.c:460
+#: ../ctk/a11y/ctkimageaccessible.c:128 ../ctk/ctkstock.c:460
 msgctxt "Stock label"
 msgid "Zoom _Out"
 msgstr "Súmáil _Amach"
@@ -1281,111 +1281,111 @@ msgctxt "Number format"
 msgid "%d"
 msgstr "%d"
 
-#: ../ctk/deprecated/ctkstock.c:342
+#: ../ctk/ctkstock.c:342
 msgctxt "Stock label"
 msgid "_Apply"
 msgstr "Cuir i bh_Feidhm"
 
-#: ../ctk/deprecated/ctkstock.c:344
+#: ../ctk/ctkstock.c:344
 msgctxt "Stock label"
 msgid "_Cancel"
 msgstr "_Cealaigh"
 
-#: ../ctk/deprecated/ctkstock.c:348
+#: ../ctk/ctkstock.c:348
 msgctxt "Stock label"
 msgid "C_onnect"
 msgstr "_Nasc"
 
-#: ../ctk/deprecated/ctkstock.c:349
+#: ../ctk/ctkstock.c:349
 msgctxt "Stock label"
 msgid "_Convert"
 msgstr "_Tiontaigh"
 
-#: ../ctk/deprecated/ctkstock.c:353
+#: ../ctk/ctkstock.c:353
 msgctxt "Stock label"
 msgid "_Discard"
 msgstr "_Cuir i Leataobh"
 
-#: ../ctk/deprecated/ctkstock.c:354
+#: ../ctk/ctkstock.c:354
 msgctxt "Stock label"
 msgid "_Disconnect"
 msgstr "_Dínasc"
 
-#: ../ctk/deprecated/ctkstock.c:356
+#: ../ctk/ctkstock.c:356
 msgctxt "Stock label"
 msgid "_Edit"
 msgstr "Cuir in _Eagar"
 
-#: ../ctk/deprecated/ctkstock.c:384
+#: ../ctk/ctkstock.c:384
 msgctxt "Stock label"
 msgid "_Index"
 msgstr "_Innéacs"
 
-#: ../ctk/deprecated/ctkstock.c:385
+#: ../ctk/ctkstock.c:385
 msgctxt "Stock label"
 msgid "_Information"
 msgstr "_Eolas"
 
-#: ../ctk/deprecated/ctkstock.c:415
+#: ../ctk/ctkstock.c:415
 msgctxt "Stock label"
 msgid "_No"
 msgstr "_Níl"
 
-#: ../ctk/deprecated/ctkstock.c:416
+#: ../ctk/ctkstock.c:416
 msgctxt "Stock label"
 msgid "_OK"
 msgstr "Tá g_o Maith"
 
 #. Page orientation
-#: ../ctk/deprecated/ctkstock.c:419
+#: ../ctk/ctkstock.c:419
 msgctxt "Stock label"
 msgid "Landscape"
 msgstr "Tírdhreach"
 
 #. Page orientation
-#: ../ctk/deprecated/ctkstock.c:421
+#: ../ctk/ctkstock.c:421
 msgctxt "Stock label"
 msgid "Portrait"
 msgstr "Portráid"
 
 #. Page orientation
-#: ../ctk/deprecated/ctkstock.c:423
+#: ../ctk/ctkstock.c:423
 msgctxt "Stock label"
 msgid "Reverse landscape"
 msgstr "Tírdhreach aisiompaithe"
 
 #. Page orientation
-#: ../ctk/deprecated/ctkstock.c:425
+#: ../ctk/ctkstock.c:425
 msgctxt "Stock label"
 msgid "Reverse portrait"
 msgstr "Portráid aisiompaithe"
 
-#: ../ctk/deprecated/ctkstock.c:426
+#: ../ctk/ctkstock.c:426
 msgctxt "Stock label"
 msgid "Page Set_up"
 msgstr "Socrú _Leathanaigh"
 
-#: ../ctk/deprecated/ctkstock.c:428
+#: ../ctk/ctkstock.c:428
 msgctxt "Stock label"
 msgid "_Preferences"
 msgstr "_Sainroghanna"
 
-#: ../ctk/deprecated/ctkstock.c:440
+#: ../ctk/ctkstock.c:440
 msgctxt "Stock label"
 msgid "_Color"
 msgstr "_Dath"
 
-#: ../ctk/deprecated/ctkstock.c:441
+#: ../ctk/ctkstock.c:441
 msgctxt "Stock label"
 msgid "_Font"
 msgstr "_Cló"
 
-#: ../ctk/deprecated/ctkstock.c:450
+#: ../ctk/ctkstock.c:450
 msgctxt "Stock label"
 msgid "_Undelete"
 msgstr "_Díscrios"
 
-#: ../ctk/deprecated/ctkstock.c:454
+#: ../ctk/ctkstock.c:454
 msgctxt "Stock label"
 msgid "_Yes"
 msgstr "_Tá"

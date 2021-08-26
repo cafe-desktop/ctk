@@ -37,7 +37,7 @@
 #include "ctkinvisible.h"
 #include "ctkmain.h"
 #include "ctkoffscreenwindow.h"
-#include "deprecated/ctkstock.h"
+#include "ctkstock.h"
 #include "ctkwindow.h"
 #include "ctkintl.h"
 #include "ctkquartz.h"
