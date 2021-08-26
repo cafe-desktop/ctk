@@ -24,8 +24,6 @@
 
 #include "config.h"
 
-#define CDK_DISABLE_DEPRECATION_WARNINGS
-
 #include <string.h>
 
 #include "ctkprivate.h"
@@ -39,10 +37,6 @@
  * @Short_description: Prebuilt common menu/toolbar items and corresponding
  *                     icons
  * @Title: Stock Items
- *
- * > Since CTK+ 3.10, stock items are deprecated. You should instead set
- * > up whatever labels and/or icons you need using normal widget API,
- * > rather than relying on CTK+ providing ready-made combinations of these.
  *
  * Stock items represent commonly-used menu or toolbar items such as
  * “Open” or “Exit”. Each stock item is identified by a stock ID;
@@ -147,8 +141,6 @@ real_add (const CtkStockItem *items,
  * any pointer into @items and @items can be freed. Use
  * ctk_stock_add_static() if @items is persistent and CTK+ need not
  * copy the array.
- *
- * Deprecated: 3.10
  **/
 void
 ctk_stock_add (const CtkStockItem *items,
@@ -166,8 +158,6 @@ ctk_stock_add (const CtkStockItem *items,
  *
  * Same as ctk_stock_add(), but doesn’t copy @items, so
  * @items must persist until application exit.
- *
- * Deprecated: 3.10
  **/
 void
 ctk_stock_add_static (const CtkStockItem *items,
@@ -187,8 +177,6 @@ ctk_stock_add_static (const CtkStockItem *items,
  * if @stock_id was known.
  *
  * Returns: %TRUE if @item was initialized
- *
- * Deprecated: 3.10
  **/
 gboolean
 ctk_stock_lookup (const gchar  *stock_id,
@@ -235,8 +223,6 @@ ctk_stock_lookup (const gchar  *stock_id,
  * and each string in the list must be freed with g_free().
  *
  * Returns: (element-type utf8) (transfer full): a list of known stock IDs
- *
- * Deprecated: 3.10
  **/
 GSList*
 ctk_stock_list_ids (void)
@@ -287,8 +273,6 @@ ctk_stock_list_ids (void)
  * Copies a stock item, mostly useful for language bindings and not in applications.
  * 
  * Returns: a new #CtkStockItem
- *
- * Deprecated: 3.10
  **/
 CtkStockItem *
 ctk_stock_item_copy (const CtkStockItem *item)
@@ -315,8 +299,6 @@ ctk_stock_item_copy (const CtkStockItem *item)
  * Frees a stock item allocated on the heap, such as one returned by
  * ctk_stock_item_copy(). Also frees the fields inside the stock item,
  * if they are not %NULL.
- *
- * Deprecated: 3.10
  **/
 void
 ctk_stock_item_free (CtkStockItem *item)
@@ -509,8 +491,6 @@ static const CtkStockItem builtin_items [] =
  * ]|
  * 
  * Since: 2.8
- *
- * Deprecated: 3.10
  */
 void
 ctk_stock_set_translate_func (const gchar      *domain,
