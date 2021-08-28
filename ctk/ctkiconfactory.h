@@ -74,25 +74,25 @@ struct _CtkIconFactoryClass
   void (*_ctk_reserved4) (void);
 };
 
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 GType           ctk_icon_factory_get_type (void) G_GNUC_CONST;
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 CtkIconFactory* ctk_icon_factory_new      (void);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 void            ctk_icon_factory_add      (CtkIconFactory *factory,
                                            const gchar    *stock_id,
                                            CtkIconSet     *icon_set);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 CtkIconSet*     ctk_icon_factory_lookup   (CtkIconFactory *factory,
                                            const gchar    *stock_id);
 
 /* Manage the default icon factory stack */
 
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 void        ctk_icon_factory_add_default     (CtkIconFactory  *factory);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 void        ctk_icon_factory_remove_default  (CtkIconFactory  *factory);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 CtkIconSet* ctk_icon_factory_lookup_default  (const gchar     *stock_id);
 
 /* Get preferred real size from registered semantic size.  Note that
@@ -112,41 +112,41 @@ gboolean ctk_icon_size_lookup              (CtkIconSize  size,
 					    gint        *width,
 					    gint        *height);
 #endif /* CDK_MULTIHEAD_SAFE */
-CDK_DEPRECATED_IN_3_10_FOR(ctk_icon_size_lookup)
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_icon_size_lookup_for_settings (CtkSettings *settings,
 					    CtkIconSize  size,
 					    gint        *width,
 					    gint        *height);
 
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 CtkIconSize           ctk_icon_size_register       (const gchar *name,
                                                     gint         width,
                                                     gint         height);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 void                  ctk_icon_size_register_alias (const gchar *alias,
                                                     CtkIconSize  target);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 CtkIconSize           ctk_icon_size_from_name      (const gchar *name);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 const gchar*          ctk_icon_size_get_name       (CtkIconSize  size);
 
 /* Icon sets */
 
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 GType       ctk_icon_set_get_type        (void) G_GNUC_CONST;
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 CtkIconSet* ctk_icon_set_new             (void);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 CtkIconSet* ctk_icon_set_new_from_pixbuf (GdkPixbuf       *pixbuf);
 
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 CtkIconSet* ctk_icon_set_ref             (CtkIconSet      *icon_set);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 void        ctk_icon_set_unref           (CtkIconSet      *icon_set);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 CtkIconSet* ctk_icon_set_copy            (CtkIconSet      *icon_set);
 
-CDK_DEPRECATED_IN_3_0_FOR(ctk_icon_set_render_icon_pixbuf)
+CDK_AVAILABLE_IN_ALL
 GdkPixbuf*  ctk_icon_set_render_icon     (CtkIconSet      *icon_set,
                                           CtkStyle        *style,
                                           CtkTextDirection direction,
@@ -155,70 +155,70 @@ GdkPixbuf*  ctk_icon_set_render_icon     (CtkIconSet      *icon_set,
                                           CtkWidget       *widget,
                                           const gchar     *detail);
 
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 void           ctk_icon_set_add_source   (CtkIconSet          *icon_set,
                                           const CtkIconSource *source);
 
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 void           ctk_icon_set_get_sizes    (CtkIconSet          *icon_set,
                                           CtkIconSize        **sizes,
                                           gint                *n_sizes);
 
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 GType          ctk_icon_source_get_type                 (void) G_GNUC_CONST;
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 CtkIconSource* ctk_icon_source_new                      (void);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 CtkIconSource* ctk_icon_source_copy                     (const CtkIconSource *source);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 void           ctk_icon_source_free                     (CtkIconSource       *source);
 
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 void           ctk_icon_source_set_filename             (CtkIconSource       *source,
                                                          const gchar         *filename);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 void           ctk_icon_source_set_icon_name            (CtkIconSource       *source,
                                                          const gchar         *icon_name);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 void           ctk_icon_source_set_pixbuf               (CtkIconSource       *source,
                                                          GdkPixbuf           *pixbuf);
 
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 const gchar *    ctk_icon_source_get_filename             (const CtkIconSource *source);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 const gchar *    ctk_icon_source_get_icon_name            (const CtkIconSource *source);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 GdkPixbuf*       ctk_icon_source_get_pixbuf               (const CtkIconSource *source);
 
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 void             ctk_icon_source_set_direction_wildcarded (CtkIconSource       *source,
                                                            gboolean             setting);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 void             ctk_icon_source_set_state_wildcarded     (CtkIconSource       *source,
                                                            gboolean             setting);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 void             ctk_icon_source_set_size_wildcarded      (CtkIconSource       *source,
                                                            gboolean             setting);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 gboolean         ctk_icon_source_get_size_wildcarded      (const CtkIconSource *source);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 gboolean         ctk_icon_source_get_state_wildcarded     (const CtkIconSource *source);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 gboolean         ctk_icon_source_get_direction_wildcarded (const CtkIconSource *source);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 void             ctk_icon_source_set_direction            (CtkIconSource       *source,
                                                            CtkTextDirection     direction);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 void             ctk_icon_source_set_state                (CtkIconSource       *source,
                                                            CtkStateType         state);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 void             ctk_icon_source_set_size                 (CtkIconSource       *source,
                                                            CtkIconSize          size);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 CtkTextDirection ctk_icon_source_get_direction            (const CtkIconSource *source);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 CtkStateType     ctk_icon_source_get_state                (const CtkIconSource *source);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 CtkIconSize      ctk_icon_source_get_size                 (const CtkIconSource *source);
 
 G_END_DECLS
