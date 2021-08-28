@@ -31,7 +31,7 @@
 
 #include "ctkdnd.h"
 #include "ctkdndprivate.h"
-#include "deprecated/ctkiconfactory.h"
+#include "ctkiconfactory.h"
 #include "ctkicontheme.h"
 #include "ctkimageprivate.h"
 #include "ctkinvisible.h"

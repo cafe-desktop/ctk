@@ -32,7 +32,7 @@
 #include "ctkcssstylepropertyprivate.h"
 #include "ctkiconhelperprivate.h"
 #include "ctkimageprivate.h"
-#include "deprecated/ctkiconfactory.h"
+#include "ctkiconfactory.h"
 #include "ctkstock.h"
 #include "ctkicontheme.h"
 #include "ctksizerequest.h"

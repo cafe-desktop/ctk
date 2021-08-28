@@ -19,7 +19,7 @@
 #include <stdlib.h>
 #include <cairo-gobject.h>
 #include "ctkcellrendererpixbuf.h"
-#include "deprecated/ctkiconfactory.h"
+#include "ctkiconfactory.h"
 #include "ctkiconhelperprivate.h"
 #include "ctkicontheme.h"
 #include "ctkintl.h"

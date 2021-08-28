@@ -38,7 +38,7 @@
 #include "ctkdnd.h"
 #include "ctkdragdest.h"
 #include "ctkicontheme.h"
-#include "deprecated/ctkiconfactory.h"
+#include "ctkiconfactory.h"
 #include "ctkimage.h"
 #include "ctklabel.h"
 #include "ctkliststore.h"

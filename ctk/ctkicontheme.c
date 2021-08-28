@@ -42,7 +42,7 @@
 #include "ctkcsspalettevalueprivate.h"
 #include "ctkcssrgbavalueprivate.h"
 #include "ctkdebug.h"
-#include "deprecated/ctkiconfactory.h"
+#include "ctkiconfactory.h"
 #include "ctkiconcache.h"
 #include "ctkintl.h"
 #include "ctkmain.h"

@@ -18,7 +18,7 @@
 #ifndef __CTK_ICON_FACTORY_PRIVATE_H__
 #define __CTK_ICON_FACTORY_PRIVATE_H__
 
-#include <ctk/deprecated/ctkiconfactory.h>
+#include <ctk/ctkiconfactory.h>
 
 GList *     _ctk_icon_factory_list_ids                  (void);
 void        _ctk_icon_factory_ensure_default_icons      (void);
