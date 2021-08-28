@@ -221,6 +221,7 @@ ctk_public_h_sources = 		\
 	ctkglarea.h		\
 	ctkgrid.h		\
 	ctkheaderbar.h		\
+	ctkiconfactory.h	\
 	ctkicontheme.h		\
 	ctkiconview.h		\
 	ctkimage.h		\
@@ -813,6 +814,7 @@ ctk_base_c_sources = 		\
 	ctkiconcache.c		\
 	ctkiconcachevalidator.c	\
 	ctkiconhelper.c		\
+	ctkiconfactory.c	\
 	ctkicontheme.c		\
 	ctkiconview.c		\
 	ctkimage.c		\
