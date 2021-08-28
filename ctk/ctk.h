@@ -124,6 +124,7 @@
 #include <ctk/ctkglarea.h>
 #include <ctk/ctkgrid.h>
 #include <ctk/ctkheaderbar.h>
+#include <ctk/ctkiconfactory.h>
 #include <ctk/ctkicontheme.h>
 #include <ctk/ctkiconview.h>
 #include <ctk/ctkimage.h>
@@ -206,6 +207,7 @@
 #include <ctk/ctkstack.h>
 #include <ctk/ctkstackswitcher.h>
 #include <ctk/ctkstatusbar.h>
+#include <ctk/ctkstock.h>
 #include <ctk/ctkstylecontext.h>
 #include <ctk/ctkstyleprovider.h>
 #include <ctk/ctkswitch.h>
@@ -265,7 +267,6 @@
 #include <ctk/deprecated/ctkhscale.h>
 #include <ctk/deprecated/ctkhscrollbar.h>
 #include <ctk/deprecated/ctkhseparator.h>
-#include <ctk/deprecated/ctkiconfactory.h>
 #include <ctk/deprecated/ctkimagemenuitem.h>
 #include <ctk/deprecated/ctkmisc.h>
 #include <ctk/deprecated/ctknumerableicon.h>
@@ -273,7 +274,6 @@
 #include <ctk/deprecated/ctkrc.h>
 #include <ctk/deprecated/ctkrecentaction.h>
 #include <ctk/deprecated/ctkstatusicon.h>
-#include <ctk/ctkstock.h>
 #include <ctk/deprecated/ctkstyle.h>
 #include <ctk/deprecated/ctkstyleproperties.h>
 #include <ctk/deprecated/ctksymboliccolor.h>

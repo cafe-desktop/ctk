@@ -28,7 +28,7 @@
 #include "config.h"
 
 #include "ctkcellrendererspinner.h"
-#include "deprecated/ctkiconfactory.h"
+#include "ctkiconfactory.h"
 #include "ctkicontheme.h"
 #include "ctkintl.h"
 #include "ctksettings.h"

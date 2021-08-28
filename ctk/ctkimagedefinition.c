@@ -19,7 +19,7 @@
 
 #include "ctkimagedefinitionprivate.h"
 
-#include "deprecated/ctkiconfactory.h"
+#include "ctkiconfactory.h"
 
 typedef struct _CtkImageDefinitionEmpty CtkImageDefinitionEmpty;
 typedef struct _CtkImageDefinitionPixbuf CtkImageDefinitionPixbuf;

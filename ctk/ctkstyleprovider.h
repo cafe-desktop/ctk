@@ -24,7 +24,7 @@
 
 #include <glib-object.h>
 #include <ctk/ctkenums.h>
-#include <ctk/deprecated/ctkiconfactory.h>
+#include <ctk/ctkiconfactory.h>
 #include <ctk/deprecated/ctkstyleproperties.h>
 #include <ctk/ctktypes.h>
 
