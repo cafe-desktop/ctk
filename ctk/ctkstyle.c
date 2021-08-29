@@ -24,8 +24,6 @@
 
 #include "config.h"
 
-#define CDK_DISABLE_DEPRECATION_WARNINGS
-
 #include <math.h>
 #include <stdlib.h>
 #include <string.h>
@@ -47,15 +45,12 @@
 
 /**
  * SECTION:ctkstyle
- * @Short_description: Deprecated object that holds style information
+ * @Short_description: Object that holds style information
  *     for widgets
  * @Title: CtkStyle
  *
  * A #CtkStyle object encapsulates the information that provides the look and
  * feel for a widget.
- *
- * > In CTK+ 3.0, CtkStyle has been deprecated and replaced by
- * > #CtkStyleContext.
  *
  * Each #CtkWidget has an associated #CtkStyle object that is used when
  * rendering that widget. Also, a #CtkStyle holds information for the five
@@ -828,8 +823,6 @@ ctk_style_constructed (GObject *object)
  * Creates a copy of the passed in #CtkStyle object.
  *
  * Returns: (transfer full): a copy of @style
- *
- * Deprecated:3.0: Use #CtkStyleContext instead
  */
 CtkStyle*
 ctk_style_copy (CtkStyle *style)
@@ -873,8 +866,6 @@ _ctk_style_new_for_path (CdkScreen     *screen,
  * Creates a new #CtkStyle.
  *
  * Returns: a new #CtkStyle.
- *
- * Deprecated: 3.0: Use #CtkStyleContext
  */
 CtkStyle*
 ctk_style_new (void)
@@ -931,8 +922,6 @@ ctk_style_has_context (CtkStyle *style)
  *   If the style is newly created, the style parameter
  *   will be unref'ed, and the new style will have
  *   a reference count belonging to the caller.
- *
- * Deprecated:3.0: Use ctk_widget_style_attach() instead
  */
 CtkStyle*
 ctk_style_attach (CtkStyle  *style,
@@ -950,8 +939,6 @@ ctk_style_attach (CtkStyle  *style,
  *
  * Detaches a style from a window. If the style is not attached
  * to any windows anymore, it is unrealized. See ctk_style_attach().
- *
- * Deprecated:3.0: Use #CtkStyleContext instead
  */
 void
 ctk_style_detach (CtkStyle *style)
@@ -969,8 +956,6 @@ ctk_style_detach (CtkStyle *style)
  * otherwise %NULL.
  *
  * Returns: (transfer none): icon set of @stock_id
- *
- * Deprecated:3.0: Use ctk_style_context_lookup_icon_set() instead
  */
 CtkIconSet*
 ctk_style_lookup_icon_set (CtkStyle   *style,
@@ -1004,8 +989,6 @@ ctk_style_lookup_icon_set (CtkStyle   *style,
  * Returns: %TRUE if the mapping was found.
  *
  * Since: 2.10
- *
- * Deprecated:3.0: Use ctk_style_context_lookup_color() instead
  **/
 gboolean
 ctk_style_lookup_color (CtkStyle   *style,
@@ -1046,8 +1029,6 @@ ctk_style_lookup_color (CtkStyle   *style,
  * 
  * Sets the background of @window to the background color or pixmap
  * specified by @style for the given state.
- *
- * Deprecated:3.0: Use ctk_style_context_set_background() instead
  */
 void
 ctk_style_set_background (CtkStyle    *style,
@@ -1299,8 +1280,6 @@ ctk_style_real_set_background (CtkStyle    *style,
  *
  * Returns: (transfer full): a newly-created #GdkPixbuf
  *     containing the rendered icon
- *
- * Deprecated:3.0: Use ctk_render_icon_pixbuf() instead
  */
 GdkPixbuf *
 ctk_style_render_icon (CtkStyle            *style,
@@ -1336,8 +1315,6 @@ ctk_style_render_icon (CtkStyle            *style,
  * @y:
  * @width:
  * @height:
- *
- * Deprecated:3.0: Use #CtkStyleContext instead
  */
 void
 ctk_style_apply_default_background (CtkStyle          *style,
@@ -3135,8 +3112,6 @@ hls_to_rgb (gdouble *h,
  *
  * Draws a horizontal line from (@x1, @y) to (@x2, @y) in @cr
  * using the given style and state.
- *
- * Deprecated:3.0: Use ctk_render_line() instead
  **/
 void
 ctk_paint_hline (CtkStyle           *style,
@@ -3174,8 +3149,6 @@ ctk_paint_hline (CtkStyle           *style,
  *
  * Draws a vertical line from (@x, @y1_) to (@x, @y2_) in @cr
  * using the given style and state.
- *
- * Deprecated:3.0: Use ctk_render_line() instead
  */
 void
 ctk_paint_vline (CtkStyle           *style,
@@ -3215,8 +3188,6 @@ ctk_paint_vline (CtkStyle           *style,
  *
  * Draws a shadow around the given rectangle in @cr
  * using the given style and state and shadow type.
- *
- * Deprecated:3.0: Use ctk_render_frame() instead
  */
 void
 ctk_paint_shadow (CtkStyle           *style,
@@ -3262,8 +3233,6 @@ ctk_paint_shadow (CtkStyle           *style,
  *
  * Draws an arrow in the given rectangle on @cr using the given
  * parameters. @arrow_type determines the direction of the arrow.
- *
- * Deprecated:3.0: Use ctk_render_arrow() instead
  */
 void
 ctk_paint_arrow (CtkStyle           *style,
@@ -3309,8 +3278,6 @@ ctk_paint_arrow (CtkStyle           *style,
  *
  * Draws a diamond in the given rectangle on @window using the given
  * parameters.
- *
- * Deprecated:3.0: Use cairo instead
  */
 void
 ctk_paint_diamond (CtkStyle           *style,
@@ -3353,8 +3320,6 @@ ctk_paint_diamond (CtkStyle           *style,
  * @height: the height of the box
  *
  * Draws a box on @cr with the given parameters.
- *
- * Deprecated:3.0: Use ctk_render_frame() and ctk_render_background() instead
  */
 void
 ctk_paint_box (CtkStyle           *style,
@@ -3395,8 +3360,6 @@ ctk_paint_box (CtkStyle           *style,
  * @height: the height of the box
  *
  * Draws a flat box on @cr with the given parameters.
- *
- * Deprecated:3.0: Use ctk_render_frame() and ctk_render_background() instead
  */
 void
 ctk_paint_flat_box (CtkStyle           *style,
@@ -3440,8 +3403,6 @@ ctk_paint_flat_box (CtkStyle           *style,
  *
  * Draws a check button indicator in the given rectangle on @cr with
  * the given parameters.
- *
- * Deprecated:3.0: Use ctk_render_check() instead
  */
 void
 ctk_paint_check (CtkStyle           *style,
@@ -3483,8 +3444,6 @@ ctk_paint_check (CtkStyle           *style,
  *
  * Draws a radio button indicator in the given rectangle on @cr with
  * the given parameters.
- *
- * Deprecated:3.0: Use ctk_render_option() instead
  */
 void
 ctk_paint_option (CtkStyle           *style,
@@ -3526,8 +3485,6 @@ ctk_paint_option (CtkStyle           *style,
  *
  * Draws an option menu tab (i.e. the up and down pointing arrows)
  * in the given rectangle on @cr using the given parameters.
- *
- * Deprecated:3.0: Use cairo instead
  */
 void
 ctk_paint_tab (CtkStyle           *style,
@@ -3573,8 +3530,6 @@ ctk_paint_tab (CtkStyle           *style,
  * Draws a shadow around the given rectangle in @cr
  * using the given style and state and shadow type, leaving a
  * gap in one side.
- *
- * Deprecated:3.0: Use ctk_render_frame_gap() instead
  */
 void
 ctk_paint_shadow_gap (CtkStyle           *style,
@@ -3624,8 +3579,6 @@ ctk_paint_shadow_gap (CtkStyle           *style,
  *
  * Draws a box in @cr using the given style and state and shadow type,
  * leaving a gap in one side.
- *
- * Deprecated:3.0: Use ctk_render_frame_gap() instead
  */
 void
 ctk_paint_box_gap (CtkStyle           *style,
@@ -3672,8 +3625,6 @@ ctk_paint_box_gap (CtkStyle           *style,
  * @gap_side: the side on to which the extension is attached
  *
  * Draws an extension, i.e. a notebook tab.
- *
- * Deprecated:3.0: Use ctk_render_extension() instead
  **/
 void
 ctk_paint_extension (CtkStyle           *style,
@@ -3717,8 +3668,6 @@ ctk_paint_extension (CtkStyle           *style,
  *
  * Draws a focus indicator around the given rectangle on @cr using the
  * given style.
- *
- * Deprecated:3.0: Use ctk_render_focus() instead
  */
 void
 ctk_paint_focus (CtkStyle           *style,
@@ -3762,8 +3711,6 @@ ctk_paint_focus (CtkStyle           *style,
  *
  * Draws a slider in the given rectangle on @cr using the
  * given style and orientation.
- *
- * Deprecated:3.0: Use ctk_render_slider() instead
  **/
 void
 ctk_paint_slider (CtkStyle           *style,
@@ -3808,8 +3755,6 @@ ctk_paint_slider (CtkStyle           *style,
  * @orientation: the orientation of the handle
  *
  * Draws a handle as used in #CtkHandleBox and #CtkPaned.
- *
- * Deprecated:3.0: Use ctk_render_handle() instead
  **/
 void
 ctk_paint_handle (CtkStyle           *style,
@@ -3861,8 +3806,6 @@ ctk_paint_handle (CtkStyle           *style,
  * likely not useful.) The expander is expander_size pixels tall
  * in the collapsed position and expander_size pixels wide in the
  * expanded position.
- *
- * Deprecated:3.0: Use ctk_render_expander() instead
  **/
 void
 ctk_paint_expander (CtkStyle           *style,
@@ -3901,8 +3844,6 @@ ctk_paint_expander (CtkStyle           *style,
  * @layout: the layout to draw
  *
  * Draws a layout on @cr using the given parameters.
- *
- * Deprecated:3.0: Use ctk_render_layout() instead
  **/
 void
 ctk_paint_layout (CtkStyle           *style,
@@ -3943,8 +3884,6 @@ ctk_paint_layout (CtkStyle           *style,
  *
  * Draws a resize grip in the given rectangle on @cr using the given
  * parameters.
- *
- * Deprecated:3.0: Use ctk_render_handle() instead
  */
 void
 ctk_paint_resize_grip (CtkStyle           *style,
@@ -3984,9 +3923,6 @@ ctk_paint_resize_grip (CtkStyle           *style,
  * @height: the height of the rectangle in which to draw the spinner
  *
  * Draws a spinner on @window using the given parameters.
- *
- * Deprecated: 3.0: Use ctk_render_icon() and the #CtkStyleContext
- *   you are drawing instead
  */
 void
 ctk_paint_spinner (CtkStyle           *style,
@@ -4041,10 +3977,6 @@ ctk_widget_get_default_style_for_screen (CdkScreen *screen)
  *
  * Returns: (transfer none): the default style. This #CtkStyle
  *     object is owned by CTK+ and should not be modified or freed.
- *
- * Deprecated:3.0: Use #CtkStyleContext instead, and
- *     ctk_css_provider_get_default() to obtain a #CtkStyleProvider
- *     with the default widget style information.
  */
 CtkStyle *
 ctk_widget_get_default_style (void)
@@ -4082,8 +4014,6 @@ ctk_widget_get_default_style (void)
  * (finally #CtkWidget) would attach the style itself.
  *
  * Since: 2.20
- *
- * Deprecated: 3.0: This step is unnecessary with #CtkStyleContext.
  **/
 void
 ctk_widget_style_attach (CtkWidget *widget)
@@ -4102,8 +4032,6 @@ ctk_widget_style_attach (CtkWidget *widget)
  *   mechanism, %FALSE otherwise.
  *
  * Since: 2.20
- *
- * Deprecated:3.0: Use #CtkStyleContext instead
  **/
 gboolean
 ctk_widget_has_rc_style (CtkWidget *widget)
@@ -4122,8 +4050,6 @@ ctk_widget_has_rc_style (CtkWidget *widget)
  *
  * Used to set the #CtkStyle for a widget (@widget->style). Since
  * CTK 3, this function does nothing, the passed in style is ignored.
- *
- * Deprecated:3.0: Use #CtkStyleContext instead
  */
 void
 ctk_widget_set_style (CtkWidget *widget,
@@ -4141,8 +4067,6 @@ ctk_widget_set_style (CtkWidget *widget,
  * Not a very useful function; most of the time, if you
  * want the style, the widget is realized, and realized
  * widgets are guaranteed to have a style already.
- *
- * Deprecated:3.0: Use #CtkStyleContext instead
  */
 void
 ctk_widget_ensure_style (CtkWidget *widget)
@@ -4165,8 +4089,6 @@ ctk_widget_ensure_style (CtkWidget *widget)
  * Simply an accessor function that returns @widget->style.
  *
  * Returns: (transfer none): the widget’s #CtkStyle
- *
- * Deprecated:3.0: Use #CtkStyleContext instead
  */
 CtkStyle*
 ctk_widget_get_style (CtkWidget *widget)
@@ -4210,8 +4132,6 @@ ctk_widget_get_style (CtkWidget *widget)
  * if you first call ctk_widget_modify_style(), subsequent calls
  * to such functions ctk_widget_modify_fg() will have a cumulative
  * effect with the initial modifications.
- *
- * Deprecated:3.0: Use #CtkStyleContext with a custom #CtkStyleProvider instead
  */
 void
 ctk_widget_modify_style (CtkWidget      *widget,
@@ -4247,8 +4167,6 @@ ctk_widget_modify_style (CtkWidget      *widget,
  *     This rc style is owned by the widget. If you want to keep a
  *     pointer to value this around, you must add a refcount using
  *     g_object_ref().
- *
- * Deprecated:3.0: Use #CtkStyleContext with a custom #CtkStyleProvider instead
  */
 CtkRcStyle *
 ctk_widget_get_modifier_style (CtkWidget *widget)
@@ -4319,8 +4237,6 @@ ctk_widget_modify_color_component (CtkWidget      *widget,
  *
  * All other style values are left untouched.
  * See also ctk_widget_modify_style().
- *
- * Deprecated:3.0: Use ctk_widget_override_color() instead
  */
 void
 ctk_widget_modify_fg (CtkWidget      *widget,
@@ -4387,8 +4303,6 @@ ctk_widget_modify_fg (CtkWidget      *widget,
  * > background color on their parent; if you want to set the background
  * > of a rectangular area around a label, try placing the label in
  * > a #CtkEventBox widget and setting the background color on that.
- *
- * Deprecated:3.0: Use ctk_widget_override_background_color() instead
  */
 void
 ctk_widget_modify_bg (CtkWidget      *widget,
@@ -4448,8 +4362,6 @@ ctk_widget_modify_bg (CtkWidget      *widget,
  * base color (see ctk_widget_modify_base()) for widgets such
  * as #CtkEntry and #CtkTextView.
  * See also ctk_widget_modify_style().
- *
- * Deprecated:3.0: Use ctk_widget_override_color() instead
  */
 void
 ctk_widget_modify_text (CtkWidget      *widget,
@@ -4485,8 +4397,6 @@ ctk_widget_modify_text (CtkWidget      *widget,
  * > base color on their parent; if you want to set the background
  * > of a rectangular area around a label, try placing the label in
  * > a #CtkEventBox widget and setting the base color on that.
- *
- * Deprecated:3.0: Use ctk_widget_override_background_color() instead
  */
 void
 ctk_widget_modify_base (CtkWidget      *widget,
@@ -4517,8 +4427,6 @@ ctk_widget_modify_base (CtkWidget      *widget,
  * See also ctk_widget_modify_style().
  *
  * Since: 2.12
- *
- * Deprecated: 3.0: Use ctk_widget_override_cursor() instead.
  */
 void
 ctk_widget_modify_cursor (CtkWidget      *widget,
@@ -4552,8 +4460,6 @@ ctk_widget_modify_cursor (CtkWidget      *widget,
  *
  * All other style values are left untouched.
  * See also ctk_widget_modify_style().
- *
- * Deprecated:3.0: Use ctk_widget_override_font() instead
  */
 void
 ctk_widget_modify_font (CtkWidget            *widget,
@@ -4573,8 +4479,6 @@ ctk_widget_modify_font (CtkWidget            *widget,
  * for the currently loaded RC file settings.
  *
  * This function is not useful for applications.
- *
- * Deprecated:3.0: Use #CtkStyleContext instead, and ctk_widget_reset_style()
  */
 void
 ctk_widget_reset_rc_styles (CtkWidget *widget)
@@ -4606,8 +4510,6 @@ ctk_widget_reset_rc_styles (CtkWidget *widget)
  * file. @path_reversed_p fills in the path in reverse order,
  * i.e. starting with @widget’s name instead of starting with the name
  * of @widget’s outermost ancestor.
- *
- * Deprecated:3.0: Use ctk_widget_get_path() instead
  **/
 void
 ctk_widget_path (CtkWidget *widget,
@@ -4676,8 +4578,6 @@ ctk_widget_path (CtkWidget *widget,
  *
  * Same as ctk_widget_path(), but always uses the name of a widget’s type,
  * never uses a custom name set with ctk_widget_set_name().
- *
- * Deprecated:3.0: Use ctk_widget_get_path() instead
  **/
 void
 ctk_widget_class_path (CtkWidget *widget,
@@ -4755,8 +4655,6 @@ ctk_widget_class_path (CtkWidget *widget,
  *
  * Returns: (nullable) (transfer full): a new pixbuf, or %NULL if the
  *     stock ID wasn’t known
- *
- * Deprecated: 3.0: Use ctk_widget_render_icon_pixbuf() instead.
  **/
 GdkPixbuf*
 ctk_widget_render_icon (CtkWidget      *widget,
