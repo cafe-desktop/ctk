@@ -939,11 +939,11 @@ msgstr "Titlu"
 msgid "The title of this tray icon"
 msgstr "Titlul aceste iconițe de stare"
 
-#: ctk/deprecated/ctkstyle.c:471
+#: ctk/ctkstyle.c:471
 msgid "Style context"
 msgstr "Context stil"
 
-#: ctk/deprecated/ctkstyle.c:472
+#: ctk/ctkstyle.c:472
 msgid "CtkStyleContext to get style from"
 msgstr "Obiectul CtkStyleContext din care se obține stilul"
 

@@ -954,11 +954,11 @@ msgstr "Títol"
 msgid "The title of this tray icon"
 msgstr "El títol d'esta icona de l'àrea de notificació"
 
-#: ctk/deprecated/ctkstyle.c:471
+#: ctk/ctkstyle.c:471
 msgid "Style context"
 msgstr "Context d'estil"
 
-#: ctk/deprecated/ctkstyle.c:472
+#: ctk/ctkstyle.c:472
 msgid "CtkStyleContext to get style from"
 msgstr "El CtkStyleContext d'on agafar l'estil"
 

@@ -305,11 +305,11 @@ msgid ""
 "detached."
 msgstr ""
 
-#: ../ctk/deprecated/ctkstyle.c:474
+#: ../ctk/ctkstyle.c:474
 msgid "Style context"
 msgstr ""
 
-#: ../ctk/deprecated/ctkstyle.c:475
+#: ../ctk/ctkstyle.c:475
 msgid "CtkStyleContext to get style from"
 msgstr ""
 

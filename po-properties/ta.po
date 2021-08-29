@@ -892,11 +892,11 @@ msgstr "தலைப்பு"
 msgid "The title of this tray icon"
 msgstr "தட்டு சின்னத்தின் தலைப்பு"
 
-#: ../ctk/deprecated/ctkstyle.c:469
+#: ../ctk/ctkstyle.c:469
 msgid "Style context"
 msgstr "பாணி சூழல்"
 
-#: ../ctk/deprecated/ctkstyle.c:470
+#: ../ctk/ctkstyle.c:470
 msgid "CtkStyleContext to get style from"
 msgstr "இதிலிருந்த் CtkStyleContext க்கு பாணியை பெறவும்"
 

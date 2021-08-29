@@ -304,11 +304,11 @@ msgid ""
 "detached."
 msgstr "تۇتقۇنىڭ تارماق تىزگىنىنى ئىپادىلەشكە ئىشلىتىدىغىنى قوشۇمچىمۇ ياكى ئايرىلغان ئىككىلىك قىممەتمۇ"
 
-#: ../ctk/deprecated/ctkstyle.c:474
+#: ../ctk/ctkstyle.c:474
 msgid "Style context"
 msgstr "مەزمۇن ئۇسلۇبى"
 
-#: ../ctk/deprecated/ctkstyle.c:475
+#: ../ctk/ctkstyle.c:475
 msgid "CtkStyleContext to get style from"
 msgstr "CtkStyleContext ئۇسلۇبقا ئېرىشىدىغان ئورۇن"
 

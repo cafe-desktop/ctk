@@ -926,11 +926,11 @@ msgstr "Наслов"
 msgid "The title of this tray icon"
 msgstr "Наслов ове иконице фиоке"
 
-#: ctk/deprecated/ctkstyle.c:471
+#: ctk/ctkstyle.c:471
 msgid "Style context"
 msgstr "Садржај стила"
 
-#: ctk/deprecated/ctkstyle.c:472
+#: ctk/ctkstyle.c:472
 msgid "CtkStyleContext to get style from"
 msgstr "Из ког садржаја Гтк стила ће бити узет стил"
 

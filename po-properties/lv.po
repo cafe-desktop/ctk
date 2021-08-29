@@ -917,11 +917,11 @@ msgstr "Virsraksts"
 msgid "The title of this tray icon"
 msgstr "Šīs paplātes ikonas virsraksts"
 
-#: ctk/deprecated/ctkstyle.c:471
+#: ctk/ctkstyle.c:471
 msgid "Style context"
 msgstr "Stila konteksts"
 
-#: ctk/deprecated/ctkstyle.c:472
+#: ctk/ctkstyle.c:472
 msgid "CtkStyleContext to get style from"
 msgstr "CtkStyleContext, no kā iegūt stilu"
 

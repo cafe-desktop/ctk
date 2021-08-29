@@ -29,7 +29,7 @@
 #include "ctksizegroup-private.h"
 #include "ctksizerequestcacheprivate.h"
 #include "ctkwidgetprivate.h"
-#include "deprecated/ctkstyle.h"
+#include "ctkstyle.h"
 
 
 #ifdef G_ENABLE_CONSISTENCY_CHECKS

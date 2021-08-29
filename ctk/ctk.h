@@ -208,9 +208,9 @@
 #include <ctk/ctkstackswitcher.h>
 #include <ctk/ctkstatusbar.h>
 #include <ctk/ctkstock.h>
-#include <ctk/ctkstyle.h>
 #include <ctk/ctkstylecontext.h>
 #include <ctk/ctkstyleprovider.h>
+#include <ctk/ctkstyle.h>
 #include <ctk/ctkswitch.h>
 #include <ctk/ctktextattributes.h>
 #include <ctk/ctktextbuffer.h>

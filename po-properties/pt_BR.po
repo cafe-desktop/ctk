@@ -935,11 +935,11 @@ msgstr "Título"
 msgid "The title of this tray icon"
 msgstr "O título desse ícone de bandeja"
 
-#: ctk/deprecated/ctkstyle.c:471
+#: ctk/ctkstyle.c:471
 msgid "Style context"
 msgstr "Contexto de estilo"
 
-#: ctk/deprecated/ctkstyle.c:472
+#: ctk/ctkstyle.c:472
 msgid "CtkStyleContext to get style from"
 msgstr "CtkStyleContext para obter o estilo"
 

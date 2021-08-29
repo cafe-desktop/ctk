@@ -939,11 +939,11 @@ msgstr "Título"
 msgid "The title of this tray icon"
 msgstr "O título desta icona na barra de tarefas"
 
-#: ctk/deprecated/ctkstyle.c:471
+#: ctk/ctkstyle.c:471
 msgid "Style context"
 msgstr "Contexto do estilo"
 
-#: ctk/deprecated/ctkstyle.c:472
+#: ctk/ctkstyle.c:472
 msgid "CtkStyleContext to get style from"
 msgstr "CtkStyleContext de onde obter o estilo"
 

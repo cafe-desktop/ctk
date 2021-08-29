@@ -922,11 +922,11 @@ msgstr "Cím"
 msgid "The title of this tray icon"
 msgstr "A tálcaikon mérete"
 
-#: ctk/deprecated/ctkstyle.c:471
+#: ctk/ctkstyle.c:471
 msgid "Style context"
 msgstr "Stíluskörnyezet"
 
-#: ctk/deprecated/ctkstyle.c:472
+#: ctk/ctkstyle.c:472
 msgid "CtkStyleContext to get style from"
 msgstr "A stílus lekéréséhez használt CtkStyleContext"
 

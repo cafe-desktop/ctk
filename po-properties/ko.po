@@ -906,11 +906,11 @@ msgstr "제목"
 msgid "The title of this tray icon"
 msgstr "이 트레이 아이콘의 제목"
 
-#: ctk/deprecated/ctkstyle.c:471
+#: ctk/ctkstyle.c:471
 msgid "Style context"
 msgstr "스타일 컨텍스트"
 
-#: ctk/deprecated/ctkstyle.c:472
+#: ctk/ctkstyle.c:472
 msgid "CtkStyleContext to get style from"
 msgstr "스타일을 읽어 올 CtkStyleContext"
 

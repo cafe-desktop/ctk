@@ -914,11 +914,11 @@ msgstr "Başlık"
 msgid "The title of this tray icon"
 msgstr "Simgenin başlığı"
 
-#: ctk/deprecated/ctkstyle.c:471
+#: ctk/ctkstyle.c:471
 msgid "Style context"
 msgstr "Biçem içeriği"
 
-#: ctk/deprecated/ctkstyle.c:472
+#: ctk/ctkstyle.c:472
 msgid "CtkStyleContext to get style from"
 msgstr "Biçem içeriği almak için CtkStyleContext"
 

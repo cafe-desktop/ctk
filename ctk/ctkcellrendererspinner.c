@@ -39,7 +39,7 @@
 #define CDK_DEPRECATED
 #define CDK_DEPRECATED_FOR(f)
 
-#include "deprecated/ctkstyle.h"
+#include "ctkstyle.h"
 
 
 /**

@@ -893,11 +893,11 @@ msgstr "Tiêu đề"
 msgid "The title of this tray icon"
 msgstr "Tiêu đề của biểu tượng khay này"
 
-#: ctk/deprecated/ctkstyle.c:471
+#: ctk/ctkstyle.c:471
 msgid "Style context"
 msgstr "Ngữ cảnh kiểu dáng"
 
-#: ctk/deprecated/ctkstyle.c:472
+#: ctk/ctkstyle.c:472
 msgid "CtkStyleContext to get style from"
 msgstr "CtkStyleContext để lấy kiểu dáng từ đó"
 
