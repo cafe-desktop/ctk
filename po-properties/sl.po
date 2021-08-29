@@ -927,11 +927,11 @@ msgstr "Naziv"
 msgid "The title of this tray icon"
 msgstr "Naslov ikone sistemske vrstice"
 
-#: ctk/deprecated/ctkstyle.c:471
+#: ctk/ctkstyle.c:471
 msgid "Style context"
 msgstr "Slogovna vsebina"
 
-#: ctk/deprecated/ctkstyle.c:472
+#: ctk/ctkstyle.c:472
 msgid "CtkStyleContext to get style from"
 msgstr "Predmet CtkStyleContext, ki vsebuje podatek sloga"
 

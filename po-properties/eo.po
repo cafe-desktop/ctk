@@ -902,11 +902,11 @@ msgstr "Titolo"
 msgid "The title of this tray icon"
 msgstr "Titolo de ĉi tiu taskopleta bildsimbolo"
 
-#: ctk/deprecated/ctkstyle.c:471
+#: ctk/ctkstyle.c:471
 msgid "Style context"
 msgstr "Stila situacio"
 
-#: ctk/deprecated/ctkstyle.c:472
+#: ctk/ctkstyle.c:472
 msgid "CtkStyleContext to get style from"
 msgstr "CtkStyleContext dononta stilon"
 

@@ -923,11 +923,11 @@ msgstr "Заголовок"
 msgid "The title of this tray icon"
 msgstr "Назва піктограми"
 
-#: ctk/deprecated/ctkstyle.c:471
+#: ctk/ctkstyle.c:471
 msgid "Style context"
 msgstr "Стиль контексту"
 
-#: ctk/deprecated/ctkstyle.c:472
+#: ctk/ctkstyle.c:472
 msgid "CtkStyleContext to get style from"
 msgstr "CtkStyleContext для отримання стилю з"
 

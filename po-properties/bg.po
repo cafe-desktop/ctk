@@ -314,11 +314,11 @@ msgstr ""
 "Булева стойност, която указва дали детето на манипулатора е свързано или "
 "отделено."
 
-#: ../ctk/deprecated/ctkstyle.c:474
+#: ../ctk/ctkstyle.c:474
 msgid "Style context"
 msgstr "Контекст за стила"
 
-#: ../ctk/deprecated/ctkstyle.c:475
+#: ../ctk/ctkstyle.c:475
 msgid "CtkStyleContext to get style from"
 msgstr "CtkStyleContext, от който да се вземе стилът"
 

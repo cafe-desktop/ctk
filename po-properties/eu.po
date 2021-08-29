@@ -910,11 +910,11 @@ msgstr "Titulua"
 msgid "The title of this tray icon"
 msgstr "Erretiluko ikono honen titulua"
 
-#: ctk/deprecated/ctkstyle.c:471
+#: ctk/ctkstyle.c:471
 msgid "Style context"
 msgstr "Estiloaren testuingurua"
 
-#: ctk/deprecated/ctkstyle.c:472
+#: ctk/ctkstyle.c:472
 msgid "CtkStyleContext to get style from"
 msgstr "CtkStyleContext (hortik estiloa eskuratzeko)"
 

@@ -909,11 +909,11 @@ msgstr "ਟਾਈਟਲ"
 msgid "The title of this tray icon"
 msgstr "ਇਹ ਟਰੇ ਆਈਕਾਨ ਦਾ ਟਾਈਟਲ"
 
-#: ctk/deprecated/ctkstyle.c:471
+#: ctk/ctkstyle.c:471
 msgid "Style context"
 msgstr "ਸਟਾਈਲ ਪਰਸੰਦ"
 
-#: ctk/deprecated/ctkstyle.c:472
+#: ctk/ctkstyle.c:472
 msgid "CtkStyleContext to get style from"
 msgstr "ਇੱਥੋਂ ਸਟਾਈਲ ਲੈਣ ਲਈ CtkStyleContext "
 

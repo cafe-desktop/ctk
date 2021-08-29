@@ -942,11 +942,11 @@ msgstr "Otsikko"
 msgid "The title of this tray icon"
 msgstr "Tämän ilmoitusalueen otsikko"
 
-#: ctk/deprecated/ctkstyle.c:471
+#: ctk/ctkstyle.c:471
 msgid "Style context"
 msgstr ""
 
-#: ctk/deprecated/ctkstyle.c:472
+#: ctk/ctkstyle.c:472
 msgid "CtkStyleContext to get style from"
 msgstr ""
 

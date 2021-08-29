@@ -310,6 +310,7 @@ ctk_public_h_sources = 		\
 	ctkstock.h		\
 	ctkstylecontext.h	\
 	ctkstyleprovider.h	\
+	ctkstyle.h		\
 	ctkswitch.h		\
 	ctktestutils.h		\
 	ctktextattributes.h	\
@@ -929,6 +930,7 @@ ctk_base_c_sources = 		\
 	ctkstyleproperty.c	\
 	ctkstyleprovider.c	\
 	ctkstyleproviderprivate.c	\
+	ctkstyle.c		\
 	ctkswitch.c		\
 	ctktestutils.c		\
 	ctktextattributes.c	\

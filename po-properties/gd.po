@@ -943,11 +943,11 @@ msgstr "Tiotal"
 msgid "The title of this tray icon"
 msgstr "Tiotal na h-ìomhaigheige treidhe seo"
 
-#: ctk/deprecated/ctkstyle.c:471
+#: ctk/ctkstyle.c:471
 msgid "Style context"
 msgstr "Co-theacsa na stoidhle"
 
-#: ctk/deprecated/ctkstyle.c:472
+#: ctk/ctkstyle.c:472
 msgid "CtkStyleContext to get style from"
 msgstr "An CtkStyleContext a gheibhear an stoidhle uaithe"
 

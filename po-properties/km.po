@@ -308,11 +308,11 @@ msgid ""
 "detached."
 msgstr "តម្លៃ​ប៊ូលីន​ដែល​បញ្ជាក់ ថា​តើ​ធាតុ​ក្រាហ្វិក​រង​របស់​ប្រអប់​គ្រប់គ្រង​ត្រូវ​បាន​ភ្ជាប់ ឬ​​បាន​ផ្ដាច់ ។"
 
-#: ../ctk/deprecated/ctkstyle.c:474
+#: ../ctk/ctkstyle.c:474
 msgid "Style context"
 msgstr "បរិបទ​រចនាប័ទ្ម"
 
-#: ../ctk/deprecated/ctkstyle.c:475
+#: ../ctk/ctkstyle.c:475
 msgid "CtkStyleContext to get style from"
 msgstr "CtkStyleContext សម្រាប់​ទទួល​យក​រចនាប័ទ្ម​ពី"
 

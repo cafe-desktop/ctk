@@ -958,11 +958,11 @@ msgstr "Τίτλος"
 msgid "The title of this tray icon"
 msgstr "Ο τίτλος αυτού του εικονιδίου περιοχής ειδοποιήσεων"
 
-#: ctk/deprecated/ctkstyle.c:471
+#: ctk/ctkstyle.c:471
 msgid "Style context"
 msgstr "Στυλ περιεχομένου"
 
-#: ctk/deprecated/ctkstyle.c:472
+#: ctk/ctkstyle.c:472
 msgid "CtkStyleContext to get style from"
 msgstr "CtkStyleContext από το οποίο θα ληφθεί το στυλ"
 

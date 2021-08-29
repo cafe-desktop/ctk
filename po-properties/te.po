@@ -319,11 +319,11 @@ msgstr ""
 "సంభాలికపెట్టె శిశువు అనుబంధించబడివుందో లేదా విడదీయబడివుందో బులియన్‌విలువ "
 "తెలుపుతుంది."
 
-#: ../ctk/deprecated/ctkstyle.c:474
+#: ../ctk/ctkstyle.c:474
 msgid "Style context"
 msgstr "శైలి సందర్భం"
 
-#: ../ctk/deprecated/ctkstyle.c:475
+#: ../ctk/ctkstyle.c:475
 msgid "CtkStyleContext to get style from"
 msgstr "ctkశైలిసారం  నుండి శైలి పొందుటకు "
 

@@ -595,11 +595,11 @@ msgstr "Amostrar os numeros"
 msgid "Whether the items should be displayed with a number"
 msgstr "Indica si os elementos han d'amostrar-se con un numero"
 
-#: ../ctk/deprecated/ctkstyle.c:470
+#: ../ctk/ctkstyle.c:470
 msgid "Style context"
 msgstr "Estilo d'o contexto"
 
-#: ../ctk/deprecated/ctkstyle.c:471
+#: ../ctk/ctkstyle.c:471
 msgid "CtkStyleContext to get style from"
 msgstr "CtkStyleContext d'o que obtener o estilo"
 

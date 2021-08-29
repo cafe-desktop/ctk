@@ -921,11 +921,11 @@ msgstr "Titulek"
 msgid "The title of this tray icon"
 msgstr "Titulek této ikony v oznamovací oblasti"
 
-#: ctk/deprecated/ctkstyle.c:471
+#: ctk/ctkstyle.c:471
 msgid "Style context"
 msgstr "Kontext stylu"
 
-#: ctk/deprecated/ctkstyle.c:472
+#: ctk/ctkstyle.c:472
 msgid "CtkStyleContext to get style from"
 msgstr "CtkStyleContext, ze kterého získat styl"
 

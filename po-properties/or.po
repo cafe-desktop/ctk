@@ -323,11 +323,11 @@ msgstr ""
 "ଗୋଟିଏ ବୁଲିଆନ ମୂଲ୍ୟ ସୂଚାଇଥାଏ ଯେ କାଳେ ନିୟନ୍ତ୍ରଣ ବାକ୍ସର ନିମ୍ନସ୍ତର ସଂଲଗ୍ନ ଅଛି "
 "ଅଥବା ପୃଥକ ଅଛି।"
 
-#: ../ctk/deprecated/ctkstyle.c:473
+#: ../ctk/ctkstyle.c:473
 msgid "Style context"
 msgstr "ଶୈଳୀ ପ୍ରସଙ୍ଗ"
 
-#: ../ctk/deprecated/ctkstyle.c:474
+#: ../ctk/ctkstyle.c:474
 msgid "CtkStyleContext to get style from"
 msgstr "ଶୈଳୀ ପାଇବା ପାଇଁ CtkStyleContext"
 

@@ -306,11 +306,11 @@ msgstr ""
 "Logička vrijednost koja ukazuje da li je dijete kućice sa ručkom zakačeno "
 "ili otkačeno."
 
-#: ../ctk/deprecated/ctkstyle.c:474
+#: ../ctk/ctkstyle.c:474
 msgid "Style context"
 msgstr "Kontekst stila"
 
-#: ../ctk/deprecated/ctkstyle.c:475
+#: ../ctk/ctkstyle.c:475
 msgid "CtkStyleContext to get style from"
 msgstr "Iz kog konteksta Ctk stila će biti uzet stil"
 

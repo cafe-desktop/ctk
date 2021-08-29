@@ -881,11 +881,11 @@ msgstr "શીર્ષક"
 msgid "The title of this tray icon"
 msgstr "આ ટ્રે ચિહ્નનું શિર્ષક"
 
-#: ../ctk/deprecated/ctkstyle.c:469
+#: ../ctk/ctkstyle.c:469
 msgid "Style context"
 msgstr "શૈલી સંદર્ભ"
 
-#: ../ctk/deprecated/ctkstyle.c:470
+#: ../ctk/ctkstyle.c:470
 msgid "CtkStyleContext to get style from"
 msgstr "તેમાંથી શૈલીને મેળવવા માટે CtkStyleContext"
 

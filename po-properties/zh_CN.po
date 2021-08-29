@@ -904,11 +904,11 @@ msgstr "标题"
 msgid "The title of this tray icon"
 msgstr "此托盘图标的标题"
 
-#: ctk/deprecated/ctkstyle.c:471
+#: ctk/ctkstyle.c:471
 msgid "Style context"
 msgstr "风格上下文"
 
-#: ctk/deprecated/ctkstyle.c:472
+#: ctk/ctkstyle.c:472
 msgid "CtkStyleContext to get style from"
 msgstr "获得 CtkStyleContext 的风格"
 

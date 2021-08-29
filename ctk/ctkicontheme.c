@@ -57,7 +57,7 @@
 #define CDK_DEPRECATED
 #define CDK_DEPRECATED_FOR(f)
 
-#include "deprecated/ctkstyle.h"
+#include "ctkstyle.h"
 
 /* this is in case round() is not provided by the compiler, 
  * such as in the case of C89 compilers, like MSVC

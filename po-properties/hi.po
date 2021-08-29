@@ -318,11 +318,11 @@ msgid ""
 msgstr ""
 "यह बताते हुए एक बुलियन मान कि क्या नियंत्रणपेटी संतति संलग्न या विलग है."
 
-#: ../ctk/deprecated/ctkstyle.c:474
+#: ../ctk/ctkstyle.c:474
 msgid "Style context"
 msgstr "शैली संदर्भ"
 
-#: ../ctk/deprecated/ctkstyle.c:475
+#: ../ctk/ctkstyle.c:475
 msgid "CtkStyleContext to get style from"
 msgstr "CtkStyleContext जिससे शैली प्राप्त करें"
 

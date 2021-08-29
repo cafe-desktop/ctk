@@ -574,11 +574,11 @@ msgstr "Нишон додани рақамҳо"
 msgid "Whether the items should be displayed with a number"
 msgstr "Оё объектҳо бояд бо рақам намоиш дода шаванд"
 
-#: ../ctk/deprecated/ctkstyle.c:469
+#: ../ctk/ctkstyle.c:469
 msgid "Style context"
 msgstr "Таносуби сабк"
 
-#: ../ctk/deprecated/ctkstyle.c:470
+#: ../ctk/ctkstyle.c:470
 msgid "CtkStyleContext to get style from"
 msgstr "CtkStyleContext барои гирифтани сабк аз"
 

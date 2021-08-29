@@ -918,11 +918,11 @@ msgstr "Titul"
 msgid "The title of this tray icon"
 msgstr "Il titul di cheste icone di guantiere"
 
-#: ctk/deprecated/ctkstyle.c:471
+#: ctk/ctkstyle.c:471
 msgid "Style context"
 msgstr "Contest stîl"
 
-#: ctk/deprecated/ctkstyle.c:472
+#: ctk/ctkstyle.c:472
 msgid "CtkStyleContext to get style from"
 msgstr "CtkStyleContext di dulà otignî il stîl"
 

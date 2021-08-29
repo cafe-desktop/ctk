@@ -930,11 +930,11 @@ msgstr "Заголовок"
 msgid "The title of this tray icon"
 msgstr "Название этого значка для лотка"
 
-#: ctk/deprecated/ctkstyle.c:471
+#: ctk/ctkstyle.c:471
 msgid "Style context"
 msgstr "Контекст стиля"
 
-#: ctk/deprecated/ctkstyle.c:472
+#: ctk/ctkstyle.c:472
 msgid "CtkStyleContext to get style from"
 msgstr "Для получения стиля использовать CtkStyleContext"
 

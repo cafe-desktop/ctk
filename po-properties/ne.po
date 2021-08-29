@@ -939,12 +939,12 @@ msgstr "शिर्षक"
 msgid "The title of this tray icon"
 msgstr "प्रतिमा ब्राउज गर्नुहोस् संवादका लागि शीर्षक ।"
 
-#: ctk/deprecated/ctkstyle.c:471
+#: ctk/ctkstyle.c:471
 #, fuzzy
 msgid "Style context"
 msgstr "प्रसँग"
 
-#: ctk/deprecated/ctkstyle.c:472
+#: ctk/ctkstyle.c:472
 #, fuzzy
 msgid "CtkStyleContext to get style from"
 msgstr "स्ट्रिमबाट डेटा प्राप्त गर्न सकेन"
