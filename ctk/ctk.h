@@ -208,6 +208,7 @@
 #include <ctk/ctkstackswitcher.h>
 #include <ctk/ctkstatusbar.h>
 #include <ctk/ctkstock.h>
+#include <ctk/ctkstyle.h>
 #include <ctk/ctkstylecontext.h>
 #include <ctk/ctkstyleprovider.h>
 #include <ctk/ctkswitch.h>
@@ -274,7 +275,6 @@
 #include <ctk/deprecated/ctkrc.h>
 #include <ctk/deprecated/ctkrecentaction.h>
 #include <ctk/deprecated/ctkstatusicon.h>
-#include <ctk/deprecated/ctkstyle.h>
 #include <ctk/deprecated/ctkstyleproperties.h>
 #include <ctk/deprecated/ctksymboliccolor.h>
 #include <ctk/deprecated/ctktable.h>

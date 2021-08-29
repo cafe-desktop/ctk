@@ -23,7 +23,6 @@ deprecated_h_sources = 			\
 	deprecated/ctkrc.h		\
 	deprecated/ctkrecentaction.h	\
 	deprecated/ctkstatusicon.h	\
-	deprecated/ctkstyle.h		\
 	deprecated/ctkstyleproperties.h	\
 	deprecated/ctksymboliccolor.h	\
 	deprecated/ctktable.h		\
@@ -70,7 +69,6 @@ deprecated_c_sources = 			\
 	deprecated/ctkrc.c		\
 	deprecated/ctkrecentaction.c	\
 	deprecated/ctkstatusicon.c	\
-	deprecated/ctkstyle.c		\
 	deprecated/ctkstyleproperties.c	\
 	deprecated/ctksymboliccolor.c	\
 	deprecated/ctktable.c		\
