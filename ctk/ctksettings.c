@@ -56,7 +56,7 @@
 #include "win32/cdkwin32.h"
 #endif
 
-#include "deprecated/ctkrc.h"
+#include "ctkrc.h"
 
 #ifdef CDK_WINDOWING_QUARTZ
 #define PRINT_PREVIEW_COMMAND "open -b com.apple.Preview %f"
