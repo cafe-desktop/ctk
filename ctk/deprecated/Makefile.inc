@@ -20,7 +20,6 @@ deprecated_h_sources = 			\
 	deprecated/ctkmisc.h		\
 	deprecated/ctknumerableicon.h	\
 	deprecated/ctkradioaction.h	\
-	deprecated/ctkrc.h		\
 	deprecated/ctkrecentaction.h	\
 	deprecated/ctkstatusicon.h	\
 	deprecated/ctkstyleproperties.h	\
@@ -66,7 +65,6 @@ deprecated_c_sources = 			\
 	deprecated/ctkmisc.c		\
 	deprecated/ctknumerableicon.c	\
 	deprecated/ctkradioaction.c	\
-	deprecated/ctkrc.c		\
 	deprecated/ctkrecentaction.c	\
 	deprecated/ctkstatusicon.c	\
 	deprecated/ctkstyleproperties.c	\
