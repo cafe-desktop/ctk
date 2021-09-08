@@ -63,7 +63,7 @@
 #define CDK_DEPRECATED
 #define CDK_DEPRECATED_FOR(f)
 
-#include "deprecated/ctkrc.h"
+#include "ctkrc.h"
 
 /* We need to call getc() a lot in a loop. This is suboptimal,
  * as getc() does thread locking on the FILE it is given.

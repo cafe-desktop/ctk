@@ -38,7 +38,7 @@
 #include "ctk/ctkversion.h"
 #include "ctk/ctkutilsprivate.h"
 
-#include "ctk/deprecated/ctkrc.h"
+#include "ctk/ctkrc.h"
 
 static void
 escape_string (GString *contents, const char *str)
