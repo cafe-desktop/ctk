@@ -37,8 +37,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define CDK_DISABLE_DEPRECATION_WARNINGS
-
 #include <glib.h>
 #include <glib/gstdio.h>
 #include "cdk/cdk.h"
@@ -64,15 +62,12 @@
 
 /**
  * SECTION:ctkrc
- * @Short_description: Deprecated routines for handling resource files
+ * @Short_description: Routines for handling resource files
  * @Title: Resource Files
  *
  * CTK+ provides resource file mechanism for configuring
  * various aspects of the operation of a CTK+ program
  * at runtime.
- *
- * > In CTK+ 3.0, resource files have been deprecated and replaced by
- * > CSS-like style sheets, which are understood by #CtkCssProvider.
  *
  * # Default Files #
  *
@@ -292,9 +287,7 @@
  *
  * * `im_module_file pathname`
  *
- *    Sets the pathname for the IM modules file. Setting this from RC files
- *       is deprecated; you should use the environment variable `CTK_IM_MODULE_FILE`
- *       instead.
+ *    Sets the pathname for the IM modules file.
  *
  * * `style name [ =
  *     parent ] { ... }`
@@ -740,8 +733,6 @@ ctk_rc_make_default_dir (const gchar *type)
  *
  * Returns: (type filename): a newly-allocated string containing the
  *    path in which to look for IM modules.
- *
- * Deprecated: 3.0: Use #CtkCssProvider instead.
  */
 gchar *
 ctk_rc_get_im_module_path (void)
@@ -762,8 +753,6 @@ ctk_rc_get_im_module_path (void)
  *
  * Returns: (type filename): a newly-allocated string containing the
  *    name of the file listing the IM modules available for loading
- *
- * Deprecated: 3.0: Use #CtkCssProvider instead.
  */
 gchar *
 ctk_rc_get_im_module_file (void)
@@ -793,8 +782,6 @@ ctk_rc_get_im_module_file (void)
  * itself.)
  *
  * Returns: The directory (must be freed with g_free()).
- *
- * Deprecated: 3.0: Use #CtkCssProvider instead.
  */
 gchar *
 ctk_rc_get_theme_dir (void)
@@ -820,8 +807,6 @@ ctk_rc_get_theme_dir (void)
  * see the docs for `CTK_PATH` in [Running CTK+ Applications][ctk-running].
  *
  * return value: (type filename): the directory. (Must be freed with g_free())
- *
- * Deprecated: 3.0: Use #CtkCssProvider instead.
  **/
 gchar *
 ctk_rc_get_module_dir (void)
@@ -836,8 +821,6 @@ ctk_rc_get_module_dir (void)
  *
  * Adds a file to the list of files to be parsed at the
  * end of ctk_init().
- *
- * Deprecated:3.0: Use #CtkStyleContext with a custom #CtkStyleProvider instead
  **/
 void
 ctk_rc_add_default_file (const gchar *filename)
@@ -851,8 +834,6 @@ ctk_rc_add_default_file (const gchar *filename)
  *
  * Sets the list of files that CTK+ will read at the
  * end of ctk_init().
- *
- * Deprecated:3.0: Use #CtkStyleContext with a custom #CtkStyleProvider instead
  **/
 void
 ctk_rc_set_default_files (gchar **filenames)
@@ -869,8 +850,6 @@ ctk_rc_set_default_files (gchar **filenames)
  *      A %NULL-terminated array of filenames.  This memory is owned
  *     by CTK+ and must not be freed by the application.  If you want
  *     to store this information, you should make a copy.
- *
- * Deprecated:3.0: Use #CtkStyleContext instead
  **/
 gchar **
 ctk_rc_get_default_files (void)
@@ -883,8 +862,6 @@ ctk_rc_get_default_files (void)
  * @rc_string: a string to parse.
  *
  * Parses resource information directly from a string.
- *
- * Deprecated: 3.0: Use #CtkCssProvider instead.
  */
 void
 ctk_rc_parse_string (const gchar *rc_string)
@@ -898,8 +875,6 @@ ctk_rc_parse_string (const gchar *rc_string)
  *  is searched in the current directory.
  *
  * Parses a given resource file.
- *
- * Deprecated: 3.0: Use #CtkCssProvider instead.
  */
 void
 ctk_rc_parse (const gchar *filename)
@@ -1031,8 +1006,6 @@ ctk_rc_style_finalize (GObject *object)
  * a reference count of 1.
  *
  * Returns: the newly-created #CtkRcStyle
- *
- * Deprecated: 3.0: Use #CtkCssProvider instead.
  */
 CtkRcStyle *
 ctk_rc_style_new (void)
@@ -1053,8 +1026,6 @@ ctk_rc_style_new (void)
  * derived from #CtkRcStyle.
  *
  * Returns: (transfer full): the resulting #CtkRcStyle
- *
- * Deprecated: 3.0: Use #CtkCssProvider instead.
  **/
 CtkRcStyle *
 ctk_rc_style_copy (CtkRcStyle *orig)
@@ -1221,8 +1192,6 @@ ctk_rc_style_real_create_style (CtkRcStyle *rc_style)
  * with ctk_widget_set_style().
  *
  * Since: 2.4
- *
- * Deprecated: 3.0: Use #CtkCssProvider instead.
  **/
 void
 ctk_rc_reset_styles (CtkSettings *settings)
@@ -1240,8 +1209,6 @@ ctk_rc_reset_styles (CtkSettings *settings)
  * and then reread all previously read RC files.
  *
  * Returns: %TRUE if the files were reread.
- *
- * Deprecated: 3.0: Use #CtkCssProvider instead.
  **/
 gboolean
 ctk_rc_reparse_all_for_settings (CtkSettings *settings,
@@ -1258,8 +1225,6 @@ ctk_rc_reparse_all_for_settings (CtkSettings *settings,
  * and then reread all previously read RC files.
  *
  * Returns:  %TRUE if the files were reread.
- *
- * Deprecated: 3.0: Use #CtkCssProvider instead.
  **/
 gboolean
 ctk_rc_reparse_all (void)
@@ -1281,8 +1246,6 @@ ctk_rc_reparse_all (void)
  * Returns: (transfer none): the resulting style. No refcount is added
  *   to the returned style, so if you want to save this style around,
  *   you should add a reference yourself.
- *
- * Deprecated:3.0: Use #CtkStyleContext instead
  **/
 CtkStyle *
 ctk_rc_get_style (CtkWidget *widget)
@@ -1325,8 +1288,6 @@ ctk_rc_get_style (CtkWidget *widget)
  *     value is owned by CTK+ as part of an internal cache, so you
  *     must call g_object_ref() on the returned value if you want to
  *     keep a reference to it.
- *
- * Deprecated:3.0: Use #CtkStyleContext instead
  **/
 CtkStyle *
 ctk_rc_get_style_by_paths (CtkSettings *settings,
@@ -1415,8 +1376,6 @@ ctk_rc_get_style_by_paths (CtkSettings *settings,
 
 /**
  * ctk_rc_scanner_new: (skip)
- *
- * Deprecated:3.0: Use #CtkCssProvider instead
  */
 GScanner*
 ctk_rc_scanner_new (void)
@@ -1465,8 +1424,6 @@ lookup_color (CtkRcStyle *style,
  * g_warning() and returns %NULL.
  *
  * Returns: (type filename): the filename.
- *
- * Deprecated: 3.0: Use #CtkCssProvider instead.
  **/
 gchar*
 ctk_rc_find_pixmap_in_path (CtkSettings  *settings,
@@ -1487,8 +1444,6 @@ ctk_rc_find_pixmap_in_path (CtkSettings  *settings,
  *
  * Returns: (type filename): The filename, if found (must be
  *   freed with g_free()), otherwise %NULL.
- *
- * Deprecated: 3.0: Use #CtkCssProvider instead.
  **/
 gchar*
 ctk_rc_find_module_in_path (const gchar *module_file)
@@ -1507,8 +1462,6 @@ ctk_rc_find_module_in_path (const gchar *module_file)
  *
  * Returns: %G_TOKEN_NONE if parsing succeeded, otherwise the token
  *   that was expected but not found.
- *
- * Deprecated: 3.0: Use #CtkCssProvider instead
  */
 guint
 ctk_rc_parse_state (GScanner	 *scanner,
@@ -1572,8 +1525,6 @@ ctk_rc_parse_state (GScanner	 *scanner,
  *
  * Returns: %G_TOKEN_NONE if parsing succeeded, otherwise the token
  *   that was expected but not found.
- *
- * Deprecated:3.0: Use #CtkCssProvider instead
  */
 guint
 ctk_rc_parse_priority (GScanner	           *scanner,
@@ -1639,8 +1590,6 @@ ctk_rc_parse_priority (GScanner	           *scanner,
  *
  * Returns: %G_TOKEN_NONE if parsing succeeded, otherwise the token
  *     that was expected but not found
- *
- * Deprecated:3.0: Use #CtkCssProvider instead
  */
 guint
 ctk_rc_parse_color (GScanner *scanner,
@@ -1664,8 +1613,6 @@ ctk_rc_parse_color (GScanner *scanner,
  *     that was expected but not found
  *
  * Since: 2.12
- *
- * Deprecated:3.0: Use #CtkCssProvider instead
  */
 guint
 ctk_rc_parse_color_full (GScanner   *scanner,
@@ -1891,8 +1838,6 @@ pattern_spec_free (PatternSpec *pspec)
  * to assign match patterns to #CtkBindingSet structures.
  *
  * In CTK+ 3, these match patterns are unused.
- *
- * Deprecated: 3.0
  */
 void
 ctk_binding_set_add_path (CtkBindingSet       *binding_set,
