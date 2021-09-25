@@ -224,7 +224,7 @@ msgstr "Randorul de celulă"
 msgid "The cell renderer represented by this accessible"
 msgstr "Randorul de celule reprezentat de acest accesibil"
 
-#: ctk/ctkaction.c:243 ctk/deprecated/ctkactiongroup.c:200
+#: ctk/ctkaction.c:243 ctk/ctkactiongroup.c:200
 #: ctk/deprecated/ctkthemingengine.c:247 ctk/ctkcssnode.c:638
 #: ctk/ctkprinter.c:121 ctk/ctkstack.c:516 ctk/ctktextmark.c:136
 msgid "Name"
@@ -346,7 +346,7 @@ msgstr "Ascunde dacă e gol"
 msgid "When TRUE, empty menu proxies for this action are hidden."
 msgstr "La activare, se ascund intrările nule pentru această acțiune."
 
-#: ctk/ctkaction.c:466 ctk/deprecated/ctkactiongroup.c:214
+#: ctk/ctkaction.c:466 ctk/ctkactiongroup.c:214
 #: ctk/ctkcellrenderer.c:308 ctk/ctkwidget.c:1155
 msgid "Sensitive"
 msgstr "Senzitiv"
@@ -355,7 +355,7 @@ msgstr "Senzitiv"
 msgid "Whether the action is enabled."
 msgstr "Specifică dacă acțiunea este activată."
 
-#: ctk/ctkaction.c:481 ctk/deprecated/ctkactiongroup.c:228
+#: ctk/ctkaction.c:481 ctk/ctkactiongroup.c:228
 #: ctk/deprecated/ctkstatusicon.c:314 ctk/ctkcssnode.c:649
 #: ctk/ctknativedialog.c:242 ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1148
 msgid "Visible"
@@ -387,23 +387,23 @@ msgstr "Arată întotdeauna imaginea"
 msgid "Whether the image will always be shown"
 msgstr "Specifică dacă imaginea este întotdeauna afișată"
 
-#: ctk/deprecated/ctkactiongroup.c:201
+#: ctk/ctkactiongroup.c:201
 msgid "A name for the action group."
 msgstr "Un nume pentru grupul de acțiuni."
 
-#: ctk/deprecated/ctkactiongroup.c:215
+#: ctk/ctkactiongroup.c:215
 msgid "Whether the action group is enabled."
 msgstr "Specifică dacă grupul de acțiuni este activat."
 
-#: ctk/deprecated/ctkactiongroup.c:229
+#: ctk/ctkactiongroup.c:229
 msgid "Whether the action group is visible."
 msgstr "Specifică dacă grupul de acțiuni este vizibil."
 
-#: ctk/deprecated/ctkactiongroup.c:242
+#: ctk/ctkactiongroup.c:242
 msgid "Accelerator Group"
 msgstr "Grup de acceleratori"
 
-#: ctk/deprecated/ctkactiongroup.c:243
+#: ctk/ctkactiongroup.c:243
 msgid "The accelerator group the actions of this group should use."
 msgstr ""
 "Grupul de acceleratori pe care acțiunile acestui grup ar trebui să-l "

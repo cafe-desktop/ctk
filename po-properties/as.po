@@ -171,7 +171,7 @@ msgstr "কোষ ৰেণ্ডাৰাৰ"
 msgid "The cell renderer represented by this accessible"
 msgstr "এই অভিগম কৰিব পৰা দ্বাৰা প্ৰতিনিদ্ধিত্ব কৰা কোষ ৰেণ্ডাৰাৰ"
 
-#: ../ctk/ctkaction.c:243 ../ctk/deprecated/ctkactiongroup.c:200
+#: ../ctk/ctkaction.c:243 ../ctk/ctkactiongroup.c:200
 #: ../ctk/ctkprinter.c:121 ../ctk/ctkstack.c:412 ../ctk/ctktextmark.c:136
 #: ../ctk/ctkthemingengine.c:263
 msgid "Name"
@@ -288,7 +288,7 @@ msgstr "ৰিক্ত হ'লে লুকাই ৰাখক"
 msgid "When TRUE, empty menu proxies for this action are hidden."
 msgstr "TRUE হ'লে এই কামৰ ৰিক্ত তালিকা নিযুক্তকক লুকাই ৰখা হয়।"
 
-#: ../ctk/ctkaction.c:466 ../ctk/deprecated/ctkactiongroup.c:214
+#: ../ctk/ctkaction.c:466 ../ctk/ctkactiongroup.c:214
 #: ../ctk/ctkcellrenderer.c:301 ../ctk/ctkwidget.c:1277
 msgid "Sensitive"
 msgstr "সংবেদনশীল"
@@ -297,7 +297,7 @@ msgstr "সংবেদনশীল"
 msgid "Whether the action is enabled."
 msgstr "কামটো সক্ৰিয় হয় নে নহয়"
 
-#: ../ctk/ctkaction.c:481 ../ctk/deprecated/ctkactiongroup.c:228
+#: ../ctk/ctkaction.c:481 ../ctk/ctkactiongroup.c:228
 #: ../ctk/deprecated/ctkstatusicon.c:304 ../ctk/ctktreeviewcolumn.c:245
 #: ../ctk/ctkwidget.c:1270
 msgid "Visible"
@@ -330,23 +330,23 @@ msgstr "Always show image"
 msgid "Whether the image will always be shown"
 msgstr "Whether the image will always be shown"
 
-#: ../ctk/deprecated/ctkactiongroup.c:201
+#: ../ctk/ctkactiongroup.c:201
 msgid "A name for the action group."
 msgstr "এই কামৰ গোটৰ নাম।"
 
-#: ../ctk/deprecated/ctkactiongroup.c:215
+#: ../ctk/ctkactiongroup.c:215
 msgid "Whether the action group is enabled."
 msgstr "এই কামৰ গোট সক্ৰিয় নে নহয়।"
 
-#: ../ctk/deprecated/ctkactiongroup.c:229
+#: ../ctk/ctkactiongroup.c:229
 msgid "Whether the action group is visible."
 msgstr "এই কামৰ গোট দৃশ্যমান নে নহয়।"
 
-#: ../ctk/deprecated/ctkactiongroup.c:242
+#: ../ctk/ctkactiongroup.c:242
 msgid "Accelerator Group"
 msgstr "ত্বৰক দল"
 
-#: ../ctk/deprecated/ctkactiongroup.c:243
+#: ../ctk/ctkactiongroup.c:243
 msgid "The accelerator group the actions of this group should use."
 msgstr "এই দলৰ কাৰ্য্যসমূহে ব্যৱহাৰ কৰিব লগিয়া ত্বৰক দল।"
 

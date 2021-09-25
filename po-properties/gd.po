@@ -219,7 +219,7 @@ msgstr "Reandaraiche nan cealla"
 msgid "The cell renderer represented by this accessible"
 msgstr "An reandaraiche cheallan a tha an accessible seo a’ riochdachadh"
 
-#: ctk/ctkaction.c:243 ctk/deprecated/ctkactiongroup.c:200
+#: ctk/ctkaction.c:243 ctk/ctkactiongroup.c:200
 #: ctk/deprecated/ctkthemingengine.c:247 ctk/ctkcssnode.c:638
 #: ctk/ctkprinter.c:121 ctk/ctkstack.c:516 ctk/ctktextmark.c:136
 msgid "Name"
@@ -346,7 +346,7 @@ msgstr ""
 "Ma tha seo TRUE, bidh progsaidhean a’ chlàir-thaice a tha falamh airson a’ "
 "ghnìomh seo am falach."
 
-#: ctk/ctkaction.c:466 ctk/deprecated/ctkactiongroup.c:214
+#: ctk/ctkaction.c:466 ctk/ctkactiongroup.c:214
 #: ctk/ctkcellrenderer.c:301 ctk/ctkwidget.c:1152
 msgid "Sensitive"
 msgstr "Mothachail"
@@ -355,7 +355,7 @@ msgstr "Mothachail"
 msgid "Whether the action is enabled."
 msgstr "Co-dhiù a bheil an gnìomh an comas gus nach eil."
 
-#: ctk/ctkaction.c:481 ctk/deprecated/ctkactiongroup.c:228
+#: ctk/ctkaction.c:481 ctk/ctkactiongroup.c:228
 #: ctk/deprecated/ctkstatusicon.c:314 ctk/ctkcssnode.c:649
 #: ctk/ctknativedialog.c:242 ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1145
 msgid "Visible"
@@ -387,23 +387,23 @@ msgstr "Seall an dealbh an-còmhnaidh"
 msgid "Whether the image will always be shown"
 msgstr "Co-dhiù an dèid an dealbh a shealltainn an-còmhnaidh"
 
-#: ctk/deprecated/ctkactiongroup.c:201
+#: ctk/ctkactiongroup.c:201
 msgid "A name for the action group."
 msgstr "Ainm a’ bhuidheann ghnìomhan."
 
-#: ctk/deprecated/ctkactiongroup.c:215
+#: ctk/ctkactiongroup.c:215
 msgid "Whether the action group is enabled."
 msgstr "Co-dhiù a bheil am buidheann ghnìomhan an comas gus nach eil."
 
-#: ctk/deprecated/ctkactiongroup.c:229
+#: ctk/ctkactiongroup.c:229
 msgid "Whether the action group is visible."
 msgstr "Co-dhiù a bheil am buidheann ghnìomhan ri fhaicinn."
 
-#: ctk/deprecated/ctkactiongroup.c:242
+#: ctk/ctkactiongroup.c:242
 msgid "Accelerator Group"
 msgstr "Buidheann luathaichearan"
 
-#: ctk/deprecated/ctkactiongroup.c:243
+#: ctk/ctkactiongroup.c:243
 msgid "The accelerator group the actions of this group should use."
 msgstr ""
 "Am buidheann luathaichearan a bu chòir do ghnìomhan a’ bhuidhinn seo a "

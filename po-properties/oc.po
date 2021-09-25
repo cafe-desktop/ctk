@@ -224,7 +224,7 @@ msgstr "Motor de rendut de cellula"
 msgid "The cell renderer represented by this accessible"
 msgstr "Lo motor de rendut de cellula representat per aqueste accessible"
 
-#: ctk/ctkaction.c:243 ctk/deprecated/ctkactiongroup.c:200
+#: ctk/ctkaction.c:243 ctk/ctkactiongroup.c:200
 #: ctk/deprecated/ctkthemingengine.c:247 ctk/ctkcssnode.c:637
 #: ctk/ctkprinter.c:121 ctk/ctkstack.c:514 ctk/ctktextmark.c:136
 msgid "Name"
@@ -346,7 +346,7 @@ msgid "When TRUE, empty menu proxies for this action are hidden."
 msgstr ""
 "Se verai (TRUE), los menús voids mandataris d'aquesta accion son amagats."
 
-#: ctk/ctkaction.c:466 ctk/deprecated/ctkactiongroup.c:214
+#: ctk/ctkaction.c:466 ctk/ctkactiongroup.c:214
 #: ctk/ctkcellrenderer.c:301 ctk/ctkwidget.c:1160
 msgid "Sensitive"
 msgstr "Sensible"
@@ -355,7 +355,7 @@ msgstr "Sensible"
 msgid "Whether the action is enabled."
 msgstr "Indica se l'accion es activada."
 
-#: ctk/ctkaction.c:481 ctk/deprecated/ctkactiongroup.c:228
+#: ctk/ctkaction.c:481 ctk/ctkactiongroup.c:228
 #: ctk/deprecated/ctkstatusicon.c:307 ctk/ctkcssnode.c:648
 #: ctk/ctknativedialog.c:242 ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1153
 msgid "Visible"
@@ -387,23 +387,23 @@ msgstr "Totjorn afichar l'imatge"
 msgid "Whether the image will always be shown"
 msgstr "Indica se l'imatge deu totjorn èsser afichat"
 
-#: ctk/deprecated/ctkactiongroup.c:201
+#: ctk/ctkactiongroup.c:201
 msgid "A name for the action group."
 msgstr "Un nom pel grop d'accions."
 
-#: ctk/deprecated/ctkactiongroup.c:215
+#: ctk/ctkactiongroup.c:215
 msgid "Whether the action group is enabled."
 msgstr "Indica se lo grop d'accions es activat."
 
-#: ctk/deprecated/ctkactiongroup.c:229
+#: ctk/ctkactiongroup.c:229
 msgid "Whether the action group is visible."
 msgstr "Indica se lo grop d'accions es visible."
 
-#: ctk/deprecated/ctkactiongroup.c:242
+#: ctk/ctkactiongroup.c:242
 msgid "Accelerator Group"
 msgstr "Grop d'acceleradors"
 
-#: ctk/deprecated/ctkactiongroup.c:243
+#: ctk/ctkactiongroup.c:243
 msgid "The accelerator group the actions of this group should use."
 msgstr "Lo grop d'acceleradors que l'accion d'aqueste grop deuriá utilizar."
 

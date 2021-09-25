@@ -226,7 +226,7 @@ msgstr "Hücre işleyici"
 msgid "The cell renderer represented by this accessible"
 msgstr "Hücre oluşturucu, bu erişilebilir tarafından temsil edilmiş"
 
-#: ctk/ctkaction.c:243 ctk/deprecated/ctkactiongroup.c:200
+#: ctk/ctkaction.c:243 ctk/ctkactiongroup.c:200
 #: ctk/deprecated/ctkthemingengine.c:247 ctk/ctkcssnode.c:638
 #: ctk/ctkprinter.c:121 ctk/ctkstack.c:516 ctk/ctktextmark.c:136
 msgid "Name"
@@ -342,7 +342,7 @@ msgstr "Boş ise gizle"
 msgid "When TRUE, empty menu proxies for this action are hidden."
 msgstr "TRUE ise, bu eylem için boş menü vekilleri gizli olur."
 
-#: ctk/ctkaction.c:466 ctk/deprecated/ctkactiongroup.c:214
+#: ctk/ctkaction.c:466 ctk/ctkactiongroup.c:214
 #: ctk/ctkcellrenderer.c:308 ctk/ctkwidget.c:1155
 msgid "Sensitive"
 msgstr "Duyarlı"
@@ -351,7 +351,7 @@ msgstr "Duyarlı"
 msgid "Whether the action is enabled."
 msgstr "Eylemin etkin olup olmaması."
 
-#: ctk/ctkaction.c:481 ctk/deprecated/ctkactiongroup.c:228
+#: ctk/ctkaction.c:481 ctk/ctkactiongroup.c:228
 #: ctk/deprecated/ctkstatusicon.c:314 ctk/ctkcssnode.c:649
 #: ctk/ctknativedialog.c:242 ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1148
 msgid "Visible"
@@ -383,23 +383,23 @@ msgstr "Her zaman resmi göster"
 msgid "Whether the image will always be shown"
 msgstr "Resmin her zaman gösterilip gösterilmeyeceği"
 
-#: ctk/deprecated/ctkactiongroup.c:201
+#: ctk/ctkactiongroup.c:201
 msgid "A name for the action group."
 msgstr "Eylem kümesi için bir ad."
 
-#: ctk/deprecated/ctkactiongroup.c:215
+#: ctk/ctkactiongroup.c:215
 msgid "Whether the action group is enabled."
 msgstr "Eylem kümesinin etkin olup olmaması."
 
-#: ctk/deprecated/ctkactiongroup.c:229
+#: ctk/ctkactiongroup.c:229
 msgid "Whether the action group is visible."
 msgstr "Eylem kümesinin görünür olup olmaması."
 
-#: ctk/deprecated/ctkactiongroup.c:242
+#: ctk/ctkactiongroup.c:242
 msgid "Accelerator Group"
 msgstr "Hızlandırıcı Küme"
 
-#: ctk/deprecated/ctkactiongroup.c:243
+#: ctk/ctkactiongroup.c:243
 msgid "The accelerator group the actions of this group should use."
 msgstr "Hızlandırıcı küme bu kümenin eylemlerini kullanmalı."
 
