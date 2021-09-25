@@ -1061,22 +1061,22 @@ msgstr "पिक्सलभित्र बच्चा र यसको म�
 msgid "Theming engine name"
 msgstr "इन्जिन"
 
-#: ctk/deprecated/ctktoggleaction.c:118
+#: ctk/ctktoggleaction.c:118
 msgid "Create the same proxies as a radio action"
 msgstr "अनुपात कार्यका रूपमा उस्तै प्रतिनिधिको निर्माण गर्नुस्"
 
-#: ctk/deprecated/ctktoggleaction.c:119
+#: ctk/ctktoggleaction.c:119
 msgid "Whether the proxies for this action look like radio action proxies"
 msgstr "यो कार्यलाई प्रतिनिधि कार्य अनुपातका रूपमा देखाउनु छ भने"
 
-#: ctk/deprecated/ctktoggleaction.c:135 ctk/ctkcellrendererspinner.c:125
+#: ctk/ctktoggleaction.c:135 ctk/ctkcellrendererspinner.c:125
 #: ctk/ctkcheckmenuitem.c:209 ctk/ctkmenu.c:632 ctk/ctkmodelbutton.c:1145
 #: ctk/ctkmodelbutton.c:1146 ctk/ctkspinner.c:220 ctk/ctkswitch.c:895 ctk/ctktogglebutton.c:185
 #: ctk/ctktoggletoolbutton.c:130
 msgid "Active"
 msgstr "सक्रिय"
 
-#: ctk/deprecated/ctktoggleaction.c:136
+#: ctk/ctktoggleaction.c:136
 #, fuzzy
 msgid "Whether the toggle action should be active"
 msgstr "हालमा अस्वीकार भएको कार्य चयन गरिएको कार्य टगल गर्ने कि"

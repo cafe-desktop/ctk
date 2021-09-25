@@ -33,7 +33,7 @@
 #error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <ctk/deprecated/ctktoggleaction.h>
+#include <ctk/ctktoggleaction.h>
 
 G_BEGIN_DECLS
 

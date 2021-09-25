@@ -957,22 +957,22 @@ msgid ""
 "pixels"
 msgstr "副元件與鄰接上下的元件之間的額外空位，以像素表示"
 
-#: ../ctk/deprecated/ctktoggleaction.c:120
+#: ../ctk/ctktoggleaction.c:120
 msgid "Create the same proxies as a radio action"
 msgstr "產生與單選指令一樣的代理"
 
-#: ../ctk/deprecated/ctktoggleaction.c:121
+#: ../ctk/ctktoggleaction.c:121
 msgid "Whether the proxies for this action look like radio action proxies"
 msgstr "是否該指令的代理看起來是單選指令代理"
 
-#: ../ctk/deprecated/ctktoggleaction.c:137 ../ctk/ctkcellrendererspinner.c:125
+#: ../ctk/ctktoggleaction.c:137 ../ctk/ctkcellrendererspinner.c:125
 #: ../ctk/ctkcheckmenuitem.c:122 ../ctk/ctkmenu.c:555 ../ctk/ctkspinner.c:119
 #: ../ctk/ctkswitch.c:909 ../ctk/ctktogglebutton.c:178
 #: ../ctk/ctktoggletoolbutton.c:127
 msgid "Active"
 msgstr "使用中"
 
-#: ../ctk/deprecated/ctktoggleaction.c:138
+#: ../ctk/ctktoggleaction.c:138
 msgid "Whether the toggle action should be active"
 msgstr "該切換動作是否應該執行"
 

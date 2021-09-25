@@ -1044,22 +1044,22 @@ msgstr ""
 msgid "Theming engine name"
 msgstr "Non dal motôr pal teme"
 
-#: ctk/deprecated/ctktoggleaction.c:118
+#: ctk/ctktoggleaction.c:118
 msgid "Create the same proxies as a radio action"
 msgstr ""
 
-#: ctk/deprecated/ctktoggleaction.c:119
+#: ctk/ctktoggleaction.c:119
 msgid "Whether the proxies for this action look like radio action proxies"
 msgstr ""
 
-#: ctk/deprecated/ctktoggleaction.c:135 ctk/ctkcellrendererspinner.c:125
+#: ctk/ctktoggleaction.c:135 ctk/ctkcellrendererspinner.c:125
 #: ctk/ctkcheckmenuitem.c:209 ctk/ctkmenu.c:640 ctk/ctkmodelbutton.c:1211
 #: ctk/ctkmodelbutton.c:1212 ctk/ctkspinner.c:221 ctk/ctkswitch.c:878
 #: ctk/ctktogglebutton.c:188 ctk/ctktoggletoolbutton.c:130
 msgid "Active"
 msgstr "Atîf"
 
-#: ctk/deprecated/ctktoggleaction.c:136
+#: ctk/ctktoggleaction.c:136
 #, fuzzy
 msgid "Whether the toggle action should be active"
 msgstr "Indiche se il nivel superiôr al è il barcon atîf atuâl"

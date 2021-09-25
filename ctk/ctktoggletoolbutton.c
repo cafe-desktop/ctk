@@ -25,7 +25,7 @@
 #include "ctkstock.h"
 #include "ctkintl.h"
 #include "ctkradiotoolbutton.h"
-#include "deprecated/ctktoggleaction.h"
+#include "ctktoggleaction.h"
 #include "deprecated/ctkactivatable.h"
 #include "ctkprivate.h"
 

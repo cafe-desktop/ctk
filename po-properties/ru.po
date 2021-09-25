@@ -1055,22 +1055,22 @@ msgstr ""
 msgid "Theming engine name"
 msgstr "Название механизма темы"
 
-#: ctk/deprecated/ctktoggleaction.c:118
+#: ctk/ctktoggleaction.c:118
 msgid "Create the same proxies as a radio action"
 msgstr "Создавать те же прокси, что и у радио-действия"
 
-#: ctk/deprecated/ctktoggleaction.c:119
+#: ctk/ctktoggleaction.c:119
 msgid "Whether the proxies for this action look like radio action proxies"
 msgstr "Будет ли прокси для действия выглядеть так же, как радио-прокси"
 
-#: ctk/deprecated/ctktoggleaction.c:135 ctk/ctkcellrendererspinner.c:125
+#: ctk/ctktoggleaction.c:135 ctk/ctkcellrendererspinner.c:125
 #: ctk/ctkcheckmenuitem.c:209 ctk/ctkmenu.c:639 ctk/ctkmodelbutton.c:1189
 #: ctk/ctkmodelbutton.c:1190 ctk/ctkspinner.c:221 ctk/ctkswitch.c:875
 #: ctk/ctktogglebutton.c:188 ctk/ctktoggletoolbutton.c:130
 msgid "Active"
 msgstr "Активный"
 
-#: ctk/deprecated/ctktoggleaction.c:136
+#: ctk/ctktoggleaction.c:136
 msgid "Whether the toggle action should be active"
 msgstr "Активна ли кнопка-переключатель"
 

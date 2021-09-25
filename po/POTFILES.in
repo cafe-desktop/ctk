@@ -55,7 +55,7 @@ ctk/deprecated/ctkrecentaction.c
 ctk/deprecated/ctkstatusicon.c
 ctk/deprecated/ctktable.c
 ctk/deprecated/ctkthemingengine.c
-ctk/deprecated/ctktoggleaction.c
+ctk/ctktoggleaction.c
 ctk/deprecated/ctktrayicon-x11.c
 ctk/deprecated/ctkuimanager.c
 ctk/encodesymbolic.c

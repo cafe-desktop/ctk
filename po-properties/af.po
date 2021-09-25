@@ -1125,22 +1125,22 @@ msgstr ""
 msgid "Theming engine name"
 msgstr "Temanaam"
 
-#: ctk/deprecated/ctktoggleaction.c:118
+#: ctk/ctktoggleaction.c:118
 msgid "Create the same proxies as a radio action"
 msgstr "Skep dieselfde instaners as klinkaksies"
 
-#: ctk/deprecated/ctktoggleaction.c:119
+#: ctk/ctktoggleaction.c:119
 msgid "Whether the proxies for this action look like radio action proxies"
 msgstr "Of die instaners vir dié aksie soos klinkaksie-instaners lyk"
 
-#: ctk/deprecated/ctktoggleaction.c:135 ctk/ctkcellrendererspinner.c:125
+#: ctk/ctktoggleaction.c:135 ctk/ctkcellrendererspinner.c:125
 #: ctk/ctkcheckmenuitem.c:209 ctk/ctkmenu.c:633 ctk/ctkmodelbutton.c:1151
 #: ctk/ctkmodelbutton.c:1152 ctk/ctkspinner.c:221 ctk/ctkswitch.c:895
 #: ctk/ctktogglebutton.c:188 ctk/ctktoggletoolbutton.c:130
 msgid "Active"
 msgstr "Aktief"
 
-#: ctk/deprecated/ctktoggleaction.c:136
+#: ctk/ctktoggleaction.c:136
 #, fuzzy
 msgid "Whether the toggle action should be active"
 msgstr "Of die swikknoppie gedruk moet word of nie"
