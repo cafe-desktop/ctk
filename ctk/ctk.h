@@ -224,6 +224,7 @@
 #include <ctk/ctktexttag.h>
 #include <ctk/ctktexttagtable.h>
 #include <ctk/ctktextview.h>
+#include <ctk/ctktoggleaction.h>
 #include <ctk/ctktogglebutton.h>
 #include <ctk/ctktoggletoolbutton.h>
 #include <ctk/ctktoolbar.h>
@@ -280,7 +281,6 @@
 #include <ctk/deprecated/ctktable.h>
 #include <ctk/deprecated/ctktearoffmenuitem.h>
 #include <ctk/deprecated/ctkthemingengine.h>
-#include <ctk/deprecated/ctktoggleaction.h>
 #include <ctk/deprecated/ctkuimanager.h>
 #include <ctk/deprecated/ctkvbbox.h>
 #include <ctk/deprecated/ctkvbox.h>
