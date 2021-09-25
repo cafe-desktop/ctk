@@ -18,6 +18,7 @@ ctk_cargs = [
 # List of sources to build the library from
 ctk_sources = files(
   'ctkaction.c',
+  'ctkactiongroup.c',
   'ctkactionmuxer.c',
   'ctkactionobserver.c',
   'ctkactionobservable.c',
@@ -408,6 +409,7 @@ ctk_gir_public_headers = files(
   'ctkaccelmap.h',
   'ctkaccessible.h',
   'ctkaction.h',
+  'ctkactiongroup.h',
   'ctkactionable.h',
   'ctkactionbar.h',
   'ctkadjustment.h',
