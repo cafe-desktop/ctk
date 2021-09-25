@@ -203,79 +203,79 @@ msgstr "Celletegner"
 msgid "The cell renderer represented by this accessible"
 msgstr ""
 
-#: ../ctk/deprecated/ctkaction.c:243 ../ctk/deprecated/ctkactiongroup.c:200
+#: ../ctk/ctkaction.c:243 ../ctk/deprecated/ctkactiongroup.c:200
 #: ../ctk/deprecated/ctkthemingengine.c:247 ../ctk/ctkprinter.c:121
 #: ../ctk/ctkstack.c:450 ../ctk/ctktextmark.c:136
 msgid "Name"
 msgstr "Navn"
 
-#: ../ctk/deprecated/ctkaction.c:244
+#: ../ctk/ctkaction.c:244
 msgid "A unique name for the action."
 msgstr "Et unikt navn for handlingen."
 
-#: ../ctk/deprecated/ctkaction.c:264 ../ctk/ctkbutton.c:245
+#: ../ctk/ctkaction.c:264 ../ctk/ctkbutton.c:245
 #: ../ctk/ctkexpander.c:275 ../ctk/ctkframe.c:166 ../ctk/ctklabel.c:731
 #: ../ctk/ctkmenuitem.c:444 ../ctk/ctktoolbutton.c:239
 #: ../ctk/ctktoolitemgroup.c:1597
 msgid "Label"
 msgstr "Etikett"
 
-#: ../ctk/deprecated/ctkaction.c:265
+#: ../ctk/ctkaction.c:265
 msgid "The label used for menu items and buttons that activate this action."
 msgstr ""
 "Etikett som brukes for menyoppføringer og knapper som aktiverer denne "
 "handlingen."
 
-#: ../ctk/deprecated/ctkaction.c:284
+#: ../ctk/ctkaction.c:284
 msgid "Short label"
 msgstr "Kort etikett"
 
-#: ../ctk/deprecated/ctkaction.c:285
+#: ../ctk/ctkaction.c:285
 msgid "A shorter label that may be used on toolbar buttons."
 msgstr "En kortere etikett som kan brukes på verktøylinjeknapper."
 
-#: ../ctk/deprecated/ctkaction.c:300
+#: ../ctk/ctkaction.c:300
 msgid "Tooltip"
 msgstr "Verktøytips"
 
-#: ../ctk/deprecated/ctkaction.c:301
+#: ../ctk/ctkaction.c:301
 msgid "A tooltip for this action."
 msgstr "Et verktøytips for denne handlingen."
 
-#: ../ctk/deprecated/ctkaction.c:319
+#: ../ctk/ctkaction.c:319
 msgid "Stock Icon"
 msgstr "Standard ikon"
 
-#: ../ctk/deprecated/ctkaction.c:320
+#: ../ctk/ctkaction.c:320
 msgid "The stock icon displayed in widgets representing this action."
 msgstr ""
 "Standard ikon som vises i komponenter som representerer denne handlingen."
 
-#: ../ctk/deprecated/ctkaction.c:342 ../ctk/deprecated/ctkstatusicon.c:271
+#: ../ctk/ctkaction.c:342 ../ctk/deprecated/ctkstatusicon.c:271
 msgid "GIcon"
 msgstr "GIcon"
 
-#: ../ctk/deprecated/ctkaction.c:343 ../ctk/deprecated/ctkstatusicon.c:272
+#: ../ctk/ctkaction.c:343 ../ctk/deprecated/ctkstatusicon.c:272
 #: ../ctk/ctkcellrendererpixbuf.c:263 ../ctk/ctkimage.c:350
 msgid "The GIcon being displayed"
 msgstr "GIcon som skal vises"
 
-#: ../ctk/deprecated/ctkaction.c:365 ../ctk/deprecated/ctkstatusicon.c:255
+#: ../ctk/ctkaction.c:365 ../ctk/deprecated/ctkstatusicon.c:255
 #: ../ctk/ctkcellrendererpixbuf.c:228 ../ctk/ctkimage.c:332
 #: ../ctk/ctkprinter.c:170 ../ctk/ctkwindow.c:865
 msgid "Icon Name"
 msgstr "Navn på ikon"
 
-#: ../ctk/deprecated/ctkaction.c:366 ../ctk/deprecated/ctkstatusicon.c:256
+#: ../ctk/ctkaction.c:366 ../ctk/deprecated/ctkstatusicon.c:256
 #: ../ctk/ctkcellrendererpixbuf.c:229 ../ctk/ctkimage.c:333
 msgid "The name of the icon from the icon theme"
 msgstr "Navn på ikonet fra ikontemaet"
 
-#: ../ctk/deprecated/ctkaction.c:381 ../ctk/ctktoolitem.c:179
+#: ../ctk/ctkaction.c:381 ../ctk/ctktoolitem.c:179
 msgid "Visible when horizontal"
 msgstr "Synlig når horisontal"
 
-#: ../ctk/deprecated/ctkaction.c:382 ../ctk/ctktoolitem.c:180
+#: ../ctk/ctkaction.c:382 ../ctk/ctktoolitem.c:180
 msgid ""
 "Whether the toolbar item is visible when the toolbar is in a horizontal "
 "orientation."
@@ -283,22 +283,22 @@ msgstr ""
 "Om verktøylinjeoppføringen er synlig når verktøylinjen har horisontal "
 "orientering."
 
-#: ../ctk/deprecated/ctkaction.c:400
+#: ../ctk/ctkaction.c:400
 msgid "Visible when overflown"
 msgstr "Synlig når full"
 
-#: ../ctk/deprecated/ctkaction.c:401
+#: ../ctk/ctkaction.c:401
 #, fuzzy
 msgid ""
 "When TRUE, toolitem proxies for this action are represented in the toolbar "
 "overflow menu."
 msgstr "Når TRUE vil tomme menyproxyer for denne handlingen skjules."
 
-#: ../ctk/deprecated/ctkaction.c:417 ../ctk/ctktoolitem.c:186
+#: ../ctk/ctkaction.c:417 ../ctk/ctktoolitem.c:186
 msgid "Visible when vertical"
 msgstr "Synlig når vertikal"
 
-#: ../ctk/deprecated/ctkaction.c:418 ../ctk/ctktoolitem.c:187
+#: ../ctk/ctkaction.c:418 ../ctk/ctktoolitem.c:187
 msgid ""
 "Whether the toolbar item is visible when the toolbar is in a vertical "
 "orientation."
@@ -306,11 +306,11 @@ msgstr ""
 "Om verktøylinjeoppføringen er synlig når verktøylinjen har vertikal "
 "orientering."
 
-#: ../ctk/deprecated/ctkaction.c:434 ../ctk/ctktoolitem.c:193
+#: ../ctk/ctkaction.c:434 ../ctk/ctktoolitem.c:193
 msgid "Is important"
 msgstr "Er viktig"
 
-#: ../ctk/deprecated/ctkaction.c:435
+#: ../ctk/ctkaction.c:435
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
 "this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
@@ -318,38 +318,38 @@ msgstr ""
 "Om handlingen ses på som viktig. Når denne er satt til TRUE viser proxyer "
 "for verktøylinjeoppføringene tekst i CTK_TOOLBAR_BOTH_HORIZ-modus."
 
-#: ../ctk/deprecated/ctkaction.c:451
+#: ../ctk/ctkaction.c:451
 msgid "Hide if empty"
 msgstr "Skjul hvis tom"
 
-#: ../ctk/deprecated/ctkaction.c:452
+#: ../ctk/ctkaction.c:452
 msgid "When TRUE, empty menu proxies for this action are hidden."
 msgstr "Når TRUE vil tomme menyproxyer for denne handlingen skjules."
 
-#: ../ctk/deprecated/ctkaction.c:466 ../ctk/deprecated/ctkactiongroup.c:214
+#: ../ctk/ctkaction.c:466 ../ctk/deprecated/ctkactiongroup.c:214
 #: ../ctk/ctkcellrenderer.c:301 ../ctk/ctkwidget.c:1278
 msgid "Sensitive"
 msgstr "Følsomt"
 
-#: ../ctk/deprecated/ctkaction.c:467
+#: ../ctk/ctkaction.c:467
 msgid "Whether the action is enabled."
 msgstr "Om handlingen er aktivert."
 
-#: ../ctk/deprecated/ctkaction.c:481 ../ctk/deprecated/ctkactiongroup.c:228
+#: ../ctk/ctkaction.c:481 ../ctk/deprecated/ctkactiongroup.c:228
 #: ../ctk/deprecated/ctkstatusicon.c:306 ../ctk/ctktreeviewcolumn.c:245
 #: ../ctk/ctkwidget.c:1271
 msgid "Visible"
 msgstr "Synlig"
 
-#: ../ctk/deprecated/ctkaction.c:482
+#: ../ctk/ctkaction.c:482
 msgid "Whether the action is visible."
 msgstr "Om handlingen er synlig"
 
-#: ../ctk/deprecated/ctkaction.c:497
+#: ../ctk/ctkaction.c:497
 msgid "Action Group"
 msgstr "Handlingsgruppe"
 
-#: ../ctk/deprecated/ctkaction.c:498
+#: ../ctk/ctkaction.c:498
 msgid ""
 "The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
@@ -357,12 +357,12 @@ msgstr ""
 "CtkActionGroup denne CtkAction er assosiert med, eller NULL (for intern "
 "bruk)."
 
-#: ../ctk/deprecated/ctkaction.c:519 ../ctk/deprecated/ctkimagemenuitem.c:233
+#: ../ctk/ctkaction.c:519 ../ctk/deprecated/ctkimagemenuitem.c:233
 #: ../ctk/ctkbutton.c:364
 msgid "Always show image"
 msgstr "Alltid vis bilde"
 
-#: ../ctk/deprecated/ctkaction.c:520 ../ctk/deprecated/ctkimagemenuitem.c:234
+#: ../ctk/ctkaction.c:520 ../ctk/deprecated/ctkimagemenuitem.c:234
 #: ../ctk/ctkbutton.c:365
 msgid "Whether the image will always be shown"
 msgstr "Om bildet alltid skal være synlig"

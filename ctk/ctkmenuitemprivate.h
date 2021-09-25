@@ -19,7 +19,7 @@
 #define __CTK_MENU_ITEM_PRIVATE_H__
 
 #include <ctk/ctkmenuitem.h>
-#include <ctk/deprecated/ctkaction.h>
+#include <ctk/ctkaction.h>
 #include <ctk/ctkactionhelper.h>
 #include <ctk/ctkcssgadgetprivate.h>
 #include <ctk/ctkcssnodeprivate.h>

@@ -184,88 +184,88 @@ msgstr "கலக் காட்சிப்படுத்தி"
 msgid "The cell renderer represented by this accessible"
 msgstr "இந்த அணுகலால் குறிக்கப்படும் கலக் காட்சிப்படுத்தி"
 
-#: ../ctk/deprecated/ctkaction.c:243 ../ctk/deprecated/ctkactiongroup.c:200
+#: ../ctk/ctkaction.c:243 ../ctk/deprecated/ctkactiongroup.c:200
 #: ../ctk/deprecated/ctkthemingengine.c:263 ../ctk/ctkprinter.c:121
 #: ../ctk/ctkstack.c:412 ../ctk/ctktextmark.c:136
 msgid "Name"
 msgstr "பெயர்"
 
-#: ../ctk/deprecated/ctkaction.c:244
+#: ../ctk/ctkaction.c:244
 msgid "A unique name for the action."
 msgstr "செயலுக்கான ஒரு தனித்தன்மையான பெயர்"
 
-#: ../ctk/deprecated/ctkaction.c:264 ../ctk/ctkbutton.c:245
+#: ../ctk/ctkaction.c:264 ../ctk/ctkbutton.c:245
 #: ../ctk/ctkexpander.c:275 ../ctk/ctkframe.c:166 ../ctk/ctklabel.c:727
 #: ../ctk/ctkmenuitem.c:444 ../ctk/ctktoolbutton.c:239
 #: ../ctk/ctktoolitemgroup.c:1597
 msgid "Label"
 msgstr "அடையாளம்"
 
-#: ../ctk/deprecated/ctkaction.c:265
+#: ../ctk/ctkaction.c:265
 msgid "The label used for menu items and buttons that activate this action."
 msgstr ""
 "இந்த செயலை தூண்டும் பட்டியல் உருப்படி மற்றும் பொத்தான்களுக்கு அடையாளம் "
 
-#: ../ctk/deprecated/ctkaction.c:284
+#: ../ctk/ctkaction.c:284
 msgid "Short label"
 msgstr "சிறுமையான விளக்கச்சீட்டுகள்"
 
-#: ../ctk/deprecated/ctkaction.c:285
+#: ../ctk/ctkaction.c:285
 msgid "A shorter label that may be used on toolbar buttons."
 msgstr "கருவிப்பட்டை பொத்தான்களுக்கு பயன்படும் குறுகிய அடையாளம் "
 
-#: ../ctk/deprecated/ctkaction.c:300
+#: ../ctk/ctkaction.c:300
 msgid "Tooltip"
 msgstr "உதவிகருவி"
 
-#: ../ctk/deprecated/ctkaction.c:301
+#: ../ctk/ctkaction.c:301
 msgid "A tooltip for this action."
 msgstr "இந்த செயலுக்கான ஒரு துணுக்கு செய்தி"
 
-#: ../ctk/deprecated/ctkaction.c:319
+#: ../ctk/ctkaction.c:319
 msgid "Stock Icon"
 msgstr "இருப்பு சின்னம்"
 
-#: ../ctk/deprecated/ctkaction.c:320
+#: ../ctk/ctkaction.c:320
 msgid "The stock icon displayed in widgets representing this action."
 msgstr ""
 "இந்த செயலை பிரதிநிதிக்கும் விட்செட்டுகளில் காட்டப்படும் முன்னிருப்பு சின்னம் "
 
-#: ../ctk/deprecated/ctkaction.c:342 ../ctk/deprecated/ctkstatusicon.c:269
+#: ../ctk/ctkaction.c:342 ../ctk/deprecated/ctkstatusicon.c:269
 msgid "GIcon"
 msgstr "GIcon"
 
-#: ../ctk/deprecated/ctkaction.c:343 ../ctk/deprecated/ctkstatusicon.c:270
+#: ../ctk/ctkaction.c:343 ../ctk/deprecated/ctkstatusicon.c:270
 #: ../ctk/ctkcellrendererpixbuf.c:258 ../ctk/ctkimage.c:343
 msgid "The GIcon being displayed"
 msgstr "இந்த GIcon காட்டப்படுகிறது"
 
-#: ../ctk/deprecated/ctkaction.c:365 ../ctk/deprecated/ctkstatusicon.c:253
+#: ../ctk/ctkaction.c:365 ../ctk/deprecated/ctkstatusicon.c:253
 #: ../ctk/ctkcellrendererpixbuf.c:223 ../ctk/ctkimage.c:325
 #: ../ctk/ctkprinter.c:170 ../ctk/ctkwindow.c:859
 msgid "Icon Name"
 msgstr "சின்னத்தின் பெயர்"
 
-#: ../ctk/deprecated/ctkaction.c:366 ../ctk/deprecated/ctkstatusicon.c:254
+#: ../ctk/ctkaction.c:366 ../ctk/deprecated/ctkstatusicon.c:254
 #: ../ctk/ctkcellrendererpixbuf.c:224 ../ctk/ctkimage.c:326
 msgid "The name of the icon from the icon theme"
 msgstr "சின்ன சூழலிலிருந்து சின்னத்தின் பெயர்"
 
-#: ../ctk/deprecated/ctkaction.c:381 ../ctk/ctktoolitem.c:179
+#: ../ctk/ctkaction.c:381 ../ctk/ctktoolitem.c:179
 msgid "Visible when horizontal"
 msgstr "கிடைமட்டமாக இருக்கும் போது தெரியும்"
 
-#: ../ctk/deprecated/ctkaction.c:382 ../ctk/ctktoolitem.c:180
+#: ../ctk/ctkaction.c:382 ../ctk/ctktoolitem.c:180
 msgid ""
 "Whether the toolbar item is visible when the toolbar is in a horizontal "
 "orientation."
 msgstr "கருவிப்பட்டை கிடைமட்டமாக உள்ளபோது அதன் உருப்படிகள் தெரியவேண்டுமா"
 
-#: ../ctk/deprecated/ctkaction.c:400
+#: ../ctk/ctkaction.c:400
 msgid "Visible when overflown"
 msgstr "நிரம்பிய பின் பார்வையில் உள்ளது"
 
-#: ../ctk/deprecated/ctkaction.c:401
+#: ../ctk/ctkaction.c:401
 msgid ""
 "When TRUE, toolitem proxies for this action are represented in the toolbar "
 "overflow menu."
@@ -274,21 +274,21 @@ msgstr ""
 "நிரம்பிய பின் "
 "காட்டப்படும்"
 
-#: ../ctk/deprecated/ctkaction.c:417 ../ctk/ctktoolitem.c:186
+#: ../ctk/ctkaction.c:417 ../ctk/ctktoolitem.c:186
 msgid "Visible when vertical"
 msgstr "செங்குத்தாக இருக்கும் போது தெரியும்"
 
-#: ../ctk/deprecated/ctkaction.c:418 ../ctk/ctktoolitem.c:187
+#: ../ctk/ctkaction.c:418 ../ctk/ctktoolitem.c:187
 msgid ""
 "Whether the toolbar item is visible when the toolbar is in a vertical "
 "orientation."
 msgstr "கருவிப்பட்டை செங்குத்தாக உள்ளபோது அதன் உருப்படிகள் தெரியவேண்டுமா"
 
-#: ../ctk/deprecated/ctkaction.c:434 ../ctk/ctktoolitem.c:193
+#: ../ctk/ctkaction.c:434 ../ctk/ctktoolitem.c:193
 msgid "Is important"
 msgstr "முக்கியமானது"
 
-#: ../ctk/deprecated/ctkaction.c:435
+#: ../ctk/ctkaction.c:435
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
 "this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
@@ -297,38 +297,38 @@ msgstr ""
 "உருப்படி "
 "பதிலாள்கள் உரையை CTK_TOOLBAR_BOTH_HORIZ யாங்கில்ன் காட்டப்படும்"
 
-#: ../ctk/deprecated/ctkaction.c:451
+#: ../ctk/ctkaction.c:451
 msgid "Hide if empty"
 msgstr "வெற்றாக இருந்தால் மறை"
 
-#: ../ctk/deprecated/ctkaction.c:452
+#: ../ctk/ctkaction.c:452
 msgid "When TRUE, empty menu proxies for this action are hidden."
 msgstr "உண்மை எனில் இந்த செயலுக்கான வெற்று பட்டியல் பதிலாட்கள் மறைக்கப்படும்"
 
-#: ../ctk/deprecated/ctkaction.c:466 ../ctk/deprecated/ctkactiongroup.c:214
+#: ../ctk/ctkaction.c:466 ../ctk/deprecated/ctkactiongroup.c:214
 #: ../ctk/ctkcellrenderer.c:301 ../ctk/ctkwidget.c:1277
 msgid "Sensitive"
 msgstr "உணர்வுடையது"
 
-#: ../ctk/deprecated/ctkaction.c:467
+#: ../ctk/ctkaction.c:467
 msgid "Whether the action is enabled."
 msgstr "செயல் செயல்படுத்தப்பட்டதா."
 
-#: ../ctk/deprecated/ctkaction.c:481 ../ctk/deprecated/ctkactiongroup.c:228
+#: ../ctk/ctkaction.c:481 ../ctk/deprecated/ctkactiongroup.c:228
 #: ../ctk/deprecated/ctkstatusicon.c:304 ../ctk/ctktreeviewcolumn.c:245
 #: ../ctk/ctkwidget.c:1270
 msgid "Visible"
 msgstr "பாக்கக்கூடியது"
 
-#: ../ctk/deprecated/ctkaction.c:482
+#: ../ctk/ctkaction.c:482
 msgid "Whether the action is visible."
 msgstr "செயல் தெரிகிறதா."
 
-#: ../ctk/deprecated/ctkaction.c:497
+#: ../ctk/ctkaction.c:497
 msgid "Action Group"
 msgstr "செயல் குழு"
 
-#: ../ctk/deprecated/ctkaction.c:498
+#: ../ctk/ctkaction.c:498
 msgid ""
 "The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
@@ -336,12 +336,12 @@ msgstr ""
 "இந்த ஜிடிகேஆக்ஷன் சார்ந்துள்ள ஜிடிகேஆக்ஷன் குழு அல்லது NULL (உள்ளமை பயனுக்கு "
 "மட்டில்)"
 
-#: ../ctk/deprecated/ctkaction.c:519 ../ctk/deprecated/ctkimagemenuitem.c:205
+#: ../ctk/ctkaction.c:519 ../ctk/deprecated/ctkimagemenuitem.c:205
 #: ../ctk/ctkbutton.c:364
 msgid "Always show image"
 msgstr "எப்போதும் படத்தைக் காட்டு"
 
-#: ../ctk/deprecated/ctkaction.c:520 ../ctk/deprecated/ctkimagemenuitem.c:206
+#: ../ctk/ctkaction.c:520 ../ctk/deprecated/ctkimagemenuitem.c:206
 #: ../ctk/ctkbutton.c:365
 msgid "Whether the image will always be shown"
 msgstr "படம் எப்போதும் காட்டப்பட வேண்டுமா"

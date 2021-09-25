@@ -35,7 +35,7 @@
 
 #include <ctk/ctkaccelgroup.h>
 #include <ctk/ctkwidget.h>
-#include <ctk/deprecated/ctkaction.h>
+#include <ctk/ctkaction.h>
 #include <ctk/deprecated/ctkactiongroup.h>
 
 G_BEGIN_DECLS
