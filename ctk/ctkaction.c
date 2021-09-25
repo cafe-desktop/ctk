@@ -28,13 +28,9 @@
 
 /**
  * SECTION:ctkaction
- * @Short_description: A deprecated action which can be triggered by a menu or toolbar item
+ * @Short_description: An action which can be triggered by a menu or toolbar item
  * @Title: CtkAction
  * @See_also: #CtkActionGroup, #CtkUIManager, #CtkActivatable
- *
- * > In CTK+ 3.10, CtkAction has been deprecated. Use #GAction
- * > instead, and associate actions with #CtkActionable widgets. Use
- * > #GMenuModel for creating menus with ctk_menu_new_from_model().
  *
  * Actions represent operations that the user can be perform, along with
  * some information how it should be presented in the interface. Each action
@@ -82,8 +78,6 @@
  */
 
 #include "config.h"
-
-#define CDK_DISABLE_DEPRECATION_WARNINGS
 
 #include "ctkaction.h"
 #include "ctkactiongroup.h"
@@ -223,9 +217,7 @@ ctk_action_class_init (CtkActionClass *klass)
   klass->create_menu_item  = create_menu_item;
   klass->create_tool_item  = create_tool_item;
   klass->create_menu       = NULL;
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   klass->menu_item_type    = CTK_TYPE_IMAGE_MENU_ITEM;
-  G_GNUC_END_IGNORE_DEPRECATIONS;
   klass->toolbar_item_type = CTK_TYPE_TOOL_BUTTON;
   klass->connect_proxy    = connect_proxy;
   klass->disconnect_proxy = disconnect_proxy;
@@ -234,8 +226,6 @@ ctk_action_class_init (CtkActionClass *klass)
    * CtkAction:name:
    *
    * A unique name for the action.
-   *
-   * Deprecated: 3.10: Use #GAction:name instead
    */
   g_object_class_install_property (gobject_class,
 				   PROP_NAME,
@@ -255,8 +245,6 @@ ctk_action_class_init (CtkActionClass *klass)
    *
    * This is an appearance property and thus only applies if 
    * #CtkActivatable:use-action-appearance is %TRUE.
-   *
-   * Deprecated: 3.10: Use the "label" attribute on #GMenuItem instead
    */
   g_object_class_install_property (gobject_class,
 				   PROP_LABEL,
@@ -274,9 +262,6 @@ ctk_action_class_init (CtkActionClass *klass)
    *
    * This is an appearance property and thus only applies if 
    * #CtkActivatable:use-action-appearance is %TRUE.
-   *
-   * Deprecated: 3.10: There is no corresponding replacement when using
-   * #GAction
    */
   g_object_class_install_property (gobject_class,
 				   PROP_SHORT_LABEL,
@@ -291,8 +276,6 @@ ctk_action_class_init (CtkActionClass *klass)
    * CtkAction:tooltip:
    *
    * A tooltip for this action.
-   *
-   * Deprecated: 3.10: Use ctk_widget_set_tooltip_text() instead
    */
   g_object_class_install_property (gobject_class,
 				   PROP_TOOLTIP,
@@ -309,9 +292,6 @@ ctk_action_class_init (CtkActionClass *klass)
    *
    * This is an appearance property and thus only applies if 
    * #CtkActivatable:use-action-appearance is %TRUE.
-   *
-   * Deprecated: 3.10: There is no corresponding replacement when using
-   * #GAction
    */
   g_object_class_install_property (gobject_class,
 				   PROP_STOCK_ID,
@@ -333,8 +313,6 @@ ctk_action_class_init (CtkActionClass *klass)
    * #CtkActivatable:use-action-appearance is %TRUE.
    *
    * Since: 2.16
-   *
-   * Deprecated: 3.10: Use the "icon" attribute on a #GMenuItem instead
    */
   g_object_class_install_property (gobject_class,
 				   PROP_GICON,
@@ -356,8 +334,6 @@ ctk_action_class_init (CtkActionClass *klass)
    * #CtkActivatable:use-action-appearance is %TRUE.
    *
    * Since: 2.10
-   *
-   * Deprecated: 3.10: Use the "icon" attribute on a #GMenuItem instead
    */
   g_object_class_install_property (gobject_class,
 				   PROP_ICON_NAME,
@@ -371,9 +347,6 @@ ctk_action_class_init (CtkActionClass *klass)
    * CtkAction:visible-horizontal:
    *
    * Whether the toolbar item is visible when the toolbar is in a horizontal orientation.
-   *
-   * Deprecated: 3.10: There is no corresponding replacement when using
-   * #GAction
    */
   g_object_class_install_property (gobject_class,
 				   PROP_VISIBLE_HORIZONTAL,
@@ -390,9 +363,6 @@ ctk_action_class_init (CtkActionClass *klass)
    * toolbar overflow menu.
    *
    * Since: 2.6
-   *
-   * Deprecated: 3.10: There is no corresponding replacement when using
-   * #GAction
    */
   g_object_class_install_property (gobject_class,
 				   PROP_VISIBLE_OVERFLOWN,
@@ -407,9 +377,6 @@ ctk_action_class_init (CtkActionClass *klass)
    * CtkAction:visible-vertical:
    *
    * Whether the toolbar item is visible when the toolbar is in a vertical orientation.
-   *
-   * Deprecated: 3.10: There is no corresponding replacement when using
-   * #GAction
    */
   g_object_class_install_property (gobject_class,
 				   PROP_VISIBLE_VERTICAL,
@@ -424,9 +391,6 @@ ctk_action_class_init (CtkActionClass *klass)
    *
    * Whether the action is considered important. When TRUE, toolitem
    * proxies for this action show text in CTK_TOOLBAR_BOTH_HORIZ mode.
-   *
-   * Deprecated: 3.10: There is no corresponding replacement when using
-   * #GAction
    */
   g_object_class_install_property (gobject_class,
 				   PROP_IS_IMPORTANT,
@@ -441,9 +405,6 @@ ctk_action_class_init (CtkActionClass *klass)
    * CtkAction:hide-if-empty:
    *
    * When TRUE, empty menu proxies for this action are hidden.
-   *
-   * Deprecated: 3.10: There is no corresponding replacement when using
-   * #GAction
    */
   g_object_class_install_property (gobject_class,
 				   PROP_HIDE_IF_EMPTY,
@@ -456,9 +417,6 @@ ctk_action_class_init (CtkActionClass *klass)
    * CtkAction:sensitive:
    *
    * Whether the action is enabled.
-   *
-   * Deprecated: 3.10: Use #GAction:enabled and #GSimpleAction:enabled
-   * instead
    */
   g_object_class_install_property (gobject_class,
 				   PROP_SENSITIVE,
@@ -471,9 +429,6 @@ ctk_action_class_init (CtkActionClass *klass)
    * CtkAction:visible:
    *
    * Whether the action is visible.
-   *
-   * Deprecated: 3.10: There is no corresponding replacement when using
-   * #GAction
    */
   g_object_class_install_property (gobject_class,
 				   PROP_VISIBLE,
@@ -487,9 +442,6 @@ ctk_action_class_init (CtkActionClass *klass)
    *
    * The CtkActionGroup this CtkAction is associated with, or NULL
    * (for internal use).
-   *
-   * Deprecated: 3.10: Lookup the #GAction using g_action_map_lookup_action()
-   * instead
    */
   g_object_class_install_property (gobject_class,
 				   PROP_ACTION_GROUP,
@@ -509,9 +461,6 @@ ctk_action_class_init (CtkActionClass *klass)
    * without their image. 
    *
    * Since: 2.20
-   *
-   * Deprecated: 3.10: There is no corresponding replacement when using
-   * #GAction
    **/
   g_object_class_install_property (gobject_class,
                                    PROP_ALWAYS_SHOW_IMAGE,
@@ -528,8 +477,6 @@ ctk_action_class_init (CtkActionClass *klass)
    * The "activate" signal is emitted when the action is activated.
    *
    * Since: 2.4
-   *
-   * Deprecated: 3.10: Use #GSimpleAction::activate instead
    */
   action_signals[ACTIVATE] =
     g_signal_new (I_("activate"),
@@ -624,9 +571,6 @@ ctk_action_buildable_get_name (CtkBuildable *buildable)
  * Returns: a new #CtkAction
  *
  * Since: 2.4
- *
- * Deprecated: 3.10: Use #GAction instead, associating it to a widget with
- * #CtkActionable or creating a #CtkMenu with ctk_menu_new_from_model()
  */
 CtkAction *
 ctk_action_new (const gchar *name,
@@ -864,8 +808,6 @@ disconnect_proxy (CtkAction *action,
  *   property of @action indicates otherwise
  *
  * This function is used in the implementation of #CtkUIManager.
- *
- * Deprecated: 3.10
  **/
 void
 _ctk_action_sync_menu_visible (CtkAction *action,
@@ -927,8 +869,6 @@ _ctk_action_emit_activate (CtkAction *action)
  * It can also be used to manually activate an action.
  *
  * Since: 2.4
- *
- * Deprecated: 3.10: Use g_action_group_activate_action() on a #GAction instead
  */
 void
 ctk_action_activate (CtkAction *action)
@@ -954,9 +894,6 @@ ctk_action_activate (CtkAction *action)
  * cases (updating toggle state for instance).
  *
  * Since: 2.16
- *
- * Deprecated: 3.10: Use g_simple_action_set_enabled() to disable the
- * #GSimpleAction instead
  */
 void
 ctk_action_block_activate (CtkAction *action)
@@ -973,9 +910,6 @@ ctk_action_block_activate (CtkAction *action)
  * Reenable activation signals from the action 
  *
  * Since: 2.16
- *
- * Deprecated: 3.10: Use g_simple_action_set_enabled() to enable the
- * #GSimpleAction instead
  */
 void
 ctk_action_unblock_activate (CtkAction *action)
@@ -997,9 +931,6 @@ ctk_action_unblock_activate (CtkAction *action)
  * Returns: (transfer none): a widget that displays the icon for this action.
  *
  * Since: 2.4
- *
- * Deprecated: 3.10: Use g_menu_item_set_icon() to set an icon on a #GMenuItem,
- * or ctk_container_add() to add a #CtkImage to a #CtkButton
  */
 CtkWidget *
 ctk_action_create_icon (CtkAction *action, CtkIconSize icon_size)
@@ -1008,8 +939,6 @@ ctk_action_create_icon (CtkAction *action, CtkIconSize icon_size)
 
   g_return_val_if_fail (CTK_IS_ACTION (action), NULL);
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-
   if (action->private_data->stock_id &&
       ctk_icon_factory_lookup_default (action->private_data->stock_id))
     widget = ctk_image_new_from_stock (action->private_data->stock_id, icon_size);
@@ -1017,8 +946,6 @@ ctk_action_create_icon (CtkAction *action, CtkIconSize icon_size)
     widget = ctk_image_new_from_gicon (action->private_data->gicon, icon_size);
   else if (action->private_data->icon_name)
     widget = ctk_image_new_from_icon_name (action->private_data->icon_name, icon_size);
-
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 
   return widget;
 }
@@ -1032,9 +959,6 @@ ctk_action_create_icon (CtkAction *action, CtkIconSize icon_size)
  * Returns: (transfer none): a menu item connected to the action.
  *
  * Since: 2.4
- *
- * Deprecated: 3.10: Use g_menu_item_new() and associate it with a #GAction
- * instead.
  */
 CtkWidget *
 ctk_action_create_menu_item (CtkAction *action)
@@ -1060,9 +984,6 @@ ctk_action_create_menu_item (CtkAction *action)
  * Returns: (transfer none): a toolbar item connected to the action.
  *
  * Since: 2.4
- *
- * Deprecated: 3.10: Use a #CtkToolItem and associate it with a #GAction using
- * ctk_actionable_set_action_name() instead
  */
 CtkWidget *
 ctk_action_create_tool_item (CtkAction *action)
@@ -1110,8 +1031,6 @@ _ctk_action_remove_from_proxy_list (CtkAction     *action,
  * and must not be modified.
  *
  * Since: 2.4
- *
- * Deprecated: 3.10
  **/
 GSList*
 ctk_action_get_proxies (CtkAction *action)
@@ -1131,8 +1050,6 @@ ctk_action_get_proxies (CtkAction *action)
  *   be freed.
  *
  * Since: 2.4
- *
- * Deprecated: 3.10: Use g_action_get_name() on a #GAction instead
  **/
 const gchar *
 ctk_action_get_name (CtkAction *action)
@@ -1152,9 +1069,6 @@ ctk_action_get_name (CtkAction *action)
  * are both sensitive.
  *
  * Since: 2.4
- *
- * Deprecated: 3.10: Use g_action_get_enabled() on a #GAction
- * instead
  **/
 gboolean
 ctk_action_is_sensitive (CtkAction *action)
@@ -1179,9 +1093,6 @@ ctk_action_is_sensitive (CtkAction *action)
  * Returns: %TRUE if the action itself is sensitive.
  *
  * Since: 2.4
- *
- * Deprecated: 3.10: Use g_action_get_enabled() on a #GAction
- * instead
  **/
 gboolean
 ctk_action_get_sensitive (CtkAction *action)
@@ -1202,9 +1113,6 @@ ctk_action_get_sensitive (CtkAction *action)
  * for that.
  *
  * Since: 2.6
- *
- * Deprecated: 3.10: Use g_simple_action_set_enabled() on a #GSimpleAction
- * instead
  **/
 void
 ctk_action_set_sensitive (CtkAction *action,
@@ -1232,9 +1140,6 @@ ctk_action_set_sensitive (CtkAction *action,
  * are both visible.
  *
  * Since: 2.4
- *
- * Deprecated: 3.10: Use #GAction instead, and control and monitor the state of
- * #CtkActionable widgets directly
  **/
 gboolean
 ctk_action_is_visible (CtkAction *action)
@@ -1259,9 +1164,6 @@ ctk_action_is_visible (CtkAction *action)
  * Returns: %TRUE if the action itself is visible.
  *
  * Since: 2.4
- *
- * Deprecated: 3.10: Use #GAction instead, and control and monitor the state of
- * #CtkActionable widgets directly
  **/
 gboolean
 ctk_action_get_visible (CtkAction *action)
@@ -1282,9 +1184,6 @@ ctk_action_get_visible (CtkAction *action)
  * for that.
  *
  * Since: 2.6
- *
- * Deprecated: 3.10: Use #GAction instead, and control and monitor the state of
- * #CtkActionable widgets directly
  **/
 void
 ctk_action_set_visible (CtkAction *action,
@@ -1311,9 +1210,6 @@ ctk_action_set_visible (CtkAction *action,
  * or not.
  *
  * Since: 2.16
- *
- * Deprecated: 3.10: Use #GAction instead, and control and monitor whether
- * labels are shown directly
  */
 void 
 ctk_action_set_is_important (CtkAction *action,
@@ -1340,9 +1236,6 @@ ctk_action_set_is_important (CtkAction *action,
  * Returns: whether @action is important
  *
  * Since: 2.16
- *
- * Deprecated: 3.10: Use #GAction instead, and control and monitor whether
- * labels are shown directly
  */
 gboolean 
 ctk_action_get_is_important (CtkAction *action)
@@ -1364,9 +1257,6 @@ ctk_action_get_is_important (CtkAction *action)
  * without their image.
  *
  * Since: 2.20
- *
- * Deprecated: 3.10: Use g_menu_item_set_icon() on a #GMenuItem instead, if the
- * item should have an image
  */
 void
 ctk_action_set_always_show_image (CtkAction *action,
@@ -1398,9 +1288,6 @@ ctk_action_set_always_show_image (CtkAction *action,
  * Returns: %TRUE if the menu item proxies will always show their image
  *
  * Since: 2.20
- *
- * Deprecated: 3.10: Use g_menu_item_get_attribute_value() on a #GMenuItem
- * instead
  */
 gboolean
 ctk_action_get_always_show_image  (CtkAction *action)
@@ -1418,10 +1305,6 @@ ctk_action_get_always_show_image  (CtkAction *action)
  * Sets the label of @action.
  *
  * Since: 2.16
- *
- * Deprecated: 3.10: Use #GAction instead, and set a label on a menu item with
- * g_menu_item_set_label(). For #CtkActionable widgets, use the widget-specific
- * API to set a label
  */
 void 
 ctk_action_set_label (CtkAction	  *action,
@@ -1440,12 +1323,8 @@ ctk_action_set_label (CtkAction	  *action,
     {
       CtkStockItem stock_item;
 
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-
       if (ctk_stock_lookup (action->private_data->stock_id, &stock_item))
 	action->private_data->label = g_strdup (stock_item.label);
-
-      G_GNUC_END_IGNORE_DEPRECATIONS;
     }
 
   g_object_notify (G_OBJECT (action), "label");
@@ -1467,10 +1346,6 @@ ctk_action_set_label (CtkAction	  *action,
  * Returns: the label text
  *
  * Since: 2.16
- *
- * Deprecated: 3.10: Use #GAction instead, and get a label from a menu item
- * with g_menu_item_get_attribute_value(). For #CtkActionable widgets, use the
- * widget-specific API to get a label
  */
 const gchar *
 ctk_action_get_label (CtkAction *action)
@@ -1488,9 +1363,6 @@ ctk_action_get_label (CtkAction *action)
  * Sets a shorter label text on @action.
  *
  * Since: 2.16
- *
- * Deprecated: 3.10: Use #GAction instead, which has no equivalent of short
- * labels
  */
 void 
 ctk_action_set_short_label (CtkAction   *action,
@@ -1520,9 +1392,6 @@ ctk_action_set_short_label (CtkAction   *action,
  * Returns: the short label text.
  *
  * Since: 2.16
- *
- * Deprecated: 3.10: Use #GAction instead, which has no equivalent of short
- * labels
  */
 const gchar *
 ctk_action_get_short_label (CtkAction *action)
@@ -1540,9 +1409,6 @@ ctk_action_get_short_label (CtkAction *action)
  * Sets whether @action is visible when horizontal
  *
  * Since: 2.16
- *
- * Deprecated: 3.10: Use #GAction instead, and control and monitor the
- * visibility of associated widgets and menu items directly
  */
 void 
 ctk_action_set_visible_horizontal (CtkAction *action,
@@ -1571,9 +1437,6 @@ ctk_action_set_visible_horizontal (CtkAction *action,
  * Returns: whether @action is visible when horizontal
  *
  * Since: 2.16
- *
- * Deprecated: 3.10: Use #GAction instead, and control and monitor the
- * visibility of associated widgets and menu items directly
  */
 gboolean 
 ctk_action_get_visible_horizontal (CtkAction *action)
@@ -1591,9 +1454,6 @@ ctk_action_get_visible_horizontal (CtkAction *action)
  * Sets whether @action is visible when vertical 
  *
  * Since: 2.16
- *
- * Deprecated: 3.10: Use #GAction instead, and control and monitor the
- * visibility of associated widgets and menu items directly
  */
 void 
 ctk_action_set_visible_vertical (CtkAction *action,
@@ -1622,9 +1482,6 @@ ctk_action_set_visible_vertical (CtkAction *action,
  * Returns: whether @action is visible when horizontal
  *
  * Since: 2.16
- *
- * Deprecated: 3.10: Use #GAction instead, and control and monitor the
- * visibility of associated widgets and menu items directly
  */
 gboolean 
 ctk_action_get_visible_vertical (CtkAction *action)
@@ -1642,9 +1499,6 @@ ctk_action_get_visible_vertical (CtkAction *action)
  * Sets the tooltip text on @action
  *
  * Since: 2.16
- *
- * Deprecated: 3.10: Use #GAction instead, and set tooltips on associated
- * #CtkActionable widgets with ctk_widget_set_tooltip_text()
  */
 void 
 ctk_action_set_tooltip (CtkAction   *action,
@@ -1670,9 +1524,6 @@ ctk_action_set_tooltip (CtkAction   *action,
  * Returns: the tooltip text
  *
  * Since: 2.16
- *
- * Deprecated: 3.10: Use #GAction instead, and get tooltips from associated
- * #CtkActionable widgets with ctk_widget_get_tooltip_text()
  */
 const gchar *
 ctk_action_get_tooltip (CtkAction *action)
@@ -1690,9 +1541,6 @@ ctk_action_get_tooltip (CtkAction *action)
  * Sets the stock id on @action
  *
  * Since: 2.16
- *
- * Deprecated: 3.10: Use #GAction instead, which has no equivalent of stock
- * items
  */
 void 
 ctk_action_set_stock_id (CtkAction   *action,
@@ -1715,15 +1563,11 @@ ctk_action_set_stock_id (CtkAction   *action,
     {
       CtkStockItem stock_item;
 
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-
       if (action->private_data->stock_id &&
 	  ctk_stock_lookup (action->private_data->stock_id, &stock_item))
 	ctk_action_set_label (action, stock_item.label);
       else
 	ctk_action_set_label (action, NULL);
-
-      G_GNUC_END_IGNORE_DEPRECATIONS;
 
       action->private_data->label_set = FALSE;
     }
@@ -1738,9 +1582,6 @@ ctk_action_set_stock_id (CtkAction   *action,
  * Returns: the stock id
  *
  * Since: 2.16
- *
- * Deprecated: 3.10: Use #GAction instead, which has no equivalent of stock
- * items
  */
 const gchar *
 ctk_action_get_stock_id (CtkAction *action)
@@ -1758,10 +1599,6 @@ ctk_action_get_stock_id (CtkAction *action)
  * Sets the icon name on @action
  *
  * Since: 2.16
- *
- * Deprecated: 3.10: Use #GAction instead, and g_menu_item_set_icon() to set an
- * icon on a #GMenuItem associated with a #GAction, or ctk_container_add() to
- * add a #CtkImage to a #CtkButton
  */
 void 
 ctk_action_set_icon_name (CtkAction   *action,
@@ -1787,10 +1624,6 @@ ctk_action_set_icon_name (CtkAction   *action,
  * Returns: the icon name
  *
  * Since: 2.16
- *
- * Deprecated: 3.10: Use #GAction instead, and
- * g_menu_item_get_attribute_value() to get an icon from a #GMenuItem
- * associated with a #GAction
  */
 const gchar *
 ctk_action_get_icon_name (CtkAction *action)
@@ -1808,10 +1641,6 @@ ctk_action_get_icon_name (CtkAction *action)
  * Sets the icon of @action.
  *
  * Since: 2.16
- *
- * Deprecated: 3.10: Use #GAction instead, and g_menu_item_set_icon() to set an
- * icon on a #GMenuItem associated with a #GAction, or ctk_container_add() to
- * add a #CtkImage to a #CtkButton
  */
 void
 ctk_action_set_gicon (CtkAction *action,
@@ -1839,10 +1668,6 @@ ctk_action_set_gicon (CtkAction *action,
  * Returns: (transfer none): The action’s #GIcon if one is set.
  *
  * Since: 2.16
- *
- * Deprecated: 3.10: Use #GAction instead, and
- * g_menu_item_get_attribute_value() to get an icon from a #GMenuItem
- * associated with a #GAction
  */
 GIcon *
 ctk_action_get_gicon (CtkAction *action)
@@ -1895,9 +1720,6 @@ ctk_action_set_action_group (CtkAction	    *action,
  * g_intern_static_string().
  *
  * Since: 2.4
- *
- * Deprecated: 3.10: Use #GAction and the accelerator path on an associated
- * #CtkMenu instead
  */
 void
 ctk_action_set_accel_path (CtkAction   *action, 
@@ -1919,9 +1741,6 @@ ctk_action_set_accel_path (CtkAction   *action,
  * Returns: the accel path for this action, or %NULL
  *   if none is set. The returned string is owned by CTK+ 
  *   and must not be freed or modified.
- *
- * Deprecated: 3.10: Use #GAction and the accelerator path on an associated
- * #CtkMenu instead
  */
 const gchar *
 ctk_action_get_accel_path (CtkAction *action)
@@ -1945,9 +1764,6 @@ ctk_action_get_accel_path (CtkAction *action)
  * Returns: (transfer none): the accel closure for this action. The
  *          returned closure is owned by CTK+ and must not be unreffed
  *          or modified.
- *
- * Deprecated: 3.10: Use #GAction and #CtkMenu instead, which have no
- * equivalent for getting the accel closure
  */
 GClosure *
 ctk_action_get_accel_closure (CtkAction *action)
@@ -1967,9 +1783,6 @@ ctk_action_get_accel_closure (CtkAction *action)
  * will be installed.
  *
  * Since: 2.4
- *
- * Deprecated: 3.10: Use #GAction and the accelerator group on an associated
- * #CtkMenu instead
  **/
 void
 ctk_action_set_accel_group (CtkAction     *action,
@@ -2000,9 +1813,6 @@ ctk_action_set_accel_group (CtkAction     *action,
  * ctk_action_disconnect_accelerator() has been called as many times.
  *
  * Since: 2.4
- *
- * Deprecated: 3.10: Use #GAction and the accelerator group on an associated
- * #CtkMenu instead
  **/
 void 
 ctk_action_connect_accelerator (CtkAction *action)
@@ -2033,9 +1843,6 @@ ctk_action_connect_accelerator (CtkAction *action)
  * Undoes the effect of one call to ctk_action_connect_accelerator().
  *
  * Since: 2.4
- *
- * Deprecated: 3.10: Use #GAction and the accelerator group on an associated
- * #CtkMenu instead
  **/
 void 
 ctk_action_disconnect_accelerator (CtkAction *action)
@@ -2065,9 +1872,6 @@ ctk_action_disconnect_accelerator (CtkAction *action)
  *               action, or %NULL.
  *
  * Since: 2.12
- *
- * Deprecated: 3.10: Use #GAction and #GMenuModel instead, and create a
- * #CtkMenu with ctk_menu_new_from_model()
  */
 CtkWidget *
 ctk_action_create_menu (CtkAction *action)

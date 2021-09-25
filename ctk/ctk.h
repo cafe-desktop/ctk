@@ -33,6 +33,7 @@
 #include <ctk/ctkaccellabel.h>
 #include <ctk/ctkaccelmap.h>
 #include <ctk/ctkaccessible.h>
+#include <ctk/ctkaction.h>
 #include <ctk/ctkactionable.h>
 #include <ctk/ctkactionbar.h>
 #include <ctk/ctkadjustment.h>
@@ -254,7 +255,6 @@
 #ifndef CTK_DISABLE_DEPRECATED
 #include <ctk/deprecated/ctkarrow.h>
 #include <ctk/deprecated/ctkactivatable.h>
-#include <ctk/deprecated/ctkaction.h>
 #include <ctk/deprecated/ctkactiongroup.h>
 #include <ctk/deprecated/ctkalignment.h>
 #include <ctk/deprecated/ctkcolorsel.h>
