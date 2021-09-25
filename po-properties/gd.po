@@ -1070,24 +1070,24 @@ msgstr ""
 msgid "Theming engine name"
 msgstr "Ainm einnsean nan ùrlaran"
 
-#: ctk/deprecated/ctktoggleaction.c:118
+#: ctk/ctktoggleaction.c:118
 msgid "Create the same proxies as a radio action"
 msgstr "Cruthaich na h-aon phrogsaidhean mar ghnìomh rèidio"
 
-#: ctk/deprecated/ctktoggleaction.c:119
+#: ctk/ctktoggleaction.c:119
 msgid "Whether the proxies for this action look like radio action proxies"
 msgstr ""
 "Co-dhiù am bi coltas progsaidhean gnìomh rèidio aig na progsaidhean airson "
 "a’ ghnìomh seo"
 
-#: ctk/deprecated/ctktoggleaction.c:135 ctk/ctkcellrendererspinner.c:125
+#: ctk/ctktoggleaction.c:135 ctk/ctkcellrendererspinner.c:125
 #: ctk/ctkcheckmenuitem.c:209 ctk/ctkmenu.c:632 ctk/ctkmodelbutton.c:1145
 #: ctk/ctkmodelbutton.c:1146 ctk/ctkspinner.c:221 ctk/ctkswitch.c:895
 #: ctk/ctktogglebutton.c:188 ctk/ctktoggletoolbutton.c:130
 msgid "Active"
 msgstr "Gnìomhach"
 
-#: ctk/deprecated/ctktoggleaction.c:136
+#: ctk/ctktoggleaction.c:136
 msgid "Whether the toggle action should be active"
 msgstr "Co-dhiù am bi an gnìomh toglachaidh gnìomhach"
 

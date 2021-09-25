@@ -1009,22 +1009,22 @@ msgstr ""
 "পিক্সেল "
 "সংখ্যা"
 
-#: ../ctk/deprecated/ctktoggleaction.c:120
+#: ../ctk/ctktoggleaction.c:120
 msgid "Create the same proxies as a radio action"
 msgstr "এই নিযুক্তকসমূহকই ৰেডিঅ' বুটাম হিচাপে তৈৰি কৰক"
 
-#: ../ctk/deprecated/ctktoggleaction.c:121
+#: ../ctk/ctktoggleaction.c:121
 msgid "Whether the proxies for this action look like radio action proxies"
 msgstr "এই অ্যাকশনেৰ নিযুক্তককে ৰেডিঅ' অ্যাকশনেৰ নিযুক্তকৰ বাবে মনে হয় নে"
 
-#: ../ctk/deprecated/ctktoggleaction.c:137 ../ctk/ctkcellrendererspinner.c:125
+#: ../ctk/ctktoggleaction.c:137 ../ctk/ctkcellrendererspinner.c:125
 #: ../ctk/ctkcheckmenuitem.c:122 ../ctk/ctkmenu.c:555 ../ctk/ctkspinner.c:119
 #: ../ctk/ctkswitch.c:909 ../ctk/ctktogglebutton.c:178
 #: ../ctk/ctktoggletoolbutton.c:127
 msgid "Active"
 msgstr "সক্ৰিয়"
 
-#: ../ctk/deprecated/ctktoggleaction.c:138
+#: ../ctk/ctktoggleaction.c:138
 msgid "Whether the toggle action should be active"
 msgstr "টগল কাৰ্য্যটো সক্ৰিয় থাকিব নে"
 

@@ -1031,22 +1031,22 @@ msgstr "ਚਲਾਇਡ ਅਤੇ ਇਸ ਦੇ ਉੱਤੇਲੇ ਤੇ ਹੇ
 msgid "Theming engine name"
 msgstr "ਥੀਮਿੰਗ ਇੰਜਣ ਨਾਂ"
 
-#: ctk/deprecated/ctktoggleaction.c:118
+#: ctk/ctktoggleaction.c:118
 msgid "Create the same proxies as a radio action"
 msgstr "ਉਸੇਤਰ੍ਹਾਂ ਦੀਆਂ ਪਰਾਕਸੀ ਬਣਾਉ, ਜਿਸਤਰਾਂ ਦੀਆਂ ਰੇਡੀਉ ਕਾਰਵਾਈ ਹੈ"
 
-#: ctk/deprecated/ctktoggleaction.c:119
+#: ctk/ctktoggleaction.c:119
 msgid "Whether the proxies for this action look like radio action proxies"
 msgstr "ਕੀ ਇਸ ਕਾਰਵਾਈ ਦੀ ਪਰਾਕਸੀ ਰੇਡੀਉ ਕਾਰਵਾਈ ਪਰਾਕਸੀ ਵਾਂਗ ਲੱਗੇ"
 
-#: ctk/deprecated/ctktoggleaction.c:135 ctk/ctkcellrendererspinner.c:125
+#: ctk/ctktoggleaction.c:135 ctk/ctkcellrendererspinner.c:125
 #: ctk/ctkcheckmenuitem.c:209 ctk/ctkmenu.c:639 ctk/ctkmodelbutton.c:1189
 #: ctk/ctkmodelbutton.c:1190 ctk/ctkspinner.c:221 ctk/ctkswitch.c:875
 #: ctk/ctktogglebutton.c:188 ctk/ctktoggletoolbutton.c:130
 msgid "Active"
 msgstr "ਸਰਗਰਮ"
 
-#: ctk/deprecated/ctktoggleaction.c:136
+#: ctk/ctktoggleaction.c:136
 msgid "Whether the toggle action should be active"
 msgstr "ਜੇ ਤਬਦੀਲ ਕਾਰਵਾਈ ਸਰਗਰਮ ਹੋਵੇ"
 

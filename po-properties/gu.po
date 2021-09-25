@@ -1003,22 +1003,22 @@ msgstr "બાળ અને તેના ઉપર અને નીચેના 
 msgid "Theming engine name"
 msgstr "થીમીંગ એંજિન નામ"
 
-#: ../ctk/deprecated/ctktoggleaction.c:120
+#: ../ctk/ctktoggleaction.c:120
 msgid "Create the same proxies as a radio action"
 msgstr "ફેરબદલી માટેનું બટનને રેડિયો બટન તરીકે દોરો"
 
-#: ../ctk/deprecated/ctktoggleaction.c:121
+#: ../ctk/ctktoggleaction.c:121
 msgid "Whether the proxies for this action look like radio action proxies"
 msgstr "શું આ ક્રિયા માટેના પ્રોક્સીઓ રેડિયો ક્રિયા પ્રોક્સીઓની જેમ દેખાય છે"
 
-#: ../ctk/deprecated/ctktoggleaction.c:137 ../ctk/ctkcellrendererspinner.c:125
+#: ../ctk/ctktoggleaction.c:137 ../ctk/ctkcellrendererspinner.c:125
 #: ../ctk/ctkcheckmenuitem.c:122 ../ctk/ctkmenu.c:555 ../ctk/ctkspinner.c:119
 #: ../ctk/ctkswitch.c:909 ../ctk/ctktogglebutton.c:178
 #: ../ctk/ctktoggletoolbutton.c:127
 msgid "Active"
 msgstr "કાર્યશીલ"
 
-#: ../ctk/deprecated/ctktoggleaction.c:138
+#: ../ctk/ctktoggleaction.c:138
 msgid "Whether the toggle action should be active"
 msgstr "શું ટૉગલ ક્રિયા સક્રિય હોવી જોઇએ"
 

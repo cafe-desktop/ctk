@@ -696,22 +696,22 @@ msgstr ""
 "Фосилаи иловагӣ барои гузоштан дар байни иловагӣ ва ҳамсояҳои болоӣ ва "
 "поёнии он, бо пиксел"
 
-#: ../ctk/deprecated/ctktoggleaction.c:120
+#: ../ctk/ctktoggleaction.c:120
 msgid "Create the same proxies as a radio action"
 msgstr "Эҷоди ваколатҳои монанд ба амали радио"
 
-#: ../ctk/deprecated/ctktoggleaction.c:121
+#: ../ctk/ctktoggleaction.c:121
 msgid "Whether the proxies for this action look like radio action proxies"
 msgstr "Оё ваколатҳо барои ин амал ба ваколатҳои амали радио монанд аст"
 
-#: ../ctk/deprecated/ctktoggleaction.c:137 ../ctk/ctkcellrendererspinner.c:125
+#: ../ctk/ctktoggleaction.c:137 ../ctk/ctkcellrendererspinner.c:125
 #: ../ctk/ctkcheckmenuitem.c:122 ../ctk/ctkmenu.c:555 ../ctk/ctkspinner.c:113
 #: ../ctk/ctkswitch.c:834 ../ctk/ctktogglebutton.c:175
 #: ../ctk/ctktoggletoolbutton.c:127
 msgid "Active"
 msgstr "Фаъол"
 
-#: ../ctk/deprecated/ctktoggleaction.c:138
+#: ../ctk/ctktoggleaction.c:138
 msgid "Whether the toggle action should be active"
 msgstr "Оё амали зомин бояд фаъол бошад"
 

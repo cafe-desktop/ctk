@@ -1033,15 +1033,15 @@ msgstr ""
 msgid "Theming engine name"
 msgstr "Navn på temamotor"
 
-#: ../ctk/deprecated/ctktoggleaction.c:120
+#: ../ctk/ctktoggleaction.c:120
 msgid "Create the same proxies as a radio action"
 msgstr "Opprett samme proxyer som en radiohandling"
 
-#: ../ctk/deprecated/ctktoggleaction.c:121
+#: ../ctk/ctktoggleaction.c:121
 msgid "Whether the proxies for this action look like radio action proxies"
 msgstr "Om proxyene for denne handlingen ser ut som radiohandlingproxyer"
 
-#: ../ctk/deprecated/ctktoggleaction.c:137 ../ctk/ctkcellrendererspinner.c:125
+#: ../ctk/ctktoggleaction.c:137 ../ctk/ctkcellrendererspinner.c:125
 #: ../ctk/ctkcheckmenuitem.c:122 ../ctk/ctkmenu.c:555
 #: ../ctk/ctkmodelbutton.c:895 ../ctk/ctkmodelbutton.c:896
 #: ../ctk/ctkspinner.c:119 ../ctk/ctkswitch.c:906 ../ctk/ctktogglebutton.c:179
@@ -1049,7 +1049,7 @@ msgstr "Om proxyene for denne handlingen ser ut som radiohandlingproxyer"
 msgid "Active"
 msgstr "Aktiv"
 
-#: ../ctk/deprecated/ctktoggleaction.c:138
+#: ../ctk/ctktoggleaction.c:138
 #, fuzzy
 msgid "Whether the toggle action should be active"
 msgstr "Om knappen skal trykkes inn eller ikke"

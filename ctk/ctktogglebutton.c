@@ -31,7 +31,7 @@
 #include "ctklabel.h"
 #include "ctkmain.h"
 #include "ctkmarshalers.h"
-#include "deprecated/ctktoggleaction.h"
+#include "ctktoggleaction.h"
 #include "deprecated/ctkactivatable.h"
 #include "ctkprivate.h"
 #include "ctkintl.h"

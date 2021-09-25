@@ -718,24 +718,24 @@ msgstr ""
 "Espacio adicional que meter entre o fillo y os vecins superiors y inferiors "
 "d'ell, en pixels"
 
-#: ../ctk/deprecated/ctktoggleaction.c:120
+#: ../ctk/ctktoggleaction.c:120
 msgid "Create the same proxies as a radio action"
 msgstr "Creyar os mesmos proxies como una acción de radio"
 
-#: ../ctk/deprecated/ctktoggleaction.c:121
+#: ../ctk/ctktoggleaction.c:121
 msgid "Whether the proxies for this action look like radio action proxies"
 msgstr ""
 "Indica si l'aparencia d'os proxies ta ista acción ye como un proxy d'acción "
 "de radio"
 
-#: ../ctk/deprecated/ctktoggleaction.c:137 ../ctk/ctkcellrendererspinner.c:125
+#: ../ctk/ctktoggleaction.c:137 ../ctk/ctkcellrendererspinner.c:125
 #: ../ctk/ctkcheckmenuitem.c:122 ../ctk/ctkmenu.c:557 ../ctk/ctkspinner.c:113
 #: ../ctk/ctkswitch.c:834 ../ctk/ctktogglebutton.c:176
 #: ../ctk/ctktoggletoolbutton.c:127
 msgid "Active"
 msgstr "Activo"
 
-#: ../ctk/deprecated/ctktoggleaction.c:138
+#: ../ctk/ctktoggleaction.c:138
 msgid "Whether the toggle action should be active"
 msgstr "Indica si l'acción de commutación debe estar activa"
 

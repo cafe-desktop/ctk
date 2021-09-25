@@ -1058,23 +1058,23 @@ msgstr ""
 msgid "Theming engine name"
 msgstr "Nome da engine de tema"
 
-#: ctk/deprecated/ctktoggleaction.c:118
+#: ctk/ctktoggleaction.c:118
 msgid "Create the same proxies as a radio action"
 msgstr "Criar os mesmos proxies de uma ação de opção"
 
-#: ctk/deprecated/ctktoggleaction.c:119
+#: ctk/ctktoggleaction.c:119
 msgid "Whether the proxies for this action look like radio action proxies"
 msgstr ""
 "Se os proxies para essa ação devem se parecer com proxies de ação de opção"
 
-#: ctk/deprecated/ctktoggleaction.c:135 ctk/ctkcellrendererspinner.c:125
+#: ctk/ctktoggleaction.c:135 ctk/ctkcellrendererspinner.c:125
 #: ctk/ctkcheckmenuitem.c:209 ctk/ctkmenu.c:640 ctk/ctkmodelbutton.c:1211
 #: ctk/ctkmodelbutton.c:1212 ctk/ctkspinner.c:221 ctk/ctkswitch.c:878
 #: ctk/ctktogglebutton.c:188 ctk/ctktoggletoolbutton.c:130
 msgid "Active"
 msgstr "Ativo"
 
-#: ctk/deprecated/ctktoggleaction.c:136
+#: ctk/ctktoggleaction.c:136
 msgid "Whether the toggle action should be active"
 msgstr "Se a ação de alternância deve estar ativa"
 

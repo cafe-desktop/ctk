@@ -1025,22 +1025,22 @@ msgstr "子部件及其上下邻接部件之间的额外空间，以像素计"
 msgid "Theming engine name"
 msgstr "主题名称"
 
-#: ctk/deprecated/ctktoggleaction.c:118
+#: ctk/ctktoggleaction.c:118
 msgid "Create the same proxies as a radio action"
 msgstr "将相同的代理创建为单选操作"
 
-#: ctk/deprecated/ctktoggleaction.c:119
+#: ctk/ctktoggleaction.c:119
 msgid "Whether the proxies for this action look like radio action proxies"
 msgstr "此操作的代理是否看起来像单选钮代理"
 
-#: ctk/deprecated/ctktoggleaction.c:135 ctk/ctkcellrendererspinner.c:125
+#: ctk/ctktoggleaction.c:135 ctk/ctkcellrendererspinner.c:125
 #: ctk/ctkcheckmenuitem.c:209 ctk/ctkmenu.c:640 ctk/ctkmodelbutton.c:1211
 #: ctk/ctkmodelbutton.c:1212 ctk/ctkspinner.c:221 ctk/ctkswitch.c:878
 #: ctk/ctktogglebutton.c:188 ctk/ctktoggletoolbutton.c:130
 msgid "Active"
 msgstr "活动"
 
-#: ctk/deprecated/ctktoggleaction.c:136
+#: ctk/ctktoggleaction.c:136
 msgid "Whether the toggle action should be active"
 msgstr "切换操作是否要被激活"
 

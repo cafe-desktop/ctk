@@ -1019,22 +1019,22 @@ msgstr ""
 msgid "Theming engine name"
 msgstr "தீம் செய்யும் என்ஜின் பெயர்"
 
-#: ../ctk/deprecated/ctktoggleaction.c:120
+#: ../ctk/ctktoggleaction.c:120
 msgid "Create the same proxies as a radio action"
 msgstr "அதே பதிலாள்களை ஒரு ரேடியோ செயலாக உருவாக்கு"
 
-#: ../ctk/deprecated/ctktoggleaction.c:121
+#: ../ctk/ctktoggleaction.c:121
 msgid "Whether the proxies for this action look like radio action proxies"
 msgstr "இந்த செயலின் பதிலாள்கள் ரேடியோ செயல் பதில்களை போல இருக்கிறதா"
 
-#: ../ctk/deprecated/ctktoggleaction.c:137 ../ctk/ctkcellrendererspinner.c:125
+#: ../ctk/ctktoggleaction.c:137 ../ctk/ctkcellrendererspinner.c:125
 #: ../ctk/ctkcheckmenuitem.c:122 ../ctk/ctkmenu.c:555 ../ctk/ctkspinner.c:119
 #: ../ctk/ctkswitch.c:909 ../ctk/ctktogglebutton.c:178
 #: ../ctk/ctktoggletoolbutton.c:127
 msgid "Active"
 msgstr "செயல்படக்கூடிய"
 
-#: ../ctk/deprecated/ctktoggleaction.c:138
+#: ../ctk/ctktoggleaction.c:138
 msgid "Whether the toggle action should be active"
 msgstr "மாற்று செயல் செயலில் இருக்கிறதா"
 
