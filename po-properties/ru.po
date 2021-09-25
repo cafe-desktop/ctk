@@ -225,80 +225,80 @@ msgstr "Отрисовщик ячейки"
 msgid "The cell renderer represented by this accessible"
 msgstr "Отрисовщик ячейки, представленный этим вспомогательным объектом"
 
-#: ctk/deprecated/ctkaction.c:243 ctk/deprecated/ctkactiongroup.c:200
+#: ctk/ctkaction.c:243 ctk/deprecated/ctkactiongroup.c:200
 #: ctk/deprecated/ctkthemingengine.c:247 ctk/ctkcssnode.c:638
 #: ctk/ctkprinter.c:121 ctk/ctkstack.c:516 ctk/ctktextmark.c:136
 msgid "Name"
 msgstr "Наименование"
 
-#: ctk/deprecated/ctkaction.c:244
+#: ctk/ctkaction.c:244
 msgid "A unique name for the action."
 msgstr "Уникальное имя для действия."
 
-#: ctk/deprecated/ctkaction.c:264 ctk/ctkbutton.c:281 ctk/ctkexpander.c:308
+#: ctk/ctkaction.c:264 ctk/ctkbutton.c:281 ctk/ctkexpander.c:308
 #: ctk/ctkframe.c:231 ctk/ctklabel.c:805 ctk/ctkmenuitem.c:789
 #: ctk/ctktoolbutton.c:243 ctk/ctktoolitemgroup.c:1639
 msgid "Label"
 msgstr "Метка"
 
-#: ctk/deprecated/ctkaction.c:265
+#: ctk/ctkaction.c:265
 msgid "The label used for menu items and buttons that activate this action."
 msgstr ""
 "Метка, используемая для элементов меню и кнопок, инициирующих данное "
 "действие."
 
-#: ctk/deprecated/ctkaction.c:284
+#: ctk/ctkaction.c:284
 msgid "Short label"
 msgstr "Краткая метка"
 
-#: ctk/deprecated/ctkaction.c:285
+#: ctk/ctkaction.c:285
 msgid "A shorter label that may be used on toolbar buttons."
 msgstr ""
 "Краткая метка, которая может быть использована для кнопок панели "
 "инструментов."
 
-#: ctk/deprecated/ctkaction.c:300
+#: ctk/ctkaction.c:300
 msgid "Tooltip"
 msgstr "Подсказка"
 
-#: ctk/deprecated/ctkaction.c:301
+#: ctk/ctkaction.c:301
 msgid "A tooltip for this action."
 msgstr "Подсказка для действия."
 
-#: ctk/deprecated/ctkaction.c:319
+#: ctk/ctkaction.c:319
 msgid "Stock Icon"
 msgstr "Встроенный значок"
 
-#: ctk/deprecated/ctkaction.c:320
+#: ctk/ctkaction.c:320
 msgid "The stock icon displayed in widgets representing this action."
 msgstr ""
 "Встроенный значок, отображаемый в виджетах, представляющих это действие."
 
-#: ctk/deprecated/ctkaction.c:342 ctk/deprecated/ctkstatusicon.c:279
+#: ctk/ctkaction.c:342 ctk/deprecated/ctkstatusicon.c:279
 msgid "GIcon"
 msgstr "GIcon"
 
-#: ctk/deprecated/ctkaction.c:343 ctk/deprecated/ctkstatusicon.c:280
+#: ctk/ctkaction.c:343 ctk/deprecated/ctkstatusicon.c:280
 #: ctk/ctkcellrendererpixbuf.c:282 ctk/ctkimage.c:360
 msgid "The GIcon being displayed"
 msgstr "Отображаемый значок GIcon"
 
-#: ctk/deprecated/ctkaction.c:365 ctk/deprecated/ctkstatusicon.c:263
+#: ctk/ctkaction.c:365 ctk/deprecated/ctkstatusicon.c:263
 #: ctk/ctkcellrendererpixbuf.c:245 ctk/ctkimage.c:343 ctk/ctkprinter.c:170
 #: ctk/ctkwindow.c:894
 msgid "Icon Name"
 msgstr "Имя значка"
 
-#: ctk/deprecated/ctkaction.c:366 ctk/deprecated/ctkstatusicon.c:264
+#: ctk/ctkaction.c:366 ctk/deprecated/ctkstatusicon.c:264
 #: ctk/ctkcellrendererpixbuf.c:246 ctk/ctkimage.c:344
 msgid "The name of the icon from the icon theme"
 msgstr "Имя значка из темы значков"
 
-#: ctk/deprecated/ctkaction.c:381 ctk/ctktoolitem.c:179
+#: ctk/ctkaction.c:381 ctk/ctktoolitem.c:179
 msgid "Visible when horizontal"
 msgstr "Показывать при горизонтальном расположении"
 
-#: ctk/deprecated/ctkaction.c:382 ctk/ctktoolitem.c:180
+#: ctk/ctkaction.c:382 ctk/ctktoolitem.c:180
 msgid ""
 "Whether the toolbar item is visible when the toolbar is in a horizontal "
 "orientation."
@@ -306,11 +306,11 @@ msgstr ""
 "Будет ли отображаться элемент панели инструментов при горизонтальном "
 "расположении панели инструментов."
 
-#: ctk/deprecated/ctkaction.c:400
+#: ctk/ctkaction.c:400
 msgid "Visible when overflown"
 msgstr "Показывать при переполнении"
 
-#: ctk/deprecated/ctkaction.c:401
+#: ctk/ctkaction.c:401
 msgid ""
 "When TRUE, toolitem proxies for this action are represented in the toolbar "
 "overflow menu."
@@ -318,11 +318,11 @@ msgstr ""
 "Если установлено, то прокси элементов меню для действия будут перекрывать "
 "меню в панели инструментов"
 
-#: ctk/deprecated/ctkaction.c:417 ctk/ctktoolitem.c:186
+#: ctk/ctkaction.c:417 ctk/ctktoolitem.c:186
 msgid "Visible when vertical"
 msgstr "Показывать при вертикальном расположении"
 
-#: ctk/deprecated/ctkaction.c:418 ctk/ctktoolitem.c:187
+#: ctk/ctkaction.c:418 ctk/ctktoolitem.c:187
 msgid ""
 "Whether the toolbar item is visible when the toolbar is in a vertical "
 "orientation."
@@ -330,11 +330,11 @@ msgstr ""
 "Будет ли отображаться элемент панели инструментов при вертикальном "
 "расположении панели инструментов."
 
-#: ctk/deprecated/ctkaction.c:434 ctk/ctktoolitem.c:193
+#: ctk/ctkaction.c:434 ctk/ctktoolitem.c:193
 msgid "Is important"
 msgstr "Важное действие"
 
-#: ctk/deprecated/ctkaction.c:435
+#: ctk/ctkaction.c:435
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
 "this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
@@ -342,39 +342,39 @@ msgstr ""
 "Является ли действие важным. Если установлено, то прокси элементов панели "
 "для действия будут показывать текст в режиме CTK_TOOLBAR_BOTH_HORIZ."
 
-#: ctk/deprecated/ctkaction.c:451
+#: ctk/ctkaction.c:451
 msgid "Hide if empty"
 msgstr "Скрывать, если пусто"
 
-#: ctk/deprecated/ctkaction.c:452
+#: ctk/ctkaction.c:452
 msgid "When TRUE, empty menu proxies for this action are hidden."
 msgstr ""
 "Если установлено, то пустые прокси элементов меню для действия будут скрыты."
 
-#: ctk/deprecated/ctkaction.c:466 ctk/deprecated/ctkactiongroup.c:214
+#: ctk/ctkaction.c:466 ctk/deprecated/ctkactiongroup.c:214
 #: ctk/ctkcellrenderer.c:308 ctk/ctkwidget.c:1152
 msgid "Sensitive"
 msgstr "Чувствительный"
 
-#: ctk/deprecated/ctkaction.c:467
+#: ctk/ctkaction.c:467
 msgid "Whether the action is enabled."
 msgstr "Включено ли действие."
 
-#: ctk/deprecated/ctkaction.c:481 ctk/deprecated/ctkactiongroup.c:228
+#: ctk/ctkaction.c:481 ctk/deprecated/ctkactiongroup.c:228
 #: ctk/deprecated/ctkstatusicon.c:314 ctk/ctkcssnode.c:649
 #: ctk/ctknativedialog.c:242 ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1145
 msgid "Visible"
 msgstr "Видимый"
 
-#: ctk/deprecated/ctkaction.c:482
+#: ctk/ctkaction.c:482
 msgid "Whether the action is visible."
 msgstr "Видимо ли действие."
 
-#: ctk/deprecated/ctkaction.c:497
+#: ctk/ctkaction.c:497
 msgid "Action Group"
 msgstr "Группа действий"
 
-#: ctk/deprecated/ctkaction.c:498
+#: ctk/ctkaction.c:498
 msgid ""
 "The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
@@ -382,12 +382,12 @@ msgstr ""
 "Значение CtkActionGroup, с которым это действие ассоциировано или NULL (для "
 "внутреннего использования)."
 
-#: ctk/deprecated/ctkaction.c:519 ctk/deprecated/ctkimagemenuitem.c:264
+#: ctk/ctkaction.c:519 ctk/deprecated/ctkimagemenuitem.c:264
 #: ctk/ctkbutton.c:393
 msgid "Always show image"
 msgstr "Всегда показывать изображение"
 
-#: ctk/deprecated/ctkaction.c:520 ctk/deprecated/ctkimagemenuitem.c:265
+#: ctk/ctkaction.c:520 ctk/deprecated/ctkimagemenuitem.c:265
 #: ctk/ctkbutton.c:394
 msgid "Whether the image will always be shown"
 msgstr "Всегда ли показывать изображение"

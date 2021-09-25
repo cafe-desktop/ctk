@@ -197,88 +197,88 @@ msgstr "Vẽ ô"
 msgid "The cell renderer represented by this accessible"
 msgstr "Bộ vẽ ô đại diện bởi cái tiếp cận này"
 
-#: ctk/deprecated/ctkaction.c:243 ctk/deprecated/ctkactiongroup.c:200
+#: ctk/ctkaction.c:243 ctk/deprecated/ctkactiongroup.c:200
 #: ctk/deprecated/ctkthemingengine.c:247 ctk/ctkprinter.c:121
 #: ctk/ctkstack.c:480 ctk/ctktextmark.c:136
 msgid "Name"
 msgstr "Tên"
 
-#: ctk/deprecated/ctkaction.c:244
+#: ctk/ctkaction.c:244
 msgid "A unique name for the action."
 msgstr "Tên duy nhất cho hành động này."
 
-#: ctk/deprecated/ctkaction.c:264 ctk/ctkbutton.c:247 ctk/ctkexpander.c:275
+#: ctk/ctkaction.c:264 ctk/ctkbutton.c:247 ctk/ctkexpander.c:275
 #: ctk/ctkframe.c:166 ctk/ctklabel.c:756 ctk/ctkmenuitem.c:443
 #: ctk/ctktoolbutton.c:239 ctk/ctktoolitemgroup.c:1605
 msgid "Label"
 msgstr "Nhãn"
 
-#: ctk/deprecated/ctkaction.c:265
+#: ctk/ctkaction.c:265
 msgid "The label used for menu items and buttons that activate this action."
 msgstr "Nhãn được dùng cho mục trình đơn và nút có hoạt hóa hành động này."
 
-#: ctk/deprecated/ctkaction.c:284
+#: ctk/ctkaction.c:284
 msgid "Short label"
 msgstr "Nhãn ngắn"
 
-#: ctk/deprecated/ctkaction.c:285
+#: ctk/ctkaction.c:285
 msgid "A shorter label that may be used on toolbar buttons."
 msgstr "Một nhãn ngắn hơn mà có thể được dùng trên nút thanh công cụ."
 
-#: ctk/deprecated/ctkaction.c:300
+#: ctk/ctkaction.c:300
 msgid "Tooltip"
 msgstr "Gợi ý công cụ"
 
-#: ctk/deprecated/ctkaction.c:301
+#: ctk/ctkaction.c:301
 msgid "A tooltip for this action."
 msgstr "Mẹo công cụ cho hành động này."
 
-#: ctk/deprecated/ctkaction.c:319
+#: ctk/ctkaction.c:319
 msgid "Stock Icon"
 msgstr "Biểu tượng chuẩn"
 
-#: ctk/deprecated/ctkaction.c:320
+#: ctk/ctkaction.c:320
 msgid "The stock icon displayed in widgets representing this action."
 msgstr ""
 "Biểu tượng chuẩn được hiển thị trong các ô điều khiển có miêu tả hành động "
 "này."
 
-#: ctk/deprecated/ctkaction.c:342 ctk/deprecated/ctkstatusicon.c:271
+#: ctk/ctkaction.c:342 ctk/deprecated/ctkstatusicon.c:271
 msgid "GIcon"
 msgstr "GIcon"
 
-#: ctk/deprecated/ctkaction.c:343 ctk/deprecated/ctkstatusicon.c:272
+#: ctk/ctkaction.c:343 ctk/deprecated/ctkstatusicon.c:272
 #: ctk/ctkcellrendererpixbuf.c:266 ctk/ctkimage.c:343
 msgid "The GIcon being displayed"
 msgstr "Biểu tượng GIcon đang hiển thị"
 
-#: ctk/deprecated/ctkaction.c:365 ctk/deprecated/ctkstatusicon.c:255
+#: ctk/ctkaction.c:365 ctk/deprecated/ctkstatusicon.c:255
 #: ctk/ctkcellrendererpixbuf.c:229 ctk/ctkimage.c:326 ctk/ctkprinter.c:170
 #: ctk/ctkwindow.c:855
 msgid "Icon Name"
 msgstr "Tên biểu tượng"
 
-#: ctk/deprecated/ctkaction.c:366 ctk/deprecated/ctkstatusicon.c:256
+#: ctk/ctkaction.c:366 ctk/deprecated/ctkstatusicon.c:256
 #: ctk/ctkcellrendererpixbuf.c:230 ctk/ctkimage.c:327
 msgid "The name of the icon from the icon theme"
 msgstr "Tên của biểu tượng từ chủ đề biểu tượng"
 
-#: ctk/deprecated/ctkaction.c:381 ctk/ctktoolitem.c:179
+#: ctk/ctkaction.c:381 ctk/ctktoolitem.c:179
 msgid "Visible when horizontal"
 msgstr "Hiển thị khi nằm ngang"
 
-#: ctk/deprecated/ctkaction.c:382 ctk/ctktoolitem.c:180
+#: ctk/ctkaction.c:382 ctk/ctktoolitem.c:180
 msgid ""
 "Whether the toolbar item is visible when the toolbar is in a horizontal "
 "orientation."
 msgstr ""
 "Có nên hiển thị mục thanh công cụ khi thanh công cụ nằm ngang hay không."
 
-#: ctk/deprecated/ctkaction.c:400
+#: ctk/ctkaction.c:400
 msgid "Visible when overflown"
 msgstr "Hiển thị khi tràn"
 
-#: ctk/deprecated/ctkaction.c:401
+#: ctk/ctkaction.c:401
 msgid ""
 "When TRUE, toolitem proxies for this action are represented in the toolbar "
 "overflow menu."
@@ -286,21 +286,21 @@ msgstr ""
 "Khi ĐÚNG thì ủy nhiệm mục công cụ cho hành động này được miêu tả trong trình "
 "đơn trán thanh công cụ."
 
-#: ctk/deprecated/ctkaction.c:417 ctk/ctktoolitem.c:186
+#: ctk/ctkaction.c:417 ctk/ctktoolitem.c:186
 msgid "Visible when vertical"
 msgstr "Hiển thị khi dọc"
 
-#: ctk/deprecated/ctkaction.c:418 ctk/ctktoolitem.c:187
+#: ctk/ctkaction.c:418 ctk/ctktoolitem.c:187
 msgid ""
 "Whether the toolbar item is visible when the toolbar is in a vertical "
 "orientation."
 msgstr "Có nên hiển thị mục thanh công cụ khi thanh công cụ dọc hay không."
 
-#: ctk/deprecated/ctkaction.c:434 ctk/ctktoolitem.c:193
+#: ctk/ctkaction.c:434 ctk/ctktoolitem.c:193
 msgid "Is important"
 msgstr "Là quan trọng"
 
-#: ctk/deprecated/ctkaction.c:435
+#: ctk/ctkaction.c:435
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
 "this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
@@ -309,38 +309,38 @@ msgstr ""
 "mục công cụ cho hành động này hiển thị văn bản trong chế độ "
 "“CTK_TOOLBAR_BOTH_HORIZ” (ctk thanh công cụ cả hai ngang)."
 
-#: ctk/deprecated/ctkaction.c:451
+#: ctk/ctkaction.c:451
 msgid "Hide if empty"
 msgstr "Ẩn nếu rỗng"
 
-#: ctk/deprecated/ctkaction.c:452
+#: ctk/ctkaction.c:452
 msgid "When TRUE, empty menu proxies for this action are hidden."
 msgstr "Khi ĐÚNG thì ủy nhiệm trình đơn rỗng nào bị ẩn."
 
-#: ctk/deprecated/ctkaction.c:466 ctk/deprecated/ctkactiongroup.c:214
+#: ctk/ctkaction.c:466 ctk/deprecated/ctkactiongroup.c:214
 #: ctk/ctkcellrenderer.c:301 ctk/ctkwidget.c:1166
 msgid "Sensitive"
 msgstr "Nhạy cảm"
 
-#: ctk/deprecated/ctkaction.c:467
+#: ctk/ctkaction.c:467
 msgid "Whether the action is enabled."
 msgstr "Có nên hiệu lực hành động này hay không."
 
-#: ctk/deprecated/ctkaction.c:481 ctk/deprecated/ctkactiongroup.c:228
+#: ctk/ctkaction.c:481 ctk/deprecated/ctkactiongroup.c:228
 #: ctk/deprecated/ctkstatusicon.c:306 ctk/ctktreeviewcolumn.c:246
 #: ctk/ctkwidget.c:1159
 msgid "Visible"
 msgstr "Hiển thị"
 
-#: ctk/deprecated/ctkaction.c:482
+#: ctk/ctkaction.c:482
 msgid "Whether the action is visible."
 msgstr "Có nên hiển thị hành động này hay không."
 
-#: ctk/deprecated/ctkaction.c:497
+#: ctk/ctkaction.c:497
 msgid "Action Group"
 msgstr "Nhóm hành động"
 
-#: ctk/deprecated/ctkaction.c:498
+#: ctk/ctkaction.c:498
 msgid ""
 "The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
@@ -348,12 +348,12 @@ msgstr ""
 "CtkActionGroup (nhóm hành động CTK) với đó hành động CtkAction này được "
 "tượng ứng, hoặc NULL (rỗng: chỉ dùng nội bộ)."
 
-#: ctk/deprecated/ctkaction.c:519 ctk/deprecated/ctkimagemenuitem.c:264
+#: ctk/ctkaction.c:519 ctk/deprecated/ctkimagemenuitem.c:264
 #: ctk/ctkbutton.c:366
 msgid "Always show image"
 msgstr "Lúc nào cũng hiện ảnh"
 
-#: ctk/deprecated/ctkaction.c:520 ctk/deprecated/ctkimagemenuitem.c:265
+#: ctk/ctkaction.c:520 ctk/deprecated/ctkimagemenuitem.c:265
 #: ctk/ctkbutton.c:367
 msgid "Whether the image will always be shown"
 msgstr "Ảnh lúc nào cũng được hiển thị không"

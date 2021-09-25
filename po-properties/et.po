@@ -234,106 +234,106 @@ msgstr ""
 msgid "The cell renderer represented by this accessible"
 msgstr ""
 
-#: ctk/deprecated/ctkaction.c:243 ctk/deprecated/ctkactiongroup.c:200
+#: ctk/ctkaction.c:243 ctk/deprecated/ctkactiongroup.c:200
 #: ctk/deprecated/ctkthemingengine.c:247 ctk/ctkcssnode.c:638
 #: ctk/ctkprinter.c:121 ctk/ctkstack.c:516 ctk/ctktextmark.c:136
 msgid "Name"
 msgstr "Nimi"
 
-#: ctk/deprecated/ctkaction.c:244
+#: ctk/ctkaction.c:244
 msgid "A unique name for the action."
 msgstr "Toimingu unikaalne nimi"
 
-#: ctk/deprecated/ctkaction.c:264 ctk/ctkbutton.c:281 ctk/ctkexpander.c:308
+#: ctk/ctkaction.c:264 ctk/ctkbutton.c:281 ctk/ctkexpander.c:308
 #: ctk/ctkframe.c:231 ctk/ctklabel.c:805 ctk/ctkmenuitem.c:789
 #: ctk/ctktoolbutton.c:243 ctk/ctktoolitemgroup.c:1641
 msgid "Label"
 msgstr "Silt"
 
-#: ctk/deprecated/ctkaction.c:265
+#: ctk/ctkaction.c:265
 msgid "The label used for menu items and buttons that activate this action."
 msgstr ""
 "Selle toimingu aktiveerivatel menüükirjetel ja nuppudel kasutatav silt."
 
-#: ctk/deprecated/ctkaction.c:284
+#: ctk/ctkaction.c:284
 msgid "Short label"
 msgstr "Lühike silt"
 
-#: ctk/deprecated/ctkaction.c:285
+#: ctk/ctkaction.c:285
 msgid "A shorter label that may be used on toolbar buttons."
 msgstr "Tööriistariba nuppudel kasutatav lühike silt."
 
-#: ctk/deprecated/ctkaction.c:300
+#: ctk/ctkaction.c:300
 msgid "Tooltip"
 msgstr "Vihje"
 
-#: ctk/deprecated/ctkaction.c:301
+#: ctk/ctkaction.c:301
 msgid "A tooltip for this action."
 msgstr "Selle toimingu kohta käiv vihje."
 
-#: ctk/deprecated/ctkaction.c:319
+#: ctk/ctkaction.c:319
 msgid "Stock Icon"
 msgstr "Rühmaikoon"
 
-#: ctk/deprecated/ctkaction.c:320
+#: ctk/ctkaction.c:320
 msgid "The stock icon displayed in widgets representing this action."
 msgstr ""
 
-#: ctk/deprecated/ctkaction.c:342 ctk/deprecated/ctkstatusicon.c:272
+#: ctk/ctkaction.c:342 ctk/deprecated/ctkstatusicon.c:272
 msgid "GIcon"
 msgstr ""
 
-#: ctk/deprecated/ctkaction.c:343 ctk/deprecated/ctkstatusicon.c:273
+#: ctk/ctkaction.c:343 ctk/deprecated/ctkstatusicon.c:273
 #: ctk/ctkcellrendererpixbuf.c:282 ctk/ctkimage.c:359
 msgid "The GIcon being displayed"
 msgstr ""
 
-#: ctk/deprecated/ctkaction.c:365 ctk/deprecated/ctkstatusicon.c:256
+#: ctk/ctkaction.c:365 ctk/deprecated/ctkstatusicon.c:256
 #: ctk/ctkcellrendererpixbuf.c:245 ctk/ctkimage.c:342 ctk/ctkprinter.c:170
 #: ctk/ctkwindow.c:887
 msgid "Icon Name"
 msgstr "Ikooni nimi"
 
-#: ctk/deprecated/ctkaction.c:366 ctk/deprecated/ctkstatusicon.c:257
+#: ctk/ctkaction.c:366 ctk/deprecated/ctkstatusicon.c:257
 #: ctk/ctkcellrendererpixbuf.c:246 ctk/ctkimage.c:343
 msgid "The name of the icon from the icon theme"
 msgstr "Ikooniteemast pärinev ikooni nimi"
 
-#: ctk/deprecated/ctkaction.c:381 ctk/ctktoolitem.c:179
+#: ctk/ctkaction.c:381 ctk/ctktoolitem.c:179
 msgid "Visible when horizontal"
 msgstr "Nähtav kui horisontaalne"
 
-#: ctk/deprecated/ctkaction.c:382 ctk/ctktoolitem.c:180
+#: ctk/ctkaction.c:382 ctk/ctktoolitem.c:180
 msgid ""
 "Whether the toolbar item is visible when the toolbar is in a horizontal "
 "orientation."
 msgstr ""
 
-#: ctk/deprecated/ctkaction.c:400
+#: ctk/ctkaction.c:400
 msgid "Visible when overflown"
 msgstr "Nähtav kui ülejooksev"
 
-#: ctk/deprecated/ctkaction.c:401
+#: ctk/ctkaction.c:401
 msgid ""
 "When TRUE, toolitem proxies for this action are represented in the toolbar "
 "overflow menu."
 msgstr ""
 
-#: ctk/deprecated/ctkaction.c:417 ctk/ctktoolitem.c:186
+#: ctk/ctkaction.c:417 ctk/ctktoolitem.c:186
 msgid "Visible when vertical"
 msgstr "Nähtav kui vertikaalne"
 
-#: ctk/deprecated/ctkaction.c:418 ctk/ctktoolitem.c:187
+#: ctk/ctkaction.c:418 ctk/ctktoolitem.c:187
 msgid ""
 "Whether the toolbar item is visible when the toolbar is in a vertical "
 "orientation."
 msgstr "Kas tööriistariba kirje on riba püstise suuna korral nähtav."
 
-#: ctk/deprecated/ctkaction.c:434 ctk/ctktoolitem.c:193
+#: ctk/ctkaction.c:434 ctk/ctktoolitem.c:193
 msgid "Is important"
 msgstr "On tähtis"
 
-#: ctk/deprecated/ctkaction.c:435
+#: ctk/ctkaction.c:435
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
 "this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
@@ -342,49 +342,49 @@ msgstr ""
 "toimingu puhul kuvavad tööriistakirjete proksid teksti "
 "CTK_TOOLBAR_BOTH_HORIZ režiimis."
 
-#: ctk/deprecated/ctkaction.c:451
+#: ctk/ctkaction.c:451
 msgid "Hide if empty"
 msgstr "Peidetakse kui on tühi"
 
-#: ctk/deprecated/ctkaction.c:452
+#: ctk/ctkaction.c:452
 msgid "When TRUE, empty menu proxies for this action are hidden."
 msgstr ""
 
-#: ctk/deprecated/ctkaction.c:466 ctk/deprecated/ctkactiongroup.c:214
+#: ctk/ctkaction.c:466 ctk/deprecated/ctkactiongroup.c:214
 #: ctk/ctkcellrenderer.c:301 ctk/ctkwidget.c:1152
 msgid "Sensitive"
 msgstr "Tundlik"
 
-#: ctk/deprecated/ctkaction.c:467
+#: ctk/ctkaction.c:467
 msgid "Whether the action is enabled."
 msgstr "Kas tegevus on lubatud või mitte."
 
-#: ctk/deprecated/ctkaction.c:481 ctk/deprecated/ctkactiongroup.c:228
+#: ctk/ctkaction.c:481 ctk/deprecated/ctkactiongroup.c:228
 #: ctk/deprecated/ctkstatusicon.c:307 ctk/ctkcssnode.c:649
 #: ctk/ctknativedialog.c:242 ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1145
 msgid "Visible"
 msgstr "Nähtav"
 
-#: ctk/deprecated/ctkaction.c:482
+#: ctk/ctkaction.c:482
 msgid "Whether the action is visible."
 msgstr "Kas tegevus on nähtav või mitte."
 
-#: ctk/deprecated/ctkaction.c:497
+#: ctk/ctkaction.c:497
 msgid "Action Group"
 msgstr "Tegevuste grupp"
 
-#: ctk/deprecated/ctkaction.c:498
+#: ctk/ctkaction.c:498
 msgid ""
 "The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
 msgstr ""
 
-#: ctk/deprecated/ctkaction.c:519 ctk/deprecated/ctkimagemenuitem.c:264
+#: ctk/ctkaction.c:519 ctk/deprecated/ctkimagemenuitem.c:264
 #: ctk/ctkbutton.c:393
 msgid "Always show image"
 msgstr ""
 
-#: ctk/deprecated/ctkaction.c:520 ctk/deprecated/ctkimagemenuitem.c:265
+#: ctk/ctkaction.c:520 ctk/deprecated/ctkimagemenuitem.c:265
 #: ctk/ctkbutton.c:394
 #, fuzzy
 msgid "Whether the image will always be shown"

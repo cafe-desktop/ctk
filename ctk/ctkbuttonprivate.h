@@ -21,7 +21,7 @@
 
 #include "ctkactionhelper.h"
 #include "ctkgesturesingle.h"
-#include "deprecated/ctkaction.h"
+#include "ctkaction.h"
 #include "ctkcssgadgetprivate.h"
 
 G_BEGIN_DECLS

@@ -242,100 +242,100 @@ msgstr "स्ट्रिङलाई कसरी धेरै हरफहर
 msgid "The cell renderer represented by this accessible"
 msgstr ""
 
-#: ctk/deprecated/ctkaction.c:243 ctk/deprecated/ctkactiongroup.c:200
+#: ctk/ctkaction.c:243 ctk/deprecated/ctkactiongroup.c:200
 #: ctk/deprecated/ctkthemingengine.c:247 ctk/ctkcssnode.c:634 ctk/ctkprinter.c:121
 #: ctk/ctkstack.c:516 ctk/ctktextmark.c:136
 msgid "Name"
 msgstr "नाम"
 
-#: ctk/deprecated/ctkaction.c:244
+#: ctk/ctkaction.c:244
 msgid "A unique name for the action."
 msgstr "कार्यका लागि अनौठो नाम"
 
-#: ctk/deprecated/ctkaction.c:264 ctk/ctkbutton.c:281 ctk/ctkexpander.c:304 ctk/ctkframe.c:230
+#: ctk/ctkaction.c:264 ctk/ctkbutton.c:281 ctk/ctkexpander.c:304 ctk/ctkframe.c:230
 #: ctk/ctklabel.c:804 ctk/ctkmenuitem.c:787 ctk/ctktoolbutton.c:243 ctk/ctktoolitemgroup.c:1641
 msgid "Label"
 msgstr "लेबल /तह"
 
-#: ctk/deprecated/ctkaction.c:265
+#: ctk/ctkaction.c:265
 msgid "The label used for menu items and buttons that activate this action."
 msgstr "सूची प्रकार र बटनहरु सक्रिय गर्नका लागि त्यो लेबल प्रयोग गरियो"
 
-#: ctk/deprecated/ctkaction.c:284
+#: ctk/ctkaction.c:284
 msgid "Short label"
 msgstr "छोटो लेबल"
 
-#: ctk/deprecated/ctkaction.c:285
+#: ctk/ctkaction.c:285
 msgid "A shorter label that may be used on toolbar buttons."
 msgstr "अरुभन्दा सानो लेवल जुन कि चित्राङ्कित शीर्षरेखा बटनमा प्रयोग हुन सक्छ"
 
-#: ctk/deprecated/ctkaction.c:300
+#: ctk/ctkaction.c:300
 msgid "Tooltip"
 msgstr "औजारटिप"
 
-#: ctk/deprecated/ctkaction.c:301
+#: ctk/ctkaction.c:301
 msgid "A tooltip for this action."
 msgstr "यो कार्यक लागि औजारटिप"
 
-#: ctk/deprecated/ctkaction.c:319
+#: ctk/ctkaction.c:319
 msgid "Stock Icon"
 msgstr "छविचित्र संग्रह"
 
-#: ctk/deprecated/ctkaction.c:320
+#: ctk/ctkaction.c:320
 msgid "The stock icon displayed in widgets representing this action."
 msgstr "यो कार्यको प्रतिनिधित्व औजार भित्र संग्रह छविचित्रले देखायो"
 
-#: ctk/deprecated/ctkaction.c:342 ctk/deprecated/ctkstatusicon.c:272
+#: ctk/ctkaction.c:342 ctk/deprecated/ctkstatusicon.c:272
 #, fuzzy
 msgid "GIcon"
 msgstr "छविचित्र"
 
-#: ctk/deprecated/ctkaction.c:343 ctk/deprecated/ctkstatusicon.c:273
+#: ctk/ctkaction.c:343 ctk/deprecated/ctkstatusicon.c:273
 #: ctk/ctkcellrendererpixbuf.c:266 ctk/ctkimage.c:359
 #, fuzzy
 msgid "The GIcon being displayed"
 msgstr " देखाउनको लागि छविचित्र स्थपित गर "
 
-#: ctk/deprecated/ctkaction.c:365 ctk/deprecated/ctkstatusicon.c:256
+#: ctk/ctkaction.c:365 ctk/deprecated/ctkstatusicon.c:256
 #: ctk/ctkcellrendererpixbuf.c:229 ctk/ctkimage.c:342 ctk/ctkprinter.c:170 ctk/ctkwindow.c:885
 msgid "Icon Name"
 msgstr "प्रतिमाको नाम"
 
-#: ctk/deprecated/ctkaction.c:366 ctk/deprecated/ctkstatusicon.c:257
+#: ctk/ctkaction.c:366 ctk/deprecated/ctkstatusicon.c:257
 #: ctk/ctkcellrendererpixbuf.c:230 ctk/ctkimage.c:343
 msgid "The name of the icon from the icon theme"
 msgstr "प्रतिमा थिमबाट प्रतिमाको नाम"
 
-#: ctk/deprecated/ctkaction.c:381 ctk/ctktoolitem.c:179
+#: ctk/ctkaction.c:381 ctk/ctktoolitem.c:179
 msgid "Visible when horizontal"
 msgstr "क्षितिजीय हुँदा हेर्न सकिने "
 
-#: ctk/deprecated/ctkaction.c:382 ctk/ctktoolitem.c:180
+#: ctk/ctkaction.c:382 ctk/ctktoolitem.c:180
 msgid "Whether the toolbar item is visible when the toolbar is in a horizontal orientation."
 msgstr "जब औजारबार समतलीय अभिमुखीकरणमा हुन्छ तब औजारबारो एकाइ दृश्यात्मक हुन्छ । "
 
-#: ctk/deprecated/ctkaction.c:400
+#: ctk/ctkaction.c:400
 msgid "Visible when overflown"
 msgstr "भरिएको हेर्न सकिने "
 
-#: ctk/deprecated/ctkaction.c:401
+#: ctk/ctkaction.c:401
 msgid ""
 "When TRUE, toolitem proxies for this action are represented in the toolbar overflow menu."
 msgstr "जब सत्य हुन्छ, यो कार्यको लागि खालि सूची बहुप्रतिनिधिहरु अदृश्य हुन्छन"
 
-#: ctk/deprecated/ctkaction.c:417 ctk/ctktoolitem.c:186
+#: ctk/ctkaction.c:417 ctk/ctktoolitem.c:186
 msgid "Visible when vertical"
 msgstr "उर्ध्व हुँदा हेर्न सकिने "
 
-#: ctk/deprecated/ctkaction.c:418 ctk/ctktoolitem.c:187
+#: ctk/ctkaction.c:418 ctk/ctktoolitem.c:187
 msgid "Whether the toolbar item is visible when the toolbar is in a vertical orientation."
 msgstr "जब औजारबार उर्ध्वतलीय अभिमुखीकरणमा हुन्छ तब औजारबारो एकाइ दृश्यात्मक हुन्छ । "
 
-#: ctk/deprecated/ctkaction.c:434 ctk/ctktoolitem.c:193
+#: ctk/ctkaction.c:434 ctk/ctktoolitem.c:193
 msgid "Is important"
 msgstr "महत्वपूर्ण छ"
 
-#: ctk/deprecated/ctkaction.c:435
+#: ctk/ctkaction.c:435
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for this action show "
 "text in CTK_TOOLBAR_BOTH_HORIZ mode."
@@ -343,47 +343,47 @@ msgstr ""
 "जब कार्यलाई महत्वपूर्ण रूपमा ममन गरिन्छ । ठीक छ भने औजार आइटम प्रतिनिधिले यो कार्यका लागि "
 "जीटीके_औजारबार_दुवै_समतलीय मोडमा पाठ देखाउँछ"
 
-#: ctk/deprecated/ctkaction.c:451
+#: ctk/ctkaction.c:451
 msgid "Hide if empty"
 msgstr "यदि खालि भए लुकाउ"
 
-#: ctk/deprecated/ctkaction.c:452
+#: ctk/ctkaction.c:452
 msgid "When TRUE, empty menu proxies for this action are hidden."
 msgstr "जब सत्यहुन्छ , यो कार्यको लागि खालि सूची बहुप्रतिनिधिहरु अदृश्य हुन्छन"
 
-#: ctk/deprecated/ctkaction.c:466 ctk/deprecated/ctkactiongroup.c:214 ctk/ctkcellrenderer.c:301
+#: ctk/ctkaction.c:466 ctk/deprecated/ctkactiongroup.c:214 ctk/ctkcellrenderer.c:301
 #: ctk/ctkwidget.c:1146
 msgid "Sensitive"
 msgstr "सम्वेदनशील"
 
-#: ctk/deprecated/ctkaction.c:467
+#: ctk/ctkaction.c:467
 msgid "Whether the action is enabled."
 msgstr "जहाँ कार्य सक्षम छ"
 
-#: ctk/deprecated/ctkaction.c:481 ctk/deprecated/ctkactiongroup.c:228
+#: ctk/ctkaction.c:481 ctk/deprecated/ctkactiongroup.c:228
 #: ctk/deprecated/ctkstatusicon.c:307 ctk/ctkcssnode.c:645 ctk/ctknativedialog.c:242
 #: ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1139
 msgid "Visible"
 msgstr "दृश्यात्मक"
 
-#: ctk/deprecated/ctkaction.c:482
+#: ctk/ctkaction.c:482
 msgid "Whether the action is visible."
 msgstr "जहाँ कार्य हेर्न सकिन्छ"
 
-#: ctk/deprecated/ctkaction.c:497
+#: ctk/ctkaction.c:497
 msgid "Action Group"
 msgstr "कार्य समूह"
 
-#: ctk/deprecated/ctkaction.c:498
+#: ctk/ctkaction.c:498
 msgid "The CtkActionGroup this CtkAction is associated with, or NULL (for internal use)."
 msgstr "जीटीके कार्य समूह यो जीटीके कार्यसँग सम्बन्धित छ वा शून्यसँग( आन्तरिक प्रयोगका लागि मात्र)"
 
-#: ctk/deprecated/ctkaction.c:519 ctk/deprecated/ctkimagemenuitem.c:264 ctk/ctkbutton.c:393
+#: ctk/ctkaction.c:519 ctk/deprecated/ctkimagemenuitem.c:264 ctk/ctkbutton.c:393
 #, fuzzy
 msgid "Always show image"
 msgstr "सधैँ"
 
-#: ctk/deprecated/ctkaction.c:520 ctk/deprecated/ctkimagemenuitem.c:265 ctk/ctkbutton.c:394
+#: ctk/ctkaction.c:520 ctk/deprecated/ctkimagemenuitem.c:265 ctk/ctkbutton.c:394
 #, fuzzy
 msgid "Whether the image will always be shown"
 msgstr "जहा सीमारेखा देखाइन सकिन्थ्यो वा सकिन्नथ्यो"

@@ -167,80 +167,80 @@ msgstr "Ҷубронкунандаи занг"
 msgid "The cell renderer represented by this accessible"
 msgstr "Ҷубронкунандаи занг бо мавриди зерин намоиш дода мешавад"
 
-#: ../ctk/deprecated/ctkaction.c:243 ../ctk/deprecated/ctkactiongroup.c:200
+#: ../ctk/ctkaction.c:243 ../ctk/deprecated/ctkactiongroup.c:200
 #: ../ctk/ctkprinter.c:121 ../ctk/ctkstack.c:411 ../ctk/ctktextmark.c:126
 #: ../ctk/ctkthemingengine.c:262
 msgid "Name"
 msgstr "Ном"
 
-#: ../ctk/deprecated/ctkaction.c:244
+#: ../ctk/ctkaction.c:244
 msgid "A unique name for the action."
 msgstr "Номи ягона барои амал."
 
-#: ../ctk/deprecated/ctkaction.c:264 ../ctk/ctkbutton.c:252
+#: ../ctk/ctkaction.c:264 ../ctk/ctkbutton.c:252
 #: ../ctk/ctkexpander.c:279 ../ctk/ctkframe.c:166 ../ctk/ctklabel.c:704
 #: ../ctk/ctkmenuitem.c:444 ../ctk/ctktoolbutton.c:239
 #: ../ctk/ctktoolitemgroup.c:1593
 msgid "Label"
 msgstr "Барчасп"
 
-#: ../ctk/deprecated/ctkaction.c:265
+#: ../ctk/ctkaction.c:265
 msgid "The label used for menu items and buttons that activate this action."
 msgstr ""
 "Барчаспи истифодашаванда барои ҷузъҳои меню ва тугмаҳо, ки  ин амалро фаъол "
 "мекунанд."
 
-#: ../ctk/deprecated/ctkaction.c:284
+#: ../ctk/ctkaction.c:284
 msgid "Short label"
 msgstr "Барчаспи кӯтоҳ"
 
-#: ../ctk/deprecated/ctkaction.c:285
+#: ../ctk/ctkaction.c:285
 msgid "A shorter label that may be used on toolbar buttons."
 msgstr ""
 "Барчаспи кӯтоҳтар, ки шояд дар тугмаҳои навори абзор истифода бурда мешаванд."
 
-#: ../ctk/deprecated/ctkaction.c:300
+#: ../ctk/ctkaction.c:300
 msgid "Tooltip"
 msgstr "Маслиҳатҳои система"
 
-#: ../ctk/deprecated/ctkaction.c:301
+#: ../ctk/ctkaction.c:301
 msgid "A tooltip for this action."
 msgstr "Абзори маслиҳат барои ин амал."
 
-#: ../ctk/deprecated/ctkaction.c:319
+#: ../ctk/ctkaction.c:319
 msgid "Stock Icon"
 msgstr "Нишонаи захира"
 
-#: ../ctk/deprecated/ctkaction.c:320
+#: ../ctk/ctkaction.c:320
 msgid "The stock icon displayed in widgets representing this action."
 msgstr ""
 "Нишонаи захира, ки дар виҷетҳои нишондиҳандаи ин амал намоиш дода мешаванд."
 
-#: ../ctk/deprecated/ctkaction.c:342 ../ctk/ctkstatusicon.c:267
+#: ../ctk/ctkaction.c:342 ../ctk/ctkstatusicon.c:267
 msgid "GIcon"
 msgstr "GIcon"
 
-#: ../ctk/deprecated/ctkaction.c:343 ../ctk/ctkcellrendererpixbuf.c:257
+#: ../ctk/ctkaction.c:343 ../ctk/ctkcellrendererpixbuf.c:257
 #: ../ctk/ctkimage.c:343 ../ctk/ctkstatusicon.c:268
 msgid "The GIcon being displayed"
 msgstr "GIcon , ки намоиш дода мешавад"
 
-#: ../ctk/deprecated/ctkaction.c:365 ../ctk/ctkcellrendererpixbuf.c:222
+#: ../ctk/ctkaction.c:365 ../ctk/ctkcellrendererpixbuf.c:222
 #: ../ctk/ctkimage.c:325 ../ctk/ctkprinter.c:170 ../ctk/ctkstatusicon.c:251
 #: ../ctk/ctkwindow.c:874
 msgid "Icon Name"
 msgstr "Номи нишона"
 
-#: ../ctk/deprecated/ctkaction.c:366 ../ctk/ctkcellrendererpixbuf.c:223
+#: ../ctk/ctkaction.c:366 ../ctk/ctkcellrendererpixbuf.c:223
 #: ../ctk/ctkimage.c:326 ../ctk/ctkstatusicon.c:252
 msgid "The name of the icon from the icon theme"
 msgstr "Номи нишона аз мавзӯи нишона"
 
-#: ../ctk/deprecated/ctkaction.c:381 ../ctk/ctktoolitem.c:179
+#: ../ctk/ctkaction.c:381 ../ctk/ctktoolitem.c:179
 msgid "Visible when horizontal"
 msgstr "Ҳангоми уфуқӣ будан аён аст"
 
-#: ../ctk/deprecated/ctkaction.c:382 ../ctk/ctktoolitem.c:180
+#: ../ctk/ctkaction.c:382 ../ctk/ctktoolitem.c:180
 msgid ""
 "Whether the toolbar item is visible when the toolbar is in a horizontal "
 "orientation."
@@ -248,11 +248,11 @@ msgstr ""
 "Оё объекти навори абзор ҳангоми ба таври уфуқӣ ҷойгир будани навори абзор "
 "аён ҳаст ё на."
 
-#: ../ctk/deprecated/ctkaction.c:400
+#: ../ctk/ctkaction.c:400
 msgid "Visible when overflown"
 msgstr "Ҳангоми саррез будан аён аст"
 
-#: ../ctk/deprecated/ctkaction.c:401
+#: ../ctk/ctkaction.c:401
 msgid ""
 "When TRUE, toolitem proxies for this action are represented in the toolbar "
 "overflow menu."
@@ -260,11 +260,11 @@ msgstr ""
 "Агар TRUE бошад, ваколатҳои ҷузиёти абзор барои ин амал дар менюи саррези "
 "навори абзор намоиш дода мешаванд."
 
-#: ../ctk/deprecated/ctkaction.c:417 ../ctk/ctktoolitem.c:186
+#: ../ctk/ctkaction.c:417 ../ctk/ctktoolitem.c:186
 msgid "Visible when vertical"
 msgstr "Ҳангоми амудӣ будан аён аст"
 
-#: ../ctk/deprecated/ctkaction.c:418 ../ctk/ctktoolitem.c:187
+#: ../ctk/ctkaction.c:418 ../ctk/ctktoolitem.c:187
 msgid ""
 "Whether the toolbar item is visible when the toolbar is in a vertical "
 "orientation."
@@ -272,11 +272,11 @@ msgstr ""
 "Оё объекти навори абзор ҳангоми ба таври амудӣ ҷойгир будани навори абзор "
 "аён ҳаст ё на."
 
-#: ../ctk/deprecated/ctkaction.c:434 ../ctk/ctktoolitem.c:193
+#: ../ctk/ctkaction.c:434 ../ctk/ctktoolitem.c:193
 msgid "Is important"
 msgstr "Муҳим аст"
 
-#: ../ctk/deprecated/ctkaction.c:435
+#: ../ctk/ctkaction.c:435
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
 "this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
@@ -284,50 +284,50 @@ msgstr ""
 "Оё амал муҳим пешбинӣ шудааст ё на. Вақте ки ДУРУСТ аст, ваколати объекти "
 "абзор барои ин амал матнро дар шакли CTK_TOOLBAR_BOTH_HORIZ нишон медиҳад."
 
-#: ../ctk/deprecated/ctkaction.c:451
+#: ../ctk/ctkaction.c:451
 msgid "Hide if empty"
 msgstr "Агар холӣ бошад пинҳон кунед"
 
-#: ../ctk/deprecated/ctkaction.c:452
+#: ../ctk/ctkaction.c:452
 msgid "When TRUE, empty menu proxies for this action are hidden."
 msgstr "Вақте ки TRUE аст, ваколати менюи холӣ барои ин амал пинҳон ҳастанд."
 
-#: ../ctk/deprecated/ctkaction.c:466 ../ctk/deprecated/ctkactiongroup.c:214
+#: ../ctk/ctkaction.c:466 ../ctk/deprecated/ctkactiongroup.c:214
 #: ../ctk/ctkcellrenderer.c:301 ../ctk/ctkwidget.c:1163
 msgid "Sensitive"
 msgstr "Ҳассос"
 
-#: ../ctk/deprecated/ctkaction.c:467
+#: ../ctk/ctkaction.c:467
 msgid "Whether the action is enabled."
 msgstr "Оё амал фаъол шудааст ё на."
 
-#: ../ctk/deprecated/ctkaction.c:481 ../ctk/deprecated/ctkactiongroup.c:228
+#: ../ctk/ctkaction.c:481 ../ctk/deprecated/ctkactiongroup.c:228
 #: ../ctk/ctkstatusicon.c:302 ../ctk/ctktreeviewcolumn.c:247
 #: ../ctk/ctkwidget.c:1156
 msgid "Visible"
 msgstr "Аён"
 
-#: ../ctk/deprecated/ctkaction.c:482
+#: ../ctk/ctkaction.c:482
 msgid "Whether the action is visible."
 msgstr "Оё амал аён ҳаст ё на."
 
-#: ../ctk/deprecated/ctkaction.c:497
+#: ../ctk/ctkaction.c:497
 msgid "Action Group"
 msgstr "Гурӯҳи фаъолият"
 
-#: ../ctk/deprecated/ctkaction.c:498
+#: ../ctk/ctkaction.c:498
 msgid ""
 "The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
 msgstr ""
 "CtkActionGroup ин CtkAction дар якҷоягӣ бо, ё NULL (барои истифодаи дохилӣ)."
 
-#: ../ctk/deprecated/ctkaction.c:519 ../ctk/deprecated/ctkimagemenuitem.c:205
+#: ../ctk/ctkaction.c:519 ../ctk/deprecated/ctkimagemenuitem.c:205
 #: ../ctk/ctkbutton.c:378
 msgid "Always show image"
 msgstr "Ҳамеша намоиш додани тасвир"
 
-#: ../ctk/deprecated/ctkaction.c:520 ../ctk/deprecated/ctkimagemenuitem.c:206
+#: ../ctk/ctkaction.c:520 ../ctk/deprecated/ctkimagemenuitem.c:206
 #: ../ctk/ctkbutton.c:379
 msgid "Whether the image will always be shown"
 msgstr "Оё тасвир ҳамеша ишон дода мешавад ё на"

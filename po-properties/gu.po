@@ -198,86 +198,86 @@ msgstr "સેલ રેન્ડરર"
 msgid "The cell renderer represented by this accessible"
 msgstr "સેલ રેન્ડરર આ ઉપયોગિતા દ્દારા રજૂઆત થયેલ છે"
 
-#: ../ctk/deprecated/ctkaction.c:243 ../ctk/deprecated/ctkactiongroup.c:200
+#: ../ctk/ctkaction.c:243 ../ctk/deprecated/ctkactiongroup.c:200
 #: ../ctk/deprecated/ctkthemingengine.c:263 ../ctk/ctkprinter.c:121
 #: ../ctk/ctkstack.c:412 ../ctk/ctktextmark.c:136
 msgid "Name"
 msgstr "નામ"
 
-#: ../ctk/deprecated/ctkaction.c:244
+#: ../ctk/ctkaction.c:244
 msgid "A unique name for the action."
 msgstr "ક્રિયાનું એકલ નામ."
 
-#: ../ctk/deprecated/ctkaction.c:264 ../ctk/ctkbutton.c:245
+#: ../ctk/ctkaction.c:264 ../ctk/ctkbutton.c:245
 #: ../ctk/ctkexpander.c:275 ../ctk/ctkframe.c:166 ../ctk/ctklabel.c:727
 #: ../ctk/ctkmenuitem.c:444 ../ctk/ctktoolbutton.c:239
 #: ../ctk/ctktoolitemgroup.c:1597
 msgid "Label"
 msgstr "લેબલ"
 
-#: ../ctk/deprecated/ctkaction.c:265
+#: ../ctk/ctkaction.c:265
 msgid "The label used for menu items and buttons that activate this action."
 msgstr "મેનુ વસ્તુઓ અને બટનો માટે વપરાતું લેબલ કે જે આ ક્રિયાને સક્રિય કરે છે."
 
-#: ../ctk/deprecated/ctkaction.c:284
+#: ../ctk/ctkaction.c:284
 msgid "Short label"
 msgstr "ટેબનુ લેબલ"
 
-#: ../ctk/deprecated/ctkaction.c:285
+#: ../ctk/ctkaction.c:285
 msgid "A shorter label that may be used on toolbar buttons."
 msgstr "નાનું લેબલ કે જે સાધનપટ્ટી બટનો માટે ઉપયોગી થાય છે."
 
-#: ../ctk/deprecated/ctkaction.c:300
+#: ../ctk/ctkaction.c:300
 msgid "Tooltip"
 msgstr "સાધન ટીપ્પણી"
 
-#: ../ctk/deprecated/ctkaction.c:301
+#: ../ctk/ctkaction.c:301
 msgid "A tooltip for this action."
 msgstr "આ ક્રિયા માટે સાધનટિપ્પણી."
 
-#: ../ctk/deprecated/ctkaction.c:319
+#: ../ctk/ctkaction.c:319
 msgid "Stock Icon"
 msgstr "જથ્થાની ઓળખ"
 
-#: ../ctk/deprecated/ctkaction.c:320
+#: ../ctk/ctkaction.c:320
 msgid "The stock icon displayed in widgets representing this action."
 msgstr "આ કાર્યમાં રજૂઆત કરવા દરમ્યાન વિજેટોમાં સ્ટોક આઇકોન ને દર્શાવેલ છે."
 
-#: ../ctk/deprecated/ctkaction.c:342 ../ctk/deprecated/ctkstatusicon.c:269
+#: ../ctk/ctkaction.c:342 ../ctk/deprecated/ctkstatusicon.c:269
 msgid "GIcon"
 msgstr "GIcon"
 
-#: ../ctk/deprecated/ctkaction.c:343 ../ctk/deprecated/ctkstatusicon.c:270
+#: ../ctk/ctkaction.c:343 ../ctk/deprecated/ctkstatusicon.c:270
 #: ../ctk/ctkcellrendererpixbuf.c:258 ../ctk/ctkimage.c:343
 msgid "The GIcon being displayed"
 msgstr "GIcon ને દર્શાવેલ છે"
 
-#: ../ctk/deprecated/ctkaction.c:365 ../ctk/deprecated/ctkstatusicon.c:253
+#: ../ctk/ctkaction.c:365 ../ctk/deprecated/ctkstatusicon.c:253
 #: ../ctk/ctkcellrendererpixbuf.c:223 ../ctk/ctkimage.c:325
 #: ../ctk/ctkprinter.c:170 ../ctk/ctkwindow.c:859
 msgid "Icon Name"
 msgstr "ચિહ્ન નામ"
 
-#: ../ctk/deprecated/ctkaction.c:366 ../ctk/deprecated/ctkstatusicon.c:254
+#: ../ctk/ctkaction.c:366 ../ctk/deprecated/ctkstatusicon.c:254
 #: ../ctk/ctkcellrendererpixbuf.c:224 ../ctk/ctkimage.c:326
 msgid "The name of the icon from the icon theme"
 msgstr "ચિહ્ન નામમાથી ચિહ્નનું નામ"
 
-#: ../ctk/deprecated/ctkaction.c:381 ../ctk/ctktoolitem.c:179
+#: ../ctk/ctkaction.c:381 ../ctk/ctktoolitem.c:179
 msgid "Visible when horizontal"
 msgstr "આડું હોય ત્યારે દૃશ્યમાન"
 
-#: ../ctk/deprecated/ctkaction.c:382 ../ctk/ctktoolitem.c:180
+#: ../ctk/ctkaction.c:382 ../ctk/ctktoolitem.c:180
 msgid ""
 "Whether the toolbar item is visible when the toolbar is in a horizontal "
 "orientation."
 msgstr "શું સાધનપટ્ટી વસ્તુ દૃશ્યમાન થશે જ્યારે સાધનપટ્ટી આડી દિશામાં છે."
 
-#: ../ctk/deprecated/ctkaction.c:400
+#: ../ctk/ctkaction.c:400
 msgid "Visible when overflown"
 msgstr "વધુ ભરાઈ જાય ત્યારે દૃશ્યમાન"
 
-#: ../ctk/deprecated/ctkaction.c:401
+#: ../ctk/ctkaction.c:401
 msgid ""
 "When TRUE, toolitem proxies for this action are represented in the toolbar "
 "overflow menu."
@@ -285,21 +285,21 @@ msgstr ""
 "જ્યારે સાચું હોય, ત્યારે સાધનવસ્તુ પ્રોક્સીઓ માટે આ ક્રિયા સાધનપટ્ટી વધારેભરાઈ જાય તે મેનુ રજૂ "
 "થાય છે."
 
-#: ../ctk/deprecated/ctkaction.c:417 ../ctk/ctktoolitem.c:186
+#: ../ctk/ctkaction.c:417 ../ctk/ctktoolitem.c:186
 msgid "Visible when vertical"
 msgstr "ઉભું હોય ત્યારે દૃશ્યમાન"
 
-#: ../ctk/deprecated/ctkaction.c:418 ../ctk/ctktoolitem.c:187
+#: ../ctk/ctkaction.c:418 ../ctk/ctktoolitem.c:187
 msgid ""
 "Whether the toolbar item is visible when the toolbar is in a vertical "
 "orientation."
 msgstr "જ્યારે સાધનપટ્ટી ઊભી દિશામાં હોય ત્યારે શું સાધનપટ્ટી વસ્તુ દૃશ્યમાન થશે."
 
-#: ../ctk/deprecated/ctkaction.c:434 ../ctk/ctktoolitem.c:193
+#: ../ctk/ctkaction.c:434 ../ctk/ctktoolitem.c:193
 msgid "Is important"
 msgstr "જરુરી છે"
 
-#: ../ctk/deprecated/ctkaction.c:435
+#: ../ctk/ctkaction.c:435
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
 "this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
@@ -307,49 +307,49 @@ msgstr ""
 "શું ક્રિયા મહત્વની હોય એ જરૂરી છે. જ્યારે સાચું હોય, ત્યારે આ ક્રિયા માટેની સાધનવસ્તુ "
 "પ્રોક્સીઓ CTK_TOOLBAR_BOTH_HORIZ સ્થિતિમાં લખાણ બતાવે છે."
 
-#: ../ctk/deprecated/ctkaction.c:451
+#: ../ctk/ctkaction.c:451
 msgid "Hide if empty"
 msgstr "જો ખાલી હોય તો છુપાવો"
 
-#: ../ctk/deprecated/ctkaction.c:452
+#: ../ctk/ctkaction.c:452
 msgid "When TRUE, empty menu proxies for this action are hidden."
 msgstr "જ્યારે સાચું હોય, ત્યારે આ ક્રિયા માટેની ખાલી મેનુ પ્રોક્સીઓ છુપાયેલ હોય છે."
 
-#: ../ctk/deprecated/ctkaction.c:466 ../ctk/deprecated/ctkactiongroup.c:214
+#: ../ctk/ctkaction.c:466 ../ctk/deprecated/ctkactiongroup.c:214
 #: ../ctk/ctkcellrenderer.c:301 ../ctk/ctkwidget.c:1277
 msgid "Sensitive"
 msgstr "સંવેદનશીલ"
 
-#: ../ctk/deprecated/ctkaction.c:467
+#: ../ctk/ctkaction.c:467
 msgid "Whether the action is enabled."
 msgstr "શું વિજેટ દૃશ્યમાન છે."
 
-#: ../ctk/deprecated/ctkaction.c:481 ../ctk/deprecated/ctkactiongroup.c:228
+#: ../ctk/ctkaction.c:481 ../ctk/deprecated/ctkactiongroup.c:228
 #: ../ctk/deprecated/ctkstatusicon.c:304 ../ctk/ctktreeviewcolumn.c:245
 #: ../ctk/ctkwidget.c:1270
 msgid "Visible"
 msgstr "દૃશ્યમાન"
 
-#: ../ctk/deprecated/ctkaction.c:482
+#: ../ctk/ctkaction.c:482
 msgid "Whether the action is visible."
 msgstr "શું વિજેટ દૃશ્યમાન છે."
 
-#: ../ctk/deprecated/ctkaction.c:497
+#: ../ctk/ctkaction.c:497
 msgid "Action Group"
 msgstr "કાર્યશીલ વિસ્તારની કિનારી"
 
-#: ../ctk/deprecated/ctkaction.c:498
+#: ../ctk/ctkaction.c:498
 msgid ""
 "The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
 msgstr "CtkActionGroup આ CtkAction સાથે સંકળાયેલ છે, અથવા NULL સાથે (આંતરિક વપરાશ માટે)."
 
-#: ../ctk/deprecated/ctkaction.c:519 ../ctk/deprecated/ctkimagemenuitem.c:205
+#: ../ctk/ctkaction.c:519 ../ctk/deprecated/ctkimagemenuitem.c:205
 #: ../ctk/ctkbutton.c:364
 msgid "Always show image"
 msgstr "હંમેશા ચિત્ર ને બતાવો"
 
-#: ../ctk/deprecated/ctkaction.c:520 ../ctk/deprecated/ctkimagemenuitem.c:206
+#: ../ctk/ctkaction.c:520 ../ctk/deprecated/ctkimagemenuitem.c:206
 #: ../ctk/ctkbutton.c:365
 msgid "Whether the image will always be shown"
 msgstr "ક્યાંતો ઇમેજ એ હંમેશા બતાવેલ હશે"

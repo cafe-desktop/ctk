@@ -174,81 +174,81 @@ msgstr "Renderización d'a celda"
 msgid "The cell renderer represented by this accessible"
 msgstr "A renderización d'a celda representada por iste accesible"
 
-#: ../ctk/deprecated/ctkaction.c:238 ../ctk/deprecated/ctkactiongroup.c:203
+#: ../ctk/ctkaction.c:238 ../ctk/deprecated/ctkactiongroup.c:203
 #: ../ctk/ctkprinter.c:121 ../ctk/ctkstack.c:411 ../ctk/ctktextmark.c:125
 #: ../ctk/ctkthemingengine.c:262
 msgid "Name"
 msgstr "Nombre"
 
-#: ../ctk/deprecated/ctkaction.c:239
+#: ../ctk/ctkaction.c:239
 msgid "A unique name for the action."
 msgstr "Un nombre solo ta l'acción."
 
-#: ../ctk/deprecated/ctkaction.c:259 ../ctk/ctkbutton.c:252
+#: ../ctk/ctkaction.c:259 ../ctk/ctkbutton.c:252
 #: ../ctk/ctkexpander.c:288 ../ctk/ctkframe.c:171 ../ctk/ctklabel.c:724
 #: ../ctk/ctkmenuitem.c:448 ../ctk/ctktoolbutton.c:239
 #: ../ctk/ctktoolitemgroup.c:1593
 msgid "Label"
 msgstr "Etiqueta"
 
-#: ../ctk/deprecated/ctkaction.c:260
+#: ../ctk/ctkaction.c:260
 msgid "The label used for menu items and buttons that activate this action."
 msgstr ""
 "A etiqueta que se fa servir ta los elementos de menú y botons que activan "
 "ista acción."
 
-#: ../ctk/deprecated/ctkaction.c:279
+#: ../ctk/ctkaction.c:279
 msgid "Short label"
 msgstr "Etiqueta curta"
 
-#: ../ctk/deprecated/ctkaction.c:280
+#: ../ctk/ctkaction.c:280
 msgid "A shorter label that may be used on toolbar buttons."
 msgstr ""
 "Una etiqueta mas curta que talment s'use en os botons d'a barra de "
 "ferramientas."
 
-#: ../ctk/deprecated/ctkaction.c:295
+#: ../ctk/ctkaction.c:295
 msgid "Tooltip"
 msgstr "Consello"
 
-#: ../ctk/deprecated/ctkaction.c:296
+#: ../ctk/ctkaction.c:296
 msgid "A tooltip for this action."
 msgstr "Un consello ta ista acción."
 
-#: ../ctk/deprecated/ctkaction.c:314
+#: ../ctk/ctkaction.c:314
 msgid "Stock Icon"
 msgstr "Icono d'inventario"
 
-#: ../ctk/deprecated/ctkaction.c:315
+#: ../ctk/ctkaction.c:315
 msgid "The stock icon displayed in widgets representing this action."
 msgstr "L'icono d'inventario amostrau en os widgets representando ista acción."
 
-#: ../ctk/deprecated/ctkaction.c:337 ../ctk/ctkstatusicon.c:267
+#: ../ctk/ctkaction.c:337 ../ctk/ctkstatusicon.c:267
 msgid "GIcon"
 msgstr "GIcon"
 
-#: ../ctk/deprecated/ctkaction.c:338 ../ctk/ctkcellrendererpixbuf.c:257
+#: ../ctk/ctkaction.c:338 ../ctk/ctkcellrendererpixbuf.c:257
 #: ../ctk/ctkimage.c:343 ../ctk/ctkstatusicon.c:268
 #, fuzzy
 msgid "The GIcon being displayed"
 msgstr "L'icono amostrau"
 
-#: ../ctk/deprecated/ctkaction.c:360 ../ctk/ctkcellrendererpixbuf.c:222
+#: ../ctk/ctkaction.c:360 ../ctk/ctkcellrendererpixbuf.c:222
 #: ../ctk/ctkimage.c:325 ../ctk/ctkprinter.c:170 ../ctk/ctkstatusicon.c:251
 #: ../ctk/ctkwindow.c:879
 msgid "Icon Name"
 msgstr "Nombre de l'icono"
 
-#: ../ctk/deprecated/ctkaction.c:361 ../ctk/ctkcellrendererpixbuf.c:223
+#: ../ctk/ctkaction.c:361 ../ctk/ctkcellrendererpixbuf.c:223
 #: ../ctk/ctkimage.c:326 ../ctk/ctkstatusicon.c:252
 msgid "The name of the icon from the icon theme"
 msgstr "O nombre de l'icono d'o tema d'iconos"
 
-#: ../ctk/deprecated/ctkaction.c:376 ../ctk/ctktoolitem.c:194
+#: ../ctk/ctkaction.c:376 ../ctk/ctktoolitem.c:194
 msgid "Visible when horizontal"
 msgstr "Visible si ye horizontal"
 
-#: ../ctk/deprecated/ctkaction.c:377 ../ctk/ctktoolitem.c:195
+#: ../ctk/ctkaction.c:377 ../ctk/ctktoolitem.c:195
 msgid ""
 "Whether the toolbar item is visible when the toolbar is in a horizontal "
 "orientation."
@@ -256,11 +256,11 @@ msgstr ""
 "Indica si l'elemento d'a barra de ferramientas ye visible quan a barra siga "
 "en orientación horizontal."
 
-#: ../ctk/deprecated/ctkaction.c:395
+#: ../ctk/ctkaction.c:395
 msgid "Visible when overflown"
 msgstr "Visible quan rebute"
 
-#: ../ctk/deprecated/ctkaction.c:396
+#: ../ctk/ctkaction.c:396
 msgid ""
 "When TRUE, toolitem proxies for this action are represented in the toolbar "
 "overflow menu."
@@ -268,11 +268,11 @@ msgstr ""
 "Quan siga VERDADERO, se represientan elementos de proximidat ta ista acción "
 "en o menú de rebosamiento d'a barra de ferramientas."
 
-#: ../ctk/deprecated/ctkaction.c:412 ../ctk/ctktoolitem.c:201
+#: ../ctk/ctkaction.c:412 ../ctk/ctktoolitem.c:201
 msgid "Visible when vertical"
 msgstr "Visible si ye vertical"
 
-#: ../ctk/deprecated/ctkaction.c:413 ../ctk/ctktoolitem.c:202
+#: ../ctk/ctkaction.c:413 ../ctk/ctktoolitem.c:202
 msgid ""
 "Whether the toolbar item is visible when the toolbar is in a vertical "
 "orientation."
@@ -280,11 +280,11 @@ msgstr ""
 "Indica si l'elemento d'a barra de ferramientas ye visible quan a barra siga "
 "en orientación vertical."
 
-#: ../ctk/deprecated/ctkaction.c:429 ../ctk/ctktoolitem.c:208
+#: ../ctk/ctkaction.c:429 ../ctk/ctktoolitem.c:208
 msgid "Is important"
 msgstr "Ye important"
 
-#: ../ctk/deprecated/ctkaction.c:430
+#: ../ctk/ctkaction.c:430
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
 "this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
@@ -293,52 +293,52 @@ msgstr ""
 "de l'elemento de ferramienta amuestran texto en o modo "
 "CTK_TOOLBAR_BOTH_HORIZ."
 
-#: ../ctk/deprecated/ctkaction.c:446
+#: ../ctk/ctkaction.c:446
 msgid "Hide if empty"
 msgstr "Amagar si ye vuedo"
 
-#: ../ctk/deprecated/ctkaction.c:447
+#: ../ctk/ctkaction.c:447
 msgid "When TRUE, empty menu proxies for this action are hidden."
 msgstr ""
 "Quan siga VERDADERO, os elementos de proximidat vuedos d'o menú ta ista "
 "acción s'amagan."
 
-#: ../ctk/deprecated/ctkaction.c:461 ../ctk/deprecated/ctkactiongroup.c:217
+#: ../ctk/ctkaction.c:461 ../ctk/deprecated/ctkactiongroup.c:217
 #: ../ctk/ctkcellrenderer.c:301 ../ctk/ctkwidget.c:1192
 msgid "Sensitive"
 msgstr "Sensible"
 
-#: ../ctk/deprecated/ctkaction.c:462
+#: ../ctk/ctkaction.c:462
 msgid "Whether the action is enabled."
 msgstr "Indica si l'acción ye activada."
 
-#: ../ctk/deprecated/ctkaction.c:476 ../ctk/deprecated/ctkactiongroup.c:231
+#: ../ctk/ctkaction.c:476 ../ctk/deprecated/ctkactiongroup.c:231
 #: ../ctk/ctkstatusicon.c:302 ../ctk/ctktreeviewcolumn.c:247
 #: ../ctk/ctkwidget.c:1185
 msgid "Visible"
 msgstr "Visible"
 
-#: ../ctk/deprecated/ctkaction.c:477
+#: ../ctk/ctkaction.c:477
 msgid "Whether the action is visible."
 msgstr "Indica si l'acción ye visible."
 
-#: ../ctk/deprecated/ctkaction.c:492
+#: ../ctk/ctkaction.c:492
 msgid "Action Group"
 msgstr "Grupo d'acción"
 
-#: ../ctk/deprecated/ctkaction.c:493
+#: ../ctk/ctkaction.c:493
 msgid ""
 "The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
 msgstr ""
 "O CtkActionGroup con que ista CtkAction ye asociada, u NULL (ta uso interno)."
 
-#: ../ctk/deprecated/ctkaction.c:514 ../ctk/deprecated/ctkimagemenuitem.c:205
+#: ../ctk/ctkaction.c:514 ../ctk/deprecated/ctkimagemenuitem.c:205
 #: ../ctk/ctkbutton.c:378
 msgid "Always show image"
 msgstr "Siempre amostrar a imachen"
 
-#: ../ctk/deprecated/ctkaction.c:515 ../ctk/deprecated/ctkimagemenuitem.c:206
+#: ../ctk/ctkaction.c:515 ../ctk/deprecated/ctkimagemenuitem.c:206
 #: ../ctk/ctkbutton.c:379
 msgid "Whether the image will always be shown"
 msgstr "Indica si a imachen s'amostrará siempre"

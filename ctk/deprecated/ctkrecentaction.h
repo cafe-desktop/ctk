@@ -24,7 +24,7 @@
 #error "Only <ctk/ctk.h> can be included directly."
 #endif
 
-#include <ctk/deprecated/ctkaction.h>
+#include <ctk/ctkaction.h>
 #include <ctk/ctkrecentmanager.h>
 
 G_BEGIN_DECLS
