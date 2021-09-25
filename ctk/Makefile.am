@@ -326,6 +326,7 @@ ctk_public_h_sources = 		\
 	ctktexttag.h		\
 	ctktexttagtable.h	\
 	ctktextview.h		\
+	ctktoggleaction.h	\
 	ctktogglebutton.h	\
 	ctktoggletoolbutton.h	\
 	ctktoolbar.h		\
@@ -956,6 +957,7 @@ ctk_base_c_sources = 		\
 	ctktexttypes.c		\
 	ctktextutil.c		\
 	ctktextview.c		\
+	ctktoggleaction.c	\
 	ctktogglebutton.c	\
 	ctktoggletoolbutton.c	\
 	ctktoolbar.c		\

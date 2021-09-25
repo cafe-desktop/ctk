@@ -25,7 +25,6 @@ deprecated_h_sources = 			\
 	deprecated/ctktable.h		\
 	deprecated/ctktearoffmenuitem.h	\
 	deprecated/ctkthemingengine.h	\
-	deprecated/ctktoggleaction.h	\
 	deprecated/ctkuimanager.h	\
 	deprecated/ctkvbbox.h		\
 	deprecated/ctkvbox.h		\
@@ -68,7 +67,6 @@ deprecated_c_sources = 			\
 	deprecated/ctktable.c		\
 	deprecated/ctktearoffmenuitem.c	\
 	deprecated/ctkthemingengine.c	\
-	deprecated/ctktoggleaction.c	\
 	deprecated/ctkuimanager.c	\
 	deprecated/ctkvbbox.c		\
 	deprecated/ctkvbox.c		\

@@ -28,8 +28,6 @@
 
 #include "config.h"
 
-#define CDK_DISABLE_DEPRECATION_WARNINGS
-
 #include "ctkintl.h"
 #include "ctktoggleaction.h"
 #include "ctktoggletoolbutton.h"
@@ -109,8 +107,6 @@ ctk_toggle_action_class_init (CtkToggleActionClass *klass)
    *
    * This is an appearance property and thus only applies if 
    * #CtkActivatable:use-action-appearance is %TRUE.
-   *
-   * Deprecated: 3.10
    */
   g_object_class_install_property (gobject_class,
                                    PROP_DRAW_AS_RADIO,
@@ -126,8 +122,6 @@ ctk_toggle_action_class_init (CtkToggleActionClass *klass)
    * Whether the toggle action should be active.
    *
    * Since: 2.10
-   *
-   * Deprecated: 3.10
    */
   g_object_class_install_property (gobject_class,
                                    PROP_ACTIVE,
@@ -142,8 +136,6 @@ ctk_toggle_action_class_init (CtkToggleActionClass *klass)
    *
    * Should be connected if you wish to perform an action
    * whenever the #CtkToggleAction state is changed.
-   *
-   * Deprecated: 3.10
    */
   action_signals[TOGGLED] =
     g_signal_new (I_("toggled"),
@@ -179,8 +171,6 @@ ctk_toggle_action_init (CtkToggleAction *action)
  * Returns: a new #CtkToggleAction
  *
  * Since: 2.4
- *
- * Deprecated: 3.10
  */
 CtkToggleAction *
 ctk_toggle_action_new (const gchar *name,
@@ -265,8 +255,6 @@ ctk_toggle_action_activate (CtkAction *action)
  * Emits the “toggled” signal on the toggle action.
  *
  * Since: 2.4
- *
- * Deprecated: 3.10
  */
 void
 ctk_toggle_action_toggled (CtkToggleAction *action)
@@ -284,8 +272,6 @@ ctk_toggle_action_toggled (CtkToggleAction *action)
  * Sets the checked state on the toggle action.
  *
  * Since: 2.4
- *
- * Deprecated: 3.10
  */
 void
 ctk_toggle_action_set_active (CtkToggleAction *action, 
@@ -308,8 +294,6 @@ ctk_toggle_action_set_active (CtkToggleAction *action,
  * Returns: the checked state of the toggle action
  *
  * Since: 2.4
- *
- * Deprecated: 3.10
  */
 gboolean
 ctk_toggle_action_get_active (CtkToggleAction *action)
@@ -329,8 +313,6 @@ ctk_toggle_action_get_active (CtkToggleAction *action)
  * Sets whether the action should have proxies like a radio action.
  *
  * Since: 2.4
- *
- * Deprecated: 3.10
  */
 void
 ctk_toggle_action_set_draw_as_radio (CtkToggleAction *action, 
@@ -357,8 +339,6 @@ ctk_toggle_action_set_draw_as_radio (CtkToggleAction *action,
  * Returns: whether the action should have proxies like a radio action.
  *
  * Since: 2.4
- *
- * Deprecated: 3.10
  */
 gboolean
 ctk_toggle_action_get_draw_as_radio (CtkToggleAction *action)
@@ -388,8 +368,6 @@ create_menu_item (CtkAction *action)
  *
  * Sets the #CtkToggleAction:active property directly. This function does
  * not emit signals or notifications: it is left to the caller to do so.
- *
- * Deprecated: 3.10
  */
 void
 _ctk_toggle_action_set_active (CtkToggleAction *toggle_action,
