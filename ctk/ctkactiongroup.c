@@ -86,8 +86,6 @@
 #include "config.h"
 #include <string.h>
 
-#define CDK_DISABLE_DEPRECATION_WARNINGS
-
 #include "ctkactiongroup.h"
 #include "ctkbuildable.h"
 #include "ctkiconfactory.h"
@@ -191,8 +189,6 @@ ctk_action_group_class_init (CtkActionGroupClass *klass)
    * CtkActionGroup:name:
    *
    * A name for the action.
-   *
-   * Deprecated: 3.10
    */
   g_object_class_install_property (gobject_class,
 				   PROP_NAME,
@@ -205,8 +201,6 @@ ctk_action_group_class_init (CtkActionGroupClass *klass)
    * CtkActionGroup:sensitive:
    *
    * Whether the action group is enabled.
-   *
-   * Deprecated: 3.10
    */
   g_object_class_install_property (gobject_class,
 				   PROP_SENSITIVE,
@@ -219,8 +213,6 @@ ctk_action_group_class_init (CtkActionGroupClass *klass)
    * CtkActionGroup:visible:
    *
    * Whether the action group is visible.
-   *
-   * Deprecated: 3.10
    */
   g_object_class_install_property (gobject_class,
 				   PROP_VISIBLE,
@@ -233,8 +225,6 @@ ctk_action_group_class_init (CtkActionGroupClass *klass)
    * CtkActionGroup:accel-group:
    *
    * The accelerator group the actions of this group should use.
-   *
-   * Deprecated: 3.10
    */
   g_object_class_install_property (gobject_class,
 				   PROP_ACCEL_GROUP,
@@ -263,8 +253,6 @@ ctk_action_group_class_init (CtkActionGroupClass *klass)
    * convenient to use.
    *
    * Since: 2.4
-   *
-   * Deprecated: 3.10
    */
   action_group_signals[CONNECT_PROXY] =
     g_signal_new (I_("connect-proxy"),
@@ -288,8 +276,6 @@ ctk_action_group_class_init (CtkActionGroupClass *klass)
    * convenient to use.
    *
    * Since: 2.4
-   *
-   * Deprecated: 3.10
    */
   action_group_signals[DISCONNECT_PROXY] =
     g_signal_new (I_("disconnect-proxy"),
@@ -311,8 +297,6 @@ ctk_action_group_class_init (CtkActionGroupClass *klass)
    * notification just before any action is activated.
    *
    * Since: 2.4
-   *
-   * Deprecated: 3.10
    */
   action_group_signals[PRE_ACTIVATE] =
     g_signal_new (I_("pre-activate"),
@@ -334,8 +318,6 @@ ctk_action_group_class_init (CtkActionGroupClass *klass)
    * notification just after any action is activated.
    *
    * Since: 2.4
-   *
-   * Deprecated: 3.10
    */
   action_group_signals[POST_ACTIVATE] =
     g_signal_new (I_("post-activate"),
@@ -529,8 +511,6 @@ ctk_action_group_buildable_custom_tag_end (CtkBuildable *buildable,
  * Returns: the new #CtkActionGroup
  *
  * Since: 2.4
- *
- * Deprecated: 3.10
  */
 CtkActionGroup *
 ctk_action_group_new (const gchar *name)
@@ -649,8 +629,6 @@ ctk_action_group_real_get_action (CtkActionGroup *self,
  * Returns: the name of the action group.
  * 
  * Since: 2.4
- *
- * Deprecated: 3.10
  */
 const gchar *
 ctk_action_group_get_name (CtkActionGroup *action_group)
@@ -676,8 +654,6 @@ ctk_action_group_get_name (CtkActionGroup *action_group)
  * Returns: %TRUE if the group is sensitive.
  *
  * Since: 2.4
- *
- * Deprecated: 3.10
  */
 gboolean
 ctk_action_group_get_sensitive (CtkActionGroup *action_group)
@@ -709,8 +685,6 @@ cb_set_action_sensitivity (const gchar *name,
  * Changes the sensitivity of @action_group
  * 
  * Since: 2.4
- *
- * Deprecated: 3.10
  */
 void
 ctk_action_group_set_sensitive (CtkActionGroup *action_group, 
@@ -745,8 +719,6 @@ ctk_action_group_set_sensitive (CtkActionGroup *action_group,
  * Returns: %TRUE if the group is visible.
  * 
  * Since: 2.4
- *
- * Deprecated: 3.10
  */
 gboolean
 ctk_action_group_get_visible (CtkActionGroup *action_group)
@@ -770,8 +742,6 @@ ctk_action_group_get_visible (CtkActionGroup *action_group)
  * group or %NULL if there is none.
  *
  * Since: 3.6
- *
- * Deprecated: 3.10
  */
 CtkAccelGroup *
 ctk_action_group_get_accel_group (CtkActionGroup *action_group)
@@ -798,8 +768,6 @@ cb_set_action_visiblity (const gchar *name,
  * Changes the visible of @action_group.
  * 
  * Since: 2.4
- *
- * Deprecated: 3.10
  */
 void
 ctk_action_group_set_visible (CtkActionGroup *action_group, 
@@ -836,8 +804,6 @@ ctk_action_group_accel_group_foreach (gpointer key, gpointer val, gpointer data)
  * Sets the accelerator group to be used by every action in this group.
  * 
  * Since: 3.6
- *
- * Deprecated: 3.10
  */
 void
 ctk_action_group_set_accel_group (CtkActionGroup *action_group,
@@ -875,8 +841,6 @@ ctk_action_group_set_accel_group (CtkActionGroup *action_group,
  * Returns: (transfer none): the action, or %NULL if no action by that name exists
  *
  * Since: 2.4
- *
- * Deprecated: 3.10
  */
 CtkAction *
 ctk_action_group_get_action (CtkActionGroup *action_group,
@@ -921,8 +885,6 @@ check_unique_action (CtkActionGroup *action_group,
  * `ctk_action_group_add_action_with_accel (..., NULL)`.
  *
  * Since: 2.4
- *
- * Deprecated: 3.10
  */
 void
 ctk_action_group_add_action (CtkActionGroup *action_group,
@@ -967,8 +929,6 @@ ctk_action_group_add_action (CtkActionGroup *action_group,
  * Accel paths are set to `<Actions>/group-name/action-name`.
  *
  * Since: 2.4
- *
- * Deprecated: 3.10
  */
 void
 ctk_action_group_add_action_with_accel (CtkActionGroup *action_group,
@@ -1008,15 +968,11 @@ ctk_action_group_add_action_with_accel (CtkActionGroup *action_group,
 
       g_object_get (action, "stock-id", &stock_id, NULL);
 
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-
       if (stock_id && ctk_stock_lookup (stock_id, &stock_item))
         {
           accel_key = stock_item.keyval;
           accel_mods = stock_item.modifier;
 	}
-
-      G_GNUC_END_IGNORE_DEPRECATIONS;
 
       g_free (stock_id);
     }
@@ -1038,8 +994,6 @@ ctk_action_group_add_action_with_accel (CtkActionGroup *action_group,
  * Removes an action object from the action group.
  *
  * Since: 2.4
- *
- * Deprecated: 3.10
  */
 void
 ctk_action_group_remove_action (CtkActionGroup *action_group,
@@ -1078,8 +1032,6 @@ add_single_action (gpointer key,
  * Returns: (element-type CtkAction) (transfer container): an allocated list of the action objects in the action group
  *
  * Since: 2.4
- *
- * Deprecated: 3.10
  */
 GList *
 ctk_action_group_list_actions (CtkActionGroup *action_group)
@@ -1111,8 +1063,6 @@ ctk_action_group_list_actions (CtkActionGroup *action_group)
  * and their accel paths are set to `<Actions>/group-name/action-name`.  
  * 
  * Since: 2.4
- *
- * Deprecated: 3.10
  */
 void
 ctk_action_group_add_actions (CtkActionGroup       *action_group,
@@ -1161,8 +1111,6 @@ shared_data_unref (gpointer data)
  * callback for @user_data. 
  * 
  * Since: 2.4
- *
- * Deprecated: 3.10
  */
 void
 ctk_action_group_add_actions_full (CtkActionGroup       *action_group,
@@ -1245,8 +1193,6 @@ ctk_action_group_add_actions_full (CtkActionGroup       *action_group,
  * and their accel paths are set to `<Actions>/group-name/action-name`.  
  * 
  * Since: 2.4
- *
- * Deprecated: 3.10
  */
 void
 ctk_action_group_add_toggle_actions (CtkActionGroup             *action_group,
@@ -1272,8 +1218,6 @@ ctk_action_group_add_toggle_actions (CtkActionGroup             *action_group,
  * #GDestroyNotify callback for @user_data. 
  * 
  * Since: 2.4
- *
- * Deprecated: 3.10
  */
 void
 ctk_action_group_add_toggle_actions_full (CtkActionGroup             *action_group,
@@ -1314,14 +1258,10 @@ ctk_action_group_add_toggle_actions_full (CtkActionGroup             *action_gro
 
       if (entries[i].stock_id) 
 	{
-          G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-
 	  if (ctk_icon_factory_lookup_default (entries[i].stock_id))
 	    g_object_set (action, "stock-id", entries[i].stock_id, NULL);
 	  else
 	    g_object_set (action, "icon-name", entries[i].stock_id, NULL);
-
-          G_GNUC_END_IGNORE_DEPRECATIONS;
 	}
 
       ctk_toggle_action_set_active (action, entries[i].is_active);
@@ -1365,8 +1305,6 @@ ctk_action_group_add_toggle_actions_full (CtkActionGroup             *action_gro
  * `<Actions>/group-name/action-name`.  
  * 
  * Since: 2.4
- *
- * Deprecated: 3.10
  **/
 void            
 ctk_action_group_add_radio_actions (CtkActionGroup            *action_group,
@@ -1397,8 +1335,6 @@ ctk_action_group_add_radio_actions (CtkActionGroup            *action_group,
  * #GDestroyNotify callback for @user_data. 
  * 
  * Since: 2.4
- *
- * Deprecated: 3.10
  **/
 void            
 ctk_action_group_add_radio_actions_full (CtkActionGroup            *action_group,
@@ -1438,14 +1374,10 @@ ctk_action_group_add_radio_actions_full (CtkActionGroup            *action_group
 
       if (entries[i].stock_id) 
 	{
-          G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-
 	  if (ctk_icon_factory_lookup_default (entries[i].stock_id))
 	    g_object_set (action, "stock-id", entries[i].stock_id, NULL);
 	  else
 	    g_object_set (action, "icon-name", entries[i].stock_id, NULL);
-
-          G_GNUC_END_IGNORE_DEPRECATIONS;
 	}
 
       if (i == 0) 
@@ -1483,9 +1415,7 @@ ctk_action_group_add_radio_actions_full (CtkActionGroup            *action_group
  * If you’re using gettext(), it is enough to set the translation domain
  * with ctk_action_group_set_translation_domain().
  *
- * Since: 2.4 
- *
- * Deprecated: 3.10
+ * Since: 2.4
  **/
 void
 ctk_action_group_set_translate_func (CtkActionGroup   *action_group,
@@ -1532,8 +1462,6 @@ dgettext_swapped (const gchar *msgid,
  * ctk_action_group_set_translate_func().
  *
  * Since: 2.4
- *
- * Deprecated: 3.10
  **/
 void 
 ctk_action_group_set_translation_domain (CtkActionGroup *action_group,
@@ -1560,8 +1488,6 @@ ctk_action_group_set_translation_domain (CtkActionGroup *action_group,
  * Returns: the translation of @string
  *
  * Since: 2.6
- *
- * Deprecated: 3.10
  **/
 const gchar *
 ctk_action_group_translate_string (CtkActionGroup *action_group,

@@ -131,6 +131,7 @@ ctk_public_h_sources = 		\
 	ctkaccelmap.h		\
 	ctkaccessible.h		\
 	ctkaction.h		\
+	ctkactiongroup.h	\
 	ctkactionable.h		\
 	ctkactionbar.h		\
 	ctkadjustment.h		\
@@ -617,6 +618,7 @@ ctk_base_c_sources = 		\
 	$(inspector_c_sources)	\
 	ctkactionmuxer.c	\
 	ctkaction.c		\
+	ctkactiongroup.c	\
 	ctkactionobserver.c	\
 	ctkactionobservable.c	\
 	ctkactionable.c		\

@@ -1,6 +1,5 @@
 ctk_deprecated_sources = files(
   'ctkactivatable.c',
-  'ctkactiongroup.c',
   'ctkalignment.c',
   'ctkarrow.c',
   'ctkcolorsel.c',
@@ -38,7 +37,6 @@ ctk_deprecated_sources = files(
 
 ctk_deprecated_headers = files(
   'ctkactivatable.h',
-  'ctkactiongroup.h',
   'ctkalignment.h',
   'ctkarrow.h',
   'ctkcolorsel.h',
