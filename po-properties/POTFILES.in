@@ -38,7 +38,7 @@ ctk/a11y/ctkscalebuttonaccessible.c
 ctk/a11y/ctkspinneraccessible.c
 ctk/a11y/ctkswitchaccessible.c
 ctk/ctkaction.c
-ctk/deprecated/ctkactiongroup.c
+ctk/ctkactiongroup.c
 ctk/deprecated/ctkactivatable.c
 ctk/deprecated/ctkalignment.c
 ctk/deprecated/ctkarrow.c

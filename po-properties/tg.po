@@ -167,7 +167,7 @@ msgstr "Ҷубронкунандаи занг"
 msgid "The cell renderer represented by this accessible"
 msgstr "Ҷубронкунандаи занг бо мавриди зерин намоиш дода мешавад"
 
-#: ../ctk/ctkaction.c:243 ../ctk/deprecated/ctkactiongroup.c:200
+#: ../ctk/ctkaction.c:243 ../ctk/ctkactiongroup.c:200
 #: ../ctk/ctkprinter.c:121 ../ctk/ctkstack.c:411 ../ctk/ctktextmark.c:126
 #: ../ctk/ctkthemingengine.c:262
 msgid "Name"
@@ -292,7 +292,7 @@ msgstr "Агар холӣ бошад пинҳон кунед"
 msgid "When TRUE, empty menu proxies for this action are hidden."
 msgstr "Вақте ки TRUE аст, ваколати менюи холӣ барои ин амал пинҳон ҳастанд."
 
-#: ../ctk/ctkaction.c:466 ../ctk/deprecated/ctkactiongroup.c:214
+#: ../ctk/ctkaction.c:466 ../ctk/ctkactiongroup.c:214
 #: ../ctk/ctkcellrenderer.c:301 ../ctk/ctkwidget.c:1163
 msgid "Sensitive"
 msgstr "Ҳассос"
@@ -301,7 +301,7 @@ msgstr "Ҳассос"
 msgid "Whether the action is enabled."
 msgstr "Оё амал фаъол шудааст ё на."
 
-#: ../ctk/ctkaction.c:481 ../ctk/deprecated/ctkactiongroup.c:228
+#: ../ctk/ctkaction.c:481 ../ctk/ctkactiongroup.c:228
 #: ../ctk/ctkstatusicon.c:302 ../ctk/ctktreeviewcolumn.c:247
 #: ../ctk/ctkwidget.c:1156
 msgid "Visible"
@@ -332,23 +332,23 @@ msgstr "Ҳамеша намоиш додани тасвир"
 msgid "Whether the image will always be shown"
 msgstr "Оё тасвир ҳамеша ишон дода мешавад ё на"
 
-#: ../ctk/deprecated/ctkactiongroup.c:201
+#: ../ctk/ctkactiongroup.c:201
 msgid "A name for the action group."
 msgstr "Номе барои гурӯҳи амал."
 
-#: ../ctk/deprecated/ctkactiongroup.c:215
+#: ../ctk/ctkactiongroup.c:215
 msgid "Whether the action group is enabled."
 msgstr "Оё гурӯҳи амал фаъол ҳастанд ё на."
 
-#: ../ctk/deprecated/ctkactiongroup.c:229
+#: ../ctk/ctkactiongroup.c:229
 msgid "Whether the action group is visible."
 msgstr "Оё гурӯҳи амал аён ҳастанд ё на."
 
-#: ../ctk/deprecated/ctkactiongroup.c:242
+#: ../ctk/ctkactiongroup.c:242
 msgid "Accelerator Group"
 msgstr "Гурӯҳи шитобдиҳанда"
 
-#: ../ctk/deprecated/ctkactiongroup.c:243
+#: ../ctk/ctkactiongroup.c:243
 msgid "The accelerator group the actions of this group should use."
 msgstr "Гурӯҳи шитобдиҳанда амалҳои ин гурӯҳ бояд истифода шавад."
 

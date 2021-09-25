@@ -230,7 +230,7 @@ msgstr "单元格绘制器"
 msgid "The cell renderer represented by this accessible"
 msgstr "这一可访问项所代表的单元格绘制器"
 
-#: ctk/ctkaction.c:243 ctk/deprecated/ctkactiongroup.c:200
+#: ctk/ctkaction.c:243 ctk/ctkactiongroup.c:200
 #: ctk/deprecated/ctkthemingengine.c:247 ctk/ctkcssnode.c:638
 #: ctk/ctkprinter.c:121 ctk/ctkstack.c:516 ctk/ctktextmark.c:136
 msgid "Name"
@@ -344,7 +344,7 @@ msgstr "若空则隐藏"
 msgid "When TRUE, empty menu proxies for this action are hidden."
 msgstr "为 TRUE 时，此操作对应的空菜单将被隐藏。"
 
-#: ctk/ctkaction.c:466 ctk/deprecated/ctkactiongroup.c:214
+#: ctk/ctkaction.c:466 ctk/ctkactiongroup.c:214
 #: ctk/ctkcellrenderer.c:308 ctk/ctkwidget.c:1155
 msgid "Sensitive"
 msgstr "敏感"
@@ -353,7 +353,7 @@ msgstr "敏感"
 msgid "Whether the action is enabled."
 msgstr "操作是否启用。"
 
-#: ctk/ctkaction.c:481 ctk/deprecated/ctkactiongroup.c:228
+#: ctk/ctkaction.c:481 ctk/ctkactiongroup.c:228
 #: ctk/deprecated/ctkstatusicon.c:314 ctk/ctkcssnode.c:649
 #: ctk/ctknativedialog.c:242 ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1148
 msgid "Visible"
@@ -383,23 +383,23 @@ msgstr "总显示图像"
 msgid "Whether the image will always be shown"
 msgstr "图像是否总是显示"
 
-#: ctk/deprecated/ctkactiongroup.c:201
+#: ctk/ctkactiongroup.c:201
 msgid "A name for the action group."
 msgstr "操作组的名称。"
 
-#: ctk/deprecated/ctkactiongroup.c:215
+#: ctk/ctkactiongroup.c:215
 msgid "Whether the action group is enabled."
 msgstr "操作组是否启用。"
 
-#: ctk/deprecated/ctkactiongroup.c:229
+#: ctk/ctkactiongroup.c:229
 msgid "Whether the action group is visible."
 msgstr "操作组是否可见。"
 
-#: ctk/deprecated/ctkactiongroup.c:242
+#: ctk/ctkactiongroup.c:242
 msgid "Accelerator Group"
 msgstr "快捷键组"
 
-#: ctk/deprecated/ctkactiongroup.c:243
+#: ctk/ctkactiongroup.c:243
 msgid "The accelerator group the actions of this group should use."
 msgstr "此操作组应该使用的快捷键组。"
 

@@ -223,7 +223,7 @@ msgstr "Исцртавач ћелије"
 msgid "The cell renderer represented by this accessible"
 msgstr "Исцртавач ћелије представљен овим приступним"
 
-#: ctk/ctkaction.c:243 ctk/deprecated/ctkactiongroup.c:200
+#: ctk/ctkaction.c:243 ctk/ctkactiongroup.c:200
 #: ctk/deprecated/ctkthemingengine.c:247 ctk/ctkcssnode.c:638
 #: ctk/ctkprinter.c:121 ctk/ctkstack.c:516 ctk/ctktextmark.c:136
 msgid "Name"
@@ -347,7 +347,7 @@ msgid "When TRUE, empty menu proxies for this action are hidden."
 msgstr ""
 "Када је постављено, празни посредници изборника за ову радњу се скривају."
 
-#: ctk/ctkaction.c:466 ctk/deprecated/ctkactiongroup.c:214
+#: ctk/ctkaction.c:466 ctk/ctkactiongroup.c:214
 #: ctk/ctkcellrenderer.c:308 ctk/ctkwidget.c:1155
 msgid "Sensitive"
 msgstr "Осетљиво"
@@ -356,7 +356,7 @@ msgstr "Осетљиво"
 msgid "Whether the action is enabled."
 msgstr "Да ли је радња укључена."
 
-#: ctk/ctkaction.c:481 ctk/deprecated/ctkactiongroup.c:228
+#: ctk/ctkaction.c:481 ctk/ctkactiongroup.c:228
 #: ctk/deprecated/ctkstatusicon.c:314 ctk/ctkcssnode.c:649
 #: ctk/ctknativedialog.c:242 ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1148
 msgid "Visible"
@@ -388,23 +388,23 @@ msgstr "Увек приказује слику"
 msgid "Whether the image will always be shown"
 msgstr "Да ли је слика увек видљива"
 
-#: ctk/deprecated/ctkactiongroup.c:201
+#: ctk/ctkactiongroup.c:201
 msgid "A name for the action group."
 msgstr "Назив за групу радње."
 
-#: ctk/deprecated/ctkactiongroup.c:215
+#: ctk/ctkactiongroup.c:215
 msgid "Whether the action group is enabled."
 msgstr "Да ли је група радње укључена."
 
-#: ctk/deprecated/ctkactiongroup.c:229
+#: ctk/ctkactiongroup.c:229
 msgid "Whether the action group is visible."
 msgstr "Да ли је група радње видљива."
 
-#: ctk/deprecated/ctkactiongroup.c:242
+#: ctk/ctkactiongroup.c:242
 msgid "Accelerator Group"
 msgstr "Група пречице"
 
-#: ctk/deprecated/ctkactiongroup.c:243
+#: ctk/ctkactiongroup.c:243
 msgid "The accelerator group the actions of this group should use."
 msgstr "Група пречице коју треба да користе радње ове групе."
 

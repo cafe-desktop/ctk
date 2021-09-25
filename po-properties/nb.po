@@ -203,7 +203,7 @@ msgstr "Celletegner"
 msgid "The cell renderer represented by this accessible"
 msgstr ""
 
-#: ../ctk/ctkaction.c:243 ../ctk/deprecated/ctkactiongroup.c:200
+#: ../ctk/ctkaction.c:243 ../ctk/ctkactiongroup.c:200
 #: ../ctk/deprecated/ctkthemingengine.c:247 ../ctk/ctkprinter.c:121
 #: ../ctk/ctkstack.c:450 ../ctk/ctktextmark.c:136
 msgid "Name"
@@ -326,7 +326,7 @@ msgstr "Skjul hvis tom"
 msgid "When TRUE, empty menu proxies for this action are hidden."
 msgstr "Når TRUE vil tomme menyproxyer for denne handlingen skjules."
 
-#: ../ctk/ctkaction.c:466 ../ctk/deprecated/ctkactiongroup.c:214
+#: ../ctk/ctkaction.c:466 ../ctk/ctkactiongroup.c:214
 #: ../ctk/ctkcellrenderer.c:301 ../ctk/ctkwidget.c:1278
 msgid "Sensitive"
 msgstr "Følsomt"
@@ -335,7 +335,7 @@ msgstr "Følsomt"
 msgid "Whether the action is enabled."
 msgstr "Om handlingen er aktivert."
 
-#: ../ctk/ctkaction.c:481 ../ctk/deprecated/ctkactiongroup.c:228
+#: ../ctk/ctkaction.c:481 ../ctk/ctkactiongroup.c:228
 #: ../ctk/deprecated/ctkstatusicon.c:306 ../ctk/ctktreeviewcolumn.c:245
 #: ../ctk/ctkwidget.c:1271
 msgid "Visible"
@@ -367,23 +367,23 @@ msgstr "Alltid vis bilde"
 msgid "Whether the image will always be shown"
 msgstr "Om bildet alltid skal være synlig"
 
-#: ../ctk/deprecated/ctkactiongroup.c:201
+#: ../ctk/ctkactiongroup.c:201
 msgid "A name for the action group."
 msgstr "Et navn for handlingsgruppen."
 
-#: ../ctk/deprecated/ctkactiongroup.c:215
+#: ../ctk/ctkactiongroup.c:215
 msgid "Whether the action group is enabled."
 msgstr "Om handlingsgruppen er aktivert."
 
-#: ../ctk/deprecated/ctkactiongroup.c:229
+#: ../ctk/ctkactiongroup.c:229
 msgid "Whether the action group is visible."
 msgstr "Om handlingsgruppen er synlig"
 
-#: ../ctk/deprecated/ctkactiongroup.c:242
+#: ../ctk/ctkactiongroup.c:242
 msgid "Accelerator Group"
 msgstr "Akselleratorgruppe"
 
-#: ../ctk/deprecated/ctkactiongroup.c:243
+#: ../ctk/ctkactiongroup.c:243
 msgid "The accelerator group the actions of this group should use."
 msgstr "Akselleratorgruppe handlingene for denne gruppen skal bruke."
 

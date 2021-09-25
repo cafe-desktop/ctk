@@ -224,7 +224,7 @@ msgstr "Izrisovalnik celic"
 msgid "The cell renderer represented by this accessible"
 msgstr "Izrisovalnik celic, ki ga predstavlja ta predmet."
 
-#: ctk/ctkaction.c:243 ctk/deprecated/ctkactiongroup.c:200
+#: ctk/ctkaction.c:243 ctk/ctkactiongroup.c:200
 #: ctk/deprecated/ctkthemingengine.c:247 ctk/ctkcssnode.c:638
 #: ctk/ctkprinter.c:121 ctk/ctkstack.c:516 ctk/ctktextmark.c:136
 msgid "Name"
@@ -345,7 +345,7 @@ msgstr "Skrij, če je prazen"
 msgid "When TRUE, empty menu proxies for this action are hidden."
 msgstr "Izbrana možnost omogoča, da so prazni predmeti menija skriti."
 
-#: ctk/ctkaction.c:466 ctk/deprecated/ctkactiongroup.c:214
+#: ctk/ctkaction.c:466 ctk/ctkactiongroup.c:214
 #: ctk/ctkcellrenderer.c:308 ctk/ctkwidget.c:1155
 msgid "Sensitive"
 msgstr "Občutljivo"
@@ -354,7 +354,7 @@ msgstr "Občutljivo"
 msgid "Whether the action is enabled."
 msgstr "Ali naj je dejanje omogočeno."
 
-#: ctk/ctkaction.c:481 ctk/deprecated/ctkactiongroup.c:228
+#: ctk/ctkaction.c:481 ctk/ctkactiongroup.c:228
 #: ctk/deprecated/ctkstatusicon.c:314 ctk/ctkcssnode.c:649
 #: ctk/ctknativedialog.c:242 ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1148
 msgid "Visible"
@@ -386,23 +386,23 @@ msgstr "Vedno pokaži sliko"
 msgid "Whether the image will always be shown"
 msgstr "Ali bo slika vedno prikazana"
 
-#: ctk/deprecated/ctkactiongroup.c:201
+#: ctk/ctkactiongroup.c:201
 msgid "A name for the action group."
 msgstr "Ime skupine dejanj."
 
-#: ctk/deprecated/ctkactiongroup.c:215
+#: ctk/ctkactiongroup.c:215
 msgid "Whether the action group is enabled."
 msgstr "Ali naj bo skupina dejanj omogočena."
 
-#: ctk/deprecated/ctkactiongroup.c:229
+#: ctk/ctkactiongroup.c:229
 msgid "Whether the action group is visible."
 msgstr "Ali naj bo skupina dejanj vidna."
 
-#: ctk/deprecated/ctkactiongroup.c:242
+#: ctk/ctkactiongroup.c:242
 msgid "Accelerator Group"
 msgstr "Skupina pospeševalnika"
 
-#: ctk/deprecated/ctkactiongroup.c:243
+#: ctk/ctkactiongroup.c:243
 msgid "The accelerator group the actions of this group should use."
 msgstr "Dejanja skupine pospeševalnika, ki naj bi jih skupina izvajala."
 

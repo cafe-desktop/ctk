@@ -198,7 +198,7 @@ msgstr "સેલ રેન્ડરર"
 msgid "The cell renderer represented by this accessible"
 msgstr "સેલ રેન્ડરર આ ઉપયોગિતા દ્દારા રજૂઆત થયેલ છે"
 
-#: ../ctk/ctkaction.c:243 ../ctk/deprecated/ctkactiongroup.c:200
+#: ../ctk/ctkaction.c:243 ../ctk/ctkactiongroup.c:200
 #: ../ctk/deprecated/ctkthemingengine.c:263 ../ctk/ctkprinter.c:121
 #: ../ctk/ctkstack.c:412 ../ctk/ctktextmark.c:136
 msgid "Name"
@@ -315,7 +315,7 @@ msgstr "જો ખાલી હોય તો છુપાવો"
 msgid "When TRUE, empty menu proxies for this action are hidden."
 msgstr "જ્યારે સાચું હોય, ત્યારે આ ક્રિયા માટેની ખાલી મેનુ પ્રોક્સીઓ છુપાયેલ હોય છે."
 
-#: ../ctk/ctkaction.c:466 ../ctk/deprecated/ctkactiongroup.c:214
+#: ../ctk/ctkaction.c:466 ../ctk/ctkactiongroup.c:214
 #: ../ctk/ctkcellrenderer.c:301 ../ctk/ctkwidget.c:1277
 msgid "Sensitive"
 msgstr "સંવેદનશીલ"
@@ -324,7 +324,7 @@ msgstr "સંવેદનશીલ"
 msgid "Whether the action is enabled."
 msgstr "શું વિજેટ દૃશ્યમાન છે."
 
-#: ../ctk/ctkaction.c:481 ../ctk/deprecated/ctkactiongroup.c:228
+#: ../ctk/ctkaction.c:481 ../ctk/ctkactiongroup.c:228
 #: ../ctk/deprecated/ctkstatusicon.c:304 ../ctk/ctktreeviewcolumn.c:245
 #: ../ctk/ctkwidget.c:1270
 msgid "Visible"
@@ -354,23 +354,23 @@ msgstr "હંમેશા ચિત્ર ને બતાવો"
 msgid "Whether the image will always be shown"
 msgstr "ક્યાંતો ઇમેજ એ હંમેશા બતાવેલ હશે"
 
-#: ../ctk/deprecated/ctkactiongroup.c:201
+#: ../ctk/ctkactiongroup.c:201
 msgid "A name for the action group."
 msgstr "ક્રિયા જૂથ માટે નામ."
 
-#: ../ctk/deprecated/ctkactiongroup.c:215
+#: ../ctk/ctkactiongroup.c:215
 msgid "Whether the action group is enabled."
 msgstr "શું ક્રિયા જૂથ સક્રિય કરેલ છે."
 
-#: ../ctk/deprecated/ctkactiongroup.c:229
+#: ../ctk/ctkactiongroup.c:229
 msgid "Whether the action group is visible."
 msgstr "શું ક્રિયા જૂથ દૃશ્યમાન છે."
 
-#: ../ctk/deprecated/ctkactiongroup.c:242
+#: ../ctk/ctkactiongroup.c:242
 msgid "Accelerator Group"
 msgstr "પ્રવેગક જૂથ"
 
-#: ../ctk/deprecated/ctkactiongroup.c:243
+#: ../ctk/ctkactiongroup.c:243
 msgid "The accelerator group the actions of this group should use."
 msgstr "આ જૂથની ક્રિયાઓનું પ્રવેગક જૂથ વાપરવુ જોઇએ."
 

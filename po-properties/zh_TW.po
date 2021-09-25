@@ -216,7 +216,7 @@ msgstr "儲存格繪圖器"
 msgid "The cell renderer represented by this accessible"
 msgstr "這個無障礙功能的儲存格繪圖器"
 
-#: ctk/ctkaction.c:243 ctk/deprecated/ctkactiongroup.c:200
+#: ctk/ctkaction.c:243 ctk/ctkactiongroup.c:200
 #: ctk/deprecated/ctkthemingengine.c:247 ctk/ctkcssnode.c:638
 #: ctk/ctkprinter.c:121 ctk/ctkstack.c:516 ctk/ctktextmark.c:136
 msgid "Name"
@@ -330,7 +330,7 @@ msgstr "空置時隱藏"
 msgid "When TRUE, empty menu proxies for this action are hidden."
 msgstr "當為 TRUE 時，代理此指令的空選單會被隱藏。"
 
-#: ctk/ctkaction.c:466 ctk/deprecated/ctkactiongroup.c:214
+#: ctk/ctkaction.c:466 ctk/ctkactiongroup.c:214
 #: ctk/ctkcellrenderer.c:308 ctk/ctkwidget.c:1152
 msgid "Sensitive"
 msgstr "有反應"
@@ -339,7 +339,7 @@ msgstr "有反應"
 msgid "Whether the action is enabled."
 msgstr "本指令是否有效。"
 
-#: ctk/ctkaction.c:481 ctk/deprecated/ctkactiongroup.c:228
+#: ctk/ctkaction.c:481 ctk/ctkactiongroup.c:228
 #: ctk/deprecated/ctkstatusicon.c:314 ctk/ctkcssnode.c:649
 #: ctk/ctknativedialog.c:242 ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1145
 msgid "Visible"
@@ -369,23 +369,23 @@ msgstr "永遠顯示影像"
 msgid "Whether the image will always be shown"
 msgstr "是否永遠顯示影像"
 
-#: ctk/deprecated/ctkactiongroup.c:201
+#: ctk/ctkactiongroup.c:201
 msgid "A name for the action group."
 msgstr "該指令集的名稱。"
 
-#: ctk/deprecated/ctkactiongroup.c:215
+#: ctk/ctkactiongroup.c:215
 msgid "Whether the action group is enabled."
 msgstr "該指令集是否有效。"
 
-#: ctk/deprecated/ctkactiongroup.c:229
+#: ctk/ctkactiongroup.c:229
 msgid "Whether the action group is visible."
 msgstr "該指令集是否為可見。"
 
-#: ctk/deprecated/ctkactiongroup.c:242
+#: ctk/ctkactiongroup.c:242
 msgid "Accelerator Group"
 msgstr "捷徑鍵群組"
 
-#: ctk/deprecated/ctkactiongroup.c:243
+#: ctk/ctkactiongroup.c:243
 msgid "The accelerator group the actions of this group should use."
 msgstr "這個群組應使用的動作捷徑鍵群組。"
 

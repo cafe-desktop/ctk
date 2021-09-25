@@ -221,7 +221,7 @@ msgstr "ਸੈੱਲ ਰੈਂਡਰਰ"
 msgid "The cell renderer represented by this accessible"
 msgstr "ਇਹ ਵਰਤੋਂ ਵਾਲੇ ਵਲੋਂ ਪੇਸ਼ ਕੀਤਾ ਸੈੱਲ ਰੈਂਡਰਰ"
 
-#: ctk/ctkaction.c:243 ctk/deprecated/ctkactiongroup.c:200
+#: ctk/ctkaction.c:243 ctk/ctkactiongroup.c:200
 #: ctk/deprecated/ctkthemingengine.c:247 ctk/ctkcssnode.c:638
 #: ctk/ctkprinter.c:121 ctk/ctkstack.c:516 ctk/ctktextmark.c:136
 msgid "Name"
@@ -340,7 +340,7 @@ msgstr "ਜੇ ਖਾਲੀ ਹੈ ਤਾਂ ਉਹਲੇ"
 msgid "When TRUE, empty menu proxies for this action are hidden."
 msgstr "ਜੇਕਰ ਸਹੀ ਹੈ ਤਾਂ ਇਸ ਕਾਰਵਾਈ ਵਿੱਚ ਖਾਲੀ ਲਿਸਟ ਪਰਾਕਸੀਆਂ ਨੂੰ ਉਹਲੇ ਕਰ ਦਿਓ"
 
-#: ctk/ctkaction.c:466 ctk/deprecated/ctkactiongroup.c:214
+#: ctk/ctkaction.c:466 ctk/ctkactiongroup.c:214
 #: ctk/ctkcellrenderer.c:308 ctk/ctkwidget.c:1152
 msgid "Sensitive"
 msgstr "ਸੰਵੇਦਨਸ਼ੀਲ"
@@ -349,7 +349,7 @@ msgstr "ਸੰਵੇਦਨਸ਼ੀਲ"
 msgid "Whether the action is enabled."
 msgstr "ਕੀ ਕਾਰਵਾਈ ਯੋਗ ਹੈ"
 
-#: ctk/ctkaction.c:481 ctk/deprecated/ctkactiongroup.c:228
+#: ctk/ctkaction.c:481 ctk/ctkactiongroup.c:228
 #: ctk/deprecated/ctkstatusicon.c:314 ctk/ctkcssnode.c:649
 #: ctk/ctknativedialog.c:242 ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1145
 msgid "Visible"
@@ -380,23 +380,23 @@ msgstr "ਹਮੇਸ਼ਾਂ ਚਿੱਤਰ ਵੇਖੋ"
 msgid "Whether the image will always be shown"
 msgstr "ਕੀ ਚਿੱਤਰ ਵੇਖਾਇਆ ਜਾਵੇ"
 
-#: ctk/deprecated/ctkactiongroup.c:201
+#: ctk/ctkactiongroup.c:201
 msgid "A name for the action group."
 msgstr "ਕਾਰਵਾਈ ਗਰੁੱਪ ਦਾ ਨਾਂ ਹੈ।"
 
-#: ctk/deprecated/ctkactiongroup.c:215
+#: ctk/ctkactiongroup.c:215
 msgid "Whether the action group is enabled."
 msgstr "ਕੀ ਕਾਰਵਾਈ ਗਰੁੱਪ ਯੋਗ ਹੈ।"
 
-#: ctk/deprecated/ctkactiongroup.c:229
+#: ctk/ctkactiongroup.c:229
 msgid "Whether the action group is visible."
 msgstr "ਕੀ ਕਾਰਵਾਈ ਗਰੁੱਪ ਦਿੱਸ ਰਿਹਾ ਹੈ।"
 
-#: ctk/deprecated/ctkactiongroup.c:242
+#: ctk/ctkactiongroup.c:242
 msgid "Accelerator Group"
 msgstr "ਐਕਸਰਲੇਟਰ ਗਰੁੱਪ"
 
-#: ctk/deprecated/ctkactiongroup.c:243
+#: ctk/ctkactiongroup.c:243
 msgid "The accelerator group the actions of this group should use."
 msgstr "ਐਕਸਰਲੇਟਰ ਗਰੁੱਪ, ਇਹ ਗਰੁੱਪ ਵਲੋਂ ਕੀਤੀਆਂ ਜਾਣ ਵਾਲੀਆਂ ਕਾਰਵਾਈਆਂ।"
 

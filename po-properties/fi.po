@@ -242,7 +242,7 @@ msgstr ""
 msgid "The cell renderer represented by this accessible"
 msgstr ""
 
-#: ctk/ctkaction.c:243 ctk/deprecated/ctkactiongroup.c:200
+#: ctk/ctkaction.c:243 ctk/ctkactiongroup.c:200
 #: ctk/deprecated/ctkthemingengine.c:247 ctk/ctkcssnode.c:638
 #: ctk/ctkprinter.c:121 ctk/ctkstack.c:516 ctk/ctktextmark.c:136
 msgid "Name"
@@ -358,7 +358,7 @@ msgstr "Piilota jos tyhjä"
 msgid "When TRUE, empty menu proxies for this action are hidden."
 msgstr "Kun TRUE, tyhjät valikkokohdat tälle toiminnolle piilotetaan."
 
-#: ctk/ctkaction.c:466 ctk/deprecated/ctkactiongroup.c:214
+#: ctk/ctkaction.c:466 ctk/ctkactiongroup.c:214
 #: ctk/ctkcellrenderer.c:305 ctk/ctkwidget.c:1152
 msgid "Sensitive"
 msgstr "Herkkä"
@@ -367,7 +367,7 @@ msgstr "Herkkä"
 msgid "Whether the action is enabled."
 msgstr "Onko tämä toiminto käytössä."
 
-#: ctk/ctkaction.c:481 ctk/deprecated/ctkactiongroup.c:228
+#: ctk/ctkaction.c:481 ctk/ctkactiongroup.c:228
 #: ctk/deprecated/ctkstatusicon.c:314 ctk/ctkcssnode.c:649
 #: ctk/ctknativedialog.c:242 ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1145
 msgid "Visible"
@@ -399,25 +399,25 @@ msgstr "Näytä kuva aina"
 msgid "Whether the image will always be shown"
 msgstr "Näytetäänkö kuva aina"
 
-#: ctk/deprecated/ctkactiongroup.c:201
+#: ctk/ctkactiongroup.c:201
 msgid "A name for the action group."
 msgstr "Toimintoryhmän nimi."
 
-#: ctk/deprecated/ctkactiongroup.c:215
+#: ctk/ctkactiongroup.c:215
 msgid "Whether the action group is enabled."
 msgstr "Onko tämä toimintoryhmä käytössä."
 
-#: ctk/deprecated/ctkactiongroup.c:229
+#: ctk/ctkactiongroup.c:229
 msgid "Whether the action group is visible."
 msgstr "Onko tämä toimintoryhmä näkyvissä."
 
-#: ctk/deprecated/ctkactiongroup.c:242
+#: ctk/ctkactiongroup.c:242
 #, fuzzy
 #| msgid "Accelerator Mode"
 msgid "Accelerator Group"
 msgstr "Pikavalinnan tila"
 
-#: ctk/deprecated/ctkactiongroup.c:243
+#: ctk/ctkactiongroup.c:243
 msgid "The accelerator group the actions of this group should use."
 msgstr ""
 

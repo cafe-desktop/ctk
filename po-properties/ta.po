@@ -184,7 +184,7 @@ msgstr "கலக் காட்சிப்படுத்தி"
 msgid "The cell renderer represented by this accessible"
 msgstr "இந்த அணுகலால் குறிக்கப்படும் கலக் காட்சிப்படுத்தி"
 
-#: ../ctk/ctkaction.c:243 ../ctk/deprecated/ctkactiongroup.c:200
+#: ../ctk/ctkaction.c:243 ../ctk/ctkactiongroup.c:200
 #: ../ctk/deprecated/ctkthemingengine.c:263 ../ctk/ctkprinter.c:121
 #: ../ctk/ctkstack.c:412 ../ctk/ctktextmark.c:136
 msgid "Name"
@@ -305,7 +305,7 @@ msgstr "வெற்றாக இருந்தால் மறை"
 msgid "When TRUE, empty menu proxies for this action are hidden."
 msgstr "உண்மை எனில் இந்த செயலுக்கான வெற்று பட்டியல் பதிலாட்கள் மறைக்கப்படும்"
 
-#: ../ctk/ctkaction.c:466 ../ctk/deprecated/ctkactiongroup.c:214
+#: ../ctk/ctkaction.c:466 ../ctk/ctkactiongroup.c:214
 #: ../ctk/ctkcellrenderer.c:301 ../ctk/ctkwidget.c:1277
 msgid "Sensitive"
 msgstr "உணர்வுடையது"
@@ -314,7 +314,7 @@ msgstr "உணர்வுடையது"
 msgid "Whether the action is enabled."
 msgstr "செயல் செயல்படுத்தப்பட்டதா."
 
-#: ../ctk/ctkaction.c:481 ../ctk/deprecated/ctkactiongroup.c:228
+#: ../ctk/ctkaction.c:481 ../ctk/ctkactiongroup.c:228
 #: ../ctk/deprecated/ctkstatusicon.c:304 ../ctk/ctktreeviewcolumn.c:245
 #: ../ctk/ctkwidget.c:1270
 msgid "Visible"
@@ -346,23 +346,23 @@ msgstr "எப்போதும் படத்தைக் காட்டு"
 msgid "Whether the image will always be shown"
 msgstr "படம் எப்போதும் காட்டப்பட வேண்டுமா"
 
-#: ../ctk/deprecated/ctkactiongroup.c:201
+#: ../ctk/ctkactiongroup.c:201
 msgid "A name for the action group."
 msgstr "செயல் குழுவிற்கான ஒரு பெயர்"
 
-#: ../ctk/deprecated/ctkactiongroup.c:215
+#: ../ctk/ctkactiongroup.c:215
 msgid "Whether the action group is enabled."
 msgstr "செயல் குழு செயல்படுத்தப்பட்டுள்ளதா."
 
-#: ../ctk/deprecated/ctkactiongroup.c:229
+#: ../ctk/ctkactiongroup.c:229
 msgid "Whether the action group is visible."
 msgstr "செயல்குழு தெரிகிறதா."
 
-#: ../ctk/deprecated/ctkactiongroup.c:242
+#: ../ctk/ctkactiongroup.c:242
 msgid "Accelerator Group"
 msgstr "மாற்றி குழு"
 
-#: ../ctk/deprecated/ctkactiongroup.c:243
+#: ../ctk/ctkactiongroup.c:243
 msgid "The accelerator group the actions of this group should use."
 msgstr "இந்தக் குழுவின் செயல்கள் பயன்படுத்த வேண்டிய மாற்றிக் குழு."
 

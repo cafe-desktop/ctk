@@ -197,7 +197,7 @@ msgstr "Vẽ ô"
 msgid "The cell renderer represented by this accessible"
 msgstr "Bộ vẽ ô đại diện bởi cái tiếp cận này"
 
-#: ctk/ctkaction.c:243 ctk/deprecated/ctkactiongroup.c:200
+#: ctk/ctkaction.c:243 ctk/ctkactiongroup.c:200
 #: ctk/deprecated/ctkthemingengine.c:247 ctk/ctkprinter.c:121
 #: ctk/ctkstack.c:480 ctk/ctktextmark.c:136
 msgid "Name"
@@ -317,7 +317,7 @@ msgstr "Ẩn nếu rỗng"
 msgid "When TRUE, empty menu proxies for this action are hidden."
 msgstr "Khi ĐÚNG thì ủy nhiệm trình đơn rỗng nào bị ẩn."
 
-#: ctk/ctkaction.c:466 ctk/deprecated/ctkactiongroup.c:214
+#: ctk/ctkaction.c:466 ctk/ctkactiongroup.c:214
 #: ctk/ctkcellrenderer.c:301 ctk/ctkwidget.c:1166
 msgid "Sensitive"
 msgstr "Nhạy cảm"
@@ -326,7 +326,7 @@ msgstr "Nhạy cảm"
 msgid "Whether the action is enabled."
 msgstr "Có nên hiệu lực hành động này hay không."
 
-#: ctk/ctkaction.c:481 ctk/deprecated/ctkactiongroup.c:228
+#: ctk/ctkaction.c:481 ctk/ctkactiongroup.c:228
 #: ctk/deprecated/ctkstatusicon.c:306 ctk/ctktreeviewcolumn.c:246
 #: ctk/ctkwidget.c:1159
 msgid "Visible"
@@ -358,23 +358,23 @@ msgstr "Lúc nào cũng hiện ảnh"
 msgid "Whether the image will always be shown"
 msgstr "Ảnh lúc nào cũng được hiển thị không"
 
-#: ctk/deprecated/ctkactiongroup.c:201
+#: ctk/ctkactiongroup.c:201
 msgid "A name for the action group."
 msgstr "Tên cho nhóm hành động."
 
-#: ctk/deprecated/ctkactiongroup.c:215
+#: ctk/ctkactiongroup.c:215
 msgid "Whether the action group is enabled."
 msgstr "Có nên hiệu lực nhóm hành động này hay không"
 
-#: ctk/deprecated/ctkactiongroup.c:229
+#: ctk/ctkactiongroup.c:229
 msgid "Whether the action group is visible."
 msgstr "Có nên hiển thị nhóm hành động này hay không"
 
-#: ctk/deprecated/ctkactiongroup.c:242
+#: ctk/ctkactiongroup.c:242
 msgid "Accelerator Group"
 msgstr "Nhóm phím tăng tốc"
 
-#: ctk/deprecated/ctkactiongroup.c:243
+#: ctk/ctkactiongroup.c:243
 msgid "The accelerator group the actions of this group should use."
 msgstr "Nhóm tăng tốc các hành động của nhóm này nên dùng."
 

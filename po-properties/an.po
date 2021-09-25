@@ -174,7 +174,7 @@ msgstr "Renderización d'a celda"
 msgid "The cell renderer represented by this accessible"
 msgstr "A renderización d'a celda representada por iste accesible"
 
-#: ../ctk/ctkaction.c:238 ../ctk/deprecated/ctkactiongroup.c:203
+#: ../ctk/ctkaction.c:238 ../ctk/ctkactiongroup.c:203
 #: ../ctk/ctkprinter.c:121 ../ctk/ctkstack.c:411 ../ctk/ctktextmark.c:125
 #: ../ctk/ctkthemingengine.c:262
 msgid "Name"
@@ -303,7 +303,7 @@ msgstr ""
 "Quan siga VERDADERO, os elementos de proximidat vuedos d'o menú ta ista "
 "acción s'amagan."
 
-#: ../ctk/ctkaction.c:461 ../ctk/deprecated/ctkactiongroup.c:217
+#: ../ctk/ctkaction.c:461 ../ctk/ctkactiongroup.c:217
 #: ../ctk/ctkcellrenderer.c:301 ../ctk/ctkwidget.c:1192
 msgid "Sensitive"
 msgstr "Sensible"
@@ -312,7 +312,7 @@ msgstr "Sensible"
 msgid "Whether the action is enabled."
 msgstr "Indica si l'acción ye activada."
 
-#: ../ctk/ctkaction.c:476 ../ctk/deprecated/ctkactiongroup.c:231
+#: ../ctk/ctkaction.c:476 ../ctk/ctkactiongroup.c:231
 #: ../ctk/ctkstatusicon.c:302 ../ctk/ctktreeviewcolumn.c:247
 #: ../ctk/ctkwidget.c:1185
 msgid "Visible"
@@ -343,23 +343,23 @@ msgstr "Siempre amostrar a imachen"
 msgid "Whether the image will always be shown"
 msgstr "Indica si a imachen s'amostrará siempre"
 
-#: ../ctk/deprecated/ctkactiongroup.c:204
+#: ../ctk/ctkactiongroup.c:204
 msgid "A name for the action group."
 msgstr "Un nombre ta lo grupo de l'acción."
 
-#: ../ctk/deprecated/ctkactiongroup.c:218
+#: ../ctk/ctkactiongroup.c:218
 msgid "Whether the action group is enabled."
 msgstr "Indica si o grupo d'acción ye activau."
 
-#: ../ctk/deprecated/ctkactiongroup.c:232
+#: ../ctk/ctkactiongroup.c:232
 msgid "Whether the action group is visible."
 msgstr "Indica si o grupo d'acción ye visible."
 
-#: ../ctk/deprecated/ctkactiongroup.c:245
+#: ../ctk/ctkactiongroup.c:245
 msgid "Accelerator Group"
 msgstr "Grupo d'acceleradors"
 
-#: ../ctk/deprecated/ctkactiongroup.c:246
+#: ../ctk/ctkactiongroup.c:246
 msgid "The accelerator group the actions of this group should use."
 msgstr "O grupo d'acceleradors que as accions d'iste grupo han a fer servir."
 

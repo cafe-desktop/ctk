@@ -246,7 +246,7 @@ msgstr "Renderitzador de cel·la"
 msgid "The cell renderer represented by this accessible"
 msgstr "El renderitzador de cel·la que representa este accessible"
 
-#: ctk/ctkaction.c:243 ctk/deprecated/ctkactiongroup.c:200
+#: ctk/ctkaction.c:243 ctk/ctkactiongroup.c:200
 #: ctk/deprecated/ctkthemingengine.c:247 ctk/ctkcssnode.c:634
 #: ctk/ctkprinter.c:121 ctk/ctkstack.c:516 ctk/ctktextmark.c:136
 msgid "Name"
@@ -372,7 +372,7 @@ msgstr ""
 "Quan siga «TRUE» (cert), els apoderats de menú per a esta acció estaran "
 "amagats."
 
-#: ctk/ctkaction.c:466 ctk/deprecated/ctkactiongroup.c:214
+#: ctk/ctkaction.c:466 ctk/ctkactiongroup.c:214
 #: ctk/ctkcellrenderer.c:301 ctk/ctkwidget.c:1146
 msgid "Sensitive"
 msgstr "Sensible"
@@ -381,7 +381,7 @@ msgstr "Sensible"
 msgid "Whether the action is enabled."
 msgstr "Si l'acció està habilitada."
 
-#: ctk/ctkaction.c:481 ctk/deprecated/ctkactiongroup.c:228
+#: ctk/ctkaction.c:481 ctk/ctkactiongroup.c:228
 #: ctk/deprecated/ctkstatusicon.c:307 ctk/ctkcssnode.c:645
 #: ctk/ctknativedialog.c:242 ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1139
 msgid "Visible"
@@ -413,23 +413,23 @@ msgstr "Mostra sempre la imatge"
 msgid "Whether the image will always be shown"
 msgstr "Si es mostrarà sempre la imatge"
 
-#: ctk/deprecated/ctkactiongroup.c:201
+#: ctk/ctkactiongroup.c:201
 msgid "A name for the action group."
 msgstr "Un nom per al grup d'acció."
 
-#: ctk/deprecated/ctkactiongroup.c:215
+#: ctk/ctkactiongroup.c:215
 msgid "Whether the action group is enabled."
 msgstr "Si el grup d'acció és habilitat."
 
-#: ctk/deprecated/ctkactiongroup.c:229
+#: ctk/ctkactiongroup.c:229
 msgid "Whether the action group is visible."
 msgstr "Si el grup d'acció és visible."
 
-#: ctk/deprecated/ctkactiongroup.c:242
+#: ctk/ctkactiongroup.c:242
 msgid "Accelerator Group"
 msgstr "Grup d'acceleració"
 
-#: ctk/deprecated/ctkactiongroup.c:243
+#: ctk/ctkactiongroup.c:243
 msgid "The accelerator group the actions of this group should use."
 msgstr "El grup d'acceleració que el grup d'accions hauria d'utilitzar."
 

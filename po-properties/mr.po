@@ -169,7 +169,7 @@ msgstr "सेल रेंडरर"
 msgid "The cell renderer represented by this accessible"
 msgstr "ॲक्सेसिबलतर्फे प्रस्तुत सेल रेंडरर"
 
-#: ../ctk/ctkaction.c:243 ../ctk/deprecated/ctkactiongroup.c:200
+#: ../ctk/ctkaction.c:243 ../ctk/ctkactiongroup.c:200
 #: ../ctk/deprecated/ctkthemingengine.c:263 ../ctk/ctkprinter.c:121
 #: ../ctk/ctkstack.c:412 ../ctk/ctktextmark.c:136
 msgid "Name"
@@ -286,7 +286,7 @@ msgstr "रिकामे असेल तर लपवा"
 msgid "When TRUE, empty menu proxies for this action are hidden."
 msgstr "खरे असल्यास, या कृती करीता रिकामे मेन्यु प्रॉक्सी लपविलेले जाते."
 
-#: ../ctk/ctkaction.c:466 ../ctk/deprecated/ctkactiongroup.c:214
+#: ../ctk/ctkaction.c:466 ../ctk/ctkactiongroup.c:214
 #: ../ctk/ctkcellrenderer.c:301 ../ctk/ctkwidget.c:1277
 msgid "Sensitive"
 msgstr "संवेदनशील"
@@ -295,7 +295,7 @@ msgstr "संवेदनशील"
 msgid "Whether the action is enabled."
 msgstr "कृती कार्यान्वीत केले गेले आहे का."
 
-#: ../ctk/ctkaction.c:481 ../ctk/deprecated/ctkactiongroup.c:228
+#: ../ctk/ctkaction.c:481 ../ctk/ctkactiongroup.c:228
 #: ../ctk/deprecated/ctkstatusicon.c:304 ../ctk/ctktreeviewcolumn.c:245
 #: ../ctk/ctkwidget.c:1270
 msgid "Visible"
@@ -327,23 +327,23 @@ msgstr "नेहमी प्रतिमा दाखवा"
 msgid "Whether the image will always be shown"
 msgstr "प्रतिमा नेहमी दाखविली जाईल का"
 
-#: ../ctk/deprecated/ctkactiongroup.c:201
+#: ../ctk/ctkactiongroup.c:201
 msgid "A name for the action group."
 msgstr "या कृती गट करीता एक नाव."
 
-#: ../ctk/deprecated/ctkactiongroup.c:215
+#: ../ctk/ctkactiongroup.c:215
 msgid "Whether the action group is enabled."
 msgstr "कृती गट कार्यान्वीत आहे का."
 
-#: ../ctk/deprecated/ctkactiongroup.c:229
+#: ../ctk/ctkactiongroup.c:229
 msgid "Whether the action group is visible."
 msgstr "सुस्पष्ट चित्र."
 
-#: ../ctk/deprecated/ctkactiongroup.c:242
+#: ../ctk/ctkactiongroup.c:242
 msgid "Accelerator Group"
 msgstr "ॲक्सिलरेटर गट"
 
-#: ../ctk/deprecated/ctkactiongroup.c:243
+#: ../ctk/ctkactiongroup.c:243
 msgid "The accelerator group the actions of this group should use."
 msgstr "ॲक्सिलरेटर गटतर्फे वापरण्याजोगी कृती."
 

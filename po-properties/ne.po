@@ -242,7 +242,7 @@ msgstr "स्ट्रिङलाई कसरी धेरै हरफहर
 msgid "The cell renderer represented by this accessible"
 msgstr ""
 
-#: ctk/ctkaction.c:243 ctk/deprecated/ctkactiongroup.c:200
+#: ctk/ctkaction.c:243 ctk/ctkactiongroup.c:200
 #: ctk/deprecated/ctkthemingengine.c:247 ctk/ctkcssnode.c:634 ctk/ctkprinter.c:121
 #: ctk/ctkstack.c:516 ctk/ctktextmark.c:136
 msgid "Name"
@@ -351,7 +351,7 @@ msgstr "यदि खालि भए लुकाउ"
 msgid "When TRUE, empty menu proxies for this action are hidden."
 msgstr "जब सत्यहुन्छ , यो कार्यको लागि खालि सूची बहुप्रतिनिधिहरु अदृश्य हुन्छन"
 
-#: ctk/ctkaction.c:466 ctk/deprecated/ctkactiongroup.c:214 ctk/ctkcellrenderer.c:301
+#: ctk/ctkaction.c:466 ctk/ctkactiongroup.c:214 ctk/ctkcellrenderer.c:301
 #: ctk/ctkwidget.c:1146
 msgid "Sensitive"
 msgstr "सम्वेदनशील"
@@ -360,7 +360,7 @@ msgstr "सम्वेदनशील"
 msgid "Whether the action is enabled."
 msgstr "जहाँ कार्य सक्षम छ"
 
-#: ctk/ctkaction.c:481 ctk/deprecated/ctkactiongroup.c:228
+#: ctk/ctkaction.c:481 ctk/ctkactiongroup.c:228
 #: ctk/deprecated/ctkstatusicon.c:307 ctk/ctkcssnode.c:645 ctk/ctknativedialog.c:242
 #: ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1139
 msgid "Visible"
@@ -388,24 +388,24 @@ msgstr "सधैँ"
 msgid "Whether the image will always be shown"
 msgstr "जहा सीमारेखा देखाइन सकिन्थ्यो वा सकिन्नथ्यो"
 
-#: ctk/deprecated/ctkactiongroup.c:201
+#: ctk/ctkactiongroup.c:201
 msgid "A name for the action group."
 msgstr "कार्य समूहको लागि एउटा नाम"
 
-#: ctk/deprecated/ctkactiongroup.c:215
+#: ctk/ctkactiongroup.c:215
 msgid "Whether the action group is enabled."
 msgstr "जहाँ कार्य समूह सक्रिय छ"
 
-#: ctk/deprecated/ctkactiongroup.c:229
+#: ctk/ctkactiongroup.c:229
 msgid "Whether the action group is visible."
 msgstr "जहाँ कार्य समूह हेर्न सकिने छ"
 
-#: ctk/deprecated/ctkactiongroup.c:242
+#: ctk/ctkactiongroup.c:242
 #, fuzzy
 msgid "Accelerator Group"
 msgstr "नयाँ गतिवर्धक..."
 
-#: ctk/deprecated/ctkactiongroup.c:243
+#: ctk/ctkactiongroup.c:243
 msgid "The accelerator group the actions of this group should use."
 msgstr ""
 
