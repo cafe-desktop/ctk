@@ -317,12 +317,12 @@ msgstr ""
 "CtkActionGroup ज्याच्याशी CtkAction निगडीत आहे, किंवा काहीच नाही (आंतरीक वापर "
 "करीता)."
 
-#: ../ctk/ctkaction.c:519 ../ctk/deprecated/ctkimagemenuitem.c:205
+#: ../ctk/ctkaction.c:519 ../ctk/ctkimagemenuitem.c:205
 #: ../ctk/ctkbutton.c:364
 msgid "Always show image"
 msgstr "नेहमी प्रतिमा दाखवा"
 
-#: ../ctk/ctkaction.c:520 ../ctk/deprecated/ctkimagemenuitem.c:206
+#: ../ctk/ctkaction.c:520 ../ctk/ctkimagemenuitem.c:206
 #: ../ctk/ctkbutton.c:365
 msgid "Whether the image will always be shown"
 msgstr "प्रतिमा नेहमी दाखविली जाईल का"
@@ -609,27 +609,27 @@ msgid ""
 "detached."
 msgstr "हॅन्डलबॉक्सचे उपघटक जोडले गेले किंवा नाही, हे ठरविणारे बूलीयन मुल्य."
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:168 ../ctk/ctkbutton.c:331
+#: ../ctk/ctkimagemenuitem.c:168 ../ctk/ctkbutton.c:331
 msgid "Image widget"
 msgstr "प्रतिमा बिडगेट"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:169
+#: ../ctk/ctkimagemenuitem.c:169
 msgid "Child widget to appear next to the menu text"
 msgstr "मेनू टेक्स्ट जवळ दिसणारे उपचित्र"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:185 ../ctk/ctkbutton.c:264
+#: ../ctk/ctkimagemenuitem.c:185 ../ctk/ctkbutton.c:264
 msgid "Use stock"
 msgstr "साठ्याचा उपयोग करा "
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:186
+#: ../ctk/ctkimagemenuitem.c:186
 msgid "Whether to use the label text to create a stock menu item"
 msgstr "स्टॉक मेन्यू घटक बनविण्याकरीता लेबल पाठ्य वापरायचे का"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:222 ../ctk/ctkmenu.c:570
+#: ../ctk/ctkimagemenuitem.c:222 ../ctk/ctkmenu.c:570
 msgid "Accel Group"
 msgstr "Accel Group"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:223
+#: ../ctk/ctkimagemenuitem.c:223
 msgid "The Accel Group to use for stock accelerator keys"
 msgstr "स्टॉक accelerator किज् करीता वारण्याजोगी Accel Group"
 

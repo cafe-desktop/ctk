@@ -336,12 +336,12 @@ msgstr ""
 "இந்த ஜிடிகேஆக்ஷன் சார்ந்துள்ள ஜிடிகேஆக்ஷன் குழு அல்லது NULL (உள்ளமை பயனுக்கு "
 "மட்டில்)"
 
-#: ../ctk/ctkaction.c:519 ../ctk/deprecated/ctkimagemenuitem.c:205
+#: ../ctk/ctkaction.c:519 ../ctk/ctkimagemenuitem.c:205
 #: ../ctk/ctkbutton.c:364
 msgid "Always show image"
 msgstr "எப்போதும் படத்தைக் காட்டு"
 
-#: ../ctk/ctkaction.c:520 ../ctk/deprecated/ctkimagemenuitem.c:206
+#: ../ctk/ctkaction.c:520 ../ctk/ctkimagemenuitem.c:206
 #: ../ctk/ctkbutton.c:365
 msgid "Whether the image will always be shown"
 msgstr "படம் எப்போதும் காட்டப்பட வேண்டுமா"
@@ -633,27 +633,27 @@ msgid ""
 msgstr ""
 "கைப்பிடி பெட்டியின் சேய் இணைக்கப்பட்டதா இல்லையா என காட்டும் பூலியன் மதிப்பு"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:168 ../ctk/ctkbutton.c:331
+#: ../ctk/ctkimagemenuitem.c:168 ../ctk/ctkbutton.c:331
 msgid "Image widget"
 msgstr "உருவ விட்செட்"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:169
+#: ../ctk/ctkimagemenuitem.c:169
 msgid "Child widget to appear next to the menu text"
 msgstr "பட்டி உரைக்கு அருகில் தோன்ற வேண்டிய சேய் விட்செட்"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:185 ../ctk/ctkbutton.c:264
+#: ../ctk/ctkimagemenuitem.c:185 ../ctk/ctkbutton.c:264
 msgid "Use stock"
 msgstr "ஸ்டாக் பயன்படுத்து"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:186
+#: ../ctk/ctkimagemenuitem.c:186
 msgid "Whether to use the label text to create a stock menu item"
 msgstr "ஒரு முன்னிருப்பு பட்டியல் உருப்படிக்கு உரை  அடையாளம் பயன்படுத்துவதா"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:222 ../ctk/ctkmenu.c:570
+#: ../ctk/ctkimagemenuitem.c:222 ../ctk/ctkmenu.c:570
 msgid "Accel Group"
 msgstr "Accel குழு"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:223
+#: ../ctk/ctkimagemenuitem.c:223
 msgid "The Accel Group to use for stock accelerator keys"
 msgstr "முன்னிருப்பு முடுக்கு விசைகளை பயன்படுத்த ஆக்ஸெல் குழு"
 

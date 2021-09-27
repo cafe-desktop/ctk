@@ -377,12 +377,12 @@ msgstr ""
 "CtkActionGroup yang digunakan pada CtkAction ini, atau isi saja NULL (untuk "
 "keperluan internal)."
 
-#: ctk/ctkaction.c:519 ctk/deprecated/ctkimagemenuitem.c:264
+#: ctk/ctkaction.c:519 ctk/ctkimagemenuitem.c:264
 #: ctk/ctkbutton.c:393
 msgid "Always show image"
 msgstr "Selalu tampilkan citra"
 
-#: ctk/ctkaction.c:520 ctk/deprecated/ctkimagemenuitem.c:265
+#: ctk/ctkaction.c:520 ctk/ctkimagemenuitem.c:265
 #: ctk/ctkbutton.c:394
 msgid "Whether the image will always be shown"
 msgstr "Apakah citra selalu ditampilkan atau tidak"
@@ -671,27 +671,27 @@ msgstr ""
 "Nilai bool yang mengindikasikan apakah handlebox milik anak disambung atau "
 "dilepas."
 
-#: ctk/deprecated/ctkimagemenuitem.c:226 ctk/ctkbutton.c:360
+#: ctk/ctkimagemenuitem.c:226 ctk/ctkbutton.c:360
 msgid "Image widget"
 msgstr "Widget gambar"
 
-#: ctk/deprecated/ctkimagemenuitem.c:227
+#: ctk/ctkimagemenuitem.c:227
 msgid "Child widget to appear next to the menu text"
 msgstr "Widget anak yang ditampilkan di samping teks menu"
 
-#: ctk/deprecated/ctkimagemenuitem.c:243 ctk/ctkbutton.c:300
+#: ctk/ctkimagemenuitem.c:243 ctk/ctkbutton.c:300
 msgid "Use stock"
 msgstr "Gunakan stok"
 
-#: ctk/deprecated/ctkimagemenuitem.c:244
+#: ctk/ctkimagemenuitem.c:244
 msgid "Whether to use the label text to create a stock menu item"
 msgstr "Apakah memakai teks label untuk membuat suatu butir menu stok"
 
-#: ctk/deprecated/ctkimagemenuitem.c:281 ctk/ctkmenu.c:655
+#: ctk/ctkimagemenuitem.c:281 ctk/ctkmenu.c:655
 msgid "Accel Group"
 msgstr "Grup Akselerator"
 
-#: ctk/deprecated/ctkimagemenuitem.c:282
+#: ctk/ctkimagemenuitem.c:282
 msgid "The Accel Group to use for stock accelerator keys"
 msgstr "Grup Akselerasi bagi kunci akselerator stok"
 

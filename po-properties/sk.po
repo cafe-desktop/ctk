@@ -373,12 +373,12 @@ msgstr ""
 "CtkActionGroup, ku ktorej je táto CtkAction priradená, alebo NULL (pre "
 "vnútorné použitie)."
 
-#: ctk/ctkaction.c:519 ctk/deprecated/ctkimagemenuitem.c:264
+#: ctk/ctkaction.c:519 ctk/ctkimagemenuitem.c:264
 #: ctk/ctkbutton.c:393
 msgid "Always show image"
 msgstr "Vždy zobraziť obrázok"
 
-#: ctk/ctkaction.c:520 ctk/deprecated/ctkimagemenuitem.c:265
+#: ctk/ctkaction.c:520 ctk/ctkimagemenuitem.c:265
 #: ctk/ctkbutton.c:394
 msgid "Whether the image will always be shown"
 msgstr "Určuje, či bude obrázok stále zobrazený"
@@ -670,29 +670,29 @@ msgstr ""
 "Logická hodnota určujúca, či je potomok uchopiteľného boxu pripojený alebo "
 "odpojený."
 
-#: ctk/deprecated/ctkimagemenuitem.c:226 ctk/ctkbutton.c:360
+#: ctk/ctkimagemenuitem.c:226 ctk/ctkbutton.c:360
 msgid "Image widget"
 msgstr "Prvok obrázku"
 
-#: ctk/deprecated/ctkimagemenuitem.c:227
+#: ctk/ctkimagemenuitem.c:227
 msgid "Child widget to appear next to the menu text"
 msgstr "Potomok zobrazený vedľa textu ponuky"
 
-#: ctk/deprecated/ctkimagemenuitem.c:243 ctk/ctkbutton.c:300
+#: ctk/ctkimagemenuitem.c:243 ctk/ctkbutton.c:300
 msgid "Use stock"
 msgstr "Použiť štandardné"
 
-#: ctk/deprecated/ctkimagemenuitem.c:244
+#: ctk/ctkimagemenuitem.c:244
 msgid "Whether to use the label text to create a stock menu item"
 msgstr ""
 "Určuje, či sa má použiť text označenia na vytvorenie štandardnej položke "
 "ponuky"
 
-#: ctk/deprecated/ctkimagemenuitem.c:281 ctk/ctkmenu.c:655
+#: ctk/ctkimagemenuitem.c:281 ctk/ctkmenu.c:655
 msgid "Accel Group"
 msgstr "Skupina akcelerátorov"
 
-#: ctk/deprecated/ctkimagemenuitem.c:282
+#: ctk/ctkimagemenuitem.c:282
 msgid "The Accel Group to use for stock accelerator keys"
 msgstr "Skupina akcelerátorov, ktorú použiť pre štandardné akcelerátory kláves"
 

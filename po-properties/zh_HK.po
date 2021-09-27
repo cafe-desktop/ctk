@@ -311,12 +311,12 @@ msgid ""
 "use)."
 msgstr "本 CtkAction 相關的 CtkActionGroup，或為 NULL (用作內部使用)。"
 
-#: ../ctk/ctkaction.c:519 ../ctk/deprecated/ctkimagemenuitem.c:205
+#: ../ctk/ctkaction.c:519 ../ctk/ctkimagemenuitem.c:205
 #: ../ctk/ctkbutton.c:364
 msgid "Always show image"
 msgstr "永遠顯示圖片"
 
-#: ../ctk/ctkaction.c:520 ../ctk/deprecated/ctkimagemenuitem.c:206
+#: ../ctk/ctkaction.c:520 ../ctk/ctkimagemenuitem.c:206
 #: ../ctk/ctkbutton.c:365
 msgid "Whether the image will always be shown"
 msgstr "是否永遠顯示圖片"
@@ -590,27 +590,27 @@ msgid ""
 "detached."
 msgstr "一個用來表示把手方塊(handlebox)的子項是結合或分離的邏輯數值。"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:168 ../ctk/ctkbutton.c:331
+#: ../ctk/ctkimagemenuitem.c:168 ../ctk/ctkbutton.c:331
 msgid "Image widget"
 msgstr "圖片元件"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:169
+#: ../ctk/ctkimagemenuitem.c:169
 msgid "Child widget to appear next to the menu text"
 msgstr "選單文字旁邊顯示的子元件"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:185 ../ctk/ctkbutton.c:264
+#: ../ctk/ctkimagemenuitem.c:185 ../ctk/ctkbutton.c:264
 msgid "Use stock"
 msgstr "使用內置"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:186
+#: ../ctk/ctkimagemenuitem.c:186
 msgid "Whether to use the label text to create a stock menu item"
 msgstr "是否使用標籤文字來建立圖庫選單項目"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:222 ../ctk/ctkmenu.c:570
+#: ../ctk/ctkimagemenuitem.c:222 ../ctk/ctkmenu.c:570
 msgid "Accel Group"
 msgstr "捷徑鍵羣組"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:223
+#: ../ctk/ctkimagemenuitem.c:223
 msgid "The Accel Group to use for stock accelerator keys"
 msgstr "圖庫捷徑鍵的羣組"
 

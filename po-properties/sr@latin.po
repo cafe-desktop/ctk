@@ -377,12 +377,12 @@ msgstr ""
 "Grupa Ctk radnje kojoj je ova Ctk radnja pridružena, ili „NULL“ (za unutrašnju "
 "upotrebu)."
 
-#: ctk/ctkaction.c:519 ctk/deprecated/ctkimagemenuitem.c:264
+#: ctk/ctkaction.c:519 ctk/ctkimagemenuitem.c:264
 #: ctk/ctkbutton.c:393
 msgid "Always show image"
 msgstr "Uvek prikazuje sliku"
 
-#: ctk/ctkaction.c:520 ctk/deprecated/ctkimagemenuitem.c:265
+#: ctk/ctkaction.c:520 ctk/ctkimagemenuitem.c:265
 #: ctk/ctkbutton.c:394
 msgid "Whether the image will always be shown"
 msgstr "Da li je slika uvek vidljiva"
@@ -673,28 +673,28 @@ msgstr ""
 "Logička vrednost koja ukazuje da li je porod kućice sa ručkom zakačen ili "
 "otkačen."
 
-#: ctk/deprecated/ctkimagemenuitem.c:226 ctk/ctkbutton.c:360
+#: ctk/ctkimagemenuitem.c:226 ctk/ctkbutton.c:360
 msgid "Image widget"
 msgstr "Element slike"
 
-#: ctk/deprecated/ctkimagemenuitem.c:227
+#: ctk/ctkimagemenuitem.c:227
 msgid "Child widget to appear next to the menu text"
 msgstr "Sadržani element koji se pojavljuje pored teksta izbornika"
 
-#: ctk/deprecated/ctkimagemenuitem.c:243 ctk/ctkbutton.c:300
+#: ctk/ctkimagemenuitem.c:243 ctk/ctkbutton.c:300
 msgid "Use stock"
 msgstr "Koristi već pripremljene"
 
-#: ctk/deprecated/ctkimagemenuitem.c:244
+#: ctk/ctkimagemenuitem.c:244
 msgid "Whether to use the label text to create a stock menu item"
 msgstr ""
 "Da li će da koristi tekst natpisa za stvaranje stavke izbornika spremnika"
 
-#: ctk/deprecated/ctkimagemenuitem.c:281 ctk/ctkmenu.c:647
+#: ctk/ctkimagemenuitem.c:281 ctk/ctkmenu.c:647
 msgid "Accel Group"
 msgstr "Grupa prečice"
 
-#: ctk/deprecated/ctkimagemenuitem.c:282
+#: ctk/ctkimagemenuitem.c:282
 msgid "The Accel Group to use for stock accelerator keys"
 msgstr "Grupa prečice koja se koristi za tastere prečica spremnika"
 

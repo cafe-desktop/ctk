@@ -403,12 +403,12 @@ msgstr ""
 "El CtkActionGroup associat amb esta CtkAction, o «NULL» (nul) (per a ús "
 "intern)."
 
-#: ctk/ctkaction.c:519 ctk/deprecated/ctkimagemenuitem.c:264
+#: ctk/ctkaction.c:519 ctk/ctkimagemenuitem.c:264
 #: ctk/ctkbutton.c:393
 msgid "Always show image"
 msgstr "Mostra sempre la imatge"
 
-#: ctk/ctkaction.c:520 ctk/deprecated/ctkimagemenuitem.c:265
+#: ctk/ctkaction.c:520 ctk/ctkimagemenuitem.c:265
 #: ctk/ctkbutton.c:394
 msgid "Whether the image will always be shown"
 msgstr "Si es mostrarà sempre la imatge"
@@ -699,29 +699,29 @@ msgstr ""
 "Un valor booleà que indica si el fill del quadre de nanses està acoblat o "
 "separat."
 
-#: ctk/deprecated/ctkimagemenuitem.c:226 ctk/ctkbutton.c:360
+#: ctk/ctkimagemenuitem.c:226 ctk/ctkbutton.c:360
 msgid "Image widget"
 msgstr "Element d'imatge"
 
-#: ctk/deprecated/ctkimagemenuitem.c:227
+#: ctk/ctkimagemenuitem.c:227
 msgid "Child widget to appear next to the menu text"
 msgstr "Giny fill que apareix al costat del text del menú"
 
-#: ctk/deprecated/ctkimagemenuitem.c:243 ctk/ctkbutton.c:300
+#: ctk/ctkimagemenuitem.c:243 ctk/ctkbutton.c:300
 msgid "Use stock"
 msgstr "Utilitza els de recurs"
 
-#: ctk/deprecated/ctkimagemenuitem.c:244
+#: ctk/ctkimagemenuitem.c:244
 msgid "Whether to use the label text to create a stock menu item"
 msgstr ""
 "Si s'ha d'utilitzar el text de l'etiqueta per crear un element de menú de "
 "recurs"
 
-#: ctk/deprecated/ctkimagemenuitem.c:281 ctk/ctkmenu.c:647
+#: ctk/ctkimagemenuitem.c:281 ctk/ctkmenu.c:647
 msgid "Accel Group"
 msgstr "Grup d'acceleració"
 
-#: ctk/deprecated/ctkimagemenuitem.c:282
+#: ctk/ctkimagemenuitem.c:282
 msgid "The Accel Group to use for stock accelerator keys"
 msgstr "El grup de dreceres a utilitzar per a les dreceres de teclat de recurs"
 

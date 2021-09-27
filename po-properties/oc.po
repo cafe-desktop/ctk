@@ -377,12 +377,12 @@ msgstr ""
 "L'objècte CtkActionGroup al qual un objècte CtkAction es associat, o NULL "
 "(per usatge intèrne)."
 
-#: ctk/ctkaction.c:519 ctk/deprecated/ctkimagemenuitem.c:264
+#: ctk/ctkaction.c:519 ctk/ctkimagemenuitem.c:264
 #: ctk/ctkbutton.c:393
 msgid "Always show image"
 msgstr "Totjorn afichar l'imatge"
 
-#: ctk/ctkaction.c:520 ctk/deprecated/ctkimagemenuitem.c:265
+#: ctk/ctkaction.c:520 ctk/ctkimagemenuitem.c:265
 #: ctk/ctkbutton.c:394
 msgid "Whether the image will always be shown"
 msgstr "Indica se l'imatge deu totjorn èsser afichat"
@@ -677,29 +677,29 @@ msgstr ""
 "Valor booleana qu'indica se l'element grafic enfant de la ponhada es estacat "
 "o destacat."
 
-#: ctk/deprecated/ctkimagemenuitem.c:226 ctk/ctkbutton.c:360
+#: ctk/ctkimagemenuitem.c:226 ctk/ctkbutton.c:360
 msgid "Image widget"
 msgstr "Element grafic Imatge"
 
-#: ctk/deprecated/ctkimagemenuitem.c:227
+#: ctk/ctkimagemenuitem.c:227
 msgid "Child widget to appear next to the menu text"
 msgstr "Element grafic enfant de far aparéisser prèp del tèxte del menú"
 
-#: ctk/deprecated/ctkimagemenuitem.c:243 ctk/ctkbutton.c:300
+#: ctk/ctkimagemenuitem.c:243 ctk/ctkbutton.c:300
 msgid "Use stock"
 msgstr "Utilizar los objèctes de la colleccion"
 
-#: ctk/deprecated/ctkimagemenuitem.c:244
+#: ctk/ctkimagemenuitem.c:244
 msgid "Whether to use the label text to create a stock menu item"
 msgstr ""
 "Indica se lo tèxte de l'etiqueta es utilizat per crear un element de menú "
 "predefinit"
 
-#: ctk/deprecated/ctkimagemenuitem.c:281 ctk/ctkmenu.c:588
+#: ctk/ctkimagemenuitem.c:281 ctk/ctkmenu.c:588
 msgid "Accel Group"
 msgstr "Grop d'acceleradors"
 
-#: ctk/deprecated/ctkimagemenuitem.c:282
+#: ctk/ctkimagemenuitem.c:282
 msgid "The Accel Group to use for stock accelerator keys"
 msgstr ""
 "Lo grop d'acceleradors d'utilizar per las tòcas d'accelerador predefinidas"

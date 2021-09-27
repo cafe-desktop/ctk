@@ -370,12 +370,12 @@ msgstr ""
 "CtkActionGroup ar ko šis CtkAction ir saistīts, vai NULLE (iekšējai "
 "izmantošanai)."
 
-#: ctk/ctkaction.c:519 ctk/deprecated/ctkimagemenuitem.c:264
+#: ctk/ctkaction.c:519 ctk/ctkimagemenuitem.c:264
 #: ctk/ctkbutton.c:393
 msgid "Always show image"
 msgstr "Vienmēr rādīt attēlu"
 
-#: ctk/ctkaction.c:520 ctk/deprecated/ctkimagemenuitem.c:265
+#: ctk/ctkaction.c:520 ctk/ctkimagemenuitem.c:265
 #: ctk/ctkbutton.c:394
 msgid "Whether the image will always be shown"
 msgstr "Vai attēls vienmēr būs redzams"
@@ -664,27 +664,27 @@ msgid ""
 msgstr ""
 "Būla vērtība, kas norāda, vai tura kastes bērns ir piesaistīts vai atsaistīts"
 
-#: ctk/deprecated/ctkimagemenuitem.c:226 ctk/ctkbutton.c:360
+#: ctk/ctkimagemenuitem.c:226 ctk/ctkbutton.c:360
 msgid "Image widget"
 msgstr "Attēla logdaļa"
 
-#: ctk/deprecated/ctkimagemenuitem.c:227
+#: ctk/ctkimagemenuitem.c:227
 msgid "Child widget to appear next to the menu text"
 msgstr "Bērna logdaļa, kurai jāparādās blakus izvēlnes tekstam"
 
-#: ctk/deprecated/ctkimagemenuitem.c:243 ctk/ctkbutton.c:300
+#: ctk/ctkimagemenuitem.c:243 ctk/ctkbutton.c:300
 msgid "Use stock"
 msgstr "Lietot krājumu"
 
-#: ctk/deprecated/ctkimagemenuitem.c:244
+#: ctk/ctkimagemenuitem.c:244
 msgid "Whether to use the label text to create a stock menu item"
 msgstr "Vai lietot iezīmes tekstu, veidojot krājuma izvēlnes elementus"
 
-#: ctk/deprecated/ctkimagemenuitem.c:281 ctk/ctkmenu.c:655
+#: ctk/ctkimagemenuitem.c:281 ctk/ctkmenu.c:655
 msgid "Accel Group"
 msgstr "Paātrinājumu grupa"
 
-#: ctk/deprecated/ctkimagemenuitem.c:282
+#: ctk/ctkimagemenuitem.c:282
 msgid "The Accel Group to use for stock accelerator keys"
 msgstr "Paātrinājumu grupa, ko izmantot krājuma paātrinājumu taustiņiem"
 

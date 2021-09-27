@@ -405,12 +405,12 @@ msgstr ""
 "Il CtkActionGroup a cui è associata questa CtkAction, oppure NULL (per uso "
 "interno)."
 
-#: ctk/ctkaction.c:519 ctk/deprecated/ctkimagemenuitem.c:264
+#: ctk/ctkaction.c:519 ctk/ctkimagemenuitem.c:264
 #: ctk/ctkbutton.c:393
 msgid "Always show image"
 msgstr "Mostra sempre l'immagine"
 
-#: ctk/ctkaction.c:520 ctk/deprecated/ctkimagemenuitem.c:265
+#: ctk/ctkaction.c:520 ctk/ctkimagemenuitem.c:265
 #: ctk/ctkbutton.c:394
 msgid "Whether the image will always be shown"
 msgstr "Indica se l'immagine verrà sempre mostrata"
@@ -709,27 +709,27 @@ msgstr ""
 "Un valore booleano che indica se l'handlebox del figlio è collegato o "
 "scollegato."
 
-#: ctk/deprecated/ctkimagemenuitem.c:226 ctk/ctkbutton.c:360
+#: ctk/ctkimagemenuitem.c:226 ctk/ctkbutton.c:360
 msgid "Image widget"
 msgstr "Widget immagine"
 
-#: ctk/deprecated/ctkimagemenuitem.c:227
+#: ctk/ctkimagemenuitem.c:227
 msgid "Child widget to appear next to the menu text"
 msgstr "Widget figlio da mostrare a fianco del testo del menù"
 
-#: ctk/deprecated/ctkimagemenuitem.c:243 ctk/ctkbutton.c:300
+#: ctk/ctkimagemenuitem.c:243 ctk/ctkbutton.c:300
 msgid "Use stock"
 msgstr "Usare stock"
 
-#: ctk/deprecated/ctkimagemenuitem.c:244
+#: ctk/ctkimagemenuitem.c:244
 msgid "Whether to use the label text to create a stock menu item"
 msgstr "Indica se usare l'etichetta di testo per creare un elemento menù stock"
 
-#: ctk/deprecated/ctkimagemenuitem.c:281 ctk/ctkmenu.c:655
+#: ctk/ctkimagemenuitem.c:281 ctk/ctkmenu.c:655
 msgid "Accel Group"
 msgstr "Gruppo acceleratori"
 
-#: ctk/deprecated/ctkimagemenuitem.c:282
+#: ctk/ctkimagemenuitem.c:282
 msgid "The Accel Group to use for stock accelerator keys"
 msgstr "Il gruppo di acceleratori da usare per i tasti acceleratori stock"
 

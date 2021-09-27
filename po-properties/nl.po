@@ -406,12 +406,12 @@ msgstr ""
 "De CtkActionGroup waarmee deze CtkAction is geassocieerd, of NULL (voor "
 "intern gebruik)."
 
-#: ctk/ctkaction.c:519 ctk/deprecated/ctkimagemenuitem.c:264
+#: ctk/ctkaction.c:519 ctk/ctkimagemenuitem.c:264
 #: ctk/ctkbutton.c:393
 msgid "Always show image"
 msgstr "Altijd afbeelding tonen"
 
-#: ctk/ctkaction.c:520 ctk/deprecated/ctkimagemenuitem.c:265
+#: ctk/ctkaction.c:520 ctk/ctkimagemenuitem.c:265
 #: ctk/ctkbutton.c:394
 msgid "Whether the image will always be shown"
 msgstr "Of de afbeelding altijd getoond wordt"
@@ -708,28 +708,28 @@ msgstr ""
 "Een booleaanse waarde die aangeeft of de dochter van het handgreepvak los is "
 "of vast zit."
 
-#: ctk/deprecated/ctkimagemenuitem.c:226 ctk/ctkbutton.c:360
+#: ctk/ctkimagemenuitem.c:226 ctk/ctkbutton.c:360
 msgid "Image widget"
 msgstr "Afbeeldingswidget"
 
-#: ctk/deprecated/ctkimagemenuitem.c:227
+#: ctk/ctkimagemenuitem.c:227
 msgid "Child widget to appear next to the menu text"
 msgstr "Dochterwidget dat naast de menutekst verschijnt"
 
-#: ctk/deprecated/ctkimagemenuitem.c:243 ctk/ctkbutton.c:300
+#: ctk/ctkimagemenuitem.c:243 ctk/ctkbutton.c:300
 msgid "Use stock"
 msgstr "Gebruik voorraad"
 
-#: ctk/deprecated/ctkimagemenuitem.c:244
+#: ctk/ctkimagemenuitem.c:244
 msgid "Whether to use the label text to create a stock menu item"
 msgstr ""
 "Of de labeltekst gebruikt wordt om een standaard menu-item aan te maken"
 
-#: ctk/deprecated/ctkimagemenuitem.c:281 ctk/ctkmenu.c:655
+#: ctk/ctkimagemenuitem.c:281 ctk/ctkmenu.c:655
 msgid "Accel Group"
 msgstr "Accel-groep"
 
-#: ctk/deprecated/ctkimagemenuitem.c:282
+#: ctk/ctkimagemenuitem.c:282
 msgid "The Accel Group to use for stock accelerator keys"
 msgstr "De te gebruiken Accel-groep voor standaard sneltoetsen"
 

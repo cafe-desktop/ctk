@@ -333,12 +333,12 @@ msgid ""
 msgstr ""
 "O CtkActionGroup con que ista CtkAction ye asociada, u NULL (ta uso interno)."
 
-#: ../ctk/ctkaction.c:514 ../ctk/deprecated/ctkimagemenuitem.c:205
+#: ../ctk/ctkaction.c:514 ../ctk/ctkimagemenuitem.c:205
 #: ../ctk/ctkbutton.c:378
 msgid "Always show image"
 msgstr "Siempre amostrar a imachen"
 
-#: ../ctk/ctkaction.c:515 ../ctk/deprecated/ctkimagemenuitem.c:206
+#: ../ctk/ctkaction.c:515 ../ctk/ctkimagemenuitem.c:206
 #: ../ctk/ctkbutton.c:379
 msgid "Whether the image will always be shown"
 msgstr "Indica si a imachen s'amostrará siempre"
@@ -525,29 +525,29 @@ msgstr ""
 "Una valor booleana que indica si o fillo d'o maniador d'a caixa ye acoplau u "
 "desacoplau."
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:168 ../ctk/ctkbutton.c:343
+#: ../ctk/ctkimagemenuitem.c:168 ../ctk/ctkbutton.c:343
 msgid "Image widget"
 msgstr "Widget d'imachen"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:169
+#: ../ctk/ctkimagemenuitem.c:169
 msgid "Child widget to appear next to the menu text"
 msgstr "Widget fillo que amaneixerá a lo costau d'o texto d'o menú"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:185 ../ctk/ctkbutton.c:273
+#: ../ctk/ctkimagemenuitem.c:185 ../ctk/ctkbutton.c:273
 msgid "Use stock"
 msgstr "Fer servir l'inventario"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:186
+#: ../ctk/ctkimagemenuitem.c:186
 msgid "Whether to use the label text to create a stock menu item"
 msgstr ""
 "Indica si se debe fer servir o texto d'a etiqueta ta creyar un elemento d'o "
 "menú d'inventario"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:222 ../ctk/ctkmenu.c:572
+#: ../ctk/ctkimagemenuitem.c:222 ../ctk/ctkmenu.c:572
 msgid "Accel Group"
 msgstr "Grupo d'acceleración"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:223
+#: ../ctk/ctkimagemenuitem.c:223
 msgid "The Accel Group to use for stock accelerator keys"
 msgstr ""
 "O grupo d'acceleración que fer servir ta los acceleradors de teclau "

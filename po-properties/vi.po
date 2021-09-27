@@ -348,12 +348,12 @@ msgstr ""
 "CtkActionGroup (nhóm hành động CTK) với đó hành động CtkAction này được "
 "tượng ứng, hoặc NULL (rỗng: chỉ dùng nội bộ)."
 
-#: ctk/ctkaction.c:519 ctk/deprecated/ctkimagemenuitem.c:264
+#: ctk/ctkaction.c:519 ctk/ctkimagemenuitem.c:264
 #: ctk/ctkbutton.c:366
 msgid "Always show image"
 msgstr "Lúc nào cũng hiện ảnh"
 
-#: ctk/ctkaction.c:520 ctk/deprecated/ctkimagemenuitem.c:265
+#: ctk/ctkaction.c:520 ctk/ctkimagemenuitem.c:265
 #: ctk/ctkbutton.c:367
 msgid "Whether the image will always be shown"
 msgstr "Ảnh lúc nào cũng được hiển thị không"
@@ -641,27 +641,27 @@ msgid ""
 msgstr ""
 "Một giá trị luận lý ngụ ý nếu cái con của hộp cán được gắn nối hay tách rời."
 
-#: ctk/deprecated/ctkimagemenuitem.c:226 ctk/ctkbutton.c:333
+#: ctk/ctkimagemenuitem.c:226 ctk/ctkbutton.c:333
 msgid "Image widget"
 msgstr "Ô điều khiển ảnh"
 
-#: ctk/deprecated/ctkimagemenuitem.c:227
+#: ctk/ctkimagemenuitem.c:227
 msgid "Child widget to appear next to the menu text"
 msgstr "Ô điều khiển con sẽ xuất hiện kế bên văn bản trình đơn"
 
-#: ctk/deprecated/ctkimagemenuitem.c:243 ctk/ctkbutton.c:266
+#: ctk/ctkimagemenuitem.c:243 ctk/ctkbutton.c:266
 msgid "Use stock"
 msgstr "Dùng mục chuẩn"
 
-#: ctk/deprecated/ctkimagemenuitem.c:244
+#: ctk/ctkimagemenuitem.c:244
 msgid "Whether to use the label text to create a stock menu item"
 msgstr "Có thể dùng chuỗi nhãn để tạo một mục trình đơn kho hay không"
 
-#: ctk/deprecated/ctkimagemenuitem.c:281 ctk/ctkmenu.c:568
+#: ctk/ctkimagemenuitem.c:281 ctk/ctkmenu.c:568
 msgid "Accel Group"
 msgstr "Nhóm tăng tốc"
 
-#: ctk/deprecated/ctkimagemenuitem.c:282
+#: ctk/ctkimagemenuitem.c:282
 msgid "The Accel Group to use for stock accelerator keys"
 msgstr "Nhóm Tăng Tốc cần dùng cho các phím tăng tốc kho"
 

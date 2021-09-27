@@ -357,12 +357,12 @@ msgstr ""
 "CtkActionGroup denne CtkAction er assosiert med, eller NULL (for intern "
 "bruk)."
 
-#: ../ctk/ctkaction.c:519 ../ctk/deprecated/ctkimagemenuitem.c:233
+#: ../ctk/ctkaction.c:519 ../ctk/ctkimagemenuitem.c:233
 #: ../ctk/ctkbutton.c:364
 msgid "Always show image"
 msgstr "Alltid vis bilde"
 
-#: ../ctk/ctkaction.c:520 ../ctk/deprecated/ctkimagemenuitem.c:234
+#: ../ctk/ctkaction.c:520 ../ctk/ctkimagemenuitem.c:234
 #: ../ctk/ctkbutton.c:365
 msgid "Whether the image will always be shown"
 msgstr "Om bildet alltid skal være synlig"
@@ -650,28 +650,28 @@ msgid ""
 "detached."
 msgstr ""
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:196 ../ctk/ctkbutton.c:331
+#: ../ctk/ctkimagemenuitem.c:196 ../ctk/ctkbutton.c:331
 msgid "Image widget"
 msgstr "Bildewidget"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:197
+#: ../ctk/ctkimagemenuitem.c:197
 msgid "Child widget to appear next to the menu text"
 msgstr "Barnwidget som skal vises ved siden av menyteksten"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:213 ../ctk/ctkbutton.c:264
+#: ../ctk/ctkimagemenuitem.c:213 ../ctk/ctkbutton.c:264
 msgid "Use stock"
 msgstr "Bruk lager"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:214
+#: ../ctk/ctkimagemenuitem.c:214
 #, fuzzy
 msgid "Whether to use the label text to create a stock menu item"
 msgstr "Om etiketteksten kan velges med musen"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:250 ../ctk/ctkmenu.c:570
+#: ../ctk/ctkimagemenuitem.c:250 ../ctk/ctkmenu.c:570
 msgid "Accel Group"
 msgstr "Akselleratorgruppe"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:251
+#: ../ctk/ctkimagemenuitem.c:251
 #, fuzzy
 msgid "The Accel Group to use for stock accelerator keys"
 msgstr "«Closure» som skal overvåkes for akselleratorendringer"
