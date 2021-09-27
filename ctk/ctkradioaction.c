@@ -28,8 +28,6 @@
 
 #include "config.h"
 
-#define CDK_DISABLE_DEPRECATION_WARNINGS
-
 #include "ctkradioaction.h"
 #include "ctkradiomenuitem.h"
 #include "ctktoggletoolbutton.h"
@@ -111,8 +109,6 @@ ctk_radio_action_class_init (CtkRadioActionClass *klass)
    * for convenient ways to get and set this property.
    *
    * Since: 2.4
-   *
-   * Deprecated: 3.10
    */
   g_object_class_install_property (gobject_class,
 				   PROP_VALUE,
@@ -130,8 +126,6 @@ ctk_radio_action_class_init (CtkRadioActionClass *klass)
    * Sets a new group for a radio action.
    *
    * Since: 2.4
-   *
-   * Deprecated: 3.10
    */
   g_object_class_install_property (gobject_class,
 				   PROP_GROUP,
@@ -148,8 +142,6 @@ ctk_radio_action_class_init (CtkRadioActionClass *klass)
    * this action belongs. 
    *
    * Since: 2.10
-   *
-   * Deprecated: 3.10
    */
   g_object_class_install_property (gobject_class,
 				   PROP_CURRENT_VALUE,
@@ -171,8 +163,6 @@ ctk_radio_action_class_init (CtkRadioActionClass *klass)
    * for the previous and current active members.
    *
    * Since: 2.4
-   *
-   * Deprecated: 3.10
    */
   radio_action_signals[CHANGED] =
     g_signal_new (I_("changed"),
@@ -211,8 +201,6 @@ ctk_radio_action_init (CtkRadioAction *action)
  * Returns: a new #CtkRadioAction
  *
  * Since: 2.4
- *
- * Deprecated: 3.10
  */
 CtkRadioAction *
 ctk_radio_action_new (const gchar *name,
@@ -418,8 +406,6 @@ create_menu_item (CtkAction *action)
  * Returns:  (element-type CtkRadioAction) (transfer none): the list representing the radio group for this object
  *
  * Since: 2.4
- *
- * Deprecated: 3.10
  */
 GSList *
 ctk_radio_action_get_group (CtkRadioAction *action)
@@ -437,8 +423,6 @@ ctk_radio_action_get_group (CtkRadioAction *action)
  * Sets the radio group for the radio action object.
  *
  * Since: 2.4
- *
- * Deprecated: 3.10
  */
 void
 ctk_radio_action_set_group (CtkRadioAction *action, 
@@ -506,8 +490,6 @@ ctk_radio_action_set_group (CtkRadioAction *action,
  * ]|
  * 
  * Since: 3.0
- *
- * Deprecated: 3.10
  */
 void
 ctk_radio_action_join_group (CtkRadioAction *action, 
@@ -547,8 +529,6 @@ ctk_radio_action_join_group (CtkRadioAction *action,
  * Returns: The value of the currently active group member
  *
  * Since: 2.4
- *
- * Deprecated: 3.10
  **/
 gint
 ctk_radio_action_get_current_value (CtkRadioAction *action)
@@ -580,8 +560,6 @@ ctk_radio_action_get_current_value (CtkRadioAction *action)
  * property @current_value.
  *
  * Since: 2.10
- *
- * Deprecated: 3.10
  **/
 void
 ctk_radio_action_set_current_value (CtkRadioAction *action,

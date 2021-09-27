@@ -69,25 +69,25 @@ struct _CtkRadioActionClass
   void (*_ctk_reserved4) (void);
 };
 
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 GType           ctk_radio_action_get_type          (void) G_GNUC_CONST;
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 CtkRadioAction *ctk_radio_action_new               (const gchar           *name,
                                                     const gchar           *label,
                                                     const gchar           *tooltip,
                                                     const gchar           *stock_id,
                                                     gint                   value);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 GSList         *ctk_radio_action_get_group         (CtkRadioAction        *action);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 void            ctk_radio_action_set_group         (CtkRadioAction        *action,
                                                     GSList                *group);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 void            ctk_radio_action_join_group        (CtkRadioAction        *action,
                                                     CtkRadioAction        *group_source);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 gint            ctk_radio_action_get_current_value (CtkRadioAction        *action);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 void            ctk_radio_action_set_current_value (CtkRadioAction        *action,
                                                     gint                   current_value);
 
