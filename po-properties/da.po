@@ -412,12 +412,12 @@ msgstr ""
 "Den CtkActionGroup som denne CtkAction er associeret med, eller NULL (for "
 "intern brug)."
 
-#: ctk/ctkaction.c:519 ctk/deprecated/ctkimagemenuitem.c:264
+#: ctk/ctkaction.c:519 ctk/ctkimagemenuitem.c:264
 #: ctk/ctkbutton.c:393
 msgid "Always show image"
 msgstr "Vis altid billede"
 
-#: ctk/ctkaction.c:520 ctk/deprecated/ctkimagemenuitem.c:265
+#: ctk/ctkaction.c:520 ctk/ctkimagemenuitem.c:265
 #: ctk/ctkbutton.c:394
 msgid "Whether the image will always be shown"
 msgstr "Om billedet altid vil blive vist"
@@ -713,27 +713,27 @@ msgstr ""
 "En boolsk værdi der angiver, hvorvidt håndtagsboksens underelement er "
 "tilkoblet eller frakoblet."
 
-#: ctk/deprecated/ctkimagemenuitem.c:226 ctk/ctkbutton.c:360
+#: ctk/ctkimagemenuitem.c:226 ctk/ctkbutton.c:360
 msgid "Image widget"
 msgstr "Billedkontrol"
 
-#: ctk/deprecated/ctkimagemenuitem.c:227
+#: ctk/ctkimagemenuitem.c:227
 msgid "Child widget to appear next to the menu text"
 msgstr "Underkontrol der skal vises ved siden af menuteksten"
 
-#: ctk/deprecated/ctkimagemenuitem.c:243 ctk/ctkbutton.c:300
+#: ctk/ctkimagemenuitem.c:243 ctk/ctkbutton.c:300
 msgid "Use stock"
 msgstr "Lagerknap"
 
-#: ctk/deprecated/ctkimagemenuitem.c:244
+#: ctk/ctkimagemenuitem.c:244
 msgid "Whether to use the label text to create a stock menu item"
 msgstr "Om etiketteksten skal bruges til at oprette indbygget menuelement"
 
-#: ctk/deprecated/ctkimagemenuitem.c:281 ctk/ctkmenu.c:654
+#: ctk/ctkimagemenuitem.c:281 ctk/ctkmenu.c:654
 msgid "Accel Group"
 msgstr "Genvejsgruppe"
 
-#: ctk/deprecated/ctkimagemenuitem.c:282
+#: ctk/ctkimagemenuitem.c:282
 msgid "The Accel Group to use for stock accelerator keys"
 msgstr "Objektet som skal overvåges for acceleratorændringer"
 

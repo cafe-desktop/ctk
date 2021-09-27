@@ -378,12 +378,12 @@ msgstr "कार्य समूह"
 msgid "The CtkActionGroup this CtkAction is associated with, or NULL (for internal use)."
 msgstr "जीटीके कार्य समूह यो जीटीके कार्यसँग सम्बन्धित छ वा शून्यसँग( आन्तरिक प्रयोगका लागि मात्र)"
 
-#: ctk/ctkaction.c:519 ctk/deprecated/ctkimagemenuitem.c:264 ctk/ctkbutton.c:393
+#: ctk/ctkaction.c:519 ctk/ctkimagemenuitem.c:264 ctk/ctkbutton.c:393
 #, fuzzy
 msgid "Always show image"
 msgstr "सधैँ"
 
-#: ctk/ctkaction.c:520 ctk/deprecated/ctkimagemenuitem.c:265 ctk/ctkbutton.c:394
+#: ctk/ctkaction.c:520 ctk/ctkimagemenuitem.c:265 ctk/ctkbutton.c:394
 #, fuzzy
 msgid "Whether the image will always be shown"
 msgstr "जहा सीमारेखा देखाइन सकिन्थ्यो वा सकिन्नथ्यो"
@@ -669,29 +669,29 @@ msgstr "कार्यक्रम छुट्याइयो\n"
 msgid "A boolean value indicating whether the handlebox's child is attached or detached."
 msgstr ""
 
-#: ctk/deprecated/ctkimagemenuitem.c:226 ctk/ctkbutton.c:360
+#: ctk/ctkimagemenuitem.c:226 ctk/ctkbutton.c:360
 msgid "Image widget"
 msgstr "छबि विजेट"
 
-#: ctk/deprecated/ctkimagemenuitem.c:227
+#: ctk/ctkimagemenuitem.c:227
 msgid "Child widget to appear next to the menu text"
 msgstr "अर्को मेनुपाठमा देखाउनलाई दोस्रोतहको औजार"
 
-#: ctk/deprecated/ctkimagemenuitem.c:243 ctk/ctkbutton.c:300
+#: ctk/ctkimagemenuitem.c:243 ctk/ctkbutton.c:300
 msgid "Use stock"
 msgstr "संग्रह प्रयोग गर"
 
-#: ctk/deprecated/ctkimagemenuitem.c:244
+#: ctk/ctkimagemenuitem.c:244
 #, fuzzy
 msgid "Whether to use the label text to create a stock menu item"
 msgstr "जहाँ लेवल पाठ माउस सँग छानिन सक्छ"
 
-#: ctk/deprecated/ctkimagemenuitem.c:281 ctk/ctkmenu.c:647
+#: ctk/ctkimagemenuitem.c:281 ctk/ctkmenu.c:647
 #, fuzzy
 msgid "Accel Group"
 msgstr "द्धारा समूह..."
 
-#: ctk/deprecated/ctkimagemenuitem.c:282
+#: ctk/ctkimagemenuitem.c:282
 #, fuzzy
 msgid "The Accel Group to use for stock accelerator keys"
 msgstr "द्रुतसञ्चालक परिवर्तनका लागि अन्त्यमा निरीक्षण गरियो"

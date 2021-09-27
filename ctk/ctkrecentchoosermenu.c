@@ -32,7 +32,7 @@
 #include "ctksettings.h"
 #include "ctkmenushell.h"
 #include "ctkmenuitem.h"
-#include "deprecated/ctkimagemenuitem.h"
+#include "ctkimagemenuitem.h"
 #include "ctkseparatormenuitem.h"
 #include "ctkmenu.h"
 #include "ctkimage.h"

@@ -344,12 +344,12 @@ msgid ""
 "use)."
 msgstr "CtkActionGroup આ CtkAction સાથે સંકળાયેલ છે, અથવા NULL સાથે (આંતરિક વપરાશ માટે)."
 
-#: ../ctk/ctkaction.c:519 ../ctk/deprecated/ctkimagemenuitem.c:205
+#: ../ctk/ctkaction.c:519 ../ctk/ctkimagemenuitem.c:205
 #: ../ctk/ctkbutton.c:364
 msgid "Always show image"
 msgstr "હંમેશા ચિત્ર ને બતાવો"
 
-#: ../ctk/ctkaction.c:520 ../ctk/deprecated/ctkimagemenuitem.c:206
+#: ../ctk/ctkaction.c:520 ../ctk/ctkimagemenuitem.c:206
 #: ../ctk/ctkbutton.c:365
 msgid "Whether the image will always be shown"
 msgstr "ક્યાંતો ઇમેજ એ હંમેશા બતાવેલ હશે"
@@ -632,27 +632,27 @@ msgid ""
 "detached."
 msgstr "બુલિયન કિંમત એ સૂચવે છે કે ક્યાંતો બાળ નું હેન્ડલ બોક્સ એ જોડાયેલ અથવા અલગ છે કે નહિં."
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:168 ../ctk/ctkbutton.c:331
+#: ../ctk/ctkimagemenuitem.c:168 ../ctk/ctkbutton.c:331
 msgid "Image widget"
 msgstr "ચિત્ર વિજેટ"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:169
+#: ../ctk/ctkimagemenuitem.c:169
 msgid "Child widget to appear next to the menu text"
 msgstr "મેનુના લેખાણ પછી દેખાતું બાળ વિજેટ"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:185 ../ctk/ctkbutton.c:264
+#: ../ctk/ctkimagemenuitem.c:185 ../ctk/ctkbutton.c:264
 msgid "Use stock"
 msgstr "જથ્થાનો ઉપયોગ કરવો"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:186
+#: ../ctk/ctkimagemenuitem.c:186
 msgid "Whether to use the label text to create a stock menu item"
 msgstr "ક્યાંતો સ્ટોક મેનુ વસ્તુ ને બનાવવા માટે લેબલ લખાણ ને વાપરો"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:222 ../ctk/ctkmenu.c:570
+#: ../ctk/ctkimagemenuitem.c:222 ../ctk/ctkmenu.c:570
 msgid "Accel Group"
 msgstr "એક્સેલ જૂથ"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:223
+#: ../ctk/ctkimagemenuitem.c:223
 msgid "The Accel Group to use for stock accelerator keys"
 msgstr "સ્ટોક પ્રવેગ કીઓ માટે વપરાતુ એક્સેલ જૂથ"
 

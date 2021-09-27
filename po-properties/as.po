@@ -319,13 +319,13 @@ msgstr ""
 "এই  CtkAction-টো যি CtkActionGroup ৰ সৈতে সংশ্লিষ্ট, বা NULL (ভিতৰুৱা ভাবে "
 "ব্যৱহাৰ কৰিব লগা)।"
 
-#: ../ctk/ctkaction.c:519 ../ctk/deprecated/ctkimagemenuitem.c:205
+#: ../ctk/ctkaction.c:519 ../ctk/ctkimagemenuitem.c:205
 #: ../ctk/ctkbutton.c:364
 msgid "Always show image"
 msgstr "Always show image"
 
 #
-#: ../ctk/ctkaction.c:520 ../ctk/deprecated/ctkimagemenuitem.c:206
+#: ../ctk/ctkaction.c:520 ../ctk/ctkimagemenuitem.c:206
 #: ../ctk/ctkbutton.c:365
 msgid "Whether the image will always be shown"
 msgstr "Whether the image will always be shown"
@@ -628,30 +628,30 @@ msgstr ""
 "A boolean value indicating whether the handlebox's child is attached or "
 "detached."
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:168 ../ctk/ctkbutton.c:331
+#: ../ctk/ctkimagemenuitem.c:168 ../ctk/ctkbutton.c:331
 msgid "Image widget"
 msgstr "প্ৰতিমূৰ্ত্তিৰ উইজেট"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:169
+#: ../ctk/ctkimagemenuitem.c:169
 msgid "Child widget to appear next to the menu text"
 msgstr "মেনু লিখনিৰ কাষত যি চাইল্ড উইজেট দেখা যাব"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:185 ../ctk/ctkbutton.c:264
+#: ../ctk/ctkimagemenuitem.c:185 ../ctk/ctkbutton.c:264
 msgid "Use stock"
 msgstr "Stock ব্যৱহাৰ কৰক"
 
 #
-#: ../ctk/deprecated/ctkimagemenuitem.c:186
+#: ../ctk/ctkimagemenuitem.c:186
 msgid "Whether to use the label text to create a stock menu item"
 msgstr "মাউছৰ সহায়ত লেবেলৰ লিখনিক চিহ্নিত কৰা যাব নে"
 
 #
-#: ../ctk/deprecated/ctkimagemenuitem.c:222 ../ctk/ctkmenu.c:570
+#: ../ctk/ctkimagemenuitem.c:222 ../ctk/ctkmenu.c:570
 msgid "Accel Group"
 msgstr "Accel দল"
 
 #
-#: ../ctk/deprecated/ctkimagemenuitem.c:223
+#: ../ctk/ctkimagemenuitem.c:223
 msgid "The Accel Group to use for stock accelerator keys"
 msgstr "স্টক ত্বৰক কি'সমূহৰ বাবে ব্যৱহাৰ কৰিবলে Accel দল"
 

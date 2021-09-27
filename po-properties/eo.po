@@ -365,12 +365,12 @@ msgid ""
 msgstr ""
 "La CtkActionGroup asociigita al tiu ĉi CtkAction, aŭ NULO (por interna uzo)."
 
-#: ctk/ctkaction.c:519 ctk/deprecated/ctkimagemenuitem.c:264
+#: ctk/ctkaction.c:519 ctk/ctkimagemenuitem.c:264
 #: ctk/ctkbutton.c:393
 msgid "Always show image"
 msgstr "Ĉiam montri bildon"
 
-#: ctk/ctkaction.c:520 ctk/deprecated/ctkimagemenuitem.c:265
+#: ctk/ctkaction.c:520 ctk/ctkimagemenuitem.c:265
 #: ctk/ctkbutton.c:394
 msgid "Whether the image will always be shown"
 msgstr "Ĉu ĉiam montri la bildon"
@@ -654,27 +654,27 @@ msgid ""
 msgstr ""
 "Bulea valoro diranta ĉu la ido de la tenilujo estas kunligita aŭ malligita."
 
-#: ctk/deprecated/ctkimagemenuitem.c:226 ctk/ctkbutton.c:360
+#: ctk/ctkimagemenuitem.c:226 ctk/ctkbutton.c:360
 msgid "Image widget"
 msgstr "Bildfenestraĵo"
 
-#: ctk/deprecated/ctkimagemenuitem.c:227
+#: ctk/ctkimagemenuitem.c:227
 msgid "Child widget to appear next to the menu text"
 msgstr "Ida fenestraĵo aperonta flanke de la menua teksto"
 
-#: ctk/deprecated/ctkimagemenuitem.c:243 ctk/ctkbutton.c:300
+#: ctk/ctkimagemenuitem.c:243 ctk/ctkbutton.c:300
 msgid "Use stock"
 msgstr "Uzi stokon"
 
-#: ctk/deprecated/ctkimagemenuitem.c:244
+#: ctk/ctkimagemenuitem.c:244
 msgid "Whether to use the label text to create a stock menu item"
 msgstr ""
 
-#: ctk/deprecated/ctkimagemenuitem.c:281 ctk/ctkmenu.c:647
+#: ctk/ctkimagemenuitem.c:281 ctk/ctkmenu.c:647
 msgid "Accel Group"
 msgstr "Plirapidigila grupo"
 
-#: ctk/deprecated/ctkimagemenuitem.c:282
+#: ctk/ctkimagemenuitem.c:282
 msgid "The Accel Group to use for stock accelerator keys"
 msgstr ""
 

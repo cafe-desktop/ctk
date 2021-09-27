@@ -358,12 +358,12 @@ msgid ""
 "use)."
 msgstr ""
 
-#: ctk/ctkaction.c:519 ctk/deprecated/ctkimagemenuitem.c:264
+#: ctk/ctkaction.c:519 ctk/ctkimagemenuitem.c:264
 #: ctk/ctkbutton.c:393
 msgid "Always show image"
 msgstr "Alltaf birta mynd"
 
-#: ctk/ctkaction.c:520 ctk/deprecated/ctkimagemenuitem.c:265
+#: ctk/ctkaction.c:520 ctk/ctkimagemenuitem.c:265
 #: ctk/ctkbutton.c:394
 msgid "Whether the image will always be shown"
 msgstr "Hvort alltaf eigi að sýna myndina"
@@ -646,27 +646,27 @@ msgid ""
 "detached."
 msgstr ""
 
-#: ctk/deprecated/ctkimagemenuitem.c:226 ctk/ctkbutton.c:360
+#: ctk/ctkimagemenuitem.c:226 ctk/ctkbutton.c:360
 msgid "Image widget"
 msgstr "Myndviðmótshluti (widget)"
 
-#: ctk/deprecated/ctkimagemenuitem.c:227
+#: ctk/ctkimagemenuitem.c:227
 msgid "Child widget to appear next to the menu text"
 msgstr "Undirviðmótshluti sem birtist næst texta valmyndarinnar"
 
-#: ctk/deprecated/ctkimagemenuitem.c:243 ctk/ctkbutton.c:300
+#: ctk/ctkimagemenuitem.c:243 ctk/ctkbutton.c:300
 msgid "Use stock"
 msgstr "Nota innbyggt"
 
-#: ctk/deprecated/ctkimagemenuitem.c:244
+#: ctk/ctkimagemenuitem.c:244
 msgid "Whether to use the label text to create a stock menu item"
 msgstr "Hvort nota eigi textamerkið til að búa til innbyggt valmyndaratriði"
 
-#: ctk/deprecated/ctkimagemenuitem.c:281 ctk/ctkmenu.c:647
+#: ctk/ctkimagemenuitem.c:281 ctk/ctkmenu.c:647
 msgid "Accel Group"
 msgstr "Flýtilyklahópur"
 
-#: ctk/deprecated/ctkimagemenuitem.c:282
+#: ctk/ctkimagemenuitem.c:282
 msgid "The Accel Group to use for stock accelerator keys"
 msgstr "Flýtilyklahópurinn er fyrir innbyggða flýtilykla"
 

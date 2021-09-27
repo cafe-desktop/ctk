@@ -22,7 +22,7 @@
 #include "ctktoolbutton.h"
 #include "ctkbutton.h"
 #include "ctkimage.h"
-#include "deprecated/ctkimagemenuitem.h"
+#include "ctkimagemenuitem.h"
 #include "ctklabel.h"
 #include "ctkstock.h"
 #include "ctkbox.h"

@@ -377,12 +377,12 @@ msgstr ""
 "An CtkActionGroup tha an CtkAction seo ceancailte ris no NULL (airson "
 "cleachdadh inntearnail)."
 
-#: ctk/ctkaction.c:519 ctk/deprecated/ctkimagemenuitem.c:264
+#: ctk/ctkaction.c:519 ctk/ctkimagemenuitem.c:264
 #: ctk/ctkbutton.c:393
 msgid "Always show image"
 msgstr "Seall an dealbh an-còmhnaidh"
 
-#: ctk/ctkaction.c:520 ctk/deprecated/ctkimagemenuitem.c:265
+#: ctk/ctkaction.c:520 ctk/ctkimagemenuitem.c:265
 #: ctk/ctkbutton.c:394
 msgid "Whether the image will always be shown"
 msgstr "Co-dhiù an dèid an dealbh a shealltainn an-còmhnaidh"
@@ -683,29 +683,29 @@ msgstr ""
 "Luach Booleanach a dh’innseas a bheil bogsa pàiste an làmhrachain ceancailte "
 "ris no dealaichte."
 
-#: ctk/deprecated/ctkimagemenuitem.c:226 ctk/ctkbutton.c:360
+#: ctk/ctkimagemenuitem.c:226 ctk/ctkbutton.c:360
 msgid "Image widget"
 msgstr "Widget deilbh"
 
-#: ctk/deprecated/ctkimagemenuitem.c:227
+#: ctk/ctkimagemenuitem.c:227
 msgid "Child widget to appear next to the menu text"
 msgstr "Widget a’ phàiste a nochdas ro taobh teacsa a’ chlàir-thaice"
 
-#: ctk/deprecated/ctkimagemenuitem.c:243 ctk/ctkbutton.c:300
+#: ctk/ctkimagemenuitem.c:243 ctk/ctkbutton.c:300
 msgid "Use stock"
 msgstr "Cleachd fear stoca"
 
-#: ctk/deprecated/ctkimagemenuitem.c:244
+#: ctk/ctkimagemenuitem.c:244
 msgid "Whether to use the label text to create a stock menu item"
 msgstr ""
 "Co-dhiù an dèid teacsa na leubail a chleachdadh gus ball stoca a "
 "chruthachadh airson a’ chlàir-thaice gus nach dèid"
 
-#: ctk/deprecated/ctkimagemenuitem.c:281 ctk/ctkmenu.c:647
+#: ctk/ctkimagemenuitem.c:281 ctk/ctkmenu.c:647
 msgid "Accel Group"
 msgstr "Buidheann luathaichearan"
 
-#: ctk/deprecated/ctkimagemenuitem.c:282
+#: ctk/ctkimagemenuitem.c:282
 msgid "The Accel Group to use for stock accelerator keys"
 msgstr ""
 "Buidheann nan luathaichearan a thèid a chleachdadh airson iuchraichean "

@@ -322,12 +322,12 @@ msgid ""
 msgstr ""
 "CtkActionGroup ин CtkAction дар якҷоягӣ бо, ё NULL (барои истифодаи дохилӣ)."
 
-#: ../ctk/ctkaction.c:519 ../ctk/deprecated/ctkimagemenuitem.c:205
+#: ../ctk/ctkaction.c:519 ../ctk/ctkimagemenuitem.c:205
 #: ../ctk/ctkbutton.c:378
 msgid "Always show image"
 msgstr "Ҳамеша намоиш додани тасвир"
 
-#: ../ctk/ctkaction.c:520 ../ctk/deprecated/ctkimagemenuitem.c:206
+#: ../ctk/ctkaction.c:520 ../ctk/ctkimagemenuitem.c:206
 #: ../ctk/ctkbutton.c:379
 msgid "Whether the image will always be shown"
 msgstr "Оё тасвир ҳамеша ишон дода мешавад ё на"
@@ -510,27 +510,27 @@ msgstr ""
 "Қимати мантиқии нишондиҳанда новобаста аз замима шудан ё ҷудо шудани қуттии "
 "дастӣ."
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:168 ../ctk/ctkbutton.c:343
+#: ../ctk/ctkimagemenuitem.c:168 ../ctk/ctkbutton.c:343
 msgid "Image widget"
 msgstr "Виҷети тасвир"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:169
+#: ../ctk/ctkimagemenuitem.c:169
 msgid "Child widget to appear next to the menu text"
 msgstr "Виҷети иловагӣ барои пайдошавӣ дар канори матни меню"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:185 ../ctk/ctkbutton.c:273
+#: ../ctk/ctkimagemenuitem.c:185 ../ctk/ctkbutton.c:273
 msgid "Use stock"
 msgstr "Истифодаи даста"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:186
+#: ../ctk/ctkimagemenuitem.c:186
 msgid "Whether to use the label text to create a stock menu item"
 msgstr "Оё матни барчасп барои эҷоди объекти менюи захира истифода шавад ё не"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:222 ../ctk/ctkmenu.c:570
+#: ../ctk/ctkimagemenuitem.c:222 ../ctk/ctkmenu.c:570
 msgid "Accel Group"
 msgstr "Гурӯҳи Accel"
 
-#: ../ctk/deprecated/ctkimagemenuitem.c:223
+#: ../ctk/ctkimagemenuitem.c:223
 msgid "The Accel Group to use for stock accelerator keys"
 msgstr "Гурӯҳи Accel барои истифода дар калидҳои шитобдиҳандаи захиравӣ"
 
