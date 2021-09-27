@@ -50,7 +50,7 @@ ctk/deprecated/ctkhsv.c
 ctk/deprecated/ctkimagemenuitem.c
 ctk/deprecated/ctkmisc.c
 ctk/deprecated/ctknumerableicon.c
-ctk/deprecated/ctkradioaction.c
+ctk/ctkradioaction.c
 ctk/deprecated/ctkrecentaction.c
 ctk/deprecated/ctkstatusicon.c
 ctk/deprecated/ctktable.c

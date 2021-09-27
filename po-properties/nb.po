@@ -755,11 +755,11 @@ msgstr "Navn på bakgrunnsikon"
 msgid "The icon name for the number emblem background"
 msgstr "Ikonnavn som skal brukes for skriveren"
 
-#: ../ctk/deprecated/ctkradioaction.c:120
+#: ../ctk/ctkradioaction.c:120
 msgid "The value"
 msgstr "Verdien"
 
-#: ../ctk/deprecated/ctkradioaction.c:121
+#: ../ctk/ctkradioaction.c:121
 msgid ""
 "The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
@@ -767,20 +767,20 @@ msgstr ""
 "Verdien som returneres av ctk_radio_action_get_current_value() når denne "
 "handlingen er aktiv handling i sin gruppe."
 
-#: ../ctk/deprecated/ctkradioaction.c:139 ../ctk/ctkradiobutton.c:163
+#: ../ctk/ctkradioaction.c:139 ../ctk/ctkradiobutton.c:163
 #: ../ctk/ctkradiomenuitem.c:410 ../ctk/ctkradiotoolbutton.c:80
 msgid "Group"
 msgstr "Gruppe"
 
-#: ../ctk/deprecated/ctkradioaction.c:140
+#: ../ctk/ctkradioaction.c:140
 msgid "The radio action whose group this action belongs to."
 msgstr "Radiohandling hvis gruppe denne handlingen tilhører."
 
-#: ../ctk/deprecated/ctkradioaction.c:157
+#: ../ctk/ctkradioaction.c:157
 msgid "The current value"
 msgstr "Nåværende verdi"
 
-#: ../ctk/deprecated/ctkradioaction.c:158
+#: ../ctk/ctkradioaction.c:158
 msgid ""
 "The value property of the currently active member of the group to which this "
 "action belongs."

@@ -711,11 +711,11 @@ msgstr "पार्श्वभूमी चिन्ह नाव"
 msgid "The icon name for the number emblem background"
 msgstr "संख्यायीक एम्बलम पार्श्वभूमीकरीता चिन्हाचे नाव"
 
-#: ../ctk/deprecated/ctkradioaction.c:120
+#: ../ctk/ctkradioaction.c:120
 msgid "The value"
 msgstr "मुल्य"
 
-#: ../ctk/deprecated/ctkradioaction.c:121
+#: ../ctk/ctkradioaction.c:121
 msgid ""
 "The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
@@ -724,20 +724,20 @@ msgstr ""
 "द्वारे "
 "पुन्ह पाठविलेले मुल्य."
 
-#: ../ctk/deprecated/ctkradioaction.c:139 ../ctk/ctkradiobutton.c:162
+#: ../ctk/ctkradioaction.c:139 ../ctk/ctkradiobutton.c:162
 #: ../ctk/ctkradiomenuitem.c:410 ../ctk/ctkradiotoolbutton.c:80
 msgid "Group"
 msgstr "समुह"
 
-#: ../ctk/deprecated/ctkradioaction.c:140
+#: ../ctk/ctkradioaction.c:140
 msgid "The radio action whose group this action belongs to."
 msgstr "ही कृती ज्या रेडिओ कृती शी संलग्न ते दर्शवा."
 
-#: ../ctk/deprecated/ctkradioaction.c:157
+#: ../ctk/ctkradioaction.c:157
 msgid "The current value"
 msgstr "सद्याचे मुल्य"
 
-#: ../ctk/deprecated/ctkradioaction.c:158
+#: ../ctk/ctkradioaction.c:158
 msgid ""
 "The value property of the currently active member of the group to which this "
 "action belongs."

@@ -768,11 +768,11 @@ msgstr "Fona ikonas nosaukums"
 msgid "The icon name for the number emblem background"
 msgstr "Ikonas nosaukums numura emblēmas fonam"
 
-#: ctk/deprecated/ctkradioaction.c:120
+#: ctk/ctkradioaction.c:120
 msgid "The value"
 msgstr "Vērtība"
 
-#: ctk/deprecated/ctkradioaction.c:121
+#: ctk/ctkradioaction.c:121
 msgid ""
 "The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
@@ -780,20 +780,20 @@ msgstr ""
 "ctk_radio_action_get_current_value() atgrieztā vērtība, kad šī darbība ir "
 "pašreizējā darbība tās grupai."
 
-#: ctk/deprecated/ctkradioaction.c:139 ctk/ctkradiobutton.c:184
+#: ctk/ctkradioaction.c:139 ctk/ctkradiobutton.c:184
 #: ctk/ctkradiomenuitem.c:424 ctk/ctkradiotoolbutton.c:83
 msgid "Group"
 msgstr "Grupa"
 
-#: ctk/deprecated/ctkradioaction.c:140
+#: ctk/ctkradioaction.c:140
 msgid "The radio action whose group this action belongs to."
 msgstr "Radio darbība, kuras grupai pieder šī darbība."
 
-#: ctk/deprecated/ctkradioaction.c:157
+#: ctk/ctkradioaction.c:157
 msgid "The current value"
 msgstr "Pašreizējā vērtība"
 
-#: ctk/deprecated/ctkradioaction.c:158
+#: ctk/ctkradioaction.c:158
 msgid ""
 "The value property of the currently active member of the group to which this "
 "action belongs."

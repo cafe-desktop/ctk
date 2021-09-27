@@ -743,11 +743,11 @@ msgstr "Tên biểu tượng nền"
 msgid "The icon name for the number emblem background"
 msgstr "Tên biểu tượng cho số biểu tượng nền"
 
-#: ctk/deprecated/ctkradioaction.c:120
+#: ctk/ctkradioaction.c:120
 msgid "The value"
 msgstr "Giá trị"
 
-#: ctk/deprecated/ctkradioaction.c:121
+#: ctk/ctkradioaction.c:121
 msgid ""
 "The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
@@ -756,20 +756,20 @@ msgstr ""
 "động chọn một lấy giá trị hiện thời) khi hành động này là hành động hiện "
 "thời trong nhóm nó."
 
-#: ctk/deprecated/ctkradioaction.c:139 ctk/ctkradiobutton.c:165
+#: ctk/ctkradioaction.c:139 ctk/ctkradiobutton.c:165
 #: ctk/ctkradiomenuitem.c:412 ctk/ctkradiotoolbutton.c:80
 msgid "Group"
 msgstr "Nhóm"
 
-#: ctk/deprecated/ctkradioaction.c:140
+#: ctk/ctkradioaction.c:140
 msgid "The radio action whose group this action belongs to."
 msgstr "Hành động chọn một trong cùng một nhóm với hành động này."
 
-#: ctk/deprecated/ctkradioaction.c:157
+#: ctk/ctkradioaction.c:157
 msgid "The current value"
 msgstr "Giá trị hiện thời"
 
-#: ctk/deprecated/ctkradioaction.c:158
+#: ctk/ctkradioaction.c:158
 msgid ""
 "The value property of the currently active member of the group to which this "
 "action belongs."

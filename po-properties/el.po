@@ -806,11 +806,11 @@ msgstr "Όνομα εικονιδίου παρασκηνίου"
 msgid "The icon name for the number emblem background"
 msgstr "Το όνομα εικονιδίου για το παρασκήνιο του αριθμητικού εμβλήματος"
 
-#: ctk/deprecated/ctkradioaction.c:120
+#: ctk/ctkradioaction.c:120
 msgid "The value"
 msgstr "Η τιμή"
 
-#: ctk/deprecated/ctkradioaction.c:121
+#: ctk/ctkradioaction.c:121
 msgid ""
 "The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
@@ -818,20 +818,20 @@ msgstr ""
 "Η τιμή που επιστρέφεται από το ctk_radio_action_get_current_value() όταν "
 "αυτή η ενέργεια είναι η τρέχουσα ενέργεια της ομάδας του."
 
-#: ctk/deprecated/ctkradioaction.c:139 ctk/ctkradiobutton.c:184
+#: ctk/ctkradioaction.c:139 ctk/ctkradiobutton.c:184
 #: ctk/ctkradiomenuitem.c:424 ctk/ctkradiotoolbutton.c:83
 msgid "Group"
 msgstr "Ομάδα"
 
-#: ctk/deprecated/ctkradioaction.c:140
+#: ctk/ctkradioaction.c:140
 msgid "The radio action whose group this action belongs to."
 msgstr "Το κουμπί radio του οποίου η ομάδα της ανήκει αυτή η ενέργεια."
 
-#: ctk/deprecated/ctkradioaction.c:157
+#: ctk/ctkradioaction.c:157
 msgid "The current value"
 msgstr "Η τρέχουσα τιμή"
 
-#: ctk/deprecated/ctkradioaction.c:158
+#: ctk/ctkradioaction.c:158
 msgid ""
 "The value property of the currently active member of the group to which this "
 "action belongs."

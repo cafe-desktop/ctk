@@ -534,11 +534,11 @@ msgstr "Гурӯҳи Accel"
 msgid "The Accel Group to use for stock accelerator keys"
 msgstr "Гурӯҳи Accel барои истифода дар калидҳои шитобдиҳандаи захиравӣ"
 
-#: ../ctk/deprecated/ctkradioaction.c:120
+#: ../ctk/ctkradioaction.c:120
 msgid "The value"
 msgstr "Қимат"
 
-#: ../ctk/deprecated/ctkradioaction.c:121
+#: ../ctk/ctkradioaction.c:121
 msgid ""
 "The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
@@ -546,20 +546,20 @@ msgstr ""
 "Қимати баргардонидашуда тавассути ctk_radio_action_get_current_value() "
 "вақте, ки ин амал амали ҷории гурӯҳи он мебошад."
 
-#: ../ctk/deprecated/ctkradioaction.c:139 ../ctk/ctkradiobutton.c:162
+#: ../ctk/ctkradioaction.c:139 ../ctk/ctkradiobutton.c:162
 #: ../ctk/ctkradiomenuitem.c:408 ../ctk/ctkradiotoolbutton.c:80
 msgid "Group"
 msgstr "Гурӯҳ"
 
-#: ../ctk/deprecated/ctkradioaction.c:140
+#: ../ctk/ctkradioaction.c:140
 msgid "The radio action whose group this action belongs to."
 msgstr "Амали радио, ки ин амал ба гурӯҳи он тааллуқ дорад."
 
-#: ../ctk/deprecated/ctkradioaction.c:157
+#: ../ctk/ctkradioaction.c:157
 msgid "The current value"
 msgstr "Қимати ҷорӣ"
 
-#: ../ctk/deprecated/ctkradioaction.c:158
+#: ../ctk/ctkradioaction.c:158
 msgid ""
 "The value property of the currently active member of the group to which this "
 "action belongs."
