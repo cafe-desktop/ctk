@@ -227,6 +227,7 @@ ctk_public_h_sources = 		\
 	ctkicontheme.h		\
 	ctkiconview.h		\
 	ctkimage.h		\
+	ctkimagemenuitem.h	\
 	ctkimcontext.h		\
 	ctkimcontextinfo.h	\
 	ctkimcontextsimple.h	\
@@ -826,6 +827,7 @@ ctk_base_c_sources = 		\
 	ctkicontheme.c		\
 	ctkiconview.c		\
 	ctkimage.c		\
+	ctkimagemenuitem.c	\
 	ctkimagedefinition.c	\
 	ctkimcontext.c		\
 	ctkimcontextsimple.c	\

@@ -24,8 +24,6 @@
 
 #include "config.h"
 
-#define CDK_DISABLE_DEPRECATION_WARNINGS
-
 #include "ctkimagemenuitem.h"
 
 #include "ctkmenuitemprivate.h"
@@ -44,7 +42,7 @@
 
 /**
  * SECTION:ctkimagemenuitem
- * @Short_description: A deprecated widget for a menu item with an icon
+ * @Short_description: Widget for a menu item with an icon
  * @Title: CtkImageMenuItem
  *
  * A CtkImageMenuItem is a menu item which has an icon next to the text label.
@@ -71,7 +69,7 @@
  * show an icon you are strongly encouraged to use a #CtkMenuItem
  * with a #CtkImage instead.
  *
- * #CtkImageMenuItem has been deprecated since CTK+ 3.10. If you want to
+ * An alternative way, if you want to
  * display an icon in a menu item, you should use #CtkMenuItem and pack a
  * #CtkBox with a #CtkImage and a #CtkLabel instead. You should also consider
  * using #CtkBuilder and the XML #GMenu description for creating menus, by
@@ -216,9 +214,6 @@ ctk_image_menu_item_class_init (CtkImageMenuItemClass *klass)
    * CtkImageMenuItem:image:
    *
    * Child widget to appear next to the menu text.
-   *
-   * Deprecated: 3.10: Use a #CtkMenuItem containing a #CtkBox with
-   *   a #CtkAccelLabel and a #CtkImage instead
    */
   g_object_class_install_property (gobject_class,
                                    PROP_IMAGE,
@@ -226,7 +221,7 @@ ctk_image_menu_item_class_init (CtkImageMenuItemClass *klass)
                                                         P_("Image widget"),
                                                         P_("Child widget to appear next to the menu text"),
                                                         CTK_TYPE_WIDGET,
-                                                        CTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
+                                                        CTK_PARAM_READWRITE));
   /**
    * CtkImageMenuItem:use-stock:
    *
@@ -234,8 +229,6 @@ ctk_image_menu_item_class_init (CtkImageMenuItemClass *klass)
    * stock id to select the stock item for the item.
    *
    * Since: 2.16
-   *
-   * Deprecated: 3.10: Use a named icon from the #CtkIconTheme instead
    */
   g_object_class_install_property (gobject_class,
                                    PROP_USE_STOCK,
@@ -243,7 +236,7 @@ ctk_image_menu_item_class_init (CtkImageMenuItemClass *klass)
                                                          P_("Use stock"),
                                                          P_("Whether to use the label text to create a stock menu item"),
                                                          FALSE,
-                                                         CTK_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_DEPRECATED));
+                                                         CTK_PARAM_READWRITE | G_PARAM_CONSTRUCT));
 
   /**
    * CtkImageMenuItem:always-show-image:
@@ -254,9 +247,6 @@ ctk_image_menu_item_class_init (CtkImageMenuItemClass *klass)
    * without the image.
    *
    * Since: 2.16
-   *
-   * Deprecated: 3.10: Use a #CtkMenuItem containing a #CtkBox with
-   *   a #CtkAccelLabel and a #CtkImage instead
    */
   g_object_class_install_property (gobject_class,
                                    PROP_ALWAYS_SHOW_IMAGE,
@@ -264,7 +254,7 @@ ctk_image_menu_item_class_init (CtkImageMenuItemClass *klass)
                                                          P_("Always show image"),
                                                          P_("Whether the image will always be shown"),
                                                          FALSE,
-                                                         CTK_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_DEPRECATED));
+                                                         CTK_PARAM_READWRITE | G_PARAM_CONSTRUCT));
 
   /**
    * CtkImageMenuItem:accel-group:
@@ -272,8 +262,6 @@ ctk_image_menu_item_class_init (CtkImageMenuItemClass *klass)
    * The Accel Group to use for stock accelerator keys
    *
    * Since: 2.16
-   *
-   * Deprecated: 3.10: Use ctk_widget_add_accelerator() instead 
    */
   g_object_class_install_property (gobject_class,
                                    PROP_ACCEL_GROUP,
@@ -281,7 +269,7 @@ ctk_image_menu_item_class_init (CtkImageMenuItemClass *klass)
                                                         P_("Accel Group"),
                                                         P_("The Accel Group to use for stock accelerator keys"),
                                                         CTK_TYPE_ACCEL_GROUP,
-                                                        CTK_PARAM_WRITABLE | G_PARAM_DEPRECATED));
+                                                        CTK_PARAM_WRITABLE));
 
 }
 
@@ -323,17 +311,13 @@ ctk_image_menu_item_set_property (GObject         *object,
       ctk_image_menu_item_set_image (image_menu_item, (CtkWidget *) g_value_get_object (value));
       break;
     case PROP_USE_STOCK:
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       ctk_image_menu_item_set_use_stock (image_menu_item, g_value_get_boolean (value));
-      G_GNUC_END_IGNORE_DEPRECATIONS;
       break;
     case PROP_ALWAYS_SHOW_IMAGE:
       ctk_image_menu_item_set_always_show_image (image_menu_item, g_value_get_boolean (value));
       break;
     case PROP_ACCEL_GROUP:
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       ctk_image_menu_item_set_accel_group (image_menu_item, g_value_get_object (value));
-      G_GNUC_END_IGNORE_DEPRECATIONS;
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -355,9 +339,7 @@ ctk_image_menu_item_get_property (GObject         *object,
       g_value_set_object (value, ctk_image_menu_item_get_image (image_menu_item));
       break;
     case PROP_USE_STOCK:
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       g_value_set_boolean (value, ctk_image_menu_item_get_use_stock (image_menu_item));
-      G_GNUC_END_IGNORE_DEPRECATIONS;
       break;
     case PROP_ALWAYS_SHOW_IMAGE:
       g_value_set_boolean (value, ctk_image_menu_item_get_always_show_image (image_menu_item));
@@ -463,9 +445,6 @@ ctk_image_menu_item_recalculate (CtkImageMenuItem *image_menu_item)
 
   if (priv->use_stock && priv->label)
     {
-
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-
       if (!priv->image)
         {
           image = ctk_image_new_from_stock (priv->label, CTK_ICON_SIZE_MENU);
@@ -476,8 +455,6 @@ ctk_image_menu_item_recalculate (CtkImageMenuItem *image_menu_item)
           resolved_label = stock_item.label;
 
       ctk_menu_item_set_use_underline (CTK_MENU_ITEM (image_menu_item), TRUE);
-
-      G_GNUC_END_IGNORE_DEPRECATIONS;
     }
 
   CTK_MENU_ITEM_CLASS
@@ -751,8 +728,6 @@ activatable_update_stock_id (CtkImageMenuItem *image_menu_item, CtkAction *actio
 {
   const gchar *stock_id  = ctk_action_get_stock_id (action);
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-
   if (stock_id && ctk_icon_factory_lookup_default (stock_id))
     {
       CtkWidget *image;
@@ -761,8 +736,6 @@ activatable_update_stock_id (CtkImageMenuItem *image_menu_item, CtkAction *actio
       ctk_image_set_from_stock (CTK_IMAGE (image), stock_id, CTK_ICON_SIZE_MENU);
       return TRUE;
     }
-
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 
   return FALSE;
 }
@@ -776,8 +749,6 @@ activatable_update_gicon (CtkImageMenuItem *image_menu_item, CtkAction *action)
 
   stock_id = ctk_action_get_stock_id (action);
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-
   if (icon && !(stock_id && ctk_icon_factory_lookup_default (stock_id)))
     {
       CtkWidget *image;
@@ -786,8 +757,6 @@ activatable_update_gicon (CtkImageMenuItem *image_menu_item, CtkAction *action)
       ctk_image_set_from_gicon (CTK_IMAGE (image), icon, CTK_ICON_SIZE_MENU);
       ret = TRUE;
     }
-
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 
   return ret;
 }
@@ -866,8 +835,6 @@ ctk_image_menu_item_sync_action_properties (CtkActivatable *activatable,
  * Creates a new #CtkImageMenuItem with an empty label.
  *
  * Returns: a new #CtkImageMenuItem
- *
- * Deprecated: 3.10: Use ctk_menu_item_new() instead.
  */
 CtkWidget*
 ctk_image_menu_item_new (void)
@@ -882,8 +849,6 @@ ctk_image_menu_item_new (void)
  * Creates a new #CtkImageMenuItem containing a label.
  *
  * Returns: a new #CtkImageMenuItem.
- *
- * Deprecated: 3.10: Use ctk_menu_item_new_with_label() instead.
  */
 CtkWidget*
 ctk_image_menu_item_new_with_label (const gchar *label)
@@ -903,8 +868,6 @@ ctk_image_menu_item_new_with_label (const gchar *label)
  * in @label indicate the mnemonic for the menu item.
  *
  * Returns: a new #CtkImageMenuItem
- *
- * Deprecated: 3.10: Use ctk_menu_item_new_with_mnemonic() instead.
  */
 CtkWidget*
 ctk_image_menu_item_new_with_mnemonic (const gchar *label)
@@ -932,8 +895,6 @@ ctk_image_menu_item_new_with_mnemonic (const gchar *label)
  * ctk_accel_map_add_entry() to register it.
  *
  * Returns: a new #CtkImageMenuItem.
- *
- * Deprecated: 3.10: Use ctk_menu_item_new_with_mnemonic() instead.
  */
 CtkWidget*
 ctk_image_menu_item_new_from_stock (const gchar   *stock_id,
@@ -955,8 +916,6 @@ ctk_image_menu_item_new_from_stock (const gchar   *stock_id,
  * stock id to select the stock item for the item.
  *
  * Since: 2.16
- *
- * Deprecated: 3.10
  */
 void
 ctk_image_menu_item_set_use_stock (CtkImageMenuItem *image_menu_item,
@@ -989,8 +948,6 @@ ctk_image_menu_item_set_use_stock (CtkImageMenuItem *image_menu_item,
  *     stock id to select the stock item for the item
  *
  * Since: 2.16
- *
- * Deprecated: 3.10
  */
 gboolean
 ctk_image_menu_item_get_use_stock (CtkImageMenuItem *image_menu_item)
@@ -1012,8 +969,6 @@ ctk_image_menu_item_get_use_stock (CtkImageMenuItem *image_menu_item)
  * without the image.
  *
  * Since: 2.16
- *
- * Deprecated: 3.10
  */
 void
 ctk_image_menu_item_set_always_show_image (CtkImageMenuItem *image_menu_item,
@@ -1051,8 +1006,6 @@ ctk_image_menu_item_set_always_show_image (CtkImageMenuItem *image_menu_item,
  * Returns: %TRUE if the menu item will always show the image
  *
  * Since: 2.16
- *
- * Deprecated: 3.10
  */
 gboolean
 ctk_image_menu_item_get_always_show_image (CtkImageMenuItem *image_menu_item)
@@ -1077,8 +1030,6 @@ ctk_image_menu_item_get_always_show_image (CtkImageMenuItem *image_menu_item)
  * you shouldnt need this (see ctk_image_menu_item_new_from_stock()).
  *
  * Since: 2.16
- *
- * Deprecated: 3.10
  */
 void
 ctk_image_menu_item_set_accel_group (CtkImageMenuItem *image_menu_item,
@@ -1096,8 +1047,6 @@ ctk_image_menu_item_set_accel_group (CtkImageMenuItem *image_menu_item,
 
   priv = image_menu_item->priv;
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-
   if (priv->use_stock && priv->label && ctk_stock_lookup (priv->label, &stock_item))
     if (stock_item.keyval)
       {
@@ -1111,8 +1060,6 @@ ctk_image_menu_item_set_accel_group (CtkImageMenuItem *image_menu_item,
         g_object_notify (G_OBJECT (image_menu_item), "accel-group");
       }
 
-  G_GNUC_END_IGNORE_DEPRECATIONS;
-
 }
 
 /**
@@ -1123,8 +1070,6 @@ ctk_image_menu_item_set_accel_group (CtkImageMenuItem *image_menu_item,
  * Sets the image of @image_menu_item to the given widget.
  * Note that it depends on the show-menu-images setting whether
  * the image will be displayed or not.
- *
- * Deprecated: 3.10
  */
 void
 ctk_image_menu_item_set_image (CtkImageMenuItem *image_menu_item,
@@ -1166,8 +1111,6 @@ ctk_image_menu_item_set_image (CtkImageMenuItem *image_menu_item,
  * See ctk_image_menu_item_set_image().
  *
  * Returns: (transfer none): the widget set as image of @image_menu_item
- *
- * Deprecated: 3.10
  **/
 CtkWidget*
 ctk_image_menu_item_get_image (CtkImageMenuItem *image_menu_item)

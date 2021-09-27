@@ -47,15 +47,12 @@ ctk/deprecated/ctkcolorseldialog.c
 ctk/deprecated/ctkfontsel.c
 ctk/deprecated/ctkhandlebox.c
 ctk/deprecated/ctkhsv.c
-ctk/deprecated/ctkimagemenuitem.c
 ctk/deprecated/ctkmisc.c
 ctk/deprecated/ctknumerableicon.c
-ctk/ctkradioaction.c
 ctk/deprecated/ctkrecentaction.c
 ctk/deprecated/ctkstatusicon.c
 ctk/deprecated/ctktable.c
 ctk/deprecated/ctkthemingengine.c
-ctk/ctktoggleaction.c
 ctk/deprecated/ctktrayicon-x11.c
 ctk/deprecated/ctkuimanager.c
 ctk/encodesymbolic.c
@@ -177,6 +174,7 @@ ctk/ctkiconfactory.c
 ctk/ctkicontheme.c
 ctk/ctkiconview.c
 ctk/ctkimage.c
+ctk/ctkimagemenuitem.c
 ctk/ctkimcontext.c
 ctk/ctkimcontextsimple.c
 ctk/ctkimmodule.c
@@ -235,6 +233,7 @@ ctk/ctkprintoperation-unix.c
 ctk/ctkprintoperation-win32.c
 ctk/ctkprintunixdialog.c
 ctk/ctkprogressbar.c
+ctk/ctkradioaction.c
 ctk/ctkradiobutton.c
 ctk/ctkradiomenuitem.c
 ctk/ctkradiotoolbutton.c
@@ -290,6 +289,7 @@ ctk/ctktexttag.c
 ctk/ctktexttagtable.c
 ctk/ctktextutil.c
 ctk/ctktextview.c
+ctk/ctktoggleaction.c
 ctk/ctktogglebutton.c
 ctk/ctktoggletoolbutton.c
 ctk/ctktoolbar.c

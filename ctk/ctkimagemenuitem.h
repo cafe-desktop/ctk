@@ -72,33 +72,33 @@ struct _CtkImageMenuItemClass
   void (*_ctk_reserved4) (void);
 };
 
-CDK_DEPRECATED_IN_3_10_FOR(ctk_menu_item_get_type)
+CDK_AVAILABLE_IN_ALL
 GType	   ctk_image_menu_item_get_type          (void) G_GNUC_CONST;
-CDK_DEPRECATED_IN_3_10_FOR(ctk_menu_item_new)
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_image_menu_item_new               (void);
-CDK_DEPRECATED_IN_3_10_FOR(ctk_menu_item_new_with_label)
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_image_menu_item_new_with_label    (const gchar      *label);
-CDK_DEPRECATED_IN_3_10_FOR(ctk_menu_item_new_with_mnemonic)
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_image_menu_item_new_with_mnemonic (const gchar      *label);
-CDK_DEPRECATED_IN_3_10_FOR(ctk_menu_item_new)
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_image_menu_item_new_from_stock    (const gchar      *stock_id,
                                                   CtkAccelGroup    *accel_group);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 void       ctk_image_menu_item_set_always_show_image (CtkImageMenuItem *image_menu_item,
                                                       gboolean          always_show);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_image_menu_item_get_always_show_image (CtkImageMenuItem *image_menu_item);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 void       ctk_image_menu_item_set_image         (CtkImageMenuItem *image_menu_item,
                                                   CtkWidget        *image);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_image_menu_item_get_image         (CtkImageMenuItem *image_menu_item);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 void       ctk_image_menu_item_set_use_stock     (CtkImageMenuItem *image_menu_item,
 						  gboolean          use_stock);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_image_menu_item_get_use_stock     (CtkImageMenuItem *image_menu_item);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 void       ctk_image_menu_item_set_accel_group   (CtkImageMenuItem *image_menu_item, 
 						  CtkAccelGroup    *accel_group);
 
