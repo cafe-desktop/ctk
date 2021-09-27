@@ -806,11 +806,11 @@ msgstr "Nom de la icona  de fons"
 msgid "The icon name for the number emblem background"
 msgstr "El nom de la icona del fons de l'emblema numèric"
 
-#: ctk/deprecated/ctkradioaction.c:120
+#: ctk/ctkradioaction.c:120
 msgid "The value"
 msgstr "El valor"
 
-#: ctk/deprecated/ctkradioaction.c:121
+#: ctk/ctkradioaction.c:121
 msgid ""
 "The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
@@ -818,20 +818,20 @@ msgstr ""
 "El valor que retorna ctk_radio_action_get_current_value() quan aquesta acció "
 "és l'acció activa del seu grup."
 
-#: ctk/deprecated/ctkradioaction.c:139 ctk/ctkradiobutton.c:184
+#: ctk/ctkradioaction.c:139 ctk/ctkradiobutton.c:184
 #: ctk/ctkradiomenuitem.c:424 ctk/ctkradiotoolbutton.c:83
 msgid "Group"
 msgstr "Grup"
 
-#: ctk/deprecated/ctkradioaction.c:140
+#: ctk/ctkradioaction.c:140
 msgid "The radio action whose group this action belongs to."
 msgstr "L'acció de radi al grup de la qual pertany aquesta acció."
 
-#: ctk/deprecated/ctkradioaction.c:157
+#: ctk/ctkradioaction.c:157
 msgid "The current value"
 msgstr "El valor actual"
 
-#: ctk/deprecated/ctkradioaction.c:158
+#: ctk/ctkradioaction.c:158
 msgid ""
 "The value property of the currently active member of the group to which this "
 "action belongs."

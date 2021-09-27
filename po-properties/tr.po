@@ -766,11 +766,11 @@ msgstr "Arkaplan simge adı"
 msgid "The icon name for the number emblem background"
 msgstr "Arkaplan numara amblemi için simge adı"
 
-#: ctk/deprecated/ctkradioaction.c:120
+#: ctk/ctkradioaction.c:120
 msgid "The value"
 msgstr "Değer"
 
-#: ctk/deprecated/ctkradioaction.c:121
+#: ctk/ctkradioaction.c:121
 msgid ""
 "The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
@@ -778,20 +778,20 @@ msgstr ""
 "Bu eylem kümesinin geçerli eylemiyken ctk_radio_action_get_current_value() "
 "tarafından dönen değer."
 
-#: ctk/deprecated/ctkradioaction.c:139 ctk/ctkradiobutton.c:184
+#: ctk/ctkradioaction.c:139 ctk/ctkradiobutton.c:184
 #: ctk/ctkradiomenuitem.c:424 ctk/ctkradiotoolbutton.c:83
 msgid "Group"
 msgstr "Küme"
 
-#: ctk/deprecated/ctkradioaction.c:140
+#: ctk/ctkradioaction.c:140
 msgid "The radio action whose group this action belongs to."
 msgstr "Bu eylemin ait olduğu kümenin radyo eylemi."
 
-#: ctk/deprecated/ctkradioaction.c:157
+#: ctk/ctkradioaction.c:157
 msgid "The current value"
 msgstr "Geçerli değer"
 
-#: ctk/deprecated/ctkradioaction.c:158
+#: ctk/ctkradioaction.c:158
 msgid ""
 "The value property of the currently active member of the group to which this "
 "action belongs."

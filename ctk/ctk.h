@@ -274,7 +274,7 @@
 #include <ctk/deprecated/ctkimagemenuitem.h>
 #include <ctk/deprecated/ctkmisc.h>
 #include <ctk/deprecated/ctknumerableicon.h>
-#include <ctk/deprecated/ctkradioaction.h>
+#include <ctk/ctkradioaction.h>
 #include <ctk/deprecated/ctkrecentaction.h>
 #include <ctk/deprecated/ctkstatusicon.h>
 #include <ctk/deprecated/ctkstyleproperties.h>

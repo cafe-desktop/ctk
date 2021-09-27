@@ -731,11 +731,11 @@ msgstr "পটভূমিৰ আইকনৰ নাম"
 msgid "The icon name for the number emblem background"
 msgstr "নম্বৰ এমব্লেম পটভূমিৰ কাৰণে আইকনৰ নাম"
 
-#: ../ctk/deprecated/ctkradioaction.c:120
+#: ../ctk/ctkradioaction.c:120
 msgid "The value"
 msgstr "মান"
 
-#: ../ctk/deprecated/ctkradioaction.c:121
+#: ../ctk/ctkradioaction.c:121
 msgid ""
 "The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
@@ -743,20 +743,20 @@ msgstr ""
 "এই অ্যাকশনটি এই অ্যাকশন গ্ৰুপেৰ বৰ্তমান অ্যাকশন হলে "
 "ctk_radio_action_get_current_value() কৰ্তৃক উত্‍পন্ন মান।"
 
-#: ../ctk/deprecated/ctkradioaction.c:139 ../ctk/ctkradiobutton.c:162
+#: ../ctk/ctkradioaction.c:139 ../ctk/ctkradiobutton.c:162
 #: ../ctk/ctkradiomenuitem.c:410 ../ctk/ctkradiotoolbutton.c:80
 msgid "Group"
 msgstr "দল"
 
-#: ../ctk/deprecated/ctkradioaction.c:140
+#: ../ctk/ctkradioaction.c:140
 msgid "The radio action whose group this action belongs to."
 msgstr "এই কাম যি ৰেডিঅ' অ্যাকশন গ্ৰুপেৰ অংশ"
 
-#: ../ctk/deprecated/ctkradioaction.c:157
+#: ../ctk/ctkradioaction.c:157
 msgid "The current value"
 msgstr "The current value"
 
-#: ../ctk/deprecated/ctkradioaction.c:158
+#: ../ctk/ctkradioaction.c:158
 msgid ""
 "The value property of the currently active member of the group to which this "
 "action belongs."

@@ -768,11 +768,11 @@ msgstr "Naziv ikone pozadine"
 msgid "The icon name for the number emblem background"
 msgstr "Naziv ikone za broj obilježja pozadine"
 
-#: ctk/deprecated/ctkradioaction.c:120
+#: ctk/ctkradioaction.c:120
 msgid "The value"
 msgstr "Vrijednost"
 
-#: ctk/deprecated/ctkradioaction.c:121
+#: ctk/ctkradioaction.c:121
 msgid ""
 "The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
@@ -780,20 +780,20 @@ msgstr ""
 "Vrijednost koju vraća ctk_radio_action_get_current_value() kada je ova "
 "radnja trenutna radnja svoje grupe."
 
-#: ctk/deprecated/ctkradioaction.c:139 ctk/ctkradiobutton.c:184
+#: ctk/ctkradioaction.c:139 ctk/ctkradiobutton.c:184
 #: ctk/ctkradiomenuitem.c:424 ctk/ctkradiotoolbutton.c:83
 msgid "Group"
 msgstr "Grupa"
 
-#: ctk/deprecated/ctkradioaction.c:140
+#: ctk/ctkradioaction.c:140
 msgid "The radio action whose group this action belongs to."
 msgstr "Radnja okruglog okvira čijoj grupi ta radnja pripada."
 
-#: ctk/deprecated/ctkradioaction.c:157
+#: ctk/ctkradioaction.c:157
 msgid "The current value"
 msgstr "Trenutna vrijednost"
 
-#: ctk/deprecated/ctkradioaction.c:158
+#: ctk/ctkradioaction.c:158
 msgid ""
 "The value property of the currently active member of the group to which this "
 "action belongs."

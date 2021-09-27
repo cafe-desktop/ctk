@@ -761,11 +761,11 @@ msgstr "Nama ikon latar belakang"
 msgid "The icon name for the number emblem background"
 msgstr "Nama ikon untuk bilangan latar belakang lambang"
 
-#: ctk/deprecated/ctkradioaction.c:120
+#: ctk/ctkradioaction.c:120
 msgid "The value"
 msgstr "Nilai"
 
-#: ctk/deprecated/ctkradioaction.c:121
+#: ctk/ctkradioaction.c:121
 msgid ""
 "The value returned by ctk_radio_action_get_current_value() when this action "
 "is the current action of its group."
@@ -773,20 +773,20 @@ msgstr ""
 "Nilai yang dikembalikan oleh ctk_radio_action_get_curent_valu() bila "
 "tindakan ini adalah tindakan semasa bagi kumpulannya."
 
-#: ctk/deprecated/ctkradioaction.c:139 ctk/ctkradiobutton.c:184
+#: ctk/ctkradioaction.c:139 ctk/ctkradiobutton.c:184
 #: ctk/ctkradiomenuitem.c:424 ctk/ctkradiotoolbutton.c:83
 msgid "Group"
 msgstr "Kumpulan"
 
-#: ctk/deprecated/ctkradioaction.c:140
+#: ctk/ctkradioaction.c:140
 msgid "The radio action whose group this action belongs to."
 msgstr "Tindakan radio yang mana tindakan ini dimiliki oleh kumpulan ini."
 
-#: ctk/deprecated/ctkradioaction.c:157
+#: ctk/ctkradioaction.c:157
 msgid "The current value"
 msgstr "Nilai semasa"
 
-#: ctk/deprecated/ctkradioaction.c:158
+#: ctk/ctkradioaction.c:158
 msgid ""
 "The value property of the currently active member of the group to which this "
 "action belongs."
