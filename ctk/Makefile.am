@@ -270,6 +270,7 @@ ctk_public_h_sources = 		\
 	ctkprintoperationpreview.h \
 	ctkprintsettings.h	\
 	ctkprogressbar.h	\
+	ctkradioaction.h	\
 	ctkradiobutton.h	\
 	ctkradiomenuitem.h	\
 	ctkradiotoolbutton.h	\
@@ -884,6 +885,7 @@ ctk_base_c_sources = 		\
 	ctkpixelcache.c		\
 	ctkpopover.c		\
 	ctkpopovermenu.c	\
+	ctkradioaction.c	\
 	ctkradiobutton.c	\
 	ctkradiomenuitem.c	\
 	ctkradiotoolbutton.c	\

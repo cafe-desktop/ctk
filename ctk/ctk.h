@@ -171,6 +171,7 @@
 #include <ctk/ctkprintoperationpreview.h>
 #include <ctk/ctkprintsettings.h>
 #include <ctk/ctkprogressbar.h>
+#include <ctk/ctkradioaction.h>
 #include <ctk/ctkradiobutton.h>
 #include <ctk/ctkradiomenuitem.h>
 #include <ctk/ctkradiotoolbutton.h>

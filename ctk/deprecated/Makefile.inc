@@ -17,7 +17,6 @@ deprecated_h_sources = 			\
 	deprecated/ctkimagemenuitem.h	\
 	deprecated/ctkmisc.h		\
 	deprecated/ctknumerableicon.h	\
-	deprecated/ctkradioaction.h	\
 	deprecated/ctkrecentaction.h	\
 	deprecated/ctkstatusicon.h	\
 	deprecated/ctkstyleproperties.h	\
@@ -59,7 +58,6 @@ deprecated_c_sources = 			\
 	deprecated/ctkimagemenuitem.c	\
 	deprecated/ctkmisc.c		\
 	deprecated/ctknumerableicon.c	\
-	deprecated/ctkradioaction.c	\
 	deprecated/ctkrecentaction.c	\
 	deprecated/ctkstatusicon.c	\
 	deprecated/ctkstyleproperties.c	\
