@@ -130,6 +130,7 @@
 #include <ctk/ctkicontheme.h>
 #include <ctk/ctkiconview.h>
 #include <ctk/ctkimage.h>
+#include <ctk/ctkimagemenuitem.h>
 #include <ctk/ctkimcontext.h>
 #include <ctk/ctkimcontextinfo.h>
 #include <ctk/ctkimcontextsimple.h>
@@ -271,7 +272,6 @@
 #include <ctk/deprecated/ctkhscale.h>
 #include <ctk/deprecated/ctkhscrollbar.h>
 #include <ctk/deprecated/ctkhseparator.h>
-#include <ctk/deprecated/ctkimagemenuitem.h>
 #include <ctk/deprecated/ctkmisc.h>
 #include <ctk/deprecated/ctknumerableicon.h>
 #include <ctk/ctkradioaction.h>
