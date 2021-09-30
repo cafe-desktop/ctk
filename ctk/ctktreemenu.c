@@ -49,7 +49,7 @@
 #define CDK_DEPRECATED
 #define CDK_DEPRECATED_FOR(f)
 
-#include "deprecated/ctktearoffmenuitem.h"
+#include "ctktearoffmenuitem.h"
 
 /* GObjectClass */
 static void      ctk_tree_menu_constructed                    (GObject            *object);

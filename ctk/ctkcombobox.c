@@ -36,7 +36,7 @@
 #include "ctkmenuprivate.h"
 #include "ctkmenushellprivate.h"
 #include "ctkscrolledwindow.h"
-#include "deprecated/ctktearoffmenuitem.h"
+#include "ctktearoffmenuitem.h"
 #include "ctktogglebutton.h"
 #include "ctktreeselection.h"
 #include "ctkwidgetpath.h"
