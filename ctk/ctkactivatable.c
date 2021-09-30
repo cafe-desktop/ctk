@@ -258,8 +258,6 @@
 
 #include "config.h"
 
-#define CDK_DISABLE_DEPRECATION_WARNINGS
-
 #include "ctkactivatable.h"
 #include "ctkactiongroup.h"
 #include "ctkprivate.h"
@@ -282,8 +280,6 @@ ctk_activatable_default_init (CtkActivatableInterface *iface)
    * > call ctk_activatable_do_set_related_action() when it changes.
    *
    * Since: 2.16
-   *
-   * Deprecated: 3.10
    */
   g_object_interface_install_property (iface,
 				       g_param_spec_object ("related-action",
@@ -307,8 +303,6 @@ ctk_activatable_default_init (CtkActivatableInterface *iface)
    * > widget when it changes.
    *
    * Since: 2.16
-   *
-   * Deprecated: 3.10
    */
   g_object_interface_install_property (iface,
 				       g_param_spec_boolean ("use-action-appearance",
@@ -348,8 +342,6 @@ ctk_activatable_update (CtkActivatable *activatable,
  * #CtkActivatable:use-action-appearance changes.
  *
  * Since: 2.16
- *
- * Deprecated: 3.10
  **/
 void
 ctk_activatable_sync_action_properties (CtkActivatable *activatable,
@@ -379,8 +371,6 @@ ctk_activatable_sync_action_properties (CtkActivatable *activatable,
  * > property and call ctk_activatable_do_set_related_action() when it changes.
  *
  * Since: 2.16
- *
- * Deprecated: 3.10
  **/
 void
 ctk_activatable_set_related_action (CtkActivatable *activatable,
@@ -422,8 +412,6 @@ ctk_activatable_action_notify (CtkAction      *action,
  * > previous action.
  *
  * Since: 2.16
- *
- * Deprecated: 3.10
  */
 void
 ctk_activatable_do_set_related_action (CtkActivatable *activatable,
@@ -490,8 +478,6 @@ ctk_activatable_do_set_related_action (CtkActivatable *activatable,
  * Returns: (transfer none): the related #CtkAction if one is set.
  *
  * Since: 2.16
- *
- * Deprecated: 3.10
  **/
 CtkAction *
 ctk_activatable_get_related_action (CtkActivatable *activatable)
@@ -523,8 +509,6 @@ ctk_activatable_get_related_action (CtkActivatable *activatable)
  * > if needed.
  *
  * Since: 2.16
-  *
- * Deprecated: 3.10
 **/
 void
 ctk_activatable_set_use_action_appearance (CtkActivatable *activatable,
@@ -544,8 +528,6 @@ ctk_activatable_set_use_action_appearance (CtkActivatable *activatable,
  * Returns: whether @activatable uses its actions appearance.
  *
  * Since: 2.16
-  *
- * Deprecated: 3.10
 **/
 gboolean
 ctk_activatable_get_use_action_appearance  (CtkActivatable *activatable)

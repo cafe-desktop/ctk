@@ -49,8 +49,6 @@ typedef struct _CtkActivatableIface CtkActivatableIface;
  * > This method can be called with a %NULL action at times.
  *
  * Since: 2.16
- *
- * Deprecated: 3.10
  */
 
 struct _CtkActivatableIface
@@ -69,27 +67,27 @@ struct _CtkActivatableIface
 };
 
 
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 GType      ctk_activatable_get_type                   (void) G_GNUC_CONST;
 
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 void       ctk_activatable_sync_action_properties     (CtkActivatable *activatable,
 						       CtkAction      *action);
 
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 void       ctk_activatable_set_related_action         (CtkActivatable *activatable,
 						       CtkAction      *action);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 CtkAction *ctk_activatable_get_related_action         (CtkActivatable *activatable);
 
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 void       ctk_activatable_set_use_action_appearance  (CtkActivatable *activatable,
 						       gboolean        use_appearance);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_activatable_get_use_action_appearance  (CtkActivatable *activatable);
 
 /* For use in activatable implementations */
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 void       ctk_activatable_do_set_related_action      (CtkActivatable *activatable,
 						       CtkAction      *action);
 
