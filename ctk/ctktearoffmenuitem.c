@@ -31,8 +31,6 @@
 #include "ctktearoffmenuitem.h"
 #include "ctkintl.h"
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-
 /**
  * SECTION:ctktearoffmenuitem
  * @Short_description: A menu item used to tear off and reattach its menu
@@ -51,9 +49,6 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
  * as a dotted line which has a left pointing arrow graphic indicating that
  * the tearoff menu can be reattached.  Activating it will erase the tearoff
  * menu window.
- *
- * > #CtkTearoffMenuItem is deprecated and should not be used in newly
- * > written code. Menus are not meant to be torn around.
  */
 
 
@@ -86,9 +81,6 @@ G_DEFINE_TYPE_WITH_PRIVATE (CtkTearoffMenuItem, ctk_tearoff_menu_item, CTK_TYPE_
  * Creates a new #CtkTearoffMenuItem.
  *
  * Returns: a new #CtkTearoffMenuItem.
- *
- * Deprecated: 3.4: #CtkTearoffMenuItem is deprecated and should not be
- *     used in newly written code.
  */
 CtkWidget*
 ctk_tearoff_menu_item_new (void)
