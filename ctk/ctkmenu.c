@@ -135,7 +135,7 @@
 #include "ctkcssstylepropertyprivate.h"
 #include "ctktooltipprivate.h"
 
-#include "deprecated/ctktearoffmenuitem.h"
+#include "ctktearoffmenuitem.h"
 
 
 #include "a11y/ctkmenuaccessible.h"

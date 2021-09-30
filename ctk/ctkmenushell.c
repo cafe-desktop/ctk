@@ -77,7 +77,7 @@
 #include "ctkwidgetprivate.h"
 #include "ctklabelprivate.h"
 
-#include "deprecated/ctktearoffmenuitem.h"
+#include "ctktearoffmenuitem.h"
 
 #include "a11y/ctkmenushellaccessible.h"
 

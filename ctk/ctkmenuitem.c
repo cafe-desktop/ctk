@@ -46,7 +46,7 @@
 #include "ctksettings.h"
 #include "ctktypebuiltins.h"
 #include "a11y/ctkmenuitemaccessible.h"
-#include "deprecated/ctktearoffmenuitem.h"
+#include "ctktearoffmenuitem.h"
 #include "ctkstylecontextprivate.h"
 #include "ctkcssstylepropertyprivate.h"
 
