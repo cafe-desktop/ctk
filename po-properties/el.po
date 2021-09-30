@@ -428,20 +428,20 @@ msgstr "Ομάδα συντόμευσης"
 msgid "The accelerator group the actions of this group should use."
 msgstr "Η ομάδα συντόμευσης που πρέπει να χρησιμοποιούν οι ενέργειες."
 
-#: ctk/deprecated/ctkactivatable.c:290
+#: ctk/ctkactivatable.c:290
 msgid "Related Action"
 msgstr "Σχετική ενέργεια"
 
-#: ctk/deprecated/ctkactivatable.c:291
+#: ctk/ctkactivatable.c:291
 msgid "The action this activatable will activate and receive updates from"
 msgstr ""
 "Η ενέργεια που θα ενεργοποιείται και από την οποία θα λαμβάνονται ενημερώσεις"
 
-#: ctk/deprecated/ctkactivatable.c:315
+#: ctk/ctkactivatable.c:315
 msgid "Use Action Appearance"
 msgstr "Χρήση εμφάνισης ενέργειας"
 
-#: ctk/deprecated/ctkactivatable.c:316
+#: ctk/ctkactivatable.c:316
 msgid "Whether to use the related actions appearance properties"
 msgstr "Αν θα χρησιμοποιούνται οι ιδιότητες εμφάνισης των σχετικών ενεργειών"
 

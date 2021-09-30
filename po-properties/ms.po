@@ -395,19 +395,19 @@ msgstr "Kumpulan pemecut"
 msgid "The accelerator group the actions of this group should use."
 msgstr "Tindakan kumpulan pemecut bagi kumpulan ini patut gunakan."
 
-#: ctk/deprecated/ctkactivatable.c:290
+#: ctk/ctkactivatable.c:290
 msgid "Related Action"
 msgstr "Tindakan Berkaitan"
 
-#: ctk/deprecated/ctkactivatable.c:291
+#: ctk/ctkactivatable.c:291
 msgid "The action this activatable will activate and receive updates from"
 msgstr "Tindakan boleh aktif ini akan diaktifkan dan menerima kemas kini"
 
-#: ctk/deprecated/ctkactivatable.c:315
+#: ctk/ctkactivatable.c:315
 msgid "Use Action Appearance"
 msgstr "Guna Penampilan Tindakan"
 
-#: ctk/deprecated/ctkactivatable.c:316
+#: ctk/ctkactivatable.c:316
 msgid "Whether to use the related actions appearance properties"
 msgstr "Sama ada hendak gunakan sifat penampilan tindakan berkaitan"
 

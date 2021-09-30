@@ -40,7 +40,7 @@
 #include "ctkseparatormenuitem.h"
 #include "ctkprivate.h"
 #include "ctkbuildable.h"
-#include "deprecated/ctkactivatable.h"
+#include "ctkactivatable.h"
 #include "ctkwidgetprivate.h"
 #include "ctkintl.h"
 #include "ctksettings.h"

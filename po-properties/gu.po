@@ -374,19 +374,19 @@ msgstr "પ્રવેગક જૂથ"
 msgid "The accelerator group the actions of this group should use."
 msgstr "આ જૂથની ક્રિયાઓનું પ્રવેગક જૂથ વાપરવુ જોઇએ."
 
-#: ../ctk/deprecated/ctkactivatable.c:290
+#: ../ctk/ctkactivatable.c:290
 msgid "Related Action"
 msgstr "સંબંધિત ક્રિયા"
 
-#: ../ctk/deprecated/ctkactivatable.c:291
+#: ../ctk/ctkactivatable.c:291
 msgid "The action this activatable will activate and receive updates from"
 msgstr "આ સક્રિય કરી શકાય તેવી ક્રિયા તેમાંથી સુધારાઓને મેળવશે અને સક્રિય કરશે"
 
-#: ../ctk/deprecated/ctkactivatable.c:315
+#: ../ctk/ctkactivatable.c:315
 msgid "Use Action Appearance"
 msgstr "Action Appearance ને વાપરો"
 
-#: ../ctk/deprecated/ctkactivatable.c:316
+#: ../ctk/ctkactivatable.c:316
 msgid "Whether to use the related actions appearance properties"
 msgstr "ક્યાંતો સંબંધિત ક્રિયાઓ દેખાતા ગુણધર્મોને વાપરે છે"
 

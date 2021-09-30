@@ -403,20 +403,20 @@ msgstr "Hızlandırıcı Küme"
 msgid "The accelerator group the actions of this group should use."
 msgstr "Hızlandırıcı küme bu kümenin eylemlerini kullanmalı."
 
-#: ctk/deprecated/ctkactivatable.c:290
+#: ctk/ctkactivatable.c:290
 msgid "Related Action"
 msgstr "İlgili Eylem"
 
-#: ctk/deprecated/ctkactivatable.c:291
+#: ctk/ctkactivatable.c:291
 msgid "The action this activatable will activate and receive updates from"
 msgstr ""
 "Etkinleştirilebilir eylem etkinleştirilecek ve güncellemeler buradan alınacak"
 
-#: ctk/deprecated/ctkactivatable.c:315
+#: ctk/ctkactivatable.c:315
 msgid "Use Action Appearance"
 msgstr "Eylem Görünümünü Kullan"
 
-#: ctk/deprecated/ctkactivatable.c:316
+#: ctk/ctkactivatable.c:316
 msgid "Whether to use the related actions appearance properties"
 msgstr "İlişkili eylem görünüm özelliklerini kullanıp kullanmaması"
 

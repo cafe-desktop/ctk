@@ -400,19 +400,19 @@ msgstr "ਐਕਸਰਲੇਟਰ ਗਰੁੱਪ"
 msgid "The accelerator group the actions of this group should use."
 msgstr "ਐਕਸਰਲੇਟਰ ਗਰੁੱਪ, ਇਹ ਗਰੁੱਪ ਵਲੋਂ ਕੀਤੀਆਂ ਜਾਣ ਵਾਲੀਆਂ ਕਾਰਵਾਈਆਂ।"
 
-#: ctk/deprecated/ctkactivatable.c:290
+#: ctk/ctkactivatable.c:290
 msgid "Related Action"
 msgstr "ਸਬੰਧਿਤ ਕਾਰਵਾਈ"
 
-#: ctk/deprecated/ctkactivatable.c:291
+#: ctk/ctkactivatable.c:291
 msgid "The action this activatable will activate and receive updates from"
 msgstr "ਕਾਰਵਾਈ, ਜੋ ਕਿ ਸਰਗਰਮ ਕਰਨ ਹੈ, ਸਰਗਰਮ ਕੀਤਾ ਜਾਵੇਗਾ ਅਤੇ ਅੱਪਡੇਟ ਲਵੇ"
 
-#: ctk/deprecated/ctkactivatable.c:315
+#: ctk/ctkactivatable.c:315
 msgid "Use Action Appearance"
 msgstr "ਕਾਰਵਾਈ ਦਿੱਖ ਵਰਤੋਂ"
 
-#: ctk/deprecated/ctkactivatable.c:316
+#: ctk/ctkactivatable.c:316
 msgid "Whether to use the related actions appearance properties"
 msgstr "ਕੀ ਸਬੰਧਿਤ ਕਾਰਵਾਈ ਦਿੱਖ ਵਿਸ਼ੇਸ਼ਤਾ ਵਰਤਣੀ ਹੈ"
 

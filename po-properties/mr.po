@@ -347,20 +347,20 @@ msgstr "ॲक्सिलरेटर गट"
 msgid "The accelerator group the actions of this group should use."
 msgstr "ॲक्सिलरेटर गटतर्फे वापरण्याजोगी कृती."
 
-#: ../ctk/deprecated/ctkactivatable.c:290
+#: ../ctk/ctkactivatable.c:290
 msgid "Related Action"
 msgstr "संबंधीत कृती"
 
-#: ../ctk/deprecated/ctkactivatable.c:291
+#: ../ctk/ctkactivatable.c:291
 msgid "The action this activatable will activate and receive updates from"
 msgstr ""
 "हे घटक सक्रीय केल्यास कार्यान्वीत होणारी कृती व तेथून प्राप्त होणारी सुधारणा"
 
-#: ../ctk/deprecated/ctkactivatable.c:315
+#: ../ctk/ctkactivatable.c:315
 msgid "Use Action Appearance"
 msgstr "कृतीचे दृष्य वापरा"
 
-#: ../ctk/deprecated/ctkactivatable.c:316
+#: ../ctk/ctkactivatable.c:316
 msgid "Whether to use the related actions appearance properties"
 msgstr "संबंधीत कृती दृष्य गुणधर्म वापरायचे"
 

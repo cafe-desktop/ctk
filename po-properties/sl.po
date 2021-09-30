@@ -406,19 +406,19 @@ msgstr "Skupina pospeševalnika"
 msgid "The accelerator group the actions of this group should use."
 msgstr "Dejanja skupine pospeševalnika, ki naj bi jih skupina izvajala."
 
-#: ctk/deprecated/ctkactivatable.c:290
+#: ctk/ctkactivatable.c:290
 msgid "Related Action"
 msgstr "Povezano dejanje"
 
-#: ctk/deprecated/ctkactivatable.c:291
+#: ctk/ctkactivatable.c:291
 msgid "The action this activatable will activate and receive updates from"
 msgstr "Dejanje, preko katerega to dejanje prejema posodobitve"
 
-#: ctk/deprecated/ctkactivatable.c:315
+#: ctk/ctkactivatable.c:315
 msgid "Use Action Appearance"
 msgstr "Uporabi videz dejanj"
 
-#: ctk/deprecated/ctkactivatable.c:316
+#: ctk/ctkactivatable.c:316
 msgid "Whether to use the related actions appearance properties"
 msgstr "Ali naj se uporabi lastnosti povezanega dejanja videza"
 

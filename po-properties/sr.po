@@ -408,21 +408,21 @@ msgstr "Група пречице"
 msgid "The accelerator group the actions of this group should use."
 msgstr "Група пречице коју треба да користе радње ове групе."
 
-#: ctk/deprecated/ctkactivatable.c:290
+#: ctk/ctkactivatable.c:290
 msgid "Related Action"
 msgstr "Повезана радња"
 
-#: ctk/deprecated/ctkactivatable.c:291
+#: ctk/ctkactivatable.c:291
 msgid "The action this activatable will activate and receive updates from"
 msgstr ""
 "Радња коју ће овај елемент са могућношћу активирања покренути и од које ће "
 "примати ажурирања"
 
-#: ctk/deprecated/ctkactivatable.c:315
+#: ctk/ctkactivatable.c:315
 msgid "Use Action Appearance"
 msgstr "Користи изглед радње"
 
-#: ctk/deprecated/ctkactivatable.c:316
+#: ctk/ctkactivatable.c:316
 msgid "Whether to use the related actions appearance properties"
 msgstr "Да ли ће се користити својства изгледа повезаних радњи"
 

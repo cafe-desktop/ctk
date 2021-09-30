@@ -429,20 +429,20 @@ msgstr "Versnellerdingesie"
 msgid "The accelerator group the actions of this group should use."
 msgstr ""
 
-#: ctk/deprecated/ctkactivatable.c:290
+#: ctk/ctkactivatable.c:290
 #, fuzzy
 msgid "Related Action"
 msgstr "Aksie"
 
-#: ctk/deprecated/ctkactivatable.c:291
+#: ctk/ctkactivatable.c:291
 msgid "The action this activatable will activate and receive updates from"
 msgstr ""
 
-#: ctk/deprecated/ctkactivatable.c:315
+#: ctk/ctkactivatable.c:315
 msgid "Use Action Appearance"
 msgstr ""
 
-#: ctk/deprecated/ctkactivatable.c:316
+#: ctk/ctkactivatable.c:316
 #, fuzzy
 msgid "Whether to use the related actions appearance properties"
 msgstr "Of die etiketteks met die muis gekies kan word"

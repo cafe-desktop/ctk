@@ -27,7 +27,7 @@
 #include "ctkcheckmenuitemprivate.h"
 #include "ctkmarshalers.h"
 #include "ctkradiomenuitem.h"
-#include "deprecated/ctkactivatable.h"
+#include "ctkactivatable.h"
 #include "ctkprivate.h"
 #include "ctkintl.h"
 #include "a11y/ctkradiomenuitemaccessible.h"

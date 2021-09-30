@@ -406,20 +406,20 @@ msgstr "Snabbtangentsgrupp"
 msgid "The accelerator group the actions of this group should use."
 msgstr "Snabbtangentsgruppen åtgärderna i den här gruppen ska använda."
 
-#: ctk/deprecated/ctkactivatable.c:290
+#: ctk/ctkactivatable.c:290
 msgid "Related Action"
 msgstr "Relaterad åtgärd"
 
-#: ctk/deprecated/ctkactivatable.c:291
+#: ctk/ctkactivatable.c:291
 msgid "The action this activatable will activate and receive updates from"
 msgstr ""
 "Åtgärden denna aktiverbara kommer att aktivera och ta emot uppdateringar från"
 
-#: ctk/deprecated/ctkactivatable.c:315
+#: ctk/ctkactivatable.c:315
 msgid "Use Action Appearance"
 msgstr "Använd utseende för åtgärd"
 
-#: ctk/deprecated/ctkactivatable.c:316
+#: ctk/ctkactivatable.c:316
 msgid "Whether to use the related actions appearance properties"
 msgstr "Huruvida egenskaper för utseende av relaterade åtgärder ska användas"
 

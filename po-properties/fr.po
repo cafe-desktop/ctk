@@ -419,22 +419,22 @@ msgstr "Groupe d’accélérateurs"
 msgid "The accelerator group the actions of this group should use."
 msgstr "Le groupe d’accélérateurs que l’action de ce groupe devrait utiliser."
 
-#: ctk/deprecated/ctkactivatable.c:290
+#: ctk/ctkactivatable.c:290
 msgid "Related Action"
 msgstr "Action liée"
 
 # For the author: this is unclear
-#: ctk/deprecated/ctkactivatable.c:291
+#: ctk/ctkactivatable.c:291
 msgid "The action this activatable will activate and receive updates from"
 msgstr ""
 "L’action activée par cet objet activable dont elle reçoit les messages de "
 "mise à jour"
 
-#: ctk/deprecated/ctkactivatable.c:315
+#: ctk/ctkactivatable.c:315
 msgid "Use Action Appearance"
 msgstr "Utiliser l’apparence de l’action"
 
-#: ctk/deprecated/ctkactivatable.c:316
+#: ctk/ctkactivatable.c:316
 msgid "Whether to use the related actions appearance properties"
 msgstr "Indique si l’on utilise les propriétés d’apparence liées aux actions"
 

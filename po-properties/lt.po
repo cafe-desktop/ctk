@@ -406,21 +406,21 @@ msgstr "Trumpinių grupė"
 msgid "The accelerator group the actions of this group should use."
 msgstr "Trumpinių grupė, kurią šios grupės veiksmai turėtų naudoti."
 
-#: ctk/deprecated/ctkactivatable.c:290
+#: ctk/ctkactivatable.c:290
 msgid "Related Action"
 msgstr "Susijęs veiksmas"
 
-#: ctk/deprecated/ctkactivatable.c:291
+#: ctk/ctkactivatable.c:291
 msgid "The action this activatable will activate and receive updates from"
 msgstr ""
 "Veiksmas, kurį šis aktyvinamasis elementas aktyvins ir iš kurio gaus "
 "atnaujinimus"
 
-#: ctk/deprecated/ctkactivatable.c:315
+#: ctk/ctkactivatable.c:315
 msgid "Use Action Appearance"
 msgstr "Naudoti veiksmo išvaizdą"
 
-#: ctk/deprecated/ctkactivatable.c:316
+#: ctk/ctkactivatable.c:316
 msgid "Whether to use the related actions appearance properties"
 msgstr "Ar naudoti susijusio veiksmo išvaizdos savybes"
 

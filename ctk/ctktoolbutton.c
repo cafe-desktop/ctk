@@ -28,7 +28,7 @@
 #include "ctkbox.h"
 #include "ctkintl.h"
 #include "ctktoolbarprivate.h"
-#include "deprecated/ctkactivatable.h"
+#include "ctkactivatable.h"
 #include "ctkactionable.h"
 #include "ctkprivate.h"
 

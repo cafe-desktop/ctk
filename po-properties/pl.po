@@ -408,19 +408,19 @@ msgstr "Grupa klawiszy skrótów"
 msgid "The accelerator group the actions of this group should use."
 msgstr "Grupa klawiszy skrótów, której powinny używać czynności tej grupy."
 
-#: ctk/deprecated/ctkactivatable.c:290
+#: ctk/ctkactivatable.c:290
 msgid "Related Action"
 msgstr "Powiązana czynność"
 
-#: ctk/deprecated/ctkactivatable.c:291
+#: ctk/ctkactivatable.c:291
 msgid "The action this activatable will activate and receive updates from"
 msgstr "Czynność, która zostanie aktywowana i z której otrzyma aktualizacje"
 
-#: ctk/deprecated/ctkactivatable.c:315
+#: ctk/ctkactivatable.c:315
 msgid "Use Action Appearance"
 msgstr "Użycie wyglądu czynności"
 
-#: ctk/deprecated/ctkactivatable.c:316
+#: ctk/ctkactivatable.c:316
 msgid "Whether to use the related actions appearance properties"
 msgstr "Określa, czy używać właściwości wyglądu powiązanych czynności"
 

@@ -421,20 +421,20 @@ msgstr "Pikavalinnan tila"
 msgid "The accelerator group the actions of this group should use."
 msgstr ""
 
-#: ctk/deprecated/ctkactivatable.c:290
+#: ctk/ctkactivatable.c:290
 msgid "Related Action"
 msgstr "Liittyvä toiminto"
 
-#: ctk/deprecated/ctkactivatable.c:291
+#: ctk/ctkactivatable.c:291
 msgid "The action this activatable will activate and receive updates from"
 msgstr ""
 "Toiminto, jonka tämä aktivoitava, aktivoi ja jolta vastaanottaa päivityksiä"
 
-#: ctk/deprecated/ctkactivatable.c:315
+#: ctk/ctkactivatable.c:315
 msgid "Use Action Appearance"
 msgstr "Käytä toiminnon ulkoasua"
 
-#: ctk/deprecated/ctkactivatable.c:316
+#: ctk/ctkactivatable.c:316
 msgid "Whether to use the related actions appearance properties"
 msgstr "Käytetäänkö liittyvien toimintojen ulkoasujen ominaisuuksia"
 

@@ -397,19 +397,19 @@ msgstr "바로가기 키 그룹"
 msgid "The accelerator group the actions of this group should use."
 msgstr "이 그룹의 동작에서 사용할 바로가기 키 그룹."
 
-#: ctk/deprecated/ctkactivatable.c:290
+#: ctk/ctkactivatable.c:290
 msgid "Related Action"
 msgstr "관련 동작"
 
-#: ctk/deprecated/ctkactivatable.c:291
+#: ctk/ctkactivatable.c:291
 msgid "The action this activatable will activate and receive updates from"
 msgstr "이 activatable 위젯이 활성화하고 업데이트를 받을 액션"
 
-#: ctk/deprecated/ctkactivatable.c:315
+#: ctk/ctkactivatable.c:315
 msgid "Use Action Appearance"
 msgstr "액션 모양 사용"
 
-#: ctk/deprecated/ctkactivatable.c:316
+#: ctk/ctkactivatable.c:316
 msgid "Whether to use the related actions appearance properties"
 msgstr "관련 액션의 모양 속성을 사용할지 여부."
 

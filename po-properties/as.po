@@ -350,19 +350,19 @@ msgstr "ত্বৰক দল"
 msgid "The accelerator group the actions of this group should use."
 msgstr "এই দলৰ কাৰ্য্যসমূহে ব্যৱহাৰ কৰিব লগিয়া ত্বৰক দল।"
 
-#: ../ctk/deprecated/ctkactivatable.c:290
+#: ../ctk/ctkactivatable.c:290
 msgid "Related Action"
 msgstr "সম্বন্ধিত কাম"
 
-#: ../ctk/deprecated/ctkactivatable.c:291
+#: ../ctk/ctkactivatable.c:291
 msgid "The action this activatable will activate and receive updates from"
 msgstr "এই সক্ৰিয় কৰিব পৰা বস্তুয়ে সক্ৰিয় আৰু উন্নয়ন গ্ৰহণ কৰিব পৰা কাৰ্য্যটো"
 
-#: ../ctk/deprecated/ctkactivatable.c:315
+#: ../ctk/ctkactivatable.c:315
 msgid "Use Action Appearance"
 msgstr "কাৰ্য্যৰ প্ৰদৰ্শন ব্যৱহাৰ কৰক"
 
-#: ../ctk/deprecated/ctkactivatable.c:316
+#: ../ctk/ctkactivatable.c:316
 msgid "Whether to use the related actions appearance properties"
 msgstr "সম্বন্ধিত কাৰ্য্যৰ প্ৰদৰ্শনৰ গুণ ব্যৱহাৰ কৰা যাব নে"
 

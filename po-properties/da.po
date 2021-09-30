@@ -442,23 +442,23 @@ msgstr "Acceleratorgruppe"
 msgid "The accelerator group the actions of this group should use."
 msgstr "Acceleratorgruppen, som handlingerne i denne gruppe skal bruge."
 
-#: ctk/deprecated/ctkactivatable.c:290
+#: ctk/ctkactivatable.c:290
 msgid "Related Action"
 msgstr "Relateret handling"
 
-#: ctk/deprecated/ctkactivatable.c:291
+#: ctk/ctkactivatable.c:291
 msgid "The action this activatable will activate and receive updates from"
 msgstr ""
 "Handlingen, som dette aktiverbare element vil aktivere og modtage "
 "opdateringer fra"
 
 # Se strengen herunder
-#: ctk/deprecated/ctkactivatable.c:315
+#: ctk/ctkactivatable.c:315
 msgid "Use Action Appearance"
 msgstr "Brug udseende for relateret handling"
 
 # http://library.gnome.org/devel/ctk/unstable/CtkActivatable.html#CtkActivatable--use-action-appearance <-- jeg har prøvet at fortolke dette, håber det er rigtigt
-#: ctk/deprecated/ctkactivatable.c:316
+#: ctk/ctkactivatable.c:316
 msgid "Whether to use the related actions appearance properties"
 msgstr "Om egenskaberne for den relaterede handlings udseende skal bruges"
 

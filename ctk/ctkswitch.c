@@ -51,7 +51,7 @@
 
 #include "ctkswitch.h"
 
-#include "deprecated/ctkactivatable.h"
+#include "ctkactivatable.h"
 #include "ctktoggleaction.h"
 #include "ctkintl.h"
 #include "ctkprivate.h"

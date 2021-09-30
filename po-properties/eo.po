@@ -395,20 +395,20 @@ msgstr "Pliapidigila grupo"
 msgid "The accelerator group the actions of this group should use."
 msgstr "Plirapidigila grupo uzota de agoj de ĉi tiu grupo"
 
-#: ctk/deprecated/ctkactivatable.c:290
+#: ctk/ctkactivatable.c:290
 msgid "Related Action"
 msgstr "Rilata ago"
 
-#: ctk/deprecated/ctkactivatable.c:291
+#: ctk/ctkactivatable.c:291
 msgid "The action this activatable will activate and receive updates from"
 msgstr ""
 "La ago, kiu aktivigas la aktivigeblan objekton kaj ricevas aktualigojn de ĝi"
 
-#: ctk/deprecated/ctkactivatable.c:315
+#: ctk/ctkactivatable.c:315
 msgid "Use Action Appearance"
 msgstr "Uzi agaspekton"
 
-#: ctk/deprecated/ctkactivatable.c:316
+#: ctk/ctkactivatable.c:316
 msgid "Whether to use the related actions appearance properties"
 msgstr "Ĉu uzi la rilataj agaspektoj"
 

@@ -23,7 +23,7 @@
 #include "ctkrecentchooserprivate.h"
 #include "ctkrecentmanager.h"
 #include "deprecated/ctkrecentaction.h"
-#include "deprecated/ctkactivatable.h"
+#include "ctkactivatable.h"
 #include "ctkintl.h"
 #include "ctktypebuiltins.h"
 #include "ctkprivate.h"

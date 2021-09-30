@@ -32,7 +32,7 @@
 #include "ctkmain.h"
 #include "ctkmarshalers.h"
 #include "ctktoggleaction.h"
-#include "deprecated/ctkactivatable.h"
+#include "ctkactivatable.h"
 #include "ctkprivate.h"
 #include "ctkintl.h"
 #include "a11y/ctktogglebuttonaccessible.h"

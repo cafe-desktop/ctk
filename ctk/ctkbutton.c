@@ -64,7 +64,7 @@
 #include "ctkimage.h"
 #include "ctkbox.h"
 #include "ctkstock.h"
-#include "deprecated/ctkactivatable.h"
+#include "ctkactivatable.h"
 #include "ctksizerequest.h"
 #include "ctktypebuiltins.h"
 #include "ctkwidgetprivate.h"

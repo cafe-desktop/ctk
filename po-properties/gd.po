@@ -409,21 +409,21 @@ msgstr ""
 "Am buidheann luathaichearan a bu chòir do ghnìomhan a’ bhuidhinn seo a "
 "chleachdadh."
 
-#: ctk/deprecated/ctkactivatable.c:290
+#: ctk/ctkactivatable.c:290
 msgid "Related Action"
 msgstr "Gnìomh co-cheancailte"
 
-#: ctk/deprecated/ctkactivatable.c:291
+#: ctk/ctkactivatable.c:291
 msgid "The action this activatable will activate and receive updates from"
 msgstr ""
 "An gnìomh a chuireas an activatable seo an gnìomh agus a gheibh e "
 "ùrachaidhean uaithe"
 
-#: ctk/deprecated/ctkactivatable.c:315
+#: ctk/ctkactivatable.c:315
 msgid "Use Action Appearance"
 msgstr "Cleachd dreach a’ ghnìomha"
 
-#: ctk/deprecated/ctkactivatable.c:316
+#: ctk/ctkactivatable.c:316
 msgid "Whether to use the related actions appearance properties"
 msgstr ""
 "Co-dhiù an dèid roghainnean dreach a’ ghnìomha cho-cheancailte a chleachdadh "

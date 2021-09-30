@@ -64,7 +64,7 @@
 #include "ctktypebuiltins.h"
 #include "ctkorientable.h"
 #include "ctkwindowgroup.h"
-#include "deprecated/ctkactivatable.h"
+#include "ctkactivatable.h"
 
 #include "ctkrecentmanager.h"
 #include "ctkrecentfilter.h"
