@@ -219,10 +219,10 @@ void	   ctk_menu_detach		  (CtkMenu	       *menu);
 CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_menu_get_attach_widget	  (CtkMenu	       *menu);
 
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 void       ctk_menu_set_tearoff_state     (CtkMenu             *menu,
                                            gboolean             torn_off);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_menu_get_tearoff_state     (CtkMenu             *menu);
 
 /* This sets the window manager title for the window that
