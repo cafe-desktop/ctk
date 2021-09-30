@@ -387,19 +387,19 @@ msgstr "Akselleratorgruppe"
 msgid "The accelerator group the actions of this group should use."
 msgstr "Akselleratorgruppe handlingene for denne gruppen skal bruke."
 
-#: ../ctk/deprecated/ctkactivatable.c:290
+#: ../ctk/ctkactivatable.c:290
 msgid "Related Action"
 msgstr "Relatert handling"
 
-#: ../ctk/deprecated/ctkactivatable.c:291
+#: ../ctk/ctkactivatable.c:291
 msgid "The action this activatable will activate and receive updates from"
 msgstr ""
 
-#: ../ctk/deprecated/ctkactivatable.c:315
+#: ../ctk/ctkactivatable.c:315
 msgid "Use Action Appearance"
 msgstr "Bruk utseende for handling"
 
-#: ../ctk/deprecated/ctkactivatable.c:316
+#: ../ctk/ctkactivatable.c:316
 #, fuzzy
 msgid "Whether to use the related actions appearance properties"
 msgstr "Om etiketteksten kan velges med musen"

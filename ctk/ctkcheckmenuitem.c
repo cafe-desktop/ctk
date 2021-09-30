@@ -27,7 +27,7 @@
 #include "ctkcheckmenuitem.h"
 #include "ctkmenuitemprivate.h"
 #include "ctkaccellabel.h"
-#include "deprecated/ctkactivatable.h"
+#include "ctkactivatable.h"
 #include "ctktoggleaction.h"
 #include "ctkmarshalers.h"
 #include "ctkprivate.h"

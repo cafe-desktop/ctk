@@ -28,7 +28,7 @@
 #include "ctktoolshell.h"
 #include "ctkseparatormenuitem.h"
 #include "ctksizerequest.h"
-#include "deprecated/ctkactivatable.h"
+#include "ctkactivatable.h"
 #include "ctkintl.h"
 #include "ctkprivate.h"
 #include "ctkwidgetprivate.h"

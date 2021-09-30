@@ -401,19 +401,19 @@ msgstr "Grupa prečaca"
 msgid "The accelerator group the actions of this group should use."
 msgstr "Grupa prečaca radnje ove grupe se mora koristiti."
 
-#: ctk/deprecated/ctkactivatable.c:290
+#: ctk/ctkactivatable.c:290
 msgid "Related Action"
 msgstr "Povezana radnje"
 
-#: ctk/deprecated/ctkactivatable.c:291
+#: ctk/ctkactivatable.c:291
 msgid "The action this activatable will activate and receive updates from"
 msgstr "Radnja aktivacije će aktivirati i primati nadopune s"
 
-#: ctk/deprecated/ctkactivatable.c:315
+#: ctk/ctkactivatable.c:315
 msgid "Use Action Appearance"
 msgstr "Koristi izgled radnje"
 
-#: ctk/deprecated/ctkactivatable.c:316
+#: ctk/ctkactivatable.c:316
 msgid "Whether to use the related actions appearance properties"
 msgstr "Ako se koriste povezana svojstva izgleda radnje"
 

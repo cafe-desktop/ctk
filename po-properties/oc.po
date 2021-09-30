@@ -407,22 +407,22 @@ msgstr "Grop d'acceleradors"
 msgid "The accelerator group the actions of this group should use."
 msgstr "Lo grop d'acceleradors que l'accion d'aqueste grop deuriá utilizar."
 
-#: ctk/deprecated/ctkactivatable.c:290
+#: ctk/ctkactivatable.c:290
 msgid "Related Action"
 msgstr "Accion ligada"
 
 # For the author: this is unclear 
-#: ctk/deprecated/ctkactivatable.c:291
+#: ctk/ctkactivatable.c:291
 msgid "The action this activatable will activate and receive updates from"
 msgstr ""
 "L'accion activada per aqueste objècte activable que ne recep los messatges "
 "de mesa a jorn"
 
-#: ctk/deprecated/ctkactivatable.c:315
+#: ctk/ctkactivatable.c:315
 msgid "Use Action Appearance"
 msgstr "Utilizar l'aparéncia de l'accion"
 
-#: ctk/deprecated/ctkactivatable.c:316
+#: ctk/ctkactivatable.c:316
 msgid "Whether to use the related actions appearance properties"
 msgstr "Indica se s'utiliza las proprietats d'aparéncia ligadas a las accions"
 

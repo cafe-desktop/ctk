@@ -389,19 +389,19 @@ msgstr "捷徑鍵群組"
 msgid "The accelerator group the actions of this group should use."
 msgstr "這個群組應使用的動作捷徑鍵群組。"
 
-#: ctk/deprecated/ctkactivatable.c:290
+#: ctk/ctkactivatable.c:290
 msgid "Related Action"
 msgstr "相關的動作"
 
-#: ctk/deprecated/ctkactivatable.c:291
+#: ctk/ctkactivatable.c:291
 msgid "The action this activatable will activate and receive updates from"
 msgstr "這個可使用項目會使用並接收更新的動作"
 
-#: ctk/deprecated/ctkactivatable.c:315
+#: ctk/ctkactivatable.c:315
 msgid "Use Action Appearance"
 msgstr "使用動作外觀"
 
-#: ctk/deprecated/ctkactivatable.c:316
+#: ctk/ctkactivatable.c:316
 msgid "Whether to use the related actions appearance properties"
 msgstr "是否使用相關動作外觀屬性"
 

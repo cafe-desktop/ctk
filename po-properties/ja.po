@@ -408,19 +408,19 @@ msgstr "アクセラレータのモード"
 msgid "The accelerator group the actions of this group should use."
 msgstr ""
 
-#: ctk/deprecated/ctkactivatable.c:290
+#: ctk/ctkactivatable.c:290
 msgid "Related Action"
 msgstr "関連するアクション"
 
-#: ctk/deprecated/ctkactivatable.c:291
+#: ctk/ctkactivatable.c:291
 msgid "The action this activatable will activate and receive updates from"
 msgstr "この Activatable が起動し、更新を受けとるアクション"
 
-#: ctk/deprecated/ctkactivatable.c:315
+#: ctk/ctkactivatable.c:315
 msgid "Use Action Appearance"
 msgstr "アクションアピアランスを使用"
 
-#: ctk/deprecated/ctkactivatable.c:316
+#: ctk/ctkactivatable.c:316
 msgid "Whether to use the related actions appearance properties"
 msgstr "関連するアクションアピアランスの属性を使うかどうか"
 

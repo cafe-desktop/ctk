@@ -23,7 +23,7 @@
 
 #include "ctkrecentmanager.h"
 #include "ctkrecentchooser.h"
-#include "deprecated/ctkactivatable.h"
+#include "ctkactivatable.h"
 
 G_BEGIN_DECLS
 

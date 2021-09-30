@@ -409,21 +409,21 @@ msgstr "नयाँ गतिवर्धक..."
 msgid "The accelerator group the actions of this group should use."
 msgstr ""
 
-#: ctk/deprecated/ctkactivatable.c:290
+#: ctk/ctkactivatable.c:290
 #, fuzzy
 msgid "Related Action"
 msgstr "_कार्य:"
 
-#: ctk/deprecated/ctkactivatable.c:291
+#: ctk/ctkactivatable.c:291
 msgid "The action this activatable will activate and receive updates from"
 msgstr ""
 
-#: ctk/deprecated/ctkactivatable.c:315
+#: ctk/ctkactivatable.c:315
 #, fuzzy
 msgid "Use Action Appearance"
 msgstr "देखावट:"
 
-#: ctk/deprecated/ctkactivatable.c:316
+#: ctk/ctkactivatable.c:316
 #, fuzzy
 msgid "Whether to use the related actions appearance properties"
 msgstr "जहाँ लेवल पाठ माउस सँग छानिन सक्छ"

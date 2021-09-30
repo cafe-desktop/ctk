@@ -38,7 +38,7 @@
 #include "ctkimage.h"
 #include "ctklabel.h"
 #include "ctktooltip.h"
-#include "deprecated/ctkactivatable.h"
+#include "ctkactivatable.h"
 #include "ctktypebuiltins.h"
 #include "ctkprivate.h"
 

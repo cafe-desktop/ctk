@@ -406,19 +406,19 @@ msgstr "Skupina akcelerátorů"
 msgid "The accelerator group the actions of this group should use."
 msgstr "Skupina akcelerátorů, kterou by tato skupina akcí měla použít."
 
-#: ctk/deprecated/ctkactivatable.c:290
+#: ctk/ctkactivatable.c:290
 msgid "Related Action"
 msgstr "Související akce"
 
-#: ctk/deprecated/ctkactivatable.c:291
+#: ctk/ctkactivatable.c:291
 msgid "The action this activatable will activate and receive updates from"
 msgstr "Akce, kterou toto aktivovatelné aktivuje a odkud dostane aktualizace"
 
-#: ctk/deprecated/ctkactivatable.c:315
+#: ctk/ctkactivatable.c:315
 msgid "Use Action Appearance"
 msgstr "Použít vzhled akcí"
 
-#: ctk/deprecated/ctkactivatable.c:316
+#: ctk/ctkactivatable.c:316
 msgid "Whether to use the related actions appearance properties"
 msgstr "Jestli se má použít vlastnosti vzhledu souvisejících akcí"
 

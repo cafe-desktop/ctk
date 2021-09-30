@@ -404,19 +404,19 @@ msgstr "Група прискорювачів"
 msgid "The accelerator group the actions of this group should use."
 msgstr "Група прискорювачів, яку мають використовувати дії з цієї групи."
 
-#: ctk/deprecated/ctkactivatable.c:290
+#: ctk/ctkactivatable.c:290
 msgid "Related Action"
 msgstr "Пов'язані дії"
 
-#: ctk/deprecated/ctkactivatable.c:291
+#: ctk/ctkactivatable.c:291
 msgid "The action this activatable will activate and receive updates from"
 msgstr "Активація цього елемента призведе до активації та отримання оновлень з"
 
-#: ctk/deprecated/ctkactivatable.c:315
+#: ctk/ctkactivatable.c:315
 msgid "Use Action Appearance"
 msgstr "Використовувати властивості вигляду дії"
 
-#: ctk/deprecated/ctkactivatable.c:316
+#: ctk/ctkactivatable.c:316
 msgid "Whether to use the related actions appearance properties"
 msgstr "Чи використовувати властивості вигляду відповідних дій"
 
