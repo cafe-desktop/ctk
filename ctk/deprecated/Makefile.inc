@@ -1,5 +1,4 @@
 deprecated_h_sources = 			\
-	deprecated/ctkactivatable.h	\
 	deprecated/ctkalignment.h	\
 	deprecated/ctkarrow.h		\
 	deprecated/ctkcolorsel.h	\
@@ -38,7 +37,6 @@ deprecated_private_h_sources =			\
 	deprecated/ctksymboliccolorprivate.h
 
 deprecated_c_sources = 			\
-	deprecated/ctkactivatable.c	\
 	deprecated/ctkalignment.c	\
 	deprecated/ctkarrow.c		\
 	deprecated/ctkcolorsel.c	\
