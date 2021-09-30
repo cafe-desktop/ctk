@@ -703,7 +703,7 @@ ctk_menu_class_init (CtkMenuClass *class)
                                                         P_("Tearoff Title"),
                                                         P_("A title that may be displayed by the window manager when this menu is torn-off"),
                                                         NULL,
-                                                        CTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
+                                                        CTK_PARAM_READWRITE));
 
   /**
    * CtkMenu:tearoff-state:
@@ -720,7 +720,7 @@ ctk_menu_class_init (CtkMenuClass *class)
                                                          P_("Tearoff State"),
                                                          P_("A boolean that indicates whether the menu is torn-off"),
                                                          FALSE,
-                                                         CTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
+                                                         CTK_PARAM_READWRITE));
 
   /**
    * CtkMenu:monitor:
@@ -1128,14 +1128,10 @@ ctk_menu_set_property (GObject      *object,
       }
       break;
     case PROP_TEAROFF_STATE:
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       ctk_menu_set_tearoff_state (menu, g_value_get_boolean (value));
-G_GNUC_END_IGNORE_DEPRECATIONS;
       break;
     case PROP_TEAROFF_TITLE:
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       ctk_menu_set_title (menu, g_value_get_string (value));
-G_GNUC_END_IGNORE_DEPRECATIONS;
       break;
     case PROP_MONITOR:
       ctk_menu_set_monitor (menu, g_value_get_int (value));
@@ -1200,14 +1196,10 @@ ctk_menu_get_property (GObject     *object,
       g_value_set_object (value, ctk_menu_get_attach_widget (menu));
       break;
     case PROP_TEAROFF_STATE:
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       g_value_set_boolean (value, ctk_menu_get_tearoff_state (menu));
-G_GNUC_END_IGNORE_DEPRECATIONS;
       break;
     case PROP_TEAROFF_TITLE:
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       g_value_set_string (value, ctk_menu_get_title (menu));
-G_GNUC_END_IGNORE_DEPRECATIONS;
       break;
     case PROP_MONITOR:
       g_value_set_int (value, ctk_menu_get_monitor (menu));
@@ -2950,9 +2942,7 @@ static void
 tearoff_window_destroyed (CtkWidget *widget,
                           CtkMenu   *menu)
 {
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   ctk_menu_set_tearoff_state (menu, FALSE);
-G_GNUC_END_IGNORE_DEPRECATIONS;
 }
 
 /**
@@ -2964,8 +2954,6 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
  * displayed as drop down menu which persists as long as the menu is
  * active.  It can also be displayed as a tearoff menu which persists
  * until it is closed or reattached.
- *
- * Deprecated: 3.10
  */
 void
 ctk_menu_set_tearoff_state (CtkMenu  *menu,
@@ -3083,8 +3071,6 @@ ctk_menu_set_tearoff_state (CtkMenu  *menu,
  * See ctk_menu_set_tearoff_state().
  *
  * Returns: %TRUE if the menu is currently torn off.
- *
- * Deprecated: 3.10
  */
 gboolean
 ctk_menu_get_tearoff_state (CtkMenu *menu)
@@ -5992,14 +5978,9 @@ child_at (CtkMenu *menu,
             {
               child = children->data;
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-
               if (child_offset + child_requisition.height > y &&
                   !CTK_IS_TEAROFF_MENU_ITEM (child))
                 return child;
-
-G_GNUC_END_IGNORE_DEPRECATIONS
-
             }
 
           child_offset += child_requisition.height;
