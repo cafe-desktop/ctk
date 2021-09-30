@@ -217,6 +217,7 @@
 #include <ctk/ctkstyleprovider.h>
 #include <ctk/ctkstyle.h>
 #include <ctk/ctkswitch.h>
+#include <ctk/ctktearoffmenuitem.h>
 #include <ctk/ctktextattributes.h>
 #include <ctk/ctktextbuffer.h>
 #include <ctk/ctktextbufferrichtext.h>
@@ -280,7 +281,6 @@
 #include <ctk/deprecated/ctkstyleproperties.h>
 #include <ctk/deprecated/ctksymboliccolor.h>
 #include <ctk/deprecated/ctktable.h>
-#include <ctk/deprecated/ctktearoffmenuitem.h>
 #include <ctk/deprecated/ctkthemingengine.h>
 #include <ctk/deprecated/ctkuimanager.h>
 #include <ctk/deprecated/ctkvbbox.h>

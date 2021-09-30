@@ -317,6 +317,7 @@ ctk_public_h_sources = 		\
 	ctkstyleprovider.h	\
 	ctkstyle.h		\
 	ctkswitch.h		\
+	ctktearoffmenuitem.h	\
 	ctktestutils.h		\
 	ctktextattributes.h	\
 	ctktextbuffer.h		\
@@ -943,6 +944,7 @@ ctk_base_c_sources = 		\
 	ctkstyleproviderprivate.c	\
 	ctkstyle.c		\
 	ctkswitch.c		\
+	ctktearoffmenuitem.c	\
 	ctktestutils.c		\
 	ctktextattributes.c	\
 	ctktextbtree.c		\
