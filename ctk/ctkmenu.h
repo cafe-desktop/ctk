@@ -228,10 +228,10 @@ gboolean   ctk_menu_get_tearoff_state     (CtkMenu             *menu);
 /* This sets the window manager title for the window that
  * appears when a menu is torn off
  */
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 void          ctk_menu_set_title          (CtkMenu             *menu,
                                            const gchar         *title);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 const gchar * ctk_menu_get_title          (CtkMenu             *menu);
 
 CDK_AVAILABLE_IN_ALL
