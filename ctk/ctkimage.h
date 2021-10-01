@@ -118,7 +118,7 @@ CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_image_new_from_resource  (const gchar     *resource_path);
 CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_image_new_from_pixbuf    (GdkPixbuf       *pixbuf);
-CDK_DEPRECATED_IN_3_10_FOR(ctk_image_new_from_icon_name)
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_image_new_from_stock     (const gchar     *stock_id,
                                          CtkIconSize      size);
 CDK_DEPRECATED_IN_3_10_FOR(ctk_image_new_from_icon_name)
@@ -146,7 +146,7 @@ void ctk_image_set_from_resource  (CtkImage        *image,
 CDK_AVAILABLE_IN_ALL
 void ctk_image_set_from_pixbuf    (CtkImage        *image,
                                    GdkPixbuf       *pixbuf);
-CDK_DEPRECATED_IN_3_10_FOR(ctk_image_set_from_icon_name)
+CDK_AVAILABLE_IN_ALL
 void ctk_image_set_from_stock     (CtkImage        *image,
                                    const gchar     *stock_id,
                                    CtkIconSize      size);
@@ -177,7 +177,7 @@ CtkImageType ctk_image_get_storage_type (CtkImage   *image);
 
 CDK_AVAILABLE_IN_ALL
 GdkPixbuf* ctk_image_get_pixbuf   (CtkImage         *image);
-CDK_DEPRECATED_IN_3_10_FOR(ctk_image_get_icon_name)
+CDK_AVAILABLE_IN_ALL
 void       ctk_image_get_stock    (CtkImage         *image,
                                    gchar           **stock_id,
                                    CtkIconSize      *size);

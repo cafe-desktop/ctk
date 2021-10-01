@@ -274,15 +274,13 @@ ctk_image_class_init (CtkImageClass *class)
 
   /**
    * CtkImage:stock:
-   *
-   * Deprecated: 3.10: Use #CtkImage:icon-name instead.
    */
   image_props[PROP_STOCK] =
       g_param_spec_string ("stock",
                            P_("Stock ID"),
                            P_("Stock ID for a stock image to display"),
                            NULL,
-                           CTK_PARAM_READWRITE | G_PARAM_DEPRECATED);
+                           CTK_PARAM_READWRITE);
 
   /**
    * CtkImage:icon-set:
@@ -469,9 +467,7 @@ ctk_image_set_property (GObject      *object,
       ctk_image_set_from_file (image, g_value_get_string (value));
       break;
     case PROP_STOCK:
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       ctk_image_set_from_stock (image, g_value_get_string (value), icon_size);
-      G_GNUC_END_IGNORE_DEPRECATIONS;
       break;
     case PROP_ICON_SET:
       G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
@@ -708,8 +704,6 @@ ctk_image_new_from_surface (cairo_surface_t *surface)
  * ctk_icon_factory_add_default() and ctk_icon_factory_add().
  * 
  * Returns: a new #CtkImage displaying the stock icon
- *
- * Deprecated: 3.10: Use ctk_image_new_from_icon_name() instead.
  **/
 CtkWidget*
 ctk_image_new_from_stock (const gchar    *stock_id,
@@ -719,9 +713,7 @@ ctk_image_new_from_stock (const gchar    *stock_id,
 
   image = g_object_new (CTK_TYPE_IMAGE, NULL);
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   ctk_image_set_from_stock (image, stock_id, size);
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 
   return CTK_WIDGET (image);
 }
@@ -1127,8 +1119,6 @@ ctk_image_set_from_pixbuf (CtkImage  *image,
  * @size: (type int): a stock icon size (#CtkIconSize)
  *
  * See ctk_image_new_from_stock() for details.
- *
- * Deprecated: 3.10: Use ctk_image_set_from_icon_name() instead.
  **/
 void
 ctk_image_set_from_stock  (CtkImage       *image,
@@ -1404,8 +1394,6 @@ ctk_image_get_pixbuf (CtkImage *image)
  * %CTK_IMAGE_STOCK (see ctk_image_get_storage_type()).
  * The returned string is owned by the #CtkImage and should not
  * be freed.
- *
- * Deprecated: 3.10: Use ctk_image_get_icon_name() instead.
  **/
 void
 ctk_image_get_stock  (CtkImage        *image,
