@@ -2897,9 +2897,8 @@ ctk_menu_update_title (CtkMenu *menu)
       const gchar *title;
       CtkWidget *attach_widget;
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       title = ctk_menu_get_title (menu);
-G_GNUC_END_IGNORE_DEPRECATIONS;
+
       if (!title)
         {
           attach_widget = ctk_menu_get_attach_widget (menu);
@@ -3092,8 +3091,6 @@ ctk_menu_get_tearoff_state (CtkMenu *menu)
  * menu. If @title is %NULL, the menu will see if it is attached
  * to a parent menu item, and if so it will try to use the same
  * text as that menu item’s label.
- *
- * Deprecated: 3.10
  */
 void
 ctk_menu_set_title (CtkMenu     *menu,
@@ -3123,8 +3120,6 @@ ctk_menu_set_title (CtkMenu     *menu,
  * Returns: the title of the menu, or %NULL if the menu
  *     has no title set on it. This string is owned by CTK+
  *     and should not be modified or freed.
- *
- * Deprecated: 3.10
  **/
 const gchar *
 ctk_menu_get_title (CtkMenu *menu)

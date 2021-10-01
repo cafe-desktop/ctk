@@ -4552,10 +4552,8 @@ ctk_combo_box_update_title (CtkComboBox *combo_box)
 
   ctk_combo_box_check_appearance (combo_box);
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   if (priv->popup_widget && CTK_IS_MENU (priv->popup_widget))
     ctk_menu_set_title (CTK_MENU (priv->popup_widget), priv->tearoff_title);
-G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 /**
