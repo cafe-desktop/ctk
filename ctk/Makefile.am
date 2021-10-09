@@ -349,6 +349,7 @@ ctk_public_h_sources = 		\
 	ctktreestore.h		\
 	ctktreeview.h		\
 	ctktreeviewcolumn.h	\
+	ctkuimanager.h		\
 	ctktypes.h		\
 	ctkviewport.h		\
 	ctkvolumebutton.h	\
@@ -988,6 +989,7 @@ ctk_base_c_sources = 		\
 	ctktreestore.c		\
 	ctktreeview.c		\
 	ctktreeviewcolumn.c	\
+	ctkuimanager.c		\
 	ctkutils.c		\
 	ctkvolumebutton.c	\
 	ctkviewport.c		\

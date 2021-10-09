@@ -21,7 +21,6 @@ deprecated_h_sources = 			\
 	deprecated/ctksymboliccolor.h	\
 	deprecated/ctktable.h		\
 	deprecated/ctkthemingengine.h	\
-	deprecated/ctkuimanager.h	\
 	deprecated/ctkvbbox.h		\
 	deprecated/ctkvbox.h		\
 	deprecated/ctkvscale.h		\
@@ -59,7 +58,6 @@ deprecated_c_sources = 			\
 	deprecated/ctksymboliccolor.c	\
 	deprecated/ctktable.c		\
 	deprecated/ctkthemingengine.c	\
-	deprecated/ctkuimanager.c	\
 	deprecated/ctkvbbox.c		\
 	deprecated/ctkvbox.c		\
 	deprecated/ctkvscale.c		\

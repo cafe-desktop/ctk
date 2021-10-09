@@ -250,6 +250,7 @@
 #include <ctk/ctktreeviewcolumn.h>
 #include <ctk/ctktypebuiltins.h>
 #include <ctk/ctktypes.h>
+#include <ctk/ctkuimanager.h>
 #include <ctk/ctkversion.h>
 #include <ctk/ctkviewport.h>
 #include <ctk/ctkvolumebutton.h>
@@ -282,7 +283,6 @@
 #include <ctk/deprecated/ctksymboliccolor.h>
 #include <ctk/deprecated/ctktable.h>
 #include <ctk/deprecated/ctkthemingengine.h>
-#include <ctk/deprecated/ctkuimanager.h>
 #include <ctk/deprecated/ctkvbbox.h>
 #include <ctk/deprecated/ctkvbox.h>
 #include <ctk/deprecated/ctkvpaned.h>
