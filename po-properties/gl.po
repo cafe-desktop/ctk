@@ -822,11 +822,11 @@ msgstr ""
 "A propiedade do valor do membro actualmente activo do grupo ao que esta "
 "acción pertence."
 
-#: ctk/deprecated/ctkrecentaction.c:674 ctk/ctkrecentchoosermenu.c:239
+#: ctk/ctkrecentaction.c:674 ctk/ctkrecentchoosermenu.c:239
 msgid "Show Numbers"
 msgstr "Mostrar números"
 
-#: ctk/deprecated/ctkrecentaction.c:675 ctk/ctkrecentchoosermenu.c:240
+#: ctk/ctkrecentaction.c:675 ctk/ctkrecentchoosermenu.c:240
 msgid "Whether the items should be displayed with a number"
 msgstr "Indica se os elementos deberían mostrarse cun número"
 

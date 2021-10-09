@@ -837,11 +837,11 @@ msgstr ""
 "El valor de la propietat del membre actualment actiu del grup al qual "
 "pertany esta acció."
 
-#: ctk/deprecated/ctkrecentaction.c:674 ctk/ctkrecentchoosermenu.c:239
+#: ctk/ctkrecentaction.c:674 ctk/ctkrecentchoosermenu.c:239
 msgid "Show Numbers"
 msgstr "Mostra els nombres"
 
-#: ctk/deprecated/ctkrecentaction.c:675 ctk/ctkrecentchoosermenu.c:240
+#: ctk/ctkrecentaction.c:675 ctk/ctkrecentchoosermenu.c:240
 msgid "Whether the items should be displayed with a number"
 msgstr "Si els elements s'han de mostrar amb un nombre"
 

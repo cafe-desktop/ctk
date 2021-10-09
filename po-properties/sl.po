@@ -810,11 +810,11 @@ msgstr ""
 "Lastnost vrednosti trenutno dejavnega predmeta skupine, kateri dejanje "
 "pripada."
 
-#: ctk/deprecated/ctkrecentaction.c:674 ctk/ctkrecentchoosermenu.c:239
+#: ctk/ctkrecentaction.c:674 ctk/ctkrecentchoosermenu.c:239
 msgid "Show Numbers"
 msgstr "Pokaži številke"
 
-#: ctk/deprecated/ctkrecentaction.c:675 ctk/ctkrecentchoosermenu.c:240
+#: ctk/ctkrecentaction.c:675 ctk/ctkrecentchoosermenu.c:240
 msgid "Whether the items should be displayed with a number"
 msgstr "Ali naj bodo predmeti prikazani s številkami"
 

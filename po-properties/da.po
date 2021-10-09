@@ -854,14 +854,14 @@ msgstr ""
 "value-egenskab der hører til det på nuværende tidspunkt aktive medlem af den "
 "gruppe som denne handling hører til."
 
-#: ctk/deprecated/ctkrecentaction.c:674 ctk/ctkrecentchoosermenu.c:239
+#: ctk/ctkrecentaction.c:674 ctk/ctkrecentchoosermenu.c:239
 msgid "Show Numbers"
 msgstr "Vis numre"
 
 # Ordet "sammen" er en fortolkning men idet jeg regner med at hvis det der menes er at objekterne vises "som" et nummer ville der have stået "as a number" derfor regner jeg med at det det betyder er at visningen af objektet inkluderer et nummer.
 #
 # Antagelsen synes at være rigtig ifølge API-doc
-#: ctk/deprecated/ctkrecentaction.c:675 ctk/ctkrecentchoosermenu.c:240
+#: ctk/ctkrecentaction.c:675 ctk/ctkrecentchoosermenu.c:240
 msgid "Whether the items should be displayed with a number"
 msgstr "Om objekterne skal vises sammen med et nummer"
 

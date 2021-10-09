@@ -830,11 +830,11 @@ msgstr ""
 "La propriété valeur du membre actuellement actif du groupe auquel cette "
 "action se rapporte."
 
-#: ctk/deprecated/ctkrecentaction.c:674 ctk/ctkrecentchoosermenu.c:239
+#: ctk/ctkrecentaction.c:674 ctk/ctkrecentchoosermenu.c:239
 msgid "Show Numbers"
 msgstr "Afficher les numéros"
 
-#: ctk/deprecated/ctkrecentaction.c:675 ctk/ctkrecentchoosermenu.c:240
+#: ctk/ctkrecentaction.c:675 ctk/ctkrecentchoosermenu.c:240
 msgid "Whether the items should be displayed with a number"
 msgstr ""
 "Indique si les éléments doivent être affichés précédés d’un numéro d’ordre"

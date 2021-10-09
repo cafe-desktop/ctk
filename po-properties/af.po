@@ -862,12 +862,12 @@ msgid ""
 "action belongs."
 msgstr ""
 
-#: ctk/deprecated/ctkrecentaction.c:674 ctk/ctkrecentchoosermenu.c:239
+#: ctk/ctkrecentaction.c:674 ctk/ctkrecentchoosermenu.c:239
 #, fuzzy
 msgid "Show Numbers"
 msgstr "Vertoon weeknommers"
 
-#: ctk/deprecated/ctkrecentaction.c:675 ctk/ctkrecentchoosermenu.c:240
+#: ctk/ctkrecentaction.c:675 ctk/ctkrecentchoosermenu.c:240
 #, fuzzy
 msgid "Whether the items should be displayed with a number"
 msgstr "Of afskeurkieslysitems by kieslyste gevoeg moet word"
