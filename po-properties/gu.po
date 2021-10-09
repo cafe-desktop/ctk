@@ -761,11 +761,11 @@ msgid ""
 "action belongs."
 msgstr "જૂથના વર્તમાનમાં સક્રિય સભ્યનો કિંમત ગુણધર્મ કે જેમાં આ ક્રિયા અનુલક્ષે છે."
 
-#: ../ctk/deprecated/ctkrecentaction.c:677 ../ctk/ctkrecentchoosermenu.c:239
+#: ../ctk/ctkrecentaction.c:677 ../ctk/ctkrecentchoosermenu.c:239
 msgid "Show Numbers"
 msgstr "નંબરો બતાવો"
 
-#: ../ctk/deprecated/ctkrecentaction.c:678 ../ctk/ctkrecentchoosermenu.c:240
+#: ../ctk/ctkrecentaction.c:678 ../ctk/ctkrecentchoosermenu.c:240
 msgid "Whether the items should be displayed with a number"
 msgstr "શું વસ્તુઓ સંખ્યા સાથે દર્શાવવી જોઈએ"
 

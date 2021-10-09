@@ -719,11 +719,11 @@ msgid ""
 "action belongs."
 msgstr "這個動作所屬羣組目前使用成員的數值屬性。"
 
-#: ../ctk/deprecated/ctkrecentaction.c:677 ../ctk/ctkrecentchoosermenu.c:239
+#: ../ctk/ctkrecentaction.c:677 ../ctk/ctkrecentchoosermenu.c:239
 msgid "Show Numbers"
 msgstr "顯示編號"
 
-#: ../ctk/deprecated/ctkrecentaction.c:678 ../ctk/ctkrecentchoosermenu.c:240
+#: ../ctk/ctkrecentaction.c:678 ../ctk/ctkrecentchoosermenu.c:240
 msgid "Whether the items should be displayed with a number"
 msgstr "項目是否顯示編號"
 

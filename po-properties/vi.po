@@ -777,11 +777,11 @@ msgstr ""
 "Thuộc tính giá trị của thành viên hoạt động hiện thời của nhóm sở hữu hành "
 "động này."
 
-#: ctk/deprecated/ctkrecentaction.c:676 ctk/ctkrecentchoosermenu.c:239
+#: ctk/ctkrecentaction.c:676 ctk/ctkrecentchoosermenu.c:239
 msgid "Show Numbers"
 msgstr "Hiện số"
 
-#: ctk/deprecated/ctkrecentaction.c:677 ctk/ctkrecentchoosermenu.c:240
+#: ctk/ctkrecentaction.c:677 ctk/ctkrecentchoosermenu.c:240
 msgid "Whether the items should be displayed with a number"
 msgstr "Có nên hiển thị mục vớ con số hay không"
 

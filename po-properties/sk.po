@@ -810,11 +810,11 @@ msgstr ""
 "Hodnota vlasnosti aktuálne aktívneho člena skupiny, do ktorej patrí táto "
 "akcia."
 
-#: ctk/deprecated/ctkrecentaction.c:674 ctk/ctkrecentchoosermenu.c:239
+#: ctk/ctkrecentaction.c:674 ctk/ctkrecentchoosermenu.c:239
 msgid "Show Numbers"
 msgstr "Zobraziť čísla"
 
-#: ctk/deprecated/ctkrecentaction.c:675 ctk/ctkrecentchoosermenu.c:240
+#: ctk/ctkrecentaction.c:675 ctk/ctkrecentchoosermenu.c:240
 msgid "Whether the items should be displayed with a number"
 msgstr "Určuje, či sa majú položky zobrazovať s číslami"
 

@@ -745,11 +745,11 @@ msgstr ""
 "गटातील सद्याचे सक्रीय सहभागीचे मुल्य गुणधर्मा ज्यास ही कृती निर्धारीत करण्यात "
 "आली आहे."
 
-#: ../ctk/deprecated/ctkrecentaction.c:677 ../ctk/ctkrecentchoosermenu.c:239
+#: ../ctk/ctkrecentaction.c:677 ../ctk/ctkrecentchoosermenu.c:239
 msgid "Show Numbers"
 msgstr "क्रमांक दर्शवा"
 
-#: ../ctk/deprecated/ctkrecentaction.c:678 ../ctk/ctkrecentchoosermenu.c:240
+#: ../ctk/ctkrecentaction.c:678 ../ctk/ctkrecentchoosermenu.c:240
 msgid "Whether the items should be displayed with a number"
 msgstr "घटक क्रमांकाशी दर्शविले पाहिजे का"
 

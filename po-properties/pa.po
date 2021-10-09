@@ -792,11 +792,11 @@ msgid ""
 msgstr ""
 "ਗਰੁੱਪ ਦੇ ਮੌਜੂਦਾ ਐਕਟਿਵ ਮੈਂਬਰ ਦੀ ਮੁੱਲ ਵਿਸ਼ੇਸ਼ਤਾ, ਜਿਸ ਨਾਲ ਇਹ ਐਕਸ਼ਨ ਸਬੰਧਿਤ ਹੈ।"
 
-#: ctk/deprecated/ctkrecentaction.c:674 ctk/ctkrecentchoosermenu.c:239
+#: ctk/ctkrecentaction.c:674 ctk/ctkrecentchoosermenu.c:239
 msgid "Show Numbers"
 msgstr "ਗਿਣਤੀ ਵੇਖਾਓ"
 
-#: ctk/deprecated/ctkrecentaction.c:675 ctk/ctkrecentchoosermenu.c:240
+#: ctk/ctkrecentaction.c:675 ctk/ctkrecentchoosermenu.c:240
 msgid "Whether the items should be displayed with a number"
 msgstr "ਕੀ ਆਈਟਮਾਂ ਨੂੰ ਇੱਕ ਨੰਬਰ ਵਾਂਗ ਵੇਖਾਇਆ ਜਾਵੇ"
 

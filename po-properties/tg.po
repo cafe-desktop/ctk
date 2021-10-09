@@ -566,11 +566,11 @@ msgid ""
 msgstr ""
 "Хусусияти қимати аъзои фаъоли ҷории гурӯҳ, ки ин амал ба он тааллуқ дорад."
 
-#: ../ctk/deprecated/ctkrecentaction.c:645 ../ctk/ctkrecentchoosermenu.c:244
+#: ../ctk/ctkrecentaction.c:645 ../ctk/ctkrecentchoosermenu.c:244
 msgid "Show Numbers"
 msgstr "Нишон додани рақамҳо"
 
-#: ../ctk/deprecated/ctkrecentaction.c:646 ../ctk/ctkrecentchoosermenu.c:245
+#: ../ctk/ctkrecentaction.c:646 ../ctk/ctkrecentchoosermenu.c:245
 msgid "Whether the items should be displayed with a number"
 msgstr "Оё объектҳо бояд бо рақам намоиш дода шаванд"
 

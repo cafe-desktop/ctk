@@ -808,11 +808,11 @@ msgid ""
 msgstr ""
 "Svojstvo vrednosti trenutno aktivnog člana grupe kojoj ova radnja pripada."
 
-#: ctk/deprecated/ctkrecentaction.c:674 ctk/ctkrecentchoosermenu.c:239
+#: ctk/ctkrecentaction.c:674 ctk/ctkrecentchoosermenu.c:239
 msgid "Show Numbers"
 msgstr "Pokazuje brojeve"
 
-#: ctk/deprecated/ctkrecentaction.c:675 ctk/ctkrecentchoosermenu.c:240
+#: ctk/ctkrecentaction.c:675 ctk/ctkrecentchoosermenu.c:240
 msgid "Whether the items should be displayed with a number"
 msgstr "Da li stavke trebaju biti prikazane sa brojevima"
 

@@ -839,11 +839,11 @@ msgstr ""
 "Η ιδιότητα τιμής του ενεργού στοιχείου της ομάδας όπου ανήκει αυτή η "
 "ενέργεια."
 
-#: ctk/deprecated/ctkrecentaction.c:674 ctk/ctkrecentchoosermenu.c:239
+#: ctk/ctkrecentaction.c:674 ctk/ctkrecentchoosermenu.c:239
 msgid "Show Numbers"
 msgstr "Εμφάνιση αριθμών"
 
-#: ctk/deprecated/ctkrecentaction.c:675 ctk/ctkrecentchoosermenu.c:240
+#: ctk/ctkrecentaction.c:675 ctk/ctkrecentchoosermenu.c:240
 msgid "Whether the items should be displayed with a number"
 msgstr "Αν τα αντικείμενα θα εμφανίζονται με ένα αριθμό"
 

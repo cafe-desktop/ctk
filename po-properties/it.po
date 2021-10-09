@@ -845,11 +845,11 @@ msgstr ""
 "Il valore attuale della proprietà del componente correntemente attivo nel "
 "gruppo a cui appartiene l'azione."
 
-#: ctk/deprecated/ctkrecentaction.c:674 ctk/ctkrecentchoosermenu.c:239
+#: ctk/ctkrecentaction.c:674 ctk/ctkrecentchoosermenu.c:239
 msgid "Show Numbers"
 msgstr "Mostra numeri"
 
-#: ctk/deprecated/ctkrecentaction.c:675 ctk/ctkrecentchoosermenu.c:240
+#: ctk/ctkrecentaction.c:675 ctk/ctkrecentchoosermenu.c:240
 msgid "Whether the items should be displayed with a number"
 msgstr "Indica se aggiungere un numero agli elementi visualizzati"
 

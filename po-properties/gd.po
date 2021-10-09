@@ -826,11 +826,11 @@ msgstr ""
 "An luach làithreach aig ball gnìomhach a’ bhuidhinn aig a bheil an gnìomh "
 "seo."
 
-#: ctk/deprecated/ctkrecentaction.c:674 ctk/ctkrecentchoosermenu.c:239
+#: ctk/ctkrecentaction.c:674 ctk/ctkrecentchoosermenu.c:239
 msgid "Show Numbers"
 msgstr "Seall na h-àireamhan"
 
-#: ctk/deprecated/ctkrecentaction.c:675 ctk/ctkrecentchoosermenu.c:240
+#: ctk/ctkrecentaction.c:675 ctk/ctkrecentchoosermenu.c:240
 msgid "Whether the items should be displayed with a number"
 msgstr "Co-dhiù an dèid na nithean a shealltainn le àireamh gus nach dèid"
 

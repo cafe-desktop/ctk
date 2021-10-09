@@ -793,11 +793,11 @@ msgid ""
 msgstr ""
 "Sifat nilai ahli aktif semasa kumpulan yang mana tindakan ini dipunyai."
 
-#: ctk/deprecated/ctkrecentaction.c:674 ctk/ctkrecentchoosermenu.c:239
+#: ctk/ctkrecentaction.c:674 ctk/ctkrecentchoosermenu.c:239
 msgid "Show Numbers"
 msgstr "Tunjuk Nombor"
 
-#: ctk/deprecated/ctkrecentaction.c:675 ctk/ctkrecentchoosermenu.c:240
+#: ctk/ctkrecentaction.c:675 ctk/ctkrecentchoosermenu.c:240
 msgid "Whether the items should be displayed with a number"
 msgstr "Sama ada item patut dipaparkan dengan nombor"
 

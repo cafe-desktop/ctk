@@ -762,11 +762,11 @@ msgid ""
 "action belongs."
 msgstr "সৰ্বমোট সৰ্বমোট."
 
-#: ../ctk/deprecated/ctkrecentaction.c:677 ../ctk/ctkrecentchoosermenu.c:239
+#: ../ctk/ctkrecentaction.c:677 ../ctk/ctkrecentchoosermenu.c:239
 msgid "Show Numbers"
 msgstr "সংখ্যা"
 
-#: ../ctk/deprecated/ctkrecentaction.c:678 ../ctk/ctkrecentchoosermenu.c:240
+#: ../ctk/ctkrecentaction.c:678 ../ctk/ctkrecentchoosermenu.c:240
 msgid "Whether the items should be displayed with a number"
 msgstr "Whether the items should be displayed with a number"
 
