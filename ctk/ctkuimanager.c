@@ -28,8 +28,6 @@
 
 #include "config.h"
 
-#define CDK_DISABLE_DEPRECATION_WARNINGS
-
 #include <string.h>
 #include "ctkaccellabel.h"
 #include "ctkactivatable.h"
@@ -55,12 +53,6 @@
  * @Short_description: Constructing menus and toolbars from an XML description
  * @Title: CtkUIManager
  * @See_also: #CtkBuilder
- *
- * > CtkUIManager is deprecated since CTK+ 3.10. To construct user interfaces
- * > from XML definitions, you should use #CtkBuilder, #GMenuModel, et al. To
- * > work with actions, use #GAction, #CtkActionable et al. These newer classes
- * > support richer functionality and integration with various desktop shells.
- * > It should be possible to migrate most/all functionality from CtkUIManager.
  *
  * A #CtkUIManager constructs a user interface (menus and toolbars) from
  * one or more UI definitions, which reference actions from one or more
@@ -453,9 +445,6 @@ ctk_ui_manager_class_init (CtkUIManagerClass *klass)
    * menus never have tearoff menu items.   
    *
    * Since: 2.4
-   *
-   * Deprecated: 3.4: Tearoff menus are deprecated and should not
-   *     be used in newly written code.
    */
   g_object_class_install_property (gobject_class,
                                    PROP_ADD_TEAROFFS,
@@ -463,7 +452,7 @@ ctk_ui_manager_class_init (CtkUIManagerClass *klass)
 							 P_("Add tearoffs to menus"),
 							 P_("Whether tearoff menu items should be added to menus"),
                                                          FALSE,
-							 CTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
+							 CTK_PARAM_READWRITE));
 
   g_object_class_install_property (gobject_class,
 				   PROP_UI,
@@ -484,8 +473,6 @@ ctk_ui_manager_class_init (CtkUIManagerClass *klass)
    * ctk_ui_manager_get_widget().
    *
    * Since: 2.4
-   *
-   * Deprecated: 3.10
    */
   ui_manager_signals[ADD_WIDGET] =
     g_signal_new (I_("add-widget"),
@@ -505,8 +492,6 @@ ctk_ui_manager_class_init (CtkUIManagerClass *klass)
    * changes.
    *
    * Since: 2.4
-   *
-   * Deprecated: 3.10
    */
   ui_manager_signals[ACTIONS_CHANGED] =
     g_signal_new (I_("actions-changed"),
@@ -531,8 +516,6 @@ ctk_ui_manager_class_init (CtkUIManagerClass *klass)
    * statusbar.
    *
    * Since: 2.4
-   *
-   * Deprecated: 3.10
    */
   ui_manager_signals[CONNECT_PROXY] =
     g_signal_new (I_("connect-proxy"),
@@ -555,8 +538,6 @@ ctk_ui_manager_class_init (CtkUIManagerClass *klass)
    * from an action in the group. 
    *
    * Since: 2.4
-   *
-   * Deprecated: 3.10
    */
   ui_manager_signals[DISCONNECT_PROXY] =
     g_signal_new (I_("disconnect-proxy"),
@@ -581,8 +562,6 @@ ctk_ui_manager_class_init (CtkUIManagerClass *klass)
    * just before any action is activated.
    *
    * Since: 2.4
-   *
-   * Deprecated: 3.10
    */
   ui_manager_signals[PRE_ACTIVATE] =
     g_signal_new (I_("pre-activate"),
@@ -606,8 +585,6 @@ ctk_ui_manager_class_init (CtkUIManagerClass *klass)
    * just after any action is activated.
    *
    * Since: 2.4
-   *
-   * Deprecated: 3.10
    */
   ui_manager_signals[POST_ACTIVATE] =
     g_signal_new (I_("post-activate"),
@@ -835,8 +812,6 @@ ctk_ui_manager_real_get_action (CtkUIManager *manager,
  * Returns: a new ui manager object.
  *
  * Since: 2.4
- *
- * Deprecated: 3.10
  **/
 CtkUIManager*
 ctk_ui_manager_new (void)
@@ -855,9 +830,6 @@ ctk_ui_manager_new (void)
  * Returns: whether tearoff menu items are added
  *
  * Since: 2.4
- *
- * Deprecated: 3.4: Tearoff menus are deprecated and should not
- *     be used in newly written code.
  **/
 gboolean 
 ctk_ui_manager_get_add_tearoffs (CtkUIManager *manager)
@@ -880,9 +852,6 @@ ctk_ui_manager_get_add_tearoffs (CtkUIManager *manager)
  * menus never have tearoff menu items.
  *
  * Since: 2.4
- *
- * Deprecated: 3.4: Tearoff menus are deprecated and should not
- *     be used in newly written code.
  **/
 void
 ctk_ui_manager_set_add_tearoffs (CtkUIManager *manager,
@@ -958,8 +927,6 @@ cb_proxy_post_activate (CtkActionGroup *group,
  * list.
  *
  * Since: 2.4
- *
- * Deprecated: 3.10
  **/
 void
 ctk_ui_manager_insert_action_group (CtkUIManager   *manager,
@@ -1017,8 +984,6 @@ ctk_ui_manager_insert_action_group (CtkUIManager   *manager,
  * with @manager.
  *
  * Since: 2.4
- *
- * Deprecated: 3.10
  **/
 void
 ctk_ui_manager_remove_action_group (CtkUIManager   *manager,
@@ -1057,8 +1022,6 @@ ctk_ui_manager_remove_action_group (CtkUIManager   *manager,
  *   and should not be modified.
  *
  * Since: 2.4
- *
- * Deprecated: 3.10
  **/
 GList *
 ctk_ui_manager_get_action_groups (CtkUIManager *manager)
@@ -1077,8 +1040,6 @@ ctk_ui_manager_get_action_groups (CtkUIManager *manager)
  * Returns: (transfer none): the #CtkAccelGroup.
  *
  * Since: 2.4
- *
- * Deprecated: 3.10
  **/
 CtkAccelGroup *
 ctk_ui_manager_get_accel_group (CtkUIManager *manager)
@@ -1112,8 +1073,6 @@ ctk_ui_manager_get_accel_group (CtkUIManager *manager)
  *     or %NULL if no widget was found
  *
  * Since: 2.4
- *
- * Deprecated: 3.10
  **/
 CtkWidget *
 ctk_ui_manager_get_widget (CtkUIManager *manager,
@@ -1170,8 +1129,6 @@ collect_toplevels (GNode   *node,
  * all toplevel widgets of the requested types.  Free the returned list with g_slist_free().
  *
  * Since: 2.4
- *
- * Deprecated: 3.10
  **/
 GSList *
 ctk_ui_manager_get_toplevels (CtkUIManager         *manager,
@@ -1208,8 +1165,6 @@ ctk_ui_manager_get_toplevels (CtkUIManager         *manager,
  *     or %NULL if no widget was found.
  *
  * Since: 2.4
- *
- * Deprecated: 3.10
  **/
 CtkAction *
 ctk_ui_manager_get_action (CtkUIManager *manager,
@@ -1419,8 +1374,6 @@ free_node (GNode *node)
  * Returns: an unused merge id.
  *
  * Since: 2.4
- *
- * Deprecated: 3.10
  **/
 guint
 ctk_ui_manager_new_merge_id (CtkUIManager *manager)
@@ -1945,8 +1898,6 @@ add_ui_from_string (CtkUIManager *manager,
  *   the return value is 0.
  *
  * Since: 2.4
- *
- * Deprecated: 3.10
  **/
 guint
 ctk_ui_manager_add_ui_from_string (CtkUIManager *manager,
@@ -1989,8 +1940,6 @@ ctk_ui_manager_add_ui_from_string (CtkUIManager *manager,
  *   the return value is 0.
  *
  * Since: 2.4
- *
- * Deprecated: 3.10
  **/
 guint
 ctk_ui_manager_add_ui_from_file (CtkUIManager *manager,
@@ -2026,8 +1975,6 @@ ctk_ui_manager_add_ui_from_file (CtkUIManager *manager,
  *   the return value is 0.
  *
  * Since: 3.4
- *
- * Deprecated: 3.10
  **/
 guint
 ctk_ui_manager_add_ui_from_resource (CtkUIManager *manager,
@@ -2071,8 +2018,6 @@ ctk_ui_manager_add_ui_from_resource (CtkUIManager *manager,
  * before or after this item, depending on @top.
  * 
  * Since: 2.4
- *
- * Deprecated: 3.10
  **/
 void
 ctk_ui_manager_add_ui (CtkUIManager        *manager,
@@ -2230,8 +2175,6 @@ remove_ui (GNode   *node,
  * Unmerges the part of @manager's content identified by @merge_id.
  *
  * Since: 2.4
- *
- * Deprecated: 3.10
  **/
 void
 ctk_ui_manager_remove_ui (CtkUIManager *manager, 
@@ -2311,14 +2254,10 @@ find_menu_position (GNode      *node,
 	    menushell = ctk_menu_item_get_submenu (CTK_MENU_ITEM (menushell));
 	  siblings = ctk_container_get_children (CTK_CONTAINER (menushell));
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-
 	  if (siblings != NULL && CTK_IS_TEAROFF_MENU_ITEM (siblings->data))
 	    pos = 1;
 	  else
 	    pos = 0;
-
-G_GNUC_END_IGNORE_DEPRECATIONS
 
 	  g_list_free (siblings);
 	  break;
@@ -2501,8 +2440,6 @@ update_smart_separators (CtkWidget *proxy)
 	    {
 	      last = NULL;
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-
 	      if (CTK_IS_TEAROFF_MENU_ITEM (cur->data) || cur->data == filler)
 		visible = FALSE;
 	      else
@@ -2510,8 +2447,6 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 		  visible = TRUE;
 		  empty = FALSE;
 		}
-
-G_GNUC_END_IGNORE_DEPRECATIONS
 
 	    }
 
@@ -2614,8 +2549,6 @@ update_node (CtkUIManager *manager,
 	    menu = ctk_menu_item_get_submenu (CTK_MENU_ITEM (info->proxy));
 	  siblings = ctk_container_get_children (CTK_CONTAINER (menu));
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-
 	  if (siblings != NULL && CTK_IS_TEAROFF_MENU_ITEM (siblings->data))
 	    {
 	      if (manager->private_data->add_tearoffs && !in_popup)
@@ -2623,8 +2556,6 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 	      else
 		ctk_widget_hide (CTK_WIDGET (siblings->data));
 	    }
-
-G_GNUC_END_IGNORE_DEPRECATIONS
 
 	  g_list_free (siblings);
 	}
@@ -2700,9 +2631,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                 menu = ctk_menu_new ();
                 ctk_widget_set_name (menu, info->name);
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
                 tearoff = ctk_tearoff_menu_item_new ();
-G_GNUC_END_IGNORE_DEPRECATIONS
 
                 ctk_widget_set_no_show_all (tearoff, TRUE);
                 ctk_menu_shell_append (CTK_MENU_SHELL (menu), tearoff);
@@ -2757,8 +2686,6 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
 	siblings = ctk_container_get_children (CTK_CONTAINER (menu));
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-
 	if (siblings != NULL && CTK_IS_TEAROFF_MENU_ITEM (siblings->data))
 	  {
 	    if (manager->private_data->add_tearoffs && !in_popup)
@@ -2766,8 +2693,6 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 	    else
 	      ctk_widget_hide (CTK_WIDGET (siblings->data));
 	  }
-
-G_GNUC_END_IGNORE_DEPRECATIONS
 
 	g_list_free (siblings);
       }
@@ -2908,14 +2833,10 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 	      g_object_ref_sink (info->proxy);
 	      ctk_widget_set_name (info->proxy, info->name);
 
-              G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-
               if (info->always_show_image_set &&
                   CTK_IS_IMAGE_MENU_ITEM (info->proxy))
                 ctk_image_menu_item_set_always_show_image (CTK_IMAGE_MENU_ITEM (info->proxy),
                                                            info->always_show_image);
-
-              G_GNUC_END_IGNORE_DEPRECATIONS;
 
 	      ctk_menu_shell_insert (CTK_MENU_SHELL (menushell),
 				     info->proxy, pos);
@@ -3165,8 +3086,6 @@ queue_update (CtkUIManager *manager)
  * ]|
  *
  * Since: 2.4
- *
- * Deprecated: 3.10
  **/
 void
 ctk_ui_manager_ensure_update (CtkUIManager *manager)
@@ -3368,8 +3287,6 @@ ctk_ui_manager_buildable_custom_tag_end (CtkBuildable *buildable,
  * the merged UI.
  *
  * Since: 2.4
- *
- * Deprecated: 3.10
  **/
 gchar *
 ctk_ui_manager_get_ui (CtkUIManager *manager)

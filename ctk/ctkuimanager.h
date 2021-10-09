@@ -107,8 +107,6 @@ struct _CtkUIManagerClass {
  *
  * These enumeration values are used by ctk_ui_manager_add_ui() to determine
  * what UI element to create.
- *
- * Deprecated: 3.10
  */
 typedef enum {
   CTK_UI_MANAGER_AUTO              = 0,
@@ -124,50 +122,50 @@ typedef enum {
   CTK_UI_MANAGER_POPUP_WITH_ACCELS = 1 << 9
 } CtkUIManagerItemType;
 
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 GType          ctk_ui_manager_get_type            (void) G_GNUC_CONST;
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 CtkUIManager  *ctk_ui_manager_new                 (void);
-CDK_DEPRECATED_IN_3_4
+CDK_AVAILABLE_IN_ALL
 void           ctk_ui_manager_set_add_tearoffs    (CtkUIManager          *manager,
                                                    gboolean               add_tearoffs);
-CDK_DEPRECATED_IN_3_4
+CDK_AVAILABLE_IN_ALL
 gboolean       ctk_ui_manager_get_add_tearoffs    (CtkUIManager          *manager);
 
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 void           ctk_ui_manager_insert_action_group (CtkUIManager          *manager,
 						   CtkActionGroup        *action_group,
 						   gint                   pos);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 void           ctk_ui_manager_remove_action_group (CtkUIManager          *manager,
 						   CtkActionGroup        *action_group);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 GList         *ctk_ui_manager_get_action_groups   (CtkUIManager          *manager);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 CtkAccelGroup *ctk_ui_manager_get_accel_group     (CtkUIManager          *manager);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 CtkWidget     *ctk_ui_manager_get_widget          (CtkUIManager          *manager,
 						   const gchar           *path);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 GSList        *ctk_ui_manager_get_toplevels       (CtkUIManager          *manager,
 						   CtkUIManagerItemType   types);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 CtkAction     *ctk_ui_manager_get_action          (CtkUIManager          *manager,
 						   const gchar           *path);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 guint          ctk_ui_manager_add_ui_from_string  (CtkUIManager          *manager,
 						   const gchar           *buffer,
 						   gssize                 length,
 						   GError               **error);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 guint          ctk_ui_manager_add_ui_from_file    (CtkUIManager          *manager,
 						   const gchar           *filename,
 						   GError               **error);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 guint          ctk_ui_manager_add_ui_from_resource(CtkUIManager          *manager,
 						   const gchar           *resource_path,
 						   GError               **error);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 void           ctk_ui_manager_add_ui              (CtkUIManager          *manager,
 						   guint                  merge_id,
 						   const gchar           *path,
@@ -175,14 +173,14 @@ void           ctk_ui_manager_add_ui              (CtkUIManager          *manage
 						   const gchar           *action,
 						   CtkUIManagerItemType   type,
 						   gboolean               top);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 void           ctk_ui_manager_remove_ui           (CtkUIManager          *manager,
 						   guint                  merge_id);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 gchar         *ctk_ui_manager_get_ui              (CtkUIManager          *manager);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 void           ctk_ui_manager_ensure_update       (CtkUIManager          *manager);
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 guint          ctk_ui_manager_new_merge_id        (CtkUIManager          *manager);
 
 G_END_DECLS
