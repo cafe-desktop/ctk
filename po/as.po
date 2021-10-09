@@ -1343,17 +1343,17 @@ msgctxt "Stock label"
 msgid "_Yes"
 msgstr "হয় (_Y)"
 
-#: ../ctk/deprecated/ctkuimanager.c:1779
+#: ../ctk/ctkuimanager.c:1779
 #, c-format
 msgid "Unexpected start tag '%s' on line %d char %d"
 msgstr "অপ্ৰত্যাশিত '%s' আৰম্ভনিৰ চিহ্ন %d শাৰীৰ %d আখৰত"
 
-#: ../ctk/deprecated/ctkuimanager.c:1869
+#: ../ctk/ctkuimanager.c:1869
 #, c-format
 msgid "Unexpected character data on line %d char %d"
 msgstr "%d শাৰীৰ %d আখৰত অপ্ৰত্যাশিত আখৰ"
 
-#: ../ctk/deprecated/ctkuimanager.c:2724
+#: ../ctk/ctkuimanager.c:2724
 msgid "Empty"
 msgstr "ৰিক্ত"
 

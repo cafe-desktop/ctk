@@ -715,19 +715,19 @@ msgstr "Фаъол"
 msgid "Whether the toggle action should be active"
 msgstr "Оё амали зомин бояд фаъол бошад"
 
-#: ../ctk/deprecated/ctkuimanager.c:460 ../ctk/ctkcombobox.c:836
+#: ../ctk/ctkuimanager.c:460 ../ctk/ctkcombobox.c:836
 msgid "Add tearoffs to menus"
 msgstr "Варақаҳоро ба менюҳо илова кунед"
 
-#: ../ctk/deprecated/ctkuimanager.c:461
+#: ../ctk/ctkuimanager.c:461
 msgid "Whether tearoff menu items should be added to menus"
 msgstr "Оё объектҳои менюи ҷудошуда бояд ба менюҳо илова шаванд"
 
-#: ../ctk/deprecated/ctkuimanager.c:468
+#: ../ctk/ctkuimanager.c:468
 msgid "Merged UI definition"
 msgstr "Мазмуни UI-и муттаҳидшуда"
 
-#: ../ctk/deprecated/ctkuimanager.c:469
+#: ../ctk/ctkuimanager.c:469
 msgid "An XML string describing the merged UI"
 msgstr "Сатри XML барои шарҳи UI-и муттаҳидшуда"
 

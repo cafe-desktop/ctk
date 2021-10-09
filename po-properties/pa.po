@@ -1099,19 +1099,19 @@ msgstr "ਆਈਕਾਨ ਅਕਾਰ"
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr "ਪਿਕਸਲ ਆਕਾਰ, ਜਿਸ ਲਈ ਆਕਾਰ ਮਜ਼ਬੂਰ ਕੀਤੇ ਹੋਣ ਜਾਂ ਸਿਫ਼ਰ"
 
-#: ctk/deprecated/ctkuimanager.c:463 ctk/ctkcombobox.c:1009
+#: ctk/ctkuimanager.c:463 ctk/ctkcombobox.c:1009
 msgid "Add tearoffs to menus"
 msgstr "ਵੱਖ-ਕਰਨ ਨੂੰ ਸੂਚੀ ਵਿੱਚ ਜੋੜੋ"
 
-#: ctk/deprecated/ctkuimanager.c:464
+#: ctk/ctkuimanager.c:464
 msgid "Whether tearoff menu items should be added to menus"
 msgstr "ਮੀਨੂ ਆਈਟਮ ਨੂੰ ਵੱਖ-ਕਰਨ ਵਾਲਾ ਨੂੰ ਮੀਨੂ ਵਿੱਚ ਜੋੜਨਾ ਹੈ"
 
-#: ctk/deprecated/ctkuimanager.c:471
+#: ctk/ctkuimanager.c:471
 msgid "Merged UI definition"
 msgstr "ਰੱਲਗੱਡ UI ਪਰਿਭਾਸ਼ਾ"
 
-#: ctk/deprecated/ctkuimanager.c:472
+#: ctk/ctkuimanager.c:472
 msgid "An XML string describing the merged UI"
 msgstr "ਰੱਲਗੱਡ UI ਪਰੀਭਾਸ਼ਾ ਨੂੰ ਦਰਸਾਉਣ ਲਈ XML ਦੀ ਸਤਰ"
 

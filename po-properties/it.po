@@ -1161,21 +1161,21 @@ msgstr "Dimensione icona"
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr "La dimensione in pixel che le icone dovrebbero avere oppure zero"
 
-#: ctk/deprecated/ctkuimanager.c:463 ctk/ctkcombobox.c:1010
+#: ctk/ctkuimanager.c:463 ctk/ctkcombobox.c:1010
 msgid "Add tearoffs to menus"
 msgstr "Aggiunge gli elementi per staccare i menù"
 
-#: ctk/deprecated/ctkuimanager.c:464
+#: ctk/ctkuimanager.c:464
 msgid "Whether tearoff menu items should be added to menus"
 msgstr ""
 "Indica se aggiungere ai menù gli elementi che gli consentono di essere "
 "staccati"
 
-#: ctk/deprecated/ctkuimanager.c:471
+#: ctk/ctkuimanager.c:471
 msgid "Merged UI definition"
 msgstr "Definizione della UI aggiunta"
 
-#: ctk/deprecated/ctkuimanager.c:472
+#: ctk/ctkuimanager.c:472
 msgid "An XML string describing the merged UI"
 msgstr "Una stringa XML che descrive la UI aggiunta"
 

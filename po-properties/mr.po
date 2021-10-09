@@ -1061,19 +1061,19 @@ msgstr "चिन्हाचे आकार"
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr "चिन्हाचे जबरपणे लागू करण्याजोगी पिक्सेलमधील आकार, किंवा शून्य"
 
-#: ../ctk/deprecated/ctkuimanager.c:460 ../ctk/ctkcombobox.c:834
+#: ../ctk/ctkuimanager.c:460 ../ctk/ctkcombobox.c:834
 msgid "Add tearoffs to menus"
 msgstr "मेन्युमध्ये टिअरऑफ जोडा"
 
-#: ../ctk/deprecated/ctkuimanager.c:461
+#: ../ctk/ctkuimanager.c:461
 msgid "Whether tearoff menu items should be added to menus"
 msgstr "मेन्यु मध्ये जोडण्याकरीताचे मेन्यु घटक नष्ट करायचे का"
 
-#: ../ctk/deprecated/ctkuimanager.c:468
+#: ../ctk/ctkuimanager.c:468
 msgid "Merged UI definition"
 msgstr "जुळविलेले UI वर्णन"
 
-#: ../ctk/deprecated/ctkuimanager.c:469
+#: ../ctk/ctkuimanager.c:469
 msgid "An XML string describing the merged UI"
 msgstr "जुळविलेली UI दर्शविणारी XML ओळ"
 

@@ -1434,17 +1434,17 @@ msgctxt "Stock label"
 msgid "_Yes"
 msgstr "예(_Y)"
 
-#: ctk/deprecated/ctkuimanager.c:1782
+#: ctk/ctkuimanager.c:1782
 #, c-format
 msgid "Unexpected start tag '%s' on line %d char %d"
 msgstr "갑작스런 시작 태그 '%s' (%d번째 줄 문자 %d)"
 
-#: ctk/deprecated/ctkuimanager.c:1872
+#: ctk/ctkuimanager.c:1872
 #, c-format
 msgid "Unexpected character data on line %d char %d"
 msgstr "갑작스런 문자 데이터(%d번째 줄 문자 %d)"
 
-#: ctk/deprecated/ctkuimanager.c:2709
+#: ctk/ctkuimanager.c:2709
 msgid "Empty"
 msgstr "비었음"
 

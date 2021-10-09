@@ -1107,19 +1107,19 @@ msgstr "Simge Boyutu"
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr "Simgenin olması gereken piksel boyutu ya da sıfır"
 
-#: ctk/deprecated/ctkuimanager.c:463 ctk/ctkcombobox.c:1010
+#: ctk/ctkuimanager.c:463 ctk/ctkcombobox.c:1010
 msgid "Add tearoffs to menus"
 msgstr "Menülere ayraçları ekle"
 
-#: ctk/deprecated/ctkuimanager.c:464
+#: ctk/ctkuimanager.c:464
 msgid "Whether tearoff menu items should be added to menus"
 msgstr "Menülere ayrılmış menü ögelerinin eklenmesi"
 
-#: ctk/deprecated/ctkuimanager.c:471
+#: ctk/ctkuimanager.c:471
 msgid "Merged UI definition"
 msgstr "Birleşik arayüz tanımı"
 
-#: ctk/deprecated/ctkuimanager.c:472
+#: ctk/ctkuimanager.c:472
 msgid "An XML string describing the merged UI"
 msgstr "Birleşik arayüzün XML dizgesi tanımı"
 

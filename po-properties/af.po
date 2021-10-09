@@ -1201,19 +1201,19 @@ msgstr "Ikongroottes"
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr ""
 
-#: ctk/deprecated/ctkuimanager.c:463 ctk/ctkcombobox.c:1009
+#: ctk/ctkuimanager.c:463 ctk/ctkcombobox.c:1009
 msgid "Add tearoffs to menus"
 msgstr "Voeg afskeuritems by die kieslyste"
 
-#: ctk/deprecated/ctkuimanager.c:464
+#: ctk/ctkuimanager.c:464
 msgid "Whether tearoff menu items should be added to menus"
 msgstr "Of afskeurkieslysitems by kieslyste gevoeg moet word"
 
-#: ctk/deprecated/ctkuimanager.c:471
+#: ctk/ctkuimanager.c:471
 msgid "Merged UI definition"
 msgstr "Definisie van saamgesmelte UI"
 
-#: ctk/deprecated/ctkuimanager.c:472
+#: ctk/ctkuimanager.c:472
 msgid "An XML string describing the merged UI"
 msgstr "'n XML-string wat die saamgesmelte UI beskryf"
 

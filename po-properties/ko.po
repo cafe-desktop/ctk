@@ -1095,19 +1095,19 @@ msgstr "아이콘 크기"
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr "아이콘 크기를 강제할 픽셀 크기, 0이면 강제하지 않음"
 
-#: ctk/deprecated/ctkuimanager.c:463 ctk/ctkcombobox.c:1010
+#: ctk/ctkuimanager.c:463 ctk/ctkcombobox.c:1010
 msgid "Add tearoffs to menus"
 msgstr "메뉴에 떼어내기 더하기"
 
-#: ctk/deprecated/ctkuimanager.c:464
+#: ctk/ctkuimanager.c:464
 msgid "Whether tearoff menu items should be added to menus"
 msgstr "메뉴에 떼어내기 메뉴 항목을 더할지 여부"
 
-#: ctk/deprecated/ctkuimanager.c:471
+#: ctk/ctkuimanager.c:471
 msgid "Merged UI definition"
 msgstr "합쳐진 UI 정의"
 
-#: ctk/deprecated/ctkuimanager.c:472
+#: ctk/ctkuimanager.c:472
 msgid "An XML string describing the merged UI"
 msgstr "합쳐진 UI를 나타내는 XML 문자열"
 

@@ -1425,17 +1425,17 @@ msgctxt "Stock label"
 msgid "_Yes"
 msgstr "_Da"
 
-#: ctk/deprecated/ctkuimanager.c:1776
+#: ctk/ctkuimanager.c:1776
 #, c-format
 msgid "Unexpected start tag '%s' on line %d char %d"
 msgstr "Neočekivana početna oznaka „%s“ u %d° redu, znak %d"
 
-#: ctk/deprecated/ctkuimanager.c:1866
+#: ctk/ctkuimanager.c:1866
 #, c-format
 msgid "Unexpected character data on line %d char %d"
 msgstr "Neočekivani znakovni podaci u %d° redu, znak %d"
 
-#: ctk/deprecated/ctkuimanager.c:2703
+#: ctk/ctkuimanager.c:2703
 msgid "Empty"
 msgstr "Prazno"
 

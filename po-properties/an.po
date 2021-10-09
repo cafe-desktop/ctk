@@ -739,21 +739,21 @@ msgstr "Activo"
 msgid "Whether the toggle action should be active"
 msgstr "Indica si l'acción de commutación debe estar activa"
 
-#: ../ctk/deprecated/ctkuimanager.c:485 ../ctk/ctkcombobox.c:836
+#: ../ctk/ctkuimanager.c:485 ../ctk/ctkcombobox.c:836
 #, fuzzy
 msgid "Add tearoffs to menus"
 msgstr "Adhibir tiradores a os menús"
 
-#: ../ctk/deprecated/ctkuimanager.c:486
+#: ../ctk/ctkuimanager.c:486
 #, fuzzy
 msgid "Whether tearoff menu items should be added to menus"
 msgstr "Indica si han d'adhibir-se tiradores a os menús"
 
-#: ../ctk/deprecated/ctkuimanager.c:493
+#: ../ctk/ctkuimanager.c:493
 msgid "Merged UI definition"
 msgstr "Definición de a IU combinada"
 
-#: ../ctk/deprecated/ctkuimanager.c:494
+#: ../ctk/ctkuimanager.c:494
 msgid "An XML string describing the merged UI"
 msgstr "Una cadena XML que describe a IU combinada"
 

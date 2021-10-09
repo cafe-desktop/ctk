@@ -1417,17 +1417,17 @@ msgctxt "Stock label"
 msgid "_Yes"
 msgstr "是(_Y)"
 
-#: ctk/deprecated/ctkuimanager.c:1782
+#: ctk/ctkuimanager.c:1782
 #, c-format
 msgid "Unexpected start tag '%s' on line %d char %d"
 msgstr "在第 %2$d 行第 %3$d 个字符处有未预期的开始标签“%1$s”"
 
-#: ctk/deprecated/ctkuimanager.c:1872
+#: ctk/ctkuimanager.c:1872
 #, c-format
 msgid "Unexpected character data on line %d char %d"
 msgstr "在第%d行第%d个字符处有未预期的字符"
 
-#: ctk/deprecated/ctkuimanager.c:2709
+#: ctk/ctkuimanager.c:2709
 msgid "Empty"
 msgstr "空"
 
