@@ -49,12 +49,10 @@ ctk/deprecated/ctkhandlebox.c
 ctk/deprecated/ctkhsv.c
 ctk/deprecated/ctkmisc.c
 ctk/deprecated/ctknumerableicon.c
-ctk/deprecated/ctkrecentaction.c
 ctk/deprecated/ctkstatusicon.c
 ctk/deprecated/ctktable.c
 ctk/deprecated/ctkthemingengine.c
 ctk/deprecated/ctktrayicon-x11.c
-ctk/ctkuimanager.c
 ctk/encodesymbolic.c
 ctk/ctkaboutdialog.c
 ctk/ctkaccelgroup.c
@@ -236,6 +234,7 @@ ctk/ctkradiobutton.c
 ctk/ctkradiomenuitem.c
 ctk/ctkradiotoolbutton.c
 ctk/ctkrange.c
+ctk/ctkrecentaction.c
 ctk/ctkrecentchooser.c
 ctk/ctkrecentchooserdefault.c
 ctk/ctkrecentchoosermenu.c
@@ -307,6 +306,7 @@ ctk/ctktreesortable.c
 ctk/ctktreestore.c
 ctk/ctktreeview.c
 ctk/ctktreeviewcolumn.c
+ctk/ctkuimanager.c
 ctk/ctkviewport.c
 ctk/ctkvolumebutton.c
 ctk/ctkwidget.c

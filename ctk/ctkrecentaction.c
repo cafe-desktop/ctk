@@ -19,8 +19,6 @@
 
 #include "config.h"
 
-#define CDK_DISABLE_DEPRECATION_WARNINGS
-
 #include "ctkintl.h"
 #include "ctkrecentaction.h"
 #include "ctkimagemenuitem.h"
@@ -434,9 +432,7 @@ ctk_recent_action_create_menu_item (CtkAction *action)
   CtkWidget *menuitem;
 
   menu = ctk_recent_action_create_menu (action);
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   menuitem = g_object_new (CTK_TYPE_IMAGE_MENU_ITEM, NULL);
-  G_GNUC_END_IGNORE_DEPRECATIONS;
   ctk_menu_item_set_submenu (CTK_MENU_ITEM (menuitem), menu);
   ctk_widget_show (menu);
 
@@ -654,9 +650,7 @@ ctk_recent_action_class_init (CtkRecentActionClass *klass)
   action_class->create_menu_item = ctk_recent_action_create_menu_item;
   action_class->create_tool_item = ctk_recent_action_create_tool_item;
   action_class->create_menu = ctk_recent_action_create_menu;
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   action_class->menu_item_type = CTK_TYPE_IMAGE_MENU_ITEM;
-  G_GNUC_END_IGNORE_DEPRECATIONS;
   action_class->toolbar_item_type = CTK_TYPE_MENU_TOOL_BUTTON;
 
   _ctk_recent_chooser_install_properties (gobject_class);
@@ -665,8 +659,6 @@ ctk_recent_action_class_init (CtkRecentActionClass *klass)
    * CtkRecentAction:show-numbers:
    *
    * Whether the items should be displayed with a number.
-   *
-   * Deprecated: 3.10
    */
   g_object_class_install_property (gobject_class,
                                    PROP_SHOW_NUMBERS,
@@ -720,8 +712,6 @@ ctk_recent_action_init (CtkRecentAction *action)
  * Returns: the newly created #CtkRecentAction.
  *
  * Since: 2.12
- *
- * Deprecated: 3.10
  */
 CtkAction *
 ctk_recent_action_new (const gchar *name,
@@ -757,8 +747,6 @@ ctk_recent_action_new (const gchar *name,
  * Returns: the newly created #CtkRecentAction
  * 
  * Since: 2.12
- *
- * Deprecated: 3.10
  */
 CtkAction *
 ctk_recent_action_new_for_manager (const gchar      *name,
@@ -788,8 +776,6 @@ ctk_recent_action_new_for_manager (const gchar      *name,
  * Returns: %TRUE if numbers should be shown.
  *
  * Since: 2.12
- *
- * Deprecated: 3.10
  */
 gboolean
 ctk_recent_action_get_show_numbers (CtkRecentAction *action)
@@ -810,8 +796,6 @@ ctk_recent_action_get_show_numbers (CtkRecentAction *action)
  * label. Only the first ten items get a number to avoid clashes.
  *
  * Since: 2.12
- *
- * Deprecated: 3.10
  */
 void
 ctk_recent_action_set_show_numbers (CtkRecentAction *action,
