@@ -1167,20 +1167,20 @@ msgstr "De pizelgrootte waartoe pictogrammen worden geforceerd, of nul"
 # afscheurlijn/afscheurmogelijkheid
 # afscheurlijn aan menus toevoegen
 # Menus hebben afscheurlijn<
-#: ctk/deprecated/ctkuimanager.c:463 ctk/ctkcombobox.c:1010
+#: ctk/ctkuimanager.c:463 ctk/ctkcombobox.c:1010
 msgid "Add tearoffs to menus"
 msgstr "Afscheurlijn aan menus toevoegen"
 
 # niet helemaal strict vertaald, maar wel duidelijk
-#: ctk/deprecated/ctkuimanager.c:464
+#: ctk/ctkuimanager.c:464
 msgid "Whether tearoff menu items should be added to menus"
 msgstr "Of afscheurlijnen aan menus moeten worden toegevoegd"
 
-#: ctk/deprecated/ctkuimanager.c:471
+#: ctk/ctkuimanager.c:471
 msgid "Merged UI definition"
 msgstr "Samengevoegde UI-definitie"
 
-#: ctk/deprecated/ctkuimanager.c:472
+#: ctk/ctkuimanager.c:472
 msgid "An XML string describing the merged UI"
 msgstr "Een XML-tekenreeks die de samengevoegde UI beschrijft"
 

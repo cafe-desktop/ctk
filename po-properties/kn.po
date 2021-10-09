@@ -1349,18 +1349,18 @@ msgctxt "Stock label"
 msgid "_Yes"
 msgstr "ಹೌದು (_Y)"
 
-#: ../ctk/deprecated/ctkuimanager.c:1779
+#: ../ctk/ctkuimanager.c:1779
 #, c-format
 msgid "Unexpected start tag '%s' on line %d char %d"
 msgstr ""
 "ಅನಿರೀಕ್ಷಿತ ಆರಂಭ ತಲೆಚೀಟಿ '%s' ಯು ಸಾಲು %d ನಲ್ಲಿನ ಅಕ್ಷರ %d ದಲ್ಲಿ ಕಂಡು ಬಂದಿದೆ"
 
-#: ../ctk/deprecated/ctkuimanager.c:1869
+#: ../ctk/ctkuimanager.c:1869
 #, c-format
 msgid "Unexpected character data on line %d char %d"
 msgstr "ಸಾಲು %d ನಲ್ಲಿನ ಅಕ್ಷರ %d ದಲ್ಲಿ ಅನಿರೀಕ್ಷಿತ ಅಕ್ಷರ ದತ್ತಾಂಶ"
 
-#: ../ctk/deprecated/ctkuimanager.c:2724
+#: ../ctk/ctkuimanager.c:2724
 msgid "Empty"
 msgstr "ಖಾಲಿ"
 

@@ -1077,19 +1077,19 @@ msgstr "আইকন আকাৰ"
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr "পিক্সেল আকাৰ যলে আইকনসমূহক বলৱৎ কৰা হব, অথবা শূণ্য"
 
-#: ../ctk/deprecated/ctkuimanager.c:460 ../ctk/ctkcombobox.c:834
+#: ../ctk/ctkuimanager.c:460 ../ctk/ctkcombobox.c:834
 msgid "Add tearoffs to menus"
 msgstr "মেনুতে টিয়াৰঅফ যোগ কৰক"
 
-#: ../ctk/deprecated/ctkuimanager.c:461
+#: ../ctk/ctkuimanager.c:461
 msgid "Whether tearoff menu items should be added to menus"
 msgstr "টিয়াৰঅফ তালিকা বস্তুকে মেনুতে যোগ কৰা হ'ব নে"
 
-#: ../ctk/deprecated/ctkuimanager.c:468
+#: ../ctk/ctkuimanager.c:468
 msgid "Merged UI definition"
 msgstr "একত্ৰিত UI তৰ বিবৰণ"
 
-#: ../ctk/deprecated/ctkuimanager.c:469
+#: ../ctk/ctkuimanager.c:469
 msgid "An XML string describing the merged UI"
 msgstr "একত্ৰিত UI তৰ বিবৰণ প্ৰদানকাৰী এটা এক্সএমএল পংতি"
 

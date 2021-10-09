@@ -1135,19 +1135,19 @@ msgstr "प्रतिमाको आकार"
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr ""
 
-#: ctk/deprecated/ctkuimanager.c:457 ctk/ctkcombobox.c:1016
+#: ctk/ctkuimanager.c:457 ctk/ctkcombobox.c:1016
 msgid "Add tearoffs to menus"
 msgstr "मेनुमा च्यात्ने क्षमता थप्नुस्"
 
-#: ctk/deprecated/ctkuimanager.c:458
+#: ctk/ctkuimanager.c:458
 msgid "Whether tearoff menu items should be added to menus"
 msgstr "जब च्यात्ने क्षमता भएको मेनु आइटमहरू मेनुमा थप्न सकिन्छ "
 
-#: ctk/deprecated/ctkuimanager.c:465
+#: ctk/ctkuimanager.c:465
 msgid "Merged UI definition"
 msgstr "युआई परिभाषा विलय गरियो"
 
-#: ctk/deprecated/ctkuimanager.c:466
+#: ctk/ctkuimanager.c:466
 msgid "An XML string describing the merged UI"
 msgstr "एकीकृत युआईको व्याख्या गर्ने एक्सएमएल सूत्र "
 

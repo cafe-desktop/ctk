@@ -1150,19 +1150,19 @@ msgstr "Mida de les icones"
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr "La mida de píxel a la qual s'haurien de forçar les icones, o zero"
 
-#: ctk/deprecated/ctkuimanager.c:457 ctk/ctkcombobox.c:1012
+#: ctk/ctkuimanager.c:457 ctk/ctkcombobox.c:1012
 msgid "Add tearoffs to menus"
 msgstr "Afig separadors als menús"
 
-#: ctk/deprecated/ctkuimanager.c:458
+#: ctk/ctkuimanager.c:458
 msgid "Whether tearoff menu items should be added to menus"
 msgstr "Si s'han d'afegir elements separadors de menú als menús"
 
-#: ctk/deprecated/ctkuimanager.c:465
+#: ctk/ctkuimanager.c:465
 msgid "Merged UI definition"
 msgstr "Definició d'IU mesclada"
 
-#: ctk/deprecated/ctkuimanager.c:466
+#: ctk/ctkuimanager.c:466
 msgid "An XML string describing the merged UI"
 msgstr "Una cadena XML que descriu la IU mesclada"
 

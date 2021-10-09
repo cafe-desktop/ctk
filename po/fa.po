@@ -1409,17 +1409,17 @@ msgctxt "Stock label"
 msgid "_Yes"
 msgstr "_بله"
 
-#: ctk/deprecated/ctkuimanager.c:1782
+#: ctk/ctkuimanager.c:1782
 #, c-format
 msgid "Unexpected start tag '%s' on line %d char %d"
 msgstr "برچسب شروع غیرمنتظره «%s» در سطر %Id نویسهٔ %Id"
 
-#: ctk/deprecated/ctkuimanager.c:1872
+#: ctk/ctkuimanager.c:1872
 #, c-format
 msgid "Unexpected character data on line %d char %d"
 msgstr "دادهٔ نویسه‌ای غیرمنتظره در سطر %Id نویسهٔ %Id"
 
-#: ctk/deprecated/ctkuimanager.c:2709
+#: ctk/ctkuimanager.c:2709
 msgid "Empty"
 msgstr "خالی"
 

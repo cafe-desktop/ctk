@@ -1101,19 +1101,19 @@ msgstr "Ikonoaren tamaina"
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr "Derrigorrez ikonoek edukiko duten tamaina pixeletan, edo zero"
 
-#: ctk/deprecated/ctkuimanager.c:463 ctk/ctkcombobox.c:1010
+#: ctk/ctkuimanager.c:463 ctk/ctkcombobox.c:1010
 msgid "Add tearoffs to menus"
 msgstr "Gehitu askagarriak menuei"
 
-#: ctk/deprecated/ctkuimanager.c:464
+#: ctk/ctkuimanager.c:464
 msgid "Whether tearoff menu items should be added to menus"
 msgstr "Menuei menu-elementu askagarriak gehitu behar zaizkien ala ez adierazten du"
 
-#: ctk/deprecated/ctkuimanager.c:471
+#: ctk/ctkuimanager.c:471
 msgid "Merged UI definition"
 msgstr "Batutako UI definizioa"
 
-#: ctk/deprecated/ctkuimanager.c:472
+#: ctk/ctkuimanager.c:472
 msgid "An XML string describing the merged UI"
 msgstr "Batutako UI azaltzen duen XML katea"
 

@@ -1081,19 +1081,19 @@ msgstr "Stærð táknmynda"
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr ""
 
-#: ctk/deprecated/ctkuimanager.c:457 ctk/ctkcombobox.c:1009
+#: ctk/ctkuimanager.c:457 ctk/ctkcombobox.c:1009
 msgid "Add tearoffs to menus"
 msgstr ""
 
-#: ctk/deprecated/ctkuimanager.c:458
+#: ctk/ctkuimanager.c:458
 msgid "Whether tearoff menu items should be added to menus"
 msgstr ""
 
-#: ctk/deprecated/ctkuimanager.c:465
+#: ctk/ctkuimanager.c:465
 msgid "Merged UI definition"
 msgstr ""
 
-#: ctk/deprecated/ctkuimanager.c:466
+#: ctk/ctkuimanager.c:466
 msgid "An XML string describing the merged UI"
 msgstr ""
 

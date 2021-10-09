@@ -1119,19 +1119,19 @@ msgstr "Veľkosti ikony"
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr "Veľkosť v pixeloch, ktorú majú mať ikony, alebo nula"
 
-#: ctk/deprecated/ctkuimanager.c:463 ctk/ctkcombobox.c:1010
+#: ctk/ctkuimanager.c:463 ctk/ctkcombobox.c:1010
 msgid "Add tearoffs to menus"
 msgstr "Pridať odtrhávatká do ponúk"
 
-#: ctk/deprecated/ctkuimanager.c:464
+#: ctk/ctkuimanager.c:464
 msgid "Whether tearoff menu items should be added to menus"
 msgstr "Určuje, či majú mať položky ponuky ovládací prvok na odtrhnutie"
 
-#: ctk/deprecated/ctkuimanager.c:471
+#: ctk/ctkuimanager.c:471
 msgid "Merged UI definition"
 msgstr "Definícia zlúčeného používateľského rozhrania"
 
-#: ctk/deprecated/ctkuimanager.c:472
+#: ctk/ctkuimanager.c:472
 msgid "An XML string describing the merged UI"
 msgstr "XML reťazec popisujúci zlúťené používateľské rozhranie"
 

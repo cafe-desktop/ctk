@@ -1422,17 +1422,17 @@ msgctxt "Stock label"
 msgid "_Yes"
 msgstr "_Да"
 
-#: ctk/deprecated/ctkuimanager.c:1782
+#: ctk/ctkuimanager.c:1782
 #, c-format
 msgid "Unexpected start tag '%s' on line %d char %d"
 msgstr "Начальный тег «%s» является непредвиденным (строка %d, символ %d)"
 
-#: ctk/deprecated/ctkuimanager.c:1872
+#: ctk/ctkuimanager.c:1872
 #, c-format
 msgid "Unexpected character data on line %d char %d"
 msgstr "Непредвиденные символьные данные (строка %d, символ %d)"
 
-#: ctk/deprecated/ctkuimanager.c:2709
+#: ctk/ctkuimanager.c:2709
 msgid "Empty"
 msgstr "Пусто"
 

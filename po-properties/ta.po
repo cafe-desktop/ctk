@@ -1087,19 +1087,19 @@ msgstr "சின்ன அளவு"
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr "பிக்செல் அளவு சின்னங்கள் இதற்கு வலியுறுத்தியது, அல்லது பூஜ்ஜியமாகும்"
 
-#: ../ctk/deprecated/ctkuimanager.c:460 ../ctk/ctkcombobox.c:834
+#: ../ctk/ctkuimanager.c:460 ../ctk/ctkcombobox.c:834
 msgid "Add tearoffs to menus"
 msgstr "tearoffகளை மெனுக்களுக்கு சேர்"
 
-#: ../ctk/deprecated/ctkuimanager.c:461
+#: ../ctk/ctkuimanager.c:461
 msgid "Whether tearoff menu items should be added to menus"
 msgstr "Whether tearoff menu items should be added to menus"
 
-#: ../ctk/deprecated/ctkuimanager.c:468
+#: ../ctk/ctkuimanager.c:468
 msgid "Merged UI definition"
 msgstr "ஒருங்கிணைந்த UI வரையறை"
 
-#: ../ctk/deprecated/ctkuimanager.c:469
+#: ../ctk/ctkuimanager.c:469
 msgid "An XML string describing the merged UI"
 msgstr "ஒரு XML இணைக்கப்பட்ட UIஐ வரையறுக்கிறது"
 

@@ -1124,19 +1124,19 @@ msgid "The pixel size that icons should be forced to, or zero"
 msgstr ""
 "Размер значка в пикселах, к которому должны быть приведены значки, или ноль"
 
-#: ctk/deprecated/ctkuimanager.c:463 ctk/ctkcombobox.c:1009
+#: ctk/ctkuimanager.c:463 ctk/ctkcombobox.c:1009
 msgid "Add tearoffs to menus"
 msgstr "Добавлять отделённые меню"
 
-#: ctk/deprecated/ctkuimanager.c:464
+#: ctk/ctkuimanager.c:464
 msgid "Whether tearoff menu items should be added to menus"
 msgstr "Следует ли добавлять отделённые меню к меню"
 
-#: ctk/deprecated/ctkuimanager.c:471
+#: ctk/ctkuimanager.c:471
 msgid "Merged UI definition"
 msgstr "Объединённое определение интерфейса"
 
-#: ctk/deprecated/ctkuimanager.c:472
+#: ctk/ctkuimanager.c:472
 msgid "An XML string describing the merged UI"
 msgstr "Строка в формате XML, описывающая объединённый интерфейс"
 

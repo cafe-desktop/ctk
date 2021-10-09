@@ -1119,19 +1119,19 @@ msgstr "Величина иконице"
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr "Величина у тачкама на коју иконице морају бити постављене, или нула"
 
-#: ctk/deprecated/ctkuimanager.c:463 ctk/ctkcombobox.c:1010
+#: ctk/ctkuimanager.c:463 ctk/ctkcombobox.c:1010
 msgid "Add tearoffs to menus"
 msgstr "Додаје отцепљивање у изборнике"
 
-#: ctk/deprecated/ctkuimanager.c:464
+#: ctk/ctkuimanager.c:464
 msgid "Whether tearoff menu items should be added to menus"
 msgstr "Да ли се додају ставке изборника за отцепљивање у изборнике"
 
-#: ctk/deprecated/ctkuimanager.c:471
+#: ctk/ctkuimanager.c:471
 msgid "Merged UI definition"
 msgstr "Спојена одредница сучеља"
 
-#: ctk/deprecated/ctkuimanager.c:472
+#: ctk/ctkuimanager.c:472
 msgid "An XML string describing the merged UI"
 msgstr "ИксМЛ ниска која описује спојено сучеље"
 

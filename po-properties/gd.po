@@ -1140,20 +1140,20 @@ msgstr "Meud na h-ìomhaigheige"
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr "Meud nam piogsailean a thèid èigneachadh no neoni"
 
-#: ctk/deprecated/ctkuimanager.c:457 ctk/ctkcombobox.c:1009
+#: ctk/ctkuimanager.c:457 ctk/ctkcombobox.c:1009
 msgid "Add tearoffs to menus"
 msgstr "Cuir bileagan stiallach ris na clàran-taice"
 
-#: ctk/deprecated/ctkuimanager.c:458
+#: ctk/ctkuimanager.c:458
 msgid "Whether tearoff menu items should be added to menus"
 msgstr ""
 "Co-dhiù an dèid buill stiallach a’ chlàir-thaice a chur ris na clàran-taice"
 
-#: ctk/deprecated/ctkuimanager.c:465
+#: ctk/ctkuimanager.c:465
 msgid "Merged UI definition"
 msgstr "Deifinisean UI co-aonaichte"
 
-#: ctk/deprecated/ctkuimanager.c:466
+#: ctk/ctkuimanager.c:466
 msgid "An XML string describing the merged UI"
 msgstr "Sreang XML a mhìnicheas an UI co-aonaichte"
 

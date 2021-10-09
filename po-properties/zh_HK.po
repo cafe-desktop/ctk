@@ -1025,19 +1025,19 @@ msgstr "圖示大小"
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr "圖示要強制使用的像素大小，或使用零"
 
-#: ../ctk/deprecated/ctkuimanager.c:460 ../ctk/ctkcombobox.c:834
+#: ../ctk/ctkuimanager.c:460 ../ctk/ctkcombobox.c:834
 msgid "Add tearoffs to menus"
 msgstr "在選單上加上可卸下標記"
 
-#: ../ctk/deprecated/ctkuimanager.c:461
+#: ../ctk/ctkuimanager.c:461
 msgid "Whether tearoff menu items should be added to menus"
 msgstr "是否在選單上加上可卸下標記的選單項目"
 
-#: ../ctk/deprecated/ctkuimanager.c:468
+#: ../ctk/ctkuimanager.c:468
 msgid "Merged UI definition"
 msgstr "整合的 UI 定義"
 
-#: ../ctk/deprecated/ctkuimanager.c:469
+#: ../ctk/ctkuimanager.c:469
 msgid "An XML string describing the merged UI"
 msgstr "描述整合 UI 的特定 XML 字串"
 

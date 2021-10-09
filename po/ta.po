@@ -1356,17 +1356,17 @@ msgctxt "Stock label"
 msgid "_Yes"
 msgstr "ஆம் (_Y)"
 
-#: ../ctk/deprecated/ctkuimanager.c:1779
+#: ../ctk/ctkuimanager.c:1779
 #, c-format
 msgid "Unexpected start tag '%s' on line %d char %d"
 msgstr "எதிர்பார்க்காத துவக்க அடையாள-ஒட்டு '%s' வரிசை %d வரியுரு %d இல்"
 
-#: ../ctk/deprecated/ctkuimanager.c:1869
+#: ../ctk/ctkuimanager.c:1869
 #, c-format
 msgid "Unexpected character data on line %d char %d"
 msgstr "வரிசை %d வரியுரு %d இல் எதிர்பார்க்காத வரியுரு தரவு"
 
-#: ../ctk/deprecated/ctkuimanager.c:2724
+#: ../ctk/ctkuimanager.c:2724
 msgid "Empty"
 msgstr "வெற்று"
 

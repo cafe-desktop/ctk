@@ -1134,19 +1134,19 @@ msgstr "Tamaño da icona"
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr "O tamaño do píxel ao que se deben forzar as iconas, ou cero"
 
-#: ctk/deprecated/ctkuimanager.c:463 ctk/ctkcombobox.c:1010
+#: ctk/ctkuimanager.c:463 ctk/ctkcombobox.c:1010
 msgid "Add tearoffs to menus"
 msgstr "Engadir tiradores aos menús"
 
-#: ctk/deprecated/ctkuimanager.c:464
+#: ctk/ctkuimanager.c:464
 msgid "Whether tearoff menu items should be added to menus"
 msgstr "Indica se se deben engadir elementos de menú despregábel aos menús"
 
-#: ctk/deprecated/ctkuimanager.c:471
+#: ctk/ctkuimanager.c:471
 msgid "Merged UI definition"
 msgstr "Definición de IU combinado"
 
-#: ctk/deprecated/ctkuimanager.c:472
+#: ctk/ctkuimanager.c:472
 msgid "An XML string describing the merged UI"
 msgstr "Unha cadea XML que describe o IU combinado"
 

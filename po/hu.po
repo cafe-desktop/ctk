@@ -1412,17 +1412,17 @@ msgctxt "Stock label"
 msgid "_Yes"
 msgstr "_Igen"
 
-#: ctk/deprecated/ctkuimanager.c:1782
+#: ctk/ctkuimanager.c:1782
 #, c-format
 msgid "Unexpected start tag '%s' on line %d char %d"
 msgstr "Váratlan kezdőcímke: „%s” a(z) %d. sor %d. karakterénél"
 
-#: ctk/deprecated/ctkuimanager.c:1872
+#: ctk/ctkuimanager.c:1872
 #, c-format
 msgid "Unexpected character data on line %d char %d"
 msgstr "Váratlan karakteradat a(z) %d. sor %d. karakterénél"
 
-#: ctk/deprecated/ctkuimanager.c:2709
+#: ctk/ctkuimanager.c:2709
 msgid "Empty"
 msgstr "Üres"
 

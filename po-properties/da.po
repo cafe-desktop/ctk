@@ -1169,19 +1169,19 @@ msgid "The pixel size that icons should be forced to, or zero"
 msgstr ""
 "Størrelsen i skærmpunkter som ikoner skal tvinges til at fylde, eller nul"
 
-#: ctk/deprecated/ctkuimanager.c:463 ctk/ctkcombobox.c:1009
+#: ctk/ctkuimanager.c:463 ctk/ctkcombobox.c:1009
 msgid "Add tearoffs to menus"
 msgstr "Tilføj afrivningslinjer til menuer"
 
-#: ctk/deprecated/ctkuimanager.c:464
+#: ctk/ctkuimanager.c:464
 msgid "Whether tearoff menu items should be added to menus"
 msgstr "Om afrivningsmenuelementer skal tilføjes til menuer"
 
-#: ctk/deprecated/ctkuimanager.c:471
+#: ctk/ctkuimanager.c:471
 msgid "Merged UI definition"
 msgstr "Flettet grænsefladedefinition"
 
-#: ctk/deprecated/ctkuimanager.c:472
+#: ctk/ctkuimanager.c:472
 msgid "An XML string describing the merged UI"
 msgstr "En XML-streng der beskriver den flettede grænseflade"
 

@@ -1103,19 +1103,19 @@ msgstr "Ikonstørrelse"
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr ""
 
-#: ../ctk/deprecated/ctkuimanager.c:460 ../ctk/ctkcombobox.c:831
+#: ../ctk/ctkuimanager.c:460 ../ctk/ctkcombobox.c:831
 msgid "Add tearoffs to menus"
 msgstr "Legg til avrivningsfelt til menyer"
 
-#: ../ctk/deprecated/ctkuimanager.c:461
+#: ../ctk/ctkuimanager.c:461
 msgid "Whether tearoff menu items should be added to menus"
 msgstr "Om avrivningsoppføringer skal legges til for menyen"
 
-#: ../ctk/deprecated/ctkuimanager.c:468
+#: ../ctk/ctkuimanager.c:468
 msgid "Merged UI definition"
 msgstr "Flettet brukergrensesnittdefinisjon"
 
-#: ../ctk/deprecated/ctkuimanager.c:469
+#: ../ctk/ctkuimanager.c:469
 msgid "An XML string describing the merged UI"
 msgstr "En XML-streng som beskriver flettet brukergrensesnitt"
 

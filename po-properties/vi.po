@@ -1088,19 +1088,19 @@ msgstr "Cỡ biểu tượng"
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr "Cỡ điểm ảnh mà các biểu tượng bị buộc thành, hoặc không"
 
-#: ctk/deprecated/ctkuimanager.c:460 ctk/ctkcombobox.c:820
+#: ctk/ctkuimanager.c:460 ctk/ctkcombobox.c:820
 msgid "Add tearoffs to menus"
 msgstr "Thêm tách rời vào trình đơn"
 
-#: ctk/deprecated/ctkuimanager.c:461
+#: ctk/ctkuimanager.c:461
 msgid "Whether tearoff menu items should be added to menus"
 msgstr "Có nên thêm mục trình tách rời vào trình đơn hay không"
 
-#: ctk/deprecated/ctkuimanager.c:468
+#: ctk/ctkuimanager.c:468
 msgid "Merged UI definition"
 msgstr "Lời định nghĩa UI đã trộn"
 
-#: ctk/deprecated/ctkuimanager.c:469
+#: ctk/ctkuimanager.c:469
 msgid "An XML string describing the merged UI"
 msgstr "Chuỗi XML diễn tả giao diện người dùng đã trộn"
 

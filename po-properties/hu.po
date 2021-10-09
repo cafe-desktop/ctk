@@ -1116,19 +1116,19 @@ msgstr "Ikonméret"
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr "Az ikonok kényszerítése erre a képpontméretre, vagy nulla."
 
-#: ctk/deprecated/ctkuimanager.c:463 ctk/ctkcombobox.c:1010
+#: ctk/ctkuimanager.c:463 ctk/ctkcombobox.c:1010
 msgid "Add tearoffs to menus"
 msgstr "Leválasztók hozzáadása menükhöz"
 
-#: ctk/deprecated/ctkuimanager.c:464
+#: ctk/ctkuimanager.c:464
 msgid "Whether tearoff menu items should be added to menus"
 msgstr "Felvehetők legyenek-e leválasztható menüelemek a menükbe"
 
-#: ctk/deprecated/ctkuimanager.c:471
+#: ctk/ctkuimanager.c:471
 msgid "Merged UI definition"
 msgstr "Összefésült UI-definíció"
 
-#: ctk/deprecated/ctkuimanager.c:472
+#: ctk/ctkuimanager.c:472
 msgid "An XML string describing the merged UI"
 msgstr "Az összefésült felhasználói felületet leíró XML karakterlánc"
 

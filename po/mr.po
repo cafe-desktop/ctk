@@ -1366,17 +1366,17 @@ msgctxt "Stock label"
 msgid "_Yes"
 msgstr "होय (_Y)"
 
-#: ../ctk/deprecated/ctkuimanager.c:1779
+#: ../ctk/ctkuimanager.c:1779
 #, c-format
 msgid "Unexpected start tag '%s' on line %d char %d"
 msgstr "ओळ %2$d char %3$d अनपेक्षीत प्रारंभ टॅग '%1$s'"
 
-#: ../ctk/deprecated/ctkuimanager.c:1869
+#: ../ctk/ctkuimanager.c:1869
 #, c-format
 msgid "Unexpected character data on line %d char %d"
 msgstr "ओळ %d char %d अपरिचीत अक्षर माहिती"
 
-#: ../ctk/deprecated/ctkuimanager.c:2724
+#: ../ctk/ctkuimanager.c:2724
 msgid "Empty"
 msgstr "रिकामे"
 

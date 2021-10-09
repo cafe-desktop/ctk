@@ -1071,19 +1071,19 @@ msgstr "ચિહ્ન માપ"
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr "પિક્સેલ માપ કે જે ચિહ્નોને દબાણ કરવુ જોઇએ, અથવા શૂન્ય છે"
 
-#: ../ctk/deprecated/ctkuimanager.c:460 ../ctk/ctkcombobox.c:834
+#: ../ctk/ctkuimanager.c:460 ../ctk/ctkcombobox.c:834
 msgid "Add tearoffs to menus"
 msgstr "મેનુઓમાં ટ્રેડઓફ ઉમેરો"
 
-#: ../ctk/deprecated/ctkuimanager.c:461
+#: ../ctk/ctkuimanager.c:461
 msgid "Whether tearoff menu items should be added to menus"
 msgstr "શું મેનુની વસ્તુઓ ચકાસાયેલી છે"
 
-#: ../ctk/deprecated/ctkuimanager.c:468
+#: ../ctk/ctkuimanager.c:468
 msgid "Merged UI definition"
 msgstr "ભેળવેલ UI વ્યાખ્યા"
 
-#: ../ctk/deprecated/ctkuimanager.c:469
+#: ../ctk/ctkuimanager.c:469
 msgid "An XML string describing the merged UI"
 msgstr "XML વાક્ય કે જે ભેળવેલ UI નું વર્ણન કરે છે"
 

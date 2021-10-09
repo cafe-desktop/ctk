@@ -1157,20 +1157,20 @@ msgstr "Taille de l’icône"
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr "La taille en pixels à laquelle l’icône doit être forcée, ou zéro"
 
-#: ctk/deprecated/ctkuimanager.c:463 ctk/ctkcombobox.c:1010
+#: ctk/ctkuimanager.c:463 ctk/ctkcombobox.c:1010
 msgid "Add tearoffs to menus"
 msgstr "Rendre un menu détachable"
 
-#: ctk/deprecated/ctkuimanager.c:464
+#: ctk/ctkuimanager.c:464
 msgid "Whether tearoff menu items should be added to menus"
 msgstr ""
 "Indique si des éléments séparables de menu doivent être incorporés aux menus"
 
-#: ctk/deprecated/ctkuimanager.c:471
+#: ctk/ctkuimanager.c:471
 msgid "Merged UI definition"
 msgstr "Définition de l’interface fusionnée"
 
-#: ctk/deprecated/ctkuimanager.c:472
+#: ctk/ctkuimanager.c:472
 msgid "An XML string describing the merged UI"
 msgstr "Une chaîne XML décrivant l’interface utilisateur fusionnée"
 

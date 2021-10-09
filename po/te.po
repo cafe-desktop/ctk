@@ -1349,17 +1349,17 @@ msgctxt "Stock label"
 msgid "_Yes"
 msgstr "అవును (_Y)"
 
-#: ../ctk/deprecated/ctkuimanager.c:1779
+#: ../ctk/ctkuimanager.c:1779
 #, c-format
 msgid "Unexpected start tag '%s' on line %d char %d"
 msgstr "అనుకోని ప్రారంభ ట్యాగ్ '%s' వరుస %d అక్షరం %d పైన"
 
-#: ../ctk/deprecated/ctkuimanager.c:1869
+#: ../ctk/ctkuimanager.c:1869
 #, c-format
 msgid "Unexpected character data on line %d char %d"
 msgstr "అనుకోని అక్షర డేటా వరుస %d అక్షరం %d పైన"
 
-#: ../ctk/deprecated/ctkuimanager.c:2724
+#: ../ctk/ctkuimanager.c:2724
 msgid "Empty"
 msgstr "ఖాళీ"
 
