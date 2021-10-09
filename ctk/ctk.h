@@ -179,6 +179,8 @@
 #include <ctk/ctkradiotoolbutton.h>
 #include <ctk/ctkrange.h>
 #include <ctk/ctkrc.h>
+#include <ctk/ctkradioaction.h>
+#include <ctk/ctkrecentaction.h>
 #include <ctk/ctkrecentchooser.h>
 #include <ctk/ctkrecentchooserdialog.h>
 #include <ctk/ctkrecentchoosermenu.h>
@@ -276,8 +278,6 @@
 #include <ctk/deprecated/ctkhseparator.h>
 #include <ctk/deprecated/ctkmisc.h>
 #include <ctk/deprecated/ctknumerableicon.h>
-#include <ctk/ctkradioaction.h>
-#include <ctk/deprecated/ctkrecentaction.h>
 #include <ctk/deprecated/ctkstatusicon.h>
 #include <ctk/deprecated/ctkstyleproperties.h>
 #include <ctk/deprecated/ctksymboliccolor.h>

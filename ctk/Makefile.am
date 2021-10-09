@@ -278,6 +278,7 @@ ctk_public_h_sources = 		\
 	ctkradiotoolbutton.h	\
 	ctkrange.h		\
 	ctkrc.h			\
+	ctkrecentaction.h	\
 	ctkrecentchooser.h	\
 	ctkrecentchooserdialog.h \
 	ctkrecentchoosermenu.h	\
@@ -898,6 +899,7 @@ ctk_base_c_sources = 		\
 	ctkrange.c		\
 	ctkrbtree.c		\
 	ctkrc.c			\
+	ctkrecentaction.c	\
 	ctkrecentchooserdefault.c \
 	ctkrecentchooserdialog.c \
 	ctkrecentchoosermenu.c	\
