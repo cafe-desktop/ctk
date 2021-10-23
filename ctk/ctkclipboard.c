@@ -1504,7 +1504,7 @@ clipboard_rich_text_received_func (CtkClipboard *clipboard,
 {
   WaitResults *results = data;
 
-  results->data = g_memdup (text, length);
+  results->data = g_memdup2 (text, length);
   results->format = format;
   results->length = length;
   g_main_loop_quit (results->loop);
@@ -1873,8 +1873,8 @@ ctk_clipboard_wait_for_targets (CtkClipboard  *clipboard,
  	*n_targets = clipboard->n_cached_targets;
  
       if (targets)
- 	*targets = g_memdup (clipboard->cached_targets,
- 			     clipboard->n_cached_targets * sizeof (CdkAtom));
+ 	*targets = g_memdup2 (clipboard->cached_targets,
+ 			      clipboard->n_cached_targets * sizeof (CdkAtom));
 
        return TRUE;
     }
@@ -1897,8 +1897,8 @@ ctk_clipboard_wait_for_targets (CtkClipboard  *clipboard,
       if (cdk_display_supports_selection_notification (ctk_clipboard_get_display (clipboard)))
  	{
  	  clipboard->n_cached_targets = tmp_n_targets;
- 	  clipboard->cached_targets = g_memdup (tmp_targets,
- 						tmp_n_targets * sizeof (CdkAtom));
+ 	  clipboard->cached_targets = g_memdup2 (tmp_targets,
+ 						 tmp_n_targets * sizeof (CdkAtom));
  	}
  
       if (n_targets)

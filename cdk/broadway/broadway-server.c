@@ -516,7 +516,7 @@ parse_input_message (BroadwayInput *input, const unsigned char *message)
     break;
   }
 
-  server->input_messages = g_list_append (server->input_messages, g_memdup (&msg, sizeof (msg)));
+  server->input_messages = g_list_append (server->input_messages, g_memdup2 (&msg, sizeof (msg)));
 
 }
 

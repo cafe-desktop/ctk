@@ -666,7 +666,7 @@ cdk_event_copy (const CdkEvent *event)
 
 #ifdef CDK_WINDOWING_WIN32
       new_private->translation_len = private->translation_len;
-      new_private->translation = g_memdup (private->translation, private->translation_len * sizeof (private->translation[0]));
+      new_private->translation = g_memdup2 (private->translation, private->translation_len * sizeof (private->translation[0]));
 #endif
     }
 
@@ -707,8 +707,8 @@ cdk_event_copy (const CdkEvent *event)
     case CDK_3BUTTON_PRESS:
     case CDK_BUTTON_RELEASE:
       if (event->button.axes)
-        new_event->button.axes = g_memdup (event->button.axes,
-                                           sizeof (gdouble) * cdk_device_get_n_axes (event->button.device));
+        new_event->button.axes = g_memdup2 (event->button.axes,
+                                            sizeof (gdouble) * cdk_device_get_n_axes (event->button.device));
       break;
 
     case CDK_TOUCH_BEGIN:
@@ -716,14 +716,14 @@ cdk_event_copy (const CdkEvent *event)
     case CDK_TOUCH_END:
     case CDK_TOUCH_CANCEL:
       if (event->touch.axes)
-        new_event->touch.axes = g_memdup (event->touch.axes,
+        new_event->touch.axes = g_memdup2 (event->touch.axes,
                                            sizeof (gdouble) * cdk_device_get_n_axes (event->touch.device));
       break;
 
     case CDK_MOTION_NOTIFY:
       if (event->motion.axes)
-        new_event->motion.axes = g_memdup (event->motion.axes,
-                                           sizeof (gdouble) * cdk_device_get_n_axes (event->motion.device));
+        new_event->motion.axes = g_memdup2 (event->motion.axes,
+                                            sizeof (gdouble) * cdk_device_get_n_axes (event->motion.device));
       break;
 
     case CDK_OWNER_CHANGE:

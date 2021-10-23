@@ -178,15 +178,15 @@ update_axes_from_event (CdkEvent  *event,
   if (event->type == CDK_MOTION_NOTIFY)
     {
       info->axes =
-      g_memdup (event->motion.axes,
-                sizeof (gdouble) * cdk_device_get_n_axes (source_device));
+      g_memdup2 (event->motion.axes,
+                 sizeof (gdouble) * cdk_device_get_n_axes (source_device));
     }
   else if (event->type == CDK_BUTTON_PRESS ||
            event->type == CDK_BUTTON_RELEASE)
     {
       info->axes =
-      g_memdup (event->button.axes,
-                sizeof (gdouble) * cdk_device_get_n_axes (source_device));
+      g_memdup2 (event->button.axes,
+                 sizeof (gdouble) * cdk_device_get_n_axes (source_device));
     }
 
   if (cdk_event_get_coords (event, &x, &y))

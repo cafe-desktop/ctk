@@ -6380,8 +6380,8 @@ localtime_to_utctime (const char *local_time)
       time_t rawtime;
       time (&rawtime);
 
-      actual_utc_time = g_memdup (gmtime (&rawtime), sizeof (struct tm));
-      actual_local_time = g_memdup (localtime (&rawtime), sizeof (struct tm));
+      actual_utc_time = g_memdup2 (gmtime (&rawtime), sizeof (struct tm));
+      actual_local_time = g_memdup2 (localtime (&rawtime), sizeof (struct tm));
 
       diff_time.tm_hour = actual_utc_time->tm_hour - actual_local_time->tm_hour;
       diff_time.tm_min  = actual_utc_time->tm_min  - actual_local_time->tm_min;

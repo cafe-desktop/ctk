@@ -351,7 +351,7 @@ stored_selection_add_data (StoredSelection *stored_selection,
   if (mode == CDK_PROP_MODE_REPLACE)
     {
       g_free (stored_selection->data);
-      stored_selection->data = g_memdup (data, data_len);
+      stored_selection->data = g_memdup2 (data, data_len);
       stored_selection->data_len = data_len;
     }
   else

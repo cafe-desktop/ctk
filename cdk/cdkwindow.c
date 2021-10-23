@@ -9420,8 +9420,8 @@ proxy_pointer_event (CdkDisplay                 *display,
 				     &event->touch.x_root,
 				     &event->touch.y_root);
 
-	  event->touch.axes = g_memdup (source_event->touch.axes,
-					sizeof (gdouble) * cdk_device_get_n_axes (source_event->touch.device));
+	  event->touch.axes = g_memdup2 (source_event->touch.axes,
+					 sizeof (gdouble) * cdk_device_get_n_axes (source_event->touch.device));
 	}
       else
 	{
@@ -9437,11 +9437,11 @@ proxy_pointer_event (CdkDisplay                 *display,
 				     &event->motion.y_root);
 
 	  if (is_touch_type (source_event->type))
-	    event->motion.axes = g_memdup (source_event->touch.axes,
-					   sizeof (gdouble) * cdk_device_get_n_axes (source_event->touch.device));
+	    event->motion.axes = g_memdup2 (source_event->touch.axes,
+					    sizeof (gdouble) * cdk_device_get_n_axes (source_event->touch.device));
 	  else
-	    event->motion.axes = g_memdup (source_event->motion.axes,
-					   sizeof (gdouble) * cdk_device_get_n_axes (source_event->motion.device));
+	    event->motion.axes = g_memdup2 (source_event->motion.axes,
+					    sizeof (gdouble) * cdk_device_get_n_axes (source_event->motion.device));
 	}
 
       /* Just insert the event */
@@ -9654,14 +9654,14 @@ proxy_button_event (CdkEvent *source_event,
           if (type == CDK_BUTTON_RELEASE)
             event->button.state |= CDK_BUTTON1_MASK;
 	  event->button.button = 1;
-	  event->button.axes = g_memdup (source_event->touch.axes,
-					 sizeof (gdouble) * cdk_device_get_n_axes (source_event->touch.device));
+	  event->button.axes = g_memdup2 (source_event->touch.axes,
+					  sizeof (gdouble) * cdk_device_get_n_axes (source_event->touch.device));
 	}
       else
 	{
 	  event->button.button = source_event->button.button;
-	  event->button.axes = g_memdup (source_event->button.axes,
-					 sizeof (gdouble) * cdk_device_get_n_axes (source_event->button.device));
+	  event->button.axes = g_memdup2 (source_event->button.axes,
+					  sizeof (gdouble) * cdk_device_get_n_axes (source_event->button.device));
 	}
 
       if (type == CDK_BUTTON_PRESS)
@@ -9697,7 +9697,7 @@ proxy_button_event (CdkEvent *source_event,
 				 &event->touch.y_root);
       event->touch.state = state;
       event->touch.device = source_event->touch.device;
-      event->touch.axes = g_memdup (source_event->touch.axes,
+      event->touch.axes = g_memdup2 (source_event->touch.axes,
                                      sizeof (gdouble) * cdk_device_get_n_axes (source_event->touch.device));
       event->touch.sequence = source_event->touch.sequence;
       event->touch.emulating_pointer = source_event->touch.emulating_pointer;

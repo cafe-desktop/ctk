@@ -3935,7 +3935,7 @@ _ctk_range_get_stop_positions (CtkRange  *range,
   ctk_range_calc_marks (range);
 
   if (values)
-    *values = g_memdup (priv->mark_pos, priv->n_marks * sizeof (gint));
+    *values = g_memdup2 (priv->mark_pos, priv->n_marks * sizeof (gint));
 
   return priv->n_marks;
 }

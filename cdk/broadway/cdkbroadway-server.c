@@ -219,7 +219,7 @@ parse_all_input (CdkBroadwayServer *server)
       if (p + size > end)
 	break;
 
-      reply = g_memdup (p, size);
+      reply = g_memdup2 (p, size);
       p += size;
 
       server->incomming = g_list_append (server->incomming, reply);

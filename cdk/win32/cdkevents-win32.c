@@ -1034,7 +1034,7 @@ fill_key_event_string (CdkEvent *event)
 	    c &= 0x1F;
 	  else if (c == '2')
 	    {
-	      event->key.string = g_memdup ("\0\0", 2);
+	      event->key.string = g_memdup2 ("\0\0", 2);
 	      event->key.length = 1;
 	      return;
 	    }

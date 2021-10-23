@@ -4131,9 +4131,9 @@ _ctk_widget_emulate_press (CtkWidget      *widget,
       press->button.y_root = event->motion.y_root;
       press->button.state = event->motion.state;
 
-      press->button.axes = g_memdup (event->motion.axes,
-                                     sizeof (gdouble) *
-                                     cdk_device_get_n_axes (event->motion.device));
+      press->button.axes = g_memdup2 (event->motion.axes,
+                                      sizeof (gdouble) *
+                                      cdk_device_get_n_axes (event->motion.device));
 
       if (event->motion.state & CDK_BUTTON3_MASK)
         press->button.button = 3;
@@ -7278,8 +7278,8 @@ ctk_widget_real_touch_event (CtkWidget     *widget,
       bevent->motion.y = event->y;
       bevent->motion.device = event->device;
       bevent->motion.is_hint = FALSE;
-      bevent->motion.axes = g_memdup (event->axes,
-                                      sizeof (gdouble) * cdk_device_get_n_axes (event->device));
+      bevent->motion.axes = g_memdup2 (event->axes,
+                                       sizeof (gdouble) * cdk_device_get_n_axes (event->device));
       cdk_event_set_source_device (bevent, cdk_event_get_source_device ((CdkEvent*)event));
 
       if (event->type == CDK_TOUCH_UPDATE)
@@ -7317,8 +7317,8 @@ ctk_widget_real_touch_event (CtkWidget     *widget,
       bevent->button.x = event->x;
       bevent->button.y = event->y;
       bevent->button.device = event->device;
-      bevent->button.axes = g_memdup (event->axes,
-                                      sizeof (gdouble) * cdk_device_get_n_axes (event->device));
+      bevent->button.axes = g_memdup2 (event->axes,
+                                       sizeof (gdouble) * cdk_device_get_n_axes (event->device));
       cdk_event_set_source_device (bevent, cdk_event_get_source_device ((CdkEvent*)event));
 
       if (event->type == CDK_TOUCH_END)

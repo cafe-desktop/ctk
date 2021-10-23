@@ -2069,7 +2069,7 @@ translate_keyboard_string (CdkEventKey *event)
             c &= 0x1F;
           else if (c == '2')
             {
-              event->string = g_memdup ("\0\0", 2);
+              event->string = g_memdup2 ("\0\0", 2);
               event->length = 1;
               buf[0] = '\0';
               return;
@@ -3550,17 +3550,17 @@ cdk_wayland_tablet_flush_frame_event (CdkWaylandTabletData *tablet,
     case CDK_MOTION_NOTIFY:
       event->motion.time = time;
       event->motion.axes =
-        g_memdup (tablet->axes,
-                  sizeof (gdouble) *
-                  cdk_device_get_n_axes (tablet->current_device));
+        g_memdup2 (tablet->axes,
+                   sizeof (gdouble) *
+                   cdk_device_get_n_axes (tablet->current_device));
       break;
     case CDK_BUTTON_PRESS:
     case CDK_BUTTON_RELEASE:
       event->button.time = time;
       event->button.axes =
-        g_memdup (tablet->axes,
-                  sizeof (gdouble) *
-                  cdk_device_get_n_axes (tablet->current_device));
+        g_memdup2 (tablet->axes,
+                   sizeof (gdouble) *
+                   cdk_device_get_n_axes (tablet->current_device));
       break;
     case CDK_SCROLL:
       event->scroll.time = time;

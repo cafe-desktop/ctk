@@ -409,7 +409,7 @@ ctk_tree_model_css_node_newv (CtkTreeModelCssNodeGetFunc  get_func,
 
   priv->get_func = get_func;
   priv->n_columns = n_columns;
-  priv->column_types = g_memdup (types, sizeof (GType) * n_columns);
+  priv->column_types = g_memdup2 (types, sizeof (GType) * n_columns);
 
   return CTK_TREE_MODEL (result);
 }

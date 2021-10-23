@@ -770,7 +770,7 @@ _cdk_x11_event_translate_keyboard_string (CdkEventKey *event)
           if ((c >= '@' && c < '\177') || c == ' ') c &= 0x1F;
           else if (c == '2')
             {
-              event->string = g_memdup ("\0\0", 2);
+              event->string = g_memdup2 ("\0\0", 2);
               event->length = 1;
               buf[0] = '\0';
               return;

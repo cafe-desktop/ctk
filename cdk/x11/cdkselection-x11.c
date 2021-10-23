@@ -284,7 +284,7 @@ _cdk_x11_display_get_selection_property (CdkDisplay  *display,
           length += 1;
 
           if (data)
-            *data = g_memdup (t, length);
+            *data = g_memdup2 (t, length);
         }
 
       if (t)

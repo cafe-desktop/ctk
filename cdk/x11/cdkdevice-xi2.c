@@ -926,7 +926,7 @@ cdk_x11_device_xi2_store_axes (CdkX11DeviceXI2 *device,
   g_free (device->last_axes);
 
   if (axes && n_axes)
-    device->last_axes = g_memdup (axes, sizeof (gdouble) * n_axes);
+    device->last_axes = g_memdup2 (axes, sizeof (gdouble) * n_axes);
   else
     device->last_axes = NULL;
 }

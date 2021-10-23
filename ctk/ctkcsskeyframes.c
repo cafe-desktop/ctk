@@ -450,9 +450,9 @@ _ctk_css_keyframes_compute (CtkCssKeyframes         *keyframes,
 
   resolved = ctk_css_keyframes_alloc ();
   resolved->n_keyframes = keyframes->n_keyframes;
-  resolved->keyframe_progress = g_memdup (keyframes->keyframe_progress, keyframes->n_keyframes * sizeof (double));
+  resolved->keyframe_progress = g_memdup2 (keyframes->keyframe_progress, keyframes->n_keyframes * sizeof (double));
   resolved->n_properties = keyframes->n_properties;
-  resolved->property_ids = g_memdup (keyframes->property_ids, keyframes->n_properties * sizeof (guint));
+  resolved->property_ids = g_memdup2 (keyframes->property_ids, keyframes->n_properties * sizeof (guint));
   resolved->values = g_new0 (CtkCssValue *, resolved->n_keyframes * resolved->n_properties);
 
   for (p = 0; p < resolved->n_properties; p++)

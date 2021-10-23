@@ -421,10 +421,10 @@ _ctk_cell_area_box_init_groups (CtkCellAreaBoxContext *box_context,
   g_array_set_size (priv->base_heights, n_groups);
 
   g_free (priv->expand);
-  priv->expand = g_memdup (expand_groups, n_groups * sizeof (gboolean));
+  priv->expand = g_memdup2 (expand_groups, n_groups * sizeof (gboolean));
 
   g_free (priv->align);
-  priv->align = g_memdup (align_groups, n_groups * sizeof (gboolean));
+  priv->align = g_memdup2 (align_groups, n_groups * sizeof (gboolean));
 }
 
 void

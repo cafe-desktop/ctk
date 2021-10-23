@@ -1955,7 +1955,7 @@ ctk_selection_data_get_targets (const CtkSelectionData  *selection_data,
       selection_data->type == CDK_SELECTION_TYPE_ATOM)
     {
       if (targets)
-	*targets = g_memdup (selection_data->data, selection_data->length);
+	*targets = g_memdup2 (selection_data->data, selection_data->length);
       if (n_atoms)
 	*n_atoms = selection_data->length / sizeof (CdkAtom);
 

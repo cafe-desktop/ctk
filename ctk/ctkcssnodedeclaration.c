@@ -78,7 +78,7 @@ ctk_css_node_declaration_make_writable (CtkCssNodeDeclaration **decl)
 
   (*decl)->refcount--;
 
-  *decl = g_memdup (*decl, sizeof_this_node (*decl));
+  *decl = g_memdup2 (*decl, sizeof_this_node (*decl));
   (*decl)->refcount = 1;
 }
 

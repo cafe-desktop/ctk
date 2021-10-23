@@ -855,7 +855,7 @@ draw_shadow_corner (const CtkCssValue   *shadow,
             if (i++ % 4 == 0)
               g_hash_table_iter_remove (&iter);
         }
-      g_hash_table_insert (corner_mask_cache, g_memdup (&key, sizeof (key)), mask);
+      g_hash_table_insert (corner_mask_cache, g_memdup2 (&key, sizeof (key)), mask);
     }
 
   cdk_cairo_set_source_rgba (cr, _ctk_css_rgba_value_get_rgba (shadow->color));

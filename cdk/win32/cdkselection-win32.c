@@ -1570,7 +1570,7 @@ transmute_selection_format (UINT          from_format,
        from_format == _cdk_win32_selection_cf (CDK_WIN32_CF_INDEX_GIF)))
     {
       /* No transmutation needed */
-      *set_data = g_memdup (data, length);
+      *set_data = g_memdup2 (data, length);
       *set_data_length = length;
     }
   else if (to_target == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_UTF8_STRING) &&
@@ -1615,7 +1615,7 @@ transmute_selection_target (CdkAtom       from_target,
        to_format == _cdk_win32_selection_cf (CDK_WIN32_CF_INDEX_GIF)))
     {
       /* No conversion needed */
-      *set_data = g_memdup (data, length);
+      *set_data = g_memdup2 (data, length);
       *set_data_length = length;
     }
   else if (from_target == _cdk_win32_selection_atom (CDK_WIN32_ATOM_INDEX_UTF8_STRING) &&
@@ -1764,7 +1764,7 @@ convert_clipboard_selection_to_target (CdkWindow *requestor,
         }
       else
         {
-          data = g_memdup (ptr, length);
+          data = g_memdup2 (ptr, length);
           data_len = length;
         }
 
@@ -2188,7 +2188,7 @@ convert_dnd_selection_to_target (CdkAtom    target,
             }
           else
             {
-              data = g_memdup (ptr, length);
+              data = g_memdup2 (ptr, length);
               data_len = length;
             }
 
@@ -2357,7 +2357,7 @@ _cdk_win32_selection_property_change (CdkWin32Selection *win32_sel,
       else
         {
           set_data_length = byte_length;
-          set_data = g_memdup (data, set_data_length);
+          set_data = g_memdup2 (data, set_data_length);
         }
 
       if (set_data != NULL && set_data_length > 0)
