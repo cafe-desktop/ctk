@@ -823,7 +823,7 @@ ctk_accel_map_foreach (gpointer           data,
       gboolean changed = entry->accel_key != entry->std_accel_key || entry->accel_mods != entry->std_accel_mods;
 
       for (node = accel_filters; node; node = node->next)
-	if (g_pattern_match_string (node->data, entry->accel_path))
+	if (g_pattern_spec_match_string (node->data, entry->accel_path))
 	  goto skip_accel;
       foreach_func (data, entry->accel_path, entry->accel_key, entry->accel_mods, changed);
     skip_accel:
