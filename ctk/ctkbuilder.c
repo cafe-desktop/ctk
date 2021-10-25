@@ -458,7 +458,6 @@ ctk_builder_get_parameters (CtkBuilder  *builder,
                             GType        object_type,
                             const gchar *object_name,
                             GSList      *properties,
-                            gsize        n_properties,
                             GParamFlags  filter_flags,
                             GArray      **parameters,
                             GArray      **filtered_parameters)
@@ -467,23 +466,10 @@ ctk_builder_get_parameters (CtkBuilder  *builder,
   DelayedProperty *property;
   GError *error = NULL;
 
-  /* Create the two arrays with size @n_properties. The total number of elements
-   * between them will eventually be @n_properties, but it’s more important to
-   * avoid realloc()/memcpy() calls on these arrays than to be tight with memory
-   * allocations (and overallocating by 100% is no worse than what #GArray does
-   * internally with doubling its size every time it’s full).
-   *
-   * @n_properties is typically ≤ 8, so it’s
-   *  (a) not much of an impact to overallocate
-   *  (b) disproportionally subject to realloc()/memcpy() since the array size
-   *      doubles 3 times in the first 8 elements
-   *
-   * ctk_builder_get_parameters() gets called twice for every object in every
-   * #CtkBuilder file, so it’s a fairly hot path. */
   if (parameters)
-    *parameters = g_array_sized_new (FALSE, FALSE, sizeof (GParameter), n_properties);
+    *parameters = g_array_new (FALSE, FALSE, sizeof (GParameter));
   if (filtered_parameters)
-    *filtered_parameters = g_array_sized_new (FALSE, FALSE, sizeof (GParameter), n_properties);
+    *filtered_parameters = g_array_new (FALSE, FALSE, sizeof (GParameter));
 
   for (l = properties; l; l = l->next)
     {
@@ -684,7 +670,6 @@ _ctk_builder_construct (CtkBuilder  *builder,
   ctk_builder_get_parameters (builder, info->type,
                               info->id,
                               info->properties,
-                              info->n_properties,
                               param_filter_flags,
                               &parameters,
                               &construct_parameters);
@@ -829,7 +814,6 @@ _ctk_builder_apply_properties (CtkBuilder  *builder,
   ctk_builder_get_parameters (builder, info->type,
                               info->id,
                               info->properties,
-                              info->n_properties,
                               G_PARAM_CONSTRUCT_ONLY,
                               &parameters, NULL);
 
