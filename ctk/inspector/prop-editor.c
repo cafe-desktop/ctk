@@ -1442,10 +1442,10 @@ add_binding_info (CtkInspectorPropEditor *editor)
   g_hash_table_iter_init (&iter, bindings);
   while (g_hash_table_iter_next (&iter, (gpointer*)&binding, NULL))
     {
-      if (g_binding_get_source (binding) == object &&
+      if (g_binding_dup_source (binding) == object &&
           g_str_equal (g_binding_get_source_property (binding), name))
         {
-          other = g_binding_get_target (binding);
+          other = g_binding_dup_target (binding);
           property = g_binding_get_target_property (binding);
           if (g_binding_get_flags (binding) & G_BINDING_INVERT_BOOLEAN)
             {
@@ -1458,10 +1458,10 @@ add_binding_info (CtkInspectorPropEditor *editor)
               tip = NULL;
             }
         }
-      else if (g_binding_get_target (binding) == object &&
+      else if (g_binding_dup_target (binding) == object &&
                g_str_equal (g_binding_get_target_property (binding), name))
         {
-          other = g_binding_get_source (binding);
+          other = g_binding_dup_source (binding);
           property = g_binding_get_source_property (binding);
           if (g_binding_get_flags (binding) & G_BINDING_INVERT_BOOLEAN)
             {
