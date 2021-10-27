@@ -1900,12 +1900,6 @@ ctk_real_menu_item_get_label (CtkMenuItem *menu_item)
 }
 
 static void
-free_timeval (GTimeVal *val)
-{
-  g_slice_free (GTimeVal, val);
-}
-
-static void
 popped_up_cb (CtkMenu            *menu,
               const CdkRectangle *flipped_rect,
               const CdkRectangle *final_rect,
@@ -1967,13 +1961,12 @@ ctk_menu_item_real_popup_submenu (CtkWidget      *widget,
 
       if (remember_exact_time)
         {
-          GTimeVal *popup_time = g_slice_new0 (GTimeVal);
+          gint64 popup_time;
 
-          g_get_current_time (popup_time);
+          popup_time = g_get_monotonic_time ();
 
-          g_object_set_data_full (G_OBJECT (priv->submenu),
-                                  "ctk-menu-exact-popup-time", popup_time,
-                                  (GDestroyNotify) free_timeval);
+          g_object_set_data (G_OBJECT (priv->submenu),
+                             "ctk-menu-exact-popup-time", (gpointer) popup_time);
         }
       else
         {
