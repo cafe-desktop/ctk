@@ -794,7 +794,7 @@ ctk_menu_shell_button_release (CtkWidget      *widget,
               else if (CTK_MENU_SHELL_GET_CLASS (menu_shell)->submenu_placement != CTK_TOP_BOTTOM ||
                        priv->activated_submenu)
                 {
-                  GTimeVal *popup_time;
+                  gint64 popup_time;
                   gint64 usec_since_popup = 0;
 
                   popup_time = g_object_get_data (G_OBJECT (submenu),
@@ -802,14 +802,14 @@ ctk_menu_shell_button_release (CtkWidget      *widget,
 
                   if (popup_time)
                     {
-                      GTimeVal current_time;
+                      gint64 current_time;
 
-                      g_get_current_time (&current_time);
+                      current_time = g_get_monotonic_time ();
 
-                      usec_since_popup = ((gint64) current_time.tv_sec * 1000 * 1000 +
-                                          (gint64) current_time.tv_usec -
-                                          (gint64) popup_time->tv_sec * 1000 * 1000 -
-                                          (gint64) popup_time->tv_usec);
+                      usec_since_popup = ((gint64) (current_time / G_USEC_PER_SEC) * 1000 * 1000 +
+                                          (gint64) (current_time % G_USEC_PER_SEC) -
+                                          (gint64) (popup_time / G_USEC_PER_SEC) * 1000 * 1000 -
+                                          (gint64) (popup_time % G_USEC_PER_SEC));
 
                       g_object_set_data (G_OBJECT (submenu),
                                          "ctk-menu-exact-popup-time", NULL);
