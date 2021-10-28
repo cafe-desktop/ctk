@@ -797,8 +797,8 @@ ctk_menu_shell_button_release (CtkWidget      *widget,
                   gint64 popup_time;
                   gint64 usec_since_popup = 0;
 
-                  popup_time = g_object_get_data (G_OBJECT (submenu),
-                                                  "ctk-menu-exact-popup-time");
+                  popup_time = (gint64) g_object_get_data (G_OBJECT (submenu),
+                                                           "ctk-menu-exact-popup-time");
 
                   if (popup_time)
                     {

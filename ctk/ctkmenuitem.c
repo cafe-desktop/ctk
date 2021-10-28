@@ -1966,7 +1966,7 @@ ctk_menu_item_real_popup_submenu (CtkWidget      *widget,
           popup_time = g_get_monotonic_time ();
 
           g_object_set_data (G_OBJECT (priv->submenu),
-                             "ctk-menu-exact-popup-time", popup_time);
+                             "ctk-menu-exact-popup-time", (gpointer) popup_time);
         }
       else
         {
