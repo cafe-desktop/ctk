@@ -1965,13 +1965,13 @@ ctk_menu_item_real_popup_submenu (CtkWidget      *widget,
 
           popup_time = g_get_monotonic_time ();
 
-          g_object_set (G_OBJECT (priv->submenu),
-                        "ctk-menu-exact-popup-time", popup_time, NULL);
+          g_object_set_data (G_OBJECT (priv->submenu),
+                             "ctk-menu-exact-popup-time", popup_time);
         }
       else
         {
-          g_object_set (G_OBJECT (priv->submenu),
-                             "ctk-menu-exact-popup-time", 0, NULL);
+          g_object_set_data (G_OBJECT (priv->submenu),
+                             "ctk-menu-exact-popup-time", NULL);
         }
 
       /* Position the submenu at the menu item if it is mapped.
@@ -2159,8 +2159,8 @@ _ctk_menu_item_popdown_submenu (CtkWidget *widget)
 
   if (priv->submenu)
     {
-      g_object_set (G_OBJECT (priv->submenu),
-                    "ctk-menu-exact-popup-time", 0, NULL);
+      g_object_set_data (G_OBJECT (priv->submenu),
+                         "ctk-menu-exact-popup-time", NULL);
 
       if (priv->timer)
         {

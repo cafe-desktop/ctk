@@ -797,8 +797,8 @@ ctk_menu_shell_button_release (CtkWidget      *widget,
                   gint64 popup_time;
                   gint64 usec_since_popup = 0;
 
-                  g_object_get (G_OBJECT (submenu),
-                                "ctk-menu-exact-popup-time", &popup_time, NULL);
+                  popup_time = g_object_get_data (G_OBJECT (submenu),
+                                                  "ctk-menu-exact-popup-time");
 
                   if (popup_time)
                     {
@@ -811,8 +811,8 @@ ctk_menu_shell_button_release (CtkWidget      *widget,
                                           (gint64) (popup_time / G_USEC_PER_SEC) * 1000 * 1000 -
                                           (gint64) (popup_time % G_USEC_PER_SEC));
 
-                      g_object_set (G_OBJECT (submenu),
-                                    "ctk-menu-exact-popup-time", 0, NULL);
+                      g_object_set_data (G_OBJECT (submenu),
+                                         "ctk-menu-exact-popup-time", NULL);
                     }
 
                   /* Only close the submenu on click if we opened the
