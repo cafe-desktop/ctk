@@ -86,9 +86,6 @@ enum {
   PROP_ACTION_TARGET
 };
 
-static void ctk_tool_button_init          (CtkToolButton      *button,
-					   CtkToolButtonClass *klass);
-static void ctk_tool_button_class_init    (CtkToolButtonClass *klass);
 static void ctk_tool_button_set_property  (GObject            *object,
 					   guint               prop_id,
 					   const GValue       *value,
@@ -134,47 +131,13 @@ struct _CtkToolButtonPrivate
   guint contents_invalid : 1;
 };
 
-static GObjectClass        *parent_class = NULL;
 static CtkActivatableIface *parent_activatable_iface;
 static guint                toolbutton_signals[LAST_SIGNAL] = { 0 };
 
-GType
-ctk_tool_button_get_type (void)
-{
-  static GType g_define_type_id = 0;
-
-  if (!g_define_type_id)
-    {
-      const GInterfaceInfo actionable_info =
-      {
-        (GInterfaceInitFunc) ctk_tool_button_actionable_iface_init,
-        (GInterfaceFinalizeFunc) NULL,
-        NULL
-      };
-      const GInterfaceInfo activatable_info =
-      {
-        (GInterfaceInitFunc) ctk_tool_button_activatable_interface_init,
-        (GInterfaceFinalizeFunc) NULL,
-        NULL
-      };
-
-      g_define_type_id = g_type_register_static_simple (CTK_TYPE_TOOL_ITEM,
-                                                        I_("CtkToolButton"),
-                                                        sizeof (CtkToolButtonClass),
-                                                        (GClassInitFunc) ctk_tool_button_class_init,
-                                                        sizeof (CtkToolButton),
-                                                        (GInstanceInitFunc) ctk_tool_button_init,
-                                                        0);
-
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-      g_type_add_interface_static (g_define_type_id,
-                                   CTK_TYPE_ACTIONABLE, &actionable_info);
-      g_type_add_interface_static (g_define_type_id,
-                                   CTK_TYPE_ACTIVATABLE, &activatable_info);
-      G_GNUC_END_IGNORE_DEPRECATIONS;
-    }
-  return g_define_type_id;
-}
+G_DEFINE_TYPE_WITH_CODE (CtkToolButton, ctk_tool_button, CTK_TYPE_TOOL_ITEM,
+                         G_ADD_PRIVATE (CtkToolButton)
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_ACTIONABLE, ctk_tool_button_actionable_iface_init)
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_ACTIVATABLE, ctk_tool_button_activatable_interface_init))
 
 static void
 ctk_tool_button_class_init (CtkToolButtonClass *klass)
@@ -182,9 +145,7 @@ ctk_tool_button_class_init (CtkToolButtonClass *klass)
   GObjectClass *object_class;
   CtkWidgetClass *widget_class;
   CtkToolItemClass *tool_item_class;
-  
-  parent_class = g_type_class_peek_parent (klass);
-  
+
   object_class = (GObjectClass *)klass;
   widget_class = (CtkWidgetClass *)klass;
   tool_item_class = (CtkToolItemClass *)klass;
@@ -331,27 +292,22 @@ ctk_tool_button_class_init (CtkToolButtonClass *klass)
 		  NULL,
 		  G_TYPE_NONE, 0);
   
-  g_type_class_add_private (object_class, sizeof (CtkToolButtonPrivate));
-
   ctk_widget_class_set_css_name (widget_class, "toolbutton");
 }
 
 static void
-ctk_tool_button_init (CtkToolButton      *button,
-		      CtkToolButtonClass *klass)
+ctk_tool_button_init (CtkToolButton      *button)
 {
   CtkToolItem *toolitem = CTK_TOOL_ITEM (button);
 
-  button->priv = G_TYPE_INSTANCE_GET_PRIVATE (button,
-                                              CTK_TYPE_TOOL_BUTTON,
-                                              CtkToolButtonPrivate);
+  button->priv = ctk_tool_button_get_instance_private (button);
 
   button->priv->contents_invalid = TRUE;
 
   ctk_tool_item_set_homogeneous (toolitem, TRUE);
 
   /* create button */
-  button->priv->button = g_object_new (klass->button_type, NULL);
+  button->priv->button = g_object_new (CTK_TYPE_BUTTON, NULL);
   ctk_widget_set_focus_on_click (CTK_WIDGET (button->priv->button), FALSE);
   g_signal_connect_object (button->priv->button, "clicked",
 			   G_CALLBACK (button_clicked), button, 0);
@@ -709,8 +665,8 @@ ctk_tool_button_property_notify (GObject          *object,
       strcmp ("is-important", pspec->name) == 0)
     ctk_tool_button_construct_contents (CTK_TOOL_ITEM (object));
 
-  if (parent_class->notify)
-    parent_class->notify (object, pspec);
+  if (G_OBJECT_CLASS (ctk_tool_button_parent_class)->notify)
+    G_OBJECT_CLASS (ctk_tool_button_parent_class)->notify (object, pspec);
 }
 
 static void
@@ -811,7 +767,7 @@ ctk_tool_button_finalize (GObject *object)
   if (button->priv->icon_widget)
     g_object_unref (button->priv->icon_widget);
   
-  parent_class->finalize (object);
+  G_OBJECT_CLASS (ctk_tool_button_parent_class)->finalize (object);
 }
 
 static CtkWidget *
@@ -981,7 +937,7 @@ ctk_tool_button_update_icon_spacing (CtkToolButton *button)
 static void
 ctk_tool_button_style_updated (CtkWidget *widget)
 {
-  CTK_WIDGET_CLASS (parent_class)->style_updated (widget);
+  CTK_WIDGET_CLASS (G_OBJECT_CLASS (ctk_tool_button_parent_class))->style_updated (widget);
 
   ctk_tool_button_update_icon_spacing (CTK_TOOL_BUTTON (widget));
 }
