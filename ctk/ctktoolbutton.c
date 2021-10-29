@@ -86,8 +86,8 @@ enum {
   PROP_ACTION_TARGET
 };
 
-static void ctk_tool_button_init          (CtkToolButton      *button,
-					   CtkToolButtonClass *klass);
+//static void ctk_tool_button_init          (CtkToolButton      *button,
+//					   CtkToolButtonClass *klass);
 static void ctk_tool_button_class_init    (CtkToolButtonClass *klass);
 static void ctk_tool_button_set_property  (GObject            *object,
 					   guint               prop_id,
