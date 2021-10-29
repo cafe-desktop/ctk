@@ -331,7 +331,7 @@ ctk_tool_button_class_init (CtkToolButtonClass *klass)
 		  NULL,
 		  G_TYPE_NONE, 0);
   
-  g_type_class_add_private (object_class, sizeof (CtkToolButtonPrivate));
+//  g_type_class_add_private (object_class, sizeof (CtkToolButtonPrivate));
 
   ctk_widget_class_set_css_name (widget_class, "toolbutton");
 }
@@ -342,9 +342,11 @@ ctk_tool_button_init (CtkToolButton      *button,
 {
   CtkToolItem *toolitem = CTK_TOOL_ITEM (button);
 
-  button->priv = G_TYPE_INSTANCE_GET_PRIVATE (button,
-                                              CTK_TYPE_TOOL_BUTTON,
-                                              CtkToolButtonPrivate);
+//  button->priv = G_TYPE_INSTANCE_GET_PRIVATE (button,
+//                                              CTK_TYPE_TOOL_BUTTON,
+//                                              CtkToolButtonPrivate);
+
+  button->priv = ctk_tool_button_get_instance_private (button);
 
   button->priv->contents_invalid = TRUE;
 
