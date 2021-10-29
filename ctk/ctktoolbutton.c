@@ -86,9 +86,9 @@ enum {
   PROP_ACTION_TARGET
 };
 
-static void ctk_tool_button_init          (CtkToolButton      *button,
+/*static void ctk_tool_button_init          (CtkToolButton      *button,
 					   CtkToolButtonClass *klass);
-static void ctk_tool_button_class_init    (CtkToolButtonClass *klass);
+static void ctk_tool_button_class_init    (CtkToolButtonClass *klass);*/
 static void ctk_tool_button_set_property  (GObject            *object,
 					   guint               prop_id,
 					   const GValue       *value,
@@ -174,7 +174,7 @@ ctk_tool_button_get_type (void)
   return g_define_type_id;
 }*/
 
-G_DEFINE_TYPE_WITH_PRIVATE (CtkToolButton, ctk_tool_button, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (CtkToolButton, ctk_tool_button, CTK_TYPE_TOOL_ITEM)
 
 static void
 ctk_tool_button_class_init (CtkToolButtonClass *klass)
