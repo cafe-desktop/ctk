@@ -134,7 +134,7 @@ struct _CtkToolButtonPrivate
   guint contents_invalid : 1;
 };
 
-static GObjectClass        *parent_class = NULL;
+//static GObjectClass        *parent_class = NULL;
 static CtkActivatableIface *parent_activatable_iface;
 static guint                toolbutton_signals[LAST_SIGNAL] = { 0 };
 
@@ -206,7 +206,7 @@ ctk_tool_button_class_init (CtkToolButtonClass *klass)
   CtkWidgetClass *widget_class;
   CtkToolItemClass *tool_item_class;
   
-  parent_class = g_type_class_peek_parent (klass);
+//  parent_class = g_type_class_peek_parent (klass);
   
   object_class = (GObjectClass *)klass;
   widget_class = (CtkWidgetClass *)klass;
@@ -395,7 +395,7 @@ ctk_tool_button_init (CtkToolButton      *button)/*,
 
   /* create button */
 //  button->priv->button = g_object_new (klass->button_type, NULL);
-//  button->priv->button = g_object_new (CTK_TOOL_BUTTON_CLASS (button)->button_type, NULL);
+  button->priv->button = g_object_new (CTK_TOOL_BUTTON_CLASS (button)->button_type, NULL);
   ctk_widget_set_focus_on_click (CTK_WIDGET (button->priv->button), FALSE);
   g_signal_connect_object (button->priv->button, "clicked",
 			   G_CALLBACK (button_clicked), button, 0);
@@ -753,8 +753,8 @@ ctk_tool_button_property_notify (GObject          *object,
       strcmp ("is-important", pspec->name) == 0)
     ctk_tool_button_construct_contents (CTK_TOOL_ITEM (object));
 
-  if (parent_class->notify)
-    parent_class->notify (object, pspec);
+  if (ctk_tool_button_parent_class->notify)
+    ctk_tool_button_parent_class->notify (object, pspec);
 }
 
 static void
@@ -855,7 +855,7 @@ ctk_tool_button_finalize (GObject *object)
   if (button->priv->icon_widget)
     g_object_unref (button->priv->icon_widget);
   
-  parent_class->finalize (object);
+  ctk_tool_button_parent_class->finalize (object);
 }
 
 static CtkWidget *
@@ -1025,7 +1025,7 @@ ctk_tool_button_update_icon_spacing (CtkToolButton *button)
 static void
 ctk_tool_button_style_updated (CtkWidget *widget)
 {
-  CTK_WIDGET_CLASS (parent_class)->style_updated (widget);
+  CTK_WIDGET_CLASS (ctk_tool_button_parent_class)->style_updated (widget);
 
   ctk_tool_button_update_icon_spacing (CTK_TOOL_BUTTON (widget));
 }
