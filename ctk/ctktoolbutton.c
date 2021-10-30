@@ -138,7 +138,7 @@ static GObjectClass        *parent_class = NULL;
 static CtkActivatableIface *parent_activatable_iface;
 static guint                toolbutton_signals[LAST_SIGNAL] = { 0 };
 
-GType
+/*GType
 ctk_tool_button_get_type (void)
 {
   static GType g_define_type_id = 0;
@@ -172,9 +172,12 @@ ctk_tool_button_get_type (void)
                                    CTK_TYPE_ACTIVATABLE, &activatable_info);
     }
   return g_define_type_id;
-}
+}*/
 
-G_DEFINE_TYPE_WITH_PRIVATE (CtkToolButton, ctk_tool_button, CTK_TYPE_TOOL_ITEM)
+G_DEFINE_TYPE_WITH_CODE (CtkToolButton, ctk_tool_button, CTK_TYPE_TOOL_ITEM,
+                         G_ADD_PRIVATE (CtkToolButton)
+                         G_IMPLEMENT_INTERFACE (CTK_TYPE_ACTIONABLE, ctk_tool_button_actionable_iface_init)
+			 G_IMPLEMENT_INTERFACE (CTK_TYPE_ACTIVATABLE, ctk_tool_button_activatable_interface_init))
 
 static void
 ctk_tool_button_class_init (CtkToolButtonClass *klass)
