@@ -354,6 +354,7 @@ ctk_tool_button_init (CtkToolButton      *button)/*,
 
   /* create button */
 //  button->priv->button = g_object_new (klass->button_type, NULL);
+  button->priv->button = g_object_new (G_OBJECT_CLASS (ctk_tool_button_parent_class)->button_type, NULL);
   ctk_widget_set_focus_on_click (CTK_WIDGET (button->priv->button), FALSE);
   g_signal_connect_object (button->priv->button, "clicked",
 			   G_CALLBACK (button_clicked), button, 0);
