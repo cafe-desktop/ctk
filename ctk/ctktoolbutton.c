@@ -179,6 +179,26 @@ G_DEFINE_TYPE_WITH_PRIVATE (CtkToolButton, ctk_tool_button, CTK_TYPE_TOOL_ITEM)
 static void
 ctk_tool_button_class_init (CtkToolButtonClass *klass)
 {
+
+      const GInterfaceInfo actionable_info =
+      {
+        (GInterfaceInitFunc) ctk_tool_button_actionable_iface_init,
+        (GInterfaceFinalizeFunc) NULL,
+        NULL
+      };
+      const GInterfaceInfo activatable_info =
+      {
+        (GInterfaceInitFunc) ctk_tool_button_activatable_interface_init,
+        (GInterfaceFinalizeFunc) NULL,
+        NULL
+      };
+
+      g_type_add_interface_static (ctk_tool_button_get_type (),
+                                   CTK_TYPE_ACTIONABLE, &actionable_info);
+      g_type_add_interface_static (ctk_tool_button_get_type (),
+                                   CTK_TYPE_ACTIVATABLE, &activatable_info);
+
+
   GObjectClass *object_class;
   CtkWidgetClass *widget_class;
   CtkToolItemClass *tool_item_class;
@@ -332,23 +352,6 @@ ctk_tool_button_class_init (CtkToolButtonClass *klass)
 		  G_TYPE_NONE, 0);
   
 //  g_type_class_add_private (object_class, sizeof (CtkToolButtonPrivate));
-      const GInterfaceInfo actionable_info =
-      {
-        (GInterfaceInitFunc) ctk_tool_button_actionable_iface_init,
-        (GInterfaceFinalizeFunc) NULL,
-        NULL
-      };
-      const GInterfaceInfo activatable_info =
-      {
-        (GInterfaceInitFunc) ctk_tool_button_activatable_interface_init,
-        (GInterfaceFinalizeFunc) NULL,
-        NULL
-      };
-
-      g_type_add_interface_static (ctk_tool_button_get_type (),
-                                   CTK_TYPE_ACTIONABLE, &actionable_info);
-      g_type_add_interface_static (ctk_tool_button_get_type (),
-                                   CTK_TYPE_ACTIVATABLE, &activatable_info);
 
   ctk_widget_class_set_css_name (widget_class, "toolbutton");
 }
