@@ -345,9 +345,9 @@ ctk_tool_button_class_init (CtkToolButtonClass *klass)
         NULL
       };
 
-      g_type_add_interface_static (g_define_type_id,
+      g_type_add_interface_static (ctk_tool_button_get_type (),
                                    CTK_TYPE_ACTIONABLE, &actionable_info);
-      g_type_add_interface_static (g_define_type_id,
+      g_type_add_interface_static (ctk_tool_button_get_type (),
                                    CTK_TYPE_ACTIVATABLE, &activatable_info);
 
   ctk_widget_class_set_css_name (widget_class, "toolbutton");
