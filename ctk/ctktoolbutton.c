@@ -753,8 +753,8 @@ ctk_tool_button_property_notify (GObject          *object,
       strcmp ("is-important", pspec->name) == 0)
     ctk_tool_button_construct_contents (CTK_TOOL_ITEM (object));
 
-  if (ctk_tool_button_parent_class->notify)
-    ctk_tool_button_parent_class->notify (object, pspec);
+  if (G_OBJECT_CLASS (ctk_tool_button_parent_class)->notify)
+    G_OBJECT_CLASS (ctk_tool_button_parent_class)->notify (object, pspec);
 }
 
 static void
@@ -855,7 +855,7 @@ ctk_tool_button_finalize (GObject *object)
   if (button->priv->icon_widget)
     g_object_unref (button->priv->icon_widget);
   
-  ctk_tool_button_parent_class->finalize (object);
+  G_OBJECT_CLASS (ctk_tool_button_parent_class)->finalize (object);
 }
 
 static CtkWidget *
@@ -1025,7 +1025,7 @@ ctk_tool_button_update_icon_spacing (CtkToolButton *button)
 static void
 ctk_tool_button_style_updated (CtkWidget *widget)
 {
-  CTK_WIDGET_CLASS (ctk_tool_button_parent_class)->style_updated (widget);
+  CTK_WIDGET_CLASS (G_OBJECT_CLASS (ctk_tool_button_parent_class))->style_updated (widget);
 
   ctk_tool_button_update_icon_spacing (CTK_TOOL_BUTTON (widget));
 }
