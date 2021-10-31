@@ -86,9 +86,9 @@ enum {
   PROP_ACTION_TARGET
 };
 
-static void ctk_tool_button_init          (CtkToolButton      *button);/*,
-					   CtkToolButtonClass *klass);*/
-static void ctk_tool_button_class_init    (CtkToolButtonClass *klass);
+//static void ctk_tool_button_init          (CtkToolButton      *button);
+//					   CtkToolButtonClass *klass);
+//static void ctk_tool_button_class_init    (CtkToolButtonClass *klass);
 static void ctk_tool_button_set_property  (GObject            *object,
 					   guint               prop_id,
 					   const GValue       *value,
@@ -360,8 +360,8 @@ ctk_tool_button_class_init (CtkToolButtonClass *klass)
 }
 
 static void
-ctk_tool_button_init (CtkToolButton      *button)/*,
-		      CtkToolButtonClass *klass)*/
+ctk_tool_button_init (CtkToolButton      *button,
+		      CtkToolButtonClass *klass)
 {
 /*      const GInterfaceInfo actionable_info =
       {
@@ -394,9 +394,9 @@ ctk_tool_button_init (CtkToolButton      *button)/*,
   ctk_tool_item_set_homogeneous (toolitem, TRUE);
 
   /* create button */
-//  button->priv->button = g_object_new (klass->button_type, NULL);
+  button->priv->button = g_object_new (klass->button_type, NULL);
 //  button->priv->button = g_object_new (CTK_TOOL_BUTTON_CLASS (button)->button_type, NULL);
-  button->priv->button = g_object_new (G_OBJECT_CLASS (ctk_tool_button_parent_class)->button_type, NULL);
+//  button->priv->button = g_object_new (G_OBJECT_CLASS (ctk_tool_button_parent_class)->button_type, NULL);
 //  button->priv->button = g_object_new ((CtkToolButtonClass *) (button)->button_type, NULL);
   ctk_widget_set_focus_on_click (CTK_WIDGET (button->priv->button), FALSE);
   g_signal_connect_object (button->priv->button, "clicked",
