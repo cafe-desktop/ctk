@@ -394,7 +394,7 @@ ctk_tool_button_init (CtkToolButton      *button)//,
   ctk_tool_item_set_homogeneous (toolitem, TRUE);
 
   /* create button */
-  button->priv->button = g_object_new (klass->button_type, NULL);
+//  button->priv->button = g_object_new (klass->button_type, NULL);
 //  button->priv->button = g_object_new (CTK_TOOL_BUTTON_CLASS (button)->button_type, NULL);
 //  button->priv->button = g_object_new (G_OBJECT_CLASS (ctk_tool_button_parent_class)->button_type, NULL);
   button->priv->button = g_object_new (((CtkToolButtonClass *) (button))->button_type, NULL);
