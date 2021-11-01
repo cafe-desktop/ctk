@@ -53,16 +53,10 @@
 #include "ctkcombobox.h"
 #include "ctkgesturemultipress.h"
 
-#if defined(HAVE_HARFBUZZ) && defined(HAVE_PANGOFT)
-#include <pango/pangofc-font.h>
-#include <hb.h>
 #include <hb-ot.h>
-#include <hb-ft.h>
-#include <freetype/freetype.h>
-#include <freetype/ftmm.h>
+
 #include "language-names.h"
 #include "script-names.h"
-#endif
 
 #include "open-type-layout.h"
 
@@ -763,8 +757,6 @@ change_tweak (GSimpleAction *action,
   g_simple_action_set_state (action, state);
 }
 
-#if defined(HAVE_HARFBUZZ) && defined(HAVE_PANGOFT)
-
 typedef struct {
   guint32 tag;
   CtkAdjustment *adjustment;
@@ -811,8 +803,6 @@ axis_free (gpointer v)
   g_free (a);
 }
 
-#endif
-
 static void
 ctk_font_chooser_widget_init (CtkFontChooserWidget *fontchooser)
 {
@@ -823,9 +813,7 @@ ctk_font_chooser_widget_init (CtkFontChooserWidget *fontchooser)
 
   ctk_widget_init_template (CTK_WIDGET (fontchooser));
 
-#if defined(HAVE_HARFBUZZ) && defined(HAVE_PANGOFT)
   priv->axes = g_hash_table_new_full (axis_hash, axis_equal, NULL, axis_free);
-#endif
 
   /* Default preview string  */
   priv->preview_text = g_strdup (pango_language_get_sample_string (NULL));
@@ -864,9 +852,8 @@ ctk_font_chooser_widget_init (CtkFontChooserWidget *fontchooser)
 
   /* Load data and set initial style-dependent parameters */
   ctk_font_chooser_widget_load_fonts (fontchooser, TRUE);
-#if defined(HAVE_HARFBUZZ) && defined(HAVE_PANGOFT)
   ctk_font_chooser_widget_populate_features (fontchooser);
-#endif
+
   ctk_font_chooser_widget_set_cell_size (fontchooser);
   ctk_font_chooser_widget_take_font_desc (fontchooser, NULL);
 }
@@ -1475,11 +1462,7 @@ ctk_font_chooser_widget_ensure_selection (CtkFontChooserWidget *fontchooser)
     }
 }
 
-#if defined(HAVE_HARFBUZZ) && defined(HAVE_PANGOFT)
-
 /* OpenType variations */
-
-#define FixedToFloat(f) (((float)(f))/65536.0)
 
 static void
 add_font_variations (CtkFontChooserWidget *fontchooser,
@@ -1534,49 +1517,56 @@ adjustment_changed (CtkAdjustment *adjustment,
 }
 
 static gboolean
-should_show_axis (FT_Var_Axis *ax)
+should_show_axis (hb_ot_var_axis_info_t *ax)
 {
-  /* FIXME use FT_Get_Var_Axis_Flags */
-  if (ax->tag == FT_MAKE_TAG ('o', 'p', 's', 'z'))
+  if (ax->flags & HB_OT_VAR_AXIS_FLAG_HIDDEN)
     return FALSE;
 
   return TRUE;
 }
 
 static gboolean
-is_named_instance (FT_Face face)
+is_named_instance (hb_font_t *font)
 {
-  return (face->face_index >> 16) > 0;
+  /* FIXME */
+  return FALSE;
 }
 
 static struct {
   guint32 tag;
   const char *name;
 } axis_names[] = {
-  { FT_MAKE_TAG ('w', 'd', 't', 'h'), N_("Width") },
-  { FT_MAKE_TAG ('w', 'g', 'h', 't'), N_("Weight") },
-  { FT_MAKE_TAG ('i', 't', 'a', 'l'), N_("Italic") },
-  { FT_MAKE_TAG ('s', 'l', 'n', 't'), N_("Slant") },
-  { FT_MAKE_TAG ('o', 'p', 's', 'z'), N_("Optical Size") },
+  { HB_OT_TAG_VAR_AXIS_WIDTH,        N_("Width") },
+  { HB_OT_TAG_VAR_AXIS_WEIGHT,       N_("Weight") },
+  { HB_OT_TAG_VAR_AXIS_ITALIC,       N_("Italic") },
+  { HB_OT_TAG_VAR_AXIS_SLANT,        N_("Slant") },
+  { HB_OT_TAG_VAR_AXIS_OPTICAL_SIZE, N_("Optical Size") },
 };
 
 static gboolean
-add_axis (CtkFontChooserWidget *fontchooser,
-          FT_Face               face,
-          FT_Var_Axis          *ax,
-          FT_Fixed              value,
-          int                   row)
+add_axis (CtkFontChooserWidget  *fontchooser,
+          hb_font_t             *hb_font,
+          hb_ot_var_axis_info_t *ax,
+          int                    value,
+          int                    row)
 {
   CtkFontChooserWidgetPrivate *priv = fontchooser->priv;
+  hb_face_t *hb_face;
   Axis *axis;
   const char *name;
+  char buffer[20];
+  unsigned int buffer_len = 20;
   int i;
+
+  hb_face = hb_font_get_face (hb_font);
 
   axis = g_new (Axis, 1);
   axis->tag = ax->tag;
   axis->fontchooser = CTK_WIDGET (fontchooser);
 
-  name = ax->name;
+  hb_ot_name_get_utf8 (hb_face, ax->name_id, HB_LANGUAGE_INVALID, &buffer_len, buffer);
+  name = buffer;
+
   for (i = 0; i < G_N_ELEMENTS (axis_names); i++)
     {
       if (axis_names[i].tag == ax->tag)
@@ -1585,18 +1575,20 @@ add_axis (CtkFontChooserWidget *fontchooser,
           break;
         }
     }
+
   axis->label = ctk_label_new (name);
+
   ctk_widget_show (axis->label);
   ctk_widget_set_halign (axis->label, CTK_ALIGN_START);
   ctk_widget_set_valign (axis->label, CTK_ALIGN_BASELINE);
   ctk_grid_attach (CTK_GRID (priv->axis_grid), axis->label, 0, row, 1, 1);
-  axis->adjustment = ctk_adjustment_new ((double)FixedToFloat(value),
-                                         (double)FixedToFloat(ax->minimum),
-                                         (double)FixedToFloat(ax->maximum),
+  axis->adjustment = ctk_adjustment_new ((double)value,
+                                         (double)ax->min_value,
+                                         (double)ax->max_value,
                                          1.0, 10.0, 0.0);
   axis->scale = ctk_scale_new (CTK_ORIENTATION_HORIZONTAL, axis->adjustment);
   ctk_widget_show (axis->scale);
-  ctk_scale_add_mark (CTK_SCALE (axis->scale), (double)FixedToFloat(ax->def), CTK_POS_TOP, NULL);
+  ctk_scale_add_mark (CTK_SCALE (axis->scale), (double)ax->default_value, CTK_POS_TOP, NULL);
   ctk_widget_set_valign (axis->scale, CTK_ALIGN_BASELINE);
   ctk_widget_set_hexpand (axis->scale, TRUE);
   ctk_widget_set_size_request (axis->scale, 100, -1);
@@ -1612,7 +1604,7 @@ add_axis (CtkFontChooserWidget *fontchooser,
 
   adjustment_changed (axis->adjustment, axis);
   g_signal_connect (axis->adjustment, "value-changed", G_CALLBACK (adjustment_changed), axis);
-  if (is_named_instance (face) || !should_show_axis (ax))
+  if (is_named_instance (hb_font) || !should_show_axis (ax))
     {
       ctk_widget_hide (axis->label);
       ctk_widget_hide (axis->scale);
@@ -1624,15 +1616,31 @@ add_axis (CtkFontChooserWidget *fontchooser,
   return TRUE;
 }
 
+/* FIXME: This doesn't work if the font has an avar table */
+static float
+denorm_coord (hb_ot_var_axis_info_t *axis, int coord)
+{
+  float r = coord / 16384.0;
+
+  if (coord < 0)
+    return axis->default_value + r * (axis->default_value - axis->min_value);
+  else
+    return axis->default_value + r * (axis->max_value - axis->default_value);
+}
+
 static gboolean
 ctk_font_chooser_widget_update_font_variations (CtkFontChooserWidget *fontchooser)
 {
   CtkFontChooserWidgetPrivate *priv = fontchooser->priv;
   PangoFont *pango_font;
-  FT_Face ft_face;
-  FT_MM_Var *ft_mm_var;
-  FT_Error ret;
+  hb_font_t *hb_font;
+  hb_face_t *hb_face;
+  const int *coords;
+  unsigned int n_coords;
+  unsigned int n_axes;
+  hb_ot_var_axis_info_t *axes;
   gboolean has_axis = FALSE;
+  int i;
 
   if (priv->updating_variations)
     return FALSE;
@@ -1645,39 +1653,30 @@ ctk_font_chooser_widget_update_font_variations (CtkFontChooserWidget *fontchoose
 
   pango_font = pango_context_load_font (ctk_widget_get_pango_context (CTK_WIDGET (fontchooser)),
                                         priv->font_desc);
-  ft_face = pango_fc_font_lock_face (PANGO_FC_FONT (pango_font));
+  hb_font = pango_font_get_hb_font (pango_font);
+  hb_face = hb_font_get_face (hb_font);
 
-  ret = FT_Get_MM_Var (ft_face, &ft_mm_var);
-  if (ret == 0)
+  if (!hb_ot_var_has_data (hb_face))
+  return FALSE;
+
+  coords = hb_font_get_var_coords_normalized (hb_font, &n_coords);
+
+  n_axes = hb_ot_var_get_axis_count (hb_face);
+  axes = g_new0 (hb_ot_var_axis_info_t, n_axes);
+  hb_ot_var_get_axis_infos (hb_face, 0, &n_axes, axes);
+
+  for (i = 0; i < n_axes; i++)
     {
-      int i;
-      FT_Fixed *coords;
-
-      coords = g_new (FT_Fixed, ft_mm_var->num_axis);
-      for (i = 0; i < ft_mm_var->num_axis; i++)
-        coords[i] = ft_mm_var->axis[i].def;
-
-      if (ft_face->face_index > 0)
-        {
-          int instance_id = ft_face->face_index >> 16;
-          if (instance_id && instance_id <= ft_mm_var->num_namedstyles)
-            {
-              FT_Var_Named_Style *instance = &ft_mm_var->namedstyle[instance_id - 1];
-              memcpy (coords, instance->coords, ft_mm_var->num_axis * sizeof (*coords));
-            }
-        }
-
-      for (i = 0; i < ft_mm_var->num_axis; i++)
-        {
-          if (add_axis (fontchooser, ft_face, &ft_mm_var->axis[i], coords[i], i + 4))
-            has_axis = TRUE;
-        }
-
-      g_free (coords);
-      free (ft_mm_var);
+      float value;
+      if (coords && i < n_coords)
+        value = denorm_coord (&axes[i], coords[i]);
+      else
+        value = axes[i].default_value;
+      if (add_axis (fontchooser, hb_font, &axes[i], value, i + 4))
+        has_axis = TRUE;
     }
 
-  pango_fc_font_unlock_face (PANGO_FC_FONT (pango_font));
+  g_free (axes);
   g_object_unref (pango_font);
 
   return has_axis;
@@ -1807,15 +1806,18 @@ feat_pressed (CtkGesture *gesture,
 
 static char *
 find_affected_text (hb_tag_t   feature_tag,
-                    hb_face_t *hb_face,
+                    hb_font_t *hb_font,
                     hb_tag_t   script_tag,
                     hb_tag_t   lang_tag,
                     int        max_chars)
 {
+  hb_face_t *hb_face;
   unsigned int script_index = 0;
   unsigned int lang_index = 0;
   unsigned int feature_index = 0;
   GString *chars;
+
+  hb_face = hb_font_get_face (hb_font);
 
   chars = g_string_new ("");
 
@@ -1840,7 +1842,6 @@ find_affected_text (hb_tag_t   feature_tag,
           hb_set_t* glyphs_input  = NULL;
           hb_set_t* glyphs_after  = NULL;
           hb_set_t* glyphs_output = NULL;
-          hb_font_t *hb_font = NULL;
           hb_codepoint_t gid;
 
           glyphs_input  = hb_set_create ();
@@ -1853,9 +1854,6 @@ find_affected_text (hb_tag_t   feature_tag,
                                               glyphs_input,
                                               glyphs_after,
                                               glyphs_output);
-
-          hb_font = hb_font_create (hb_face);
-          hb_ft_font_set_funcs (hb_font);
 
           gid = -1;
           while (hb_set_next (glyphs_input, &gid)) {
@@ -1876,7 +1874,6 @@ find_affected_text (hb_tag_t   feature_tag,
             }
           }
           hb_set_destroy (glyphs_input);
-          hb_font_destroy (hb_font);
         }
     }
 
@@ -1885,7 +1882,7 @@ find_affected_text (hb_tag_t   feature_tag,
 
 static void
 update_feature_example (FeatureItem          *item,
-                        hb_face_t            *hb_face,
+                        hb_font_t            *hb_font,
                         hb_tag_t              script_tag,
                         hb_tag_t              lang_tag,
                         PangoFontDescription *font_desc)
@@ -1937,9 +1934,9 @@ update_feature_example (FeatureItem          *item,
       else if (strcmp (item->name, "zero") == 0)
         input = g_strdup ("0");
       else if (strcmp (item->name, "nalt") == 0)
-        input = find_affected_text (item->tag, hb_face, script_tag, lang_tag, 3);
+        input = find_affected_text (item->tag, hb_font, script_tag, lang_tag, 3);
       else
-        input = find_affected_text (item->tag, hb_face, script_tag, lang_tag, 10);
+        input = find_affected_text (item->tag, hb_font, script_tag, lang_tag, 10);
 
       if (input[0] != '\0')
         {
@@ -2156,7 +2153,6 @@ ctk_font_chooser_widget_update_font_features (CtkFontChooserWidget *fontchooser)
 {
   CtkFontChooserWidgetPrivate *priv = fontchooser->priv;
   PangoFont *pango_font;
-  FT_Face ft_face;
   hb_font_t *hb_font;
   hb_tag_t script_tag;
   hb_tag_t lang_tag;
@@ -2178,8 +2174,7 @@ ctk_font_chooser_widget_update_font_features (CtkFontChooserWidget *fontchooser)
 
   pango_font = pango_context_load_font (ctk_widget_get_pango_context (CTK_WIDGET (fontchooser)),
                                         priv->font_desc);
-  ft_face = pango_fc_font_lock_face (PANGO_FC_FONT (pango_font)),
-  hb_font = hb_ft_font_create (ft_face, NULL);
+  hb_font = pango_font_get_hb_font (pango_font);
 
   if (hb_font)
     {
@@ -2221,7 +2216,7 @@ ctk_font_chooser_widget_update_font_features (CtkFontChooserWidget *fontchooser)
               ctk_widget_show (item->top);
               ctk_widget_show (ctk_widget_get_parent (item->top));
 
-              update_feature_example (item, hb_face, script_tag, lang_tag, priv->font_desc);
+              update_feature_example (item, hb_font, script_tag, lang_tag, priv->font_desc);
 
               if (CTK_IS_RADIO_BUTTON (item->feat))
                 {
@@ -2234,11 +2229,8 @@ ctk_font_chooser_widget_update_font_features (CtkFontChooserWidget *fontchooser)
                 }
             }
         }
-
-      hb_face_destroy (hb_face);
     }
 
-  pango_fc_font_unlock_face (PANGO_FC_FONT (pango_font));
   g_object_unref (pango_font);
 
   return has_feature;
@@ -2291,8 +2283,6 @@ update_font_features (CtkFontChooserWidget *fontchooser)
   ctk_font_chooser_widget_update_preview_attributes (fontchooser);
 }
 
-#endif
-
 static void
 ctk_font_chooser_widget_merge_font_desc (CtkFontChooserWidget       *fontchooser,
                                          const PangoFontDescription *font_desc,
@@ -2338,12 +2328,10 @@ ctk_font_chooser_widget_merge_font_desc (CtkFontChooserWidget       *fontchooser
 
       ctk_font_chooser_widget_update_marks (fontchooser);
 
-#if defined(HAVE_HARFBUZZ) && defined(HAVE_PANGOFT)
       if (ctk_font_chooser_widget_update_font_features (fontchooser))
         has_tweak = TRUE;
       if (ctk_font_chooser_widget_update_font_variations (fontchooser))
         has_tweak = TRUE;
-#endif
 
       g_simple_action_set_enabled (G_SIMPLE_ACTION (priv->tweak_action), has_tweak);
     }
