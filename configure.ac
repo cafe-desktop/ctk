@@ -729,14 +729,14 @@ AS_CASE([$host_os],
     AC_MSG_CHECKING([for SetupDiGetDevicePropertyW])
     ctk_save_LIBS="$LIBS"
     LIBS="-lsetupapi $LIBS"
-    AC_TRY_LINK(
-      [
+    AC_LINK_IFELSE([AC_LANG_PROGRAM(
+      [[
 #define _WIN32_WINNT 0x0600
 #include <windows.h>
 #include <devpropdef.h>
 #include <setupapi.h>
-      ],
-      [return SetupDiGetDevicePropertyW(NULL, NULL, NULL, NULL, NULL, 0, NULL, 0);],
+      ]],
+      [[return SetupDiGetDevicePropertyW(NULL, NULL, NULL, NULL, NULL, 0, NULL, 0);]])],
       [have_SetupDiGetDevicePropertyW=yes],
       [have_SetupDiGetDevicePropertyW=no]
     )
