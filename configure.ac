@@ -1299,9 +1299,9 @@ if $PKG_CONFIG --uninstalled $PANGO_PACKAGES; then
 else
 	ctk_save_LIBS="$LIBS"
         LIBS="$PANGO_LIBS $LIBS"
-        AC_TRY_LINK_FUNC(pango_context_new, :, AC_MSG_ERROR([
+        AC_LINK_IFELSE([AC_LANG_CALL([], [pango_context_new])], [:], [AC_MSG_ERROR([
 *** Can't link to Pango. Pango is required to build
-*** CTK+. For more information see http://www.pango.org]))
+*** CTK+. For more information see http://www.pango.org])])
         LIBS="$ctk_save_LIBS"
 fi
 
