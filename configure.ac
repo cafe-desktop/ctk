@@ -1784,7 +1784,7 @@ else
 fi
 
 AC_ARG_ENABLE(doc-cross-references,
-              AC_HELP_STRING([--disable-doc-cross-references],
+              AS_HELP_STRING([--disable-doc-cross-references],
                              [cross reference symbols from other libraries @<:@default=yes@:>@]),
               enable_doc_cross_references=$enableval,
               enable_doc_cross_references=yes)
