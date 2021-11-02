@@ -1810,11 +1810,12 @@ case "$host" in
     SAVED_CFLAGS="${CFLAGS}"
     CFLAGS="-fvisibility=hidden"
     AC_MSG_CHECKING([for -fvisibility=hidden compiler flag])
-    AC_TRY_COMPILE([], [return 0],
-                   AC_MSG_RESULT(yes)
-                   enable_fvisibility_hidden=yes,
-                   AC_MSG_RESULT(no)
-                   enable_fvisibility_hidden=no)
+    AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[]], [[return 0]])],
+                      AC_MSG_RESULT(yes)
+                      enable_fvisibility_hidden=yes,
+                      AC_MSG_RESULT(no)
+                      enable_fvisibility_hidden=no)
+
     CFLAGS="${SAVED_CFLAGS}"
 
     AS_IF([test "${enable_fvisibility_hidden}" = "yes"], [
