@@ -25,6 +25,7 @@ requires:
     - docbook-utils
     - docbook-xml
     - docbook-xsl
+    - expect #required for unbuffer
     - g++
     - gcc
     - gettext
@@ -92,16 +93,18 @@ before_scripts:
 build_scripts:
   - export TITLESCANBUILD="${REPO_NAME} (clang-tools `dpkg -s clang-tools|grep -i version|cut -d " " -f 2`) - scan-build results"
   - mkdir html-report
-  - cppcheck --enable=warning,style,performance,portability,information,missingInclude . 2>&1 | tee -a ./html-report/output_${TRAVIS_COMMIT}
+  - unbuffer cppcheck --enable=warning,style,performance,portability,information,missingInclude . 2>&1 | tee -a ./html-report/output_${TRAVIS_COMMIT}
 
   - NOCONFIGURE=1 ./autogen.sh
   - scan-build $CHECKERS ./configure --disable-dependency-tracking --enable-broadway-backend --enable-x11-backend --enable-gtk-doc --enable-man --enable-shared --enable-introspection --enable-cloudprint --disable-static --enable-installed-tests
   - if [ $CPU_COUNT -gt 1 ]; then
-  -     scan-build $CHECKERS --html-title="$TITLESCANBUILD" --keep-cc -o html-report make -j $(( $CPU_COUNT + 1 )) 2>&1 | tee -a ./html-report/output_${TRAVIS_COMMIT}
+  -     unbuffer scan-build $CHECKERS --html-title="$TITLESCANBUILD" --keep-cc -o html-report make -j $(( $CPU_COUNT + 1 )) 2>&1 | tee -a ./html-report/output_${TRAVIS_COMMIT}
   - else
-  -     scan-build $CHECKERS --html-title="$TITLESCANBUILD" --keep-cc -o html-report make 2>&1 | tee -a ./html-report/output_${TRAVIS_COMMIT}
+  -     unbuffer scan-build $CHECKERS --html-title="$TITLESCANBUILD" --keep-cc -o html-report make 2>&1 | tee -a ./html-report/output_${TRAVIS_COMMIT}
   - fi
-  - make check 2>&1 | tee -a ./html-report/output_${TRAVIS_COMMIT}
+  - unbuffer make check 2>&1 | tee -a ./html-report/output_${TRAVIS_COMMIT}
+  - cat ./html-report/output_${TRAVIS_COMMIT} | sed 's,\x1B\[[0-9;]*[a-zA-Z],,g' > tmpfile #remove colors in the logs
+  - cat tmpfile > ./html-report/output_${TRAVIS_COMMIT}
   - echo Errors detected in the build `cat ./html-report/output_${TRAVIS_COMMIT} | grep ' error:' | grep -v "\[" | wc -l` 2>&1 | tee -a ./html-report/output_${TRAVIS_COMMIT}
   - echo Warnings detected in the logs `cat ./html-report/output_${TRAVIS_COMMIT} | grep -i warning | wc -l` 2>&1 | tee -a ./html-report/output_${TRAVIS_COMMIT}
   - make install
