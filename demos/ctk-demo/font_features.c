@@ -207,7 +207,6 @@ update_script_combo (void)
   CtkListStore *store;
   hb_font_t *hb_font;
   gint i, j, k, l;
-  FT_Face ft_face;
   PangoFont *pango_font;
   GHashTable *tags;
   GHashTableIter iter;
@@ -216,8 +215,7 @@ update_script_combo (void)
   store = ctk_list_store_new (4, G_TYPE_STRING, G_TYPE_UINT, G_TYPE_UINT, G_TYPE_UINT);
 
   pango_font = get_pango_font ();
-  ft_face = pango_fc_font_lock_face (PANGO_FC_FONT (pango_font)),
-  hb_font = hb_ft_font_create (ft_face, NULL);
+  hb_font = pango_font_get_hb_font (pango_font);
 
   tags = g_hash_table_new_full (tag_pair_hash, tag_pair_equal, g_free, NULL);
 
@@ -263,11 +261,8 @@ update_script_combo (void)
                 }
             }
         }
-
-      hb_face_destroy (hb_face);
     }
 
-  pango_fc_font_unlock_face (PANGO_FC_FONT (pango_font));
   g_object_unref (pango_font);
 
   g_hash_table_iter_init (&iter, tags);
@@ -346,7 +341,6 @@ update_features (void)
   CtkTreeIter iter;
   guint script_index, lang_index;
   PangoFont *pango_font;
-  FT_Face ft_face;
   hb_font_t *hb_font;
 
   for (i = 0; i < num_features; i++)
@@ -364,8 +358,7 @@ update_features (void)
                       -1);
 
   pango_font = get_pango_font ();
-  ft_face = pango_fc_font_lock_face (PANGO_FC_FONT (pango_font)),
-  hb_font = hb_ft_font_create (ft_face, NULL);
+  hb_font = pango_font_get_hb_font (pango_font);
 
   if (hb_font)
     {
@@ -396,11 +389,8 @@ update_features (void)
                 }
             }
         }
-
-      hb_face_destroy (hb_face);
     }
 
-  pango_fc_font_unlock_face (PANGO_FC_FONT (pango_font));
   g_object_unref (pango_font);
 }
 
