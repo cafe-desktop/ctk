@@ -49,7 +49,6 @@ ctk/deprecated/ctkhandlebox.c
 ctk/deprecated/ctkhsv.c
 ctk/deprecated/ctkmisc.c
 ctk/deprecated/ctknumerableicon.c
-ctk/deprecated/ctkstatusicon.c
 ctk/deprecated/ctktable.c
 ctk/deprecated/ctkthemingengine.c
 ctk/deprecated/ctktrayicon-x11.c
@@ -265,6 +264,7 @@ ctk/ctkstack.c
 ctk/ctkstacksidebar.c
 ctk/ctkstackswitcher.c
 ctk/ctkstatusbar.c
+ctk/ctkstatusicon.c
 ctk/ctkstock.c
 ctk/ctkstyle.c
 ctk/ctkstylecontext.c

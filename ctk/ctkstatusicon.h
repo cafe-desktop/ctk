@@ -80,101 +80,101 @@ struct _CtkStatusIconClass
 CDK_AVAILABLE_IN_ALL
 GType                 ctk_status_icon_get_type           (void) G_GNUC_CONST;
 
-CDK_DEPRECATED_IN_3_14
+CDK_AVAILABLE_IN_ALL
 CtkStatusIcon        *ctk_status_icon_new                (void);
-CDK_DEPRECATED_IN_3_14
+CDK_AVAILABLE_IN_ALL
 CtkStatusIcon        *ctk_status_icon_new_from_pixbuf    (GdkPixbuf          *pixbuf);
-CDK_DEPRECATED_IN_3_14
+CDK_AVAILABLE_IN_ALL
 CtkStatusIcon        *ctk_status_icon_new_from_file      (const gchar        *filename);
-CDK_DEPRECATED_IN_3_10_FOR(ctk_status_icon_new_from_icon_name)
+CDK_AVAILABLE_IN_ALL
 CtkStatusIcon        *ctk_status_icon_new_from_stock     (const gchar        *stock_id);
-CDK_DEPRECATED_IN_3_14
+CDK_AVAILABLE_IN_ALL
 CtkStatusIcon        *ctk_status_icon_new_from_icon_name (const gchar        *icon_name);
-CDK_DEPRECATED_IN_3_14
+CDK_AVAILABLE_IN_ALL
 CtkStatusIcon        *ctk_status_icon_new_from_gicon     (GIcon              *icon);
 
-CDK_DEPRECATED_IN_3_14
+CDK_AVAILABLE_IN_ALL
 void                  ctk_status_icon_set_from_pixbuf    (CtkStatusIcon      *status_icon,
 							  GdkPixbuf          *pixbuf);
-CDK_DEPRECATED_IN_3_14
+CDK_AVAILABLE_IN_ALL
 void                  ctk_status_icon_set_from_file      (CtkStatusIcon      *status_icon,
 							  const gchar        *filename);
-CDK_DEPRECATED_IN_3_10_FOR(ctk_status_icon_set_from_icon_name)
+CDK_AVAILABLE_IN_ALL
 void                  ctk_status_icon_set_from_stock     (CtkStatusIcon      *status_icon,
 							  const gchar        *stock_id);
-CDK_DEPRECATED_IN_3_14
+CDK_AVAILABLE_IN_ALL
 void                  ctk_status_icon_set_from_icon_name (CtkStatusIcon      *status_icon,
 							  const gchar        *icon_name);
-CDK_DEPRECATED_IN_3_14
+CDK_AVAILABLE_IN_ALL
 void                  ctk_status_icon_set_from_gicon     (CtkStatusIcon      *status_icon,
                                                           GIcon              *icon);
 
-CDK_DEPRECATED_IN_3_14
+CDK_AVAILABLE_IN_ALL
 CtkImageType          ctk_status_icon_get_storage_type   (CtkStatusIcon      *status_icon);
 
-CDK_DEPRECATED_IN_3_14
+CDK_AVAILABLE_IN_ALL
 GdkPixbuf            *ctk_status_icon_get_pixbuf         (CtkStatusIcon      *status_icon);
-CDK_DEPRECATED_IN_3_10_FOR(ctk_status_icon_get_icon_name)
+CDK_AVAILABLE_IN_ALL
 const gchar *         ctk_status_icon_get_stock          (CtkStatusIcon      *status_icon);
-CDK_DEPRECATED_IN_3_14
+CDK_AVAILABLE_IN_ALL
 const gchar *         ctk_status_icon_get_icon_name      (CtkStatusIcon      *status_icon);
-CDK_DEPRECATED_IN_3_14
+CDK_AVAILABLE_IN_ALL
 GIcon                *ctk_status_icon_get_gicon          (CtkStatusIcon      *status_icon);
 
-CDK_DEPRECATED_IN_3_14
+CDK_AVAILABLE_IN_ALL
 gint                  ctk_status_icon_get_size           (CtkStatusIcon      *status_icon);
 
-CDK_DEPRECATED_IN_3_14
+CDK_AVAILABLE_IN_ALL
 void                  ctk_status_icon_set_screen         (CtkStatusIcon      *status_icon,
                                                           CdkScreen          *screen);
-CDK_DEPRECATED_IN_3_14
+CDK_AVAILABLE_IN_ALL
 CdkScreen            *ctk_status_icon_get_screen         (CtkStatusIcon      *status_icon);
 
-CDK_DEPRECATED_IN_3_14
+CDK_AVAILABLE_IN_ALL
 void                  ctk_status_icon_set_has_tooltip    (CtkStatusIcon      *status_icon,
                                                           gboolean            has_tooltip);
-CDK_DEPRECATED_IN_3_14
+CDK_AVAILABLE_IN_ALL
 void                  ctk_status_icon_set_tooltip_text   (CtkStatusIcon      *status_icon,
                                                           const gchar        *text);
-CDK_DEPRECATED_IN_3_14
+CDK_AVAILABLE_IN_ALL
 void                  ctk_status_icon_set_tooltip_markup (CtkStatusIcon      *status_icon,
                                                           const gchar        *markup);
-CDK_DEPRECATED_IN_3_14
+CDK_AVAILABLE_IN_ALL
 void                  ctk_status_icon_set_title          (CtkStatusIcon      *status_icon,
                                                           const gchar        *title);
-CDK_DEPRECATED_IN_3_14
+CDK_AVAILABLE_IN_ALL
 const gchar *         ctk_status_icon_get_title          (CtkStatusIcon      *status_icon);
-CDK_DEPRECATED_IN_3_14
+CDK_AVAILABLE_IN_ALL
 void                  ctk_status_icon_set_name           (CtkStatusIcon      *status_icon,
                                                           const gchar        *name);
-CDK_DEPRECATED_IN_3_14
+CDK_AVAILABLE_IN_ALL
 void                  ctk_status_icon_set_visible        (CtkStatusIcon      *status_icon,
 							  gboolean            visible);
-CDK_DEPRECATED_IN_3_14
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_status_icon_get_visible        (CtkStatusIcon      *status_icon);
 
-CDK_DEPRECATED_IN_3_14
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_status_icon_is_embedded        (CtkStatusIcon      *status_icon);
 
-CDK_DEPRECATED_IN_3_14
+CDK_AVAILABLE_IN_ALL
 void                  ctk_status_icon_position_menu      (CtkMenu            *menu,
 							  gint               *x,
 							  gint               *y,
 							  gboolean           *push_in,
 							  gpointer            user_data);
-CDK_DEPRECATED_IN_3_14
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_status_icon_get_geometry       (CtkStatusIcon      *status_icon,
 							  CdkScreen         **screen,
 							  CdkRectangle       *area,
 							  CtkOrientation     *orientation);
-CDK_DEPRECATED_IN_3_14
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_status_icon_get_has_tooltip    (CtkStatusIcon      *status_icon);
-CDK_DEPRECATED_IN_3_14
+CDK_AVAILABLE_IN_ALL
 gchar                *ctk_status_icon_get_tooltip_text   (CtkStatusIcon      *status_icon);
-CDK_DEPRECATED_IN_3_14
+CDK_AVAILABLE_IN_ALL
 gchar                *ctk_status_icon_get_tooltip_markup (CtkStatusIcon      *status_icon);
 
-CDK_DEPRECATED_IN_3_14
+CDK_AVAILABLE_IN_ALL
 guint32               ctk_status_icon_get_x11_window_id  (CtkStatusIcon      *status_icon);
 
 G_END_DECLS

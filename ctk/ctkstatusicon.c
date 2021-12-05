@@ -30,7 +30,6 @@
 #include <string.h>
 #include <stdlib.h>
 
-#define CDK_DISABLE_DEPRECATION_WARNINGS
 #include "ctkstatusicon.h"
 
 #include "ctkintl.h"
@@ -88,13 +87,6 @@
  * Note that a CtkStatusIcon is not a widget, but just a #GObject. Making it a
  * widget would be impractical, since the system tray on Windows doesn’t allow
  * to embed arbitrary widgets.
- *
- * CtkStatusIcon has been deprecated in 3.14. You should consider using
- * notifications or more modern platform-specific APIs instead. GLib provides
- * the #GNotification API which works well with #CtkApplication on multiple
- * platforms and environments, and should be the preferred mechanism to notify
- * the users of transient status updates. See this [HowDoI](https://wiki.gnome.org/HowDoI/GNotification)
- * for code examples.
  */
 
 
@@ -246,8 +238,6 @@ ctk_status_icon_class_init (CtkStatusIconClass *class)
 
   /**
    * CtkStatusIcon:stock:
-   *
-   * Deprecated: 3.10: Use #CtkStatusIcon:icon-name instead.
    */
   g_object_class_install_property (gobject_class,
 				   PROP_STOCK,
@@ -255,7 +245,7 @@ ctk_status_icon_class_init (CtkStatusIconClass *class)
 							P_("Stock ID"),
 							P_("Stock ID for a stock image to display"),
 							NULL,
-							CTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
+							CTK_PARAM_READWRITE));
   
   g_object_class_install_property (gobject_class,
                                    PROP_ICON_NAME,
@@ -1198,9 +1188,6 @@ ctk_status_icon_get_property (GObject    *object,
  * Returns: a new #CtkStatusIcon
  *
  * Since: 2.10
- *
- * Deprecated: 3.14: Use #GNotification and #CtkApplication to
- *   provide status notifications
  */
 CtkStatusIcon *
 ctk_status_icon_new (void)
@@ -1220,9 +1207,6 @@ ctk_status_icon_new (void)
  * Returns: a new #CtkStatusIcon
  *
  * Since: 2.10
- *
- * Deprecated: 3.14: Use #GNotification and #CtkApplication to
- *   provide status notifications
  */
 CtkStatusIcon *
 ctk_status_icon_new_from_pixbuf (GdkPixbuf *pixbuf)
@@ -1244,9 +1228,6 @@ ctk_status_icon_new_from_pixbuf (GdkPixbuf *pixbuf)
  * Returns: a new #CtkStatusIcon
  *
  * Since: 2.10
- *
- * Deprecated: 3.14: Use #GNotification and #CtkApplication to
- *   provide status notifications
  */
 CtkStatusIcon *
 ctk_status_icon_new_from_file (const gchar *filename)
@@ -1268,9 +1249,6 @@ ctk_status_icon_new_from_file (const gchar *filename)
  * Returns: a new #CtkStatusIcon
  *
  * Since: 2.10
- *
- * Deprecated: 3.14: Use #GNotification and #CtkApplication to
- *   provide status notifications
  */
 CtkStatusIcon *
 ctk_status_icon_new_from_stock (const gchar *stock_id)
@@ -1291,9 +1269,6 @@ ctk_status_icon_new_from_stock (const gchar *stock_id)
  * Returns: a new #CtkStatusIcon
  *
  * Since: 2.10
- *
- * Deprecated: 3.14: Use #GNotification and #CtkApplication to
- *   provide status notifications
  */
 CtkStatusIcon *
 ctk_status_icon_new_from_icon_name (const gchar *icon_name)
@@ -1313,9 +1288,6 @@ ctk_status_icon_new_from_icon_name (const gchar *icon_name)
  * Returns: a new #CtkStatusIcon
  *
  * Since: 2.14
- *
- * Deprecated: 3.14: Use #GNotification and #CtkApplication to
- *   provide status notifications
  */
 CtkStatusIcon *
 ctk_status_icon_new_from_gicon (GIcon *icon)
@@ -1814,10 +1786,6 @@ ctk_status_icon_take_image (CtkStatusIcon      *status_icon,
  * See ctk_status_icon_new_from_pixbuf() for details.
  *
  * Since: 2.10
- *
- * Deprecated: 3.14: Use #GNotification and #CtkApplication to
- *   provide status notifications; you can use g_notification_set_icon()
- *   to associate a #GIcon with a notification
  */
 void
 ctk_status_icon_set_from_pixbuf (CtkStatusIcon *status_icon,
@@ -1838,11 +1806,7 @@ ctk_status_icon_set_from_pixbuf (CtkStatusIcon *status_icon,
  * Makes @status_icon display the file @filename.
  * See ctk_status_icon_new_from_file() for details.
  *
- * Since: 2.10 
- *
- * Deprecated: 3.14: Use #GNotification and #CtkApplication to
- *   provide status notifications; you can use g_notification_set_icon()
- *   to associate a #GIcon with a notification
+ * Since: 2.10
  */
 void
 ctk_status_icon_set_from_file (CtkStatusIcon *status_icon,
@@ -1870,8 +1834,6 @@ ctk_status_icon_set_from_file (CtkStatusIcon *status_icon,
  * See ctk_status_icon_new_from_stock() for details.
  *
  * Since: 2.10
- *
- * Deprecated: 3.10: Use ctk_status_icon_set_from_icon_name() instead.
  **/
 void
 ctk_status_icon_set_from_stock (CtkStatusIcon *status_icon,
@@ -1893,11 +1855,7 @@ ctk_status_icon_set_from_stock (CtkStatusIcon *status_icon,
  * current icon theme.
  * See ctk_status_icon_new_from_icon_name() for details.
  *
- * Since: 2.10 
- *
- * Deprecated: 3.14: Use #GNotification and #CtkApplication to
- *   provide status notifications; you can use g_notification_set_icon()
- *   to associate a #GIcon with a notification
+ * Since: 2.10
  */
 void
 ctk_status_icon_set_from_icon_name (CtkStatusIcon *status_icon,
@@ -1919,10 +1877,6 @@ ctk_status_icon_set_from_icon_name (CtkStatusIcon *status_icon,
  * See ctk_status_icon_new_from_gicon() for details.
  *
  * Since: 2.14
- *
- * Deprecated: 3.14: Use #GNotification and #CtkApplication to
- *   provide status notifications; you can use g_notification_set_icon()
- *   to associate a #GIcon with a notification
  */
 void
 ctk_status_icon_set_from_gicon (CtkStatusIcon *status_icon,
@@ -1946,11 +1900,6 @@ ctk_status_icon_set_from_gicon (CtkStatusIcon *status_icon,
  * Returns: the image representation being used
  *
  * Since: 2.10
- *
- * Deprecated: 3.14: Use #GNotification and #CtkApplication to
- *   provide status notifications; there is no direct replacement
- *   for this function, and #GNotification only supports #GIcon
- *   instances
  */
 CtkImageType
 ctk_status_icon_get_storage_type (CtkStatusIcon *status_icon)
@@ -1973,10 +1922,6 @@ ctk_status_icon_get_storage_type (CtkStatusIcon *status_icon)
  *     or %NULL if the image is empty.
  *
  * Since: 2.10
- *
- * Deprecated: 3.14: Use #GNotification and #CtkApplication to
- *   provide status notifications; there is no direct replacement
- *   for this function
  */
 GdkPixbuf *
 ctk_status_icon_get_pixbuf (CtkStatusIcon *status_icon)
@@ -2004,8 +1949,6 @@ ctk_status_icon_get_pixbuf (CtkStatusIcon *status_icon)
  *   or %NULL if the image is empty.
  *
  * Since: 2.10
- *
- * Deprecated: 3.10: Use ctk_status_icon_get_icon_name() instead.
  **/
 const gchar *
 ctk_status_icon_get_stock (CtkStatusIcon *status_icon)
@@ -2032,10 +1975,6 @@ ctk_status_icon_get_stock (CtkStatusIcon *status_icon)
  * Returns: (nullable): name of the displayed icon, or %NULL if the image is empty.
  *
  * Since: 2.10
- *
- * Deprecated: 3.14: Use #GNotification and #CtkApplication to
- *   provide status notifications; there is no direct replacement
- *   for this function
  */
 const gchar *
 ctk_status_icon_get_icon_name (CtkStatusIcon *status_icon)
@@ -2064,10 +2003,6 @@ ctk_status_icon_get_icon_name (CtkStatusIcon *status_icon)
  * Returns: (nullable) (transfer none): the displayed icon, or %NULL if the image is empty
  *
  * Since: 2.14
- *
- * Deprecated: 3.14: Use #GNotification and #CtkApplication to
- *   provide status notifications; there is no direct replacement
- *   for this function
  */
 GIcon *
 ctk_status_icon_get_gicon (CtkStatusIcon *status_icon)
@@ -2097,11 +2032,6 @@ ctk_status_icon_get_gicon (CtkStatusIcon *status_icon)
  * Returns: the size that is available for the image
  *
  * Since: 2.10
- *
- * Deprecated: 3.14: Use #GNotification and #CtkApplication to
- *   provide status notifications; there is no direct replacement
- *   for this function, as the representation of a notification
- *   is left to the platform
  */
 gint
 ctk_status_icon_get_size (CtkStatusIcon *status_icon)
@@ -2121,11 +2051,6 @@ ctk_status_icon_get_size (CtkStatusIcon *status_icon)
  * then remapped on the new screen.
  *
  * Since: 2.12
- *
- * Deprecated: 3.14: Use #GNotification and #CtkApplication to
- *   provide status notifications; there is no direct replacement
- *   for this function, as CTK typically only has one #CdkScreen
- *   and notifications are managed by the platform
  */
 void
 ctk_status_icon_set_screen (CtkStatusIcon *status_icon,
@@ -2148,10 +2073,6 @@ ctk_status_icon_set_screen (CtkStatusIcon *status_icon,
  * Returns: (transfer none): a #CdkScreen.
  *
  * Since: 2.12
- *
- * Deprecated: 3.14: Use #GNotification and #CtkApplication to
- *   provide status notifications; there is no direct replacement
- *   for this function, as notifications are managed by the platform
  */
 CdkScreen *
 ctk_status_icon_get_screen (CtkStatusIcon *status_icon)
@@ -2174,10 +2095,6 @@ ctk_status_icon_get_screen (CtkStatusIcon *status_icon)
  * Shows or hides a status icon.
  *
  * Since: 2.10
- *
- * Deprecated: 3.14: Use #GNotification and #CtkApplication to
- *   provide status notifications; there is no direct replacement
- *   for this function, as notifications are managed by the platform
  */
 void
 ctk_status_icon_set_visible (CtkStatusIcon *status_icon,
@@ -2237,10 +2154,6 @@ ctk_status_icon_set_visible (CtkStatusIcon *status_icon,
  * Returns: %TRUE if the status icon is visible
  *
  * Since: 2.10
- *
- * Deprecated: 3.14: Use #GNotification and #CtkApplication to
- *   provide status notifications; there is no direct replacement
- *   for this function
  */
 gboolean
 ctk_status_icon_get_visible (CtkStatusIcon *status_icon)
@@ -2261,10 +2174,6 @@ ctk_status_icon_get_visible (CtkStatusIcon *status_icon)
  *   a notification area.
  *
  * Since: 2.10
- *
- * Deprecated: 3.14: Use #GNotification and #CtkApplication to
- *   provide status notifications; there is no direct replacement
- *   for this function
  */
 gboolean
 ctk_status_icon_is_embedded (CtkStatusIcon *status_icon)
@@ -2293,10 +2202,6 @@ ctk_status_icon_is_embedded (CtkStatusIcon *status_icon)
  * to position @menu aligned to the status icon @user_data.
  * 
  * Since: 2.10
- *
- * Deprecated: 3.14: Use #GNotification and #CtkApplication to
- *   provide status notifications; notifications do not have menus,
- *   but can have buttons, and actions associated with each button
  */
 void
 ctk_status_icon_position_menu (CtkMenu  *menu,
@@ -2449,11 +2354,6 @@ ctk_status_icon_position_menu (CtkMenu  *menu,
  *               been filled in
  *
  * Since: 2.10
- *
- * Deprecated: 3.14: Use #GNotification and #CtkApplication to
- *   provide status notifications; there is no direct replacement
- *   for this function, as the platform is responsible for the
- *   presentation of notifications
  */
 gboolean
 ctk_status_icon_get_geometry (CtkStatusIcon    *status_icon,
@@ -2507,11 +2407,6 @@ ctk_status_icon_get_geometry (CtkStatusIcon    *status_icon,
  * See #CtkStatusIcon:has-tooltip for more information.
  *
  * Since: 2.16
- *
- * Deprecated: 3.14: Use #GNotification and #CtkApplication to
- *   provide status notifications; there is no direct replacement
- *   for this function, but notifications can display an arbitrary
- *   amount of text using g_notification_set_body()
  */
 void
 ctk_status_icon_set_has_tooltip (CtkStatusIcon *status_icon,
@@ -2559,10 +2454,6 @@ ctk_status_icon_set_has_tooltip (CtkStatusIcon *status_icon,
  * Returns: current value of has-tooltip on @status_icon.
  *
  * Since: 2.16
- *
- * Deprecated: 3.14: Use #GNotification and #CtkApplication to
- *   provide status notifications; there is no direct replacement
- *   for this function
  */
 gboolean
 ctk_status_icon_get_has_tooltip (CtkStatusIcon *status_icon)
@@ -2603,10 +2494,6 @@ ctk_status_icon_get_has_tooltip (CtkStatusIcon *status_icon)
  * ctk_tooltip_set_text().
  *
  * Since: 2.16
- *
- * Deprecated: 3.14: Use #GNotification and #CtkApplication to
- *   provide status notifications; there is no direct replacement
- *   for this function
  */
 void
 ctk_status_icon_set_tooltip_text (CtkStatusIcon *status_icon,
@@ -2661,10 +2548,6 @@ ctk_status_icon_set_tooltip_text (CtkStatusIcon *status_icon,
  *   returned string with g_free() when done.
  *
  * Since: 2.16
- *
- * Deprecated: 3.14: Use #GNotification and #CtkApplication to
- *   provide status notifications; there is no direct replacement
- *   for this function
  */
 gchar *
 ctk_status_icon_get_tooltip_text (CtkStatusIcon *status_icon)
@@ -2707,10 +2590,6 @@ ctk_status_icon_get_tooltip_text (CtkStatusIcon *status_icon)
  * ctk_tooltip_set_markup().
  *
  * Since: 2.16
- *
- * Deprecated: 3.14: Use #GNotification and #CtkApplication to
- *   provide status notifications; there is no direct replacement
- *   for this function
  */
 void
 ctk_status_icon_set_tooltip_markup (CtkStatusIcon *status_icon,
@@ -2755,10 +2634,6 @@ ctk_status_icon_set_tooltip_markup (CtkStatusIcon *status_icon,
  *   returned string with g_free() when done.
  *
  * Since: 2.16
- *
- * Deprecated: 3.14: Use #GNotification and #CtkApplication to
- *   provide status notifications; there is no direct replacement
- *   for this function
  */
 gchar *
 ctk_status_icon_get_tooltip_markup (CtkStatusIcon *status_icon)
@@ -2806,10 +2681,6 @@ ctk_status_icon_get_tooltip_markup (CtkStatusIcon *status_icon)
  * underlying X11 Window
  *
  * Since: 2.14
- *
- * Deprecated: 3.14: Use #GNotification and #CtkApplication to
- *   provide status notifications; there is no direct replacement
- *   for this function
  */
 guint32
 ctk_status_icon_get_x11_window_id (CtkStatusIcon *status_icon)
@@ -2836,10 +2707,6 @@ ctk_status_icon_get_x11_window_id (CtkStatusIcon *status_icon)
  * readers to render the tray icon.
  *
  * Since: 2.18
- *
- * Deprecated: 3.14: Use #GNotification and #CtkApplication to
- *   provide status notifications; you should use g_notification_set_title()
- *   and g_notification_set_body() to present text inside your notification
  */
 void
 ctk_status_icon_set_title (CtkStatusIcon *status_icon,
@@ -2876,10 +2743,6 @@ ctk_status_icon_set_title (CtkStatusIcon *status_icon,
  * Returns: the title of the status icon
  *
  * Since: 2.18
- *
- * Deprecated: 3.14: Use #GNotification and #CtkApplication to
- *   provide status notifications; there is no direct replacement
- *   for this function
  */
 const gchar *
 ctk_status_icon_get_title (CtkStatusIcon *status_icon)
@@ -2917,11 +2780,6 @@ ctk_status_icon_get_title (CtkStatusIcon *status_icon)
  * the user.
  *
  * Since: 2.20
- *
- * Deprecated: 3.14: Use #GNotification and #CtkApplication to
- *   provide status notifications; there is no direct replacement
- *   for this function, as notifications are associated with a
- *   unique application identifier by #GApplication
  */
 void
 ctk_status_icon_set_name (CtkStatusIcon *status_icon,

@@ -314,6 +314,7 @@ ctk_public_h_sources = 		\
 	ctkstack.h		\
 	ctkstackswitcher.h	\
 	ctkstatusbar.h		\
+	ctkstatusicon.h		\
 	ctkstock.h		\
 	ctkstylecontext.h	\
 	ctkstyleprovider.h	\
@@ -940,6 +941,7 @@ ctk_base_c_sources = 		\
 	ctkstack.c		\
 	ctkstackswitcher.c	\
 	ctkstatusbar.c		\
+	ctkstatusicon.c		\
 	ctkstock.c		\
 	ctkstyleanimation.c	\
 	ctkstylecascade.c	\
