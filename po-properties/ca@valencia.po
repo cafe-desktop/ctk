@@ -293,22 +293,22 @@ msgid "The stock icon displayed in widgets representing this action."
 msgstr ""
 "La icona de recurs mostrada en els controls que representen esta acció."
 
-#: ctk/ctkaction.c:342 ctk/deprecated/ctkstatusicon.c:272
+#: ctk/ctkaction.c:342 ctk/ctkstatusicon.c:272
 msgid "GIcon"
 msgstr "GIcon"
 
-#: ctk/ctkaction.c:343 ctk/deprecated/ctkstatusicon.c:273
+#: ctk/ctkaction.c:343 ctk/ctkstatusicon.c:273
 #: ctk/ctkcellrendererpixbuf.c:266 ctk/ctkimage.c:359
 msgid "The GIcon being displayed"
 msgstr "La icona GIcon que es mostra"
 
-#: ctk/ctkaction.c:365 ctk/deprecated/ctkstatusicon.c:256
+#: ctk/ctkaction.c:365 ctk/ctkstatusicon.c:256
 #: ctk/ctkcellrendererpixbuf.c:229 ctk/ctkimage.c:342 ctk/ctkprinter.c:170
 #: ctk/ctkwindow.c:885
 msgid "Icon Name"
 msgstr "Nom de la icona"
 
-#: ctk/ctkaction.c:366 ctk/deprecated/ctkstatusicon.c:257
+#: ctk/ctkaction.c:366 ctk/ctkstatusicon.c:257
 #: ctk/ctkcellrendererpixbuf.c:230 ctk/ctkimage.c:343
 msgid "The name of the icon from the icon theme"
 msgstr "El nom de la icona del tema d'icones"
@@ -382,7 +382,7 @@ msgid "Whether the action is enabled."
 msgstr "Si l'acció està habilitada."
 
 #: ctk/ctkaction.c:481 ctk/ctkactiongroup.c:228
-#: ctk/deprecated/ctkstatusicon.c:307 ctk/ctkcssnode.c:645
+#: ctk/ctkstatusicon.c:307 ctk/ctkcssnode.c:645
 #: ctk/ctknativedialog.c:242 ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1139
 msgid "Visible"
 msgstr "Visible"
@@ -845,104 +845,104 @@ msgstr "Mostra els nombres"
 msgid "Whether the items should be displayed with a number"
 msgstr "Si els elements s'han de mostrar amb un nombre"
 
-#: ctk/deprecated/ctkstatusicon.c:227 ctk/ctkimage.c:255
+#: ctk/ctkstatusicon.c:227 ctk/ctkimage.c:255
 msgid "Pixbuf"
 msgstr "Pixbuf"
 
-#: ctk/deprecated/ctkstatusicon.c:228 ctk/ctkimage.c:256
+#: ctk/ctkstatusicon.c:228 ctk/ctkimage.c:256
 msgid "A GdkPixbuf to display"
 msgstr "Un GdkPixbuf a visualitzar"
 
-#: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:269
+#: ctk/ctkstatusicon.c:235 ctk/ctkimage.c:269
 #: ctk/ctkrecentmanager.c:289
 msgid "Filename"
 msgstr "Nom del fitxer"
 
-#: ctk/deprecated/ctkstatusicon.c:236 ctk/ctkimage.c:270
+#: ctk/ctkstatusicon.c:236 ctk/ctkimage.c:270
 msgid "Filename to load and display"
 msgstr "Nom de fitxer per carregar i visualitzar"
 
-#: ctk/deprecated/ctkstatusicon.c:248 ctk/ctkcellrendererpixbuf.c:193
+#: ctk/ctkstatusicon.c:248 ctk/ctkcellrendererpixbuf.c:193
 #: ctk/ctkimage.c:281
 msgid "Stock ID"
 msgstr "Id. del recurs"
 
-#: ctk/deprecated/ctkstatusicon.c:249 ctk/ctkimage.c:282
+#: ctk/ctkstatusicon.c:249 ctk/ctkimage.c:282
 msgid "Stock ID for a stock image to display"
 msgstr "Id. de recurs per a una icona de recurs a mostrar"
 
-#: ctk/deprecated/ctkstatusicon.c:280 ctk/ctkimage.c:379
+#: ctk/ctkstatusicon.c:280 ctk/ctkimage.c:379
 msgid "Storage type"
 msgstr "Tipus d'emmagatzematge"
 
-#: ctk/deprecated/ctkstatusicon.c:281 ctk/ctkimage.c:380
+#: ctk/ctkstatusicon.c:281 ctk/ctkimage.c:380
 msgid "The representation being used for image data"
 msgstr "La representació utilitzada per a les dades d'imatge"
 
-#: ctk/deprecated/ctkstatusicon.c:289 ctk/ctkcellrendererpixbuf.c:201
+#: ctk/ctkstatusicon.c:289 ctk/ctkcellrendererpixbuf.c:201
 #: ctk/ctkcellrendererspinner.c:159 ctk/ctkrecentmanager.c:304
 msgid "Size"
 msgstr "Mida"
 
-#: ctk/deprecated/ctkstatusicon.c:290
+#: ctk/ctkstatusicon.c:290
 msgid "The size of the icon"
 msgstr "La mida de la icona"
 
-#: ctk/deprecated/ctkstatusicon.c:299 ctk/ctkinvisible.c:98
+#: ctk/ctkstatusicon.c:299 ctk/ctkinvisible.c:98
 #: ctk/ctkmountoperation.c:179 ctk/ctkstylecontext.c:228 ctk/ctkwindow.c:892
 msgid "Screen"
 msgstr "Pantalla"
 
-#: ctk/deprecated/ctkstatusicon.c:300
+#: ctk/ctkstatusicon.c:300
 msgid "The screen where this status icon will be displayed"
 msgstr "La pantalla on es mostrarà esta icona d'estat"
 
-#: ctk/deprecated/ctkstatusicon.c:308
+#: ctk/ctkstatusicon.c:308
 msgid "Whether the status icon is visible"
 msgstr "Si la icona d'estat és visible"
 
-#: ctk/deprecated/ctkstatusicon.c:323 ctk/ctkplug.c:196
+#: ctk/ctkstatusicon.c:323 ctk/ctkplug.c:196
 msgid "Embedded"
 msgstr "Imbricat"
 
-#: ctk/deprecated/ctkstatusicon.c:324
+#: ctk/ctkstatusicon.c:324
 msgid "Whether the status icon is embedded"
 msgstr "Si la icona d'estat és imbricada"
 
-#: ctk/deprecated/ctkstatusicon.c:339 ctk/ctktrayicon-x11.c:127
+#: ctk/ctkstatusicon.c:339 ctk/ctktrayicon-x11.c:127
 #: ctk/ctkgesturepan.c:237 ctk/ctkorientable.c:61
 msgid "Orientation"
 msgstr "Orientació"
 
-#: ctk/deprecated/ctkstatusicon.c:340 ctk/ctktrayicon-x11.c:128
+#: ctk/ctkstatusicon.c:340 ctk/ctktrayicon-x11.c:128
 msgid "The orientation of the tray"
 msgstr "L'orientació de la safata"
 
-#: ctk/deprecated/ctkstatusicon.c:367 ctk/ctkwidget.c:1276
+#: ctk/ctkstatusicon.c:367 ctk/ctkwidget.c:1276
 msgid "Has tooltip"
 msgstr "Té indicador de funció"
 
-#: ctk/deprecated/ctkstatusicon.c:368
+#: ctk/ctkstatusicon.c:368
 msgid "Whether this tray icon has a tooltip"
 msgstr "Si esta icona de la safata té un indicador de funció"
 
-#: ctk/deprecated/ctkstatusicon.c:394 ctk/ctkwidget.c:1300
+#: ctk/ctkstatusicon.c:394 ctk/ctkwidget.c:1300
 msgid "Tooltip Text"
 msgstr "Text de l'indicador de funció"
 
-#: ctk/deprecated/ctkstatusicon.c:395 ctk/ctkwidget.c:1301 ctk/ctkwidget.c:1325
+#: ctk/ctkstatusicon.c:395 ctk/ctkwidget.c:1301 ctk/ctkwidget.c:1325
 msgid "The contents of the tooltip for this widget"
 msgstr "Els continguts de l'indicador de funció d'este giny"
 
-#: ctk/deprecated/ctkstatusicon.c:418 ctk/ctkwidget.c:1324
+#: ctk/ctkstatusicon.c:418 ctk/ctkwidget.c:1324
 msgid "Tooltip markup"
 msgstr "Etiquetatge de l'indicador de funció"
 
-#: ctk/deprecated/ctkstatusicon.c:419
+#: ctk/ctkstatusicon.c:419
 msgid "The contents of the tooltip for this tray icon"
 msgstr "El contingut de l'indicador de funció d'esta icona de la safata"
 
-#: ctk/deprecated/ctkstatusicon.c:436 ctk/ctkcolorbutton.c:183
+#: ctk/ctkstatusicon.c:436 ctk/ctkcolorbutton.c:183
 #: ctk/ctkfilechooserbutton.c:438 ctk/ctkfontbutton.c:476
 #: ctk/ctkheaderbar.c:2017 ctk/ctkprintjob.c:132 ctk/ctkshortcutsgroup.c:308
 #: ctk/ctkshortcutssection.c:376 ctk/ctkshortcutsshortcut.c:575
@@ -950,7 +950,7 @@ msgstr "El contingut de l'indicador de funció d'esta icona de la safata"
 msgid "Title"
 msgstr "Títol"
 
-#: ctk/deprecated/ctkstatusicon.c:437
+#: ctk/ctkstatusicon.c:437
 msgid "The title of this tray icon"
 msgstr "El títol d'esta icona de l'àrea de notificació"
 

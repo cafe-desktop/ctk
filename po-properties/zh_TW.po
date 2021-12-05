@@ -260,22 +260,22 @@ msgstr "內建圖示"
 msgid "The stock icon displayed in widgets representing this action."
 msgstr "在元件中代表此動作的內建圖示。"
 
-#: ctk/ctkaction.c:342 ctk/deprecated/ctkstatusicon.c:279
+#: ctk/ctkaction.c:342 ctk/ctkstatusicon.c:279
 msgid "GIcon"
 msgstr "GIcon"
 
-#: ctk/ctkaction.c:343 ctk/deprecated/ctkstatusicon.c:280
+#: ctk/ctkaction.c:343 ctk/ctkstatusicon.c:280
 #: ctk/ctkcellrendererpixbuf.c:282 ctk/ctkimage.c:360
 msgid "The GIcon being displayed"
 msgstr "準備顯示的 GIcon"
 
-#: ctk/ctkaction.c:365 ctk/deprecated/ctkstatusicon.c:263
+#: ctk/ctkaction.c:365 ctk/ctkstatusicon.c:263
 #: ctk/ctkcellrendererpixbuf.c:245 ctk/ctkimage.c:343 ctk/ctkprinter.c:170
 #: ctk/ctkwindow.c:890
 msgid "Icon Name"
 msgstr "圖示名稱"
 
-#: ctk/ctkaction.c:366 ctk/deprecated/ctkstatusicon.c:264
+#: ctk/ctkaction.c:366 ctk/ctkstatusicon.c:264
 #: ctk/ctkcellrendererpixbuf.c:246 ctk/ctkimage.c:344
 msgid "The name of the icon from the icon theme"
 msgstr "圖示主題的圖示名稱"
@@ -340,7 +340,7 @@ msgid "Whether the action is enabled."
 msgstr "本指令是否有效。"
 
 #: ctk/ctkaction.c:481 ctk/ctkactiongroup.c:228
-#: ctk/deprecated/ctkstatusicon.c:314 ctk/ctkcssnode.c:649
+#: ctk/ctkstatusicon.c:314 ctk/ctkcssnode.c:649
 #: ctk/ctknativedialog.c:242 ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1145
 msgid "Visible"
 msgstr "可見的"
@@ -779,104 +779,104 @@ msgstr "顯示編號"
 msgid "Whether the items should be displayed with a number"
 msgstr "項目是否顯示編號"
 
-#: ctk/deprecated/ctkstatusicon.c:234 ctk/ctkimage.c:256
+#: ctk/ctkstatusicon.c:234 ctk/ctkimage.c:256
 msgid "Pixbuf"
 msgstr "Pixbuf"
 
-#: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:257
+#: ctk/ctkstatusicon.c:235 ctk/ctkimage.c:257
 msgid "A GdkPixbuf to display"
 msgstr "準備顯示的 GdkPixbuf"
 
-#: ctk/deprecated/ctkstatusicon.c:242 ctk/ctkimage.c:270
+#: ctk/ctkstatusicon.c:242 ctk/ctkimage.c:270
 #: ctk/ctkrecentmanager.c:289
 msgid "Filename"
 msgstr "檔案名稱"
 
-#: ctk/deprecated/ctkstatusicon.c:243 ctk/ctkimage.c:271
+#: ctk/ctkstatusicon.c:243 ctk/ctkimage.c:271
 msgid "Filename to load and display"
 msgstr "準備載入及顯示的檔案"
 
-#: ctk/deprecated/ctkstatusicon.c:255 ctk/ctkcellrendererpixbuf.c:195
+#: ctk/ctkstatusicon.c:255 ctk/ctkcellrendererpixbuf.c:195
 #: ctk/ctkimage.c:282
 msgid "Stock ID"
 msgstr "內建圖示代碼"
 
-#: ctk/deprecated/ctkstatusicon.c:256 ctk/ctkimage.c:283
+#: ctk/ctkstatusicon.c:256 ctk/ctkimage.c:283
 msgid "Stock ID for a stock image to display"
 msgstr "欲顯示的內建圖示名稱"
 
-#: ctk/deprecated/ctkstatusicon.c:287 ctk/ctkimage.c:380
+#: ctk/ctkstatusicon.c:287 ctk/ctkimage.c:380
 msgid "Storage type"
 msgstr "儲存種類"
 
-#: ctk/deprecated/ctkstatusicon.c:288 ctk/ctkimage.c:381
+#: ctk/ctkstatusicon.c:288 ctk/ctkimage.c:381
 msgid "The representation being used for image data"
 msgstr "影像資料所使用的資料代表"
 
-#: ctk/deprecated/ctkstatusicon.c:296 ctk/ctkcellrendererpixbuf.c:210
+#: ctk/ctkstatusicon.c:296 ctk/ctkcellrendererpixbuf.c:210
 #: ctk/ctkcellrendererspinner.c:159 ctk/ctkrecentmanager.c:304
 msgid "Size"
 msgstr "大小"
 
-#: ctk/deprecated/ctkstatusicon.c:297
+#: ctk/ctkstatusicon.c:297
 msgid "The size of the icon"
 msgstr "圖示大小"
 
-#: ctk/deprecated/ctkstatusicon.c:306 ctk/ctkinvisible.c:98
+#: ctk/ctkstatusicon.c:306 ctk/ctkinvisible.c:98
 #: ctk/ctkmountoperation.c:183 ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:897
 msgid "Screen"
 msgstr "螢幕"
 
-#: ctk/deprecated/ctkstatusicon.c:307
+#: ctk/ctkstatusicon.c:307
 msgid "The screen where this status icon will be displayed"
 msgstr "這個狀態圖示將顯示的螢幕"
 
-#: ctk/deprecated/ctkstatusicon.c:315
+#: ctk/ctkstatusicon.c:315
 msgid "Whether the status icon is visible"
 msgstr "狀態圖示是否顯示"
 
-#: ctk/deprecated/ctkstatusicon.c:330 ctk/ctkplug.c:196
+#: ctk/ctkstatusicon.c:330 ctk/ctkplug.c:196
 msgid "Embedded"
 msgstr "內嵌的"
 
-#: ctk/deprecated/ctkstatusicon.c:331
+#: ctk/ctkstatusicon.c:331
 msgid "Whether the status icon is embedded"
 msgstr "狀態圖示是否為內嵌"
 
-#: ctk/deprecated/ctkstatusicon.c:346 ctk/ctktrayicon-x11.c:127
+#: ctk/ctkstatusicon.c:346 ctk/ctktrayicon-x11.c:127
 #: ctk/ctkgesturepan.c:238 ctk/ctkorientable.c:61
 msgid "Orientation"
 msgstr "方向"
 
-#: ctk/deprecated/ctkstatusicon.c:347 ctk/ctktrayicon-x11.c:128
+#: ctk/ctkstatusicon.c:347 ctk/ctktrayicon-x11.c:128
 msgid "The orientation of the tray"
 msgstr "系統匣的方向"
 
-#: ctk/deprecated/ctkstatusicon.c:374 ctk/ctkwidget.c:1282
+#: ctk/ctkstatusicon.c:374 ctk/ctkwidget.c:1282
 msgid "Has tooltip"
 msgstr "具有工具提示"
 
-#: ctk/deprecated/ctkstatusicon.c:375
+#: ctk/ctkstatusicon.c:375
 msgid "Whether this tray icon has a tooltip"
 msgstr "此系統匣圖示是否具有工具提示"
 
-#: ctk/deprecated/ctkstatusicon.c:401 ctk/ctkwidget.c:1306
+#: ctk/ctkstatusicon.c:401 ctk/ctkwidget.c:1306
 msgid "Tooltip Text"
 msgstr "工具提示文字"
 
-#: ctk/deprecated/ctkstatusicon.c:402 ctk/ctkwidget.c:1307 ctk/ctkwidget.c:1331
+#: ctk/ctkstatusicon.c:402 ctk/ctkwidget.c:1307 ctk/ctkwidget.c:1331
 msgid "The contents of the tooltip for this widget"
 msgstr "此元件工具提示的內容"
 
-#: ctk/deprecated/ctkstatusicon.c:425 ctk/ctkwidget.c:1330
+#: ctk/ctkstatusicon.c:425 ctk/ctkwidget.c:1330
 msgid "Tooltip markup"
 msgstr "工具提示標記"
 
-#: ctk/deprecated/ctkstatusicon.c:426
+#: ctk/ctkstatusicon.c:426
 msgid "The contents of the tooltip for this tray icon"
 msgstr "此系統匣圖示工具提示的內容"
 
-#: ctk/deprecated/ctkstatusicon.c:443 ctk/ctkcolorbutton.c:183
+#: ctk/ctkstatusicon.c:443 ctk/ctkcolorbutton.c:183
 #: ctk/ctkfilechooserbutton.c:443 ctk/ctkfontbutton.c:490
 #: ctk/ctkheaderbar.c:2027 ctk/ctkprintjob.c:133 ctk/ctkshortcutsgroup.c:308
 #: ctk/ctkshortcutssection.c:376 ctk/ctkshortcutsshortcut.c:575
@@ -884,7 +884,7 @@ msgstr "此系統匣圖示工具提示的內容"
 msgid "Title"
 msgstr "標題"
 
-#: ctk/deprecated/ctkstatusicon.c:444
+#: ctk/ctkstatusicon.c:444
 msgid "The title of this tray icon"
 msgstr "此系統匣圖示的標題"
 

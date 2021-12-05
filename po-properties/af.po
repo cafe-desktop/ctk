@@ -288,25 +288,25 @@ msgstr "Stapelikoon"
 msgid "The stock icon displayed in widgets representing this action."
 msgstr "Die stapelikon vertoon in dingesies wat hierdie aksie verteenwoordig."
 
-#: ctk/ctkaction.c:342 ctk/deprecated/ctkstatusicon.c:279
+#: ctk/ctkaction.c:342 ctk/ctkstatusicon.c:279
 #, fuzzy
 msgid "GIcon"
 msgstr "Ikon"
 
-#: ctk/ctkaction.c:343 ctk/deprecated/ctkstatusicon.c:280
+#: ctk/ctkaction.c:343 ctk/ctkstatusicon.c:280
 #: ctk/ctkcellrendererpixbuf.c:282 ctk/ctkimage.c:359
 #, fuzzy
 msgid "The GIcon being displayed"
 msgstr "Ikonstel wat vertoon moet word"
 
-#: ctk/ctkaction.c:365 ctk/deprecated/ctkstatusicon.c:263
+#: ctk/ctkaction.c:365 ctk/ctkstatusicon.c:263
 #: ctk/ctkcellrendererpixbuf.c:245 ctk/ctkimage.c:342 ctk/ctkprinter.c:170
 #: ctk/ctkwindow.c:887
 #, fuzzy
 msgid "Icon Name"
 msgstr "Fontnaam"
 
-#: ctk/ctkaction.c:366 ctk/deprecated/ctkstatusicon.c:264
+#: ctk/ctkaction.c:366 ctk/ctkstatusicon.c:264
 #: ctk/ctkcellrendererpixbuf.c:246 ctk/ctkimage.c:343
 #, fuzzy
 msgid "The name of the icon from the icon theme"
@@ -376,7 +376,7 @@ msgid "Whether the action is enabled."
 msgstr "Of die aksie in werking gestel is."
 
 #: ctk/ctkaction.c:481 ctk/ctkactiongroup.c:228
-#: ctk/deprecated/ctkstatusicon.c:314 ctk/ctkcssnode.c:649
+#: ctk/ctkstatusicon.c:314 ctk/ctkcssnode.c:649
 #: ctk/ctknativedialog.c:242 ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1145
 msgid "Visible"
 msgstr "Sigbaar"
@@ -872,115 +872,115 @@ msgstr "Vertoon weeknommers"
 msgid "Whether the items should be displayed with a number"
 msgstr "Of afskeurkieslysitems by kieslyste gevoeg moet word"
 
-#: ctk/deprecated/ctkstatusicon.c:234 ctk/ctkimage.c:255
+#: ctk/ctkstatusicon.c:234 ctk/ctkimage.c:255
 msgid "Pixbuf"
 msgstr "Pixbuf"
 
-#: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:256
+#: ctk/ctkstatusicon.c:235 ctk/ctkimage.c:256
 msgid "A GdkPixbuf to display"
 msgstr "'n GdkPixbuf om te vertoon"
 
-#: ctk/deprecated/ctkstatusicon.c:242 ctk/ctkimage.c:269
+#: ctk/ctkstatusicon.c:242 ctk/ctkimage.c:269
 #: ctk/ctkrecentmanager.c:289
 msgid "Filename"
 msgstr "Lêernaam"
 
-#: ctk/deprecated/ctkstatusicon.c:243 ctk/ctkimage.c:270
+#: ctk/ctkstatusicon.c:243 ctk/ctkimage.c:270
 msgid "Filename to load and display"
 msgstr "Lêernaam wat gelaai en vertoon moet word"
 
-#: ctk/deprecated/ctkstatusicon.c:255 ctk/ctkcellrendererpixbuf.c:195
+#: ctk/ctkstatusicon.c:255 ctk/ctkcellrendererpixbuf.c:195
 #: ctk/ctkimage.c:281
 msgid "Stock ID"
 msgstr "Stapel-ID"
 
-#: ctk/deprecated/ctkstatusicon.c:256 ctk/ctkimage.c:282
+#: ctk/ctkstatusicon.c:256 ctk/ctkimage.c:282
 msgid "Stock ID for a stock image to display"
 msgstr "Stapel-ID vir 'n stapelbeeld wat vertoon moet word"
 
-#: ctk/deprecated/ctkstatusicon.c:287 ctk/ctkimage.c:379
+#: ctk/ctkstatusicon.c:287 ctk/ctkimage.c:379
 msgid "Storage type"
 msgstr "Bergsoort"
 
-#: ctk/deprecated/ctkstatusicon.c:288 ctk/ctkimage.c:380
+#: ctk/ctkstatusicon.c:288 ctk/ctkimage.c:380
 msgid "The representation being used for image data"
 msgstr "Die voorstelling wat vir die beelddata gebruik word"
 
-#: ctk/deprecated/ctkstatusicon.c:296 ctk/ctkcellrendererpixbuf.c:210
+#: ctk/ctkstatusicon.c:296 ctk/ctkcellrendererpixbuf.c:210
 #: ctk/ctkcellrendererspinner.c:159 ctk/ctkrecentmanager.c:304
 msgid "Size"
 msgstr "Grootte"
 
-#: ctk/deprecated/ctkstatusicon.c:297
+#: ctk/ctkstatusicon.c:297
 #, fuzzy
 msgid "The size of the icon"
 msgstr "Die titel van die venster"
 
-#: ctk/deprecated/ctkstatusicon.c:306 ctk/ctkinvisible.c:98
+#: ctk/ctkstatusicon.c:306 ctk/ctkinvisible.c:98
 #: ctk/ctkmountoperation.c:179 ctk/ctkstylecontext.c:232 ctk/ctkwindow.c:894
 msgid "Screen"
 msgstr "Skerm"
 
-#: ctk/deprecated/ctkstatusicon.c:307
+#: ctk/ctkstatusicon.c:307
 #, fuzzy
 msgid "The screen where this status icon will be displayed"
 msgstr "Die skerm waarop hierdie venster vertoon sal word"
 
-#: ctk/deprecated/ctkstatusicon.c:315
+#: ctk/ctkstatusicon.c:315
 #, fuzzy
 msgid "Whether the status icon is visible"
 msgstr "Of die aksie sigbaar is."
 
-#: ctk/deprecated/ctkstatusicon.c:330 ctk/ctkplug.c:196
+#: ctk/ctkstatusicon.c:330 ctk/ctkplug.c:196
 msgid "Embedded"
 msgstr ""
 
-#: ctk/deprecated/ctkstatusicon.c:331
+#: ctk/ctkstatusicon.c:331
 #, fuzzy
 msgid "Whether the status icon is embedded"
 msgstr "Of die aksie sigbaar is."
 
-#: ctk/deprecated/ctkstatusicon.c:346 ctk/ctktrayicon-x11.c:127
+#: ctk/ctkstatusicon.c:346 ctk/ctktrayicon-x11.c:127
 #: ctk/ctkgesturepan.c:237 ctk/ctkorientable.c:61
 msgid "Orientation"
 msgstr "Oriëntering"
 
-#: ctk/deprecated/ctkstatusicon.c:347 ctk/ctktrayicon-x11.c:128
+#: ctk/ctkstatusicon.c:347 ctk/ctktrayicon-x11.c:128
 #, fuzzy
 msgid "The orientation of the tray"
 msgstr "Die oriëntering van die nutsbalk"
 
-#: ctk/deprecated/ctkstatusicon.c:374 ctk/ctkwidget.c:1282
+#: ctk/ctkstatusicon.c:374 ctk/ctkwidget.c:1282
 #, fuzzy
 msgid "Has tooltip"
 msgstr "Nutswenk"
 
-#: ctk/deprecated/ctkstatusicon.c:375
+#: ctk/ctkstatusicon.c:375
 #, fuzzy
 msgid "Whether this tray icon has a tooltip"
 msgstr "Of die dingesie die toevoerfokus het"
 
-#: ctk/deprecated/ctkstatusicon.c:401 ctk/ctkwidget.c:1306
+#: ctk/ctkstatusicon.c:401 ctk/ctkwidget.c:1306
 #, fuzzy
 msgid "Tooltip Text"
 msgstr "Nutswenk"
 
-#: ctk/deprecated/ctkstatusicon.c:402 ctk/ctkwidget.c:1307 ctk/ctkwidget.c:1331
+#: ctk/ctkstatusicon.c:402 ctk/ctkwidget.c:1307 ctk/ctkwidget.c:1331
 #, fuzzy
 msgid "The contents of the tooltip for this widget"
 msgstr "Die inhoud van die inskrywing"
 
-#: ctk/deprecated/ctkstatusicon.c:425 ctk/ctkwidget.c:1330
+#: ctk/ctkstatusicon.c:425 ctk/ctkwidget.c:1330
 #, fuzzy
 msgid "Tooltip markup"
 msgstr "Nutswenk"
 
-#: ctk/deprecated/ctkstatusicon.c:426
+#: ctk/ctkstatusicon.c:426
 #, fuzzy
 msgid "The contents of the tooltip for this tray icon"
 msgstr "Die inhoud van die inskrywing"
 
-#: ctk/deprecated/ctkstatusicon.c:443 ctk/ctkcolorbutton.c:183
+#: ctk/ctkstatusicon.c:443 ctk/ctkcolorbutton.c:183
 #: ctk/ctkfilechooserbutton.c:438 ctk/ctkfontbutton.c:479
 #: ctk/ctkheaderbar.c:2027 ctk/ctkprintjob.c:132 ctk/ctkshortcutsgroup.c:308
 #: ctk/ctkshortcutssection.c:376 ctk/ctkshortcutsshortcut.c:575
@@ -988,7 +988,7 @@ msgstr "Die inhoud van die inskrywing"
 msgid "Title"
 msgstr "Titel"
 
-#: ctk/deprecated/ctkstatusicon.c:444
+#: ctk/ctkstatusicon.c:444
 #, fuzzy
 msgid "The title of this tray icon"
 msgstr "Die titel van die venster"

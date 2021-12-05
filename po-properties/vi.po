@@ -243,22 +243,22 @@ msgstr ""
 "Biểu tượng chuẩn được hiển thị trong các ô điều khiển có miêu tả hành động "
 "này."
 
-#: ctk/ctkaction.c:342 ctk/deprecated/ctkstatusicon.c:271
+#: ctk/ctkaction.c:342 ctk/ctkstatusicon.c:271
 msgid "GIcon"
 msgstr "GIcon"
 
-#: ctk/ctkaction.c:343 ctk/deprecated/ctkstatusicon.c:272
+#: ctk/ctkaction.c:343 ctk/ctkstatusicon.c:272
 #: ctk/ctkcellrendererpixbuf.c:266 ctk/ctkimage.c:343
 msgid "The GIcon being displayed"
 msgstr "Biểu tượng GIcon đang hiển thị"
 
-#: ctk/ctkaction.c:365 ctk/deprecated/ctkstatusicon.c:255
+#: ctk/ctkaction.c:365 ctk/ctkstatusicon.c:255
 #: ctk/ctkcellrendererpixbuf.c:229 ctk/ctkimage.c:326 ctk/ctkprinter.c:170
 #: ctk/ctkwindow.c:855
 msgid "Icon Name"
 msgstr "Tên biểu tượng"
 
-#: ctk/ctkaction.c:366 ctk/deprecated/ctkstatusicon.c:256
+#: ctk/ctkaction.c:366 ctk/ctkstatusicon.c:256
 #: ctk/ctkcellrendererpixbuf.c:230 ctk/ctkimage.c:327
 msgid "The name of the icon from the icon theme"
 msgstr "Tên của biểu tượng từ chủ đề biểu tượng"
@@ -327,7 +327,7 @@ msgid "Whether the action is enabled."
 msgstr "Có nên hiệu lực hành động này hay không."
 
 #: ctk/ctkaction.c:481 ctk/ctkactiongroup.c:228
-#: ctk/deprecated/ctkstatusicon.c:306 ctk/ctktreeviewcolumn.c:246
+#: ctk/ctkstatusicon.c:306 ctk/ctktreeviewcolumn.c:246
 #: ctk/ctkwidget.c:1159
 msgid "Visible"
 msgstr "Hiển thị"
@@ -785,111 +785,111 @@ msgstr "Hiện số"
 msgid "Whether the items should be displayed with a number"
 msgstr "Có nên hiển thị mục vớ con số hay không"
 
-#: ctk/deprecated/ctkstatusicon.c:226 ctk/ctkimage.c:239
+#: ctk/ctkstatusicon.c:226 ctk/ctkimage.c:239
 msgid "Pixbuf"
 msgstr "Đệm điểm ảnh"
 
-#: ctk/deprecated/ctkstatusicon.c:227 ctk/ctkimage.c:240
+#: ctk/ctkstatusicon.c:227 ctk/ctkimage.c:240
 msgid "A GdkPixbuf to display"
 msgstr "GdkPixbuf cần hiển thị"
 
-#: ctk/deprecated/ctkstatusicon.c:234 ctk/ctkimage.c:253
+#: ctk/ctkstatusicon.c:234 ctk/ctkimage.c:253
 #: ctk/ctkrecentmanager.c:293
 msgid "Filename"
 msgstr "Tên tập tin"
 
-#: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:254
+#: ctk/ctkstatusicon.c:235 ctk/ctkimage.c:254
 msgid "Filename to load and display"
 msgstr "Tên tập tin cần tải và hiển thị"
 
-#: ctk/deprecated/ctkstatusicon.c:247 ctk/ctkcellrendererpixbuf.c:193
+#: ctk/ctkstatusicon.c:247 ctk/ctkcellrendererpixbuf.c:193
 #: ctk/ctkimage.c:265
 msgid "Stock ID"
 msgstr "ID chuẩn"
 
-#: ctk/deprecated/ctkstatusicon.c:248 ctk/ctkimage.c:266
+#: ctk/ctkstatusicon.c:248 ctk/ctkimage.c:266
 msgid "Stock ID for a stock image to display"
 msgstr "Mã ID chuẩn cho ảnh chuẩn cần hiển thị"
 
-#: ctk/deprecated/ctkstatusicon.c:279 ctk/ctkimage.c:363
+#: ctk/ctkstatusicon.c:279 ctk/ctkimage.c:363
 msgid "Storage type"
 msgstr "Kiểu lưu trữ"
 
-#: ctk/deprecated/ctkstatusicon.c:280 ctk/ctkimage.c:364
+#: ctk/ctkstatusicon.c:280 ctk/ctkimage.c:364
 msgid "The representation being used for image data"
 msgstr "Đại diện được dùng cho dữ liệu ảnh"
 
-#: ctk/deprecated/ctkstatusicon.c:288 ctk/ctkcellrendererpixbuf.c:201
+#: ctk/ctkstatusicon.c:288 ctk/ctkcellrendererpixbuf.c:201
 #: ctk/ctkcellrendererspinner.c:159 ctk/ctkrecentmanager.c:308
 msgid "Size"
 msgstr "Cỡ"
 
-#: ctk/deprecated/ctkstatusicon.c:289
+#: ctk/ctkstatusicon.c:289
 msgid "The size of the icon"
 msgstr "Kích cỡ của biểu tượng"
 
-#: ctk/deprecated/ctkstatusicon.c:298 ctk/ctkinvisible.c:98
+#: ctk/ctkstatusicon.c:298 ctk/ctkinvisible.c:98
 #: ctk/ctkmountoperation.c:177 ctk/ctkstylecontext.c:222 ctk/ctkwindow.c:862
 msgid "Screen"
 msgstr "Màn hình"
 
-#: ctk/deprecated/ctkstatusicon.c:299
+#: ctk/ctkstatusicon.c:299
 msgid "The screen where this status icon will be displayed"
 msgstr "Màn hình nơi biểu tượng trạng thái sẽ được hiển thị"
 
-#: ctk/deprecated/ctkstatusicon.c:307
+#: ctk/ctkstatusicon.c:307
 msgid "Whether the status icon is visible"
 msgstr "Biểu tượng trạng thái được hiển thị"
 
-#: ctk/deprecated/ctkstatusicon.c:322 ctk/ctkplug.c:196
+#: ctk/ctkstatusicon.c:322 ctk/ctkplug.c:196
 msgid "Embedded"
 msgstr "Nhúng"
 
-#: ctk/deprecated/ctkstatusicon.c:323
+#: ctk/ctkstatusicon.c:323
 msgid "Whether the status icon is embedded"
 msgstr "Biểu tượng trạng thái được nhúng"
 
-#: ctk/deprecated/ctkstatusicon.c:338 ctk/ctktrayicon-x11.c:127
+#: ctk/ctkstatusicon.c:338 ctk/ctktrayicon-x11.c:127
 #: ctk/ctkgesturepan.c:237 ctk/ctkorientable.c:61
 msgid "Orientation"
 msgstr "Hướng"
 
-#: ctk/deprecated/ctkstatusicon.c:339 ctk/ctktrayicon-x11.c:128
+#: ctk/ctkstatusicon.c:339 ctk/ctktrayicon-x11.c:128
 msgid "The orientation of the tray"
 msgstr "Hướng của khay"
 
-#: ctk/deprecated/ctkstatusicon.c:366 ctk/ctkwidget.c:1270
+#: ctk/ctkstatusicon.c:366 ctk/ctkwidget.c:1270
 msgid "Has tooltip"
 msgstr "Có mẹo công cụ"
 
-#: ctk/deprecated/ctkstatusicon.c:367
+#: ctk/ctkstatusicon.c:367
 msgid "Whether this tray icon has a tooltip"
 msgstr "Biểu tượng khay này có mẹo công cụ hay không"
 
-#: ctk/deprecated/ctkstatusicon.c:393 ctk/ctkwidget.c:1294
+#: ctk/ctkstatusicon.c:393 ctk/ctkwidget.c:1294
 msgid "Tooltip Text"
 msgstr "Văn bản méo công cụ"
 
-#: ctk/deprecated/ctkstatusicon.c:394 ctk/ctkwidget.c:1295 ctk/ctkwidget.c:1319
+#: ctk/ctkstatusicon.c:394 ctk/ctkwidget.c:1295 ctk/ctkwidget.c:1319
 msgid "The contents of the tooltip for this widget"
 msgstr "Nội dung của mẹo công cụ cho ô điều khiển này"
 
-#: ctk/deprecated/ctkstatusicon.c:417 ctk/ctkwidget.c:1318
+#: ctk/ctkstatusicon.c:417 ctk/ctkwidget.c:1318
 msgid "Tooltip markup"
 msgstr "Định dạng mẹo công cụ"
 
-#: ctk/deprecated/ctkstatusicon.c:418
+#: ctk/ctkstatusicon.c:418
 msgid "The contents of the tooltip for this tray icon"
 msgstr "Nội dung của mẹo công cụ cho biểu tượng khay này"
 
-#: ctk/deprecated/ctkstatusicon.c:435 ctk/ctkcolorbutton.c:181
+#: ctk/ctkstatusicon.c:435 ctk/ctkcolorbutton.c:181
 #: ctk/ctkfilechooserbutton.c:446 ctk/ctkfontbutton.c:472
 #: ctk/ctkheaderbar.c:1874 ctk/ctkprintjob.c:132 ctk/ctkstack.c:487
 #: ctk/ctktreeviewcolumn.c:316
 msgid "Title"
 msgstr "Tiêu đề"
 
-#: ctk/deprecated/ctkstatusicon.c:436
+#: ctk/ctkstatusicon.c:436
 msgid "The title of this tray icon"
 msgstr "Tiêu đề của biểu tượng khay này"
 

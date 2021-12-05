@@ -216,22 +216,22 @@ msgstr "Stock আইকন"
 msgid "The stock icon displayed in widgets representing this action."
 msgstr "বিভিন্ন উইজেটত এই কাম নিৰ্দেশকাৰী Stock আইকন।"
 
-#: ../ctk/ctkaction.c:342 ../ctk/deprecated/ctkstatusicon.c:269
+#: ../ctk/ctkaction.c:342 ../ctk/ctkstatusicon.c:269
 msgid "GIcon"
 msgstr "GIcon"
 
-#: ../ctk/ctkaction.c:343 ../ctk/deprecated/ctkstatusicon.c:270
+#: ../ctk/ctkaction.c:343 ../ctk/ctkstatusicon.c:270
 #: ../ctk/ctkcellrendererpixbuf.c:258 ../ctk/ctkimage.c:343
 msgid "The GIcon being displayed"
 msgstr "প্ৰদৰ্শন কৰা GIcon"
 
-#: ../ctk/ctkaction.c:365 ../ctk/deprecated/ctkstatusicon.c:253
+#: ../ctk/ctkaction.c:365 ../ctk/ctkstatusicon.c:253
 #: ../ctk/ctkcellrendererpixbuf.c:223 ../ctk/ctkimage.c:325
 #: ../ctk/ctkprinter.c:170 ../ctk/ctkwindow.c:855
 msgid "Icon Name"
 msgstr "আইকনৰ নাম"
 
-#: ../ctk/ctkaction.c:366 ../ctk/deprecated/ctkstatusicon.c:254
+#: ../ctk/ctkaction.c:366 ../ctk/ctkstatusicon.c:254
 #: ../ctk/ctkcellrendererpixbuf.c:224 ../ctk/ctkimage.c:326
 msgid "The name of the icon from the icon theme"
 msgstr "আইকন থীমৰ পৰা প্ৰাপ্ত আইকনৰ নাম"
@@ -298,7 +298,7 @@ msgid "Whether the action is enabled."
 msgstr "কামটো সক্ৰিয় হয় নে নহয়"
 
 #: ../ctk/ctkaction.c:481 ../ctk/ctkactiongroup.c:228
-#: ../ctk/deprecated/ctkstatusicon.c:304 ../ctk/ctktreeviewcolumn.c:245
+#: ../ctk/ctkstatusicon.c:304 ../ctk/ctktreeviewcolumn.c:245
 #: ../ctk/ctkwidget.c:1270
 msgid "Visible"
 msgstr "দৃশ্যমান"
@@ -770,118 +770,118 @@ msgstr "সংখ্যা"
 msgid "Whether the items should be displayed with a number"
 msgstr "Whether the items should be displayed with a number"
 
-#: ../ctk/deprecated/ctkstatusicon.c:224 ../ctk/ctkimage.c:230
+#: ../ctk/ctkstatusicon.c:224 ../ctk/ctkimage.c:230
 msgid "Pixbuf"
 msgstr "পিক্সবাফ"
 
-#: ../ctk/deprecated/ctkstatusicon.c:225 ../ctk/ctkimage.c:231
+#: ../ctk/ctkstatusicon.c:225 ../ctk/ctkimage.c:231
 msgid "A GdkPixbuf to display"
 msgstr "প্ৰদৰ্শনেৰ বাবে এটা GdkPixbuf"
 
-#: ../ctk/deprecated/ctkstatusicon.c:232 ../ctk/ctkimage.c:246
+#: ../ctk/ctkstatusicon.c:232 ../ctk/ctkimage.c:246
 #: ../ctk/ctkrecentmanager.c:292
 msgid "Filename"
 msgstr "ফাইলৰ নাম"
 
-#: ../ctk/deprecated/ctkstatusicon.c:233 ../ctk/ctkimage.c:247
+#: ../ctk/ctkstatusicon.c:233 ../ctk/ctkimage.c:247
 msgid "Filename to load and display"
 msgstr "ল'ড কৰি দেখাবৰ বাবে ফাইলৰ নাম"
 
-#: ../ctk/deprecated/ctkstatusicon.c:245 ../ctk/ctkcellrendererpixbuf.c:187
+#: ../ctk/ctkstatusicon.c:245 ../ctk/ctkcellrendererpixbuf.c:187
 #: ../ctk/ctkimage.c:260
 msgid "Stock ID"
 msgstr "স্টক ID"
 
-#: ../ctk/deprecated/ctkstatusicon.c:246 ../ctk/ctkimage.c:261
+#: ../ctk/ctkstatusicon.c:246 ../ctk/ctkimage.c:261
 msgid "Stock ID for a stock image to display"
 msgstr "যি স্টক চিত্ৰটি প্ৰদৰ্শন কৰা হ'ব তাৰ স্টক আইডি"
 
-#: ../ctk/deprecated/ctkstatusicon.c:277 ../ctk/ctkimage.c:365
+#: ../ctk/ctkstatusicon.c:277 ../ctk/ctkimage.c:365
 msgid "Storage type"
 msgstr "সংৰক্ষণৰ ধৰণ"
 
-#: ../ctk/deprecated/ctkstatusicon.c:278 ../ctk/ctkimage.c:366
+#: ../ctk/ctkstatusicon.c:278 ../ctk/ctkimage.c:366
 msgid "The representation being used for image data"
 msgstr "তথ্যচিত্ৰে বাবে যি উপস্থাপনা ব্যৱহাৰ কৰা হচ্ছে"
 
-#: ../ctk/deprecated/ctkstatusicon.c:286 ../ctk/ctkcellrendererpixbuf.c:195
+#: ../ctk/ctkstatusicon.c:286 ../ctk/ctkcellrendererpixbuf.c:195
 #: ../ctk/ctkcellrendererspinner.c:159 ../ctk/ctkrecentmanager.c:307
 msgid "Size"
 msgstr "মাপ"
 
-#: ../ctk/deprecated/ctkstatusicon.c:287
+#: ../ctk/ctkstatusicon.c:287
 msgid "The size of the icon"
 msgstr "সৰ্বমোট"
 
-#: ../ctk/deprecated/ctkstatusicon.c:296 ../ctk/ctkinvisible.c:98
+#: ../ctk/ctkstatusicon.c:296 ../ctk/ctkinvisible.c:98
 #: ../ctk/ctkmountoperation.c:177 ../ctk/ctkstylecontext.c:251
 #: ../ctk/ctkwindow.c:863
 msgid "Screen"
 msgstr "পৰ্দা"
 
-#: ../ctk/deprecated/ctkstatusicon.c:297
+#: ../ctk/ctkstatusicon.c:297
 msgid "The screen where this status icon will be displayed"
 msgstr "The screen where this status icon will be displayed"
 
-#: ../ctk/deprecated/ctkstatusicon.c:305
+#: ../ctk/ctkstatusicon.c:305
 msgid "Whether the status icon is visible"
 msgstr "অৱস্থা দৰ্শোৱা আইকন দৃশ্যমান নে"
 
 #
-#: ../ctk/deprecated/ctkstatusicon.c:320 ../ctk/ctkplug.c:201
+#: ../ctk/ctkstatusicon.c:320 ../ctk/ctkplug.c:201
 msgid "Embedded"
 msgstr "এমবেড কৰা"
 
-#: ../ctk/deprecated/ctkstatusicon.c:321
+#: ../ctk/ctkstatusicon.c:321
 msgid "Whether the status icon is embedded"
 msgstr "অৱস্থা দেখুৱা আইকন সন্নিবিষ্ট নে"
 
-#: ../ctk/deprecated/ctkstatusicon.c:336
+#: ../ctk/ctkstatusicon.c:336
 #: ../ctk/ctktrayicon-x11.c:126 ../ctk/ctkgesturepan.c:237
 #: ../ctk/ctkorientable.c:61
 msgid "Orientation"
 msgstr "দিশ"
 
-#: ../ctk/deprecated/ctkstatusicon.c:337
+#: ../ctk/ctkstatusicon.c:337
 #: ../ctk/ctktrayicon-x11.c:127
 msgid "The orientation of the tray"
 msgstr "সৰ্বমোট"
 
-#: ../ctk/deprecated/ctkstatusicon.c:364 ../ctk/ctkwidget.c:1384
+#: ../ctk/ctkstatusicon.c:364 ../ctk/ctkwidget.c:1384
 msgid "Has tooltip"
 msgstr "Has tooltip"
 
 #
-#: ../ctk/deprecated/ctkstatusicon.c:365
+#: ../ctk/ctkstatusicon.c:365
 msgid "Whether this tray icon has a tooltip"
 msgstr "এই টেগ ফন্ট আকাৰকে প্ৰভাবিত কৰে নে"
 
-#: ../ctk/deprecated/ctkstatusicon.c:391 ../ctk/ctkwidget.c:1405
+#: ../ctk/ctkstatusicon.c:391 ../ctk/ctkwidget.c:1405
 msgid "Tooltip Text"
 msgstr "টুলটিপ Text"
 
-#: ../ctk/deprecated/ctkstatusicon.c:392 ../ctk/ctkwidget.c:1406
+#: ../ctk/ctkstatusicon.c:392 ../ctk/ctkwidget.c:1406
 #: ../ctk/ctkwidget.c:1427
 msgid "The contents of the tooltip for this widget"
 msgstr "সৰ্বমোট উল্লিখিত সময় অবধি"
 
-#: ../ctk/deprecated/ctkstatusicon.c:415 ../ctk/ctkwidget.c:1426
+#: ../ctk/ctkstatusicon.c:415 ../ctk/ctkwidget.c:1426
 msgid "Tooltip markup"
 msgstr "টুলটিপ"
 
 #
-#: ../ctk/deprecated/ctkstatusicon.c:416
+#: ../ctk/ctkstatusicon.c:416
 msgid "The contents of the tooltip for this tray icon"
 msgstr "সৰ্বমোট উল্লিখিত সময় অবধি"
 
-#: ../ctk/deprecated/ctkstatusicon.c:433 ../ctk/ctkcolorbutton.c:181
+#: ../ctk/ctkstatusicon.c:433 ../ctk/ctkcolorbutton.c:181
 #: ../ctk/ctkfilechooserbutton.c:445 ../ctk/ctkfontbutton.c:441
 #: ../ctk/ctkheaderbar.c:1799 ../ctk/ctkprintjob.c:132 ../ctk/ctkstack.c:419
 #: ../ctk/ctktreeviewcolumn.c:322
 msgid "Title"
 msgstr "শীৰ্ষক"
 
-#: ../ctk/deprecated/ctkstatusicon.c:434
+#: ../ctk/ctkstatusicon.c:434
 msgid "The title of this tray icon"
 msgstr "এই ট্ৰে আইকণৰ শীৰ্ষক"
 
