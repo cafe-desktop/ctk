@@ -15,7 +15,6 @@ deprecated_h_sources = 			\
 	deprecated/ctkhsv.h		\
 	deprecated/ctkmisc.h		\
 	deprecated/ctknumerableicon.h	\
-	deprecated/ctkstatusicon.h	\
 	deprecated/ctkstyleproperties.h	\
 	deprecated/ctksymboliccolor.h	\
 	deprecated/ctktable.h		\
@@ -51,7 +50,6 @@ deprecated_c_sources = 			\
 	deprecated/ctkhsv.c		\
 	deprecated/ctkmisc.c		\
 	deprecated/ctknumerableicon.c	\
-	deprecated/ctkstatusicon.c	\
 	deprecated/ctkstyleproperties.c	\
 	deprecated/ctksymboliccolor.c	\
 	deprecated/ctktable.c		\
