@@ -1081,7 +1081,7 @@ ctk_use_x11_c_sources = 	\
 	ctkplug.c		\
 	ctksocket.c		\
 	ctkxembed.c		\
-	deprecated/ctktrayicon-x11.c	\
+	ctktrayicon-x11.c	\
 	ctkapplication-x11.c	\
 	ctkmountoperation-x11.c
 
