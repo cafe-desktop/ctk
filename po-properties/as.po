@@ -837,13 +837,13 @@ msgid "Whether the status icon is embedded"
 msgstr "অৱস্থা দেখুৱা আইকন সন্নিবিষ্ট নে"
 
 #: ../ctk/deprecated/ctkstatusicon.c:336
-#: ../ctk/deprecated/ctktrayicon-x11.c:126 ../ctk/ctkgesturepan.c:237
+#: ../ctk/ctktrayicon-x11.c:126 ../ctk/ctkgesturepan.c:237
 #: ../ctk/ctkorientable.c:61
 msgid "Orientation"
 msgstr "দিশ"
 
 #: ../ctk/deprecated/ctkstatusicon.c:337
-#: ../ctk/deprecated/ctktrayicon-x11.c:127
+#: ../ctk/ctktrayicon-x11.c:127
 msgid "The orientation of the tray"
 msgstr "সৰ্বমোট"
 
@@ -1028,52 +1028,52 @@ msgstr "সক্ৰিয়"
 msgid "Whether the toggle action should be active"
 msgstr "টগল কাৰ্য্যটো সক্ৰিয় থাকিব নে"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:135 ../ctk/ctkcellrenderertext.c:341
+#: ../ctk/ctktrayicon-x11.c:135 ../ctk/ctkcellrenderertext.c:341
 #: ../ctk/ctktexttag.c:265
 msgid "Foreground color"
 msgstr "পুৰভূমিৰ ৰং"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:136
+#: ../ctk/ctktrayicon-x11.c:136
 msgid "Foreground color for symbolic icons"
 msgstr "সাংকেতিক আইকনসমূহৰ কাৰণে পুৰভূমিৰ ৰং"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:143
+#: ../ctk/ctktrayicon-x11.c:143
 msgid "Error color"
 msgstr "ত্ৰুটি ৰং "
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:144
+#: ../ctk/ctktrayicon-x11.c:144
 msgid "Error color for symbolic icons"
 msgstr "সাংকেতিক আইকনসমূহৰ কাৰণে ত্ৰুটি ৰং"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:151
+#: ../ctk/ctktrayicon-x11.c:151
 msgid "Warning color"
 msgstr "সতৰ্কবাৰ্তা ৰং"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:152
+#: ../ctk/ctktrayicon-x11.c:152
 msgid "Warning color for symbolic icons"
 msgstr "সাংকাতিক আইকনসমূহৰ কাৰণে সতৰ্কবাৰ্তা ৰং"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:159
+#: ../ctk/ctktrayicon-x11.c:159
 msgid "Success color"
 msgstr "সফল ৰং "
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:160
+#: ../ctk/ctktrayicon-x11.c:160
 msgid "Success color for symbolic icons"
 msgstr "সাংকেতিক আইকনসমূহৰ কাৰণে সফল ৰং "
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:167 ../ctk/ctkbox.c:322
+#: ../ctk/ctktrayicon-x11.c:167 ../ctk/ctkbox.c:322
 msgid "Padding"
 msgstr "পেডিং"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:168
+#: ../ctk/ctktrayicon-x11.c:168
 msgid "Padding that should be put around icons in the tray"
 msgstr "পেডিং যাক ট্ৰেত থকা আইকনৰ চৌপাশে থব লাগে "
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:177
+#: ../ctk/ctktrayicon-x11.c:177
 msgid "Icon Size"
 msgstr "আইকন আকাৰ"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:178
+#: ../ctk/ctktrayicon-x11.c:178
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr "পিক্সেল আকাৰ যলে আইকনসমূহক বলৱৎ কৰা হব, অথবা শূণ্য"
 

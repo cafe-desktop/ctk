@@ -849,12 +849,12 @@ msgstr "Nhúng"
 msgid "Whether the status icon is embedded"
 msgstr "Biểu tượng trạng thái được nhúng"
 
-#: ctk/deprecated/ctkstatusicon.c:338 ctk/deprecated/ctktrayicon-x11.c:127
+#: ctk/deprecated/ctkstatusicon.c:338 ctk/ctktrayicon-x11.c:127
 #: ctk/ctkgesturepan.c:237 ctk/ctkorientable.c:61
 msgid "Orientation"
 msgstr "Hướng"
 
-#: ctk/deprecated/ctkstatusicon.c:339 ctk/deprecated/ctktrayicon-x11.c:128
+#: ctk/deprecated/ctkstatusicon.c:339 ctk/ctktrayicon-x11.c:128
 msgid "The orientation of the tray"
 msgstr "Hướng của khay"
 
@@ -1039,52 +1039,52 @@ msgstr "Hoạt động"
 msgid "Whether the toggle action should be active"
 msgstr "Hành động bật/tắt có nên được kích hoạt hay không"
 
-#: ctk/deprecated/ctktrayicon-x11.c:136 ctk/ctkcellrenderertext.c:334
+#: ctk/ctktrayicon-x11.c:136 ctk/ctkcellrenderertext.c:334
 #: ctk/ctktexttag.c:276
 msgid "Foreground color"
 msgstr "Màu tiền cảnh"
 
-#: ctk/deprecated/ctktrayicon-x11.c:137
+#: ctk/ctktrayicon-x11.c:137
 msgid "Foreground color for symbolic icons"
 msgstr "Màu tiền cảnh cho biểu tượng ký tự"
 
-#: ctk/deprecated/ctktrayicon-x11.c:144
+#: ctk/ctktrayicon-x11.c:144
 msgid "Error color"
 msgstr "Màu lỗi"
 
-#: ctk/deprecated/ctktrayicon-x11.c:145
+#: ctk/ctktrayicon-x11.c:145
 msgid "Error color for symbolic icons"
 msgstr "Màu lỗi cho biểu tượng ký hiệu"
 
-#: ctk/deprecated/ctktrayicon-x11.c:152
+#: ctk/ctktrayicon-x11.c:152
 msgid "Warning color"
 msgstr "Màu cảnh báo"
 
-#: ctk/deprecated/ctktrayicon-x11.c:153
+#: ctk/ctktrayicon-x11.c:153
 msgid "Warning color for symbolic icons"
 msgstr "Màu cảnh báo cho biểu tượng ký hiệu"
 
-#: ctk/deprecated/ctktrayicon-x11.c:160
+#: ctk/ctktrayicon-x11.c:160
 msgid "Success color"
 msgstr "Màu thành công"
 
-#: ctk/deprecated/ctktrayicon-x11.c:161
+#: ctk/ctktrayicon-x11.c:161
 msgid "Success color for symbolic icons"
 msgstr "Màu thành công cho biểu tượng ký hiệu"
 
-#: ctk/deprecated/ctktrayicon-x11.c:168 ctk/ctkbox.c:322
+#: ctk/ctktrayicon-x11.c:168 ctk/ctkbox.c:322
 msgid "Padding"
 msgstr "Đệm"
 
-#: ctk/deprecated/ctktrayicon-x11.c:169
+#: ctk/ctktrayicon-x11.c:169
 msgid "Padding that should be put around icons in the tray"
 msgstr "Đệm thêm nên đặt xung quanh biểu tượng ở khay"
 
-#: ctk/deprecated/ctktrayicon-x11.c:178
+#: ctk/ctktrayicon-x11.c:178
 msgid "Icon Size"
 msgstr "Cỡ biểu tượng"
 
-#: ctk/deprecated/ctktrayicon-x11.c:179
+#: ctk/ctktrayicon-x11.c:179
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr "Cỡ điểm ảnh mà các biểu tượng bị buộc thành, hoặc không"
 

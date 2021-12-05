@@ -864,12 +864,12 @@ msgstr "ਸ਼ਾਮਲ ਕੀਤਾ"
 msgid "Whether the status icon is embedded"
 msgstr "ਕੀ ਹਾਲਤ ਆਈਕਾਨ ਸ਼ਾਮਲ ਕੀਤਾ ਹੋਵੇ"
 
-#: ctk/deprecated/ctkstatusicon.c:346 ctk/deprecated/ctktrayicon-x11.c:127
+#: ctk/deprecated/ctkstatusicon.c:346 ctk/ctktrayicon-x11.c:127
 #: ctk/ctkgesturepan.c:238 ctk/ctkorientable.c:61
 msgid "Orientation"
 msgstr "ਹਾਲਤ"
 
-#: ctk/deprecated/ctkstatusicon.c:347 ctk/deprecated/ctktrayicon-x11.c:128
+#: ctk/deprecated/ctkstatusicon.c:347 ctk/ctktrayicon-x11.c:128
 msgid "The orientation of the tray"
 msgstr "ਟਰੇ ਦੀ ਸਥਿਤੀ"
 
@@ -1050,52 +1050,52 @@ msgstr "ਸਰਗਰਮ"
 msgid "Whether the toggle action should be active"
 msgstr "ਜੇ ਤਬਦੀਲ ਕਾਰਵਾਈ ਸਰਗਰਮ ਹੋਵੇ"
 
-#: ctk/deprecated/ctktrayicon-x11.c:136 ctk/ctkcellrenderertext.c:334
+#: ctk/ctktrayicon-x11.c:136 ctk/ctkcellrenderertext.c:334
 #: ctk/ctktexttag.c:276
 msgid "Foreground color"
 msgstr "ਫਾਰਗਰਾਊਂਡ ਰੰਗ"
 
-#: ctk/deprecated/ctktrayicon-x11.c:137
+#: ctk/ctktrayicon-x11.c:137
 msgid "Foreground color for symbolic icons"
 msgstr "ਸਿੰਬਲ ਆਈਕਾਨ ਲਈ ਫਾਰਗਰਾਊਂਡ ਰੰਗ"
 
-#: ctk/deprecated/ctktrayicon-x11.c:144
+#: ctk/ctktrayicon-x11.c:144
 msgid "Error color"
 msgstr "ਗਲਤੀ ਰੰਗ"
 
-#: ctk/deprecated/ctktrayicon-x11.c:145
+#: ctk/ctktrayicon-x11.c:145
 msgid "Error color for symbolic icons"
 msgstr "ਸਿੰਬਲ ਆਈਕਾਨ ਲਈ ਗਲਤੀ ਰੰਗ"
 
-#: ctk/deprecated/ctktrayicon-x11.c:152
+#: ctk/ctktrayicon-x11.c:152
 msgid "Warning color"
 msgstr "ਚੇਤਾਵਨੀ ਰੰਗ"
 
-#: ctk/deprecated/ctktrayicon-x11.c:153
+#: ctk/ctktrayicon-x11.c:153
 msgid "Warning color for symbolic icons"
 msgstr "ਸਿੰਬਲ ਆਈਕਾਨ ਲਈ ਚੇਤਾਵਨੀ ਰੰਗ"
 
-#: ctk/deprecated/ctktrayicon-x11.c:160
+#: ctk/ctktrayicon-x11.c:160
 msgid "Success color"
 msgstr "ਸਫ਼ਲ ਰੰਗ"
 
-#: ctk/deprecated/ctktrayicon-x11.c:161
+#: ctk/ctktrayicon-x11.c:161
 msgid "Success color for symbolic icons"
 msgstr "ਸਿੰਬਲ ਆਈਕਾਨ ਲਈ ਸਫ਼ਲ ਰੰਗ"
 
-#: ctk/deprecated/ctktrayicon-x11.c:168 ctk/ctkbox.c:350
+#: ctk/ctktrayicon-x11.c:168 ctk/ctkbox.c:350
 msgid "Padding"
 msgstr "ਚਿਣਿਆ"
 
-#: ctk/deprecated/ctktrayicon-x11.c:169
+#: ctk/ctktrayicon-x11.c:169
 msgid "Padding that should be put around icons in the tray"
 msgstr "ਪੈਡਿੰਗ, ਜੋ ਕਿ ਟਰੇ ਦੇ ਆਈਕਾਨ ਦੁਆਲੇ ਰੱਖਣੀ ਹੈ"
 
-#: ctk/deprecated/ctktrayicon-x11.c:178 ctk/ctkstackswitcher.c:686
+#: ctk/ctktrayicon-x11.c:178 ctk/ctkstackswitcher.c:686
 msgid "Icon Size"
 msgstr "ਆਈਕਾਨ ਅਕਾਰ"
 
-#: ctk/deprecated/ctktrayicon-x11.c:179
+#: ctk/ctktrayicon-x11.c:179
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr "ਪਿਕਸਲ ਆਕਾਰ, ਜਿਸ ਲਈ ਆਕਾਰ ਮਜ਼ਬੂਰ ਕੀਤੇ ਹੋਣ ਜਾਂ ਸਿਫ਼ਰ"
 

@@ -889,12 +889,12 @@ msgstr "Enfichat"
 msgid "Whether the status icon is embedded"
 msgstr "Indica se l'icòna d'estat es imbricada"
 
-#: ctk/deprecated/ctkstatusicon.c:339 ctk/deprecated/ctktrayicon-x11.c:127
+#: ctk/deprecated/ctkstatusicon.c:339 ctk/ctktrayicon-x11.c:127
 #: ctk/ctkgesturepan.c:237 ctk/ctkorientable.c:61
 msgid "Orientation"
 msgstr "Orientacion"
 
-#: ctk/deprecated/ctkstatusicon.c:340 ctk/deprecated/ctktrayicon-x11.c:128
+#: ctk/deprecated/ctkstatusicon.c:340 ctk/ctktrayicon-x11.c:128
 msgid "The orientation of the tray"
 msgstr "L'orientacion de la zòna de notificacion"
 
@@ -1092,54 +1092,54 @@ msgstr "Actiu"
 msgid "Whether the toggle action should be active"
 msgstr "Indica se l'accion de bascula es activada"
 
-#: ctk/deprecated/ctktrayicon-x11.c:136 ctk/ctkcellrenderertext.c:334
+#: ctk/ctktrayicon-x11.c:136 ctk/ctkcellrenderertext.c:334
 #: ctk/ctktexttag.c:276
 msgid "Foreground color"
 msgstr "Color de primièr plan"
 
-#: ctk/deprecated/ctktrayicon-x11.c:137
+#: ctk/ctktrayicon-x11.c:137
 msgid "Foreground color for symbolic icons"
 msgstr "Color de primièr plan per las icònas simbolicas"
 
-#: ctk/deprecated/ctktrayicon-x11.c:144
+#: ctk/ctktrayicon-x11.c:144
 msgid "Error color"
 msgstr "Color d'error"
 
-#: ctk/deprecated/ctktrayicon-x11.c:145
+#: ctk/ctktrayicon-x11.c:145
 msgid "Error color for symbolic icons"
 msgstr "Color d'error per las icònas simbolicas"
 
-#: ctk/deprecated/ctktrayicon-x11.c:152
+#: ctk/ctktrayicon-x11.c:152
 msgid "Warning color"
 msgstr "Color d'avertiment"
 
-#: ctk/deprecated/ctktrayicon-x11.c:153
+#: ctk/ctktrayicon-x11.c:153
 msgid "Warning color for symbolic icons"
 msgstr "Color d'avertiment per las icònas simbolicas"
 
-#: ctk/deprecated/ctktrayicon-x11.c:160
+#: ctk/ctktrayicon-x11.c:160
 msgid "Success color"
 msgstr "Color de succès"
 
-#: ctk/deprecated/ctktrayicon-x11.c:161
+#: ctk/ctktrayicon-x11.c:161
 msgid "Success color for symbolic icons"
 msgstr "Color de succès per las icònas simbolicas"
 
-#: ctk/deprecated/ctktrayicon-x11.c:168 ctk/ctkbox.c:345
+#: ctk/ctktrayicon-x11.c:168 ctk/ctkbox.c:345
 msgid "Padding"
 msgstr "Emplenatge"
 
-#: ctk/deprecated/ctktrayicon-x11.c:169
+#: ctk/ctktrayicon-x11.c:169
 msgid "Padding that should be put around icons in the tray"
 msgstr ""
 "L'emplenatge que deu èsser mes a l'entorn de las icònas dins la zòna de "
 "notificacion"
 
-#: ctk/deprecated/ctktrayicon-x11.c:178 ctk/ctkstackswitcher.c:684
+#: ctk/ctktrayicon-x11.c:178 ctk/ctkstackswitcher.c:684
 msgid "Icon Size"
 msgstr "Talha de l'icòna"
 
-#: ctk/deprecated/ctktrayicon-x11.c:179
+#: ctk/ctktrayicon-x11.c:179
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr "La talha en pixèls a la quala l'icòna deu èsser forçada, o zèro"
 
