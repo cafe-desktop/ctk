@@ -1105,8 +1105,8 @@ ctk_use_quartz_c_sources = 	\
 ctk_use_stub_c_sources = 	\
 	ctkmountoperation-stub.c
 ctk_use_x11_private_h_sources = 	\
-	ctkxembed.h		\
-	deprecated/ctktrayicon.h	\
+	ctkxembed.h			\
+	ctktrayicon.h			\
 	xembed.h
 if USE_X11
 ctk_c_sources += $(ctk_use_x11_c_sources)
