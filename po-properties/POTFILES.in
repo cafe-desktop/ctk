@@ -51,7 +51,6 @@ ctk/deprecated/ctkmisc.c
 ctk/deprecated/ctknumerableicon.c
 ctk/deprecated/ctktable.c
 ctk/deprecated/ctkthemingengine.c
-ctk/deprecated/ctktrayicon-x11.c
 ctk/encodesymbolic.c
 ctk/ctkaboutdialog.c
 ctk/ctkaccelgroup.c
@@ -296,6 +295,7 @@ ctk/ctktoolpalette.c
 ctk/ctktoolshell.c
 ctk/ctktooltipwindow.c
 ctk/ctktrashmonitor.c
+ctk/ctktrayicon-x11.c
 ctk/ctktreednd.c
 ctk/ctktreemenu.c
 ctk/ctktreemodel.c
