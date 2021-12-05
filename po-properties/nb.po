@@ -251,22 +251,22 @@ msgid "The stock icon displayed in widgets representing this action."
 msgstr ""
 "Standard ikon som vises i komponenter som representerer denne handlingen."
 
-#: ../ctk/ctkaction.c:342 ../ctk/deprecated/ctkstatusicon.c:271
+#: ../ctk/ctkaction.c:342 ../ctk/ctkstatusicon.c:271
 msgid "GIcon"
 msgstr "GIcon"
 
-#: ../ctk/ctkaction.c:343 ../ctk/deprecated/ctkstatusicon.c:272
+#: ../ctk/ctkaction.c:343 ../ctk/ctkstatusicon.c:272
 #: ../ctk/ctkcellrendererpixbuf.c:263 ../ctk/ctkimage.c:350
 msgid "The GIcon being displayed"
 msgstr "GIcon som skal vises"
 
-#: ../ctk/ctkaction.c:365 ../ctk/deprecated/ctkstatusicon.c:255
+#: ../ctk/ctkaction.c:365 ../ctk/ctkstatusicon.c:255
 #: ../ctk/ctkcellrendererpixbuf.c:228 ../ctk/ctkimage.c:332
 #: ../ctk/ctkprinter.c:170 ../ctk/ctkwindow.c:865
 msgid "Icon Name"
 msgstr "Navn på ikon"
 
-#: ../ctk/ctkaction.c:366 ../ctk/deprecated/ctkstatusicon.c:256
+#: ../ctk/ctkaction.c:366 ../ctk/ctkstatusicon.c:256
 #: ../ctk/ctkcellrendererpixbuf.c:229 ../ctk/ctkimage.c:333
 msgid "The name of the icon from the icon theme"
 msgstr "Navn på ikonet fra ikontemaet"
@@ -336,7 +336,7 @@ msgid "Whether the action is enabled."
 msgstr "Om handlingen er aktivert."
 
 #: ../ctk/ctkaction.c:481 ../ctk/ctkactiongroup.c:228
-#: ../ctk/deprecated/ctkstatusicon.c:306 ../ctk/ctktreeviewcolumn.c:245
+#: ../ctk/ctkstatusicon.c:306 ../ctk/ctktreeviewcolumn.c:245
 #: ../ctk/ctkwidget.c:1271
 msgid "Visible"
 msgstr "Synlig"
@@ -795,116 +795,116 @@ msgstr "Vis tall"
 msgid "Whether the items should be displayed with a number"
 msgstr "Om avrivningsoppføringer skal legges til for menyen"
 
-#: ../ctk/deprecated/ctkstatusicon.c:226 ../ctk/ctkimage.c:237
+#: ../ctk/ctkstatusicon.c:226 ../ctk/ctkimage.c:237
 msgid "Pixbuf"
 msgstr "Pixbuf"
 
-#: ../ctk/deprecated/ctkstatusicon.c:227 ../ctk/ctkimage.c:238
+#: ../ctk/ctkstatusicon.c:227 ../ctk/ctkimage.c:238
 msgid "A GdkPixbuf to display"
 msgstr "En CdkPixuf som skal vises"
 
-#: ../ctk/deprecated/ctkstatusicon.c:234 ../ctk/ctkimage.c:253
+#: ../ctk/ctkstatusicon.c:234 ../ctk/ctkimage.c:253
 #: ../ctk/ctkrecentmanager.c:293
 msgid "Filename"
 msgstr "Filnavn"
 
-#: ../ctk/deprecated/ctkstatusicon.c:235 ../ctk/ctkimage.c:254
+#: ../ctk/ctkstatusicon.c:235 ../ctk/ctkimage.c:254
 msgid "Filename to load and display"
 msgstr "Filnavn som skal lastes og vises"
 
-#: ../ctk/deprecated/ctkstatusicon.c:247 ../ctk/ctkcellrendererpixbuf.c:192
+#: ../ctk/ctkstatusicon.c:247 ../ctk/ctkcellrendererpixbuf.c:192
 #: ../ctk/ctkimage.c:267
 msgid "Stock ID"
 msgstr "Standard ID"
 
-#: ../ctk/deprecated/ctkstatusicon.c:248 ../ctk/ctkimage.c:268
+#: ../ctk/ctkstatusicon.c:248 ../ctk/ctkimage.c:268
 msgid "Stock ID for a stock image to display"
 msgstr "Standard ID for et standardbilde som skal vises"
 
-#: ../ctk/deprecated/ctkstatusicon.c:279 ../ctk/ctkimage.c:372
+#: ../ctk/ctkstatusicon.c:279 ../ctk/ctkimage.c:372
 msgid "Storage type"
 msgstr "Lagertype"
 
-#: ../ctk/deprecated/ctkstatusicon.c:280 ../ctk/ctkimage.c:373
+#: ../ctk/ctkstatusicon.c:280 ../ctk/ctkimage.c:373
 msgid "The representation being used for image data"
 msgstr "Representasjonen som brukes for bildedata"
 
-#: ../ctk/deprecated/ctkstatusicon.c:288 ../ctk/ctkcellrendererpixbuf.c:200
+#: ../ctk/ctkstatusicon.c:288 ../ctk/ctkcellrendererpixbuf.c:200
 #: ../ctk/ctkcellrendererspinner.c:159 ../ctk/ctkrecentmanager.c:308
 msgid "Size"
 msgstr "Størrelse"
 
-#: ../ctk/deprecated/ctkstatusicon.c:289
+#: ../ctk/ctkstatusicon.c:289
 msgid "The size of the icon"
 msgstr "Størrelse på ikonet"
 
-#: ../ctk/deprecated/ctkstatusicon.c:298 ../ctk/ctkinvisible.c:98
+#: ../ctk/ctkstatusicon.c:298 ../ctk/ctkinvisible.c:98
 #: ../ctk/ctkmountoperation.c:177 ../ctk/ctkstylecontext.c:243
 #: ../ctk/ctkwindow.c:873
 msgid "Screen"
 msgstr "Skjerm"
 
-#: ../ctk/deprecated/ctkstatusicon.c:299
+#: ../ctk/ctkstatusicon.c:299
 msgid "The screen where this status icon will be displayed"
 msgstr "Skjermen hvor dette statusikonet vil vises"
 
-#: ../ctk/deprecated/ctkstatusicon.c:307
+#: ../ctk/ctkstatusicon.c:307
 msgid "Whether the status icon is visible"
 msgstr "Om statusikonet er synlig"
 
-#: ../ctk/deprecated/ctkstatusicon.c:322 ../ctk/ctkplug.c:201
+#: ../ctk/ctkstatusicon.c:322 ../ctk/ctkplug.c:201
 msgid "Embedded"
 msgstr "Innebygget"
 
-#: ../ctk/deprecated/ctkstatusicon.c:323
+#: ../ctk/ctkstatusicon.c:323
 msgid "Whether the status icon is embedded"
 msgstr "Om statusikon er innebygget"
 
-#: ../ctk/deprecated/ctkstatusicon.c:338
+#: ../ctk/ctkstatusicon.c:338
 #: ../ctk/ctktrayicon-x11.c:127 ../ctk/ctkgesturepan.c:237
 #: ../ctk/ctkorientable.c:61
 msgid "Orientation"
 msgstr "Orientering"
 
-#: ../ctk/deprecated/ctkstatusicon.c:339
+#: ../ctk/ctkstatusicon.c:339
 #: ../ctk/ctktrayicon-x11.c:128
 msgid "The orientation of the tray"
 msgstr "Orientering for systemområdet"
 
-#: ../ctk/deprecated/ctkstatusicon.c:366 ../ctk/ctkwidget.c:1385
+#: ../ctk/ctkstatusicon.c:366 ../ctk/ctkwidget.c:1385
 msgid "Has tooltip"
 msgstr "Har verktøytips"
 
-#: ../ctk/deprecated/ctkstatusicon.c:367
+#: ../ctk/ctkstatusicon.c:367
 msgid "Whether this tray icon has a tooltip"
 msgstr "Om dette systemområdeikonet har verktøytips"
 
-#: ../ctk/deprecated/ctkstatusicon.c:393 ../ctk/ctkwidget.c:1409
+#: ../ctk/ctkstatusicon.c:393 ../ctk/ctkwidget.c:1409
 msgid "Tooltip Text"
 msgstr "Tekst for verktøytips"
 
-#: ../ctk/deprecated/ctkstatusicon.c:394 ../ctk/ctkwidget.c:1410
+#: ../ctk/ctkstatusicon.c:394 ../ctk/ctkwidget.c:1410
 #: ../ctk/ctkwidget.c:1434
 msgid "The contents of the tooltip for this widget"
 msgstr "Innhold i verktøytips for denne komponenten"
 
-#: ../ctk/deprecated/ctkstatusicon.c:417 ../ctk/ctkwidget.c:1433
+#: ../ctk/ctkstatusicon.c:417 ../ctk/ctkwidget.c:1433
 msgid "Tooltip markup"
 msgstr "Merking for verktøytips"
 
-#: ../ctk/deprecated/ctkstatusicon.c:418
+#: ../ctk/ctkstatusicon.c:418
 #, fuzzy
 msgid "The contents of the tooltip for this tray icon"
 msgstr "Innhold i verktøytips for denne komponenten"
 
-#: ../ctk/deprecated/ctkstatusicon.c:435 ../ctk/ctkcolorbutton.c:181
+#: ../ctk/ctkstatusicon.c:435 ../ctk/ctkcolorbutton.c:181
 #: ../ctk/ctkfilechooserbutton.c:445 ../ctk/ctkfontbutton.c:443
 #: ../ctk/ctkheaderbar.c:1859 ../ctk/ctkprintjob.c:132 ../ctk/ctkstack.c:457
 #: ../ctk/ctktreeviewcolumn.c:322
 msgid "Title"
 msgstr "Tittel"
 
-#: ../ctk/deprecated/ctkstatusicon.c:436
+#: ../ctk/ctkstatusicon.c:436
 msgid "The title of this tray icon"
 msgstr "Tittel på dette systemområdeikonet"
 

@@ -282,22 +282,22 @@ msgstr ""
 "L’icône prédéfinie affichée dans les éléments graphiques représentant cette "
 "action."
 
-#: ctk/ctkaction.c:342 ctk/deprecated/ctkstatusicon.c:279
+#: ctk/ctkaction.c:342 ctk/ctkstatusicon.c:279
 msgid "GIcon"
 msgstr "GIcon"
 
-#: ctk/ctkaction.c:343 ctk/deprecated/ctkstatusicon.c:280
+#: ctk/ctkaction.c:343 ctk/ctkstatusicon.c:280
 #: ctk/ctkcellrendererpixbuf.c:282 ctk/ctkimage.c:360
 msgid "The GIcon being displayed"
 msgstr "L’objet « GIcon » affiché"
 
-#: ctk/ctkaction.c:365 ctk/deprecated/ctkstatusicon.c:263
+#: ctk/ctkaction.c:365 ctk/ctkstatusicon.c:263
 #: ctk/ctkcellrendererpixbuf.c:245 ctk/ctkimage.c:343 ctk/ctkprinter.c:170
 #: ctk/ctkwindow.c:890
 msgid "Icon Name"
 msgstr "Nom de l’icône"
 
-#: ctk/ctkaction.c:366 ctk/deprecated/ctkstatusicon.c:264
+#: ctk/ctkaction.c:366 ctk/ctkstatusicon.c:264
 #: ctk/ctkcellrendererpixbuf.c:246 ctk/ctkimage.c:344
 msgid "The name of the icon from the icon theme"
 msgstr "Le nom de l’icône dans le thème d’icônes"
@@ -368,7 +368,7 @@ msgid "Whether the action is enabled."
 msgstr "Indique si l’action est activée."
 
 #: ctk/ctkaction.c:481 ctk/ctkactiongroup.c:228
-#: ctk/deprecated/ctkstatusicon.c:314 ctk/ctkcssnode.c:649
+#: ctk/ctkstatusicon.c:314 ctk/ctkcssnode.c:649
 #: ctk/ctknativedialog.c:242 ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1148
 msgid "Visible"
 msgstr "Visible"
@@ -839,104 +839,104 @@ msgid "Whether the items should be displayed with a number"
 msgstr ""
 "Indique si les éléments doivent être affichés précédés d’un numéro d’ordre"
 
-#: ctk/deprecated/ctkstatusicon.c:234 ctk/ctkimage.c:256
+#: ctk/ctkstatusicon.c:234 ctk/ctkimage.c:256
 msgid "Pixbuf"
 msgstr "Pixbuf"
 
-#: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:257
+#: ctk/ctkstatusicon.c:235 ctk/ctkimage.c:257
 msgid "A GdkPixbuf to display"
 msgstr "L’objet « GdkPixbuf » à afficher"
 
-#: ctk/deprecated/ctkstatusicon.c:242 ctk/ctkimage.c:270
+#: ctk/ctkstatusicon.c:242 ctk/ctkimage.c:270
 #: ctk/ctkrecentmanager.c:289
 msgid "Filename"
 msgstr "Nom du fichier"
 
-#: ctk/deprecated/ctkstatusicon.c:243 ctk/ctkimage.c:271
+#: ctk/ctkstatusicon.c:243 ctk/ctkimage.c:271
 msgid "Filename to load and display"
 msgstr "Nom du fichier à charger et à afficher"
 
-#: ctk/deprecated/ctkstatusicon.c:255 ctk/ctkcellrendererpixbuf.c:195
+#: ctk/ctkstatusicon.c:255 ctk/ctkcellrendererpixbuf.c:195
 #: ctk/ctkimage.c:282
 msgid "Stock ID"
 msgstr "ID de collection"
 
-#: ctk/deprecated/ctkstatusicon.c:256 ctk/ctkimage.c:283
+#: ctk/ctkstatusicon.c:256 ctk/ctkimage.c:283
 msgid "Stock ID for a stock image to display"
 msgstr "Identifiant de l’image de la collection à afficher"
 
-#: ctk/deprecated/ctkstatusicon.c:287 ctk/ctkimage.c:380
+#: ctk/ctkstatusicon.c:287 ctk/ctkimage.c:380
 msgid "Storage type"
 msgstr "Type de stockage"
 
-#: ctk/deprecated/ctkstatusicon.c:288 ctk/ctkimage.c:381
+#: ctk/ctkstatusicon.c:288 ctk/ctkimage.c:381
 msgid "The representation being used for image data"
 msgstr "La représentation utilisée pour les données de l’image"
 
-#: ctk/deprecated/ctkstatusicon.c:296 ctk/ctkcellrendererpixbuf.c:210
+#: ctk/ctkstatusicon.c:296 ctk/ctkcellrendererpixbuf.c:210
 #: ctk/ctkcellrendererspinner.c:159 ctk/ctkrecentmanager.c:304
 msgid "Size"
 msgstr "Taille"
 
-#: ctk/deprecated/ctkstatusicon.c:297
+#: ctk/ctkstatusicon.c:297
 msgid "The size of the icon"
 msgstr "La taille de l’icône"
 
-#: ctk/deprecated/ctkstatusicon.c:306 ctk/ctkinvisible.c:98
+#: ctk/ctkstatusicon.c:306 ctk/ctkinvisible.c:98
 #: ctk/ctkmountoperation.c:183 ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:897
 msgid "Screen"
 msgstr "Écran"
 
-#: ctk/deprecated/ctkstatusicon.c:307
+#: ctk/ctkstatusicon.c:307
 msgid "The screen where this status icon will be displayed"
 msgstr "L’écran où cette icône d’état sera affichée"
 
-#: ctk/deprecated/ctkstatusicon.c:315
+#: ctk/ctkstatusicon.c:315
 msgid "Whether the status icon is visible"
 msgstr "Indique si l’icône d’état est visible"
 
-#: ctk/deprecated/ctkstatusicon.c:330 ctk/ctkplug.c:196
+#: ctk/ctkstatusicon.c:330 ctk/ctkplug.c:196
 msgid "Embedded"
 msgstr "Enfiché"
 
-#: ctk/deprecated/ctkstatusicon.c:331
+#: ctk/ctkstatusicon.c:331
 msgid "Whether the status icon is embedded"
 msgstr "Indique si l’icône d’état est imbriquée"
 
-#: ctk/deprecated/ctkstatusicon.c:346 ctk/ctktrayicon-x11.c:127
+#: ctk/ctkstatusicon.c:346 ctk/ctktrayicon-x11.c:127
 #: ctk/ctkgesturepan.c:238 ctk/ctkorientable.c:61
 msgid "Orientation"
 msgstr "Orientation"
 
-#: ctk/deprecated/ctkstatusicon.c:347 ctk/ctktrayicon-x11.c:128
+#: ctk/ctkstatusicon.c:347 ctk/ctktrayicon-x11.c:128
 msgid "The orientation of the tray"
 msgstr "L’orientation de la zone de notification"
 
-#: ctk/deprecated/ctkstatusicon.c:374 ctk/ctkwidget.c:1285
+#: ctk/ctkstatusicon.c:374 ctk/ctkwidget.c:1285
 msgid "Has tooltip"
 msgstr "A une infobulle"
 
-#: ctk/deprecated/ctkstatusicon.c:375
+#: ctk/ctkstatusicon.c:375
 msgid "Whether this tray icon has a tooltip"
 msgstr "Indique si l’icône de notification a une infobulle"
 
-#: ctk/deprecated/ctkstatusicon.c:401 ctk/ctkwidget.c:1309
+#: ctk/ctkstatusicon.c:401 ctk/ctkwidget.c:1309
 msgid "Tooltip Text"
 msgstr "Texte d’infobulle"
 
-#: ctk/deprecated/ctkstatusicon.c:402 ctk/ctkwidget.c:1310 ctk/ctkwidget.c:1334
+#: ctk/ctkstatusicon.c:402 ctk/ctkwidget.c:1310 ctk/ctkwidget.c:1334
 msgid "The contents of the tooltip for this widget"
 msgstr "Le contenu de l’infobulle pour cet élément graphique"
 
-#: ctk/deprecated/ctkstatusicon.c:425 ctk/ctkwidget.c:1333
+#: ctk/ctkstatusicon.c:425 ctk/ctkwidget.c:1333
 msgid "Tooltip markup"
 msgstr "Balisage de l’infobulle"
 
-#: ctk/deprecated/ctkstatusicon.c:426
+#: ctk/ctkstatusicon.c:426
 msgid "The contents of the tooltip for this tray icon"
 msgstr "Le contenu de l’infobulle pour cette icône de notification"
 
-#: ctk/deprecated/ctkstatusicon.c:443 ctk/ctkcolorbutton.c:183
+#: ctk/ctkstatusicon.c:443 ctk/ctkcolorbutton.c:183
 #: ctk/ctkfilechooserbutton.c:443 ctk/ctkfontbutton.c:490
 #: ctk/ctkheaderbar.c:2027 ctk/ctkprintjob.c:133 ctk/ctkshortcutsgroup.c:308
 #: ctk/ctkshortcutssection.c:376 ctk/ctkshortcutsshortcut.c:575
@@ -944,7 +944,7 @@ msgstr "Le contenu de l’infobulle pour cette icône de notification"
 msgid "Title"
 msgstr "Titre"
 
-#: ctk/deprecated/ctkstatusicon.c:444
+#: ctk/ctkstatusicon.c:444
 msgid "The title of this tray icon"
 msgstr "Le titre de cette icône de notification"
 

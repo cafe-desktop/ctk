@@ -231,22 +231,22 @@ msgid "The stock icon displayed in widgets representing this action."
 msgstr ""
 "இந்த செயலை பிரதிநிதிக்கும் விட்செட்டுகளில் காட்டப்படும் முன்னிருப்பு சின்னம் "
 
-#: ../ctk/ctkaction.c:342 ../ctk/deprecated/ctkstatusicon.c:269
+#: ../ctk/ctkaction.c:342 ../ctk/ctkstatusicon.c:269
 msgid "GIcon"
 msgstr "GIcon"
 
-#: ../ctk/ctkaction.c:343 ../ctk/deprecated/ctkstatusicon.c:270
+#: ../ctk/ctkaction.c:343 ../ctk/ctkstatusicon.c:270
 #: ../ctk/ctkcellrendererpixbuf.c:258 ../ctk/ctkimage.c:343
 msgid "The GIcon being displayed"
 msgstr "இந்த GIcon காட்டப்படுகிறது"
 
-#: ../ctk/ctkaction.c:365 ../ctk/deprecated/ctkstatusicon.c:253
+#: ../ctk/ctkaction.c:365 ../ctk/ctkstatusicon.c:253
 #: ../ctk/ctkcellrendererpixbuf.c:223 ../ctk/ctkimage.c:325
 #: ../ctk/ctkprinter.c:170 ../ctk/ctkwindow.c:859
 msgid "Icon Name"
 msgstr "சின்னத்தின் பெயர்"
 
-#: ../ctk/ctkaction.c:366 ../ctk/deprecated/ctkstatusicon.c:254
+#: ../ctk/ctkaction.c:366 ../ctk/ctkstatusicon.c:254
 #: ../ctk/ctkcellrendererpixbuf.c:224 ../ctk/ctkimage.c:326
 msgid "The name of the icon from the icon theme"
 msgstr "சின்ன சூழலிலிருந்து சின்னத்தின் பெயர்"
@@ -315,7 +315,7 @@ msgid "Whether the action is enabled."
 msgstr "செயல் செயல்படுத்தப்பட்டதா."
 
 #: ../ctk/ctkaction.c:481 ../ctk/ctkactiongroup.c:228
-#: ../ctk/deprecated/ctkstatusicon.c:304 ../ctk/ctktreeviewcolumn.c:245
+#: ../ctk/ctkstatusicon.c:304 ../ctk/ctktreeviewcolumn.c:245
 #: ../ctk/ctkwidget.c:1270
 msgid "Visible"
 msgstr "பாக்கக்கூடியது"
@@ -780,115 +780,115 @@ msgstr "எண்களை காட்டு"
 msgid "Whether the items should be displayed with a number"
 msgstr "உருப்படி ஒரு எண்ணுடன் காட்டப்படுமா"
 
-#: ../ctk/deprecated/ctkstatusicon.c:224 ../ctk/ctkimage.c:230
+#: ../ctk/ctkstatusicon.c:224 ../ctk/ctkimage.c:230
 msgid "Pixbuf"
 msgstr "பிக்ஸ்பப்"
 
-#: ../ctk/deprecated/ctkstatusicon.c:225 ../ctk/ctkimage.c:231
+#: ../ctk/ctkstatusicon.c:225 ../ctk/ctkimage.c:231
 msgid "A GdkPixbuf to display"
 msgstr "காண்பிக்க ஓர் GdkPixbuf"
 
-#: ../ctk/deprecated/ctkstatusicon.c:232 ../ctk/ctkimage.c:246
+#: ../ctk/ctkstatusicon.c:232 ../ctk/ctkimage.c:246
 #: ../ctk/ctkrecentmanager.c:292
 msgid "Filename"
 msgstr "கோப்புப்பெயர்"
 
-#: ../ctk/deprecated/ctkstatusicon.c:233 ../ctk/ctkimage.c:247
+#: ../ctk/ctkstatusicon.c:233 ../ctk/ctkimage.c:247
 msgid "Filename to load and display"
 msgstr "பதிவேற்றி மற்றும் காட்டப்படும் கோப்புபெயர்"
 
-#: ../ctk/deprecated/ctkstatusicon.c:245 ../ctk/ctkcellrendererpixbuf.c:187
+#: ../ctk/ctkstatusicon.c:245 ../ctk/ctkcellrendererpixbuf.c:187
 #: ../ctk/ctkimage.c:260
 msgid "Stock ID"
 msgstr "இருப்பு குறி"
 
-#: ../ctk/deprecated/ctkstatusicon.c:246 ../ctk/ctkimage.c:261
+#: ../ctk/ctkstatusicon.c:246 ../ctk/ctkimage.c:261
 msgid "Stock ID for a stock image to display"
 msgstr "முன் இருப்பு  படம்காட்ட முன் இருப்பு ஐடி (ID) "
 
-#: ../ctk/deprecated/ctkstatusicon.c:277 ../ctk/ctkimage.c:365
+#: ../ctk/ctkstatusicon.c:277 ../ctk/ctkimage.c:365
 msgid "Storage type"
 msgstr "தேக்கம் வகை"
 
-#: ../ctk/deprecated/ctkstatusicon.c:278 ../ctk/ctkimage.c:366
+#: ../ctk/ctkstatusicon.c:278 ../ctk/ctkimage.c:366
 msgid "The representation being used for image data"
 msgstr "பட தரவுக்கு குறிப்பு பயன்படுத்தப்படுகிறது"
 
-#: ../ctk/deprecated/ctkstatusicon.c:286 ../ctk/ctkcellrendererpixbuf.c:195
+#: ../ctk/ctkstatusicon.c:286 ../ctk/ctkcellrendererpixbuf.c:195
 #: ../ctk/ctkcellrendererspinner.c:159 ../ctk/ctkrecentmanager.c:307
 msgid "Size"
 msgstr "அளவு"
 
-#: ../ctk/deprecated/ctkstatusicon.c:287
+#: ../ctk/ctkstatusicon.c:287
 msgid "The size of the icon"
 msgstr "சின்னத்தின் அளவு"
 
-#: ../ctk/deprecated/ctkstatusicon.c:296 ../ctk/ctkinvisible.c:98
+#: ../ctk/ctkstatusicon.c:296 ../ctk/ctkinvisible.c:98
 #: ../ctk/ctkmountoperation.c:177 ../ctk/ctkstylecontext.c:251
 #: ../ctk/ctkwindow.c:867
 msgid "Screen"
 msgstr "திரை"
 
-#: ../ctk/deprecated/ctkstatusicon.c:297
+#: ../ctk/ctkstatusicon.c:297
 msgid "The screen where this status icon will be displayed"
 msgstr "இந்த நிலை சின்னம் காட்டப்படும் திரை"
 
-#: ../ctk/deprecated/ctkstatusicon.c:305
+#: ../ctk/ctkstatusicon.c:305
 msgid "Whether the status icon is visible"
 msgstr "நிலை சின்னம் தெரிய கூடியதாக இருந்தால்"
 
-#: ../ctk/deprecated/ctkstatusicon.c:320 ../ctk/ctkplug.c:201
+#: ../ctk/ctkstatusicon.c:320 ../ctk/ctkplug.c:201
 msgid "Embedded"
 msgstr "உட்பொதியப்பட்டது"
 
-#: ../ctk/deprecated/ctkstatusicon.c:321
+#: ../ctk/ctkstatusicon.c:321
 msgid "Whether the status icon is embedded"
 msgstr "நிலை சின்னம் உட்பொதிப்பட்டிருந்தால்"
 
-#: ../ctk/deprecated/ctkstatusicon.c:336
+#: ../ctk/ctkstatusicon.c:336
 #: ../ctk/ctktrayicon-x11.c:126 ../ctk/ctkgesturepan.c:237
 #: ../ctk/ctkorientable.c:61
 msgid "Orientation"
 msgstr "திசை அமைவு"
 
-#: ../ctk/deprecated/ctkstatusicon.c:337
+#: ../ctk/ctkstatusicon.c:337
 #: ../ctk/ctktrayicon-x11.c:127
 msgid "The orientation of the tray"
 msgstr "தட்டின் திசையமைப்பு"
 
-#: ../ctk/deprecated/ctkstatusicon.c:364 ../ctk/ctkwidget.c:1384
+#: ../ctk/ctkstatusicon.c:364 ../ctk/ctkwidget.c:1384
 msgid "Has tooltip"
 msgstr "உதவிகருவியை கொண்டுள்ளது"
 
-#: ../ctk/deprecated/ctkstatusicon.c:365
+#: ../ctk/ctkstatusicon.c:365
 msgid "Whether this tray icon has a tooltip"
 msgstr "தட்டு சின்னம் ஒரு கருவிதுணுக்கை கொண்டிருக்கிறதா"
 
-#: ../ctk/deprecated/ctkstatusicon.c:391 ../ctk/ctkwidget.c:1405
+#: ../ctk/ctkstatusicon.c:391 ../ctk/ctkwidget.c:1405
 msgid "Tooltip Text"
 msgstr "உதவிகருவி உரை"
 
-#: ../ctk/deprecated/ctkstatusicon.c:392 ../ctk/ctkwidget.c:1406
+#: ../ctk/ctkstatusicon.c:392 ../ctk/ctkwidget.c:1406
 #: ../ctk/ctkwidget.c:1427
 msgid "The contents of the tooltip for this widget"
 msgstr "இந்த விட்ஜிட்டிற்கான கருவிதுணுக்கின் உள்ளடக்கங்கள்"
 
-#: ../ctk/deprecated/ctkstatusicon.c:415 ../ctk/ctkwidget.c:1426
+#: ../ctk/ctkstatusicon.c:415 ../ctk/ctkwidget.c:1426
 msgid "Tooltip markup"
 msgstr "கருவி துணுக்கு குறி"
 
-#: ../ctk/deprecated/ctkstatusicon.c:416
+#: ../ctk/ctkstatusicon.c:416
 msgid "The contents of the tooltip for this tray icon"
 msgstr "இந்த தட்டு சின்னத்திற்கான கருவி துணுக்கின் உள்ளடக்கங்கள்"
 
-#: ../ctk/deprecated/ctkstatusicon.c:433 ../ctk/ctkcolorbutton.c:181
+#: ../ctk/ctkstatusicon.c:433 ../ctk/ctkcolorbutton.c:181
 #: ../ctk/ctkfilechooserbutton.c:445 ../ctk/ctkfontbutton.c:441
 #: ../ctk/ctkheaderbar.c:1811 ../ctk/ctkprintjob.c:132 ../ctk/ctkstack.c:419
 #: ../ctk/ctktreeviewcolumn.c:322
 msgid "Title"
 msgstr "தலைப்பு"
 
-#: ../ctk/deprecated/ctkstatusicon.c:434
+#: ../ctk/ctkstatusicon.c:434
 msgid "The title of this tray icon"
 msgstr "தட்டு சின்னத்தின் தலைப்பு"
 

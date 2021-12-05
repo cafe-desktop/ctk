@@ -272,22 +272,22 @@ msgstr ""
 "L'icòna predefinida afichada dins los elements grafics que representan "
 "aquesta accion."
 
-#: ctk/ctkaction.c:342 ctk/deprecated/ctkstatusicon.c:272
+#: ctk/ctkaction.c:342 ctk/ctkstatusicon.c:272
 msgid "GIcon"
 msgstr "GIcon"
 
-#: ctk/ctkaction.c:343 ctk/deprecated/ctkstatusicon.c:273
+#: ctk/ctkaction.c:343 ctk/ctkstatusicon.c:273
 #: ctk/ctkcellrendererpixbuf.c:266 ctk/ctkimage.c:359
 msgid "The GIcon being displayed"
 msgstr "L'objècte « GIcon » afichat"
 
-#: ctk/ctkaction.c:365 ctk/deprecated/ctkstatusicon.c:256
+#: ctk/ctkaction.c:365 ctk/ctkstatusicon.c:256
 #: ctk/ctkcellrendererpixbuf.c:229 ctk/ctkimage.c:342 ctk/ctkprinter.c:170
 #: ctk/ctkwindow.c:884
 msgid "Icon Name"
 msgstr "Nom de l'icòna"
 
-#: ctk/ctkaction.c:366 ctk/deprecated/ctkstatusicon.c:257
+#: ctk/ctkaction.c:366 ctk/ctkstatusicon.c:257
 #: ctk/ctkcellrendererpixbuf.c:230 ctk/ctkimage.c:343
 msgid "The name of the icon from the icon theme"
 msgstr "Lo nom de l'icòna dins lo tèma d'icònas"
@@ -356,7 +356,7 @@ msgid "Whether the action is enabled."
 msgstr "Indica se l'accion es activada."
 
 #: ctk/ctkaction.c:481 ctk/ctkactiongroup.c:228
-#: ctk/deprecated/ctkstatusicon.c:307 ctk/ctkcssnode.c:648
+#: ctk/ctkstatusicon.c:307 ctk/ctkcssnode.c:648
 #: ctk/ctknativedialog.c:242 ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1153
 msgid "Visible"
 msgstr "Visible"
@@ -825,104 +825,104 @@ msgid "Whether the items should be displayed with a number"
 msgstr ""
 "Indica se los elements devon èsser afichats precedits d'un numèro d'òrdre"
 
-#: ctk/deprecated/ctkstatusicon.c:227 ctk/ctkimage.c:255
+#: ctk/ctkstatusicon.c:227 ctk/ctkimage.c:255
 msgid "Pixbuf"
 msgstr "Pixbuf"
 
-#: ctk/deprecated/ctkstatusicon.c:228 ctk/ctkimage.c:256
+#: ctk/ctkstatusicon.c:228 ctk/ctkimage.c:256
 msgid "A GdkPixbuf to display"
 msgstr "L'objècte « GdkPixbuf » d'afichar"
 
-#: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:269
+#: ctk/ctkstatusicon.c:235 ctk/ctkimage.c:269
 #: ctk/ctkrecentmanager.c:283
 msgid "Filename"
 msgstr "Nom del fichièr"
 
-#: ctk/deprecated/ctkstatusicon.c:236 ctk/ctkimage.c:270
+#: ctk/ctkstatusicon.c:236 ctk/ctkimage.c:270
 msgid "Filename to load and display"
 msgstr "Nom del fichièr de cargar e d'afichar"
 
-#: ctk/deprecated/ctkstatusicon.c:248 ctk/ctkcellrendererpixbuf.c:193
+#: ctk/ctkstatusicon.c:248 ctk/ctkcellrendererpixbuf.c:193
 #: ctk/ctkimage.c:281
 msgid "Stock ID"
 msgstr "ID de colleccion"
 
-#: ctk/deprecated/ctkstatusicon.c:249 ctk/ctkimage.c:282
+#: ctk/ctkstatusicon.c:249 ctk/ctkimage.c:282
 msgid "Stock ID for a stock image to display"
 msgstr "Identificant de l'imatge de la colleccion d'afichar"
 
-#: ctk/deprecated/ctkstatusicon.c:280 ctk/ctkimage.c:379
+#: ctk/ctkstatusicon.c:280 ctk/ctkimage.c:379
 msgid "Storage type"
 msgstr "Tipe d'emmagazinatge"
 
-#: ctk/deprecated/ctkstatusicon.c:281 ctk/ctkimage.c:380
+#: ctk/ctkstatusicon.c:281 ctk/ctkimage.c:380
 msgid "The representation being used for image data"
 msgstr "La representacion utilizada per las donadas de l'imatge"
 
-#: ctk/deprecated/ctkstatusicon.c:289 ctk/ctkcellrendererpixbuf.c:201
+#: ctk/ctkstatusicon.c:289 ctk/ctkcellrendererpixbuf.c:201
 #: ctk/ctkcellrendererspinner.c:159 ctk/ctkrecentmanager.c:298
 msgid "Size"
 msgstr "Talha"
 
-#: ctk/deprecated/ctkstatusicon.c:290
+#: ctk/ctkstatusicon.c:290
 msgid "The size of the icon"
 msgstr "La talha de l'icòna"
 
-#: ctk/deprecated/ctkstatusicon.c:299 ctk/ctkinvisible.c:98
+#: ctk/ctkstatusicon.c:299 ctk/ctkinvisible.c:98
 #: ctk/ctkmountoperation.c:179 ctk/ctkstylecontext.c:215 ctk/ctkwindow.c:891
 msgid "Screen"
 msgstr "Ecran"
 
-#: ctk/deprecated/ctkstatusicon.c:300
+#: ctk/ctkstatusicon.c:300
 msgid "The screen where this status icon will be displayed"
 msgstr "L'ecran ont aquesta icòna d'estat serà afichada"
 
-#: ctk/deprecated/ctkstatusicon.c:308
+#: ctk/ctkstatusicon.c:308
 msgid "Whether the status icon is visible"
 msgstr "Indica se l'icòna d'estat es visibla"
 
-#: ctk/deprecated/ctkstatusicon.c:323 ctk/ctkplug.c:196
+#: ctk/ctkstatusicon.c:323 ctk/ctkplug.c:196
 msgid "Embedded"
 msgstr "Enfichat"
 
-#: ctk/deprecated/ctkstatusicon.c:324
+#: ctk/ctkstatusicon.c:324
 msgid "Whether the status icon is embedded"
 msgstr "Indica se l'icòna d'estat es imbricada"
 
-#: ctk/deprecated/ctkstatusicon.c:339 ctk/ctktrayicon-x11.c:127
+#: ctk/ctkstatusicon.c:339 ctk/ctktrayicon-x11.c:127
 #: ctk/ctkgesturepan.c:237 ctk/ctkorientable.c:61
 msgid "Orientation"
 msgstr "Orientacion"
 
-#: ctk/deprecated/ctkstatusicon.c:340 ctk/ctktrayicon-x11.c:128
+#: ctk/ctkstatusicon.c:340 ctk/ctktrayicon-x11.c:128
 msgid "The orientation of the tray"
 msgstr "L'orientacion de la zòna de notificacion"
 
-#: ctk/deprecated/ctkstatusicon.c:367 ctk/ctkwidget.c:1283
+#: ctk/ctkstatusicon.c:367 ctk/ctkwidget.c:1283
 msgid "Has tooltip"
 msgstr "A una infobulla"
 
-#: ctk/deprecated/ctkstatusicon.c:368
+#: ctk/ctkstatusicon.c:368
 msgid "Whether this tray icon has a tooltip"
 msgstr "Indica se l'icòna de notificacion a una infobulla"
 
-#: ctk/deprecated/ctkstatusicon.c:394 ctk/ctkwidget.c:1307
+#: ctk/ctkstatusicon.c:394 ctk/ctkwidget.c:1307
 msgid "Tooltip Text"
 msgstr "Tèxte d'infobulla"
 
-#: ctk/deprecated/ctkstatusicon.c:395 ctk/ctkwidget.c:1308 ctk/ctkwidget.c:1332
+#: ctk/ctkstatusicon.c:395 ctk/ctkwidget.c:1308 ctk/ctkwidget.c:1332
 msgid "The contents of the tooltip for this widget"
 msgstr "Lo contengut de l'infobulla per aqueste element grafic"
 
-#: ctk/deprecated/ctkstatusicon.c:418 ctk/ctkwidget.c:1331
+#: ctk/ctkstatusicon.c:418 ctk/ctkwidget.c:1331
 msgid "Tooltip markup"
 msgstr "Balisatge de l'infobulla"
 
-#: ctk/deprecated/ctkstatusicon.c:419
+#: ctk/ctkstatusicon.c:419
 msgid "The contents of the tooltip for this tray icon"
 msgstr "Lo contengut de l'infobulla per aquesta icòna de notificacion"
 
-#: ctk/deprecated/ctkstatusicon.c:436 ctk/ctkcolorbutton.c:183
+#: ctk/ctkstatusicon.c:436 ctk/ctkcolorbutton.c:183
 #: ctk/ctkfilechooserbutton.c:438 ctk/ctkfontbutton.c:476
 #: ctk/ctkheaderbar.c:1933 ctk/ctkprintjob.c:132 ctk/ctkshortcutsgroup.c:289
 #: ctk/ctkshortcutssection.c:375 ctk/ctkshortcutsshortcut.c:575
@@ -930,7 +930,7 @@ msgstr "Lo contengut de l'infobulla per aquesta icòna de notificacion"
 msgid "Title"
 msgstr "Títol"
 
-#: ctk/deprecated/ctkstatusicon.c:437
+#: ctk/ctkstatusicon.c:437
 msgid "The title of this tray icon"
 msgstr "Lo títol d'aquesta icòna de notificacion"
 

@@ -269,22 +269,22 @@ msgstr ""
 "Isporučena ikonica koja se prikazuje u elementima koji predstavljaju ovu "
 "radnju."
 
-#: ctk/ctkaction.c:342 ctk/deprecated/ctkstatusicon.c:279
+#: ctk/ctkaction.c:342 ctk/ctkstatusicon.c:279
 msgid "GIcon"
 msgstr "Gikonica"
 
-#: ctk/ctkaction.c:343 ctk/deprecated/ctkstatusicon.c:280
+#: ctk/ctkaction.c:343 ctk/ctkstatusicon.c:280
 #: ctk/ctkcellrendererpixbuf.c:282 ctk/ctkimage.c:359
 msgid "The GIcon being displayed"
 msgstr "Gikonica koja je prikazana"
 
-#: ctk/ctkaction.c:365 ctk/deprecated/ctkstatusicon.c:263
+#: ctk/ctkaction.c:365 ctk/ctkstatusicon.c:263
 #: ctk/ctkcellrendererpixbuf.c:245 ctk/ctkimage.c:342 ctk/ctkprinter.c:170
 #: ctk/ctkwindow.c:887
 msgid "Icon Name"
 msgstr "Naziv ikonice"
 
-#: ctk/ctkaction.c:366 ctk/deprecated/ctkstatusicon.c:264
+#: ctk/ctkaction.c:366 ctk/ctkstatusicon.c:264
 #: ctk/ctkcellrendererpixbuf.c:246 ctk/ctkimage.c:343
 msgid "The name of the icon from the icon theme"
 msgstr "Naziv ikonice iz teme ikonica"
@@ -356,7 +356,7 @@ msgid "Whether the action is enabled."
 msgstr "Da li je radnja uključena."
 
 #: ctk/ctkaction.c:481 ctk/ctkactiongroup.c:228
-#: ctk/deprecated/ctkstatusicon.c:314 ctk/ctkcssnode.c:649
+#: ctk/ctkstatusicon.c:314 ctk/ctkcssnode.c:649
 #: ctk/ctknativedialog.c:242 ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1145
 msgid "Visible"
 msgstr "Vidljivo"
@@ -816,104 +816,104 @@ msgstr "Pokazuje brojeve"
 msgid "Whether the items should be displayed with a number"
 msgstr "Da li stavke trebaju biti prikazane sa brojevima"
 
-#: ctk/deprecated/ctkstatusicon.c:234 ctk/ctkimage.c:255
+#: ctk/ctkstatusicon.c:234 ctk/ctkimage.c:255
 msgid "Pixbuf"
 msgstr "Sličica"
 
-#: ctk/deprecated/ctkstatusicon.c:235 ctk/ctkimage.c:256
+#: ctk/ctkstatusicon.c:235 ctk/ctkimage.c:256
 msgid "A GdkPixbuf to display"
 msgstr "Cdk sličica za prikaz"
 
-#: ctk/deprecated/ctkstatusicon.c:242 ctk/ctkimage.c:269
+#: ctk/ctkstatusicon.c:242 ctk/ctkimage.c:269
 #: ctk/ctkrecentmanager.c:289
 msgid "Filename"
 msgstr "Naziv datoteke"
 
-#: ctk/deprecated/ctkstatusicon.c:243 ctk/ctkimage.c:270
+#: ctk/ctkstatusicon.c:243 ctk/ctkimage.c:270
 msgid "Filename to load and display"
 msgstr "Naziv datoteke za učitavanje i prikaz"
 
-#: ctk/deprecated/ctkstatusicon.c:255 ctk/ctkcellrendererpixbuf.c:195
+#: ctk/ctkstatusicon.c:255 ctk/ctkcellrendererpixbuf.c:195
 #: ctk/ctkimage.c:281
 msgid "Stock ID"
 msgstr "ID pripremljene"
 
-#: ctk/deprecated/ctkstatusicon.c:256 ctk/ctkimage.c:282
+#: ctk/ctkstatusicon.c:256 ctk/ctkimage.c:282
 msgid "Stock ID for a stock image to display"
 msgstr "IB pripremljene slike za prikaz"
 
-#: ctk/deprecated/ctkstatusicon.c:287 ctk/ctkimage.c:379
+#: ctk/ctkstatusicon.c:287 ctk/ctkimage.c:379
 msgid "Storage type"
 msgstr "Vrsta smeštaja"
 
-#: ctk/deprecated/ctkstatusicon.c:288 ctk/ctkimage.c:380
+#: ctk/ctkstatusicon.c:288 ctk/ctkimage.c:380
 msgid "The representation being used for image data"
 msgstr "Način zapisa koji se koristi za podatke za sliku"
 
-#: ctk/deprecated/ctkstatusicon.c:296 ctk/ctkcellrendererpixbuf.c:210
+#: ctk/ctkstatusicon.c:296 ctk/ctkcellrendererpixbuf.c:210
 #: ctk/ctkcellrendererspinner.c:159 ctk/ctkrecentmanager.c:304
 msgid "Size"
 msgstr "Veličina"
 
-#: ctk/deprecated/ctkstatusicon.c:297
+#: ctk/ctkstatusicon.c:297
 msgid "The size of the icon"
 msgstr "Veličina ikonice"
 
-#: ctk/deprecated/ctkstatusicon.c:306 ctk/ctkinvisible.c:98
+#: ctk/ctkstatusicon.c:306 ctk/ctkinvisible.c:98
 #: ctk/ctkmountoperation.c:179 ctk/ctkstylecontext.c:228 ctk/ctkwindow.c:894
 msgid "Screen"
 msgstr "Ekran"
 
-#: ctk/deprecated/ctkstatusicon.c:307
+#: ctk/ctkstatusicon.c:307
 msgid "The screen where this status icon will be displayed"
 msgstr "Ekran na kojem će se prikazati ova ikonica stanja"
 
-#: ctk/deprecated/ctkstatusicon.c:315
+#: ctk/ctkstatusicon.c:315
 msgid "Whether the status icon is visible"
 msgstr "Da li je ikonica stanja vidljiva"
 
-#: ctk/deprecated/ctkstatusicon.c:330 ctk/ctkplug.c:196
+#: ctk/ctkstatusicon.c:330 ctk/ctkplug.c:196
 msgid "Embedded"
 msgstr "Ugnježdeno"
 
-#: ctk/deprecated/ctkstatusicon.c:331
+#: ctk/ctkstatusicon.c:331
 msgid "Whether the status icon is embedded"
 msgstr "Da li je ikonica stanja ugnježdena"
 
-#: ctk/deprecated/ctkstatusicon.c:346 ctk/ctktrayicon-x11.c:127
+#: ctk/ctkstatusicon.c:346 ctk/ctktrayicon-x11.c:127
 #: ctk/ctkgesturepan.c:237 ctk/ctkorientable.c:61
 msgid "Orientation"
 msgstr "Usmerenje"
 
-#: ctk/deprecated/ctkstatusicon.c:347 ctk/ctktrayicon-x11.c:128
+#: ctk/ctkstatusicon.c:347 ctk/ctktrayicon-x11.c:128
 msgid "The orientation of the tray"
 msgstr "Usmerenje fioke"
 
-#: ctk/deprecated/ctkstatusicon.c:374 ctk/ctkwidget.c:1282
+#: ctk/ctkstatusicon.c:374 ctk/ctkwidget.c:1282
 msgid "Has tooltip"
 msgstr "Ima savet"
 
-#: ctk/deprecated/ctkstatusicon.c:375
+#: ctk/ctkstatusicon.c:375
 msgid "Whether this tray icon has a tooltip"
 msgstr "Da li ikonica fioke ima savet"
 
-#: ctk/deprecated/ctkstatusicon.c:401 ctk/ctkwidget.c:1306
+#: ctk/ctkstatusicon.c:401 ctk/ctkwidget.c:1306
 msgid "Tooltip Text"
 msgstr "Tekst saveta"
 
-#: ctk/deprecated/ctkstatusicon.c:402 ctk/ctkwidget.c:1307 ctk/ctkwidget.c:1331
+#: ctk/ctkstatusicon.c:402 ctk/ctkwidget.c:1307 ctk/ctkwidget.c:1331
 msgid "The contents of the tooltip for this widget"
 msgstr "Sadržaj saveta ovog elementa"
 
-#: ctk/deprecated/ctkstatusicon.c:425 ctk/ctkwidget.c:1330
+#: ctk/ctkstatusicon.c:425 ctk/ctkwidget.c:1330
 msgid "Tooltip markup"
 msgstr "Oznake saveta"
 
-#: ctk/deprecated/ctkstatusicon.c:426
+#: ctk/ctkstatusicon.c:426
 msgid "The contents of the tooltip for this tray icon"
 msgstr "Sadržaj saveta ove ikonice fioke"
 
-#: ctk/deprecated/ctkstatusicon.c:443 ctk/ctkcolorbutton.c:183
+#: ctk/ctkstatusicon.c:443 ctk/ctkcolorbutton.c:183
 #: ctk/ctkfilechooserbutton.c:438 ctk/ctkfontbutton.c:479
 #: ctk/ctkheaderbar.c:2027 ctk/ctkprintjob.c:132 ctk/ctkshortcutsgroup.c:308
 #: ctk/ctkshortcutssection.c:376 ctk/ctkshortcutsshortcut.c:575
@@ -921,7 +921,7 @@ msgstr "Sadržaj saveta ove ikonice fioke"
 msgid "Title"
 msgstr "Naslov"
 
-#: ctk/deprecated/ctkstatusicon.c:444
+#: ctk/ctkstatusicon.c:444
 msgid "The title of this tray icon"
 msgstr "Naslov ove ikonice fioke"
 
