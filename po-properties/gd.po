@@ -898,12 +898,12 @@ msgstr "Air a leabachadh"
 msgid "Whether the status icon is embedded"
 msgstr "Co-dhiù am bi ìomhaigheag na staide leabaichte"
 
-#: ctk/deprecated/ctkstatusicon.c:346 ctk/deprecated/ctktrayicon-x11.c:127
+#: ctk/deprecated/ctkstatusicon.c:346 ctk/ctktrayicon-x11.c:127
 #: ctk/ctkgesturepan.c:237 ctk/ctkorientable.c:61
 msgid "Orientation"
 msgstr "Comhair"
 
-#: ctk/deprecated/ctkstatusicon.c:347 ctk/deprecated/ctktrayicon-x11.c:128
+#: ctk/deprecated/ctkstatusicon.c:347 ctk/ctktrayicon-x11.c:128
 msgid "The orientation of the tray"
 msgstr "Comhair na treidhe"
 
@@ -1091,52 +1091,52 @@ msgstr "Gnìomhach"
 msgid "Whether the toggle action should be active"
 msgstr "Co-dhiù am bi an gnìomh toglachaidh gnìomhach"
 
-#: ctk/deprecated/ctktrayicon-x11.c:136 ctk/ctkcellrenderertext.c:334
+#: ctk/ctktrayicon-x11.c:136 ctk/ctkcellrenderertext.c:334
 #: ctk/ctktexttag.c:276
 msgid "Foreground color"
 msgstr "Dath a’ bheulaibh"
 
-#: ctk/deprecated/ctktrayicon-x11.c:137
+#: ctk/ctktrayicon-x11.c:137
 msgid "Foreground color for symbolic icons"
 msgstr "Dath a’ bheulaibh airson ìomhaigheagan samhlachail"
 
-#: ctk/deprecated/ctktrayicon-x11.c:144
+#: ctk/ctktrayicon-x11.c:144
 msgid "Error color"
 msgstr "Dath mhearachdan"
 
-#: ctk/deprecated/ctktrayicon-x11.c:145
+#: ctk/ctktrayicon-x11.c:145
 msgid "Error color for symbolic icons"
 msgstr "Dath mhearachdan airson ìomhaigheagan samhlachail"
 
-#: ctk/deprecated/ctktrayicon-x11.c:152
+#: ctk/ctktrayicon-x11.c:152
 msgid "Warning color"
 msgstr "Dath rabhaidh"
 
-#: ctk/deprecated/ctktrayicon-x11.c:153
+#: ctk/ctktrayicon-x11.c:153
 msgid "Warning color for symbolic icons"
 msgstr "Dath rabhaidh airson ìomhaigheagan samhlachail"
 
-#: ctk/deprecated/ctktrayicon-x11.c:160
+#: ctk/ctktrayicon-x11.c:160
 msgid "Success color"
 msgstr "Dath soirbheis"
 
-#: ctk/deprecated/ctktrayicon-x11.c:161
+#: ctk/ctktrayicon-x11.c:161
 msgid "Success color for symbolic icons"
 msgstr "Dath soirbheis airson ìomhaigheagan samhlachail"
 
-#: ctk/deprecated/ctktrayicon-x11.c:168 ctk/ctkbox.c:345
+#: ctk/ctktrayicon-x11.c:168 ctk/ctkbox.c:345
 msgid "Padding"
 msgstr "Padadh"
 
-#: ctk/deprecated/ctktrayicon-x11.c:169
+#: ctk/ctktrayicon-x11.c:169
 msgid "Padding that should be put around icons in the tray"
 msgstr "Am padadh a bu chòir a bhith timcheall air ìomhaigheagan san treidhe"
 
-#: ctk/deprecated/ctktrayicon-x11.c:178 ctk/ctkstackswitcher.c:686
+#: ctk/ctktrayicon-x11.c:178 ctk/ctkstackswitcher.c:686
 msgid "Icon Size"
 msgstr "Meud na h-ìomhaigheige"
 
-#: ctk/deprecated/ctktrayicon-x11.c:179
+#: ctk/ctktrayicon-x11.c:179
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr "Meud nam piogsailean a thèid èigneachadh no neoni"
 

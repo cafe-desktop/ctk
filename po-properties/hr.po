@@ -872,12 +872,12 @@ msgstr "Ugrađena"
 msgid "Whether the status icon is embedded"
 msgstr "Treba li statusna ikona biti ugrađena"
 
-#: ctk/deprecated/ctkstatusicon.c:346 ctk/deprecated/ctktrayicon-x11.c:127
+#: ctk/deprecated/ctkstatusicon.c:346 ctk/ctktrayicon-x11.c:127
 #: ctk/ctkgesturepan.c:238 ctk/ctkorientable.c:61
 msgid "Orientation"
 msgstr "Orijentacija"
 
-#: ctk/deprecated/ctkstatusicon.c:347 ctk/deprecated/ctktrayicon-x11.c:128
+#: ctk/deprecated/ctkstatusicon.c:347 ctk/ctktrayicon-x11.c:128
 msgid "The orientation of the tray"
 msgstr "Orijentacija statusne trake"
 
@@ -1063,52 +1063,52 @@ msgstr "Aktivan"
 msgid "Whether the toggle action should be active"
 msgstr "Ako radnja aktivacije mora biti omogućena"
 
-#: ctk/deprecated/ctktrayicon-x11.c:136 ctk/ctkcellrenderertext.c:334
+#: ctk/ctktrayicon-x11.c:136 ctk/ctkcellrenderertext.c:334
 #: ctk/ctktexttag.c:277
 msgid "Foreground color"
 msgstr "Boja prednjeg prikaza"
 
-#: ctk/deprecated/ctktrayicon-x11.c:137
+#: ctk/ctktrayicon-x11.c:137
 msgid "Foreground color for symbolic icons"
 msgstr "Prednja boja za simboličke ikone"
 
-#: ctk/deprecated/ctktrayicon-x11.c:144
+#: ctk/ctktrayicon-x11.c:144
 msgid "Error color"
 msgstr "Greška boje"
 
-#: ctk/deprecated/ctktrayicon-x11.c:145
+#: ctk/ctktrayicon-x11.c:145
 msgid "Error color for symbolic icons"
 msgstr "Greška boje simboličkih ikona"
 
-#: ctk/deprecated/ctktrayicon-x11.c:152
+#: ctk/ctktrayicon-x11.c:152
 msgid "Warning color"
 msgstr "Boja upozorenja"
 
-#: ctk/deprecated/ctktrayicon-x11.c:153
+#: ctk/ctktrayicon-x11.c:153
 msgid "Warning color for symbolic icons"
 msgstr "Boja upozorenja simboličkih ikona"
 
-#: ctk/deprecated/ctktrayicon-x11.c:160
+#: ctk/ctktrayicon-x11.c:160
 msgid "Success color"
 msgstr "Boja uspjeha"
 
-#: ctk/deprecated/ctktrayicon-x11.c:161
+#: ctk/ctktrayicon-x11.c:161
 msgid "Success color for symbolic icons"
 msgstr "Boja uspjeha simboličkih ikona"
 
-#: ctk/deprecated/ctktrayicon-x11.c:168 ctk/ctkbox.c:350
+#: ctk/ctktrayicon-x11.c:168 ctk/ctkbox.c:350
 msgid "Padding"
 msgstr "Popunjvanje"
 
-#: ctk/deprecated/ctktrayicon-x11.c:169
+#: ctk/ctktrayicon-x11.c:169
 msgid "Padding that should be put around icons in the tray"
 msgstr "Dopunjavanje koje treba staviti oko ikone u traci sustava"
 
-#: ctk/deprecated/ctktrayicon-x11.c:178 ctk/ctkstackswitcher.c:686
+#: ctk/ctktrayicon-x11.c:178 ctk/ctkstackswitcher.c:686
 msgid "Icon Size"
 msgstr "Veličina ikone"
 
-#: ctk/deprecated/ctktrayicon-x11.c:179
+#: ctk/ctktrayicon-x11.c:179
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr ""
 "Veličina u pikselima na koji bi trebala ikona biti postavljena, ili nula"

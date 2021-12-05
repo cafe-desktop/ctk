@@ -891,12 +891,12 @@ msgstr ""
 msgid "Whether the status icon is embedded"
 msgstr "Kas olekuikoon on põimitud või mitte"
 
-#: ctk/deprecated/ctkstatusicon.c:339 ctk/deprecated/ctktrayicon-x11.c:127
+#: ctk/deprecated/ctkstatusicon.c:339 ctk/ctktrayicon-x11.c:127
 #: ctk/ctkgesturepan.c:237 ctk/ctkorientable.c:61
 msgid "Orientation"
 msgstr "Asend"
 
-#: ctk/deprecated/ctkstatusicon.c:340 ctk/deprecated/ctktrayicon-x11.c:128
+#: ctk/deprecated/ctkstatusicon.c:340 ctk/ctktrayicon-x11.c:128
 msgid "The orientation of the tray"
 msgstr "Salve suund"
 
@@ -1082,64 +1082,64 @@ msgstr "Aktiivne"
 msgid "Whether the toggle action should be active"
 msgstr "Kas külastatud viitasid tuleb jälgida või mitte"
 
-#: ctk/deprecated/ctktrayicon-x11.c:136 ctk/ctkcellrenderertext.c:334
+#: ctk/ctktrayicon-x11.c:136 ctk/ctkcellrenderertext.c:334
 #: ctk/ctktexttag.c:276
 msgid "Foreground color"
 msgstr "Esiplaanivärv"
 
-#: ctk/deprecated/ctktrayicon-x11.c:137
+#: ctk/ctktrayicon-x11.c:137
 #, fuzzy
 #| msgid "Foreground color as a string"
 msgid "Foreground color for symbolic icons"
 msgstr "Esiplaanivärv stringina"
 
-#: ctk/deprecated/ctktrayicon-x11.c:144
+#: ctk/ctktrayicon-x11.c:144
 #, fuzzy
 #| msgid "Cursor color"
 msgid "Error color"
 msgstr "Kursori värvus"
 
-#: ctk/deprecated/ctktrayicon-x11.c:145
+#: ctk/ctktrayicon-x11.c:145
 msgid "Error color for symbolic icons"
 msgstr ""
 
-#: ctk/deprecated/ctktrayicon-x11.c:152
+#: ctk/ctktrayicon-x11.c:152
 #, fuzzy
 #| msgid "Background color"
 msgid "Warning color"
 msgstr "Taustavärv"
 
-#: ctk/deprecated/ctktrayicon-x11.c:153
+#: ctk/ctktrayicon-x11.c:153
 msgid "Warning color for symbolic icons"
 msgstr ""
 
-#: ctk/deprecated/ctktrayicon-x11.c:160
+#: ctk/ctktrayicon-x11.c:160
 #, fuzzy
 #| msgid "Cursor color"
 msgid "Success color"
 msgstr "Kursori värvus"
 
-#: ctk/deprecated/ctktrayicon-x11.c:161
+#: ctk/ctktrayicon-x11.c:161
 msgid "Success color for symbolic icons"
 msgstr ""
 
-#: ctk/deprecated/ctktrayicon-x11.c:168 ctk/ctkbox.c:345
+#: ctk/ctktrayicon-x11.c:168 ctk/ctkbox.c:345
 msgid "Padding"
 msgstr "Polsterdus"
 
-#: ctk/deprecated/ctktrayicon-x11.c:169
+#: ctk/ctktrayicon-x11.c:169
 #, fuzzy
 #| msgid "Whether there should be an icon near the item"
 msgid "Padding that should be put around icons in the tray"
 msgstr "Kas kirje ligidal peaks olema ikoon või mitte"
 
-#: ctk/deprecated/ctktrayicon-x11.c:178 ctk/ctkstackswitcher.c:686
+#: ctk/ctktrayicon-x11.c:178 ctk/ctkstackswitcher.c:686
 #, fuzzy
 #| msgid "Icon Sizes"
 msgid "Icon Size"
 msgstr "Ikoonide suurused"
 
-#: ctk/deprecated/ctktrayicon-x11.c:179
+#: ctk/ctktrayicon-x11.c:179
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr ""
 

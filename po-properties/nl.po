@@ -920,12 +920,12 @@ msgstr "Ingebed"
 msgid "Whether the status icon is embedded"
 msgstr "Of het statuspictogram ingebed is"
 
-#: ctk/deprecated/ctkstatusicon.c:346 ctk/deprecated/ctktrayicon-x11.c:127
+#: ctk/deprecated/ctkstatusicon.c:346 ctk/ctktrayicon-x11.c:127
 #: ctk/ctkgesturepan.c:238 ctk/ctkorientable.c:61
 msgid "Orientation"
 msgstr "Stand"
 
-#: ctk/deprecated/ctkstatusicon.c:347 ctk/deprecated/ctktrayicon-x11.c:128
+#: ctk/deprecated/ctkstatusicon.c:347 ctk/ctktrayicon-x11.c:128
 msgid "The orientation of the tray"
 msgstr "De stand van de balk"
 
@@ -1114,52 +1114,52 @@ msgstr "Actief"
 msgid "Whether the toggle action should be active"
 msgstr "Of de schakelactie actief moet zijn"
 
-#: ctk/deprecated/ctktrayicon-x11.c:136 ctk/ctkcellrenderertext.c:334
+#: ctk/ctktrayicon-x11.c:136 ctk/ctkcellrenderertext.c:334
 #: ctk/ctktexttag.c:277
 msgid "Foreground color"
 msgstr "Voorgrondkleur"
 
-#: ctk/deprecated/ctktrayicon-x11.c:137
+#: ctk/ctktrayicon-x11.c:137
 msgid "Foreground color for symbolic icons"
 msgstr "Voorgrondkleur voor symbolisch pictogrammen"
 
-#: ctk/deprecated/ctktrayicon-x11.c:144
+#: ctk/ctktrayicon-x11.c:144
 msgid "Error color"
 msgstr "Foutmeldingskleur"
 
-#: ctk/deprecated/ctktrayicon-x11.c:145
+#: ctk/ctktrayicon-x11.c:145
 msgid "Error color for symbolic icons"
 msgstr "Foutmeldingskleur voor symbolische pictogrammen"
 
-#: ctk/deprecated/ctktrayicon-x11.c:152
+#: ctk/ctktrayicon-x11.c:152
 msgid "Warning color"
 msgstr "Waarschuwingskleur"
 
-#: ctk/deprecated/ctktrayicon-x11.c:153
+#: ctk/ctktrayicon-x11.c:153
 msgid "Warning color for symbolic icons"
 msgstr "Waarschuwingskleur voor symbolische pictogrammen"
 
-#: ctk/deprecated/ctktrayicon-x11.c:160
+#: ctk/ctktrayicon-x11.c:160
 msgid "Success color"
 msgstr "Slagingskleur"
 
-#: ctk/deprecated/ctktrayicon-x11.c:161
+#: ctk/ctktrayicon-x11.c:161
 msgid "Success color for symbolic icons"
 msgstr "Slagingskleur voor symbolische pictogrammen"
 
-#: ctk/deprecated/ctktrayicon-x11.c:168 ctk/ctkbox.c:350
+#: ctk/ctktrayicon-x11.c:168 ctk/ctkbox.c:350
 msgid "Padding"
 msgstr "Opvulling"
 
-#: ctk/deprecated/ctktrayicon-x11.c:169
+#: ctk/ctktrayicon-x11.c:169
 msgid "Padding that should be put around icons in the tray"
 msgstr "Opvulling voor rondom de pictogrammen in het systeemvak"
 
-#: ctk/deprecated/ctktrayicon-x11.c:178 ctk/ctkstackswitcher.c:686
+#: ctk/ctktrayicon-x11.c:178 ctk/ctkstackswitcher.c:686
 msgid "Icon Size"
 msgstr "Pictogramgrootte"
 
-#: ctk/deprecated/ctktrayicon-x11.c:179
+#: ctk/ctktrayicon-x11.c:179
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr "De pizelgrootte waartoe pictogrammen worden geforceerd, of nul"
 

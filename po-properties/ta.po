@@ -846,13 +846,13 @@ msgid "Whether the status icon is embedded"
 msgstr "நிலை சின்னம் உட்பொதிப்பட்டிருந்தால்"
 
 #: ../ctk/deprecated/ctkstatusicon.c:336
-#: ../ctk/deprecated/ctktrayicon-x11.c:126 ../ctk/ctkgesturepan.c:237
+#: ../ctk/ctktrayicon-x11.c:126 ../ctk/ctkgesturepan.c:237
 #: ../ctk/ctkorientable.c:61
 msgid "Orientation"
 msgstr "திசை அமைவு"
 
 #: ../ctk/deprecated/ctkstatusicon.c:337
-#: ../ctk/deprecated/ctktrayicon-x11.c:127
+#: ../ctk/ctktrayicon-x11.c:127
 msgid "The orientation of the tray"
 msgstr "தட்டின் திசையமைப்பு"
 
@@ -1038,52 +1038,52 @@ msgstr "செயல்படக்கூடிய"
 msgid "Whether the toggle action should be active"
 msgstr "மாற்று செயல் செயலில் இருக்கிறதா"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:135 ../ctk/ctkcellrenderertext.c:341
+#: ../ctk/ctktrayicon-x11.c:135 ../ctk/ctkcellrenderertext.c:341
 #: ../ctk/ctktexttag.c:265
 msgid "Foreground color"
 msgstr "முன்னணி வண்ணம்"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:136
+#: ../ctk/ctktrayicon-x11.c:136
 msgid "Foreground color for symbolic icons"
 msgstr "முன்னணி வண்ணத்திற்கான அடையாள சின்னங்கள்"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:143
+#: ../ctk/ctktrayicon-x11.c:143
 msgid "Error color"
 msgstr "பிழை வண்ணம்"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:144
+#: ../ctk/ctktrayicon-x11.c:144
 msgid "Error color for symbolic icons"
 msgstr "பிழை வண்ணத்திற்கான அடையாள சின்னங்கள்"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:151
+#: ../ctk/ctktrayicon-x11.c:151
 msgid "Warning color"
 msgstr "எச்சரிக்கை வண்ணம்"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:152
+#: ../ctk/ctktrayicon-x11.c:152
 msgid "Warning color for symbolic icons"
 msgstr "எச்சரிக்கை வண்ணத்திற்கான அடையாள சின்னங்கள்"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:159
+#: ../ctk/ctktrayicon-x11.c:159
 msgid "Success color"
 msgstr "வெற்றி வண்ணம்"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:160
+#: ../ctk/ctktrayicon-x11.c:160
 msgid "Success color for symbolic icons"
 msgstr "வெற்றி வண்ணத்திற்கான அடையாள சின்னங்கள்"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:167 ../ctk/ctkbox.c:322
+#: ../ctk/ctktrayicon-x11.c:167 ../ctk/ctkbox.c:322
 msgid "Padding"
 msgstr "நிரப்பல்"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:168
+#: ../ctk/ctktrayicon-x11.c:168
 msgid "Padding that should be put around icons in the tray"
 msgstr "தட்டில் சின்னங்களை சுற்றி பேடிங் போட வேண்டும்"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:177
+#: ../ctk/ctktrayicon-x11.c:177
 msgid "Icon Size"
 msgstr "சின்ன அளவு"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:178
+#: ../ctk/ctktrayicon-x11.c:178
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr "பிக்செல் அளவு சின்னங்கள் இதற்கு வலியுறுத்தியது, அல்லது பூஜ்ஜியமாகும்"
 

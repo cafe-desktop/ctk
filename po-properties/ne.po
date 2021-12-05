@@ -887,12 +887,12 @@ msgstr "सम्मिलित"
 msgid "Whether the status icon is embedded"
 msgstr "वस्तुस्थिति फाँट प्रदर्शित छ कि छैन भनेर टगल गर्दछ"
 
-#: ctk/deprecated/ctkstatusicon.c:339 ctk/deprecated/ctktrayicon-x11.c:127
+#: ctk/deprecated/ctkstatusicon.c:339 ctk/ctktrayicon-x11.c:127
 #: ctk/ctkgesturepan.c:237 ctk/ctkorientable.c:61
 msgid "Orientation"
 msgstr "अभिमुखीकरण"
 
-#: ctk/deprecated/ctkstatusicon.c:340 ctk/deprecated/ctktrayicon-x11.c:128
+#: ctk/deprecated/ctkstatusicon.c:340 ctk/ctktrayicon-x11.c:128
 #, fuzzy
 msgid "The orientation of the tray"
 msgstr "अभिमुखीकरण"
@@ -1081,57 +1081,57 @@ msgstr "सक्रिय"
 msgid "Whether the toggle action should be active"
 msgstr "हालमा अस्वीकार भएको कार्य चयन गरिएको कार्य टगल गर्ने कि"
 
-#: ctk/deprecated/ctktrayicon-x11.c:136 ctk/ctkcellrenderertext.c:334 ctk/ctktexttag.c:276
+#: ctk/ctktrayicon-x11.c:136 ctk/ctkcellrenderertext.c:334 ctk/ctktexttag.c:276
 msgid "Foreground color"
 msgstr "दृष्य जगतको रङ्ग"
 
-#: ctk/deprecated/ctktrayicon-x11.c:137
+#: ctk/ctktrayicon-x11.c:137
 #, fuzzy
 msgid "Foreground color for symbolic icons"
 msgstr "अग्रभूमि रङ चयन गर्नुहोस्"
 
-#: ctk/deprecated/ctktrayicon-x11.c:144
+#: ctk/ctktrayicon-x11.c:144
 #, fuzzy
 msgid "Error color"
 msgstr "कच रङ्गमा गल्ती"
 
-#: ctk/deprecated/ctktrayicon-x11.c:145
+#: ctk/ctktrayicon-x11.c:145
 #, fuzzy
 msgid "Error color for symbolic icons"
 msgstr "प्रतिकात्मक लिङ्क `%.255s' सिर्जना गर्दा त्रुटि"
 
-#: ctk/deprecated/ctktrayicon-x11.c:152
+#: ctk/ctktrayicon-x11.c:152
 #, fuzzy
 msgid "Warning color"
 msgstr "चेतावनी: "
 
-#: ctk/deprecated/ctktrayicon-x11.c:153
+#: ctk/ctktrayicon-x11.c:153
 msgid "Warning color for symbolic icons"
 msgstr ""
 
-#: ctk/deprecated/ctktrayicon-x11.c:160
+#: ctk/ctktrayicon-x11.c:160
 #, fuzzy
 msgid "Success color"
 msgstr "सफलता !"
 
-#: ctk/deprecated/ctktrayicon-x11.c:161
+#: ctk/ctktrayicon-x11.c:161
 msgid "Success color for symbolic icons"
 msgstr ""
 
-#: ctk/deprecated/ctktrayicon-x11.c:168 ctk/ctkbox.c:345
+#: ctk/ctktrayicon-x11.c:168 ctk/ctkbox.c:345
 msgid "Padding"
 msgstr "गद्दा"
 
-#: ctk/deprecated/ctktrayicon-x11.c:169
+#: ctk/ctktrayicon-x11.c:169
 #, fuzzy
 msgid "Padding that should be put around icons in the tray"
 msgstr "जहा सीमारेखा देखाइन सकिन्थ्यो वा सकिन्नथ्यो"
 
-#: ctk/deprecated/ctktrayicon-x11.c:178 ctk/ctkstackswitcher.c:684
+#: ctk/ctktrayicon-x11.c:178 ctk/ctkstackswitcher.c:684
 msgid "Icon Size"
 msgstr "प्रतिमाको आकार"
 
-#: ctk/deprecated/ctktrayicon-x11.c:179
+#: ctk/ctktrayicon-x11.c:179
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr ""
 

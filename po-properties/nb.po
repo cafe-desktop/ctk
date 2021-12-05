@@ -861,13 +861,13 @@ msgid "Whether the status icon is embedded"
 msgstr "Om statusikon er innebygget"
 
 #: ../ctk/deprecated/ctkstatusicon.c:338
-#: ../ctk/deprecated/ctktrayicon-x11.c:127 ../ctk/ctkgesturepan.c:237
+#: ../ctk/ctktrayicon-x11.c:127 ../ctk/ctkgesturepan.c:237
 #: ../ctk/ctkorientable.c:61
 msgid "Orientation"
 msgstr "Orientering"
 
 #: ../ctk/deprecated/ctkstatusicon.c:339
-#: ../ctk/deprecated/ctktrayicon-x11.c:128
+#: ../ctk/ctktrayicon-x11.c:128
 msgid "The orientation of the tray"
 msgstr "Orientering for systemområdet"
 
@@ -1054,52 +1054,52 @@ msgstr "Aktiv"
 msgid "Whether the toggle action should be active"
 msgstr "Om knappen skal trykkes inn eller ikke"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:136 ../ctk/ctkcellrenderertext.c:341
+#: ../ctk/ctktrayicon-x11.c:136 ../ctk/ctkcellrenderertext.c:341
 #: ../ctk/ctktexttag.c:269
 msgid "Foreground color"
 msgstr "Forgrunnsfarge"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:137
+#: ../ctk/ctktrayicon-x11.c:137
 msgid "Foreground color for symbolic icons"
 msgstr "Forgrunnsfarge for symbolske ikoner"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:144
+#: ../ctk/ctktrayicon-x11.c:144
 msgid "Error color"
 msgstr "Farge for feil"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:145
+#: ../ctk/ctktrayicon-x11.c:145
 msgid "Error color for symbolic icons"
 msgstr "Feilfarge for symbolske ikoner"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:152
+#: ../ctk/ctktrayicon-x11.c:152
 msgid "Warning color"
 msgstr "Farge for advarsel"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:153
+#: ../ctk/ctktrayicon-x11.c:153
 msgid "Warning color for symbolic icons"
 msgstr "Advarselsfarge for symbolske ikoner"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:160
+#: ../ctk/ctktrayicon-x11.c:160
 msgid "Success color"
 msgstr "Farge for suksess"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:161
+#: ../ctk/ctktrayicon-x11.c:161
 msgid "Success color for symbolic icons"
 msgstr "Suksessfarge for symbolske ikoner"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:168 ../ctk/ctkbox.c:322
+#: ../ctk/ctktrayicon-x11.c:168 ../ctk/ctkbox.c:322
 msgid "Padding"
 msgstr "Fyll"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:169
+#: ../ctk/ctktrayicon-x11.c:169
 msgid "Padding that should be put around icons in the tray"
 msgstr "Fyll som skal plasseres rundt ikoner i systemområdet"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:178
+#: ../ctk/ctktrayicon-x11.c:178
 msgid "Icon Size"
 msgstr "Ikonstørrelse"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:179
+#: ../ctk/ctktrayicon-x11.c:179
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr ""
 

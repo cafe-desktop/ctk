@@ -819,13 +819,13 @@ msgid "Whether the status icon is embedded"
 msgstr "स्थिती चिन्ह एम्बेडेड आहे"
 
 #: ../ctk/deprecated/ctkstatusicon.c:336
-#: ../ctk/deprecated/ctktrayicon-x11.c:126 ../ctk/ctkgesturepan.c:237
+#: ../ctk/ctktrayicon-x11.c:126 ../ctk/ctkgesturepan.c:237
 #: ../ctk/ctkorientable.c:61
 msgid "Orientation"
 msgstr "कल"
 
 #: ../ctk/deprecated/ctkstatusicon.c:337
-#: ../ctk/deprecated/ctktrayicon-x11.c:127
+#: ../ctk/ctktrayicon-x11.c:127
 msgid "The orientation of the tray"
 msgstr "ट्रेची दिशा"
 
@@ -1012,52 +1012,52 @@ msgstr "क्रियाशील"
 msgid "Whether the toggle action should be active"
 msgstr "टॉगल कृती सुरू असायला पाहिजे"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:135 ../ctk/ctkcellrenderertext.c:341
+#: ../ctk/ctktrayicon-x11.c:135 ../ctk/ctkcellrenderertext.c:341
 #: ../ctk/ctktexttag.c:265
 msgid "Foreground color"
 msgstr "पृष्ठभागावरील रंग"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:136
+#: ../ctk/ctktrayicon-x11.c:136
 msgid "Foreground color for symbolic icons"
 msgstr "सिम्बॉलिक चिन्हांकरीता पृष्ठभूमीतील रंग"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:143
+#: ../ctk/ctktrayicon-x11.c:143
 msgid "Error color"
 msgstr "त्रुटीचा रंग"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:144
+#: ../ctk/ctktrayicon-x11.c:144
 msgid "Error color for symbolic icons"
 msgstr "सॉम्बॉलिक चिन्हांकरीता त्रुटीचे रंग"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:151
+#: ../ctk/ctktrayicon-x11.c:151
 msgid "Warning color"
 msgstr "सावधानता रंग"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:152
+#: ../ctk/ctktrayicon-x11.c:152
 msgid "Warning color for symbolic icons"
 msgstr "सॉम्बॉलिक चिन्हांकरीता सावधानता रंग"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:159
+#: ../ctk/ctktrayicon-x11.c:159
 msgid "Success color"
 msgstr "यशस्वी रंग"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:160
+#: ../ctk/ctktrayicon-x11.c:160
 msgid "Success color for symbolic icons"
 msgstr "सॉम्बॉलिक चिन्हांकरीता यशाचे रंग"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:167 ../ctk/ctkbox.c:322
+#: ../ctk/ctktrayicon-x11.c:167 ../ctk/ctkbox.c:322
 msgid "Padding"
 msgstr "मोकळी जागा"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:168
+#: ../ctk/ctktrayicon-x11.c:168
 msgid "Padding that should be put around icons in the tray"
 msgstr "ट्रेमधील चिन्हांच्या भोवतालची पॅडिंग"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:177
+#: ../ctk/ctktrayicon-x11.c:177
 msgid "Icon Size"
 msgstr "चिन्हाचे आकार"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:178
+#: ../ctk/ctktrayicon-x11.c:178
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr "चिन्हाचे जबरपणे लागू करण्याजोगी पिक्सेलमधील आकार, किंवा शून्य"
 

@@ -940,12 +940,12 @@ msgstr ""
 msgid "Whether the status icon is embedded"
 msgstr "Of die aksie sigbaar is."
 
-#: ctk/deprecated/ctkstatusicon.c:346 ctk/deprecated/ctktrayicon-x11.c:127
+#: ctk/deprecated/ctkstatusicon.c:346 ctk/ctktrayicon-x11.c:127
 #: ctk/ctkgesturepan.c:237 ctk/ctkorientable.c:61
 msgid "Orientation"
 msgstr "Oriëntering"
 
-#: ctk/deprecated/ctkstatusicon.c:347 ctk/deprecated/ctktrayicon-x11.c:128
+#: ctk/deprecated/ctkstatusicon.c:347 ctk/ctktrayicon-x11.c:128
 #, fuzzy
 msgid "The orientation of the tray"
 msgstr "Die oriëntering van die nutsbalk"
@@ -1145,59 +1145,59 @@ msgstr "Aktief"
 msgid "Whether the toggle action should be active"
 msgstr "Of die swikknoppie gedruk moet word of nie"
 
-#: ctk/deprecated/ctktrayicon-x11.c:136 ctk/ctkcellrenderertext.c:334
+#: ctk/ctktrayicon-x11.c:136 ctk/ctkcellrenderertext.c:334
 #: ctk/ctktexttag.c:276
 msgid "Foreground color"
 msgstr "Voorgrondkleur"
 
-#: ctk/deprecated/ctktrayicon-x11.c:137
+#: ctk/ctktrayicon-x11.c:137
 #, fuzzy
 msgid "Foreground color for symbolic icons"
 msgstr "Voorgrondkleur as 'n string"
 
-#: ctk/deprecated/ctktrayicon-x11.c:144
+#: ctk/ctktrayicon-x11.c:144
 #, fuzzy
 msgid "Error color"
 msgstr "Wyserkleur"
 
-#: ctk/deprecated/ctktrayicon-x11.c:145
+#: ctk/ctktrayicon-x11.c:145
 msgid "Error color for symbolic icons"
 msgstr ""
 
-#: ctk/deprecated/ctktrayicon-x11.c:152
+#: ctk/ctktrayicon-x11.c:152
 #, fuzzy
 msgid "Warning color"
 msgstr "Agtergrondkleur"
 
-#: ctk/deprecated/ctktrayicon-x11.c:153
+#: ctk/ctktrayicon-x11.c:153
 msgid "Warning color for symbolic icons"
 msgstr ""
 
-#: ctk/deprecated/ctktrayicon-x11.c:160
+#: ctk/ctktrayicon-x11.c:160
 #, fuzzy
 msgid "Success color"
 msgstr "Wyserkleur"
 
-#: ctk/deprecated/ctktrayicon-x11.c:161
+#: ctk/ctktrayicon-x11.c:161
 msgid "Success color for symbolic icons"
 msgstr ""
 
-#: ctk/deprecated/ctktrayicon-x11.c:168 ctk/ctkbox.c:345
+#: ctk/ctktrayicon-x11.c:168 ctk/ctkbox.c:345
 msgid "Padding"
 msgstr "Opvulling"
 
-#: ctk/deprecated/ctktrayicon-x11.c:169
+#: ctk/ctktrayicon-x11.c:169
 #, fuzzy
 msgid "Padding that should be put around icons in the tray"
 msgstr "Of die grens vertoon moet word of nie"
 
-#: ctk/deprecated/ctktrayicon-x11.c:178 ctk/ctkstackswitcher.c:686
+#: ctk/ctktrayicon-x11.c:178 ctk/ctkstackswitcher.c:686
 #, fuzzy
 #| msgid "Icon Sizes"
 msgid "Icon Size"
 msgstr "Ikongroottes"
 
-#: ctk/deprecated/ctktrayicon-x11.c:179
+#: ctk/ctktrayicon-x11.c:179
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr ""
 

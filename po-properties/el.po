@@ -911,12 +911,12 @@ msgstr "Ενσωματωμένο"
 msgid "Whether the status icon is embedded"
 msgstr "Αν το εικονίδιο κατάστασης θα είναι ενσωματωμένο"
 
-#: ctk/deprecated/ctkstatusicon.c:346 ctk/deprecated/ctktrayicon-x11.c:127
+#: ctk/deprecated/ctkstatusicon.c:346 ctk/ctktrayicon-x11.c:127
 #: ctk/ctkgesturepan.c:238 ctk/ctkorientable.c:61
 msgid "Orientation"
 msgstr "Προσανατολισμός"
 
-#: ctk/deprecated/ctkstatusicon.c:347 ctk/deprecated/ctktrayicon-x11.c:128
+#: ctk/deprecated/ctkstatusicon.c:347 ctk/ctktrayicon-x11.c:128
 msgid "The orientation of the tray"
 msgstr "Ο προσανατολισμός του συρταριού"
 
@@ -1109,52 +1109,52 @@ msgstr "Ενεργό"
 msgid "Whether the toggle action should be active"
 msgstr "Αν η ενέργεια εναλλαγής θα είναι ενεργή ή όχι"
 
-#: ctk/deprecated/ctktrayicon-x11.c:136 ctk/ctkcellrenderertext.c:334
+#: ctk/ctktrayicon-x11.c:136 ctk/ctkcellrenderertext.c:334
 #: ctk/ctktexttag.c:276
 msgid "Foreground color"
 msgstr "Χρώμα προσκηνίου"
 
-#: ctk/deprecated/ctktrayicon-x11.c:137
+#: ctk/ctktrayicon-x11.c:137
 msgid "Foreground color for symbolic icons"
 msgstr "Χρώμα προσκηνίου για συμβολικά εικονίδια"
 
-#: ctk/deprecated/ctktrayicon-x11.c:144
+#: ctk/ctktrayicon-x11.c:144
 msgid "Error color"
 msgstr "Χρώμα σφάλματος"
 
-#: ctk/deprecated/ctktrayicon-x11.c:145
+#: ctk/ctktrayicon-x11.c:145
 msgid "Error color for symbolic icons"
 msgstr "Χρώμα σφάλματος για συμβολικά εικονίδια"
 
-#: ctk/deprecated/ctktrayicon-x11.c:152
+#: ctk/ctktrayicon-x11.c:152
 msgid "Warning color"
 msgstr "Χρώμα προειδοποίησης"
 
-#: ctk/deprecated/ctktrayicon-x11.c:153
+#: ctk/ctktrayicon-x11.c:153
 msgid "Warning color for symbolic icons"
 msgstr "Χρώμα προειδοποίησης για συμβολικά εικονίδια"
 
-#: ctk/deprecated/ctktrayicon-x11.c:160
+#: ctk/ctktrayicon-x11.c:160
 msgid "Success color"
 msgstr "Χρώμα επιτυχίας"
 
-#: ctk/deprecated/ctktrayicon-x11.c:161
+#: ctk/ctktrayicon-x11.c:161
 msgid "Success color for symbolic icons"
 msgstr "Χρώμα επιτυχίας για συμβολικά εικονίδια"
 
-#: ctk/deprecated/ctktrayicon-x11.c:168 ctk/ctkbox.c:350
+#: ctk/ctktrayicon-x11.c:168 ctk/ctkbox.c:350
 msgid "Padding"
 msgstr "Γέμισμα"
 
-#: ctk/deprecated/ctktrayicon-x11.c:169
+#: ctk/ctktrayicon-x11.c:169
 msgid "Padding that should be put around icons in the tray"
 msgstr "Περιθώριο που θα πρέπει να τοποθετηθεί γύρω από τα εικονίδια στο tray"
 
-#: ctk/deprecated/ctktrayicon-x11.c:178 ctk/ctkstackswitcher.c:686
+#: ctk/ctktrayicon-x11.c:178 ctk/ctkstackswitcher.c:686
 msgid "Icon Size"
 msgstr "Μέγεθος εικονιδίου"
 
-#: ctk/deprecated/ctktrayicon-x11.c:179
+#: ctk/ctktrayicon-x11.c:179
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr "Το μέγεθος σε pixels για τα εικονίδια, ή μηδενικό"
 

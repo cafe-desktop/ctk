@@ -793,13 +793,13 @@ msgid "Whether the status icon is embedded"
 msgstr "狀態圖示是否為內嵌"
 
 #: ../ctk/deprecated/ctkstatusicon.c:336
-#: ../ctk/deprecated/ctktrayicon-x11.c:126 ../ctk/ctkgesturepan.c:237
+#: ../ctk/ctktrayicon-x11.c:126 ../ctk/ctkgesturepan.c:237
 #: ../ctk/ctkorientable.c:61
 msgid "Orientation"
 msgstr "方向"
 
 #: ../ctk/deprecated/ctkstatusicon.c:337
-#: ../ctk/deprecated/ctktrayicon-x11.c:127
+#: ../ctk/ctktrayicon-x11.c:127
 msgid "The orientation of the tray"
 msgstr "系統匣的方向"
 
@@ -976,52 +976,52 @@ msgstr "使用中"
 msgid "Whether the toggle action should be active"
 msgstr "該切換動作是否應該執行"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:135 ../ctk/ctkcellrenderertext.c:341
+#: ../ctk/ctktrayicon-x11.c:135 ../ctk/ctkcellrenderertext.c:341
 #: ../ctk/ctktexttag.c:265
 msgid "Foreground color"
 msgstr "前景顏色"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:136
+#: ../ctk/ctktrayicon-x11.c:136
 msgid "Foreground color for symbolic icons"
 msgstr "符號圖示的前景顏色"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:143
+#: ../ctk/ctktrayicon-x11.c:143
 msgid "Error color"
 msgstr "錯誤顏色"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:144
+#: ../ctk/ctktrayicon-x11.c:144
 msgid "Error color for symbolic icons"
 msgstr "符號圖示的錯誤顏色"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:151
+#: ../ctk/ctktrayicon-x11.c:151
 msgid "Warning color"
 msgstr "警告顏色"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:152
+#: ../ctk/ctktrayicon-x11.c:152
 msgid "Warning color for symbolic icons"
 msgstr "符號圖示的警告顏色"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:159
+#: ../ctk/ctktrayicon-x11.c:159
 msgid "Success color"
 msgstr "成功顏色"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:160
+#: ../ctk/ctktrayicon-x11.c:160
 msgid "Success color for symbolic icons"
 msgstr "符號圖示的成功顏色"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:167 ../ctk/ctkbox.c:322
+#: ../ctk/ctktrayicon-x11.c:167 ../ctk/ctkbox.c:322
 msgid "Padding"
 msgstr "留空"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:168
+#: ../ctk/ctktrayicon-x11.c:168
 msgid "Padding that should be put around icons in the tray"
 msgstr "系統匣中的圖示周圍是否留空"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:177
+#: ../ctk/ctktrayicon-x11.c:177
 msgid "Icon Size"
 msgstr "圖示大小"
 
-#: ../ctk/deprecated/ctktrayicon-x11.c:178
+#: ../ctk/ctktrayicon-x11.c:178
 msgid "The pixel size that icons should be forced to, or zero"
 msgstr "圖示要強制使用的像素大小，或使用零"
 
