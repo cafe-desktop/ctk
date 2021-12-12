@@ -1,3 +1,30 @@
+Overview of Changes in CTK+ 3.25.1
+===================================
+
+ctkrecentmanager: Stop using linked lists
+
+avoid deprecated GBookmarkFile functions
+
+don't make deprecated: CtkStock, CtkIconFactory, CtkStyle, ctkrc, CtkAction,
+                       CtkActionGroup, CtkToggleAction, CtkRadioAction,
+                       CtkImageMenuItem, CtkTearoffMenuItem, CtkActivatable,
+                       CtkUIManager, CtkRecentAction,
+                       CtkStatusIcon, ctktrayicon, ctktrayicon-x11
+
+CtkMenu: don't make deprecated tearoff functions
+         and ctk_menu_set/get_title
+
+CtkImage: don't deprecate CtkStock functions
+
+ci: little improvements
+
+avoid deprecated: GTimeVal, g_get_current_time,
+                  g_memdup, g_pattern_match_string, GParameter,
+                  g_binding_get_source/target, g_type_class_add_private,
+                  pango_fc_font_lock/unclock_face,
+                  AC_TRY_COMPILE, AC_TRY_LINK, AC_TRY_LINK_FUNC, AC_HELP_STRING
+
+
 Overview of Changes in CTK+ 3.25.0
 ===================================
 
