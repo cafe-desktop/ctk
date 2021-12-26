@@ -80,8 +80,8 @@
 /* Define to 1 if you have the `lstat' function. */
 #mesondefine HAVE_LSTAT
 
-/* Define to 1 if you have the `mallinfo' function. */
-#mesondefine HAVE_MALLINFO
+/* Define to 1 if you have the `mallinfo2' function. */
+#mesondefine HAVE_MALLINFO2
 
 /* Define to 1 if you have the <memory.h> header file. */
 #mesondefine HAVE_MEMORY_H

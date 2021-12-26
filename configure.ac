@@ -836,7 +836,7 @@ saved_ldflags="$LDFLAGS"
 # Checks for library functions.
 AC_FUNC_MMAP
 
-AC_CHECK_FUNCS(mallinfo)
+AC_CHECK_FUNCS(mallinfo2)
 AC_CHECK_FUNCS(getresuid)
 AC_TYPE_UID_T
 

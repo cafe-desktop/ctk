@@ -19,7 +19,7 @@
 
 #include <string.h>
 
-#ifdef HAVE_MALLINFO
+#ifdef HAVE_MALLINFO2
 #include <malloc.h>
 #endif
 
@@ -213,7 +213,7 @@ test_run (gchar        *title,
   GTimer *timer;
   gdouble elapsed;
   int memused;
-#ifdef HAVE_MALLINFO
+#ifdef HAVE_MALLINFO2
   int uordblks_before = 0;
 #endif
 
@@ -229,9 +229,9 @@ test_run (gchar        *title,
       for (d = 0; d < repeats; d++)
 	{
 	  (*clear)(store);
-#ifdef HAVE_MALLINFO
+#ifdef HAVE_MALLINFO2
 	  /* Peculiar location of this, btw.  -- MW.  */
-	  uordblks_before = mallinfo().uordblks;
+	  uordblks_before = mallinfo2().uordblks;
 #endif
 	  g_timer_reset (timer);
 	  g_timer_start (timer);
@@ -242,8 +242,8 @@ test_run (gchar        *title,
 	}
       
       elapsed = elapsed * 1000 / repeats;
-#ifdef HAVE_MALLINFO
-      memused = (mallinfo().uordblks - uordblks_before) / 1024;
+#ifdef HAVE_MALLINFO2
+      memused = (mallinfo2().uordblks - uordblks_before) / 1024;
 #else
       memused = 0;
 #endif
