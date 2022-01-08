@@ -95,16 +95,3 @@ build_scripts:
 
 after_scripts:
   - if [ -f "gen-index" ]; then ./gen-index -l 20 -i https://github.com/cafe-desktop/ctk/raw/master/demos/ctk-demo/data/16x16/ctk3-demo.png; fi
-
-releases:
-  draft: false
-  prerelease: false
-  checksum: true
-  file_glob: true
-  files: grapa-*.tar.xz
-  github_release:
-    tags: true
-    overwrite: true
-    base_version: 1.20.0
-    notify_servers:
-      - https://release.cafe-desktop.org/release
