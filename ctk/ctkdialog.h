@@ -161,6 +161,12 @@ CtkWidget* ctk_dialog_add_button        (CtkDialog   *dialog,
                                          const gchar *button_text,
                                          gint         response_id);
 CDK_AVAILABLE_IN_ALL
+CtkWidget *
+ctk_dialog_add_button_with_icon_name (CtkDialog   *dialog,
+                                      const gchar *button_text,
+                                      const gchar *icon_name,
+                                      gint         response_id);
+CDK_AVAILABLE_IN_ALL
 void       ctk_dialog_add_buttons       (CtkDialog   *dialog,
                                          const gchar *first_button_text,
                                          ...) G_GNUC_NULL_TERMINATED;

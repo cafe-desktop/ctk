@@ -1113,6 +1113,46 @@ ctk_dialog_add_buttons_valist (CtkDialog      *dialog,
 }
 
 /**
+ * ctk_dialog_add_button_with_icon_name:
+ * @dialog: a #CtkDialog
+ * @button_text: text of button
+ * @icon_name: icon name of button
+ * @response_id: response ID for the button
+ *
+ * Adds a button with the given text beside icon and sets things up so that
+ * clicking the button will emit the #CtkDialog::response signal with
+ * the given @response_id. The button is appended to the end of the
+ * dialog’s action area. The button widget is returned.
+ *
+ * Returns: (transfer none): the #CtkButton widget that was added
+ *
+ * Since: 3.25.2
+ **/
+CtkWidget *
+ctk_dialog_add_button_with_icon_name (CtkDialog   *dialog,
+                                      const gchar *button_text,
+                                      const gchar *icon_name,
+                                      gint         response_id)
+{
+  CtkWidget *button;
+
+  g_return_val_if_fail (CTK_IS_DIALOG (dialog), NULL);
+  g_return_val_if_fail (button_text != NULL, NULL);
+  g_return_val_if_fail (icon_name != NULL, NULL);
+
+  button = ctk_button_new_with_mnemonic (button_text);
+  ctk_button_set_image (CTK_BUTTON (button), ctk_image_new_from_icon_name (icon_name, CTK_ICON_SIZE_BUTTON));
+
+  ctk_button_set_use_underline (CTK_BUTTON (button), TRUE);
+  ctk_style_context_add_class (ctk_widget_get_style_context (button), "text-button");
+  ctk_widget_set_can_default (button, TRUE);
+  ctk_widget_show (button);
+  ctk_dialog_add_action_widget (CTK_DIALOG (dialog), button, response_id);
+
+  return button;
+}
+
+/**
  * ctk_dialog_add_buttons:
  * @dialog: a #CtkDialog
  * @first_button_text: button text
