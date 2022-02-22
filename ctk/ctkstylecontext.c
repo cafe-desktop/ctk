@@ -3137,6 +3137,7 @@ ctk_gradient_resolve_for_context (CtkGradient     *gradient,
 
 /**
  * CtkStyleContextPrintFlags:
+ * @CTK_STYLE_CONTEXT_PRINT_NONE: Default value.
  * @CTK_STYLE_CONTEXT_PRINT_RECURSE: Print the entire tree of
  *     CSS nodes starting at the style context's node
  * @CTK_STYLE_CONTEXT_PRINT_SHOW_STYLE: Show the values of the
