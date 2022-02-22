@@ -214,7 +214,7 @@ cdk_cairo_get_drawing_context (cairo_t *cr)
 
 /**
  * cdk_drawing_context_get_cairo_context:
- * @context:
+ * @context: a #CdkDrawingContext
  *
  * Retrieves a Cairo context to be used to draw on the #CdkWindow
  * that created the #CdkDrawingContext.
