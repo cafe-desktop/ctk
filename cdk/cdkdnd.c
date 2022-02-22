@@ -436,7 +436,7 @@ cdk_drag_status (CdkDragContext *context,
  * This function does not need to be called in managed drag and drop
  * operations. See cdk_drag_context_manage_dnd() for more information.
  *
- * Returns:
+ * Returns: %TRUE if the update of drag context was successful.
  */
 gboolean
 cdk_drag_motion (CdkDragContext *context,
