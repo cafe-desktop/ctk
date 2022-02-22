@@ -32,6 +32,11 @@ G_BEGIN_DECLS
 CDK_AVAILABLE_IN_3_20
 G_DECLARE_DERIVABLE_TYPE (CtkNativeDialog, ctk_native_dialog, CTK, NATIVE_DIALOG, GObject)
 
+/**
+ * CtkNativeDialogClass:
+ * @parent_class: The parent class.
+ * @response: Signal emitted when an action widget is activated.
+ */
 struct _CtkNativeDialogClass
 {
   GObjectClass parent_class;
