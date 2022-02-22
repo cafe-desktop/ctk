@@ -157,6 +157,7 @@ struct _CtkTextAppearance
  * @editable: Can edit this text.
  * @no_fallback: Whether to disable font fallback.
  * @letter_spacing: Extra space to insert between graphemes, in Pango units
+ * @font_features: OpenType font features, as a string.
  *
  * Using #CtkTextAttributes directly should rarely be necessary.
  * It’s primarily useful with ctk_text_iter_get_attributes().
