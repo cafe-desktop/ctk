@@ -114,6 +114,7 @@ struct _CtkEntry
  *   allocated width and requested height, minus space for margins and borders,
  *   and taking baseline and text height into account. This virtual function
  *   must be non-%NULL.
+ * @insert_emoji: The Emoji chooser.
  *
  * Class structure for #CtkEntry. All virtual functions have a default
  * implementation. Derived classes may set the virtual function pointers for the
