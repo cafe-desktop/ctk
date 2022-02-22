@@ -836,6 +836,7 @@ struct _CdkEventTouch
  *   screen.
  * @delta_x: the x coordinate of the scroll delta
  * @delta_y: the y coordinate of the scroll delta
+ * @is_stop: %TRUE if the event is a scroll stop event
  *
  * Generated from button presses for the buttons 4 to 7. Wheel mice are
  * usually configured to generate button press events for buttons 4 and 5

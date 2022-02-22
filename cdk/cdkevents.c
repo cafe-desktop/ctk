@@ -611,7 +611,7 @@ cdk_event_set_pointer_emulated (CdkEvent *event,
 
 /**
  * cdk_event_get_pointer_emulated:
- * #event: a #CdkEvent
+ * @event: a #CdkEvent
  *
  * Returns whether this event is an 'emulated' pointer event (typically
  * from a touch event), as opposed to a real one.
