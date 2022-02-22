@@ -71,6 +71,10 @@ typedef struct _CdkPoint              CdkPoint;
 
 /**
  * CdkRectangle:
+ * @x: X coordinate of the left side of the rectangle
+ * @y: Y coordinate of the the top side of the rectangle
+ * @width: width of the rectangle
+ * @height: height of the rectangle
  *
  * Defines the position and size of a rectangle. It is identical to
  * #cairo_rectangle_int_t.
