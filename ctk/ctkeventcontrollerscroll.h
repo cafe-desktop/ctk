@@ -69,11 +69,11 @@ CDK_AVAILABLE_IN_3_24
 CtkEventController *ctk_event_controller_scroll_new (CtkWidget                     *widget,
                                                      CtkEventControllerScrollFlags  flags);
 CDK_AVAILABLE_IN_3_24
-void                ctk_event_controller_scroll_set_flags (CtkEventControllerScroll      *controller,
+void                ctk_event_controller_scroll_set_flags (CtkEventControllerScroll      *scroll,
                                                            CtkEventControllerScrollFlags  flags);
 CDK_AVAILABLE_IN_3_24
 CtkEventControllerScrollFlags
-                    ctk_event_controller_scroll_get_flags (CtkEventControllerScroll      *controller);
+                    ctk_event_controller_scroll_get_flags (CtkEventControllerScroll      *scroll);
 
 G_END_DECLS
 
