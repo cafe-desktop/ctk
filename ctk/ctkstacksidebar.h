@@ -47,9 +47,15 @@ struct _CtkStackSidebar
   CtkBin parent;
 };
 
+/**
+ * CtkStackSidebarClass:
+ * @parent_class: The parent class.
+ */
 struct _CtkStackSidebarClass
 {
   CtkBinClass parent_class;
+
+  /*< private >*/
 
   /* Padding for future expansion */
   void (*_ctk_reserved1) (void);
