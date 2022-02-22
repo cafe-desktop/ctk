@@ -158,6 +158,7 @@ struct _CtkTextView
  *   coordinates, which makes them unnecessarily hard to use. Since: 3.14
  * @extend_selection: The class handler for the #CtkTextView::extend-selection
  *   signal. Since 3.16
+ * @insert_emoji: The Emoji chooser.
  */
 struct _CtkTextViewClass
 {
