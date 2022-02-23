@@ -47,13 +47,10 @@ typedef struct _CtkRcStyleClass CtkRcStyleClass;
 
 /**
  * CtkRcFlags:
- * @CTK_RC_FG:
- * @CTK_RC_BG:
- * @CTK_RC_TEXT:
- * @CTK_RC_BASE:
  */
 typedef enum
 {
+  /*< private >*/
   CTK_RC_FG             = 1 << 0,
   CTK_RC_BG             = 1 << 1,
   CTK_RC_TEXT           = 1 << 2,
@@ -217,53 +214,13 @@ gchar*      ctk_rc_get_im_module_file  (void);
 
 /**
  * CtkRcTokenType:
- * @CTK_RC_TOKEN_INVALID:
- * @CTK_RC_TOKEN_INCLUDE:
- * @CTK_RC_TOKEN_NORMAL:
- * @CTK_RC_TOKEN_ACTIVE:
- * @CTK_RC_TOKEN_PRELIGHT:
- * @CTK_RC_TOKEN_SELECTED:
- * @CTK_RC_TOKEN_INSENSITIVE:
- * @CTK_RC_TOKEN_FG:
- * @CTK_RC_TOKEN_BG:
- * @CTK_RC_TOKEN_TEXT:
- * @CTK_RC_TOKEN_BASE:
- * @CTK_RC_TOKEN_XTHICKNESS:
- * @CTK_RC_TOKEN_YTHICKNESS:
- * @CTK_RC_TOKEN_FONT:
- * @CTK_RC_TOKEN_FONTSET:
- * @CTK_RC_TOKEN_FONT_NAME:
- * @CTK_RC_TOKEN_BG_PIXMAP:
- * @CTK_RC_TOKEN_PIXMAP_PATH:
- * @CTK_RC_TOKEN_STYLE:
- * @CTK_RC_TOKEN_BINDING:
- * @CTK_RC_TOKEN_BIND:
- * @CTK_RC_TOKEN_WIDGET:
- * @CTK_RC_TOKEN_WIDGET_CLASS:
- * @CTK_RC_TOKEN_CLASS:
- * @CTK_RC_TOKEN_LOWEST:
- * @CTK_RC_TOKEN_CTK:
- * @CTK_RC_TOKEN_APPLICATION:
- * @CTK_RC_TOKEN_THEME:
- * @CTK_RC_TOKEN_RC:
- * @CTK_RC_TOKEN_HIGHEST:
- * @CTK_RC_TOKEN_ENGINE:
- * @CTK_RC_TOKEN_MODULE_PATH:
- * @CTK_RC_TOKEN_IM_MODULE_PATH:
- * @CTK_RC_TOKEN_IM_MODULE_FILE:
- * @CTK_RC_TOKEN_STOCK:
- * @CTK_RC_TOKEN_LTR:
- * @CTK_RC_TOKEN_RTL:
- * @CTK_RC_TOKEN_COLOR:
- * @CTK_RC_TOKEN_UNBIND:
- * @CTK_RC_TOKEN_LAST:
- *
  * The #CtkRcTokenType enumeration represents the tokens
  * in the RC file. It is exposed so that theme engines
  * can reuse these tokens when parsing the theme-engine
  * specific portions of a RC file.
  */
 typedef enum {
+  /*< private >*/
   CTK_RC_TOKEN_INVALID = G_TOKEN_LAST,
   CTK_RC_TOKEN_INCLUDE,
   CTK_RC_TOKEN_NORMAL,
@@ -309,18 +266,12 @@ typedef enum {
 
 /**
  * CtkPathPriorityType:
- * @CTK_PATH_PRIO_LOWEST:
- * @CTK_PATH_PRIO_CTK:
- * @CTK_PATH_PRIO_APPLICATION:
- * @CTK_PATH_PRIO_THEME:
- * @CTK_PATH_PRIO_RC:
- * @CTK_PATH_PRIO_HIGHEST:
- *
  * Priorities for path lookups.
  * See also ctk_binding_set_add_path().
  */
 typedef enum
 {
+  /*< private >*/
   CTK_PATH_PRIO_LOWEST      = 0,
   CTK_PATH_PRIO_CTK         = 4,
   CTK_PATH_PRIO_APPLICATION = 8,
@@ -332,15 +283,12 @@ typedef enum
 
 /**
  * CtkPathType:
- * @CTK_PATH_WIDGET:
- * @CTK_PATH_WIDGET_CLASS:
- * @CTK_PATH_CLASS:
- *
  * Widget path types.
  * See also ctk_binding_set_add_path().
  */
 typedef enum
 {
+  /*< private >*/
   CTK_PATH_WIDGET,
   CTK_PATH_WIDGET_CLASS,
   CTK_PATH_CLASS
