@@ -50,10 +50,16 @@ typedef enum
 typedef struct _CailTextUtil		CailTextUtil;
 typedef struct _CailTextUtilClass	CailTextUtilClass;
 
+/**
+ * CailTextUtil:
+ * @buffer: The CtkTextBuffer which identifies the text.
+ */
 struct _CailTextUtil
 {
+  /*< private >*/
   GObject parent;
 
+  /*< public >*/
   CtkTextBuffer *buffer;
 };
 
