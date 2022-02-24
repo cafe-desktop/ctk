@@ -1051,7 +1051,6 @@ _cdk_x11_display_create_window_impl (CdkDisplay    *display,
 
   XSetWindowAttributes xattributes;
   long xattributes_mask;
-  XClassHint *class_hint;
 
   unsigned int class;
   const char *title;
@@ -1158,6 +1157,8 @@ _cdk_x11_display_create_window_impl (CdkDisplay    *display,
 
       if (attributes_mask & CDK_WA_WMCLASS)
         {
+          XClassHint *class_hint;
+
           class_hint = XAllocClassHint ();
           class_hint->res_name = attributes->wmclass_name;
           class_hint->res_class = attributes->wmclass_class;
@@ -1652,9 +1653,6 @@ set_initial_hints (CdkWindow *window)
 static void
 cdk_window_x11_show (CdkWindow *window, gboolean already_mapped)
 {
-  CdkDisplay *display;
-  CdkX11Display *display_x11;
-  CdkToplevelX11 *toplevel;
   CdkWindowImplX11 *impl = CDK_WINDOW_IMPL_X11 (window->impl);
   Display *xdisplay = CDK_WINDOW_XDISPLAY (window);
   Window xwindow = CDK_WINDOW_XID (window);
@@ -1665,6 +1663,10 @@ cdk_window_x11_show (CdkWindow *window, gboolean already_mapped)
       
   if (WINDOW_IS_TOPLEVEL (window))
     {
+      CdkDisplay *display;
+      CdkX11Display *display_x11;
+      CdkToplevelX11 *toplevel;
+
       display = cdk_window_get_display (window);
       display_x11 = CDK_X11_DISPLAY (display);
       toplevel = _cdk_x11_window_get_toplevel (window);
@@ -1941,11 +1943,12 @@ cdk_window_x11_move_resize (CdkWindow *window,
 static void
 set_scale_recursive (CdkWindow *window, int scale)
 {
-  CdkWindow *child;
   GList *l;
 
   for (l = window->children; l; l = l->next)
     {
+      CdkWindow *child;
+
       child = l->data;
 
       if (child->impl != window->impl)
@@ -3151,7 +3154,6 @@ cdk_window_x11_get_geometry (CdkWindow *window,
                              gint      *width,
                              gint      *height)
 {
-  CdkWindowImplX11 *impl;
   Window root;
   gint tx;
   gint ty;
@@ -3162,6 +3164,8 @@ cdk_window_x11_get_geometry (CdkWindow *window,
   
   if (!CDK_WINDOW_DESTROYED (window))
     {
+      CdkWindowImplX11 *impl;
+
       impl = CDK_WINDOW_IMPL_X11 (window->impl);
 
       XGetGeometry (CDK_WINDOW_XDISPLAY (window),
@@ -3420,11 +3424,10 @@ static void
 cdk_window_x11_set_events (CdkWindow    *window,
                            CdkEventMask  event_mask)
 {
-  long xevent_mask = 0;
-  
   if (!CDK_WINDOW_DESTROYED (window))
     {
       CdkX11Display *display_x11;
+      long xevent_mask = 0;
 
       if (CDK_WINDOW_XID (window) != CDK_WINDOW_XROOTWIN (window))
         xevent_mask = StructureNotifyMask | PropertyChangeMask;
@@ -5208,7 +5211,6 @@ gboolean
 _cdk_x11_moveresize_configure_done (CdkDisplay *display,
                                     CdkWindow  *window)
 {
-  XEvent *tmp_event;
   MoveResizeData *mv_resize = get_move_resize_data (display, FALSE);
 
   if (!mv_resize || window != mv_resize->moveresize_window)
@@ -5216,6 +5218,8 @@ _cdk_x11_moveresize_configure_done (CdkDisplay *display,
 
   if (mv_resize->moveresize_pending_event)
     {
+      XEvent *tmp_event;
+
       tmp_event = mv_resize->moveresize_pending_event;
       mv_resize->moveresize_pending_event = NULL;
       _cdk_x11_moveresize_handle_event (tmp_event);

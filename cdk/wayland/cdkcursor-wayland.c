@@ -446,7 +446,6 @@ _cdk_wayland_display_get_cursor_for_surface (CdkDisplay *display,
   CdkWaylandCursor *cursor;
   CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (display);
   struct wl_buffer *buffer;
-  cairo_t *cr;
 
   cursor = g_object_new (CDK_TYPE_WAYLAND_CURSOR,
 			 "cursor-type", CDK_CURSOR_IS_PIXMAP,
@@ -483,6 +482,8 @@ _cdk_wayland_display_get_cursor_for_surface (CdkDisplay *display,
 
   if (surface)
     {
+      cairo_t *cr;
+
       cr = cairo_create (cursor->surface.cairo_surface);
       cairo_set_source_surface (cr, surface, 0, 0);
       cairo_paint (cr);

@@ -673,11 +673,12 @@ sanitize_utf8 (const gchar *src,
       else
 	{
 	  gunichar ch = g_utf8_get_char (p);
-	  char buf[7];
 	  gint buflen;
 
 	  if (!((ch < 0x20 && ch != '\t' && ch != '\n') || (ch >= 0x7f && ch < 0xa0)))
 	    {
+	      char buf[7];
+
 	      buflen = g_unichar_to_utf8 (ch, buf);
 	      g_string_append_len (result, buf, buflen);
 	    }

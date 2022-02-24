@@ -112,7 +112,6 @@ _cdk_broadway_display_get_selection_owner (CdkDisplay *display,
 					   CdkAtom     selection)
 {
   GSList *tmp_list;
-  OwnerInfo *info;
 
   if (cdk_display_is_closed (display))
     return NULL;
@@ -120,6 +119,8 @@ _cdk_broadway_display_get_selection_owner (CdkDisplay *display,
   tmp_list = owner_list;
   while (tmp_list)
     {
+      OwnerInfo *info;
+
       info = tmp_list->data;
       if (info->selection == selection)
 	return info->owner;

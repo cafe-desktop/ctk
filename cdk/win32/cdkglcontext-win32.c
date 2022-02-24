@@ -686,13 +686,13 @@ _ensure_legacy_gl_context (HDC           hdc,
                            HGLRC         hglrc_legacy,
                            CdkGLContext *share)
 {
-  CdkWin32GLContext *context_win32;
-
   if (!wglMakeCurrent (hdc, hglrc_legacy))
     return FALSE;
 
   if (share != NULL)
     {
+      CdkWin32GLContext *context_win32;
+
       context_win32 = CDK_WIN32_GL_CONTEXT (share);
 
       return wglShareLists (hglrc_legacy, context_win32->hglrc);

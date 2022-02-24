@@ -409,16 +409,16 @@ read_settings (CdkX11Screen *x11_screen,
   unsigned long n_items;
   unsigned long bytes_after;
   unsigned char *data;
-  int result;
 
   GHashTable *old_list = x11_screen->xsettings;
   GValue value = G_VALUE_INIT;
-  GValue *setting, *copy;
 
   x11_screen->xsettings = NULL;
 
   if (x11_screen->xsettings_manager_window)
     {
+      int result;
+
       CdkDisplay *display = x11_screen->display;
       Atom xsettings_atom = cdk_x11_get_xatom_by_name_for_display (display, "_XSETTINGS_SETTINGS");
 
@@ -451,9 +451,13 @@ read_settings (CdkX11Screen *x11_screen,
      setting if it exists and use that instead of Xft/DPI if it is set */
   if (x11_screen->xsettings && !x11_screen->fixed_window_scale)
     {
+      GValue *setting;
+
       setting = g_hash_table_lookup (x11_screen->xsettings, "cdk-unscaled-dpi");
       if (setting)
 	{
+	  GValue *copy;
+
 	  copy = g_new0 (GValue, 1);
 	  g_value_init (copy, G_VALUE_TYPE (setting));
 	  g_value_copy (setting, copy);
@@ -481,7 +485,6 @@ read_settings (CdkX11Screen *x11_screen,
       int dpi_int = 0;
       double dpi;
       const char *scale_env;
-      double scale;
 
       if (cdk_screen_get_setting (CDK_SCREEN (x11_screen),
                                   "ctk-xft-dpi", &value))
@@ -495,6 +498,8 @@ read_settings (CdkX11Screen *x11_screen,
       scale_env = g_getenv ("CDK_DPI_SCALE");
       if (scale_env)
         {
+          double scale;
+
           scale = g_ascii_strtod (scale_env, NULL);
           if (scale != 0 && dpi > 0)
             dpi *= scale;

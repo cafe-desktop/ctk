@@ -339,7 +339,6 @@ static void
 update_xft_settings (CdkScreen *screen)
 {
   CdkWaylandScreen *screen_wayland = CDK_WAYLAND_SCREEN (screen);
-  GSettings *settings;
   GsdFontAntialiasingMode antialiasing;
   GsdFontHinting hinting;
   GsdFontRgbaOrder order;
@@ -381,6 +380,7 @@ update_xft_settings (CdkScreen *screen)
   else
     {
       TranslationEntry *entry;
+      GSettings *settings;
 
       entry = find_translation_entry_by_schema ("org.gnome.desktop.interface", "font-antialiasing");
 
@@ -496,13 +496,14 @@ update_xft_settings (CdkScreen *screen)
     {
       double dpi = xft_settings.dpi / 1024.;
       const char *scale_env;
-      double scale;
 
       screen_wayland->xft_settings.dpi = xft_settings.dpi;
 
       scale_env = g_getenv ("CDK_DPI_SCALE");
       if (scale_env)
         {
+          double scale;
+
           scale = g_ascii_strtod (scale_env, NULL);
           if (scale != 0 && dpi > 0)
             dpi *= scale;

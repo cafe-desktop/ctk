@@ -534,7 +534,6 @@ ensure_seat_for_device_pair (CdkX11DeviceManagerXI2 *device_manager,
                              CdkDevice              *device1,
                              CdkDevice              *device2)
 {
-  CdkDevice *pointer, *keyboard;
   CdkDisplay *display;
   CdkSeat *seat;
 
@@ -543,6 +542,8 @@ ensure_seat_for_device_pair (CdkX11DeviceManagerXI2 *device_manager,
 
   if (!seat)
     {
+      CdkDevice *pointer, *keyboard;
+
       if (cdk_device_get_source (device1) == CDK_SOURCE_KEYBOARD)
         {
           keyboard = device1;
@@ -699,7 +700,7 @@ cdk_x11_device_manager_xi2_constructed (GObject *object)
   CdkScreen *screen;
   GHashTable *masters, *slaves;
   Display *xdisplay;
-  XIDeviceInfo *info, *dev;
+  XIDeviceInfo *info;
   int ndevices, i;
   XIEventMask event_mask;
   unsigned char mask[2] = { 0 };
@@ -720,6 +721,8 @@ cdk_x11_device_manager_xi2_constructed (GObject *object)
   /* Initialize devices list */
   for (i = 0; i < ndevices; i++)
     {
+      XIDeviceInfo *dev;
+
       dev = &info[i];
 
       if (!dev->enabled)
@@ -1109,11 +1112,12 @@ handle_property_change (CdkX11DeviceManagerXI2 *device_manager,
     {
       CdkDeviceTool *tool = NULL;
       guint serial_id = 0, tool_id = 0;
-      CdkSeat *seat;
 
       if (ev->what != XIPropertyDeleted &&
           device_get_tool_serial_and_id (device, &serial_id, &tool_id))
         {
+          CdkSeat *seat;
+
           seat = cdk_device_get_seat (device);
           tool = cdk_seat_get_tool (seat, serial_id, tool_id);
 

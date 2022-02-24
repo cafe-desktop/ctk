@@ -126,11 +126,12 @@ static void cdk_wayland_selection_handle_next_request (CdkWaylandSelection *wayl
 static void
 selection_buffer_notify (SelectionBuffer *buffer)
 {
-  CdkEvent *event;
   GList *l;
 
   for (l = buffer->requestors; l; l = l->next)
     {
+      CdkEvent *event;
+
       event = cdk_event_new (CDK_SELECTION_NOTIFY);
       event->selection.window = g_object_ref (l->data);
       event->selection.send_event = FALSE;
@@ -1585,7 +1586,7 @@ _cdk_wayland_display_convert_selection (CdkDisplay *display,
   else
     {
       GInputStream *stream = NULL;
-      int pipe_fd[2], natoms = 0;
+      int natoms = 0;
       CdkAtom *targets = NULL;
 
       if (target == cdk_atom_intern_static_string ("TARGETS"))
@@ -1601,6 +1602,8 @@ _cdk_wayland_display_convert_selection (CdkDisplay *display,
         }
       else
         {
+          int pipe_fd[2];
+
           g_unix_open_pipe (pipe_fd, FD_CLOEXEC, NULL);
 
           if (selection == atoms[ATOM_PRIMARY])

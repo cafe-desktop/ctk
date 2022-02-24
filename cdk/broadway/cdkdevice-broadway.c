@@ -155,7 +155,6 @@ cdk_broadway_device_query_state (CdkDevice        *device,
   CdkWindowImplBroadway *impl;
   CdkDisplay *display;
   CdkBroadwayDisplay *broadway_display;
-  CdkScreen *screen;
   gint32 device_root_x, device_root_y;
   guint32 mouse_toplevel_id;
   CdkWindow *mouse_toplevel;
@@ -172,6 +171,8 @@ cdk_broadway_device_query_state (CdkDevice        *device,
 
   if (root_window)
     {
+      CdkScreen *screen;
+
       screen = cdk_window_get_screen (window);
       *root_window = cdk_screen_get_root_window (screen);
     }
@@ -310,7 +311,6 @@ cdk_broadway_device_ungrab (CdkDevice *device,
 {
   CdkDisplay *display;
   CdkBroadwayDisplay *broadway_display;
-  CdkDeviceGrabInfo *grab;
   guint32 serial;
 
   display = cdk_device_get_display (device);
@@ -327,6 +327,8 @@ cdk_broadway_device_ungrab (CdkDevice *device,
 
       if (serial != 0)
 	{
+	  CdkDeviceGrabInfo *grab;
+
 	  grab = _cdk_display_get_last_device_grab (display, device);
 	  if (grab &&
 	      (time_ == CDK_CURRENT_TIME ||

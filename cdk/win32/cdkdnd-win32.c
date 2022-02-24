@@ -259,10 +259,11 @@ cdk_drag_context_find (gboolean   is_source,
 		       CdkWindow *dest)
 {
   GList *tmp_list = contexts;
-  CdkDragContext *context;
 
   while (tmp_list)
     {
+      CdkDragContext *context;
+
       context = (CdkDragContext *)tmp_list->data;
 
       if ((!context->is_source == !is_source) &&
@@ -2250,7 +2251,7 @@ cdk_win32_drag_context_find_window (CdkDragContext  *context,
 				    CdkDragProtocol *protocol)
 {
   CdkWin32DragContext *context_win32 = CDK_WIN32_DRAG_CONTEXT (context);
-  CdkWindow *dest_window, *dw;
+  CdkWindow *dest_window;
   find_window_enum_arg a;
 
   a.x = x_root * context_win32->scale - _cdk_offset_x;
@@ -2269,6 +2270,8 @@ cdk_win32_drag_context_find_window (CdkDragContext  *context,
     dest_window = NULL;
   else
     {
+      CdkWindow *dw;
+
       dw = cdk_win32_handle_table_lookup (a.result);
       if (dw)
         {
@@ -2483,7 +2486,6 @@ cdk_win32_drag_context_drag_status (CdkDragContext *context,
 		 CdkDragAction   action,
 		 guint32         time)
 {
-  CdkDragContext *src_context;
   CdkEvent *tmp_event;
 
   g_return_if_fail (context != NULL);
@@ -2500,6 +2502,8 @@ cdk_win32_drag_context_drag_status (CdkDragContext *context,
 
   if (!use_ole2_dnd)
     {
+      CdkDragContext *src_context;
+
       src_context = cdk_drag_context_find (TRUE,
 					   context->source_window,
 					   context->dest_window);
@@ -2553,7 +2557,6 @@ cdk_win32_drag_context_drop_finish (CdkDragContext *context,
 		 gboolean        success,
 		 guint32         time)
 {
-  CdkDragContext *src_context;
   CdkEvent *tmp_event;
   CdkWin32Selection *sel_win32 = _cdk_win32_selection_get ();
 
@@ -2563,6 +2566,8 @@ cdk_win32_drag_context_drop_finish (CdkDragContext *context,
 
   if (!use_ole2_dnd)
     {
+      CdkDragContext *src_context;
+
       src_context = cdk_drag_context_find (TRUE,
 					   context->source_window,
 					   context->dest_window);

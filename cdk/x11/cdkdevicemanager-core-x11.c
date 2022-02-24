@@ -722,11 +722,12 @@ static GList *
 cdk_x11_device_manager_core_list_devices (CdkDeviceManager *device_manager,
                                           CdkDeviceType     type)
 {
-  CdkX11DeviceManagerCore *device_manager_core;
   GList *devices = NULL;
 
   if (type == CDK_DEVICE_TYPE_MASTER)
     {
+      CdkX11DeviceManagerCore *device_manager_core;
+
       device_manager_core = (CdkX11DeviceManagerCore *) device_manager;
       devices = g_list_prepend (devices, device_manager_core->core_keyboard);
       devices = g_list_prepend (devices, device_manager_core->core_pointer);

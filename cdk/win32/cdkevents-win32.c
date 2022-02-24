@@ -368,13 +368,14 @@ low_level_keyboard_proc (int    code,
                          WPARAM wParam,
                          LPARAM lParam)
 {
-  KBDLLHOOKSTRUCT *kbdhook;
   HWND kbd_focus_owner;
-  CdkWindow *cdk_kbd_focus_owner;
   LRESULT chain;
 
   do
   {
+    KBDLLHOOKSTRUCT *kbdhook;
+    CdkWindow *cdk_kbd_focus_owner;
+
     if (code < 0)
       break;
 
@@ -1345,7 +1346,7 @@ synthesize_crossing_events (CdkDisplay                 *display,
 			    gboolean                    non_linear)
 {
   CdkWindow *c;
-  CdkWindow *win, *last, *next;
+  CdkWindow *win;
   GList *path, *list;
   CdkWindow *a;
   CdkWindow *b;
@@ -1379,6 +1380,8 @@ synthesize_crossing_events (CdkDisplay                 *display,
 
       if (c != a)
 	{
+	  CdkWindow *last;
+
 	  if (non_linear)
 	    notify_type = CDK_NOTIFY_NONLINEAR_VIRTUAL;
 	  else
@@ -1423,6 +1426,8 @@ synthesize_crossing_events (CdkDisplay                 *display,
 	  list = path;
 	  while (list)
 	    {
+	      CdkWindow *next;
+
 	      win = (CdkWindow *)list->data;
 	      list = list->next;
 	      if (list)
