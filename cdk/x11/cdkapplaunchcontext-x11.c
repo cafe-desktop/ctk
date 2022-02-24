@@ -36,7 +36,7 @@ static char *
 get_display_name (GFile     *file,
                   GFileInfo *info)
 {
-  char *name, *tmp;
+  char *name;
 
   name = NULL;
   if (info)
@@ -50,6 +50,8 @@ get_display_name (GFile     *file,
 
       if (!g_utf8_validate (name, -1, NULL))
         {
+          char *tmp;
+
           tmp = name;
           name =
             g_uri_escape_string (name, G_URI_RESERVED_CHARS_ALLOWED_IN_PATH, TRUE);
@@ -81,11 +83,12 @@ get_icon (GFile     *file,
 static char *
 gicon_to_string (GIcon *icon)
 {
-  GFile *file;
   const char *const *names;
 
   if (G_IS_FILE_ICON (icon))
     {
+      GFile *file;
+
       file = g_file_icon_get_file (G_FILE_ICON (icon));
       if (file)
         return g_file_get_path (file);
@@ -274,7 +277,6 @@ cdk_x11_app_launch_context_get_startup_notify_id (GAppLaunchContext *context,
   const char *application_id;
   char *screen_str;
   char *workspace_str;
-  GIcon *icon;
   guint32 timestamp;
   char *startup_id;
   GFileInfo *fileinfo;
@@ -320,6 +322,8 @@ cdk_x11_app_launch_context_get_startup_notify_id (GAppLaunchContext *context,
     icon_name = g_strdup (ctx->icon_name);
   else
     {
+      GIcon *icon;
+
       icon = NULL;
 
       if (ctx->icon != NULL)
@@ -398,7 +402,6 @@ cdk_x11_app_launch_context_launch_failed (GAppLaunchContext *context,
   CdkAppLaunchContext *ctx;
   CdkScreen *screen;
   StartupTimeoutData *data;
-  StartupNotificationData *sn_data;
   GSList *l;
 
   ctx = CDK_APP_LAUNCH_CONTEXT (context);
@@ -414,6 +417,8 @@ cdk_x11_app_launch_context_launch_failed (GAppLaunchContext *context,
     {
       for (l = data->contexts; l != NULL; l = l->next)
         {
+          StartupNotificationData *sn_data;
+
           sn_data = l->data;
           if (strcmp (startup_notify_id, sn_data->startup_id) == 0)
             {

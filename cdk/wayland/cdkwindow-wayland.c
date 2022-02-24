@@ -987,7 +987,6 @@ cdk_window_impl_wayland_end_paint (CdkWindow *window)
 {
   CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   cairo_rectangle_int_t rect;
-  int i, n;
 
   if (!CDK_WINDOW_IS_MAPPED (window))
     return;
@@ -997,6 +996,8 @@ cdk_window_impl_wayland_end_paint (CdkWindow *window)
       !window->current_paint.use_gl &&
       !cairo_region_is_empty (window->current_paint.region))
     {
+      int i, n;
+
       cdk_wayland_window_attach_image (window);
 
       /* If there's a committed buffer pending, then track which
@@ -1544,7 +1545,6 @@ static void
 cdk_wayland_window_create_subsurface (CdkWindow *window)
 {
   CdkWindowImplWayland *impl, *parent_impl = NULL;
-  CdkWaylandDisplay *display_wayland;
 
   impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
@@ -1559,6 +1559,8 @@ cdk_wayland_window_create_subsurface (CdkWindow *window)
 
   if (parent_impl && parent_impl->display_server.wl_surface)
     {
+      CdkWaylandDisplay *display_wayland;
+
       display_wayland = CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
       impl->display_server.wl_subsurface =
         wl_subcompositor_get_subsurface (display_wayland->subcompositor,
@@ -2826,7 +2828,6 @@ cdk_wayland_window_create_xdg_popup (CdkWindow      *window,
   CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
   CdkWindowImplWayland *parent_impl = CDK_WINDOW_IMPL_WAYLAND (parent->impl);
   gpointer positioner;
-  CdkSeat *cdk_seat;
   guint32 serial;
 
   if (!impl->display_server.wl_surface)
@@ -2899,6 +2900,8 @@ cdk_wayland_window_create_xdg_popup (CdkWindow      *window,
 
   if (seat)
     {
+      CdkSeat *cdk_seat;
+
       cdk_seat = cdk_display_get_default_seat (CDK_DISPLAY (display));
       serial = _cdk_wayland_seat_get_last_implicit_grab_serial (cdk_seat, NULL);
 
@@ -4875,7 +4878,6 @@ cdk_wayland_window_get_egl_surface (CdkWindow *window,
 {
   CdkWaylandDisplay *display = CDK_WAYLAND_DISPLAY (cdk_window_get_display (window));
   CdkWindowImplWayland *impl;
-  struct wl_egl_window *egl_window;
 
   g_return_val_if_fail (CDK_IS_WAYLAND_WINDOW (window), NULL);
 
@@ -4883,6 +4885,8 @@ cdk_wayland_window_get_egl_surface (CdkWindow *window,
 
   if (impl->egl_surface == NULL)
     {
+      struct wl_egl_window *egl_window;
+
       egl_window = cdk_wayland_window_get_wl_egl_window (window);
 
       impl->egl_surface =

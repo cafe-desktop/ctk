@@ -279,7 +279,6 @@ cdk_seat_default_get_tool (CdkSeat *seat,
                            guint64  hw_id)
 {
   CdkSeatDefaultPrivate *priv;
-  CdkDeviceTool *tool;
   guint i;
 
   priv = cdk_seat_default_get_instance_private (CDK_SEAT_DEFAULT (seat));
@@ -289,6 +288,8 @@ cdk_seat_default_get_tool (CdkSeat *seat,
 
   for (i = 0; i < priv->tools->len; i++)
     {
+      CdkDeviceTool *tool;
+
       tool = g_ptr_array_index (priv->tools, i);
 
       if (tool->serial == serial && tool->hw_id == hw_id)

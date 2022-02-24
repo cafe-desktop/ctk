@@ -1085,7 +1085,7 @@ pixbuf_to_hbitmaps_alpha_winxp (GdkPixbuf *pixbuf,
    */
   HBITMAP hColorBitmap, hMaskBitmap;
   guchar *indata, *inrow;
-  guchar *colordata, *colorrow, *maskdata, *maskbyte;
+  guchar *colordata, *maskdata;
   gint width, height, size, i, i_offset, j, j_offset, rowstride;
   guint maskstride, mask_bit;
 
@@ -1124,6 +1124,8 @@ pixbuf_to_hbitmaps_alpha_winxp (GdkPixbuf *pixbuf,
 
   for (j = 0; j < height; j++)
     {
+      guchar *colorrow, *maskbyte;
+
       colorrow = colordata + 4*(j+j_offset)*size + 4*i_offset;
       maskbyte = maskdata + (j+j_offset)*maskstride + i_offset/8;
       mask_bit = (0x80 >> (i_offset % 8));
@@ -1163,7 +1165,7 @@ pixbuf_to_hbitmaps_normal (GdkPixbuf *pixbuf,
    */
   HBITMAP hColorBitmap, hMaskBitmap;
   guchar *indata, *inrow;
-  guchar *colordata, *colorrow, *maskdata, *maskbyte;
+  guchar *colordata, *maskdata;
   gint width, height, size, i, i_offset, j, j_offset, rowstride, nc, bmstride;
   gboolean has_alpha;
   guint maskstride, mask_bit;
@@ -1210,6 +1212,8 @@ pixbuf_to_hbitmaps_normal (GdkPixbuf *pixbuf,
 
   for (j = 0; j < height; j++)
     {
+      guchar *colorrow, *maskbyte;
+
       colorrow = colordata + (j+j_offset)*bmstride + 3*i_offset;
       maskbyte = maskdata + (j+j_offset)*maskstride + i_offset/8;
       mask_bit = (0x80 >> (i_offset % 8));

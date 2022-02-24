@@ -307,11 +307,12 @@ cdk_drag_context_find (CdkDisplay *display,
 {
   GList *tmp_list;
   CdkDragContext *context;
-  CdkX11DragContext *context_x11;
   Window context_dest_xid;
 
   for (tmp_list = contexts; tmp_list; tmp_list = tmp_list->next)
     {
+      CdkX11DragContext *context_x11;
+
       context = (CdkDragContext *)tmp_list->data;
       context_x11 = (CdkX11DragContext *)context;
 
@@ -584,13 +585,14 @@ cdk_window_cache_new (CdkScreen *screen)
   if (G_UNLIKELY (!CDK_X11_DISPLAY (CDK_X11_SCREEN (screen)->display)->trusted_client))
     {
       GList *toplevel_windows, *list;
-      CdkWindow *window;
-      CdkWindowImplX11 *impl;
       gint x, y, width, height;
 
       toplevel_windows = cdk_screen_get_toplevel_windows (screen);
       for (list = toplevel_windows; list; list = list->next)
         {
+          CdkWindow *window;
+          CdkWindowImplX11 *impl;
+
           window = CDK_WINDOW (list->data);
 	  impl = CDK_WINDOW_IMPL_X11 (window->impl);
           cdk_window_get_geometry (window, &x, &y, &width, &height);
@@ -1011,7 +1013,6 @@ xdnd_finished_filter (CdkXEvent *xev,
   XEvent *xevent = (XEvent *)xev;
   guint32 dest_window = xevent->xclient.data.l[0];
   CdkDragContext *context;
-  CdkX11DragContext *context_x11;
 
   if (!event->any.window ||
       cdk_window_get_window_type (event->any.window) == CDK_WINDOW_FOREIGN)
@@ -1025,6 +1026,8 @@ xdnd_finished_filter (CdkXEvent *xev,
 
   if (context)
     {
+      CdkX11DragContext *context_x11;
+
       context_x11 = CDK_X11_DRAG_CONTEXT (context);
       if (context_x11->version == 5)
         context_x11->drop_failed = xevent->xclient.data.l[1] == 0;
@@ -1398,8 +1401,6 @@ xdnd_check_dest (CdkDisplay *display,
   int format;
   unsigned long nitems, after;
   guchar *data;
-  Atom *version;
-  Window *proxy_data;
   Window proxy;
   Atom xdnd_proxy_atom = cdk_x11_get_xatom_by_name_for_display (display, "XdndProxy");
   Atom xdnd_aware_atom = cdk_x11_get_xatom_by_name_for_display (display, "XdndAware");
@@ -1415,6 +1416,8 @@ xdnd_check_dest (CdkDisplay *display,
     {
       if (type != None)
         {
+          Window *proxy_data;
+
           proxy_data = (Window *)data;
 
           if ((format == 32) && (nitems == 1))
@@ -1437,6 +1440,8 @@ xdnd_check_dest (CdkDisplay *display,
                                &data) == Success) &&
           type != None)
         {
+          Atom *version;
+
           version = (Atom *)data;
 
           if ((format == 32) && (nitems == 1))
@@ -1826,7 +1831,6 @@ xdnd_position_filter (CdkXEvent *xev,
                       CdkEvent  *event,
                       gpointer   data)
 {
-  CdkWindowImplX11 *impl;
   XEvent *xevent = (XEvent *)xev;
   guint32 source_window = xevent->xclient.data.l[0];
   gint16 x_root = xevent->xclient.data.l[2] >> 16;
@@ -1836,7 +1840,6 @@ xdnd_position_filter (CdkXEvent *xev,
   CdkDisplay *display;
   CdkX11Display *display_x11;
   CdkDragContext *context;
-  CdkX11DragContext *context_x11;
 
    if (!event->any.window ||
        cdk_window_get_window_type (event->any.window) == CDK_WINDOW_FOREIGN)
@@ -1857,6 +1860,9 @@ xdnd_position_filter (CdkXEvent *xev,
       (context->protocol == CDK_DRAG_PROTO_XDND) &&
       (CDK_WINDOW_XID (context->source_window) == source_window))
     {
+      CdkWindowImplX11 *impl;
+      CdkX11DragContext *context_x11;
+
       impl = CDK_WINDOW_IMPL_X11 (event->any.window->impl);
 
       context_x11 = CDK_X11_DRAG_CONTEXT (context);
@@ -2205,7 +2211,6 @@ cdk_x11_drag_context_drag_motion (CdkDragContext *context,
                                   guint32         time)
 {
   CdkX11DragContext *context_x11 = CDK_X11_DRAG_CONTEXT (context);
-  CdkWindowImplX11 *impl;
 
   if (context_x11->drag_window)
     move_drag_window (context, x_root, y_root);
@@ -2332,6 +2337,8 @@ cdk_x11_drag_context_drag_motion (CdkDragContext *context,
 
   if (context->dest_window)
     {
+      CdkWindowImplX11 *impl;
+
       impl = CDK_WINDOW_IMPL_X11 (context->dest_window->impl);
 
       if (context_x11->drag_status == CDK_DRAG_STATUS_DRAG)

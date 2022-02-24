@@ -62,7 +62,6 @@ verify_block_match (BroadwayBuffer *buffer, int x, int y,
                     BroadwayBuffer *prev, struct entry *entry)
 {
   int i;
-  void *old, *match;
   int w1, w2, h1, h2;
 
   w1 = block_size;
@@ -86,6 +85,8 @@ verify_block_match (BroadwayBuffer *buffer, int x, int y,
 
   for (i = 0; i < h1; i++)
     {
+      void *old, *match;
+
       match = buffer->data + (y + i) * buffer->stride + x * 4;
       old = prev->data + (entry->y + i) * prev->stride + entry->x * 4;
       if (memcmp (match, old, w1 * 4) != 0)

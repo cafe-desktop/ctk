@@ -1286,7 +1286,6 @@ gboolean
 _cdk_broadway_moveresize_configure_done (CdkDisplay *display,
 					 CdkWindow  *window)
 {
-  BroadwayInputMsg *tmp_event;
   MoveResizeData *mv_resize = get_move_resize_data (display, FALSE);
 
   if (!mv_resize || window != mv_resize->moveresize_window)
@@ -1294,6 +1293,8 @@ _cdk_broadway_moveresize_configure_done (CdkDisplay *display,
 
   if (mv_resize->moveresize_pending_event)
     {
+      BroadwayInputMsg *tmp_event;
+
       tmp_event = mv_resize->moveresize_pending_event;
       mv_resize->moveresize_pending_event = NULL;
       _cdk_broadway_moveresize_handle_event (display, tmp_event);

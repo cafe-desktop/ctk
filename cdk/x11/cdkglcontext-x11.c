@@ -1304,8 +1304,6 @@ cdk_x11_display_make_gl_context_current (CdkDisplay   *display,
 {
   CdkX11GLContext *context_x11;
   Display *dpy = cdk_x11_display_get_xdisplay (display);
-  CdkWindow *window;
-  CdkScreen *screen;
   gboolean do_frame_sync = FALSE;
 
   if (context == NULL)
@@ -1336,6 +1334,9 @@ cdk_x11_display_make_gl_context_current (CdkDisplay   *display,
 
   if (context_x11->is_attached && CDK_X11_DISPLAY (display)->has_glx_swap_interval)
     {
+      CdkWindow *window;
+      CdkScreen *screen;
+
       window = cdk_gl_context_get_window (context);
 
       /* If the WM is compositing there is no particular need to delay

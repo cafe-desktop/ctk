@@ -605,11 +605,12 @@ _cdk_x11_get_window_child_info (CdkDisplay       *display,
   for (i = 0; i < state.nchildren; i++)
     {
       xResourceReq *resource_req;
-      xGetPropertyReq *prop_req;
       Window win = state.children[i];
       
       if (get_wm_state)
 	{
+	  xGetPropertyReq *prop_req;
+
 	  GetReq (GetProperty, prop_req);
 	  prop_req->window = win;
 	  prop_req->property = wm_state_atom;

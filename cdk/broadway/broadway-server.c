@@ -295,11 +295,12 @@ gboolean
 broadway_server_lookahead_event (BroadwayServer  *server,
 				 const char         *types)
 {
-  BroadwayInputMsg *message;
   GList *l;
 
   for (l = server->input_messages; l != NULL; l = l->next)
     {
+      BroadwayInputMsg *message;
+
       message = l->data;
       if (strchr (types, message->base.type) != NULL)
 	return TRUE;
@@ -340,10 +341,10 @@ process_input_message (BroadwayServer *server,
 static void
 process_input_messages (BroadwayServer *server)
 {
-  BroadwayInputMsg *message;
-
   while (server->input_messages)
     {
+      BroadwayInputMsg *message;
+
       message = server->input_messages->data;
       server->input_messages =
 	g_list_delete_link (server->input_messages,
@@ -1290,8 +1291,6 @@ broadway_server_new (char        *address,
                      GError     **error)
 {
   BroadwayServer *server;
-  GInetAddress *inet_address;
-  GSocketAddress *socket_address;
 
   server = g_object_new (BROADWAY_TYPE_SERVER, NULL);
   server->port = port;
@@ -1313,6 +1312,9 @@ broadway_server_new (char        *address,
     }
   else
     {
+      GInetAddress *inet_address;
+      GSocketAddress *socket_address;
+
       inet_address = g_inet_address_new_from_string (address);
       if (inet_address == NULL)
 	{

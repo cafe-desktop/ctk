@@ -229,15 +229,12 @@ print_cursor (int index)
   BYTE buttons;
   BYTE buttonbits;
   char *btnnames;
-  char *p;
   BYTE buttonmap[32];
   BYTE sysbtnmap[32];
   BYTE npbutton;
   UINT npbtnmarks[2];
-  UINT *npresponse;
   BYTE tpbutton;
   UINT tpbtnmarks[2];
-  UINT *tpresponse;
   DWORD physid;
   UINT mode;
   UINT minpktdata;
@@ -276,6 +273,8 @@ print_cursor (int index)
   g_print ("BTNNAMES:");
   if (size > 0)
     {
+      char *p;
+
       btnnames = g_malloc (size + 1);
       (*p_WTInfoA) (WTI_CURSORS + index, CSR_BTNNAMES, btnnames);
       p = btnnames;
@@ -304,6 +303,8 @@ print_cursor (int index)
   g_print ("NPRESPONSE:");
   if (size > 0)
     {
+      UINT *npresponse;
+
       npresponse = g_malloc (size);
       (*p_WTInfoA) (WTI_CURSORS + index, CSR_NPRESPONSE, npresponse);
       for (i = 0; i < size / sizeof (UINT); i++)
@@ -318,6 +319,8 @@ print_cursor (int index)
   g_print ("TPRESPONSE:");
   if (size > 0)
     {
+      UINT *tpresponse;
+
       tpresponse = g_malloc (size);
       (*p_WTInfoA) (WTI_CURSORS + index, CSR_TPRESPONSE, tpresponse);
       for (i = 0; i < size / sizeof (UINT); i++)
@@ -828,7 +831,6 @@ void
 _cdk_input_set_tablet_active (void)
 {
   GList *tmp_list;
-  HCTX *hctx;
 
   /* Bring the contexts to the top of the overlap order when one of the
    * application's windows is activated */
@@ -843,6 +845,8 @@ _cdk_input_set_tablet_active (void)
 
   while (tmp_list)
     {
+      HCTX *hctx;
+
       hctx = (HCTX *) (tmp_list->data);
       (*p_WTOverlap) (*hctx, TRUE);
       tmp_list = tmp_list->next;
@@ -923,11 +927,12 @@ cdk_device_manager_find_wintab_device (CdkDeviceManagerWin32 *device_manager,
                                        HCTX                   hctx,
                                        UINT                   cursor)
 {
-  CdkDeviceWintab *device;
   GList *tmp_list;
 
   for (tmp_list = device_manager->wintab_devices; tmp_list != NULL; tmp_list = tmp_list->next)
     {
+      CdkDeviceWintab *device;
+
       device = tmp_list->data;
 
       if (device->hctx == hctx &&
@@ -950,7 +955,6 @@ cdk_input_other_event (CdkDisplay *display,
   CdkEventMask masktest;
   guint key_state;
   POINT pt;
-  CdkWindowImplWin32 *impl;
 
   PACKET packet;
   gint root_x, root_y;
@@ -1131,6 +1135,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
 	     (cdk_device_get_device_type (CDK_DEVICE (source_device)) == CDK_DEVICE_TYPE_SLAVE &&
 	      (cdk_window_get_events (window) & masktest) == 0))
         {
+          CdkWindowImplWin32 *impl;
+
           CDK_NOTE (EVENTS_OR_INPUT, g_print ("... not selected\n"));
 
           if (window->parent == cdk_get_default_root_window () || window->parent == NULL)

@@ -435,7 +435,6 @@ cdk_check_wm_desktop_changed (CdkWindow *window)
   gulong nitems;
   gulong bytes_after;
   guchar *data;
-  gulong *desktop;
 
   type = None;
   cdk_x11_display_error_trap_push (display);
@@ -449,6 +448,8 @@ cdk_check_wm_desktop_changed (CdkWindow *window)
 
   if (type != None)
     {
+      gulong *desktop;
+
       desktop = (gulong *)data;
       toplevel->on_all_desktops = ((*desktop & 0xFFFFFFFF) == 0xFFFFFFFF);
       XFree (desktop);
@@ -2287,9 +2288,9 @@ broadcast_xmessage (CdkDisplay *display,
     const char *src;
     const char *src_end;
     char *dest;
-    char *dest_end;
     
-		memset(&xclient, 0, sizeof (xclient));
+    memset(&xclient, 0, sizeof (xclient));
+
     xclient.type = ClientMessage;
     xclient.message_type = type_atom_begin;
     xclient.display =xdisplay;
@@ -2301,6 +2302,8 @@ broadcast_xmessage (CdkDisplay *display,
     
     while (src != src_end)
       {
+        char *dest_end;
+
         dest = &xclient.data.b[0];
         dest_end = dest + 20;        
         
@@ -2485,11 +2488,12 @@ cdk_x11_display_store_clipboard (CdkDisplay    *display,
   if (XGetSelectionOwner (display_x11->xdisplay, clipboard_manager) != None)
     {
       Atom property_name = None;
-      Atom *xatoms;
-      int i;
 
       if (n_targets > 0)
         {
+          Atom *xatoms;
+          int i;
+
           property_name = cdk_x11_get_xatom_by_name_for_display (display, "CDK_SELECTION");
 
 	  xatoms = g_new (Atom, n_targets);
@@ -2587,7 +2591,6 @@ cdk_x11_display_set_startup_notification_id (CdkDisplay  *display,
                                              const gchar *startup_id)
 {
   CdkX11Display *display_x11;
-  gchar *time_str;
 
   display_x11 = CDK_X11_DISPLAY (display);
 
@@ -2596,6 +2599,8 @@ cdk_x11_display_set_startup_notification_id (CdkDisplay  *display,
 
   if (startup_id != NULL)
     {
+      gchar *time_str;
+
       /* Find the launch time from the startup_id, if it's there.  Newer spec
        * states that the startup_id is of the form <unique>_TIME<timestamp>
        */
