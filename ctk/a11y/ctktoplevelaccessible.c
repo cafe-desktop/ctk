@@ -161,18 +161,19 @@ remove_child (CtkToplevelAccessible *toplevel,
   AtkObject *atk_obj = ATK_OBJECT (toplevel);
   GList *l;
   guint window_count = 0;
-  AtkObject *child;
 
   if (toplevel->priv->window_list)
     {
-      CtkWindow *tmp_window;
-
       for (l = toplevel->priv->window_list; l; l = l->next)
         {
+          CtkWindow *tmp_window;
+
           tmp_window = CTK_WINDOW (l->data);
 
           if (window == tmp_window)
             {
+              AtkObject *child;
+
               /* Remove the window from the window_list & emit the signal */
               toplevel->priv->window_list = g_list_delete_link (toplevel->priv->window_list, l);
               child = ctk_widget_get_accessible (CTK_WIDGET (window));

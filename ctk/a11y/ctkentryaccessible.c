@@ -1003,7 +1003,6 @@ ctk_entry_accessible_get_offset_at_point (AtkText      *atk_text,
 {
   CtkWidget *widget;
   CtkEntry *entry;
-  gchar *text;
   gint index, x_layout, y_layout;
   gint x_window, y_window;
   gint x_local, y_local;
@@ -1046,6 +1045,8 @@ ctk_entry_accessible_get_offset_at_point (AtkText      *atk_text,
   offset = -1;
   if (index != -1)
     {
+      gchar *text;
+
       text = _ctk_entry_get_display_text (entry, 0, -1);
       offset = g_utf8_pointer_to_offset (text, text + index);
       g_free (text);
@@ -1169,7 +1170,6 @@ ctk_entry_accessible_get_character_at_offset (AtkText *atk_text,
 {
   CtkWidget *widget;
   gchar *text;
-  gchar *index;
   gunichar result;
 
   result = '\0';
@@ -1184,6 +1184,8 @@ ctk_entry_accessible_get_character_at_offset (AtkText *atk_text,
   text = _ctk_entry_get_display_text (CTK_ENTRY (widget), 0, -1);
   if (offset < g_utf8_strlen (text, -1))
     {
+      gchar *index;
+
       index = g_utf8_offset_to_pointer (text, offset);
       result = g_utf8_get_char (index);
       g_free (text);
@@ -1503,7 +1505,6 @@ ctk_entry_accessible_get_keybinding (AtkAction *action,
   CtkWidget *label;
   AtkRelationSet *set;
   AtkRelation *relation;
-  GPtrArray *target;
   gpointer target_object;
   guint key_val;
 
@@ -1522,6 +1523,8 @@ ctk_entry_accessible_get_keybinding (AtkAction *action,
   relation = atk_relation_set_get_relation_by_type (set, ATK_RELATION_LABELLED_BY);
   if (relation)
     {
+      GPtrArray *target;
+
       target = atk_relation_get_target (relation);
 
       target_object = g_ptr_array_index (target, 0);

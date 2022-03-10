@@ -441,7 +441,6 @@ ctk_tree_view_accessible_ref_child (AtkObject *obj,
   CtkTreeViewColumn *tv_col;
   CtkRBTree *tree;
   CtkRBNode *node;
-  AtkObject *child;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
@@ -454,6 +453,8 @@ ctk_tree_view_accessible_ref_child (AtkObject *obj,
   tree_view = CTK_TREE_VIEW (widget);
   if (i < get_n_columns (tree_view))
     {
+      AtkObject *child;
+
       tv_col = get_visible_column (tree_view, i);
       child = get_header_from_column (tv_col);
       if (child)
@@ -1340,7 +1341,6 @@ ctk_tree_view_accessible_update_relationset (CtkCellAccessibleParent *parent,
   CtkTreeView *treeview;
   AtkRelation *relation;
   CtkRBTree *tree;
-  CtkRBNode *node;
   AtkObject *object;
 
   /* Don't set relations on cells that aren't direct descendants of the treeview.
@@ -1383,6 +1383,8 @@ ctk_tree_view_accessible_update_relationset (CtkCellAccessibleParent *parent,
   tree = cell_info->node->children;
   if (tree)
     {
+      CtkRBNode *node;
+
       for (node = _ctk_rbtree_first (tree);
            node != NULL;
            node = _ctk_rbtree_next (tree, node))
@@ -1560,13 +1562,14 @@ static gint
 get_column_number (CtkTreeView       *treeview,
                    CtkTreeViewColumn *column)
 {
-  CtkTreeViewColumn *cur;
   guint i, number;
 
   number = 0;
 
   for (i = 0; i < ctk_tree_view_get_n_columns (treeview); i++)
     {
+      CtkTreeViewColumn *cur;
+
       cur = ctk_tree_view_get_column (treeview, i);
       
       if (!ctk_tree_view_column_get_visible (cur))
@@ -1839,7 +1842,6 @@ ctk_tree_view_accessible_do_remove_column (CtkTreeViewAccessible *accessible,
                                            CtkTreeViewColumn     *column,
                                            guint                  id)
 {
-  CtkTreeViewAccessibleCellInfo *cell_info;
   GHashTableIter iter;
   gpointer value;
   guint row, n_rows, n_cols;
@@ -1848,6 +1850,8 @@ ctk_tree_view_accessible_do_remove_column (CtkTreeViewAccessible *accessible,
   g_hash_table_iter_init (&iter, accessible->priv->cell_infos);
   while (g_hash_table_iter_next (&iter, NULL, &value))
     {
+      CtkTreeViewAccessibleCellInfo *cell_info;
+
       cell_info = value;
       if (cell_info->cell_col_ref == column)
         g_hash_table_iter_remove (&iter);

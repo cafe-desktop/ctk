@@ -86,10 +86,11 @@ ctk_range_accessible_notify_ctk (GObject    *obj,
                                  GParamSpec *pspec)
 {
   CtkWidget *widget = CTK_WIDGET (obj);
-  AtkObject *range;
 
   if (strcmp (pspec->name, "adjustment") == 0)
     {
+      AtkObject *range;
+
       range = ctk_widget_get_accessible (widget);
       ctk_range_accessible_widget_unset (CTK_ACCESSIBLE (range));
       ctk_range_accessible_widget_set (CTK_ACCESSIBLE (range));

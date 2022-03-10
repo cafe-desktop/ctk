@@ -42,13 +42,15 @@ static AtkStateSet *
 ctk_flow_box_child_accessible_ref_state_set (AtkObject *obj)
 {
   AtkStateSet *state_set;
-  CtkWidget *widget, *parent;
+  CtkWidget *widget;
 
   state_set = ATK_OBJECT_CLASS (ctk_flow_box_child_accessible_parent_class)->ref_state_set (obj);
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget != NULL)
     {
+      CtkWidget *parent;
+
       parent = ctk_widget_get_parent (widget);
       if (ctk_flow_box_get_selection_mode (CTK_FLOW_BOX (parent)) != CTK_SELECTION_NONE)
         atk_state_set_add_state (state_set, ATK_STATE_SELECTABLE);

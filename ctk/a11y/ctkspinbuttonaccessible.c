@@ -86,10 +86,11 @@ ctk_spin_button_accessible_notify_ctk (GObject    *obj,
                                        GParamSpec *pspec)
 {
   CtkWidget *widget = CTK_WIDGET (obj);
-  AtkObject *spin;
 
   if (strcmp (pspec->name, "adjustment") == 0)
     {
+      AtkObject *spin;
+
       spin = ctk_widget_get_accessible (widget);
       ctk_spin_button_accessible_widget_unset (CTK_ACCESSIBLE (spin));
       ctk_spin_button_accessible_widget_set (CTK_ACCESSIBLE (spin));

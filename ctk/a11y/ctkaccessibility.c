@@ -488,7 +488,6 @@ cail_focus_idle_handler (gpointer data)
 static void
 cail_focus_notify (CtkWidget *widget)
 {
-  AtkObject *atk_obj;
   gboolean transient;
 
   if (widget != _focus_widget)
@@ -518,6 +517,8 @@ cail_focus_notify (CtkWidget *widget)
     }
   else
     {
+      AtkObject *atk_obj;
+
       if (_focus_widget)
         atk_obj  = get_accessible_for_widget (_focus_widget, &transient);
       else
@@ -726,8 +727,6 @@ cail_focus_tracker (AtkObject *focus_object)
   if (focus_object && 
       (atk_object_get_role(focus_object) != ATK_ROLE_REDUNDANT_OBJECT))
     {
-      AtkObject *old_focus_object;
-
       if (!CTK_IS_ACCESSIBLE (focus_object))
         {
           AtkObject *parent;
@@ -749,6 +748,8 @@ cail_focus_tracker (AtkObject *focus_object)
         }
       else
         {
+          AtkObject *old_focus_object;
+
           old_focus_object = g_object_get_qdata (G_OBJECT (focus_object), quark_focus_object);
           if (old_focus_object)
             {
@@ -812,7 +813,6 @@ state_event_watcher (GSignalInvocationHint *hint,
   GObject *object;
   CtkWidget *widget;
   AtkObject *atk_obj;
-  AtkObject *parent;
   CdkEventWindowState *event;
   gchar *signal_name;
 
@@ -837,6 +837,8 @@ state_event_watcher (GSignalInvocationHint *hint,
   atk_obj = ctk_widget_get_accessible (widget);
   if (CTK_IS_WINDOW_ACCESSIBLE (atk_obj))
     {
+      AtkObject *parent;
+
       parent = atk_object_get_parent (atk_obj);
       if (parent == atk_get_root ())
         g_signal_emit_by_name (atk_obj, signal_name);
@@ -857,7 +859,6 @@ configure_event_watcher (GSignalInvocationHint *hint,
   GObject *object;
   CtkWidget *widget;
   AtkObject *atk_obj;
-  AtkObject *parent;
   CdkEvent *event;
   gchar *signal_name;
 
@@ -885,6 +886,8 @@ configure_event_watcher (GSignalInvocationHint *hint,
   atk_obj = ctk_widget_get_accessible (widget);
   if (CTK_IS_WINDOW_ACCESSIBLE (atk_obj))
     {
+      AtkObject *parent;
+
       parent = atk_object_get_parent (atk_obj);
       if (parent == atk_get_root ())
         g_signal_emit_by_name (atk_obj, signal_name);

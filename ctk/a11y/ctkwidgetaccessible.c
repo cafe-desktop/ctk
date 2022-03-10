@@ -185,13 +185,14 @@ ctk_widget_accessible_get_parent (AtkObject *accessible)
   if (CTK_IS_NOTEBOOK (parent_widget))
     {
       gint page_num;
-      CtkWidget *child;
       CtkNotebook *notebook;
 
       page_num = 0;
       notebook = CTK_NOTEBOOK (parent_widget);
       while (TRUE)
         {
+          CtkWidget *child;
+
           child = ctk_notebook_get_nth_page (notebook, page_num);
           if (!child)
             break;
@@ -214,7 +215,6 @@ find_label (CtkWidget *widget)
 {
   GList *labels;
   CtkWidget *label;
-  CtkWidget *temp_widget;
   GList *ptr;
 
   labels = ctk_widget_list_mnemonic_labels (widget);
@@ -234,6 +234,8 @@ find_label (CtkWidget *widget)
   /* Ignore a label within a button; bug #136602 */
   if (label && CTK_IS_BUTTON (widget))
     {
+      CtkWidget *temp_widget;
+
       temp_widget = label;
       while (temp_widget)
         {
@@ -253,9 +255,7 @@ ctk_widget_accessible_ref_relation_set (AtkObject *obj)
 {
   CtkWidget *widget;
   AtkRelationSet *relation_set;
-  CtkWidget *label;
   AtkObject *array[1];
-  AtkRelation* relation;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
@@ -268,6 +268,8 @@ ctk_widget_accessible_ref_relation_set (AtkObject *obj)
 
   if (!atk_relation_set_contains (relation_set, ATK_RELATION_LABELLED_BY))
     {
+      CtkWidget *label;
+
       label = find_label (widget);
       if (label == NULL)
         {
@@ -314,6 +316,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
       if (label)
         {
+          AtkRelation* relation;
+
           array[0] = ctk_widget_get_accessible (label);
 
           relation = atk_relation_new (array, 1, ATK_RELATION_LABELLED_BY);

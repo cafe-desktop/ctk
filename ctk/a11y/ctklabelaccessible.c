@@ -480,11 +480,13 @@ ctk_label_accessible_ref_relation_set (AtkObject *obj)
              */
              if (CTK_IS_BOX (mnemonic_widget))
                {
-                  GList *list, *tmpl;
+                  GList *list;
 
                   list = ctk_container_get_children (CTK_CONTAINER (mnemonic_widget));
                   if (g_list_length (list) == 2)
                     {
+                      GList *tmpl;
+
                       tmpl = g_list_last (list);
                       if (CTK_IS_COMBO_BOX(tmpl->data))
                         {
@@ -636,10 +638,11 @@ clear_links (CtkLabelAccessible *accessible)
 {
   GList *l;
   gint i;
-  CtkLabelAccessibleLinkImpl *impl;
 
   for (l = accessible->priv->links, i = 0; l; l = l->next, i++)
     {
+      CtkLabelAccessibleLinkImpl *impl;
+
       impl = l->data;
       g_signal_emit_by_name (accessible, "children-changed::remove", i, impl, NULL);
       atk_object_set_parent (ATK_OBJECT (impl), NULL);
@@ -654,13 +657,14 @@ create_links (CtkLabelAccessible *accessible)
 {
   CtkWidget *widget;
   gint n, i;
-  CtkLabelAccessibleLinkImpl *impl;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (accessible));
 
   n = _ctk_label_get_n_links (CTK_LABEL (widget));
   for (i = 0; i < n; i++)
     {
+      CtkLabelAccessibleLinkImpl *impl;
+
       impl = ctk_label_accessible_link_impl_new (accessible, i);
       accessible->priv->links = g_list_append (accessible->priv->links, impl);
       g_signal_emit_by_name (accessible, "children-changed::add", i, impl, NULL);
@@ -686,7 +690,6 @@ _ctk_label_accessible_focus_link_changed (CtkLabel *label)
   AtkObject *obj;
   CtkLabelAccessible *accessible;
   GList *l;
-  CtkLabelAccessibleLinkImpl *impl;
   gboolean focused;
 
   obj = _ctk_widget_peek_accessible (CTK_WIDGET (label));
@@ -697,6 +700,8 @@ _ctk_label_accessible_focus_link_changed (CtkLabel *label)
 
   for (l = accessible->priv->links; l; l = l->next)
     {
+      CtkLabelAccessibleLinkImpl *impl;
+
       impl = l->data;
       focused = _ctk_label_get_link_focused (label, impl->link->index);
       if (impl->link->focused != focused)
@@ -1036,7 +1041,6 @@ ctk_label_accessible_get_offset_at_point (AtkText      *atk_text,
 {
   CtkWidget *widget;
   CtkLabel *label;
-  const gchar *text;
   gint index, x_layout, y_layout;
   gint x_window, y_window;
   gint x_local, y_local;
@@ -1078,6 +1082,8 @@ ctk_label_accessible_get_offset_at_point (AtkText      *atk_text,
 
   if (index != -1)
     {
+      const gchar *text;
+
       text = ctk_label_get_text (label);
       return g_utf8_pointer_to_offset (text, text + index);
     }
