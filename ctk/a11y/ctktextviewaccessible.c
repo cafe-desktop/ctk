@@ -1254,7 +1254,6 @@ ctk_text_view_accessible_remove_selection (AtkText *text,
 {
   CtkWidget *widget;
   CtkTextBuffer *buffer;
-  CtkTextMark *insert;
   CtkTextIter iter;
   CtkTextIter start, end;
 
@@ -1269,6 +1268,8 @@ ctk_text_view_accessible_remove_selection (AtkText *text,
 
   if (ctk_text_buffer_get_selection_bounds (buffer, &start, &end))
     {
+      CtkTextMark *insert;
+
       insert = ctk_text_buffer_get_insert (buffer);
       ctk_text_buffer_get_iter_at_mark (buffer, &iter, insert);
       ctk_text_buffer_place_cursor (buffer, &iter);

@@ -216,12 +216,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
   else if (storage_type == CTK_IMAGE_GICON)
     {
       GIcon *icon;
-      const gchar * const *icon_names;
 
       ctk_image_get_gicon (image, &icon, NULL);
       if (G_IS_THEMED_ICON (icon))
         {
-	  icon_names = g_themed_icon_get_names (G_THEMED_ICON (icon));
+          const gchar * const *icon_names;
+
+          icon_names = g_themed_icon_get_names (G_THEMED_ICON (icon));
           image_accessible->priv->stock_name = name_from_icon_name (icon_names[0]);
         }
     }

@@ -277,16 +277,18 @@ ctk_button_accessible_get_keybinding (AtkAction *action,
     {
       /* Find labelled-by relation */
       AtkRelationSet *set;
-      AtkRelation *relation;
-      GPtrArray *target;
       gpointer target_object;
 
       set = atk_object_ref_relation_set (ATK_OBJECT (action));
       if (set)
         {
+          AtkRelation *relation;
+
           relation = atk_relation_set_get_relation_by_type (set, ATK_RELATION_LABELLED_BY);
           if (relation)
             {
+              GPtrArray *target;
+
               target = atk_relation_get_target (relation);
               target_object = g_ptr_array_index (target, 0);
               label = ctk_accessible_get_widget (CTK_ACCESSIBLE (target_object));
@@ -347,7 +349,6 @@ ctk_button_accessible_get_image_description (AtkImage *image)
 {
   CtkWidget *widget;
   CtkWidget  *button_image;
-  AtkObject *obj;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (image));
   if (widget == NULL)
@@ -356,6 +357,8 @@ ctk_button_accessible_get_image_description (AtkImage *image)
   button_image = get_image_from_button (widget);
   if (CTK_IS_IMAGE (button_image))
     {
+      AtkObject *obj;
+
       obj = ctk_widget_get_accessible (button_image);
       return atk_image_get_image_description (ATK_IMAGE (obj));
     }
@@ -371,7 +374,6 @@ ctk_button_accessible_get_image_position (AtkImage     *image,
 {
   CtkWidget *widget;
   CtkWidget *button_image;
-  AtkObject *obj;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (image));
   if (widget == NULL)
@@ -384,6 +386,8 @@ ctk_button_accessible_get_image_position (AtkImage     *image,
   button_image = get_image_from_button (widget);
   if (button_image != NULL)
     {
+      AtkObject *obj;
+
       obj = ctk_widget_get_accessible (button_image);
       atk_component_get_extents (ATK_COMPONENT (obj), x, y, NULL, NULL,
                                  coord_type);
@@ -402,7 +406,6 @@ ctk_button_accessible_get_image_size (AtkImage *image,
 {
   CtkWidget *widget;
   CtkWidget *button_image;
-  AtkObject *obj;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (image));
   if (widget == NULL)
@@ -415,6 +418,8 @@ ctk_button_accessible_get_image_size (AtkImage *image,
   button_image = get_image_from_button (widget);
   if (CTK_IS_IMAGE (button_image))
     {
+      AtkObject *obj;
+
       obj = ctk_widget_get_accessible (CTK_WIDGET (button_image));
       atk_image_get_image_size (ATK_IMAGE (obj), width, height);
     }
@@ -431,7 +436,6 @@ ctk_button_accessible_set_image_description (AtkImage    *image,
 {
   CtkWidget *widget;
   CtkWidget *button_image;
-  AtkObject *obj;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (image));
 
@@ -441,6 +445,8 @@ ctk_button_accessible_set_image_description (AtkImage    *image,
   button_image = get_image_from_button (widget);
   if (CTK_IMAGE (button_image))
     {
+      AtkObject *obj;
+
       obj = ctk_widget_get_accessible (CTK_WIDGET (button_image));
       return atk_image_set_image_description (ATK_IMAGE (obj), description);
     }

@@ -42,13 +42,15 @@ static AtkStateSet*
 ctk_list_box_row_accessible_ref_state_set (AtkObject *obj)
 {
   AtkStateSet *state_set;
-  CtkWidget *widget, *parent;
+  CtkWidget *widget;
 
   state_set = ATK_OBJECT_CLASS (ctk_list_box_row_accessible_parent_class)->ref_state_set (obj);
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget != NULL)
     {
+      CtkWidget *parent;
+
       parent = ctk_widget_get_parent (widget);
       if (parent != NULL && 
           CTK_IS_LIST_BOX (parent) &&

@@ -142,8 +142,7 @@ static AtkStateSet *
 ctk_notebook_page_accessible_ref_state_set (AtkObject *accessible)
 {
   CtkNotebookPageAccessible *page = CTK_NOTEBOOK_PAGE_ACCESSIBLE (accessible);
-  AtkStateSet *state_set, *label_state_set, *merged_state_set;
-  AtkObject *atk_label;
+  AtkStateSet *state_set, *merged_state_set;
   CtkWidget *label;
   AtkObject *selected;
 
@@ -163,6 +162,9 @@ ctk_notebook_page_accessible_ref_state_set (AtkObject *accessible)
   label = get_label_from_notebook_page (CTK_NOTEBOOK_PAGE_ACCESSIBLE (accessible));
   if (label)
     {
+      AtkStateSet *label_state_set;
+      AtkObject *atk_label;
+
       atk_label = ctk_widget_get_accessible (label);
       label_state_set = atk_object_ref_state_set (atk_label);
       merged_state_set = atk_state_set_or_sets (state_set, label_state_set);
@@ -306,7 +308,6 @@ ctk_notebook_page_accessible_get_extents (AtkComponent *component,
                                           AtkCoordType  coord_type)
 {
   CtkWidget *label;
-  AtkObject *atk_label;
 
   label = get_label_from_notebook_page (CTK_NOTEBOOK_PAGE_ACCESSIBLE (component));
   if (!label)
@@ -318,6 +319,8 @@ ctk_notebook_page_accessible_get_extents (AtkComponent *component,
     }
   else
     {
+      AtkObject *atk_label;
+
       atk_label = ctk_widget_get_accessible (label);
       atk_component_get_extents (ATK_COMPONENT (atk_label),
                                  x, y, width, height, coord_type);

@@ -103,7 +103,6 @@ ctk_combo_box_accessible_get_name (AtkObject *obj)
   CtkComboBoxAccessible *accessible;
   CtkTreeIter iter;
   const gchar *name;
-  CtkTreeModel *model;
   gint n_columns;
   gint i;
 
@@ -119,6 +118,8 @@ ctk_combo_box_accessible_get_name (AtkObject *obj)
   accessible = CTK_COMBO_BOX_ACCESSIBLE (obj);
   if (ctk_combo_box_get_active_iter (combo_box, &iter))
     {
+      CtkTreeModel *model;
+
       model = ctk_combo_box_get_model (combo_box);
       n_columns = ctk_tree_model_get_n_columns (model);
       for (i = 0; i < n_columns; i++)
@@ -163,7 +164,6 @@ ctk_combo_box_accessible_ref_child (AtkObject *obj,
 {
   CtkWidget *widget;
   AtkObject *child;
-  CtkComboBoxAccessible *box;
 
   widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (obj));
   if (widget == NULL)
@@ -171,6 +171,8 @@ ctk_combo_box_accessible_ref_child (AtkObject *obj,
 
   if (i == 0)
     {
+      CtkComboBoxAccessible *box;
+
       child = ctk_combo_box_get_popup_accessible (CTK_COMBO_BOX (widget));
       box = CTK_COMBO_BOX_ACCESSIBLE (obj);
       if (!box->priv->popup_set)
@@ -257,7 +259,6 @@ ctk_combo_box_accessible_get_keybinding (AtkAction *action,
   CtkWidget *label;
   AtkRelationSet *set;
   AtkRelation *relation;
-  GPtrArray *target;
   gpointer target_object;
   guint key_val;
   gchar *return_value = NULL;
@@ -278,6 +279,8 @@ ctk_combo_box_accessible_get_keybinding (AtkAction *action,
   relation = atk_relation_set_get_relation_by_type (set, ATK_RELATION_LABELLED_BY);
   if (relation)
     {
+      GPtrArray *target;
+
       target = atk_relation_get_target (relation);
       target_object = g_ptr_array_index (target, 0);
       label = ctk_accessible_get_widget (CTK_ACCESSIBLE (target_object));

@@ -97,7 +97,6 @@ ctk_menu_shell_accessible_ref_selection (AtkSelection *selection,
                                          gint          i)
 {
   CtkMenuShell *shell;
-  AtkObject *obj;
   CtkWidget *widget;
   CtkWidget *item;
 
@@ -113,6 +112,8 @@ ctk_menu_shell_accessible_ref_selection (AtkSelection *selection,
   item = ctk_menu_shell_get_selected_item (shell);
   if (item != NULL)
     {
+      AtkObject *obj;
+
       obj = ctk_widget_get_accessible (item);
       g_object_ref (obj);
       return obj;

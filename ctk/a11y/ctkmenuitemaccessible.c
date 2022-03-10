@@ -152,7 +152,7 @@ static AtkStateSet *
 ctk_menu_item_accessible_ref_state_set (AtkObject *obj)
 {
   AtkObject *menu_item;
-  AtkStateSet *state_set, *parent_state_set;
+  AtkStateSet *state_set;
 
   state_set = ATK_OBJECT_CLASS (ctk_menu_item_accessible_parent_class)->ref_state_set (obj);
 
@@ -164,6 +164,8 @@ ctk_menu_item_accessible_ref_state_set (AtkObject *obj)
 
   if (menu_item)
     {
+      AtkStateSet *parent_state_set;
+
       if (!CTK_IS_MENU_ITEM (ctk_accessible_get_widget (CTK_ACCESSIBLE (menu_item))))
         return state_set;
 
@@ -353,11 +355,12 @@ static void
 ensure_menus_unposted (CtkMenuItemAccessible *menu_item)
 {
   AtkObject *parent;
-  CtkWidget *widget;
 
   parent = atk_object_get_parent (ATK_OBJECT (menu_item));
   while (parent)
     {
+      CtkWidget *widget;
+
       widget = ctk_accessible_get_widget (CTK_ACCESSIBLE (parent));
       if (CTK_IS_MENU (widget))
         {
@@ -522,7 +525,7 @@ ctk_menu_item_accessible_get_keybinding (AtkAction *action,
     {
       CdkModifierType mnemonic_modifier = 0;
       guint key_val;
-      gchar *key, *temp_keybinding;
+      gchar *temp_keybinding;
 
       if (ctk_bin_get_child (CTK_BIN (temp_item)) == NULL)
         return NULL;
@@ -548,6 +551,8 @@ ctk_menu_item_accessible_get_keybinding (AtkAction *action,
           key_val = ctk_label_get_mnemonic_keyval (CTK_LABEL (child));
           if (key_val != CDK_KEY_VoidSymbol)
             {
+              gchar *key;
+
               key = ctk_accelerator_name (key_val, mnemonic_modifier);
               if (full_keybinding)
                 temp_keybinding = g_strconcat (key, ":", full_keybinding, NULL);
@@ -758,7 +763,6 @@ ctk_menu_item_accessible_ref_selection (AtkSelection *selection,
                                            gint          i)
 {
   CtkMenuShell *shell;
-  AtkObject *obj;
   CtkWidget *widget;
   CtkWidget *menu;
   CtkWidget *item;
@@ -779,6 +783,8 @@ ctk_menu_item_accessible_ref_selection (AtkSelection *selection,
   item = ctk_menu_shell_get_selected_item (shell);
   if (item != NULL)
     {
+      AtkObject *obj;
+
       obj = ctk_widget_get_accessible (item);
       g_object_ref (obj);
       return obj;
