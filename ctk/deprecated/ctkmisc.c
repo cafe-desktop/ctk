@@ -264,7 +264,6 @@ ctk_misc_set_alignment (CtkMisc *misc,
 			gfloat   yalign)
 {
   CtkMiscPrivate *priv;
-  CtkWidget *widget;
 
   g_return_if_fail (CTK_IS_MISC (misc));
 
@@ -282,6 +281,8 @@ ctk_misc_set_alignment (CtkMisc *misc,
 
   if ((xalign != priv->xalign) || (yalign != priv->yalign))
     {
+      CtkWidget *widget;
+
       g_object_freeze_notify (G_OBJECT (misc));
       if (xalign != priv->xalign)
 	g_object_notify (G_OBJECT (misc), "xalign");

@@ -1208,7 +1208,6 @@ ctk_handle_box_button_press (CtkWidget      *widget,
   CtkHandleBox *hb = CTK_HANDLE_BOX (widget);
   CtkHandleBoxPrivate *priv = hb->priv;
   gboolean event_handled;
-  CdkCursor *fleur;
   gint handle_position;
 
   handle_position = effective_handle_position (hb);
@@ -1262,6 +1261,8 @@ ctk_handle_box_button_press (CtkWidget      *widget,
 	{
 	  if (event->type == CDK_BUTTON_PRESS) /* Start a drag */
 	    {
+	      CdkCursor *fleur;
+
 	      CtkWidget *invisible = ctk_handle_box_get_invisible ();
               CdkWindow *window;
 	      gint root_x, root_y;
@@ -1580,15 +1581,16 @@ static void
 ctk_handle_box_reattach (CtkHandleBox *hb)
 {
   CtkHandleBoxPrivate *priv = hb->priv;
-  CtkWidget *child;
   CtkWidget *widget = CTK_WIDGET (hb);
   
   if (priv->child_detached)
     {
       priv->child_detached = FALSE;
       if (ctk_widget_get_realized (widget))
-	{
-	  cdk_window_hide (priv->float_window);
+        {
+          CtkWidget *child;
+
+          cdk_window_hide (priv->float_window);
           cdk_window_reparent (priv->bin_window, ctk_widget_get_window (widget),
                                0, 0);
 

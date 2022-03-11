@@ -278,7 +278,6 @@ ctk_arrow_set (CtkArrow      *arrow,
 	       CtkShadowType  shadow_type)
 {
   CtkArrowPrivate *priv;
-  CtkWidget *widget;
 
   g_return_if_fail (CTK_IS_ARROW (arrow));
 
@@ -287,6 +286,8 @@ ctk_arrow_set (CtkArrow      *arrow,
   if (priv->arrow_type != arrow_type
       || priv->shadow_type != shadow_type)
     {
+      CtkWidget *widget;
+
       g_object_freeze_notify (G_OBJECT (arrow));
 
       if ((CtkArrowType) priv->arrow_type != arrow_type)
@@ -305,7 +306,7 @@ ctk_arrow_set (CtkArrow      *arrow,
 
       widget = CTK_WIDGET (arrow);
       if (ctk_widget_is_drawable (widget))
-	ctk_widget_queue_draw (widget);
+        ctk_widget_queue_draw (widget);
     }
 }
 
