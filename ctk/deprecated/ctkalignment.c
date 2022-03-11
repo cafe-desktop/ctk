@@ -498,7 +498,6 @@ ctk_alignment_set (CtkAlignment *alignment,
 		   gfloat        yscale)
 {
   CtkAlignmentPrivate *priv;
-  CtkWidget *child;
 
   g_return_if_fail (CTK_IS_ALIGNMENT (alignment));
 
@@ -514,6 +513,8 @@ ctk_alignment_set (CtkAlignment *alignment,
       || (priv->xscale != xscale)
       || (priv->yscale != yscale))
     {
+      CtkWidget *child;
+
       g_object_freeze_notify (G_OBJECT (alignment));
       if (priv->xalign != xalign)
         {

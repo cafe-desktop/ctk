@@ -258,12 +258,13 @@ get_image_surface (CtkNumerableIcon *self)
 static PangoLayout *
 get_pango_layout (CtkNumerableIcon *self)
 {
-  PangoContext *context;
-  CdkScreen *screen;
   PangoLayout *layout;
 
   if (self->priv->style != NULL)
     {
+      PangoContext *context;
+      CdkScreen *screen;
+
       screen = ctk_style_context_get_screen (self->priv->style);
       context = cdk_pango_context_get_for_screen (screen);
       layout = pango_layout_new (context);
