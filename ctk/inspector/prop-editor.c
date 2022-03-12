@@ -1205,13 +1205,14 @@ attribute_mapping_changed (CtkComboBox            *combo,
 {
   gint col;
   gpointer layout;
-  CtkCellRenderer *cell;
-  CtkCellArea *area;
 
   col = ctk_combo_box_get_active (combo) - 1;
   layout = g_object_get_data (editor->priv->object, "ctk-inspector-cell-layout");
   if (CTK_IS_CELL_LAYOUT (layout))
     {
+      CtkCellRenderer *cell;
+      CtkCellArea *area;
+
       cell = CTK_CELL_RENDERER (editor->priv->object);
       area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (layout));
       ctk_cell_area_attribute_disconnect (area, cell, editor->priv->name);
@@ -1229,7 +1230,6 @@ attribute_editor (GObject                *object,
                   CtkInspectorPropEditor *editor)
 {
   gpointer layout;
-  CtkCellArea *area;
   CtkTreeModel *model = NULL;
   gint col = -1;
   CtkWidget *label;
@@ -1247,6 +1247,8 @@ attribute_editor (GObject                *object,
   layout = g_object_get_data (object, "ctk-inspector-cell-layout");
   if (CTK_IS_CELL_LAYOUT (layout))
     {
+      CtkCellArea *area;
+
       area = ctk_cell_layout_get_area (CTK_CELL_LAYOUT (layout));
       col = ctk_cell_area_attribute_get_column (area,
                                                 CTK_CELL_RENDERER (object), 
@@ -1323,7 +1325,6 @@ find_action_owner (CtkActionable *actionable)
   const gchar *name;
   gchar *prefix;
   CtkWidget *win;
-  GActionGroup *group;
 
   full_name = ctk_actionable_get_action_name (actionable);
   if (!full_name)
@@ -1347,6 +1348,8 @@ find_action_owner (CtkActionable *actionable)
 
   while (widget != NULL)
     {
+      GActionGroup *group;
+
       group = ctk_widget_get_action_group (widget, prefix);
       if (group && g_action_group_has_action (group, name))
         return (GObject *)widget;
@@ -1371,17 +1374,18 @@ action_editor (GObject                *object,
                CtkInspectorPropEditor *editor)
 {
   CtkWidget *vbox;
-  CtkWidget *label;
-  CtkWidget *box;
-  CtkWidget *button;
   GObject *owner;
-  gchar *text;
 
   owner = find_action_owner (CTK_ACTIONABLE (object));
 
   vbox = ctk_box_new (CTK_ORIENTATION_VERTICAL, 0);
   if (owner)
     {
+      CtkWidget *label;
+      CtkWidget *box;
+      CtkWidget *button;
+      gchar *text;
+
       label = ctk_label_new (_("Action"));
       ctk_widget_set_margin_top (label, 10);
       ctk_container_add (CTK_CONTAINER (vbox), label);

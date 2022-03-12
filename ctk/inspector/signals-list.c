@@ -68,7 +68,6 @@ get_types (GObject *object, guint *length)
   GHashTable *seen;
   GType *ret;
   GType type;
-  GType *iface;
   gint i;
 
   seen = g_hash_table_new (g_direct_hash, g_direct_equal);
@@ -76,6 +75,8 @@ get_types (GObject *object, guint *length)
   type = ((GTypeInstance*)object)->g_class->g_type;
   while (type)
     {
+      GType *iface;
+
       g_hash_table_add (seen, GSIZE_TO_POINTER (type));
       iface = g_type_interfaces (type, NULL);
       for (i = 0; iface[i]; i++)

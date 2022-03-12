@@ -63,11 +63,12 @@ static void
 clear_all (CtkInspectorGestures *sl)
 {
   GList *children, *l;
-  CtkWidget *child;
 
   children = ctk_container_get_children (CTK_CONTAINER (sl));
   for (l = children; l; l = l->next)
     {
+      CtkWidget *child;
+
       child = l->data;
       ctk_container_remove (CTK_CONTAINER (sl), child);
     }
@@ -149,7 +150,6 @@ add_gesture_group (CtkInspectorGestures *sl,
   CtkWidget *frame;
   CtkWidget *listbox;
   GList *list, *l;
-  CtkGesture *g;
   CtkPropagationPhase phase;
 
   frame = ctk_frame_new (NULL);
@@ -165,6 +165,8 @@ add_gesture_group (CtkInspectorGestures *sl,
   list = ctk_gesture_get_group (gesture);
   for (l = list; l; l = l->next)
     {
+      CtkGesture *g;
+
       g = l->data;
       phase = GPOINTER_TO_INT (g_hash_table_lookup (hash, g));
       add_gesture (sl, object, listbox, g, phase);

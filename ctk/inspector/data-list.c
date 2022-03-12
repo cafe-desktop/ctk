@@ -67,15 +67,16 @@ static void
 add_columns (CtkInspectorDataList *sl)
 {
   gint n_columns;
-  CtkCellRenderer *cell;
-  GType type;
-  gchar *title;
-  CtkTreeViewColumn *col;
   gint i;
 
   n_columns = ctk_tree_model_get_n_columns (sl->priv->object);
   for (i = 0; i < n_columns; i++)
     {
+      CtkCellRenderer *cell;
+      GType type;
+      gchar *title;
+      CtkTreeViewColumn *col;
+
       cell = ctk_cell_renderer_text_new ();
       type = ctk_tree_model_get_column_type (sl->priv->object, i);
       title = g_strdup_printf ("%d: %s", i, g_type_name (type));

@@ -392,7 +392,6 @@ update_info (gpointer data)
       gint64 history_start;
       gint64 history_len;
       gint64 previous_frame_time;
-      CdkFrameTimings *previous_timings;
 
       clock = CDK_FRAME_CLOCK (sl->priv->object);
       frame = cdk_frame_clock_get_frame_counter (clock);
@@ -407,6 +406,8 @@ update_info (gpointer data)
 
       if (history_len > 0 && sl->priv->last_frame != frame)
         {
+          CdkFrameTimings *previous_timings;
+
           previous_timings = cdk_frame_clock_get_timings (clock, history_start);
           previous_frame_time = cdk_frame_timings_get_frame_time (previous_timings);
           tmp = g_strdup_printf ("%4.1f ⁄ s", (G_USEC_PER_SEC * history_len) / (double) (frame_time - previous_frame_time));

@@ -216,7 +216,6 @@ ctk_inspector_actions_set_object (CtkInspectorActions *sl,
   else if (CTK_IS_WIDGET (object))
     {
       const gchar **prefixes;
-      GActionGroup *group;
       gint i;
 
       prefixes = ctk_widget_list_action_prefixes (CTK_WIDGET (object));
@@ -224,6 +223,8 @@ ctk_inspector_actions_set_object (CtkInspectorActions *sl,
         {
           for (i = 0; prefixes[i]; i++)
             {
+              GActionGroup *group;
+
               group = ctk_widget_get_action_group (CTK_WIDGET (object), prefixes[i]);
               add_group (sl, group, prefixes[i]);
             }
