@@ -742,11 +742,12 @@ key_press_event (CtkWidget              *window,
           CtkTreeSelection *selection;
           CtkTreeModel *model;
           CtkTreeIter iter;
-          CtkTreePath *path;
 
           selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (wt->priv->tree));
           if (ctk_tree_selection_get_selected (selection, &model, &iter))
             {
+              CtkTreePath *path;
+
               path = ctk_tree_model_get_path (model, &iter);
               ctk_tree_view_row_activated (CTK_TREE_VIEW (wt->priv->tree),
                                            path,
@@ -831,11 +832,12 @@ static gboolean
 match_string (const gchar *string,
               const gchar *text)
 {
-  gchar *lower;
   gboolean match = FALSE;
 
   if (string)
     {
+      gchar *lower;
+
       lower = g_ascii_strdown (string, -1);
       match = g_str_has_prefix (lower, text);
       g_free (lower);

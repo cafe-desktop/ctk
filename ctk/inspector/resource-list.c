@@ -147,7 +147,6 @@ populate_details (CtkInspectorResourceList *rl,
   gchar *path;
   gchar *name;
   GBytes *bytes;
-  gchar *type;
   gconstpointer data;
   gint count;
   gsize size;
@@ -186,6 +185,7 @@ populate_details (CtkInspectorResourceList *rl,
     }
   else
     {
+      gchar *type;
       gchar *text;
       gchar *content_image;
       gchar *content_text;
@@ -334,11 +334,12 @@ count_data_func (CtkTreeViewColumn *col,
                  gpointer           data)
 {
   gint count;
-  gchar *text;
 
   ctk_tree_model_get (model, iter, COLUMN_COUNT, &count, -1);
   if (count > 0)
     {
+      gchar *text;
+
       text = g_strdup_printf ("%d", count);
       g_object_set (cell, "text", text, NULL);
       g_free (text);
@@ -411,11 +412,12 @@ key_press_event (CtkWidget                *window,
           CtkTreeSelection *selection;
           CtkTreeModel *model;
           CtkTreeIter iter;
-          CtkTreePath *path;
 
           selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (sl->priv->tree));
           if (ctk_tree_selection_get_selected (selection, &model, &iter))
             {
+              CtkTreePath *path;
+
               path = ctk_tree_model_get_path (model, &iter);
               ctk_tree_view_row_activated (CTK_TREE_VIEW (sl->priv->tree),
                                            path,
@@ -500,11 +502,12 @@ static gboolean
 match_string (const gchar *string,
               const gchar *text)
 {
-  gchar *lower;
   gboolean match = FALSE;
 
   if (string)
     {
+      gchar *lower;
+
       lower = g_ascii_strdown (string, -1);
       match = g_str_has_prefix (lower, text);
       g_free (lower);

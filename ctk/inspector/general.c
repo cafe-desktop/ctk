@@ -377,7 +377,6 @@ populate_display (CdkScreen *screen, CtkInspectorGeneral *gen)
   gchar *name;
   gint i;
   GList *children, *l;
-  CtkWidget *child;
   CdkDisplay *display;
   int n_monitors;
   CtkListBox *list;
@@ -386,6 +385,8 @@ populate_display (CdkScreen *screen, CtkInspectorGeneral *gen)
   children = ctk_container_get_children (CTK_CONTAINER (list));
   for (l = children; l; l = l->next)
     {
+      CtkWidget *child;
+
       child = l->data;
       if (ctk_widget_is_ancestor (gen->priv->display_name, child) ||
           ctk_widget_is_ancestor (gen->priv->display_rgba, child) ||
@@ -489,7 +490,6 @@ add_device (CtkInspectorGeneral *gen,
   GString *str;
   int i;
   guint n_touches;
-  gchar *text;
   CdkAxisFlags axes;
   const char *axis_name[] = {
     "Ignore",
@@ -540,6 +540,8 @@ add_device (CtkInspectorGeneral *gen,
   g_object_get (device, "num-touches", &n_touches, NULL);
   if (n_touches > 0)
     {
+      gchar *text;
+
       text = g_strdup_printf ("%d", n_touches);
       add_label_row (gen, CTK_LIST_BOX (gen->priv->device_box), "Touches", text, 20);
       g_free (text);

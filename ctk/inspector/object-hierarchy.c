@@ -71,7 +71,6 @@ ctk_inspector_object_hierarchy_set_object (CtkInspectorObjectHierarchy *oh,
   GList *list = NULL, *l;
   GHashTable *interfaces;
   GHashTableIter hit;
-  GType *ifaces;
   gint i;
 
   ctk_tree_store_clear (oh->priv->model);
@@ -84,6 +83,8 @@ ctk_inspector_object_hierarchy_set_object (CtkInspectorObjectHierarchy *oh,
 
   do
     {
+      GType *ifaces;
+
       class_name = g_type_name (type);
       list = g_list_append (list, (gpointer)class_name);
       ifaces = g_type_interfaces (type, NULL);

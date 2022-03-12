@@ -265,7 +265,6 @@ constructed (GObject *object)
   GVariant *state;
   gchar *fullname;
   CtkWidget *row;
-  CtkWidget *label;
 
   r->priv->enabled = g_action_group_get_action_enabled (r->priv->group, r->priv->name);
   state = g_action_group_get_action_state (r->priv->group, r->priv->name);
@@ -297,6 +296,8 @@ constructed (GObject *object)
 
   if (state)
     {
+      CtkWidget *label;
+
       r->priv->state_type = g_variant_type_copy (g_variant_get_type (state));
       row = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 10);
       label = ctk_label_new (_("State"));

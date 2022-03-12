@@ -171,11 +171,12 @@ static void
 clear_view (CtkInspectorSizeGroups *sl)
 {
   GList *children, *l;
-  CtkWidget *child;
 
   children = ctk_container_get_children (CTK_CONTAINER (sl));
   for (l = children; l; l = l->next)
     {
+      CtkWidget *child;
+
       child = l->data;
       ctk_container_remove (CTK_CONTAINER (sl), child);
     }
