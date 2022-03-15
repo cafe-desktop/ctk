@@ -28,14 +28,15 @@ CtkWidget *
 do_spinner (CtkWidget *do_widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *content_area;
-  CtkWidget *vbox;
-  CtkWidget *hbox;
-  CtkWidget *button;
-  CtkWidget *spinner;
 
   if (!window)
   {
+    CtkWidget *content_area;
+    CtkWidget *vbox;
+    CtkWidget *hbox;
+    CtkWidget *button;
+    CtkWidget *spinner;
+
     window = ctk_dialog_new_with_buttons ("Spinner",
                                           CTK_WINDOW (do_widget),
                                           0,

@@ -12,13 +12,14 @@ CtkWidget *
 do_entry_buffer (CtkWidget *do_widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *vbox;
-  CtkWidget *label;
-  CtkWidget *entry;
-  CtkEntryBuffer *buffer;
 
   if (!window)
     {
+      CtkWidget *vbox;
+      CtkWidget *label;
+      CtkWidget *entry;
+      CtkEntryBuffer *buffer;
+
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (do_widget));

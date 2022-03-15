@@ -48,10 +48,11 @@ CtkWidget *
 do_links (CtkWidget *do_widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *label;
 
   if (!window)
     {
+      CtkWidget *label;
+
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (do_widget));

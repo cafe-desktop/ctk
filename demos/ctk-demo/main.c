@@ -69,12 +69,13 @@ activate_quit (GSimpleAction *action,
                gpointer       user_data)
 {
   CtkApplication *app = user_data;
-  CtkWidget *win;
   GList *list, *next;
 
   list = ctk_application_get_windows (app);
   while (list)
     {
+      CtkWidget *win;
+
       win = list->data;
       next = list->next;
 
@@ -111,7 +112,6 @@ run_example_for_row (CtkWidget    *window,
 {
   PangoStyle style;
   GDoDemoFunc func;
-  CtkWidget *demo;
 
   ctk_tree_model_get (CTK_TREE_MODEL (model),
                       iter,
@@ -121,6 +121,8 @@ run_example_for_row (CtkWidget    *window,
 
   if (func)
     {
+      CtkWidget *demo;
+
       ctk_tree_store_set (CTK_TREE_STORE (model),
                           iter,
                           STYLE_COLUMN, (style == PANGO_STYLE_ITALIC ? PANGO_STYLE_NORMAL : PANGO_STYLE_ITALIC),
@@ -467,7 +469,6 @@ fontify (CtkTextBuffer *source_buffer)
   CtkTextIter start_iter, next_iter, tmp_iter;
   gint state;
   gchar *text;
-  gchar *start_ptr, *end_ptr;
   gchar *tag;
 
   ctk_text_buffer_create_tag (source_buffer, "source",
@@ -505,7 +506,9 @@ fontify (CtkTextBuffer *source_buffer)
   next_iter = start_iter;
   while (ctk_text_iter_forward_line (&next_iter))
     {
+      gchar *start_ptr, *end_ptr;
       gboolean start = TRUE;
+
       start_ptr = text = ctk_text_iter_get_text (&start_iter, &next_iter);
 
       do
@@ -540,9 +543,8 @@ static CtkWidget *create_text (CtkWidget **text_view, gboolean is_source);
 static void
 add_data_tab (const gchar *demoname)
 {
-  gchar *resource_dir, *resource_name;
+  gchar *resource_dir;
   gchar **resources;
-  CtkWidget *widget, *label;
   guint i;
 
   resource_dir = g_strconcat ("/", demoname, NULL);
@@ -555,6 +557,9 @@ add_data_tab (const gchar *demoname)
 
   for (i = 0; resources[i]; i++)
     {
+      gchar *resource_name;
+      CtkWidget *widget, *label;
+
       resource_name = g_strconcat (resource_dir, "/", resources[i], NULL);
 
       widget = ctk_image_new_from_resource (resource_name);
@@ -1056,12 +1061,14 @@ auto_quit (gpointer data)
 static void
 list_demos (void)
 {
-  Demo *d, *c;
+  Demo *d;
 
   d = ctk_demos;
 
   while (d->title)
     {
+      Demo *c;
+
       c = d->children;
       if (d->name)
         g_print ("%s\n", d->name);

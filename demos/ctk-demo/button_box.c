@@ -45,14 +45,15 @@ CtkWidget *
 do_button_box (CtkWidget *do_widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *main_vbox;
-  CtkWidget *vbox;
-  CtkWidget *hbox;
-  CtkWidget *frame_horz;
-  CtkWidget *frame_vert;
 
   if (!window)
   {
+    CtkWidget *main_vbox;
+    CtkWidget *vbox;
+    CtkWidget *hbox;
+    CtkWidget *frame_horz;
+    CtkWidget *frame_vert;
+
     window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
     ctk_window_set_screen (CTK_WINDOW (window),
                            ctk_widget_get_screen (do_widget));

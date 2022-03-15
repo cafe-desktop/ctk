@@ -93,7 +93,6 @@ ctk_fishbowl_get_preferred_width (CtkWidget *widget,
 {
   CtkFishbowl *fishbowl = CTK_FISHBOWL (widget);
   CtkFishbowlPrivate *priv = ctk_fishbowl_get_instance_private (fishbowl);
-  CtkFishbowlChild *child;
   GList *children;
   gint child_min, child_nat;
 
@@ -102,6 +101,8 @@ ctk_fishbowl_get_preferred_width (CtkWidget *widget,
 
   for (children = priv->children; children; children = children->next)
     {
+      CtkFishbowlChild *child;
+
       child = children->data;
 
       if (!ctk_widget_get_visible (child->widget))
@@ -121,7 +122,6 @@ ctk_fishbowl_get_preferred_height (CtkWidget *widget,
 {
   CtkFishbowl *fishbowl = CTK_FISHBOWL (widget);
   CtkFishbowlPrivate *priv = ctk_fishbowl_get_instance_private (fishbowl);
-  CtkFishbowlChild *child;
   GList *children;
   gint child_min, child_nat;
 
@@ -131,6 +131,7 @@ ctk_fishbowl_get_preferred_height (CtkWidget *widget,
   for (children = priv->children; children; children = children->next)
     {
       int min_width;
+      CtkFishbowlChild *child;
 
       child = children->data;
 
@@ -151,13 +152,14 @@ ctk_fishbowl_size_allocate (CtkWidget     *widget,
 {
   CtkFishbowl *fishbowl = CTK_FISHBOWL (widget);
   CtkFishbowlPrivate *priv = ctk_fishbowl_get_instance_private (fishbowl);
-  CtkFishbowlChild *child;
   CtkAllocation child_allocation;
   CtkRequisition child_requisition;
   GList *children;
 
   for (children = priv->children; children; children = children->next)
     {
+      CtkFishbowlChild *child;
+
       child = children->data;
 
       if (!ctk_widget_get_visible (child->widget))
@@ -211,12 +213,13 @@ ctk_fishbowl_remove (CtkContainer *container,
 {
   CtkFishbowl *fishbowl = CTK_FISHBOWL (container);
   CtkFishbowlPrivate *priv = ctk_fishbowl_get_instance_private (fishbowl);
-  CtkFishbowlChild *child;
   CtkWidget *widget_bowl = CTK_WIDGET (fishbowl);
   GList *children;
 
   for (children = priv->children; children; children = children->next)
     {
+      CtkFishbowlChild *child;
+
       child = children->data;
 
       if (child->widget == widget)
@@ -248,7 +251,6 @@ ctk_fishbowl_forall (CtkContainer *container,
 {
   CtkFishbowl *fishbowl = CTK_FISHBOWL (container);
   CtkFishbowlPrivate *priv = ctk_fishbowl_get_instance_private (fishbowl);
-  CtkFishbowlChild *child;
   GList *children;
 
   if (!include_internals)
@@ -257,6 +259,8 @@ ctk_fishbowl_forall (CtkContainer *container,
   children = priv->children;
   while (children)
     {
+      CtkFishbowlChild *child;
+
       child = children->data;
       children = children->next;
 
@@ -585,7 +589,6 @@ ctk_fishbowl_tick (CtkWidget     *widget,
 {
   CtkFishbowl *fishbowl = CTK_FISHBOWL (widget);
   CtkFishbowlPrivate *priv = ctk_fishbowl_get_instance_private (fishbowl);
-  CtkFishbowlChild *child;
   GList *l;
   gint64 frame_time, elapsed;
   gboolean do_update;
@@ -601,6 +604,8 @@ ctk_fishbowl_tick (CtkWidget     *widget,
 
   for (l = priv->children; l; l = l->next)
     {
+      CtkFishbowlChild *child;
+
       child = l->data;
 
       child->x += child->dx * ((double) elapsed / G_USEC_PER_SEC);

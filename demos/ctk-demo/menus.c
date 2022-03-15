@@ -83,13 +83,12 @@ static CtkWidget *window = NULL;
 CtkWidget *
 do_menus (CtkWidget *do_widget)
 {
-  CtkWidget *box;
-  CtkWidget *box1;
-  CtkWidget *box2;
-  CtkWidget *button;
-
   if (!window)
     {
+      CtkWidget *box;
+      CtkWidget *box1;
+      CtkWidget *box2;
+      CtkWidget *button;
       CtkWidget *menubar;
       CtkWidget *menu;
       CtkWidget *menuitem;

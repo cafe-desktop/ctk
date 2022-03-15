@@ -110,15 +110,15 @@ CtkWidget *
 do_filtermodel (CtkWidget *do_widget)
 {
   static CtkWidget *window;
-  CtkWidget *tree;
-  CtkListStore *store;
-  CtkTreeModel *model;
-  CtkTreeViewColumn *column;
-  CtkCellRenderer *cell;
-  GType types[4];
 
   if (!window)
     {
+      CtkWidget *tree;
+      CtkListStore *store;
+      CtkTreeModel *model;
+      CtkTreeViewColumn *column;
+      CtkCellRenderer *cell;
+      GType types[4];
       CtkBuilder *builder;
 
       builder = ctk_builder_new_from_resource ("/filtermodel/filtermodel.ui");

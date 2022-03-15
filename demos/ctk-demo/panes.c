@@ -126,14 +126,15 @@ CtkWidget *
 do_panes (CtkWidget *do_widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *frame;
-  CtkWidget *hpaned;
-  CtkWidget *vpaned;
-  CtkWidget *button;
-  CtkWidget *vbox;
 
   if (!window)
     {
+      CtkWidget *frame;
+      CtkWidget *hpaned;
+      CtkWidget *vpaned;
+      CtkWidget *button;
+      CtkWidget *vbox;
+
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (do_widget));

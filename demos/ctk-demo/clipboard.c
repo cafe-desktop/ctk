@@ -129,10 +129,10 @@ drag_data_received (CtkWidget        *widget,
                     guint32           time,
                     gpointer          data)
 {
-  GdkPixbuf *pixbuf;
-
   if (ctk_selection_data_get_length (selection_data) > 0)
     {
+      GdkPixbuf *pixbuf;
+
       pixbuf = ctk_selection_data_get_pixbuf (selection_data);
       ctk_image_set_from_pixbuf (CTK_IMAGE (data), pixbuf);
       g_object_unref (pixbuf);

@@ -46,7 +46,6 @@ update_display (void)
   gboolean has_feature;
   int i;
   hb_tag_t lang_tag;
-  CtkTreeModel *model;
   CtkTreeIter iter;
   const char *lang;
 
@@ -93,6 +92,8 @@ update_display (void)
 
   if (ctk_combo_box_get_active_iter (CTK_COMBO_BOX (script_lang), &iter))
     {
+      CtkTreeModel *model;
+
       model = ctk_combo_box_get_model (CTK_COMBO_BOX (script_lang));
       ctk_tree_model_get (model, &iter,
                           3, &lang_tag,

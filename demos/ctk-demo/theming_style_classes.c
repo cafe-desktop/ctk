@@ -15,11 +15,11 @@ static CtkWidget *window = NULL;
 CtkWidget *
 do_theming_style_classes (CtkWidget *do_widget)
 {
-  CtkWidget *grid;
-  CtkBuilder *builder;
-
   if (!window)
     {
+      CtkWidget *grid;
+      CtkBuilder *builder;
+
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (do_widget));

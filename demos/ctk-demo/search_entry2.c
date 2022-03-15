@@ -66,16 +66,17 @@ CtkWidget *
 do_search_entry2 (CtkWidget *do_widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *vbox;
-  CtkWidget *hbox;
-  CtkWidget *label;
-  CtkWidget *entry;
-  CtkWidget *container;
-  CtkWidget *searchbar;
-  CtkWidget *button;
 
   if (!window)
     {
+      CtkWidget *vbox;
+      CtkWidget *hbox;
+      CtkWidget *label;
+      CtkWidget *entry;
+      CtkWidget *container;
+      CtkWidget *searchbar;
+      CtkWidget *button;
+
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_title (CTK_WINDOW (window), "Delayed Search Entry");
       ctk_window_set_transient_for (CTK_WINDOW (window), CTK_WINDOW (do_widget));

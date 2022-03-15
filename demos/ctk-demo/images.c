@@ -328,15 +328,15 @@ toggle_sensitivity_callback (CtkWidget *togglebutton,
 CtkWidget *
 do_images (CtkWidget *do_widget)
 {
-  CtkWidget *frame;
-  CtkWidget *vbox;
-  CtkWidget *image;
-  CtkWidget *label;
-  CtkWidget *button;
-  GIcon     *gicon;
-
   if (!window)
     {
+      CtkWidget *frame;
+      CtkWidget *vbox;
+      CtkWidget *image;
+      CtkWidget *label;
+      CtkWidget *button;
+      GIcon     *gicon;
+
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (do_widget));

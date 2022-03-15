@@ -410,13 +410,13 @@ ctk_mirror_bin_draw (CtkWidget *widget,
   window = ctk_widget_get_window (widget);
   if (ctk_cairo_should_draw_window (cr, window))
     {
-      cairo_surface_t *surface;
-      cairo_matrix_t matrix;
-      cairo_pattern_t *mask;
-      int height;
-
       if (bin->child && ctk_widget_get_visible (bin->child))
         {
+          cairo_surface_t *surface;
+          cairo_matrix_t matrix;
+          cairo_pattern_t *mask;
+          int height;
+
           surface = cdk_offscreen_window_get_surface (bin->offscreen_window);
           height = cdk_window_get_height (bin->offscreen_window);
 

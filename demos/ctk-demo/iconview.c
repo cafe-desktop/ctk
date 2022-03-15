@@ -62,12 +62,12 @@ fill_store (CtkListStore *store)
   name = g_dir_read_name (dir);
   while (name != NULL)
     {
-      gchar *path, *display_name;
-      gboolean is_dir;
-
       /* We ignore hidden files that start with a '.' */
       if (name[0] != '.')
         {
+          gchar *path, *display_name;
+          gboolean is_dir;
+
           path = g_build_filename (parent, name, NULL);
 
           is_dir = g_file_test (path, G_FILE_TEST_IS_DIR);

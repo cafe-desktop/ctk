@@ -221,15 +221,15 @@ entry_populate_popup (CtkEntry *entry,
 CtkWidget *
 do_search_entry (CtkWidget *do_widget)
 {
-  CtkWidget *vbox;
-  CtkWidget *hbox;
-  CtkWidget *label;
-  CtkWidget *entry;
-  CtkWidget *find_button;
-  CtkWidget *cancel_button;
-
   if (!window)
     {
+      CtkWidget *vbox;
+      CtkWidget *hbox;
+      CtkWidget *label;
+      CtkWidget *entry;
+      CtkWidget *find_button;
+      CtkWidget *cancel_button;
+
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_screen (CTK_WINDOW (window), ctk_widget_get_screen (do_widget));
       ctk_window_set_title (CTK_WINDOW (window), "Search Entry");

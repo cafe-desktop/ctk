@@ -57,10 +57,11 @@ CtkWidget *
 do_textmask (CtkWidget *do_widget)
 {
   static CtkWidget *window = NULL;
-  static CtkWidget *da;
 
   if (!window)
     {
+      static CtkWidget *da;
+
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_resizable (CTK_WINDOW (window), TRUE);
       ctk_widget_set_size_request (window, 400, 200);
