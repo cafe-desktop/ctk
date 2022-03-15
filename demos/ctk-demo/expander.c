@@ -35,16 +35,16 @@ do_not_expand (CtkWidget *child, gpointer data)
 CtkWidget *
 do_expander (CtkWidget *do_widget)
 {
-  CtkWidget *toplevel;
-  CtkWidget *area;
-  CtkWidget *box;
-  CtkWidget *expander;
-  CtkWidget *sw;
-  CtkWidget *tv;
-  CtkTextBuffer *buffer;
-
   if (!window)
     {
+      CtkWidget *toplevel;
+      CtkWidget *area;
+      CtkWidget *box;
+      CtkWidget *expander;
+      CtkWidget *sw;
+      CtkWidget *tv;
+      CtkTextBuffer *buffer;
+
       toplevel = ctk_widget_get_toplevel (do_widget);
       window = ctk_message_dialog_new_with_markup (CTK_WINDOW (toplevel),
                                                    0,

@@ -302,14 +302,15 @@ CtkWidget *
 do_combobox (CtkWidget *do_widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *vbox, *frame, *box, *combo, *entry;
-  CtkTreeModel *model;
-  CtkCellRenderer *renderer;
-  CtkTreePath *path;
-  CtkTreeIter iter;
 
   if (!window)
   {
+    CtkWidget *vbox, *frame, *box, *combo, *entry;
+    CtkTreeModel *model;
+    CtkCellRenderer *renderer;
+    CtkTreePath *path;
+    CtkTreeIter iter;
+
     window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
     ctk_window_set_screen (CTK_WINDOW (window),
                            ctk_widget_get_screen (do_widget));

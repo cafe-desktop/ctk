@@ -56,11 +56,11 @@ change_color_callback (CtkWidget *button,
 CtkWidget *
 do_colorsel (CtkWidget *do_widget)
 {
-  CtkWidget *vbox;
-  CtkWidget *button;
-
   if (!window)
     {
+      CtkWidget *vbox;
+      CtkWidget *button;
+
       color.red = 0;
       color.blue = 1;
       color.green = 0;

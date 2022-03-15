@@ -13,11 +13,6 @@ CtkWidget *
 do_sidebar (CtkWidget *do_widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *sidebar;
-  CtkWidget *stack;
-  CtkWidget *box;
-  CtkWidget *widget;
-  CtkWidget *header;
   const gchar* pages[] = {
     "Welcome to CTK+",
     "CtkStackSidebar Widget",
@@ -35,6 +30,12 @@ do_sidebar (CtkWidget *do_widget)
 
   if (!window)
     {
+      CtkWidget *sidebar;
+      CtkWidget *stack;
+      CtkWidget *box;
+      CtkWidget *widget;
+      CtkWidget *header;
+
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_resizable (CTK_WINDOW (window), TRUE);
       ctk_widget_set_size_request (window, 500, 350);

@@ -505,11 +505,12 @@ ctk_rotated_bin_draw (CtkWidget *widget,
   window = ctk_widget_get_window (widget);
   if (ctk_cairo_should_draw_window (cr, window))
     {
-      cairo_surface_t *surface;
       CtkAllocation child_area;
 
       if (bin->child && ctk_widget_get_visible (bin->child))
         {
+          cairo_surface_t *surface;
+
           surface = cdk_offscreen_window_get_surface (bin->offscreen_window);
           ctk_widget_get_allocation (bin->child, &child_area);
 

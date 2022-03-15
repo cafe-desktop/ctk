@@ -553,7 +553,6 @@ on_action_activate (GSimpleAction *action,
 {
   CtkWidget *label = user_data;
   const gchar *result;
-  gchar *str;
 
   result = g_object_get_data (G_OBJECT (action), "action-result");
 
@@ -561,6 +560,8 @@ on_action_activate (GSimpleAction *action,
     update_label_and_timeout (label, result);
   else
     {
+      gchar *str;
+
       str = g_strdup_printf ("%s %.2f", result, g_variant_get_double (parameter));
       update_label_and_timeout (label, str);
       g_free (str);
@@ -613,11 +614,12 @@ CtkWidget *
 do_event_axes (CtkWidget *toplevel)
 {
   static CtkWidget *window = NULL;
-  EventData *event_data;
-  CtkWidget *box, *label;
 
   if (!window)
     {
+      EventData *event_data;
+      CtkWidget *box, *label;
+
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_title (CTK_WINDOW (window), "Event Axes");
       ctk_window_set_default_size (CTK_WINDOW (window), 400, 400);

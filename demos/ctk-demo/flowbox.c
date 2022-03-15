@@ -45,7 +45,6 @@ CtkWidget *
 do_flowbox (CtkWidget *do_widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *scrolled, *flowbox;
   const gchar *colors[] = {
     "AliceBlue",
     "AntiqueWhite",
@@ -714,10 +713,12 @@ do_flowbox (CtkWidget *do_widget)
     "YellowGreen",
     NULL
   };
-  gint i;
 
   if (!window)
     {
+      CtkWidget *scrolled, *flowbox;
+      gint i;
+
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (do_widget));

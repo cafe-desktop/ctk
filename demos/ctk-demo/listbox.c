@@ -333,15 +333,13 @@ row_activated (CtkListBox *listbox, CtkListBoxRow *row)
 CtkWidget *
 do_listbox (CtkWidget *do_widget)
 {
-  CtkWidget *scrolled, *listbox, *vbox, *label;
-  CtkMessage *message;
-  CtkMessageRow *row;
-  GBytes *data;
-  char **lines;
-  int i;
-
   if (!window)
     {
+      CtkWidget *scrolled, *listbox, *vbox, *label;
+      GBytes *data;
+      char **lines;
+      int i;
+
       avatar_pixbuf_other = gdk_pixbuf_new_from_resource_at_scale ("/listbox/apple-red.png", 32, 32, FALSE, NULL);
 
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -377,6 +375,9 @@ do_listbox (CtkWidget *do_widget)
 
       for (i = 0; lines[i] != NULL && *lines[i]; i++)
         {
+          CtkMessage *message;
+          CtkMessageRow *row;
+
           message = ctk_message_new (lines[i]);
           row = ctk_message_row_new (message);
           ctk_widget_show (CTK_WIDGET (row));

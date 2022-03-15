@@ -10,10 +10,11 @@ CtkWidget *
 do_pickers (CtkWidget *do_widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *table, *label, *picker;
 
   if (!window)
   {
+    CtkWidget *table, *label, *picker;
+
     window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
     ctk_window_set_screen (CTK_WINDOW (window),
                            ctk_widget_get_screen (do_widget));

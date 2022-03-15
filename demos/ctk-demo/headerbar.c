@@ -15,14 +15,15 @@ CtkWidget *
 do_headerbar (CtkWidget *do_widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *header;
-  CtkWidget *button;
-  CtkWidget *box;
-  CtkWidget *image;
-  GIcon *icon;
 
   if (!window)
     {
+      CtkWidget *header;
+      CtkWidget *button;
+      CtkWidget *box;
+      CtkWidget *image;
+      GIcon *icon;
+
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_screen (CTK_WINDOW (window), ctk_widget_get_screen (do_widget));
       g_signal_connect (window, "destroy",

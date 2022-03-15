@@ -145,11 +145,12 @@ CtkWidget *
 do_gestures (CtkWidget *do_widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *drawing_area;
-  CtkGesture *gesture;
 
   if (!window)
     {
+      CtkWidget *drawing_area;
+      CtkGesture *gesture;
+
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_default_size (CTK_WINDOW (window), 400, 400);
       ctk_window_set_title (CTK_WINDOW (window), "Gestures");

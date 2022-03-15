@@ -48,13 +48,13 @@ CtkWidget *
 do_builder (CtkWidget *do_widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *toolbar;
-  GActionGroup *actions;
-  CtkAccelGroup *accel_group;
-  CtkWidget *item;
 
   if (!window)
     {
+      CtkWidget *toolbar;
+      GActionGroup *actions;
+      CtkAccelGroup *accel_group;
+      CtkWidget *item;
       CtkBuilder *builder;
 
       builder = ctk_builder_new_from_resource ("/builder/demo.ui");

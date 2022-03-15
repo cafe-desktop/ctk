@@ -697,9 +697,7 @@ static void
 load_toggle_items (CtkToolPalette *palette)
 {
   GSList *toggle_group = NULL;
-  CtkToolItem *item;
   CtkWidget *group;
-  char *label;
   int i;
 
   group = ctk_tool_item_group_new ("Radio Item");
@@ -707,6 +705,9 @@ load_toggle_items (CtkToolPalette *palette)
 
   for (i = 1; i <= 10; ++i)
     {
+      CtkToolItem *item;
+      char *label;
+
       label = g_strdup_printf ("#%d", i);
       item = ctk_radio_tool_button_new (toggle_group);
       ctk_tool_button_set_label (CTK_TOOL_BUTTON (item), label);

@@ -80,26 +80,27 @@ CtkWidget *
 do_sizegroup (CtkWidget *do_widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *table;
-  CtkWidget *frame;
-  CtkWidget *vbox;
-  CtkWidget *check_button;
-  CtkSizeGroup *size_group;
-
-  static const char *color_options[] = {
-    "Red", "Green", "Blue", NULL
-  };
-
-  static const char *dash_options[] = {
-    "Solid", "Dashed", "Dotted", NULL
-  };
-
-  static const char *end_options[] = {
-    "Square", "Round", "Double Arrow", NULL
-  };
 
   if (!window)
     {
+      CtkWidget *table;
+      CtkWidget *frame;
+      CtkWidget *vbox;
+      CtkWidget *check_button;
+      CtkSizeGroup *size_group;
+
+      static const char *color_options[] = {
+        "Red", "Green", "Blue", NULL
+      };
+
+      static const char *dash_options[] = {
+        "Solid", "Dashed", "Dotted", NULL
+      };
+
+      static const char *end_options[] = {
+        "Square", "Round", "Double Arrow", NULL
+      };
+
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_screen (CTK_WINDOW (window), ctk_widget_get_screen (do_widget));
       ctk_window_set_title (CTK_WINDOW (window), "Size Groups");

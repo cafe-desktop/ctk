@@ -200,13 +200,13 @@ close_window (void)
 CtkWidget *
 do_drawingarea (CtkWidget *do_widget)
 {
-  CtkWidget *frame;
-  CtkWidget *vbox;
-  CtkWidget *da;
-  CtkWidget *label;
-
   if (!window)
     {
+      CtkWidget *frame;
+      CtkWidget *vbox;
+      CtkWidget *da;
+      CtkWidget *label;
+
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (do_widget));

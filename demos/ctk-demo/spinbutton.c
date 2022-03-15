@@ -126,11 +126,12 @@ month_spin_input (CtkSpinButton *spin_button,
                   gdouble       *new_val)
 {
   gint i;
-  gchar *tmp1, *tmp2;
   gboolean found = FALSE;
 
   for (i = 1; i <= 12; i++)
     {
+      gchar *tmp1, *tmp2;
+
       tmp1 = g_ascii_strup (month[i - 1], -1);
       tmp2 = g_ascii_strup (ctk_entry_get_text (CTK_ENTRY (spin_button)), -1);
       if (strstr (tmp1, tmp2) == tmp1)

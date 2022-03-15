@@ -126,10 +126,11 @@ CtkWidget *
 do_popover (CtkWidget *do_widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *popover, *box, *widget;
 
   if (!window)
     {
+      CtkWidget *popover, *box, *widget;
+
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       box = ctk_box_new (CTK_ORIENTATION_VERTICAL, 24);
       ctk_container_set_border_width (CTK_CONTAINER (box), 24);

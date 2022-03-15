@@ -35,7 +35,6 @@ append_element (CtkWidgetPath *path,
   };
   const char *next;
   char *name;
-  char type;
   guint i;
 
   next = strpbrk (selector, "#.:");
@@ -65,6 +64,8 @@ append_element (CtkWidgetPath *path,
 
   while (*next != '\0')
     {
+      char type;
+
       type = *next;
       selector = next + 1;
       next = strpbrk (selector, "#.:");

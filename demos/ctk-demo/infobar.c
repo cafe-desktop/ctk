@@ -41,16 +41,17 @@ CtkWidget *
 do_infobar (CtkWidget *do_widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *frame;
-  CtkWidget *bar;
-  CtkWidget *vbox;
-  CtkWidget *vbox2;
-  CtkWidget *label;
-  CtkWidget *actions;
-  CtkWidget *button;
 
   if (!window)
     {
+      CtkWidget *frame;
+      CtkWidget *bar;
+      CtkWidget *vbox;
+      CtkWidget *vbox2;
+      CtkWidget *label;
+      CtkWidget *actions;
+      CtkWidget *button;
+
       actions = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
 
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
