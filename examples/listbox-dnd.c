@@ -117,9 +117,8 @@ static const char *css =
 int
 main (int argc, char *argv[])
 {
-  CtkWidget *window, *list, *sw, *row;
+  CtkWidget *window, *list, *sw;
   gint i;
-  gchar *text;
   CtkCssProvider *provider;
 
   ctk_init (NULL, NULL);
@@ -144,6 +143,9 @@ main (int argc, char *argv[])
 
   for (i = 0; i < 20; i++)
     {
+      CtkWidget *row;
+      gchar *text;
+
       text = g_strdup_printf ("Row %d", i);
       row = create_row (text);
       ctk_list_box_insert (CTK_LIST_BOX (list), row, -1);

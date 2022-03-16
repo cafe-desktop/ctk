@@ -156,13 +156,14 @@ quit_app (GSimpleAction *action,
           gpointer       user_data)
 {
   GList *list, *next;
-  CtkWindow *win;
 
   g_print ("Going down...\n");
 
   list = ctk_application_get_windows (CTK_APPLICATION (g_application_get_default ()));
   while (list)
     {
+      CtkWindow *win;
+
       win = list->data;
       next = list->next;
 
