@@ -142,7 +142,7 @@ take_window_shot (Window         child,
   gint x = 0, y = 0;
   gint width, height;
 
-  GdkPixbuf *tmp, *tmp2;
+  GdkPixbuf *tmp;
   GdkPixbuf *retval = NULL;
 
   if (decor == DECOR_WINDOW_FRAME)
@@ -181,6 +181,8 @@ take_window_shot (Window         child,
 
   if (tmp != NULL)
     {
+      GdkPixbuf *tmp2;
+
       if (decor == DECOR_WINDOW_FRAME)
         tmp2 = remove_shaped_area (tmp, xid);
       else if (decor == DECOR_FRAME)
