@@ -220,7 +220,7 @@ output_file_from_settings (CtkPrintSettings *settings,
   if (uri == NULL)
     { 
       const gchar *extension, *basename = NULL, *output_dir = NULL;
-      gchar *name, *locale_name, *path;
+      gchar *name, *locale_name;
 
       if (default_format)
         extension = default_format;
@@ -256,6 +256,8 @@ output_file_from_settings (CtkPrintSettings *settings,
 
       if (locale_name != NULL)
         {
+          gchar *path;
+
           if (settings)
             output_dir = ctk_print_settings_get (settings, CTK_PRINT_SETTINGS_OUTPUT_DIR);
           if (output_dir == NULL)
@@ -272,7 +274,7 @@ output_file_from_settings (CtkPrintSettings *settings,
                 path = g_build_filename (document_dir, locale_name, NULL);
 
               uri = g_filename_to_uri (path, NULL, NULL); 
-	    }
+            }
           else
             {
               path = g_build_filename (output_dir, locale_name, NULL);
@@ -560,13 +562,15 @@ set_printer_format_from_option_set (CtkPrinter          *printer,
 				    CtkPrinterOptionSet *set)
 {
   CtkPrinterOption *format_option;
-  const gchar *value;
   gint i;
 
   format_option = ctk_printer_option_set_lookup (set, "output-file-format");
   if (format_option && format_option->value)
     {
+      const gchar *value;
+
       value = format_option->value;
+
       if (value)
         {
 	  for (i = 0; i < N_FORMATS; ++i)
@@ -667,7 +671,6 @@ file_printer_get_options (CtkPrinter           *printer,
   OutputFormat format;
   gchar *uri;
   gint current_format = 0;
-  _OutputFormatChangedData *format_changed_data;
 
   format = format_from_settings (settings);
 
@@ -742,6 +745,8 @@ file_printer_get_options (CtkPrinter           *printer,
 
   if (n_formats > 1)
     {
+      _OutputFormatChangedData *format_changed_data;
+
       option = ctk_printer_option_new ("output-file-format", _("_Output format"), 
 				       CTK_PRINTER_OPTION_TYPE_ALTERNATIVE);
       option->group = g_strdup ("CtkPrintDialogExtension");
@@ -844,12 +849,12 @@ file_printer_list_papers (CtkPrinter *printer)
 {
   GList *result = NULL;
   GList *papers, *p;
-  CtkPageSetup *page_setup;
 
   papers = ctk_paper_size_get_paper_sizes (FALSE);
 
   for (p = papers; p; p = p->next)
     {
+      CtkPageSetup *page_setup;
       CtkPaperSize *paper_size = p->data;
 
       page_setup = ctk_page_setup_new ();

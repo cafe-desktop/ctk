@@ -796,7 +796,6 @@ cloudprint_get_managed_objects_cb (GObject      *source,
 
   if (output != NULL)
     {
-      TGOAAccount *goa_account;
       GList       *accounts = NULL;
       GList       *iter;
       guint	   searching;
@@ -812,7 +811,9 @@ cloudprint_get_managed_objects_cb (GObject      *source,
 
       for (iter = accounts; iter != NULL; iter = iter->next)
         {
+	  TGOAAccount *goa_account;
 	  CtkCloudprintAccount *account;
+
           goa_account = (TGOAAccount *) iter->data;
 	  account = ctk_cloudprint_account_new (goa_account->id,
 						goa_account->path,
@@ -872,7 +873,6 @@ cloudprint_bus_get_cb (GObject      *source,
                        GAsyncResult *res,
                        gpointer      user_data)
 {
-  CtkPrintBackendCloudprint *backend;
   GDBusConnection *connection;
   GError *error = NULL;
 
@@ -880,6 +880,8 @@ cloudprint_bus_get_cb (GObject      *source,
 
   if (connection != NULL)
     {
+      CtkPrintBackendCloudprint *backend;
+
       backend = CTK_PRINT_BACKEND_CLOUDPRINT (user_data);
 
       CTK_NOTE (PRINTING,

@@ -216,7 +216,7 @@ output_test_from_settings (CtkPrintSettings *settings,
   if (uri == NULL)
     { 
       const gchar *extension;
-      gchar *name, *locale_name, *path;
+      gchar *name, *locale_name;
 
       if (default_format)
         extension = default_format;
@@ -235,14 +235,16 @@ output_test_from_settings (CtkPrintSettings *settings,
 
       if (locale_name != NULL)
         {
-	  gchar *current_dir = g_get_current_dir ();
+          gchar *path;
+
+          gchar *current_dir = g_get_current_dir ();
           path = g_build_filename (current_dir, locale_name, NULL);
           g_free (locale_name);
 
           uri = g_filename_to_uri (path, NULL, NULL);
           g_free (path);
-	  g_free (current_dir);
-	}
+          g_free (current_dir);
+        }
     }
 
   return uri;
@@ -454,12 +456,12 @@ error:
 static void
 ctk_print_backend_test_init (CtkPrintBackendTest *backend)
 {
-  CtkPrinter *printer;
   int i;
 
   /* make 100 of these printers */
   for (i = 0; i < 100; i++)
     {
+      CtkPrinter *printer;
       char *name;
  
       name = g_strdup_printf ("%s %i", _("Print to Test Printer"), i);

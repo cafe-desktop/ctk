@@ -407,7 +407,6 @@ static ipp_tag_t
 _find_option_tag (const gchar *option)
 {
   int lower_bound, upper_bound, num_options;
-  int current_option;
   ipp_tag_t result;
 
   result = IPP_TAG_ZERO;
@@ -417,23 +416,25 @@ _find_option_tag (const gchar *option)
   
   while (1)
     {
+      int current_option;
       int match;
+
       current_option = (int) (((upper_bound - lower_bound) / 2) + lower_bound);
 
       match = strcasecmp (option, ipp_options[current_option].name);
       if (match == 0)
         {
-	  result = ipp_options[current_option].value_tag;
-	  return result;
-	}
+          result = ipp_options[current_option].value_tag;
+          return result;
+        }
       else if (match < 0)
         {
           upper_bound = current_option - 1;
-	}
+        }
       else
         {
           lower_bound = current_option + 1;
-	}
+        }
 
       if (upper_bound == lower_bound && upper_bound == current_option)
         return result;
@@ -783,7 +784,6 @@ static void
 _post_write_data (CtkCupsRequest *request)
 {
   gsize bytes;
-  char buffer[_CTK_CUPS_MAX_CHUNK_SIZE];
   http_status_t http_status;
 
   CTK_NOTE (PRINTING,
@@ -801,6 +801,7 @@ _post_write_data (CtkCupsRequest *request)
 
   if (http_status == HTTP_CONTINUE || http_status == HTTP_OK)
     {
+      char buffer[_CTK_CUPS_MAX_CHUNK_SIZE];
       GIOStatus io_status;
       GError *error;
 
