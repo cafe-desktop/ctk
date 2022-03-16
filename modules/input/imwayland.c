@@ -276,7 +276,6 @@ static void
 notify_surrounding_text (CtkIMContextWayland *context)
 {
 #define MAX_LEN 4000
-  const gchar *start, *end;
   int len, cursor, anchor;
   char *str = NULL;
 
@@ -297,6 +296,8 @@ notify_surrounding_text (CtkIMContextWayland *context)
    */
   if (len > MAX_LEN)
     {
+      const gchar *start, *end;
+
       if (context->surrounding.cursor_idx < MAX_LEN &&
           context->surrounding.anchor_idx < MAX_LEN)
         {

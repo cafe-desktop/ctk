@@ -77,10 +77,11 @@ static void
 broadway_focus_in (CtkIMContext *context)
 {
   CtkIMContextBroadway *bw = CTK_IM_CONTEXT_BROADWAY (context);
-  CdkDisplay *display;
 
   if (bw->client_window)
     {
+      CdkDisplay *display;
+
       display = cdk_window_get_display (bw->client_window);
       cdk_broadway_display_show_keyboard (CDK_BROADWAY_DISPLAY (display));
     }
@@ -90,10 +91,11 @@ static void
 broadway_focus_out (CtkIMContext *context)
 {
   CtkIMContextBroadway *bw = CTK_IM_CONTEXT_BROADWAY (context);
-  CdkDisplay *display;
 
   if (bw->client_window)
     {
+      CdkDisplay *display;
+
       display = cdk_window_get_display (bw->client_window);
       cdk_broadway_display_hide_keyboard (CDK_BROADWAY_DISPLAY (display));
     }
