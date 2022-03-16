@@ -1360,7 +1360,6 @@ lookup_auth_info (gpointer user_data)
   gsize                       length,
                               i;
   gboolean                    need_secret_auth_info = FALSE;
-  const gchar                *printer_uri;
 
   dispatch = user_data;
 
@@ -1382,6 +1381,8 @@ lookup_auth_info (gpointer user_data)
 
   if (dispatch->backend->secrets_service_available && need_secret_auth_info)
     {
+      const gchar *printer_uri;
+
       dispatch->backend->authentication_lock = TRUE;
       printer_uri = ctk_cups_request_ipp_get_string (dispatch->request,
                                                      IPP_TAG_URI,
@@ -2026,7 +2027,6 @@ get_ipp_version (const char *ipp_version_string,
                  guchar     *ipp_version_major,
                  guchar     *ipp_version_minor)
 {
-  gchar **ipp_version_strv;
   gchar  *endptr;
 
   *ipp_version_major = 1;
@@ -2034,6 +2034,8 @@ get_ipp_version (const char *ipp_version_string,
 
   if (ipp_version_string)
     {
+      gchar **ipp_version_strv;
+
       ipp_version_strv = g_strsplit (ipp_version_string, ".", 0);
 
       if (ipp_version_strv)
@@ -2292,11 +2294,12 @@ cups_printer_handle_attribute (CtkPrintBackendCups *cups_backend,
   else if (g_strcmp0 (ippGetName (attr), "media-col-default") == 0)
     {
       ipp_attribute_t *iter;
-      ipp_t           *col;
       gint             num_of_margins = 0;
 
       for (i = 0; i < ippGetCount (attr); i++)
         {
+          ipp_t *col;
+
           col = ippGetCollection (attr, i);
           for (iter = ippFirstAttribute (col); iter != NULL; iter = ippNextAttribute (col))
             {
@@ -2344,12 +2347,13 @@ cups_printer_handle_attribute (CtkPrintBackendCups *cups_backend,
   else if (g_strcmp0 (ippGetName (attr), "media-size-supported") == 0)
     {
       ipp_attribute_t *iter;
-      MediaSize       *media_size;
       gboolean         number_of_dimensions;
-      ipp_t           *media_size_collection;
 
       for (i = 0; i < ippGetCount (attr); i++)
         {
+          MediaSize *media_size;
+          ipp_t     *media_size_collection;
+
           media_size_collection = ippGetCollection (attr, i);
           media_size = g_new0 (MediaSize, 1);
           number_of_dimensions = 0;
@@ -2826,14 +2830,15 @@ done:
 static void
 cups_request_printer_info (CtkPrinterCups *printer)
 {
-  RequestPrinterInfoData *data;
   CtkPrintBackendCups    *backend = CTK_PRINT_BACKEND_CUPS (ctk_printer_get_backend (CTK_PRINTER (printer)));
-  CtkCupsRequest         *request;
   http_t                 *http;
 
   http = httpConnect2 (printer->hostname, printer->port, NULL, AF_UNSPEC, HTTP_ENCRYPTION_IF_REQUESTED, 1, 30000, NULL);
   if (http)
     {
+      RequestPrinterInfoData *data;
+      CtkCupsRequest         *request;
+
       data = g_new0 (RequestPrinterInfoData, 1);
       data->http = http;
       data->printer = g_object_ref (printer);
@@ -2886,7 +2891,6 @@ static CtkPrinter *
 find_printer_by_uuid (CtkPrintBackendCups *backend,
                       const gchar         *UUID)
 {
-  CtkPrinterCups *printer;
   CtkPrinter     *result = NULL;
   GList          *printers;
   GList          *iter;
@@ -2895,7 +2899,10 @@ find_printer_by_uuid (CtkPrintBackendCups *backend,
   printers = ctk_print_backend_get_printer_list (CTK_PRINT_BACKEND (backend));
   for (iter = printers; iter != NULL; iter = iter->next)
     {
+      CtkPrinterCups *printer;
+
       printer = CTK_PRINTER_CUPS (iter->data);
+
       if (printer->original_device_uri != NULL)
         {
           printer_uuid = g_strrstr (printer->original_device_uri, "uuid=");
@@ -3061,13 +3068,13 @@ avahi_txt_get_key_value_pair (const gchar  *entry,
                               gchar       **key,
                               gchar       **value)
 {
-  const gchar *equal_sign;
-
   *key = NULL;
   *value = NULL;
 
   if (entry != NULL)
     {
+      const gchar *equal_sign;
+
       /* See RFC 6763 section 6.3 */
       equal_sign = strstr (entry, "=");
 
@@ -3088,24 +3095,18 @@ avahi_service_resolver_cb (GObject      *source_object,
                            GAsyncResult *res,
                            gpointer      user_data)
 {
-  AvahiConnectionTestData *data;
   CtkPrintBackendCups     *backend;
   const gchar             *name;
   const gchar             *host;
   const gchar             *type;
   const gchar             *domain;
   const gchar             *address;
-  const gchar             *protocol_string;
   GVariant                *output;
   GVariant                *txt;
-  GVariant                *child;
   guint32                  flags;
   guint16                  port;
   GError                  *error = NULL;
-  gchar                   *tmp;
-  gchar                   *printer_name;
   gchar                  **printer_name_strv;
-  gchar                  **printer_name_compressed_strv;
   gchar                   *endptr;
   gchar                   *key;
   gchar                   *value;
@@ -3120,6 +3121,8 @@ avahi_service_resolver_cb (GObject      *source_object,
                                           &error);
   if (output)
     {
+      AvahiConnectionTestData *data;
+
       backend = CTK_PRINT_BACKEND_CUPS (user_data);
 
       g_variant_get (output, "(ii&s&s&s&si&sq@aayu)",
@@ -3139,11 +3142,15 @@ avahi_service_resolver_cb (GObject      *source_object,
 
       for (i = 0; i < g_variant_n_children (txt); i++)
         {
+          GVariant *child;
+
           child = g_variant_get_child_value (txt, i);
 
           length = g_variant_get_size (child);
           if (length > 0)
             {
+              gchar *tmp;
+
               tmp = g_strndup (g_variant_get_data (child), length);
               g_variant_unref (child);
 
@@ -3193,6 +3200,9 @@ avahi_service_resolver_cb (GObject      *source_object,
 
       if (data->resource_path != NULL)
         {
+          const gchar *protocol_string;
+          gchar       *printer_name;
+
           if (data->got_printer_type &&
               (g_str_has_prefix (data->resource_path, "printers/") ||
                g_str_has_prefix (data->resource_path, "classes/")))
@@ -3206,6 +3216,8 @@ avahi_service_resolver_cb (GObject      *source_object,
             }
           else
             {
+              gchar **printer_name_compressed_strv;
+
               printer_name = g_strdup (name);
               g_strcanon (printer_name, PRINTER_NAME_ALLOWED_CHARACTERS, '-');
 
@@ -3335,13 +3347,14 @@ avahi_service_browser_signal_handler (GDBusConnection *connection,
       if (g_strcmp0 (type, "_ipp._tcp") == 0 ||
           g_strcmp0 (type, "_ipps._tcp") == 0)
         {
-          CtkPrinterCups *printer;
           GList          *list;
           GList          *iter;
 
           list = ctk_print_backend_get_printer_list (CTK_PRINT_BACKEND (backend));
           for (iter = list; iter; iter = iter->next)
             {
+              CtkPrinterCups *printer;
+
               printer = CTK_PRINTER_CUPS (iter->data);
               if (g_strcmp0 (printer->avahi_name, name) == 0 &&
                   g_strcmp0 (printer->avahi_type, type) == 0 &&
@@ -4272,7 +4285,6 @@ cups_request_default_printer_cb (CtkPrintBackendCups *print_backend,
 {
   ipp_t *response;
   ipp_attribute_t *attr;
-  CtkPrinter *printer;
 
   cdk_threads_enter ();
 
@@ -4299,6 +4311,8 @@ cups_request_default_printer_cb (CtkPrintBackendCups *print_backend,
 
   if (print_backend->default_printer != NULL)
     {
+      CtkPrinter *printer;
+
       printer = ctk_print_backend_find_printer (CTK_PRINT_BACKEND (print_backend),
                                                 print_backend->default_printer);
       if (printer != NULL)
@@ -5396,7 +5410,6 @@ setup_ipp_option (gchar               *ipp_option_name,
   CtkPrinterOption *option = NULL;
   gchar            *ctk_option_name = NULL;
   gchar            *translation = NULL;
-  gchar            *ipp_choice;
   gsize             i;
 
   get_ipp_option_translation (ipp_option_name,
@@ -5428,6 +5441,8 @@ setup_ipp_option (gchar               *ipp_option_name,
       i = 0;
       for (iter = ipp_choices; iter != NULL; iter = iter->next)
         {
+          gchar *ipp_choice;
+
           ipp_choice = (gchar *) iter->data;
 
           choices[i] = g_strdup (ipp_choice);
@@ -5685,7 +5700,6 @@ cups_printer_get_options (CtkPrinter           *printer,
     {
       CtkPaperSize *paper_size;
       ppd_option_t *ppd_option;
-      const gchar *ppd_name;
 
       ppdMarkDefaults (ppd_file);
 
@@ -5694,6 +5708,8 @@ cups_printer_get_options (CtkPrinter           *printer,
       ppd_option = ppdFindOption (ppd_file, "PageSize");
       if (ppd_option)
 	{
+          const gchar *ppd_name;
+
 	  ppd_name = ctk_paper_size_get_ppd_name (paper_size);
 
 	  if (ppd_name)
@@ -6347,11 +6363,8 @@ localtime_to_utctime (const char *local_time)
                              " %I %p ", " %p %I "};
   const char *formats_1[] = {" %H : %M : %S ", " %H : %M "};
   const char *end = NULL;
-  struct tm  *actual_local_time;
   struct tm  *actual_utc_time;
   struct tm   local_print_time;
-  struct tm   utc_print_time;
-  struct tm   diff_time;
   gchar      *utc_time = NULL;
   int         i, n;
 
@@ -6377,6 +6390,9 @@ localtime_to_utctime (const char *local_time)
 
   if (end != NULL && end[0] == '\0')
     {
+      struct tm  *actual_local_time;
+      struct tm   utc_print_time;
+      struct tm   diff_time;
       time_t rawtime;
       time (&rawtime);
 
@@ -6406,7 +6422,6 @@ cups_printer_get_settings_from_options (CtkPrinter          *printer,
 					CtkPrintSettings    *settings)
 {
   struct OptionData data;
-  const char *print_at, *print_at_time;
 
   data.printer = printer;
   data.options = options;
@@ -6416,6 +6431,7 @@ cups_printer_get_settings_from_options (CtkPrinter          *printer,
   ctk_printer_option_set_foreach (options, foreach_option_get_settings, &data);
   if (data.ppd_file != NULL)
     {
+      const char *print_at, *print_at_time;
       CtkPrinterOption *cover_before, *cover_after;
 
       cover_before = ctk_printer_option_set_lookup (options, "ctk-cover-before");
@@ -6589,20 +6605,21 @@ cups_printer_prepare_for_print (CtkPrinter       *printer,
 static CtkPageSetup *
 create_page_setup (ppd_file_t *ppd_file,
 		   ppd_size_t *size)
- {
-   char *display_name;
-   CtkPageSetup *page_setup;
-   CtkPaperSize *paper_size;
-   ppd_option_t *option;
-   ppd_choice_t *choice;
+{
+  char *display_name;
+  CtkPageSetup *page_setup;
+  CtkPaperSize *paper_size;
+  ppd_option_t *option;
 
   display_name = NULL;
   option = ppdFindOption (ppd_file, "PageSize");
   if (option)
     {
+      ppd_choice_t *choice;
+
       choice = ppdFindChoice (option, size->name);
       if (choice)
-	display_name = ppd_text_to_utf8 (ppd_file, choice->text);
+        display_name = ppd_text_to_utf8 (ppd_file, choice->text);
     }
 
   if (display_name == NULL)
@@ -6660,17 +6677,19 @@ static GList *
 cups_printer_list_papers (CtkPrinter *printer)
 {
   ppd_file_t *ppd_file;
-  ppd_size_t *size;
   CtkPageSetup *page_setup;
   CtkPrinterCups *cups_printer = CTK_PRINTER_CUPS (printer);
   GList *result = NULL;
-  int i;
 
   ppd_file = ctk_printer_cups_get_ppd (cups_printer);
   if (ppd_file != NULL)
     {
+      int i;
+
       for (i = 0; i < ppd_file->num_sizes; i++)
         {
+          ppd_size_t *size;
+
           size = &ppd_file->sizes[i];
 
           page_setup = create_page_setup (ppd_file, size);
@@ -6687,10 +6706,8 @@ cups_printer_list_papers (CtkPrinter *printer)
            g_list_length (cups_printer->media_supported) >=
            g_list_length (cups_printer->media_size_supported))
     {
-      MediaSize *media_size;
       GList     *media_iter;
       GList     *media_size_iter;
-      gchar     *media;
 
       for (media_iter = cups_printer->media_supported,
            media_size_iter = cups_printer->media_size_supported;
@@ -6698,6 +6715,9 @@ cups_printer_list_papers (CtkPrinter *printer)
            media_iter = media_iter->next,
            media_size_iter = media_size_iter->next)
         {
+          MediaSize *media_size;
+          gchar     *media;
+
           media = (gchar *) media_iter->data;
           media_size = (MediaSize *) media_size_iter->data;
 
@@ -6723,13 +6743,15 @@ cups_printer_get_default_page_size (CtkPrinter *printer)
 {
   CtkPrinterCups *cups_printer = CTK_PRINTER_CUPS (printer);
   CtkPageSetup   *result = NULL;
-  ppd_option_t   *option;
   ppd_file_t     *ppd_file;
-  ppd_size_t     *size;
 
   ppd_file = ctk_printer_cups_get_ppd (CTK_PRINTER_CUPS (printer));
+
   if (ppd_file != NULL)
     {
+      ppd_option_t   *option;
+      ppd_size_t     *size;
+
       option = ppdFindOption (ppd_file, "PageSize");
       if (option == NULL)
         return NULL;
@@ -6742,10 +6764,8 @@ cups_printer_get_default_page_size (CtkPrinter *printer)
     }
   else if (cups_printer->media_default != NULL)
     {
-      MediaSize *media_size;
       GList     *media_iter;
       GList     *media_size_iter;
-      gchar     *media;
 
       for (media_iter = cups_printer->media_supported,
            media_size_iter = cups_printer->media_size_supported;
@@ -6753,6 +6773,9 @@ cups_printer_get_default_page_size (CtkPrinter *printer)
            media_iter = media_iter->next,
            media_size_iter = media_size_iter->next)
         {
+          MediaSize *media_size;
+          gchar     *media;
+
           media = (gchar *) media_iter->data;
           media_size = (MediaSize *) media_size_iter->data;
 
