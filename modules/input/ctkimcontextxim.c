@@ -236,7 +236,6 @@ reinitialize_all_ics (CtkXIMInfo *info)
 static void
 setup_styles (CtkXIMInfo *info)
 {
-  int i;
   unsigned long settings_preference;
   XIMStyles *xim_styles = info->xim_styles;
 
@@ -244,6 +243,8 @@ setup_styles (CtkXIMInfo *info)
   info->style = 0;
   if (xim_styles)
     {
+      int i;
+
       for (i = 0; i < xim_styles->count_styles; i++)
 	if ((xim_styles->supported_styles[i] & ALLOWED_MASK) == xim_styles->supported_styles[i])
 	  {
