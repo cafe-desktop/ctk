@@ -580,7 +580,6 @@ cail_misc_buffer_get_run_attributes (CtkTextBuffer *buffer,
 {
   CtkTextIter iter;
   AtkAttributeSet *attrib_set = NULL;
-  AtkAttribute *at;
   GSList *tags, *temp_tags;
   gdouble scale = 1;
   gboolean val_set = FALSE;
@@ -836,6 +835,8 @@ cail_misc_buffer_get_run_attributes (CtkTextBuffer *buffer,
     }
   if (val_set)
     {
+      AtkAttribute *at;
+
       at = g_malloc(sizeof(AtkAttribute));
       at->name = g_strdup(atk_text_attribute_get_name (ATK_TEXT_ATTR_SCALE));
       at->value = g_strdup_printf("%g", scale);
