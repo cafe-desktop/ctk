@@ -79,11 +79,12 @@ static GdkPixbuf *
 buffer_to_pixbuf (const gchar *buf, gsize count, GError **err)
 {
         GdkPixbufLoader *loader;
-        GdkPixbuf *pixbuf;
 
         loader = gdk_pixbuf_loader_new ();
         if (gdk_pixbuf_loader_write (loader, (const guchar *)buf, count, err) &&
             gdk_pixbuf_loader_close (loader, err)) {
+                GdkPixbuf *pixbuf;
+
                 pixbuf = g_object_ref (gdk_pixbuf_loader_get_pixbuf (loader));
                 g_object_unref (loader);
                 return pixbuf;

@@ -21,7 +21,7 @@ kinetic_scrolling (void)
 {
   CtkWidget *window, *swindow, *grid;
   CtkWidget *label;
-  CtkWidget *button_grid, *button;
+  CtkWidget *button_grid;
   CtkWidget *treeview;
   CtkCellRenderer *renderer;
   CtkListStore *store;
@@ -54,6 +54,8 @@ kinetic_scrolling (void)
   button_grid = ctk_grid_new ();
   for (i = 0; i < 80; i++)
     {
+      CtkWidget *button;
+
       gchar *label = g_strdup_printf ("Button number %d", i);
 
       button = ctk_button_new_with_label (label);

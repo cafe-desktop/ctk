@@ -384,11 +384,12 @@ static void
 multiply (GLfloat *m, const GLfloat *n)
 {
    GLfloat tmp[16];
-   const GLfloat *row, *column;
-   div_t d;
    int i, j;
 
    for (i = 0; i < 16; i++) {
+      const GLfloat *row, *column;
+      div_t d;
+
       tmp[i] = 0;
       d = div(i, 4);
       row = n + d.quot * 4;
@@ -879,7 +880,6 @@ ctk_gears_tick (CtkWidget     *widget,
   gint64 frame_time;
   gint64 history_start, history_len;
   gint64 frame;
-  char *s;
 
   frame = cdk_frame_clock_get_frame_counter (frame_clock);
   frame_time = cdk_frame_clock_get_frame_time (frame_clock);
@@ -906,6 +906,8 @@ ctk_gears_tick (CtkWidget     *widget,
       history_len = frame - history_start;
       if (history_len > 0)
         {
+          char *s;
+
           previous_timings = cdk_frame_clock_get_timings (frame_clock, frame - history_len);
           previous_frame_time = cdk_frame_timings_get_frame_time (previous_timings);
 

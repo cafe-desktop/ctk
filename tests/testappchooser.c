@@ -33,16 +33,18 @@ dialog_response (CtkDialog *d,
                  gint       response_id,
                  gpointer   user_data)
 {
-  GAppInfo *app_info;
-  const gchar *name;
-
   g_print ("Response: %d\n", response_id);
 
   if (response_id == CTK_RESPONSE_OK)
     {
+      GAppInfo *app_info;
+
       app_info = ctk_app_chooser_get_app_info (CTK_APP_CHOOSER (d));
+
       if (app_info)
         {
+          const gchar *name;
+
           name = g_app_info_get_name (app_info);
           g_print ("Application selected: %s\n", name);
           g_object_unref (app_info);

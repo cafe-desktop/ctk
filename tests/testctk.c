@@ -553,16 +553,17 @@ static void
 create_big_windows (CtkWidget *widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *content_area;
-  CtkWidget *darea, *grid, *scrollbar;
-  CtkWidget *eventbox;
-  CtkAdjustment *hadjustment;
-  CtkAdjustment *vadjustment;
-  static gint current_x;
-  static gint current_y;
  
   if (!window)
     {
+      CtkWidget *content_area;
+      CtkWidget *darea, *grid, *scrollbar;
+      CtkWidget *eventbox;
+      CtkAdjustment *hadjustment;
+      CtkAdjustment *vadjustment;
+      static gint current_x;
+      static gint current_y;
+
       current_x = 0;
       current_y = 0;
       
@@ -646,17 +647,18 @@ static void
 create_buttons (CtkWidget *widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *box1;
-  CtkWidget *box2;
-  CtkWidget *grid;
-  CtkWidget *separator;
-  CtkWidget *button[10];
-  int button_x[9] = { 0, 1, 2, 0, 2, 1, 1, 2, 0 };
-  int button_y[9] = { 0, 1, 2, 2, 0, 2, 0, 1, 1 };
-  guint i;
 
   if (!window)
     {
+      CtkWidget *box1;
+      CtkWidget *box2;
+      CtkWidget *grid;
+      CtkWidget *separator;
+      CtkWidget *button[10];
+      int button_x[9] = { 0, 1, 2, 0, 2, 1, 1, 2, 0 };
+      int button_y[9] = { 0, 1, 2, 2, 0, 2, 0, 1, 1 };
+      guint i;
+
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_screen (CTK_WINDOW (window),
 			     ctk_widget_get_screen (widget));
@@ -731,13 +733,14 @@ static void
 create_toggle_buttons (CtkWidget *widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *box1;
-  CtkWidget *box2;
-  CtkWidget *button;
-  CtkWidget *separator;
 
   if (!window)
     {
+      CtkWidget *box1;
+      CtkWidget *box2;
+      CtkWidget *button;
+      CtkWidget *separator;
+
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_screen (CTK_WINDOW (window),
 			     ctk_widget_get_screen (widget));
@@ -852,14 +855,15 @@ static void
 create_check_buttons (CtkWidget *widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *box1;
-  CtkWidget *box2;
-  CtkWidget *button;
-  CtkWidget *separator;
-  CtkWidget *table;
   
   if (!window)
     {
+      CtkWidget *box1;
+      CtkWidget *box2;
+      CtkWidget *button;
+      CtkWidget *separator;
+      CtkWidget *table;
+
       window = ctk_dialog_new_with_buttons ("Check Buttons",
                                             NULL, 0,
                                             "_Close",
@@ -917,14 +921,15 @@ static void
 create_radio_buttons (CtkWidget *widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *box1;
-  CtkWidget *box2;
-  CtkWidget *button;
-  CtkWidget *separator;
-  CtkWidget *table;
 
   if (!window)
     {
+      CtkWidget *box1;
+      CtkWidget *box2;
+      CtkWidget *button;
+      CtkWidget *separator;
+      CtkWidget *table;
+
       window = ctk_dialog_new_with_buttons ("Radio Buttons",
                                             NULL, 0,
                                             "_Close",
@@ -1050,14 +1055,15 @@ static void
 create_button_box (CtkWidget *widget)
 {
   static CtkWidget* window = NULL;
-  CtkWidget *main_vbox;
-  CtkWidget *vbox;
-  CtkWidget *hbox;
-  CtkWidget *frame_horz;
-  CtkWidget *frame_vert;
 
   if (!window)
   {
+    CtkWidget *main_vbox;
+    CtkWidget *vbox;
+    CtkWidget *hbox;
+    CtkWidget *frame_horz;
+    CtkWidget *frame_vert;
+
     window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
     ctk_window_set_screen (CTK_WINDOW (window), ctk_widget_get_screen (widget));
     ctk_window_set_title (CTK_WINDOW (window), "Button Boxes");
@@ -1255,10 +1261,10 @@ static void
 create_toolbar (CtkWidget *widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *toolbar;
 
   if (!window)
     {
+      CtkWidget *toolbar;
       guint i;
 
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -1406,14 +1412,15 @@ static void
 create_statusbar (CtkWidget *widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *box1;
-  CtkWidget *box2;
-  CtkWidget *button;
-  CtkWidget *separator;
-  CtkWidget *statusbar;
 
   if (!window)
     {
+      CtkWidget *box1;
+      CtkWidget *box2;
+      CtkWidget *button;
+      CtkWidget *separator;
+      CtkWidget *statusbar;
+
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_screen (CTK_WINDOW (window),
 			     ctk_widget_get_screen (widget));
@@ -1740,14 +1747,15 @@ activate_link (CtkWidget *label, const gchar *uri, gpointer data)
 void create_labels (CtkWidget *widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *hbox;
-  CtkWidget *vbox;
-  CtkWidget *frame;
-  CtkWidget *label;
-  CtkWidget *button;
 
   if (!window)
     {
+      CtkWidget *hbox;
+      CtkWidget *vbox;
+      CtkWidget *frame;
+      CtkWidget *label;
+      CtkWidget *button;
+
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 
       ctk_window_set_screen (CTK_WINDOW (window),
@@ -1914,15 +1922,16 @@ static void
 create_rotated_label (CtkWidget *widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *content_area;
-  CtkWidget *vbox;
-  CtkWidget *hscale;
-  CtkWidget *label;  
-  CtkWidget *scale_label;  
-  CtkWidget *scale_hbox;  
 
   if (!window)
     {
+      CtkWidget *content_area;
+      CtkWidget *vbox;
+      CtkWidget *hscale;
+      CtkWidget *label;
+      CtkWidget *scale_label;
+      CtkWidget *scale_hbox;
+
       window = ctk_dialog_new_with_buttons ("Rotated Label",
 					    CTK_WINDOW (ctk_widget_get_toplevel (widget)), 0,
 					    "_Close", CTK_RESPONSE_CLOSE,
@@ -2134,17 +2143,18 @@ static void
 create_reparent (CtkWidget *widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *box1;
-  CtkWidget *box2;
-  CtkWidget *box3;
-  CtkWidget *frame;
-  CtkWidget *button;
-  CtkWidget *label;
-  CtkWidget *separator;
-  CtkWidget *event_box;
 
   if (!window)
     {
+      CtkWidget *box1;
+      CtkWidget *box2;
+      CtkWidget *box3;
+      CtkWidget *frame;
+      CtkWidget *button;
+      CtkWidget *label;
+      CtkWidget *separator;
+      CtkWidget *event_box;
+
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 
       ctk_window_set_screen (CTK_WINDOW (window),
@@ -2302,10 +2312,12 @@ static void
 create_resize_grips (CtkWidget *widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *area;
-  CtkWidget *hbox, *vbox;
+
   if (!window)
     {
+      CtkWidget *area;
+      CtkWidget *hbox, *vbox;
+
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 
       ctk_window_set_screen (CTK_WINDOW (window),
@@ -2560,17 +2572,18 @@ static void
 create_pixbuf (CtkWidget *widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *box1;
-  CtkWidget *box2;
-  CtkWidget *box3;
-  CtkWidget *button;
-  CtkWidget *label;
-  CtkWidget *separator;
-  CtkWidget *pixbufwid;
-  CdkWindow *cdk_window;
 
   if (!window)
     {
+      CtkWidget *box1;
+      CtkWidget *box2;
+      CtkWidget *box3;
+      CtkWidget *button;
+      CtkWidget *label;
+      CtkWidget *separator;
+      CtkWidget *pixbufwid;
+      CdkWindow *cdk_window;
+
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 
       ctk_window_set_screen (CTK_WINDOW (window),
@@ -2645,16 +2658,17 @@ static void
 create_tooltips (CtkWidget *widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *box1;
-  CtkWidget *box2;
-  CtkWidget *box3;
-  CtkWidget *button;
-  CtkWidget *toggle;
-  CtkWidget *frame;
-  CtkWidget *separator;
 
   if (!window)
     {
+      CtkWidget *box1;
+      CtkWidget *box2;
+      CtkWidget *box3;
+      CtkWidget *button;
+      CtkWidget *toggle;
+      CtkWidget *frame;
+      CtkWidget *separator;
+
       window =
 	g_object_new (ctk_window_get_type (),
 			"CtkWindow::type", CTK_WINDOW_TOPLEVEL,
@@ -3225,14 +3239,14 @@ static void
 create_menus (CtkWidget *widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *box1;
-  CtkWidget *box2;
-  CtkWidget *button;
-  CtkWidget *optionmenu;
-  CtkWidget *separator;
   
   if (!window)
     {
+      CtkWidget *box1;
+      CtkWidget *box2;
+      CtkWidget *button;
+      CtkWidget *optionmenu;
+      CtkWidget *separator;
       CtkWidget *menubar;
       CtkWidget *menu;
       CtkWidget *menuitem;
@@ -3726,15 +3740,16 @@ static void
 create_scrolled_windows (CtkWidget *widget)
 {
   static CtkWidget *window;
-  CtkWidget *content_area;
-  CtkWidget *scrolled_window;
-  CtkWidget *button;
-  CtkWidget *grid;
-  char buffer[32];
-  int i, j;
 
   if (!window)
     {
+      CtkWidget *content_area;
+      CtkWidget *scrolled_window;
+      CtkWidget *button;
+      CtkWidget *grid;
+      char buffer[32];
+      int i, j;
+
       window = ctk_dialog_new ();
 
       ctk_window_set_screen (CTK_WINDOW (window),
@@ -3880,20 +3895,21 @@ static void
 create_entry (CtkWidget *widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *box1;
-  CtkWidget *box2;
-  CtkWidget *hbox;
-  CtkWidget *has_frame_check;
-  CtkWidget *sensitive_check;
-  CtkWidget *progress_check;
-  CtkWidget *entry;
-  CtkComboBoxText *cb;
-  CtkWidget *cb_entry;
-  CtkWidget *button;
-  CtkWidget *separator;
 
   if (!window)
     {
+      CtkWidget *box1;
+      CtkWidget *box2;
+      CtkWidget *hbox;
+      CtkWidget *has_frame_check;
+      CtkWidget *sensitive_check;
+      CtkWidget *progress_check;
+      CtkWidget *entry;
+      CtkComboBoxText *cb;
+      CtkWidget *cb_entry;
+      CtkWidget *button;
+      CtkWidget *separator;
+
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_screen (CTK_WINDOW (window),
 			     ctk_widget_get_screen (widget));
@@ -3988,13 +4004,14 @@ create_entry (CtkWidget *widget)
 static void
 create_expander (CtkWidget *widget)
 {
-  CtkWidget *box1;
-  CtkWidget *expander;
-  CtkWidget *hidden;
   static CtkWidget *window = NULL;
 
   if (!window)
     {
+      CtkWidget *box1;
+      CtkWidget *expander;
+      CtkWidget *hidden;
+
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_screen (CTK_WINDOW (window),
 			     ctk_widget_get_screen (widget));
@@ -4079,19 +4096,20 @@ static void
 create_event_box (CtkWidget *widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *box1;
-  CtkWidget *box2;
-  CtkWidget *hbox;
-  CtkWidget *vbox;
-  CtkWidget *button;
-  CtkWidget *separator;
-  CtkWidget *event_box;
-  CtkWidget *label;
-  CtkWidget *visible_window_check;
-  CtkWidget *above_child_check;
 
   if (!window)
     {
+      CtkWidget *box1;
+      CtkWidget *box2;
+      CtkWidget *hbox;
+      CtkWidget *vbox;
+      CtkWidget *button;
+      CtkWidget *separator;
+      CtkWidget *event_box;
+      CtkWidget *label;
+      CtkWidget *visible_window_check;
+      CtkWidget *above_child_check;
+
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_screen (CTK_WINDOW (window),
 			     ctk_widget_get_screen (widget));
@@ -4435,11 +4453,12 @@ spin_button_month_input_func (CtkSpinButton *spin_button,
   static gchar *month[12] = { "January", "February", "March", "April",
 			      "May", "June", "July", "August",
 			      "September", "October", "November", "December" };
-  gchar *tmp1, *tmp2;
   gboolean found = FALSE;
 
   for (i = 1; i <= 12; i++)
     {
+      gchar *tmp1, *tmp2;
+
       tmp1 = g_ascii_strup (month[i - 1], -1);
       tmp2 = g_ascii_strup (ctk_entry_get_text (CTK_ENTRY (spin_button)), -1);
       if (strstr (tmp1, tmp2) == tmp1)
@@ -4518,20 +4537,21 @@ static void
 create_spins (CtkWidget *widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *frame;
-  CtkWidget *hbox;
-  CtkWidget *main_vbox;
-  CtkWidget *vbox;
-  CtkWidget *vbox2;
-  CtkWidget *spinner2;
-  CtkWidget *spinner;
-  CtkWidget *button;
-  CtkWidget *label;
-  CtkWidget *val_label;
-  CtkAdjustment *adjustment;
 
   if (!window)
     {
+      CtkWidget *frame;
+      CtkWidget *hbox;
+      CtkWidget *main_vbox;
+      CtkWidget *vbox;
+      CtkWidget *vbox2;
+      CtkWidget *spinner2;
+      CtkWidget *spinner;
+      CtkWidget *button;
+      CtkWidget *label;
+      CtkWidget *val_label;
+      CtkAdjustment *adjustment;
+
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_screen (CTK_WINDOW (window),
 			     ctk_widget_get_screen (widget));
@@ -5248,11 +5268,12 @@ void
 create_flipping (CtkWidget *widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *check_button;
-  CtkWidget *content_area;
 
   if (!window)
     {
+      CtkWidget *check_button;
+      CtkWidget *content_area;
+
       window = ctk_dialog_new ();
 
       ctk_window_set_screen (CTK_WINDOW (window),
@@ -5462,11 +5483,11 @@ static CtkWidget *dialog_window = NULL;
 static void
 dialog_response_cb (CtkWidget *widget, gint response, gpointer unused)
 {
-  CtkWidget *content_area;
-  GList *l, *children;
-
   if (response == CTK_RESPONSE_APPLY)
     {
+      GList *l, *children;
+      CtkWidget *content_area;
+
       content_area = ctk_dialog_get_content_area (CTK_DIALOG (dialog_window));
       children = ctk_container_get_children (CTK_CONTAINER (content_area));
 
@@ -5552,7 +5573,6 @@ screen_display_check (CtkWidget *widget, ScreenDisplaySelection *data)
 {
   const gchar *display_name;
   CdkDisplay *display;
-  CtkWidget *dialog;
   CdkScreen *new_screen = NULL;
   CdkScreen *current_screen = ctk_widget_get_screen (widget);
   
@@ -5561,6 +5581,8 @@ screen_display_check (CtkWidget *widget, ScreenDisplaySelection *data)
       
   if (!display)
     {
+      CtkWidget *dialog;
+
       dialog = ctk_message_dialog_new (CTK_WINDOW (ctk_widget_get_toplevel (widget)),
                                        CTK_DIALOG_DESTROY_WITH_PARENT,
                                        CTK_MESSAGE_ERROR,
@@ -5719,11 +5741,11 @@ event_watcher_toggle (void)
 static void
 create_event_watcher (CtkWidget *widget)
 {
-  CtkWidget *content_area;
-  CtkWidget *button;
-
   if (!dialog_window)
     {
+      CtkWidget *content_area;
+      CtkWidget *button;
+
       dialog_window = ctk_dialog_new ();
       ctk_window_set_screen (CTK_WINDOW (dialog_window),
 			     ctk_widget_get_screen (widget));
@@ -5775,17 +5797,18 @@ static void
 create_range_controls (CtkWidget *widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *box1;
-  CtkWidget *box2;
-  CtkWidget *button;
-  CtkWidget *scrollbar;
-  CtkWidget *scale;
-  CtkWidget *separator;
-  CtkAdjustment *adjustment;
-  CtkWidget *hbox;
 
   if (!window)
     {
+      CtkWidget *box1;
+      CtkWidget *box2;
+      CtkWidget *button;
+      CtkWidget *scrollbar;
+      CtkWidget *scale;
+      CtkWidget *separator;
+      CtkAdjustment *adjustment;
+      CtkWidget *hbox;
+
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 
       ctk_window_set_screen (CTK_WINDOW (window),
@@ -6010,20 +6033,21 @@ tab_expand (CtkToggleButton *button, CtkWidget *child)
 static void
 create_pages (CtkNotebook *notebook, gint start, gint end)
 {
-  CtkWidget *child = NULL;
-  CtkWidget *button;
-  CtkWidget *label;
-  CtkWidget *hbox;
-  CtkWidget *vbox;
-  CtkWidget *label_box;
-  CtkWidget *menu_box;
-  CtkWidget *pixwid;
   gint i;
-  char buffer[32];
-  char accel_buffer[32];
 
   for (i = start; i <= end; i++)
     {
+      CtkWidget *child = NULL;
+      CtkWidget *button;
+      CtkWidget *label;
+      CtkWidget *hbox;
+      CtkWidget *vbox;
+      CtkWidget *label_box;
+      CtkWidget *menu_box;
+      CtkWidget *pixwid;
+      char buffer[32];
+      char accel_buffer[32];
+
       sprintf (buffer, "Page %d", i);
       sprintf (accel_buffer, "Page _%d", i);
 
@@ -6174,23 +6198,24 @@ static void
 create_notebook (CtkWidget *widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *box1;
-  CtkWidget *box2;
-  CtkWidget *button;
-  CtkWidget *separator;
-  CtkWidget *omenu;
-  CtkWidget *label;
-
-  static gchar *items[] =
-  {
-    "Standard",
-    "No tabs",
-    "Borderless",
-    "Scrollable"
-  };
   
   if (!window)
     {
+      CtkWidget *box1;
+      CtkWidget *box2;
+      CtkWidget *button;
+      CtkWidget *separator;
+      CtkWidget *omenu;
+      CtkWidget *label;
+
+      static gchar *items[] =
+      {
+        "Standard",
+        "No tabs",
+        "Borderless",
+        "Scrollable"
+      };
+
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_screen (CTK_WINDOW (window),
 			     ctk_widget_get_screen (widget));
@@ -6383,14 +6408,15 @@ void
 create_panes (CtkWidget *widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *frame;
-  CtkWidget *hpaned;
-  CtkWidget *vpaned;
-  CtkWidget *button;
-  CtkWidget *vbox;
 
   if (!window)
     {
+      CtkWidget *frame;
+      CtkWidget *hpaned;
+      CtkWidget *vpaned;
+      CtkWidget *button;
+      CtkWidget *vbox;
+
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 
       ctk_window_set_screen (CTK_WINDOW (window),
@@ -7070,17 +7096,18 @@ void
 create_wmhints (CtkWidget *widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *label;
-  CtkWidget *separator;
-  CtkWidget *button;
-  CtkWidget *box1;
-  CtkWidget *box2;
-  CdkWindow *cdk_window;
-  GdkPixbuf *pixbuf;
-  GList *list;
 
   if (!window)
     {
+      CtkWidget *label;
+      CtkWidget *separator;
+      CtkWidget *button;
+      CtkWidget *box1;
+      CtkWidget *box2;
+      CdkWindow *cdk_window;
+      GdkPixbuf *pixbuf;
+      GList *list;
+
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 
       ctk_window_set_screen (CTK_WINDOW (window),
@@ -7388,14 +7415,15 @@ void
 create_window_states (CtkWidget *widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *label;
-  CtkWidget *box1;
-  CtkWidget *iconified;
-  CtkWidget *normal;
-  CtkWidget *controls;
 
   if (!window)
     {
+      CtkWidget *label;
+      CtkWidget *box1;
+      CtkWidget *iconified;
+      CtkWidget *normal;
+      CtkWidget *controls;
+
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_screen (CTK_WINDOW (window),
 			     ctk_widget_get_screen (widget));
@@ -8241,36 +8269,38 @@ entry_changed (CtkWidget *widget, ProgressData *pdata)
 void
 create_progress_bar (CtkWidget *widget)
 {
-  CtkWidget *content_area;
-  CtkWidget *vbox;
-  CtkWidget *vbox2;
-  CtkWidget *hbox;
-  CtkWidget *check;
-  CtkWidget *frame;
-  CtkWidget *grid;
-  CtkWidget *label;
   static ProgressData *pdata = NULL;
 
-  static gchar *items1[] =
-  {
-    "Left-Right",
-    "Right-Left",
-    "Bottom-Top",
-    "Top-Bottom"
-  };
-
-    static char *ellipsize_items[] = {
-    "None",     // PANGO_ELLIPSIZE_NONE,
-    "Start",    // PANGO_ELLIPSIZE_START,
-    "Middle",   // PANGO_ELLIPSIZE_MIDDLE,
-    "End",      // PANGO_ELLIPSIZE_END
-  };
-  
   if (!pdata)
     pdata = g_new0 (ProgressData, 1);
 
   if (!pdata->window)
     {
+      CtkWidget *content_area;
+      CtkWidget *vbox;
+      CtkWidget *vbox2;
+      CtkWidget *hbox;
+      CtkWidget *check;
+      CtkWidget *frame;
+      CtkWidget *grid;
+      CtkWidget *label;
+
+      static gchar *items1[] =
+      {
+        "Left-Right",
+        "Right-Left",
+        "Bottom-Top",
+        "Top-Bottom"
+      };
+
+      static char *ellipsize_items[] =
+      {
+        "None",     // PANGO_ELLIPSIZE_NONE,
+        "Start",    // PANGO_ELLIPSIZE_START,
+        "Middle",   // PANGO_ELLIPSIZE_MIDDLE,
+        "End",      // PANGO_ELLIPSIZE_END
+      };
+
       pdata->window = ctk_dialog_new ();
 
       ctk_window_set_screen (CTK_WINDOW (pdata->window),
@@ -8655,8 +8685,6 @@ static void
 create_snapshot (CtkWidget *widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *button;
-  CtkWidget *vbox;
   struct SnapshotData *data;
 
   data = g_new (struct SnapshotData, 1);
@@ -8667,6 +8695,9 @@ create_snapshot (CtkWidget *widget)
 
   if (!window)
     {
+      CtkWidget *button;
+      CtkWidget *vbox;
+
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
 
       ctk_window_set_screen (CTK_WINDOW (window),
@@ -8778,17 +8809,18 @@ void
 create_selection_test (CtkWidget *widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *content_area;
-  CtkWidget *vbox;
-  CtkWidget *scrolled_win;
-  CtkListStore* store;
-  CtkWidget *tree_view;
-  CtkTreeViewColumn *column;
-  CtkCellRenderer *renderer;
-  CtkWidget *label;
 
   if (!window)
     {
+      CtkWidget *content_area;
+      CtkWidget *vbox;
+      CtkWidget *scrolled_win;
+      CtkListStore* store;
+      CtkWidget *tree_view;
+      CtkTreeViewColumn *column;
+      CtkCellRenderer *renderer;
+      CtkWidget *label;
+
       window = ctk_dialog_new ();
       
       ctk_window_set_screen (CTK_WINDOW (window),
@@ -8934,16 +8966,17 @@ void
 create_scroll_test (CtkWidget *widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *content_area;
-  CtkWidget *hbox;
-  CtkWidget *drawing_area;
-  CtkWidget *scrollbar;
-  CtkAdjustment *adjustment;
-  CdkGeometry geometry;
-  CdkWindowHints geometry_mask;
 
   if (!window)
     {
+      CtkWidget *content_area;
+      CtkWidget *hbox;
+      CtkWidget *drawing_area;
+      CtkWidget *scrollbar;
+      CtkAdjustment *adjustment;
+      CdkGeometry geometry;
+      CdkWindowHints geometry_mask;
+
       window = ctk_dialog_new ();
 
       ctk_window_set_screen (CTK_WINDOW (window),
@@ -9071,12 +9104,13 @@ void
 create_timeout_test (CtkWidget *widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *action_area, *content_area;
-  CtkWidget *button;
-  CtkWidget *label;
 
   if (!window)
     {
+      CtkWidget *action_area, *content_area;
+      CtkWidget *button;
+      CtkWidget *label;
+
       window = ctk_dialog_new ();
 
       ctk_window_set_screen (CTK_WINDOW (window),
@@ -9144,11 +9178,12 @@ void
 create_mainloop (CtkWidget *widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *content_area;
-  CtkWidget *label;
 
   if (!window)
     {
+      CtkWidget *content_area;
+      CtkWidget *label;
+
       window = ctk_dialog_new ();
 
       ctk_window_set_screen (CTK_WINDOW (window),
@@ -9228,17 +9263,16 @@ layout_draw_handler (CtkWidget *widget, cairo_t *cr)
 
 void create_layout (CtkWidget *widget)
 {
-  CtkAdjustment *hadjustment, *vadjustment;
-  CtkLayout *layout;
   static CtkWidget *window = NULL;
-  CtkWidget *layout_widget;
-  CtkWidget *scrolledwindow;
-  CtkWidget *button;
 
   if (!window)
     {
+      CtkAdjustment *hadjustment, *vadjustment;
+      CtkLayout *layout;
+      CtkWidget *layout_widget;
+      CtkWidget *scrolledwindow;
+      CtkWidget *button;
       gchar buf[16];
-
       gint i, j;
       
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -9463,11 +9497,12 @@ get_some_file (void)
   e = g_file_enumerate_children (dir, "*", 0, NULL, NULL);
   if (e)
     {
-      GFileInfo *info;
-
       while (res == NULL)
         {
+          GFileInfo *info;
+
           info = g_file_enumerator_next_file (e, NULL, NULL);
+
           if (info)
             {
               if (g_file_info_get_file_type (info) == G_FILE_TYPE_REGULAR)
@@ -9582,13 +9617,14 @@ void
 create_native_dialogs (CtkWidget *widget)
 {
   static CtkWidget *window = NULL;
-  CtkWidget *box, *label;
-  CtkWidget *show_button, *hide_button, *check_button;
-  CtkFileChooserNative *native;
-  CtkWidget *combo;
 
   if (!window)
     {
+      CtkWidget *box, *label;
+      CtkWidget *show_button, *hide_button, *check_button;
+      CtkFileChooserNative *native;
+      CtkWidget *combo;
+
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_screen (CTK_WINDOW (window),
                              ctk_widget_get_screen (widget));

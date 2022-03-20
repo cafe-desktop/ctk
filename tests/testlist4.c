@@ -93,7 +93,7 @@ new_window (GApplication *app)
   CtkListBoxRow *row;
 
   gint i;
-  gchar *text, *text2;
+  gchar *text;
 
   window = ctk_application_window_new (CTK_APPLICATION (app));
   ctk_window_set_default_size (CTK_WINDOW (window), 300, 300);
@@ -132,6 +132,8 @@ new_window (GApplication *app)
 
   for (i = 1; i < 3; i++)
     {
+      gchar *text2;
+
       text = g_strdup_printf ("Row %d (string action)", i);
       row_content = create_row (text);
       ctk_list_box_insert (CTK_LIST_BOX (list), row_content, -1);

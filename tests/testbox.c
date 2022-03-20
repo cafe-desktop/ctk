@@ -30,16 +30,17 @@ static void
 edit_widget (CtkWidget *button)
 {
   CtkWidget *dialog;
-  CtkWidget *grid;
-  CtkWidget *label;
-  CtkWidget *entry;
-  CtkWidget *check;
   gboolean expand, fill;
 
   dialog = CTK_WIDGET (g_object_get_data (G_OBJECT (button), "dialog"));
 
   if (!dialog)
     {
+      CtkWidget *grid;
+      CtkWidget *label;
+      CtkWidget *entry;
+      CtkWidget *check;
+
       dialog = ctk_dialog_new_with_buttons ("",
                                             CTK_WINDOW (ctk_widget_get_toplevel (button)),
                                             CTK_DIALOG_DESTROY_WITH_PARENT | CTK_DIALOG_USE_HEADER_BAR,

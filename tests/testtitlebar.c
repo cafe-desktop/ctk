@@ -20,7 +20,6 @@ create_widgets (CtkHeaderBar *bar,
   GList *children, *l;
   CtkWidget *child;
   gint i;
-  gchar *label;
 
   children = ctk_container_get_children (CTK_CONTAINER (bar));
   for (l = children; l; l = l->next)
@@ -36,6 +35,8 @@ create_widgets (CtkHeaderBar *bar,
 
   for (i = 0; i < n; i++)
     {
+      gchar *label;
+
       label = g_strdup_printf ("%d", i);
       child = ctk_button_new_with_label (label);
       g_free (label);

@@ -24,8 +24,6 @@ static void
 populate_list (CtkListBox *list)
 {
   gint i;
-  gchar *text;
-  CtkWidget *row, *label;
   gint n;
   GList *l;
 
@@ -35,6 +33,9 @@ populate_list (CtkListBox *list)
 
   for (i = 1; i <= 50; i++)
     {
+      gchar *text;
+      CtkWidget *row, *label;
+
       row = ctk_list_box_row_new ();
       text = g_strdup_printf ("List row %d", i + n);
       label = ctk_label_new (text);

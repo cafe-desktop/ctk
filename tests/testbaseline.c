@@ -71,7 +71,7 @@ main (int    argc,
       char **argv)
 {
   CtkWidget *window, *label, *entry, *button, *grid, *notebook;
-  CtkWidget *vbox, *hbox, *grid_hbox, *spin, *spin2, *toggle, *combo, *image, *ebox;
+  CtkWidget *vbox, *hbox, *grid_hbox, *spin, *spin2, *toggle, *combo, *image;
   CtkAdjustment *adjustment;
   int i, j;
   CtkCssProvider *provider;
@@ -147,6 +147,8 @@ main (int    argc,
 
   for (j = 0; j < 2; j++)
     {
+      CtkWidget *ebox;
+
       hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 10);
       ctk_box_pack_start (CTK_BOX (vbox), hbox, TRUE, TRUE, 5);
 

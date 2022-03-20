@@ -132,13 +132,15 @@ timeout_toggle_toggled (CtkToggleButton *toggle)
 static void
 icon_activated (CtkStatusIcon *icon)
 {
-  CtkWidget *content_area;
   CtkWidget *dialog;
-  CtkWidget *toggle;
 
   dialog = g_object_get_data (G_OBJECT (icon), "test-status-icon-dialog");
+
   if (dialog == NULL)
     {
+      CtkWidget *content_area;
+      CtkWidget *toggle;
+
       dialog = ctk_message_dialog_new (NULL, 0,
 				       CTK_MESSAGE_QUESTION,
 				       CTK_BUTTONS_CLOSE,

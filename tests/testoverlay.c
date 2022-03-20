@@ -470,7 +470,6 @@ test_child_order (void)
 {
   CtkWidget *win;
   CtkWidget *overlay;
-  CtkWidget *button;
   CtkWidget *label;
   CtkWidget *ebox;
   CdkRGBA color;
@@ -484,9 +483,11 @@ test_child_order (void)
 
   for (i = 0; i < 4; i++)
     {
+      CtkWidget *button;
       char *colors[] = {
 	"rgba(255,0,0,0.8)", "rgba(0,255,0,0.8)", "rgba(0,0,255,0.8)", "rgba(255,0,255,0.8)"
       };
+
       ebox = ctk_event_box_new ();
       button = ctk_button_new_with_label (g_strdup_printf ("Child %d", i));
       g_signal_connect (button, "clicked", G_CALLBACK (reorder_overlay), overlay);

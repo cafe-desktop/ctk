@@ -61,12 +61,13 @@ static void
 set_toolbar_style_toggled (CtkCheckButton *button, CtkToolbar *toolbar)
 {
   CtkWidget *option_menu;
-  int style;
   
   option_menu = g_object_get_data (G_OBJECT (button), "option-menu");
 
   if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button)))
     {
+      int style;
+
       style = ctk_combo_box_get_active (CTK_COMBO_BOX (option_menu));
 
       ctk_toolbar_set_style (toolbar, style);
@@ -296,12 +297,13 @@ static void
 set_icon_size_toggled (CtkCheckButton *button, CtkToolbar *toolbar)
 {
   CtkWidget *option_menu;
-  int icon_size;
   
   option_menu = g_object_get_data (G_OBJECT (button), "option-menu");
 
   if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button)))
     {
+      int icon_size;
+
       if (ctk_combo_box_get_active (CTK_COMBO_BOX (option_menu)) == 0)
         icon_size = CTK_ICON_SIZE_SMALL_TOOLBAR;
       else

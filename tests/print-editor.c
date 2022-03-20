@@ -141,7 +141,6 @@ static void
 save_file (const char *save_filename)
 {
   char *text = get_text ();
-  CtkWidget *error_dialog;
   GError *error;
 
   error = NULL;
@@ -158,6 +157,8 @@ save_file (const char *save_filename)
     }
   else
     {
+      CtkWidget *error_dialog;
+
       error_dialog = ctk_message_dialog_new (CTK_WINDOW (main_window),
 					     CTK_DIALOG_DESTROY_WITH_PARENT,
 					     CTK_MESSAGE_ERROR,
@@ -188,7 +189,6 @@ begin_print (CtkPrintOperation *operation,
 	     PrintData *print_data)
 {
   PangoFontDescription *desc;
-  PangoLayoutLine *layout_line;
   double width, height;
   double page_height;
   GList *page_breaks;
@@ -215,6 +215,7 @@ begin_print (CtkPrintOperation *operation,
 
   for (line = 0; line < num_lines; line++)
     {
+      PangoLayoutLine *layout_line;
       PangoRectangle ink_rect, logical_rect;
       double line_height;
       
@@ -274,11 +275,12 @@ draw_page (CtkPrintOperation *operation,
   do
     {
       PangoRectangle   logical_rect;
-      PangoLayoutLine *line;
-      int              baseline;
 
       if (i >= start)
 	{
+	  PangoLayoutLine *line;
+	  int              baseline;
+
 	  line = pango_layout_iter_get_line (iter);
 
 	  pango_layout_iter_get_line_extents (iter, NULL, &logical_rect);
@@ -670,7 +672,6 @@ activate_save_as (GSimpleAction *action,
 {
   CtkWidget *dialog;
   gint response;
-  char *save_filename;
 
   dialog = ctk_file_chooser_dialog_new ("Select file",
                                         CTK_WINDOW (main_window),
@@ -683,6 +684,8 @@ activate_save_as (GSimpleAction *action,
 
   if (response == CTK_RESPONSE_OK)
     {
+      char *save_filename;
+
       save_filename = ctk_file_chooser_get_filename (CTK_FILE_CHOOSER (dialog));
       save_file (save_filename);
       g_free (save_filename);
@@ -709,7 +712,6 @@ activate_open (GSimpleAction *action,
 {
   CtkWidget *dialog;
   gint response;
-  char *open_filename;
 
   dialog = ctk_file_chooser_dialog_new ("Select file",
                                         CTK_WINDOW (main_window),
@@ -722,6 +724,8 @@ activate_open (GSimpleAction *action,
 
   if (response == CTK_RESPONSE_OK)
     {
+      char *open_filename;
+
       open_filename = ctk_file_chooser_get_filename (CTK_FILE_CHOOSER (dialog));
       load_file (open_filename);
       g_free (open_filename);
@@ -765,12 +769,13 @@ activate_quit (GSimpleAction *action,
                gpointer       user_data)
 {
   CtkApplication *app = user_data;
-  CtkWidget *win;
   GList *list, *next;
 
   list = ctk_application_get_windows (app);
   while (list)
     {
+      CtkWidget *win;
+
       win = list->data;
       next = list->next;
 

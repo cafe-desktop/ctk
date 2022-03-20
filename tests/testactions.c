@@ -291,9 +291,7 @@ add_cb (CtkWidget *button,
 	CtkUIManager *manager)
 {
   CtkWidget *spinbutton;
-  CtkAction *action;
   int i, num;
-  char *name, *label;
   
   if (ui_id != 0 || dag != NULL)
     return;
@@ -308,6 +306,9 @@ add_cb (CtkWidget *button,
   
   for (i = 0; i < num; i++)
     {
+      CtkAction *action;
+      char *name, *label;
+
       name = g_strdup_printf ("DynAction%u", i);
       label = g_strdup_printf ("Dynamic Item %d", i);
       

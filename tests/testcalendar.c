@@ -62,13 +62,14 @@ calendar_date_to_string (CalendarData *data,
 			      char         *buffer,
 			      gint          buff_len)
 {
-  GDate *date;
   guint year, month, day;
 
   ctk_calendar_get_date (CTK_CALENDAR(data->window),
 			 &year, &month, &day);
   if (g_date_valid_dmy (day, month + 1, year))
     {
+      GDate *date;
+
       date = g_date_new_dmy (day, month + 1, year);
       g_date_strftime (buffer, buff_len-1, "%x", date);
       g_date_free (date);
@@ -248,11 +249,12 @@ void calendar_select_font (CtkWidget    *button,
                                  CalendarData *calendar)
 {
   const char *font = NULL;
-  CtkCssProvider *provider;
-  gchar *data;
 
   if (calendar->window)
     {
+      CtkCssProvider *provider;
+      gchar *data;
+
       provider = g_object_get_data (G_OBJECT (calendar->window), "css-provider");
       if (!provider)
         {
@@ -307,13 +309,14 @@ demonstrate_details (CalendarData *data)
   static char *rainbow[] = { "#900", "#980", "#390", "#095", "#059", "#309", "#908" };
   CtkCalendar *calendar = CTK_CALENDAR (data->calendar_widget);
   guint year, month, day;
-  gchar *detail;
 
   ctk_calendar_get_date (calendar,
                          &year, &month, &day);
 
   for (day = 0; day < 29; ++day)
     {
+      gchar *detail;
+
       detail = g_strdup_printf ("<span color='%s'>yadda\n"
                                 "(%04d-%02d-%02d)</span>",
                                 rainbow[(day - 1) % 7], year, month, day);

@@ -961,7 +961,7 @@ test_clicked (CtkWidget     *button,
 static CtkWidget *
 create_window (void)
 {
-  CtkWidget *window, *vbox, *button;
+  CtkWidget *window, *vbox;
   gint i;
 
   window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -973,6 +973,7 @@ create_window (void)
 
   for (i = 0; i < G_N_ELEMENTS (interfaces); i++)
     {
+      CtkWidget *button;
       button = ctk_button_new_with_label (interfaces[i].name);
 
       ctk_widget_set_tooltip_text (button, interfaces[i].tooltip);

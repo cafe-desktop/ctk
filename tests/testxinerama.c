@@ -69,7 +69,6 @@ monitors_changed_cb (CdkScreen *screen,
 int
 main (int argc, char *argv[])
 {
-  CtkWidget *window, *label, *vbox, *button;
   CdkScreen *screen;
   gint i;
 
@@ -85,6 +84,8 @@ main (int argc, char *argv[])
 
   for (i = 0; i < num_monitors; i++)
     {
+      CtkWidget *window, *label, *vbox, *button;
+
       CdkRectangle monitor; 
       gchar *str;
       

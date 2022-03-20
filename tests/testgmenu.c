@@ -471,7 +471,6 @@ toggle_italic (CtkToggleButton *button, gpointer data)
 {
   GMenuModel *model;
   GActionGroup *group;
-  GSimpleAction *action;
   gboolean adding;
   GMenuModel *m;
   CtkTreeView *tv = data;
@@ -487,6 +486,8 @@ toggle_italic (CtkToggleButton *button, gpointer data)
   m = g_menu_model_get_item_link (model, g_menu_model_get_n_items (model) - 1, G_MENU_LINK_SECTION);
   if (adding)
     {
+      GSimpleAction *action;
+
       action = g_simple_action_new_stateful ("italic", NULL, g_variant_new_boolean (FALSE));
       g_action_map_add_action (G_ACTION_MAP (group), G_ACTION (action));
       g_signal_connect (action, "activate", G_CALLBACK (activate_toggle), NULL);
@@ -507,10 +508,8 @@ toggle_speed (CtkToggleButton *button, gpointer data)
 {
   GMenuModel *model;
   GActionGroup *group;
-  GSimpleAction *action;
   gboolean adding;
   GMenuModel *m;
-  GMenu *submenu;
   CtkTreeView *tv = data;
   CtkTreeModel *store;
 
@@ -524,6 +523,9 @@ toggle_speed (CtkToggleButton *button, gpointer data)
   m = g_menu_model_get_item_link (model, 1, G_MENU_LINK_SECTION);
   if (adding)
     {
+      GSimpleAction *action;
+      GMenu *submenu;
+
       action = g_simple_action_new ("faster", NULL);
       g_action_map_add_action (G_ACTION_MAP (group), G_ACTION (action));
       g_signal_connect (action, "activate", G_CALLBACK (activate_action), NULL);
@@ -611,9 +613,6 @@ main (int argc, char *argv[])
 {
   CtkWidget *window;
   CtkWidget *box;
-  CtkWidget *button;
-  CtkWidget *tv;
-  CtkWidget *buttons;
   GMenuModel *model;
   GActionGroup *group;
   GDBusConnection *bus;
@@ -650,6 +649,9 @@ main (int argc, char *argv[])
     }
   else
     {
+      CtkWidget *tv;
+      CtkWidget *buttons;
+
       group = get_group ();
       model = get_model ();
 
@@ -677,6 +679,8 @@ main (int argc, char *argv[])
     }
   else
     {
+      CtkWidget *button;
+
       button = ctk_menu_button_new ();
       ctk_button_set_label (CTK_BUTTON (button), "Click here");
       ctk_menu_button_set_use_popover (CTK_MENU_BUTTON (button), TRUE);

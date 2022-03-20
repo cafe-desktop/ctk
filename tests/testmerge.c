@@ -89,12 +89,13 @@ toggle_tearoffs (CtkWidget    *button,
 static gint
 delayed_toggle_dynamic (CtkUIManager *merge)
 {
-  CtkAction *dyn;
   static CtkActionGroup *dynamic = NULL;
   static guint merge_id = 0;
 
   if (!dynamic)
     {
+      CtkAction *dyn;
+
       dynamic = ctk_action_group_new ("dynamic");
       ctk_ui_manager_insert_action_group (merge, dynamic, 0);
       dyn = g_object_new (CTK_TYPE_ACTION,
