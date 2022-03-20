@@ -57,7 +57,7 @@ fill_checks (cairo_t *cr,
              int x,     int y,
              int width, int height)
 {
-  int i, j;
+  int j;
   
 #define CHECK_SIZE 32
 
@@ -70,6 +70,8 @@ fill_checks (cairo_t *cr,
   
   for (; j < height; j += CHECK_SIZE)
     {
+      int i;
+
       i = y & (-CHECK_SIZE);
       for (; i < width; i += CHECK_SIZE)
 	if ((i / CHECK_SIZE + j / CHECK_SIZE) % 2 == 0)

@@ -78,13 +78,13 @@ static void
 change_header (CtkButton *button, gpointer data)
 {
   CtkWidget *window = CTK_WIDGET (data);
-  CtkWidget *label;
   CtkWidget *widget;
-  CtkWidget *image;
-  CtkWidget *box;
 
   if (button && ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button)))
     {
+      CtkWidget *label;
+      CtkWidget *box;
+
       header = ctk_event_box_new ();
       ctk_style_context_add_class (ctk_widget_get_style_context (header), "titlebar");
       ctk_style_context_add_class (ctk_widget_get_style_context (header), "header-bar");
@@ -100,6 +100,8 @@ change_header (CtkButton *button, gpointer data)
     }
   else
     {
+      CtkWidget *image;
+
       header = ctk_header_bar_new ();
       ctk_style_context_add_class (ctk_widget_get_style_context (header), "titlebar");
       ctk_header_bar_set_title (CTK_HEADER_BAR (header), "Example header");

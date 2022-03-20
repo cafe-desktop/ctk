@@ -41,11 +41,12 @@ static CtkOrientation text_orientation = CTK_ORIENTATION_HORIZONTAL;
 static void
 populate_flowbox_simple (CtkFlowBox *flowbox)
 {
-  CtkWidget *widget, *frame;
   gint i;
 
   for (i = 0; i < N_ITEMS; i++)
     {
+      CtkWidget *widget, *frame;
+
       gchar *text = g_strdup_printf ("Item %02d", i);
 
       widget = ctk_label_new (text);
@@ -67,12 +68,13 @@ populate_flowbox_simple (CtkFlowBox *flowbox)
 static void
 populate_flowbox_focus (CtkFlowBox *flowbox)
 {
-  CtkWidget *widget, *frame, *box;
   gint i;
-  gboolean sensitive;
 
   for (i = 0; i < 200; i++)
     {
+      CtkWidget *widget, *frame, *box;
+      gboolean sensitive;
+
       sensitive = TRUE;
       frame = ctk_frame_new (NULL);
       ctk_frame_set_shadow_type (CTK_FRAME (frame), CTK_SHADOW_NONE);
@@ -116,11 +118,12 @@ populate_flowbox_focus (CtkFlowBox *flowbox)
 static void
 populate_flowbox_buttons (CtkFlowBox *flowbox)
 {
-  CtkWidget *widget;
   gint i;
 
   for (i = 0; i < 50; i++)
     {
+      CtkWidget *widget;
+
       widget = ctk_button_new_with_label ("Button");
       ctk_widget_show (widget);
       ctk_container_add (CTK_CONTAINER (flowbox), widget);
@@ -132,7 +135,6 @@ populate_flowbox_buttons (CtkFlowBox *flowbox)
 static void
 populate_flowbox_wrappy (CtkFlowBox *flowbox)
 {
-  CtkWidget *widget, *frame;
   gint i;
 
   const gchar *strings[] = {
@@ -146,6 +148,8 @@ populate_flowbox_wrappy (CtkFlowBox *flowbox)
 
   for (i = 0; i < G_N_ELEMENTS (strings); i++)
     {
+      CtkWidget *widget, *frame;
+
       widget = ctk_label_new (strings[i]);
       frame  = ctk_frame_new (NULL);
       ctk_widget_show (widget);
@@ -168,7 +172,6 @@ populate_flowbox_wrappy (CtkFlowBox *flowbox)
 static void
 populate_flowbox_stock (CtkFlowBox *flowbox)
 {
-  CtkWidget *widget;
   static GSList *stock_ids = NULL;
   GSList *l;
   gint i;
@@ -182,6 +185,8 @@ populate_flowbox_stock (CtkFlowBox *flowbox)
 
   for (i = 0, l = stock_ids; i < 30 && l != NULL; i++, l = l->next)
     {
+      CtkWidget *widget;
+
       gchar *stock_id = l->data;
       gchar *text = g_strdup_printf ("Item %02d", i);
 
@@ -198,11 +203,12 @@ populate_flowbox_stock (CtkFlowBox *flowbox)
 static void
 populate_flowbox_images (CtkFlowBox *flowbox)
 {
-  CtkWidget *widget, *image, *label;
   gint i;
 
   for (i = 0; i < N_ITEMS; i++)
     {
+      CtkWidget *widget, *image, *label;
+
       gchar *text = g_strdup_printf ("Item %02d", i);
 
       widget = ctk_box_new (CTK_ORIENTATION_VERTICAL, 6);

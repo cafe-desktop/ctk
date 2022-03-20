@@ -94,16 +94,18 @@ window_drag_begin (CtkWidget      *widget,
                    CdkDragContext *context,
                    gpointer        data)
 {
-  GdkPixbuf *pixbuf;
   CtkWidget *window;
-  CtkWidget *image;
   int hotspot;
 
   hotspot = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (data), "hotspot"));
 
   window = g_object_get_data (G_OBJECT (widget), "drag window");
+
   if (window == NULL)
     {
+      GdkPixbuf *pixbuf;
+      CtkWidget *image;
+
       window = ctk_window_new (CTK_WINDOW_POPUP);
       g_print ("creating new drag widget\n");
       pixbuf = get_image_pixbuf (CTK_IMAGE (data));

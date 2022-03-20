@@ -294,7 +294,6 @@ static void
 insert_cb (CtkButton *button, CtkWidget *window)
 {
   CtkGrid *g, *g1, *g2, *g3, *g4;
-  CtkWidget *child;
   gboolean inserted;
 
   g = CTK_GRID (ctk_bin_get_child (CTK_BIN (window)));
@@ -314,6 +313,8 @@ insert_cb (CtkButton *button, CtkWidget *window)
     }
   else
     {
+      CtkWidget *child;
+
       ctk_grid_insert_row (g1, 1);
       ctk_grid_attach (g1, test_widget ("(0, 1)", "red"), 0, 1, 1, 1);
       ctk_grid_attach (g1, test_widget ("(2, 1)", "red"), 2, 1, 1, 1);

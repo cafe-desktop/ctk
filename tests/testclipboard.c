@@ -28,14 +28,15 @@ image_request_cb (CtkClipboard *clipboard,
                   GdkPixbuf *pixbuf,
                   gpointer data)
 {
-  GdkPixbuf *copy;
-  int height;
-  int width;
   gdouble factor;
   char *str;
 
   if (pixbuf != NULL)
     {
+      GdkPixbuf *copy;
+      int height;
+      int width;
+
       height = gdk_pixbuf_get_height (pixbuf);
       width = gdk_pixbuf_get_width (pixbuf);
 

@@ -69,10 +69,10 @@ static void
 set_gicon (CtkWidget *button,
            CtkEntry  *entry)
 {
-  GIcon *icon;
-
- if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button)))
+  if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button)))
     {
+      GIcon *icon;
+
       icon = g_themed_icon_new ("ctk-yes");
       ctk_entry_set_icon_from_gicon (entry, CTK_ENTRY_ICON_SECONDARY, icon);
       g_object_unref (icon);
@@ -83,10 +83,10 @@ static void
 set_pixbuf (CtkWidget *button,
             CtkEntry  *entry)
 {
-  GdkPixbuf *pixbuf;
-
   if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button)))
     {
+      GdkPixbuf *pixbuf;
+
       pixbuf = gdk_pixbuf_new_from_resource ("/org/ctk/libctk/inspector/logo.png", NULL);
       ctk_entry_set_icon_from_pixbuf (entry, CTK_ENTRY_ICON_SECONDARY, pixbuf);
       g_object_unref (pixbuf);

@@ -109,8 +109,6 @@ main (int argc, char *argv[])
   gint i;
 
   CtkWidget *entry, *button;
-  CtkWidget *window2, *vbox2, *scrolled_window2, *tree_view2;
-  CtkWidget *window3, *vbox3, *scrolled_window3, *tree_view3;
 
   ctk_init (&argc, &argv);
 
@@ -245,6 +243,8 @@ main (int argc, char *argv[])
 
   if (smodel)
     {
+      CtkWidget *window2, *vbox2, *scrolled_window2, *tree_view2;
+
       window2 = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_title (CTK_WINDOW (window2), 
 			    "Words, words, words - window 2");
@@ -315,6 +315,8 @@ main (int argc, char *argv[])
   
   if (ssmodel)
     {
+      CtkWidget *window3, *vbox3, *scrolled_window3, *tree_view3;
+
       window3 = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       ctk_window_set_title (CTK_WINDOW (window3), 
 			    "Words, words, words - Window 3");

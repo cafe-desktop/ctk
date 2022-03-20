@@ -62,16 +62,19 @@ row_new (const gchar* text, gint sort_id) {
 static void
 update_header_cb (Row *row, Row *before, gpointer data)
 {
-  CtkWidget *hbox, *l, *b;
   GList *children;
 
   if (before == NULL ||
       (row->label != NULL &&
        strcmp (ctk_label_get_text (CTK_LABEL (row->label)), "blah3") == 0))
     {
+      CtkWidget *hbox, *l;
+
       /* Create header if needed */
       if (ctk_list_box_row_get_header (CTK_LIST_BOX_ROW (row)) == NULL)
         {
+          CtkWidget *b;
+
           hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
           l = ctk_label_new ("Header");
           ctk_container_add (CTK_CONTAINER (hbox), l);
@@ -110,10 +113,10 @@ reverse_sort_cb (Row *a, Row *b, gpointer data)
 static gboolean
 filter_cb (Row *row, gpointer data)
 {
-  const char *text;
-
   if (row->label != NULL)
     {
+      const char *text;
+
       text = ctk_label_get_text (CTK_LABEL (row->label));
       return strcmp (text, "blah3") != 0;
     }

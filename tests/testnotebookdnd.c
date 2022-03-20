@@ -96,13 +96,13 @@ on_notebook_drag_begin (CtkWidget      *widget,
                         CdkDragContext *context,
                         gpointer        data)
 {
-  GdkPixbuf *pixbuf;
   guint page_num;
 
   page_num = ctk_notebook_get_current_page (CTK_NOTEBOOK (widget));
 
   if (page_num > 2)
     {
+      GdkPixbuf *pixbuf;
       CtkIconTheme *icon_theme;
       int width;
 
@@ -172,7 +172,7 @@ create_notebook (gchar           **labels,
                  const gchar      *group,
                  CtkPositionType   pos)
 {
-  CtkWidget *notebook, *title, *page, *action_widget;
+  CtkWidget *notebook, *action_widget;
 
   notebook = ctk_notebook_new ();
   ctk_widget_set_vexpand (notebook, TRUE);
@@ -193,6 +193,8 @@ create_notebook (gchar           **labels,
 
   while (*labels)
     {
+      CtkWidget *title, *page;
+
       page = ctk_entry_new ();
       ctk_entry_set_text (CTK_ENTRY (page), *labels);
 
@@ -217,7 +219,7 @@ create_notebook_non_dragable_content (gchar           **labels,
                                       const gchar      *group,
                                       CtkPositionType   pos)
 {
-  CtkWidget *notebook, *title, *page, *action_widget;
+  CtkWidget *notebook, *action_widget;
 
   notebook = ctk_notebook_new ();
   ctk_widget_set_vexpand (notebook, TRUE);
@@ -238,7 +240,9 @@ create_notebook_non_dragable_content (gchar           **labels,
 
   while (*labels)
     {
+      CtkWidget *title, *page;
       CtkWidget *button;
+
       button = ctk_button_new_with_label (*labels);
       /* Use CtkListBox since it bubbles up motion notify event, which can
        * experience more issues than CtkBox. */
@@ -266,7 +270,7 @@ create_notebook_with_notebooks (gchar           **labels,
                                 const gchar      *group,
                                 CtkPositionType   pos)
 {
-  CtkWidget *notebook, *title, *page;
+  CtkWidget *notebook;
   gint count = 0;
 
   notebook = ctk_notebook_new ();
@@ -280,6 +284,8 @@ create_notebook_with_notebooks (gchar           **labels,
 
   while (*labels)
     {
+      CtkWidget *title, *page;
+
       page = create_notebook (labels, group, pos);
       ctk_notebook_popup_enable (CTK_NOTEBOOK (page));
 

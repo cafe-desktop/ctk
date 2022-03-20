@@ -34,8 +34,6 @@ inhibitor_toggled (CtkToggleButton *button, CtkApplication *app)
 
   if (active)
     {
-      gchar *text;
-
       g_print ("Calling ctk_application_inhibit: %d, '%s'\n", flags, reason);
 
       cookie = ctk_application_inhibit (app, CTK_WINDOW (toplevel), flags, reason);
@@ -49,6 +47,8 @@ inhibitor_toggled (CtkToggleButton *button, CtkApplication *app)
         }
       else
         {
+          gchar *text;
+
           text = g_strdup_printf ("%#x", cookie);
           ctk_label_set_label (CTK_LABEL (inhibit_label), text);
           g_free (text);

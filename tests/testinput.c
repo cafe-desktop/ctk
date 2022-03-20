@@ -168,10 +168,10 @@ static guint32 motion_time;
 static void
 print_axes (CdkDevice *device, gdouble *axes)
 {
-  int i;
-  
   if (axes)
     {
+      int i;
+
       g_print ("%s ", cdk_device_get_name (device));
 
       for (i = 0; i < cdk_device_get_n_axes (device); i++)
@@ -221,7 +221,6 @@ motion_notify_event (CtkWidget *widget, CdkEventMotion *event)
 {
   CdkTimeCoord **events;
   gint n_events;
-  int i;
 
   current_device = event->device;
   cursor_proximity = TRUE;
@@ -232,6 +231,8 @@ motion_notify_event (CtkWidget *widget, CdkEventMotion *event)
 				  motion_time, event->time,
 				  &events, &n_events))
 	{
+	  int i;
+
 	  for (i=0; i<n_events; i++)
 	    {
 	      double x = 0, y = 0, pressure = 0.5;

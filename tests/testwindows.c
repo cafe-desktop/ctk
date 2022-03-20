@@ -261,12 +261,13 @@ save_children (GString *s,
 	       CdkWindow *window)
 {
   GList *l;
-  CdkWindow *child;
 
   for (l = g_list_reverse (cdk_window_peek_children (window));
        l != NULL;
        l = l->next)
     {
+      CdkWindow *child;
+
       child = l->data;
 
       save_window (s, child);
@@ -287,7 +288,6 @@ save_clicked (CtkWidget *button,
 {
   GString *s;
   CtkWidget *dialog;
-  GFile *file;
 
   s = g_string_new ("");
 
@@ -304,6 +304,8 @@ save_clicked (CtkWidget *button,
   
   if (ctk_dialog_run (CTK_DIALOG (dialog)) == CTK_RESPONSE_ACCEPT)
     {
+      GFile *file;
+
       file = ctk_file_chooser_get_file (CTK_FILE_CHOOSER (dialog));
 
       g_file_replace_contents (file,
@@ -322,12 +324,13 @@ static void
 destroy_children (CdkWindow *window)
 {
   GList *l;
-  CdkWindow *child;
 
   for (l = cdk_window_peek_children (window);
        l != NULL;
        l = l->next)
     {
+      CdkWindow *child;
+
       child = l->data;
       
       destroy_children (child);
@@ -340,9 +343,7 @@ parse_window (CdkWindow *parent, char **lines)
 {
   int x, y, w, h, native, n_children;
   double r, g, b, a;
-  CdkWindow *window;
   CdkRGBA color;
-  int i;
 
   if (*lines == NULL)
     return lines;
@@ -350,6 +351,9 @@ parse_window (CdkWindow *parent, char **lines)
   if (sscanf(*lines, "%d,%d %dx%d (%lf,%lf,%lf,%lf) %d %d",
 	     &x, &y, &w, &h, &r, &g, &b, &a, &native, &n_children) == 10)
     {
+      CdkWindow *window;
+      int i;
+
       lines++;
       color.red = r;
       color.green = g;
@@ -371,12 +375,14 @@ parse_window (CdkWindow *parent, char **lines)
 static void
 load_file (GFile *file)
 {
-  CdkWindow *window;
   char *data;
-  char **lines, **l;
+  char **lines;
   
   if (g_file_load_contents (file, NULL, &data, NULL, NULL, NULL))
     {
+      CdkWindow *window;
+      char **l;
+
       window = ctk_widget_get_window (darea);
 
       destroy_children (window);
@@ -395,7 +401,6 @@ static void
 move_window_clicked (CtkWidget *button, 
 		     gpointer data)
 {
-  CdkWindow *window;
   CtkDirectionType direction;
   GList *selected, *l;
   gint x, y;
@@ -406,6 +411,8 @@ move_window_clicked (CtkWidget *button,
 
   for (l = selected; l != NULL; l = l->next)
     {
+      CdkWindow *window;
+
       window = l->data;
       
       cdk_window_get_position (window, &x, &y);
@@ -437,7 +444,6 @@ static void
 manual_clicked (CtkWidget *button, 
 		gpointer data)
 {
-  CdkWindow *window;
   GList *selected, *l;
   int x, y, w, h;
   CtkWidget *dialog, *grid, *label, *xspin, *yspin, *wspin, *hspin;
@@ -509,6 +515,8 @@ manual_clicked (CtkWidget *button,
   
   for (l = selected; l != NULL; l = l->next)
     {
+      CdkWindow *window;
+
       window = l->data;
       
       cdk_window_move_resize (window, x, y, w, h);
@@ -543,7 +551,6 @@ static void
 scroll_window_clicked (CtkWidget *button, 
 		       gpointer data)
 {
-  CdkWindow *window;
   CtkDirectionType direction;
   GList *selected, *l;
   gint dx, dy;
@@ -572,6 +579,8 @@ scroll_window_clicked (CtkWidget *button,
   
   for (l = selected; l != NULL; l = l->next)
     {
+      CdkWindow *window;
+
       window = l->data;
 
       cdk_window_scroll (window, dx, dy);
@@ -586,12 +595,13 @@ raise_window_clicked (CtkWidget *button,
 		      gpointer data)
 {
   GList *selected, *l;
-  CdkWindow *window;
     
   selected = get_selected_windows ();
 
   for (l = selected; l != NULL; l = l->next)
     {
+      CdkWindow *window;
+
       window = l->data;
       
       cdk_window_raise (window);
@@ -607,12 +617,13 @@ lower_window_clicked (CtkWidget *button,
 		      gpointer data)
 {
   GList *selected, *l;
-  CdkWindow *window;
     
   selected = get_selected_windows ();
 
   for (l = selected; l != NULL; l = l->next)
     {
+      CdkWindow *window;
+
       window = l->data;
       
       cdk_window_lower (window);
@@ -629,13 +640,14 @@ smaller_window_clicked (CtkWidget *button,
 			gpointer data)
 {
   GList *selected, *l;
-  CdkWindow *window;
-  int w, h;
 
   selected = get_selected_windows ();
 
   for (l = selected; l != NULL; l = l->next)
     {
+      CdkWindow *window;
+      int w, h;
+
       window = l->data;
       
       w = cdk_window_get_width (window) - 10;
@@ -656,13 +668,14 @@ larger_window_clicked (CtkWidget *button,
 			gpointer data)
 {
   GList *selected, *l;
-  CdkWindow *window;
-  int w, h;
 
   selected = get_selected_windows ();
 
   for (l = selected; l != NULL; l = l->next)
     {
+      CdkWindow *window;
+      int w, h;
+
       window = l->data;
       
       w = cdk_window_get_width (window) + 10;
@@ -679,12 +692,13 @@ native_window_clicked (CtkWidget *button,
 			gpointer data)
 {
   GList *selected, *l;
-  CdkWindow *window;
 
   selected = get_selected_windows ();
 
   for (l = selected; l != NULL; l = l->next)
     {
+      CdkWindow *window;
+
       window = l->data;
       
       cdk_window_ensure_native (window);
@@ -700,13 +714,14 @@ alpha_clicked (CtkWidget *button,
 	       gpointer data)
 {
   GList *selected, *l;
-  CdkWindow *window;
-  CdkRGBA *color;
 
   selected = get_selected_windows ();
 
   for (l = selected; l != NULL; l = l->next)
     {
+      CdkWindow *window;
+      CdkRGBA *color;
+
       window = l->data;
 
       color = g_object_get_data (G_OBJECT (window), "color");
@@ -815,7 +830,6 @@ main (int argc, char **argv)
   CtkWidget *button, *scrolled, *grid;
   CtkTreeViewColumn *column;
   CtkCellRenderer *renderer;
-  GFile *file;
   
   ctk_init (&argc, &argv);
 
@@ -1069,6 +1083,8 @@ main (int argc, char **argv)
 
   if (argc == 2)
     {
+      GFile *file;
+
       file = g_file_new_for_commandline_arg (argv[1]);
       load_file (file);
       g_object_unref (file);

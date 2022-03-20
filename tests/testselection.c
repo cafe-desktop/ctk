@@ -271,7 +271,6 @@ selection_received (CtkWidget *widget, CtkSelectionData *selection_data)
   int i;
   SelType seltype;
   char *str;
-  guchar *data;
   CtkTextBuffer *buffer;
   CdkAtom type;
 
@@ -312,6 +311,8 @@ selection_received (CtkWidget *widget, CtkSelectionData *selection_data)
   position = 0;
   while (position < ctk_selection_data_get_length (selection_data))
     {
+      guchar *data;
+
       data = (guchar *) ctk_selection_data_get_data (selection_data);
       switch (seltype)
 	{

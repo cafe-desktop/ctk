@@ -184,7 +184,6 @@ void
 add_child (CtkWidget *window,
 	   gboolean   active)
 {
-  Socket *socket;
   char *argv[3] = { "./testsocket_child", NULL, NULL };
   char buffer[20];
   int out_fd;
@@ -193,6 +192,8 @@ add_child (CtkWidget *window,
 
   if (active)
     {
+      Socket *socket;
+
       socket = create_socket ();
       ctk_box_pack_start (CTK_BOX (box), socket->box, TRUE, TRUE, 0);
       ctk_widget_show (socket->box);

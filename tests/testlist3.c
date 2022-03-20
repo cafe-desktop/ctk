@@ -153,8 +153,6 @@ drag_motion (CtkWidget      *widget,
 {
   CtkAllocation alloc;
   CtkWidget *row;
-  int hover_row_y;
-  int hover_row_height;
   CtkWidget *drag_row;
   CtkWidget *row_before;
   CtkWidget *row_after;
@@ -173,6 +171,9 @@ drag_motion (CtkWidget      *widget,
 
   if (row)
     {
+      int hover_row_y;
+      int hover_row_height;
+
       ctk_widget_get_allocation (row, &alloc);
       hover_row_y = alloc.y;
       hover_row_height = alloc.height;
@@ -325,10 +326,9 @@ static const char *css =
 int
 main (int argc, char *argv[])
 {
-  CtkWidget *window, *list, *sw, *row;
+  CtkWidget *window, *list, *sw;
   CtkWidget *hbox, *vbox, *combo, *button;
   gint i;
-  gchar *text;
   CtkCssProvider *provider;
 
   ctk_init (NULL, NULL);
@@ -380,6 +380,9 @@ main (int argc, char *argv[])
 
   for (i = 0; i < 20; i++)
     {
+      CtkWidget *row;
+      gchar *text;
+
       text = g_strdup_printf ("Row %d", i);
       row = create_row (text);
       ctk_list_box_insert (CTK_LIST_BOX (list), row, -1);

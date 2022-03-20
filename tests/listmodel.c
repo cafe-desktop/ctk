@@ -130,11 +130,12 @@ add_some (CtkButton *button, GListStore *store)
 {
   gint n, i;
   guint n_items;
-  GObject *obj;
-  gchar *label;
 
   for (n = 0; n < 50; n++)
     {
+      GObject *obj;
+      gchar *label;
+
       n_items = g_list_model_get_n_items (G_LIST_MODEL (store));
       i = g_random_int_range (0, MAX (2 * n_items, 1));
       label = g_strdup_printf ("Added %d", i);
