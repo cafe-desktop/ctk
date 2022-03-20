@@ -161,7 +161,6 @@ int
 main (int argc, char *argv[])
 {
   guint i;
-  char *test_name;
   char *theme;
 
   ctk_test_init (&argc, &argv);
@@ -172,6 +171,8 @@ main (int argc, char *argv[])
 
   for (i = 0; i < G_N_ELEMENTS (icon_names); i++)
     {
+      char *test_name;
+
       test_name = g_strdup_printf ("/check-icon-names/%s", icon_names[i]);
       g_test_add_data_func (test_name, icon_names[i], test_icon_existence);
       g_free (test_name);

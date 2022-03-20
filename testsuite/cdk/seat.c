@@ -4,7 +4,7 @@ static void
 test_list_seats (void)
 {
   CdkDisplay *display;
-  CdkSeat *seat0, *seat;
+  CdkSeat *seat0;
   GList *list, *l;
   gboolean found_default;
 
@@ -17,6 +17,8 @@ test_list_seats (void)
   list = cdk_display_list_seats (display);
   for (l = list; l; l = l->next)
     {
+      CdkSeat *seat;
+
       seat = l->data;
 
       g_assert_true (CDK_IS_SEAT (seat));

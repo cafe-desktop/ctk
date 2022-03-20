@@ -45,7 +45,6 @@ int
 main (int argc, char *argv[])
 {
   guint i;
-  char *test_name;
   char *theme;
 
   ctk_test_init (&argc, &argv);
@@ -56,6 +55,8 @@ main (int argc, char *argv[])
 
   for (i = 0; i < G_N_ELEMENTS (cursor_names); i++)
     {
+      char *test_name;
+
       test_name = g_strdup_printf ("/check-cursor-names/%s", cursor_names[i]);
       g_test_add_data_func (test_name, cursor_names[i], test_cursor_existence);
       g_free (test_name);
