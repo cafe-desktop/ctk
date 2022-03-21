@@ -925,7 +925,6 @@ gint
 _ctk_rbtree_node_find_offset (CtkRBTree *tree,
 			      CtkRBNode *node)
 {
-  CtkRBNode *last;
   gint retval;
 
   g_assert (node);
@@ -935,6 +934,8 @@ _ctk_rbtree_node_find_offset (CtkRBTree *tree,
 
   while (tree && node && !_ctk_rbtree_is_nil (node))
     {
+      CtkRBNode *last;
+
       last = node;
       node = node->parent;
 
@@ -959,7 +960,6 @@ guint
 _ctk_rbtree_node_get_index (CtkRBTree *tree,
                             CtkRBNode *node)
 {
-  CtkRBNode *last;
   guint retval;  
   
   g_assert (node);
@@ -969,6 +969,8 @@ _ctk_rbtree_node_get_index (CtkRBTree *tree,
 
   while (tree && node && !_ctk_rbtree_is_nil (node))
     {
+      CtkRBNode *last;
+
       last = node;
       node = node->parent;
 

@@ -416,13 +416,14 @@ ctk_overlay_realize (CtkWidget *widget)
 {
   CtkOverlay *overlay = CTK_OVERLAY (widget);
   CtkOverlayPrivate *priv = overlay->priv;
-  CtkOverlayChild *child;
   GSList *children;
 
   CTK_WIDGET_CLASS (ctk_overlay_parent_class)->realize (widget);
 
   for (children = priv->children; children; children = children->next)
     {
+      CtkOverlayChild *child;
+
       child = children->data;
 
       if (child->window == NULL)
@@ -435,11 +436,12 @@ ctk_overlay_unrealize (CtkWidget *widget)
 {
   CtkOverlay *overlay = CTK_OVERLAY (widget);
   CtkOverlayPrivate *priv = overlay->priv;
-  CtkOverlayChild *child;
   GSList *children;
 
   for (children = priv->children; children; children = children->next)
     {
+      CtkOverlayChild *child;
+
       child = children->data;
 
       ctk_widget_set_parent_window (child->widget, NULL);
@@ -456,13 +458,14 @@ ctk_overlay_map (CtkWidget *widget)
 {
   CtkOverlay *overlay = CTK_OVERLAY (widget);
   CtkOverlayPrivate *priv = overlay->priv;
-  CtkOverlayChild *child;
   GSList *children;
 
   CTK_WIDGET_CLASS (ctk_overlay_parent_class)->map (widget);
 
   for (children = priv->children; children; children = children->next)
     {
+      CtkOverlayChild *child;
+
       child = children->data;
 
       if (child->window != NULL &&
@@ -477,11 +480,12 @@ ctk_overlay_unmap (CtkWidget *widget)
 {
   CtkOverlay *overlay = CTK_OVERLAY (widget);
   CtkOverlayPrivate *priv = overlay->priv;
-  CtkOverlayChild *child;
   GSList *children;
 
   for (children = priv->children; children; children = children->next)
     {
+      CtkOverlayChild *child;
+
       child = children->data;
 
       if (child->window != NULL &&
@@ -497,13 +501,14 @@ ctk_overlay_remove (CtkContainer *container,
                     CtkWidget    *widget)
 {
   CtkOverlayPrivate *priv = CTK_OVERLAY (container)->priv;
-  CtkOverlayChild *child;
   GSList *children, *next;
   gboolean removed;
 
   removed = FALSE;
   for (children = priv->children; children; children = next)
     {
+      CtkOverlayChild *child;
+
       child = children->data;
       next = children->next;
 
@@ -619,7 +624,6 @@ ctk_overlay_forall (CtkContainer *overlay,
                     gpointer      callback_data)
 {
   CtkOverlayPrivate *priv = CTK_OVERLAY (overlay)->priv;
-  CtkOverlayChild *child;
   GSList *children;
   CtkWidget *main_widget;
 
@@ -630,6 +634,8 @@ ctk_overlay_forall (CtkContainer *overlay,
   children = priv->children;
   while (children)
     {
+      CtkOverlayChild *child;
+
       child = children->data;
       children = children->next;
 
@@ -642,11 +648,12 @@ ctk_overlay_get_overlay_child (CtkOverlay *overlay,
 			       CtkWidget *child)
 {
   CtkOverlayPrivate *priv = CTK_OVERLAY (overlay)->priv;
-  CtkOverlayChild *child_info;
   GSList *children;
 
   for (children = priv->children; children; children = children->next)
     {
+      CtkOverlayChild *child_info;
+
       child_info = children->data;
 
       if (child_info->widget == child)

@@ -356,12 +356,13 @@ CtkCssValue *
 _ctk_css_array_value_parse (CtkCssParser *parser,
                             CtkCssValue  *(* parse_func) (CtkCssParser *parser))
 {
-  CtkCssValue *value, *result;
+  CtkCssValue *result;
   GPtrArray *values;
 
   values = g_ptr_array_new ();
 
   do {
+    CtkCssValue *value;
     value = parse_func (parser);
 
     if (value == NULL)

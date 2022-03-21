@@ -1897,7 +1897,6 @@ ctk_tree_model_sort_sort_level (CtkTreeModelSort *tree_model_sort,
   gint *new_order;
 
   CtkTreeIter iter;
-  CtkTreePath *path;
 
   SortData data;
 
@@ -1952,7 +1951,10 @@ ctk_tree_model_sort_sort_level (CtkTreeModelSort *tree_model_sort,
 
   if (emit_reordered)
     {
+      CtkTreePath *path;
+
       ctk_tree_model_sort_increment_stamp (tree_model_sort);
+
       if (level->parent_elt)
 	{
 	  iter.stamp = priv->stamp;

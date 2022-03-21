@@ -136,14 +136,16 @@ ctk_css_image_fallback_compute (CtkCssImage             *image,
                                 CtkCssStyle             *parent_style)
 {
   CtkCssImageFallback *fallback = CTK_CSS_IMAGE_FALLBACK (image);
-  CtkCssImageFallback *copy;
-  int i;
 
   if (fallback->used < 0)
     {
+      CtkCssImageFallback *copy;
+      int i;
+
       copy = g_object_new (_ctk_css_image_fallback_get_type (), NULL);
       copy->n_images = fallback->n_images;
       copy->images = g_new (CtkCssImage *, fallback->n_images);
+
       for (i = 0; i < fallback->n_images; i++)
         {
           copy->images[i] = _ctk_css_image_compute (fallback->images[i],
@@ -183,7 +185,6 @@ ctk_css_image_fallback_parse (CtkCssImage  *image,
 {
   CtkCssImageFallback *fallback = CTK_CSS_IMAGE_FALLBACK (image);
   GPtrArray *images;
-  CtkCssImage *child;
 
   if (!_ctk_css_parser_try (parser, "image", TRUE))
     {
@@ -202,6 +203,8 @@ ctk_css_image_fallback_parse (CtkCssImage  *image,
 
   do
     {
+      CtkCssImage *child;
+
       child = NULL;
       if (_ctk_css_image_can_parse (parser))
         child = _ctk_css_image_new_parse (parser);

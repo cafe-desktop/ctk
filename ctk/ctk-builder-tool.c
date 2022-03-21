@@ -370,7 +370,7 @@ stack_is (GMarkupParseContext *context,
           ...)
 {
   va_list args;
-  gchar *s, *p;
+  gchar *s;
   const GSList *stack;
 
   stack = g_markup_parse_context_get_element_stack (context);
@@ -379,6 +379,8 @@ stack_is (GMarkupParseContext *context,
   s = va_arg (args, gchar *);
   while (s)
     {
+      gchar *p;
+
       if (stack == NULL)
         {
           va_end (args);
@@ -409,7 +411,6 @@ start_element (GMarkupParseContext  *context,
                GError              **error)
 {
   gint i;
-  gchar *escaped;
   MyParserData *data = user_data;
 
   maybe_close_starttag (data);
@@ -490,6 +491,8 @@ start_element (GMarkupParseContext  *context,
   g_fprintf (data->output, "%*s<%s", data->indent, "", element_name);
   for (i = 0; attribute_names[i]; i++)
     {
+      gchar *escaped;
+
       escaped = g_markup_escape_text (attribute_values[i], -1);
       g_fprintf (data->output, " %s=\"%s\"", attribute_names[i], escaped);
       g_free (escaped);
@@ -850,8 +853,6 @@ do_enumerate (const gchar *filename)
   GError *error = NULL;
   gint ret;
   GSList *list, *l;
-  GObject *object;
-  const gchar *name;
 
   builder = ctk_builder_new ();
   ret = ctk_builder_add_from_file (builder, filename, &error);
@@ -865,6 +866,9 @@ do_enumerate (const gchar *filename)
   list = ctk_builder_get_objects (builder);
   for (l = list; l; l = l->next)
     {
+      GObject *object;
+      const gchar *name;
+
       object = l->data;
       name = object_get_name (object);
       if (g_str_has_prefix (name, "___") && g_str_has_suffix (name, "___"))

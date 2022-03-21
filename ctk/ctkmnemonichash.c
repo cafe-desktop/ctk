@@ -111,7 +111,6 @@ _ctk_mnemonic_hash_activate (CtkMnemonicHash *mnemonic_hash,
 {
   GSList *list, *targets;
   CtkWidget *widget, *chosen_widget;
-  CdkWindow *window;
   gboolean overloaded;
 
   targets = g_hash_table_lookup (mnemonic_hash->hash,
@@ -123,6 +122,8 @@ _ctk_mnemonic_hash_activate (CtkMnemonicHash *mnemonic_hash,
   chosen_widget = NULL;
   for (list = targets; list; list = list->next)
     {
+      CdkWindow *window;
+
       widget = CTK_WIDGET (list->data);
       window = ctk_widget_get_window (widget);
 

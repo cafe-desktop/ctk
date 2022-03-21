@@ -102,10 +102,10 @@ ctk_builder_menu_start_element (GMarkupParseContext  *context,
       /* Can have '<item>', '<submenu>' or '<section>' here. */
       if (g_str_equal (element_name, "item"))
         {
-          GMenuItem *item;
-
           if (COLLECT (G_MARKUP_COLLECT_INVALID, NULL))
             {
+              GMenuItem *item;
+
               item = g_menu_item_new (NULL, NULL);
               ctk_builder_menu_push_frame (state, NULL, item);
             }

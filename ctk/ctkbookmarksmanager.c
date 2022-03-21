@@ -539,7 +539,6 @@ _ctk_bookmarks_manager_get_xdg_type (CtkBookmarksManager *manager,
   GSList *link;
   gboolean match;
   GFile *location;
-  const gchar *path;
   GUserDirectory dir;
   CtkBookmark *bookmark;
 
@@ -552,6 +551,8 @@ _ctk_bookmarks_manager_get_xdg_type (CtkBookmarksManager *manager,
 
   for (dir = 0; dir < G_USER_N_DIRECTORIES; dir++)
     {
+      const gchar *path;
+
       path = g_get_user_special_dir (dir);
       if (!path)
         continue;

@@ -121,7 +121,6 @@ create_file_info (TrackerSparqlCursor *cursor)
 {
   GFileInfo *info;
   const gchar *str;
-  GDateTime *creation;
 
   info = g_file_info_new ();
   str = tracker_sparql_cursor_get_string (cursor, 1, NULL);
@@ -138,6 +137,8 @@ create_file_info (TrackerSparqlCursor *cursor)
   str = tracker_sparql_cursor_get_string (cursor, 4, NULL);
   if (str)
     {
+      GDateTime *creation;
+
       creation = g_date_time_new_from_iso8601 (str, NULL);
       g_file_info_set_modification_date_time (info, creation);
       g_date_time_unref (creation);
@@ -155,7 +156,6 @@ query_callback (TrackerSparqlStatement *statement,
   TrackerSparqlCursor *cursor;
   GList *hits = NULL;
   GError *error = NULL;
-  CtkSearchHit *hit;
 
   engine = CTK_SEARCH_ENGINE_TRACKER3 (user_data);
 
@@ -173,6 +173,7 @@ query_callback (TrackerSparqlStatement *statement,
 
   while (tracker_sparql_cursor_next (cursor, NULL, NULL))
     {
+      CtkSearchHit *hit;
       const gchar *url;
 
       url = tracker_sparql_cursor_get_string (cursor, 0, NULL);

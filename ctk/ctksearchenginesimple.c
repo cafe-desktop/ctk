@@ -173,12 +173,11 @@ search_thread_add_hits_idle (gpointer user_data)
 static void
 send_batch (SearchThreadData *data)
 {
-  Batch *batch;
-
   data->n_processed_files = 0;
 
   if (data->hits)
     {
+      Batch *batch;
       guint id;
 
       batch = g_new (Batch, 1);
@@ -218,7 +217,6 @@ visit_directory (GFile *dir, SearchThreadData *data)
   GFileEnumerator *enumerator;
   GFileInfo *info;
   GFile *child;
-  const gchar *display_name;
 
   enumerator = g_file_enumerate_children (dir,
                                           G_FILE_ATTRIBUTE_STANDARD_NAME ","
@@ -241,6 +239,8 @@ visit_directory (GFile *dir, SearchThreadData *data)
 
   while (g_file_enumerator_iterate (enumerator, &info, &child, data->cancellable, NULL))
     {
+      const gchar *display_name;
+
       if (info == NULL)
         break;
 

@@ -153,12 +153,13 @@ ctk_printer_option_set_clear_conflicts (CtkPrinterOptionSet *set)
 GList *
 ctk_printer_option_set_get_groups (CtkPrinterOptionSet *set)
 {
-  CtkPrinterOption *option;
   GList *list = NULL;
   int i;
 
   for (i = 0; i < set->array->len; i++)
     {
+      CtkPrinterOption *option;
+
       option = g_ptr_array_index (set->array, i);
 
       if (g_list_find_custom (list, option->group, (GCompareFunc)g_strcmp0) == NULL)
@@ -174,11 +175,12 @@ ctk_printer_option_set_foreach_in_group (CtkPrinterOptionSet     *set,
 					 CtkPrinterOptionSetFunc  func,
 					 gpointer                 user_data)
 {
-  CtkPrinterOption *option;
   int i;
 
   for (i = 0; i < set->array->len; i++)
     {
+      CtkPrinterOption *option;
+
       option = g_ptr_array_index (set->array, i);
 
       if (group == NULL || g_strcmp0 (group, option->group) == 0)

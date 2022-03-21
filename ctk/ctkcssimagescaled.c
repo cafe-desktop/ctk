@@ -100,8 +100,7 @@ ctk_css_image_scaled_compute (CtkCssImage             *image,
 			      CtkCssStyle             *parent_style)
 {
   CtkCssImageScaled *scaled = CTK_CSS_IMAGE_SCALED (image);
-  CtkCssImageScaled *copy;
-  int i, scale;
+  int scale;
 
   scale = _ctk_style_provider_private_get_scale (provider);
   scale = MAX(MIN (scale, scaled->n_images), 1);
@@ -110,6 +109,9 @@ ctk_css_image_scaled_compute (CtkCssImage             *image,
     return CTK_CSS_IMAGE (g_object_ref (scaled));
   else
     {
+      CtkCssImageScaled *copy;
+      int i;
+
       copy = g_object_new (_ctk_css_image_scaled_get_type (), NULL);
       copy->scale = scale;
       copy->n_images = scaled->n_images;
@@ -136,7 +138,6 @@ ctk_css_image_scaled_parse (CtkCssImage  *image,
 {
   CtkCssImageScaled *scaled = CTK_CSS_IMAGE_SCALED (image);
   GPtrArray *images;
-  CtkCssImage *child;
 
   if (!_ctk_css_parser_try (parser, "-ctk-scaled", TRUE))
     {
@@ -155,6 +156,8 @@ ctk_css_image_scaled_parse (CtkCssImage  *image,
 
   do
     {
+      CtkCssImage *child;
+
       child = _ctk_css_image_new_parse (parser);
       if (child == NULL)
 	{

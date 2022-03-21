@@ -449,7 +449,6 @@ ctk_revealer_real_size_allocate (CtkWidget     *widget,
   CtkAllocation child_allocation;
   CtkWidget *child;
   gboolean window_visible;
-  int bin_x, bin_y;
   CtkRevealerTransitionType transition;
   CtkBorder padding;
 
@@ -464,6 +463,8 @@ ctk_revealer_real_size_allocate (CtkWidget     *widget,
 
   if (ctk_widget_get_realized (widget))
     {
+      int bin_x, bin_y;
+
       if (ctk_widget_get_mapped (widget))
         {
           window_visible = allocation->width > 0 && allocation->height > 0;

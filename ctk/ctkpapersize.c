@@ -82,11 +82,12 @@ lookup_paper_info (const gchar *name)
 {
   int lower = 0;
   int upper = G_N_ELEMENTS (standard_names_offsets) - 1;
-  int mid;
-  int cmp;
 
   do
     {
+       int mid;
+       int cmp;
+
        mid = (lower + upper) / 2;
        cmp = strcmp (name, paper_names + standard_names_offsets[mid].name);
        if (cmp < 0)
@@ -276,13 +277,14 @@ ctk_paper_size_new (const gchar *name)
 static gchar *
 improve_displayname (const gchar *name)
 {
-  gchar *p, *p1, *p2, *s;
+  gchar *p, *s;
 
   p = strrchr (name, 'x');
   if (p && p != name &&
       g_ascii_isdigit (*(p - 1)) &&
       g_ascii_isdigit (*(p + 1)))
     {
+      gchar *p1, *p2;
       p1 = g_strndup (name, p - name);
       p2 = g_strdup (p + 1);
       s = g_strconcat (p1, "×", p2, NULL);
@@ -403,8 +405,6 @@ ctk_paper_size_new_from_ipp (const gchar *ipp_name,
   CtkPaperSize *size;
   const gchar  *name = NULL;
   gboolean      found = FALSE;
-  float         x_dimension;
-  float         y_dimension;
   gchar        *display_name = NULL;
   gint          i;
 
@@ -440,6 +440,9 @@ ctk_paper_size_new_from_ipp (const gchar *ipp_name,
     {
       for (i = 0; i < G_N_ELEMENTS (standard_names_offsets); i++)
         {
+          float x_dimension;
+          float y_dimension;
+
           x_dimension = _ctk_print_convert_from_mm (standard_names_offsets[i].width, CTK_UNIT_POINTS);
           y_dimension = _ctk_print_convert_from_mm (standard_names_offsets[i].height, CTK_UNIT_POINTS);
 

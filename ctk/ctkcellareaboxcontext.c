@@ -221,11 +221,12 @@ _ctk_cell_area_box_context_reset (CtkCellAreaContext *context)
 {
   CtkCellAreaBoxContext        *box_context = CTK_CELL_AREA_BOX_CONTEXT (context);
   CtkCellAreaBoxContextPrivate *priv        = box_context->priv;
-  CachedSize                   *size;
   gint                          i;
 
   for (i = 0; i < priv->base_widths->len; i++)
     {
+      CachedSize *size;
+
       size = &g_array_index (priv->base_widths, CachedSize, i);
 
       size->min_size = 0;

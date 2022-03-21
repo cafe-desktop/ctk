@@ -183,12 +183,13 @@ ctk_cell_layout_default_pack_start (CtkCellLayout         *cell_layout,
 				    gboolean               expand)
 {
   CtkCellLayoutIface *iface;
-  CtkCellArea        *area;
 
   iface = CTK_CELL_LAYOUT_GET_IFACE (cell_layout);
 
   if (iface->get_area)
     {
+      CtkCellArea *area;
+
       area = iface->get_area (cell_layout);
 
       if (area)
@@ -204,12 +205,13 @@ ctk_cell_layout_default_pack_end (CtkCellLayout         *cell_layout,
 				  gboolean               expand)
 {
   CtkCellLayoutIface *iface;
-  CtkCellArea        *area;
 
   iface = CTK_CELL_LAYOUT_GET_IFACE (cell_layout);
 
   if (iface->get_area)
     {
+      CtkCellArea *area;
+
       area = iface->get_area (cell_layout);
 
       if (area)
@@ -223,12 +225,13 @@ static void
 ctk_cell_layout_default_clear (CtkCellLayout *cell_layout)
 {
   CtkCellLayoutIface *iface;
-  CtkCellArea        *area;
 
   iface = CTK_CELL_LAYOUT_GET_IFACE (cell_layout);
 
   if (iface->get_area)
     {
+      CtkCellArea *area;
+
       area = iface->get_area (cell_layout);
 
       if (area)
@@ -245,12 +248,13 @@ ctk_cell_layout_default_add_attribute (CtkCellLayout         *cell_layout,
 				       gint                   column)
 {
   CtkCellLayoutIface *iface;
-  CtkCellArea        *area;
 
   iface = CTK_CELL_LAYOUT_GET_IFACE (cell_layout);
 
   if (iface->get_area)
     {
+      CtkCellArea *area;
+
       area = iface->get_area (cell_layout);
 
       if (area)
@@ -268,12 +272,13 @@ ctk_cell_layout_default_set_cell_data_func (CtkCellLayout         *cell_layout,
 					    GDestroyNotify         destroy)
 {
   CtkCellLayoutIface *iface;
-  CtkCellArea        *area;
 
   iface = CTK_CELL_LAYOUT_GET_IFACE (cell_layout);
 
   if (iface->get_area)
     {
+      CtkCellArea *area;
+
       area = iface->get_area (cell_layout);
 
       if (area)
@@ -290,12 +295,13 @@ ctk_cell_layout_default_clear_attributes (CtkCellLayout         *cell_layout,
 					  CtkCellRenderer       *cell)
 {
   CtkCellLayoutIface *iface;
-  CtkCellArea        *area;
 
   iface = CTK_CELL_LAYOUT_GET_IFACE (cell_layout);
 
   if (iface->get_area)
     {
+      CtkCellArea *area;
+
       area = iface->get_area (cell_layout);
 
       if (area)
@@ -311,12 +317,13 @@ ctk_cell_layout_default_reorder (CtkCellLayout         *cell_layout,
 				 gint                   position)
 {
   CtkCellLayoutIface *iface;
-  CtkCellArea        *area;
 
   iface = CTK_CELL_LAYOUT_GET_IFACE (cell_layout);
 
   if (iface->get_area)
     {
+      CtkCellArea *area;
+
       area = iface->get_area (cell_layout);
 
       if (area)
@@ -330,12 +337,13 @@ static GList *
 ctk_cell_layout_default_get_cells (CtkCellLayout *cell_layout)
 {
   CtkCellLayoutIface *iface;
-  CtkCellArea        *area;
 
   iface = CTK_CELL_LAYOUT_GET_IFACE (cell_layout);
 
   if (iface->get_area)
     {
+      CtkCellArea *area;
+
       area = iface->get_area (cell_layout);
 
       if (area)
@@ -940,11 +948,12 @@ _ctk_cell_layout_buildable_custom_tag_end (CtkBuildable *buildable,
 					   const gchar  *tagname,
 					   gpointer     *data)
 {
-  AttributesSubParserData *attr_data;
   CellPackingSubParserData *packing_data;
 
   if (strcmp (tagname, "attributes") == 0)
     {
+      AttributesSubParserData *attr_data;
+
       attr_data = (AttributesSubParserData*)data;
       g_assert (!attr_data->attr_name);
       g_string_free (attr_data->string, TRUE);

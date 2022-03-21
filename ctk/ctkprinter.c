@@ -1105,10 +1105,11 @@ static void
 stop_enumeration (PrinterList *printer_list)
 {
   GList *list, *next;
-  CtkPrintBackend *backend;
 
   for (list = printer_list->backends; list; list = next)
     {
+      CtkPrintBackend *backend;
+
       next = list->next;
       backend = CTK_PRINT_BACKEND (list->data);
       list_done_cb (backend, printer_list);
@@ -1252,7 +1253,6 @@ ctk_enumerate_printers (CtkPrinterFunc func,
 {
   PrinterList *printer_list;
   GList *node, *next;
-  CtkPrintBackend *backend;
 
   printer_list = g_new0 (PrinterList, 1);
 
@@ -1271,6 +1271,8 @@ ctk_enumerate_printers (CtkPrinterFunc func,
 
   for (node = printer_list->backends; node != NULL; node = next)
     {
+      CtkPrintBackend *backend;
+
       next = node->next;
       backend = CTK_PRINT_BACKEND (node->data);
       if (list_printers_init (printer_list, backend))

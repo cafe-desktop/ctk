@@ -85,9 +85,6 @@ print_escaped (GString *contents, const char *str)
 static gboolean
 query_module (const char *dir, const char *name, GString *contents)
 {
-  void          (*list)   (const CtkIMContextInfo ***contexts,
-                           guint                    *n_contexts);
-
   gpointer list_ptr;
   gpointer init_ptr;
   gpointer exit_ptr;
@@ -116,6 +113,8 @@ query_module (const char *dir, const char *name, GString *contents)
       g_module_symbol (module, "im_module_exit", &exit_ptr) &&
       g_module_symbol (module, "im_module_create", &create_ptr))
     {
+      void (*list) (const CtkIMContextInfo ***contexts,
+                    guint                    *n_contexts);
       const CtkIMContextInfo **contexts;
       guint n_contexts;
       int i;
@@ -154,7 +153,6 @@ query_module (const char *dir, const char *name, GString *contents)
 
 int main (int argc, char **argv)
 {
-  char *cwd;
   int i;
   char *path;
   gboolean error = FALSE;
@@ -223,6 +221,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
     }
   else
     {
+      char *cwd;
+
       cwd = g_get_current_dir ();
 
       for (i = first_file; i < argc; i++)

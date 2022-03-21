@@ -539,7 +539,6 @@ get_indexed_locations (CtkSearchEngineTracker *engine)
   gchar **locations;
   gint i;
   GFile *location;
-  const gchar *path;
 
   source = g_settings_schema_source_get_default ();
   schema = g_settings_schema_source_lookup (source, TRACKER_SCHEMA, FALSE);
@@ -553,6 +552,8 @@ get_indexed_locations (CtkSearchEngineTracker *engine)
 
   for (i = 0; locations[i] != NULL; i++)
     {
+      const gchar *path;
+
       path = path_from_tracker_dir (locations[i]);
       if (path == NULL)
         continue;
@@ -571,10 +572,11 @@ _ctk_search_engine_tracker_is_indexed (GFile    *location,
 {
   CtkSearchEngineTracker *engine = data;
   gint i;
-  GFile *place;
 
   for (i = 0; i < engine->indexed_locations->len; i++)
     {
+      GFile *place;
+
       place = g_ptr_array_index (engine->indexed_locations, i);
       if (g_file_equal (location, place) || g_file_has_prefix (location, place))
         return TRUE;

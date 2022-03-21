@@ -528,7 +528,6 @@ ctk_file_system_model_iter_nth_child (CtkTreeModel *tree_model,
 				      gint          n)
 {
   CtkFileSystemModel *model = CTK_FILE_SYSTEM_MODEL (tree_model);
-  char *node;
   guint id;
   guint row_to_find;
 
@@ -542,6 +541,8 @@ ctk_file_system_model_iter_nth_child (CtkTreeModel *tree_model,
   if (model->n_nodes_valid > 0 &&
       get_node (model, model->n_nodes_valid - 1)->row >= row_to_find)
     {
+      char *node;
+
       /* Fast path - the nodes are valid up to the sought one.
        *
        * First, find a node with the sought row number...*/
@@ -783,7 +784,6 @@ ctk_file_system_model_sort (CtkFileSystemModel *model)
 
   if (sort_data_init (&data, model))
     {
-      CtkTreePath *path;
       guint i;
       guint r, n_visible_rows;
 
@@ -800,6 +800,8 @@ ctk_file_system_model_sort (CtkFileSystemModel *model)
       g_assert (g_hash_table_size (model->file_lookup) == 0);
       if (n_visible_rows)
         {
+          CtkTreePath *path;
+
           int *new_order = g_new (int, n_visible_rows);
         
           r = 0;
@@ -2181,13 +2183,14 @@ _ctk_file_system_model_add_and_query_files (CtkFileSystemModel *model,
                                             const char         *attributes)
 {
   GList *l;
-  GFile *file;
 
   g_return_if_fail (CTK_IS_FILE_SYSTEM_MODEL (model));
   g_return_if_fail (attributes != NULL);
 
   for (l = list; l; l = l->next)
     {
+      GFile *file;
+
       file = (GFile *)l->data;
       freeze_updates (model);
       g_file_query_info_async (file,

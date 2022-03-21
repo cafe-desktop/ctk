@@ -235,7 +235,7 @@ CtkCssValue *
 _ctk_css_shadows_value_parse (CtkCssParser *parser,
                               gboolean      box_shadow_mode)
 {
-  CtkCssValue *value, *result;
+  CtkCssValue *result;
   GPtrArray *values;
 
   if (_ctk_css_parser_try (parser, "none", TRUE))
@@ -244,6 +244,8 @@ _ctk_css_shadows_value_parse (CtkCssParser *parser,
   values = g_ptr_array_new ();
 
   do {
+    CtkCssValue *value;
+
     value = _ctk_css_shadow_value_parse (parser, box_shadow_mode);
 
     if (value == NULL)
@@ -321,7 +323,6 @@ _ctk_css_shadows_value_get_extents (const CtkCssValue *shadows,
 {
   guint i;
   CtkBorder b = { 0 };
-  const CtkCssValue *shadow;
   gdouble hoffset, voffset, spread, radius, clip_radius;
 
   g_return_if_fail (shadows->class == &CTK_CSS_VALUE_SHADOWS);
@@ -330,6 +331,8 @@ _ctk_css_shadows_value_get_extents (const CtkCssValue *shadows,
 
   for (i = 0; i < shadows->len; i++)
     {
+      const CtkCssValue *shadow;
+
       shadow = shadows->values[i];
 
       if (_ctk_css_shadow_value_get_inset (shadow))

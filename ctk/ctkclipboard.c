@@ -2195,7 +2195,6 @@ ctk_clipboard_real_store (CtkClipboard *clipboard)
 void
 _ctk_clipboard_store_all (void)
 {
-  CtkClipboard *clipboard;
   GSList *displays, *list;
   
   displays = cdk_display_manager_list_displays (cdk_display_manager_get ());
@@ -2203,6 +2202,7 @@ _ctk_clipboard_store_all (void)
   list = displays;
   while (list)
     {
+      CtkClipboard *clipboard;
       CdkDisplay *display = list->data;
 
       clipboard = clipboard_peek (display, CDK_SELECTION_CLIPBOARD, TRUE);
