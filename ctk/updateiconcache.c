@@ -234,10 +234,8 @@ static IconData *
 load_icon_data (const char *path)
 {
   GKeyFile *icon_file;
-  char **split;
   gsize length;
   char *str;
-  char *split_point;
   int i;
   gint *ivalues;
   GError *error = NULL;
@@ -278,6 +276,8 @@ load_icon_data (const char *path)
   str = g_key_file_get_string (icon_file, "Icon Data", "AttachPoints", NULL);
   if (str)
     {
+      char **split;
+
       split = g_strsplit (str, "|", -1);
 
       data->n_attach_points = g_strv_length (split);
@@ -285,7 +285,10 @@ load_icon_data (const char *path)
 
       for (i = 0; i < data->n_attach_points; ++i)
 	{
+	  char *split_point;
+
 	  split_point = strchr (split[i], ',');
+
 	  if (split_point)
 	    {
 	      *split_point = 0;
@@ -469,7 +472,6 @@ maybe_cache_image_data (Image       *image,
   if (!index_only && !image->image_data &&
       (g_str_has_suffix (path, ".png") || g_str_has_suffix (path, ".xpm")))
     {
-      GdkPixbuf *pixbuf;
       ImageData *idata;
       gchar *path2;
 
@@ -508,6 +510,7 @@ maybe_cache_image_data (Image       *image,
 
       if (!idata->has_pixdata)
 	{
+	  GdkPixbuf *pixbuf;
 	  pixbuf = gdk_pixbuf_new_from_file (path, NULL);
 
 	  if (pixbuf)
@@ -627,9 +630,6 @@ scan_directory (const gchar *base_path,
 
       gchar *path;
       gboolean retval;
-      int flags = 0;
-      Image *image;
-      gchar *basename, *dot;
 
       path = g_build_filename (dir_path, name, NULL);
 
@@ -656,6 +656,10 @@ scan_directory (const gchar *base_path,
       retval = g_file_test (path, G_FILE_TEST_IS_REGULAR);
       if (retval)
 	{
+	  int flags = 0;
+	  Image *image;
+	  gchar *basename, *dot;
+
 	  if (g_str_has_suffix (name, ".png"))
 	    flags |= HAS_SUFFIX_PNG;
 	  else if (g_str_has_suffix (name, ".svg"))
@@ -856,7 +860,6 @@ write_icon_data (FILE *cache, IconData *icon_data, int offset)
 {
   int ofs = offset + 12;
   int j;
-  int tmp, tmp2;
 
   if (icon_data->has_embedded_rect)
     {
@@ -918,6 +921,8 @@ write_icon_data (FILE *cache, IconData *icon_data, int offset)
 
   if (icon_data->n_display_names > 0)
     {
+      int tmp, tmp2;
+
       if (!write_card32 (cache, icon_data->n_display_names))
         return FALSE;
 

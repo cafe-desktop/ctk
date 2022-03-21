@@ -1199,7 +1199,6 @@ static gboolean
 ctk_tree_selection_real_unselect_all (CtkTreeSelection *selection)
 {
   CtkTreeSelectionPrivate *priv = selection->priv;
-  struct _TempTuple *tuple;
 
   if (priv->type == CTK_SELECTION_SINGLE ||
       priv->type == CTK_SELECTION_BROWSE)
@@ -1235,6 +1234,7 @@ ctk_tree_selection_real_unselect_all (CtkTreeSelection *selection)
     }
   else
     {
+      struct _TempTuple *tuple;
       CtkRBTree *tree;
 
       tuple = g_new (struct _TempTuple, 1);

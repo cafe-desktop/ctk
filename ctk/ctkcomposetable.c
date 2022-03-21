@@ -447,11 +447,12 @@ ctk_compose_list_print (GList *compose_list,
   int total_size = 0;
   gunichar upper;
   gunichar lower;
-  const gchar *comment;
   const gchar *keyval;
 
   for (list = compose_list; list != NULL; list = list->next)
     {
+      const gchar *comment;
+
       compose_data = list->data;
       g_printf ("  ");
 
@@ -496,11 +497,12 @@ static guint32
 ctk_compose_table_data_hash (gconstpointer v, int length)
 {
   const guint16 *p, *head;
-  unsigned char c;
   guint32 h = 5381;
 
   for (p = v, head = v; (p - head) < length; p++)
     {
+      unsigned char c;
+
       c = 0x00ff & (*p >> 8);
       h = (h << 5) + h + c;
       c = 0x00ff & *p;
@@ -754,7 +756,6 @@ ctk_compose_table_new_with_list (GList   *compose_list,
   int i, j;
   guint16 *ctk_compose_seqs = NULL;
   GList *list;
-  CtkComposeData *compose_data;
   CtkComposeTable *retval = NULL;
 
   g_return_val_if_fail (compose_list != NULL, NULL);
@@ -765,6 +766,8 @@ ctk_compose_table_new_with_list (GList   *compose_list,
 
   for (list = compose_list; list != NULL; list = list->next)
     {
+      CtkComposeData *compose_data;
+
       compose_data = list->data;
       for (i = 0; i < max_compose_len; i++)
         {

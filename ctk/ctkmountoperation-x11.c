@@ -747,7 +747,6 @@ pid_get_env (GPid pid, const gchar *key)
   char *ret = NULL;
   char *end;
   int key_len;
-  int i;
 
   int mib[] = { CTL_KERN, KERN_PROC_ARGS, pid, KERN_PROC_ENV };
 
@@ -760,6 +759,8 @@ pid_get_env (GPid pid, const gchar *key)
 
   if (sysctl (mib, G_N_ELEMENTS (mib), strs, &len, NULL, 0) != -1)
     {
+      int i;
+
       for (i = 0; strs[i] != NULL; i++)
 	{
 	  if (g_str_has_prefix (strs[i], key) && (*(strs[i] + key_len) == '='))

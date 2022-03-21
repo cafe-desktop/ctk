@@ -1156,7 +1156,6 @@ ctk_tree_model_filter_elt_get_path (FilterLevel *level,
   FilterLevel *walker = level;
   FilterElt *walker2 = elt;
   CtkTreePath *path;
-  CtkTreePath *real_path;
 
   g_return_val_if_fail (level != NULL, NULL);
   g_return_val_if_fail (elt != NULL, NULL);
@@ -1173,6 +1172,8 @@ ctk_tree_model_filter_elt_get_path (FilterLevel *level,
 
   if (root)
     {
+      CtkTreePath *real_path;
+
       real_path = ctk_tree_model_filter_add_root (path, root);
       ctk_tree_path_free (path);
       return real_path;

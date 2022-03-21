@@ -249,8 +249,6 @@ ctk_cell_renderer_spin_focus_out_event (CtkWidget *widget,
 					CdkEvent  *event,
 					gpointer   data)
 {
-  const gchar *path;
-  const gchar *new_text;
   gboolean canceled;
 
   g_object_get (widget,
@@ -265,6 +263,9 @@ ctk_cell_renderer_spin_focus_out_event (CtkWidget *widget,
 
   if (!canceled)
     {
+      const gchar *path;
+      const gchar *new_text;
+
       path = g_object_get_data (G_OBJECT (widget), CTK_CELL_RENDERER_SPIN_PATH);
 
       new_text = ctk_entry_get_text (CTK_ENTRY (widget));

@@ -243,16 +243,19 @@ ctk_color_chooser_add_palette (CtkColorChooser *chooser,
 cairo_pattern_t *
 _ctk_color_chooser_get_checkered_pattern (void)
 {
-  /* need to respect pixman's stride being a multiple of 4 */
-  static unsigned char data[8] = { 0xFF, 0x00, 0x00, 0x00,
-                                   0x00, 0xFF, 0x00, 0x00 };
   static cairo_surface_t *checkered = NULL;
   cairo_pattern_t *pattern;
 
   if (checkered == NULL)
-    checkered = cairo_image_surface_create_for_data (data,
-                                                     CAIRO_FORMAT_A8,
-                                                     2, 2, 4);
+    {
+      /* need to respect pixman's stride being a multiple of 4 */
+      static unsigned char data[8] = { 0xFF, 0x00, 0x00, 0x00,
+                                       0x00, 0xFF, 0x00, 0x00 };
+
+      checkered = cairo_image_surface_create_for_data (data,
+                                                       CAIRO_FORMAT_A8,
+                                                       2, 2, 4);
+    }
 
   pattern = cairo_pattern_create_for_surface (checkered);
   cairo_pattern_set_extend (pattern, CAIRO_EXTEND_REPEAT);

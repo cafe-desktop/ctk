@@ -238,10 +238,10 @@ _ctk_print_backend_module_init (CtkPrintBackendModule *pb_module)
 static CtkPrintBackend *
 _ctk_print_backend_module_create (CtkPrintBackendModule *pb_module)
 {
-  CtkPrintBackend *pb;
-  
   if (g_type_module_use (G_TYPE_MODULE (pb_module)))
     {
+      CtkPrintBackend *pb;
+
       pb = pb_module->create ();
       g_type_module_unuse (G_TYPE_MODULE (pb_module));
       return pb;
@@ -254,7 +254,6 @@ _ctk_print_backend_create (const gchar *backend_name)
 {
   GSList *l;
   gchar *module_path;
-  gchar *full_name;
   CtkPrintBackendModule *pb_module;
   CtkPrintBackend *pb;
 
@@ -269,6 +268,8 @@ _ctk_print_backend_create (const gchar *backend_name)
   pb = NULL;
   if (g_module_supported ())
     {
+      gchar *full_name;
+
       full_name = g_strconcat ("printbackend-", backend_name, NULL);
       module_path = _ctk_find_module (full_name, "printbackends");
       g_free (full_name);
@@ -305,7 +306,6 @@ GList *
 ctk_print_backend_load_modules (void)
 {
   GList *result;
-  CtkPrintBackend *backend;
   gchar *setting;
   gchar **backends;
   gint i;
@@ -323,6 +323,8 @@ ctk_print_backend_load_modules (void)
 
   for (i = 0; backends[i]; i++)
     {
+      CtkPrintBackend *backend;
+
       backend = _ctk_print_backend_create (g_strstrip (backends[i]));
       if (backend)
         result = g_list_append (result, backend);
@@ -759,7 +761,7 @@ request_password (CtkPrintBackend  *backend,
                   gboolean          can_store_auth_info)
 {
   CtkPrintBackendPrivate *priv = backend->priv;
-  CtkWidget *dialog, *box, *main_box, *label, *icon, *vbox, *entry, *chkbtn;
+  CtkWidget *dialog, *box, *main_box, *label, *icon, *vbox, *entry;
   CtkWidget *focus = NULL;
   CtkWidget *content_area;
   gchar     *markup;
@@ -846,6 +848,8 @@ request_password (CtkPrintBackend  *backend,
 
   if (can_store_auth_info)
     {
+      CtkWidget *chkbtn;
+
       chkbtn = ctk_check_button_new_with_mnemonic (_("_Remember password"));
       ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON (chkbtn), FALSE);
       ctk_box_pack_start (CTK_BOX (vbox), chkbtn, FALSE, FALSE, 6);

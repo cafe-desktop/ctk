@@ -132,7 +132,6 @@ extract_plane (GdkPixbuf *src,
 {
   guchar *src_data, *dst_data;
   int width, height, src_stride, dst_stride;
-  guchar *src_row, *dst_row;
   int x, y;
 
   width = gdk_pixbuf_get_width (src);
@@ -149,6 +148,8 @@ extract_plane (GdkPixbuf *src,
 
   for (y = 0; y < height; y++)
     {
+      guchar *src_row, *dst_row;
+
       src_row = src_data + src_stride * y;
       dst_row = dst_data + dst_stride * y;
       for (x = 0; x < width; x++)
@@ -168,7 +169,6 @@ make_symbolic_pixbuf (char *file,
 
 {
   CdkRGBA r = { 1,0,0,1}, g = {0,1,0,1};
-  GdkPixbuf *loaded;
   GdkPixbuf *pixbuf;
   int plane;
   gchar *file_data;
@@ -183,6 +183,8 @@ make_symbolic_pixbuf (char *file,
 
   for (plane = 0; plane < 3; plane++)
     {
+      GdkPixbuf *loaded;
+
       /* Here we render the svg with all colors solid, this should
        * always make the alpha channel the same and it should match
        * the final alpha channel for all possible renderings. We

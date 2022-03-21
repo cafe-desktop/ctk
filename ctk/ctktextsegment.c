@@ -537,7 +537,6 @@ static CtkTextLineSegment *
 toggle_segment_cleanup_func (CtkTextLineSegment *segPtr, CtkTextLine *line)
 {
   CtkTextLineSegment *segPtr2, *prevPtr;
-  int counts;
 
   /*
    * If this is a toggle-off segment, look ahead through the next
@@ -552,6 +551,8 @@ toggle_segment_cleanup_func (CtkTextLineSegment *segPtr, CtkTextLine *line)
            (segPtr2 != NULL) && (segPtr2->byte_count == 0);
            prevPtr = segPtr2, segPtr2 = prevPtr->next)
         {
+          int counts;
+
           if (segPtr2->type != &ctk_text_toggle_on_type)
             {
               continue;

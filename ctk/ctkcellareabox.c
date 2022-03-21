@@ -1636,7 +1636,6 @@ compute_group_size_for_opposing_orientation (CtkCellAreaBox     *box,
   else
     {
       CtkRequestedSize *orientation_sizes;
-      CellInfo         *info;
       gint              n_sizes, i;
       gint              avail_size     = for_size;
       gint              extra_size, extra_extra;
@@ -1665,6 +1664,8 @@ compute_group_size_for_opposing_orientation (CtkCellAreaBox     *box,
 
       for (i = 0; i < n_sizes; i++)
         {
+          CellInfo *info;
+
           gint cell_min, cell_nat;
 
           info = orientation_sizes[i].data;
@@ -1705,7 +1706,6 @@ compute_size_for_opposing_orientation (CtkCellAreaBox        *box,
                                        gint                  *natural_size)
 {
   CtkCellAreaBoxPrivate *priv = box->priv;
-  CellGroup             *group;
   CtkRequestedSize      *orientation_sizes;
   gint                   n_groups, n_expand_groups, i;
   gint                   avail_size = for_size;
@@ -1744,6 +1744,7 @@ compute_size_for_opposing_orientation (CtkCellAreaBox        *box,
    */
   for (i = 0; i < n_groups; i++)
     {
+      CellGroup *group;
       gint group_min, group_nat;
       gint group_idx = GPOINTER_TO_INT (orientation_sizes[i].data);
 
@@ -2076,13 +2077,14 @@ ctk_cell_area_box_layout_reorder (CtkCellLayout      *cell_layout,
   CtkCellAreaBox        *box  = CTK_CELL_AREA_BOX (cell_layout);
   CtkCellAreaBoxPrivate *priv = box->priv;
   GList                 *node;
-  CellInfo              *info;
 
   node = g_list_find_custom (priv->cells, renderer,
                              (GCompareFunc)cell_info_find);
 
   if (node)
     {
+      CellInfo *info;
+
       info = node->data;
 
       priv->cells = g_list_delete_link (priv->cells, node);

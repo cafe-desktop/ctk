@@ -217,12 +217,13 @@ hits_added (CtkSearchEngine *engine,
 {
   CtkSearchEngine *composite = CTK_SEARCH_ENGINE (data);
   GList *added, *l;
-  CtkSearchHit *hit;
 
   added = NULL;
 
   for (l = hits; l; l = l->next)
     {
+      CtkSearchHit *hit;
+
       hit = l->data;
 
       if (!g_hash_table_contains (composite->priv->hits, hit))

@@ -477,7 +477,6 @@ display_opened_cb (CdkDisplayManager *display_manager,
   GValue value = G_VALUE_INIT;
   GSList *slist;
   CdkScreen *screen;
-  CtkSettings *settings;
 
   for (slist = ctk_modules; slist; slist = slist->next)
     {
@@ -495,6 +494,8 @@ display_opened_cb (CdkDisplayManager *display_manager,
 
   if (cdk_screen_get_setting (screen, "ctk-modules", &value))
     {
+      CtkSettings *settings;
+
       settings = ctk_settings_get_for_screen (screen);
       _ctk_modules_settings_changed (settings, g_value_get_string (&value));
       g_value_unset (&value);

@@ -115,7 +115,7 @@ create_surface (CtkColorPlane *plane)
   gint width, height, stride;
   cairo_surface_t *tmp;
   guint red, green, blue;
-  guint32 *data, *p;
+  guint32 *data;
   gdouble h, s, v;
   gdouble r, g, b;
   gdouble sf, vf;
@@ -147,6 +147,8 @@ create_surface (CtkColorPlane *plane)
   vf = 1.0 / (width - 1);
   for (y = 0; y < height; y++)
     {
+      guint32 *p;
+
       s = CLAMP (1.0 - y * sf, 0.0, 1.0);
       p = data + y * (stride / 4);
       for (x = 0; x < width; x++)

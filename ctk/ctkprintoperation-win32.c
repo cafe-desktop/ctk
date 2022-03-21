@@ -972,9 +972,7 @@ devmode_from_settings (CtkPrintSettings *settings,
 {
   HANDLE hDevMode = hDevModeParam;
   LPDEVMODEW devmode;
-  guchar *extras;
   CtkPaperSize *paper_size;
-  const char *extras_base64;
   gsize extras_len;
   const char *val;
 
@@ -985,11 +983,14 @@ devmode_from_settings (CtkPrintSettings *settings,
     }
   else
     {
+      guchar *extras;
+      const char *extras_base64;
       const char *saved_printer_name;
-      gunichar2 *device_name;
+
       extras = NULL;
       extras_len = 0;
       extras_base64 = ctk_print_settings_get (settings, CTK_PRINT_SETTINGS_WIN32_DRIVER_EXTRA);
+
       if (extras_base64)
         extras = g_base64_decode (extras_base64, &extras_len);
   
@@ -1005,11 +1006,16 @@ devmode_from_settings (CtkPrintSettings *settings,
   
       memset (devmode->dmDeviceName, 0, CCHDEVICENAME * sizeof (wchar_t));
       saved_printer_name = ctk_print_settings_get (settings, "win32-devmode-name");
+
       if (saved_printer_name)
         {
+          gunichar2 *device_name;
+
           device_name = g_utf8_to_utf16 (saved_printer_name, -1, NULL, NULL, NULL);
+
           if (device_name)
             wcsncpy (devmode->dmDeviceName, device_name, MIN (CCHDEVICENAME - 1, wcslen (device_name)));
+
           g_free (device_name);
         }
 
@@ -2091,7 +2097,6 @@ ctk_print_run_page_setup_dialog (CtkWindow        *parent,
   BOOL res;
   gboolean free_settings;
   const char *printer;
-  CtkPaperSize *paper_size;
   DWORD measure_system;
   CtkUnit unit;
   double scale;
@@ -2174,6 +2179,8 @@ ctk_print_run_page_setup_dialog (CtkWindow        *parent,
   
   if (res)
     {
+      CtkPaperSize *paper_size;
+
       ctk_page_setup_set_orientation (page_setup, 
 				      ctk_print_settings_get_orientation (settings));
       paper_size = ctk_print_settings_get_paper_size (settings);
