@@ -46,7 +46,6 @@ ctk/deprecated/ctkcolorsel.c
 ctk/deprecated/ctkcolorseldialog.c
 ctk/deprecated/ctkfontsel.c
 ctk/deprecated/ctkhandlebox.c
-ctk/deprecated/ctkhsv.c
 ctk/deprecated/ctkmisc.c
 ctk/deprecated/ctknumerableicon.c
 ctk/deprecated/ctktable.c
@@ -166,6 +165,7 @@ ctk/ctkgesturezoom.c
 ctk/ctkglarea.c
 ctk/ctkgrid.c
 ctk/ctkheaderbar.c
+ctk/ctkhsv.c
 ctk/ctkiconfactory.c
 ctk/ctkicontheme.c
 ctk/ctkiconview.c

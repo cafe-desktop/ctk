@@ -127,6 +127,7 @@
 #include <ctk/ctkglarea.h>
 #include <ctk/ctkgrid.h>
 #include <ctk/ctkheaderbar.h>
+#include <ctk/ctkhsv.h>
 #include <ctk/ctkiconfactory.h>
 #include <ctk/ctkicontheme.h>
 #include <ctk/ctkiconview.h>
@@ -273,7 +274,6 @@
 #include <ctk/deprecated/ctkhbbox.h>
 #include <ctk/deprecated/ctkhbox.h>
 #include <ctk/deprecated/ctkhpaned.h>
-#include <ctk/deprecated/ctkhsv.h>
 #include <ctk/deprecated/ctkhscale.h>
 #include <ctk/deprecated/ctkhscrollbar.h>
 #include <ctk/deprecated/ctkhseparator.h>

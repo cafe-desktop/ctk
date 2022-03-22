@@ -29,8 +29,6 @@
 
 #include "config.h"
 
-#define CDK_DISABLE_DEPRECATION_WARNINGS
-
 #include <math.h>
 #include <string.h>
 
@@ -54,9 +52,6 @@
  * intuitive way. Moving the selection around the outer ring changes the hue,
  * and moving the selection point inside the inner triangle changes value and
  * saturation.
- *
- * #CtkHSV has been deprecated together with #CtkColorSelection, where
- * it was used.
  */
 
 

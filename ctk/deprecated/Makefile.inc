@@ -12,7 +12,6 @@ deprecated_h_sources = 			\
 	deprecated/ctkhscale.h		\
 	deprecated/ctkhscrollbar.h	\
 	deprecated/ctkhseparator.h	\
-	deprecated/ctkhsv.h		\
 	deprecated/ctkmisc.h		\
 	deprecated/ctknumerableicon.h	\
 	deprecated/ctkstyleproperties.h	\
@@ -47,7 +46,6 @@ deprecated_c_sources = 			\
 	deprecated/ctkhscale.c		\
 	deprecated/ctkhscrollbar.c	\
 	deprecated/ctkhseparator.c	\
-	deprecated/ctkhsv.c		\
 	deprecated/ctkmisc.c		\
 	deprecated/ctknumerableicon.c	\
 	deprecated/ctkstyleproperties.c	\
