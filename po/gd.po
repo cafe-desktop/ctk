@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-21 09:29+0000\n"
+"POT-Creation-Date: 2022-03-23 17:45+0100\n"
 "PO-Revision-Date: 2018-02-23 17:34+0100\n"
 "Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
 "Language-Team: Fòram na Gàidhlig\n"
@@ -26,48 +26,48 @@ msgstr ""
 msgid "Broadway display type not supported: %s"
 msgstr "Cha chuirear taic ris an t-seòrsa sgrìn broadway: “%s”"
 
-#: cdk/cdk.c:182
+#: cdk/cdk.c:179
 #, c-format
 msgid "Error parsing option --cdk-debug"
 msgstr "Mearachd a’ parsadh roghainn --cdk-debug"
 
-#: cdk/cdk.c:202
+#: cdk/cdk.c:199
 #, c-format
 msgid "Error parsing option --cdk-no-debug"
 msgstr "Mearachd a’ parsadh roghainn --cdk-no-debug"
 
 #. Description of --class=CLASS in --help output
-#: cdk/cdk.c:231
+#: cdk/cdk.c:228
 msgid "Program class as used by the window manager"
 msgstr "Clas a’ phrògraim mar a chleachdas manaidsear nan uinneagan e"
 
 #. Placeholder in --class=CLASS in --help output
-#: cdk/cdk.c:232
+#: cdk/cdk.c:229
 msgid "CLASS"
 msgstr "CLASS"
 
 #. Description of --name=NAME in --help output
-#: cdk/cdk.c:234
+#: cdk/cdk.c:231
 msgid "Program name as used by the window manager"
 msgstr "Ainm a’ phrògraim mar a chleachdas manaidsear nan uinneagan e"
 
 #. Placeholder in --name=NAME in --help output
-#: cdk/cdk.c:235
+#: cdk/cdk.c:232
 msgid "NAME"
 msgstr "NAME"
 
 #. Description of --display=DISPLAY in --help output
-#: cdk/cdk.c:238
+#: cdk/cdk.c:235
 msgid "X display to use"
 msgstr "An X display a thèid a chleachdadh"
 
 #. Placeholder in --display=DISPLAY in --help output
-#: cdk/cdk.c:239
+#: cdk/cdk.c:236
 msgid "DISPLAY"
 msgstr "DISPLAY"
 
 #. Description of --cdk-debug=FLAGS in --help output
-#: cdk/cdk.c:243
+#: cdk/cdk.c:240
 msgid "CDK debugging flags to set"
 msgstr "Brataichean dì-bhugachadh CDK a tha ri shuidheachadh"
 
@@ -75,20 +75,20 @@ msgstr "Brataichean dì-bhugachadh CDK a tha ri shuidheachadh"
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
 #. Placeholder in --ctk-debug=FLAGS in --help output
 #. Placeholder in --ctk-no-debug=FLAGS in --help output
-#: cdk/cdk.c:244 cdk/cdk.c:247 ctk/ctkmain.c:471 ctk/ctkmain.c:474
+#: cdk/cdk.c:241 cdk/cdk.c:244 ctk/ctkmain.c:471 ctk/ctkmain.c:474
 msgid "FLAGS"
 msgstr "FLAGS"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
-#: cdk/cdk.c:246
+#: cdk/cdk.c:243
 msgid "CDK debugging flags to unset"
 msgstr "Brataichean dì-bhugachadh CDK a tha ri dhì-shuidheachadh"
 
-#: cdk/cdkwindow.c:2829
+#: cdk/cdkwindow.c:2851
 msgid "GL support disabled via CDK_DEBUG"
 msgstr "Chaidh taic ri GL a chur à comas le CDK_DEBUG"
 
-#: cdk/cdkwindow.c:2840
+#: cdk/cdkwindow.c:2862
 msgid "The current backend does not support OpenGL"
 msgstr "Cha chuir a’ backend làithreach taic ri OpenGL"
 
@@ -370,7 +370,6 @@ msgid "AudioMedia"
 msgstr "AudioMedia"
 
 #: cdk/keyname-table.h:6897
-#| msgid "_Eject"
 msgctxt "keyboard label"
 msgid "Eject"
 msgstr "Gluais a-mach"
@@ -396,7 +395,6 @@ msgid "WWW"
 msgstr "WWW"
 
 #: cdk/keyname-table.h:6902
-#| msgid "Search"
 msgctxt "keyboard label"
 msgid "Search"
 msgstr "Lorg"
@@ -471,33 +469,29 @@ msgctxt "keyboard label"
 msgid "Suspend"
 msgstr "’Na dhàil"
 
-#: cdk/mir/cdkmirglcontext.c:48 cdk/mir/cdkmirwindowimpl.c:2226
-#: cdk/wayland/cdkglcontext-wayland.c:468 cdk/win32/cdkglcontext-win32.c:814
-#: cdk/x11/cdkglcontext-x11.c:1274
-msgid "No GL implementation is available"
-msgstr "Chan eil toirt gu buil GL ri fhaighinn"
+#: cdk/quartz/cdkglcontext-quartz.c:123
+#, fuzzy
+msgid "Unable to create a GL pixel format"
+msgstr "Cha deach leinn co-theacs GL a chruthachadh"
 
-#: cdk/mir/cdkmirglcontext.c:89 cdk/wayland/cdkglcontext-wayland.c:208
-#: cdk/win32/cdkglcontext-win32.c:765 cdk/x11/cdkglcontext-x11.c:720
-#: cdk/x11/cdkglcontext-x11.c:770
+#: cdk/quartz/cdkglcontext-quartz.c:133 cdk/wayland/cdkglcontext-wayland.c:208
+#: cdk/win32/cdkglcontext-win32.c:1072 cdk/win32/cdkglcontext-win32.c:1112
+#: cdk/x11/cdkglcontext-x11.c:724 cdk/x11/cdkglcontext-x11.c:774
 msgid "Unable to create a GL context"
 msgstr "Cha deach leinn co-theacs GL a chruthachadh"
 
-#: cdk/mir/cdkmirwindowimpl.c:2188 cdk/mir/cdkmirwindowimpl.c:2198
 #: cdk/wayland/cdkglcontext-wayland.c:418
-#: cdk/wayland/cdkglcontext-wayland.c:428 cdk/win32/cdkglcontext-win32.c:719
-#: cdk/x11/cdkglcontext-x11.c:968
+#: cdk/wayland/cdkglcontext-wayland.c:428 cdk/win32/cdkglcontext-win32.c:910
+#: cdk/win32/cdkglcontext-win32.c:920 cdk/win32/cdkglcontext-win32.c:1037
+#: cdk/x11/cdkglcontext-x11.c:975
 msgid "No available configurations for the given pixel format"
 msgstr ""
 "Chan eil rèiteachaidhean airson an fòrmait phiogsailean seo ri fhaighinn"
 
-#: cdk/mir/cdkmirwindowimpl.c:2234
-msgid "3.2 core GL profile is not available on EGL implementation"
-msgstr "Chan eil pròifil eitein GL 3.2 ri fhaighinn air toirt gu buil EGL"
-
-#: cdk/quartz/cdkglcontext-quartz.c:37
-msgid "Not implemented on OS X"
-msgstr "Cha deach seo a thoirt gu bhil air OS X"
+#: cdk/wayland/cdkglcontext-wayland.c:468 cdk/win32/cdkglcontext-win32.c:1179
+#: cdk/x11/cdkglcontext-x11.c:1281
+msgid "No GL implementation is available"
+msgstr "Chan eil toirt gu buil GL ri fhaighinn"
 
 #: cdk/wayland/cdkglcontext-wayland.c:476
 msgid "Core GL is not available on EGL implementation"
@@ -533,17 +527,17 @@ msgstr "Meud a’ phaileid ann am modh 8-bit"
 msgid "COLORS"
 msgstr "COLORS"
 
-#: cdk/x11/cdkapplaunchcontext-x11.c:295
+#: cdk/x11/cdkapplaunchcontext-x11.c:298
 #, c-format
 msgid "Starting %s"
 msgstr "A’ tòiseachadh %s"
 
-#: cdk/x11/cdkapplaunchcontext-x11.c:308
+#: cdk/x11/cdkapplaunchcontext-x11.c:311
 #, c-format
 msgid "Opening %s"
 msgstr "A’ fosgladh %s"
 
-#: cdk/x11/cdkapplaunchcontext-x11.c:313
+#: cdk/x11/cdkapplaunchcontext-x11.c:316
 #, c-format
 msgid "Opening %d Item"
 msgid_plural "Opening %d Items"
@@ -552,7 +546,7 @@ msgstr[1] "A’ fosgladh %d nì"
 msgstr[2] "A’ fosgladh %d nithean"
 msgstr[3] "A’ fosgladh %d nì"
 
-#: cdk/x11/cdkglcontext-x11.c:996
+#: cdk/x11/cdkglcontext-x11.c:1003
 #, c-format
 msgid "No available configurations for the given RGBA pixel format"
 msgstr ""
@@ -568,45 +562,45 @@ msgctxt "Action name"
 msgid "Toggle"
 msgstr "Toglaich"
 
-#: ctk/a11y/ctkbuttonaccessible.c:321 ctk/a11y/ctkmenuitemaccessible.c:436
+#: ctk/a11y/ctkbuttonaccessible.c:323 ctk/a11y/ctkmenuitemaccessible.c:439
 msgctxt "Action name"
 msgid "Click"
 msgstr "Briog"
 
-#: ctk/a11y/ctkbuttonaccessible.c:330
+#: ctk/a11y/ctkbuttonaccessible.c:332
 msgctxt "Action description"
 msgid "Clicks the button"
 msgstr "Briogaidh seo air a’ phutan"
 
-#: ctk/a11y/ctkcellaccessible.c:255
+#: ctk/a11y/ctkcellaccessible.c:257
 msgctxt "Action name"
 msgid "Expand or contract"
 msgstr "Leudaich no dùmhlaich"
 
-#: ctk/a11y/ctkcellaccessible.c:257
+#: ctk/a11y/ctkcellaccessible.c:259
 msgctxt "Action name"
 msgid "Edit"
 msgstr "Deasaich"
 
-#: ctk/a11y/ctkcellaccessible.c:259 ctk/a11y/ctkcolorswatchaccessible.c:149
-#: ctk/a11y/ctkentryaccessible.c:1557 ctk/a11y/ctkexpanderaccessible.c:281
+#: ctk/a11y/ctkcellaccessible.c:261 ctk/a11y/ctkcolorswatchaccessible.c:149
+#: ctk/a11y/ctkentryaccessible.c:1560 ctk/a11y/ctkexpanderaccessible.c:281
 msgctxt "Action name"
 msgid "Activate"
 msgstr "Cuir an gnìomh"
 
-#: ctk/a11y/ctkcellaccessible.c:272
+#: ctk/a11y/ctkcellaccessible.c:274
 msgctxt "Action description"
 msgid "Expands or contracts the row in the tree view containing this cell"
 msgstr ""
 "Leudaichidh no dùmhlaichidh seo an ràgh ann an sealladh na craoibhe sa bheil "
 "an cealla seo"
 
-#: ctk/a11y/ctkcellaccessible.c:274
+#: ctk/a11y/ctkcellaccessible.c:276
 msgctxt "Action description"
 msgid "Creates a widget in which the contents of the cell can be edited"
 msgstr "Cruthaichidh seo widget anns an gabh susbaint a’ chealla a dheasachadh"
 
-#: ctk/a11y/ctkcellaccessible.c:276
+#: ctk/a11y/ctkcellaccessible.c:278
 msgctxt "Action description"
 msgid "Activates the cell"
 msgstr "Cuiridh seo an cealla an gnìomh"
@@ -636,17 +630,17 @@ msgctxt "Action description"
 msgid "Customizes the color"
 msgstr "Gnàthaichidh seo an dath"
 
-#: ctk/a11y/ctkcomboboxaccessible.c:310
+#: ctk/a11y/ctkcomboboxaccessible.c:313
 msgctxt "Action name"
 msgid "Press"
 msgstr "Brùth"
 
-#: ctk/a11y/ctkcomboboxaccessible.c:319
+#: ctk/a11y/ctkcomboboxaccessible.c:322
 msgctxt "Action description"
 msgid "Presses the combobox"
 msgstr "Brùthaidh seo an combobox"
 
-#: ctk/a11y/ctkentryaccessible.c:1566
+#: ctk/a11y/ctkentryaccessible.c:1569
 msgctxt "Action description"
 msgid "Activates the entry"
 msgstr "Cuiridh seo an gnìomh an t-innteart"
@@ -659,406 +653,406 @@ msgstr "Cuiridh seo an gnìomh an leudaichear"
 #. FIXME these need accelerators when appropriate, and
 #. * need the mnemonics to be rationalized
 #.
-#: ctk/a11y/ctkimageaccessible.c:53 ctk/ctkstock.c:341
+#: ctk/a11y/ctkimageaccessible.c:53 ctk/ctkstock.c:327
 msgctxt "Stock label"
 msgid "_About"
 msgstr "_Mu dhèidhinn"
 
-#: ctk/a11y/ctkimageaccessible.c:54 ctk/ctkstock.c:342
+#: ctk/a11y/ctkimageaccessible.c:54 ctk/ctkstock.c:328
 msgctxt "Stock label"
 msgid "_Add"
 msgstr "_Cuir ris"
 
-#: ctk/a11y/ctkimageaccessible.c:55 ctk/ctkstock.c:344
+#: ctk/a11y/ctkimageaccessible.c:55 ctk/ctkstock.c:330
 msgctxt "Stock label"
 msgid "_Bold"
 msgstr "_Trom"
 
-#: ctk/a11y/ctkimageaccessible.c:56 ctk/ctkstock.c:346
+#: ctk/a11y/ctkimageaccessible.c:56 ctk/ctkstock.c:332
 msgctxt "Stock label"
 msgid "_CD-ROM"
 msgstr "_CD-ROM"
 
-#: ctk/a11y/ctkimageaccessible.c:57 ctk/ctkstock.c:347
+#: ctk/a11y/ctkimageaccessible.c:57 ctk/ctkstock.c:333
 msgctxt "Stock label"
 msgid "_Clear"
 msgstr "_Falamhaich"
 
-#: ctk/a11y/ctkimageaccessible.c:58 ctk/ctkstock.c:348
+#: ctk/a11y/ctkimageaccessible.c:58 ctk/ctkstock.c:334
 msgctxt "Stock label"
 msgid "_Close"
 msgstr "_Dùin"
 
-#: ctk/a11y/ctkimageaccessible.c:59 ctk/ctkheaderbar.c:415 ctk/ctkwindow.c:9229
+#: ctk/a11y/ctkimageaccessible.c:59 ctk/ctkheaderbar.c:415 ctk/ctkwindow.c:9319
 msgid "Minimize"
 msgstr "Fìor-lùghdaich"
 
-#: ctk/a11y/ctkimageaccessible.c:60 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9238
+#: ctk/a11y/ctkimageaccessible.c:60 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9328
 msgid "Maximize"
 msgstr "Làn-mheudaich"
 
-#: ctk/a11y/ctkimageaccessible.c:61 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9195
+#: ctk/a11y/ctkimageaccessible.c:61 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9285
 msgid "Restore"
 msgstr "Aisig"
 
-#: ctk/a11y/ctkimageaccessible.c:62 ctk/ctkstock.c:351
+#: ctk/a11y/ctkimageaccessible.c:62 ctk/ctkstock.c:337
 msgctxt "Stock label"
 msgid "_Copy"
 msgstr "Dèan _lethbhreac"
 
-#: ctk/a11y/ctkimageaccessible.c:63 ctk/ctkstock.c:352
+#: ctk/a11y/ctkimageaccessible.c:63 ctk/ctkstock.c:338
 msgctxt "Stock label"
 msgid "Cu_t"
 msgstr "Ge_arr"
 
-#: ctk/a11y/ctkimageaccessible.c:64 ctk/ctkstock.c:353
+#: ctk/a11y/ctkimageaccessible.c:64 ctk/ctkstock.c:339
 msgctxt "Stock label"
 msgid "_Delete"
 msgstr "_Sguab às"
 
-#: ctk/a11y/ctkimageaccessible.c:65 ctk/ctkstock.c:335
+#: ctk/a11y/ctkimageaccessible.c:65 ctk/ctkstock.c:321
 msgctxt "Stock label"
 msgid "Error"
 msgstr "Mearachd"
 
 #. KEEP IN SYNC with ctkiconfactory.c stock icons, when appropriate
-#: ctk/a11y/ctkimageaccessible.c:66 ctk/ctkstock.c:333
+#: ctk/a11y/ctkimageaccessible.c:66 ctk/ctkstock.c:319
 msgctxt "Stock label"
 msgid "Information"
 msgstr "Fiosrachadh"
 
-#: ctk/a11y/ctkimageaccessible.c:67 ctk/ctkstock.c:336
+#: ctk/a11y/ctkimageaccessible.c:67 ctk/ctkstock.c:322
 msgctxt "Stock label"
 msgid "Question"
 msgstr "Ceist"
 
-#: ctk/a11y/ctkimageaccessible.c:68 ctk/ctkstock.c:334
+#: ctk/a11y/ctkimageaccessible.c:68 ctk/ctkstock.c:320
 msgctxt "Stock label"
 msgid "Warning"
 msgstr "Rabhadh"
 
-#: ctk/a11y/ctkimageaccessible.c:69 ctk/ctkstock.c:356
+#: ctk/a11y/ctkimageaccessible.c:69 ctk/ctkstock.c:342
 msgctxt "Stock label"
 msgid "_Execute"
 msgstr "_Cuir an gnìomh"
 
-#: ctk/a11y/ctkimageaccessible.c:70 ctk/ctkstock.c:358
+#: ctk/a11y/ctkimageaccessible.c:70 ctk/ctkstock.c:344
 msgctxt "Stock label"
 msgid "_File"
 msgstr "_Faidhle"
 
-#: ctk/a11y/ctkimageaccessible.c:71 ctk/ctkstock.c:359
+#: ctk/a11y/ctkimageaccessible.c:71 ctk/ctkstock.c:345
 msgctxt "Stock label"
 msgid "_Find"
 msgstr "_Lorg"
 
-#: ctk/a11y/ctkimageaccessible.c:72 ctk/ctkstock.c:360
+#: ctk/a11y/ctkimageaccessible.c:72 ctk/ctkstock.c:346
 msgctxt "Stock label"
 msgid "Find and _Replace"
 msgstr "Lorg agus _cuir ’na àite"
 
-#: ctk/a11y/ctkimageaccessible.c:73 ctk/ctkstock.c:361
+#: ctk/a11y/ctkimageaccessible.c:73 ctk/ctkstock.c:347
 msgctxt "Stock label"
 msgid "_Floppy"
 msgstr "_Clàr-sùbailte"
 
-#: ctk/a11y/ctkimageaccessible.c:74 ctk/ctkstock.c:362
+#: ctk/a11y/ctkimageaccessible.c:74 ctk/ctkstock.c:348
 msgctxt "Stock label"
 msgid "_Fullscreen"
 msgstr "_Làn-sgrìn"
 
 #. This is a navigation label as in "go to the bottom of the page"
-#: ctk/a11y/ctkimageaccessible.c:75 ctk/ctkstock.c:365
+#: ctk/a11y/ctkimageaccessible.c:75 ctk/ctkstock.c:351
 msgctxt "Stock label, navigation"
 msgid "_Bottom"
 msgstr "_Bonn"
 
 #. This is a navigation label as in "go to the first page"
-#: ctk/a11y/ctkimageaccessible.c:76 ctk/ctkstock.c:367
+#: ctk/a11y/ctkimageaccessible.c:76 ctk/ctkstock.c:353
 msgctxt "Stock label, navigation"
 msgid "_First"
 msgstr "A’ _chiad tè"
 
 #. This is a navigation label as in "go to the last page"
-#: ctk/a11y/ctkimageaccessible.c:77 ctk/ctkstock.c:369
+#: ctk/a11y/ctkimageaccessible.c:77 ctk/ctkstock.c:355
 msgctxt "Stock label, navigation"
 msgid "_Last"
 msgstr "An tè _mu dheireadh"
 
 #. This is a navigation label as in "go to the top of the page"
-#: ctk/a11y/ctkimageaccessible.c:78 ctk/ctkstock.c:371
+#: ctk/a11y/ctkimageaccessible.c:78 ctk/ctkstock.c:357
 msgctxt "Stock label, navigation"
 msgid "_Top"
 msgstr "Barr"
 
 #. This is a navigation label as in "go back"
-#: ctk/a11y/ctkimageaccessible.c:79 ctk/ctkstock.c:373
+#: ctk/a11y/ctkimageaccessible.c:79 ctk/ctkstock.c:359
 msgctxt "Stock label, navigation"
 msgid "_Back"
 msgstr "_Air ais"
 
 #. This is a navigation label as in "go down"
-#: ctk/a11y/ctkimageaccessible.c:80 ctk/ctkstock.c:375
+#: ctk/a11y/ctkimageaccessible.c:80 ctk/ctkstock.c:361
 msgctxt "Stock label, navigation"
 msgid "_Down"
 msgstr "_Sìos"
 
 #. This is a navigation label as in "go forward"
-#: ctk/a11y/ctkimageaccessible.c:81 ctk/ctkstock.c:377
+#: ctk/a11y/ctkimageaccessible.c:81 ctk/ctkstock.c:363
 msgctxt "Stock label, navigation"
 msgid "_Forward"
 msgstr "Air a_dhart"
 
 #. This is a navigation label as in "go up"
-#: ctk/a11y/ctkimageaccessible.c:82 ctk/ctkstock.c:379
+#: ctk/a11y/ctkimageaccessible.c:82 ctk/ctkstock.c:365
 msgctxt "Stock label, navigation"
 msgid "_Up"
 msgstr "_Suas"
 
-#: ctk/a11y/ctkimageaccessible.c:83 ctk/ctkstock.c:380
+#: ctk/a11y/ctkimageaccessible.c:83 ctk/ctkstock.c:366
 msgctxt "Stock label"
 msgid "_Hard Disk"
 msgstr "_Clàr-cruaidh"
 
-#: ctk/a11y/ctkimageaccessible.c:84 ctk/ctkstock.c:381
+#: ctk/a11y/ctkimageaccessible.c:84 ctk/ctkstock.c:367
 msgctxt "Stock label"
 msgid "_Help"
 msgstr "_Cobhair"
 
-#: ctk/a11y/ctkimageaccessible.c:85 ctk/ctkstock.c:382
+#: ctk/a11y/ctkimageaccessible.c:85 ctk/ctkstock.c:368
 msgctxt "Stock label"
 msgid "_Home"
 msgstr "_Dhachaigh"
 
-#: ctk/a11y/ctkimageaccessible.c:86 ctk/ctkstock.c:383
+#: ctk/a11y/ctkimageaccessible.c:86 ctk/ctkstock.c:369
 msgctxt "Stock label"
 msgid "Increase Indent"
 msgstr "Meudaich an eag"
 
-#: ctk/a11y/ctkimageaccessible.c:87 ctk/ctkstock.c:387
+#: ctk/a11y/ctkimageaccessible.c:87 ctk/ctkstock.c:373
 msgctxt "Stock label"
 msgid "_Italic"
 msgstr "_Eadailteach"
 
-#: ctk/a11y/ctkimageaccessible.c:88 ctk/ctkstock.c:388
+#: ctk/a11y/ctkimageaccessible.c:88 ctk/ctkstock.c:374
 msgctxt "Stock label"
 msgid "_Jump to"
 msgstr "_Gearr leum gu"
 
 #. This is about text justification, "centered text"
-#: ctk/a11y/ctkimageaccessible.c:89 ctk/ctkstock.c:390
+#: ctk/a11y/ctkimageaccessible.c:89 ctk/ctkstock.c:376
 msgctxt "Stock label"
 msgid "_Center"
 msgstr "_Meadhanaich"
 
 #. This is about text justification
-#: ctk/a11y/ctkimageaccessible.c:90 ctk/ctkstock.c:392
+#: ctk/a11y/ctkimageaccessible.c:90 ctk/ctkstock.c:378
 msgctxt "Stock label"
 msgid "_Fill"
 msgstr "_Lìon"
 
 #. This is about text justification, "left-justified text"
-#: ctk/a11y/ctkimageaccessible.c:91 ctk/ctkstock.c:394
+#: ctk/a11y/ctkimageaccessible.c:91 ctk/ctkstock.c:380
 msgctxt "Stock label"
 msgid "_Left"
 msgstr "_Clì"
 
 #. This is about text justification, "right-justified text"
-#: ctk/a11y/ctkimageaccessible.c:92 ctk/ctkstock.c:396
+#: ctk/a11y/ctkimageaccessible.c:92 ctk/ctkstock.c:382
 msgctxt "Stock label"
 msgid "_Right"
 msgstr "_Deas"
 
-#: ctk/a11y/ctkimageaccessible.c:93 ctk/ctkstock.c:363
+#: ctk/a11y/ctkimageaccessible.c:93 ctk/ctkstock.c:349
 msgctxt "Stock label"
 msgid "_Leave Fullscreen"
 msgstr "_Fàg an làn-sgrìn"
 
 #. Media label, as in "fast forward"
-#: ctk/a11y/ctkimageaccessible.c:94 ctk/ctkstock.c:399
+#: ctk/a11y/ctkimageaccessible.c:94 ctk/ctkstock.c:385
 msgctxt "Stock label, media"
 msgid "_Forward"
 msgstr "_Air adhart"
 
 #. Media label, as in "next song"
-#: ctk/a11y/ctkimageaccessible.c:95 ctk/ctkstock.c:401
+#: ctk/a11y/ctkimageaccessible.c:95 ctk/ctkstock.c:387
 msgctxt "Stock label, media"
 msgid "_Next"
 msgstr "Ai_r adhart"
 
 #. Media label, as in "pause music"
-#: ctk/a11y/ctkimageaccessible.c:96 ctk/ctkstock.c:403
+#: ctk/a11y/ctkimageaccessible.c:96 ctk/ctkstock.c:389
 msgctxt "Stock label, media"
 msgid "P_ause"
 msgstr "Cuir ’na st_ad"
 
 #. Media label, as in "play music"
-#: ctk/a11y/ctkimageaccessible.c:97 ctk/ctkstock.c:405
+#: ctk/a11y/ctkimageaccessible.c:97 ctk/ctkstock.c:391
 msgctxt "Stock label, media"
 msgid "_Play"
 msgstr "_Cluich"
 
 #. Media label, as in  "previous song"
-#: ctk/a11y/ctkimageaccessible.c:98 ctk/ctkstock.c:407
+#: ctk/a11y/ctkimageaccessible.c:98 ctk/ctkstock.c:393
 msgctxt "Stock label, media"
 msgid "Pre_vious"
 msgstr "Air ai_s"
 
 #. Media label
-#: ctk/a11y/ctkimageaccessible.c:99 ctk/ctkstock.c:409
+#: ctk/a11y/ctkimageaccessible.c:99 ctk/ctkstock.c:395
 msgctxt "Stock label, media"
 msgid "_Record"
 msgstr "_Clàraich"
 
 #. Media label
-#: ctk/a11y/ctkimageaccessible.c:100 ctk/ctkstock.c:411
+#: ctk/a11y/ctkimageaccessible.c:100 ctk/ctkstock.c:397
 msgctxt "Stock label, media"
 msgid "R_ewind"
 msgstr "T_oinn air ais"
 
 #. Media label
-#: ctk/a11y/ctkimageaccessible.c:101 ctk/ctkstock.c:413
+#: ctk/a11y/ctkimageaccessible.c:101 ctk/ctkstock.c:399
 msgctxt "Stock label, media"
 msgid "_Stop"
 msgstr "_Stad"
 
-#: ctk/a11y/ctkimageaccessible.c:102 ctk/ctkstock.c:414
+#: ctk/a11y/ctkimageaccessible.c:102 ctk/ctkstock.c:400
 msgctxt "Stock label"
 msgid "_Network"
 msgstr "_Lìonra"
 
-#: ctk/a11y/ctkimageaccessible.c:103 ctk/ctkstock.c:415
+#: ctk/a11y/ctkimageaccessible.c:103 ctk/ctkstock.c:401
 msgctxt "Stock label"
 msgid "_New"
 msgstr "Ù_r"
 
-#: ctk/a11y/ctkimageaccessible.c:104 ctk/ctkstock.c:418
+#: ctk/a11y/ctkimageaccessible.c:104 ctk/ctkstock.c:404
 msgctxt "Stock label"
 msgid "_Open"
 msgstr "_Foscail"
 
-#: ctk/a11y/ctkimageaccessible.c:105 ctk/ctkstock.c:428
+#: ctk/a11y/ctkimageaccessible.c:105 ctk/ctkstock.c:414
 msgctxt "Stock label"
 msgid "_Paste"
 msgstr "_Cuir ann"
 
-#: ctk/a11y/ctkimageaccessible.c:106 ctk/ctkstock.c:430
+#: ctk/a11y/ctkimageaccessible.c:106 ctk/ctkstock.c:416
 msgctxt "Stock label"
 msgid "_Print"
 msgstr "_Clò-bhuail"
 
-#: ctk/a11y/ctkimageaccessible.c:107 ctk/ctkstock.c:431
+#: ctk/a11y/ctkimageaccessible.c:107 ctk/ctkstock.c:417
 msgctxt "Stock label"
 msgid "Print Pre_view"
 msgstr "_Ro-shealladh a’ chlò-bhualaidh"
 
-#: ctk/a11y/ctkimageaccessible.c:108 ctk/ctkstock.c:432
+#: ctk/a11y/ctkimageaccessible.c:108 ctk/ctkstock.c:418
 msgctxt "Stock label"
 msgid "_Properties"
 msgstr "_Roghainnean"
 
-#: ctk/a11y/ctkimageaccessible.c:109 ctk/ctkstock.c:433
+#: ctk/a11y/ctkimageaccessible.c:109 ctk/ctkstock.c:419
 msgctxt "Stock label"
 msgid "_Quit"
 msgstr "_Fàg an-seo"
 
-#: ctk/a11y/ctkimageaccessible.c:110 ctk/ctkstock.c:434
+#: ctk/a11y/ctkimageaccessible.c:110 ctk/ctkstock.c:420
 msgctxt "Stock label"
 msgid "_Redo"
 msgstr "_Ath-dhèan"
 
-#: ctk/a11y/ctkimageaccessible.c:111 ctk/ctkstock.c:435
+#: ctk/a11y/ctkimageaccessible.c:111 ctk/ctkstock.c:421
 msgctxt "Stock label"
 msgid "_Refresh"
 msgstr "_Ath-nuadhaich"
 
-#: ctk/a11y/ctkimageaccessible.c:112 ctk/ctkstock.c:436
+#: ctk/a11y/ctkimageaccessible.c:112 ctk/ctkstock.c:422
 msgctxt "Stock label"
 msgid "_Remove"
 msgstr "_Thoir air falbh"
 
-#: ctk/a11y/ctkimageaccessible.c:113 ctk/ctkstock.c:437
+#: ctk/a11y/ctkimageaccessible.c:113 ctk/ctkstock.c:423
 msgctxt "Stock label"
 msgid "_Revert"
 msgstr "Ai_sig"
 
-#: ctk/a11y/ctkimageaccessible.c:114 ctk/ctkstock.c:438
+#: ctk/a11y/ctkimageaccessible.c:114 ctk/ctkstock.c:424
 msgctxt "Stock label"
 msgid "_Save"
 msgstr "_Sàbhail"
 
-#: ctk/a11y/ctkimageaccessible.c:115 ctk/ctkstock.c:439
+#: ctk/a11y/ctkimageaccessible.c:115 ctk/ctkstock.c:425
 msgctxt "Stock label"
 msgid "Save _As"
 msgstr "Sàbhail _mar"
 
-#: ctk/a11y/ctkimageaccessible.c:116 ctk/ctkstock.c:440
+#: ctk/a11y/ctkimageaccessible.c:116 ctk/ctkstock.c:426
 msgctxt "Stock label"
 msgid "Select _All"
 msgstr "Tagh na _h-uile"
 
 #. Sorting direction
-#: ctk/a11y/ctkimageaccessible.c:117 ctk/ctkstock.c:444
+#: ctk/a11y/ctkimageaccessible.c:117 ctk/ctkstock.c:430
 msgctxt "Stock label"
 msgid "_Ascending"
 msgstr "A’ _dìreadh"
 
 #. Sorting direction
-#: ctk/a11y/ctkimageaccessible.c:118 ctk/ctkstock.c:446
+#: ctk/a11y/ctkimageaccessible.c:118 ctk/ctkstock.c:432
 msgctxt "Stock label"
 msgid "_Descending"
 msgstr "A’ _tèarnadh"
 
-#: ctk/a11y/ctkimageaccessible.c:119 ctk/ctkstock.c:447
+#: ctk/a11y/ctkimageaccessible.c:119 ctk/ctkstock.c:433
 msgctxt "Stock label"
 msgid "_Spell Check"
 msgstr "_Dearbhadh-litreachaidh"
 
-#: ctk/a11y/ctkimageaccessible.c:120 ctk/ctkstock.c:448
+#: ctk/a11y/ctkimageaccessible.c:120 ctk/ctkstock.c:434
 msgctxt "Stock label"
 msgid "_Stop"
 msgstr "_Stad"
 
 #. Font variant
-#: ctk/a11y/ctkimageaccessible.c:121 ctk/ctkstock.c:450
+#: ctk/a11y/ctkimageaccessible.c:121 ctk/ctkstock.c:436
 msgctxt "Stock label"
 msgid "_Strikethrough"
 msgstr "_Loidhne troimhe"
 
 #. Font variant
-#: ctk/a11y/ctkimageaccessible.c:122 ctk/ctkstock.c:453
+#: ctk/a11y/ctkimageaccessible.c:122 ctk/ctkstock.c:439
 msgctxt "Stock label"
 msgid "_Underline"
 msgstr "_Fo-loidhne"
 
-#: ctk/a11y/ctkimageaccessible.c:123 ctk/ctkstock.c:454
+#: ctk/a11y/ctkimageaccessible.c:123 ctk/ctkstock.c:440
 msgctxt "Stock label"
 msgid "_Undo"
 msgstr "_Neo-dhèan"
 
-#: ctk/a11y/ctkimageaccessible.c:124 ctk/ctkstock.c:384
+#: ctk/a11y/ctkimageaccessible.c:124 ctk/ctkstock.c:370
 msgctxt "Stock label"
 msgid "Decrease Indent"
 msgstr "Lùghdaich an eag"
 
 #. Zoom
-#: ctk/a11y/ctkimageaccessible.c:125 ctk/ctkstock.c:457
+#: ctk/a11y/ctkimageaccessible.c:125 ctk/ctkstock.c:443
 msgctxt "Stock label"
 msgid "_Normal Size"
 msgstr "Meud _abhàisteach"
 
 #. Zoom
-#: ctk/a11y/ctkimageaccessible.c:126 ctk/ctkstock.c:459
+#: ctk/a11y/ctkimageaccessible.c:126 ctk/ctkstock.c:445
 msgctxt "Stock label"
 msgid "Best _Fit"
 msgstr "_Meud as fhearr"
 
-#: ctk/a11y/ctkimageaccessible.c:127 ctk/ctkstock.c:460
+#: ctk/a11y/ctkimageaccessible.c:127 ctk/ctkstock.c:446
 msgctxt "Stock label"
 msgid "Zoom _In"
 msgstr "Sùm _a-steach"
 
-#: ctk/a11y/ctkimageaccessible.c:128 ctk/ctkstock.c:461
+#: ctk/a11y/ctkimageaccessible.c:128 ctk/ctkstock.c:447
 msgctxt "Stock label"
 msgid "Zoom _Out"
 msgstr "Sùm _a-mach"
@@ -1067,7 +1061,7 @@ msgstr "Sùm _a-mach"
 msgid "Menu"
 msgstr "Clàr-taice"
 
-#: ctk/a11y/ctkmenuitemaccessible.c:445
+#: ctk/a11y/ctkmenuitemaccessible.c:448
 msgctxt "Action description"
 msgid "Clicks the menuitem"
 msgstr "Briogaidh seo air nì a’ chlàir-thaice"
@@ -1244,13 +1238,13 @@ msgstr ""
 "deas air agus tagh “Sàbhail an dath an-seo”."
 
 #: ctk/deprecated/ctkcolorseldialog.c:191 ctk/deprecated/ctkfontsel.c:1689
-#: ctk/ctkfilechoosernative.c:540 ctk/ctkfilechoosernative.c:632
-#: ctk/ctkfilechooserwidget.c:1476 ctk/ctkfilechooserwidget.c:6383
+#: ctk/ctkfilechoosernative.c:545 ctk/ctkfilechoosernative.c:637
+#: ctk/ctkfilechooserwidget.c:1498 ctk/ctkfilechooserwidget.c:6572
 #: ctk/ctkmessagedialog.c:952 ctk/ctkmessagedialog.c:965
-#: ctk/ctkmountoperation.c:545 ctk/ctkpagesetupunixdialog.c:196
-#: ctk/ctkprintbackend.c:763 ctk/ctkprinteroptionwidget.c:545
-#: ctk/ctkprintunixdialog.c:673 ctk/ctkprintunixdialog.c:746
-#: ctk/ctkwindow.c:12698 ctk/inspector/css-editor.c:201
+#: ctk/ctkmountoperation.c:594 ctk/ctkpagesetupunixdialog.c:197
+#: ctk/ctkprintbackend.c:781 ctk/ctkprinteroptionwidget.c:545
+#: ctk/ctkprintunixdialog.c:674 ctk/ctkprintunixdialog.c:747
+#: ctk/ctkwindow.c:12789 ctk/inspector/css-editor.c:201
 #: ctk/ui/ctkappchooserdialog.ui:61 ctk/ui/ctkassistant.ui:125
 #: ctk/ui/ctkcolorchooserdialog.ui:34 ctk/ui/ctkfontchooserdialog.ui:31
 msgid "_Cancel"
@@ -1293,13 +1287,13 @@ msgstr "Me_ud:"
 msgid "_Preview:"
 msgstr "_Ro-shealladh:"
 
-#: ctk/deprecated/ctkfontsel.c:1693 ctk/ctkpagesetupunixdialog.c:197
+#: ctk/deprecated/ctkfontsel.c:1693 ctk/ctkpagesetupunixdialog.c:198
 #: ctk/ui/ctkassistant.ui:50
 msgid "_Apply"
 msgstr "Cuir _an sàs"
 
 #: ctk/deprecated/ctkfontsel.c:1698 ctk/ctkmessagedialog.c:944
-#: ctk/ctkmessagedialog.c:966 ctk/ctkprintbackend.c:764 ctk/ctkwindow.c:12699
+#: ctk/ctkmessagedialog.c:966 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12790
 msgid "_OK"
 msgstr "_Ceart ma-tha"
 
@@ -1310,161 +1304,37 @@ msgstr "Taghadh a’ chrutha-chlò"
 #. Translators: the format here is used to build the string that will be rendered
 #. * in the number emblem.
 #.
-#: ctk/deprecated/ctknumerableicon.c:473
+#: ctk/deprecated/ctknumerableicon.c:474
 #, c-format
 msgctxt "Number format"
 msgid "%d"
 msgstr "%d"
 
-#: ctk/ctkstock.c:343
-msgctxt "Stock label"
-msgid "_Apply"
-msgstr "_Cuir an gnìomh"
-
-#: ctk/ctkstock.c:345
-msgctxt "Stock label"
-msgid "_Cancel"
-msgstr "_Sguir dheth"
-
-#: ctk/ctkstock.c:349
-msgctxt "Stock label"
-msgid "C_onnect"
-msgstr "C_eancail"
-
-#: ctk/ctkstock.c:350
-msgctxt "Stock label"
-msgid "_Convert"
-msgstr "_Iompaich"
-
-#: ctk/ctkstock.c:354
-msgctxt "Stock label"
-msgid "_Discard"
-msgstr "_Tilg air falbh"
-
-#: ctk/ctkstock.c:355
-msgctxt "Stock label"
-msgid "_Disconnect"
-msgstr "_Bris an ceangal"
-
-#: ctk/ctkstock.c:357
-msgctxt "Stock label"
-msgid "_Edit"
-msgstr "_Deasaich"
-
-#: ctk/ctkstock.c:385
-msgctxt "Stock label"
-msgid "_Index"
-msgstr "_Clàr-amais"
-
-#: ctk/ctkstock.c:386
-msgctxt "Stock label"
-msgid "_Information"
-msgstr "_Fiosrachadh"
-
-#: ctk/ctkstock.c:416
-msgctxt "Stock label"
-msgid "_No"
-msgstr "_Chan eil"
-
-#: ctk/ctkstock.c:417
-msgctxt "Stock label"
-msgid "_OK"
-msgstr "_Ceart ma-tha"
-
-#. Page orientation
-#: ctk/ctkstock.c:420
-msgctxt "Stock label"
-msgid "Landscape"
-msgstr "Dreach-tìre"
-
-#. Page orientation
-#: ctk/ctkstock.c:422
-msgctxt "Stock label"
-msgid "Portrait"
-msgstr "Portraid"
-
-#. Page orientation
-#: ctk/ctkstock.c:424
-msgctxt "Stock label"
-msgid "Reverse landscape"
-msgstr "Dreach-tìre contrarra"
-
-#. Page orientation
-#: ctk/ctkstock.c:426
-msgctxt "Stock label"
-msgid "Reverse portrait"
-msgstr "Portraid chontrarra"
-
-#: ctk/ctkstock.c:427
-msgctxt "Stock label"
-msgid "Page Set_up"
-msgstr "Suidheachadh na d_uilleige"
-
-#: ctk/ctkstock.c:429
-msgctxt "Stock label"
-msgid "_Preferences"
-msgstr "_Roghainnean"
-
-#: ctk/ctkstock.c:441
-msgctxt "Stock label"
-msgid "_Color"
-msgstr "_Dath"
-
-#: ctk/ctkstock.c:442
-msgctxt "Stock label"
-msgid "_Font"
-msgstr "_Cruth-clò"
-
-#: ctk/ctkstock.c:451
-msgctxt "Stock label"
-msgid "_Undelete"
-msgstr "_Neo-dhèan an sguabadh às"
-
-#: ctk/ctkstock.c:455
-msgctxt "Stock label"
-msgid "_Yes"
-msgstr "_Tha"
-
-#: ctk/ctkuimanager.c:1776
-#, c-format
-msgid "Unexpected start tag '%s' on line %d char %d"
-msgstr ""
-"Taga tòiseachaidh “%s” ris nach robh dùil ann an loidhne %d, caractar %d"
-
-#: ctk/ctkuimanager.c:1866
-#, c-format
-msgid "Unexpected character data on line %d char %d"
-msgstr "Dàta caractar ris nach robh dùil ann an loidhne %d, caractar %d"
-
-#: ctk/ctkuimanager.c:2703
-msgid "Empty"
-msgstr "Falamh"
-
 #: ctk/encodesymbolic.c:38
 msgid "Output to this directory instead of cwd"
 msgstr "Às-chuir dhan phasgan seo seach do cwd"
 
-#: ctk/encodesymbolic.c:266
+#: ctk/encodesymbolic.c:268
 #, c-format
 msgid "Invalid size %s\n"
 msgstr "Tha am meud %s mì-dhligheach\n"
 
-#: ctk/encodesymbolic.c:279 ctk/ctk-builder-tool.c:671
+#: ctk/encodesymbolic.c:281 ctk/ctk-builder-tool.c:674
 #, c-format
 msgid "Can't load file: %s\n"
 msgstr "Chan urrainn dhuinn am faidhle a luchdadh: %s\n"
 
-#: ctk/encodesymbolic.c:307 ctk/encodesymbolic.c:313
+#: ctk/encodesymbolic.c:309 ctk/encodesymbolic.c:315
 #, c-format
 msgid "Can't save file %s: %s\n"
 msgstr "Chan urrainn dhuinn am faidhle %s a shàbhaladh: %s\n"
 
-#: ctk/encodesymbolic.c:319
+#: ctk/encodesymbolic.c:321
 #, c-format
 msgid "Can't close stream"
 msgstr "Chan urrainn dhuinn an sruth a dhùnadh"
 
-#: ctk/ctkaboutdialog.c:114 ctk/ui/ctkaboutdialog.ui:206
+#: ctk/ctkaboutdialog.c:114 ctk/ui/ctkaboutdialog.ui:210
 msgid "License"
 msgstr "Ceadachas"
 
@@ -1521,57 +1391,70 @@ msgid "GNU Affero General Public License, version 3 or later"
 msgstr "GNU Affero General Public License, tionndadh 3 no as ùire"
 
 #: ctk/ctkaboutdialog.c:128
-#| msgid "GNU General Public License, version 3 only"
 msgid "GNU Affero General Public License, version 3 only"
 msgstr "GNU Affero General Public License, tionndadh 3 a-mhàin"
 
-#: ctk/ctkaboutdialog.c:697
+#: ctk/ctkaboutdialog.c:129
+#, fuzzy
+msgid "BSD 3-Clause License"
+msgstr "BSD 2-Clause License"
+
+#: ctk/ctkaboutdialog.c:130
+msgid "Apache License, Version 2.0"
+msgstr ""
+
+#: ctk/ctkaboutdialog.c:131
+#, fuzzy
+msgid "Mozilla Public License 2.0"
+msgstr "Artistic License 2.0"
+
+#: ctk/ctkaboutdialog.c:703
 msgid "C_redits"
 msgstr "U_rram"
 
-#: ctk/ctkaboutdialog.c:705
+#: ctk/ctkaboutdialog.c:711
 msgid "_License"
 msgstr "_Ceadachas"
 
-#: ctk/ctkaboutdialog.c:714 ctk/ctkcustompaperunixdialog.c:329
+#: ctk/ctkaboutdialog.c:720 ctk/ctkcustompaperunixdialog.c:329
 #: ctk/ctkmessagedialog.c:948 ctk/ui/ctkassistant.ui:144
 msgid "_Close"
 msgstr "_Dùin"
 
-#: ctk/ctkaboutdialog.c:998
+#: ctk/ctkaboutdialog.c:1004
 msgid "Could not show link"
 msgstr "Cha b’ urrainn dhuinn an ceangal a shealltainn"
 
-#: ctk/ctkaboutdialog.c:1035
+#: ctk/ctkaboutdialog.c:1043
 msgid "Website"
 msgstr "Làrach-lìn"
 
 #. used for the application menu on MacOS.  %s is replaced with the application name.
-#: ctk/ctkaboutdialog.c:1085 ctk/ui/ctkapplication-quartz.ui:7
+#: ctk/ctkaboutdialog.c:1093 ctk/ui/ctkapplication-quartz.ui:7
 #, c-format
 msgid "About %s"
 msgstr "Mu dhèidhinn %s"
 
-#: ctk/ctkaboutdialog.c:2312
+#: ctk/ctkaboutdialog.c:2320
 msgid "Created by"
 msgstr "Air a chruthachadh le"
 
-#: ctk/ctkaboutdialog.c:2315
+#: ctk/ctkaboutdialog.c:2323
 msgid "Documented by"
 msgstr "An stiùireadh le"
 
-#: ctk/ctkaboutdialog.c:2325
+#: ctk/ctkaboutdialog.c:2333
 msgid "Translated by"
 msgstr "Air eadar-theangachadh le"
 
-#: ctk/ctkaboutdialog.c:2330
+#: ctk/ctkaboutdialog.c:2338
 msgid "Artwork by"
 msgstr "An obair-ealain le"
 
 #. Translators: this is the license preamble; the string at the end
 #. * contains the name of the license as link text.
 #.
-#: ctk/ctkaboutdialog.c:2490
+#: ctk/ctkaboutdialog.c:2500
 #, c-format
 msgid ""
 "This program comes with absolutely no warranty.\n"
@@ -1660,64 +1543,64 @@ msgstr "Backslash"
 msgid "Other application…"
 msgstr "Aplacaid eile…"
 
-#: ctk/ctkappchooserdialog.c:204 ctk/ctkappchooserdialog.c:211
-#: ctk/ctkappchooserdialog.c:228 ctk/ui/ctkappchooserdialog.ui:5
+#: ctk/ctkappchooserdialog.c:202 ctk/ctkappchooserdialog.c:230
+#: ctk/ui/ctkappchooserdialog.ui:5
 msgid "Select Application"
 msgstr "Tagh aplacaid"
 
 #. Translators: %s is a filename
-#: ctk/ctkappchooserdialog.c:206
+#: ctk/ctkappchooserdialog.c:209
 #, c-format
 msgid "Opening “%s”."
 msgstr "A’ fosgladh “%s”."
 
-#: ctk/ctkappchooserdialog.c:207
+#: ctk/ctkappchooserdialog.c:210
 #, c-format
 msgid "No applications found for “%s”"
 msgstr "Cha deach aplacaid a lorg a dh’fhosglas “%s”"
 
 #. Translators: %s is a file type description
-#: ctk/ctkappchooserdialog.c:213
+#: ctk/ctkappchooserdialog.c:215
 #, c-format
 msgid "Opening “%s” files."
 msgstr "A’ fosgladh faidhlichean “%s”."
 
-#: ctk/ctkappchooserdialog.c:215
+#: ctk/ctkappchooserdialog.c:217
 #, c-format
 msgid "No applications found for “%s” files"
 msgstr "Cha deach aplacaid a lorg airson faidhlichean “%s”"
 
-#: ctk/ctkappchooserdialog.c:308
+#: ctk/ctkappchooserdialog.c:310
 msgid "Forget association"
 msgstr "Dìochuimhnich an co-cheangal"
 
-#: ctk/ctkappchooserdialog.c:451
+#: ctk/ctkappchooserdialog.c:453
 msgid "Failed to start GNOME Software"
 msgstr "Cha deach leinn GNOME Software a thòiseachadh"
 
-#: ctk/ctkappchooserwidget.c:626
+#: ctk/ctkappchooserwidget.c:593
 msgid "Default Application"
 msgstr "An aplacaid bhunaiteach"
 
-#: ctk/ctkappchooserwidget.c:676
+#: ctk/ctkappchooserwidget.c:643
 #, c-format
 msgid "No applications found for “%s”."
 msgstr "Cha deach aplacaid a lorg airson “%s”."
 
-#: ctk/ctkappchooserwidget.c:759
+#: ctk/ctkappchooserwidget.c:726
 msgid "Recommended Applications"
 msgstr "Aplacaidean a mholamaid"
 
-#: ctk/ctkappchooserwidget.c:774
+#: ctk/ctkappchooserwidget.c:741
 msgid "Related Applications"
 msgstr "Aplacaidean co-cheancailte"
 
-#: ctk/ctkappchooserwidget.c:788
+#: ctk/ctkappchooserwidget.c:755
 msgid "Other Applications"
 msgstr "Aplacaidean eile"
 
-#: ctk/ctkapplicationwindow.c:345 ctk/ctkprintoperation-unix.c:484
-#: ctk/ctkprintoperation-win32.c:1453 ctk/inspector/prop-editor.c:1686
+#: ctk/ctkapplicationwindow.c:345 ctk/ctkprintoperation-unix.c:485
+#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1690
 msgid "Application"
 msgstr "Aplacaid"
 
@@ -1766,12 +1649,12 @@ msgstr "Cha deach roghainn %s::%s a lorg\n"
 msgid "Couldn't parse value for %s::%s: %s\n"
 msgstr "Cha b’ urrainn dhuinn luach a pharsadh airson %s::%s: %s\n"
 
-#: ctk/ctk-builder-tool.c:692
+#: ctk/ctk-builder-tool.c:695
 #, c-format
 msgid "Can't parse file: %s\n"
 msgstr "Chan urrainn dhuinn am faidhle a pharsadh: %s\n"
 
-#: ctk/ctk-builder-tool.c:1056
+#: ctk/ctk-builder-tool.c:1062
 #, c-format
 msgid ""
 "Usage:\n"
@@ -1939,204 +1822,286 @@ msgid "Color: %s"
 msgstr "Dath: %s"
 
 #: ctk/ctkcolorchooserwidget.c:446
+#, fuzzy
 msgctxt "Color name"
-msgid "Light Scarlet Red"
-msgstr "Soilleir-sgàrlaid"
+msgid "Very Light Blue"
+msgstr "Liath glè shoilleir"
 
 #: ctk/ctkcolorchooserwidget.c:447
+#, fuzzy
 msgctxt "Color name"
-msgid "Scarlet Red"
-msgstr "Dorch-sgàrlaid"
+msgid "Light Blue"
+msgstr "Speur-ghorm soilleir"
 
 #: ctk/ctkcolorchooserwidget.c:448
+#, fuzzy
 msgctxt "Color name"
-msgid "Dark Scarlet Red"
-msgstr "Dorch-sgàrlaid"
+msgid "Blue"
+msgstr "_Gorm:"
 
 #: ctk/ctkcolorchooserwidget.c:449
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Blue"
+msgstr "Speur-ghorm dorch"
+
+#: ctk/ctkcolorchooserwidget.c:450
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Dark Blue"
+msgstr "Liath glè dhorcha"
+
+#: ctk/ctkcolorchooserwidget.c:451
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Light Green"
+msgstr "Liath glè shoilleir"
+
+#: ctk/ctkcolorchooserwidget.c:452
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Green"
+msgstr "Soilleir-liath"
+
+#: ctk/ctkcolorchooserwidget.c:453
+#, fuzzy
+msgctxt "Color name"
+msgid "Green"
+msgstr "_Uaine:"
+
+#: ctk/ctkcolorchooserwidget.c:454
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Green"
+msgstr "Dorch-liath"
+
+#: ctk/ctkcolorchooserwidget.c:455
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Dark Green"
+msgstr "Liath glè dhorcha"
+
+#: ctk/ctkcolorchooserwidget.c:456
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Light Yellow"
+msgstr "Liath glè shoilleir"
+
+#: ctk/ctkcolorchooserwidget.c:457
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Yellow"
+msgstr "Dath soilleir caimileoin"
+
+#: ctk/ctkcolorchooserwidget.c:458
+msgctxt "Color name"
+msgid "Yellow"
+msgstr ""
+
+#: ctk/ctkcolorchooserwidget.c:459
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Yellow"
+msgstr "Dath dorcha caimileoin"
+
+#: ctk/ctkcolorchooserwidget.c:460
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Dark Yellow"
+msgstr "Liath glè dhorcha"
+
+#: ctk/ctkcolorchooserwidget.c:461
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Light Orange"
+msgstr "Soilleir-orainds"
+
+#: ctk/ctkcolorchooserwidget.c:462
 msgctxt "Color name"
 msgid "Light Orange"
 msgstr "Soilleir-orainds"
 
-#: ctk/ctkcolorchooserwidget.c:450
+#: ctk/ctkcolorchooserwidget.c:463
 msgctxt "Color name"
 msgid "Orange"
 msgstr "Orainds"
 
-#: ctk/ctkcolorchooserwidget.c:451
+#: ctk/ctkcolorchooserwidget.c:464
 msgctxt "Color name"
 msgid "Dark Orange"
 msgstr "Dorch-orainds"
 
-#: ctk/ctkcolorchooserwidget.c:452
-msgctxt "Color name"
-msgid "Light Butter"
-msgstr "Dath soilleir an ime"
-
-#: ctk/ctkcolorchooserwidget.c:453
-msgctxt "Color name"
-msgid "Butter"
-msgstr "Dath an ime"
-
-#: ctk/ctkcolorchooserwidget.c:454
-msgctxt "Color name"
-msgid "Dark Butter"
-msgstr "Dath dorcha an ime"
-
-#: ctk/ctkcolorchooserwidget.c:455
-msgctxt "Color name"
-msgid "Light Chameleon"
-msgstr "Dath soilleir caimileoin"
-
-#: ctk/ctkcolorchooserwidget.c:456
-msgctxt "Color name"
-msgid "Chameleon"
-msgstr "Dath caimileoin"
-
-#: ctk/ctkcolorchooserwidget.c:457
-msgctxt "Color name"
-msgid "Dark Chameleon"
-msgstr "Dath dorcha caimileoin"
-
-#: ctk/ctkcolorchooserwidget.c:458
-msgctxt "Color name"
-msgid "Light Sky Blue"
-msgstr "Speur-ghorm soilleir"
-
-#: ctk/ctkcolorchooserwidget.c:459
-msgctxt "Color name"
-msgid "Sky Blue"
-msgstr "Speur-ghorm"
-
-#: ctk/ctkcolorchooserwidget.c:460
-msgctxt "Color name"
-msgid "Dark Sky Blue"
-msgstr "Speur-ghorm dorch"
-
-#: ctk/ctkcolorchooserwidget.c:461
-msgctxt "Color name"
-msgid "Light Plum"
-msgstr "Dath soilleir plumais"
-
-#: ctk/ctkcolorchooserwidget.c:462
-msgctxt "Color name"
-msgid "Plum"
-msgstr "Dath plumais"
-
-#: ctk/ctkcolorchooserwidget.c:463
-msgctxt "Color name"
-msgid "Dark Plum"
-msgstr "Dath dorcha plumais"
-
-#: ctk/ctkcolorchooserwidget.c:464
-msgctxt "Color name"
-msgid "Light Chocolate"
-msgstr "Dath soilleir seòclaid"
-
 #: ctk/ctkcolorchooserwidget.c:465
+#, fuzzy
 msgctxt "Color name"
-msgid "Chocolate"
-msgstr "Dath seòclaid"
+msgid "Very Dark Orange"
+msgstr "Dorch-orainds"
 
 #: ctk/ctkcolorchooserwidget.c:466
+#, fuzzy
 msgctxt "Color name"
-msgid "Dark Chocolate"
-msgstr "Dath dorcha seòclaid"
-
-#: ctk/ctkcolorchooserwidget.c:467
-msgctxt "Color name"
-msgid "Light Aluminum 1"
-msgstr "Alman soilleir 1"
-
-#: ctk/ctkcolorchooserwidget.c:468
-msgctxt "Color name"
-msgid "Aluminum 1"
-msgstr "Alman 1"
-
-#: ctk/ctkcolorchooserwidget.c:469
-msgctxt "Color name"
-msgid "Dark Aluminum 1"
-msgstr "Alman dorcha 1"
-
-#: ctk/ctkcolorchooserwidget.c:470
-msgctxt "Color name"
-msgid "Light Aluminum 2"
-msgstr "Alman soilleir 2"
-
-#: ctk/ctkcolorchooserwidget.c:471
-msgctxt "Color name"
-msgid "Aluminum 2"
-msgstr "Alman 2"
-
-#: ctk/ctkcolorchooserwidget.c:472
-msgctxt "Color name"
-msgid "Dark Aluminum 2"
-msgstr "Alman dorcha 2"
-
-#: ctk/ctkcolorchooserwidget.c:486
-msgctxt "Color name"
-msgid "Black"
-msgstr "Dubh"
-
-#: ctk/ctkcolorchooserwidget.c:487
-msgctxt "Color name"
-msgid "Very Dark Gray"
-msgstr "Liath glè dhorcha"
-
-#: ctk/ctkcolorchooserwidget.c:488
-msgctxt "Color name"
-msgid "Darker Gray"
-msgstr "Liath nas duirche"
-
-#: ctk/ctkcolorchooserwidget.c:489
-msgctxt "Color name"
-msgid "Dark Gray"
-msgstr "Dorch-liath"
-
-#: ctk/ctkcolorchooserwidget.c:490
-msgctxt "Color name"
-msgid "Medium Gray"
-msgstr "Liath meadhanach"
-
-#: ctk/ctkcolorchooserwidget.c:491
-msgctxt "Color name"
-msgid "Light Gray"
-msgstr "Soilleir-liath"
-
-#: ctk/ctkcolorchooserwidget.c:492
-msgctxt "Color name"
-msgid "Lighter Gray"
-msgstr "Liath nas soilleire"
-
-#: ctk/ctkcolorchooserwidget.c:493
-msgctxt "Color name"
-msgid "Very Light Gray"
+msgid "Very Light Red"
 msgstr "Liath glè shoilleir"
 
-#: ctk/ctkcolorchooserwidget.c:494
+#: ctk/ctkcolorchooserwidget.c:467
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Red"
+msgstr "Soilleir-sgàrlaid"
+
+#: ctk/ctkcolorchooserwidget.c:468
+#, fuzzy
+msgctxt "Color name"
+msgid "Red"
+msgstr "_Dearg:"
+
+#: ctk/ctkcolorchooserwidget.c:469
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Red"
+msgstr "Dorch-sgàrlaid"
+
+#: ctk/ctkcolorchooserwidget.c:470
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Dark Red"
+msgstr "Liath glè dhorcha"
+
+#: ctk/ctkcolorchooserwidget.c:471
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Light Purple"
+msgstr "Liath glè shoilleir"
+
+#: ctk/ctkcolorchooserwidget.c:472
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Purple"
+msgstr "Dath soilleir plumais"
+
+#: ctk/ctkcolorchooserwidget.c:473
+msgctxt "Color name"
+msgid "Purple"
+msgstr ""
+
+#: ctk/ctkcolorchooserwidget.c:474
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Purple"
+msgstr "Dath dorcha plumais"
+
+#: ctk/ctkcolorchooserwidget.c:475
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Dark Purple"
+msgstr "Liath glè dhorcha"
+
+#: ctk/ctkcolorchooserwidget.c:476
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Light Brown"
+msgstr "Liath glè shoilleir"
+
+#: ctk/ctkcolorchooserwidget.c:477
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Brown"
+msgstr "Am biona deas"
+
+#: ctk/ctkcolorchooserwidget.c:478
+msgctxt "Color name"
+msgid "Brown"
+msgstr ""
+
+#: ctk/ctkcolorchooserwidget.c:479
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Brown"
+msgstr "Dath dorcha an ime"
+
+#: ctk/ctkcolorchooserwidget.c:480
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Dark Brown"
+msgstr "Liath glè dhorcha"
+
+#: ctk/ctkcolorchooserwidget.c:481
 msgctxt "Color name"
 msgid "White"
 msgstr "Geal"
 
+#: ctk/ctkcolorchooserwidget.c:482
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Gray 1"
+msgstr "Soilleir-liath"
+
+#: ctk/ctkcolorchooserwidget.c:483
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Gray 2"
+msgstr "Soilleir-liath"
+
+#: ctk/ctkcolorchooserwidget.c:484
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Gray 3"
+msgstr "Soilleir-liath"
+
+#: ctk/ctkcolorchooserwidget.c:485
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Gray 4"
+msgstr "Soilleir-liath"
+
+#: ctk/ctkcolorchooserwidget.c:486
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Gray 1"
+msgstr "Dorch-liath"
+
+#: ctk/ctkcolorchooserwidget.c:487
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Gray 2"
+msgstr "Dorch-liath"
+
+#: ctk/ctkcolorchooserwidget.c:488
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Gray 3"
+msgstr "Dorch-liath"
+
+#: ctk/ctkcolorchooserwidget.c:489
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Gray 4"
+msgstr "Dorch-liath"
+
+#: ctk/ctkcolorchooserwidget.c:490
+msgctxt "Color name"
+msgid "Black"
+msgstr "Dubh"
+
 #. translators: label for the custom section in the color chooser
-#: ctk/ctkcolorchooserwidget.c:543
+#: ctk/ctkcolorchooserwidget.c:534
 msgid "Custom"
 msgstr "Gnàthaichte"
 
-#: ctk/ctkcolorchooserwidget.c:550
+#: ctk/ctkcolorchooserwidget.c:541
 msgid "Custom color"
 msgstr "Dath gnàthaichte"
 
-#: ctk/ctkcolorchooserwidget.c:551
+#: ctk/ctkcolorchooserwidget.c:542
 msgid "Create a custom color"
 msgstr "Cruthaich dath gnàthaichte"
 
-#: ctk/ctkcolorchooserwidget.c:570
+#: ctk/ctkcolorchooserwidget.c:561
 #, c-format
 msgid "Custom color %d: %s"
 msgstr "Dath gnàthaichte %d: %s"
 
-#: ctk/ctkcolorplane.c:409
+#: ctk/ctkcolorplane.c:411
 msgid "Color Plane"
 msgstr "Plèana dhathan"
 
@@ -2165,15 +2130,15 @@ msgid "default:mm"
 msgstr "default:mm"
 
 #. And show the custom paper dialog
-#: ctk/ctkcustompaperunixdialog.c:405 ctk/ctkprintunixdialog.c:3336
+#: ctk/ctkcustompaperunixdialog.c:405 ctk/ctkprintunixdialog.c:3337
 msgid "Manage Custom Sizes"
 msgstr "Stiùirich na meudan gnàthaichte"
 
-#: ctk/ctkcustompaperunixdialog.c:567 ctk/ctkpagesetupunixdialog.c:811
+#: ctk/ctkcustompaperunixdialog.c:567 ctk/ctkpagesetupunixdialog.c:814
 msgid "inch"
 msgstr "òirleach"
 
-#: ctk/ctkcustompaperunixdialog.c:569 ctk/ctkpagesetupunixdialog.c:809
+#: ctk/ctkcustompaperunixdialog.c:569 ctk/ctkpagesetupunixdialog.c:812
 msgid "mm"
 msgstr "mm"
 
@@ -2218,72 +2183,68 @@ msgstr "_Deas:"
 msgid "Paper Margins"
 msgstr "Marghain a’ phàipeir"
 
-#: ctk/ctkentry.c:9564 ctk/ctklabel.c:6680 ctk/ctktextview.c:9491
+#: ctk/ctkentry.c:9591 ctk/ctklabel.c:6680 ctk/ctktextview.c:9520
 msgid "Cu_t"
 msgstr "_Gearr"
 
-#: ctk/ctkentry.c:9568 ctk/ctklabel.c:6681 ctk/ctktextview.c:9495
+#: ctk/ctkentry.c:9595 ctk/ctklabel.c:6681 ctk/ctktextview.c:9524
 msgid "_Copy"
 msgstr "Dèan _lethbhreac"
 
-#: ctk/ctkentry.c:9572 ctk/ctklabel.c:6682 ctk/ctktextview.c:9497
+#: ctk/ctkentry.c:9599 ctk/ctklabel.c:6682 ctk/ctktextview.c:9526
 msgid "_Paste"
 msgstr "_Cuir ann"
 
-#: ctk/ctkentry.c:9575 ctk/ctkfilechooserwidget.c:1477
-#: ctk/ctkfilechooserwidget.c:2277 ctk/ctklabel.c:6684 ctk/ctktextview.c:9500
+#: ctk/ctkentry.c:9602 ctk/ctkfilechooserwidget.c:1499
+#: ctk/ctkfilechooserwidget.c:2334 ctk/ctklabel.c:6684 ctk/ctktextview.c:9529
 msgid "_Delete"
 msgstr "_Sguab às"
 
-#: ctk/ctkentry.c:9586 ctk/ctklabel.c:6693 ctk/ctktextview.c:9514
+#: ctk/ctkentry.c:9613 ctk/ctklabel.c:6693 ctk/ctktextview.c:9543
 msgid "Select _All"
 msgstr "Tagh a _h-uile"
 
-#: ctk/ctkentry.c:9596 ctk/ctktextview.c:9524
-#| msgctxt "keyboard label"
-#| msgid "Insert"
+#: ctk/ctkentry.c:9623 ctk/ctktextview.c:9553
 msgid "Insert _Emoji"
 msgstr "Cuir a-steach _Emoji"
 
-#: ctk/ctkentry.c:9772 ctk/ctktextview.c:9749
+#: ctk/ctkentry.c:9799 ctk/ctktextview.c:9777
 msgid "Select all"
 msgstr "Tagh na h-uile"
 
-#: ctk/ctkentry.c:9775 ctk/ctktextview.c:9752
+#: ctk/ctkentry.c:9802 ctk/ctktextview.c:9780
 msgid "Cut"
 msgstr "Gearr"
 
-#: ctk/ctkentry.c:9778 ctk/ctktextview.c:9755
+#: ctk/ctkentry.c:9805 ctk/ctktextview.c:9783
 msgid "Copy"
 msgstr "Dèan lethbhreac"
 
-#: ctk/ctkentry.c:9781 ctk/ctktextview.c:9758
+#: ctk/ctkentry.c:9808 ctk/ctktextview.c:9786
 msgid "Paste"
 msgstr "Cuir ann"
 
-#: ctk/ctkentry.c:10851
+#: ctk/ctkentry.c:10880
 msgid "Caps Lock is on"
 msgstr "Tha CapsLock air"
 
-#: ctk/ctkentry.c:11126
-#| msgctxt "keyboard label"
-#| msgid "Insert"
+#: ctk/ctkentry.c:11158
 msgid "Insert Emoji"
 msgstr "Cuir a-steach Emoji"
 
-#: ctk/ctkfilechooserbutton.c:107
+#: ctk/ctkfilechooserbutton.c:112
 msgid "Select a File"
 msgstr "Tagh faidhle"
 
-#: ctk/ctkfilechooserbutton.c:108 ctk/ctkplacessidebar.c:1109
+#: ctk/ctkfilechooserbutton.c:113 ctk/ctkplacessidebar.c:1109
 msgid "Desktop"
 msgstr "An deasg"
 
-#: ctk/ctkfilechooserbutton.c:109 ctk/ui/ctkfilechooserbutton.ui:33
+#: ctk/ctkfilechooserbutton.c:114 ctk/ui/ctkfilechooserbutton.ui:33
 msgid "(None)"
 msgstr "(Chan eil gin)"
 
-#: ctk/ctkfilechooserbutton.c:2158
+#: ctk/ctkfilechooserbutton.c:2162
 msgid "Other…"
 msgstr "Eile…"
 
@@ -2292,17 +2253,17 @@ msgid "_Name"
 msgstr "_Ainm"
 
 #. Open item is always present
-#: ctk/ctkfilechoosernative.c:541 ctk/ctkfilechoosernative.c:626
-#: ctk/ctkplacessidebar.c:3594 ctk/ctkplacessidebar.c:3662
-#: ctk/ctkplacesview.c:1629
+#: ctk/ctkfilechoosernative.c:546 ctk/ctkfilechoosernative.c:631
+#: ctk/ctkplacessidebar.c:3625 ctk/ctkplacessidebar.c:3693
+#: ctk/ctkplacesview.c:1708
 msgid "_Open"
 msgstr "F_oscail"
 
-#: ctk/ctkfilechoosernative.c:626 ctk/inspector/css-editor.c:202
+#: ctk/ctkfilechoosernative.c:631 ctk/inspector/css-editor.c:202
 msgid "_Save"
 msgstr "_Sàbhail"
 
-#: ctk/ctkfilechoosernativequartz.c:331 ctk/ui/ctkfilechooserwidget.ui:392
+#: ctk/ctkfilechoosernativequartz.c:331 ctk/ui/ctkfilechooserwidget.ui:405
 msgid "Select which types of files are shown"
 msgstr "Tagh dè na seòrsachan nam faidhlichean a thèid a shealltainn"
 
@@ -2315,269 +2276,341 @@ msgstr "Tagh dè na seòrsachan nam faidhlichean a thèid a shealltainn"
 msgid "%1$s on %2$s"
 msgstr "%1$s air %2$s"
 
-#: ctk/ctkfilechooserwidget.c:370
+#: ctk/ctkfilechooserwidget.c:385
 msgid "Type name of new folder"
 msgstr "Sgrìobh ainm a’ phasgain ùir"
 
-#: ctk/ctkfilechooserwidget.c:789
+#: ctk/ctkfilechooserwidget.c:809
 msgid "The folder could not be created"
 msgstr "Cha b’ urrainn dhuinn am pasgan a chruthachadh"
 
-#: ctk/ctkfilechooserwidget.c:802
+#: ctk/ctkfilechooserwidget.c:821
+#, fuzzy
 msgid ""
-"The folder could not be created, as a file with the same name already "
-"exists.  Try using a different name for the folder, or rename the file first."
+"The folder could not be created, as a file with the same name already exists."
 msgstr ""
 "Cha b’ urrainn dhuinn am pasgan a chruthachadh a chionn ’s gu bheil pasgan "
 "ann mu thràth air a bheil an t-ainm seo. Feuch ainm eile no thoir ainm eile "
 "air an t-seann-fhaidhle an toiseach."
 
-#: ctk/ctkfilechooserwidget.c:817
+#: ctk/ctkfilechooserwidget.c:823
+#, fuzzy
+msgid "Try using a different name for the folder, or rename the file first."
+msgstr ""
+"Cha b’ urrainn dhuinn am pasgan a chruthachadh a chionn ’s gu bheil pasgan "
+"ann mu thràth air a bheil an t-ainm seo. Feuch ainm eile no thoir ainm eile "
+"air an t-seann-fhaidhle an toiseach."
+
+#: ctk/ctkfilechooserwidget.c:836
 msgid "You need to choose a valid filename."
 msgstr "Feumaidh tu ainm dligheach a thaghadh dhan fhaidhle."
 
-#: ctk/ctkfilechooserwidget.c:820
+#: ctk/ctkfilechooserwidget.c:839
 #, c-format
 msgid "Cannot create a file under %s as it is not a folder"
 msgstr ""
 "Cha ghabh faidhle a chruthachadh fo %s a chionn ’s nach e pasgan tha ann"
 
-#: ctk/ctkfilechooserwidget.c:830
+#: ctk/ctkfilechooserwidget.c:849
 msgid "Cannot create file as the filename is too long"
 msgstr ""
 "Cha ghabh am faidhle a chruthachadh a chionn ’s gu bheil ainm an fhaidhle ro "
 "fhada"
 
-#: ctk/ctkfilechooserwidget.c:831
+#: ctk/ctkfilechooserwidget.c:850
 msgid "Try using a shorter name."
 msgstr "Feuch an cleachd thu ainm nas giorra."
 
-#: ctk/ctkfilechooserwidget.c:841
+#: ctk/ctkfilechooserwidget.c:860
 msgid "You may only select folders"
 msgstr "Chan fhaod thu ach pasganan a thaghadh"
 
-#: ctk/ctkfilechooserwidget.c:842
+#: ctk/ctkfilechooserwidget.c:861
 msgid "The item that you selected is not a folder try using a different item."
 msgstr "Chan e pasgan a tha san rud a thagh thu; feuch rud eile."
 
-#: ctk/ctkfilechooserwidget.c:850
+#: ctk/ctkfilechooserwidget.c:869
 msgid "Invalid file name"
 msgstr "Tha ainm an fhaidhle mì-dhligheach"
 
-#: ctk/ctkfilechooserwidget.c:859
+#: ctk/ctkfilechooserwidget.c:878
 msgid "The folder contents could not be displayed"
 msgstr "Cha b’ urrainn dhuinn susbaint a’ phasgain a shealltainn"
 
-#: ctk/ctkfilechooserwidget.c:867
+#: ctk/ctkfilechooserwidget.c:886
 msgid "The file could not be deleted"
 msgstr "Cha b’ urrainn dhuinn am faidhle a sguabadh às"
 
-#: ctk/ctkfilechooserwidget.c:875
+#: ctk/ctkfilechooserwidget.c:894
 msgid "The file could not be moved to the Trash"
 msgstr "Cha b’ urrainn dhuinn am faidhle a ghluasad dhan sgudal"
 
-#: ctk/ctkfilechooserwidget.c:1020
+#: ctk/ctkfilechooserwidget.c:1039
 msgid "A folder with that name already exists"
 msgstr "Tha pasgan ann air a bheil an t-ainm seo mu thràth"
 
-#: ctk/ctkfilechooserwidget.c:1022
+#: ctk/ctkfilechooserwidget.c:1041
 msgid "A file with that name already exists"
 msgstr "Tha faidhle ann air a bheil an t-ainm seo mu thràth"
 
-#: ctk/ctkfilechooserwidget.c:1057
+#: ctk/ctkfilechooserwidget.c:1076
 msgid "A folder cannot be called “.”"
 msgstr "Chan urrainn dhut “.” a thoirt air pasgan"
 
-#: ctk/ctkfilechooserwidget.c:1058
+#: ctk/ctkfilechooserwidget.c:1077
 msgid "A file cannot be called “.”"
 msgstr "Chan urrainn dhut “.” a thoirt air faidhle"
 
-#: ctk/ctkfilechooserwidget.c:1061
+#: ctk/ctkfilechooserwidget.c:1080
 msgid "A folder cannot be called “..”"
 msgstr "Chan urrainn dhut “..” a thoirt air pasgan"
 
-#: ctk/ctkfilechooserwidget.c:1062
+#: ctk/ctkfilechooserwidget.c:1081
 msgid "A file cannot be called “..”"
 msgstr "Chan urrainn dhut “..” a thoirt air faidhle"
 
-#: ctk/ctkfilechooserwidget.c:1065
+#: ctk/ctkfilechooserwidget.c:1084
 msgid "Folder names cannot contain “/”"
 msgstr "Chan fhaod “/” a bhith ann an ainm pasgain"
 
-#: ctk/ctkfilechooserwidget.c:1066
+#: ctk/ctkfilechooserwidget.c:1085
 msgid "File names cannot contain “/”"
 msgstr "Chan fhaod “/” a bhith ann an ainm faidhle"
 
-#: ctk/ctkfilechooserwidget.c:1092
+#: ctk/ctkfilechooserwidget.c:1111
 msgid "Folder names should not begin with a space"
 msgstr "Cha bu chòir do dh’ainm pasgan tòiseachadh le beàrn"
 
-#: ctk/ctkfilechooserwidget.c:1093
+#: ctk/ctkfilechooserwidget.c:1112
 msgid "File names should not begin with a space"
 msgstr "Cha bu chòir do dh’ainm faidhle tòiseachadh le beàrn"
 
-#: ctk/ctkfilechooserwidget.c:1097
+#: ctk/ctkfilechooserwidget.c:1116
 msgid "Folder names should not end with a space"
 msgstr "Cha bu chòir do dh’ainm pasgan crìochnachadh le beàrn"
 
-#: ctk/ctkfilechooserwidget.c:1098
+#: ctk/ctkfilechooserwidget.c:1117
 msgid "File names should not end with a space"
 msgstr "Cha bu chòir do dh’ainm faidhle crìochnachadh le beàrn"
 
-#: ctk/ctkfilechooserwidget.c:1101
+#: ctk/ctkfilechooserwidget.c:1120
 msgid "Folder names starting with a “.” are hidden"
 msgstr "Thèid ainmean phasgain a thòisicheas le “.” fhalach"
 
-#: ctk/ctkfilechooserwidget.c:1102
+#: ctk/ctkfilechooserwidget.c:1121
 msgid "File names starting with a “.” are hidden"
 msgstr "Thèid ainmean fhaidhlichean a thòisicheas le “.” fhalach"
 
-#: ctk/ctkfilechooserwidget.c:1472
+#: ctk/ctkfilechooserwidget.c:1494
 #, c-format
 msgid "Are you sure you want to permanently delete “%s”?"
 msgstr "A bheil thu cinnteach gu bheil thu airson “%s” a sguabadh às gu buan?"
 
-#: ctk/ctkfilechooserwidget.c:1475
+#: ctk/ctkfilechooserwidget.c:1497
 #, c-format
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Ma sguabas tu às nì, chan fhaigh thu air ais idir e."
 
-#: ctk/ctkfilechooserwidget.c:1609
+#: ctk/ctkfilechooserwidget.c:1634
 msgid "The file could not be renamed"
 msgstr "Cha b’ urrainn dhuinn ainm ùr a thoirt air an fhaidhle"
 
-#: ctk/ctkfilechooserwidget.c:1923
+#: ctk/ctkfilechooserwidget.c:1979
 msgid "Could not select file"
 msgstr "Cha b’ urrainn dhuinn am faidhle a thaghadh"
 
-#: ctk/ctkfilechooserwidget.c:2272
+#: ctk/ctkfilechooserwidget.c:2329
 msgid "_Visit File"
 msgstr "_Tadhail air an fhaidhle seo"
 
-#: ctk/ctkfilechooserwidget.c:2273
+#: ctk/ctkfilechooserwidget.c:2330
 msgid "_Open With File Manager"
 msgstr "F_oscail le manaidsear nam faidhlichean"
 
-#: ctk/ctkfilechooserwidget.c:2274
+#: ctk/ctkfilechooserwidget.c:2331
 msgid "_Copy Location"
 msgstr "Dèan lethbhreac dhen _ionad"
 
-#: ctk/ctkfilechooserwidget.c:2275
+#: ctk/ctkfilechooserwidget.c:2332
 msgid "_Add to Bookmarks"
 msgstr "_Cuir ris na comharran-lìn"
 
-#: ctk/ctkfilechooserwidget.c:2276 ctk/ctkplacessidebar.c:2710
-#: ctk/ui/ctkfilechooserwidget.ui:526
+#: ctk/ctkfilechooserwidget.c:2333 ctk/ctkplacessidebar.c:2741
+#: ctk/ui/ctkfilechooserwidget.ui:539
 msgid "_Rename"
 msgstr "Thoi_r ainm ùr air"
 
-#: ctk/ctkfilechooserwidget.c:2278
+#: ctk/ctkfilechooserwidget.c:2335
 msgid "_Move to Trash"
 msgstr "_Gluais dhan sgudal"
 
-#: ctk/ctkfilechooserwidget.c:2282
+#: ctk/ctkfilechooserwidget.c:2339
 msgid "Show _Hidden Files"
 msgstr "Seall faidhlichean _falaichte"
 
-#: ctk/ctkfilechooserwidget.c:2283
+#: ctk/ctkfilechooserwidget.c:2340
 msgid "Show _Size Column"
 msgstr "Seall colbh a’ _mheud"
 
-#: ctk/ctkfilechooserwidget.c:2284
+#: ctk/ctkfilechooserwidget.c:2341
+#, fuzzy
+msgid "Show T_ype Column"
+msgstr "Seall colbh a’ _mheud"
+
+#: ctk/ctkfilechooserwidget.c:2342
 msgid "Show _Time"
 msgstr "Seall an _t-àm"
 
-#: ctk/ctkfilechooserwidget.c:2285
+#: ctk/ctkfilechooserwidget.c:2343
 msgid "Sort _Folders before Files"
 msgstr "Seòrsaich _pasganan ro fhaidhlichean"
 
 #. this is the header for the location column in the print dialog
-#: ctk/ctkfilechooserwidget.c:2609 ctk/inspector/css-node-tree.ui:141
-#: ctk/ui/ctkfilechooserwidget.ui:207 ctk/ui/ctkprintunixdialog.ui:123
+#: ctk/ctkfilechooserwidget.c:2625 ctk/inspector/css-node-tree.ui:141
+#: ctk/ui/ctkfilechooserwidget.ui:208 ctk/ui/ctkprintunixdialog.ui:123
 msgid "Location"
 msgstr "Ionad"
 
 #. Label
-#: ctk/ctkfilechooserwidget.c:2702
+#: ctk/ctkfilechooserwidget.c:2718
 msgid "_Name:"
 msgstr "_Ainm:"
 
-#: ctk/ctkfilechooserwidget.c:3324
-msgid "Searching"
-msgstr "Lorg"
-
-#: ctk/ctkfilechooserwidget.c:3329 ctk/ctkfilechooserwidget.c:3343
+#: ctk/ctkfilechooserwidget.c:3343 ctk/ctkfilechooserwidget.c:3357
 #, c-format
 msgid "Searching in %s"
 msgstr "’Ga lorg an-seo: %s"
 
-#: ctk/ctkfilechooserwidget.c:3353
+#: ctk/ctkfilechooserwidget.c:3363
+msgid "Searching"
+msgstr "Lorg"
+
+#: ctk/ctkfilechooserwidget.c:3370
 msgid "Enter location"
 msgstr "Cuir a-steach ionad"
 
-#: ctk/ctkfilechooserwidget.c:3355
+#: ctk/ctkfilechooserwidget.c:3372
 msgid "Enter location or URL"
 msgstr "Cuir a-steach ionad no URL"
 
-#: ctk/ctkfilechooserwidget.c:4393 ctk/ctkfilechooserwidget.c:7297
-#: ctk/ui/ctkfilechooserwidget.ui:235
+#: ctk/ctkfilechooserwidget.c:4450 ctk/ctkfilechooserwidget.c:7492
+#: ctk/ui/ctkfilechooserwidget.ui:248
 msgid "Modified"
 msgstr "Air atharrachadh"
 
-#: ctk/ctkfilechooserwidget.c:4671
+#: ctk/ctkfilechooserwidget.c:4728
 #, c-format
 msgid "Could not read the contents of %s"
 msgstr "Cha b’ urrainn susbaint %s a leughadh"
 
-#: ctk/ctkfilechooserwidget.c:4675
+#: ctk/ctkfilechooserwidget.c:4732
 msgid "Could not read the contents of the folder"
 msgstr "Cha b’ urrainn susbaint a’ phasgain a leughadh"
 
-#: ctk/ctkfilechooserwidget.c:4805 ctk/ctkfilechooserwidget.c:4853
+#: ctk/ctkfilechooserwidget.c:4892 ctk/ctkfilechooserwidget.c:4940
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: ctk/ctkfilechooserwidget.c:4807 ctk/ctkfilechooserwidget.c:4855
+#: ctk/ctkfilechooserwidget.c:4894 ctk/ctkfilechooserwidget.c:4942
 msgid "%l:%M %p"
 msgstr "%l:%M %p"
 
-#: ctk/ctkfilechooserwidget.c:4811
+#: ctk/ctkfilechooserwidget.c:4898
 msgid "Yesterday"
 msgstr "An-dè"
 
-#: ctk/ctkfilechooserwidget.c:4819
+#: ctk/ctkfilechooserwidget.c:4906
 msgid "%-e %b"
 msgstr "%-e %b"
 
-#: ctk/ctkfilechooserwidget.c:4823
+#: ctk/ctkfilechooserwidget.c:4910
 msgid "%-e %b %Y"
 msgstr "%-e %b %Y"
 
+#: ctk/ctkfilechooserwidget.c:5009 ctk/ctkfilechooserwidget.c:5017
+msgid "Program"
+msgstr ""
+
+#: ctk/ctkfilechooserwidget.c:5010
+#, fuzzy
+msgid "Audio"
+msgstr "AudioMute"
+
+#: ctk/ctkfilechooserwidget.c:5011 ctk/inspector/visual.ui:230
+#: ctk/ui/ctkfontbutton.ui:13
+msgid "Font"
+msgstr "Cruth-clò"
+
+#: ctk/ctkfilechooserwidget.c:5012 ctk/inspector/visual.ui:488
+msgid "Image"
+msgstr "Dealbh"
+
+#: ctk/ctkfilechooserwidget.c:5013
+#, fuzzy
+msgid "Archive"
+msgstr "Arch A"
+
+#: ctk/ctkfilechooserwidget.c:5014
+msgid "Markup"
+msgstr ""
+
+#: ctk/ctkfilechooserwidget.c:5015 ctk/ctkfilechooserwidget.c:5016
+msgid "Text"
+msgstr ""
+
+#: ctk/ctkfilechooserwidget.c:5018
+msgid "Video"
+msgstr ""
+
+#: ctk/ctkfilechooserwidget.c:5019
+msgid "Contacts"
+msgstr ""
+
+#: ctk/ctkfilechooserwidget.c:5020
+#, fuzzy
+msgid "Calendar"
+msgstr "calendar:MY"
+
+#: ctk/ctkfilechooserwidget.c:5021
+#, fuzzy
+msgid "Document"
+msgstr "An stiùireadh le"
+
+#: ctk/ctkfilechooserwidget.c:5022
+#, fuzzy
+msgid "Presentation"
+msgstr "_Comhair:"
+
+#: ctk/ctkfilechooserwidget.c:5023
+msgid "Spreadsheet"
+msgstr ""
+
 #. Translators: We don't know whether this printer is
 #. * available to print to.
-#: ctk/ctkfilechooserwidget.c:5058 ctk/inspector/prop-editor.c:1689
+#: ctk/ctkfilechooserwidget.c:5054 ctk/ctkfilechooserwidget.c:5243
+#: ctk/inspector/prop-editor.c:1693
 #: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:748
 msgid "Unknown"
 msgstr "Neo-aithnichte"
 
-#: ctk/ctkfilechooserwidget.c:5097 ctk/ctkplacessidebar.c:1094
+#: ctk/ctkfilechooserwidget.c:5282 ctk/ctkplacessidebar.c:1094
 msgid "Home"
 msgstr "Dhachaigh"
 
-#: ctk/ctkfilechooserwidget.c:5590
+#: ctk/ctkfilechooserwidget.c:5779
 msgid "Cannot change to folder because it is not local"
 msgstr ""
 "Chan urrainn dhuinn leum a ghearradh gun phasgan a chionn ’s nach eil e "
 "ionadail"
 
-#: ctk/ctkfilechooserwidget.c:6376 ctk/ctkprintunixdialog.c:664
+#: ctk/ctkfilechooserwidget.c:6565 ctk/ctkprintunixdialog.c:665
 #, c-format
 msgid "A file named “%s” already exists.  Do you want to replace it?"
 msgstr ""
 "Tha faidhle air a bheil “%s” ann mu thràth. A bheil thu airson am fear ùr a "
 "chur an àite an t-seann-fhir?"
 
-#: ctk/ctkfilechooserwidget.c:6379 ctk/ctkprintunixdialog.c:668
+#: ctk/ctkfilechooserwidget.c:6568 ctk/ctkprintunixdialog.c:669
 #, c-format
 msgid ""
 "The file already exists in “%s”.  Replacing it will overwrite its contents."
@@ -2585,21 +2618,25 @@ msgstr ""
 "Tha am faidhle seo ann an “%s” mu thràth. Ma chuireas tu am fear ùr ’na "
 "àite, sgrìobhar thairis air an t-susbaint ann."
 
-#: ctk/ctkfilechooserwidget.c:6384 ctk/ctkprintunixdialog.c:676
+#: ctk/ctkfilechooserwidget.c:6573 ctk/ctkprintunixdialog.c:677
 msgid "_Replace"
 msgstr "_Cuir ’na àite"
 
-#: ctk/ctkfilechooserwidget.c:6598
+#: ctk/ctkfilechooserwidget.c:6792
 msgid "You do not have access to the specified folder."
 msgstr "Chan eil inntrigeadh agad dhan phasgan seo."
 
-#: ctk/ctkfilechooserwidget.c:7221
+#: ctk/ctkfilechooserwidget.c:7415
 msgid "Could not send the search request"
 msgstr "Cha b’ urrainn dhuinn an t-iarratas luirg a chur"
 
-#: ctk/ctkfilechooserwidget.c:7507
+#: ctk/ctkfilechooserwidget.c:7703
 msgid "Accessed"
 msgstr "Air inntrigeadh"
+
+#: ctk/ctkfilechooserwidget.c:8822 ctk/ui/ctkfilechooserwidget.ui:69
+msgid "Create Folder"
+msgstr "Cruthaich pasgan"
 
 #. The pointers we return for a CtkFileSystemVolume are opaque tokens; they are
 #. * really pointers to GDrive, GVolume or GMount objects.  We need an extra
@@ -2610,20 +2647,74 @@ msgstr "Air inntrigeadh"
 msgid "File System"
 msgstr "Siostam-fhaidhlichean"
 
-#: ctk/ctkfontbutton.c:368 ctk/ctkfontbutton.c:498
+#: ctk/ctkfontbutton.c:379 ctk/ctkfontbutton.c:509
 msgid "Sans 12"
 msgstr "Sans 12"
 
-#: ctk/ctkfontbutton.c:481 ctk/ctkfontbutton.c:615
+#: ctk/ctkfontbutton.c:492 ctk/ctkfontbutton.c:626
 msgid "Pick a Font"
 msgstr "Tagh cruth-clò"
 
-#: ctk/ctkfontbutton.c:1355
+#: ctk/ctkfontbutton.c:1395
 msgctxt "font"
 msgid "None"
 msgstr "Chan eil gin"
 
-#: ctk/ctkglarea.c:313
+#: ctk/ctkfontchooserwidget.c:1539
+#, fuzzy
+msgid "Width"
+msgstr "_Leud:"
+
+#: ctk/ctkfontchooserwidget.c:1540
+#, fuzzy
+msgid "Weight"
+msgstr "Deas"
+
+#: ctk/ctkfontchooserwidget.c:1541
+#, fuzzy
+msgid "Italic"
+msgstr "_Eadailteach"
+
+#: ctk/ctkfontchooserwidget.c:1542
+msgid "Slant"
+msgstr ""
+
+#: ctk/ctkfontchooserwidget.c:1543
+msgid "Optical Size"
+msgstr ""
+
+#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1680
+msgid "Default"
+msgstr "Bun-roghainn"
+
+#: ctk/ctkfontchooserwidget.c:2141
+#, fuzzy
+msgid "Ligatures"
+msgstr "Glacadh"
+
+#: ctk/ctkfontchooserwidget.c:2142
+#, fuzzy
+msgid "Letter Case"
+msgstr "US Letter Plus"
+
+#: ctk/ctkfontchooserwidget.c:2143
+msgid "Number Case"
+msgstr ""
+
+#: ctk/ctkfontchooserwidget.c:2144
+msgid "Number Spacing"
+msgstr ""
+
+#: ctk/ctkfontchooserwidget.c:2145
+msgid "Number Formatting"
+msgstr ""
+
+#: ctk/ctkfontchooserwidget.c:2146
+#, fuzzy
+msgid "Character Variants"
+msgstr "Eug-samhail dorcha"
+
+#: ctk/ctkglarea.c:314
 msgid "OpenGL context creation failed"
 msgstr "Cha b’ urrainn dhuinn co-theacs OpenGL a chruthachadh"
 
@@ -2631,16 +2722,16 @@ msgstr "Cha b’ urrainn dhuinn co-theacs OpenGL a chruthachadh"
 msgid "Application menu"
 msgstr "Clàr-taice na h-aplacaid"
 
-#: ctk/ctkheaderbar.c:458 ctk/ctkwindow.c:9265
+#: ctk/ctkheaderbar.c:458 ctk/ctkwindow.c:9355
 msgid "Close"
 msgstr "Dùin"
 
-#: ctk/ctkicontheme.c:2341 ctk/ctkicontheme.c:2406
+#: ctk/ctkicontheme.c:2355 ctk/ctkicontheme.c:2420
 #, c-format
 msgid "Icon '%s' not present in theme %s"
 msgstr "Chan eil an ìomhaigheag “%s” san ùrlar %s"
 
-#: ctk/ctkicontheme.c:4080 ctk/ctkicontheme.c:4447
+#: ctk/ctkicontheme.c:4096 ctk/ctkicontheme.c:4463
 msgid "Failed to load icon"
 msgstr "Dh’fhàillig luchdadh na h-ìomhaigheige"
 
@@ -2654,30 +2745,30 @@ msgctxt "input method menu"
 msgid "None"
 msgstr "Chan eil gin"
 
-#: ctk/ctkimmulticontext.c:609
+#: ctk/ctkimmulticontext.c:615
 msgctxt "input method menu"
 msgid "System"
 msgstr "Siostam"
 
-#: ctk/ctkimmulticontext.c:688
+#: ctk/ctkimmulticontext.c:694
 #, c-format
 msgctxt "input method menu"
 msgid "System (%s)"
 msgstr "Siostam (%s)"
 
-#: ctk/ctkinfobar.c:1168 ctk/ctkmessagedialog.c:385
+#: ctk/ctkinfobar.c:1307 ctk/ctkmessagedialog.c:385
 msgid "Information"
 msgstr "Fiosrachadh"
 
-#: ctk/ctkinfobar.c:1172 ctk/ctkmessagedialog.c:389
+#: ctk/ctkinfobar.c:1311 ctk/ctkmessagedialog.c:389
 msgid "Question"
 msgstr "Ceist"
 
-#: ctk/ctkinfobar.c:1176 ctk/ctkmessagedialog.c:393
+#: ctk/ctkinfobar.c:1315 ctk/ctkmessagedialog.c:393
 msgid "Warning"
 msgstr "Rabhadh"
 
-#: ctk/ctkinfobar.c:1180 ctk/ctkmessagedialog.c:397
+#: ctk/ctkinfobar.c:1319 ctk/ctkmessagedialog.c:397
 msgid "Error"
 msgstr "Mearachd"
 
@@ -2691,17 +2782,17 @@ msgstr "_Foscail an ceangal"
 msgid "Copy _Link Address"
 msgstr "Dèan lethbhreac de sheòladh a’ _cheancail"
 
-#: ctk/ctk-launch.c:40
+#: ctk/ctk-launch.c:42
 msgid "Show program version"
 msgstr "Seall tionndadh a’ phrògraim"
 
-#: ctk/ctk-launch.c:74
+#: ctk/ctk-launch.c:76
 msgid "APPLICATION [URI...] — launch an APPLICATION"
 msgstr "APLACAID [URI…] — cuir air bhog an APLACAID"
 
 #. Translators: this message will appear after the usage string
 #. and before the list of options.
-#: ctk/ctk-launch.c:78
+#: ctk/ctk-launch.c:80
 msgid ""
 "Launch an application (specified by its desktop file name),\n"
 "optionally passing one or more URIs as arguments."
@@ -2709,24 +2800,24 @@ msgstr ""
 "Tòisich aplacaid (air a sònrachadh leis an fhaidhle desktop aice),\n"
 "a’ toirt cuid a dh’URIean dha mar argamaidean roghainneil."
 
-#: ctk/ctk-launch.c:90
+#: ctk/ctk-launch.c:92
 #, c-format
 msgid "Error parsing commandline options: %s\n"
 msgstr "Mearachd a’ parsadh roghainnean na loidhne-àithne: %s\n"
 
-#: ctk/ctk-launch.c:92 ctk/ctk-launch.c:113
+#: ctk/ctk-launch.c:94 ctk/ctk-launch.c:115
 #, c-format
 msgid "Try \"%s --help\" for more information."
 msgstr "Feuch “%s --help” airson barrachd fiosrachaidh."
 
 #. Translators: the %s is the program name. This error message
 #. means the user is calling ctk-launch without any argument.
-#: ctk/ctk-launch.c:111
+#: ctk/ctk-launch.c:113
 #, c-format
 msgid "%s: missing application name"
 msgstr "%s: ainm na h-aplacaid a dhìth"
 
-#: ctk/ctk-launch.c:140
+#: ctk/ctk-launch.c:144
 #, c-format
 msgid "Creating AppInfo from id not supported on non unix operating systems"
 msgstr ""
@@ -2735,14 +2826,14 @@ msgstr ""
 
 #. Translators: the first %s is the program name, the second one
 #. is the application name.
-#: ctk/ctk-launch.c:148
+#: ctk/ctk-launch.c:152
 #, c-format
 msgid "%s: no such application %s"
 msgstr "%s: chan eil aplacaid mar sin (%s) ann"
 
 #. Translators: the first %s is the program name, the second one
 #. is the error message.
-#: ctk/ctk-launch.c:166
+#: ctk/ctk-launch.c:170
 #, c-format
 msgid "%s: error launching application: %s\n"
 msgstr "%s: mearachd a’ cur na h-aplacaid air bhog: %s\n"
@@ -2812,16 +2903,16 @@ msgstr "Brataichean dì-bhugachadh CTK+ a tha ri shuidheachadh"
 msgid "CTK+ debugging flags to unset"
 msgstr "Brataichean dì-bhugachadh CTK+ a tha ri dhì-shuidheachadh"
 
-#: ctk/ctkmain.c:808 ctk/ctkmain.c:1002
+#: ctk/ctkmain.c:810 ctk/ctkmain.c:1004
 #, c-format
 msgid "Cannot open display: %s"
 msgstr "Cha ghabh na leanas a thaisbeanadh: %s"
 
-#: ctk/ctkmain.c:920
+#: ctk/ctkmain.c:922
 msgid "CTK+ Options"
 msgstr "Roghainnean CTK+"
 
-#: ctk/ctkmain.c:920
+#: ctk/ctkmain.c:922
 msgid "Show CTK+ Options"
 msgstr "Seall roghainnean CTK+"
 
@@ -2830,7 +2921,7 @@ msgstr "Seall roghainnean CTK+"
 #. * Do *not* translate it to "predefinito:LTR", if it
 #. * it isn't default:LTR or default:RTL it will not work
 #.
-#: ctk/ctkmain.c:1270
+#: ctk/ctkmain.c:1275
 msgid "default:LTR"
 msgstr "default:LTR"
 
@@ -2842,57 +2933,75 @@ msgstr "_Chan eil"
 msgid "_Yes"
 msgstr "_Tha"
 
-#: ctk/ctkmountoperation.c:546
+#: ctk/ctkmountoperation.c:595
 msgid "Co_nnect"
 msgstr "Ce_angal"
 
-#: ctk/ctkmountoperation.c:622
+#: ctk/ctkmountoperation.c:668
 msgid "Connect As"
 msgstr "Ceangal mar"
 
-#: ctk/ctkmountoperation.c:631
+#: ctk/ctkmountoperation.c:677
 msgid "_Anonymous"
 msgstr "_Gun urra"
 
-#: ctk/ctkmountoperation.c:640
+#: ctk/ctkmountoperation.c:686
 msgid "Registered U_ser"
 msgstr "C_leachdaiche clàraichte"
 
-#: ctk/ctkmountoperation.c:651
+#: ctk/ctkmountoperation.c:697
 msgid "_Username"
 msgstr "_Ainm-cleachdaiche"
 
-#: ctk/ctkmountoperation.c:656
+#: ctk/ctkmountoperation.c:702
 msgid "_Domain"
 msgstr "_Àrainn-lìn"
 
-#: ctk/ctkmountoperation.c:662
+#: ctk/ctkmountoperation.c:711
+#, fuzzy
+msgid "Volume type"
+msgstr "Cuir an fhuaim an àirde"
+
+#: ctk/ctkmountoperation.c:721
+msgid "_Hidden"
+msgstr ""
+
+#: ctk/ctkmountoperation.c:724
+#, fuzzy
+msgid "_Windows system"
+msgstr "IME Windows"
+
+#: ctk/ctkmountoperation.c:727
+msgid "_PIM"
+msgstr ""
+
+#: ctk/ctkmountoperation.c:733
 msgid "_Password"
 msgstr "_Facal-faire"
 
-#: ctk/ctkmountoperation.c:684
+#: ctk/ctkmountoperation.c:755
 msgid "Forget password _immediately"
 msgstr "Dìochuimhnich am facal-faire sa _bhad"
 
-#: ctk/ctkmountoperation.c:694
+#: ctk/ctkmountoperation.c:765
 msgid "Remember password until you _logout"
 msgstr "Cuimhnich am facal-faire gus _an clàraichear a-mach"
 
-#: ctk/ctkmountoperation.c:704
+#: ctk/ctkmountoperation.c:775
 msgid "Remember _forever"
 msgstr "Cuimhnich g_u bràth"
 
-#: ctk/ctkmountoperation.c:1093
+#: ctk/ctkmountoperation.c:1170
 #, c-format
 msgid "Unknown Application (PID %d)"
 msgstr "Aplacaid nach aithne dhuinn (PID %d)"
 
-#: ctk/ctkmountoperation.c:1278
+#: ctk/ctkmountoperation.c:1355
 #, c-format
 msgid "Unable to end process"
 msgstr "Cha ghabh crìoch a chur air a’ phròiseas"
 
-#: ctk/ctkmountoperation.c:1312
+#: ctk/ctkmountoperation.c:1389
 msgid "_End Process"
 msgstr "_Cuir crìoch air a’ phròiseas"
 
@@ -2904,49 +3013,49 @@ msgstr ""
 "an sàs."
 
 #. translators: this string is a name for the 'less' command
-#: ctk/ctkmountoperation-x11.c:954
+#: ctk/ctkmountoperation-x11.c:955
 msgid "Terminal Pager"
 msgstr "Pèidsear tèirmineil"
 
-#: ctk/ctkmountoperation-x11.c:955
+#: ctk/ctkmountoperation-x11.c:956
 msgid "Top Command"
 msgstr "Sàr-àithne"
 
-#: ctk/ctkmountoperation-x11.c:956
+#: ctk/ctkmountoperation-x11.c:957
 msgid "Bourne Again Shell"
 msgstr "Bourne Again Shell"
 
-#: ctk/ctkmountoperation-x11.c:957
+#: ctk/ctkmountoperation-x11.c:958
 msgid "Bourne Shell"
 msgstr "Bourne Shell"
 
-#: ctk/ctkmountoperation-x11.c:958
+#: ctk/ctkmountoperation-x11.c:959
 msgid "Z Shell"
 msgstr "Z Shell"
 
-#: ctk/ctkmountoperation-x11.c:1055
+#: ctk/ctkmountoperation-x11.c:1056
 #, c-format
 msgid "Cannot end process with PID %d: %s"
 msgstr "Cha ghabh am pròiseas a chrìochnachadh le PID %d: %s"
 
-#: ctk/ctknotebook.c:5121 ctk/ctknotebook.c:7386
+#: ctk/ctknotebook.c:5150 ctk/ctknotebook.c:7428
 #, c-format
 msgid "Page %u"
 msgstr "Duilleag %u"
 
-#: ctk/ctkpagesetup.c:652 ctk/ctkpapersize.c:986 ctk/ctkpapersize.c:1026
+#: ctk/ctkpagesetup.c:652 ctk/ctkpapersize.c:989 ctk/ctkpapersize.c:1029
 msgid "Not a valid page setup file"
 msgstr "Chan e faidhle suidheachaidh dligheach airson duilleag a tha ann"
 
-#: ctk/ctkpagesetupunixdialog.c:210
+#: ctk/ctkpagesetupunixdialog.c:211
 msgid "Any Printer"
 msgstr "Clò-bhualadair sam bith"
 
-#: ctk/ctkpagesetupunixdialog.c:210
+#: ctk/ctkpagesetupunixdialog.c:211
 msgid "For portable documents"
 msgstr "Airson sgrìobhainnean so-ghiùlain"
 
-#: ctk/ctkpagesetupunixdialog.c:829
+#: ctk/ctkpagesetupunixdialog.c:832
 #, c-format
 msgid ""
 "Margins:\n"
@@ -2961,27 +3070,26 @@ msgstr ""
 " Barr: %s %s\n"
 " Bonn: %s %s"
 
-#: ctk/ctkpagesetupunixdialog.c:878 ctk/ctkprintunixdialog.c:3390
+#: ctk/ctkpagesetupunixdialog.c:881 ctk/ctkprintunixdialog.c:3393
 msgid "Manage Custom Sizes…"
 msgstr "Stiùirich na meudan gnàthaiche…"
 
-#: ctk/ctkpagesetupunixdialog.c:900 ctk/ui/ctkpagesetupunixdialog.ui:31
+#: ctk/ctkpagesetupunixdialog.c:903 ctk/ui/ctkpagesetupunixdialog.ui:31
 #: ctk/ui/ctkprintunixdialog.ui:854
 msgid "Page Setup"
 msgstr "Suidheachadh na duilleige"
 
-#: ctk/ctkpathbar.c:1572
+#: ctk/ctkpathbar.c:1571
 msgid "File System Root"
 msgstr "Root an t-siostaim fhaidhlichean"
 
 #. translators: %s is the name of a cloud provider for files
 #: ctk/ctkplacessidebar.c:981
 #, c-format
-#| msgid "Open '%s'"
 msgid "Open %s"
 msgstr "Foscail %s"
 
-#: ctk/ctkplacessidebar.c:1070
+#: ctk/ctkplacessidebar.c:1070 ctk/ui/ctkemojichooser.ui:197
 msgid "Recent"
 msgstr "Air a chleachdadh o chionn goirid"
 
@@ -2990,14 +3098,11 @@ msgid "Recent files"
 msgstr "Faidhlichean o chionn goirid"
 
 #: ctk/ctkplacessidebar.c:1082
-#| msgid "_Start"
 msgid "Starred"
 msgstr "Rionnag"
 
 #. TODO: Rename to 'Starred files'
 #: ctk/ctkplacessidebar.c:1085
-#| msgctxt "printer option"
-#| msgid "Printer Profile"
 msgid "Favorite files"
 msgstr "Na faidhlichean as fhearr leat"
 
@@ -3026,214 +3131,258 @@ msgid "Open the trash"
 msgstr "Foscail an sgudal"
 
 #: ctk/ctkplacessidebar.c:1248 ctk/ctkplacessidebar.c:1276
-#: ctk/ctkplacessidebar.c:1484
+#: ctk/ctkplacessidebar.c:1491
 #, c-format
 msgid "Mount and open “%s”"
 msgstr "Munntaich is foscail “%s”"
 
-#: ctk/ctkplacessidebar.c:1364
+#: ctk/ctkplacessidebar.c:1371
 msgid "Open the contents of the file system"
 msgstr "Foscail susbaint an t-siosaim-fhaidhlichean"
 
-#: ctk/ctkplacessidebar.c:1448
+#: ctk/ctkplacessidebar.c:1455
 msgid "New bookmark"
 msgstr "Comharra-lìn ùr"
 
-#: ctk/ctkplacessidebar.c:1450
+#: ctk/ctkplacessidebar.c:1457
 msgid "Add a new bookmark"
 msgstr "Cuir comharra-lìn ùr ris"
 
-#: ctk/ctkplacessidebar.c:1463
+#: ctk/ctkplacessidebar.c:1470
 msgid "Connect to Server"
 msgstr "Ceancail ri frithealaiche"
 
-#: ctk/ctkplacessidebar.c:1465
+#: ctk/ctkplacessidebar.c:1472
 msgid "Connect to a network server address"
 msgstr "Ceancail ris an t-seòladh aig frithealaiche lìonraidh"
 
-#: ctk/ctkplacessidebar.c:1527
+#: ctk/ctkplacessidebar.c:1534
 msgid "Other Locations"
 msgstr "Ionadan eile"
 
-#: ctk/ctkplacessidebar.c:1528
+#: ctk/ctkplacessidebar.c:1535
 msgid "Show other locations"
 msgstr "Seall ionadan eile"
 
 #. Adjust start/stop items to reflect the type of the drive
-#: ctk/ctkplacessidebar.c:2324 ctk/ctkplacessidebar.c:3682
+#: ctk/ctkplacessidebar.c:2334 ctk/ctkplacessidebar.c:3713
 msgid "_Start"
 msgstr "_Tòisich"
 
-#: ctk/ctkplacessidebar.c:2325 ctk/ctkplacessidebar.c:3683
+#: ctk/ctkplacessidebar.c:2335 ctk/ctkplacessidebar.c:3714
 msgid "_Stop"
 msgstr "_Sguir dheth"
 
 #. start() for type G_DRIVE_START_STOP_TYPE_SHUTDOWN is normally not used
-#: ctk/ctkplacessidebar.c:2332
+#: ctk/ctkplacessidebar.c:2342
 msgid "_Power On"
 msgstr "_Cuir cumhachd air"
 
-#: ctk/ctkplacessidebar.c:2333
+#: ctk/ctkplacessidebar.c:2343
 msgid "_Safely Remove Drive"
 msgstr "Thoir an draibh air falbh gu _sàbhailte"
 
-#: ctk/ctkplacessidebar.c:2337
+#: ctk/ctkplacessidebar.c:2347
 msgid "_Connect Drive"
 msgstr "_Ceangal an draibh"
 
-#: ctk/ctkplacessidebar.c:2338
+#: ctk/ctkplacessidebar.c:2348
 msgid "_Disconnect Drive"
 msgstr "_Bris an ceangal gun draibh"
 
-#: ctk/ctkplacessidebar.c:2342
+#: ctk/ctkplacessidebar.c:2352
 msgid "_Start Multi-disk Device"
 msgstr "_Tòisich uidheam ioma-dhiosga"
 
-#: ctk/ctkplacessidebar.c:2343
+#: ctk/ctkplacessidebar.c:2353
 msgid "_Stop Multi-disk Device"
 msgstr "_Sguir dhen uidheam ioma-dhiosga"
 
 #. stop() for type G_DRIVE_START_STOP_TYPE_PASSWORD is normally not used
-#: ctk/ctkplacessidebar.c:2348
+#: ctk/ctkplacessidebar.c:2358
 msgid "_Unlock Device"
 msgstr "_Thoir a’ ghlas far an uidheam"
 
-#: ctk/ctkplacessidebar.c:2349
+#: ctk/ctkplacessidebar.c:2359
 msgid "_Lock Device"
 msgstr "G_lais an t-uidheam"
 
-#: ctk/ctkplacessidebar.c:2387 ctk/ctkplacessidebar.c:3363
+#: ctk/ctkplacessidebar.c:2397 ctk/ctkplacessidebar.c:3394
 #, c-format
 msgid "Unable to start “%s”"
 msgstr "Cha ghabh “%s” a thòiseachadh"
 
-#: ctk/ctkplacessidebar.c:2417
+#: ctk/ctkplacessidebar.c:2430
+#, fuzzy, c-format
+msgid "Error unlocking “%s”"
+msgstr "A’ fosgladh “%s”."
+
+#: ctk/ctkplacessidebar.c:2432
 #, c-format
 msgid "Unable to access “%s”"
 msgstr "Cha ghabh %s inntrigeadh"
 
-#: ctk/ctkplacessidebar.c:2635
+#: ctk/ctkplacessidebar.c:2666
 msgid "This name is already taken"
 msgstr "Tha an t-ainm seo ’ga chleachdadh mar-thà"
 
-#: ctk/ctkplacessidebar.c:2704 ctk/inspector/actions.ui:43
+#: ctk/ctkplacessidebar.c:2735 ctk/inspector/actions.ui:43
 #: ctk/inspector/css-node-tree.ui:39 ctk/inspector/object-tree.ui:110
-#: ctk/ui/ctkfilechooserwidget.ui:189 ctk/ui/ctkfilechooserwidget.ui:500
+#: ctk/ui/ctkfilechooserwidget.ui:190 ctk/ui/ctkfilechooserwidget.ui:513
 msgid "Name"
 msgstr "Ainm"
 
-#: ctk/ctkplacessidebar.c:2904
+#: ctk/ctkplacessidebar.c:2935
 #, c-format
 msgid "Unable to unmount “%s”"
 msgstr "Cha ghabh “%s” a dì-mhunntachadh"
 
-#: ctk/ctkplacessidebar.c:3080
+#: ctk/ctkplacessidebar.c:3111
 #, c-format
 msgid "Unable to stop “%s”"
 msgstr "Cha ghabh sguir dhe “%s”"
 
-#: ctk/ctkplacessidebar.c:3109
+#: ctk/ctkplacessidebar.c:3140
 #, c-format
 msgid "Unable to eject “%s”"
 msgstr "Cha ghabh “%s” a ghluasad a-mach"
 
-#: ctk/ctkplacessidebar.c:3138 ctk/ctkplacessidebar.c:3167
+#: ctk/ctkplacessidebar.c:3169 ctk/ctkplacessidebar.c:3198
 #, c-format
 msgid "Unable to eject %s"
 msgstr "Cha ghabh %s a ghluasad a-mach"
 
-#: ctk/ctkplacessidebar.c:3315
+#: ctk/ctkplacessidebar.c:3346
 #, c-format
 msgid "Unable to poll “%s” for media changes"
 msgstr "Cha ghabh “%s” a phòladh airson atharrachadh a’ mheadhain"
 
-#: ctk/ctkplacessidebar.c:3599 ctk/ctkplacessidebar.c:3665
-#: ctk/ctkplacesview.c:1639
+#: ctk/ctkplacessidebar.c:3630 ctk/ctkplacessidebar.c:3696
+#: ctk/ctkplacesview.c:1718
 msgid "Open in New _Tab"
 msgstr "Foscail ann an _taba ùr"
 
-#: ctk/ctkplacessidebar.c:3605 ctk/ctkplacessidebar.c:3668
-#: ctk/ctkplacesview.c:1650
+#: ctk/ctkplacessidebar.c:3636 ctk/ctkplacessidebar.c:3699
+#: ctk/ctkplacesview.c:1729
 msgid "Open in New _Window"
 msgstr "Foscail ann an _uinneag ùr"
 
-#: ctk/ctkplacessidebar.c:3672
+#: ctk/ctkplacessidebar.c:3703
 msgid "_Add Bookmark"
 msgstr "_Cuir ris na comharran-lìn"
 
-#: ctk/ctkplacessidebar.c:3673
+#: ctk/ctkplacessidebar.c:3704
 msgid "_Remove"
 msgstr "Thoi_r air falbh"
 
-#: ctk/ctkplacessidebar.c:3674
+#: ctk/ctkplacessidebar.c:3705
 msgid "Rename…"
 msgstr "Thoir ainm ùr air…"
 
-#: ctk/ctkplacessidebar.c:3678 ctk/ctkplacesview.c:1684
+#: ctk/ctkplacessidebar.c:3709 ctk/ctkplacesview.c:1763
 msgid "_Mount"
 msgstr "_Munntaich"
 
-#: ctk/ctkplacessidebar.c:3679 ctk/ctkplacesview.c:1674
+#: ctk/ctkplacessidebar.c:3710 ctk/ctkplacesview.c:1753
 msgid "_Unmount"
 msgstr "Dì-mhu_nntaich"
 
-#: ctk/ctkplacessidebar.c:3680
+#: ctk/ctkplacessidebar.c:3711
 msgid "_Eject"
 msgstr "_Gluais a-mach"
 
-#: ctk/ctkplacessidebar.c:3681
+#: ctk/ctkplacessidebar.c:3712
 msgid "_Detect Media"
 msgstr "_Aithnich meadhanan"
 
-#: ctk/ctkplacessidebar.c:4127 ctk/ctkplacesview.c:1118
+#: ctk/ctkplacessidebar.c:4158 ctk/ctkplacesview.c:1125
 msgid "Computer"
 msgstr "Coimpiutair"
 
-#: ctk/ctkplacesview.c:894
+#: ctk/ctkplacesview.c:901
 msgid "Searching for network locations"
 msgstr "A’ lorg ionadan lìonraidh"
 
-#: ctk/ctkplacesview.c:901
+#: ctk/ctkplacesview.c:908
 msgid "No network locations found"
 msgstr "Cha deach ionad lìonraidh a lorg"
 
 #. if it wasn't cancelled show a dialog
-#: ctk/ctkplacesview.c:1228 ctk/ctkplacesview.c:1303
+#: ctk/ctkplacesview.c:1235 ctk/ctkplacesview.c:1333
 msgid "Unable to access location"
 msgstr "Cha ghabh an t-ionad inntrigeadh"
 
 #. Restore from Cancel to Connect
-#: ctk/ctkplacesview.c:1246 ctk/ui/ctkplacesview.ui:449
+#: ctk/ctkplacesview.c:1253 ctk/ui/ctkplacesview.ui:317
 msgid "Con_nect"
 msgstr "C_eancail"
 
 #. if it wasn't cancelled show a dialog
-#: ctk/ctkplacesview.c:1366
+#: ctk/ctkplacesview.c:1396
 msgid "Unable to unmount volume"
 msgstr "Cha ghabh an draibh a dì-mhunntachadh"
 
 #. Allow to cancel the operation
-#: ctk/ctkplacesview.c:1466
+#: ctk/ctkplacesview.c:1497
 msgid "Cance_l"
 msgstr "_Sguir dheth"
 
+#: ctk/ctkplacesview.c:1660
+msgid "AppleTalk"
+msgstr "AppleTalk"
+
+#. Translators: do not translate ftp:// and ftps://
+#: ctk/ctkplacesview.c:1664
+msgid "File Transfer Protocol"
+msgstr "File Transfer Protocol"
+
+#: ctk/ctkplacesview.c:1664
+msgid "ftp:// or ftps://"
+msgstr "ftp:// no ftps://"
+
+#: ctk/ctkplacesview.c:1667
+msgid "Network File System"
+msgstr "Network File System"
+
+#: ctk/ctkplacesview.c:1670
+msgid "Samba"
+msgstr "Samba"
+
+#. Translators: do not translate sftp:// and ssh://
 #: ctk/ctkplacesview.c:1674
+msgid "SSH File Transfer Protocol"
+msgstr "SSH File Transfer Protocol"
+
+#: ctk/ctkplacesview.c:1674
+msgid "sftp:// or ssh://"
+msgstr "sftp:// or ssh://"
+
+#. Translators: do not translate dav:// and davs://
+#: ctk/ctkplacesview.c:1678
+msgid "WebDAV"
+msgstr "WebDAV"
+
+#: ctk/ctkplacesview.c:1678
+msgid "dav:// or davs://"
+msgstr "dav:// no davs://"
+
+#: ctk/ctkplacesview.c:1753
 msgid "_Disconnect"
 msgstr "_Dì-cheancail"
 
-#: ctk/ctkplacesview.c:1684
+#: ctk/ctkplacesview.c:1763
 msgid "_Connect"
 msgstr "_Ceancail"
 
-#: ctk/ctkplacesview.c:1825
+#: ctk/ctkplacesview.c:1904
 msgid "Unable to get remote server location"
 msgstr "Cha deach leinn ionad cèin an fhrithealaiche fhaighinn"
 
-#: ctk/ctkplacesview.c:2013 ctk/ctkplacesview.c:2022
+#: ctk/ctkplacesview.c:2099 ctk/ctkplacesview.c:2108
 msgid "Networks"
 msgstr "Lìonraidhean"
 
-#: ctk/ctkplacesview.c:2013 ctk/ctkplacesview.c:2022
+#: ctk/ctkplacesview.c:2099 ctk/ctkplacesview.c:2108
 msgid "On This Computer"
 msgstr "Air a’ choimpiutair seo"
 
@@ -3255,15 +3404,15 @@ msgid "Disconnect"
 msgstr "Dì-cheancail"
 
 #: ctk/ctkplacesviewrow.c:481 ctk/ui/ctkplacesviewrow.ui:72
-#: ctk/ui/ctksidebarrow.ui:60
+#: ctk/ui/ctksidebarrow.ui:62
 msgid "Unmount"
 msgstr "Dì-mhunntaich"
 
-#: ctk/ctkprintbackend.c:762
+#: ctk/ctkprintbackend.c:780
 msgid "Authentication"
 msgstr "Dearbhadh"
 
-#: ctk/ctkprintbackend.c:833
+#: ctk/ctkprintbackend.c:853
 msgid "_Remember password"
 msgstr "Cuimhnich am facal-fai_re"
 
@@ -3271,7 +3420,7 @@ msgstr "Cuimhnich am facal-fai_re"
 msgid "Select a filename"
 msgstr "Tagh ainm-faidhle"
 
-#: ctk/ctkprinteroptionwidget.c:767
+#: ctk/ctkprinteroptionwidget.c:769
 msgid "Not available"
 msgstr "Chan eil seo ri fhaighinn"
 
@@ -3334,7 +3483,7 @@ msgstr "Deiseil ach thachair mearachd"
 msgid "Preparing %d"
 msgstr "Ag ullachadh %d"
 
-#: ctk/ctkprintoperation.c:2376 ctk/ctkprintoperation.c:3005
+#: ctk/ctkprintoperation.c:2376 ctk/ctkprintoperation.c:3007
 #, c-format
 msgid "Preparing"
 msgstr "Ag ullachadh"
@@ -3344,12 +3493,12 @@ msgstr "Ag ullachadh"
 msgid "Printing %d"
 msgstr "A’ clò-bhualadh %d"
 
-#: ctk/ctkprintoperation.c:3036
+#: ctk/ctkprintoperation.c:3038
 #, c-format
 msgid "Error creating print preview"
 msgstr "Mearachd a’ cruthachadh ro-shealladh a’ chlò-bhualaidh"
 
-#: ctk/ctkprintoperation.c:3039
+#: ctk/ctkprintoperation.c:3041
 #, c-format
 msgid "The most probable reason is that a temporary file could not be created."
 msgstr ""
@@ -3357,79 +3506,79 @@ msgstr ""
 "chruthachadh."
 
 #. window
-#: ctk/ctkprintoperation-portal.c:230 ctk/ctkprintoperation-portal.c:541
-#: ctk/ctkprintoperation-portal.c:618 ctk/ctkprintunixdialog.c:3412
+#: ctk/ctkprintoperation-portal.c:231 ctk/ctkprintoperation-portal.c:549
+#: ctk/ctkprintoperation-portal.c:618 ctk/ctkprintunixdialog.c:3415
 msgid "Print"
 msgstr "Clò-bhuail"
 
-#: ctk/ctkprintoperation-win32.c:617
+#: ctk/ctkprintoperation-win32.c:631
 msgid "Printer offline"
 msgstr "Tha an clò-bhualadair far loidhne"
 
-#: ctk/ctkprintoperation-win32.c:619
+#: ctk/ctkprintoperation-win32.c:633
 msgid "Out of paper"
 msgstr "Chan eil pàipear air fhàcail"
 
 #. Translators: this is a printer status.
-#: ctk/ctkprintoperation-win32.c:621
-#: modules/printbackends/cups/ctkprintbackendcups.c:2596
+#: ctk/ctkprintoperation-win32.c:635
+#: modules/printbackends/cups/ctkprintbackendcups.c:2628
 msgid "Paused"
 msgstr "’Na stad"
 
-#: ctk/ctkprintoperation-win32.c:623
+#: ctk/ctkprintoperation-win32.c:637
 msgid "Need user intervention"
 msgstr "Feum air eadraiginn a’ chleachdaiche"
 
-#: ctk/ctkprintoperation-win32.c:723
+#: ctk/ctkprintoperation-win32.c:742
 msgid "Custom size"
 msgstr "Meud gnàthaichte"
 
-#: ctk/ctkprintoperation-win32.c:1545
+#: ctk/ctkprintoperation-win32.c:1619
 msgid "No printer found"
 msgstr "Cha deach clò-bhualadair a lorg"
 
-#: ctk/ctkprintoperation-win32.c:1572
+#: ctk/ctkprintoperation-win32.c:1646
 msgid "Invalid argument to CreateDC"
 msgstr "Argamaid mhì-dhligheach airson CreateDC"
 
-#: ctk/ctkprintoperation-win32.c:1608 ctk/ctkprintoperation-win32.c:1854
+#: ctk/ctkprintoperation-win32.c:1682 ctk/ctkprintoperation-win32.c:1928
 msgid "Error from StartDoc"
 msgstr "Mearachd o StartDoc"
 
-#: ctk/ctkprintoperation-win32.c:1709 ctk/ctkprintoperation-win32.c:1732
-#: ctk/ctkprintoperation-win32.c:1780
+#: ctk/ctkprintoperation-win32.c:1783 ctk/ctkprintoperation-win32.c:1806
+#: ctk/ctkprintoperation-win32.c:1854
 msgid "Not enough free memory"
 msgstr "Chan eil cuimhne gu leòr saor"
 
-#: ctk/ctkprintoperation-win32.c:1785
+#: ctk/ctkprintoperation-win32.c:1859
 msgid "Invalid argument to PrintDlgEx"
 msgstr "Argamaid mhì-dhligheach airson PrintDlgEx"
 
-#: ctk/ctkprintoperation-win32.c:1790
+#: ctk/ctkprintoperation-win32.c:1864
 msgid "Invalid pointer to PrintDlgEx"
 msgstr "Tomhaire mì-dhlighleach airson PrintDlgEx"
 
-#: ctk/ctkprintoperation-win32.c:1795
+#: ctk/ctkprintoperation-win32.c:1869
 msgid "Invalid handle to PrintDlgEx"
 msgstr "Handle mì-dhligheach airson PrintDlgEx"
 
-#: ctk/ctkprintoperation-win32.c:1800
+#: ctk/ctkprintoperation-win32.c:1874
 msgid "Unspecified error"
 msgstr "Mearachd nach deach a mhìneachadh"
 
-#: ctk/ctkprintunixdialog.c:745
+#: ctk/ctkprintunixdialog.c:746
 msgid "Pre_view"
 msgstr "_Ro-shealladh:"
 
-#: ctk/ctkprintunixdialog.c:747
+#: ctk/ctkprintunixdialog.c:748
 msgid "_Print"
 msgstr "_Clò-bhuail"
 
-#: ctk/ctkprintunixdialog.c:860
+#: ctk/ctkprintunixdialog.c:861
 msgid "Getting printer information failed"
 msgstr "Cha b’ urrainn dhuinn fiosrachadh fhaighinn on chlò-bhualadair"
 
-#: ctk/ctkprintunixdialog.c:2070
+#: ctk/ctkprintunixdialog.c:2071
 msgid "Getting printer information…"
 msgstr "A’ faighinn fiosrachadh on chlò-bhualadair…"
 
@@ -3439,63 +3588,63 @@ msgstr "A’ faighinn fiosrachadh on chlò-bhualadair…"
 #. Translators: These strings name the possible arrangements of
 #. * multiple pages on a sheet when printing
 #.
-#: ctk/ctkprintunixdialog.c:3119
-#: modules/printbackends/cups/ctkprintbackendcups.c:5434
+#: ctk/ctkprintunixdialog.c:3120
+#: modules/printbackends/cups/ctkprintbackendcups.c:5508
 msgid "Left to right, top to bottom"
 msgstr "Clì gu deas, barr gu bonn"
 
-#: ctk/ctkprintunixdialog.c:3119
-#: modules/printbackends/cups/ctkprintbackendcups.c:5434
+#: ctk/ctkprintunixdialog.c:3120
+#: modules/printbackends/cups/ctkprintbackendcups.c:5508
 msgid "Left to right, bottom to top"
 msgstr "Clì gu deas, barr gu bonn"
 
-#: ctk/ctkprintunixdialog.c:3120
-#: modules/printbackends/cups/ctkprintbackendcups.c:5435
+#: ctk/ctkprintunixdialog.c:3121
+#: modules/printbackends/cups/ctkprintbackendcups.c:5509
 msgid "Right to left, top to bottom"
 msgstr "Deas gu clì, barr gu bonn"
 
-#: ctk/ctkprintunixdialog.c:3120
-#: modules/printbackends/cups/ctkprintbackendcups.c:5435
+#: ctk/ctkprintunixdialog.c:3121
+#: modules/printbackends/cups/ctkprintbackendcups.c:5509
 msgid "Right to left, bottom to top"
 msgstr "Deas gu clì, bun gu barr"
 
-#: ctk/ctkprintunixdialog.c:3121
-#: modules/printbackends/cups/ctkprintbackendcups.c:5436
+#: ctk/ctkprintunixdialog.c:3122
+#: modules/printbackends/cups/ctkprintbackendcups.c:5510
 msgid "Top to bottom, left to right"
 msgstr "Barr gu bonn, clì gu deas"
 
-#: ctk/ctkprintunixdialog.c:3121
-#: modules/printbackends/cups/ctkprintbackendcups.c:5436
+#: ctk/ctkprintunixdialog.c:3122
+#: modules/printbackends/cups/ctkprintbackendcups.c:5510
 msgid "Top to bottom, right to left"
 msgstr "Barr gu bonn, deas gu clì"
 
-#: ctk/ctkprintunixdialog.c:3122
-#: modules/printbackends/cups/ctkprintbackendcups.c:5437
+#: ctk/ctkprintunixdialog.c:3123
+#: modules/printbackends/cups/ctkprintbackendcups.c:5511
 msgid "Bottom to top, left to right"
 msgstr "Bonn gu barr, clì gu deas"
 
-#: ctk/ctkprintunixdialog.c:3122
-#: modules/printbackends/cups/ctkprintbackendcups.c:5437
+#: ctk/ctkprintunixdialog.c:3123
+#: modules/printbackends/cups/ctkprintbackendcups.c:5511
 msgid "Bottom to top, right to left"
 msgstr "Bonn gu barr, deas gu clì"
 
-#: ctk/ctkprintunixdialog.c:3126 ctk/ctkprintunixdialog.c:3139
+#: ctk/ctkprintunixdialog.c:3127 ctk/ctkprintunixdialog.c:3140
 msgid "Page Ordering"
 msgstr "Òrdugh nan duilleagan"
 
-#: ctk/ctkprintunixdialog.c:3155
+#: ctk/ctkprintunixdialog.c:3156
 msgid "Left to right"
 msgstr "Clì gu deas"
 
-#: ctk/ctkprintunixdialog.c:3156
+#: ctk/ctkprintunixdialog.c:3157
 msgid "Right to left"
 msgstr "Deas gu clì"
 
-#: ctk/ctkprintunixdialog.c:3168
+#: ctk/ctkprintunixdialog.c:3169
 msgid "Top to bottom"
 msgstr "Barr gu bonn"
 
-#: ctk/ctkprintunixdialog.c:3169
+#: ctk/ctkprintunixdialog.c:3170
 msgid "Bottom to top"
 msgstr "Bonn gu barr"
 
@@ -3588,19 +3737,19 @@ msgctxt "recent menu label"
 msgid "%d. %s"
 msgstr "%d. %s"
 
-#: ctk/ctkrecentmanager.c:1053 ctk/ctkrecentmanager.c:1066
-#: ctk/ctkrecentmanager.c:1203 ctk/ctkrecentmanager.c:1213
-#: ctk/ctkrecentmanager.c:1265 ctk/ctkrecentmanager.c:1274
+#: ctk/ctkrecentmanager.c:1052 ctk/ctkrecentmanager.c:1065
+#: ctk/ctkrecentmanager.c:1207 ctk/ctkrecentmanager.c:1217
+#: ctk/ctkrecentmanager.c:1269 ctk/ctkrecentmanager.c:1278
 #, c-format
 msgid "Unable to find an item with URI '%s'"
 msgstr "Chan urrainn dhuinn nì aig a bheil an URI “%s” a lorg"
 
-#: ctk/ctkrecentmanager.c:1289
+#: ctk/ctkrecentmanager.c:1293
 #, c-format
 msgid "Unable to move the item with URI '%s' to '%s'"
 msgstr "Chan urrainn dhuinn nì aig a bheil an URI “%s” a ghluasad gu “%s”"
 
-#: ctk/ctkrecentmanager.c:2507
+#: ctk/ctkrecentmanager.c:2479
 #, c-format
 msgid "No registered application with name '%s' for item with URI '%s' found"
 msgstr ""
@@ -3671,32 +3820,124 @@ msgstr "Toraidhean an luirg"
 msgid "Search Shortcuts"
 msgstr "Ath-ghoiridean luirg"
 
-#: ctk/ctkshortcutswindow.c:1053 ctk/ui/ctkemojichooser.ui:314
-#: ctk/ui/ctkfilechooserwidget.ui:310
+#: ctk/ctkshortcutswindow.c:1053 ctk/ui/ctkemojichooser.ui:376
+#: ctk/ui/ctkfilechooserwidget.ui:323
 msgid "No Results Found"
 msgstr "Cha deach toradh a lorg"
 
-#: ctk/ctkshortcutswindow.c:1060 ctk/ui/ctkemojichooser.ui:328
-#: ctk/ui/ctkfilechooserwidget.ui:324 ctk/ui/ctkplacesview.ui:406
+#: ctk/ctkshortcutswindow.c:1060 ctk/ui/ctkemojichooser.ui:390
+#: ctk/ui/ctkfilechooserwidget.ui:337 ctk/ui/ctkplacesview.ui:274
 msgid "Try a different search"
 msgstr "Feuch lorg eile"
 
-#. Translators: if the "on" state label requires more than three
-#. * glyphs then use MEDIUM VERTICAL BAR (U+2759) as the text for
-#. * the state
-#.
-#: ctk/ctkswitch.c:306
-msgctxt "switch"
-msgid "ON"
-msgstr "AIR"
+#: ctk/ctkstock.c:329
+msgctxt "Stock label"
+msgid "_Apply"
+msgstr "_Cuir an gnìomh"
 
-#. Translators: if the "off" state label requires more than three
-#. * glyphs then use WHITE CIRCLE (U+25CB) as the text for the state
-#.
-#: ctk/ctkswitch.c:313
-msgctxt "switch"
-msgid "OFF"
-msgstr "DHETH"
+#: ctk/ctkstock.c:331
+msgctxt "Stock label"
+msgid "_Cancel"
+msgstr "_Sguir dheth"
+
+#: ctk/ctkstock.c:335
+msgctxt "Stock label"
+msgid "C_onnect"
+msgstr "C_eancail"
+
+#: ctk/ctkstock.c:336
+msgctxt "Stock label"
+msgid "_Convert"
+msgstr "_Iompaich"
+
+#: ctk/ctkstock.c:340
+msgctxt "Stock label"
+msgid "_Discard"
+msgstr "_Tilg air falbh"
+
+#: ctk/ctkstock.c:341
+msgctxt "Stock label"
+msgid "_Disconnect"
+msgstr "_Bris an ceangal"
+
+#: ctk/ctkstock.c:343
+msgctxt "Stock label"
+msgid "_Edit"
+msgstr "_Deasaich"
+
+#: ctk/ctkstock.c:371
+msgctxt "Stock label"
+msgid "_Index"
+msgstr "_Clàr-amais"
+
+#: ctk/ctkstock.c:372
+msgctxt "Stock label"
+msgid "_Information"
+msgstr "_Fiosrachadh"
+
+#: ctk/ctkstock.c:402
+msgctxt "Stock label"
+msgid "_No"
+msgstr "_Chan eil"
+
+#: ctk/ctkstock.c:403
+msgctxt "Stock label"
+msgid "_OK"
+msgstr "_Ceart ma-tha"
+
+#. Page orientation
+#: ctk/ctkstock.c:406
+msgctxt "Stock label"
+msgid "Landscape"
+msgstr "Dreach-tìre"
+
+#. Page orientation
+#: ctk/ctkstock.c:408
+msgctxt "Stock label"
+msgid "Portrait"
+msgstr "Portraid"
+
+#. Page orientation
+#: ctk/ctkstock.c:410
+msgctxt "Stock label"
+msgid "Reverse landscape"
+msgstr "Dreach-tìre contrarra"
+
+#. Page orientation
+#: ctk/ctkstock.c:412
+msgctxt "Stock label"
+msgid "Reverse portrait"
+msgstr "Portraid chontrarra"
+
+#: ctk/ctkstock.c:413
+msgctxt "Stock label"
+msgid "Page Set_up"
+msgstr "Suidheachadh na d_uilleige"
+
+#: ctk/ctkstock.c:415
+msgctxt "Stock label"
+msgid "_Preferences"
+msgstr "_Roghainnean"
+
+#: ctk/ctkstock.c:427
+msgctxt "Stock label"
+msgid "_Color"
+msgstr "_Dath"
+
+#: ctk/ctkstock.c:428
+msgctxt "Stock label"
+msgid "_Font"
+msgstr "_Cruth-clò"
+
+#: ctk/ctkstock.c:437
+msgctxt "Stock label"
+msgid "_Undelete"
+msgstr "_Neo-dhèan an sguabadh às"
+
+#: ctk/ctkstock.c:441
+msgctxt "Stock label"
+msgid "_Yes"
+msgstr "_Tha"
 
 #: ctk/ctktextbufferrichtext.c:648
 #, c-format
@@ -3708,70 +3949,70 @@ msgstr "Thachair mearachd nuair a bha sinn ri deserialization %s"
 msgid "No deserialize function found for format %s"
 msgstr "Cha deach foincsean deserialization a lorg airson an fhòrmait %s"
 
-#: ctk/ctktextbufferserialize.c:784 ctk/ctktextbufferserialize.c:810
+#: ctk/ctktextbufferserialize.c:792 ctk/ctktextbufferserialize.c:818
 #, c-format
 msgid "Both \"id\" and \"name\" were found on the <%s> element"
 msgstr "Chaidh an dà chuid “id” is “name” a lorg air an eileamaid <%s>"
 
-#: ctk/ctktextbufferserialize.c:794 ctk/ctktextbufferserialize.c:820
+#: ctk/ctktextbufferserialize.c:802 ctk/ctktextbufferserialize.c:828
 #, c-format
 msgid "The attribute \"%s\" was found twice on the <%s> element"
 msgstr "Chaidh a’ bhuadh “%s” a lorg dà thuras air an eileamaid <%s>"
 
-#: ctk/ctktextbufferserialize.c:836
+#: ctk/ctktextbufferserialize.c:844
 #, c-format
 msgid "<%s> element has invalid ID \"%s\""
 msgstr "Tha an ID mhì-dhligheach “%s” aig an eileamaid <%s>"
 
-#: ctk/ctktextbufferserialize.c:846
+#: ctk/ctktextbufferserialize.c:855
 #, c-format
 msgid "<%s> element has neither a \"name\" nor an \"id\" attribute"
 msgstr "Chan eil buadh “name” no “id” aig an eileamaid <%s>"
 
-#: ctk/ctktextbufferserialize.c:933
+#: ctk/ctktextbufferserialize.c:942
 #, c-format
 msgid "Attribute \"%s\" repeated twice on the same <%s> element"
 msgstr "Tha a’ bhuadh “%s” ann dà thuras air an aon eileamaid <%s>"
 
-#: ctk/ctktextbufferserialize.c:951 ctk/ctktextbufferserialize.c:976
+#: ctk/ctktextbufferserialize.c:960 ctk/ctktextbufferserialize.c:985
 #, c-format
 msgid "Attribute \"%s\" is invalid on <%s> element in this context"
 msgstr ""
 "Chan eil a’ bhuadh “%s” dligheach air an eileamaid <%s> anns a’ cho-theacsa "
 "seo"
 
-#: ctk/ctktextbufferserialize.c:1015
+#: ctk/ctktextbufferserialize.c:1024
 #, c-format
 msgid "Tag \"%s\" has not been defined."
 msgstr "Chan eil deifinisean aig an taga “%s”."
 
-#: ctk/ctktextbufferserialize.c:1027
+#: ctk/ctktextbufferserialize.c:1036
 msgid "Anonymous tag found and tags can not be created."
 msgstr "Chaidh taga gun urra a lorg agus cha ghabh tagaichean a chruthachadh."
 
-#: ctk/ctktextbufferserialize.c:1038
+#: ctk/ctktextbufferserialize.c:1047
 #, c-format
 msgid "Tag \"%s\" does not exist in buffer and tags can not be created."
 msgstr ""
 "Chan eil an taga “%s” sa bhufair agus chan urrainn cruthaich tagaichean."
 
-#: ctk/ctktextbufferserialize.c:1139 ctk/ctktextbufferserialize.c:1214
-#: ctk/ctktextbufferserialize.c:1319 ctk/ctktextbufferserialize.c:1393
+#: ctk/ctktextbufferserialize.c:1148 ctk/ctktextbufferserialize.c:1223
+#: ctk/ctktextbufferserialize.c:1328 ctk/ctktextbufferserialize.c:1402
 #, c-format
 msgid "Element <%s> is not allowed below <%s>"
 msgstr "Chan eil an eileamaid <%s> ceadaichte fo <%s>"
 
-#: ctk/ctktextbufferserialize.c:1170
+#: ctk/ctktextbufferserialize.c:1179
 #, c-format
 msgid "\"%s\" is not a valid attribute type"
 msgstr "Chan e seòrsa buaidh dligheach a tha ann “%s”"
 
-#: ctk/ctktextbufferserialize.c:1178
+#: ctk/ctktextbufferserialize.c:1187
 #, c-format
 msgid "\"%s\" is not a valid attribute name"
 msgstr "Chan eil “%s” ’na ainm dligheach air buadh"
 
-#: ctk/ctktextbufferserialize.c:1188
+#: ctk/ctktextbufferserialize.c:1197
 #, c-format
 msgid ""
 "\"%s\" could not be converted to a value of type \"%s\" for attribute \"%s\""
@@ -3779,42 +4020,42 @@ msgstr ""
 "Cha b’ urrainn dhuinn “%s” iompachadh ’na luach dhen t-seòrsa “%s” airson na "
 "buaidh “%s”"
 
-#: ctk/ctktextbufferserialize.c:1197
+#: ctk/ctktextbufferserialize.c:1206
 #, c-format
 msgid "\"%s\" is not a valid value for attribute \"%s\""
 msgstr "Chan e luach dligheach a tha ann an “%s” airson na buaidh “%s”"
 
-#: ctk/ctktextbufferserialize.c:1282
+#: ctk/ctktextbufferserialize.c:1291
 #, c-format
 msgid "Tag \"%s\" already defined"
 msgstr "Tha deifinisean aig an taga “%s” mar-thà"
 
-#: ctk/ctktextbufferserialize.c:1295
+#: ctk/ctktextbufferserialize.c:1304
 #, c-format
 msgid "Tag \"%s\" has invalid priority \"%s\""
 msgstr "Tha prìomhachas mì-dhligheach “%2$s” aig an taga “%1$s”"
 
-#: ctk/ctktextbufferserialize.c:1348
+#: ctk/ctktextbufferserialize.c:1357
 #, c-format
 msgid "Outermost element in text must be <text_view_markup> not <%s>"
 msgstr ""
 "Feumaidh an eileamaid as fhaide a-muigh san teacsa a bhith ’na "
 "<text_view_markup> ’s chan e <%s>"
 
-#: ctk/ctktextbufferserialize.c:1357 ctk/ctktextbufferserialize.c:1373
+#: ctk/ctktextbufferserialize.c:1366 ctk/ctktextbufferserialize.c:1382
 #, c-format
 msgid "A <%s> element has already been specified"
 msgstr "Chaidh eileamaid <%s> a shònrachadh mu thràth"
 
-#: ctk/ctktextbufferserialize.c:1379
+#: ctk/ctktextbufferserialize.c:1388
 msgid "A <text> element can't occur before a <tags> element"
 msgstr "Chan fhaod eileamaid <text> a bhith ann ro eileamaid <tags>"
 
-#: ctk/ctktextbufferserialize.c:1785
+#: ctk/ctktextbufferserialize.c:1794
 msgid "Serialized data is malformed"
 msgstr "Tha an serialized data droch-chumta"
 
-#: ctk/ctktextbufferserialize.c:1864
+#: ctk/ctktextbufferserialize.c:1873
 msgid ""
 "Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
@@ -3861,6 +4102,21 @@ msgstr "ZWJ Zero width _joiner"
 msgid "ZWNJ Zero width _non-joiner"
 msgstr "ZWNJ Zero width _non-joiner"
 
+#: ctk/ctkuimanager.c:1735
+#, c-format
+msgid "Unexpected start tag '%s' on line %d char %d"
+msgstr ""
+"Taga tòiseachaidh “%s” ris nach robh dùil ann an loidhne %d, caractar %d"
+
+#: ctk/ctkuimanager.c:1825
+#, c-format
+msgid "Unexpected character data on line %d char %d"
+msgstr "Dàta caractar ris nach robh dùil ann an loidhne %d, caractar %d"
+
+#: ctk/ctkuimanager.c:2638
+msgid "Empty"
+msgstr "Falamh"
+
 #: ctk/ctkvolumebutton.c:189
 msgid "Adjusts the volume"
 msgstr "Cuiridh seo air gleus àirde na fuaime"
@@ -3884,24 +4140,24 @@ msgctxt "volume percentage"
 msgid "%d %%"
 msgstr "%d %%"
 
-#: ctk/ctkwindow.c:9213
+#: ctk/ctkwindow.c:9303
 msgid "Move"
 msgstr "Gluais"
 
-#: ctk/ctkwindow.c:9221
+#: ctk/ctkwindow.c:9311
 msgid "Resize"
 msgstr "Atharraich am meud"
 
-#: ctk/ctkwindow.c:9252
+#: ctk/ctkwindow.c:9342
 msgid "Always on Top"
 msgstr "Air a’ bharr an-còmhnaidh"
 
-#: ctk/ctkwindow.c:12686
+#: ctk/ctkwindow.c:12777
 #, c-format
 msgid "Do you want to use CTK+ Inspector?"
 msgstr "A bheil thu airson Sgrùdaire CTK+ a chleachdadh?"
 
-#: ctk/ctkwindow.c:12688
+#: ctk/ctkwindow.c:12779
 #, c-format
 msgid ""
 "CTK+ Inspector is an interactive debugger that lets you explore and modify "
@@ -3912,21 +4168,21 @@ msgstr ""
 "leigeas leat na tha am broinn aplacaid CTK+ sam bith a rùrachadh ’s "
 "atharrachadh. Dh’fhaoidte gun tuislich no gum bris thu an aplacaid leis."
 
-#: ctk/ctkwindow.c:12693
+#: ctk/ctkwindow.c:12784
 msgid "Don't show this message again"
 msgstr "Na seall an teachdaireachd seo a-rithist"
 
-#: ctk/inspector/action-editor.c:281
+#: ctk/inspector/action-editor.c:280
 msgid "Activate"
 msgstr "Gnìomhaich"
 
-#: ctk/inspector/action-editor.c:302 ctk/inspector/actions.ui:82
+#: ctk/inspector/action-editor.c:303 ctk/inspector/actions.ui:82
 #: ctk/inspector/css-node-tree.ui:78 ctk/inspector/misc-info.ui:102
 msgid "State"
 msgstr "Staid"
 
 #: ctk/inspector/actions.ui:30 ctk/inspector/general.ui:115
-#: ctk/ui/ctkplacesview.ui:158
+#: ctk/ui/ctkplacesview.ui:92
 msgid "Prefix"
 msgstr "Ro-leasachan"
 
@@ -3941,8 +4197,7 @@ msgstr "Seòrsa a’ pharamadair"
 #: ctk/inspector/css-editor.c:112
 msgid "You can type here any CSS rule recognized by CTK+."
 msgstr ""
-"Faodaidh tu riaghailt CSS sam bith a dh’aithnicheas CTK+ a sgrìobhadh an-"
-"seo."
+"Faodaidh tu riaghailt CSS sam bith a dh’aithnicheas CTK+ a sgrìobhadh an-seo."
 
 #: ctk/inspector/css-editor.c:113
 msgid ""
@@ -3983,7 +4238,7 @@ msgid "CSS Property"
 msgstr "Roghainn CSS"
 
 #: ctk/inspector/css-node-tree.ui:125 ctk/inspector/prop-list.ui:50
-#: ctk/ui/ctkcoloreditor.ui:295
+#: ctk/ui/ctkcoloreditor.ui:320
 msgid "Value"
 msgstr "Luach"
 
@@ -4029,22 +4284,22 @@ msgstr "An tionndadh de GL"
 msgid "GL Vendor"
 msgstr "Reiceadair GL"
 
-#: ctk/inspector/gestures.c:129
+#: ctk/inspector/gestures.c:130
 msgctxt "event phase"
 msgid "None"
 msgstr "Chan eil gin"
 
-#: ctk/inspector/gestures.c:130
+#: ctk/inspector/gestures.c:131
 msgctxt "event phase"
 msgid "Capture"
 msgstr "Glacadh"
 
-#: ctk/inspector/gestures.c:131
+#: ctk/inspector/gestures.c:132
 msgctxt "event phase"
 msgid "Bubble"
 msgstr "Builgean"
 
-#: ctk/inspector/gestures.c:132
+#: ctk/inspector/gestures.c:133
 msgctxt "event phase"
 msgid "Target"
 msgstr "Amas"
@@ -4057,7 +4312,7 @@ msgstr "Earrann gun ainm"
 msgid "Label"
 msgstr "Leubail"
 
-#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1385
+#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1389
 msgid "Action"
 msgstr "Gnìomh"
 
@@ -4087,8 +4342,8 @@ msgstr "A’ widget tùsail"
 
 #: ctk/inspector/misc-info.ui:192 ctk/inspector/misc-info.ui:237
 #: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1071
-#: ctk/inspector/prop-editor.c:1268 ctk/inspector/prop-editor.c:1393
-#: ctk/inspector/prop-editor.c:1504 ctk/inspector/window.ui:382
+#: ctk/inspector/prop-editor.c:1270 ctk/inspector/prop-editor.c:1397
+#: ctk/inspector/prop-editor.c:1508 ctk/inspector/window.ui:382
 msgid "Properties"
 msgstr "Roghainnean"
 
@@ -4184,70 +4439,66 @@ msgstr "Oibseict: %p (%s)"
 msgid "Uneditable property type: %s"
 msgstr "Seòrsa property nach gabh deasachadh: %s"
 
-#: ctk/inspector/prop-editor.c:1259
+#: ctk/inspector/prop-editor.c:1261
 msgid "Attribute mapping"
 msgstr "Mapadh nan attributes"
 
-#: ctk/inspector/prop-editor.c:1264
+#: ctk/inspector/prop-editor.c:1266
 msgid "Model:"
 msgstr "Modail:"
 
-#: ctk/inspector/prop-editor.c:1265
+#: ctk/inspector/prop-editor.c:1267
 #, c-format
 msgid "%p (%s)"
 msgstr "%p (%s)"
 
-#: ctk/inspector/prop-editor.c:1275
+#: ctk/inspector/prop-editor.c:1277
 msgid "Column:"
 msgstr "Colbh:"
 
-#: ctk/inspector/prop-editor.c:1285
+#: ctk/inspector/prop-editor.c:1287
 msgctxt "property name"
 msgid "None"
 msgstr "Chan eil gin"
 
-#: ctk/inspector/prop-editor.c:1389
+#: ctk/inspector/prop-editor.c:1393
 #, c-format
 msgid "Defined at: %p (%s)"
 msgstr "’Ga mhìneachadh air: %p (%s)"
 
-#: ctk/inspector/prop-editor.c:1453 ctk/inspector/prop-editor.c:1469
+#: ctk/inspector/prop-editor.c:1457 ctk/inspector/prop-editor.c:1473
 msgid "inverted"
 msgstr "ais-thionndaichte"
 
-#: ctk/inspector/prop-editor.c:1485
+#: ctk/inspector/prop-editor.c:1489
 msgid "bidirectional, inverted"
 msgstr "dà-chomhaireach, ais-thionndaichte"
 
-#: ctk/inspector/prop-editor.c:1490 ctk/inspector/prop-editor.c:1604
+#: ctk/inspector/prop-editor.c:1494 ctk/inspector/prop-editor.c:1608
 msgid "bidirectional"
 msgstr "dà-chomhaireach"
 
-#: ctk/inspector/prop-editor.c:1495
+#: ctk/inspector/prop-editor.c:1499
 msgid "Binding:"
 msgstr "Nasgadh:"
 
-#: ctk/inspector/prop-editor.c:1623
+#: ctk/inspector/prop-editor.c:1627
 msgid "Setting:"
 msgstr "Roghainn:"
 
-#: ctk/inspector/prop-editor.c:1663
+#: ctk/inspector/prop-editor.c:1667
 msgid "Source:"
 msgstr "Tùs:"
 
-#: ctk/inspector/prop-editor.c:1665
+#: ctk/inspector/prop-editor.c:1669
 msgid "Reset"
 msgstr "Ath-shuidhich"
 
-#: ctk/inspector/prop-editor.c:1676
-msgid "Default"
-msgstr "Bun-roghainn"
-
-#: ctk/inspector/prop-editor.c:1679
+#: ctk/inspector/prop-editor.c:1683
 msgid "Theme"
 msgstr "Ùrlar"
 
-#: ctk/inspector/prop-editor.c:1682
+#: ctk/inspector/prop-editor.c:1686
 msgid "XSettings"
 msgstr "XSettings"
 
@@ -4256,6 +4507,7 @@ msgid "Property"
 msgstr "Property"
 
 #: ctk/inspector/prop-list.ui:68 ctk/inspector/statistics.ui:53
+#: ctk/ui/ctkfilechooserwidget.ui:236
 msgid "Type"
 msgstr "Seòrsa"
 
@@ -4275,7 +4527,8 @@ msgstr "Slighe"
 msgid "Count"
 msgstr "Uiread"
 
-#: ctk/inspector/resource-list.ui:130 ctk/ui/ctkfilechooserwidget.ui:223
+#: ctk/inspector/resource-list.ui:130 ctk/ui/ctkfilechooserwidget.ui:224
+#: ctk/ui/ctkfontchooserwidget.ui:134 ctk/ui/ctkfontchooserwidget.ui:276
 msgid "Size"
 msgstr "Meud"
 
@@ -4295,7 +4548,7 @@ msgstr "Meud:"
 msgid "Selector"
 msgstr "Roghnaichear"
 
-#: ctk/inspector/signals-list.c:117
+#: ctk/inspector/signals-list.c:118
 msgid "Yes"
 msgstr "Tha"
 
@@ -4307,35 +4560,35 @@ msgstr "Siognail"
 msgid "Connected"
 msgstr "Ceancailte"
 
-#: ctk/inspector/size-groups.c:224
+#: ctk/inspector/size-groups.c:225
 msgid "Ignore hidden"
 msgstr "Leig an fheadhainn fhalaichte seachad"
 
-#: ctk/inspector/size-groups.c:242
+#: ctk/inspector/size-groups.c:243
 msgid "Mode"
 msgstr "Modh"
 
-#: ctk/inspector/size-groups.c:252
+#: ctk/inspector/size-groups.c:253
 msgctxt "sizegroup mode"
 msgid "None"
 msgstr "Chan eil gin"
 
-#: ctk/inspector/size-groups.c:253
+#: ctk/inspector/size-groups.c:254
 msgctxt "sizegroup mode"
 msgid "Horizontal"
 msgstr "Còmhnard"
 
-#: ctk/inspector/size-groups.c:254
+#: ctk/inspector/size-groups.c:255
 msgctxt "sizegroup mode"
 msgid "Vertical"
 msgstr "Inghearach"
 
-#: ctk/inspector/size-groups.c:255
+#: ctk/inspector/size-groups.c:256
 msgctxt "sizegroup mode"
 msgid "Both"
 msgstr "An dà chuid"
 
-#: ctk/inspector/statistics.c:377
+#: ctk/inspector/statistics.c:379
 msgid "GLib must be configured with --enable-debug"
 msgstr "Feumaidh tu GLib a rèiteachadh le --enable-debug"
 
@@ -4367,19 +4620,19 @@ msgstr "Tionalach"
 msgid "Enable statistics with GOBJECT_DEBUG=instance-count"
 msgstr "Cuir stadastaireachd an comas le GOBJECT_DEBUG=instance-count"
 
-#: ctk/inspector/visual.c:406 ctk/inspector/visual.c:421
+#: ctk/inspector/visual.c:432 ctk/inspector/visual.c:447
 msgid "Theme is hardcoded by CTK_THEME"
 msgstr "Chaidh an t-ùrlar a chòdachadh gu cruaidh le CTK_THEME"
 
-#: ctk/inspector/visual.c:631
+#: ctk/inspector/visual.c:657
 msgid "Backend does not support window scaling"
 msgstr "Cha chur a’ backend taic ri sgèileadh uinneige"
 
-#: ctk/inspector/visual.c:726
+#: ctk/inspector/visual.c:752
 msgid "Setting is hardcoded by CTK_TEST_TOUCHSCREEN"
 msgstr "Chaidh an roghainn a chòdachadh gu cruaidh le  CTK_TEST_TOUCHSCREEN"
 
-#: ctk/inspector/visual.c:791
+#: ctk/inspector/visual.c:817
 msgid ""
 "Not settable at runtime.\n"
 "Use CDK_GL=always or CDK_GL=disable instead"
@@ -4387,8 +4640,8 @@ msgstr ""
 "Cha ghabh seo a shuidheachadh aig àm ruith.\n"
 "Cleachd CDK_GL=always no CDK_GL=disable ’na àite"
 
-#: ctk/inspector/visual.c:805 ctk/inspector/visual.c:806
-#: ctk/inspector/visual.c:807
+#: ctk/inspector/visual.c:831 ctk/inspector/visual.c:832
+#: ctk/inspector/visual.c:833
 msgid "GL rendering is disabled"
 msgstr "Cha reandaradh GL à comas"
 
@@ -4411,10 +4664,6 @@ msgstr "Meud a’ chùrsair"
 #: ctk/inspector/visual.ui:197
 msgid "Icon Theme"
 msgstr "Ùrlar ìomhaigheige"
-
-#: ctk/inspector/visual.ui:230 ctk/ui/ctkfontbutton.ui:13
-msgid "Font"
-msgstr "Cruth-clò"
 
 #: ctk/inspector/visual.ui:263
 msgid "Font Scale"
@@ -4451,10 +4700,6 @@ msgstr "Modh reandaraidh"
 #: ctk/inspector/visual.ui:487
 msgid "Similar"
 msgstr "Coltach ris"
-
-#: ctk/inspector/visual.ui:488
-msgid "Image"
-msgstr "Dealbh"
 
 #: ctk/inspector/visual.ui:489
 msgid "Recording"
@@ -4607,6 +4852,731 @@ msgstr "Lèirsinneach"
 #: ctk/inspector/window.ui:537 ctk/ui/ctkprintunixdialog.ui:426
 msgid "General"
 msgstr "Coitcheann"
+
+#: ctk/open-type-layout.h:13
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Access All Alternates"
+msgstr "Ainm so-ruigsinneach"
+
+#: ctk/open-type-layout.h:14
+msgctxt "OpenType layout"
+msgid "Above-base Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:15
+msgctxt "OpenType layout"
+msgid "Above-base Mark Positioning"
+msgstr ""
+
+#: ctk/open-type-layout.h:16
+msgctxt "OpenType layout"
+msgid "Above-base Substitutions"
+msgstr ""
+
+#: ctk/open-type-layout.h:17
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Alternative Fractions"
+msgstr "Dearbhadh"
+
+#: ctk/open-type-layout.h:18
+msgctxt "OpenType layout"
+msgid "Akhands"
+msgstr ""
+
+#: ctk/open-type-layout.h:19
+msgctxt "OpenType layout"
+msgid "Below-base Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:20
+msgctxt "OpenType layout"
+msgid "Below-base Mark Positioning"
+msgstr ""
+
+#: ctk/open-type-layout.h:21
+msgctxt "OpenType layout"
+msgid "Below-base Substitutions"
+msgstr ""
+
+#: ctk/open-type-layout.h:22
+msgctxt "OpenType layout"
+msgid "Contextual Alternates"
+msgstr ""
+
+#: ctk/open-type-layout.h:23
+msgctxt "OpenType layout"
+msgid "Case-Sensitive Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:24
+msgctxt "OpenType layout"
+msgid "Glyph Composition / Decomposition"
+msgstr ""
+
+#: ctk/open-type-layout.h:25
+msgctxt "OpenType layout"
+msgid "Conjunct Form After Ro"
+msgstr ""
+
+#: ctk/open-type-layout.h:26
+msgctxt "OpenType layout"
+msgid "Conjunct Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:27
+msgctxt "OpenType layout"
+msgid "Contextual Ligatures"
+msgstr ""
+
+#: ctk/open-type-layout.h:28
+msgctxt "OpenType layout"
+msgid "Centered CJK Punctuation"
+msgstr ""
+
+#: ctk/open-type-layout.h:29
+msgctxt "OpenType layout"
+msgid "Capital Spacing"
+msgstr ""
+
+#: ctk/open-type-layout.h:30
+msgctxt "OpenType layout"
+msgid "Contextual Swash"
+msgstr ""
+
+#: ctk/open-type-layout.h:31
+msgctxt "OpenType layout"
+msgid "Cursive Positioning"
+msgstr ""
+
+#: ctk/open-type-layout.h:32
+msgctxt "OpenType layout"
+msgid "Petite Capitals From Capitals"
+msgstr ""
+
+#: ctk/open-type-layout.h:33
+msgctxt "OpenType layout"
+msgid "Small Capitals From Capitals"
+msgstr ""
+
+#: ctk/open-type-layout.h:34
+msgctxt "OpenType layout"
+msgid "Distances"
+msgstr ""
+
+#: ctk/open-type-layout.h:35
+msgctxt "OpenType layout"
+msgid "Discretionary Ligatures"
+msgstr ""
+
+#: ctk/open-type-layout.h:36
+msgctxt "OpenType layout"
+msgid "Denominators"
+msgstr ""
+
+#: ctk/open-type-layout.h:37
+msgctxt "OpenType layout"
+msgid "Dotless Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:38
+msgctxt "OpenType layout"
+msgid "Expert Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:39
+msgctxt "OpenType layout"
+msgid "Final Glyph on Line Alternates"
+msgstr ""
+
+#: ctk/open-type-layout.h:40
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Terminal Forms #2"
+msgstr "Pèidsear tèirmineil"
+
+#: ctk/open-type-layout.h:41
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Terminal Forms #3"
+msgstr "Pèidsear tèirmineil"
+
+#: ctk/open-type-layout.h:42
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Terminal Forms"
+msgstr "Pèidsear tèirmineil"
+
+#: ctk/open-type-layout.h:43
+msgctxt "OpenType layout"
+msgid "Flattened accent forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:44
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Fractions"
+msgstr "Gnìomhan"
+
+#: ctk/open-type-layout.h:45
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Full Widths"
+msgstr "Widget fòcais"
+
+#: ctk/open-type-layout.h:46
+msgctxt "OpenType layout"
+msgid "Half Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:47
+msgctxt "OpenType layout"
+msgid "Halant Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:48
+msgctxt "OpenType layout"
+msgid "Alternate Half Widths"
+msgstr ""
+
+#: ctk/open-type-layout.h:49
+msgctxt "OpenType layout"
+msgid "Historical Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:50
+msgctxt "OpenType layout"
+msgid "Horizontal Kana Alternates"
+msgstr ""
+
+#: ctk/open-type-layout.h:51
+msgctxt "OpenType layout"
+msgid "Historical Ligatures"
+msgstr ""
+
+#: ctk/open-type-layout.h:52
+msgctxt "OpenType layout"
+msgid "Hangul"
+msgstr ""
+
+#: ctk/open-type-layout.h:53
+msgctxt "OpenType layout"
+msgid "Hojo Kanji Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:54
+msgctxt "OpenType layout"
+msgid "Half Widths"
+msgstr ""
+
+#: ctk/open-type-layout.h:55
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Initial Forms"
+msgstr "An staid thùsail"
+
+#: ctk/open-type-layout.h:56
+msgctxt "OpenType layout"
+msgid "Isolated Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:57
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Italics"
+msgstr "_Eadailteach"
+
+#: ctk/open-type-layout.h:58
+msgctxt "OpenType layout"
+msgid "Justification Alternates"
+msgstr ""
+
+#: ctk/open-type-layout.h:59
+msgctxt "OpenType layout"
+msgid "JIS78 Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:60
+msgctxt "OpenType layout"
+msgid "JIS83 Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:61
+msgctxt "OpenType layout"
+msgid "JIS90 Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:62
+msgctxt "OpenType layout"
+msgid "JIS2004 Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:63
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Kerning"
+msgstr "Rabhadh"
+
+#: ctk/open-type-layout.h:64
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Left Bounds"
+msgstr "Am biona clì"
+
+#: ctk/open-type-layout.h:65
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Standard Ligatures"
+msgstr "Stannardach"
+
+#: ctk/open-type-layout.h:66
+msgctxt "OpenType layout"
+msgid "Leading Jamo Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:67
+msgctxt "OpenType layout"
+msgid "Lining Figures"
+msgstr ""
+
+#: ctk/open-type-layout.h:68
+msgctxt "OpenType layout"
+msgid "Localized Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:69
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Left-to-right alternates"
+msgstr "LRM _Left-to-right mark"
+
+#: ctk/open-type-layout.h:70
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Left-to-right mirrored forms"
+msgstr "LRM _Left-to-right mark"
+
+#: ctk/open-type-layout.h:71
+msgctxt "OpenType layout"
+msgid "Mark Positioning"
+msgstr ""
+
+#: ctk/open-type-layout.h:72
+msgctxt "OpenType layout"
+msgid "Medial Forms #2"
+msgstr ""
+
+#: ctk/open-type-layout.h:73
+msgctxt "OpenType layout"
+msgid "Medial Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:74
+msgctxt "OpenType layout"
+msgid "Mathematical Greek"
+msgstr ""
+
+#: ctk/open-type-layout.h:75
+msgctxt "OpenType layout"
+msgid "Mark to Mark Positioning"
+msgstr ""
+
+#: ctk/open-type-layout.h:76
+msgctxt "OpenType layout"
+msgid "Mark Positioning via Substitution"
+msgstr ""
+
+#: ctk/open-type-layout.h:77
+msgctxt "OpenType layout"
+msgid "Alternate Annotation Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:78
+msgctxt "OpenType layout"
+msgid "NLC Kanji Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:79
+msgctxt "OpenType layout"
+msgid "Nukta Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:80
+msgctxt "OpenType layout"
+msgid "Numerators"
+msgstr ""
+
+#: ctk/open-type-layout.h:81
+msgctxt "OpenType layout"
+msgid "Oldstyle Figures"
+msgstr ""
+
+#: ctk/open-type-layout.h:82
+msgctxt "OpenType layout"
+msgid "Optical Bounds"
+msgstr ""
+
+#: ctk/open-type-layout.h:83
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Ordinals"
+msgstr "Siognailean"
+
+#: ctk/open-type-layout.h:84
+msgctxt "OpenType layout"
+msgid "Ornaments"
+msgstr ""
+
+#: ctk/open-type-layout.h:85
+msgctxt "OpenType layout"
+msgid "Proportional Alternate Widths"
+msgstr ""
+
+#: ctk/open-type-layout.h:86
+msgctxt "OpenType layout"
+msgid "Petite Capitals"
+msgstr ""
+
+#: ctk/open-type-layout.h:87
+msgctxt "OpenType layout"
+msgid "Proportional Kana"
+msgstr ""
+
+#: ctk/open-type-layout.h:88
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Proportional Figures"
+msgstr "Roghainnean"
+
+#: ctk/open-type-layout.h:89
+msgctxt "OpenType layout"
+msgid "Pre-Base Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:90
+msgctxt "OpenType layout"
+msgid "Pre-base Substitutions"
+msgstr ""
+
+#: ctk/open-type-layout.h:91
+msgctxt "OpenType layout"
+msgid "Post-base Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:92
+msgctxt "OpenType layout"
+msgid "Post-base Substitutions"
+msgstr ""
+
+#: ctk/open-type-layout.h:93
+msgctxt "OpenType layout"
+msgid "Proportional Widths"
+msgstr ""
+
+#: ctk/open-type-layout.h:94
+msgctxt "OpenType layout"
+msgid "Quarter Widths"
+msgstr ""
+
+#: ctk/open-type-layout.h:95
+msgctxt "OpenType layout"
+msgid "Randomize"
+msgstr ""
+
+#: ctk/open-type-layout.h:96
+msgctxt "OpenType layout"
+msgid "Required Contextual Alternates"
+msgstr ""
+
+#: ctk/open-type-layout.h:97
+msgctxt "OpenType layout"
+msgid "Rakar Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:98
+msgctxt "OpenType layout"
+msgid "Required Ligatures"
+msgstr ""
+
+#: ctk/open-type-layout.h:99
+msgctxt "OpenType layout"
+msgid "Reph Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:100
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Right Bounds"
+msgstr "Am biona deas"
+
+#: ctk/open-type-layout.h:101
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Right-to-left alternates"
+msgstr "RLM _Right-to-left mark"
+
+#: ctk/open-type-layout.h:102
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Right-to-left mirrored forms"
+msgstr "RLM _Right-to-left mark"
+
+#: ctk/open-type-layout.h:103
+msgctxt "OpenType layout"
+msgid "Ruby Notation Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:104
+msgctxt "OpenType layout"
+msgid "Required Variation Alternates"
+msgstr ""
+
+#: ctk/open-type-layout.h:105
+msgctxt "OpenType layout"
+msgid "Stylistic Alternates"
+msgstr ""
+
+#: ctk/open-type-layout.h:106
+msgctxt "OpenType layout"
+msgid "Scientific Inferiors"
+msgstr ""
+
+#: ctk/open-type-layout.h:107
+msgctxt "OpenType layout"
+msgid "Optical size"
+msgstr ""
+
+#: ctk/open-type-layout.h:108
+msgctxt "OpenType layout"
+msgid "Small Capitals"
+msgstr ""
+
+#: ctk/open-type-layout.h:109
+msgctxt "OpenType layout"
+msgid "Simplified Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:110
+msgctxt "OpenType layout"
+msgid "Stylistic Set 1"
+msgstr ""
+
+#: ctk/open-type-layout.h:111
+msgctxt "OpenType layout"
+msgid "Stylistic Set 2"
+msgstr ""
+
+#: ctk/open-type-layout.h:112
+msgctxt "OpenType layout"
+msgid "Stylistic Set 3"
+msgstr ""
+
+#: ctk/open-type-layout.h:113
+msgctxt "OpenType layout"
+msgid "Stylistic Set 4"
+msgstr ""
+
+#: ctk/open-type-layout.h:114
+msgctxt "OpenType layout"
+msgid "Stylistic Set 5"
+msgstr ""
+
+#: ctk/open-type-layout.h:115
+msgctxt "OpenType layout"
+msgid "Stylistic Set 6"
+msgstr ""
+
+#: ctk/open-type-layout.h:116
+msgctxt "OpenType layout"
+msgid "Stylistic Set 7"
+msgstr ""
+
+#: ctk/open-type-layout.h:117
+msgctxt "OpenType layout"
+msgid "Stylistic Set 8"
+msgstr ""
+
+#: ctk/open-type-layout.h:118
+msgctxt "OpenType layout"
+msgid "Stylistic Set 9"
+msgstr ""
+
+#: ctk/open-type-layout.h:119
+msgctxt "OpenType layout"
+msgid "Stylistic Set 10"
+msgstr ""
+
+#: ctk/open-type-layout.h:120
+msgctxt "OpenType layout"
+msgid "Stylistic Set 11"
+msgstr ""
+
+#: ctk/open-type-layout.h:121
+msgctxt "OpenType layout"
+msgid "Stylistic Set 12"
+msgstr ""
+
+#: ctk/open-type-layout.h:122
+msgctxt "OpenType layout"
+msgid "Stylistic Set 13"
+msgstr ""
+
+#: ctk/open-type-layout.h:123
+msgctxt "OpenType layout"
+msgid "Stylistic Set 14"
+msgstr ""
+
+#: ctk/open-type-layout.h:124
+msgctxt "OpenType layout"
+msgid "Stylistic Set 15"
+msgstr ""
+
+#: ctk/open-type-layout.h:125
+msgctxt "OpenType layout"
+msgid "Stylistic Set 16"
+msgstr ""
+
+#: ctk/open-type-layout.h:126
+msgctxt "OpenType layout"
+msgid "Stylistic Set 17"
+msgstr ""
+
+#: ctk/open-type-layout.h:127
+msgctxt "OpenType layout"
+msgid "Stylistic Set 18"
+msgstr ""
+
+#: ctk/open-type-layout.h:128
+msgctxt "OpenType layout"
+msgid "Stylistic Set 19"
+msgstr ""
+
+#: ctk/open-type-layout.h:129
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Stylistic Set 20"
+msgstr "Artistic License 2.0"
+
+#: ctk/open-type-layout.h:130
+msgctxt "OpenType layout"
+msgid "Math script style alternates"
+msgstr ""
+
+#: ctk/open-type-layout.h:131
+msgctxt "OpenType layout"
+msgid "Stretching Glyph Decomposition"
+msgstr ""
+
+#: ctk/open-type-layout.h:132
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Subscript"
+msgstr "Postscript"
+
+#: ctk/open-type-layout.h:133
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Superscript"
+msgstr "Super"
+
+#: ctk/open-type-layout.h:134
+msgctxt "OpenType layout"
+msgid "Swash"
+msgstr ""
+
+#: ctk/open-type-layout.h:135
+msgctxt "OpenType layout"
+msgid "Titling"
+msgstr ""
+
+#: ctk/open-type-layout.h:136
+msgctxt "OpenType layout"
+msgid "Trailing Jamo Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:137
+msgctxt "OpenType layout"
+msgid "Traditional Name Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:138
+msgctxt "OpenType layout"
+msgid "Tabular Figures"
+msgstr ""
+
+#: ctk/open-type-layout.h:139
+msgctxt "OpenType layout"
+msgid "Traditional Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:140
+msgctxt "OpenType layout"
+msgid "Third Widths"
+msgstr ""
+
+#: ctk/open-type-layout.h:141
+msgctxt "OpenType layout"
+msgid "Unicase"
+msgstr ""
+
+#: ctk/open-type-layout.h:142
+msgctxt "OpenType layout"
+msgid "Alternate Vertical Metrics"
+msgstr ""
+
+#: ctk/open-type-layout.h:143
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Vattu Variants"
+msgstr "Eug-samhail dorcha"
+
+#: ctk/open-type-layout.h:144
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Vertical Writing"
+msgstr "Inghearach"
+
+#: ctk/open-type-layout.h:145
+msgctxt "OpenType layout"
+msgid "Alternate Vertical Half Metrics"
+msgstr ""
+
+#: ctk/open-type-layout.h:146
+msgctxt "OpenType layout"
+msgid "Vowel Jamo Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:147
+msgctxt "OpenType layout"
+msgid "Vertical Kana Alternates"
+msgstr ""
+
+#: ctk/open-type-layout.h:148
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Vertical Kerning"
+msgstr "Inghearach"
+
+#: ctk/open-type-layout.h:149
+msgctxt "OpenType layout"
+msgid "Proportional Alternate Vertical Metrics"
+msgstr ""
+
+#: ctk/open-type-layout.h:150
+msgctxt "OpenType layout"
+msgid "Vertical Alternates and Rotation"
+msgstr ""
+
+#: ctk/open-type-layout.h:151
+msgctxt "OpenType layout"
+msgid "Vertical Alternates for Rotation"
+msgstr ""
+
+#: ctk/open-type-layout.h:152
+msgctxt "OpenType layout"
+msgid "Slashed Zero"
+msgstr ""
 
 #: ctk/paper_names_offsets.c:4
 msgctxt "paper size"
@@ -5518,11 +6488,724 @@ msgctxt "paper size"
 msgid "ROC 8k"
 msgstr "ROC 8k"
 
-#: ctk/ui/ctkaboutdialog.ui:133
+#: ctk/script-names.c:18
+msgctxt "Script"
+msgid "Arabic"
+msgstr ""
+
+#: ctk/script-names.c:19
+msgctxt "Script"
+msgid "Armenian"
+msgstr ""
+
+#: ctk/script-names.c:20
+msgctxt "Script"
+msgid "Bengali"
+msgstr ""
+
+#: ctk/script-names.c:21
+msgctxt "Script"
+msgid "Bopomofo"
+msgstr ""
+
+#: ctk/script-names.c:22
+msgctxt "Script"
+msgid "Cherokee"
+msgstr ""
+
+#: ctk/script-names.c:23
+msgctxt "Script"
+msgid "Coptic"
+msgstr ""
+
+#: ctk/script-names.c:24
+msgctxt "Script"
+msgid "Cyrillic"
+msgstr ""
+
+#: ctk/script-names.c:25
+msgctxt "Script"
+msgid "Deseret"
+msgstr ""
+
+#: ctk/script-names.c:26
+msgctxt "Script"
+msgid "Devanagari"
+msgstr ""
+
+#: ctk/script-names.c:27
+msgctxt "Script"
+msgid "Ethiopic"
+msgstr ""
+
+#: ctk/script-names.c:28
+msgctxt "Script"
+msgid "Georgian"
+msgstr ""
+
+#: ctk/script-names.c:29
+msgctxt "Script"
+msgid "Gothic"
+msgstr ""
+
+#: ctk/script-names.c:30
+#, fuzzy
+msgctxt "Script"
+msgid "Greek"
+msgstr "_Uaine:"
+
+#: ctk/script-names.c:31
+msgctxt "Script"
+msgid "Gujarati"
+msgstr ""
+
+#: ctk/script-names.c:32
+msgctxt "Script"
+msgid "Gurmukhi"
+msgstr ""
+
+#: ctk/script-names.c:33
+msgctxt "Script"
+msgid "Han"
+msgstr ""
+
+#: ctk/script-names.c:34
+msgctxt "Script"
+msgid "Hangul"
+msgstr ""
+
+#: ctk/script-names.c:35
+msgctxt "Script"
+msgid "Hebrew"
+msgstr ""
+
+#: ctk/script-names.c:36
+msgctxt "Script"
+msgid "Hiragana"
+msgstr ""
+
+#: ctk/script-names.c:37
+msgctxt "Script"
+msgid "Kannada"
+msgstr ""
+
+#: ctk/script-names.c:38
+msgctxt "Script"
+msgid "Katakana"
+msgstr ""
+
+#: ctk/script-names.c:39
+msgctxt "Script"
+msgid "Khmer"
+msgstr ""
+
+#: ctk/script-names.c:40
+#, fuzzy
+msgctxt "Script"
+msgid "Lao"
+msgstr "Ìseal"
+
+#: ctk/script-names.c:41
+msgctxt "Script"
+msgid "Latin"
+msgstr ""
+
+#: ctk/script-names.c:42
+msgctxt "Script"
+msgid "Malayalam"
+msgstr ""
+
+#: ctk/script-names.c:43
+msgctxt "Script"
+msgid "Mongolian"
+msgstr ""
+
+#: ctk/script-names.c:44
+msgctxt "Script"
+msgid "Myanmar"
+msgstr ""
+
+#: ctk/script-names.c:45
+msgctxt "Script"
+msgid "Ogham"
+msgstr ""
+
+#: ctk/script-names.c:46
+#, fuzzy
+msgctxt "Script"
+msgid "Old Italic"
+msgstr "_Eadailteach"
+
+#: ctk/script-names.c:47
+msgctxt "Script"
+msgid "Oriya"
+msgstr ""
+
+#: ctk/script-names.c:48
+msgctxt "Script"
+msgid "Runic"
+msgstr ""
+
+#: ctk/script-names.c:49
+msgctxt "Script"
+msgid "Sinhala"
+msgstr ""
+
+#: ctk/script-names.c:50
+msgctxt "Script"
+msgid "Syriac"
+msgstr ""
+
+#: ctk/script-names.c:51
+#, fuzzy
+msgctxt "Script"
+msgid "Tamil"
+msgstr "_Teaghlach:"
+
+#: ctk/script-names.c:52
+msgctxt "Script"
+msgid "Telugu"
+msgstr ""
+
+#: ctk/script-names.c:53
+msgctxt "Script"
+msgid "Thaana"
+msgstr ""
+
+#: ctk/script-names.c:54
+#, fuzzy
+msgctxt "Script"
+msgid "Thai"
+msgstr "Tàidh - Làtho"
+
+#: ctk/script-names.c:55
+msgctxt "Script"
+msgid "Tibetan"
+msgstr ""
+
+#: ctk/script-names.c:56
+msgctxt "Script"
+msgid "Canadian Aboriginal"
+msgstr ""
+
+#: ctk/script-names.c:57
+msgctxt "Script"
+msgid "Yi"
+msgstr ""
+
+#: ctk/script-names.c:58
+msgctxt "Script"
+msgid "Tagalog"
+msgstr ""
+
+#: ctk/script-names.c:59
+msgctxt "Script"
+msgid "Hanunoo"
+msgstr ""
+
+#: ctk/script-names.c:60
+msgctxt "Script"
+msgid "Buhid"
+msgstr ""
+
+#: ctk/script-names.c:61
+msgctxt "Script"
+msgid "Tagbanwa"
+msgstr ""
+
+#: ctk/script-names.c:62
+msgctxt "Script"
+msgid "Braille"
+msgstr ""
+
+#: ctk/script-names.c:63
+msgctxt "Script"
+msgid "Cypriot"
+msgstr ""
+
+#: ctk/script-names.c:64
+msgctxt "Script"
+msgid "Limbu"
+msgstr ""
+
+#: ctk/script-names.c:65
+msgctxt "Script"
+msgid "Osmanya"
+msgstr ""
+
+#: ctk/script-names.c:66
+msgctxt "Script"
+msgid "Shavian"
+msgstr ""
+
+#: ctk/script-names.c:67
+#, fuzzy
+msgctxt "Script"
+msgid "Linear B"
+msgstr "Biona a’ chùlaibh"
+
+#: ctk/script-names.c:68
+msgctxt "Script"
+msgid "Tai Le"
+msgstr ""
+
+#: ctk/script-names.c:69
+msgctxt "Script"
+msgid "Ugaritic"
+msgstr ""
+
+#: ctk/script-names.c:70
+msgctxt "Script"
+msgid "New Tai Lue"
+msgstr ""
+
+#: ctk/script-names.c:71
+msgctxt "Script"
+msgid "Buginese"
+msgstr ""
+
+#: ctk/script-names.c:72
+msgctxt "Script"
+msgid "Glagolitic"
+msgstr ""
+
+#: ctk/script-names.c:73
+msgctxt "Script"
+msgid "Tifinagh"
+msgstr ""
+
+#: ctk/script-names.c:74
+msgctxt "Script"
+msgid "Syloti Nagri"
+msgstr ""
+
+#: ctk/script-names.c:75
+msgctxt "Script"
+msgid "Old Persian"
+msgstr ""
+
+#: ctk/script-names.c:76
+msgctxt "Script"
+msgid "Kharoshthi"
+msgstr ""
+
+#: ctk/script-names.c:77
+#, fuzzy
+msgctxt "Script"
+msgid "Unknown"
+msgstr "Neo-aithnichte"
+
+#: ctk/script-names.c:78
+#, fuzzy
+msgctxt "Script"
+msgid "Balinese"
+msgstr "Bun-loidhne"
+
+#: ctk/script-names.c:79
+msgctxt "Script"
+msgid "Cuneiform"
+msgstr ""
+
+#: ctk/script-names.c:80
+msgctxt "Script"
+msgid "Phoenician"
+msgstr ""
+
+#: ctk/script-names.c:81
+msgctxt "Script"
+msgid "Phags-pa"
+msgstr ""
+
+#: ctk/script-names.c:82
+msgctxt "Script"
+msgid "N'Ko"
+msgstr ""
+
+#: ctk/script-names.c:83
+msgctxt "Script"
+msgid "Kayah Li"
+msgstr ""
+
+#: ctk/script-names.c:84
+msgctxt "Script"
+msgid "Lepcha"
+msgstr ""
+
+#: ctk/script-names.c:85
+msgctxt "Script"
+msgid "Rejang"
+msgstr ""
+
+#: ctk/script-names.c:86
+msgctxt "Script"
+msgid "Sundanese"
+msgstr ""
+
+#: ctk/script-names.c:87
+msgctxt "Script"
+msgid "Saurashtra"
+msgstr ""
+
+#: ctk/script-names.c:88
+#, fuzzy
+msgctxt "Script"
+msgid "Cham"
+msgstr "Dath caimileoin"
+
+#: ctk/script-names.c:89
+msgctxt "Script"
+msgid "Ol Chiki"
+msgstr ""
+
+#: ctk/script-names.c:90
+msgctxt "Script"
+msgid "Vai"
+msgstr ""
+
+#: ctk/script-names.c:91
+msgctxt "Script"
+msgid "Carian"
+msgstr ""
+
+#: ctk/script-names.c:92
+msgctxt "Script"
+msgid "Lycian"
+msgstr ""
+
+#: ctk/script-names.c:93
+msgctxt "Script"
+msgid "Lydian"
+msgstr ""
+
+#: ctk/script-names.c:94
+msgctxt "Script"
+msgid "Avestan"
+msgstr ""
+
+#: ctk/script-names.c:95
+msgctxt "Script"
+msgid "Bamum"
+msgstr ""
+
+#: ctk/script-names.c:96
+msgctxt "Script"
+msgid "Egyptian Hieroglyphs"
+msgstr ""
+
+#: ctk/script-names.c:97
+msgctxt "Script"
+msgid "Imperial Aramaic"
+msgstr ""
+
+#: ctk/script-names.c:98
+msgctxt "Script"
+msgid "Inscriptional Pahlavi"
+msgstr ""
+
+#: ctk/script-names.c:99
+msgctxt "Script"
+msgid "Inscriptional Parthian"
+msgstr ""
+
+#: ctk/script-names.c:100
+msgctxt "Script"
+msgid "Javanese"
+msgstr ""
+
+#: ctk/script-names.c:101
+msgctxt "Script"
+msgid "Kaithi"
+msgstr ""
+
+#: ctk/script-names.c:102
+msgctxt "Script"
+msgid "Lisu"
+msgstr ""
+
+#: ctk/script-names.c:103
+msgctxt "Script"
+msgid "Meetei Mayek"
+msgstr ""
+
+#: ctk/script-names.c:104
+msgctxt "Script"
+msgid "Old South Arabian"
+msgstr ""
+
+#: ctk/script-names.c:105
+msgctxt "Script"
+msgid "Old Turkic"
+msgstr ""
+
+#: ctk/script-names.c:106
+msgctxt "Script"
+msgid "Samaritan"
+msgstr ""
+
+#: ctk/script-names.c:107
+msgctxt "Script"
+msgid "Tai Tham"
+msgstr ""
+
+#: ctk/script-names.c:108
+msgctxt "Script"
+msgid "Tai Viet"
+msgstr ""
+
+#: ctk/script-names.c:109
+msgctxt "Script"
+msgid "Batak"
+msgstr ""
+
+#: ctk/script-names.c:110
+msgctxt "Script"
+msgid "Brahmi"
+msgstr ""
+
+#: ctk/script-names.c:111
+msgctxt "Script"
+msgid "Mandaic"
+msgstr ""
+
+#: ctk/script-names.c:112
+msgctxt "Script"
+msgid "Chakma"
+msgstr ""
+
+#: ctk/script-names.c:113
+msgctxt "Script"
+msgid "Meroitic Cursive"
+msgstr ""
+
+#: ctk/script-names.c:114
+msgctxt "Script"
+msgid "Meroitic Hieroglyphs"
+msgstr ""
+
+#: ctk/script-names.c:115
+msgctxt "Script"
+msgid "Miao"
+msgstr ""
+
+#: ctk/script-names.c:116
+msgctxt "Script"
+msgid "Sharada"
+msgstr ""
+
+#: ctk/script-names.c:117
+msgctxt "Script"
+msgid "Sora Sompeng"
+msgstr ""
+
+#: ctk/script-names.c:118
+msgctxt "Script"
+msgid "Takri"
+msgstr ""
+
+#: ctk/script-names.c:119
+msgctxt "Script"
+msgid "Bassa"
+msgstr ""
+
+#: ctk/script-names.c:120
+msgctxt "Script"
+msgid "Caucasian Albanian"
+msgstr ""
+
+#: ctk/script-names.c:121
+msgctxt "Script"
+msgid "Duployan"
+msgstr ""
+
+#: ctk/script-names.c:122
+msgctxt "Script"
+msgid "Elbasan"
+msgstr ""
+
+#: ctk/script-names.c:123
+msgctxt "Script"
+msgid "Grantha"
+msgstr ""
+
+#: ctk/script-names.c:124
+msgctxt "Script"
+msgid "Khojki"
+msgstr ""
+
+#: ctk/script-names.c:125
+msgctxt "Script"
+msgid "Khudawadi, Sindhi"
+msgstr ""
+
+#: ctk/script-names.c:126
+msgctxt "Script"
+msgid "Linear A"
+msgstr ""
+
+#: ctk/script-names.c:127
+msgctxt "Script"
+msgid "Mahajani"
+msgstr ""
+
+#: ctk/script-names.c:128
+msgctxt "Script"
+msgid "Manichaean"
+msgstr ""
+
+#: ctk/script-names.c:129
+msgctxt "Script"
+msgid "Mende Kikakui"
+msgstr ""
+
+#: ctk/script-names.c:130
+#, fuzzy
+msgctxt "Script"
+msgid "Modi"
+msgstr "Air atharrachadh"
+
+#: ctk/script-names.c:131
+msgctxt "Script"
+msgid "Mro"
+msgstr ""
+
+#: ctk/script-names.c:132
+msgctxt "Script"
+msgid "Nabataean"
+msgstr ""
+
+#: ctk/script-names.c:133
+msgctxt "Script"
+msgid "Old North Arabian"
+msgstr ""
+
+#: ctk/script-names.c:134
+msgctxt "Script"
+msgid "Old Permic"
+msgstr ""
+
+#: ctk/script-names.c:135
+msgctxt "Script"
+msgid "Pahawh Hmong"
+msgstr ""
+
+#: ctk/script-names.c:136
+msgctxt "Script"
+msgid "Palmyrene"
+msgstr ""
+
+#: ctk/script-names.c:137
+msgctxt "Script"
+msgid "Pau Cin Hau"
+msgstr ""
+
+#: ctk/script-names.c:138
+msgctxt "Script"
+msgid "Psalter Pahlavi"
+msgstr ""
+
+#: ctk/script-names.c:139
+msgctxt "Script"
+msgid "Siddham"
+msgstr ""
+
+#: ctk/script-names.c:140
+msgctxt "Script"
+msgid "Tirhuta"
+msgstr ""
+
+#: ctk/script-names.c:141
+msgctxt "Script"
+msgid "Warang Citi"
+msgstr ""
+
+#: ctk/script-names.c:142
+msgctxt "Script"
+msgid "Ahom"
+msgstr ""
+
+#: ctk/script-names.c:143
+msgctxt "Script"
+msgid "Anatolian Hieroglyphs"
+msgstr ""
+
+#: ctk/script-names.c:144
+msgctxt "Script"
+msgid "Hatran"
+msgstr ""
+
+#: ctk/script-names.c:145
+#, fuzzy
+msgctxt "Script"
+msgid "Multani"
+msgstr "Multi_key"
+
+#: ctk/script-names.c:146
+msgctxt "Script"
+msgid "Old Hungarian"
+msgstr ""
+
+#: ctk/script-names.c:147
+#, fuzzy
+msgctxt "Script"
+msgid "Signwriting"
+msgstr "’Ga chlò-bhualadh"
+
+#: ctk/script-names.c:148
+msgctxt "Script"
+msgid "Adlam"
+msgstr ""
+
+#: ctk/script-names.c:149
+msgctxt "Script"
+msgid "Bhaiksuki"
+msgstr ""
+
+#: ctk/script-names.c:150
+#, fuzzy
+msgctxt "Script"
+msgid "Marchen"
+msgstr "Lorg"
+
+#: ctk/script-names.c:151
+msgctxt "Script"
+msgid "Newa"
+msgstr ""
+
+#: ctk/script-names.c:152
+msgctxt "Script"
+msgid "Osage"
+msgstr ""
+
+#: ctk/script-names.c:153
+msgctxt "Script"
+msgid "Tangut"
+msgstr ""
+
+#: ctk/script-names.c:154
+msgctxt "Script"
+msgid "Masaram Gondi"
+msgstr ""
+
+#: ctk/script-names.c:155
+msgctxt "Script"
+msgid "Nushu"
+msgstr ""
+
+#: ctk/script-names.c:156
+msgctxt "Script"
+msgid "Soyombo"
+msgstr ""
+
+#: ctk/script-names.c:157
+msgctxt "Script"
+msgid "Zanabazar Square"
+msgstr ""
+
+#: ctk/ui/ctkaboutdialog.ui:137
 msgid "About"
 msgstr "Mu dhèidhinn"
 
-#: ctk/ui/ctkaboutdialog.ui:173
+#: ctk/ui/ctkaboutdialog.ui:177
 msgid "Credits"
 msgstr "Cliù"
 
@@ -5534,7 +7217,7 @@ msgstr "_Seall na h-uile aplacaid"
 msgid "_Find New Applications"
 msgstr "_Lorg aplacaidean ùra"
 
-#: ctk/ui/ctkappchooserwidget.ui:117
+#: ctk/ui/ctkappchooserwidget.ui:119
 msgid "No applications found."
 msgstr "Cha deach aplacaid a lorg."
 
@@ -5586,98 +7269,96 @@ msgstr "Coilea_n"
 msgid "Select a Color"
 msgstr "Tagh dath"
 
-#: ctk/ui/ctkcoloreditor.ui:64
+#: ctk/ui/ctkcoloreditor.ui:57
+msgid "Pick a color from the screen"
+msgstr ""
+
+#: ctk/ui/ctkcoloreditor.ui:89
 msgid "Color Name"
 msgstr "Ainm an datha"
 
-#: ctk/ui/ctkcoloreditor.ui:155
+#: ctk/ui/ctkcoloreditor.ui:180
 msgctxt "Color channel"
 msgid "A"
 msgstr "A"
 
-#: ctk/ui/ctkcoloreditor.ui:171
+#: ctk/ui/ctkcoloreditor.ui:196
 msgid "Alpha"
 msgstr "Alpha"
 
-#: ctk/ui/ctkcoloreditor.ui:202
+#: ctk/ui/ctkcoloreditor.ui:227
 msgctxt "Color channel"
 msgid "H"
 msgstr "H"
 
-#: ctk/ui/ctkcoloreditor.ui:218
+#: ctk/ui/ctkcoloreditor.ui:243
 msgid "Hue"
 msgstr "Tuar"
 
-#: ctk/ui/ctkcoloreditor.ui:250
+#: ctk/ui/ctkcoloreditor.ui:275
 msgctxt "Color Channel"
 msgid "S"
 msgstr "S"
 
-#: ctk/ui/ctkcoloreditor.ui:260
+#: ctk/ui/ctkcoloreditor.ui:285
 msgctxt "Color Channel"
 msgid "V"
 msgstr "V"
 
-#: ctk/ui/ctkcoloreditor.ui:276
+#: ctk/ui/ctkcoloreditor.ui:301
 msgid "Saturation"
 msgstr "Sàthachd"
 
-#: ctk/ui/ctkemojichooser.ui:52
+#: ctk/ui/ctkemojichooser.ui:53 ctk/ui/ctkemojichooser.ui:212
 msgid "Smileys & People"
 msgstr "Samhlaidhean-gnùis ⁊ daoine"
 
-#: ctk/ui/ctkemojichooser.ui:67
+#: ctk/ui/ctkemojichooser.ui:68 ctk/ui/ctkemojichooser.ui:227
 msgid "Body & Clothing"
 msgstr "Bodhaig ⁊ aodach"
 
-#: ctk/ui/ctkemojichooser.ui:82
+#: ctk/ui/ctkemojichooser.ui:83 ctk/ui/ctkemojichooser.ui:242
 msgid "Animals & Nature"
 msgstr "Beathaichean ⁊ an nàdar"
 
-#: ctk/ui/ctkemojichooser.ui:97
+#: ctk/ui/ctkemojichooser.ui:98 ctk/ui/ctkemojichooser.ui:257
 msgid "Food & Drink"
 msgstr "Biadh ⁊ deoch"
 
-#: ctk/ui/ctkemojichooser.ui:112
+#: ctk/ui/ctkemojichooser.ui:113 ctk/ui/ctkemojichooser.ui:272
 msgid "Travel & Places"
 msgstr "Siubhal ⁊ àitichean"
 
-#: ctk/ui/ctkemojichooser.ui:127
-#| msgid "Activate"
+#: ctk/ui/ctkemojichooser.ui:128 ctk/ui/ctkemojichooser.ui:287
 msgid "Activities"
 msgstr "Gnìomhachdan"
 
-#: ctk/ui/ctkemojichooser.ui:142
-#| msgid "Objects"
+#: ctk/ui/ctkemojichooser.ui:143 ctk/ui/ctkemojichooser.ui:302
 msgctxt "emoji category"
 msgid "Objects"
 msgstr "Nithean"
 
-#: ctk/ui/ctkemojichooser.ui:157
+#: ctk/ui/ctkemojichooser.ui:158 ctk/ui/ctkemojichooser.ui:317
 msgid "Symbols"
 msgstr "Samhlaidhean"
 
-#: ctk/ui/ctkemojichooser.ui:172
+#: ctk/ui/ctkemojichooser.ui:173 ctk/ui/ctkemojichooser.ui:332
 msgid "Flags"
 msgstr "Brataich"
 
-#: ctk/ui/ctkfilechooserwidget.ui:69
-msgid "Create Folder"
-msgstr "Cruthaich pasgan"
-
-#: ctk/ui/ctkfilechooserwidget.ui:168
+#: ctk/ui/ctkfilechooserwidget.ui:169
 msgid "Files"
 msgstr "Faidhlichean"
 
-#: ctk/ui/ctkfilechooserwidget.ui:261
+#: ctk/ui/ctkfilechooserwidget.ui:274
 msgid "Remote location — only searching the current folder"
 msgstr "Ionad cèin — a’ lorg sa phasgan làithreach a-mhàin"
 
-#: ctk/ui/ctkfilechooserwidget.ui:433
+#: ctk/ui/ctkfilechooserwidget.ui:446
 msgid "Folder Name"
 msgstr "Ainm a’ phasgain"
 
-#: ctk/ui/ctkfilechooserwidget.ui:461
+#: ctk/ui/ctkfilechooserwidget.ui:474
 msgid "_Create"
 msgstr "_Cruthaich"
 
@@ -5685,19 +7366,19 @@ msgstr "_Cruthaich"
 msgid "Select Font"
 msgstr "Tagh cruth-clò"
 
-#: ctk/ui/ctkfontchooserwidget.ui:50
+#: ctk/ui/ctkfontchooserwidget.ui:53
 msgid "Search font name"
 msgstr "Lorg ainm a’ chrutha-chlò"
 
-#: ctk/ui/ctkfontchooserwidget.ui:98
+#: ctk/ui/ctkfontchooserwidget.ui:100
 msgid "Font Family"
 msgstr "Teaghlach a; chrutha-chlò"
 
-#: ctk/ui/ctkfontchooserwidget.ui:120
+#: ctk/ui/ctkfontchooserwidget.ui:121 ctk/ui/ctkfontchooserwidget.ui:248
 msgid "Preview text"
 msgstr "Ro-sheall an teacsa"
 
-#: ctk/ui/ctkfontchooserwidget.ui:187
+#: ctk/ui/ctkfontchooserwidget.ui:201
 msgid "No Fonts Found"
 msgstr "Cha deach cruth-clò a lorg"
 
@@ -5752,67 +7433,24 @@ msgstr ""
 msgid "Available Protocols"
 msgstr "Pròtacalan ri am faighinn"
 
-#: ctk/ui/ctkplacesview.ui:92
-msgid "AppleTalk"
-msgstr "AppleTalk"
-
-#: ctk/ui/ctkplacesview.ui:103
-msgid "File Transfer Protocol"
-msgstr "File Transfer Protocol"
-
-#: ctk/ui/ctkplacesview.ui:114
-msgid "Network File System"
-msgstr "Network File System"
-
-#: ctk/ui/ctkplacesview.ui:125
-msgid "Samba"
-msgstr "Samba"
-
-#: ctk/ui/ctkplacesview.ui:136
-msgid "SSH File Transfer Protocol"
-msgstr "SSH File Transfer Protocol"
-
-#: ctk/ui/ctkplacesview.ui:147
-msgid "WebDAV"
-msgstr "WebDAV"
-
-#. Translators: do not translate ftp:// and ftps://
-#: ctk/ui/ctkplacesview.ui:183
-msgid "ftp:// or ftps://"
-msgstr "ftp:// no ftps://"
-
-#: ctk/ui/ctkplacesview.ui:205
-msgid "smb://"
-msgstr "smb://"
-
-#. Translators: do not translate sftp:// and ssh://
-#: ctk/ui/ctkplacesview.ui:216
-msgid "sftp:// or ssh://"
-msgstr "sftp:// or ssh://"
-
-#. Translators: do not translate dav:// and davs://
-#: ctk/ui/ctkplacesview.ui:227
-msgid "dav:// or davs://"
-msgstr "dav:// no davs://"
-
 #. Translators: Server as any successfully connected network address
-#: ctk/ui/ctkplacesview.ui:267
+#: ctk/ui/ctkplacesview.ui:135
 msgid "No recent servers found"
 msgstr "Cha deach frithealaiche o chionn goirid a lorg"
 
-#: ctk/ui/ctkplacesview.ui:290
+#: ctk/ui/ctkplacesview.ui:158
 msgid "Recent Servers"
 msgstr "Frithealaichean o chionn goirid"
 
-#: ctk/ui/ctkplacesview.ui:393
+#: ctk/ui/ctkplacesview.ui:261
 msgid "No results found"
 msgstr "Cha deach toradh a lorg"
 
-#: ctk/ui/ctkplacesview.ui:439
+#: ctk/ui/ctkplacesview.ui:307
 msgid "Connect to _Server"
 msgstr "Ceancail ri _frithealaiche"
 
-#: ctk/ui/ctkplacesview.ui:472
+#: ctk/ui/ctkplacesview.ui:340
 msgid "Enter server address…"
 msgstr "Cuir a-steach seòladh an fhrithealaiche…"
 
@@ -6049,114 +7687,115 @@ msgstr "Lùghdaich àirde na fuaime"
 msgid "Decreases the volume"
 msgstr "Lùghdaichidh seo àirde na fuaime"
 
-#: ctk/updateiconcache.c:1388
+#: ctk/updateiconcache.c:1402
 #, c-format
 msgid "Failed to write header\n"
 msgstr "Dh’fhàillig sgrìobhadh a’ bhann-chinn\n"
 
-#: ctk/updateiconcache.c:1394
+#: ctk/updateiconcache.c:1408
 #, c-format
 msgid "Failed to write hash table\n"
 msgstr "Dh’fhàillig sgrìobhadh a’ hash table\n"
 
-#: ctk/updateiconcache.c:1400
+#: ctk/updateiconcache.c:1414
 #, c-format
 msgid "Failed to write folder index\n"
 msgstr "Dh’fhàillig sgrìobhadh clàr-amais a’ phasgain\n"
 
-#: ctk/updateiconcache.c:1408
+#: ctk/updateiconcache.c:1422
 #, c-format
 msgid "Failed to rewrite header\n"
 msgstr "Dh’fhàillig ath-sgrìobhadh a’ bhann-chinn\n"
 
-#: ctk/updateiconcache.c:1502
+#: ctk/updateiconcache.c:1516
 #, c-format
 msgid "Failed to open file %s : %s\n"
 msgstr "Dh’fhàillig fosgladh an fhaidhle %s : %s\n"
 
-#: ctk/updateiconcache.c:1510 ctk/updateiconcache.c:1540
+#: ctk/updateiconcache.c:1524 ctk/updateiconcache.c:1554
 #, c-format
 msgid "Failed to write cache file: %s\n"
 msgstr "Dh’fhàillig sgrìobhadh faidhle an tasgadain: %s\n"
 
-#: ctk/updateiconcache.c:1550
+#: ctk/updateiconcache.c:1564
 #, c-format
 msgid "The generated cache was invalid.\n"
 msgstr "Bha an tasgadan a chaidh a ghintinn mì-dhligheach.\n"
 
-#: ctk/updateiconcache.c:1564
+#: ctk/updateiconcache.c:1578
 #, c-format
 msgid "Could not rename %s to %s: %s, removing %s then.\n"
-msgstr "Cha b’ urrainn dhuinn %2s a thoirt air %1s: %3s, thoir air falbh %4s an "
+msgstr ""
+"Cha b’ urrainn dhuinn %2s a thoirt air %1s: %3s, thoir air falbh %4s an "
 "uairsin.\n"
 
-#: ctk/updateiconcache.c:1578
+#: ctk/updateiconcache.c:1592
 #, c-format
 msgid "Could not rename %s to %s: %s\n"
 msgstr "Cha b’ urrainn dhuinn %2s a thoirt air %1s: %3s\n"
 
-#: ctk/updateiconcache.c:1588
+#: ctk/updateiconcache.c:1602
 #, c-format
 msgid "Could not rename %s back to %s: %s.\n"
 msgstr "Cha b’ urrainn dhuinn %2s a thoirt air %1s a-rithist: %3s.\n"
 
-#: ctk/updateiconcache.c:1615
+#: ctk/updateiconcache.c:1629
 #, c-format
 msgid "Cache file created successfully.\n"
 msgstr "Chaidh faidhle an tasgadain a chruthachadh.\n"
 
-#: ctk/updateiconcache.c:1654
+#: ctk/updateiconcache.c:1668
 msgid "Overwrite an existing cache, even if up to date"
 msgstr "Sgrìobh thairis air an tasgadan làithreach, fiù ma tha e ris an latha"
 
-#: ctk/updateiconcache.c:1655
+#: ctk/updateiconcache.c:1669
 msgid "Don't check for the existence of index.theme"
 msgstr "Na thoir sùil a bheil index.theme ann"
 
-#: ctk/updateiconcache.c:1656
+#: ctk/updateiconcache.c:1670
 msgid "Don't include image data in the cache"
 msgstr "Na gabh a-steach dàta deilbh san tasgadan"
 
-#: ctk/updateiconcache.c:1657
+#: ctk/updateiconcache.c:1671
 msgid "Include image data in the cache"
 msgstr "Gabh a-steach dàta deilbh san tasgadan"
 
-#: ctk/updateiconcache.c:1658
+#: ctk/updateiconcache.c:1672
 msgid "Output a C header file"
 msgstr "Às-chuir faidhle bann-cinn C"
 
-#: ctk/updateiconcache.c:1659
+#: ctk/updateiconcache.c:1673
 msgid "Turn off verbose output"
 msgstr "Cuir dheth an t-às-chur briathrach"
 
-#: ctk/updateiconcache.c:1660
+#: ctk/updateiconcache.c:1674
 msgid "Validate existing icon cache"
 msgstr "Dearb tasgadan làithreach nan ìomhaigheagan"
 
-#: ctk/updateiconcache.c:1727
+#: ctk/updateiconcache.c:1741
 #, c-format
 msgid "File not found: %s\n"
 msgstr "Cha deach am faidhle a leanas a lorg: %s\n"
 
-#: ctk/updateiconcache.c:1733
+#: ctk/updateiconcache.c:1747
 #, c-format
 msgid "Not a valid icon cache: %s\n"
 msgstr "Chan e tasgadan ìomhaigheagan dligheach a tha ann an: %s\n"
 
-#: ctk/updateiconcache.c:1746
+#: ctk/updateiconcache.c:1760
 #, c-format
 msgid "No theme index file.\n"
 msgstr "Chan eil faidhle clàr-amais an ùrlair ann.\n"
 
-#: ctk/updateiconcache.c:1750
+#: ctk/updateiconcache.c:1764
 #, c-format
 msgid ""
 "No theme index file in '%s'.\n"
 "If you really want to create an icon cache here, use --ignore-theme-index.\n"
 msgstr ""
 "Chan eil faidhle clàr-amais an ùrlair ann an “%s”.\n"
-"Ma tha thu airson tasgadan ìomhaigheagan a chruthachadh an-seo, cleachd "
-"--ignore-theme-index.\n"
+"Ma tha thu airson tasgadan ìomhaigheagan a chruthachadh an-seo, cleachd --"
+"ignore-theme-index.\n"
 
 #. ID
 #: modules/input/imam-et.c:452
@@ -6205,7 +7844,7 @@ msgctxt "input method menu"
 msgid "Multipress"
 msgstr "Multipress"
 
-#: modules/input/imquartz.c:58
+#: modules/input/imquartz.c:69
 msgctxt "input method menu"
 msgid "Mac OS X Quartz"
 msgstr "Mac OS X Quartz"
@@ -6235,9 +7874,16 @@ msgid "Vietnamese (VIQR)"
 msgstr "Bhiet-Namais (VIQR)"
 
 #. ID
-#: modules/input/imwayland.c:81
+#: modules/input/imwayland.c:105
 msgctxt "input method menu"
 msgid "Wayland"
+msgstr "Wayland"
+
+#. ID
+#: modules/input/imwaylandctk.c:82
+#, fuzzy
+msgctxt "input method menu"
+msgid "Waylandctk"
 msgstr "Wayland"
 
 #. ID
@@ -6265,127 +7911,127 @@ msgid "Dormant"
 msgstr "’Na chadal"
 
 #. How many document pages to go onto one side of paper.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:939
-#: modules/printbackends/file/ctkprintbackendfile.c:676
-#: modules/printbackends/test/ctkprintbackendtest.c:501
+#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:941
+#: modules/printbackends/file/ctkprintbackendfile.c:679
+#: modules/printbackends/test/ctkprintbackendtest.c:503
 msgid "Pages per _sheet:"
 msgstr "Duilleag gach _siota:"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1106
-#: modules/printbackends/cups/ctkprintbackendcups.c:1415
+#: modules/printbackends/cups/ctkprintbackendcups.c:1129
+#: modules/printbackends/cups/ctkprintbackendcups.c:1439
 msgid "Username:"
 msgstr "Ainm-cleachdaiche:"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1107
-#: modules/printbackends/cups/ctkprintbackendcups.c:1424
+#: modules/printbackends/cups/ctkprintbackendcups.c:1130
+#: modules/printbackends/cups/ctkprintbackendcups.c:1448
 msgid "Password:"
 msgstr "Facal-faire:"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1146
-#: modules/printbackends/cups/ctkprintbackendcups.c:1437
+#: modules/printbackends/cups/ctkprintbackendcups.c:1169
+#: modules/printbackends/cups/ctkprintbackendcups.c:1461
 #, c-format
 msgid "Authentication is required to print document “%s” on printer %s"
 msgstr ""
 "Feumaidh tu dearbhadh mus urrainn dhut an sgrìobhainn “%s” a chlò-bhualadh "
 "air a’ chlò-bhualadair %s"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1148
+#: modules/printbackends/cups/ctkprintbackendcups.c:1171
 #, c-format
 msgid "Authentication is required to print a document on %s"
 msgstr ""
 "Feumaidh tu dearbhadh mus urrainn dhut sgrìobhainn a chlò-bhualadh air %s"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1152
+#: modules/printbackends/cups/ctkprintbackendcups.c:1175
 #, c-format
 msgid "Authentication is required to get attributes of job “%s”"
 msgstr ""
 "Feumaidh tu dearbhadh mus urrainn dhut buadhan na h-obrach “%s” fhaighinn"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1154
+#: modules/printbackends/cups/ctkprintbackendcups.c:1177
 msgid "Authentication is required to get attributes of a job"
 msgstr "Feumaidh tu dearbhadh mus urrainn dhut buadhan obrach fhaighinn"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1158
+#: modules/printbackends/cups/ctkprintbackendcups.c:1181
 #, c-format
 msgid "Authentication is required to get attributes of printer %s"
 msgstr ""
 "Feumaidh tu dearbhadh mus urrainn dhut buadhan a’ chlò-bhualadair “%s” "
 "fhaighinn"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1160
+#: modules/printbackends/cups/ctkprintbackendcups.c:1183
 msgid "Authentication is required to get attributes of a printer"
 msgstr ""
 "Feumaidh tu dearbhadh mus urrainn dhut buadhan clò-bhualadair fhaighinn"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1163
+#: modules/printbackends/cups/ctkprintbackendcups.c:1186
 #, c-format
 msgid "Authentication is required to get default printer of %s"
 msgstr ""
 "Feumaidh tu dearbhadh mus urrainn dhut an clò-bhualadair bunaiteach aig “%s” "
 "fhaighinn"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1166
+#: modules/printbackends/cups/ctkprintbackendcups.c:1189
 #, c-format
 msgid "Authentication is required to get printers from %s"
 msgstr ""
 "Feumaidh tu dearbhadh mus urrainn dhut clò-bhualadairean fhaighinn o %s"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1171
+#: modules/printbackends/cups/ctkprintbackendcups.c:1194
 #, c-format
 msgid "Authentication is required to get a file from %s"
 msgstr "Feumaidh tu dearbhadh mus urrainn dhut faidhle fhaighinn o “%s”"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1173
+#: modules/printbackends/cups/ctkprintbackendcups.c:1196
 #, c-format
 msgid "Authentication is required on %s"
 msgstr "Feumaidh tu dearbhadh air “%s”"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1409
+#: modules/printbackends/cups/ctkprintbackendcups.c:1433
 msgid "Domain:"
 msgstr "Àrainn:"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1439
+#: modules/printbackends/cups/ctkprintbackendcups.c:1463
 #, c-format
 msgid "Authentication is required to print document “%s”"
 msgstr ""
 "Feumaidh tu dearbhadh mus urrainn dhut an sgrìobhainn “%s” a chlò-bhualadh"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1444
+#: modules/printbackends/cups/ctkprintbackendcups.c:1468
 #, c-format
 msgid "Authentication is required to print this document on printer %s"
 msgstr ""
 "Feumaidh tu dearbhadh mus urrainn dhut an sgrìobhainn seo a chlò-bhualadh "
 "air a’ chlò-bhualadair air “%s”"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1446
+#: modules/printbackends/cups/ctkprintbackendcups.c:1470
 msgid "Authentication is required to print this document"
 msgstr ""
 "Feumaidh tu dearbhadh mus urrainn dhut an sgrìobhainn seo a chlò-bhualadh"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2525
+#: modules/printbackends/cups/ctkprintbackendcups.c:2557
 #, c-format
 msgid "Printer “%s” is low on toner."
 msgstr "Chan eil cus tònair air fhàcail aig a’ chlò-bhualadair “%s”."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2529
+#: modules/printbackends/cups/ctkprintbackendcups.c:2561
 #, c-format
 msgid "Printer “%s” has no toner left."
 msgstr "Chan eil tònair air fhàcail aig a’ chlò-bhualadair “%s”."
 
 #. Translators: "Developer" like on photo development context
-#: modules/printbackends/cups/ctkprintbackendcups.c:2534
+#: modules/printbackends/cups/ctkprintbackendcups.c:2566
 #, c-format
 msgid "Printer “%s” is low on developer."
 msgstr "Chan eil cus leasaicheir air fhàcail aig a’ chlò-bhualadair “%s”."
 
 #. Translators: "Developer" like on photo development context
-#: modules/printbackends/cups/ctkprintbackendcups.c:2539
+#: modules/printbackends/cups/ctkprintbackendcups.c:2571
 #, c-format
 msgid "Printer “%s” is out of developer."
 msgstr "Chan eil leasaichear air fhàcail aig a’ chlò-bhualadair “%s”."
 
 #. Translators: "marker" is one color bin of the printer
-#: modules/printbackends/cups/ctkprintbackendcups.c:2544
+#: modules/printbackends/cups/ctkprintbackendcups.c:2576
 #, c-format
 msgid "Printer “%s” is low on at least one marker supply."
 msgstr ""
@@ -6393,334 +8039,334 @@ msgstr ""
 "chlò-bhualadair “%s”."
 
 #. Translators: "marker" is one color bin of the printer
-#: modules/printbackends/cups/ctkprintbackendcups.c:2549
+#: modules/printbackends/cups/ctkprintbackendcups.c:2581
 #, c-format
 msgid "Printer “%s” is out of at least one marker supply."
 msgstr ""
 "Tha co-dhiù aon solar comharraiche ann nach eil gin air fhàcail dheth aig a’ "
 "chlò-bhualadair “%s”."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2553
+#: modules/printbackends/cups/ctkprintbackendcups.c:2585
 #, c-format
 msgid "The cover is open on printer “%s”."
 msgstr "Tha mullach a’ chlò-bhualadair “%s” foscailte."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2557
+#: modules/printbackends/cups/ctkprintbackendcups.c:2589
 #, c-format
 msgid "The door is open on printer “%s”."
 msgstr "Tha doras a’ chlò-bhualadair “%s” foscailte."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2561
+#: modules/printbackends/cups/ctkprintbackendcups.c:2593
 #, c-format
 msgid "Printer “%s” is low on paper."
 msgstr "Chan eil cus pàipeir air fhàcail aig a’ chlò-bhualadair “%s”."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2565
+#: modules/printbackends/cups/ctkprintbackendcups.c:2597
 #, c-format
 msgid "Printer “%s” is out of paper."
 msgstr "Chan eil pàipear air fhàcail aig a’ chlò-bhualadair “%s”."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2569
+#: modules/printbackends/cups/ctkprintbackendcups.c:2601
 #, c-format
 msgid "Printer “%s” is currently offline."
 msgstr "Tha an clò-bhualadair “%s” far loidhne an-dràsta fhèin."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2573
+#: modules/printbackends/cups/ctkprintbackendcups.c:2605
 #, c-format
 msgid "There is a problem on printer “%s”."
 msgstr "Tha duilgheadas aig a’ chlò-bhualadair “%s”."
 
 #. Translators: this is a printer status.
-#: modules/printbackends/cups/ctkprintbackendcups.c:2593
+#: modules/printbackends/cups/ctkprintbackendcups.c:2625
 msgid "Paused; Rejecting Jobs"
 msgstr "’Na stad; A’ diùltadh obraichean"
 
 #. Translators: this is a printer status.
-#: modules/printbackends/cups/ctkprintbackendcups.c:2599
+#: modules/printbackends/cups/ctkprintbackendcups.c:2631
 msgid "Rejecting Jobs"
 msgstr "A’ diùltadh obraichean"
 
 #. Translators: this string connects multiple printer states together.
-#: modules/printbackends/cups/ctkprintbackendcups.c:2640
+#: modules/printbackends/cups/ctkprintbackendcups.c:2672
 msgid "; "
 msgstr "; "
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4380
-#: modules/printbackends/cups/ctkprintbackendcups.c:4447
+#: modules/printbackends/cups/ctkprintbackendcups.c:4453
+#: modules/printbackends/cups/ctkprintbackendcups.c:4520
 msgctxt "printing option"
 msgid "Two Sided"
 msgstr "Dà-thaobhach"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4381
+#: modules/printbackends/cups/ctkprintbackendcups.c:4454
 msgctxt "printing option"
 msgid "Paper Type"
 msgstr "Seòrsa a’ phàipeir"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4382
+#: modules/printbackends/cups/ctkprintbackendcups.c:4455
 msgctxt "printing option"
 msgid "Paper Source"
 msgstr "Tùs a’ phàipeir"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4383
-#: modules/printbackends/cups/ctkprintbackendcups.c:4448
+#: modules/printbackends/cups/ctkprintbackendcups.c:4456
+#: modules/printbackends/cups/ctkprintbackendcups.c:4521
 msgctxt "printing option"
 msgid "Output Tray"
 msgstr "Treidhe às-chur"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4384
+#: modules/printbackends/cups/ctkprintbackendcups.c:4457
 msgctxt "printing option"
 msgid "Resolution"
 msgstr "Dùmhlachd-bhreacaidh"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4385
+#: modules/printbackends/cups/ctkprintbackendcups.c:4458
 msgctxt "printing option"
 msgid "GhostScript pre-filtering"
 msgstr "Ro-chriathradh GhostScript"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4394
+#: modules/printbackends/cups/ctkprintbackendcups.c:4467
 msgctxt "printing option value"
 msgid "One Sided"
 msgstr "Aon-taobhach"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4396
+#: modules/printbackends/cups/ctkprintbackendcups.c:4469
 msgctxt "printing option value"
 msgid "Long Edge (Standard)"
 msgstr "Oir fhada (stannardach)"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4398
+#: modules/printbackends/cups/ctkprintbackendcups.c:4471
 msgctxt "printing option value"
 msgid "Short Edge (Flip)"
 msgstr "Oir ghoirid (dèan flip)"
 
 #. Translators: this is an option of "Paper Source"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4400
-#: modules/printbackends/cups/ctkprintbackendcups.c:4402
-#: modules/printbackends/cups/ctkprintbackendcups.c:4410
+#: modules/printbackends/cups/ctkprintbackendcups.c:4473
+#: modules/printbackends/cups/ctkprintbackendcups.c:4475
+#: modules/printbackends/cups/ctkprintbackendcups.c:4483
 msgctxt "printing option value"
 msgid "Auto Select"
 msgstr "Taghadh fèin-obrachail"
 
 #. Translators: this is an option of "Paper Source"
 #. Translators: this is an option of "Resolution"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4404
-#: modules/printbackends/cups/ctkprintbackendcups.c:4406
-#: modules/printbackends/cups/ctkprintbackendcups.c:4408
-#: modules/printbackends/cups/ctkprintbackendcups.c:4412
+#: modules/printbackends/cups/ctkprintbackendcups.c:4477
+#: modules/printbackends/cups/ctkprintbackendcups.c:4479
+#: modules/printbackends/cups/ctkprintbackendcups.c:4481
+#: modules/printbackends/cups/ctkprintbackendcups.c:4485
 msgctxt "printing option value"
 msgid "Printer Default"
 msgstr "Bun-roghainnean a’ chlò-bhualadair"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4414
+#: modules/printbackends/cups/ctkprintbackendcups.c:4487
 msgctxt "printing option value"
 msgid "Embed GhostScript fonts only"
 msgstr "Na leabaich ach cruthan-clò GhostScript"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4416
+#: modules/printbackends/cups/ctkprintbackendcups.c:4489
 msgctxt "printing option value"
 msgid "Convert to PS level 1"
 msgstr "Iompaich ’na PS leibheil 1"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4418
+#: modules/printbackends/cups/ctkprintbackendcups.c:4491
 msgctxt "printing option value"
 msgid "Convert to PS level 2"
 msgstr "Iompaich ’na PS leibheil 2"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4420
+#: modules/printbackends/cups/ctkprintbackendcups.c:4493
 msgctxt "printing option value"
 msgid "No pre-filtering"
 msgstr "Gun ro-chriathradh"
 
 #. Translators: "Miscellaneous" is the label for a button, that opens
 #. up an extra panel of settings in a print dialog.
-#: modules/printbackends/cups/ctkprintbackendcups.c:4429
+#: modules/printbackends/cups/ctkprintbackendcups.c:4502
 msgctxt "printing option group"
 msgid "Miscellaneous"
 msgstr "Measgachadh"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4456
+#: modules/printbackends/cups/ctkprintbackendcups.c:4529
 msgctxt "sides"
 msgid "One Sided"
 msgstr "Aon-taobhach"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4458
+#: modules/printbackends/cups/ctkprintbackendcups.c:4531
 msgctxt "sides"
 msgid "Long Edge (Standard)"
 msgstr "Oir fhada (stannardach)"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4460
+#: modules/printbackends/cups/ctkprintbackendcups.c:4533
 msgctxt "sides"
 msgid "Short Edge (Flip)"
 msgstr "Oir ghoirid (Flip)"
 
 #. Translators: Top output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4463
+#: modules/printbackends/cups/ctkprintbackendcups.c:4536
 msgctxt "output-bin"
 msgid "Top Bin"
 msgstr "Biona a’ bharra"
 
 #. Translators: Middle output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4465
+#: modules/printbackends/cups/ctkprintbackendcups.c:4538
 msgctxt "output-bin"
 msgid "Middle Bin"
 msgstr "Am biona meadhanach"
 
 #. Translators: Bottom output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4467
+#: modules/printbackends/cups/ctkprintbackendcups.c:4540
 msgctxt "output-bin"
 msgid "Bottom Bin"
 msgstr "Biona a’ bhuinn"
 
 #. Translators: Side output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4469
+#: modules/printbackends/cups/ctkprintbackendcups.c:4542
 msgctxt "output-bin"
 msgid "Side Bin"
 msgstr "Biona an taoibh"
 
 #. Translators: Left output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4471
+#: modules/printbackends/cups/ctkprintbackendcups.c:4544
 msgctxt "output-bin"
 msgid "Left Bin"
 msgstr "Am biona clì"
 
 #. Translators: Right output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4473
+#: modules/printbackends/cups/ctkprintbackendcups.c:4546
 msgctxt "output-bin"
 msgid "Right Bin"
 msgstr "Am biona deas"
 
 #. Translators: Center output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4475
+#: modules/printbackends/cups/ctkprintbackendcups.c:4548
 msgctxt "output-bin"
 msgid "Center Bin"
 msgstr "Am biona meadhanach"
 
 #. Translators: Rear output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4477
+#: modules/printbackends/cups/ctkprintbackendcups.c:4550
 msgctxt "output-bin"
 msgid "Rear Bin"
 msgstr "Biona a’ chùlaibh"
 
 #. Translators: Output bin where one sided output is oriented in the face-up position
-#: modules/printbackends/cups/ctkprintbackendcups.c:4479
+#: modules/printbackends/cups/ctkprintbackendcups.c:4552
 msgctxt "output-bin"
 msgid "Face Up Bin"
 msgstr "Biona aghaidh suas"
 
 #. Translators: Output bin where one sided output is oriented in the face-down position
-#: modules/printbackends/cups/ctkprintbackendcups.c:4481
+#: modules/printbackends/cups/ctkprintbackendcups.c:4554
 msgctxt "output-bin"
 msgid "Face Down Bin"
 msgstr "Biona beul fodha"
 
 #. Translators: Large capacity output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4483
+#: modules/printbackends/cups/ctkprintbackendcups.c:4556
 msgctxt "output-bin"
 msgid "Large Capacity Bin"
 msgstr "Biona mòr-thomaid"
 
 #. Translators: Output stacker number %d
-#: modules/printbackends/cups/ctkprintbackendcups.c:4505
+#: modules/printbackends/cups/ctkprintbackendcups.c:4578
 #, c-format
 msgctxt "output-bin"
 msgid "Stacker %d"
 msgstr "Stacair %d"
 
 #. Translators: Output mailbox number %d
-#: modules/printbackends/cups/ctkprintbackendcups.c:4509
+#: modules/printbackends/cups/ctkprintbackendcups.c:4582
 #, c-format
 msgctxt "output-bin"
 msgid "Mailbox %d"
 msgstr "Bogsa-puist %d"
 
 #. Translators: Private mailbox
-#: modules/printbackends/cups/ctkprintbackendcups.c:4513
+#: modules/printbackends/cups/ctkprintbackendcups.c:4586
 msgctxt "output-bin"
 msgid "My Mailbox"
 msgstr "Am bogsa-puist agam"
 
 #. Translators: Output tray number %d
-#: modules/printbackends/cups/ctkprintbackendcups.c:4517
+#: modules/printbackends/cups/ctkprintbackendcups.c:4590
 #, c-format
 msgctxt "output-bin"
 msgid "Tray %d"
 msgstr "Treidhe %d"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4988
+#: modules/printbackends/cups/ctkprintbackendcups.c:5061
 msgid "Printer Default"
 msgstr "Bun-roghainnean a’ chlò-bhualadair"
 
 #. Translators: These strings name the possible values of the
 #. * job priority option in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5429
+#: modules/printbackends/cups/ctkprintbackendcups.c:5503
 msgid "Urgent"
 msgstr "Èiginneach"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5429
+#: modules/printbackends/cups/ctkprintbackendcups.c:5503
 msgid "High"
 msgstr "Àrd"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5429
+#: modules/printbackends/cups/ctkprintbackendcups.c:5503
 msgid "Medium"
 msgstr "Meadhanach"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5429
+#: modules/printbackends/cups/ctkprintbackendcups.c:5503
 msgid "Low"
 msgstr "Ìseal"
 
 #. Translators, this string is used to label the job priority option
 #. * in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5459
+#: modules/printbackends/cups/ctkprintbackendcups.c:5533
 msgid "Job Priority"
 msgstr "Prìomhachas na h-obrach"
 
 #. Translators, this string is used to label the billing info entry
 #. * in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5470
+#: modules/printbackends/cups/ctkprintbackendcups.c:5544
 msgid "Billing Info"
 msgstr "Am fiosrachadh bileachaidh"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5494
+#: modules/printbackends/cups/ctkprintbackendcups.c:5568
 msgctxt "cover page"
 msgid "None"
 msgstr "Chan eil gin"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5495
+#: modules/printbackends/cups/ctkprintbackendcups.c:5569
 msgctxt "cover page"
 msgid "Classified"
 msgstr "Dìomhair"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5496
+#: modules/printbackends/cups/ctkprintbackendcups.c:5570
 msgctxt "cover page"
 msgid "Confidential"
 msgstr "Fo rùn"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5497
+#: modules/printbackends/cups/ctkprintbackendcups.c:5571
 msgctxt "cover page"
 msgid "Secret"
 msgstr "Dìomhair"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5498
+#: modules/printbackends/cups/ctkprintbackendcups.c:5572
 msgctxt "cover page"
 msgid "Standard"
 msgstr "Stannardach"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5499
+#: modules/printbackends/cups/ctkprintbackendcups.c:5573
 msgctxt "cover page"
 msgid "Top Secret"
 msgstr "Fìor-dhìomhair"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5500
+#: modules/printbackends/cups/ctkprintbackendcups.c:5574
 msgctxt "cover page"
 msgid "Unclassified"
 msgstr "Chan ann dìomhair"
@@ -6728,7 +8374,7 @@ msgstr "Chan ann dìomhair"
 #. Translators, this string is used to label the pages-per-sheet option
 #. * in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5512
+#: modules/printbackends/cups/ctkprintbackendcups.c:5586
 msgctxt "printer option"
 msgid "Pages per Sheet"
 msgstr "Duilleagan gach siota"
@@ -6736,7 +8382,7 @@ msgstr "Duilleagan gach siota"
 #. Translators, this string is used to label the option in the print
 #. * dialog that controls in what order multiple pages are arranged
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5529
+#: modules/printbackends/cups/ctkprintbackendcups.c:5603
 msgctxt "printer option"
 msgid "Page Ordering"
 msgstr "Òrdugh nan duilleagan"
@@ -6744,7 +8390,7 @@ msgstr "Òrdugh nan duilleagan"
 #. Translators, this is the label used for the option in the print
 #. * dialog that controls the front cover page.
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5571
+#: modules/printbackends/cups/ctkprintbackendcups.c:5645
 msgctxt "printer option"
 msgid "Before"
 msgstr "Roimhe"
@@ -6752,7 +8398,7 @@ msgstr "Roimhe"
 #. Translators, this is the label used for the option in the print
 #. * dialog that controls the back cover page.
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5586
+#: modules/printbackends/cups/ctkprintbackendcups.c:5660
 msgctxt "printer option"
 msgid "After"
 msgstr "As a dhèidh"
@@ -6761,7 +8407,7 @@ msgstr "As a dhèidh"
 #. * a print job is printed. Possible values are 'now', a specified time,
 #. * or 'on hold'
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5606
+#: modules/printbackends/cups/ctkprintbackendcups.c:5680
 msgctxt "printer option"
 msgid "Print at"
 msgstr "Clò-bhuail aig"
@@ -6769,7 +8415,7 @@ msgstr "Clò-bhuail aig"
 #. Translators: this is the name of the option that allows the user
 #. * to specify a time when a print job will be printed.
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5617
+#: modules/printbackends/cups/ctkprintbackendcups.c:5691
 msgctxt "printer option"
 msgid "Print at time"
 msgstr "Clò-bhuail aig àm sònraichte"
@@ -6779,35 +8425,35 @@ msgstr "Clò-bhuail aig àm sònraichte"
 #. * the width and height in points. E.g: "Custom
 #. * 230.4x142.9"
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5659
+#: modules/printbackends/cups/ctkprintbackendcups.c:5737
 #, c-format
 msgid "Custom %s×%s"
 msgstr "Meud gnàthaichte %s×%s"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5768
+#: modules/printbackends/cups/ctkprintbackendcups.c:5847
 msgctxt "printer option"
 msgid "Printer Profile"
 msgstr "Pròifil a’ chlò-bhualadair"
 
 #. TRANSLATORS: this is when color profile information is unavailable
-#: modules/printbackends/cups/ctkprintbackendcups.c:5775
+#: modules/printbackends/cups/ctkprintbackendcups.c:5854
 msgctxt "printer option value"
 msgid "Unavailable"
 msgstr "Chan eil seo ri fhaighinn"
 
 #. TRANSLATORS: when we're running an old CUPS, and
 #. * it hasn't registered the device with colord
-#: modules/printbackends/cups/ctkprintercups.c:269
+#: modules/printbackends/cups/ctkprintercups.c:275
 msgid "Color management unavailable"
 msgstr "Chan eil stiùireadh dhathan ri fhaighinn"
 
 #. TRANSLATORS: when there is no color profile available
-#: modules/printbackends/cups/ctkprintercups.c:281
+#: modules/printbackends/cups/ctkprintercups.c:287
 msgid "No profile available"
 msgstr "Chan eil pròifil ri fhaighinn"
 
 #. TRANSLATORS: when the color profile has no title
-#: modules/printbackends/cups/ctkprintercups.c:292
+#: modules/printbackends/cups/ctkprintercups.c:298
 msgid "Unspecified profile"
 msgstr "Pròifil nach deach a shònrachadh"
 
@@ -6815,39 +8461,39 @@ msgstr "Pròifil nach deach a shònrachadh"
 msgid "output"
 msgstr "às-chur"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:537
+#: modules/printbackends/file/ctkprintbackendfile.c:539
 msgid "Print to File"
 msgstr "Clò-bhuail gu faidhle"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:663
+#: modules/printbackends/file/ctkprintbackendfile.c:667
 msgid "PDF"
 msgstr "PDF"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:663
+#: modules/printbackends/file/ctkprintbackendfile.c:667
 msgid "Postscript"
 msgstr "Postscript"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:663
+#: modules/printbackends/file/ctkprintbackendfile.c:667
 msgid "SVG"
 msgstr "SVG"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:735
+#: modules/printbackends/file/ctkprintbackendfile.c:738
 msgid "File"
 msgstr "Faidhle"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:745
+#: modules/printbackends/file/ctkprintbackendfile.c:750
 msgid "_Output format"
 msgstr "Fòrmat an _às-chuir"
 
-#: modules/printbackends/lpr/ctkprintbackendlpr.c:393
+#: modules/printbackends/lpr/ctkprintbackendlpr.c:394
 msgid "Print to LPR"
 msgstr "Clò-bhuail gu LPR"
 
-#: modules/printbackends/lpr/ctkprintbackendlpr.c:419
+#: modules/printbackends/lpr/ctkprintbackendlpr.c:423
 msgid "Pages Per Sheet"
 msgstr "Duilleagan gach siota"
 
-#: modules/printbackends/lpr/ctkprintbackendlpr.c:426
+#: modules/printbackends/lpr/ctkprintbackendlpr.c:430
 msgid "Command Line"
 msgstr "Loidhne-àithne"
 
@@ -6882,9 +8528,94 @@ msgstr "neo-aithnichte"
 msgid "test-output.%s"
 msgstr "às-chur-deuchainneil.%s"
 
-#: modules/printbackends/test/ctkprintbackendtest.c:465
+#: modules/printbackends/test/ctkprintbackendtest.c:467
 msgid "Print to Test Printer"
 msgstr "Clò-bhuail gus an clò-bhualadair a chur fo dheuchainn"
+
+#~ msgid "3.2 core GL profile is not available on EGL implementation"
+#~ msgstr "Chan eil pròifil eitein GL 3.2 ri fhaighinn air toirt gu buil EGL"
+
+#~ msgid "Not implemented on OS X"
+#~ msgstr "Cha deach seo a thoirt gu bhil air OS X"
+
+#~ msgctxt "Color name"
+#~ msgid "Scarlet Red"
+#~ msgstr "Dorch-sgàrlaid"
+
+#~ msgctxt "Color name"
+#~ msgid "Light Butter"
+#~ msgstr "Dath soilleir an ime"
+
+#~ msgctxt "Color name"
+#~ msgid "Butter"
+#~ msgstr "Dath an ime"
+
+#~ msgctxt "Color name"
+#~ msgid "Sky Blue"
+#~ msgstr "Speur-ghorm"
+
+#~ msgctxt "Color name"
+#~ msgid "Plum"
+#~ msgstr "Dath plumais"
+
+#~ msgctxt "Color name"
+#~ msgid "Light Chocolate"
+#~ msgstr "Dath soilleir seòclaid"
+
+#~ msgctxt "Color name"
+#~ msgid "Chocolate"
+#~ msgstr "Dath seòclaid"
+
+#~ msgctxt "Color name"
+#~ msgid "Dark Chocolate"
+#~ msgstr "Dath dorcha seòclaid"
+
+#~ msgctxt "Color name"
+#~ msgid "Light Aluminum 1"
+#~ msgstr "Alman soilleir 1"
+
+#~ msgctxt "Color name"
+#~ msgid "Aluminum 1"
+#~ msgstr "Alman 1"
+
+#~ msgctxt "Color name"
+#~ msgid "Dark Aluminum 1"
+#~ msgstr "Alman dorcha 1"
+
+#~ msgctxt "Color name"
+#~ msgid "Light Aluminum 2"
+#~ msgstr "Alman soilleir 2"
+
+#~ msgctxt "Color name"
+#~ msgid "Aluminum 2"
+#~ msgstr "Alman 2"
+
+#~ msgctxt "Color name"
+#~ msgid "Dark Aluminum 2"
+#~ msgstr "Alman dorcha 2"
+
+#~ msgctxt "Color name"
+#~ msgid "Darker Gray"
+#~ msgstr "Liath nas duirche"
+
+#~ msgctxt "Color name"
+#~ msgid "Medium Gray"
+#~ msgstr "Liath meadhanach"
+
+#~ msgctxt "Color name"
+#~ msgid "Lighter Gray"
+#~ msgstr "Liath nas soilleire"
+
+#~ msgctxt "switch"
+#~ msgid "ON"
+#~ msgstr "AIR"
+
+#~ msgctxt "switch"
+#~ msgid "OFF"
+#~ msgstr "DHETH"
+
+#~ msgid "smb://"
+#~ msgstr "smb://"
 
 #~ msgid "Could not start the search process"
 #~ msgstr "Cha b' urrainn dhuinn tòiseachadh air an lorg"

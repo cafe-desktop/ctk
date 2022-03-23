@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+ 2.14\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-20 13:38+0000\n"
+"POT-Creation-Date: 2022-03-23 17:45+0100\n"
 "PO-Revision-Date: 2018-02-20 20:34+0100\n"
 "Last-Translator: Marko M. Kostić <marko.m.kostic@gmail.com>\n"
 "Language-Team: srpski <gnome-sr@googlegroups.org>\n"
@@ -19,8 +19,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : n"
-"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : "
+"n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Project-Style: gnome\n"
 "X-Generator: Poedit 2.0.3\n"
 
@@ -29,48 +29,48 @@ msgstr ""
 msgid "Broadway display type not supported: %s"
 msgstr "Brodvej prikaz nije podržan: %s"
 
-#: cdk/cdk.c:182
+#: cdk/cdk.c:179
 #, c-format
 msgid "Error parsing option --cdk-debug"
 msgstr "Greška u obradi opcije „--cdk-debug“"
 
-#: cdk/cdk.c:202
+#: cdk/cdk.c:199
 #, c-format
 msgid "Error parsing option --cdk-no-debug"
 msgstr "Greška u obradi opcije „--cdk-no-debug“"
 
 #. Description of --class=CLASS in --help output
-#: cdk/cdk.c:231
+#: cdk/cdk.c:228
 msgid "Program class as used by the window manager"
 msgstr "Klasa programa koju koristi upravljač prozora"
 
 #. Placeholder in --class=CLASS in --help output
-#: cdk/cdk.c:232
+#: cdk/cdk.c:229
 msgid "CLASS"
 msgstr "KLASA"
 
 #. Description of --name=NAME in --help output
-#: cdk/cdk.c:234
+#: cdk/cdk.c:231
 msgid "Program name as used by the window manager"
 msgstr "Naziv programa kako ga prikazuje upravljač prozora"
 
 #. Placeholder in --name=NAME in --help output
-#: cdk/cdk.c:235
+#: cdk/cdk.c:232
 msgid "NAME"
 msgstr "NAZIV"
 
 #. Description of --display=DISPLAY in --help output
-#: cdk/cdk.c:238
+#: cdk/cdk.c:235
 msgid "X display to use"
 msgstr "Iks prikaz za korišćenje"
 
 #. Placeholder in --display=DISPLAY in --help output
-#: cdk/cdk.c:239
+#: cdk/cdk.c:236
 msgid "DISPLAY"
 msgstr "PRIKAZ"
 
 #. Description of --cdk-debug=FLAGS in --help output
-#: cdk/cdk.c:243
+#: cdk/cdk.c:240
 msgid "CDK debugging flags to set"
 msgstr "CDK opcije za uklanjanje grešaka za postavljanje"
 
@@ -78,20 +78,20 @@ msgstr "CDK opcije za uklanjanje grešaka za postavljanje"
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
 #. Placeholder in --ctk-debug=FLAGS in --help output
 #. Placeholder in --ctk-no-debug=FLAGS in --help output
-#: cdk/cdk.c:244 cdk/cdk.c:247 ctk/ctkmain.c:471 ctk/ctkmain.c:474
+#: cdk/cdk.c:241 cdk/cdk.c:244 ctk/ctkmain.c:471 ctk/ctkmain.c:474
 msgid "FLAGS"
 msgstr "OPCIJE"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
-#: cdk/cdk.c:246
+#: cdk/cdk.c:243
 msgid "CDK debugging flags to unset"
 msgstr "CDK opcije za otklanjanje grešaka za uklanjanje"
 
-#: cdk/cdkwindow.c:2829
+#: cdk/cdkwindow.c:2851
 msgid "GL support disabled via CDK_DEBUG"
 msgstr "GL podrška je onemogućena sa „CDK_DEBUG“"
 
-#: cdk/cdkwindow.c:2840
+#: cdk/cdkwindow.c:2862
 msgid "The current backend does not support OpenGL"
 msgstr "Tekući pozadinac ne podržava OpenGL"
 
@@ -472,32 +472,28 @@ msgctxt "keyboard label"
 msgid "Suspend"
 msgstr "Obustavi"
 
-#: cdk/mir/cdkmirglcontext.c:48 cdk/mir/cdkmirwindowimpl.c:2226
-#: cdk/wayland/cdkglcontext-wayland.c:468 cdk/win32/cdkglcontext-win32.c:814
-#: cdk/x11/cdkglcontext-x11.c:1274
-msgid "No GL implementation is available"
-msgstr "Nije dostupna GL podrška"
+#: cdk/quartz/cdkglcontext-quartz.c:123
+#, fuzzy
+msgid "Unable to create a GL pixel format"
+msgstr "Ne mogu da napravim GL sadržaj"
 
-#: cdk/mir/cdkmirglcontext.c:89 cdk/wayland/cdkglcontext-wayland.c:208
-#: cdk/win32/cdkglcontext-win32.c:765 cdk/x11/cdkglcontext-x11.c:720
-#: cdk/x11/cdkglcontext-x11.c:770
+#: cdk/quartz/cdkglcontext-quartz.c:133 cdk/wayland/cdkglcontext-wayland.c:208
+#: cdk/win32/cdkglcontext-win32.c:1072 cdk/win32/cdkglcontext-win32.c:1112
+#: cdk/x11/cdkglcontext-x11.c:724 cdk/x11/cdkglcontext-x11.c:774
 msgid "Unable to create a GL context"
 msgstr "Ne mogu da napravim GL sadržaj"
 
-#: cdk/mir/cdkmirwindowimpl.c:2188 cdk/mir/cdkmirwindowimpl.c:2198
 #: cdk/wayland/cdkglcontext-wayland.c:418
-#: cdk/wayland/cdkglcontext-wayland.c:428 cdk/win32/cdkglcontext-win32.c:719
-#: cdk/x11/cdkglcontext-x11.c:968
+#: cdk/wayland/cdkglcontext-wayland.c:428 cdk/win32/cdkglcontext-win32.c:910
+#: cdk/win32/cdkglcontext-win32.c:920 cdk/win32/cdkglcontext-win32.c:1037
+#: cdk/x11/cdkglcontext-x11.c:975
 msgid "No available configurations for the given pixel format"
 msgstr "Nema dostupnih podešavanja za izabrani format piksela"
 
-#: cdk/mir/cdkmirwindowimpl.c:2234
-msgid "3.2 core GL profile is not available on EGL implementation"
-msgstr "Jezgarni 3.2 GL profil nije dostupan uz EGL podršku"
-
-#: cdk/quartz/cdkglcontext-quartz.c:37
-msgid "Not implemented on OS X"
-msgstr "Nije sprovedeno na OS X-u"
+#: cdk/wayland/cdkglcontext-wayland.c:468 cdk/win32/cdkglcontext-win32.c:1179
+#: cdk/x11/cdkglcontext-x11.c:1281
+msgid "No GL implementation is available"
+msgstr "Nije dostupna GL podrška"
 
 #: cdk/wayland/cdkglcontext-wayland.c:476
 msgid "Core GL is not available on EGL implementation"
@@ -533,17 +529,17 @@ msgstr "Veličina palete u 8-bitnom režimu"
 msgid "COLORS"
 msgstr "BOJE"
 
-#: cdk/x11/cdkapplaunchcontext-x11.c:295
+#: cdk/x11/cdkapplaunchcontext-x11.c:298
 #, c-format
 msgid "Starting %s"
 msgstr "Pokrećem „%s“"
 
-#: cdk/x11/cdkapplaunchcontext-x11.c:308
+#: cdk/x11/cdkapplaunchcontext-x11.c:311
 #, c-format
 msgid "Opening %s"
 msgstr "Otvaram „%s“"
 
-#: cdk/x11/cdkapplaunchcontext-x11.c:313
+#: cdk/x11/cdkapplaunchcontext-x11.c:316
 #, c-format
 msgid "Opening %d Item"
 msgid_plural "Opening %d Items"
@@ -552,7 +548,7 @@ msgstr[1] "Otvaram %d stavke"
 msgstr[2] "Otvaram %d stavki"
 msgstr[3] "Otvaram jednu stavku"
 
-#: cdk/x11/cdkglcontext-x11.c:996
+#: cdk/x11/cdkglcontext-x11.c:1003
 #, c-format
 msgid "No available configurations for the given RGBA pixel format"
 msgstr "Nema podešavanja za dati RGBA format piksela"
@@ -567,43 +563,43 @@ msgctxt "Action name"
 msgid "Toggle"
 msgstr "Promeni"
 
-#: ctk/a11y/ctkbuttonaccessible.c:321 ctk/a11y/ctkmenuitemaccessible.c:436
+#: ctk/a11y/ctkbuttonaccessible.c:323 ctk/a11y/ctkmenuitemaccessible.c:439
 msgctxt "Action name"
 msgid "Click"
 msgstr "Klikni"
 
-#: ctk/a11y/ctkbuttonaccessible.c:330
+#: ctk/a11y/ctkbuttonaccessible.c:332
 msgctxt "Action description"
 msgid "Clicks the button"
 msgstr "Klika na dugme"
 
-#: ctk/a11y/ctkcellaccessible.c:255
+#: ctk/a11y/ctkcellaccessible.c:257
 msgctxt "Action name"
 msgid "Expand or contract"
 msgstr "Raširi ili skupi"
 
-#: ctk/a11y/ctkcellaccessible.c:257
+#: ctk/a11y/ctkcellaccessible.c:259
 msgctxt "Action name"
 msgid "Edit"
 msgstr "Uredi"
 
-#: ctk/a11y/ctkcellaccessible.c:259 ctk/a11y/ctkcolorswatchaccessible.c:149
-#: ctk/a11y/ctkentryaccessible.c:1557 ctk/a11y/ctkexpanderaccessible.c:281
+#: ctk/a11y/ctkcellaccessible.c:261 ctk/a11y/ctkcolorswatchaccessible.c:149
+#: ctk/a11y/ctkentryaccessible.c:1560 ctk/a11y/ctkexpanderaccessible.c:281
 msgctxt "Action name"
 msgid "Activate"
 msgstr "Aktiviraj"
 
-#: ctk/a11y/ctkcellaccessible.c:272
+#: ctk/a11y/ctkcellaccessible.c:274
 msgctxt "Action description"
 msgid "Expands or contracts the row in the tree view containing this cell"
 msgstr "Širi ili skuplja red u pregledu stablom koji sadrži ovo polje"
 
-#: ctk/a11y/ctkcellaccessible.c:274
+#: ctk/a11y/ctkcellaccessible.c:276
 msgctxt "Action description"
 msgid "Creates a widget in which the contents of the cell can be edited"
 msgstr "Stvara element u kome sadržaj polja može biti izmenjen"
 
-#: ctk/a11y/ctkcellaccessible.c:276
+#: ctk/a11y/ctkcellaccessible.c:278
 msgctxt "Action description"
 msgid "Activates the cell"
 msgstr "Aktivira polje"
@@ -634,17 +630,17 @@ msgctxt "Action description"
 msgid "Customizes the color"
 msgstr "Prilagođava boju"
 
-#: ctk/a11y/ctkcomboboxaccessible.c:310
+#: ctk/a11y/ctkcomboboxaccessible.c:313
 msgctxt "Action name"
 msgid "Press"
 msgstr "Pritisni"
 
-#: ctk/a11y/ctkcomboboxaccessible.c:319
+#: ctk/a11y/ctkcomboboxaccessible.c:322
 msgctxt "Action description"
 msgid "Presses the combobox"
 msgstr "Pritiska polje za izbor"
 
-#: ctk/a11y/ctkentryaccessible.c:1566
+#: ctk/a11y/ctkentryaccessible.c:1569
 msgctxt "Action description"
 msgid "Activates the entry"
 msgstr "Pokreće unos"
@@ -657,409 +653,409 @@ msgstr "Pokreće proširivač"
 #. FIXME these need accelerators when appropriate, and
 #. * need the mnemonics to be rationalized
 #.
-#: ctk/a11y/ctkimageaccessible.c:53 ctk/ctkstock.c:341
+#: ctk/a11y/ctkimageaccessible.c:53 ctk/ctkstock.c:327
 msgctxt "Stock label"
 msgid "_About"
 msgstr "_O programu"
 
-#: ctk/a11y/ctkimageaccessible.c:54 ctk/ctkstock.c:342
+#: ctk/a11y/ctkimageaccessible.c:54 ctk/ctkstock.c:328
 msgctxt "Stock label"
 msgid "_Add"
 msgstr "_Dodaj"
 
-#: ctk/a11y/ctkimageaccessible.c:55 ctk/ctkstock.c:344
+#: ctk/a11y/ctkimageaccessible.c:55 ctk/ctkstock.c:330
 msgctxt "Stock label"
 msgid "_Bold"
 msgstr "_Podebljano"
 
-#: ctk/a11y/ctkimageaccessible.c:56 ctk/ctkstock.c:346
+#: ctk/a11y/ctkimageaccessible.c:56 ctk/ctkstock.c:332
 msgctxt "Stock label"
 msgid "_CD-ROM"
 msgstr "_CD uređaj"
 
-#: ctk/a11y/ctkimageaccessible.c:57 ctk/ctkstock.c:347
+#: ctk/a11y/ctkimageaccessible.c:57 ctk/ctkstock.c:333
 msgctxt "Stock label"
 msgid "_Clear"
 msgstr "_Očisti"
 
-#: ctk/a11y/ctkimageaccessible.c:58 ctk/ctkstock.c:348
+#: ctk/a11y/ctkimageaccessible.c:58 ctk/ctkstock.c:334
 msgctxt "Stock label"
 msgid "_Close"
 msgstr "_Zatvori"
 
-#: ctk/a11y/ctkimageaccessible.c:59 ctk/ctkheaderbar.c:415 ctk/ctkwindow.c:9229
+#: ctk/a11y/ctkimageaccessible.c:59 ctk/ctkheaderbar.c:415 ctk/ctkwindow.c:9319
 msgid "Minimize"
 msgstr "Umanji"
 
-#: ctk/a11y/ctkimageaccessible.c:60 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9238
+#: ctk/a11y/ctkimageaccessible.c:60 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9328
 msgid "Maximize"
 msgstr "Uvećaj"
 
-#: ctk/a11y/ctkimageaccessible.c:61 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9195
+#: ctk/a11y/ctkimageaccessible.c:61 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9285
 msgid "Restore"
 msgstr "Povrati"
 
-#: ctk/a11y/ctkimageaccessible.c:62 ctk/ctkstock.c:351
+#: ctk/a11y/ctkimageaccessible.c:62 ctk/ctkstock.c:337
 msgctxt "Stock label"
 msgid "_Copy"
 msgstr "_Kopiraj"
 
-#: ctk/a11y/ctkimageaccessible.c:63 ctk/ctkstock.c:352
+#: ctk/a11y/ctkimageaccessible.c:63 ctk/ctkstock.c:338
 msgctxt "Stock label"
 msgid "Cu_t"
 msgstr "_Iseci"
 
-#: ctk/a11y/ctkimageaccessible.c:64 ctk/ctkstock.c:353
+#: ctk/a11y/ctkimageaccessible.c:64 ctk/ctkstock.c:339
 msgctxt "Stock label"
 msgid "_Delete"
 msgstr "_Obriši"
 
-#: ctk/a11y/ctkimageaccessible.c:65 ctk/ctkstock.c:335
+#: ctk/a11y/ctkimageaccessible.c:65 ctk/ctkstock.c:321
 msgctxt "Stock label"
 msgid "Error"
 msgstr "Greška"
 
 #. KEEP IN SYNC with ctkiconfactory.c stock icons, when appropriate
-#: ctk/a11y/ctkimageaccessible.c:66 ctk/ctkstock.c:333
+#: ctk/a11y/ctkimageaccessible.c:66 ctk/ctkstock.c:319
 msgctxt "Stock label"
 msgid "Information"
 msgstr "Obaveštenje"
 
-#: ctk/a11y/ctkimageaccessible.c:67 ctk/ctkstock.c:336
+#: ctk/a11y/ctkimageaccessible.c:67 ctk/ctkstock.c:322
 msgctxt "Stock label"
 msgid "Question"
 msgstr "Pitanje"
 
-#: ctk/a11y/ctkimageaccessible.c:68 ctk/ctkstock.c:334
+#: ctk/a11y/ctkimageaccessible.c:68 ctk/ctkstock.c:320
 msgctxt "Stock label"
 msgid "Warning"
 msgstr "Upozorenje"
 
-#: ctk/a11y/ctkimageaccessible.c:69 ctk/ctkstock.c:356
+#: ctk/a11y/ctkimageaccessible.c:69 ctk/ctkstock.c:342
 msgctxt "Stock label"
 msgid "_Execute"
 msgstr "_Izvrši"
 
-#: ctk/a11y/ctkimageaccessible.c:70 ctk/ctkstock.c:358
+#: ctk/a11y/ctkimageaccessible.c:70 ctk/ctkstock.c:344
 msgctxt "Stock label"
 msgid "_File"
 msgstr "_Datoteka"
 
-#: ctk/a11y/ctkimageaccessible.c:71 ctk/ctkstock.c:359
+#: ctk/a11y/ctkimageaccessible.c:71 ctk/ctkstock.c:345
 msgctxt "Stock label"
 msgid "_Find"
 msgstr "_Nađi"
 
-#: ctk/a11y/ctkimageaccessible.c:72 ctk/ctkstock.c:360
+#: ctk/a11y/ctkimageaccessible.c:72 ctk/ctkstock.c:346
 msgctxt "Stock label"
 msgid "Find and _Replace"
 msgstr "Nađi i _zameni"
 
-#: ctk/a11y/ctkimageaccessible.c:73 ctk/ctkstock.c:361
+#: ctk/a11y/ctkimageaccessible.c:73 ctk/ctkstock.c:347
 msgctxt "Stock label"
 msgid "_Floppy"
 msgstr "Dis_keta"
 
-#: ctk/a11y/ctkimageaccessible.c:74 ctk/ctkstock.c:362
+#: ctk/a11y/ctkimageaccessible.c:74 ctk/ctkstock.c:348
 msgctxt "Stock label"
 msgid "_Fullscreen"
 msgstr "_Ceo ekran"
 
 #. This is a navigation label as in "go to the bottom of the page"
-#: ctk/a11y/ctkimageaccessible.c:75 ctk/ctkstock.c:365
+#: ctk/a11y/ctkimageaccessible.c:75 ctk/ctkstock.c:351
 msgctxt "Stock label, navigation"
 msgid "_Bottom"
 msgstr "_Dole"
 
 #. This is a navigation label as in "go to the first page"
-#: ctk/a11y/ctkimageaccessible.c:76 ctk/ctkstock.c:367
+#: ctk/a11y/ctkimageaccessible.c:76 ctk/ctkstock.c:353
 msgctxt "Stock label, navigation"
 msgid "_First"
 msgstr "P_rvo"
 
 #. This is a navigation label as in "go to the last page"
-#: ctk/a11y/ctkimageaccessible.c:77 ctk/ctkstock.c:369
+#: ctk/a11y/ctkimageaccessible.c:77 ctk/ctkstock.c:355
 msgctxt "Stock label, navigation"
 msgid "_Last"
 msgstr "Posled_nje"
 
 #. This is a navigation label as in "go to the top of the page"
-#: ctk/a11y/ctkimageaccessible.c:78 ctk/ctkstock.c:371
+#: ctk/a11y/ctkimageaccessible.c:78 ctk/ctkstock.c:357
 msgctxt "Stock label, navigation"
 msgid "_Top"
 msgstr "_Gore"
 
 #. This is a navigation label as in "go back"
-#: ctk/a11y/ctkimageaccessible.c:79 ctk/ctkstock.c:373
+#: ctk/a11y/ctkimageaccessible.c:79 ctk/ctkstock.c:359
 msgctxt "Stock label, navigation"
 msgid "_Back"
 msgstr "_Nazad"
 
 #. This is a navigation label as in "go down"
-#: ctk/a11y/ctkimageaccessible.c:80 ctk/ctkstock.c:375
+#: ctk/a11y/ctkimageaccessible.c:80 ctk/ctkstock.c:361
 msgctxt "Stock label, navigation"
 msgid "_Down"
 msgstr "_Dole"
 
 #. This is a navigation label as in "go forward"
-#: ctk/a11y/ctkimageaccessible.c:81 ctk/ctkstock.c:377
+#: ctk/a11y/ctkimageaccessible.c:81 ctk/ctkstock.c:363
 msgctxt "Stock label, navigation"
 msgid "_Forward"
 msgstr "Na_pred"
 
 #. This is a navigation label as in "go up"
-#: ctk/a11y/ctkimageaccessible.c:82 ctk/ctkstock.c:379
+#: ctk/a11y/ctkimageaccessible.c:82 ctk/ctkstock.c:365
 msgctxt "Stock label, navigation"
 msgid "_Up"
 msgstr "_Gore"
 
 # Ili „hard disk“
-#: ctk/a11y/ctkimageaccessible.c:83 ctk/ctkstock.c:380
+#: ctk/a11y/ctkimageaccessible.c:83 ctk/ctkstock.c:366
 msgctxt "Stock label"
 msgid "_Hard Disk"
 msgstr "_Čvrsti disk"
 
-#: ctk/a11y/ctkimageaccessible.c:84 ctk/ctkstock.c:381
+#: ctk/a11y/ctkimageaccessible.c:84 ctk/ctkstock.c:367
 msgctxt "Stock label"
 msgid "_Help"
 msgstr "_Pomoć"
 
 # ako je za "home directory", onda bi bilo dobro "licni direktorijum", ako je za "home page", onda za "licna stranica"
-#: ctk/a11y/ctkimageaccessible.c:85 ctk/ctkstock.c:382
+#: ctk/a11y/ctkimageaccessible.c:85 ctk/ctkstock.c:368
 msgctxt "Stock label"
 msgid "_Home"
 msgstr "_Početak"
 
-#: ctk/a11y/ctkimageaccessible.c:86 ctk/ctkstock.c:383
+#: ctk/a11y/ctkimageaccessible.c:86 ctk/ctkstock.c:369
 msgctxt "Stock label"
 msgid "Increase Indent"
 msgstr "Povećaj uvlačenje"
 
-#: ctk/a11y/ctkimageaccessible.c:87 ctk/ctkstock.c:387
+#: ctk/a11y/ctkimageaccessible.c:87 ctk/ctkstock.c:373
 msgctxt "Stock label"
 msgid "_Italic"
 msgstr "_Kurziv"
 
-#: ctk/a11y/ctkimageaccessible.c:88 ctk/ctkstock.c:388
+#: ctk/a11y/ctkimageaccessible.c:88 ctk/ctkstock.c:374
 msgctxt "Stock label"
 msgid "_Jump to"
 msgstr "_Idi na"
 
 #. This is about text justification, "centered text"
-#: ctk/a11y/ctkimageaccessible.c:89 ctk/ctkstock.c:390
+#: ctk/a11y/ctkimageaccessible.c:89 ctk/ctkstock.c:376
 msgctxt "Stock label"
 msgid "_Center"
 msgstr "_Centriraj"
 
 #. This is about text justification
-#: ctk/a11y/ctkimageaccessible.c:90 ctk/ctkstock.c:392
+#: ctk/a11y/ctkimageaccessible.c:90 ctk/ctkstock.c:378
 msgctxt "Stock label"
 msgid "_Fill"
 msgstr "_Popuni"
 
 #. This is about text justification, "left-justified text"
-#: ctk/a11y/ctkimageaccessible.c:91 ctk/ctkstock.c:394
+#: ctk/a11y/ctkimageaccessible.c:91 ctk/ctkstock.c:380
 msgctxt "Stock label"
 msgid "_Left"
 msgstr "_Levo"
 
 #. This is about text justification, "right-justified text"
-#: ctk/a11y/ctkimageaccessible.c:92 ctk/ctkstock.c:396
+#: ctk/a11y/ctkimageaccessible.c:92 ctk/ctkstock.c:382
 msgctxt "Stock label"
 msgid "_Right"
 msgstr "D_esno"
 
-#: ctk/a11y/ctkimageaccessible.c:93 ctk/ctkstock.c:363
+#: ctk/a11y/ctkimageaccessible.c:93 ctk/ctkstock.c:349
 msgctxt "Stock label"
 msgid "_Leave Fullscreen"
 msgstr "Napusti _ceo ekran"
 
 #. Media label, as in "fast forward"
-#: ctk/a11y/ctkimageaccessible.c:94 ctk/ctkstock.c:399
+#: ctk/a11y/ctkimageaccessible.c:94 ctk/ctkstock.c:385
 msgctxt "Stock label, media"
 msgid "_Forward"
 msgstr "Na_pred"
 
 #. Media label, as in "next song"
-#: ctk/a11y/ctkimageaccessible.c:95 ctk/ctkstock.c:401
+#: ctk/a11y/ctkimageaccessible.c:95 ctk/ctkstock.c:387
 msgctxt "Stock label, media"
 msgid "_Next"
 msgstr "_Sledeće"
 
 #. Media label, as in "pause music"
-#: ctk/a11y/ctkimageaccessible.c:96 ctk/ctkstock.c:403
+#: ctk/a11y/ctkimageaccessible.c:96 ctk/ctkstock.c:389
 msgctxt "Stock label, media"
 msgid "P_ause"
 msgstr "Pa_uziraj"
 
 #. Media label, as in "play music"
-#: ctk/a11y/ctkimageaccessible.c:97 ctk/ctkstock.c:405
+#: ctk/a11y/ctkimageaccessible.c:97 ctk/ctkstock.c:391
 msgctxt "Stock label, media"
 msgid "_Play"
 msgstr "_Pusti"
 
 #. Media label, as in  "previous song"
-#: ctk/a11y/ctkimageaccessible.c:98 ctk/ctkstock.c:407
+#: ctk/a11y/ctkimageaccessible.c:98 ctk/ctkstock.c:393
 msgctxt "Stock label, media"
 msgid "Pre_vious"
 msgstr "Pre_thodno"
 
 #. Media label
-#: ctk/a11y/ctkimageaccessible.c:99 ctk/ctkstock.c:409
+#: ctk/a11y/ctkimageaccessible.c:99 ctk/ctkstock.c:395
 msgctxt "Stock label, media"
 msgid "_Record"
 msgstr "S_nimi"
 
 # hm, hm?
 #. Media label
-#: ctk/a11y/ctkimageaccessible.c:100 ctk/ctkstock.c:411
+#: ctk/a11y/ctkimageaccessible.c:100 ctk/ctkstock.c:397
 msgctxt "Stock label, media"
 msgid "R_ewind"
 msgstr "Pre_motaj"
 
 #. Media label
-#: ctk/a11y/ctkimageaccessible.c:101 ctk/ctkstock.c:413
+#: ctk/a11y/ctkimageaccessible.c:101 ctk/ctkstock.c:399
 msgctxt "Stock label, media"
 msgid "_Stop"
 msgstr "_Zaustavi"
 
-#: ctk/a11y/ctkimageaccessible.c:102 ctk/ctkstock.c:414
+#: ctk/a11y/ctkimageaccessible.c:102 ctk/ctkstock.c:400
 msgctxt "Stock label"
 msgid "_Network"
 msgstr "_Mreža"
 
-#: ctk/a11y/ctkimageaccessible.c:103 ctk/ctkstock.c:415
+#: ctk/a11y/ctkimageaccessible.c:103 ctk/ctkstock.c:401
 msgctxt "Stock label"
 msgid "_New"
 msgstr "_Novo"
 
-#: ctk/a11y/ctkimageaccessible.c:104 ctk/ctkstock.c:418
+#: ctk/a11y/ctkimageaccessible.c:104 ctk/ctkstock.c:404
 msgctxt "Stock label"
 msgid "_Open"
 msgstr "_Otvori"
 
-#: ctk/a11y/ctkimageaccessible.c:105 ctk/ctkstock.c:428
+#: ctk/a11y/ctkimageaccessible.c:105 ctk/ctkstock.c:414
 msgctxt "Stock label"
 msgid "_Paste"
 msgstr "U_baci"
 
-#: ctk/a11y/ctkimageaccessible.c:106 ctk/ctkstock.c:430
+#: ctk/a11y/ctkimageaccessible.c:106 ctk/ctkstock.c:416
 msgctxt "Stock label"
 msgid "_Print"
 msgstr "_Štampaj"
 
-#: ctk/a11y/ctkimageaccessible.c:107 ctk/ctkstock.c:431
+#: ctk/a11y/ctkimageaccessible.c:107 ctk/ctkstock.c:417
 msgctxt "Stock label"
 msgid "Print Pre_view"
 msgstr "Pre_gled pred štampu"
 
-#: ctk/a11y/ctkimageaccessible.c:108 ctk/ctkstock.c:432
+#: ctk/a11y/ctkimageaccessible.c:108 ctk/ctkstock.c:418
 msgctxt "Stock label"
 msgid "_Properties"
 msgstr "_Osobine"
 
-#: ctk/a11y/ctkimageaccessible.c:109 ctk/ctkstock.c:433
+#: ctk/a11y/ctkimageaccessible.c:109 ctk/ctkstock.c:419
 msgctxt "Stock label"
 msgid "_Quit"
 msgstr "_Izađi"
 
-#: ctk/a11y/ctkimageaccessible.c:110 ctk/ctkstock.c:434
+#: ctk/a11y/ctkimageaccessible.c:110 ctk/ctkstock.c:420
 msgctxt "Stock label"
 msgid "_Redo"
 msgstr "_Ponovi"
 
-#: ctk/a11y/ctkimageaccessible.c:111 ctk/ctkstock.c:435
+#: ctk/a11y/ctkimageaccessible.c:111 ctk/ctkstock.c:421
 msgctxt "Stock label"
 msgid "_Refresh"
 msgstr "_Osveži"
 
-#: ctk/a11y/ctkimageaccessible.c:112 ctk/ctkstock.c:436
+#: ctk/a11y/ctkimageaccessible.c:112 ctk/ctkstock.c:422
 msgctxt "Stock label"
 msgid "_Remove"
 msgstr "_Ukloni"
 
-#: ctk/a11y/ctkimageaccessible.c:113 ctk/ctkstock.c:437
+#: ctk/a11y/ctkimageaccessible.c:113 ctk/ctkstock.c:423
 msgctxt "Stock label"
 msgid "_Revert"
 msgstr "_Vrati"
 
-#: ctk/a11y/ctkimageaccessible.c:114 ctk/ctkstock.c:438
+#: ctk/a11y/ctkimageaccessible.c:114 ctk/ctkstock.c:424
 msgctxt "Stock label"
 msgid "_Save"
 msgstr "_Sačuvaj"
 
-#: ctk/a11y/ctkimageaccessible.c:115 ctk/ctkstock.c:439
+#: ctk/a11y/ctkimageaccessible.c:115 ctk/ctkstock.c:425
 msgctxt "Stock label"
 msgid "Save _As"
 msgstr "Sačuvaj _kao"
 
-#: ctk/a11y/ctkimageaccessible.c:116 ctk/ctkstock.c:440
+#: ctk/a11y/ctkimageaccessible.c:116 ctk/ctkstock.c:426
 msgctxt "Stock label"
 msgid "Select _All"
 msgstr "Izaberi _sve"
 
 #. Sorting direction
-#: ctk/a11y/ctkimageaccessible.c:117 ctk/ctkstock.c:444
+#: ctk/a11y/ctkimageaccessible.c:117 ctk/ctkstock.c:430
 msgctxt "Stock label"
 msgid "_Ascending"
 msgstr "_Rastući"
 
 #. Sorting direction
-#: ctk/a11y/ctkimageaccessible.c:118 ctk/ctkstock.c:446
+#: ctk/a11y/ctkimageaccessible.c:118 ctk/ctkstock.c:432
 msgctxt "Stock label"
 msgid "_Descending"
 msgstr "_Opadajući"
 
-#: ctk/a11y/ctkimageaccessible.c:119 ctk/ctkstock.c:447
+#: ctk/a11y/ctkimageaccessible.c:119 ctk/ctkstock.c:433
 msgctxt "Stock label"
 msgid "_Spell Check"
 msgstr "_Provera pisanja"
 
-#: ctk/a11y/ctkimageaccessible.c:120 ctk/ctkstock.c:448
+#: ctk/a11y/ctkimageaccessible.c:120 ctk/ctkstock.c:434
 msgctxt "Stock label"
 msgid "_Stop"
 msgstr "_Zaustavi"
 
 #. Font variant
-#: ctk/a11y/ctkimageaccessible.c:121 ctk/ctkstock.c:450
+#: ctk/a11y/ctkimageaccessible.c:121 ctk/ctkstock.c:436
 msgctxt "Stock label"
 msgid "_Strikethrough"
 msgstr "_Precrtaj"
 
 #. Font variant
-#: ctk/a11y/ctkimageaccessible.c:122 ctk/ctkstock.c:453
+#: ctk/a11y/ctkimageaccessible.c:122 ctk/ctkstock.c:439
 msgctxt "Stock label"
 msgid "_Underline"
 msgstr "_Podvuci"
 
-#: ctk/a11y/ctkimageaccessible.c:123 ctk/ctkstock.c:454
+#: ctk/a11y/ctkimageaccessible.c:123 ctk/ctkstock.c:440
 msgctxt "Stock label"
 msgid "_Undo"
 msgstr "_Opozovi"
 
-#: ctk/a11y/ctkimageaccessible.c:124 ctk/ctkstock.c:384
+#: ctk/a11y/ctkimageaccessible.c:124 ctk/ctkstock.c:370
 msgctxt "Stock label"
 msgid "Decrease Indent"
 msgstr "Umanji uvlačenje"
 
 #. Zoom
-#: ctk/a11y/ctkimageaccessible.c:125 ctk/ctkstock.c:457
+#: ctk/a11y/ctkimageaccessible.c:125 ctk/ctkstock.c:443
 msgctxt "Stock label"
 msgid "_Normal Size"
 msgstr "_Obična veličina"
 
 #. Zoom
-#: ctk/a11y/ctkimageaccessible.c:126 ctk/ctkstock.c:459
+#: ctk/a11y/ctkimageaccessible.c:126 ctk/ctkstock.c:445
 msgctxt "Stock label"
 msgid "Best _Fit"
 msgstr "_Najbolje slaganje"
 
-#: ctk/a11y/ctkimageaccessible.c:127 ctk/ctkstock.c:460
+#: ctk/a11y/ctkimageaccessible.c:127 ctk/ctkstock.c:446
 msgctxt "Stock label"
 msgid "Zoom _In"
 msgstr "U_većaj"
 
-#: ctk/a11y/ctkimageaccessible.c:128 ctk/ctkstock.c:461
+#: ctk/a11y/ctkimageaccessible.c:128 ctk/ctkstock.c:447
 msgctxt "Stock label"
 msgid "Zoom _Out"
 msgstr "U_manji"
@@ -1068,7 +1064,7 @@ msgstr "U_manji"
 msgid "Menu"
 msgstr "Izbornik"
 
-#: ctk/a11y/ctkmenuitemaccessible.c:445
+#: ctk/a11y/ctkmenuitemaccessible.c:448
 msgctxt "Action description"
 msgid "Clicks the menuitem"
 msgstr "Klika stavku izbornika"
@@ -1244,13 +1240,13 @@ msgstr ""
 "miša i izaberite „Ovde sačuvaj boju.“"
 
 #: ctk/deprecated/ctkcolorseldialog.c:191 ctk/deprecated/ctkfontsel.c:1689
-#: ctk/ctkfilechoosernative.c:540 ctk/ctkfilechoosernative.c:632
-#: ctk/ctkfilechooserwidget.c:1476 ctk/ctkfilechooserwidget.c:6383
+#: ctk/ctkfilechoosernative.c:545 ctk/ctkfilechoosernative.c:637
+#: ctk/ctkfilechooserwidget.c:1498 ctk/ctkfilechooserwidget.c:6572
 #: ctk/ctkmessagedialog.c:952 ctk/ctkmessagedialog.c:965
-#: ctk/ctkmountoperation.c:545 ctk/ctkpagesetupunixdialog.c:196
-#: ctk/ctkprintbackend.c:763 ctk/ctkprinteroptionwidget.c:545
-#: ctk/ctkprintunixdialog.c:673 ctk/ctkprintunixdialog.c:746
-#: ctk/ctkwindow.c:12698 ctk/inspector/css-editor.c:201
+#: ctk/ctkmountoperation.c:594 ctk/ctkpagesetupunixdialog.c:197
+#: ctk/ctkprintbackend.c:781 ctk/ctkprinteroptionwidget.c:545
+#: ctk/ctkprintunixdialog.c:674 ctk/ctkprintunixdialog.c:747
+#: ctk/ctkwindow.c:12789 ctk/inspector/css-editor.c:201
 #: ctk/ui/ctkappchooserdialog.ui:61 ctk/ui/ctkassistant.ui:125
 #: ctk/ui/ctkcolorchooserdialog.ui:34 ctk/ui/ctkfontchooserdialog.ui:31
 msgid "_Cancel"
@@ -1293,13 +1289,13 @@ msgstr "_Veličina:"
 msgid "_Preview:"
 msgstr "_Pregled:"
 
-#: ctk/deprecated/ctkfontsel.c:1693 ctk/ctkpagesetupunixdialog.c:197
+#: ctk/deprecated/ctkfontsel.c:1693 ctk/ctkpagesetupunixdialog.c:198
 #: ctk/ui/ctkassistant.ui:50
 msgid "_Apply"
 msgstr "_Primeni"
 
 #: ctk/deprecated/ctkfontsel.c:1698 ctk/ctkmessagedialog.c:944
-#: ctk/ctkmessagedialog.c:966 ctk/ctkprintbackend.c:764 ctk/ctkwindow.c:12699
+#: ctk/ctkmessagedialog.c:966 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12790
 msgid "_OK"
 msgstr "U _redu"
 
@@ -1310,160 +1306,37 @@ msgstr "Izbor fonta"
 #. Translators: the format here is used to build the string that will be rendered
 #. * in the number emblem.
 #.
-#: ctk/deprecated/ctknumerableicon.c:473
+#: ctk/deprecated/ctknumerableicon.c:474
 #, c-format
 msgctxt "Number format"
 msgid "%d"
 msgstr "%Id"
 
-#: ctk/ctkstock.c:343
-msgctxt "Stock label"
-msgid "_Apply"
-msgstr "_Primeni"
-
-#: ctk/ctkstock.c:345
-msgctxt "Stock label"
-msgid "_Cancel"
-msgstr "O_dustani"
-
-#: ctk/ctkstock.c:349
-msgctxt "Stock label"
-msgid "C_onnect"
-msgstr "Uspostavi ve_zu"
-
-#: ctk/ctkstock.c:350
-msgctxt "Stock label"
-msgid "_Convert"
-msgstr "_Pretvori"
-
-#: ctk/ctkstock.c:354
-msgctxt "Stock label"
-msgid "_Discard"
-msgstr "_Odbaci"
-
-#: ctk/ctkstock.c:355
-msgctxt "Stock label"
-msgid "_Disconnect"
-msgstr "P_rekini vezu"
-
-#: ctk/ctkstock.c:357
-msgctxt "Stock label"
-msgid "_Edit"
-msgstr "_Uredi"
-
-#: ctk/ctkstock.c:385
-msgctxt "Stock label"
-msgid "_Index"
-msgstr "_Indeks"
-
-#: ctk/ctkstock.c:386
-msgctxt "Stock label"
-msgid "_Information"
-msgstr "Po_daci"
-
-#: ctk/ctkstock.c:416
-msgctxt "Stock label"
-msgid "_No"
-msgstr "_Ne"
-
-#: ctk/ctkstock.c:417
-msgctxt "Stock label"
-msgid "_OK"
-msgstr "U _redu"
-
-#. Page orientation
-#: ctk/ctkstock.c:420
-msgctxt "Stock label"
-msgid "Landscape"
-msgstr "Položeno"
-
-#. Page orientation
-#: ctk/ctkstock.c:422
-msgctxt "Stock label"
-msgid "Portrait"
-msgstr "Uspravno"
-
-#. Page orientation
-#: ctk/ctkstock.c:424
-msgctxt "Stock label"
-msgid "Reverse landscape"
-msgstr "Obrnuto položeno"
-
-#. Page orientation
-#: ctk/ctkstock.c:426
-msgctxt "Stock label"
-msgid "Reverse portrait"
-msgstr "Obrnuto uspravno"
-
-#: ctk/ctkstock.c:427
-msgctxt "Stock label"
-msgid "Page Set_up"
-msgstr "Pode_šavanje strane"
-
-#: ctk/ctkstock.c:429
-msgctxt "Stock label"
-msgid "_Preferences"
-msgstr "Pos_tavke"
-
-#: ctk/ctkstock.c:441
-msgctxt "Stock label"
-msgid "_Color"
-msgstr "_Boja"
-
-#: ctk/ctkstock.c:442
-msgctxt "Stock label"
-msgid "_Font"
-msgstr "_Font"
-
-#: ctk/ctkstock.c:451
-msgctxt "Stock label"
-msgid "_Undelete"
-msgstr "_Povrati"
-
-#: ctk/ctkstock.c:455
-msgctxt "Stock label"
-msgid "_Yes"
-msgstr "_Da"
-
-#: ctk/ctkuimanager.c:1776
-#, c-format
-msgid "Unexpected start tag '%s' on line %d char %d"
-msgstr "Neočekivana početna oznaka „%s“ u %d° redu, znak %d"
-
-#: ctk/ctkuimanager.c:1866
-#, c-format
-msgid "Unexpected character data on line %d char %d"
-msgstr "Neočekivani znakovni podaci u %d° redu, znak %d"
-
-#: ctk/ctkuimanager.c:2703
-msgid "Empty"
-msgstr "Prazno"
-
 #: ctk/encodesymbolic.c:38
 msgid "Output to this directory instead of cwd"
 msgstr "Ispisuje na ovaj direktorijum umesto da menja radni direktorijum"
 
-#: ctk/encodesymbolic.c:266
+#: ctk/encodesymbolic.c:268
 #, c-format
 msgid "Invalid size %s\n"
 msgstr "Neispravna veličina %s\n"
 
-#: ctk/encodesymbolic.c:279 ctk/ctk-builder-tool.c:671
+#: ctk/encodesymbolic.c:281 ctk/ctk-builder-tool.c:674
 #, c-format
 msgid "Can't load file: %s\n"
 msgstr "Ne mogu da učitam datoteku: %s\n"
 
-#: ctk/encodesymbolic.c:307 ctk/encodesymbolic.c:313
+#: ctk/encodesymbolic.c:309 ctk/encodesymbolic.c:315
 #, c-format
 msgid "Can't save file %s: %s\n"
 msgstr "Ne mogu da sačuvam datoteku „%s“: %s\n"
 
-#: ctk/encodesymbolic.c:319
+#: ctk/encodesymbolic.c:321
 #, c-format
 msgid "Can't close stream"
 msgstr "Ne mogu da zatvorim tok"
 
-#: ctk/ctkaboutdialog.c:114 ctk/ui/ctkaboutdialog.ui:206
+#: ctk/ctkaboutdialog.c:114 ctk/ui/ctkaboutdialog.ui:210
 msgid "License"
 msgstr "Dozvola"
 
@@ -1523,53 +1396,67 @@ msgstr "Gnuova Afero Opšta javna licenca, izdanje 3 ili novije"
 msgid "GNU Affero General Public License, version 3 only"
 msgstr "Gnuova Afero Opšta javna licenca, samo izdanje 3"
 
-#: ctk/ctkaboutdialog.c:697
+#: ctk/ctkaboutdialog.c:129
+#, fuzzy
+msgid "BSD 3-Clause License"
+msgstr "BSD dozvola 2-uslova"
+
+#: ctk/ctkaboutdialog.c:130
+msgid "Apache License, Version 2.0"
+msgstr ""
+
+#: ctk/ctkaboutdialog.c:131
+#, fuzzy
+msgid "Mozilla Public License 2.0"
+msgstr "Umetnička dozvola 2.0"
+
+#: ctk/ctkaboutdialog.c:703
 msgid "C_redits"
 msgstr "Z_asluge"
 
-#: ctk/ctkaboutdialog.c:705
+#: ctk/ctkaboutdialog.c:711
 msgid "_License"
 msgstr "_Licenca"
 
-#: ctk/ctkaboutdialog.c:714 ctk/ctkcustompaperunixdialog.c:329
+#: ctk/ctkaboutdialog.c:720 ctk/ctkcustompaperunixdialog.c:329
 #: ctk/ctkmessagedialog.c:948 ctk/ui/ctkassistant.ui:144
 msgid "_Close"
 msgstr "_Zatvori"
 
-#: ctk/ctkaboutdialog.c:998
+#: ctk/ctkaboutdialog.c:1004
 msgid "Could not show link"
 msgstr "Ne mogu da prikažem vezu"
 
-#: ctk/ctkaboutdialog.c:1035
+#: ctk/ctkaboutdialog.c:1043
 msgid "Website"
 msgstr "Veb stranica"
 
 #. used for the application menu on MacOS.  %s is replaced with the application name.
-#: ctk/ctkaboutdialog.c:1085 ctk/ui/ctkapplication-quartz.ui:7
+#: ctk/ctkaboutdialog.c:1093 ctk/ui/ctkapplication-quartz.ui:7
 #, c-format
 msgid "About %s"
 msgstr "O programu „%s“"
 
-#: ctk/ctkaboutdialog.c:2312
+#: ctk/ctkaboutdialog.c:2320
 msgid "Created by"
 msgstr "Autori"
 
-#: ctk/ctkaboutdialog.c:2315
+#: ctk/ctkaboutdialog.c:2323
 msgid "Documented by"
 msgstr "Dokumentacija"
 
-#: ctk/ctkaboutdialog.c:2325
+#: ctk/ctkaboutdialog.c:2333
 msgid "Translated by"
 msgstr "Prevod"
 
-#: ctk/ctkaboutdialog.c:2330
+#: ctk/ctkaboutdialog.c:2338
 msgid "Artwork by"
 msgstr "Grafika"
 
 #. Translators: this is the license preamble; the string at the end
 #. * contains the name of the license as link text.
 #.
-#: ctk/ctkaboutdialog.c:2490
+#: ctk/ctkaboutdialog.c:2500
 #, c-format
 msgid ""
 "This program comes with absolutely no warranty.\n"
@@ -1658,64 +1545,64 @@ msgstr "Kontra kosa crta"
 msgid "Other application…"
 msgstr "Drugi program…"
 
-#: ctk/ctkappchooserdialog.c:204 ctk/ctkappchooserdialog.c:211
-#: ctk/ctkappchooserdialog.c:228 ctk/ui/ctkappchooserdialog.ui:5
+#: ctk/ctkappchooserdialog.c:202 ctk/ctkappchooserdialog.c:230
+#: ctk/ui/ctkappchooserdialog.ui:5
 msgid "Select Application"
 msgstr "Izaberite program"
 
 #. Translators: %s is a filename
-#: ctk/ctkappchooserdialog.c:206
+#: ctk/ctkappchooserdialog.c:209
 #, c-format
 msgid "Opening “%s”."
 msgstr "Otvaram „%s“."
 
-#: ctk/ctkappchooserdialog.c:207
+#: ctk/ctkappchooserdialog.c:210
 #, c-format
 msgid "No applications found for “%s”"
 msgstr "Nema dostupnih programa za „%s“"
 
 #. Translators: %s is a file type description
-#: ctk/ctkappchooserdialog.c:213
+#: ctk/ctkappchooserdialog.c:215
 #, c-format
 msgid "Opening “%s” files."
 msgstr "Otvaram „%s“ datoteke."
 
-#: ctk/ctkappchooserdialog.c:215
+#: ctk/ctkappchooserdialog.c:217
 #, c-format
 msgid "No applications found for “%s” files"
 msgstr "Nisam našao programe za „%s“ datoteke"
 
-#: ctk/ctkappchooserdialog.c:308
+#: ctk/ctkappchooserdialog.c:310
 msgid "Forget association"
 msgstr "Zaboravi udruženja"
 
-#: ctk/ctkappchooserdialog.c:451
+#: ctk/ctkappchooserdialog.c:453
 msgid "Failed to start GNOME Software"
 msgstr "Nisam uspeo da pokrenem Gnomov softver"
 
-#: ctk/ctkappchooserwidget.c:626
+#: ctk/ctkappchooserwidget.c:593
 msgid "Default Application"
 msgstr "Osnovni program"
 
-#: ctk/ctkappchooserwidget.c:676
+#: ctk/ctkappchooserwidget.c:643
 #, c-format
 msgid "No applications found for “%s”."
 msgstr "Nisam našao programe za „%s“."
 
-#: ctk/ctkappchooserwidget.c:759
+#: ctk/ctkappchooserwidget.c:726
 msgid "Recommended Applications"
 msgstr "Preporučeni programi"
 
-#: ctk/ctkappchooserwidget.c:774
+#: ctk/ctkappchooserwidget.c:741
 msgid "Related Applications"
 msgstr "Povezani programi"
 
-#: ctk/ctkappchooserwidget.c:788
+#: ctk/ctkappchooserwidget.c:755
 msgid "Other Applications"
 msgstr "Ostali programi"
 
-#: ctk/ctkapplicationwindow.c:345 ctk/ctkprintoperation-unix.c:484
-#: ctk/ctkprintoperation-win32.c:1453 ctk/inspector/prop-editor.c:1686
+#: ctk/ctkapplicationwindow.c:345 ctk/ctkprintoperation-unix.c:485
+#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1690
 msgid "Application"
 msgstr "Program"
 
@@ -1764,12 +1651,12 @@ msgstr "Nisam našao svojstvo „%s::%s“\n"
 msgid "Couldn't parse value for %s::%s: %s\n"
 msgstr "Ne mogu da obradim vrednost za „%s::%s“: %s\n"
 
-#: ctk/ctk-builder-tool.c:692
+#: ctk/ctk-builder-tool.c:695
 #, c-format
 msgid "Can't parse file: %s\n"
 msgstr "Ne mogu da obradim datoteku: %s\n"
 
-#: ctk/ctk-builder-tool.c:1056
+#: ctk/ctk-builder-tool.c:1062
 #, c-format
 msgid ""
 "Usage:\n"
@@ -1937,204 +1824,287 @@ msgid "Color: %s"
 msgstr "Boja: %s"
 
 #: ctk/ctkcolorchooserwidget.c:446
+#, fuzzy
 msgctxt "Color name"
-msgid "Light Scarlet Red"
-msgstr "Svetloljubičasto crvena"
+msgid "Very Light Blue"
+msgstr "Veoma svetlosiva"
 
 #: ctk/ctkcolorchooserwidget.c:447
+#, fuzzy
 msgctxt "Color name"
-msgid "Scarlet Red"
-msgstr "Ljubičasto crvena"
+msgid "Light Blue"
+msgstr "Svetla nebeskoplava"
 
 #: ctk/ctkcolorchooserwidget.c:448
+#, fuzzy
 msgctxt "Color name"
-msgid "Dark Scarlet Red"
-msgstr "Tamnoljubičasto crvena"
+msgid "Blue"
+msgstr "_Plava:"
 
 #: ctk/ctkcolorchooserwidget.c:449
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Blue"
+msgstr "Tamno nebeskoplava"
+
+#: ctk/ctkcolorchooserwidget.c:450
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Dark Blue"
+msgstr "Veoma tamnosiva"
+
+#: ctk/ctkcolorchooserwidget.c:451
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Light Green"
+msgstr "Veoma svetlosiva"
+
+#: ctk/ctkcolorchooserwidget.c:452
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Green"
+msgstr "Svetlosiva"
+
+#: ctk/ctkcolorchooserwidget.c:453
+#, fuzzy
+msgctxt "Color name"
+msgid "Green"
+msgstr "_Zelena:"
+
+#: ctk/ctkcolorchooserwidget.c:454
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Green"
+msgstr "Tamnosiva"
+
+#: ctk/ctkcolorchooserwidget.c:455
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Dark Green"
+msgstr "Veoma tamnosiva"
+
+#: ctk/ctkcolorchooserwidget.c:456
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Light Yellow"
+msgstr "Veoma svetlosiva"
+
+#: ctk/ctkcolorchooserwidget.c:457
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Yellow"
+msgstr "Svetla kameleon"
+
+#: ctk/ctkcolorchooserwidget.c:458
+msgctxt "Color name"
+msgid "Yellow"
+msgstr ""
+
+#: ctk/ctkcolorchooserwidget.c:459
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Yellow"
+msgstr "Tamna kameleon"
+
+#: ctk/ctkcolorchooserwidget.c:460
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Dark Yellow"
+msgstr "Veoma tamnosiva"
+
+#: ctk/ctkcolorchooserwidget.c:461
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Light Orange"
+msgstr "Svetlonarandžasta"
+
+#: ctk/ctkcolorchooserwidget.c:462
 msgctxt "Color name"
 msgid "Light Orange"
 msgstr "Svetlonarandžasta"
 
-#: ctk/ctkcolorchooserwidget.c:450
+#: ctk/ctkcolorchooserwidget.c:463
 msgctxt "Color name"
 msgid "Orange"
 msgstr "Narandžasta"
 
-#: ctk/ctkcolorchooserwidget.c:451
+#: ctk/ctkcolorchooserwidget.c:464
 msgctxt "Color name"
 msgid "Dark Orange"
 msgstr "Tamnonarandžasta"
 
-#: ctk/ctkcolorchooserwidget.c:452
-msgctxt "Color name"
-msgid "Light Butter"
-msgstr "Svetloputer"
-
-#: ctk/ctkcolorchooserwidget.c:453
-msgctxt "Color name"
-msgid "Butter"
-msgstr "Puter"
-
-#: ctk/ctkcolorchooserwidget.c:454
-msgctxt "Color name"
-msgid "Dark Butter"
-msgstr "Tamnoputer"
-
-#: ctk/ctkcolorchooserwidget.c:455
-msgctxt "Color name"
-msgid "Light Chameleon"
-msgstr "Svetla kameleon"
-
-#: ctk/ctkcolorchooserwidget.c:456
-msgctxt "Color name"
-msgid "Chameleon"
-msgstr "Kameleon"
-
-#: ctk/ctkcolorchooserwidget.c:457
-msgctxt "Color name"
-msgid "Dark Chameleon"
-msgstr "Tamna kameleon"
-
-#: ctk/ctkcolorchooserwidget.c:458
-msgctxt "Color name"
-msgid "Light Sky Blue"
-msgstr "Svetla nebeskoplava"
-
-#: ctk/ctkcolorchooserwidget.c:459
-msgctxt "Color name"
-msgid "Sky Blue"
-msgstr "Nebeskoplava"
-
-#: ctk/ctkcolorchooserwidget.c:460
-msgctxt "Color name"
-msgid "Dark Sky Blue"
-msgstr "Tamno nebeskoplava"
-
-#: ctk/ctkcolorchooserwidget.c:461
-msgctxt "Color name"
-msgid "Light Plum"
-msgstr "Svetla šljiva"
-
-#: ctk/ctkcolorchooserwidget.c:462
-msgctxt "Color name"
-msgid "Plum"
-msgstr "Šljiva"
-
-#: ctk/ctkcolorchooserwidget.c:463
-msgctxt "Color name"
-msgid "Dark Plum"
-msgstr "Tamna šljiva"
-
-#: ctk/ctkcolorchooserwidget.c:464
-msgctxt "Color name"
-msgid "Light Chocolate"
-msgstr "Svetločokoladna"
-
 #: ctk/ctkcolorchooserwidget.c:465
+#, fuzzy
 msgctxt "Color name"
-msgid "Chocolate"
-msgstr "Čokoladna"
+msgid "Very Dark Orange"
+msgstr "Tamnonarandžasta"
 
 #: ctk/ctkcolorchooserwidget.c:466
+#, fuzzy
 msgctxt "Color name"
-msgid "Dark Chocolate"
-msgstr "Tamnočokoladna"
-
-#: ctk/ctkcolorchooserwidget.c:467
-msgctxt "Color name"
-msgid "Light Aluminum 1"
-msgstr "Svetloaluminijumska 1"
-
-#: ctk/ctkcolorchooserwidget.c:468
-msgctxt "Color name"
-msgid "Aluminum 1"
-msgstr "Aluminijumska 1"
-
-#: ctk/ctkcolorchooserwidget.c:469
-msgctxt "Color name"
-msgid "Dark Aluminum 1"
-msgstr "Tamnoaluminijumska 1"
-
-#: ctk/ctkcolorchooserwidget.c:470
-msgctxt "Color name"
-msgid "Light Aluminum 2"
-msgstr "Svetloaluminijumska 2"
-
-#: ctk/ctkcolorchooserwidget.c:471
-msgctxt "Color name"
-msgid "Aluminum 2"
-msgstr "Aluminijumska 2"
-
-#: ctk/ctkcolorchooserwidget.c:472
-msgctxt "Color name"
-msgid "Dark Aluminum 2"
-msgstr "Tamnoaluminijumska 2"
-
-#: ctk/ctkcolorchooserwidget.c:486
-msgctxt "Color name"
-msgid "Black"
-msgstr "Crna"
-
-#: ctk/ctkcolorchooserwidget.c:487
-msgctxt "Color name"
-msgid "Very Dark Gray"
-msgstr "Veoma tamnosiva"
-
-#: ctk/ctkcolorchooserwidget.c:488
-msgctxt "Color name"
-msgid "Darker Gray"
-msgstr "Tamnija siva"
-
-#: ctk/ctkcolorchooserwidget.c:489
-msgctxt "Color name"
-msgid "Dark Gray"
-msgstr "Tamnosiva"
-
-#: ctk/ctkcolorchooserwidget.c:490
-msgctxt "Color name"
-msgid "Medium Gray"
-msgstr "Srednjesiva"
-
-#: ctk/ctkcolorchooserwidget.c:491
-msgctxt "Color name"
-msgid "Light Gray"
-msgstr "Svetlosiva"
-
-#: ctk/ctkcolorchooserwidget.c:492
-msgctxt "Color name"
-msgid "Lighter Gray"
-msgstr "Svetlija siva"
-
-#: ctk/ctkcolorchooserwidget.c:493
-msgctxt "Color name"
-msgid "Very Light Gray"
+msgid "Very Light Red"
 msgstr "Veoma svetlosiva"
 
-#: ctk/ctkcolorchooserwidget.c:494
+#: ctk/ctkcolorchooserwidget.c:467
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Red"
+msgstr "Svetloljubičasto crvena"
+
+#: ctk/ctkcolorchooserwidget.c:468
+#, fuzzy
+msgctxt "Color name"
+msgid "Red"
+msgstr "_Crvena:"
+
+#: ctk/ctkcolorchooserwidget.c:469
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Red"
+msgstr "Tamnoljubičasto crvena"
+
+#: ctk/ctkcolorchooserwidget.c:470
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Dark Red"
+msgstr "Veoma tamnosiva"
+
+#: ctk/ctkcolorchooserwidget.c:471
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Light Purple"
+msgstr "Veoma svetlosiva"
+
+#: ctk/ctkcolorchooserwidget.c:472
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Purple"
+msgstr "Svetla šljiva"
+
+#: ctk/ctkcolorchooserwidget.c:473
+#, fuzzy
+msgctxt "Color name"
+msgid "Purple"
+msgstr "Svrha"
+
+#: ctk/ctkcolorchooserwidget.c:474
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Purple"
+msgstr "Tamna šljiva"
+
+#: ctk/ctkcolorchooserwidget.c:475
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Dark Purple"
+msgstr "Veoma tamnosiva"
+
+#: ctk/ctkcolorchooserwidget.c:476
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Light Brown"
+msgstr "Veoma svetlosiva"
+
+#: ctk/ctkcolorchooserwidget.c:477
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Brown"
+msgstr "Desna korpa"
+
+#: ctk/ctkcolorchooserwidget.c:478
+msgctxt "Color name"
+msgid "Brown"
+msgstr ""
+
+#: ctk/ctkcolorchooserwidget.c:479
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Brown"
+msgstr "Tamnoputer"
+
+#: ctk/ctkcolorchooserwidget.c:480
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Dark Brown"
+msgstr "Veoma tamnosiva"
+
+#: ctk/ctkcolorchooserwidget.c:481
 msgctxt "Color name"
 msgid "White"
 msgstr "Bela"
 
+#: ctk/ctkcolorchooserwidget.c:482
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Gray 1"
+msgstr "Svetlosiva"
+
+#: ctk/ctkcolorchooserwidget.c:483
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Gray 2"
+msgstr "Svetlosiva"
+
+#: ctk/ctkcolorchooserwidget.c:484
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Gray 3"
+msgstr "Svetlosiva"
+
+#: ctk/ctkcolorchooserwidget.c:485
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Gray 4"
+msgstr "Svetlosiva"
+
+#: ctk/ctkcolorchooserwidget.c:486
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Gray 1"
+msgstr "Tamnosiva"
+
+#: ctk/ctkcolorchooserwidget.c:487
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Gray 2"
+msgstr "Tamnosiva"
+
+#: ctk/ctkcolorchooserwidget.c:488
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Gray 3"
+msgstr "Tamnosiva"
+
+#: ctk/ctkcolorchooserwidget.c:489
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Gray 4"
+msgstr "Tamnosiva"
+
+#: ctk/ctkcolorchooserwidget.c:490
+msgctxt "Color name"
+msgid "Black"
+msgstr "Crna"
+
 #. translators: label for the custom section in the color chooser
-#: ctk/ctkcolorchooserwidget.c:543
+#: ctk/ctkcolorchooserwidget.c:534
 msgid "Custom"
 msgstr "Proizvoljna"
 
-#: ctk/ctkcolorchooserwidget.c:550
+#: ctk/ctkcolorchooserwidget.c:541
 msgid "Custom color"
 msgstr "Proizvoljna boja"
 
-#: ctk/ctkcolorchooserwidget.c:551
+#: ctk/ctkcolorchooserwidget.c:542
 msgid "Create a custom color"
 msgstr "Napravite proizvoljnu boju"
 
-#: ctk/ctkcolorchooserwidget.c:570
+#: ctk/ctkcolorchooserwidget.c:561
 #, c-format
 msgid "Custom color %d: %s"
 msgstr "Proizvoljna boja %d: %s"
 
-#: ctk/ctkcolorplane.c:409
+#: ctk/ctkcolorplane.c:411
 msgid "Color Plane"
 msgstr "Ravan boje"
 
@@ -2163,15 +2133,15 @@ msgid "default:mm"
 msgstr "default:mm"
 
 #. And show the custom paper dialog
-#: ctk/ctkcustompaperunixdialog.c:405 ctk/ctkprintunixdialog.c:3336
+#: ctk/ctkcustompaperunixdialog.c:405 ctk/ctkprintunixdialog.c:3337
 msgid "Manage Custom Sizes"
 msgstr "Upravljajte proizvoljnim veličinama"
 
-#: ctk/ctkcustompaperunixdialog.c:567 ctk/ctkpagesetupunixdialog.c:811
+#: ctk/ctkcustompaperunixdialog.c:567 ctk/ctkpagesetupunixdialog.c:814
 msgid "inch"
 msgstr "inč"
 
-#: ctk/ctkcustompaperunixdialog.c:569 ctk/ctkpagesetupunixdialog.c:809
+#: ctk/ctkcustompaperunixdialog.c:569 ctk/ctkpagesetupunixdialog.c:812
 msgid "mm"
 msgstr "mm"
 
@@ -2216,68 +2186,68 @@ msgstr "De_sno:"
 msgid "Paper Margins"
 msgstr "Margine"
 
-#: ctk/ctkentry.c:9564 ctk/ctklabel.c:6680 ctk/ctktextview.c:9491
+#: ctk/ctkentry.c:9591 ctk/ctklabel.c:6680 ctk/ctktextview.c:9520
 msgid "Cu_t"
 msgstr "_Iseci"
 
-#: ctk/ctkentry.c:9568 ctk/ctklabel.c:6681 ctk/ctktextview.c:9495
+#: ctk/ctkentry.c:9595 ctk/ctklabel.c:6681 ctk/ctktextview.c:9524
 msgid "_Copy"
 msgstr "_Kopiraj"
 
-#: ctk/ctkentry.c:9572 ctk/ctklabel.c:6682 ctk/ctktextview.c:9497
+#: ctk/ctkentry.c:9599 ctk/ctklabel.c:6682 ctk/ctktextview.c:9526
 msgid "_Paste"
 msgstr "U_baci"
 
-#: ctk/ctkentry.c:9575 ctk/ctkfilechooserwidget.c:1477
-#: ctk/ctkfilechooserwidget.c:2277 ctk/ctklabel.c:6684 ctk/ctktextview.c:9500
+#: ctk/ctkentry.c:9602 ctk/ctkfilechooserwidget.c:1499
+#: ctk/ctkfilechooserwidget.c:2334 ctk/ctklabel.c:6684 ctk/ctktextview.c:9529
 msgid "_Delete"
 msgstr "_Obriši"
 
-#: ctk/ctkentry.c:9586 ctk/ctklabel.c:6693 ctk/ctktextview.c:9514
+#: ctk/ctkentry.c:9613 ctk/ctklabel.c:6693 ctk/ctktextview.c:9543
 msgid "Select _All"
 msgstr "Izaberi _sve"
 
-#: ctk/ctkentry.c:9596 ctk/ctktextview.c:9524
+#: ctk/ctkentry.c:9623 ctk/ctktextview.c:9553
 msgid "Insert _Emoji"
 msgstr "Umetni _emotivka"
 
-#: ctk/ctkentry.c:9772 ctk/ctktextview.c:9749
+#: ctk/ctkentry.c:9799 ctk/ctktextview.c:9777
 msgid "Select all"
 msgstr "Izaberi sve"
 
-#: ctk/ctkentry.c:9775 ctk/ctktextview.c:9752
+#: ctk/ctkentry.c:9802 ctk/ctktextview.c:9780
 msgid "Cut"
 msgstr "Iseci"
 
-#: ctk/ctkentry.c:9778 ctk/ctktextview.c:9755
+#: ctk/ctkentry.c:9805 ctk/ctktextview.c:9783
 msgid "Copy"
 msgstr "Kopiraj"
 
-#: ctk/ctkentry.c:9781 ctk/ctktextview.c:9758
+#: ctk/ctkentry.c:9808 ctk/ctktextview.c:9786
 msgid "Paste"
 msgstr "Ubaci"
 
-#: ctk/ctkentry.c:10851
+#: ctk/ctkentry.c:10880
 msgid "Caps Lock is on"
 msgstr "Taster za velika slova je uključen"
 
-#: ctk/ctkentry.c:11126
+#: ctk/ctkentry.c:11158
 msgid "Insert Emoji"
 msgstr "Umetni emotivka"
 
-#: ctk/ctkfilechooserbutton.c:107
+#: ctk/ctkfilechooserbutton.c:112
 msgid "Select a File"
 msgstr "Izaberite datoteku"
 
-#: ctk/ctkfilechooserbutton.c:108 ctk/ctkplacessidebar.c:1109
+#: ctk/ctkfilechooserbutton.c:113 ctk/ctkplacessidebar.c:1109
 msgid "Desktop"
 msgstr "Radna površ"
 
-#: ctk/ctkfilechooserbutton.c:109 ctk/ui/ctkfilechooserbutton.ui:33
+#: ctk/ctkfilechooserbutton.c:114 ctk/ui/ctkfilechooserbutton.ui:33
 msgid "(None)"
 msgstr "(ništa)"
 
-#: ctk/ctkfilechooserbutton.c:2158
+#: ctk/ctkfilechooserbutton.c:2162
 msgid "Other…"
 msgstr "Druga…"
 
@@ -2286,17 +2256,17 @@ msgid "_Name"
 msgstr "_Naziv"
 
 #. Open item is always present
-#: ctk/ctkfilechoosernative.c:541 ctk/ctkfilechoosernative.c:626
-#: ctk/ctkplacessidebar.c:3594 ctk/ctkplacessidebar.c:3662
-#: ctk/ctkplacesview.c:1629
+#: ctk/ctkfilechoosernative.c:546 ctk/ctkfilechoosernative.c:631
+#: ctk/ctkplacessidebar.c:3625 ctk/ctkplacessidebar.c:3693
+#: ctk/ctkplacesview.c:1708
 msgid "_Open"
 msgstr "_Otvori"
 
-#: ctk/ctkfilechoosernative.c:626 ctk/inspector/css-editor.c:202
+#: ctk/ctkfilechoosernative.c:631 ctk/inspector/css-editor.c:202
 msgid "_Save"
 msgstr "_Sačuvaj"
 
-#: ctk/ctkfilechoosernativequartz.c:331 ctk/ui/ctkfilechooserwidget.ui:392
+#: ctk/ctkfilechoosernativequartz.c:331 ctk/ui/ctkfilechooserwidget.ui:405
 msgid "Select which types of files are shown"
 msgstr "Izaberi koje vrste datoteka se prikazuju"
 
@@ -2309,287 +2279,365 @@ msgstr "Izaberi koje vrste datoteka se prikazuju"
 msgid "%1$s on %2$s"
 msgstr "%1$s na %2$s"
 
-#: ctk/ctkfilechooserwidget.c:370
+#: ctk/ctkfilechooserwidget.c:385
 msgid "Type name of new folder"
 msgstr "Unesite naziv nove fascikle"
 
-#: ctk/ctkfilechooserwidget.c:789
+#: ctk/ctkfilechooserwidget.c:809
 msgid "The folder could not be created"
 msgstr "Ne mogu da napravim fasciklu"
 
-#: ctk/ctkfilechooserwidget.c:802
+#: ctk/ctkfilechooserwidget.c:821
+#, fuzzy
 msgid ""
-"The folder could not be created, as a file with the same name already "
-"exists.  Try using a different name for the folder, or rename the file first."
+"The folder could not be created, as a file with the same name already exists."
 msgstr ""
 "Fascikla ne može biti napravljena, pošto već postoji datoteka sa istim "
 "nazivom.  Koristite neki drugi naziv za fasciklu, ili kao prvo preimenujte "
 "datoteku."
 
-#: ctk/ctkfilechooserwidget.c:817
+#: ctk/ctkfilechooserwidget.c:823
+#, fuzzy
+msgid "Try using a different name for the folder, or rename the file first."
+msgstr ""
+"Fascikla ne može biti napravljena, pošto već postoji datoteka sa istim "
+"nazivom.  Koristite neki drugi naziv za fasciklu, ili kao prvo preimenujte "
+"datoteku."
+
+#: ctk/ctkfilechooserwidget.c:836
 msgid "You need to choose a valid filename."
 msgstr "Morate da izaberete ispravan naziv datoteke."
 
-#: ctk/ctkfilechooserwidget.c:820
+#: ctk/ctkfilechooserwidget.c:839
 #, c-format
 msgid "Cannot create a file under %s as it is not a folder"
 msgstr "Ne mogu da napravim datoteku pod „%s“ zato što to nije fascikla"
 
-#: ctk/ctkfilechooserwidget.c:830
+#: ctk/ctkfilechooserwidget.c:849
 msgid "Cannot create file as the filename is too long"
 msgstr "Ne mogu da napravim datoteku jer je naziv predug"
 
-#: ctk/ctkfilechooserwidget.c:831
+#: ctk/ctkfilechooserwidget.c:850
 msgid "Try using a shorter name."
 msgstr "Pokušajte sa kraćim nazivom."
 
-#: ctk/ctkfilechooserwidget.c:841
+#: ctk/ctkfilechooserwidget.c:860
 msgid "You may only select folders"
 msgstr "Možete da izaberete samo fascikle"
 
-#: ctk/ctkfilechooserwidget.c:842
+#: ctk/ctkfilechooserwidget.c:861
 msgid "The item that you selected is not a folder try using a different item."
 msgstr ""
 "Stavka koju ste izabrali nije fascikla, pokušajte da koristite neku drugu "
 "stavku."
 
-#: ctk/ctkfilechooserwidget.c:850
+#: ctk/ctkfilechooserwidget.c:869
 msgid "Invalid file name"
 msgstr "Neispravan naziv datoteke"
 
-#: ctk/ctkfilechooserwidget.c:859
+#: ctk/ctkfilechooserwidget.c:878
 msgid "The folder contents could not be displayed"
 msgstr "Ne mogu da prikažem sadržaj fascikle"
 
-#: ctk/ctkfilechooserwidget.c:867
+#: ctk/ctkfilechooserwidget.c:886
 msgid "The file could not be deleted"
 msgstr "Ne mogu da obrišem datoteku"
 
-#: ctk/ctkfilechooserwidget.c:875
+#: ctk/ctkfilechooserwidget.c:894
 msgid "The file could not be moved to the Trash"
 msgstr "Ne mogu da premestim datoteku u smeće"
 
-#: ctk/ctkfilechooserwidget.c:1020
+#: ctk/ctkfilechooserwidget.c:1039
 msgid "A folder with that name already exists"
 msgstr "Fascikla sa takvim imenom već postoji"
 
-#: ctk/ctkfilechooserwidget.c:1022
+#: ctk/ctkfilechooserwidget.c:1041
 msgid "A file with that name already exists"
 msgstr "Datoteka sa takvim imenom već postoji"
 
-#: ctk/ctkfilechooserwidget.c:1057
+#: ctk/ctkfilechooserwidget.c:1076
 msgid "A folder cannot be called “.”"
 msgstr "Fascikla se ne može zvati „.“"
 
-#: ctk/ctkfilechooserwidget.c:1058
+#: ctk/ctkfilechooserwidget.c:1077
 msgid "A file cannot be called “.”"
 msgstr "Datoteka se ne može zvati „.“"
 
-#: ctk/ctkfilechooserwidget.c:1061
+#: ctk/ctkfilechooserwidget.c:1080
 msgid "A folder cannot be called “..”"
 msgstr "Fascikla se ne može zvati „..“"
 
-#: ctk/ctkfilechooserwidget.c:1062
+#: ctk/ctkfilechooserwidget.c:1081
 msgid "A file cannot be called “..”"
 msgstr "Datoteka se ne može zvati „..“"
 
-#: ctk/ctkfilechooserwidget.c:1065
+#: ctk/ctkfilechooserwidget.c:1084
 msgid "Folder names cannot contain “/”"
 msgstr "Nazivi fascikli ne mogu sadržati znak „/“"
 
-#: ctk/ctkfilechooserwidget.c:1066
+#: ctk/ctkfilechooserwidget.c:1085
 msgid "File names cannot contain “/”"
 msgstr "Nazivi datoteka ne mogu sadržati znak „/“"
 
-#: ctk/ctkfilechooserwidget.c:1092
+#: ctk/ctkfilechooserwidget.c:1111
 msgid "Folder names should not begin with a space"
 msgstr "Nazivi fascikli ne treba da počinju razmakom"
 
-#: ctk/ctkfilechooserwidget.c:1093
+#: ctk/ctkfilechooserwidget.c:1112
 msgid "File names should not begin with a space"
 msgstr "Nazivi datoteka ne treba da počinju razmakom"
 
-#: ctk/ctkfilechooserwidget.c:1097
+#: ctk/ctkfilechooserwidget.c:1116
 msgid "Folder names should not end with a space"
 msgstr "Nazivi fascikli ne treba da se završavaju razmakom"
 
-#: ctk/ctkfilechooserwidget.c:1098
+#: ctk/ctkfilechooserwidget.c:1117
 msgid "File names should not end with a space"
 msgstr "Nazivi datoteka ne treba da se završavaju razmakom"
 
-#: ctk/ctkfilechooserwidget.c:1101
+#: ctk/ctkfilechooserwidget.c:1120
 msgid "Folder names starting with a “.” are hidden"
 msgstr "Fascikle čiji nazivi počinju sa „.“ su skrivene"
 
-#: ctk/ctkfilechooserwidget.c:1102
+#: ctk/ctkfilechooserwidget.c:1121
 msgid "File names starting with a “.” are hidden"
 msgstr "Datoteke čiji nazivi počinju sa „.“ su skrivene"
 
-#: ctk/ctkfilechooserwidget.c:1472
+#: ctk/ctkfilechooserwidget.c:1494
 #, c-format
 msgid "Are you sure you want to permanently delete “%s”?"
 msgstr "Da li sigurno želite trajno da obrišete „%s“?"
 
-#: ctk/ctkfilechooserwidget.c:1475
+#: ctk/ctkfilechooserwidget.c:1497
 #, c-format
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Ukoliko obrišete stavku, ona će biti trajno izgubljena."
 
-#: ctk/ctkfilechooserwidget.c:1609
+#: ctk/ctkfilechooserwidget.c:1634
 msgid "The file could not be renamed"
 msgstr "Ne mogu da preimenujem datoteku"
 
-#: ctk/ctkfilechooserwidget.c:1923
+#: ctk/ctkfilechooserwidget.c:1979
 msgid "Could not select file"
 msgstr "Ne mogu da izaberem datoteku"
 
-#: ctk/ctkfilechooserwidget.c:2272
+#: ctk/ctkfilechooserwidget.c:2329
 msgid "_Visit File"
 msgstr "_Poseti datoteku"
 
-#: ctk/ctkfilechooserwidget.c:2273
+#: ctk/ctkfilechooserwidget.c:2330
 msgid "_Open With File Manager"
 msgstr "Prikaži sadržajnu _fasciklu"
 
-#: ctk/ctkfilechooserwidget.c:2274
+#: ctk/ctkfilechooserwidget.c:2331
 msgid "_Copy Location"
 msgstr "Kopiraj _putanju"
 
-#: ctk/ctkfilechooserwidget.c:2275
+#: ctk/ctkfilechooserwidget.c:2332
 msgid "_Add to Bookmarks"
 msgstr "_Dodaj među obeleživače"
 
-#: ctk/ctkfilechooserwidget.c:2276 ctk/ctkplacessidebar.c:2710
-#: ctk/ui/ctkfilechooserwidget.ui:526
+#: ctk/ctkfilechooserwidget.c:2333 ctk/ctkplacessidebar.c:2741
+#: ctk/ui/ctkfilechooserwidget.ui:539
 msgid "_Rename"
 msgstr "P_reimenuj"
 
-#: ctk/ctkfilechooserwidget.c:2278
+#: ctk/ctkfilechooserwidget.c:2335
 msgid "_Move to Trash"
 msgstr "Pre_mesti u smeće"
 
-#: ctk/ctkfilechooserwidget.c:2282
+#: ctk/ctkfilechooserwidget.c:2339
 msgid "Show _Hidden Files"
 msgstr "Prikaži _skrivene datoteke"
 
-#: ctk/ctkfilechooserwidget.c:2283
+#: ctk/ctkfilechooserwidget.c:2340
 msgid "Show _Size Column"
 msgstr "Prikaži kolonu _veličine"
 
-#: ctk/ctkfilechooserwidget.c:2284
+#: ctk/ctkfilechooserwidget.c:2341
+#, fuzzy
+msgid "Show T_ype Column"
+msgstr "Prikaži kolonu _veličine"
+
+#: ctk/ctkfilechooserwidget.c:2342
 msgid "Show _Time"
 msgstr "Prikaži vre_me"
 
-#: ctk/ctkfilechooserwidget.c:2285
+#: ctk/ctkfilechooserwidget.c:2343
 msgid "Sort _Folders before Files"
 msgstr "Por_eđaj fascikle pre datoteka"
 
 #. this is the header for the location column in the print dialog
-#: ctk/ctkfilechooserwidget.c:2609 ctk/inspector/css-node-tree.ui:141
-#: ctk/ui/ctkfilechooserwidget.ui:207 ctk/ui/ctkprintunixdialog.ui:123
+#: ctk/ctkfilechooserwidget.c:2625 ctk/inspector/css-node-tree.ui:141
+#: ctk/ui/ctkfilechooserwidget.ui:208 ctk/ui/ctkprintunixdialog.ui:123
 msgid "Location"
 msgstr "Putanja"
 
 #. Label
-#: ctk/ctkfilechooserwidget.c:2702
+#: ctk/ctkfilechooserwidget.c:2718
 msgid "_Name:"
 msgstr "_Naziv:"
 
-#: ctk/ctkfilechooserwidget.c:3324
-msgid "Searching"
-msgstr "Pretražujem"
-
-#: ctk/ctkfilechooserwidget.c:3329 ctk/ctkfilechooserwidget.c:3343
+#: ctk/ctkfilechooserwidget.c:3343 ctk/ctkfilechooserwidget.c:3357
 #, c-format
 msgid "Searching in %s"
 msgstr "Pretražujem unutar %s"
 
-#: ctk/ctkfilechooserwidget.c:3353
+#: ctk/ctkfilechooserwidget.c:3363
+msgid "Searching"
+msgstr "Pretražujem"
+
+#: ctk/ctkfilechooserwidget.c:3370
 msgid "Enter location"
 msgstr "Unesite putanju"
 
-#: ctk/ctkfilechooserwidget.c:3355
+#: ctk/ctkfilechooserwidget.c:3372
 msgid "Enter location or URL"
 msgstr "Unesite putanju ili URL"
 
-#: ctk/ctkfilechooserwidget.c:4393 ctk/ctkfilechooserwidget.c:7297
-#: ctk/ui/ctkfilechooserwidget.ui:235
+#: ctk/ctkfilechooserwidget.c:4450 ctk/ctkfilechooserwidget.c:7492
+#: ctk/ui/ctkfilechooserwidget.ui:248
 msgid "Modified"
 msgstr "Izmenjena"
 
-#: ctk/ctkfilechooserwidget.c:4671
+#: ctk/ctkfilechooserwidget.c:4728
 #, c-format
 msgid "Could not read the contents of %s"
 msgstr "Ne mogu da pročitam sadržaj %s"
 
-#: ctk/ctkfilechooserwidget.c:4675
+#: ctk/ctkfilechooserwidget.c:4732
 msgid "Could not read the contents of the folder"
 msgstr "Ne mogu da pročitam sadržaj fascikle"
 
-#: ctk/ctkfilechooserwidget.c:4805 ctk/ctkfilechooserwidget.c:4853
+#: ctk/ctkfilechooserwidget.c:4892 ctk/ctkfilechooserwidget.c:4940
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: ctk/ctkfilechooserwidget.c:4807 ctk/ctkfilechooserwidget.c:4855
+#: ctk/ctkfilechooserwidget.c:4894 ctk/ctkfilechooserwidget.c:4942
 msgid "%l:%M %p"
 msgstr "%l:%M %p"
 
-#: ctk/ctkfilechooserwidget.c:4811
+#: ctk/ctkfilechooserwidget.c:4898
 msgid "Yesterday"
 msgstr "Juče"
 
-#: ctk/ctkfilechooserwidget.c:4819
+#: ctk/ctkfilechooserwidget.c:4906
 msgid "%-e %b"
 msgstr "%-e. %B"
 
-#: ctk/ctkfilechooserwidget.c:4823
+#: ctk/ctkfilechooserwidget.c:4910
 msgid "%-e %b %Y"
 msgstr "%-e. %B %Y."
 
+#: ctk/ctkfilechooserwidget.c:5009 ctk/ctkfilechooserwidget.c:5017
+#, fuzzy
+msgid "Program"
+msgstr "Naziv programa"
+
+#: ctk/ctkfilechooserwidget.c:5010
+#, fuzzy
+msgid "Audio"
+msgstr "Isključi zvuk"
+
+#: ctk/ctkfilechooserwidget.c:5011 ctk/inspector/visual.ui:230
+#: ctk/ui/ctkfontbutton.ui:13
+msgid "Font"
+msgstr "Font"
+
+#: ctk/ctkfilechooserwidget.c:5012 ctk/inspector/visual.ui:488
+msgid "Image"
+msgstr "Slika"
+
+#: ctk/ctkfilechooserwidget.c:5013
+#, fuzzy
+msgid "Archive"
+msgstr "arč A"
+
+#: ctk/ctkfilechooserwidget.c:5014
+msgid "Markup"
+msgstr "Označeni tekst"
+
+#: ctk/ctkfilechooserwidget.c:5015 ctk/ctkfilechooserwidget.c:5016
+msgid "Text"
+msgstr "Tekst"
+
+#: ctk/ctkfilechooserwidget.c:5018
+msgid "Video"
+msgstr ""
+
+#: ctk/ctkfilechooserwidget.c:5019
+#, fuzzy
+msgid "Contacts"
+msgstr "Kontekst"
+
+#: ctk/ctkfilechooserwidget.c:5020
+#, fuzzy
+msgid "Calendar"
+msgstr "calendar:MY"
+
+#: ctk/ctkfilechooserwidget.c:5021
+#, fuzzy
+msgid "Document"
+msgstr "Dokumentacija"
+
+#: ctk/ctkfilechooserwidget.c:5022
+#, fuzzy
+msgid "Presentation"
+msgstr "_Usmerenje:"
+
+#: ctk/ctkfilechooserwidget.c:5023
+msgid "Spreadsheet"
+msgstr ""
+
 #. Translators: We don't know whether this printer is
 #. * available to print to.
-#: ctk/ctkfilechooserwidget.c:5058 ctk/inspector/prop-editor.c:1689
+#: ctk/ctkfilechooserwidget.c:5054 ctk/ctkfilechooserwidget.c:5243
+#: ctk/inspector/prop-editor.c:1693
 #: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:748
 msgid "Unknown"
 msgstr "Nepoznato"
 
 # ako je za "home directory", onda bi bilo dobro "licni direktorijum", ako je za "home page", onda za "licna stranica"
-#: ctk/ctkfilechooserwidget.c:5097 ctk/ctkplacessidebar.c:1094
+#: ctk/ctkfilechooserwidget.c:5282 ctk/ctkplacessidebar.c:1094
 msgid "Home"
 msgstr "Lična fascikla"
 
-#: ctk/ctkfilechooserwidget.c:5590
+#: ctk/ctkfilechooserwidget.c:5779
 msgid "Cannot change to folder because it is not local"
 msgstr "Ne mogu da uđem u fasciklu zato što nije lokalna"
 
-#: ctk/ctkfilechooserwidget.c:6376 ctk/ctkprintunixdialog.c:664
+#: ctk/ctkfilechooserwidget.c:6565 ctk/ctkprintunixdialog.c:665
 #, c-format
 msgid "A file named “%s” already exists.  Do you want to replace it?"
 msgstr "Datoteka pod nazivom „%s“ već postoji.  Da li želite da je zamenite?"
 
-#: ctk/ctkfilechooserwidget.c:6379 ctk/ctkprintunixdialog.c:668
+#: ctk/ctkfilechooserwidget.c:6568 ctk/ctkprintunixdialog.c:669
 #, c-format
 msgid ""
 "The file already exists in “%s”.  Replacing it will overwrite its contents."
 msgstr ""
 "Datoteka već postoji u „%s“.  Ukoliko je zamenite prepisaćete njen sadržaj."
 
-#: ctk/ctkfilechooserwidget.c:6384 ctk/ctkprintunixdialog.c:676
+#: ctk/ctkfilechooserwidget.c:6573 ctk/ctkprintunixdialog.c:677
 msgid "_Replace"
 msgstr "_Zameni"
 
-#: ctk/ctkfilechooserwidget.c:6598
+#: ctk/ctkfilechooserwidget.c:6792
 msgid "You do not have access to the specified folder."
 msgstr "Nemate ovlašćenja za pristup navedenoj fascikli."
 
-#: ctk/ctkfilechooserwidget.c:7221
+#: ctk/ctkfilechooserwidget.c:7415
 msgid "Could not send the search request"
 msgstr "Ne mogu da pošaljem zahtev pretrage"
 
 # Treba proveriti na šta se odnosi.
-#: ctk/ctkfilechooserwidget.c:7507
+#: ctk/ctkfilechooserwidget.c:7703
 msgid "Accessed"
 msgstr "Datum pristupa"
+
+#: ctk/ctkfilechooserwidget.c:8822 ctk/ui/ctkfilechooserwidget.ui:69
+msgid "Create Folder"
+msgstr "Napravi fasciklu"
 
 #. The pointers we return for a CtkFileSystemVolume are opaque tokens; they are
 #. * really pointers to GDrive, GVolume or GMount objects.  We need an extra
@@ -2600,20 +2648,78 @@ msgstr "Datum pristupa"
 msgid "File System"
 msgstr "Sistem datoteka"
 
-#: ctk/ctkfontbutton.c:368 ctk/ctkfontbutton.c:498
+#: ctk/ctkfontbutton.c:379 ctk/ctkfontbutton.c:509
 msgid "Sans 12"
 msgstr "Sans 12"
 
-#: ctk/ctkfontbutton.c:481 ctk/ctkfontbutton.c:615
+#: ctk/ctkfontbutton.c:492 ctk/ctkfontbutton.c:626
 msgid "Pick a Font"
 msgstr "Izaberite font"
 
-#: ctk/ctkfontbutton.c:1355
+#: ctk/ctkfontbutton.c:1395
 msgctxt "font"
 msgid "None"
 msgstr "Ništa"
 
-#: ctk/ctkglarea.c:313
+#: ctk/ctkfontchooserwidget.c:1539
+#, fuzzy
+msgid "Width"
+msgstr "_Širina:"
+
+#: ctk/ctkfontchooserwidget.c:1540
+#, fuzzy
+msgid "Weight"
+msgstr "Desno"
+
+#: ctk/ctkfontchooserwidget.c:1541
+#, fuzzy
+msgid "Italic"
+msgstr "_Kurziv"
+
+#: ctk/ctkfontchooserwidget.c:1542
+msgid "Slant"
+msgstr ""
+
+#: ctk/ctkfontchooserwidget.c:1543
+#, fuzzy
+msgid "Optical Size"
+msgstr "Veličina pokazatelja"
+
+#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1680
+msgid "Default"
+msgstr "Osnovno"
+
+#: ctk/ctkfontchooserwidget.c:2141
+#, fuzzy
+msgid "Ligatures"
+msgstr "Snimanje"
+
+#: ctk/ctkfontchooserwidget.c:2142
+#, fuzzy
+msgid "Letter Case"
+msgstr "Razmak između slova podešen"
+
+#: ctk/ctkfontchooserwidget.c:2143
+#, fuzzy
+msgid "Number Case"
+msgstr "Broj strana"
+
+#: ctk/ctkfontchooserwidget.c:2144
+#, fuzzy
+msgid "Number Spacing"
+msgstr "Razmak između slova"
+
+#: ctk/ctkfontchooserwidget.c:2145
+#, fuzzy
+msgid "Number Formatting"
+msgstr "Broj strana"
+
+#: ctk/ctkfontchooserwidget.c:2146
+#, fuzzy
+msgid "Character Variants"
+msgstr "Tamna verzija"
+
+#: ctk/ctkglarea.c:314
 msgid "OpenGL context creation failed"
 msgstr "Ne mogu da napravim OpenGL sadržaj"
 
@@ -2621,16 +2727,16 @@ msgstr "Ne mogu da napravim OpenGL sadržaj"
 msgid "Application menu"
 msgstr "Izbornik programa"
 
-#: ctk/ctkheaderbar.c:458 ctk/ctkwindow.c:9265
+#: ctk/ctkheaderbar.c:458 ctk/ctkwindow.c:9355
 msgid "Close"
 msgstr "Zatvori"
 
-#: ctk/ctkicontheme.c:2341 ctk/ctkicontheme.c:2406
+#: ctk/ctkicontheme.c:2355 ctk/ctkicontheme.c:2420
 #, c-format
 msgid "Icon '%s' not present in theme %s"
 msgstr "Ikonica „%s“ nije prisutna u temi „%s“"
 
-#: ctk/ctkicontheme.c:4080 ctk/ctkicontheme.c:4447
+#: ctk/ctkicontheme.c:4096 ctk/ctkicontheme.c:4463
 msgid "Failed to load icon"
 msgstr "Nisam uspeo da učitam ikonicu"
 
@@ -2644,30 +2750,30 @@ msgctxt "input method menu"
 msgid "None"
 msgstr "Ništa"
 
-#: ctk/ctkimmulticontext.c:609
+#: ctk/ctkimmulticontext.c:615
 msgctxt "input method menu"
 msgid "System"
 msgstr "Sistem"
 
-#: ctk/ctkimmulticontext.c:688
+#: ctk/ctkimmulticontext.c:694
 #, c-format
 msgctxt "input method menu"
 msgid "System (%s)"
 msgstr "Sistem (%s)"
 
-#: ctk/ctkinfobar.c:1168 ctk/ctkmessagedialog.c:385
+#: ctk/ctkinfobar.c:1307 ctk/ctkmessagedialog.c:385
 msgid "Information"
 msgstr "Obaveštenje"
 
-#: ctk/ctkinfobar.c:1172 ctk/ctkmessagedialog.c:389
+#: ctk/ctkinfobar.c:1311 ctk/ctkmessagedialog.c:389
 msgid "Question"
 msgstr "Pitanje"
 
-#: ctk/ctkinfobar.c:1176 ctk/ctkmessagedialog.c:393
+#: ctk/ctkinfobar.c:1315 ctk/ctkmessagedialog.c:393
 msgid "Warning"
 msgstr "Upozorenje"
 
-#: ctk/ctkinfobar.c:1180 ctk/ctkmessagedialog.c:397
+#: ctk/ctkinfobar.c:1319 ctk/ctkmessagedialog.c:397
 msgid "Error"
 msgstr "Greška"
 
@@ -2681,17 +2787,17 @@ msgstr "Otvori _vezu"
 msgid "Copy _Link Address"
 msgstr "Kopiraj _adresu veze"
 
-#: ctk/ctk-launch.c:40
+#: ctk/ctk-launch.c:42
 msgid "Show program version"
 msgstr "Prikazuje izdanje programa"
 
-#: ctk/ctk-launch.c:74
+#: ctk/ctk-launch.c:76
 msgid "APPLICATION [URI...] — launch an APPLICATION"
 msgstr "PROGRAM [PUTANJA…] — pokreće PROGRAM"
 
 #. Translators: this message will appear after the usage string
 #. and before the list of options.
-#: ctk/ctk-launch.c:78
+#: ctk/ctk-launch.c:80
 msgid ""
 "Launch an application (specified by its desktop file name),\n"
 "optionally passing one or more URIs as arguments."
@@ -2699,24 +2805,24 @@ msgstr ""
 "Pokreće program (koji je naveden nazivom datoteke radne površi),\n"
 "po mogućstvu prosleđujući spisak putanja kao argumente."
 
-#: ctk/ctk-launch.c:90
+#: ctk/ctk-launch.c:92
 #, c-format
 msgid "Error parsing commandline options: %s\n"
 msgstr "Greška u analizi opcija linije naredbi: %s\n"
 
-#: ctk/ctk-launch.c:92 ctk/ctk-launch.c:113
+#: ctk/ctk-launch.c:94 ctk/ctk-launch.c:115
 #, c-format
 msgid "Try \"%s --help\" for more information."
 msgstr "Pokrenite „%s --help“ za više podataka."
 
 #. Translators: the %s is the program name. This error message
 #. means the user is calling ctk-launch without any argument.
-#: ctk/ctk-launch.c:111
+#: ctk/ctk-launch.c:113
 #, c-format
 msgid "%s: missing application name"
 msgstr "%s: nedostaje naziv programa"
 
-#: ctk/ctk-launch.c:140
+#: ctk/ctk-launch.c:144
 #, c-format
 msgid "Creating AppInfo from id not supported on non unix operating systems"
 msgstr ""
@@ -2725,14 +2831,14 @@ msgstr ""
 
 #. Translators: the first %s is the program name, the second one
 #. is the application name.
-#: ctk/ctk-launch.c:148
+#: ctk/ctk-launch.c:152
 #, c-format
 msgid "%s: no such application %s"
 msgstr "%s: nema takvog programa „%s“"
 
 #. Translators: the first %s is the program name, the second one
 #. is the error message.
-#: ctk/ctk-launch.c:166
+#: ctk/ctk-launch.c:170
 #, c-format
 msgid "%s: error launching application: %s\n"
 msgstr "%s: greška u pokretanju programa: %s\n"
@@ -2803,16 +2909,16 @@ msgstr "Ctk+ opcije za uklanjanje grešaka za uključivanje"
 msgid "CTK+ debugging flags to unset"
 msgstr "Ctk+ opcije za uklanjanje grešaka za isključivanje"
 
-#: ctk/ctkmain.c:808 ctk/ctkmain.c:1002
+#: ctk/ctkmain.c:810 ctk/ctkmain.c:1004
 #, c-format
 msgid "Cannot open display: %s"
 msgstr "Ne mogu da pristupim ekranu: %s"
 
-#: ctk/ctkmain.c:920
+#: ctk/ctkmain.c:922
 msgid "CTK+ Options"
 msgstr "Ctk+ opcije"
 
-#: ctk/ctkmain.c:920
+#: ctk/ctkmain.c:922
 msgid "Show CTK+ Options"
 msgstr "Prikazuje Ctk+ opcije"
 
@@ -2821,7 +2927,7 @@ msgstr "Prikazuje Ctk+ opcije"
 #. * Do *not* translate it to "predefinito:LTR", if it
 #. * it isn't default:LTR or default:RTL it will not work
 #.
-#: ctk/ctkmain.c:1270
+#: ctk/ctkmain.c:1275
 msgid "default:LTR"
 msgstr "default:LTR"
 
@@ -2833,109 +2939,128 @@ msgstr "_Ne"
 msgid "_Yes"
 msgstr "_Da"
 
-#: ctk/ctkmountoperation.c:546
+#: ctk/ctkmountoperation.c:595
 msgid "Co_nnect"
 msgstr "Po_veži"
 
-#: ctk/ctkmountoperation.c:622
+#: ctk/ctkmountoperation.c:668
 msgid "Connect As"
 msgstr "Poveži se"
 
-#: ctk/ctkmountoperation.c:631
+#: ctk/ctkmountoperation.c:677
 msgid "_Anonymous"
 msgstr "_Bezimeno"
 
-#: ctk/ctkmountoperation.c:640
+#: ctk/ctkmountoperation.c:686
 msgid "Registered U_ser"
 msgstr "Kao upisani _korisnik"
 
-#: ctk/ctkmountoperation.c:651
+#: ctk/ctkmountoperation.c:697
 msgid "_Username"
 msgstr "_Korisničko ime"
 
-#: ctk/ctkmountoperation.c:656
+#: ctk/ctkmountoperation.c:702
 msgid "_Domain"
 msgstr "_Domen"
 
-#: ctk/ctkmountoperation.c:662
+#: ctk/ctkmountoperation.c:711
+#, fuzzy
+msgid "Volume type"
+msgstr "Pojačaj"
+
+#: ctk/ctkmountoperation.c:721
+msgid "_Hidden"
+msgstr ""
+
+#: ctk/ctkmountoperation.c:724
+#, fuzzy
+msgid "_Windows system"
+msgstr "Vindous IME"
+
+#: ctk/ctkmountoperation.c:727
+msgid "_PIM"
+msgstr ""
+
+#: ctk/ctkmountoperation.c:733
 msgid "_Password"
 msgstr "_Lozinka"
 
-#: ctk/ctkmountoperation.c:684
+#: ctk/ctkmountoperation.c:755
 msgid "Forget password _immediately"
 msgstr "_Odmah zaboravi lozinku"
 
-#: ctk/ctkmountoperation.c:694
+#: ctk/ctkmountoperation.c:765
 msgid "Remember password until you _logout"
 msgstr "Zapamti lozinku _do odjavljivanja"
 
-#: ctk/ctkmountoperation.c:704
+#: ctk/ctkmountoperation.c:775
 msgid "Remember _forever"
 msgstr "Zapamti _zauvek"
 
-#: ctk/ctkmountoperation.c:1093
+#: ctk/ctkmountoperation.c:1170
 #, c-format
 msgid "Unknown Application (PID %d)"
 msgstr "Nepoznat program (pod brojem %d)"
 
-#: ctk/ctkmountoperation.c:1278
+#: ctk/ctkmountoperation.c:1355
 #, c-format
 msgid "Unable to end process"
 msgstr "Ne mogu da okončam proces"
 
-#: ctk/ctkmountoperation.c:1312
+#: ctk/ctkmountoperation.c:1389
 msgid "_End Process"
 msgstr "_Okončaj proces"
 
 #: ctk/ctkmountoperation-stub.c:62
 #, c-format
 msgid "Cannot kill process with PID %d. Operation is not implemented."
-msgstr "Ne mogu da okončam proces pod brojem %d. Radnja još uvek nije podržana."
+msgstr ""
+"Ne mogu da okončam proces pod brojem %d. Radnja još uvek nije podržana."
 
 #. translators: this string is a name for the 'less' command
-#: ctk/ctkmountoperation-x11.c:954
+#: ctk/ctkmountoperation-x11.c:955
 msgid "Terminal Pager"
 msgstr "Naredba „less“"
 
-#: ctk/ctkmountoperation-x11.c:955
+#: ctk/ctkmountoperation-x11.c:956
 msgid "Top Command"
 msgstr "Naredba „top“"
 
-#: ctk/ctkmountoperation-x11.c:956
+#: ctk/ctkmountoperation-x11.c:957
 msgid "Bourne Again Shell"
 msgstr "Nova Bornova ljuska"
 
-#: ctk/ctkmountoperation-x11.c:957
+#: ctk/ctkmountoperation-x11.c:958
 msgid "Bourne Shell"
 msgstr "Bornova ljuska"
 
-#: ctk/ctkmountoperation-x11.c:958
+#: ctk/ctkmountoperation-x11.c:959
 msgid "Z Shell"
 msgstr "Z ljuska"
 
-#: ctk/ctkmountoperation-x11.c:1055
+#: ctk/ctkmountoperation-x11.c:1056
 #, c-format
 msgid "Cannot end process with PID %d: %s"
 msgstr "Ne mogu da okončam proces pod brojem %d: %s"
 
-#: ctk/ctknotebook.c:5121 ctk/ctknotebook.c:7386
+#: ctk/ctknotebook.c:5150 ctk/ctknotebook.c:7428
 #, c-format
 msgid "Page %u"
 msgstr "List %u"
 
-#: ctk/ctkpagesetup.c:652 ctk/ctkpapersize.c:986 ctk/ctkpapersize.c:1026
+#: ctk/ctkpagesetup.c:652 ctk/ctkpapersize.c:989 ctk/ctkpapersize.c:1029
 msgid "Not a valid page setup file"
 msgstr "Datoteka sa postavkom stranice nije ispravna"
 
-#: ctk/ctkpagesetupunixdialog.c:210
+#: ctk/ctkpagesetupunixdialog.c:211
 msgid "Any Printer"
 msgstr "Bilo koji štampač"
 
-#: ctk/ctkpagesetupunixdialog.c:210
+#: ctk/ctkpagesetupunixdialog.c:211
 msgid "For portable documents"
 msgstr "Za prenosive dokumente"
 
-#: ctk/ctkpagesetupunixdialog.c:829
+#: ctk/ctkpagesetupunixdialog.c:832
 #, c-format
 msgid ""
 "Margins:\n"
@@ -2950,16 +3075,16 @@ msgstr ""
 " Gore: %s %s\n"
 " Dole: %s %s"
 
-#: ctk/ctkpagesetupunixdialog.c:878 ctk/ctkprintunixdialog.c:3390
+#: ctk/ctkpagesetupunixdialog.c:881 ctk/ctkprintunixdialog.c:3393
 msgid "Manage Custom Sizes…"
 msgstr "Upravljaj proizvoljnim veličinama…"
 
-#: ctk/ctkpagesetupunixdialog.c:900 ctk/ui/ctkpagesetupunixdialog.ui:31
+#: ctk/ctkpagesetupunixdialog.c:903 ctk/ui/ctkpagesetupunixdialog.ui:31
 #: ctk/ui/ctkprintunixdialog.ui:854
 msgid "Page Setup"
 msgstr "Podešavanje stranice"
 
-#: ctk/ctkpathbar.c:1572
+#: ctk/ctkpathbar.c:1571
 msgid "File System Root"
 msgstr "Koren sistema datoteka"
 
@@ -2969,7 +3094,7 @@ msgstr "Koren sistema datoteka"
 msgid "Open %s"
 msgstr "Otvori „%s“"
 
-#: ctk/ctkplacessidebar.c:1070
+#: ctk/ctkplacessidebar.c:1070 ctk/ui/ctkemojichooser.ui:197
 msgid "Recent"
 msgstr "Skorašnje"
 
@@ -3011,214 +3136,258 @@ msgid "Open the trash"
 msgstr "Otvorite smeće"
 
 #: ctk/ctkplacessidebar.c:1248 ctk/ctkplacessidebar.c:1276
-#: ctk/ctkplacessidebar.c:1484
+#: ctk/ctkplacessidebar.c:1491
 #, c-format
 msgid "Mount and open “%s”"
 msgstr "Prikači i otvori „%s“"
 
-#: ctk/ctkplacessidebar.c:1364
+#: ctk/ctkplacessidebar.c:1371
 msgid "Open the contents of the file system"
 msgstr "Prikažite sadržaj sistema datoteka"
 
-#: ctk/ctkplacessidebar.c:1448
+#: ctk/ctkplacessidebar.c:1455
 msgid "New bookmark"
 msgstr "Novi obeleživač"
 
-#: ctk/ctkplacessidebar.c:1450
+#: ctk/ctkplacessidebar.c:1457
 msgid "Add a new bookmark"
 msgstr "Novi obeleživač"
 
-#: ctk/ctkplacessidebar.c:1463
+#: ctk/ctkplacessidebar.c:1470
 msgid "Connect to Server"
 msgstr "Poveži se sa serverom"
 
-#: ctk/ctkplacessidebar.c:1465
+#: ctk/ctkplacessidebar.c:1472
 msgid "Connect to a network server address"
 msgstr "Povežite se na adresu servera mreže"
 
-#: ctk/ctkplacessidebar.c:1527
+#: ctk/ctkplacessidebar.c:1534
 msgid "Other Locations"
 msgstr "Druga mesta"
 
-#: ctk/ctkplacessidebar.c:1528
+#: ctk/ctkplacessidebar.c:1535
 msgid "Show other locations"
 msgstr "Prikaži druga mesta"
 
 #. Adjust start/stop items to reflect the type of the drive
-#: ctk/ctkplacessidebar.c:2324 ctk/ctkplacessidebar.c:3682
+#: ctk/ctkplacessidebar.c:2334 ctk/ctkplacessidebar.c:3713
 msgid "_Start"
 msgstr "_Pokreni"
 
-#: ctk/ctkplacessidebar.c:2325 ctk/ctkplacessidebar.c:3683
+#: ctk/ctkplacessidebar.c:2335 ctk/ctkplacessidebar.c:3714
 msgid "_Stop"
 msgstr "_Zaustavi"
 
 #. start() for type G_DRIVE_START_STOP_TYPE_SHUTDOWN is normally not used
-#: ctk/ctkplacessidebar.c:2332
+#: ctk/ctkplacessidebar.c:2342
 msgid "_Power On"
 msgstr "_Uključi"
 
-#: ctk/ctkplacessidebar.c:2333
+#: ctk/ctkplacessidebar.c:2343
 msgid "_Safely Remove Drive"
 msgstr "_Bezbedno ukloni uređaj"
 
-#: ctk/ctkplacessidebar.c:2337
+#: ctk/ctkplacessidebar.c:2347
 msgid "_Connect Drive"
 msgstr "_Poveži uređaj"
 
-#: ctk/ctkplacessidebar.c:2338
+#: ctk/ctkplacessidebar.c:2348
 msgid "_Disconnect Drive"
 msgstr "_Otkači uređaj"
 
-#: ctk/ctkplacessidebar.c:2342
+#: ctk/ctkplacessidebar.c:2352
 msgid "_Start Multi-disk Device"
 msgstr "_Pokreni uređaj sa više diskova"
 
-#: ctk/ctkplacessidebar.c:2343
+#: ctk/ctkplacessidebar.c:2353
 msgid "_Stop Multi-disk Device"
 msgstr "_Zaustavi uređaj sa više diskova"
 
 #. stop() for type G_DRIVE_START_STOP_TYPE_PASSWORD is normally not used
-#: ctk/ctkplacessidebar.c:2348
+#: ctk/ctkplacessidebar.c:2358
 msgid "_Unlock Device"
 msgstr "_Otključaj uređaj"
 
-#: ctk/ctkplacessidebar.c:2349
+#: ctk/ctkplacessidebar.c:2359
 msgid "_Lock Device"
 msgstr "_Zaključaj uređaj"
 
-#: ctk/ctkplacessidebar.c:2387 ctk/ctkplacessidebar.c:3363
+#: ctk/ctkplacessidebar.c:2397 ctk/ctkplacessidebar.c:3394
 #, c-format
 msgid "Unable to start “%s”"
 msgstr "Ne mogu da pokrenem „%s“"
 
-#: ctk/ctkplacessidebar.c:2417
+#: ctk/ctkplacessidebar.c:2430
+#, fuzzy, c-format
+msgid "Error unlocking “%s”"
+msgstr "Otvaram „%s“."
+
+#: ctk/ctkplacessidebar.c:2432
 #, c-format
 msgid "Unable to access “%s”"
 msgstr "Ne mogu da pristupim „%s“"
 
-#: ctk/ctkplacessidebar.c:2635
+#: ctk/ctkplacessidebar.c:2666
 msgid "This name is already taken"
 msgstr "Ovo ime je već zauzeto"
 
-#: ctk/ctkplacessidebar.c:2704 ctk/inspector/actions.ui:43
+#: ctk/ctkplacessidebar.c:2735 ctk/inspector/actions.ui:43
 #: ctk/inspector/css-node-tree.ui:39 ctk/inspector/object-tree.ui:110
-#: ctk/ui/ctkfilechooserwidget.ui:189 ctk/ui/ctkfilechooserwidget.ui:500
+#: ctk/ui/ctkfilechooserwidget.ui:190 ctk/ui/ctkfilechooserwidget.ui:513
 msgid "Name"
 msgstr "Naziv"
 
-#: ctk/ctkplacessidebar.c:2904
+#: ctk/ctkplacessidebar.c:2935
 #, c-format
 msgid "Unable to unmount “%s”"
 msgstr "Ne mogu da otkačim „%s“"
 
-#: ctk/ctkplacessidebar.c:3080
+#: ctk/ctkplacessidebar.c:3111
 #, c-format
 msgid "Unable to stop “%s”"
 msgstr "Ne mogu da zaustavim „%s“"
 
-#: ctk/ctkplacessidebar.c:3109
+#: ctk/ctkplacessidebar.c:3140
 #, c-format
 msgid "Unable to eject “%s”"
 msgstr "Ne mogu da izbacim „%s“"
 
-#: ctk/ctkplacessidebar.c:3138 ctk/ctkplacessidebar.c:3167
+#: ctk/ctkplacessidebar.c:3169 ctk/ctkplacessidebar.c:3198
 #, c-format
 msgid "Unable to eject %s"
 msgstr "Ne mogu da izbacim „%s“"
 
-#: ctk/ctkplacessidebar.c:3315
+#: ctk/ctkplacessidebar.c:3346
 #, c-format
 msgid "Unable to poll “%s” for media changes"
 msgstr "Ne mogu da pratim promene medija u „%s“"
 
-#: ctk/ctkplacessidebar.c:3599 ctk/ctkplacessidebar.c:3665
-#: ctk/ctkplacesview.c:1639
+#: ctk/ctkplacessidebar.c:3630 ctk/ctkplacessidebar.c:3696
+#: ctk/ctkplacesview.c:1718
 msgid "Open in New _Tab"
 msgstr "Otvori u novom _jezičku"
 
-#: ctk/ctkplacessidebar.c:3605 ctk/ctkplacessidebar.c:3668
-#: ctk/ctkplacesview.c:1650
+#: ctk/ctkplacessidebar.c:3636 ctk/ctkplacessidebar.c:3699
+#: ctk/ctkplacesview.c:1729
 msgid "Open in New _Window"
 msgstr "Otvori u novom _prozoru"
 
-#: ctk/ctkplacessidebar.c:3672
+#: ctk/ctkplacessidebar.c:3703
 msgid "_Add Bookmark"
 msgstr "_Dodaj u obeleživače"
 
-#: ctk/ctkplacessidebar.c:3673
+#: ctk/ctkplacessidebar.c:3704
 msgid "_Remove"
 msgstr "_Ukloni"
 
-#: ctk/ctkplacessidebar.c:3674
+#: ctk/ctkplacessidebar.c:3705
 msgid "Rename…"
 msgstr "Preimenuj…"
 
-#: ctk/ctkplacessidebar.c:3678 ctk/ctkplacesview.c:1684
+#: ctk/ctkplacessidebar.c:3709 ctk/ctkplacesview.c:1763
 msgid "_Mount"
 msgstr "_Zakači"
 
-#: ctk/ctkplacessidebar.c:3679 ctk/ctkplacesview.c:1674
+#: ctk/ctkplacessidebar.c:3710 ctk/ctkplacesview.c:1753
 msgid "_Unmount"
 msgstr "_Otkači"
 
-#: ctk/ctkplacessidebar.c:3680
+#: ctk/ctkplacessidebar.c:3711
 msgid "_Eject"
 msgstr "_Izbaci"
 
-#: ctk/ctkplacessidebar.c:3681
+#: ctk/ctkplacessidebar.c:3712
 msgid "_Detect Media"
 msgstr "Pronađi _medijum"
 
-#: ctk/ctkplacessidebar.c:4127 ctk/ctkplacesview.c:1118
+#: ctk/ctkplacessidebar.c:4158 ctk/ctkplacesview.c:1125
 msgid "Computer"
 msgstr "Računar"
 
-#: ctk/ctkplacesview.c:894
+#: ctk/ctkplacesview.c:901
 msgid "Searching for network locations"
 msgstr "Tražim dostupna mrežna mesta"
 
-#: ctk/ctkplacesview.c:901
+#: ctk/ctkplacesview.c:908
 msgid "No network locations found"
 msgstr "Nema dostupnih mrežnih mesta"
 
 #. if it wasn't cancelled show a dialog
-#: ctk/ctkplacesview.c:1228 ctk/ctkplacesview.c:1303
+#: ctk/ctkplacesview.c:1235 ctk/ctkplacesview.c:1333
 msgid "Unable to access location"
 msgstr "Ne mogu da pristupim putanji"
 
 #. Restore from Cancel to Connect
-#: ctk/ctkplacesview.c:1246 ctk/ui/ctkplacesview.ui:449
+#: ctk/ctkplacesview.c:1253 ctk/ui/ctkplacesview.ui:317
 msgid "Con_nect"
 msgstr "Po_veži"
 
 #. if it wasn't cancelled show a dialog
-#: ctk/ctkplacesview.c:1366
+#: ctk/ctkplacesview.c:1396
 msgid "Unable to unmount volume"
 msgstr "Ne mogu da otkačim uređaj"
 
 #. Allow to cancel the operation
-#: ctk/ctkplacesview.c:1466
+#: ctk/ctkplacesview.c:1497
 msgid "Cance_l"
 msgstr "_Otkaži"
 
+#: ctk/ctkplacesview.c:1660
+msgid "AppleTalk"
+msgstr "Epl tok"
+
+#. Translators: do not translate ftp:// and ftps://
+#: ctk/ctkplacesview.c:1664
+msgid "File Transfer Protocol"
+msgstr "Protokol prenosa datoteke"
+
+#: ctk/ctkplacesview.c:1664
+msgid "ftp:// or ftps://"
+msgstr "„ftp://“ ili „ftps://“"
+
+#: ctk/ctkplacesview.c:1667
+msgid "Network File System"
+msgstr "Sistem datoteka mreže"
+
+#: ctk/ctkplacesview.c:1670
+msgid "Samba"
+msgstr "Samba"
+
+#. Translators: do not translate sftp:// and ssh://
 #: ctk/ctkplacesview.c:1674
+msgid "SSH File Transfer Protocol"
+msgstr "Protokol prenosa datoteke bezbednom školjkom"
+
+#: ctk/ctkplacesview.c:1674
+msgid "sftp:// or ssh://"
+msgstr "„sftp://“ ili „ssh://“"
+
+#. Translators: do not translate dav:// and davs://
+#: ctk/ctkplacesview.c:1678
+msgid "WebDAV"
+msgstr "VebDAV"
+
+#: ctk/ctkplacesview.c:1678
+msgid "dav:// or davs://"
+msgstr "„dav://“ ili „davs://“"
+
+#: ctk/ctkplacesview.c:1753
 msgid "_Disconnect"
 msgstr "P_rekini vezu"
 
-#: ctk/ctkplacesview.c:1684
+#: ctk/ctkplacesview.c:1763
 msgid "_Connect"
 msgstr "Po_veži"
 
-#: ctk/ctkplacesview.c:1825
+#: ctk/ctkplacesview.c:1904
 msgid "Unable to get remote server location"
 msgstr "Ne mogu da pribavim putanju udaljenog servera"
 
-#: ctk/ctkplacesview.c:2013 ctk/ctkplacesview.c:2022
+#: ctk/ctkplacesview.c:2099 ctk/ctkplacesview.c:2108
 msgid "Networks"
 msgstr "Mreže"
 
-#: ctk/ctkplacesview.c:2013 ctk/ctkplacesview.c:2022
+#: ctk/ctkplacesview.c:2099 ctk/ctkplacesview.c:2108
 msgid "On This Computer"
 msgstr "Na ovom računaru"
 
@@ -3240,15 +3409,15 @@ msgid "Disconnect"
 msgstr "Prekini vezu"
 
 #: ctk/ctkplacesviewrow.c:481 ctk/ui/ctkplacesviewrow.ui:72
-#: ctk/ui/ctksidebarrow.ui:60
+#: ctk/ui/ctksidebarrow.ui:62
 msgid "Unmount"
 msgstr "Otkači"
 
-#: ctk/ctkprintbackend.c:762
+#: ctk/ctkprintbackend.c:780
 msgid "Authentication"
 msgstr "Potvrdi identitet"
 
-#: ctk/ctkprintbackend.c:833
+#: ctk/ctkprintbackend.c:853
 msgid "_Remember password"
 msgstr "_Zapamti lozinku"
 
@@ -3256,7 +3425,7 @@ msgstr "_Zapamti lozinku"
 msgid "Select a filename"
 msgstr "Izaberite datoteku"
 
-#: ctk/ctkprinteroptionwidget.c:767
+#: ctk/ctkprinteroptionwidget.c:769
 msgid "Not available"
 msgstr "Nije dostupno"
 
@@ -3319,7 +3488,7 @@ msgstr "Završeno uz grešku"
 msgid "Preparing %d"
 msgstr "Pripremam „%d“"
 
-#: ctk/ctkprintoperation.c:2376 ctk/ctkprintoperation.c:3005
+#: ctk/ctkprintoperation.c:2376 ctk/ctkprintoperation.c:3007
 #, c-format
 msgid "Preparing"
 msgstr "Pripremam"
@@ -3329,90 +3498,90 @@ msgstr "Pripremam"
 msgid "Printing %d"
 msgstr "Štampam „%d“"
 
-#: ctk/ctkprintoperation.c:3036
+#: ctk/ctkprintoperation.c:3038
 #, c-format
 msgid "Error creating print preview"
 msgstr "Greška pri izradi pregleda"
 
-#: ctk/ctkprintoperation.c:3039
+#: ctk/ctkprintoperation.c:3041
 #, c-format
 msgid "The most probable reason is that a temporary file could not be created."
 msgstr "Najčešći razlog je da nije moguće napraviti privremenu datoteku."
 
 #. window
-#: ctk/ctkprintoperation-portal.c:230 ctk/ctkprintoperation-portal.c:541
-#: ctk/ctkprintoperation-portal.c:618 ctk/ctkprintunixdialog.c:3412
+#: ctk/ctkprintoperation-portal.c:231 ctk/ctkprintoperation-portal.c:549
+#: ctk/ctkprintoperation-portal.c:618 ctk/ctkprintunixdialog.c:3415
 msgid "Print"
 msgstr "Štampaj"
 
-#: ctk/ctkprintoperation-win32.c:617
+#: ctk/ctkprintoperation-win32.c:631
 msgid "Printer offline"
 msgstr "Štampač je isključen"
 
-#: ctk/ctkprintoperation-win32.c:619
+#: ctk/ctkprintoperation-win32.c:633
 msgid "Out of paper"
 msgstr "Nema više papira"
 
 #. Translators: this is a printer status.
-#: ctk/ctkprintoperation-win32.c:621
-#: modules/printbackends/cups/ctkprintbackendcups.c:2596
+#: ctk/ctkprintoperation-win32.c:635
+#: modules/printbackends/cups/ctkprintbackendcups.c:2628
 msgid "Paused"
 msgstr "Zaustavljeno"
 
-#: ctk/ctkprintoperation-win32.c:623
+#: ctk/ctkprintoperation-win32.c:637
 msgid "Need user intervention"
 msgstr "Potrebna je intervencija korisnika"
 
-#: ctk/ctkprintoperation-win32.c:723
+#: ctk/ctkprintoperation-win32.c:742
 msgid "Custom size"
 msgstr "Proizvoljna veličina"
 
-#: ctk/ctkprintoperation-win32.c:1545
+#: ctk/ctkprintoperation-win32.c:1619
 msgid "No printer found"
 msgstr "Štampač nije pronađen"
 
-#: ctk/ctkprintoperation-win32.c:1572
+#: ctk/ctkprintoperation-win32.c:1646
 msgid "Invalid argument to CreateDC"
 msgstr "Neispravan argument za „CreateDC“"
 
-#: ctk/ctkprintoperation-win32.c:1608 ctk/ctkprintoperation-win32.c:1854
+#: ctk/ctkprintoperation-win32.c:1682 ctk/ctkprintoperation-win32.c:1928
 msgid "Error from StartDoc"
 msgstr "Greška u „StartDoc“"
 
-#: ctk/ctkprintoperation-win32.c:1709 ctk/ctkprintoperation-win32.c:1732
-#: ctk/ctkprintoperation-win32.c:1780
+#: ctk/ctkprintoperation-win32.c:1783 ctk/ctkprintoperation-win32.c:1806
+#: ctk/ctkprintoperation-win32.c:1854
 msgid "Not enough free memory"
 msgstr "Nema dovoljno slobodne memorije"
 
-#: ctk/ctkprintoperation-win32.c:1785
+#: ctk/ctkprintoperation-win32.c:1859
 msgid "Invalid argument to PrintDlgEx"
 msgstr "Neispravan argument sa „PrintDlgEx“"
 
-#: ctk/ctkprintoperation-win32.c:1790
+#: ctk/ctkprintoperation-win32.c:1864
 msgid "Invalid pointer to PrintDlgEx"
 msgstr "Neispravan pokazivač na „PrintDlgEx“"
 
-#: ctk/ctkprintoperation-win32.c:1795
+#: ctk/ctkprintoperation-win32.c:1869
 msgid "Invalid handle to PrintDlgEx"
 msgstr "Neispravna zakačka ka „PrintDlgEx“"
 
-#: ctk/ctkprintoperation-win32.c:1800
+#: ctk/ctkprintoperation-win32.c:1874
 msgid "Unspecified error"
 msgstr "Nepoznata greška"
 
-#: ctk/ctkprintunixdialog.c:745
+#: ctk/ctkprintunixdialog.c:746
 msgid "Pre_view"
 msgstr "_Pregled"
 
-#: ctk/ctkprintunixdialog.c:747
+#: ctk/ctkprintunixdialog.c:748
 msgid "_Print"
 msgstr "_Štampaj"
 
-#: ctk/ctkprintunixdialog.c:860
+#: ctk/ctkprintunixdialog.c:861
 msgid "Getting printer information failed"
 msgstr "Ne mogu da prikupim podatke o štampaču"
 
-#: ctk/ctkprintunixdialog.c:2070
+#: ctk/ctkprintunixdialog.c:2071
 msgid "Getting printer information…"
 msgstr "Prikupljam podatke o štampaču…"
 
@@ -3422,63 +3591,63 @@ msgstr "Prikupljam podatke o štampaču…"
 #. Translators: These strings name the possible arrangements of
 #. * multiple pages on a sheet when printing
 #.
-#: ctk/ctkprintunixdialog.c:3119
-#: modules/printbackends/cups/ctkprintbackendcups.c:5434
+#: ctk/ctkprintunixdialog.c:3120
+#: modules/printbackends/cups/ctkprintbackendcups.c:5508
 msgid "Left to right, top to bottom"
 msgstr "S leva na desno, odozgo na dole"
 
-#: ctk/ctkprintunixdialog.c:3119
-#: modules/printbackends/cups/ctkprintbackendcups.c:5434
+#: ctk/ctkprintunixdialog.c:3120
+#: modules/printbackends/cups/ctkprintbackendcups.c:5508
 msgid "Left to right, bottom to top"
 msgstr "S leva na desno, odozdo na gore"
 
-#: ctk/ctkprintunixdialog.c:3120
-#: modules/printbackends/cups/ctkprintbackendcups.c:5435
+#: ctk/ctkprintunixdialog.c:3121
+#: modules/printbackends/cups/ctkprintbackendcups.c:5509
 msgid "Right to left, top to bottom"
 msgstr "S desna na levo, odozgo na dole"
 
-#: ctk/ctkprintunixdialog.c:3120
-#: modules/printbackends/cups/ctkprintbackendcups.c:5435
+#: ctk/ctkprintunixdialog.c:3121
+#: modules/printbackends/cups/ctkprintbackendcups.c:5509
 msgid "Right to left, bottom to top"
 msgstr "S desna na levo, odozdo na gore"
 
-#: ctk/ctkprintunixdialog.c:3121
-#: modules/printbackends/cups/ctkprintbackendcups.c:5436
+#: ctk/ctkprintunixdialog.c:3122
+#: modules/printbackends/cups/ctkprintbackendcups.c:5510
 msgid "Top to bottom, left to right"
 msgstr "Odozgo na dole, s leva na desno"
 
-#: ctk/ctkprintunixdialog.c:3121
-#: modules/printbackends/cups/ctkprintbackendcups.c:5436
+#: ctk/ctkprintunixdialog.c:3122
+#: modules/printbackends/cups/ctkprintbackendcups.c:5510
 msgid "Top to bottom, right to left"
 msgstr "Odozgo na dole, s desna na levo"
 
-#: ctk/ctkprintunixdialog.c:3122
-#: modules/printbackends/cups/ctkprintbackendcups.c:5437
+#: ctk/ctkprintunixdialog.c:3123
+#: modules/printbackends/cups/ctkprintbackendcups.c:5511
 msgid "Bottom to top, left to right"
 msgstr "Odozdo na gore, s leva na desno"
 
-#: ctk/ctkprintunixdialog.c:3122
-#: modules/printbackends/cups/ctkprintbackendcups.c:5437
+#: ctk/ctkprintunixdialog.c:3123
+#: modules/printbackends/cups/ctkprintbackendcups.c:5511
 msgid "Bottom to top, right to left"
 msgstr "Odozdo na gore, s desna na levo"
 
-#: ctk/ctkprintunixdialog.c:3126 ctk/ctkprintunixdialog.c:3139
+#: ctk/ctkprintunixdialog.c:3127 ctk/ctkprintunixdialog.c:3140
 msgid "Page Ordering"
 msgstr "Slaganje strana"
 
-#: ctk/ctkprintunixdialog.c:3155
+#: ctk/ctkprintunixdialog.c:3156
 msgid "Left to right"
 msgstr "Sa leva na desno"
 
-#: ctk/ctkprintunixdialog.c:3156
+#: ctk/ctkprintunixdialog.c:3157
 msgid "Right to left"
 msgstr "Sa desna na levo"
 
-#: ctk/ctkprintunixdialog.c:3168
+#: ctk/ctkprintunixdialog.c:3169
 msgid "Top to bottom"
 msgstr "Odozgo na dole"
 
-#: ctk/ctkprintunixdialog.c:3169
+#: ctk/ctkprintunixdialog.c:3170
 msgid "Bottom to top"
 msgstr "Odozdo na gore"
 
@@ -3569,19 +3738,19 @@ msgctxt "recent menu label"
 msgid "%d. %s"
 msgstr "%d. %s"
 
-#: ctk/ctkrecentmanager.c:1053 ctk/ctkrecentmanager.c:1066
-#: ctk/ctkrecentmanager.c:1203 ctk/ctkrecentmanager.c:1213
-#: ctk/ctkrecentmanager.c:1265 ctk/ctkrecentmanager.c:1274
+#: ctk/ctkrecentmanager.c:1052 ctk/ctkrecentmanager.c:1065
+#: ctk/ctkrecentmanager.c:1207 ctk/ctkrecentmanager.c:1217
+#: ctk/ctkrecentmanager.c:1269 ctk/ctkrecentmanager.c:1278
 #, c-format
 msgid "Unable to find an item with URI '%s'"
 msgstr "Ne mogu da pronađem stavku sa adresom „%s“"
 
-#: ctk/ctkrecentmanager.c:1289
+#: ctk/ctkrecentmanager.c:1293
 #, c-format
 msgid "Unable to move the item with URI '%s' to '%s'"
 msgstr "Ne mogu da premestim stavku sa putanjom „%s“ u „%s“"
 
-#: ctk/ctkrecentmanager.c:2507
+#: ctk/ctkrecentmanager.c:2479
 #, c-format
 msgid "No registered application with name '%s' for item with URI '%s' found"
 msgstr ""
@@ -3651,32 +3820,124 @@ msgstr "Rezultati pretrage"
 msgid "Search Shortcuts"
 msgstr "Traži prečice"
 
-#: ctk/ctkshortcutswindow.c:1053 ctk/ui/ctkemojichooser.ui:314
-#: ctk/ui/ctkfilechooserwidget.ui:310
+#: ctk/ctkshortcutswindow.c:1053 ctk/ui/ctkemojichooser.ui:376
+#: ctk/ui/ctkfilechooserwidget.ui:323
 msgid "No Results Found"
 msgstr "Nema rezultata"
 
-#: ctk/ctkshortcutswindow.c:1060 ctk/ui/ctkemojichooser.ui:328
-#: ctk/ui/ctkfilechooserwidget.ui:324 ctk/ui/ctkplacesview.ui:406
+#: ctk/ctkshortcutswindow.c:1060 ctk/ui/ctkemojichooser.ui:390
+#: ctk/ui/ctkfilechooserwidget.ui:337 ctk/ui/ctkplacesview.ui:274
 msgid "Try a different search"
 msgstr "Probajte drugačiju pretragu"
 
-#. Translators: if the "on" state label requires more than three
-#. * glyphs then use MEDIUM VERTICAL BAR (U+2759) as the text for
-#. * the state
-#.
-#: ctk/ctkswitch.c:306
-msgctxt "switch"
-msgid "ON"
-msgstr "UKLJ"
+#: ctk/ctkstock.c:329
+msgctxt "Stock label"
+msgid "_Apply"
+msgstr "_Primeni"
 
-#. Translators: if the "off" state label requires more than three
-#. * glyphs then use WHITE CIRCLE (U+25CB) as the text for the state
-#.
-#: ctk/ctkswitch.c:313
-msgctxt "switch"
-msgid "OFF"
-msgstr "ISK"
+#: ctk/ctkstock.c:331
+msgctxt "Stock label"
+msgid "_Cancel"
+msgstr "O_dustani"
+
+#: ctk/ctkstock.c:335
+msgctxt "Stock label"
+msgid "C_onnect"
+msgstr "Uspostavi ve_zu"
+
+#: ctk/ctkstock.c:336
+msgctxt "Stock label"
+msgid "_Convert"
+msgstr "_Pretvori"
+
+#: ctk/ctkstock.c:340
+msgctxt "Stock label"
+msgid "_Discard"
+msgstr "_Odbaci"
+
+#: ctk/ctkstock.c:341
+msgctxt "Stock label"
+msgid "_Disconnect"
+msgstr "P_rekini vezu"
+
+#: ctk/ctkstock.c:343
+msgctxt "Stock label"
+msgid "_Edit"
+msgstr "_Uredi"
+
+#: ctk/ctkstock.c:371
+msgctxt "Stock label"
+msgid "_Index"
+msgstr "_Indeks"
+
+#: ctk/ctkstock.c:372
+msgctxt "Stock label"
+msgid "_Information"
+msgstr "Po_daci"
+
+#: ctk/ctkstock.c:402
+msgctxt "Stock label"
+msgid "_No"
+msgstr "_Ne"
+
+#: ctk/ctkstock.c:403
+msgctxt "Stock label"
+msgid "_OK"
+msgstr "U _redu"
+
+#. Page orientation
+#: ctk/ctkstock.c:406
+msgctxt "Stock label"
+msgid "Landscape"
+msgstr "Položeno"
+
+#. Page orientation
+#: ctk/ctkstock.c:408
+msgctxt "Stock label"
+msgid "Portrait"
+msgstr "Uspravno"
+
+#. Page orientation
+#: ctk/ctkstock.c:410
+msgctxt "Stock label"
+msgid "Reverse landscape"
+msgstr "Obrnuto položeno"
+
+#. Page orientation
+#: ctk/ctkstock.c:412
+msgctxt "Stock label"
+msgid "Reverse portrait"
+msgstr "Obrnuto uspravno"
+
+#: ctk/ctkstock.c:413
+msgctxt "Stock label"
+msgid "Page Set_up"
+msgstr "Pode_šavanje strane"
+
+#: ctk/ctkstock.c:415
+msgctxt "Stock label"
+msgid "_Preferences"
+msgstr "Pos_tavke"
+
+#: ctk/ctkstock.c:427
+msgctxt "Stock label"
+msgid "_Color"
+msgstr "_Boja"
+
+#: ctk/ctkstock.c:428
+msgctxt "Stock label"
+msgid "_Font"
+msgstr "_Font"
+
+#: ctk/ctkstock.c:437
+msgctxt "Stock label"
+msgid "_Undelete"
+msgstr "_Povrati"
+
+#: ctk/ctkstock.c:441
+msgctxt "Stock label"
+msgid "_Yes"
+msgstr "_Da"
 
 #: ctk/ctktextbufferrichtext.c:648
 #, c-format
@@ -3688,107 +3949,108 @@ msgstr "Nepoznata greška pri raspakivanju „%s“"
 msgid "No deserialize function found for format %s"
 msgstr "Nisam pronašao funkciju za raspakivanje formata „%s“"
 
-#: ctk/ctktextbufferserialize.c:784 ctk/ctktextbufferserialize.c:810
+#: ctk/ctktextbufferserialize.c:792 ctk/ctktextbufferserialize.c:818
 #, c-format
 msgid "Both \"id\" and \"name\" were found on the <%s> element"
 msgstr "Pronašao sam i „id“ i „name“ u elementu <%s>"
 
-#: ctk/ctktextbufferserialize.c:794 ctk/ctktextbufferserialize.c:820
+#: ctk/ctktextbufferserialize.c:802 ctk/ctktextbufferserialize.c:828
 #, c-format
 msgid "The attribute \"%s\" was found twice on the <%s> element"
 msgstr "Atribut „%s“ sam pronašao dva puta u elementu <%s>"
 
-#: ctk/ctktextbufferserialize.c:836
+#: ctk/ctktextbufferserialize.c:844
 #, c-format
 msgid "<%s> element has invalid ID \"%s\""
 msgstr "Element <%s> ima neispravan ID „%s“"
 
-#: ctk/ctktextbufferserialize.c:846
+#: ctk/ctktextbufferserialize.c:855
 #, c-format
 msgid "<%s> element has neither a \"name\" nor an \"id\" attribute"
 msgstr "Element <%s> nema ni atribut „id“ niti „name“"
 
-#: ctk/ctktextbufferserialize.c:933
+#: ctk/ctktextbufferserialize.c:942
 #, c-format
 msgid "Attribute \"%s\" repeated twice on the same <%s> element"
 msgstr "Atribut „%s“ je ponovljen dva puta u istom <%s> elementu"
 
-#: ctk/ctktextbufferserialize.c:951 ctk/ctktextbufferserialize.c:976
+#: ctk/ctktextbufferserialize.c:960 ctk/ctktextbufferserialize.c:985
 #, c-format
 msgid "Attribute \"%s\" is invalid on <%s> element in this context"
 msgstr "Atribut „%s“ je neispravan u elementu <%s> u ovom kontekstu"
 
-#: ctk/ctktextbufferserialize.c:1015
+#: ctk/ctktextbufferserialize.c:1024
 #, c-format
 msgid "Tag \"%s\" has not been defined."
 msgstr "Oznaka „%s“ nije definisana."
 
-#: ctk/ctktextbufferserialize.c:1027
+#: ctk/ctktextbufferserialize.c:1036
 msgid "Anonymous tag found and tags can not be created."
 msgstr "Bezimena oznaka je pronađena pa oznake ne mogu biti napravljene."
 
-#: ctk/ctktextbufferserialize.c:1038
+#: ctk/ctktextbufferserialize.c:1047
 #, c-format
 msgid "Tag \"%s\" does not exist in buffer and tags can not be created."
 msgstr ""
 "Oznaka „%s“ ne postoji u međumemoriji pa oznake ne mogu biti napravljene."
 
-#: ctk/ctktextbufferserialize.c:1139 ctk/ctktextbufferserialize.c:1214
-#: ctk/ctktextbufferserialize.c:1319 ctk/ctktextbufferserialize.c:1393
+#: ctk/ctktextbufferserialize.c:1148 ctk/ctktextbufferserialize.c:1223
+#: ctk/ctktextbufferserialize.c:1328 ctk/ctktextbufferserialize.c:1402
 #, c-format
 msgid "Element <%s> is not allowed below <%s>"
 msgstr "Element <%s> nije dozvoljen ispod <%s>"
 
-#: ctk/ctktextbufferserialize.c:1170
+#: ctk/ctktextbufferserialize.c:1179
 #, c-format
 msgid "\"%s\" is not a valid attribute type"
 msgstr "„%s“ nije ispravna vrsta atributa"
 
-#: ctk/ctktextbufferserialize.c:1178
+#: ctk/ctktextbufferserialize.c:1187
 #, c-format
 msgid "\"%s\" is not a valid attribute name"
 msgstr "„%s“ nije ispravan naziv atributa"
 
-#: ctk/ctktextbufferserialize.c:1188
+#: ctk/ctktextbufferserialize.c:1197
 #, c-format
 msgid ""
 "\"%s\" could not be converted to a value of type \"%s\" for attribute \"%s\""
 msgstr "Nije moguće pretvoriti „%s“ u vrednost vrste „%s“ za atribut „%s“"
 
-#: ctk/ctktextbufferserialize.c:1197
+#: ctk/ctktextbufferserialize.c:1206
 #, c-format
 msgid "\"%s\" is not a valid value for attribute \"%s\""
 msgstr "„%s“ nije isprana vrednost atributa „%s“"
 
-#: ctk/ctktextbufferserialize.c:1282
+#: ctk/ctktextbufferserialize.c:1291
 #, c-format
 msgid "Tag \"%s\" already defined"
 msgstr "Oznaka „%s“ je već definisana"
 
-#: ctk/ctktextbufferserialize.c:1295
+#: ctk/ctktextbufferserialize.c:1304
 #, c-format
 msgid "Tag \"%s\" has invalid priority \"%s\""
 msgstr "Oznaka „%s“ ima neispravan prioritet „%s“"
 
-#: ctk/ctktextbufferserialize.c:1348
+#: ctk/ctktextbufferserialize.c:1357
 #, c-format
 msgid "Outermost element in text must be <text_view_markup> not <%s>"
-msgstr "Prvi spoljašnji element u tekstu mora biti <text_view_markup> a ne <%s>"
+msgstr ""
+"Prvi spoljašnji element u tekstu mora biti <text_view_markup> a ne <%s>"
 
-#: ctk/ctktextbufferserialize.c:1357 ctk/ctktextbufferserialize.c:1373
+#: ctk/ctktextbufferserialize.c:1366 ctk/ctktextbufferserialize.c:1382
 #, c-format
 msgid "A <%s> element has already been specified"
 msgstr "Element <%s> je već naveden"
 
-#: ctk/ctktextbufferserialize.c:1379
+#: ctk/ctktextbufferserialize.c:1388
 msgid "A <text> element can't occur before a <tags> element"
 msgstr "Element <text> se ne može pojaviti pre elementa <tags>"
 
-#: ctk/ctktextbufferserialize.c:1785
+#: ctk/ctktextbufferserialize.c:1794
 msgid "Serialized data is malformed"
 msgstr "Podaci nisu lepo zapakovani u nisku"
 
-#: ctk/ctktextbufferserialize.c:1864
+#: ctk/ctktextbufferserialize.c:1873
 msgid ""
 "Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
 msgstr ""
@@ -3835,6 +4097,20 @@ msgstr "ZWJ — _Spojnica bez širine"
 msgid "ZWNJ Zero width _non-joiner"
 msgstr "ZWNJ — _Nespojnica bez širine"
 
+#: ctk/ctkuimanager.c:1735
+#, c-format
+msgid "Unexpected start tag '%s' on line %d char %d"
+msgstr "Neočekivana početna oznaka „%s“ u %d° redu, znak %d"
+
+#: ctk/ctkuimanager.c:1825
+#, c-format
+msgid "Unexpected character data on line %d char %d"
+msgstr "Neočekivani znakovni podaci u %d° redu, znak %d"
+
+#: ctk/ctkuimanager.c:2638
+msgid "Empty"
+msgstr "Prazno"
+
 #: ctk/ctkvolumebutton.c:189
 msgid "Adjusts the volume"
 msgstr "Podešava jačinu zvuka"
@@ -3858,24 +4134,24 @@ msgctxt "volume percentage"
 msgid "%d %%"
 msgstr "%d %%"
 
-#: ctk/ctkwindow.c:9213
+#: ctk/ctkwindow.c:9303
 msgid "Move"
 msgstr "Premesti"
 
-#: ctk/ctkwindow.c:9221
+#: ctk/ctkwindow.c:9311
 msgid "Resize"
 msgstr "Promeni veličinu"
 
-#: ctk/ctkwindow.c:9252
+#: ctk/ctkwindow.c:9342
 msgid "Always on Top"
 msgstr "Uvek u prvom planu"
 
-#: ctk/ctkwindow.c:12686
+#: ctk/ctkwindow.c:12777
 #, c-format
 msgid "Do you want to use CTK+ Inspector?"
 msgstr "Da li želite da koristite Ctk+ Nadzornika?"
 
-#: ctk/ctkwindow.c:12688
+#: ctk/ctkwindow.c:12779
 #, c-format
 msgid ""
 "CTK+ Inspector is an interactive debugger that lets you explore and modify "
@@ -3883,24 +4159,24 @@ msgid ""
 "break or crash."
 msgstr ""
 "Ctk+ Nadzornik je međudejstveni pročišćavač koji vam omogućava da "
-"istražujete i menjate unutrašnjost bilo kog Ctk+ programa. Njegovo korišćenje "
-"može dovesti do pada ili urušavanja programa."
+"istražujete i menjate unutrašnjost bilo kog Ctk+ programa. Njegovo "
+"korišćenje može dovesti do pada ili urušavanja programa."
 
-#: ctk/ctkwindow.c:12693
+#: ctk/ctkwindow.c:12784
 msgid "Don't show this message again"
 msgstr "Ne prikazuj ovu poruku ponovo"
 
-#: ctk/inspector/action-editor.c:281
+#: ctk/inspector/action-editor.c:280
 msgid "Activate"
 msgstr "Pokreni"
 
-#: ctk/inspector/action-editor.c:302 ctk/inspector/actions.ui:82
+#: ctk/inspector/action-editor.c:303 ctk/inspector/actions.ui:82
 #: ctk/inspector/css-node-tree.ui:78 ctk/inspector/misc-info.ui:102
 msgid "State"
 msgstr "Stanje"
 
 #: ctk/inspector/actions.ui:30 ctk/inspector/general.ui:115
-#: ctk/ui/ctkplacesview.ui:158
+#: ctk/ui/ctkplacesview.ui:92
 msgid "Prefix"
 msgstr "Predmetak"
 
@@ -3953,7 +4229,7 @@ msgid "CSS Property"
 msgstr "Svojstvo CSS-a"
 
 #: ctk/inspector/css-node-tree.ui:125 ctk/inspector/prop-list.ui:50
-#: ctk/ui/ctkcoloreditor.ui:295
+#: ctk/ui/ctkcoloreditor.ui:320
 msgid "Value"
 msgstr "Vrednost"
 
@@ -3999,22 +4275,22 @@ msgstr "GL izdanje"
 msgid "GL Vendor"
 msgstr "GL proizvođač"
 
-#: ctk/inspector/gestures.c:129
+#: ctk/inspector/gestures.c:130
 msgctxt "event phase"
 msgid "None"
 msgstr "Ništa"
 
-#: ctk/inspector/gestures.c:130
+#: ctk/inspector/gestures.c:131
 msgctxt "event phase"
 msgid "Capture"
 msgstr "Snimanje"
 
-#: ctk/inspector/gestures.c:131
+#: ctk/inspector/gestures.c:132
 msgctxt "event phase"
 msgid "Bubble"
 msgstr "Mehur"
 
-#: ctk/inspector/gestures.c:132
+#: ctk/inspector/gestures.c:133
 msgctxt "event phase"
 msgid "Target"
 msgstr "Meta"
@@ -4027,7 +4303,7 @@ msgstr "Neimenovani odeljak"
 msgid "Label"
 msgstr "Natpis"
 
-#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1385
+#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1389
 msgid "Action"
 msgstr "Radnja"
 
@@ -4057,8 +4333,8 @@ msgstr "Osnovni element"
 
 #: ctk/inspector/misc-info.ui:192 ctk/inspector/misc-info.ui:237
 #: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1071
-#: ctk/inspector/prop-editor.c:1268 ctk/inspector/prop-editor.c:1393
-#: ctk/inspector/prop-editor.c:1504 ctk/inspector/window.ui:382
+#: ctk/inspector/prop-editor.c:1270 ctk/inspector/prop-editor.c:1397
+#: ctk/inspector/prop-editor.c:1508 ctk/inspector/window.ui:382
 msgid "Properties"
 msgstr "Svojstva"
 
@@ -4162,70 +4438,66 @@ msgstr "Predmet: %p (%s)"
 msgid "Uneditable property type: %s"
 msgstr "Neurediva vrsta svojstva: %s"
 
-#: ctk/inspector/prop-editor.c:1259
+#: ctk/inspector/prop-editor.c:1261
 msgid "Attribute mapping"
 msgstr "Mapiranje osobina"
 
-#: ctk/inspector/prop-editor.c:1264
+#: ctk/inspector/prop-editor.c:1266
 msgid "Model:"
 msgstr "Model:"
 
-#: ctk/inspector/prop-editor.c:1265
+#: ctk/inspector/prop-editor.c:1267
 #, c-format
 msgid "%p (%s)"
 msgstr "%p (%s)"
 
-#: ctk/inspector/prop-editor.c:1275
+#: ctk/inspector/prop-editor.c:1277
 msgid "Column:"
 msgstr "Stubac:"
 
-#: ctk/inspector/prop-editor.c:1285
+#: ctk/inspector/prop-editor.c:1287
 msgctxt "property name"
 msgid "None"
 msgstr "Ništa"
 
-#: ctk/inspector/prop-editor.c:1389
+#: ctk/inspector/prop-editor.c:1393
 #, c-format
 msgid "Defined at: %p (%s)"
 msgstr "Određen na: %p (%s)"
 
-#: ctk/inspector/prop-editor.c:1453 ctk/inspector/prop-editor.c:1469
+#: ctk/inspector/prop-editor.c:1457 ctk/inspector/prop-editor.c:1473
 msgid "inverted"
 msgstr "izvrnuto"
 
-#: ctk/inspector/prop-editor.c:1485
+#: ctk/inspector/prop-editor.c:1489
 msgid "bidirectional, inverted"
 msgstr "dvosmerno, izvrnuto"
 
-#: ctk/inspector/prop-editor.c:1490 ctk/inspector/prop-editor.c:1604
+#: ctk/inspector/prop-editor.c:1494 ctk/inspector/prop-editor.c:1608
 msgid "bidirectional"
 msgstr "dvosmerno"
 
-#: ctk/inspector/prop-editor.c:1495
+#: ctk/inspector/prop-editor.c:1499
 msgid "Binding:"
 msgstr "Uvezivanje:"
 
-#: ctk/inspector/prop-editor.c:1623
+#: ctk/inspector/prop-editor.c:1627
 msgid "Setting:"
 msgstr "Podešavanje:"
 
-#: ctk/inspector/prop-editor.c:1663
+#: ctk/inspector/prop-editor.c:1667
 msgid "Source:"
 msgstr "Izvor:"
 
-#: ctk/inspector/prop-editor.c:1665
+#: ctk/inspector/prop-editor.c:1669
 msgid "Reset"
 msgstr "Ponovo postavi"
 
-#: ctk/inspector/prop-editor.c:1676
-msgid "Default"
-msgstr "Osnovno"
-
-#: ctk/inspector/prop-editor.c:1679
+#: ctk/inspector/prop-editor.c:1683
 msgid "Theme"
 msgstr "Tema"
 
-#: ctk/inspector/prop-editor.c:1682
+#: ctk/inspector/prop-editor.c:1686
 msgid "XSettings"
 msgstr "Podešavanja Iksa"
 
@@ -4234,6 +4506,7 @@ msgid "Property"
 msgstr "Osobine"
 
 #: ctk/inspector/prop-list.ui:68 ctk/inspector/statistics.ui:53
+#: ctk/ui/ctkfilechooserwidget.ui:236
 msgid "Type"
 msgstr "Vrsta"
 
@@ -4253,7 +4526,8 @@ msgstr "Putanja"
 msgid "Count"
 msgstr "Broj"
 
-#: ctk/inspector/resource-list.ui:130 ctk/ui/ctkfilechooserwidget.ui:223
+#: ctk/inspector/resource-list.ui:130 ctk/ui/ctkfilechooserwidget.ui:224
+#: ctk/ui/ctkfontchooserwidget.ui:134 ctk/ui/ctkfontchooserwidget.ui:276
 msgid "Size"
 msgstr "Veličina"
 
@@ -4273,7 +4547,7 @@ msgstr "Veličina:"
 msgid "Selector"
 msgstr "Izabornik"
 
-#: ctk/inspector/signals-list.c:117
+#: ctk/inspector/signals-list.c:118
 msgid "Yes"
 msgstr "Da"
 
@@ -4285,35 +4559,35 @@ msgstr "Signal"
 msgid "Connected"
 msgstr "Povezan"
 
-#: ctk/inspector/size-groups.c:224
+#: ctk/inspector/size-groups.c:225
 msgid "Ignore hidden"
 msgstr "Zanemari skrivene"
 
-#: ctk/inspector/size-groups.c:242
+#: ctk/inspector/size-groups.c:243
 msgid "Mode"
 msgstr "Režim"
 
-#: ctk/inspector/size-groups.c:252
+#: ctk/inspector/size-groups.c:253
 msgctxt "sizegroup mode"
 msgid "None"
 msgstr "Ništa"
 
-#: ctk/inspector/size-groups.c:253
+#: ctk/inspector/size-groups.c:254
 msgctxt "sizegroup mode"
 msgid "Horizontal"
 msgstr "Vodoravno"
 
-#: ctk/inspector/size-groups.c:254
+#: ctk/inspector/size-groups.c:255
 msgctxt "sizegroup mode"
 msgid "Vertical"
 msgstr "Uspravno"
 
-#: ctk/inspector/size-groups.c:255
+#: ctk/inspector/size-groups.c:256
 msgctxt "sizegroup mode"
 msgid "Both"
 msgstr "Oba"
 
-#: ctk/inspector/statistics.c:377
+#: ctk/inspector/statistics.c:379
 msgid "GLib must be configured with --enable-debug"
 msgstr "Glib mora biti podešeno sa „--enable-debug“"
 
@@ -4345,19 +4619,19 @@ msgstr "Zbirno"
 msgid "Enable statistics with GOBJECT_DEBUG=instance-count"
 msgstr "Omogući statistiku uz „GOBJECT_DEBUG=instance-count“"
 
-#: ctk/inspector/visual.c:406 ctk/inspector/visual.c:421
+#: ctk/inspector/visual.c:432 ctk/inspector/visual.c:447
 msgid "Theme is hardcoded by CTK_THEME"
 msgstr "Tema je striktno kodirana sa „CTK_THEME“"
 
-#: ctk/inspector/visual.c:631
+#: ctk/inspector/visual.c:657
 msgid "Backend does not support window scaling"
 msgstr "Pozadinac ne podržava srazmeravanje prozora"
 
-#: ctk/inspector/visual.c:726
+#: ctk/inspector/visual.c:752
 msgid "Setting is hardcoded by CTK_TEST_TOUCHSCREEN"
 msgstr "Podešavanje je striktno kodirano sa „CTK_TEST_TOUCHSCREEN“"
 
-#: ctk/inspector/visual.c:791
+#: ctk/inspector/visual.c:817
 msgid ""
 "Not settable at runtime.\n"
 "Use CDK_GL=always or CDK_GL=disable instead"
@@ -4365,8 +4639,8 @@ msgstr ""
 "Ne može se izabrati prilikom pokretanja.\n"
 "Koristite „CDK_GL=always“ (uvek) ili „CDK_GL=disable“ (onemogući)"
 
-#: ctk/inspector/visual.c:805 ctk/inspector/visual.c:806
-#: ctk/inspector/visual.c:807
+#: ctk/inspector/visual.c:831 ctk/inspector/visual.c:832
+#: ctk/inspector/visual.c:833
 msgid "GL rendering is disabled"
 msgstr "Crtanje pomoću GL-a je onemogućeno"
 
@@ -4389,10 +4663,6 @@ msgstr "Veličina pokazivača"
 #: ctk/inspector/visual.ui:197
 msgid "Icon Theme"
 msgstr "Tema ikonica"
-
-#: ctk/inspector/visual.ui:230 ctk/ui/ctkfontbutton.ui:13
-msgid "Font"
-msgstr "Font"
 
 #: ctk/inspector/visual.ui:263
 msgid "Font Scale"
@@ -4429,10 +4699,6 @@ msgstr "Način iscrtavanja"
 #: ctk/inspector/visual.ui:487
 msgid "Similar"
 msgstr "Slično"
-
-#: ctk/inspector/visual.ui:488
-msgid "Image"
-msgstr "Slika"
 
 #: ctk/inspector/visual.ui:489
 msgid "Recording"
@@ -4585,6 +4851,751 @@ msgstr "Vidni"
 #: ctk/inspector/window.ui:537 ctk/ui/ctkprintunixdialog.ui:426
 msgid "General"
 msgstr "Opšte"
+
+# Treba proveriti na šta se odnosi.
+#: ctk/open-type-layout.h:13
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Access All Alternates"
+msgstr "Pristupačno ime"
+
+#: ctk/open-type-layout.h:14
+msgctxt "OpenType layout"
+msgid "Above-base Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:15
+msgctxt "OpenType layout"
+msgid "Above-base Mark Positioning"
+msgstr ""
+
+#: ctk/open-type-layout.h:16
+msgctxt "OpenType layout"
+msgid "Above-base Substitutions"
+msgstr ""
+
+#: ctk/open-type-layout.h:17
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Alternative Fractions"
+msgstr "Zamenski ukazivač smera ređanja"
+
+#: ctk/open-type-layout.h:18
+msgctxt "OpenType layout"
+msgid "Akhands"
+msgstr ""
+
+#: ctk/open-type-layout.h:19
+msgctxt "OpenType layout"
+msgid "Below-base Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:20
+msgctxt "OpenType layout"
+msgid "Below-base Mark Positioning"
+msgstr ""
+
+#: ctk/open-type-layout.h:21
+msgctxt "OpenType layout"
+msgid "Below-base Substitutions"
+msgstr ""
+
+#: ctk/open-type-layout.h:22
+msgctxt "OpenType layout"
+msgid "Contextual Alternates"
+msgstr ""
+
+#: ctk/open-type-layout.h:23
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Case-Sensitive Forms"
+msgstr "Osetljivo"
+
+#: ctk/open-type-layout.h:24
+msgctxt "OpenType layout"
+msgid "Glyph Composition / Decomposition"
+msgstr ""
+
+#: ctk/open-type-layout.h:25
+msgctxt "OpenType layout"
+msgid "Conjunct Form After Ro"
+msgstr ""
+
+#: ctk/open-type-layout.h:26
+msgctxt "OpenType layout"
+msgid "Conjunct Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:27
+msgctxt "OpenType layout"
+msgid "Contextual Ligatures"
+msgstr ""
+
+#: ctk/open-type-layout.h:28
+msgctxt "OpenType layout"
+msgid "Centered CJK Punctuation"
+msgstr ""
+
+#: ctk/open-type-layout.h:29
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Capital Spacing"
+msgstr "Razmak kolona"
+
+#: ctk/open-type-layout.h:30
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Contextual Swash"
+msgstr "Kontekst"
+
+#: ctk/open-type-layout.h:31
+msgctxt "OpenType layout"
+msgid "Cursive Positioning"
+msgstr ""
+
+#: ctk/open-type-layout.h:32
+msgctxt "OpenType layout"
+msgid "Petite Capitals From Capitals"
+msgstr ""
+
+#: ctk/open-type-layout.h:33
+msgctxt "OpenType layout"
+msgid "Small Capitals From Capitals"
+msgstr ""
+
+#: ctk/open-type-layout.h:34
+msgctxt "OpenType layout"
+msgid "Distances"
+msgstr ""
+
+#: ctk/open-type-layout.h:35
+msgctxt "OpenType layout"
+msgid "Discretionary Ligatures"
+msgstr ""
+
+#: ctk/open-type-layout.h:36
+msgctxt "OpenType layout"
+msgid "Denominators"
+msgstr ""
+
+#: ctk/open-type-layout.h:37
+msgctxt "OpenType layout"
+msgid "Dotless Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:38
+msgctxt "OpenType layout"
+msgid "Expert Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:39
+msgctxt "OpenType layout"
+msgid "Final Glyph on Line Alternates"
+msgstr ""
+
+#: ctk/open-type-layout.h:40
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Terminal Forms #2"
+msgstr "Naredba „less“"
+
+#: ctk/open-type-layout.h:41
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Terminal Forms #3"
+msgstr "Naredba „less“"
+
+#: ctk/open-type-layout.h:42
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Terminal Forms"
+msgstr "Naredba „less“"
+
+#: ctk/open-type-layout.h:43
+msgctxt "OpenType layout"
+msgid "Flattened accent forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:44
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Fractions"
+msgstr "Radnje"
+
+#: ctk/open-type-layout.h:45
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Full Widths"
+msgstr "Utvrđena širina"
+
+#: ctk/open-type-layout.h:46
+msgctxt "OpenType layout"
+msgid "Half Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:47
+msgctxt "OpenType layout"
+msgid "Halant Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:48
+msgctxt "OpenType layout"
+msgid "Alternate Half Widths"
+msgstr ""
+
+#: ctk/open-type-layout.h:49
+msgctxt "OpenType layout"
+msgid "Historical Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:50
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Horizontal Kana Alternates"
+msgstr "Širina vodoravnih razdvojnika"
+
+#: ctk/open-type-layout.h:51
+msgctxt "OpenType layout"
+msgid "Historical Ligatures"
+msgstr ""
+
+#: ctk/open-type-layout.h:52
+msgctxt "OpenType layout"
+msgid "Hangul"
+msgstr ""
+
+#: ctk/open-type-layout.h:53
+msgctxt "OpenType layout"
+msgid "Hojo Kanji Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:54
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Half Widths"
+msgstr "Širina za prelom"
+
+#: ctk/open-type-layout.h:55
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Initial Forms"
+msgstr "Pokretanje"
+
+#: ctk/open-type-layout.h:56
+msgctxt "OpenType layout"
+msgid "Isolated Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:57
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Italics"
+msgstr "_Kurziv"
+
+#: ctk/open-type-layout.h:58
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Justification Alternates"
+msgstr "Postavljeno slaganje redova"
+
+#: ctk/open-type-layout.h:59
+msgctxt "OpenType layout"
+msgid "JIS78 Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:60
+msgctxt "OpenType layout"
+msgid "JIS83 Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:61
+msgctxt "OpenType layout"
+msgid "JIS90 Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:62
+msgctxt "OpenType layout"
+msgid "JIS2004 Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:63
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Kerning"
+msgstr "Upozorenje"
+
+#: ctk/open-type-layout.h:64
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Left Bounds"
+msgstr "Leva korpa"
+
+#: ctk/open-type-layout.h:65
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Standard Ligatures"
+msgstr "Uobičajena vrsta kurzora"
+
+#: ctk/open-type-layout.h:66
+msgctxt "OpenType layout"
+msgid "Leading Jamo Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:67
+msgctxt "OpenType layout"
+msgid "Lining Figures"
+msgstr ""
+
+#: ctk/open-type-layout.h:68
+msgctxt "OpenType layout"
+msgid "Localized Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:69
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Left-to-right alternates"
+msgstr "LRM — Obeleživač za s_leva-na-desno"
+
+#: ctk/open-type-layout.h:70
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Left-to-right mirrored forms"
+msgstr "LRM — Obeleživač za s_leva-na-desno"
+
+#: ctk/open-type-layout.h:71
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Mark Positioning"
+msgstr "Položaj jezičaka"
+
+#: ctk/open-type-layout.h:72
+msgctxt "OpenType layout"
+msgid "Medial Forms #2"
+msgstr ""
+
+#: ctk/open-type-layout.h:73
+msgctxt "OpenType layout"
+msgid "Medial Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:74
+msgctxt "OpenType layout"
+msgid "Mathematical Greek"
+msgstr ""
+
+#: ctk/open-type-layout.h:75
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Mark to Mark Positioning"
+msgstr "Najveći položaj"
+
+#: ctk/open-type-layout.h:76
+msgctxt "OpenType layout"
+msgid "Mark Positioning via Substitution"
+msgstr ""
+
+#: ctk/open-type-layout.h:77
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Alternate Annotation Forms"
+msgstr "Obrnuti redosled dugmića"
+
+#: ctk/open-type-layout.h:78
+msgctxt "OpenType layout"
+msgid "NLC Kanji Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:79
+msgctxt "OpenType layout"
+msgid "Nukta Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:80
+msgctxt "OpenType layout"
+msgid "Numerators"
+msgstr ""
+
+#: ctk/open-type-layout.h:81
+msgctxt "OpenType layout"
+msgid "Oldstyle Figures"
+msgstr ""
+
+#: ctk/open-type-layout.h:82
+msgctxt "OpenType layout"
+msgid "Optical Bounds"
+msgstr ""
+
+#: ctk/open-type-layout.h:83
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Ordinals"
+msgstr "Signali"
+
+#: ctk/open-type-layout.h:84
+msgctxt "OpenType layout"
+msgid "Ornaments"
+msgstr ""
+
+#: ctk/open-type-layout.h:85
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Proportional Alternate Widths"
+msgstr "Širina vodoravnih razdvojnika"
+
+#: ctk/open-type-layout.h:86
+msgctxt "OpenType layout"
+msgid "Petite Capitals"
+msgstr ""
+
+#: ctk/open-type-layout.h:87
+msgctxt "OpenType layout"
+msgid "Proportional Kana"
+msgstr ""
+
+#: ctk/open-type-layout.h:88
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Proportional Figures"
+msgstr "Svojstva"
+
+#: ctk/open-type-layout.h:89
+msgctxt "OpenType layout"
+msgid "Pre-Base Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:90
+msgctxt "OpenType layout"
+msgid "Pre-base Substitutions"
+msgstr ""
+
+#: ctk/open-type-layout.h:91
+msgctxt "OpenType layout"
+msgid "Post-base Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:92
+msgctxt "OpenType layout"
+msgid "Post-base Substitutions"
+msgstr ""
+
+#: ctk/open-type-layout.h:93
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Proportional Widths"
+msgstr "Rasprostire prirodnu širinu"
+
+#: ctk/open-type-layout.h:94
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Quarter Widths"
+msgstr "Širina razdvojnika"
+
+#: ctk/open-type-layout.h:95
+msgctxt "OpenType layout"
+msgid "Randomize"
+msgstr ""
+
+#: ctk/open-type-layout.h:96
+msgctxt "OpenType layout"
+msgid "Required Contextual Alternates"
+msgstr ""
+
+#: ctk/open-type-layout.h:97
+msgctxt "OpenType layout"
+msgid "Rakar Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:98
+msgctxt "OpenType layout"
+msgid "Required Ligatures"
+msgstr ""
+
+#: ctk/open-type-layout.h:99
+msgctxt "OpenType layout"
+msgid "Reph Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:100
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Right Bounds"
+msgstr "Desna korpa"
+
+#: ctk/open-type-layout.h:101
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Right-to-left alternates"
+msgstr "RLM — Obeleživač za s_desna-na-levo"
+
+#: ctk/open-type-layout.h:102
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Right-to-left mirrored forms"
+msgstr "RLM — Obeleživač za s_desna-na-levo"
+
+#: ctk/open-type-layout.h:103
+msgctxt "OpenType layout"
+msgid "Ruby Notation Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:104
+msgctxt "OpenType layout"
+msgid "Required Variation Alternates"
+msgstr ""
+
+#: ctk/open-type-layout.h:105
+msgctxt "OpenType layout"
+msgid "Stylistic Alternates"
+msgstr ""
+
+#: ctk/open-type-layout.h:106
+msgctxt "OpenType layout"
+msgid "Scientific Inferiors"
+msgstr ""
+
+#: ctk/open-type-layout.h:107
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Optical size"
+msgstr "Veličina pokazatelja"
+
+#: ctk/open-type-layout.h:108
+msgctxt "OpenType layout"
+msgid "Small Capitals"
+msgstr ""
+
+#: ctk/open-type-layout.h:109
+msgctxt "OpenType layout"
+msgid "Simplified Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:110
+msgctxt "OpenType layout"
+msgid "Stylistic Set 1"
+msgstr ""
+
+#: ctk/open-type-layout.h:111
+msgctxt "OpenType layout"
+msgid "Stylistic Set 2"
+msgstr ""
+
+#: ctk/open-type-layout.h:112
+msgctxt "OpenType layout"
+msgid "Stylistic Set 3"
+msgstr ""
+
+#: ctk/open-type-layout.h:113
+msgctxt "OpenType layout"
+msgid "Stylistic Set 4"
+msgstr ""
+
+#: ctk/open-type-layout.h:114
+msgctxt "OpenType layout"
+msgid "Stylistic Set 5"
+msgstr ""
+
+#: ctk/open-type-layout.h:115
+msgctxt "OpenType layout"
+msgid "Stylistic Set 6"
+msgstr ""
+
+#: ctk/open-type-layout.h:116
+msgctxt "OpenType layout"
+msgid "Stylistic Set 7"
+msgstr ""
+
+#: ctk/open-type-layout.h:117
+msgctxt "OpenType layout"
+msgid "Stylistic Set 8"
+msgstr ""
+
+#: ctk/open-type-layout.h:118
+msgctxt "OpenType layout"
+msgid "Stylistic Set 9"
+msgstr ""
+
+#: ctk/open-type-layout.h:119
+msgctxt "OpenType layout"
+msgid "Stylistic Set 10"
+msgstr ""
+
+#: ctk/open-type-layout.h:120
+msgctxt "OpenType layout"
+msgid "Stylistic Set 11"
+msgstr ""
+
+#: ctk/open-type-layout.h:121
+msgctxt "OpenType layout"
+msgid "Stylistic Set 12"
+msgstr ""
+
+#: ctk/open-type-layout.h:122
+msgctxt "OpenType layout"
+msgid "Stylistic Set 13"
+msgstr ""
+
+#: ctk/open-type-layout.h:123
+msgctxt "OpenType layout"
+msgid "Stylistic Set 14"
+msgstr ""
+
+#: ctk/open-type-layout.h:124
+msgctxt "OpenType layout"
+msgid "Stylistic Set 15"
+msgstr ""
+
+#: ctk/open-type-layout.h:125
+msgctxt "OpenType layout"
+msgid "Stylistic Set 16"
+msgstr ""
+
+#: ctk/open-type-layout.h:126
+msgctxt "OpenType layout"
+msgid "Stylistic Set 17"
+msgstr ""
+
+#: ctk/open-type-layout.h:127
+msgctxt "OpenType layout"
+msgid "Stylistic Set 18"
+msgstr ""
+
+#: ctk/open-type-layout.h:128
+msgctxt "OpenType layout"
+msgid "Stylistic Set 19"
+msgstr ""
+
+#: ctk/open-type-layout.h:129
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Stylistic Set 20"
+msgstr "Umetnička dozvola 2.0"
+
+#: ctk/open-type-layout.h:130
+msgctxt "OpenType layout"
+msgid "Math script style alternates"
+msgstr ""
+
+#: ctk/open-type-layout.h:131
+msgctxt "OpenType layout"
+msgid "Stretching Glyph Decomposition"
+msgstr ""
+
+#: ctk/open-type-layout.h:132
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Subscript"
+msgstr "Postskript"
+
+#: ctk/open-type-layout.h:133
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Superscript"
+msgstr "Super"
+
+#: ctk/open-type-layout.h:134
+msgctxt "OpenType layout"
+msgid "Swash"
+msgstr ""
+
+#: ctk/open-type-layout.h:135
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Titling"
+msgstr "Naslov"
+
+#: ctk/open-type-layout.h:136
+msgctxt "OpenType layout"
+msgid "Trailing Jamo Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:137
+msgctxt "OpenType layout"
+msgid "Traditional Name Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:138
+msgctxt "OpenType layout"
+msgid "Tabular Figures"
+msgstr ""
+
+#: ctk/open-type-layout.h:139
+msgctxt "OpenType layout"
+msgid "Traditional Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:140
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Third Widths"
+msgstr "Utvrđena širina"
+
+#: ctk/open-type-layout.h:141
+msgctxt "OpenType layout"
+msgid "Unicase"
+msgstr ""
+
+#: ctk/open-type-layout.h:142
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Alternate Vertical Metrics"
+msgstr "Zamenski ukazivač smera ređanja"
+
+#: ctk/open-type-layout.h:143
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Vattu Variants"
+msgstr "Tamna verzija"
+
+#: ctk/open-type-layout.h:144
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Vertical Writing"
+msgstr "Uspravno razdvajanje"
+
+#: ctk/open-type-layout.h:145
+msgctxt "OpenType layout"
+msgid "Alternate Vertical Half Metrics"
+msgstr ""
+
+#: ctk/open-type-layout.h:146
+msgctxt "OpenType layout"
+msgid "Vowel Jamo Forms"
+msgstr ""
+
+#: ctk/open-type-layout.h:147
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Vertical Kana Alternates"
+msgstr "Uspravna popravka"
+
+#: ctk/open-type-layout.h:148
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Vertical Kerning"
+msgstr "Uspravno razdvajanje"
+
+#: ctk/open-type-layout.h:149
+msgctxt "OpenType layout"
+msgid "Proportional Alternate Vertical Metrics"
+msgstr ""
+
+#: ctk/open-type-layout.h:150
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Vertical Alternates and Rotation"
+msgstr "Uspravno razdvajanje"
+
+#: ctk/open-type-layout.h:151
+#, fuzzy
+msgctxt "OpenType layout"
+msgid "Vertical Alternates for Rotation"
+msgstr "Uspravno razdvajanje"
+
+#: ctk/open-type-layout.h:152
+msgctxt "OpenType layout"
+msgid "Slashed Zero"
+msgstr ""
 
 #: ctk/paper_names_offsets.c:4
 msgctxt "paper size"
@@ -5496,11 +6507,726 @@ msgctxt "paper size"
 msgid "ROC 8k"
 msgstr "ROK 8k"
 
-#: ctk/ui/ctkaboutdialog.ui:133
+#: ctk/script-names.c:18
+msgctxt "Script"
+msgid "Arabic"
+msgstr ""
+
+#: ctk/script-names.c:19
+msgctxt "Script"
+msgid "Armenian"
+msgstr ""
+
+#: ctk/script-names.c:20
+msgctxt "Script"
+msgid "Bengali"
+msgstr ""
+
+#: ctk/script-names.c:21
+msgctxt "Script"
+msgid "Bopomofo"
+msgstr ""
+
+#: ctk/script-names.c:22
+msgctxt "Script"
+msgid "Cherokee"
+msgstr ""
+
+#: ctk/script-names.c:23
+msgctxt "Script"
+msgid "Coptic"
+msgstr ""
+
+#: ctk/script-names.c:24
+msgctxt "Script"
+msgid "Cyrillic"
+msgstr ""
+
+#: ctk/script-names.c:25
+msgctxt "Script"
+msgid "Deseret"
+msgstr ""
+
+#: ctk/script-names.c:26
+#, fuzzy
+msgctxt "Script"
+msgid "Devanagari"
+msgstr "Upravnik uređaja"
+
+#: ctk/script-names.c:27
+msgctxt "Script"
+msgid "Ethiopic"
+msgstr ""
+
+#: ctk/script-names.c:28
+msgctxt "Script"
+msgid "Georgian"
+msgstr ""
+
+#: ctk/script-names.c:29
+msgctxt "Script"
+msgid "Gothic"
+msgstr ""
+
+#: ctk/script-names.c:30
+#, fuzzy
+msgctxt "Script"
+msgid "Greek"
+msgstr "_Zelena:"
+
+#: ctk/script-names.c:31
+msgctxt "Script"
+msgid "Gujarati"
+msgstr ""
+
+#: ctk/script-names.c:32
+msgctxt "Script"
+msgid "Gurmukhi"
+msgstr ""
+
+#: ctk/script-names.c:33
+msgctxt "Script"
+msgid "Han"
+msgstr ""
+
+#: ctk/script-names.c:34
+msgctxt "Script"
+msgid "Hangul"
+msgstr ""
+
+#: ctk/script-names.c:35
+msgctxt "Script"
+msgid "Hebrew"
+msgstr ""
+
+#: ctk/script-names.c:36
+msgctxt "Script"
+msgid "Hiragana"
+msgstr ""
+
+#: ctk/script-names.c:37
+msgctxt "Script"
+msgid "Kannada"
+msgstr ""
+
+#: ctk/script-names.c:38
+msgctxt "Script"
+msgid "Katakana"
+msgstr ""
+
+#: ctk/script-names.c:39
+msgctxt "Script"
+msgid "Khmer"
+msgstr ""
+
+#: ctk/script-names.c:40
+#, fuzzy
+msgctxt "Script"
+msgid "Lao"
+msgstr "Nebitno"
+
+#: ctk/script-names.c:41
+msgctxt "Script"
+msgid "Latin"
+msgstr ""
+
+#: ctk/script-names.c:42
+msgctxt "Script"
+msgid "Malayalam"
+msgstr ""
+
+#: ctk/script-names.c:43
+msgctxt "Script"
+msgid "Mongolian"
+msgstr ""
+
+#: ctk/script-names.c:44
+msgctxt "Script"
+msgid "Myanmar"
+msgstr ""
+
+#: ctk/script-names.c:45
+msgctxt "Script"
+msgid "Ogham"
+msgstr ""
+
+#: ctk/script-names.c:46
+#, fuzzy
+msgctxt "Script"
+msgid "Old Italic"
+msgstr "_Kurziv"
+
+#: ctk/script-names.c:47
+msgctxt "Script"
+msgid "Oriya"
+msgstr ""
+
+#: ctk/script-names.c:48
+msgctxt "Script"
+msgid "Runic"
+msgstr ""
+
+#: ctk/script-names.c:49
+msgctxt "Script"
+msgid "Sinhala"
+msgstr ""
+
+#: ctk/script-names.c:50
+msgctxt "Script"
+msgid "Syriac"
+msgstr ""
+
+#: ctk/script-names.c:51
+#, fuzzy
+msgctxt "Script"
+msgid "Tamil"
+msgstr "_Porodica:"
+
+#: ctk/script-names.c:52
+msgctxt "Script"
+msgid "Telugu"
+msgstr ""
+
+#: ctk/script-names.c:53
+msgctxt "Script"
+msgid "Thaana"
+msgstr ""
+
+#: ctk/script-names.c:54
+#, fuzzy
+msgctxt "Script"
+msgid "Thai"
+msgstr "Tai-Lao"
+
+#: ctk/script-names.c:55
+msgctxt "Script"
+msgid "Tibetan"
+msgstr ""
+
+#: ctk/script-names.c:56
+msgctxt "Script"
+msgid "Canadian Aboriginal"
+msgstr ""
+
+#: ctk/script-names.c:57
+msgctxt "Script"
+msgid "Yi"
+msgstr ""
+
+#: ctk/script-names.c:58
+#, fuzzy
+msgctxt "Script"
+msgid "Tagalog"
+msgstr "Prozorče"
+
+#: ctk/script-names.c:59
+msgctxt "Script"
+msgid "Hanunoo"
+msgstr ""
+
+#: ctk/script-names.c:60
+msgctxt "Script"
+msgid "Buhid"
+msgstr ""
+
+#: ctk/script-names.c:61
+msgctxt "Script"
+msgid "Tagbanwa"
+msgstr ""
+
+#: ctk/script-names.c:62
+msgctxt "Script"
+msgid "Braille"
+msgstr ""
+
+#: ctk/script-names.c:63
+msgctxt "Script"
+msgid "Cypriot"
+msgstr ""
+
+#: ctk/script-names.c:64
+msgctxt "Script"
+msgid "Limbu"
+msgstr ""
+
+#: ctk/script-names.c:65
+msgctxt "Script"
+msgid "Osmanya"
+msgstr ""
+
+#: ctk/script-names.c:66
+msgctxt "Script"
+msgid "Shavian"
+msgstr ""
+
+#: ctk/script-names.c:67
+#, fuzzy
+msgctxt "Script"
+msgid "Linear B"
+msgstr "Zadnja korpa"
+
+#: ctk/script-names.c:68
+msgctxt "Script"
+msgid "Tai Le"
+msgstr ""
+
+#: ctk/script-names.c:69
+msgctxt "Script"
+msgid "Ugaritic"
+msgstr ""
+
+#: ctk/script-names.c:70
+msgctxt "Script"
+msgid "New Tai Lue"
+msgstr ""
+
+#: ctk/script-names.c:71
+msgctxt "Script"
+msgid "Buginese"
+msgstr ""
+
+#: ctk/script-names.c:72
+msgctxt "Script"
+msgid "Glagolitic"
+msgstr ""
+
+#: ctk/script-names.c:73
+msgctxt "Script"
+msgid "Tifinagh"
+msgstr ""
+
+#: ctk/script-names.c:74
+msgctxt "Script"
+msgid "Syloti Nagri"
+msgstr ""
+
+#: ctk/script-names.c:75
+msgctxt "Script"
+msgid "Old Persian"
+msgstr ""
+
+#: ctk/script-names.c:76
+msgctxt "Script"
+msgid "Kharoshthi"
+msgstr ""
+
+#: ctk/script-names.c:77
+#, fuzzy
+msgctxt "Script"
+msgid "Unknown"
+msgstr "Nepoznato"
+
+#: ctk/script-names.c:78
+#, fuzzy
+msgctxt "Script"
+msgid "Balinese"
+msgstr "Podnožje"
+
+#: ctk/script-names.c:79
+msgctxt "Script"
+msgid "Cuneiform"
+msgstr ""
+
+#: ctk/script-names.c:80
+msgctxt "Script"
+msgid "Phoenician"
+msgstr ""
+
+#: ctk/script-names.c:81
+msgctxt "Script"
+msgid "Phags-pa"
+msgstr ""
+
+#: ctk/script-names.c:82
+msgctxt "Script"
+msgid "N'Ko"
+msgstr ""
+
+#: ctk/script-names.c:83
+msgctxt "Script"
+msgid "Kayah Li"
+msgstr ""
+
+#: ctk/script-names.c:84
+msgctxt "Script"
+msgid "Lepcha"
+msgstr ""
+
+#: ctk/script-names.c:85
+msgctxt "Script"
+msgid "Rejang"
+msgstr ""
+
+#: ctk/script-names.c:86
+msgctxt "Script"
+msgid "Sundanese"
+msgstr ""
+
+#: ctk/script-names.c:87
+msgctxt "Script"
+msgid "Saurashtra"
+msgstr ""
+
+#: ctk/script-names.c:88
+#, fuzzy
+msgctxt "Script"
+msgid "Cham"
+msgstr "Kameleon"
+
+#: ctk/script-names.c:89
+msgctxt "Script"
+msgid "Ol Chiki"
+msgstr ""
+
+#: ctk/script-names.c:90
+msgctxt "Script"
+msgid "Vai"
+msgstr ""
+
+#: ctk/script-names.c:91
+msgctxt "Script"
+msgid "Carian"
+msgstr ""
+
+#: ctk/script-names.c:92
+msgctxt "Script"
+msgid "Lycian"
+msgstr ""
+
+#: ctk/script-names.c:93
+msgctxt "Script"
+msgid "Lydian"
+msgstr ""
+
+#: ctk/script-names.c:94
+msgctxt "Script"
+msgid "Avestan"
+msgstr ""
+
+#: ctk/script-names.c:95
+msgctxt "Script"
+msgid "Bamum"
+msgstr ""
+
+#: ctk/script-names.c:96
+msgctxt "Script"
+msgid "Egyptian Hieroglyphs"
+msgstr ""
+
+#: ctk/script-names.c:97
+msgctxt "Script"
+msgid "Imperial Aramaic"
+msgstr ""
+
+#: ctk/script-names.c:98
+msgctxt "Script"
+msgid "Inscriptional Pahlavi"
+msgstr ""
+
+#: ctk/script-names.c:99
+msgctxt "Script"
+msgid "Inscriptional Parthian"
+msgstr ""
+
+#: ctk/script-names.c:100
+msgctxt "Script"
+msgid "Javanese"
+msgstr ""
+
+#: ctk/script-names.c:101
+msgctxt "Script"
+msgid "Kaithi"
+msgstr ""
+
+#: ctk/script-names.c:102
+msgctxt "Script"
+msgid "Lisu"
+msgstr ""
+
+#: ctk/script-names.c:103
+msgctxt "Script"
+msgid "Meetei Mayek"
+msgstr ""
+
+#: ctk/script-names.c:104
+msgctxt "Script"
+msgid "Old South Arabian"
+msgstr ""
+
+#: ctk/script-names.c:105
+msgctxt "Script"
+msgid "Old Turkic"
+msgstr ""
+
+#: ctk/script-names.c:106
+msgctxt "Script"
+msgid "Samaritan"
+msgstr ""
+
+#: ctk/script-names.c:107
+msgctxt "Script"
+msgid "Tai Tham"
+msgstr ""
+
+#: ctk/script-names.c:108
+msgctxt "Script"
+msgid "Tai Viet"
+msgstr ""
+
+#: ctk/script-names.c:109
+msgctxt "Script"
+msgid "Batak"
+msgstr ""
+
+#: ctk/script-names.c:110
+msgctxt "Script"
+msgid "Brahmi"
+msgstr ""
+
+#: ctk/script-names.c:111
+msgctxt "Script"
+msgid "Mandaic"
+msgstr ""
+
+#: ctk/script-names.c:112
+msgctxt "Script"
+msgid "Chakma"
+msgstr ""
+
+#: ctk/script-names.c:113
+msgctxt "Script"
+msgid "Meroitic Cursive"
+msgstr ""
+
+#: ctk/script-names.c:114
+msgctxt "Script"
+msgid "Meroitic Hieroglyphs"
+msgstr ""
+
+#: ctk/script-names.c:115
+msgctxt "Script"
+msgid "Miao"
+msgstr ""
+
+#: ctk/script-names.c:116
+msgctxt "Script"
+msgid "Sharada"
+msgstr ""
+
+#: ctk/script-names.c:117
+msgctxt "Script"
+msgid "Sora Sompeng"
+msgstr ""
+
+#: ctk/script-names.c:118
+msgctxt "Script"
+msgid "Takri"
+msgstr ""
+
+#: ctk/script-names.c:119
+msgctxt "Script"
+msgid "Bassa"
+msgstr ""
+
+#: ctk/script-names.c:120
+msgctxt "Script"
+msgid "Caucasian Albanian"
+msgstr ""
+
+#: ctk/script-names.c:121
+msgctxt "Script"
+msgid "Duployan"
+msgstr ""
+
+#: ctk/script-names.c:122
+msgctxt "Script"
+msgid "Elbasan"
+msgstr ""
+
+#: ctk/script-names.c:123
+msgctxt "Script"
+msgid "Grantha"
+msgstr ""
+
+#: ctk/script-names.c:124
+msgctxt "Script"
+msgid "Khojki"
+msgstr ""
+
+#: ctk/script-names.c:125
+msgctxt "Script"
+msgid "Khudawadi, Sindhi"
+msgstr ""
+
+#: ctk/script-names.c:126
+msgctxt "Script"
+msgid "Linear A"
+msgstr ""
+
+#: ctk/script-names.c:127
+msgctxt "Script"
+msgid "Mahajani"
+msgstr ""
+
+#: ctk/script-names.c:128
+msgctxt "Script"
+msgid "Manichaean"
+msgstr ""
+
+#: ctk/script-names.c:129
+msgctxt "Script"
+msgid "Mende Kikakui"
+msgstr ""
+
+#: ctk/script-names.c:130
+#, fuzzy
+msgctxt "Script"
+msgid "Modi"
+msgstr "Izmenjena"
+
+#: ctk/script-names.c:131
+msgctxt "Script"
+msgid "Mro"
+msgstr ""
+
+#: ctk/script-names.c:132
+msgctxt "Script"
+msgid "Nabataean"
+msgstr ""
+
+#: ctk/script-names.c:133
+msgctxt "Script"
+msgid "Old North Arabian"
+msgstr ""
+
+#: ctk/script-names.c:134
+msgctxt "Script"
+msgid "Old Permic"
+msgstr ""
+
+#: ctk/script-names.c:135
+msgctxt "Script"
+msgid "Pahawh Hmong"
+msgstr ""
+
+#: ctk/script-names.c:136
+msgctxt "Script"
+msgid "Palmyrene"
+msgstr ""
+
+#: ctk/script-names.c:137
+msgctxt "Script"
+msgid "Pau Cin Hau"
+msgstr ""
+
+#: ctk/script-names.c:138
+msgctxt "Script"
+msgid "Psalter Pahlavi"
+msgstr ""
+
+#: ctk/script-names.c:139
+msgctxt "Script"
+msgid "Siddham"
+msgstr ""
+
+#: ctk/script-names.c:140
+msgctxt "Script"
+msgid "Tirhuta"
+msgstr ""
+
+#: ctk/script-names.c:141
+msgctxt "Script"
+msgid "Warang Citi"
+msgstr ""
+
+#: ctk/script-names.c:142
+msgctxt "Script"
+msgid "Ahom"
+msgstr ""
+
+#: ctk/script-names.c:143
+msgctxt "Script"
+msgid "Anatolian Hieroglyphs"
+msgstr ""
+
+#: ctk/script-names.c:144
+msgctxt "Script"
+msgid "Hatran"
+msgstr ""
+
+#: ctk/script-names.c:145
+#, fuzzy
+msgctxt "Script"
+msgid "Multani"
+msgstr "Multi taster"
+
+#: ctk/script-names.c:146
+msgctxt "Script"
+msgid "Old Hungarian"
+msgstr ""
+
+#: ctk/script-names.c:147
+#, fuzzy
+msgctxt "Script"
+msgid "Signwriting"
+msgstr "Štampam"
+
+#: ctk/script-names.c:148
+msgctxt "Script"
+msgid "Adlam"
+msgstr ""
+
+#: ctk/script-names.c:149
+msgctxt "Script"
+msgid "Bhaiksuki"
+msgstr ""
+
+#: ctk/script-names.c:150
+#, fuzzy
+msgctxt "Script"
+msgid "Marchen"
+msgstr "Pretražujem"
+
+#: ctk/script-names.c:151
+msgctxt "Script"
+msgid "Newa"
+msgstr ""
+
+#: ctk/script-names.c:152
+msgctxt "Script"
+msgid "Osage"
+msgstr ""
+
+#: ctk/script-names.c:153
+msgctxt "Script"
+msgid "Tangut"
+msgstr ""
+
+#: ctk/script-names.c:154
+msgctxt "Script"
+msgid "Masaram Gondi"
+msgstr ""
+
+#: ctk/script-names.c:155
+msgctxt "Script"
+msgid "Nushu"
+msgstr ""
+
+#: ctk/script-names.c:156
+msgctxt "Script"
+msgid "Soyombo"
+msgstr ""
+
+#: ctk/script-names.c:157
+msgctxt "Script"
+msgid "Zanabazar Square"
+msgstr ""
+
+#: ctk/ui/ctkaboutdialog.ui:137
 msgid "About"
 msgstr "O programu"
 
-#: ctk/ui/ctkaboutdialog.ui:173
+#: ctk/ui/ctkaboutdialog.ui:177
 msgid "Credits"
 msgstr "Zasluge"
 
@@ -5512,7 +7238,7 @@ msgstr "_Pregledaj sve programe"
 msgid "_Find New Applications"
 msgstr "_Nađi nove programe"
 
-#: ctk/ui/ctkappchooserwidget.ui:117
+#: ctk/ui/ctkappchooserwidget.ui:119
 msgid "No applications found."
 msgstr "Nisam pronašao programe."
 
@@ -5564,96 +7290,96 @@ msgstr "_Završi"
 msgid "Select a Color"
 msgstr "Izaberite boju"
 
-#: ctk/ui/ctkcoloreditor.ui:64
+#: ctk/ui/ctkcoloreditor.ui:57
+msgid "Pick a color from the screen"
+msgstr ""
+
+#: ctk/ui/ctkcoloreditor.ui:89
 msgid "Color Name"
 msgstr "Naziv boje"
 
-#: ctk/ui/ctkcoloreditor.ui:155
+#: ctk/ui/ctkcoloreditor.ui:180
 msgctxt "Color channel"
 msgid "A"
 msgstr "A"
 
-#: ctk/ui/ctkcoloreditor.ui:171
+#: ctk/ui/ctkcoloreditor.ui:196
 msgid "Alpha"
 msgstr "Providnost"
 
-#: ctk/ui/ctkcoloreditor.ui:202
+#: ctk/ui/ctkcoloreditor.ui:227
 msgctxt "Color channel"
 msgid "H"
 msgstr "H"
 
-#: ctk/ui/ctkcoloreditor.ui:218
+#: ctk/ui/ctkcoloreditor.ui:243
 msgid "Hue"
 msgstr "Nijansa"
 
-#: ctk/ui/ctkcoloreditor.ui:250
+#: ctk/ui/ctkcoloreditor.ui:275
 msgctxt "Color Channel"
 msgid "S"
 msgstr "S"
 
-#: ctk/ui/ctkcoloreditor.ui:260
+#: ctk/ui/ctkcoloreditor.ui:285
 msgctxt "Color Channel"
 msgid "V"
 msgstr "V"
 
-#: ctk/ui/ctkcoloreditor.ui:276
+#: ctk/ui/ctkcoloreditor.ui:301
 msgid "Saturation"
 msgstr "Zasićenost"
 
-#: ctk/ui/ctkemojichooser.ui:52
+#: ctk/ui/ctkemojichooser.ui:53 ctk/ui/ctkemojichooser.ui:212
 msgid "Smileys & People"
 msgstr "Smešci i ljudi"
 
-#: ctk/ui/ctkemojichooser.ui:67
+#: ctk/ui/ctkemojichooser.ui:68 ctk/ui/ctkemojichooser.ui:227
 msgid "Body & Clothing"
 msgstr "Telo i odelo"
 
-#: ctk/ui/ctkemojichooser.ui:82
+#: ctk/ui/ctkemojichooser.ui:83 ctk/ui/ctkemojichooser.ui:242
 msgid "Animals & Nature"
 msgstr "Životinje i priroda"
 
-#: ctk/ui/ctkemojichooser.ui:97
+#: ctk/ui/ctkemojichooser.ui:98 ctk/ui/ctkemojichooser.ui:257
 msgid "Food & Drink"
 msgstr "Jelo i piće"
 
-#: ctk/ui/ctkemojichooser.ui:112
+#: ctk/ui/ctkemojichooser.ui:113 ctk/ui/ctkemojichooser.ui:272
 msgid "Travel & Places"
 msgstr "Putovanje i mesta"
 
-#: ctk/ui/ctkemojichooser.ui:127
+#: ctk/ui/ctkemojichooser.ui:128 ctk/ui/ctkemojichooser.ui:287
 msgid "Activities"
 msgstr "Aktivnosti"
 
-#: ctk/ui/ctkemojichooser.ui:142
+#: ctk/ui/ctkemojichooser.ui:143 ctk/ui/ctkemojichooser.ui:302
 msgctxt "emoji category"
 msgid "Objects"
 msgstr "Predmeti"
 
-#: ctk/ui/ctkemojichooser.ui:157
+#: ctk/ui/ctkemojichooser.ui:158 ctk/ui/ctkemojichooser.ui:317
 msgid "Symbols"
 msgstr "Simboli"
 
-#: ctk/ui/ctkemojichooser.ui:172
+#: ctk/ui/ctkemojichooser.ui:173 ctk/ui/ctkemojichooser.ui:332
 msgid "Flags"
 msgstr "Zastave"
 
-#: ctk/ui/ctkfilechooserwidget.ui:69
-msgid "Create Folder"
-msgstr "Napravi fasciklu"
-
-#: ctk/ui/ctkfilechooserwidget.ui:168
+#: ctk/ui/ctkfilechooserwidget.ui:169
 msgid "Files"
 msgstr "Datoteke"
 
-#: ctk/ui/ctkfilechooserwidget.ui:261
+#: ctk/ui/ctkfilechooserwidget.ui:274
 msgid "Remote location — only searching the current folder"
 msgstr "Udaljeno mesto — pretražujem samo trenutnu fasciklu"
 
-#: ctk/ui/ctkfilechooserwidget.ui:433
+#: ctk/ui/ctkfilechooserwidget.ui:446
 msgid "Folder Name"
 msgstr "Naziv fascikle"
 
-#: ctk/ui/ctkfilechooserwidget.ui:461
+#: ctk/ui/ctkfilechooserwidget.ui:474
 msgid "_Create"
 msgstr "_Napravi"
 
@@ -5661,19 +7387,19 @@ msgstr "_Napravi"
 msgid "Select Font"
 msgstr "Izaberite font"
 
-#: ctk/ui/ctkfontchooserwidget.ui:50
+#: ctk/ui/ctkfontchooserwidget.ui:53
 msgid "Search font name"
 msgstr "Potražite naziv fonta"
 
-#: ctk/ui/ctkfontchooserwidget.ui:98
+#: ctk/ui/ctkfontchooserwidget.ui:100
 msgid "Font Family"
 msgstr "Porodica fontova"
 
-#: ctk/ui/ctkfontchooserwidget.ui:120
+#: ctk/ui/ctkfontchooserwidget.ui:121 ctk/ui/ctkfontchooserwidget.ui:248
 msgid "Preview text"
 msgstr "Pretpregled teksta"
 
-#: ctk/ui/ctkfontchooserwidget.ui:187
+#: ctk/ui/ctkfontchooserwidget.ui:201
 msgid "No Fonts Found"
 msgstr "Nisam pronašao nijedan font"
 
@@ -5726,67 +7452,24 @@ msgstr "Adrese servera se sastoje od prefiksa protokola i adrese. Primeri:"
 msgid "Available Protocols"
 msgstr "Dostupni protokoli"
 
-#: ctk/ui/ctkplacesview.ui:92
-msgid "AppleTalk"
-msgstr "Epl tok"
-
-#: ctk/ui/ctkplacesview.ui:103
-msgid "File Transfer Protocol"
-msgstr "Protokol prenosa datoteke"
-
-#: ctk/ui/ctkplacesview.ui:114
-msgid "Network File System"
-msgstr "Sistem datoteka mreže"
-
-#: ctk/ui/ctkplacesview.ui:125
-msgid "Samba"
-msgstr "Samba"
-
-#: ctk/ui/ctkplacesview.ui:136
-msgid "SSH File Transfer Protocol"
-msgstr "Protokol prenosa datoteke bezbednom školjkom"
-
-#: ctk/ui/ctkplacesview.ui:147
-msgid "WebDAV"
-msgstr "VebDAV"
-
-#. Translators: do not translate ftp:// and ftps://
-#: ctk/ui/ctkplacesview.ui:183
-msgid "ftp:// or ftps://"
-msgstr "„ftp://“ ili „ftps://“"
-
-#: ctk/ui/ctkplacesview.ui:205
-msgid "smb://"
-msgstr "smb://"
-
-#. Translators: do not translate sftp:// and ssh://
-#: ctk/ui/ctkplacesview.ui:216
-msgid "sftp:// or ssh://"
-msgstr "„sftp://“ ili „ssh://“"
-
-#. Translators: do not translate dav:// and davs://
-#: ctk/ui/ctkplacesview.ui:227
-msgid "dav:// or davs://"
-msgstr "„dav://“ ili „davs://“"
-
 #. Translators: Server as any successfully connected network address
-#: ctk/ui/ctkplacesview.ui:267
+#: ctk/ui/ctkplacesview.ui:135
 msgid "No recent servers found"
 msgstr "Nema skorašnjih servera"
 
-#: ctk/ui/ctkplacesview.ui:290
+#: ctk/ui/ctkplacesview.ui:158
 msgid "Recent Servers"
 msgstr "Skorašnji serveri"
 
-#: ctk/ui/ctkplacesview.ui:393
+#: ctk/ui/ctkplacesview.ui:261
 msgid "No results found"
 msgstr "Nema rezultata"
 
-#: ctk/ui/ctkplacesview.ui:439
+#: ctk/ui/ctkplacesview.ui:307
 msgid "Connect to _Server"
 msgstr "Poveži se sa _serverom"
 
-#: ctk/ui/ctkplacesview.ui:472
+#: ctk/ui/ctkplacesview.ui:340
 msgid "Enter server address…"
 msgstr "Unesite adresu servera…"
 
@@ -6024,105 +7707,105 @@ msgstr "Utišaj"
 msgid "Decreases the volume"
 msgstr "Smanjuje jačinu zvuka"
 
-#: ctk/updateiconcache.c:1388
+#: ctk/updateiconcache.c:1402
 #, c-format
 msgid "Failed to write header\n"
 msgstr "Nisam uspeo da zapišem zaglavlje\n"
 
-#: ctk/updateiconcache.c:1394
+#: ctk/updateiconcache.c:1408
 #, c-format
 msgid "Failed to write hash table\n"
 msgstr "Nisam uspeo da zapišem heš tabelu\n"
 
-#: ctk/updateiconcache.c:1400
+#: ctk/updateiconcache.c:1414
 #, c-format
 msgid "Failed to write folder index\n"
 msgstr "Nisam uspeo da zapišem indeks fascikle\n"
 
-#: ctk/updateiconcache.c:1408
+#: ctk/updateiconcache.c:1422
 #, c-format
 msgid "Failed to rewrite header\n"
 msgstr "Nisam uspeo da prepišem zaglavlje\n"
 
-#: ctk/updateiconcache.c:1502
+#: ctk/updateiconcache.c:1516
 #, c-format
 msgid "Failed to open file %s : %s\n"
 msgstr "Nisam uspeo da otvorim datoteku „%s“: %s\n"
 
-#: ctk/updateiconcache.c:1510 ctk/updateiconcache.c:1540
+#: ctk/updateiconcache.c:1524 ctk/updateiconcache.c:1554
 #, c-format
 msgid "Failed to write cache file: %s\n"
 msgstr "Nisam uspeo da zapišem datoteku iz ostave: %s\n"
 
-#: ctk/updateiconcache.c:1550
+#: ctk/updateiconcache.c:1564
 #, c-format
 msgid "The generated cache was invalid.\n"
 msgstr "Stvorena ostava nije ispravna.\n"
 
-#: ctk/updateiconcache.c:1564
+#: ctk/updateiconcache.c:1578
 #, c-format
 msgid "Could not rename %s to %s: %s, removing %s then.\n"
 msgstr "Ne mogu da preimenujem „%s“ u „%s“: %s, i zato uklanjam „%s“.\n"
 
-#: ctk/updateiconcache.c:1578
+#: ctk/updateiconcache.c:1592
 #, c-format
 msgid "Could not rename %s to %s: %s\n"
 msgstr "Ne mogu da preimenujem „%s“ u „%s“: %s\n"
 
-#: ctk/updateiconcache.c:1588
+#: ctk/updateiconcache.c:1602
 #, c-format
 msgid "Could not rename %s back to %s: %s.\n"
 msgstr "Ne mogu da preimenujem „%s“ nazad u „%s“: %s.\n"
 
-#: ctk/updateiconcache.c:1615
+#: ctk/updateiconcache.c:1629
 #, c-format
 msgid "Cache file created successfully.\n"
 msgstr "Datoteka u ostavi je uspešno napravljena.\n"
 
-#: ctk/updateiconcache.c:1654
+#: ctk/updateiconcache.c:1668
 msgid "Overwrite an existing cache, even if up to date"
 msgstr "Prepisuje postojeću ostavu, čak i ako je ažurna"
 
-#: ctk/updateiconcache.c:1655
+#: ctk/updateiconcache.c:1669
 msgid "Don't check for the existence of index.theme"
 msgstr "Ne proverava prisustvo datoteke „index.theme“"
 
-#: ctk/updateiconcache.c:1656
+#: ctk/updateiconcache.c:1670
 msgid "Don't include image data in the cache"
 msgstr "Ne uključuje podatke slike u ostavu"
 
-#: ctk/updateiconcache.c:1657
+#: ctk/updateiconcache.c:1671
 msgid "Include image data in the cache"
 msgstr "Uključuje podatke slike u ostavu"
 
-#: ctk/updateiconcache.c:1658
+#: ctk/updateiconcache.c:1672
 msgid "Output a C header file"
 msgstr "Ispisuje datoteku C zaglavlja"
 
-#: ctk/updateiconcache.c:1659
+#: ctk/updateiconcache.c:1673
 msgid "Turn off verbose output"
 msgstr "Isključuje opširnost ispisa"
 
-#: ctk/updateiconcache.c:1660
+#: ctk/updateiconcache.c:1674
 msgid "Validate existing icon cache"
 msgstr "Proverava ispravnost postojeće ostave ikonica"
 
-#: ctk/updateiconcache.c:1727
+#: ctk/updateiconcache.c:1741
 #, c-format
 msgid "File not found: %s\n"
 msgstr "Datoteka nije pronađena: %s\n"
 
-#: ctk/updateiconcache.c:1733
+#: ctk/updateiconcache.c:1747
 #, c-format
 msgid "Not a valid icon cache: %s\n"
 msgstr "Neispravna ostava za ikonice: %s\n"
 
-#: ctk/updateiconcache.c:1746
+#: ctk/updateiconcache.c:1760
 #, c-format
 msgid "No theme index file.\n"
 msgstr "Nije nađena indeks datoteka za temu.\n"
 
-#: ctk/updateiconcache.c:1750
+#: ctk/updateiconcache.c:1764
 #, c-format
 msgid ""
 "No theme index file in '%s'.\n"
@@ -6179,7 +7862,7 @@ msgctxt "input method menu"
 msgid "Multipress"
 msgstr "Višestruki pristisci"
 
-#: modules/input/imquartz.c:58
+#: modules/input/imquartz.c:69
 msgctxt "input method menu"
 msgid "Mac OS X Quartz"
 msgstr "Mek OS Iks Kvarc"
@@ -6209,9 +7892,16 @@ msgid "Vietnamese (VIQR)"
 msgstr "Vijetnamski (VIQR)"
 
 #. ID
-#: modules/input/imwayland.c:81
+#: modules/input/imwayland.c:105
 msgctxt "input method menu"
 msgid "Wayland"
+msgstr "Vejland"
+
+#. ID
+#: modules/input/imwaylandctk.c:82
+#, fuzzy
+msgctxt "input method menu"
+msgid "Waylandctk"
 msgstr "Vejland"
 
 #. ID
@@ -6239,407 +7929,408 @@ msgid "Dormant"
 msgstr "Uspavan"
 
 #. How many document pages to go onto one side of paper.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:939
-#: modules/printbackends/file/ctkprintbackendfile.c:676
-#: modules/printbackends/test/ctkprintbackendtest.c:501
+#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:941
+#: modules/printbackends/file/ctkprintbackendfile.c:679
+#: modules/printbackends/test/ctkprintbackendtest.c:503
 msgid "Pages per _sheet:"
 msgstr "_Stranica na listu:"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1106
-#: modules/printbackends/cups/ctkprintbackendcups.c:1415
+#: modules/printbackends/cups/ctkprintbackendcups.c:1129
+#: modules/printbackends/cups/ctkprintbackendcups.c:1439
 msgid "Username:"
 msgstr "Korisničko ime:"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1107
-#: modules/printbackends/cups/ctkprintbackendcups.c:1424
+#: modules/printbackends/cups/ctkprintbackendcups.c:1130
+#: modules/printbackends/cups/ctkprintbackendcups.c:1448
 msgid "Password:"
 msgstr "Lozinka:"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1146
-#: modules/printbackends/cups/ctkprintbackendcups.c:1437
+#: modules/printbackends/cups/ctkprintbackendcups.c:1169
+#: modules/printbackends/cups/ctkprintbackendcups.c:1461
 #, c-format
 msgid "Authentication is required to print document “%s” on printer %s"
 msgstr ""
 "Potrebno je potvrđivanje identiteta za štampanje dokumenta „%s“ na štampaču "
 "„%s“"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1148
+#: modules/printbackends/cups/ctkprintbackendcups.c:1171
 #, c-format
 msgid "Authentication is required to print a document on %s"
 msgstr "Potrebno je potvrđivanje identiteta za štampanje dokumenta na „%s“"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1152
+#: modules/printbackends/cups/ctkprintbackendcups.c:1175
 #, c-format
 msgid "Authentication is required to get attributes of job “%s”"
 msgstr ""
 "Potrebno je potvrđivanje identiteta za prikupljanje podataka o zaduženju „%s“"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1154
+#: modules/printbackends/cups/ctkprintbackendcups.c:1177
 msgid "Authentication is required to get attributes of a job"
-msgstr "Potrebno je potvrđivanje identiteta za prikupljanje podataka o zaduženju"
+msgstr ""
+"Potrebno je potvrđivanje identiteta za prikupljanje podataka o zaduženju"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1158
+#: modules/printbackends/cups/ctkprintbackendcups.c:1181
 #, c-format
 msgid "Authentication is required to get attributes of printer %s"
 msgstr ""
 "Potrebno je potvrđivanje identiteta za prikupljanje podataka štampača „%s“"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1160
+#: modules/printbackends/cups/ctkprintbackendcups.c:1183
 msgid "Authentication is required to get attributes of a printer"
 msgstr "Potrebno je potvrđivanje identiteta za prikupljanje podataka štampača"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1163
+#: modules/printbackends/cups/ctkprintbackendcups.c:1186
 #, c-format
 msgid "Authentication is required to get default printer of %s"
 msgstr "Potrebno je potvrđivanje identiteta za podrazumevani štampač od „%s“"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1166
+#: modules/printbackends/cups/ctkprintbackendcups.c:1189
 #, c-format
 msgid "Authentication is required to get printers from %s"
 msgstr "Potrebno je potvrđivanje identiteta za štampače iz „%s“"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1171
+#: modules/printbackends/cups/ctkprintbackendcups.c:1194
 #, c-format
 msgid "Authentication is required to get a file from %s"
 msgstr "Potrebno je potvrđivanje identiteta za preuzimanje datoteke sa „%s“"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1173
+#: modules/printbackends/cups/ctkprintbackendcups.c:1196
 #, c-format
 msgid "Authentication is required on %s"
 msgstr "Potrebno je potvrđivanje identiteta za „%s“"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1409
+#: modules/printbackends/cups/ctkprintbackendcups.c:1433
 msgid "Domain:"
 msgstr "Domen:"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1439
+#: modules/printbackends/cups/ctkprintbackendcups.c:1463
 #, c-format
 msgid "Authentication is required to print document “%s”"
 msgstr "Potvrdite identitet za štampanje dokumenta „%s“"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1444
+#: modules/printbackends/cups/ctkprintbackendcups.c:1468
 #, c-format
 msgid "Authentication is required to print this document on printer %s"
 msgstr "Potvrdite identitet za štampanje ovog dokumenta na štampaču „%s“"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1446
+#: modules/printbackends/cups/ctkprintbackendcups.c:1470
 msgid "Authentication is required to print this document"
 msgstr "Potvrdite identitet za štampanje ovog dokumenta"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2525
+#: modules/printbackends/cups/ctkprintbackendcups.c:2557
 #, c-format
 msgid "Printer “%s” is low on toner."
 msgstr "Štampač „%s“ će uskoro ostati bez tonera."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2529
+#: modules/printbackends/cups/ctkprintbackendcups.c:2561
 #, c-format
 msgid "Printer “%s” has no toner left."
 msgstr "Štampaču „%s“ nema više tonera."
 
 #. Translators: "Developer" like on photo development context
-#: modules/printbackends/cups/ctkprintbackendcups.c:2534
+#: modules/printbackends/cups/ctkprintbackendcups.c:2566
 #, c-format
 msgid "Printer “%s” is low on developer."
 msgstr "Štampač „%s“ će uskoto ostati bez razvijača."
 
 #. Translators: "Developer" like on photo development context
-#: modules/printbackends/cups/ctkprintbackendcups.c:2539
+#: modules/printbackends/cups/ctkprintbackendcups.c:2571
 #, c-format
 msgid "Printer “%s” is out of developer."
 msgstr "Štampač „%s“ je ostao bez razvijača."
 
 #. Translators: "marker" is one color bin of the printer
-#: modules/printbackends/cups/ctkprintbackendcups.c:2544
+#: modules/printbackends/cups/ctkprintbackendcups.c:2576
 #, c-format
 msgid "Printer “%s” is low on at least one marker supply."
 msgstr "Štampaču „%s“ ponestaje bar jedna od boja."
 
 #. Translators: "marker" is one color bin of the printer
-#: modules/printbackends/cups/ctkprintbackendcups.c:2549
+#: modules/printbackends/cups/ctkprintbackendcups.c:2581
 #, c-format
 msgid "Printer “%s” is out of at least one marker supply."
 msgstr "Štampač „%s“ je ostao bez neke od boje."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2553
+#: modules/printbackends/cups/ctkprintbackendcups.c:2585
 #, c-format
 msgid "The cover is open on printer “%s”."
 msgstr "Poklopac na štampaču „%s“ je otvoren."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2557
+#: modules/printbackends/cups/ctkprintbackendcups.c:2589
 #, c-format
 msgid "The door is open on printer “%s”."
 msgstr "Vratanca na štampaču „%s“ su otvorena."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2561
+#: modules/printbackends/cups/ctkprintbackendcups.c:2593
 #, c-format
 msgid "Printer “%s” is low on paper."
 msgstr "Štampaču „%s“ će uskoro ostati bez papira."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2565
+#: modules/printbackends/cups/ctkprintbackendcups.c:2597
 #, c-format
 msgid "Printer “%s” is out of paper."
 msgstr "Nema više papira u štampaču „%s“."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2569
+#: modules/printbackends/cups/ctkprintbackendcups.c:2601
 #, c-format
 msgid "Printer “%s” is currently offline."
 msgstr "Štampač „%s“ nije priključen."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2573
+#: modules/printbackends/cups/ctkprintbackendcups.c:2605
 #, c-format
 msgid "There is a problem on printer “%s”."
 msgstr "Postoji problem sa štampačem „%s“."
 
 #. Translators: this is a printer status.
-#: modules/printbackends/cups/ctkprintbackendcups.c:2593
+#: modules/printbackends/cups/ctkprintbackendcups.c:2625
 msgid "Paused; Rejecting Jobs"
 msgstr "Zaustavljen; Odbija poslove"
 
 #. Translators: this is a printer status.
-#: modules/printbackends/cups/ctkprintbackendcups.c:2599
+#: modules/printbackends/cups/ctkprintbackendcups.c:2631
 msgid "Rejecting Jobs"
 msgstr "Odbija poslove"
 
 #. Translators: this string connects multiple printer states together.
-#: modules/printbackends/cups/ctkprintbackendcups.c:2640
+#: modules/printbackends/cups/ctkprintbackendcups.c:2672
 msgid "; "
 msgstr "; "
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4380
-#: modules/printbackends/cups/ctkprintbackendcups.c:4447
+#: modules/printbackends/cups/ctkprintbackendcups.c:4453
+#: modules/printbackends/cups/ctkprintbackendcups.c:4520
 msgctxt "printing option"
 msgid "Two Sided"
 msgstr "Dvostrano"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4381
+#: modules/printbackends/cups/ctkprintbackendcups.c:4454
 msgctxt "printing option"
 msgid "Paper Type"
 msgstr "Vrsta papira"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4382
+#: modules/printbackends/cups/ctkprintbackendcups.c:4455
 msgctxt "printing option"
 msgid "Paper Source"
 msgstr "Izvor papira"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4383
-#: modules/printbackends/cups/ctkprintbackendcups.c:4448
+#: modules/printbackends/cups/ctkprintbackendcups.c:4456
+#: modules/printbackends/cups/ctkprintbackendcups.c:4521
 msgctxt "printing option"
 msgid "Output Tray"
 msgstr "Izlazna traka"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4384
+#: modules/printbackends/cups/ctkprintbackendcups.c:4457
 msgctxt "printing option"
 msgid "Resolution"
 msgstr "Rezolucija"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4385
+#: modules/printbackends/cups/ctkprintbackendcups.c:4458
 msgctxt "printing option"
 msgid "GhostScript pre-filtering"
 msgstr "Gost skript pred-izdvajanje"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4394
+#: modules/printbackends/cups/ctkprintbackendcups.c:4467
 msgctxt "printing option value"
 msgid "One Sided"
 msgstr "Jednostrano"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4396
+#: modules/printbackends/cups/ctkprintbackendcups.c:4469
 msgctxt "printing option value"
 msgid "Long Edge (Standard)"
 msgstr "Po dužoj strani (standardno)"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4398
+#: modules/printbackends/cups/ctkprintbackendcups.c:4471
 msgctxt "printing option value"
 msgid "Short Edge (Flip)"
 msgstr "Po kraćoj strani (okrenuto)"
 
 #. Translators: this is an option of "Paper Source"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4400
-#: modules/printbackends/cups/ctkprintbackendcups.c:4402
-#: modules/printbackends/cups/ctkprintbackendcups.c:4410
+#: modules/printbackends/cups/ctkprintbackendcups.c:4473
+#: modules/printbackends/cups/ctkprintbackendcups.c:4475
+#: modules/printbackends/cups/ctkprintbackendcups.c:4483
 msgctxt "printing option value"
 msgid "Auto Select"
 msgstr "Sam odredi"
 
 #. Translators: this is an option of "Paper Source"
 #. Translators: this is an option of "Resolution"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4404
-#: modules/printbackends/cups/ctkprintbackendcups.c:4406
-#: modules/printbackends/cups/ctkprintbackendcups.c:4408
-#: modules/printbackends/cups/ctkprintbackendcups.c:4412
+#: modules/printbackends/cups/ctkprintbackendcups.c:4477
+#: modules/printbackends/cups/ctkprintbackendcups.c:4479
+#: modules/printbackends/cups/ctkprintbackendcups.c:4481
+#: modules/printbackends/cups/ctkprintbackendcups.c:4485
 msgctxt "printing option value"
 msgid "Printer Default"
 msgstr "Podrazumevano"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4414
+#: modules/printbackends/cups/ctkprintbackendcups.c:4487
 msgctxt "printing option value"
 msgid "Embed GhostScript fonts only"
 msgstr "Samo ugnježdeni Gost skript slovni likovi"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4416
+#: modules/printbackends/cups/ctkprintbackendcups.c:4489
 msgctxt "printing option value"
 msgid "Convert to PS level 1"
 msgstr "Prevedi u 1° nivo postskripta"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4418
+#: modules/printbackends/cups/ctkprintbackendcups.c:4491
 msgctxt "printing option value"
 msgid "Convert to PS level 2"
 msgstr "Prevedi u 2° nivo postskripta"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4420
+#: modules/printbackends/cups/ctkprintbackendcups.c:4493
 msgctxt "printing option value"
 msgid "No pre-filtering"
 msgstr "Bez pred-izdvajanja"
 
 #. Translators: "Miscellaneous" is the label for a button, that opens
 #. up an extra panel of settings in a print dialog.
-#: modules/printbackends/cups/ctkprintbackendcups.c:4429
+#: modules/printbackends/cups/ctkprintbackendcups.c:4502
 msgctxt "printing option group"
 msgid "Miscellaneous"
 msgstr "Dodatna podešavanja"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4456
+#: modules/printbackends/cups/ctkprintbackendcups.c:4529
 msgctxt "sides"
 msgid "One Sided"
 msgstr "Jednostrano"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4458
+#: modules/printbackends/cups/ctkprintbackendcups.c:4531
 msgctxt "sides"
 msgid "Long Edge (Standard)"
 msgstr "Po dužoj ivici (standardno)"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4460
+#: modules/printbackends/cups/ctkprintbackendcups.c:4533
 msgctxt "sides"
 msgid "Short Edge (Flip)"
 msgstr "Po kraćoj ivici (okrenuto)"
 
 #. Translators: Top output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4463
+#: modules/printbackends/cups/ctkprintbackendcups.c:4536
 msgctxt "output-bin"
 msgid "Top Bin"
 msgstr "Gornja korpa"
 
 #. Translators: Middle output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4465
+#: modules/printbackends/cups/ctkprintbackendcups.c:4538
 msgctxt "output-bin"
 msgid "Middle Bin"
 msgstr "Srednja korpa"
 
 #. Translators: Bottom output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4467
+#: modules/printbackends/cups/ctkprintbackendcups.c:4540
 msgctxt "output-bin"
 msgid "Bottom Bin"
 msgstr "Donja korpa"
 
 #. Translators: Side output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4469
+#: modules/printbackends/cups/ctkprintbackendcups.c:4542
 msgctxt "output-bin"
 msgid "Side Bin"
 msgstr "Korpa sa strane"
 
 #. Translators: Left output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4471
+#: modules/printbackends/cups/ctkprintbackendcups.c:4544
 msgctxt "output-bin"
 msgid "Left Bin"
 msgstr "Leva korpa"
 
 #. Translators: Right output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4473
+#: modules/printbackends/cups/ctkprintbackendcups.c:4546
 msgctxt "output-bin"
 msgid "Right Bin"
 msgstr "Desna korpa"
 
 #. Translators: Center output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4475
+#: modules/printbackends/cups/ctkprintbackendcups.c:4548
 msgctxt "output-bin"
 msgid "Center Bin"
 msgstr "Korpa na sredini"
 
 #. Translators: Rear output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4477
+#: modules/printbackends/cups/ctkprintbackendcups.c:4550
 msgctxt "output-bin"
 msgid "Rear Bin"
 msgstr "Zadnja korpa"
 
 #. Translators: Output bin where one sided output is oriented in the face-up position
-#: modules/printbackends/cups/ctkprintbackendcups.c:4479
+#: modules/printbackends/cups/ctkprintbackendcups.c:4552
 msgctxt "output-bin"
 msgid "Face Up Bin"
 msgstr "Korpa na licu"
 
 #. Translators: Output bin where one sided output is oriented in the face-down position
-#: modules/printbackends/cups/ctkprintbackendcups.c:4481
+#: modules/printbackends/cups/ctkprintbackendcups.c:4554
 msgctxt "output-bin"
 msgid "Face Down Bin"
 msgstr "Korpa na naličju"
 
 #. Translators: Large capacity output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4483
+#: modules/printbackends/cups/ctkprintbackendcups.c:4556
 msgctxt "output-bin"
 msgid "Large Capacity Bin"
 msgstr "Korpa velike zapremine"
 
 #. Translators: Output stacker number %d
-#: modules/printbackends/cups/ctkprintbackendcups.c:4505
+#: modules/printbackends/cups/ctkprintbackendcups.c:4578
 #, c-format
 msgctxt "output-bin"
 msgid "Stacker %d"
 msgstr "Odlagač %d"
 
 #. Translators: Output mailbox number %d
-#: modules/printbackends/cups/ctkprintbackendcups.c:4509
+#: modules/printbackends/cups/ctkprintbackendcups.c:4582
 #, c-format
 msgctxt "output-bin"
 msgid "Mailbox %d"
 msgstr "Poštansko sanduče %d"
 
 #. Translators: Private mailbox
-#: modules/printbackends/cups/ctkprintbackendcups.c:4513
+#: modules/printbackends/cups/ctkprintbackendcups.c:4586
 msgctxt "output-bin"
 msgid "My Mailbox"
 msgstr "Moje sanduče"
 
 #. Translators: Output tray number %d
-#: modules/printbackends/cups/ctkprintbackendcups.c:4517
+#: modules/printbackends/cups/ctkprintbackendcups.c:4590
 #, c-format
 msgctxt "output-bin"
 msgid "Tray %d"
 msgstr "Kaseta %d"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4988
+#: modules/printbackends/cups/ctkprintbackendcups.c:5061
 msgid "Printer Default"
 msgstr "Podrazumevano"
 
 #. Translators: These strings name the possible values of the
 #. * job priority option in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5429
+#: modules/printbackends/cups/ctkprintbackendcups.c:5503
 msgid "Urgent"
 msgstr "Hitno"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5429
+#: modules/printbackends/cups/ctkprintbackendcups.c:5503
 msgid "High"
 msgstr "Važno"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5429
+#: modules/printbackends/cups/ctkprintbackendcups.c:5503
 msgid "Medium"
 msgstr "Srednje"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5429
+#: modules/printbackends/cups/ctkprintbackendcups.c:5503
 msgid "Low"
 msgstr "Nebitno"
 
 #. Translators, this string is used to label the job priority option
 #. * in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5459
+#: modules/printbackends/cups/ctkprintbackendcups.c:5533
 msgid "Job Priority"
 msgstr "Važnost"
 
@@ -6647,41 +8338,41 @@ msgstr "Važnost"
 #. Translators, this string is used to label the billing info entry
 #. * in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5470
+#: modules/printbackends/cups/ctkprintbackendcups.c:5544
 msgid "Billing Info"
 msgstr "Fakturisanje"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5494
+#: modules/printbackends/cups/ctkprintbackendcups.c:5568
 msgctxt "cover page"
 msgid "None"
 msgstr "Ništa"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5495
+#: modules/printbackends/cups/ctkprintbackendcups.c:5569
 msgctxt "cover page"
 msgid "Classified"
 msgstr "Kategorisano"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5496
+#: modules/printbackends/cups/ctkprintbackendcups.c:5570
 msgctxt "cover page"
 msgid "Confidential"
 msgstr "Poverljivo"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5497
+#: modules/printbackends/cups/ctkprintbackendcups.c:5571
 msgctxt "cover page"
 msgid "Secret"
 msgstr "Tajno"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5498
+#: modules/printbackends/cups/ctkprintbackendcups.c:5572
 msgctxt "cover page"
 msgid "Standard"
 msgstr "Obično"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5499
+#: modules/printbackends/cups/ctkprintbackendcups.c:5573
 msgctxt "cover page"
 msgid "Top Secret"
 msgstr "Strogo poverljivo"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5500
+#: modules/printbackends/cups/ctkprintbackendcups.c:5574
 msgctxt "cover page"
 msgid "Unclassified"
 msgstr "Nekategorisano"
@@ -6689,7 +8380,7 @@ msgstr "Nekategorisano"
 #. Translators, this string is used to label the pages-per-sheet option
 #. * in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5512
+#: modules/printbackends/cups/ctkprintbackendcups.c:5586
 msgctxt "printer option"
 msgid "Pages per Sheet"
 msgstr "Strana na listu"
@@ -6697,7 +8388,7 @@ msgstr "Strana na listu"
 #. Translators, this string is used to label the option in the print
 #. * dialog that controls in what order multiple pages are arranged
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5529
+#: modules/printbackends/cups/ctkprintbackendcups.c:5603
 msgctxt "printer option"
 msgid "Page Ordering"
 msgstr "Slaganje strana"
@@ -6705,7 +8396,7 @@ msgstr "Slaganje strana"
 #. Translators, this is the label used for the option in the print
 #. * dialog that controls the front cover page.
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5571
+#: modules/printbackends/cups/ctkprintbackendcups.c:5645
 msgctxt "printer option"
 msgid "Before"
 msgstr "Pre"
@@ -6713,7 +8404,7 @@ msgstr "Pre"
 #. Translators, this is the label used for the option in the print
 #. * dialog that controls the back cover page.
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5586
+#: modules/printbackends/cups/ctkprintbackendcups.c:5660
 msgctxt "printer option"
 msgid "After"
 msgstr "Posle"
@@ -6722,7 +8413,7 @@ msgstr "Posle"
 #. * a print job is printed. Possible values are 'now', a specified time,
 #. * or 'on hold'
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5606
+#: modules/printbackends/cups/ctkprintbackendcups.c:5680
 msgctxt "printer option"
 msgid "Print at"
 msgstr "Zakaži štampu"
@@ -6730,7 +8421,7 @@ msgstr "Zakaži štampu"
 #. Translators: this is the name of the option that allows the user
 #. * to specify a time when a print job will be printed.
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5617
+#: modules/printbackends/cups/ctkprintbackendcups.c:5691
 msgctxt "printer option"
 msgid "Print at time"
 msgstr "Štampaj u"
@@ -6740,35 +8431,35 @@ msgstr "Štampaj u"
 #. * the width and height in points. E.g: "Custom
 #. * 230.4x142.9"
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5659
+#: modules/printbackends/cups/ctkprintbackendcups.c:5737
 #, c-format
 msgid "Custom %s×%s"
 msgstr "Proizvoljno %s×%s"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5768
+#: modules/printbackends/cups/ctkprintbackendcups.c:5847
 msgctxt "printer option"
 msgid "Printer Profile"
 msgstr "Profil štampača"
 
 #. TRANSLATORS: this is when color profile information is unavailable
-#: modules/printbackends/cups/ctkprintbackendcups.c:5775
+#: modules/printbackends/cups/ctkprintbackendcups.c:5854
 msgctxt "printer option value"
 msgid "Unavailable"
 msgstr "Nedostupno"
 
 #. TRANSLATORS: when we're running an old CUPS, and
 #. * it hasn't registered the device with colord
-#: modules/printbackends/cups/ctkprintercups.c:269
+#: modules/printbackends/cups/ctkprintercups.c:275
 msgid "Color management unavailable"
 msgstr "Upravljanje bojama nije dostupno"
 
 #. TRANSLATORS: when there is no color profile available
-#: modules/printbackends/cups/ctkprintercups.c:281
+#: modules/printbackends/cups/ctkprintercups.c:287
 msgid "No profile available"
 msgstr "Nije dostupan profil"
 
 #. TRANSLATORS: when the color profile has no title
-#: modules/printbackends/cups/ctkprintercups.c:292
+#: modules/printbackends/cups/ctkprintercups.c:298
 msgid "Unspecified profile"
 msgstr "Neodređeni profil"
 
@@ -6776,39 +8467,39 @@ msgstr "Neodređeni profil"
 msgid "output"
 msgstr "izlaz"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:537
+#: modules/printbackends/file/ctkprintbackendfile.c:539
 msgid "Print to File"
 msgstr "Štampaj u datoteku"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:663
+#: modules/printbackends/file/ctkprintbackendfile.c:667
 msgid "PDF"
 msgstr "PDF"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:663
+#: modules/printbackends/file/ctkprintbackendfile.c:667
 msgid "Postscript"
 msgstr "Postskript"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:663
+#: modules/printbackends/file/ctkprintbackendfile.c:667
 msgid "SVG"
 msgstr "SVG"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:735
+#: modules/printbackends/file/ctkprintbackendfile.c:738
 msgid "File"
 msgstr "Datoteka"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:745
+#: modules/printbackends/file/ctkprintbackendfile.c:750
 msgid "_Output format"
 msgstr "F_ormat izlaza"
 
-#: modules/printbackends/lpr/ctkprintbackendlpr.c:393
+#: modules/printbackends/lpr/ctkprintbackendlpr.c:394
 msgid "Print to LPR"
 msgstr "Štampaj preko LPR"
 
-#: modules/printbackends/lpr/ctkprintbackendlpr.c:419
+#: modules/printbackends/lpr/ctkprintbackendlpr.c:423
 msgid "Pages Per Sheet"
 msgstr "Strana na listu"
 
-#: modules/printbackends/lpr/ctkprintbackendlpr.c:426
+#: modules/printbackends/lpr/ctkprintbackendlpr.c:430
 msgid "Command Line"
 msgstr "Linija naredbi"
 
@@ -6843,9 +8534,94 @@ msgstr "nepoznato"
 msgid "test-output.%s"
 msgstr "test-izlaz.%s"
 
-#: modules/printbackends/test/ctkprintbackendtest.c:465
+#: modules/printbackends/test/ctkprintbackendtest.c:467
 msgid "Print to Test Printer"
 msgstr "Štampaj na probnom štampaču"
+
+#~ msgid "3.2 core GL profile is not available on EGL implementation"
+#~ msgstr "Jezgarni 3.2 GL profil nije dostupan uz EGL podršku"
+
+#~ msgid "Not implemented on OS X"
+#~ msgstr "Nije sprovedeno na OS X-u"
+
+#~ msgctxt "Color name"
+#~ msgid "Scarlet Red"
+#~ msgstr "Ljubičasto crvena"
+
+#~ msgctxt "Color name"
+#~ msgid "Light Butter"
+#~ msgstr "Svetloputer"
+
+#~ msgctxt "Color name"
+#~ msgid "Butter"
+#~ msgstr "Puter"
+
+#~ msgctxt "Color name"
+#~ msgid "Sky Blue"
+#~ msgstr "Nebeskoplava"
+
+#~ msgctxt "Color name"
+#~ msgid "Plum"
+#~ msgstr "Šljiva"
+
+#~ msgctxt "Color name"
+#~ msgid "Light Chocolate"
+#~ msgstr "Svetločokoladna"
+
+#~ msgctxt "Color name"
+#~ msgid "Chocolate"
+#~ msgstr "Čokoladna"
+
+#~ msgctxt "Color name"
+#~ msgid "Dark Chocolate"
+#~ msgstr "Tamnočokoladna"
+
+#~ msgctxt "Color name"
+#~ msgid "Light Aluminum 1"
+#~ msgstr "Svetloaluminijumska 1"
+
+#~ msgctxt "Color name"
+#~ msgid "Aluminum 1"
+#~ msgstr "Aluminijumska 1"
+
+#~ msgctxt "Color name"
+#~ msgid "Dark Aluminum 1"
+#~ msgstr "Tamnoaluminijumska 1"
+
+#~ msgctxt "Color name"
+#~ msgid "Light Aluminum 2"
+#~ msgstr "Svetloaluminijumska 2"
+
+#~ msgctxt "Color name"
+#~ msgid "Aluminum 2"
+#~ msgstr "Aluminijumska 2"
+
+#~ msgctxt "Color name"
+#~ msgid "Dark Aluminum 2"
+#~ msgstr "Tamnoaluminijumska 2"
+
+#~ msgctxt "Color name"
+#~ msgid "Darker Gray"
+#~ msgstr "Tamnija siva"
+
+#~ msgctxt "Color name"
+#~ msgid "Medium Gray"
+#~ msgstr "Srednjesiva"
+
+#~ msgctxt "Color name"
+#~ msgid "Lighter Gray"
+#~ msgstr "Svetlija siva"
+
+#~ msgctxt "switch"
+#~ msgid "ON"
+#~ msgstr "UKLJ"
+
+#~ msgctxt "switch"
+#~ msgid "OFF"
+#~ msgstr "ISK"
+
+#~ msgid "smb://"
+#~ msgstr "smb://"
 
 #~ msgid "Browse Network"
 #~ msgstr "Pregledaj mrežu"
@@ -6863,14 +8639,8 @@ msgstr "Štampaj na probnom štampaču"
 #~ "Program ne može da uspostavi vezu sa servisom za indeksiranje. Proverite "
 #~ "da li je pokrenut."
 
-#~ msgid "Standard cursor type"
-#~ msgstr "Uobičajena vrsta kurzora"
-
 #~ msgid "Display which the device belongs to"
 #~ msgstr "Ekran kome pripada uređaj"
-
-#~ msgid "Device manager"
-#~ msgstr "Upravnik uređaja"
 
 #~ msgid "Device manager which the device belongs to"
 #~ msgstr "Upravnik uređaja kome pripada uređaj"
@@ -7039,10 +8809,8 @@ msgstr "Štampaj na probnom štampaču"
 
 #~ msgid "When TRUE, empty menu proxies for this action are hidden."
 #~ msgstr ""
-#~ "Kada je postavljeno, prazni posrednici izbornika za ovu radnju se skrivaju."
-
-#~ msgid "Sensitive"
-#~ msgstr "Osetljivo"
+#~ "Kada je postavljeno, prazni posrednici izbornika za ovu radnju se "
+#~ "skrivaju."
 
 #~ msgid "Whether the action is enabled."
 #~ msgstr "Da li je radnja uključena."
@@ -7361,9 +9129,6 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid "The contents of the tooltip for this tray icon"
 #~ msgstr "Sadržaj saveta ove ikonice fioke"
 
-#~ msgid "Title"
-#~ msgstr "Naslov"
-
 #~ msgid "The title of this tray icon"
 #~ msgstr "Naslov ove ikonice fioke"
 
@@ -7395,7 +9160,8 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgstr "Jednoobrazno"
 
 #~ msgid "If TRUE, the table cells are all the same width/height"
-#~ msgstr "Ako je postavljeno, onda su sva polja tabele jednake širine i visine"
+#~ msgstr ""
+#~ "Ako je postavljeno, onda su sva polja tabele jednake širine i visine"
 
 #~ msgid "Left attachment"
 #~ msgstr "Levo pripajanje"
@@ -7425,15 +9191,15 @@ msgstr "Štampaj na probnom štampaču"
 #~ "Extra space to put between the child and its left and right neighbors, in "
 #~ "pixels"
 #~ msgstr ""
-#~ "Dodatni razmak između sadržanog elementa i njegovog levog i desnog suseda, "
-#~ "u tačkama"
+#~ "Dodatni razmak između sadržanog elementa i njegovog levog i desnog "
+#~ "suseda, u tačkama"
 
 #~ msgid ""
 #~ "Extra space to put between the child and its upper and lower neighbors, "
 #~ "in pixels"
 #~ msgstr ""
-#~ "Dodatni razmak između sadržanog elementa i njegovog gornjeg i donjeg suseda, "
-#~ "u tačkama"
+#~ "Dodatni razmak između sadržanog elementa i njegovog gornjeg i donjeg "
+#~ "suseda, u tačkama"
 
 #~ msgid "Create the same proxies as a radio action"
 #~ msgstr "Pravi iste posrednike kao i radio-radnja"
@@ -7467,7 +9233,8 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgstr "Ispunjavanje koje treba postaviti oko ikonica u paleti"
 
 #~ msgid "The pixel size that icons should be forced to, or zero"
-#~ msgstr "Veličina u tačkama na koju ikonice moraju biti postavljene, ili nula"
+#~ msgstr ""
+#~ "Veličina u tačkama na koju ikonice moraju biti postavljene, ili nula"
 
 #~ msgid "Add tearoffs to menus"
 #~ msgstr "Dodaje otcepljivanje u izbornike"
@@ -7480,9 +9247,6 @@ msgstr "Štampaj na probnom štampaču"
 
 #~ msgid "An XML string describing the merged UI"
 #~ msgstr "IksML niska koja opisuje spojeno sučelje"
-
-#~ msgid "Program name"
-#~ msgstr "Naziv programa"
 
 #~ msgid ""
 #~ "The name of the program. If this is not set, it defaults to "
@@ -7755,16 +9519,16 @@ msgstr "Štampaj na probnom štampaču"
 #~ "If TRUE, the child appears in a secondary group of children, suitable "
 #~ "for, e.g., help buttons"
 #~ msgstr ""
-#~ "Ako je postavljeno, sadržani element se pojavljuje među drugim elementima, "
-#~ "što je odgovarajuće za npr. dugmiće za pomoć."
+#~ "Ako je postavljeno, sadržani element se pojavljuje među drugim "
+#~ "elementima, što je odgovarajuće za npr. dugmiće za pomoć."
 
 #~ msgid "Non-Homogeneous"
 #~ msgstr "Neistorodnost"
 
 #~ msgid "If TRUE, the child will not be subject to homogeneous sizing"
 #~ msgstr ""
-#~ "Ako je postavljeno, sadržani element neće biti podložan istorodnom menjanju "
-#~ "veličine"
+#~ "Ako je postavljeno, sadržani element neće biti podložan istorodnom "
+#~ "menjanju veličine"
 
 #~ msgid "The amount of space between children"
 #~ msgstr "Količina razmaka među sadržanim elementima"
@@ -7926,9 +9690,6 @@ msgstr "Štampaj na probnom štampaču"
 
 #~ msgid "Inner border space"
 #~ msgstr "Prostor unutrašnje granice"
-
-#~ msgid "Vertical separation"
-#~ msgstr "Uspravno razdvajanje"
 
 #~ msgid "Space between day headers and main area"
 #~ msgstr "Razmak između zaglavlja dana i glavne oblasti"
@@ -8137,9 +9898,6 @@ msgstr "Štampaj na probnom štampaču"
 #~ "Whether the rendered pixbuf should be colorized according to the state"
 #~ msgstr "Da li se iscrtana sličica boji prema stanju ili ne"
 
-#~ msgid "Text"
-#~ msgstr "Tekst"
-
 #~ msgid "Pulse"
 #~ msgstr "Impuls"
 
@@ -8197,9 +9955,6 @@ msgstr "Štampaj na probnom štampaču"
 
 #~ msgid "Text to render"
 #~ msgstr "Tekst za prikazivanje"
-
-#~ msgid "Markup"
-#~ msgstr "Označeni tekst"
 
 #~ msgid "Marked up text to render"
 #~ msgstr "Označeni tekst koji se iscrtava"
@@ -8439,9 +10194,6 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid "Draw the toggle button as a radio button"
 #~ msgstr "Iscrtaj prekidačko dugme kao radio dugme"
 
-#~ msgid "Indicator size"
-#~ msgstr "Veličina pokazatelja"
-
 #~ msgid "Size of check or radio indicator"
 #~ msgstr "Veličina pokazatelja štikliranja ili radio dugmeta"
 
@@ -8473,9 +10225,6 @@ msgstr "Štampaj na probnom štampaču"
 
 #~ msgid "Whether to request enough space for every row in the model"
 #~ msgstr "Da li treba tražiti dovoljno prostora za svaki red u modelu"
-
-#~ msgid "Indicator Size"
-#~ msgstr "Veličina pokazatelja"
 
 #~ msgid "Indicator Spacing"
 #~ msgstr "Razmaci pokazatelja"
@@ -8591,8 +10340,8 @@ msgstr "Štampaj na probnom štampaču"
 #~ "The column in the combo box's model to associate with strings from the "
 #~ "entry if the combo was created with #CtkComboBox:has-entry = %TRUE"
 #~ msgstr ""
-#~ "Kolona u modelu prozorčeta za izbor za udruživanje sa niskama iz unosa ako "
-#~ "je prozorče napravljeno sa „#CtkComboBox:has-entry = %TRUE“"
+#~ "Kolona u modelu prozorčeta za izbor za udruživanje sa niskama iz unosa "
+#~ "ako je prozorče napravljeno sa „#CtkComboBox:has-entry = %TRUE“"
 
 #~ msgid ""
 #~ "The column in the combo box's model that provides string IDs for the "
@@ -8757,7 +10506,8 @@ msgstr "Štampaj na probnom štampaču"
 
 #~ msgid ""
 #~ "The character to use when masking entry contents (in \"password mode\")"
-#~ msgstr "Znak koji se koristi kada se sakriva sadržaj polja (za unos lozinke)"
+#~ msgstr ""
+#~ "Znak koji se koristi kada se sakriva sadržaj polja (za unos lozinke)"
 
 #~ msgid ""
 #~ "Whether to activate the default widget (such as the default button in a "
@@ -8792,7 +10542,8 @@ msgstr "Štampaj na probnom štampaču"
 
 #~ msgid "Which kind of shadow to draw around the entry when has-frame is set"
 #~ msgstr ""
-#~ "Kakva vrsta senke da se iscrtava oko unosa kada je postavljeno da ima okvir"
+#~ "Kakva vrsta senke da se iscrtava oko unosa kada je postavljeno da ima "
+#~ "okvir"
 
 #~ msgid "Overwrite mode"
 #~ msgstr "Način prepisivanja"
@@ -8939,9 +10690,6 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid "The auxiliary completion object"
 #~ msgstr "Pomoćni objekat dovršavanja"
 
-#~ msgid "Purpose"
-#~ msgstr "Svrha"
-
 #~ msgid "Purpose of the text field"
 #~ msgstr "Svrha tekstualnog polja"
 
@@ -9011,7 +10759,8 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgstr "Širina oblačića"
 
 #~ msgid "If TRUE, the popup window will have the same size as the entry"
-#~ msgstr "Ako je postavljeno, iskačući prozor će biti iste veličine kao i polje"
+#~ msgstr ""
+#~ "Ako je postavljeno, iskačući prozor će biti iste veličine kao i polje"
 
 #~ msgid "Popup single match"
 #~ msgstr "Jedinstveno podudaranje oblačića"
@@ -9082,14 +10831,11 @@ msgstr "Štampaj na probnom štampaču"
 #~ "Whether the expander will resize the toplevel window upon expanding and "
 #~ "collapsing"
 #~ msgstr ""
-#~ "Da li će razgranik da promeni veličinu prozora najvišeg nivoa nad širenjem "
-#~ "i skupljanjem"
+#~ "Da li će razgranik da promeni veličinu prozora najvišeg nivoa nad "
+#~ "širenjem i skupljanjem"
 
 #~ msgid "Spacing around expander arrow"
 #~ msgstr "Razmaci oko strelica za grananje"
-
-#~ msgid "Dialog"
-#~ msgstr "Prozorče"
 
 #~ msgid "The title of the file chooser dialog."
 #~ msgstr "Naslov prozorčeta za izbor datoteka."
@@ -9193,7 +10939,8 @@ msgstr "Štampaj na probnom štampaču"
 #~ "The minimum number of children to allocate consecutively in the given "
 #~ "orientation."
 #~ msgstr ""
-#~ "Najmanji broj sadržanih elemenata za dodeljivanje u nizu u datom usmerenju."
+#~ "Najmanji broj sadržanih elemenata za dodeljivanje u nizu u datom "
+#~ "usmerenju."
 
 #~ msgid "Maximum Children Per Line"
 #~ msgstr "Najviše sadržanih po redu"
@@ -9276,9 +11023,6 @@ msgstr "Štampaj na probnom štampaču"
 
 #~ msgid "Button number to listen to"
 #~ msgstr "Broj dugmeta za osluškivanje"
-
-#~ msgid "Context"
-#~ msgstr "Kontekst"
 
 #~ msgid "The GL context"
 #~ msgstr "GL kontekst"
@@ -9407,9 +11151,6 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid "Space which is inserted between grid rows"
 #~ msgstr "Razmak koji se ubacuje između redova mreže"
 
-#~ msgid "Column Spacing"
-#~ msgstr "Razmak kolona"
-
 #~ msgid "Space which is inserted between grid columns"
 #~ msgstr "Razmak koji se ubacuje između kolona mreže"
 
@@ -9524,8 +11265,8 @@ msgstr "Štampaj na probnom štampaču"
 #~ "The preferred place to ellipsize the string, if the label does not have "
 #~ "enough room to display the entire string"
 #~ msgstr ""
-#~ "Željeno mesto za skraćivanje teksta, ukoliko oznaka ne raspolaže dovoljnim "
-#~ "prostorom za prikaz celog teksta"
+#~ "Željeno mesto za skraćivanje teksta, ukoliko oznaka ne raspolaže "
+#~ "dovoljnim prostorom za prikaz celog teksta"
 
 #~ msgid "Whether the label is in single line mode"
 #~ msgstr "Da li je oznaka u jednom redu"
@@ -9634,8 +11375,8 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid ""
 #~ "The tooltip to display when prompting the user cannot obtain authorization"
 #~ msgstr ""
-#~ "Objašnjenje koje će biti prikazano kada se postavlja korisniku koji ne može "
-#~ "dobiti ovlašćenje"
+#~ "Objašnjenje koje će biti prikazano kada se postavlja korisniku koji ne "
+#~ "može dobiti ovlašćenje"
 
 #~ msgid "Inspected widget"
 #~ msgstr "Nadgledani element"
@@ -9732,7 +11473,8 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgstr "Tačke kačenja"
 
 #~ msgid "Positioning hints for when the menu might fall off-screen"
-#~ msgstr "Nagoveštaji postavljanja odakle bi izbornik mogao da padne van ekrana"
+#~ msgstr ""
+#~ "Nagoveštaji postavljanja odakle bi izbornik mogao da padne van ekrana"
 
 #~ msgid "Rect anchor dx"
 #~ msgstr "dx pravougaonog sidra"
@@ -9936,9 +11678,6 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid "Transient for Window"
 #~ msgstr "Providnost prozora"
 
-#~ msgid "Tab Position"
-#~ msgstr "Položaj jezičaka"
-
 #~ msgid "Which side of the notebook holds the tabs"
 #~ msgstr "Na kojoj strani se nalaze jezičci"
 
@@ -10083,9 +11822,6 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid "Smallest possible value for the \"position\" property"
 #~ msgstr "Najmanja moguća vrednost za osobinu „position“"
 
-#~ msgid "Maximal Position"
-#~ msgstr "Najveći položaj"
-
 #~ msgid "Largest possible value for the \"position\" property"
 #~ msgstr "Najveća moguća vrednost za osobinu „position“"
 
@@ -10100,8 +11836,8 @@ msgstr "Štampaj na probnom štampaču"
 
 #~ msgid "If TRUE, the child expands and shrinks along with the paned widget"
 #~ msgstr ""
-#~ "Ako je postavljeno, sadržani element se širi i skuplja zajedno sa okvirnim "
-#~ "elementom"
+#~ "Ako je postavljeno, sadržani element se širi i skuplja zajedno sa "
+#~ "okvirnim elementom"
 
 #~ msgid "Shrink"
 #~ msgstr "Skupljanje"
@@ -10269,20 +12005,19 @@ msgstr "Štampaj na probnom štampaču"
 #~ "TRUE if the print job will continue to emit status-changed signals after "
 #~ "the print data has been sent to the printer or print server."
 #~ msgstr ""
-#~ "Postavljeno ako posao za štampanje nastavlja da emituje signale izmenjenog "
-#~ "stanja pošto su podaci za štampu poslati štampaču ili serveru štampe."
+#~ "Postavljeno ako posao za štampanje nastavlja da emituje signale "
+#~ "izmenjenog stanja pošto su podaci za štampu poslati štampaču ili serveru "
+#~ "štampe."
 
 #~ msgid "The CtkPageSetup used by default"
 #~ msgstr "Ctk postavke strane koje se koriste kao podrazumevane"
 
 #~ msgid "The CtkPrintSettings used for initializing the dialog"
-#~ msgstr "Ctk podešavanja štampe koja se koriste prilikom pokretanja prozorčeta"
+#~ msgstr ""
+#~ "Ctk podešavanja štampe koja se koriste prilikom pokretanja prozorčeta"
 
 #~ msgid "A string used for identifying the print job."
 #~ msgstr "Niska koja identifikuje posao štampanja."
-
-#~ msgid "Number of Pages"
-#~ msgstr "Broj strana"
 
 #~ msgid "The number of pages in the document."
 #~ msgstr "Broj strana u dokumentu."
@@ -10304,8 +12039,9 @@ msgstr "Štampaj na probnom štampaču"
 #~ "TRUE if the print operation will continue to report on the print job "
 #~ "status after the print data has been sent to the printer or print server."
 #~ msgstr ""
-#~ "Postavljeno ako će operacija štampanja nastaviti da prijavljuje stanje posla "
-#~ "štampanja pošto su podaci za štampu poslati štampaču ili server štampe."
+#~ "Postavljeno ako će operacija štampanja nastaviti da prijavljuje stanje "
+#~ "posla štampanja pošto su podaci za štampu poslati štampaču ili server "
+#~ "štampe."
 
 #~ msgid "Unit"
 #~ msgstr "Jedinica"
@@ -10624,9 +12360,6 @@ msgstr "Štampaj na probnom štampaču"
 #~ "Vodoravno prilagođavanje koje se deli između klizećeg elementa i njegovog "
 #~ "kontrolora"
 
-#~ msgid "Vertical adjustment"
-#~ msgstr "Uspravna popravka"
-
 #~ msgid ""
 #~ "Vertical adjustment that is shared between the scrollable widget and its "
 #~ "controller"
@@ -10757,9 +12490,6 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid ""
 #~ "The maximum height that the scrolled window will allocate to its content"
 #~ msgstr "Najveća visina koju će pomeren prozor da dodeli svom sadržaju"
-
-#~ msgid "Propagate Natural Width"
-#~ msgstr "Rasprostire prirodnu širinu"
 
 #~ msgid "Propagate Natural Height"
 #~ msgstr "Rasprostire prirodnu visinu"
@@ -10896,14 +12626,8 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid "Size to use for cursors, or 0 to use the default size"
 #~ msgstr "Veličina za kurzore, ili 0 za podrazumevanu veličinu"
 
-#~ msgid "Alternative button order"
-#~ msgstr "Obrnuti redosled dugmića"
-
 #~ msgid "Whether buttons in dialogs should use the alternative button order"
 #~ msgstr "Da li dugmad u prozorčićima koriste obrnuti redosled"
-
-#~ msgid "Alternative sort indicator direction"
-#~ msgstr "Zamenski ukazivač smera ređanja"
 
 #~ msgid ""
 #~ "Whether the direction of the sort indicators in list and tree views is "
@@ -10926,8 +12650,8 @@ msgstr "Štampaj na probnom štampaču"
 #~ "Whether the context menus of entries and text views should offer to "
 #~ "insert control characters"
 #~ msgstr ""
-#~ "Da li da priručni izbornik unosa i prikaza teksta nudi unošenje kontrolnih "
-#~ "znakova"
+#~ "Da li da priručni izbornik unosa i prikaza teksta nudi unošenje "
+#~ "kontrolnih znakova"
 
 #~ msgid "Starting value for timeouts, when button is pressed"
 #~ msgstr "Početna vrednost vremena ograničenja, kada se dugme pritisne"
@@ -10990,7 +12714,8 @@ msgstr "Štampaj na probnom štampaču"
 
 #~ msgid "Whether to wrap around when keyboard-navigating widgets"
 #~ msgstr ""
-#~ "Određuje da li da koristi prelamanje za upravljanje elementima sa tastature"
+#~ "Određuje da li da koristi prelamanje za upravljanje elementima sa "
+#~ "tastature"
 
 #~ msgid "When TRUE, keyboard navigation and other errors will cause a beep"
 #~ msgstr ""
@@ -11007,10 +12732,12 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgstr "Naziv podrške koju podrazumevano koristi Ctk izbirač datoteke"
 
 #~ msgid "List of the CtkPrintBackend backends to use by default"
-#~ msgstr "Spisak pozadinskih motora za štampanje koji se podrazumevano koriste"
+#~ msgstr ""
+#~ "Spisak pozadinskih motora za štampanje koji se podrazumevano koriste"
 
 #~ msgid "Default command to run when displaying a print preview"
-#~ msgstr "Podrazumevana naredba za pokretanje pri prikazivanju pregleda štampe"
+#~ msgstr ""
+#~ "Podrazumevana naredba za pokretanje pri prikazivanju pregleda štampe"
 
 #~ msgid "Command to run when displaying a print preview"
 #~ msgstr "Naredba za pokretanje pri prikazivanju pregleda štampe"
@@ -11157,8 +12884,8 @@ msgstr "Štampaj na probnom štampaču"
 #~ "Minimum time the pointer must stay over a menu item before the submenu "
 #~ "appear"
 #~ msgstr ""
-#~ "Najmanje vreme koje se pokazivač miša mora zadržati preko stavke izbornika "
-#~ "da bi se pojavio podmeni"
+#~ "Najmanje vreme koje se pokazivač miša mora zadržati preko stavke "
+#~ "izbornika da bi se pojavio podmeni"
 
 #~ msgid "Delay before hiding a submenu"
 #~ msgstr "Vreme pre skrivanja podmenija"
@@ -11258,8 +12985,8 @@ msgstr "Štampaj na probnom štampaču"
 #~ "Whether a middle click on a mouse should paste the 'PRIMARY' clipboard "
 #~ "content at the cursor location."
 #~ msgstr ""
-#~ "Da li srednji klik na miša treba da ubaci „PRVI“ sadržaj ostave na položaj "
-#~ "kurzora."
+#~ "Da li srednji klik na miša treba da ubaci „PRVI“ sadržaj ostave na "
+#~ "položaj kurzora."
 
 #~ msgid "Whether CTK+ remembers recent files"
 #~ msgstr "Da li Ctk+ pamti skorašnje datoteke"
@@ -11461,8 +13188,8 @@ msgstr "Štampaj na probnom štampaču"
 #~ "The list of targets this buffer supports for clipboard copying and DND "
 #~ "source"
 #~ msgstr ""
-#~ "Spisak odredišta koji ova međumemorija podržava za umnožavanje iz ostave i "
-#~ "kao izvori prevlačenja i spuštanja"
+#~ "Spisak odredišta koji ova međumemorija podržava za umnožavanje iz ostave "
+#~ "i kao izvori prevlačenja i spuštanja"
 
 #~ msgid "Paste target list"
 #~ msgstr "Spisak odredišta za ubacivanje"
@@ -11616,9 +13343,6 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid "Whether font fallback is enabled."
 #~ msgstr "Da li je font za odstupanje uključen."
 
-#~ msgid "Letter Spacing"
-#~ msgstr "Razmak između slova"
-
 #~ msgid "Extra spacing between graphemes"
 #~ msgstr "Dodatan prostor između grafema"
 
@@ -11636,9 +13360,6 @@ msgstr "Štampaj na probnom štampaču"
 
 #~ msgid "Whether this tag affects background height"
 #~ msgstr "Da li ova postavka utiče na visinu pozadine"
-
-#~ msgid "Justification set"
-#~ msgstr "Postavljeno slaganje redova"
 
 #~ msgid "Whether this tag affects paragraph justification"
 #~ msgstr "Da li ova postavka utiče na slaganje redova"
@@ -11705,9 +13426,6 @@ msgstr "Štampaj na probnom štampaču"
 
 #~ msgid "Whether this tag affects font fallback"
 #~ msgstr "Da li ova oznaka utiče na font za odstupanje"
-
-#~ msgid "Letter spacing set"
-#~ msgstr "Razmak između slova podešen"
 
 #~ msgid "Whether this tag affects letter spacing"
 #~ msgstr "Da li ova oznaka utiče na razmak između slova"
@@ -11932,9 +13650,6 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid "Whether the menu has a tearoff item"
 #~ msgstr "Da li izbornik ima otkinutu stavku"
 
-#~ msgid "Wrap Width"
-#~ msgstr "Širina za prelom"
-
 #~ msgid "Wrap width for laying out items in a grid"
 #~ msgstr "Širina za prelom za uređivanje stavki u koordinatnoj mreži"
 
@@ -12032,9 +13747,6 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgid "Vertical space between cells.  Must be an even number"
 #~ msgstr "Uspravni razmak između polja.  Mora biti paran broj"
 
-#~ msgid "Horizontal Separator Width"
-#~ msgstr "Širina vodoravnih razdvojnika"
-
 #~ msgid "Horizontal space between cells.  Must be an even number"
 #~ msgstr "Vodoravni razmak između polja.  Mora biti paran broj"
 
@@ -12098,9 +13810,6 @@ msgstr "Štampaj na probnom štampaču"
 
 #~ msgid "Resize mode of the column"
 #~ msgstr "Način izmene veličine stupca"
-
-#~ msgid "Fixed Width"
-#~ msgstr "Utvrđena širina"
 
 #~ msgid "Current fixed width of the column"
 #~ msgstr "Trenutna utvrđena širina stupca"
@@ -12344,9 +14053,9 @@ msgstr "Štampaj na probnom štampaču"
 #~ "interpreted as pixel widths of alternating on and off segments of the "
 #~ "line."
 #~ msgstr ""
-#~ "Obrazac crtkanja korišćen za crtanje pokazatelja fokusa. Vrednosti znaka se "
-#~ "tumače kao širine tačkica naizmeničnih uključenih i isključenih odlomaka "
-#~ "linije."
+#~ "Obrazac crtkanja korišćen za crtanje pokazatelja fokusa. Vrednosti znaka "
+#~ "se tumače kao širine tačkica naizmeničnih uključenih i isključenih "
+#~ "odlomaka linije."
 
 #~ msgid "Width, in pixels, between focus indicator and the widget 'box'"
 #~ msgstr ""
@@ -12392,9 +14101,6 @@ msgstr "Štampaj na probnom štampaču"
 #~ "Da li razdvojnici imaju podesivu širinu i treba da budu iscrtavani pomoću "
 #~ "kutije umesto linije"
 
-#~ msgid "Separator Width"
-#~ msgstr "Širina razdvojnika"
-
 #~ msgid "The width of separators if wide-separators is TRUE"
 #~ msgstr "Širina razdvojnika ako su postavljeni široki razdvojnici"
 
@@ -12426,7 +14132,8 @@ msgstr "Štampaj na probnom štampaču"
 #~ msgstr "Vrsta prozora"
 
 #~ msgid "Unique identifier for the window to be used when restoring a session"
-#~ msgstr "Jedinstveni obeleživač prozora koji se koristi pri obnavljanju sesije"
+#~ msgstr ""
+#~ "Jedinstveni obeleživač prozora koji se koristi pri obnavljanju sesije"
 
 #~ msgid ""
 #~ "Unique startup identifier for the window used by startup-notification"
@@ -12441,19 +14148,21 @@ msgstr "Štampaj na probnom štampaču"
 #~ "If TRUE, the window is modal (other windows are not usable while this one "
 #~ "is up)"
 #~ msgstr ""
-#~ "Ako je postavljeno, prozor je modalni (ostali prozori se ne mogu koristiti "
-#~ "dok je ovaj prikazan)"
+#~ "Ako je postavljeno, prozor je modalni (ostali prozori se ne mogu "
+#~ "koristiti dok je ovaj prikazan)"
 
 #~ msgid "The initial position of the window"
 #~ msgstr "Početni položaj prozora"
 
 #~ msgid ""
 #~ "The default width of the window, used when initially showing the window"
-#~ msgstr "Uobičajena širina prozora, koristi se pri prvom prikazivanju prozora"
+#~ msgstr ""
+#~ "Uobičajena širina prozora, koristi se pri prvom prikazivanju prozora"
 
 #~ msgid ""
 #~ "The default height of the window, used when initially showing the window"
-#~ msgstr "Uobičajena visina prozora, koristi se pri prvom prikazivanju prozora"
+#~ msgstr ""
+#~ "Uobičajena visina prozora, koristi se pri prvom prikazivanju prozora"
 
 #~ msgid "Destroy with Parent"
 #~ msgstr "Uništava sa pokretačem"
