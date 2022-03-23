@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+-properties\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-09 03:29+0000\n"
+"POT-Creation-Date: 2022-03-23 18:06+0100\n"
 "PO-Revision-Date: 2020-07-09 10:02+0300\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Türkçe <gnome-turk@gnome.org>\n"
@@ -226,85 +226,84 @@ msgstr "Hücre işleyici"
 msgid "The cell renderer represented by this accessible"
 msgstr "Hücre oluşturucu, bu erişilebilir tarafından temsil edilmiş"
 
-#: ctk/ctkaction.c:243 ctk/ctkactiongroup.c:200
+#: ctk/ctkaction.c:233 ctk/ctkactiongroup.c:196
 #: ctk/deprecated/ctkthemingengine.c:247 ctk/ctkcssnode.c:638
 #: ctk/ctkprinter.c:121 ctk/ctkstack.c:516 ctk/ctktextmark.c:136
 msgid "Name"
 msgstr "Ad"
 
-#: ctk/ctkaction.c:244
+#: ctk/ctkaction.c:234
 msgid "A unique name for the action."
 msgstr "Eylem için tek olan bir ad."
 
-#: ctk/ctkaction.c:264 ctk/ctkbutton.c:281 ctk/ctkexpander.c:308
+#: ctk/ctkaction.c:252 ctk/ctkbutton.c:281 ctk/ctkexpander.c:308
 #: ctk/ctkframe.c:231 ctk/ctklabel.c:805 ctk/ctkmenuitem.c:789
-#: ctk/ctktoolbutton.c:243 ctk/ctktoolitemgroup.c:1639
+#: ctk/ctktoolbutton.c:204 ctk/ctktoolitemgroup.c:1639
 msgid "Label"
 msgstr "Etiket"
 
-#: ctk/ctkaction.c:265
+#: ctk/ctkaction.c:253
 msgid "The label used for menu items and buttons that activate this action."
 msgstr "Eylemi etkinleştiren menü ögeleri ve düğmeler için kullanılan etiket."
 
-#: ctk/ctkaction.c:284
+#: ctk/ctkaction.c:269
 msgid "Short label"
 msgstr "Kısa etiket"
 
-#: ctk/ctkaction.c:285
+#: ctk/ctkaction.c:270
 msgid "A shorter label that may be used on toolbar buttons."
 msgstr "Araç çubuğu düğmelerinde kullanılabilecek daha kısa bir etiket."
 
-#: ctk/ctkaction.c:300
+#: ctk/ctkaction.c:283
 msgid "Tooltip"
 msgstr "Balon"
 
-#: ctk/ctkaction.c:301
+#: ctk/ctkaction.c:284
 msgid "A tooltip for this action."
 msgstr "Bu eylem için bir balon."
 
-#: ctk/ctkaction.c:319
+#: ctk/ctkaction.c:299
 msgid "Stock Icon"
 msgstr "Depo Simgesi"
 
-#: ctk/ctkaction.c:320
+#: ctk/ctkaction.c:300
 msgid "The stock icon displayed in widgets representing this action."
 msgstr "Bu eylemi belirten parçalar için gösterilecek olan depo simgesi."
 
-#: ctk/ctkaction.c:342 ctk/ctkstatusicon.c:279
+#: ctk/ctkaction.c:320 ctk/ctkstatusicon.c:269
 msgid "GIcon"
 msgstr "GIcon"
 
-#: ctk/ctkaction.c:343 ctk/ctkstatusicon.c:280
-#: ctk/ctkcellrendererpixbuf.c:282 ctk/ctkimage.c:360
+#: ctk/ctkaction.c:321 ctk/ctkcellrendererpixbuf.c:282 ctk/ctkimage.c:358
+#: ctk/ctkstatusicon.c:270
 msgid "The GIcon being displayed"
 msgstr "Gösterilen GIcon"
 
-#: ctk/ctkaction.c:365 ctk/ctkstatusicon.c:263
-#: ctk/ctkcellrendererpixbuf.c:245 ctk/ctkimage.c:343 ctk/ctkprinter.c:170
-#: ctk/ctkwindow.c:890
+#: ctk/ctkaction.c:341 ctk/ctkcellrendererpixbuf.c:245 ctk/ctkimage.c:341
+#: ctk/ctkprinter.c:170 ctk/ctkstatusicon.c:253 ctk/ctkwindow.c:890
 msgid "Icon Name"
 msgstr "Simge Adı"
 
-#: ctk/ctkaction.c:366 ctk/ctkstatusicon.c:264
-#: ctk/ctkcellrendererpixbuf.c:246 ctk/ctkimage.c:344
+#: ctk/ctkaction.c:342 ctk/ctkcellrendererpixbuf.c:246 ctk/ctkimage.c:342
+#: ctk/ctkstatusicon.c:254
 msgid "The name of the icon from the icon theme"
 msgstr "Simge temasından simgenin adı"
 
-#: ctk/ctkaction.c:381 ctk/ctktoolitem.c:179
+#: ctk/ctkaction.c:354 ctk/ctktoolitem.c:179
 msgid "Visible when horizontal"
 msgstr "Yatay ise görüntülenebilir"
 
-#: ctk/ctkaction.c:382 ctk/ctktoolitem.c:180
+#: ctk/ctkaction.c:355 ctk/ctktoolitem.c:180
 msgid ""
 "Whether the toolbar item is visible when the toolbar is in a horizontal "
 "orientation."
 msgstr "Araç çubuğu yatay konumdayken araç çubuğu ögesinin görünürlüğü."
 
-#: ctk/ctkaction.c:400
+#: ctk/ctkaction.c:370
 msgid "Visible when overflown"
 msgstr "Taşmış ise görünür"
 
-#: ctk/ctkaction.c:401
+#: ctk/ctkaction.c:371
 msgid ""
 "When TRUE, toolitem proxies for this action are represented in the toolbar "
 "overflow menu."
@@ -312,21 +311,21 @@ msgstr ""
 "TRUE olduğunda, bu eylem için araç ögesi vekilleri araç çubuğunda taşmış "
 "menü olarak görüntülenir."
 
-#: ctk/ctkaction.c:417 ctk/ctktoolitem.c:186
+#: ctk/ctkaction.c:384 ctk/ctktoolitem.c:186
 msgid "Visible when vertical"
 msgstr "Dikey ise görünür"
 
-#: ctk/ctkaction.c:418 ctk/ctktoolitem.c:187
+#: ctk/ctkaction.c:385 ctk/ctktoolitem.c:187
 msgid ""
 "Whether the toolbar item is visible when the toolbar is in a vertical "
 "orientation."
 msgstr "Araç çubuğu dikey konumdayken araç çubuğu ögesinin görünürlüğü."
 
-#: ctk/ctkaction.c:434 ctk/ctktoolitem.c:193
+#: ctk/ctkaction.c:398 ctk/ctktoolitem.c:193
 msgid "Is important"
 msgstr "Önemli"
 
-#: ctk/ctkaction.c:435
+#: ctk/ctkaction.c:399
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
 "this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
@@ -334,38 +333,38 @@ msgstr ""
 "Eylemin önemli sayılması. TRUE ise , bu eylem için araç ögesi vekilleri "
 "metni CTK_TOOLBAR_BOTH_HORIZ kipinde gösterir."
 
-#: ctk/ctkaction.c:451
+#: ctk/ctkaction.c:412
 msgid "Hide if empty"
 msgstr "Boş ise gizle"
 
-#: ctk/ctkaction.c:452
+#: ctk/ctkaction.c:413
 msgid "When TRUE, empty menu proxies for this action are hidden."
 msgstr "TRUE ise, bu eylem için boş menü vekilleri gizli olur."
 
-#: ctk/ctkaction.c:466 ctk/ctkactiongroup.c:214
-#: ctk/ctkcellrenderer.c:308 ctk/ctkwidget.c:1155
+#: ctk/ctkaction.c:424 ctk/ctkactiongroup.c:208 ctk/ctkcellrenderer.c:308
+#: ctk/ctkwidget.c:1155
 msgid "Sensitive"
 msgstr "Duyarlı"
 
-#: ctk/ctkaction.c:467
+#: ctk/ctkaction.c:425
 msgid "Whether the action is enabled."
 msgstr "Eylemin etkin olup olmaması."
 
-#: ctk/ctkaction.c:481 ctk/ctkactiongroup.c:228
-#: ctk/ctkstatusicon.c:314 ctk/ctkcssnode.c:649
-#: ctk/ctknativedialog.c:242 ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1148
+#: ctk/ctkaction.c:436 ctk/ctkactiongroup.c:220 ctk/ctkcssnode.c:649
+#: ctk/ctknativedialog.c:242 ctk/ctkstatusicon.c:304
+#: ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1148
 msgid "Visible"
 msgstr "Görünür"
 
-#: ctk/ctkaction.c:482
+#: ctk/ctkaction.c:437
 msgid "Whether the action is visible."
 msgstr "Eylemin görünür olup olmaması."
 
-#: ctk/ctkaction.c:497
+#: ctk/ctkaction.c:449
 msgid "Action Group"
 msgstr "Eylem Kümesi"
 
-#: ctk/ctkaction.c:498
+#: ctk/ctkaction.c:450
 msgid ""
 "The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
@@ -373,50 +372,48 @@ msgstr ""
 "Bu CtkAction'ın ilişkilendirildiği CtkActionGroup, veya NULL (dahili "
 "kullanım için)."
 
-#: ctk/ctkaction.c:519 ctk/ctkimagemenuitem.c:264
-#: ctk/ctkbutton.c:393
+#: ctk/ctkaction.c:468 ctk/ctkbutton.c:393 ctk/ctkimagemenuitem.c:254
 msgid "Always show image"
 msgstr "Her zaman resmi göster"
 
-#: ctk/ctkaction.c:520 ctk/ctkimagemenuitem.c:265
-#: ctk/ctkbutton.c:394
+#: ctk/ctkaction.c:469 ctk/ctkbutton.c:394 ctk/ctkimagemenuitem.c:255
 msgid "Whether the image will always be shown"
 msgstr "Resmin her zaman gösterilip gösterilmeyeceği"
 
-#: ctk/ctkactiongroup.c:201
+#: ctk/ctkactiongroup.c:197
 msgid "A name for the action group."
 msgstr "Eylem kümesi için bir ad."
 
-#: ctk/ctkactiongroup.c:215
+#: ctk/ctkactiongroup.c:209
 msgid "Whether the action group is enabled."
 msgstr "Eylem kümesinin etkin olup olmaması."
 
-#: ctk/ctkactiongroup.c:229
+#: ctk/ctkactiongroup.c:221
 msgid "Whether the action group is visible."
 msgstr "Eylem kümesinin görünür olup olmaması."
 
-#: ctk/ctkactiongroup.c:242
+#: ctk/ctkactiongroup.c:232
 msgid "Accelerator Group"
 msgstr "Hızlandırıcı Küme"
 
-#: ctk/ctkactiongroup.c:243
+#: ctk/ctkactiongroup.c:233
 msgid "The accelerator group the actions of this group should use."
 msgstr "Hızlandırıcı küme bu kümenin eylemlerini kullanmalı."
 
-#: ctk/ctkactivatable.c:290
+#: ctk/ctkactivatable.c:286
 msgid "Related Action"
 msgstr "İlgili Eylem"
 
-#: ctk/ctkactivatable.c:291
+#: ctk/ctkactivatable.c:287
 msgid "The action this activatable will activate and receive updates from"
 msgstr ""
 "Etkinleştirilebilir eylem etkinleştirilecek ve güncellemeler buradan alınacak"
 
-#: ctk/ctkactivatable.c:315
+#: ctk/ctkactivatable.c:309
 msgid "Use Action Appearance"
 msgstr "Eylem Görünümünü Kullan"
 
-#: ctk/ctkactivatable.c:316
+#: ctk/ctkactivatable.c:310
 msgid "Whether to use the related actions appearance properties"
 msgstr "İlişkili eylem görünüm özelliklerini kullanıp kullanmaması"
 
@@ -665,30 +662,6 @@ msgstr ""
 "Tutaç kutusunun altını ekli ya da ayrılmış olup olmadıgını belirten "
 "mantıksal değer."
 
-#: ctk/ctkimagemenuitem.c:226 ctk/ctkbutton.c:360
-msgid "Image widget"
-msgstr "Resim parçası"
-
-#: ctk/ctkimagemenuitem.c:227
-msgid "Child widget to appear next to the menu text"
-msgstr "Menü metninden sonra görünecek alt parçası"
-
-#: ctk/ctkimagemenuitem.c:243 ctk/ctkbutton.c:300
-msgid "Use stock"
-msgstr "Depo kullan"
-
-#: ctk/ctkimagemenuitem.c:244
-msgid "Whether to use the label text to create a stock menu item"
-msgstr "Bir depo menü ögesi oluşturmak için etiket metni kullanılması"
-
-#: ctk/ctkimagemenuitem.c:281 ctk/ctkmenu.c:655
-msgid "Accel Group"
-msgstr "Hızlandırıcı Kümesi"
-
-#: ctk/ctkimagemenuitem.c:282
-msgid "The Accel Group to use for stock accelerator keys"
-msgstr "Depo hızlandırıcı tuşları için kullanılacak Hızlandırıcı Kümesi"
-
 #: ctk/deprecated/ctkmisc.c:114 ctk/ctkentry.c:968 ctk/ctklabel.c:851
 msgid "X align"
 msgstr "X hizası"
@@ -726,201 +699,45 @@ msgid ""
 "The amount of space to add on the top and bottom of the widget, in pixels"
 msgstr "Parçanın üstüne ve altına eklenecek alanın piksel türünden değeri"
 
-#: ctk/deprecated/ctknumerableicon.c:642
+#: ctk/deprecated/ctknumerableicon.c:643
 msgid "Icon's count"
 msgstr "Simge sayısı"
 
-#: ctk/deprecated/ctknumerableicon.c:643
+#: ctk/deprecated/ctknumerableicon.c:644
 msgid "The count of the emblem currently displayed"
 msgstr "Şu anda gösterilen amblem sayısı"
 
-#: ctk/deprecated/ctknumerableicon.c:649
+#: ctk/deprecated/ctknumerableicon.c:650
 msgid "Icon's label"
 msgstr "Simge etiketi"
 
-#: ctk/deprecated/ctknumerableicon.c:650
+#: ctk/deprecated/ctknumerableicon.c:651
 msgid "The label to be displayed over the icon"
 msgstr "Simge üzerinde gösterilecek etiket"
 
-#: ctk/deprecated/ctknumerableicon.c:656
+#: ctk/deprecated/ctknumerableicon.c:657
 msgid "Icon's style context"
 msgstr "Simgenin biçem içeriği"
 
-#: ctk/deprecated/ctknumerableicon.c:657
+#: ctk/deprecated/ctknumerableicon.c:658
 msgid "The style context to theme the icon appearance"
 msgstr "Simge görünüm teması için biçem içeriği"
 
-#: ctk/deprecated/ctknumerableicon.c:663
+#: ctk/deprecated/ctknumerableicon.c:664
 msgid "Background icon"
 msgstr "Arkaplan simgesi"
 
-#: ctk/deprecated/ctknumerableicon.c:664
+#: ctk/deprecated/ctknumerableicon.c:665
 msgid "The icon for the number emblem background"
 msgstr "Arkaplan numara amblemi için simge"
 
-#: ctk/deprecated/ctknumerableicon.c:670
+#: ctk/deprecated/ctknumerableicon.c:671
 msgid "Background icon name"
 msgstr "Arkaplan simge adı"
 
-#: ctk/deprecated/ctknumerableicon.c:671
+#: ctk/deprecated/ctknumerableicon.c:672
 msgid "The icon name for the number emblem background"
 msgstr "Arkaplan numara amblemi için simge adı"
-
-#: ctk/ctkradioaction.c:120
-msgid "The value"
-msgstr "Değer"
-
-#: ctk/ctkradioaction.c:121
-msgid ""
-"The value returned by ctk_radio_action_get_current_value() when this action "
-"is the current action of its group."
-msgstr ""
-"Bu eylem kümesinin geçerli eylemiyken ctk_radio_action_get_current_value() "
-"tarafından dönen değer."
-
-#: ctk/ctkradioaction.c:139 ctk/ctkradiobutton.c:184
-#: ctk/ctkradiomenuitem.c:424 ctk/ctkradiotoolbutton.c:83
-msgid "Group"
-msgstr "Küme"
-
-#: ctk/ctkradioaction.c:140
-msgid "The radio action whose group this action belongs to."
-msgstr "Bu eylemin ait olduğu kümenin radyo eylemi."
-
-#: ctk/ctkradioaction.c:157
-msgid "The current value"
-msgstr "Geçerli değer"
-
-#: ctk/ctkradioaction.c:158
-msgid ""
-"The value property of the currently active member of the group to which this "
-"action belongs."
-msgstr "Bu eylemin ait olduğu kümenin geçerli etkin ögesinin değer özelliği."
-
-#: ctk/ctkrecentaction.c:674 ctk/ctkrecentchoosermenu.c:239
-msgid "Show Numbers"
-msgstr "Numaralarını Göster"
-
-#: ctk/ctkrecentaction.c:675 ctk/ctkrecentchoosermenu.c:240
-msgid "Whether the items should be displayed with a number"
-msgstr "ögelerin numaraları ile birlikte gösterilmesi"
-
-#: ctk/ctkstatusicon.c:234 ctk/ctkimage.c:256
-msgid "Pixbuf"
-msgstr "Pixbuf"
-
-#: ctk/ctkstatusicon.c:235 ctk/ctkimage.c:257
-msgid "A GdkPixbuf to display"
-msgstr "Gösterilecek GdkPixbuf"
-
-#: ctk/ctkstatusicon.c:242 ctk/ctkimage.c:270
-#: ctk/ctkrecentmanager.c:289
-msgid "Filename"
-msgstr "Dosya adı"
-
-#: ctk/ctkstatusicon.c:243 ctk/ctkimage.c:271
-msgid "Filename to load and display"
-msgstr "Yüklenecek ve gösterilecek dosya"
-
-#: ctk/ctkstatusicon.c:255 ctk/ctkcellrendererpixbuf.c:195
-#: ctk/ctkimage.c:282
-msgid "Stock ID"
-msgstr "Depo Kimliği"
-
-#: ctk/ctkstatusicon.c:256 ctk/ctkimage.c:283
-msgid "Stock ID for a stock image to display"
-msgstr "Gösterilecek bir depo resmi için depo kimliği"
-
-#: ctk/ctkstatusicon.c:287 ctk/ctkimage.c:380
-msgid "Storage type"
-msgstr "Saklama türü"
-
-#: ctk/ctkstatusicon.c:288 ctk/ctkimage.c:381
-msgid "The representation being used for image data"
-msgstr "Resim verisi için kullanılan sunum"
-
-#: ctk/ctkstatusicon.c:296 ctk/ctkcellrendererpixbuf.c:210
-#: ctk/ctkcellrendererspinner.c:159 ctk/ctkrecentmanager.c:304
-msgid "Size"
-msgstr "Boyut"
-
-#: ctk/ctkstatusicon.c:297
-msgid "The size of the icon"
-msgstr "Simgenin boyutu"
-
-#: ctk/ctkstatusicon.c:306 ctk/ctkinvisible.c:98
-#: ctk/ctkmountoperation.c:183 ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:897
-msgid "Screen"
-msgstr "Ekran"
-
-#: ctk/ctkstatusicon.c:307
-msgid "The screen where this status icon will be displayed"
-msgstr "Durum simgesinin gösterileceği ekran"
-
-#: ctk/ctkstatusicon.c:315
-msgid "Whether the status icon is visible"
-msgstr "Durum simgesinin görünür olup olmaması"
-
-#: ctk/ctkstatusicon.c:330 ctk/ctkplug.c:196
-msgid "Embedded"
-msgstr "Gömülü"
-
-#: ctk/ctkstatusicon.c:331
-msgid "Whether the status icon is embedded"
-msgstr "Durum simgesinin gömülü olup olmaması"
-
-#: ctk/ctkstatusicon.c:346 ctk/ctktrayicon-x11.c:127
-#: ctk/ctkgesturepan.c:238 ctk/ctkorientable.c:61
-msgid "Orientation"
-msgstr "Yön"
-
-#: ctk/ctkstatusicon.c:347 ctk/ctktrayicon-x11.c:128
-msgid "The orientation of the tray"
-msgstr "Tepsinin yönü"
-
-#: ctk/ctkstatusicon.c:374 ctk/ctkwidget.c:1285
-msgid "Has tooltip"
-msgstr "Balonu Var"
-
-#: ctk/ctkstatusicon.c:375
-msgid "Whether this tray icon has a tooltip"
-msgstr "Bu uyarı alanı simgesinin bir balona sahip olması"
-
-#: ctk/ctkstatusicon.c:401 ctk/ctkwidget.c:1309
-msgid "Tooltip Text"
-msgstr "Balon Metni"
-
-#: ctk/ctkstatusicon.c:402 ctk/ctkwidget.c:1310 ctk/ctkwidget.c:1334
-msgid "The contents of the tooltip for this widget"
-msgstr "Bu parça için balon içeriği"
-
-#: ctk/ctkstatusicon.c:425 ctk/ctkwidget.c:1333
-msgid "Tooltip markup"
-msgstr "Balon biçimidüzeltmes"
-
-#: ctk/ctkstatusicon.c:426
-msgid "The contents of the tooltip for this tray icon"
-msgstr "Bu uyarı alanı simgesi için balonun içeriği"
-
-#: ctk/ctkstatusicon.c:443 ctk/ctkcolorbutton.c:183
-#: ctk/ctkfilechooserbutton.c:443 ctk/ctkfontbutton.c:490
-#: ctk/ctkheaderbar.c:2027 ctk/ctkprintjob.c:133 ctk/ctkshortcutsgroup.c:308
-#: ctk/ctkshortcutssection.c:376 ctk/ctkshortcutsshortcut.c:575
-#: ctk/ctkstack.c:523 ctk/ctktreeviewcolumn.c:316
-msgid "Title"
-msgstr "Başlık"
-
-#: ctk/ctkstatusicon.c:444
-msgid "The title of this tray icon"
-msgstr "Simgenin başlığı"
-
-#: ctk/ctkstyle.c:471
-msgid "Style context"
-msgstr "Biçem içeriği"
-
-#: ctk/ctkstyle.c:472
-msgid "CtkStyleContext to get style from"
-msgstr "Biçem içeriği almak için CtkStyleContext"
 
 #: ctk/deprecated/ctktable.c:185
 msgid "Rows"
@@ -1038,90 +855,6 @@ msgstr ""
 #: ctk/deprecated/ctkthemingengine.c:248
 msgid "Theming engine name"
 msgstr "Tema motoru adı"
-
-#: ctk/ctktoggleaction.c:118
-msgid "Create the same proxies as a radio action"
-msgstr "Aynı vekilleri radyo eylemi olarak oluştur"
-
-#: ctk/ctktoggleaction.c:119
-msgid "Whether the proxies for this action look like radio action proxies"
-msgstr "Bu eylem için olan vekillerin radyo eylem vekili gibi görünmesi"
-
-#: ctk/ctktoggleaction.c:135 ctk/ctkcellrendererspinner.c:125
-#: ctk/ctkcheckmenuitem.c:209 ctk/ctkmenu.c:640 ctk/ctkmodelbutton.c:1211
-#: ctk/ctkmodelbutton.c:1212 ctk/ctkspinner.c:221 ctk/ctkswitch.c:878
-#: ctk/ctktogglebutton.c:188 ctk/ctktoggletoolbutton.c:130
-msgid "Active"
-msgstr "Etkin"
-
-#: ctk/ctktoggleaction.c:136
-msgid "Whether the toggle action should be active"
-msgstr "İki durumlu düğme eyleminin etkin olma gerekliliği"
-
-#: ctk/ctktrayicon-x11.c:136 ctk/ctkcellrenderertext.c:334
-#: ctk/ctktexttag.c:277
-msgid "Foreground color"
-msgstr "Önplan rengi"
-
-#: ctk/ctktrayicon-x11.c:137
-msgid "Foreground color for symbolic icons"
-msgstr "Sembolik simgeler için ön alan rengi"
-
-#: ctk/ctktrayicon-x11.c:144
-msgid "Error color"
-msgstr "Hata rengi"
-
-#: ctk/ctktrayicon-x11.c:145
-msgid "Error color for symbolic icons"
-msgstr "Sembolik simgeler için hata rengi"
-
-#: ctk/ctktrayicon-x11.c:152
-msgid "Warning color"
-msgstr "Uyarı rengi"
-
-#: ctk/ctktrayicon-x11.c:153
-msgid "Warning color for symbolic icons"
-msgstr "Sembolik simgeler için uyarı rengi"
-
-#: ctk/ctktrayicon-x11.c:160
-msgid "Success color"
-msgstr "Başarı rengi"
-
-#: ctk/ctktrayicon-x11.c:161
-msgid "Success color for symbolic icons"
-msgstr "Sembolik simgeler için başarı rengi"
-
-#: ctk/ctktrayicon-x11.c:168 ctk/ctkbox.c:350
-msgid "Padding"
-msgstr "Doldurma"
-
-#: ctk/ctktrayicon-x11.c:169
-msgid "Padding that should be put around icons in the tray"
-msgstr "Çubuktaki simge çevresine koyulması gereken doldurma"
-
-#: ctk/ctktrayicon-x11.c:178 ctk/ctkstackswitcher.c:686
-msgid "Icon Size"
-msgstr "Simge Boyutu"
-
-#: ctk/ctktrayicon-x11.c:179
-msgid "The pixel size that icons should be forced to, or zero"
-msgstr "Simgenin olması gereken piksel boyutu ya da sıfır"
-
-#: ctk/ctkuimanager.c:463 ctk/ctkcombobox.c:1010
-msgid "Add tearoffs to menus"
-msgstr "Menülere ayraçları ekle"
-
-#: ctk/ctkuimanager.c:464
-msgid "Whether tearoff menu items should be added to menus"
-msgstr "Menülere ayrılmış menü ögelerinin eklenmesi"
-
-#: ctk/ctkuimanager.c:471
-msgid "Merged UI definition"
-msgstr "Birleşik arayüz tanımı"
-
-#: ctk/ctkuimanager.c:472
-msgid "An XML string describing the merged UI"
-msgstr "Birleşik arayüzün XML dizgesi tanımı"
 
 #: ctk/ctkaboutdialog.c:349
 msgid "Program name"
@@ -1723,6 +1456,10 @@ msgid ""
 msgstr ""
 "Verilen ek boşlukların altlara ayrılması veya doldurulmada kullanılması"
 
+#: ctk/ctkbox.c:350 ctk/ctktrayicon-x11.c:168
+msgid "Padding"
+msgstr "Doldurma"
+
 #: ctk/ctkbox.c:351
 msgid "Extra space to put between the child and its neighbors, in pixels"
 msgstr "Altların, diğerleri ile arasında olacak boşluk, piksel değerinde"
@@ -1743,7 +1480,7 @@ msgstr ""
 "Eğer düğme bir etiket parçası içeriyorsa düğmedeki etiket parçasının metni"
 
 #: ctk/ctkbutton.c:288 ctk/ctkexpander.c:316 ctk/ctklabel.c:826
-#: ctk/ctkmenuitem.c:803 ctk/ctktoolbutton.c:250
+#: ctk/ctkmenuitem.c:803 ctk/ctktoolbutton.c:211
 msgid "Use underline"
 msgstr "Altçizgi kullan"
 
@@ -1755,6 +1492,10 @@ msgid ""
 msgstr ""
 "Eğer seçiliyse, altçizgiden sonra gelen karakter hafızada kalıcı "
 "hızlandırıcı tuş olarak kullanılacak"
+
+#: ctk/ctkbutton.c:300 ctk/ctkimagemenuitem.c:236
+msgid "Use stock"
+msgstr "Depo kullan"
 
 #: ctk/ctkbutton.c:301
 msgid ""
@@ -1778,6 +1519,10 @@ msgstr "Alt için yatay hizalama"
 #: ctk/ctkbutton.c:346
 msgid "Vertical alignment for child"
 msgstr "Alt için düşey hizalama"
+
+#: ctk/ctkbutton.c:360 ctk/ctkimagemenuitem.c:221
+msgid "Image widget"
+msgstr "Resim parçası"
 
 #: ctk/ctkbutton.c:361
 msgid "Child widget to appear next to the button text"
@@ -2272,9 +2017,18 @@ msgstr "yüzey"
 msgid "The surface to render"
 msgstr "İşlenecek yüzey"
 
+#: ctk/ctkcellrendererpixbuf.c:195 ctk/ctkimage.c:280 ctk/ctkstatusicon.c:245
+msgid "Stock ID"
+msgstr "Depo Kimliği"
+
 #: ctk/ctkcellrendererpixbuf.c:196
 msgid "The stock ID of the stock icon to render"
 msgstr "Taranacak depo simgesinin depo numarası"
+
+#: ctk/ctkcellrendererpixbuf.c:210 ctk/ctkcellrendererspinner.c:159
+#: ctk/ctkrecentmanager.c:303 ctk/ctkstatusicon.c:286
+msgid "Size"
+msgstr "Boyut"
 
 #: ctk/ctkcellrendererpixbuf.c:211
 msgid "The CtkIconSize value that specifies the size of the rendered icon"
@@ -2296,7 +2050,7 @@ msgstr "Takip Durumu"
 msgid "Whether the rendered pixbuf should be colorized according to the state"
 msgstr "Taranmış pixbuf'ın durumuna uygun olarak renklendirilmesi"
 
-#: ctk/ctkcellrendererpixbuf.c:281 ctk/ctkimage.c:359 ctk/ctkmodelbutton.c:1166
+#: ctk/ctkcellrendererpixbuf.c:281 ctk/ctkimage.c:357 ctk/ctkmodelbutton.c:1166
 #: ctk/ctkshortcutsshortcut.c:550 ctk/ctkwindow.c:841
 msgid "Icon"
 msgstr "Simge"
@@ -2380,6 +2134,13 @@ msgstr "Basamaklar"
 msgid "The number of decimal places to display"
 msgstr "Gösterilecek ondalık basamakların sayısı"
 
+#: ctk/ctkcellrendererspinner.c:125 ctk/ctkcheckmenuitem.c:209
+#: ctk/ctkmenu.c:640 ctk/ctkmodelbutton.c:1211 ctk/ctkmodelbutton.c:1212
+#: ctk/ctkspinner.c:221 ctk/ctkswitch.c:878 ctk/ctktoggleaction.c:129
+#: ctk/ctktogglebutton.c:188 ctk/ctktoggletoolbutton.c:130
+msgid "Active"
+msgstr "Etkin"
+
 #: ctk/ctkcellrendererspinner.c:126
 msgid "Whether the spinner is active (ie. shown) in the cell"
 msgstr "Hücre içinde (gösterilmiştir) değer değiştiricinin etkin olup olmaması"
@@ -2451,6 +2212,10 @@ msgstr "Önplan renk adı"
 #: ctk/ctkcellrenderertext.c:320 ctk/ctktexttag.c:263
 msgid "Foreground color as a string"
 msgstr "Bir dizge olarak önplan rengi"
+
+#: ctk/ctkcellrenderertext.c:334 ctk/ctktexttag.c:277 ctk/ctktrayicon-x11.c:136
+msgid "Foreground color"
+msgstr "Önplan rengi"
 
 #: ctk/ctkcellrenderertext.c:335 ctk/ctktexttag.c:278
 msgid "Foreground color as a CdkColor"
@@ -2862,7 +2627,7 @@ msgstr "Modeldeki her satır için yeterli alan istenmesi"
 msgid "Indicator Size"
 msgstr "Belirteç Boyutu"
 
-#: ctk/ctkcheckbutton.c:249 ctk/ctkexpander.c:406
+#: ctk/ctkcheckbutton.c:249 ctk/ctkexpander.c:413
 msgid "Indicator Spacing"
 msgstr "Belirteç Aralığı"
 
@@ -2897,6 +2662,14 @@ msgstr "Alfa kullan"
 #: ctk/ctkcolorbutton.c:169
 msgid "Whether to give the color an alpha value"
 msgstr "Renge alfa değeri vermek istenmesi"
+
+#: ctk/ctkcolorbutton.c:183 ctk/ctkfilechooserbutton.c:443
+#: ctk/ctkfontbutton.c:490 ctk/ctkheaderbar.c:2027 ctk/ctkprintjob.c:133
+#: ctk/ctkshortcutsgroup.c:308 ctk/ctkshortcutssection.c:376
+#: ctk/ctkshortcutsshortcut.c:575 ctk/ctkstack.c:523 ctk/ctkstatusicon.c:433
+#: ctk/ctktreeviewcolumn.c:316
+msgid "Title"
+msgstr "Başlık"
 
 #: ctk/ctkcolorbutton.c:184
 msgid "The title of the color selection dialog"
@@ -2938,7 +2711,7 @@ msgstr "Bir CdkRGBA olarak şu anki renk"
 msgid "Whether alpha should be shown"
 msgstr "Alfanın gösterilmesinin gerekip gerekmemesi"
 
-#: ctk/ctkcolorchooserdialog.c:213 ctk/ctkcolorchooserwidget.c:704
+#: ctk/ctkcolorchooserdialog.c:213 ctk/ctkcolorchooserwidget.c:695
 msgid "Show editor"
 msgstr "Düzenleyiciyi göster"
 
@@ -3005,6 +2778,10 @@ msgstr "Etkin öge"
 #: ctk/ctkcombobox.c:989
 msgid "The item which is currently active"
 msgstr "Şu an etkin olan öge"
+
+#: ctk/ctkcombobox.c:1010 ctk/ctkuimanager.c:452
+msgid "Add tearoffs to menus"
+msgstr "Menülere ayraçları ekle"
 
 #: ctk/ctkcombobox.c:1011
 msgid "Whether dropdowns should have a tearoff menu item"
@@ -3792,7 +3569,7 @@ msgstr "XML biçimleme içeren etiket metni. Bakın: pango_parse_markup() "
 msgid "Space to put between the label and the child"
 msgstr "Alt ve etiket arasında bırakılacak boşluk"
 
-#: ctk/ctkexpander.c:351 ctk/ctkframe.c:262 ctk/ctktoolbutton.c:257
+#: ctk/ctkexpander.c:351 ctk/ctkframe.c:262 ctk/ctktoolbutton.c:218
 #: ctk/ctktoolitemgroup.c:1646
 msgid "Label widget"
 msgstr "Etiket parçası"
@@ -3801,21 +3578,21 @@ msgstr "Etiket parçası"
 msgid "A widget to display in place of the usual expander label"
 msgstr "Genişletici etiketinin yerinde gösterilecek parça"
 
-#: ctk/ctkexpander.c:359
+#: ctk/ctkexpander.c:366
 msgid "Label fill"
 msgstr "Etiket doldurma"
 
-#: ctk/ctkexpander.c:360
+#: ctk/ctkexpander.c:367
 msgid "Whether the label widget should fill all available horizontal space"
 msgstr ""
 "Etiket parçacığının tüm kullanılabilir yatay boşlukları doldurmasının "
 "gerekip gerekmemesi"
 
-#: ctk/ctkexpander.c:375
+#: ctk/ctkexpander.c:382
 msgid "Resize toplevel"
 msgstr "Üst düzeyi yeniden boyutlandır"
 
-#: ctk/ctkexpander.c:376
+#: ctk/ctkexpander.c:383
 msgid ""
 "Whether the expander will resize the toplevel window upon expanding and "
 "collapsing"
@@ -3823,15 +3600,15 @@ msgstr ""
 "Genişleticinin üst düzey pencereyi genişletme ve çökme üzerine yeniden "
 "boyutlandırıp boyutlandırmayacağı"
 
-#: ctk/ctkexpander.c:389 ctk/ctktoolitemgroup.c:1674 ctk/ctktreeview.c:1234
+#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1674 ctk/ctktreeview.c:1234
 msgid "Expander Size"
 msgstr "Genişletici Boyutu"
 
-#: ctk/ctkexpander.c:390 ctk/ctktoolitemgroup.c:1675 ctk/ctktreeview.c:1235
+#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1675 ctk/ctktreeview.c:1235
 msgid "Size of the expander arrow"
 msgstr "Genişletici okunun boyutu"
 
-#: ctk/ctkexpander.c:407
+#: ctk/ctkexpander.c:414
 msgid "Spacing around expander arrow"
 msgstr "Genişletici okunun çevresindeki boşluk"
 
@@ -3868,7 +3645,7 @@ msgid "The current filter for selecting which files are displayed"
 msgstr "Hangi dosyaların gösterileceğini seçmek için kullanılan filtre"
 
 #: ctk/ctkfilechooser.c:388 ctk/ctkplacessidebar.c:4836
-#: ctk/ctkplacesview.c:2322
+#: ctk/ctkplacesview.c:2348
 msgid "Local Only"
 msgstr "Yalnızca Yerel"
 
@@ -4120,11 +3897,11 @@ msgstr "Dizge olarak yazı tipi özellikleri"
 msgid "Language for which features have been selected"
 msgstr "Seçilen özellikler için dil"
 
-#: ctk/ctkfontchooserwidget.c:697
+#: ctk/ctkfontchooserwidget.c:691
 msgid "The tweak action"
 msgstr "İnce ayar eylemi"
 
-#: ctk/ctkfontchooserwidget.c:698
+#: ctk/ctkfontchooserwidget.c:692
 msgid "The toggle action to switch to the tweak page"
 msgstr "İnce ayar sayfasını değiştirmek için eylem"
 
@@ -4179,6 +3956,11 @@ msgstr "Gecikme katsayısı"
 #: ctk/ctkgesturelongpress.c:286
 msgid "Factor by which to modify the default timeout"
 msgstr "Öntanımlı zamanaşımının değiştirilme katsayısı"
+
+#: ctk/ctkgesturepan.c:238 ctk/ctkorientable.c:61 ctk/ctkstatusicon.c:336
+#: ctk/ctktrayicon-x11.c:127
+msgid "Orientation"
+msgstr "Yön"
 
 #: ctk/ctkgesturepan.c:239
 msgid "Allowed orientations"
@@ -4468,6 +4250,14 @@ msgstr "Seçim Kutusu Alfası"
 msgid "Opacity of the selection box"
 msgstr "Seçim kutusunun matlığı"
 
+#: ctk/ctkimage.c:256 ctk/ctkstatusicon.c:226
+msgid "Pixbuf"
+msgstr "Pixbuf"
+
+#: ctk/ctkimage.c:257 ctk/ctkstatusicon.c:227
+msgid "A GdkPixbuf to display"
+msgstr "Gösterilecek GdkPixbuf"
+
 #: ctk/ctkimage.c:263
 msgid "Surface"
 msgstr "Yüzey"
@@ -4476,56 +4266,92 @@ msgstr "Yüzey"
 msgid "A cairo_surface_t to display"
 msgstr "Gösterilecek cairo_surface_t"
 
-#: ctk/ctkimage.c:295
+#: ctk/ctkimage.c:270 ctk/ctkrecentmanager.c:288 ctk/ctkstatusicon.c:234
+msgid "Filename"
+msgstr "Dosya adı"
+
+#: ctk/ctkimage.c:271 ctk/ctkstatusicon.c:235
+msgid "Filename to load and display"
+msgstr "Yüklenecek ve gösterilecek dosya"
+
+#: ctk/ctkimage.c:281 ctk/ctkstatusicon.c:246
+msgid "Stock ID for a stock image to display"
+msgstr "Gösterilecek bir depo resmi için depo kimliği"
+
+#: ctk/ctkimage.c:293
 msgid "Icon set"
 msgstr "Simge kümesi"
 
-#: ctk/ctkimage.c:296
+#: ctk/ctkimage.c:294
 msgid "Icon set to display"
 msgstr "Gösterilecek simge kümesi"
 
-#: ctk/ctkimage.c:303 ctk/ctkscalebutton.c:208 ctk/ctktoolbar.c:564
+#: ctk/ctkimage.c:301 ctk/ctkscalebutton.c:208 ctk/ctktoolbar.c:564
 #: ctk/ctktoolpalette.c:965
 msgid "Icon size"
 msgstr "Simge boyutu"
 
-#: ctk/ctkimage.c:304
+#: ctk/ctkimage.c:302
 msgid "Symbolic size to use for stock icon, icon set or named icon"
 msgstr ""
 "Depo simgesi, simge kümesi ya da adlandırılmış simge için kullanılacak "
 "sembolik boyut"
 
-#: ctk/ctkimage.c:320
+#: ctk/ctkimage.c:318
 msgid "Pixel size"
 msgstr "Piksel boyutu"
 
-#: ctk/ctkimage.c:321
+#: ctk/ctkimage.c:319
 msgid "Pixel size to use for named icon"
 msgstr "Adlandırılmış simge için kullanılacak piksel boyutu"
 
-#: ctk/ctkimage.c:328
+#: ctk/ctkimage.c:326
 msgid "Animation"
 msgstr "Canlandırma"
 
-#: ctk/ctkimage.c:329
+#: ctk/ctkimage.c:327
 msgid "GdkPixbufAnimation to display"
 msgstr "Gösterilecek GdkPixbufAnimation"
 
-#: ctk/ctkimage.c:373
+#: ctk/ctkimage.c:371
 msgid "Resource"
 msgstr "Kaynak"
 
-#: ctk/ctkimage.c:374
+#: ctk/ctkimage.c:372
 msgid "The resource path being displayed"
 msgstr "Kaynak yolu gösteriliyor"
 
-#: ctk/ctkimage.c:398
+#: ctk/ctkimage.c:378 ctk/ctkstatusicon.c:277
+msgid "Storage type"
+msgstr "Saklama türü"
+
+#: ctk/ctkimage.c:379 ctk/ctkstatusicon.c:278
+msgid "The representation being used for image data"
+msgstr "Resim verisi için kullanılan sunum"
+
+#: ctk/ctkimage.c:396
 msgid "Use Fallback"
 msgstr "Yedek Kullan"
 
-#: ctk/ctkimage.c:399
+#: ctk/ctkimage.c:397
 msgid "Whether to use icon names fallback"
 msgstr "Yedek simge adları kullanılıp kullanılmaması"
+
+#: ctk/ctkimagemenuitem.c:222
+msgid "Child widget to appear next to the menu text"
+msgstr "Menü metninden sonra görünecek alt parçası"
+
+#: ctk/ctkimagemenuitem.c:237
+msgid "Whether to use the label text to create a stock menu item"
+msgstr "Bir depo menü ögesi oluşturmak için etiket metni kullanılması"
+
+#: ctk/ctkimagemenuitem.c:269 ctk/ctkmenu.c:655
+msgid "Accel Group"
+msgstr "Hızlandırıcı Kümesi"
+
+#: ctk/ctkimagemenuitem.c:270
+msgid "The Accel Group to use for stock accelerator keys"
+msgstr "Depo hızlandırıcı tuşları için kullanılacak Hızlandırıcı Kümesi"
 
 #: ctk/ctkinfobar.c:450 ctk/ctkmessagedialog.c:189
 msgid "Message Type"
@@ -4562,6 +4388,11 @@ msgstr "Alanın ögeleri arasındaki boşluk"
 #: ctk/ctkinfobar.c:583
 msgid "Width of border around the action area"
 msgstr "Eylem alanı çevresindeki kenarlığın genişliği"
+
+#: ctk/ctkinvisible.c:98 ctk/ctkmountoperation.c:183 ctk/ctkstatusicon.c:296
+#: ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:897
+msgid "Screen"
+msgstr "Ekran"
 
 #: ctk/ctkinvisible.c:99 ctk/ctkwindow.c:898
 msgid "The screen where this window will be displayed"
@@ -5485,19 +5316,19 @@ msgstr "Etkin sekme altındaki aralık ile çizilir"
 msgid "The orientation of the orientable"
 msgstr "Yönelebilirin yönelimi"
 
-#: ctk/ctkoverlay.c:783
+#: ctk/ctkoverlay.c:790
 msgid "Pass Through"
 msgstr "İçinden Geçen"
 
-#: ctk/ctkoverlay.c:783
+#: ctk/ctkoverlay.c:790
 msgid "Pass through input, does not affect main child"
 msgstr "Girdinin içinden geç, ana çocuğu etkilemez"
 
-#: ctk/ctkoverlay.c:797
+#: ctk/ctkoverlay.c:804
 msgid "Index"
 msgstr "Dizin"
 
-#: ctk/ctkoverlay.c:798
+#: ctk/ctkoverlay.c:805
 msgid "The index of the overlay in the parent, -1 for the main child"
 msgstr "Ebeveyndeki bindirmenin indisi, ana çocuk için -1"
 
@@ -5586,11 +5417,11 @@ msgstr "Seçim Konumu"
 msgid "The location to highlight in the sidebar"
 msgstr "Konumu kenar çubuğunda vurgulamak için"
 
-#: ctk/ctkplacessidebar.c:4805 ctk/ctkplacesview.c:2343
+#: ctk/ctkplacessidebar.c:4805 ctk/ctkplacesview.c:2369
 msgid "Open Flags"
 msgstr "Bayrakları Aç"
 
-#: ctk/ctkplacessidebar.c:4806 ctk/ctkplacesview.c:2344
+#: ctk/ctkplacessidebar.c:4806 ctk/ctkplacesview.c:2370
 msgid ""
 "Modes in which the calling application can open locations selected in the "
 "sidebar"
@@ -5639,7 +5470,7 @@ msgid ""
 msgstr ""
 "Kenar çubuğunun, elle konum girin için yerleşik bir kısayol içerip içermemesi"
 
-#: ctk/ctkplacessidebar.c:4837 ctk/ctkplacesview.c:2323
+#: ctk/ctkplacessidebar.c:4837 ctk/ctkplacesview.c:2349
 msgid "Whether the sidebar only includes local files"
 msgstr "Kenar çubuğunun yalnızca yerel dosyalar içerip içermemesi"
 
@@ -5673,19 +5504,19 @@ msgid "Whether to emit ::populate-popup for popups that are not menus"
 msgstr ""
 "Menü olmayan açılır pencereler için ::populate-popup'ın yayılıp yayılmayacağı"
 
-#: ctk/ctkplacesview.c:2329
+#: ctk/ctkplacesview.c:2355
 msgid "Loading"
 msgstr "Yükleniyor"
 
-#: ctk/ctkplacesview.c:2330
+#: ctk/ctkplacesview.c:2356
 msgid "Whether the view is loading locations"
 msgstr "Görünümün konumları yükleyip yüklemediği"
 
-#: ctk/ctkplacesview.c:2336
+#: ctk/ctkplacesview.c:2362
 msgid "Fetching networks"
 msgstr "Ağlar getiriliyor"
 
-#: ctk/ctkplacesview.c:2337
+#: ctk/ctkplacesview.c:2363
 msgid "Whether the view is fetching networks"
 msgstr "Görünümün ağları getirip getirmediği"
 
@@ -5741,15 +5572,19 @@ msgstr "Eğer varsa satır tarafından temsil edilen dosya"
 msgid "Whether the row represents a network location"
 msgstr "Satırın bir ağ konumunu temsil edip etmediği"
 
-#: ctk/ctkplug.c:197
+#: ctk/ctkplug.c:198 ctk/ctkstatusicon.c:320
+msgid "Embedded"
+msgstr "Gömülü"
+
+#: ctk/ctkplug.c:199
 msgid "Whether the plug is embedded"
 msgstr "Fişin gömülü olup olmadığı"
 
-#: ctk/ctkplug.c:211
+#: ctk/ctkplug.c:213
 msgid "Socket Window"
 msgstr "Soket Penceresi"
 
-#: ctk/ctkplug.c:212
+#: ctk/ctkplug.c:214
 msgid "The window of the socket the plug is embedded in"
 msgstr "Fişin gömülü olduğu soketin penceresi"
 
@@ -6194,6 +6029,37 @@ msgstr "Asgari dikey çubuk yüksekliği"
 msgid "The minimum vertical height of the progress bar"
 msgstr "İlerleme çubuğunun asgari dikey çubuk yüksekliği"
 
+#: ctk/ctkradioaction.c:116
+msgid "The value"
+msgstr "Değer"
+
+#: ctk/ctkradioaction.c:117
+msgid ""
+"The value returned by ctk_radio_action_get_current_value() when this action "
+"is the current action of its group."
+msgstr ""
+"Bu eylem kümesinin geçerli eylemiyken ctk_radio_action_get_current_value() "
+"tarafından dönen değer."
+
+#: ctk/ctkradioaction.c:133 ctk/ctkradiobutton.c:184 ctk/ctkradiomenuitem.c:424
+#: ctk/ctkradiotoolbutton.c:83
+msgid "Group"
+msgstr "Küme"
+
+#: ctk/ctkradioaction.c:134
+msgid "The radio action whose group this action belongs to."
+msgstr "Bu eylemin ait olduğu kümenin radyo eylemi."
+
+#: ctk/ctkradioaction.c:149
+msgid "The current value"
+msgstr "Geçerli değer"
+
+#: ctk/ctkradioaction.c:150
+msgid ""
+"The value property of the currently active member of the group to which this "
+"action belongs."
+msgstr "Bu eylemin ait olduğu kümenin geçerli etkin ögesinin değer özelliği."
+
 #: ctk/ctkradiobutton.c:185
 msgid "The radio button whose group this widget belongs to."
 msgstr "Bu parçanın ait olduğu kümenin radyo düğmesi."
@@ -6336,6 +6202,14 @@ msgstr "Ok ölçeği"
 msgid "Arrow scaling with regard to scroll button size"
 msgstr "Kaydırma düğme boyutuna göre ok ölçekleme"
 
+#: ctk/ctkrecentaction.c:666 ctk/ctkrecentchoosermenu.c:239
+msgid "Show Numbers"
+msgstr "Numaralarını Göster"
+
+#: ctk/ctkrecentaction.c:667 ctk/ctkrecentchoosermenu.c:240
+msgid "Whether the items should be displayed with a number"
+msgstr "ögelerin numaraları ile birlikte gösterilmesi"
+
 #: ctk/ctkrecentchooser.c:130
 msgid "Recent Manager"
 msgstr "Son Kullanılan Yöneticisi"
@@ -6408,11 +6282,11 @@ msgstr "Gösterilen ögelerin sıralama türü"
 msgid "The current filter for selecting which resources are displayed"
 msgstr "Hangi kaynakların gösterileceğini seçmek için kullanılan filtre"
 
-#: ctk/ctkrecentmanager.c:290
+#: ctk/ctkrecentmanager.c:289
 msgid "The full path to the file to be used to store and read the list"
 msgstr "Listeyi kaydetmek ve okumak için kullanılacak dosyanın tam yolu"
 
-#: ctk/ctkrecentmanager.c:305
+#: ctk/ctkrecentmanager.c:304
 msgid "The size of the recently used resources list"
 msgstr "En son kullanılan kaynakların listesinin boyutu"
 
@@ -6577,51 +6451,51 @@ msgid ""
 "Display a second forward arrow button on the opposite end of the scrollbar"
 msgstr "Kaydırma çubuğunun karşı ucunda ikinci bir ileri ok düğmesi göster"
 
-#: ctk/ctkscrolledwindow.c:569
+#: ctk/ctkscrolledwindow.c:567
 msgid "Horizontal Adjustment"
 msgstr "Yatay Hizalama"
 
-#: ctk/ctkscrolledwindow.c:570
+#: ctk/ctkscrolledwindow.c:568
 msgid "The CtkAdjustment for the horizontal position"
 msgstr "Yatay konum için CtkAdjustment"
 
-#: ctk/ctkscrolledwindow.c:576
+#: ctk/ctkscrolledwindow.c:574
 msgid "Vertical Adjustment"
 msgstr "Düşey Hizalama"
 
-#: ctk/ctkscrolledwindow.c:577
+#: ctk/ctkscrolledwindow.c:575
 msgid "The CtkAdjustment for the vertical position"
 msgstr "Düşey konum için CtkAdjustment"
 
-#: ctk/ctkscrolledwindow.c:583
+#: ctk/ctkscrolledwindow.c:581
 msgid "Horizontal Scrollbar Policy"
 msgstr "Yatay Kaydırma Çubuğu Kuralları"
 
-#: ctk/ctkscrolledwindow.c:584
+#: ctk/ctkscrolledwindow.c:582
 msgid "When the horizontal scrollbar is displayed"
 msgstr "Yatay kaydırma çubuğu gösterildiği zaman"
 
-#: ctk/ctkscrolledwindow.c:591
+#: ctk/ctkscrolledwindow.c:589
 msgid "Vertical Scrollbar Policy"
 msgstr "Düşey Kaydırma Çubuğu Kuralları"
 
-#: ctk/ctkscrolledwindow.c:592
+#: ctk/ctkscrolledwindow.c:590
 msgid "When the vertical scrollbar is displayed"
 msgstr "Düşey kaydırma çubuğu gösterildiği zaman"
 
-#: ctk/ctkscrolledwindow.c:599
+#: ctk/ctkscrolledwindow.c:597
 msgid "Window Placement"
 msgstr "Pencere Yerleşimi"
 
-#: ctk/ctkscrolledwindow.c:600
+#: ctk/ctkscrolledwindow.c:598
 msgid "Where the contents are located with respect to the scrollbars."
 msgstr "Kaydırma çubuklarına göre içeriğin nerede konumlandırılacağı. "
 
-#: ctk/ctkscrolledwindow.c:618
+#: ctk/ctkscrolledwindow.c:616
 msgid "Window Placement Set"
 msgstr "Pencere Yerleşimi Ayarı"
 
-#: ctk/ctkscrolledwindow.c:619
+#: ctk/ctkscrolledwindow.c:617
 msgid ""
 "Whether \"window-placement\" should be used to determine the location of the "
 "contents with respect to the scrollbars."
@@ -6629,86 +6503,86 @@ msgstr ""
 "Kaydırma çubuklarına göre içeriğin nerede konumlandırılacağına karar vermek "
 "için \"window-placement\"in kullanılması."
 
-#: ctk/ctkscrolledwindow.c:625 ctk/ctkspinbutton.c:455
+#: ctk/ctkscrolledwindow.c:623 ctk/ctkspinbutton.c:455
 msgid "Shadow Type"
 msgstr "Gölge Türü"
 
-#: ctk/ctkscrolledwindow.c:626
+#: ctk/ctkscrolledwindow.c:624
 msgid "Style of bevel around the contents"
 msgstr "İçeriğin etrafındaki kenar biçemi"
 
-#: ctk/ctkscrolledwindow.c:642
+#: ctk/ctkscrolledwindow.c:640
 msgid "Scrollbars within bevel"
 msgstr "Kenar içinde kaydırma çubukları"
 
-#: ctk/ctkscrolledwindow.c:643
+#: ctk/ctkscrolledwindow.c:641
 msgid "Place scrollbars within the scrolled window's bevel"
 msgstr "Kenar çubuklarını kaydırılan pencerenin kenarının içine yerleştır"
 
-#: ctk/ctkscrolledwindow.c:649
+#: ctk/ctkscrolledwindow.c:647
 msgid "Scrollbar spacing"
 msgstr "Kaydırma çubuğu boşluğu"
 
-#: ctk/ctkscrolledwindow.c:650
+#: ctk/ctkscrolledwindow.c:648
 msgid "Number of pixels between the scrollbars and the scrolled window"
 msgstr ""
 "Kaydırma çubuğu ile kaydırılan pencere arasındaki piksel değerinden uzaklık"
 
-#: ctk/ctkscrolledwindow.c:665
+#: ctk/ctkscrolledwindow.c:663
 msgid "Minimum Content Width"
 msgstr "En küçük İçerik Genişliği"
 
-#: ctk/ctkscrolledwindow.c:666
+#: ctk/ctkscrolledwindow.c:664
 msgid "The minimum width that the scrolled window will allocate to its content"
 msgstr "Kaydırılan pencere içeriğine tahsis edilecek en küçük genişlik"
 
-#: ctk/ctkscrolledwindow.c:679
+#: ctk/ctkscrolledwindow.c:677
 msgid "Minimum Content Height"
 msgstr "En küçük İçerik Yüksekliği"
 
-#: ctk/ctkscrolledwindow.c:680
+#: ctk/ctkscrolledwindow.c:678
 msgid ""
 "The minimum height that the scrolled window will allocate to its content"
 msgstr "Kaydırılan pencere içeriğine tahsis edilecek en küçük yükseklik"
 
-#: ctk/ctkscrolledwindow.c:694
+#: ctk/ctkscrolledwindow.c:692
 msgid "Kinetic Scrolling"
 msgstr "Hareketli Kaydırma"
 
-#: ctk/ctkscrolledwindow.c:695
+#: ctk/ctkscrolledwindow.c:693
 msgid "Kinetic scrolling mode."
 msgstr "Hareketli kaydırma kipi."
 
-#: ctk/ctkscrolledwindow.c:714
+#: ctk/ctkscrolledwindow.c:712
 msgid "Overlay Scrolling"
 msgstr "Bindirme Kaydırması"
 
-#: ctk/ctkscrolledwindow.c:715
+#: ctk/ctkscrolledwindow.c:713
 msgid "Overlay scrolling mode"
 msgstr "Bindirme kaydırması kipi"
 
-#: ctk/ctkscrolledwindow.c:728
+#: ctk/ctkscrolledwindow.c:726
 msgid "Maximum Content Width"
 msgstr "En Büyük İçerik Genişliği"
 
-#: ctk/ctkscrolledwindow.c:729
+#: ctk/ctkscrolledwindow.c:727
 msgid "The maximum width that the scrolled window will allocate to its content"
 msgstr "Kaydırılan pencere içeriğine tahsis edilecek en büyük genişlik"
 
-#: ctk/ctkscrolledwindow.c:742
+#: ctk/ctkscrolledwindow.c:740
 msgid "Maximum Content Height"
 msgstr "En Büyük İçerik Yüksekliği"
 
-#: ctk/ctkscrolledwindow.c:743
+#: ctk/ctkscrolledwindow.c:741
 msgid ""
 "The maximum height that the scrolled window will allocate to its content"
 msgstr "Kaydırılan pencere içeriğine tahsis edilecek en büyük yükseklik"
 
-#: ctk/ctkscrolledwindow.c:760 ctk/ctkscrolledwindow.c:761
+#: ctk/ctkscrolledwindow.c:758 ctk/ctkscrolledwindow.c:759
 msgid "Propagate Natural Width"
 msgstr "Doğal Genişliği Yay"
 
-#: ctk/ctkscrolledwindow.c:778 ctk/ctkscrolledwindow.c:779
+#: ctk/ctkscrolledwindow.c:776 ctk/ctkscrolledwindow.c:777
 msgid "Propagate Natural Height"
 msgstr "Doğal Yüksekliği Yay"
 
@@ -7710,7 +7584,7 @@ msgstr "Alt sayfanın adı"
 msgid "The title of the child page"
 msgstr "Alt sayfaların başlığı"
 
-#: ctk/ctkstack.c:530 ctk/ctktoolbutton.c:287
+#: ctk/ctkstack.c:530 ctk/ctktoolbutton.c:248
 msgid "Icon name"
 msgstr "Simge adı"
 
@@ -7736,6 +7610,10 @@ msgstr "Yığın"
 msgid "Associated stack for this CtkStackSidebar"
 msgstr "Bu CtkStackSidebar için ilişkilendirilmiş yığın"
 
+#: ctk/ctkstackswitcher.c:686 ctk/ctktrayicon-x11.c:178
+msgid "Icon Size"
+msgstr "Simge Boyutu"
+
 #: ctk/ctkstackswitcher.c:687
 msgid "Symbolic size to use for named icon"
 msgstr "Adlandırılmış simge için kullanılacak simgesel boyut"
@@ -7743,6 +7621,62 @@ msgstr "Adlandırılmış simge için kullanılacak simgesel boyut"
 #: ctk/ctkstatusbar.c:178
 msgid "Style of bevel around the statusbar text"
 msgstr "Durum çubuğu metni etrafındaki kenar biçemi"
+
+#: ctk/ctkstatusicon.c:287
+msgid "The size of the icon"
+msgstr "Simgenin boyutu"
+
+#: ctk/ctkstatusicon.c:297
+msgid "The screen where this status icon will be displayed"
+msgstr "Durum simgesinin gösterileceği ekran"
+
+#: ctk/ctkstatusicon.c:305
+msgid "Whether the status icon is visible"
+msgstr "Durum simgesinin görünür olup olmaması"
+
+#: ctk/ctkstatusicon.c:321
+msgid "Whether the status icon is embedded"
+msgstr "Durum simgesinin gömülü olup olmaması"
+
+#: ctk/ctkstatusicon.c:337 ctk/ctktrayicon-x11.c:128
+msgid "The orientation of the tray"
+msgstr "Tepsinin yönü"
+
+#: ctk/ctkstatusicon.c:364 ctk/ctkwidget.c:1285
+msgid "Has tooltip"
+msgstr "Balonu Var"
+
+#: ctk/ctkstatusicon.c:365
+msgid "Whether this tray icon has a tooltip"
+msgstr "Bu uyarı alanı simgesinin bir balona sahip olması"
+
+#: ctk/ctkstatusicon.c:391 ctk/ctkwidget.c:1309
+msgid "Tooltip Text"
+msgstr "Balon Metni"
+
+#: ctk/ctkstatusicon.c:392 ctk/ctkwidget.c:1310 ctk/ctkwidget.c:1334
+msgid "The contents of the tooltip for this widget"
+msgstr "Bu parça için balon içeriği"
+
+#: ctk/ctkstatusicon.c:415 ctk/ctkwidget.c:1333
+msgid "Tooltip markup"
+msgstr "Balon biçimidüzeltmes"
+
+#: ctk/ctkstatusicon.c:416
+msgid "The contents of the tooltip for this tray icon"
+msgstr "Bu uyarı alanı simgesi için balonun içeriği"
+
+#: ctk/ctkstatusicon.c:434
+msgid "The title of this tray icon"
+msgstr "Simgenin başlığı"
+
+#: ctk/ctkstyle.c:466
+msgid "Style context"
+msgstr "Biçem içeriği"
+
+#: ctk/ctkstyle.c:467
+msgid "CtkStyleContext to get style from"
+msgstr "Biçem içeriği almak için CtkStyleContext"
 
 #: ctk/ctkstylecontext.c:230
 msgid "The associated CdkScreen"
@@ -8312,6 +8246,18 @@ msgstr "Hata altçizgisinin rengi"
 msgid "Color with which to draw error-indication underlines"
 msgstr "Hata belirten altçizgilerin çizileceği renk"
 
+#: ctk/ctktoggleaction.c:114
+msgid "Create the same proxies as a radio action"
+msgstr "Aynı vekilleri radyo eylemi olarak oluştur"
+
+#: ctk/ctktoggleaction.c:115
+msgid "Whether the proxies for this action look like radio action proxies"
+msgstr "Bu eylem için olan vekillerin radyo eylem vekili gibi görünmesi"
+
+#: ctk/ctktoggleaction.c:130
+msgid "Whether the toggle action should be active"
+msgstr "İki durumlu düğme eyleminin etkin olma gerekliliği"
+
 #: ctk/ctktogglebutton.c:189 ctk/ctktoggletoolbutton.c:131
 msgid "If the toggle button should be pressed in"
 msgstr "Eğer iki durumlu düğme basılı olmalıysa"
@@ -8404,11 +8350,11 @@ msgstr "Araç çubuğu düğmelerindeki kenarlık türü"
 msgid "Style of bevel around the toolbar"
 msgstr "Araç çubuğunun çerçevesinin biçemi"
 
-#: ctk/ctktoolbutton.c:244
+#: ctk/ctktoolbutton.c:205
 msgid "Text to show in the item."
 msgstr "Ögede görüntülenecek metin."
 
-#: ctk/ctktoolbutton.c:251
+#: ctk/ctktoolbutton.c:212
 msgid ""
 "If set, an underline in the label property indicates that the next character "
 "should be used for the mnemonic accelerator key in the overflow menu"
@@ -8416,35 +8362,35 @@ msgstr ""
 "Eğer atanmışsa, altçizgiden sonra gelen karakter anımsatıcı hızlandırıcı tuş "
 "olarak kullanılacaktır"
 
-#: ctk/ctktoolbutton.c:258
+#: ctk/ctktoolbutton.c:219
 msgid "Widget to use as the item label"
 msgstr "Öge etiketi olarak kullanılacak parça"
 
-#: ctk/ctktoolbutton.c:269
+#: ctk/ctktoolbutton.c:230
 msgid "Stock Id"
 msgstr "Depo Kimliği"
 
-#: ctk/ctktoolbutton.c:270
+#: ctk/ctktoolbutton.c:231
 msgid "The stock icon displayed on the item"
 msgstr "Bu ögede gösterilecek hazır simge"
 
-#: ctk/ctktoolbutton.c:288
+#: ctk/ctktoolbutton.c:249
 msgid "The name of the themed icon displayed on the item"
 msgstr "Bu ögede gösterilecek temalı simgenin adı"
 
-#: ctk/ctktoolbutton.c:294
+#: ctk/ctktoolbutton.c:255
 msgid "Icon widget"
 msgstr "Simge parçası"
 
-#: ctk/ctktoolbutton.c:295
+#: ctk/ctktoolbutton.c:256
 msgid "Icon widget to display in the item"
 msgstr "Bu ögede gösterilecek simge parçası"
 
-#: ctk/ctktoolbutton.c:311
+#: ctk/ctktoolbutton.c:272
 msgid "Icon spacing"
 msgstr "Simge aralığı"
 
-#: ctk/ctktoolbutton.c:312
+#: ctk/ctktoolbutton.c:273
 msgid "Spacing in pixels between the icon and label"
 msgstr "Simge ve etiket arasındaki piksel türünden boşluk"
 
@@ -8538,6 +8484,42 @@ msgid ""
 "Whether the item group should receive extra space when the palette grows"
 msgstr ""
 "Palet büyüdüğünde öge kümesinin fazladan alan almasının gerekip gerekmemesi"
+
+#: ctk/ctktrayicon-x11.c:137
+msgid "Foreground color for symbolic icons"
+msgstr "Sembolik simgeler için ön alan rengi"
+
+#: ctk/ctktrayicon-x11.c:144
+msgid "Error color"
+msgstr "Hata rengi"
+
+#: ctk/ctktrayicon-x11.c:145
+msgid "Error color for symbolic icons"
+msgstr "Sembolik simgeler için hata rengi"
+
+#: ctk/ctktrayicon-x11.c:152
+msgid "Warning color"
+msgstr "Uyarı rengi"
+
+#: ctk/ctktrayicon-x11.c:153
+msgid "Warning color for symbolic icons"
+msgstr "Sembolik simgeler için uyarı rengi"
+
+#: ctk/ctktrayicon-x11.c:160
+msgid "Success color"
+msgstr "Başarı rengi"
+
+#: ctk/ctktrayicon-x11.c:161
+msgid "Success color for symbolic icons"
+msgstr "Sembolik simgeler için başarı rengi"
+
+#: ctk/ctktrayicon-x11.c:169
+msgid "Padding that should be put around icons in the tray"
+msgstr "Çubuktaki simge çevresine koyulması gereken doldurma"
+
+#: ctk/ctktrayicon-x11.c:179
+msgid "The pixel size that icons should be forced to, or zero"
+msgstr "Simgenin olması gereken piksel boyutu ya da sıfır"
 
 #: ctk/ctktreemenu.c:265
 msgid "TreeMenu model"
@@ -8904,6 +8886,18 @@ msgid "Logical sort column ID this column sorts on when selected for sorting"
 msgstr ""
 "Sıralama için seçildiğinde bu sütun üzerindeki mantıksal sıralama sütun "
 "kimliği"
+
+#: ctk/ctkuimanager.c:453
+msgid "Whether tearoff menu items should be added to menus"
+msgstr "Menülere ayrılmış menü ögelerinin eklenmesi"
+
+#: ctk/ctkuimanager.c:460
+msgid "Merged UI definition"
+msgstr "Birleşik arayüz tanımı"
+
+#: ctk/ctkuimanager.c:461
+msgid "An XML string describing the merged UI"
+msgstr "Birleşik arayüzün XML dizgesi tanımı"
 
 #: ctk/ctkviewport.c:409
 msgid "Determines how the shadowed box around the viewport is drawn"

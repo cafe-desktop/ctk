@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-18 11:05+0000\n"
+"POT-Creation-Date: 2022-03-23 18:06+0100\n"
 "PO-Revision-Date: 2020-08-18 23:03+0200\n"
 "Last-Translator: Марко М. Костић <marko.m.kostic@gmail.com>\n"
 "Language-Team: Serbian <gnome-sr@googlegroups.org>\n"
@@ -20,8 +20,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : n"
-"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2\n"
+"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : "
+"n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2\n"
 "X-Project-Style: gnome\n"
 "X-Generator: Gtranslator 3.36.0\n"
 
@@ -223,78 +223,77 @@ msgstr "Исцртавач ћелије"
 msgid "The cell renderer represented by this accessible"
 msgstr "Исцртавач ћелије представљен овим приступним"
 
-#: ctk/ctkaction.c:243 ctk/ctkactiongroup.c:200
+#: ctk/ctkaction.c:233 ctk/ctkactiongroup.c:196
 #: ctk/deprecated/ctkthemingengine.c:247 ctk/ctkcssnode.c:638
 #: ctk/ctkprinter.c:121 ctk/ctkstack.c:516 ctk/ctktextmark.c:136
 msgid "Name"
 msgstr "Назив"
 
-#: ctk/ctkaction.c:244
+#: ctk/ctkaction.c:234
 msgid "A unique name for the action."
 msgstr "Јединствени назив за радњу."
 
-#: ctk/ctkaction.c:264 ctk/ctkbutton.c:281 ctk/ctkexpander.c:308
+#: ctk/ctkaction.c:252 ctk/ctkbutton.c:281 ctk/ctkexpander.c:308
 #: ctk/ctkframe.c:231 ctk/ctklabel.c:805 ctk/ctkmenuitem.c:789
-#: ctk/ctktoolbutton.c:243 ctk/ctktoolitemgroup.c:1639
+#: ctk/ctktoolbutton.c:204 ctk/ctktoolitemgroup.c:1639
 msgid "Label"
 msgstr "Натпис"
 
-#: ctk/ctkaction.c:265
+#: ctk/ctkaction.c:253
 msgid "The label used for menu items and buttons that activate this action."
 msgstr ""
 "Натпис који се користи за ставке изборника и дугмад која покрећу ову радњу."
 
-#: ctk/ctkaction.c:284
+#: ctk/ctkaction.c:269
 msgid "Short label"
 msgstr "Краћи натпис"
 
-#: ctk/ctkaction.c:285
+#: ctk/ctkaction.c:270
 msgid "A shorter label that may be used on toolbar buttons."
 msgstr "Краћи натпис који се може користити на думгадима траке алата."
 
-#: ctk/ctkaction.c:300
+#: ctk/ctkaction.c:283
 msgid "Tooltip"
 msgstr "Облачић"
 
-#: ctk/ctkaction.c:301
+#: ctk/ctkaction.c:284
 msgid "A tooltip for this action."
 msgstr "Облачић за ову радњу."
 
-#: ctk/ctkaction.c:319
+#: ctk/ctkaction.c:299
 msgid "Stock Icon"
 msgstr "Испоручена иконица"
 
-#: ctk/ctkaction.c:320
+#: ctk/ctkaction.c:300
 msgid "The stock icon displayed in widgets representing this action."
 msgstr ""
 "Испоручена иконица која се приказује у елементима који представљају ову "
 "радњу."
 
-#: ctk/ctkaction.c:342 ctk/ctkstatusicon.c:279
+#: ctk/ctkaction.c:320 ctk/ctkstatusicon.c:269
 msgid "GIcon"
 msgstr "Гиконица"
 
-#: ctk/ctkaction.c:343 ctk/ctkstatusicon.c:280
-#: ctk/ctkcellrendererpixbuf.c:282 ctk/ctkimage.c:360
+#: ctk/ctkaction.c:321 ctk/ctkcellrendererpixbuf.c:282 ctk/ctkimage.c:358
+#: ctk/ctkstatusicon.c:270
 msgid "The GIcon being displayed"
 msgstr "Гиконица која је приказана"
 
-#: ctk/ctkaction.c:365 ctk/ctkstatusicon.c:263
-#: ctk/ctkcellrendererpixbuf.c:245 ctk/ctkimage.c:343 ctk/ctkprinter.c:170
-#: ctk/ctkwindow.c:890
+#: ctk/ctkaction.c:341 ctk/ctkcellrendererpixbuf.c:245 ctk/ctkimage.c:341
+#: ctk/ctkprinter.c:170 ctk/ctkstatusicon.c:253 ctk/ctkwindow.c:890
 msgid "Icon Name"
 msgstr "Назив иконице"
 
-#: ctk/ctkaction.c:366 ctk/ctkstatusicon.c:264
-#: ctk/ctkcellrendererpixbuf.c:246 ctk/ctkimage.c:344
+#: ctk/ctkaction.c:342 ctk/ctkcellrendererpixbuf.c:246 ctk/ctkimage.c:342
+#: ctk/ctkstatusicon.c:254
 msgid "The name of the icon from the icon theme"
 msgstr "Назив иконице из теме иконица"
 
-#: ctk/ctkaction.c:381 ctk/ctktoolitem.c:179
+#: ctk/ctkaction.c:354 ctk/ctktoolitem.c:179
 msgid "Visible when horizontal"
 msgstr "Видљиво када је водоравно"
 
-#: ctk/ctkaction.c:382 ctk/ctktoolitem.c:180
+#: ctk/ctkaction.c:355 ctk/ctktoolitem.c:180
 msgid ""
 "Whether the toolbar item is visible when the toolbar is in a horizontal "
 "orientation."
@@ -302,11 +301,11 @@ msgstr ""
 "Да ли се приказује ставка траке алата када је трака алата постављена "
 "водоравно."
 
-#: ctk/ctkaction.c:400
+#: ctk/ctkaction.c:370
 msgid "Visible when overflown"
 msgstr "Видљиво када излази из оквира"
 
-#: ctk/ctkaction.c:401
+#: ctk/ctkaction.c:371
 msgid ""
 "When TRUE, toolitem proxies for this action are represented in the toolbar "
 "overflow menu."
@@ -314,11 +313,11 @@ msgstr ""
 "Када је постављено, посредници облачића за ову радњу се приказују у "
 "изборнику траке алата ван оквира."
 
-#: ctk/ctkaction.c:417 ctk/ctktoolitem.c:186
+#: ctk/ctkaction.c:384 ctk/ctktoolitem.c:186
 msgid "Visible when vertical"
 msgstr "Видљиво када је усправно"
 
-#: ctk/ctkaction.c:418 ctk/ctktoolitem.c:187
+#: ctk/ctkaction.c:385 ctk/ctktoolitem.c:187
 msgid ""
 "Whether the toolbar item is visible when the toolbar is in a vertical "
 "orientation."
@@ -326,11 +325,11 @@ msgstr ""
 "Да ли се приказује ставка траке алата када је трака алата постављена "
 "усправно."
 
-#: ctk/ctkaction.c:434 ctk/ctktoolitem.c:193
+#: ctk/ctkaction.c:398 ctk/ctktoolitem.c:193
 msgid "Is important"
 msgstr "Важно је"
 
-#: ctk/ctkaction.c:435
+#: ctk/ctkaction.c:399
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
 "this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
@@ -338,39 +337,39 @@ msgstr ""
 "Да ли се радња сматра важном. Ако је постављено, посредници за ставке алата "
 "ове радње приказују текст у режиму „CTK_TOOLBAR_BOTH_HORIZ“."
 
-#: ctk/ctkaction.c:451
+#: ctk/ctkaction.c:412
 msgid "Hide if empty"
 msgstr "Сакриј ако је празно"
 
-#: ctk/ctkaction.c:452
+#: ctk/ctkaction.c:413
 msgid "When TRUE, empty menu proxies for this action are hidden."
 msgstr ""
 "Када је постављено, празни посредници изборника за ову радњу се скривају."
 
-#: ctk/ctkaction.c:466 ctk/ctkactiongroup.c:214
-#: ctk/ctkcellrenderer.c:308 ctk/ctkwidget.c:1155
+#: ctk/ctkaction.c:424 ctk/ctkactiongroup.c:208 ctk/ctkcellrenderer.c:308
+#: ctk/ctkwidget.c:1155
 msgid "Sensitive"
 msgstr "Осетљиво"
 
-#: ctk/ctkaction.c:467
+#: ctk/ctkaction.c:425
 msgid "Whether the action is enabled."
 msgstr "Да ли је радња укључена."
 
-#: ctk/ctkaction.c:481 ctk/ctkactiongroup.c:228
-#: ctk/ctkstatusicon.c:314 ctk/ctkcssnode.c:649
-#: ctk/ctknativedialog.c:242 ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1148
+#: ctk/ctkaction.c:436 ctk/ctkactiongroup.c:220 ctk/ctkcssnode.c:649
+#: ctk/ctknativedialog.c:242 ctk/ctkstatusicon.c:304
+#: ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1148
 msgid "Visible"
 msgstr "Видљиво"
 
-#: ctk/ctkaction.c:482
+#: ctk/ctkaction.c:437
 msgid "Whether the action is visible."
 msgstr "Да ли је радња видљива."
 
-#: ctk/ctkaction.c:497
+#: ctk/ctkaction.c:449
 msgid "Action Group"
 msgstr "Група радње"
 
-#: ctk/ctkaction.c:498
+#: ctk/ctkaction.c:450
 msgid ""
 "The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
@@ -378,51 +377,49 @@ msgstr ""
 "Група Гтк радње којој је ова Гтк радња придружена, или „NULL“ (за унутрашњу "
 "употребу)."
 
-#: ctk/ctkaction.c:519 ctk/ctkimagemenuitem.c:264
-#: ctk/ctkbutton.c:393
+#: ctk/ctkaction.c:468 ctk/ctkbutton.c:393 ctk/ctkimagemenuitem.c:254
 msgid "Always show image"
 msgstr "Увек приказује слику"
 
-#: ctk/ctkaction.c:520 ctk/ctkimagemenuitem.c:265
-#: ctk/ctkbutton.c:394
+#: ctk/ctkaction.c:469 ctk/ctkbutton.c:394 ctk/ctkimagemenuitem.c:255
 msgid "Whether the image will always be shown"
 msgstr "Да ли је слика увек видљива"
 
-#: ctk/ctkactiongroup.c:201
+#: ctk/ctkactiongroup.c:197
 msgid "A name for the action group."
 msgstr "Назив за групу радње."
 
-#: ctk/ctkactiongroup.c:215
+#: ctk/ctkactiongroup.c:209
 msgid "Whether the action group is enabled."
 msgstr "Да ли је група радње укључена."
 
-#: ctk/ctkactiongroup.c:229
+#: ctk/ctkactiongroup.c:221
 msgid "Whether the action group is visible."
 msgstr "Да ли је група радње видљива."
 
-#: ctk/ctkactiongroup.c:242
+#: ctk/ctkactiongroup.c:232
 msgid "Accelerator Group"
 msgstr "Група пречице"
 
-#: ctk/ctkactiongroup.c:243
+#: ctk/ctkactiongroup.c:233
 msgid "The accelerator group the actions of this group should use."
 msgstr "Група пречице коју треба да користе радње ове групе."
 
-#: ctk/ctkactivatable.c:290
+#: ctk/ctkactivatable.c:286
 msgid "Related Action"
 msgstr "Повезана радња"
 
-#: ctk/ctkactivatable.c:291
+#: ctk/ctkactivatable.c:287
 msgid "The action this activatable will activate and receive updates from"
 msgstr ""
 "Радња коју ће овај елемент са могућношћу активирања покренути и од које ће "
 "примати ажурирања"
 
-#: ctk/ctkactivatable.c:315
+#: ctk/ctkactivatable.c:309
 msgid "Use Action Appearance"
 msgstr "Користи изглед радње"
 
-#: ctk/ctkactivatable.c:316
+#: ctk/ctkactivatable.c:310
 msgid "Whether to use the related actions appearance properties"
 msgstr "Да ли ће се користити својства изгледа повезаних радњи"
 
@@ -674,31 +671,6 @@ msgstr ""
 "Логичка вредност која указује да ли је пород кућице са ручком закачен или "
 "откачен."
 
-#: ctk/ctkimagemenuitem.c:226 ctk/ctkbutton.c:360
-msgid "Image widget"
-msgstr "Елемент слике"
-
-#: ctk/ctkimagemenuitem.c:227
-msgid "Child widget to appear next to the menu text"
-msgstr "Садржани елемент који се појављује поред текста изборника"
-
-#: ctk/ctkimagemenuitem.c:243 ctk/ctkbutton.c:300
-msgid "Use stock"
-msgstr "Користи већ припремљене"
-
-#: ctk/ctkimagemenuitem.c:244
-msgid "Whether to use the label text to create a stock menu item"
-msgstr ""
-"Да ли ће да користи текст натписа за стварање ставке изборника спремника"
-
-#: ctk/ctkimagemenuitem.c:281 ctk/ctkmenu.c:655
-msgid "Accel Group"
-msgstr "Група пречице"
-
-#: ctk/ctkimagemenuitem.c:282
-msgid "The Accel Group to use for stock accelerator keys"
-msgstr "Група пречице која се користи за тастере пречица спремника"
-
 #: ctk/deprecated/ctkmisc.c:114 ctk/ctkentry.c:968 ctk/ctklabel.c:851
 msgid "X align"
 msgstr "Водоравно поравнање"
@@ -737,202 +709,45 @@ msgid ""
 "The amount of space to add on the top and bottom of the widget, in pixels"
 msgstr "Количина размака који се додаје на врху и на дну елемента, у тачкама"
 
-#: ctk/deprecated/ctknumerableicon.c:642
+#: ctk/deprecated/ctknumerableicon.c:643
 msgid "Icon's count"
 msgstr "Број иконице"
 
-#: ctk/deprecated/ctknumerableicon.c:643
+#: ctk/deprecated/ctknumerableicon.c:644
 msgid "The count of the emblem currently displayed"
 msgstr "Број тренутно приказаног обележја"
 
-#: ctk/deprecated/ctknumerableicon.c:649
+#: ctk/deprecated/ctknumerableicon.c:650
 msgid "Icon's label"
 msgstr "Ознака иконице"
 
-#: ctk/deprecated/ctknumerableicon.c:650
+#: ctk/deprecated/ctknumerableicon.c:651
 msgid "The label to be displayed over the icon"
 msgstr "Ознака која се приказује преко иконице"
 
-#: ctk/deprecated/ctknumerableicon.c:656
+#: ctk/deprecated/ctknumerableicon.c:657
 msgid "Icon's style context"
 msgstr "Постављен стил писма"
 
-#: ctk/deprecated/ctknumerableicon.c:657
+#: ctk/deprecated/ctknumerableicon.c:658
 msgid "The style context to theme the icon appearance"
 msgstr "Контекст стила до теме изгледа иконице"
 
-#: ctk/deprecated/ctknumerableicon.c:663
+#: ctk/deprecated/ctknumerableicon.c:664
 msgid "Background icon"
 msgstr "Позадинска иконица"
 
-#: ctk/deprecated/ctknumerableicon.c:664
+#: ctk/deprecated/ctknumerableicon.c:665
 msgid "The icon for the number emblem background"
 msgstr "Иконица за позадину броја обележја"
 
-#: ctk/deprecated/ctknumerableicon.c:670
+#: ctk/deprecated/ctknumerableicon.c:671
 msgid "Background icon name"
 msgstr "Назив позадинске иконице"
 
-#: ctk/deprecated/ctknumerableicon.c:671
+#: ctk/deprecated/ctknumerableicon.c:672
 msgid "The icon name for the number emblem background"
 msgstr "Назив иконице за позадину броја обележја"
-
-#: ctk/ctkradioaction.c:120
-msgid "The value"
-msgstr "Вредност"
-
-#: ctk/ctkradioaction.c:121
-msgid ""
-"The value returned by ctk_radio_action_get_current_value() when this action "
-"is the current action of its group."
-msgstr ""
-"Вредност коју враћа „ctk_radio_action_get_current_value()“ када је ова радња "
-"текућа радња његове групе."
-
-#: ctk/ctkradioaction.c:139 ctk/ctkradiobutton.c:184
-#: ctk/ctkradiomenuitem.c:424 ctk/ctkradiotoolbutton.c:83
-msgid "Group"
-msgstr "Група"
-
-#: ctk/ctkradioaction.c:140
-msgid "The radio action whose group this action belongs to."
-msgstr "Радио-радња чијој групи ова радња припада."
-
-#: ctk/ctkradioaction.c:157
-msgid "The current value"
-msgstr "Тренутна вредност"
-
-#: ctk/ctkradioaction.c:158
-msgid ""
-"The value property of the currently active member of the group to which this "
-"action belongs."
-msgstr ""
-"Својство вредности тренутно активног члана групе којој ова радња припада."
-
-#: ctk/ctkrecentaction.c:674 ctk/ctkrecentchoosermenu.c:239
-msgid "Show Numbers"
-msgstr "Показује бројеве"
-
-#: ctk/ctkrecentaction.c:675 ctk/ctkrecentchoosermenu.c:240
-msgid "Whether the items should be displayed with a number"
-msgstr "Да ли ставке требају бити приказане са бројевима"
-
-#: ctk/ctkstatusicon.c:234 ctk/ctkimage.c:256
-msgid "Pixbuf"
-msgstr "Сличица"
-
-#: ctk/ctkstatusicon.c:235 ctk/ctkimage.c:257
-msgid "A GdkPixbuf to display"
-msgstr "Гдк сличица за приказ"
-
-#: ctk/ctkstatusicon.c:242 ctk/ctkimage.c:270
-#: ctk/ctkrecentmanager.c:289
-msgid "Filename"
-msgstr "Назив датотеке"
-
-#: ctk/ctkstatusicon.c:243 ctk/ctkimage.c:271
-msgid "Filename to load and display"
-msgstr "Назив датотеке за учитавање и приказ"
-
-#: ctk/ctkstatusicon.c:255 ctk/ctkcellrendererpixbuf.c:195
-#: ctk/ctkimage.c:282
-msgid "Stock ID"
-msgstr "ИД припремљене"
-
-#: ctk/ctkstatusicon.c:256 ctk/ctkimage.c:283
-msgid "Stock ID for a stock image to display"
-msgstr "ИБ припремљене слике за приказ"
-
-#: ctk/ctkstatusicon.c:287 ctk/ctkimage.c:380
-msgid "Storage type"
-msgstr "Врста смештаја"
-
-#: ctk/ctkstatusicon.c:288 ctk/ctkimage.c:381
-msgid "The representation being used for image data"
-msgstr "Начин записа који се користи за податке за слику"
-
-#: ctk/ctkstatusicon.c:296 ctk/ctkcellrendererpixbuf.c:210
-#: ctk/ctkcellrendererspinner.c:159 ctk/ctkrecentmanager.c:304
-msgid "Size"
-msgstr "Величина"
-
-#: ctk/ctkstatusicon.c:297
-msgid "The size of the icon"
-msgstr "Величина иконице"
-
-#: ctk/ctkstatusicon.c:306 ctk/ctkinvisible.c:98
-#: ctk/ctkmountoperation.c:183 ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:897
-msgid "Screen"
-msgstr "Екран"
-
-#: ctk/ctkstatusicon.c:307
-msgid "The screen where this status icon will be displayed"
-msgstr "Екран на којем ће се приказати ова иконица стања"
-
-#: ctk/ctkstatusicon.c:315
-msgid "Whether the status icon is visible"
-msgstr "Да ли је иконица стања видљива"
-
-#: ctk/ctkstatusicon.c:330 ctk/ctkplug.c:196
-msgid "Embedded"
-msgstr "Угњеждено"
-
-#: ctk/ctkstatusicon.c:331
-msgid "Whether the status icon is embedded"
-msgstr "Да ли је иконица стања угњеждена"
-
-#: ctk/ctkstatusicon.c:346 ctk/ctktrayicon-x11.c:127
-#: ctk/ctkgesturepan.c:238 ctk/ctkorientable.c:61
-msgid "Orientation"
-msgstr "Усмерење"
-
-#: ctk/ctkstatusicon.c:347 ctk/ctktrayicon-x11.c:128
-msgid "The orientation of the tray"
-msgstr "Усмерење фиоке"
-
-#: ctk/ctkstatusicon.c:374 ctk/ctkwidget.c:1285
-msgid "Has tooltip"
-msgstr "Има савет"
-
-#: ctk/ctkstatusicon.c:375
-msgid "Whether this tray icon has a tooltip"
-msgstr "Да ли иконица фиоке има савет"
-
-#: ctk/ctkstatusicon.c:401 ctk/ctkwidget.c:1309
-msgid "Tooltip Text"
-msgstr "Текст савета"
-
-#: ctk/ctkstatusicon.c:402 ctk/ctkwidget.c:1310 ctk/ctkwidget.c:1334
-msgid "The contents of the tooltip for this widget"
-msgstr "Садржај савета овог елемента"
-
-#: ctk/ctkstatusicon.c:425 ctk/ctkwidget.c:1333
-msgid "Tooltip markup"
-msgstr "Ознаке савета"
-
-#: ctk/ctkstatusicon.c:426
-msgid "The contents of the tooltip for this tray icon"
-msgstr "Садржај савета ове иконице фиоке"
-
-#: ctk/ctkstatusicon.c:443 ctk/ctkcolorbutton.c:183
-#: ctk/ctkfilechooserbutton.c:443 ctk/ctkfontbutton.c:490
-#: ctk/ctkheaderbar.c:2027 ctk/ctkprintjob.c:133 ctk/ctkshortcutsgroup.c:308
-#: ctk/ctkshortcutssection.c:376 ctk/ctkshortcutsshortcut.c:575
-#: ctk/ctkstack.c:523 ctk/ctktreeviewcolumn.c:316
-msgid "Title"
-msgstr "Наслов"
-
-#: ctk/ctkstatusicon.c:444
-msgid "The title of this tray icon"
-msgstr "Наслов ове иконице фиоке"
-
-#: ctk/ctkstyle.c:471
-msgid "Style context"
-msgstr "Садржај стила"
-
-#: ctk/ctkstyle.c:472
-msgid "CtkStyleContext to get style from"
-msgstr "Из ког садржаја Гтк стила ће бити узет стил"
 
 #: ctk/deprecated/ctktable.c:185
 msgid "Rows"
@@ -1050,90 +865,6 @@ msgstr ""
 #: ctk/deprecated/ctkthemingengine.c:248
 msgid "Theming engine name"
 msgstr "Назив теме"
-
-#: ctk/ctktoggleaction.c:118
-msgid "Create the same proxies as a radio action"
-msgstr "Прави исте посреднике као и радио-радња"
-
-#: ctk/ctktoggleaction.c:119
-msgid "Whether the proxies for this action look like radio action proxies"
-msgstr "Да ли посредници за ову радњу изгледају као посредници за радио-радње"
-
-#: ctk/ctktoggleaction.c:135 ctk/ctkcellrendererspinner.c:125
-#: ctk/ctkcheckmenuitem.c:209 ctk/ctkmenu.c:640 ctk/ctkmodelbutton.c:1211
-#: ctk/ctkmodelbutton.c:1212 ctk/ctkspinner.c:221 ctk/ctkswitch.c:878
-#: ctk/ctktogglebutton.c:188 ctk/ctktoggletoolbutton.c:130
-msgid "Active"
-msgstr "Радан"
-
-#: ctk/ctktoggleaction.c:136
-msgid "Whether the toggle action should be active"
-msgstr "Да ли прекидачка радња треба да буде радна или не"
-
-#: ctk/ctktrayicon-x11.c:136 ctk/ctkcellrenderertext.c:334
-#: ctk/ctktexttag.c:277
-msgid "Foreground color"
-msgstr "Боја исцртавања"
-
-#: ctk/ctktrayicon-x11.c:137
-msgid "Foreground color for symbolic icons"
-msgstr "Боја исцртавања за симболичке иконице"
-
-#: ctk/ctktrayicon-x11.c:144
-msgid "Error color"
-msgstr "Боја грешке"
-
-#: ctk/ctktrayicon-x11.c:145
-msgid "Error color for symbolic icons"
-msgstr "Боја грешке за симболичке иконице"
-
-#: ctk/ctktrayicon-x11.c:152
-msgid "Warning color"
-msgstr "Боја упозорења"
-
-#: ctk/ctktrayicon-x11.c:153
-msgid "Warning color for symbolic icons"
-msgstr "Боја упозорења за симболичке иконице"
-
-#: ctk/ctktrayicon-x11.c:160
-msgid "Success color"
-msgstr "Боја успеха"
-
-#: ctk/ctktrayicon-x11.c:161
-msgid "Success color for symbolic icons"
-msgstr "Боја успеха за симболичке иконице"
-
-#: ctk/ctktrayicon-x11.c:168 ctk/ctkbox.c:350
-msgid "Padding"
-msgstr "Попуна"
-
-#: ctk/ctktrayicon-x11.c:169
-msgid "Padding that should be put around icons in the tray"
-msgstr "Испуњавање које треба поставити око иконица у палети"
-
-#: ctk/ctktrayicon-x11.c:178 ctk/ctkstackswitcher.c:686
-msgid "Icon Size"
-msgstr "Величина иконице"
-
-#: ctk/ctktrayicon-x11.c:179
-msgid "The pixel size that icons should be forced to, or zero"
-msgstr "Величина у тачкама на коју иконице морају бити постављене, или нула"
-
-#: ctk/ctkuimanager.c:463 ctk/ctkcombobox.c:1010
-msgid "Add tearoffs to menus"
-msgstr "Додаје отцепљивање у изборнике"
-
-#: ctk/ctkuimanager.c:464
-msgid "Whether tearoff menu items should be added to menus"
-msgstr "Да ли се додају ставке изборника за отцепљивање у изборнике"
-
-#: ctk/ctkuimanager.c:471
-msgid "Merged UI definition"
-msgstr "Спојена одредница сучеља"
-
-#: ctk/ctkuimanager.c:472
-msgid "An XML string describing the merged UI"
-msgstr "ИксМЛ ниска која описује спојено сучеље"
 
 #: ctk/ctkaboutdialog.c:349
 msgid "Program name"
@@ -1734,6 +1465,10 @@ msgstr ""
 "Да ли се додатни простор намењен садржаном елементу треба њему доделити или "
 "користити за попуну"
 
+#: ctk/ctkbox.c:350 ctk/ctktrayicon-x11.c:168
+msgid "Padding"
+msgstr "Попуна"
+
 #: ctk/ctkbox.c:351
 msgid "Extra space to put between the child and its neighbors, in pixels"
 msgstr ""
@@ -1755,7 +1490,7 @@ msgid ""
 msgstr "Садржај ознаке унутар дугмета, уколико дугме садржи ознаку"
 
 #: ctk/ctkbutton.c:288 ctk/ctkexpander.c:316 ctk/ctklabel.c:826
-#: ctk/ctkmenuitem.c:803 ctk/ctktoolbutton.c:250
+#: ctk/ctkmenuitem.c:803 ctk/ctktoolbutton.c:211
 msgid "Use underline"
 msgstr "Користи подвлаку"
 
@@ -1766,6 +1501,10 @@ msgid ""
 "for the mnemonic accelerator key"
 msgstr ""
 "Ако је постављено, подвлачење означава да се следећи знак користи као пречица"
+
+#: ctk/ctkbutton.c:300 ctk/ctkimagemenuitem.c:236
+msgid "Use stock"
+msgstr "Користи већ припремљене"
 
 #: ctk/ctkbutton.c:301
 msgid ""
@@ -1789,6 +1528,10 @@ msgstr "Водоравно поравнање за садржани елемен
 #: ctk/ctkbutton.c:346
 msgid "Vertical alignment for child"
 msgstr "Усправно поравнање за садржани елемент"
+
+#: ctk/ctkbutton.c:360 ctk/ctkimagemenuitem.c:221
+msgid "Image widget"
+msgstr "Елемент слике"
 
 #: ctk/ctkbutton.c:361
 msgid "Child widget to appear next to the button text"
@@ -2282,9 +2025,18 @@ msgstr "површина"
 msgid "The surface to render"
 msgstr "Површина за исцртавање"
 
+#: ctk/ctkcellrendererpixbuf.c:195 ctk/ctkimage.c:280 ctk/ctkstatusicon.c:245
+msgid "Stock ID"
+msgstr "ИД припремљене"
+
 #: ctk/ctkcellrendererpixbuf.c:196
 msgid "The stock ID of the stock icon to render"
 msgstr "ИД припремљене сличице која се исцртава"
+
+#: ctk/ctkcellrendererpixbuf.c:210 ctk/ctkcellrendererspinner.c:159
+#: ctk/ctkrecentmanager.c:303 ctk/ctkstatusicon.c:286
+msgid "Size"
+msgstr "Величина"
 
 #: ctk/ctkcellrendererpixbuf.c:211
 msgid "The CtkIconSize value that specifies the size of the rendered icon"
@@ -2306,7 +2058,7 @@ msgstr "Прати стање"
 msgid "Whether the rendered pixbuf should be colorized according to the state"
 msgstr "Да ли се исцртана сличица боји према стању или не"
 
-#: ctk/ctkcellrendererpixbuf.c:281 ctk/ctkimage.c:359 ctk/ctkmodelbutton.c:1166
+#: ctk/ctkcellrendererpixbuf.c:281 ctk/ctkimage.c:357 ctk/ctkmodelbutton.c:1166
 #: ctk/ctkshortcutsshortcut.c:550 ctk/ctkwindow.c:841
 msgid "Icon"
 msgstr "Иконица"
@@ -2391,6 +2143,13 @@ msgstr "Цифара"
 msgid "The number of decimal places to display"
 msgstr "Број децималних места које желите да прикажете"
 
+#: ctk/ctkcellrendererspinner.c:125 ctk/ctkcheckmenuitem.c:209
+#: ctk/ctkmenu.c:640 ctk/ctkmodelbutton.c:1211 ctk/ctkmodelbutton.c:1212
+#: ctk/ctkspinner.c:221 ctk/ctkswitch.c:878 ctk/ctktoggleaction.c:129
+#: ctk/ctktogglebutton.c:188 ctk/ctktoggletoolbutton.c:130
+msgid "Active"
+msgstr "Радан"
+
 #: ctk/ctkcellrendererspinner.c:126
 msgid "Whether the spinner is active (ie. shown) in the cell"
 msgstr "Да ли се приказује вртешка унутар ћелије"
@@ -2462,6 +2221,10 @@ msgstr "Назив боје исцртавања"
 #: ctk/ctkcellrenderertext.c:320 ctk/ctktexttag.c:263
 msgid "Foreground color as a string"
 msgstr "Боја исцртавања као низ знакова"
+
+#: ctk/ctkcellrenderertext.c:334 ctk/ctktexttag.c:277 ctk/ctktrayicon-x11.c:136
+msgid "Foreground color"
+msgstr "Боја исцртавања"
 
 #: ctk/ctkcellrenderertext.c:335 ctk/ctktexttag.c:278
 msgid "Foreground color as a CdkColor"
@@ -2876,7 +2639,7 @@ msgstr "Да ли треба тражити довољно простора за
 msgid "Indicator Size"
 msgstr "Величина показатеља"
 
-#: ctk/ctkcheckbutton.c:249 ctk/ctkexpander.c:406
+#: ctk/ctkcheckbutton.c:249 ctk/ctkexpander.c:413
 msgid "Indicator Spacing"
 msgstr "Размаци показатеља"
 
@@ -2911,6 +2674,14 @@ msgstr "Користи провидност"
 #: ctk/ctkcolorbutton.c:169
 msgid "Whether to give the color an alpha value"
 msgstr "Да ли ће боји бити дата вредност провидности"
+
+#: ctk/ctkcolorbutton.c:183 ctk/ctkfilechooserbutton.c:443
+#: ctk/ctkfontbutton.c:490 ctk/ctkheaderbar.c:2027 ctk/ctkprintjob.c:133
+#: ctk/ctkshortcutsgroup.c:308 ctk/ctkshortcutssection.c:376
+#: ctk/ctkshortcutsshortcut.c:575 ctk/ctkstack.c:523 ctk/ctkstatusicon.c:433
+#: ctk/ctktreeviewcolumn.c:316
+msgid "Title"
+msgstr "Наслов"
 
 #: ctk/ctkcolorbutton.c:184
 msgid "The title of the color selection dialog"
@@ -2954,7 +2725,7 @@ msgstr "Текућа боја, као ГдкРГБА"
 msgid "Whether alpha should be shown"
 msgstr "Да ли се провидност приказује или не"
 
-#: ctk/ctkcolorchooserdialog.c:213 ctk/ctkcolorchooserwidget.c:704
+#: ctk/ctkcolorchooserdialog.c:213 ctk/ctkcolorchooserwidget.c:695
 msgid "Show editor"
 msgstr "Приказује уређивач"
 
@@ -3022,6 +2793,10 @@ msgstr "Покренута ставка"
 #: ctk/ctkcombobox.c:989
 msgid "The item which is currently active"
 msgstr "Ставка која је тренутно активна"
+
+#: ctk/ctkcombobox.c:1010 ctk/ctkuimanager.c:452
+msgid "Add tearoffs to menus"
+msgstr "Додаје отцепљивање у изборнике"
 
 #: ctk/ctkcombobox.c:1011
 msgid "Whether dropdowns should have a tearoff menu item"
@@ -3809,7 +3584,7 @@ msgstr "Текст ознаке садржи ИксМЛ ознаке. Видет
 msgid "Space to put between the label and the child"
 msgstr "Размак који се ставља између ознаке и садржаног елемента"
 
-#: ctk/ctkexpander.c:351 ctk/ctkframe.c:262 ctk/ctktoolbutton.c:257
+#: ctk/ctkexpander.c:351 ctk/ctkframe.c:262 ctk/ctktoolbutton.c:218
 #: ctk/ctktoolitemgroup.c:1646
 msgid "Label widget"
 msgstr "Елемент ознаке"
@@ -3818,20 +3593,20 @@ msgstr "Елемент ознаке"
 msgid "A widget to display in place of the usual expander label"
 msgstr "Елемент који се приказује наместо уобичајене ознаке разграника"
 
-#: ctk/ctkexpander.c:359
+#: ctk/ctkexpander.c:366
 msgid "Label fill"
 msgstr "Попуњавање ознаке"
 
-#: ctk/ctkexpander.c:360
+#: ctk/ctkexpander.c:367
 msgid "Whether the label widget should fill all available horizontal space"
 msgstr ""
 "Да ли елемент ознаке треба да попуни сав расположиви хоризонтални простор"
 
-#: ctk/ctkexpander.c:375
+#: ctk/ctkexpander.c:382
 msgid "Resize toplevel"
 msgstr "Највиши ниво промене величине"
 
-#: ctk/ctkexpander.c:376
+#: ctk/ctkexpander.c:383
 msgid ""
 "Whether the expander will resize the toplevel window upon expanding and "
 "collapsing"
@@ -3840,15 +3615,15 @@ msgstr ""
 "скупљањем"
 
 # Ovo je LOSE!
-#: ctk/ctkexpander.c:389 ctk/ctktoolitemgroup.c:1674 ctk/ctktreeview.c:1234
+#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1674 ctk/ctktreeview.c:1234
 msgid "Expander Size"
 msgstr "Величина разграника"
 
-#: ctk/ctkexpander.c:390 ctk/ctktoolitemgroup.c:1675 ctk/ctktreeview.c:1235
+#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1675 ctk/ctktreeview.c:1235
 msgid "Size of the expander arrow"
 msgstr "Величина стрелице за гранање"
 
-#: ctk/ctkexpander.c:407
+#: ctk/ctkexpander.c:414
 msgid "Spacing around expander arrow"
 msgstr "Размаци око стрелица за гранање"
 
@@ -3885,7 +3660,7 @@ msgid "The current filter for selecting which files are displayed"
 msgstr "Текући филтер којим се одређује које датотеке да приказује"
 
 #: ctk/ctkfilechooser.c:388 ctk/ctkplacessidebar.c:4836
-#: ctk/ctkplacesview.c:2336
+#: ctk/ctkplacesview.c:2348
 msgid "Local Only"
 msgstr "Само локално"
 
@@ -4137,11 +3912,11 @@ msgstr "Могућности фонта у нисци"
 msgid "Language for which features have been selected"
 msgstr "Језик за који су одабране могућности"
 
-#: ctk/ctkfontchooserwidget.c:697
+#: ctk/ctkfontchooserwidget.c:691
 msgid "The tweak action"
 msgstr "Радња лицкања"
 
-#: ctk/ctkfontchooserwidget.c:698
+#: ctk/ctkfontchooserwidget.c:692
 msgid "The toggle action to switch to the tweak page"
 msgstr "Радња промене стања за пребацивање на страницу са лицкањима"
 
@@ -4196,6 +3971,11 @@ msgstr "Чинилац кашњења"
 #: ctk/ctkgesturelongpress.c:286
 msgid "Factor by which to modify the default timeout"
 msgstr "Чинилац по којем треба мењати подразумевано време истека"
+
+#: ctk/ctkgesturepan.c:238 ctk/ctkorientable.c:61 ctk/ctkstatusicon.c:336
+#: ctk/ctktrayicon-x11.c:127
+msgid "Orientation"
+msgstr "Усмерење"
 
 #: ctk/ctkgesturepan.c:239
 msgid "Allowed orientations"
@@ -4486,6 +4266,14 @@ msgstr "Провидност границе избора"
 msgid "Opacity of the selection box"
 msgstr "Провидност границе избора"
 
+#: ctk/ctkimage.c:256 ctk/ctkstatusicon.c:226
+msgid "Pixbuf"
+msgstr "Сличица"
+
+#: ctk/ctkimage.c:257 ctk/ctkstatusicon.c:227
+msgid "A GdkPixbuf to display"
+msgstr "Гдк сличица за приказ"
+
 #: ctk/ctkimage.c:263
 msgid "Surface"
 msgstr "Површина"
@@ -4494,56 +4282,93 @@ msgstr "Површина"
 msgid "A cairo_surface_t to display"
 msgstr "Т_површина_каира за приказивање"
 
-#: ctk/ctkimage.c:295
+#: ctk/ctkimage.c:270 ctk/ctkrecentmanager.c:288 ctk/ctkstatusicon.c:234
+msgid "Filename"
+msgstr "Назив датотеке"
+
+#: ctk/ctkimage.c:271 ctk/ctkstatusicon.c:235
+msgid "Filename to load and display"
+msgstr "Назив датотеке за учитавање и приказ"
+
+#: ctk/ctkimage.c:281 ctk/ctkstatusicon.c:246
+msgid "Stock ID for a stock image to display"
+msgstr "ИБ припремљене слике за приказ"
+
+#: ctk/ctkimage.c:293
 msgid "Icon set"
 msgstr "Скуп иконица"
 
-#: ctk/ctkimage.c:296
+#: ctk/ctkimage.c:294
 msgid "Icon set to display"
 msgstr "Скуп иконица за приказ"
 
-#: ctk/ctkimage.c:303 ctk/ctkscalebutton.c:208 ctk/ctktoolbar.c:564
+#: ctk/ctkimage.c:301 ctk/ctkscalebutton.c:208 ctk/ctktoolbar.c:564
 #: ctk/ctktoolpalette.c:965
 msgid "Icon size"
 msgstr "Величина иконице"
 
-#: ctk/ctkimage.c:304
+#: ctk/ctkimage.c:302
 msgid "Symbolic size to use for stock icon, icon set or named icon"
 msgstr ""
 "Симболичка величина за припремљене иконице, скуп иконица или именовану "
 "иконицу"
 
-#: ctk/ctkimage.c:320
+#: ctk/ctkimage.c:318
 msgid "Pixel size"
 msgstr "Величина у тачкама"
 
-#: ctk/ctkimage.c:321
+#: ctk/ctkimage.c:319
 msgid "Pixel size to use for named icon"
 msgstr "Величина у тачкама за именоване иконице"
 
-#: ctk/ctkimage.c:328
+#: ctk/ctkimage.c:326
 msgid "Animation"
 msgstr "Анимација"
 
-#: ctk/ctkimage.c:329
+#: ctk/ctkimage.c:327
 msgid "GdkPixbufAnimation to display"
 msgstr "Гдк анимирана сличица за приказ"
 
-#: ctk/ctkimage.c:373
+#: ctk/ctkimage.c:371
 msgid "Resource"
 msgstr "Извориште"
 
-#: ctk/ctkimage.c:374
+#: ctk/ctkimage.c:372
 msgid "The resource path being displayed"
 msgstr "Путања приказаног изворишта"
 
-#: ctk/ctkimage.c:398
+#: ctk/ctkimage.c:378 ctk/ctkstatusicon.c:277
+msgid "Storage type"
+msgstr "Врста смештаја"
+
+#: ctk/ctkimage.c:379 ctk/ctkstatusicon.c:278
+msgid "The representation being used for image data"
+msgstr "Начин записа који се користи за податке за слику"
+
+#: ctk/ctkimage.c:396
 msgid "Use Fallback"
 msgstr "Користи пребацивање"
 
-#: ctk/ctkimage.c:399
+#: ctk/ctkimage.c:397
 msgid "Whether to use icon names fallback"
 msgstr "Да ли да користи пребацивање имена иконице"
+
+#: ctk/ctkimagemenuitem.c:222
+msgid "Child widget to appear next to the menu text"
+msgstr "Садржани елемент који се појављује поред текста изборника"
+
+#: ctk/ctkimagemenuitem.c:237
+msgid "Whether to use the label text to create a stock menu item"
+msgstr ""
+"Да ли ће да користи текст натписа за стварање ставке изборника спремника"
+
+#: ctk/ctkimagemenuitem.c:269 ctk/ctkmenu.c:655
+msgid "Accel Group"
+msgstr "Група пречице"
+
+#: ctk/ctkimagemenuitem.c:270
+msgid "The Accel Group to use for stock accelerator keys"
+msgstr "Група пречице која се користи за тастере пречица спремника"
 
 #: ctk/ctkinfobar.c:450 ctk/ctkmessagedialog.c:189
 msgid "Message Type"
@@ -4580,6 +4405,11 @@ msgstr "Размак између елемената на области"
 #: ctk/ctkinfobar.c:583
 msgid "Width of border around the action area"
 msgstr "Ширина ивице око акционе области"
+
+#: ctk/ctkinvisible.c:98 ctk/ctkmountoperation.c:183 ctk/ctkstatusicon.c:296
+#: ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:897
+msgid "Screen"
+msgstr "Екран"
 
 #: ctk/ctkinvisible.c:99 ctk/ctkwindow.c:898
 msgid "The screen where this window will be displayed"
@@ -5504,19 +5334,19 @@ msgstr "Радни језичак се исцртава са размаком н
 msgid "The orientation of the orientable"
 msgstr "Усмерење усмеривог елемента"
 
-#: ctk/ctkoverlay.c:783
+#: ctk/ctkoverlay.c:790
 msgid "Pass Through"
 msgstr "Пропусница"
 
-#: ctk/ctkoverlay.c:783
+#: ctk/ctkoverlay.c:790
 msgid "Pass through input, does not affect main child"
 msgstr "Пропушта унос, не омета главно дете"
 
-#: ctk/ctkoverlay.c:797
+#: ctk/ctkoverlay.c:804
 msgid "Index"
 msgstr "Садржај"
 
-#: ctk/ctkoverlay.c:798
+#: ctk/ctkoverlay.c:805
 msgid "The index of the overlay in the parent, -1 for the main child"
 msgstr "Садржај у преклопу родитеља, вредност „-1“ за главно дете"
 
@@ -5610,11 +5440,11 @@ msgstr "Место за бирање"
 msgid "The location to highlight in the sidebar"
 msgstr "Место за истицање у бочној траци"
 
-#: ctk/ctkplacessidebar.c:4805 ctk/ctkplacesview.c:2357
+#: ctk/ctkplacessidebar.c:4805 ctk/ctkplacesview.c:2369
 msgid "Open Flags"
 msgstr "Отвори опције"
 
-#: ctk/ctkplacessidebar.c:4806 ctk/ctkplacesview.c:2358
+#: ctk/ctkplacessidebar.c:4806 ctk/ctkplacesview.c:2370
 msgid ""
 "Modes in which the calling application can open locations selected in the "
 "sidebar"
@@ -5658,7 +5488,7 @@ msgid ""
 "Whether the sidebar includes a builtin shortcut to manually enter a location"
 msgstr "Да ли бочна трака садржи уграђену пречицу за ручно уношење места"
 
-#: ctk/ctkplacessidebar.c:4837 ctk/ctkplacesview.c:2337
+#: ctk/ctkplacessidebar.c:4837 ctk/ctkplacesview.c:2349
 msgid "Whether the sidebar only includes local files"
 msgstr "Да ли бочна трака укључује само месне датотеке"
 
@@ -5692,19 +5522,19 @@ msgstr ""
 "Да ли да изостави „::populate-popup“ за искачуће прозорчиће који нису "
 "изборници"
 
-#: ctk/ctkplacesview.c:2343
+#: ctk/ctkplacesview.c:2355
 msgid "Loading"
 msgstr "Учитавам"
 
-#: ctk/ctkplacesview.c:2344
+#: ctk/ctkplacesview.c:2356
 msgid "Whether the view is loading locations"
 msgstr "Да ли преглед учитава места"
 
-#: ctk/ctkplacesview.c:2350
+#: ctk/ctkplacesview.c:2362
 msgid "Fetching networks"
 msgstr "Добављам мреже"
 
-#: ctk/ctkplacesview.c:2351
+#: ctk/ctkplacesview.c:2363
 msgid "Whether the view is fetching networks"
 msgstr "Да ли преглед довлачи мреже"
 
@@ -5760,15 +5590,19 @@ msgstr "Датотека представљена унутар реда, ако 
 msgid "Whether the row represents a network location"
 msgstr "Да ли ред приказује мрежно место"
 
-#: ctk/ctkplug.c:197
+#: ctk/ctkplug.c:198 ctk/ctkstatusicon.c:320
+msgid "Embedded"
+msgstr "Угњеждено"
+
+#: ctk/ctkplug.c:199
 msgid "Whether the plug is embedded"
 msgstr "Да ли је утикач угњежден"
 
-#: ctk/ctkplug.c:211
+#: ctk/ctkplug.c:213
 msgid "Socket Window"
 msgstr "Прозор утичнице"
 
-#: ctk/ctkplug.c:212
+#: ctk/ctkplug.c:214
 msgid "The window of the socket the plug is embedded in"
 msgstr "Прозор утичнице у коме је утикач угњежден"
 
@@ -6217,6 +6051,38 @@ msgstr "Најмања усправна висина траке"
 msgid "The minimum vertical height of the progress bar"
 msgstr "Најмања усправна висина траке напретка"
 
+#: ctk/ctkradioaction.c:116
+msgid "The value"
+msgstr "Вредност"
+
+#: ctk/ctkradioaction.c:117
+msgid ""
+"The value returned by ctk_radio_action_get_current_value() when this action "
+"is the current action of its group."
+msgstr ""
+"Вредност коју враћа „ctk_radio_action_get_current_value()“ када је ова радња "
+"текућа радња његове групе."
+
+#: ctk/ctkradioaction.c:133 ctk/ctkradiobutton.c:184 ctk/ctkradiomenuitem.c:424
+#: ctk/ctkradiotoolbutton.c:83
+msgid "Group"
+msgstr "Група"
+
+#: ctk/ctkradioaction.c:134
+msgid "The radio action whose group this action belongs to."
+msgstr "Радио-радња чијој групи ова радња припада."
+
+#: ctk/ctkradioaction.c:149
+msgid "The current value"
+msgstr "Тренутна вредност"
+
+#: ctk/ctkradioaction.c:150
+msgid ""
+"The value property of the currently active member of the group to which this "
+"action belongs."
+msgstr ""
+"Својство вредности тренутно активног члана групе којој ова радња припада."
+
 #: ctk/ctkradiobutton.c:185
 msgid "The radio button whose group this widget belongs to."
 msgstr "Радио-дугме чијој групи овај елемент припада."
@@ -6359,6 +6225,14 @@ msgstr "Величина стрелица"
 msgid "Arrow scaling with regard to scroll button size"
 msgstr "Величина стрелица у односу на величину дугмета клизача"
 
+#: ctk/ctkrecentaction.c:666 ctk/ctkrecentchoosermenu.c:239
+msgid "Show Numbers"
+msgstr "Показује бројеве"
+
+#: ctk/ctkrecentaction.c:667 ctk/ctkrecentchoosermenu.c:240
+msgid "Whether the items should be displayed with a number"
+msgstr "Да ли ставке требају бити приказане са бројевима"
+
 #: ctk/ctkrecentchooser.c:130
 msgid "Recent Manager"
 msgstr "Управник скорашњих ставки"
@@ -6433,11 +6307,11 @@ msgstr "Редослед ређања приказаних ставки"
 msgid "The current filter for selecting which resources are displayed"
 msgstr "Текући филтер којим се одређује који су ресурси приказани"
 
-#: ctk/ctkrecentmanager.c:290
+#: ctk/ctkrecentmanager.c:289
 msgid "The full path to the file to be used to store and read the list"
 msgstr "Пуна путања до датотеке која се користи за складиштење и читање листе"
 
-#: ctk/ctkrecentmanager.c:305
+#: ctk/ctkrecentmanager.c:304
 msgid "The size of the recently used resources list"
 msgstr "Величина списка најскорије коришћених изворишта"
 
@@ -6602,51 +6476,51 @@ msgid ""
 "Display a second forward arrow button on the opposite end of the scrollbar"
 msgstr "Прикажи другу стрелицу унапред на супротној страни клизача"
 
-#: ctk/ctkscrolledwindow.c:569
+#: ctk/ctkscrolledwindow.c:567
 msgid "Horizontal Adjustment"
 msgstr "Водоравна поправка"
 
-#: ctk/ctkscrolledwindow.c:570
+#: ctk/ctkscrolledwindow.c:568
 msgid "The CtkAdjustment for the horizontal position"
 msgstr "Гтк поравнање за водоравни положај"
 
-#: ctk/ctkscrolledwindow.c:576
+#: ctk/ctkscrolledwindow.c:574
 msgid "Vertical Adjustment"
 msgstr "Усправна поправка"
 
-#: ctk/ctkscrolledwindow.c:577
+#: ctk/ctkscrolledwindow.c:575
 msgid "The CtkAdjustment for the vertical position"
 msgstr "Гтк поравнање за усправни положај"
 
-#: ctk/ctkscrolledwindow.c:583
+#: ctk/ctkscrolledwindow.c:581
 msgid "Horizontal Scrollbar Policy"
 msgstr "Приказивање стрелица за водоравно померање"
 
-#: ctk/ctkscrolledwindow.c:584
+#: ctk/ctkscrolledwindow.c:582
 msgid "When the horizontal scrollbar is displayed"
 msgstr "Када се приказују стрелице за водоравно померање садржаја"
 
-#: ctk/ctkscrolledwindow.c:591
+#: ctk/ctkscrolledwindow.c:589
 msgid "Vertical Scrollbar Policy"
 msgstr "Приказивање стрелица за усправно померање"
 
-#: ctk/ctkscrolledwindow.c:592
+#: ctk/ctkscrolledwindow.c:590
 msgid "When the vertical scrollbar is displayed"
 msgstr "Када се приказују стрелице за усправно померање садржаја"
 
-#: ctk/ctkscrolledwindow.c:599
+#: ctk/ctkscrolledwindow.c:597
 msgid "Window Placement"
 msgstr "Постављање прозора"
 
-#: ctk/ctkscrolledwindow.c:600
+#: ctk/ctkscrolledwindow.c:598
 msgid "Where the contents are located with respect to the scrollbars."
 msgstr "Где је смештен садржај у односу на стрелице за померање."
 
-#: ctk/ctkscrolledwindow.c:618
+#: ctk/ctkscrolledwindow.c:616
 msgid "Window Placement Set"
 msgstr "Постављено постављање прозора"
 
-#: ctk/ctkscrolledwindow.c:619
+#: ctk/ctkscrolledwindow.c:617
 msgid ""
 "Whether \"window-placement\" should be used to determine the location of the "
 "contents with respect to the scrollbars."
@@ -6654,85 +6528,85 @@ msgstr ""
 "Да ли се „window-placement“ користи да се одреди позиција садржаја у односу "
 "на клизаче."
 
-#: ctk/ctkscrolledwindow.c:625 ctk/ctkspinbutton.c:455
+#: ctk/ctkscrolledwindow.c:623 ctk/ctkspinbutton.c:455
 msgid "Shadow Type"
 msgstr "Врста сенке"
 
-#: ctk/ctkscrolledwindow.c:626
+#: ctk/ctkscrolledwindow.c:624
 msgid "Style of bevel around the contents"
 msgstr "Стил удубљења око садржаја"
 
-#: ctk/ctkscrolledwindow.c:642
+#: ctk/ctkscrolledwindow.c:640
 msgid "Scrollbars within bevel"
 msgstr "Клизачи унутар удубљења"
 
-#: ctk/ctkscrolledwindow.c:643
+#: ctk/ctkscrolledwindow.c:641
 msgid "Place scrollbars within the scrolled window's bevel"
 msgstr "Постави клизаче између удубљења прозора са клизачима"
 
-#: ctk/ctkscrolledwindow.c:649
+#: ctk/ctkscrolledwindow.c:647
 msgid "Scrollbar spacing"
 msgstr "Размак између стрелица"
 
-#: ctk/ctkscrolledwindow.c:650
+#: ctk/ctkscrolledwindow.c:648
 msgid "Number of pixels between the scrollbars and the scrolled window"
 msgstr "Број тачака између стрелица за померање садржаја и самог садржаја"
 
-#: ctk/ctkscrolledwindow.c:665
+#: ctk/ctkscrolledwindow.c:663
 msgid "Minimum Content Width"
 msgstr "Најмања ширина садржаја"
 
-#: ctk/ctkscrolledwindow.c:666
+#: ctk/ctkscrolledwindow.c:664
 msgid "The minimum width that the scrolled window will allocate to its content"
 msgstr "Најмања ширина коју ће померен прозор да додели свом садржају"
 
-#: ctk/ctkscrolledwindow.c:679
+#: ctk/ctkscrolledwindow.c:677
 msgid "Minimum Content Height"
 msgstr "Најмања висина садржаја"
 
-#: ctk/ctkscrolledwindow.c:680
+#: ctk/ctkscrolledwindow.c:678
 msgid ""
 "The minimum height that the scrolled window will allocate to its content"
 msgstr "Најмања висина коју ће померен прозор да додели свом садржају"
 
-#: ctk/ctkscrolledwindow.c:694
+#: ctk/ctkscrolledwindow.c:692
 msgid "Kinetic Scrolling"
 msgstr "Кинетичко клизање"
 
-#: ctk/ctkscrolledwindow.c:695
+#: ctk/ctkscrolledwindow.c:693
 msgid "Kinetic scrolling mode."
 msgstr "Режим кинетичког клизања."
 
-#: ctk/ctkscrolledwindow.c:714
+#: ctk/ctkscrolledwindow.c:712
 msgid "Overlay Scrolling"
 msgstr "Клизање преко преклопа"
 
-#: ctk/ctkscrolledwindow.c:715
+#: ctk/ctkscrolledwindow.c:713
 msgid "Overlay scrolling mode"
 msgstr "Режим клизања преко преклопа"
 
-#: ctk/ctkscrolledwindow.c:728
+#: ctk/ctkscrolledwindow.c:726
 msgid "Maximum Content Width"
 msgstr "Највећа ширина садржаја"
 
-#: ctk/ctkscrolledwindow.c:729
+#: ctk/ctkscrolledwindow.c:727
 msgid "The maximum width that the scrolled window will allocate to its content"
 msgstr "Највећа ширина коју ће померен прозор да додели свом садржају"
 
-#: ctk/ctkscrolledwindow.c:742
+#: ctk/ctkscrolledwindow.c:740
 msgid "Maximum Content Height"
 msgstr "Највећа висина садржаја"
 
-#: ctk/ctkscrolledwindow.c:743
+#: ctk/ctkscrolledwindow.c:741
 msgid ""
 "The maximum height that the scrolled window will allocate to its content"
 msgstr "Највећа висина коју ће померен прозор да додели свом садржају"
 
-#: ctk/ctkscrolledwindow.c:760 ctk/ctkscrolledwindow.c:761
+#: ctk/ctkscrolledwindow.c:758 ctk/ctkscrolledwindow.c:759
 msgid "Propagate Natural Width"
 msgstr "Распростире природну ширину"
 
-#: ctk/ctkscrolledwindow.c:778 ctk/ctkscrolledwindow.c:779
+#: ctk/ctkscrolledwindow.c:776 ctk/ctkscrolledwindow.c:777
 msgid "Propagate Natural Height"
 msgstr "Распростире природну висину"
 
@@ -6819,12 +6693,10 @@ msgstr ""
 "десна на лево"
 
 #: ctk/ctksettings.c:461
-#| msgid "Cursor line aspect ratio"
 msgid "Cursor Aspect Ratio"
 msgstr "Размера односа курсора"
 
 #: ctk/ctksettings.c:462
-#| msgid "The orientation of the orientable"
 msgid "The aspect ratio of the text caret"
 msgstr "Размера односа текстуалне цртице"
 
@@ -7735,7 +7607,7 @@ msgstr "Назив странице садржаног"
 msgid "The title of the child page"
 msgstr "Наслов странице садржаног"
 
-#: ctk/ctkstack.c:530 ctk/ctktoolbutton.c:287
+#: ctk/ctkstack.c:530 ctk/ctktoolbutton.c:248
 msgid "Icon name"
 msgstr "Назив иконице"
 
@@ -7761,6 +7633,10 @@ msgstr "Штек"
 msgid "Associated stack for this CtkStackSidebar"
 msgstr "Припадајућа хрпа за овај CtkStackSidebar"
 
+#: ctk/ctkstackswitcher.c:686 ctk/ctktrayicon-x11.c:178
+msgid "Icon Size"
+msgstr "Величина иконице"
+
 #: ctk/ctkstackswitcher.c:687
 msgid "Symbolic size to use for named icon"
 msgstr "Симболичка величина која ће се користити за именоване иконице"
@@ -7768,6 +7644,62 @@ msgstr "Симболичка величина која ће се користи�
 #: ctk/ctkstatusbar.c:178
 msgid "Style of bevel around the statusbar text"
 msgstr "Начин приказа удубљења око текста на траци стања"
+
+#: ctk/ctkstatusicon.c:287
+msgid "The size of the icon"
+msgstr "Величина иконице"
+
+#: ctk/ctkstatusicon.c:297
+msgid "The screen where this status icon will be displayed"
+msgstr "Екран на којем ће се приказати ова иконица стања"
+
+#: ctk/ctkstatusicon.c:305
+msgid "Whether the status icon is visible"
+msgstr "Да ли је иконица стања видљива"
+
+#: ctk/ctkstatusicon.c:321
+msgid "Whether the status icon is embedded"
+msgstr "Да ли је иконица стања угњеждена"
+
+#: ctk/ctkstatusicon.c:337 ctk/ctktrayicon-x11.c:128
+msgid "The orientation of the tray"
+msgstr "Усмерење фиоке"
+
+#: ctk/ctkstatusicon.c:364 ctk/ctkwidget.c:1285
+msgid "Has tooltip"
+msgstr "Има савет"
+
+#: ctk/ctkstatusicon.c:365
+msgid "Whether this tray icon has a tooltip"
+msgstr "Да ли иконица фиоке има савет"
+
+#: ctk/ctkstatusicon.c:391 ctk/ctkwidget.c:1309
+msgid "Tooltip Text"
+msgstr "Текст савета"
+
+#: ctk/ctkstatusicon.c:392 ctk/ctkwidget.c:1310 ctk/ctkwidget.c:1334
+msgid "The contents of the tooltip for this widget"
+msgstr "Садржај савета овог елемента"
+
+#: ctk/ctkstatusicon.c:415 ctk/ctkwidget.c:1333
+msgid "Tooltip markup"
+msgstr "Ознаке савета"
+
+#: ctk/ctkstatusicon.c:416
+msgid "The contents of the tooltip for this tray icon"
+msgstr "Садржај савета ове иконице фиоке"
+
+#: ctk/ctkstatusicon.c:434
+msgid "The title of this tray icon"
+msgstr "Наслов ове иконице фиоке"
+
+#: ctk/ctkstyle.c:466
+msgid "Style context"
+msgstr "Садржај стила"
+
+#: ctk/ctkstyle.c:467
+msgid "CtkStyleContext to get style from"
+msgstr "Из ког садржаја Гтк стила ће бити узет стил"
 
 #: ctk/ctkstylecontext.c:230
 msgid "The associated CdkScreen"
@@ -8333,6 +8265,18 @@ msgstr "Боја подвлачења грешака"
 msgid "Color with which to draw error-indication underlines"
 msgstr "Боја којом се исцртавају подвлаке за истицање грешака"
 
+#: ctk/ctktoggleaction.c:114
+msgid "Create the same proxies as a radio action"
+msgstr "Прави исте посреднике као и радио-радња"
+
+#: ctk/ctktoggleaction.c:115
+msgid "Whether the proxies for this action look like radio action proxies"
+msgstr "Да ли посредници за ову радњу изгледају као посредници за радио-радње"
+
+#: ctk/ctktoggleaction.c:130
+msgid "Whether the toggle action should be active"
+msgstr "Да ли прекидачка радња треба да буде радна или не"
+
 #: ctk/ctktogglebutton.c:189 ctk/ctktoggletoolbutton.c:131
 msgid "If the toggle button should be pressed in"
 msgstr "Да ли прекидачко дугме треба да буде притиснуто или не"
@@ -8427,11 +8371,11 @@ msgstr "Врста удубљења око дугмића на траци ала
 msgid "Style of bevel around the toolbar"
 msgstr "Врста удубљења око траке алата"
 
-#: ctk/ctktoolbutton.c:244
+#: ctk/ctktoolbutton.c:205
 msgid "Text to show in the item."
 msgstr "Текст који се приказује у ставци."
 
-#: ctk/ctktoolbutton.c:251
+#: ctk/ctktoolbutton.c:212
 msgid ""
 "If set, an underline in the label property indicates that the next character "
 "should be used for the mnemonic accelerator key in the overflow menu"
@@ -8439,35 +8383,35 @@ msgstr ""
 "Ако је постављено, подвлачење означава да се следећи знак користи као "
 "пречица у приказаном изборнику"
 
-#: ctk/ctktoolbutton.c:258
+#: ctk/ctktoolbutton.c:219
 msgid "Widget to use as the item label"
 msgstr "Елемент који се користи као ознака ставке"
 
-#: ctk/ctktoolbutton.c:269
+#: ctk/ctktoolbutton.c:230
 msgid "Stock Id"
 msgstr "Иб штока"
 
-#: ctk/ctktoolbutton.c:270
+#: ctk/ctktoolbutton.c:231
 msgid "The stock icon displayed on the item"
 msgstr "Испоручена иконица приказана уз ставку"
 
-#: ctk/ctktoolbutton.c:288
+#: ctk/ctktoolbutton.c:249
 msgid "The name of the themed icon displayed on the item"
 msgstr "Иконица из теме приказана уз ставку"
 
-#: ctk/ctktoolbutton.c:294
+#: ctk/ctktoolbutton.c:255
 msgid "Icon widget"
 msgstr "Елемент иконице"
 
-#: ctk/ctktoolbutton.c:295
+#: ctk/ctktoolbutton.c:256
 msgid "Icon widget to display in the item"
 msgstr "Елемент иконице који се приказује уз ставку"
 
-#: ctk/ctktoolbutton.c:311
+#: ctk/ctktoolbutton.c:272
 msgid "Icon spacing"
 msgstr "Размак иконице"
 
-#: ctk/ctktoolbutton.c:312
+#: ctk/ctktoolbutton.c:273
 msgid "Spacing in pixels between the icon and label"
 msgstr "Размак између иконице и ознаке, у пикселима"
 
@@ -8560,6 +8504,42 @@ msgid ""
 "Whether the item group should receive extra space when the palette grows"
 msgstr ""
 "Да ли група ставки треба да добије додатни простор када се увећа палета"
+
+#: ctk/ctktrayicon-x11.c:137
+msgid "Foreground color for symbolic icons"
+msgstr "Боја исцртавања за симболичке иконице"
+
+#: ctk/ctktrayicon-x11.c:144
+msgid "Error color"
+msgstr "Боја грешке"
+
+#: ctk/ctktrayicon-x11.c:145
+msgid "Error color for symbolic icons"
+msgstr "Боја грешке за симболичке иконице"
+
+#: ctk/ctktrayicon-x11.c:152
+msgid "Warning color"
+msgstr "Боја упозорења"
+
+#: ctk/ctktrayicon-x11.c:153
+msgid "Warning color for symbolic icons"
+msgstr "Боја упозорења за симболичке иконице"
+
+#: ctk/ctktrayicon-x11.c:160
+msgid "Success color"
+msgstr "Боја успеха"
+
+#: ctk/ctktrayicon-x11.c:161
+msgid "Success color for symbolic icons"
+msgstr "Боја успеха за симболичке иконице"
+
+#: ctk/ctktrayicon-x11.c:169
+msgid "Padding that should be put around icons in the tray"
+msgstr "Испуњавање које треба поставити око иконица у палети"
+
+#: ctk/ctktrayicon-x11.c:179
+msgid "The pixel size that icons should be forced to, or zero"
+msgstr "Величина у тачкама на коју иконице морају бити постављене, или нула"
 
 #: ctk/ctktreemenu.c:265
 msgid "TreeMenu model"
@@ -8926,6 +8906,18 @@ msgstr "ИБ за уређење колоне"
 #: ctk/ctktreeviewcolumn.c:382
 msgid "Logical sort column ID this column sorts on when selected for sorting"
 msgstr "Логички ИБ колона које се користе приликом уређивања"
+
+#: ctk/ctkuimanager.c:453
+msgid "Whether tearoff menu items should be added to menus"
+msgstr "Да ли се додају ставке изборника за отцепљивање у изборнике"
+
+#: ctk/ctkuimanager.c:460
+msgid "Merged UI definition"
+msgstr "Спојена одредница сучеља"
+
+#: ctk/ctkuimanager.c:461
+msgid "An XML string describing the merged UI"
+msgstr "ИксМЛ ниска која описује спојено сучеље"
 
 #: ctk/ctkviewport.c:409
 msgid "Determines how the shadowed box around the viewport is drawn"

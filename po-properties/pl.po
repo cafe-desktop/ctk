@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk-properties\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-26 06:08+0000\n"
+"POT-Creation-Date: 2022-03-23 18:06+0100\n"
 "PO-Revision-Date: 2020-06-27 12:05+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
@@ -224,77 +224,76 @@ msgstr "Obiekt rysujący komórkę"
 msgid "The cell renderer represented by this accessible"
 msgstr "Obiekt rysujący komórkę przedstawiany przez ten obiekt dostępności"
 
-#: ctk/ctkaction.c:243 ctk/ctkactiongroup.c:200
+#: ctk/ctkaction.c:233 ctk/ctkactiongroup.c:196
 #: ctk/deprecated/ctkthemingengine.c:247 ctk/ctkcssnode.c:638
 #: ctk/ctkprinter.c:121 ctk/ctkstack.c:516 ctk/ctktextmark.c:136
 msgid "Name"
 msgstr "Nazwa"
 
-#: ctk/ctkaction.c:244
+#: ctk/ctkaction.c:234
 msgid "A unique name for the action."
 msgstr "Unikalna nazwa dla czynności."
 
-#: ctk/ctkaction.c:264 ctk/ctkbutton.c:281 ctk/ctkexpander.c:308
+#: ctk/ctkaction.c:252 ctk/ctkbutton.c:281 ctk/ctkexpander.c:308
 #: ctk/ctkframe.c:231 ctk/ctklabel.c:805 ctk/ctkmenuitem.c:789
-#: ctk/ctktoolbutton.c:243 ctk/ctktoolitemgroup.c:1639
+#: ctk/ctktoolbutton.c:204 ctk/ctktoolitemgroup.c:1639
 msgid "Label"
 msgstr "Etykieta"
 
-#: ctk/ctkaction.c:265
+#: ctk/ctkaction.c:253
 msgid "The label used for menu items and buttons that activate this action."
 msgstr ""
 "Etykieta używana dla pozycji menu i przycisków aktywujących tę czynność."
 
-#: ctk/ctkaction.c:284
+#: ctk/ctkaction.c:269
 msgid "Short label"
 msgstr "Krótka etykieta"
 
-#: ctk/ctkaction.c:285
+#: ctk/ctkaction.c:270
 msgid "A shorter label that may be used on toolbar buttons."
 msgstr "Krótsza etykieta, którą można użyć na przyciskach paska narzędziowego."
 
-#: ctk/ctkaction.c:300
+#: ctk/ctkaction.c:283
 msgid "Tooltip"
 msgstr "Podpowiedź"
 
-#: ctk/ctkaction.c:301
+#: ctk/ctkaction.c:284
 msgid "A tooltip for this action."
 msgstr "Podpowiedź dla tej czynności."
 
-#: ctk/ctkaction.c:319
+#: ctk/ctkaction.c:299
 msgid "Stock Icon"
 msgstr "Ikona standardowa"
 
-#: ctk/ctkaction.c:320
+#: ctk/ctkaction.c:300
 msgid "The stock icon displayed in widgets representing this action."
 msgstr ""
 "Standardowa ikona wyświetlana w widżetach reprezentujących tę czynność."
 
-#: ctk/ctkaction.c:342 ctk/ctkstatusicon.c:279
+#: ctk/ctkaction.c:320 ctk/ctkstatusicon.c:269
 msgid "GIcon"
 msgstr "GIcon"
 
-#: ctk/ctkaction.c:343 ctk/ctkstatusicon.c:280
-#: ctk/ctkcellrendererpixbuf.c:282 ctk/ctkimage.c:360
+#: ctk/ctkaction.c:321 ctk/ctkcellrendererpixbuf.c:282 ctk/ctkimage.c:358
+#: ctk/ctkstatusicon.c:270
 msgid "The GIcon being displayed"
 msgstr "Wyświetlana ikona GIcon"
 
-#: ctk/ctkaction.c:365 ctk/ctkstatusicon.c:263
-#: ctk/ctkcellrendererpixbuf.c:245 ctk/ctkimage.c:343 ctk/ctkprinter.c:170
-#: ctk/ctkwindow.c:890
+#: ctk/ctkaction.c:341 ctk/ctkcellrendererpixbuf.c:245 ctk/ctkimage.c:341
+#: ctk/ctkprinter.c:170 ctk/ctkstatusicon.c:253 ctk/ctkwindow.c:890
 msgid "Icon Name"
 msgstr "Nazwa ikony"
 
-#: ctk/ctkaction.c:366 ctk/ctkstatusicon.c:264
-#: ctk/ctkcellrendererpixbuf.c:246 ctk/ctkimage.c:344
+#: ctk/ctkaction.c:342 ctk/ctkcellrendererpixbuf.c:246 ctk/ctkimage.c:342
+#: ctk/ctkstatusicon.c:254
 msgid "The name of the icon from the icon theme"
 msgstr "Nazwa ikony z motywu ikon"
 
-#: ctk/ctkaction.c:381 ctk/ctktoolitem.c:179
+#: ctk/ctkaction.c:354 ctk/ctktoolitem.c:179
 msgid "Visible when horizontal"
 msgstr "Widoczny, gdy poziomy"
 
-#: ctk/ctkaction.c:382 ctk/ctktoolitem.c:180
+#: ctk/ctkaction.c:355 ctk/ctktoolitem.c:180
 msgid ""
 "Whether the toolbar item is visible when the toolbar is in a horizontal "
 "orientation."
@@ -302,11 +301,11 @@ msgstr ""
 "Określa, czy element paska narzędziowego jest widoczny, gdy pasek "
 "narzędziowy jest ułożony poziomo."
 
-#: ctk/ctkaction.c:400
+#: ctk/ctkaction.c:370
 msgid "Visible when overflown"
 msgstr "Widoczny, gdy przepełniony"
 
-#: ctk/ctkaction.c:401
+#: ctk/ctkaction.c:371
 msgid ""
 "When TRUE, toolitem proxies for this action are represented in the toolbar "
 "overflow menu."
@@ -314,11 +313,11 @@ msgstr ""
 "Określa, czy pośredniki elementu tej operacji będą przedstawione w menu "
 "przepełnionego paska narzędziowego."
 
-#: ctk/ctkaction.c:417 ctk/ctktoolitem.c:186
+#: ctk/ctkaction.c:384 ctk/ctktoolitem.c:186
 msgid "Visible when vertical"
 msgstr "Widoczny, gdy pionowy"
 
-#: ctk/ctkaction.c:418 ctk/ctktoolitem.c:187
+#: ctk/ctkaction.c:385 ctk/ctktoolitem.c:187
 msgid ""
 "Whether the toolbar item is visible when the toolbar is in a vertical "
 "orientation."
@@ -326,11 +325,11 @@ msgstr ""
 "Określa, czy element paska narzędziowego jest widoczny, gdy pasek "
 "narzędziowy jest ułożony pionowo."
 
-#: ctk/ctkaction.c:434 ctk/ctktoolitem.c:193
+#: ctk/ctkaction.c:398 ctk/ctktoolitem.c:193
 msgid "Is important"
 msgstr "Jest ważna"
 
-#: ctk/ctkaction.c:435
+#: ctk/ctkaction.c:399
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
 "this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
@@ -339,38 +338,38 @@ msgstr ""
 "TRUE pośrednicy obiektu narzędziowego dla tej czynności wyświetlą tekst "
 "w trybie CTK_TOOLBAR_BOTH_HORIZ."
 
-#: ctk/ctkaction.c:451
+#: ctk/ctkaction.c:412
 msgid "Hide if empty"
 msgstr "Ukrywanie, jeśli pusta"
 
-#: ctk/ctkaction.c:452
+#: ctk/ctkaction.c:413
 msgid "When TRUE, empty menu proxies for this action are hidden."
 msgstr "Określa, czy pośrednicy pustego menu dla tej czynności będą ukrywani."
 
-#: ctk/ctkaction.c:466 ctk/ctkactiongroup.c:214
-#: ctk/ctkcellrenderer.c:308 ctk/ctkwidget.c:1155
+#: ctk/ctkaction.c:424 ctk/ctkactiongroup.c:208 ctk/ctkcellrenderer.c:308
+#: ctk/ctkwidget.c:1155
 msgid "Sensitive"
 msgstr "Czuły"
 
-#: ctk/ctkaction.c:467
+#: ctk/ctkaction.c:425
 msgid "Whether the action is enabled."
 msgstr "Określa, czy czynność jest dostępna."
 
-#: ctk/ctkaction.c:481 ctk/ctkactiongroup.c:228
-#: ctk/ctkstatusicon.c:314 ctk/ctkcssnode.c:649
-#: ctk/ctknativedialog.c:242 ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1148
+#: ctk/ctkaction.c:436 ctk/ctkactiongroup.c:220 ctk/ctkcssnode.c:649
+#: ctk/ctknativedialog.c:242 ctk/ctkstatusicon.c:304
+#: ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1148
 msgid "Visible"
 msgstr "Widoczność"
 
-#: ctk/ctkaction.c:482
+#: ctk/ctkaction.c:437
 msgid "Whether the action is visible."
 msgstr "Określa, czy czynność jest widoczna."
 
-#: ctk/ctkaction.c:497
+#: ctk/ctkaction.c:449
 msgid "Action Group"
 msgstr "Grupa czynności"
 
-#: ctk/ctkaction.c:498
+#: ctk/ctkaction.c:450
 msgid ""
 "The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
@@ -378,49 +377,47 @@ msgstr ""
 "CtkActionGroup, z którą jest powiązana CtkAction lub NULL (dla wewnętrznego "
 "użytku)."
 
-#: ctk/ctkaction.c:519 ctk/ctkimagemenuitem.c:264
-#: ctk/ctkbutton.c:393
+#: ctk/ctkaction.c:468 ctk/ctkbutton.c:393 ctk/ctkimagemenuitem.c:254
 msgid "Always show image"
 msgstr "Stałe wyświetlanie obrazu"
 
-#: ctk/ctkaction.c:520 ctk/ctkimagemenuitem.c:265
-#: ctk/ctkbutton.c:394
+#: ctk/ctkaction.c:469 ctk/ctkbutton.c:394 ctk/ctkimagemenuitem.c:255
 msgid "Whether the image will always be shown"
 msgstr "Określa, czy obraz będzie stale wyświetlany"
 
-#: ctk/ctkactiongroup.c:201
+#: ctk/ctkactiongroup.c:197
 msgid "A name for the action group."
 msgstr "Nazwa dla grupy czynności."
 
-#: ctk/ctkactiongroup.c:215
+#: ctk/ctkactiongroup.c:209
 msgid "Whether the action group is enabled."
 msgstr "Określa, czy grupa czynności jest dostępna."
 
-#: ctk/ctkactiongroup.c:229
+#: ctk/ctkactiongroup.c:221
 msgid "Whether the action group is visible."
 msgstr "Określa, czy grupa czynności jest widoczna."
 
-#: ctk/ctkactiongroup.c:242
+#: ctk/ctkactiongroup.c:232
 msgid "Accelerator Group"
 msgstr "Grupa klawiszy skrótów"
 
-#: ctk/ctkactiongroup.c:243
+#: ctk/ctkactiongroup.c:233
 msgid "The accelerator group the actions of this group should use."
 msgstr "Grupa klawiszy skrótów, której powinny używać czynności tej grupy."
 
-#: ctk/ctkactivatable.c:290
+#: ctk/ctkactivatable.c:286
 msgid "Related Action"
 msgstr "Powiązana czynność"
 
-#: ctk/ctkactivatable.c:291
+#: ctk/ctkactivatable.c:287
 msgid "The action this activatable will activate and receive updates from"
 msgstr "Czynność, która zostanie aktywowana i z której otrzyma aktualizacje"
 
-#: ctk/ctkactivatable.c:315
+#: ctk/ctkactivatable.c:309
 msgid "Use Action Appearance"
 msgstr "Użycie wyglądu czynności"
 
-#: ctk/ctkactivatable.c:316
+#: ctk/ctkactivatable.c:310
 msgid "Whether to use the related actions appearance properties"
 msgstr "Określa, czy używać właściwości wyglądu powiązanych czynności"
 
@@ -676,31 +673,6 @@ msgstr ""
 "Wartość logiczna określająca, czy element potomny ramki uchwytu jest "
 "dołączony lub odłączony."
 
-#: ctk/ctkimagemenuitem.c:226 ctk/ctkbutton.c:360
-msgid "Image widget"
-msgstr "Widżet obrazu"
-
-#: ctk/ctkimagemenuitem.c:227
-msgid "Child widget to appear next to the menu text"
-msgstr "Widżet potomny występujący obok wpisu pozycji menu"
-
-#: ctk/ctkimagemenuitem.c:243 ctk/ctkbutton.c:300
-msgid "Use stock"
-msgstr "Użycie standardowego"
-
-#: ctk/ctkimagemenuitem.c:244
-msgid "Whether to use the label text to create a stock menu item"
-msgstr ""
-"Określa, czy używać tekstu etykiety do utworzenia standardowego elementu menu"
-
-#: ctk/ctkimagemenuitem.c:281 ctk/ctkmenu.c:655
-msgid "Accel Group"
-msgstr "Grupa klawiszy skrótów"
-
-#: ctk/ctkimagemenuitem.c:282
-msgid "The Accel Group to use for stock accelerator keys"
-msgstr "Grupa skrótów używana dla podstawowych klawiszy skrótów"
-
 #: ctk/deprecated/ctkmisc.c:114 ctk/ctkentry.c:968 ctk/ctklabel.c:851
 msgid "X align"
 msgstr "Wyrównanie poziome"
@@ -739,202 +711,45 @@ msgid ""
 "The amount of space to add on the top and bottom of the widget, in pixels"
 msgstr "Ilość miejsca w pikselach dodawana powyżej i poniżej widżetu"
 
-#: ctk/deprecated/ctknumerableicon.c:642
+#: ctk/deprecated/ctknumerableicon.c:643
 msgid "Icon's count"
 msgstr "Liczba ikon"
 
-#: ctk/deprecated/ctknumerableicon.c:643
+#: ctk/deprecated/ctknumerableicon.c:644
 msgid "The count of the emblem currently displayed"
 msgstr "Licznik obecnie wyświetlanego emblematu"
 
-#: ctk/deprecated/ctknumerableicon.c:649
+#: ctk/deprecated/ctknumerableicon.c:650
 msgid "Icon's label"
 msgstr "Etykieta ikony"
 
-#: ctk/deprecated/ctknumerableicon.c:650
+#: ctk/deprecated/ctknumerableicon.c:651
 msgid "The label to be displayed over the icon"
 msgstr "Etykieta do wyświetlania nad ikoną"
 
-#: ctk/deprecated/ctknumerableicon.c:656
+#: ctk/deprecated/ctknumerableicon.c:657
 msgid "Icon's style context"
 msgstr "Kontekst stylu ikony"
 
-#: ctk/deprecated/ctknumerableicon.c:657
+#: ctk/deprecated/ctknumerableicon.c:658
 msgid "The style context to theme the icon appearance"
 msgstr "Kontekst stylu do nałożenia na wygląd ikony"
 
-#: ctk/deprecated/ctknumerableicon.c:663
+#: ctk/deprecated/ctknumerableicon.c:664
 msgid "Background icon"
 msgstr "Ikona tła"
 
-#: ctk/deprecated/ctknumerableicon.c:664
+#: ctk/deprecated/ctknumerableicon.c:665
 msgid "The icon for the number emblem background"
 msgstr "Ikona dla tła emblematu liczby"
 
-#: ctk/deprecated/ctknumerableicon.c:670
+#: ctk/deprecated/ctknumerableicon.c:671
 msgid "Background icon name"
 msgstr "Nazwa ikony tła"
 
-#: ctk/deprecated/ctknumerableicon.c:671
+#: ctk/deprecated/ctknumerableicon.c:672
 msgid "The icon name for the number emblem background"
 msgstr "Nazwa ikony dla tła emblematu liczby"
-
-#: ctk/ctkradioaction.c:120
-msgid "The value"
-msgstr "Wartość"
-
-#: ctk/ctkradioaction.c:121
-msgid ""
-"The value returned by ctk_radio_action_get_current_value() when this action "
-"is the current action of its group."
-msgstr ""
-"Wartość zwracana przez funkcję ctk_radio_action_get_current_value(), gdy ta "
-"czynność jest obecną czynnością w swojej grupie."
-
-#: ctk/ctkradioaction.c:139 ctk/ctkradiobutton.c:184
-#: ctk/ctkradiomenuitem.c:424 ctk/ctkradiotoolbutton.c:83
-msgid "Group"
-msgstr "Grupa"
-
-#: ctk/ctkradioaction.c:140
-msgid "The radio action whose group this action belongs to."
-msgstr "Grupa, do której należy ta czynność radiowa."
-
-#: ctk/ctkradioaction.c:157
-msgid "The current value"
-msgstr "Bieżąca wartość"
-
-#: ctk/ctkradioaction.c:158
-msgid ""
-"The value property of the currently active member of the group to which this "
-"action belongs."
-msgstr ""
-"Wartość właściwości aktywnego członka grupy, do której ta czynność należy."
-
-#: ctk/ctkrecentaction.c:674 ctk/ctkrecentchoosermenu.c:239
-msgid "Show Numbers"
-msgstr "Wyświetlanie liczb"
-
-#: ctk/ctkrecentaction.c:675 ctk/ctkrecentchoosermenu.c:240
-msgid "Whether the items should be displayed with a number"
-msgstr "Określa, czy elementy powinny być wyświetlane z liczbą"
-
-#: ctk/ctkstatusicon.c:234 ctk/ctkimage.c:256
-msgid "Pixbuf"
-msgstr "Bufor pikseli"
-
-#: ctk/ctkstatusicon.c:235 ctk/ctkimage.c:257
-msgid "A GdkPixbuf to display"
-msgstr "Obiekt GdkPixbuf do wyświetlenia"
-
-#: ctk/ctkstatusicon.c:242 ctk/ctkimage.c:270
-#: ctk/ctkrecentmanager.c:289
-msgid "Filename"
-msgstr "Nazwa pliku"
-
-#: ctk/ctkstatusicon.c:243 ctk/ctkimage.c:271
-msgid "Filename to load and display"
-msgstr "Nazwa pliku do wczytania i wyświetlenia"
-
-#: ctk/ctkstatusicon.c:255 ctk/ctkcellrendererpixbuf.c:195
-#: ctk/ctkimage.c:282
-msgid "Stock ID"
-msgstr "Identyfikator standardowego elementu"
-
-#: ctk/ctkstatusicon.c:256 ctk/ctkimage.c:283
-msgid "Stock ID for a stock image to display"
-msgstr "Identyfikator wyświetlanego standardowego obrazu"
-
-#: ctk/ctkstatusicon.c:287 ctk/ctkimage.c:380
-msgid "Storage type"
-msgstr "Sposób zapisu"
-
-#: ctk/ctkstatusicon.c:288 ctk/ctkimage.c:381
-msgid "The representation being used for image data"
-msgstr "Sposób zapisu danych obrazu"
-
-#: ctk/ctkstatusicon.c:296 ctk/ctkcellrendererpixbuf.c:210
-#: ctk/ctkcellrendererspinner.c:159 ctk/ctkrecentmanager.c:304
-msgid "Size"
-msgstr "Rozmiar"
-
-#: ctk/ctkstatusicon.c:297
-msgid "The size of the icon"
-msgstr "Rozmiar ikony"
-
-#: ctk/ctkstatusicon.c:306 ctk/ctkinvisible.c:98
-#: ctk/ctkmountoperation.c:183 ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:897
-msgid "Screen"
-msgstr "Ekran"
-
-#: ctk/ctkstatusicon.c:307
-msgid "The screen where this status icon will be displayed"
-msgstr "Ekran, na którym ten status będzie wyświetlany"
-
-#: ctk/ctkstatusicon.c:315
-msgid "Whether the status icon is visible"
-msgstr "Określa, czy ikona stanu jest widoczna"
-
-#: ctk/ctkstatusicon.c:330 ctk/ctkplug.c:196
-msgid "Embedded"
-msgstr "Zagnieżdżona"
-
-#: ctk/ctkstatusicon.c:331
-msgid "Whether the status icon is embedded"
-msgstr "Określa, czy ikona stanu jest zagnieżdżona"
-
-#: ctk/ctkstatusicon.c:346 ctk/ctktrayicon-x11.c:127
-#: ctk/ctkgesturepan.c:238 ctk/ctkorientable.c:61
-msgid "Orientation"
-msgstr "Ułożenie"
-
-#: ctk/ctkstatusicon.c:347 ctk/ctktrayicon-x11.c:128
-msgid "The orientation of the tray"
-msgstr "Orientacja obszaru powiadamiania"
-
-#: ctk/ctkstatusicon.c:374 ctk/ctkwidget.c:1285
-msgid "Has tooltip"
-msgstr "Podpowiedź"
-
-#: ctk/ctkstatusicon.c:375
-msgid "Whether this tray icon has a tooltip"
-msgstr "Określa, czy ta ikona zasobnika zawiera podpowiedź"
-
-#: ctk/ctkstatusicon.c:401 ctk/ctkwidget.c:1309
-msgid "Tooltip Text"
-msgstr "Tekst podpowiedzi"
-
-#: ctk/ctkstatusicon.c:402 ctk/ctkwidget.c:1310 ctk/ctkwidget.c:1334
-msgid "The contents of the tooltip for this widget"
-msgstr "Tekst podpowiedzi dla tego widżetu"
-
-#: ctk/ctkstatusicon.c:425 ctk/ctkwidget.c:1333
-msgid "Tooltip markup"
-msgstr "Znacznik podpowiedzi"
-
-#: ctk/ctkstatusicon.c:426
-msgid "The contents of the tooltip for this tray icon"
-msgstr "Zawartość podpowiedzi dla tej ikony zasobnika"
-
-#: ctk/ctkstatusicon.c:443 ctk/ctkcolorbutton.c:183
-#: ctk/ctkfilechooserbutton.c:443 ctk/ctkfontbutton.c:490
-#: ctk/ctkheaderbar.c:2027 ctk/ctkprintjob.c:133 ctk/ctkshortcutsgroup.c:308
-#: ctk/ctkshortcutssection.c:376 ctk/ctkshortcutsshortcut.c:575
-#: ctk/ctkstack.c:523 ctk/ctktreeviewcolumn.c:316
-msgid "Title"
-msgstr "Tytuł"
-
-#: ctk/ctkstatusicon.c:444
-msgid "The title of this tray icon"
-msgstr "Tytuł tej ikony zasobnika"
-
-#: ctk/ctkstyle.c:471
-msgid "Style context"
-msgstr "Kontekst stylu"
-
-#: ctk/ctkstyle.c:472
-msgid "CtkStyleContext to get style from"
-msgstr "CtkStyleContext, z którego pobrać styl"
 
 #: ctk/deprecated/ctktable.c:185
 msgid "Rows"
@@ -1054,92 +869,6 @@ msgstr ""
 #: ctk/deprecated/ctkthemingengine.c:248
 msgid "Theming engine name"
 msgstr "Nazwa mechanizmu motywu"
-
-#: ctk/ctktoggleaction.c:118
-msgid "Create the same proxies as a radio action"
-msgstr "Tworzenie takich samych pośredników jako czynność przycisku opcji"
-
-#: ctk/ctktoggleaction.c:119
-msgid "Whether the proxies for this action look like radio action proxies"
-msgstr ""
-"Określa, czy pośrednicy dla tej akcji wyglądają jak pośrednicy czynności "
-"przycisku opcji"
-
-#: ctk/ctktoggleaction.c:135 ctk/ctkcellrendererspinner.c:125
-#: ctk/ctkcheckmenuitem.c:209 ctk/ctkmenu.c:640 ctk/ctkmodelbutton.c:1211
-#: ctk/ctkmodelbutton.c:1212 ctk/ctkspinner.c:221 ctk/ctkswitch.c:878
-#: ctk/ctktogglebutton.c:188 ctk/ctktoggletoolbutton.c:130
-msgid "Active"
-msgstr "Aktywny"
-
-#: ctk/ctktoggleaction.c:136
-msgid "Whether the toggle action should be active"
-msgstr "Określa, czy czynność przełączania powinna być aktywna"
-
-#: ctk/ctktrayicon-x11.c:136 ctk/ctkcellrenderertext.c:334
-#: ctk/ctktexttag.c:277
-msgid "Foreground color"
-msgstr "Kolor elementu"
-
-#: ctk/ctktrayicon-x11.c:137
-msgid "Foreground color for symbolic icons"
-msgstr "Kolor ikon symbolicznych"
-
-#: ctk/ctktrayicon-x11.c:144
-msgid "Error color"
-msgstr "Kolor błędu"
-
-#: ctk/ctktrayicon-x11.c:145
-msgid "Error color for symbolic icons"
-msgstr "Kolor błędu ikon symbolicznych"
-
-#: ctk/ctktrayicon-x11.c:152
-msgid "Warning color"
-msgstr "Kolor ostrzeżenia"
-
-#: ctk/ctktrayicon-x11.c:153
-msgid "Warning color for symbolic icons"
-msgstr "Kolor ostrzeżenia ikon symbolicznych"
-
-#: ctk/ctktrayicon-x11.c:160
-msgid "Success color"
-msgstr "Kolor powodzenia"
-
-#: ctk/ctktrayicon-x11.c:161
-msgid "Success color for symbolic icons"
-msgstr "Kolor powodzenia ikon symbolicznych"
-
-#: ctk/ctktrayicon-x11.c:168 ctk/ctkbox.c:350
-msgid "Padding"
-msgstr "Dopełnienie"
-
-#: ctk/ctktrayicon-x11.c:169
-msgid "Padding that should be put around icons in the tray"
-msgstr "Dopełnienie, jakie powinno zostać umieszczone wokół ikon w zasobniku"
-
-#: ctk/ctktrayicon-x11.c:178 ctk/ctkstackswitcher.c:686
-msgid "Icon Size"
-msgstr "Rozmiar ikon"
-
-#: ctk/ctktrayicon-x11.c:179
-msgid "The pixel size that icons should be forced to, or zero"
-msgstr "Rozmiar w pikselach, do którego zmuszać ikony lub zero"
-
-#: ctk/ctkuimanager.c:463 ctk/ctkcombobox.c:1010
-msgid "Add tearoffs to menus"
-msgstr "Dodawanie elementu odłączania do menu"
-
-#: ctk/ctkuimanager.c:464
-msgid "Whether tearoff menu items should be added to menus"
-msgstr "Określa, czy elementy odłączane menu powinny być dodawane do menu"
-
-#: ctk/ctkuimanager.c:471
-msgid "Merged UI definition"
-msgstr "Definicja scalonego interfejsu użytkownika"
-
-#: ctk/ctkuimanager.c:472
-msgid "An XML string describing the merged UI"
-msgstr "Napis XML opisujący scalony interfejs użytkownika"
 
 #: ctk/ctkaboutdialog.c:349
 msgid "Program name"
@@ -1748,6 +1477,10 @@ msgstr ""
 "Określa, czy dodatkowe miejsce dla elementu potomnego powinno być jej "
 "przydzielone, czy też użyte w postaci dopełnienia"
 
+#: ctk/ctkbox.c:350 ctk/ctktrayicon-x11.c:168
+msgid "Padding"
+msgstr "Dopełnienie"
+
 #: ctk/ctkbox.c:351
 msgid "Extra space to put between the child and its neighbors, in pixels"
 msgstr ""
@@ -1769,7 +1502,7 @@ msgstr ""
 "Tekst etykiety wewnątrz przycisku, jeśli przycisk zawiera widżet etykiety"
 
 #: ctk/ctkbutton.c:288 ctk/ctkexpander.c:316 ctk/ctklabel.c:826
-#: ctk/ctkmenuitem.c:803 ctk/ctktoolbutton.c:250
+#: ctk/ctkmenuitem.c:803 ctk/ctktoolbutton.c:211
 msgid "Use underline"
 msgstr "Użycie podkreślenia"
 
@@ -1781,6 +1514,10 @@ msgid ""
 msgstr ""
 "Określa, czy podkreślenie jest używane w tekście w roli znacznika, który "
 "poprzedza znak skrótu"
+
+#: ctk/ctkbutton.c:300 ctk/ctkimagemenuitem.c:236
+msgid "Use stock"
+msgstr "Użycie standardowego"
 
 #: ctk/ctkbutton.c:301
 msgid ""
@@ -1804,6 +1541,10 @@ msgstr "Wyrównanie poziome potomka"
 #: ctk/ctkbutton.c:346
 msgid "Vertical alignment for child"
 msgstr "Wyrównanie pionowe potomka"
+
+#: ctk/ctkbutton.c:360 ctk/ctkimagemenuitem.c:221
+msgid "Image widget"
+msgstr "Widżet obrazu"
 
 #: ctk/ctkbutton.c:361
 msgid "Child widget to appear next to the button text"
@@ -2303,9 +2044,18 @@ msgstr "powierzchnia"
 msgid "The surface to render"
 msgstr "Powierzchnia do rysowania"
 
+#: ctk/ctkcellrendererpixbuf.c:195 ctk/ctkimage.c:280 ctk/ctkstatusicon.c:245
+msgid "Stock ID"
+msgstr "Identyfikator standardowego elementu"
+
 #: ctk/ctkcellrendererpixbuf.c:196
 msgid "The stock ID of the stock icon to render"
 msgstr "Identyfikator rysowanej standardowej ikony"
+
+#: ctk/ctkcellrendererpixbuf.c:210 ctk/ctkcellrendererspinner.c:159
+#: ctk/ctkrecentmanager.c:303 ctk/ctkstatusicon.c:286
+msgid "Size"
+msgstr "Rozmiar"
 
 #: ctk/ctkcellrendererpixbuf.c:211
 msgid "The CtkIconSize value that specifies the size of the rendered icon"
@@ -2328,7 +2078,7 @@ msgid "Whether the rendered pixbuf should be colorized according to the state"
 msgstr ""
 "Określa, czy rysowany bufor pikseli powinien mieć kolor zgodny ze stanem"
 
-#: ctk/ctkcellrendererpixbuf.c:281 ctk/ctkimage.c:359 ctk/ctkmodelbutton.c:1166
+#: ctk/ctkcellrendererpixbuf.c:281 ctk/ctkimage.c:357 ctk/ctkmodelbutton.c:1166
 #: ctk/ctkshortcutsshortcut.c:550 ctk/ctkwindow.c:841
 msgid "Icon"
 msgstr "Ikona"
@@ -2412,6 +2162,13 @@ msgstr "Cyfry"
 msgid "The number of decimal places to display"
 msgstr "Liczba wyświetlanych pozycji dziesiętnych"
 
+#: ctk/ctkcellrendererspinner.c:125 ctk/ctkcheckmenuitem.c:209
+#: ctk/ctkmenu.c:640 ctk/ctkmodelbutton.c:1211 ctk/ctkmodelbutton.c:1212
+#: ctk/ctkspinner.c:221 ctk/ctkswitch.c:878 ctk/ctktoggleaction.c:129
+#: ctk/ctktogglebutton.c:188 ctk/ctktoggletoolbutton.c:130
+msgid "Active"
+msgstr "Aktywny"
+
 #: ctk/ctkcellrendererspinner.c:126
 msgid "Whether the spinner is active (ie. shown) in the cell"
 msgstr "Określa, czy spinner jest aktywny (tzn. wyświetlany) w komórce"
@@ -2483,6 +2240,10 @@ msgstr "Nazwa koloru elementu"
 #: ctk/ctkcellrenderertext.c:320 ctk/ctktexttag.c:263
 msgid "Foreground color as a string"
 msgstr "Kolor elementu w postaci napisu"
+
+#: ctk/ctkcellrenderertext.c:334 ctk/ctktexttag.c:277 ctk/ctktrayicon-x11.c:136
+msgid "Foreground color"
+msgstr "Kolor elementu"
 
 #: ctk/ctkcellrenderertext.c:335 ctk/ctktexttag.c:278
 msgid "Foreground color as a CdkColor"
@@ -2897,7 +2658,7 @@ msgstr ""
 msgid "Indicator Size"
 msgstr "Rozmiar wskaźnika"
 
-#: ctk/ctkcheckbutton.c:249 ctk/ctkexpander.c:406
+#: ctk/ctkcheckbutton.c:249 ctk/ctkexpander.c:413
 msgid "Indicator Spacing"
 msgstr "Odstępy wskaźnika"
 
@@ -2934,6 +2695,14 @@ msgstr "Użycie kanału alfa"
 #: ctk/ctkcolorbutton.c:169
 msgid "Whether to give the color an alpha value"
 msgstr "Określa, czy należy nadawać kolorowi wartości alfa"
+
+#: ctk/ctkcolorbutton.c:183 ctk/ctkfilechooserbutton.c:443
+#: ctk/ctkfontbutton.c:490 ctk/ctkheaderbar.c:2027 ctk/ctkprintjob.c:133
+#: ctk/ctkshortcutsgroup.c:308 ctk/ctkshortcutssection.c:376
+#: ctk/ctkshortcutsshortcut.c:575 ctk/ctkstack.c:523 ctk/ctkstatusicon.c:433
+#: ctk/ctktreeviewcolumn.c:316
+msgid "Title"
+msgstr "Tytuł"
 
 #: ctk/ctkcolorbutton.c:184
 msgid "The title of the color selection dialog"
@@ -2977,7 +2746,7 @@ msgstr "Bieżący kolor, jako CdkRGBA"
 msgid "Whether alpha should be shown"
 msgstr "Określa, czy alfa powinna być wyświetlana"
 
-#: ctk/ctkcolorchooserdialog.c:213 ctk/ctkcolorchooserwidget.c:704
+#: ctk/ctkcolorchooserdialog.c:213 ctk/ctkcolorchooserwidget.c:695
 msgid "Show editor"
 msgstr "Wyświetlanie edytora"
 
@@ -3044,6 +2813,10 @@ msgstr "Aktywny element"
 #: ctk/ctkcombobox.c:989
 msgid "The item which is currently active"
 msgstr "Obecnie aktywny element"
+
+#: ctk/ctkcombobox.c:1010 ctk/ctkuimanager.c:452
+msgid "Add tearoffs to menus"
+msgstr "Dodawanie elementu odłączania do menu"
 
 #: ctk/ctkcombobox.c:1011
 msgid "Whether dropdowns should have a tearoff menu item"
@@ -3847,7 +3620,7 @@ msgstr ""
 msgid "Space to put between the label and the child"
 msgstr "Przestrzeń między etykietą a elementem potomnym"
 
-#: ctk/ctkexpander.c:351 ctk/ctkframe.c:262 ctk/ctktoolbutton.c:257
+#: ctk/ctkexpander.c:351 ctk/ctkframe.c:262 ctk/ctktoolbutton.c:218
 #: ctk/ctktoolitemgroup.c:1646
 msgid "Label widget"
 msgstr "Widżet etykiety"
@@ -3856,19 +3629,19 @@ msgstr "Widżet etykiety"
 msgid "A widget to display in place of the usual expander label"
 msgstr "Widżet wyświetlany w miejscu zwykłej etykiety elementu rozwijającego"
 
-#: ctk/ctkexpander.c:359
+#: ctk/ctkexpander.c:366
 msgid "Label fill"
 msgstr "Wypełnianie etykiet"
 
-#: ctk/ctkexpander.c:360
+#: ctk/ctkexpander.c:367
 msgid "Whether the label widget should fill all available horizontal space"
 msgstr "Określa, czy widżet etykiety powinien wypełniać dostępną przestrzeń"
 
-#: ctk/ctkexpander.c:375
+#: ctk/ctkexpander.c:382
 msgid "Resize toplevel"
 msgstr "Zmiana rozmiaru okna najwyższego poziomu"
 
-#: ctk/ctkexpander.c:376
+#: ctk/ctkexpander.c:383
 msgid ""
 "Whether the expander will resize the toplevel window upon expanding and "
 "collapsing"
@@ -3876,15 +3649,15 @@ msgstr ""
 "Określa, czy element rozwijający będzie zmieniał rozmiar okna najwyższego "
 "poziomu podczas rozwijania i zwijania"
 
-#: ctk/ctkexpander.c:389 ctk/ctktoolitemgroup.c:1674 ctk/ctktreeview.c:1234
+#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1674 ctk/ctktreeview.c:1234
 msgid "Expander Size"
 msgstr "Rozmiar elementu rozwijającego"
 
-#: ctk/ctkexpander.c:390 ctk/ctktoolitemgroup.c:1675 ctk/ctktreeview.c:1235
+#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1675 ctk/ctktreeview.c:1235
 msgid "Size of the expander arrow"
 msgstr "Rozmiar strzałki rozwijającej drzewo"
 
-#: ctk/ctkexpander.c:407
+#: ctk/ctkexpander.c:414
 msgid "Spacing around expander arrow"
 msgstr "Przestrzeń dokoła strzałki rozwijającej"
 
@@ -3921,7 +3694,7 @@ msgid "The current filter for selecting which files are displayed"
 msgstr "Bieżący filtr służący do zaznaczania wyświetlanych plików"
 
 #: ctk/ctkfilechooser.c:388 ctk/ctkplacessidebar.c:4836
-#: ctk/ctkplacesview.c:2322
+#: ctk/ctkplacesview.c:2348
 msgid "Local Only"
 msgstr "Tylko lokalne"
 
@@ -4177,11 +3950,11 @@ msgstr "Funkcje czcionki jako ciąg"
 msgid "Language for which features have been selected"
 msgstr "Język, dla którego wybrano funkcje"
 
-#: ctk/ctkfontchooserwidget.c:697
+#: ctk/ctkfontchooserwidget.c:691
 msgid "The tweak action"
 msgstr "Działanie dostrajania"
 
-#: ctk/ctkfontchooserwidget.c:698
+#: ctk/ctkfontchooserwidget.c:692
 msgid "The toggle action to switch to the tweak page"
 msgstr "Działanie przełączenia do przejścia na stronę dostrajania"
 
@@ -4236,6 +4009,11 @@ msgstr "Współczynnik opóźnienia"
 #: ctk/ctkgesturelongpress.c:286
 msgid "Factor by which to modify the default timeout"
 msgstr "Współczynnik, o jaki modyfikować domyślny czas ograniczenia"
+
+#: ctk/ctkgesturepan.c:238 ctk/ctkorientable.c:61 ctk/ctkstatusicon.c:336
+#: ctk/ctktrayicon-x11.c:127
+msgid "Orientation"
+msgstr "Ułożenie"
 
 #: ctk/ctkgesturepan.c:239
 msgid "Allowed orientations"
@@ -4526,6 +4304,14 @@ msgstr "Wartość alfa prostokąta zaznaczania"
 msgid "Opacity of the selection box"
 msgstr "Nieprzezroczystość prostokąta zaznaczania"
 
+#: ctk/ctkimage.c:256 ctk/ctkstatusicon.c:226
+msgid "Pixbuf"
+msgstr "Bufor pikseli"
+
+#: ctk/ctkimage.c:257 ctk/ctkstatusicon.c:227
+msgid "A GdkPixbuf to display"
+msgstr "Obiekt GdkPixbuf do wyświetlenia"
+
 #: ctk/ctkimage.c:263
 msgid "Surface"
 msgstr "Powierzchnia"
@@ -4534,56 +4320,93 @@ msgstr "Powierzchnia"
 msgid "A cairo_surface_t to display"
 msgstr "cairo_surface_t do wyświetlenia"
 
-#: ctk/ctkimage.c:295
+#: ctk/ctkimage.c:270 ctk/ctkrecentmanager.c:288 ctk/ctkstatusicon.c:234
+msgid "Filename"
+msgstr "Nazwa pliku"
+
+#: ctk/ctkimage.c:271 ctk/ctkstatusicon.c:235
+msgid "Filename to load and display"
+msgstr "Nazwa pliku do wczytania i wyświetlenia"
+
+#: ctk/ctkimage.c:281 ctk/ctkstatusicon.c:246
+msgid "Stock ID for a stock image to display"
+msgstr "Identyfikator wyświetlanego standardowego obrazu"
+
+#: ctk/ctkimage.c:293
 msgid "Icon set"
 msgstr "Zbiór ikon"
 
-#: ctk/ctkimage.c:296
+#: ctk/ctkimage.c:294
 msgid "Icon set to display"
 msgstr "Zbiór ikon do wyświetlenia"
 
-#: ctk/ctkimage.c:303 ctk/ctkscalebutton.c:208 ctk/ctktoolbar.c:564
+#: ctk/ctkimage.c:301 ctk/ctkscalebutton.c:208 ctk/ctktoolbar.c:564
 #: ctk/ctktoolpalette.c:965
 msgid "Icon size"
 msgstr "Rozmiar ikony"
 
-#: ctk/ctkimage.c:304
+#: ctk/ctkimage.c:302
 msgid "Symbolic size to use for stock icon, icon set or named icon"
 msgstr ""
 "Symboliczny rozmiar używany przy standardowej ikonie, zbiorze ikon lub "
 "nazwanej ikonie"
 
-#: ctk/ctkimage.c:320
+#: ctk/ctkimage.c:318
 msgid "Pixel size"
 msgstr "Rozmiar w pikselach"
 
-#: ctk/ctkimage.c:321
+#: ctk/ctkimage.c:319
 msgid "Pixel size to use for named icon"
 msgstr "Rozmiar w pikselach używany przy nazwanych ikonach"
 
-#: ctk/ctkimage.c:328
+#: ctk/ctkimage.c:326
 msgid "Animation"
 msgstr "Animacja"
 
-#: ctk/ctkimage.c:329
+#: ctk/ctkimage.c:327
 msgid "GdkPixbufAnimation to display"
 msgstr "Obiekt GdkPixbufAnimation do wyświetlenia"
 
-#: ctk/ctkimage.c:373
+#: ctk/ctkimage.c:371
 msgid "Resource"
 msgstr "Zasób"
 
-#: ctk/ctkimage.c:374
+#: ctk/ctkimage.c:372
 msgid "The resource path being displayed"
 msgstr "Wyświetlana ścieżka zasobu"
 
-#: ctk/ctkimage.c:398
+#: ctk/ctkimage.c:378 ctk/ctkstatusicon.c:277
+msgid "Storage type"
+msgstr "Sposób zapisu"
+
+#: ctk/ctkimage.c:379 ctk/ctkstatusicon.c:278
+msgid "The representation being used for image data"
+msgstr "Sposób zapisu danych obrazu"
+
+#: ctk/ctkimage.c:396
 msgid "Use Fallback"
 msgstr "Użycie zapasowych nazw ikon"
 
-#: ctk/ctkimage.c:399
+#: ctk/ctkimage.c:397
 msgid "Whether to use icon names fallback"
 msgstr "Określa, czy używać zapasowych nazw ikon"
+
+#: ctk/ctkimagemenuitem.c:222
+msgid "Child widget to appear next to the menu text"
+msgstr "Widżet potomny występujący obok wpisu pozycji menu"
+
+#: ctk/ctkimagemenuitem.c:237
+msgid "Whether to use the label text to create a stock menu item"
+msgstr ""
+"Określa, czy używać tekstu etykiety do utworzenia standardowego elementu menu"
+
+#: ctk/ctkimagemenuitem.c:269 ctk/ctkmenu.c:655
+msgid "Accel Group"
+msgstr "Grupa klawiszy skrótów"
+
+#: ctk/ctkimagemenuitem.c:270
+msgid "The Accel Group to use for stock accelerator keys"
+msgstr "Grupa skrótów używana dla podstawowych klawiszy skrótów"
 
 #: ctk/ctkinfobar.c:450 ctk/ctkmessagedialog.c:189
 msgid "Message Type"
@@ -4620,6 +4443,11 @@ msgstr "Odstęp między elementami obszaru"
 #: ctk/ctkinfobar.c:583
 msgid "Width of border around the action area"
 msgstr "Szerokość krawędzi wokół obszaru czynności"
+
+#: ctk/ctkinvisible.c:98 ctk/ctkmountoperation.c:183 ctk/ctkstatusicon.c:296
+#: ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:897
+msgid "Screen"
+msgstr "Ekran"
 
 #: ctk/ctkinvisible.c:99 ctk/ctkwindow.c:898
 msgid "The screen where this window will be displayed"
@@ -5552,19 +5380,19 @@ msgstr "Aktywna karta jest wyświetlana z przerwą na dole"
 msgid "The orientation of the orientable"
 msgstr "Ułożenie elementu orientowalnego"
 
-#: ctk/ctkoverlay.c:783
+#: ctk/ctkoverlay.c:790
 msgid "Pass Through"
 msgstr "Przejście"
 
-#: ctk/ctkoverlay.c:783
+#: ctk/ctkoverlay.c:790
 msgid "Pass through input, does not affect main child"
 msgstr "Wejście przejścia, nie ma wpływu na główny element potomny"
 
-#: ctk/ctkoverlay.c:797
+#: ctk/ctkoverlay.c:804
 msgid "Index"
 msgstr "Indeks"
 
-#: ctk/ctkoverlay.c:798
+#: ctk/ctkoverlay.c:805
 msgid "The index of the overlay in the parent, -1 for the main child"
 msgstr ""
 "Indeks nakładki w elemencie nadrzędnym, -1 oznacza główny element potomny"
@@ -5660,11 +5488,11 @@ msgstr "Położenie do wybrania"
 msgid "The location to highlight in the sidebar"
 msgstr "Położenie do wyróżnienia na panelu bocznym"
 
-#: ctk/ctkplacessidebar.c:4805 ctk/ctkplacesview.c:2343
+#: ctk/ctkplacessidebar.c:4805 ctk/ctkplacesview.c:2369
 msgid "Open Flags"
 msgstr "Flagi otwarcia"
 
-#: ctk/ctkplacessidebar.c:4806 ctk/ctkplacesview.c:2344
+#: ctk/ctkplacessidebar.c:4806 ctk/ctkplacesview.c:2370
 msgid ""
 "Modes in which the calling application can open locations selected in the "
 "sidebar"
@@ -5713,7 +5541,7 @@ msgstr ""
 "Określa, czy panel boczny zawiera wbudowany skrót do ręcznego wprowadzania "
 "położenia"
 
-#: ctk/ctkplacessidebar.c:4837 ctk/ctkplacesview.c:2323
+#: ctk/ctkplacessidebar.c:4837 ctk/ctkplacesview.c:2349
 msgid "Whether the sidebar only includes local files"
 msgstr "Określa, czy panel boczny zawiera tylko lokalne pliki"
 
@@ -5751,19 +5579,19 @@ msgstr ""
 "Określa, czy wysyłać sygnał ::populate-popup dla wyskakujących okien, które "
 "nie są menu"
 
-#: ctk/ctkplacesview.c:2329
+#: ctk/ctkplacesview.c:2355
 msgid "Loading"
 msgstr "Wczytywanie"
 
-#: ctk/ctkplacesview.c:2330
+#: ctk/ctkplacesview.c:2356
 msgid "Whether the view is loading locations"
 msgstr "Określa, czy widok wczytuje położenia"
 
-#: ctk/ctkplacesview.c:2336
+#: ctk/ctkplacesview.c:2362
 msgid "Fetching networks"
 msgstr "Pobieranie sieci"
 
-#: ctk/ctkplacesview.c:2337
+#: ctk/ctkplacesview.c:2363
 msgid "Whether the view is fetching networks"
 msgstr "Określa, czy widok pobiera sieci"
 
@@ -5819,15 +5647,19 @@ msgstr "Plik przedstawiany przez rząd, jeśli dotyczy"
 msgid "Whether the row represents a network location"
 msgstr "Określa, czy rząd przedstawia położenie sieciowe"
 
-#: ctk/ctkplug.c:197
+#: ctk/ctkplug.c:198 ctk/ctkstatusicon.c:320
+msgid "Embedded"
+msgstr "Zagnieżdżona"
+
+#: ctk/ctkplug.c:199
 msgid "Whether the plug is embedded"
 msgstr "Określa, czy wtyczka jest osadzona"
 
-#: ctk/ctkplug.c:211
+#: ctk/ctkplug.c:213
 msgid "Socket Window"
 msgstr "Okno gniazda"
 
-#: ctk/ctkplug.c:212
+#: ctk/ctkplug.c:214
 msgid "The window of the socket the plug is embedded in"
 msgstr "Okno gniazda, w którym osadzona jest wtyczka"
 
@@ -6278,6 +6110,38 @@ msgstr "Minimalna wysokość pionowego paska"
 msgid "The minimum vertical height of the progress bar"
 msgstr "Minimalna pionowa wysokość paska postępu"
 
+#: ctk/ctkradioaction.c:116
+msgid "The value"
+msgstr "Wartość"
+
+#: ctk/ctkradioaction.c:117
+msgid ""
+"The value returned by ctk_radio_action_get_current_value() when this action "
+"is the current action of its group."
+msgstr ""
+"Wartość zwracana przez funkcję ctk_radio_action_get_current_value(), gdy ta "
+"czynność jest obecną czynnością w swojej grupie."
+
+#: ctk/ctkradioaction.c:133 ctk/ctkradiobutton.c:184 ctk/ctkradiomenuitem.c:424
+#: ctk/ctkradiotoolbutton.c:83
+msgid "Group"
+msgstr "Grupa"
+
+#: ctk/ctkradioaction.c:134
+msgid "The radio action whose group this action belongs to."
+msgstr "Grupa, do której należy ta czynność radiowa."
+
+#: ctk/ctkradioaction.c:149
+msgid "The current value"
+msgstr "Bieżąca wartość"
+
+#: ctk/ctkradioaction.c:150
+msgid ""
+"The value property of the currently active member of the group to which this "
+"action belongs."
+msgstr ""
+"Wartość właściwości aktywnego członka grupy, do której ta czynność należy."
+
 #: ctk/ctkradiobutton.c:185
 msgid "The radio button whose group this widget belongs to."
 msgstr "Przycisk radiowy, do którego grupy należy ten widżet."
@@ -6425,6 +6289,14 @@ msgid "Arrow scaling with regard to scroll button size"
 msgstr ""
 "Zezwolenie na skalowanie z uwzględnieniem rozmiaru przycisku przewijania"
 
+#: ctk/ctkrecentaction.c:666 ctk/ctkrecentchoosermenu.c:239
+msgid "Show Numbers"
+msgstr "Wyświetlanie liczb"
+
+#: ctk/ctkrecentaction.c:667 ctk/ctkrecentchoosermenu.c:240
+msgid "Whether the items should be displayed with a number"
+msgstr "Określa, czy elementy powinny być wyświetlane z liczbą"
+
 #: ctk/ctkrecentchooser.c:130
 msgid "Recent Manager"
 msgstr "Menedżer ostatnich elementów"
@@ -6499,11 +6371,11 @@ msgstr "Porządek sortowania wyświetlanych elementów"
 msgid "The current filter for selecting which resources are displayed"
 msgstr "Bieżący filtr służący do zaznaczania które zasoby mają być wyświetlane"
 
-#: ctk/ctkrecentmanager.c:290
+#: ctk/ctkrecentmanager.c:289
 msgid "The full path to the file to be used to store and read the list"
 msgstr "Pełna ścieżka do pliku używanego do przechowywania i odczytu listy"
 
-#: ctk/ctkrecentmanager.c:305
+#: ctk/ctkrecentmanager.c:304
 msgid "The size of the recently used resources list"
 msgstr "Rozmiar listy ostatnio używanych zasobów"
 
@@ -6677,51 +6549,51 @@ msgstr ""
 "Wyświetla dodatkowy przycisk ze strzałką naprzód po przeciwnej stronie paska "
 "przewijania"
 
-#: ctk/ctkscrolledwindow.c:569
+#: ctk/ctkscrolledwindow.c:567
 msgid "Horizontal Adjustment"
 msgstr "Dopasowanie poziome"
 
-#: ctk/ctkscrolledwindow.c:570
+#: ctk/ctkscrolledwindow.c:568
 msgid "The CtkAdjustment for the horizontal position"
 msgstr "Obiekt CtkAdjustment określający położenie poziome"
 
-#: ctk/ctkscrolledwindow.c:576
+#: ctk/ctkscrolledwindow.c:574
 msgid "Vertical Adjustment"
 msgstr "Dopasowanie pionowe"
 
-#: ctk/ctkscrolledwindow.c:577
+#: ctk/ctkscrolledwindow.c:575
 msgid "The CtkAdjustment for the vertical position"
 msgstr "Obiekt CtkAdjustment, określający wartość położenia pionowego"
 
-#: ctk/ctkscrolledwindow.c:583
+#: ctk/ctkscrolledwindow.c:581
 msgid "Horizontal Scrollbar Policy"
 msgstr "Reguła poziomego paska przewijania"
 
-#: ctk/ctkscrolledwindow.c:584
+#: ctk/ctkscrolledwindow.c:582
 msgid "When the horizontal scrollbar is displayed"
 msgstr "Określa, kiedy powinien być wyświetlany poziomy pasek przewijania"
 
-#: ctk/ctkscrolledwindow.c:591
+#: ctk/ctkscrolledwindow.c:589
 msgid "Vertical Scrollbar Policy"
 msgstr "Reguła pionowego paska przewijania"
 
-#: ctk/ctkscrolledwindow.c:592
+#: ctk/ctkscrolledwindow.c:590
 msgid "When the vertical scrollbar is displayed"
 msgstr "Określa, kiedy powinien być wyświetlany pionowy pasek przewijania"
 
-#: ctk/ctkscrolledwindow.c:599
+#: ctk/ctkscrolledwindow.c:597
 msgid "Window Placement"
 msgstr "Rozmieszczenie okien"
 
-#: ctk/ctkscrolledwindow.c:600
+#: ctk/ctkscrolledwindow.c:598
 msgid "Where the contents are located with respect to the scrollbars."
 msgstr "Określa położenie zawartości względem pasków przewijania."
 
-#: ctk/ctkscrolledwindow.c:618
+#: ctk/ctkscrolledwindow.c:616
 msgid "Window Placement Set"
 msgstr "Ustawienie położenia okna"
 
-#: ctk/ctkscrolledwindow.c:619
+#: ctk/ctkscrolledwindow.c:617
 msgid ""
 "Whether \"window-placement\" should be used to determine the location of the "
 "contents with respect to the scrollbars."
@@ -6729,88 +6601,88 @@ msgstr ""
 "Określa, czy „window-placement” powinno być użyte do określenia położenia "
 "zawartości z uwzględnieniem pasków przewijania."
 
-#: ctk/ctkscrolledwindow.c:625 ctk/ctkspinbutton.c:455
+#: ctk/ctkscrolledwindow.c:623 ctk/ctkspinbutton.c:455
 msgid "Shadow Type"
 msgstr "Typ cienia"
 
-#: ctk/ctkscrolledwindow.c:626
+#: ctk/ctkscrolledwindow.c:624
 msgid "Style of bevel around the contents"
 msgstr "Styl wypukłości wokół zawartości"
 
-#: ctk/ctkscrolledwindow.c:642
+#: ctk/ctkscrolledwindow.c:640
 msgid "Scrollbars within bevel"
 msgstr "Paski przewijania wewnątrz wypukłości"
 
-#: ctk/ctkscrolledwindow.c:643
+#: ctk/ctkscrolledwindow.c:641
 msgid "Place scrollbars within the scrolled window's bevel"
 msgstr ""
 "Określa, czy umieszczać paski przewijania wewnątrz wypukłości przewijanego "
 "okna"
 
-#: ctk/ctkscrolledwindow.c:649
+#: ctk/ctkscrolledwindow.c:647
 msgid "Scrollbar spacing"
 msgstr "Odstępy paska przewijania"
 
-#: ctk/ctkscrolledwindow.c:650
+#: ctk/ctkscrolledwindow.c:648
 msgid "Number of pixels between the scrollbars and the scrolled window"
 msgstr "Liczba pikseli między paskami przewijania a przewijanym oknem"
 
-#: ctk/ctkscrolledwindow.c:665
+#: ctk/ctkscrolledwindow.c:663
 msgid "Minimum Content Width"
 msgstr "Minimalna szerokość zawartości"
 
-#: ctk/ctkscrolledwindow.c:666
+#: ctk/ctkscrolledwindow.c:664
 msgid "The minimum width that the scrolled window will allocate to its content"
 msgstr "Minimalna szerokość, jaką przewijane okno przydzieli swojej zawartości"
 
-#: ctk/ctkscrolledwindow.c:679
+#: ctk/ctkscrolledwindow.c:677
 msgid "Minimum Content Height"
 msgstr "Minimalna wysokość zawartości"
 
-#: ctk/ctkscrolledwindow.c:680
+#: ctk/ctkscrolledwindow.c:678
 msgid ""
 "The minimum height that the scrolled window will allocate to its content"
 msgstr "Minimalna wysokość, jaką przewijane okno przydzieli swojej zawartości"
 
-#: ctk/ctkscrolledwindow.c:694
+#: ctk/ctkscrolledwindow.c:692
 msgid "Kinetic Scrolling"
 msgstr "Przewijanie kinetyczne"
 
-#: ctk/ctkscrolledwindow.c:695
+#: ctk/ctkscrolledwindow.c:693
 msgid "Kinetic scrolling mode."
 msgstr "Tryb przewijania kinetycznego."
 
-#: ctk/ctkscrolledwindow.c:714
+#: ctk/ctkscrolledwindow.c:712
 msgid "Overlay Scrolling"
 msgstr "Znikające paski przewijania"
 
-#: ctk/ctkscrolledwindow.c:715
+#: ctk/ctkscrolledwindow.c:713
 msgid "Overlay scrolling mode"
 msgstr "Tryb znikających pasków przewijania"
 
-#: ctk/ctkscrolledwindow.c:728
+#: ctk/ctkscrolledwindow.c:726
 msgid "Maximum Content Width"
 msgstr "Maksymalna szerokość zawartości"
 
-#: ctk/ctkscrolledwindow.c:729
+#: ctk/ctkscrolledwindow.c:727
 msgid "The maximum width that the scrolled window will allocate to its content"
 msgstr ""
 "Maksymalna szerokość, jaką przewijane okno przydzieli swojej zawartości"
 
-#: ctk/ctkscrolledwindow.c:742
+#: ctk/ctkscrolledwindow.c:740
 msgid "Maximum Content Height"
 msgstr "Maksymalna wysokość zawartości"
 
-#: ctk/ctkscrolledwindow.c:743
+#: ctk/ctkscrolledwindow.c:741
 msgid ""
 "The maximum height that the scrolled window will allocate to its content"
 msgstr "Maksymalna wysokość, jaką przewijane okno przydzieli swojej zawartości"
 
-#: ctk/ctkscrolledwindow.c:760 ctk/ctkscrolledwindow.c:761
+#: ctk/ctkscrolledwindow.c:758 ctk/ctkscrolledwindow.c:759
 msgid "Propagate Natural Width"
 msgstr "Propagowanie naturalnej szerokości"
 
-#: ctk/ctkscrolledwindow.c:778 ctk/ctkscrolledwindow.c:779
+#: ctk/ctkscrolledwindow.c:776 ctk/ctkscrolledwindow.c:777
 msgid "Propagate Natural Height"
 msgstr "Propagowanie naturalnej wysokości"
 
@@ -7823,7 +7695,7 @@ msgstr "Nazwa strony potomnej"
 msgid "The title of the child page"
 msgstr "Tytuł strony potomnej"
 
-#: ctk/ctkstack.c:530 ctk/ctktoolbutton.c:287
+#: ctk/ctkstack.c:530 ctk/ctktoolbutton.c:248
 msgid "Icon name"
 msgstr "Nazwa ikony"
 
@@ -7849,6 +7721,10 @@ msgstr "Stos"
 msgid "Associated stack for this CtkStackSidebar"
 msgstr "Stos powiązany z tym CtkStackSidebar"
 
+#: ctk/ctkstackswitcher.c:686 ctk/ctktrayicon-x11.c:178
+msgid "Icon Size"
+msgstr "Rozmiar ikon"
+
 #: ctk/ctkstackswitcher.c:687
 msgid "Symbolic size to use for named icon"
 msgstr "Symboliczny rozmiar używany przy nazwanych ikonach"
@@ -7856,6 +7732,62 @@ msgstr "Symboliczny rozmiar używany przy nazwanych ikonach"
 #: ctk/ctkstatusbar.c:178
 msgid "Style of bevel around the statusbar text"
 msgstr "Styl wypukłości wokół tekstu na pasku stanu"
+
+#: ctk/ctkstatusicon.c:287
+msgid "The size of the icon"
+msgstr "Rozmiar ikony"
+
+#: ctk/ctkstatusicon.c:297
+msgid "The screen where this status icon will be displayed"
+msgstr "Ekran, na którym ten status będzie wyświetlany"
+
+#: ctk/ctkstatusicon.c:305
+msgid "Whether the status icon is visible"
+msgstr "Określa, czy ikona stanu jest widoczna"
+
+#: ctk/ctkstatusicon.c:321
+msgid "Whether the status icon is embedded"
+msgstr "Określa, czy ikona stanu jest zagnieżdżona"
+
+#: ctk/ctkstatusicon.c:337 ctk/ctktrayicon-x11.c:128
+msgid "The orientation of the tray"
+msgstr "Orientacja obszaru powiadamiania"
+
+#: ctk/ctkstatusicon.c:364 ctk/ctkwidget.c:1285
+msgid "Has tooltip"
+msgstr "Podpowiedź"
+
+#: ctk/ctkstatusicon.c:365
+msgid "Whether this tray icon has a tooltip"
+msgstr "Określa, czy ta ikona zasobnika zawiera podpowiedź"
+
+#: ctk/ctkstatusicon.c:391 ctk/ctkwidget.c:1309
+msgid "Tooltip Text"
+msgstr "Tekst podpowiedzi"
+
+#: ctk/ctkstatusicon.c:392 ctk/ctkwidget.c:1310 ctk/ctkwidget.c:1334
+msgid "The contents of the tooltip for this widget"
+msgstr "Tekst podpowiedzi dla tego widżetu"
+
+#: ctk/ctkstatusicon.c:415 ctk/ctkwidget.c:1333
+msgid "Tooltip markup"
+msgstr "Znacznik podpowiedzi"
+
+#: ctk/ctkstatusicon.c:416
+msgid "The contents of the tooltip for this tray icon"
+msgstr "Zawartość podpowiedzi dla tej ikony zasobnika"
+
+#: ctk/ctkstatusicon.c:434
+msgid "The title of this tray icon"
+msgstr "Tytuł tej ikony zasobnika"
+
+#: ctk/ctkstyle.c:466
+msgid "Style context"
+msgstr "Kontekst stylu"
+
+#: ctk/ctkstyle.c:467
+msgid "CtkStyleContext to get style from"
+msgstr "CtkStyleContext, z którego pobrać styl"
 
 #: ctk/ctkstylecontext.c:230
 msgid "The associated CdkScreen"
@@ -8429,6 +8361,20 @@ msgstr "Kolor podkreślenia błędu"
 msgid "Color with which to draw error-indication underlines"
 msgstr "Kolor, przy którego użyciu będą rysowane podkreślenia błędów"
 
+#: ctk/ctktoggleaction.c:114
+msgid "Create the same proxies as a radio action"
+msgstr "Tworzenie takich samych pośredników jako czynność przycisku opcji"
+
+#: ctk/ctktoggleaction.c:115
+msgid "Whether the proxies for this action look like radio action proxies"
+msgstr ""
+"Określa, czy pośrednicy dla tej akcji wyglądają jak pośrednicy czynności "
+"przycisku opcji"
+
+#: ctk/ctktoggleaction.c:130
+msgid "Whether the toggle action should be active"
+msgstr "Określa, czy czynność przełączania powinna być aktywna"
+
 #: ctk/ctktogglebutton.c:189 ctk/ctktoggletoolbutton.c:131
 msgid "If the toggle button should be pressed in"
 msgstr "Określa, czy przycisk przełączany powinien być wciśnięty"
@@ -8532,11 +8478,11 @@ msgstr "Typ wypukłości wokół przycisków paska narzędziowego"
 msgid "Style of bevel around the toolbar"
 msgstr "Styl wypukłości wokół paska narzędziowego"
 
-#: ctk/ctktoolbutton.c:244
+#: ctk/ctktoolbutton.c:205
 msgid "Text to show in the item."
 msgstr "Tekst wyświetlany na elemencie."
 
-#: ctk/ctktoolbutton.c:251
+#: ctk/ctktoolbutton.c:212
 msgid ""
 "If set, an underline in the label property indicates that the next character "
 "should be used for the mnemonic accelerator key in the overflow menu"
@@ -8544,35 +8490,35 @@ msgstr ""
 "Określa, czy pokreślenie jest używane w tekście w roli znacznika, który "
 "poprzedza znak skrótu"
 
-#: ctk/ctktoolbutton.c:258
+#: ctk/ctktoolbutton.c:219
 msgid "Widget to use as the item label"
 msgstr "Widżet używany jako etykieta elementu"
 
-#: ctk/ctktoolbutton.c:269
+#: ctk/ctktoolbutton.c:230
 msgid "Stock Id"
 msgstr "Identyfikator standardowego elementu"
 
-#: ctk/ctktoolbutton.c:270
+#: ctk/ctktoolbutton.c:231
 msgid "The stock icon displayed on the item"
 msgstr "Ikona standardowego elementu wyświetlana na elemencie"
 
-#: ctk/ctktoolbutton.c:288
+#: ctk/ctktoolbutton.c:249
 msgid "The name of the themed icon displayed on the item"
 msgstr "Nazwa ikony z motywu wyświetlanej na elemencie"
 
-#: ctk/ctktoolbutton.c:294
+#: ctk/ctktoolbutton.c:255
 msgid "Icon widget"
 msgstr "Widżet ikony"
 
-#: ctk/ctktoolbutton.c:295
+#: ctk/ctktoolbutton.c:256
 msgid "Icon widget to display in the item"
 msgstr "Widżet ikony wyświetlany na elemencie"
 
-#: ctk/ctktoolbutton.c:311
+#: ctk/ctktoolbutton.c:272
 msgid "Icon spacing"
 msgstr "Odstępy ikon"
 
-#: ctk/ctktoolbutton.c:312
+#: ctk/ctktoolbutton.c:273
 msgid "Spacing in pixels between the icon and label"
 msgstr "Odstępy w pikselach między ikoną a etykietą"
 
@@ -8670,6 +8616,42 @@ msgid ""
 msgstr ""
 "Określa, czy grupa elementów powinna otrzymywać dodatkową przestrzeń przy "
 "zwiększaniu palety"
+
+#: ctk/ctktrayicon-x11.c:137
+msgid "Foreground color for symbolic icons"
+msgstr "Kolor ikon symbolicznych"
+
+#: ctk/ctktrayicon-x11.c:144
+msgid "Error color"
+msgstr "Kolor błędu"
+
+#: ctk/ctktrayicon-x11.c:145
+msgid "Error color for symbolic icons"
+msgstr "Kolor błędu ikon symbolicznych"
+
+#: ctk/ctktrayicon-x11.c:152
+msgid "Warning color"
+msgstr "Kolor ostrzeżenia"
+
+#: ctk/ctktrayicon-x11.c:153
+msgid "Warning color for symbolic icons"
+msgstr "Kolor ostrzeżenia ikon symbolicznych"
+
+#: ctk/ctktrayicon-x11.c:160
+msgid "Success color"
+msgstr "Kolor powodzenia"
+
+#: ctk/ctktrayicon-x11.c:161
+msgid "Success color for symbolic icons"
+msgstr "Kolor powodzenia ikon symbolicznych"
+
+#: ctk/ctktrayicon-x11.c:169
+msgid "Padding that should be put around icons in the tray"
+msgstr "Dopełnienie, jakie powinno zostać umieszczone wokół ikon w zasobniku"
+
+#: ctk/ctktrayicon-x11.c:179
+msgid "The pixel size that icons should be forced to, or zero"
+msgstr "Rozmiar w pikselach, do którego zmuszać ikony lub zero"
 
 #: ctk/ctktreemenu.c:265
 msgid "TreeMenu model"
@@ -9047,6 +9029,18 @@ msgid "Logical sort column ID this column sorts on when selected for sorting"
 msgstr ""
 "Logiczny identyfikator kolumny sortowania, kiedy zostanie wybrana do "
 "sortowania"
+
+#: ctk/ctkuimanager.c:453
+msgid "Whether tearoff menu items should be added to menus"
+msgstr "Określa, czy elementy odłączane menu powinny być dodawane do menu"
+
+#: ctk/ctkuimanager.c:460
+msgid "Merged UI definition"
+msgstr "Definicja scalonego interfejsu użytkownika"
+
+#: ctk/ctkuimanager.c:461
+msgid "An XML string describing the merged UI"
+msgstr "Napis XML opisujący scalony interfejs użytkownika"
 
 #: ctk/ctkviewport.c:409
 msgid "Determines how the shadowed box around the viewport is drawn"

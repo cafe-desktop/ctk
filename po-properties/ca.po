@@ -40,7 +40,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+ 2.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-07 15:21+0000\n"
+"POT-Creation-Date: 2022-03-23 18:06+0100\n"
 "PO-Revision-Date: 2019-08-16 13:31+0200\n"
 "Last-Translator: Jordi Mas <jmas@softcatala.org>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
@@ -248,78 +248,77 @@ msgstr "Renderitzador de cel·la"
 msgid "The cell renderer represented by this accessible"
 msgstr "El renderitzador de cel·la que representa aquest accessible"
 
-#: ctk/ctkaction.c:243 ctk/ctkactiongroup.c:200
+#: ctk/ctkaction.c:233 ctk/ctkactiongroup.c:196
 #: ctk/deprecated/ctkthemingengine.c:247 ctk/ctkcssnode.c:638
 #: ctk/ctkprinter.c:121 ctk/ctkstack.c:516 ctk/ctktextmark.c:136
 msgid "Name"
 msgstr "Nom"
 
-#: ctk/ctkaction.c:244
+#: ctk/ctkaction.c:234
 msgid "A unique name for the action."
 msgstr "Un nom únic per a l'acció."
 
-#: ctk/ctkaction.c:264 ctk/ctkbutton.c:281 ctk/ctkexpander.c:308
+#: ctk/ctkaction.c:252 ctk/ctkbutton.c:281 ctk/ctkexpander.c:308
 #: ctk/ctkframe.c:231 ctk/ctklabel.c:805 ctk/ctkmenuitem.c:789
-#: ctk/ctktoolbutton.c:243 ctk/ctktoolitemgroup.c:1639
+#: ctk/ctktoolbutton.c:204 ctk/ctktoolitemgroup.c:1639
 msgid "Label"
 msgstr "Etiqueta"
 
-#: ctk/ctkaction.c:265
+#: ctk/ctkaction.c:253
 msgid "The label used for menu items and buttons that activate this action."
 msgstr ""
 "L'etiqueta usada per als elements de menú i els botons que activen aquesta "
 "acció."
 
-#: ctk/ctkaction.c:284
+#: ctk/ctkaction.c:269
 msgid "Short label"
 msgstr "Etiqueta breu"
 
-#: ctk/ctkaction.c:285
+#: ctk/ctkaction.c:270
 msgid "A shorter label that may be used on toolbar buttons."
 msgstr "Una etiqueta més breu que pot ser usada en botons de la barra d'eines."
 
-#: ctk/ctkaction.c:300
+#: ctk/ctkaction.c:283
 msgid "Tooltip"
 msgstr "Indicador de funció"
 
-#: ctk/ctkaction.c:301
+#: ctk/ctkaction.c:284
 msgid "A tooltip for this action."
 msgstr "Indicador de funció per a aquesta acció."
 
-#: ctk/ctkaction.c:319
+#: ctk/ctkaction.c:299
 msgid "Stock Icon"
 msgstr "Icona de recurs"
 
-#: ctk/ctkaction.c:320
+#: ctk/ctkaction.c:300
 msgid "The stock icon displayed in widgets representing this action."
 msgstr ""
 "La icona de recurs mostrada en els controls que representen aquesta acció."
 
-#: ctk/ctkaction.c:342 ctk/ctkstatusicon.c:279
+#: ctk/ctkaction.c:320 ctk/ctkstatusicon.c:269
 msgid "GIcon"
 msgstr "GIcon"
 
-#: ctk/ctkaction.c:343 ctk/ctkstatusicon.c:280
-#: ctk/ctkcellrendererpixbuf.c:282 ctk/ctkimage.c:360
+#: ctk/ctkaction.c:321 ctk/ctkcellrendererpixbuf.c:282 ctk/ctkimage.c:358
+#: ctk/ctkstatusicon.c:270
 msgid "The GIcon being displayed"
 msgstr "La icona GIcon que es mostra"
 
-#: ctk/ctkaction.c:365 ctk/ctkstatusicon.c:263
-#: ctk/ctkcellrendererpixbuf.c:245 ctk/ctkimage.c:343 ctk/ctkprinter.c:170
-#: ctk/ctkwindow.c:890
+#: ctk/ctkaction.c:341 ctk/ctkcellrendererpixbuf.c:245 ctk/ctkimage.c:341
+#: ctk/ctkprinter.c:170 ctk/ctkstatusicon.c:253 ctk/ctkwindow.c:890
 msgid "Icon Name"
 msgstr "Nom de la icona"
 
-#: ctk/ctkaction.c:366 ctk/ctkstatusicon.c:264
-#: ctk/ctkcellrendererpixbuf.c:246 ctk/ctkimage.c:344
+#: ctk/ctkaction.c:342 ctk/ctkcellrendererpixbuf.c:246 ctk/ctkimage.c:342
+#: ctk/ctkstatusicon.c:254
 msgid "The name of the icon from the icon theme"
 msgstr "El nom de la icona del tema d'icones"
 
-#: ctk/ctkaction.c:381 ctk/ctktoolitem.c:179
+#: ctk/ctkaction.c:354 ctk/ctktoolitem.c:179
 msgid "Visible when horizontal"
 msgstr "Visible en horitzontal"
 
-#: ctk/ctkaction.c:382 ctk/ctktoolitem.c:180
+#: ctk/ctkaction.c:355 ctk/ctktoolitem.c:180
 msgid ""
 "Whether the toolbar item is visible when the toolbar is in a horizontal "
 "orientation."
@@ -327,11 +326,11 @@ msgstr ""
 "Si l'element de la barra d'eines és visible quan la barra d'eines està "
 "orientada horitzontalment."
 
-#: ctk/ctkaction.c:400
+#: ctk/ctkaction.c:370
 msgid "Visible when overflown"
 msgstr "Visible en sobreeiximent"
 
-#: ctk/ctkaction.c:401
+#: ctk/ctkaction.c:371
 msgid ""
 "When TRUE, toolitem proxies for this action are represented in the toolbar "
 "overflow menu."
@@ -339,11 +338,11 @@ msgstr ""
 "Quan sigui «TRUE» (cert), els apoderats d'elements d'eina per a aquesta "
 "acció es representaran en el menú sobreeixit de la barra d'eines."
 
-#: ctk/ctkaction.c:417 ctk/ctktoolitem.c:186
+#: ctk/ctkaction.c:384 ctk/ctktoolitem.c:186
 msgid "Visible when vertical"
 msgstr "Visible en vertical"
 
-#: ctk/ctkaction.c:418 ctk/ctktoolitem.c:187
+#: ctk/ctkaction.c:385 ctk/ctktoolitem.c:187
 msgid ""
 "Whether the toolbar item is visible when the toolbar is in a vertical "
 "orientation."
@@ -351,11 +350,11 @@ msgstr ""
 "Si l'element de la barra d'eines és visible quan la barra d'eines està "
 "orientada horitzontalment."
 
-#: ctk/ctkaction.c:434 ctk/ctktoolitem.c:193
+#: ctk/ctkaction.c:398 ctk/ctktoolitem.c:193
 msgid "Is important"
 msgstr "És important"
 
-#: ctk/ctkaction.c:435
+#: ctk/ctkaction.c:399
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
 "this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
@@ -364,40 +363,40 @@ msgstr ""
 "apoderats dels elements d'eina per a aquesta acció mostraran el text en mode "
 "CTK_TOOLBAR_BOTH_HORIZ."
 
-#: ctk/ctkaction.c:451
+#: ctk/ctkaction.c:412
 msgid "Hide if empty"
 msgstr "Amaga si és buit"
 
-#: ctk/ctkaction.c:452
+#: ctk/ctkaction.c:413
 msgid "When TRUE, empty menu proxies for this action are hidden."
 msgstr ""
 "Quan sigui «TRUE» (cert), els apoderats de menú per a aquesta acció estaran "
 "amagats."
 
-#: ctk/ctkaction.c:466 ctk/ctkactiongroup.c:214
-#: ctk/ctkcellrenderer.c:308 ctk/ctkwidget.c:1155
+#: ctk/ctkaction.c:424 ctk/ctkactiongroup.c:208 ctk/ctkcellrenderer.c:308
+#: ctk/ctkwidget.c:1155
 msgid "Sensitive"
 msgstr "Sensible"
 
-#: ctk/ctkaction.c:467
+#: ctk/ctkaction.c:425
 msgid "Whether the action is enabled."
 msgstr "Si l'acció està habilitada."
 
-#: ctk/ctkaction.c:481 ctk/ctkactiongroup.c:228
-#: ctk/ctkstatusicon.c:314 ctk/ctkcssnode.c:649
-#: ctk/ctknativedialog.c:242 ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1148
+#: ctk/ctkaction.c:436 ctk/ctkactiongroup.c:220 ctk/ctkcssnode.c:649
+#: ctk/ctknativedialog.c:242 ctk/ctkstatusicon.c:304
+#: ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1148
 msgid "Visible"
 msgstr "Visible"
 
-#: ctk/ctkaction.c:482
+#: ctk/ctkaction.c:437
 msgid "Whether the action is visible."
 msgstr "Si l'acció és visible."
 
-#: ctk/ctkaction.c:497
+#: ctk/ctkaction.c:449
 msgid "Action Group"
 msgstr "Grup de l'acció"
 
-#: ctk/ctkaction.c:498
+#: ctk/ctkaction.c:450
 msgid ""
 "The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
@@ -405,51 +404,49 @@ msgstr ""
 "El CtkActionGroup associat amb aquesta CtkAction, o «NULL» (nul) (per a ús "
 "intern)."
 
-#: ctk/ctkaction.c:519 ctk/ctkimagemenuitem.c:264
-#: ctk/ctkbutton.c:393
+#: ctk/ctkaction.c:468 ctk/ctkbutton.c:393 ctk/ctkimagemenuitem.c:254
 msgid "Always show image"
 msgstr "Mostra sempre la imatge"
 
-#: ctk/ctkaction.c:520 ctk/ctkimagemenuitem.c:265
-#: ctk/ctkbutton.c:394
+#: ctk/ctkaction.c:469 ctk/ctkbutton.c:394 ctk/ctkimagemenuitem.c:255
 msgid "Whether the image will always be shown"
 msgstr "Si es mostrarà sempre la imatge"
 
-#: ctk/ctkactiongroup.c:201
+#: ctk/ctkactiongroup.c:197
 msgid "A name for the action group."
 msgstr "Un nom per al grup d'acció."
 
-#: ctk/ctkactiongroup.c:215
+#: ctk/ctkactiongroup.c:209
 msgid "Whether the action group is enabled."
 msgstr "Si el grup d'acció és habilitat."
 
-#: ctk/ctkactiongroup.c:229
+#: ctk/ctkactiongroup.c:221
 msgid "Whether the action group is visible."
 msgstr "Si el grup d'acció és visible."
 
-#: ctk/ctkactiongroup.c:242
+#: ctk/ctkactiongroup.c:232
 msgid "Accelerator Group"
 msgstr "Grup d'acceleració"
 
-#: ctk/ctkactiongroup.c:243
+#: ctk/ctkactiongroup.c:233
 msgid "The accelerator group the actions of this group should use."
 msgstr "El grup d'acceleració que el grup d'accions hauria d'utilitzar."
 
-#: ctk/ctkactivatable.c:290
+#: ctk/ctkactivatable.c:286
 msgid "Related Action"
 msgstr "Acció relacionada"
 
-#: ctk/ctkactivatable.c:291
+#: ctk/ctkactivatable.c:287
 msgid "The action this activatable will activate and receive updates from"
 msgstr ""
 "L'acció que aquest element activable activarà i de la qual rebrà "
 "actualitzacions"
 
-#: ctk/ctkactivatable.c:315
+#: ctk/ctkactivatable.c:309
 msgid "Use Action Appearance"
 msgstr "Utilitza l'aparença de les accions"
 
-#: ctk/ctkactivatable.c:316
+#: ctk/ctkactivatable.c:310
 msgid "Whether to use the related actions appearance properties"
 msgstr ""
 "Si s'han d'utilitzar les propietats de l'aparença de les accions relacionades"
@@ -701,32 +698,6 @@ msgstr ""
 "Un valor booleà que indica si el fill del quadre de nanses està acoblat o "
 "separat."
 
-#: ctk/ctkimagemenuitem.c:226 ctk/ctkbutton.c:360
-msgid "Image widget"
-msgstr "Element d'imatge"
-
-#: ctk/ctkimagemenuitem.c:227
-msgid "Child widget to appear next to the menu text"
-msgstr "Giny fill que apareix al costat del text del menú"
-
-#: ctk/ctkimagemenuitem.c:243 ctk/ctkbutton.c:300
-msgid "Use stock"
-msgstr "Utilitza els de recurs"
-
-#: ctk/ctkimagemenuitem.c:244
-msgid "Whether to use the label text to create a stock menu item"
-msgstr ""
-"Si s'ha d'utilitzar el text de l'etiqueta per crear un element de menú de "
-"recurs"
-
-#: ctk/ctkimagemenuitem.c:281 ctk/ctkmenu.c:655
-msgid "Accel Group"
-msgstr "Grup d'acceleració"
-
-#: ctk/ctkimagemenuitem.c:282
-msgid "The Accel Group to use for stock accelerator keys"
-msgstr "El grup de dreceres a utilitzar per a les dreceres de teclat de recurs"
-
 #: ctk/deprecated/ctkmisc.c:114 ctk/ctkentry.c:968 ctk/ctklabel.c:851
 msgid "X align"
 msgstr "Alineació X"
@@ -765,204 +736,46 @@ msgid ""
 "The amount of space to add on the top and bottom of the widget, in pixels"
 msgstr "L'alineació d'espai a afegir de dalt a baix del giny, en píxels"
 
-#: ctk/deprecated/ctknumerableicon.c:642
+#: ctk/deprecated/ctknumerableicon.c:643
 msgid "Icon's count"
 msgstr "Comptador de la icona"
 
-#: ctk/deprecated/ctknumerableicon.c:643
+#: ctk/deprecated/ctknumerableicon.c:644
 msgid "The count of the emblem currently displayed"
 msgstr "El comptador de l'emblema que s'està mostrant"
 
-#: ctk/deprecated/ctknumerableicon.c:649
+#: ctk/deprecated/ctknumerableicon.c:650
 msgid "Icon's label"
 msgstr "Etiqueta de la icona"
 
-#: ctk/deprecated/ctknumerableicon.c:650
+#: ctk/deprecated/ctknumerableicon.c:651
 msgid "The label to be displayed over the icon"
 msgstr "L'etiqueta que s'ha de mostrar sobre la icona"
 
-#: ctk/deprecated/ctknumerableicon.c:656
+#: ctk/deprecated/ctknumerableicon.c:657
 msgid "Icon's style context"
 msgstr "Context d'estil de la icona"
 
-#: ctk/deprecated/ctknumerableicon.c:657
+#: ctk/deprecated/ctknumerableicon.c:658
 msgid "The style context to theme the icon appearance"
 msgstr ""
 "El context d'estil sobre el qual s'aplicarà el tema d'aparença de la icona"
 
-#: ctk/deprecated/ctknumerableicon.c:663
+#: ctk/deprecated/ctknumerableicon.c:664
 msgid "Background icon"
 msgstr "Fons de la icona"
 
-#: ctk/deprecated/ctknumerableicon.c:664
+#: ctk/deprecated/ctknumerableicon.c:665
 msgid "The icon for the number emblem background"
 msgstr "La icona del fons de l'emblema numèric"
 
-#: ctk/deprecated/ctknumerableicon.c:670
+#: ctk/deprecated/ctknumerableicon.c:671
 msgid "Background icon name"
 msgstr "Nom de la icona  de fons"
 
-#: ctk/deprecated/ctknumerableicon.c:671
+#: ctk/deprecated/ctknumerableicon.c:672
 msgid "The icon name for the number emblem background"
 msgstr "El nom de la icona del fons de l'emblema numèric"
-
-#: ctk/ctkradioaction.c:120
-msgid "The value"
-msgstr "El valor"
-
-#: ctk/ctkradioaction.c:121
-msgid ""
-"The value returned by ctk_radio_action_get_current_value() when this action "
-"is the current action of its group."
-msgstr ""
-"El valor que retorna ctk_radio_action_get_current_value() quan aquesta acció "
-"és l'acció activa del seu grup."
-
-#: ctk/ctkradioaction.c:139 ctk/ctkradiobutton.c:184
-#: ctk/ctkradiomenuitem.c:424 ctk/ctkradiotoolbutton.c:83
-msgid "Group"
-msgstr "Grup"
-
-#: ctk/ctkradioaction.c:140
-msgid "The radio action whose group this action belongs to."
-msgstr "L'acció de radi al grup de la qual pertany aquesta acció."
-
-#: ctk/ctkradioaction.c:157
-msgid "The current value"
-msgstr "El valor actual"
-
-#: ctk/ctkradioaction.c:158
-msgid ""
-"The value property of the currently active member of the group to which this "
-"action belongs."
-msgstr ""
-"El valor de la propietat del membre actualment actiu del grup al qual "
-"pertany aquesta acció."
-
-#: ctk/ctkrecentaction.c:674 ctk/ctkrecentchoosermenu.c:239
-msgid "Show Numbers"
-msgstr "Mostra els nombres"
-
-#: ctk/ctkrecentaction.c:675 ctk/ctkrecentchoosermenu.c:240
-msgid "Whether the items should be displayed with a number"
-msgstr "Si els elements s'han de mostrar amb un nombre"
-
-#: ctk/ctkstatusicon.c:234 ctk/ctkimage.c:256
-msgid "Pixbuf"
-msgstr "Pixbuf"
-
-#: ctk/ctkstatusicon.c:235 ctk/ctkimage.c:257
-msgid "A GdkPixbuf to display"
-msgstr "Un GdkPixbuf a visualitzar"
-
-#: ctk/ctkstatusicon.c:242 ctk/ctkimage.c:270
-#: ctk/ctkrecentmanager.c:289
-msgid "Filename"
-msgstr "Nom del fitxer"
-
-#: ctk/ctkstatusicon.c:243 ctk/ctkimage.c:271
-msgid "Filename to load and display"
-msgstr "Nom de fitxer per carregar i visualitzar"
-
-#: ctk/ctkstatusicon.c:255 ctk/ctkcellrendererpixbuf.c:195
-#: ctk/ctkimage.c:282
-msgid "Stock ID"
-msgstr "Id. del recurs"
-
-#: ctk/ctkstatusicon.c:256 ctk/ctkimage.c:283
-msgid "Stock ID for a stock image to display"
-msgstr "Id. de recurs per a una icona de recurs a mostrar"
-
-#: ctk/ctkstatusicon.c:287 ctk/ctkimage.c:380
-msgid "Storage type"
-msgstr "Tipus d'emmagatzematge"
-
-#: ctk/ctkstatusicon.c:288 ctk/ctkimage.c:381
-msgid "The representation being used for image data"
-msgstr "La representació utilitzada per a les dades d'imatge"
-
-#: ctk/ctkstatusicon.c:296 ctk/ctkcellrendererpixbuf.c:210
-#: ctk/ctkcellrendererspinner.c:159 ctk/ctkrecentmanager.c:304
-msgid "Size"
-msgstr "Mida"
-
-#: ctk/ctkstatusicon.c:297
-msgid "The size of the icon"
-msgstr "La mida de la icona"
-
-#: ctk/ctkstatusicon.c:306 ctk/ctkinvisible.c:98
-#: ctk/ctkmountoperation.c:183 ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:897
-msgid "Screen"
-msgstr "Pantalla"
-
-#: ctk/ctkstatusicon.c:307
-msgid "The screen where this status icon will be displayed"
-msgstr "La pantalla on es mostrarà aquesta icona d'estat"
-
-#: ctk/ctkstatusicon.c:315
-msgid "Whether the status icon is visible"
-msgstr "Si la icona d'estat és visible"
-
-#: ctk/ctkstatusicon.c:330 ctk/ctkplug.c:196
-msgid "Embedded"
-msgstr "Imbricat"
-
-#: ctk/ctkstatusicon.c:331
-msgid "Whether the status icon is embedded"
-msgstr "Si la icona d'estat és imbricada"
-
-#: ctk/ctkstatusicon.c:346 ctk/ctktrayicon-x11.c:127
-#: ctk/ctkgesturepan.c:238 ctk/ctkorientable.c:61
-msgid "Orientation"
-msgstr "Orientació"
-
-#: ctk/ctkstatusicon.c:347 ctk/ctktrayicon-x11.c:128
-msgid "The orientation of the tray"
-msgstr "L'orientació de la safata"
-
-#: ctk/ctkstatusicon.c:374 ctk/ctkwidget.c:1285
-msgid "Has tooltip"
-msgstr "Té indicador de funció"
-
-#: ctk/ctkstatusicon.c:375
-msgid "Whether this tray icon has a tooltip"
-msgstr "Si aquesta icona de la safata té un indicador de funció"
-
-#: ctk/ctkstatusicon.c:401 ctk/ctkwidget.c:1309
-msgid "Tooltip Text"
-msgstr "Text de l'indicador de funció"
-
-#: ctk/ctkstatusicon.c:402 ctk/ctkwidget.c:1310 ctk/ctkwidget.c:1334
-msgid "The contents of the tooltip for this widget"
-msgstr "Els continguts de l'indicador de funció d'aquest giny"
-
-#: ctk/ctkstatusicon.c:425 ctk/ctkwidget.c:1333
-msgid "Tooltip markup"
-msgstr "Etiquetatge de l'indicador de funció"
-
-#: ctk/ctkstatusicon.c:426
-msgid "The contents of the tooltip for this tray icon"
-msgstr "El contingut de l'indicador de funció d'aquesta icona de la safata"
-
-#: ctk/ctkstatusicon.c:443 ctk/ctkcolorbutton.c:183
-#: ctk/ctkfilechooserbutton.c:443 ctk/ctkfontbutton.c:490
-#: ctk/ctkheaderbar.c:2027 ctk/ctkprintjob.c:133 ctk/ctkshortcutsgroup.c:308
-#: ctk/ctkshortcutssection.c:376 ctk/ctkshortcutsshortcut.c:575
-#: ctk/ctkstack.c:523 ctk/ctktreeviewcolumn.c:316
-msgid "Title"
-msgstr "Títol"
-
-#: ctk/ctkstatusicon.c:444
-msgid "The title of this tray icon"
-msgstr "El títol d'aquesta icona de l'àrea de notificació"
-
-#: ctk/ctkstyle.c:471
-msgid "Style context"
-msgstr "Context d'estil"
-
-#: ctk/ctkstyle.c:472
-msgid "CtkStyleContext to get style from"
-msgstr "El CtkStyleContext d'on agafar l'estil"
 
 #: ctk/deprecated/ctktable.c:185
 msgid "Rows"
@@ -1082,91 +895,6 @@ msgstr ""
 #: ctk/deprecated/ctkthemingengine.c:248
 msgid "Theming engine name"
 msgstr "Nom del motor de tema"
-
-#: ctk/ctktoggleaction.c:118
-msgid "Create the same proxies as a radio action"
-msgstr "Crea els mateixos apoderats com a acció de ràdio"
-
-#: ctk/ctktoggleaction.c:119
-msgid "Whether the proxies for this action look like radio action proxies"
-msgstr ""
-"Si els apoderats per a aquesta acció semblen apoderats d'acció de ràdio"
-
-#: ctk/ctktoggleaction.c:135 ctk/ctkcellrendererspinner.c:125
-#: ctk/ctkcheckmenuitem.c:209 ctk/ctkmenu.c:640 ctk/ctkmodelbutton.c:1211
-#: ctk/ctkmodelbutton.c:1212 ctk/ctkspinner.c:221 ctk/ctkswitch.c:878
-#: ctk/ctktogglebutton.c:188 ctk/ctktoggletoolbutton.c:130
-msgid "Active"
-msgstr "Actiu"
-
-#: ctk/ctktoggleaction.c:136
-msgid "Whether the toggle action should be active"
-msgstr "Si l'acció de commutació ha d'estar activa"
-
-#: ctk/ctktrayicon-x11.c:136 ctk/ctkcellrenderertext.c:334
-#: ctk/ctktexttag.c:277
-msgid "Foreground color"
-msgstr "Color de primer pla"
-
-#: ctk/ctktrayicon-x11.c:137
-msgid "Foreground color for symbolic icons"
-msgstr "Color de primer pla per a les icones simbòliques"
-
-#: ctk/ctktrayicon-x11.c:144
-msgid "Error color"
-msgstr "Color d'error"
-
-#: ctk/ctktrayicon-x11.c:145
-msgid "Error color for symbolic icons"
-msgstr "Color d'error per a les icones simbòliques"
-
-#: ctk/ctktrayicon-x11.c:152
-msgid "Warning color"
-msgstr "Color d'avís"
-
-#: ctk/ctktrayicon-x11.c:153
-msgid "Warning color for symbolic icons"
-msgstr "Color d'avís per a les icones simbòliques"
-
-#: ctk/ctktrayicon-x11.c:160
-msgid "Success color"
-msgstr "Color d'èxit"
-
-#: ctk/ctktrayicon-x11.c:161
-msgid "Success color for symbolic icons"
-msgstr "Color d'èxit per a les icones simbòliques"
-
-#: ctk/ctktrayicon-x11.c:168 ctk/ctkbox.c:350
-msgid "Padding"
-msgstr "Separació"
-
-#: ctk/ctktrayicon-x11.c:169
-msgid "Padding that should be put around icons in the tray"
-msgstr "Separació que hi hauria d'haver al voltant de les icones a la safata"
-
-#: ctk/ctktrayicon-x11.c:178 ctk/ctkstackswitcher.c:686
-msgid "Icon Size"
-msgstr "Mida de les icones"
-
-#: ctk/ctktrayicon-x11.c:179
-msgid "The pixel size that icons should be forced to, or zero"
-msgstr "La mida de píxel a la qual s'haurien de forçar les icones, o zero"
-
-#: ctk/ctkuimanager.c:463 ctk/ctkcombobox.c:1010
-msgid "Add tearoffs to menus"
-msgstr "Afegeix separadors als menús"
-
-#: ctk/ctkuimanager.c:464
-msgid "Whether tearoff menu items should be added to menus"
-msgstr "Si s'han d'afegir elements separadors de menú als menús"
-
-#: ctk/ctkuimanager.c:471
-msgid "Merged UI definition"
-msgstr "Definició d'IU mesclada"
-
-#: ctk/ctkuimanager.c:472
-msgid "An XML string describing the merged UI"
-msgstr "Una cadena XML que descriu la IU mesclada"
 
 #: ctk/ctkaboutdialog.c:349
 msgid "Program name"
@@ -1770,6 +1498,10 @@ msgstr ""
 "Si l'espai addicional del fill s'ha d'assignar al fill o s'ha d'utilitzar "
 "com a separació"
 
+#: ctk/ctkbox.c:350 ctk/ctktrayicon-x11.c:168
+msgid "Padding"
+msgstr "Separació"
+
 #: ctk/ctkbox.c:351
 msgid "Extra space to put between the child and its neighbors, in pixels"
 msgstr "Espai addicional per posar entre el fill i els seus veïns, en píxels"
@@ -1789,7 +1521,7 @@ msgid ""
 msgstr "Text de l'etiqueta dins del botó, si el botó conté una etiqueta"
 
 #: ctk/ctkbutton.c:288 ctk/ctkexpander.c:316 ctk/ctklabel.c:826
-#: ctk/ctkmenuitem.c:803 ctk/ctktoolbutton.c:250
+#: ctk/ctkmenuitem.c:803 ctk/ctktoolbutton.c:211
 msgid "Use underline"
 msgstr "Utilitza subratllat"
 
@@ -1801,6 +1533,10 @@ msgid ""
 msgstr ""
 "Si s'habilita, un subratllat en el text indica que el caràcter següent "
 "s'hauria d'utilitzar per a la tecla de drecera"
+
+#: ctk/ctkbutton.c:300 ctk/ctkimagemenuitem.c:236
+msgid "Use stock"
+msgstr "Utilitza els de recurs"
 
 #: ctk/ctkbutton.c:301
 msgid ""
@@ -1824,6 +1560,10 @@ msgstr "Alineació horitzontal per al fill"
 #: ctk/ctkbutton.c:346
 msgid "Vertical alignment for child"
 msgstr "Alineació vertical per al fill"
+
+#: ctk/ctkbutton.c:360 ctk/ctkimagemenuitem.c:221
+msgid "Image widget"
+msgstr "Element d'imatge"
 
 #: ctk/ctkbutton.c:361
 msgid "Child widget to appear next to the button text"
@@ -2323,9 +2063,18 @@ msgstr "superfície"
 msgid "The surface to render"
 msgstr "La superfície que s'ha de renderitzar"
 
+#: ctk/ctkcellrendererpixbuf.c:195 ctk/ctkimage.c:280 ctk/ctkstatusicon.c:245
+msgid "Stock ID"
+msgstr "Id. del recurs"
+
 #: ctk/ctkcellrendererpixbuf.c:196
 msgid "The stock ID of the stock icon to render"
 msgstr "L'identificador de recurs de la icona de recurs per representar"
+
+#: ctk/ctkcellrendererpixbuf.c:210 ctk/ctkcellrendererspinner.c:159
+#: ctk/ctkrecentmanager.c:303 ctk/ctkstatusicon.c:286
+msgid "Size"
+msgstr "Mida"
 
 #: ctk/ctkcellrendererpixbuf.c:211
 msgid "The CtkIconSize value that specifies the size of the rendered icon"
@@ -2349,7 +2098,7 @@ msgid "Whether the rendered pixbuf should be colorized according to the state"
 msgstr ""
 "Si la memòria de píxels representada s'hauria d'acolorir segons l'estat"
 
-#: ctk/ctkcellrendererpixbuf.c:281 ctk/ctkimage.c:359 ctk/ctkmodelbutton.c:1166
+#: ctk/ctkcellrendererpixbuf.c:281 ctk/ctkimage.c:357 ctk/ctkmodelbutton.c:1166
 #: ctk/ctkshortcutsshortcut.c:550 ctk/ctkwindow.c:841
 msgid "Icon"
 msgstr "Icona"
@@ -2435,6 +2184,13 @@ msgstr "Dígits"
 msgid "The number of decimal places to display"
 msgstr "El nombre de decimals a mostrar"
 
+#: ctk/ctkcellrendererspinner.c:125 ctk/ctkcheckmenuitem.c:209
+#: ctk/ctkmenu.c:640 ctk/ctkmodelbutton.c:1211 ctk/ctkmodelbutton.c:1212
+#: ctk/ctkspinner.c:221 ctk/ctkswitch.c:878 ctk/ctktoggleaction.c:129
+#: ctk/ctktogglebutton.c:188 ctk/ctktoggletoolbutton.c:130
+msgid "Active"
+msgstr "Actiu"
+
 #: ctk/ctkcellrendererspinner.c:126
 msgid "Whether the spinner is active (ie. shown) in the cell"
 msgstr "Si l'indicador rotatiu és actiu (és a dir, es mostra) a la cel·la"
@@ -2508,6 +2264,10 @@ msgstr "Nom del color de primer pla"
 #: ctk/ctkcellrenderertext.c:320 ctk/ctktexttag.c:263
 msgid "Foreground color as a string"
 msgstr "Color de primer pla com a cadena"
+
+#: ctk/ctkcellrenderertext.c:334 ctk/ctktexttag.c:277 ctk/ctktrayicon-x11.c:136
+msgid "Foreground color"
+msgstr "Color de primer pla"
 
 #: ctk/ctkcellrenderertext.c:335 ctk/ctktexttag.c:278
 msgid "Foreground color as a CdkColor"
@@ -2921,7 +2681,7 @@ msgstr "Si s'ha de demanar l'espai necessari per a cada fila del model"
 msgid "Indicator Size"
 msgstr "Mida de l'indicador"
 
-#: ctk/ctkcheckbutton.c:249 ctk/ctkexpander.c:406
+#: ctk/ctkcheckbutton.c:249 ctk/ctkexpander.c:413
 msgid "Indicator Spacing"
 msgstr "Espaiat de l'indicador"
 
@@ -2956,6 +2716,14 @@ msgstr "Utilitza alfa"
 #: ctk/ctkcolorbutton.c:169
 msgid "Whether to give the color an alpha value"
 msgstr "Si s'ha de donar un valor alfa al color"
+
+#: ctk/ctkcolorbutton.c:183 ctk/ctkfilechooserbutton.c:443
+#: ctk/ctkfontbutton.c:490 ctk/ctkheaderbar.c:2027 ctk/ctkprintjob.c:133
+#: ctk/ctkshortcutsgroup.c:308 ctk/ctkshortcutssection.c:376
+#: ctk/ctkshortcutsshortcut.c:575 ctk/ctkstack.c:523 ctk/ctkstatusicon.c:433
+#: ctk/ctktreeviewcolumn.c:316
+msgid "Title"
+msgstr "Títol"
 
 #: ctk/ctkcolorbutton.c:184
 msgid "The title of the color selection dialog"
@@ -2999,7 +2767,7 @@ msgstr "Color actual com a CdkRGBA"
 msgid "Whether alpha should be shown"
 msgstr "Si s'ha de mostrar l'alfa"
 
-#: ctk/ctkcolorchooserdialog.c:213 ctk/ctkcolorchooserwidget.c:704
+#: ctk/ctkcolorchooserdialog.c:213 ctk/ctkcolorchooserwidget.c:695
 msgid "Show editor"
 msgstr "Mostra l'editor"
 
@@ -3068,6 +2836,10 @@ msgstr "Element actiu"
 #: ctk/ctkcombobox.c:989
 msgid "The item which is currently active"
 msgstr "L'element que actualment està seleccionat"
+
+#: ctk/ctkcombobox.c:1010 ctk/ctkuimanager.c:452
+msgid "Add tearoffs to menus"
+msgstr "Afegeix separadors als menús"
 
 #: ctk/ctkcombobox.c:1011
 msgid "Whether dropdowns should have a tearoff menu item"
@@ -3872,7 +3644,7 @@ msgstr ""
 msgid "Space to put between the label and the child"
 msgstr "Espai a posar entre l'etiqueta i el fill"
 
-#: ctk/ctkexpander.c:351 ctk/ctkframe.c:262 ctk/ctktoolbutton.c:257
+#: ctk/ctkexpander.c:351 ctk/ctkframe.c:262 ctk/ctktoolbutton.c:218
 #: ctk/ctktoolitemgroup.c:1646
 msgid "Label widget"
 msgstr "Giny etiqueta"
@@ -3881,20 +3653,20 @@ msgstr "Giny etiqueta"
 msgid "A widget to display in place of the usual expander label"
 msgstr "Un giny per visualitzar en lloc de la típica etiqueta expansora"
 
-#: ctk/ctkexpander.c:359
+#: ctk/ctkexpander.c:366
 msgid "Label fill"
 msgstr "Farciment d'etiqueta"
 
-#: ctk/ctkexpander.c:360
+#: ctk/ctkexpander.c:367
 msgid "Whether the label widget should fill all available horizontal space"
 msgstr ""
 "Si el giny de l'etiqueta ha d'omplir tot l'espai horitzontal disponible"
 
-#: ctk/ctkexpander.c:375
+#: ctk/ctkexpander.c:382
 msgid "Resize toplevel"
 msgstr "Redimensiona el nivell superior"
 
-#: ctk/ctkexpander.c:376
+#: ctk/ctkexpander.c:383
 msgid ""
 "Whether the expander will resize the toplevel window upon expanding and "
 "collapsing"
@@ -3902,15 +3674,15 @@ msgstr ""
 "Si l'expansor redimensionarà la finestra de nivell superior en expandir-se i "
 "col·lapsar-se"
 
-#: ctk/ctkexpander.c:389 ctk/ctktoolitemgroup.c:1674 ctk/ctktreeview.c:1234
+#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1674 ctk/ctktreeview.c:1234
 msgid "Expander Size"
 msgstr "Mida de l'expansor"
 
-#: ctk/ctkexpander.c:390 ctk/ctktoolitemgroup.c:1675 ctk/ctktreeview.c:1235
+#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1675 ctk/ctktreeview.c:1235
 msgid "Size of the expander arrow"
 msgstr "Mida de la fila expansora"
 
-#: ctk/ctkexpander.c:407
+#: ctk/ctkexpander.c:414
 msgid "Spacing around expander arrow"
 msgstr "Espai al voltant de la fletxa de l'expansor"
 
@@ -3947,7 +3719,7 @@ msgid "The current filter for selecting which files are displayed"
 msgstr "El filtre actual per seleccionar quins fitxers es mostraran"
 
 #: ctk/ctkfilechooser.c:388 ctk/ctkplacessidebar.c:4836
-#: ctk/ctkplacesview.c:2322
+#: ctk/ctkplacesview.c:2348
 msgid "Local Only"
 msgstr "Només locals"
 
@@ -4205,11 +3977,11 @@ msgstr "Funcionalitats del tipus de lletra com a cadena"
 msgid "Language for which features have been selected"
 msgstr "Idioma pel qual s'han seleccionat les funcionalitats"
 
-#: ctk/ctkfontchooserwidget.c:697
+#: ctk/ctkfontchooserwidget.c:691
 msgid "The tweak action"
 msgstr "L'acció de retoc"
 
-#: ctk/ctkfontchooserwidget.c:698
+#: ctk/ctkfontchooserwidget.c:692
 msgid "The toggle action to switch to the tweak page"
 msgstr "L'acció d'activació per commutar a la pàgina de retocs"
 
@@ -4264,6 +4036,11 @@ msgstr "Factor de retard"
 #: ctk/ctkgesturelongpress.c:286
 msgid "Factor by which to modify the default timeout"
 msgstr "Factor pel qual s'ha de modificar el temps d'espera per defecte"
+
+#: ctk/ctkgesturepan.c:238 ctk/ctkorientable.c:61 ctk/ctkstatusicon.c:336
+#: ctk/ctktrayicon-x11.c:127
+msgid "Orientation"
+msgstr "Orientació"
 
 #: ctk/ctkgesturepan.c:239
 msgid "Allowed orientations"
@@ -4555,6 +4332,14 @@ msgstr "Transparència de la caixa de selecció"
 msgid "Opacity of the selection box"
 msgstr "Opacitat de la caixa de selecció"
 
+#: ctk/ctkimage.c:256 ctk/ctkstatusicon.c:226
+msgid "Pixbuf"
+msgstr "Pixbuf"
+
+#: ctk/ctkimage.c:257 ctk/ctkstatusicon.c:227
+msgid "A GdkPixbuf to display"
+msgstr "Un GdkPixbuf a visualitzar"
+
 #: ctk/ctkimage.c:263
 msgid "Surface"
 msgstr "Superfície"
@@ -4563,56 +4348,94 @@ msgstr "Superfície"
 msgid "A cairo_surface_t to display"
 msgstr "La «cairo_surface_t» que s'ha de mostrar"
 
-#: ctk/ctkimage.c:295
+#: ctk/ctkimage.c:270 ctk/ctkrecentmanager.c:288 ctk/ctkstatusicon.c:234
+msgid "Filename"
+msgstr "Nom del fitxer"
+
+#: ctk/ctkimage.c:271 ctk/ctkstatusicon.c:235
+msgid "Filename to load and display"
+msgstr "Nom de fitxer per carregar i visualitzar"
+
+#: ctk/ctkimage.c:281 ctk/ctkstatusicon.c:246
+msgid "Stock ID for a stock image to display"
+msgstr "Id. de recurs per a una icona de recurs a mostrar"
+
+#: ctk/ctkimage.c:293
 msgid "Icon set"
 msgstr "Definiu icona"
 
-#: ctk/ctkimage.c:296
+#: ctk/ctkimage.c:294
 msgid "Icon set to display"
 msgstr "Definiu icona per visualitzar"
 
-#: ctk/ctkimage.c:303 ctk/ctkscalebutton.c:208 ctk/ctktoolbar.c:564
+#: ctk/ctkimage.c:301 ctk/ctkscalebutton.c:208 ctk/ctktoolbar.c:564
 #: ctk/ctktoolpalette.c:965
 msgid "Icon size"
 msgstr "Mida d'icona"
 
-#: ctk/ctkimage.c:304
+#: ctk/ctkimage.c:302
 msgid "Symbolic size to use for stock icon, icon set or named icon"
 msgstr ""
 "Mida simbòlica a utilitzar per a la icona de recurs, conjunt d'icones o "
 "icona especificada"
 
-#: ctk/ctkimage.c:320
+#: ctk/ctkimage.c:318
 msgid "Pixel size"
 msgstr "Mida del píxel"
 
-#: ctk/ctkimage.c:321
+#: ctk/ctkimage.c:319
 msgid "Pixel size to use for named icon"
 msgstr "Mida del píxel a utilitzar per a la icona especificada"
 
-#: ctk/ctkimage.c:328
+#: ctk/ctkimage.c:326
 msgid "Animation"
 msgstr "Animació"
 
-#: ctk/ctkimage.c:329
+#: ctk/ctkimage.c:327
 msgid "GdkPixbufAnimation to display"
 msgstr "GdkPixbufAnimation per visualitzar"
 
-#: ctk/ctkimage.c:373
+#: ctk/ctkimage.c:371
 msgid "Resource"
 msgstr "Recurs"
 
-#: ctk/ctkimage.c:374
+#: ctk/ctkimage.c:372
 msgid "The resource path being displayed"
 msgstr "El camí al recurs que es mostra"
 
-#: ctk/ctkimage.c:398
+#: ctk/ctkimage.c:378 ctk/ctkstatusicon.c:277
+msgid "Storage type"
+msgstr "Tipus d'emmagatzematge"
+
+#: ctk/ctkimage.c:379 ctk/ctkstatusicon.c:278
+msgid "The representation being used for image data"
+msgstr "La representació utilitzada per a les dades d'imatge"
+
+#: ctk/ctkimage.c:396
 msgid "Use Fallback"
 msgstr "Utilitza les alternatives"
 
-#: ctk/ctkimage.c:399
+#: ctk/ctkimage.c:397
 msgid "Whether to use icon names fallback"
 msgstr "Si s'han d'utilitzar els noms d'icones alternatius"
+
+#: ctk/ctkimagemenuitem.c:222
+msgid "Child widget to appear next to the menu text"
+msgstr "Giny fill que apareix al costat del text del menú"
+
+#: ctk/ctkimagemenuitem.c:237
+msgid "Whether to use the label text to create a stock menu item"
+msgstr ""
+"Si s'ha d'utilitzar el text de l'etiqueta per crear un element de menú de "
+"recurs"
+
+#: ctk/ctkimagemenuitem.c:269 ctk/ctkmenu.c:655
+msgid "Accel Group"
+msgstr "Grup d'acceleració"
+
+#: ctk/ctkimagemenuitem.c:270
+msgid "The Accel Group to use for stock accelerator keys"
+msgstr "El grup de dreceres a utilitzar per a les dreceres de teclat de recurs"
 
 #: ctk/ctkinfobar.c:450 ctk/ctkmessagedialog.c:189
 msgid "Message Type"
@@ -4649,6 +4472,11 @@ msgstr "L'espai entre els elements de l'àrea"
 #: ctk/ctkinfobar.c:583
 msgid "Width of border around the action area"
 msgstr "L'amplada del contorn al voltant de l'àrea d'acció"
+
+#: ctk/ctkinvisible.c:98 ctk/ctkmountoperation.c:183 ctk/ctkstatusicon.c:296
+#: ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:897
+msgid "Screen"
+msgstr "Pantalla"
 
 #: ctk/ctkinvisible.c:99 ctk/ctkwindow.c:898
 msgid "The screen where this window will be displayed"
@@ -5590,19 +5418,19 @@ msgstr "La pestanya activa es dibuixa amb un espai a la part inferior"
 msgid "The orientation of the orientable"
 msgstr "L'orientació de l'orientable"
 
-#: ctk/ctkoverlay.c:783
+#: ctk/ctkoverlay.c:790
 msgid "Pass Through"
 msgstr "Passa a través"
 
-#: ctk/ctkoverlay.c:783
+#: ctk/ctkoverlay.c:790
 msgid "Pass through input, does not affect main child"
 msgstr "L'entrada passa a través, no afecta el fill principal"
 
-#: ctk/ctkoverlay.c:797
+#: ctk/ctkoverlay.c:804
 msgid "Index"
 msgstr "Índex"
 
-#: ctk/ctkoverlay.c:798
+#: ctk/ctkoverlay.c:805
 msgid "The index of the overlay in the parent, -1 for the main child"
 msgstr "L'índex de superposició en el pare, -1 pel fill principal"
 
@@ -5695,11 +5523,11 @@ msgstr "Trieu la ubicació"
 msgid "The location to highlight in the sidebar"
 msgstr "La ubicació que s'ha de ressaltar a la barra lateral"
 
-#: ctk/ctkplacessidebar.c:4805 ctk/ctkplacesview.c:2343
+#: ctk/ctkplacessidebar.c:4805 ctk/ctkplacesview.c:2369
 msgid "Open Flags"
 msgstr "Indicadors d'obertura"
 
-#: ctk/ctkplacessidebar.c:4806 ctk/ctkplacesview.c:2344
+#: ctk/ctkplacessidebar.c:4806 ctk/ctkplacesview.c:2370
 msgid ""
 "Modes in which the calling application can open locations selected in the "
 "sidebar"
@@ -5744,7 +5572,7 @@ msgid ""
 msgstr ""
 "Si la barra lateral inclou una drecera per introduir manualment una ubicació"
 
-#: ctk/ctkplacessidebar.c:4837 ctk/ctkplacesview.c:2323
+#: ctk/ctkplacessidebar.c:4837 ctk/ctkplacesview.c:2349
 msgid "Whether the sidebar only includes local files"
 msgstr "Si la barra lateral inclou només fitxers locals"
 
@@ -5777,19 +5605,19 @@ msgstr ""
 msgid "Whether to emit ::populate-popup for popups that are not menus"
 msgstr "Si s'emet ::populate-popup per a finestres emergents que no són menús"
 
-#: ctk/ctkplacesview.c:2329
+#: ctk/ctkplacesview.c:2355
 msgid "Loading"
 msgstr "S'està carregant"
 
-#: ctk/ctkplacesview.c:2330
+#: ctk/ctkplacesview.c:2356
 msgid "Whether the view is loading locations"
 msgstr "Si la vista carrega ubicacions"
 
-#: ctk/ctkplacesview.c:2336
+#: ctk/ctkplacesview.c:2362
 msgid "Fetching networks"
 msgstr "S'estan obtenint les xarxes"
 
-#: ctk/ctkplacesview.c:2337
+#: ctk/ctkplacesview.c:2363
 msgid "Whether the view is fetching networks"
 msgstr "Si la vista està obtenint les xarxes"
 
@@ -5845,15 +5673,19 @@ msgstr "El fitxer representat per la fila, si n'hi ha"
 msgid "Whether the row represents a network location"
 msgstr "Si la fila representa una ubicació de xarxa"
 
-#: ctk/ctkplug.c:197
+#: ctk/ctkplug.c:198 ctk/ctkstatusicon.c:320
+msgid "Embedded"
+msgstr "Imbricat"
+
+#: ctk/ctkplug.c:199
 msgid "Whether the plug is embedded"
 msgstr "Si l'endoll és imbricat"
 
-#: ctk/ctkplug.c:211
+#: ctk/ctkplug.c:213
 msgid "Socket Window"
 msgstr "Finestra del sòcol"
 
-#: ctk/ctkplug.c:212
+#: ctk/ctkplug.c:214
 msgid "The window of the socket the plug is embedded in"
 msgstr "La finestra del sòcol en el qual l'endoll està incrustat"
 
@@ -6307,6 +6139,39 @@ msgstr "Alçada mínima vertical de la barra"
 msgid "The minimum vertical height of the progress bar"
 msgstr "L'alçada mínima vertical de la barra de progrés"
 
+#: ctk/ctkradioaction.c:116
+msgid "The value"
+msgstr "El valor"
+
+#: ctk/ctkradioaction.c:117
+msgid ""
+"The value returned by ctk_radio_action_get_current_value() when this action "
+"is the current action of its group."
+msgstr ""
+"El valor que retorna ctk_radio_action_get_current_value() quan aquesta acció "
+"és l'acció activa del seu grup."
+
+#: ctk/ctkradioaction.c:133 ctk/ctkradiobutton.c:184 ctk/ctkradiomenuitem.c:424
+#: ctk/ctkradiotoolbutton.c:83
+msgid "Group"
+msgstr "Grup"
+
+#: ctk/ctkradioaction.c:134
+msgid "The radio action whose group this action belongs to."
+msgstr "L'acció de radi al grup de la qual pertany aquesta acció."
+
+#: ctk/ctkradioaction.c:149
+msgid "The current value"
+msgstr "El valor actual"
+
+#: ctk/ctkradioaction.c:150
+msgid ""
+"The value property of the currently active member of the group to which this "
+"action belongs."
+msgstr ""
+"El valor de la propietat del membre actualment actiu del grup al qual "
+"pertany aquesta acció."
+
 #: ctk/ctkradiobutton.c:185
 msgid "The radio button whose group this widget belongs to."
 msgstr "El botó de grup al grup del qual pertany aquest giny."
@@ -6460,6 +6325,14 @@ msgid "Arrow scaling with regard to scroll button size"
 msgstr ""
 "L'escalat de la fletxa en referència a la mida del botó de desplaçament"
 
+#: ctk/ctkrecentaction.c:666 ctk/ctkrecentchoosermenu.c:239
+msgid "Show Numbers"
+msgstr "Mostra els nombres"
+
+#: ctk/ctkrecentaction.c:667 ctk/ctkrecentchoosermenu.c:240
+msgid "Whether the items should be displayed with a number"
+msgstr "Si els elements s'han de mostrar amb un nombre"
+
 #: ctk/ctkrecentchooser.c:130
 msgid "Recent Manager"
 msgstr "Gestor recent"
@@ -6533,11 +6406,11 @@ msgstr "L'ordre d'ordenació dels elements seleccionats"
 msgid "The current filter for selecting which resources are displayed"
 msgstr "El filtre actual per seleccionar quins fitxers es mostraran"
 
-#: ctk/ctkrecentmanager.c:290
+#: ctk/ctkrecentmanager.c:289
 msgid "The full path to the file to be used to store and read the list"
 msgstr "El camí sencer al fitxer a utilitzar per desar i llegir la llista"
 
-#: ctk/ctkrecentmanager.c:305
+#: ctk/ctkrecentmanager.c:304
 msgid "The size of the recently used resources list"
 msgstr "La mida de la llista de recursos utilitzada recentment"
 
@@ -6707,53 +6580,53 @@ msgstr ""
 "Mostra un segon botó de desplaçament cap endavant a l'altra banda de la "
 "barra de desplaçament"
 
-#: ctk/ctkscrolledwindow.c:569
+#: ctk/ctkscrolledwindow.c:567
 msgid "Horizontal Adjustment"
 msgstr "Ajust horitzontal"
 
-#: ctk/ctkscrolledwindow.c:570
+#: ctk/ctkscrolledwindow.c:568
 msgid "The CtkAdjustment for the horizontal position"
 msgstr "El CtkAdjustment per a la posició horitzontal"
 
-#: ctk/ctkscrolledwindow.c:576
+#: ctk/ctkscrolledwindow.c:574
 msgid "Vertical Adjustment"
 msgstr "Ajust vertical"
 
-#: ctk/ctkscrolledwindow.c:577
+#: ctk/ctkscrolledwindow.c:575
 msgid "The CtkAdjustment for the vertical position"
 msgstr "El CtkAdjustment per a la posició vertical"
 
-#: ctk/ctkscrolledwindow.c:583
+#: ctk/ctkscrolledwindow.c:581
 msgid "Horizontal Scrollbar Policy"
 msgstr "Política de la barra de desplaçament horitzontal"
 
-#: ctk/ctkscrolledwindow.c:584
+#: ctk/ctkscrolledwindow.c:582
 msgid "When the horizontal scrollbar is displayed"
 msgstr "Quan la barra de desplaçament horitzontal es mostra"
 
-#: ctk/ctkscrolledwindow.c:591
+#: ctk/ctkscrolledwindow.c:589
 msgid "Vertical Scrollbar Policy"
 msgstr "Política de la barra de desplaçament vertical"
 
-#: ctk/ctkscrolledwindow.c:592
+#: ctk/ctkscrolledwindow.c:590
 msgid "When the vertical scrollbar is displayed"
 msgstr "Quan es mostra la barra de desplaçament vertical"
 
-#: ctk/ctkscrolledwindow.c:599
+#: ctk/ctkscrolledwindow.c:597
 msgid "Window Placement"
 msgstr "Emplaçament de la finestra"
 
-#: ctk/ctkscrolledwindow.c:600
+#: ctk/ctkscrolledwindow.c:598
 msgid "Where the contents are located with respect to the scrollbars."
 msgstr ""
 "Si la ubicació del contingut es calcula en relació amb les barres de "
 "desplaçament."
 
-#: ctk/ctkscrolledwindow.c:618
+#: ctk/ctkscrolledwindow.c:616
 msgid "Window Placement Set"
 msgstr "Conjunt d'emplaçament de la finestra"
 
-#: ctk/ctkscrolledwindow.c:619
+#: ctk/ctkscrolledwindow.c:617
 msgid ""
 "Whether \"window-placement\" should be used to determine the location of the "
 "contents with respect to the scrollbars."
@@ -6761,96 +6634,96 @@ msgstr ""
 "Si s'ha d'utilitzar «window-placement» per determinar la situació dels "
 "continguts de la finestra respecte de les barres de desplaçament."
 
-#: ctk/ctkscrolledwindow.c:625 ctk/ctkspinbutton.c:455
+#: ctk/ctkscrolledwindow.c:623 ctk/ctkspinbutton.c:455
 msgid "Shadow Type"
 msgstr "Tipus d'ombra"
 
-#: ctk/ctkscrolledwindow.c:626
+#: ctk/ctkscrolledwindow.c:624
 msgid "Style of bevel around the contents"
 msgstr "Estil del bisell que envolta els continguts"
 
-#: ctk/ctkscrolledwindow.c:642
+#: ctk/ctkscrolledwindow.c:640
 msgid "Scrollbars within bevel"
 msgstr "Barres de desplaçament dins del bisell"
 
-#: ctk/ctkscrolledwindow.c:643
+#: ctk/ctkscrolledwindow.c:641
 msgid "Place scrollbars within the scrolled window's bevel"
 msgstr ""
 "Situa les barres de desplaçament dins del bisell de la finestra amb "
 "desplaçament"
 
-#: ctk/ctkscrolledwindow.c:649
+#: ctk/ctkscrolledwindow.c:647
 msgid "Scrollbar spacing"
 msgstr "Espaiat de barra de desplaçament"
 
-#: ctk/ctkscrolledwindow.c:650
+#: ctk/ctkscrolledwindow.c:648
 msgid "Number of pixels between the scrollbars and the scrolled window"
 msgstr ""
 "Nombre de píxels entre les barres de desplaçament i la finestra amb "
 "desplaçament"
 
-#: ctk/ctkscrolledwindow.c:665
+#: ctk/ctkscrolledwindow.c:663
 msgid "Minimum Content Width"
 msgstr "Amplada mínima del contingut"
 
-#: ctk/ctkscrolledwindow.c:666
+#: ctk/ctkscrolledwindow.c:664
 msgid "The minimum width that the scrolled window will allocate to its content"
 msgstr ""
 "L'amplada mínima que la finestra amb desplaçament ubicarà per aquests "
 "continguts"
 
-#: ctk/ctkscrolledwindow.c:679
+#: ctk/ctkscrolledwindow.c:677
 msgid "Minimum Content Height"
 msgstr "Alçada mínima del contingut"
 
-#: ctk/ctkscrolledwindow.c:680
+#: ctk/ctkscrolledwindow.c:678
 msgid ""
 "The minimum height that the scrolled window will allocate to its content"
 msgstr ""
 "L'alçada mínima que la finestra amb desplaçament ubicarà per aquests "
 "continguts"
 
-#: ctk/ctkscrolledwindow.c:694
+#: ctk/ctkscrolledwindow.c:692
 msgid "Kinetic Scrolling"
 msgstr "Desplaçament cinètic"
 
-#: ctk/ctkscrolledwindow.c:695
+#: ctk/ctkscrolledwindow.c:693
 msgid "Kinetic scrolling mode."
 msgstr "Mode de desplaçament cinètic."
 
-#: ctk/ctkscrolledwindow.c:714
+#: ctk/ctkscrolledwindow.c:712
 msgid "Overlay Scrolling"
 msgstr "Superposició del desplaçament"
 
-#: ctk/ctkscrolledwindow.c:715
+#: ctk/ctkscrolledwindow.c:713
 msgid "Overlay scrolling mode"
 msgstr "Mode de la superposició del desplaçament"
 
-#: ctk/ctkscrolledwindow.c:728
+#: ctk/ctkscrolledwindow.c:726
 msgid "Maximum Content Width"
 msgstr "Amplada màxima del contingut"
 
-#: ctk/ctkscrolledwindow.c:729
+#: ctk/ctkscrolledwindow.c:727
 msgid "The maximum width that the scrolled window will allocate to its content"
 msgstr ""
 "L'amplada màxima que la finestra amb desplaçament ubicarà per aquest "
 "contingut"
 
-#: ctk/ctkscrolledwindow.c:742
+#: ctk/ctkscrolledwindow.c:740
 msgid "Maximum Content Height"
 msgstr "Alçada màxima del contingut"
 
-#: ctk/ctkscrolledwindow.c:743
+#: ctk/ctkscrolledwindow.c:741
 msgid ""
 "The maximum height that the scrolled window will allocate to its content"
 msgstr ""
 "L'alçada màxima que la finestra amb desplaçament ubicarà per aquest contingut"
 
-#: ctk/ctkscrolledwindow.c:760 ctk/ctkscrolledwindow.c:761
+#: ctk/ctkscrolledwindow.c:758 ctk/ctkscrolledwindow.c:759
 msgid "Propagate Natural Width"
 msgstr "Propaga l'amplada natural"
 
-#: ctk/ctkscrolledwindow.c:778 ctk/ctkscrolledwindow.c:779
+#: ctk/ctkscrolledwindow.c:776 ctk/ctkscrolledwindow.c:777
 msgid "Propagate Natural Height"
 msgstr "Propaga l'alçada natural"
 
@@ -7901,7 +7774,7 @@ msgstr "El nom de la pàgina filla"
 msgid "The title of the child page"
 msgstr "El títol de la pàgina filla"
 
-#: ctk/ctkstack.c:530 ctk/ctktoolbutton.c:287
+#: ctk/ctkstack.c:530 ctk/ctktoolbutton.c:248
 msgid "Icon name"
 msgstr "Nom de la icona"
 
@@ -7927,6 +7800,10 @@ msgstr "Pila"
 msgid "Associated stack for this CtkStackSidebar"
 msgstr "Pila associada a aquest CtkStackSidebar"
 
+#: ctk/ctkstackswitcher.c:686 ctk/ctktrayicon-x11.c:178
+msgid "Icon Size"
+msgstr "Mida de les icones"
+
 #: ctk/ctkstackswitcher.c:687
 msgid "Symbolic size to use for named icon"
 msgstr "Mida simbòlica a usar per a la icona anomenada"
@@ -7934,6 +7811,62 @@ msgstr "Mida simbòlica a usar per a la icona anomenada"
 #: ctk/ctkstatusbar.c:178
 msgid "Style of bevel around the statusbar text"
 msgstr "Estil del bisell que envolta el text de la barra d'estat"
+
+#: ctk/ctkstatusicon.c:287
+msgid "The size of the icon"
+msgstr "La mida de la icona"
+
+#: ctk/ctkstatusicon.c:297
+msgid "The screen where this status icon will be displayed"
+msgstr "La pantalla on es mostrarà aquesta icona d'estat"
+
+#: ctk/ctkstatusicon.c:305
+msgid "Whether the status icon is visible"
+msgstr "Si la icona d'estat és visible"
+
+#: ctk/ctkstatusicon.c:321
+msgid "Whether the status icon is embedded"
+msgstr "Si la icona d'estat és imbricada"
+
+#: ctk/ctkstatusicon.c:337 ctk/ctktrayicon-x11.c:128
+msgid "The orientation of the tray"
+msgstr "L'orientació de la safata"
+
+#: ctk/ctkstatusicon.c:364 ctk/ctkwidget.c:1285
+msgid "Has tooltip"
+msgstr "Té indicador de funció"
+
+#: ctk/ctkstatusicon.c:365
+msgid "Whether this tray icon has a tooltip"
+msgstr "Si aquesta icona de la safata té un indicador de funció"
+
+#: ctk/ctkstatusicon.c:391 ctk/ctkwidget.c:1309
+msgid "Tooltip Text"
+msgstr "Text de l'indicador de funció"
+
+#: ctk/ctkstatusicon.c:392 ctk/ctkwidget.c:1310 ctk/ctkwidget.c:1334
+msgid "The contents of the tooltip for this widget"
+msgstr "Els continguts de l'indicador de funció d'aquest giny"
+
+#: ctk/ctkstatusicon.c:415 ctk/ctkwidget.c:1333
+msgid "Tooltip markup"
+msgstr "Etiquetatge de l'indicador de funció"
+
+#: ctk/ctkstatusicon.c:416
+msgid "The contents of the tooltip for this tray icon"
+msgstr "El contingut de l'indicador de funció d'aquesta icona de la safata"
+
+#: ctk/ctkstatusicon.c:434
+msgid "The title of this tray icon"
+msgstr "El títol d'aquesta icona de l'àrea de notificació"
+
+#: ctk/ctkstyle.c:466
+msgid "Style context"
+msgstr "Context d'estil"
+
+#: ctk/ctkstyle.c:467
+msgid "CtkStyleContext to get style from"
+msgstr "El CtkStyleContext d'on agafar l'estil"
 
 #: ctk/ctkstylecontext.c:230
 msgid "The associated CdkScreen"
@@ -8513,6 +8446,19 @@ msgstr "Color de les línies d'error inferiors"
 msgid "Color with which to draw error-indication underlines"
 msgstr "El color amb el qual es dibuixa la línia inferior que indica un error"
 
+#: ctk/ctktoggleaction.c:114
+msgid "Create the same proxies as a radio action"
+msgstr "Crea els mateixos apoderats com a acció de ràdio"
+
+#: ctk/ctktoggleaction.c:115
+msgid "Whether the proxies for this action look like radio action proxies"
+msgstr ""
+"Si els apoderats per a aquesta acció semblen apoderats d'acció de ràdio"
+
+#: ctk/ctktoggleaction.c:130
+msgid "Whether the toggle action should be active"
+msgstr "Si l'acció de commutació ha d'estar activa"
+
 #: ctk/ctktogglebutton.c:189 ctk/ctktoggletoolbutton.c:131
 msgid "If the toggle button should be pressed in"
 msgstr "Si el botó de commutació ha d'estar premut cap endins"
@@ -8609,11 +8555,11 @@ msgstr "Tipus de bisell que envolta els botons la barra d'eines"
 msgid "Style of bevel around the toolbar"
 msgstr "Estil de bisell que envolta la barra d'eines"
 
-#: ctk/ctktoolbutton.c:244
+#: ctk/ctktoolbutton.c:205
 msgid "Text to show in the item."
 msgstr "Text a mostrar en l'element."
 
-#: ctk/ctktoolbutton.c:251
+#: ctk/ctktoolbutton.c:212
 msgid ""
 "If set, an underline in the label property indicates that the next character "
 "should be used for the mnemonic accelerator key in the overflow menu"
@@ -8622,35 +8568,35 @@ msgstr ""
 "caràcter següent s'hauria d'utilitzar per a la tecla de drecera mnemotècnica "
 "en el menú"
 
-#: ctk/ctktoolbutton.c:258
+#: ctk/ctktoolbutton.c:219
 msgid "Widget to use as the item label"
 msgstr "El giny que s'utilitzarà com a etiqueta de l'element"
 
-#: ctk/ctktoolbutton.c:269
+#: ctk/ctktoolbutton.c:230
 msgid "Stock Id"
 msgstr "Id. de recurs"
 
-#: ctk/ctktoolbutton.c:270
+#: ctk/ctktoolbutton.c:231
 msgid "The stock icon displayed on the item"
 msgstr "La icona de recurs que es visualitzarà en l'element"
 
-#: ctk/ctktoolbutton.c:288
+#: ctk/ctktoolbutton.c:249
 msgid "The name of the themed icon displayed on the item"
 msgstr "El nom de la icona de tema que es visualitzarà en l'element"
 
-#: ctk/ctktoolbutton.c:294
+#: ctk/ctktoolbutton.c:255
 msgid "Icon widget"
 msgstr "Giny icona"
 
-#: ctk/ctktoolbutton.c:295
+#: ctk/ctktoolbutton.c:256
 msgid "Icon widget to display in the item"
 msgstr "El giny icona a mostrar en l'element"
 
-#: ctk/ctktoolbutton.c:311
+#: ctk/ctktoolbutton.c:272
 msgid "Icon spacing"
 msgstr "Espaiat entre icones"
 
-#: ctk/ctktoolbutton.c:312
+#: ctk/ctktoolbutton.c:273
 msgid "Spacing in pixels between the icon and label"
 msgstr "L'espaiament entre la icona i l'etiqueta"
 
@@ -8744,6 +8690,42 @@ msgid ""
 "Whether the item group should receive extra space when the palette grows"
 msgstr ""
 "Si el grup d'elements ha de rebre espai addicional quan la paleta creixi"
+
+#: ctk/ctktrayicon-x11.c:137
+msgid "Foreground color for symbolic icons"
+msgstr "Color de primer pla per a les icones simbòliques"
+
+#: ctk/ctktrayicon-x11.c:144
+msgid "Error color"
+msgstr "Color d'error"
+
+#: ctk/ctktrayicon-x11.c:145
+msgid "Error color for symbolic icons"
+msgstr "Color d'error per a les icones simbòliques"
+
+#: ctk/ctktrayicon-x11.c:152
+msgid "Warning color"
+msgstr "Color d'avís"
+
+#: ctk/ctktrayicon-x11.c:153
+msgid "Warning color for symbolic icons"
+msgstr "Color d'avís per a les icones simbòliques"
+
+#: ctk/ctktrayicon-x11.c:160
+msgid "Success color"
+msgstr "Color d'èxit"
+
+#: ctk/ctktrayicon-x11.c:161
+msgid "Success color for symbolic icons"
+msgstr "Color d'èxit per a les icones simbòliques"
+
+#: ctk/ctktrayicon-x11.c:169
+msgid "Padding that should be put around icons in the tray"
+msgstr "Separació que hi hauria d'haver al voltant de les icones a la safata"
+
+#: ctk/ctktrayicon-x11.c:179
+msgid "The pixel size that icons should be forced to, or zero"
+msgstr "La mida de píxel a la qual s'haurien de forçar les icones, o zero"
 
 #: ctk/ctktreemenu.c:265
 msgid "TreeMenu model"
@@ -9128,6 +9110,18 @@ msgid "Logical sort column ID this column sorts on when selected for sorting"
 msgstr ""
 "Identificador de columna lògic que s'utilitzarà per a l'ordenació en "
 "seleccionar-lo"
+
+#: ctk/ctkuimanager.c:453
+msgid "Whether tearoff menu items should be added to menus"
+msgstr "Si s'han d'afegir elements separadors de menú als menús"
+
+#: ctk/ctkuimanager.c:460
+msgid "Merged UI definition"
+msgstr "Definició d'IU mesclada"
+
+#: ctk/ctkuimanager.c:461
+msgid "An XML string describing the merged UI"
+msgstr "Una cadena XML que descriu la IU mesclada"
 
 #: ctk/ctkviewport.c:409
 msgid "Determines how the shadowed box around the viewport is drawn"
