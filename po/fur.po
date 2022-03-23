@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+ master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-27 23:25+0000\n"
+"POT-Creation-Date: 2022-03-23 17:45+0100\n"
 "PO-Revision-Date: 2019-07-28 09:53+0200\n"
 "Last-Translator: Fabio Tomat <f.t.public@gmail.com>\n"
 "Language-Team: Friulian <fur@li.org>\n"
@@ -23,48 +23,48 @@ msgstr ""
 msgid "Broadway display type not supported: %s"
 msgstr "Gjenar di schermi broadway no supuartât: %s"
 
-#: cdk/cdk.c:187
+#: cdk/cdk.c:179
 #, c-format
 msgid "Error parsing option --cdk-debug"
 msgstr "Erôr tal analizâ la opzion --cdk-debug"
 
-#: cdk/cdk.c:207
+#: cdk/cdk.c:199
 #, c-format
 msgid "Error parsing option --cdk-no-debug"
 msgstr "Erôr tal analizâ la opzion --cdk-no-debug"
 
 #. Description of --class=CLASS in --help output
-#: cdk/cdk.c:236
+#: cdk/cdk.c:228
 msgid "Program class as used by the window manager"
 msgstr "Classe dal program come doprade dal gjestôr barcons"
 
 #. Placeholder in --class=CLASS in --help output
-#: cdk/cdk.c:237
+#: cdk/cdk.c:229
 msgid "CLASS"
 msgstr "CLASSE"
 
 #. Description of --name=NAME in --help output
-#: cdk/cdk.c:239
+#: cdk/cdk.c:231
 msgid "Program name as used by the window manager"
 msgstr "Non dal program come doprât dal gjestôr barcons"
 
 #. Placeholder in --name=NAME in --help output
-#: cdk/cdk.c:240
+#: cdk/cdk.c:232
 msgid "NAME"
 msgstr "NON"
 
 #. Description of --display=DISPLAY in --help output
-#: cdk/cdk.c:243
+#: cdk/cdk.c:235
 msgid "X display to use"
 msgstr "Display X di doprâ"
 
 #. Placeholder in --display=DISPLAY in --help output
-#: cdk/cdk.c:244
+#: cdk/cdk.c:236
 msgid "DISPLAY"
 msgstr "DISPLAY"
 
 #. Description of --cdk-debug=FLAGS in --help output
-#: cdk/cdk.c:248
+#: cdk/cdk.c:240
 msgid "CDK debugging flags to set"
 msgstr "Opzion di debug CDK di stabilî"
 
@@ -72,20 +72,20 @@ msgstr "Opzion di debug CDK di stabilî"
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
 #. Placeholder in --ctk-debug=FLAGS in --help output
 #. Placeholder in --ctk-no-debug=FLAGS in --help output
-#: cdk/cdk.c:249 cdk/cdk.c:252 ctk/ctkmain.c:471 ctk/ctkmain.c:474
+#: cdk/cdk.c:241 cdk/cdk.c:244 ctk/ctkmain.c:471 ctk/ctkmain.c:474
 msgid "FLAGS"
 msgstr "OPZIONS"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
-#: cdk/cdk.c:251
+#: cdk/cdk.c:243
 msgid "CDK debugging flags to unset"
 msgstr "Opzions di debug CDK di no stabilî"
 
-#: cdk/cdkwindow.c:2844
+#: cdk/cdkwindow.c:2851
 msgid "GL support disabled via CDK_DEBUG"
 msgstr "Supuart GL disabilitât vie CDK_DEBUG"
 
-#: cdk/cdkwindow.c:2855
+#: cdk/cdkwindow.c:2862
 msgid "The current backend does not support OpenGL"
 msgstr "Il backend atuâl nol supuarte OpenGL"
 
@@ -466,34 +466,27 @@ msgctxt "keyboard label"
 msgid "Suspend"
 msgstr "Sospint"
 
-#: cdk/mir/cdkmirglcontext.c:48 cdk/mir/cdkmirwindowimpl.c:2226
-#: cdk/wayland/cdkglcontext-wayland.c:468 cdk/win32/cdkglcontext-win32.c:1177
-#: cdk/x11/cdkglcontext-x11.c:1277
-msgid "No GL implementation is available"
-msgstr "Nissune implementazion GL disponibile"
+#: cdk/quartz/cdkglcontext-quartz.c:123
+msgid "Unable to create a GL pixel format"
+msgstr "Impussibil creâ un formât di pixel GL"
 
-#: cdk/mir/cdkmirglcontext.c:89 cdk/quartz/cdkglcontext-quartz.c:132
-#: cdk/wayland/cdkglcontext-wayland.c:208 cdk/win32/cdkglcontext-win32.c:1070
-#: cdk/win32/cdkglcontext-win32.c:1110 cdk/x11/cdkglcontext-x11.c:720
-#: cdk/x11/cdkglcontext-x11.c:770
+#: cdk/quartz/cdkglcontext-quartz.c:133 cdk/wayland/cdkglcontext-wayland.c:208
+#: cdk/win32/cdkglcontext-win32.c:1072 cdk/win32/cdkglcontext-win32.c:1112
+#: cdk/x11/cdkglcontext-x11.c:724 cdk/x11/cdkglcontext-x11.c:774
 msgid "Unable to create a GL context"
 msgstr "Impussibil creâ un contest GL"
 
-#: cdk/mir/cdkmirwindowimpl.c:2188 cdk/mir/cdkmirwindowimpl.c:2198
 #: cdk/wayland/cdkglcontext-wayland.c:418
-#: cdk/wayland/cdkglcontext-wayland.c:428 cdk/win32/cdkglcontext-win32.c:908
-#: cdk/win32/cdkglcontext-win32.c:918 cdk/win32/cdkglcontext-win32.c:1035
-#: cdk/x11/cdkglcontext-x11.c:971
+#: cdk/wayland/cdkglcontext-wayland.c:428 cdk/win32/cdkglcontext-win32.c:910
+#: cdk/win32/cdkglcontext-win32.c:920 cdk/win32/cdkglcontext-win32.c:1037
+#: cdk/x11/cdkglcontext-x11.c:975
 msgid "No available configurations for the given pixel format"
 msgstr "Nissune configurazion disponibile pal formât pixel furnît"
 
-#: cdk/mir/cdkmirwindowimpl.c:2234
-msgid "3.2 core GL profile is not available on EGL implementation"
-msgstr "Il profîl GL core 3.2 nol è disponibil su la implementazion EGL"
-
-#: cdk/quartz/cdkglcontext-quartz.c:122
-msgid "Unable to create a GL pixel format"
-msgstr "Impussibil creâ un formât di pixel GL"
+#: cdk/wayland/cdkglcontext-wayland.c:468 cdk/win32/cdkglcontext-win32.c:1179
+#: cdk/x11/cdkglcontext-x11.c:1281
+msgid "No GL implementation is available"
+msgstr "Nissune implementazion GL disponibile"
 
 #: cdk/wayland/cdkglcontext-wayland.c:476
 msgid "Core GL is not available on EGL implementation"
@@ -529,24 +522,24 @@ msgstr "Dimension de palete in modalitât 8 bit"
 msgid "COLORS"
 msgstr "COLÔRS"
 
-#: cdk/x11/cdkapplaunchcontext-x11.c:295
+#: cdk/x11/cdkapplaunchcontext-x11.c:298
 #, c-format
 msgid "Starting %s"
 msgstr "Inviament di %s"
 
-#: cdk/x11/cdkapplaunchcontext-x11.c:308
+#: cdk/x11/cdkapplaunchcontext-x11.c:311
 #, c-format
 msgid "Opening %s"
 msgstr "Daûr a vierzi %s"
 
-#: cdk/x11/cdkapplaunchcontext-x11.c:313
+#: cdk/x11/cdkapplaunchcontext-x11.c:316
 #, c-format
 msgid "Opening %d Item"
 msgid_plural "Opening %d Items"
 msgstr[0] "Daûr a vierzi %d element"
 msgstr[1] "Daûr a vierzi %d elements"
 
-#: cdk/x11/cdkglcontext-x11.c:999
+#: cdk/x11/cdkglcontext-x11.c:1003
 #, c-format
 msgid "No available configurations for the given RGBA pixel format"
 msgstr "Nissune configurazion disponibile pal formât pixel RGBA furnît"
@@ -561,12 +554,12 @@ msgctxt "Action name"
 msgid "Toggle"
 msgstr "Comute"
 
-#: ctk/a11y/ctkbuttonaccessible.c:321 ctk/a11y/ctkmenuitemaccessible.c:436
+#: ctk/a11y/ctkbuttonaccessible.c:323 ctk/a11y/ctkmenuitemaccessible.c:439
 msgctxt "Action name"
 msgid "Click"
 msgstr "Clic"
 
-#: ctk/a11y/ctkbuttonaccessible.c:330
+#: ctk/a11y/ctkbuttonaccessible.c:332
 msgctxt "Action description"
 msgid "Clicks the button"
 msgstr "Fâs clic sul boton"
@@ -582,7 +575,7 @@ msgid "Edit"
 msgstr "Modifiche"
 
 #: ctk/a11y/ctkcellaccessible.c:261 ctk/a11y/ctkcolorswatchaccessible.c:149
-#: ctk/a11y/ctkentryaccessible.c:1557 ctk/a11y/ctkexpanderaccessible.c:281
+#: ctk/a11y/ctkentryaccessible.c:1560 ctk/a11y/ctkexpanderaccessible.c:281
 msgctxt "Action name"
 msgid "Activate"
 msgstr "Ative"
@@ -629,17 +622,17 @@ msgctxt "Action description"
 msgid "Customizes the color"
 msgstr "Al personalize il colôr"
 
-#: ctk/a11y/ctkcomboboxaccessible.c:310
+#: ctk/a11y/ctkcomboboxaccessible.c:313
 msgctxt "Action name"
 msgid "Press"
 msgstr "Frache"
 
-#: ctk/a11y/ctkcomboboxaccessible.c:319
+#: ctk/a11y/ctkcomboboxaccessible.c:322
 msgctxt "Action description"
 msgid "Presses the combobox"
 msgstr "Al frache la casele cumbinade"
 
-#: ctk/a11y/ctkentryaccessible.c:1566
+#: ctk/a11y/ctkentryaccessible.c:1569
 msgctxt "Action description"
 msgid "Activates the entry"
 msgstr "Al ative la vôs"
@@ -652,406 +645,406 @@ msgstr "Al ative l'espansôr"
 #. FIXME these need accelerators when appropriate, and
 #. * need the mnemonics to be rationalized
 #.
-#: ctk/a11y/ctkimageaccessible.c:53 ctk/ctkstock.c:345
+#: ctk/a11y/ctkimageaccessible.c:53 ctk/ctkstock.c:327
 msgctxt "Stock label"
 msgid "_About"
 msgstr "_Informazions"
 
-#: ctk/a11y/ctkimageaccessible.c:54 ctk/ctkstock.c:346
+#: ctk/a11y/ctkimageaccessible.c:54 ctk/ctkstock.c:328
 msgctxt "Stock label"
 msgid "_Add"
 msgstr "_Zonte"
 
-#: ctk/a11y/ctkimageaccessible.c:55 ctk/ctkstock.c:348
+#: ctk/a11y/ctkimageaccessible.c:55 ctk/ctkstock.c:330
 msgctxt "Stock label"
 msgid "_Bold"
 msgstr "_Neret"
 
-#: ctk/a11y/ctkimageaccessible.c:56 ctk/ctkstock.c:350
+#: ctk/a11y/ctkimageaccessible.c:56 ctk/ctkstock.c:332
 msgctxt "Stock label"
 msgid "_CD-ROM"
 msgstr "_CD-ROM"
 
-#: ctk/a11y/ctkimageaccessible.c:57 ctk/ctkstock.c:351
+#: ctk/a11y/ctkimageaccessible.c:57 ctk/ctkstock.c:333
 msgctxt "Stock label"
 msgid "_Clear"
 msgstr "_Nete"
 
-#: ctk/a11y/ctkimageaccessible.c:58 ctk/ctkstock.c:352
+#: ctk/a11y/ctkimageaccessible.c:58 ctk/ctkstock.c:334
 msgctxt "Stock label"
 msgid "_Close"
 msgstr "_Siere"
 
-#: ctk/a11y/ctkimageaccessible.c:59 ctk/ctkheaderbar.c:415 ctk/ctkwindow.c:9307
+#: ctk/a11y/ctkimageaccessible.c:59 ctk/ctkheaderbar.c:415 ctk/ctkwindow.c:9319
 msgid "Minimize"
 msgstr "Minimize"
 
-#: ctk/a11y/ctkimageaccessible.c:60 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9316
+#: ctk/a11y/ctkimageaccessible.c:60 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9328
 msgid "Maximize"
 msgstr "Slargje"
 
-#: ctk/a11y/ctkimageaccessible.c:61 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9273
+#: ctk/a11y/ctkimageaccessible.c:61 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9285
 msgid "Restore"
 msgstr "Ripristine"
 
-#: ctk/a11y/ctkimageaccessible.c:62 ctk/ctkstock.c:355
+#: ctk/a11y/ctkimageaccessible.c:62 ctk/ctkstock.c:337
 msgctxt "Stock label"
 msgid "_Copy"
 msgstr "_Copie"
 
-#: ctk/a11y/ctkimageaccessible.c:63 ctk/ctkstock.c:356
+#: ctk/a11y/ctkimageaccessible.c:63 ctk/ctkstock.c:338
 msgctxt "Stock label"
 msgid "Cu_t"
 msgstr "Ta_ie"
 
-#: ctk/a11y/ctkimageaccessible.c:64 ctk/ctkstock.c:357
+#: ctk/a11y/ctkimageaccessible.c:64 ctk/ctkstock.c:339
 msgctxt "Stock label"
 msgid "_Delete"
 msgstr "_Elimine"
 
-#: ctk/a11y/ctkimageaccessible.c:65 ctk/ctkstock.c:339
+#: ctk/a11y/ctkimageaccessible.c:65 ctk/ctkstock.c:321
 msgctxt "Stock label"
 msgid "Error"
 msgstr "Erôr"
 
 #. KEEP IN SYNC with ctkiconfactory.c stock icons, when appropriate
-#: ctk/a11y/ctkimageaccessible.c:66 ctk/ctkstock.c:337
+#: ctk/a11y/ctkimageaccessible.c:66 ctk/ctkstock.c:319
 msgctxt "Stock label"
 msgid "Information"
 msgstr "Informazion"
 
-#: ctk/a11y/ctkimageaccessible.c:67 ctk/ctkstock.c:340
+#: ctk/a11y/ctkimageaccessible.c:67 ctk/ctkstock.c:322
 msgctxt "Stock label"
 msgid "Question"
 msgstr "Domande"
 
-#: ctk/a11y/ctkimageaccessible.c:68 ctk/ctkstock.c:338
+#: ctk/a11y/ctkimageaccessible.c:68 ctk/ctkstock.c:320
 msgctxt "Stock label"
 msgid "Warning"
 msgstr "Avertiment"
 
-#: ctk/a11y/ctkimageaccessible.c:69 ctk/ctkstock.c:360
+#: ctk/a11y/ctkimageaccessible.c:69 ctk/ctkstock.c:342
 msgctxt "Stock label"
 msgid "_Execute"
 msgstr "_Eseguìs"
 
-#: ctk/a11y/ctkimageaccessible.c:70 ctk/ctkstock.c:362
+#: ctk/a11y/ctkimageaccessible.c:70 ctk/ctkstock.c:344
 msgctxt "Stock label"
 msgid "_File"
 msgstr "_File"
 
-#: ctk/a11y/ctkimageaccessible.c:71 ctk/ctkstock.c:363
+#: ctk/a11y/ctkimageaccessible.c:71 ctk/ctkstock.c:345
 msgctxt "Stock label"
 msgid "_Find"
 msgstr "C_jate"
 
-#: ctk/a11y/ctkimageaccessible.c:72 ctk/ctkstock.c:364
+#: ctk/a11y/ctkimageaccessible.c:72 ctk/ctkstock.c:346
 msgctxt "Stock label"
 msgid "Find and _Replace"
 msgstr "Cjate e _sostituìs"
 
-#: ctk/a11y/ctkimageaccessible.c:73 ctk/ctkstock.c:365
+#: ctk/a11y/ctkimageaccessible.c:73 ctk/ctkstock.c:347
 msgctxt "Stock label"
 msgid "_Floppy"
 msgstr "_Floppy"
 
-#: ctk/a11y/ctkimageaccessible.c:74 ctk/ctkstock.c:366
+#: ctk/a11y/ctkimageaccessible.c:74 ctk/ctkstock.c:348
 msgctxt "Stock label"
 msgid "_Fullscreen"
 msgstr "_Plen visôr"
 
 #. This is a navigation label as in "go to the bottom of the page"
-#: ctk/a11y/ctkimageaccessible.c:75 ctk/ctkstock.c:369
+#: ctk/a11y/ctkimageaccessible.c:75 ctk/ctkstock.c:351
 msgctxt "Stock label, navigation"
 msgid "_Bottom"
 msgstr "_Inferiôr"
 
 #. This is a navigation label as in "go to the first page"
-#: ctk/a11y/ctkimageaccessible.c:76 ctk/ctkstock.c:371
+#: ctk/a11y/ctkimageaccessible.c:76 ctk/ctkstock.c:353
 msgctxt "Stock label, navigation"
 msgid "_First"
 msgstr "_Prin"
 
 #. This is a navigation label as in "go to the last page"
-#: ctk/a11y/ctkimageaccessible.c:77 ctk/ctkstock.c:373
+#: ctk/a11y/ctkimageaccessible.c:77 ctk/ctkstock.c:355
 msgctxt "Stock label, navigation"
 msgid "_Last"
 msgstr "_Ultin"
 
 #. This is a navigation label as in "go to the top of the page"
-#: ctk/a11y/ctkimageaccessible.c:78 ctk/ctkstock.c:375
+#: ctk/a11y/ctkimageaccessible.c:78 ctk/ctkstock.c:357
 msgctxt "Stock label, navigation"
 msgid "_Top"
 msgstr "_Superiôr"
 
 #. This is a navigation label as in "go back"
-#: ctk/a11y/ctkimageaccessible.c:79 ctk/ctkstock.c:377
+#: ctk/a11y/ctkimageaccessible.c:79 ctk/ctkstock.c:359
 msgctxt "Stock label, navigation"
 msgid "_Back"
 msgstr "_Indaûr"
 
 #. This is a navigation label as in "go down"
-#: ctk/a11y/ctkimageaccessible.c:80 ctk/ctkstock.c:379
+#: ctk/a11y/ctkimageaccessible.c:80 ctk/ctkstock.c:361
 msgctxt "Stock label, navigation"
 msgid "_Down"
 msgstr "_Jù"
 
 #. This is a navigation label as in "go forward"
-#: ctk/a11y/ctkimageaccessible.c:81 ctk/ctkstock.c:381
+#: ctk/a11y/ctkimageaccessible.c:81 ctk/ctkstock.c:363
 msgctxt "Stock label, navigation"
 msgid "_Forward"
 msgstr "In_denant"
 
 #. This is a navigation label as in "go up"
-#: ctk/a11y/ctkimageaccessible.c:82 ctk/ctkstock.c:383
+#: ctk/a11y/ctkimageaccessible.c:82 ctk/ctkstock.c:365
 msgctxt "Stock label, navigation"
 msgid "_Up"
 msgstr "_Sù"
 
-#: ctk/a11y/ctkimageaccessible.c:83 ctk/ctkstock.c:384
+#: ctk/a11y/ctkimageaccessible.c:83 ctk/ctkstock.c:366
 msgctxt "Stock label"
 msgid "_Hard Disk"
 msgstr "_Disc fis"
 
-#: ctk/a11y/ctkimageaccessible.c:84 ctk/ctkstock.c:385
+#: ctk/a11y/ctkimageaccessible.c:84 ctk/ctkstock.c:367
 msgctxt "Stock label"
 msgid "_Help"
 msgstr "_Jutori"
 
-#: ctk/a11y/ctkimageaccessible.c:85 ctk/ctkstock.c:386
+#: ctk/a11y/ctkimageaccessible.c:85 ctk/ctkstock.c:368
 msgctxt "Stock label"
 msgid "_Home"
 msgstr "_Inizi"
 
-#: ctk/a11y/ctkimageaccessible.c:86 ctk/ctkstock.c:387
+#: ctk/a11y/ctkimageaccessible.c:86 ctk/ctkstock.c:369
 msgctxt "Stock label"
 msgid "Increase Indent"
 msgstr "Aumente tornade"
 
-#: ctk/a11y/ctkimageaccessible.c:87 ctk/ctkstock.c:391
+#: ctk/a11y/ctkimageaccessible.c:87 ctk/ctkstock.c:373
 msgctxt "Stock label"
 msgid "_Italic"
 msgstr "Cors_îf"
 
-#: ctk/a11y/ctkimageaccessible.c:88 ctk/ctkstock.c:392
+#: ctk/a11y/ctkimageaccessible.c:88 ctk/ctkstock.c:374
 msgctxt "Stock label"
 msgid "_Jump to"
 msgstr "_Salte a"
 
 #. This is about text justification, "centered text"
-#: ctk/a11y/ctkimageaccessible.c:89 ctk/ctkstock.c:394
+#: ctk/a11y/ctkimageaccessible.c:89 ctk/ctkstock.c:376
 msgctxt "Stock label"
 msgid "_Center"
 msgstr "_Centri"
 
 #. This is about text justification
-#: ctk/a11y/ctkimageaccessible.c:90 ctk/ctkstock.c:396
+#: ctk/a11y/ctkimageaccessible.c:90 ctk/ctkstock.c:378
 msgctxt "Stock label"
 msgid "_Fill"
 msgstr "_Jemple"
 
 #. This is about text justification, "left-justified text"
-#: ctk/a11y/ctkimageaccessible.c:91 ctk/ctkstock.c:398
+#: ctk/a11y/ctkimageaccessible.c:91 ctk/ctkstock.c:380
 msgctxt "Stock label"
 msgid "_Left"
 msgstr "_Çampe"
 
 #. This is about text justification, "right-justified text"
-#: ctk/a11y/ctkimageaccessible.c:92 ctk/ctkstock.c:400
+#: ctk/a11y/ctkimageaccessible.c:92 ctk/ctkstock.c:382
 msgctxt "Stock label"
 msgid "_Right"
 msgstr "_Diestre"
 
-#: ctk/a11y/ctkimageaccessible.c:93 ctk/ctkstock.c:367
+#: ctk/a11y/ctkimageaccessible.c:93 ctk/ctkstock.c:349
 msgctxt "Stock label"
 msgid "_Leave Fullscreen"
 msgstr "_Mole plen visôr"
 
 #. Media label, as in "fast forward"
-#: ctk/a11y/ctkimageaccessible.c:94 ctk/ctkstock.c:403
+#: ctk/a11y/ctkimageaccessible.c:94 ctk/ctkstock.c:385
 msgctxt "Stock label, media"
 msgid "_Forward"
 msgstr "In_denant"
 
 #. Media label, as in "next song"
-#: ctk/a11y/ctkimageaccessible.c:95 ctk/ctkstock.c:405
+#: ctk/a11y/ctkimageaccessible.c:95 ctk/ctkstock.c:387
 msgctxt "Stock label, media"
 msgid "_Next"
 msgstr "P_rossim"
 
 #. Media label, as in "pause music"
-#: ctk/a11y/ctkimageaccessible.c:96 ctk/ctkstock.c:407
+#: ctk/a11y/ctkimageaccessible.c:96 ctk/ctkstock.c:389
 msgctxt "Stock label, media"
 msgid "P_ause"
 msgstr "P_ause"
 
 #. Media label, as in "play music"
-#: ctk/a11y/ctkimageaccessible.c:97 ctk/ctkstock.c:409
+#: ctk/a11y/ctkimageaccessible.c:97 ctk/ctkstock.c:391
 msgctxt "Stock label, media"
 msgid "_Play"
 msgstr "_Sune"
 
 #. Media label, as in  "previous song"
-#: ctk/a11y/ctkimageaccessible.c:98 ctk/ctkstock.c:411
+#: ctk/a11y/ctkimageaccessible.c:98 ctk/ctkstock.c:393
 msgctxt "Stock label, media"
 msgid "Pre_vious"
 msgstr "Preced_ent"
 
 #. Media label
-#: ctk/a11y/ctkimageaccessible.c:99 ctk/ctkstock.c:413
+#: ctk/a11y/ctkimageaccessible.c:99 ctk/ctkstock.c:395
 msgctxt "Stock label, media"
 msgid "_Record"
 msgstr "_Regjistre"
 
 #. Media label
-#: ctk/a11y/ctkimageaccessible.c:100 ctk/ctkstock.c:415
+#: ctk/a11y/ctkimageaccessible.c:100 ctk/ctkstock.c:397
 msgctxt "Stock label, media"
 msgid "R_ewind"
 msgstr "_Fâs sù"
 
 #. Media label
-#: ctk/a11y/ctkimageaccessible.c:101 ctk/ctkstock.c:417
+#: ctk/a11y/ctkimageaccessible.c:101 ctk/ctkstock.c:399
 msgctxt "Stock label, media"
 msgid "_Stop"
 msgstr "_Ferme"
 
-#: ctk/a11y/ctkimageaccessible.c:102 ctk/ctkstock.c:418
+#: ctk/a11y/ctkimageaccessible.c:102 ctk/ctkstock.c:400
 msgctxt "Stock label"
 msgid "_Network"
 msgstr "_Rêt"
 
-#: ctk/a11y/ctkimageaccessible.c:103 ctk/ctkstock.c:419
+#: ctk/a11y/ctkimageaccessible.c:103 ctk/ctkstock.c:401
 msgctxt "Stock label"
 msgid "_New"
 msgstr "_Gnûf"
 
-#: ctk/a11y/ctkimageaccessible.c:104 ctk/ctkstock.c:422
+#: ctk/a11y/ctkimageaccessible.c:104 ctk/ctkstock.c:404
 msgctxt "Stock label"
 msgid "_Open"
 msgstr "_Vierç"
 
-#: ctk/a11y/ctkimageaccessible.c:105 ctk/ctkstock.c:432
+#: ctk/a11y/ctkimageaccessible.c:105 ctk/ctkstock.c:414
 msgctxt "Stock label"
 msgid "_Paste"
 msgstr "_Tache"
 
-#: ctk/a11y/ctkimageaccessible.c:106 ctk/ctkstock.c:434
+#: ctk/a11y/ctkimageaccessible.c:106 ctk/ctkstock.c:416
 msgctxt "Stock label"
 msgid "_Print"
 msgstr "_Stampe"
 
-#: ctk/a11y/ctkimageaccessible.c:107 ctk/ctkstock.c:435
+#: ctk/a11y/ctkimageaccessible.c:107 ctk/ctkstock.c:417
 msgctxt "Stock label"
 msgid "Print Pre_view"
 msgstr "Ante_prime di stampe"
 
-#: ctk/a11y/ctkimageaccessible.c:108 ctk/ctkstock.c:436
+#: ctk/a11y/ctkimageaccessible.c:108 ctk/ctkstock.c:418
 msgctxt "Stock label"
 msgid "_Properties"
 msgstr "_Proprietâts"
 
-#: ctk/a11y/ctkimageaccessible.c:109 ctk/ctkstock.c:437
+#: ctk/a11y/ctkimageaccessible.c:109 ctk/ctkstock.c:419
 msgctxt "Stock label"
 msgid "_Quit"
 msgstr "_Jes"
 
-#: ctk/a11y/ctkimageaccessible.c:110 ctk/ctkstock.c:438
+#: ctk/a11y/ctkimageaccessible.c:110 ctk/ctkstock.c:420
 msgctxt "Stock label"
 msgid "_Redo"
 msgstr "_Torne fâs"
 
-#: ctk/a11y/ctkimageaccessible.c:111 ctk/ctkstock.c:439
+#: ctk/a11y/ctkimageaccessible.c:111 ctk/ctkstock.c:421
 msgctxt "Stock label"
 msgid "_Refresh"
 msgstr "_Inzorne"
 
-#: ctk/a11y/ctkimageaccessible.c:112 ctk/ctkstock.c:440
+#: ctk/a11y/ctkimageaccessible.c:112 ctk/ctkstock.c:422
 msgctxt "Stock label"
 msgid "_Remove"
 msgstr "_Gjave"
 
-#: ctk/a11y/ctkimageaccessible.c:113 ctk/ctkstock.c:441
+#: ctk/a11y/ctkimageaccessible.c:113 ctk/ctkstock.c:423
 msgctxt "Stock label"
 msgid "_Revert"
 msgstr "_Ripristine"
 
-#: ctk/a11y/ctkimageaccessible.c:114 ctk/ctkstock.c:442
+#: ctk/a11y/ctkimageaccessible.c:114 ctk/ctkstock.c:424
 msgctxt "Stock label"
 msgid "_Save"
 msgstr "_Salve"
 
-#: ctk/a11y/ctkimageaccessible.c:115 ctk/ctkstock.c:443
+#: ctk/a11y/ctkimageaccessible.c:115 ctk/ctkstock.c:425
 msgctxt "Stock label"
 msgid "Save _As"
 msgstr "S_alve come"
 
-#: ctk/a11y/ctkimageaccessible.c:116 ctk/ctkstock.c:444
+#: ctk/a11y/ctkimageaccessible.c:116 ctk/ctkstock.c:426
 msgctxt "Stock label"
 msgid "Select _All"
 msgstr "Selezione _Dut"
 
 #. Sorting direction
-#: ctk/a11y/ctkimageaccessible.c:117 ctk/ctkstock.c:448
+#: ctk/a11y/ctkimageaccessible.c:117 ctk/ctkstock.c:430
 msgctxt "Stock label"
 msgid "_Ascending"
 msgstr "_Cressint"
 
 #. Sorting direction
-#: ctk/a11y/ctkimageaccessible.c:118 ctk/ctkstock.c:450
+#: ctk/a11y/ctkimageaccessible.c:118 ctk/ctkstock.c:432
 msgctxt "Stock label"
 msgid "_Descending"
 msgstr "_Decressint"
 
-#: ctk/a11y/ctkimageaccessible.c:119 ctk/ctkstock.c:451
+#: ctk/a11y/ctkimageaccessible.c:119 ctk/ctkstock.c:433
 msgctxt "Stock label"
 msgid "_Spell Check"
 msgstr "_Controle ortografie"
 
-#: ctk/a11y/ctkimageaccessible.c:120 ctk/ctkstock.c:452
+#: ctk/a11y/ctkimageaccessible.c:120 ctk/ctkstock.c:434
 msgctxt "Stock label"
 msgid "_Stop"
 msgstr "_Ferme"
 
 #. Font variant
-#: ctk/a11y/ctkimageaccessible.c:121 ctk/ctkstock.c:454
+#: ctk/a11y/ctkimageaccessible.c:121 ctk/ctkstock.c:436
 msgctxt "Stock label"
 msgid "_Strikethrough"
 msgstr "_Stricât"
 
 #. Font variant
-#: ctk/a11y/ctkimageaccessible.c:122 ctk/ctkstock.c:457
+#: ctk/a11y/ctkimageaccessible.c:122 ctk/ctkstock.c:439
 msgctxt "Stock label"
 msgid "_Underline"
 msgstr "_Sotlineât"
 
-#: ctk/a11y/ctkimageaccessible.c:123 ctk/ctkstock.c:458
+#: ctk/a11y/ctkimageaccessible.c:123 ctk/ctkstock.c:440
 msgctxt "Stock label"
 msgid "_Undo"
 msgstr "_Disfe"
 
-#: ctk/a11y/ctkimageaccessible.c:124 ctk/ctkstock.c:388
+#: ctk/a11y/ctkimageaccessible.c:124 ctk/ctkstock.c:370
 msgctxt "Stock label"
 msgid "Decrease Indent"
 msgstr "Diminuìs tornade"
 
 #. Zoom
-#: ctk/a11y/ctkimageaccessible.c:125 ctk/ctkstock.c:461
+#: ctk/a11y/ctkimageaccessible.c:125 ctk/ctkstock.c:443
 msgctxt "Stock label"
 msgid "_Normal Size"
 msgstr "Dimension _normâl"
 
 #. Zoom
-#: ctk/a11y/ctkimageaccessible.c:126 ctk/ctkstock.c:463
+#: ctk/a11y/ctkimageaccessible.c:126 ctk/ctkstock.c:445
 msgctxt "Stock label"
 msgid "Best _Fit"
 msgstr "_Adate aes dimensions"
 
-#: ctk/a11y/ctkimageaccessible.c:127 ctk/ctkstock.c:464
+#: ctk/a11y/ctkimageaccessible.c:127 ctk/ctkstock.c:446
 msgctxt "Stock label"
 msgid "Zoom _In"
 msgstr "_Ingrandìs"
 
-#: ctk/a11y/ctkimageaccessible.c:128 ctk/ctkstock.c:465
+#: ctk/a11y/ctkimageaccessible.c:128 ctk/ctkstock.c:447
 msgctxt "Stock label"
 msgid "Zoom _Out"
 msgstr "Im_piçulìs"
@@ -1060,7 +1053,7 @@ msgstr "Im_piçulìs"
 msgid "Menu"
 msgstr "Menù"
 
-#: ctk/a11y/ctkmenuitemaccessible.c:445
+#: ctk/a11y/ctkmenuitemaccessible.c:448
 msgctxt "Action description"
 msgid "Clicks the menuitem"
 msgstr "Al fâs clic su la vôs di menù"
@@ -1235,13 +1228,13 @@ msgstr ""
 "selezion “Salve colôr achì.”"
 
 #: ctk/deprecated/ctkcolorseldialog.c:191 ctk/deprecated/ctkfontsel.c:1689
-#: ctk/ctkfilechoosernative.c:544 ctk/ctkfilechoosernative.c:636
-#: ctk/ctkfilechooserwidget.c:1476 ctk/ctkfilechooserwidget.c:6331
+#: ctk/ctkfilechoosernative.c:545 ctk/ctkfilechoosernative.c:637
+#: ctk/ctkfilechooserwidget.c:1498 ctk/ctkfilechooserwidget.c:6572
 #: ctk/ctkmessagedialog.c:952 ctk/ctkmessagedialog.c:965
 #: ctk/ctkmountoperation.c:594 ctk/ctkpagesetupunixdialog.c:197
 #: ctk/ctkprintbackend.c:781 ctk/ctkprinteroptionwidget.c:545
 #: ctk/ctkprintunixdialog.c:674 ctk/ctkprintunixdialog.c:747
-#: ctk/ctkwindow.c:12782 ctk/inspector/css-editor.c:201
+#: ctk/ctkwindow.c:12789 ctk/inspector/css-editor.c:201
 #: ctk/ui/ctkappchooserdialog.ui:61 ctk/ui/ctkassistant.ui:125
 #: ctk/ui/ctkcolorchooserdialog.ui:34 ctk/ui/ctkfontchooserdialog.ui:31
 msgid "_Cancel"
@@ -1290,7 +1283,7 @@ msgid "_Apply"
 msgstr "_Apliche"
 
 #: ctk/deprecated/ctkfontsel.c:1698 ctk/ctkmessagedialog.c:944
-#: ctk/ctkmessagedialog.c:966 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12783
+#: ctk/ctkmessagedialog.c:966 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12790
 msgid "_OK"
 msgstr "_Va ben"
 
@@ -1301,155 +1294,32 @@ msgstr "Selezion caratar"
 #. Translators: the format here is used to build the string that will be rendered
 #. * in the number emblem.
 #.
-#: ctk/deprecated/ctknumerableicon.c:473
+#: ctk/deprecated/ctknumerableicon.c:474
 #, c-format
 msgctxt "Number format"
 msgid "%d"
 msgstr "%d"
 
-#: ctk/ctkstock.c:347
-msgctxt "Stock label"
-msgid "_Apply"
-msgstr "_Apliche"
-
-#: ctk/ctkstock.c:349
-msgctxt "Stock label"
-msgid "_Cancel"
-msgstr "_Anule"
-
-#: ctk/ctkstock.c:353
-msgctxt "Stock label"
-msgid "C_onnect"
-msgstr "C_onet"
-
-#: ctk/ctkstock.c:354
-msgctxt "Stock label"
-msgid "_Convert"
-msgstr "_Convertìs"
-
-#: ctk/ctkstock.c:358
-msgctxt "Stock label"
-msgid "_Discard"
-msgstr "_Scarte"
-
-#: ctk/ctkstock.c:359
-msgctxt "Stock label"
-msgid "_Disconnect"
-msgstr "_Disconet"
-
-#: ctk/ctkstock.c:361
-msgctxt "Stock label"
-msgid "_Edit"
-msgstr "_Modifiche"
-
-#: ctk/ctkstock.c:389
-msgctxt "Stock label"
-msgid "_Index"
-msgstr "_Indiç"
-
-#: ctk/ctkstock.c:390
-msgctxt "Stock label"
-msgid "_Information"
-msgstr "_Informazion"
-
-#: ctk/ctkstock.c:420
-msgctxt "Stock label"
-msgid "_No"
-msgstr "_No"
-
-#: ctk/ctkstock.c:421
-msgctxt "Stock label"
-msgid "_OK"
-msgstr "_Va ben"
-
-#. Page orientation
-#: ctk/ctkstock.c:424
-msgctxt "Stock label"
-msgid "Landscape"
-msgstr "Orizontâl"
-
-#. Page orientation
-#: ctk/ctkstock.c:426
-msgctxt "Stock label"
-msgid "Portrait"
-msgstr "Verticâl"
-
-#. Page orientation
-#: ctk/ctkstock.c:428
-msgctxt "Stock label"
-msgid "Reverse landscape"
-msgstr "Orizontâl invertît"
-
-#. Page orientation
-#: ctk/ctkstock.c:430
-msgctxt "Stock label"
-msgid "Reverse portrait"
-msgstr "Verticâl invertît"
-
-#: ctk/ctkstock.c:431
-msgctxt "Stock label"
-msgid "Page Set_up"
-msgstr "Imposta_zions pagjine"
-
-#: ctk/ctkstock.c:433
-msgctxt "Stock label"
-msgid "_Preferences"
-msgstr "_Preferencis"
-
-#: ctk/ctkstock.c:445
-msgctxt "Stock label"
-msgid "_Color"
-msgstr "_Colôr"
-
-#: ctk/ctkstock.c:446
-msgctxt "Stock label"
-msgid "_Font"
-msgstr "_Caratar"
-
-#: ctk/ctkstock.c:455
-msgctxt "Stock label"
-msgid "_Undelete"
-msgstr "_Anule eliminazion"
-
-#: ctk/ctkstock.c:459
-msgctxt "Stock label"
-msgid "_Yes"
-msgstr "_Sì"
-
-#: ctk/ctkuimanager.c:1782
-#, c-format
-msgid "Unexpected start tag '%s' on line %d char %d"
-msgstr "Etichete di inizi '%s' inspietade te rie %d caratar %d"
-
-#: ctk/ctkuimanager.c:1872
-#, c-format
-msgid "Unexpected character data on line %d char %d"
-msgstr "Dâts di caratar inspietâts te rie %d caratar %d"
-
-#: ctk/ctkuimanager.c:2709
-msgid "Empty"
-msgstr "Vueit"
-
 #: ctk/encodesymbolic.c:38
 msgid "Output to this directory instead of cwd"
 msgstr "Bute fûr su cheste cartele invezit che su cwd"
 
-#: ctk/encodesymbolic.c:266
+#: ctk/encodesymbolic.c:268
 #, c-format
 msgid "Invalid size %s\n"
 msgstr "Dimension %s no valide\n"
 
-#: ctk/encodesymbolic.c:279 ctk/ctk-builder-tool.c:671
+#: ctk/encodesymbolic.c:281 ctk/ctk-builder-tool.c:674
 #, c-format
 msgid "Can't load file: %s\n"
 msgstr "Impussibil cjariâ il file: %s\n"
 
-#: ctk/encodesymbolic.c:307 ctk/encodesymbolic.c:313
+#: ctk/encodesymbolic.c:309 ctk/encodesymbolic.c:315
 #, c-format
 msgid "Can't save file %s: %s\n"
 msgstr "Impussibil salvâ il file %s: %s\n"
 
-#: ctk/encodesymbolic.c:319
+#: ctk/encodesymbolic.c:321
 #, c-format
 msgid "Can't close stream"
 msgstr "Impussibil sierâ il flus"
@@ -1514,53 +1384,67 @@ msgstr "Licence GNU Affero General Public, version 3 o sucessive"
 msgid "GNU Affero General Public License, version 3 only"
 msgstr "Licence Publiche Gjenerâl GNU Affero, dome version 3"
 
-#: ctk/ctkaboutdialog.c:697
+#: ctk/ctkaboutdialog.c:129
+#, fuzzy
+msgid "BSD 3-Clause License"
+msgstr "Licence BSD 2-Clause"
+
+#: ctk/ctkaboutdialog.c:130
+msgid "Apache License, Version 2.0"
+msgstr ""
+
+#: ctk/ctkaboutdialog.c:131
+#, fuzzy
+msgid "Mozilla Public License 2.0"
+msgstr "Licence Artistiche 2.0"
+
+#: ctk/ctkaboutdialog.c:703
 msgid "C_redits"
 msgstr "_Ricognossiments"
 
-#: ctk/ctkaboutdialog.c:705
+#: ctk/ctkaboutdialog.c:711
 msgid "_License"
 msgstr "_Licence"
 
-#: ctk/ctkaboutdialog.c:714 ctk/ctkcustompaperunixdialog.c:329
+#: ctk/ctkaboutdialog.c:720 ctk/ctkcustompaperunixdialog.c:329
 #: ctk/ctkmessagedialog.c:948 ctk/ui/ctkassistant.ui:144
 msgid "_Close"
 msgstr "_Siere"
 
-#: ctk/ctkaboutdialog.c:998
+#: ctk/ctkaboutdialog.c:1004
 msgid "Could not show link"
 msgstr "Impussibil mostrâ colegament"
 
-#: ctk/ctkaboutdialog.c:1037
+#: ctk/ctkaboutdialog.c:1043
 msgid "Website"
 msgstr "Sît web"
 
 #. used for the application menu on MacOS.  %s is replaced with the application name.
-#: ctk/ctkaboutdialog.c:1087 ctk/ui/ctkapplication-quartz.ui:7
+#: ctk/ctkaboutdialog.c:1093 ctk/ui/ctkapplication-quartz.ui:7
 #, c-format
 msgid "About %s"
 msgstr "Informazions su %s"
 
-#: ctk/ctkaboutdialog.c:2314
+#: ctk/ctkaboutdialog.c:2320
 msgid "Created by"
 msgstr "Creât di"
 
-#: ctk/ctkaboutdialog.c:2317
+#: ctk/ctkaboutdialog.c:2323
 msgid "Documented by"
 msgstr "Documentât di"
 
-#: ctk/ctkaboutdialog.c:2327
+#: ctk/ctkaboutdialog.c:2333
 msgid "Translated by"
 msgstr "Tradot di"
 
-#: ctk/ctkaboutdialog.c:2332
+#: ctk/ctkaboutdialog.c:2338
 msgid "Artwork by"
 msgstr "Grafiche di"
 
 #. Translators: this is the license preamble; the string at the end
 #. * contains the name of the license as link text.
 #.
-#: ctk/ctkaboutdialog.c:2494
+#: ctk/ctkaboutdialog.c:2500
 #, c-format
 msgid ""
 "This program comes with absolutely no warranty.\n"
@@ -1649,38 +1533,38 @@ msgstr "Sbare contrarie"
 msgid "Other application…"
 msgstr "Altre aplicazion…"
 
-#: ctk/ctkappchooserdialog.c:204 ctk/ctkappchooserdialog.c:211
-#: ctk/ctkappchooserdialog.c:228 ctk/ui/ctkappchooserdialog.ui:5
+#: ctk/ctkappchooserdialog.c:202 ctk/ctkappchooserdialog.c:230
+#: ctk/ui/ctkappchooserdialog.ui:5
 msgid "Select Application"
 msgstr "Selezione aplicazion"
 
 #. Translators: %s is a filename
-#: ctk/ctkappchooserdialog.c:206
+#: ctk/ctkappchooserdialog.c:209
 #, c-format
 msgid "Opening “%s”."
 msgstr "Daûr a vierzi “%s”."
 
-#: ctk/ctkappchooserdialog.c:207
+#: ctk/ctkappchooserdialog.c:210
 #, c-format
 msgid "No applications found for “%s”"
 msgstr "Nissune aplicazion cjatade par “%s”"
 
 #. Translators: %s is a file type description
-#: ctk/ctkappchooserdialog.c:213
+#: ctk/ctkappchooserdialog.c:215
 #, c-format
 msgid "Opening “%s” files."
 msgstr "Daûr a vierzi “%s” file."
 
-#: ctk/ctkappchooserdialog.c:215
+#: ctk/ctkappchooserdialog.c:217
 #, c-format
 msgid "No applications found for “%s” files"
 msgstr "Nissune aplicazion cjatade pai file “%s”"
 
-#: ctk/ctkappchooserdialog.c:308
+#: ctk/ctkappchooserdialog.c:310
 msgid "Forget association"
 msgstr "Dismentee associazion"
 
-#: ctk/ctkappchooserdialog.c:451
+#: ctk/ctkappchooserdialog.c:453
 msgid "Failed to start GNOME Software"
 msgstr "No si è rivâts a inviâ GNOME Software"
 
@@ -1706,7 +1590,7 @@ msgid "Other Applications"
 msgstr "Altris aplicazions"
 
 #: ctk/ctkapplicationwindow.c:345 ctk/ctkprintoperation-unix.c:485
-#: ctk/ctkprintoperation-win32.c:1495 ctk/inspector/prop-editor.c:1686
+#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1690
 msgid "Application"
 msgstr "Aplicazion"
 
@@ -1755,12 +1639,12 @@ msgstr "Proprietât %s::%s no cjatade\n"
 msgid "Couldn't parse value for %s::%s: %s\n"
 msgstr "Impussibil analizâ il valôr par %s::%s: %s\n"
 
-#: ctk/ctk-builder-tool.c:692
+#: ctk/ctk-builder-tool.c:695
 #, c-format
 msgid "Can't parse file: %s\n"
 msgstr "Impussibil analizâ il file: %s\n"
 
-#: ctk/ctk-builder-tool.c:1058
+#: ctk/ctk-builder-tool.c:1062
 #, c-format
 msgid ""
 "Usage:\n"
@@ -1928,204 +1812,286 @@ msgid "Color: %s"
 msgstr "Colôr: %s"
 
 #: ctk/ctkcolorchooserwidget.c:446
+#, fuzzy
 msgctxt "Color name"
-msgid "Light Scarlet Red"
-msgstr "Ros scarlat clâr"
+msgid "Very Light Blue"
+msgstr "Grîs une vore clâr"
 
 #: ctk/ctkcolorchooserwidget.c:447
+#, fuzzy
 msgctxt "Color name"
-msgid "Scarlet Red"
-msgstr "Ros scarlat"
+msgid "Light Blue"
+msgstr "Blu cîl clâr"
 
 #: ctk/ctkcolorchooserwidget.c:448
+#, fuzzy
 msgctxt "Color name"
-msgid "Dark Scarlet Red"
-msgstr "Ros scarlat scûr"
+msgid "Blue"
+msgstr "_Blu:"
 
 #: ctk/ctkcolorchooserwidget.c:449
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Blue"
+msgstr "Blu cîl scûr"
+
+#: ctk/ctkcolorchooserwidget.c:450
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Dark Blue"
+msgstr "Grîs une vore scûr"
+
+#: ctk/ctkcolorchooserwidget.c:451
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Light Green"
+msgstr "Grîs une vore clâr"
+
+#: ctk/ctkcolorchooserwidget.c:452
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Green"
+msgstr "Grîs clâr"
+
+#: ctk/ctkcolorchooserwidget.c:453
+#, fuzzy
+msgctxt "Color name"
+msgid "Green"
+msgstr "_Vert:"
+
+#: ctk/ctkcolorchooserwidget.c:454
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Green"
+msgstr "Grîs scûr"
+
+#: ctk/ctkcolorchooserwidget.c:455
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Dark Green"
+msgstr "Grîs une vore scûr"
+
+#: ctk/ctkcolorchooserwidget.c:456
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Light Yellow"
+msgstr "Grîs une vore clâr"
+
+#: ctk/ctkcolorchooserwidget.c:457
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Yellow"
+msgstr "Camaleont clâr"
+
+#: ctk/ctkcolorchooserwidget.c:458
+msgctxt "Color name"
+msgid "Yellow"
+msgstr ""
+
+#: ctk/ctkcolorchooserwidget.c:459
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Yellow"
+msgstr "Camaleont scûr"
+
+#: ctk/ctkcolorchooserwidget.c:460
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Dark Yellow"
+msgstr "Grîs une vore scûr"
+
+#: ctk/ctkcolorchooserwidget.c:461
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Light Orange"
+msgstr "Naranç clâr"
+
+#: ctk/ctkcolorchooserwidget.c:462
 msgctxt "Color name"
 msgid "Light Orange"
 msgstr "Naranç clâr"
 
-#: ctk/ctkcolorchooserwidget.c:450
+#: ctk/ctkcolorchooserwidget.c:463
 msgctxt "Color name"
 msgid "Orange"
 msgstr "Naranç"
 
-#: ctk/ctkcolorchooserwidget.c:451
+#: ctk/ctkcolorchooserwidget.c:464
 msgctxt "Color name"
 msgid "Dark Orange"
 msgstr "Naranç scûr"
 
-#: ctk/ctkcolorchooserwidget.c:452
-msgctxt "Color name"
-msgid "Light Butter"
-msgstr "Spongje clare"
-
-#: ctk/ctkcolorchooserwidget.c:453
-msgctxt "Color name"
-msgid "Butter"
-msgstr "Spongje"
-
-#: ctk/ctkcolorchooserwidget.c:454
-msgctxt "Color name"
-msgid "Dark Butter"
-msgstr "Spongje scure"
-
-#: ctk/ctkcolorchooserwidget.c:455
-msgctxt "Color name"
-msgid "Light Chameleon"
-msgstr "Camaleont clâr"
-
-#: ctk/ctkcolorchooserwidget.c:456
-msgctxt "Color name"
-msgid "Chameleon"
-msgstr "Camaleont"
-
-#: ctk/ctkcolorchooserwidget.c:457
-msgctxt "Color name"
-msgid "Dark Chameleon"
-msgstr "Camaleont scûr"
-
-#: ctk/ctkcolorchooserwidget.c:458
-msgctxt "Color name"
-msgid "Light Sky Blue"
-msgstr "Blu cîl clâr"
-
-#: ctk/ctkcolorchooserwidget.c:459
-msgctxt "Color name"
-msgid "Sky Blue"
-msgstr "Blu cîl"
-
-#: ctk/ctkcolorchooserwidget.c:460
-msgctxt "Color name"
-msgid "Dark Sky Blue"
-msgstr "Blu cîl scûr"
-
-#: ctk/ctkcolorchooserwidget.c:461
-msgctxt "Color name"
-msgid "Light Plum"
-msgstr "Ciespe clare"
-
-#: ctk/ctkcolorchooserwidget.c:462
-msgctxt "Color name"
-msgid "Plum"
-msgstr "Ciespe"
-
-#: ctk/ctkcolorchooserwidget.c:463
-msgctxt "Color name"
-msgid "Dark Plum"
-msgstr "Ciespe scure"
-
-#: ctk/ctkcolorchooserwidget.c:464
-msgctxt "Color name"
-msgid "Light Chocolate"
-msgstr "Cjocolate clare"
-
 #: ctk/ctkcolorchooserwidget.c:465
+#, fuzzy
 msgctxt "Color name"
-msgid "Chocolate"
-msgstr "Cjocolate"
+msgid "Very Dark Orange"
+msgstr "Naranç scûr"
 
 #: ctk/ctkcolorchooserwidget.c:466
+#, fuzzy
 msgctxt "Color name"
-msgid "Dark Chocolate"
-msgstr "Cjocolate scure"
-
-#: ctk/ctkcolorchooserwidget.c:467
-msgctxt "Color name"
-msgid "Light Aluminum 1"
-msgstr "Alumini 1 clâr"
-
-#: ctk/ctkcolorchooserwidget.c:468
-msgctxt "Color name"
-msgid "Aluminum 1"
-msgstr "Alumini 1"
-
-#: ctk/ctkcolorchooserwidget.c:469
-msgctxt "Color name"
-msgid "Dark Aluminum 1"
-msgstr "Alumini 1 scûr"
-
-#: ctk/ctkcolorchooserwidget.c:470
-msgctxt "Color name"
-msgid "Light Aluminum 2"
-msgstr "Alumini 2 clâr"
-
-#: ctk/ctkcolorchooserwidget.c:471
-msgctxt "Color name"
-msgid "Aluminum 2"
-msgstr "Alumini 2"
-
-#: ctk/ctkcolorchooserwidget.c:472
-msgctxt "Color name"
-msgid "Dark Aluminum 2"
-msgstr "Alumini 2 scûr"
-
-#: ctk/ctkcolorchooserwidget.c:486
-msgctxt "Color name"
-msgid "Black"
-msgstr "Neri"
-
-#: ctk/ctkcolorchooserwidget.c:487
-msgctxt "Color name"
-msgid "Very Dark Gray"
-msgstr "Grîs une vore scûr"
-
-#: ctk/ctkcolorchooserwidget.c:488
-msgctxt "Color name"
-msgid "Darker Gray"
-msgstr "Grîs plui scûr"
-
-#: ctk/ctkcolorchooserwidget.c:489
-msgctxt "Color name"
-msgid "Dark Gray"
-msgstr "Grîs scûr"
-
-#: ctk/ctkcolorchooserwidget.c:490
-msgctxt "Color name"
-msgid "Medium Gray"
-msgstr "Grîs medi"
-
-#: ctk/ctkcolorchooserwidget.c:491
-msgctxt "Color name"
-msgid "Light Gray"
-msgstr "Grîs clâr"
-
-#: ctk/ctkcolorchooserwidget.c:492
-msgctxt "Color name"
-msgid "Lighter Gray"
-msgstr "Grîs plui clâr"
-
-#: ctk/ctkcolorchooserwidget.c:493
-msgctxt "Color name"
-msgid "Very Light Gray"
+msgid "Very Light Red"
 msgstr "Grîs une vore clâr"
 
-#: ctk/ctkcolorchooserwidget.c:494
+#: ctk/ctkcolorchooserwidget.c:467
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Red"
+msgstr "Ros scarlat clâr"
+
+#: ctk/ctkcolorchooserwidget.c:468
+#, fuzzy
+msgctxt "Color name"
+msgid "Red"
+msgstr "_Ros:"
+
+#: ctk/ctkcolorchooserwidget.c:469
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Red"
+msgstr "Ros scarlat scûr"
+
+#: ctk/ctkcolorchooserwidget.c:470
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Dark Red"
+msgstr "Grîs une vore scûr"
+
+#: ctk/ctkcolorchooserwidget.c:471
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Light Purple"
+msgstr "Grîs une vore clâr"
+
+#: ctk/ctkcolorchooserwidget.c:472
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Purple"
+msgstr "Ciespe clare"
+
+#: ctk/ctkcolorchooserwidget.c:473
+msgctxt "Color name"
+msgid "Purple"
+msgstr ""
+
+#: ctk/ctkcolorchooserwidget.c:474
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Purple"
+msgstr "Ciespe scure"
+
+#: ctk/ctkcolorchooserwidget.c:475
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Dark Purple"
+msgstr "Grîs une vore scûr"
+
+#: ctk/ctkcolorchooserwidget.c:476
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Light Brown"
+msgstr "Grîs une vore clâr"
+
+#: ctk/ctkcolorchooserwidget.c:477
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Brown"
+msgstr "Cassele a diestre"
+
+#: ctk/ctkcolorchooserwidget.c:478
+msgctxt "Color name"
+msgid "Brown"
+msgstr ""
+
+#: ctk/ctkcolorchooserwidget.c:479
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Brown"
+msgstr "Spongje scure"
+
+#: ctk/ctkcolorchooserwidget.c:480
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Dark Brown"
+msgstr "Grîs une vore scûr"
+
+#: ctk/ctkcolorchooserwidget.c:481
 msgctxt "Color name"
 msgid "White"
 msgstr "Blanc"
 
+#: ctk/ctkcolorchooserwidget.c:482
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Gray 1"
+msgstr "Grîs clâr"
+
+#: ctk/ctkcolorchooserwidget.c:483
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Gray 2"
+msgstr "Grîs clâr"
+
+#: ctk/ctkcolorchooserwidget.c:484
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Gray 3"
+msgstr "Grîs clâr"
+
+#: ctk/ctkcolorchooserwidget.c:485
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Gray 4"
+msgstr "Grîs clâr"
+
+#: ctk/ctkcolorchooserwidget.c:486
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Gray 1"
+msgstr "Grîs scûr"
+
+#: ctk/ctkcolorchooserwidget.c:487
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Gray 2"
+msgstr "Grîs scûr"
+
+#: ctk/ctkcolorchooserwidget.c:488
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Gray 3"
+msgstr "Grîs scûr"
+
+#: ctk/ctkcolorchooserwidget.c:489
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Gray 4"
+msgstr "Grîs scûr"
+
+#: ctk/ctkcolorchooserwidget.c:490
+msgctxt "Color name"
+msgid "Black"
+msgstr "Neri"
+
 #. translators: label for the custom section in the color chooser
-#: ctk/ctkcolorchooserwidget.c:543
+#: ctk/ctkcolorchooserwidget.c:534
 msgid "Custom"
 msgstr "Personalizât"
 
-#: ctk/ctkcolorchooserwidget.c:550
+#: ctk/ctkcolorchooserwidget.c:541
 msgid "Custom color"
 msgstr "Colôr personalizât"
 
-#: ctk/ctkcolorchooserwidget.c:551
+#: ctk/ctkcolorchooserwidget.c:542
 msgid "Create a custom color"
 msgstr "Cree un colôr personalizât"
 
-#: ctk/ctkcolorchooserwidget.c:570
+#: ctk/ctkcolorchooserwidget.c:561
 #, c-format
 msgid "Custom color %d: %s"
 msgstr "Colôr personalizât %d: %s"
 
-#: ctk/ctkcolorplane.c:409
+#: ctk/ctkcolorplane.c:411
 msgid "Color Plane"
 msgstr "Plan colôr"
 
@@ -2207,52 +2173,52 @@ msgstr "_Diestre:"
 msgid "Paper Margins"
 msgstr "Margjins cjarte"
 
-#: ctk/ctkentry.c:9583 ctk/ctklabel.c:6680 ctk/ctktextview.c:9502
+#: ctk/ctkentry.c:9591 ctk/ctklabel.c:6680 ctk/ctktextview.c:9520
 msgid "Cu_t"
 msgstr "_Taie"
 
-#: ctk/ctkentry.c:9587 ctk/ctklabel.c:6681 ctk/ctktextview.c:9506
+#: ctk/ctkentry.c:9595 ctk/ctklabel.c:6681 ctk/ctktextview.c:9524
 msgid "_Copy"
 msgstr "_Copie"
 
-#: ctk/ctkentry.c:9591 ctk/ctklabel.c:6682 ctk/ctktextview.c:9508
+#: ctk/ctkentry.c:9599 ctk/ctklabel.c:6682 ctk/ctktextview.c:9526
 msgid "_Paste"
 msgstr "T_ache"
 
-#: ctk/ctkentry.c:9594 ctk/ctkfilechooserwidget.c:1477
-#: ctk/ctkfilechooserwidget.c:2277 ctk/ctklabel.c:6684 ctk/ctktextview.c:9511
+#: ctk/ctkentry.c:9602 ctk/ctkfilechooserwidget.c:1499
+#: ctk/ctkfilechooserwidget.c:2334 ctk/ctklabel.c:6684 ctk/ctktextview.c:9529
 msgid "_Delete"
 msgstr "_Elimine"
 
-#: ctk/ctkentry.c:9605 ctk/ctklabel.c:6693 ctk/ctktextview.c:9525
+#: ctk/ctkentry.c:9613 ctk/ctklabel.c:6693 ctk/ctktextview.c:9543
 msgid "Select _All"
 msgstr "Selezione _dut"
 
-#: ctk/ctkentry.c:9615 ctk/ctktextview.c:9535
+#: ctk/ctkentry.c:9623 ctk/ctktextview.c:9553
 msgid "Insert _Emoji"
 msgstr "Inserìs _Emoji"
 
-#: ctk/ctkentry.c:9791 ctk/ctktextview.c:9755
+#: ctk/ctkentry.c:9799 ctk/ctktextview.c:9777
 msgid "Select all"
 msgstr "Selezione dut"
 
-#: ctk/ctkentry.c:9794 ctk/ctktextview.c:9758
+#: ctk/ctkentry.c:9802 ctk/ctktextview.c:9780
 msgid "Cut"
 msgstr "Taie"
 
-#: ctk/ctkentry.c:9797 ctk/ctktextview.c:9761
+#: ctk/ctkentry.c:9805 ctk/ctktextview.c:9783
 msgid "Copy"
 msgstr "Copie"
 
-#: ctk/ctkentry.c:9800 ctk/ctktextview.c:9764
+#: ctk/ctkentry.c:9808 ctk/ctktextview.c:9786
 msgid "Paste"
 msgstr "Tache"
 
-#: ctk/ctkentry.c:10870
+#: ctk/ctkentry.c:10880
 msgid "Caps Lock is on"
 msgstr "BlocMaiusc al è atîf"
 
-#: ctk/ctkentry.c:11145
+#: ctk/ctkentry.c:11158
 msgid "Insert Emoji"
 msgstr "Inserìs Emoji"
 
@@ -2268,7 +2234,7 @@ msgstr "Scritori"
 msgid "(None)"
 msgstr "(Nissun)"
 
-#: ctk/ctkfilechooserbutton.c:2163
+#: ctk/ctkfilechooserbutton.c:2162
 msgid "Other…"
 msgstr "Altri…"
 
@@ -2277,17 +2243,17 @@ msgid "_Name"
 msgstr "_Non"
 
 #. Open item is always present
-#: ctk/ctkfilechoosernative.c:545 ctk/ctkfilechoosernative.c:630
+#: ctk/ctkfilechoosernative.c:546 ctk/ctkfilechoosernative.c:631
 #: ctk/ctkplacessidebar.c:3625 ctk/ctkplacessidebar.c:3693
-#: ctk/ctkplacesview.c:1682
+#: ctk/ctkplacesview.c:1708
 msgid "_Open"
 msgstr "_Vierç"
 
-#: ctk/ctkfilechoosernative.c:630 ctk/inspector/css-editor.c:202
+#: ctk/ctkfilechoosernative.c:631 ctk/inspector/css-editor.c:202
 msgid "_Save"
 msgstr "_Salve"
 
-#: ctk/ctkfilechoosernativequartz.c:332 ctk/ui/ctkfilechooserwidget.ui:392
+#: ctk/ctkfilechoosernativequartz.c:331 ctk/ui/ctkfilechooserwidget.ui:405
 msgid "Select which types of files are shown"
 msgstr "Selezione cuai gjenars di file mostrâ"
 
@@ -2300,263 +2266,334 @@ msgstr "Selezione cuai gjenars di file mostrâ"
 msgid "%1$s on %2$s"
 msgstr "%1$s su %2$s"
 
-#: ctk/ctkfilechooserwidget.c:370
+#: ctk/ctkfilechooserwidget.c:385
 msgid "Type name of new folder"
 msgstr "Scrîf il non de gnove cartele"
 
-#: ctk/ctkfilechooserwidget.c:789
+#: ctk/ctkfilechooserwidget.c:809
 msgid "The folder could not be created"
 msgstr "La cartele no pues jessi creade"
 
-#: ctk/ctkfilechooserwidget.c:802
+#: ctk/ctkfilechooserwidget.c:821
+#, fuzzy
 msgid ""
-"The folder could not be created, as a file with the same name already "
-"exists.  Try using a different name for the folder, or rename the file first."
+"The folder could not be created, as a file with the same name already exists."
 msgstr ""
 "Impussibil creâ la cartele, viodût che un file cul stes non al esist za.  "
 "Cîr di doprâ un non diferent pe cartele opûr prime cambie il non dal file."
 
-#: ctk/ctkfilechooserwidget.c:817
+#: ctk/ctkfilechooserwidget.c:823
+#, fuzzy
+msgid "Try using a different name for the folder, or rename the file first."
+msgstr ""
+"Impussibil creâ la cartele, viodût che un file cul stes non al esist za.  "
+"Cîr di doprâ un non diferent pe cartele opûr prime cambie il non dal file."
+
+#: ctk/ctkfilechooserwidget.c:836
 msgid "You need to choose a valid filename."
 msgstr "Si scugne sielzi un non file valit."
 
-#: ctk/ctkfilechooserwidget.c:820
+#: ctk/ctkfilechooserwidget.c:839
 #, c-format
 msgid "Cannot create a file under %s as it is not a folder"
 msgstr "Impussibil creâ un file sot di %s viodût che nol è une cartele"
 
-#: ctk/ctkfilechooserwidget.c:830
+#: ctk/ctkfilechooserwidget.c:849
 msgid "Cannot create file as the filename is too long"
 msgstr "Impussibil creâ il file viodût che il non dal file al è masse lunc"
 
-#: ctk/ctkfilechooserwidget.c:831
+#: ctk/ctkfilechooserwidget.c:850
 msgid "Try using a shorter name."
 msgstr "Prove a doprâ un non plui curt."
 
-#: ctk/ctkfilechooserwidget.c:841
+#: ctk/ctkfilechooserwidget.c:860
 msgid "You may only select folders"
 msgstr "Si podarès selezionâ dome cartelis"
 
-#: ctk/ctkfilechooserwidget.c:842
+#: ctk/ctkfilechooserwidget.c:861
 msgid "The item that you selected is not a folder try using a different item."
 msgstr ""
 "L'element che si à selezionât nol è une cartele, prove dopre un altri "
 "element."
 
-#: ctk/ctkfilechooserwidget.c:850
+#: ctk/ctkfilechooserwidget.c:869
 msgid "Invalid file name"
 msgstr "Non di file no valit"
 
-#: ctk/ctkfilechooserwidget.c:859
+#: ctk/ctkfilechooserwidget.c:878
 msgid "The folder contents could not be displayed"
 msgstr "I contignûts de cartele no puedin jessi mostrâts"
 
-#: ctk/ctkfilechooserwidget.c:867
+#: ctk/ctkfilechooserwidget.c:886
 msgid "The file could not be deleted"
 msgstr "Il file nol pues jessi eliminât"
 
-#: ctk/ctkfilechooserwidget.c:875
+#: ctk/ctkfilechooserwidget.c:894
 msgid "The file could not be moved to the Trash"
 msgstr "Il file nol pues jessi spostât te scovacere"
 
-#: ctk/ctkfilechooserwidget.c:1020
+#: ctk/ctkfilechooserwidget.c:1039
 msgid "A folder with that name already exists"
 msgstr "Une cartele cun chel non e esist za"
 
-#: ctk/ctkfilechooserwidget.c:1022
+#: ctk/ctkfilechooserwidget.c:1041
 msgid "A file with that name already exists"
 msgstr "Un file cun chel non al esist za"
 
-#: ctk/ctkfilechooserwidget.c:1057
+#: ctk/ctkfilechooserwidget.c:1076
 msgid "A folder cannot be called “.”"
 msgstr "Une cartele no pues jessi clamade “.”"
 
-#: ctk/ctkfilechooserwidget.c:1058
+#: ctk/ctkfilechooserwidget.c:1077
 msgid "A file cannot be called “.”"
 msgstr "Un file nol pues jessi clamât “.”"
 
-#: ctk/ctkfilechooserwidget.c:1061
+#: ctk/ctkfilechooserwidget.c:1080
 msgid "A folder cannot be called “..”"
 msgstr "Une cartele no pues jessi clamade “..”"
 
-#: ctk/ctkfilechooserwidget.c:1062
+#: ctk/ctkfilechooserwidget.c:1081
 msgid "A file cannot be called “..”"
 msgstr "Un file nol pues jessi clamât “..”"
 
-#: ctk/ctkfilechooserwidget.c:1065
+#: ctk/ctkfilechooserwidget.c:1084
 msgid "Folder names cannot contain “/”"
 msgstr "I nons des cartelis no puedin contignî il caratar “/”"
 
-#: ctk/ctkfilechooserwidget.c:1066
+#: ctk/ctkfilechooserwidget.c:1085
 msgid "File names cannot contain “/”"
 msgstr "I nons dai file no puedi contignî il caratar “/”"
 
-#: ctk/ctkfilechooserwidget.c:1092
+#: ctk/ctkfilechooserwidget.c:1111
 msgid "Folder names should not begin with a space"
 msgstr "I nons des cartelis no puedin tacâ cuntun spazi"
 
-#: ctk/ctkfilechooserwidget.c:1093
+#: ctk/ctkfilechooserwidget.c:1112
 msgid "File names should not begin with a space"
 msgstr "I nons dai file no puedin tacâ cuntun spazi"
 
-#: ctk/ctkfilechooserwidget.c:1097
+#: ctk/ctkfilechooserwidget.c:1116
 msgid "Folder names should not end with a space"
 msgstr "I nons des cartelis no puedin finî cuntun spazi"
 
-#: ctk/ctkfilechooserwidget.c:1098
+#: ctk/ctkfilechooserwidget.c:1117
 msgid "File names should not end with a space"
 msgstr "I nons dai file no puedin finî cuntun spazi"
 
-#: ctk/ctkfilechooserwidget.c:1101
+#: ctk/ctkfilechooserwidget.c:1120
 msgid "Folder names starting with a “.” are hidden"
 msgstr "I nons des cartelis che a tachin cuntun “.” a son platâts"
 
-#: ctk/ctkfilechooserwidget.c:1102
+#: ctk/ctkfilechooserwidget.c:1121
 msgid "File names starting with a “.” are hidden"
 msgstr "I nons dai file che a tachin cuntun “.” a son platâts"
 
-#: ctk/ctkfilechooserwidget.c:1472
+#: ctk/ctkfilechooserwidget.c:1494
 #, c-format
 msgid "Are you sure you want to permanently delete “%s”?"
 msgstr "Sigûrs di eliminâ par simpri “%s”?"
 
-#: ctk/ctkfilechooserwidget.c:1475
+#: ctk/ctkfilechooserwidget.c:1497
 #, c-format
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Se si elimine un element, al vignarà pierdût par simpri."
 
-#: ctk/ctkfilechooserwidget.c:1609
+#: ctk/ctkfilechooserwidget.c:1634
 msgid "The file could not be renamed"
 msgstr "No si pues cambiâ non al file"
 
-#: ctk/ctkfilechooserwidget.c:1923
+#: ctk/ctkfilechooserwidget.c:1979
 msgid "Could not select file"
 msgstr "Impussibil selezionâ il file"
 
-#: ctk/ctkfilechooserwidget.c:2272
+#: ctk/ctkfilechooserwidget.c:2329
 msgid "_Visit File"
 msgstr "_Visite File"
 
-#: ctk/ctkfilechooserwidget.c:2273
+#: ctk/ctkfilechooserwidget.c:2330
 msgid "_Open With File Manager"
 msgstr "_Vierç cul gjestôr di file"
 
-#: ctk/ctkfilechooserwidget.c:2274
+#: ctk/ctkfilechooserwidget.c:2331
 msgid "_Copy Location"
 msgstr "_Copie posizion"
 
-#: ctk/ctkfilechooserwidget.c:2275
+#: ctk/ctkfilechooserwidget.c:2332
 msgid "_Add to Bookmarks"
 msgstr "_Zonte tai Segnelibris"
 
-#: ctk/ctkfilechooserwidget.c:2276 ctk/ctkplacessidebar.c:2741
-#: ctk/ui/ctkfilechooserwidget.ui:526
+#: ctk/ctkfilechooserwidget.c:2333 ctk/ctkplacessidebar.c:2741
+#: ctk/ui/ctkfilechooserwidget.ui:539
 msgid "_Rename"
 msgstr "_Cambie non"
 
-#: ctk/ctkfilechooserwidget.c:2278
+#: ctk/ctkfilechooserwidget.c:2335
 msgid "_Move to Trash"
 msgstr "Sposte te _Scovacere"
 
-#: ctk/ctkfilechooserwidget.c:2282
+#: ctk/ctkfilechooserwidget.c:2339
 msgid "Show _Hidden Files"
 msgstr "Mostre file _platâts"
 
-#: ctk/ctkfilechooserwidget.c:2283
+#: ctk/ctkfilechooserwidget.c:2340
 msgid "Show _Size Column"
 msgstr "Mostre colone _Dimension"
 
-#: ctk/ctkfilechooserwidget.c:2284
+#: ctk/ctkfilechooserwidget.c:2341
+#, fuzzy
+msgid "Show T_ype Column"
+msgstr "Mostre colone _Dimension"
+
+#: ctk/ctkfilechooserwidget.c:2342
 msgid "Show _Time"
 msgstr "Mostre _date"
 
-#: ctk/ctkfilechooserwidget.c:2285
+#: ctk/ctkfilechooserwidget.c:2343
 msgid "Sort _Folders before Files"
 msgstr "Ordene _cartelis prime dai file"
 
 #. this is the header for the location column in the print dialog
-#: ctk/ctkfilechooserwidget.c:2560 ctk/inspector/css-node-tree.ui:141
-#: ctk/ui/ctkfilechooserwidget.ui:207 ctk/ui/ctkprintunixdialog.ui:123
+#: ctk/ctkfilechooserwidget.c:2625 ctk/inspector/css-node-tree.ui:141
+#: ctk/ui/ctkfilechooserwidget.ui:208 ctk/ui/ctkprintunixdialog.ui:123
 msgid "Location"
 msgstr "Posizion"
 
 #. Label
-#: ctk/ctkfilechooserwidget.c:2653
+#: ctk/ctkfilechooserwidget.c:2718
 msgid "_Name:"
 msgstr "_Non:"
 
-#: ctk/ctkfilechooserwidget.c:3278 ctk/ctkfilechooserwidget.c:3292
+#: ctk/ctkfilechooserwidget.c:3343 ctk/ctkfilechooserwidget.c:3357
 #, c-format
 msgid "Searching in %s"
 msgstr "Daûr a cirî in %s"
 
-#: ctk/ctkfilechooserwidget.c:3298
+#: ctk/ctkfilechooserwidget.c:3363
 msgid "Searching"
 msgstr "Ricercje"
 
-#: ctk/ctkfilechooserwidget.c:3305
+#: ctk/ctkfilechooserwidget.c:3370
 msgid "Enter location"
 msgstr "Inserìs posizion"
 
-#: ctk/ctkfilechooserwidget.c:3307
+#: ctk/ctkfilechooserwidget.c:3372
 msgid "Enter location or URL"
 msgstr "Inserìs posizion o URL"
 
-#: ctk/ctkfilechooserwidget.c:4341 ctk/ctkfilechooserwidget.c:7245
-#: ctk/ui/ctkfilechooserwidget.ui:235
+#: ctk/ctkfilechooserwidget.c:4450 ctk/ctkfilechooserwidget.c:7492
+#: ctk/ui/ctkfilechooserwidget.ui:248
 msgid "Modified"
 msgstr "Modificât"
 
-#: ctk/ctkfilechooserwidget.c:4619
+#: ctk/ctkfilechooserwidget.c:4728
 #, c-format
 msgid "Could not read the contents of %s"
 msgstr "Impussibil lei i contignûts di %s"
 
-#: ctk/ctkfilechooserwidget.c:4623
+#: ctk/ctkfilechooserwidget.c:4732
 msgid "Could not read the contents of the folder"
 msgstr "Impussibil lei i contignûts de cartele"
 
-#: ctk/ctkfilechooserwidget.c:4753 ctk/ctkfilechooserwidget.c:4801
+#: ctk/ctkfilechooserwidget.c:4892 ctk/ctkfilechooserwidget.c:4940
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: ctk/ctkfilechooserwidget.c:4755 ctk/ctkfilechooserwidget.c:4803
+#: ctk/ctkfilechooserwidget.c:4894 ctk/ctkfilechooserwidget.c:4942
 msgid "%l:%M %p"
 msgstr "%l:%M %p"
 
-#: ctk/ctkfilechooserwidget.c:4759
+#: ctk/ctkfilechooserwidget.c:4898
 msgid "Yesterday"
 msgstr "Îr"
 
-#: ctk/ctkfilechooserwidget.c:4767
+#: ctk/ctkfilechooserwidget.c:4906
 msgid "%-e %b"
 msgstr "%-e %b"
 
-#: ctk/ctkfilechooserwidget.c:4771
+#: ctk/ctkfilechooserwidget.c:4910
 msgid "%-e %b %Y"
 msgstr "%-e %b %Y"
 
+#: ctk/ctkfilechooserwidget.c:5009 ctk/ctkfilechooserwidget.c:5017
+msgid "Program"
+msgstr ""
+
+#: ctk/ctkfilechooserwidget.c:5010
+#, fuzzy
+msgid "Audio"
+msgstr "AudioCidin"
+
+#: ctk/ctkfilechooserwidget.c:5011 ctk/inspector/visual.ui:230
+#: ctk/ui/ctkfontbutton.ui:13
+msgid "Font"
+msgstr "Caratar"
+
+#: ctk/ctkfilechooserwidget.c:5012 ctk/inspector/visual.ui:488
+msgid "Image"
+msgstr "Imagjin"
+
+#: ctk/ctkfilechooserwidget.c:5013
+#, fuzzy
+msgid "Archive"
+msgstr "Arch A"
+
+#: ctk/ctkfilechooserwidget.c:5014
+msgid "Markup"
+msgstr ""
+
+#: ctk/ctkfilechooserwidget.c:5015 ctk/ctkfilechooserwidget.c:5016
+msgid "Text"
+msgstr ""
+
+#: ctk/ctkfilechooserwidget.c:5018
+msgid "Video"
+msgstr ""
+
+#: ctk/ctkfilechooserwidget.c:5019
+msgid "Contacts"
+msgstr ""
+
+#: ctk/ctkfilechooserwidget.c:5020
+#, fuzzy
+msgid "Calendar"
+msgstr "calendar:MY"
+
+#: ctk/ctkfilechooserwidget.c:5021
+#, fuzzy
+msgid "Document"
+msgstr "Documentât di"
+
+#: ctk/ctkfilechooserwidget.c:5022
+#, fuzzy
+msgid "Presentation"
+msgstr "_Orientament:"
+
+#: ctk/ctkfilechooserwidget.c:5023
+msgid "Spreadsheet"
+msgstr ""
+
 #. Translators: We don't know whether this printer is
 #. * available to print to.
-#: ctk/ctkfilechooserwidget.c:5006 ctk/inspector/prop-editor.c:1689
+#: ctk/ctkfilechooserwidget.c:5054 ctk/ctkfilechooserwidget.c:5243
+#: ctk/inspector/prop-editor.c:1693
 #: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:748
 msgid "Unknown"
 msgstr "No cognossût"
 
-#: ctk/ctkfilechooserwidget.c:5045 ctk/ctkplacessidebar.c:1094
+#: ctk/ctkfilechooserwidget.c:5282 ctk/ctkplacessidebar.c:1094
 msgid "Home"
 msgstr "Home"
 
-#: ctk/ctkfilechooserwidget.c:5538
+#: ctk/ctkfilechooserwidget.c:5779
 msgid "Cannot change to folder because it is not local"
 msgstr "Impussibil spostâsi ae cartele par vie che no je locâl"
 
-#: ctk/ctkfilechooserwidget.c:6324 ctk/ctkprintunixdialog.c:665
+#: ctk/ctkfilechooserwidget.c:6565 ctk/ctkprintunixdialog.c:665
 #, c-format
 msgid "A file named “%s” already exists.  Do you want to replace it?"
 msgstr "Un file clamât “%s” al esist za. Sostituîlu?"
 
-#: ctk/ctkfilechooserwidget.c:6327 ctk/ctkprintunixdialog.c:669
+#: ctk/ctkfilechooserwidget.c:6568 ctk/ctkprintunixdialog.c:669
 #, c-format
 msgid ""
 "The file already exists in “%s”.  Replacing it will overwrite its contents."
@@ -2564,23 +2601,23 @@ msgstr ""
 "Il file al esist za in “%s”. Se al ven sostituît, al vignarà sorescrit il sô "
 "contignût."
 
-#: ctk/ctkfilechooserwidget.c:6332 ctk/ctkprintunixdialog.c:677
+#: ctk/ctkfilechooserwidget.c:6573 ctk/ctkprintunixdialog.c:677
 msgid "_Replace"
 msgstr "_Sostituìs"
 
-#: ctk/ctkfilechooserwidget.c:6546
+#: ctk/ctkfilechooserwidget.c:6792
 msgid "You do not have access to the specified folder."
 msgstr "No si à il permès par acedi ae cartele specificade."
 
-#: ctk/ctkfilechooserwidget.c:7169
+#: ctk/ctkfilechooserwidget.c:7415
 msgid "Could not send the search request"
 msgstr "Impussibil inviâ la richieste di ricercje"
 
-#: ctk/ctkfilechooserwidget.c:7455
+#: ctk/ctkfilechooserwidget.c:7703
 msgid "Accessed"
 msgstr "Acès eseguît"
 
-#: ctk/ctkfilechooserwidget.c:8566 ctk/ui/ctkfilechooserwidget.ui:69
+#: ctk/ctkfilechooserwidget.c:8822 ctk/ui/ctkfilechooserwidget.ui:69
 msgid "Create Folder"
 msgstr "Cree cartele"
 
@@ -2606,54 +2643,52 @@ msgctxt "font"
 msgid "None"
 msgstr "Nissun"
 
-#: ctk/ctkfontchooserwidget.c:1523
+#: ctk/ctkfontchooserwidget.c:1539
 msgid "Width"
 msgstr "Largjece"
 
-#: ctk/ctkfontchooserwidget.c:1524
+#: ctk/ctkfontchooserwidget.c:1540
 msgid "Weight"
 msgstr "Pês"
 
-#: ctk/ctkfontchooserwidget.c:1525
+#: ctk/ctkfontchooserwidget.c:1541
 msgid "Italic"
 msgstr "Corsîf"
 
-#: ctk/ctkfontchooserwidget.c:1526
+#: ctk/ctkfontchooserwidget.c:1542
 msgid "Slant"
 msgstr "Sclavueç"
 
-#: ctk/ctkfontchooserwidget.c:1527
+#: ctk/ctkfontchooserwidget.c:1543
 msgid "Optical Size"
 msgstr "Dimension otiche"
 
-#: ctk/ctkfontchooserwidget.c:2064 ctk/inspector/prop-editor.c:1676
+#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1680
 msgid "Default"
 msgstr "Predefinît"
 
-#: ctk/ctkfontchooserwidget.c:2111
+#: ctk/ctkfontchooserwidget.c:2141
 msgid "Ligatures"
 msgstr "Leaduris"
 
-#: ctk/ctkfontchooserwidget.c:2112
+#: ctk/ctkfontchooserwidget.c:2142
 #, fuzzy
-#| msgctxt "paper size"
-#| msgid "US Letter Plus"
 msgid "Letter Case"
 msgstr "US Letter Plus"
 
-#: ctk/ctkfontchooserwidget.c:2113
+#: ctk/ctkfontchooserwidget.c:2143
 msgid "Number Case"
 msgstr "Capitalizazion dai numars"
 
-#: ctk/ctkfontchooserwidget.c:2114
+#: ctk/ctkfontchooserwidget.c:2144
 msgid "Number Spacing"
 msgstr "Spaziadure dai numars"
 
-#: ctk/ctkfontchooserwidget.c:2115
+#: ctk/ctkfontchooserwidget.c:2145
 msgid "Number Formatting"
 msgstr "Formatazion numars"
 
-#: ctk/ctkfontchooserwidget.c:2116
+#: ctk/ctkfontchooserwidget.c:2146
 msgid "Character Variants"
 msgstr "Variantis caratar"
 
@@ -2665,16 +2700,16 @@ msgstr "Creazion dal contest OpenGL falide"
 msgid "Application menu"
 msgstr "Menù aplicazion"
 
-#: ctk/ctkheaderbar.c:458 ctk/ctkwindow.c:9343
+#: ctk/ctkheaderbar.c:458 ctk/ctkwindow.c:9355
 msgid "Close"
 msgstr "Siere"
 
-#: ctk/ctkicontheme.c:2343 ctk/ctkicontheme.c:2408
+#: ctk/ctkicontheme.c:2355 ctk/ctkicontheme.c:2420
 #, c-format
 msgid "Icon '%s' not present in theme %s"
 msgstr "Icone '%s' no presinte tal teme %s"
 
-#: ctk/ctkicontheme.c:4082 ctk/ctkicontheme.c:4449
+#: ctk/ctkicontheme.c:4096 ctk/ctkicontheme.c:4463
 msgid "Failed to load icon"
 msgstr "No si è rivâts a cjariâ la icone"
 
@@ -2688,30 +2723,30 @@ msgctxt "input method menu"
 msgid "None"
 msgstr "Nissun"
 
-#: ctk/ctkimmulticontext.c:609
+#: ctk/ctkimmulticontext.c:615
 msgctxt "input method menu"
 msgid "System"
 msgstr "Sisteme"
 
-#: ctk/ctkimmulticontext.c:688
+#: ctk/ctkimmulticontext.c:694
 #, c-format
 msgctxt "input method menu"
 msgid "System (%s)"
 msgstr "Sisteme (%s)"
 
-#: ctk/ctkinfobar.c:1150 ctk/ctkmessagedialog.c:385
+#: ctk/ctkinfobar.c:1307 ctk/ctkmessagedialog.c:385
 msgid "Information"
 msgstr "Informazion"
 
-#: ctk/ctkinfobar.c:1154 ctk/ctkmessagedialog.c:389
+#: ctk/ctkinfobar.c:1311 ctk/ctkmessagedialog.c:389
 msgid "Question"
 msgstr "Domande"
 
-#: ctk/ctkinfobar.c:1158 ctk/ctkmessagedialog.c:393
+#: ctk/ctkinfobar.c:1315 ctk/ctkmessagedialog.c:393
 msgid "Warning"
 msgstr "Avertiment"
 
-#: ctk/ctkinfobar.c:1162 ctk/ctkmessagedialog.c:397
+#: ctk/ctkinfobar.c:1319 ctk/ctkmessagedialog.c:397
 msgid "Error"
 msgstr "Erôr"
 
@@ -2845,16 +2880,16 @@ msgstr "Opzion di debug CDK di stabilî"
 msgid "CTK+ debugging flags to unset"
 msgstr "Opzions di debug CDK di no stabilî"
 
-#: ctk/ctkmain.c:808 ctk/ctkmain.c:1002
+#: ctk/ctkmain.c:810 ctk/ctkmain.c:1004
 #, c-format
 msgid "Cannot open display: %s"
 msgstr "Impussibil vierzi il display: %s"
 
-#: ctk/ctkmain.c:920
+#: ctk/ctkmain.c:922
 msgid "CTK+ Options"
 msgstr "Opzions CTK+"
 
-#: ctk/ctkmain.c:920
+#: ctk/ctkmain.c:922
 msgid "Show CTK+ Options"
 msgstr "Mostre opzions CTK+"
 
@@ -2863,7 +2898,7 @@ msgstr "Mostre opzions CTK+"
 #. * Do *not* translate it to "predefinito:LTR", if it
 #. * it isn't default:LTR or default:RTL it will not work
 #.
-#: ctk/ctkmain.c:1270
+#: ctk/ctkmain.c:1275
 msgid "default:LTR"
 msgstr "default:LTR"
 
@@ -2879,69 +2914,69 @@ msgstr "_Sì"
 msgid "Co_nnect"
 msgstr "Co_net"
 
-#: ctk/ctkmountoperation.c:671
+#: ctk/ctkmountoperation.c:668
 msgid "Connect As"
 msgstr "Conet come"
 
-#: ctk/ctkmountoperation.c:680
+#: ctk/ctkmountoperation.c:677
 msgid "_Anonymous"
 msgstr "_Anonim"
 
-#: ctk/ctkmountoperation.c:689
+#: ctk/ctkmountoperation.c:686
 msgid "Registered U_ser"
 msgstr "Utent _regjistrât"
 
-#: ctk/ctkmountoperation.c:700
+#: ctk/ctkmountoperation.c:697
 msgid "_Username"
 msgstr "_Non utent"
 
-#: ctk/ctkmountoperation.c:705
+#: ctk/ctkmountoperation.c:702
 msgid "_Domain"
 msgstr "_Domini"
 
-#: ctk/ctkmountoperation.c:714
+#: ctk/ctkmountoperation.c:711
 msgid "Volume type"
 msgstr "Gjenar di volum"
 
-#: ctk/ctkmountoperation.c:724
+#: ctk/ctkmountoperation.c:721
 msgid "_Hidden"
 msgstr "_Platât"
 
-#: ctk/ctkmountoperation.c:727
+#: ctk/ctkmountoperation.c:724
 msgid "_Windows system"
 msgstr "Sisteme _Windows"
 
-#: ctk/ctkmountoperation.c:730
+#: ctk/ctkmountoperation.c:727
 msgid "_PIM"
 msgstr "_PIM"
 
-#: ctk/ctkmountoperation.c:736
+#: ctk/ctkmountoperation.c:733
 msgid "_Password"
 msgstr "_Password"
 
-#: ctk/ctkmountoperation.c:758
+#: ctk/ctkmountoperation.c:755
 msgid "Forget password _immediately"
 msgstr "Dismentee la password _subite"
 
-#: ctk/ctkmountoperation.c:768
+#: ctk/ctkmountoperation.c:765
 msgid "Remember password until you _logout"
 msgstr "Visâsi la password fintremai che no si _jes de session"
 
-#: ctk/ctkmountoperation.c:778
+#: ctk/ctkmountoperation.c:775
 msgid "Remember _forever"
 msgstr "Visâsi par _simpri"
 
-#: ctk/ctkmountoperation.c:1173
+#: ctk/ctkmountoperation.c:1170
 #, c-format
 msgid "Unknown Application (PID %d)"
 msgstr "Aplicazion no cognossude (PID %d)"
 
-#: ctk/ctkmountoperation.c:1358
+#: ctk/ctkmountoperation.c:1355
 #, c-format
 msgid "Unable to end process"
 msgstr "Impussibil terminâ il procès"
 
-#: ctk/ctkmountoperation.c:1392
+#: ctk/ctkmountoperation.c:1389
 msgid "_End Process"
 msgstr "_Termine procès"
 
@@ -2951,27 +2986,27 @@ msgid "Cannot kill process with PID %d. Operation is not implemented."
 msgstr "Impussibil copâ il procès cun PID %d. La operazion no je implementade."
 
 #. translators: this string is a name for the 'less' command
-#: ctk/ctkmountoperation-x11.c:954
+#: ctk/ctkmountoperation-x11.c:955
 msgid "Terminal Pager"
 msgstr "Pager dal terminâl («less»)"
 
-#: ctk/ctkmountoperation-x11.c:955
+#: ctk/ctkmountoperation-x11.c:956
 msgid "Top Command"
 msgstr "Comant Top"
 
-#: ctk/ctkmountoperation-x11.c:956
+#: ctk/ctkmountoperation-x11.c:957
 msgid "Bourne Again Shell"
 msgstr "Bourne Again Shell"
 
-#: ctk/ctkmountoperation-x11.c:957
+#: ctk/ctkmountoperation-x11.c:958
 msgid "Bourne Shell"
 msgstr "Bourne Shell"
 
-#: ctk/ctkmountoperation-x11.c:958
+#: ctk/ctkmountoperation-x11.c:959
 msgid "Z Shell"
 msgstr "Z Shell"
 
-#: ctk/ctkmountoperation-x11.c:1055
+#: ctk/ctkmountoperation-x11.c:1056
 #, c-format
 msgid "Cannot end process with PID %d: %s"
 msgstr "Impussibil terminâ il procès cun PID %d: %s"
@@ -2981,7 +3016,7 @@ msgstr "Impussibil terminâ il procès cun PID %d: %s"
 msgid "Page %u"
 msgstr "Pagjine %u"
 
-#: ctk/ctkpagesetup.c:652 ctk/ctkpapersize.c:986 ctk/ctkpapersize.c:1026
+#: ctk/ctkpagesetup.c:652 ctk/ctkpapersize.c:989 ctk/ctkpapersize.c:1029
 msgid "Not a valid page setup file"
 msgstr "Nol è un file di impostazion pagjine valit"
 
@@ -3166,7 +3201,7 @@ msgstr "Chest non al è za cjapât"
 
 #: ctk/ctkplacessidebar.c:2735 ctk/inspector/actions.ui:43
 #: ctk/inspector/css-node-tree.ui:39 ctk/inspector/object-tree.ui:110
-#: ctk/ui/ctkfilechooserwidget.ui:189 ctk/ui/ctkfilechooserwidget.ui:500
+#: ctk/ui/ctkfilechooserwidget.ui:190 ctk/ui/ctkfilechooserwidget.ui:513
 msgid "Name"
 msgstr "Non"
 
@@ -3196,12 +3231,12 @@ msgid "Unable to poll “%s” for media changes"
 msgstr "Impussibil interogâ “%s” pai cambiaments dai supuarts"
 
 #: ctk/ctkplacessidebar.c:3630 ctk/ctkplacessidebar.c:3696
-#: ctk/ctkplacesview.c:1692
+#: ctk/ctkplacesview.c:1718
 msgid "Open in New _Tab"
 msgstr "Vierç intune gnove _schede"
 
 #: ctk/ctkplacessidebar.c:3636 ctk/ctkplacessidebar.c:3699
-#: ctk/ctkplacesview.c:1703
+#: ctk/ctkplacesview.c:1729
 msgid "Open in New _Window"
 msgstr "Vierç intun gnûf _barcon"
 
@@ -3217,11 +3252,11 @@ msgstr "_Gjave"
 msgid "Rename…"
 msgstr "Cambie non…"
 
-#: ctk/ctkplacessidebar.c:3709 ctk/ctkplacesview.c:1737
+#: ctk/ctkplacessidebar.c:3709 ctk/ctkplacesview.c:1763
 msgid "_Mount"
 msgstr "_Monte"
 
-#: ctk/ctkplacessidebar.c:3710 ctk/ctkplacesview.c:1727
+#: ctk/ctkplacessidebar.c:3710 ctk/ctkplacesview.c:1753
 msgid "_Unmount"
 msgstr "_Dismonte"
 
@@ -3233,94 +3268,94 @@ msgstr "Par_e fûr"
 msgid "_Detect Media"
 msgstr "_Rilevâ supuart"
 
-#: ctk/ctkplacessidebar.c:4158 ctk/ctkplacesview.c:1122
+#: ctk/ctkplacessidebar.c:4158 ctk/ctkplacesview.c:1125
 msgid "Computer"
 msgstr "Computer"
 
-#: ctk/ctkplacesview.c:898
+#: ctk/ctkplacesview.c:901
 msgid "Searching for network locations"
 msgstr "Daûr a cirî posizions di rêt"
 
-#: ctk/ctkplacesview.c:905
+#: ctk/ctkplacesview.c:908
 msgid "No network locations found"
 msgstr "Nissune posizion di rêt cjatade"
 
 #. if it wasn't cancelled show a dialog
-#: ctk/ctkplacesview.c:1232 ctk/ctkplacesview.c:1307
+#: ctk/ctkplacesview.c:1235 ctk/ctkplacesview.c:1333
 msgid "Unable to access location"
 msgstr "Impussibil jentrâ te posizion"
 
 #. Restore from Cancel to Connect
-#: ctk/ctkplacesview.c:1250 ctk/ui/ctkplacesview.ui:317
+#: ctk/ctkplacesview.c:1253 ctk/ui/ctkplacesview.ui:317
 msgid "Con_nect"
 msgstr "Co_net"
 
 #. if it wasn't cancelled show a dialog
-#: ctk/ctkplacesview.c:1370
+#: ctk/ctkplacesview.c:1396
 msgid "Unable to unmount volume"
 msgstr "Impussibil dismontâ il volum"
 
 #. Allow to cancel the operation
-#: ctk/ctkplacesview.c:1471
+#: ctk/ctkplacesview.c:1497
 msgid "Cance_l"
 msgstr "Anu_le"
 
-#: ctk/ctkplacesview.c:1634
+#: ctk/ctkplacesview.c:1660
 msgid "AppleTalk"
 msgstr "AppleTalk"
 
 #. Translators: do not translate ftp:// and ftps://
-#: ctk/ctkplacesview.c:1638
+#: ctk/ctkplacesview.c:1664
 msgid "File Transfer Protocol"
 msgstr "Protocol di trasferiment file (FTP)"
 
-#: ctk/ctkplacesview.c:1638
+#: ctk/ctkplacesview.c:1664
 msgid "ftp:// or ftps://"
 msgstr "ftp:// o ftps://"
 
-#: ctk/ctkplacesview.c:1641
+#: ctk/ctkplacesview.c:1667
 msgid "Network File System"
 msgstr "File system di rêt (NFS)"
 
-#: ctk/ctkplacesview.c:1644
+#: ctk/ctkplacesview.c:1670
 msgid "Samba"
 msgstr "Samba"
 
 #. Translators: do not translate sftp:// and ssh://
-#: ctk/ctkplacesview.c:1648
+#: ctk/ctkplacesview.c:1674
 msgid "SSH File Transfer Protocol"
 msgstr "Protocol di trasferiment file SSH"
 
-#: ctk/ctkplacesview.c:1648
+#: ctk/ctkplacesview.c:1674
 msgid "sftp:// or ssh://"
 msgstr "sftp:// o ssh://"
 
 #. Translators: do not translate dav:// and davs://
-#: ctk/ctkplacesview.c:1652
+#: ctk/ctkplacesview.c:1678
 msgid "WebDAV"
 msgstr "WebDav"
 
-#: ctk/ctkplacesview.c:1652
+#: ctk/ctkplacesview.c:1678
 msgid "dav:// or davs://"
 msgstr "dav:// o davs://"
 
-#: ctk/ctkplacesview.c:1727
+#: ctk/ctkplacesview.c:1753
 msgid "_Disconnect"
 msgstr "_Disconet"
 
-#: ctk/ctkplacesview.c:1737
+#: ctk/ctkplacesview.c:1763
 msgid "_Connect"
 msgstr "_Conet"
 
-#: ctk/ctkplacesview.c:1878
+#: ctk/ctkplacesview.c:1904
 msgid "Unable to get remote server location"
 msgstr "Impussibil vê la posizion rimote dal servidôr"
 
-#: ctk/ctkplacesview.c:2073 ctk/ctkplacesview.c:2082
+#: ctk/ctkplacesview.c:2099 ctk/ctkplacesview.c:2108
 msgid "Networks"
 msgstr "Rêts"
 
-#: ctk/ctkplacesview.c:2073 ctk/ctkplacesview.c:2082
+#: ctk/ctkplacesview.c:2099 ctk/ctkplacesview.c:2108
 msgid "On This Computer"
 msgstr "Su chest computer"
 
@@ -3340,7 +3375,7 @@ msgid "Disconnect"
 msgstr "Disconet"
 
 #: ctk/ctkplacesviewrow.c:481 ctk/ui/ctkplacesviewrow.ui:72
-#: ctk/ui/ctksidebarrow.ui:61
+#: ctk/ui/ctksidebarrow.ui:62
 msgid "Unmount"
 msgstr "Dismonte"
 
@@ -3348,7 +3383,7 @@ msgstr "Dismonte"
 msgid "Authentication"
 msgstr "Autenticazion"
 
-#: ctk/ctkprintbackend.c:851
+#: ctk/ctkprintbackend.c:853
 msgid "_Remember password"
 msgstr "_Visâsi password"
 
@@ -3440,63 +3475,63 @@ msgid "The most probable reason is that a temporary file could not be created."
 msgstr "Il motîf plui probabil al è che nol è pussibil creâ un file temporani."
 
 #. window
-#: ctk/ctkprintoperation-portal.c:231 ctk/ctkprintoperation-portal.c:542
-#: ctk/ctkprintoperation-portal.c:611 ctk/ctkprintunixdialog.c:3415
+#: ctk/ctkprintoperation-portal.c:231 ctk/ctkprintoperation-portal.c:549
+#: ctk/ctkprintoperation-portal.c:618 ctk/ctkprintunixdialog.c:3415
 msgid "Print"
 msgstr "Stampe"
 
-#: ctk/ctkprintoperation-win32.c:617
+#: ctk/ctkprintoperation-win32.c:631
 msgid "Printer offline"
 msgstr "Stampant distacade"
 
-#: ctk/ctkprintoperation-win32.c:619
+#: ctk/ctkprintoperation-win32.c:633
 msgid "Out of paper"
 msgstr "Cjarte esauride"
 
 #. Translators: this is a printer status.
-#: ctk/ctkprintoperation-win32.c:621
-#: modules/printbackends/cups/ctkprintbackendcups.c:2602
+#: ctk/ctkprintoperation-win32.c:635
+#: modules/printbackends/cups/ctkprintbackendcups.c:2628
 msgid "Paused"
 msgstr "In pause"
 
-#: ctk/ctkprintoperation-win32.c:623
+#: ctk/ctkprintoperation-win32.c:637
 msgid "Need user intervention"
 msgstr "Al è necessari l'intervent dal utent"
 
-#: ctk/ctkprintoperation-win32.c:728
+#: ctk/ctkprintoperation-win32.c:742
 msgid "Custom size"
 msgstr "Dimension personalizade"
 
-#: ctk/ctkprintoperation-win32.c:1587
+#: ctk/ctkprintoperation-win32.c:1619
 msgid "No printer found"
 msgstr "Nissune stampant cjatade"
 
-#: ctk/ctkprintoperation-win32.c:1614
+#: ctk/ctkprintoperation-win32.c:1646
 msgid "Invalid argument to CreateDC"
 msgstr "Argoment no valit par CreateDC"
 
-#: ctk/ctkprintoperation-win32.c:1650 ctk/ctkprintoperation-win32.c:1896
+#: ctk/ctkprintoperation-win32.c:1682 ctk/ctkprintoperation-win32.c:1928
 msgid "Error from StartDoc"
 msgstr "Erôr dal StartDoc"
 
-#: ctk/ctkprintoperation-win32.c:1751 ctk/ctkprintoperation-win32.c:1774
-#: ctk/ctkprintoperation-win32.c:1822
+#: ctk/ctkprintoperation-win32.c:1783 ctk/ctkprintoperation-win32.c:1806
+#: ctk/ctkprintoperation-win32.c:1854
 msgid "Not enough free memory"
 msgstr "No vonde memorie libare"
 
-#: ctk/ctkprintoperation-win32.c:1827
+#: ctk/ctkprintoperation-win32.c:1859
 msgid "Invalid argument to PrintDlgEx"
 msgstr "Argoment no valit par PrintDlgEx"
 
-#: ctk/ctkprintoperation-win32.c:1832
+#: ctk/ctkprintoperation-win32.c:1864
 msgid "Invalid pointer to PrintDlgEx"
 msgstr "Pontadôr no valit par PrintDlgEx"
 
-#: ctk/ctkprintoperation-win32.c:1837
+#: ctk/ctkprintoperation-win32.c:1869
 msgid "Invalid handle to PrintDlgEx"
 msgstr "Gjestion no valide par PrintDlgEx"
 
-#: ctk/ctkprintoperation-win32.c:1842
+#: ctk/ctkprintoperation-win32.c:1874
 msgid "Unspecified error"
 msgstr "Erôr no specificât"
 
@@ -3523,42 +3558,42 @@ msgstr "Daûr a otignî informazions su la stampant…"
 #. * multiple pages on a sheet when printing
 #.
 #: ctk/ctkprintunixdialog.c:3120
-#: modules/printbackends/cups/ctkprintbackendcups.c:5378
+#: modules/printbackends/cups/ctkprintbackendcups.c:5508
 msgid "Left to right, top to bottom"
 msgstr "Di çampe a drete, dal alt in bas"
 
 #: ctk/ctkprintunixdialog.c:3120
-#: modules/printbackends/cups/ctkprintbackendcups.c:5378
+#: modules/printbackends/cups/ctkprintbackendcups.c:5508
 msgid "Left to right, bottom to top"
 msgstr "Di çampe a drete, dal bas in alt"
 
 #: ctk/ctkprintunixdialog.c:3121
-#: modules/printbackends/cups/ctkprintbackendcups.c:5379
+#: modules/printbackends/cups/ctkprintbackendcups.c:5509
 msgid "Right to left, top to bottom"
 msgstr "Di drete a çampe, dal alt in bas"
 
 #: ctk/ctkprintunixdialog.c:3121
-#: modules/printbackends/cups/ctkprintbackendcups.c:5379
+#: modules/printbackends/cups/ctkprintbackendcups.c:5509
 msgid "Right to left, bottom to top"
 msgstr "Di drete a çampe, dal bas in alt"
 
 #: ctk/ctkprintunixdialog.c:3122
-#: modules/printbackends/cups/ctkprintbackendcups.c:5380
+#: modules/printbackends/cups/ctkprintbackendcups.c:5510
 msgid "Top to bottom, left to right"
 msgstr "Dal alt in bas, di çampe a drete"
 
 #: ctk/ctkprintunixdialog.c:3122
-#: modules/printbackends/cups/ctkprintbackendcups.c:5380
+#: modules/printbackends/cups/ctkprintbackendcups.c:5510
 msgid "Top to bottom, right to left"
 msgstr "Dal alt in bas, di drete a çampe"
 
 #: ctk/ctkprintunixdialog.c:3123
-#: modules/printbackends/cups/ctkprintbackendcups.c:5381
+#: modules/printbackends/cups/ctkprintbackendcups.c:5511
 msgid "Bottom to top, left to right"
 msgstr "Dal bas in alt, di çampe a drete"
 
 #: ctk/ctkprintunixdialog.c:3123
-#: modules/printbackends/cups/ctkprintbackendcups.c:5381
+#: modules/printbackends/cups/ctkprintbackendcups.c:5511
 msgid "Bottom to top, right to left"
 msgstr "Dal bas in alt, di drete a çampe"
 
@@ -3669,19 +3704,19 @@ msgctxt "recent menu label"
 msgid "%d. %s"
 msgstr "%d. %s"
 
-#: ctk/ctkrecentmanager.c:1053 ctk/ctkrecentmanager.c:1066
-#: ctk/ctkrecentmanager.c:1203 ctk/ctkrecentmanager.c:1213
-#: ctk/ctkrecentmanager.c:1265 ctk/ctkrecentmanager.c:1274
+#: ctk/ctkrecentmanager.c:1052 ctk/ctkrecentmanager.c:1065
+#: ctk/ctkrecentmanager.c:1207 ctk/ctkrecentmanager.c:1217
+#: ctk/ctkrecentmanager.c:1269 ctk/ctkrecentmanager.c:1278
 #, c-format
 msgid "Unable to find an item with URI '%s'"
 msgstr "Impussibil cjatâ un element cun URI '%s'"
 
-#: ctk/ctkrecentmanager.c:1289
+#: ctk/ctkrecentmanager.c:1293
 #, c-format
 msgid "Unable to move the item with URI '%s' to '%s'"
 msgstr "Impussibil spostâ l'element cun URI '%s' su '%s'"
 
-#: ctk/ctkrecentmanager.c:2507
+#: ctk/ctkrecentmanager.c:2479
 #, c-format
 msgid "No registered application with name '%s' for item with URI '%s' found"
 msgstr ""
@@ -3755,14 +3790,123 @@ msgid "Search Shortcuts"
 msgstr "Cîr scurtis"
 
 #: ctk/ctkshortcutswindow.c:1053 ctk/ui/ctkemojichooser.ui:376
-#: ctk/ui/ctkfilechooserwidget.ui:310
+#: ctk/ui/ctkfilechooserwidget.ui:323
 msgid "No Results Found"
 msgstr "Nissun risultât cjatât"
 
 #: ctk/ctkshortcutswindow.c:1060 ctk/ui/ctkemojichooser.ui:390
-#: ctk/ui/ctkfilechooserwidget.ui:324 ctk/ui/ctkplacesview.ui:274
+#: ctk/ui/ctkfilechooserwidget.ui:337 ctk/ui/ctkplacesview.ui:274
 msgid "Try a different search"
 msgstr "Prove une ricercje diferente"
+
+#: ctk/ctkstock.c:329
+msgctxt "Stock label"
+msgid "_Apply"
+msgstr "_Apliche"
+
+#: ctk/ctkstock.c:331
+msgctxt "Stock label"
+msgid "_Cancel"
+msgstr "_Anule"
+
+#: ctk/ctkstock.c:335
+msgctxt "Stock label"
+msgid "C_onnect"
+msgstr "C_onet"
+
+#: ctk/ctkstock.c:336
+msgctxt "Stock label"
+msgid "_Convert"
+msgstr "_Convertìs"
+
+#: ctk/ctkstock.c:340
+msgctxt "Stock label"
+msgid "_Discard"
+msgstr "_Scarte"
+
+#: ctk/ctkstock.c:341
+msgctxt "Stock label"
+msgid "_Disconnect"
+msgstr "_Disconet"
+
+#: ctk/ctkstock.c:343
+msgctxt "Stock label"
+msgid "_Edit"
+msgstr "_Modifiche"
+
+#: ctk/ctkstock.c:371
+msgctxt "Stock label"
+msgid "_Index"
+msgstr "_Indiç"
+
+#: ctk/ctkstock.c:372
+msgctxt "Stock label"
+msgid "_Information"
+msgstr "_Informazion"
+
+#: ctk/ctkstock.c:402
+msgctxt "Stock label"
+msgid "_No"
+msgstr "_No"
+
+#: ctk/ctkstock.c:403
+msgctxt "Stock label"
+msgid "_OK"
+msgstr "_Va ben"
+
+#. Page orientation
+#: ctk/ctkstock.c:406
+msgctxt "Stock label"
+msgid "Landscape"
+msgstr "Orizontâl"
+
+#. Page orientation
+#: ctk/ctkstock.c:408
+msgctxt "Stock label"
+msgid "Portrait"
+msgstr "Verticâl"
+
+#. Page orientation
+#: ctk/ctkstock.c:410
+msgctxt "Stock label"
+msgid "Reverse landscape"
+msgstr "Orizontâl invertît"
+
+#. Page orientation
+#: ctk/ctkstock.c:412
+msgctxt "Stock label"
+msgid "Reverse portrait"
+msgstr "Verticâl invertît"
+
+#: ctk/ctkstock.c:413
+msgctxt "Stock label"
+msgid "Page Set_up"
+msgstr "Imposta_zions pagjine"
+
+#: ctk/ctkstock.c:415
+msgctxt "Stock label"
+msgid "_Preferences"
+msgstr "_Preferencis"
+
+#: ctk/ctkstock.c:427
+msgctxt "Stock label"
+msgid "_Color"
+msgstr "_Colôr"
+
+#: ctk/ctkstock.c:428
+msgctxt "Stock label"
+msgid "_Font"
+msgstr "_Caratar"
+
+#: ctk/ctkstock.c:437
+msgctxt "Stock label"
+msgid "_Undelete"
+msgstr "_Anule eliminazion"
+
+#: ctk/ctkstock.c:441
+msgctxt "Stock label"
+msgid "_Yes"
+msgstr "_Sì"
 
 #: ctk/ctktextbufferrichtext.c:648
 #, c-format
@@ -3923,6 +4067,20 @@ msgstr "ZWJ - spazi di _union a largjece nule"
 msgid "ZWNJ Zero width _non-joiner"
 msgstr "ZWNJ - spazi _no di union a largjece nule"
 
+#: ctk/ctkuimanager.c:1735
+#, c-format
+msgid "Unexpected start tag '%s' on line %d char %d"
+msgstr "Etichete di inizi '%s' inspietade te rie %d caratar %d"
+
+#: ctk/ctkuimanager.c:1825
+#, c-format
+msgid "Unexpected character data on line %d char %d"
+msgstr "Dâts di caratar inspietâts te rie %d caratar %d"
+
+#: ctk/ctkuimanager.c:2638
+msgid "Empty"
+msgstr "Vueit"
+
 #: ctk/ctkvolumebutton.c:189
 msgid "Adjusts the volume"
 msgstr "Juste il volum"
@@ -3946,24 +4104,24 @@ msgctxt "volume percentage"
 msgid "%d %%"
 msgstr "%d %%"
 
-#: ctk/ctkwindow.c:9291
+#: ctk/ctkwindow.c:9303
 msgid "Move"
 msgstr "Sposte"
 
-#: ctk/ctkwindow.c:9299
+#: ctk/ctkwindow.c:9311
 msgid "Resize"
 msgstr "Ridimensione"
 
-#: ctk/ctkwindow.c:9330
+#: ctk/ctkwindow.c:9342
 msgid "Always on Top"
 msgstr "Simpri denant"
 
-#: ctk/ctkwindow.c:12770
+#: ctk/ctkwindow.c:12777
 #, c-format
 msgid "Do you want to use CTK+ Inspector?"
 msgstr "Doprâ CTK+ Inspector?"
 
-#: ctk/ctkwindow.c:12772
+#: ctk/ctkwindow.c:12779
 #, c-format
 msgid ""
 "CTK+ Inspector is an interactive debugger that lets you explore and modify "
@@ -3974,15 +4132,15 @@ msgstr ""
 "il didentri di cualsisei aplicazion CTK+.\n"
 "Doprantlu ae aplicazion si podarès causâ une interuzion o un colàs."
 
-#: ctk/ctkwindow.c:12777
+#: ctk/ctkwindow.c:12784
 msgid "Don't show this message again"
 msgstr "No stâ mostrâ plui chest messaç"
 
-#: ctk/inspector/action-editor.c:281
+#: ctk/inspector/action-editor.c:280
 msgid "Activate"
 msgstr "Ative"
 
-#: ctk/inspector/action-editor.c:302 ctk/inspector/actions.ui:82
+#: ctk/inspector/action-editor.c:303 ctk/inspector/actions.ui:82
 #: ctk/inspector/css-node-tree.ui:78 ctk/inspector/misc-info.ui:102
 msgid "State"
 msgstr "Stât"
@@ -4090,22 +4248,22 @@ msgstr "Version GL"
 msgid "GL Vendor"
 msgstr "Produtôr GL"
 
-#: ctk/inspector/gestures.c:129
+#: ctk/inspector/gestures.c:130
 msgctxt "event phase"
 msgid "None"
 msgstr "Nissune"
 
-#: ctk/inspector/gestures.c:130
+#: ctk/inspector/gestures.c:131
 msgctxt "event phase"
 msgid "Capture"
 msgstr "Cature"
 
-#: ctk/inspector/gestures.c:131
+#: ctk/inspector/gestures.c:132
 msgctxt "event phase"
 msgid "Bubble"
 msgstr "Bufule"
 
-#: ctk/inspector/gestures.c:132
+#: ctk/inspector/gestures.c:133
 msgctxt "event phase"
 msgid "Target"
 msgstr "Obietîf"
@@ -4118,7 +4276,7 @@ msgstr "Sezion cence non"
 msgid "Label"
 msgstr "Etichete"
 
-#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1385
+#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1389
 msgid "Action"
 msgstr "Azion"
 
@@ -4148,8 +4306,8 @@ msgstr "Widget predefinît"
 
 #: ctk/inspector/misc-info.ui:192 ctk/inspector/misc-info.ui:237
 #: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1071
-#: ctk/inspector/prop-editor.c:1268 ctk/inspector/prop-editor.c:1393
-#: ctk/inspector/prop-editor.c:1504 ctk/inspector/window.ui:382
+#: ctk/inspector/prop-editor.c:1270 ctk/inspector/prop-editor.c:1397
+#: ctk/inspector/prop-editor.c:1508 ctk/inspector/window.ui:382
 msgid "Properties"
 msgstr "Proprietâts"
 
@@ -4245,66 +4403,66 @@ msgstr "Ogjet: %p (%s)"
 msgid "Uneditable property type: %s"
 msgstr "Gjenar di proprietât no modificabil: %s"
 
-#: ctk/inspector/prop-editor.c:1259
+#: ctk/inspector/prop-editor.c:1261
 msgid "Attribute mapping"
 msgstr "Mapadure dai atribûts"
 
-#: ctk/inspector/prop-editor.c:1264
+#: ctk/inspector/prop-editor.c:1266
 msgid "Model:"
 msgstr "Model:"
 
-#: ctk/inspector/prop-editor.c:1265
+#: ctk/inspector/prop-editor.c:1267
 #, c-format
 msgid "%p (%s)"
 msgstr "%p (%s)"
 
-#: ctk/inspector/prop-editor.c:1275
+#: ctk/inspector/prop-editor.c:1277
 msgid "Column:"
 msgstr "Colone:"
 
-#: ctk/inspector/prop-editor.c:1285
+#: ctk/inspector/prop-editor.c:1287
 msgctxt "property name"
 msgid "None"
 msgstr "Nissune"
 
-#: ctk/inspector/prop-editor.c:1389
+#: ctk/inspector/prop-editor.c:1393
 #, c-format
 msgid "Defined at: %p (%s)"
 msgstr "Definît in: %p (%s)"
 
-#: ctk/inspector/prop-editor.c:1453 ctk/inspector/prop-editor.c:1469
+#: ctk/inspector/prop-editor.c:1457 ctk/inspector/prop-editor.c:1473
 msgid "inverted"
 msgstr "invertît"
 
-#: ctk/inspector/prop-editor.c:1485
+#: ctk/inspector/prop-editor.c:1489
 msgid "bidirectional, inverted"
 msgstr "bidirezionâl, invertît"
 
-#: ctk/inspector/prop-editor.c:1490 ctk/inspector/prop-editor.c:1604
+#: ctk/inspector/prop-editor.c:1494 ctk/inspector/prop-editor.c:1608
 msgid "bidirectional"
 msgstr "bidirezionâl"
 
-#: ctk/inspector/prop-editor.c:1495
+#: ctk/inspector/prop-editor.c:1499
 msgid "Binding:"
 msgstr "Associazion:"
 
-#: ctk/inspector/prop-editor.c:1623
+#: ctk/inspector/prop-editor.c:1627
 msgid "Setting:"
 msgstr "Impostazion:"
 
-#: ctk/inspector/prop-editor.c:1663
+#: ctk/inspector/prop-editor.c:1667
 msgid "Source:"
 msgstr "Sorzint:"
 
-#: ctk/inspector/prop-editor.c:1665
+#: ctk/inspector/prop-editor.c:1669
 msgid "Reset"
 msgstr "Azere"
 
-#: ctk/inspector/prop-editor.c:1679
+#: ctk/inspector/prop-editor.c:1683
 msgid "Theme"
 msgstr "Teme"
 
-#: ctk/inspector/prop-editor.c:1682
+#: ctk/inspector/prop-editor.c:1686
 msgid "XSettings"
 msgstr "XSettings"
 
@@ -4313,6 +4471,7 @@ msgid "Property"
 msgstr "Proprietât"
 
 #: ctk/inspector/prop-list.ui:68 ctk/inspector/statistics.ui:53
+#: ctk/ui/ctkfilechooserwidget.ui:236
 msgid "Type"
 msgstr "Gjenar"
 
@@ -4332,7 +4491,7 @@ msgstr "Percors"
 msgid "Count"
 msgstr "Conte"
 
-#: ctk/inspector/resource-list.ui:130 ctk/ui/ctkfilechooserwidget.ui:223
+#: ctk/inspector/resource-list.ui:130 ctk/ui/ctkfilechooserwidget.ui:224
 #: ctk/ui/ctkfontchooserwidget.ui:134 ctk/ui/ctkfontchooserwidget.ui:276
 msgid "Size"
 msgstr "Dimension"
@@ -4353,7 +4512,7 @@ msgstr "Dimension:"
 msgid "Selector"
 msgstr "Seletôr"
 
-#: ctk/inspector/signals-list.c:117
+#: ctk/inspector/signals-list.c:118
 msgid "Yes"
 msgstr "Sì"
 
@@ -4365,35 +4524,35 @@ msgstr "Segnâl"
 msgid "Connected"
 msgstr "Colegât"
 
-#: ctk/inspector/size-groups.c:224
+#: ctk/inspector/size-groups.c:225
 msgid "Ignore hidden"
 msgstr "Ignore platâts"
 
-#: ctk/inspector/size-groups.c:242
+#: ctk/inspector/size-groups.c:243
 msgid "Mode"
 msgstr "Modalitât"
 
-#: ctk/inspector/size-groups.c:252
+#: ctk/inspector/size-groups.c:253
 msgctxt "sizegroup mode"
 msgid "None"
 msgstr "Nissune"
 
-#: ctk/inspector/size-groups.c:253
+#: ctk/inspector/size-groups.c:254
 msgctxt "sizegroup mode"
 msgid "Horizontal"
 msgstr "Orizontâl"
 
-#: ctk/inspector/size-groups.c:254
+#: ctk/inspector/size-groups.c:255
 msgctxt "sizegroup mode"
 msgid "Vertical"
 msgstr "Verticâl"
 
-#: ctk/inspector/size-groups.c:255
+#: ctk/inspector/size-groups.c:256
 msgctxt "sizegroup mode"
 msgid "Both"
 msgstr "Ducj i doi"
 
-#: ctk/inspector/statistics.c:377
+#: ctk/inspector/statistics.c:379
 msgid "GLib must be configured with --enable-debug"
 msgstr "GLib al scugne jessi configurât cun --enable-debug"
 
@@ -4470,10 +4629,6 @@ msgstr "Dimension cursôr"
 msgid "Icon Theme"
 msgstr "Teme iconis"
 
-#: ctk/inspector/visual.ui:230 ctk/ui/ctkfontbutton.ui:13
-msgid "Font"
-msgstr "Caratar"
-
 #: ctk/inspector/visual.ui:263
 msgid "Font Scale"
 msgstr "Scjale dal caratar"
@@ -4509,10 +4664,6 @@ msgstr "Modalitât rese video"
 #: ctk/inspector/visual.ui:487
 msgid "Similar"
 msgstr "Simil"
-
-#: ctk/inspector/visual.ui:488
-msgid "Image"
-msgstr "Imagjin"
 
 #: ctk/inspector/visual.ui:489
 msgid "Recording"
@@ -4668,7 +4819,6 @@ msgstr "Gjenerâl"
 
 #: ctk/open-type-layout.h:13
 #, fuzzy
-#| msgid "Accessible name"
 msgctxt "OpenType layout"
 msgid "Access All Alternates"
 msgstr "Non acessibil"
@@ -7125,19 +7275,19 @@ msgstr "Simbui"
 msgid "Flags"
 msgstr "Bandieris"
 
-#: ctk/ui/ctkfilechooserwidget.ui:168
+#: ctk/ui/ctkfilechooserwidget.ui:169
 msgid "Files"
 msgstr "File"
 
-#: ctk/ui/ctkfilechooserwidget.ui:261
+#: ctk/ui/ctkfilechooserwidget.ui:274
 msgid "Remote location — only searching the current folder"
 msgstr "Posizion rimote — si cîr dome te cartele atuâl"
 
-#: ctk/ui/ctkfilechooserwidget.ui:433
+#: ctk/ui/ctkfilechooserwidget.ui:446
 msgid "Folder Name"
 msgstr "Non de cartele"
 
-#: ctk/ui/ctkfilechooserwidget.ui:461
+#: ctk/ui/ctkfilechooserwidget.ui:474
 msgid "_Create"
 msgstr "_Cree"
 
@@ -7466,105 +7616,105 @@ msgstr "Sbasse il volum"
 msgid "Decreases the volume"
 msgstr "Diminuìs il volum"
 
-#: ctk/updateiconcache.c:1388
+#: ctk/updateiconcache.c:1402
 #, c-format
 msgid "Failed to write header\n"
 msgstr "No si è rivâts a scrivi la intestazion\n"
 
-#: ctk/updateiconcache.c:1394
+#: ctk/updateiconcache.c:1408
 #, c-format
 msgid "Failed to write hash table\n"
 msgstr "No si è rivâts a scrivi la tabele hash\n"
 
-#: ctk/updateiconcache.c:1400
+#: ctk/updateiconcache.c:1414
 #, c-format
 msgid "Failed to write folder index\n"
 msgstr "No si è rivâts a scrivi l'indiç de cartele\n"
 
-#: ctk/updateiconcache.c:1408
+#: ctk/updateiconcache.c:1422
 #, c-format
 msgid "Failed to rewrite header\n"
 msgstr "No si è rivâts a tornâ a scrivi la intestazion\n"
 
-#: ctk/updateiconcache.c:1502
+#: ctk/updateiconcache.c:1516
 #, c-format
 msgid "Failed to open file %s : %s\n"
 msgstr "No si è rivât a vierzi il file %s : %s\n"
 
-#: ctk/updateiconcache.c:1510 ctk/updateiconcache.c:1540
+#: ctk/updateiconcache.c:1524 ctk/updateiconcache.c:1554
 #, c-format
 msgid "Failed to write cache file: %s\n"
 msgstr "No si è rivâts a scrivi il file cache: %s\n"
 
-#: ctk/updateiconcache.c:1550
+#: ctk/updateiconcache.c:1564
 #, c-format
 msgid "The generated cache was invalid.\n"
 msgstr "La cache gjenerade no jere valide.\n"
 
-#: ctk/updateiconcache.c:1564
+#: ctk/updateiconcache.c:1578
 #, c-format
 msgid "Could not rename %s to %s: %s, removing %s then.\n"
 msgstr "Impussibil cambiâ non di %s a %s: %s, duncje si è daûr a gjavâ %s.\n"
 
-#: ctk/updateiconcache.c:1578
+#: ctk/updateiconcache.c:1592
 #, c-format
 msgid "Could not rename %s to %s: %s\n"
 msgstr "Impussibil cambiâ non di %s a %s: %s\n"
 
-#: ctk/updateiconcache.c:1588
+#: ctk/updateiconcache.c:1602
 #, c-format
 msgid "Could not rename %s back to %s: %s.\n"
 msgstr "Impussibil cambiâ non a %s tornant a meti %s: %s.\n"
 
-#: ctk/updateiconcache.c:1615
+#: ctk/updateiconcache.c:1629
 #, c-format
 msgid "Cache file created successfully.\n"
 msgstr "File cache creât cun sucès.\n"
 
-#: ctk/updateiconcache.c:1654
+#: ctk/updateiconcache.c:1668
 msgid "Overwrite an existing cache, even if up to date"
 msgstr "Sorescrîf une cache esistente, ancje se inzornade"
 
-#: ctk/updateiconcache.c:1655
+#: ctk/updateiconcache.c:1669
 msgid "Don't check for the existence of index.theme"
 msgstr "No sta controlâ la esistence di index.theme"
 
-#: ctk/updateiconcache.c:1656
+#: ctk/updateiconcache.c:1670
 msgid "Don't include image data in the cache"
 msgstr "No sta includi i dâts de imagjin inte cache"
 
-#: ctk/updateiconcache.c:1657
+#: ctk/updateiconcache.c:1671
 msgid "Include image data in the cache"
 msgstr "Inclût i dâts de imagjin inte cache"
 
-#: ctk/updateiconcache.c:1658
+#: ctk/updateiconcache.c:1672
 msgid "Output a C header file"
 msgstr "Gjenere un file di intestazion (header) C"
 
-#: ctk/updateiconcache.c:1659
+#: ctk/updateiconcache.c:1673
 msgid "Turn off verbose output"
 msgstr "Disabilite jessude prolisse"
 
-#: ctk/updateiconcache.c:1660
+#: ctk/updateiconcache.c:1674
 msgid "Validate existing icon cache"
 msgstr "Convalide la cache di iconis esistente"
 
-#: ctk/updateiconcache.c:1727
+#: ctk/updateiconcache.c:1741
 #, c-format
 msgid "File not found: %s\n"
 msgstr "File no cjatât: %s\n"
 
-#: ctk/updateiconcache.c:1733
+#: ctk/updateiconcache.c:1747
 #, c-format
 msgid "Not a valid icon cache: %s\n"
 msgstr "Cache iconis no valide: %s\n"
 
-#: ctk/updateiconcache.c:1746
+#: ctk/updateiconcache.c:1760
 #, c-format
 msgid "No theme index file.\n"
 msgstr "Nissun file indiç di teme.\n"
 
-#: ctk/updateiconcache.c:1750
+#: ctk/updateiconcache.c:1764
 #, c-format
 msgid ""
 "No theme index file in '%s'.\n"
@@ -7621,7 +7771,7 @@ msgctxt "input method menu"
 msgid "Multipress"
 msgstr "Pression multiple"
 
-#: modules/input/imquartz.c:58
+#: modules/input/imquartz.c:69
 msgctxt "input method menu"
 msgid "Mac OS X Quartz"
 msgstr "Mac OS X Quartz"
@@ -7651,7 +7801,7 @@ msgid "Vietnamese (VIQR)"
 msgstr "Vietnamît (VIQR)"
 
 #. ID
-#: modules/input/imwayland.c:104
+#: modules/input/imwayland.c:105
 msgctxt "input method menu"
 msgid "Wayland"
 msgstr "Wayland"
@@ -7687,447 +7837,447 @@ msgid "Dormant"
 msgstr "No ative"
 
 #. How many document pages to go onto one side of paper.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:939
-#: modules/printbackends/file/ctkprintbackendfile.c:676
-#: modules/printbackends/test/ctkprintbackendtest.c:501
+#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:941
+#: modules/printbackends/file/ctkprintbackendfile.c:679
+#: modules/printbackends/test/ctkprintbackendtest.c:503
 msgid "Pages per _sheet:"
 msgstr "Pagjinis par _sfuei:"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1128
-#: modules/printbackends/cups/ctkprintbackendcups.c:1437
+#: modules/printbackends/cups/ctkprintbackendcups.c:1129
+#: modules/printbackends/cups/ctkprintbackendcups.c:1439
 msgid "Username:"
 msgstr "Non utent:"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1129
-#: modules/printbackends/cups/ctkprintbackendcups.c:1446
+#: modules/printbackends/cups/ctkprintbackendcups.c:1130
+#: modules/printbackends/cups/ctkprintbackendcups.c:1448
 msgid "Password:"
 msgstr "Password:"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1168
-#: modules/printbackends/cups/ctkprintbackendcups.c:1459
+#: modules/printbackends/cups/ctkprintbackendcups.c:1169
+#: modules/printbackends/cups/ctkprintbackendcups.c:1461
 #, c-format
 msgid "Authentication is required to print document “%s” on printer %s"
 msgstr ""
 "La autenticazion e je necessarie par stampâ il document “%s” su la stampant "
 "%s"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1170
+#: modules/printbackends/cups/ctkprintbackendcups.c:1171
 #, c-format
 msgid "Authentication is required to print a document on %s"
 msgstr "La autenticazion e je necessarie par stampâ un document su %s"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1174
+#: modules/printbackends/cups/ctkprintbackendcups.c:1175
 #, c-format
 msgid "Authentication is required to get attributes of job “%s”"
 msgstr "La autenticazion e je necessarie par vê i atribûts dal lavôr “%s”"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1176
+#: modules/printbackends/cups/ctkprintbackendcups.c:1177
 msgid "Authentication is required to get attributes of a job"
 msgstr "La autenticazion e je necessarie par vê i atribûts di un lavôr"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1180
+#: modules/printbackends/cups/ctkprintbackendcups.c:1181
 #, c-format
 msgid "Authentication is required to get attributes of printer %s"
 msgstr "La autenticazion e je necessarie par vê i atribûts de stampant %s"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1182
+#: modules/printbackends/cups/ctkprintbackendcups.c:1183
 msgid "Authentication is required to get attributes of a printer"
 msgstr "La autenticazion e je necessarie par vê i atribûts di une stampant"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1185
+#: modules/printbackends/cups/ctkprintbackendcups.c:1186
 #, c-format
 msgid "Authentication is required to get default printer of %s"
 msgstr "La autenticazion e je necessarie par vê la stampant predefinide di %s"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1188
+#: modules/printbackends/cups/ctkprintbackendcups.c:1189
 #, c-format
 msgid "Authentication is required to get printers from %s"
 msgstr "La autenticazion e je necessarie par vê lis stampants di %s"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1193
+#: modules/printbackends/cups/ctkprintbackendcups.c:1194
 #, c-format
 msgid "Authentication is required to get a file from %s"
 msgstr "La autenticazion e je necessarie par vê un file di %s"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1195
+#: modules/printbackends/cups/ctkprintbackendcups.c:1196
 #, c-format
 msgid "Authentication is required on %s"
 msgstr "La autenticazion e je necessarie su %s"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1431
+#: modules/printbackends/cups/ctkprintbackendcups.c:1433
 msgid "Domain:"
 msgstr "Domini:"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1461
+#: modules/printbackends/cups/ctkprintbackendcups.c:1463
 #, c-format
 msgid "Authentication is required to print document “%s”"
 msgstr "La autenticazion e je necessarie par stampâ il document “%s”"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1466
+#: modules/printbackends/cups/ctkprintbackendcups.c:1468
 #, c-format
 msgid "Authentication is required to print this document on printer %s"
 msgstr ""
 "La autenticazion e je necessarie par stampâ chest document su la stampant %s"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1468
+#: modules/printbackends/cups/ctkprintbackendcups.c:1470
 msgid "Authentication is required to print this document"
 msgstr "La autenticazion e je necessarie par stampâ chest document"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2531
+#: modules/printbackends/cups/ctkprintbackendcups.c:2557
 #, c-format
 msgid "Printer “%s” is low on toner."
 msgstr "Toner de stampant “%s” in esauriment."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2535
+#: modules/printbackends/cups/ctkprintbackendcups.c:2561
 #, c-format
 msgid "Printer “%s” has no toner left."
 msgstr "Toner de stampant “%s” esaurît."
 
 #. Translators: "Developer" like on photo development context
-#: modules/printbackends/cups/ctkprintbackendcups.c:2540
+#: modules/printbackends/cups/ctkprintbackendcups.c:2566
 #, c-format
 msgid "Printer “%s” is low on developer."
 msgstr "Developer de stampant “%s” in esauriment."
 
 #. Translators: "Developer" like on photo development context
-#: modules/printbackends/cups/ctkprintbackendcups.c:2545
+#: modules/printbackends/cups/ctkprintbackendcups.c:2571
 #, c-format
 msgid "Printer “%s” is out of developer."
 msgstr "Developer de stampant “%s” esaurît."
 
 #. Translators: "marker" is one color bin of the printer
-#: modules/printbackends/cups/ctkprintbackendcups.c:2550
+#: modules/printbackends/cups/ctkprintbackendcups.c:2576
 #, c-format
 msgid "Printer “%s” is low on at least one marker supply."
 msgstr "Almancul une cartucje de stampant “%s” e je in esauriment."
 
 #. Translators: "marker" is one color bin of the printer
-#: modules/printbackends/cups/ctkprintbackendcups.c:2555
+#: modules/printbackends/cups/ctkprintbackendcups.c:2581
 #, c-format
 msgid "Printer “%s” is out of at least one marker supply."
 msgstr "Almancul une cartucje de stampant “%s” e je esauride."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2559
+#: modules/printbackends/cups/ctkprintbackendcups.c:2585
 #, c-format
 msgid "The cover is open on printer “%s”."
 msgstr "Il tapon de stampant “%s” al è viert."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2563
+#: modules/printbackends/cups/ctkprintbackendcups.c:2589
 #, c-format
 msgid "The door is open on printer “%s”."
 msgstr "Il sportel de stampant “%s” al è viert."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2567
+#: modules/printbackends/cups/ctkprintbackendcups.c:2593
 #, c-format
 msgid "Printer “%s” is low on paper."
 msgstr "Cjarte de stampant “%s” in esauriment."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2571
+#: modules/printbackends/cups/ctkprintbackendcups.c:2597
 #, c-format
 msgid "Printer “%s” is out of paper."
 msgstr "Cjarte de stampant “%s” esauride."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2575
+#: modules/printbackends/cups/ctkprintbackendcups.c:2601
 #, c-format
 msgid "Printer “%s” is currently offline."
 msgstr "La stampant “%s” e je atualmentri disconetude."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2579
+#: modules/printbackends/cups/ctkprintbackendcups.c:2605
 #, c-format
 msgid "There is a problem on printer “%s”."
 msgstr "Al esist un probleme su la stampant “%s”."
 
 #. Translators: this is a printer status.
-#: modules/printbackends/cups/ctkprintbackendcups.c:2599
+#: modules/printbackends/cups/ctkprintbackendcups.c:2625
 msgid "Paused; Rejecting Jobs"
 msgstr "In pause; lavôrs ricusâts"
 
 #. Translators: this is a printer status.
-#: modules/printbackends/cups/ctkprintbackendcups.c:2605
+#: modules/printbackends/cups/ctkprintbackendcups.c:2631
 msgid "Rejecting Jobs"
 msgstr "Lavôrs refudâts"
 
 #. Translators: this string connects multiple printer states together.
-#: modules/printbackends/cups/ctkprintbackendcups.c:2646
+#: modules/printbackends/cups/ctkprintbackendcups.c:2672
 msgid "; "
 msgstr "; "
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4324
-#: modules/printbackends/cups/ctkprintbackendcups.c:4391
+#: modules/printbackends/cups/ctkprintbackendcups.c:4453
+#: modules/printbackends/cups/ctkprintbackendcups.c:4520
 msgctxt "printing option"
 msgid "Two Sided"
 msgstr "Denant e daûr"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4325
+#: modules/printbackends/cups/ctkprintbackendcups.c:4454
 msgctxt "printing option"
 msgid "Paper Type"
 msgstr "Gjenar di cjarte"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4326
+#: modules/printbackends/cups/ctkprintbackendcups.c:4455
 msgctxt "printing option"
 msgid "Paper Source"
 msgstr "Sorzint cjarte"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4327
-#: modules/printbackends/cups/ctkprintbackendcups.c:4392
+#: modules/printbackends/cups/ctkprintbackendcups.c:4456
+#: modules/printbackends/cups/ctkprintbackendcups.c:4521
 msgctxt "printing option"
 msgid "Output Tray"
 msgstr "Scansel di jessude"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4328
+#: modules/printbackends/cups/ctkprintbackendcups.c:4457
 msgctxt "printing option"
 msgid "Resolution"
 msgstr "Risoluzion"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4329
+#: modules/printbackends/cups/ctkprintbackendcups.c:4458
 msgctxt "printing option"
 msgid "GhostScript pre-filtering"
 msgstr "Pre-filtradure GhostScript"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4338
+#: modules/printbackends/cups/ctkprintbackendcups.c:4467
 msgctxt "printing option value"
 msgid "One Sided"
 msgstr "Une bande"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4340
+#: modules/printbackends/cups/ctkprintbackendcups.c:4469
 msgctxt "printing option value"
 msgid "Long Edge (Standard)"
 msgstr "Ôr lunc (standard)"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4342
+#: modules/printbackends/cups/ctkprintbackendcups.c:4471
 msgctxt "printing option value"
 msgid "Short Edge (Flip)"
 msgstr "Ôr curt (ribaltât)"
 
 #. Translators: this is an option of "Paper Source"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4344
-#: modules/printbackends/cups/ctkprintbackendcups.c:4346
-#: modules/printbackends/cups/ctkprintbackendcups.c:4354
+#: modules/printbackends/cups/ctkprintbackendcups.c:4473
+#: modules/printbackends/cups/ctkprintbackendcups.c:4475
+#: modules/printbackends/cups/ctkprintbackendcups.c:4483
 msgctxt "printing option value"
 msgid "Auto Select"
 msgstr "Selezion automatiche"
 
 #. Translators: this is an option of "Paper Source"
 #. Translators: this is an option of "Resolution"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4348
-#: modules/printbackends/cups/ctkprintbackendcups.c:4350
-#: modules/printbackends/cups/ctkprintbackendcups.c:4352
-#: modules/printbackends/cups/ctkprintbackendcups.c:4356
+#: modules/printbackends/cups/ctkprintbackendcups.c:4477
+#: modules/printbackends/cups/ctkprintbackendcups.c:4479
+#: modules/printbackends/cups/ctkprintbackendcups.c:4481
+#: modules/printbackends/cups/ctkprintbackendcups.c:4485
 msgctxt "printing option value"
 msgid "Printer Default"
 msgstr "Impostazions predefinidis stampant"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4358
+#: modules/printbackends/cups/ctkprintbackendcups.c:4487
 msgctxt "printing option value"
 msgid "Embed GhostScript fonts only"
 msgstr "Inclût nome i caratars GhostScript"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4360
+#: modules/printbackends/cups/ctkprintbackendcups.c:4489
 msgctxt "printing option value"
 msgid "Convert to PS level 1"
 msgstr "Convertî a PS nivel 1"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4362
+#: modules/printbackends/cups/ctkprintbackendcups.c:4491
 msgctxt "printing option value"
 msgid "Convert to PS level 2"
 msgstr "Convertî a PS nivel 2"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4364
+#: modules/printbackends/cups/ctkprintbackendcups.c:4493
 msgctxt "printing option value"
 msgid "No pre-filtering"
 msgstr "Nissune pre-filtradure"
 
 #. Translators: "Miscellaneous" is the label for a button, that opens
 #. up an extra panel of settings in a print dialog.
-#: modules/printbackends/cups/ctkprintbackendcups.c:4373
+#: modules/printbackends/cups/ctkprintbackendcups.c:4502
 msgctxt "printing option group"
 msgid "Miscellaneous"
 msgstr "Variis"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4400
+#: modules/printbackends/cups/ctkprintbackendcups.c:4529
 msgctxt "sides"
 msgid "One Sided"
 msgstr "Une bande"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4402
+#: modules/printbackends/cups/ctkprintbackendcups.c:4531
 msgctxt "sides"
 msgid "Long Edge (Standard)"
 msgstr "Ôr lunc (standard)"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4404
+#: modules/printbackends/cups/ctkprintbackendcups.c:4533
 msgctxt "sides"
 msgid "Short Edge (Flip)"
 msgstr "Ôr curt (ribaltât)"
 
 #. Translators: Top output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4407
+#: modules/printbackends/cups/ctkprintbackendcups.c:4536
 msgctxt "output-bin"
 msgid "Top Bin"
 msgstr "Cassele superiôr"
 
 #. Translators: Middle output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4409
+#: modules/printbackends/cups/ctkprintbackendcups.c:4538
 msgctxt "output-bin"
 msgid "Middle Bin"
 msgstr "Cassele centrâl"
 
 #. Translators: Bottom output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4411
+#: modules/printbackends/cups/ctkprintbackendcups.c:4540
 msgctxt "output-bin"
 msgid "Bottom Bin"
 msgstr "Cassele inferiôr"
 
 #. Translators: Side output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4413
+#: modules/printbackends/cups/ctkprintbackendcups.c:4542
 msgctxt "output-bin"
 msgid "Side Bin"
 msgstr "Cassele laterâl"
 
 #. Translators: Left output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4415
+#: modules/printbackends/cups/ctkprintbackendcups.c:4544
 msgctxt "output-bin"
 msgid "Left Bin"
 msgstr "Cassele a çampe"
 
 #. Translators: Right output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4417
+#: modules/printbackends/cups/ctkprintbackendcups.c:4546
 msgctxt "output-bin"
 msgid "Right Bin"
 msgstr "Cassele a diestre"
 
 #. Translators: Center output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4419
+#: modules/printbackends/cups/ctkprintbackendcups.c:4548
 msgctxt "output-bin"
 msgid "Center Bin"
 msgstr "Cassele centrâl"
 
 #. Translators: Rear output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4421
+#: modules/printbackends/cups/ctkprintbackendcups.c:4550
 msgctxt "output-bin"
 msgid "Rear Bin"
 msgstr "Cassele par daûr"
 
 #. Translators: Output bin where one sided output is oriented in the face-up position
-#: modules/printbackends/cups/ctkprintbackendcups.c:4423
+#: modules/printbackends/cups/ctkprintbackendcups.c:4552
 msgctxt "output-bin"
 msgid "Face Up Bin"
 msgstr "Cassele muse in sù"
 
 #. Translators: Output bin where one sided output is oriented in the face-down position
-#: modules/printbackends/cups/ctkprintbackendcups.c:4425
+#: modules/printbackends/cups/ctkprintbackendcups.c:4554
 msgctxt "output-bin"
 msgid "Face Down Bin"
 msgstr "Cassele muse in jù"
 
 #. Translators: Large capacity output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4427
+#: modules/printbackends/cups/ctkprintbackendcups.c:4556
 msgctxt "output-bin"
 msgid "Large Capacity Bin"
 msgstr "Cassele a alte capacitât"
 
 #. Translators: Output stacker number %d
-#: modules/printbackends/cups/ctkprintbackendcups.c:4449
+#: modules/printbackends/cups/ctkprintbackendcups.c:4578
 #, c-format
 msgctxt "output-bin"
 msgid "Stacker %d"
 msgstr "Fassiculadôr %d"
 
 #. Translators: Output mailbox number %d
-#: modules/printbackends/cups/ctkprintbackendcups.c:4453
+#: modules/printbackends/cups/ctkprintbackendcups.c:4582
 #, c-format
 msgctxt "output-bin"
 msgid "Mailbox %d"
 msgstr "Cassete de pueste %d"
 
 #. Translators: Private mailbox
-#: modules/printbackends/cups/ctkprintbackendcups.c:4457
+#: modules/printbackends/cups/ctkprintbackendcups.c:4586
 msgctxt "output-bin"
 msgid "My Mailbox"
 msgstr "Mê cassete de pueste"
 
 #. Translators: Output tray number %d
-#: modules/printbackends/cups/ctkprintbackendcups.c:4461
+#: modules/printbackends/cups/ctkprintbackendcups.c:4590
 #, c-format
 msgctxt "output-bin"
 msgid "Tray %d"
 msgstr "Scansel %d"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4932
+#: modules/printbackends/cups/ctkprintbackendcups.c:5061
 msgid "Printer Default"
 msgstr "Impostazions predefinidis stampant"
 
 #. Translators: These strings name the possible values of the
 #. * job priority option in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5373
+#: modules/printbackends/cups/ctkprintbackendcups.c:5503
 msgid "Urgent"
 msgstr "Urgjent"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5373
+#: modules/printbackends/cups/ctkprintbackendcups.c:5503
 msgid "High"
 msgstr "Alte"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5373
+#: modules/printbackends/cups/ctkprintbackendcups.c:5503
 msgid "Medium"
 msgstr "Medie"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5373
+#: modules/printbackends/cups/ctkprintbackendcups.c:5503
 msgid "Low"
 msgstr "Basse"
 
 #. Translators, this string is used to label the job priority option
 #. * in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5403
+#: modules/printbackends/cups/ctkprintbackendcups.c:5533
 msgid "Job Priority"
 msgstr "Prioritât lavôr"
 
 #. Translators, this string is used to label the billing info entry
 #. * in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5414
+#: modules/printbackends/cups/ctkprintbackendcups.c:5544
 msgid "Billing Info"
 msgstr "Informazion di fature"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5438
+#: modules/printbackends/cups/ctkprintbackendcups.c:5568
 msgctxt "cover page"
 msgid "None"
 msgstr "Nissune"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5439
+#: modules/printbackends/cups/ctkprintbackendcups.c:5569
 msgctxt "cover page"
 msgid "Classified"
 msgstr "Classificât"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5440
+#: modules/printbackends/cups/ctkprintbackendcups.c:5570
 msgctxt "cover page"
 msgid "Confidential"
 msgstr "Confidenziâl"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5441
+#: modules/printbackends/cups/ctkprintbackendcups.c:5571
 msgctxt "cover page"
 msgid "Secret"
 msgstr "Segret"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5442
+#: modules/printbackends/cups/ctkprintbackendcups.c:5572
 msgctxt "cover page"
 msgid "Standard"
 msgstr "Standard"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5443
+#: modules/printbackends/cups/ctkprintbackendcups.c:5573
 msgctxt "cover page"
 msgid "Top Secret"
 msgstr "Massime segretece"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5444
+#: modules/printbackends/cups/ctkprintbackendcups.c:5574
 msgctxt "cover page"
 msgid "Unclassified"
 msgstr "No classificât"
@@ -8135,7 +8285,7 @@ msgstr "No classificât"
 #. Translators, this string is used to label the pages-per-sheet option
 #. * in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5456
+#: modules/printbackends/cups/ctkprintbackendcups.c:5586
 msgctxt "printer option"
 msgid "Pages per Sheet"
 msgstr "Pagjinis par sfuei"
@@ -8143,7 +8293,7 @@ msgstr "Pagjinis par sfuei"
 #. Translators, this string is used to label the option in the print
 #. * dialog that controls in what order multiple pages are arranged
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5473
+#: modules/printbackends/cups/ctkprintbackendcups.c:5603
 msgctxt "printer option"
 msgid "Page Ordering"
 msgstr "Ordinament pagjinis"
@@ -8151,7 +8301,7 @@ msgstr "Ordinament pagjinis"
 #. Translators, this is the label used for the option in the print
 #. * dialog that controls the front cover page.
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5515
+#: modules/printbackends/cups/ctkprintbackendcups.c:5645
 msgctxt "printer option"
 msgid "Before"
 msgstr "Prime"
@@ -8159,7 +8309,7 @@ msgstr "Prime"
 #. Translators, this is the label used for the option in the print
 #. * dialog that controls the back cover page.
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5530
+#: modules/printbackends/cups/ctkprintbackendcups.c:5660
 msgctxt "printer option"
 msgid "After"
 msgstr "Dopo"
@@ -8168,7 +8318,7 @@ msgstr "Dopo"
 #. * a print job is printed. Possible values are 'now', a specified time,
 #. * or 'on hold'
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5550
+#: modules/printbackends/cups/ctkprintbackendcups.c:5680
 msgctxt "printer option"
 msgid "Print at"
 msgstr "Stampe"
@@ -8176,7 +8326,7 @@ msgstr "Stampe"
 #. Translators: this is the name of the option that allows the user
 #. * to specify a time when a print job will be printed.
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5561
+#: modules/printbackends/cups/ctkprintbackendcups.c:5691
 msgctxt "printer option"
 msgid "Print at time"
 msgstr "Stampe aes"
@@ -8186,35 +8336,35 @@ msgstr "Stampe aes"
 #. * the width and height in points. E.g: "Custom
 #. * 230.4x142.9"
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5606
+#: modules/printbackends/cups/ctkprintbackendcups.c:5737
 #, c-format
 msgid "Custom %s×%s"
 msgstr "Personalizât %s×%s"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5716
+#: modules/printbackends/cups/ctkprintbackendcups.c:5847
 msgctxt "printer option"
 msgid "Printer Profile"
 msgstr "Profîl stampant"
 
 #. TRANSLATORS: this is when color profile information is unavailable
-#: modules/printbackends/cups/ctkprintbackendcups.c:5723
+#: modules/printbackends/cups/ctkprintbackendcups.c:5854
 msgctxt "printer option value"
 msgid "Unavailable"
 msgstr "No disponibile"
 
 #. TRANSLATORS: when we're running an old CUPS, and
 #. * it hasn't registered the device with colord
-#: modules/printbackends/cups/ctkprintercups.c:269
+#: modules/printbackends/cups/ctkprintercups.c:275
 msgid "Color management unavailable"
 msgstr "Gjestion colôrs no disponibile"
 
 #. TRANSLATORS: when there is no color profile available
-#: modules/printbackends/cups/ctkprintercups.c:281
+#: modules/printbackends/cups/ctkprintercups.c:287
 msgid "No profile available"
 msgstr "Nissun profîl disponibil"
 
 #. TRANSLATORS: when the color profile has no title
-#: modules/printbackends/cups/ctkprintercups.c:292
+#: modules/printbackends/cups/ctkprintercups.c:298
 msgid "Unspecified profile"
 msgstr "Profîl no specificât"
 
@@ -8222,39 +8372,39 @@ msgstr "Profîl no specificât"
 msgid "output"
 msgstr "jessude"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:537
+#: modules/printbackends/file/ctkprintbackendfile.c:539
 msgid "Print to File"
 msgstr "Stampe su file"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:663
+#: modules/printbackends/file/ctkprintbackendfile.c:667
 msgid "PDF"
 msgstr "PDF"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:663
+#: modules/printbackends/file/ctkprintbackendfile.c:667
 msgid "Postscript"
 msgstr "Postscript"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:663
+#: modules/printbackends/file/ctkprintbackendfile.c:667
 msgid "SVG"
 msgstr "SVG"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:735
+#: modules/printbackends/file/ctkprintbackendfile.c:738
 msgid "File"
 msgstr "File"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:745
+#: modules/printbackends/file/ctkprintbackendfile.c:750
 msgid "_Output format"
 msgstr "Formât di _jessude"
 
-#: modules/printbackends/lpr/ctkprintbackendlpr.c:393
+#: modules/printbackends/lpr/ctkprintbackendlpr.c:394
 msgid "Print to LPR"
 msgstr "Stampe su LPR"
 
-#: modules/printbackends/lpr/ctkprintbackendlpr.c:419
+#: modules/printbackends/lpr/ctkprintbackendlpr.c:423
 msgid "Pages Per Sheet"
 msgstr "Pagjinis par sfuei"
 
-#: modules/printbackends/lpr/ctkprintbackendlpr.c:426
+#: modules/printbackends/lpr/ctkprintbackendlpr.c:430
 msgid "Command Line"
 msgstr "Rie di comant"
 
@@ -8289,9 +8439,84 @@ msgstr "no cognossût"
 msgid "test-output.%s"
 msgstr "jessude-prove.%s"
 
-#: modules/printbackends/test/ctkprintbackendtest.c:465
+#: modules/printbackends/test/ctkprintbackendtest.c:467
 msgid "Print to Test Printer"
 msgstr "Stampe su stampant di prove"
+
+#~ msgid "3.2 core GL profile is not available on EGL implementation"
+#~ msgstr "Il profîl GL core 3.2 nol è disponibil su la implementazion EGL"
+
+#~ msgctxt "Color name"
+#~ msgid "Scarlet Red"
+#~ msgstr "Ros scarlat"
+
+#~ msgctxt "Color name"
+#~ msgid "Light Butter"
+#~ msgstr "Spongje clare"
+
+#~ msgctxt "Color name"
+#~ msgid "Butter"
+#~ msgstr "Spongje"
+
+#~ msgctxt "Color name"
+#~ msgid "Chameleon"
+#~ msgstr "Camaleont"
+
+#~ msgctxt "Color name"
+#~ msgid "Sky Blue"
+#~ msgstr "Blu cîl"
+
+#~ msgctxt "Color name"
+#~ msgid "Plum"
+#~ msgstr "Ciespe"
+
+#~ msgctxt "Color name"
+#~ msgid "Light Chocolate"
+#~ msgstr "Cjocolate clare"
+
+#~ msgctxt "Color name"
+#~ msgid "Chocolate"
+#~ msgstr "Cjocolate"
+
+#~ msgctxt "Color name"
+#~ msgid "Dark Chocolate"
+#~ msgstr "Cjocolate scure"
+
+#~ msgctxt "Color name"
+#~ msgid "Light Aluminum 1"
+#~ msgstr "Alumini 1 clâr"
+
+#~ msgctxt "Color name"
+#~ msgid "Aluminum 1"
+#~ msgstr "Alumini 1"
+
+#~ msgctxt "Color name"
+#~ msgid "Dark Aluminum 1"
+#~ msgstr "Alumini 1 scûr"
+
+#~ msgctxt "Color name"
+#~ msgid "Light Aluminum 2"
+#~ msgstr "Alumini 2 clâr"
+
+#~ msgctxt "Color name"
+#~ msgid "Aluminum 2"
+#~ msgstr "Alumini 2"
+
+#~ msgctxt "Color name"
+#~ msgid "Dark Aluminum 2"
+#~ msgstr "Alumini 2 scûr"
+
+#~ msgctxt "Color name"
+#~ msgid "Darker Gray"
+#~ msgstr "Grîs plui scûr"
+
+#~ msgctxt "Color name"
+#~ msgid "Medium Gray"
+#~ msgstr "Grîs medi"
+
+#~ msgctxt "Color name"
+#~ msgid "Lighter Gray"
+#~ msgstr "Grîs plui clâr"
 
 #~ msgid "Not implemented on OS X"
 #~ msgstr "No implementât su OS X"

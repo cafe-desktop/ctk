@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-26 23:45+0000\n"
+"POT-Creation-Date: 2022-03-23 17:45+0100\n"
 "PO-Revision-Date: 2020-08-28 17:42+0300\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <lokalisointi-lista@googlegroups.com>\n"
@@ -28,7 +28,6 @@ msgstr ""
 
 #: cdk/broadway/cdkbroadway-server.c:144
 #, fuzzy, c-format
-#| msgid "TGA image type not supported"
 msgid "Broadway display type not supported: %s"
 msgstr "TGA-kuvatyyppi ei tuettu"
 
@@ -324,8 +323,6 @@ msgstr "AudioMute"
 
 #: cdk/keyname-table.h:6886
 #, fuzzy
-#| msgctxt "keyboard label"
-#| msgid "AudioMute"
 msgctxt "keyboard label"
 msgid "AudioMicMute"
 msgstr "AudioMute"
@@ -382,7 +379,6 @@ msgstr "AudioMedia"
 
 #: cdk/keyname-table.h:6897
 #, fuzzy
-#| msgid "_Eject"
 msgctxt "keyboard label"
 msgid "Eject"
 msgstr "_Irrota"
@@ -502,7 +498,6 @@ msgstr ""
 #: cdk/wayland/cdkglcontext-wayland.c:468 cdk/win32/cdkglcontext-win32.c:1179
 #: cdk/x11/cdkglcontext-x11.c:1281
 #, fuzzy
-#| msgid "No profile available"
 msgid "No GL implementation is available"
 msgstr "Ei profiilia saatavilla"
 
@@ -540,17 +535,17 @@ msgstr "Paletin koko 8-bittisessä tilassa"
 msgid "COLORS"
 msgstr "VÄREJÄ"
 
-#: cdk/x11/cdkapplaunchcontext-x11.c:295
+#: cdk/x11/cdkapplaunchcontext-x11.c:298
 #, c-format
 msgid "Starting %s"
 msgstr "Käynnistetään %s"
 
-#: cdk/x11/cdkapplaunchcontext-x11.c:308
+#: cdk/x11/cdkapplaunchcontext-x11.c:311
 #, c-format
 msgid "Opening %s"
 msgstr "Avataan %s"
 
-#: cdk/x11/cdkapplaunchcontext-x11.c:313
+#: cdk/x11/cdkapplaunchcontext-x11.c:316
 #, c-format
 msgid "Opening %d Item"
 msgid_plural "Opening %d Items"
@@ -572,12 +567,12 @@ msgctxt "Action name"
 msgid "Toggle"
 msgstr ""
 
-#: ctk/a11y/ctkbuttonaccessible.c:321 ctk/a11y/ctkmenuitemaccessible.c:436
+#: ctk/a11y/ctkbuttonaccessible.c:323 ctk/a11y/ctkmenuitemaccessible.c:439
 msgctxt "Action name"
 msgid "Click"
 msgstr "Napsauta"
 
-#: ctk/a11y/ctkbuttonaccessible.c:330
+#: ctk/a11y/ctkbuttonaccessible.c:332
 msgctxt "Action description"
 msgid "Clicks the button"
 msgstr "Napsauttaa painiketta"
@@ -593,7 +588,7 @@ msgid "Edit"
 msgstr "Muokkaa"
 
 #: ctk/a11y/ctkcellaccessible.c:261 ctk/a11y/ctkcolorswatchaccessible.c:149
-#: ctk/a11y/ctkentryaccessible.c:1557 ctk/a11y/ctkexpanderaccessible.c:281
+#: ctk/a11y/ctkentryaccessible.c:1560 ctk/a11y/ctkexpanderaccessible.c:281
 msgctxt "Action name"
 msgid "Activate"
 msgstr "Aktivoi"
@@ -638,19 +633,18 @@ msgctxt "Action description"
 msgid "Customizes the color"
 msgstr "Mukauttaa värin"
 
-#: ctk/a11y/ctkcomboboxaccessible.c:310
+#: ctk/a11y/ctkcomboboxaccessible.c:313
 msgctxt "Action name"
 msgid "Press"
 msgstr "Paina"
 
-#: ctk/a11y/ctkcomboboxaccessible.c:319
+#: ctk/a11y/ctkcomboboxaccessible.c:322
 #, fuzzy
-#| msgid "Decreases the volume"
 msgctxt "Action description"
 msgid "Presses the combobox"
 msgstr "Pienentää äänenvoimakkuutta"
 
-#: ctk/a11y/ctkentryaccessible.c:1566
+#: ctk/a11y/ctkentryaccessible.c:1569
 msgctxt "Action description"
 msgid "Activates the entry"
 msgstr ""
@@ -663,32 +657,32 @@ msgstr "Aktivoi laajentimen"
 #. FIXME these need accelerators when appropriate, and
 #. * need the mnemonics to be rationalized
 #.
-#: ctk/a11y/ctkimageaccessible.c:53 ctk/ctkstock.c:345
+#: ctk/a11y/ctkimageaccessible.c:53 ctk/ctkstock.c:327
 msgctxt "Stock label"
 msgid "_About"
 msgstr "_Tietoja"
 
-#: ctk/a11y/ctkimageaccessible.c:54 ctk/ctkstock.c:346
+#: ctk/a11y/ctkimageaccessible.c:54 ctk/ctkstock.c:328
 msgctxt "Stock label"
 msgid "_Add"
 msgstr "_Lisää"
 
-#: ctk/a11y/ctkimageaccessible.c:55 ctk/ctkstock.c:348
+#: ctk/a11y/ctkimageaccessible.c:55 ctk/ctkstock.c:330
 msgctxt "Stock label"
 msgid "_Bold"
 msgstr "_Lihavoitu"
 
-#: ctk/a11y/ctkimageaccessible.c:56 ctk/ctkstock.c:350
+#: ctk/a11y/ctkimageaccessible.c:56 ctk/ctkstock.c:332
 msgctxt "Stock label"
 msgid "_CD-ROM"
 msgstr "_CD-rom"
 
-#: ctk/a11y/ctkimageaccessible.c:57 ctk/ctkstock.c:351
+#: ctk/a11y/ctkimageaccessible.c:57 ctk/ctkstock.c:333
 msgctxt "Stock label"
 msgid "_Clear"
 msgstr "_Tyhjennä"
 
-#: ctk/a11y/ctkimageaccessible.c:58 ctk/ctkstock.c:352
+#: ctk/a11y/ctkimageaccessible.c:58 ctk/ctkstock.c:334
 msgctxt "Stock label"
 msgid "_Close"
 msgstr "_Sulje"
@@ -705,364 +699,364 @@ msgstr "Suurenna"
 msgid "Restore"
 msgstr "Palauta"
 
-#: ctk/a11y/ctkimageaccessible.c:62 ctk/ctkstock.c:355
+#: ctk/a11y/ctkimageaccessible.c:62 ctk/ctkstock.c:337
 msgctxt "Stock label"
 msgid "_Copy"
 msgstr "_Kopioi"
 
-#: ctk/a11y/ctkimageaccessible.c:63 ctk/ctkstock.c:356
+#: ctk/a11y/ctkimageaccessible.c:63 ctk/ctkstock.c:338
 msgctxt "Stock label"
 msgid "Cu_t"
 msgstr "_Leikkaa"
 
-#: ctk/a11y/ctkimageaccessible.c:64 ctk/ctkstock.c:357
+#: ctk/a11y/ctkimageaccessible.c:64 ctk/ctkstock.c:339
 msgctxt "Stock label"
 msgid "_Delete"
 msgstr "_Poista"
 
-#: ctk/a11y/ctkimageaccessible.c:65 ctk/ctkstock.c:339
+#: ctk/a11y/ctkimageaccessible.c:65 ctk/ctkstock.c:321
 msgctxt "Stock label"
 msgid "Error"
 msgstr "Virhe"
 
 #. KEEP IN SYNC with ctkiconfactory.c stock icons, when appropriate
-#: ctk/a11y/ctkimageaccessible.c:66 ctk/ctkstock.c:337
+#: ctk/a11y/ctkimageaccessible.c:66 ctk/ctkstock.c:319
 msgctxt "Stock label"
 msgid "Information"
 msgstr "Tietoja"
 
-#: ctk/a11y/ctkimageaccessible.c:67 ctk/ctkstock.c:340
+#: ctk/a11y/ctkimageaccessible.c:67 ctk/ctkstock.c:322
 msgctxt "Stock label"
 msgid "Question"
 msgstr "Kysymys"
 
-#: ctk/a11y/ctkimageaccessible.c:68 ctk/ctkstock.c:338
+#: ctk/a11y/ctkimageaccessible.c:68 ctk/ctkstock.c:320
 msgctxt "Stock label"
 msgid "Warning"
 msgstr "Varoitus"
 
-#: ctk/a11y/ctkimageaccessible.c:69 ctk/ctkstock.c:360
+#: ctk/a11y/ctkimageaccessible.c:69 ctk/ctkstock.c:342
 msgctxt "Stock label"
 msgid "_Execute"
 msgstr "_Suorita"
 
-#: ctk/a11y/ctkimageaccessible.c:70 ctk/ctkstock.c:362
+#: ctk/a11y/ctkimageaccessible.c:70 ctk/ctkstock.c:344
 msgctxt "Stock label"
 msgid "_File"
 msgstr "_Tiedosto"
 
-#: ctk/a11y/ctkimageaccessible.c:71 ctk/ctkstock.c:363
+#: ctk/a11y/ctkimageaccessible.c:71 ctk/ctkstock.c:345
 msgctxt "Stock label"
 msgid "_Find"
 msgstr "_Etsi"
 
-#: ctk/a11y/ctkimageaccessible.c:72 ctk/ctkstock.c:364
+#: ctk/a11y/ctkimageaccessible.c:72 ctk/ctkstock.c:346
 msgctxt "Stock label"
 msgid "Find and _Replace"
 msgstr "Etsi ja _korvaa"
 
-#: ctk/a11y/ctkimageaccessible.c:73 ctk/ctkstock.c:365
+#: ctk/a11y/ctkimageaccessible.c:73 ctk/ctkstock.c:347
 msgctxt "Stock label"
 msgid "_Floppy"
 msgstr "_Levyke"
 
-#: ctk/a11y/ctkimageaccessible.c:74 ctk/ctkstock.c:366
+#: ctk/a11y/ctkimageaccessible.c:74 ctk/ctkstock.c:348
 msgctxt "Stock label"
 msgid "_Fullscreen"
 msgstr "_Koko näyttö"
 
 #. This is a navigation label as in "go to the bottom of the page"
-#: ctk/a11y/ctkimageaccessible.c:75 ctk/ctkstock.c:369
+#: ctk/a11y/ctkimageaccessible.c:75 ctk/ctkstock.c:351
 msgctxt "Stock label, navigation"
 msgid "_Bottom"
 msgstr "_Alin"
 
 #. This is a navigation label as in "go to the first page"
-#: ctk/a11y/ctkimageaccessible.c:76 ctk/ctkstock.c:371
+#: ctk/a11y/ctkimageaccessible.c:76 ctk/ctkstock.c:353
 msgctxt "Stock label, navigation"
 msgid "_First"
 msgstr "_Ensimmäinen"
 
 #. This is a navigation label as in "go to the last page"
-#: ctk/a11y/ctkimageaccessible.c:77 ctk/ctkstock.c:373
+#: ctk/a11y/ctkimageaccessible.c:77 ctk/ctkstock.c:355
 msgctxt "Stock label, navigation"
 msgid "_Last"
 msgstr "_Viimeinen"
 
 #. This is a navigation label as in "go to the top of the page"
-#: ctk/a11y/ctkimageaccessible.c:78 ctk/ctkstock.c:375
+#: ctk/a11y/ctkimageaccessible.c:78 ctk/ctkstock.c:357
 msgctxt "Stock label, navigation"
 msgid "_Top"
 msgstr "_Ylin"
 
 #. This is a navigation label as in "go back"
-#: ctk/a11y/ctkimageaccessible.c:79 ctk/ctkstock.c:377
+#: ctk/a11y/ctkimageaccessible.c:79 ctk/ctkstock.c:359
 msgctxt "Stock label, navigation"
 msgid "_Back"
 msgstr "_Takaisin"
 
 #. This is a navigation label as in "go down"
-#: ctk/a11y/ctkimageaccessible.c:80 ctk/ctkstock.c:379
+#: ctk/a11y/ctkimageaccessible.c:80 ctk/ctkstock.c:361
 msgctxt "Stock label, navigation"
 msgid "_Down"
 msgstr "_Alas"
 
 #. This is a navigation label as in "go forward"
-#: ctk/a11y/ctkimageaccessible.c:81 ctk/ctkstock.c:381
+#: ctk/a11y/ctkimageaccessible.c:81 ctk/ctkstock.c:363
 msgctxt "Stock label, navigation"
 msgid "_Forward"
 msgstr "_Eteenpäin"
 
 #. This is a navigation label as in "go up"
-#: ctk/a11y/ctkimageaccessible.c:82 ctk/ctkstock.c:383
+#: ctk/a11y/ctkimageaccessible.c:82 ctk/ctkstock.c:365
 msgctxt "Stock label, navigation"
 msgid "_Up"
 msgstr "_Ylös"
 
-#: ctk/a11y/ctkimageaccessible.c:83 ctk/ctkstock.c:384
+#: ctk/a11y/ctkimageaccessible.c:83 ctk/ctkstock.c:366
 msgctxt "Stock label"
 msgid "_Hard Disk"
 msgstr "_Kiintolevy"
 
-#: ctk/a11y/ctkimageaccessible.c:84 ctk/ctkstock.c:385
+#: ctk/a11y/ctkimageaccessible.c:84 ctk/ctkstock.c:367
 msgctxt "Stock label"
 msgid "_Help"
 msgstr "O_hje"
 
-#: ctk/a11y/ctkimageaccessible.c:85 ctk/ctkstock.c:386
+#: ctk/a11y/ctkimageaccessible.c:85 ctk/ctkstock.c:368
 msgctxt "Stock label"
 msgid "_Home"
 msgstr "_Koti"
 
-#: ctk/a11y/ctkimageaccessible.c:86 ctk/ctkstock.c:387
+#: ctk/a11y/ctkimageaccessible.c:86 ctk/ctkstock.c:369
 msgctxt "Stock label"
 msgid "Increase Indent"
 msgstr "Kasvata sisennystä"
 
-#: ctk/a11y/ctkimageaccessible.c:87 ctk/ctkstock.c:391
+#: ctk/a11y/ctkimageaccessible.c:87 ctk/ctkstock.c:373
 msgctxt "Stock label"
 msgid "_Italic"
 msgstr "_Kursiivi"
 
-#: ctk/a11y/ctkimageaccessible.c:88 ctk/ctkstock.c:392
+#: ctk/a11y/ctkimageaccessible.c:88 ctk/ctkstock.c:374
 msgctxt "Stock label"
 msgid "_Jump to"
 msgstr "_Siirry kohtaan"
 
 #. This is about text justification, "centered text"
-#: ctk/a11y/ctkimageaccessible.c:89 ctk/ctkstock.c:394
+#: ctk/a11y/ctkimageaccessible.c:89 ctk/ctkstock.c:376
 msgctxt "Stock label"
 msgid "_Center"
 msgstr "_Keskitä"
 
 #. This is about text justification
-#: ctk/a11y/ctkimageaccessible.c:90 ctk/ctkstock.c:396
+#: ctk/a11y/ctkimageaccessible.c:90 ctk/ctkstock.c:378
 msgctxt "Stock label"
 msgid "_Fill"
 msgstr "_Täytä"
 
 #. This is about text justification, "left-justified text"
-#: ctk/a11y/ctkimageaccessible.c:91 ctk/ctkstock.c:398
+#: ctk/a11y/ctkimageaccessible.c:91 ctk/ctkstock.c:380
 msgctxt "Stock label"
 msgid "_Left"
 msgstr "_Vasen"
 
 #. This is about text justification, "right-justified text"
-#: ctk/a11y/ctkimageaccessible.c:92 ctk/ctkstock.c:400
+#: ctk/a11y/ctkimageaccessible.c:92 ctk/ctkstock.c:382
 msgctxt "Stock label"
 msgid "_Right"
 msgstr "_Oikea"
 
-#: ctk/a11y/ctkimageaccessible.c:93 ctk/ctkstock.c:367
+#: ctk/a11y/ctkimageaccessible.c:93 ctk/ctkstock.c:349
 msgctxt "Stock label"
 msgid "_Leave Fullscreen"
 msgstr "Poistu _koko näytön tilasta"
 
 #. Media label, as in "fast forward"
-#: ctk/a11y/ctkimageaccessible.c:94 ctk/ctkstock.c:403
+#: ctk/a11y/ctkimageaccessible.c:94 ctk/ctkstock.c:385
 msgctxt "Stock label, media"
 msgid "_Forward"
 msgstr "E_teenpäin"
 
 #. Media label, as in "next song"
-#: ctk/a11y/ctkimageaccessible.c:95 ctk/ctkstock.c:405
+#: ctk/a11y/ctkimageaccessible.c:95 ctk/ctkstock.c:387
 msgctxt "Stock label, media"
 msgid "_Next"
 msgstr "_Seuraava"
 
 #. Media label, as in "pause music"
-#: ctk/a11y/ctkimageaccessible.c:96 ctk/ctkstock.c:407
+#: ctk/a11y/ctkimageaccessible.c:96 ctk/ctkstock.c:389
 msgctxt "Stock label, media"
 msgid "P_ause"
 msgstr "_Keskeytä"
 
 #. Media label, as in "play music"
-#: ctk/a11y/ctkimageaccessible.c:97 ctk/ctkstock.c:409
+#: ctk/a11y/ctkimageaccessible.c:97 ctk/ctkstock.c:391
 msgctxt "Stock label, media"
 msgid "_Play"
 msgstr "_Toista"
 
 #. Media label, as in  "previous song"
-#: ctk/a11y/ctkimageaccessible.c:98 ctk/ctkstock.c:411
+#: ctk/a11y/ctkimageaccessible.c:98 ctk/ctkstock.c:393
 msgctxt "Stock label, media"
 msgid "Pre_vious"
 msgstr "E_dellinen"
 
 #. Media label
-#: ctk/a11y/ctkimageaccessible.c:99 ctk/ctkstock.c:413
+#: ctk/a11y/ctkimageaccessible.c:99 ctk/ctkstock.c:395
 msgctxt "Stock label, media"
 msgid "_Record"
 msgstr "_Tallenna"
 
 #. Media label
-#: ctk/a11y/ctkimageaccessible.c:100 ctk/ctkstock.c:415
+#: ctk/a11y/ctkimageaccessible.c:100 ctk/ctkstock.c:397
 msgctxt "Stock label, media"
 msgid "R_ewind"
 msgstr "_Kelaa takaisin"
 
 #. Media label
-#: ctk/a11y/ctkimageaccessible.c:101 ctk/ctkstock.c:417
+#: ctk/a11y/ctkimageaccessible.c:101 ctk/ctkstock.c:399
 msgctxt "Stock label, media"
 msgid "_Stop"
 msgstr "_Pysäytä"
 
-#: ctk/a11y/ctkimageaccessible.c:102 ctk/ctkstock.c:418
+#: ctk/a11y/ctkimageaccessible.c:102 ctk/ctkstock.c:400
 msgctxt "Stock label"
 msgid "_Network"
 msgstr "_Verkko"
 
-#: ctk/a11y/ctkimageaccessible.c:103 ctk/ctkstock.c:419
+#: ctk/a11y/ctkimageaccessible.c:103 ctk/ctkstock.c:401
 msgctxt "Stock label"
 msgid "_New"
 msgstr "_Uusi"
 
-#: ctk/a11y/ctkimageaccessible.c:104 ctk/ctkstock.c:422
+#: ctk/a11y/ctkimageaccessible.c:104 ctk/ctkstock.c:404
 msgctxt "Stock label"
 msgid "_Open"
 msgstr "_Avaa"
 
-#: ctk/a11y/ctkimageaccessible.c:105 ctk/ctkstock.c:432
+#: ctk/a11y/ctkimageaccessible.c:105 ctk/ctkstock.c:414
 msgctxt "Stock label"
 msgid "_Paste"
 msgstr "L_iitä"
 
-#: ctk/a11y/ctkimageaccessible.c:106 ctk/ctkstock.c:434
+#: ctk/a11y/ctkimageaccessible.c:106 ctk/ctkstock.c:416
 msgctxt "Stock label"
 msgid "_Print"
 msgstr "Tul_osta"
 
-#: ctk/a11y/ctkimageaccessible.c:107 ctk/ctkstock.c:435
+#: ctk/a11y/ctkimageaccessible.c:107 ctk/ctkstock.c:417
 msgctxt "Stock label"
 msgid "Print Pre_view"
 msgstr "Tulostuksen _esikatselu"
 
-#: ctk/a11y/ctkimageaccessible.c:108 ctk/ctkstock.c:436
+#: ctk/a11y/ctkimageaccessible.c:108 ctk/ctkstock.c:418
 msgctxt "Stock label"
 msgid "_Properties"
 msgstr "_Ominaisuudet"
 
-#: ctk/a11y/ctkimageaccessible.c:109 ctk/ctkstock.c:437
+#: ctk/a11y/ctkimageaccessible.c:109 ctk/ctkstock.c:419
 msgctxt "Stock label"
 msgid "_Quit"
 msgstr "_Lopeta"
 
-#: ctk/a11y/ctkimageaccessible.c:110 ctk/ctkstock.c:438
+#: ctk/a11y/ctkimageaccessible.c:110 ctk/ctkstock.c:420
 msgctxt "Stock label"
 msgid "_Redo"
 msgstr "_Tee uudelleen"
 
-#: ctk/a11y/ctkimageaccessible.c:111 ctk/ctkstock.c:439
+#: ctk/a11y/ctkimageaccessible.c:111 ctk/ctkstock.c:421
 msgctxt "Stock label"
 msgid "_Refresh"
 msgstr "_Päivitä"
 
-#: ctk/a11y/ctkimageaccessible.c:112 ctk/ctkstock.c:440
+#: ctk/a11y/ctkimageaccessible.c:112 ctk/ctkstock.c:422
 msgctxt "Stock label"
 msgid "_Remove"
 msgstr "_Poista"
 
-#: ctk/a11y/ctkimageaccessible.c:113 ctk/ctkstock.c:441
+#: ctk/a11y/ctkimageaccessible.c:113 ctk/ctkstock.c:423
 msgctxt "Stock label"
 msgid "_Revert"
 msgstr "_Palauta"
 
-#: ctk/a11y/ctkimageaccessible.c:114 ctk/ctkstock.c:442
+#: ctk/a11y/ctkimageaccessible.c:114 ctk/ctkstock.c:424
 msgctxt "Stock label"
 msgid "_Save"
 msgstr "_Tallenna"
 
-#: ctk/a11y/ctkimageaccessible.c:115 ctk/ctkstock.c:443
+#: ctk/a11y/ctkimageaccessible.c:115 ctk/ctkstock.c:425
 msgctxt "Stock label"
 msgid "Save _As"
 msgstr "Tallenna _nimellä"
 
-#: ctk/a11y/ctkimageaccessible.c:116 ctk/ctkstock.c:444
+#: ctk/a11y/ctkimageaccessible.c:116 ctk/ctkstock.c:426
 msgctxt "Stock label"
 msgid "Select _All"
 msgstr "Valitse k_aikki"
 
 #. Sorting direction
-#: ctk/a11y/ctkimageaccessible.c:117 ctk/ctkstock.c:448
+#: ctk/a11y/ctkimageaccessible.c:117 ctk/ctkstock.c:430
 msgctxt "Stock label"
 msgid "_Ascending"
 msgstr "_Nouseva"
 
 #. Sorting direction
-#: ctk/a11y/ctkimageaccessible.c:118 ctk/ctkstock.c:450
+#: ctk/a11y/ctkimageaccessible.c:118 ctk/ctkstock.c:432
 msgctxt "Stock label"
 msgid "_Descending"
 msgstr "_Laskeva"
 
-#: ctk/a11y/ctkimageaccessible.c:119 ctk/ctkstock.c:451
+#: ctk/a11y/ctkimageaccessible.c:119 ctk/ctkstock.c:433
 msgctxt "Stock label"
 msgid "_Spell Check"
 msgstr "_Oikoluku"
 
-#: ctk/a11y/ctkimageaccessible.c:120 ctk/ctkstock.c:452
+#: ctk/a11y/ctkimageaccessible.c:120 ctk/ctkstock.c:434
 msgctxt "Stock label"
 msgid "_Stop"
 msgstr "_Pysäytä"
 
 #. Font variant
-#: ctk/a11y/ctkimageaccessible.c:121 ctk/ctkstock.c:454
+#: ctk/a11y/ctkimageaccessible.c:121 ctk/ctkstock.c:436
 msgctxt "Stock label"
 msgid "_Strikethrough"
 msgstr "_Yliviivaus"
 
 #. Font variant
-#: ctk/a11y/ctkimageaccessible.c:122 ctk/ctkstock.c:457
+#: ctk/a11y/ctkimageaccessible.c:122 ctk/ctkstock.c:439
 msgctxt "Stock label"
 msgid "_Underline"
 msgstr "_Alleviivaus"
 
-#: ctk/a11y/ctkimageaccessible.c:123 ctk/ctkstock.c:458
+#: ctk/a11y/ctkimageaccessible.c:123 ctk/ctkstock.c:440
 msgctxt "Stock label"
 msgid "_Undo"
 msgstr "K_umoa"
 
-#: ctk/a11y/ctkimageaccessible.c:124 ctk/ctkstock.c:388
+#: ctk/a11y/ctkimageaccessible.c:124 ctk/ctkstock.c:370
 msgctxt "Stock label"
 msgid "Decrease Indent"
 msgstr "Pienennä sisennystä"
 
 #. Zoom
-#: ctk/a11y/ctkimageaccessible.c:125 ctk/ctkstock.c:461
+#: ctk/a11y/ctkimageaccessible.c:125 ctk/ctkstock.c:443
 msgctxt "Stock label"
 msgid "_Normal Size"
 msgstr "_Tavallinen koko"
 
 #. Zoom
-#: ctk/a11y/ctkimageaccessible.c:126 ctk/ctkstock.c:463
+#: ctk/a11y/ctkimageaccessible.c:126 ctk/ctkstock.c:445
 msgctxt "Stock label"
 msgid "Best _Fit"
 msgstr "_Paras sovitus"
 
-#: ctk/a11y/ctkimageaccessible.c:127 ctk/ctkstock.c:464
+#: ctk/a11y/ctkimageaccessible.c:127 ctk/ctkstock.c:446
 msgctxt "Stock label"
 msgid "Zoom _In"
 msgstr "_Lähennä"
 
-#: ctk/a11y/ctkimageaccessible.c:128 ctk/ctkstock.c:465
+#: ctk/a11y/ctkimageaccessible.c:128 ctk/ctkstock.c:447
 msgctxt "Stock label"
 msgid "Zoom _Out"
 msgstr "L_oitonna"
@@ -1071,7 +1065,7 @@ msgstr "L_oitonna"
 msgid "Menu"
 msgstr "Valikko"
 
-#: ctk/a11y/ctkmenuitemaccessible.c:445
+#: ctk/a11y/ctkmenuitemaccessible.c:448
 msgctxt "Action description"
 msgid "Clicks the menuitem"
 msgstr "Napsauttaa valikkokohdetta"
@@ -1248,7 +1242,7 @@ msgstr ""
 #: ctk/ctkfilechooserwidget.c:1498 ctk/ctkfilechooserwidget.c:6572
 #: ctk/ctkmessagedialog.c:952 ctk/ctkmessagedialog.c:965
 #: ctk/ctkmountoperation.c:594 ctk/ctkpagesetupunixdialog.c:197
-#: ctk/ctkprintbackend.c:779 ctk/ctkprinteroptionwidget.c:545
+#: ctk/ctkprintbackend.c:781 ctk/ctkprinteroptionwidget.c:545
 #: ctk/ctkprintunixdialog.c:674 ctk/ctkprintunixdialog.c:747
 #: ctk/ctkwindow.c:12789 ctk/inspector/css-editor.c:201
 #: ctk/ui/ctkappchooserdialog.ui:61 ctk/ui/ctkassistant.ui:125
@@ -1299,7 +1293,7 @@ msgid "_Apply"
 msgstr "_Toteuta"
 
 #: ctk/deprecated/ctkfontsel.c:1698 ctk/ctkmessagedialog.c:944
-#: ctk/ctkmessagedialog.c:966 ctk/ctkprintbackend.c:780 ctk/ctkwindow.c:12790
+#: ctk/ctkmessagedialog.c:966 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12790
 msgid "_OK"
 msgstr "_OK"
 
@@ -1310,156 +1304,32 @@ msgstr "Fontin valinta"
 #. Translators: the format here is used to build the string that will be rendered
 #. * in the number emblem.
 #.
-#: ctk/deprecated/ctknumerableicon.c:473
+#: ctk/deprecated/ctknumerableicon.c:474
 #, c-format
 msgctxt "Number format"
 msgid "%d"
 msgstr "%d"
 
-#: ctk/ctkstock.c:347
-msgctxt "Stock label"
-msgid "_Apply"
-msgstr "_Toteuta"
-
-#: ctk/ctkstock.c:349
-msgctxt "Stock label"
-msgid "_Cancel"
-msgstr "Per_u"
-
-#: ctk/ctkstock.c:353
-msgctxt "Stock label"
-msgid "C_onnect"
-msgstr "_Yhdistä"
-
-#: ctk/ctkstock.c:354
-msgctxt "Stock label"
-msgid "_Convert"
-msgstr "_Muunna"
-
-#: ctk/ctkstock.c:358
-msgctxt "Stock label"
-msgid "_Discard"
-msgstr "_Hylkää"
-
-#: ctk/ctkstock.c:359
-msgctxt "Stock label"
-msgid "_Disconnect"
-msgstr "_Katkaise yhteys"
-
-#: ctk/ctkstock.c:361
-msgctxt "Stock label"
-msgid "_Edit"
-msgstr "_Muokkaa"
-
-#: ctk/ctkstock.c:389
-msgctxt "Stock label"
-msgid "_Index"
-msgstr "_Indeksi"
-
-#: ctk/ctkstock.c:390
-msgctxt "Stock label"
-msgid "_Information"
-msgstr "T_ietoja"
-
-#: ctk/ctkstock.c:420
-msgctxt "Stock label"
-msgid "_No"
-msgstr "_Ei"
-
-#: ctk/ctkstock.c:421
-msgctxt "Stock label"
-msgid "_OK"
-msgstr "_OK"
-
-#. Page orientation
-#: ctk/ctkstock.c:424
-msgctxt "Stock label"
-msgid "Landscape"
-msgstr "Vaaka"
-
-#. Page orientation
-#: ctk/ctkstock.c:426
-msgctxt "Stock label"
-msgid "Portrait"
-msgstr "Pysty"
-
-#. Page orientation
-#: ctk/ctkstock.c:428
-msgctxt "Stock label"
-msgid "Reverse landscape"
-msgstr "Käänteinen vaaka"
-
-#. Page orientation
-#: ctk/ctkstock.c:430
-msgctxt "Stock label"
-msgid "Reverse portrait"
-msgstr "Käänteinen pysty"
-
-# , c-format
-#: ctk/ctkstock.c:431
-msgctxt "Stock label"
-msgid "Page Set_up"
-msgstr "Sivun _asetukset"
-
-#: ctk/ctkstock.c:433
-msgctxt "Stock label"
-msgid "_Preferences"
-msgstr "_Asetukset"
-
-#: ctk/ctkstock.c:445
-msgctxt "Stock label"
-msgid "_Color"
-msgstr "_Väri"
-
-#: ctk/ctkstock.c:446
-msgctxt "Stock label"
-msgid "_Font"
-msgstr "_Fontti"
-
-#: ctk/ctkstock.c:455
-msgctxt "Stock label"
-msgid "_Undelete"
-msgstr "Per_u poisto"
-
-#: ctk/ctkstock.c:459
-msgctxt "Stock label"
-msgid "_Yes"
-msgstr "_Kyllä"
-
-#: ctk/ctkuimanager.c:1782
-#, c-format
-msgid "Unexpected start tag '%s' on line %d char %d"
-msgstr "Odottamaton aloitustunniste ”%s” rivillä %d merkin %d kohdalla"
-
-#: ctk/ctkuimanager.c:1872
-#, c-format
-msgid "Unexpected character data on line %d char %d"
-msgstr "Odottamatonta merkkidataa rivillä %d merkin %d kohdalla"
-
-#: ctk/ctkuimanager.c:2709
-msgid "Empty"
-msgstr "Tyhjä"
-
 #: ctk/encodesymbolic.c:38
 msgid "Output to this directory instead of cwd"
 msgstr ""
 
-#: ctk/encodesymbolic.c:266
+#: ctk/encodesymbolic.c:268
 #, c-format
 msgid "Invalid size %s\n"
 msgstr "Virheellinen koko %s\n"
 
-#: ctk/encodesymbolic.c:279 ctk/ctk-builder-tool.c:671
+#: ctk/encodesymbolic.c:281 ctk/ctk-builder-tool.c:674
 #, c-format
 msgid "Can't load file: %s\n"
 msgstr "Tiedostoa ei voi ladata: %s\n"
 
-#: ctk/encodesymbolic.c:307 ctk/encodesymbolic.c:313
+#: ctk/encodesymbolic.c:309 ctk/encodesymbolic.c:315
 #, c-format
 msgid "Can't save file %s: %s\n"
 msgstr "Tiedostoa ”%s” ei voitu tallentaa: %s\n"
 
-#: ctk/encodesymbolic.c:319
+#: ctk/encodesymbolic.c:321
 #, c-format
 msgid "Can't close stream"
 msgstr ""
@@ -1521,7 +1391,6 @@ msgid "GNU Affero General Public License, version 3 or later"
 msgstr "GNU Affero General Public -lisenssi, versio 3 tai myöhempi"
 
 #: ctk/ctkaboutdialog.c:128
-#| msgid "GNU General Public License, version 3 only"
 msgid "GNU Affero General Public License, version 3 only"
 msgstr "GNU Affero General Public -lisenssi, vain versio 3"
 
@@ -1534,7 +1403,6 @@ msgid "Apache License, Version 2.0"
 msgstr "Apache-lisenssi, versio 2.0"
 
 #: ctk/ctkaboutdialog.c:131
-#| msgid "Artistic License 2.0"
 msgid "Mozilla Public License 2.0"
 msgstr "Mozilla Public License 2.0"
 
@@ -1730,7 +1598,7 @@ msgid "Other Applications"
 msgstr "Muut sovellukset"
 
 #: ctk/ctkapplicationwindow.c:345 ctk/ctkprintoperation-unix.c:485
-#: ctk/ctkprintoperation-win32.c:1521 ctk/inspector/prop-editor.c:1686
+#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1690
 msgid "Application"
 msgstr "Sovellus"
 
@@ -1751,25 +1619,21 @@ msgstr "Alkio <%s> ei ole sallittu kohteen <%s> sisällä"
 
 #: ctk/ctkbuilder-menus.c:228
 #, fuzzy, c-format
-#| msgid "Element <%s> is not allowed below <%s>"
 msgid "Element <%s> not allowed at toplevel"
 msgstr "Alkio <%s> ei ole sallittu kohdan <%s> alla"
 
 #: ctk/ctkbuilder-menus.c:317
 #, fuzzy, c-format
-#| msgid "text may not appear inside <%s>"
 msgid "Text may not appear inside <%s>"
 msgstr "kohteen <%s> sisällä ei voi ilmetä tekstiä"
 
 #: ctk/ctk-builder-tool.c:124
 #, fuzzy, c-format
-#| msgid "Invalid property: %s.%s on line %d"
 msgid "Packing property %s::%s not found\n"
 msgstr "Virheellinen ominaisuus: %s.%s rivillä %d"
 
 #: ctk/ctk-builder-tool.c:126
 #, fuzzy, c-format
-#| msgid "Invalid property: %s.%s on line %d"
 msgid "Cell property %s::%s not found\n"
 msgstr "Virheellinen ominaisuus: %s.%s rivillä %d"
 
@@ -1780,16 +1644,15 @@ msgstr "Ominaisuutta %s::%s ei löytynyt\n"
 
 #: ctk/ctk-builder-tool.c:136
 #, fuzzy, c-format
-#| msgid "Could not rename %s to %s: %s\n"
 msgid "Couldn't parse value for %s::%s: %s\n"
 msgstr "Tiedoston %s uudelleennimeäminen nimelle %s epäonnistui: %s\n"
 
-#: ctk/ctk-builder-tool.c:692
+#: ctk/ctk-builder-tool.c:695
 #, c-format
 msgid "Can't parse file: %s\n"
 msgstr "Tiedoston jäsentäminen ei onnistu: %s\n"
 
-#: ctk/ctk-builder-tool.c:1058
+#: ctk/ctk-builder-tool.c:1062
 #, c-format
 msgid ""
 "Usage:\n"
@@ -1940,204 +1803,286 @@ msgid "Color: %s"
 msgstr "Väri: %s"
 
 #: ctk/ctkcolorchooserwidget.c:446
+#, fuzzy
 msgctxt "Color name"
-msgid "Light Scarlet Red"
-msgstr "Vaalea tulipunainen"
+msgid "Very Light Blue"
+msgstr "Erittän vaalea harmaa"
 
 #: ctk/ctkcolorchooserwidget.c:447
+#, fuzzy
 msgctxt "Color name"
-msgid "Scarlet Red"
-msgstr "Tulipunainen"
+msgid "Light Blue"
+msgstr "Vaalea taivaansininen"
 
 #: ctk/ctkcolorchooserwidget.c:448
+#, fuzzy
 msgctxt "Color name"
-msgid "Dark Scarlet Red"
-msgstr "Tumma tulipunainen"
+msgid "Blue"
+msgstr "S_ininen:"
 
 #: ctk/ctkcolorchooserwidget.c:449
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Blue"
+msgstr "Tumma taivaansininen"
+
+#: ctk/ctkcolorchooserwidget.c:450
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Dark Blue"
+msgstr "Erittäin tumma harmaa"
+
+#: ctk/ctkcolorchooserwidget.c:451
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Light Green"
+msgstr "Erittän vaalea harmaa"
+
+#: ctk/ctkcolorchooserwidget.c:452
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Green"
+msgstr "Vaaleanharmaa"
+
+#: ctk/ctkcolorchooserwidget.c:453
+#, fuzzy
+msgctxt "Color name"
+msgid "Green"
+msgstr "_Vihreä:"
+
+#: ctk/ctkcolorchooserwidget.c:454
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Green"
+msgstr "Tummanharmaa"
+
+#: ctk/ctkcolorchooserwidget.c:455
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Dark Green"
+msgstr "Erittäin tumma harmaa"
+
+#: ctk/ctkcolorchooserwidget.c:456
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Light Yellow"
+msgstr "Erittän vaalea harmaa"
+
+#: ctk/ctkcolorchooserwidget.c:457
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Yellow"
+msgstr "Vaalea kameleontti"
+
+#: ctk/ctkcolorchooserwidget.c:458
+msgctxt "Color name"
+msgid "Yellow"
+msgstr ""
+
+#: ctk/ctkcolorchooserwidget.c:459
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Yellow"
+msgstr "Tumma kameleontti"
+
+#: ctk/ctkcolorchooserwidget.c:460
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Dark Yellow"
+msgstr "Erittäin tumma harmaa"
+
+#: ctk/ctkcolorchooserwidget.c:461
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Light Orange"
+msgstr "Vaaleanoranssi"
+
+#: ctk/ctkcolorchooserwidget.c:462
 msgctxt "Color name"
 msgid "Light Orange"
 msgstr "Vaaleanoranssi"
 
-#: ctk/ctkcolorchooserwidget.c:450
+#: ctk/ctkcolorchooserwidget.c:463
 msgctxt "Color name"
 msgid "Orange"
 msgstr "Oranssi"
 
-#: ctk/ctkcolorchooserwidget.c:451
+#: ctk/ctkcolorchooserwidget.c:464
 msgctxt "Color name"
 msgid "Dark Orange"
 msgstr "Tummanoranssi"
 
-#: ctk/ctkcolorchooserwidget.c:452
-msgctxt "Color name"
-msgid "Light Butter"
-msgstr "Vaalea voi"
-
-#: ctk/ctkcolorchooserwidget.c:453
-msgctxt "Color name"
-msgid "Butter"
-msgstr "Voi"
-
-#: ctk/ctkcolorchooserwidget.c:454
-msgctxt "Color name"
-msgid "Dark Butter"
-msgstr "Tumma voi"
-
-#: ctk/ctkcolorchooserwidget.c:455
-msgctxt "Color name"
-msgid "Light Chameleon"
-msgstr "Vaalea kameleontti"
-
-#: ctk/ctkcolorchooserwidget.c:456
-msgctxt "Color name"
-msgid "Chameleon"
-msgstr "Kameleontti"
-
-#: ctk/ctkcolorchooserwidget.c:457
-msgctxt "Color name"
-msgid "Dark Chameleon"
-msgstr "Tumma kameleontti"
-
-#: ctk/ctkcolorchooserwidget.c:458
-msgctxt "Color name"
-msgid "Light Sky Blue"
-msgstr "Vaalea taivaansininen"
-
-#: ctk/ctkcolorchooserwidget.c:459
-msgctxt "Color name"
-msgid "Sky Blue"
-msgstr "Taivaansininen"
-
-#: ctk/ctkcolorchooserwidget.c:460
-msgctxt "Color name"
-msgid "Dark Sky Blue"
-msgstr "Tumma taivaansininen"
-
-#: ctk/ctkcolorchooserwidget.c:461
-msgctxt "Color name"
-msgid "Light Plum"
-msgstr "Vaalea luumu"
-
-#: ctk/ctkcolorchooserwidget.c:462
-msgctxt "Color name"
-msgid "Plum"
-msgstr "Luumu"
-
-#: ctk/ctkcolorchooserwidget.c:463
-msgctxt "Color name"
-msgid "Dark Plum"
-msgstr "Tumma luumu"
-
-#: ctk/ctkcolorchooserwidget.c:464
-msgctxt "Color name"
-msgid "Light Chocolate"
-msgstr "Valkosuklaa"
-
 #: ctk/ctkcolorchooserwidget.c:465
+#, fuzzy
 msgctxt "Color name"
-msgid "Chocolate"
-msgstr "Suklaa"
+msgid "Very Dark Orange"
+msgstr "Tummanoranssi"
 
 #: ctk/ctkcolorchooserwidget.c:466
+#, fuzzy
 msgctxt "Color name"
-msgid "Dark Chocolate"
-msgstr "Tumma suklaa"
-
-#: ctk/ctkcolorchooserwidget.c:467
-msgctxt "Color name"
-msgid "Light Aluminum 1"
-msgstr "Vaalea alumiini 1"
-
-#: ctk/ctkcolorchooserwidget.c:468
-msgctxt "Color name"
-msgid "Aluminum 1"
-msgstr "Alumiini 1"
-
-#: ctk/ctkcolorchooserwidget.c:469
-msgctxt "Color name"
-msgid "Dark Aluminum 1"
-msgstr "Tumma alumiini 1"
-
-#: ctk/ctkcolorchooserwidget.c:470
-msgctxt "Color name"
-msgid "Light Aluminum 2"
-msgstr "Vaalea alumiini 2"
-
-#: ctk/ctkcolorchooserwidget.c:471
-msgctxt "Color name"
-msgid "Aluminum 2"
-msgstr "Alumiini 2"
-
-#: ctk/ctkcolorchooserwidget.c:472
-msgctxt "Color name"
-msgid "Dark Aluminum 2"
-msgstr "Tumma alumiini 2"
-
-#: ctk/ctkcolorchooserwidget.c:486
-msgctxt "Color name"
-msgid "Black"
-msgstr "Musta"
-
-#: ctk/ctkcolorchooserwidget.c:487
-msgctxt "Color name"
-msgid "Very Dark Gray"
-msgstr "Erittäin tumma harmaa"
-
-#: ctk/ctkcolorchooserwidget.c:488
-msgctxt "Color name"
-msgid "Darker Gray"
-msgstr "Tummempi harmaa"
-
-#: ctk/ctkcolorchooserwidget.c:489
-msgctxt "Color name"
-msgid "Dark Gray"
-msgstr "Tummanharmaa"
-
-#: ctk/ctkcolorchooserwidget.c:490
-msgctxt "Color name"
-msgid "Medium Gray"
-msgstr "Tavallinen harmaa"
-
-#: ctk/ctkcolorchooserwidget.c:491
-msgctxt "Color name"
-msgid "Light Gray"
-msgstr "Vaaleanharmaa"
-
-#: ctk/ctkcolorchooserwidget.c:492
-msgctxt "Color name"
-msgid "Lighter Gray"
-msgstr "Vaaleampi harmaa"
-
-#: ctk/ctkcolorchooserwidget.c:493
-msgctxt "Color name"
-msgid "Very Light Gray"
+msgid "Very Light Red"
 msgstr "Erittän vaalea harmaa"
 
-#: ctk/ctkcolorchooserwidget.c:494
+#: ctk/ctkcolorchooserwidget.c:467
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Red"
+msgstr "Vaalea tulipunainen"
+
+#: ctk/ctkcolorchooserwidget.c:468
+#, fuzzy
+msgctxt "Color name"
+msgid "Red"
+msgstr "_Punainen:"
+
+#: ctk/ctkcolorchooserwidget.c:469
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Red"
+msgstr "Tumma tulipunainen"
+
+#: ctk/ctkcolorchooserwidget.c:470
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Dark Red"
+msgstr "Erittäin tumma harmaa"
+
+#: ctk/ctkcolorchooserwidget.c:471
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Light Purple"
+msgstr "Erittän vaalea harmaa"
+
+#: ctk/ctkcolorchooserwidget.c:472
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Purple"
+msgstr "Vaalea luumu"
+
+#: ctk/ctkcolorchooserwidget.c:473
+msgctxt "Color name"
+msgid "Purple"
+msgstr ""
+
+#: ctk/ctkcolorchooserwidget.c:474
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Purple"
+msgstr "Tumma luumu"
+
+#: ctk/ctkcolorchooserwidget.c:475
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Dark Purple"
+msgstr "Erittäin tumma harmaa"
+
+#: ctk/ctkcolorchooserwidget.c:476
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Light Brown"
+msgstr "Erittän vaalea harmaa"
+
+#: ctk/ctkcolorchooserwidget.c:477
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Brown"
+msgstr "Oikea"
+
+#: ctk/ctkcolorchooserwidget.c:478
+msgctxt "Color name"
+msgid "Brown"
+msgstr ""
+
+#: ctk/ctkcolorchooserwidget.c:479
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Brown"
+msgstr "Tumma voi"
+
+#: ctk/ctkcolorchooserwidget.c:480
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Dark Brown"
+msgstr "Erittäin tumma harmaa"
+
+#: ctk/ctkcolorchooserwidget.c:481
 msgctxt "Color name"
 msgid "White"
 msgstr "Valkoinen"
 
+#: ctk/ctkcolorchooserwidget.c:482
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Gray 1"
+msgstr "Vaaleanharmaa"
+
+#: ctk/ctkcolorchooserwidget.c:483
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Gray 2"
+msgstr "Vaaleanharmaa"
+
+#: ctk/ctkcolorchooserwidget.c:484
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Gray 3"
+msgstr "Vaaleanharmaa"
+
+#: ctk/ctkcolorchooserwidget.c:485
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Gray 4"
+msgstr "Vaaleanharmaa"
+
+#: ctk/ctkcolorchooserwidget.c:486
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Gray 1"
+msgstr "Tummanharmaa"
+
+#: ctk/ctkcolorchooserwidget.c:487
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Gray 2"
+msgstr "Tummanharmaa"
+
+#: ctk/ctkcolorchooserwidget.c:488
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Gray 3"
+msgstr "Tummanharmaa"
+
+#: ctk/ctkcolorchooserwidget.c:489
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Gray 4"
+msgstr "Tummanharmaa"
+
+#: ctk/ctkcolorchooserwidget.c:490
+msgctxt "Color name"
+msgid "Black"
+msgstr "Musta"
+
 #. translators: label for the custom section in the color chooser
-#: ctk/ctkcolorchooserwidget.c:543
+#: ctk/ctkcolorchooserwidget.c:534
 msgid "Custom"
 msgstr "Mukautettu"
 
-#: ctk/ctkcolorchooserwidget.c:550
+#: ctk/ctkcolorchooserwidget.c:541
 msgid "Custom color"
 msgstr "Mukautettu väri"
 
-#: ctk/ctkcolorchooserwidget.c:551
+#: ctk/ctkcolorchooserwidget.c:542
 msgid "Create a custom color"
 msgstr "Luo mukautettu väri"
 
-#: ctk/ctkcolorchooserwidget.c:570
+#: ctk/ctkcolorchooserwidget.c:561
 #, c-format
 msgid "Custom color %d: %s"
 msgstr "Mukautettu väri %d: %s"
 
-#: ctk/ctkcolorplane.c:409
+#: ctk/ctkcolorplane.c:411
 msgid "Color Plane"
 msgstr "Väriasteikko"
 
@@ -2291,7 +2236,7 @@ msgstr "_Nimi"
 #. Open item is always present
 #: ctk/ctkfilechoosernative.c:546 ctk/ctkfilechoosernative.c:631
 #: ctk/ctkplacessidebar.c:3625 ctk/ctkplacessidebar.c:3693
-#: ctk/ctkplacesview.c:1696
+#: ctk/ctkplacesview.c:1708
 msgid "_Open"
 msgstr "_Avaa"
 
@@ -2558,8 +2503,6 @@ msgstr "Ohjelma"
 
 #: ctk/ctkfilechooserwidget.c:5010
 #, fuzzy
-#| msgctxt "keyboard label"
-#| msgid "AudioMute"
 msgid "Audio"
 msgstr "AudioMute"
 
@@ -2611,7 +2554,7 @@ msgstr "Laskentataulukko"
 #. Translators: We don't know whether this printer is
 #. * available to print to.
 #: ctk/ctkfilechooserwidget.c:5054 ctk/ctkfilechooserwidget.c:5243
-#: ctk/inspector/prop-editor.c:1689
+#: ctk/inspector/prop-editor.c:1693
 #: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:748
 msgid "Unknown"
 msgstr "Tuntematon"
@@ -2679,62 +2622,57 @@ msgctxt "font"
 msgid "None"
 msgstr "Ei mitään"
 
-#: ctk/ctkfontchooserwidget.c:1525
+#: ctk/ctkfontchooserwidget.c:1539
 msgid "Width"
 msgstr "Leveys"
 
-#: ctk/ctkfontchooserwidget.c:1526
+#: ctk/ctkfontchooserwidget.c:1540
 msgid "Weight"
 msgstr "Paino"
 
-#: ctk/ctkfontchooserwidget.c:1527
+#: ctk/ctkfontchooserwidget.c:1541
 msgid "Italic"
 msgstr "Kursiivi"
 
-#: ctk/ctkfontchooserwidget.c:1528
+#: ctk/ctkfontchooserwidget.c:1542
 msgid "Slant"
 msgstr ""
 
-#: ctk/ctkfontchooserwidget.c:1529
+#: ctk/ctkfontchooserwidget.c:1543
 msgid "Optical Size"
 msgstr ""
 
-#: ctk/ctkfontchooserwidget.c:2066 ctk/inspector/prop-editor.c:1676
+#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1680
 msgid "Default"
 msgstr "Oletus"
 
-#: ctk/ctkfontchooserwidget.c:2113
+#: ctk/ctkfontchooserwidget.c:2141
 msgid "Ligatures"
 msgstr ""
 
-#: ctk/ctkfontchooserwidget.c:2114
+#: ctk/ctkfontchooserwidget.c:2142
 #, fuzzy
-#| msgctxt "paper size"
-#| msgid "US Letter Plus"
 msgid "Letter Case"
 msgstr "US letter plus"
 
-#: ctk/ctkfontchooserwidget.c:2115
+#: ctk/ctkfontchooserwidget.c:2143
 msgid "Number Case"
 msgstr ""
 
-#: ctk/ctkfontchooserwidget.c:2116
+#: ctk/ctkfontchooserwidget.c:2144
 msgid "Number Spacing"
 msgstr "Numeron välistys"
 
-#: ctk/ctkfontchooserwidget.c:2117
+#: ctk/ctkfontchooserwidget.c:2145
 msgid "Number Formatting"
 msgstr "Numeron muotoilu"
 
-#: ctk/ctkfontchooserwidget.c:2118
+#: ctk/ctkfontchooserwidget.c:2146
 #, fuzzy
-#| msgctxt "Color name"
-#| msgid "Dark Orange"
 msgid "Character Variants"
 msgstr "Tummanoranssi"
 
 #: ctk/ctkglarea.c:314
-#| msgid "Getting printer information failed"
 msgid "OpenGL context creation failed"
 msgstr "OpenGL-kontekstin luominen epäonnistui"
 
@@ -2746,12 +2684,12 @@ msgstr "Sovellusvalikko"
 msgid "Close"
 msgstr "Sulje"
 
-#: ctk/ctkicontheme.c:2358 ctk/ctkicontheme.c:2423
+#: ctk/ctkicontheme.c:2355 ctk/ctkicontheme.c:2420
 #, c-format
 msgid "Icon '%s' not present in theme %s"
 msgstr "Kuvake '%s' ei ole osana teemaa %s"
 
-#: ctk/ctkicontheme.c:4101 ctk/ctkicontheme.c:4468
+#: ctk/ctkicontheme.c:4096 ctk/ctkicontheme.c:4463
 msgid "Failed to load icon"
 msgstr "Kuvaketta ei voitu ladata"
 
@@ -3027,27 +2965,27 @@ msgstr ""
 "toteutusta."
 
 #. translators: this string is a name for the 'less' command
-#: ctk/ctkmountoperation-x11.c:954
+#: ctk/ctkmountoperation-x11.c:955
 msgid "Terminal Pager"
 msgstr "Päätteen sivutin"
 
-#: ctk/ctkmountoperation-x11.c:955
+#: ctk/ctkmountoperation-x11.c:956
 msgid "Top Command"
 msgstr "Top-komento"
 
-#: ctk/ctkmountoperation-x11.c:956
+#: ctk/ctkmountoperation-x11.c:957
 msgid "Bourne Again Shell"
 msgstr "Bourne Again Shell"
 
-#: ctk/ctkmountoperation-x11.c:957
+#: ctk/ctkmountoperation-x11.c:958
 msgid "Bourne Shell"
 msgstr "Bourne Shell"
 
-#: ctk/ctkmountoperation-x11.c:958
+#: ctk/ctkmountoperation-x11.c:959
 msgid "Z Shell"
 msgstr "Z Shell"
 
-#: ctk/ctkmountoperation-x11.c:1055
+#: ctk/ctkmountoperation-x11.c:1056
 #, c-format
 msgid "Cannot end process with PID %d: %s"
 msgstr "Ei voi päättää prosessia, jonka prosessitunniste on %d: %s"
@@ -3058,7 +2996,7 @@ msgstr "Ei voi päättää prosessia, jonka prosessitunniste on %d: %s"
 msgid "Page %u"
 msgstr "Sivu %u"
 
-#: ctk/ctkpagesetup.c:652 ctk/ctkpapersize.c:986 ctk/ctkpapersize.c:1026
+#: ctk/ctkpagesetup.c:652 ctk/ctkpapersize.c:989 ctk/ctkpapersize.c:1029
 msgid "Not a valid page setup file"
 msgstr "Sivunasettelutiedosto ei ole kelvollinen"
 
@@ -3260,13 +3198,11 @@ msgstr "Kohteen “%s” pysäyttäminen ei onnistunut"
 
 #: ctk/ctkplacessidebar.c:3140
 #, fuzzy, c-format
-#| msgid "Unable to end process"
 msgid "Unable to eject “%s”"
 msgstr "Ei voitu päättää prosessia"
 
 #: ctk/ctkplacessidebar.c:3169 ctk/ctkplacessidebar.c:3198
 #, fuzzy, c-format
-#| msgid "Unable to end process"
 msgid "Unable to eject %s"
 msgstr "Ei voitu päättää prosessia"
 
@@ -3276,12 +3212,12 @@ msgid "Unable to poll “%s” for media changes"
 msgstr ""
 
 #: ctk/ctkplacessidebar.c:3630 ctk/ctkplacessidebar.c:3696
-#: ctk/ctkplacesview.c:1706
+#: ctk/ctkplacesview.c:1718
 msgid "Open in New _Tab"
 msgstr "Avaa _uudessa välilehdessä"
 
 #: ctk/ctkplacessidebar.c:3636 ctk/ctkplacessidebar.c:3699
-#: ctk/ctkplacesview.c:1717
+#: ctk/ctkplacesview.c:1729
 msgid "Open in New _Window"
 msgstr "Avaa uudessa _ikkunassa"
 
@@ -3297,11 +3233,11 @@ msgstr "_Poista"
 msgid "Rename…"
 msgstr "Nimeä uudelleen…"
 
-#: ctk/ctkplacessidebar.c:3709 ctk/ctkplacesview.c:1751
+#: ctk/ctkplacessidebar.c:3709 ctk/ctkplacesview.c:1763
 msgid "_Mount"
 msgstr "_Liitä"
 
-#: ctk/ctkplacessidebar.c:3710 ctk/ctkplacesview.c:1741
+#: ctk/ctkplacessidebar.c:3710 ctk/ctkplacesview.c:1753
 msgid "_Unmount"
 msgstr "_Poista liitos"
 
@@ -3313,94 +3249,94 @@ msgstr "_Irrota"
 msgid "_Detect Media"
 msgstr "_Havaitse media"
 
-#: ctk/ctkplacessidebar.c:4158 ctk/ctkplacesview.c:1122
+#: ctk/ctkplacessidebar.c:4158 ctk/ctkplacesview.c:1125
 msgid "Computer"
 msgstr "Tietokone"
 
-#: ctk/ctkplacesview.c:898
+#: ctk/ctkplacesview.c:901
 msgid "Searching for network locations"
 msgstr "Etsitään verkkosijainteja"
 
-#: ctk/ctkplacesview.c:905
+#: ctk/ctkplacesview.c:908
 msgid "No network locations found"
 msgstr "Verkkosijainteja ei löytynyt"
 
 #. if it wasn't cancelled show a dialog
-#: ctk/ctkplacesview.c:1232 ctk/ctkplacesview.c:1321
+#: ctk/ctkplacesview.c:1235 ctk/ctkplacesview.c:1333
 msgid "Unable to access location"
 msgstr "Sijainnin käyttö epäonnistui"
 
 #. Restore from Cancel to Connect
-#: ctk/ctkplacesview.c:1250 ctk/ui/ctkplacesview.ui:317
+#: ctk/ctkplacesview.c:1253 ctk/ui/ctkplacesview.ui:317
 msgid "Con_nect"
 msgstr "_Yhdistä"
 
 #. if it wasn't cancelled show a dialog
-#: ctk/ctkplacesview.c:1384
+#: ctk/ctkplacesview.c:1396
 msgid "Unable to unmount volume"
 msgstr "Liitoksen irrottaminen ei onnistunut"
 
 #. Allow to cancel the operation
-#: ctk/ctkplacesview.c:1485
+#: ctk/ctkplacesview.c:1497
 msgid "Cance_l"
 msgstr "_Peru"
 
-#: ctk/ctkplacesview.c:1648
+#: ctk/ctkplacesview.c:1660
 msgid "AppleTalk"
 msgstr "AppleTalk"
 
 #. Translators: do not translate ftp:// and ftps://
-#: ctk/ctkplacesview.c:1652
+#: ctk/ctkplacesview.c:1664
 msgid "File Transfer Protocol"
 msgstr "File Transfer Protocol (FTP)"
 
-#: ctk/ctkplacesview.c:1652
+#: ctk/ctkplacesview.c:1664
 msgid "ftp:// or ftps://"
 msgstr "ftp:// tai ftps://"
 
-#: ctk/ctkplacesview.c:1655
+#: ctk/ctkplacesview.c:1667
 msgid "Network File System"
 msgstr "Network File System (NFS)"
 
-#: ctk/ctkplacesview.c:1658
+#: ctk/ctkplacesview.c:1670
 msgid "Samba"
 msgstr "Samba"
 
 #. Translators: do not translate sftp:// and ssh://
-#: ctk/ctkplacesview.c:1662
+#: ctk/ctkplacesview.c:1674
 msgid "SSH File Transfer Protocol"
 msgstr "SSH File Transfer Protocol"
 
-#: ctk/ctkplacesview.c:1662
+#: ctk/ctkplacesview.c:1674
 msgid "sftp:// or ssh://"
 msgstr "sftp:// tai ssh://"
 
 #. Translators: do not translate dav:// and davs://
-#: ctk/ctkplacesview.c:1666
+#: ctk/ctkplacesview.c:1678
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: ctk/ctkplacesview.c:1666
+#: ctk/ctkplacesview.c:1678
 msgid "dav:// or davs://"
 msgstr "dav:// tai davs://"
 
-#: ctk/ctkplacesview.c:1741
+#: ctk/ctkplacesview.c:1753
 msgid "_Disconnect"
 msgstr "_Katkaise yhteys"
 
-#: ctk/ctkplacesview.c:1751
+#: ctk/ctkplacesview.c:1763
 msgid "_Connect"
 msgstr "_Yhdistä"
 
-#: ctk/ctkplacesview.c:1892
+#: ctk/ctkplacesview.c:1904
 msgid "Unable to get remote server location"
 msgstr ""
 
-#: ctk/ctkplacesview.c:2087 ctk/ctkplacesview.c:2096
+#: ctk/ctkplacesview.c:2099 ctk/ctkplacesview.c:2108
 msgid "Networks"
 msgstr "Verkot"
 
-#: ctk/ctkplacesview.c:2087 ctk/ctkplacesview.c:2096
+#: ctk/ctkplacesview.c:2099 ctk/ctkplacesview.c:2108
 msgid "On This Computer"
 msgstr "Tällä tietokoneella"
 
@@ -3424,11 +3360,11 @@ msgstr "Katkaise yhteys"
 msgid "Unmount"
 msgstr "Irrota liitos"
 
-#: ctk/ctkprintbackend.c:778
+#: ctk/ctkprintbackend.c:780
 msgid "Authentication"
 msgstr "Todennus"
 
-#: ctk/ctkprintbackend.c:849
+#: ctk/ctkprintbackend.c:853
 msgid "_Remember password"
 msgstr "_Muista salasana"
 
@@ -3535,7 +3471,7 @@ msgstr "Paperi on loppu"
 
 #. Translators: this is a printer status.
 #: ctk/ctkprintoperation-win32.c:635
-#: modules/printbackends/cups/ctkprintbackendcups.c:2624
+#: modules/printbackends/cups/ctkprintbackendcups.c:2628
 msgid "Paused"
 msgstr "Pysäytetty"
 
@@ -3547,36 +3483,36 @@ msgstr "Tarvitaan käyttäjän toimenpiteitä"
 msgid "Custom size"
 msgstr "Oma koko"
 
-#: ctk/ctkprintoperation-win32.c:1613
+#: ctk/ctkprintoperation-win32.c:1619
 msgid "No printer found"
 msgstr "Tulostinta ei löytynyt"
 
-#: ctk/ctkprintoperation-win32.c:1640
+#: ctk/ctkprintoperation-win32.c:1646
 msgid "Invalid argument to CreateDC"
 msgstr "Virheellinen argumentti komennolle CreateDC"
 
-#: ctk/ctkprintoperation-win32.c:1676 ctk/ctkprintoperation-win32.c:1922
+#: ctk/ctkprintoperation-win32.c:1682 ctk/ctkprintoperation-win32.c:1928
 msgid "Error from StartDoc"
 msgstr "Virhe lähteestä StartDoc"
 
-#: ctk/ctkprintoperation-win32.c:1777 ctk/ctkprintoperation-win32.c:1800
-#: ctk/ctkprintoperation-win32.c:1848
+#: ctk/ctkprintoperation-win32.c:1783 ctk/ctkprintoperation-win32.c:1806
+#: ctk/ctkprintoperation-win32.c:1854
 msgid "Not enough free memory"
 msgstr "Ei tarpeeksi muistia"
 
-#: ctk/ctkprintoperation-win32.c:1853
+#: ctk/ctkprintoperation-win32.c:1859
 msgid "Invalid argument to PrintDlgEx"
 msgstr "Virheellinen argumentti komennolle PrintDlgEx"
 
-#: ctk/ctkprintoperation-win32.c:1858
+#: ctk/ctkprintoperation-win32.c:1864
 msgid "Invalid pointer to PrintDlgEx"
 msgstr "Virheellinen osoitin komennolle PrintDlgEx"
 
-#: ctk/ctkprintoperation-win32.c:1863
+#: ctk/ctkprintoperation-win32.c:1869
 msgid "Invalid handle to PrintDlgEx"
 msgstr "Virheellinen kahva toiminnolle PrintDlgEx"
 
-#: ctk/ctkprintoperation-win32.c:1868
+#: ctk/ctkprintoperation-win32.c:1874
 msgid "Unspecified error"
 msgstr "Määrittelemätön virhe"
 
@@ -3603,42 +3539,42 @@ msgstr "Haetaan tulostimen tietoja…"
 #. * multiple pages on a sheet when printing
 #.
 #: ctk/ctkprintunixdialog.c:3120
-#: modules/printbackends/cups/ctkprintbackendcups.c:5493
+#: modules/printbackends/cups/ctkprintbackendcups.c:5508
 msgid "Left to right, top to bottom"
 msgstr "Vasemmalta oikealle, ylhäältä alas"
 
 #: ctk/ctkprintunixdialog.c:3120
-#: modules/printbackends/cups/ctkprintbackendcups.c:5493
+#: modules/printbackends/cups/ctkprintbackendcups.c:5508
 msgid "Left to right, bottom to top"
 msgstr "Vasemmalta oikealle, alhaalta ylös"
 
 #: ctk/ctkprintunixdialog.c:3121
-#: modules/printbackends/cups/ctkprintbackendcups.c:5494
+#: modules/printbackends/cups/ctkprintbackendcups.c:5509
 msgid "Right to left, top to bottom"
 msgstr "Oikealta vasemmalle, ylhäältä alas"
 
 #: ctk/ctkprintunixdialog.c:3121
-#: modules/printbackends/cups/ctkprintbackendcups.c:5494
+#: modules/printbackends/cups/ctkprintbackendcups.c:5509
 msgid "Right to left, bottom to top"
 msgstr "Oikealta vasemmalle, alhaalta ylös"
 
 #: ctk/ctkprintunixdialog.c:3122
-#: modules/printbackends/cups/ctkprintbackendcups.c:5495
+#: modules/printbackends/cups/ctkprintbackendcups.c:5510
 msgid "Top to bottom, left to right"
 msgstr "Ylhäältä alas, vasemmalta oikealle"
 
 #: ctk/ctkprintunixdialog.c:3122
-#: modules/printbackends/cups/ctkprintbackendcups.c:5495
+#: modules/printbackends/cups/ctkprintbackendcups.c:5510
 msgid "Top to bottom, right to left"
 msgstr "Ylhäältä alas, oikealta vasemmalle"
 
 #: ctk/ctkprintunixdialog.c:3123
-#: modules/printbackends/cups/ctkprintbackendcups.c:5496
+#: modules/printbackends/cups/ctkprintbackendcups.c:5511
 msgid "Bottom to top, left to right"
 msgstr "Alhaalta ylös, vasemmalta oikealle"
 
 #: ctk/ctkprintunixdialog.c:3123
-#: modules/printbackends/cups/ctkprintbackendcups.c:5496
+#: modules/printbackends/cups/ctkprintbackendcups.c:5511
 msgid "Bottom to top, right to left"
 msgstr "Alhaalta ylös, oikealta vasemmalle"
 
@@ -3717,7 +3653,6 @@ msgstr "Kohtia ei löytynyt"
 
 #: ctk/ctkrecentchoosermenu.c:534 ctk/ctkrecentchoosermenu.c:590
 #, fuzzy, c-format
-#| msgid "No recently used resource found with URI `%s'"
 msgid "No recently used resource found with URI '%s'"
 msgstr "URIlle ”%s” ei löytynyt äskettäin käytettyjä resursseja"
 
@@ -3750,20 +3685,19 @@ msgctxt "recent menu label"
 msgid "%d. %s"
 msgstr "%d. %s"
 
-#: ctk/ctkrecentmanager.c:1053 ctk/ctkrecentmanager.c:1066
-#: ctk/ctkrecentmanager.c:1203 ctk/ctkrecentmanager.c:1213
-#: ctk/ctkrecentmanager.c:1265 ctk/ctkrecentmanager.c:1274
+#: ctk/ctkrecentmanager.c:1052 ctk/ctkrecentmanager.c:1065
+#: ctk/ctkrecentmanager.c:1207 ctk/ctkrecentmanager.c:1217
+#: ctk/ctkrecentmanager.c:1269 ctk/ctkrecentmanager.c:1278
 #, c-format
 msgid "Unable to find an item with URI '%s'"
 msgstr "URIn ”%s” sisältävää kohtaa ei löytynyt"
 
-#: ctk/ctkrecentmanager.c:1289
+#: ctk/ctkrecentmanager.c:1293
 #, fuzzy, c-format
-#| msgid "Unable to find an item with URI '%s'"
 msgid "Unable to move the item with URI '%s' to '%s'"
 msgstr "URIn ”%s” sisältävää kohtaa ei löytynyt"
 
-#: ctk/ctkrecentmanager.c:2507
+#: ctk/ctkrecentmanager.c:2479
 #, c-format
 msgid "No registered application with name '%s' for item with URI '%s' found"
 msgstr ""
@@ -3841,6 +3775,116 @@ msgstr "Tuloksia ei löytynyt"
 #: ctk/ui/ctkfilechooserwidget.ui:337 ctk/ui/ctkplacesview.ui:274
 msgid "Try a different search"
 msgstr "Kokeile eri hakuehtoja"
+
+#: ctk/ctkstock.c:329
+msgctxt "Stock label"
+msgid "_Apply"
+msgstr "_Toteuta"
+
+#: ctk/ctkstock.c:331
+msgctxt "Stock label"
+msgid "_Cancel"
+msgstr "Per_u"
+
+#: ctk/ctkstock.c:335
+msgctxt "Stock label"
+msgid "C_onnect"
+msgstr "_Yhdistä"
+
+#: ctk/ctkstock.c:336
+msgctxt "Stock label"
+msgid "_Convert"
+msgstr "_Muunna"
+
+#: ctk/ctkstock.c:340
+msgctxt "Stock label"
+msgid "_Discard"
+msgstr "_Hylkää"
+
+#: ctk/ctkstock.c:341
+msgctxt "Stock label"
+msgid "_Disconnect"
+msgstr "_Katkaise yhteys"
+
+#: ctk/ctkstock.c:343
+msgctxt "Stock label"
+msgid "_Edit"
+msgstr "_Muokkaa"
+
+#: ctk/ctkstock.c:371
+msgctxt "Stock label"
+msgid "_Index"
+msgstr "_Indeksi"
+
+#: ctk/ctkstock.c:372
+msgctxt "Stock label"
+msgid "_Information"
+msgstr "T_ietoja"
+
+#: ctk/ctkstock.c:402
+msgctxt "Stock label"
+msgid "_No"
+msgstr "_Ei"
+
+#: ctk/ctkstock.c:403
+msgctxt "Stock label"
+msgid "_OK"
+msgstr "_OK"
+
+#. Page orientation
+#: ctk/ctkstock.c:406
+msgctxt "Stock label"
+msgid "Landscape"
+msgstr "Vaaka"
+
+#. Page orientation
+#: ctk/ctkstock.c:408
+msgctxt "Stock label"
+msgid "Portrait"
+msgstr "Pysty"
+
+#. Page orientation
+#: ctk/ctkstock.c:410
+msgctxt "Stock label"
+msgid "Reverse landscape"
+msgstr "Käänteinen vaaka"
+
+#. Page orientation
+#: ctk/ctkstock.c:412
+msgctxt "Stock label"
+msgid "Reverse portrait"
+msgstr "Käänteinen pysty"
+
+# , c-format
+#: ctk/ctkstock.c:413
+msgctxt "Stock label"
+msgid "Page Set_up"
+msgstr "Sivun _asetukset"
+
+#: ctk/ctkstock.c:415
+msgctxt "Stock label"
+msgid "_Preferences"
+msgstr "_Asetukset"
+
+#: ctk/ctkstock.c:427
+msgctxt "Stock label"
+msgid "_Color"
+msgstr "_Väri"
+
+#: ctk/ctkstock.c:428
+msgctxt "Stock label"
+msgid "_Font"
+msgstr "_Fontti"
+
+#: ctk/ctkstock.c:437
+msgctxt "Stock label"
+msgid "_Undelete"
+msgstr "Per_u poisto"
+
+#: ctk/ctkstock.c:441
+msgctxt "Stock label"
+msgid "_Yes"
+msgstr "_Kyllä"
 
 #: ctk/ctktextbufferrichtext.c:648
 #, c-format
@@ -3999,6 +4043,20 @@ msgstr "ZWN Nollan levyinen _yhdistäjä"
 msgid "ZWNJ Zero width _non-joiner"
 msgstr "ZWNJ Nollan levyinen _ei-yhdistäjä"
 
+#: ctk/ctkuimanager.c:1735
+#, c-format
+msgid "Unexpected start tag '%s' on line %d char %d"
+msgstr "Odottamaton aloitustunniste ”%s” rivillä %d merkin %d kohdalla"
+
+#: ctk/ctkuimanager.c:1825
+#, c-format
+msgid "Unexpected character data on line %d char %d"
+msgstr "Odottamatonta merkkidataa rivillä %d merkin %d kohdalla"
+
+#: ctk/ctkuimanager.c:2638
+msgid "Empty"
+msgstr "Tyhjä"
+
 #: ctk/ctkvolumebutton.c:189
 msgid "Adjusts the volume"
 msgstr "Säätää äänenvoimakkuutta"
@@ -4051,11 +4109,11 @@ msgstr ""
 msgid "Don't show this message again"
 msgstr "Älä näytä tätä viestiä uudestaan"
 
-#: ctk/inspector/action-editor.c:281
+#: ctk/inspector/action-editor.c:280
 msgid "Activate"
 msgstr "Aktivoi"
 
-#: ctk/inspector/action-editor.c:302 ctk/inspector/actions.ui:82
+#: ctk/inspector/action-editor.c:303 ctk/inspector/actions.ui:82
 #: ctk/inspector/css-node-tree.ui:78 ctk/inspector/misc-info.ui:102
 msgid "State"
 msgstr "Tila"
@@ -4071,7 +4129,6 @@ msgstr "Käytössä"
 
 #: ctk/inspector/actions.ui:69
 #, fuzzy
-#| msgid "Paper Type"
 msgid "Parameter Type"
 msgstr "Paperin tyyppi"
 
@@ -4108,7 +4165,6 @@ msgstr ""
 
 #: ctk/inspector/css-node-tree.ui:65 ctk/inspector/object-tree.ui:142
 #, fuzzy
-#| msgid "CSS Classes"
 msgid "Style Classes"
 msgstr "CSS-luokat"
 
@@ -4127,14 +4183,12 @@ msgstr ""
 
 #: ctk/inspector/general.c:309
 #, fuzzy
-#| msgid "None"
 msgctxt "GL version"
 msgid "None"
 msgstr "Ei mikään"
 
 #: ctk/inspector/general.c:310
 #, fuzzy
-#| msgid "None"
 msgctxt "GL vendor"
 msgid "None"
 msgstr "Ei mikään"
@@ -4149,8 +4203,6 @@ msgstr "CDK-taustaosa"
 
 #: ctk/inspector/general.ui:373
 #, fuzzy
-#| msgctxt "keyboard label"
-#| msgid "Display"
 msgid "Display"
 msgstr "Display"
 
@@ -4160,7 +4212,6 @@ msgstr ""
 
 #: ctk/inspector/general.ui:442
 #, fuzzy
-#| msgid "Computer"
 msgid "Composited"
 msgstr "Tietokone"
 
@@ -4172,24 +4223,23 @@ msgstr "GL-versio"
 msgid "GL Vendor"
 msgstr ""
 
-#: ctk/inspector/gestures.c:129
+#: ctk/inspector/gestures.c:130
 #, fuzzy
-#| msgid "None"
 msgctxt "event phase"
 msgid "None"
 msgstr "Ei mikään"
 
-#: ctk/inspector/gestures.c:130
+#: ctk/inspector/gestures.c:131
 msgctxt "event phase"
 msgid "Capture"
 msgstr ""
 
-#: ctk/inspector/gestures.c:131
+#: ctk/inspector/gestures.c:132
 msgctxt "event phase"
 msgid "Bubble"
 msgstr ""
 
-#: ctk/inspector/gestures.c:132
+#: ctk/inspector/gestures.c:133
 msgctxt "event phase"
 msgid "Target"
 msgstr ""
@@ -4202,7 +4252,7 @@ msgstr ""
 msgid "Label"
 msgstr ""
 
-#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1385
+#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1389
 msgid "Action"
 msgstr "Toiminto"
 
@@ -4220,7 +4270,6 @@ msgstr "Osoite"
 
 #: ctk/inspector/misc-info.ui:68
 #, fuzzy
-#| msgid "Preferences"
 msgid "Reference count"
 msgstr "Asetukset"
 
@@ -4230,14 +4279,13 @@ msgstr ""
 
 #: ctk/inspector/misc-info.ui:170
 #, fuzzy
-#| msgid "Default Application"
 msgid "Default Widget"
 msgstr "Oletussovellus"
 
 #: ctk/inspector/misc-info.ui:192 ctk/inspector/misc-info.ui:237
 #: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1071
-#: ctk/inspector/prop-editor.c:1268 ctk/inspector/prop-editor.c:1393
-#: ctk/inspector/prop-editor.c:1504 ctk/inspector/window.ui:382
+#: ctk/inspector/prop-editor.c:1270 ctk/inspector/prop-editor.c:1397
+#: ctk/inspector/prop-editor.c:1508 ctk/inspector/window.ui:382
 msgid "Properties"
 msgstr "Ominaisuudet"
 
@@ -4255,7 +4303,6 @@ msgstr ""
 
 #: ctk/inspector/misc-info.ui:328
 #, fuzzy
-#| msgid "Location"
 msgid "Allocation"
 msgstr "Sijainti"
 
@@ -4317,7 +4364,6 @@ msgstr "Objekti"
 
 #: ctk/inspector/prop-editor.c:679
 #, fuzzy, c-format
-#| msgid "Printer"
 msgid "Pointer: %p"
 msgstr "Tulostin"
 
@@ -4333,70 +4379,69 @@ msgstr "Objekti: %p (%s)"
 
 #: ctk/inspector/prop-editor.c:1141
 #, fuzzy, c-format
-#| msgid "Unable to stop %s"
 msgid "Uneditable property type: %s"
 msgstr "Kohteen %s pysäyttäminen ei onnistunut"
 
-#: ctk/inspector/prop-editor.c:1259
+#: ctk/inspector/prop-editor.c:1261
 msgid "Attribute mapping"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1264
+#: ctk/inspector/prop-editor.c:1266
 msgid "Model:"
 msgstr "Malli:"
 
-#: ctk/inspector/prop-editor.c:1265
+#: ctk/inspector/prop-editor.c:1267
 #, c-format
 msgid "%p (%s)"
 msgstr "%p (%s)"
 
-#: ctk/inspector/prop-editor.c:1275
+#: ctk/inspector/prop-editor.c:1277
 msgid "Column:"
 msgstr "Sarake:"
 
-#: ctk/inspector/prop-editor.c:1285
+#: ctk/inspector/prop-editor.c:1287
 msgctxt "property name"
 msgid "None"
 msgstr "Ei mitään"
 
-#: ctk/inspector/prop-editor.c:1389
+#: ctk/inspector/prop-editor.c:1393
 #, c-format
 msgid "Defined at: %p (%s)"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1453 ctk/inspector/prop-editor.c:1469
+#: ctk/inspector/prop-editor.c:1457 ctk/inspector/prop-editor.c:1473
 msgid "inverted"
 msgstr "käänteinen"
 
-#: ctk/inspector/prop-editor.c:1485
+#: ctk/inspector/prop-editor.c:1489
 msgid "bidirectional, inverted"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1490 ctk/inspector/prop-editor.c:1604
+#: ctk/inspector/prop-editor.c:1494 ctk/inspector/prop-editor.c:1608
 msgid "bidirectional"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1495
+#: ctk/inspector/prop-editor.c:1499
 msgid "Binding:"
 msgstr "Sidonta:"
 
-#: ctk/inspector/prop-editor.c:1623
+#: ctk/inspector/prop-editor.c:1627
 msgid "Setting:"
 msgstr "Asetus:"
 
-#: ctk/inspector/prop-editor.c:1663
+#: ctk/inspector/prop-editor.c:1667
 msgid "Source:"
 msgstr "Lähde:"
 
-#: ctk/inspector/prop-editor.c:1665
+#: ctk/inspector/prop-editor.c:1669
 msgid "Reset"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1679
+#: ctk/inspector/prop-editor.c:1683
 msgid "Theme"
 msgstr "Teema"
 
-#: ctk/inspector/prop-editor.c:1682
+#: ctk/inspector/prop-editor.c:1686
 msgid "XSettings"
 msgstr "XSettings"
 
@@ -4423,7 +4468,6 @@ msgstr "Polku"
 
 #: ctk/inspector/resource-list.ui:118 ctk/inspector/signals-list.ui:63
 #, fuzzy
-#| msgid "_Mount"
 msgid "Count"
 msgstr "_Liitä"
 
@@ -4448,7 +4492,7 @@ msgstr "Koko:"
 msgid "Selector"
 msgstr "Valitsin"
 
-#: ctk/inspector/signals-list.c:117
+#: ctk/inspector/signals-list.c:118
 msgid "Yes"
 msgstr "Kyllä"
 
@@ -4460,37 +4504,36 @@ msgstr ""
 msgid "Connected"
 msgstr "Yhdistetty"
 
-#: ctk/inspector/size-groups.c:224
+#: ctk/inspector/size-groups.c:225
 msgid "Ignore hidden"
 msgstr ""
 
-#: ctk/inspector/size-groups.c:242
+#: ctk/inspector/size-groups.c:243
 msgid "Mode"
 msgstr ""
 
-#: ctk/inspector/size-groups.c:252
+#: ctk/inspector/size-groups.c:253
 #, fuzzy
-#| msgid "None"
 msgctxt "sizegroup mode"
 msgid "None"
 msgstr "Ei mikään"
 
-#: ctk/inspector/size-groups.c:253
+#: ctk/inspector/size-groups.c:254
 msgctxt "sizegroup mode"
 msgid "Horizontal"
 msgstr ""
 
-#: ctk/inspector/size-groups.c:254
+#: ctk/inspector/size-groups.c:255
 msgctxt "sizegroup mode"
 msgid "Vertical"
 msgstr ""
 
-#: ctk/inspector/size-groups.c:255
+#: ctk/inspector/size-groups.c:256
 msgctxt "sizegroup mode"
 msgid "Both"
 msgstr ""
 
-#: ctk/inspector/statistics.c:377
+#: ctk/inspector/statistics.c:379
 msgid "GLib must be configured with --enable-debug"
 msgstr "GLib tulee olla määritetty valitsimella --enable-debug"
 
@@ -4551,8 +4594,6 @@ msgstr "CTK+-teema"
 
 #: ctk/inspector/visual.ui:94
 #, fuzzy
-#| msgctxt "Color name"
-#| msgid "Dark Orange"
 msgid "Dark Variant"
 msgstr "Tummanoranssi"
 
@@ -4578,13 +4619,11 @@ msgstr "Tekstin suunta"
 
 #: ctk/inspector/visual.ui:322
 #, fuzzy
-#| msgid "Left to right"
 msgid "Left-to-Right"
 msgstr "Vasemmalta oikealle"
 
 #: ctk/inspector/visual.ui:323
 #, fuzzy
-#| msgid "Right to left"
 msgid "Right-to-Left"
 msgstr "Oikealta vasemmalle"
 
@@ -4602,8 +4641,6 @@ msgstr ""
 
 #: ctk/inspector/visual.ui:474
 #, fuzzy
-#| msgctxt "print operation status"
-#| msgid "Generating data"
 msgid "Rendering Mode"
 msgstr "Luodaan tietoja"
 
@@ -4613,8 +4650,6 @@ msgstr ""
 
 #: ctk/inspector/visual.ui:489
 #, fuzzy
-#| msgctxt "Stock label, media"
-#| msgid "_Record"
 msgid "Recording"
 msgstr "_Tallenna"
 
@@ -4636,7 +4671,6 @@ msgstr ""
 
 #: ctk/inspector/visual.ui:649
 #, fuzzy
-#| msgid "Show _Hidden Files"
 msgid "Show Widget Resizes"
 msgstr "Näytä _piilotiedostot"
 
@@ -4790,7 +4824,6 @@ msgstr ""
 
 #: ctk/open-type-layout.h:17
 #, fuzzy
-#| msgid "Authentication"
 msgctxt "OpenType layout"
 msgid "Alternative Fractions"
 msgstr "Todennus"
@@ -4907,21 +4940,18 @@ msgstr ""
 
 #: ctk/open-type-layout.h:40
 #, fuzzy
-#| msgid "Terminal Pager"
 msgctxt "OpenType layout"
 msgid "Terminal Forms #2"
 msgstr "Päätteen sivutin"
 
 #: ctk/open-type-layout.h:41
 #, fuzzy
-#| msgid "Terminal Pager"
 msgctxt "OpenType layout"
 msgid "Terminal Forms #3"
 msgstr "Päätteen sivutin"
 
 #: ctk/open-type-layout.h:42
 #, fuzzy
-#| msgid "Terminal Pager"
 msgctxt "OpenType layout"
 msgid "Terminal Forms"
 msgstr "Päätteen sivutin"
@@ -4933,7 +4963,6 @@ msgstr ""
 
 #: ctk/open-type-layout.h:44
 #, fuzzy
-#| msgid "Actions"
 msgctxt "OpenType layout"
 msgid "Fractions"
 msgstr "Toiminnot"
@@ -4990,8 +5019,6 @@ msgstr ""
 
 #: ctk/open-type-layout.h:55
 #, fuzzy
-#| msgctxt "print operation status"
-#| msgid "Initial state"
 msgctxt "OpenType layout"
 msgid "Initial Forms"
 msgstr "Aloitustila"
@@ -5003,8 +5030,6 @@ msgstr ""
 
 #: ctk/open-type-layout.h:57
 #, fuzzy
-#| msgctxt "Stock label"
-#| msgid "_Italic"
 msgctxt "OpenType layout"
 msgid "Italics"
 msgstr "_Kursiivi"
@@ -5036,23 +5061,18 @@ msgstr ""
 
 #: ctk/open-type-layout.h:63
 #, fuzzy
-#| msgid "Warning"
 msgctxt "OpenType layout"
 msgid "Kerning"
 msgstr "Varoitus"
 
 #: ctk/open-type-layout.h:64
 #, fuzzy
-#| msgctxt "keyboard label"
-#| msgid "Left"
 msgctxt "OpenType layout"
 msgid "Left Bounds"
 msgstr "Vasen"
 
 #: ctk/open-type-layout.h:65
 #, fuzzy
-#| msgctxt "cover page"
-#| msgid "Standard"
 msgctxt "OpenType layout"
 msgid "Standard Ligatures"
 msgstr "Normaali"
@@ -5074,14 +5094,12 @@ msgstr ""
 
 #: ctk/open-type-layout.h:69
 #, fuzzy
-#| msgid "LRM _Left-to-right mark"
 msgctxt "OpenType layout"
 msgid "Left-to-right alternates"
 msgstr "LRM _Vasemmalta oikealle -merkki"
 
 #: ctk/open-type-layout.h:70
 #, fuzzy
-#| msgid "LRM _Left-to-right mark"
 msgctxt "OpenType layout"
 msgid "Left-to-right mirrored forms"
 msgstr "LRM _Vasemmalta oikealle -merkki"
@@ -5173,7 +5191,6 @@ msgstr ""
 
 #: ctk/open-type-layout.h:88
 #, fuzzy
-#| msgid "Properties"
 msgctxt "OpenType layout"
 msgid "Proportional Figures"
 msgstr "Ominaisuudet"
@@ -5235,22 +5252,18 @@ msgstr ""
 
 #: ctk/open-type-layout.h:100
 #, fuzzy
-#| msgctxt "keyboard label"
-#| msgid "Right"
 msgctxt "OpenType layout"
 msgid "Right Bounds"
 msgstr "Oikea"
 
 #: ctk/open-type-layout.h:101
 #, fuzzy
-#| msgid "RLM _Right-to-left mark"
 msgctxt "OpenType layout"
 msgid "Right-to-left alternates"
 msgstr "RLM _Oikealta vasemmalle -merkki"
 
 #: ctk/open-type-layout.h:102
 #, fuzzy
-#| msgid "RLM _Right-to-left mark"
 msgctxt "OpenType layout"
 msgid "Right-to-left mirrored forms"
 msgstr "RLM _Oikealta vasemmalle -merkki"
@@ -5402,15 +5415,12 @@ msgstr ""
 
 #: ctk/open-type-layout.h:132
 #, fuzzy
-#| msgid "Postscript"
 msgctxt "OpenType layout"
 msgid "Subscript"
 msgstr "Postscript"
 
 #: ctk/open-type-layout.h:133
 #, fuzzy
-#| msgctxt "keyboard label"
-#| msgid "Super"
 msgctxt "OpenType layout"
 msgid "Superscript"
 msgstr "Super"
@@ -5462,8 +5472,6 @@ msgstr ""
 
 #: ctk/open-type-layout.h:143
 #, fuzzy
-#| msgctxt "Color name"
-#| msgid "Dark Orange"
 msgctxt "OpenType layout"
 msgid "Vattu Variants"
 msgstr "Tummanoranssi"
@@ -6150,24 +6158,18 @@ msgstr "f"
 
 #: ctk/paper_names_offsets.c:131
 #, fuzzy
-#| msgctxt "paper size"
-#| msgid "FanFold European"
 msgctxt "paper size"
 msgid "Fan-Fold European"
 msgstr "FanFold, eurooppalainen"
 
 #: ctk/paper_names_offsets.c:132
 #, fuzzy
-#| msgctxt "paper size"
-#| msgid "FanFold US"
 msgctxt "paper size"
 msgid "Fan-Fold US"
 msgstr "FanFold, amerikkalainen"
 
 #: ctk/paper_names_offsets.c:133
 #, fuzzy
-#| msgctxt "paper size"
-#| msgid "FanFold German Legal"
 msgctxt "paper size"
 msgid "Fan-Fold German Legal"
 msgstr "FanFold, saksalainen legal"
@@ -6194,8 +6196,6 @@ msgstr "Indeksi 4×6 (postikortti)"
 
 #: ctk/paper_names_offsets.c:138
 #, fuzzy
-#| msgctxt "paper size"
-#| msgid "Index 4x6 ext"
 msgctxt "paper size"
 msgid "Index 4×6 ext"
 msgstr "Index 4x6 ext"
@@ -6497,7 +6497,6 @@ msgstr ""
 
 #: ctk/script-names.c:30
 #, fuzzy
-#| msgid "_Green:"
 msgctxt "Script"
 msgid "Greek"
 msgstr "_Vihreä:"
@@ -6549,7 +6548,6 @@ msgstr ""
 
 #: ctk/script-names.c:40
 #, fuzzy
-#| msgid "Low"
 msgctxt "Script"
 msgid "Lao"
 msgstr "Ei kiireellinen"
@@ -6581,8 +6579,6 @@ msgstr ""
 
 #: ctk/script-names.c:46
 #, fuzzy
-#| msgctxt "Stock label"
-#| msgid "_Italic"
 msgctxt "Script"
 msgid "Old Italic"
 msgstr "_Kursiivi"
@@ -6609,7 +6605,6 @@ msgstr ""
 
 #: ctk/script-names.c:51
 #, fuzzy
-#| msgid "_Family:"
 msgctxt "Script"
 msgid "Tamil"
 msgstr "Pe_rhe:"
@@ -6626,7 +6621,6 @@ msgstr ""
 
 #: ctk/script-names.c:54
 #, fuzzy
-#| msgid "Thai-Lao"
 msgctxt "Script"
 msgid "Thai"
 msgstr "Thai-Lao"
@@ -6798,8 +6792,6 @@ msgstr ""
 
 #: ctk/script-names.c:88
 #, fuzzy
-#| msgctxt "Color name"
-#| msgid "Chameleon"
 msgctxt "Script"
 msgid "Cham"
 msgstr "Kameleontti"
@@ -7011,7 +7003,6 @@ msgstr ""
 
 #: ctk/script-names.c:130
 #, fuzzy
-#| msgid "Modified"
 msgctxt "Script"
 msgid "Modi"
 msgstr "Muokattu"
@@ -7088,8 +7079,6 @@ msgstr ""
 
 #: ctk/script-names.c:145
 #, fuzzy
-#| msgctxt "keyboard label"
-#| msgid "Multi_key"
 msgctxt "Script"
 msgid "Multani"
 msgstr "Multi_key"
@@ -7101,8 +7090,6 @@ msgstr ""
 
 #: ctk/script-names.c:147
 #, fuzzy
-#| msgctxt "print operation status"
-#| msgid "Printing"
 msgctxt "Script"
 msgid "Signwriting"
 msgstr "Tulostetaan"
@@ -7119,7 +7106,6 @@ msgstr ""
 
 #: ctk/script-names.c:150
 #, fuzzy
-#| msgid "Searching"
 msgctxt "Script"
 msgid "Marchen"
 msgstr "Etsitään"
@@ -7242,8 +7228,6 @@ msgstr "A"
 
 #: ctk/ui/ctkcoloreditor.ui:196
 #, fuzzy
-#| msgctxt "Color channel"
-#| msgid "Alpha"
 msgid "Alpha"
 msgstr "Alpha"
 
@@ -7258,16 +7242,12 @@ msgstr "Sävy"
 
 #: ctk/ui/ctkcoloreditor.ui:275
 #, fuzzy
-#| msgctxt "Color channel"
-#| msgid "S"
 msgctxt "Color Channel"
 msgid "S"
 msgstr "S"
 
 #: ctk/ui/ctkcoloreditor.ui:285
 #, fuzzy
-#| msgctxt "Color channel"
-#| msgid "V"
 msgctxt "Color Channel"
 msgid "V"
 msgstr "V"
@@ -7653,107 +7633,106 @@ msgstr "Hiljemmalle"
 msgid "Decreases the volume"
 msgstr "Pienentää äänenvoimakkuutta"
 
-#: ctk/updateiconcache.c:1388
+#: ctk/updateiconcache.c:1402
 #, c-format
 msgid "Failed to write header\n"
 msgstr "Otsakkeen kirjoitus epäonnistui\n"
 
-#: ctk/updateiconcache.c:1394
+#: ctk/updateiconcache.c:1408
 #, c-format
 msgid "Failed to write hash table\n"
 msgstr "Hajautustaulun kirjoitus epäonnistui\n"
 
-#: ctk/updateiconcache.c:1400
+#: ctk/updateiconcache.c:1414
 #, c-format
 msgid "Failed to write folder index\n"
 msgstr "Kansioindeksin kirjoitus epäonnistui\n"
 
-#: ctk/updateiconcache.c:1408
+#: ctk/updateiconcache.c:1422
 #, c-format
 msgid "Failed to rewrite header\n"
 msgstr "Otsakkeen uudelleenkirjoitus epäonnistui\n"
 
-#: ctk/updateiconcache.c:1502
+#: ctk/updateiconcache.c:1516
 #, c-format
 msgid "Failed to open file %s : %s\n"
 msgstr "Tiedostoa ”%s” ei voitu avata: %s\n"
 
-#: ctk/updateiconcache.c:1510 ctk/updateiconcache.c:1540
+#: ctk/updateiconcache.c:1524 ctk/updateiconcache.c:1554
 #, c-format
 msgid "Failed to write cache file: %s\n"
 msgstr "Välimuistitiedoston kirjoitus epäonnistui: %s\n"
 
-#: ctk/updateiconcache.c:1550
+#: ctk/updateiconcache.c:1564
 #, c-format
 msgid "The generated cache was invalid.\n"
 msgstr "Luotu välimuisti oli virheellinen.\n"
 
-#: ctk/updateiconcache.c:1564
+#: ctk/updateiconcache.c:1578
 #, c-format
 msgid "Could not rename %s to %s: %s, removing %s then.\n"
 msgstr "%s ei voitu uudelleen nimetä nimelle %s: %s, poistetaan %s.\n"
 
-#: ctk/updateiconcache.c:1578
+#: ctk/updateiconcache.c:1592
 #, c-format
 msgid "Could not rename %s to %s: %s\n"
 msgstr "Tiedoston %s uudelleennimeäminen nimelle %s epäonnistui: %s\n"
 
-#: ctk/updateiconcache.c:1588
+#: ctk/updateiconcache.c:1602
 #, c-format
 msgid "Could not rename %s back to %s: %s.\n"
 msgstr "Tiedoston %s nimeäminen takaisin nimelle %s epäonnistui: %s\n"
 
-#: ctk/updateiconcache.c:1615
+#: ctk/updateiconcache.c:1629
 #, c-format
 msgid "Cache file created successfully.\n"
 msgstr "Välimuistitiedosto luotu onnistuneesti.\n"
 
-#: ctk/updateiconcache.c:1654
+#: ctk/updateiconcache.c:1668
 msgid "Overwrite an existing cache, even if up to date"
 msgstr "Kirjoita olemassa olevan välimuistin yli vaikka se olisi ajan tasalla"
 
-#: ctk/updateiconcache.c:1655
+#: ctk/updateiconcache.c:1669
 msgid "Don't check for the existence of index.theme"
 msgstr "Älä tarkista index.theme-tiedoston olemassaoloa"
 
-#: ctk/updateiconcache.c:1656
+#: ctk/updateiconcache.c:1670
 msgid "Don't include image data in the cache"
 msgstr "Älä tallenna kuvatietoja välimuistiin"
 
-#: ctk/updateiconcache.c:1657
+#: ctk/updateiconcache.c:1671
 #, fuzzy
-#| msgid "Don't include image data in the cache"
 msgid "Include image data in the cache"
 msgstr "Älä tallenna kuvatietoja välimuistiin"
 
-#: ctk/updateiconcache.c:1658
+#: ctk/updateiconcache.c:1672
 msgid "Output a C header file"
 msgstr "Tulosta C-otsikkotiedosto"
 
-#: ctk/updateiconcache.c:1659
+#: ctk/updateiconcache.c:1673
 msgid "Turn off verbose output"
 msgstr "Poista suulas tuloste käytöstä"
 
-#: ctk/updateiconcache.c:1660
+#: ctk/updateiconcache.c:1674
 msgid "Validate existing icon cache"
 msgstr "Tarkista kuvakevälimuistin eheys"
 
-#: ctk/updateiconcache.c:1727
+#: ctk/updateiconcache.c:1741
 #, c-format
 msgid "File not found: %s\n"
 msgstr "Tiedostoa ei löydy: %s\n"
 
-#: ctk/updateiconcache.c:1733
+#: ctk/updateiconcache.c:1747
 #, c-format
 msgid "Not a valid icon cache: %s\n"
 msgstr "Kuvakevälimuisti ei ole kelvollinen: %s\n"
 
-#: ctk/updateiconcache.c:1746
+#: ctk/updateiconcache.c:1760
 #, c-format
 msgid "No theme index file.\n"
 msgstr "Teeman indeksitiedostoa ei ole.\n"
 
-#: ctk/updateiconcache.c:1750
+#: ctk/updateiconcache.c:1764
 #, c-format
 msgid ""
 "No theme index file in '%s'.\n"
@@ -7766,7 +7745,6 @@ msgstr ""
 #. ID
 #: modules/input/imam-et.c:452
 #, fuzzy
-#| msgid "Amharic (EZ+)"
 msgctxt "input method menu"
 msgid "Amharic (EZ+)"
 msgstr "Amhari (EZ+)"
@@ -7780,7 +7758,6 @@ msgstr "Broadway"
 #. ID
 #: modules/input/imcedilla.c:90
 #, fuzzy
-#| msgid "Cedilla"
 msgctxt "input method menu"
 msgid "Cedilla"
 msgstr "Sedilji"
@@ -7788,7 +7765,6 @@ msgstr "Sedilji"
 #. ID
 #: modules/input/imcyrillic-translit.c:215
 #, fuzzy
-#| msgid "Cyrillic (Transliterated)"
 msgctxt "input menthod menu"
 msgid "Cyrillic (Transliterated)"
 msgstr "Kyrillinen (translitteroitu)"
@@ -7801,7 +7777,6 @@ msgstr "Windows IME"
 #. ID
 #: modules/input/iminuktitut.c:125
 #, fuzzy
-#| msgid "Inuktitut (Transliterated)"
 msgctxt "input method menu"
 msgid "Inuktitut (Transliterated)"
 msgstr "Inukitut (translitteroitu)"
@@ -7809,7 +7784,6 @@ msgstr "Inukitut (translitteroitu)"
 #. ID
 #: modules/input/imipa.c:143
 #, fuzzy
-#| msgid "IPA"
 msgctxt "input method menu"
 msgid "IPA"
 msgstr "IPA"
@@ -7817,7 +7791,6 @@ msgstr "IPA"
 #. ID
 #: modules/input/immultipress.c:30
 #, fuzzy
-#| msgid "Multipress"
 msgctxt "input method menu"
 msgid "Multipress"
 msgstr "Yhteispainanta"
@@ -7830,7 +7803,6 @@ msgstr "Mac OS X Quartz"
 #. ID
 #: modules/input/imthai.c:33
 #, fuzzy
-#| msgid "Thai-Lao"
 msgctxt "input method menu"
 msgid "Thai-Lao"
 msgstr "Thai-Lao"
@@ -7838,7 +7810,6 @@ msgstr "Thai-Lao"
 #. ID
 #: modules/input/imti-er.c:451
 #, fuzzy
-#| msgid "Tigrigna-Eritrean (EZ+)"
 msgctxt "input method menu"
 msgid "Tigrigna-Eritrean (EZ+)"
 msgstr "Tigrigna-Eritrea (EZ+)"
@@ -7846,7 +7817,6 @@ msgstr "Tigrigna-Eritrea (EZ+)"
 #. ID
 #: modules/input/imti-et.c:451
 #, fuzzy
-#| msgid "Tigrigna-Ethiopian (EZ+)"
 msgctxt "input method menu"
 msgid "Tigrigna-Ethiopian (EZ+)"
 msgstr "Tigrigna-Etiopia (EZ+)"
@@ -7854,7 +7824,6 @@ msgstr "Tigrigna-Etiopia (EZ+)"
 #. ID
 #: modules/input/imviqr.c:242
 #, fuzzy
-#| msgid "Vietnamese (VIQR)"
 msgctxt "input method menu"
 msgid "Vietnamese (VIQR)"
 msgstr "Vietnam (VIQR)"
@@ -7896,24 +7865,24 @@ msgid "Dormant"
 msgstr ""
 
 #. How many document pages to go onto one side of paper.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:939
-#: modules/printbackends/file/ctkprintbackendfile.c:676
-#: modules/printbackends/test/ctkprintbackendtest.c:501
+#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:941
+#: modules/printbackends/file/ctkprintbackendfile.c:679
+#: modules/printbackends/test/ctkprintbackendtest.c:503
 msgid "Pages per _sheet:"
 msgstr "Sivuja a_rkille:"
 
 #: modules/printbackends/cups/ctkprintbackendcups.c:1129
-#: modules/printbackends/cups/ctkprintbackendcups.c:1438
+#: modules/printbackends/cups/ctkprintbackendcups.c:1439
 msgid "Username:"
 msgstr "Käyttäjätunnus:"
 
 #: modules/printbackends/cups/ctkprintbackendcups.c:1130
-#: modules/printbackends/cups/ctkprintbackendcups.c:1447
+#: modules/printbackends/cups/ctkprintbackendcups.c:1448
 msgid "Password:"
 msgstr "Salasana:"
 
 #: modules/printbackends/cups/ctkprintbackendcups.c:1169
-#: modules/printbackends/cups/ctkprintbackendcups.c:1460
+#: modules/printbackends/cups/ctkprintbackendcups.c:1461
 #, c-format
 msgid "Authentication is required to print document “%s” on printer %s"
 msgstr ""
@@ -7962,391 +7931,383 @@ msgstr "Todennus vaaditaan tiedoston saamiksesi isännältä %s"
 msgid "Authentication is required on %s"
 msgstr "Todennus vaaditaan isännällä %s"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1432
+#: modules/printbackends/cups/ctkprintbackendcups.c:1433
 msgid "Domain:"
 msgstr "Toimialue:"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1462
+#: modules/printbackends/cups/ctkprintbackendcups.c:1463
 #, c-format
 msgid "Authentication is required to print document “%s”"
 msgstr "Asiakirjan “%s” tulostus vaatii tunnistautumisen"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1467
+#: modules/printbackends/cups/ctkprintbackendcups.c:1468
 #, c-format
 msgid "Authentication is required to print this document on printer %s"
 msgstr "Tämän asiakirjan tulostaminen tulostimella %s vaatii tunnistautumisen"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1469
+#: modules/printbackends/cups/ctkprintbackendcups.c:1470
 msgid "Authentication is required to print this document"
 msgstr "Tämän asiakirjan tulostaminen vaatii tunnistautumisen"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2553
+#: modules/printbackends/cups/ctkprintbackendcups.c:2557
 #, c-format
 msgid "Printer “%s” is low on toner."
 msgstr "Tulostimesta “%s” on väri vähissä."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2557
+#: modules/printbackends/cups/ctkprintbackendcups.c:2561
 #, c-format
 msgid "Printer “%s” has no toner left."
 msgstr "Tulostimesta “%s” on väri loppu."
 
 #. Translators: "Developer" like on photo development context
-#: modules/printbackends/cups/ctkprintbackendcups.c:2562
+#: modules/printbackends/cups/ctkprintbackendcups.c:2566
 #, c-format
 msgid "Printer “%s” is low on developer."
 msgstr "Tulostimesta “%s” on kehite vähissä."
 
 #. Translators: "Developer" like on photo development context
-#: modules/printbackends/cups/ctkprintbackendcups.c:2567
+#: modules/printbackends/cups/ctkprintbackendcups.c:2571
 #, c-format
 msgid "Printer “%s” is out of developer."
 msgstr "Tulostimesta “%s” on kehite loppu."
 
 #. Translators: "marker" is one color bin of the printer
-#: modules/printbackends/cups/ctkprintbackendcups.c:2572
+#: modules/printbackends/cups/ctkprintbackendcups.c:2576
 #, c-format
 msgid "Printer “%s” is low on at least one marker supply."
 msgstr "Tulostimesta “%s” on ainakin yksi väri vähissä."
 
 #. Translators: "marker" is one color bin of the printer
-#: modules/printbackends/cups/ctkprintbackendcups.c:2577
+#: modules/printbackends/cups/ctkprintbackendcups.c:2581
 #, c-format
 msgid "Printer “%s” is out of at least one marker supply."
 msgstr "Tulostimesta “%s” on ainakin yksi väri loppu."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2581
+#: modules/printbackends/cups/ctkprintbackendcups.c:2585
 #, c-format
 msgid "The cover is open on printer “%s”."
 msgstr "Tulostimen “%s” kansi on auki."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2585
+#: modules/printbackends/cups/ctkprintbackendcups.c:2589
 #, c-format
 msgid "The door is open on printer “%s”."
 msgstr "Tulostimen “%s” luukku on auki."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2589
+#: modules/printbackends/cups/ctkprintbackendcups.c:2593
 #, c-format
 msgid "Printer “%s” is low on paper."
 msgstr "Tulostimesta “%s” on paperi vähissä."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2593
+#: modules/printbackends/cups/ctkprintbackendcups.c:2597
 #, c-format
 msgid "Printer “%s” is out of paper."
 msgstr "Tulostimesta “%s” on paperi loppu."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2597
+#: modules/printbackends/cups/ctkprintbackendcups.c:2601
 #, c-format
 msgid "Printer “%s” is currently offline."
 msgstr "Tulostin “%s” ei ole yhdistettynä."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2601
+#: modules/printbackends/cups/ctkprintbackendcups.c:2605
 #, c-format
 msgid "There is a problem on printer “%s”."
 msgstr "Tulostimessa “%s” on ongelma."
 
 #. Translators: this is a printer status.
-#: modules/printbackends/cups/ctkprintbackendcups.c:2621
+#: modules/printbackends/cups/ctkprintbackendcups.c:2625
 msgid "Paused; Rejecting Jobs"
 msgstr "Keskeytetty; työt hylätään"
 
 #. Translators: this is a printer status.
-#: modules/printbackends/cups/ctkprintbackendcups.c:2627
+#: modules/printbackends/cups/ctkprintbackendcups.c:2631
 msgid "Rejecting Jobs"
 msgstr "Työt hylätään"
 
 #. Translators: this string connects multiple printer states together.
-#: modules/printbackends/cups/ctkprintbackendcups.c:2668
+#: modules/printbackends/cups/ctkprintbackendcups.c:2672
 msgid "; "
 msgstr "; "
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4439
-#: modules/printbackends/cups/ctkprintbackendcups.c:4506
+#: modules/printbackends/cups/ctkprintbackendcups.c:4453
+#: modules/printbackends/cups/ctkprintbackendcups.c:4520
 msgctxt "printing option"
 msgid "Two Sided"
 msgstr "Kaksipuolinen"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4440
+#: modules/printbackends/cups/ctkprintbackendcups.c:4454
 msgctxt "printing option"
 msgid "Paper Type"
 msgstr "Paperin tyyppi"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4441
+#: modules/printbackends/cups/ctkprintbackendcups.c:4455
 msgctxt "printing option"
 msgid "Paper Source"
 msgstr "Paperin lähde"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4442
-#: modules/printbackends/cups/ctkprintbackendcups.c:4507
+#: modules/printbackends/cups/ctkprintbackendcups.c:4456
+#: modules/printbackends/cups/ctkprintbackendcups.c:4521
 msgctxt "printing option"
 msgid "Output Tray"
 msgstr "Tulostuskaukalo"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4443
+#: modules/printbackends/cups/ctkprintbackendcups.c:4457
 msgctxt "printing option"
 msgid "Resolution"
 msgstr "Tarkkuus"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4444
+#: modules/printbackends/cups/ctkprintbackendcups.c:4458
 msgctxt "printing option"
 msgid "GhostScript pre-filtering"
 msgstr "GhostScript-esisuodatus"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4453
+#: modules/printbackends/cups/ctkprintbackendcups.c:4467
 msgctxt "printing option value"
 msgid "One Sided"
 msgstr "Yksipuolinen"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4455
+#: modules/printbackends/cups/ctkprintbackendcups.c:4469
 msgctxt "printing option value"
 msgid "Long Edge (Standard)"
 msgstr "Pitkä reuna (tavallinen)"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4457
+#: modules/printbackends/cups/ctkprintbackendcups.c:4471
 msgctxt "printing option value"
 msgid "Short Edge (Flip)"
 msgstr "Lyhyt reuna (käännetty)"
 
 #. Translators: this is an option of "Paper Source"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4459
-#: modules/printbackends/cups/ctkprintbackendcups.c:4461
-#: modules/printbackends/cups/ctkprintbackendcups.c:4469
+#: modules/printbackends/cups/ctkprintbackendcups.c:4473
+#: modules/printbackends/cups/ctkprintbackendcups.c:4475
+#: modules/printbackends/cups/ctkprintbackendcups.c:4483
 msgctxt "printing option value"
 msgid "Auto Select"
 msgstr "Valitse automaattisesti"
 
 #. Translators: this is an option of "Paper Source"
 #. Translators: this is an option of "Resolution"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4463
-#: modules/printbackends/cups/ctkprintbackendcups.c:4465
-#: modules/printbackends/cups/ctkprintbackendcups.c:4467
-#: modules/printbackends/cups/ctkprintbackendcups.c:4471
+#: modules/printbackends/cups/ctkprintbackendcups.c:4477
+#: modules/printbackends/cups/ctkprintbackendcups.c:4479
+#: modules/printbackends/cups/ctkprintbackendcups.c:4481
+#: modules/printbackends/cups/ctkprintbackendcups.c:4485
 msgctxt "printing option value"
 msgid "Printer Default"
 msgstr "Tulostimen oletus"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4473
+#: modules/printbackends/cups/ctkprintbackendcups.c:4487
 msgctxt "printing option value"
 msgid "Embed GhostScript fonts only"
 msgstr "Upota vain GhostScript-fontit"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4475
+#: modules/printbackends/cups/ctkprintbackendcups.c:4489
 msgctxt "printing option value"
 msgid "Convert to PS level 1"
 msgstr "Muunna PS-tasoksi 1"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4477
+#: modules/printbackends/cups/ctkprintbackendcups.c:4491
 msgctxt "printing option value"
 msgid "Convert to PS level 2"
 msgstr "Muunna PS-tasoksi 2"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4479
+#: modules/printbackends/cups/ctkprintbackendcups.c:4493
 msgctxt "printing option value"
 msgid "No pre-filtering"
 msgstr "Ei esisuodatusta"
 
 #. Translators: "Miscellaneous" is the label for a button, that opens
 #. up an extra panel of settings in a print dialog.
-#: modules/printbackends/cups/ctkprintbackendcups.c:4488
+#: modules/printbackends/cups/ctkprintbackendcups.c:4502
 msgctxt "printing option group"
 msgid "Miscellaneous"
 msgstr "Lisäasetukset"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4515
+#: modules/printbackends/cups/ctkprintbackendcups.c:4529
 msgctxt "sides"
 msgid "One Sided"
 msgstr "Yksipuolinen"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4517
+#: modules/printbackends/cups/ctkprintbackendcups.c:4531
 msgctxt "sides"
 msgid "Long Edge (Standard)"
 msgstr "Pitkä reuna (tavallinen)"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4519
+#: modules/printbackends/cups/ctkprintbackendcups.c:4533
 msgctxt "sides"
 msgid "Short Edge (Flip)"
 msgstr "Lyhyt reuna (käännetty)"
 
 #. Translators: Top output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4522
+#: modules/printbackends/cups/ctkprintbackendcups.c:4536
 msgctxt "output-bin"
 msgid "Top Bin"
 msgstr ""
 
 #. Translators: Middle output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4524
+#: modules/printbackends/cups/ctkprintbackendcups.c:4538
 msgctxt "output-bin"
 msgid "Middle Bin"
 msgstr ""
 
 #. Translators: Bottom output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4526
+#: modules/printbackends/cups/ctkprintbackendcups.c:4540
 #, fuzzy
-#| msgctxt "Stock label, navigation"
-#| msgid "_Bottom"
 msgctxt "output-bin"
 msgid "Bottom Bin"
 msgstr "_Alin"
 
 #. Translators: Side output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4528
+#: modules/printbackends/cups/ctkprintbackendcups.c:4542
 msgctxt "output-bin"
 msgid "Side Bin"
 msgstr ""
 
 #. Translators: Left output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4530
+#: modules/printbackends/cups/ctkprintbackendcups.c:4544
 #, fuzzy
-#| msgctxt "keyboard label"
-#| msgid "Left"
 msgctxt "output-bin"
 msgid "Left Bin"
 msgstr "Vasen"
 
 #. Translators: Right output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4532
+#: modules/printbackends/cups/ctkprintbackendcups.c:4546
 #, fuzzy
-#| msgctxt "keyboard label"
-#| msgid "Right"
 msgctxt "output-bin"
 msgid "Right Bin"
 msgstr "Oikea"
 
 #. Translators: Center output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4534
+#: modules/printbackends/cups/ctkprintbackendcups.c:4548
 #, fuzzy
-#| msgctxt "Stock label"
-#| msgid "_Center"
 msgctxt "output-bin"
 msgid "Center Bin"
 msgstr "_Keskitä"
 
 #. Translators: Rear output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4536
+#: modules/printbackends/cups/ctkprintbackendcups.c:4550
 msgctxt "output-bin"
 msgid "Rear Bin"
 msgstr ""
 
 #. Translators: Output bin where one sided output is oriented in the face-up position
-#: modules/printbackends/cups/ctkprintbackendcups.c:4538
+#: modules/printbackends/cups/ctkprintbackendcups.c:4552
 msgctxt "output-bin"
 msgid "Face Up Bin"
 msgstr ""
 
 #. Translators: Output bin where one sided output is oriented in the face-down position
-#: modules/printbackends/cups/ctkprintbackendcups.c:4540
+#: modules/printbackends/cups/ctkprintbackendcups.c:4554
 msgctxt "output-bin"
 msgid "Face Down Bin"
 msgstr ""
 
 #. Translators: Large capacity output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4542
+#: modules/printbackends/cups/ctkprintbackendcups.c:4556
 msgctxt "output-bin"
 msgid "Large Capacity Bin"
 msgstr ""
 
 #. Translators: Output stacker number %d
-#: modules/printbackends/cups/ctkprintbackendcups.c:4564
+#: modules/printbackends/cups/ctkprintbackendcups.c:4578
 #, c-format
 msgctxt "output-bin"
 msgid "Stacker %d"
 msgstr ""
 
 #. Translators: Output mailbox number %d
-#: modules/printbackends/cups/ctkprintbackendcups.c:4568
+#: modules/printbackends/cups/ctkprintbackendcups.c:4582
 #, c-format
 msgctxt "output-bin"
 msgid "Mailbox %d"
 msgstr "Postilokero %d"
 
 #. Translators: Private mailbox
-#: modules/printbackends/cups/ctkprintbackendcups.c:4572
+#: modules/printbackends/cups/ctkprintbackendcups.c:4586
 msgctxt "output-bin"
 msgid "My Mailbox"
 msgstr "Oma postilokero"
 
 #. Translators: Output tray number %d
-#: modules/printbackends/cups/ctkprintbackendcups.c:4576
+#: modules/printbackends/cups/ctkprintbackendcups.c:4590
 #, c-format
 msgctxt "output-bin"
 msgid "Tray %d"
 msgstr "Tulostuskaukalo %d"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5047
+#: modules/printbackends/cups/ctkprintbackendcups.c:5061
 msgid "Printer Default"
 msgstr "Tulostimen oletus"
 
 #. Translators: These strings name the possible values of the
 #. * job priority option in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5488
+#: modules/printbackends/cups/ctkprintbackendcups.c:5503
 msgid "Urgent"
 msgstr "Kiireellinen"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5488
+#: modules/printbackends/cups/ctkprintbackendcups.c:5503
 msgid "High"
 msgstr "Tärkeä"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5488
+#: modules/printbackends/cups/ctkprintbackendcups.c:5503
 msgid "Medium"
 msgstr "Tavallinen"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5488
+#: modules/printbackends/cups/ctkprintbackendcups.c:5503
 msgid "Low"
 msgstr "Ei kiireellinen"
 
 #. Translators, this string is used to label the job priority option
 #. * in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5518
+#: modules/printbackends/cups/ctkprintbackendcups.c:5533
 msgid "Job Priority"
 msgstr "Työn tärkeys"
 
 #. Translators, this string is used to label the billing info entry
 #. * in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5529
+#: modules/printbackends/cups/ctkprintbackendcups.c:5544
 msgid "Billing Info"
 msgstr "Laskutustiedot"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5553
+#: modules/printbackends/cups/ctkprintbackendcups.c:5568
 msgctxt "cover page"
 msgid "None"
 msgstr "Ei mitään"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5554
+#: modules/printbackends/cups/ctkprintbackendcups.c:5569
 msgctxt "cover page"
 msgid "Classified"
 msgstr "Luokiteltu"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5555
+#: modules/printbackends/cups/ctkprintbackendcups.c:5570
 msgctxt "cover page"
 msgid "Confidential"
 msgstr "Luottamuksellinen"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5556
+#: modules/printbackends/cups/ctkprintbackendcups.c:5571
 msgctxt "cover page"
 msgid "Secret"
 msgstr "Salainen"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5557
+#: modules/printbackends/cups/ctkprintbackendcups.c:5572
 msgctxt "cover page"
 msgid "Standard"
 msgstr "Normaali"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5558
+#: modules/printbackends/cups/ctkprintbackendcups.c:5573
 msgctxt "cover page"
 msgid "Top Secret"
 msgstr "Erittäin salainen"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5559
+#: modules/printbackends/cups/ctkprintbackendcups.c:5574
 msgctxt "cover page"
 msgid "Unclassified"
 msgstr "Luokittelematon"
@@ -8354,7 +8315,7 @@ msgstr "Luokittelematon"
 #. Translators, this string is used to label the pages-per-sheet option
 #. * in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5571
+#: modules/printbackends/cups/ctkprintbackendcups.c:5586
 msgctxt "printer option"
 msgid "Pages per Sheet"
 msgstr "Sivuja arkkia kohti"
@@ -8362,7 +8323,7 @@ msgstr "Sivuja arkkia kohti"
 #. Translators, this string is used to label the option in the print
 #. * dialog that controls in what order multiple pages are arranged
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5588
+#: modules/printbackends/cups/ctkprintbackendcups.c:5603
 msgctxt "printer option"
 msgid "Page Ordering"
 msgstr "Sivun järjestys"
@@ -8370,7 +8331,7 @@ msgstr "Sivun järjestys"
 #. Translators, this is the label used for the option in the print
 #. * dialog that controls the front cover page.
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5630
+#: modules/printbackends/cups/ctkprintbackendcups.c:5645
 msgctxt "printer option"
 msgid "Before"
 msgstr "Ennen"
@@ -8378,7 +8339,7 @@ msgstr "Ennen"
 #. Translators, this is the label used for the option in the print
 #. * dialog that controls the back cover page.
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5645
+#: modules/printbackends/cups/ctkprintbackendcups.c:5660
 msgctxt "printer option"
 msgid "After"
 msgstr "Jälkeen"
@@ -8387,7 +8348,7 @@ msgstr "Jälkeen"
 #. * a print job is printed. Possible values are 'now', a specified time,
 #. * or 'on hold'
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5665
+#: modules/printbackends/cups/ctkprintbackendcups.c:5680
 msgctxt "printer option"
 msgid "Print at"
 msgstr "Tulostusaika"
@@ -8395,7 +8356,7 @@ msgstr "Tulostusaika"
 #. Translators: this is the name of the option that allows the user
 #. * to specify a time when a print job will be printed.
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5676
+#: modules/printbackends/cups/ctkprintbackendcups.c:5691
 msgctxt "printer option"
 msgid "Print at time"
 msgstr "Tulosta ajankohtana"
@@ -8405,18 +8366,18 @@ msgstr "Tulosta ajankohtana"
 #. * the width and height in points. E.g: "Custom
 #. * 230.4x142.9"
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5721
+#: modules/printbackends/cups/ctkprintbackendcups.c:5737
 #, c-format
 msgid "Custom %s×%s"
 msgstr "Omavalintainen %s×%s"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5831
+#: modules/printbackends/cups/ctkprintbackendcups.c:5847
 msgctxt "printer option"
 msgid "Printer Profile"
 msgstr "Tulostinprofiili"
 
 #. TRANSLATORS: this is when color profile information is unavailable
-#: modules/printbackends/cups/ctkprintbackendcups.c:5838
+#: modules/printbackends/cups/ctkprintbackendcups.c:5854
 msgctxt "printer option value"
 msgid "Unavailable"
 msgstr "Ei saatavilla"
@@ -8441,39 +8402,39 @@ msgstr "Määrittelemätön profiili"
 msgid "output"
 msgstr "tuloste"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:537
+#: modules/printbackends/file/ctkprintbackendfile.c:539
 msgid "Print to File"
 msgstr "Tulosta tiedostoon"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:663
+#: modules/printbackends/file/ctkprintbackendfile.c:667
 msgid "PDF"
 msgstr "PDF"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:663
+#: modules/printbackends/file/ctkprintbackendfile.c:667
 msgid "Postscript"
 msgstr "Postscript"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:663
+#: modules/printbackends/file/ctkprintbackendfile.c:667
 msgid "SVG"
 msgstr "SVG"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:735
+#: modules/printbackends/file/ctkprintbackendfile.c:738
 msgid "File"
 msgstr "Tiedosto"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:745
+#: modules/printbackends/file/ctkprintbackendfile.c:750
 msgid "_Output format"
 msgstr "_Tulostusformaatti"
 
-#: modules/printbackends/lpr/ctkprintbackendlpr.c:393
+#: modules/printbackends/lpr/ctkprintbackendlpr.c:394
 msgid "Print to LPR"
 msgstr "Tulosta LPR:ää käyttäen"
 
-#: modules/printbackends/lpr/ctkprintbackendlpr.c:419
+#: modules/printbackends/lpr/ctkprintbackendlpr.c:423
 msgid "Pages Per Sheet"
 msgstr "Sivuja arkilla"
 
-#: modules/printbackends/lpr/ctkprintbackendlpr.c:426
+#: modules/printbackends/lpr/ctkprintbackendlpr.c:430
 msgid "Command Line"
 msgstr "Komentorivi"
 
@@ -8508,9 +8469,81 @@ msgstr "tuntematon"
 msgid "test-output.%s"
 msgstr "testituloste.%s"
 
-#: modules/printbackends/test/ctkprintbackendtest.c:465
+#: modules/printbackends/test/ctkprintbackendtest.c:467
 msgid "Print to Test Printer"
 msgstr "Tulosta testitulostimelle"
+
+#~ msgctxt "Color name"
+#~ msgid "Scarlet Red"
+#~ msgstr "Tulipunainen"
+
+#~ msgctxt "Color name"
+#~ msgid "Light Butter"
+#~ msgstr "Vaalea voi"
+
+#~ msgctxt "Color name"
+#~ msgid "Butter"
+#~ msgstr "Voi"
+
+#~ msgctxt "Color name"
+#~ msgid "Chameleon"
+#~ msgstr "Kameleontti"
+
+#~ msgctxt "Color name"
+#~ msgid "Sky Blue"
+#~ msgstr "Taivaansininen"
+
+#~ msgctxt "Color name"
+#~ msgid "Plum"
+#~ msgstr "Luumu"
+
+#~ msgctxt "Color name"
+#~ msgid "Light Chocolate"
+#~ msgstr "Valkosuklaa"
+
+#~ msgctxt "Color name"
+#~ msgid "Chocolate"
+#~ msgstr "Suklaa"
+
+#~ msgctxt "Color name"
+#~ msgid "Dark Chocolate"
+#~ msgstr "Tumma suklaa"
+
+#~ msgctxt "Color name"
+#~ msgid "Light Aluminum 1"
+#~ msgstr "Vaalea alumiini 1"
+
+#~ msgctxt "Color name"
+#~ msgid "Aluminum 1"
+#~ msgstr "Alumiini 1"
+
+#~ msgctxt "Color name"
+#~ msgid "Dark Aluminum 1"
+#~ msgstr "Tumma alumiini 1"
+
+#~ msgctxt "Color name"
+#~ msgid "Light Aluminum 2"
+#~ msgstr "Vaalea alumiini 2"
+
+#~ msgctxt "Color name"
+#~ msgid "Aluminum 2"
+#~ msgstr "Alumiini 2"
+
+#~ msgctxt "Color name"
+#~ msgid "Dark Aluminum 2"
+#~ msgstr "Tumma alumiini 2"
+
+#~ msgctxt "Color name"
+#~ msgid "Darker Gray"
+#~ msgstr "Tummempi harmaa"
+
+#~ msgctxt "Color name"
+#~ msgid "Medium Gray"
+#~ msgstr "Tavallinen harmaa"
+
+#~ msgctxt "Color name"
+#~ msgid "Lighter Gray"
+#~ msgstr "Vaaleampi harmaa"
 
 #~ msgid "Not implemented on OS X"
 #~ msgstr "Ei toteutettu OS X:ssä"

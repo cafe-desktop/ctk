@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-01 06:24+0000\n"
+"POT-Creation-Date: 2022-03-23 17:45+0100\n"
 "PO-Revision-Date: 2019-09-02 08:42-0700\n"
 "Last-Translator: A S Alam <alam.yellow@gmail.com>\n"
 "Language-Team: Punjabi <punjabi-users@list.sf.net>\n"
@@ -25,48 +25,48 @@ msgstr ""
 msgid "Broadway display type not supported: %s"
 msgstr "ਬਰੌਡਵੇ ਡਿਸਪਲੇਅ ਕਿਸਮ ਸਹਾਇਕ ਨਹੀਂ:  %s"
 
-#: cdk/cdk.c:187
+#: cdk/cdk.c:179
 #, c-format
 msgid "Error parsing option --cdk-debug"
 msgstr "--cdk-debug ਚੋਣ ਪਾਰਸ ਕਰਨ ਦੌਰਾਨ ਗਲਤੀ"
 
-#: cdk/cdk.c:207
+#: cdk/cdk.c:199
 #, c-format
 msgid "Error parsing option --cdk-no-debug"
 msgstr "ਚੋਣ --cdk-no-debug ਪਾਰਸ ਕਰਨ ਦੌਰਾਨ ਗਲਤੀ"
 
 #. Description of --class=CLASS in --help output
-#: cdk/cdk.c:236
+#: cdk/cdk.c:228
 msgid "Program class as used by the window manager"
 msgstr "ਵਿੰਡੋ ਮੈਨੇਜਰ ਰਾਹੀਂ ਪਰੋਗਰਾਮ ਕਲਾਸ ਦੇ ਤੌਰ ਉੱਤੇ ਵਰਤਿਆ"
 
 #. Placeholder in --class=CLASS in --help output
-#: cdk/cdk.c:237
+#: cdk/cdk.c:229
 msgid "CLASS"
 msgstr "ਕਲਾਸ"
 
 #. Description of --name=NAME in --help output
-#: cdk/cdk.c:239
+#: cdk/cdk.c:231
 msgid "Program name as used by the window manager"
 msgstr "ਵਿੰਡੋ ਮੈਨੇਜਰ ਰਾਹੀਂ ਪਰੋਗਰਾਮ ਨਾਂ ਦੇ ਤੌਰ ਉੱਤੇ ਇਸਤੇਮਾਲ"
 
 #. Placeholder in --name=NAME in --help output
-#: cdk/cdk.c:240
+#: cdk/cdk.c:232
 msgid "NAME"
 msgstr "ਨਾਂ"
 
 #. Description of --display=DISPLAY in --help output
-#: cdk/cdk.c:243
+#: cdk/cdk.c:235
 msgid "X display to use"
 msgstr "ਵਰਤਣ ਲਈ X ਡਿਸਪਲੇਅ"
 
 #. Placeholder in --display=DISPLAY in --help output
-#: cdk/cdk.c:244
+#: cdk/cdk.c:236
 msgid "DISPLAY"
 msgstr "ਡਿਸਪਲੇਅ"
 
 #. Description of --cdk-debug=FLAGS in --help output
-#: cdk/cdk.c:248
+#: cdk/cdk.c:240
 msgid "CDK debugging flags to set"
 msgstr "ਸੈੱਟ ਕਰਨ ਲਈ CDK+ ਡੀਬੱਗਿੰਗ ਨਿਸ਼ਾਨ"
 
@@ -74,21 +74,20 @@ msgstr "ਸੈੱਟ ਕਰਨ ਲਈ CDK+ ਡੀਬੱਗਿੰਗ ਨਿਸ਼
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
 #. Placeholder in --ctk-debug=FLAGS in --help output
 #. Placeholder in --ctk-no-debug=FLAGS in --help output
-#: cdk/cdk.c:249 cdk/cdk.c:252 ctk/ctkmain.c:471 ctk/ctkmain.c:474
+#: cdk/cdk.c:241 cdk/cdk.c:244 ctk/ctkmain.c:471 ctk/ctkmain.c:474
 msgid "FLAGS"
 msgstr "ਫਲੈਗ"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
-#: cdk/cdk.c:251
+#: cdk/cdk.c:243
 msgid "CDK debugging flags to unset"
 msgstr "ਅਣ-ਸੈੱਟ ਕਰਨ ਲਈ CDK+ ਡੀਬੱਗਿੰਗ ਨਿਸ਼ਾਨ"
 
-#: cdk/cdkwindow.c:2850
+#: cdk/cdkwindow.c:2851
 msgid "GL support disabled via CDK_DEBUG"
 msgstr "CDK_DEBUG ਰਾਹੀਂ GL ਸਹਿਯੋਗ ਬੰਦ ਕੀਤਾ ਹੈ"
 
-#: cdk/cdkwindow.c:2861
-#| msgid "Backend does not support window scaling"
+#: cdk/cdkwindow.c:2862
 msgid "The current backend does not support OpenGL"
 msgstr "ਮੌਜੂਦਾ ਬੈਕਐਡ OpenGL ਲਈ ਸਹਾਇਕ ਨਹੀਂ ਹੈ।"
 
@@ -370,7 +369,6 @@ msgid "AudioMedia"
 msgstr "AudioMedia"
 
 #: cdk/keyname-table.h:6897
-#| msgid "_Eject"
 msgctxt "keyboard label"
 msgid "Eject"
 msgstr "ਬਾਹਰ ਕੱਢੋ"
@@ -396,7 +394,6 @@ msgid "WWW"
 msgstr "WWW"
 
 #: cdk/keyname-table.h:6902
-#| msgid "Search"
 msgctxt "keyboard label"
 msgid "Search"
 msgstr "ਖੋਜ"
@@ -471,35 +468,27 @@ msgctxt "keyboard label"
 msgid "Suspend"
 msgstr "Suspend"
 
-#: cdk/mir/cdkmirglcontext.c:48 cdk/mir/cdkmirwindowimpl.c:2226
-#: cdk/wayland/cdkglcontext-wayland.c:468 cdk/win32/cdkglcontext-win32.c:1177
-#: cdk/x11/cdkglcontext-x11.c:1277
-msgid "No GL implementation is available"
-msgstr "ਕੋਈ GL ਸਥਾਪਨ ਮੌਜੂਦ ਨਹੀਂ"
+#: cdk/quartz/cdkglcontext-quartz.c:123
+msgid "Unable to create a GL pixel format"
+msgstr "GL ਪਿਕਸਲ ਫਾਰਮੈਟ ਬਣਾਉਣ ਲਈ ਅਸਮਰੱਥ"
 
-#: cdk/mir/cdkmirglcontext.c:89 cdk/quartz/cdkglcontext-quartz.c:132
-#: cdk/wayland/cdkglcontext-wayland.c:208 cdk/win32/cdkglcontext-win32.c:1070
-#: cdk/win32/cdkglcontext-win32.c:1110 cdk/x11/cdkglcontext-x11.c:720
-#: cdk/x11/cdkglcontext-x11.c:770
+#: cdk/quartz/cdkglcontext-quartz.c:133 cdk/wayland/cdkglcontext-wayland.c:208
+#: cdk/win32/cdkglcontext-win32.c:1072 cdk/win32/cdkglcontext-win32.c:1112
+#: cdk/x11/cdkglcontext-x11.c:724 cdk/x11/cdkglcontext-x11.c:774
 msgid "Unable to create a GL context"
 msgstr "GL ਪ੍ਰਸੰਗ ਬਣਾਉਣ ਲਈ ਅਸਮਰੱਥ"
 
-#: cdk/mir/cdkmirwindowimpl.c:2188 cdk/mir/cdkmirwindowimpl.c:2198
 #: cdk/wayland/cdkglcontext-wayland.c:418
-#: cdk/wayland/cdkglcontext-wayland.c:428 cdk/win32/cdkglcontext-win32.c:908
-#: cdk/win32/cdkglcontext-win32.c:918 cdk/win32/cdkglcontext-win32.c:1035
-#: cdk/x11/cdkglcontext-x11.c:971
+#: cdk/wayland/cdkglcontext-wayland.c:428 cdk/win32/cdkglcontext-win32.c:910
+#: cdk/win32/cdkglcontext-win32.c:920 cdk/win32/cdkglcontext-win32.c:1037
+#: cdk/x11/cdkglcontext-x11.c:975
 msgid "No available configurations for the given pixel format"
 msgstr "ਦਿੱਤੇ ਪਿਕਸਲ ਫਾਰਮੈਟ ਲਈ ਸੰਰਚਨਾ ਮੌਜੂਦ ਨਹੀਂ"
 
-#: cdk/mir/cdkmirwindowimpl.c:2234
-msgid "3.2 core GL profile is not available on EGL implementation"
-msgstr "EGL ਸਥਾਪਨ ਉੱਤੇ 3.2 ਕੋਰ GL ਮੌਜੂਦ ਨਹੀਂ"
-
-#: cdk/quartz/cdkglcontext-quartz.c:122
-#| msgid "Unable to create a GL context"
-msgid "Unable to create a GL pixel format"
-msgstr "GL ਪਿਕਸਲ ਫਾਰਮੈਟ ਬਣਾਉਣ ਲਈ ਅਸਮਰੱਥ"
+#: cdk/wayland/cdkglcontext-wayland.c:468 cdk/win32/cdkglcontext-win32.c:1179
+#: cdk/x11/cdkglcontext-x11.c:1281
+msgid "No GL implementation is available"
+msgstr "ਕੋਈ GL ਸਥਾਪਨ ਮੌਜੂਦ ਨਹੀਂ"
 
 #: cdk/wayland/cdkglcontext-wayland.c:476
 msgid "Core GL is not available on EGL implementation"
@@ -535,24 +524,24 @@ msgstr "8 ਬਿੱਟ ਮੋਡ ਵਿੱਚ ਰੰਗ-ਪੱਟੀ ਦਾ ਆ�
 msgid "COLORS"
 msgstr "ਰੰਗ"
 
-#: cdk/x11/cdkapplaunchcontext-x11.c:295
+#: cdk/x11/cdkapplaunchcontext-x11.c:298
 #, c-format
 msgid "Starting %s"
 msgstr "%s ਸ਼ੁਰੂ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ"
 
-#: cdk/x11/cdkapplaunchcontext-x11.c:308
+#: cdk/x11/cdkapplaunchcontext-x11.c:311
 #, c-format
 msgid "Opening %s"
 msgstr "%s ਖੋਲ੍ਹਿਆ ਜਾ ਸਕਿਆ"
 
-#: cdk/x11/cdkapplaunchcontext-x11.c:313
+#: cdk/x11/cdkapplaunchcontext-x11.c:316
 #, c-format
 msgid "Opening %d Item"
 msgid_plural "Opening %d Items"
 msgstr[0] "%d ਇਕਾਈ ਖੋਲ੍ਹੀ ਜਾ ਰਹੀ ਹੈ"
 msgstr[1] "%d ਇਕਾਈਆਂ ਖੋਲ੍ਹੀਆਂ ਜਾ ਰਹੀਆਂ ਹਨ"
 
-#: cdk/x11/cdkglcontext-x11.c:999
+#: cdk/x11/cdkglcontext-x11.c:1003
 #, c-format
 msgid "No available configurations for the given RGBA pixel format"
 msgstr "ਦਿੱਤੇ RGBA ਪਿਕਸਲ ਫਾਰਮੈਟ ਲਈ ਸੰਰਚਨਾ ਮੌਜੂਦ ਨਹੀਂ"
@@ -567,12 +556,12 @@ msgctxt "Action name"
 msgid "Toggle"
 msgstr "ਬਦਲੋ"
 
-#: ctk/a11y/ctkbuttonaccessible.c:321 ctk/a11y/ctkmenuitemaccessible.c:436
+#: ctk/a11y/ctkbuttonaccessible.c:323 ctk/a11y/ctkmenuitemaccessible.c:439
 msgctxt "Action name"
 msgid "Click"
 msgstr "ਦਬਾਓ"
 
-#: ctk/a11y/ctkbuttonaccessible.c:330
+#: ctk/a11y/ctkbuttonaccessible.c:332
 msgctxt "Action description"
 msgid "Clicks the button"
 msgstr "ਬਟਨ ਕਲਿੱਕ ਕਰਦਾ ਹੈ"
@@ -588,7 +577,7 @@ msgid "Edit"
 msgstr "ਸੋਧ"
 
 #: ctk/a11y/ctkcellaccessible.c:261 ctk/a11y/ctkcolorswatchaccessible.c:149
-#: ctk/a11y/ctkentryaccessible.c:1557 ctk/a11y/ctkexpanderaccessible.c:281
+#: ctk/a11y/ctkentryaccessible.c:1560 ctk/a11y/ctkexpanderaccessible.c:281
 msgctxt "Action name"
 msgid "Activate"
 msgstr "ਸਰਗਰਮ"
@@ -633,17 +622,17 @@ msgctxt "Action description"
 msgid "Customizes the color"
 msgstr "ਪਸੰਦੀਦਾ ਰੰਗ "
 
-#: ctk/a11y/ctkcomboboxaccessible.c:310
+#: ctk/a11y/ctkcomboboxaccessible.c:313
 msgctxt "Action name"
 msgid "Press"
 msgstr "ਦੱਬੋ"
 
-#: ctk/a11y/ctkcomboboxaccessible.c:319
+#: ctk/a11y/ctkcomboboxaccessible.c:322
 msgctxt "Action description"
 msgid "Presses the combobox"
 msgstr "ਕੰਬੋਬਾਕਸ ਦੱਬੋ"
 
-#: ctk/a11y/ctkentryaccessible.c:1566
+#: ctk/a11y/ctkentryaccessible.c:1569
 msgctxt "Action description"
 msgid "Activates the entry"
 msgstr "ਐਂਟਰੀ ਸਰਗਰਮ ਕਰੋ"
@@ -656,406 +645,406 @@ msgstr "ਐਕਸਪੈਂਡਰ ਸਰਗਰਮ ਕਰੋ"
 #. FIXME these need accelerators when appropriate, and
 #. * need the mnemonics to be rationalized
 #.
-#: ctk/a11y/ctkimageaccessible.c:53 ctk/ctkstock.c:345
+#: ctk/a11y/ctkimageaccessible.c:53 ctk/ctkstock.c:327
 msgctxt "Stock label"
 msgid "_About"
 msgstr "ਇਸ ਬਾਰੇ(_A)"
 
-#: ctk/a11y/ctkimageaccessible.c:54 ctk/ctkstock.c:346
+#: ctk/a11y/ctkimageaccessible.c:54 ctk/ctkstock.c:328
 msgctxt "Stock label"
 msgid "_Add"
 msgstr "ਸ਼ਾਮਲ(_A)"
 
-#: ctk/a11y/ctkimageaccessible.c:55 ctk/ctkstock.c:348
+#: ctk/a11y/ctkimageaccessible.c:55 ctk/ctkstock.c:330
 msgctxt "Stock label"
 msgid "_Bold"
 msgstr "ਗੂੜ੍ਹਾ(_B)"
 
-#: ctk/a11y/ctkimageaccessible.c:56 ctk/ctkstock.c:350
+#: ctk/a11y/ctkimageaccessible.c:56 ctk/ctkstock.c:332
 msgctxt "Stock label"
 msgid "_CD-ROM"
 msgstr "_CD-ROM"
 
-#: ctk/a11y/ctkimageaccessible.c:57 ctk/ctkstock.c:351
+#: ctk/a11y/ctkimageaccessible.c:57 ctk/ctkstock.c:333
 msgctxt "Stock label"
 msgid "_Clear"
 msgstr "ਸਾਫ਼ ਕਰੋ(_C)"
 
-#: ctk/a11y/ctkimageaccessible.c:58 ctk/ctkstock.c:352
+#: ctk/a11y/ctkimageaccessible.c:58 ctk/ctkstock.c:334
 msgctxt "Stock label"
 msgid "_Close"
 msgstr "ਬੰਦ ਕਰੋ(_C)"
 
-#: ctk/a11y/ctkimageaccessible.c:59 ctk/ctkheaderbar.c:415 ctk/ctkwindow.c:9307
+#: ctk/a11y/ctkimageaccessible.c:59 ctk/ctkheaderbar.c:415 ctk/ctkwindow.c:9319
 msgid "Minimize"
 msgstr "ਨਿਊਨਤਮ ਕਰੋ"
 
-#: ctk/a11y/ctkimageaccessible.c:60 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9316
+#: ctk/a11y/ctkimageaccessible.c:60 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9328
 msgid "Maximize"
 msgstr "ਅਧਿਕਤਮ ਕਰੋ "
 
-#: ctk/a11y/ctkimageaccessible.c:61 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9273
+#: ctk/a11y/ctkimageaccessible.c:61 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9285
 msgid "Restore"
 msgstr "ਮੁੜ-ਸਟੋਰ"
 
-#: ctk/a11y/ctkimageaccessible.c:62 ctk/ctkstock.c:355
+#: ctk/a11y/ctkimageaccessible.c:62 ctk/ctkstock.c:337
 msgctxt "Stock label"
 msgid "_Copy"
 msgstr "ਕਾਪੀ ਕਰੋ(_C)"
 
-#: ctk/a11y/ctkimageaccessible.c:63 ctk/ctkstock.c:356
+#: ctk/a11y/ctkimageaccessible.c:63 ctk/ctkstock.c:338
 msgctxt "Stock label"
 msgid "Cu_t"
 msgstr "ਕੱਟੋ(_t)"
 
-#: ctk/a11y/ctkimageaccessible.c:64 ctk/ctkstock.c:357
+#: ctk/a11y/ctkimageaccessible.c:64 ctk/ctkstock.c:339
 msgctxt "Stock label"
 msgid "_Delete"
 msgstr "ਹਟਾਓ(_D)"
 
-#: ctk/a11y/ctkimageaccessible.c:65 ctk/ctkstock.c:339
+#: ctk/a11y/ctkimageaccessible.c:65 ctk/ctkstock.c:321
 msgctxt "Stock label"
 msgid "Error"
 msgstr "ਗਲਤੀ"
 
 #. KEEP IN SYNC with ctkiconfactory.c stock icons, when appropriate
-#: ctk/a11y/ctkimageaccessible.c:66 ctk/ctkstock.c:337
+#: ctk/a11y/ctkimageaccessible.c:66 ctk/ctkstock.c:319
 msgctxt "Stock label"
 msgid "Information"
 msgstr "ਜਾਣਕਾਰੀ"
 
-#: ctk/a11y/ctkimageaccessible.c:67 ctk/ctkstock.c:340
+#: ctk/a11y/ctkimageaccessible.c:67 ctk/ctkstock.c:322
 msgctxt "Stock label"
 msgid "Question"
 msgstr "ਸਵਾਲ"
 
-#: ctk/a11y/ctkimageaccessible.c:68 ctk/ctkstock.c:338
+#: ctk/a11y/ctkimageaccessible.c:68 ctk/ctkstock.c:320
 msgctxt "Stock label"
 msgid "Warning"
 msgstr "ਚੇਤਾਵਨੀ"
 
-#: ctk/a11y/ctkimageaccessible.c:69 ctk/ctkstock.c:360
+#: ctk/a11y/ctkimageaccessible.c:69 ctk/ctkstock.c:342
 msgctxt "Stock label"
 msgid "_Execute"
 msgstr "ਚਲਾਓ(_E)"
 
-#: ctk/a11y/ctkimageaccessible.c:70 ctk/ctkstock.c:362
+#: ctk/a11y/ctkimageaccessible.c:70 ctk/ctkstock.c:344
 msgctxt "Stock label"
 msgid "_File"
 msgstr "ਫਾਇਲ(_F)"
 
-#: ctk/a11y/ctkimageaccessible.c:71 ctk/ctkstock.c:363
+#: ctk/a11y/ctkimageaccessible.c:71 ctk/ctkstock.c:345
 msgctxt "Stock label"
 msgid "_Find"
 msgstr "ਖੋਜ(_F)"
 
-#: ctk/a11y/ctkimageaccessible.c:72 ctk/ctkstock.c:364
+#: ctk/a11y/ctkimageaccessible.c:72 ctk/ctkstock.c:346
 msgctxt "Stock label"
 msgid "Find and _Replace"
 msgstr "ਖੋਜੋ ਅਤੇ ਬਦਲੋ(_R)"
 
-#: ctk/a11y/ctkimageaccessible.c:73 ctk/ctkstock.c:365
+#: ctk/a11y/ctkimageaccessible.c:73 ctk/ctkstock.c:347
 msgctxt "Stock label"
 msgid "_Floppy"
 msgstr "ਫਲਾਪੀ(_F)"
 
-#: ctk/a11y/ctkimageaccessible.c:74 ctk/ctkstock.c:366
+#: ctk/a11y/ctkimageaccessible.c:74 ctk/ctkstock.c:348
 msgctxt "Stock label"
 msgid "_Fullscreen"
 msgstr "ਪੂਰੀ ਸਕਰੀਨ(_F)"
 
 #. This is a navigation label as in "go to the bottom of the page"
-#: ctk/a11y/ctkimageaccessible.c:75 ctk/ctkstock.c:369
+#: ctk/a11y/ctkimageaccessible.c:75 ctk/ctkstock.c:351
 msgctxt "Stock label, navigation"
 msgid "_Bottom"
 msgstr "ਹੇਠਾਂ(_B):"
 
 #. This is a navigation label as in "go to the first page"
-#: ctk/a11y/ctkimageaccessible.c:76 ctk/ctkstock.c:371
+#: ctk/a11y/ctkimageaccessible.c:76 ctk/ctkstock.c:353
 msgctxt "Stock label, navigation"
 msgid "_First"
 msgstr "ਪਹਿਲਾਂ(_F)"
 
 #. This is a navigation label as in "go to the last page"
-#: ctk/a11y/ctkimageaccessible.c:77 ctk/ctkstock.c:373
+#: ctk/a11y/ctkimageaccessible.c:77 ctk/ctkstock.c:355
 msgctxt "Stock label, navigation"
 msgid "_Last"
 msgstr "ਆਖਰੀ(_L)"
 
 #. This is a navigation label as in "go to the top of the page"
-#: ctk/a11y/ctkimageaccessible.c:78 ctk/ctkstock.c:375
+#: ctk/a11y/ctkimageaccessible.c:78 ctk/ctkstock.c:357
 msgctxt "Stock label, navigation"
 msgid "_Top"
 msgstr "ਉੱਤੇ(_T)"
 
 #. This is a navigation label as in "go back"
-#: ctk/a11y/ctkimageaccessible.c:79 ctk/ctkstock.c:377
+#: ctk/a11y/ctkimageaccessible.c:79 ctk/ctkstock.c:359
 msgctxt "Stock label, navigation"
 msgid "_Back"
 msgstr "ਪਿੱਛੇ(_B)"
 
 #. This is a navigation label as in "go down"
-#: ctk/a11y/ctkimageaccessible.c:80 ctk/ctkstock.c:379
+#: ctk/a11y/ctkimageaccessible.c:80 ctk/ctkstock.c:361
 msgctxt "Stock label, navigation"
 msgid "_Down"
 msgstr "ਹੇਠਾਂ(_D)"
 
 #. This is a navigation label as in "go forward"
-#: ctk/a11y/ctkimageaccessible.c:81 ctk/ctkstock.c:381
+#: ctk/a11y/ctkimageaccessible.c:81 ctk/ctkstock.c:363
 msgctxt "Stock label, navigation"
 msgid "_Forward"
 msgstr "ਅੱਗੇ(_F)"
 
 #. This is a navigation label as in "go up"
-#: ctk/a11y/ctkimageaccessible.c:82 ctk/ctkstock.c:383
+#: ctk/a11y/ctkimageaccessible.c:82 ctk/ctkstock.c:365
 msgctxt "Stock label, navigation"
 msgid "_Up"
 msgstr "ਉੱਤੇ(_U)"
 
-#: ctk/a11y/ctkimageaccessible.c:83 ctk/ctkstock.c:384
+#: ctk/a11y/ctkimageaccessible.c:83 ctk/ctkstock.c:366
 msgctxt "Stock label"
 msgid "_Hard Disk"
 msgstr "ਹਾਰਡ ਡਿਸਕ(_H)"
 
-#: ctk/a11y/ctkimageaccessible.c:84 ctk/ctkstock.c:385
+#: ctk/a11y/ctkimageaccessible.c:84 ctk/ctkstock.c:367
 msgctxt "Stock label"
 msgid "_Help"
 msgstr "ਮੱਦਦ(_H)"
 
-#: ctk/a11y/ctkimageaccessible.c:85 ctk/ctkstock.c:386
+#: ctk/a11y/ctkimageaccessible.c:85 ctk/ctkstock.c:368
 msgctxt "Stock label"
 msgid "_Home"
 msgstr "ਘਰ(_H)"
 
-#: ctk/a11y/ctkimageaccessible.c:86 ctk/ctkstock.c:387
+#: ctk/a11y/ctkimageaccessible.c:86 ctk/ctkstock.c:369
 msgctxt "Stock label"
 msgid "Increase Indent"
 msgstr "ਹਾਸ਼ੀਏ ਤੋਂ ਦੂਰੀ ਵਧਾਓ"
 
-#: ctk/a11y/ctkimageaccessible.c:87 ctk/ctkstock.c:391
+#: ctk/a11y/ctkimageaccessible.c:87 ctk/ctkstock.c:373
 msgctxt "Stock label"
 msgid "_Italic"
 msgstr "ਤਿਰਛਾ(_I)"
 
-#: ctk/a11y/ctkimageaccessible.c:88 ctk/ctkstock.c:392
+#: ctk/a11y/ctkimageaccessible.c:88 ctk/ctkstock.c:374
 msgctxt "Stock label"
 msgid "_Jump to"
 msgstr "ਜੰਪ(_J)"
 
 #. This is about text justification, "centered text"
-#: ctk/a11y/ctkimageaccessible.c:89 ctk/ctkstock.c:394
+#: ctk/a11y/ctkimageaccessible.c:89 ctk/ctkstock.c:376
 msgctxt "Stock label"
 msgid "_Center"
 msgstr "ਬਦਲੋ(_C)"
 
 #. This is about text justification
-#: ctk/a11y/ctkimageaccessible.c:90 ctk/ctkstock.c:396
+#: ctk/a11y/ctkimageaccessible.c:90 ctk/ctkstock.c:378
 msgctxt "Stock label"
 msgid "_Fill"
 msgstr "ਫਾਇਲਾਂ(_F)"
 
 #. This is about text justification, "left-justified text"
-#: ctk/a11y/ctkimageaccessible.c:91 ctk/ctkstock.c:398
+#: ctk/a11y/ctkimageaccessible.c:91 ctk/ctkstock.c:380
 msgctxt "Stock label"
 msgid "_Left"
 msgstr "ਖੱਬੇ(_L)"
 
 #. This is about text justification, "right-justified text"
-#: ctk/a11y/ctkimageaccessible.c:92 ctk/ctkstock.c:400
+#: ctk/a11y/ctkimageaccessible.c:92 ctk/ctkstock.c:382
 msgctxt "Stock label"
 msgid "_Right"
 msgstr "ਸੱਜੇ(_R)"
 
-#: ctk/a11y/ctkimageaccessible.c:93 ctk/ctkstock.c:367
+#: ctk/a11y/ctkimageaccessible.c:93 ctk/ctkstock.c:349
 msgctxt "Stock label"
 msgid "_Leave Fullscreen"
 msgstr "ਪੂਰੀ ਸਕਰੀਨ ਛੱਡੋ(_L)"
 
 #. Media label, as in "fast forward"
-#: ctk/a11y/ctkimageaccessible.c:94 ctk/ctkstock.c:403
+#: ctk/a11y/ctkimageaccessible.c:94 ctk/ctkstock.c:385
 msgctxt "Stock label, media"
 msgid "_Forward"
 msgstr "ਅੱਗੇ(_F)"
 
 #. Media label, as in "next song"
-#: ctk/a11y/ctkimageaccessible.c:95 ctk/ctkstock.c:405
+#: ctk/a11y/ctkimageaccessible.c:95 ctk/ctkstock.c:387
 msgctxt "Stock label, media"
 msgid "_Next"
 msgstr "ਨਵਾਂ(_N)"
 
 #. Media label, as in "pause music"
-#: ctk/a11y/ctkimageaccessible.c:96 ctk/ctkstock.c:407
+#: ctk/a11y/ctkimageaccessible.c:96 ctk/ctkstock.c:389
 msgctxt "Stock label, media"
 msgid "P_ause"
 msgstr "ਵਿਰਾਮ(_a)"
 
 #. Media label, as in "play music"
-#: ctk/a11y/ctkimageaccessible.c:97 ctk/ctkstock.c:409
+#: ctk/a11y/ctkimageaccessible.c:97 ctk/ctkstock.c:391
 msgctxt "Stock label, media"
 msgid "_Play"
 msgstr "ਚਲਾਓ(_P)"
 
 #. Media label, as in  "previous song"
-#: ctk/a11y/ctkimageaccessible.c:98 ctk/ctkstock.c:411
+#: ctk/a11y/ctkimageaccessible.c:98 ctk/ctkstock.c:393
 msgctxt "Stock label, media"
 msgid "Pre_vious"
 msgstr "ਪਿੱਛੇ(_v)"
 
 #. Media label
-#: ctk/a11y/ctkimageaccessible.c:99 ctk/ctkstock.c:413
+#: ctk/a11y/ctkimageaccessible.c:99 ctk/ctkstock.c:395
 msgctxt "Stock label, media"
 msgid "_Record"
 msgstr "ਰਿਕਾਰਡ(_R)"
 
 #. Media label
-#: ctk/a11y/ctkimageaccessible.c:100 ctk/ctkstock.c:415
+#: ctk/a11y/ctkimageaccessible.c:100 ctk/ctkstock.c:397
 msgctxt "Stock label, media"
 msgid "R_ewind"
 msgstr "ਪਿੱਛੇ ਜਾਓ(_e)"
 
 #. Media label
-#: ctk/a11y/ctkimageaccessible.c:101 ctk/ctkstock.c:417
+#: ctk/a11y/ctkimageaccessible.c:101 ctk/ctkstock.c:399
 msgctxt "Stock label, media"
 msgid "_Stop"
 msgstr "ਰੋਕੋ(_S)"
 
-#: ctk/a11y/ctkimageaccessible.c:102 ctk/ctkstock.c:418
+#: ctk/a11y/ctkimageaccessible.c:102 ctk/ctkstock.c:400
 msgctxt "Stock label"
 msgid "_Network"
 msgstr "ਨੈੱਟਵਰਕ(_N)"
 
-#: ctk/a11y/ctkimageaccessible.c:103 ctk/ctkstock.c:419
+#: ctk/a11y/ctkimageaccessible.c:103 ctk/ctkstock.c:401
 msgctxt "Stock label"
 msgid "_New"
 msgstr "ਨਵਾਂ(_N)"
 
-#: ctk/a11y/ctkimageaccessible.c:104 ctk/ctkstock.c:422
+#: ctk/a11y/ctkimageaccessible.c:104 ctk/ctkstock.c:404
 msgctxt "Stock label"
 msgid "_Open"
 msgstr "ਖੋਲ੍ਹੋ(_O)"
 
-#: ctk/a11y/ctkimageaccessible.c:105 ctk/ctkstock.c:432
+#: ctk/a11y/ctkimageaccessible.c:105 ctk/ctkstock.c:414
 msgctxt "Stock label"
 msgid "_Paste"
 msgstr "ਚੇਪੋ(_P)"
 
-#: ctk/a11y/ctkimageaccessible.c:106 ctk/ctkstock.c:434
+#: ctk/a11y/ctkimageaccessible.c:106 ctk/ctkstock.c:416
 msgctxt "Stock label"
 msgid "_Print"
 msgstr "ਛਾਪੋ(_P)"
 
-#: ctk/a11y/ctkimageaccessible.c:107 ctk/ctkstock.c:435
+#: ctk/a11y/ctkimageaccessible.c:107 ctk/ctkstock.c:417
 msgctxt "Stock label"
 msgid "Print Pre_view"
 msgstr "ਛਾਪਣ ਝਲਕ(_v)"
 
-#: ctk/a11y/ctkimageaccessible.c:108 ctk/ctkstock.c:436
+#: ctk/a11y/ctkimageaccessible.c:108 ctk/ctkstock.c:418
 msgctxt "Stock label"
 msgid "_Properties"
 msgstr "ਵਿਸ਼ੇਸ਼ਤਾ(_P)"
 
-#: ctk/a11y/ctkimageaccessible.c:109 ctk/ctkstock.c:437
+#: ctk/a11y/ctkimageaccessible.c:109 ctk/ctkstock.c:419
 msgctxt "Stock label"
 msgid "_Quit"
 msgstr "ਬਾਹਰ(_Q)"
 
-#: ctk/a11y/ctkimageaccessible.c:110 ctk/ctkstock.c:438
+#: ctk/a11y/ctkimageaccessible.c:110 ctk/ctkstock.c:420
 msgctxt "Stock label"
 msgid "_Redo"
 msgstr "ਮੁੜ-ਵਾਪਸ(_R)"
 
-#: ctk/a11y/ctkimageaccessible.c:111 ctk/ctkstock.c:439
+#: ctk/a11y/ctkimageaccessible.c:111 ctk/ctkstock.c:421
 msgctxt "Stock label"
 msgid "_Refresh"
 msgstr "ਤਾਜ਼ਾ(_R)"
 
-#: ctk/a11y/ctkimageaccessible.c:112 ctk/ctkstock.c:440
+#: ctk/a11y/ctkimageaccessible.c:112 ctk/ctkstock.c:422
 msgctxt "Stock label"
 msgid "_Remove"
 msgstr "ਹਟਾਓ(_R)"
 
-#: ctk/a11y/ctkimageaccessible.c:113 ctk/ctkstock.c:441
+#: ctk/a11y/ctkimageaccessible.c:113 ctk/ctkstock.c:423
 msgctxt "Stock label"
 msgid "_Revert"
 msgstr "ਪਰਤਾਓ(_R)"
 
-#: ctk/a11y/ctkimageaccessible.c:114 ctk/ctkstock.c:442
+#: ctk/a11y/ctkimageaccessible.c:114 ctk/ctkstock.c:424
 msgctxt "Stock label"
 msgid "_Save"
 msgstr "ਸੰਭਾਲੋ(_S)"
 
-#: ctk/a11y/ctkimageaccessible.c:115 ctk/ctkstock.c:443
+#: ctk/a11y/ctkimageaccessible.c:115 ctk/ctkstock.c:425
 msgctxt "Stock label"
 msgid "Save _As"
 msgstr "ਇੰਜ ਸੰਭਾਲੋ(_A)"
 
-#: ctk/a11y/ctkimageaccessible.c:116 ctk/ctkstock.c:444
+#: ctk/a11y/ctkimageaccessible.c:116 ctk/ctkstock.c:426
 msgctxt "Stock label"
 msgid "Select _All"
 msgstr "ਸਭ ਚੁਣੋ(_A)"
 
 #. Sorting direction
-#: ctk/a11y/ctkimageaccessible.c:117 ctk/ctkstock.c:448
+#: ctk/a11y/ctkimageaccessible.c:117 ctk/ctkstock.c:430
 msgctxt "Stock label"
 msgid "_Ascending"
 msgstr "ਵਧਦਾ ਕ੍ਰਮ(_A)"
 
 #. Sorting direction
-#: ctk/a11y/ctkimageaccessible.c:118 ctk/ctkstock.c:450
+#: ctk/a11y/ctkimageaccessible.c:118 ctk/ctkstock.c:432
 msgctxt "Stock label"
 msgid "_Descending"
 msgstr "ਘੱਟਦਾ ਕ੍ਰਮ(_D)"
 
-#: ctk/a11y/ctkimageaccessible.c:119 ctk/ctkstock.c:451
+#: ctk/a11y/ctkimageaccessible.c:119 ctk/ctkstock.c:433
 msgctxt "Stock label"
 msgid "_Spell Check"
 msgstr "ਸ਼ਬਦ-ਜੋੜ ਚੈੱਕ(_S)"
 
-#: ctk/a11y/ctkimageaccessible.c:120 ctk/ctkstock.c:452
+#: ctk/a11y/ctkimageaccessible.c:120 ctk/ctkstock.c:434
 msgctxt "Stock label"
 msgid "_Stop"
 msgstr "ਰੋਕੋ(_S)"
 
 #. Font variant
-#: ctk/a11y/ctkimageaccessible.c:121 ctk/ctkstock.c:454
+#: ctk/a11y/ctkimageaccessible.c:121 ctk/ctkstock.c:436
 msgctxt "Stock label"
 msgid "_Strikethrough"
 msgstr "ਵਿੰਨੋ(_S)"
 
 #. Font variant
-#: ctk/a11y/ctkimageaccessible.c:122 ctk/ctkstock.c:457
+#: ctk/a11y/ctkimageaccessible.c:122 ctk/ctkstock.c:439
 msgctxt "Stock label"
 msgid "_Underline"
 msgstr "ਹੇਠਾਂ ਲਾਈਨ(_U)"
 
-#: ctk/a11y/ctkimageaccessible.c:123 ctk/ctkstock.c:458
+#: ctk/a11y/ctkimageaccessible.c:123 ctk/ctkstock.c:440
 msgctxt "Stock label"
 msgid "_Undo"
 msgstr "ਵਾਪਸ(_U)"
 
-#: ctk/a11y/ctkimageaccessible.c:124 ctk/ctkstock.c:388
+#: ctk/a11y/ctkimageaccessible.c:124 ctk/ctkstock.c:370
 msgctxt "Stock label"
 msgid "Decrease Indent"
 msgstr "ਹਾਸ਼ੀਏ ਤੋਂ ਦੂਰੀ ਘਟਾਓ"
 
 #. Zoom
-#: ctk/a11y/ctkimageaccessible.c:125 ctk/ctkstock.c:461
+#: ctk/a11y/ctkimageaccessible.c:125 ctk/ctkstock.c:443
 msgctxt "Stock label"
 msgid "_Normal Size"
 msgstr "ਆਮ ਅਕਾਰ(_N)"
 
 #. Zoom
-#: ctk/a11y/ctkimageaccessible.c:126 ctk/ctkstock.c:463
+#: ctk/a11y/ctkimageaccessible.c:126 ctk/ctkstock.c:445
 msgctxt "Stock label"
 msgid "Best _Fit"
 msgstr "ਵਧੀਆ ਫਿੱਟ(_F)"
 
-#: ctk/a11y/ctkimageaccessible.c:127 ctk/ctkstock.c:464
+#: ctk/a11y/ctkimageaccessible.c:127 ctk/ctkstock.c:446
 msgctxt "Stock label"
 msgid "Zoom _In"
 msgstr "ਜ਼ੂਮ ਇਨ(_I)"
 
-#: ctk/a11y/ctkimageaccessible.c:128 ctk/ctkstock.c:465
+#: ctk/a11y/ctkimageaccessible.c:128 ctk/ctkstock.c:447
 msgctxt "Stock label"
 msgid "Zoom _Out"
 msgstr "ਜ਼ੂਮ ਆਉਟ(_O)"
@@ -1064,7 +1053,7 @@ msgstr "ਜ਼ੂਮ ਆਉਟ(_O)"
 msgid "Menu"
 msgstr "ਮੀਨੂ"
 
-#: ctk/a11y/ctkmenuitemaccessible.c:445
+#: ctk/a11y/ctkmenuitemaccessible.c:448
 msgctxt "Action description"
 msgid "Clicks the menuitem"
 msgstr "ਮੇਨੂਆਈਟਮ ਉੱਤੇ ਕਲਿੱਕ ਕਰੋ"
@@ -1108,8 +1097,7 @@ msgid ""
 "Select the color you want from the outer ring. Select the darkness or "
 "lightness of that color using the inner triangle."
 msgstr ""
-"ਬਾਹਰੀ ਚੱਕਰ ਵਿੱਚ ਰੰਗ, ਜੋ ਤੁਸੀਂ ਚਾਹੁੰਦੇ ਹੋ ਨੂੰ ਚੁਣੋ। ਅੰਦਰੂਨੀ ਤਿਕੋਣ ਨਾਲ ਰੰਗ ਦਾ"
-" ਗੂੜਾਪਨ ਜਾਂ ਫਿੱਕਾਪਨ "
+"ਬਾਹਰੀ ਚੱਕਰ ਵਿੱਚ ਰੰਗ, ਜੋ ਤੁਸੀਂ ਚਾਹੁੰਦੇ ਹੋ ਨੂੰ ਚੁਣੋ। ਅੰਦਰੂਨੀ ਤਿਕੋਣ ਨਾਲ ਰੰਗ ਦਾ ਗੂੜਾਪਨ ਜਾਂ ਫਿੱਕਾਪਨ "
 "ਦਿਓ।"
 
 #: ctk/deprecated/ctkcolorsel.c:451
@@ -1183,8 +1171,7 @@ msgid ""
 "You can enter an HTML-style hexadecimal color value, or simply a color name "
 "such as “orange” in this entry."
 msgstr ""
-"ਤੁਸੀਂ ਇਸ ਐਂਟਰੀ ਵਿੱਚ HTML-ਸਟਾਇਲ ਵਾਂਗ ਹੈਕਸਾਡੈਸੀਮਲ ਮੁੱਲ ਵੀ ਦੇ ਸਕਦੇ ਹੋ ਜਾਂ ਰੰਗ ਦਾ"
-" ਨਾਂ ਵੀ ਭਰ ਸਕਦੇ "
+"ਤੁਸੀਂ ਇਸ ਐਂਟਰੀ ਵਿੱਚ HTML-ਸਟਾਇਲ ਵਾਂਗ ਹੈਕਸਾਡੈਸੀਮਲ ਮੁੱਲ ਵੀ ਦੇ ਸਕਦੇ ਹੋ ਜਾਂ ਰੰਗ ਦਾ ਨਾਂ ਵੀ ਭਰ ਸਕਦੇ "
 "ਹੋ, ਜਿਵੇਂ ਕਿ \"orange\"।"
 
 #: ctk/deprecated/ctkcolorsel.c:548
@@ -1201,8 +1188,7 @@ msgid ""
 "now. You can drag this color to a palette entry, or select this color as "
 "current by dragging it to the other color swatch alongside."
 msgstr ""
-"ਪਹਿਲਾਂ ਚੁਣਿਆ ਰੰਗ, ਮੌਜੂਦਾ ਤੁਹਾਡੇ ਰਾਹੀਂ ਰੰਗ ਦੇ ਮੁਕਾਬਲੇ। ਤੁਸੀਂ ਇਸ ਰੰਗ ਨੂੰ"
-" ਰੰਗ-ਪੱਟੀ ਐਂਟਰੀ ਵਿੱਚ ਸੁੱਟ ਸਕਦੇ "
+"ਪਹਿਲਾਂ ਚੁਣਿਆ ਰੰਗ, ਮੌਜੂਦਾ ਤੁਹਾਡੇ ਰਾਹੀਂ ਰੰਗ ਦੇ ਮੁਕਾਬਲੇ। ਤੁਸੀਂ ਇਸ ਰੰਗ ਨੂੰ ਰੰਗ-ਪੱਟੀ ਐਂਟਰੀ ਵਿੱਚ ਸੁੱਟ ਸਕਦੇ "
 "ਹੋ ਜਾਂ ਇਸ ਰੰਗ ਨੂੰ ਰੰਗ ਸਵਿੱਚ ਵਿੱਚ ਰੱਖ ਸਕਦੇ ਹੋ।"
 
 #: ctk/deprecated/ctkcolorsel.c:1078
@@ -1210,8 +1196,7 @@ msgid ""
 "The color you’ve chosen. You can drag this color to a palette entry to save "
 "it for use in the future."
 msgstr ""
-"ਰੰਗ ਜੋ ਤੁਸੀਂ ਚੁਣਿਆ ਹੈ। ਤੁਸੀਂ ਇਸ ਨੂੰ ਰੰਗ-ਪੱਟੀ ਵਿੱਚ ਰੱਖ ਸਕਦੇ ਹੋ ਤਾਂ ਕਿ ਇਸ ਨੂੰ"
-" ਭਵਿੱਖ ਵਿੱਚ ਵੀ ਵਰਤਿਆ "
+"ਰੰਗ ਜੋ ਤੁਸੀਂ ਚੁਣਿਆ ਹੈ। ਤੁਸੀਂ ਇਸ ਨੂੰ ਰੰਗ-ਪੱਟੀ ਵਿੱਚ ਰੱਖ ਸਕਦੇ ਹੋ ਤਾਂ ਕਿ ਇਸ ਨੂੰ ਭਵਿੱਖ ਵਿੱਚ ਵੀ ਵਰਤਿਆ "
 "ਜਾ ਸਕੇ।"
 
 #: ctk/deprecated/ctkcolorsel.c:1084
@@ -1233,18 +1218,17 @@ msgid ""
 "Click this palette entry to make it the current color. To change this entry, "
 "drag a color swatch here or right-click it and select “Save color here.”"
 msgstr ""
-"ਇਸ ਰੰਗ-ਪੱਟੀ ਐਂਟਰੀ ਨੂੰ ਦਬਾਉ ਤਾਂ ਇਹ ਮੌਜੂਦਾ ਰੰਗ ਬਣ ਜਾਵੇ। ਇਸ ਐਂਟਰੀ ਨੂੰ ਤਬਦੀਲ ਕਰਨ"
-" ਲਈ ਇੱਕ ਰੰਗ ਨੂੰ "
+"ਇਸ ਰੰਗ-ਪੱਟੀ ਐਂਟਰੀ ਨੂੰ ਦਬਾਉ ਤਾਂ ਇਹ ਮੌਜੂਦਾ ਰੰਗ ਬਣ ਜਾਵੇ। ਇਸ ਐਂਟਰੀ ਨੂੰ ਤਬਦੀਲ ਕਰਨ ਲਈ ਇੱਕ ਰੰਗ ਨੂੰ "
 "ਇੱਥੇ ਤਬਦੀਲ ਕਰ ਦਿਉ ਜਾਂ ਸੱਜਾ-ਬਟਨ ਦਬਾਉ ਤੇ \"ਰੰਗ ਇੱਥੇ ਸੰਭਾਲੋ\" ਨੂੰ ਚੁਣੋ।"
 
 #: ctk/deprecated/ctkcolorseldialog.c:191 ctk/deprecated/ctkfontsel.c:1689
-#: ctk/ctkfilechoosernative.c:544 ctk/ctkfilechoosernative.c:636
-#: ctk/ctkfilechooserwidget.c:1480 ctk/ctkfilechooserwidget.c:6377
+#: ctk/ctkfilechoosernative.c:545 ctk/ctkfilechoosernative.c:637
+#: ctk/ctkfilechooserwidget.c:1498 ctk/ctkfilechooserwidget.c:6572
 #: ctk/ctkmessagedialog.c:952 ctk/ctkmessagedialog.c:965
 #: ctk/ctkmountoperation.c:594 ctk/ctkpagesetupunixdialog.c:197
-#: ctk/ctkprintbackend.c:779 ctk/ctkprinteroptionwidget.c:545
+#: ctk/ctkprintbackend.c:781 ctk/ctkprinteroptionwidget.c:545
 #: ctk/ctkprintunixdialog.c:674 ctk/ctkprintunixdialog.c:747
-#: ctk/ctkwindow.c:12782 ctk/inspector/css-editor.c:201
+#: ctk/ctkwindow.c:12789 ctk/inspector/css-editor.c:201
 #: ctk/ui/ctkappchooserdialog.ui:61 ctk/ui/ctkassistant.ui:125
 #: ctk/ui/ctkcolorchooserdialog.ui:34 ctk/ui/ctkfontchooserdialog.ui:31
 msgid "_Cancel"
@@ -1293,7 +1277,7 @@ msgid "_Apply"
 msgstr "ਲਾਗੂ ਕਰੋ(_A)"
 
 #: ctk/deprecated/ctkfontsel.c:1698 ctk/ctkmessagedialog.c:944
-#: ctk/ctkmessagedialog.c:966 ctk/ctkprintbackend.c:780 ctk/ctkwindow.c:12783
+#: ctk/ctkmessagedialog.c:966 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12790
 msgid "_OK"
 msgstr "ਠੀਕ ਹੈ(_O)"
 
@@ -1304,155 +1288,32 @@ msgstr "ਫੋਂਟ ਚੋਣ"
 #. Translators: the format here is used to build the string that will be rendered
 #. * in the number emblem.
 #.
-#: ctk/deprecated/ctknumerableicon.c:473
+#: ctk/deprecated/ctknumerableicon.c:474
 #, c-format
 msgctxt "Number format"
 msgid "%d"
 msgstr "%d"
 
-#: ctk/ctkstock.c:347
-msgctxt "Stock label"
-msgid "_Apply"
-msgstr "ਲਾਗੂ ਕਰੋ(_A)"
-
-#: ctk/ctkstock.c:349
-msgctxt "Stock label"
-msgid "_Cancel"
-msgstr "ਰੱਦ ਕਰੋ(_C)"
-
-#: ctk/ctkstock.c:353
-msgctxt "Stock label"
-msgid "C_onnect"
-msgstr "ਕੁਨੈਕਟ ਕਰੋ(_o)"
-
-#: ctk/ctkstock.c:354
-msgctxt "Stock label"
-msgid "_Convert"
-msgstr "ਬਦਲੋ(_C)"
-
-#: ctk/ctkstock.c:358
-msgctxt "Stock label"
-msgid "_Discard"
-msgstr "ਨਿਕਾਰੋ(_D)"
-
-#: ctk/ctkstock.c:359
-msgctxt "Stock label"
-msgid "_Disconnect"
-msgstr "ਕੁਨੈਕਸ਼ਨ ਬੰਦ(_D)"
-
-#: ctk/ctkstock.c:361
-msgctxt "Stock label"
-msgid "_Edit"
-msgstr "ਸੋਧ(_E)"
-
-#: ctk/ctkstock.c:389
-msgctxt "Stock label"
-msgid "_Index"
-msgstr "ਇੰਡੈਕਸ(_I)"
-
-#: ctk/ctkstock.c:390
-msgctxt "Stock label"
-msgid "_Information"
-msgstr "ਜਾਣਕਾਰੀ(_I)"
-
-#: ctk/ctkstock.c:420
-msgctxt "Stock label"
-msgid "_No"
-msgstr "ਨਹੀਂ(_N)"
-
-#: ctk/ctkstock.c:421
-msgctxt "Stock label"
-msgid "_OK"
-msgstr "ਠੀਕ ਹੈ(_O)"
-
-#. Page orientation
-#: ctk/ctkstock.c:424
-msgctxt "Stock label"
-msgid "Landscape"
-msgstr "ਲੈਂਡਸਕੇਪ"
-
-#. Page orientation
-#: ctk/ctkstock.c:426
-msgctxt "Stock label"
-msgid "Portrait"
-msgstr "ਪੋਰਟਰੇਟ"
-
-#. Page orientation
-#: ctk/ctkstock.c:428
-msgctxt "Stock label"
-msgid "Reverse landscape"
-msgstr "ਉਲਟ ਲੈਡਸਕੇਪ"
-
-#. Page orientation
-#: ctk/ctkstock.c:430
-msgctxt "Stock label"
-msgid "Reverse portrait"
-msgstr "ਉਲਟ ਪੋਰਟਰੇਟ"
-
-#: ctk/ctkstock.c:431
-msgctxt "Stock label"
-msgid "Page Set_up"
-msgstr "ਪੇਜ਼ ਸੈਟਅੱਪ(_u)"
-
-#: ctk/ctkstock.c:433
-msgctxt "Stock label"
-msgid "_Preferences"
-msgstr "ਮੇਰੀ ਪਸੰਦ(_P)"
-
-#: ctk/ctkstock.c:445
-msgctxt "Stock label"
-msgid "_Color"
-msgstr "ਰੰਗ(_C)"
-
-#: ctk/ctkstock.c:446
-msgctxt "Stock label"
-msgid "_Font"
-msgstr "ਫੋਂਟ(_F)"
-
-#: ctk/ctkstock.c:455
-msgctxt "Stock label"
-msgid "_Undelete"
-msgstr "ਹਟਾਓਣਾ-ਵਾਪਸ(_U)"
-
-#: ctk/ctkstock.c:459
-msgctxt "Stock label"
-msgid "_Yes"
-msgstr "ਹਾਂ(_Y)"
-
-#: ctk/ctkuimanager.c:1782
-#, c-format
-msgid "Unexpected start tag '%s' on line %d char %d"
-msgstr "ਲਾਈਨ %2$d ਅੱਖਰ %3$d ਉੱਤੇ ਬੇ-ਲੋੜੀਦਾ ਸ਼ੁਰੂਆਤੀ ਟੈਗ '%1$s'"
-
-#: ctk/ctkuimanager.c:1872
-#, c-format
-msgid "Unexpected character data on line %d char %d"
-msgstr "ਲਾਈਨ %d ਅੱਖਰ %d ਉੱਤੇ  ਬੇ-ਲੋੜੀਦਾ ਅੱਖਰ ਡਾਟਾ"
-
-#: ctk/ctkuimanager.c:2709
-msgid "Empty"
-msgstr "ਖਾਲੀ"
-
 #: ctk/encodesymbolic.c:38
 msgid "Output to this directory instead of cwd"
 msgstr "cwd ਦੀ ਬਜਾਏ ਇਸ ਡਾਇਰੈਕਟਰੀ ਦੀ ਆਉਟਪੁੱਟ"
 
-#: ctk/encodesymbolic.c:266
+#: ctk/encodesymbolic.c:268
 #, c-format
 msgid "Invalid size %s\n"
 msgstr "ਗਲਤ ਅਕਾਰ %s\n"
 
-#: ctk/encodesymbolic.c:279 ctk/ctk-builder-tool.c:671
+#: ctk/encodesymbolic.c:281 ctk/ctk-builder-tool.c:674
 #, c-format
 msgid "Can't load file: %s\n"
 msgstr "ਫਾਇਲ ਨੂੰ ਲੋਡ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ: %s\n"
 
-#: ctk/encodesymbolic.c:307 ctk/encodesymbolic.c:313
+#: ctk/encodesymbolic.c:309 ctk/encodesymbolic.c:315
 #, c-format
 msgid "Can't save file %s: %s\n"
 msgstr "ਫਾਇਲ %s ਨੂੰ ਸੰਭਾਲਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ: %s\n"
 
-#: ctk/encodesymbolic.c:319
+#: ctk/encodesymbolic.c:321
 #, c-format
 msgid "Can't close stream"
 msgstr "ਸਟਰੀਮ ਨੂੰ ਬੰਦ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ"
@@ -1510,62 +1371,74 @@ msgid "GNU Lesser General Public License, version 3 only"
 msgstr "GNU ਲੈਸਰ ਜਰਨਲ ਪਬਲਿਕ ਲਾਈਸੈਂਸ ਵਰਜਨ ਕੇਵਲ 3 ਹੀ"
 
 #: ctk/ctkaboutdialog.c:127
-#| msgid "GNU General Public License, version 3 or later"
 msgid "GNU Affero General Public License, version 3 or later"
 msgstr "ਗਨੂ ਅਫੀਰੋ ਜਰਨਲ ਪਬਲਿਕ ਲਾਈਸੈਂਸ, ਵਰਜਨ 3 ਜਾਂ ਨਵਾਂ"
 
 #: ctk/ctkaboutdialog.c:128
-#| msgid "GNU General Public License, version 3 only"
 msgid "GNU Affero General Public License, version 3 only"
 msgstr "GNU ਅਫੀਰੋ ਜਰਨਲ ਪਬਲਿਕ ਲਾਈਸੈਂਸ ਵਰਜਨ ਕੇਵਲ 3 ਹੀ"
 
-#: ctk/ctkaboutdialog.c:697
+#: ctk/ctkaboutdialog.c:129
+#, fuzzy
+msgid "BSD 3-Clause License"
+msgstr "BSD 2-Clause ਲਾਈਸੈਂਸ"
+
+#: ctk/ctkaboutdialog.c:130
+msgid "Apache License, Version 2.0"
+msgstr ""
+
+#: ctk/ctkaboutdialog.c:131
+#, fuzzy
+msgid "Mozilla Public License 2.0"
+msgstr "ਆਰਟੈਸਟਿਕ ਲਾਈਸੈਂਸ 2.0"
+
+#: ctk/ctkaboutdialog.c:703
 msgid "C_redits"
 msgstr "ਮਾਣ(_r)"
 
-#: ctk/ctkaboutdialog.c:705
+#: ctk/ctkaboutdialog.c:711
 msgid "_License"
 msgstr "ਲਾਈਸੈਂਸ(_L)"
 
-#: ctk/ctkaboutdialog.c:714 ctk/ctkcustompaperunixdialog.c:329
+#: ctk/ctkaboutdialog.c:720 ctk/ctkcustompaperunixdialog.c:329
 #: ctk/ctkmessagedialog.c:948 ctk/ui/ctkassistant.ui:144
 msgid "_Close"
 msgstr "ਬੰਦ ਕਰੋ(_C)"
 
-#: ctk/ctkaboutdialog.c:998
+#: ctk/ctkaboutdialog.c:1004
 msgid "Could not show link"
 msgstr "ਲਿੰਕ ਵੇਖਾਇਆ ਨਹੀਂ ਜਾ ਸਕਿਆ"
 
-#: ctk/ctkaboutdialog.c:1037
+#: ctk/ctkaboutdialog.c:1043
 msgid "Website"
 msgstr "ਵੈੱਬਸਾਈਟ"
 
 #. used for the application menu on MacOS.  %s is replaced with the application name.
-#: ctk/ctkaboutdialog.c:1087 ctk/ui/ctkapplication-quartz.ui:7
+#: ctk/ctkaboutdialog.c:1093 ctk/ui/ctkapplication-quartz.ui:7
 #, c-format
 msgid "About %s"
 msgstr "%s ਬਾਰੇ"
 
-#: ctk/ctkaboutdialog.c:2314
+#: ctk/ctkaboutdialog.c:2320
 msgid "Created by"
 msgstr "ਬਣਾਇਆ"
 
-#: ctk/ctkaboutdialog.c:2317
+#: ctk/ctkaboutdialog.c:2323
 msgid "Documented by"
 msgstr "ਦਸਤਾਵੇਜ਼ ਲਿਖੇ"
 
-#: ctk/ctkaboutdialog.c:2327
+#: ctk/ctkaboutdialog.c:2333
 msgid "Translated by"
 msgstr "ਅਨੁਵਾਦ ਕੀਤਾ"
 
-#: ctk/ctkaboutdialog.c:2332
+#: ctk/ctkaboutdialog.c:2338
 msgid "Artwork by"
 msgstr "ਕਲਾਕਾਰੀ"
 
 #. Translators: this is the license preamble; the string at the end
 #. * contains the name of the license as link text.
 #.
-#: ctk/ctkaboutdialog.c:2494
+#: ctk/ctkaboutdialog.c:2500
 #, c-format
 msgid ""
 "This program comes with absolutely no warranty.\n"
@@ -1654,38 +1527,38 @@ msgstr "ਪਿੱਛੇ ਡੰਡਾ"
 msgid "Other application…"
 msgstr "…ਹੋਰ ਐਪਲੀਕੇਸ਼ਨ"
 
-#: ctk/ctkappchooserdialog.c:204 ctk/ctkappchooserdialog.c:211
-#: ctk/ctkappchooserdialog.c:228 ctk/ui/ctkappchooserdialog.ui:5
+#: ctk/ctkappchooserdialog.c:202 ctk/ctkappchooserdialog.c:230
+#: ctk/ui/ctkappchooserdialog.ui:5
 msgid "Select Application"
 msgstr "ਐਪਲੀਕੇਸ਼ਨ ਚੁਣੋ"
 
 #. Translators: %s is a filename
-#: ctk/ctkappchooserdialog.c:206
+#: ctk/ctkappchooserdialog.c:209
 #, c-format
 msgid "Opening “%s”."
 msgstr "”%s” ਖੋਲ੍ਹੀ ਜਾ ਰਹੀ ਹੈ।"
 
-#: ctk/ctkappchooserdialog.c:207
+#: ctk/ctkappchooserdialog.c:210
 #, c-format
 msgid "No applications found for “%s”"
 msgstr "“%s” ਖੋਲ੍ਹਣ ਲਈ ਕੋਈ ਵੀ ਐਪਲੀਕੇਸ਼ਨ ਨਹੀਂ ਹੈ।"
 
 #. Translators: %s is a file type description
-#: ctk/ctkappchooserdialog.c:213
+#: ctk/ctkappchooserdialog.c:215
 #, c-format
 msgid "Opening “%s” files."
 msgstr "ਫਾਇਲਾਂ “%s” ਖੋਲ੍ਹੀਆਂ ਜਾ ਰਹੀਆਂ ਹਨ"
 
-#: ctk/ctkappchooserdialog.c:215
+#: ctk/ctkappchooserdialog.c:217
 #, c-format
 msgid "No applications found for “%s” files"
 msgstr "“%s\" ਫਾਇਲਾਂ ਲਈ ਕੋਈ ਐਪਲੀਕੇਸ਼ਨ ਨਹੀਂ ਲੱਭੀ"
 
-#: ctk/ctkappchooserdialog.c:308
+#: ctk/ctkappchooserdialog.c:310
 msgid "Forget association"
 msgstr "ਸਬੰਧ ਭੁੱਲ ਜਾਓ"
 
-#: ctk/ctkappchooserdialog.c:451
+#: ctk/ctkappchooserdialog.c:453
 msgid "Failed to start GNOME Software"
 msgstr "ਗਨੋਮ ਸਾਫਟਵੇਅਰ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਫੇਲ੍ਹ ਹੈ"
 
@@ -1711,7 +1584,7 @@ msgid "Other Applications"
 msgstr "ਹੋਰ ਐਪਲੀਕੇਸ਼ਨ"
 
 #: ctk/ctkapplicationwindow.c:345 ctk/ctkprintoperation-unix.c:485
-#: ctk/ctkprintoperation-win32.c:1495 ctk/inspector/prop-editor.c:1686
+#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1690
 msgid "Application"
 msgstr "ਐਪਲੀਕੇਸ਼ਨ"
 
@@ -1760,28 +1633,13 @@ msgstr "ਵਿਸ਼ੇਸ਼ਤਾ %s::%s ਨਹੀਂ ਲੱਭੀ\n"
 msgid "Couldn't parse value for %s::%s: %s\n"
 msgstr "%s::%s ਲਈ ਮੁੱਲ ਨੂੰ ਪਾਰਸ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ: %s\n"
 
-#: ctk/ctk-builder-tool.c:692
+#: ctk/ctk-builder-tool.c:695
 #, c-format
 msgid "Can't parse file: %s\n"
 msgstr "ਫਾਇਲ ਨੂੰ ਪਾਰਸ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ: %s\n"
 
-#: ctk/ctk-builder-tool.c:1058
+#: ctk/ctk-builder-tool.c:1062
 #, c-format
-#| msgid ""
-#| "Usage:\n"
-#| "  ctk-builder-tool [COMMAND] FILE\n"
-#| "\n"
-#| "Commands:\n"
-#| "  validate           Validate the file\n"
-#| "  simplify           Simplify the file\n"
-#| "  enumerate          List all named objects\n"
-#| "  preview [OPTIONS]  Preview the file\n"
-#| "\n"
-#| "Preview Options:\n"
-#| "  --id=ID            Preview only the named object\n"
-#| "  --css=FILE         Use style from CSS file\n"
-#| "\n"
-#| "Perform various tasks on CtkBuilder .ui files.\n"
 msgid ""
 "Usage:\n"
 "  ctk-builder-tool [COMMAND] FILE\n"
@@ -1948,204 +1806,286 @@ msgid "Color: %s"
 msgstr "ਰੰਗ: %s"
 
 #: ctk/ctkcolorchooserwidget.c:446
+#, fuzzy
 msgctxt "Color name"
-msgid "Light Scarlet Red"
-msgstr "ਹਲਕਾ ਕਾਕਰੇਜੀ ਲਾਲ"
+msgid "Very Light Blue"
+msgstr "ਬਹੁਤ ਹਲਕਾ ਸਲੇਟੀ"
 
 #: ctk/ctkcolorchooserwidget.c:447
+#, fuzzy
 msgctxt "Color name"
-msgid "Scarlet Red"
-msgstr "ਕਾਕਰੇਜੀ ਲਾਲ"
+msgid "Light Blue"
+msgstr "ਹਲਕਾ ਅਸਮਾਨੀ ਨੀਲਾ"
 
 #: ctk/ctkcolorchooserwidget.c:448
+#, fuzzy
 msgctxt "Color name"
-msgid "Dark Scarlet Red"
-msgstr "ਗੂੜ੍ਹਾ ਕਾਕਰੇਜੀ ਲਾਲ"
+msgid "Blue"
+msgstr "ਨੀਲਾ(_B):"
 
 #: ctk/ctkcolorchooserwidget.c:449
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Blue"
+msgstr "ਗੂੜਾ ਅਸਮਾਨੀ ਨੀਲਾ"
+
+#: ctk/ctkcolorchooserwidget.c:450
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Dark Blue"
+msgstr "ਬਹੁਤ ਗੂੜਾ ਸਲੇਟੀ"
+
+#: ctk/ctkcolorchooserwidget.c:451
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Light Green"
+msgstr "ਬਹੁਤ ਹਲਕਾ ਸਲੇਟੀ"
+
+#: ctk/ctkcolorchooserwidget.c:452
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Green"
+msgstr "ਹਲਕਾ ਸਲੇਟੀ"
+
+#: ctk/ctkcolorchooserwidget.c:453
+#, fuzzy
+msgctxt "Color name"
+msgid "Green"
+msgstr "ਹਰਾ(_G):"
+
+#: ctk/ctkcolorchooserwidget.c:454
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Green"
+msgstr "ਗੂੜਾ ਸਲੇਟੀ"
+
+#: ctk/ctkcolorchooserwidget.c:455
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Dark Green"
+msgstr "ਬਹੁਤ ਗੂੜਾ ਸਲੇਟੀ"
+
+#: ctk/ctkcolorchooserwidget.c:456
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Light Yellow"
+msgstr "ਬਹੁਤ ਹਲਕਾ ਸਲੇਟੀ"
+
+#: ctk/ctkcolorchooserwidget.c:457
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Yellow"
+msgstr "ਹਲਕਾ ਚਮੇਲੋਨ"
+
+#: ctk/ctkcolorchooserwidget.c:458
+msgctxt "Color name"
+msgid "Yellow"
+msgstr ""
+
+#: ctk/ctkcolorchooserwidget.c:459
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Yellow"
+msgstr "ਗੂੜ੍ਹਾ ਚਮੇਲੋਨ"
+
+#: ctk/ctkcolorchooserwidget.c:460
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Dark Yellow"
+msgstr "ਬਹੁਤ ਗੂੜਾ ਸਲੇਟੀ"
+
+#: ctk/ctkcolorchooserwidget.c:461
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Light Orange"
+msgstr "ਹਲਕਾ ਸੰਤਰੀ"
+
+#: ctk/ctkcolorchooserwidget.c:462
 msgctxt "Color name"
 msgid "Light Orange"
 msgstr "ਹਲਕਾ ਸੰਤਰੀ"
 
-#: ctk/ctkcolorchooserwidget.c:450
+#: ctk/ctkcolorchooserwidget.c:463
 msgctxt "Color name"
 msgid "Orange"
 msgstr "ਸੰਤਰੀ"
 
-#: ctk/ctkcolorchooserwidget.c:451
+#: ctk/ctkcolorchooserwidget.c:464
 msgctxt "Color name"
 msgid "Dark Orange"
 msgstr "ਗੂੜ੍ਹਾ ਸੰਤਰੀ"
 
-#: ctk/ctkcolorchooserwidget.c:452
-msgctxt "Color name"
-msgid "Light Butter"
-msgstr "ਹਲਕਾ ਮੱਖਣ"
-
-#: ctk/ctkcolorchooserwidget.c:453
-msgctxt "Color name"
-msgid "Butter"
-msgstr "ਮੱਖਣ"
-
-#: ctk/ctkcolorchooserwidget.c:454
-msgctxt "Color name"
-msgid "Dark Butter"
-msgstr "ਗੂੜ੍ਹਾ ਮੱਖਣ"
-
-#: ctk/ctkcolorchooserwidget.c:455
-msgctxt "Color name"
-msgid "Light Chameleon"
-msgstr "ਹਲਕਾ ਚਮੇਲੋਨ"
-
-#: ctk/ctkcolorchooserwidget.c:456
-msgctxt "Color name"
-msgid "Chameleon"
-msgstr "ਚਮੇਲੋਨ"
-
-#: ctk/ctkcolorchooserwidget.c:457
-msgctxt "Color name"
-msgid "Dark Chameleon"
-msgstr "ਗੂੜ੍ਹਾ ਚਮੇਲੋਨ"
-
-#: ctk/ctkcolorchooserwidget.c:458
-msgctxt "Color name"
-msgid "Light Sky Blue"
-msgstr "ਹਲਕਾ ਅਸਮਾਨੀ ਨੀਲਾ"
-
-#: ctk/ctkcolorchooserwidget.c:459
-msgctxt "Color name"
-msgid "Sky Blue"
-msgstr "ਅਸਮਾਨੀ ਨੀਲਾ"
-
-#: ctk/ctkcolorchooserwidget.c:460
-msgctxt "Color name"
-msgid "Dark Sky Blue"
-msgstr "ਗੂੜਾ ਅਸਮਾਨੀ ਨੀਲਾ"
-
-#: ctk/ctkcolorchooserwidget.c:461
-msgctxt "Color name"
-msgid "Light Plum"
-msgstr "ਹਲਕਾ ਪਲੁਮ"
-
-#: ctk/ctkcolorchooserwidget.c:462
-msgctxt "Color name"
-msgid "Plum"
-msgstr "ਪਲੁਮ"
-
-#: ctk/ctkcolorchooserwidget.c:463
-msgctxt "Color name"
-msgid "Dark Plum"
-msgstr "ਗੂੜ੍ਹਾ ਪਲੁਮ"
-
-#: ctk/ctkcolorchooserwidget.c:464
-msgctxt "Color name"
-msgid "Light Chocolate"
-msgstr "ਹਲਕਾ ਚਾਕਲੇਟੀ"
-
 #: ctk/ctkcolorchooserwidget.c:465
+#, fuzzy
 msgctxt "Color name"
-msgid "Chocolate"
-msgstr "ਚਾਕਲੇਟੀ"
+msgid "Very Dark Orange"
+msgstr "ਗੂੜ੍ਹਾ ਸੰਤਰੀ"
 
 #: ctk/ctkcolorchooserwidget.c:466
+#, fuzzy
 msgctxt "Color name"
-msgid "Dark Chocolate"
-msgstr "ਗੂੜ੍ਹਾ ਚਾਕਲੇਟੀ"
-
-#: ctk/ctkcolorchooserwidget.c:467
-msgctxt "Color name"
-msgid "Light Aluminum 1"
-msgstr "ਹਲਕਾ ਅਲੂਮੀਨੀਅਮ 1"
-
-#: ctk/ctkcolorchooserwidget.c:468
-msgctxt "Color name"
-msgid "Aluminum 1"
-msgstr "ਅਲੂਮੀਨੀਅਮ 1"
-
-#: ctk/ctkcolorchooserwidget.c:469
-msgctxt "Color name"
-msgid "Dark Aluminum 1"
-msgstr "ਗੂੜ੍ਹਾ ਅਲੂਮੀਨੀਅਮ 1"
-
-#: ctk/ctkcolorchooserwidget.c:470
-msgctxt "Color name"
-msgid "Light Aluminum 2"
-msgstr "ਹਲਕਾ ਅਲੂਮੀਨੀਅਮ 2"
-
-#: ctk/ctkcolorchooserwidget.c:471
-msgctxt "Color name"
-msgid "Aluminum 2"
-msgstr "ਅਲੂਮੀਨੀਅਮ 2"
-
-#: ctk/ctkcolorchooserwidget.c:472
-msgctxt "Color name"
-msgid "Dark Aluminum 2"
-msgstr "ਗੂੜ੍ਹਾ ਅਲੂਮੀਨੀਅਮ 2"
-
-#: ctk/ctkcolorchooserwidget.c:486
-msgctxt "Color name"
-msgid "Black"
-msgstr "ਕਾਲਾ"
-
-#: ctk/ctkcolorchooserwidget.c:487
-msgctxt "Color name"
-msgid "Very Dark Gray"
-msgstr "ਬਹੁਤ ਗੂੜਾ ਸਲੇਟੀ"
-
-#: ctk/ctkcolorchooserwidget.c:488
-msgctxt "Color name"
-msgid "Darker Gray"
-msgstr "ਗੂੜਾ ਸਲੇਟੀ"
-
-#: ctk/ctkcolorchooserwidget.c:489
-msgctxt "Color name"
-msgid "Dark Gray"
-msgstr "ਗੂੜਾ ਸਲੇਟੀ"
-
-#: ctk/ctkcolorchooserwidget.c:490
-msgctxt "Color name"
-msgid "Medium Gray"
-msgstr "ਮੱਧਮ ਸਲੇਟੀ"
-
-#: ctk/ctkcolorchooserwidget.c:491
-msgctxt "Color name"
-msgid "Light Gray"
-msgstr "ਹਲਕਾ ਸਲੇਟੀ"
-
-#: ctk/ctkcolorchooserwidget.c:492
-msgctxt "Color name"
-msgid "Lighter Gray"
-msgstr "ਵੱਧ ਹਲਕਾ ਸਲੇਟੀ"
-
-#: ctk/ctkcolorchooserwidget.c:493
-msgctxt "Color name"
-msgid "Very Light Gray"
+msgid "Very Light Red"
 msgstr "ਬਹੁਤ ਹਲਕਾ ਸਲੇਟੀ"
 
-#: ctk/ctkcolorchooserwidget.c:494
+#: ctk/ctkcolorchooserwidget.c:467
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Red"
+msgstr "ਹਲਕਾ ਕਾਕਰੇਜੀ ਲਾਲ"
+
+#: ctk/ctkcolorchooserwidget.c:468
+#, fuzzy
+msgctxt "Color name"
+msgid "Red"
+msgstr "ਲਾਲ(_R):"
+
+#: ctk/ctkcolorchooserwidget.c:469
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Red"
+msgstr "ਗੂੜ੍ਹਾ ਕਾਕਰੇਜੀ ਲਾਲ"
+
+#: ctk/ctkcolorchooserwidget.c:470
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Dark Red"
+msgstr "ਬਹੁਤ ਗੂੜਾ ਸਲੇਟੀ"
+
+#: ctk/ctkcolorchooserwidget.c:471
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Light Purple"
+msgstr "ਬਹੁਤ ਹਲਕਾ ਸਲੇਟੀ"
+
+#: ctk/ctkcolorchooserwidget.c:472
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Purple"
+msgstr "ਹਲਕਾ ਪਲੁਮ"
+
+#: ctk/ctkcolorchooserwidget.c:473
+msgctxt "Color name"
+msgid "Purple"
+msgstr ""
+
+#: ctk/ctkcolorchooserwidget.c:474
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Purple"
+msgstr "ਗੂੜ੍ਹਾ ਪਲੁਮ"
+
+#: ctk/ctkcolorchooserwidget.c:475
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Dark Purple"
+msgstr "ਬਹੁਤ ਗੂੜਾ ਸਲੇਟੀ"
+
+#: ctk/ctkcolorchooserwidget.c:476
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Light Brown"
+msgstr "ਬਹੁਤ ਹਲਕਾ ਸਲੇਟੀ"
+
+#: ctk/ctkcolorchooserwidget.c:477
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Brown"
+msgstr "ਸੱਜਾ ਡੱਬਾ"
+
+#: ctk/ctkcolorchooserwidget.c:478
+msgctxt "Color name"
+msgid "Brown"
+msgstr ""
+
+#: ctk/ctkcolorchooserwidget.c:479
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Brown"
+msgstr "ਗੂੜ੍ਹਾ ਮੱਖਣ"
+
+#: ctk/ctkcolorchooserwidget.c:480
+#, fuzzy
+msgctxt "Color name"
+msgid "Very Dark Brown"
+msgstr "ਬਹੁਤ ਗੂੜਾ ਸਲੇਟੀ"
+
+#: ctk/ctkcolorchooserwidget.c:481
 msgctxt "Color name"
 msgid "White"
 msgstr "ਚਿੱਟਾ"
 
+#: ctk/ctkcolorchooserwidget.c:482
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Gray 1"
+msgstr "ਹਲਕਾ ਸਲੇਟੀ"
+
+#: ctk/ctkcolorchooserwidget.c:483
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Gray 2"
+msgstr "ਹਲਕਾ ਸਲੇਟੀ"
+
+#: ctk/ctkcolorchooserwidget.c:484
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Gray 3"
+msgstr "ਹਲਕਾ ਸਲੇਟੀ"
+
+#: ctk/ctkcolorchooserwidget.c:485
+#, fuzzy
+msgctxt "Color name"
+msgid "Light Gray 4"
+msgstr "ਹਲਕਾ ਸਲੇਟੀ"
+
+#: ctk/ctkcolorchooserwidget.c:486
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Gray 1"
+msgstr "ਗੂੜਾ ਸਲੇਟੀ"
+
+#: ctk/ctkcolorchooserwidget.c:487
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Gray 2"
+msgstr "ਗੂੜਾ ਸਲੇਟੀ"
+
+#: ctk/ctkcolorchooserwidget.c:488
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Gray 3"
+msgstr "ਗੂੜਾ ਸਲੇਟੀ"
+
+#: ctk/ctkcolorchooserwidget.c:489
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark Gray 4"
+msgstr "ਗੂੜਾ ਸਲੇਟੀ"
+
+#: ctk/ctkcolorchooserwidget.c:490
+msgctxt "Color name"
+msgid "Black"
+msgstr "ਕਾਲਾ"
+
 #. translators: label for the custom section in the color chooser
-#: ctk/ctkcolorchooserwidget.c:543
+#: ctk/ctkcolorchooserwidget.c:534
 msgid "Custom"
 msgstr "ਕਸਟਮ"
 
-#: ctk/ctkcolorchooserwidget.c:550
+#: ctk/ctkcolorchooserwidget.c:541
 msgid "Custom color"
 msgstr "ਪਸੰਦੀਦਾ ਰੰਗ"
 
-#: ctk/ctkcolorchooserwidget.c:551
+#: ctk/ctkcolorchooserwidget.c:542
 msgid "Create a custom color"
 msgstr "ਪਸੰਦੀਦਾ ਰੰਗ ਬਣਾਓ"
 
-#: ctk/ctkcolorchooserwidget.c:570
+#: ctk/ctkcolorchooserwidget.c:561
 #, c-format
 msgid "Custom color %d: %s"
 msgstr "ਪਸੰਦੀਦਾ ਰੰਗ %d: %s"
 
-#: ctk/ctkcolorplane.c:409
+#: ctk/ctkcolorplane.c:411
 msgid "Color Plane"
 msgstr "ਰੰਗ ਪਲੇਨ"
 
@@ -2227,56 +2167,52 @@ msgstr "ਸੱਜੇ(_R):"
 msgid "Paper Margins"
 msgstr "ਸਫ਼ਾ ਹਾਸ਼ੀਆ"
 
-#: ctk/ctkentry.c:9583 ctk/ctklabel.c:6680 ctk/ctktextview.c:9502
+#: ctk/ctkentry.c:9591 ctk/ctklabel.c:6680 ctk/ctktextview.c:9520
 msgid "Cu_t"
 msgstr "ਕੱਟੋ(_t)"
 
-#: ctk/ctkentry.c:9587 ctk/ctklabel.c:6681 ctk/ctktextview.c:9506
+#: ctk/ctkentry.c:9595 ctk/ctklabel.c:6681 ctk/ctktextview.c:9524
 msgid "_Copy"
 msgstr "ਕਾਪੀ ਕਰੋ(_C)"
 
-#: ctk/ctkentry.c:9591 ctk/ctklabel.c:6682 ctk/ctktextview.c:9508
+#: ctk/ctkentry.c:9599 ctk/ctklabel.c:6682 ctk/ctktextview.c:9526
 msgid "_Paste"
 msgstr "ਚੇਪੋ(_P)"
 
-#: ctk/ctkentry.c:9594 ctk/ctkfilechooserwidget.c:1481
-#: ctk/ctkfilechooserwidget.c:2290 ctk/ctklabel.c:6684 ctk/ctktextview.c:9511
+#: ctk/ctkentry.c:9602 ctk/ctkfilechooserwidget.c:1499
+#: ctk/ctkfilechooserwidget.c:2334 ctk/ctklabel.c:6684 ctk/ctktextview.c:9529
 msgid "_Delete"
 msgstr "ਹਟਾਓ(_D)"
 
-#: ctk/ctkentry.c:9605 ctk/ctklabel.c:6693 ctk/ctktextview.c:9525
+#: ctk/ctkentry.c:9613 ctk/ctklabel.c:6693 ctk/ctktextview.c:9543
 msgid "Select _All"
 msgstr "ਸਭ ਚੁਣੋ(_A)"
 
-#: ctk/ctkentry.c:9615 ctk/ctktextview.c:9535
-#| msgctxt "keyboard label"
-#| msgid "Insert"
+#: ctk/ctkentry.c:9623 ctk/ctktextview.c:9553
 msgid "Insert _Emoji"
 msgstr "ਈਮੋਜ਼ੀ ਪਾਓ(_E)"
 
-#: ctk/ctkentry.c:9791 ctk/ctktextview.c:9755
+#: ctk/ctkentry.c:9799 ctk/ctktextview.c:9777
 msgid "Select all"
 msgstr "ਸਭ ਚੁਣੋ"
 
-#: ctk/ctkentry.c:9794 ctk/ctktextview.c:9758
+#: ctk/ctkentry.c:9802 ctk/ctktextview.c:9780
 msgid "Cut"
 msgstr "ਕੱਟੋ"
 
-#: ctk/ctkentry.c:9797 ctk/ctktextview.c:9761
+#: ctk/ctkentry.c:9805 ctk/ctktextview.c:9783
 msgid "Copy"
 msgstr "ਕਾਪੀ ਕਰੋ"
 
-#: ctk/ctkentry.c:9800 ctk/ctktextview.c:9764
+#: ctk/ctkentry.c:9808 ctk/ctktextview.c:9786
 msgid "Paste"
 msgstr "ਚੇਪੋ"
 
-#: ctk/ctkentry.c:10870
+#: ctk/ctkentry.c:10880
 msgid "Caps Lock is on"
 msgstr "ਕੈਪਸ ਲਾਕ ਚਾਲੂ ਹੈ"
 
-#: ctk/ctkentry.c:11145
-#| msgctxt "keyboard label"
-#| msgid "Insert"
+#: ctk/ctkentry.c:11158
 msgid "Insert Emoji"
 msgstr "ਈਮੋਜ਼ੀ ਜੋੜੋ"
 
@@ -2292,7 +2228,7 @@ msgstr "ਡੈਸਕਟਾਪ"
 msgid "(None)"
 msgstr "(ਕੋਈ ਨਹੀਂ)"
 
-#: ctk/ctkfilechooserbutton.c:2163
+#: ctk/ctkfilechooserbutton.c:2162
 msgid "Other…"
 msgstr "…ਹੋਰ"
 
@@ -2301,17 +2237,17 @@ msgid "_Name"
 msgstr "ਨਾਂ(_N)"
 
 #. Open item is always present
-#: ctk/ctkfilechoosernative.c:545 ctk/ctkfilechoosernative.c:630
+#: ctk/ctkfilechoosernative.c:546 ctk/ctkfilechoosernative.c:631
 #: ctk/ctkplacessidebar.c:3625 ctk/ctkplacessidebar.c:3693
-#: ctk/ctkplacesview.c:1682
+#: ctk/ctkplacesview.c:1708
 msgid "_Open"
 msgstr "ਖੋਲ੍ਹੋ(_O)"
 
-#: ctk/ctkfilechoosernative.c:630 ctk/inspector/css-editor.c:202
+#: ctk/ctkfilechoosernative.c:631 ctk/inspector/css-editor.c:202
 msgid "_Save"
 msgstr "ਸੰਭਾਲੋ(_S)"
 
-#: ctk/ctkfilechoosernativequartz.c:332 ctk/ui/ctkfilechooserwidget.ui:392
+#: ctk/ctkfilechoosernativequartz.c:331 ctk/ui/ctkfilechooserwidget.ui:405
 msgid "Select which types of files are shown"
 msgstr "ਚੁਣੋ ਕਿ ਕਿਸ ਕਿਸਮ ਦੀਆਂ ਫਾਇਲਾਂ ਵੇਖਾਈਆਂ ਜਾਣ"
 
@@ -2324,288 +2260,356 @@ msgstr "ਚੁਣੋ ਕਿ ਕਿਸ ਕਿਸਮ ਦੀਆਂ ਫਾਇਲਾ�
 msgid "%1$s on %2$s"
 msgstr "%2$s ਉੱਤੇ %1$s"
 
-#: ctk/ctkfilechooserwidget.c:371
+#: ctk/ctkfilechooserwidget.c:385
 msgid "Type name of new folder"
 msgstr "ਨਵੇਂ ਫੋਲਡਰ ਦਾ ਨਾਂ ਲਿਖੋ"
 
-#: ctk/ctkfilechooserwidget.c:793
+#: ctk/ctkfilechooserwidget.c:809
 msgid "The folder could not be created"
 msgstr "ਫੋਲਡਰ ਬਣਾਇਆ ਨਹੀਂ ਜਾ ਸਕਿਆ"
 
-#: ctk/ctkfilechooserwidget.c:806
+#: ctk/ctkfilechooserwidget.c:821
+#, fuzzy
 msgid ""
-"The folder could not be created, as a file with the same name already "
-"exists.  Try using a different name for the folder, or rename the file first."
+"The folder could not be created, as a file with the same name already exists."
 msgstr ""
-"ਫੋਲਡਰ ਬਣਾਇਆ ਨਹੀਂ ਜਾ ਸਕਿਆ, ਕਿਉਕਿ ਇਸੇ ਨਾਂ ਨਾਲ ਫਾਇਲ ਮੌਜੂਦ ਹੈ। ਫੋਲਡਰ ਲਈ ਵੱਖਰਾ ਨਾਂ"
-" ਵਰਤੋਂ ਜਾਂ "
+"ਫੋਲਡਰ ਬਣਾਇਆ ਨਹੀਂ ਜਾ ਸਕਿਆ, ਕਿਉਕਿ ਇਸੇ ਨਾਂ ਨਾਲ ਫਾਇਲ ਮੌਜੂਦ ਹੈ। ਫੋਲਡਰ ਲਈ ਵੱਖਰਾ ਨਾਂ ਵਰਤੋਂ ਜਾਂ "
 "ਫਾਇਲ ਦਾ ਨਾਂ ਪਹਿਲਾਂ ਬਦਲ ਦਿਓ।"
 
-#: ctk/ctkfilechooserwidget.c:821
+#: ctk/ctkfilechooserwidget.c:823
+#, fuzzy
+msgid "Try using a different name for the folder, or rename the file first."
+msgstr ""
+"ਫੋਲਡਰ ਬਣਾਇਆ ਨਹੀਂ ਜਾ ਸਕਿਆ, ਕਿਉਕਿ ਇਸੇ ਨਾਂ ਨਾਲ ਫਾਇਲ ਮੌਜੂਦ ਹੈ। ਫੋਲਡਰ ਲਈ ਵੱਖਰਾ ਨਾਂ ਵਰਤੋਂ ਜਾਂ "
+"ਫਾਇਲ ਦਾ ਨਾਂ ਪਹਿਲਾਂ ਬਦਲ ਦਿਓ।"
+
+#: ctk/ctkfilechooserwidget.c:836
 msgid "You need to choose a valid filename."
 msgstr "ਤੁਹਾਨੂੰ ਢੁੱਕਵਾਂ ਫਾਇਲ-ਨਾਂ ਚੁਣਨਾ ਦੀ ਲੋੜ ਹੈ।"
 
-#: ctk/ctkfilechooserwidget.c:824
+#: ctk/ctkfilechooserwidget.c:839
 #, c-format
 msgid "Cannot create a file under %s as it is not a folder"
 msgstr "%s ਵਿੱਚ ਫਾਇਲ ਬਣਾਈ ਨਹੀਂ ਜਾ ਸਕਦੀ, ਕਿਉਂਕਿ ਇਹ ਫੋਲਡਰ ਨਹੀਂ ਹੈ"
 
-#: ctk/ctkfilechooserwidget.c:834
+#: ctk/ctkfilechooserwidget.c:849
 msgid "Cannot create file as the filename is too long"
 msgstr "ਫਾਇਲ ਬਣਾਈ ਨਹੀਂ ਜਾ ਸਕਦੀ ਕਿਉਂਕਿ ਫਾਇਲ-ਨਾਂ ਬਹੁਤ ਲੰਮਾ ਹੈ"
 
-#: ctk/ctkfilechooserwidget.c:835
+#: ctk/ctkfilechooserwidget.c:850
 msgid "Try using a shorter name."
 msgstr "ਹੋਰ ਛੋਟੇ ਨਾਂ ਨਾਲ ਕੋਸ਼ਿਸ਼ ਕਰੋ"
 
-#: ctk/ctkfilechooserwidget.c:845
+#: ctk/ctkfilechooserwidget.c:860
 msgid "You may only select folders"
 msgstr "ਤੁਸੀਂ ਕੇਵਲ ਫੋਲਡਰ ਹੀ ਚੁਣ ਸਕਦੇ ਹੋ"
 
-#: ctk/ctkfilechooserwidget.c:846
+#: ctk/ctkfilechooserwidget.c:861
 msgid "The item that you selected is not a folder try using a different item."
 msgstr ""
-"ਆਈਟਮ, ਜਿਸ ਦੀ ਤੁਸੀਂ ਚੋਣ ਕੀਤੀ ਹੈ, ਫੋਲਡਰ ਨਹੀਂ ਹੈ; ਵੱਖਰੀ ਆਈਟਮ ਦੀ ਚੋਣ ਕਰਨ ਦੀ"
-" ਕੋਸ਼ਿਸ਼ ਕਰੋ।"
+"ਆਈਟਮ, ਜਿਸ ਦੀ ਤੁਸੀਂ ਚੋਣ ਕੀਤੀ ਹੈ, ਫੋਲਡਰ ਨਹੀਂ ਹੈ; ਵੱਖਰੀ ਆਈਟਮ ਦੀ ਚੋਣ ਕਰਨ ਦੀ ਕੋਸ਼ਿਸ਼ ਕਰੋ।"
 
-#: ctk/ctkfilechooserwidget.c:854
+#: ctk/ctkfilechooserwidget.c:869
 msgid "Invalid file name"
 msgstr "ਗਲਤ ਫਾਇਲ ਨਾਂ"
 
-#: ctk/ctkfilechooserwidget.c:863
+#: ctk/ctkfilechooserwidget.c:878
 msgid "The folder contents could not be displayed"
 msgstr "ਫੋਲਡਰ ਦੀ ਸਮੱਗਰੀ ਵੇਖਾਈ ਨਹੀਂ ਜਾ ਸਕੀ"
 
-#: ctk/ctkfilechooserwidget.c:871
+#: ctk/ctkfilechooserwidget.c:886
 msgid "The file could not be deleted"
 msgstr "ਫਾਇਲ ਨੂੰ ਹਟਾਇਆ ਨਹੀਂ ਜਾ ਸਕਦਾ"
 
-#: ctk/ctkfilechooserwidget.c:879
+#: ctk/ctkfilechooserwidget.c:894
 msgid "The file could not be moved to the Trash"
 msgstr "ਫਾਇਲ ਨੂੰ ਰੱਦੀ ਵਿੱਚ ਨਹੀਂ ਭੇਜਿਆ ਜਾ ਸਕਿਆ"
 
-#: ctk/ctkfilechooserwidget.c:1024
+#: ctk/ctkfilechooserwidget.c:1039
 msgid "A folder with that name already exists"
 msgstr "ਉਸ ਨਾਂ ਨਾਲ ਫੋਲਡਰ ਪਹਿਲਾਂ ਹੀ ਮੌਜੂਦ ਹੈ"
 
-#: ctk/ctkfilechooserwidget.c:1026
+#: ctk/ctkfilechooserwidget.c:1041
 msgid "A file with that name already exists"
 msgstr "ਉਸ ਨਾ ਨਾਲ ਫਾਇਲ ਪਹਿਲਾਂ ਹੀ ਮੌਜੂਦ ਹੈ"
 
-#: ctk/ctkfilechooserwidget.c:1061
+#: ctk/ctkfilechooserwidget.c:1076
 msgid "A folder cannot be called “.”"
 msgstr "ਫੋਲਡਰ ਦਾ ਨਾਂ “.” ਨਹੀਂ ਹੋ ਸਕਦਾ"
 
-#: ctk/ctkfilechooserwidget.c:1062
+#: ctk/ctkfilechooserwidget.c:1077
 msgid "A file cannot be called “.”"
 msgstr "ਫਾਇਲ ਦਾ ਨਾਂ “.” ਨਹੀਂ ਹੋ ਸਕਦਾ"
 
-#: ctk/ctkfilechooserwidget.c:1065
+#: ctk/ctkfilechooserwidget.c:1080
 msgid "A folder cannot be called “..”"
 msgstr "ਫੋਲਡਰ ਦਾ ਨਾਂ “..” ਨਹੀਂ ਹੋ ਸਕਦਾ"
 
-#: ctk/ctkfilechooserwidget.c:1066
+#: ctk/ctkfilechooserwidget.c:1081
 msgid "A file cannot be called “..”"
 msgstr "ਫਾਇਲ ਦਾ ਨਾਂ “..” ਨਹੀਂ ਹੋ ਸਕਦਾ"
 
-#: ctk/ctkfilechooserwidget.c:1069
+#: ctk/ctkfilechooserwidget.c:1084
 msgid "Folder names cannot contain “/”"
 msgstr "ਫੋਲਡਰ ਨਾਂ ਵਿੱਚ “/” ਨਹੀਂ ਹੋ ਸਕਦਾ ਹੈ"
 
-#: ctk/ctkfilechooserwidget.c:1070
+#: ctk/ctkfilechooserwidget.c:1085
 msgid "File names cannot contain “/”"
 msgstr "ਫਾਇਲ ਨਾਂ ਵਿੱਚ “/” ਨਹੀਂ ਹੋ ਸਕਦਾ ਹੈ"
 
-#: ctk/ctkfilechooserwidget.c:1096
+#: ctk/ctkfilechooserwidget.c:1111
 msgid "Folder names should not begin with a space"
 msgstr "ਫੋਲਡਰ ਨਾਂ ਖਾਲੀ ਥਾਂ (ਸਪੇਸ) ਨਾਲ ਸ਼ੁਰੂ ਨਹੀਂ ਹੋਣਾ ਚਾਹੀਦਾ"
 
-#: ctk/ctkfilechooserwidget.c:1097
+#: ctk/ctkfilechooserwidget.c:1112
 msgid "File names should not begin with a space"
 msgstr "ਫਾਇਲ ਨਾਂ ਖਾਲੀ ਥਾਂ (ਸਪੇਸ) ਨਾਲ ਸ਼ੁਰੂ ਨਹੀਂ ਹੋਣਾ ਚਾਹੀਦਾ"
 
-#: ctk/ctkfilechooserwidget.c:1101
+#: ctk/ctkfilechooserwidget.c:1116
 msgid "Folder names should not end with a space"
 msgstr "ਫੋਲਡਰ ਨਾਂ ਖਾਲੀ ਥਾਂ (ਸਪੇਸ) ਨਾਲ ਖਤਮ ਨਹੀਂ ਹੋਣਾ ਚਾਹੀਦਾ"
 
-#: ctk/ctkfilechooserwidget.c:1102
+#: ctk/ctkfilechooserwidget.c:1117
 msgid "File names should not end with a space"
 msgstr "ਫਾਇਲ ਨਾਂ ਖਾਲੀ ਥਾਂ (ਸਪੇਸ) ਨਾਲ ਖਤਮ ਨਹੀਂ ਹੋਣਾ ਚਾਹੀਦਾ"
 
-#: ctk/ctkfilechooserwidget.c:1105
+#: ctk/ctkfilechooserwidget.c:1120
 msgid "Folder names starting with a “.” are hidden"
 msgstr "“.” ਨਾਂ ਨਾਲ ਸ਼ੁਰੂ ਹੋਣ ਵਾਲੇ ਫੋਲਡਰ ਲੁਕਵੇਂ ਹੁੰਦੇ ਹਨ"
 
-#: ctk/ctkfilechooserwidget.c:1106
+#: ctk/ctkfilechooserwidget.c:1121
 msgid "File names starting with a “.” are hidden"
 msgstr "“.” ਨਾਂ ਨਾਲ ਸ਼ੁਰੂ ਹੋਣ ਵਾਲੀਆਂ ਫਾਇਲਾਂ ਲੁਕਵੀਆਂ ਹੁੰਦੀਆਂ ਹਨ"
 
-#: ctk/ctkfilechooserwidget.c:1476
+#: ctk/ctkfilechooserwidget.c:1494
 #, c-format
 msgid "Are you sure you want to permanently delete “%s”?"
 msgstr "ਕੀ ਤੁਸੀਂ “%s” ਨੂੰ ਪੱਕੇ ਤੌਰ ਉੱਤੇ ਭੇਜਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
 
-#: ctk/ctkfilechooserwidget.c:1479
+#: ctk/ctkfilechooserwidget.c:1497
 #, c-format
 msgid "If you delete an item, it will be permanently lost."
 msgstr "ਜੇ ਤੁਸੀਂ ਇਹ ਆਈਟਮ ਨੂੰ ਹਟਾਇਆ ਤਾਂ ਇਸ ਨੂੰ ਪੱਕੇ ਤੌਰ ਉਤੇ ਹਟਾਇਆ ਜਾਵੇਗਾ।"
 
-#: ctk/ctkfilechooserwidget.c:1616
+#: ctk/ctkfilechooserwidget.c:1634
 msgid "The file could not be renamed"
 msgstr "ਫਾਇਲ ਦਾ ਨਾਂ ਨਹੀਂ ਬਦਲਿਆ ਜਾ ਸਕਦਾ"
 
-#: ctk/ctkfilechooserwidget.c:1936
+#: ctk/ctkfilechooserwidget.c:1979
 msgid "Could not select file"
 msgstr "ਫਾਇਲ ਚੁਣੀ ਨਹੀਂ ਜਾ ਸਕੀ"
 
-#: ctk/ctkfilechooserwidget.c:2285
+#: ctk/ctkfilechooserwidget.c:2329
 msgid "_Visit File"
 msgstr "ਫਾਇਲ ਵੇਖੋ(_V)"
 
-#: ctk/ctkfilechooserwidget.c:2286
+#: ctk/ctkfilechooserwidget.c:2330
 msgid "_Open With File Manager"
 msgstr "ਫਾਇਲ ਮੈਨੇਜਰ ਨਾਲ ਖੋਲ੍ਹੋ(_O)"
 
-#: ctk/ctkfilechooserwidget.c:2287
+#: ctk/ctkfilechooserwidget.c:2331
 msgid "_Copy Location"
 msgstr "ਟਿਕਾਣਾ ਕਾਪੀ ਕਰੋ(_C)"
 
-#: ctk/ctkfilechooserwidget.c:2288
+#: ctk/ctkfilechooserwidget.c:2332
 msgid "_Add to Bookmarks"
 msgstr "ਬੁੱਕਮਾਰਕ ਸ਼ਾਮਲ(_A)"
 
-#: ctk/ctkfilechooserwidget.c:2289 ctk/ctkplacessidebar.c:2741
-#: ctk/ui/ctkfilechooserwidget.ui:526
+#: ctk/ctkfilechooserwidget.c:2333 ctk/ctkplacessidebar.c:2741
+#: ctk/ui/ctkfilechooserwidget.ui:539
 msgid "_Rename"
 msgstr "ਨਾਂ ਬਦਲੋ(_R)"
 
-#: ctk/ctkfilechooserwidget.c:2291
+#: ctk/ctkfilechooserwidget.c:2335
 msgid "_Move to Trash"
 msgstr "ਰੱਦੀ ਵਿੱਚ ਭੇਜੋ(_M)"
 
-#: ctk/ctkfilechooserwidget.c:2295
+#: ctk/ctkfilechooserwidget.c:2339
 msgid "Show _Hidden Files"
 msgstr "ਲੁਕਵੀਆਂ ਫਾਇਲਾਂ ਵੇਖੋ(_H)"
 
-#: ctk/ctkfilechooserwidget.c:2296
+#: ctk/ctkfilechooserwidget.c:2340
 msgid "Show _Size Column"
 msgstr "ਅਕਾਰ ਕਾਲਮ ਵੇਖੋ(_S)"
 
-#: ctk/ctkfilechooserwidget.c:2297
+#: ctk/ctkfilechooserwidget.c:2341
+#, fuzzy
+msgid "Show T_ype Column"
+msgstr "ਅਕਾਰ ਕਾਲਮ ਵੇਖੋ(_S)"
+
+#: ctk/ctkfilechooserwidget.c:2342
 msgid "Show _Time"
 msgstr "ਸਮਾਂ ਵੇਖੋ(_T)"
 
-#: ctk/ctkfilechooserwidget.c:2298
+#: ctk/ctkfilechooserwidget.c:2343
 msgid "Sort _Folders before Files"
 msgstr "ਫਾਇਲਾਂ ਤੋਂ ਪਹਿਲਾਂ ਫੋਲਡਰ ਲੜੀਬੱਧ(_F)"
 
 #. this is the header for the location column in the print dialog
-#: ctk/ctkfilechooserwidget.c:2573 ctk/inspector/css-node-tree.ui:141
-#: ctk/ui/ctkfilechooserwidget.ui:207 ctk/ui/ctkprintunixdialog.ui:123
+#: ctk/ctkfilechooserwidget.c:2625 ctk/inspector/css-node-tree.ui:141
+#: ctk/ui/ctkfilechooserwidget.ui:208 ctk/ui/ctkprintunixdialog.ui:123
 msgid "Location"
 msgstr "ਟਿਕਾਣਾ"
 
 #. Label
-#: ctk/ctkfilechooserwidget.c:2666
+#: ctk/ctkfilechooserwidget.c:2718
 msgid "_Name:"
 msgstr "ਨਾਂ(_N):"
 
-#: ctk/ctkfilechooserwidget.c:3291 ctk/ctkfilechooserwidget.c:3305
+#: ctk/ctkfilechooserwidget.c:3343 ctk/ctkfilechooserwidget.c:3357
 #, c-format
 msgid "Searching in %s"
 msgstr "%s ਵਿੱਚ ਖੋਜ ਜਾਰੀ ਹੈ"
 
-#: ctk/ctkfilechooserwidget.c:3311
+#: ctk/ctkfilechooserwidget.c:3363
 msgid "Searching"
 msgstr "ਖੋਜ ਜਾਰੀ ਹੈ"
 
-#: ctk/ctkfilechooserwidget.c:3318
+#: ctk/ctkfilechooserwidget.c:3370
 msgid "Enter location"
 msgstr "ਟਿਕਾਣਾ ਦਿਓ"
 
-#: ctk/ctkfilechooserwidget.c:3320
+#: ctk/ctkfilechooserwidget.c:3372
 msgid "Enter location or URL"
 msgstr "ਟਿਕਾਣਾ ਜਾਂ URL ਦਿਓ"
 
-#: ctk/ctkfilechooserwidget.c:4354 ctk/ctkfilechooserwidget.c:7291
-#: ctk/ui/ctkfilechooserwidget.ui:235
+#: ctk/ctkfilechooserwidget.c:4450 ctk/ctkfilechooserwidget.c:7492
+#: ctk/ui/ctkfilechooserwidget.ui:248
 msgid "Modified"
 msgstr "ਕੀਤੀਆਂ ਸੋਧਾਂ"
 
-#: ctk/ctkfilechooserwidget.c:4632
+#: ctk/ctkfilechooserwidget.c:4728
 #, c-format
 msgid "Could not read the contents of %s"
 msgstr "%s ਦੀ ਸਮੱਗਰੀ ਪੜ੍ਹੀ ਨਹੀਂ ਜਾ ਸਕੀ"
 
-#: ctk/ctkfilechooserwidget.c:4636
+#: ctk/ctkfilechooserwidget.c:4732
 msgid "Could not read the contents of the folder"
 msgstr "ਫੋਲਡਰ ਦੀ ਸਮੱਗਰੀ ਪੜ੍ਹੀ ਨਹੀਂ ਜਾ ਸਕੀ"
 
-#: ctk/ctkfilechooserwidget.c:4796 ctk/ctkfilechooserwidget.c:4844
+#: ctk/ctkfilechooserwidget.c:4892 ctk/ctkfilechooserwidget.c:4940
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: ctk/ctkfilechooserwidget.c:4798 ctk/ctkfilechooserwidget.c:4846
+#: ctk/ctkfilechooserwidget.c:4894 ctk/ctkfilechooserwidget.c:4942
 msgid "%l:%M %p"
 msgstr "%l:%M %p"
 
-#: ctk/ctkfilechooserwidget.c:4802
+#: ctk/ctkfilechooserwidget.c:4898
 msgid "Yesterday"
 msgstr "ਕੱਲ੍ਹ"
 
-#: ctk/ctkfilechooserwidget.c:4810
+#: ctk/ctkfilechooserwidget.c:4906
 msgid "%-e %b"
 msgstr "%-e %b"
 
-#: ctk/ctkfilechooserwidget.c:4814
+#: ctk/ctkfilechooserwidget.c:4910
 msgid "%-e %b %Y"
 msgstr "%-e %b %Y"
 
+#: ctk/ctkfilechooserwidget.c:5009 ctk/ctkfilechooserwidget.c:5017
+msgid "Program"
+msgstr ""
+
+#: ctk/ctkfilechooserwidget.c:5010
+#, fuzzy
+msgid "Audio"
+msgstr "AudioMute"
+
+#: ctk/ctkfilechooserwidget.c:5011 ctk/inspector/visual.ui:230
+#: ctk/ui/ctkfontbutton.ui:13
+msgid "Font"
+msgstr "ਫੋਂਟ"
+
+#: ctk/ctkfilechooserwidget.c:5012 ctk/inspector/visual.ui:488
+msgid "Image"
+msgstr "ਚਿੱਤਰ"
+
+#: ctk/ctkfilechooserwidget.c:5013
+#, fuzzy
+msgid "Archive"
+msgstr "Arch A"
+
+#: ctk/ctkfilechooserwidget.c:5014
+msgid "Markup"
+msgstr ""
+
+#: ctk/ctkfilechooserwidget.c:5015 ctk/ctkfilechooserwidget.c:5016
+msgid "Text"
+msgstr ""
+
+#: ctk/ctkfilechooserwidget.c:5018
+msgid "Video"
+msgstr ""
+
+#: ctk/ctkfilechooserwidget.c:5019
+msgid "Contacts"
+msgstr ""
+
+#: ctk/ctkfilechooserwidget.c:5020
+#, fuzzy
+msgid "Calendar"
+msgstr "calendar:MY"
+
+#: ctk/ctkfilechooserwidget.c:5021
+#, fuzzy
+msgid "Document"
+msgstr "ਦਸਤਾਵੇਜ਼ ਲਿਖੇ"
+
+#: ctk/ctkfilechooserwidget.c:5022
+#, fuzzy
+msgid "Presentation"
+msgstr "ਸਥਿਤੀ(_O):"
+
+#: ctk/ctkfilechooserwidget.c:5023
+msgid "Spreadsheet"
+msgstr ""
+
 #. Translators: We don't know whether this printer is
 #. * available to print to.
-#: ctk/ctkfilechooserwidget.c:5049 ctk/inspector/prop-editor.c:1689
+#: ctk/ctkfilechooserwidget.c:5054 ctk/ctkfilechooserwidget.c:5243
+#: ctk/inspector/prop-editor.c:1693
 #: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:748
 msgid "Unknown"
 msgstr "ਅਣਪਛਾਤਾ"
 
-#: ctk/ctkfilechooserwidget.c:5088 ctk/ctkplacessidebar.c:1094
+#: ctk/ctkfilechooserwidget.c:5282 ctk/ctkplacessidebar.c:1094
 msgid "Home"
 msgstr "ਘਰ"
 
-#: ctk/ctkfilechooserwidget.c:5584
+#: ctk/ctkfilechooserwidget.c:5779
 msgid "Cannot change to folder because it is not local"
 msgstr "ਫੋਲਡਰ ਨੂੰ ਬਦਲਿਆ ਨਹੀਂ ਕਰ ਸਕਿਆ, ਕਿਉਂਕਿ ਇਹ ਲੋਕਲ ਨਹੀਂ ਹੈ"
 
-#: ctk/ctkfilechooserwidget.c:6370 ctk/ctkprintunixdialog.c:665
+#: ctk/ctkfilechooserwidget.c:6565 ctk/ctkprintunixdialog.c:665
 #, c-format
 msgid "A file named “%s” already exists.  Do you want to replace it?"
 msgstr "ਫਾਇਲ ਨਾਂ “%s” ਪਹਿਲਾਂ ਹੀ ਮੌਜੂਦ ਹੈ। ਕੀ ਤੁਸੀਂ ਇਸ ਨੂੰ ਬਦਲਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
 
-#: ctk/ctkfilechooserwidget.c:6373 ctk/ctkprintunixdialog.c:669
+#: ctk/ctkfilechooserwidget.c:6568 ctk/ctkprintunixdialog.c:669
 #, c-format
 msgid ""
 "The file already exists in “%s”.  Replacing it will overwrite its contents."
 msgstr ""
-"ਫਾਇਲ ਪਹਿਲਾਂ ਹੀ “%s” ਵਿੱਚ ਮੌਜੂਦ ਹੈ। ਇਸ ਨੂੰ ਇਸ ਦੇ ਸਭ ਭਾਗਾਂ ਸਮੇਤ ਬਦਲਿਆ ਕੀਤਾ ਜਾ"
-" ਰਿਹਾ ਹੈ।"
+"ਫਾਇਲ ਪਹਿਲਾਂ ਹੀ “%s” ਵਿੱਚ ਮੌਜੂਦ ਹੈ। ਇਸ ਨੂੰ ਇਸ ਦੇ ਸਭ ਭਾਗਾਂ ਸਮੇਤ ਬਦਲਿਆ ਕੀਤਾ ਜਾ ਰਿਹਾ ਹੈ।"
 
-#: ctk/ctkfilechooserwidget.c:6378 ctk/ctkprintunixdialog.c:677
+#: ctk/ctkfilechooserwidget.c:6573 ctk/ctkprintunixdialog.c:677
 msgid "_Replace"
 msgstr "ਬਦਲੋ(_R)"
 
-#: ctk/ctkfilechooserwidget.c:6592
+#: ctk/ctkfilechooserwidget.c:6792
 msgid "You do not have access to the specified folder."
 msgstr "ਦਿੱਤੇ ਫੋਲਡਰ ਲਈ ਤੁਹਾਡੇ ਕੋਲ ਪਹੁੰਚ ਨਹੀਂ ਹੈ।"
 
-#: ctk/ctkfilechooserwidget.c:7215
+#: ctk/ctkfilechooserwidget.c:7415
 msgid "Could not send the search request"
 msgstr "ਖੋਜ ਮੰਗ ਭੇਜੀ ਨਹੀਂ ਜਾ ਸਕੀ"
 
-#: ctk/ctkfilechooserwidget.c:7501
+#: ctk/ctkfilechooserwidget.c:7703
 msgid "Accessed"
 msgstr "ਪਹੁੰਚ ਕੀਤੀ"
 
-#: ctk/ctkfilechooserwidget.c:8612 ctk/ui/ctkfilechooserwidget.ui:69
+#: ctk/ctkfilechooserwidget.c:8822 ctk/ui/ctkfilechooserwidget.ui:69
 msgid "Create Folder"
 msgstr "ਫੋਲਡਰ ਬਣਾਓ"
 
@@ -2631,62 +2635,52 @@ msgctxt "font"
 msgid "None"
 msgstr "ਕੋਈ ਨਹੀਂ"
 
-#: ctk/ctkfontchooserwidget.c:1523
-#| msgid "_Width:"
+#: ctk/ctkfontchooserwidget.c:1539
 msgid "Width"
 msgstr "ਚੌੜਾਈ"
 
-#: ctk/ctkfontchooserwidget.c:1524
-#| msgctxt "keyboard label"
-#| msgid "Right"
+#: ctk/ctkfontchooserwidget.c:1540
 msgid "Weight"
 msgstr "ਭਾਰ"
 
-#: ctk/ctkfontchooserwidget.c:1525
-#| msgctxt "Stock label"
-#| msgid "_Italic"
+#: ctk/ctkfontchooserwidget.c:1541
 msgid "Italic"
 msgstr "ਤਿਰਛੇ"
 
-#: ctk/ctkfontchooserwidget.c:1526
+#: ctk/ctkfontchooserwidget.c:1542
 msgid "Slant"
 msgstr "ਤਿਰਛੇ"
 
-#: ctk/ctkfontchooserwidget.c:1527
+#: ctk/ctkfontchooserwidget.c:1543
 msgid "Optical Size"
 msgstr "ਓਪਟੀਕਲ ਆਕਾਰ"
 
-#: ctk/ctkfontchooserwidget.c:2064 ctk/inspector/prop-editor.c:1676
+#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1680
 msgid "Default"
 msgstr "ਡਿਫਾਲਟ"
 
-#: ctk/ctkfontchooserwidget.c:2111
+#: ctk/ctkfontchooserwidget.c:2141
 #, fuzzy
-#| msgctxt "event phase"
-#| msgid "Capture"
 msgid "Ligatures"
 msgstr "ਕੈਪਚਰ"
 
-#: ctk/ctkfontchooserwidget.c:2112
-#| msgctxt "paper size"
-#| msgid "US Letter Plus"
+#: ctk/ctkfontchooserwidget.c:2142
 msgid "Letter Case"
 msgstr "ਪੱਤਰ ਕੇਸ"
 
-#: ctk/ctkfontchooserwidget.c:2113
+#: ctk/ctkfontchooserwidget.c:2143
 msgid "Number Case"
 msgstr "ਗਿਣਤੀ ਕੇਸ"
 
-#: ctk/ctkfontchooserwidget.c:2114
+#: ctk/ctkfontchooserwidget.c:2144
 msgid "Number Spacing"
 msgstr ""
 
-#: ctk/ctkfontchooserwidget.c:2115
+#: ctk/ctkfontchooserwidget.c:2145
 msgid "Number Formatting"
 msgstr ""
 
-#: ctk/ctkfontchooserwidget.c:2116
-#| msgid "Dark Variant"
+#: ctk/ctkfontchooserwidget.c:2146
 msgid "Character Variants"
 msgstr "ਅੱਖਰਾਂ ਦੇ ਬਦਲ"
 
@@ -2698,11 +2692,11 @@ msgstr "OpenGL ਪ੍ਰਸੰਗ ਬਣਾਉਣ ਲਈ ਫੇਲ੍ਹ ਹੈ"
 msgid "Application menu"
 msgstr "ਐਪਲੀਕੇਸ਼ਨ ਮੀਨੂ"
 
-#: ctk/ctkheaderbar.c:458 ctk/ctkwindow.c:9343
+#: ctk/ctkheaderbar.c:458 ctk/ctkwindow.c:9355
 msgid "Close"
 msgstr "ਬੰਦ ਕਰੋ"
 
-#: ctk/ctkicontheme.c:2357 ctk/ctkicontheme.c:2422
+#: ctk/ctkicontheme.c:2355 ctk/ctkicontheme.c:2420
 #, c-format
 msgid "Icon '%s' not present in theme %s"
 msgstr "ਥੀਮ %2$s ਵਿੱਚ ਆਈਕਾਨ '%1$s' ਮੌਜੂਦ ਨਹੀਂ ਹੈ"
@@ -2721,30 +2715,30 @@ msgctxt "input method menu"
 msgid "None"
 msgstr "ਕੋਈ ਨਹੀਂ"
 
-#: ctk/ctkimmulticontext.c:609
+#: ctk/ctkimmulticontext.c:615
 msgctxt "input method menu"
 msgid "System"
 msgstr "ਸਿਸਟਮ"
 
-#: ctk/ctkimmulticontext.c:688
+#: ctk/ctkimmulticontext.c:694
 #, c-format
 msgctxt "input method menu"
 msgid "System (%s)"
 msgstr "ਸਿਸਟਮ (%s)"
 
-#: ctk/ctkinfobar.c:1150 ctk/ctkmessagedialog.c:385
+#: ctk/ctkinfobar.c:1307 ctk/ctkmessagedialog.c:385
 msgid "Information"
 msgstr "ਜਾਣਕਾਰੀ"
 
-#: ctk/ctkinfobar.c:1154 ctk/ctkmessagedialog.c:389
+#: ctk/ctkinfobar.c:1311 ctk/ctkmessagedialog.c:389
 msgid "Question"
 msgstr "ਸਵਾਲ"
 
-#: ctk/ctkinfobar.c:1158 ctk/ctkmessagedialog.c:393
+#: ctk/ctkinfobar.c:1315 ctk/ctkmessagedialog.c:393
 msgid "Warning"
 msgstr "ਚੇਤਾਵਨੀ"
 
-#: ctk/ctkinfobar.c:1162 ctk/ctkmessagedialog.c:397
+#: ctk/ctkinfobar.c:1319 ctk/ctkmessagedialog.c:397
 msgid "Error"
 msgstr "ਗਲਤੀ"
 
@@ -2877,16 +2871,16 @@ msgstr "ਸੈੱਟ ਕਰਨ ਲਈ CTK+ ਡੀਬੱਗਿੰਗ ਨਿਸ਼
 msgid "CTK+ debugging flags to unset"
 msgstr "ਅਣ-ਸੈੱਟ ਕਰਨ ਲਈ CTK+ ਡੀਬੱਗਿੰਗ ਨਿਸ਼ਾਨ"
 
-#: ctk/ctkmain.c:808 ctk/ctkmain.c:1002
+#: ctk/ctkmain.c:810 ctk/ctkmain.c:1004
 #, c-format
 msgid "Cannot open display: %s"
 msgstr "ਦਿੱਖ ਖੋਲ੍ਹੀ ਨਹੀਂ ਜਾ ਸਕੀ: %s"
 
-#: ctk/ctkmain.c:920
+#: ctk/ctkmain.c:922
 msgid "CTK+ Options"
 msgstr "CTK+ ਚੋਣ"
 
-#: ctk/ctkmain.c:920
+#: ctk/ctkmain.c:922
 msgid "Show CTK+ Options"
 msgstr "CTK+ ਚੋਣਾਂ ਵੇਖੋ"
 
@@ -2895,7 +2889,7 @@ msgstr "CTK+ ਚੋਣਾਂ ਵੇਖੋ"
 #. * Do *not* translate it to "predefinito:LTR", if it
 #. * it isn't default:LTR or default:RTL it will not work
 #.
-#: ctk/ctkmain.c:1270
+#: ctk/ctkmain.c:1275
 msgid "default:LTR"
 msgstr "default:LTR"
 
@@ -2911,72 +2905,69 @@ msgstr "ਹਾਂ(_Y)"
 msgid "Co_nnect"
 msgstr "ਕਨੈਕਟ ਕਰੋ(_n)"
 
-#: ctk/ctkmountoperation.c:671
+#: ctk/ctkmountoperation.c:668
 msgid "Connect As"
 msgstr "ਇਸ ਵਜੋਂ ਕਨੈਕਟ"
 
-#: ctk/ctkmountoperation.c:680
+#: ctk/ctkmountoperation.c:677
 msgid "_Anonymous"
 msgstr "ਅਣਛਪਾਤਾ(_A)"
 
-#: ctk/ctkmountoperation.c:689
+#: ctk/ctkmountoperation.c:686
 msgid "Registered U_ser"
 msgstr "ਰਜਿਸਟਰ ਹੋਏ ਵਰਤੋਂਕਾਰ(_s)"
 
-#: ctk/ctkmountoperation.c:700
+#: ctk/ctkmountoperation.c:697
 msgid "_Username"
 msgstr "ਵਰਤੋਂਕਾਰ ਨਾਂ(_U)"
 
-#: ctk/ctkmountoperation.c:705
+#: ctk/ctkmountoperation.c:702
 msgid "_Domain"
 msgstr "ਡੋਮੇਨ(_D)"
 
-#: ctk/ctkmountoperation.c:714
-#| msgid "Volume Up"
+#: ctk/ctkmountoperation.c:711
 msgid "Volume type"
 msgstr "ਵਾਲੀਅਮ ਕਿਸਮ"
 
-#: ctk/ctkmountoperation.c:724
+#: ctk/ctkmountoperation.c:721
 msgid "_Hidden"
 msgstr "ਲੁਕਵਾਂ(_H)"
 
-#: ctk/ctkmountoperation.c:727
-#| msgctxt "input method menu"
-#| msgid "Windows IME"
+#: ctk/ctkmountoperation.c:724
 msgid "_Windows system"
 msgstr "_Windows ਸਿਸਟਮ"
 
-#: ctk/ctkmountoperation.c:730
+#: ctk/ctkmountoperation.c:727
 msgid "_PIM"
 msgstr "_PIM"
 
-#: ctk/ctkmountoperation.c:736
+#: ctk/ctkmountoperation.c:733
 msgid "_Password"
 msgstr "ਪਾਸਵਰਡ(_P)"
 
-#: ctk/ctkmountoperation.c:758
+#: ctk/ctkmountoperation.c:755
 msgid "Forget password _immediately"
 msgstr "ਪਾਸਵਰਡ ਤੁਰੰਤ ਭੁੱਲ ਜਾਓ(_i)"
 
-#: ctk/ctkmountoperation.c:768
+#: ctk/ctkmountoperation.c:765
 msgid "Remember password until you _logout"
 msgstr "ਜਦੋਂ ਤੱਕ ਲਾਗਆਉਟ ਨਹੀਂ ਕੀਤਾ ਜਾਂਦਾ ਪਾਸਵਰਡ ਯਾਦ ਰੱਖੋ(_l)"
 
-#: ctk/ctkmountoperation.c:778
+#: ctk/ctkmountoperation.c:775
 msgid "Remember _forever"
 msgstr "ਹਮੇਸ਼ਾ ਯਾਦ ਰੱਖੋ(_f)"
 
-#: ctk/ctkmountoperation.c:1173
+#: ctk/ctkmountoperation.c:1170
 #, c-format
 msgid "Unknown Application (PID %d)"
 msgstr "ਅਣਪਛਾਤੀ ਐਪਲੀਕੇਸ਼ਨ (PID %d)"
 
-#: ctk/ctkmountoperation.c:1358
+#: ctk/ctkmountoperation.c:1355
 #, c-format
 msgid "Unable to end process"
 msgstr "ਪਰੋਸੈਸ ਖਤਮ ਕਰਨ ਲਈ ਅਸਮਰੱਥ"
 
-#: ctk/ctkmountoperation.c:1392
+#: ctk/ctkmountoperation.c:1389
 msgid "_End Process"
 msgstr "ਪਰੋਸੈਸ ਖਤਮ(_E)"
 
@@ -2986,27 +2977,27 @@ msgid "Cannot kill process with PID %d. Operation is not implemented."
 msgstr "PID %d ਵਾਲਾ ਪਰੋਸੈਸ ਖਤਮ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ। ਓਪਰੇਸ਼ਨ ਬਣਾਇਆ ਨਹੀਂ।"
 
 #. translators: this string is a name for the 'less' command
-#: ctk/ctkmountoperation-x11.c:954
+#: ctk/ctkmountoperation-x11.c:955
 msgid "Terminal Pager"
 msgstr "ਟਰਮੀਨਲ ਪੇਜ਼ਰ"
 
-#: ctk/ctkmountoperation-x11.c:955
+#: ctk/ctkmountoperation-x11.c:956
 msgid "Top Command"
 msgstr "ਟਾਪ ਕਮਾਂਡ"
 
-#: ctk/ctkmountoperation-x11.c:956
+#: ctk/ctkmountoperation-x11.c:957
 msgid "Bourne Again Shell"
 msgstr "ਬਰਾਊਨ ਅਗੇਨ ਸ਼ੈੱਲ"
 
-#: ctk/ctkmountoperation-x11.c:957
+#: ctk/ctkmountoperation-x11.c:958
 msgid "Bourne Shell"
 msgstr "ਬਰਾਊਨ ਸ਼ੈੱਲ"
 
-#: ctk/ctkmountoperation-x11.c:958
+#: ctk/ctkmountoperation-x11.c:959
 msgid "Z Shell"
 msgstr "Z ਸ਼ੈੱਲ"
 
-#: ctk/ctkmountoperation-x11.c:1055
+#: ctk/ctkmountoperation-x11.c:1056
 #, c-format
 msgid "Cannot end process with PID %d: %s"
 msgstr "PID %d ਨਾਲ ਪਰੋਸੈਸ ਖਤਮ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ: %s"
@@ -3016,7 +3007,7 @@ msgstr "PID %d ਨਾਲ ਪਰੋਸੈਸ ਖਤਮ ਨਹੀਂ ਕੀਤਾ 
 msgid "Page %u"
 msgstr "ਸਫ਼ਾ %u"
 
-#: ctk/ctkpagesetup.c:652 ctk/ctkpapersize.c:986 ctk/ctkpapersize.c:1026
+#: ctk/ctkpagesetup.c:652 ctk/ctkpapersize.c:989 ctk/ctkpapersize.c:1029
 msgid "Not a valid page setup file"
 msgstr "ਇੱਕ ਠੀਕ ਸਫ਼ਾ ਸੈੱਟਅੱਪ ਫਾਇਲ ਨਹੀਂ"
 
@@ -3059,7 +3050,6 @@ msgstr "ਫਾਇਲ ਸਿਸਟਮ ਰੂਟ"
 #. translators: %s is the name of a cloud provider for files
 #: ctk/ctkplacessidebar.c:981
 #, c-format
-#| msgid "Open '%s'"
 msgid "Open %s"
 msgstr "%s ਖੋਲ੍ਹੋ"
 
@@ -3072,14 +3062,11 @@ msgid "Recent files"
 msgstr "ਤਾਜ਼ਾ ਫਾਇਲਾਂ"
 
 #: ctk/ctkplacessidebar.c:1082
-#| msgid "_Start"
 msgid "Starred"
 msgstr "ਤਾਰਾ ਲੱਗੇ"
 
 #. TODO: Rename to 'Starred files'
 #: ctk/ctkplacessidebar.c:1085
-#| msgctxt "printer option"
-#| msgid "Printer Profile"
 msgid "Favorite files"
 msgstr "ਮਨਪਸੰਦ ਫਾਇਲਾਂ"
 
@@ -3191,7 +3178,6 @@ msgstr "“%s” ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਅਸਮਰੱਥ"
 
 #: ctk/ctkplacessidebar.c:2430
 #, c-format
-#| msgid "Opening “%s”."
 msgid "Error unlocking “%s”"
 msgstr "”%s” ਅਣ-ਲਾਕ ਕਰਨ ਦੌਰਾਨ ਗਲਤੀ"
 
@@ -3206,7 +3192,7 @@ msgstr "ਇਹ ਨਾਂ ਪਹਿਲਾਂ ਹੀ ਵਰਤਿਆ ਗਿਆ ਹ
 
 #: ctk/ctkplacessidebar.c:2735 ctk/inspector/actions.ui:43
 #: ctk/inspector/css-node-tree.ui:39 ctk/inspector/object-tree.ui:110
-#: ctk/ui/ctkfilechooserwidget.ui:189 ctk/ui/ctkfilechooserwidget.ui:500
+#: ctk/ui/ctkfilechooserwidget.ui:190 ctk/ui/ctkfilechooserwidget.ui:513
 msgid "Name"
 msgstr "ਨਾਂ"
 
@@ -3236,12 +3222,12 @@ msgid "Unable to poll “%s” for media changes"
 msgstr "ਮੀਡਿਆ ਬਦਲਾਅ ਲਈ “%s“ ਪੋਲ ਕਰਨ ਲਈ ਅਸਮਰੱਥ"
 
 #: ctk/ctkplacessidebar.c:3630 ctk/ctkplacessidebar.c:3696
-#: ctk/ctkplacesview.c:1692
+#: ctk/ctkplacesview.c:1718
 msgid "Open in New _Tab"
 msgstr "ਨਵੀਂ ਟੈਬ 'ਚ ਖੋਲ੍ਹੋ(_T)"
 
 #: ctk/ctkplacessidebar.c:3636 ctk/ctkplacessidebar.c:3699
-#: ctk/ctkplacesview.c:1703
+#: ctk/ctkplacesview.c:1729
 msgid "Open in New _Window"
 msgstr "ਨਵੀਂ ਵਿੰਡੋ 'ਚ ਖੋਲ੍ਹੋ(_W)"
 
@@ -3257,11 +3243,11 @@ msgstr "ਹਟਾਓ(_R)"
 msgid "Rename…"
 msgstr "...ਨਾਂ ਬਦਲੋ"
 
-#: ctk/ctkplacessidebar.c:3709 ctk/ctkplacesview.c:1737
+#: ctk/ctkplacessidebar.c:3709 ctk/ctkplacesview.c:1763
 msgid "_Mount"
 msgstr "ਮਾਊਂਟ(_M)"
 
-#: ctk/ctkplacessidebar.c:3710 ctk/ctkplacesview.c:1727
+#: ctk/ctkplacessidebar.c:3710 ctk/ctkplacesview.c:1753
 msgid "_Unmount"
 msgstr "ਅਣ-ਮਾਊਂਟ(_U)"
 
@@ -3273,95 +3259,94 @@ msgstr "ਬਾਹਰ ਕੱਢੋ(_E)"
 msgid "_Detect Media"
 msgstr "ਮੀਡਿਆ ਖੋਜਿਆ(_D)"
 
-#: ctk/ctkplacessidebar.c:4158 ctk/ctkplacesview.c:1122
+#: ctk/ctkplacessidebar.c:4158 ctk/ctkplacesview.c:1125
 msgid "Computer"
 msgstr "ਕੰਪਿਊਟਰ"
 
-#: ctk/ctkplacesview.c:898
+#: ctk/ctkplacesview.c:901
 msgid "Searching for network locations"
 msgstr "ਨੈੱਟਵਰਕ ਟਿਕਾਣਿਆਂ ਲਈ ਖੋਜ ਕੀਤੀ ਜਾ ਰਹੀ ਹੈ"
 
-#: ctk/ctkplacesview.c:905
+#: ctk/ctkplacesview.c:908
 msgid "No network locations found"
 msgstr "ਕੋਈ ਨੈੱਟਵਰਕ ਟਿਕਾਣੇ ਨਹੀਂ ਲੱਭੇ"
 
 #. if it wasn't cancelled show a dialog
-#: ctk/ctkplacesview.c:1232 ctk/ctkplacesview.c:1307
+#: ctk/ctkplacesview.c:1235 ctk/ctkplacesview.c:1333
 msgid "Unable to access location"
 msgstr "ਟਿਕਾਣੇ ਨੂੰ ਵਰਤਣ ਲਈ ਅਸਮਰੱਥ"
 
 #. Restore from Cancel to Connect
-#: ctk/ctkplacesview.c:1250 ctk/ui/ctkplacesview.ui:317
+#: ctk/ctkplacesview.c:1253 ctk/ui/ctkplacesview.ui:317
 msgid "Con_nect"
 msgstr "ਕੁਨੈਕਟ ਕਰੋ(_n)"
 
 #. if it wasn't cancelled show a dialog
-#: ctk/ctkplacesview.c:1370
+#: ctk/ctkplacesview.c:1396
 msgid "Unable to unmount volume"
 msgstr "ਵਾਲੀਅਮ ਨੂੰ ਅਣ-ਮਾਊਂਟ ਕਰਨ ਲਈ ਅਸਮਰੱਥ"
 
 #. Allow to cancel the operation
-#: ctk/ctkplacesview.c:1471
+#: ctk/ctkplacesview.c:1497
 msgid "Cance_l"
 msgstr "ਰੱਦ ਕਰੋ(_l)"
 
-#: ctk/ctkplacesview.c:1634
+#: ctk/ctkplacesview.c:1660
 msgid "AppleTalk"
 msgstr "AppleTalk"
 
 #. Translators: do not translate ftp:// and ftps://
-#: ctk/ctkplacesview.c:1638
+#: ctk/ctkplacesview.c:1664
 msgid "File Transfer Protocol"
 msgstr "ਫਾਇਲ ਟਰਾਂਸਫਰ ਪਰੋਟੋਕਾਲ"
 
-#: ctk/ctkplacesview.c:1638
+#: ctk/ctkplacesview.c:1664
 msgid "ftp:// or ftps://"
 msgstr "ftp:// ਜਾਂ ftps://"
 
-#: ctk/ctkplacesview.c:1641
-#| msgid "File System"
+#: ctk/ctkplacesview.c:1667
 msgid "Network File System"
 msgstr "ਨੈੱਟਵਰਕ ਫਾਇਲ ਸਿਸਟਮ"
 
-#: ctk/ctkplacesview.c:1644
+#: ctk/ctkplacesview.c:1670
 msgid "Samba"
 msgstr "ਸਾਂਬਾ"
 
 #. Translators: do not translate sftp:// and ssh://
-#: ctk/ctkplacesview.c:1648
+#: ctk/ctkplacesview.c:1674
 msgid "SSH File Transfer Protocol"
 msgstr "SSH ਫਾਇਲ ਟਰਾਂਸਫਰ ਪਰੋਟੋਕਾਲ"
 
-#: ctk/ctkplacesview.c:1648
+#: ctk/ctkplacesview.c:1674
 msgid "sftp:// or ssh://"
 msgstr "sftp:// ਜਾਂ ssh://"
 
 #. Translators: do not translate dav:// and davs://
-#: ctk/ctkplacesview.c:1652
+#: ctk/ctkplacesview.c:1678
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: ctk/ctkplacesview.c:1652
+#: ctk/ctkplacesview.c:1678
 msgid "dav:// or davs://"
 msgstr "dav:// ਜਾਂ davs://"
 
-#: ctk/ctkplacesview.c:1727
+#: ctk/ctkplacesview.c:1753
 msgid "_Disconnect"
 msgstr "ਕੁਨੈਕਸ਼ਨ ਬੰਦ ਕਰੋ(_D)"
 
-#: ctk/ctkplacesview.c:1737
+#: ctk/ctkplacesview.c:1763
 msgid "_Connect"
 msgstr "ਕੁਨੈਕਟ ਕਰੋ(_C)"
 
-#: ctk/ctkplacesview.c:1878
+#: ctk/ctkplacesview.c:1904
 msgid "Unable to get remote server location"
 msgstr "ਰਿਮੋਟ ਸਰਵਰ ਟਿਕਾਣਾ ਲੈਣ ਲਈ ਅਸਮਰੱਥ"
 
-#: ctk/ctkplacesview.c:2073 ctk/ctkplacesview.c:2082
+#: ctk/ctkplacesview.c:2099 ctk/ctkplacesview.c:2108
 msgid "Networks"
 msgstr "ਨੈੱਟਵਰਕ"
 
-#: ctk/ctkplacesview.c:2073 ctk/ctkplacesview.c:2082
+#: ctk/ctkplacesview.c:2099 ctk/ctkplacesview.c:2108
 msgid "On This Computer"
 msgstr "ਇਸ ਕੰਪਿਊਟਰ ਉੱਤੇ"
 
@@ -3381,15 +3366,15 @@ msgid "Disconnect"
 msgstr "ਕੁਨੈਕਸ਼ਨ ਬੰਦ ਕਰੋ"
 
 #: ctk/ctkplacesviewrow.c:481 ctk/ui/ctkplacesviewrow.ui:72
-#: ctk/ui/ctksidebarrow.ui:61
+#: ctk/ui/ctksidebarrow.ui:62
 msgid "Unmount"
 msgstr "ਅਣ-ਮਾਊਂਟ ਕਰੋ"
 
-#: ctk/ctkprintbackend.c:778
+#: ctk/ctkprintbackend.c:780
 msgid "Authentication"
 msgstr "ਪਰਮਾਣਕਿਤਾ"
 
-#: ctk/ctkprintbackend.c:849
+#: ctk/ctkprintbackend.c:853
 msgid "_Remember password"
 msgstr "ਪਾਸਵਰਡ ਯਾਦ ਰੱਖੋ(_R)"
 
@@ -3481,63 +3466,63 @@ msgid "The most probable reason is that a temporary file could not be created."
 msgstr "ਸਭ ਤੋਂ ਵੱਧ ਸੰਭਵਾਨਾ ਹੈ ਕਿ ਆਰਜ਼ੀ ਫਾਇਲ ਬਣਾਈ ਨਹੀਂ ਜਾ ਸਕੀ।"
 
 #. window
-#: ctk/ctkprintoperation-portal.c:231 ctk/ctkprintoperation-portal.c:542
-#: ctk/ctkprintoperation-portal.c:611 ctk/ctkprintunixdialog.c:3415
+#: ctk/ctkprintoperation-portal.c:231 ctk/ctkprintoperation-portal.c:549
+#: ctk/ctkprintoperation-portal.c:618 ctk/ctkprintunixdialog.c:3415
 msgid "Print"
 msgstr "ਛਾਪੋ"
 
-#: ctk/ctkprintoperation-win32.c:617
+#: ctk/ctkprintoperation-win32.c:631
 msgid "Printer offline"
 msgstr "ਪਰਿੰਟਰ ਬੰਦ ਹੈ"
 
-#: ctk/ctkprintoperation-win32.c:619
+#: ctk/ctkprintoperation-win32.c:633
 msgid "Out of paper"
 msgstr "ਪੇਪਰ ਖਤਮ ਹੋ ਗਏ"
 
 #. Translators: this is a printer status.
-#: ctk/ctkprintoperation-win32.c:621
-#: modules/printbackends/cups/ctkprintbackendcups.c:2602
+#: ctk/ctkprintoperation-win32.c:635
+#: modules/printbackends/cups/ctkprintbackendcups.c:2628
 msgid "Paused"
 msgstr "ਵਿਰਾਮ"
 
-#: ctk/ctkprintoperation-win32.c:623
+#: ctk/ctkprintoperation-win32.c:637
 msgid "Need user intervention"
 msgstr "ਵਰਤੋਂਕਾਰ ਦੇ ਦਖਲ ਦੀ ਲੋੜ ਹੈ"
 
-#: ctk/ctkprintoperation-win32.c:728
+#: ctk/ctkprintoperation-win32.c:742
 msgid "Custom size"
 msgstr "ਕਸਟਮ ਅਕਾਰ"
 
-#: ctk/ctkprintoperation-win32.c:1587
+#: ctk/ctkprintoperation-win32.c:1619
 msgid "No printer found"
 msgstr "ਕੋਈ ਪਰਿੰਟਰ ਨਹੀਂ ਲੱਭਿਆ"
 
-#: ctk/ctkprintoperation-win32.c:1614
+#: ctk/ctkprintoperation-win32.c:1646
 msgid "Invalid argument to CreateDC"
 msgstr "CreateDC ਲਈ ਗਲਤ ਆਰਗੂਮੈਂਟ"
 
-#: ctk/ctkprintoperation-win32.c:1650 ctk/ctkprintoperation-win32.c:1896
+#: ctk/ctkprintoperation-win32.c:1682 ctk/ctkprintoperation-win32.c:1928
 msgid "Error from StartDoc"
 msgstr "StartDoc ਤੋਂ ਗਲਤੀ"
 
-#: ctk/ctkprintoperation-win32.c:1751 ctk/ctkprintoperation-win32.c:1774
-#: ctk/ctkprintoperation-win32.c:1822
+#: ctk/ctkprintoperation-win32.c:1783 ctk/ctkprintoperation-win32.c:1806
+#: ctk/ctkprintoperation-win32.c:1854
 msgid "Not enough free memory"
 msgstr "ਲੋੜੀਦੀ ਮੈਮੋਰੀ ਖਾਲੀ ਨਹੀਂ ਹੈ"
 
-#: ctk/ctkprintoperation-win32.c:1827
+#: ctk/ctkprintoperation-win32.c:1859
 msgid "Invalid argument to PrintDlgEx"
 msgstr "PrintDlgEx ਲਈ ਗਲਤ ਮੁੱਲ"
 
-#: ctk/ctkprintoperation-win32.c:1832
+#: ctk/ctkprintoperation-win32.c:1864
 msgid "Invalid pointer to PrintDlgEx"
 msgstr "PrintDlgEx ਲਈ ਗਲਤ ਸੰਕੇਤਕ"
 
-#: ctk/ctkprintoperation-win32.c:1837
+#: ctk/ctkprintoperation-win32.c:1869
 msgid "Invalid handle to PrintDlgEx"
 msgstr "PrintDlgEx ਲਈ ਗਲਤ ਹੈਂਡਲ"
 
-#: ctk/ctkprintoperation-win32.c:1842
+#: ctk/ctkprintoperation-win32.c:1874
 msgid "Unspecified error"
 msgstr "ਨਾ-ਦੱਸੀ ਗਲਤੀ"
 
@@ -3564,42 +3549,42 @@ msgstr "…ਪਰਿੰਟਰ ਜਾਣਕਾਰੀ ਲਈ ਜਾ ਰਹੀ ਹ�
 #. * multiple pages on a sheet when printing
 #.
 #: ctk/ctkprintunixdialog.c:3120
-#: modules/printbackends/cups/ctkprintbackendcups.c:5378
+#: modules/printbackends/cups/ctkprintbackendcups.c:5508
 msgid "Left to right, top to bottom"
 msgstr "ਖੱਬੇ ਤੋਂ ਸੱਜੇ, ਉੱਤੇ ਤੋਂ ਤਲ"
 
 #: ctk/ctkprintunixdialog.c:3120
-#: modules/printbackends/cups/ctkprintbackendcups.c:5378
+#: modules/printbackends/cups/ctkprintbackendcups.c:5508
 msgid "Left to right, bottom to top"
 msgstr "ਖੱਬੇ ਤੋਂ ਸੱਜੇ, ਤਲ ਤੋਂ ਉੱਤੇ"
 
 #: ctk/ctkprintunixdialog.c:3121
-#: modules/printbackends/cups/ctkprintbackendcups.c:5379
+#: modules/printbackends/cups/ctkprintbackendcups.c:5509
 msgid "Right to left, top to bottom"
 msgstr "ਸੱਜੇ ਤੋਂ ਖੱਬੇ, ਉੱਤੇ ਤੋਂ ਤਲ"
 
 #: ctk/ctkprintunixdialog.c:3121
-#: modules/printbackends/cups/ctkprintbackendcups.c:5379
+#: modules/printbackends/cups/ctkprintbackendcups.c:5509
 msgid "Right to left, bottom to top"
 msgstr "ਸੱਜੇ ਤੋਂ ਖੱਬੇ, ਤਲ ਤੋਂ ਉੱਤੇ"
 
 #: ctk/ctkprintunixdialog.c:3122
-#: modules/printbackends/cups/ctkprintbackendcups.c:5380
+#: modules/printbackends/cups/ctkprintbackendcups.c:5510
 msgid "Top to bottom, left to right"
 msgstr "ਉੱਤੇ ਤੋਂ ਹੇਠਾਂ, ਖੱਬੇ ਤੋਂ ਸੱਜੇ"
 
 #: ctk/ctkprintunixdialog.c:3122
-#: modules/printbackends/cups/ctkprintbackendcups.c:5380
+#: modules/printbackends/cups/ctkprintbackendcups.c:5510
 msgid "Top to bottom, right to left"
 msgstr "ਉੱਤੇ ਤੋਂ ਹੇਠਾਂ, ਖੱਬੇ ਤੋਂ ਸੱਜੇ"
 
 #: ctk/ctkprintunixdialog.c:3123
-#: modules/printbackends/cups/ctkprintbackendcups.c:5381
+#: modules/printbackends/cups/ctkprintbackendcups.c:5511
 msgid "Bottom to top, left to right"
 msgstr "ਤਲ ਤੋਂ ਉੱਤੇ, ਖੱਬੇ ਤੋਂ ਸੱਜੇ"
 
 #: ctk/ctkprintunixdialog.c:3123
-#: modules/printbackends/cups/ctkprintbackendcups.c:5381
+#: modules/printbackends/cups/ctkprintbackendcups.c:5511
 msgid "Bottom to top, right to left"
 msgstr "ਤਲ ਤੋਂ ਉੱਤੇ, ਸੱਜੇ ਤੋਂ ਖੱਬੇ"
 
@@ -3710,20 +3695,19 @@ msgctxt "recent menu label"
 msgid "%d. %s"
 msgstr "%d. %s"
 
-#: ctk/ctkrecentmanager.c:1053 ctk/ctkrecentmanager.c:1066
-#: ctk/ctkrecentmanager.c:1203 ctk/ctkrecentmanager.c:1213
-#: ctk/ctkrecentmanager.c:1265 ctk/ctkrecentmanager.c:1274
+#: ctk/ctkrecentmanager.c:1052 ctk/ctkrecentmanager.c:1065
+#: ctk/ctkrecentmanager.c:1207 ctk/ctkrecentmanager.c:1217
+#: ctk/ctkrecentmanager.c:1269 ctk/ctkrecentmanager.c:1278
 #, c-format
 msgid "Unable to find an item with URI '%s'"
 msgstr "URI '%s' ਨਾਲ ਇੱਕ ਆਈਟਮ ਲੱਭਣ ਲਈ ਅਸਫ਼ਲ"
 
-#: ctk/ctkrecentmanager.c:1289
+#: ctk/ctkrecentmanager.c:1293
 #, fuzzy, c-format
-#| msgid "Unable to find an item with URI '%s'"
 msgid "Unable to move the item with URI '%s' to '%s'"
 msgstr "URI '%s' ਨਾਲ ਇੱਕ ਆਈਟਮ ਲੱਭਣ ਲਈ ਅਸਫ਼ਲ"
 
-#: ctk/ctkrecentmanager.c:2507
+#: ctk/ctkrecentmanager.c:2479
 #, c-format
 msgid "No registered application with name '%s' for item with URI '%s' found"
 msgstr "URI '%2$s' ਵਾਲੀ ਆਈਟਮ ਲਈ '%1$s' ਨਾਂ ਦੀ ਕੋਈ ਰਜਿਸਟਰ ਹੋਈ ਐਪਲੀਕੇਸ਼ਨ ਨਹੀਂ ਹੈ"
@@ -3793,14 +3777,123 @@ msgid "Search Shortcuts"
 msgstr "ਖੋਜ ਸ਼ਾਰਟਕੱਟ"
 
 #: ctk/ctkshortcutswindow.c:1053 ctk/ui/ctkemojichooser.ui:376
-#: ctk/ui/ctkfilechooserwidget.ui:310
+#: ctk/ui/ctkfilechooserwidget.ui:323
 msgid "No Results Found"
 msgstr "ਕੋਈ ਨਤੀਜੇ ਨਹੀਂ ਲੱਭੇ"
 
 #: ctk/ctkshortcutswindow.c:1060 ctk/ui/ctkemojichooser.ui:390
-#: ctk/ui/ctkfilechooserwidget.ui:324 ctk/ui/ctkplacesview.ui:274
+#: ctk/ui/ctkfilechooserwidget.ui:337 ctk/ui/ctkplacesview.ui:274
 msgid "Try a different search"
 msgstr "ਵੱਖਰੀ ਖੋਜ ਨਾਲ ਕੋਸ਼ਿਸ਼ ਕਰੋ"
+
+#: ctk/ctkstock.c:329
+msgctxt "Stock label"
+msgid "_Apply"
+msgstr "ਲਾਗੂ ਕਰੋ(_A)"
+
+#: ctk/ctkstock.c:331
+msgctxt "Stock label"
+msgid "_Cancel"
+msgstr "ਰੱਦ ਕਰੋ(_C)"
+
+#: ctk/ctkstock.c:335
+msgctxt "Stock label"
+msgid "C_onnect"
+msgstr "ਕੁਨੈਕਟ ਕਰੋ(_o)"
+
+#: ctk/ctkstock.c:336
+msgctxt "Stock label"
+msgid "_Convert"
+msgstr "ਬਦਲੋ(_C)"
+
+#: ctk/ctkstock.c:340
+msgctxt "Stock label"
+msgid "_Discard"
+msgstr "ਨਿਕਾਰੋ(_D)"
+
+#: ctk/ctkstock.c:341
+msgctxt "Stock label"
+msgid "_Disconnect"
+msgstr "ਕੁਨੈਕਸ਼ਨ ਬੰਦ(_D)"
+
+#: ctk/ctkstock.c:343
+msgctxt "Stock label"
+msgid "_Edit"
+msgstr "ਸੋਧ(_E)"
+
+#: ctk/ctkstock.c:371
+msgctxt "Stock label"
+msgid "_Index"
+msgstr "ਇੰਡੈਕਸ(_I)"
+
+#: ctk/ctkstock.c:372
+msgctxt "Stock label"
+msgid "_Information"
+msgstr "ਜਾਣਕਾਰੀ(_I)"
+
+#: ctk/ctkstock.c:402
+msgctxt "Stock label"
+msgid "_No"
+msgstr "ਨਹੀਂ(_N)"
+
+#: ctk/ctkstock.c:403
+msgctxt "Stock label"
+msgid "_OK"
+msgstr "ਠੀਕ ਹੈ(_O)"
+
+#. Page orientation
+#: ctk/ctkstock.c:406
+msgctxt "Stock label"
+msgid "Landscape"
+msgstr "ਲੈਂਡਸਕੇਪ"
+
+#. Page orientation
+#: ctk/ctkstock.c:408
+msgctxt "Stock label"
+msgid "Portrait"
+msgstr "ਪੋਰਟਰੇਟ"
+
+#. Page orientation
+#: ctk/ctkstock.c:410
+msgctxt "Stock label"
+msgid "Reverse landscape"
+msgstr "ਉਲਟ ਲੈਡਸਕੇਪ"
+
+#. Page orientation
+#: ctk/ctkstock.c:412
+msgctxt "Stock label"
+msgid "Reverse portrait"
+msgstr "ਉਲਟ ਪੋਰਟਰੇਟ"
+
+#: ctk/ctkstock.c:413
+msgctxt "Stock label"
+msgid "Page Set_up"
+msgstr "ਪੇਜ਼ ਸੈਟਅੱਪ(_u)"
+
+#: ctk/ctkstock.c:415
+msgctxt "Stock label"
+msgid "_Preferences"
+msgstr "ਮੇਰੀ ਪਸੰਦ(_P)"
+
+#: ctk/ctkstock.c:427
+msgctxt "Stock label"
+msgid "_Color"
+msgstr "ਰੰਗ(_C)"
+
+#: ctk/ctkstock.c:428
+msgctxt "Stock label"
+msgid "_Font"
+msgstr "ਫੋਂਟ(_F)"
+
+#: ctk/ctkstock.c:437
+msgctxt "Stock label"
+msgid "_Undelete"
+msgstr "ਹਟਾਓਣਾ-ਵਾਪਸ(_U)"
+
+#: ctk/ctkstock.c:441
+msgctxt "Stock label"
+msgid "_Yes"
+msgstr "ਹਾਂ(_Y)"
 
 #: ctk/ctktextbufferrichtext.c:648
 #, c-format
@@ -3914,8 +4007,7 @@ msgstr "ਸੀਰੀਲਾਈਜ਼ਡ ਡਾਟਾ ਨਿਕਾਰਾ ਹੈ"
 #: ctk/ctktextbufferserialize.c:1873
 msgid ""
 "Serialized data is malformed. First section isn't CTKTEXTBUFFERCONTENTS-0001"
-msgstr ""
-"ਸੀਰੀਲਾਈਜ਼ਡ ਡਾਟਾ ਨਿਕਾਰਾ ਹੈ। ਪਹਿਲਾਂ ਭਾਗ CTKTEXTBUFFERCONTENTS-0001 ਨਹੀਂ ਹੈ"
+msgstr "ਸੀਰੀਲਾਈਜ਼ਡ ਡਾਟਾ ਨਿਕਾਰਾ ਹੈ। ਪਹਿਲਾਂ ਭਾਗ CTKTEXTBUFFERCONTENTS-0001 ਨਹੀਂ ਹੈ"
 
 #: ctk/ctktextutil.c:57
 msgid "LRM _Left-to-right mark"
@@ -3957,6 +4049,20 @@ msgstr "ZW_J ਜ਼ੀਰੋ ਚੌੜਾਈ ਜੋੜਕ"
 msgid "ZWNJ Zero width _non-joiner"
 msgstr "ZW_NJ ਜ਼ੀਰੋ ਚੌੜਾਈ ਨਾ-ਜੋੜਕ"
 
+#: ctk/ctkuimanager.c:1735
+#, c-format
+msgid "Unexpected start tag '%s' on line %d char %d"
+msgstr "ਲਾਈਨ %2$d ਅੱਖਰ %3$d ਉੱਤੇ ਬੇ-ਲੋੜੀਦਾ ਸ਼ੁਰੂਆਤੀ ਟੈਗ '%1$s'"
+
+#: ctk/ctkuimanager.c:1825
+#, c-format
+msgid "Unexpected character data on line %d char %d"
+msgstr "ਲਾਈਨ %d ਅੱਖਰ %d ਉੱਤੇ  ਬੇ-ਲੋੜੀਦਾ ਅੱਖਰ ਡਾਟਾ"
+
+#: ctk/ctkuimanager.c:2638
+msgid "Empty"
+msgstr "ਖਾਲੀ"
+
 #: ctk/ctkvolumebutton.c:189
 msgid "Adjusts the volume"
 msgstr "ਵਾਲੀਅਮ ਅਡਜੱਸਟ ਕਰੋ"
@@ -3980,45 +4086,42 @@ msgctxt "volume percentage"
 msgid "%d %%"
 msgstr "%d %%"
 
-#: ctk/ctkwindow.c:9291
+#: ctk/ctkwindow.c:9303
 msgid "Move"
 msgstr "ਭੇਜੋ"
 
-#: ctk/ctkwindow.c:9299
+#: ctk/ctkwindow.c:9311
 msgid "Resize"
 msgstr "ਮੁੜ-ਆਕਾਰ"
 
-#: ctk/ctkwindow.c:9330
-#| msgid "Always"
+#: ctk/ctkwindow.c:9342
 msgid "Always on Top"
 msgstr "ਹਮੇਸ਼ਾਂ ਉੱਤੇ ਰੱਖੋ"
 
-#: ctk/ctkwindow.c:12770
+#: ctk/ctkwindow.c:12777
 #, c-format
 msgid "Do you want to use CTK+ Inspector?"
 msgstr "ਕੀ ਤੁਸੀਂ CTK+ ਇੰਸਪੈਕਟਰ ਵਰਤਣਾ ਚਾਹੁੰਦੇ ਹੋ?"
 
-#: ctk/ctkwindow.c:12772
+#: ctk/ctkwindow.c:12779
 #, c-format
 msgid ""
 "CTK+ Inspector is an interactive debugger that lets you explore and modify "
 "the internals of any CTK+ application. Using it may cause the application to "
 "break or crash."
 msgstr ""
-"CTK+ ਇੰਸਪੈਕਟਰ ਦਿਲਖਿਚਵਾਂ ਡੀਬੱਗਰ ਹੈ, ਜੋ ਕਿ ਤੁਹਾਨੂੰ ਕਿਸੇ ਵੀ CTK+ ਐਪਲੀਕੇਸ਼ਨ ਦੇ"
-" ਅੰਦਰੂਨੀ ਭਾਗਾਂ ਦੀ "
-"ਛਾਣਬੀਣ ਕਰਨ ਅਤੇ ਸੋਧਣ ਲਈ ਸਹਾਇਕ ਹੈ। ਇਸ ਦੀ ਵਰਤੋਂ ਨਾਲ ਐਪਲੀਕੇਸ਼ਨ ਬਰੇਕ ਜਾਂ ਨਸ਼ਟ ਹੋ"
-" ਸਕਦੀ ਹੈ।"
+"CTK+ ਇੰਸਪੈਕਟਰ ਦਿਲਖਿਚਵਾਂ ਡੀਬੱਗਰ ਹੈ, ਜੋ ਕਿ ਤੁਹਾਨੂੰ ਕਿਸੇ ਵੀ CTK+ ਐਪਲੀਕੇਸ਼ਨ ਦੇ ਅੰਦਰੂਨੀ ਭਾਗਾਂ ਦੀ "
+"ਛਾਣਬੀਣ ਕਰਨ ਅਤੇ ਸੋਧਣ ਲਈ ਸਹਾਇਕ ਹੈ। ਇਸ ਦੀ ਵਰਤੋਂ ਨਾਲ ਐਪਲੀਕੇਸ਼ਨ ਬਰੇਕ ਜਾਂ ਨਸ਼ਟ ਹੋ ਸਕਦੀ ਹੈ।"
 
-#: ctk/ctkwindow.c:12777
+#: ctk/ctkwindow.c:12784
 msgid "Don't show this message again"
 msgstr "ਇਹ ਸੁਨੇਹਾ ਫੇਰ ਨਾ ਦਿਖਾਓ"
 
-#: ctk/inspector/action-editor.c:281
+#: ctk/inspector/action-editor.c:280
 msgid "Activate"
 msgstr "ਸਰਗਰਮ"
 
-#: ctk/inspector/action-editor.c:302 ctk/inspector/actions.ui:82
+#: ctk/inspector/action-editor.c:303 ctk/inspector/actions.ui:82
 #: ctk/inspector/css-node-tree.ui:78 ctk/inspector/misc-info.ui:102
 msgid "State"
 msgstr "ਹਾਲਤ"
@@ -4045,13 +4148,11 @@ msgid ""
 "You can temporarily disable this custom CSS by clicking on the “Pause” "
 "button above."
 msgstr ""
-"ਤੁਸੀਂ ਇਸ ਕਸਟਮ CSS ਨੂੰ ਉੱਤੇ ਦਿੱਤੇ “ਵਿਰਾਮ“ ਬਟਨ ਨੂੰ ਕਲਿੱਕ ਕਰਕੇ ਆਰਜ਼ੀ ਤੌਰ ਉੱਤੇ ਬੰਦ"
-" ਕਰਨ ਸਕਦੇ ਹੋ।"
+"ਤੁਸੀਂ ਇਸ ਕਸਟਮ CSS ਨੂੰ ਉੱਤੇ ਦਿੱਤੇ “ਵਿਰਾਮ“ ਬਟਨ ਨੂੰ ਕਲਿੱਕ ਕਰਕੇ ਆਰਜ਼ੀ ਤੌਰ ਉੱਤੇ ਬੰਦ ਕਰਨ ਸਕਦੇ ਹੋ।"
 
 #: ctk/inspector/css-editor.c:114
 msgid "Changes are applied instantly and globally, for the whole application."
-msgstr ""
-"ਤਬਦੀਲੀਆਂ ਨੂੰ ਤੁਰੰਤ ਅਤੇ ਸਮੁੱਚੇ ਤੌਰ ਉੱਤੇ ਲਾਗੂ ਕੀਤਾ ਜਾਂਦਾ ਹੈ, ਪੂਰੇ ਐਪਲੀਕੇਸ਼ਨ ਲਈ।"
+msgstr "ਤਬਦੀਲੀਆਂ ਨੂੰ ਤੁਰੰਤ ਅਤੇ ਸਮੁੱਚੇ ਤੌਰ ਉੱਤੇ ਲਾਗੂ ਕੀਤਾ ਜਾਂਦਾ ਹੈ, ਪੂਰੇ ਐਪਲੀਕੇਸ਼ਨ ਲਈ।"
 
 #: ctk/inspector/css-editor.c:162
 #, c-format
@@ -4125,22 +4226,22 @@ msgstr "GL ਵਰਜ਼ਨ"
 msgid "GL Vendor"
 msgstr "GL ਵੇਂਡਰ"
 
-#: ctk/inspector/gestures.c:129
+#: ctk/inspector/gestures.c:130
 msgctxt "event phase"
 msgid "None"
 msgstr "ਕੋਈ ਨਹੀਂ"
 
-#: ctk/inspector/gestures.c:130
+#: ctk/inspector/gestures.c:131
 msgctxt "event phase"
 msgid "Capture"
 msgstr "ਕੈਪਚਰ"
 
-#: ctk/inspector/gestures.c:131
+#: ctk/inspector/gestures.c:132
 msgctxt "event phase"
 msgid "Bubble"
 msgstr "ਬੁਲਬਲਾ"
 
-#: ctk/inspector/gestures.c:132
+#: ctk/inspector/gestures.c:133
 msgctxt "event phase"
 msgid "Target"
 msgstr "ਟਾਰਗੇਟ"
@@ -4153,7 +4254,7 @@ msgstr "ਬਿਨਾਂ-ਨਾਂ ਭਾਗ"
 msgid "Label"
 msgstr "ਲੇਬਲ"
 
-#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1385
+#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1389
 msgid "Action"
 msgstr "ਕਾਰਵਾਈ"
 
@@ -4183,8 +4284,8 @@ msgstr "ਮੂਲ ਵਿਦਜੈੱਟ"
 
 #: ctk/inspector/misc-info.ui:192 ctk/inspector/misc-info.ui:237
 #: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1071
-#: ctk/inspector/prop-editor.c:1268 ctk/inspector/prop-editor.c:1393
-#: ctk/inspector/prop-editor.c:1504 ctk/inspector/window.ui:382
+#: ctk/inspector/prop-editor.c:1270 ctk/inspector/prop-editor.c:1397
+#: ctk/inspector/prop-editor.c:1508 ctk/inspector/window.ui:382
 msgid "Properties"
 msgstr "ਵਿਸ਼ੇਸ਼ਤਾ"
 
@@ -4213,7 +4314,6 @@ msgid "Clip area"
 msgstr "ਕਲਿੱਪ ਖੇਤਰ"
 
 #: ctk/inspector/misc-info.ui:430
-#| msgid "Frame count"
 msgid "Frame Clock"
 msgstr "ਫਰੇਮ ਘੜੀ"
 
@@ -4281,66 +4381,66 @@ msgstr "ਆਬਜੈਕਟ: %p (%s)"
 msgid "Uneditable property type: %s"
 msgstr "%s: ਨਾ-ਸੋਧਣਯੋਗ ਵਿਸ਼ੇਸ਼ਤਾ ਕਿਸਮ"
 
-#: ctk/inspector/prop-editor.c:1259
+#: ctk/inspector/prop-editor.c:1261
 msgid "Attribute mapping"
 msgstr "ਗੁਣ ਮਿਲਾਨ"
 
-#: ctk/inspector/prop-editor.c:1264
+#: ctk/inspector/prop-editor.c:1266
 msgid "Model:"
 msgstr "ਮਾਡਲ:"
 
-#: ctk/inspector/prop-editor.c:1265
+#: ctk/inspector/prop-editor.c:1267
 #, c-format
 msgid "%p (%s)"
 msgstr "%p (%s)"
 
-#: ctk/inspector/prop-editor.c:1275
+#: ctk/inspector/prop-editor.c:1277
 msgid "Column:"
 msgstr "ਕਾਲਮ:"
 
-#: ctk/inspector/prop-editor.c:1285
+#: ctk/inspector/prop-editor.c:1287
 msgctxt "property name"
 msgid "None"
 msgstr "ਕੋਈ ਨਹੀਂ"
 
-#: ctk/inspector/prop-editor.c:1389
+#: ctk/inspector/prop-editor.c:1393
 #, c-format
 msgid "Defined at: %p (%s)"
 msgstr "ਪਰਿਭਾਸ਼ਿਤ ਹੈ: %p (%s)"
 
-#: ctk/inspector/prop-editor.c:1453 ctk/inspector/prop-editor.c:1469
+#: ctk/inspector/prop-editor.c:1457 ctk/inspector/prop-editor.c:1473
 msgid "inverted"
 msgstr "ਉਲਟਿਆ"
 
-#: ctk/inspector/prop-editor.c:1485
+#: ctk/inspector/prop-editor.c:1489
 msgid "bidirectional, inverted"
 msgstr "ਦੋ-ਦਿਸ਼ਾਵੀ, ਉਲਟਿਆ"
 
-#: ctk/inspector/prop-editor.c:1490 ctk/inspector/prop-editor.c:1604
+#: ctk/inspector/prop-editor.c:1494 ctk/inspector/prop-editor.c:1608
 msgid "bidirectional"
 msgstr "ਦੋ-ਦਿਸ਼ਾਵੀ"
 
-#: ctk/inspector/prop-editor.c:1495
+#: ctk/inspector/prop-editor.c:1499
 msgid "Binding:"
 msgstr "ਬਾਈਡਿੰਗ:"
 
-#: ctk/inspector/prop-editor.c:1623
+#: ctk/inspector/prop-editor.c:1627
 msgid "Setting:"
 msgstr "ਸੈਟਿੰਗ:"
 
-#: ctk/inspector/prop-editor.c:1663
+#: ctk/inspector/prop-editor.c:1667
 msgid "Source:"
 msgstr "ਸਰੋਤ:"
 
-#: ctk/inspector/prop-editor.c:1665
+#: ctk/inspector/prop-editor.c:1669
 msgid "Reset"
 msgstr "ਮੁੜ-ਸੈੱਟ ਕਰੋ"
 
-#: ctk/inspector/prop-editor.c:1679
+#: ctk/inspector/prop-editor.c:1683
 msgid "Theme"
 msgstr "ਥੀਮ"
 
-#: ctk/inspector/prop-editor.c:1682
+#: ctk/inspector/prop-editor.c:1686
 msgid "XSettings"
 msgstr "XSettings"
 
@@ -4349,6 +4449,7 @@ msgid "Property"
 msgstr "ਵਿਸ਼ੇਸ਼ਤਾ"
 
 #: ctk/inspector/prop-list.ui:68 ctk/inspector/statistics.ui:53
+#: ctk/ui/ctkfilechooserwidget.ui:236
 msgid "Type"
 msgstr "ਕਿਸਮ"
 
@@ -4368,7 +4469,7 @@ msgstr "ਮਾਰਗ"
 msgid "Count"
 msgstr "ਗਿਣਤੀ"
 
-#: ctk/inspector/resource-list.ui:130 ctk/ui/ctkfilechooserwidget.ui:223
+#: ctk/inspector/resource-list.ui:130 ctk/ui/ctkfilechooserwidget.ui:224
 #: ctk/ui/ctkfontchooserwidget.ui:134 ctk/ui/ctkfontchooserwidget.ui:276
 msgid "Size"
 msgstr "ਅਕਾਰ"
@@ -4389,12 +4490,11 @@ msgstr "ਆਕਾਰ:"
 msgid "Selector"
 msgstr "ਚੋਣਕਾਰ"
 
-#: ctk/inspector/signals-list.c:117
+#: ctk/inspector/signals-list.c:118
 msgid "Yes"
 msgstr "ਹਾਂ"
 
 #: ctk/inspector/signals-list.ui:36
-#| msgid "Signals"
 msgid "Signal"
 msgstr "ਸਿਗਨਲ"
 
@@ -4402,35 +4502,35 @@ msgstr "ਸਿਗਨਲ"
 msgid "Connected"
 msgstr "ਕੁਨੈਕਟ ਹੈ"
 
-#: ctk/inspector/size-groups.c:224
+#: ctk/inspector/size-groups.c:225
 msgid "Ignore hidden"
 msgstr "ਲੁਕਵਾਂ ਅਣਡਿੱਠਾ"
 
-#: ctk/inspector/size-groups.c:242
+#: ctk/inspector/size-groups.c:243
 msgid "Mode"
 msgstr "ਮੋਡ"
 
-#: ctk/inspector/size-groups.c:252
+#: ctk/inspector/size-groups.c:253
 msgctxt "sizegroup mode"
 msgid "None"
 msgstr "ਕੋਈ ਨਹੀਂ"
 
-#: ctk/inspector/size-groups.c:253
+#: ctk/inspector/size-groups.c:254
 msgctxt "sizegroup mode"
 msgid "Horizontal"
 msgstr "ਖਿਤਿਜੀ"
 
-#: ctk/inspector/size-groups.c:254
+#: ctk/inspector/size-groups.c:255
 msgctxt "sizegroup mode"
 msgid "Vertical"
 msgstr "ਲੰਬਕਾਰੀ"
 
-#: ctk/inspector/size-groups.c:255
+#: ctk/inspector/size-groups.c:256
 msgctxt "sizegroup mode"
 msgid "Both"
 msgstr "ਦੋਵੇਂ"
 
-#: ctk/inspector/statistics.c:377
+#: ctk/inspector/statistics.c:379
 msgid "GLib must be configured with --enable-debug"
 msgstr ""
 
@@ -4507,12 +4607,7 @@ msgstr "ਕਰਸਰ ਆਕਾਰ"
 msgid "Icon Theme"
 msgstr "ਆਈਕਾਨ ਥੀਮ"
 
-#: ctk/inspector/visual.ui:230 ctk/ui/ctkfontbutton.ui:13
-msgid "Font"
-msgstr "ਫੋਂਟ"
-
 #: ctk/inspector/visual.ui:263
-#| msgid "Font Selection"
 msgid "Font Scale"
 msgstr "ਫੋਂਟ ਸਕੇਲ"
 
@@ -4547,10 +4642,6 @@ msgstr "ਰੈਂਡਰਿੰਗ ਮੋਡ"
 #: ctk/inspector/visual.ui:487
 msgid "Similar"
 msgstr "ਰਲ਼ਦੇ"
-
-#: ctk/inspector/visual.ui:488
-msgid "Image"
-msgstr "ਚਿੱਤਰ"
 
 #: ctk/inspector/visual.ui:489
 msgid "Recording"
@@ -4653,7 +4744,6 @@ msgid "Class Hierarchy"
 msgstr "ਕਲਾਸ ਲੜੀ"
 
 #: ctk/inspector/window.ui:422
-#| msgid "Selector"
 msgid "CSS Selector"
 msgstr "CSS ਚੋਣਕਾਰ"
 
@@ -4706,7 +4796,6 @@ msgid "General"
 msgstr "ਆਮ"
 
 #: ctk/open-type-layout.h:13
-#| msgid "Accessible name"
 msgctxt "OpenType layout"
 msgid "Access All Alternates"
 msgstr "ਸਾਰੇ ਬਦਲਾਂ ਲਈ ਪਹੁੰਚ"
@@ -4727,7 +4816,6 @@ msgid "Above-base Substitutions"
 msgstr ""
 
 #: ctk/open-type-layout.h:17
-#| msgid "Authentication"
 msgctxt "OpenType layout"
 msgid "Alternative Fractions"
 msgstr ""
@@ -4843,19 +4931,16 @@ msgid "Final Glyph on Line Alternates"
 msgstr ""
 
 #: ctk/open-type-layout.h:40
-#| msgid "Terminal Pager"
 msgctxt "OpenType layout"
 msgid "Terminal Forms #2"
 msgstr "ਟਰਮੀਨਲ ਰੂਪ #2"
 
 #: ctk/open-type-layout.h:41
-#| msgid "Terminal Pager"
 msgctxt "OpenType layout"
 msgid "Terminal Forms #3"
 msgstr "ਟਰਮੀਨਲ ਰੂਪ #3"
 
 #: ctk/open-type-layout.h:42
-#| msgid "Terminal Pager"
 msgctxt "OpenType layout"
 msgid "Terminal Forms"
 msgstr "ਟਰਮੀਨਲ ਰੂਪ"
@@ -4866,13 +4951,11 @@ msgid "Flattened accent forms"
 msgstr ""
 
 #: ctk/open-type-layout.h:44
-#| msgid "Actions"
 msgctxt "OpenType layout"
 msgid "Fractions"
 msgstr "ਭਿੰਨਾਂ"
 
 #: ctk/open-type-layout.h:45
-#| msgid "Focus Widget"
 msgctxt "OpenType layout"
 msgid "Full Widths"
 msgstr "ਪੂਰੀਆਂ ਚੌੜਾਈਆਂ"
@@ -4923,8 +5006,6 @@ msgid "Half Widths"
 msgstr "ਅੱਧੀਆਂ ਚੌੜਾਈਆਂ"
 
 #: ctk/open-type-layout.h:55
-#| msgctxt "print operation status"
-#| msgid "Initial state"
 msgctxt "OpenType layout"
 msgid "Initial Forms"
 msgstr "ਸ਼ੁਰੂਆਤੀ ਰੂਪ"
@@ -4935,8 +5016,6 @@ msgid "Isolated Forms"
 msgstr "ਵੱਖਰੇ ਕੀਤੇ ਰੂਪ"
 
 #: ctk/open-type-layout.h:57
-#| msgctxt "Stock label"
-#| msgid "_Italic"
 msgctxt "OpenType layout"
 msgid "Italics"
 msgstr "ਤਿਰਛੇ"
@@ -4967,23 +5046,18 @@ msgid "JIS2004 Forms"
 msgstr ""
 
 #: ctk/open-type-layout.h:63
-#| msgid "Warning"
 msgctxt "OpenType layout"
 msgid "Kerning"
 msgstr ""
 
 #: ctk/open-type-layout.h:64
 #, fuzzy
-#| msgctxt "output-bin"
-#| msgid "Left Bin"
 msgctxt "OpenType layout"
 msgid "Left Bounds"
 msgstr "ਖੱਬਾ ਡੱਬਾ"
 
 #: ctk/open-type-layout.h:65
 #, fuzzy
-#| msgctxt "cover page"
-#| msgid "Standard"
 msgctxt "OpenType layout"
 msgid "Standard Ligatures"
 msgstr "ਸਟੈਂਡਰਡ"
@@ -5005,14 +5079,12 @@ msgstr "ਇਲਾਕਾਈ ਕੀਤੇ ਰੂਪ"
 
 #: ctk/open-type-layout.h:69
 #, fuzzy
-#| msgid "LRM _Left-to-right mark"
 msgctxt "OpenType layout"
 msgid "Left-to-right alternates"
 msgstr "_LRM ਖੱਬੇ ਤੋਂ ਸੱਜਾ ਨਿਸ਼ਾਨ"
 
 #: ctk/open-type-layout.h:70
 #, fuzzy
-#| msgid "LRM _Left-to-right mark"
 msgctxt "OpenType layout"
 msgid "Left-to-right mirrored forms"
 msgstr "_LRM ਖੱਬੇ ਤੋਂ ਸੱਜਾ ਨਿਸ਼ਾਨ"
@@ -5079,7 +5151,6 @@ msgstr ""
 
 #: ctk/open-type-layout.h:83
 #, fuzzy
-#| msgid "Signals"
 msgctxt "OpenType layout"
 msgid "Ordinals"
 msgstr "ਸਿਗਨਲ"
@@ -5106,7 +5177,6 @@ msgstr "ਅਨੁਪਾਤੀ ਕਾਨਾ"
 
 #: ctk/open-type-layout.h:88
 #, fuzzy
-#| msgid "Properties"
 msgctxt "OpenType layout"
 msgid "Proportional Figures"
 msgstr "ਵਿਸ਼ੇਸ਼ਤਾ"
@@ -5168,22 +5238,18 @@ msgstr ""
 
 #: ctk/open-type-layout.h:100
 #, fuzzy
-#| msgctxt "output-bin"
-#| msgid "Right Bin"
 msgctxt "OpenType layout"
 msgid "Right Bounds"
 msgstr "ਸੱਜਾ ਡੱਬਾ"
 
 #: ctk/open-type-layout.h:101
 #, fuzzy
-#| msgid "RLM _Right-to-left mark"
 msgctxt "OpenType layout"
 msgid "Right-to-left alternates"
 msgstr "_RLM ਸੱਜੇ ਤੋਂ ਖੱਬਾ ਨਿਸ਼ਾਨ"
 
 #: ctk/open-type-layout.h:102
 #, fuzzy
-#| msgid "RLM _Right-to-left mark"
 msgctxt "OpenType layout"
 msgid "Right-to-left mirrored forms"
 msgstr "_RLM ਸੱਜੇ ਤੋਂ ਖੱਬਾ ਨਿਸ਼ਾਨ"
@@ -5319,7 +5385,6 @@ msgid "Stylistic Set 19"
 msgstr "ਸ਼ੈਲੀ ਸਮੂਹ 19"
 
 #: ctk/open-type-layout.h:129
-#| msgid "Artistic License 2.0"
 msgctxt "OpenType layout"
 msgid "Stylistic Set 20"
 msgstr "ਸ਼ੈਲੀ ਸਮੂਹ 20"
@@ -5335,14 +5400,11 @@ msgid "Stretching Glyph Decomposition"
 msgstr ""
 
 #: ctk/open-type-layout.h:132
-#| msgid "Postscript"
 msgctxt "OpenType layout"
 msgid "Subscript"
 msgstr "ਪੈਰ ਵਿੱਚ"
 
 #: ctk/open-type-layout.h:133
-#| msgctxt "keyboard label"
-#| msgid "Super"
 msgctxt "OpenType layout"
 msgid "Superscript"
 msgstr "ਘਾਤ"
@@ -5394,15 +5456,12 @@ msgstr ""
 
 #: ctk/open-type-layout.h:143
 #, fuzzy
-#| msgid "Dark Variant"
 msgctxt "OpenType layout"
 msgid "Vattu Variants"
 msgstr "ਗੂੜ੍ਹਾ ਬਦਲ:"
 
 #: ctk/open-type-layout.h:144
 #, fuzzy
-#| msgctxt "sizegroup mode"
-#| msgid "Vertical"
 msgctxt "OpenType layout"
 msgid "Vertical Writing"
 msgstr "ਲੰਬਕਾਰੀ"
@@ -5424,8 +5483,6 @@ msgstr ""
 
 #: ctk/open-type-layout.h:148
 #, fuzzy
-#| msgctxt "sizegroup mode"
-#| msgid "Vertical"
 msgctxt "OpenType layout"
 msgid "Vertical Kerning"
 msgstr "ਲੰਬਕਾਰੀ"
@@ -6421,7 +6478,6 @@ msgid "Gothic"
 msgstr "Gothic"
 
 #: ctk/script-names.c:30
-#| msgid "_Green:"
 msgctxt "Script"
 msgid "Greek"
 msgstr "ਗਰੀਕ"
@@ -6472,7 +6528,6 @@ msgid "Khmer"
 msgstr "ਖਮੀਰ"
 
 #: ctk/script-names.c:40
-#| msgid "Low"
 msgctxt "Script"
 msgid "Lao"
 msgstr "ਲਾਓ"
@@ -6503,8 +6558,6 @@ msgid "Ogham"
 msgstr "ਓਗਹਾਮ"
 
 #: ctk/script-names.c:46
-#| msgctxt "Stock label"
-#| msgid "_Italic"
 msgctxt "Script"
 msgid "Old Italic"
 msgstr "ਪੁਰਾਣੇ ਤਿਰਛੇ"
@@ -6530,7 +6583,6 @@ msgid "Syriac"
 msgstr "ਸੀਰੀਆਈ"
 
 #: ctk/script-names.c:51
-#| msgid "_Family:"
 msgctxt "Script"
 msgid "Tamil"
 msgstr "ਤਾਮਿਲ"
@@ -6546,8 +6598,6 @@ msgid "Thaana"
 msgstr "ਥੱਨਾ"
 
 #: ctk/script-names.c:54
-#| msgctxt "input method menu"
-#| msgid "Thai-Lao"
 msgctxt "Script"
 msgid "Thai"
 msgstr "ਥਾਈ"
@@ -6613,8 +6663,6 @@ msgid "Shavian"
 msgstr "ਸ਼ਾਵਿਨ"
 
 #: ctk/script-names.c:67
-#| msgctxt "output-bin"
-#| msgid "Rear Bin"
 msgctxt "Script"
 msgid "Linear B"
 msgstr "ਲੀਨੀਅਰ ਬੀ"
@@ -6665,13 +6713,11 @@ msgid "Kharoshthi"
 msgstr "ਖਾਰੋਸ਼ਥੀ"
 
 #: ctk/script-names.c:77
-#| msgid "Unknown"
 msgctxt "Script"
 msgid "Unknown"
 msgstr "ਅਣਪਛਾਤਾ"
 
 #: ctk/script-names.c:78
-#| msgid "Baseline"
 msgctxt "Script"
 msgid "Balinese"
 msgstr "ਬਾਲਿਨੀਸੀ"
@@ -6722,8 +6768,6 @@ msgid "Saurashtra"
 msgstr "ਸੋਰਾਸ਼ਟਰਾ"
 
 #: ctk/script-names.c:88
-#| msgctxt "Color name"
-#| msgid "Chameleon"
 msgctxt "Script"
 msgid "Cham"
 msgstr "ਚਮ"
@@ -6934,7 +6978,6 @@ msgid "Mende Kikakui"
 msgstr "ਮੇਂਡੇ ਕਿਕਾਕੁਈ"
 
 #: ctk/script-names.c:130
-#| msgid "Modified"
 msgctxt "Script"
 msgid "Modi"
 msgstr "ਮੋਦੀ"
@@ -7010,8 +7053,6 @@ msgid "Hatran"
 msgstr ""
 
 #: ctk/script-names.c:145
-#| msgctxt "keyboard label"
-#| msgid "Multi_key"
 msgctxt "Script"
 msgid "Multani"
 msgstr "ਮੁਲਤਾਨੀ"
@@ -7022,8 +7063,6 @@ msgid "Old Hungarian"
 msgstr "ਪੁਰਾਣੀ ਹੰਗਰੀਆਈ"
 
 #: ctk/script-names.c:147
-#| msgctxt "print operation status"
-#| msgid "Printing"
 msgctxt "Script"
 msgid "Signwriting"
 msgstr "ਸਾਈਨਰਾਈਟਿੰਗ"
@@ -7039,7 +7078,6 @@ msgid "Bhaiksuki"
 msgstr ""
 
 #: ctk/script-names.c:150
-#| msgid "Searching"
 msgctxt "Script"
 msgid "Marchen"
 msgstr "ਮਾਰਚੇਨ"
@@ -7208,12 +7246,10 @@ msgid "Travel & Places"
 msgstr "ਯਾਤਰਾ ਤੇ ਥਾਵਾਂ"
 
 #: ctk/ui/ctkemojichooser.ui:128 ctk/ui/ctkemojichooser.ui:287
-#| msgid "Activate"
 msgid "Activities"
 msgstr "ਸਰਗਰਮੀਆਂ"
 
 #: ctk/ui/ctkemojichooser.ui:143 ctk/ui/ctkemojichooser.ui:302
-#| msgid "Objects"
 msgctxt "emoji category"
 msgid "Objects"
 msgstr "ਚੀਜ਼ਾਂ"
@@ -7226,19 +7262,19 @@ msgstr "ਚਿੰਨ੍ਹ"
 msgid "Flags"
 msgstr "ਝੰਡੇ"
 
-#: ctk/ui/ctkfilechooserwidget.ui:168
+#: ctk/ui/ctkfilechooserwidget.ui:169
 msgid "Files"
 msgstr "ਫਾਇਲਾਂ"
 
-#: ctk/ui/ctkfilechooserwidget.ui:261
+#: ctk/ui/ctkfilechooserwidget.ui:274
 msgid "Remote location — only searching the current folder"
 msgstr "ਰਿਮੋਟ ਟਿਕਾਣਾ — ਕੇਵਲ ਮੌਜੂਦਾ ਫੋਲਡਰ ਵਿੱਚ ਲੱਭਿਆ ਜਾ ਰਿਹਾ ਹੈ"
 
-#: ctk/ui/ctkfilechooserwidget.ui:433
+#: ctk/ui/ctkfilechooserwidget.ui:446
 msgid "Folder Name"
 msgstr "ਫੋਲਡਰ ਨਾਂ"
 
-#: ctk/ui/ctkfilechooserwidget.ui:461
+#: ctk/ui/ctkfilechooserwidget.ui:474
 msgid "_Create"
 msgstr "ਬਣਾਓ(_C)"
 
@@ -7299,15 +7335,13 @@ msgid "Up Path"
 msgstr "ਉੱਤੇ ਮਾਰਗ"
 
 #: ctk/ui/ctkplacesview.ui:30
-#| msgid "Enter server address…"
 msgid "Server Addresses"
 msgstr "ਸਰਵਰ ਸਿਰਨਾਵੇਂ"
 
 #: ctk/ui/ctkplacesview.ui:43
 msgid ""
 "Server addresses are made up of a protocol prefix and an address. Examples:"
-msgstr ""
-"ਸਰਵਰ ਸਿਰਨਾਵਾਂ ਪਰੋਟੋਕਾਲ ਅਗੇਤਰ ਅਤੇ ਸਿਰਨਾਵੇਂ ਨੂੰ ਮਿਲਾ ਕੇ ਬਣਦਾ ਹੈ। ਜਿਵੇਂ ਕਿ:"
+msgstr "ਸਰਵਰ ਸਿਰਨਾਵਾਂ ਪਰੋਟੋਕਾਲ ਅਗੇਤਰ ਅਤੇ ਸਿਰਨਾਵੇਂ ਨੂੰ ਮਿਲਾ ਕੇ ਬਣਦਾ ਹੈ। ਜਿਵੇਂ ਕਿ:"
 
 #: ctk/ui/ctkplacesview.ui:78
 msgid "Available Protocols"
@@ -7567,105 +7601,105 @@ msgstr "ਆਵਾਜ਼ ਘਟਾਓ"
 msgid "Decreases the volume"
 msgstr "ਵਾਲੀਅਮ ਘਟਾਓ"
 
-#: ctk/updateiconcache.c:1388
+#: ctk/updateiconcache.c:1402
 #, c-format
 msgid "Failed to write header\n"
 msgstr "ਹੈਡਰ ਲਿਖਣ ਵਿੱਚ ਗਲਤੀ\n"
 
-#: ctk/updateiconcache.c:1394
+#: ctk/updateiconcache.c:1408
 #, c-format
 msgid "Failed to write hash table\n"
 msgstr "ਹੈਂਸ਼ ਟੇਬਲ ਲਿਖਣ ਲਈ ਅਸਫ਼ਲ ਹੈ\n"
 
-#: ctk/updateiconcache.c:1400
+#: ctk/updateiconcache.c:1414
 #, c-format
 msgid "Failed to write folder index\n"
 msgstr "ਫੋਲਡਰ ਇੰਡੈਕਸ ਲਿਖਣ ਦੌਰਾਨ ਫੇਲ੍ਹ\n"
 
-#: ctk/updateiconcache.c:1408
+#: ctk/updateiconcache.c:1422
 #, c-format
 msgid "Failed to rewrite header\n"
 msgstr "ਹੈਂਡਰ ਮੁੜ-ਲਿਖਣ ਦੌਰਾਨ ਗਲਤੀ\n"
 
-#: ctk/updateiconcache.c:1502
+#: ctk/updateiconcache.c:1516
 #, c-format
 msgid "Failed to open file %s : %s\n"
 msgstr "ਫਾਇਲ %s ਖੋਲ੍ਹਣ ਵਿੱਚ ਫੇਲ੍ਹ: %s\n"
 
-#: ctk/updateiconcache.c:1510 ctk/updateiconcache.c:1540
+#: ctk/updateiconcache.c:1524 ctk/updateiconcache.c:1554
 #, c-format
 msgid "Failed to write cache file: %s\n"
 msgstr "ਫਾਇਲ ਕੈਸ਼ੇ ਲਿਖਣ ਦੌਰਾਨ ਅਸਫ਼ਲ: %s\n"
 
-#: ctk/updateiconcache.c:1550
+#: ctk/updateiconcache.c:1564
 #, c-format
 msgid "The generated cache was invalid.\n"
 msgstr "ਤਿਆਰ ਕੀਤੀ ਕੈਸ਼ੇ ਗਲਤ ਹੈ।\n"
 
-#: ctk/updateiconcache.c:1564
+#: ctk/updateiconcache.c:1578
 #, c-format
 msgid "Could not rename %s to %s: %s, removing %s then.\n"
 msgstr "%s ਦਾ ਨਾਂ %s ਬਦਲਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ: %s, ਹੁਣ %s ਨੂੰ ਹਟਾਇਆ ਜਾ ਰਿਹਾ ਹੈ।\n"
 
-#: ctk/updateiconcache.c:1578
+#: ctk/updateiconcache.c:1592
 #, c-format
 msgid "Could not rename %s to %s: %s\n"
 msgstr "%s ਦਾ ਨਾਂ %s ਬਦਲਿਆ ਨਹੀਂ ਜਾ ਸਕਿਆ: %s\n"
 
-#: ctk/updateiconcache.c:1588
+#: ctk/updateiconcache.c:1602
 #, c-format
 msgid "Could not rename %s back to %s: %s.\n"
 msgstr "%s ਦਾ ਨਾਂ ਮੁੜ %s ਬਦਲਿਆ ਨਹੀਂ ਸਕਦਾ ਹੈ: %s\n"
 
-#: ctk/updateiconcache.c:1615
+#: ctk/updateiconcache.c:1629
 #, c-format
 msgid "Cache file created successfully.\n"
 msgstr "ਕੈਸ਼ੇ ਫਾਇਲ ਸਫ਼ਲਤਾਪੂਰਕ ਬਣਾਈ ਗਈ ਹੈ।\n"
 
-#: ctk/updateiconcache.c:1654
+#: ctk/updateiconcache.c:1668
 msgid "Overwrite an existing cache, even if up to date"
 msgstr "ਇੱਕ ਮੌਜੂਦਾ ਕੈਸ਼ੇ ਉੱਤੇ ਲਿਖੋ, ਭਾਵੇਂ ਅੱਪ-ਟੂ-ਡੇਟ ਹੋਵੇ"
 
-#: ctk/updateiconcache.c:1655
+#: ctk/updateiconcache.c:1669
 msgid "Don't check for the existence of index.theme"
 msgstr "ਮੌਜੂਦਾ index.theme ਦੀ ਮੌਜੂਦਗੀ ਦੀ ਜਾਂਚ ਨਾ ਕਰੋ"
 
-#: ctk/updateiconcache.c:1656
+#: ctk/updateiconcache.c:1670
 msgid "Don't include image data in the cache"
 msgstr "ਕੈਸ਼ੇ ਵਿੱਚ ਚਿੱਤਰ ਡਾਟਾ ਸ਼ਾਮਿਲ ਨਾ ਕਰੋ"
 
-#: ctk/updateiconcache.c:1657
+#: ctk/updateiconcache.c:1671
 msgid "Include image data in the cache"
 msgstr "ਕੈਸ਼ ਵਿੱਚ ਚਿੱਤਰ ਡਾਟੇ ਸਮੇਤ"
 
-#: ctk/updateiconcache.c:1658
+#: ctk/updateiconcache.c:1672
 msgid "Output a C header file"
 msgstr "C header ਫਾਇਲ ਆਉਟਪੁੱਟ"
 
-#: ctk/updateiconcache.c:1659
+#: ctk/updateiconcache.c:1673
 msgid "Turn off verbose output"
 msgstr "ਵਧੇਰੇ ਜਾਣਕਾਰੀ ਆਉਟਪੁੱਟ ਬੰਦ ਕਰੋ"
 
-#: ctk/updateiconcache.c:1660
+#: ctk/updateiconcache.c:1674
 msgid "Validate existing icon cache"
 msgstr "ਮੌਜੂਦਾ ਆਈਕਾਨ ਕੈਸ਼ ਦੀ ਵੈਧਤਾ"
 
-#: ctk/updateiconcache.c:1727
+#: ctk/updateiconcache.c:1741
 #, c-format
 msgid "File not found: %s\n"
 msgstr "ਫਾਇਲ ਨਹੀਂ ਲੱਭੀ: %s\n"
 
-#: ctk/updateiconcache.c:1733
+#: ctk/updateiconcache.c:1747
 #, c-format
 msgid "Not a valid icon cache: %s\n"
 msgstr "ਇੱਕ ਠੀਕ ਆਈਕਾਨ ਕੈਸ਼ੇ ਨਹੀਂ ਹੈ: %s\n"
 
-#: ctk/updateiconcache.c:1746
+#: ctk/updateiconcache.c:1760
 #, c-format
 msgid "No theme index file.\n"
 msgstr "ਕੋਈ ਥੀਮ ਇੰਡੈਕਸ ਫਾਇਲ ਨਹੀਂ।\n"
 
-#: ctk/updateiconcache.c:1750
+#: ctk/updateiconcache.c:1764
 #, c-format
 msgid ""
 "No theme index file in '%s'.\n"
@@ -7721,7 +7755,7 @@ msgctxt "input method menu"
 msgid "Multipress"
 msgstr "ਮਲਟੀਪਰੈੱਸ"
 
-#: modules/input/imquartz.c:58
+#: modules/input/imquartz.c:69
 msgctxt "input method menu"
 msgid "Mac OS X Quartz"
 msgstr "Mac OS X ਕੁਆਟਰਜ਼"
@@ -7751,7 +7785,7 @@ msgid "Vietnamese (VIQR)"
 msgstr "ਵੀਅਤਨਾਮੀ (VIQR)"
 
 #. ID
-#: modules/input/imwayland.c:104
+#: modules/input/imwayland.c:105
 msgctxt "input method menu"
 msgid "Wayland"
 msgstr "ਵੇਲੈਂਡ"
@@ -7787,444 +7821,444 @@ msgid "Dormant"
 msgstr "ਸਿਥਲ"
 
 #. How many document pages to go onto one side of paper.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:939
-#: modules/printbackends/file/ctkprintbackendfile.c:676
-#: modules/printbackends/test/ctkprintbackendtest.c:501
+#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:941
+#: modules/printbackends/file/ctkprintbackendfile.c:679
+#: modules/printbackends/test/ctkprintbackendtest.c:503
 msgid "Pages per _sheet:"
 msgstr "ਹਰੇਕ ਸ਼ੀਟ ਲਈ ਸਫ਼ੇ(_s):"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1128
-#: modules/printbackends/cups/ctkprintbackendcups.c:1437
+#: modules/printbackends/cups/ctkprintbackendcups.c:1129
+#: modules/printbackends/cups/ctkprintbackendcups.c:1439
 msgid "Username:"
 msgstr "ਯੂਜ਼ਰ ਨਾਂ:"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1129
-#: modules/printbackends/cups/ctkprintbackendcups.c:1446
+#: modules/printbackends/cups/ctkprintbackendcups.c:1130
+#: modules/printbackends/cups/ctkprintbackendcups.c:1448
 msgid "Password:"
 msgstr "ਪਾਸਵਰਡ:"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1168
-#: modules/printbackends/cups/ctkprintbackendcups.c:1459
+#: modules/printbackends/cups/ctkprintbackendcups.c:1169
+#: modules/printbackends/cups/ctkprintbackendcups.c:1461
 #, c-format
 msgid "Authentication is required to print document “%s” on printer %s"
 msgstr "ਪਰਿੰਟਰ %2$s ਉੱਤੇ “%1$s“ ਡੌਕੂਮੈਂਟ ਪਰਿੰਟ ਕਰਨ ਲਈ ਪਰਮਾਣਕਿਤਾ ਦੀ ਲੋੜ ਹੈ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1170
+#: modules/printbackends/cups/ctkprintbackendcups.c:1171
 #, c-format
 msgid "Authentication is required to print a document on %s"
 msgstr "%s ਉੱਤੇ ਡੌਕੂਮੈਂਟ ਪਰਿੰਟ ਕਰਨ ਲਈ ਲਈ ਪਰਮਾਣਕਿਤਾ ਦੀ ਲੋੜ ਹੈ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1174
+#: modules/printbackends/cups/ctkprintbackendcups.c:1175
 #, c-format
 msgid "Authentication is required to get attributes of job “%s”"
 msgstr "ਜਾਬ “%s“ ਦੇ ਗੁਣ ਲੈਣ ਲਈ ਪਰਮਾਣਕਿਤਾ ਦੀ ਲੋੜ ਹੈ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1176
+#: modules/printbackends/cups/ctkprintbackendcups.c:1177
 msgid "Authentication is required to get attributes of a job"
 msgstr "ਜਾਬ ਦੇ ਗੁਣ ਲੈਣ ਲਈ ਪਰਮਾਣਕਿਤਾ ਦੀ ਲੋੜ ਹੈ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1180
+#: modules/printbackends/cups/ctkprintbackendcups.c:1181
 #, c-format
 msgid "Authentication is required to get attributes of printer %s"
 msgstr "ਪਰਿੰਟਰ %s ਦੇ ਗੁਣ ਲੈਣ ਲਈ ਪਰਮਾਣਕਿਤਾ ਦੀ ਲੋੜ ਹੈ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1182
+#: modules/printbackends/cups/ctkprintbackendcups.c:1183
 msgid "Authentication is required to get attributes of a printer"
 msgstr "ਪਰਿੰਟਦਰ ਦੇ ਗੁਣ ਲੈਣ ਲਈ ਪਰਮਾਣਕਿਤਾ ਦੀ ਲੋੜ ਹੈ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1185
+#: modules/printbackends/cups/ctkprintbackendcups.c:1186
 #, c-format
 msgid "Authentication is required to get default printer of %s"
 msgstr "%s ਲਈ ਡਿਫਾਲਟ ਪਰਿੰਟਰ ਲੈਣ ਲਈ ਪਰਮਾਣਕਿਤਾ ਦੀ ਲੋੜ ਹੈ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1188
+#: modules/printbackends/cups/ctkprintbackendcups.c:1189
 #, c-format
 msgid "Authentication is required to get printers from %s"
 msgstr "%s ਤੋਂ ਪਰਿੰਟਰ ਲੈਣ ਲਈ ਪਰਮਾਣਕਿਤਾ ਦੀ ਲੋੜ ਹੈ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1193
+#: modules/printbackends/cups/ctkprintbackendcups.c:1194
 #, c-format
 msgid "Authentication is required to get a file from %s"
 msgstr "%s ਤੋਂ ਫਾਇਲ ਲੈਣ ਲਈ ਪਰਮਾਣਕਿਤਾ ਦੀ ਲੋੜ ਹੈ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1195
+#: modules/printbackends/cups/ctkprintbackendcups.c:1196
 #, c-format
 msgid "Authentication is required on %s"
 msgstr "%s ਲਈ ਪਰਮਾਣਕਿਤਾ ਦੀ ਲੋੜ ਹੈ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1431
+#: modules/printbackends/cups/ctkprintbackendcups.c:1433
 msgid "Domain:"
 msgstr "ਡੋਮੇਨ:"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1461
+#: modules/printbackends/cups/ctkprintbackendcups.c:1463
 #, c-format
 msgid "Authentication is required to print document “%s”"
 msgstr "“%s“ ਡੌਕੂਮੈਂਟ ਪਰਿੰਟ ਕਰਨ ਲਈ ਲਈ ਪਰਮਾਣਕਿਤਾ ਦੀ ਲੋੜ ਹੈ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1466
+#: modules/printbackends/cups/ctkprintbackendcups.c:1468
 #, c-format
 msgid "Authentication is required to print this document on printer %s"
 msgstr "ਪਰਿੰਟਰ %s ਉੱਤੇ ਇਹ ਡੌਕੂਮੈਂਟ ਪਰਿੰਟ ਕਰਨ ਲਈ ਪਰਮਾਣਕਿਤਾ ਦੀ ਲੋੜ ਹੈ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1468
+#: modules/printbackends/cups/ctkprintbackendcups.c:1470
 msgid "Authentication is required to print this document"
 msgstr "ਇਹ ਡੌਕੂਮੈਂਟ ਪਰਿੰਟ ਕਰਨ ਲਈ ਲਈ ਪਰਮਾਣਕਿਤਾ ਦੀ ਲੋੜ ਹੈ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2531
+#: modules/printbackends/cups/ctkprintbackendcups.c:2557
 #, c-format
 msgid "Printer “%s” is low on toner."
 msgstr "ਪਰਿੰਟਰ “%s“ ਦਾ ਟੋਨਰ ਘੱਟ ਰਹਿ ਗਿਆ ਹੈ।"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2535
+#: modules/printbackends/cups/ctkprintbackendcups.c:2561
 #, c-format
 msgid "Printer “%s” has no toner left."
 msgstr "ਪਰਿੰਟਰ “%s“ ਲਈ ਟੋਨਰ ਨਹੀਂ ਬਚਿਆ ਹੈ।"
 
 #. Translators: "Developer" like on photo development context
-#: modules/printbackends/cups/ctkprintbackendcups.c:2540
+#: modules/printbackends/cups/ctkprintbackendcups.c:2566
 #, c-format
 msgid "Printer “%s” is low on developer."
 msgstr "ਪਰਿੰਟਰ “%s“ ਡਿਵੈਲਪਰ ਲਈ ਘੱਟ ਹੈ।"
 
 #. Translators: "Developer" like on photo development context
-#: modules/printbackends/cups/ctkprintbackendcups.c:2545
+#: modules/printbackends/cups/ctkprintbackendcups.c:2571
 #, c-format
 msgid "Printer “%s” is out of developer."
 msgstr "ਪਰਿੰਟਰ “%s“ ਲਈ ਡਿਵੈਲਪਰ ਖਤਮ ਹੈ।"
 
 #. Translators: "marker" is one color bin of the printer
-#: modules/printbackends/cups/ctkprintbackendcups.c:2550
+#: modules/printbackends/cups/ctkprintbackendcups.c:2576
 #, c-format
 msgid "Printer “%s” is low on at least one marker supply."
 msgstr "ਪਰਿੰਟਰ “%s“ ਲਈ ਮਾਰਕਰ ਸਪਲਾਈ ਘੱਟ ਹੈ।"
 
 #. Translators: "marker" is one color bin of the printer
-#: modules/printbackends/cups/ctkprintbackendcups.c:2555
+#: modules/printbackends/cups/ctkprintbackendcups.c:2581
 #, c-format
 msgid "Printer “%s” is out of at least one marker supply."
 msgstr "ਪਰਿੰਟਰ “%s“ ਵਿੱਚੋਂ ਘੱਟੋ-ਘੱਟ ਮਾਰਕਰ ਸਪਲਾਈ ਖਤਮ ਹੈ।"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2559
+#: modules/printbackends/cups/ctkprintbackendcups.c:2585
 #, c-format
 msgid "The cover is open on printer “%s”."
 msgstr "ਪਰਿੰਟਰ “%s“ ਦਾ ਢੱਕਣ ਖੁੱਲ੍ਹਾ ਹੈ।"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2563
+#: modules/printbackends/cups/ctkprintbackendcups.c:2589
 #, c-format
 msgid "The door is open on printer “%s”."
 msgstr "ਪਰਿੰਟਰ “%s“ ਦਾ ਦਰਵਾਜ਼ਾ  ਖੁੱਲ੍ਹਾ ਹੈ।"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2567
+#: modules/printbackends/cups/ctkprintbackendcups.c:2593
 #, c-format
 msgid "Printer “%s” is low on paper."
 msgstr "ਪਰਿੰਟਰ “%s“ ਉੱਤੇ ਪੇਪਰ ਘੱਟ ਹਨ।"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2571
+#: modules/printbackends/cups/ctkprintbackendcups.c:2597
 #, c-format
 msgid "Printer “%s” is out of paper."
 msgstr "ਪਰਿੰਟਰ “%s“ ਲਈ ਪੇਪਰ ਖਤਮ ਹੋ ਗਏ।"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2575
+#: modules/printbackends/cups/ctkprintbackendcups.c:2601
 #, c-format
 msgid "Printer “%s” is currently offline."
 msgstr "ਪਰਿੰਟਰ “%s“ ਹੁਣ ਆਫਲਾਇਨ ਹੈ।"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2579
+#: modules/printbackends/cups/ctkprintbackendcups.c:2605
 #, c-format
 msgid "There is a problem on printer “%s”."
 msgstr "ਪਰਿੰਟਰ “%s“ ਉੱਤੇ ਸਮੱਸਿਆ ਹੈ।"
 
 #. Translators: this is a printer status.
-#: modules/printbackends/cups/ctkprintbackendcups.c:2599
+#: modules/printbackends/cups/ctkprintbackendcups.c:2625
 msgid "Paused; Rejecting Jobs"
 msgstr "ਵਿਰਾਮ; ਜੌਬ ਰੱਦ ਕੀਤੀਆਂ ਜਾ ਰਹੀਆਂ ਹਨ।"
 
 #. Translators: this is a printer status.
-#: modules/printbackends/cups/ctkprintbackendcups.c:2605
+#: modules/printbackends/cups/ctkprintbackendcups.c:2631
 msgid "Rejecting Jobs"
 msgstr "ਜੌਬ ਰੱਦ ਕੀਤੀਆਂ ਜਾ ਰਹੀਆਂ ਹਨ"
 
 #. Translators: this string connects multiple printer states together.
-#: modules/printbackends/cups/ctkprintbackendcups.c:2646
+#: modules/printbackends/cups/ctkprintbackendcups.c:2672
 msgid "; "
 msgstr "; "
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4324
-#: modules/printbackends/cups/ctkprintbackendcups.c:4391
+#: modules/printbackends/cups/ctkprintbackendcups.c:4453
+#: modules/printbackends/cups/ctkprintbackendcups.c:4520
 msgctxt "printing option"
 msgid "Two Sided"
 msgstr "ਦੋ ਪਾਸੀਂ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4325
+#: modules/printbackends/cups/ctkprintbackendcups.c:4454
 msgctxt "printing option"
 msgid "Paper Type"
 msgstr "ਪੇਪਰ ਕਿਸਮ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4326
+#: modules/printbackends/cups/ctkprintbackendcups.c:4455
 msgctxt "printing option"
 msgid "Paper Source"
 msgstr "ਪੇਪਰ ਸੋਰਸ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4327
-#: modules/printbackends/cups/ctkprintbackendcups.c:4392
+#: modules/printbackends/cups/ctkprintbackendcups.c:4456
+#: modules/printbackends/cups/ctkprintbackendcups.c:4521
 msgctxt "printing option"
 msgid "Output Tray"
 msgstr "ਆਉਟਪੁੱਟ ਟਰੇ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4328
+#: modules/printbackends/cups/ctkprintbackendcups.c:4457
 msgctxt "printing option"
 msgid "Resolution"
 msgstr "ਰੈਜੋਲੂਸ਼ਨ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4329
+#: modules/printbackends/cups/ctkprintbackendcups.c:4458
 msgctxt "printing option"
 msgid "GhostScript pre-filtering"
 msgstr "ਗੋਸਟ-ਸਕ੍ਰਿਪਟ ਪ੍ਰੀਫਿਲਟਰਿੰਗ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4338
+#: modules/printbackends/cups/ctkprintbackendcups.c:4467
 msgctxt "printing option value"
 msgid "One Sided"
 msgstr "ਇੱਕ ਪਾਸੇ"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4340
+#: modules/printbackends/cups/ctkprintbackendcups.c:4469
 msgctxt "printing option value"
 msgid "Long Edge (Standard)"
 msgstr "ਲੰਮਾ ਕੋਨਾ (ਸਟੈਂਡਰਡ)"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4342
+#: modules/printbackends/cups/ctkprintbackendcups.c:4471
 msgctxt "printing option value"
 msgid "Short Edge (Flip)"
 msgstr "ਛੋਟਾ ਕੋਨਾ (ਫਲਿੱਪ)"
 
 #. Translators: this is an option of "Paper Source"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4344
-#: modules/printbackends/cups/ctkprintbackendcups.c:4346
-#: modules/printbackends/cups/ctkprintbackendcups.c:4354
+#: modules/printbackends/cups/ctkprintbackendcups.c:4473
+#: modules/printbackends/cups/ctkprintbackendcups.c:4475
+#: modules/printbackends/cups/ctkprintbackendcups.c:4483
 msgctxt "printing option value"
 msgid "Auto Select"
 msgstr "ਆਟੋ ਚੋਣ"
 
 #. Translators: this is an option of "Paper Source"
 #. Translators: this is an option of "Resolution"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4348
-#: modules/printbackends/cups/ctkprintbackendcups.c:4350
-#: modules/printbackends/cups/ctkprintbackendcups.c:4352
-#: modules/printbackends/cups/ctkprintbackendcups.c:4356
+#: modules/printbackends/cups/ctkprintbackendcups.c:4477
+#: modules/printbackends/cups/ctkprintbackendcups.c:4479
+#: modules/printbackends/cups/ctkprintbackendcups.c:4481
+#: modules/printbackends/cups/ctkprintbackendcups.c:4485
 msgctxt "printing option value"
 msgid "Printer Default"
 msgstr "ਪਰਿੰਟਰ ਡਿਫਾਲਟ"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4358
+#: modules/printbackends/cups/ctkprintbackendcups.c:4487
 msgctxt "printing option value"
 msgid "Embed GhostScript fonts only"
 msgstr "ਇੰਬੈੱਡ ਕੀਤੇ ਗੋਸਟਸਕ੍ਰਿਪਟ ਫੋਂਟ ਹੀ"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4360
+#: modules/printbackends/cups/ctkprintbackendcups.c:4489
 msgctxt "printing option value"
 msgid "Convert to PS level 1"
 msgstr "PS ਲੈਵਲ 1 ਲਈ ਬਦਲੋ"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4362
+#: modules/printbackends/cups/ctkprintbackendcups.c:4491
 msgctxt "printing option value"
 msgid "Convert to PS level 2"
 msgstr "PS ਲੈਵਲ 2 ਲਈ ਬਦਲੋ"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4364
+#: modules/printbackends/cups/ctkprintbackendcups.c:4493
 msgctxt "printing option value"
 msgid "No pre-filtering"
 msgstr "ਕੋਈ ਪ੍ਰੀ-ਫਿਲਟਰਿੰਗ ਨਹੀਂ"
 
 #. Translators: "Miscellaneous" is the label for a button, that opens
 #. up an extra panel of settings in a print dialog.
-#: modules/printbackends/cups/ctkprintbackendcups.c:4373
+#: modules/printbackends/cups/ctkprintbackendcups.c:4502
 msgctxt "printing option group"
 msgid "Miscellaneous"
 msgstr "ਫੁਟਕਲ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4400
+#: modules/printbackends/cups/ctkprintbackendcups.c:4529
 msgctxt "sides"
 msgid "One Sided"
 msgstr "ਇੱਕ ਪਾਸੇ"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4402
+#: modules/printbackends/cups/ctkprintbackendcups.c:4531
 msgctxt "sides"
 msgid "Long Edge (Standard)"
 msgstr "ਲੰਮਾ ਕਿਨਾਰਾ (ਸਟੈਂਡਰਡ)"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4404
+#: modules/printbackends/cups/ctkprintbackendcups.c:4533
 msgctxt "sides"
 msgid "Short Edge (Flip)"
 msgstr "ਛੋਟਾ ਕਿਨਾਰਾ (ਫਲਿੱਪ)"
 
 #. Translators: Top output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4407
+#: modules/printbackends/cups/ctkprintbackendcups.c:4536
 msgctxt "output-bin"
 msgid "Top Bin"
 msgstr "ਉੱਪਰਲਾ ਡੱਬਾ"
 
 #. Translators: Middle output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4409
+#: modules/printbackends/cups/ctkprintbackendcups.c:4538
 msgctxt "output-bin"
 msgid "Middle Bin"
 msgstr "ਵਿਚਕਾਰਲਾ ਡੱਬਾ"
 
 #. Translators: Bottom output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4411
+#: modules/printbackends/cups/ctkprintbackendcups.c:4540
 msgctxt "output-bin"
 msgid "Bottom Bin"
 msgstr "ਸਭ ਤੋਂ ਹੇਠਲਾ ਡੱਬਾ"
 
 #. Translators: Side output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4413
+#: modules/printbackends/cups/ctkprintbackendcups.c:4542
 msgctxt "output-bin"
 msgid "Side Bin"
 msgstr "ਪਾਸੇ ਵਾਲਾ ਡੱਬਾ"
 
 #. Translators: Left output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4415
+#: modules/printbackends/cups/ctkprintbackendcups.c:4544
 msgctxt "output-bin"
 msgid "Left Bin"
 msgstr "ਖੱਬਾ ਡੱਬਾ"
 
 #. Translators: Right output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4417
+#: modules/printbackends/cups/ctkprintbackendcups.c:4546
 msgctxt "output-bin"
 msgid "Right Bin"
 msgstr "ਸੱਜਾ ਡੱਬਾ"
 
 #. Translators: Center output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4419
+#: modules/printbackends/cups/ctkprintbackendcups.c:4548
 msgctxt "output-bin"
 msgid "Center Bin"
 msgstr "ਕੇਂਦਰ ਵਾਲਾ ਡੱਬਾ"
 
 #. Translators: Rear output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4421
+#: modules/printbackends/cups/ctkprintbackendcups.c:4550
 msgctxt "output-bin"
 msgid "Rear Bin"
 msgstr "ਪਿਛਲਾ ਡੱਬਾ"
 
 #. Translators: Output bin where one sided output is oriented in the face-up position
-#: modules/printbackends/cups/ctkprintbackendcups.c:4423
+#: modules/printbackends/cups/ctkprintbackendcups.c:4552
 msgctxt "output-bin"
 msgid "Face Up Bin"
 msgstr "ਅਗਲਾ ਡੱਬਾ"
 
 #. Translators: Output bin where one sided output is oriented in the face-down position
-#: modules/printbackends/cups/ctkprintbackendcups.c:4425
+#: modules/printbackends/cups/ctkprintbackendcups.c:4554
 msgctxt "output-bin"
 msgid "Face Down Bin"
 msgstr "ਹੇਠਲੇ ਪਾਸੇ ਵਾਲਾ ਡੱਬਾ"
 
 #. Translators: Large capacity output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4427
+#: modules/printbackends/cups/ctkprintbackendcups.c:4556
 msgctxt "output-bin"
 msgid "Large Capacity Bin"
 msgstr "ਵੱਡੀ ਸਮੱਰਥਾ ਵਾਲਾ ਡੱਬਾ"
 
 #. Translators: Output stacker number %d
-#: modules/printbackends/cups/ctkprintbackendcups.c:4449
+#: modules/printbackends/cups/ctkprintbackendcups.c:4578
 #, c-format
 msgctxt "output-bin"
 msgid "Stacker %d"
 msgstr "ਸਟੈਕਰ %d"
 
 #. Translators: Output mailbox number %d
-#: modules/printbackends/cups/ctkprintbackendcups.c:4453
+#: modules/printbackends/cups/ctkprintbackendcups.c:4582
 #, c-format
 msgctxt "output-bin"
 msgid "Mailbox %d"
 msgstr "ਮੇਲਬਾਕਸ %d"
 
 #. Translators: Private mailbox
-#: modules/printbackends/cups/ctkprintbackendcups.c:4457
+#: modules/printbackends/cups/ctkprintbackendcups.c:4586
 msgctxt "output-bin"
 msgid "My Mailbox"
 msgstr "ਮੇਰਾ ਮੇਲਬਾਕਸ"
 
 #. Translators: Output tray number %d
-#: modules/printbackends/cups/ctkprintbackendcups.c:4461
+#: modules/printbackends/cups/ctkprintbackendcups.c:4590
 #, c-format
 msgctxt "output-bin"
 msgid "Tray %d"
 msgstr "ਟਰੇ %d"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4932
+#: modules/printbackends/cups/ctkprintbackendcups.c:5061
 msgid "Printer Default"
 msgstr "ਪਰਿੰਟਰ ਡਿਫਾਲਟ"
 
 #. Translators: These strings name the possible values of the
 #. * job priority option in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5373
+#: modules/printbackends/cups/ctkprintbackendcups.c:5503
 msgid "Urgent"
 msgstr "ਜ਼ਰੂਰੀ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5373
+#: modules/printbackends/cups/ctkprintbackendcups.c:5503
 msgid "High"
 msgstr "ਉੱਚ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5373
+#: modules/printbackends/cups/ctkprintbackendcups.c:5503
 msgid "Medium"
 msgstr "ਮੱਧਮ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5373
+#: modules/printbackends/cups/ctkprintbackendcups.c:5503
 msgid "Low"
 msgstr "ਘੱਟ"
 
 #. Translators, this string is used to label the job priority option
 #. * in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5403
+#: modules/printbackends/cups/ctkprintbackendcups.c:5533
 msgid "Job Priority"
 msgstr "ਕੰਮ ਤਰਜੀਹ"
 
 #. Translators, this string is used to label the billing info entry
 #. * in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5414
+#: modules/printbackends/cups/ctkprintbackendcups.c:5544
 msgid "Billing Info"
 msgstr "ਬਿੱਲ ਜਾਣਕਾਰੀ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5438
+#: modules/printbackends/cups/ctkprintbackendcups.c:5568
 msgctxt "cover page"
 msgid "None"
 msgstr "ਕੋਈ ਨਹੀਂ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5439
+#: modules/printbackends/cups/ctkprintbackendcups.c:5569
 msgctxt "cover page"
 msgid "Classified"
 msgstr "ਵਰਗੀਕ੍ਰਿਤ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5440
+#: modules/printbackends/cups/ctkprintbackendcups.c:5570
 msgctxt "cover page"
 msgid "Confidential"
 msgstr "ਗੁਪਤ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5441
+#: modules/printbackends/cups/ctkprintbackendcups.c:5571
 msgctxt "cover page"
 msgid "Secret"
 msgstr "ਖੁਫੀਆ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5442
+#: modules/printbackends/cups/ctkprintbackendcups.c:5572
 msgctxt "cover page"
 msgid "Standard"
 msgstr "ਸਟੈਂਡਰਡ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5443
+#: modules/printbackends/cups/ctkprintbackendcups.c:5573
 msgctxt "cover page"
 msgid "Top Secret"
 msgstr "ਉੱਚ ਗੁਪਤ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5444
+#: modules/printbackends/cups/ctkprintbackendcups.c:5574
 msgctxt "cover page"
 msgid "Unclassified"
 msgstr "ਗ਼ੈਰ-ਕਲਾਸੀਫਾਈਡ"
@@ -8232,7 +8266,7 @@ msgstr "ਗ਼ੈਰ-ਕਲਾਸੀਫਾਈਡ"
 #. Translators, this string is used to label the pages-per-sheet option
 #. * in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5456
+#: modules/printbackends/cups/ctkprintbackendcups.c:5586
 msgctxt "printer option"
 msgid "Pages per Sheet"
 msgstr "ਸਫ਼ੇ ਪ੍ਰਤੀ ਸ਼ੀਟ"
@@ -8240,7 +8274,7 @@ msgstr "ਸਫ਼ੇ ਪ੍ਰਤੀ ਸ਼ੀਟ"
 #. Translators, this string is used to label the option in the print
 #. * dialog that controls in what order multiple pages are arranged
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5473
+#: modules/printbackends/cups/ctkprintbackendcups.c:5603
 msgctxt "printer option"
 msgid "Page Ordering"
 msgstr "ਸਫ਼ਾ ਕ੍ਰਮ"
@@ -8248,7 +8282,7 @@ msgstr "ਸਫ਼ਾ ਕ੍ਰਮ"
 #. Translators, this is the label used for the option in the print
 #. * dialog that controls the front cover page.
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5515
+#: modules/printbackends/cups/ctkprintbackendcups.c:5645
 msgctxt "printer option"
 msgid "Before"
 msgstr "ਪਹਿਲਾਂ"
@@ -8256,7 +8290,7 @@ msgstr "ਪਹਿਲਾਂ"
 #. Translators, this is the label used for the option in the print
 #. * dialog that controls the back cover page.
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5530
+#: modules/printbackends/cups/ctkprintbackendcups.c:5660
 msgctxt "printer option"
 msgid "After"
 msgstr "ਬਾਅਦ"
@@ -8265,7 +8299,7 @@ msgstr "ਬਾਅਦ"
 #. * a print job is printed. Possible values are 'now', a specified time,
 #. * or 'on hold'
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5550
+#: modules/printbackends/cups/ctkprintbackendcups.c:5680
 msgctxt "printer option"
 msgid "Print at"
 msgstr "ਪਰਿੰਟ ਕਰੋ"
@@ -8273,7 +8307,7 @@ msgstr "ਪਰਿੰਟ ਕਰੋ"
 #. Translators: this is the name of the option that allows the user
 #. * to specify a time when a print job will be printed.
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5561
+#: modules/printbackends/cups/ctkprintbackendcups.c:5691
 msgctxt "printer option"
 msgid "Print at time"
 msgstr "ਇਸ ਸਮੇਂ ਉੱਤੇ ਪਰਿੰਟ"
@@ -8283,35 +8317,35 @@ msgstr "ਇਸ ਸਮੇਂ ਉੱਤੇ ਪਰਿੰਟ"
 #. * the width and height in points. E.g: "Custom
 #. * 230.4x142.9"
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5606
+#: modules/printbackends/cups/ctkprintbackendcups.c:5737
 #, c-format
 msgid "Custom %s×%s"
 msgstr "ਕਸਟਮ %sx%s"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5716
+#: modules/printbackends/cups/ctkprintbackendcups.c:5847
 msgctxt "printer option"
 msgid "Printer Profile"
 msgstr "ਪਰਿੰਟਰ ਪਰੋਫਾਇਲ"
 
 #. TRANSLATORS: this is when color profile information is unavailable
-#: modules/printbackends/cups/ctkprintbackendcups.c:5723
+#: modules/printbackends/cups/ctkprintbackendcups.c:5854
 msgctxt "printer option value"
 msgid "Unavailable"
 msgstr "ਨਾ-ਉਪਲੱਬਧ"
 
 #. TRANSLATORS: when we're running an old CUPS, and
 #. * it hasn't registered the device with colord
-#: modules/printbackends/cups/ctkprintercups.c:269
+#: modules/printbackends/cups/ctkprintercups.c:275
 msgid "Color management unavailable"
 msgstr "ਰੰਗ ਪਰਬੰਧ ਉਪਲੱਬਧ ਨਹੀਂ"
 
 #. TRANSLATORS: when there is no color profile available
-#: modules/printbackends/cups/ctkprintercups.c:281
+#: modules/printbackends/cups/ctkprintercups.c:287
 msgid "No profile available"
 msgstr "ਕੋਈ ਪਰੋਫਾਇਲ ਉਪਲੱਬਧ ਨਹੀਂ"
 
 #. TRANSLATORS: when the color profile has no title
-#: modules/printbackends/cups/ctkprintercups.c:292
+#: modules/printbackends/cups/ctkprintercups.c:298
 msgid "Unspecified profile"
 msgstr "ਨਾ ਦਿੱਤਾ ਪਰੋਫਾਇਲ"
 
@@ -8319,39 +8353,39 @@ msgstr "ਨਾ ਦਿੱਤਾ ਪਰੋਫਾਇਲ"
 msgid "output"
 msgstr "ਆਉਟਪੁੱਟ"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:537
+#: modules/printbackends/file/ctkprintbackendfile.c:539
 msgid "Print to File"
 msgstr "ਫਾਇਲ ਵਿੱਚ ਪਰਿੰਟ ਕਰੋ"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:663
+#: modules/printbackends/file/ctkprintbackendfile.c:667
 msgid "PDF"
 msgstr "PDF"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:663
+#: modules/printbackends/file/ctkprintbackendfile.c:667
 msgid "Postscript"
 msgstr "ਪੋਸਟ-ਸਕ੍ਰਿਪਟ"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:663
+#: modules/printbackends/file/ctkprintbackendfile.c:667
 msgid "SVG"
 msgstr "SVG"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:735
+#: modules/printbackends/file/ctkprintbackendfile.c:738
 msgid "File"
 msgstr "ਫਾਇਲ"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:745
+#: modules/printbackends/file/ctkprintbackendfile.c:750
 msgid "_Output format"
 msgstr "ਆਉਟਪੁੱਟ ਫਾਰਮੈਟ(_O)"
 
-#: modules/printbackends/lpr/ctkprintbackendlpr.c:393
+#: modules/printbackends/lpr/ctkprintbackendlpr.c:394
 msgid "Print to LPR"
 msgstr "LPR ਲਈ ਪਰਿੰਟ ਕਰੋ"
 
-#: modules/printbackends/lpr/ctkprintbackendlpr.c:419
+#: modules/printbackends/lpr/ctkprintbackendlpr.c:423
 msgid "Pages Per Sheet"
 msgstr "ਸਫ਼ੇ ਪ੍ਰਤੀ ਸ਼ੀਟ"
 
-#: modules/printbackends/lpr/ctkprintbackendlpr.c:426
+#: modules/printbackends/lpr/ctkprintbackendlpr.c:430
 msgid "Command Line"
 msgstr "ਕਮਾਂਡ ਲਾਈਨ"
 
@@ -8386,9 +8420,84 @@ msgstr "ਅਣਜਾਣ"
 msgid "test-output.%s"
 msgstr "ਟੈਸਟ-ਆਉਟਪੁੱਟ.%s"
 
-#: modules/printbackends/test/ctkprintbackendtest.c:465
+#: modules/printbackends/test/ctkprintbackendtest.c:467
 msgid "Print to Test Printer"
 msgstr "ਟੈਸਟ ਪਰਿੰਟਰ ਲਈ ਪਰਿੰਟ ਕਰੋ"
+
+#~ msgid "3.2 core GL profile is not available on EGL implementation"
+#~ msgstr "EGL ਸਥਾਪਨ ਉੱਤੇ 3.2 ਕੋਰ GL ਮੌਜੂਦ ਨਹੀਂ"
+
+#~ msgctxt "Color name"
+#~ msgid "Scarlet Red"
+#~ msgstr "ਕਾਕਰੇਜੀ ਲਾਲ"
+
+#~ msgctxt "Color name"
+#~ msgid "Light Butter"
+#~ msgstr "ਹਲਕਾ ਮੱਖਣ"
+
+#~ msgctxt "Color name"
+#~ msgid "Butter"
+#~ msgstr "ਮੱਖਣ"
+
+#~ msgctxt "Color name"
+#~ msgid "Chameleon"
+#~ msgstr "ਚਮੇਲੋਨ"
+
+#~ msgctxt "Color name"
+#~ msgid "Sky Blue"
+#~ msgstr "ਅਸਮਾਨੀ ਨੀਲਾ"
+
+#~ msgctxt "Color name"
+#~ msgid "Plum"
+#~ msgstr "ਪਲੁਮ"
+
+#~ msgctxt "Color name"
+#~ msgid "Light Chocolate"
+#~ msgstr "ਹਲਕਾ ਚਾਕਲੇਟੀ"
+
+#~ msgctxt "Color name"
+#~ msgid "Chocolate"
+#~ msgstr "ਚਾਕਲੇਟੀ"
+
+#~ msgctxt "Color name"
+#~ msgid "Dark Chocolate"
+#~ msgstr "ਗੂੜ੍ਹਾ ਚਾਕਲੇਟੀ"
+
+#~ msgctxt "Color name"
+#~ msgid "Light Aluminum 1"
+#~ msgstr "ਹਲਕਾ ਅਲੂਮੀਨੀਅਮ 1"
+
+#~ msgctxt "Color name"
+#~ msgid "Aluminum 1"
+#~ msgstr "ਅਲੂਮੀਨੀਅਮ 1"
+
+#~ msgctxt "Color name"
+#~ msgid "Dark Aluminum 1"
+#~ msgstr "ਗੂੜ੍ਹਾ ਅਲੂਮੀਨੀਅਮ 1"
+
+#~ msgctxt "Color name"
+#~ msgid "Light Aluminum 2"
+#~ msgstr "ਹਲਕਾ ਅਲੂਮੀਨੀਅਮ 2"
+
+#~ msgctxt "Color name"
+#~ msgid "Aluminum 2"
+#~ msgstr "ਅਲੂਮੀਨੀਅਮ 2"
+
+#~ msgctxt "Color name"
+#~ msgid "Dark Aluminum 2"
+#~ msgstr "ਗੂੜ੍ਹਾ ਅਲੂਮੀਨੀਅਮ 2"
+
+#~ msgctxt "Color name"
+#~ msgid "Darker Gray"
+#~ msgstr "ਗੂੜਾ ਸਲੇਟੀ"
+
+#~ msgctxt "Color name"
+#~ msgid "Medium Gray"
+#~ msgstr "ਮੱਧਮ ਸਲੇਟੀ"
+
+#~ msgctxt "Color name"
+#~ msgid "Lighter Gray"
+#~ msgstr "ਵੱਧ ਹਲਕਾ ਸਲੇਟੀ"
 
 #~ msgid "Not implemented on OS X"
 #~ msgstr "OS X ਲਈ ਸਥਾਪਤ ਨਹੀਂ ਹੈ"
