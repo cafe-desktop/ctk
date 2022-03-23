@@ -931,7 +931,6 @@ paint_triangle (CtkHSV   *hsv,
   int width, height;
   CtkStyleContext *context;
 
-  priv = hsv->priv;
   width = ctk_widget_get_allocated_width (widget); 
   height = ctk_widget_get_allocated_height (widget); 
   /* Compute triangle's vertices */
