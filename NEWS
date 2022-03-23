@@ -1,3 +1,23 @@
+Overview of Changes in CTK+ 3.25.2
+===================================
+
+ci: some improvements
+
+avoid deprecated 'mallinfo'
+
+ctkdialog: add function 'ctk_dialog_add_button_with_icon_name'
+
+Update descriptions for gtk-doc
+
+Reduce the scope of some variables
+
+Don't make deprecated CtkHSV
+ctkhsv: avoid deprecated 'cdk_device_grab/ungrab'
+ctkhsv: avoid duplicate initialization in variable
+
+Update translations
+
+
 Overview of Changes in CTK+ 3.25.1
 ===================================
 
