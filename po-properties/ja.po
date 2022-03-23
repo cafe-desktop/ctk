@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+-properties ctk-2-22\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-18 22:15+0000\n"
+"POT-Creation-Date: 2022-03-23 18:06+0100\n"
 "PO-Revision-Date: 2020-04-14 17:30+0900\n"
 "Last-Translator: sicklylife translation@sicklylife.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
@@ -30,19 +30,16 @@ msgstr "ディスプレイ"
 
 #: cdk/cdkcursor.c:131
 #, fuzzy
-#| msgid "Curve type"
 msgid "Cursor type"
 msgstr "曲線タイプ"
 
 #: cdk/cdkcursor.c:132
 #, fuzzy
-#| msgid "Secondary storage type"
 msgid "Standard cursor type"
 msgstr "二番目のアイコンの形式"
 
 #: cdk/cdkcursor.c:140
 #, fuzzy
-#| msgid "Display the cell"
 msgid "Display of this cursor"
 msgstr "セルの表示"
 
@@ -121,7 +118,6 @@ msgstr ""
 
 #: cdk/cdkdevice.c:306 cdk/cdkdevice.c:307
 #, fuzzy
-#| msgid "Number of columns"
 msgid "Number of concurrent touches"
 msgstr "X-方向に表示するアイテムの数"
 
@@ -229,85 +225,84 @@ msgstr ""
 msgid "The cell renderer represented by this accessible"
 msgstr ""
 
-#: ctk/ctkaction.c:243 ctk/ctkactiongroup.c:200
+#: ctk/ctkaction.c:233 ctk/ctkactiongroup.c:196
 #: ctk/deprecated/ctkthemingengine.c:247 ctk/ctkcssnode.c:638
 #: ctk/ctkprinter.c:121 ctk/ctkstack.c:516 ctk/ctktextmark.c:136
 msgid "Name"
 msgstr "名前"
 
-#: ctk/ctkaction.c:244
+#: ctk/ctkaction.c:234
 msgid "A unique name for the action."
 msgstr "アクションに固有の名称です"
 
-#: ctk/ctkaction.c:264 ctk/ctkbutton.c:281 ctk/ctkexpander.c:308
+#: ctk/ctkaction.c:252 ctk/ctkbutton.c:281 ctk/ctkexpander.c:308
 #: ctk/ctkframe.c:231 ctk/ctklabel.c:805 ctk/ctkmenuitem.c:789
-#: ctk/ctktoolbutton.c:243 ctk/ctktoolitemgroup.c:1639
+#: ctk/ctktoolbutton.c:204 ctk/ctktoolitemgroup.c:1639
 msgid "Label"
 msgstr "ラベル"
 
-#: ctk/ctkaction.c:265
+#: ctk/ctkaction.c:253
 msgid "The label used for menu items and buttons that activate this action."
 msgstr "このアクションを有効にするメニュー項目とボタンに使われるラベルです"
 
-#: ctk/ctkaction.c:284
+#: ctk/ctkaction.c:269
 msgid "Short label"
 msgstr "短いラベル"
 
-#: ctk/ctkaction.c:285
+#: ctk/ctkaction.c:270
 msgid "A shorter label that may be used on toolbar buttons."
 msgstr "ツールバー上のボタンに使用する短いラベルです"
 
-#: ctk/ctkaction.c:300
+#: ctk/ctkaction.c:283
 msgid "Tooltip"
 msgstr "ツールチップ"
 
-#: ctk/ctkaction.c:301
+#: ctk/ctkaction.c:284
 msgid "A tooltip for this action."
 msgstr "このアクションのツールチップです"
 
-#: ctk/ctkaction.c:319
+#: ctk/ctkaction.c:299
 msgid "Stock Icon"
 msgstr "ストックアイコン"
 
-#: ctk/ctkaction.c:320
+#: ctk/ctkaction.c:300
 msgid "The stock icon displayed in widgets representing this action."
 msgstr "このアクションを表すウィジェットに表示されるストックアイコンです"
 
-#: ctk/ctkaction.c:342 ctk/ctkstatusicon.c:279
+#: ctk/ctkaction.c:320 ctk/ctkstatusicon.c:269
 msgid "GIcon"
 msgstr "GIcon"
 
-#: ctk/ctkaction.c:343 ctk/ctkstatusicon.c:280
-#: ctk/ctkcellrendererpixbuf.c:282 ctk/ctkimage.c:360
+#: ctk/ctkaction.c:321 ctk/ctkcellrendererpixbuf.c:282 ctk/ctkimage.c:358
+#: ctk/ctkstatusicon.c:270
 msgid "The GIcon being displayed"
 msgstr "表示しているアイコンの種類です"
 
-#: ctk/ctkaction.c:365 ctk/ctkstatusicon.c:263
-#: ctk/ctkcellrendererpixbuf.c:245 ctk/ctkimage.c:343 ctk/ctkprinter.c:170
-#: ctk/ctkwindow.c:890
+#: ctk/ctkaction.c:341 ctk/ctkcellrendererpixbuf.c:245 ctk/ctkimage.c:341
+#: ctk/ctkprinter.c:170 ctk/ctkstatusicon.c:253 ctk/ctkwindow.c:890
 msgid "Icon Name"
 msgstr "アイコン名"
 
-#: ctk/ctkaction.c:366 ctk/ctkstatusicon.c:264
-#: ctk/ctkcellrendererpixbuf.c:246 ctk/ctkimage.c:344
+#: ctk/ctkaction.c:342 ctk/ctkcellrendererpixbuf.c:246 ctk/ctkimage.c:342
+#: ctk/ctkstatusicon.c:254
 msgid "The name of the icon from the icon theme"
 msgstr "アイコンテーマから取得したアイコンの名前です"
 
-#: ctk/ctkaction.c:381 ctk/ctktoolitem.c:179
+#: ctk/ctkaction.c:354 ctk/ctktoolitem.c:179
 msgid "Visible when horizontal"
 msgstr "横向きなら表示する"
 
-#: ctk/ctkaction.c:382 ctk/ctktoolitem.c:180
+#: ctk/ctkaction.c:355 ctk/ctktoolitem.c:180
 msgid ""
 "Whether the toolbar item is visible when the toolbar is in a horizontal "
 "orientation."
 msgstr "横向きのツールバーで項目を表示するかどうか。"
 
-#: ctk/ctkaction.c:400
+#: ctk/ctkaction.c:370
 msgid "Visible when overflown"
 msgstr "上に乗ったら表示する"
 
-#: ctk/ctkaction.c:401
+#: ctk/ctkaction.c:371
 msgid ""
 "When TRUE, toolitem proxies for this action are represented in the toolbar "
 "overflow menu."
@@ -315,21 +310,21 @@ msgstr ""
 "TRUE にすると、このアクションのツールアイテムのプロキシをツールバーの中に描画"
 "します。"
 
-#: ctk/ctkaction.c:417 ctk/ctktoolitem.c:186
+#: ctk/ctkaction.c:384 ctk/ctktoolitem.c:186
 msgid "Visible when vertical"
 msgstr "縦向きなら表示する"
 
-#: ctk/ctkaction.c:418 ctk/ctktoolitem.c:187
+#: ctk/ctkaction.c:385 ctk/ctktoolitem.c:187
 msgid ""
 "Whether the toolbar item is visible when the toolbar is in a vertical "
 "orientation."
 msgstr "縦向きのツールバーで項目を表示するかどうか。"
 
-#: ctk/ctkaction.c:434 ctk/ctktoolitem.c:193
+#: ctk/ctkaction.c:398 ctk/ctktoolitem.c:193
 msgid "Is important"
 msgstr "重要か"
 
-#: ctk/ctkaction.c:435
+#: ctk/ctkaction.c:399
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
 "this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
@@ -338,89 +333,86 @@ msgstr ""
 "ツールアイテムプロキシは CTK_TOOLBAR_BOTH_HORIZ モードでテキストを表示しま"
 "す。"
 
-#: ctk/ctkaction.c:451
+#: ctk/ctkaction.c:412
 msgid "Hide if empty"
 msgstr "空なら隠す"
 
-#: ctk/ctkaction.c:452
+#: ctk/ctkaction.c:413
 msgid "When TRUE, empty menu proxies for this action are hidden."
 msgstr "TRUE にすると、このアクションの空のメニュープロキシを隠します"
 
-#: ctk/ctkaction.c:466 ctk/ctkactiongroup.c:214
-#: ctk/ctkcellrenderer.c:308 ctk/ctkwidget.c:1155
+#: ctk/ctkaction.c:424 ctk/ctkactiongroup.c:208 ctk/ctkcellrenderer.c:308
+#: ctk/ctkwidget.c:1155
 msgid "Sensitive"
 msgstr "感応可否"
 
-#: ctk/ctkaction.c:467
+#: ctk/ctkaction.c:425
 msgid "Whether the action is enabled."
 msgstr "アクションが有効かどうか。"
 
-#: ctk/ctkaction.c:481 ctk/ctkactiongroup.c:228
-#: ctk/ctkstatusicon.c:314 ctk/ctkcssnode.c:649
-#: ctk/ctknativedialog.c:242 ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1148
+#: ctk/ctkaction.c:436 ctk/ctkactiongroup.c:220 ctk/ctkcssnode.c:649
+#: ctk/ctknativedialog.c:242 ctk/ctkstatusicon.c:304
+#: ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1148
 msgid "Visible"
 msgstr "可視性"
 
-#: ctk/ctkaction.c:482
+#: ctk/ctkaction.c:437
 msgid "Whether the action is visible."
 msgstr "アクションが表示されるかどうか。"
 
-#: ctk/ctkaction.c:497
+#: ctk/ctkaction.c:449
 msgid "Action Group"
 msgstr "アクショングループ"
 
-#: ctk/ctkaction.c:498
+#: ctk/ctkaction.c:450
 msgid ""
 "The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
 msgstr ""
 "この CtkAction と連携する CtkActionGroup、または NULL (CTK+ 内部で使用) です"
 
-#: ctk/ctkaction.c:519 ctk/ctkimagemenuitem.c:264
-#: ctk/ctkbutton.c:393
+#: ctk/ctkaction.c:468 ctk/ctkbutton.c:393 ctk/ctkimagemenuitem.c:254
 msgid "Always show image"
 msgstr "常に画像を表示するかどうか"
 
-#: ctk/ctkaction.c:520 ctk/ctkimagemenuitem.c:265
-#: ctk/ctkbutton.c:394
+#: ctk/ctkaction.c:469 ctk/ctkbutton.c:394 ctk/ctkimagemenuitem.c:255
 msgid "Whether the image will always be shown"
 msgstr "画像を常に表示しておくかどうか"
 
-#: ctk/ctkactiongroup.c:201
+#: ctk/ctkactiongroup.c:197
 msgid "A name for the action group."
 msgstr "アクショングループの名前です"
 
-#: ctk/ctkactiongroup.c:215
+#: ctk/ctkactiongroup.c:209
 msgid "Whether the action group is enabled."
 msgstr "アクショングループが有効かどうか。"
 
-#: ctk/ctkactiongroup.c:229
+#: ctk/ctkactiongroup.c:221
 msgid "Whether the action group is visible."
 msgstr "アクショングループが表示されるかどうか。"
 
-#: ctk/ctkactiongroup.c:242
+#: ctk/ctkactiongroup.c:232
 #, fuzzy
-#| msgid "Accelerator Mode"
 msgid "Accelerator Group"
 msgstr "アクセラレータのモード"
 
-#: ctk/ctkactiongroup.c:243
+#: ctk/ctkactiongroup.c:233
 msgid "The accelerator group the actions of this group should use."
 msgstr ""
 
-#: ctk/ctkactivatable.c:290
+#: ctk/ctkactivatable.c:286
 msgid "Related Action"
 msgstr "関連するアクション"
 
-#: ctk/ctkactivatable.c:291
+#: ctk/ctkactivatable.c:287
 msgid "The action this activatable will activate and receive updates from"
 msgstr "この Activatable が起動し、更新を受けとるアクション"
 
-#: ctk/ctkactivatable.c:315
+#: ctk/ctkactivatable.c:309
 msgid "Use Action Appearance"
 msgstr "アクションアピアランスを使用"
 
-#: ctk/ctkactivatable.c:316
+#: ctk/ctkactivatable.c:310
 msgid "Whether to use the related actions appearance properties"
 msgstr "関連するアクションアピアランスの属性を使うかどうか"
 
@@ -667,30 +659,6 @@ msgid ""
 "detached."
 msgstr "ハンドルボックスの中に子のオブジェクトが取り付けられているかどうか"
 
-#: ctk/ctkimagemenuitem.c:226 ctk/ctkbutton.c:360
-msgid "Image widget"
-msgstr "画像ウィジェット"
-
-#: ctk/ctkimagemenuitem.c:227
-msgid "Child widget to appear next to the menu text"
-msgstr "メニューのテキストの隣に表示する子ウィジェット"
-
-#: ctk/ctkimagemenuitem.c:243 ctk/ctkbutton.c:300
-msgid "Use stock"
-msgstr "ストックを使用する"
-
-#: ctk/ctkimagemenuitem.c:244
-msgid "Whether to use the label text to create a stock menu item"
-msgstr "ストック形式のメニュー項目を生成する際にラベルを使用するかどうか"
-
-#: ctk/ctkimagemenuitem.c:281 ctk/ctkmenu.c:655
-msgid "Accel Group"
-msgstr "アクセラレータのグループ"
-
-#: ctk/ctkimagemenuitem.c:282
-msgid "The Accel Group to use for stock accelerator keys"
-msgstr "アクセラレータキーが所属するグループを表すオブジェクトです"
-
 #: ctk/deprecated/ctkmisc.c:114 ctk/ctkentry.c:968 ctk/ctklabel.c:851
 msgid "X align"
 msgstr "X方向の配置"
@@ -729,217 +697,53 @@ msgid ""
 "The amount of space to add on the top and bottom of the widget, in pixels"
 msgstr "ウィジェットの上端と下端に追加する空間のサイズ (ピクセル単位)"
 
-#: ctk/deprecated/ctknumerableicon.c:642
+#: ctk/deprecated/ctknumerableicon.c:643
 #, fuzzy
-#| msgid "Icon set"
 msgid "Icon's count"
 msgstr "アイコンセット"
 
-#: ctk/deprecated/ctknumerableicon.c:643
+#: ctk/deprecated/ctknumerableicon.c:644
 #, fuzzy
-#| msgid "The index of the current page"
 msgid "The count of the emblem currently displayed"
 msgstr "現在ページのインデックス"
 
-#: ctk/deprecated/ctknumerableicon.c:649
+#: ctk/deprecated/ctknumerableicon.c:650
 #, fuzzy
-#| msgid "Icon Name"
 msgid "Icon's label"
 msgstr "アイコン名"
 
-#: ctk/deprecated/ctknumerableicon.c:650
+#: ctk/deprecated/ctknumerableicon.c:651
 #, fuzzy
-#| msgid "The stock icon displayed on the item"
 msgid "The label to be displayed over the icon"
 msgstr "項目に表示されるストックアイコン"
 
-#: ctk/deprecated/ctknumerableicon.c:656
+#: ctk/deprecated/ctknumerableicon.c:657
 #, fuzzy
-#| msgid "Font style set"
 msgid "Icon's style context"
 msgstr "フォントスタイルの設定"
 
-#: ctk/deprecated/ctknumerableicon.c:657
+#: ctk/deprecated/ctknumerableicon.c:658
 msgid "The style context to theme the icon appearance"
 msgstr ""
 
-#: ctk/deprecated/ctknumerableicon.c:663
+#: ctk/deprecated/ctknumerableicon.c:664
 #, fuzzy
-#| msgid "Background color"
 msgid "Background icon"
 msgstr "背景色"
 
-#: ctk/deprecated/ctknumerableicon.c:664
+#: ctk/deprecated/ctknumerableicon.c:665
 msgid "The icon for the number emblem background"
 msgstr ""
 
-#: ctk/deprecated/ctknumerableicon.c:670
+#: ctk/deprecated/ctknumerableicon.c:671
 #, fuzzy
-#| msgid "Background color name"
 msgid "Background icon name"
 msgstr "背景色の名前"
 
-#: ctk/deprecated/ctknumerableicon.c:671
+#: ctk/deprecated/ctknumerableicon.c:672
 #, fuzzy
-#| msgid "The icon name to use for the printer"
 msgid "The icon name for the number emblem background"
 msgstr "プリンターに割り当てるアイコンの名前です"
-
-#: ctk/ctkradioaction.c:120
-msgid "The value"
-msgstr "値"
-
-#: ctk/ctkradioaction.c:121
-msgid ""
-"The value returned by ctk_radio_action_get_current_value() when this action "
-"is the current action of its group."
-msgstr ""
-"このアクションがそのグループの現在のアクションのときに、"
-"ctk_radio_action_get_current_value() によって返される値です。"
-
-#: ctk/ctkradioaction.c:139 ctk/ctkradiobutton.c:184
-#: ctk/ctkradiomenuitem.c:424 ctk/ctkradiotoolbutton.c:83
-msgid "Group"
-msgstr "グループ"
-
-#: ctk/ctkradioaction.c:140
-msgid "The radio action whose group this action belongs to."
-msgstr "このアクションが属するグループとなるラジオアクションです"
-
-#: ctk/ctkradioaction.c:157
-msgid "The current value"
-msgstr "現在の値"
-
-#: ctk/ctkradioaction.c:158
-msgid ""
-"The value property of the currently active member of the group to which this "
-"action belongs."
-msgstr "このアクションが属すグループで、現在アクティブなメンバーの値です"
-
-#: ctk/ctkrecentaction.c:674 ctk/ctkrecentchoosermenu.c:239
-msgid "Show Numbers"
-msgstr "番号の表示"
-
-#: ctk/ctkrecentaction.c:675 ctk/ctkrecentchoosermenu.c:240
-msgid "Whether the items should be displayed with a number"
-msgstr "番号を付けてアイテムを表示するかどうか"
-
-#: ctk/ctkstatusicon.c:234 ctk/ctkimage.c:256
-msgid "Pixbuf"
-msgstr "Pixbuf"
-
-#: ctk/ctkstatusicon.c:235 ctk/ctkimage.c:257
-msgid "A GdkPixbuf to display"
-msgstr "表示する GdkPixbuf です"
-
-#: ctk/ctkstatusicon.c:242 ctk/ctkimage.c:270
-#: ctk/ctkrecentmanager.c:289
-msgid "Filename"
-msgstr "ファイル名"
-
-#: ctk/ctkstatusicon.c:243 ctk/ctkimage.c:271
-msgid "Filename to load and display"
-msgstr "読み込んで表示するファイル名"
-
-#: ctk/ctkstatusicon.c:255 ctk/ctkcellrendererpixbuf.c:195
-#: ctk/ctkimage.c:282
-msgid "Stock ID"
-msgstr "ストック ID"
-
-#: ctk/ctkstatusicon.c:256 ctk/ctkimage.c:283
-msgid "Stock ID for a stock image to display"
-msgstr "表示するストックアイテムのストック ID です"
-
-#: ctk/ctkstatusicon.c:287 ctk/ctkimage.c:380
-msgid "Storage type"
-msgstr "保存する種類"
-
-#: ctk/ctkstatusicon.c:288 ctk/ctkimage.c:381
-msgid "The representation being used for image data"
-msgstr "画像データに使用する表現"
-
-#: ctk/ctkstatusicon.c:296 ctk/ctkcellrendererpixbuf.c:210
-#: ctk/ctkcellrendererspinner.c:159 ctk/ctkrecentmanager.c:304
-msgid "Size"
-msgstr "サイズ"
-
-#: ctk/ctkstatusicon.c:297
-msgid "The size of the icon"
-msgstr "アイコンの大きさ"
-
-#: ctk/ctkstatusicon.c:306 ctk/ctkinvisible.c:98
-#: ctk/ctkmountoperation.c:183 ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:897
-msgid "Screen"
-msgstr "画面"
-
-#: ctk/ctkstatusicon.c:307
-msgid "The screen where this status icon will be displayed"
-msgstr "このステータスアイコンを表示する画面です"
-
-#: ctk/ctkstatusicon.c:315
-msgid "Whether the status icon is visible"
-msgstr "ステータスアイコンを表示するかどうか"
-
-#: ctk/ctkstatusicon.c:330 ctk/ctkplug.c:196
-msgid "Embedded"
-msgstr "埋め込み"
-
-#: ctk/ctkstatusicon.c:331
-msgid "Whether the status icon is embedded"
-msgstr "ステータスアイコンを埋め込むかどうか"
-
-#: ctk/ctkstatusicon.c:346 ctk/ctktrayicon-x11.c:127
-#: ctk/ctkgesturepan.c:238 ctk/ctkorientable.c:61
-msgid "Orientation"
-msgstr "向き"
-
-#: ctk/ctkstatusicon.c:347 ctk/ctktrayicon-x11.c:128
-msgid "The orientation of the tray"
-msgstr "トレイの向き"
-
-#: ctk/ctkstatusicon.c:374 ctk/ctkwidget.c:1285
-msgid "Has tooltip"
-msgstr "ツールチップ有り"
-
-#: ctk/ctkstatusicon.c:375
-msgid "Whether this tray icon has a tooltip"
-msgstr "トレイのアイコンにツールチップを表示するかどうか"
-
-#: ctk/ctkstatusicon.c:401 ctk/ctkwidget.c:1309
-msgid "Tooltip Text"
-msgstr "ツールチップの内容"
-
-#: ctk/ctkstatusicon.c:402 ctk/ctkwidget.c:1310 ctk/ctkwidget.c:1334
-msgid "The contents of the tooltip for this widget"
-msgstr "このウィジェットのツールチップとして表示する内容です"
-
-#: ctk/ctkstatusicon.c:425 ctk/ctkwidget.c:1333
-msgid "Tooltip markup"
-msgstr "ツールチップのマークアップ"
-
-#: ctk/ctkstatusicon.c:426
-msgid "The contents of the tooltip for this tray icon"
-msgstr "トレイのアイコンに表示するツールチップの内容 (マークアップ付き) です"
-
-#: ctk/ctkstatusicon.c:443 ctk/ctkcolorbutton.c:183
-#: ctk/ctkfilechooserbutton.c:443 ctk/ctkfontbutton.c:490
-#: ctk/ctkheaderbar.c:2027 ctk/ctkprintjob.c:133 ctk/ctkshortcutsgroup.c:308
-#: ctk/ctkshortcutssection.c:376 ctk/ctkshortcutsshortcut.c:575
-#: ctk/ctkstack.c:523 ctk/ctktreeviewcolumn.c:316
-msgid "Title"
-msgstr "タイトル"
-
-#: ctk/ctkstatusicon.c:444
-msgid "The title of this tray icon"
-msgstr "このトレイアイコンのタイトル"
-
-#: ctk/ctkstyle.c:471
-msgid "Style context"
-msgstr ""
-
-#: ctk/ctkstyle.c:472
-msgid "CtkStyleContext to get style from"
-msgstr ""
 
 #: ctk/deprecated/ctktable.c:185
 msgid "Rows"
@@ -1054,102 +858,14 @@ msgstr ""
 
 #: ctk/deprecated/ctkthemingengine.c:248
 #, fuzzy
-#| msgid "Theme Name"
 msgid "Theming engine name"
 msgstr "テーマ名"
 
-#: ctk/ctktoggleaction.c:118
-msgid "Create the same proxies as a radio action"
-msgstr "ラジオアクションと同じプロキシを作成する"
-
-#: ctk/ctktoggleaction.c:119
-msgid "Whether the proxies for this action look like radio action proxies"
-msgstr ""
-"このアクションのプロキシをラジオボタンのアクションプロキシにするかどうかです"
-
-#: ctk/ctktoggleaction.c:135 ctk/ctkcellrendererspinner.c:125
-#: ctk/ctkcheckmenuitem.c:209 ctk/ctkmenu.c:640 ctk/ctkmodelbutton.c:1211
-#: ctk/ctkmodelbutton.c:1212 ctk/ctkspinner.c:221 ctk/ctkswitch.c:878
-#: ctk/ctktogglebutton.c:188 ctk/ctktoggletoolbutton.c:130
-msgid "Active"
-msgstr "有効"
-
-#: ctk/ctktoggleaction.c:136
-msgid "Whether the toggle action should be active"
-msgstr "トグル操作をアクティブにするかどうか"
-
-#: ctk/ctktrayicon-x11.c:136 ctk/ctkcellrenderertext.c:334
-#: ctk/ctktexttag.c:277
-msgid "Foreground color"
-msgstr "前景色"
-
-#: ctk/ctktrayicon-x11.c:137
-msgid "Foreground color for symbolic icons"
-msgstr "シンボリックアイコンの前景色"
-
-#: ctk/ctktrayicon-x11.c:144
-msgid "Error color"
-msgstr "エラーの色"
-
-#: ctk/ctktrayicon-x11.c:145
-msgid "Error color for symbolic icons"
-msgstr "シンボリックアイコンのエラーを表す色です"
-
-#: ctk/ctktrayicon-x11.c:152
-msgid "Warning color"
-msgstr "警告の色"
-
-#: ctk/ctktrayicon-x11.c:153
-msgid "Warning color for symbolic icons"
-msgstr "シンボリックアイコンの警告を表す色です"
-
-#: ctk/ctktrayicon-x11.c:160
-msgid "Success color"
-msgstr "成功の色"
-
-#: ctk/ctktrayicon-x11.c:161
-msgid "Success color for symbolic icons"
-msgstr "シンボリックアイコンで成功を表す色です"
-
-#: ctk/ctktrayicon-x11.c:168 ctk/ctkbox.c:350
-msgid "Padding"
-msgstr "パディング"
-
-#: ctk/ctktrayicon-x11.c:169
-msgid "Padding that should be put around icons in the tray"
-msgstr "トレイ中のアイコンのまわりにパディングを付けるかどうか"
-
-#: ctk/ctktrayicon-x11.c:178 ctk/ctkstackswitcher.c:686
-#, fuzzy
-#| msgid "Icon Sizes"
-msgid "Icon Size"
-msgstr "アイコンのサイズ"
-
-#: ctk/ctktrayicon-x11.c:179
-msgid "The pixel size that icons should be forced to, or zero"
-msgstr ""
-
-#: ctk/ctkuimanager.c:463 ctk/ctkcombobox.c:1010
-msgid "Add tearoffs to menus"
-msgstr "ティアオフをメニューに追加"
-
-#: ctk/ctkuimanager.c:464
-msgid "Whether tearoff menu items should be added to menus"
-msgstr "ティアオフメニュー項目をメニューに追加するかどうか"
-
-#: ctk/ctkuimanager.c:471
-msgid "Merged UI definition"
-msgstr "統合された UI 定義"
-
-#: ctk/ctkuimanager.c:472
-msgid "An XML string describing the merged UI"
-msgstr "統合された UI を記述する XML 文字列"
-
-#: ctk/ctkaboutdialog.c:343
+#: ctk/ctkaboutdialog.c:349
 msgid "Program name"
 msgstr "プログラムの名前"
 
-#: ctk/ctkaboutdialog.c:344
+#: ctk/ctkaboutdialog.c:350
 msgid ""
 "The name of the program. If this is not set, it defaults to "
 "g_get_application_name()"
@@ -1157,107 +873,104 @@ msgstr ""
 "プログラムの名前です (これがセットされていない場合、関数 "
 "g_get_application_name() の結果をデフォルトにします)"
 
-#: ctk/ctkaboutdialog.c:357
+#: ctk/ctkaboutdialog.c:363
 msgid "Program version"
 msgstr "プログラムのバージョン"
 
-#: ctk/ctkaboutdialog.c:358
+#: ctk/ctkaboutdialog.c:364
 msgid "The version of the program"
 msgstr "プログラムのバージョンです"
 
-#: ctk/ctkaboutdialog.c:371
+#: ctk/ctkaboutdialog.c:377
 msgid "Copyright string"
 msgstr "コピーライトの文字列"
 
-#: ctk/ctkaboutdialog.c:372
+#: ctk/ctkaboutdialog.c:378
 msgid "Copyright information for the program"
 msgstr "プログラムのコピーライト情報です"
 
-#: ctk/ctkaboutdialog.c:387
+#: ctk/ctkaboutdialog.c:393
 msgid "Comments string"
 msgstr "コメントの文字列"
 
-#: ctk/ctkaboutdialog.c:388
+#: ctk/ctkaboutdialog.c:394
 msgid "Comments about the program"
 msgstr "プログラムについてのコメントです"
 
-#: ctk/ctkaboutdialog.c:408
+#: ctk/ctkaboutdialog.c:414
 #, fuzzy
-#| msgid "License Type"
 msgid "License"
 msgstr "ライセンスの種類"
 
-#: ctk/ctkaboutdialog.c:409
+#: ctk/ctkaboutdialog.c:415
 #, fuzzy
-#| msgid "The license type of the program"
 msgid "The license of the program"
 msgstr "このプログラムのライセンスの種類です"
 
-#: ctk/ctkaboutdialog.c:436
+#: ctk/ctkaboutdialog.c:442
 msgid "License Type"
 msgstr "ライセンスの種類"
 
-#: ctk/ctkaboutdialog.c:437
+#: ctk/ctkaboutdialog.c:443
 msgid "The license type of the program"
 msgstr "このプログラムのライセンスの種類です"
 
-#: ctk/ctkaboutdialog.c:452
+#: ctk/ctkaboutdialog.c:458
 msgid "Website URL"
 msgstr "ウェブサイトの URL"
 
-#: ctk/ctkaboutdialog.c:453
+#: ctk/ctkaboutdialog.c:459
 msgid "The URL for the link to the website of the program"
 msgstr "プログラムのウェブサイトを示す URL です"
 
-#: ctk/ctkaboutdialog.c:466
+#: ctk/ctkaboutdialog.c:472
 msgid "Website label"
 msgstr "ウェブサイトのラベル"
 
-#: ctk/ctkaboutdialog.c:467
+#: ctk/ctkaboutdialog.c:473
 #, fuzzy
-#| msgid "The URL for the link to the website of the program"
 msgid "The label for the link to the website of the program"
 msgstr "プログラムのウェブサイトを示す URL です"
 
-#: ctk/ctkaboutdialog.c:482
+#: ctk/ctkaboutdialog.c:488
 msgid "Authors"
 msgstr "作者"
 
-#: ctk/ctkaboutdialog.c:483
+#: ctk/ctkaboutdialog.c:489
 msgid "List of authors of the program"
 msgstr "プログラムの作者の一覧です"
 
-#: ctk/ctkaboutdialog.c:498
+#: ctk/ctkaboutdialog.c:504
 msgid "Documenters"
 msgstr "ドキュメント担当"
 
-#: ctk/ctkaboutdialog.c:499
+#: ctk/ctkaboutdialog.c:505
 msgid "List of people documenting the program"
 msgstr "プログラムのドキュメントを担当した人達の一覧です"
 
-#: ctk/ctkaboutdialog.c:514
+#: ctk/ctkaboutdialog.c:520
 msgid "Artists"
 msgstr "アーティスト"
 
-#: ctk/ctkaboutdialog.c:515
+#: ctk/ctkaboutdialog.c:521
 msgid "List of people who have contributed artwork to the program"
 msgstr "プログラムのアートワークに貢献した人達の一覧です"
 
-#: ctk/ctkaboutdialog.c:530
+#: ctk/ctkaboutdialog.c:536
 msgid "Translator credits"
 msgstr "翻訳担当"
 
-#: ctk/ctkaboutdialog.c:531
+#: ctk/ctkaboutdialog.c:537
 msgid ""
 "Credits to the translators. This string should be marked as translatable"
 msgstr ""
 "翻訳者のクレジットです (この文字列は翻訳可能な文字列としてマークしてください)"
 
-#: ctk/ctkaboutdialog.c:545
+#: ctk/ctkaboutdialog.c:551
 msgid "Logo"
 msgstr "ロゴ"
 
-#: ctk/ctkaboutdialog.c:546
+#: ctk/ctkaboutdialog.c:552
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
 "ctk_window_get_default_icon_list()"
@@ -1265,19 +978,19 @@ msgstr ""
 "情報ダイアログのロゴです (これがセットされていない場合、"
 "ctk_window_get_default_icon_list() の結果をデフォルトにします)"
 
-#: ctk/ctkaboutdialog.c:560
+#: ctk/ctkaboutdialog.c:566
 msgid "Logo Icon Name"
 msgstr "ロゴのアイコン名"
 
-#: ctk/ctkaboutdialog.c:561
+#: ctk/ctkaboutdialog.c:567
 msgid "A named icon to use as the logo for the about box."
 msgstr "情報ダイアログのロゴに使用するアイコン名です"
 
-#: ctk/ctkaboutdialog.c:574
+#: ctk/ctkaboutdialog.c:580
 msgid "Wrap license"
 msgstr "ライセンスのラッピング"
 
-#: ctk/ctkaboutdialog.c:575
+#: ctk/ctkaboutdialog.c:581
 msgid "Whether to wrap the license text."
 msgstr "ライセンスの条文を折り返すかどうか。"
 
@@ -1308,19 +1021,16 @@ msgstr ""
 
 #: ctk/ctkactionable.c:71
 #, fuzzy
-#| msgid "Icon name"
 msgid "Action name"
 msgstr "アイコン名"
 
 #: ctk/ctkactionable.c:72
 #, fuzzy
-#| msgid "The name of the selected font"
 msgid "The name of the associated action, like 'app.quit'"
 msgstr "選択したフォントの名前"
 
 #: ctk/ctkactionable.c:76
 #, fuzzy
-#| msgid "Paste target list"
 msgid "Action target value"
 msgstr "ターゲット一覧の貼り付け"
 
@@ -1341,7 +1051,7 @@ msgstr ""
 "(CtkPackType で指定する)"
 
 #: ctk/ctkactionbar.c:345 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
-#: ctk/ctknotebook.c:840 ctk/ctkpaned.c:368 ctk/ctkpopover.c:1758
+#: ctk/ctknotebook.c:840 ctk/ctkpaned.c:368 ctk/ctkpopover.c:1767
 #: ctk/ctkpopovermenu.c:384 ctk/ctkstack.c:537 ctk/ctktoolitemgroup.c:1716
 msgid "Position"
 msgstr "位置"
@@ -1412,49 +1122,41 @@ msgstr ""
 
 #: ctk/ctkappchooserbutton.c:634
 #, fuzzy
-#| msgid "Show menu images"
 msgid "Show default item"
 msgstr "メニュー画像の表示"
 
 #: ctk/ctkappchooserbutton.c:635
 #, fuzzy
-#| msgid "Whether the widget is the default widget"
 msgid "Whether the combobox should show the default application on top"
 msgstr "ウィジェットはデフォルトのウィジェットかどうか"
 
-#: ctk/ctkappchooserbutton.c:647 ctk/ctkappchooserdialog.c:686
+#: ctk/ctkappchooserbutton.c:647 ctk/ctkappchooserdialog.c:688
 #, fuzzy
-#| msgid "Show Heading"
 msgid "Heading"
 msgstr "年/月を表示する"
 
-#: ctk/ctkappchooserbutton.c:648 ctk/ctkappchooserdialog.c:687
+#: ctk/ctkappchooserbutton.c:648 ctk/ctkappchooserdialog.c:689
 #, fuzzy
-#| msgid "The padding to insert at the top of the widget."
 msgid "The text to show at the top of the dialog"
 msgstr "子ウィジェットの上部に挿入するパディング"
 
 #: ctk/ctkappchooser.c:73
 #, fuzzy
-#| msgid "Font style"
 msgid "Content type"
 msgstr "フォントスタイル"
 
 #: ctk/ctkappchooser.c:74
 #, fuzzy
-#| msgid "The contents of the entry"
 msgid "The content type used by the open with object"
 msgstr "エントリの内容"
 
-#: ctk/ctkappchooserdialog.c:672
+#: ctk/ctkappchooserdialog.c:674
 #, fuzzy
-#| msgid "Filter"
 msgid "GFile"
 msgstr "フィルター"
 
-#: ctk/ctkappchooserdialog.c:673
+#: ctk/ctkappchooserdialog.c:675
 #, fuzzy
-#| msgid "The title of the file chooser dialog."
 msgid "The GFile used by the app chooser dialog"
 msgstr "フォント選択ダイアログのタイトル"
 
@@ -1464,7 +1166,6 @@ msgstr ""
 
 #: ctk/ctkappchooserwidget.c:931
 #, fuzzy
-#| msgid "Whether the widget is the default widget"
 msgid "Whether the widget should show the default application"
 msgstr "ウィジェットはデフォルトのウィジェットかどうか"
 
@@ -1474,7 +1175,6 @@ msgstr ""
 
 #: ctk/ctkappchooserwidget.c:946
 #, fuzzy
-#| msgid "Whether images should be shown on buttons"
 msgid "Whether the widget should show recommended applications"
 msgstr "メニューの中に画像を表示するかどうか"
 
@@ -1484,31 +1184,26 @@ msgstr ""
 
 #: ctk/ctkappchooserwidget.c:961
 #, fuzzy
-#| msgid "Whether the label widget should fill all available horizontal space"
 msgid "Whether the widget should show fallback applications"
 msgstr "ラベルが水平方向の利用可能な領域すべてを満たすよう拡がるかどうか"
 
 #: ctk/ctkappchooserwidget.c:973
 #, fuzzy
-#| msgid "Show Tooltips"
 msgid "Show other apps"
 msgstr "ツールチップの表示"
 
 #: ctk/ctkappchooserwidget.c:974
 #, fuzzy
-#| msgid "Whether the widget has the input focus"
 msgid "Whether the widget should show other applications"
 msgstr "ウィジェットは入力のフォーカスをもてるかどうか"
 
 #: ctk/ctkappchooserwidget.c:987
 #, fuzzy
-#| msgid "Show Day Names"
 msgid "Show all apps"
 msgstr "曜日を表示する"
 
 #: ctk/ctkappchooserwidget.c:988
 #, fuzzy
-#| msgid "Whether the label widget should fill all available horizontal space"
 msgid "Whether the widget should show all applications"
 msgstr "ラベルが水平方向の利用可能な領域すべてを満たすよう拡がるかどうか"
 
@@ -1526,7 +1221,6 @@ msgstr ""
 
 #: ctk/ctkapplication.c:846
 #, fuzzy
-#| msgid "Device role in the device manager"
 msgid "Register with the session manager"
 msgstr "デバイスマネージャーでのデバイスの役割"
 
@@ -1536,55 +1230,46 @@ msgstr ""
 
 #: ctk/ctkapplication.c:864
 #, fuzzy
-#| msgid "Whether the spinner is active"
 msgid "Whether the screensaver is active"
 msgstr "スピナーを有効にするかどうか"
 
 #: ctk/ctkapplication.c:870
 #, fuzzy
-#| msgid "Application paintable"
 msgid "Application menu"
 msgstr "アプリケーション表示可否"
 
 #: ctk/ctkapplication.c:871
 #, fuzzy
-#| msgid "The model for the icon view"
 msgid "The GMenuModel for the application menu"
 msgstr "アイコン表示に使用するモデルです"
 
 #: ctk/ctkapplication.c:877
 #, fuzzy
-#| msgid "Menu"
 msgid "Menubar"
 msgstr "メニュー"
 
 #: ctk/ctkapplication.c:878
 #, fuzzy
-#| msgid "The model for the tree view"
 msgid "The GMenuModel for the menubar"
 msgstr "ツリービューで使用するモデルです"
 
 #: ctk/ctkapplication.c:884
 #, fuzzy
-#| msgid "Active"
 msgid "Active window"
 msgstr "有効"
 
 #: ctk/ctkapplication.c:885
 #, fuzzy
-#| msgid "The item which is currently active"
 msgid "The window which most recently had focus"
 msgstr "現在アクティブな項目"
 
 #: ctk/ctkapplicationwindow.c:874
 #, fuzzy
-#| msgid "Show menu images"
 msgid "Show a menubar"
 msgstr "メニュー画像の表示"
 
 #: ctk/ctkapplicationwindow.c:875
 #, fuzzy
-#| msgid "TRUE if the window should not be in the pager."
 msgid "TRUE if the window should show a menubar at the top of the window"
 msgstr "ページャーの中にウィンドウを配置しない場合は TRUE"
 
@@ -1622,7 +1307,6 @@ msgstr "フレームの子ウィジェットのアスペクト比に強制的に
 
 #: ctk/ctkassistant.c:526 ctk/ctkdialog.c:652
 #, fuzzy
-#| msgid "Use separator"
 msgid "Use Header Bar"
 msgstr "セパレータあり"
 
@@ -1688,13 +1372,11 @@ msgstr "アシスタントが提供するページ中の必要項目の入力が
 
 #: ctk/ctkassistant.c:647
 #, fuzzy
-#| msgid "Focus padding"
 msgid "Has padding"
 msgstr "フォーカスのパディング"
 
 #: ctk/ctkassistant.c:647
 #, fuzzy
-#| msgid "Whether this tag affects background height"
 msgid "Whether the assistant adds padding around the page"
 msgstr "このタグが背景の高さに影響するかどうか"
 
@@ -1756,13 +1438,11 @@ msgstr ""
 
 #: ctk/ctkbbox.c:292
 #, fuzzy
-#| msgid "Homogeneous"
 msgid "Non-Homogeneous"
 msgstr "均等に配置する"
 
 #: ctk/ctkbbox.c:293
 #, fuzzy
-#| msgid "If TRUE, the child can be made smaller than its requisition"
 msgid "If TRUE, the child will not be subject to homogeneous sizing"
 msgstr "TRUE にすると、子は要求されたサイズよりも小さくすることができる"
 
@@ -1781,7 +1461,6 @@ msgstr "子ウィジェットのすべてを同じ大きさにするかどうか
 
 #: ctk/ctkbox.c:292
 #, fuzzy
-#| msgid "Handle position"
 msgid "Baseline position"
 msgstr "取っ手の位置"
 
@@ -1813,6 +1492,10 @@ msgstr ""
 "子ウィジェットに与えられた余白を子ウィジェットの確保またはパディングに使用す"
 "るかどうか"
 
+#: ctk/ctkbox.c:350 ctk/ctktrayicon-x11.c:168
+msgid "Padding"
+msgstr "パディング"
+
 #: ctk/ctkbox.c:351
 msgid "Extra space to put between the child and its neighbors, in pixels"
 msgstr ""
@@ -1836,7 +1519,7 @@ msgstr ""
 "上の文字"
 
 #: ctk/ctkbutton.c:288 ctk/ctkexpander.c:316 ctk/ctklabel.c:826
-#: ctk/ctkmenuitem.c:803 ctk/ctktoolbutton.c:250
+#: ctk/ctkmenuitem.c:803 ctk/ctktoolbutton.c:211
 msgid "Use underline"
 msgstr "下線を使用する"
 
@@ -1848,6 +1531,10 @@ msgid ""
 msgstr ""
 "セットすると、下線の次にある文字がアクセラレータキーのニーモニックとして使用"
 "する"
+
+#: ctk/ctkbutton.c:300 ctk/ctkimagemenuitem.c:236
+msgid "Use stock"
+msgstr "ストックを使用する"
 
 #: ctk/ctkbutton.c:301
 msgid ""
@@ -1871,6 +1558,10 @@ msgstr "子ウィジェットの水平位置"
 #: ctk/ctkbutton.c:346
 msgid "Vertical alignment for child"
 msgstr "子ウィジェットの垂直位置"
+
+#: ctk/ctkbutton.c:360 ctk/ctkimagemenuitem.c:221
+msgid "Image widget"
+msgstr "画像ウィジェット"
 
 #: ctk/ctkbutton.c:361
 msgid "Child widget to appear next to the button text"
@@ -2065,39 +1756,31 @@ msgstr "関連するアクションアピアランスの属性を使うかどう
 
 #: ctk/ctkcellareabox.c:346
 #, fuzzy
-#| msgid "xalign"
 msgid "Align"
 msgstr "xalign"
 
 #: ctk/ctkcellareabox.c:347
 #, fuzzy
-#| msgid "Whether the item should start a new row"
 msgid "Whether cell should align with adjacent rows"
 msgstr "アイテムが新しい行を開始するかどうか"
 
 #: ctk/ctkcellareabox.c:363
 #, fuzzy
-#| msgid "Pixel size"
 msgid "Fixed Size"
 msgstr "ピクセルサイズ"
 
 #: ctk/ctkcellareabox.c:364
 #, fuzzy
-#| msgid "Whether the children should all be the same size"
 msgid "Whether cells should be the same size in all rows"
 msgstr "子ウィジェットのすべてを同じ大きさにするかどうか"
 
 #: ctk/ctkcellareabox.c:380
 #, fuzzy
-#| msgid "Pack type"
 msgid "Pack Type"
 msgstr "パックの種類"
 
 #: ctk/ctkcellareabox.c:381
 #, fuzzy
-#| msgid ""
-#| "A CtkPackType indicating whether the child is packed with reference to "
-#| "the start or end of the parent"
 msgid ""
 "A CtkPackType indicating whether the cell is packed with reference to the "
 "start or end of the cell area"
@@ -2111,7 +1794,6 @@ msgstr ""
 
 #: ctk/ctkcellarea.c:791
 #, fuzzy
-#| msgid "The item which is currently active"
 msgid "The cell which currently has focus"
 msgstr "現在アクティブな項目"
 
@@ -2121,19 +1803,16 @@ msgstr ""
 
 #: ctk/ctkcellarea.c:810
 #, fuzzy
-#| msgid "The item which is currently active"
 msgid "The cell which is currently being edited"
 msgstr "現在アクティブな項目"
 
 #: ctk/ctkcellarea.c:828
 #, fuzzy
-#| msgid "Widget"
 msgid "Edit Widget"
 msgstr "ウィジェット"
 
 #: ctk/ctkcellarea.c:829
 #, fuzzy
-#| msgid "The current page in the document"
 msgid "The widget currently editing the edited cell"
 msgstr "現在のページ"
 
@@ -2152,19 +1831,16 @@ msgstr "最小幅"
 
 #: ctk/ctkcellareacontext.c:133 ctk/ctkcellareacontext.c:152
 #, fuzzy
-#| msgid "Minimum child width"
 msgid "Minimum cached width"
 msgstr "子ウィジェットの最小幅"
 
 #: ctk/ctkcellareacontext.c:170 ctk/ctkcellareacontext.c:189
 #, fuzzy
-#| msgid "Minimum child height"
 msgid "Minimum Height"
 msgstr "子ウィジェットの高さの最小値"
 
 #: ctk/ctkcellareacontext.c:171 ctk/ctkcellareacontext.c:190
 #, fuzzy
-#| msgid "Minimum child height"
 msgid "Minimum cached height"
 msgstr "子ウィジェットの高さの最小値"
 
@@ -2330,7 +2006,6 @@ msgstr "セルの背景色設定"
 
 #: ctk/ctkcellrenderer.c:442
 #, fuzzy
-#| msgid "Whether this tag affects the cell background color"
 msgid "Whether the cell background color is set"
 msgstr "このタグがセルの背景色に影響を与えるかどうか"
 
@@ -2388,13 +2063,21 @@ msgstr ""
 
 #: ctk/ctkcellrendererpixbuf.c:181
 #, fuzzy
-#| msgid "The pixbuf to render"
 msgid "The surface to render"
 msgstr "描画する Pixbuf"
+
+#: ctk/ctkcellrendererpixbuf.c:195 ctk/ctkimage.c:280 ctk/ctkstatusicon.c:245
+msgid "Stock ID"
+msgstr "ストック ID"
 
 #: ctk/ctkcellrendererpixbuf.c:196
 msgid "The stock ID of the stock icon to render"
 msgstr "描画するストックアイコンのストック ID"
+
+#: ctk/ctkcellrendererpixbuf.c:210 ctk/ctkcellrendererspinner.c:159
+#: ctk/ctkrecentmanager.c:303 ctk/ctkstatusicon.c:286
+msgid "Size"
+msgstr "サイズ"
 
 #: ctk/ctkcellrendererpixbuf.c:211
 msgid "The CtkIconSize value that specifies the size of the rendered icon"
@@ -2416,7 +2099,7 @@ msgstr "状態に合わせる"
 msgid "Whether the rendered pixbuf should be colorized according to the state"
 msgstr "描画した pixbuf を状態に応じて色づけを行うかどうか"
 
-#: ctk/ctkcellrendererpixbuf.c:281 ctk/ctkimage.c:359 ctk/ctkmodelbutton.c:1166
+#: ctk/ctkcellrendererpixbuf.c:281 ctk/ctkimage.c:357 ctk/ctkmodelbutton.c:1166
 #: ctk/ctkshortcutsshortcut.c:550 ctk/ctkwindow.c:841
 msgid "Icon"
 msgstr "アイコン"
@@ -2501,6 +2184,13 @@ msgstr "桁数"
 msgid "The number of decimal places to display"
 msgstr "表示する小数点以下の桁数です"
 
+#: ctk/ctkcellrendererspinner.c:125 ctk/ctkcheckmenuitem.c:209
+#: ctk/ctkmenu.c:640 ctk/ctkmodelbutton.c:1211 ctk/ctkmodelbutton.c:1212
+#: ctk/ctkspinner.c:221 ctk/ctkswitch.c:878 ctk/ctktoggleaction.c:129
+#: ctk/ctktogglebutton.c:188 ctk/ctktoggletoolbutton.c:130
+msgid "Active"
+msgstr "有効"
+
 #: ctk/ctkcellrendererspinner.c:126
 msgid "Whether the spinner is active (ie. shown) in the cell"
 msgstr "スピナーがセル中でアクティブ (つまり、表示) されているかどうか"
@@ -2572,6 +2262,10 @@ msgstr "前景色の名前"
 #: ctk/ctkcellrenderertext.c:320 ctk/ctktexttag.c:263
 msgid "Foreground color as a string"
 msgstr "前景色を示す文字列です"
+
+#: ctk/ctkcellrenderertext.c:334 ctk/ctktexttag.c:277 ctk/ctktrayicon-x11.c:136
+msgid "Foreground color"
+msgstr "前景色"
 
 #: ctk/ctkcellrenderertext.c:335 ctk/ctktexttag.c:278
 msgid "Foreground color as a CdkColor"
@@ -2961,19 +2655,16 @@ msgstr ""
 
 #: ctk/ctkcellview.c:324
 #, fuzzy
-#| msgid "Sensitive"
 msgid "Draw Sensitive"
 msgstr "感応可否"
 
 #: ctk/ctkcellview.c:325
 #, fuzzy
-#| msgid "Whether tree lines should be drawn in the tree view"
 msgid "Whether to force cells to be drawn in a sensitive state"
 msgstr "ツリー表示でツリー線を描画するかどうか"
 
 #: ctk/ctkcellview.c:343
 #, fuzzy
-#| msgid "Model"
 msgid "Fit Model"
 msgstr "モデル"
 
@@ -2985,7 +2676,7 @@ msgstr ""
 msgid "Indicator Size"
 msgstr "表示サイズ"
 
-#: ctk/ctkcheckbutton.c:249 ctk/ctkexpander.c:406
+#: ctk/ctkcheckbutton.c:249 ctk/ctkexpander.c:413
 msgid "Indicator Spacing"
 msgstr "表示部の間隔"
 
@@ -3021,6 +2712,14 @@ msgstr "アルファ値を使う"
 msgid "Whether to give the color an alpha value"
 msgstr "色にアルファ値を設定するかどうか"
 
+#: ctk/ctkcolorbutton.c:183 ctk/ctkfilechooserbutton.c:443
+#: ctk/ctkfontbutton.c:490 ctk/ctkheaderbar.c:2027 ctk/ctkprintjob.c:133
+#: ctk/ctkshortcutsgroup.c:308 ctk/ctkshortcutssection.c:376
+#: ctk/ctkshortcutsshortcut.c:575 ctk/ctkstack.c:523 ctk/ctkstatusicon.c:433
+#: ctk/ctktreeviewcolumn.c:316
+msgid "Title"
+msgstr "タイトル"
+
 #: ctk/ctkcolorbutton.c:184
 msgid "The title of the color selection dialog"
 msgstr "色選択ダイアログのタイトル"
@@ -3043,43 +2742,36 @@ msgstr "選択した RGBA 色"
 
 #: ctk/ctkcolorbutton.c:274
 #, fuzzy
-#| msgid "Show text"
 msgid "Show Editor"
 msgstr "文字列の表示"
 
 #: ctk/ctkcolorbutton.c:275
 #, fuzzy
-#| msgid "Whether to show a sort indicator"
 msgid "Whether to show the color editor right away"
 msgstr "ソート表示器を描画するかどうか"
 
 #: ctk/ctkcolorchooser.c:67
 #, fuzzy
-#| msgid "Color Hash"
 msgid "Color"
 msgstr "色のハッシュ"
 
 #: ctk/ctkcolorchooser.c:68
 #, fuzzy
-#| msgid "Foreground color as a CdkColor"
 msgid "Current color, as a CdkRGBA"
 msgstr "前景色を示す CdkColor 形式の文字列です"
 
 #: ctk/ctkcolorchooser.c:88
 #, fuzzy
-#| msgid "Whether tabs should be shown"
 msgid "Whether alpha should be shown"
 msgstr "タブを表示するかどうか"
 
-#: ctk/ctkcolorchooserdialog.c:213 ctk/ctkcolorchooserwidget.c:704
+#: ctk/ctkcolorchooserdialog.c:213 ctk/ctkcolorchooserwidget.c:695
 #, fuzzy
-#| msgid "Show text"
 msgid "Show editor"
 msgstr "文字列の表示"
 
 #: ctk/ctkcolorscale.c:258
 #, fuzzy
-#| msgid "Page type"
 msgid "Scale type"
 msgstr "ページの種類"
 
@@ -3089,7 +2781,6 @@ msgstr "RGBA 色"
 
 #: ctk/ctkcolorswatch.c:719
 #, fuzzy
-#| msgid "Color Hash"
 msgid "Color as RGBA"
 msgstr "色のハッシュ"
 
@@ -3099,19 +2790,16 @@ msgstr "選択可能"
 
 #: ctk/ctkcolorswatch.c:722
 #, fuzzy
-#| msgid "Whether the tab is detachable"
 msgid "Whether the swatch is selectable"
 msgstr "タブを切り離し可能にするかどうか"
 
 #: ctk/ctkcolorswatch.c:725
 #, fuzzy
-#| msgid "Menu"
 msgid "Has Menu"
 msgstr "メニュー"
 
 #: ctk/ctkcolorswatch.c:725
 #, fuzzy
-#| msgid "Whether the widget has the input focus"
 msgid "Whether the swatch should offer customization"
 msgstr "ウィジェットは入力のフォーカスをもてるかどうか"
 
@@ -3150,6 +2838,10 @@ msgstr "有効な項目"
 #: ctk/ctkcombobox.c:989
 msgid "The item which is currently active"
 msgstr "現在アクティブな項目"
+
+#: ctk/ctkcombobox.c:1010 ctk/ctkuimanager.c:452
+msgid "Add tearoffs to menus"
+msgstr "ティアオフをメニューに追加"
 
 #: ctk/ctkcombobox.c:1011
 msgid "Whether dropdowns should have a tearoff menu item"
@@ -3208,7 +2900,6 @@ msgstr ""
 
 #: ctk/ctkcombobox.c:1129
 #, fuzzy
-#| msgid "Columns"
 msgid "ID Column"
 msgstr "列の数"
 
@@ -3220,13 +2911,11 @@ msgstr ""
 
 #: ctk/ctkcombobox.c:1145
 #, fuzzy
-#| msgid "Active"
 msgid "Active id"
 msgstr "有効"
 
 #: ctk/ctkcombobox.c:1146
 #, fuzzy
-#| msgid "The name of the icon from the icon theme"
 msgid "The value of the id column for the active row"
 msgstr "アイコンテーマから取得したアイコンの名前です"
 
@@ -3259,7 +2948,6 @@ msgstr "コンボボックスで使用する矢印の大きさ (最小値) で�
 
 #: ctk/ctkcombobox.c:1228
 #, fuzzy
-#| msgid "Amount of space used up by arrow"
 msgid "The amount of space used by the arrow"
 msgstr "矢印が占有する大きさです"
 
@@ -3297,7 +2985,6 @@ msgstr ""
 
 #: ctk/ctkcssnode.c:628
 #, fuzzy
-#| msgid "List of icon names"
 msgid "List of classes"
 msgstr "アイコン名の並び"
 
@@ -3311,13 +2998,11 @@ msgstr ""
 
 #: ctk/ctkcssnode.c:643 ctk/ctkswitch.c:893
 #, fuzzy
-#| msgid "Status"
 msgid "State"
 msgstr "状態"
 
 #: ctk/ctkcssnode.c:643
 #, fuzzy
-#| msgid "State Message"
 msgid "State flags"
 msgstr "状態メッセージ"
 
@@ -3327,13 +3012,11 @@ msgstr ""
 
 #: ctk/ctkcssnode.c:654
 #, fuzzy
-#| msgid "Widget name"
 msgid "Widget type"
 msgstr "ウィジェット名"
 
 #: ctk/ctkcssnode.c:654
 #, fuzzy
-#| msgid "The name of the widget"
 msgid "GType of the widget"
 msgstr "ウィジェットの名前を指定します"
 
@@ -3343,19 +3026,16 @@ msgstr ""
 
 #: ctk/ctkcssshorthandproperty.c:171
 #, fuzzy
-#| msgid "The status of the print operation"
 msgid "The list of subproperties"
 msgstr "印刷操作の状態"
 
 #: ctk/ctkcssstyleproperty.c:208
 #, fuzzy
-#| msgid "Animation"
 msgid "Animated"
 msgstr "アニメーション"
 
 #: ctk/ctkcssstyleproperty.c:209
 #, fuzzy
-#| msgid "Whether the header can be clicked"
 msgid "Set if the value can be animated"
 msgstr "ヘッダーがクリック可能かどうか"
 
@@ -3365,19 +3045,16 @@ msgstr ""
 
 #: ctk/ctkcssstyleproperty.c:216
 #, fuzzy
-#| msgid "Whether the header can be clicked"
 msgid "Set if the value affects the sizing of elements"
 msgstr "ヘッダーがクリック可能かどうか"
 
 #: ctk/ctkcssstyleproperty.c:224
 #, fuzzy
-#| msgid "The metric used for the ruler"
 msgid "The numeric id for quick access"
 msgstr "ルーラで使用する単位です"
 
 #: ctk/ctkcssstyleproperty.c:230
 #, fuzzy
-#| msgid "Inverted"
 msgid "Inherit"
 msgstr "反転する"
 
@@ -3529,13 +3206,11 @@ msgstr "エントリで空白のままにしておく文字数を指定します
 
 #: ctk/ctkentry.c:937
 #, fuzzy
-#| msgid "Maximum Width In Characters"
 msgid "Maximum width in characters"
 msgstr "文字数単位での最大幅"
 
 #: ctk/ctkentry.c:938
 #, fuzzy
-#| msgid "The desired maximum width of the label, in characters"
 msgid "The desired maximum width of the entry, in characters"
 msgstr "ラベルの最大幅 (文字数) です"
 
@@ -3762,7 +3437,6 @@ msgstr "使用する入力メソッド (IM) のモジュールです"
 
 #: ctk/ctkentry.c:1436
 #, fuzzy
-#| msgid "Completion Model"
 msgid "Completion"
 msgstr "補完モデル"
 
@@ -3776,7 +3450,6 @@ msgstr ""
 
 #: ctk/ctkentry.c:1458 ctk/ctkimcontext.c:338 ctk/ctktextview.c:1012
 #, fuzzy
-#| msgid "Pulse of the spinner"
 msgid "Purpose of the text field"
 msgstr "スピナーのパルス"
 
@@ -3806,7 +3479,6 @@ msgstr "タブ"
 
 #: ctk/ctkentry.c:1523
 #, fuzzy
-#| msgid "A list of style attributes to apply to the text of the renderer"
 msgid "A list of tabstop locations to apply to the text of the entry"
 msgstr "文字列を描画する際に適用するスタイルの属性を並べたものです"
 
@@ -3816,19 +3488,16 @@ msgstr ""
 
 #: ctk/ctkentry.c:1538
 #, fuzzy
-#| msgid "Whether to show a sort indicator"
 msgid "Whether to show an icon for Emoji"
 msgstr "ソート表示器を描画するかどうか"
 
 #: ctk/ctkentry.c:1544
 #, fuzzy
-#| msgid "Inline completion"
 msgid "Enable Emoji completion"
 msgstr "インラインによる補完"
 
 #: ctk/ctkentry.c:1545
 #, fuzzy
-#| msgid "Warning color for symbolic icons"
 msgid "Whether to suggest Emoji replacements"
 msgstr "シンボリックアイコンの警告を表すの色です"
 
@@ -3942,7 +3611,6 @@ msgstr ""
 
 #: ctk/ctkeventcontroller.c:169
 #, fuzzy
-#| msgid "The widget the menu is attached to"
 msgid "Widget the gesture relates to"
 msgstr "メニューが取り付けられている先のウィジェットです"
 
@@ -3954,7 +3622,7 @@ msgstr ""
 msgid "Propagation phase at which this controller is run"
 msgstr ""
 
-#: ctk/ctkeventcontrollerscroll.c:374 ctk/ctkeventcontrollerscroll.c:375
+#: ctk/ctkeventcontrollerscroll.c:373 ctk/ctkeventcontrollerscroll.c:374
 msgid "Flags"
 msgstr ""
 
@@ -3984,7 +3652,7 @@ msgstr ""
 msgid "Space to put between the label and the child"
 msgstr "ラベルと子ウィジェットとの間に置くスペースを指定します"
 
-#: ctk/ctkexpander.c:351 ctk/ctkframe.c:262 ctk/ctktoolbutton.c:257
+#: ctk/ctkexpander.c:351 ctk/ctkframe.c:262 ctk/ctktoolbutton.c:218
 #: ctk/ctktoolitemgroup.c:1646
 msgid "Label widget"
 msgstr "ラベルウィジェット"
@@ -3993,35 +3661,34 @@ msgstr "ラベルウィジェット"
 msgid "A widget to display in place of the usual expander label"
 msgstr "通常の展張ラベルとして表示するウィジェット"
 
-#: ctk/ctkexpander.c:359
+#: ctk/ctkexpander.c:366
 msgid "Label fill"
 msgstr "ラベルのフィル"
 
-#: ctk/ctkexpander.c:360
+#: ctk/ctkexpander.c:367
 msgid "Whether the label widget should fill all available horizontal space"
 msgstr "ラベルが水平方向の利用可能な領域すべてを満たすよう拡がるかどうか"
 
-#: ctk/ctkexpander.c:375
+#: ctk/ctkexpander.c:382
 #, fuzzy
-#| msgid "Resize mode"
 msgid "Resize toplevel"
 msgstr "サイズ変更モード"
 
-#: ctk/ctkexpander.c:376
+#: ctk/ctkexpander.c:383
 msgid ""
 "Whether the expander will resize the toplevel window upon expanding and "
 "collapsing"
 msgstr ""
 
-#: ctk/ctkexpander.c:389 ctk/ctktoolitemgroup.c:1674 ctk/ctktreeview.c:1234
+#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1674 ctk/ctktreeview.c:1234
 msgid "Expander Size"
 msgstr "展張サイズ"
 
-#: ctk/ctkexpander.c:390 ctk/ctktoolitemgroup.c:1675 ctk/ctktreeview.c:1235
+#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1675 ctk/ctktreeview.c:1235
 msgid "Size of the expander arrow"
 msgstr "展張矢印の大きさ"
 
-#: ctk/ctkexpander.c:407
+#: ctk/ctkexpander.c:414
 msgid "Spacing around expander arrow"
 msgstr "展張矢印の周りの間隔"
 
@@ -4058,7 +3725,7 @@ msgid "The current filter for selecting which files are displayed"
 msgstr "表示されたファイルを選択する際のフィルターです"
 
 #: ctk/ctkfilechooser.c:388 ctk/ctkplacessidebar.c:4836
-#: ctk/ctkplacesview.c:2322
+#: ctk/ctkplacesview.c:2348
 msgid "Local Only"
 msgstr "ローカルのみ"
 
@@ -4141,40 +3808,34 @@ msgstr ""
 "ファイルを開くモードでファイル選択ウィジェットを表示した場合に、新規フォル"
 "ダーの作成をできるようにするかどうか。"
 
-#: ctk/ctkfilechoosernative.c:826
+#: ctk/ctkfilechoosernative.c:827
 #, fuzzy
-#| msgid "Accepts tab"
 msgid "Accept label"
 msgstr "タブを許可する"
 
-#: ctk/ctkfilechoosernative.c:827
+#: ctk/ctkfilechoosernative.c:828
 #, fuzzy
-#| msgid "The toggle state of the button"
 msgid "The label on the accept button"
 msgstr "トグルボタンの状態"
 
-#: ctk/ctkfilechoosernative.c:839
+#: ctk/ctkfilechoosernative.c:840
 #, fuzzy
-#| msgid "Tab label"
 msgid "Cancel label"
 msgstr "タブのラベル"
 
-#: ctk/ctkfilechoosernative.c:840
+#: ctk/ctkfilechoosernative.c:841
 #, fuzzy
-#| msgid "The toggle state of the button"
 msgid "The label on the cancel button"
 msgstr "トグルボタンの状態"
 
-#: ctk/ctkfilechooserwidget.c:8645 ctk/ctkfilechooserwidget.c:8646
+#: ctk/ctkfilechooserwidget.c:8668 ctk/ctkfilechooserwidget.c:8669
 #, fuzzy
-#| msgid "Search Column"
 msgid "Search mode"
 msgstr "列の検索"
 
-#: ctk/ctkfilechooserwidget.c:8652 ctk/ctkfilechooserwidget.c:8653
+#: ctk/ctkfilechooserwidget.c:8675 ctk/ctkfilechooserwidget.c:8676
 #: ctk/ctkheaderbar.c:2034 ctk/ctkshortcutsshortcut.c:591
 #, fuzzy
-#| msgid "Title"
 msgid "Subtitle"
 msgstr "タイトル"
 
@@ -4215,7 +3876,6 @@ msgstr ""
 
 #: ctk/ctkflowbox.c:3866
 #, fuzzy
-#| msgid "Minimum child height"
 msgid "Minimum Children Per Line"
 msgstr "子ウィジェットの高さの最小値"
 
@@ -4227,7 +3887,6 @@ msgstr ""
 
 #: ctk/ctkflowbox.c:3880
 #, fuzzy
-#| msgid "Maximum child expand"
 msgid "Maximum Children Per Line"
 msgstr "子ウィジェットの最大展張幅"
 
@@ -4239,31 +3898,26 @@ msgstr ""
 
 #: ctk/ctkflowbox.c:3893
 #, fuzzy
-#| msgid "Vertical padding"
 msgid "Vertical spacing"
 msgstr "垂直パディング"
 
 #: ctk/ctkflowbox.c:3894
 #, fuzzy
-#| msgid "The amount of space between children"
 msgid "The amount of vertical space between two children"
 msgstr "子ウィジェットと子ウィジェットの間に入れる空白の大きさを指定します"
 
 #: ctk/ctkflowbox.c:3905
 #, fuzzy
-#| msgid "Horizontal padding"
 msgid "Horizontal spacing"
 msgstr "水平パディング"
 
 #: ctk/ctkflowbox.c:3906
 #, fuzzy
-#| msgid "The amount of space between children"
 msgid "The amount of horizontal space between two children"
 msgstr "子ウィジェットと子ウィジェットの間に入れる空白の大きさを指定します"
 
 #: ctk/ctkfontbutton.c:491
 #, fuzzy
-#| msgid "The title of the file chooser dialog."
 msgid "The title of the font chooser dialog"
 msgstr "フォント選択ダイアログのタイトル"
 
@@ -4305,43 +3959,36 @@ msgstr "ラベルに選択したフォントのサイズを表示するかどう
 
 #: ctk/ctkfontchooser.c:77
 #, fuzzy
-#| msgid "Font options"
 msgid "Font description"
 msgstr "フォントのオプション"
 
 #: ctk/ctkfontchooser.c:103
 #, fuzzy
-#| msgid "Preview text"
 msgid "Show preview text entry"
 msgstr "プレビューする文字列"
 
 #: ctk/ctkfontchooser.c:104
 #, fuzzy
-#| msgid "Whether the border should be shown or not"
 msgid "Whether the preview text entry is shown or not"
 msgstr "境界線を表示するかどうか"
 
 #: ctk/ctkfontchooser.c:118
 #, fuzzy
-#| msgid "Selection mode"
 msgid "Selection level"
 msgstr "選択モード"
 
 #: ctk/ctkfontchooser.c:119
 #, fuzzy
-#| msgid "Whether to expand the child's tab or not"
 msgid "Whether to select family, face or font"
 msgstr "子のタブを展張するかどうか"
 
 #: ctk/ctkfontchooser.c:137
 #, fuzzy
-#| msgid "Font stretch"
 msgid "Font features"
 msgstr "フォントストレッチ"
 
 #: ctk/ctkfontchooser.c:138
 #, fuzzy
-#| msgid "Foreground color as a string"
 msgid "Font features as a string"
 msgstr "前景色を示す文字列です"
 
@@ -4349,13 +3996,12 @@ msgstr "前景色を示す文字列です"
 msgid "Language for which features have been selected"
 msgstr ""
 
-#: ctk/ctkfontchooserwidget.c:697
+#: ctk/ctkfontchooserwidget.c:691
 #, fuzzy
-#| msgid "Related Action"
 msgid "The tweak action"
 msgstr "関連するアクション"
 
-#: ctk/ctkfontchooserwidget.c:698
+#: ctk/ctkfontchooserwidget.c:692
 msgid "The toggle action to switch to the tweak page"
 msgstr ""
 
@@ -4393,13 +4039,11 @@ msgstr "通常のフレーム付きラベルとして表示するウィジェッ
 
 #: ctk/ctkgesture.c:870
 #, fuzzy
-#| msgid "Number of columns"
 msgid "Number of points"
 msgstr "X-方向に表示するアイテムの数"
 
 #: ctk/ctkgesture.c:871
 #, fuzzy
-#| msgid "Number of jobs queued in the printer"
 msgid "Number of points needed to trigger the gesture"
 msgstr "プリンターのキューにたまっているジョブの数です"
 
@@ -4415,9 +4059,13 @@ msgstr ""
 msgid "Factor by which to modify the default timeout"
 msgstr ""
 
+#: ctk/ctkgesturepan.c:238 ctk/ctkorientable.c:61 ctk/ctkstatusicon.c:336
+#: ctk/ctktrayicon-x11.c:127
+msgid "Orientation"
+msgstr "向き"
+
 #: ctk/ctkgesturepan.c:239
 #, fuzzy
-#| msgid "Allow folder creation"
 msgid "Allowed orientations"
 msgstr "フォルダーの作成を許可"
 
@@ -4427,19 +4075,16 @@ msgstr ""
 
 #: ctk/ctkgesturesingle.c:263
 #, fuzzy
-#| msgid "Whether the widget responds to input"
 msgid "Whether the gesture handles only touch events"
 msgstr "ウィジェットは入力に応答するかどうか"
 
 #: ctk/ctkgesturesingle.c:277 ctk/ctkgesturesingle.c:278
 #, fuzzy
-#| msgid "Whether the spinner is active"
 msgid "Whether the gesture is exclusive"
 msgstr "スピナーを有効にするかどうか"
 
 #: ctk/ctkgesturesingle.c:291
 #, fuzzy
-#| msgid "Button relief"
 msgid "Button number"
 msgstr "ボタンの縁"
 
@@ -4449,37 +4094,31 @@ msgstr ""
 
 #: ctk/ctkglarea.c:784
 #, fuzzy
-#| msgid "Font style"
 msgid "Context"
 msgstr "フォントスタイル"
 
 #: ctk/ctkglarea.c:785
 #, fuzzy
-#| msgid "Font style set"
 msgid "The GL context"
 msgstr "フォントスタイルの設定"
 
 #: ctk/ctkglarea.c:807
 #, fuzzy
-#| msgid "Text to render"
 msgid "Auto render"
 msgstr "描画するラベル"
 
 #: ctk/ctkglarea.c:808
 #, fuzzy
-#| msgid "Whether the header can be clicked"
 msgid "Whether the CtkGLArea renders on each redraw"
 msgstr "ヘッダーがクリック可能かどうか"
 
 #: ctk/ctkglarea.c:828
 #, fuzzy
-#| msgid "Has Alpha"
 msgid "Has alpha"
 msgstr "αの所有可否"
 
 #: ctk/ctkglarea.c:829
 #, fuzzy
-#| msgid "Whether the pixbuf has an alpha channel"
 msgid "Whether the color buffer has an alpha component"
 msgstr "Pixbuf がαチャンネルを持つかどうか"
 
@@ -4489,7 +4128,6 @@ msgstr ""
 
 #: ctk/ctkglarea.c:846
 #, fuzzy
-#| msgid "Whether the spinner is active"
 msgid "Whether a depth buffer is allocated"
 msgstr "スピナーを有効にするかどうか"
 
@@ -4499,7 +4137,6 @@ msgstr ""
 
 #: ctk/ctkglarea.c:863
 #, fuzzy
-#| msgid "Whether the spinner is active"
 msgid "Whether a stencil buffer is allocated"
 msgstr "スピナーを有効にするかどうか"
 
@@ -4513,25 +4150,21 @@ msgstr ""
 
 #: ctk/ctkgrid.c:1770
 #, fuzzy
-#| msgid "Homogeneous"
 msgid "Row Homogeneous"
 msgstr "均等に配置する"
 
 #: ctk/ctkgrid.c:1771
 #, fuzzy
-#| msgid "If TRUE, the table cells are all the same width/height"
 msgid "If TRUE, the rows are all the same height"
 msgstr "テーブルの中のセルをすべて同じ幅/高さにするかどうか"
 
 #: ctk/ctkgrid.c:1777
 #, fuzzy
-#| msgid "Homogeneous"
 msgid "Column Homogeneous"
 msgstr "均等に配置する"
 
 #: ctk/ctkgrid.c:1778
 #, fuzzy
-#| msgid "If TRUE, the table cells are all the same width/height"
 msgid "If TRUE, the columns are all the same width"
 msgstr "テーブルの中のセルをすべて同じ幅/高さにするかどうか"
 
@@ -4545,7 +4178,6 @@ msgstr ""
 
 #: ctk/ctkgrid.c:1803
 #, fuzzy
-#| msgid "The row number to attach the top of a child widget to"
 msgid "The row number to attach the top side of a child widget to"
 msgstr "子ウィジェットの上側にアタッチする行番号"
 
@@ -4555,7 +4187,6 @@ msgstr "幅"
 
 #: ctk/ctkgrid.c:1810
 #, fuzzy
-#| msgid "The number of columns in the table"
 msgid "The number of columns that a child spans"
 msgstr "テーブルの中にある列の数です"
 
@@ -4565,51 +4196,44 @@ msgstr "高さ"
 
 #: ctk/ctkgrid.c:1817
 #, fuzzy
-#| msgid "The number of rows in the table"
 msgid "The number of rows that a child spans"
 msgstr "テーブルの中にある行の数です"
 
 #: ctk/ctkheaderbar.c:2028
 #, fuzzy
-#| msgid "The title of this tray icon"
 msgid "The title to display"
 msgstr "このトレイアイコンのタイトル"
 
 #: ctk/ctkheaderbar.c:2035
 #, fuzzy
-#| msgid "Icon set to display"
 msgid "The subtitle to display"
 msgstr "表示するアイコンセット"
 
 #: ctk/ctkheaderbar.c:2041
 #, fuzzy
-#| msgid "Custom tab label"
 msgid "Custom Title"
 msgstr "カスタムタブのラベル"
 
 #: ctk/ctkheaderbar.c:2042
 #, fuzzy
-#| msgid "Icon set to display"
 msgid "Custom title widget to display"
 msgstr "表示するアイコンセット"
 
 #: ctk/ctkheaderbar.c:2066
 #, fuzzy
-#| msgid "Show file operations"
 msgid "Show decorations"
 msgstr "ファイル操作の表示"
 
 #: ctk/ctkheaderbar.c:2067
 #, fuzzy
-#| msgid "Whether to show a sort indicator"
 msgid "Whether to show window decorations"
 msgstr "ソート表示器を描画するかどうか"
 
-#: ctk/ctkheaderbar.c:2085 ctk/ctksettings.c:1617
+#: ctk/ctkheaderbar.c:2085 ctk/ctksettings.c:1627
 msgid "Decoration Layout"
 msgstr ""
 
-#: ctk/ctkheaderbar.c:2086 ctk/ctksettings.c:1618
+#: ctk/ctkheaderbar.c:2086 ctk/ctksettings.c:1628
 msgid "The layout for window decorations"
 msgstr ""
 
@@ -4619,13 +4243,11 @@ msgstr ""
 
 #: ctk/ctkheaderbar.c:2100
 #, fuzzy
-#| msgid "Whether the icon-size property has been set"
 msgid "Whether the decoration-layout property has been set"
 msgstr "プロパティ icon-size をセットするかどうか"
 
 #: ctk/ctkheaderbar.c:2114
 #, fuzzy
-#| msgid "Page title"
 msgid "Has Subtitle"
 msgstr "ページのタイトル"
 
@@ -4754,74 +4376,113 @@ msgstr "選択ボックスのαブレンド"
 msgid "Opacity of the selection box"
 msgstr "選択ボックスの透明度です"
 
+#: ctk/ctkimage.c:256 ctk/ctkstatusicon.c:226
+msgid "Pixbuf"
+msgstr "Pixbuf"
+
+#: ctk/ctkimage.c:257 ctk/ctkstatusicon.c:227
+msgid "A GdkPixbuf to display"
+msgstr "表示する GdkPixbuf です"
+
 #: ctk/ctkimage.c:263
 msgid "Surface"
 msgstr ""
 
 #: ctk/ctkimage.c:264
 #, fuzzy
-#| msgid "Icon set to display"
 msgid "A cairo_surface_t to display"
 msgstr "表示するアイコンセット"
 
-#: ctk/ctkimage.c:295
+#: ctk/ctkimage.c:270 ctk/ctkrecentmanager.c:288 ctk/ctkstatusicon.c:234
+msgid "Filename"
+msgstr "ファイル名"
+
+#: ctk/ctkimage.c:271 ctk/ctkstatusicon.c:235
+msgid "Filename to load and display"
+msgstr "読み込んで表示するファイル名"
+
+#: ctk/ctkimage.c:281 ctk/ctkstatusicon.c:246
+msgid "Stock ID for a stock image to display"
+msgstr "表示するストックアイテムのストック ID です"
+
+#: ctk/ctkimage.c:293
 msgid "Icon set"
 msgstr "アイコンセット"
 
-#: ctk/ctkimage.c:296
+#: ctk/ctkimage.c:294
 msgid "Icon set to display"
 msgstr "表示するアイコンセット"
 
-#: ctk/ctkimage.c:303 ctk/ctkscalebutton.c:208 ctk/ctktoolbar.c:564
+#: ctk/ctkimage.c:301 ctk/ctkscalebutton.c:208 ctk/ctktoolbar.c:564
 #: ctk/ctktoolpalette.c:965
 msgid "Icon size"
 msgstr "アイコンのサイズ"
 
-#: ctk/ctkimage.c:304
+#: ctk/ctkimage.c:302
 msgid "Symbolic size to use for stock icon, icon set or named icon"
 msgstr ""
 "ストックアイコンやアイコンセット、名前付きアイコンに適用するシンボリックサイ"
 "ズ"
 
-#: ctk/ctkimage.c:320
+#: ctk/ctkimage.c:318
 msgid "Pixel size"
 msgstr "ピクセルサイズ"
 
-#: ctk/ctkimage.c:321
+#: ctk/ctkimage.c:319
 msgid "Pixel size to use for named icon"
 msgstr "名前付きアイコンに適用するピクセルのサイズ"
 
-#: ctk/ctkimage.c:328
+#: ctk/ctkimage.c:326
 msgid "Animation"
 msgstr "アニメーション"
 
-#: ctk/ctkimage.c:329
+#: ctk/ctkimage.c:327
 msgid "GdkPixbufAnimation to display"
 msgstr "表示する GdkPixbufAnimation"
 
-#: ctk/ctkimage.c:373
+#: ctk/ctkimage.c:371
 #, fuzzy
-#| msgid "Input source"
 msgid "Resource"
 msgstr "入力の種類"
 
-#: ctk/ctkimage.c:374
+#: ctk/ctkimage.c:372
 #, fuzzy
-#| msgid "The GIcon being displayed"
 msgid "The resource path being displayed"
 msgstr "表示しているアイコンの種類です"
 
-#: ctk/ctkimage.c:398
+#: ctk/ctkimage.c:378 ctk/ctkstatusicon.c:277
+msgid "Storage type"
+msgstr "保存する種類"
+
+#: ctk/ctkimage.c:379 ctk/ctkstatusicon.c:278
+msgid "The representation being used for image data"
+msgstr "画像データに使用する表現"
+
+#: ctk/ctkimage.c:396
 #, fuzzy
-#| msgid "Use alpha"
 msgid "Use Fallback"
 msgstr "アルファ値を使う"
 
-#: ctk/ctkimage.c:399
+#: ctk/ctkimage.c:397
 #, fuzzy
-#| msgid "Whether the status icon is visible"
 msgid "Whether to use icon names fallback"
 msgstr "ステータスアイコンを表示するかどうか"
+
+#: ctk/ctkimagemenuitem.c:222
+msgid "Child widget to appear next to the menu text"
+msgstr "メニューのテキストの隣に表示する子ウィジェット"
+
+#: ctk/ctkimagemenuitem.c:237
+msgid "Whether to use the label text to create a stock menu item"
+msgstr "ストック形式のメニュー項目を生成する際にラベルを使用するかどうか"
+
+#: ctk/ctkimagemenuitem.c:269 ctk/ctkmenu.c:655
+msgid "Accel Group"
+msgstr "アクセラレータのグループ"
+
+#: ctk/ctkimagemenuitem.c:270
+msgid "The Accel Group to use for stock accelerator keys"
+msgstr "アクセラレータキーが所属するグループを表すオブジェクトです"
 
 #: ctk/ctkinfobar.c:450 ctk/ctkmessagedialog.c:189
 msgid "Message Type"
@@ -4833,13 +4494,11 @@ msgstr "メッセージの種類です"
 
 #: ctk/ctkinfobar.c:465 ctk/ctksearchbar.c:425
 #, fuzzy
-#| msgid "Cancel Button"
 msgid "Show Close Button"
 msgstr "キャンセルボタン"
 
 #: ctk/ctkinfobar.c:466
 #, fuzzy
-#| msgid "Whether the window frame should have a close button"
 msgid "Whether to include a standard close button"
 msgstr "ウィンドウのフレームに閉じるボタンを付けるかどうか"
 
@@ -4863,6 +4522,11 @@ msgstr "領域中の要素間の間隔"
 msgid "Width of border around the action area"
 msgstr "アクションエリアのまわりの枠の幅"
 
+#: ctk/ctkinvisible.c:98 ctk/ctkmountoperation.c:183 ctk/ctkstatusicon.c:296
+#: ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:897
+msgid "Screen"
+msgstr "画面"
+
 #: ctk/ctkinvisible.c:99 ctk/ctkwindow.c:898
 msgid "The screen where this window will be displayed"
 msgstr "このウィンドウを表示する画面"
@@ -4877,10 +4541,6 @@ msgstr "行端の揃え方"
 
 #: ctk/ctklabel.c:834
 #, fuzzy
-#| msgid ""
-#| "The alignment of the lines in the text of the label relative to each "
-#| "other. This does NOT affect the alignment of the label within its "
-#| "allocation. See CtkMisc::xalign for that"
 msgid ""
 "The alignment of the lines in the text of the label relative to each other. "
 "This does NOT affect the alignment of the label within its allocation. See "
@@ -4973,7 +4633,6 @@ msgstr "訪問したリンクを記録していくかどうか"
 
 #: ctk/ctklabel.c:1073
 #, fuzzy
-#| msgid "Number of columns"
 msgid "Number of lines"
 msgstr "X-方向に表示するアイテムの数"
 
@@ -4999,19 +4658,16 @@ msgstr ""
 
 #: ctk/ctklevelbar.c:1045
 #, fuzzy
-#| msgid "Minimum possible value for X"
 msgid "Minimum value level for the bar"
 msgstr "X 座標の最小値"
 
 #: ctk/ctklevelbar.c:1046
 #, fuzzy
-#| msgid "The number of decimal places that are displayed in the value"
 msgid "Minimum value level that can be displayed by the bar"
 msgstr "目盛りを表記する 10 進数値"
 
 #: ctk/ctklevelbar.c:1060
 #, fuzzy
-#| msgid "Maximum possible value for Y"
 msgid "Maximum value level for the bar"
 msgstr "Y 座標の最大値"
 
@@ -5021,43 +4677,36 @@ msgstr ""
 
 #: ctk/ctklevelbar.c:1081
 #, fuzzy
-#| msgid "The modifier mask of the accelerator"
 msgid "The mode of the value indicator"
 msgstr "アクセラレータに対する修飾キーのマスクです"
 
 #: ctk/ctklevelbar.c:1082
 #, fuzzy
-#| msgid "The name of the themed icon displayed on the item"
 msgid "The mode of the value indicator displayed by the bar"
 msgstr "項目に表示されるテーマのアイコン名"
 
 #: ctk/ctklevelbar.c:1098
 #, fuzzy
-#| msgid "Invert the direction in which the progress bar grows"
 msgid "Invert the direction in which the level bar grows"
 msgstr "プログレスバーが延びていく方向を反転する"
 
 #: ctk/ctklevelbar.c:1115
 #, fuzzy
-#| msgid "Minimum height of buttons inside the box"
 msgid "Minimum height for filling blocks"
 msgstr "ボックス中のボタンの最小の高さ"
 
 #: ctk/ctklevelbar.c:1116
 #, fuzzy
-#| msgid "Minimum height of buttons inside the box"
 msgid "Minimum height for blocks that fill the bar"
 msgstr "ボックス中のボタンの最小の高さ"
 
 #: ctk/ctklevelbar.c:1132
 #, fuzzy
-#| msgid "Minimum width of buttons inside the box"
 msgid "Minimum width for filling blocks"
 msgstr "ボックス中のボタンの最小幅"
 
 #: ctk/ctklevelbar.c:1133
 #, fuzzy
-#| msgid "Minimum width of buttons inside the box"
 msgid "Minimum width for blocks that fill the bar"
 msgstr "ボックス中のボタンの最小幅"
 
@@ -5079,13 +4728,11 @@ msgstr "このリンクが指している URI を既に訪問したかどうか"
 
 #: ctk/ctklistbox.c:3918
 #, fuzzy
-#| msgid "Whether the header can be clicked"
 msgid "Whether this row can be activated"
 msgstr "ヘッダーがクリック可能かどうか"
 
 #: ctk/ctklistbox.c:3932
 #, fuzzy
-#| msgid "Whether the header can be clicked"
 msgid "Whether this row can be selected"
 msgstr "ヘッダーがクリック可能かどうか"
 
@@ -5099,13 +4746,11 @@ msgstr ""
 
 #: ctk/ctklockbutton.c:273
 #, fuzzy
-#| msgid "Text"
 msgid "Lock Text"
 msgstr "ラベル"
 
 #: ctk/ctklockbutton.c:274
 #, fuzzy
-#| msgid "The text to display in order to demonstrate the selected font"
 msgid "The text to display when prompting the user to lock"
 msgstr "選択したフォントのプレビューで使用する文字列です"
 
@@ -5115,13 +4760,11 @@ msgstr ""
 
 #: ctk/ctklockbutton.c:283
 #, fuzzy
-#| msgid "The text to display in order to demonstrate the selected font"
 msgid "The text to display when prompting the user to unlock"
 msgstr "選択したフォントのプレビューで使用する文字列です"
 
 #: ctk/ctklockbutton.c:291
 #, fuzzy
-#| msgid "Tooltip"
 msgid "Lock Tooltip"
 msgstr "ツールチップ"
 
@@ -5131,7 +4774,6 @@ msgstr ""
 
 #: ctk/ctklockbutton.c:300
 #, fuzzy
-#| msgid "Enable Tooltips"
 msgid "Unlock Tooltip"
 msgstr "ツールチップを有効にするかどうか"
 
@@ -5154,19 +4796,16 @@ msgstr ""
 
 #: ctk/ctkmagnifier.c:296
 #, fuzzy
-#| msgid "Icon widget"
 msgid "Inspected widget"
 msgstr "アイコンウィジェット"
 
 #: ctk/ctkmagnifier.c:302 ctk/ctkmagnifier.c:303
 #, fuzzy
-#| msgid "Justification"
 msgid "magnification"
 msgstr "行端の揃え方"
 
 #: ctk/ctkmagnifier.c:309 ctk/ctkmagnifier.c:310
 #, fuzzy
-#| msgid "Resize"
 msgid "resize"
 msgstr "サイズ変更"
 
@@ -5200,31 +4839,26 @@ msgstr "メニューバーの影とメニューアイテムの間の境界線の
 
 #: ctk/ctkmenubutton.c:486
 #, fuzzy
-#| msgid "Popup shown"
 msgid "Popup"
 msgstr "ポップアップの表示"
 
 #: ctk/ctkmenubutton.c:487
 #, fuzzy
-#| msgid "The dropdown menu"
 msgid "The dropdown menu."
 msgstr "ドロップダウン式のメニューです"
 
 #: ctk/ctkmenubutton.c:505
 #, fuzzy
-#| msgid "TreeView Model"
 msgid "Menu model"
 msgstr "ツリービューのモデル"
 
 #: ctk/ctkmenubutton.c:506
 #, fuzzy
-#| msgid "The model for the icon view"
 msgid "The model from which the popup is made."
 msgstr "アイコン表示に使用するモデルです"
 
 #: ctk/ctkmenubutton.c:519
 #, fuzzy
-#| msgid "Align set"
 msgid "Align with"
 msgstr "配置タグ"
 
@@ -5235,13 +4869,11 @@ msgstr ""
 #: ctk/ctkmenubutton.c:534 ctk/ctkshortcutsshortcut.c:645
 #: ctk/ctkstylecontext.c:243
 #, fuzzy
-#| msgid "Fraction"
 msgid "Direction"
 msgstr "端数"
 
 #: ctk/ctkmenubutton.c:535
 #, fuzzy
-#| msgid "The direction the arrow should point"
 msgid "The direction the arrow should point."
 msgstr "矢印が指す向きです"
 
@@ -5259,7 +4891,6 @@ msgstr ""
 
 #: ctk/ctkmenubutton.c:565
 #, fuzzy
-#| msgid "The value"
 msgid "The popover"
 msgstr "値"
 
@@ -5336,7 +4967,6 @@ msgstr ""
 
 #: ctk/ctkmenu.c:813
 #, fuzzy
-#| msgid "Horizontal Offset"
 msgid "Rect anchor horizontal offset"
 msgstr "水平オフセット"
 
@@ -5346,13 +4976,11 @@ msgstr ""
 
 #: ctk/ctkmenu.c:839
 #, fuzzy
-#| msgid "Vertical Offset"
 msgid "Rect anchor vertical offset"
 msgstr "垂直オフセット"
 
 #: ctk/ctkmenu.c:864
 #, fuzzy
-#| msgid "Type hint"
 msgid "Menu type hint"
 msgstr "ヒントの入力"
 
@@ -5495,13 +5123,11 @@ msgstr "ドロップダウン式のメニューです"
 
 #: ctk/ctkmessagedialog.c:174
 #, fuzzy
-#| msgid "Image/label border"
 msgid "label border"
 msgstr "画像/ラベルの境界線"
 
 #: ctk/ctkmessagedialog.c:175
 #, fuzzy
-#| msgid "Width of border around the label and image in the message dialog"
 msgid "Width of border around the label in the message dialog"
 msgstr "メッセージダイアログで画像とラベルの間に挿入する境界線の幅です"
 
@@ -5555,7 +5181,6 @@ msgstr "メッセージエリア"
 
 #: ctk/ctkmessagedialog.c:295
 #, fuzzy
-#| msgid "CtkVBox that holds the dialog's primary and secondary labels"
 msgid "CtkBox that holds the dialog's primary and secondary labels"
 msgstr "ダイアログのプライマリとセカンダリのラベルを保持する CtkVBox"
 
@@ -5565,25 +5190,21 @@ msgstr ""
 
 #: ctk/ctkmodelbutton.c:1151
 #, fuzzy
-#| msgid "The toggle state of the button"
 msgid "The role of this button"
 msgstr "トグルボタンの状態"
 
 #: ctk/ctkmodelbutton.c:1167
 #, fuzzy
-#| msgid "The icon size"
 msgid "The icon"
 msgstr "アイコンの大きさです"
 
 #: ctk/ctkmodelbutton.c:1181
 #, fuzzy
-#| msgid "Show text"
 msgid "The text"
 msgstr "文字列の表示"
 
 #: ctk/ctkmodelbutton.c:1197
 #, fuzzy
-#| msgid "The text of the label includes XML markup. See pango_parse_markup()"
 msgid "The text of the button includes XML markup. See pango_parse_markup()"
 msgstr ""
 "XML マークアップを含むラベルのテキストを指定します (pango_parse_markup() 参照"
@@ -5591,19 +5212,16 @@ msgstr ""
 
 #: ctk/ctkmodelbutton.c:1226
 #, fuzzy
-#| msgid "Menu label"
 msgid "Menu name"
 msgstr "メニューのラベル"
 
 #: ctk/ctkmodelbutton.c:1227
 #, fuzzy
-#| msgid "The name of the selected font"
 msgid "The name of the menu to open"
 msgstr "選択したフォントの名前"
 
 #: ctk/ctkmodelbutton.c:1243
 #, fuzzy
-#| msgid "Whether the mark has left gravity"
 msgid "Whether the menu is a parent"
 msgstr ""
 "マークが左グラビティを持つかどうかです (左向きに移動することを表します)"
@@ -5614,19 +5232,16 @@ msgstr ""
 
 #: ctk/ctkmodelbutton.c:1258
 #, fuzzy
-#| msgid "Whether to wrap the license text."
 msgid "Whether to center the contents"
 msgstr "ライセンスの条文を折り返すかどうか。"
 
 #: ctk/ctkmodelbutton.c:1273
 #, fuzzy
-#| msgid "Icon"
 msgid "Iconic"
 msgstr "アイコン"
 
 #: ctk/ctkmodelbutton.c:1274
 #, fuzzy
-#| msgid "Whether to wrap the license text."
 msgid "Whether to prefer the icon over text"
 msgstr "ライセンスの条文を折り返すかどうか。"
 
@@ -5652,25 +5267,20 @@ msgstr "このウィンドウを表示するスクリーンです"
 
 #: ctk/ctknativedialog.c:214
 #, fuzzy
-#| msgid "Dialog"
 msgid "Dialog Title"
 msgstr "ダイアログ"
 
 #: ctk/ctknativedialog.c:215
 #, fuzzy
-#| msgid "The title of the file chooser dialog."
 msgid "The title of the file chooser dialog"
 msgstr "フォント選択ダイアログのタイトル"
 
-#: ctk/ctknativedialog.c:228 ctk/ctkpopover.c:1773 ctk/ctkwindow.c:789
+#: ctk/ctknativedialog.c:228 ctk/ctkpopover.c:1782 ctk/ctkwindow.c:789
 msgid "Modal"
 msgstr "モーダル"
 
 #: ctk/ctknativedialog.c:229
 #, fuzzy
-#| msgid ""
-#| "If TRUE, the window is modal (other windows are not usable while this one "
-#| "is up)"
 msgid ""
 "If TRUE, the dialog is modal (other windows are not usable while this one is "
 "up)"
@@ -5680,7 +5290,6 @@ msgstr ""
 
 #: ctk/ctknativedialog.c:243
 #, fuzzy
-#| msgid "Whether the widget is visible"
 msgid "Whether the dialog is currently visible"
 msgstr "ウィジェットが表示可能かどうか"
 
@@ -5870,7 +5479,6 @@ msgstr ""
 
 #: ctk/ctknotebook.c:1029
 #, fuzzy
-#| msgid "Tab overlap"
 msgid "Tab gap"
 msgstr "タブのオーバーラップ"
 
@@ -5882,29 +5490,26 @@ msgstr ""
 msgid "The orientation of the orientable"
 msgstr "指定できる向きです"
 
-#: ctk/ctkoverlay.c:783
+#: ctk/ctkoverlay.c:790
 msgid "Pass Through"
 msgstr ""
 
-#: ctk/ctkoverlay.c:783
+#: ctk/ctkoverlay.c:790
 msgid "Pass through input, does not affect main child"
 msgstr ""
 
-#: ctk/ctkoverlay.c:797
+#: ctk/ctkoverlay.c:804
 #, fuzzy
-#| msgid "Indent"
 msgid "Index"
 msgstr "インデント"
 
-#: ctk/ctkoverlay.c:798
+#: ctk/ctkoverlay.c:805
 #, fuzzy
-#| msgid "The index of the child in the parent"
 msgid "The index of the overlay in the parent, -1 for the main child"
 msgstr "親ウィジェットの中にある子ウィジェットのインデックスです"
 
 #: ctk/ctkpadcontroller.c:373
 #, fuzzy
-#| msgid "Action Group"
 msgid "Action group"
 msgstr "アクショングループ"
 
@@ -5914,7 +5519,6 @@ msgstr ""
 
 #: ctk/ctkpadcontroller.c:379
 #, fuzzy
-#| msgid "Associated device"
 msgid "Pad device"
 msgstr "関連したデバイス"
 
@@ -5955,13 +5559,11 @@ msgstr "\"位置\" プロパティの最大値"
 
 #: ctk/ctkpaned.c:427
 #, fuzzy
-#| msgid "Width of handle"
 msgid "Wide Handle"
 msgstr "取っ手の幅"
 
 #: ctk/ctkpaned.c:428
 #, fuzzy
-#| msgid "Whether the window frame should have a close button"
 msgid "Whether the paned should have a prominent handle"
 msgstr "ウィンドウのフレームに閉じるボタンを付けるかどうか"
 
@@ -5991,21 +5593,19 @@ msgstr "TRUE にすると、子は要求されたサイズよりも小さくす�
 
 #: ctk/ctkplacessidebar.c:4799
 #, fuzzy
-#| msgid "Location"
 msgid "Location to Select"
 msgstr "場所"
 
 #: ctk/ctkplacessidebar.c:4800
 #, fuzzy
-#| msgid "The location of the printer"
 msgid "The location to highlight in the sidebar"
 msgstr "プリンターが存在する場所です"
 
-#: ctk/ctkplacessidebar.c:4805 ctk/ctkplacesview.c:2343
+#: ctk/ctkplacessidebar.c:4805 ctk/ctkplacesview.c:2369
 msgid "Open Flags"
 msgstr ""
 
-#: ctk/ctkplacessidebar.c:4806 ctk/ctkplacesview.c:2344
+#: ctk/ctkplacessidebar.c:4806 ctk/ctkplacesview.c:2370
 msgid ""
 "Modes in which the calling application can open locations selected in the "
 "sidebar"
@@ -6013,7 +5613,6 @@ msgstr ""
 
 #: ctk/ctkplacessidebar.c:4812
 #, fuzzy
-#| msgid "Show Details"
 msgid "Show recent files"
 msgstr "詳細を表示するかどうか"
 
@@ -6023,13 +5622,11 @@ msgstr ""
 
 #: ctk/ctkplacessidebar.c:4818
 #, fuzzy
-#| msgid "Show text"
 msgid "Show 'Desktop'"
 msgstr "文字列の表示"
 
 #: ctk/ctkplacessidebar.c:4819
 #, fuzzy
-#| msgid "Whether the selection should follow the pointer"
 msgid "Whether the sidebar includes a builtin shortcut to the Desktop folder"
 msgstr "セレクションをマウスポインターに追従させるかどうか"
 
@@ -6045,44 +5642,37 @@ msgstr ""
 
 #: ctk/ctkplacessidebar.c:4830
 #, fuzzy
-#| msgid "Show file operations"
 msgid "Show 'Enter Location'"
 msgstr "ファイル操作の表示"
 
 #: ctk/ctkplacessidebar.c:4831
 #, fuzzy
-#| msgid "Whether the widget is the default widget"
 msgid ""
 "Whether the sidebar includes a builtin shortcut to manually enter a location"
 msgstr "ウィジェットはデフォルトのウィジェットかどうか"
 
-#: ctk/ctkplacessidebar.c:4837 ctk/ctkplacesview.c:2323
+#: ctk/ctkplacessidebar.c:4837 ctk/ctkplacesview.c:2349
 #, fuzzy
-#| msgid "Whether the secondary icon is activatable"
 msgid "Whether the sidebar only includes local files"
 msgstr "二番目のアイコンを有効にできるかどうか"
 
 #: ctk/ctkplacessidebar.c:4842
 #, fuzzy
-#| msgid "Show Tabs"
 msgid "Show 'Trash'"
 msgstr "タブの表示"
 
 #: ctk/ctkplacessidebar.c:4843
 #, fuzzy
-#| msgid "Whether the widget has the input focus"
 msgid "Whether the sidebar includes a builtin shortcut to the Trash location"
 msgstr "ウィジェットは入力のフォーカスをもてるかどうか"
 
 #: ctk/ctkplacessidebar.c:4848
 #, fuzzy
-#| msgid "Show file operations"
 msgid "Show 'Other locations'"
 msgstr "ファイル操作の表示"
 
 #: ctk/ctkplacessidebar.c:4849
 #, fuzzy
-#| msgid "Whether the widget has the input focus"
 msgid "Whether the sidebar includes an item to show external locations"
 msgstr "ウィジェットは入力のフォーカスをもてるかどうか"
 
@@ -6092,7 +5682,6 @@ msgstr ""
 
 #: ctk/ctkplacessidebar.c:4855
 #, fuzzy
-#| msgid "Whether the hidden files and folders should be displayed"
 msgid "Whether the sidebar includes an item to show starred files"
 msgstr "隠しファイルやフォルダーを表示するかどうか"
 
@@ -6100,61 +5689,52 @@ msgstr "隠しファイルやフォルダーを表示するかどうか"
 msgid "Whether to emit ::populate-popup for popups that are not menus"
 msgstr ""
 
-#: ctk/ctkplacesview.c:2329
+#: ctk/ctkplacesview.c:2355
 #, fuzzy
-#| msgid "Show Heading"
 msgid "Loading"
 msgstr "年/月を表示する"
 
-#: ctk/ctkplacesview.c:2330
+#: ctk/ctkplacesview.c:2356
 #, fuzzy
-#| msgid "Whether the label widget should fill all available horizontal space"
 msgid "Whether the view is loading locations"
 msgstr "ラベルが水平方向の利用可能な領域すべてを満たすよう拡がるかどうか"
 
-#: ctk/ctkplacesview.c:2336
+#: ctk/ctkplacesview.c:2362
 msgid "Fetching networks"
 msgstr ""
 
-#: ctk/ctkplacesview.c:2337
+#: ctk/ctkplacesview.c:2363
 #, fuzzy
-#| msgid "Whether the widget is double buffered"
 msgid "Whether the view is fetching networks"
 msgstr "ウィジェットがダブルバッファーかどうか"
 
 #: ctk/ctkplacesviewrow.c:329
 #, fuzzy
-#| msgid "Icon for this window"
 msgid "Icon of the row"
 msgstr "このウィンドウのアイコン"
 
 #: ctk/ctkplacesviewrow.c:330
 #, fuzzy
-#| msgid "The current page in the document"
 msgid "The icon representing the volume"
 msgstr "現在のページ"
 
 #: ctk/ctkplacesviewrow.c:336
 #, fuzzy
-#| msgid "Name of theme RC file to load"
 msgid "Name of the volume"
 msgstr "読み込むテーマのリソースファイルの名前です"
 
 #: ctk/ctkplacesviewrow.c:337
 #, fuzzy
-#| msgid "The name of the widget"
 msgid "The name of the volume"
 msgstr "ウィジェットの名前を指定します"
 
 #: ctk/ctkplacesviewrow.c:343
 #, fuzzy
-#| msgid "Current width of the column"
 msgid "Path of the volume"
 msgstr "列の現在の幅"
 
 #: ctk/ctkplacesviewrow.c:344
 #, fuzzy
-#| msgid "The width of the layout"
 msgid "The path of the volume"
 msgstr "レイアウトの幅"
 
@@ -6164,19 +5744,16 @@ msgstr ""
 
 #: ctk/ctkplacesviewrow.c:351
 #, fuzzy
-#| msgid "Amount of space used up by arrow"
 msgid "The volume represented by the row"
 msgstr "矢印が占有する大きさです"
 
 #: ctk/ctkplacesviewrow.c:357
 #, fuzzy
-#| msgid "Amount of space used up by arrow"
 msgid "Mount represented by the row"
 msgstr "矢印が占有する大きさです"
 
 #: ctk/ctkplacesviewrow.c:358
 #, fuzzy
-#| msgid "Amount of space used up by arrow"
 msgid "The mount point represented by the row, if any"
 msgstr "矢印が占有する大きさです"
 
@@ -6190,93 +5767,85 @@ msgstr ""
 
 #: ctk/ctkplacesviewrow.c:371 ctk/ctkplacesviewrow.c:372
 #, fuzzy
-#| msgid "Whether the dialog supports selection"
 msgid "Whether the row represents a network location"
 msgstr "ダイアログが選択をサポートするかどうか"
 
-#: ctk/ctkplug.c:197
+#: ctk/ctkplug.c:198 ctk/ctkstatusicon.c:320
+msgid "Embedded"
+msgstr "埋め込み"
+
+#: ctk/ctkplug.c:199
 msgid "Whether the plug is embedded"
 msgstr "プラグを埋め込むかどうか"
 
-#: ctk/ctkplug.c:211
+#: ctk/ctkplug.c:213
 msgid "Socket Window"
 msgstr "ソケットのウィンドウ"
 
-#: ctk/ctkplug.c:212
+#: ctk/ctkplug.c:214
 msgid "The window of the socket the plug is embedded in"
 msgstr "プラグを埋め込むソケットのウィンドウの種類です"
 
-#: ctk/ctkpopover.c:1730
+#: ctk/ctkpopover.c:1739
 #, fuzzy
-#| msgid "Related Action"
 msgid "Relative to"
 msgstr "関連するアクション"
 
-#: ctk/ctkpopover.c:1731
+#: ctk/ctkpopover.c:1740
 #, fuzzy
-#| msgid "The widget the menu is attached to"
 msgid "Widget the bubble window points to"
 msgstr "メニューが取り付けられている先のウィジェットです"
 
-#: ctk/ctkpopover.c:1744
+#: ctk/ctkpopover.c:1753
 #, fuzzy
-#| msgid "Font scaling factor"
 msgid "Pointing to"
 msgstr "フォントのスケール (率)"
 
-#: ctk/ctkpopover.c:1745
+#: ctk/ctkpopover.c:1754
 msgid "Rectangle the bubble window points to"
 msgstr ""
 
-#: ctk/ctkpopover.c:1759
+#: ctk/ctkpopover.c:1768
 #, fuzzy
-#| msgid "Position of mark on the ruler"
 msgid "Position to place the bubble window"
 msgstr "ルーラでマークを付ける位置"
 
-#: ctk/ctkpopover.c:1774
+#: ctk/ctkpopover.c:1783
 #, fuzzy
-#| msgid "Whether the spinner is active"
 msgid "Whether the popover is modal"
 msgstr "スピナーを有効にするかどうか"
 
-#: ctk/ctkpopover.c:1791
+#: ctk/ctkpopover.c:1800
 #, fuzzy
-#| msgid "Whether the action is enabled."
 msgid "Transitions enabled"
 msgstr "アクションが有効かどうか。"
 
-#: ctk/ctkpopover.c:1792
+#: ctk/ctkpopover.c:1801
 #, fuzzy
-#| msgid "Whether the action is enabled."
 msgid "Whether show/hide transitions are enabled or not"
 msgstr "アクションが有効かどうか。"
 
-#: ctk/ctkpopover.c:1805
+#: ctk/ctkpopover.c:1814
 msgid "Constraint"
 msgstr ""
 
-#: ctk/ctkpopover.c:1806
+#: ctk/ctkpopover.c:1815
 #, fuzzy
-#| msgid "The CtkAdjustment for the vertical position"
 msgid "Constraint for the popover position"
 msgstr "垂直方向の位置に対する CtkAdjustment です"
 
 #: ctk/ctkpopovermenu.c:359
 #, fuzzy
-#| msgid "Visible"
 msgid "Visible submenu"
 msgstr "可視性"
 
 #: ctk/ctkpopovermenu.c:360
 #, fuzzy
-#| msgid "The name of the selected font"
 msgid "The name of the visible submenu"
 msgstr "選択したフォントの名前"
 
 #: ctk/ctkpopovermenu.c:377
 #, fuzzy
-#| msgid "The name of the widget"
 msgid "The name of the submenu"
 msgstr "ウィジェットの名前を指定します"
 
@@ -6362,13 +5931,11 @@ msgstr "このプリンターが新しいジョブを受け取っているかど
 
 #: ctk/ctkprinteroption.c:103
 #, fuzzy
-#| msgid "Minimum Value"
 msgid "Option Value"
 msgstr "最小値"
 
 #: ctk/ctkprinteroption.c:104
 #, fuzzy
-#| msgid "Name of the printer"
 msgid "Value of the option"
 msgstr "プリンターの名前"
 
@@ -6672,6 +6239,37 @@ msgstr "縦向きのプログレスバーの最小高"
 msgid "The minimum vertical height of the progress bar"
 msgstr "縦向きのプログレスバーの高さの最小値です"
 
+#: ctk/ctkradioaction.c:116
+msgid "The value"
+msgstr "値"
+
+#: ctk/ctkradioaction.c:117
+msgid ""
+"The value returned by ctk_radio_action_get_current_value() when this action "
+"is the current action of its group."
+msgstr ""
+"このアクションがそのグループの現在のアクションのときに、"
+"ctk_radio_action_get_current_value() によって返される値です。"
+
+#: ctk/ctkradioaction.c:133 ctk/ctkradiobutton.c:184 ctk/ctkradiomenuitem.c:424
+#: ctk/ctkradiotoolbutton.c:83
+msgid "Group"
+msgstr "グループ"
+
+#: ctk/ctkradioaction.c:134
+msgid "The radio action whose group this action belongs to."
+msgstr "このアクションが属するグループとなるラジオアクションです"
+
+#: ctk/ctkradioaction.c:149
+msgid "The current value"
+msgstr "現在の値"
+
+#: ctk/ctkradioaction.c:150
+msgid ""
+"The value property of the currently active member of the group to which this "
+"action belongs."
+msgstr "このアクションが属すグループで、現在アクティブなメンバーの値です"
+
 #: ctk/ctkradiobutton.c:185
 msgid "The radio button whose group this widget belongs to."
 msgstr "このウィジェットが属するグループとなるラジオボタンです"
@@ -6738,13 +6336,11 @@ msgstr "フィルレベルです"
 
 #: ctk/ctkrange.c:520
 #, fuzzy
-#| msgid "Digits"
 msgid "Round Digits"
 msgstr "桁数"
 
 #: ctk/ctkrange.c:521
 #, fuzzy
-#| msgid "The number of pages in the document."
 msgid "The number of digits to round the value to."
 msgstr "ドキュメントのページ数です"
 
@@ -6818,6 +6414,14 @@ msgstr "矢印の大きさ"
 msgid "Arrow scaling with regard to scroll button size"
 msgstr "矢印の大きさをスクロールボタンの大きさに合わせるかどうか"
 
+#: ctk/ctkrecentaction.c:666 ctk/ctkrecentchoosermenu.c:239
+msgid "Show Numbers"
+msgstr "番号の表示"
+
+#: ctk/ctkrecentaction.c:667 ctk/ctkrecentchoosermenu.c:240
+msgid "Whether the items should be displayed with a number"
+msgstr "番号を付けてアイテムを表示するかどうか"
+
 #: ctk/ctkrecentchooser.c:130
 msgid "Recent Manager"
 msgstr "現在のマネージャー"
@@ -6890,29 +6494,26 @@ msgstr "アイテムを並べ替える際に適用するルールの種類です
 msgid "The current filter for selecting which resources are displayed"
 msgstr "表示するリソースを選択する際のフィルターです"
 
-#: ctk/ctkrecentmanager.c:290
+#: ctk/ctkrecentmanager.c:289
 msgid "The full path to the file to be used to store and read the list"
 msgstr "保存したり読み込む際に指定する一覧ファイルの絶対パスです"
 
-#: ctk/ctkrecentmanager.c:305
+#: ctk/ctkrecentmanager.c:304
 msgid "The size of the recently used resources list"
 msgstr "最近使用したリソース一覧の大きさです"
 
 #: ctk/ctkrevealer.c:241 ctk/ctkstack.c:499
 #, fuzzy
-#| msgid "Curve type"
 msgid "Transition type"
 msgstr "曲線タイプ"
 
 #: ctk/ctkrevealer.c:242 ctk/ctkstack.c:499
 #, fuzzy
-#| msgid "The type of accelerators"
 msgid "The type of animation used to transition"
 msgstr "アクセラレータの種類です"
 
 #: ctk/ctkrevealer.c:249 ctk/ctkstack.c:495
 #, fuzzy
-#| msgid "Animation duration"
 msgid "Transition duration"
 msgstr "アニメーションの長さ"
 
@@ -6922,25 +6523,21 @@ msgstr ""
 
 #: ctk/ctkrevealer.c:256
 #, fuzzy
-#| msgid "Above child"
 msgid "Reveal Child"
 msgstr "子ウィジェットの上"
 
 #: ctk/ctkrevealer.c:257
 #, fuzzy
-#| msgid "Whether the expander has been opened to reveal the child widget"
 msgid "Whether the container should reveal the child"
 msgstr "子ウィジェットを表示するために展張されているかどうか"
 
 #: ctk/ctkrevealer.c:263
 #, fuzzy
-#| msgid "Child Detached"
 msgid "Child Revealed"
 msgstr "子の状態"
 
 #: ctk/ctkrevealer.c:264
 #, fuzzy
-#| msgid "Whether the child's tab should fill the allocated area"
 msgid "Whether the child is revealed and the animation target reached"
 msgstr "子のタブが確保した領域一杯に拡がるかどうか"
 
@@ -6979,13 +6576,11 @@ msgstr "次のスライダーの文字列として現在値を表示するかど
 
 #: ctk/ctkscale.c:782
 #, fuzzy
-#| msgid "Margin"
 msgid "Has Origin"
 msgstr "マージン"
 
 #: ctk/ctkscale.c:783
 #, fuzzy
-#| msgid "Whether the device has a cursor"
 msgid "Whether the scale has an origin"
 msgstr "デバイスにはカーソルがあるかどうか"
 
@@ -7035,7 +6630,6 @@ msgstr ""
 
 #: ctk/ctkscrollable.c:111
 #, fuzzy
-#| msgid "Horizontal Scrollbar Policy"
 msgid "Horizontal Scrollable Policy"
 msgstr "水平スクロールバーのポリシー"
 
@@ -7045,7 +6639,6 @@ msgstr ""
 
 #: ctk/ctkscrollable.c:127
 #, fuzzy
-#| msgid "Vertical Scrollbar Policy"
 msgid "Vertical Scrollable Policy"
 msgstr "垂直スクロールバーのポリシー"
 
@@ -7075,57 +6668,54 @@ msgid ""
 "Display a second forward arrow button on the opposite end of the scrollbar"
 msgstr "スクロールバーと反対位置の終端に二番目の前方矢印ボタンを表示する"
 
-#: ctk/ctkscrolledwindow.c:569
+#: ctk/ctkscrolledwindow.c:567
 msgid "Horizontal Adjustment"
 msgstr "水平方向の調整"
 
-#: ctk/ctkscrolledwindow.c:570
+#: ctk/ctkscrolledwindow.c:568
 msgid "The CtkAdjustment for the horizontal position"
 msgstr "水平方向の位置に対する CtkAdjustment です"
 
-#: ctk/ctkscrolledwindow.c:576
+#: ctk/ctkscrolledwindow.c:574
 msgid "Vertical Adjustment"
 msgstr "垂直方向の調整"
 
-#: ctk/ctkscrolledwindow.c:577
+#: ctk/ctkscrolledwindow.c:575
 msgid "The CtkAdjustment for the vertical position"
 msgstr "垂直方向の位置に対する CtkAdjustment です"
 
-#: ctk/ctkscrolledwindow.c:583
+#: ctk/ctkscrolledwindow.c:581
 msgid "Horizontal Scrollbar Policy"
 msgstr "水平スクロールバーのポリシー"
 
-#: ctk/ctkscrolledwindow.c:584
+#: ctk/ctkscrolledwindow.c:582
 msgid "When the horizontal scrollbar is displayed"
 msgstr "水平スクロールバーをいつ表示するか"
 
-#: ctk/ctkscrolledwindow.c:591
+#: ctk/ctkscrolledwindow.c:589
 msgid "Vertical Scrollbar Policy"
 msgstr "垂直スクロールバーのポリシー"
 
-#: ctk/ctkscrolledwindow.c:592
+#: ctk/ctkscrolledwindow.c:590
 msgid "When the vertical scrollbar is displayed"
 msgstr "垂直スクロールバーをいつ表示するかを指定します"
 
-#: ctk/ctkscrolledwindow.c:599
+#: ctk/ctkscrolledwindow.c:597
 msgid "Window Placement"
 msgstr "ウィンドウの配置"
 
-#: ctk/ctkscrolledwindow.c:600
+#: ctk/ctkscrolledwindow.c:598
 #, fuzzy
-#| msgid ""
-#| "Where the contents are located with respect to the scrollbars. This "
-#| "property only takes effect if \"window-placement-set\" is TRUE."
 msgid "Where the contents are located with respect to the scrollbars."
 msgstr ""
 "スクロールバーに追従して内容をどこに表示するかを指定します (\"window-"
 "placement-set\" が TRUE の場合にだけ効果があります)"
 
-#: ctk/ctkscrolledwindow.c:618
+#: ctk/ctkscrolledwindow.c:616
 msgid "Window Placement Set"
 msgstr "ウィンドウの配置セット"
 
-#: ctk/ctkscrolledwindow.c:619
+#: ctk/ctkscrolledwindow.c:617
 msgid ""
 "Whether \"window-placement\" should be used to determine the location of the "
 "contents with respect to the scrollbars."
@@ -7133,100 +6723,93 @@ msgstr ""
 "スクロールバーに追従して内容を配置する場所を決める際に \"window-placement\" "
 "を使用するかどうか"
 
-#: ctk/ctkscrolledwindow.c:625 ctk/ctkspinbutton.c:455
+#: ctk/ctkscrolledwindow.c:623 ctk/ctkspinbutton.c:455
 msgid "Shadow Type"
 msgstr "影の種類"
 
-#: ctk/ctkscrolledwindow.c:626
+#: ctk/ctkscrolledwindow.c:624
 msgid "Style of bevel around the contents"
 msgstr "内容の周囲に配置するベベルのスタイル"
 
-#: ctk/ctkscrolledwindow.c:642
+#: ctk/ctkscrolledwindow.c:640
 msgid "Scrollbars within bevel"
 msgstr "ベベルの追加"
 
-#: ctk/ctkscrolledwindow.c:643
+#: ctk/ctkscrolledwindow.c:641
 msgid "Place scrollbars within the scrolled window's bevel"
 msgstr "スクロールウィンドウのベベルの中にスクロールバーを配置するかどうか"
 
-#: ctk/ctkscrolledwindow.c:649
+#: ctk/ctkscrolledwindow.c:647
 msgid "Scrollbar spacing"
 msgstr "スクロールバーの間隔"
 
-#: ctk/ctkscrolledwindow.c:650
+#: ctk/ctkscrolledwindow.c:648
 msgid "Number of pixels between the scrollbars and the scrolled window"
 msgstr ""
 "スクロールバーとスクロールウィンドウとの間の間隔を指定します (ピクセル単位)"
 
-#: ctk/ctkscrolledwindow.c:665
+#: ctk/ctkscrolledwindow.c:663
 #, fuzzy
-#| msgid "Minimum Width"
 msgid "Minimum Content Width"
 msgstr "最小幅"
 
-#: ctk/ctkscrolledwindow.c:666
+#: ctk/ctkscrolledwindow.c:664
 msgid "The minimum width that the scrolled window will allocate to its content"
 msgstr ""
 
-#: ctk/ctkscrolledwindow.c:679
+#: ctk/ctkscrolledwindow.c:677
 #, fuzzy
-#| msgid "Minimum child height"
 msgid "Minimum Content Height"
 msgstr "子ウィジェットの高さの最小値"
 
-#: ctk/ctkscrolledwindow.c:680
+#: ctk/ctkscrolledwindow.c:678
 msgid ""
 "The minimum height that the scrolled window will allocate to its content"
 msgstr ""
 
-#: ctk/ctkscrolledwindow.c:694
+#: ctk/ctkscrolledwindow.c:692
 msgid "Kinetic Scrolling"
 msgstr ""
 
-#: ctk/ctkscrolledwindow.c:695
+#: ctk/ctkscrolledwindow.c:693
 msgid "Kinetic scrolling mode."
 msgstr ""
 
-#: ctk/ctkscrolledwindow.c:714
+#: ctk/ctkscrolledwindow.c:712
 msgid "Overlay Scrolling"
 msgstr ""
 
-#: ctk/ctkscrolledwindow.c:715
+#: ctk/ctkscrolledwindow.c:713
 #, fuzzy
-#| msgid "Overwrite mode"
 msgid "Overlay scrolling mode"
 msgstr "上書きモードかどうか"
 
-#: ctk/ctkscrolledwindow.c:728
+#: ctk/ctkscrolledwindow.c:726
 #, fuzzy
-#| msgid "Minimum Width"
 msgid "Maximum Content Width"
 msgstr "最小幅"
 
-#: ctk/ctkscrolledwindow.c:729
+#: ctk/ctkscrolledwindow.c:727
 #, fuzzy
-#| msgid "The maximum width of the cell, in characters"
 msgid "The maximum width that the scrolled window will allocate to its content"
 msgstr "セルの最大幅 (文字数) です"
 
-#: ctk/ctkscrolledwindow.c:742
+#: ctk/ctkscrolledwindow.c:740
 #, fuzzy
-#| msgid "Minimum child height"
 msgid "Maximum Content Height"
 msgstr "子ウィジェットの高さの最小値"
 
-#: ctk/ctkscrolledwindow.c:743
+#: ctk/ctkscrolledwindow.c:741
 msgid ""
 "The maximum height that the scrolled window will allocate to its content"
 msgstr ""
 
-#: ctk/ctkscrolledwindow.c:760 ctk/ctkscrolledwindow.c:761
+#: ctk/ctkscrolledwindow.c:758 ctk/ctkscrolledwindow.c:759
 msgid "Propagate Natural Width"
 msgstr ""
 
-#: ctk/ctkscrolledwindow.c:778 ctk/ctkscrolledwindow.c:779
+#: ctk/ctkscrolledwindow.c:776 ctk/ctkscrolledwindow.c:777
 #, fuzzy
-#| msgid "Separator Height"
 msgid "Propagate Natural Height"
 msgstr "セパレーターの高さ"
 
@@ -7236,13 +6819,11 @@ msgstr ""
 
 #: ctk/ctksearchbar.c:415
 #, fuzzy
-#| msgid "Whether the label is drawn in the selected font"
 msgid "Whether the search mode is on and the search bar shown"
 msgstr "ラベルを選択したフォントで描画するかどうか"
 
 #: ctk/ctksearchbar.c:426
 #, fuzzy
-#| msgid "Whether to show a sort indicator"
 msgid "Whether to show the close button in the toolbar"
 msgstr "ソート表示器を描画するかどうか"
 
@@ -7254,22 +6835,22 @@ msgstr "描画"
 msgid "Whether the separator is drawn, or just blank"
 msgstr "セパレーターを描画するか、空白にするかを指定します"
 
-#: ctk/ctksettings.c:391
+#: ctk/ctksettings.c:392
 msgid "Double Click Time"
 msgstr "ダブルクリックの時間"
 
-#: ctk/ctksettings.c:392
+#: ctk/ctksettings.c:393
 msgid ""
 "Maximum time allowed between two clicks for them to be considered a double "
 "click (in milliseconds)"
 msgstr ""
 "ダブルクリックとして認識するために二回クリックする間の最大時間 (ミリ秒)"
 
-#: ctk/ctksettings.c:399
+#: ctk/ctksettings.c:400
 msgid "Double Click Distance"
 msgstr "ダブルクリックの距離"
 
-#: ctk/ctksettings.c:400
+#: ctk/ctksettings.c:401
 msgid ""
 "Maximum distance allowed between two clicks for them to be considered a "
 "double click (in pixels)"
@@ -7277,35 +6858,35 @@ msgstr ""
 "ダブルクリックとして認識するために二回クリックする間の最大距離 (ピクセル単"
 "位) です"
 
-#: ctk/ctksettings.c:416
+#: ctk/ctksettings.c:417
 msgid "Cursor Blink"
 msgstr "カーソルの点滅"
 
-#: ctk/ctksettings.c:417
+#: ctk/ctksettings.c:418
 msgid "Whether the cursor should blink"
 msgstr "カーソルを点滅させるかどうか"
 
-#: ctk/ctksettings.c:424
+#: ctk/ctksettings.c:425
 msgid "Cursor Blink Time"
 msgstr "カーソルの点滅間隔"
 
-#: ctk/ctksettings.c:425
+#: ctk/ctksettings.c:426
 msgid "Length of the cursor blink cycle, in milliseconds"
 msgstr "カーソルが点滅する際の周期 (ミリ秒) です"
 
-#: ctk/ctksettings.c:444
+#: ctk/ctksettings.c:445
 msgid "Cursor Blink Timeout"
 msgstr "カーソル点滅のタイムアウト"
 
-#: ctk/ctksettings.c:445
+#: ctk/ctksettings.c:446
 msgid "Time after which the cursor stops blinking, in seconds"
 msgstr "カーソルの点滅を停止する際の周期 (ミリ秒) です"
 
-#: ctk/ctksettings.c:452
+#: ctk/ctksettings.c:453
 msgid "Split Cursor"
 msgstr "カーソルの分離"
 
-#: ctk/ctksettings.c:453
+#: ctk/ctksettings.c:454
 msgid ""
 "Whether two cursors should be displayed for mixed left-to-right and right-to-"
 "left text"
@@ -7313,158 +6894,165 @@ msgstr ""
 "左→右方向と右→左方向へ記述する混成テキストに対して二つのカーソルを表示するか"
 "どうかです"
 
-#: ctk/ctksettings.c:460
+#: ctk/ctksettings.c:461
+#, fuzzy
+msgid "Cursor Aspect Ratio"
+msgstr "カーソル行のアスペクト比"
+
+#: ctk/ctksettings.c:462
+#, fuzzy
+msgid "The aspect ratio of the text caret"
+msgstr "指定できる向きです"
+
+#: ctk/ctksettings.c:470
 msgid "Theme Name"
 msgstr "テーマ名"
 
-#: ctk/ctksettings.c:461
+#: ctk/ctksettings.c:471
 #, fuzzy
-#| msgid "Name of theme RC file to load"
 msgid "Name of theme to load"
 msgstr "読み込むテーマのリソースファイルの名前です"
 
-#: ctk/ctksettings.c:469
+#: ctk/ctksettings.c:479
 msgid "Icon Theme Name"
 msgstr "アイコンテーマの名前"
 
-#: ctk/ctksettings.c:470
+#: ctk/ctksettings.c:480
 msgid "Name of icon theme to use"
 msgstr "使用するアイコンテーマの名前です"
 
-#: ctk/ctksettings.c:485
+#: ctk/ctksettings.c:495
 msgid "Fallback Icon Theme Name"
 msgstr "以前のアイコンテーマの名前"
 
-#: ctk/ctksettings.c:486
+#: ctk/ctksettings.c:496
 msgid "Name of a icon theme to fall back to"
 msgstr "変更する前のアイコンテーマの名前です"
 
-#: ctk/ctksettings.c:494
+#: ctk/ctksettings.c:504
 msgid "Key Theme Name"
 msgstr "キーのテーマ名"
 
-#: ctk/ctksettings.c:495
+#: ctk/ctksettings.c:505
 #, fuzzy
-#| msgid "Name of key theme RC file to load"
 msgid "Name of key theme to load"
 msgstr "読み込むキーテーマのリソースファイルの名前"
 
-#: ctk/ctksettings.c:511
+#: ctk/ctksettings.c:521
 msgid "Menu bar accelerator"
 msgstr "メニューバーのアクセラレータ"
 
-#: ctk/ctksettings.c:512
+#: ctk/ctksettings.c:522
 msgid "Keybinding to activate the menu bar"
 msgstr "メニューバーを有効にするキーバインディング"
 
-#: ctk/ctksettings.c:520
+#: ctk/ctksettings.c:530
 msgid "Drag threshold"
 msgstr "ドラッグ時のしきい値"
 
-#: ctk/ctksettings.c:521
+#: ctk/ctksettings.c:531
 msgid "Number of pixels the cursor can move before dragging"
 msgstr "ドラッグを開始するまでのカーソル移動量 (ピクセル単位)"
 
-#: ctk/ctksettings.c:534
+#: ctk/ctksettings.c:544
 msgid "Font Name"
 msgstr "フォント名"
 
-#: ctk/ctksettings.c:535
+#: ctk/ctksettings.c:545
 #, fuzzy
-#| msgid "The default font options for the screen"
 msgid "The default font family and size to use"
 msgstr "フォントのデフォルトオプションです"
 
-#: ctk/ctksettings.c:559
+#: ctk/ctksettings.c:569
 msgid "Icon Sizes"
 msgstr "アイコンのサイズ"
 
-#: ctk/ctksettings.c:560
+#: ctk/ctksettings.c:570
 msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "アイコンの大きさを示す並び (ctk-menu=16,16;ctk-button=20,20...)"
 
-#: ctk/ctksettings.c:568
+#: ctk/ctksettings.c:578
 msgid "CTK Modules"
 msgstr "CTK のモジュール"
 
-#: ctk/ctksettings.c:569
+#: ctk/ctksettings.c:579
 msgid "List of currently active CTK modules"
 msgstr "現在、利用可能な CTK モジュールの一覧です"
 
-#: ctk/ctksettings.c:577
+#: ctk/ctksettings.c:587
 msgid "Xft Antialias"
 msgstr "Xft アンチエイリアス"
 
-#: ctk/ctksettings.c:578
+#: ctk/ctksettings.c:588
 msgid "Whether to antialias Xft fonts; 0=no, 1=yes, -1=default"
 msgstr ""
 "Xft フォントをアンチエイリアス表示するかどうかです; 0=しない、1=する、-1=デ"
 "フォルト"
 
-#: ctk/ctksettings.c:587
+#: ctk/ctksettings.c:597
 msgid "Xft Hinting"
 msgstr "Xft ヒンティング"
 
-#: ctk/ctksettings.c:588
+#: ctk/ctksettings.c:598
 msgid "Whether to hint Xft fonts; 0=no, 1=yes, -1=default"
 msgstr ""
 "Xft フォントをヒンティングするかどうかです; 0=しない、1=する、-1=デフォルト"
 
-#: ctk/ctksettings.c:597
+#: ctk/ctksettings.c:607
 msgid "Xft Hint Style"
 msgstr "Xft ヒントスタイル"
 
-#: ctk/ctksettings.c:598
+#: ctk/ctksettings.c:608
 msgid ""
 "What degree of hinting to use; hintnone, hintslight, hintmedium, or hintfull"
 msgstr "使用するヒンティングの角度です; なし、細く、中ぐらい、完全"
 
-#: ctk/ctksettings.c:607
+#: ctk/ctksettings.c:617
 msgid "Xft RGBA"
 msgstr "Xft RGBA"
 
-#: ctk/ctksettings.c:608
+#: ctk/ctksettings.c:618
 msgid "Type of subpixel antialiasing; none, rgb, bgr, vrgb, vbgr"
 msgstr "サブピクセルのアンチエイリアス化の種類です; なし、rgb、bgr、vrgb、vbgr"
 
-#: ctk/ctksettings.c:617
+#: ctk/ctksettings.c:627
 msgid "Xft DPI"
 msgstr "Xft DPI"
 
-#: ctk/ctksettings.c:618
+#: ctk/ctksettings.c:628
 msgid "Resolution for Xft, in 1024 * dots/inch. -1 to use default value"
 msgstr "Xft の解像度 (1024 x ドット/インチ) です; -1=デフォルト値"
 
-#: ctk/ctksettings.c:627
+#: ctk/ctksettings.c:637
 msgid "Cursor theme name"
 msgstr "カーソルテーマの名前"
 
-#: ctk/ctksettings.c:628
+#: ctk/ctksettings.c:638
 msgid "Name of the cursor theme to use, or NULL to use the default theme"
 msgstr ""
 "使用するカーソルテーマの名前、またはデフォルトのテーマを使う場合は NULL です"
 
-#: ctk/ctksettings.c:636
+#: ctk/ctksettings.c:646
 msgid "Cursor theme size"
 msgstr "カーソルのサイズ"
 
-#: ctk/ctksettings.c:637
+#: ctk/ctksettings.c:647
 msgid "Size to use for cursors, or 0 to use the default size"
 msgstr "使用するカーソルの大きさで、デフォルトの場合は 0です"
 
-#: ctk/ctksettings.c:646
+#: ctk/ctksettings.c:656
 msgid "Alternative button order"
 msgstr "ボタンの並び"
 
-#: ctk/ctksettings.c:647
+#: ctk/ctksettings.c:657
 msgid "Whether buttons in dialogs should use the alternative button order"
 msgstr "ダイアログにあるボタンの並びを別のものにするか"
 
-#: ctk/ctksettings.c:664
+#: ctk/ctksettings.c:674
 msgid "Alternative sort indicator direction"
 msgstr "並び替えを表す方向"
 
-#: ctk/ctksettings.c:665
+#: ctk/ctksettings.c:675
 msgid ""
 "Whether the direction of the sort indicators in list and tree views is "
 "inverted compared to the default (where down means ascending)"
@@ -7472,11 +7060,11 @@ msgstr ""
 "リストやツリーで並び替えを行う向きをデフォルトとは逆向きにするかどうかです "
 "(down は昇順を表します)"
 
-#: ctk/ctksettings.c:678
+#: ctk/ctksettings.c:688
 msgid "Show the 'Input Methods' menu"
 msgstr "'入力メソッド' メニューの表示"
 
-#: ctk/ctksettings.c:679
+#: ctk/ctksettings.c:689
 msgid ""
 "Whether the context menus of entries and text views should offer to change "
 "the input method"
@@ -7484,11 +7072,11 @@ msgstr ""
 "エントリやテキストビューで入力メソッドを変更するためのコンテキストメニューを"
 "表示するかどうか"
 
-#: ctk/ctksettings.c:692
+#: ctk/ctksettings.c:702
 msgid "Show the 'Insert Unicode Control Character' menu"
 msgstr "'Unicode 制御文字の挿入' メニューの表示"
 
-#: ctk/ctksettings.c:693
+#: ctk/ctksettings.c:703
 msgid ""
 "Whether the context menus of entries and text views should offer to insert "
 "control characters"
@@ -7496,243 +7084,243 @@ msgstr ""
 "エントリやテキストビューで制御文字を挿入するためのコンテキストメニューを表示"
 "するかどうか"
 
-#: ctk/ctksettings.c:706
+#: ctk/ctksettings.c:716
 msgid "Start timeout"
 msgstr "開始のタイムアウト"
 
-#: ctk/ctksettings.c:707
+#: ctk/ctksettings.c:717
 msgid "Starting value for timeouts, when button is pressed"
 msgstr "ボタンをクリックしてからタイムアウトを計算する際の開始値"
 
-#: ctk/ctksettings.c:721
+#: ctk/ctksettings.c:731
 msgid "Repeat timeout"
 msgstr "繰り返しのタイムアウト"
 
-#: ctk/ctksettings.c:722
+#: ctk/ctksettings.c:732
 msgid "Repeat value for timeouts, when button is pressed"
 msgstr "ボタンをクリックしてからタイムアウトを計算する際の繰り返しの値"
 
-#: ctk/ctksettings.c:736
+#: ctk/ctksettings.c:746
 msgid "Expand timeout"
 msgstr "展張のタイムアウト"
 
 # FIXME: 挙動を確認できておらず、原文自体の意味もよくわからない
-#: ctk/ctksettings.c:737
+#: ctk/ctksettings.c:747
 #, fuzzy
 msgid "Expand value for timeouts, when a widget is expanding a new region"
 msgstr "ウィジェットを展張してからタイムアウトを計算する際の展張の値"
 
-#: ctk/ctksettings.c:775
+#: ctk/ctksettings.c:785
 msgid "Color scheme"
 msgstr "色のスキーム"
 
-#: ctk/ctksettings.c:776
+#: ctk/ctksettings.c:786
 msgid "A palette of named colors for use in themes"
 msgstr "テーマで使用する色名のパレットです"
 
-#: ctk/ctksettings.c:785
+#: ctk/ctksettings.c:795
 msgid "Enable Animations"
 msgstr "アニメーション"
 
-#: ctk/ctksettings.c:786
+#: ctk/ctksettings.c:796
 msgid "Whether to enable toolkit-wide animations."
 msgstr "ツールキット規模のアニメーションを有効にするかどうか"
 
-#: ctk/ctksettings.c:807
+#: ctk/ctksettings.c:817
 msgid "Enable Touchscreen Mode"
 msgstr "タッチスクリーンモード"
 
-#: ctk/ctksettings.c:808
+#: ctk/ctksettings.c:818
 msgid "When TRUE, there are no motion notify events delivered on this screen"
 msgstr "TRUE にすると、この画面上には移動通知のイベントが配送されなくなります"
 
-#: ctk/ctksettings.c:827
+#: ctk/ctksettings.c:837
 msgid "Tooltip timeout"
 msgstr "ツールチップのタイムアウト"
 
-#: ctk/ctksettings.c:828
+#: ctk/ctksettings.c:838
 msgid "Timeout before tooltip is shown"
 msgstr "ツールチップを表示するまでの遅延時間です"
 
-#: ctk/ctksettings.c:855
+#: ctk/ctksettings.c:865
 msgid "Tooltip browse timeout"
 msgstr "ツールチップのタイムアウト (参照モード有効)"
 
-#: ctk/ctksettings.c:856
+#: ctk/ctksettings.c:866
 msgid "Timeout before tooltip is shown when browse mode is enabled"
 msgstr ""
 "参照モードが有効になっている時にツールチップを表示するまでの遅延時間です"
 
-#: ctk/ctksettings.c:879
+#: ctk/ctksettings.c:889
 msgid "Tooltip browse mode timeout"
 msgstr "ツールチップのタイムアウト (参照モード無効)"
 
-#: ctk/ctksettings.c:880
+#: ctk/ctksettings.c:890
 msgid "Timeout after which browse mode is disabled"
 msgstr ""
 "参照モードが無効になっている時にツールチップを表示するまでの遅延時間です"
 
-#: ctk/ctksettings.c:902
+#: ctk/ctksettings.c:912
 msgid "Keynav Cursor Only"
 msgstr "カーソルキーのみ"
 
-#: ctk/ctksettings.c:903
+#: ctk/ctksettings.c:913
 msgid "When TRUE, there are only cursor keys available to navigate widgets"
 msgstr "カーソルキーでのみフォーカス移動を可能にするかどうか"
 
-#: ctk/ctksettings.c:922
+#: ctk/ctksettings.c:932
 msgid "Keynav Wrap Around"
 msgstr "ウィジェットの強調表示"
 
-#: ctk/ctksettings.c:923
+#: ctk/ctksettings.c:933
 msgid "Whether to wrap around when keyboard-navigating widgets"
 msgstr "キーボードでフォーカスを与えたウィジェットを強調表示するかどうか"
 
-#: ctk/ctksettings.c:943
+#: ctk/ctksettings.c:953
 msgid "Error Bell"
 msgstr "ビープ音"
 
-#: ctk/ctksettings.c:944
+#: ctk/ctksettings.c:954
 msgid "When TRUE, keyboard navigation and other errors will cause a beep"
 msgstr "キーボードによるフォーカス移動やエラーの類をビープ音で知らせるかどうか"
 
-#: ctk/ctksettings.c:963
+#: ctk/ctksettings.c:973
 msgid "Color Hash"
 msgstr "色のハッシュ"
 
-#: ctk/ctksettings.c:964
+#: ctk/ctksettings.c:974
 msgid "A hash table representation of the color scheme."
 msgstr "色のスキームを表現するハッシュテーブルです"
 
-#: ctk/ctksettings.c:979
+#: ctk/ctksettings.c:989
 msgid "Default file chooser backend"
 msgstr "デフォルトのファイル選択バックエンド"
 
-#: ctk/ctksettings.c:980
+#: ctk/ctksettings.c:990
 msgid "Name of the CtkFileChooser backend to use by default"
 msgstr "デフォルトで使用する CtkFileChooser バックエンドの名前です"
 
-#: ctk/ctksettings.c:997
+#: ctk/ctksettings.c:1007
 msgid "Default print backend"
 msgstr "デフォルトの印刷バックエンド"
 
-#: ctk/ctksettings.c:998
+#: ctk/ctksettings.c:1008
 msgid "List of the CtkPrintBackend backends to use by default"
 msgstr "デフォルトで使用する CtkPrintBackend オブジェクトのリストです"
 
-#: ctk/ctksettings.c:1021
+#: ctk/ctksettings.c:1031
 msgid "Default command to run when displaying a print preview"
 msgstr "印刷プレビューを表示する際に使用するデフォルトのコマンドです"
 
-#: ctk/ctksettings.c:1022
+#: ctk/ctksettings.c:1032
 msgid "Command to run when displaying a print preview"
 msgstr "印刷プレビューで使用するコマンド"
 
-#: ctk/ctksettings.c:1041
+#: ctk/ctksettings.c:1051
 msgid "Enable Mnemonics"
 msgstr "ニーモニック"
 
-#: ctk/ctksettings.c:1042
+#: ctk/ctksettings.c:1052
 msgid "Whether labels should have mnemonics"
 msgstr "ラベルにニーモニックを持たせるかどうか"
 
-#: ctk/ctksettings.c:1058
+#: ctk/ctksettings.c:1068
 msgid "Enable Accelerators"
 msgstr "アクセラレータ"
 
-#: ctk/ctksettings.c:1059
+#: ctk/ctksettings.c:1069
 msgid "Whether menu items should have accelerators"
 msgstr "メニュー項目にアクセラレータを持たせるかどうか"
 
-#: ctk/ctksettings.c:1078
+#: ctk/ctksettings.c:1088
 msgid "Recent Files Limit"
 msgstr "最近開いたファイルの制限"
 
-#: ctk/ctksettings.c:1079
+#: ctk/ctksettings.c:1089
 msgid "Number of recently used files"
 msgstr "最近開いたファイルの一覧に表示する数"
 
-#: ctk/ctksettings.c:1099
+#: ctk/ctksettings.c:1109
 msgid "Default IM module"
 msgstr "デフォルトの IM モジュール"
 
-#: ctk/ctksettings.c:1100
+#: ctk/ctksettings.c:1110
 msgid "Which IM module should be used by default"
 msgstr "デフォルトで使用する IM モジュールです"
 
-#: ctk/ctksettings.c:1118
+#: ctk/ctksettings.c:1128
 msgid "Recent Files Max Age"
 msgstr "最近開いたファイルの最大寿命"
 
-#: ctk/ctksettings.c:1119
+#: ctk/ctksettings.c:1129
 msgid "Maximum age of recently used files, in days"
 msgstr "最近開いたファイルとみなす最大寿命 (日数単位) です"
 
-#: ctk/ctksettings.c:1128
+#: ctk/ctksettings.c:1138
 msgid "Fontconfig configuration timestamp"
 msgstr "Fontconfig の設定のタイムスタンプ"
 
-#: ctk/ctksettings.c:1129
+#: ctk/ctksettings.c:1139
 msgid "Timestamp of current fontconfig configuration"
 msgstr "現在使用している Fontconfig の設定のタイムスタンプです"
 
-#: ctk/ctksettings.c:1151
+#: ctk/ctksettings.c:1161
 msgid "Sound Theme Name"
 msgstr "サウンドテーマの名前"
 
-#: ctk/ctksettings.c:1152
+#: ctk/ctksettings.c:1162
 msgid "XDG sound theme name"
 msgstr "XDG サウンドテーマの名称です"
 
 #. Translators: this means sounds that are played as feedback to user input
-#: ctk/ctksettings.c:1174
+#: ctk/ctksettings.c:1184
 msgid "Audible Input Feedback"
 msgstr "サウンドフィードバックの有無"
 
-#: ctk/ctksettings.c:1175
+#: ctk/ctksettings.c:1185
 msgid "Whether to play event sounds as feedback to user input"
 msgstr "ユーザーの入力に対するフィードバックとしてサウンドを演奏するかどうか"
 
-#: ctk/ctksettings.c:1196
+#: ctk/ctksettings.c:1206
 msgid "Enable Event Sounds"
 msgstr "サウンドを有効にするかどうか"
 
-#: ctk/ctksettings.c:1197
+#: ctk/ctksettings.c:1207
 msgid "Whether to play any event sounds at all"
 msgstr "イベントに応じたサウンドを演奏するかどうか"
 
-#: ctk/ctksettings.c:1214
+#: ctk/ctksettings.c:1224
 msgid "Enable Tooltips"
 msgstr "ツールチップを有効にするかどうか"
 
-#: ctk/ctksettings.c:1215
+#: ctk/ctksettings.c:1225
 msgid "Whether tooltips should be shown on widgets"
 msgstr "ウィジェット上にツールチップを表示するかどうか"
 
-#: ctk/ctksettings.c:1230
+#: ctk/ctksettings.c:1240
 msgid "Toolbar style"
 msgstr "ツールバーのスタイル"
 
-#: ctk/ctksettings.c:1231
+#: ctk/ctksettings.c:1241
 msgid ""
 "Whether default toolbars have text only, text and icons, icons only, etc."
 msgstr ""
 "デフォルトのツールバーはラベルのみか、ラベルとアイコンか、アイコンのみかどう"
 "か"
 
-#: ctk/ctksettings.c:1247
+#: ctk/ctksettings.c:1257
 msgid "Toolbar Icon Size"
 msgstr "ツールバーのアイコンサイズ"
 
-#: ctk/ctksettings.c:1248
+#: ctk/ctksettings.c:1258
 msgid "The size of icons in default toolbars."
 msgstr "デフォルトのツールバーに配置するアイコンの大きさ"
 
-#: ctk/ctksettings.c:1267
+#: ctk/ctksettings.c:1277
 msgid "Auto Mnemonics"
 msgstr "自動ニーモニック"
 
-#: ctk/ctksettings.c:1268
+#: ctk/ctksettings.c:1278
 msgid ""
 "Whether mnemonics should be automatically shown and hidden when the user "
 "presses the mnemonic activator."
@@ -7740,82 +7328,80 @@ msgstr ""
 "ニーモニックを自動的に表示し、ユーザーがニーモニックのアクティベーターを押し"
 "た時に表示したり隠したりするかどうかです"
 
-#: ctk/ctksettings.c:1290
+#: ctk/ctksettings.c:1300
 #, fuzzy
-#| msgid "Primary icon sensitive"
 msgid "Primary button warps slider"
 msgstr "一番目のアイコンの反応可否"
 
-#: ctk/ctksettings.c:1291
+#: ctk/ctksettings.c:1301
 msgid ""
 "Whether a primary click on the trough should warp the slider into position"
 msgstr ""
 
-#: ctk/ctksettings.c:1309
+#: ctk/ctksettings.c:1319
 #, fuzzy
-#| msgid "Visible"
 msgid "Visible Focus"
 msgstr "可視性"
 
-#: ctk/ctksettings.c:1310
+#: ctk/ctksettings.c:1320
 msgid ""
 "Whether 'focus rectangles' should be hidden until the user starts to use the "
 "keyboard."
 msgstr ""
 
-#: ctk/ctksettings.c:1336
+#: ctk/ctksettings.c:1346
 msgid "Application prefers a dark theme"
 msgstr "アプリケーションが暗いテーマを好む"
 
-#: ctk/ctksettings.c:1337
+#: ctk/ctksettings.c:1347
 msgid "Whether the application prefers to have a dark theme."
 msgstr "アプリケーションが暗いテーマを好んで選択するかどうか"
 
-#: ctk/ctksettings.c:1358
+#: ctk/ctksettings.c:1368
 msgid "Show button images"
 msgstr "ボタンの画像を表示するか"
 
-#: ctk/ctksettings.c:1359
+#: ctk/ctksettings.c:1369
 msgid "Whether images should be shown on buttons"
 msgstr "メニューの中に画像を表示するかどうか"
 
-#: ctk/ctksettings.c:1367 ctk/ctksettings.c:1502
+#: ctk/ctksettings.c:1377 ctk/ctksettings.c:1512
 msgid "Select on focus"
 msgstr "フォーカス部の選択"
 
-#: ctk/ctksettings.c:1368
+#: ctk/ctksettings.c:1378
 msgid "Whether to select the contents of an entry when it is focused"
 msgstr "エントリにフォーカスが当たった際にその内容を選択するかどうか"
 
-#: ctk/ctksettings.c:1385
+#: ctk/ctksettings.c:1395
 msgid "Password Hint Timeout"
 msgstr "パスワードヒントのタイムアウト"
 
-#: ctk/ctksettings.c:1386
+#: ctk/ctksettings.c:1396
 msgid "How long to show the last input character in hidden entries"
 msgstr "隠しエントリで最後に入力した文字を表示しておく時間です"
 
-#: ctk/ctksettings.c:1406
+#: ctk/ctksettings.c:1416
 msgid "Show menu images"
 msgstr "メニュー画像の表示"
 
-#: ctk/ctksettings.c:1407
+#: ctk/ctksettings.c:1417
 msgid "Whether images should be shown in menus"
 msgstr "メニューの中に画像を表示するかどうか"
 
-#: ctk/ctksettings.c:1422
+#: ctk/ctksettings.c:1432
 msgid "Delay before drop down menus appear"
 msgstr "メニューをドロップダウン表示する際の遅延時間"
 
-#: ctk/ctksettings.c:1423
+#: ctk/ctksettings.c:1433
 msgid "Delay before the submenus of a menu bar appear"
 msgstr "メニューバーのサブメニューが表示される際の遅延時間"
 
-#: ctk/ctksettings.c:1442
+#: ctk/ctksettings.c:1452
 msgid "Scrolled Window Placement"
 msgstr "スクロールウィンドウの配置"
 
-#: ctk/ctksettings.c:1443
+#: ctk/ctksettings.c:1453
 msgid ""
 "Where the contents of scrolled windows are located with respect to the "
 "scrollbars, if not overridden by the scrolled window's own placement."
@@ -7823,31 +7409,31 @@ msgstr ""
 "スクロールウィンドウ自身の位置で上書きしない場合、スクロールバーの動きに追従"
 "してスクロールウィンドウの内容を配置するかどうか"
 
-#: ctk/ctksettings.c:1459
+#: ctk/ctksettings.c:1469
 msgid "Can change accelerators"
 msgstr "アクセラレータの変更可能"
 
-#: ctk/ctksettings.c:1460
+#: ctk/ctksettings.c:1470
 msgid ""
 "Whether menu accelerators can be changed by pressing a key over the menu item"
 msgstr ""
 "メニューアイテムの上でキーを押下することでメニューのアクセラレータを変更でき"
 "るかどうか"
 
-#: ctk/ctksettings.c:1475
+#: ctk/ctksettings.c:1485
 msgid "Delay before submenus appear"
 msgstr "サブメニューを表示する際の遅延時間"
 
-#: ctk/ctksettings.c:1476
+#: ctk/ctksettings.c:1486
 msgid ""
 "Minimum time the pointer must stay over a menu item before the submenu appear"
 msgstr "サブメニューを表示する前にメニューアイテムを表示しておく最小時間"
 
-#: ctk/ctksettings.c:1492
+#: ctk/ctksettings.c:1502
 msgid "Delay before hiding a submenu"
 msgstr "サブメニューを隠す際の遅延時間"
 
-#: ctk/ctksettings.c:1493
+#: ctk/ctksettings.c:1503
 msgid ""
 "The time before hiding a submenu when the pointer is moving towards the "
 "submenu"
@@ -7855,149 +7441,141 @@ msgstr ""
 "サブメニューの方向にマウスポインターを移動した際にサブメニューを隠すまでの時"
 "間"
 
-#: ctk/ctksettings.c:1503
+#: ctk/ctksettings.c:1513
 msgid "Whether to select the contents of a selectable label when it is focused"
 msgstr "選択可能なラベルにフォーカスが当たった場合、その内容を選択するかどうか"
 
-#: ctk/ctksettings.c:1518
+#: ctk/ctksettings.c:1528
 msgid "Custom palette"
 msgstr "カスタムパレット"
 
-#: ctk/ctksettings.c:1519
+#: ctk/ctksettings.c:1529
 msgid "Palette to use in the color selector"
 msgstr "色選択で使用するパレット"
 
-#: ctk/ctksettings.c:1534
+#: ctk/ctksettings.c:1544
 msgid "IM Preedit style"
 msgstr "IM 前処理のスタイル"
 
-#: ctk/ctksettings.c:1535
+#: ctk/ctksettings.c:1545
 msgid "How to draw the input method preedit string"
 msgstr "入力メソッドで前処理している文字列のスタイルです"
 
-#: ctk/ctksettings.c:1551
+#: ctk/ctksettings.c:1561
 msgid "IM Status style"
 msgstr "IM ステータスのスタイル"
 
-#: ctk/ctksettings.c:1552
+#: ctk/ctksettings.c:1562
 msgid "How to draw the input method statusbar"
 msgstr "入力メソッドのステータスバーのスタイルです"
 
-#: ctk/ctksettings.c:1561
+#: ctk/ctksettings.c:1571
 msgid "Desktop shell shows app menu"
 msgstr ""
 
-#: ctk/ctksettings.c:1562
+#: ctk/ctksettings.c:1572
 msgid ""
 "Set to TRUE if the desktop environment is displaying the app menu, FALSE if "
 "the app should display it itself."
 msgstr ""
 
-#: ctk/ctksettings.c:1571
+#: ctk/ctksettings.c:1581
 msgid "Desktop shell shows the menubar"
 msgstr ""
 
-#: ctk/ctksettings.c:1572
+#: ctk/ctksettings.c:1582
 msgid ""
 "Set to TRUE if the desktop environment is displaying the menubar, FALSE if "
 "the app should display it itself."
 msgstr ""
 
-#: ctk/ctksettings.c:1581
+#: ctk/ctksettings.c:1591
 msgid "Desktop environment shows the desktop folder"
 msgstr ""
 
-#: ctk/ctksettings.c:1582
+#: ctk/ctksettings.c:1592
 msgid ""
 "Set to TRUE if the desktop environment is displaying the desktop folder, "
 "FALSE if not."
 msgstr ""
 
-#: ctk/ctksettings.c:1636
+#: ctk/ctksettings.c:1646
 msgid "Titlebar double-click action"
 msgstr ""
 
-#: ctk/ctksettings.c:1637
+#: ctk/ctksettings.c:1647
 msgid "The action to take on titlebar double-click"
 msgstr ""
 
-#: ctk/ctksettings.c:1655
+#: ctk/ctksettings.c:1665
 msgid "Titlebar middle-click action"
 msgstr ""
 
-#: ctk/ctksettings.c:1656
+#: ctk/ctksettings.c:1666
 msgid "The action to take on titlebar middle-click"
 msgstr ""
 
-#: ctk/ctksettings.c:1674
+#: ctk/ctksettings.c:1684
 msgid "Titlebar right-click action"
 msgstr ""
 
-#: ctk/ctksettings.c:1675
+#: ctk/ctksettings.c:1685
 msgid "The action to take on titlebar right-click"
 msgstr ""
 
-#: ctk/ctksettings.c:1697
+#: ctk/ctksettings.c:1707
 msgid "Dialogs use header bar"
 msgstr ""
 
-#: ctk/ctksettings.c:1698
+#: ctk/ctksettings.c:1708
 #, fuzzy
-#| msgid "Whether buttons in dialogs should use the alternative button order"
 msgid ""
 "Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
 msgstr "ダイアログにあるボタンの並びを別のものにするか"
 
-#: ctk/ctksettings.c:1714
+#: ctk/ctksettings.c:1724
 msgid "Enable primary paste"
 msgstr ""
 
-#: ctk/ctksettings.c:1715
+#: ctk/ctksettings.c:1725
 msgid ""
 "Whether a middle click on a mouse should paste the 'PRIMARY' clipboard "
 "content at the cursor location."
 msgstr ""
 
-#: ctk/ctksettings.c:1731
+#: ctk/ctksettings.c:1741
 #, fuzzy
-#| msgid "Recent Files Max Age"
 msgid "Recent Files Enabled"
 msgstr "最近開いたファイルの最大寿命"
 
-#: ctk/ctksettings.c:1732
+#: ctk/ctksettings.c:1742
 msgid "Whether CTK+ remembers recent files"
 msgstr ""
 
-#: ctk/ctksettings.c:1747
+#: ctk/ctksettings.c:1757
 msgid "Long press time"
 msgstr ""
 
-#: ctk/ctksettings.c:1748
+#: ctk/ctksettings.c:1758
 #, fuzzy
-#| msgid ""
-#| "Maximum time allowed between two clicks for them to be considered a "
-#| "double click (in milliseconds)"
 msgid ""
 "Time for a button/touch press to be considered a long press (in milliseconds)"
 msgstr ""
 "ダブルクリックとして認識するために二回クリックする間の最大時間 (ミリ秒)"
 
-#: ctk/ctksettings.c:1765 ctk/ctksettings.c:1766
+#: ctk/ctksettings.c:1775 ctk/ctksettings.c:1776
 #, fuzzy
-#| msgid "Whether to show a sort indicator"
 msgid "Whether to show cursor in text"
 msgstr "ソート表示器を描画するかどうか"
 
-#: ctk/ctksettings.c:1783 ctk/ctksettings.c:1784
+#: ctk/ctksettings.c:1793 ctk/ctksettings.c:1794
 #, fuzzy
-#| msgid "Warning color for symbolic icons"
 msgid "Whether to use overlay scrollbars"
 msgstr "シンボリックアイコンの警告を表すの色です"
 
 #: ctk/ctkshortcutlabel.c:479 ctk/ctkshortcutsshortcut.c:536
 #, fuzzy
-#| msgid "Accelerator key"
 msgid "Accelerator"
 msgstr "アクセラレータキー"
 
@@ -8012,7 +7590,6 @@ msgstr ""
 #: ctk/ctkshortcutsgroup.c:335 ctk/ctkshortcutsgroup.c:336
 #: ctk/ctkshortcutsshortcut.c:617 ctk/ctkshortcutsshortcut.c:618
 #, fuzzy
-#| msgid "Accelerator Mode"
 msgid "Accelerator Size Group"
 msgstr "アクセラレータのモード"
 
@@ -8023,25 +7600,21 @@ msgstr ""
 
 #: ctk/ctkshortcutssection.c:350 ctk/ctkshortcutswindow.c:787
 #, fuzzy
-#| msgid "Icon name"
 msgid "Section Name"
 msgstr "アイコン名"
 
 #: ctk/ctkshortcutssection.c:364 ctk/ctkshortcutswindow.c:802
 #, fuzzy
-#| msgid "Theme Name"
 msgid "View Name"
 msgstr "テーマ名"
 
 #: ctk/ctkshortcutssection.c:389
 #, fuzzy
-#| msgid "Minimum child height"
 msgid "Maximum Height"
 msgstr "子ウィジェットの高さの最小値"
 
 #: ctk/ctkshortcutsshortcut.c:537
 #, fuzzy
-#| msgid "The hardware keycode of the accelerator"
 msgid "The accelerator keys for shortcuts of type 'Accelerator'"
 msgstr "アクセラレータのハードウェア的なキーコードです"
 
@@ -8051,25 +7624,21 @@ msgstr ""
 
 #: ctk/ctkshortcutsshortcut.c:562
 #, fuzzy
-#| msgid "Icon set"
 msgid "Icon Set"
 msgstr "アイコンセット"
 
 #: ctk/ctkshortcutsshortcut.c:563
 #, fuzzy
-#| msgid "Whether the icon-size property has been set"
 msgid "Whether an icon has been set"
 msgstr "プロパティ icon-size をセットするかどうか"
 
 #: ctk/ctkshortcutsshortcut.c:576
 #, fuzzy
-#| msgid "A human-readable description of the status"
 msgid "A short description for the shortcut"
 msgstr "プリンターを状態を表す説明です"
 
 #: ctk/ctkshortcutsshortcut.c:592
 #, fuzzy
-#| msgid "Your description here"
 msgid "A short description for the gesture"
 msgstr "ココに説明を入力してください"
 
@@ -8079,37 +7648,31 @@ msgstr ""
 
 #: ctk/ctkshortcutsshortcut.c:604
 #, fuzzy
-#| msgid "Whether the invisible char has been set"
 msgid "Whether a subtitle has been set"
 msgstr "文字を不可視にするかどうか"
 
 #: ctk/ctkshortcutsshortcut.c:646
 #, fuzzy
-#| msgid "The item which is currently active"
 msgid "Text direction for which this shortcut is active"
 msgstr "現在アクティブな項目"
 
 #: ctk/ctkshortcutsshortcut.c:658
 #, fuzzy
-#| msgid "Sort Type"
 msgid "Shortcut Type"
 msgstr "並び替えの種類"
 
 #: ctk/ctkshortcutsshortcut.c:659
 #, fuzzy
-#| msgid "The number of pages that will be printed."
 msgid "The type of shortcut that is represented"
 msgstr "印刷されるページ数。"
 
 #: ctk/ctkshortcutsshortcut.c:677
 #, fuzzy
-#| msgid "Icon name"
 msgid "Action Name"
 msgstr "アイコン名"
 
 #: ctk/ctkshortcutsshortcut.c:678
 #, fuzzy
-#| msgid "The name of the selected font"
 msgid "The name of the action"
 msgstr "選択したフォントの名前"
 
@@ -8142,7 +7705,6 @@ msgstr "上昇割合い"
 
 #: ctk/ctkspinbutton.c:388
 #, fuzzy
-#| msgid "The acceleration rate when you hold down a button"
 msgid "The acceleration rate when you hold down a button or key"
 msgstr "ボタンを押したままにした時に加速する割合です"
 
@@ -8195,25 +7757,21 @@ msgstr "スピナーを有効にするかどうか"
 
 #: ctk/ctkstack.c:459
 #, fuzzy
-#| msgid "Homogeneous"
 msgid "Homogeneous sizing"
 msgstr "均等に配置する"
 
 #: ctk/ctkstack.c:471
 #, fuzzy
-#| msgid "Horizontal options"
 msgid "Horizontally homogeneous"
 msgstr "水平オプション"
 
 #: ctk/ctkstack.c:471
 #, fuzzy
-#| msgid "Horizontal options"
 msgid "Horizontally homogeneous sizing"
 msgstr "水平オプション"
 
 #: ctk/ctkstack.c:483
 #, fuzzy
-#| msgid "Vertical options"
 msgid "Vertically homogeneous"
 msgstr "垂直オプション"
 
@@ -8223,43 +7781,36 @@ msgstr ""
 
 #: ctk/ctkstack.c:487
 #, fuzzy
-#| msgid "Visible Window"
 msgid "Visible child"
 msgstr "可視ウィンドウ"
 
 #: ctk/ctkstack.c:487
 #, fuzzy
-#| msgid "The current page in the document"
 msgid "The widget currently visible in the stack"
 msgstr "現在のページ"
 
 #: ctk/ctkstack.c:491
 #, fuzzy
-#| msgid "X alignment of the child"
 msgid "Name of visible child"
 msgstr "子ウィジェットのX方向の位置です"
 
 #: ctk/ctkstack.c:491
 #, fuzzy
-#| msgid "Length of the text currently in the entry"
 msgid "The name of the widget currently visible in the stack"
 msgstr "エントリの中にある文字列の長さです"
 
 #: ctk/ctkstack.c:503
 #, fuzzy
-#| msgid "Translation Domain"
 msgid "Transition running"
 msgstr "翻訳ドメイン"
 
 #: ctk/ctkstack.c:503
 #, fuzzy
-#| msgid "Whether or not the status icon is blinking"
 msgid "Whether or not the transition is currently running"
 msgstr "ステータスアイコンを点滅させるかどうか"
 
 #: ctk/ctkstack.c:507
 #, fuzzy
-#| msgid "Indicator size"
 msgid "Interpolate size"
 msgstr "表示器の大きさ"
 
@@ -8271,35 +7822,30 @@ msgstr ""
 
 #: ctk/ctkstack.c:517
 #, fuzzy
-#| msgid "The name of the widget"
 msgid "The name of the child page"
 msgstr "ウィジェットの名前を指定します"
 
 #: ctk/ctkstack.c:524
 #, fuzzy
-#| msgid "The title of the assistant page"
 msgid "The title of the child page"
 msgstr "アシスタントのページに表示する題名です"
 
-#: ctk/ctkstack.c:530 ctk/ctktoolbutton.c:287
+#: ctk/ctkstack.c:530 ctk/ctktoolbutton.c:248
 msgid "Icon name"
 msgstr "アイコン名"
 
 #: ctk/ctkstack.c:531
 #, fuzzy
-#| msgid "The name of the widget"
 msgid "The icon name of the child page"
 msgstr "ウィジェットの名前を指定します"
 
 #: ctk/ctkstack.c:555
 #, fuzzy
-#| msgid "Related Action"
 msgid "Needs Attention"
 msgstr "関連するアクション"
 
 #: ctk/ctkstack.c:556
 #, fuzzy
-#| msgid "Whether this tag affects indentation"
 msgid "Whether this page needs attention"
 msgstr "このタグがインデントに影響するかどうか"
 
@@ -8313,9 +7859,13 @@ msgstr ""
 msgid "Associated stack for this CtkStackSidebar"
 msgstr ""
 
+#: ctk/ctkstackswitcher.c:686 ctk/ctktrayicon-x11.c:178
+#, fuzzy
+msgid "Icon Size"
+msgstr "アイコンのサイズ"
+
 #: ctk/ctkstackswitcher.c:687
 #, fuzzy
-#| msgid "Pixel size to use for named icon"
 msgid "Symbolic size to use for named icon"
 msgstr "名前付きアイコンに適用するピクセルのサイズ"
 
@@ -8323,9 +7873,64 @@ msgstr "名前付きアイコンに適用するピクセルのサイズ"
 msgid "Style of bevel around the statusbar text"
 msgstr "ステータスバーに表示するテキストの周りに配置するベベルのスタイルです"
 
+#: ctk/ctkstatusicon.c:287
+msgid "The size of the icon"
+msgstr "アイコンの大きさ"
+
+#: ctk/ctkstatusicon.c:297
+msgid "The screen where this status icon will be displayed"
+msgstr "このステータスアイコンを表示する画面です"
+
+#: ctk/ctkstatusicon.c:305
+msgid "Whether the status icon is visible"
+msgstr "ステータスアイコンを表示するかどうか"
+
+#: ctk/ctkstatusicon.c:321
+msgid "Whether the status icon is embedded"
+msgstr "ステータスアイコンを埋め込むかどうか"
+
+#: ctk/ctkstatusicon.c:337 ctk/ctktrayicon-x11.c:128
+msgid "The orientation of the tray"
+msgstr "トレイの向き"
+
+#: ctk/ctkstatusicon.c:364 ctk/ctkwidget.c:1285
+msgid "Has tooltip"
+msgstr "ツールチップ有り"
+
+#: ctk/ctkstatusicon.c:365
+msgid "Whether this tray icon has a tooltip"
+msgstr "トレイのアイコンにツールチップを表示するかどうか"
+
+#: ctk/ctkstatusicon.c:391 ctk/ctkwidget.c:1309
+msgid "Tooltip Text"
+msgstr "ツールチップの内容"
+
+#: ctk/ctkstatusicon.c:392 ctk/ctkwidget.c:1310 ctk/ctkwidget.c:1334
+msgid "The contents of the tooltip for this widget"
+msgstr "このウィジェットのツールチップとして表示する内容です"
+
+#: ctk/ctkstatusicon.c:415 ctk/ctkwidget.c:1333
+msgid "Tooltip markup"
+msgstr "ツールチップのマークアップ"
+
+#: ctk/ctkstatusicon.c:416
+msgid "The contents of the tooltip for this tray icon"
+msgstr "トレイのアイコンに表示するツールチップの内容 (マークアップ付き) です"
+
+#: ctk/ctkstatusicon.c:434
+msgid "The title of this tray icon"
+msgstr "このトレイアイコンのタイトル"
+
+#: ctk/ctkstyle.c:466
+msgid "Style context"
+msgstr ""
+
+#: ctk/ctkstyle.c:467
+msgid "CtkStyleContext to get style from"
+msgstr ""
+
 #: ctk/ctkstylecontext.c:230
 #, fuzzy
-#| msgid "Associated device"
 msgid "The associated CdkScreen"
 msgstr "関連したデバイス"
 
@@ -8335,7 +7940,6 @@ msgstr ""
 
 #: ctk/ctkstylecontext.c:237
 #, fuzzy
-#| msgid "Associated device"
 msgid "The associated CdkFrameClock"
 msgstr "関連したデバイス"
 
@@ -8345,25 +7949,21 @@ msgstr "テキストの向き"
 
 #: ctk/ctkstylecontext.c:260
 #, fuzzy
-#| msgid "Font style set"
 msgid "The parent style context"
 msgstr "フォントスタイルの設定"
 
 #: ctk/ctkstyleproperty.c:109
 #, fuzzy
-#| msgid "Program name"
 msgid "Property name"
 msgstr "プログラムの名前"
 
 #: ctk/ctkstyleproperty.c:110
 #, fuzzy
-#| msgid "The name of the widget"
 msgid "The name of the property"
 msgstr "ウィジェットの名前を指定します"
 
 #: ctk/ctkstyleproperty.c:116
 #, fuzzy
-#| msgid "Page type"
 msgid "Value type"
 msgstr "ページの種類"
 
@@ -8373,31 +7973,26 @@ msgstr ""
 
 #: ctk/ctkswitch.c:879
 #, fuzzy
-#| msgid "Whether the widget is double buffered"
 msgid "Whether the switch is on or off"
 msgstr "ウィジェットがダブルバッファーかどうか"
 
 #: ctk/ctkswitch.c:894
 #, fuzzy
-#| msgid "Cell background set"
 msgid "The backend state"
 msgstr "セルの背景色設定"
 
 #: ctk/ctkswitch.c:930
 #, fuzzy
-#| msgid "The minimum value of the adjustment"
 msgid "The minimum width of the handle"
 msgstr "アジャストメントの最小値です"
 
 #: ctk/ctkswitch.c:946
 #, fuzzy
-#| msgid "Slider Length"
 msgid "Slider Height"
 msgstr "スライダーの長さ"
 
 #: ctk/ctkswitch.c:947
 #, fuzzy
-#| msgid "The minimum value of the adjustment"
 msgid "The minimum height of the handle"
 msgstr "アジャストメントの最小値です"
 
@@ -8651,7 +8246,6 @@ msgstr "段落の背景色"
 
 #: ctk/ctktexttag.c:631
 #, fuzzy
-#| msgid "Paragraph background color as a string"
 msgid "Paragraph background color as a CdkColor"
 msgstr "段落の背景色を示す文字列です"
 
@@ -8661,7 +8255,6 @@ msgstr "段落の RGBA 背景色"
 
 #: ctk/ctktexttag.c:646
 #, fuzzy
-#| msgid "Paragraph background color as a string"
 msgid "Paragraph background RGBA as a CdkRGBA"
 msgstr "段落の背景色を示す文字列です"
 
@@ -8675,7 +8268,6 @@ msgstr "フォントのフォールバックが有効かどうか。"
 
 #: ctk/ctktexttag.c:678
 #, fuzzy
-#| msgid "Header Spacing"
 msgid "Letter Spacing"
 msgstr "ヘッダーの間隔"
 
@@ -8685,7 +8277,6 @@ msgstr ""
 
 #: ctk/ctktexttag.c:693
 #, fuzzy
-#| msgid "Font stretch"
 msgid "Font Features"
 msgstr "フォントストレッチ"
 
@@ -8811,37 +8402,31 @@ msgstr "このタグが段落の背景色に影響するかどうか"
 
 #: ctk/ctktexttag.c:848
 #, fuzzy
-#| msgid "Use alpha"
 msgid "Fallback set"
 msgstr "アルファ値を使う"
 
 #: ctk/ctktexttag.c:849
 #, fuzzy
-#| msgid "Whether this tag affects the font family"
 msgid "Whether this tag affects font fallback"
 msgstr "このタグがフォントファミリに影響するかどうか"
 
 #: ctk/ctktexttag.c:852
 #, fuzzy
-#| msgid "Left margin set"
 msgid "Letter spacing set"
 msgstr "左マージンの設定"
 
 #: ctk/ctktexttag.c:853
 #, fuzzy
-#| msgid "Whether this tag affects the left margin"
 msgid "Whether this tag affects letter spacing"
 msgstr "このタグが左マージンに影響するかどうか"
 
 #: ctk/ctktexttag.c:856
 #, fuzzy
-#| msgid "Font stretch set"
 msgid "Font features set"
 msgstr "フォントの展張の設定"
 
 #: ctk/ctktexttag.c:857
 #, fuzzy
-#| msgid "Whether this tag affects tabs"
 msgid "Whether this tag affects font features"
 msgstr "このタグがタブに影響するかどうか"
 
@@ -8871,25 +8456,21 @@ msgstr "右マージン"
 
 #: ctk/ctktextview.c:904
 #, fuzzy
-#| msgid "Margin"
 msgid "Top Margin"
 msgstr "マージン"
 
 #: ctk/ctktextview.c:905
 #, fuzzy
-#| msgid "Width of the left margin in pixels"
 msgid "Height of the top margin in pixels"
 msgstr "左マージンの幅 (ピクセル単位)"
 
 #: ctk/ctktextview.c:925
 #, fuzzy
-#| msgid "Bottom Padding"
 msgid "Bottom Margin"
 msgstr "下部パディング"
 
 #: ctk/ctktextview.c:926
 #, fuzzy
-#| msgid "Width of the left margin in pixels"
 msgid "Height of the bottom margin in pixels"
 msgstr "左マージンの幅 (ピクセル単位)"
 
@@ -8923,13 +8504,11 @@ msgstr "入力されているタブ文字をタブとして表示するかどう
 
 #: ctk/ctktextview.c:1062
 #, fuzzy
-#| msgid "Colorspace"
 msgid "Monospace"
 msgstr "カラースペース"
 
 #: ctk/ctktextview.c:1063
 #, fuzzy
-#| msgid "Warning color for symbolic icons"
 msgid "Whether to use a monospace font"
 msgstr "シンボリックアイコンの警告を表すの色です"
 
@@ -8940,6 +8519,19 @@ msgstr "エラーを示す下線の色"
 #: ctk/ctktextview.c:1082
 msgid "Color with which to draw error-indication underlines"
 msgstr "エラーを示す下線を描画する色です"
+
+#: ctk/ctktoggleaction.c:114
+msgid "Create the same proxies as a radio action"
+msgstr "ラジオアクションと同じプロキシを作成する"
+
+#: ctk/ctktoggleaction.c:115
+msgid "Whether the proxies for this action look like radio action proxies"
+msgstr ""
+"このアクションのプロキシをラジオボタンのアクションプロキシにするかどうかです"
+
+#: ctk/ctktoggleaction.c:130
+msgid "Whether the toggle action should be active"
+msgstr "トグル操作をアクティブにするかどうか"
 
 #: ctk/ctktogglebutton.c:189 ctk/ctktoggletoolbutton.c:131
 msgid "If the toggle button should be pressed in"
@@ -9035,11 +8627,11 @@ msgstr "ツールバーボタンの周りの縁取りの種類"
 msgid "Style of bevel around the toolbar"
 msgstr "ツールバー周りのに縁取りのスタイル"
 
-#: ctk/ctktoolbutton.c:244
+#: ctk/ctktoolbutton.c:205
 msgid "Text to show in the item."
 msgstr "項目に表示するテキスト"
 
-#: ctk/ctktoolbutton.c:251
+#: ctk/ctktoolbutton.c:212
 msgid ""
 "If set, an underline in the label property indicates that the next character "
 "should be used for the mnemonic accelerator key in the overflow menu"
@@ -9047,35 +8639,35 @@ msgstr ""
 "セットすると、ラベルプロパティ上の下線の次にある文字がオーバーフローメニュー"
 "のアクセラレータキーのニーモニックとして使用される"
 
-#: ctk/ctktoolbutton.c:258
+#: ctk/ctktoolbutton.c:219
 msgid "Widget to use as the item label"
 msgstr "項目のラベルとして使用されるウィジェット"
 
-#: ctk/ctktoolbutton.c:269
+#: ctk/ctktoolbutton.c:230
 msgid "Stock Id"
 msgstr "ストック ID"
 
-#: ctk/ctktoolbutton.c:270
+#: ctk/ctktoolbutton.c:231
 msgid "The stock icon displayed on the item"
 msgstr "項目に表示されるストックアイコン"
 
-#: ctk/ctktoolbutton.c:288
+#: ctk/ctktoolbutton.c:249
 msgid "The name of the themed icon displayed on the item"
 msgstr "項目に表示されるテーマのアイコン名"
 
-#: ctk/ctktoolbutton.c:294
+#: ctk/ctktoolbutton.c:255
 msgid "Icon widget"
 msgstr "アイコンウィジェット"
 
-#: ctk/ctktoolbutton.c:295
+#: ctk/ctktoolbutton.c:256
 msgid "Icon widget to display in the item"
 msgstr "項目に表示されるアイコンウィジェット"
 
-#: ctk/ctktoolbutton.c:311
+#: ctk/ctktoolbutton.c:272
 msgid "Icon spacing"
 msgstr "アイコンの間隔"
 
-#: ctk/ctktoolbutton.c:312
+#: ctk/ctktoolbutton.c:273
 msgid "Spacing in pixels between the icon and label"
 msgstr "アイコンとラベルの間に挿入する間隔 (ピクセル単位) です"
 
@@ -9168,15 +8760,49 @@ msgid ""
 "Whether the item group should receive extra space when the palette grows"
 msgstr "パレットが大きくなった際にアイテムグループに余白が追加されるかどうか"
 
+#: ctk/ctktrayicon-x11.c:137
+msgid "Foreground color for symbolic icons"
+msgstr "シンボリックアイコンの前景色"
+
+#: ctk/ctktrayicon-x11.c:144
+msgid "Error color"
+msgstr "エラーの色"
+
+#: ctk/ctktrayicon-x11.c:145
+msgid "Error color for symbolic icons"
+msgstr "シンボリックアイコンのエラーを表す色です"
+
+#: ctk/ctktrayicon-x11.c:152
+msgid "Warning color"
+msgstr "警告の色"
+
+#: ctk/ctktrayicon-x11.c:153
+msgid "Warning color for symbolic icons"
+msgstr "シンボリックアイコンの警告を表す色です"
+
+#: ctk/ctktrayicon-x11.c:160
+msgid "Success color"
+msgstr "成功の色"
+
+#: ctk/ctktrayicon-x11.c:161
+msgid "Success color for symbolic icons"
+msgstr "シンボリックアイコンで成功を表す色です"
+
+#: ctk/ctktrayicon-x11.c:169
+msgid "Padding that should be put around icons in the tray"
+msgstr "トレイ中のアイコンのまわりにパディングを付けるかどうか"
+
+#: ctk/ctktrayicon-x11.c:179
+msgid "The pixel size that icons should be forced to, or zero"
+msgstr ""
+
 #: ctk/ctktreemenu.c:265
 #, fuzzy
-#| msgid "TreeView Model"
 msgid "TreeMenu model"
 msgstr "ツリービューのモデル"
 
 #: ctk/ctktreemenu.c:266
 #, fuzzy
-#| msgid "The model for the tree view"
 msgid "The model for the tree menu"
 msgstr "ツリービューで使用するモデルです"
 
@@ -9190,38 +8816,32 @@ msgstr ""
 
 #: ctk/ctktreemenu.c:322
 #, fuzzy
-#| msgid "Tearoff Title"
 msgid "Tearoff"
 msgstr "ティアオフタイトル"
 
 #: ctk/ctktreemenu.c:323
 #, fuzzy
-#| msgid "Whether the mark has left gravity"
 msgid "Whether the menu has a tearoff item"
 msgstr ""
 "マークが左グラビティを持つかどうかです (左向きに移動することを表します)"
 
 #: ctk/ctktreemenu.c:338
 #, fuzzy
-#| msgid "Wrap width"
 msgid "Wrap Width"
 msgstr "折り返し幅"
 
 #: ctk/ctktreemenu.c:339
 #, fuzzy
-#| msgid "Wrap width for laying out the items in a grid"
 msgid "Wrap width for laying out items in a grid"
 msgstr "グリッドに項目をレイアウトするための折り返し幅"
 
 #: ctk/ctktreemodelfilter.c:532
 #, fuzzy
-#| msgid "The selection mode"
 msgid "The child model"
 msgstr "選択するモードです"
 
 #: ctk/ctktreemodelfilter.c:533
 #, fuzzy
-#| msgid "The model for the tree view"
 msgid "The model for the filtermodel to filter"
 msgstr "ツリービューで使用するモデルです"
 
@@ -9463,7 +9083,6 @@ msgstr "列の変更可能"
 
 #: ctk/ctktreeviewcolumn.c:261
 #, fuzzy
-#| msgid "Current width of the column"
 msgid "Current X position of the column"
 msgstr "列の現在の幅"
 
@@ -9551,19 +9170,29 @@ msgstr "ソート列ID"
 msgid "Logical sort column ID this column sorts on when selected for sorting"
 msgstr "ソートのために選択された時に並べかえる対象となる論理ソート列ID"
 
+#: ctk/ctkuimanager.c:453
+msgid "Whether tearoff menu items should be added to menus"
+msgstr "ティアオフメニュー項目をメニューに追加するかどうか"
+
+#: ctk/ctkuimanager.c:460
+msgid "Merged UI definition"
+msgstr "統合された UI 定義"
+
+#: ctk/ctkuimanager.c:461
+msgid "An XML string describing the merged UI"
+msgstr "統合された UI を記述する XML 文字列"
+
 #: ctk/ctkviewport.c:409
 msgid "Determines how the shadowed box around the viewport is drawn"
 msgstr "表示するビューポートの周囲に影付きのボックスを配置するかどうか"
 
 #: ctk/ctkvolumebutton.c:168
 #, fuzzy
-#| msgid "Success color for symbolic icons"
 msgid "Use symbolic icons"
 msgstr "シンボリックアイコンで成功を表す色です"
 
 #: ctk/ctkvolumebutton.c:169
 #, fuzzy
-#| msgid "Warning color for symbolic icons"
 msgid "Whether to use symbolic icons"
 msgstr "シンボリックアイコンの警告を表すの色です"
 
@@ -9646,7 +9275,6 @@ msgstr "クリックでフォーカスを当てる"
 
 #: ctk/ctkwidget.c:1203
 #, fuzzy
-#| msgid "Whether the button grabs focus when it is clicked with the mouse"
 msgid "Whether the widget should grab focus when it is clicked with the mouse"
 msgstr "マウスでクリックした時にボタンにフォーカスを当てるかどうか"
 
@@ -9753,25 +9381,21 @@ msgstr "右側の追加スペースのピクセル数"
 
 #: ctk/ctkwidget.c:1454
 #, fuzzy
-#| msgid "Margin on Bottom"
 msgid "Margin on Start"
 msgstr "下のマージン"
 
 #: ctk/ctkwidget.c:1455
 #, fuzzy
-#| msgid "Pixels of extra space on the right side"
 msgid "Pixels of extra space on the start"
 msgstr "右側の追加スペースのピクセル数"
 
 #: ctk/ctkwidget.c:1474
 #, fuzzy
-#| msgid "Margin on Top"
 msgid "Margin on End"
 msgstr "上のマージン"
 
 #: ctk/ctkwidget.c:1475
 #, fuzzy
-#| msgid "Pixels of extra space on the left side"
 msgid "Pixels of extra space on the end"
 msgstr "左側の追加スペースのピクセル数"
 
@@ -9851,25 +9475,21 @@ msgstr "ウィジェットは入力のフォーカスをもてるかどうか"
 
 #: ctk/ctkwidget.c:1616
 #, fuzzy
-#| msgid "Opacity for Window"
 msgid "Opacity for Widget"
 msgstr "ウィンドウの透明度"
 
 #: ctk/ctkwidget.c:1617
 #, fuzzy
-#| msgid "The opacity of the window, from 0 to 1"
 msgid "The opacity of the widget, from 0 to 1"
 msgstr "ウィンドウの透明度を 0 から 1 の数値で指定します"
 
 #: ctk/ctkwidget.c:1632
 #, fuzzy
-#| msgid "Font scaling factor"
 msgid "Scale factor"
 msgstr "フォントのスケール (率)"
 
 #: ctk/ctkwidget.c:1633
 #, fuzzy
-#| msgid "The title of the window"
 msgid "The scaling factor of the window"
 msgstr "ウィンドウのタイトル"
 
@@ -9942,7 +9562,6 @@ msgstr "ウィンドウのドラッグ"
 
 #: ctk/ctkwidget.c:3584
 #, fuzzy
-#| msgid "Whether windows can be dragged by clicking on empty areas"
 msgid "Whether windows can be dragged and maximized by clicking on empty areas"
 msgstr "空白の領域をクリックすることでウィンドウをドラッグできるかどうか"
 
@@ -10007,13 +9626,11 @@ msgstr "垂直スクロールバーに付ける矢印の長さです"
 
 #: ctk/ctkwidget.c:3710 ctk/ctkwidget.c:3711
 #, fuzzy
-#| msgid "Width of handle"
 msgid "Width of text selection handles"
 msgstr "取っ手の幅"
 
 #: ctk/ctkwidget.c:3716 ctk/ctkwidget.c:3717
 #, fuzzy
-#| msgid "The title of the font selection dialog"
 msgid "Height of text selection handles"
 msgstr "フォント選択ダイアログのタイトル"
 
@@ -10100,7 +9717,6 @@ msgstr ""
 
 #: ctk/ctkwindow.c:835
 #, fuzzy
-#| msgid "If this window should be destroyed when the parent is destroyed"
 msgid "If this window's titlebar should be hidden when the window is maximized"
 msgstr "親ウィジェットが破棄された時にこのウィンドウも破棄するかどうか"
 
@@ -10118,13 +9734,11 @@ msgstr "このウィンドウでニーモニックが現在、表示されてい
 
 #: ctk/ctkwindow.c:875
 #, fuzzy
-#| msgid "Cursor Visible"
 msgid "Focus Visible"
 msgstr "カーソルの表示"
 
 #: ctk/ctkwindow.c:876
 #, fuzzy
-#| msgid "Whether mnemonics are currently visible in this window"
 msgid "Whether focus rectangles are currently visible in this window"
 msgstr "このウィンドウでニーモニックが現在、表示されているかどうか"
 
@@ -10245,13 +9859,11 @@ msgstr "ウィンドウのグラビティ"
 
 #: ctk/ctkwindow.c:1084
 #, fuzzy
-#| msgid "Attach Widget"
 msgid "Attached to Widget"
 msgstr "取り付け先のウィジェット"
 
 #: ctk/ctkwindow.c:1085
 #, fuzzy
-#| msgid "The widget the menu is attached to"
 msgid "The widget where the window is attached"
 msgstr "メニューが取り付けられている先のウィジェットです"
 
@@ -10261,19 +9873,16 @@ msgstr ""
 
 #: ctk/ctkwindow.c:1092
 #, fuzzy
-#| msgid "Whether the widget is visible"
 msgid "Whether the window is maximized"
 msgstr "ウィジェットが表示可能かどうか"
 
 #: ctk/ctkwindow.c:1113
 #, fuzzy
-#| msgid "Application paintable"
 msgid "CtkApplication"
 msgstr "アプリケーション表示可否"
 
 #: ctk/ctkwindow.c:1114
 #, fuzzy
-#| msgid "The initial position of the window"
 msgid "The CtkApplication for the window"
 msgstr "ウィンドウの初期位置"
 
@@ -10295,7 +9904,6 @@ msgstr ""
 
 #: modules/printbackends/cloudprint/ctkprintercloudprint.c:147
 #, fuzzy
-#| msgid "Printer"
 msgid "Printer ID"
 msgstr "プリンター"
 
@@ -10309,7 +9917,6 @@ msgstr ""
 
 #: modules/printbackends/cups/ctkprintercups.c:94
 #, fuzzy
-#| msgid "The title of the color selection dialog"
 msgid "The title of the color profile to use"
 msgstr "色選択ダイアログのタイトル"
 

@@ -29,7 +29,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+-properties.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-07 14:42+0000\n"
+"POT-Creation-Date: 2022-03-23 18:06+0100\n"
 "PO-Revision-Date: 2019-06-17 01:20+0300\n"
 "Last-Translator: Efstathios Iosifidis <eiosifidis@gnome.org>\n"
 "Language-Team: team@lists.gnome.gr\n"
@@ -150,11 +150,11 @@ msgstr "Το εργαλείο που χρησιμοποιείτε από τη σ
 msgid "Display for the device manager"
 msgstr "Εμφάνιση για τη διαχείριση συσκευών"
 
-#: cdk/cdkdisplaymanager.c:172
+#: cdk/cdkdisplaymanager.c:162
 msgid "Default Display"
 msgstr "Προεπιλεγμένη εμφάνιση"
 
-#: cdk/cdkdisplaymanager.c:173
+#: cdk/cdkdisplaymanager.c:163
 msgid "The default display for CDK"
 msgstr "Η προεπιλεγμένη εμφάνιση για CDK"
 
@@ -162,7 +162,7 @@ msgstr "Η προεπιλεγμένη εμφάνιση για CDK"
 msgid "The CDK display used to create the GL context"
 msgstr "Η προβολή CDK χρησιμοποιήθηκε για τη δημιουργία του περιεχομένου GL"
 
-#: cdk/cdkglcontext.c:333 ctk/ctkwidget.c:1344
+#: cdk/cdkglcontext.c:333 ctk/ctkwidget.c:1347
 msgid "Window"
 msgstr "Παράθυρο"
 
@@ -178,19 +178,19 @@ msgstr "Κοινόχρηστο περιβάλλον"
 msgid "The GL context this context shares data with"
 msgstr "Το περιβάλλον GL με το οποίο αυτό το περιβάλλον μοιράζεται δεδομένα"
 
-#: cdk/cdkscreen.c:91
+#: cdk/cdkscreen.c:93
 msgid "Font options"
 msgstr "Επιλογές γραμματοσειράς"
 
-#: cdk/cdkscreen.c:92
+#: cdk/cdkscreen.c:94
 msgid "The default font options for the screen"
 msgstr "Όνομα της προεπιλεγμένης γραμματοσειράς για την οθόνη"
 
-#: cdk/cdkscreen.c:99
+#: cdk/cdkscreen.c:101
 msgid "Font resolution"
 msgstr "Ανάλυση γραμματοσειράς"
 
-#: cdk/cdkscreen.c:100
+#: cdk/cdkscreen.c:102
 msgid "The resolution for fonts on the screen"
 msgstr "Η ανάλυση για τις γραμματοσειρές στην οθόνη"
 
@@ -238,81 +238,80 @@ msgstr "Απεικονιστής κελιών"
 msgid "The cell renderer represented by this accessible"
 msgstr "Ο απεικονιστής κελιών εκπροσωπούμενος από αυτό το προσβάσιμο"
 
-#: ctk/ctkaction.c:243 ctk/ctkactiongroup.c:200
+#: ctk/ctkaction.c:233 ctk/ctkactiongroup.c:196
 #: ctk/deprecated/ctkthemingengine.c:247 ctk/ctkcssnode.c:638
 #: ctk/ctkprinter.c:121 ctk/ctkstack.c:516 ctk/ctktextmark.c:136
 msgid "Name"
 msgstr "Όνομα"
 
-#: ctk/ctkaction.c:244
+#: ctk/ctkaction.c:234
 msgid "A unique name for the action."
 msgstr "Ένα μοναδικό όνομα για αυτή την ενέργεια."
 
-#: ctk/ctkaction.c:264 ctk/ctkbutton.c:281 ctk/ctkexpander.c:308
+#: ctk/ctkaction.c:252 ctk/ctkbutton.c:281 ctk/ctkexpander.c:308
 #: ctk/ctkframe.c:231 ctk/ctklabel.c:805 ctk/ctkmenuitem.c:789
-#: ctk/ctktoolbutton.c:243 ctk/ctktoolitemgroup.c:1639
+#: ctk/ctktoolbutton.c:204 ctk/ctktoolitemgroup.c:1639
 msgid "Label"
 msgstr "Ετικέτα"
 
-#: ctk/ctkaction.c:265
+#: ctk/ctkaction.c:253
 msgid "The label used for menu items and buttons that activate this action."
 msgstr ""
 "Η ετικέτα που χρησιμοποιείται για τα αντικείμενα μενού και κουμπιά που "
 "ενεργοποιούν αυτή την ενέργεια."
 
-#: ctk/ctkaction.c:284
+#: ctk/ctkaction.c:269
 msgid "Short label"
 msgstr "Σύντομη ετικέτα"
 
-#: ctk/ctkaction.c:285
+#: ctk/ctkaction.c:270
 msgid "A shorter label that may be used on toolbar buttons."
 msgstr ""
 "Μια σύντομη ετικέτα που μπορεί να χρησιμοποιηθεί στα κουμπιά της "
 "εργαλειοθήκης."
 
-#: ctk/ctkaction.c:300
+#: ctk/ctkaction.c:283
 msgid "Tooltip"
 msgstr "Συμβουλή οθόνης"
 
-#: ctk/ctkaction.c:301
+#: ctk/ctkaction.c:284
 msgid "A tooltip for this action."
 msgstr "Μια συμβουλή οθόνης για αυτή την ενέργεια."
 
-#: ctk/ctkaction.c:319
+#: ctk/ctkaction.c:299
 msgid "Stock Icon"
 msgstr "Εικονίδιο αποθέματος"
 
-#: ctk/ctkaction.c:320
+#: ctk/ctkaction.c:300
 msgid "The stock icon displayed in widgets representing this action."
 msgstr ""
 "Το εικονίδιο αποθέματος που εμφανίζεται στα γραφικά στοιχεία αναπαριστώντας "
 "αυτή την ενέργεια."
 
-#: ctk/ctkaction.c:342 ctk/ctkstatusicon.c:279
+#: ctk/ctkaction.c:320 ctk/ctkstatusicon.c:269
 msgid "GIcon"
 msgstr "GIcon"
 
-#: ctk/ctkaction.c:343 ctk/ctkstatusicon.c:280
-#: ctk/ctkcellrendererpixbuf.c:282 ctk/ctkimage.c:360
+#: ctk/ctkaction.c:321 ctk/ctkcellrendererpixbuf.c:282 ctk/ctkimage.c:358
+#: ctk/ctkstatusicon.c:270
 msgid "The GIcon being displayed"
 msgstr "Το GIcon που εμφανίζεται"
 
-#: ctk/ctkaction.c:365 ctk/ctkstatusicon.c:263
-#: ctk/ctkcellrendererpixbuf.c:245 ctk/ctkimage.c:343 ctk/ctkprinter.c:170
-#: ctk/ctkwindow.c:894
+#: ctk/ctkaction.c:341 ctk/ctkcellrendererpixbuf.c:245 ctk/ctkimage.c:341
+#: ctk/ctkprinter.c:170 ctk/ctkstatusicon.c:253 ctk/ctkwindow.c:890
 msgid "Icon Name"
 msgstr "Όνομα εικονιδίου"
 
-#: ctk/ctkaction.c:366 ctk/ctkstatusicon.c:264
-#: ctk/ctkcellrendererpixbuf.c:246 ctk/ctkimage.c:344
+#: ctk/ctkaction.c:342 ctk/ctkcellrendererpixbuf.c:246 ctk/ctkimage.c:342
+#: ctk/ctkstatusicon.c:254
 msgid "The name of the icon from the icon theme"
 msgstr "Το όνομα του επιλεγμένου εικονιδίου από το θέμα εικονιδίου"
 
-#: ctk/ctkaction.c:381 ctk/ctktoolitem.c:179
+#: ctk/ctkaction.c:354 ctk/ctktoolitem.c:179
 msgid "Visible when horizontal"
 msgstr "Ορατό σε οριζόντια θέση"
 
-#: ctk/ctkaction.c:382 ctk/ctktoolitem.c:180
+#: ctk/ctkaction.c:355 ctk/ctktoolitem.c:180
 msgid ""
 "Whether the toolbar item is visible when the toolbar is in a horizontal "
 "orientation."
@@ -320,11 +319,11 @@ msgstr ""
 "Αν το αντικείμενο εργαλειοθήκης θα είναι ορατό όταν η εργαλειοθήκη έχει "
 "οριζόντιο προσανατολισμό."
 
-#: ctk/ctkaction.c:400
+#: ctk/ctkaction.c:370
 msgid "Visible when overflown"
 msgstr "Ορατό στην υπερχείλιση"
 
-#: ctk/ctkaction.c:401
+#: ctk/ctkaction.c:371
 msgid ""
 "When TRUE, toolitem proxies for this action are represented in the toolbar "
 "overflow menu."
@@ -332,11 +331,11 @@ msgstr ""
 "Όταν είναι ΑΛΗΘΕΣ, οι κενοί διαμεσολαβητές μενού για αυτή την ενέργεια θα "
 "εμφανίζονται στο μενού υπερχείλισης."
 
-#: ctk/ctkaction.c:417 ctk/ctktoolitem.c:186
+#: ctk/ctkaction.c:384 ctk/ctktoolitem.c:186
 msgid "Visible when vertical"
 msgstr "Ορατό σε κάθετη θέση"
 
-#: ctk/ctkaction.c:418 ctk/ctktoolitem.c:187
+#: ctk/ctkaction.c:385 ctk/ctktoolitem.c:187
 msgid ""
 "Whether the toolbar item is visible when the toolbar is in a vertical "
 "orientation."
@@ -344,11 +343,11 @@ msgstr ""
 "Αν το αντικείμενο εργαλειοθήκης θα είναι ορατό όταν η εργαλειοθήκη έχει "
 "κάθετο προσανατολισμό."
 
-#: ctk/ctkaction.c:434 ctk/ctktoolitem.c:193
+#: ctk/ctkaction.c:398 ctk/ctktoolitem.c:193
 msgid "Is important"
 msgstr "Είναι σημαντικό"
 
-#: ctk/ctkaction.c:435
+#: ctk/ctkaction.c:399
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
 "this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
@@ -357,40 +356,40 @@ msgstr ""
 "εργαλείου για αυτή την ενέργεια θα εμφανίζουν κείμενο σε λειτουργία "
 "CTK_TOOLBAR_BOTH_HORIZ."
 
-#: ctk/ctkaction.c:451
+#: ctk/ctkaction.c:412
 msgid "Hide if empty"
 msgstr "Απόκρυψη αν είναι κενό"
 
-#: ctk/ctkaction.c:452
+#: ctk/ctkaction.c:413
 msgid "When TRUE, empty menu proxies for this action are hidden."
 msgstr ""
 "Όταν είναι ΑΛΗΘΕΣ, οι κενοί διαμεσολαβητές μενού για αυτή την ενέργεια θα "
 "αποκρύπτονται."
 
-#: ctk/ctkaction.c:466 ctk/ctkactiongroup.c:214
-#: ctk/ctkcellrenderer.c:308 ctk/ctkwidget.c:1152
+#: ctk/ctkaction.c:424 ctk/ctkactiongroup.c:208 ctk/ctkcellrenderer.c:308
+#: ctk/ctkwidget.c:1155
 msgid "Sensitive"
 msgstr "Ευαίσθητο"
 
-#: ctk/ctkaction.c:467
+#: ctk/ctkaction.c:425
 msgid "Whether the action is enabled."
 msgstr "Αν αυτή η ενέργεια θα είναι ενεργοποιημένη."
 
-#: ctk/ctkaction.c:481 ctk/ctkactiongroup.c:228
-#: ctk/ctkstatusicon.c:314 ctk/ctkcssnode.c:649
-#: ctk/ctknativedialog.c:242 ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1145
+#: ctk/ctkaction.c:436 ctk/ctkactiongroup.c:220 ctk/ctkcssnode.c:649
+#: ctk/ctknativedialog.c:242 ctk/ctkstatusicon.c:304
+#: ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1148
 msgid "Visible"
 msgstr "Ορατό"
 
-#: ctk/ctkaction.c:482
+#: ctk/ctkaction.c:437
 msgid "Whether the action is visible."
 msgstr "Αν αυτή η ενέργεια θα είναι ορατή."
 
-#: ctk/ctkaction.c:497
+#: ctk/ctkaction.c:449
 msgid "Action Group"
 msgstr "Ομάδα ενέργειας"
 
-#: ctk/ctkaction.c:498
+#: ctk/ctkaction.c:450
 msgid ""
 "The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
@@ -398,50 +397,48 @@ msgstr ""
 "Το CtkActionGroup όπου συνδέεται με το CtkAction, ή NULL (για εσωτερική "
 "χρήση)."
 
-#: ctk/ctkaction.c:519 ctk/ctkimagemenuitem.c:264
-#: ctk/ctkbutton.c:393
+#: ctk/ctkaction.c:468 ctk/ctkbutton.c:393 ctk/ctkimagemenuitem.c:254
 msgid "Always show image"
 msgstr "Πάντα εμφάνιση εικόνας"
 
-#: ctk/ctkaction.c:520 ctk/ctkimagemenuitem.c:265
-#: ctk/ctkbutton.c:394
+#: ctk/ctkaction.c:469 ctk/ctkbutton.c:394 ctk/ctkimagemenuitem.c:255
 msgid "Whether the image will always be shown"
 msgstr "Αν θα εμφανίζεται πάντα η εικόνα"
 
-#: ctk/ctkactiongroup.c:201
+#: ctk/ctkactiongroup.c:197
 msgid "A name for the action group."
 msgstr "Ένα όνομα για αυτή την ομάδα ενεργειών."
 
-#: ctk/ctkactiongroup.c:215
+#: ctk/ctkactiongroup.c:209
 msgid "Whether the action group is enabled."
 msgstr "Αν αυτή η ομάδα ενέργειας θα είναι ενεργοποιημένη."
 
-#: ctk/ctkactiongroup.c:229
+#: ctk/ctkactiongroup.c:221
 msgid "Whether the action group is visible."
 msgstr "Αν αυτή η ομάδα ενέργειας θα είναι ορατή."
 
-#: ctk/ctkactiongroup.c:242
+#: ctk/ctkactiongroup.c:232
 msgid "Accelerator Group"
 msgstr "Ομάδα συντόμευσης"
 
-#: ctk/ctkactiongroup.c:243
+#: ctk/ctkactiongroup.c:233
 msgid "The accelerator group the actions of this group should use."
 msgstr "Η ομάδα συντόμευσης που πρέπει να χρησιμοποιούν οι ενέργειες."
 
-#: ctk/ctkactivatable.c:290
+#: ctk/ctkactivatable.c:286
 msgid "Related Action"
 msgstr "Σχετική ενέργεια"
 
-#: ctk/ctkactivatable.c:291
+#: ctk/ctkactivatable.c:287
 msgid "The action this activatable will activate and receive updates from"
 msgstr ""
 "Η ενέργεια που θα ενεργοποιείται και από την οποία θα λαμβάνονται ενημερώσεις"
 
-#: ctk/ctkactivatable.c:315
+#: ctk/ctkactivatable.c:309
 msgid "Use Action Appearance"
 msgstr "Χρήση εμφάνισης ενέργειας"
 
-#: ctk/ctkactivatable.c:316
+#: ctk/ctkactivatable.c:310
 msgid "Whether to use the related actions appearance properties"
 msgstr "Αν θα χρησιμοποιούνται οι ιδιότητες εμφάνισης των σχετικών ενεργειών"
 
@@ -544,7 +541,7 @@ msgstr "Σκιά βέλους"
 msgid "Appearance of the shadow surrounding the arrow"
 msgstr "Εμφάνιση της σκιάς που περιβάλλει το βέλος"
 
-#: ctk/deprecated/ctkarrow.c:138 ctk/ctkcombobox.c:1226 ctk/ctkmenu.c:1005
+#: ctk/deprecated/ctkarrow.c:138 ctk/ctkcombobox.c:1227 ctk/ctkmenu.c:1006
 #: ctk/ctkmenuitem.c:898
 msgid "Arrow Scaling"
 msgstr "Να επιτρέπεται κλιμάκωση"
@@ -643,7 +640,7 @@ msgid "The text to display in order to demonstrate the selected font"
 msgstr ""
 "Το κείμενο που εμφανίζεται για την παρουσίαση της επιλεγμένης γραμματοσειράς"
 
-#: ctk/deprecated/ctkhandlebox.c:223 ctk/ctkcombobox.c:1245 ctk/ctkentry.c:1001
+#: ctk/deprecated/ctkhandlebox.c:223 ctk/ctkcombobox.c:1246 ctk/ctkentry.c:1001
 #: ctk/ctkmenubar.c:253 ctk/ctkstatusbar.c:177 ctk/ctktoolbar.c:680
 #: ctk/ctkviewport.c:408
 msgid "Shadow type"
@@ -697,33 +694,6 @@ msgstr ""
 "Λογική τιμή που υποδεικνύει αν το θυγατρικό του κουτιού χειρισμού είναι "
 "συνημμένο ή αποσπασμένο."
 
-#: ctk/ctkimagemenuitem.c:226 ctk/ctkbutton.c:360
-msgid "Image widget"
-msgstr "Γραφικό στοιχείο εικόνας"
-
-#: ctk/ctkimagemenuitem.c:227
-msgid "Child widget to appear next to the menu text"
-msgstr ""
-"Θυγατρικό γραφικό στοιχείο που θα εμφανίζεται δίπλα από το κείμενο του μενού"
-
-#: ctk/ctkimagemenuitem.c:243 ctk/ctkbutton.c:300
-msgid "Use stock"
-msgstr "Χρήση αποθέματος"
-
-#: ctk/ctkimagemenuitem.c:244
-msgid "Whether to use the label text to create a stock menu item"
-msgstr ""
-"Aν το κείμενο της ετικέτας θα χρησιμοποιηθεί για τη δημιουργία στοιχείου "
-"μενού αποθέματος"
-
-#: ctk/ctkimagemenuitem.c:281 ctk/ctkmenu.c:654
-msgid "Accel Group"
-msgstr "Ομάδα Accel"
-
-#: ctk/ctkimagemenuitem.c:282
-msgid "The Accel Group to use for stock accelerator keys"
-msgstr "Η ομάδα Accel που χρησιμοποιείται για τα έτοιμα πλήκτρα συντομεύσεων"
-
 #: ctk/deprecated/ctkmisc.c:114 ctk/ctkentry.c:968 ctk/ctklabel.c:851
 msgid "X align"
 msgstr "Στοίχιση Χ"
@@ -766,205 +736,45 @@ msgstr ""
 "Το μέγεθος του διαστήματος για προσθήκη στο πάνω και κάτω μέρος του γραφικού "
 "στοιχείου, σε εικονοστοιχεία"
 
-#: ctk/deprecated/ctknumerableicon.c:642
+#: ctk/deprecated/ctknumerableicon.c:643
 msgid "Icon's count"
 msgstr "Δείκτης εικονιδίου"
 
-#: ctk/deprecated/ctknumerableicon.c:643
+#: ctk/deprecated/ctknumerableicon.c:644
 msgid "The count of the emblem currently displayed"
 msgstr "Ο δείκτης του εμβλήματος που εμφανίζεται τώρα"
 
-#: ctk/deprecated/ctknumerableicon.c:649
+#: ctk/deprecated/ctknumerableicon.c:650
 msgid "Icon's label"
 msgstr "Όνομα εικονιδίου"
 
-#: ctk/deprecated/ctknumerableicon.c:650
+#: ctk/deprecated/ctknumerableicon.c:651
 msgid "The label to be displayed over the icon"
 msgstr "Το όνομα που θα εμφανίζεται πάνω από το αντικείμενο"
 
-#: ctk/deprecated/ctknumerableicon.c:656
+#: ctk/deprecated/ctknumerableicon.c:657
 msgid "Icon's style context"
 msgstr "Στυλ του περιεχόμενου εικονιδίου"
 
-#: ctk/deprecated/ctknumerableicon.c:657
+#: ctk/deprecated/ctknumerableicon.c:658
 msgid "The style context to theme the icon appearance"
 msgstr "Το στυλ του περιεχομένου για τη θεματική εμφάνιση του εικονιδίου"
 
-#: ctk/deprecated/ctknumerableicon.c:663
+#: ctk/deprecated/ctknumerableicon.c:664
 msgid "Background icon"
 msgstr "Εικονίδιο παρασκηνίου"
 
-#: ctk/deprecated/ctknumerableicon.c:664
+#: ctk/deprecated/ctknumerableicon.c:665
 msgid "The icon for the number emblem background"
 msgstr "Το εικονίδιο για το παρασκήνιο του αριθμητικού εμβλήματος"
 
-#: ctk/deprecated/ctknumerableicon.c:670
+#: ctk/deprecated/ctknumerableicon.c:671
 msgid "Background icon name"
 msgstr "Όνομα εικονιδίου παρασκηνίου"
 
-#: ctk/deprecated/ctknumerableicon.c:671
+#: ctk/deprecated/ctknumerableicon.c:672
 msgid "The icon name for the number emblem background"
 msgstr "Το όνομα εικονιδίου για το παρασκήνιο του αριθμητικού εμβλήματος"
-
-#: ctk/ctkradioaction.c:120
-msgid "The value"
-msgstr "Η τιμή"
-
-#: ctk/ctkradioaction.c:121
-msgid ""
-"The value returned by ctk_radio_action_get_current_value() when this action "
-"is the current action of its group."
-msgstr ""
-"Η τιμή που επιστρέφεται από το ctk_radio_action_get_current_value() όταν "
-"αυτή η ενέργεια είναι η τρέχουσα ενέργεια της ομάδας του."
-
-#: ctk/ctkradioaction.c:139 ctk/ctkradiobutton.c:184
-#: ctk/ctkradiomenuitem.c:424 ctk/ctkradiotoolbutton.c:83
-msgid "Group"
-msgstr "Ομάδα"
-
-#: ctk/ctkradioaction.c:140
-msgid "The radio action whose group this action belongs to."
-msgstr "Το κουμπί radio του οποίου η ομάδα της ανήκει αυτή η ενέργεια."
-
-#: ctk/ctkradioaction.c:157
-msgid "The current value"
-msgstr "Η τρέχουσα τιμή"
-
-#: ctk/ctkradioaction.c:158
-msgid ""
-"The value property of the currently active member of the group to which this "
-"action belongs."
-msgstr ""
-"Η ιδιότητα τιμής του ενεργού στοιχείου της ομάδας όπου ανήκει αυτή η "
-"ενέργεια."
-
-#: ctk/ctkrecentaction.c:674 ctk/ctkrecentchoosermenu.c:239
-msgid "Show Numbers"
-msgstr "Εμφάνιση αριθμών"
-
-#: ctk/ctkrecentaction.c:675 ctk/ctkrecentchoosermenu.c:240
-msgid "Whether the items should be displayed with a number"
-msgstr "Αν τα αντικείμενα θα εμφανίζονται με ένα αριθμό"
-
-#: ctk/ctkstatusicon.c:234 ctk/ctkimage.c:256
-msgid "Pixbuf"
-msgstr "Pixbuf"
-
-#: ctk/ctkstatusicon.c:235 ctk/ctkimage.c:257
-msgid "A GdkPixbuf to display"
-msgstr "Ένα GdkPixbuf προς εμφάνιση"
-
-#: ctk/ctkstatusicon.c:242 ctk/ctkimage.c:270
-#: ctk/ctkrecentmanager.c:289
-msgid "Filename"
-msgstr "Όνομα αρχείου"
-
-#: ctk/ctkstatusicon.c:243 ctk/ctkimage.c:271
-msgid "Filename to load and display"
-msgstr "Όνομα αρχείου για φόρτωση και εμφάνιση"
-
-#: ctk/ctkstatusicon.c:255 ctk/ctkcellrendererpixbuf.c:195
-#: ctk/ctkimage.c:282
-msgid "Stock ID"
-msgstr "Αναγνωριστικό αποθέματος"
-
-#: ctk/ctkstatusicon.c:256 ctk/ctkimage.c:283
-msgid "Stock ID for a stock image to display"
-msgstr "Αναγνωριστικό αποθέματος για εμφάνιση εικόνας αποθέματος"
-
-#: ctk/ctkstatusicon.c:287 ctk/ctkimage.c:380
-msgid "Storage type"
-msgstr "Τύπος αποθήκευσης"
-
-#: ctk/ctkstatusicon.c:288 ctk/ctkimage.c:381
-msgid "The representation being used for image data"
-msgstr "Η αναπαράσταση που χρησιμοποιείται για δεδομένα εικόνας"
-
-#: ctk/ctkstatusicon.c:296 ctk/ctkcellrendererpixbuf.c:210
-#: ctk/ctkcellrendererspinner.c:159 ctk/ctkrecentmanager.c:304
-msgid "Size"
-msgstr "Μέγεθος"
-
-#: ctk/ctkstatusicon.c:297
-msgid "The size of the icon"
-msgstr "Το μέγεθος του εικονιδίου"
-
-#: ctk/ctkstatusicon.c:306 ctk/ctkinvisible.c:98
-#: ctk/ctkmountoperation.c:179 ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:901
-msgid "Screen"
-msgstr "Οθόνη"
-
-#: ctk/ctkstatusicon.c:307
-msgid "The screen where this status icon will be displayed"
-msgstr "Η οθόνη όπου και θα εμφανίζεται αυτό το εικονίδιο κατάστασης"
-
-#: ctk/ctkstatusicon.c:315
-msgid "Whether the status icon is visible"
-msgstr "Αν το εικονίδιο κατάστασης θα είναι ορατό."
-
-#: ctk/ctkstatusicon.c:330 ctk/ctkplug.c:196
-msgid "Embedded"
-msgstr "Ενσωματωμένο"
-
-#: ctk/ctkstatusicon.c:331
-msgid "Whether the status icon is embedded"
-msgstr "Αν το εικονίδιο κατάστασης θα είναι ενσωματωμένο"
-
-#: ctk/ctkstatusicon.c:346 ctk/ctktrayicon-x11.c:127
-#: ctk/ctkgesturepan.c:238 ctk/ctkorientable.c:61
-msgid "Orientation"
-msgstr "Προσανατολισμός"
-
-#: ctk/ctkstatusicon.c:347 ctk/ctktrayicon-x11.c:128
-msgid "The orientation of the tray"
-msgstr "Ο προσανατολισμός του συρταριού"
-
-#: ctk/ctkstatusicon.c:374 ctk/ctkwidget.c:1282
-msgid "Has tooltip"
-msgstr "Έχει συμβουλή οθόνης"
-
-#: ctk/ctkstatusicon.c:375
-msgid "Whether this tray icon has a tooltip"
-msgstr "Αν το εικονίδιο της περιοχής ειδοποιήσεων θα έχει συμβουλή οθόνης"
-
-#: ctk/ctkstatusicon.c:401 ctk/ctkwidget.c:1306
-msgid "Tooltip Text"
-msgstr "Κείμενο συμβουλής οθόνης"
-
-#: ctk/ctkstatusicon.c:402 ctk/ctkwidget.c:1307 ctk/ctkwidget.c:1331
-msgid "The contents of the tooltip for this widget"
-msgstr "Τα περιεχόμενα της συμβουλής οθόνης για αυτό το γραφικό στοιχείο"
-
-#: ctk/ctkstatusicon.c:425 ctk/ctkwidget.c:1330
-msgid "Tooltip markup"
-msgstr "Επισήμανση συμβουλής οθόνης"
-
-#: ctk/ctkstatusicon.c:426
-msgid "The contents of the tooltip for this tray icon"
-msgstr ""
-"Τα περιεχόμενα της συμβουλής οθόνης για αυτό το εικονίδιο της περιοχής "
-"ειδοποιήσεων"
-
-#: ctk/ctkstatusicon.c:443 ctk/ctkcolorbutton.c:183
-#: ctk/ctkfilechooserbutton.c:438 ctk/ctkfontbutton.c:490
-#: ctk/ctkheaderbar.c:2027 ctk/ctkprintjob.c:133 ctk/ctkshortcutsgroup.c:308
-#: ctk/ctkshortcutssection.c:376 ctk/ctkshortcutsshortcut.c:575
-#: ctk/ctkstack.c:523 ctk/ctktreeviewcolumn.c:316
-msgid "Title"
-msgstr "Τίτλος"
-
-#: ctk/ctkstatusicon.c:444
-msgid "The title of this tray icon"
-msgstr "Ο τίτλος αυτού του εικονιδίου περιοχής ειδοποιήσεων"
-
-#: ctk/ctkstyle.c:471
-msgid "Style context"
-msgstr "Στυλ περιεχομένου"
-
-#: ctk/ctkstyle.c:472
-msgid "CtkStyleContext to get style from"
-msgstr "CtkStyleContext από το οποίο θα ληφθεί το στυλ"
 
 #: ctk/deprecated/ctktable.c:185
 msgid "Rows"
@@ -1012,7 +822,7 @@ msgstr ""
 msgid "Left attachment"
 msgstr "Αριστερό συνημμένο"
 
-#: ctk/deprecated/ctktable.c:230 ctk/ctkgrid.c:1796 ctk/ctkmenu.c:965
+#: ctk/deprecated/ctktable.c:230 ctk/ctkgrid.c:1796 ctk/ctkmenu.c:966
 msgid "The column number to attach the left side of the child to"
 msgstr "Ο αριθμός στήλης όπου προσδένεται η αριστερή πλευρά του θυγατρικού"
 
@@ -1040,7 +850,7 @@ msgstr ""
 msgid "Bottom attachment"
 msgstr "Προς τα κάτω συνημμένο"
 
-#: ctk/deprecated/ctktable.c:251 ctk/ctkmenu.c:989
+#: ctk/deprecated/ctktable.c:251 ctk/ctkmenu.c:990
 msgid "The row number to attach the bottom of the child to"
 msgstr "Ο αριθμός γραμμής όπου προσδένεται το κάτω μέρος ενός θυγατρικού"
 
@@ -1088,97 +898,11 @@ msgstr ""
 msgid "Theming engine name"
 msgstr "Όνομα μηχανής θέματος"
 
-#: ctk/ctktoggleaction.c:118
-msgid "Create the same proxies as a radio action"
-msgstr "Δημιουργία των ίδιων διαμεσολαβητών ως radio button"
-
-#: ctk/ctktoggleaction.c:119
-msgid "Whether the proxies for this action look like radio action proxies"
-msgstr ""
-"Aν οι διαμεσολαβητές για αυτήν την ενέργεια θα φαίνονται ως μεσολαβητές "
-"ενέργειας ραδιοπλήκτρου"
-
-#: ctk/ctktoggleaction.c:135 ctk/ctkcellrendererspinner.c:125
-#: ctk/ctkcheckmenuitem.c:209 ctk/ctkmenu.c:639 ctk/ctkmodelbutton.c:1189
-#: ctk/ctkmodelbutton.c:1190 ctk/ctkspinner.c:221 ctk/ctkswitch.c:875
-#: ctk/ctktogglebutton.c:188 ctk/ctktoggletoolbutton.c:130
-msgid "Active"
-msgstr "Ενεργό"
-
-#: ctk/ctktoggleaction.c:136
-msgid "Whether the toggle action should be active"
-msgstr "Αν η ενέργεια εναλλαγής θα είναι ενεργή ή όχι"
-
-#: ctk/ctktrayicon-x11.c:136 ctk/ctkcellrenderertext.c:334
-#: ctk/ctktexttag.c:276
-msgid "Foreground color"
-msgstr "Χρώμα προσκηνίου"
-
-#: ctk/ctktrayicon-x11.c:137
-msgid "Foreground color for symbolic icons"
-msgstr "Χρώμα προσκηνίου για συμβολικά εικονίδια"
-
-#: ctk/ctktrayicon-x11.c:144
-msgid "Error color"
-msgstr "Χρώμα σφάλματος"
-
-#: ctk/ctktrayicon-x11.c:145
-msgid "Error color for symbolic icons"
-msgstr "Χρώμα σφάλματος για συμβολικά εικονίδια"
-
-#: ctk/ctktrayicon-x11.c:152
-msgid "Warning color"
-msgstr "Χρώμα προειδοποίησης"
-
-#: ctk/ctktrayicon-x11.c:153
-msgid "Warning color for symbolic icons"
-msgstr "Χρώμα προειδοποίησης για συμβολικά εικονίδια"
-
-#: ctk/ctktrayicon-x11.c:160
-msgid "Success color"
-msgstr "Χρώμα επιτυχίας"
-
-#: ctk/ctktrayicon-x11.c:161
-msgid "Success color for symbolic icons"
-msgstr "Χρώμα επιτυχίας για συμβολικά εικονίδια"
-
-#: ctk/ctktrayicon-x11.c:168 ctk/ctkbox.c:350
-msgid "Padding"
-msgstr "Γέμισμα"
-
-#: ctk/ctktrayicon-x11.c:169
-msgid "Padding that should be put around icons in the tray"
-msgstr "Περιθώριο που θα πρέπει να τοποθετηθεί γύρω από τα εικονίδια στο tray"
-
-#: ctk/ctktrayicon-x11.c:178 ctk/ctkstackswitcher.c:686
-msgid "Icon Size"
-msgstr "Μέγεθος εικονιδίου"
-
-#: ctk/ctktrayicon-x11.c:179
-msgid "The pixel size that icons should be forced to, or zero"
-msgstr "Το μέγεθος σε pixels για τα εικονίδια, ή μηδενικό"
-
-#: ctk/ctkuimanager.c:463 ctk/ctkcombobox.c:1009
-msgid "Add tearoffs to menus"
-msgstr "Προσθήκη αποσπώμενων στα μενού"
-
-#: ctk/ctkuimanager.c:464
-msgid "Whether tearoff menu items should be added to menus"
-msgstr "Αν τα αντικείμενα στα αποσπώμενα μενού θα προστίθενται στα μενού"
-
-#: ctk/ctkuimanager.c:471
-msgid "Merged UI definition"
-msgstr "Ορισμός συγχωνευμένου UI"
-
-#: ctk/ctkuimanager.c:472
-msgid "An XML string describing the merged UI"
-msgstr "Μία συμβολοσειρά XML που περιγράφει το συγχωνευμένο UI"
-
-#: ctk/ctkaboutdialog.c:343
+#: ctk/ctkaboutdialog.c:349
 msgid "Program name"
 msgstr "Όνομα προγράμματος"
 
-#: ctk/ctkaboutdialog.c:344
+#: ctk/ctkaboutdialog.c:350
 msgid ""
 "The name of the program. If this is not set, it defaults to "
 "g_get_application_name()"
@@ -1186,102 +910,102 @@ msgstr ""
 "Το όνομα προγράμματος. Αν δεν έχει οριστεί, τότε προεπιλέγεται το "
 "g_get_application_name()"
 
-#: ctk/ctkaboutdialog.c:357
+#: ctk/ctkaboutdialog.c:363
 msgid "Program version"
 msgstr "Έκδοση προγράμματος"
 
-#: ctk/ctkaboutdialog.c:358
+#: ctk/ctkaboutdialog.c:364
 msgid "The version of the program"
 msgstr "Η έκδοση του προγράμματος"
 
-#: ctk/ctkaboutdialog.c:371
+#: ctk/ctkaboutdialog.c:377
 msgid "Copyright string"
 msgstr "Συμβολοσειρά πνευματικών δικαιωμάτων"
 
-#: ctk/ctkaboutdialog.c:372
+#: ctk/ctkaboutdialog.c:378
 msgid "Copyright information for the program"
 msgstr "Πληροφορίες για τα πνευματικά δικαιώματα του προγράμματος"
 
-#: ctk/ctkaboutdialog.c:387
+#: ctk/ctkaboutdialog.c:393
 msgid "Comments string"
 msgstr "Συμβολοσειρά σχολίων"
 
-#: ctk/ctkaboutdialog.c:388
+#: ctk/ctkaboutdialog.c:394
 msgid "Comments about the program"
 msgstr "Σχόλια σχετικά με το πρόγραμμα"
 
-#: ctk/ctkaboutdialog.c:408
+#: ctk/ctkaboutdialog.c:414
 msgid "License"
 msgstr "Άδεια"
 
-#: ctk/ctkaboutdialog.c:409
+#: ctk/ctkaboutdialog.c:415
 msgid "The license of the program"
 msgstr "Η άδεια του προγράμματος"
 
-#: ctk/ctkaboutdialog.c:436
+#: ctk/ctkaboutdialog.c:442
 msgid "License Type"
 msgstr "Τύπος άδειας"
 
-#: ctk/ctkaboutdialog.c:437
+#: ctk/ctkaboutdialog.c:443
 msgid "The license type of the program"
 msgstr "Ο τύπος άδειας του προγράμματος"
 
-#: ctk/ctkaboutdialog.c:452
+#: ctk/ctkaboutdialog.c:458
 msgid "Website URL"
 msgstr "Διεύθυνση ιστότοπου"
 
-#: ctk/ctkaboutdialog.c:453
+#: ctk/ctkaboutdialog.c:459
 msgid "The URL for the link to the website of the program"
 msgstr "H διεύθυνση για τον σύνδεσμο στοv ιστότοπο του προγράμματος"
 
-#: ctk/ctkaboutdialog.c:466
+#: ctk/ctkaboutdialog.c:472
 msgid "Website label"
 msgstr "Ετικέτα ιστότοπου"
 
-#: ctk/ctkaboutdialog.c:467
+#: ctk/ctkaboutdialog.c:473
 msgid "The label for the link to the website of the program"
 msgstr "Η ετικέτα για τον σύνδεσμο στον ιστότοπο του προγράμματος"
 
-#: ctk/ctkaboutdialog.c:482
+#: ctk/ctkaboutdialog.c:488
 msgid "Authors"
 msgstr "Συγγραφείς"
 
-#: ctk/ctkaboutdialog.c:483
+#: ctk/ctkaboutdialog.c:489
 msgid "List of authors of the program"
 msgstr "Λίστα των συγγραφέων του προγράμματος"
 
-#: ctk/ctkaboutdialog.c:498
+#: ctk/ctkaboutdialog.c:504
 msgid "Documenters"
 msgstr "Τεκμηριωτές"
 
-#: ctk/ctkaboutdialog.c:499
+#: ctk/ctkaboutdialog.c:505
 msgid "List of people documenting the program"
 msgstr "Μια λίστα ανθρώπων που τεκμηριώνουν το πρόγραμμα"
 
-#: ctk/ctkaboutdialog.c:514
+#: ctk/ctkaboutdialog.c:520
 msgid "Artists"
 msgstr "Καλλιτέχνες"
 
-#: ctk/ctkaboutdialog.c:515
+#: ctk/ctkaboutdialog.c:521
 msgid "List of people who have contributed artwork to the program"
 msgstr "Μια λίστα ανθρώπων που έχουν συμβάλλει με γραφικά για το πρόγραμμα"
 
-#: ctk/ctkaboutdialog.c:530
+#: ctk/ctkaboutdialog.c:536
 msgid "Translator credits"
 msgstr "Μνεία μεταφραστών"
 
-#: ctk/ctkaboutdialog.c:531
+#: ctk/ctkaboutdialog.c:537
 msgid ""
 "Credits to the translators. This string should be marked as translatable"
 msgstr ""
 "Μνεία για τους μεταφραστές. Αυτή η συμβολοσειρά πρέπει να σημειωθεί ως "
 "μεταφράσιμη"
 
-#: ctk/ctkaboutdialog.c:545
+#: ctk/ctkaboutdialog.c:551
 msgid "Logo"
 msgstr "Λογότυπο"
 
-#: ctk/ctkaboutdialog.c:546
+#: ctk/ctkaboutdialog.c:552
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
 "ctk_window_get_default_icon_list()"
@@ -1289,19 +1013,19 @@ msgstr ""
 "Το λογότυπο για το διάλογο Περί. Αν δεν έχει τεθεί, η προεπιλογή είναι το "
 "ctk_window_get_default_icon_list()"
 
-#: ctk/ctkaboutdialog.c:560
+#: ctk/ctkaboutdialog.c:566
 msgid "Logo Icon Name"
 msgstr "Όνομα εικονιδίου λογοτύπου"
 
-#: ctk/ctkaboutdialog.c:561
+#: ctk/ctkaboutdialog.c:567
 msgid "A named icon to use as the logo for the about box."
 msgstr "Ένα πρότυπο εικονίδιο για χρήση ως λογότυπο στο διάλογο Περί."
 
-#: ctk/ctkaboutdialog.c:574
+#: ctk/ctkaboutdialog.c:580
 msgid "Wrap license"
 msgstr "Αναδίπλωση άδειας"
 
-#: ctk/ctkaboutdialog.c:575
+#: ctk/ctkaboutdialog.c:581
 msgid "Whether to wrap the license text."
 msgstr "Αν θα γίνεται αναδίπλωση του κειμένου της άδειας."
 
@@ -1359,7 +1083,7 @@ msgstr ""
 "αρχή ή το τέλος του γονικού"
 
 #: ctk/ctkactionbar.c:345 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
-#: ctk/ctknotebook.c:840 ctk/ctkpaned.c:368 ctk/ctkpopover.c:1740
+#: ctk/ctknotebook.c:840 ctk/ctkpaned.c:368 ctk/ctkpopover.c:1767
 #: ctk/ctkpopovermenu.c:384 ctk/ctkstack.c:537 ctk/ctktoolitemgroup.c:1716
 msgid "Position"
 msgstr "Θέση"
@@ -1370,7 +1094,7 @@ msgid "The index of the child in the parent"
 msgstr "Ο δείκτης του θυγατρικού στο γονικό"
 
 #: ctk/ctkadjustment.c:142 ctk/ctkcellrendererprogress.c:138
-#: ctk/ctkscalebutton.c:196 ctk/ctkspinbutton.c:436
+#: ctk/ctkscalebutton.c:198 ctk/ctkspinbutton.c:436
 msgid "Value"
 msgstr "Τιμή"
 
@@ -1437,11 +1161,11 @@ msgid "Whether the combobox should show the default application on top"
 msgstr ""
 "Αν το σύνθετο πλαίσιο θα εμφανίζει την προεπιλεγμένη εφαρμογή στη κορυφή"
 
-#: ctk/ctkappchooserbutton.c:647 ctk/ctkappchooserdialog.c:686
+#: ctk/ctkappchooserbutton.c:647 ctk/ctkappchooserdialog.c:688
 msgid "Heading"
 msgstr "Επικεφαλίδα"
 
-#: ctk/ctkappchooserbutton.c:648 ctk/ctkappchooserdialog.c:687
+#: ctk/ctkappchooserbutton.c:648 ctk/ctkappchooserdialog.c:689
 msgid "The text to show at the top of the dialog"
 msgstr "Το κείμενο το οποίο θα εμφανίζεται στην αρχή του διαλόγου"
 
@@ -1453,11 +1177,11 @@ msgstr "Τύπος περιεχομένου"
 msgid "The content type used by the open with object"
 msgstr "Ο τύπος περιεχομένου που χρησιμοποιείται από το αντικείμενο άνοιγμα με"
 
-#: ctk/ctkappchooserdialog.c:672
+#: ctk/ctkappchooserdialog.c:674
 msgid "GFile"
 msgstr "GFile"
 
-#: ctk/ctkappchooserdialog.c:673
+#: ctk/ctkappchooserdialog.c:675
 msgid "The GFile used by the app chooser dialog"
 msgstr "Το GFile που χρησιμοποιείται για το διάλογο επιλογής εφαρμογής"
 
@@ -1509,43 +1233,43 @@ msgstr "Προεπιλεγμένο κείμενο του γραφικού στο
 msgid "The default text appearing when there are no applications"
 msgstr "Το προεπιλεγμένο κείμενο που εμφανίζεται όταν δεν υπάρχουν εφαρμογές"
 
-#: ctk/ctkapplication.c:833
+#: ctk/ctkapplication.c:845
 msgid "Register session"
 msgstr "Καταχώρηση συνεδρίας"
 
-#: ctk/ctkapplication.c:834
+#: ctk/ctkapplication.c:846
 msgid "Register with the session manager"
 msgstr "Καταχώριση στο διαχειριστή συνεδρίας"
 
-#: ctk/ctkapplication.c:851
+#: ctk/ctkapplication.c:863
 msgid "Screensaver Active"
 msgstr "Ενεργή προφύλαξη οθόνης"
 
-#: ctk/ctkapplication.c:852
+#: ctk/ctkapplication.c:864
 msgid "Whether the screensaver is active"
 msgstr "Εάν είναι ενεργή η προφύλαξη οθόνης"
 
-#: ctk/ctkapplication.c:858
+#: ctk/ctkapplication.c:870
 msgid "Application menu"
 msgstr "Μενού εφαρμογών"
 
-#: ctk/ctkapplication.c:859
+#: ctk/ctkapplication.c:871
 msgid "The GMenuModel for the application menu"
 msgstr "Το μενού GMenuModel των εφαρμογών"
 
-#: ctk/ctkapplication.c:865
+#: ctk/ctkapplication.c:877
 msgid "Menubar"
 msgstr "Μπάρα μενού"
 
-#: ctk/ctkapplication.c:866
+#: ctk/ctkapplication.c:878
 msgid "The GMenuModel for the menubar"
 msgstr "Το μενού GMenuModel για τη μπάρα μενού"
 
-#: ctk/ctkapplication.c:872
+#: ctk/ctkapplication.c:884
 msgid "Active window"
 msgstr "Ενεργό παράθυρο"
 
-#: ctk/ctkapplication.c:873
+#: ctk/ctkapplication.c:885
 msgid "The window which most recently had focus"
 msgstr "Το παράθυρο που πρόσφατα είχε εστιασθεί"
 
@@ -1557,7 +1281,7 @@ msgstr "Προβολή μιας μπάρας μενού"
 msgid "TRUE if the window should show a menubar at the top of the window"
 msgstr "ΑΛΗΘΕΣ αν το παράθυρο θα έχει τη μπάρα μενού στην κορυφή του παραθύρου"
 
-#: ctk/ctkaspectframe.c:111 ctk/ctkwidget.c:1374
+#: ctk/ctkaspectframe.c:111 ctk/ctkwidget.c:1377
 msgid "Horizontal Alignment"
 msgstr "Οριζόντια στοίχιση"
 
@@ -1565,7 +1289,7 @@ msgstr "Οριζόντια στοίχιση"
 msgid "X alignment of the child"
 msgstr "Στοίχιση Χ του θυγατρικού"
 
-#: ctk/ctkaspectframe.c:118 ctk/ctkwidget.c:1389
+#: ctk/ctkaspectframe.c:118 ctk/ctkwidget.c:1392
 msgid "Vertical Alignment"
 msgstr "Κάθετη στοίχιση"
 
@@ -1775,6 +1499,10 @@ msgstr ""
 "Αν το πρόσθετο διάστημα που θα δίνεται στο θυγατρικό θα ανατίθεται στο "
 "θυγατρικό ή θα χρησιμοποιείται ως γέμισμα"
 
+#: ctk/ctkbox.c:350 ctk/ctktrayicon-x11.c:168
+msgid "Padding"
+msgstr "Γέμισμα"
+
 #: ctk/ctkbox.c:351
 msgid "Extra space to put between the child and its neighbors, in pixels"
 msgstr ""
@@ -1798,7 +1526,7 @@ msgstr ""
 "περιέχει ετικέτα γραφικού στοιχείου."
 
 #: ctk/ctkbutton.c:288 ctk/ctkexpander.c:316 ctk/ctklabel.c:826
-#: ctk/ctkmenuitem.c:803 ctk/ctktoolbutton.c:250
+#: ctk/ctkmenuitem.c:803 ctk/ctktoolbutton.c:211
 msgid "Use underline"
 msgstr "Χρήση υπογράμμισης"
 
@@ -1810,6 +1538,10 @@ msgid ""
 msgstr ""
 "Αν ορισθεί, μια υπογράμμιση στο κείμενο θα επισημαίνει τον επόμενο χαρακτήρα "
 "που πρέπει να χρησιμοποιηθεί για το μνημονικό κλειδί συντόμευσης"
+
+#: ctk/ctkbutton.c:300 ctk/ctkimagemenuitem.c:236
+msgid "Use stock"
+msgstr "Χρήση αποθέματος"
 
 #: ctk/ctkbutton.c:301
 msgid ""
@@ -1833,6 +1565,10 @@ msgstr "Οριζόντια στοίχιση του θυγατρικού"
 #: ctk/ctkbutton.c:346
 msgid "Vertical alignment for child"
 msgstr "Κάθετη στοίχιση του θυγατρικού"
+
+#: ctk/ctkbutton.c:360 ctk/ctkimagemenuitem.c:221
+msgid "Image widget"
+msgstr "Γραφικό στοιχείο εικόνας"
 
 #: ctk/ctkbutton.c:361
 msgid "Child widget to appear next to the button text"
@@ -2292,7 +2028,7 @@ msgstr "Στήλη κειμένου"
 msgid "A column in the data source model to get the strings from"
 msgstr "Μια στήλη στο μοντέλο πηγής δεδομένων για τη λήψη συμβολοσειρών"
 
-#: ctk/ctkcellrenderercombo.c:169 ctk/ctkcombobox.c:1094
+#: ctk/ctkcellrenderercombo.c:169 ctk/ctkcombobox.c:1095
 msgid "Has Entry"
 msgstr "Έχει καταχώριση"
 
@@ -2332,9 +2068,18 @@ msgstr "επιφάνεια"
 msgid "The surface to render"
 msgstr "Η επιφάνεια για απεικόνιση"
 
+#: ctk/ctkcellrendererpixbuf.c:195 ctk/ctkimage.c:280 ctk/ctkstatusicon.c:245
+msgid "Stock ID"
+msgstr "Αναγνωριστικό αποθέματος"
+
 #: ctk/ctkcellrendererpixbuf.c:196
 msgid "The stock ID of the stock icon to render"
 msgstr "Το αναγνωριστικό αποθέματος του προς εμφάνιση εικονιδίου αποθέματος"
+
+#: ctk/ctkcellrendererpixbuf.c:210 ctk/ctkcellrendererspinner.c:159
+#: ctk/ctkrecentmanager.c:303 ctk/ctkstatusicon.c:286
+msgid "Size"
+msgstr "Μέγεθος"
 
 #: ctk/ctkcellrendererpixbuf.c:211
 msgid "The CtkIconSize value that specifies the size of the rendered icon"
@@ -2357,8 +2102,8 @@ msgstr "Ακολούθηση κατάστασης"
 msgid "Whether the rendered pixbuf should be colorized according to the state"
 msgstr "Αν το εμφανιζόμενο pixbuf θα χρωματίζεται σύμφωνα με την κατάσταση"
 
-#: ctk/ctkcellrendererpixbuf.c:281 ctk/ctkimage.c:359 ctk/ctkmodelbutton.c:1144
-#: ctk/ctkshortcutsshortcut.c:550 ctk/ctkwindow.c:845
+#: ctk/ctkcellrendererpixbuf.c:281 ctk/ctkimage.c:357 ctk/ctkmodelbutton.c:1166
+#: ctk/ctkshortcutsshortcut.c:550 ctk/ctkwindow.c:841
 msgid "Icon"
 msgstr "Εικονίδιο"
 
@@ -2368,7 +2113,7 @@ msgstr "Τιμή που θα εμφανίζεται στη μπάρα προόδ
 
 #: ctk/ctkcellrendererprogress.c:156 ctk/ctkcellrenderertext.c:255
 #: ctk/ctkentrybuffer.c:350 ctk/ctkentry.c:953 ctk/ctkmessagedialog.c:214
-#: ctk/ctkmodelbutton.c:1158 ctk/ctkprogressbar.c:287 ctk/ctktextbuffer.c:218
+#: ctk/ctkmodelbutton.c:1180 ctk/ctkprogressbar.c:287 ctk/ctktextbuffer.c:219
 msgid "Text"
 msgstr "Κείμενο"
 
@@ -2409,7 +2154,7 @@ msgid "The vertical text alignment, from 0 (top) to 1 (bottom)."
 msgstr "Η κάθετη στοίχιση κειμένου, από 0 (πάνω) μέχρι 1 (κάτω)."
 
 #: ctk/ctkcellrendererprogress.c:226 ctk/ctklevelbar.c:1097
-#: ctk/ctkmodelbutton.c:1220 ctk/ctkprogressbar.c:264 ctk/ctkrange.c:441
+#: ctk/ctkmodelbutton.c:1242 ctk/ctkprogressbar.c:264 ctk/ctkrange.c:441
 msgid "Inverted"
 msgstr "Αντεστραμμένη"
 
@@ -2417,7 +2162,7 @@ msgstr "Αντεστραμμένη"
 msgid "Invert the direction in which the progress bar grows"
 msgstr "Αναστροφή της κατεύθυνσης ανάπτυξης της μπάρας προόδου"
 
-#: ctk/ctkcellrendererspin.c:113 ctk/ctkrange.c:434 ctk/ctkscalebutton.c:215
+#: ctk/ctkcellrendererspin.c:113 ctk/ctkrange.c:434 ctk/ctkscalebutton.c:217
 #: ctk/ctkspinbutton.c:379
 msgid "Adjustment"
 msgstr "Ρύθμιση"
@@ -2441,6 +2186,13 @@ msgstr "Ψηφία"
 #: ctk/ctkcellrendererspin.c:144 ctk/ctkspinbutton.c:396
 msgid "The number of decimal places to display"
 msgstr "Ο αριθμός των δεκαδικών που εμφανίζεται"
+
+#: ctk/ctkcellrendererspinner.c:125 ctk/ctkcheckmenuitem.c:209
+#: ctk/ctkmenu.c:640 ctk/ctkmodelbutton.c:1211 ctk/ctkmodelbutton.c:1212
+#: ctk/ctkspinner.c:221 ctk/ctkswitch.c:878 ctk/ctktoggleaction.c:129
+#: ctk/ctktogglebutton.c:188 ctk/ctktoggletoolbutton.c:130
+msgid "Active"
+msgstr "Ενεργό"
 
 #: ctk/ctkcellrendererspinner.c:126
 msgid "Whether the spinner is active (ie. shown) in the cell"
@@ -2483,19 +2235,19 @@ msgstr "Λειτουργία μονής παραγράφου"
 msgid "Whether to keep all text in a single paragraph"
 msgstr "Αν θα διατηρηθεί ή όχι όλο το κείμενο σε μια μόνο παράγραφο"
 
-#: ctk/ctkcellrenderertext.c:283 ctk/ctkcellview.c:217 ctk/ctktexttag.c:215
+#: ctk/ctkcellrenderertext.c:283 ctk/ctkcellview.c:217 ctk/ctktexttag.c:216
 msgid "Background color name"
 msgstr "Όνομα χρώματος παρασκηνίου"
 
-#: ctk/ctkcellrenderertext.c:284 ctk/ctkcellview.c:218 ctk/ctktexttag.c:216
+#: ctk/ctkcellrenderertext.c:284 ctk/ctkcellview.c:218 ctk/ctktexttag.c:217
 msgid "Background color as a string"
 msgstr "Χρώμα παρασκηνίου ως συμβολοσειρά"
 
-#: ctk/ctkcellrenderertext.c:298 ctk/ctkcellview.c:233 ctk/ctktexttag.c:230
+#: ctk/ctkcellrenderertext.c:298 ctk/ctkcellview.c:233 ctk/ctktexttag.c:231
 msgid "Background color"
 msgstr "Χρώμα παρασκηνίου"
 
-#: ctk/ctkcellrenderertext.c:299 ctk/ctkcellview.c:234 ctk/ctktexttag.c:231
+#: ctk/ctkcellrenderertext.c:299 ctk/ctkcellview.c:234 ctk/ctktexttag.c:232
 msgid "Background color as a CdkColor"
 msgstr "Χρώμα παρασκηνίου ως CdkColor"
 
@@ -2503,19 +2255,23 @@ msgstr "Χρώμα παρασκηνίου ως CdkColor"
 msgid "Background color as RGBA"
 msgstr "Χρώμα παρασκηνίου ως RGBA"
 
-#: ctk/ctkcellrenderertext.c:314 ctk/ctkcellview.c:249 ctk/ctktexttag.c:246
+#: ctk/ctkcellrenderertext.c:314 ctk/ctkcellview.c:249 ctk/ctktexttag.c:247
 msgid "Background color as a CdkRGBA"
 msgstr "Χρώμα παρασκηνίου ως CdkRGBA"
 
-#: ctk/ctkcellrenderertext.c:319 ctk/ctktexttag.c:261
+#: ctk/ctkcellrenderertext.c:319 ctk/ctktexttag.c:262
 msgid "Foreground color name"
 msgstr "Όνομα χρώματος προσκηνίου"
 
-#: ctk/ctkcellrenderertext.c:320 ctk/ctktexttag.c:262
+#: ctk/ctkcellrenderertext.c:320 ctk/ctktexttag.c:263
 msgid "Foreground color as a string"
 msgstr "Χρώμα προσκηνίου ως συμβολοσειρά"
 
-#: ctk/ctkcellrenderertext.c:335 ctk/ctktexttag.c:277
+#: ctk/ctkcellrenderertext.c:334 ctk/ctktexttag.c:277 ctk/ctktrayicon-x11.c:136
+msgid "Foreground color"
+msgstr "Χρώμα προσκηνίου"
+
+#: ctk/ctkcellrenderertext.c:335 ctk/ctktexttag.c:278
 msgid "Foreground color as a CdkColor"
 msgstr "Χρώμα προσκηνίου ως CdkColor"
 
@@ -2523,76 +2279,76 @@ msgstr "Χρώμα προσκηνίου ως CdkColor"
 msgid "Foreground color as RGBA"
 msgstr "Χρώμα προσκηνίου ως RGBA"
 
-#: ctk/ctkcellrenderertext.c:350 ctk/ctktexttag.c:292
+#: ctk/ctkcellrenderertext.c:350 ctk/ctktexttag.c:293
 msgid "Foreground color as a CdkRGBA"
 msgstr "Χρώμα προσκηνίου ως CdkRGBA"
 
-#: ctk/ctkcellrenderertext.c:357 ctk/ctkentry.c:861 ctk/ctktexttag.c:308
+#: ctk/ctkcellrenderertext.c:357 ctk/ctkentry.c:861 ctk/ctktexttag.c:309
 #: ctk/ctktextview.c:825
 msgid "Editable"
 msgstr "Επεξεργάσιμο"
 
-#: ctk/ctkcellrenderertext.c:358 ctk/ctktexttag.c:309 ctk/ctktextview.c:826
+#: ctk/ctkcellrenderertext.c:358 ctk/ctktexttag.c:310 ctk/ctktextview.c:826
 msgid "Whether the text can be modified by the user"
 msgstr "Αν το κείμενο μπορεί να αλλαχθεί από το χρήστη"
 
 #: ctk/ctkcellrenderertext.c:364 ctk/ctkcellrenderertext.c:371
-#: ctk/ctkfontchooser.c:64 ctk/ctktexttag.c:324 ctk/ctktexttag.c:332
+#: ctk/ctkfontchooser.c:64 ctk/ctktexttag.c:325 ctk/ctktexttag.c:333
 msgid "Font"
 msgstr "Γραμματοσειρά"
 
-#: ctk/ctkcellrenderertext.c:365 ctk/ctkfontchooser.c:65 ctk/ctktexttag.c:325
+#: ctk/ctkcellrenderertext.c:365 ctk/ctkfontchooser.c:65 ctk/ctktexttag.c:326
 msgid "Font description as a string, e.g. \"Sans Italic 12\""
 msgstr "Περιγραφή γραμματοσειράς ως συμβολοσειρά, π.χ. \"Sans Italic 12\""
 
-#: ctk/ctkcellrenderertext.c:372 ctk/ctkfontchooser.c:78 ctk/ctktexttag.c:333
+#: ctk/ctkcellrenderertext.c:372 ctk/ctkfontchooser.c:78 ctk/ctktexttag.c:334
 msgid "Font description as a PangoFontDescription struct"
 msgstr "Περιγραφή γραμματοσειράς ως δομής PangoFontDescription"
 
-#: ctk/ctkcellrenderertext.c:378 ctk/ctktexttag.c:340
+#: ctk/ctkcellrenderertext.c:378 ctk/ctktexttag.c:341
 msgid "Font family"
 msgstr "Οικογένεια γραμματοσειράς"
 
-#: ctk/ctkcellrenderertext.c:379 ctk/ctktexttag.c:341
+#: ctk/ctkcellrenderertext.c:379 ctk/ctktexttag.c:342
 msgid "Name of the font family, e.g. Sans, Helvetica, Times, Monospace"
 msgstr ""
 "Όνομα της οικογένειας της γραμματοσειράς, π.χ. Sans, Helvetica, Times, "
 "Monospace"
 
 #: ctk/ctkcellrenderertext.c:385 ctk/ctkcellrenderertext.c:386
-#: ctk/ctktexttag.c:348
+#: ctk/ctktexttag.c:349
 msgid "Font style"
 msgstr "Στυλ γραμματοσειράς"
 
 #: ctk/ctkcellrenderertext.c:393 ctk/ctkcellrenderertext.c:394
-#: ctk/ctktexttag.c:357
+#: ctk/ctktexttag.c:358
 msgid "Font variant"
 msgstr "Παραλλαγή γραμματοσειράς"
 
 #: ctk/ctkcellrenderertext.c:401 ctk/ctkcellrenderertext.c:402
-#: ctk/ctktexttag.c:366
+#: ctk/ctktexttag.c:367
 msgid "Font weight"
 msgstr "Βάρος γραμματοσειράς"
 
 #: ctk/ctkcellrenderertext.c:409 ctk/ctkcellrenderertext.c:410
-#: ctk/ctktexttag.c:377
+#: ctk/ctktexttag.c:378
 msgid "Font stretch"
 msgstr "Τέντωμα γραμματοσειράς"
 
 #: ctk/ctkcellrenderertext.c:417 ctk/ctkcellrenderertext.c:418
-#: ctk/ctktexttag.c:386
+#: ctk/ctktexttag.c:387
 msgid "Font size"
 msgstr "Μέγεθος γραμματοσειράς"
 
-#: ctk/ctkcellrenderertext.c:425 ctk/ctktexttag.c:406
+#: ctk/ctkcellrenderertext.c:425 ctk/ctktexttag.c:407
 msgid "Font points"
 msgstr "Σημεία γραμματοσειράς"
 
-#: ctk/ctkcellrenderertext.c:426 ctk/ctktexttag.c:407
+#: ctk/ctkcellrenderertext.c:426 ctk/ctktexttag.c:408
 msgid "Font size in points"
 msgstr "Μέγεθος γραμματοσειράς σε σημεία"
 
-#: ctk/ctkcellrenderertext.c:433 ctk/ctktexttag.c:396
+#: ctk/ctkcellrenderertext.c:433 ctk/ctktexttag.c:397
 msgid "Font scale"
 msgstr "Κλίμακα γραμματοσειράς"
 
@@ -2600,7 +2356,7 @@ msgstr "Κλίμακα γραμματοσειράς"
 msgid "Font scaling factor"
 msgstr "Συντελεστής κλίμακας γραμματοσειράς"
 
-#: ctk/ctkcellrenderertext.c:441 ctk/ctktexttag.c:475
+#: ctk/ctkcellrenderertext.c:441 ctk/ctktexttag.c:476
 msgid "Rise"
 msgstr "Ανάδυση"
 
@@ -2611,23 +2367,23 @@ msgstr ""
 "Διάταξη του κειμένου πάνω από τη γραμμή βάσης (κάτω από τη γραμμή βάσης αν η "
 "άνοδος είναι αρνητική)"
 
-#: ctk/ctkcellrenderertext.c:450 ctk/ctktexttag.c:515
+#: ctk/ctkcellrenderertext.c:450 ctk/ctktexttag.c:516
 msgid "Strikethrough"
 msgstr "Επιγράμμιση"
 
-#: ctk/ctkcellrenderertext.c:451 ctk/ctktexttag.c:516
+#: ctk/ctkcellrenderertext.c:451 ctk/ctktexttag.c:517
 msgid "Whether to strike through the text"
 msgstr "Αν θα γίνεται επιγράμμιση του κειμένου"
 
-#: ctk/ctkcellrenderertext.c:457 ctk/ctktexttag.c:523
+#: ctk/ctkcellrenderertext.c:457 ctk/ctktexttag.c:524
 msgid "Underline"
 msgstr "Υπογράμμιση"
 
-#: ctk/ctkcellrenderertext.c:458 ctk/ctktexttag.c:524
+#: ctk/ctkcellrenderertext.c:458 ctk/ctktexttag.c:525
 msgid "Style of underline for this text"
 msgstr "Στυλ υπογράμμισης για αυτό το κείμενο"
 
-#: ctk/ctkcellrenderertext.c:465 ctk/ctkfontchooser.c:154 ctk/ctktexttag.c:435
+#: ctk/ctkcellrenderertext.c:465 ctk/ctkfontchooser.c:154 ctk/ctktexttag.c:436
 msgid "Language"
 msgstr "Γλώσσα"
 
@@ -2653,7 +2409,7 @@ msgstr ""
 "Η προτιμώμενη θέση για τη χρήση αποσιωπητικών στην συμβολοσειρά, αν η "
 "εργασία απόδοσης κελιού δεν έχει αρκετό χώρο για να την εμφανίσει ολόκληρη"
 
-#: ctk/ctkcellrenderertext.c:503 ctk/ctkfilechooserbutton.c:452
+#: ctk/ctkcellrenderertext.c:503 ctk/ctkfilechooserbutton.c:457
 #: ctk/ctklabel.c:983
 msgid "Width In Characters"
 msgstr "Πλάτος σε χαρακτήρες"
@@ -2670,7 +2426,7 @@ msgstr "Μέγιστο μέγεθος σε χαρακτήρες"
 msgid "The maximum width of the cell, in characters"
 msgstr "Το μέγιστο πλάτος του κελιού, σε χαρακτήρες"
 
-#: ctk/ctkcellrenderertext.c:542 ctk/ctktexttag.c:568
+#: ctk/ctkcellrenderertext.c:542 ctk/ctktexttag.c:569
 msgid "Wrap mode"
 msgstr "Λειτουργία αναδίπλωσης"
 
@@ -2682,7 +2438,7 @@ msgstr ""
 "Πως θα διασπάται η συμβολοσειρά σε πολλαπλές γραμμές, αν δεν υπάρχει αρκετός "
 "χώρος για να εμφανιστεί ολόκληρη η συμβολοσειρά."
 
-#: ctk/ctkcellrenderertext.c:561 ctk/ctkcombobox.c:922
+#: ctk/ctkcellrenderertext.c:561 ctk/ctkcombobox.c:923
 msgid "Wrap width"
 msgstr "Πλάτος αναδίπλωσης"
 
@@ -2706,115 +2462,115 @@ msgstr "Κείμενο δεσμευτικού θέσης"
 msgid "Text rendered when an editable cell is empty"
 msgstr "Απεικόνιση του κειμένου όταν ένα επεξεργάσιμο κελί είναι άδειο"
 
-#: ctk/ctkcellrenderertext.c:606 ctk/ctkcellview.c:353 ctk/ctktexttag.c:721
+#: ctk/ctkcellrenderertext.c:606 ctk/ctkcellview.c:353 ctk/ctktexttag.c:722
 msgid "Background set"
 msgstr "Ορισμός παρασκηνίου"
 
-#: ctk/ctkcellrenderertext.c:607 ctk/ctkcellview.c:354 ctk/ctktexttag.c:722
+#: ctk/ctkcellrenderertext.c:607 ctk/ctkcellview.c:354 ctk/ctktexttag.c:723
 msgid "Whether this tag affects the background color"
 msgstr "Αν η ετικέτα επηρεάζει το χρώμα παρασκηνίου"
 
-#: ctk/ctkcellrenderertext.c:610 ctk/ctktexttag.c:729
+#: ctk/ctkcellrenderertext.c:610 ctk/ctktexttag.c:730
 msgid "Foreground set"
 msgstr "Ορισμός προσκηνίου"
 
-#: ctk/ctkcellrenderertext.c:611 ctk/ctktexttag.c:730
+#: ctk/ctkcellrenderertext.c:611 ctk/ctktexttag.c:731
 msgid "Whether this tag affects the foreground color"
 msgstr "Αν η ετικέτα επηρεάζει το χρώμα προσκηνίου"
 
-#: ctk/ctkcellrenderertext.c:614 ctk/ctktexttag.c:733
+#: ctk/ctkcellrenderertext.c:614 ctk/ctktexttag.c:734
 msgid "Editability set"
 msgstr "Ορισμός παραμετροποίησης"
 
-#: ctk/ctkcellrenderertext.c:615 ctk/ctktexttag.c:734
+#: ctk/ctkcellrenderertext.c:615 ctk/ctktexttag.c:735
 msgid "Whether this tag affects text editability"
 msgstr "Αν η ετικέτα επηρεάζει την παραμετροποίηση του κειμένου"
 
-#: ctk/ctkcellrenderertext.c:618 ctk/ctktexttag.c:737
+#: ctk/ctkcellrenderertext.c:618 ctk/ctktexttag.c:738
 msgid "Font family set"
 msgstr "Ορισμός οικογένειας γραμματοσειράς"
 
-#: ctk/ctkcellrenderertext.c:619 ctk/ctktexttag.c:738
+#: ctk/ctkcellrenderertext.c:619 ctk/ctktexttag.c:739
 msgid "Whether this tag affects the font family"
 msgstr "Αν η ετικέτα επηρεάζει την οικογένεια της γραμματοσειράς"
 
-#: ctk/ctkcellrenderertext.c:622 ctk/ctktexttag.c:741
+#: ctk/ctkcellrenderertext.c:622 ctk/ctktexttag.c:742
 msgid "Font style set"
 msgstr "Ορισμός στυλ γραμματοσειράς"
 
-#: ctk/ctkcellrenderertext.c:623 ctk/ctktexttag.c:742
+#: ctk/ctkcellrenderertext.c:623 ctk/ctktexttag.c:743
 msgid "Whether this tag affects the font style"
 msgstr "Αν η ετικέτα επηρεάζει το στυλ της γραμματοσειράς"
 
-#: ctk/ctkcellrenderertext.c:626 ctk/ctktexttag.c:745
+#: ctk/ctkcellrenderertext.c:626 ctk/ctktexttag.c:746
 msgid "Font variant set"
 msgstr "Ορισμός παραλλαγής γραμματοσειράς"
 
-#: ctk/ctkcellrenderertext.c:627 ctk/ctktexttag.c:746
+#: ctk/ctkcellrenderertext.c:627 ctk/ctktexttag.c:747
 msgid "Whether this tag affects the font variant"
 msgstr "Αν η ετικέτα επηρεάζει την παραλλαγή της γραμματοσειράς"
 
-#: ctk/ctkcellrenderertext.c:630 ctk/ctktexttag.c:749
+#: ctk/ctkcellrenderertext.c:630 ctk/ctktexttag.c:750
 msgid "Font weight set"
 msgstr "Ορισμός βάρους γραμματοσειράς"
 
-#: ctk/ctkcellrenderertext.c:631 ctk/ctktexttag.c:750
+#: ctk/ctkcellrenderertext.c:631 ctk/ctktexttag.c:751
 msgid "Whether this tag affects the font weight"
 msgstr "Αν η ετικέτα επηρεάζει το βάρος της γραμματοσειράς"
 
-#: ctk/ctkcellrenderertext.c:634 ctk/ctktexttag.c:753
+#: ctk/ctkcellrenderertext.c:634 ctk/ctktexttag.c:754
 msgid "Font stretch set"
 msgstr "Ορισμός τεντώματος γραμματοσειράς"
 
-#: ctk/ctkcellrenderertext.c:635 ctk/ctktexttag.c:754
+#: ctk/ctkcellrenderertext.c:635 ctk/ctktexttag.c:755
 msgid "Whether this tag affects the font stretch"
 msgstr "Αν η ετικέτα επηρεάζει το τέντωμα της γραμματοσειράς"
 
-#: ctk/ctkcellrenderertext.c:638 ctk/ctktexttag.c:757
+#: ctk/ctkcellrenderertext.c:638 ctk/ctktexttag.c:758
 msgid "Font size set"
 msgstr "Ορισμός μεγέθους γραμματοσειράς"
 
-#: ctk/ctkcellrenderertext.c:639 ctk/ctktexttag.c:758
+#: ctk/ctkcellrenderertext.c:639 ctk/ctktexttag.c:759
 msgid "Whether this tag affects the font size"
 msgstr "Αν η ετικέτα επηρεάζει το μέγεθος της γραμματοσειράς"
 
-#: ctk/ctkcellrenderertext.c:642 ctk/ctktexttag.c:761
+#: ctk/ctkcellrenderertext.c:642 ctk/ctktexttag.c:762
 msgid "Font scale set"
 msgstr "Ορισμός κλίμακας γραμματοσειράς"
 
-#: ctk/ctkcellrenderertext.c:643 ctk/ctktexttag.c:762
+#: ctk/ctkcellrenderertext.c:643 ctk/ctktexttag.c:763
 msgid "Whether this tag scales the font size by a factor"
 msgstr "Αν η ετικέτα επηρεάζει την κλίμακα της γραμματοσειράς"
 
-#: ctk/ctkcellrenderertext.c:646 ctk/ctktexttag.c:781
+#: ctk/ctkcellrenderertext.c:646 ctk/ctktexttag.c:782
 msgid "Rise set"
 msgstr "Ορισμός ανάδυσης"
 
-#: ctk/ctkcellrenderertext.c:647 ctk/ctktexttag.c:782
+#: ctk/ctkcellrenderertext.c:647 ctk/ctktexttag.c:783
 msgid "Whether this tag affects the rise"
 msgstr "Αν η ετικέτα επηρεάζει την ανάδυση"
 
-#: ctk/ctkcellrenderertext.c:650 ctk/ctktexttag.c:797
+#: ctk/ctkcellrenderertext.c:650 ctk/ctktexttag.c:798
 msgid "Strikethrough set"
 msgstr "Ορισμός επιγράμμισης"
 
-#: ctk/ctkcellrenderertext.c:651 ctk/ctktexttag.c:798
+#: ctk/ctkcellrenderertext.c:651 ctk/ctktexttag.c:799
 msgid "Whether this tag affects strikethrough"
 msgstr "Αν η ετικέτα επηρεάζει την επιγράμμιση"
 
-#: ctk/ctkcellrenderertext.c:654 ctk/ctktexttag.c:805
+#: ctk/ctkcellrenderertext.c:654 ctk/ctktexttag.c:806
 msgid "Underline set"
 msgstr "Ορισμός υπογράμμισης"
 
-#: ctk/ctkcellrenderertext.c:655 ctk/ctktexttag.c:806
+#: ctk/ctkcellrenderertext.c:655 ctk/ctktexttag.c:807
 msgid "Whether this tag affects underlining"
 msgstr "Αν η ετικέτα επηρεάζει την υπογράμμιση"
 
-#: ctk/ctkcellrenderertext.c:658 ctk/ctktexttag.c:769
+#: ctk/ctkcellrenderertext.c:658 ctk/ctktexttag.c:770
 msgid "Language set"
 msgstr "Ορισμός γλώσσας"
 
-#: ctk/ctkcellrenderertext.c:659 ctk/ctktexttag.c:770
+#: ctk/ctkcellrenderertext.c:659 ctk/ctktexttag.c:771
 msgid "Whether this tag affects the language the text is rendered as"
 msgstr "Αν η ετικέτα επηρεάζει τη γλώσσα χειρισμού του κειμένου"
 
@@ -2850,7 +2606,7 @@ msgstr "Ασυνεπής κατάσταση"
 msgid "The inconsistent state of the button"
 msgstr "Η ασυνεπής κατάσταση του κουμπιού"
 
-#: ctk/ctkcellrenderertoggle.c:154 ctk/ctklistbox.c:3908
+#: ctk/ctkcellrenderertoggle.c:154 ctk/ctklistbox.c:3917
 msgid "Activatable"
 msgstr "Ενεργοποιήσιμο"
 
@@ -2887,12 +2643,12 @@ msgstr "Μοντέλο CellView"
 msgid "The model for cell view"
 msgstr "Το μοντέλο για προβολή κελιού"
 
-#: ctk/ctkcellview.c:282 ctk/ctkcombobox.c:1181 ctk/ctkentrycompletion.c:467
+#: ctk/ctkcellview.c:282 ctk/ctkcombobox.c:1182 ctk/ctkentrycompletion.c:467
 #: ctk/ctkiconview.c:649 ctk/ctktreemenu.c:307 ctk/ctktreeviewcolumn.c:399
 msgid "Cell Area"
 msgstr "Περιοχή κελιών"
 
-#: ctk/ctkcellview.c:283 ctk/ctkcombobox.c:1182 ctk/ctkentrycompletion.c:468
+#: ctk/ctkcellview.c:283 ctk/ctkcombobox.c:1183 ctk/ctkentrycompletion.c:468
 #: ctk/ctkiconview.c:650 ctk/ctktreemenu.c:308 ctk/ctktreeviewcolumn.c:400
 msgid "The CtkCellArea used to layout cells"
 msgstr "Η CtkCellArea που χρησιμοποιείται για τη διαρρύθμιση των κελιών"
@@ -2927,7 +2683,7 @@ msgstr "Αν θα ζητηθεί επαρκής χώρος για κάθε γρ�
 msgid "Indicator Size"
 msgstr "Μέγεθος σήμανσης"
 
-#: ctk/ctkcheckbutton.c:249 ctk/ctkexpander.c:406
+#: ctk/ctkcheckbutton.c:249 ctk/ctkexpander.c:413
 msgid "Indicator Spacing"
 msgstr "Διάκενο σήμανσης"
 
@@ -2962,6 +2718,14 @@ msgstr "Χρήση άλφα"
 #: ctk/ctkcolorbutton.c:169
 msgid "Whether to give the color an alpha value"
 msgstr "Αν θα δοθεί στο χρώμα μια τιμή άλφα"
+
+#: ctk/ctkcolorbutton.c:183 ctk/ctkfilechooserbutton.c:443
+#: ctk/ctkfontbutton.c:490 ctk/ctkheaderbar.c:2027 ctk/ctkprintjob.c:133
+#: ctk/ctkshortcutsgroup.c:308 ctk/ctkshortcutssection.c:376
+#: ctk/ctkshortcutsshortcut.c:575 ctk/ctkstack.c:523 ctk/ctkstatusicon.c:433
+#: ctk/ctktreeviewcolumn.c:316
+msgid "Title"
+msgstr "Τίτλος"
 
 #: ctk/ctkcolorbutton.c:184
 msgid "The title of the color selection dialog"
@@ -3004,7 +2768,7 @@ msgstr "Τωρινό χρώμα ως CdkRGBA"
 msgid "Whether alpha should be shown"
 msgstr "Αν θα εμφανίζονται τα αλφα"
 
-#: ctk/ctkcolorchooserdialog.c:213 ctk/ctkcolorchooserwidget.c:704
+#: ctk/ctkcolorchooserdialog.c:213 ctk/ctkcolorchooserwidget.c:695
 msgid "Show editor"
 msgstr "Εμφάνιση επεξεργαστή κειμένου"
 
@@ -3020,7 +2784,7 @@ msgstr "Χρώμα RGBA"
 msgid "Color as RGBA"
 msgstr "Χρώμα ως RGBA"
 
-#: ctk/ctkcolorswatch.c:722 ctk/ctklabel.c:908 ctk/ctklistbox.c:3922
+#: ctk/ctkcolorswatch.c:722 ctk/ctklabel.c:908 ctk/ctklistbox.c:3931
 msgid "Selectable"
 msgstr "Δυνατότητα επιλογής"
 
@@ -3036,59 +2800,63 @@ msgstr "Αν έχει μενού"
 msgid "Whether the swatch should offer customization"
 msgstr "Αν το δείγμα πρέπει να προσφέρει προσαρμογή"
 
-#: ctk/ctkcombobox.c:906
+#: ctk/ctkcombobox.c:907
 msgid "ComboBox model"
 msgstr "Μοντέλο ComboBox"
 
-#: ctk/ctkcombobox.c:907
+#: ctk/ctkcombobox.c:908
 msgid "The model for the combo box"
 msgstr "Το μοντέλο για πλαίσιο επιλογών"
 
-#: ctk/ctkcombobox.c:923
+#: ctk/ctkcombobox.c:924
 msgid "Wrap width for laying out the items in a grid"
 msgstr "Πλάτος αναδίπλωσης για τη διάταξη των αντικειμένων σε πλέγμα"
 
-#: ctk/ctkcombobox.c:943 ctk/ctktreemenu.c:358
+#: ctk/ctkcombobox.c:944 ctk/ctktreemenu.c:358
 msgid "Row span column"
 msgstr "Διάστημα γραμμής στήλης"
 
-#: ctk/ctkcombobox.c:944 ctk/ctktreemenu.c:359
+#: ctk/ctkcombobox.c:945 ctk/ctktreemenu.c:359
 msgid "TreeModel column containing the row span values"
 msgstr "Στήλη δενδροειδούς μοντέλου που περιέχει τις τιμές διαστήματος γραμμής"
 
-#: ctk/ctkcombobox.c:965 ctk/ctktreemenu.c:379
+#: ctk/ctkcombobox.c:966 ctk/ctktreemenu.c:379
 msgid "Column span column"
 msgstr "Διάστημα στηλών στήλης"
 
-#: ctk/ctkcombobox.c:966 ctk/ctktreemenu.c:380
+#: ctk/ctkcombobox.c:967 ctk/ctktreemenu.c:380
 msgid "TreeModel column containing the column span values"
 msgstr "Στήλη δενδροειδούς μοντέλου που περιέχει τις τιμές διαστήματος στήλης"
 
-#: ctk/ctkcombobox.c:987
+#: ctk/ctkcombobox.c:988
 msgid "Active item"
 msgstr "Ενεργό αντικείμενο"
 
-#: ctk/ctkcombobox.c:988
+#: ctk/ctkcombobox.c:989
 msgid "The item which is currently active"
 msgstr "Το αντικείμενο που είναι αυτή τη στιγμή ενεργό"
 
-#: ctk/ctkcombobox.c:1010
+#: ctk/ctkcombobox.c:1010 ctk/ctkuimanager.c:452
+msgid "Add tearoffs to menus"
+msgstr "Προσθήκη αποσπώμενων στα μενού"
+
+#: ctk/ctkcombobox.c:1011
 msgid "Whether dropdowns should have a tearoff menu item"
 msgstr "Αν τα αναπτυσσόμενα θα πρέπει να έχουν αντικείμενο αποσπώμενου μενού"
 
-#: ctk/ctkcombobox.c:1025 ctk/ctkentry.c:883
+#: ctk/ctkcombobox.c:1026 ctk/ctkentry.c:883
 msgid "Has Frame"
 msgstr "Έχει πλαίσιο"
 
-#: ctk/ctkcombobox.c:1026
+#: ctk/ctkcombobox.c:1027
 msgid "Whether the combo box draws a frame around the child"
 msgstr "Αν το πλαίσιο επιλογών θα σχεδιάζει ένα πλαίσιο γύρω από το θυγατρικό"
 
-#: ctk/ctkcombobox.c:1043 ctk/ctkmenu.c:702
+#: ctk/ctkcombobox.c:1044 ctk/ctkmenu.c:703
 msgid "Tearoff Title"
 msgstr "Αποσπώμενος τίτλος"
 
-#: ctk/ctkcombobox.c:1044
+#: ctk/ctkcombobox.c:1045
 msgid ""
 "A title that may be displayed by the window manager when the popup is torn-"
 "off"
@@ -3096,32 +2864,32 @@ msgstr ""
 "Ένας τίτλος που μπορεί να εμφανίζεται από το διαχειριστή παραθύρων όταν αυτό "
 "το αναδυόμενο αποκόπτεται"
 
-#: ctk/ctkcombobox.c:1061
+#: ctk/ctkcombobox.c:1062
 msgid "Popup shown"
 msgstr "Προβολή αναδυόμενου"
 
-#: ctk/ctkcombobox.c:1062
+#: ctk/ctkcombobox.c:1063
 msgid "Whether the combo's dropdown is shown"
 msgstr "Αν θα εμφανίζεται ή όχι η λίστα του κουμπιού πολλαπλών επιλογών"
 
-#: ctk/ctkcombobox.c:1078
+#: ctk/ctkcombobox.c:1079
 msgid "Button Sensitivity"
 msgstr "Ευαισθησία κουμπιών"
 
-#: ctk/ctkcombobox.c:1079
+#: ctk/ctkcombobox.c:1080
 msgid "Whether the dropdown button is sensitive when the model is empty"
 msgstr ""
 "Αν το αναπτυσσόμενο κουμπί θα είναι ευαίσθητο, όταν δεν περιέχει επιλογές"
 
-#: ctk/ctkcombobox.c:1095
+#: ctk/ctkcombobox.c:1096
 msgid "Whether combo box has an entry"
 msgstr "Αν το πλαίσιο επιλογών έχει καταχώρηση"
 
-#: ctk/ctkcombobox.c:1110
+#: ctk/ctkcombobox.c:1111
 msgid "Entry Text Column"
 msgstr "Στήλη κειμένου εισαγωγής"
 
-#: ctk/ctkcombobox.c:1111
+#: ctk/ctkcombobox.c:1112
 msgid ""
 "The column in the combo box's model to associate with strings from the entry "
 "if the combo was created with #CtkComboBox:has-entry = %TRUE"
@@ -3130,11 +2898,11 @@ msgstr ""
 "από την εισαγωγή αν το πεδίο δημιουργήθηκε με with #CtkComboBox:has-entry = "
 "%TRUE"
 
-#: ctk/ctkcombobox.c:1128
+#: ctk/ctkcombobox.c:1129
 msgid "ID Column"
 msgstr "Στήλη αναγνωριστικού"
 
-#: ctk/ctkcombobox.c:1129
+#: ctk/ctkcombobox.c:1130
 msgid ""
 "The column in the combo box's model that provides string IDs for the values "
 "in the model"
@@ -3142,19 +2910,19 @@ msgstr ""
 "Η στήλη στο μοντέλο του πλαισίου επιλογών που παρέχει αναγνωριστικά "
 "συμβολοσειρών για τις τιμές στο μοντέλο"
 
-#: ctk/ctkcombobox.c:1144
+#: ctk/ctkcombobox.c:1145
 msgid "Active id"
 msgstr "Ενεργό αναγνωριστικό"
 
-#: ctk/ctkcombobox.c:1145
+#: ctk/ctkcombobox.c:1146
 msgid "The value of the id column for the active row"
 msgstr "Η τιμή της στήλης αναγνωριστικού για την ενεργή γραμμή"
 
-#: ctk/ctkcombobox.c:1161
+#: ctk/ctkcombobox.c:1162
 msgid "Popup Fixed Width"
 msgstr "Αναδυόμενο σταθερού πλάτος"
 
-#: ctk/ctkcombobox.c:1162
+#: ctk/ctkcombobox.c:1163
 msgid ""
 "Whether the popup's width should be a fixed width matching the allocated "
 "width of the combo box"
@@ -3162,27 +2930,27 @@ msgstr ""
 "Αν το πλάτος του αναδυόμενου θα είναι σταθερό πλάτος ίσο με το καθορισθέν "
 "πλάτος του πλαισίου επιλογών"
 
-#: ctk/ctkcombobox.c:1188
+#: ctk/ctkcombobox.c:1189
 msgid "Appears as list"
 msgstr "Εμφανίζεται ως λίστα"
 
-#: ctk/ctkcombobox.c:1189
+#: ctk/ctkcombobox.c:1190
 msgid "Whether dropdowns should look like lists rather than menus"
 msgstr "Αν τα αναπτυσσόμενα θα εμφανίζονται ως λίστες αντί για μενού"
 
-#: ctk/ctkcombobox.c:1208
+#: ctk/ctkcombobox.c:1209
 msgid "Arrow Size"
 msgstr "Μέγεθος βέλους"
 
-#: ctk/ctkcombobox.c:1209
+#: ctk/ctkcombobox.c:1210
 msgid "The minimum size of the arrow in the combo box"
 msgstr "Το ελάχιστο μέγεθος του βέλους στο πλαίσιο επιλογών"
 
-#: ctk/ctkcombobox.c:1227
+#: ctk/ctkcombobox.c:1228
 msgid "The amount of space used by the arrow"
 msgstr "Χώρος που καλύπτει το βέλος"
 
-#: ctk/ctkcombobox.c:1246
+#: ctk/ctkcombobox.c:1247
 msgid "Which kind of shadow to draw around the combo box"
 msgstr "Το είδος σκίασης που θα περιβάλλει το πλαίσιο επιλογών"
 
@@ -3227,7 +2995,7 @@ msgstr "Αναγνωριστικό"
 msgid "Unique ID"
 msgstr "Μοναδικό αναγνωριστικό"
 
-#: ctk/ctkcssnode.c:643 ctk/ctkswitch.c:890
+#: ctk/ctkcssnode.c:643 ctk/ctkswitch.c:893
 msgid "State"
 msgstr "Κατάσταση"
 
@@ -3291,7 +3059,7 @@ msgstr "Αρχική τιμή"
 msgid "The initial specified value used for this property"
 msgstr "Η αρχική καθορισμένη τιμή που χρησιμοποιείται για αυτή την ιδιότητα"
 
-#: ctk/ctkdialog.c:588 ctk/ctkinfobar.c:419
+#: ctk/ctkdialog.c:588 ctk/ctkinfobar.c:530
 msgid "Content area border"
 msgstr "Πλαίσιο περιοχής περιεχομένου"
 
@@ -3299,7 +3067,7 @@ msgstr "Πλαίσιο περιοχής περιεχομένου"
 msgid "Width of border around the main dialog area"
 msgstr "Πλάτος πλαισίου γύρω από την περιοχή του κυρίως διαλόγου"
 
-#: ctk/ctkdialog.c:606 ctk/ctkinfobar.c:437
+#: ctk/ctkdialog.c:606 ctk/ctkinfobar.c:548
 msgid "Content area spacing"
 msgstr "Διάκενο περιοχής περιεχομένου"
 
@@ -3307,15 +3075,15 @@ msgstr "Διάκενο περιοχής περιεχομένου"
 msgid "Spacing between elements of the main dialog area"
 msgstr "Διάκενο μεταξύ των στοιχείων της κύριας περιοχής του διαλόγου"
 
-#: ctk/ctkdialog.c:614 ctk/ctkinfobar.c:454
+#: ctk/ctkdialog.c:614 ctk/ctkinfobar.c:565
 msgid "Button spacing"
 msgstr "Διάκενο κουμπιών"
 
-#: ctk/ctkdialog.c:615 ctk/ctkinfobar.c:455
+#: ctk/ctkdialog.c:615 ctk/ctkinfobar.c:566
 msgid "Spacing between buttons"
 msgstr "Διάκενο μεταξύ κουμπιών"
 
-#: ctk/ctkdialog.c:631 ctk/ctkinfobar.c:471
+#: ctk/ctkdialog.c:631 ctk/ctkinfobar.c:582
 msgid "Action area border"
 msgstr "Πλαίσιο περιοχής δράσης"
 
@@ -3698,7 +3466,7 @@ msgstr "Συμπλήρωση όλων"
 msgid "Whether to emit ::populate-popup for touch popups"
 msgstr "Aν θα εκπεμφθεί ::populate-popup για αναδυόμενες επαφές"
 
-#: ctk/ctkentry.c:1522 ctk/ctktexttag.c:578 ctk/ctktextview.c:941
+#: ctk/ctkentry.c:1522 ctk/ctktexttag.c:579 ctk/ctktextview.c:941
 msgid "Tabs"
 msgstr "Στηλοθέτες"
 
@@ -3722,7 +3490,6 @@ msgstr "Ενεργοποίηση αυτόματης συμπλήρωσης ει�
 
 #: ctk/ctkentry.c:1545
 #, fuzzy
-#| msgid "Whether to use a monospace font"
 msgid "Whether to suggest Emoji replacements"
 msgstr "Αν θα χρησιμοποιηθεί μια γραμματοσειρά σταθερού πλάτους"
 
@@ -3850,7 +3617,7 @@ msgstr "Φάση διάδοσης"
 msgid "Propagation phase at which this controller is run"
 msgstr "Φάση διάδοσης κατά την οποία εκτελείται αυτός ο ελεγκτής"
 
-#: ctk/ctkeventcontrollerscroll.c:374 ctk/ctkeventcontrollerscroll.c:375
+#: ctk/ctkeventcontrollerscroll.c:373 ctk/ctkeventcontrollerscroll.c:374
 msgid "Flags"
 msgstr "Σημαίες"
 
@@ -3868,7 +3635,7 @@ msgstr ""
 msgid "Text of the expander's label"
 msgstr "Κείμενο της ετικέτας του σε ανάπτυξη παραθύρου"
 
-#: ctk/ctkexpander.c:324 ctk/ctklabel.c:819 ctk/ctkmodelbutton.c:1174
+#: ctk/ctkexpander.c:324 ctk/ctklabel.c:819 ctk/ctkmodelbutton.c:1196
 msgid "Use markup"
 msgstr "Χρήση επισήμανσης"
 
@@ -3883,7 +3650,7 @@ msgstr ""
 "Επιπλέον διάστημα σε εικονοστοιχεία για προσθήκη ανάμεσα στο θυγατρικό και "
 "την ετικέτα"
 
-#: ctk/ctkexpander.c:351 ctk/ctkframe.c:262 ctk/ctktoolbutton.c:257
+#: ctk/ctkexpander.c:351 ctk/ctkframe.c:262 ctk/ctktoolbutton.c:218
 #: ctk/ctktoolitemgroup.c:1646
 msgid "Label widget"
 msgstr "Γραφικό στοιχείο ετικέτας"
@@ -3894,21 +3661,21 @@ msgstr ""
 "Ένα γραφικό στοιχείο που θα εμφανίζεται στη θέση της συνήθους ετικέτας "
 "επέκτασης"
 
-#: ctk/ctkexpander.c:359
+#: ctk/ctkexpander.c:366
 msgid "Label fill"
 msgstr "Γέμισμα ετικέτας"
 
-#: ctk/ctkexpander.c:360
+#: ctk/ctkexpander.c:367
 msgid "Whether the label widget should fill all available horizontal space"
 msgstr ""
 "Αν το γραφικό στοιχείο της ετικέτας θα γεμίζει όλο το διαθέσιμο οριζόντιο "
 "χώρο"
 
-#: ctk/ctkexpander.c:375
+#: ctk/ctkexpander.c:382
 msgid "Resize toplevel"
 msgstr "Αλλαγή μεγέθους κορυφαίου"
 
-#: ctk/ctkexpander.c:376
+#: ctk/ctkexpander.c:383
 msgid ""
 "Whether the expander will resize the toplevel window upon expanding and "
 "collapsing"
@@ -3916,31 +3683,31 @@ msgstr ""
 "Είτε η επέκταση θα αλλάζει το μέγεθος του κορυφαίου παραθύρου κατά την "
 "επέκταση και την κατάρρευση"
 
-#: ctk/ctkexpander.c:389 ctk/ctktoolitemgroup.c:1674 ctk/ctktreeview.c:1225
+#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1674 ctk/ctktreeview.c:1234
 msgid "Expander Size"
 msgstr "Μέγεθος επέκτασης"
 
-#: ctk/ctkexpander.c:390 ctk/ctktoolitemgroup.c:1675 ctk/ctktreeview.c:1226
+#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1675 ctk/ctktreeview.c:1235
 msgid "Size of the expander arrow"
 msgstr "Μέγεθος του βέλους επέκτασης"
 
-#: ctk/ctkexpander.c:407
+#: ctk/ctkexpander.c:414
 msgid "Spacing around expander arrow"
 msgstr "Διάκενο γύρω από το βέλος επέκτασης"
 
-#: ctk/ctkfilechooserbutton.c:423
+#: ctk/ctkfilechooserbutton.c:428
 msgid "Dialog"
 msgstr "Διάλογος"
 
-#: ctk/ctkfilechooserbutton.c:424
+#: ctk/ctkfilechooserbutton.c:429
 msgid "The file chooser dialog to use."
 msgstr "Ο διάλογος που θα χρησιμοποιείται στον επιλογέα αρχείων."
 
-#: ctk/ctkfilechooserbutton.c:439
+#: ctk/ctkfilechooserbutton.c:444
 msgid "The title of the file chooser dialog."
 msgstr "Ο τίτλος του διαλόγου επιλογής αρχείου."
 
-#: ctk/ctkfilechooserbutton.c:453
+#: ctk/ctkfilechooserbutton.c:458
 msgid "The desired width of the button widget, in characters."
 msgstr "Το επιθυμητό πλάτος σε·χαρακτήρες. του γραφικού στοιχείου."
 
@@ -3961,7 +3728,7 @@ msgid "The current filter for selecting which files are displayed"
 msgstr "Το τρέχον φίλτρο για την επιλογή των αρχείων που θα εμφανίζονται"
 
 #: ctk/ctkfilechooser.c:388 ctk/ctkplacessidebar.c:4836
-#: ctk/ctkplacesview.c:2322
+#: ctk/ctkplacesview.c:2348
 msgid "Local Only"
 msgstr "Μόνο τοπικά"
 
@@ -4051,27 +3818,27 @@ msgstr ""
 "Αν θα προτείνουν δημιουργία νέων φακέλων οι επιλογείς αρχείων που δεν "
 "βρίσκονται σε ανοιχτή λειτουργία."
 
-#: ctk/ctkfilechoosernative.c:819
+#: ctk/ctkfilechoosernative.c:827
 msgid "Accept label"
 msgstr "Ετικέτα αποδοχής"
 
-#: ctk/ctkfilechoosernative.c:820
+#: ctk/ctkfilechoosernative.c:828
 msgid "The label on the accept button"
 msgstr "Η ετικέτα στο κουμπί αποδοχής"
 
-#: ctk/ctkfilechoosernative.c:832
+#: ctk/ctkfilechoosernative.c:840
 msgid "Cancel label"
 msgstr "Ετικέτα ακύρωσης"
 
-#: ctk/ctkfilechoosernative.c:833
+#: ctk/ctkfilechoosernative.c:841
 msgid "The label on the cancel button"
 msgstr "Η ετικέτα στο κουμπί ακύρωσης"
 
-#: ctk/ctkfilechooserwidget.c:8414 ctk/ctkfilechooserwidget.c:8415
+#: ctk/ctkfilechooserwidget.c:8668 ctk/ctkfilechooserwidget.c:8669
 msgid "Search mode"
 msgstr "Λειτουργία αναζήτησης"
 
-#: ctk/ctkfilechooserwidget.c:8421 ctk/ctkfilechooserwidget.c:8422
+#: ctk/ctkfilechooserwidget.c:8675 ctk/ctkfilechooserwidget.c:8676
 #: ctk/ctkheaderbar.c:2034 ctk/ctkshortcutsshortcut.c:591
 msgid "Subtitle"
 msgstr "Υπότιτλος"
@@ -4092,22 +3859,22 @@ msgstr "Θέση y"
 msgid "Y position of child widget"
 msgstr "Θέση y του θυγατρικού γραφικού στοιχείου"
 
-#: ctk/ctkflowbox.c:3822 ctk/ctkiconview.c:408 ctk/ctklistbox.c:479
+#: ctk/ctkflowbox.c:3822 ctk/ctkiconview.c:408 ctk/ctklistbox.c:485
 #: ctk/ctktreeselection.c:131
 msgid "Selection mode"
 msgstr "Λειτουργία επιλογής"
 
-#: ctk/ctkflowbox.c:3823 ctk/ctkiconview.c:409 ctk/ctklistbox.c:480
+#: ctk/ctkflowbox.c:3823 ctk/ctkiconview.c:409 ctk/ctklistbox.c:486
 msgid "The selection mode"
 msgstr "Η λειτουργία επιλογής"
 
-#: ctk/ctkflowbox.c:3836 ctk/ctkiconview.c:665 ctk/ctklistbox.c:487
-#: ctk/ctktreeview.c:1211
+#: ctk/ctkflowbox.c:3836 ctk/ctkiconview.c:665 ctk/ctklistbox.c:493
+#: ctk/ctktreeview.c:1220
 msgid "Activate on Single Click"
 msgstr "Ενεργοποίηση με μονό κλικ"
 
-#: ctk/ctkflowbox.c:3837 ctk/ctkiconview.c:666 ctk/ctklistbox.c:488
-#: ctk/ctktreeview.c:1212
+#: ctk/ctkflowbox.c:3837 ctk/ctkiconview.c:666 ctk/ctklistbox.c:494
+#: ctk/ctktreeview.c:1221
 msgid "Activate row on a single click"
 msgstr "Ενεργοποίηση γραμμής με μονό κλικ"
 
@@ -4205,13 +3972,11 @@ msgstr "Αν θα προβάλλεται προεπισκόπηση του ει�
 
 #: ctk/ctkfontchooser.c:118
 #, fuzzy
-#| msgid "Selection mode"
 msgid "Selection level"
 msgstr "Λειτουργία επιλογής"
 
 #: ctk/ctkfontchooser.c:119
 #, fuzzy
-#| msgid "Whether to use a monospace font"
 msgid "Whether to select family, face or font"
 msgstr "Αν θα χρησιμοποιηθεί μια γραμματοσειρά σταθερού πλάτους"
 
@@ -4227,13 +3992,12 @@ msgstr "Τα χαρακτηριστικά γραμματοσειράς ως συ
 msgid "Language for which features have been selected"
 msgstr ""
 
-#: ctk/ctkfontchooserwidget.c:696
+#: ctk/ctkfontchooserwidget.c:691
 #, fuzzy
-#| msgid "The name of the action"
 msgid "The tweak action"
 msgstr "Το όνομα της ενέργειας"
 
-#: ctk/ctkfontchooserwidget.c:697
+#: ctk/ctkfontchooserwidget.c:692
 msgid "The toggle action to switch to the tweak page"
 msgstr ""
 
@@ -4289,6 +4053,11 @@ msgstr "Συντελεστής καθυστέρησης"
 #: ctk/ctkgesturelongpress.c:286
 msgid "Factor by which to modify the default timeout"
 msgstr "Συντελεστή τον οποίο τροποποιείτε για το προεπιλεγμένο χρονικό όριο"
+
+#: ctk/ctkgesturepan.c:238 ctk/ctkorientable.c:61 ctk/ctkstatusicon.c:336
+#: ctk/ctktrayicon-x11.c:127
+msgid "Orientation"
+msgstr "Προσανατολισμός"
 
 #: ctk/ctkgesturepan.c:239
 msgid "Allowed orientations"
@@ -4434,11 +4203,11 @@ msgstr "Εμφάνιση διακοσμήσεων"
 msgid "Whether to show window decorations"
 msgstr "Αν θα εμφανίζονται διακοσμήσεις παραθύρου"
 
-#: ctk/ctkheaderbar.c:2085 ctk/ctksettings.c:1617
+#: ctk/ctkheaderbar.c:2085 ctk/ctksettings.c:1627
 msgid "Decoration Layout"
 msgstr "Διάταξη διακόσμησης"
 
-#: ctk/ctkheaderbar.c:2086 ctk/ctksettings.c:1618
+#: ctk/ctkheaderbar.c:2086 ctk/ctksettings.c:1628
 msgid "The layout for window decorations"
 msgstr "Η διάταξη για διακοσμήσεις παραθύρου"
 
@@ -4542,15 +4311,15 @@ msgid ""
 msgstr ""
 "Πως το κείμενο και κάθε στοιχείο τοποθετούνται σχετικά το ένα με το άλλο"
 
-#: ctk/ctkiconview.c:605 ctk/ctktreeview.c:1050 ctk/ctktreeviewcolumn.c:351
+#: ctk/ctkiconview.c:605 ctk/ctktreeview.c:1059 ctk/ctktreeviewcolumn.c:351
 msgid "Reorderable"
 msgstr "Δυνατότητα αναδιάταξης"
 
-#: ctk/ctkiconview.c:606 ctk/ctktreeview.c:1051
+#: ctk/ctkiconview.c:606 ctk/ctktreeview.c:1060
 msgid "View is reorderable"
 msgstr "Η προβολή έχει δυνατότητα αναδιάταξης"
 
-#: ctk/ctkiconview.c:613 ctk/ctktreeview.c:1195
+#: ctk/ctkiconview.c:613 ctk/ctktreeview.c:1204
 msgid "Tooltip Column"
 msgstr "Στήλη συμβουλών οθόνης"
 
@@ -4582,6 +4351,14 @@ msgstr "Άλφα κουτιού επιλογής"
 msgid "Opacity of the selection box"
 msgstr "Αδιαφάνεια του κουτιού επιλογής"
 
+#: ctk/ctkimage.c:256 ctk/ctkstatusicon.c:226
+msgid "Pixbuf"
+msgstr "Pixbuf"
+
+#: ctk/ctkimage.c:257 ctk/ctkstatusicon.c:227
+msgid "A GdkPixbuf to display"
+msgstr "Ένα GdkPixbuf προς εμφάνιση"
+
 #: ctk/ctkimage.c:263
 msgid "Surface"
 msgstr "Επιφάνεια"
@@ -4590,94 +4367,138 @@ msgstr "Επιφάνεια"
 msgid "A cairo_surface_t to display"
 msgstr "Μια cairo_surface_t που θα εμφανιστεί"
 
-#: ctk/ctkimage.c:295
+#: ctk/ctkimage.c:270 ctk/ctkrecentmanager.c:288 ctk/ctkstatusicon.c:234
+msgid "Filename"
+msgstr "Όνομα αρχείου"
+
+#: ctk/ctkimage.c:271 ctk/ctkstatusicon.c:235
+msgid "Filename to load and display"
+msgstr "Όνομα αρχείου για φόρτωση και εμφάνιση"
+
+#: ctk/ctkimage.c:281 ctk/ctkstatusicon.c:246
+msgid "Stock ID for a stock image to display"
+msgstr "Αναγνωριστικό αποθέματος για εμφάνιση εικόνας αποθέματος"
+
+#: ctk/ctkimage.c:293
 msgid "Icon set"
 msgstr "Ορισμός εικονιδίου"
 
-#: ctk/ctkimage.c:296
+#: ctk/ctkimage.c:294
 msgid "Icon set to display"
 msgstr "Ορισμός εικονιδίου για εμφάνιση"
 
-#: ctk/ctkimage.c:303 ctk/ctkscalebutton.c:206 ctk/ctktoolbar.c:564
+#: ctk/ctkimage.c:301 ctk/ctkscalebutton.c:208 ctk/ctktoolbar.c:564
 #: ctk/ctktoolpalette.c:965
 msgid "Icon size"
 msgstr "Μέγεθος εικονιδίου"
 
-#: ctk/ctkimage.c:304
+#: ctk/ctkimage.c:302
 msgid "Symbolic size to use for stock icon, icon set or named icon"
 msgstr ""
 "Συμβολικό μέγεθος για χρήση σε εικονίδιο αποθέματος, ομάδα εικονιδίων ή "
 "πρότυπο εικονίδιο"
 
-#: ctk/ctkimage.c:320
+#: ctk/ctkimage.c:318
 msgid "Pixel size"
 msgstr "Μέγεθος εικονοστοιχείου"
 
-#: ctk/ctkimage.c:321
+#: ctk/ctkimage.c:319
 msgid "Pixel size to use for named icon"
 msgstr "Μέγεθος εικονοστοιχείου για πρότυπο εικονίδιο"
 
-#: ctk/ctkimage.c:328
+#: ctk/ctkimage.c:326
 msgid "Animation"
 msgstr "Κίνηση"
 
-#: ctk/ctkimage.c:329
+#: ctk/ctkimage.c:327
 msgid "GdkPixbufAnimation to display"
 msgstr "GdkPixbufAnimation για εμφάνιση"
 
-#: ctk/ctkimage.c:373
+#: ctk/ctkimage.c:371
 msgid "Resource"
 msgstr "Πόρος"
 
-#: ctk/ctkimage.c:374
+#: ctk/ctkimage.c:372
 msgid "The resource path being displayed"
 msgstr "Η διαδρομή πόρου που εμφανίζεται"
 
-#: ctk/ctkimage.c:398
+#: ctk/ctkimage.c:378 ctk/ctkstatusicon.c:277
+msgid "Storage type"
+msgstr "Τύπος αποθήκευσης"
+
+#: ctk/ctkimage.c:379 ctk/ctkstatusicon.c:278
+msgid "The representation being used for image data"
+msgstr "Η αναπαράσταση που χρησιμοποιείται για δεδομένα εικόνας"
+
+#: ctk/ctkimage.c:396
 msgid "Use Fallback"
 msgstr "Χρήση Fallback"
 
-#: ctk/ctkimage.c:399
+#: ctk/ctkimage.c:397
 msgid "Whether to use icon names fallback"
 msgstr "Αν θα χρησιμοποιηθούν fallback ονόματα εικονιδίων"
 
-#: ctk/ctkinfobar.c:339 ctk/ctkmessagedialog.c:189
+#: ctk/ctkimagemenuitem.c:222
+msgid "Child widget to appear next to the menu text"
+msgstr ""
+"Θυγατρικό γραφικό στοιχείο που θα εμφανίζεται δίπλα από το κείμενο του μενού"
+
+#: ctk/ctkimagemenuitem.c:237
+msgid "Whether to use the label text to create a stock menu item"
+msgstr ""
+"Aν το κείμενο της ετικέτας θα χρησιμοποιηθεί για τη δημιουργία στοιχείου "
+"μενού αποθέματος"
+
+#: ctk/ctkimagemenuitem.c:269 ctk/ctkmenu.c:655
+msgid "Accel Group"
+msgstr "Ομάδα Accel"
+
+#: ctk/ctkimagemenuitem.c:270
+msgid "The Accel Group to use for stock accelerator keys"
+msgstr "Η ομάδα Accel που χρησιμοποιείται για τα έτοιμα πλήκτρα συντομεύσεων"
+
+#: ctk/ctkinfobar.c:450 ctk/ctkmessagedialog.c:189
 msgid "Message Type"
 msgstr "Τύπος μηνύματος"
 
-#: ctk/ctkinfobar.c:340 ctk/ctkmessagedialog.c:190
+#: ctk/ctkinfobar.c:451 ctk/ctkmessagedialog.c:190
 msgid "The type of message"
 msgstr "Ο τύπος του μηνύματος"
 
-#: ctk/ctkinfobar.c:354 ctk/ctksearchbar.c:425
+#: ctk/ctkinfobar.c:465 ctk/ctksearchbar.c:425
 msgid "Show Close Button"
 msgstr "Εμφάνιση του κουμπιού κλεισίματος"
 
-#: ctk/ctkinfobar.c:355
+#: ctk/ctkinfobar.c:466
 msgid "Whether to include a standard close button"
 msgstr "Αν θα συμπεριλαμβάνεται ένα τυπικό κουμπί κλεισίματος"
 
-#: ctk/ctkinfobar.c:361
+#: ctk/ctkinfobar.c:472
 msgid "Reveal"
 msgstr "Αποκάλυψη"
 
-#: ctk/ctkinfobar.c:362
+#: ctk/ctkinfobar.c:473
 msgid "Controls whether the action bar shows its contents or not"
 msgstr "Ελέγχει αν η γραμμή ενεργειών εμφανίζει τα περιεχόμενά της ή όχι"
 
-#: ctk/ctkinfobar.c:420
+#: ctk/ctkinfobar.c:531
 msgid "Width of border around the content area"
 msgstr "Πλάτος πλαισίου γύρω από την περιοχή περιεχομένων"
 
-#: ctk/ctkinfobar.c:438
+#: ctk/ctkinfobar.c:549
 msgid "Spacing between elements of the area"
 msgstr "Διάκενο μεταξύ των στοιχείων της περιοχής"
 
-#: ctk/ctkinfobar.c:472
+#: ctk/ctkinfobar.c:583
 msgid "Width of border around the action area"
 msgstr "Πλάτος πλαισίου γύρω από την περιοχή ενεργειών"
 
-#: ctk/ctkinvisible.c:99 ctk/ctkwindow.c:902
+#: ctk/ctkinvisible.c:98 ctk/ctkmountoperation.c:183 ctk/ctkstatusicon.c:296
+#: ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:897
+msgid "Screen"
+msgstr "Οθόνη"
+
+#: ctk/ctkinvisible.c:99 ctk/ctkwindow.c:898
 msgid "The screen where this window will be displayed"
 msgstr "Η οθόνη όπου θα εμφανίζεται αυτό το παράθυρο"
 
@@ -4685,7 +4506,7 @@ msgstr "Η οθόνη όπου θα εμφανίζεται αυτό το παρ�
 msgid "The text of the label"
 msgstr "Το κείμενο της ετικέτας"
 
-#: ctk/ctklabel.c:833 ctk/ctktexttag.c:416 ctk/ctktextview.c:842
+#: ctk/ctklabel.c:833 ctk/ctktexttag.c:417 ctk/ctktextview.c:842
 msgid "Justification"
 msgstr "Στοίχιση"
 
@@ -4872,11 +4693,11 @@ msgstr "Έγινε επίσκεψη"
 msgid "Whether this link has been visited."
 msgstr "Αν έχει ήδη γίνει επίσκεψη σε αυτό το σύνδεσμο."
 
-#: ctk/ctklistbox.c:3909
+#: ctk/ctklistbox.c:3918
 msgid "Whether this row can be activated"
 msgstr "Αν αυτή η σειρά μπορεί να ενεργοποιηθεί"
 
-#: ctk/ctklistbox.c:3923
+#: ctk/ctklistbox.c:3932
 msgid "Whether this row can be selected"
 msgstr "Αν αυτή η σειρά μπορεί να επιλεχθεί"
 
@@ -5027,33 +4848,33 @@ msgstr "Αναδυόμενο"
 msgid "The popover"
 msgstr "Το αναδυόμενο"
 
-#: ctk/ctkmenu.c:640
+#: ctk/ctkmenu.c:641
 msgid "The currently selected menu item"
 msgstr "Το τρέχον επιλεγμένο αντικείμενο μενού"
 
-#: ctk/ctkmenu.c:655
+#: ctk/ctkmenu.c:656
 msgid "The accel group holding accelerators for the menu"
 msgstr "Η ομάδα Accel που περιέχει τις συντομεύσεις του μενού"
 
-#: ctk/ctkmenu.c:669 ctk/ctkmenuitem.c:775
+#: ctk/ctkmenu.c:670 ctk/ctkmenuitem.c:775
 msgid "Accel Path"
 msgstr "Διαδρομή Accel"
 
-#: ctk/ctkmenu.c:670
+#: ctk/ctkmenu.c:671
 msgid "An accel path used to conveniently construct accel paths of child items"
 msgstr ""
 "Διαδρομή accel που χρησιμοποιείται για εύκολη δημιουργία των διαδρομών accel "
 "των θυγατρικών αντικειμένων"
 
-#: ctk/ctkmenu.c:686
+#: ctk/ctkmenu.c:687
 msgid "Attach Widget"
 msgstr "Πρόσδεση γραφικού στοιχείου"
 
-#: ctk/ctkmenu.c:687
+#: ctk/ctkmenu.c:688
 msgid "The widget the menu is attached to"
 msgstr "Το γραφικό στοιχείο στο οποίο θα είναι προσδεμένο το μενού"
 
-#: ctk/ctkmenu.c:703
+#: ctk/ctkmenu.c:704
 msgid ""
 "A title that may be displayed by the window manager when this menu is torn-"
 "off"
@@ -5061,27 +4882,27 @@ msgstr ""
 "Ένας τίτλος που μπορεί να εμφανίζεται από το διαχειριστή παραθύρων όταν αυτό "
 "το μενού αποκόπτεται"
 
-#: ctk/ctkmenu.c:719
+#: ctk/ctkmenu.c:720
 msgid "Tearoff State"
 msgstr "Αποσπώμενος κατάσταση"
 
-#: ctk/ctkmenu.c:720
+#: ctk/ctkmenu.c:721
 msgid "A boolean that indicates whether the menu is torn-off"
 msgstr "Μια τιμή Μπουλ που δείχνει εάν το μενού αποκόπτεται"
 
-#: ctk/ctkmenu.c:734
+#: ctk/ctkmenu.c:735
 msgid "Monitor"
 msgstr "Οθόνη"
 
-#: ctk/ctkmenu.c:735
+#: ctk/ctkmenu.c:736
 msgid "The monitor the menu will be popped up on"
 msgstr "Η οθόνη στην οποία θα εμφανιστεί το μενού"
 
-#: ctk/ctkmenu.c:755
+#: ctk/ctkmenu.c:756
 msgid "Reserve Toggle Size"
 msgstr "Κράτηση χώρου κουμπιού εναλλαγής"
 
-#: ctk/ctkmenu.c:756
+#: ctk/ctkmenu.c:757
 msgid ""
 "A boolean that indicates whether the menu reserves space for toggles and "
 "icons"
@@ -5089,59 +4910,59 @@ msgstr ""
 "Λογική τιμή που δείχνει αν το μενού θα δεσμεύει κενό χώρο για κουμπιά "
 "εναλλαγής και εικονίδια"
 
-#: ctk/ctkmenu.c:783
+#: ctk/ctkmenu.c:784
 msgid "Anchor hints"
 msgstr "Υποδείξεις"
 
-#: ctk/ctkmenu.c:784
+#: ctk/ctkmenu.c:785
 msgid "Positioning hints for when the menu might fall off-screen"
 msgstr "Τοποθέτηση των υποδείξεων για όταν το μενού είναι εκτός οθόνης"
 
-#: ctk/ctkmenu.c:811
+#: ctk/ctkmenu.c:812
 msgid "Rect anchor dx"
 msgstr "Πλάτος πλαισίου της υπόδειξης"
 
-#: ctk/ctkmenu.c:812
+#: ctk/ctkmenu.c:813
 msgid "Rect anchor horizontal offset"
 msgstr "Οριζόντια μετατόπιση του πλαισίου υπόδειξης"
 
-#: ctk/ctkmenu.c:837
+#: ctk/ctkmenu.c:838
 msgid "Rect anchor dy"
 msgstr "Ύψος πλαισίου της υπόδειξης"
 
-#: ctk/ctkmenu.c:838
+#: ctk/ctkmenu.c:839
 msgid "Rect anchor vertical offset"
 msgstr "Κάθετη μετατόπιση του πλαισίου υπόδειξης"
 
-#: ctk/ctkmenu.c:863
+#: ctk/ctkmenu.c:864
 msgid "Menu type hint"
 msgstr "Είδος υπόδειξης του μενού"
 
-#: ctk/ctkmenu.c:864
+#: ctk/ctkmenu.c:865
 msgid "Menu window type hint"
 msgstr "Είδος υπόδειξης του μενού παραθύρου"
 
-#: ctk/ctkmenu.c:885
+#: ctk/ctkmenu.c:886
 msgid "Horizontal Padding"
 msgstr "Οριζόντιο γέμισμα"
 
-#: ctk/ctkmenu.c:886
+#: ctk/ctkmenu.c:887
 msgid "Extra space at the left and right edges of the menu"
 msgstr "Επιπλέον διάστημα αριστερά και δεξιά από τις γωνίες του μενού"
 
-#: ctk/ctkmenu.c:904
+#: ctk/ctkmenu.c:905
 msgid "Vertical Padding"
 msgstr "Κάθετο γέμισμα"
 
-#: ctk/ctkmenu.c:905
+#: ctk/ctkmenu.c:906
 msgid "Extra space at the top and bottom of the menu"
 msgstr "Επιπλέον διάστημα πάνω και κάτω από το μενού"
 
-#: ctk/ctkmenu.c:914
+#: ctk/ctkmenu.c:915
 msgid "Vertical Offset"
 msgstr "Κάθετη κλίμακα"
 
-#: ctk/ctkmenu.c:915
+#: ctk/ctkmenu.c:916
 msgid ""
 "When the menu is a submenu, position it this number of pixels offset "
 "vertically"
@@ -5149,11 +4970,11 @@ msgstr ""
 "Αν το μενού είναι ένα υπομενού, η θέση του σε εικονοστοιχεία σε κάθετη "
 "κλίμακα"
 
-#: ctk/ctkmenu.c:923
+#: ctk/ctkmenu.c:924
 msgid "Horizontal Offset"
 msgstr "Οριζόντια κλίμακα"
 
-#: ctk/ctkmenu.c:924
+#: ctk/ctkmenu.c:925
 msgid ""
 "When the menu is a submenu, position it this number of pixels offset "
 "horizontally"
@@ -5161,47 +4982,47 @@ msgstr ""
 "Αν το μενού είναι ένα υπομενού, η θέση του σε εικονοστοιχεία σε οριζόντια "
 "κλίμακα"
 
-#: ctk/ctkmenu.c:939
+#: ctk/ctkmenu.c:940
 msgid "Double Arrows"
 msgstr "Διπλά βέλη"
 
-#: ctk/ctkmenu.c:940
+#: ctk/ctkmenu.c:941
 msgid "When scrolling, always show both arrows."
 msgstr "Κατά την κύλιση, να εμφανίζονται πάντα και τα δύο βέλη."
 
-#: ctk/ctkmenu.c:955
+#: ctk/ctkmenu.c:956
 msgid "Arrow Placement"
 msgstr "Θέση βέλων"
 
-#: ctk/ctkmenu.c:956
+#: ctk/ctkmenu.c:957
 msgid "Indicates where scroll arrows should be placed"
 msgstr "Που θα τοποθετηθούν τα βέλη κύλισης"
 
-#: ctk/ctkmenu.c:964
+#: ctk/ctkmenu.c:965
 msgid "Left Attach"
 msgstr "Επισύναψη αριστερά"
 
-#: ctk/ctkmenu.c:972
+#: ctk/ctkmenu.c:973
 msgid "Right Attach"
 msgstr "Επισύναψη δεξιά"
 
-#: ctk/ctkmenu.c:973
+#: ctk/ctkmenu.c:974
 msgid "The column number to attach the right side of the child to"
 msgstr "Ο αριθμός στήλης όπου επισυνάπτεται η δεξιά πλευρά του θυγατρικού"
 
-#: ctk/ctkmenu.c:980
+#: ctk/ctkmenu.c:981
 msgid "Top Attach"
 msgstr "Επισύναψη πάνω"
 
-#: ctk/ctkmenu.c:981
+#: ctk/ctkmenu.c:982
 msgid "The row number to attach the top of the child to"
 msgstr "Ο αριθμός γραμμής όπου επισυνάπτεται το πάνω μέρος ενός θυγατρικού"
 
-#: ctk/ctkmenu.c:988
+#: ctk/ctkmenu.c:989
 msgid "Bottom Attach"
 msgstr "Επισύναψη κάτω"
 
-#: ctk/ctkmenu.c:1006
+#: ctk/ctkmenu.c:1007
 msgid "Arbitrary constant to scale down the size of the scroll arrow"
 msgstr "Αυθαίρετη σταθερά για τη μείωση του μεγέθους του βέλους κύλισης"
 
@@ -5327,72 +5148,72 @@ msgstr ""
 "Το CtkBox που διατηρεί τις πρωτεύουσες και δευτερεύουσες ετικέτες του "
 "διαλόγου"
 
-#: ctk/ctkmodelbutton.c:1128
+#: ctk/ctkmodelbutton.c:1150
 msgid "Role"
 msgstr "Ρόλος"
 
-#: ctk/ctkmodelbutton.c:1129
+#: ctk/ctkmodelbutton.c:1151
 msgid "The role of this button"
 msgstr "Ο ρόλος αυτού του κουμπιού"
 
-#: ctk/ctkmodelbutton.c:1145
+#: ctk/ctkmodelbutton.c:1167
 msgid "The icon"
 msgstr "Το εικονίδιο"
 
-#: ctk/ctkmodelbutton.c:1159
+#: ctk/ctkmodelbutton.c:1181
 msgid "The text"
 msgstr "Το κείμενο"
 
-#: ctk/ctkmodelbutton.c:1175
+#: ctk/ctkmodelbutton.c:1197
 msgid "The text of the button includes XML markup. See pango_parse_markup()"
 msgstr ""
 "Το κείμενο του κουμπιού περιέχει επισήμανση XML. Βλέπε pango_parse_markup()"
 
-#: ctk/ctkmodelbutton.c:1204
+#: ctk/ctkmodelbutton.c:1226
 msgid "Menu name"
 msgstr "Όνομα μενού"
 
-#: ctk/ctkmodelbutton.c:1205
+#: ctk/ctkmodelbutton.c:1227
 msgid "The name of the menu to open"
 msgstr "Το όνομα του μενού για άνοιγμα"
 
-#: ctk/ctkmodelbutton.c:1221
+#: ctk/ctkmodelbutton.c:1243
 msgid "Whether the menu is a parent"
 msgstr "Αν το μενού είναι γονικό"
 
-#: ctk/ctkmodelbutton.c:1235
+#: ctk/ctkmodelbutton.c:1257
 msgid "Centered"
 msgstr "Κεντραρισμένο"
 
-#: ctk/ctkmodelbutton.c:1236
+#: ctk/ctkmodelbutton.c:1258
 msgid "Whether to center the contents"
 msgstr "Αν θα κεντράρονται τα περιεχόμενα"
 
-#: ctk/ctkmodelbutton.c:1251
+#: ctk/ctkmodelbutton.c:1273
 msgid "Iconic"
 msgstr "Εικονικό"
 
-#: ctk/ctkmodelbutton.c:1252
+#: ctk/ctkmodelbutton.c:1274
 msgid "Whether to prefer the icon over text"
 msgstr "Αν θα προτιμάται το εικονίδιο αντί για κείμενο"
 
-#: ctk/ctkmountoperation.c:163 ctk/ctkstylecontext.c:259
+#: ctk/ctkmountoperation.c:167 ctk/ctkstylecontext.c:259
 msgid "Parent"
 msgstr "Γονικό"
 
-#: ctk/ctkmountoperation.c:164
+#: ctk/ctkmountoperation.c:168
 msgid "The parent window"
 msgstr "Το γονικό παράθυρο"
 
-#: ctk/ctkmountoperation.c:171
+#: ctk/ctkmountoperation.c:175
 msgid "Is Showing"
 msgstr "Εμφανίζεται"
 
-#: ctk/ctkmountoperation.c:172
+#: ctk/ctkmountoperation.c:176
 msgid "Are we showing a dialog"
 msgstr "Αν εμφανίζεται ο διάλογος"
 
-#: ctk/ctkmountoperation.c:180
+#: ctk/ctkmountoperation.c:184
 msgid "The screen where this window will be displayed."
 msgstr "Η οθόνη όπου θα εμφανίζεται αυτό το παράθυρο."
 
@@ -5404,7 +5225,7 @@ msgstr "Τίτλος διαλόγου"
 msgid "The title of the file chooser dialog"
 msgstr "Ο τίτλος του διαλόγου επιλογής αρχείου"
 
-#: ctk/ctknativedialog.c:228 ctk/ctkpopover.c:1755 ctk/ctkwindow.c:793
+#: ctk/ctknativedialog.c:228 ctk/ctkpopover.c:1782 ctk/ctkwindow.c:789
 msgid "Modal"
 msgstr "Σχηματικό"
 
@@ -5420,11 +5241,11 @@ msgstr ""
 msgid "Whether the dialog is currently visible"
 msgstr "Αν το γραφικό στοιχείο θα είναι ορατό"
 
-#: ctk/ctknativedialog.c:256 ctk/ctkwindow.c:1068
+#: ctk/ctknativedialog.c:256 ctk/ctkwindow.c:1064
 msgid "Transient for Window"
 msgstr "Προσωρινό παραθύρου"
 
-#: ctk/ctknativedialog.c:257 ctk/ctkwindow.c:1069
+#: ctk/ctknativedialog.c:257 ctk/ctkwindow.c:1065
 msgid "The transient parent of the dialog"
 msgstr "Το προσωρινό γονικό του διαλόγου"
 
@@ -5618,19 +5439,19 @@ msgstr "Ο ενεργός στηλοθέτης σχεδιάζεται με κε�
 msgid "The orientation of the orientable"
 msgstr "Ο προσανατολισμός του αντικειμένου"
 
-#: ctk/ctkoverlay.c:779
+#: ctk/ctkoverlay.c:790
 msgid "Pass Through"
 msgstr "Διέλευση"
 
-#: ctk/ctkoverlay.c:779
+#: ctk/ctkoverlay.c:790
 msgid "Pass through input, does not affect main child"
 msgstr "Η είσοδος διέλευσης, δεν επηρεάζει το κύριο θυγατρικό"
 
-#: ctk/ctkoverlay.c:792
+#: ctk/ctkoverlay.c:804
 msgid "Index"
 msgstr "Δείκτης"
 
-#: ctk/ctkoverlay.c:793
+#: ctk/ctkoverlay.c:805
 msgid "The index of the overlay in the parent, -1 for the main child"
 msgstr "Ο δείκτης της επικάλυψης στο γονικό, -1 για το κύριο θυγατρικό"
 
@@ -5723,11 +5544,11 @@ msgstr "Τοποθεσία που θα επιλεγεί"
 msgid "The location to highlight in the sidebar"
 msgstr "Η τοποθεσία που τονίζεται στην πλευρική στήλη"
 
-#: ctk/ctkplacessidebar.c:4805 ctk/ctkplacesview.c:2343
+#: ctk/ctkplacessidebar.c:4805 ctk/ctkplacesview.c:2369
 msgid "Open Flags"
 msgstr "Άνοιγμα σημαιών"
 
-#: ctk/ctkplacessidebar.c:4806 ctk/ctkplacesview.c:2344
+#: ctk/ctkplacessidebar.c:4806 ctk/ctkplacesview.c:2370
 msgid ""
 "Modes in which the calling application can open locations selected in the "
 "sidebar"
@@ -5778,7 +5599,7 @@ msgstr ""
 "Αν η πλευρική στήλη περιλαμβάνει μια ενσωματωμένη συντόμευση για τη "
 "χειροκίνηση εισαγωγή τοποθεσίας"
 
-#: ctk/ctkplacessidebar.c:4837 ctk/ctkplacesview.c:2323
+#: ctk/ctkplacessidebar.c:4837 ctk/ctkplacesview.c:2349
 msgid "Whether the sidebar only includes local files"
 msgstr "Αν η πλευρική στήλη περιλαμβάνει μόνο τοπικά αρχεία"
 
@@ -5804,7 +5625,6 @@ msgstr ""
 
 #: ctk/ctkplacessidebar.c:4854
 #, fuzzy
-#| msgid "Show 'Enter Location'"
 msgid "Show “Starred Location”"
 msgstr "Εμφάνιση 'Εισαγωγή τοποθεσίας'"
 
@@ -5818,19 +5638,19 @@ msgstr ""
 msgid "Whether to emit ::populate-popup for popups that are not menus"
 msgstr "Αν θα εκπεμφθεί ::populate-popup για αναδυόμενα που δεν είναι μενού"
 
-#: ctk/ctkplacesview.c:2329
+#: ctk/ctkplacesview.c:2355
 msgid "Loading"
 msgstr "Γίνεται φόρτωση"
 
-#: ctk/ctkplacesview.c:2330
+#: ctk/ctkplacesview.c:2356
 msgid "Whether the view is loading locations"
 msgstr "Αν η προβολή φορτώνει τοποθεσίες"
 
-#: ctk/ctkplacesview.c:2336
+#: ctk/ctkplacesview.c:2362
 msgid "Fetching networks"
 msgstr "Ανάκτηση δικτύων"
 
-#: ctk/ctkplacesview.c:2337
+#: ctk/ctkplacesview.c:2363
 msgid "Whether the view is fetching networks"
 msgstr "Αν η προβολή ανακτά δίκτυα"
 
@@ -5886,55 +5706,59 @@ msgstr "Το αρχείο που αντιπροσωπεύεται από τη γ
 msgid "Whether the row represents a network location"
 msgstr "Αν η γραμμή αντιπροσωπεύει μια τοποθεσία δικτύου"
 
-#: ctk/ctkplug.c:197
+#: ctk/ctkplug.c:198 ctk/ctkstatusicon.c:320
+msgid "Embedded"
+msgstr "Ενσωματωμένο"
+
+#: ctk/ctkplug.c:199
 msgid "Whether the plug is embedded"
 msgstr "Αν θα είναι ενσωματωμένο το βύσμα"
 
-#: ctk/ctkplug.c:211
+#: ctk/ctkplug.c:213
 msgid "Socket Window"
 msgstr "Παράθυρο υποδοχής"
 
-#: ctk/ctkplug.c:212
+#: ctk/ctkplug.c:214
 msgid "The window of the socket the plug is embedded in"
 msgstr "Το παράθυρο της υποδοχής όπου είναι ενσωματωμένο το βύσμα"
 
-#: ctk/ctkpopover.c:1712
+#: ctk/ctkpopover.c:1739
 msgid "Relative to"
 msgstr "Σχετικά με"
 
-#: ctk/ctkpopover.c:1713
+#: ctk/ctkpopover.c:1740
 msgid "Widget the bubble window points to"
 msgstr "Το γραφικό στοιχείο στο οποίο δείχνει το παράθυρο φυσαλίδας"
 
-#: ctk/ctkpopover.c:1726
+#: ctk/ctkpopover.c:1753
 msgid "Pointing to"
 msgstr "Δείχνει σε"
 
-#: ctk/ctkpopover.c:1727
+#: ctk/ctkpopover.c:1754
 msgid "Rectangle the bubble window points to"
 msgstr "Το ορθογώνιο στο οποίο δείχνει το παράθυρο φυσαλίδας"
 
-#: ctk/ctkpopover.c:1741
+#: ctk/ctkpopover.c:1768
 msgid "Position to place the bubble window"
 msgstr "Θέση για τοποθέτηση του παραθύρου φυσαλίδας"
 
-#: ctk/ctkpopover.c:1756
+#: ctk/ctkpopover.c:1783
 msgid "Whether the popover is modal"
 msgstr "Αν θα είναι σχηματικό το αναδυόμενο"
 
-#: ctk/ctkpopover.c:1773
+#: ctk/ctkpopover.c:1800
 msgid "Transitions enabled"
 msgstr "Ενεργοποιημένες μεταβάσεις"
 
-#: ctk/ctkpopover.c:1774
+#: ctk/ctkpopover.c:1801
 msgid "Whether show/hide transitions are enabled or not"
 msgstr "Aν η εμφάνιση/απόκρυψη των μεταβάσεων είναι ενεργοποιημένη ή όχι."
 
-#: ctk/ctkpopover.c:1787
+#: ctk/ctkpopover.c:1814
 msgid "Constraint"
 msgstr "Περιορισμός"
 
-#: ctk/ctkpopover.c:1788
+#: ctk/ctkpopover.c:1815
 msgid "Constraint for the popover position"
 msgstr "Περιορισμός για την θέση του αναδυόμενου"
 
@@ -6349,6 +6173,39 @@ msgstr "Ελάχιστο ύψος κάθετης γραμμής"
 msgid "The minimum vertical height of the progress bar"
 msgstr "Το ελάχιστο κατακόρυφο ύψος της γραμμής προόδου"
 
+#: ctk/ctkradioaction.c:116
+msgid "The value"
+msgstr "Η τιμή"
+
+#: ctk/ctkradioaction.c:117
+msgid ""
+"The value returned by ctk_radio_action_get_current_value() when this action "
+"is the current action of its group."
+msgstr ""
+"Η τιμή που επιστρέφεται από το ctk_radio_action_get_current_value() όταν "
+"αυτή η ενέργεια είναι η τρέχουσα ενέργεια της ομάδας του."
+
+#: ctk/ctkradioaction.c:133 ctk/ctkradiobutton.c:184 ctk/ctkradiomenuitem.c:424
+#: ctk/ctkradiotoolbutton.c:83
+msgid "Group"
+msgstr "Ομάδα"
+
+#: ctk/ctkradioaction.c:134
+msgid "The radio action whose group this action belongs to."
+msgstr "Το κουμπί radio του οποίου η ομάδα της ανήκει αυτή η ενέργεια."
+
+#: ctk/ctkradioaction.c:149
+msgid "The current value"
+msgstr "Η τρέχουσα τιμή"
+
+#: ctk/ctkradioaction.c:150
+msgid ""
+"The value property of the currently active member of the group to which this "
+"action belongs."
+msgstr ""
+"Η ιδιότητα τιμής του ενεργού στοιχείου της ομάδας όπου ανήκει αυτή η "
+"ενέργεια."
+
 #: ctk/ctkradiobutton.c:185
 msgid "The radio button whose group this widget belongs to."
 msgstr ""
@@ -6428,7 +6285,7 @@ msgstr "Στρογγυλοποίηση ψηφίων"
 msgid "The number of digits to round the value to."
 msgstr "Ο αριθμός των ψηφίων στον οποίο θα γίνεται στρογγυλοποίηση."
 
-#: ctk/ctkrange.c:538 ctk/ctkswitch.c:926
+#: ctk/ctkrange.c:538 ctk/ctkswitch.c:929
 msgid "Slider Width"
 msgstr "Πλάτος κύλισης"
 
@@ -6504,6 +6361,14 @@ msgstr ""
 "Να επιτρέπεται η κλιμάκωση του μεγέθους του βέλους ανάλογα με το μέγεθος του "
 "κουμπιού κύλισης"
 
+#: ctk/ctkrecentaction.c:666 ctk/ctkrecentchoosermenu.c:239
+msgid "Show Numbers"
+msgstr "Εμφάνιση αριθμών"
+
+#: ctk/ctkrecentaction.c:667 ctk/ctkrecentchoosermenu.c:240
+msgid "Whether the items should be displayed with a number"
+msgstr "Αν τα αντικείμενα θα εμφανίζονται με ένα αριθμό"
+
 #: ctk/ctkrecentchooser.c:130
 msgid "Recent Manager"
 msgstr "Πρόσφατος διαχειριστής"
@@ -6577,13 +6442,13 @@ msgstr "Η σειρά ταξινόμησης των αντικειμένων π�
 msgid "The current filter for selecting which resources are displayed"
 msgstr "Το τρέχον φίλτρο για την επιλογή των πόρων που θα εμφανίζονται"
 
-#: ctk/ctkrecentmanager.c:290
+#: ctk/ctkrecentmanager.c:289
 msgid "The full path to the file to be used to store and read the list"
 msgstr ""
 "Η πλήρης διαδρομή προς το αρχείο που χρησιμοποιείται για την αποθήκευση και "
 "ανάγνωση της λίστας"
 
-#: ctk/ctkrecentmanager.c:305
+#: ctk/ctkrecentmanager.c:304
 msgid "The size of the recently used resources list"
 msgstr "Το μέγεθος της λίστας των πρόσφατα χρησιμοποιημένων πόρων"
 
@@ -6619,25 +6484,25 @@ msgstr "Αποκαλυφθέν θυγατρικό"
 msgid "Whether the child is revealed and the animation target reached"
 msgstr "Αν το θυγατρικό αποκαλύπτεται και ο προορισμός της κίνησης έφτασε"
 
-#: ctk/ctkscalebutton.c:197
+#: ctk/ctkscalebutton.c:199
 msgid "The value of the scale"
 msgstr "Η τιμή της κλιμάκωσης"
 
-#: ctk/ctkscalebutton.c:207
+#: ctk/ctkscalebutton.c:209
 msgid "The icon size"
 msgstr "Το μέγεθος εικονιδίου"
 
-#: ctk/ctkscalebutton.c:216
+#: ctk/ctkscalebutton.c:218
 msgid ""
 "The CtkAdjustment that contains the current value of this scale button object"
 msgstr ""
 "Η CtkAdjustment που περιέχει την τρέχουσα τιμή αυτού του κουμπιού κλίμακας"
 
-#: ctk/ctkscalebutton.c:244
+#: ctk/ctkscalebutton.c:246
 msgid "Icons"
 msgstr "Εικονίδια"
 
-#: ctk/ctkscalebutton.c:245
+#: ctk/ctkscalebutton.c:247
 msgid "List of icon names"
 msgstr "Λίστα ονομάτων εικονιδίων"
 
@@ -6752,51 +6617,51 @@ msgstr ""
 "Εμφάνιση ενός δεύτερου κουμπιού βέλους προς τα μπροστά στην αντίθετη άκρη "
 "της γραμμής κύλισης"
 
-#: ctk/ctkscrolledwindow.c:569
+#: ctk/ctkscrolledwindow.c:567
 msgid "Horizontal Adjustment"
 msgstr "Οριζόντια ρύθμιση"
 
-#: ctk/ctkscrolledwindow.c:570
+#: ctk/ctkscrolledwindow.c:568
 msgid "The CtkAdjustment for the horizontal position"
 msgstr "Η CtkAdjustment για την οριζόντια θέση"
 
-#: ctk/ctkscrolledwindow.c:576
+#: ctk/ctkscrolledwindow.c:574
 msgid "Vertical Adjustment"
 msgstr "Κάθετη ρύθμιση"
 
-#: ctk/ctkscrolledwindow.c:577
+#: ctk/ctkscrolledwindow.c:575
 msgid "The CtkAdjustment for the vertical position"
 msgstr "Η CtkAdjustment για την κάθετη θέση"
 
-#: ctk/ctkscrolledwindow.c:583
+#: ctk/ctkscrolledwindow.c:581
 msgid "Horizontal Scrollbar Policy"
 msgstr "Πολιτική οριζόντιας γραμμής κύλισης"
 
-#: ctk/ctkscrolledwindow.c:584
+#: ctk/ctkscrolledwindow.c:582
 msgid "When the horizontal scrollbar is displayed"
 msgstr "Αν θα εμφανίζεται η οριζόντια γραμμή κύλισης"
 
-#: ctk/ctkscrolledwindow.c:591
+#: ctk/ctkscrolledwindow.c:589
 msgid "Vertical Scrollbar Policy"
 msgstr "Πολιτική κάθετης γραμμής κύλισης"
 
-#: ctk/ctkscrolledwindow.c:592
+#: ctk/ctkscrolledwindow.c:590
 msgid "When the vertical scrollbar is displayed"
 msgstr "Αν θα εμφανίζεται η κάθετη γραμμή κύλισης"
 
-#: ctk/ctkscrolledwindow.c:599
+#: ctk/ctkscrolledwindow.c:597
 msgid "Window Placement"
 msgstr "Τοποθέτηση παραθύρου"
 
-#: ctk/ctkscrolledwindow.c:600
+#: ctk/ctkscrolledwindow.c:598
 msgid "Where the contents are located with respect to the scrollbars."
 msgstr "Που βρίσκονται τα περιεχόμενα ως προς τις γραμμές κύλισης."
 
-#: ctk/ctkscrolledwindow.c:618
+#: ctk/ctkscrolledwindow.c:616
 msgid "Window Placement Set"
 msgstr "Τοποθέτηση παραθύρου"
 
-#: ctk/ctkscrolledwindow.c:619
+#: ctk/ctkscrolledwindow.c:617
 msgid ""
 "Whether \"window-placement\" should be used to determine the location of the "
 "contents with respect to the scrollbars."
@@ -6804,90 +6669,90 @@ msgstr ""
 "Αν θα χρησιμοποιείται το \"window-placement\" για να διαπιστωθεί η θέση των "
 "περιεχομένων σε σχέση με τις γραμμές κύλισης."
 
-#: ctk/ctkscrolledwindow.c:625 ctk/ctkspinbutton.c:455
+#: ctk/ctkscrolledwindow.c:623 ctk/ctkspinbutton.c:455
 msgid "Shadow Type"
 msgstr "Είδος σκίασης"
 
-#: ctk/ctkscrolledwindow.c:626
+#: ctk/ctkscrolledwindow.c:624
 msgid "Style of bevel around the contents"
 msgstr "Στυλ γωνίας γύρω από τα περιεχόμενα"
 
-#: ctk/ctkscrolledwindow.c:642
+#: ctk/ctkscrolledwindow.c:640
 msgid "Scrollbars within bevel"
 msgstr "Γραμμές κύλισης εντός γωνίας"
 
-#: ctk/ctkscrolledwindow.c:643
+#: ctk/ctkscrolledwindow.c:641
 msgid "Place scrollbars within the scrolled window's bevel"
 msgstr "Τοποθέτηση γραμμών κύλισης εντός της γωνίας του κυλιόμενου παραθύρου"
 
-#: ctk/ctkscrolledwindow.c:649
+#: ctk/ctkscrolledwindow.c:647
 msgid "Scrollbar spacing"
 msgstr "Διάκενο μπάρας κύλισης"
 
-#: ctk/ctkscrolledwindow.c:650
+#: ctk/ctkscrolledwindow.c:648
 msgid "Number of pixels between the scrollbars and the scrolled window"
 msgstr ""
 "Αριθμός εικονοστοιχείων ανάμεσα στη μπάρα κύλισης και το κυλιόμενο παράθυρο"
 
-#: ctk/ctkscrolledwindow.c:665
+#: ctk/ctkscrolledwindow.c:663
 msgid "Minimum Content Width"
 msgstr "Ελάχιστο πλάτος περιεχομένου"
 
-#: ctk/ctkscrolledwindow.c:666
+#: ctk/ctkscrolledwindow.c:664
 msgid "The minimum width that the scrolled window will allocate to its content"
 msgstr ""
 "Το ελάχιστο πλάτος που το κυλιόμενο παράθυρο θα εκχωρήσει στο περιεχόμενό του"
 
-#: ctk/ctkscrolledwindow.c:679
+#: ctk/ctkscrolledwindow.c:677
 msgid "Minimum Content Height"
 msgstr "Ελάχιστο ύψος περιεχομένου"
 
-#: ctk/ctkscrolledwindow.c:680
+#: ctk/ctkscrolledwindow.c:678
 msgid ""
 "The minimum height that the scrolled window will allocate to its content"
 msgstr ""
 "Το ελάχιστο ύψος που το κυλιόμενο παράθυρο θα εκχωρήσει στο περιεχόμενό του"
 
-#: ctk/ctkscrolledwindow.c:694
+#: ctk/ctkscrolledwindow.c:692
 msgid "Kinetic Scrolling"
 msgstr "Κινητική κύλιση"
 
-#: ctk/ctkscrolledwindow.c:695
+#: ctk/ctkscrolledwindow.c:693
 msgid "Kinetic scrolling mode."
 msgstr "Λειτουργία κινητικής κύλισης."
 
-#: ctk/ctkscrolledwindow.c:714
+#: ctk/ctkscrolledwindow.c:712
 msgid "Overlay Scrolling"
 msgstr "Επικάλυψη κύλισης"
 
-#: ctk/ctkscrolledwindow.c:715
+#: ctk/ctkscrolledwindow.c:713
 msgid "Overlay scrolling mode"
 msgstr "Επικάλυψη κατάστασης κύλισης"
 
-#: ctk/ctkscrolledwindow.c:728
+#: ctk/ctkscrolledwindow.c:726
 msgid "Maximum Content Width"
 msgstr "Μεγιστο πλάτος περιεχομένου"
 
-#: ctk/ctkscrolledwindow.c:729
+#: ctk/ctkscrolledwindow.c:727
 msgid "The maximum width that the scrolled window will allocate to its content"
 msgstr ""
 "Το μέγιστο πλάτος που το κυλιόμενο παράθυρο θα εκχωρήσει στο περιεχόμενό του"
 
-#: ctk/ctkscrolledwindow.c:742
+#: ctk/ctkscrolledwindow.c:740
 msgid "Maximum Content Height"
 msgstr "Μέγιστο ύψος περιεχομένου"
 
-#: ctk/ctkscrolledwindow.c:743
+#: ctk/ctkscrolledwindow.c:741
 msgid ""
 "The maximum height that the scrolled window will allocate to its content"
 msgstr ""
 "Το μέγιστο ύψος που το κυλιόμενο παράθυρο θα εκχωρήσει στο περιεχόμενό του"
 
-#: ctk/ctkscrolledwindow.c:760 ctk/ctkscrolledwindow.c:761
+#: ctk/ctkscrolledwindow.c:758 ctk/ctkscrolledwindow.c:759
 msgid "Propagate Natural Width"
 msgstr "Πολλαπλασιασμός φυσικού πλάτους"
 
-#: ctk/ctkscrolledwindow.c:778 ctk/ctkscrolledwindow.c:779
+#: ctk/ctkscrolledwindow.c:776 ctk/ctkscrolledwindow.c:777
 msgid "Propagate Natural Height"
 msgstr "Πολλαπλασιασμός φυσικού ύψους"
 
@@ -6912,11 +6777,11 @@ msgstr "Σχεδίαση"
 msgid "Whether the separator is drawn, or just blank"
 msgstr "Αν το διαχωριστικό θα σχεδιάζεται ή θα είναι απλώς κενό"
 
-#: ctk/ctksettings.c:391
+#: ctk/ctksettings.c:392
 msgid "Double Click Time"
 msgstr "Χρόνος διπλού κλικ"
 
-#: ctk/ctksettings.c:392
+#: ctk/ctksettings.c:393
 msgid ""
 "Maximum time allowed between two clicks for them to be considered a double "
 "click (in milliseconds)"
@@ -6924,11 +6789,11 @@ msgstr ""
 "Μέγιστος χρόνος που επιτρέπεται μεταξύ δύο κλικ ώστε να θεωρούνται διπλό "
 "κλικ (σε milliseconds)"
 
-#: ctk/ctksettings.c:399
+#: ctk/ctksettings.c:400
 msgid "Double Click Distance"
 msgstr "Απόσταση διπλού κλικ"
 
-#: ctk/ctksettings.c:400
+#: ctk/ctksettings.c:401
 msgid ""
 "Maximum distance allowed between two clicks for them to be considered a "
 "double click (in pixels)"
@@ -6936,35 +6801,35 @@ msgstr ""
 "Μέγιστη απόσταση που επιτρέπεται μεταξύ δύο κλικ ώστε να θεωρούνται διπλό "
 "κλικ (σε εικονοστοιχεία)"
 
-#: ctk/ctksettings.c:416
+#: ctk/ctksettings.c:417
 msgid "Cursor Blink"
 msgstr "Παλλόμενος δρομέας"
 
-#: ctk/ctksettings.c:417
+#: ctk/ctksettings.c:418
 msgid "Whether the cursor should blink"
 msgstr "Αν θα πάλλεται ο δρομέας"
 
-#: ctk/ctksettings.c:424
+#: ctk/ctksettings.c:425
 msgid "Cursor Blink Time"
 msgstr "Χρόνος παλμών δρομέα"
 
-#: ctk/ctksettings.c:425
+#: ctk/ctksettings.c:426
 msgid "Length of the cursor blink cycle, in milliseconds"
 msgstr "Διάρκεια του κύκλου εναλλαγής παλμού δρομέα σε χιλιοστά δευτερολέπτου"
 
-#: ctk/ctksettings.c:444
+#: ctk/ctksettings.c:445
 msgid "Cursor Blink Timeout"
 msgstr "Όριο χρόνου παλμών δρομέα"
 
-#: ctk/ctksettings.c:445
+#: ctk/ctksettings.c:446
 msgid "Time after which the cursor stops blinking, in seconds"
 msgstr "Χρόνος μέχρι να σταματήσει ο παλμός δρομέα σε χιλιοστά δευτερολέπτου"
 
-#: ctk/ctksettings.c:452
+#: ctk/ctksettings.c:453
 msgid "Split Cursor"
 msgstr "Διαχωρισμός δρομέα"
 
-#: ctk/ctksettings.c:453
+#: ctk/ctksettings.c:454
 msgid ""
 "Whether two cursors should be displayed for mixed left-to-right and right-to-"
 "left text"
@@ -6972,159 +6837,169 @@ msgstr ""
 "Αν οι δύο δρομείς θα πρέπει να εμφανίζονται για ανακατωμένο κείμενο από "
 "δεξιά στα αριστερά και αντίστροφα"
 
-#: ctk/ctksettings.c:460
+#: ctk/ctksettings.c:461
+#, fuzzy
+msgid "Cursor Aspect Ratio"
+msgstr "Αναλογία διαστάσεων γραμμής δρομέα"
+
+#: ctk/ctksettings.c:462
+#, fuzzy
+msgid "The aspect ratio of the text caret"
+msgstr "Ο προσανατολισμός του αντικειμένου"
+
+#: ctk/ctksettings.c:470
 msgid "Theme Name"
 msgstr "Όνομα θέματος"
 
-#: ctk/ctksettings.c:461
+#: ctk/ctksettings.c:471
 msgid "Name of theme to load"
 msgstr "Όνομα αρχείου θέματος για φόρτωση"
 
-#: ctk/ctksettings.c:469
+#: ctk/ctksettings.c:479
 msgid "Icon Theme Name"
 msgstr "Όνομα θέματος εικονιδίου"
 
-#: ctk/ctksettings.c:470
+#: ctk/ctksettings.c:480
 msgid "Name of icon theme to use"
 msgstr "Όνομα του θέματος εικονιδίου για χρήση"
 
-#: ctk/ctksettings.c:485
+#: ctk/ctksettings.c:495
 msgid "Fallback Icon Theme Name"
 msgstr "Εφεδρικό όνομα θέματος εικονιδίων"
 
-#: ctk/ctksettings.c:486
+#: ctk/ctksettings.c:496
 msgid "Name of a icon theme to fall back to"
 msgstr "Όνομα ενός θέματος εικονιδίων που θα χρησιμοποιηθεί εφεδρικά"
 
-#: ctk/ctksettings.c:494
+#: ctk/ctksettings.c:504
 msgid "Key Theme Name"
 msgstr "Όνομα αρχείου θέματος κλειδιού"
 
-#: ctk/ctksettings.c:495
+#: ctk/ctksettings.c:505
 msgid "Name of key theme to load"
 msgstr "Όνομα αρχείου θέματος κλειδιού για φόρτωση"
 
-#: ctk/ctksettings.c:511
+#: ctk/ctksettings.c:521
 msgid "Menu bar accelerator"
 msgstr "Συντόμευση εργαλειοθήκης μενού"
 
-#: ctk/ctksettings.c:512
+#: ctk/ctksettings.c:522
 msgid "Keybinding to activate the menu bar"
 msgstr "Συνδυασμός πλήκτρων για την εργαλειοθήκη μενού"
 
-#: ctk/ctksettings.c:520
+#: ctk/ctksettings.c:530
 msgid "Drag threshold"
 msgstr "Κατώφλι συρσίματος"
 
-#: ctk/ctksettings.c:521
+#: ctk/ctksettings.c:531
 msgid "Number of pixels the cursor can move before dragging"
 msgstr ""
 "Αριθμός εικονοστοιχείων που μπορεί να μετακινηθεί ο δρομέας πρίν να σύρει"
 
-#: ctk/ctksettings.c:534
+#: ctk/ctksettings.c:544
 msgid "Font Name"
 msgstr "Όνομα γραμματοσειράς"
 
-#: ctk/ctksettings.c:535
+#: ctk/ctksettings.c:545
 msgid "The default font family and size to use"
 msgstr ""
 "Η προεπιλεγμένη οικογένεια και μέγεθος γραμματοσειράς που θα χρησιμοποιηθεί"
 
-#: ctk/ctksettings.c:559
+#: ctk/ctksettings.c:569
 msgid "Icon Sizes"
 msgstr "Μεγέθη εικονιδίου"
 
-#: ctk/ctksettings.c:560
+#: ctk/ctksettings.c:570
 msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Λίστα μεγεθών εικονιδίου (ctk-menu=16,16;ctk-button=20,20..."
 
-#: ctk/ctksettings.c:568
+#: ctk/ctksettings.c:578
 msgid "CTK Modules"
 msgstr "Αρθρώματα CTK"
 
-#: ctk/ctksettings.c:569
+#: ctk/ctksettings.c:579
 msgid "List of currently active CTK modules"
 msgstr "Λίστα των τρεχόντων ενεργών αρθρωμάτων CTK"
 
-#: ctk/ctksettings.c:577
+#: ctk/ctksettings.c:587
 msgid "Xft Antialias"
 msgstr "Εξομάλυνση Xft"
 
-#: ctk/ctksettings.c:578
+#: ctk/ctksettings.c:588
 msgid "Whether to antialias Xft fonts; 0=no, 1=yes, -1=default"
 msgstr ""
 "Αν θα γίνεται εξομάλυνση στις γραμματοσειρές Xft; 0=όχι, 1=ναι, -1=προεπιλογή"
 
-#: ctk/ctksettings.c:587
+#: ctk/ctksettings.c:597
 msgid "Xft Hinting"
 msgstr "Υπόδειξη Xft"
 
-#: ctk/ctksettings.c:588
+#: ctk/ctksettings.c:598
 msgid "Whether to hint Xft fonts; 0=no, 1=yes, -1=default"
 msgstr ""
 "Αν θα γίνεται υπόδειξη στις γραμματοσειρές Xft; 0=όχι, 1=ναι, -1=προεπιλογή"
 
-#: ctk/ctksettings.c:597
+#: ctk/ctksettings.c:607
 msgid "Xft Hint Style"
 msgstr "Στυλ υπόδειξης Xft"
 
-#: ctk/ctksettings.c:598
+#: ctk/ctksettings.c:608
 msgid ""
 "What degree of hinting to use; hintnone, hintslight, hintmedium, or hintfull"
 msgstr ""
 "Ο βαθμός υπόδειξης που θα χρησιμοποιείται· καμία, ελαφρύα, μέτρια, ή πλήρης"
 
-#: ctk/ctksettings.c:607
+#: ctk/ctksettings.c:617
 msgid "Xft RGBA"
 msgstr "Xft RGBA"
 
-#: ctk/ctksettings.c:608
+#: ctk/ctksettings.c:618
 msgid "Type of subpixel antialiasing; none, rgb, bgr, vrgb, vbgr"
 msgstr "Τύπος υποεικονοστοιχείου εξομάλυνσης· κανένα, rgb, bgr, vrgb, vbgr"
 
-#: ctk/ctksettings.c:617
+#: ctk/ctksettings.c:627
 msgid "Xft DPI"
 msgstr "Xft DPI"
 
-#: ctk/ctksettings.c:618
+#: ctk/ctksettings.c:628
 msgid "Resolution for Xft, in 1024 * dots/inch. -1 to use default value"
 msgstr ""
 "Ανάλυση Xft, σε 1024 * κουκίδες/ίντσα. -1 για χρήση προεπιλεγμένης τιμής"
 
-#: ctk/ctksettings.c:627
+#: ctk/ctksettings.c:637
 msgid "Cursor theme name"
 msgstr "Όνομα θέματος δρομέα"
 
-#: ctk/ctksettings.c:628
+#: ctk/ctksettings.c:638
 msgid "Name of the cursor theme to use, or NULL to use the default theme"
 msgstr ""
 "Όνομα του θέματος δρομέα για χρήση, ή NULL για χρήση του προεπιλεγμένου "
 "θέματος"
 
-#: ctk/ctksettings.c:636
+#: ctk/ctksettings.c:646
 msgid "Cursor theme size"
 msgstr "Μέγεθος θέματος δρομέα"
 
-#: ctk/ctksettings.c:637
+#: ctk/ctksettings.c:647
 msgid "Size to use for cursors, or 0 to use the default size"
 msgstr ""
 "Μέγεθος που θα χρησιμοποιηθεί για τους δρομείς, ή 0 για το προεπιλεγμένο "
 "μέγεθος"
 
-#: ctk/ctksettings.c:646
+#: ctk/ctksettings.c:656
 msgid "Alternative button order"
 msgstr "Εναλλακτική χωροθέτηση κουμπιών"
 
-#: ctk/ctksettings.c:647
+#: ctk/ctksettings.c:657
 msgid "Whether buttons in dialogs should use the alternative button order"
 msgstr ""
 "Αν τα κουμπιά στους διαλόγους θα χρησιμοποιούν εναλλακτική σειρά κουμπιών"
 
-#: ctk/ctksettings.c:664
+#: ctk/ctksettings.c:674
 msgid "Alternative sort indicator direction"
 msgstr "Εναλλακτική κατεύθυνση ενδείξεων ταξινόμησης"
 
-#: ctk/ctksettings.c:665
+#: ctk/ctksettings.c:675
 msgid ""
 "Whether the direction of the sort indicators in list and tree views is "
 "inverted compared to the default (where down means ascending)"
@@ -7133,11 +7008,11 @@ msgstr ""
 "είναι αντεστραμμένος σε σχέση με την προεπιλεγμένη κατεύθυνση (όπου το κάτω "
 "σημαίνει αύξουσα σειρά)"
 
-#: ctk/ctksettings.c:678
+#: ctk/ctksettings.c:688
 msgid "Show the 'Input Methods' menu"
 msgstr "Εμφάνιση του μενού 'Μέθοδοι εισαγωγής'"
 
-#: ctk/ctksettings.c:679
+#: ctk/ctksettings.c:689
 msgid ""
 "Whether the context menus of entries and text views should offer to change "
 "the input method"
@@ -7145,11 +7020,11 @@ msgstr ""
 "Αν τα σχετικά μενού των πεδίων και των προβολών κειμένου θα εμφανίζουν τη "
 "δυνατότητα αλλαγής της μεθόδου εισαγωγής"
 
-#: ctk/ctksettings.c:692
+#: ctk/ctksettings.c:702
 msgid "Show the 'Insert Unicode Control Character' menu"
 msgstr "Εμφάνιση του μενού 'Εισαγωγή χαρακτήρα ελέγχου Unicode'"
 
-#: ctk/ctksettings.c:693
+#: ctk/ctksettings.c:703
 msgid ""
 "Whether the context menus of entries and text views should offer to insert "
 "control characters"
@@ -7157,253 +7032,253 @@ msgstr ""
 "Αν τα σχετικά μενού των πεδίων και των προβολών κειμένου θα εμφανίζουν τη "
 "δυνατότητα εισαγωγής χαρακτήρων ελέγχου"
 
-#: ctk/ctksettings.c:706
+#: ctk/ctksettings.c:716
 msgid "Start timeout"
 msgstr "Έναρξη ορίου χρόνου"
 
-#: ctk/ctksettings.c:707
+#: ctk/ctksettings.c:717
 msgid "Starting value for timeouts, when button is pressed"
 msgstr "Τιμή έναρξης ορίου χρόνου, όταν πιέζεται ένα κουμπί"
 
-#: ctk/ctksettings.c:721
+#: ctk/ctksettings.c:731
 msgid "Repeat timeout"
 msgstr "Επανάληψη ορίου χρόνου"
 
-#: ctk/ctksettings.c:722
+#: ctk/ctksettings.c:732
 msgid "Repeat value for timeouts, when button is pressed"
 msgstr "Τιμή επανάληψης ορίου χρόνου, όταν πιέζεται ένα κουμπί"
 
-#: ctk/ctksettings.c:736
+#: ctk/ctksettings.c:746
 msgid "Expand timeout"
 msgstr "Επέκταση ορίου χρόνου"
 
-#: ctk/ctksettings.c:737
+#: ctk/ctksettings.c:747
 msgid "Expand value for timeouts, when a widget is expanding a new region"
 msgstr ""
 "Τιμή επέκτασης ορίου χρόνου, όταν ένα γραφικό στοιχείο επεκτείνει νέα περιοχή"
 
-#: ctk/ctksettings.c:775
+#: ctk/ctksettings.c:785
 msgid "Color scheme"
 msgstr "Σχήμα χρωμάτων"
 
-#: ctk/ctksettings.c:776
+#: ctk/ctksettings.c:786
 msgid "A palette of named colors for use in themes"
 msgstr "Παλέτα δοσμένων χρωμάτων που θα χρησιμοποιείται στα θέματα"
 
-#: ctk/ctksettings.c:785
+#: ctk/ctksettings.c:795
 msgid "Enable Animations"
 msgstr "Ενεργοποίηση κινούμενων εικόνων"
 
-#: ctk/ctksettings.c:786
+#: ctk/ctksettings.c:796
 msgid "Whether to enable toolkit-wide animations."
 msgstr "Αν θα είναι ενεργοποιημένες οι κινούμενες εικόνες σε όλο το toolkit."
 
-#: ctk/ctksettings.c:807
+#: ctk/ctksettings.c:817
 msgid "Enable Touchscreen Mode"
 msgstr "Ενεργοποίηση λειτουργίας οθόνης αφής"
 
-#: ctk/ctksettings.c:808
+#: ctk/ctksettings.c:818
 msgid "When TRUE, there are no motion notify events delivered on this screen"
 msgstr ""
 "Αν είναι ΑΛΗΘΕΣ, δεν θα εμφανίζονται ειδοποιήσεις κίνησης σε αυτή την οθόνη"
 
-#: ctk/ctksettings.c:827
+#: ctk/ctksettings.c:837
 msgid "Tooltip timeout"
 msgstr "Όριο χρόνου συμβουλής οθόνης"
 
-#: ctk/ctksettings.c:828
+#: ctk/ctksettings.c:838
 msgid "Timeout before tooltip is shown"
 msgstr "Χρονικό διάστημα πριν την εμφάνιση της συμβουλής οθόνης"
 
-#: ctk/ctksettings.c:855
+#: ctk/ctksettings.c:865
 msgid "Tooltip browse timeout"
 msgstr "Όριο χρόνου συμβουλής οθόνης περιήγησης"
 
-#: ctk/ctksettings.c:856
+#: ctk/ctksettings.c:866
 msgid "Timeout before tooltip is shown when browse mode is enabled"
 msgstr ""
 "Χρονικό διάστημα πριν την εμφάνιση της συμβουλής οθόνης όταν είναι "
 "ενεργοποιημένη η λειτουργία περιήγησης"
 
-#: ctk/ctksettings.c:879
+#: ctk/ctksettings.c:889
 msgid "Tooltip browse mode timeout"
 msgstr "Όριο χρόνου συμβουλής οθόνης λειτουργίας περιήγησης "
 
-#: ctk/ctksettings.c:880
+#: ctk/ctksettings.c:890
 msgid "Timeout after which browse mode is disabled"
 msgstr "Όριο χρόνου μετά το οποίο απενεργοποιείται η λειτουργία περιήγησης"
 
-#: ctk/ctksettings.c:902
+#: ctk/ctksettings.c:912
 msgid "Keynav Cursor Only"
 msgstr "Μόνο δρομέας Keynav"
 
-#: ctk/ctksettings.c:903
+#: ctk/ctksettings.c:913
 msgid "When TRUE, there are only cursor keys available to navigate widgets"
 msgstr ""
 "Αν είναι ΑΛΗΘΕΣ, τα μόνα διαθέσιμα πλήκτρα του δρομέα αφορούν την πλοήγηση "
 "σε γραφικά στοιχεία"
 
-#: ctk/ctksettings.c:922
+#: ctk/ctksettings.c:932
 msgid "Keynav Wrap Around"
 msgstr "Αναδίπλωση Keynav"
 
-#: ctk/ctksettings.c:923
+#: ctk/ctksettings.c:933
 msgid "Whether to wrap around when keyboard-navigating widgets"
 msgstr ""
 "Αν θα γίνεται αναδίπλωση όταν γίνεται πλοήγηση μέσω πληκτρολογίου στα "
 "γραφικά στοιχεία"
 
-#: ctk/ctksettings.c:943
+#: ctk/ctksettings.c:953
 msgid "Error Bell"
 msgstr "Κουδούνι σφάλματος"
 
-#: ctk/ctksettings.c:944
+#: ctk/ctksettings.c:954
 msgid "When TRUE, keyboard navigation and other errors will cause a beep"
 msgstr ""
 "Αν είναι ΑΛΗΘΕΣ, θα ακούγεται το κουδούνι όταν γίνονται λάθη στην πλοήγηση "
 "μέσω πληκτρολογίου ή άλλα λάθη"
 
-#: ctk/ctksettings.c:963
+#: ctk/ctksettings.c:973
 msgid "Color Hash"
 msgstr "Color Hash"
 
-#: ctk/ctksettings.c:964
+#: ctk/ctksettings.c:974
 msgid "A hash table representation of the color scheme."
 msgstr "Αναπαράσταση του σχήματος χρωμάτων σε πίνακα hash."
 
-#: ctk/ctksettings.c:979
+#: ctk/ctksettings.c:989
 msgid "Default file chooser backend"
 msgstr "Προεπιλεγμένο σύστημα υποστήριξης του επιλογέα αρχείων"
 
-#: ctk/ctksettings.c:980
+#: ctk/ctksettings.c:990
 msgid "Name of the CtkFileChooser backend to use by default"
 msgstr ""
 "Όνομα του συστήματος υποστήριξης CtkFileChooser για προεπιλεγμένη χρήση"
 
-#: ctk/ctksettings.c:997
+#: ctk/ctksettings.c:1007
 msgid "Default print backend"
 msgstr "Προεπιλεγμένο σύστημα υποστήριξης εκτύπωσης"
 
-#: ctk/ctksettings.c:998
+#: ctk/ctksettings.c:1008
 msgid "List of the CtkPrintBackend backends to use by default"
 msgstr "Λίστα των συστημάτων υποστήριξης CtkPrintBackend για προεπιλογή"
 
-#: ctk/ctksettings.c:1021
+#: ctk/ctksettings.c:1031
 msgid "Default command to run when displaying a print preview"
 msgstr ""
 "Προεπιλεγμένη εντολή που εκτελείται όταν εμφανίζεται η προεπισκόπηση "
 "εκτύπωσης"
 
-#: ctk/ctksettings.c:1022
+#: ctk/ctksettings.c:1032
 msgid "Command to run when displaying a print preview"
 msgstr "Εντολή που εκτελείται όταν εμφανίζεται προεπισκόπηση εκτύπωσης"
 
-#: ctk/ctksettings.c:1041
+#: ctk/ctksettings.c:1051
 msgid "Enable Mnemonics"
 msgstr "Ενεργοποίηση μνημονικών"
 
-#: ctk/ctksettings.c:1042
+#: ctk/ctksettings.c:1052
 msgid "Whether labels should have mnemonics"
 msgstr "Αν οι ετικέτες θα έχουν μνημονικά"
 
-#: ctk/ctksettings.c:1058
+#: ctk/ctksettings.c:1068
 msgid "Enable Accelerators"
 msgstr "Ενεργοποίηση συντομεύσεων"
 
-#: ctk/ctksettings.c:1059
+#: ctk/ctksettings.c:1069
 msgid "Whether menu items should have accelerators"
 msgstr "Αν τα αντικείμενα στα μενού θα έχουν συντομεύσεις"
 
-#: ctk/ctksettings.c:1078
+#: ctk/ctksettings.c:1088
 msgid "Recent Files Limit"
 msgstr "Όριο πρόσφατων αρχείων"
 
-#: ctk/ctksettings.c:1079
+#: ctk/ctksettings.c:1089
 msgid "Number of recently used files"
 msgstr "Αριθμός πρόσφατα χρησιμοποιημένων αρχείων"
 
-#: ctk/ctksettings.c:1099
+#: ctk/ctksettings.c:1109
 msgid "Default IM module"
 msgstr "Προεπιλεγμένο άρθρωμα IM"
 
-#: ctk/ctksettings.c:1100
+#: ctk/ctksettings.c:1110
 msgid "Which IM module should be used by default"
 msgstr "Ποιο άρθρωμα IM θα είναι προεπιλεγμένο"
 
-#: ctk/ctksettings.c:1118
+#: ctk/ctksettings.c:1128
 msgid "Recent Files Max Age"
 msgstr "Μέγιστη ηλικία πρόσφατων αρχείων"
 
-#: ctk/ctksettings.c:1119
+#: ctk/ctksettings.c:1129
 msgid "Maximum age of recently used files, in days"
 msgstr "Μέγιστη ηλικία πρόσφατα χρησιμοποιημένων αρχείων, σε ημέρες"
 
-#: ctk/ctksettings.c:1128
+#: ctk/ctksettings.c:1138
 msgid "Fontconfig configuration timestamp"
 msgstr "Timestamp ρυθμίσεων fontconfig"
 
-#: ctk/ctksettings.c:1129
+#: ctk/ctksettings.c:1139
 msgid "Timestamp of current fontconfig configuration"
 msgstr "Χρονική σήμανση των τρεχουσών ρυθμίσεων του fontconfig"
 
-#: ctk/ctksettings.c:1151
+#: ctk/ctksettings.c:1161
 msgid "Sound Theme Name"
 msgstr "Όνομα θέματος ήχων"
 
-#: ctk/ctksettings.c:1152
+#: ctk/ctksettings.c:1162
 msgid "XDG sound theme name"
 msgstr "Όνομα θέματος ήχων XDG"
 
 #. Translators: this means sounds that are played as feedback to user input
-#: ctk/ctksettings.c:1174
+#: ctk/ctksettings.c:1184
 msgid "Audible Input Feedback"
 msgstr "Ηχητική ανάδραση εισαγωγής"
 
-#: ctk/ctksettings.c:1175
+#: ctk/ctksettings.c:1185
 msgid "Whether to play event sounds as feedback to user input"
 msgstr ""
 "Αν θα ακούγονται ήχοι ως ανάδραση στην εισαγωγή δεδομένων από τον χρήστη"
 
-#: ctk/ctksettings.c:1196
+#: ctk/ctksettings.c:1206
 msgid "Enable Event Sounds"
 msgstr "Ενεργοποίηση ήχων ενεργειών"
 
-#: ctk/ctksettings.c:1197
+#: ctk/ctksettings.c:1207
 msgid "Whether to play any event sounds at all"
 msgstr "Αν θα ακούγονται οι όχι ήχοι ενεργειών"
 
-#: ctk/ctksettings.c:1214
+#: ctk/ctksettings.c:1224
 msgid "Enable Tooltips"
 msgstr "Ενεργοποίηση συμβουλών οθόνης"
 
-#: ctk/ctksettings.c:1215
+#: ctk/ctksettings.c:1225
 msgid "Whether tooltips should be shown on widgets"
 msgstr "Αν θα εμφανίζονται ή όχι συμβουλές οθόνης στα γραφικά στοιχεία"
 
-#: ctk/ctksettings.c:1230
+#: ctk/ctksettings.c:1240
 msgid "Toolbar style"
 msgstr "Στυλ εργαλειοθήκης"
 
-#: ctk/ctksettings.c:1231
+#: ctk/ctksettings.c:1241
 msgid ""
 "Whether default toolbars have text only, text and icons, icons only, etc."
 msgstr ""
 "Αν οι προεπιλεγμένες εργαλειοθήκες θα έχουν μόνο κείμενο, κείμενο και "
 "εικόνες, μόνο εικόνες κτλ."
 
-#: ctk/ctksettings.c:1247
+#: ctk/ctksettings.c:1257
 msgid "Toolbar Icon Size"
 msgstr "Μέγεθος εικονιδίων εργαλειοθηκών"
 
-#: ctk/ctksettings.c:1248
+#: ctk/ctksettings.c:1258
 msgid "The size of icons in default toolbars."
 msgstr "Μέγεθος εικονιδίων στις προεπιλεγμένες εργαλειοθήκες."
 
-#: ctk/ctksettings.c:1267
+#: ctk/ctksettings.c:1277
 msgid "Auto Mnemonics"
 msgstr "Αυτόματα μνημονικά"
 
-#: ctk/ctksettings.c:1268
+#: ctk/ctksettings.c:1278
 msgid ""
 "Whether mnemonics should be automatically shown and hidden when the user "
 "presses the mnemonic activator."
@@ -7411,21 +7286,21 @@ msgstr ""
 "Αν θα εμφανίζονται και θα κρύβονται αυτόματα τα μνημονικά όταν ο χρήστης "
 "πατάει το πλήκτρο ενεργοποίησής τους."
 
-#: ctk/ctksettings.c:1290
+#: ctk/ctksettings.c:1300
 msgid "Primary button warps slider"
 msgstr "Το πρωτεύον κουμπί στρεβλώνει την κύλιση"
 
-#: ctk/ctksettings.c:1291
+#: ctk/ctksettings.c:1301
 msgid ""
 "Whether a primary click on the trough should warp the slider into position"
 msgstr ""
 "Αν ένα πρωτεύον κλικ στο κοίλο πρέπει να στρεβλώσει την κύλιση στη θέση"
 
-#: ctk/ctksettings.c:1309
+#: ctk/ctksettings.c:1319
 msgid "Visible Focus"
 msgstr "Ορατά επιλεγμένο"
 
-#: ctk/ctksettings.c:1310
+#: ctk/ctksettings.c:1320
 msgid ""
 "Whether 'focus rectangles' should be hidden until the user starts to use the "
 "keyboard."
@@ -7433,61 +7308,61 @@ msgstr ""
 "Aν «τα ορθογώνια εστίασης» πρέπει να είναι κρυμμένα μέχρι ο χρήστης να "
 "αρχίσει να χρησιμοποιεί το πληκτρολόγιο."
 
-#: ctk/ctksettings.c:1336
+#: ctk/ctksettings.c:1346
 msgid "Application prefers a dark theme"
 msgstr "Η εφαρμογή προτιμά ένα σκοτεινό θέμα"
 
-#: ctk/ctksettings.c:1337
+#: ctk/ctksettings.c:1347
 msgid "Whether the application prefers to have a dark theme."
 msgstr "Αν η εφαρμογή προτιμά ένα σκοτεινό θέμα."
 
-#: ctk/ctksettings.c:1358
+#: ctk/ctksettings.c:1368
 msgid "Show button images"
 msgstr "Εμφάνιση εικόνων κουμπιών"
 
-#: ctk/ctksettings.c:1359
+#: ctk/ctksettings.c:1369
 msgid "Whether images should be shown on buttons"
 msgstr "Αν θα εμφανίζονται ή όχι εικόνες στα κουμπιά"
 
-#: ctk/ctksettings.c:1367 ctk/ctksettings.c:1502
+#: ctk/ctksettings.c:1377 ctk/ctksettings.c:1512
 msgid "Select on focus"
 msgstr "Επιλογή στην εστίαση"
 
-#: ctk/ctksettings.c:1368
+#: ctk/ctksettings.c:1378
 msgid "Whether to select the contents of an entry when it is focused"
 msgstr "Αν θα επιλέγονται τα περιεχόμενα μιας καταχώρισης όταν γίνεται εστίαση"
 
-#: ctk/ctksettings.c:1385
+#: ctk/ctksettings.c:1395
 msgid "Password Hint Timeout"
 msgstr "Λήξη υπόδειξης συνθηματικού"
 
-#: ctk/ctksettings.c:1386
+#: ctk/ctksettings.c:1396
 msgid "How long to show the last input character in hidden entries"
 msgstr ""
 "Για πόσο χρόνο θα εμφανίζεται ο τελευταίος χαρακτήρας που εισήχθηκε σε ένα "
 "κρυφό πεδίο"
 
-#: ctk/ctksettings.c:1406
+#: ctk/ctksettings.c:1416
 msgid "Show menu images"
 msgstr "Εμφάνιση εικόνων μενού"
 
-#: ctk/ctksettings.c:1407
+#: ctk/ctksettings.c:1417
 msgid "Whether images should be shown in menus"
 msgstr "Αν θα εμφανίζονται ή όχι οι εικόνες στα μενού"
 
-#: ctk/ctksettings.c:1422
+#: ctk/ctksettings.c:1432
 msgid "Delay before drop down menus appear"
 msgstr "Καθυστέρηση μέχρι την εμφάνιση αναπτυσσόμενων μενού"
 
-#: ctk/ctksettings.c:1423
+#: ctk/ctksettings.c:1433
 msgid "Delay before the submenus of a menu bar appear"
 msgstr "Καθυστέρηση μέχρι να εμφανιστούν τα υπομενού σε εργαλειοθήκη μενού"
 
-#: ctk/ctksettings.c:1442
+#: ctk/ctksettings.c:1452
 msgid "Scrolled Window Placement"
 msgstr "Τοποθέτηση κυλιόμενου παραθύρου"
 
-#: ctk/ctksettings.c:1443
+#: ctk/ctksettings.c:1453
 msgid ""
 "Where the contents of scrolled windows are located with respect to the "
 "scrollbars, if not overridden by the scrolled window's own placement."
@@ -7496,33 +7371,33 @@ msgstr ""
 "γραμμές κύλισης, αν δεν υπερισχύουν οι κανόνες τοποθέτησης του ίδιου του "
 "κυλιόμενου παραθύρου."
 
-#: ctk/ctksettings.c:1459
+#: ctk/ctksettings.c:1469
 msgid "Can change accelerators"
 msgstr "Δυνατότητα αλλαγής συντομεύσεων"
 
-#: ctk/ctksettings.c:1460
+#: ctk/ctksettings.c:1470
 msgid ""
 "Whether menu accelerators can be changed by pressing a key over the menu item"
 msgstr ""
 "Αν θα είναι δυνατή η αλλαγή συντομεύσεων μενού με την πίεση ενός κλειδιού "
 "πάνω στο αντικείμενο μενού"
 
-#: ctk/ctksettings.c:1475
+#: ctk/ctksettings.c:1485
 msgid "Delay before submenus appear"
 msgstr "Καθυστέρηση πριν την εμφάνιση των υπομενού"
 
-#: ctk/ctksettings.c:1476
+#: ctk/ctksettings.c:1486
 msgid ""
 "Minimum time the pointer must stay over a menu item before the submenu appear"
 msgstr ""
 "Ελάχιστος χρόνος που θα στέκεται ο δρομέας πάνω σε ένα μενού μέχρι να "
 "εμφανιστεί το υπομενού"
 
-#: ctk/ctksettings.c:1492
+#: ctk/ctksettings.c:1502
 msgid "Delay before hiding a submenu"
 msgstr "Καθυστέρηση πριν την απόκρυψη ενός υπομενού"
 
-#: ctk/ctksettings.c:1493
+#: ctk/ctksettings.c:1503
 msgid ""
 "The time before hiding a submenu when the pointer is moving towards the "
 "submenu"
@@ -7530,41 +7405,41 @@ msgstr ""
 "Ο χρόνος πριν την απόκρυψη ενός υπομενού όταν ο δρομέας κινείται προς ένα "
 "υπομενού"
 
-#: ctk/ctksettings.c:1503
+#: ctk/ctksettings.c:1513
 msgid "Whether to select the contents of a selectable label when it is focused"
 msgstr ""
 "Αν θα επιλέγονται τα περιεχόμενα μιας επιλέξιμης ετικέτας όταν γίνεται "
 "εστίαση"
 
-#: ctk/ctksettings.c:1518
+#: ctk/ctksettings.c:1528
 msgid "Custom palette"
 msgstr "Προσαρμοσμένη παλέτα"
 
-#: ctk/ctksettings.c:1519
+#: ctk/ctksettings.c:1529
 msgid "Palette to use in the color selector"
 msgstr "Παλέτα που θα χρησιμοποιείται στην επιλογή χρώματος"
 
-#: ctk/ctksettings.c:1534
+#: ctk/ctksettings.c:1544
 msgid "IM Preedit style"
 msgstr "Στυλ προεπεξεργασίας IM"
 
-#: ctk/ctksettings.c:1535
+#: ctk/ctksettings.c:1545
 msgid "How to draw the input method preedit string"
 msgstr "Πως θα σχεδιάζεται η μέθοδος εισαγωγής συμβολοσειράς preedit"
 
-#: ctk/ctksettings.c:1551
+#: ctk/ctksettings.c:1561
 msgid "IM Status style"
 msgstr "Στυλ κατάστασης IM"
 
-#: ctk/ctksettings.c:1552
+#: ctk/ctksettings.c:1562
 msgid "How to draw the input method statusbar"
 msgstr "Πως θα σχεδιάζεται η μέθοδος εισαγωγής της γραμμής κατάστασης"
 
-#: ctk/ctksettings.c:1561
+#: ctk/ctksettings.c:1571
 msgid "Desktop shell shows app menu"
 msgstr "Το κέλυφος δείχνει το μενού εφαρμογών"
 
-#: ctk/ctksettings.c:1562
+#: ctk/ctksettings.c:1572
 msgid ""
 "Set to TRUE if the desktop environment is displaying the app menu, FALSE if "
 "the app should display it itself."
@@ -7572,11 +7447,11 @@ msgstr ""
 "Ορίστε την τιμή ΑΛΗΘΕΣ αν το περιβάλλον εργασίας εμφανίζει το μενού της "
 "εφαρμογής, ΨΕΥΔΕΣ αν η εφαρμογή θα το εμφανίζει η ίδια."
 
-#: ctk/ctksettings.c:1571
+#: ctk/ctksettings.c:1581
 msgid "Desktop shell shows the menubar"
 msgstr "Το κέλυφος δείχνει το μενού εφαρμογής"
 
-#: ctk/ctksettings.c:1572
+#: ctk/ctksettings.c:1582
 msgid ""
 "Set to TRUE if the desktop environment is displaying the menubar, FALSE if "
 "the app should display it itself."
@@ -7584,12 +7459,12 @@ msgstr ""
 "Ορίστε την τιμή ΑΛΗΘΕΣ αν το περιβάλλον εργασίας εμφανίζει το μενού της "
 "εφαρμογής, ΨΕΥΔΕΣ αν η εφαρμογή θα το εμφανίζει η ίδια."
 
-#: ctk/ctksettings.c:1581
+#: ctk/ctksettings.c:1591
 msgid "Desktop environment shows the desktop folder"
 msgstr ""
 "Το περιβάλλον επιφάνειας εργασίας εμφανίζει τον φάκελο επιφάνειας εργασίας"
 
-#: ctk/ctksettings.c:1582
+#: ctk/ctksettings.c:1592
 msgid ""
 "Set to TRUE if the desktop environment is displaying the desktop folder, "
 "FALSE if not."
@@ -7597,35 +7472,35 @@ msgstr ""
 "Ορίστε σε ΑΛΗΘΕΣ αν το περιβάλλον επιφάνειας εργασίας εμφανίζει τον φάκελο "
 "επιφάνειας εργασίας, αλλιώς ΨΕΥΔΕΣ."
 
-#: ctk/ctksettings.c:1636
+#: ctk/ctksettings.c:1646
 msgid "Titlebar double-click action"
 msgstr "Ενέργεια διπλού κλικ στη γραμμή τίτλου"
 
-#: ctk/ctksettings.c:1637
+#: ctk/ctksettings.c:1647
 msgid "The action to take on titlebar double-click"
 msgstr "Ενέργεια κατά το διπλό κλικ στη γραμμή τίτλου"
 
-#: ctk/ctksettings.c:1655
+#: ctk/ctksettings.c:1665
 msgid "Titlebar middle-click action"
 msgstr "Ενέργεια μεσαίου κλικ στη γραμμή τίτλου"
 
-#: ctk/ctksettings.c:1656
+#: ctk/ctksettings.c:1666
 msgid "The action to take on titlebar middle-click"
 msgstr "Ενέργεια στο μεσαίο κλικ στη γραμμή τίτλου"
 
-#: ctk/ctksettings.c:1674
+#: ctk/ctksettings.c:1684
 msgid "Titlebar right-click action"
 msgstr "Ενέργεια δεξιού κλικ στη γραμμή τίτλου"
 
-#: ctk/ctksettings.c:1675
+#: ctk/ctksettings.c:1685
 msgid "The action to take on titlebar right-click"
 msgstr "Ενέργεια κατά το δεξί κλικ στη γραμμή τίτλου"
 
-#: ctk/ctksettings.c:1697
+#: ctk/ctksettings.c:1707
 msgid "Dialogs use header bar"
 msgstr "Οι διάλογοι χρησιμοποιούν γραμμή κεφαλίδας"
 
-#: ctk/ctksettings.c:1698
+#: ctk/ctksettings.c:1708
 msgid ""
 "Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
@@ -7633,11 +7508,11 @@ msgstr ""
 "Αν οι ενσωματωμένοι διάλογοι CTK+ πρέπει να χρησιμοποιούν γραμμή κεφαλίδας "
 "αντί για περιοχή ενέργειας."
 
-#: ctk/ctksettings.c:1714
+#: ctk/ctksettings.c:1724
 msgid "Enable primary paste"
 msgstr "Ενεργοποιήση πρωτεύουσας επικόλλησης"
 
-#: ctk/ctksettings.c:1715
+#: ctk/ctksettings.c:1725
 msgid ""
 "Whether a middle click on a mouse should paste the 'PRIMARY' clipboard "
 "content at the cursor location."
@@ -7645,32 +7520,31 @@ msgstr ""
 "Αν το μεσαίο κλικ στο ποντίκι πρέπει να επικολλήσει το 'ΠΡΩΤΕΥΩΝ' "
 "περιεχόμενο προχείρου στη τοποθεσία του δρομέα."
 
-#: ctk/ctksettings.c:1731
+#: ctk/ctksettings.c:1741
 msgid "Recent Files Enabled"
 msgstr "Ενεργοποιημένα πρόσφατα αρχεία"
 
-#: ctk/ctksettings.c:1732
+#: ctk/ctksettings.c:1742
 msgid "Whether CTK+ remembers recent files"
 msgstr "Αν το CTK+ θα θυμάται τα πρόσφατα αρχεία"
 
-#: ctk/ctksettings.c:1747
+#: ctk/ctksettings.c:1757
 msgid "Long press time"
 msgstr "Χρόνος παρατεταμένου πατήματος"
 
-#: ctk/ctksettings.c:1748
+#: ctk/ctksettings.c:1758
 msgid ""
 "Time for a button/touch press to be considered a long press (in milliseconds)"
 msgstr ""
 "Ο χρόνος για το πάτημα ενός κουμπιού/αφής να θεωρείται ένα παρατεταμένο "
 "πάτημα (σε χιλιοστά του δευτερολέπτου)"
 
-#: ctk/ctksettings.c:1765 ctk/ctksettings.c:1766
+#: ctk/ctksettings.c:1775 ctk/ctksettings.c:1776
 msgid "Whether to show cursor in text"
 msgstr "Αν θα εμφανίζεται ο δρομέας στο κείμενο"
 
-#: ctk/ctksettings.c:1783 ctk/ctksettings.c:1784
+#: ctk/ctksettings.c:1793 ctk/ctksettings.c:1794
 #, fuzzy
-#| msgid "Whether to use symbolic icons"
 msgid "Whether to use overlay scrollbars"
 msgstr "Αν θα χρησιμοποιηθούν συμβολικά εικονίδια"
 
@@ -7789,7 +7663,6 @@ msgstr "Ρυθμός αναρρίχησης"
 
 #: ctk/ctkspinbutton.c:388
 #, fuzzy
-#| msgid "The acceleration rate when you hold down a button"
 msgid "The acceleration rate when you hold down a button or key"
 msgstr "Ο ρυθμός συντόμευσης όταν πατιέται κάτω ένα κουμπί"
 
@@ -7907,7 +7780,7 @@ msgstr "Το όνομα της θυγατρικής σελίδας"
 msgid "The title of the child page"
 msgstr "Ο τίτλος της θυγατρικής σελίδας"
 
-#: ctk/ctkstack.c:530 ctk/ctktoolbutton.c:287
+#: ctk/ctkstack.c:530 ctk/ctktoolbutton.c:248
 msgid "Icon name"
 msgstr "Όνομα εικονιδίου"
 
@@ -7933,6 +7806,10 @@ msgstr "Στοίβα"
 msgid "Associated stack for this CtkStackSidebar"
 msgstr "Συσχετισμένη στοίβα για αυτό το CtkStackSidebar"
 
+#: ctk/ctkstackswitcher.c:686 ctk/ctktrayicon-x11.c:178
+msgid "Icon Size"
+msgstr "Μέγεθος εικονιδίου"
+
 #: ctk/ctkstackswitcher.c:687
 msgid "Symbolic size to use for named icon"
 msgstr "Συμβολικό μέγεθος για χρήση σε ένα πρότυπο εικονίδιο"
@@ -7940,6 +7817,64 @@ msgstr "Συμβολικό μέγεθος για χρήση σε ένα πρότ
 #: ctk/ctkstatusbar.c:178
 msgid "Style of bevel around the statusbar text"
 msgstr "Στυλ γωνίας γύρω από το κείμενο της μπάρας κατάστασης"
+
+#: ctk/ctkstatusicon.c:287
+msgid "The size of the icon"
+msgstr "Το μέγεθος του εικονιδίου"
+
+#: ctk/ctkstatusicon.c:297
+msgid "The screen where this status icon will be displayed"
+msgstr "Η οθόνη όπου και θα εμφανίζεται αυτό το εικονίδιο κατάστασης"
+
+#: ctk/ctkstatusicon.c:305
+msgid "Whether the status icon is visible"
+msgstr "Αν το εικονίδιο κατάστασης θα είναι ορατό."
+
+#: ctk/ctkstatusicon.c:321
+msgid "Whether the status icon is embedded"
+msgstr "Αν το εικονίδιο κατάστασης θα είναι ενσωματωμένο"
+
+#: ctk/ctkstatusicon.c:337 ctk/ctktrayicon-x11.c:128
+msgid "The orientation of the tray"
+msgstr "Ο προσανατολισμός του συρταριού"
+
+#: ctk/ctkstatusicon.c:364 ctk/ctkwidget.c:1285
+msgid "Has tooltip"
+msgstr "Έχει συμβουλή οθόνης"
+
+#: ctk/ctkstatusicon.c:365
+msgid "Whether this tray icon has a tooltip"
+msgstr "Αν το εικονίδιο της περιοχής ειδοποιήσεων θα έχει συμβουλή οθόνης"
+
+#: ctk/ctkstatusicon.c:391 ctk/ctkwidget.c:1309
+msgid "Tooltip Text"
+msgstr "Κείμενο συμβουλής οθόνης"
+
+#: ctk/ctkstatusicon.c:392 ctk/ctkwidget.c:1310 ctk/ctkwidget.c:1334
+msgid "The contents of the tooltip for this widget"
+msgstr "Τα περιεχόμενα της συμβουλής οθόνης για αυτό το γραφικό στοιχείο"
+
+#: ctk/ctkstatusicon.c:415 ctk/ctkwidget.c:1333
+msgid "Tooltip markup"
+msgstr "Επισήμανση συμβουλής οθόνης"
+
+#: ctk/ctkstatusicon.c:416
+msgid "The contents of the tooltip for this tray icon"
+msgstr ""
+"Τα περιεχόμενα της συμβουλής οθόνης για αυτό το εικονίδιο της περιοχής "
+"ειδοποιήσεων"
+
+#: ctk/ctkstatusicon.c:434
+msgid "The title of this tray icon"
+msgstr "Ο τίτλος αυτού του εικονιδίου περιοχής ειδοποιήσεων"
+
+#: ctk/ctkstyle.c:466
+msgid "Style context"
+msgstr "Στυλ περιεχομένου"
+
+#: ctk/ctkstyle.c:467
+msgid "CtkStyleContext to get style from"
+msgstr "CtkStyleContext από το οποίο θα ληφθεί το στυλ"
 
 #: ctk/ctkstylecontext.c:230
 msgid "The associated CdkScreen"
@@ -7953,7 +7888,7 @@ msgstr "FrameClock"
 msgid "The associated CdkFrameClock"
 msgstr "Το σχετιζόμενο CdkFrameClock"
 
-#: ctk/ctkstylecontext.c:244 ctk/ctktexttag.c:299
+#: ctk/ctkstylecontext.c:244 ctk/ctktexttag.c:300
 msgid "Text direction"
 msgstr "Κατεύθυνση κειμένου"
 
@@ -7977,72 +7912,72 @@ msgstr "Τύπος τιμής"
 msgid "The value type returned by CtkStyleContext"
 msgstr "Η τιμή που επιστρέφεται από το CtkStyleContext"
 
-#: ctk/ctkswitch.c:876
+#: ctk/ctkswitch.c:879
 msgid "Whether the switch is on or off"
 msgstr "Αν ο διακόπτης είναι ανοικτός ή κλειστός"
 
-#: ctk/ctkswitch.c:891
+#: ctk/ctkswitch.c:894
 msgid "The backend state"
 msgstr "Κατάσταση συστήματος υποστήριξης"
 
-#: ctk/ctkswitch.c:927
+#: ctk/ctkswitch.c:930
 msgid "The minimum width of the handle"
 msgstr "Το ελάχιστο πλάτος της λαβής"
 
-#: ctk/ctkswitch.c:943
+#: ctk/ctkswitch.c:946
 msgid "Slider Height"
 msgstr "Ύψος ρυθμιστικού"
 
-#: ctk/ctkswitch.c:944
+#: ctk/ctkswitch.c:947
 msgid "The minimum height of the handle"
 msgstr "Το ελάχιστο ύψος της λαβής"
 
-#: ctk/ctktextbuffer.c:201
+#: ctk/ctktextbuffer.c:202
 msgid "Tag Table"
 msgstr "Πίνακας ετικετών"
 
-#: ctk/ctktextbuffer.c:202
+#: ctk/ctktextbuffer.c:203
 msgid "Text Tag Table"
 msgstr "Πίνακας ετικετών κειμένου"
 
-#: ctk/ctktextbuffer.c:219
+#: ctk/ctktextbuffer.c:220
 msgid "Current text of the buffer"
 msgstr "Τρέχον κείμενο ενδιάμεσης μνήμης"
 
-#: ctk/ctktextbuffer.c:232
+#: ctk/ctktextbuffer.c:233
 msgid "Has selection"
 msgstr "Έχει επιλογή"
 
-#: ctk/ctktextbuffer.c:233
+#: ctk/ctktextbuffer.c:234
 msgid "Whether the buffer has some text currently selected"
 msgstr "Αν η ενδιάμεση μνήμη διαθέτει επιλεγμένο κείμενο αυτή τη στιγμή"
 
-#: ctk/ctktextbuffer.c:248
+#: ctk/ctktextbuffer.c:249
 msgid "Cursor position"
 msgstr "Θέση δρομέα"
 
-#: ctk/ctktextbuffer.c:249
+#: ctk/ctktextbuffer.c:250
 msgid ""
 "The position of the insert mark (as offset from the beginning of the buffer)"
 msgstr ""
 "Η θέση του δείκτη εισαγωγής (σε σχέση με την αρχή της ενδιάμεσης μνήμης)"
 
-#: ctk/ctktextbuffer.c:264
+#: ctk/ctktextbuffer.c:265
 msgid "Copy target list"
 msgstr "Αντιγραφή λίστας προορισμού"
 
-#: ctk/ctktextbuffer.c:265
+#: ctk/ctktextbuffer.c:266
 msgid ""
 "The list of targets this buffer supports for clipboard copying and DND source"
 msgstr ""
 "Η λίστα προορισμών που υποστηρίζει αυτή η ενδιάμεση μνήμη για την αντιγραφή "
 "στο πρόχειρο και για πηγές λήψεων"
 
-#: ctk/ctktextbuffer.c:279
+#: ctk/ctktextbuffer.c:280
 msgid "Paste target list"
 msgstr "Επικόλληση λίστας προορισμών"
 
-#: ctk/ctktextbuffer.c:280
+#: ctk/ctktextbuffer.c:281
 msgid ""
 "The list of targets this buffer supports for clipboard pasting and DND "
 "destination"
@@ -8050,7 +7985,7 @@ msgstr ""
 "Η λίστα προορισμών που υποστηρίζει αυτή η ενδιάμεση μνήμη για την επικόλληση "
 "από το πρόχειρο και για προορισμούς λήψεων"
 
-#: ctk/ctktexthandle.c:721 ctk/ctktexthandle.c:722 ctk/ctkwidget.c:1122
+#: ctk/ctktexthandle.c:721 ctk/ctktexthandle.c:722 ctk/ctkwidget.c:1125
 msgid "Parent widget"
 msgstr "Γονικό γραφικό στοιχείο"
 
@@ -8066,25 +8001,25 @@ msgstr "Αριστερή κλίση"
 msgid "Whether the mark has left gravity"
 msgstr "Αν ο δείκτης θα κλίνει προς τα αριστερά"
 
-#: ctk/ctktexttag.c:205
+#: ctk/ctktexttag.c:206
 msgid "Tag name"
 msgstr "Όνομα ετικέτας"
 
-#: ctk/ctktexttag.c:206
+#: ctk/ctktexttag.c:207
 msgid "Name used to refer to the text tag. NULL for anonymous tags"
 msgstr ""
 "Όνομα που χρησιμοποιείται για την αναφορά στην ετικέτα κειμένου. NULL για "
 "ανώνυμες ετικέτες"
 
-#: ctk/ctktexttag.c:245
+#: ctk/ctktexttag.c:246
 msgid "Background RGBA"
 msgstr "Παρασκήνιο RGBA"
 
-#: ctk/ctktexttag.c:253
+#: ctk/ctktexttag.c:254
 msgid "Background full height"
 msgstr "Μέγιστο ύψος παρασκηνίου"
 
-#: ctk/ctktexttag.c:254
+#: ctk/ctktexttag.c:255
 msgid ""
 "Whether the background color fills the entire line height or only the height "
 "of the tagged characters"
@@ -8092,23 +8027,23 @@ msgstr ""
 "Αν το χρώμα παρασκηνίου θα γεμίσει όλο το ύψος της γραμμής, ή μόνο τους "
 "χαρακτήρες με αναγνωριστική ετικέτα"
 
-#: ctk/ctktexttag.c:291
+#: ctk/ctktexttag.c:292
 msgid "Foreground RGBA"
 msgstr "Προσκήνιο RGBA"
 
-#: ctk/ctktexttag.c:300
+#: ctk/ctktexttag.c:301
 msgid "Text direction, e.g. right-to-left or left-to-right"
 msgstr "Κατεύθυνση κειμένου π.χ αριστερά-προς-δεξιά ή δεξιά-προς-αριστερά"
 
-#: ctk/ctktexttag.c:349
+#: ctk/ctktexttag.c:350
 msgid "Font style as a PangoStyle, e.g. PANGO_STYLE_ITALIC"
 msgstr "Στυλ γραμματοσειράς ως PangoStyle, π.χ. PANGO_STYLE_ITALIC"
 
-#: ctk/ctktexttag.c:358
+#: ctk/ctktexttag.c:359
 msgid "Font variant as a PangoVariant, e.g. PANGO_VARIANT_SMALL_CAPS"
 msgstr "Ποικιλία γραμματοσειράς ως PangoVariant, π.χ. PANGO_VARIANT_SMALL_CAPS"
 
-#: ctk/ctktexttag.c:367
+#: ctk/ctktexttag.c:368
 msgid ""
 "Font weight as an integer, see predefined values in PangoWeight; for "
 "example, PANGO_WEIGHT_BOLD"
@@ -8116,15 +8051,15 @@ msgstr ""
 "Πάχος γραμματοσειράς ως ακέραιος, δείτε προκαθορισμένες τιμές στο "
 "PangoWeight· για παράδειγμα, PANGO_WEIGHT_BOLD"
 
-#: ctk/ctktexttag.c:378
+#: ctk/ctktexttag.c:379
 msgid "Font stretch as a PangoStretch, e.g. PANGO_STRETCH_CONDENSED"
 msgstr "Τέντωμα γραμματοσειράς όπως PangoStretch, π.χ. PANGO_STRETCH_CONDENSED"
 
-#: ctk/ctktexttag.c:387
+#: ctk/ctktexttag.c:388
 msgid "Font size in Pango units"
 msgstr "Μέγεθος γραμματοσειράς σε Pango units"
 
-#: ctk/ctktexttag.c:397
+#: ctk/ctktexttag.c:398
 msgid ""
 "Font size as a scale factor relative to the default font size. This properly "
 "adapts to theme changes etc. so is recommended. Pango predefines some scales "
@@ -8134,11 +8069,11 @@ msgstr ""
 "μέγεθος γραμματοσειράς. Αυτό προσαρμόζεται σε αλλαγές θεμάτων κτλ. και έτσι "
 "συνιστάται. Το Pango προκαθορίζει κάποιες κλίμακες όπως PANGO_SCALE_X_LARGE"
 
-#: ctk/ctktexttag.c:417 ctk/ctktextview.c:843
+#: ctk/ctktexttag.c:418 ctk/ctktextview.c:843
 msgid "Left, right, or center justification"
 msgstr "Αριστερή, δεξιά ή στοίχιση στο κέντρο"
 
-#: ctk/ctktexttag.c:436
+#: ctk/ctktexttag.c:437
 msgid ""
 "The language this text is in, as an ISO code. Pango can use this as a hint "
 "when rendering the text. If not set, an appropriate default will be used."
@@ -8147,31 +8082,31 @@ msgstr ""
 "χρησιμοποιήσει αυτό ως υπόδειξη όταν θα εμφανίζει το κείμενο. Αν δεν οριστεί "
 "θα χρησιμοποιηθεί η κατάλληλη προεπιλογή."
 
-#: ctk/ctktexttag.c:443
+#: ctk/ctktexttag.c:444
 msgid "Left margin"
 msgstr "Αριστερό περιθώριο"
 
-#: ctk/ctktexttag.c:444 ctk/ctktextview.c:864
+#: ctk/ctktexttag.c:445 ctk/ctktextview.c:864
 msgid "Width of the left margin in pixels"
 msgstr "Πλάτος του αριστερού περιθωρίου σε εικονοστοιχεία"
 
-#: ctk/ctktexttag.c:453
+#: ctk/ctktexttag.c:454
 msgid "Right margin"
 msgstr "Δεξιό περιθώριο"
 
-#: ctk/ctktexttag.c:454 ctk/ctktextview.c:884
+#: ctk/ctktexttag.c:455 ctk/ctktextview.c:884
 msgid "Width of the right margin in pixels"
 msgstr "Πλάτος του δεξιού περιθωρίου σε εικονοστοιχεία"
 
-#: ctk/ctktexttag.c:464 ctk/ctktextview.c:933
+#: ctk/ctktexttag.c:465 ctk/ctktextview.c:933
 msgid "Indent"
 msgstr "Εσοχή"
 
-#: ctk/ctktexttag.c:465 ctk/ctktextview.c:934
+#: ctk/ctktexttag.c:466 ctk/ctktextview.c:934
 msgid "Amount to indent the paragraph, in pixels"
 msgstr "Μέγεθος εσοχής παραγράφου σε εικονοστοιχεία"
 
-#: ctk/ctktexttag.c:476
+#: ctk/ctktexttag.c:477
 msgid ""
 "Offset of text above the baseline (below the baseline if rise is negative) "
 "in Pango units"
@@ -8179,258 +8114,258 @@ msgstr ""
 "Διάταξη του κειμένου πάνω από τη γραμμή βάσης (κάτω από τη γραμμή βάσης αν η "
 "άνοδος είναι αρνητική) σε μονάδες Pango"
 
-#: ctk/ctktexttag.c:485
+#: ctk/ctktexttag.c:486
 msgid "Pixels above lines"
 msgstr "Εικονοστοιχεία πάνω από γραμμές"
 
-#: ctk/ctktexttag.c:486 ctk/ctktextview.c:802
+#: ctk/ctktexttag.c:487 ctk/ctktextview.c:802
 msgid "Pixels of blank space above paragraphs"
 msgstr "Εικονοστοιχεία κενού διαστήματος πάνω από παραγράφους"
 
-#: ctk/ctktexttag.c:495
+#: ctk/ctktexttag.c:496
 msgid "Pixels below lines"
 msgstr "Εικονοστοιχεία κάτω από γραμμές"
 
-#: ctk/ctktexttag.c:496 ctk/ctktextview.c:810
+#: ctk/ctktexttag.c:497 ctk/ctktextview.c:810
 msgid "Pixels of blank space below paragraphs"
 msgstr "Εικονοστοιχεία κενού διαστήματος κάτω από παραγράφους"
 
-#: ctk/ctktexttag.c:505
+#: ctk/ctktexttag.c:506
 msgid "Pixels inside wrap"
 msgstr "Εικονοστοιχεία μέσα στην αναδίπλωση"
 
-#: ctk/ctktexttag.c:506 ctk/ctktextview.c:818
+#: ctk/ctktexttag.c:507 ctk/ctktextview.c:818
 msgid "Pixels of blank space between wrapped lines in a paragraph"
 msgstr ""
 "Εικονοστοιχεία κενού διαστήματος μεταξύ αναδιπλούμενων γραμμών σε παράγραφο"
 
-#: ctk/ctktexttag.c:544
+#: ctk/ctktexttag.c:545
 msgid "Underline RGBA"
 msgstr "Υπογράμμιση RGBA"
 
-#: ctk/ctktexttag.c:545
+#: ctk/ctktexttag.c:546
 msgid "Color of underline for this text"
 msgstr "Χρώμα υπογράμμισης για αυτό το κείμενο"
 
-#: ctk/ctktexttag.c:560
+#: ctk/ctktexttag.c:561
 msgid "Strikethrough RGBA"
 msgstr "Επιγράμμιση RGBA"
 
-#: ctk/ctktexttag.c:561
+#: ctk/ctktexttag.c:562
 msgid "Color of strikethrough for this text"
 msgstr "Χρώμα επιγράμμισης αυτού του κειμένου"
 
-#: ctk/ctktexttag.c:569 ctk/ctktextview.c:834
+#: ctk/ctktexttag.c:570 ctk/ctktextview.c:834
 msgid ""
 "Whether to wrap lines never, at word boundaries, or at character boundaries"
 msgstr ""
 "Αν θα αναδιπλώνονται οι γραμμές, καθόλου, στα όρια λέξεως ή στα όρια "
 "χαρακτήρων"
 
-#: ctk/ctktexttag.c:579 ctk/ctktextview.c:942
+#: ctk/ctktexttag.c:580 ctk/ctktextview.c:942
 msgid "Custom tabs for this text"
 msgstr "Προσαρμοσμένοι στηλοθέτες για αυτό το κείμενο"
 
-#: ctk/ctktexttag.c:597
+#: ctk/ctktexttag.c:598
 msgid "Invisible"
 msgstr "Αόρατο"
 
-#: ctk/ctktexttag.c:598
+#: ctk/ctktexttag.c:599
 msgid "Whether this text is hidden."
 msgstr "Αν αυτό το κείμενο αποκρύπτεται."
 
-#: ctk/ctktexttag.c:612
+#: ctk/ctktexttag.c:613
 msgid "Paragraph background color name"
 msgstr "Όνομα χρώματος παρασκηνίου παραγράφου"
 
-#: ctk/ctktexttag.c:613
+#: ctk/ctktexttag.c:614
 msgid "Paragraph background color as a string"
 msgstr "Χρώμα παρασκηνίου παραγράφου ως συμβολοσειρά"
 
-#: ctk/ctktexttag.c:629
+#: ctk/ctktexttag.c:630
 msgid "Paragraph background color"
 msgstr "Χρώμα παρασκηνίου παραγράφου"
 
-#: ctk/ctktexttag.c:630
+#: ctk/ctktexttag.c:631
 msgid "Paragraph background color as a CdkColor"
 msgstr "Χρώμα παρασκηνίου παραγράφου ως CdkColor"
 
-#: ctk/ctktexttag.c:644
+#: ctk/ctktexttag.c:645
 msgid "Paragraph background RGBA"
 msgstr "Παρασκήνιο παραγράφου, χρώμα RGBA"
 
-#: ctk/ctktexttag.c:645
+#: ctk/ctktexttag.c:646
 msgid "Paragraph background RGBA as a CdkRGBA"
 msgstr "Παρασκήνιο παραγράφου, χρώμα RGBA ως CdkRGBA"
 
-#: ctk/ctktexttag.c:662
+#: ctk/ctktexttag.c:663
 msgid "Fallback"
 msgstr "Υποχώρηση"
 
-#: ctk/ctktexttag.c:663
+#: ctk/ctktexttag.c:664
 msgid "Whether font fallback is enabled."
 msgstr "Αν αυτή η υποχώρηση της γραμματοσειράς θα είναι ενεργοποιημένη."
 
-#: ctk/ctktexttag.c:677
+#: ctk/ctktexttag.c:678
 msgid "Letter Spacing"
 msgstr "Διάκενο γραμμάτων"
 
-#: ctk/ctktexttag.c:678
+#: ctk/ctktexttag.c:679
 msgid "Extra spacing between graphemes"
 msgstr "Πρόσθετο διάκενο μεταξύ γραφημάτων"
 
-#: ctk/ctktexttag.c:692
+#: ctk/ctktexttag.c:693
 msgid "Font Features"
 msgstr "Χαρακτηριστικά γραμματοσειράς"
 
-#: ctk/ctktexttag.c:693
+#: ctk/ctktexttag.c:694
 msgid "OpenType Font Features to use"
 msgstr "Χαρακτηριστικά γραμματοσειράς OpenType που θα χρησιμοποιηθούν"
 
-#: ctk/ctktexttag.c:711
+#: ctk/ctktexttag.c:712
 msgid "Margin Accumulates"
 msgstr "Συσσώρευση περιθωρίων"
 
-#: ctk/ctktexttag.c:712
+#: ctk/ctktexttag.c:713
 msgid "Whether left and right margins accumulate."
 msgstr "Αν θα υπάρχει συσσώρευση των αριστερών και δεξιών περιθωρίων."
 
-#: ctk/ctktexttag.c:725
+#: ctk/ctktexttag.c:726
 msgid "Background full height set"
 msgstr "Ορισμός μέγιστου ύψους παρασκηνίου"
 
-#: ctk/ctktexttag.c:726
+#: ctk/ctktexttag.c:727
 msgid "Whether this tag affects background height"
 msgstr "Αν η αναγνωριστική ετικέτα θα επηρεάζει το ύψος του παρασκηνίου"
 
-#: ctk/ctktexttag.c:765
+#: ctk/ctktexttag.c:766
 msgid "Justification set"
 msgstr "Ορισμός στοίχισης"
 
-#: ctk/ctktexttag.c:766
+#: ctk/ctktexttag.c:767
 msgid "Whether this tag affects paragraph justification"
 msgstr ""
 "Αν αυτή η αναγνωριστική ετικέτα θα επηρεάζει τη στοίχιση των παραγράφων"
 
-#: ctk/ctktexttag.c:773
+#: ctk/ctktexttag.c:774
 msgid "Left margin set"
 msgstr "Ορισμός αριστερού περιθωρίου"
 
-#: ctk/ctktexttag.c:774
+#: ctk/ctktexttag.c:775
 msgid "Whether this tag affects the left margin"
 msgstr "Αν η αναγνωριστική ετικέτα θα επηρεάζει το αριστερό περιθώριο"
 
-#: ctk/ctktexttag.c:777
+#: ctk/ctktexttag.c:778
 msgid "Indent set"
 msgstr "Ορισμός εσοχής"
 
-#: ctk/ctktexttag.c:778
+#: ctk/ctktexttag.c:779
 msgid "Whether this tag affects indentation"
 msgstr "Αν η αναγνωριστική ετικέτα θα επηρεάζει τις εσοχές"
 
-#: ctk/ctktexttag.c:785
+#: ctk/ctktexttag.c:786
 msgid "Pixels above lines set"
 msgstr "Ορισμός εικονοστοιχείων πάνω γραμμές"
 
-#: ctk/ctktexttag.c:786 ctk/ctktexttag.c:790
+#: ctk/ctktexttag.c:787 ctk/ctktexttag.c:791
 msgid "Whether this tag affects the number of pixels above lines"
 msgstr ""
 "Αν η αναγνωριστική ετικέτα θα επηρεάζει τον αριθμό των εικονοστοιχείων πάνω "
 "από γραμμές"
 
-#: ctk/ctktexttag.c:789
+#: ctk/ctktexttag.c:790
 msgid "Pixels below lines set"
 msgstr "Ορισμός εικονοστοιχείων κάτω από γραμμές"
 
-#: ctk/ctktexttag.c:793
+#: ctk/ctktexttag.c:794
 msgid "Pixels inside wrap set"
 msgstr "Ορισμός εικονοστοιχείων μέσα στην αναδίπλωση"
 
-#: ctk/ctktexttag.c:794
+#: ctk/ctktexttag.c:795
 msgid "Whether this tag affects the number of pixels between wrapped lines"
 msgstr ""
 "Αν η αναγνωριστική ετικέτα θα επηρεάζει τον αριθμό των εικονοστοιχείων "
 "μεταξύ αναδιπλούμενων γραμμών"
 
-#: ctk/ctktexttag.c:801
+#: ctk/ctktexttag.c:802
 msgid "Right margin set"
 msgstr "Ορισμός δεξιού περιθωρίου"
 
-#: ctk/ctktexttag.c:802
+#: ctk/ctktexttag.c:803
 msgid "Whether this tag affects the right margin"
 msgstr "Αν η αναγνωριστική ετικέτα θα επηρεάζει το δεξιό περιθώριο"
 
-#: ctk/ctktexttag.c:816
+#: ctk/ctktexttag.c:817
 msgid "Underline RGBA set"
 msgstr "Ορισμός ομάδας RGBA"
 
-#: ctk/ctktexttag.c:817
+#: ctk/ctktexttag.c:818
 msgid "Whether this tag affects underlining color"
 msgstr "Αν η ετικέτα επηρεάζει το χρώμα της υπογράμμισης"
 
-#: ctk/ctktexttag.c:827
+#: ctk/ctktexttag.c:828
 msgid "Strikethrough RGBA set"
 msgstr "Ορισμός ομάδας διακριτής διαγραφής"
 
-#: ctk/ctktexttag.c:828
+#: ctk/ctktexttag.c:829
 msgid "Whether this tag affects strikethrough color"
 msgstr "Αν η ετικέτα επηρεάζει το χρώμα της διακριτής διαγραφής"
 
-#: ctk/ctktexttag.c:831
+#: ctk/ctktexttag.c:832
 msgid "Wrap mode set"
 msgstr "Ορισμός λειτουργίας αναδίπλωσης"
 
-#: ctk/ctktexttag.c:832
+#: ctk/ctktexttag.c:833
 msgid "Whether this tag affects line wrap mode"
 msgstr ""
 "Αν η αναγνωριστική ετικέτα θα επηρεάζει την λειτουργία αναδίπλωσης γραμμών"
 
-#: ctk/ctktexttag.c:835
+#: ctk/ctktexttag.c:836
 msgid "Tabs set"
 msgstr "Ορισμός στηλοθετών"
 
-#: ctk/ctktexttag.c:836
+#: ctk/ctktexttag.c:837
 msgid "Whether this tag affects tabs"
 msgstr "Αν η αναγνωριστική ετικέτα θα επηρεάζει τους στηλοθέτες"
 
-#: ctk/ctktexttag.c:839
+#: ctk/ctktexttag.c:840
 msgid "Invisible set"
 msgstr "Ορισμός αόρατου"
 
-#: ctk/ctktexttag.c:840
+#: ctk/ctktexttag.c:841
 msgid "Whether this tag affects text visibility"
 msgstr "Αν η αναγνωριστική ετικέτα θα επηρεάζει την ορατότητα του κειμένου"
 
-#: ctk/ctktexttag.c:843
+#: ctk/ctktexttag.c:844
 msgid "Paragraph background set"
 msgstr "Ορισμός παρασκηνίου παραγράφου"
 
-#: ctk/ctktexttag.c:844
+#: ctk/ctktexttag.c:845
 msgid "Whether this tag affects the paragraph background color"
 msgstr ""
 "Αν αυτή αναγνωριστική ετικέτα επηρεάζει το χρώμα παρασκηνίου παραγράφου"
 
-#: ctk/ctktexttag.c:847
+#: ctk/ctktexttag.c:848
 msgid "Fallback set"
 msgstr "Ορισμός υποχώρησης"
 
-#: ctk/ctktexttag.c:848
+#: ctk/ctktexttag.c:849
 msgid "Whether this tag affects font fallback"
 msgstr "Αν αυτή η ετικέτα επηρεάζει την υποχώρηση της γραμματοσειράς"
 
-#: ctk/ctktexttag.c:851
+#: ctk/ctktexttag.c:852
 msgid "Letter spacing set"
 msgstr "Ορισμός διακένου γράμματος"
 
-#: ctk/ctktexttag.c:852
+#: ctk/ctktexttag.c:853
 msgid "Whether this tag affects letter spacing"
 msgstr "Αν αυτή η ετικέτα θα επηρεάζει το διάκενο του γράμματος"
 
-#: ctk/ctktexttag.c:855
+#: ctk/ctktexttag.c:856
 msgid "Font features set"
 msgstr "Ορισμός χαρακτηριστικών γραμματοσειράς"
 
-#: ctk/ctktexttag.c:856
+#: ctk/ctktexttag.c:857
 msgid "Whether this tag affects font features"
 msgstr "Αν αυτή η ετικέτα επηρεάζει τα χαρακτηριστικά της γραμματοσειράς"
 
@@ -8518,6 +8453,20 @@ msgstr "Χρώμα υπογράμμισης σφάλματος"
 msgid "Color with which to draw error-indication underlines"
 msgstr "Χρώμα με το οποίο ζωγραφίζονται οι υπογραμμίσεις επισήμανσης σφάλματος"
 
+#: ctk/ctktoggleaction.c:114
+msgid "Create the same proxies as a radio action"
+msgstr "Δημιουργία των ίδιων διαμεσολαβητών ως radio button"
+
+#: ctk/ctktoggleaction.c:115
+msgid "Whether the proxies for this action look like radio action proxies"
+msgstr ""
+"Aν οι διαμεσολαβητές για αυτήν την ενέργεια θα φαίνονται ως μεσολαβητές "
+"ενέργειας ραδιοπλήκτρου"
+
+#: ctk/ctktoggleaction.c:130
+msgid "Whether the toggle action should be active"
+msgstr "Αν η ενέργεια εναλλαγής θα είναι ενεργή ή όχι"
+
 #: ctk/ctktogglebutton.c:189 ctk/ctktoggletoolbutton.c:131
 msgid "If the toggle button should be pressed in"
 msgstr "Αν το κουμπί εναλλαγής θα πρέπει να πατιέται ή όχι"
@@ -8525,8 +8474,8 @@ msgstr "Αν το κουμπί εναλλαγής θα πρέπει να πατ�
 #: ctk/ctktogglebutton.c:196
 msgid "If the toggle button is in an \"in between\" state"
 msgstr ""
-"Αν το κουμπί εναλλαγής θα πρέπει να είναι σε κατάσταση \"in between"
-"\" (μεταξύ)"
+"Αν το κουμπί εναλλαγής θα πρέπει να είναι σε κατάσταση \"in "
+"between\" (μεταξύ)"
 
 #: ctk/ctktogglebutton.c:202
 msgid "Draw Indicator"
@@ -8618,11 +8567,11 @@ msgstr "Είδος γωνίας γύρω από τα κουμπιά της ερ�
 msgid "Style of bevel around the toolbar"
 msgstr "Στυλ γωνίας γύρω από την εργαλειοθήκη"
 
-#: ctk/ctktoolbutton.c:244
+#: ctk/ctktoolbutton.c:205
 msgid "Text to show in the item."
 msgstr "Το κείμενο που θα εμφανίζεται στο αντικείμενο."
 
-#: ctk/ctktoolbutton.c:251
+#: ctk/ctktoolbutton.c:212
 msgid ""
 "If set, an underline in the label property indicates that the next character "
 "should be used for the mnemonic accelerator key in the overflow menu"
@@ -8630,35 +8579,35 @@ msgstr ""
 "Αν ορισθεί, μια υπογράμμιση στο κείμενο θα επισημαίνει τον επόμενο χαρακτήρα "
 "που πρέπει να χρησιμοποιηθεί για το μνημονικό κλειδί συντόμευσης"
 
-#: ctk/ctktoolbutton.c:258
+#: ctk/ctktoolbutton.c:219
 msgid "Widget to use as the item label"
 msgstr "Γραφικό στοιχείο που θα χρησιμοποιηθεί ως ετικέτα αντικειμένου"
 
-#: ctk/ctktoolbutton.c:269
+#: ctk/ctktoolbutton.c:230
 msgid "Stock Id"
 msgstr "Αναγνωριστικό αποθέματος"
 
-#: ctk/ctktoolbutton.c:270
+#: ctk/ctktoolbutton.c:231
 msgid "The stock icon displayed on the item"
 msgstr "Το εικονίδιο αποθέματος που θα εμφανίζεται στο αντικείμενο"
 
-#: ctk/ctktoolbutton.c:288
+#: ctk/ctktoolbutton.c:249
 msgid "The name of the themed icon displayed on the item"
 msgstr "Το όνομα του εικονιδίου με θέμα που θα εμφανίζεται στο αντικείμενο"
 
-#: ctk/ctktoolbutton.c:294
+#: ctk/ctktoolbutton.c:255
 msgid "Icon widget"
 msgstr "Γραφικό στοιχείο εικονιδίου"
 
-#: ctk/ctktoolbutton.c:295
+#: ctk/ctktoolbutton.c:256
 msgid "Icon widget to display in the item"
 msgstr "Γραφικό στοιχείο εικονιδίου για εμφάνιση στο εικονίδιο"
 
-#: ctk/ctktoolbutton.c:311
+#: ctk/ctktoolbutton.c:272
 msgid "Icon spacing"
 msgstr "Διάκενο εικονιδίων"
 
-#: ctk/ctktoolbutton.c:312
+#: ctk/ctktoolbutton.c:273
 msgid "Spacing in pixels between the icon and label"
 msgstr "Διάκενο μεταξύ εικονιδίου και ετικέτας, σε εικονοστοιχεία"
 
@@ -8753,6 +8702,42 @@ msgid ""
 msgstr ""
 "Αν η ομάδα στοιχείων θα λαμβάνει περισσότερο χώρο όταν μεγαλώνει η παλέττα"
 
+#: ctk/ctktrayicon-x11.c:137
+msgid "Foreground color for symbolic icons"
+msgstr "Χρώμα προσκηνίου για συμβολικά εικονίδια"
+
+#: ctk/ctktrayicon-x11.c:144
+msgid "Error color"
+msgstr "Χρώμα σφάλματος"
+
+#: ctk/ctktrayicon-x11.c:145
+msgid "Error color for symbolic icons"
+msgstr "Χρώμα σφάλματος για συμβολικά εικονίδια"
+
+#: ctk/ctktrayicon-x11.c:152
+msgid "Warning color"
+msgstr "Χρώμα προειδοποίησης"
+
+#: ctk/ctktrayicon-x11.c:153
+msgid "Warning color for symbolic icons"
+msgstr "Χρώμα προειδοποίησης για συμβολικά εικονίδια"
+
+#: ctk/ctktrayicon-x11.c:160
+msgid "Success color"
+msgstr "Χρώμα επιτυχίας"
+
+#: ctk/ctktrayicon-x11.c:161
+msgid "Success color for symbolic icons"
+msgstr "Χρώμα επιτυχίας για συμβολικά εικονίδια"
+
+#: ctk/ctktrayicon-x11.c:169
+msgid "Padding that should be put around icons in the tray"
+msgstr "Περιθώριο που θα πρέπει να τοποθετηθεί γύρω από τα εικονίδια στο tray"
+
+#: ctk/ctktrayicon-x11.c:179
+msgid "The pixel size that icons should be forced to, or zero"
+msgstr "Το μέγεθος σε pixels για τα εικονίδια, ή μηδενικό"
+
 #: ctk/ctktreemenu.c:265
 msgid "TreeMenu model"
 msgstr "Μοντέλο δενδροειδούς προβολής"
@@ -8809,223 +8794,223 @@ msgstr "Μοντέλο δενδροειδούς ταξινόμησης"
 msgid "The model for the TreeModelSort to sort"
 msgstr "Το μοντέλο για δενδροειδή ταξινόμηση"
 
-#: ctk/ctktreeview.c:1022
+#: ctk/ctktreeview.c:1031
 msgid "TreeView Model"
 msgstr "Μοντέλο δενδροειδούς προβολής"
 
-#: ctk/ctktreeview.c:1023
+#: ctk/ctktreeview.c:1032
 msgid "The model for the tree view"
 msgstr "Το μοντέλο για δενδροειδή προβολή"
 
-#: ctk/ctktreeview.c:1029
+#: ctk/ctktreeview.c:1038
 msgid "Headers Visible"
 msgstr "Ορατές κεφαλίδες"
 
-#: ctk/ctktreeview.c:1030
+#: ctk/ctktreeview.c:1039
 msgid "Show the column header buttons"
 msgstr "Προβολή των κουμπιών της κεφαλίδας στήλης"
 
-#: ctk/ctktreeview.c:1036
+#: ctk/ctktreeview.c:1045
 msgid "Headers Clickable"
 msgstr "Δυνατότητα κλικ στις κεφαλίδες"
 
-#: ctk/ctktreeview.c:1037
+#: ctk/ctktreeview.c:1046
 msgid "Column headers respond to click events"
 msgstr "Οι κεφαλίδες στηλών να ανταποκρίνονται σε γεγονότα κλικ"
 
-#: ctk/ctktreeview.c:1043
+#: ctk/ctktreeview.c:1052
 msgid "Expander Column"
 msgstr "Στήλη επέκτασης"
 
-#: ctk/ctktreeview.c:1044
+#: ctk/ctktreeview.c:1053
 msgid "Set the column for the expander column"
 msgstr "Ορισμός στήλης για τη στήλη επέκτασης"
 
-#: ctk/ctktreeview.c:1065
+#: ctk/ctktreeview.c:1074
 msgid "Rules Hint"
 msgstr "Υπόδειξη κανόνων"
 
-#: ctk/ctktreeview.c:1066
+#: ctk/ctktreeview.c:1075
 msgid "Set a hint to the theme engine to draw rows in alternating colors"
 msgstr ""
 "Ορισμός υπόδειξης στη μηχανή θεμάτων για το σχεδιασμό γραμμών σε εναλλακτικά "
 "χρώματα."
 
-#: ctk/ctktreeview.c:1072
+#: ctk/ctktreeview.c:1081
 msgid "Enable Search"
 msgstr "Ενεργοποίηση αναζήτησης"
 
-#: ctk/ctktreeview.c:1073
+#: ctk/ctktreeview.c:1082
 msgid "View allows user to search through columns interactively"
 msgstr "Η προβολή επιτρέπει τη διαδραστική αναζήτηση μέσω στηλών"
 
-#: ctk/ctktreeview.c:1079
+#: ctk/ctktreeview.c:1088
 msgid "Search Column"
 msgstr "Στήλη αναζήτησης"
 
-#: ctk/ctktreeview.c:1080
+#: ctk/ctktreeview.c:1089
 msgid "Model column to search through during interactive search"
 msgstr ""
 "Στήλη του μοντέλου στην οποία θα γίνει αναζήτηση κατά τη διαδραστική "
 "αναζήτηση"
 
-#: ctk/ctktreeview.c:1098
+#: ctk/ctktreeview.c:1107
 msgid "Fixed Height Mode"
 msgstr "Λειτουργία σταθερού ύψους"
 
-#: ctk/ctktreeview.c:1099
+#: ctk/ctktreeview.c:1108
 msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
 msgstr ""
 "Συντομεύει το CtkTreeView με το να θεωρεί ότι όλες οι γραμμές έχουν το ίδιο "
 "ύψος"
 
-#: ctk/ctktreeview.c:1118
+#: ctk/ctktreeview.c:1127
 msgid "Hover Selection"
 msgstr "Επιλογή με αιώρηση"
 
-#: ctk/ctktreeview.c:1119
+#: ctk/ctktreeview.c:1128
 msgid "Whether the selection should follow the pointer"
 msgstr "Αν η επιλογή θα ακολουθεί το δρομέα"
 
-#: ctk/ctktreeview.c:1137
+#: ctk/ctktreeview.c:1146
 msgid "Hover Expand"
 msgstr "Ανάπτυξη με αιώρηση"
 
-#: ctk/ctktreeview.c:1138
+#: ctk/ctktreeview.c:1147
 msgid ""
 "Whether rows should be expanded/collapsed when the pointer moves over them"
 msgstr ""
 "Αν το οι γραμμές θα αναπτύσσονται/συμπτήσσονται όταν περνά από πάνω τους ο "
 "δρομέας "
 
-#: ctk/ctktreeview.c:1151
+#: ctk/ctktreeview.c:1160
 msgid "Show Expanders"
 msgstr "Προβολή επεκτάσεων"
 
-#: ctk/ctktreeview.c:1152
+#: ctk/ctktreeview.c:1161
 msgid "View has expanders"
 msgstr "Η προβολή διαθέτει επεκτάσεις"
 
-#: ctk/ctktreeview.c:1165
+#: ctk/ctktreeview.c:1174
 msgid "Level Indentation"
 msgstr "Επίπεδα εσοχών"
 
-#: ctk/ctktreeview.c:1166
+#: ctk/ctktreeview.c:1175
 msgid "Extra indentation for each level"
 msgstr "Επιπλέον εσοχή σε κάθε επίπεδο"
 
-#: ctk/ctktreeview.c:1173
+#: ctk/ctktreeview.c:1182
 msgid "Rubber Banding"
 msgstr "Ομαδοποίηση"
 
-#: ctk/ctktreeview.c:1174
+#: ctk/ctktreeview.c:1183
 msgid ""
 "Whether to enable selection of multiple items by dragging the mouse pointer"
 msgstr ""
 "Αν θα επιτρέπεται η επιλογή πολλαπλών αντικειμένων με το σύρσιμο του δρομέα "
 "του ποντικιού"
 
-#: ctk/ctktreeview.c:1180
+#: ctk/ctktreeview.c:1189
 msgid "Enable Grid Lines"
 msgstr "Ενεργοποίηση γραμμών πλέγματος"
 
-#: ctk/ctktreeview.c:1181
+#: ctk/ctktreeview.c:1190
 msgid "Whether grid lines should be drawn in the tree view"
 msgstr "Αν θα εμφανίζονται οι γραμμές πλέγματος στην προβολή δέντρου"
 
-#: ctk/ctktreeview.c:1188
+#: ctk/ctktreeview.c:1197
 msgid "Enable Tree Lines"
 msgstr "Ενεργοποίηση γραμμών δένδρου"
 
-#: ctk/ctktreeview.c:1189
+#: ctk/ctktreeview.c:1198
 msgid "Whether tree lines should be drawn in the tree view"
 msgstr "Αν θα εμφανίζονται οι γραμμές δέντρου στην προβολή δέντρου"
 
-#: ctk/ctktreeview.c:1196
+#: ctk/ctktreeview.c:1205
 msgid "The column in the model containing the tooltip texts for the rows"
 msgstr ""
 "Η στήλη στο μοντέλο που περιέχει τα κείμενα των συμβουλών οθόνης για τις "
 "γραμμές"
 
-#: ctk/ctktreeview.c:1234
+#: ctk/ctktreeview.c:1243
 msgid "Vertical Separator Width"
 msgstr "Πλάτος κάθετου διαχωριστικού"
 
-#: ctk/ctktreeview.c:1235
+#: ctk/ctktreeview.c:1244
 msgid "Vertical space between cells.  Must be an even number"
 msgstr "Κάθετο διάστημα μεταξύ κελιών. Πρέπει να είναι ζυγός αριθμός"
 
-#: ctk/ctktreeview.c:1243
+#: ctk/ctktreeview.c:1252
 msgid "Horizontal Separator Width"
 msgstr "Πλάτος οριζόντιου διαχωριστικού"
 
-#: ctk/ctktreeview.c:1244
+#: ctk/ctktreeview.c:1253
 msgid "Horizontal space between cells.  Must be an even number"
 msgstr "Οριζόντιο διάστημα μεταξύ κελιών. Πρέπει να είναι ζυγός αριθμός"
 
-#: ctk/ctktreeview.c:1252
+#: ctk/ctktreeview.c:1261
 msgid "Allow Rules"
 msgstr "Να επιτρέπονται κανόνες"
 
-#: ctk/ctktreeview.c:1253
+#: ctk/ctktreeview.c:1262
 msgid "Allow drawing of alternating color rows"
 msgstr "Να επιτρέπεται ο σχεδιασμός γραμμών με εναλλαγές γραμμές χρωμάτων"
 
-#: ctk/ctktreeview.c:1259
+#: ctk/ctktreeview.c:1268
 msgid "Indent Expanders"
 msgstr "Εσοχή επεκτάσεων"
 
-#: ctk/ctktreeview.c:1260
+#: ctk/ctktreeview.c:1269
 msgid "Make the expanders indented"
 msgstr "Να οριοθετείται η εσοχή των επεκτάσεων"
 
-#: ctk/ctktreeview.c:1266
+#: ctk/ctktreeview.c:1275
 msgid "Even Row Color"
 msgstr "Χρώμα ζυγής γραμμής"
 
-#: ctk/ctktreeview.c:1267
+#: ctk/ctktreeview.c:1276
 msgid "Color to use for even rows"
 msgstr "Χρώμα που θα χρησιμοποιείται για τις ζυγές γραμμές"
 
-#: ctk/ctktreeview.c:1273
+#: ctk/ctktreeview.c:1282
 msgid "Odd Row Color"
 msgstr "Χρώμα μονής γραμμής"
 
-#: ctk/ctktreeview.c:1274
+#: ctk/ctktreeview.c:1283
 msgid "Color to use for odd rows"
 msgstr "Χρώμα που θα χρησιμοποιείται για τις μονές γραμμές"
 
-#: ctk/ctktreeview.c:1281
+#: ctk/ctktreeview.c:1290
 msgid "Grid line width"
 msgstr "Πλάτος γραμμής πλέγματος"
 
-#: ctk/ctktreeview.c:1282
+#: ctk/ctktreeview.c:1291
 msgid "Width, in pixels, of the tree view grid lines"
 msgstr "Πλάτος, σε εικονοστοιχεία, των γραμμών πλέγματος στην προβολή δέντρου"
 
-#: ctk/ctktreeview.c:1288
+#: ctk/ctktreeview.c:1297
 msgid "Tree line width"
 msgstr "Πλάτος γραμμής δένδρου"
 
-#: ctk/ctktreeview.c:1289
+#: ctk/ctktreeview.c:1298
 msgid "Width, in pixels, of the tree view lines"
 msgstr "Πλάτος, σε εικονοστοιχεία των γραμμών προβολής δένδρου"
 
-#: ctk/ctktreeview.c:1295
+#: ctk/ctktreeview.c:1304
 msgid "Grid line pattern"
 msgstr "Μοτίβο γραμμής πλέγματος"
 
-#: ctk/ctktreeview.c:1296
+#: ctk/ctktreeview.c:1305
 msgid "Dash pattern used to draw the tree view grid lines"
 msgstr ""
 "Διακεκομμένο μοτίβο που θα χρησιμοποιείται για τη σχεδίαση των γραμμών "
 "πλέγματος στην προβολή δέντρου"
 
-#: ctk/ctktreeview.c:1302
+#: ctk/ctktreeview.c:1311
 msgid "Tree line pattern"
 msgstr "Μοτίβο γραμμής δένδρου"
 
-#: ctk/ctktreeview.c:1303
+#: ctk/ctktreeview.c:1312
 msgid "Dash pattern used to draw the tree view lines"
 msgstr ""
 "Διακεκομμένο μοτίβο που θα χρησιμοποιείται για τη σχεδίαση των γραμμών "
@@ -9035,7 +9020,7 @@ msgstr ""
 msgid "Whether to display the column"
 msgstr "Αν θα εμφανίζεται η στήλη"
 
-#: ctk/ctktreeviewcolumn.c:253 ctk/ctkwindow.c:786
+#: ctk/ctktreeviewcolumn.c:253 ctk/ctkwindow.c:782
 msgid "Resizable"
 msgstr "Δυνατότητα αλλαγής μεγέθους"
 
@@ -9134,6 +9119,18 @@ msgstr ""
 "Αναγνωριστικό στήλης λογικής ταξινόμησης για την ταξινόμηση της στήλης όταν "
 "ζητηθεί"
 
+#: ctk/ctkuimanager.c:453
+msgid "Whether tearoff menu items should be added to menus"
+msgstr "Αν τα αντικείμενα στα αποσπώμενα μενού θα προστίθενται στα μενού"
+
+#: ctk/ctkuimanager.c:460
+msgid "Merged UI definition"
+msgstr "Ορισμός συγχωνευμένου UI"
+
+#: ctk/ctkuimanager.c:461
+msgid "An XML string describing the merged UI"
+msgstr "Μία συμβολοσειρά XML που περιγράφει το συγχωνευμένο UI"
+
 #: ctk/ctkviewport.c:409
 msgid "Determines how the shadowed box around the viewport is drawn"
 msgstr ""
@@ -9148,25 +9145,25 @@ msgstr "Χρήση συμβολικών εικονιδίων"
 msgid "Whether to use symbolic icons"
 msgstr "Αν θα χρησιμοποιηθούν συμβολικά εικονίδια"
 
-#: ctk/ctkwidget.c:1115
+#: ctk/ctkwidget.c:1118
 msgid "Widget name"
 msgstr "Όνομα γραφικού στοιχείου"
 
-#: ctk/ctkwidget.c:1116
+#: ctk/ctkwidget.c:1119
 msgid "The name of the widget"
 msgstr "Το όνομα του γραφικού στοιχείου"
 
-#: ctk/ctkwidget.c:1123
+#: ctk/ctkwidget.c:1126
 msgid "The parent widget of this widget. Must be a Container widget"
 msgstr ""
 "Το γονικό γραφικό στοιχείο του γραφικού στοιχείου. Πρέπει να είναι περιέκτης "
 "γραφικού στοιχείου."
 
-#: ctk/ctkwidget.c:1129
+#: ctk/ctkwidget.c:1132
 msgid "Width request"
 msgstr "Αίτηση πλάτους"
 
-#: ctk/ctkwidget.c:1130
+#: ctk/ctkwidget.c:1133
 msgid ""
 "Override for width request of the widget, or -1 if natural request should be "
 "used"
@@ -9174,11 +9171,11 @@ msgstr ""
 "Παράκαμψη για αίτηση πλάτους του γραφικού στοιχείου, ή -1 αν θα πρέπει να "
 "χρησιμοποιηθεί κανονική αίτηση"
 
-#: ctk/ctkwidget.c:1137
+#: ctk/ctkwidget.c:1140
 msgid "Height request"
 msgstr "Αίτηση ύψους"
 
-#: ctk/ctkwidget.c:1138
+#: ctk/ctkwidget.c:1141
 msgid ""
 "Override for height request of the widget, or -1 if natural request should "
 "be used"
@@ -9186,95 +9183,95 @@ msgstr ""
 "Παράκαμψη για αίτηση ύψους του γραφικού στοιχείου, ή -1 αν θα πρέπει να "
 "χρησιμοποιηθεί κανονική αίτηση"
 
-#: ctk/ctkwidget.c:1146
+#: ctk/ctkwidget.c:1149
 msgid "Whether the widget is visible"
 msgstr "Αν το γραφικό στοιχείο θα είναι ορατό"
 
-#: ctk/ctkwidget.c:1153
+#: ctk/ctkwidget.c:1156
 msgid "Whether the widget responds to input"
 msgstr "Αν το γραφικό στοιχείο αποκρίνεται σε εισαγωγή δεδομένων"
 
-#: ctk/ctkwidget.c:1159
+#: ctk/ctkwidget.c:1162
 msgid "Application paintable"
 msgstr "Δυνατότητα σχεδίασης"
 
-#: ctk/ctkwidget.c:1160
+#: ctk/ctkwidget.c:1163
 msgid "Whether the application will paint directly on the widget"
 msgstr "Αν η εφαρμογή μπορεί να σχεδιάζει απευθείας στο γραφικό στοιχείο"
 
-#: ctk/ctkwidget.c:1166
+#: ctk/ctkwidget.c:1169
 msgid "Can focus"
 msgstr "Δυνατότητα εστίασης"
 
-#: ctk/ctkwidget.c:1167
+#: ctk/ctkwidget.c:1170
 msgid "Whether the widget can accept the input focus"
 msgstr "Αν γραφικό στοιχείο μπορεί να δεχτεί εστίαση εισόδου"
 
-#: ctk/ctkwidget.c:1173
+#: ctk/ctkwidget.c:1176
 msgid "Has focus"
 msgstr "Έχει εστίαση"
 
-#: ctk/ctkwidget.c:1174
+#: ctk/ctkwidget.c:1177
 msgid "Whether the widget has the input focus"
 msgstr "Αν το γραφικό στοιχείο θα έχει εστίαση εισόδου"
 
-#: ctk/ctkwidget.c:1180
+#: ctk/ctkwidget.c:1183
 msgid "Is focus"
 msgstr "Έχει εστίαση"
 
-#: ctk/ctkwidget.c:1181
+#: ctk/ctkwidget.c:1184
 msgid "Whether the widget is the focus widget within the toplevel"
 msgstr ""
 "Αν το γραφικό στοιχείο θα είναι το γραφικό στοιχείο εστίασης μέσα στο "
 "ανώτατο επίπεδο"
 
-#: ctk/ctkwidget.c:1199
+#: ctk/ctkwidget.c:1202
 msgid "Focus on click"
 msgstr "Εστίαση στο κλικ"
 
-#: ctk/ctkwidget.c:1200
+#: ctk/ctkwidget.c:1203
 msgid "Whether the widget should grab focus when it is clicked with the mouse"
 msgstr "Αν το γραφικό στοιχείο θα εστιάζεται όταν πατιέται με το ποντίκι"
 
-#: ctk/ctkwidget.c:1206
+#: ctk/ctkwidget.c:1209
 msgid "Can default"
 msgstr "Δυνατότητα προεπιλογής"
 
-#: ctk/ctkwidget.c:1207
+#: ctk/ctkwidget.c:1210
 msgid "Whether the widget can be the default widget"
 msgstr "Αν γραφικό στοιχείο έχει τη δυνατότητα να γίνει το προεπιλεγμένο"
 
-#: ctk/ctkwidget.c:1213
+#: ctk/ctkwidget.c:1216
 msgid "Has default"
 msgstr "Έχει προεπιλογή"
 
-#: ctk/ctkwidget.c:1214
+#: ctk/ctkwidget.c:1217
 msgid "Whether the widget is the default widget"
 msgstr "Αν το γραφικό στοιχείο θα είναι το προεπιλεγμένο"
 
-#: ctk/ctkwidget.c:1220
+#: ctk/ctkwidget.c:1223
 msgid "Receives default"
 msgstr "Λήψη προεπιλεγμένης"
 
-#: ctk/ctkwidget.c:1221
+#: ctk/ctkwidget.c:1224
 msgid "If TRUE, the widget will receive the default action when it is focused"
 msgstr ""
 "Αν ΑΛΗΘΕΣ, το γραφικό στοιχείο θα λαμβάνει την προεπιλεγμένη ενέργεια όταν "
 "εστιάζεται"
 
-#: ctk/ctkwidget.c:1227
+#: ctk/ctkwidget.c:1230
 msgid "Composite child"
 msgstr "Σύνθετο θυγατρικό"
 
-#: ctk/ctkwidget.c:1228
+#: ctk/ctkwidget.c:1231
 msgid "Whether the widget is part of a composite widget"
 msgstr "Αν το γραφικό στοιχείο θα είναι μέρος ενός σύνθετου γραφικού στοιχείου"
 
-#: ctk/ctkwidget.c:1243
+#: ctk/ctkwidget.c:1246
 msgid "Style"
 msgstr "Στυλ "
 
-#: ctk/ctkwidget.c:1244
+#: ctk/ctkwidget.c:1247
 msgid ""
 "The style of the widget, which contains information about how it will look "
 "(colors etc)"
@@ -9282,181 +9279,181 @@ msgstr ""
 "Το στυλ του γραφικού στοιχείου που περιέχει πληροφορίες για την εμφάνιση του "
 "(χρώματα κτλ)."
 
-#: ctk/ctkwidget.c:1252
+#: ctk/ctkwidget.c:1255
 msgid "Events"
 msgstr "Γεγονότα"
 
-#: ctk/ctkwidget.c:1253
+#: ctk/ctkwidget.c:1256
 msgid "The event mask that decides what kind of CdkEvents this widget gets"
 msgstr ""
 "Η μάσκα γεγονότων που αποφασίζει ποιο είδος CdkEvents λαμβάνει το γραφικό "
 "στοιχείο."
 
-#: ctk/ctkwidget.c:1260
+#: ctk/ctkwidget.c:1263
 msgid "No show all"
 msgstr "Να μην εμφανίζονται όλα"
 
-#: ctk/ctkwidget.c:1261
+#: ctk/ctkwidget.c:1264
 msgid "Whether ctk_widget_show_all() should not affect this widget"
 msgstr "Αν η ctk_widget_show_all() θα επηρεάζει το γραφικό στοιχείο"
 
-#: ctk/ctkwidget.c:1283
+#: ctk/ctkwidget.c:1286
 msgid "Whether this widget has a tooltip"
 msgstr "Αν το γραφικό στοιχείο θα έχει συμβουλή οθόνης"
 
-#: ctk/ctkwidget.c:1345
+#: ctk/ctkwidget.c:1348
 msgid "The widget's window if it is realized"
 msgstr "Το παράθυρο του γραφικού στοιχείου, αν υπάρχει"
 
-#: ctk/ctkwidget.c:1360
+#: ctk/ctkwidget.c:1363
 msgid "Double Buffered"
 msgstr "Διπλή ενδιάμεση μνήμη"
 
-#: ctk/ctkwidget.c:1361
+#: ctk/ctkwidget.c:1364
 msgid "Whether the widget is double buffered"
 msgstr "Αν θα εφαρμόζεται διπλή ενδιάμεση μνήμη στο γραφικό στοιχείο"
 
-#: ctk/ctkwidget.c:1375
+#: ctk/ctkwidget.c:1378
 msgid "How to position in extra horizontal space"
 msgstr "Πως γίνεται τοποθέτηση σε επιπλέον οριζόντιο χώρο"
 
-#: ctk/ctkwidget.c:1390
+#: ctk/ctkwidget.c:1393
 msgid "How to position in extra vertical space"
 msgstr "Πως γίνεται τοποθέτηση σε επιπλέον κάθετο χώρο"
 
-#: ctk/ctkwidget.c:1410
+#: ctk/ctkwidget.c:1413
 msgid "Margin on Left"
 msgstr "Περιθώριο αριστερά"
 
-#: ctk/ctkwidget.c:1411
+#: ctk/ctkwidget.c:1414
 msgid "Pixels of extra space on the left side"
 msgstr "Εικονοστοιχεία επιπλέον χώρου στην αριστερή πλευρά"
 
-#: ctk/ctkwidget.c:1431
+#: ctk/ctkwidget.c:1434
 msgid "Margin on Right"
 msgstr "Περιθώριο δεξιά"
 
-#: ctk/ctkwidget.c:1432
+#: ctk/ctkwidget.c:1435
 msgid "Pixels of extra space on the right side"
 msgstr "Εικονοστοιχεία επιπλέον χώρου στη δεξιά πλευρά"
 
-#: ctk/ctkwidget.c:1451
+#: ctk/ctkwidget.c:1454
 msgid "Margin on Start"
 msgstr "Περιθώριο στην αρχή"
 
-#: ctk/ctkwidget.c:1452
+#: ctk/ctkwidget.c:1455
 msgid "Pixels of extra space on the start"
 msgstr "Εικονοστοιχεία του πρόσθετου χώρου στην αρχή"
 
-#: ctk/ctkwidget.c:1471
+#: ctk/ctkwidget.c:1474
 msgid "Margin on End"
 msgstr "Περιθώριο στο τέλος"
 
-#: ctk/ctkwidget.c:1472
+#: ctk/ctkwidget.c:1475
 msgid "Pixels of extra space on the end"
 msgstr "Εικονοστοιχεία του πρόσθετου χώρου στο τέλος"
 
-#: ctk/ctkwidget.c:1490
+#: ctk/ctkwidget.c:1493
 msgid "Margin on Top"
 msgstr "Περιθώριο κορυφής"
 
-#: ctk/ctkwidget.c:1491
+#: ctk/ctkwidget.c:1494
 msgid "Pixels of extra space on the top side"
 msgstr "Εικονοστοιχεία επιπλέον χώρου στην επάνω πλευρά"
 
-#: ctk/ctkwidget.c:1509
+#: ctk/ctkwidget.c:1512
 msgid "Margin on Bottom"
 msgstr "Περιθώριο κάτω"
 
-#: ctk/ctkwidget.c:1510
+#: ctk/ctkwidget.c:1513
 msgid "Pixels of extra space on the bottom side"
 msgstr "Εικονοστοιχεία επιπλέον χώρου στην κάτω πλευρά"
 
-#: ctk/ctkwidget.c:1525
+#: ctk/ctkwidget.c:1528
 msgid "All Margins"
 msgstr "Όλα τα περιθώρια"
 
-#: ctk/ctkwidget.c:1526
+#: ctk/ctkwidget.c:1529
 msgid "Pixels of extra space on all four sides"
 msgstr "Εικονοστοιχεία επιπλέον χώρου σε όλες τις πλευρές"
 
-#: ctk/ctkwidget.c:1540
+#: ctk/ctkwidget.c:1543
 msgid "Horizontal Expand"
 msgstr "Οριζόντια επέκταση"
 
-#: ctk/ctkwidget.c:1541
+#: ctk/ctkwidget.c:1544
 msgid "Whether widget wants more horizontal space"
 msgstr "Αν το γραφικό στοιχείο απαιτεί περισσότερο οριζόντιο χώρο"
 
-#: ctk/ctkwidget.c:1554
+#: ctk/ctkwidget.c:1557
 msgid "Horizontal Expand Set"
 msgstr "Καθορισμός οριζόντιας επέκτασης"
 
-#: ctk/ctkwidget.c:1555
+#: ctk/ctkwidget.c:1558
 msgid "Whether to use the hexpand property"
 msgstr "Αν θα χρησιμοποιείται η ιδιότητα hexpand"
 
-#: ctk/ctkwidget.c:1568
+#: ctk/ctkwidget.c:1571
 msgid "Vertical Expand"
 msgstr "Κάθετη επέκταση"
 
-#: ctk/ctkwidget.c:1569
+#: ctk/ctkwidget.c:1572
 msgid "Whether widget wants more vertical space"
 msgstr "Αν το γραφικό στοιχείο απαιτεί περισσότερο κάθετο χώρο"
 
-#: ctk/ctkwidget.c:1582
+#: ctk/ctkwidget.c:1585
 msgid "Vertical Expand Set"
 msgstr "Καθορισμός κάθετης στοίχισης"
 
-#: ctk/ctkwidget.c:1583
+#: ctk/ctkwidget.c:1586
 msgid "Whether to use the vexpand property"
 msgstr "Αν θα χρησιμοποιείται η ιδιότητα vexpand"
 
-#: ctk/ctkwidget.c:1596
+#: ctk/ctkwidget.c:1599
 msgid "Expand Both"
 msgstr "Επέκταση και στις δύο"
 
-#: ctk/ctkwidget.c:1597
+#: ctk/ctkwidget.c:1600
 msgid "Whether widget wants to expand in both directions"
 msgstr "Αν το γραφικό στοιχείο θα επεκτείνεται και στις δύο διαστάσεις"
 
-#: ctk/ctkwidget.c:1613
+#: ctk/ctkwidget.c:1616
 msgid "Opacity for Widget"
 msgstr "Αδιαφάνεια για γραφικό στοιχείο"
 
-#: ctk/ctkwidget.c:1614
+#: ctk/ctkwidget.c:1617
 msgid "The opacity of the widget, from 0 to 1"
 msgstr "Η αδιαφάνεια του γραφικού στοιχείου, από 0 ως 1"
 
-#: ctk/ctkwidget.c:1629
+#: ctk/ctkwidget.c:1632
 msgid "Scale factor"
 msgstr "Συντελεστής κλίμακας"
 
-#: ctk/ctkwidget.c:1630
+#: ctk/ctkwidget.c:1633
 msgid "The scaling factor of the window"
 msgstr "Ο συντελεστής κλιμάκωσης του παραθύρου"
 
-#: ctk/ctkwidget.c:3494
+#: ctk/ctkwidget.c:3497
 msgid "Interior Focus"
 msgstr "Εσωτερική Εστίαση"
 
-#: ctk/ctkwidget.c:3495
+#: ctk/ctkwidget.c:3498
 msgid "Whether to draw the focus indicator inside widgets"
 msgstr "Αν θα σχεδιάζεται επισήμανση εστίασης μέσα σε γραφικά στοιχεία"
 
-#: ctk/ctkwidget.c:3508
+#: ctk/ctkwidget.c:3511
 msgid "Focus linewidth"
 msgstr "Πλάτος γραμμής εστίασης"
 
-#: ctk/ctkwidget.c:3509
+#: ctk/ctkwidget.c:3512
 msgid "Width, in pixels, of the focus indicator line"
 msgstr "Πλάτος, σε εικονοστοιχεία της γραμμής επισήμανσης εστίασης"
 
-#: ctk/ctkwidget.c:3523
+#: ctk/ctkwidget.c:3526
 msgid "Focus line dash pattern"
 msgstr "Μοτίβο γραμμής εστίασης"
 
-#: ctk/ctkwidget.c:3524
+#: ctk/ctkwidget.c:3527
 msgid ""
 "Dash pattern used to draw the focus indicator. The character values are "
 "interpreted as pixel widths of alternating on and off segments of the line."
@@ -9465,29 +9462,29 @@ msgstr ""
 "τιμές χαρακτήρα ερμηνεύονται ως πλάτη εικονοστοιχείου που ενεργοποιούν και "
 "απενεργοποιούν τμήματα της γραμμής."
 
-#: ctk/ctkwidget.c:3537
+#: ctk/ctkwidget.c:3540
 msgid "Focus padding"
 msgstr "Γέμισμα εστίασης"
 
-#: ctk/ctkwidget.c:3538
+#: ctk/ctkwidget.c:3541
 msgid "Width, in pixels, between focus indicator and the widget 'box'"
 msgstr ""
 "Πλάτος σε εικονοστοιχεία μεταξύ της σήμανσης εστίασης και του 'κουτιού' "
 "γραφικού στοιχείου"
 
-#: ctk/ctkwidget.c:3552
+#: ctk/ctkwidget.c:3555
 msgid "Cursor color"
 msgstr "Χρώμα δρομέα"
 
-#: ctk/ctkwidget.c:3553
+#: ctk/ctkwidget.c:3556
 msgid "Color with which to draw insertion cursor"
 msgstr "Χρώμα με το οποίο ζωγραφίζεται η εισαγωγή δρομέα"
 
-#: ctk/ctkwidget.c:3566
+#: ctk/ctkwidget.c:3569
 msgid "Secondary cursor color"
 msgstr "Χρώμα δευτερεύοντος δρομέα"
 
-#: ctk/ctkwidget.c:3567
+#: ctk/ctkwidget.c:3570
 msgid ""
 "Color with which to draw the secondary insertion cursor when editing mixed "
 "right-to-left and left-to-right text"
@@ -9495,45 +9492,45 @@ msgstr ""
 "Χρώμα με το οποίο θα σχεδιαστεί ο δευτερεύων δρομέας εισαγωγής κατά την "
 "επεξεργασία μικτού αριστερόστροφου και δεξιόστροφου κειμένου."
 
-#: ctk/ctkwidget.c:3573
+#: ctk/ctkwidget.c:3576
 msgid "Cursor line aspect ratio"
 msgstr "Αναλογία διαστάσεων γραμμής δρομέα"
 
-#: ctk/ctkwidget.c:3574
+#: ctk/ctkwidget.c:3577
 msgid "Aspect ratio with which to draw insertion cursor"
 msgstr "Αναλογία διαστάσεων με την οποία θα σχεδιαστεί ο δρομέας εισαγωγής"
 
-#: ctk/ctkwidget.c:3580
+#: ctk/ctkwidget.c:3583
 msgid "Window dragging"
 msgstr "Σύρσιμο παραθύρου"
 
-#: ctk/ctkwidget.c:3581
+#: ctk/ctkwidget.c:3584
 msgid "Whether windows can be dragged and maximized by clicking on empty areas"
 msgstr ""
 "Αν τα παράθυρα μπορούν να μετακινηθούν και να μεγιστοποιηθούν σε κενές "
 "περιοχές"
 
-#: ctk/ctkwidget.c:3598
+#: ctk/ctkwidget.c:3601
 msgid "Unvisited Link Color"
 msgstr "Χρώμα μη αναγνωσμένου δεσμού"
 
-#: ctk/ctkwidget.c:3599
+#: ctk/ctkwidget.c:3602
 msgid "Color of unvisited links"
 msgstr "Χρώμα μη αναγνωσμένων δεσμών"
 
-#: ctk/ctkwidget.c:3615
+#: ctk/ctkwidget.c:3618
 msgid "Visited Link Color"
 msgstr "Χρώμα ναγνωσμένου δεσμού"
 
-#: ctk/ctkwidget.c:3616
+#: ctk/ctkwidget.c:3619
 msgid "Color of visited links"
 msgstr "Χρώμα αναγνωσμένων δεσμών"
 
-#: ctk/ctkwidget.c:3634
+#: ctk/ctkwidget.c:3637
 msgid "Wide Separators"
 msgstr "Πλατιά διαχωριστικά"
 
-#: ctk/ctkwidget.c:3635
+#: ctk/ctkwidget.c:3638
 msgid ""
 "Whether separators have configurable width and should be drawn using a box "
 "instead of a line"
@@ -9541,88 +9538,88 @@ msgstr ""
 "Αν τα διαχωριστικά θα έχουν μεταβλητό μέγεθος και θα σχεδιάζονται ως πλαίσια "
 "αντί για γραμμές"
 
-#: ctk/ctkwidget.c:3652
+#: ctk/ctkwidget.c:3655
 msgid "Separator Width"
 msgstr "Πλάτος διαχωριστικού"
 
-#: ctk/ctkwidget.c:3653
+#: ctk/ctkwidget.c:3656
 msgid "The width of separators if wide-separators is TRUE"
 msgstr "Το πλάτος των διαχωριστικών αν είναι αληθές το πλατιά διαχωριστικά"
 
-#: ctk/ctkwidget.c:3670
+#: ctk/ctkwidget.c:3673
 msgid "Separator Height"
 msgstr "Ύψος διαχωριστικού"
 
-#: ctk/ctkwidget.c:3671
+#: ctk/ctkwidget.c:3674
 msgid "The height of separators if \"wide-separators\" is TRUE"
 msgstr "Το ύψος των διαχωριστικών αν είναι αληθές το \"πλατιά διαχωριστικά\""
 
-#: ctk/ctkwidget.c:3685
+#: ctk/ctkwidget.c:3688
 msgid "Horizontal Scroll Arrow Length"
 msgstr "Μήκος οριζόντιου βέλους κύλισης"
 
-#: ctk/ctkwidget.c:3686
+#: ctk/ctkwidget.c:3689
 msgid "The length of horizontal scroll arrows"
 msgstr "Το μήκος του οριζόντιου βέλους κύλισης"
 
-#: ctk/ctkwidget.c:3700
+#: ctk/ctkwidget.c:3703
 msgid "Vertical Scroll Arrow Length"
 msgstr "Μήκος κάθετου βέλους κύλισης"
 
-#: ctk/ctkwidget.c:3701
+#: ctk/ctkwidget.c:3704
 msgid "The length of vertical scroll arrows"
 msgstr "Το μήκος του κάθετου βέλους κύλισης"
 
-#: ctk/ctkwidget.c:3707 ctk/ctkwidget.c:3708
+#: ctk/ctkwidget.c:3710 ctk/ctkwidget.c:3711
 msgid "Width of text selection handles"
 msgstr "Το πλάτος που χειρίζεται η επιλογή του κειμένου"
 
-#: ctk/ctkwidget.c:3713 ctk/ctkwidget.c:3714
+#: ctk/ctkwidget.c:3716 ctk/ctkwidget.c:3717
 msgid "Height of text selection handles"
 msgstr "Το ύψος που χειρίζεται η επιλογή του κειμένου"
 
-#: ctk/ctkwindow.c:748
+#: ctk/ctkwindow.c:744
 msgid "Window Type"
 msgstr "Τύπος παραθύρου"
 
-#: ctk/ctkwindow.c:749
+#: ctk/ctkwindow.c:745
 msgid "The type of the window"
 msgstr "Ο τύπος του παραθύρου"
 
-#: ctk/ctkwindow.c:756
+#: ctk/ctkwindow.c:752
 msgid "Window Title"
 msgstr "Τίτλος παραθύρου"
 
-#: ctk/ctkwindow.c:757
+#: ctk/ctkwindow.c:753
 msgid "The title of the window"
 msgstr "Ο τίτλος του παραθύρου"
 
-#: ctk/ctkwindow.c:763
+#: ctk/ctkwindow.c:759
 msgid "Window Role"
 msgstr "Ρόλος παραθύρου"
 
-#: ctk/ctkwindow.c:764
+#: ctk/ctkwindow.c:760
 msgid "Unique identifier for the window to be used when restoring a session"
 msgstr ""
 "Μοναδικό αναγνωριστικό για το παράθυρο που θα χρησιμοποείται για την "
 "επαναφορά μιας συνεδρίας"
 
-#: ctk/ctkwindow.c:779
+#: ctk/ctkwindow.c:775
 msgid "Startup ID"
 msgstr "Αναγνωριστικό εκκίνησης"
 
-#: ctk/ctkwindow.c:780
+#: ctk/ctkwindow.c:776
 msgid "Unique startup identifier for the window used by startup-notification"
 msgstr ""
 "Μοναδικό αναγνωριστικό εκκίνησης για το παράθυρο που θα χρησιμοποείται για "
 "την ειδοποίηση εκκίνησης"
 
-#: ctk/ctkwindow.c:787
+#: ctk/ctkwindow.c:783
 msgid "If TRUE, users can resize the window"
 msgstr ""
 "Αν είναι ΑΛΗΘΕΣ, οι χρήστες μπορούν να αλλάζουν το μέγεθος του παραθύρου"
 
-#: ctk/ctkwindow.c:794
+#: ctk/ctkwindow.c:790
 msgid ""
 "If TRUE, the window is modal (other windows are not usable while this one is "
 "up)"
@@ -9630,99 +9627,99 @@ msgstr ""
 "Αν ΑΛΗΘΕΣ, το παράθυρο είναι σχηματικό (τα άλλα παράθυρα δε μπορούν να "
 "χρησιμοποιηθούν όταν αυτό είναι ενεργό)."
 
-#: ctk/ctkwindow.c:800
+#: ctk/ctkwindow.c:796
 msgid "Window Position"
 msgstr "Θέση παραθύρου"
 
-#: ctk/ctkwindow.c:801
+#: ctk/ctkwindow.c:797
 msgid "The initial position of the window"
 msgstr "Η αρχική θέση του παραθύρου"
 
-#: ctk/ctkwindow.c:808
+#: ctk/ctkwindow.c:804
 msgid "Default Width"
 msgstr "Προεπιλεγμένο πλάτος"
 
-#: ctk/ctkwindow.c:809
+#: ctk/ctkwindow.c:805
 msgid "The default width of the window, used when initially showing the window"
 msgstr ""
 "Το προεπιλεγμένο πλάτος του παραθύρου που χρησιμοποιείται κατα την αρχική "
 "εμφάνιση του παραθύρου"
 
-#: ctk/ctkwindow.c:816
+#: ctk/ctkwindow.c:812
 msgid "Default Height"
 msgstr "Προεπιλεγμένο ύψος"
 
-#: ctk/ctkwindow.c:817
+#: ctk/ctkwindow.c:813
 msgid ""
 "The default height of the window, used when initially showing the window"
 msgstr ""
 "Το προεπιλεγμένο ύψος του παραθύρου που χρησιμοποιείται κατά την αρχική "
 "εμφάνιση του παραθύρου"
 
-#: ctk/ctkwindow.c:824
+#: ctk/ctkwindow.c:820
 msgid "Destroy with Parent"
 msgstr "Καταστροφή με το γονικό"
 
-#: ctk/ctkwindow.c:825
+#: ctk/ctkwindow.c:821
 msgid "If this window should be destroyed when the parent is destroyed"
 msgstr ""
 "Αν θα πρέπει να καταστραφεί αυτό το παράθυρο όταν καταστρέφεται το γονικό"
 
-#: ctk/ctkwindow.c:838
+#: ctk/ctkwindow.c:834
 msgid "Hide the titlebar during maximization"
 msgstr "Απόκρυψη της μπάρας τίτλου κατα τη διάρκεια μεγιστοποίησης"
 
-#: ctk/ctkwindow.c:839
+#: ctk/ctkwindow.c:835
 msgid "If this window's titlebar should be hidden when the window is maximized"
 msgstr ""
 "Αν θα πρέπει να είναι κρυμμένη η μπάρα του τίτλου της εφαρμογής όταν το "
 "παράθυρο μεγιστοποιείται"
 
-#: ctk/ctkwindow.c:846
+#: ctk/ctkwindow.c:842
 msgid "Icon for this window"
 msgstr "Εικονίδιο για αυτό το παράθυρο"
 
-#: ctk/ctkwindow.c:862
+#: ctk/ctkwindow.c:858
 msgid "Mnemonics Visible"
 msgstr "Προβολή μνημονικών"
 
-#: ctk/ctkwindow.c:863
+#: ctk/ctkwindow.c:859
 msgid "Whether mnemonics are currently visible in this window"
 msgstr "Αν το μνημονικά θα είναι ορατά σε αυτό το παράθυρο"
 
-#: ctk/ctkwindow.c:879
+#: ctk/ctkwindow.c:875
 msgid "Focus Visible"
 msgstr "Ορατή εστίαση"
 
-#: ctk/ctkwindow.c:880
+#: ctk/ctkwindow.c:876
 msgid "Whether focus rectangles are currently visible in this window"
 msgstr "Αν τα ορθογώνια εστίασης θα είναι ορατά σε αυτό το παράθυρο"
 
-#: ctk/ctkwindow.c:895
+#: ctk/ctkwindow.c:891
 msgid "Name of the themed icon for this window"
 msgstr "Όνομα του εικονιδίου με θέμα για αυτό το παράθυρο"
 
-#: ctk/ctkwindow.c:908
+#: ctk/ctkwindow.c:904
 msgid "Is Active"
 msgstr "Είναι ενεργό"
 
-#: ctk/ctkwindow.c:909
+#: ctk/ctkwindow.c:905
 msgid "Whether the toplevel is the current active window"
 msgstr "Αν το κορυφαίο επίπεδο θα είναι το τρέχον ενεργό παράθυρο"
 
-#: ctk/ctkwindow.c:915
+#: ctk/ctkwindow.c:911
 msgid "Focus in Toplevel"
 msgstr "Εστίαση στο κορυφαίο επίπεδο"
 
-#: ctk/ctkwindow.c:916
+#: ctk/ctkwindow.c:912
 msgid "Whether the input focus is within this CtkWindow"
 msgstr "Αν η εστίαση είναι μέσα σε αυτό το CtkWindow"
 
-#: ctk/ctkwindow.c:922
+#: ctk/ctkwindow.c:918
 msgid "Type hint"
 msgstr "Είδος υπόδειξης"
 
-#: ctk/ctkwindow.c:923
+#: ctk/ctkwindow.c:919
 msgid ""
 "Hint to help the desktop environment understand what kind of window this is "
 "and how to treat it."
@@ -9730,116 +9727,116 @@ msgstr ""
 "Υπόδειξη για να βοηθηθεί το περιβάλλον εργασίας να καταλάβει το είδος του "
 "παραθύρου και πώς να το χειριστεί."
 
-#: ctk/ctkwindow.c:930
+#: ctk/ctkwindow.c:926
 msgid "Skip taskbar"
 msgstr "Παράκαμψη γραμμής εργασιών"
 
-#: ctk/ctkwindow.c:931
+#: ctk/ctkwindow.c:927
 msgid "TRUE if the window should not be in the task bar."
 msgstr "ΑΛΗΘΕΣ αν το παράθυρο δε θα είναι στη γραμμή εργασιών."
 
-#: ctk/ctkwindow.c:937
+#: ctk/ctkwindow.c:933
 msgid "Skip pager"
 msgstr "Παράκαμψη pager"
 
-#: ctk/ctkwindow.c:938
+#: ctk/ctkwindow.c:934
 msgid "TRUE if the window should not be in the pager."
 msgstr "ΑΛΗΘΕΣ εάν το παράθυρο δε θα είναι στο πρόγραμμα σελίδας."
 
-#: ctk/ctkwindow.c:944
+#: ctk/ctkwindow.c:940
 msgid "Urgent"
 msgstr "Επείγον"
 
-#: ctk/ctkwindow.c:945
+#: ctk/ctkwindow.c:941
 msgid "TRUE if the window should be brought to the user's attention."
 msgstr ""
 "ΑΛΗΘΕΣ αν το παράθυρο θα πρέπει να προσελκύει το ενδιαφέρον του χρήστη."
 
-#: ctk/ctkwindow.c:958
+#: ctk/ctkwindow.c:954
 msgid "Accept focus"
 msgstr "Δέχεται εστίαση"
 
-#: ctk/ctkwindow.c:959
+#: ctk/ctkwindow.c:955
 msgid "TRUE if the window should receive the input focus."
 msgstr "ΑΛΗΘΕΣ αν το παράθυρο θα δέχεται εστίαση εισόδου."
 
-#: ctk/ctkwindow.c:972
+#: ctk/ctkwindow.c:968
 msgid "Focus on map"
 msgstr "Εστίαση στο χάρτη"
 
-#: ctk/ctkwindow.c:973
+#: ctk/ctkwindow.c:969
 msgid "TRUE if the window should receive the input focus when mapped."
 msgstr "ΑΛΗΘΕΣ αν το παράθυρο θα δέχεται εστίαση εισόδου."
 
-#: ctk/ctkwindow.c:986
+#: ctk/ctkwindow.c:982
 msgid "Decorated"
 msgstr "Διακοσμημένο"
 
-#: ctk/ctkwindow.c:987
+#: ctk/ctkwindow.c:983
 msgid "Whether the window should be decorated by the window manager"
 msgstr "Αν το παράθυρο θα διακοσμείται από το διαχειριστή παραθύρων"
 
-#: ctk/ctkwindow.c:1000
+#: ctk/ctkwindow.c:996
 msgid "Deletable"
 msgstr "Δυνατότητα διαγραφής"
 
-#: ctk/ctkwindow.c:1001
+#: ctk/ctkwindow.c:997
 msgid "Whether the window frame should have a close button"
 msgstr "Αν το πλάισιο του παραθύρου θα διαθέτει κουμπί κλεισίματος"
 
-#: ctk/ctkwindow.c:1021
+#: ctk/ctkwindow.c:1017
 msgid "Resize grip"
 msgstr "Λαβή αλλαγής μεγέθους"
 
-#: ctk/ctkwindow.c:1022
+#: ctk/ctkwindow.c:1018
 msgid "Specifies whether the window should have a resize grip"
 msgstr "Καθορίζει αν το παράθυρο θα διαθέτει λαβή αλλαγής μεγέθους"
 
-#: ctk/ctkwindow.c:1037
+#: ctk/ctkwindow.c:1033
 msgid "Resize grip is visible"
 msgstr "Ορατή λαβή αλλαγής μεγέθους"
 
-#: ctk/ctkwindow.c:1038
+#: ctk/ctkwindow.c:1034
 msgid "Specifies whether the window's resize grip is visible."
 msgstr "Καθορίζει αν η λαβή αλλαγής μεγέθους του παραθύρου θα είναι ορατή."
 
-#: ctk/ctkwindow.c:1052
+#: ctk/ctkwindow.c:1048
 msgid "Gravity"
 msgstr "Βαρύτητα"
 
-#: ctk/ctkwindow.c:1053
+#: ctk/ctkwindow.c:1049
 msgid "The window gravity of the window"
 msgstr "Η βαρύτητα παραθύρου του παραθύρου"
 
-#: ctk/ctkwindow.c:1088
+#: ctk/ctkwindow.c:1084
 msgid "Attached to Widget"
 msgstr "Προσδεμένο στο γραφικό στοιχείο"
 
-#: ctk/ctkwindow.c:1089
+#: ctk/ctkwindow.c:1085
 msgid "The widget where the window is attached"
 msgstr "Το γραφικό στοιχείο στο οποίο θα είναι προσδεμένο το παράθυρο"
 
-#: ctk/ctkwindow.c:1095
+#: ctk/ctkwindow.c:1091
 msgid "Is maximized"
 msgstr "Είναι μεγιστοποιημένο"
 
-#: ctk/ctkwindow.c:1096
+#: ctk/ctkwindow.c:1092
 msgid "Whether the window is maximized"
 msgstr "Αν το παράθυρο είναι μεγιστοποιημένο"
 
-#: ctk/ctkwindow.c:1117
+#: ctk/ctkwindow.c:1113
 msgid "CtkApplication"
 msgstr "CtkApplication"
 
-#: ctk/ctkwindow.c:1118
+#: ctk/ctkwindow.c:1114
 msgid "The CtkApplication for the window"
 msgstr "Η CtkApplication για το παράθυρο"
 
-#: ctk/ctkwindow.c:1128 ctk/ctkwindow.c:1129
+#: ctk/ctkwindow.c:1124 ctk/ctkwindow.c:1125
 msgid "Decorated button layout"
 msgstr "Διακοσμημένη διάταξη κουμπιού"
 
-#: ctk/ctkwindow.c:1135 ctk/ctkwindow.c:1136
+#: ctk/ctkwindow.c:1131 ctk/ctkwindow.c:1132
 msgid "Decoration resize handle size"
 msgstr "Μέγεθος χειριστή αυξομείωσης διακόσμησης"
 

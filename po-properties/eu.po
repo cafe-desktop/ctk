@@ -6,9 +6,10 @@
 # Asier Sarasua Garmendia  <asiersarasua@ni.eus>, 2019, 2020.
 #
 msgid ""
-msgstr "Project-Id-Version: ctk+_properties master\n"
+msgstr ""
+"Project-Id-Version: ctk+_properties master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-31 14:58+0000\n"
+"POT-Creation-Date: 2022-03-23 18:06+0100\n"
 "PO-Revision-Date: 2020-09-01 10:00+0100\n"
 "Last-Translator: Asier Sarasua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
@@ -94,7 +95,8 @@ msgstr "Cailuak kurtsorea duen edo ez"
 
 #: cdk/cdkdevice.c:230
 msgid "Whether there is a visible cursor following device motion"
-msgstr "Cailuaren mugimenduari jarraitzen dion kurtsore ikusgai bat dagoen edo ez"
+msgstr ""
+"Cailuaren mugimenduari jarraitzen dion kurtsore ikusgai bat dagoen edo ez"
 
 #: cdk/cdkdevice.c:244 cdk/cdkdevice.c:245
 msgid "Number of axes in the device"
@@ -227,193 +229,206 @@ msgid "The cell renderer represented by this accessible"
 msgstr "Gelaxka errendatzailea (eskuragarri honek adierazita)"
 
 #
-#: ctk/ctkaction.c:243 ctk/ctkactiongroup.c:200
+#: ctk/ctkaction.c:233 ctk/ctkactiongroup.c:196
 #: ctk/deprecated/ctkthemingengine.c:247 ctk/ctkcssnode.c:638
 #: ctk/ctkprinter.c:121 ctk/ctkstack.c:516 ctk/ctktextmark.c:136
 msgid "Name"
 msgstr "Izena"
 
-#: ctk/ctkaction.c:244
+#: ctk/ctkaction.c:234
 msgid "A unique name for the action."
 msgstr "Ekintza honentzako izen bakarra."
 
-#: ctk/ctkaction.c:264 ctk/ctkbutton.c:281 ctk/ctkexpander.c:308
+#: ctk/ctkaction.c:252 ctk/ctkbutton.c:281 ctk/ctkexpander.c:308
 #: ctk/ctkframe.c:231 ctk/ctklabel.c:805 ctk/ctkmenuitem.c:789
-#: ctk/ctktoolbutton.c:243 ctk/ctktoolitemgroup.c:1639
+#: ctk/ctktoolbutton.c:204 ctk/ctktoolitemgroup.c:1639
 msgid "Label"
 msgstr "Etiketa"
 
-#: ctk/ctkaction.c:265
+#: ctk/ctkaction.c:253
 msgid "The label used for menu items and buttons that activate this action."
-msgstr "Ekintza hau aktibatzen duten menu-elementuetarako eta botoietarako erabiltzen den etiketa."
+msgstr ""
+"Ekintza hau aktibatzen duten menu-elementuetarako eta botoietarako "
+"erabiltzen den etiketa."
 
-#: ctk/ctkaction.c:284
+#: ctk/ctkaction.c:269
 msgid "Short label"
 msgstr "Etiketa laburra"
 
-#: ctk/ctkaction.c:285
+#: ctk/ctkaction.c:270
 msgid "A shorter label that may be used on toolbar buttons."
 msgstr "Tresna-barraren botoietan erabil daitekeen etiketa laburragoa."
 
-#: ctk/ctkaction.c:300
+#: ctk/ctkaction.c:283
 msgid "Tooltip"
 msgstr "Argibidea"
 
-#: ctk/ctkaction.c:301
+#: ctk/ctkaction.c:284
 msgid "A tooltip for this action."
 msgstr "Ekintza honetarako argibidea."
 
-#: ctk/ctkaction.c:319
+#: ctk/ctkaction.c:299
 msgid "Stock Icon"
 msgstr "Ikono generikoa"
 
-#: ctk/ctkaction.c:320
+#: ctk/ctkaction.c:300
 msgid "The stock icon displayed in widgets representing this action."
 msgstr "Ekintza hau adierazten duten trepetetan bistaratutako oinarri-ikonoa."
 
 #
-#: ctk/ctkaction.c:342 ctk/ctkstatusicon.c:279
+#: ctk/ctkaction.c:320 ctk/ctkstatusicon.c:269
 msgid "GIcon"
 msgstr "GIcon"
 
-#: ctk/ctkaction.c:343 ctk/ctkstatusicon.c:280
-#: ctk/ctkcellrendererpixbuf.c:282 ctk/ctkimage.c:360
+#: ctk/ctkaction.c:321 ctk/ctkcellrendererpixbuf.c:282 ctk/ctkimage.c:358
+#: ctk/ctkstatusicon.c:270
 msgid "The GIcon being displayed"
 msgstr "GIcon bistaratuta"
 
-#: ctk/ctkaction.c:365 ctk/ctkstatusicon.c:263
-#: ctk/ctkcellrendererpixbuf.c:245 ctk/ctkimage.c:343 ctk/ctkprinter.c:170
-#: ctk/ctkwindow.c:890
+#: ctk/ctkaction.c:341 ctk/ctkcellrendererpixbuf.c:245 ctk/ctkimage.c:341
+#: ctk/ctkprinter.c:170 ctk/ctkstatusicon.c:253 ctk/ctkwindow.c:890
 msgid "Icon Name"
 msgstr "Ikono-izena"
 
-#: ctk/ctkaction.c:366 ctk/ctkstatusicon.c:264
-#: ctk/ctkcellrendererpixbuf.c:246 ctk/ctkimage.c:344
+#: ctk/ctkaction.c:342 ctk/ctkcellrendererpixbuf.c:246 ctk/ctkimage.c:342
+#: ctk/ctkstatusicon.c:254
 msgid "The name of the icon from the icon theme"
 msgstr "Ikono-gaiko ikonoaren izena"
 
-#: ctk/ctkaction.c:381 ctk/ctktoolitem.c:179
+#: ctk/ctkaction.c:354 ctk/ctktoolitem.c:179
 msgid "Visible when horizontal"
 msgstr "Ikusgai horizontal dagoenean"
 
-#: ctk/ctkaction.c:382 ctk/ctktoolitem.c:180
+#: ctk/ctkaction.c:355 ctk/ctktoolitem.c:180
 msgid ""
 "Whether the toolbar item is visible when the toolbar is in a horizontal "
 "orientation."
-msgstr "Tresna-barra horizontal dagoenean tresna-barrako elementua ikusgai dagoen ala ez adierazten du."
+msgstr ""
+"Tresna-barra horizontal dagoenean tresna-barrako elementua ikusgai dagoen "
+"ala ez adierazten du."
 
-#: ctk/ctkaction.c:400
+#: ctk/ctkaction.c:370
 msgid "Visible when overflown"
 msgstr "Ikusgai gainezka egitean"
 
-#: ctk/ctkaction.c:401
+#: ctk/ctkaction.c:371
 msgid ""
 "When TRUE, toolitem proxies for this action are represented in the toolbar "
 "overflow menu."
-msgstr "TRUE (egia) denean, menuen proxy-ak tresna-barrako gainezkako menuan adierazten dira."
+msgstr ""
+"TRUE (egia) denean, menuen proxy-ak tresna-barrako gainezkako menuan "
+"adierazten dira."
 
-#: ctk/ctkaction.c:417 ctk/ctktoolitem.c:186
+#: ctk/ctkaction.c:384 ctk/ctktoolitem.c:186
 msgid "Visible when vertical"
 msgstr "Ikusgai bertikal dagoenean"
 
-#: ctk/ctkaction.c:418 ctk/ctktoolitem.c:187
+#: ctk/ctkaction.c:385 ctk/ctktoolitem.c:187
 msgid ""
 "Whether the toolbar item is visible when the toolbar is in a vertical "
 "orientation."
-msgstr "Tresna-barra bertikal dagoenean tresna-barrako elementua ikusgai dagoen ala ez adierazten du."
+msgstr ""
+"Tresna-barra bertikal dagoenean tresna-barrako elementua ikusgai dagoen ala "
+"ez adierazten du."
 
-#: ctk/ctkaction.c:434 ctk/ctktoolitem.c:193
+#: ctk/ctkaction.c:398 ctk/ctktoolitem.c:193
 msgid "Is important"
 msgstr "Garrantzitsua da"
 
-#: ctk/ctkaction.c:435
+#: ctk/ctkaction.c:399
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
 "this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
-msgstr "Ekintza garrantzitsua den ala ez adierazten du. TRUE (egia) denean, ekintza honetako toolitem proxy-ek testua CTK_TOOLBAR_BOTH_HORIZ moduan adierazten dute."
+msgstr ""
+"Ekintza garrantzitsua den ala ez adierazten du. TRUE (egia) denean, ekintza "
+"honetako toolitem proxy-ek testua CTK_TOOLBAR_BOTH_HORIZ moduan adierazten "
+"dute."
 
-#: ctk/ctkaction.c:451
+#: ctk/ctkaction.c:412
 msgid "Hide if empty"
 msgstr "Ezkutatu hutsa badago"
 
-#: ctk/ctkaction.c:452
+#: ctk/ctkaction.c:413
 msgid "When TRUE, empty menu proxies for this action are hidden."
-msgstr "TRUE (egia) denean, ekintza honetako menu hutseko proxy-ak ezkutatuta daude."
+msgstr ""
+"TRUE (egia) denean, ekintza honetako menu hutseko proxy-ak ezkutatuta daude."
 
-#: ctk/ctkaction.c:466 ctk/ctkactiongroup.c:214
-#: ctk/ctkcellrenderer.c:308 ctk/ctkwidget.c:1155
+#: ctk/ctkaction.c:424 ctk/ctkactiongroup.c:208 ctk/ctkcellrenderer.c:308
+#: ctk/ctkwidget.c:1155
 msgid "Sensitive"
 msgstr "Sentikorra"
 
-#: ctk/ctkaction.c:467
+#: ctk/ctkaction.c:425
 msgid "Whether the action is enabled."
 msgstr "Ekintza gaituta dagoen ala ez adierazten du."
 
 #
-#: ctk/ctkaction.c:481 ctk/ctkactiongroup.c:228
-#: ctk/ctkstatusicon.c:314 ctk/ctkcssnode.c:649
-#: ctk/ctknativedialog.c:242 ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1148
+#: ctk/ctkaction.c:436 ctk/ctkactiongroup.c:220 ctk/ctkcssnode.c:649
+#: ctk/ctknativedialog.c:242 ctk/ctkstatusicon.c:304
+#: ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1148
 msgid "Visible"
 msgstr "Ikusgai"
 
-#: ctk/ctkaction.c:482
+#: ctk/ctkaction.c:437
 msgid "Whether the action is visible."
 msgstr "Ekintza ikusgai dagoen ala ez adierazten du."
 
-#: ctk/ctkaction.c:497
+#: ctk/ctkaction.c:449
 msgid "Action Group"
 msgstr "Ekintzen taldea"
 
-#: ctk/ctkaction.c:498
+#: ctk/ctkaction.c:450
 msgid ""
 "The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
-msgstr "CtkAction honekin lotuta dagoen CtkActionGroup, edo NULL (barne-erabilerarako)."
+msgstr ""
+"CtkAction honekin lotuta dagoen CtkActionGroup, edo NULL (barne-"
+"erabilerarako)."
 
-#: ctk/ctkaction.c:519 ctk/ctkimagemenuitem.c:264
-#: ctk/ctkbutton.c:393
+#: ctk/ctkaction.c:468 ctk/ctkbutton.c:393 ctk/ctkimagemenuitem.c:254
 msgid "Always show image"
 msgstr "Erakutsi beti irudia"
 
-#: ctk/ctkaction.c:520 ctk/ctkimagemenuitem.c:265
-#: ctk/ctkbutton.c:394
+#: ctk/ctkaction.c:469 ctk/ctkbutton.c:394 ctk/ctkimagemenuitem.c:255
 msgid "Whether the image will always be shown"
 msgstr "Irudia beti erakutsiko den ala ez adierazten du"
 
-#: ctk/ctkactiongroup.c:201
+#: ctk/ctkactiongroup.c:197
 msgid "A name for the action group."
 msgstr "Ekintza-talderako izena."
 
-#: ctk/ctkactiongroup.c:215
+#: ctk/ctkactiongroup.c:209
 msgid "Whether the action group is enabled."
 msgstr "Ekintza-taldea gaituta dagoen ala ez adierazten du."
 
-#: ctk/ctkactiongroup.c:229
+#: ctk/ctkactiongroup.c:221
 msgid "Whether the action group is visible."
 msgstr "Ekintza-taldea ikusgai dagoen ala ez adierazten du."
 
-#: ctk/ctkactiongroup.c:242
+#: ctk/ctkactiongroup.c:232
 msgid "Accelerator Group"
 msgstr "Bizkortzaileen taldea"
 
-#: ctk/ctkactiongroup.c:243
+#: ctk/ctkactiongroup.c:233
 msgid "The accelerator group the actions of this group should use."
 msgstr "Talde honen ekintzak erabili beharreko bizkortzaileen taldea."
 
 #
-#: ctk/ctkactivatable.c:290
+#: ctk/ctkactivatable.c:286
 msgid "Related Action"
 msgstr "Erlazionatutako ekintza"
 
-#: ctk/ctkactivatable.c:291
+#: ctk/ctkactivatable.c:287
 msgid "The action this activatable will activate and receive updates from"
-msgstr "Aktibagarri honek aktibatuko duen ekintza eta bertatik jasoko dituen eguneraketak"
+msgstr ""
+"Aktibagarri honek aktibatuko duen ekintza eta bertatik jasoko dituen "
+"eguneraketak"
 
-#: ctk/ctkactivatable.c:315
+#: ctk/ctkactivatable.c:309
 msgid "Use Action Appearance"
 msgstr "Erabili ekintzaren itxura"
 
-#: ctk/ctkactivatable.c:316
+#: ctk/ctkactivatable.c:310
 msgid "Whether to use the related actions appearance properties"
 msgstr "Dagokien ekintzen itxuraren propietateak erabili edo ez"
 
@@ -425,7 +440,9 @@ msgstr "Lerrokatze horizontala"
 msgid ""
 "Horizontal position of child in available space. 0.0 is left aligned, 1.0 is "
 "right aligned"
-msgstr "Umearen kokaleku horizontala leku erabilgarrian. 0.0 ezkerrean lerrokatzea da, 1.0 eskuinean"
+msgstr ""
+"Umearen kokaleku horizontala leku erabilgarrian. 0.0 ezkerrean lerrokatzea "
+"da, 1.0 eskuinean"
 
 #: ctk/deprecated/ctkalignment.c:170
 msgid "Vertical alignment"
@@ -435,7 +452,9 @@ msgstr "Lerrokatze bertikala"
 msgid ""
 "Vertical position of child in available space. 0.0 is top aligned, 1.0 is "
 "bottom aligned"
-msgstr "Umearen kokaleku bertikala leku erabilgarrian. 0.0 goian lerrokatzea da, 1.0 behean lerrokatzea"
+msgstr ""
+"Umearen kokaleku bertikala leku erabilgarrian. 0.0 goian lerrokatzea da, 1.0 "
+"behean lerrokatzea"
 
 #
 #: ctk/deprecated/ctkalignment.c:188
@@ -446,7 +465,10 @@ msgstr "Eskala horizontala"
 msgid ""
 "If available horizontal space is bigger than needed for the child, how much "
 "of it to use for the child. 0.0 means none, 1.0 means all"
-msgstr "Erabilgarri dagoen leku horizontala umeak behar duena baino handiagoa bada, umeak zenbat erabili behar duen adierazten du. 0.0 'bat ere ez' da, eta 1.0 'dena'."
+msgstr ""
+"Erabilgarri dagoen leku horizontala umeak behar duena baino handiagoa bada, "
+"umeak zenbat erabili behar duen adierazten du. 0.0 'bat ere ez' da, eta 1.0 "
+"'dena'."
 
 #: ctk/deprecated/ctkalignment.c:206
 msgid "Vertical scale"
@@ -456,7 +478,9 @@ msgstr "Eskala bertikala"
 msgid ""
 "If available vertical space is bigger than needed for the child, how much of "
 "it to use for the child. 0.0 means none, 1.0 means all"
-msgstr "Erabilgarri dagoen leku bertikala umeak behar duena baino handiagoa bada, harrak zenbat erabili behar duen. 0.0k bat ere ez esan nahi du eta 1.0k dena."
+msgstr ""
+"Erabilgarri dagoen leku bertikala umeak behar duena baino handiagoa bada, "
+"harrak zenbat erabili behar duen. 0.0k bat ere ez esan nahi du eta 1.0k dena."
 
 #: ctk/deprecated/ctkalignment.c:226
 msgid "Top Padding"
@@ -523,7 +547,9 @@ msgstr "Opakutasun-kontrola du"
 
 #: ctk/deprecated/ctkcolorsel.c:326
 msgid "Whether the color selector should allow setting opacity"
-msgstr "Kolore-hautatzaileak opakutasuna ezartzeko baimena eman behar duen ala ez adierazten du"
+msgstr ""
+"Kolore-hautatzaileak opakutasuna ezartzeko baimena eman behar duen ala ez "
+"adierazten du"
 
 #: ctk/deprecated/ctkcolorsel.c:332
 msgid "Has palette"
@@ -633,7 +659,9 @@ msgstr "Egokitu ertza"
 msgid ""
 "Side of the handlebox that's lined up with the docking point to dock the "
 "handlebox"
-msgstr "Helduleku-laukia atrakatzeko atrakatze-puntuarekin lerrokatuta dagoen helduleku-laukiaren aldea"
+msgstr ""
+"Helduleku-laukia atrakatzeko atrakatze-puntuarekin lerrokatuta dagoen "
+"helduleku-laukiaren aldea"
 
 #: ctk/deprecated/ctkhandlebox.c:250
 msgid "Snap edge set"
@@ -643,7 +671,9 @@ msgstr "Ertz-egokitzearen ezarpena"
 msgid ""
 "Whether to use the value from the snap_edge property or a value derived from "
 "handle_position"
-msgstr "snap_edge propietatearen balioa edo handle_position-etik eratorritako balioa erabiliko den adierazten du"
+msgstr ""
+"snap_edge propietatearen balioa edo handle_position-etik eratorritako balioa "
+"erabiliko den adierazten du"
 
 #: ctk/deprecated/ctkhandlebox.c:258
 msgid "Child Detached"
@@ -653,32 +683,8 @@ msgstr "Umea askatuta"
 msgid ""
 "A boolean value indicating whether the handlebox's child is attached or "
 "detached."
-msgstr "Balio boolearrak zera adierazten du: umea erantsita edo askatuta dagoen."
-
-#
-#: ctk/ctkimagemenuitem.c:226 ctk/ctkbutton.c:360
-msgid "Image widget"
-msgstr "Irudi-trepeta"
-
-#: ctk/ctkimagemenuitem.c:227
-msgid "Child widget to appear next to the menu text"
-msgstr "Menuaren testuaren ondoan agertu beharreko trepeta haurra"
-
-#: ctk/ctkimagemenuitem.c:243 ctk/ctkbutton.c:300
-msgid "Use stock"
-msgstr "Erabili oinarria"
-
-#: ctk/ctkimagemenuitem.c:244
-msgid "Whether to use the label text to create a stock menu item"
-msgstr "Etiketako testua erabiliko den oinarriko menu-elementua sortzeko ala ez adierazten du"
-
-#: ctk/ctkimagemenuitem.c:281 ctk/ctkmenu.c:655
-msgid "Accel Group"
-msgstr "Laster-teklen taldea"
-
-#: ctk/ctkimagemenuitem.c:282
-msgid "The Accel Group to use for stock accelerator keys"
-msgstr "Oinarriko tekla bizkortzaileentzat erabiliko den bizkortzaile-taldea"
+msgstr ""
+"Balio boolearrak zera adierazten du: umea erantsita edo askatuta dagoen."
 
 #
 #: ctk/deprecated/ctkmisc.c:114 ctk/ctkentry.c:968 ctk/ctklabel.c:851
@@ -689,7 +695,9 @@ msgstr "X lerrokatzea"
 msgid ""
 "The horizontal alignment, from 0 (left) to 1 (right). Reversed for RTL "
 "layouts."
-msgstr "Lerrokatze horizontala, 0tik (ezkerretik) 1era (eskuinera). Alderantziz RTL diseinuetan"
+msgstr ""
+"Lerrokatze horizontala, 0tik (ezkerretik) 1era (eskuinera). Alderantziz RTL "
+"diseinuetan"
 
 #
 #: ctk/deprecated/ctkmisc.c:133 ctk/ctklabel.c:869
@@ -719,204 +727,46 @@ msgid ""
 msgstr "Trepetaren goian eta behean gehitu beharreko lekua, pixeletan"
 
 #
-#: ctk/deprecated/ctknumerableicon.c:642
+#: ctk/deprecated/ctknumerableicon.c:643
 msgid "Icon's count"
 msgstr "Ikonoaren zenbatzailea"
 
-#: ctk/deprecated/ctknumerableicon.c:643
+#: ctk/deprecated/ctknumerableicon.c:644
 msgid "The count of the emblem currently displayed"
 msgstr "Unean bistaratutako ikurren kopurua"
 
-#: ctk/deprecated/ctknumerableicon.c:649
+#: ctk/deprecated/ctknumerableicon.c:650
 msgid "Icon's label"
 msgstr "Ikonoaren etiketa"
 
-#: ctk/deprecated/ctknumerableicon.c:650
+#: ctk/deprecated/ctknumerableicon.c:651
 msgid "The label to be displayed over the icon"
 msgstr "Ikonoaren gainean bistaratuko den etiketa"
 
 #
-#: ctk/deprecated/ctknumerableicon.c:656
+#: ctk/deprecated/ctknumerableicon.c:657
 msgid "Icon's style context"
 msgstr "Ikonoaren estiloaren testuingurua"
 
-#: ctk/deprecated/ctknumerableicon.c:657
+#: ctk/deprecated/ctknumerableicon.c:658
 msgid "The style context to theme the icon appearance"
 msgstr "Estiloaren testuingurua ikonoaren itxura janzteko"
 
-#: ctk/deprecated/ctknumerableicon.c:663
+#: ctk/deprecated/ctknumerableicon.c:664
 msgid "Background icon"
 msgstr "Atzeko planoaren ikonoa"
 
-#: ctk/deprecated/ctknumerableicon.c:664
+#: ctk/deprecated/ctknumerableicon.c:665
 msgid "The icon for the number emblem background"
 msgstr "Zenbakiaren ikurraren atzeko planoaren ikonoa"
 
-#: ctk/deprecated/ctknumerableicon.c:670
+#: ctk/deprecated/ctknumerableicon.c:671
 msgid "Background icon name"
 msgstr "Atzeko planoaren ikonoaren izena"
 
-#: ctk/deprecated/ctknumerableicon.c:671
+#: ctk/deprecated/ctknumerableicon.c:672
 msgid "The icon name for the number emblem background"
 msgstr "Zenbaki-ikurraren atzeko planoan erabiliko den ikonoaren izena"
-
-#: ctk/ctkradioaction.c:120
-msgid "The value"
-msgstr "Balioa"
-
-#: ctk/ctkradioaction.c:121
-msgid ""
-"The value returned by ctk_radio_action_get_current_value() when this action "
-"is the current action of its group."
-msgstr "Ekintza hau bere taldeko uneko ekintza denean, ctk_radio_action_get_current_value()-k itzultzen duen balioa."
-
-#: ctk/ctkradioaction.c:139 ctk/ctkradiobutton.c:184
-#: ctk/ctkradiomenuitem.c:424 ctk/ctkradiotoolbutton.c:83
-msgid "Group"
-msgstr "Taldea"
-
-#: ctk/ctkradioaction.c:140
-msgid "The radio action whose group this action belongs to."
-msgstr "Ekintza honen taldeari dagokion aukera-botoien bidezko ekintza."
-
-#: ctk/ctkradioaction.c:157
-msgid "The current value"
-msgstr "Uneko balioa"
-
-#: ctk/ctkradioaction.c:158
-msgid ""
-"The value property of the currently active member of the group to which this "
-"action belongs."
-msgstr "Ekintza hau dagokion uneko aktibo dagoen taldeko kidearen propietatearen balioa."
-
-#: ctk/ctkrecentaction.c:674 ctk/ctkrecentchoosermenu.c:239
-msgid "Show Numbers"
-msgstr "Erakutsi zenbakiak"
-
-#: ctk/ctkrecentaction.c:675 ctk/ctkrecentchoosermenu.c:240
-msgid "Whether the items should be displayed with a number"
-msgstr "Elementuak zenbaki batekin bistaratu behar diren edo ez"
-
-#: ctk/ctkstatusicon.c:234 ctk/ctkimage.c:256
-msgid "Pixbuf"
-msgstr "Pixbuf"
-
-#: ctk/ctkstatusicon.c:235 ctk/ctkimage.c:257
-msgid "A GdkPixbuf to display"
-msgstr "Bistaratu beharreko GdkPixbuf-a"
-
-#
-#: ctk/ctkstatusicon.c:242 ctk/ctkimage.c:270
-#: ctk/ctkrecentmanager.c:289
-msgid "Filename"
-msgstr "Fitxategia"
-
-#: ctk/ctkstatusicon.c:243 ctk/ctkimage.c:271
-msgid "Filename to load and display"
-msgstr "Kargatu eta bistaratu beharreko fitxategi-izena"
-
-#: ctk/ctkstatusicon.c:255 ctk/ctkcellrendererpixbuf.c:195
-#: ctk/ctkimage.c:282
-msgid "Stock ID"
-msgstr "Oinarri-IDa"
-
-#: ctk/ctkstatusicon.c:256 ctk/ctkimage.c:283
-msgid "Stock ID for a stock image to display"
-msgstr "Bistaratu behar den stock-irudiaren stock-IDa"
-
-#
-#: ctk/ctkstatusicon.c:287 ctk/ctkimage.c:380
-msgid "Storage type"
-msgstr "Biltegi-mota"
-
-#: ctk/ctkstatusicon.c:288 ctk/ctkimage.c:381
-msgid "The representation being used for image data"
-msgstr "Irudien datuentzat erabiltzen den adierazpidea"
-
-#
-#: ctk/ctkstatusicon.c:296 ctk/ctkcellrendererpixbuf.c:210
-#: ctk/ctkcellrendererspinner.c:159 ctk/ctkrecentmanager.c:304
-msgid "Size"
-msgstr "Tamaina"
-
-#: ctk/ctkstatusicon.c:297
-msgid "The size of the icon"
-msgstr "Ikonoaren tamaina"
-
-#: ctk/ctkstatusicon.c:306 ctk/ctkinvisible.c:98
-#: ctk/ctkmountoperation.c:183 ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:897
-msgid "Screen"
-msgstr "Pantaila"
-
-#: ctk/ctkstatusicon.c:307
-msgid "The screen where this status icon will be displayed"
-msgstr "Egoerako ikono hau bistaratuko den pantaila"
-
-#: ctk/ctkstatusicon.c:315
-msgid "Whether the status icon is visible"
-msgstr "Egoerako ikonoa ikusgai dagoen edo ez"
-
-#: ctk/ctkstatusicon.c:330 ctk/ctkplug.c:196
-msgid "Embedded"
-msgstr "Kapsulatua"
-
-#: ctk/ctkstatusicon.c:331
-msgid "Whether the status icon is embedded"
-msgstr "Egoerako ikonoa kapsulatuta dagoen edo ez"
-
-#: ctk/ctkstatusicon.c:346 ctk/ctktrayicon-x11.c:127
-#: ctk/ctkgesturepan.c:238 ctk/ctkorientable.c:61
-msgid "Orientation"
-msgstr "Orientazioa"
-
-#: ctk/ctkstatusicon.c:347 ctk/ctktrayicon-x11.c:128
-msgid "The orientation of the tray"
-msgstr "Erretiluaren orientazioa"
-
-#: ctk/ctkstatusicon.c:374 ctk/ctkwidget.c:1285
-msgid "Has tooltip"
-msgstr "Argibidea du"
-
-#: ctk/ctkstatusicon.c:375
-msgid "Whether this tray icon has a tooltip"
-msgstr "Erretiluko ikonoak argibidea duen edo ez"
-
-#: ctk/ctkstatusicon.c:401 ctk/ctkwidget.c:1309
-msgid "Tooltip Text"
-msgstr "Argibidearen testua"
-
-#: ctk/ctkstatusicon.c:402 ctk/ctkwidget.c:1310 ctk/ctkwidget.c:1334
-msgid "The contents of the tooltip for this widget"
-msgstr "Trepetaren argibidearen edukia"
-
-#: ctk/ctkstatusicon.c:425 ctk/ctkwidget.c:1333
-msgid "Tooltip markup"
-msgstr "Markaren argibidea"
-
-#: ctk/ctkstatusicon.c:426
-msgid "The contents of the tooltip for this tray icon"
-msgstr "Erretiluko ikonoaren argibidearen edukia"
-
-#
-#: ctk/ctkstatusicon.c:443 ctk/ctkcolorbutton.c:183
-#: ctk/ctkfilechooserbutton.c:443 ctk/ctkfontbutton.c:490
-#: ctk/ctkheaderbar.c:2027 ctk/ctkprintjob.c:133 ctk/ctkshortcutsgroup.c:308
-#: ctk/ctkshortcutssection.c:376 ctk/ctkshortcutsshortcut.c:575
-#: ctk/ctkstack.c:523 ctk/ctktreeviewcolumn.c:316
-msgid "Title"
-msgstr "Titulua"
-
-#: ctk/ctkstatusicon.c:444
-msgid "The title of this tray icon"
-msgstr "Erretiluko ikono honen titulua"
-
-#: ctk/ctkstyle.c:471
-msgid "Style context"
-msgstr "Estiloaren testuingurua"
-
-#: ctk/ctkstyle.c:472
-msgid "CtkStyleContext to get style from"
-msgstr "CtkStyleContext (hortik estiloa eskuratzeko)"
 
 #: ctk/deprecated/ctktable.c:185
 msgid "Rows"
@@ -958,7 +808,9 @@ msgstr "Homogeneoa"
 
 #: ctk/deprecated/ctktable.c:222
 msgid "If TRUE, the table cells are all the same width/height"
-msgstr "EGIA bada, horrek esan nahi du taulako gelaxka guztiek zabalera eta altuera bera dutela"
+msgstr ""
+"EGIA bada, horrek esan nahi du taulako gelaxka guztiek zabalera eta altuera "
+"bera dutela"
 
 #: ctk/deprecated/ctktable.c:229 ctk/ctkgrid.c:1795
 msgid "Left attachment"
@@ -1017,7 +869,9 @@ msgstr "Tarte betegarri horizontala"
 msgid ""
 "Extra space to put between the child and its left and right neighbors, in "
 "pixels"
-msgstr "Umearen eta haren ezkerreko eta eskuineko auzoen artean jarri beharreko tarte estra, pixeletan"
+msgstr ""
+"Umearen eta haren ezkerreko eta eskuineko auzoen artean jarri beharreko "
+"tarte estra, pixeletan"
 
 #: ctk/deprecated/ctktable.c:278
 msgid "Vertical padding"
@@ -1027,95 +881,13 @@ msgstr "Tarte betegarri bertikala"
 msgid ""
 "Extra space to put between the child and its upper and lower neighbors, in "
 "pixels"
-msgstr "Umearen eta haren goiko eta beheko auzoen artean jarri beharreko tarte estra, pixeletan"
+msgstr ""
+"Umearen eta haren goiko eta beheko auzoen artean jarri beharreko tarte "
+"estra, pixeletan"
 
 #: ctk/deprecated/ctkthemingengine.c:248
 msgid "Theming engine name"
 msgstr "Gai-motorraren izena"
-
-#: ctk/ctktoggleaction.c:118
-msgid "Create the same proxies as a radio action"
-msgstr "Sortu aukera-botoien bidezko ekintzaren proxy berak"
-
-#: ctk/ctktoggleaction.c:119
-msgid "Whether the proxies for this action look like radio action proxies"
-msgstr "Ekintza honen proxy-ek aukera-botoien bidezko ekintzen proxy-en itxura duten adierazten du"
-
-#: ctk/ctktoggleaction.c:135 ctk/ctkcellrendererspinner.c:125
-#: ctk/ctkcheckmenuitem.c:209 ctk/ctkmenu.c:640 ctk/ctkmodelbutton.c:1211
-#: ctk/ctkmodelbutton.c:1212 ctk/ctkspinner.c:221 ctk/ctkswitch.c:878
-#: ctk/ctktogglebutton.c:188 ctk/ctktoggletoolbutton.c:130
-msgid "Active"
-msgstr "Aktibo"
-
-#: ctk/ctktoggleaction.c:136
-msgid "Whether the toggle action should be active"
-msgstr "Txandakatzailearen ekintza aktibatuta egon behar duen edo ez"
-
-#: ctk/ctktrayicon-x11.c:136 ctk/ctkcellrenderertext.c:334
-#: ctk/ctktexttag.c:277
-msgid "Foreground color"
-msgstr "Aurreko planoaren kolorea"
-
-#: ctk/ctktrayicon-x11.c:137
-msgid "Foreground color for symbolic icons"
-msgstr "Aurreko planoaren kolorea ikono sinbolikoentzako"
-
-#: ctk/ctktrayicon-x11.c:144
-msgid "Error color"
-msgstr "Errorearen kolorea"
-
-#: ctk/ctktrayicon-x11.c:145
-msgid "Error color for symbolic icons"
-msgstr "Ikono sinbolikoen erroreen kolorea"
-
-#: ctk/ctktrayicon-x11.c:152
-msgid "Warning color"
-msgstr "Abisuaren kolorea"
-
-#: ctk/ctktrayicon-x11.c:153
-msgid "Warning color for symbolic icons"
-msgstr "Ikono sinbolikoen abisuen kolorea"
-
-#: ctk/ctktrayicon-x11.c:160
-msgid "Success color"
-msgstr "Ongi burututakoaren kolorea"
-
-#: ctk/ctktrayicon-x11.c:161
-msgid "Success color for symbolic icons"
-msgstr "Ikono sinbolikoen ongi burututakoen kolorea"
-
-#: ctk/ctktrayicon-x11.c:168 ctk/ctkbox.c:350
-msgid "Padding"
-msgstr "Betegarria"
-
-#: ctk/ctktrayicon-x11.c:169
-msgid "Padding that should be put around icons in the tray"
-msgstr "Betegarria (erretiluko ikonoaren inguruan jarri beharko litzatekeena)"
-
-#: ctk/ctktrayicon-x11.c:178 ctk/ctkstackswitcher.c:686
-msgid "Icon Size"
-msgstr "Ikonoaren tamaina"
-
-#: ctk/ctktrayicon-x11.c:179
-msgid "The pixel size that icons should be forced to, or zero"
-msgstr "Derrigorrez ikonoek edukiko duten tamaina pixeletan, edo zero"
-
-#: ctk/ctkuimanager.c:463 ctk/ctkcombobox.c:1010
-msgid "Add tearoffs to menus"
-msgstr "Gehitu askagarriak menuei"
-
-#: ctk/ctkuimanager.c:464
-msgid "Whether tearoff menu items should be added to menus"
-msgstr "Menuei menu-elementu askagarriak gehitu behar zaizkien ala ez adierazten du"
-
-#: ctk/ctkuimanager.c:471
-msgid "Merged UI definition"
-msgstr "Batutako UI definizioa"
-
-#: ctk/ctkuimanager.c:472
-msgid "An XML string describing the merged UI"
-msgstr "Batutako UI azaltzen duen XML katea"
 
 #: ctk/ctkaboutdialog.c:349
 msgid "Program name"
@@ -1125,7 +897,9 @@ msgstr "Programa-izena"
 msgid ""
 "The name of the program. If this is not set, it defaults to "
 "g_get_application_name()"
-msgstr "Programaren izena. Ez badago ezarrita, g_get_application_name() jarriko da lehenetsi gisa."
+msgstr ""
+"Programaren izena. Ez badago ezarrita, g_get_application_name() jarriko da "
+"lehenetsi gisa."
 
 #: ctk/ctkaboutdialog.c:363
 msgid "Program version"
@@ -1224,7 +998,9 @@ msgstr "Logotipoa"
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
 "ctk_window_get_default_icon_list()"
-msgstr "'Honi buruzko' kutxaren logotipoa. Ez bada ezartzen, ctk_window_get_default_icon_list() erabiliko da lehenetsi gisa."
+msgstr ""
+"'Honi buruzko' kutxaren logotipoa. Ez bada ezartzen, "
+"ctk_window_get_default_icon_list() erabiliko da lehenetsi gisa."
 
 #: ctk/ctkaboutdialog.c:566
 msgid "Logo Icon Name"
@@ -1293,7 +1069,9 @@ msgstr "Pakete-mota"
 msgid ""
 "A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
-msgstr "Umea gurasoaren hasierari edo amaierari erreferentzia eginez paketatu den adierazten duen CtkPackType"
+msgstr ""
+"Umea gurasoaren hasierari edo amaierari erreferentzia eginez paketatu den "
+"adierazten duen CtkPackType"
 
 #: ctk/ctkactionbar.c:345 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
 #: ctk/ctknotebook.c:840 ctk/ctkpaned.c:368 ctk/ctkpopover.c:1767
@@ -1365,7 +1143,9 @@ msgstr "Sartu 'Bestelakoa…' elementua"
 msgid ""
 "Whether the combobox should include an item that triggers a "
 "CtkAppChooserDialog"
-msgstr "Konbinazio-koadroak 'CtkAppChooserDialog' abiarazten duen elementu bat eduki behar duen edo ez"
+msgstr ""
+"Konbinazio-koadroak 'CtkAppChooserDialog' abiarazten duen elementu bat eduki "
+"behar duen edo ez"
 
 #: ctk/ctkappchooserbutton.c:634
 msgid "Show default item"
@@ -1640,7 +1420,9 @@ msgstr "Diseinuaren estiloa"
 msgid ""
 "How to lay out the buttons in the box. Possible values are: spread, edge, "
 "start and end"
-msgstr "Botoiak laukian nola antolatuko diren. Hauek dira balio posibleak: spread (zabalduta), edge (ertzean), start (hasieran) eta end (amaieran)"
+msgstr ""
+"Botoiak laukian nola antolatuko diren. Hauek dira balio posibleak: spread "
+"(zabalduta), edge (ertzean), start (hasieran) eta end (amaieran)"
 
 #: ctk/ctkbbox.c:284
 msgid "Secondary"
@@ -1650,7 +1432,9 @@ msgstr "Bigarren mailakoa"
 msgid ""
 "If TRUE, the child appears in a secondary group of children, suitable for, e."
 "g., help buttons"
-msgstr "TRUE (egia) bada, umea umeen bigarren taldean agertzen da, adibidez, laguntza-botoietarako egoki"
+msgstr ""
+"TRUE (egia) bada, umea umeen bigarren taldean agertzen da, adibidez, "
+"laguntza-botoietarako egoki"
 
 #: ctk/ctkbbox.c:292
 msgid "Non-Homogeneous"
@@ -1681,7 +1465,9 @@ msgstr "Oinarri-lerroaren posizioa"
 #: ctk/ctkbox.c:293
 msgid ""
 "The position of the baseline aligned widgets if extra space is available"
-msgstr "Oinarri-lerroarekiko lerrokatuta dauden trepeten posizioa tarte gehigarria erabilgarri badago"
+msgstr ""
+"Oinarri-lerroarekiko lerrokatuta dauden trepeten posizioa tarte gehigarria "
+"erabilgarri badago"
 
 #: ctk/ctkbox.c:318 ctk/ctkcellareabox.c:330 ctk/ctktoolbar.c:589
 #: ctk/ctktoolitemgroup.c:1695 ctk/ctktoolpalette.c:1027
@@ -1691,7 +1477,9 @@ msgstr "Zabaldu"
 
 #: ctk/ctkbox.c:319
 msgid "Whether the child should receive extra space when the parent grows"
-msgstr "Gurasoa handitzean, umeak beste tarte bat jaso behar duen ala ez adierazten du"
+msgstr ""
+"Gurasoa handitzean, umeak beste tarte bat jaso behar duen ala ez adierazten "
+"du"
 
 #
 #: ctk/ctkbox.c:335 ctk/ctktoolitemgroup.c:1702
@@ -1702,11 +1490,19 @@ msgstr "Bete"
 msgid ""
 "Whether extra space given to the child should be allocated to the child or "
 "used as padding"
-msgstr "Umeari emandako beste tartea umeari esleitu behar zaion ala tarte betegarri gisa erabili behar den adierazten du"
+msgstr ""
+"Umeari emandako beste tartea umeari esleitu behar zaion ala tarte betegarri "
+"gisa erabili behar den adierazten du"
+
+#: ctk/ctkbox.c:350 ctk/ctktrayicon-x11.c:168
+msgid "Padding"
+msgstr "Betegarria"
 
 #: ctk/ctkbox.c:351
 msgid "Extra space to put between the child and its neighbors, in pixels"
-msgstr "Umearen eta haren ingurukoen artean jarri beharreko tarte osagarria, pixeletan"
+msgstr ""
+"Umearen eta haren ingurukoen artean jarri beharreko tarte osagarria, "
+"pixeletan"
 
 #: ctk/ctkbuilder.c:292
 msgid "Translation Domain"
@@ -1723,7 +1519,7 @@ msgid ""
 msgstr "Etiketa-trepetaren testua botoi barruan, botoiak etiketa-trepeta badu"
 
 #: ctk/ctkbutton.c:288 ctk/ctkexpander.c:316 ctk/ctklabel.c:826
-#: ctk/ctkmenuitem.c:803 ctk/ctktoolbutton.c:250
+#: ctk/ctkmenuitem.c:803 ctk/ctktoolbutton.c:211
 msgid "Use underline"
 msgstr "Erabili azpimarra"
 
@@ -1732,12 +1528,20 @@ msgstr "Erabili azpimarra"
 msgid ""
 "If set, an underline in the text indicates the next character should be used "
 "for the mnemonic accelerator key"
-msgstr "Ezartzen bada, testuko azpimarrak adierazten du hurrengo karakterea tekla bizkortzaile mnemoteknikorako erabili behar dela"
+msgstr ""
+"Ezartzen bada, testuko azpimarrak adierazten du hurrengo karakterea tekla "
+"bizkortzaile mnemoteknikorako erabili behar dela"
+
+#: ctk/ctkbutton.c:300 ctk/ctkimagemenuitem.c:236
+msgid "Use stock"
+msgstr "Erabili oinarria"
 
 #: ctk/ctkbutton.c:301
 msgid ""
 "If set, the label is used to pick a stock item instead of being displayed"
-msgstr "Ezartzen bada, etiketa oinarriko elementu bat hautatzeko erabiltzen da, bistaratu ordez"
+msgstr ""
+"Ezartzen bada, etiketa oinarriko elementu bat hautatzeko erabiltzen da, "
+"bistaratu ordez"
 
 #: ctk/ctkbutton.c:307
 msgid "Border relief"
@@ -1754,6 +1558,11 @@ msgstr "Umearentzako lerrokatze horizontala"
 #: ctk/ctkbutton.c:346
 msgid "Vertical alignment for child"
 msgstr "Umearentzako lerrokatze bertikala"
+
+#
+#: ctk/ctkbutton.c:360 ctk/ctkimagemenuitem.c:221
+msgid "Image widget"
+msgstr "Irudi-trepeta"
 
 #: ctk/ctkbutton.c:361
 msgid "Child widget to appear next to the button text"
@@ -1784,7 +1593,9 @@ msgstr "Kanpoko tarte lehenetsia"
 msgid ""
 "Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
-msgstr "CTK_CAN_DEFAULT botoiei gehitzeko tarte osagarria, beti ertzetik kanpo marraztuta dagoena"
+msgstr ""
+"CTK_CAN_DEFAULT botoiei gehitzeko tarte osagarria, beti ertzetik kanpo "
+"marraztuta dagoena"
 
 #: ctk/ctkbutton.c:556
 msgid "Child X Displacement"
@@ -1812,7 +1623,9 @@ msgstr "Fokuaren desplazamendua"
 msgid ""
 "Whether the child_displacement_x/_y properties should also affect the focus "
 "rectangle"
-msgstr "child_displacement_x/_y propietateak foku-laukian ere eragingo duen ala ez adierazten du"
+msgstr ""
+"child_displacement_x/_y propietateak foku-laukian ere eragingo duen ala ez "
+"adierazten du"
 
 #: ctk/ctkbutton.c:610 ctk/ctkentry.c:899 ctk/ctkentry.c:2117
 msgid "Inner Border"
@@ -1854,7 +1667,9 @@ msgstr "Eguna"
 msgid ""
 "The selected day (as a number between 1 and 31, or 0 to unselect the "
 "currently selected day)"
-msgstr "Hautatutako eguna (1 eta 31 arteko zenbakia, edo 0 unean hautatutako eguna desautatzeko)"
+msgstr ""
+"Hautatutako eguna (1 eta 31 arteko zenbakia, edo 0 unean hautatutako eguna "
+"desautatzeko)"
 
 #
 #: ctk/ctkcalendar.c:442
@@ -1972,7 +1787,9 @@ msgstr "Pakete mota"
 msgid ""
 "A CtkPackType indicating whether the cell is packed with reference to the "
 "start or end of the cell area"
-msgstr "Gelaxkaren arearen hasierari edo amaierari erreferentzia eginez gelaxka paketatu den edo ez adierazten duen CtkPackType"
+msgstr ""
+"Gelaxkaren arearen hasierari edo amaierari erreferentzia eginez gelaxka "
+"paketatu den edo ez adierazten duen CtkPackType"
 
 #: ctk/ctkcellarea.c:790
 msgid "Focus Cell"
@@ -2251,9 +2068,19 @@ msgstr "gainazala"
 msgid "The surface to render"
 msgstr "Errendatzeko gainazala"
 
+#: ctk/ctkcellrendererpixbuf.c:195 ctk/ctkimage.c:280 ctk/ctkstatusicon.c:245
+msgid "Stock ID"
+msgstr "Oinarri-IDa"
+
 #: ctk/ctkcellrendererpixbuf.c:196
 msgid "The stock ID of the stock icon to render"
 msgstr "Errendatu behar den oinarri-ikonoaren oinarri-IDa"
+
+#
+#: ctk/ctkcellrendererpixbuf.c:210 ctk/ctkcellrendererspinner.c:159
+#: ctk/ctkrecentmanager.c:303 ctk/ctkstatusicon.c:286
+msgid "Size"
+msgstr "Tamaina"
 
 #: ctk/ctkcellrendererpixbuf.c:211
 msgid "The CtkIconSize value that specifies the size of the rendered icon"
@@ -2273,10 +2100,12 @@ msgstr "Hurrengo egoera"
 
 #: ctk/ctkcellrendererpixbuf.c:264
 msgid "Whether the rendered pixbuf should be colorized according to the state"
-msgstr "Errendatutako 'pixbuf'a egoerarekin bat koloreztatuko den ala ez adierazten du"
+msgstr ""
+"Errendatutako 'pixbuf'a egoerarekin bat koloreztatuko den ala ez adierazten "
+"du"
 
 #
-#: ctk/ctkcellrendererpixbuf.c:281 ctk/ctkimage.c:359 ctk/ctkmodelbutton.c:1166
+#: ctk/ctkcellrendererpixbuf.c:281 ctk/ctkimage.c:357 ctk/ctkmodelbutton.c:1166
 #: ctk/ctkshortcutsshortcut.c:550 ctk/ctkwindow.c:841
 msgid "Icon"
 msgstr "Ikonoa"
@@ -2303,7 +2132,9 @@ msgstr "Pultsua"
 msgid ""
 "Set this to positive values to indicate that some progress is made, but you "
 "don't know how much."
-msgstr "Ezarri balio positiboekin zehaztasunik gabeko progresio batzuk burutu direla adierazteko."
+msgstr ""
+"Ezarri balio positiboekin zehaztasunik gabeko progresio batzuk burutu direla "
+"adierazteko."
 
 #: ctk/ctkcellrendererprogress.c:197
 msgid "Text x alignment"
@@ -2313,7 +2144,9 @@ msgstr "Testuaren x lerrokatzea"
 msgid ""
 "The horizontal text alignment, from 0 (left) to 1 (right). Reversed for RTL "
 "layouts."
-msgstr "Lerrokatze horizontala, 0tik (ezkerretik) 1era (eskuinera). Alderantziz RTL diseinuetan."
+msgstr ""
+"Lerrokatze horizontala, 0tik (ezkerretik) 1era (eskuinera). Alderantziz RTL "
+"diseinuetan."
 
 #: ctk/ctkcellrendererprogress.c:214
 msgid "Text y alignment"
@@ -2357,6 +2190,13 @@ msgstr "Digituak"
 msgid "The number of decimal places to display"
 msgstr "Bistaratu beharreko dezimalen kopurua"
 
+#: ctk/ctkcellrendererspinner.c:125 ctk/ctkcheckmenuitem.c:209
+#: ctk/ctkmenu.c:640 ctk/ctkmodelbutton.c:1211 ctk/ctkmodelbutton.c:1212
+#: ctk/ctkspinner.c:221 ctk/ctkswitch.c:878 ctk/ctktoggleaction.c:129
+#: ctk/ctktogglebutton.c:188 ctk/ctktoggletoolbutton.c:130
+msgid "Active"
+msgstr "Aktibo"
+
 #: ctk/ctkcellrendererspinner.c:126
 msgid "Whether the spinner is active (ie. shown) in the cell"
 msgstr "Birakaria gelaxkan aktibatuta dagoen (bistaratua alegia) edo ez"
@@ -2367,7 +2207,8 @@ msgstr "Birakariaren taupada"
 
 #: ctk/ctkcellrendererspinner.c:160
 msgid "The CtkIconSize value that specifies the size of the rendered spinner"
-msgstr "Errendatutako birakariaren tamaina zehazten duen CtkIconSize-ren balioa"
+msgstr ""
+"Errendatutako birakariaren tamaina zehazten duen CtkIconSize-ren balioa"
 
 #: ctk/ctkcellrenderertext.c:256
 msgid "Text to render"
@@ -2429,6 +2270,10 @@ msgstr "Aurreko planoaren kolore-izena"
 msgid "Foreground color as a string"
 msgstr "Aurreko planoaren kolorea kate gisa"
 
+#: ctk/ctkcellrenderertext.c:334 ctk/ctktexttag.c:277 ctk/ctktrayicon-x11.c:136
+msgid "Foreground color"
+msgstr "Aurreko planoaren kolorea"
+
 #: ctk/ctkcellrenderertext.c:335 ctk/ctktexttag.c:278
 msgid "Foreground color as a CdkColor"
 msgstr "Aurreko planoaren kolorea CdkColor gisa"
@@ -2471,7 +2316,8 @@ msgstr "Letra-tipoen familia"
 
 #: ctk/ctkcellrenderertext.c:379 ctk/ctktexttag.c:342
 msgid "Name of the font family, e.g. Sans, Helvetica, Times, Monospace"
-msgstr "Letra-tipoen familien izena; adibidez, Sans, Helvetica, Times, Monospace"
+msgstr ""
+"Letra-tipoen familien izena; adibidez, Sans, Helvetica, Times, Monospace"
 
 #: ctk/ctkcellrenderertext.c:385 ctk/ctkcellrenderertext.c:386
 #: ctk/ctktexttag.c:349
@@ -2526,7 +2372,9 @@ msgstr "Goratzea"
 #: ctk/ctkcellrenderertext.c:442
 msgid ""
 "Offset of text above the baseline (below the baseline if rise is negative)"
-msgstr "Testuaren desplazamendua oinarri-lerroaren gainetik (oinarri-lerroaren azpitik goratzea negatiboa bada)"
+msgstr ""
+"Testuaren desplazamendua oinarri-lerroaren gainetik (oinarri-lerroaren "
+"azpitik goratzea negatiboa bada)"
 
 #: ctk/ctkcellrenderertext.c:450 ctk/ctktexttag.c:516
 msgid "Strikethrough"
@@ -2553,7 +2401,10 @@ msgid ""
 "The language this text is in, as an ISO code. Pango can use this as a hint "
 "when rendering the text. If you don't understand this parameter, you "
 "probably don't need it"
-msgstr "Testu honetako hizkuntza ISOren kode gisa dago. Pango-k laguntza gisa erabil dezake testua bihurtzean. Parametro hori ulertzen ez baduzu, beharbada ez duzu beharko"
+msgstr ""
+"Testu honetako hizkuntza ISOren kode gisa dago. Pango-k laguntza gisa erabil "
+"dezake testua bihurtzean. Parametro hori ulertzen ez baduzu, beharbada ez "
+"duzu beharko"
 
 #: ctk/ctkcellrenderertext.c:484 ctk/ctklabel.c:963 ctk/ctkprogressbar.c:330
 msgid "Ellipsize"
@@ -2563,7 +2414,9 @@ msgstr "Elipsi gisa"
 msgid ""
 "The preferred place to ellipsize the string, if the cell renderer does not "
 "have enough room to display the entire string"
-msgstr "Katea elipsi gisa jartzeko lekurik egokiena, errendatutako gelaxkak ez badu nahikoa toki kate osoa bistaratzeko."
+msgstr ""
+"Katea elipsi gisa jartzeko lekurik egokiena, errendatutako gelaxkak ez badu "
+"nahikoa toki kate osoa bistaratzeko."
 
 #: ctk/ctkcellrenderertext.c:503 ctk/ctkfilechooserbutton.c:457
 #: ctk/ctklabel.c:983
@@ -2591,7 +2444,9 @@ msgstr "Itzulbiratze-modua"
 msgid ""
 "How to break the string into multiple lines, if the cell renderer does not "
 "have enough room to display the entire string"
-msgstr "Katea hainbat lerrotan nola zatitu, errendatutako gelaxkak ez badu nahikoa toki kate osoa bistaratzeko."
+msgstr ""
+"Katea hainbat lerrotan nola zatitu, errendatutako gelaxkak ez badu nahikoa "
+"toki kate osoa bistaratzeko."
 
 #
 #: ctk/ctkcellrenderertext.c:561 ctk/ctkcombobox.c:923
@@ -2624,7 +2479,8 @@ msgstr "Atzeko planoaren ezarpena"
 
 #: ctk/ctkcellrenderertext.c:607 ctk/ctkcellview.c:354 ctk/ctktexttag.c:723
 msgid "Whether this tag affects the background color"
-msgstr "Etiketa honek atzeko planoaren koloreari eragiten dion ala ez adierazten du"
+msgstr ""
+"Etiketa honek atzeko planoaren koloreari eragiten dion ala ez adierazten du"
 
 #: ctk/ctkcellrenderertext.c:610 ctk/ctktexttag.c:730
 msgid "Foreground set"
@@ -2632,7 +2488,8 @@ msgstr "Aurreko planoaren ezarpena"
 
 #: ctk/ctkcellrenderertext.c:611 ctk/ctktexttag.c:731
 msgid "Whether this tag affects the foreground color"
-msgstr "Etiketa honek aurreko planoaren koloreari eragiten dion ala ez adierazten du"
+msgstr ""
+"Etiketa honek aurreko planoaren koloreari eragiten dion ala ez adierazten du"
 
 #: ctk/ctkcellrenderertext.c:614 ctk/ctktexttag.c:734
 msgid "Editability set"
@@ -2640,7 +2497,8 @@ msgstr "Editagarritasunaren ezarpena"
 
 #: ctk/ctkcellrenderertext.c:615 ctk/ctktexttag.c:735
 msgid "Whether this tag affects text editability"
-msgstr "Etiketa honek testuaren editagarritasunari eragiten dion ala ez adierazten du"
+msgstr ""
+"Etiketa honek testuaren editagarritasunari eragiten dion ala ez adierazten du"
 
 #: ctk/ctkcellrenderertext.c:618 ctk/ctktexttag.c:738
 msgid "Font family set"
@@ -2648,7 +2506,8 @@ msgstr "Letra-tipoen familiaren ezarpena"
 
 #: ctk/ctkcellrenderertext.c:619 ctk/ctktexttag.c:739
 msgid "Whether this tag affects the font family"
-msgstr "Etiketa honek letra-tipoen familiari eragiten dion ala ez adierazten du"
+msgstr ""
+"Etiketa honek letra-tipoen familiari eragiten dion ala ez adierazten du"
 
 #
 #: ctk/ctkcellrenderertext.c:622 ctk/ctktexttag.c:742
@@ -2665,7 +2524,8 @@ msgstr "Letra-tipoen aldaeraren ezarpena"
 
 #: ctk/ctkcellrenderertext.c:627 ctk/ctktexttag.c:747
 msgid "Whether this tag affects the font variant"
-msgstr "Etiketa honek letra-tipoen aldaerari eragiten dion ala ez adierazten du"
+msgstr ""
+"Etiketa honek letra-tipoen aldaerari eragiten dion ala ez adierazten du"
 
 #
 #: ctk/ctkcellrenderertext.c:630 ctk/ctktexttag.c:750
@@ -2682,7 +2542,8 @@ msgstr "Letra-tipo tiratuaren ezarpena"
 
 #: ctk/ctkcellrenderertext.c:635 ctk/ctktexttag.c:755
 msgid "Whether this tag affects the font stretch"
-msgstr "Etiketa honek letra-tipoaren luzatzeari eragiten dion ala ez adierazten du"
+msgstr ""
+"Etiketa honek letra-tipoaren luzatzeari eragiten dion ala ez adierazten du"
 
 #: ctk/ctkcellrenderertext.c:638 ctk/ctktexttag.c:758
 msgid "Font size set"
@@ -2699,7 +2560,9 @@ msgstr "Letra-tipoaren eskalaren ezarpena"
 
 #: ctk/ctkcellrenderertext.c:643 ctk/ctktexttag.c:763
 msgid "Whether this tag scales the font size by a factor"
-msgstr "Etiketa honek faktore batez letraren tamaina eskalatzen duen ala ez adierazten du"
+msgstr ""
+"Etiketa honek faktore batez letraren tamaina eskalatzen duen ala ez "
+"adierazten du"
 
 #: ctk/ctkcellrenderertext.c:646 ctk/ctktexttag.c:782
 msgid "Rise set"
@@ -2731,7 +2594,9 @@ msgstr "Hizkuntzaren ezarpena"
 
 #: ctk/ctkcellrenderertext.c:659 ctk/ctktexttag.c:771
 msgid "Whether this tag affects the language the text is rendered as"
-msgstr "Etiketa honek testua errendatzen den hizkuntzari eragiten dion ala ez adierazten du"
+msgstr ""
+"Etiketa honek testua errendatzen den hizkuntzari eragiten dion ala ez "
+"adierazten du"
 
 #: ctk/ctkcellrenderertext.c:662
 msgid "Ellipsize set"
@@ -2739,7 +2604,8 @@ msgstr "Elipsi multzoa"
 
 #: ctk/ctkcellrenderertext.c:663
 msgid "Whether this tag affects the ellipsize mode"
-msgstr "Etiketa honek elipsi sortzearen moduari eragiten dion ala ez adierazten du"
+msgstr ""
+"Etiketa honek elipsi sortzearen moduari eragiten dion ala ez adierazten du"
 
 #: ctk/ctkcellrenderertext.c:666
 msgid "Align set"
@@ -2818,7 +2684,8 @@ msgstr "Gelaxkaren arearen testuingurua"
 
 #: ctk/ctkcellview.c:307
 msgid "The CtkCellAreaContext used to compute the geometry of the cell view"
-msgstr "Gelaxkaren ikuspegiaren geometria kalkulatzeko erabilitako CtkCellAreaContext"
+msgstr ""
+"Gelaxkaren ikuspegiaren geometria kalkulatzeko erabilitako CtkCellAreaContext"
 
 #: ctk/ctkcellview.c:324
 msgid "Draw Sensitive"
@@ -2841,7 +2708,7 @@ msgstr "Ereduan errenkada bakoitzarentzako nahiko leku eskatu edo ez"
 msgid "Indicator Size"
 msgstr "Adierazlearen tamaina"
 
-#: ctk/ctkcheckbutton.c:249 ctk/ctkexpander.c:406
+#: ctk/ctkcheckbutton.c:249 ctk/ctkexpander.c:413
 msgid "Indicator Spacing"
 msgstr "Adierazlearen tartea"
 
@@ -2868,7 +2735,9 @@ msgstr "Marraztu aukera ugariko menu-elementu gisa"
 
 #: ctk/ctkcheckmenuitem.c:226
 msgid "Whether the menu item looks like a radio menu item"
-msgstr "Menu-elementuak aukera ugariko menu-elementuaren itxura duen ala ez adierazten du"
+msgstr ""
+"Menu-elementuak aukera ugariko menu-elementuaren itxura duen ala ez "
+"adierazten du"
 
 #: ctk/ctkcolorbutton.c:168 ctk/ctkcolorchooser.c:87
 msgid "Use alpha"
@@ -2877,6 +2746,15 @@ msgstr "Erabili alfa"
 #: ctk/ctkcolorbutton.c:169
 msgid "Whether to give the color an alpha value"
 msgstr "Koloreari alfa balioa emango zaion edo ez"
+
+#
+#: ctk/ctkcolorbutton.c:183 ctk/ctkfilechooserbutton.c:443
+#: ctk/ctkfontbutton.c:490 ctk/ctkheaderbar.c:2027 ctk/ctkprintjob.c:133
+#: ctk/ctkshortcutsgroup.c:308 ctk/ctkshortcutssection.c:376
+#: ctk/ctkshortcutsshortcut.c:575 ctk/ctkstack.c:523 ctk/ctkstatusicon.c:433
+#: ctk/ctktreeviewcolumn.c:316
+msgid "Title"
+msgstr "Titulua"
 
 #: ctk/ctkcolorbutton.c:184
 msgid "The title of the color selection dialog"
@@ -2918,7 +2796,7 @@ msgstr "Uneko kolorea, CdkRGBA gisa"
 msgid "Whether alpha should be shown"
 msgstr "Alfa erakutsi behar den ala ez adierazten du"
 
-#: ctk/ctkcolorchooserdialog.c:213 ctk/ctkcolorchooserwidget.c:704
+#: ctk/ctkcolorchooserdialog.c:213 ctk/ctkcolorchooserwidget.c:695
 msgid "Show editor"
 msgstr "Erakutsi editorea"
 
@@ -2988,6 +2866,10 @@ msgstr "Elementu aktiboa"
 msgid "The item which is currently active"
 msgstr "Unean aktibatuta dagoen elementua"
 
+#: ctk/ctkcombobox.c:1010 ctk/ctkuimanager.c:452
+msgid "Add tearoffs to menus"
+msgstr "Gehitu askagarriak menuei"
+
 #: ctk/ctkcombobox.c:1011
 msgid "Whether dropdowns should have a tearoff menu item"
 msgstr "Menuek askagarririk eduki behar duten edo ez adierazten du"
@@ -2998,7 +2880,9 @@ msgstr "Markoa dauka"
 
 #: ctk/ctkcombobox.c:1027
 msgid "Whether the combo box draws a frame around the child"
-msgstr "Konbinazio-koadroko goitibeherako menuek haurraren inguruan markoa marraztu behar duten ala ez adierazten du"
+msgstr ""
+"Konbinazio-koadroko goitibeherako menuek haurraren inguruan markoa marraztu "
+"behar duten ala ez adierazten du"
 
 #: ctk/ctkcombobox.c:1044 ctk/ctkmenu.c:703
 msgid "Tearoff Title"
@@ -3024,7 +2908,9 @@ msgstr "Botoiaren sentikortasuna"
 
 #: ctk/ctkcombobox.c:1080
 msgid "Whether the dropdown button is sensitive when the model is empty"
-msgstr "Modeloa hutsik dagoenean goitibeherako botoia sentikorra izango den ala ez adierazten du"
+msgstr ""
+"Modeloa hutsik dagoenean goitibeherako botoia sentikorra izango den ala ez "
+"adierazten du"
 
 #: ctk/ctkcombobox.c:1096
 msgid "Whether combo box has an entry"
@@ -3038,7 +2924,9 @@ msgstr "Sarrerako testu-zutabea"
 msgid ""
 "The column in the combo box's model to associate with strings from the entry "
 "if the combo was created with #CtkComboBox:has-entry = %TRUE"
-msgstr "Konbinazio-koadroaren ereduko zutabea sarrerako kateekin esleitzeko, baldin eta konbinazio-koadroa '#CtkComboBox:has-entry = %TRUE'-rekin sortu bazen"
+msgstr ""
+"Konbinazio-koadroaren ereduko zutabea sarrerako kateekin esleitzeko, baldin "
+"eta konbinazio-koadroa '#CtkComboBox:has-entry = %TRUE'-rekin sortu bazen"
 
 #: ctk/ctkcombobox.c:1129
 msgid "ID Column"
@@ -3048,7 +2936,8 @@ msgstr "ID zutabea"
 msgid ""
 "The column in the combo box's model that provides string IDs for the values "
 "in the model"
-msgstr "Konbinazio-koadroaren ereduko zutabea (ereduko balioen ID kateak eskaintzeko)"
+msgstr ""
+"Konbinazio-koadroaren ereduko zutabea (ereduko balioen ID kateak eskaintzeko)"
 
 #: ctk/ctkcombobox.c:1145
 msgid "Active id"
@@ -3067,7 +2956,9 @@ msgstr "Laster-menuaren zabalera finkoa"
 msgid ""
 "Whether the popup's width should be a fixed width matching the allocated "
 "width of the combo box"
-msgstr "Leiho gainerakorraren zabalera konbinazio-koadroaren zabalerarekin bat datorren finkatutako zabalera izan behar duen edo ez"
+msgstr ""
+"Leiho gainerakorraren zabalera konbinazio-koadroaren zabalerarekin bat "
+"datorren finkatutako zabalera izan behar duen edo ez"
 
 #: ctk/ctkcombobox.c:1189
 msgid "Appears as list"
@@ -3075,7 +2966,9 @@ msgstr "Zerrenda gisa agertzen da"
 
 #: ctk/ctkcombobox.c:1190
 msgid "Whether dropdowns should look like lists rather than menus"
-msgstr "Konbinazio-koadroko goitibeherako menuek menu-itxura baino zerrenda-itxura gehiago eduki behar duten ala ez adierazten du"
+msgstr ""
+"Konbinazio-koadroko goitibeherako menuek menu-itxura baino zerrenda-itxura "
+"gehiago eduki behar duten ala ez adierazten du"
 
 #
 #: ctk/ctkcombobox.c:1209
@@ -3230,7 +3123,8 @@ msgstr "Ekintza-arearen ertza"
 
 #: ctk/ctkdialog.c:632
 msgid "Width of border around the button area at the bottom of the dialog"
-msgstr "Elkarrizketa-koadroaren behealdeko botoi-arearen inguruko ertzaren zabalera"
+msgstr ""
+"Elkarrizketa-koadroaren behealdeko botoi-arearen inguruko ertzaren zabalera"
 
 #: ctk/ctkentrybuffer.c:351
 msgid "The contents of the buffer"
@@ -3250,7 +3144,8 @@ msgstr "Gehieneko luzera"
 
 #: ctk/ctkentrybuffer.c:379 ctk/ctkentry.c:869
 msgid "Maximum number of characters for this entry. Zero if no maximum"
-msgstr "Sarrera honen gehieneko karaktere-kopurua. Gehienekorik ez badago, zero"
+msgstr ""
+"Sarrera honen gehieneko karaktere-kopurua. Gehienekorik ez badago, zero"
 
 #: ctk/ctkentry.c:838
 msgid "Text Buffer"
@@ -3291,7 +3186,9 @@ msgstr "Ikusgaitasuna"
 msgid ""
 "FALSE displays the \"invisible char\" instead of the actual text (password "
 "mode)"
-msgstr "FALTSUAk \"karaktere ikusezina\" bistaratzen du uneko testuaren ordez (pasahitz-modua)"
+msgstr ""
+"FALTSUAk \"karaktere ikusezina\" bistaratzen du uneko testuaren ordez "
+"(pasahitz-modua)"
 
 #: ctk/ctkentry.c:884
 msgid "FALSE removes outside bevel from entry"
@@ -3300,7 +3197,9 @@ msgstr "FALTSUAk kanpoko alaka kentzen du sarreratik"
 #: ctk/ctkentry.c:900
 msgid ""
 "Border between text and frame. Overrides the inner-border style property"
-msgstr "Testua eta markoaren arteko ertza. 'Barneko ertza' propietateari jaramonik ez zaio egingo"
+msgstr ""
+"Testua eta markoaren arteko ertza. 'Barneko ertza' propietateari jaramonik "
+"ez zaio egingo"
 
 #: ctk/ctkentry.c:906 ctk/ctkentry.c:1603
 msgid "Invisible character"
@@ -3308,7 +3207,9 @@ msgstr "Karaktere ikusezina"
 
 #: ctk/ctkentry.c:907 ctk/ctkentry.c:1604
 msgid "The character to use when masking entry contents (in \"password mode\")"
-msgstr "Sarreraren edukia maskaratzean erabili beharreko karakterea (\"pasahitz-moduan\")"
+msgstr ""
+"Sarreraren edukia maskaratzean erabili beharreko karakterea (\"pasahitz-"
+"moduan\")"
 
 #: ctk/ctkentry.c:913
 msgid "Activates default"
@@ -3318,7 +3219,9 @@ msgstr "Lehenetsia aktibatzen du"
 msgid ""
 "Whether to activate the default widget (such as the default button in a "
 "dialog) when Enter is pressed"
-msgstr "Sartu botoia sakatutakoan, trepeta lehenetsia aktibatuko den ala ez adierazten du (adibidez, elkarrizketa-koadroko botoi lehenetsia)"
+msgstr ""
+"Sartu botoia sakatutakoan, trepeta lehenetsia aktibatuko den ala ez "
+"adierazten du (adibidez, elkarrizketa-koadroko botoi lehenetsia)"
 
 #: ctk/ctkentry.c:920
 msgid "Width in chars"
@@ -3368,7 +3271,8 @@ msgstr "Gainidazteko modua"
 
 #: ctk/ctkentry.c:1017
 msgid "Whether new text overwrites existing text"
-msgstr "Testu berriak lehendik dagoen testua gainidazten duen ala ez adierazten du"
+msgstr ""
+"Testu berriak lehendik dagoen testua gainidazten duen ala ez adierazten du"
 
 #: ctk/ctkentry.c:1031
 msgid "Length of the text currently in the entry"
@@ -3388,7 +3292,9 @@ msgstr "Blok.maius. abisua"
 
 #: ctk/ctkentry.c:1064
 msgid "Whether password entries will show a warning when Caps Lock is on"
-msgstr "Pasahitzen sarrerek abisua erakutsi behar duten maiuskulak blokeatuta daudenean edo ez."
+msgstr ""
+"Pasahitzen sarrerek abisua erakutsi behar duten maiuskulak blokeatuta "
+"daudenean edo ez."
 
 #
 #: ctk/ctkentry.c:1077
@@ -3407,7 +3313,9 @@ msgstr "Aurrerapenaren pultsuaren urratsa"
 msgid ""
 "The fraction of total entry width to move the progress bouncing block for "
 "each call to ctk_entry_progress_pulse()"
-msgstr "Sarreraren zabalera osoaren frakzioa progresioaren itzulerako blokea mugitzeko ctk_entry_progress_pulse() funtzioaren dei bakoitzagatik"
+msgstr ""
+"Sarreraren zabalera osoaren frakzioa progresioaren itzulerako blokea "
+"mugitzeko ctk_entry_progress_pulse() funtzioaren dei bakoitzagatik"
 
 #: ctk/ctkentry.c:1110
 msgid "Show text in the entry when it's empty and unfocused"
@@ -3592,7 +3500,8 @@ msgstr "Bete denak"
 
 #: ctk/ctkentry.c:1509 ctk/ctktextview.c:1047
 msgid "Whether to emit ::populate-popup for touch popups"
-msgstr "Ukimeneko laster-leihoentzako ::populate-popup igorri edo ez adierazten du"
+msgstr ""
+"Ukimeneko laster-leihoentzako ::populate-popup igorri edo ez adierazten du"
 
 #: ctk/ctkentry.c:1522 ctk/ctktexttag.c:579 ctk/ctktextview.c:941
 msgid "Tabs"
@@ -3625,7 +3534,8 @@ msgstr "Ikono argitua"
 
 #: ctk/ctkentry.c:1565
 msgid "Whether activatable icons should prelight when hovered"
-msgstr "Ikono aktibagarriak argitu behar diren sagua gainetik igarotzean edo ez"
+msgstr ""
+"Ikono aktibagarriak argitu behar diren sagua gainetik igarotzean edo ez"
 
 #: ctk/ctkentry.c:1582
 msgid "Progress Border"
@@ -3693,7 +3603,8 @@ msgstr "Agertarazi bat-etortze bakuna"
 
 #: ctk/ctkentrycompletion.c:435
 msgid "If TRUE, the popup window will appear for a single match."
-msgstr "TRUE bada, laster-leihoa agertuko da konparazioan bat datorren bakunarentzat"
+msgstr ""
+"TRUE bada, laster-leihoa agertuko da konparazioan bat datorren bakunarentzat"
 
 #: ctk/ctkentrycompletion.c:449
 msgid "Inline selection"
@@ -3712,7 +3623,9 @@ msgstr "Leihoa ikusgai"
 msgid ""
 "Whether the event box is visible, as opposed to invisible and only used to "
 "trap events."
-msgstr "Gertaera-koadroa ikusgai dagoen edo, alderantziz, ikusezin dagoen eta gertaerak geldiarazteko bakarrik erabiltzen den adierazten du."
+msgstr ""
+"Gertaera-koadroa ikusgai dagoen edo, alderantziz, ikusezin dagoen eta "
+"gertaerak geldiarazteko bakarrik erabiltzen den adierazten du."
 
 #: ctk/ctkeventbox.c:121
 msgid "Above child"
@@ -3722,7 +3635,9 @@ msgstr "Umearen gainean"
 msgid ""
 "Whether the event-trapping window of the eventbox is above the window of the "
 "child widget as opposed to below it."
-msgstr "Gertaera-koadroko gertaerak geldiarazteko leihoa trepeta umearen leihoaren gainean edo azpian dagoen adierazten du."
+msgstr ""
+"Gertaera-koadroko gertaerak geldiarazteko leihoa trepeta umearen leihoaren "
+"gainean edo azpian dagoen adierazten du."
 
 #: ctk/ctkeventcontroller.c:169
 msgid "Widget the gesture relates to"
@@ -3764,7 +3679,7 @@ msgstr "Etiketako testuak XML markaketa dauka. Ikus pango_parse_markup()"
 msgid "Space to put between the label and the child"
 msgstr "Etiketaren eta umearen artean jarri beharreko tartea"
 
-#: ctk/ctkexpander.c:351 ctk/ctkframe.c:262 ctk/ctktoolbutton.c:257
+#: ctk/ctkexpander.c:351 ctk/ctkframe.c:262 ctk/ctktoolbutton.c:218
 #: ctk/ctktoolitemgroup.c:1646
 msgid "Label widget"
 msgstr "Etiketa-trepeta"
@@ -3773,33 +3688,37 @@ msgstr "Etiketa-trepeta"
 msgid "A widget to display in place of the usual expander label"
 msgstr "Ohiko zabaltzaile-etiketaren ordez bistaratu beharreko trepeta"
 
-#: ctk/ctkexpander.c:359
+#: ctk/ctkexpander.c:366
 msgid "Label fill"
 msgstr "Etiketa betetzea"
 
-#: ctk/ctkexpander.c:360
+#: ctk/ctkexpander.c:367
 msgid "Whether the label widget should fill all available horizontal space"
-msgstr "Etiketaren trepetak tarte horizontal erabilgarri guztia beteko duen edo ez adierazten du"
+msgstr ""
+"Etiketaren trepetak tarte horizontal erabilgarri guztia beteko duen edo ez "
+"adierazten du"
 
-#: ctk/ctkexpander.c:375
+#: ctk/ctkexpander.c:382
 msgid "Resize toplevel"
 msgstr "Aldatu maila gorenekoaren tamaina"
 
-#: ctk/ctkexpander.c:376
+#: ctk/ctkexpander.c:383
 msgid ""
 "Whether the expander will resize the toplevel window upon expanding and "
 "collapsing"
-msgstr "Zabaltzaileak maila goreneko leihoa tamainaz aldatuko duen zabaltzean eta tolestean"
+msgstr ""
+"Zabaltzaileak maila goreneko leihoa tamainaz aldatuko duen zabaltzean eta "
+"tolestean"
 
-#: ctk/ctkexpander.c:389 ctk/ctktoolitemgroup.c:1674 ctk/ctktreeview.c:1234
+#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1674 ctk/ctktreeview.c:1234
 msgid "Expander Size"
 msgstr "Zabaltzailearen tamaina"
 
-#: ctk/ctkexpander.c:390 ctk/ctktoolitemgroup.c:1675 ctk/ctktreeview.c:1235
+#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1675 ctk/ctktreeview.c:1235
 msgid "Size of the expander arrow"
 msgstr "Zabaltzailearen geziaren tamaina"
 
-#: ctk/ctkexpander.c:407
+#: ctk/ctkexpander.c:414
 msgid "Spacing around expander arrow"
 msgstr "Zabaltzailearen geziaren inguruko tartea"
 
@@ -3813,7 +3732,8 @@ msgstr "Fitxategiak aukeratzeko erabiliko den elkarrizketa-koadroa."
 
 #: ctk/ctkfilechooserbutton.c:444
 msgid "The title of the file chooser dialog."
-msgstr "Elkarrizketa-koadroaren titulua (fitxategiak aukeratzeko erabiliko dena)"
+msgstr ""
+"Elkarrizketa-koadroaren titulua (fitxategiak aukeratzeko erabiliko dena)"
 
 #: ctk/ctkfilechooserbutton.c:458
 msgid "The desired width of the button widget, in characters."
@@ -3837,13 +3757,15 @@ msgid "The current filter for selecting which files are displayed"
 msgstr "Zein fitxategi bistaratuko diren hautatzeko uneko iragazkia"
 
 #: ctk/ctkfilechooser.c:388 ctk/ctkplacessidebar.c:4836
-#: ctk/ctkplacesview.c:2336
+#: ctk/ctkplacesview.c:2348
 msgid "Local Only"
 msgstr "Lokalak bakarrik"
 
 #: ctk/ctkfilechooser.c:389
 msgid "Whether the selected file(s) should be limited to local file: URLs"
-msgstr "Hautatutako fitxategiek lokalak, hau da, URLak, izan behar duten ala ez adierazten du"
+msgstr ""
+"Hautatutako fitxategiek lokalak, hau da, URLak, izan behar duten ala ez "
+"adierazten du"
 
 #
 #: ctk/ctkfilechooser.c:394
@@ -3852,7 +3774,8 @@ msgstr "Aurrebista-trepeta"
 
 #: ctk/ctkfilechooser.c:395
 msgid "Application supplied widget for custom previews."
-msgstr "Aplikazioak aurrebista pertsonalizatuak ikusteko trepeta eskaintzen du."
+msgstr ""
+"Aplikazioak aurrebista pertsonalizatuak ikusteko trepeta eskaintzen du."
 
 #
 #: ctk/ctkfilechooser.c:400
@@ -3862,7 +3785,9 @@ msgstr "Aurrebista-trepeta aktibatuta"
 #: ctk/ctkfilechooser.c:401
 msgid ""
 "Whether the application supplied widget for custom previews should be shown."
-msgstr "Aurrebista pertsonalizatuak erakusteko aplikazioak eskainitako trepeta erakutsi beharko litzatekeen ala ez adierazten du."
+msgstr ""
+"Aurrebista pertsonalizatuak erakusteko aplikazioak eskainitako trepeta "
+"erakutsi beharko litzatekeen ala ez adierazten du."
 
 #
 #: ctk/ctkfilechooser.c:406
@@ -3871,7 +3796,9 @@ msgstr "Erabili aurrebista-etiketa"
 
 #: ctk/ctkfilechooser.c:407
 msgid "Whether to display a stock label with the name of the previewed file."
-msgstr "Stock-etiketa aurrebistan erakutsitako fitxategiaren izenarekin bistaratuko den ala ez adierazten du."
+msgstr ""
+"Stock-etiketa aurrebistan erakutsitako fitxategiaren izenarekin bistaratuko "
+"den ala ez adierazten du."
 
 #: ctk/ctkfilechooser.c:412
 msgid "Extra widget"
@@ -3906,7 +3833,9 @@ msgstr "Eskatu berrespena gainidaztean"
 msgid ""
 "Whether a file chooser in save mode will present an overwrite confirmation "
 "dialog if necessary."
-msgstr "Fitxategi-aukeratzaileak (gordetzeko moduan) gainidazteko berrespena eskatzen duen elkarrizketa-koadroa erakutsi edo ez"
+msgstr ""
+"Fitxategi-aukeratzaileak (gordetzeko moduan) gainidazteko berrespena "
+"eskatzen duen elkarrizketa-koadroa erakutsi edo ez"
 
 #: ctk/ctkfilechooser.c:458
 msgid "Allow folder creation"
@@ -3916,7 +3845,9 @@ msgstr "Baimendu karpetak sortzea"
 msgid ""
 "Whether a file chooser not in open mode will offer the user to create new "
 "folders."
-msgstr "Fitxategi-aukeratzaileak (ez-irekitzeko moduan) erabiltzaileari karpeta berriak sortzeko aukera eskainiko dion edo ez."
+msgstr ""
+"Fitxategi-aukeratzaileak (ez-irekitzeko moduan) erabiltzaileari karpeta "
+"berriak sortzeko aukera eskainiko dion edo ez."
 
 #: ctk/ctkfilechoosernative.c:827
 msgid "Accept label"
@@ -3996,7 +3927,9 @@ msgstr "Gehieneko haurrak lerroko"
 msgid ""
 "The maximum amount of children to request space for consecutively in the "
 "given orientation."
-msgstr "Umeen gehieneko kopurua jarraian dagoen lekua eskatzeko emandako orientazioan."
+msgstr ""
+"Umeen gehieneko kopurua jarraian dagoen lekua eskatzeko emandako "
+"orientazioan."
 
 #: ctk/ctkflowbox.c:3893
 msgid "Vertical spacing"
@@ -4028,7 +3961,8 @@ msgstr "Erabili etiketako letra-tipoa"
 
 #: ctk/ctkfontbutton.c:524
 msgid "Whether the label is drawn in the selected font"
-msgstr "Etiketa hautatutako letra-tipoan marraztuta dagoen ala ez adierazten du"
+msgstr ""
+"Etiketa hautatutako letra-tipoan marraztuta dagoen ala ez adierazten du"
 
 #: ctk/ctkfontbutton.c:539
 msgid "Use size in label"
@@ -4044,7 +3978,9 @@ msgstr "Erakutsi estiloa"
 
 #: ctk/ctkfontbutton.c:557
 msgid "Whether the selected font style is shown in the label"
-msgstr "Hautatutako letra-tipoaren estiloa etiketan erakusten den ala ez adierazten du"
+msgstr ""
+"Hautatutako letra-tipoaren estiloa etiketan erakusten den ala ez adierazten "
+"du"
 
 #: ctk/ctkfontbutton.c:572
 msgid "Show size"
@@ -4052,7 +3988,9 @@ msgstr "Erakutsi tamaina"
 
 #: ctk/ctkfontbutton.c:573
 msgid "Whether selected font size is shown in the label"
-msgstr "Hautatutako letra-tipoaren tamaina etiketan erakusten den ala ez adierazten du"
+msgstr ""
+"Hautatutako letra-tipoaren tamaina etiketan erakusten den ala ez adierazten "
+"du"
 
 #: ctk/ctkfontchooser.c:77
 msgid "Font description"
@@ -4086,11 +4024,11 @@ msgstr "Letra-tipoaren ezaugarriak kate gisa"
 msgid "Language for which features have been selected"
 msgstr "Hizkuntza (ezaugarriak hautatu zaizkiona)"
 
-#: ctk/ctkfontchooserwidget.c:697
+#: ctk/ctkfontchooserwidget.c:691
 msgid "The tweak action"
 msgstr "Doikuntzaren ekintza"
 
-#: ctk/ctkfontchooserwidget.c:698
+#: ctk/ctkfontchooserwidget.c:692
 msgid "The toggle action to switch to the tweak page"
 msgstr "Txandakatzearen ekintza orriaren doikuntzara aldatzeko"
 
@@ -4146,6 +4084,11 @@ msgstr "Atzerapen faktorea"
 #: ctk/ctkgesturelongpress.c:286
 msgid "Factor by which to modify the default timeout"
 msgstr "Denbora-muga lehenetsia faktorearen arabera aldatzeko"
+
+#: ctk/ctkgesturepan.c:238 ctk/ctkorientable.c:61 ctk/ctkstatusicon.c:336
+#: ctk/ctktrayicon-x11.c:127
+msgid "Orientation"
+msgstr "Orientazioa"
 
 #: ctk/ctkgesturepan.c:239
 msgid "Allowed orientations"
@@ -4241,7 +4184,8 @@ msgstr "Oinarri-lerroaren errenkada"
 
 #: ctk/ctkgrid.c:1785
 msgid "The row to align the to the baseline when valign is CTK_ALIGN_BASELINE"
-msgstr "Errenkada oinarri-lerroarekiko lerrokatzeko valign CTK_ALIGN_BASELINE denean"
+msgstr ""
+"Errenkada oinarri-lerroarekiko lerrokatzeko valign CTK_ALIGN_BASELINE denean"
 
 #: ctk/ctkgrid.c:1803
 msgid "The row number to attach the top side of a child widget to"
@@ -4331,7 +4275,9 @@ msgstr "Markaketen zutabea"
 
 #: ctk/ctkiconview.c:466
 msgid "Model column used to retrieve the text if using Pango markup"
-msgstr "Testua eskuratzeko erabiliko den zutabe-eredua, Pango markaketa erabiltzen bada"
+msgstr ""
+"Testua eskuratzeko erabiliko den zutabe-eredua, Pango markaketa erabiltzen "
+"bada"
 
 #
 #: ctk/ctkiconview.c:473
@@ -4394,7 +4340,8 @@ msgstr "Elementuaren orientazioa"
 #: ctk/ctkiconview.c:589
 msgid ""
 "How the text and icon of each item are positioned relative to each other"
-msgstr "Elementu bakoitzaren testua eta ikonoa elkarrekiko erlatiboki nola kokatu"
+msgstr ""
+"Elementu bakoitzaren testua eta ikonoa elkarrekiko erlatiboki nola kokatu"
 
 #: ctk/ctkiconview.c:605 ctk/ctktreeview.c:1059 ctk/ctktreeviewcolumn.c:351
 msgid "Reorderable"
@@ -4438,6 +4385,14 @@ msgstr "Alfaren hautapen-koadroa"
 msgid "Opacity of the selection box"
 msgstr "Hautapen-koadroaren opakutasuna"
 
+#: ctk/ctkimage.c:256 ctk/ctkstatusicon.c:226
+msgid "Pixbuf"
+msgstr "Pixbuf"
+
+#: ctk/ctkimage.c:257 ctk/ctkstatusicon.c:227
+msgid "A GdkPixbuf to display"
+msgstr "Bistaratu beharreko GdkPixbuf-a"
+
 #: ctk/ctkimage.c:263
 msgid "Surface"
 msgstr "Gainazala"
@@ -4447,57 +4402,99 @@ msgid "A cairo_surface_t to display"
 msgstr "'cairo_surface_t'  bistaratzeko"
 
 #
-#: ctk/ctkimage.c:295
+#: ctk/ctkimage.c:270 ctk/ctkrecentmanager.c:288 ctk/ctkstatusicon.c:234
+msgid "Filename"
+msgstr "Fitxategia"
+
+#: ctk/ctkimage.c:271 ctk/ctkstatusicon.c:235
+msgid "Filename to load and display"
+msgstr "Kargatu eta bistaratu beharreko fitxategi-izena"
+
+#: ctk/ctkimage.c:281 ctk/ctkstatusicon.c:246
+msgid "Stock ID for a stock image to display"
+msgstr "Bistaratu behar den stock-irudiaren stock-IDa"
+
+#
+#: ctk/ctkimage.c:293
 msgid "Icon set"
 msgstr "Ikonoaren ezarpena"
 
-#: ctk/ctkimage.c:296
+#: ctk/ctkimage.c:294
 msgid "Icon set to display"
 msgstr "Bistaratu beharreko ikonoa"
 
 #
-#: ctk/ctkimage.c:303 ctk/ctkscalebutton.c:208 ctk/ctktoolbar.c:564
+#: ctk/ctkimage.c:301 ctk/ctkscalebutton.c:208 ctk/ctktoolbar.c:564
 #: ctk/ctktoolpalette.c:965
 msgid "Icon size"
 msgstr "Ikonoaren tamaina"
 
-#: ctk/ctkimage.c:304
+#: ctk/ctkimage.c:302
 msgid "Symbolic size to use for stock icon, icon set or named icon"
-msgstr "Stock-ikonoarentzat, ikono-multzoarentzat edo izendun ikonoarentzat erabili beharreko tamaina sinbolikoa"
+msgstr ""
+"Stock-ikonoarentzat, ikono-multzoarentzat edo izendun ikonoarentzat erabili "
+"beharreko tamaina sinbolikoa"
 
 #
-#: ctk/ctkimage.c:320
+#: ctk/ctkimage.c:318
 msgid "Pixel size"
 msgstr "Pixel-tamaina"
 
-#: ctk/ctkimage.c:321
+#: ctk/ctkimage.c:319
 msgid "Pixel size to use for named icon"
 msgstr "Izendun ikonoan erabiliko den pixel-tamaina"
 
 #
-#: ctk/ctkimage.c:328
+#: ctk/ctkimage.c:326
 msgid "Animation"
 msgstr "Animazioa"
 
-#: ctk/ctkimage.c:329
+#: ctk/ctkimage.c:327
 msgid "GdkPixbufAnimation to display"
 msgstr "Bistaratu beharreko GdkPixbufAnimation"
 
-#: ctk/ctkimage.c:373
+#: ctk/ctkimage.c:371
 msgid "Resource"
 msgstr "Baliabidea"
 
-#: ctk/ctkimage.c:374
+#: ctk/ctkimage.c:372
 msgid "The resource path being displayed"
 msgstr "Bistaratzen ari den baliabidearen bide-izena"
 
-#: ctk/ctkimage.c:398
+#
+#: ctk/ctkimage.c:378 ctk/ctkstatusicon.c:277
+msgid "Storage type"
+msgstr "Biltegi-mota"
+
+#: ctk/ctkimage.c:379 ctk/ctkstatusicon.c:278
+msgid "The representation being used for image data"
+msgstr "Irudien datuentzat erabiltzen den adierazpidea"
+
+#: ctk/ctkimage.c:396
 msgid "Use Fallback"
 msgstr "Erabili ordezkoa"
 
-#: ctk/ctkimage.c:399
+#: ctk/ctkimage.c:397
 msgid "Whether to use icon names fallback"
 msgstr "Ikonoen ordezko izenak erabiliko diren edo ez adierazten du"
+
+#: ctk/ctkimagemenuitem.c:222
+msgid "Child widget to appear next to the menu text"
+msgstr "Menuaren testuaren ondoan agertu beharreko trepeta haurra"
+
+#: ctk/ctkimagemenuitem.c:237
+msgid "Whether to use the label text to create a stock menu item"
+msgstr ""
+"Etiketako testua erabiliko den oinarriko menu-elementua sortzeko ala ez "
+"adierazten du"
+
+#: ctk/ctkimagemenuitem.c:269 ctk/ctkmenu.c:655
+msgid "Accel Group"
+msgstr "Laster-teklen taldea"
+
+#: ctk/ctkimagemenuitem.c:270
+msgid "The Accel Group to use for stock accelerator keys"
+msgstr "Oinarriko tekla bizkortzaileentzat erabiliko den bizkortzaile-taldea"
 
 #: ctk/ctkinfobar.c:450 ctk/ctkmessagedialog.c:189
 msgid "Message Type"
@@ -4535,6 +4532,11 @@ msgstr "Areako elementuen arteko tartea"
 msgid "Width of border around the action area"
 msgstr "Ekintzaren arearen inguruko ertzaren zabalera"
 
+#: ctk/ctkinvisible.c:98 ctk/ctkmountoperation.c:183 ctk/ctkstatusicon.c:296
+#: ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:897
+msgid "Screen"
+msgstr "Pantaila"
+
 #: ctk/ctkinvisible.c:99 ctk/ctkwindow.c:898
 msgid "The screen where this window will be displayed"
 msgstr "Leiho hau bistaratuko den pantaila"
@@ -4552,7 +4554,10 @@ msgid ""
 "The alignment of the lines in the text of the label relative to each other. "
 "This does NOT affect the alignment of the label within its allocation. See "
 "CtkLabel:xalign for that"
-msgstr "Elkarri dagokien etiketako testuko lerroen lerrokatzea. Horrek EZ dio eragiten bere esleipenaren barruko etiketaren lerrokatzeari. Ikus CtkLabel:xalign horretarako"
+msgstr ""
+"Elkarri dagokien etiketako testuko lerroen lerrokatzea. Horrek EZ dio "
+"eragiten bere esleipenaren barruko etiketaren lerrokatzeari. Ikus CtkLabel:"
+"xalign horretarako"
 
 #: ctk/ctklabel.c:877
 msgid "Pattern"
@@ -4562,7 +4567,9 @@ msgstr "Eredua"
 msgid ""
 "A string with _ characters in positions correspond to characters in the text "
 "to underline"
-msgstr "_ karaktereak dauzkan katea, azpimarratu beharreko testuko karaktereei dagozkien kokalekutan"
+msgstr ""
+"_ karaktereak dauzkan katea, azpimarratu beharreko testuko karaktereei "
+"dagozkien kokalekutan"
 
 #: ctk/ctklabel.c:884
 msgid "Line wrap"
@@ -4578,7 +4585,8 @@ msgstr "Lerro-itzulbira modua"
 
 #: ctk/ctklabel.c:901
 msgid "If wrap is set, controls how linewrapping is done"
-msgstr "Itzulbira ezartzen bada lerro-itzulbira nola egiten den kontrolatuko du"
+msgstr ""
+"Itzulbira ezartzen bada lerro-itzulbira nola egiten den kontrolatuko du"
 
 #: ctk/ctklabel.c:909
 msgid "Whether the label text can be selected with the mouse"
@@ -4599,13 +4607,16 @@ msgstr "Trepeta mnemoteknikoa"
 
 #: ctk/ctklabel.c:924
 msgid "The widget to be activated when the label's mnemonic key is pressed"
-msgstr "Etiketako tekla mnemoteknikoa sakatuta dagoenean aktibatuko den trepeta"
+msgstr ""
+"Etiketako tekla mnemoteknikoa sakatuta dagoenean aktibatuko den trepeta"
 
 #: ctk/ctklabel.c:964
 msgid ""
 "The preferred place to ellipsize the string, if the label does not have "
 "enough room to display the entire string"
-msgstr "Katea elipsi gisa jartzeko lekua, etiketak ez badu nahikoa toki kate osoa bistaratzeko."
+msgstr ""
+"Katea elipsi gisa jartzeko lekua, etiketak ez badu nahikoa toki kate osoa "
+"bistaratzeko."
 
 #: ctk/ctklabel.c:1002
 msgid "Single Line Mode"
@@ -4641,7 +4652,8 @@ msgstr "Lerro kopurua"
 
 #: ctk/ctklabel.c:1074
 msgid "The desired number of lines, when ellipsizing a wrapping label"
-msgstr "Edukitzea nahi den lerro kopurua, etiketa laburtzeko lerroaren itzulerarekin"
+msgstr ""
+"Edukitzea nahi den lerro kopurua, etiketa laburtzeko lerroaren itzulerarekin"
 
 #: ctk/ctklayout.c:675
 msgid "The width of the layout"
@@ -4775,7 +4787,8 @@ msgstr "Baimenik ezaren argibidea"
 #: ctk/ctklockbutton.c:310
 msgid ""
 "The tooltip to display when prompting the user cannot obtain authorization"
-msgstr "Erabiltzaileak baimenik ez duela lortu adierazteko bistaratuko den argibidea"
+msgstr ""
+"Erabiltzaileak baimenik ez duela lortu adierazteko bistaratuko den argibidea"
 
 #: ctk/ctkmagnifier.c:295
 msgid "Inspected"
@@ -4890,7 +4903,9 @@ msgstr "Bizkortzaile-bidea"
 
 #: ctk/ctkmenu.c:671
 msgid "An accel path used to conveniently construct accel paths of child items"
-msgstr "ume-elementuen bizkortzaile-bideak eraikitzeko erabiliko den bizkortzaile-bidea"
+msgstr ""
+"ume-elementuen bizkortzaile-bideak eraikitzeko erabiliko den bizkortzaile-"
+"bidea"
 
 #: ctk/ctkmenu.c:687
 msgid "Attach Widget"
@@ -4930,7 +4945,9 @@ msgstr "Gorde txandakatzeko tamaina"
 msgid ""
 "A boolean that indicates whether the menu reserves space for toggles and "
 "icons"
-msgstr "Menuek txandakatzeko eta ikonoentzako lekua gordeko duten edo ez adierazten duen balio boolearra"
+msgstr ""
+"Menuek txandakatzeko eta ikonoentzako lekua gordeko duten edo ez adierazten "
+"duen balio boolearra"
 
 #: ctk/ctkmenu.c:784
 msgid "Anchor hints"
@@ -4988,7 +5005,8 @@ msgstr "Desplazamendu bertikala"
 msgid ""
 "When the menu is a submenu, position it this number of pixels offset "
 "vertically"
-msgstr "Menua azpimenua bada, desplaza ezazu menua bertikalean, horrenbeste pixelez"
+msgstr ""
+"Menua azpimenua bada, desplaza ezazu menua bertikalean, horrenbeste pixelez"
 
 #
 #: ctk/ctkmenu.c:924
@@ -4999,7 +5017,8 @@ msgstr "Desplazamendu horizontala"
 msgid ""
 "When the menu is a submenu, position it this number of pixels offset "
 "horizontally"
-msgstr "Menua azpimenua bada, desplaza ezazu menua horizontalean, horrenbeste pixelez"
+msgstr ""
+"Menua azpimenua bada, desplaza ezazu menua horizontalean, horrenbeste pixelez"
 
 #: ctk/ctkmenu.c:940
 msgid "Double Arrows"
@@ -5044,7 +5063,8 @@ msgstr "Erantsi behean"
 
 #: ctk/ctkmenu.c:1007
 msgid "Arbitrary constant to scale down the size of the scroll arrow"
-msgstr "Konstante arbitrarioa korritze-geziaren tamainaren eskala txikiagotzeko"
+msgstr ""
+"Konstante arbitrarioa korritze-geziaren tamainaren eskala txikiagotzeko"
 
 #: ctk/ctkmenuitem.c:745
 msgid "Right Justified"
@@ -5053,7 +5073,9 @@ msgstr "Eskuinean lerrokatuta"
 #: ctk/ctkmenuitem.c:746
 msgid ""
 "Sets whether the menu item appears justified at the right side of a menu bar"
-msgstr "Menuko elementuak menu-barraren eskuineko aldean justifikatuta agertuko diren edo ez ezartzen du"
+msgstr ""
+"Menuko elementuak menu-barraren eskuineko aldean justifikatuta agertuko "
+"diren edo ez ezartzen du"
 
 #: ctk/ctkmenuitem.c:759 ctk/ctkpopovermenu.c:376
 msgid "Submenu"
@@ -5073,7 +5095,9 @@ msgstr "Etiketa haurraren testua"
 
 #: ctk/ctkmenuitem.c:899
 msgid "Amount of space used up by arrow, relative to the menu item's font size"
-msgstr "Geziak erabiltzen duen leku kopurua, menuko elementuen letra-tamainarekiko erlatiboa"
+msgstr ""
+"Geziak erabiltzen duen leku kopurua, menuko elementuen letra-tamainarekiko "
+"erlatiboa"
 
 #: ctk/ctkmenuitem.c:915
 msgid "Width in Characters"
@@ -5089,7 +5113,8 @@ msgstr "Hartu fokua"
 
 #: ctk/ctkmenushell.c:420
 msgid "A boolean that determines whether the menu grabs the keyboard focus"
-msgstr "Menuak teklatuaren fokua hartuko duen ala ez zehazten duen balio boolearra"
+msgstr ""
+"Menuak teklatuaren fokua hartuko duen ala ez zehazten duen balio boolearra"
 
 #: ctk/ctkmenutoolbutton.c:266
 msgid "Menu"
@@ -5158,7 +5183,8 @@ msgstr "Mezuaren area"
 
 #: ctk/ctkmessagedialog.c:295
 msgid "CtkBox that holds the dialog's primary and secondary labels"
-msgstr "Elkarrizketa-koadroaren lehen eta bigarren mailako etiketak dituen CtkBox"
+msgstr ""
+"Elkarrizketa-koadroaren lehen eta bigarren mailako etiketak dituen CtkBox"
 
 #: ctk/ctkmodelbutton.c:1150
 msgid "Role"
@@ -5235,7 +5261,8 @@ msgstr "Elkarrizketa-koadroaren titulua"
 
 #: ctk/ctknativedialog.c:215
 msgid "The title of the file chooser dialog"
-msgstr "Elkarrizketa-koadroaren titulua (fitxategiak aukeratzeko erabiliko dena)"
+msgstr ""
+"Elkarrizketa-koadroaren titulua (fitxategiak aukeratzeko erabiliko dena)"
 
 #: ctk/ctknativedialog.c:228 ctk/ctkpopover.c:1782 ctk/ctkwindow.c:789
 msgid "Modal"
@@ -5245,7 +5272,9 @@ msgstr "Modala"
 msgid ""
 "If TRUE, the dialog is modal (other windows are not usable while this one is "
 "up)"
-msgstr "TRUE (egia) bada, elkarrizketa-koadroa modala da (beste leihoak ezin dira erabili hau gainean dagoen bitartean)"
+msgstr ""
+"TRUE (egia) bada, elkarrizketa-koadroa modala da (beste leihoak ezin dira "
+"erabili hau gainean dagoen bitartean)"
 
 #: ctk/ctknativedialog.c:243
 msgid "Whether the dialog is currently visible"
@@ -5299,7 +5328,8 @@ msgstr "Korrigarria"
 
 #: ctk/ctknotebook.c:796
 msgid "If TRUE, scroll arrows are added if there are too many tabs to fit"
-msgstr "TRUE (egia) bada, korritze-geziak gehitzen dira fitxa gehiegi daudenean"
+msgstr ""
+"TRUE (egia) bada, korritze-geziak gehitzen dira fitxa gehiegi daudenean"
 
 #: ctk/ctknotebook.c:802
 msgid "Enable Popup"
@@ -5309,7 +5339,9 @@ msgstr "Gaitu laster-leihoa"
 msgid ""
 "If TRUE, pressing the right mouse button on the notebook pops up a menu that "
 "you can use to go to a page"
-msgstr "TRUE (egia) bada, ohar-koadernoan saguaren eskuineko botoia sakatuz orrialde batera joateko menua agertuko da"
+msgstr ""
+"TRUE (egia) bada, ohar-koadernoan saguaren eskuineko botoia sakatuz orrialde "
+"batera joateko menua agertuko da"
 
 #: ctk/ctknotebook.c:816
 msgid "Group Name"
@@ -5374,7 +5406,9 @@ msgstr "Bigarren mailako atzeranzko gezia"
 #: ctk/ctknotebook.c:886
 msgid ""
 "Display a second backward arrow button on the opposite end of the tab area"
-msgstr "Bigarren atzera-geziaren botoia bistaratzen du etiketa-arearen kontrako bukaeran"
+msgstr ""
+"Bigarren atzera-geziaren botoia bistaratzen du etiketa-arearen kontrako "
+"bukaeran"
 
 #: ctk/ctknotebook.c:901 ctk/ctkscrollbar.c:143
 msgid "Secondary forward stepper"
@@ -5383,7 +5417,9 @@ msgstr "Bigarren mailako aurreranzko gezia"
 #: ctk/ctknotebook.c:902
 msgid ""
 "Display a second forward arrow button on the opposite end of the tab area"
-msgstr "Bigarren aurrera-geziaren botoia bistaratzen du etiketa-arearen kontrako bukaeran"
+msgstr ""
+"Bigarren aurrera-geziaren botoia bistaratzen du etiketa-arearen kontrako "
+"bukaeran"
 
 #: ctk/ctknotebook.c:916 ctk/ctkscrollbar.c:122
 msgid "Backward stepper"
@@ -5447,19 +5483,19 @@ msgstr "Fitxa aktiboak tarte bat dauka marraztuta behean"
 msgid "The orientation of the orientable"
 msgstr "Orientagarriaren orientazioa"
 
-#: ctk/ctkoverlay.c:783
+#: ctk/ctkoverlay.c:790
 msgid "Pass Through"
 msgstr "Igarotzea"
 
-#: ctk/ctkoverlay.c:783
+#: ctk/ctkoverlay.c:790
 msgid "Pass through input, does not affect main child"
 msgstr "Sarrera igarotzailea, ez dio ume nagusiari eragiten"
 
-#: ctk/ctkoverlay.c:797
+#: ctk/ctkoverlay.c:804
 msgid "Index"
 msgstr "Indizea"
 
-#: ctk/ctkoverlay.c:798
+#: ctk/ctkoverlay.c:805
 msgid "The index of the overlay in the parent, -1 for the main child"
 msgstr "Gainjarritako elementuaren indizea gurasoan, -1 ume nagusiarentzako"
 
@@ -5482,7 +5518,8 @@ msgstr "Tableta cailua kontrolatzeko"
 #: ctk/ctkpaned.c:369
 msgid ""
 "Position of paned separator in pixels (0 means all the way to the left/top)"
-msgstr "Panel-bereizlearen kokalekua pixeletan (0k ezkerrean/goian esan nahi du)"
+msgstr ""
+"Panel-bereizlearen kokalekua pixeletan (0k ezkerrean/goian esan nahi du)"
 
 #: ctk/ctkpaned.c:376
 msgid "Position Set"
@@ -5532,7 +5569,9 @@ msgstr "Aldatu tamaina"
 
 #: ctk/ctkpaned.c:460
 msgid "If TRUE, the child expands and shrinks along with the paned widget"
-msgstr "TRUE (egia) bada, umea zabaldu eta txikitu egiten da panelean dagoen trepetarekin batera"
+msgstr ""
+"TRUE (egia) bada, umea zabaldu eta txikitu egiten da panelean dagoen "
+"trepetarekin batera"
 
 #: ctk/ctkpaned.c:475
 msgid "Shrink"
@@ -5550,15 +5589,17 @@ msgstr "Kokalekua hautatzeko"
 msgid "The location to highlight in the sidebar"
 msgstr "Kokalekua alboko barran nabarmentzeko"
 
-#: ctk/ctkplacessidebar.c:4805 ctk/ctkplacesview.c:2357
+#: ctk/ctkplacessidebar.c:4805 ctk/ctkplacesview.c:2369
 msgid "Open Flags"
 msgstr "Irekieraren banderak"
 
-#: ctk/ctkplacessidebar.c:4806 ctk/ctkplacesview.c:2358
+#: ctk/ctkplacessidebar.c:4806 ctk/ctkplacesview.c:2370
 msgid ""
 "Modes in which the calling application can open locations selected in the "
 "sidebar"
-msgstr "Aplikazioaren deiak alboko barran hautatutako kokalekuak irekiko dituen moduak"
+msgstr ""
+"Aplikazioaren deiak alboko barran hautatutako kokalekuak irekiko dituen "
+"moduak"
 
 #: ctk/ctkplacessidebar.c:4812
 msgid "Show recent files"
@@ -5566,7 +5607,8 @@ msgstr "Erakutsi azken fitxategiak"
 
 #: ctk/ctkplacessidebar.c:4813
 msgid "Whether the sidebar includes a builtin shortcut for recent files"
-msgstr "Albo-barrak azken erabilitako fitxategien barneko lasterbidea duen ala ez"
+msgstr ""
+"Albo-barrak azken erabilitako fitxategien barneko lasterbidea duen ala ez"
 
 #: ctk/ctkplacessidebar.c:4818
 msgid "Show 'Desktop'"
@@ -5574,7 +5616,9 @@ msgstr "Erakutsi 'Mahaigaina'"
 
 #: ctk/ctkplacessidebar.c:4819
 msgid "Whether the sidebar includes a builtin shortcut to the Desktop folder"
-msgstr "Albo-barrak barneko lasterbidea duen 'Mahaigaina' karpetarako ala ez adierazten du"
+msgstr ""
+"Albo-barrak barneko lasterbidea duen 'Mahaigaina' karpetarako ala ez "
+"adierazten du"
 
 #: ctk/ctkplacessidebar.c:4824
 msgid "Show 'Connect to Server'"
@@ -5584,7 +5628,9 @@ msgstr "Erakutsi 'Konektatu zerbitzarira'"
 msgid ""
 "Whether the sidebar includes a builtin shortcut to a 'Connect to server' "
 "dialog"
-msgstr "Albo-barrak barneko lasterbidea duen 'Konektatu zerbitzarira' elkarrizketa-koadrora ala ez adierazten du"
+msgstr ""
+"Albo-barrak barneko lasterbidea duen 'Konektatu zerbitzarira' elkarrizketa-"
+"koadrora ala ez adierazten du"
 
 #: ctk/ctkplacessidebar.c:4830
 msgid "Show 'Enter Location'"
@@ -5595,7 +5641,7 @@ msgid ""
 "Whether the sidebar includes a builtin shortcut to manually enter a location"
 msgstr "Albo-barrak kokalekua eskuz sartzeko barneko lasterbidea duen edo ez"
 
-#: ctk/ctkplacessidebar.c:4837 ctk/ctkplacesview.c:2337
+#: ctk/ctkplacessidebar.c:4837 ctk/ctkplacesview.c:2349
 msgid "Whether the sidebar only includes local files"
 msgstr "Albo-barrak lokaleko fitxategiak soilik eduki behar dituen edo ez"
 
@@ -5605,7 +5651,8 @@ msgstr "Erakutsi 'Zakarrontzia'"
 
 #: ctk/ctkplacessidebar.c:4843
 msgid "Whether the sidebar includes a builtin shortcut to the Trash location"
-msgstr "Albo-barrak 'Zakarrontzia' kokalekuaren barneko lasterbidea duen edo ez"
+msgstr ""
+"Albo-barrak 'Zakarrontzia' kokalekuaren barneko lasterbidea duen edo ez"
 
 #: ctk/ctkplacessidebar.c:4848
 msgid "Show 'Other locations'"
@@ -5627,19 +5674,19 @@ msgstr "Alboko barrak kokaleku izardunak erakusteko elementu bat daukan ala ez"
 msgid "Whether to emit ::populate-popup for popups that are not menus"
 msgstr "Menuak ez diren ::populate-popup igorri ala ez"
 
-#: ctk/ctkplacesview.c:2343
+#: ctk/ctkplacesview.c:2355
 msgid "Loading"
 msgstr "Kargatzen"
 
-#: ctk/ctkplacesview.c:2344
+#: ctk/ctkplacesview.c:2356
 msgid "Whether the view is loading locations"
 msgstr "Ikuspegiak kokalekuak kargatzen dituen ala ez"
 
-#: ctk/ctkplacesview.c:2350
+#: ctk/ctkplacesview.c:2362
 msgid "Fetching networks"
 msgstr "Sareak eskuratzea"
 
-#: ctk/ctkplacesview.c:2351
+#: ctk/ctkplacesview.c:2363
 msgid "Whether the view is fetching networks"
 msgstr "Ikuspegiak sareak eskuratzen dituen ala ez"
 
@@ -5695,15 +5742,19 @@ msgstr "Errenkadak adierazitako fitxategia, egonez gero"
 msgid "Whether the row represents a network location"
 msgstr "Errenkadak sarearen kokalekua adierazten duen edo ez"
 
-#: ctk/ctkplug.c:197
+#: ctk/ctkplug.c:198 ctk/ctkstatusicon.c:320
+msgid "Embedded"
+msgstr "Kapsulatua"
+
+#: ctk/ctkplug.c:199
 msgid "Whether the plug is embedded"
 msgstr "Konektorea kapsulatuta dagoen edo ez"
 
-#: ctk/ctkplug.c:211
+#: ctk/ctkplug.c:213
 msgid "Socket Window"
 msgstr "Socket-aren leihoa"
 
-#: ctk/ctkplug.c:212
+#: ctk/ctkplug.c:214
 msgid "The window of the socket the plug is embedded in"
 msgstr "Konektorea kapsulatuta dagoen socket-aren leihoa"
 
@@ -5890,7 +5941,10 @@ msgstr "Inprimatze-egoeraren jarraipena"
 msgid ""
 "TRUE if the print job will continue to emit status-changed signals after the "
 "print data has been sent to the printer or print server."
-msgstr "EGIA inprimatze-eragiketak inprimatze-lanaren egoeraren berri ematen jarraitzen badu inprimatze-datuak inprimacailura edo inprimatze-zerbitzarira bidali ondoren."
+msgstr ""
+"EGIA inprimatze-eragiketak inprimatze-lanaren egoeraren berri ematen "
+"jarraitzen badu inprimatze-datuak inprimacailura edo inprimatze-zerbitzarira "
+"bidali ondoren."
 
 #: ctk/ctkprintoperation.c:1109
 msgid "Default Page Setup"
@@ -5940,13 +5994,18 @@ msgstr "Erabili orrialde osoa"
 msgid ""
 "TRUE if the origin of the context should be at the corner of the page and "
 "not the corner of the imageable area"
-msgstr "EGIA testuinguruaren jatorria orrialdearen ertza izan behar badu eta ez irudiaren arearen ertzean"
+msgstr ""
+"EGIA testuinguruaren jatorria orrialdearen ertza izan behar badu eta ez "
+"irudiaren arearen ertzean"
 
 #: ctk/ctkprintoperation.c:1238
 msgid ""
 "TRUE if the print operation will continue to report on the print job status "
 "after the print data has been sent to the printer or print server."
-msgstr "EGIA inprimatze-eragiketak inprimatze-lanaren egoeraren berri ematen jarraitzen badu inprimatze-datuak inprimacailura edo inprimatze-zerbitzarira bidali ondoren."
+msgstr ""
+"EGIA inprimatze-eragiketak inprimatze-lanaren egoeraren berri ematen "
+"jarraitzen badu inprimatze-datuak inprimacailura edo inprimatze-zerbitzarira "
+"bidali ondoren."
 
 #: ctk/ctkprintoperation.c:1255
 msgid "Unit"
@@ -6006,7 +6065,8 @@ msgstr "Hautapenaren euskarria"
 
 #: ctk/ctkprintoperation.c:1392
 msgid "TRUE if the print operation will support print of selection."
-msgstr "TRUE (egia) inprimatzeko eragiketak hautapena inprimatzea onartzen badu."
+msgstr ""
+"TRUE (egia) inprimatzeko eragiketak hautapena inprimatzea onartzen badu."
 
 #: ctk/ctkprintoperation.c:1408 ctk/ctkprintunixdialog.c:464
 msgid "Has Selection"
@@ -6023,7 +6083,9 @@ msgstr "Kapsulatutako orriaren konfigurazioa"
 
 #: ctk/ctkprintoperation.c:1425 ctk/ctkprintunixdialog.c:473
 msgid "TRUE if page setup combos are embedded in CtkPrintUnixDialog"
-msgstr "TRUE (egia) orria konfiguratzeko konbinazio-koadroak CtkPrintUnixDialog-en kapsulatuta badaude"
+msgstr ""
+"TRUE (egia) orria konfiguratzeko konbinazio-koadroak CtkPrintUnixDialog-en "
+"kapsulatuta badaude"
 
 #: ctk/ctkprintoperation.c:1446
 msgid "Number of Pages To Print"
@@ -6076,7 +6138,8 @@ msgstr "Pultsuaren urratsa"
 
 #: ctk/ctkprogressbar.c:280
 msgid "The fraction of total progress to move the bouncing block when pulsed"
-msgstr "Sakatutakoan errebote-blokeak egin beharreko progresio osoaren frakzioa"
+msgstr ""
+"Sakatutakoan errebote-blokeak egin beharreko progresio osoaren frakzioa"
 
 #: ctk/ctkprogressbar.c:288
 msgid "Text to be displayed in the progress bar"
@@ -6094,7 +6157,9 @@ msgstr "Progresioa testu gisa erakutsiko den ala ez adierazten du"
 msgid ""
 "The preferred place to ellipsize the string, if the progress bar does not "
 "have enough room to display the entire string, if at all."
-msgstr "Katea elipsi gisa jartzeko lekua, progresio-barrak nahikoa toki ez badu kate osoa bistaratzeko."
+msgstr ""
+"Katea elipsi gisa jartzeko lekua, progresio-barrak nahikoa toki ez badu kate "
+"osoa bistaratzeko."
 
 #
 #: ctk/ctkprogressbar.c:349
@@ -6146,6 +6211,39 @@ msgstr "Barra bertikalaren gutxieneko altuera"
 msgid "The minimum vertical height of the progress bar"
 msgstr "Progresio-barraren gutxieneko altuera bertikala"
 
+#: ctk/ctkradioaction.c:116
+msgid "The value"
+msgstr "Balioa"
+
+#: ctk/ctkradioaction.c:117
+msgid ""
+"The value returned by ctk_radio_action_get_current_value() when this action "
+"is the current action of its group."
+msgstr ""
+"Ekintza hau bere taldeko uneko ekintza denean, "
+"ctk_radio_action_get_current_value()-k itzultzen duen balioa."
+
+#: ctk/ctkradioaction.c:133 ctk/ctkradiobutton.c:184 ctk/ctkradiomenuitem.c:424
+#: ctk/ctkradiotoolbutton.c:83
+msgid "Group"
+msgstr "Taldea"
+
+#: ctk/ctkradioaction.c:134
+msgid "The radio action whose group this action belongs to."
+msgstr "Ekintza honen taldeari dagokion aukera-botoien bidezko ekintza."
+
+#: ctk/ctkradioaction.c:149
+msgid "The current value"
+msgstr "Uneko balioa"
+
+#: ctk/ctkradioaction.c:150
+msgid ""
+"The value property of the currently active member of the group to which this "
+"action belongs."
+msgstr ""
+"Ekintza hau dagokion uneko aktibo dagoen taldeko kidearen propietatearen "
+"balioa."
+
 #: ctk/ctkradiobutton.c:185
 msgid "The radio button whose group this widget belongs to."
 msgstr "Aukera-botoia (taldeari dagokion trepeta hau)."
@@ -6164,7 +6262,8 @@ msgstr "Barruti-objektu honen uneko balioa duen CtkAdjustment"
 
 #: ctk/ctkrange.c:442
 msgid "Invert direction slider moves to increase range value"
-msgstr "Graduatzailea mugitzen den norabidea alderantzikatu barruti-balioa handitzeko"
+msgstr ""
+"Graduatzailea mugitzen den norabidea alderantzikatu barruti-balioa handitzeko"
 
 #: ctk/ctkrange.c:448
 msgid "Lower stepper sensitivity"
@@ -6174,7 +6273,8 @@ msgstr "Beheranzko geziaren sentikortasuna"
 msgid ""
 "The sensitivity policy for the stepper that points to the adjustment's lower "
 "side"
-msgstr "Beheko zatira egokitzeko bideratzen duen geziaren sentikortasun politika"
+msgstr ""
+"Beheko zatira egokitzeko bideratzen duen geziaren sentikortasun politika"
 
 #: ctk/ctkrange.c:456
 msgid "Upper stepper sensitivity"
@@ -6184,7 +6284,8 @@ msgstr "Goiko geziaren sentikortasuna"
 msgid ""
 "The sensitivity policy for the stepper that points to the adjustment's upper "
 "side"
-msgstr "Goiko zatira egokitzeko bideratzen duen geziaren sentikortasun politika"
+msgstr ""
+"Goiko zatira egokitzeko bideratzen duen geziaren sentikortasun politika"
 
 #: ctk/ctkrange.c:473
 msgid "Show Fill Level"
@@ -6192,7 +6293,8 @@ msgstr "Erakutsi betegarri-maila"
 
 #: ctk/ctkrange.c:474
 msgid "Whether to display a fill level indicator graphics on trough."
-msgstr "Betegarriaren mailaren adierazlea erakutsi edo ez betetzen ari den bitartean."
+msgstr ""
+"Betegarriaren mailaren adierazlea erakutsi edo ez betetzen ari den bitartean."
 
 #: ctk/ctkrange.c:489
 msgid "Restrict to Fill Level"
@@ -6291,6 +6393,14 @@ msgstr "Gezia eskalatzea"
 msgid "Arrow scaling with regard to scroll button size"
 msgstr "Gezia eskalatzea korritze botoiaren tamainarekiko"
 
+#: ctk/ctkrecentaction.c:666 ctk/ctkrecentchoosermenu.c:239
+msgid "Show Numbers"
+msgstr "Erakutsi zenbakiak"
+
+#: ctk/ctkrecentaction.c:667 ctk/ctkrecentchoosermenu.c:240
+msgid "Whether the items should be displayed with a number"
+msgstr "Elementuak zenbaki batekin bistaratu behar diren edo ez"
+
 #: ctk/ctkrecentchooser.c:130
 msgid "Recent Manager"
 msgstr "Oraintsuko kudeatzailea"
@@ -6329,7 +6439,9 @@ msgstr "Erakutsi ez-aurkituak"
 
 #: ctk/ctkrecentchooser.c:193
 msgid "Whether the items pointing to unavailable resources should be displayed"
-msgstr "Erabilgarri ez dauden baliabideetara erakusten duten elementuak bistaratu edo ez"
+msgstr ""
+"Erabilgarri ez dauden baliabideetara erakusten duten elementuak bistaratu "
+"edo ez"
 
 #: ctk/ctkrecentchooser.c:207
 msgid "Whether to allow multiple items to be selected"
@@ -6341,7 +6453,9 @@ msgstr "Lokalak bakarrik"
 
 #: ctk/ctkrecentchooser.c:222
 msgid "Whether the selected resource(s) should be limited to local file: URIs"
-msgstr "Hautatutako baliabidea(k) fitxategi lokale(ta)ra mugatu behar den edo ez: URIak"
+msgstr ""
+"Hautatutako baliabidea(k) fitxategi lokale(ta)ra mugatu behar den edo ez: "
+"URIak"
 
 #: ctk/ctkrecentchooser.c:236
 msgid "Limit"
@@ -6363,11 +6477,13 @@ msgstr "Bistaratutako elementuak nola ordenatuko diren"
 msgid "The current filter for selecting which resources are displayed"
 msgstr "Zein fitxategi bistaratuko diren hautatzeko uneko iragazkia"
 
-#: ctk/ctkrecentmanager.c:290
+#: ctk/ctkrecentmanager.c:289
 msgid "The full path to the file to be used to store and read the list"
-msgstr "Zerrenda gordetzeko eta irakurtzeko erabiliko den fitxategiaren bide-izen osoa"
+msgstr ""
+"Zerrenda gordetzeko eta irakurtzeko erabiliko den fitxategiaren bide-izen "
+"osoa"
 
-#: ctk/ctkrecentmanager.c:305
+#: ctk/ctkrecentmanager.c:304
 msgid "The size of the recently used resources list"
 msgstr "Azken aldiz erabilitako baliabideen zerrendaren tamaina"
 
@@ -6435,7 +6551,9 @@ msgstr "Marrazkiaren balioa"
 
 #: ctk/ctkscale.c:776
 msgid "Whether the current value is displayed as a string next to the slider"
-msgstr "Uneko balioa graduatzailearen ondoan kate gisa bistaratuko den ala ez adierazten du"
+msgstr ""
+"Uneko balioa graduatzailearen ondoan kate gisa bistaratuko den ala ez "
+"adierazten du"
 
 #: ctk/ctkscale.c:782
 msgid "Has Origin"
@@ -6467,7 +6585,8 @@ msgstr "Balioaren tartea"
 
 #: ctk/ctkscale.c:823
 msgid "Space between value text and the slider/trough area"
-msgstr "Balio-testuaren eta graduatzailearen/kurtsorearen arearen arteko tartea"
+msgstr ""
+"Balio-testuaren eta graduatzailearen/kurtsorearen arearen arteko tartea"
 
 #
 #: ctk/ctkscrollable.c:77
@@ -6478,7 +6597,9 @@ msgstr "Doitze horizontala"
 msgid ""
 "Horizontal adjustment that is shared between the scrollable widget and its "
 "controller"
-msgstr "Doiketa horizontala (korritze-trepetaren eta bere kontrolatzailearen artean partekagarria dena)"
+msgstr ""
+"Doiketa horizontala (korritze-trepetaren eta bere kontrolatzailearen artean "
+"partekagarria dena)"
 
 #: ctk/ctkscrollable.c:94
 msgid "Vertical adjustment"
@@ -6488,7 +6609,9 @@ msgstr "Doitze bertikala"
 msgid ""
 "Vertical adjustment that is shared between the scrollable widget and its "
 "controller"
-msgstr "Doiketa bertikala (korritze-trepetaren eta bere kontrolatzailearen artean partekagarria dena)"
+msgstr ""
+"Doiketa bertikala (korritze-trepetaren eta bere kontrolatzailearen artean "
+"partekagarria dena)"
 
 #
 #: ctk/ctkscrollable.c:111
@@ -6522,148 +6645,154 @@ msgstr "Ez aldatu graduatzailearen tamaina; blokeatu gutxieneko luzeran"
 #: ctk/ctkscrollbar.c:137
 msgid ""
 "Display a second backward arrow button on the opposite end of the scrollbar"
-msgstr "Bigarren atzera-geziaren botoia bistaratzen du korritze-barraren kontrako bukaeran"
+msgstr ""
+"Bigarren atzera-geziaren botoia bistaratzen du korritze-barraren kontrako "
+"bukaeran"
 
 #: ctk/ctkscrollbar.c:144
 msgid ""
 "Display a second forward arrow button on the opposite end of the scrollbar"
-msgstr "Bigarren aurrera-geziaren botoia bistaratzen du korritze-barraren kontrako bukaeran"
+msgstr ""
+"Bigarren aurrera-geziaren botoia bistaratzen du korritze-barraren kontrako "
+"bukaeran"
 
 #
-#: ctk/ctkscrolledwindow.c:569
+#: ctk/ctkscrolledwindow.c:567
 msgid "Horizontal Adjustment"
 msgstr "Doitze horizontala"
 
-#: ctk/ctkscrolledwindow.c:570
+#: ctk/ctkscrolledwindow.c:568
 msgid "The CtkAdjustment for the horizontal position"
 msgstr "Posizio horizontalaren CtkAdjustment"
 
-#: ctk/ctkscrolledwindow.c:576
+#: ctk/ctkscrolledwindow.c:574
 msgid "Vertical Adjustment"
 msgstr "Doitze bertikala"
 
-#: ctk/ctkscrolledwindow.c:577
+#: ctk/ctkscrolledwindow.c:575
 msgid "The CtkAdjustment for the vertical position"
 msgstr "Posizio bertikalaren CtkAdjustment"
 
 #
-#: ctk/ctkscrolledwindow.c:583
+#: ctk/ctkscrolledwindow.c:581
 msgid "Horizontal Scrollbar Policy"
 msgstr "Korritze-barra horizontalaren politika"
 
-#: ctk/ctkscrolledwindow.c:584
+#: ctk/ctkscrolledwindow.c:582
 msgid "When the horizontal scrollbar is displayed"
 msgstr "Korritze-barra horizontala bistaratzean"
 
-#: ctk/ctkscrolledwindow.c:591
+#: ctk/ctkscrolledwindow.c:589
 msgid "Vertical Scrollbar Policy"
 msgstr "Korritze-barra bertikalaren politika"
 
-#: ctk/ctkscrolledwindow.c:592
+#: ctk/ctkscrolledwindow.c:590
 msgid "When the vertical scrollbar is displayed"
 msgstr "Korritze-barra bertikala bistaratzean"
 
 #
-#: ctk/ctkscrolledwindow.c:599
+#: ctk/ctkscrolledwindow.c:597
 msgid "Window Placement"
 msgstr "Leihoaren kokalekua"
 
-#: ctk/ctkscrolledwindow.c:600
+#: ctk/ctkscrolledwindow.c:598
 msgid "Where the contents are located with respect to the scrollbars."
 msgstr "Edukiak korritze-barrekiko kokatzen diren edo ez."
 
 #
-#: ctk/ctkscrolledwindow.c:618
+#: ctk/ctkscrolledwindow.c:616
 msgid "Window Placement Set"
 msgstr "Leihoa kokatzeko ezarpena"
 
-#: ctk/ctkscrolledwindow.c:619
+#: ctk/ctkscrolledwindow.c:617
 msgid ""
 "Whether \"window-placement\" should be used to determine the location of the "
 "contents with respect to the scrollbars."
-msgstr "Edukien kokalekua korritze-barrekiko zehazteko \"window-placement\" erabili behar den edo ez."
+msgstr ""
+"Edukien kokalekua korritze-barrekiko zehazteko \"window-placement\" erabili "
+"behar den edo ez."
 
-#: ctk/ctkscrolledwindow.c:625 ctk/ctkspinbutton.c:455
+#: ctk/ctkscrolledwindow.c:623 ctk/ctkspinbutton.c:455
 msgid "Shadow Type"
 msgstr "Itzal-mota"
 
-#: ctk/ctkscrolledwindow.c:626
+#: ctk/ctkscrolledwindow.c:624
 msgid "Style of bevel around the contents"
 msgstr "Edukiaren inguruko alaka-estiloa"
 
 #
-#: ctk/ctkscrolledwindow.c:642
+#: ctk/ctkscrolledwindow.c:640
 msgid "Scrollbars within bevel"
 msgstr "Korritze-barra alaken artean"
 
-#: ctk/ctkscrolledwindow.c:643
+#: ctk/ctkscrolledwindow.c:641
 msgid "Place scrollbars within the scrolled window's bevel"
 msgstr "Korritutako leihoaren alaken artean kokatzen du Korritze-barra"
 
 #
-#: ctk/ctkscrolledwindow.c:649
+#: ctk/ctkscrolledwindow.c:647
 msgid "Scrollbar spacing"
 msgstr "Korritze-barraren tartea"
 
-#: ctk/ctkscrolledwindow.c:650
+#: ctk/ctkscrolledwindow.c:648
 msgid "Number of pixels between the scrollbars and the scrolled window"
 msgstr "Korritze-barren eta korritutako leihoaren artean dagoen pixel-kopurua"
 
-#: ctk/ctkscrolledwindow.c:665
+#: ctk/ctkscrolledwindow.c:663
 msgid "Minimum Content Width"
 msgstr "Edukiaren gutxieneko zabalera"
 
-#: ctk/ctkscrolledwindow.c:666
+#: ctk/ctkscrolledwindow.c:664
 msgid "The minimum width that the scrolled window will allocate to its content"
 msgstr "Korritutako leihoak bere edukiari eslei dezaiokeen gutxieneko zabalera"
 
-#: ctk/ctkscrolledwindow.c:679
+#: ctk/ctkscrolledwindow.c:677
 msgid "Minimum Content Height"
 msgstr "Edukiaren gutxieneko altuera"
 
-#: ctk/ctkscrolledwindow.c:680
+#: ctk/ctkscrolledwindow.c:678
 msgid ""
 "The minimum height that the scrolled window will allocate to its content"
 msgstr "Korritutako leihoak bere edukiari eslei dezaiokeen gutxieneko altuera"
 
-#: ctk/ctkscrolledwindow.c:694
+#: ctk/ctkscrolledwindow.c:692
 msgid "Kinetic Scrolling"
 msgstr "Korritze zinetikoa"
 
-#: ctk/ctkscrolledwindow.c:695
+#: ctk/ctkscrolledwindow.c:693
 msgid "Kinetic scrolling mode."
 msgstr "Korritze zinetikoaren modua."
 
-#: ctk/ctkscrolledwindow.c:714
+#: ctk/ctkscrolledwindow.c:712
 msgid "Overlay Scrolling"
 msgstr "Gainjarritako korritzea"
 
-#: ctk/ctkscrolledwindow.c:715
+#: ctk/ctkscrolledwindow.c:713
 msgid "Overlay scrolling mode"
 msgstr "Gainjarritako korritzearen modua"
 
-#: ctk/ctkscrolledwindow.c:728
+#: ctk/ctkscrolledwindow.c:726
 msgid "Maximum Content Width"
 msgstr "Edukiaren gehieneko zabalera"
 
-#: ctk/ctkscrolledwindow.c:729
+#: ctk/ctkscrolledwindow.c:727
 msgid "The maximum width that the scrolled window will allocate to its content"
 msgstr "Korritutako leihoak bere edukiari eslei iezaiokeen gehieneko zabalera"
 
-#: ctk/ctkscrolledwindow.c:742
+#: ctk/ctkscrolledwindow.c:740
 msgid "Maximum Content Height"
 msgstr "Edukiaren gehieneko altuera"
 
-#: ctk/ctkscrolledwindow.c:743
+#: ctk/ctkscrolledwindow.c:741
 msgid ""
 "The maximum height that the scrolled window will allocate to its content"
 msgstr "Korritutako leihoak bere edukiari eslei iezaiokeen gehieneko altuera"
 
-#: ctk/ctkscrolledwindow.c:760 ctk/ctkscrolledwindow.c:761
+#: ctk/ctkscrolledwindow.c:758 ctk/ctkscrolledwindow.c:759
 msgid "Propagate Natural Width"
 msgstr "Hedatu zabalera naturala"
 
-#: ctk/ctkscrolledwindow.c:778 ctk/ctkscrolledwindow.c:779
+#: ctk/ctkscrolledwindow.c:776 ctk/ctkscrolledwindow.c:777
 msgid "Propagate Natural Height"
 msgstr "Hedatu altuera naturala"
 
@@ -6673,7 +6802,8 @@ msgstr "Bilaketaren modua gaituta"
 
 #: ctk/ctksearchbar.c:415
 msgid "Whether the search mode is on and the search bar shown"
-msgstr "Bilaketaren modua gaituta dagoen eta bilaketa-barra erakutsi den edo ez"
+msgstr ""
+"Bilaketaren modua gaituta dagoen eta bilaketa-barra erakutsi den edo ez"
 
 #: ctk/ctksearchbar.c:426
 msgid "Whether to show the close button in the toolbar"
@@ -6695,7 +6825,9 @@ msgstr "Klik bikoitzaren denbora"
 msgid ""
 "Maximum time allowed between two clicks for them to be considered a double "
 "click (in milliseconds)"
-msgstr "Klik bikoitza izateko bi kliken artean igaro daitekeen gehieneko denbora (milisegundotan)"
+msgstr ""
+"Klik bikoitza izateko bi kliken artean igaro daitekeen gehieneko denbora "
+"(milisegundotan)"
 
 #: ctk/ctksettings.c:400
 msgid "Double Click Distance"
@@ -6705,7 +6837,10 @@ msgstr "Klik bikoitzaren distantzia"
 msgid ""
 "Maximum distance allowed between two clicks for them to be considered a "
 "double click (in pixels)"
-msgstr "Klik bikoitza izateko bi kliken artean egon daitekeen gehieneko distantzia (pixeletan)Klik bikoitza izateko bi kliken artean igaro daitekeen gehieneko denbora (milisegundotan)"
+msgstr ""
+"Klik bikoitza izateko bi kliken artean egon daitekeen gehieneko distantzia "
+"(pixeletan)Klik bikoitza izateko bi kliken artean igaro daitekeen gehieneko "
+"denbora (milisegundotan)"
 
 #
 #: ctk/ctksettings.c:417
@@ -6742,7 +6877,9 @@ msgstr "Kurtsore zatitua"
 msgid ""
 "Whether two cursors should be displayed for mixed left-to-right and right-to-"
 "left text"
-msgstr "Ezkerretik eskuinera eta eskuinetik ezkerrera doan testu nahasian bi kurtsore bistaratu behar diren ala ez adierazten du"
+msgstr ""
+"Ezkerretik eskuinera eta eskuinetik ezkerrera doan testu nahasian bi "
+"kurtsore bistaratu behar diren ala ez adierazten du"
 
 #: ctk/ctksettings.c:461
 msgid "Cursor Aspect Ratio"
@@ -6832,7 +6969,9 @@ msgstr "Xft Antialias-a"
 
 #: ctk/ctksettings.c:588
 msgid "Whether to antialias Xft fonts; 0=no, 1=yes, -1=default"
-msgstr "Xft letra-tipoei antialiasing-a aplikatu behar zaien ala ez adierazten du; 0=ez, 1=bai, -1=lehenetsia"
+msgstr ""
+"Xft letra-tipoei antialiasing-a aplikatu behar zaien ala ez adierazten du; "
+"0=ez, 1=bai, -1=lehenetsia"
 
 #: ctk/ctksettings.c:597
 msgid "Xft Hinting"
@@ -6840,7 +6979,9 @@ msgstr "Xft Hinting-a"
 
 #: ctk/ctksettings.c:598
 msgid "Whether to hint Xft fonts; 0=no, 1=yes, -1=default"
-msgstr "Xft letra-tipoekin hinting-a erabili behar den ala ez adierazten du; 1=bai, -1=lehenetsia"
+msgstr ""
+"Xft letra-tipoekin hinting-a erabili behar den ala ez adierazten du; 1=bai, "
+"-1=lehenetsia"
 
 #: ctk/ctksettings.c:607
 msgid "Xft Hint Style"
@@ -6849,7 +6990,8 @@ msgstr "Xft hinting-estiloa"
 #: ctk/ctksettings.c:608
 msgid ""
 "What degree of hinting to use; hintnone, hintslight, hintmedium, or hintfull"
-msgstr "Zein hinting-maila erabili behar; bat ere ez, arina, tartekoa, edo osoa"
+msgstr ""
+"Zein hinting-maila erabili behar; bat ere ez, arina, tartekoa, edo osoa"
 
 #: ctk/ctksettings.c:617
 msgid "Xft RGBA"
@@ -6865,7 +7007,8 @@ msgstr "Xft DPI"
 
 #: ctk/ctksettings.c:628
 msgid "Resolution for Xft, in 1024 * dots/inch. -1 to use default value"
-msgstr "Xft-n bereizmena, 1024 * hazbete/puntuko. -1 balio lehenetsia erabiltzeko"
+msgstr ""
+"Xft-n bereizmena, 1024 * hazbete/puntuko. -1 balio lehenetsia erabiltzeko"
 
 #: ctk/ctksettings.c:637
 msgid "Cursor theme name"
@@ -6873,7 +7016,9 @@ msgstr "Ikonoen gaiaren izena"
 
 #: ctk/ctksettings.c:638
 msgid "Name of the cursor theme to use, or NULL to use the default theme"
-msgstr "Erabili beharreko kurtsorearen gaiaren izena, edo NULL gai lehenetsia erabiltzeko"
+msgstr ""
+"Erabili beharreko kurtsorearen gaiaren izena, edo NULL gai lehenetsia "
+"erabiltzeko"
 
 #
 #: ctk/ctksettings.c:646
@@ -6890,7 +7035,9 @@ msgstr "Botoien ordena alternatiboa"
 
 #: ctk/ctksettings.c:657
 msgid "Whether buttons in dialogs should use the alternative button order"
-msgstr "Elkarrizketa-koadroetako botoiak bestelako botoien ordena erabiliko duen ala ez adierazten du"
+msgstr ""
+"Elkarrizketa-koadroetako botoiak bestelako botoien ordena erabiliko duen ala "
+"ez adierazten du"
 
 #: ctk/ctksettings.c:674
 msgid "Alternative sort indicator direction"
@@ -6900,7 +7047,10 @@ msgstr "Ordena adierazlearen norabide alternatiboa"
 msgid ""
 "Whether the direction of the sort indicators in list and tree views is "
 "inverted compared to the default (where down means ascending)"
-msgstr "Zerrenden eta zuhaitzen ikuspegiko ordenaren adierazlearen norabidea alderantzikatzen den edo ez lehenetsiarekin konparatuz (behera gorantz adierazten du)"
+msgstr ""
+"Zerrenden eta zuhaitzen ikuspegiko ordenaren adierazlearen norabidea "
+"alderantzikatzen den edo ez lehenetsiarekin konparatuz (behera gorantz "
+"adierazten du)"
 
 #: ctk/ctksettings.c:688
 msgid "Show the 'Input Methods' menu"
@@ -6910,7 +7060,9 @@ msgstr "Erakutsi 'Sarrerako metodoak' menua"
 msgid ""
 "Whether the context menus of entries and text views should offer to change "
 "the input method"
-msgstr "Sarrerako eta testuen ikuspegiko testuinguruko menuak sarrerako metodoa aldatzea utzi behar duen edo ez."
+msgstr ""
+"Sarrerako eta testuen ikuspegiko testuinguruko menuak sarrerako metodoa "
+"aldatzea utzi behar duen edo ez."
 
 #: ctk/ctksettings.c:702
 msgid "Show the 'Insert Unicode Control Character' menu"
@@ -6920,7 +7072,9 @@ msgstr "Erakutsi 'Txertatu Unicode kontroleko karakterea' menua"
 msgid ""
 "Whether the context menus of entries and text views should offer to insert "
 "control characters"
-msgstr "Sarrerako eta testuen ikuspegiko testuinguruko menuak kontroleko karaktereak txertatzea utzi behar duen edo ez."
+msgstr ""
+"Sarrerako eta testuen ikuspegiko testuinguruko menuak kontroleko karaktereak "
+"txertatzea utzi behar duen edo ez."
 
 #: ctk/ctksettings.c:716
 msgid "Start timeout"
@@ -6969,7 +7123,8 @@ msgstr "Gaitu ukitze-pantaila modua"
 
 #: ctk/ctksettings.c:818
 msgid "When TRUE, there are no motion notify events delivered on this screen"
-msgstr "EGIA bada ez dago mugimenduaren jakinarazpen gertaerarik pantaila honetan"
+msgstr ""
+"EGIA bada ez dago mugimenduaren jakinarazpen gertaerarik pantaila honetan"
 
 #: ctk/ctksettings.c:837
 msgid "Tooltip timeout"
@@ -6985,7 +7140,9 @@ msgstr "Arakatzeko argibideen denbora"
 
 #: ctk/ctksettings.c:866
 msgid "Timeout before tooltip is shown when browse mode is enabled"
-msgstr "Argibidea erakutsi aurretik igaroko den denbora arakatzeko modua gaitzen denean"
+msgstr ""
+"Argibidea erakutsi aurretik igaroko den denbora arakatzeko modua gaitzen "
+"denean"
 
 #: ctk/ctksettings.c:889
 msgid "Tooltip browse mode timeout"
@@ -7001,7 +7158,8 @@ msgstr "Teklekin nabigatzeko kurtsorea soilik"
 
 #: ctk/ctksettings.c:913
 msgid "When TRUE, there are only cursor keys available to navigate widgets"
-msgstr "EGIA bada, kurtsore-geziak egongo dira soilik trepeten artean nabigatzeko"
+msgstr ""
+"EGIA bada, kurtsore-geziak egongo dira soilik trepeten artean nabigatzeko"
 
 #: ctk/ctksettings.c:932
 msgid "Keynav Wrap Around"
@@ -7017,7 +7175,8 @@ msgstr "Errore soinua"
 
 #: ctk/ctksettings.c:954
 msgid "When TRUE, keyboard navigation and other errors will cause a beep"
-msgstr "EGIA bada, nabigazioko teklatuak eta beste erroreek soinua sortuko dute"
+msgstr ""
+"EGIA bada, nabigazioko teklatuak eta beste erroreek soinua sortuko dute"
 
 #: ctk/ctksettings.c:973
 msgid "Color Hash"
@@ -7115,7 +7274,9 @@ msgstr "Sarrerako berrelikadura entzungarria"
 
 #: ctk/ctksettings.c:1185
 msgid "Whether to play event sounds as feedback to user input"
-msgstr "Erabiltzailearen sarreren aurrean soinuak erreproduzituko duen berrelikadura gisa ala ez adierazten du"
+msgstr ""
+"Erabiltzailearen sarreren aurrean soinuak erreproduzituko duen berrelikadura "
+"gisa ala ez adierazten du"
 
 #
 #: ctk/ctksettings.c:1206
@@ -7141,7 +7302,9 @@ msgstr "Tresna-barraren estiloa"
 #: ctk/ctksettings.c:1241
 msgid ""
 "Whether default toolbars have text only, text and icons, icons only, etc."
-msgstr "Tresna-barra lehenetsiek testua bakarrik duten, testua eta ikonoak, ikonoak bakarrik, etab. adierazten du"
+msgstr ""
+"Tresna-barra lehenetsiek testua bakarrik duten, testua eta ikonoak, ikonoak "
+"bakarrik, etab. adierazten du"
 
 #: ctk/ctksettings.c:1257
 msgid "Toolbar Icon Size"
@@ -7160,7 +7323,9 @@ msgstr "Mnemotekniko automatikoa"
 msgid ""
 "Whether mnemonics should be automatically shown and hidden when the user "
 "presses the mnemonic activator."
-msgstr "Erabiltzaileak mnemoteknikoen aktibatzailea sakatzean mnemoteknikoak automatikoki erakutsi edo ezkutatuko diren adierazten du."
+msgstr ""
+"Erabiltzaileak mnemoteknikoen aktibatzailea sakatzean mnemoteknikoak "
+"automatikoki erakutsi edo ezkutatuko diren adierazten du."
 
 #: ctk/ctksettings.c:1300
 msgid "Primary button warps slider"
@@ -7179,7 +7344,9 @@ msgstr "Foku ikusgaia"
 msgid ""
 "Whether 'focus rectangles' should be hidden until the user starts to use the "
 "keyboard."
-msgstr "Erabiltzaileak teklatua erabiltzen hasi arte 'foku laukizuzenak' ezkutatuta egon behar duten edo ez"
+msgstr ""
+"Erabiltzaileak teklatua erabiltzen hasi arte 'foku laukizuzenak' ezkutatuta "
+"egon behar duten edo ez"
 
 #: ctk/ctksettings.c:1346
 msgid "Application prefers a dark theme"
@@ -7212,7 +7379,9 @@ msgstr "Pasahitzaren gonbitearen denbora-muga"
 
 #: ctk/ctksettings.c:1396
 msgid "How long to show the last input character in hidden entries"
-msgstr "Zenbat denboran erakutsiko den idatzitako azken karakterea ezkutuko sarreretan"
+msgstr ""
+"Zenbat denboran erakutsiko den idatzitako azken karakterea ezkutuko "
+"sarreretan"
 
 #: ctk/ctksettings.c:1416
 msgid "Show menu images"
@@ -7239,7 +7408,9 @@ msgstr "Korritutako leihoaren kokalekua"
 msgid ""
 "Where the contents of scrolled windows are located with respect to the "
 "scrollbars, if not overridden by the scrolled window's own placement."
-msgstr "Korritutako leihoen edukiak korritze-barrarekiko kokatuta dauden edo ez, baldin eta ez korritutako leihoaren kokaleku bera ez bada gainjartzen."
+msgstr ""
+"Korritutako leihoen edukiak korritze-barrarekiko kokatuta dauden edo ez, "
+"baldin eta ez korritutako leihoaren kokaleku bera ez bada gainjartzen."
 
 #: ctk/ctksettings.c:1469
 msgid "Can change accelerators"
@@ -7248,7 +7419,9 @@ msgstr "Bizkortzaileak alda daitezke"
 #: ctk/ctksettings.c:1470
 msgid ""
 "Whether menu accelerators can be changed by pressing a key over the menu item"
-msgstr "Tekla menu-elementuan sakatzean menu-bizkortzailea alda daitekeen ala ez adierazten du"
+msgstr ""
+"Tekla menu-elementuan sakatzean menu-bizkortzailea alda daitekeen ala ez "
+"adierazten du"
 
 #: ctk/ctksettings.c:1485
 msgid "Delay before submenus appear"
@@ -7257,7 +7430,9 @@ msgstr "Azpimenuak agertu aurreko atzerapena"
 #: ctk/ctksettings.c:1486
 msgid ""
 "Minimum time the pointer must stay over a menu item before the submenu appear"
-msgstr "Azpimenua agertzeko erakusleak menu-elementu baten gainean gutxienez zenbat denbora egon behar duen"
+msgstr ""
+"Azpimenua agertzeko erakusleak menu-elementu baten gainean gutxienez zenbat "
+"denbora egon behar duen"
 
 #: ctk/ctksettings.c:1502
 msgid "Delay before hiding a submenu"
@@ -7305,7 +7480,9 @@ msgstr "Mahaigaineko shell-ak aplikazioen menua erakusten du"
 msgid ""
 "Set to TRUE if the desktop environment is displaying the app menu, FALSE if "
 "the app should display it itself."
-msgstr "Ezarri TRUE (egia) gisa mahaigaineko inguruneak aplikazioen menua erakusteko. FALSE (faltsua) aplikazioak bere burua erakutsi behar badu."
+msgstr ""
+"Ezarri TRUE (egia) gisa mahaigaineko inguruneak aplikazioen menua "
+"erakusteko. FALSE (faltsua) aplikazioak bere burua erakutsi behar badu."
 
 #: ctk/ctksettings.c:1581
 msgid "Desktop shell shows the menubar"
@@ -7315,7 +7492,9 @@ msgstr "Mahaigaineko shell-ak menu-barra erakusten du"
 msgid ""
 "Set to TRUE if the desktop environment is displaying the menubar, FALSE if "
 "the app should display it itself."
-msgstr "Ezarri TRUE (egia) gisa mahaigaineko inguruneak menu-barra erakusteko. FALSE (faltsua) aplikazioak bere burua erakutsi behar badu."
+msgstr ""
+"Ezarri TRUE (egia) gisa mahaigaineko inguruneak menu-barra erakusteko. FALSE "
+"(faltsua) aplikazioak bere burua erakutsi behar badu."
 
 #: ctk/ctksettings.c:1591
 msgid "Desktop environment shows the desktop folder"
@@ -7325,7 +7504,9 @@ msgstr "Mahaigaineko inguruneak mahaigainaren karpeta erakusten du"
 msgid ""
 "Set to TRUE if the desktop environment is displaying the desktop folder, "
 "FALSE if not."
-msgstr "Ezarri TRUE (egia) gisa mahaigaineko inguruneak mahaigainaren karpeta erakutsi behar badu. Bestela, FALSE."
+msgstr ""
+"Ezarri TRUE (egia) gisa mahaigaineko inguruneak mahaigainaren karpeta "
+"erakutsi behar badu. Bestela, FALSE."
 
 #: ctk/ctksettings.c:1646
 msgid "Titlebar double-click action"
@@ -7359,7 +7540,9 @@ msgstr "Elkarrizketa-koadroek goiburu-barra darabilte"
 msgid ""
 "Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
-msgstr "CTK+ekin eraikitako elkarrizketa-koadroek goiburu-barra erabiliko duten ekintza-area baten ordez, edo ez."
+msgstr ""
+"CTK+ekin eraikitako elkarrizketa-koadroek goiburu-barra erabiliko duten "
+"ekintza-area baten ordez, edo ez."
 
 #: ctk/ctksettings.c:1724
 msgid "Enable primary paste"
@@ -7369,7 +7552,9 @@ msgstr "Gaitu itsaste nagusia"
 msgid ""
 "Whether a middle click on a mouse should paste the 'PRIMARY' clipboard "
 "content at the cursor location."
-msgstr "Saguaren erdiko botoiarekin klik egiteak arbeleko eduki 'NAGUSIA' kurtsorearen kokalekuan itsasten duen ala ez"
+msgstr ""
+"Saguaren erdiko botoiarekin klik egiteak arbeleko eduki 'NAGUSIA' "
+"kurtsorearen kokalekuan itsasten duen ala ez"
 
 #: ctk/ctksettings.c:1741
 msgid "Recent Files Enabled"
@@ -7491,7 +7676,9 @@ msgstr "Modua"
 msgid ""
 "The directions in which the size group affects the requested sizes of its "
 "component widgets"
-msgstr "Norabide hauetan, taldearen tamainak osagai-trepetentzat eskatutako tamainei eragiten die"
+msgstr ""
+"Norabide hauetan, taldearen tamainak osagai-trepetentzat eskatutako tamainei "
+"eragiten die"
 
 #: ctk/ctksizegroup.c:253
 msgid "Ignore hidden"
@@ -7500,7 +7687,8 @@ msgstr "Ez ikusi egin ezkutukoei"
 #: ctk/ctksizegroup.c:254
 msgid ""
 "If TRUE, unmapped widgets are ignored when determining the size of the group"
-msgstr "EGIA bada ezkutuko trepetak baztertu egingo dira taldearen tamaina zehaztean"
+msgstr ""
+"EGIA bada ezkutuko trepetak baztertu egingo dira taldearen tamaina zehaztean"
 
 #: ctk/ctkspinbutton.c:387
 msgid "Climb Rate"
@@ -7518,7 +7706,9 @@ msgstr "Atxiki markei"
 msgid ""
 "Whether erroneous values are automatically changed to a spin button's "
 "nearest step increment"
-msgstr "Balio okerrak automatikoki botoiaren urrats-gehikuntza hurbilenera aldatzen diren ala ez adierazten du"
+msgstr ""
+"Balio okerrak automatikoki botoiaren urrats-gehikuntza hurbilenera aldatzen "
+"diren ala ez adierazten du"
 
 #: ctk/ctkspinbutton.c:411
 msgid "Numeric"
@@ -7526,7 +7716,8 @@ msgstr "Zenbakizkoa"
 
 #: ctk/ctkspinbutton.c:412
 msgid "Whether non-numeric characters should be ignored"
-msgstr "Karaktere ez-zenbakizkoei ez ikusi egin behar zaien ala ez adierazten du"
+msgstr ""
+"Karaktere ez-zenbakizkoei ez ikusi egin behar zaien ala ez adierazten du"
 
 #: ctk/ctkspinbutton.c:419
 msgid "Wrap"
@@ -7534,7 +7725,8 @@ msgstr "Itzulbiratu"
 
 #: ctk/ctkspinbutton.c:420
 msgid "Whether a spin button should wrap upon reaching its limits"
-msgstr "Botoia bere mugetara iristean itzulbiratu behar den ala ez adierazten du"
+msgstr ""
+"Botoia bere mugetara iristean itzulbiratu behar den ala ez adierazten du"
 
 #: ctk/ctkspinbutton.c:427
 msgid "Update Policy"
@@ -7543,7 +7735,9 @@ msgstr "Eguneratze-politika"
 #: ctk/ctkspinbutton.c:428
 msgid ""
 "Whether the spin button should update always, or only when the value is legal"
-msgstr "Botoia beti eguneratu behar den edo balioa legala denean bakarrik aldatu behar den adierazten du"
+msgstr ""
+"Botoia beti eguneratu behar den edo balioa legala denean bakarrik aldatu "
+"behar den adierazten du"
 
 #: ctk/ctkspinbutton.c:437
 msgid "Reads the current value, or sets a new value"
@@ -7609,7 +7803,9 @@ msgstr "Interpolatze-tamaina"
 msgid ""
 "Whether or not the size should smoothly change when changing between "
 "differently sized children"
-msgstr "Tamaina leunki aldatuko den ala ez (tamaina desberdineko umeen artean aldatzean)"
+msgstr ""
+"Tamaina leunki aldatuko den ala ez (tamaina desberdineko umeen artean "
+"aldatzean)"
 
 #: ctk/ctkstack.c:517
 msgid "The name of the child page"
@@ -7619,7 +7815,7 @@ msgstr "Orri haurraren izena"
 msgid "The title of the child page"
 msgstr "Orri haurraren titulua"
 
-#: ctk/ctkstack.c:530 ctk/ctktoolbutton.c:287
+#: ctk/ctkstack.c:530 ctk/ctktoolbutton.c:248
 msgid "Icon name"
 msgstr "Ikono-izena"
 
@@ -7645,6 +7841,10 @@ msgstr "Pila"
 msgid "Associated stack for this CtkStackSidebar"
 msgstr "CtkStackSidebar honi esleitutako pila"
 
+#: ctk/ctkstackswitcher.c:686 ctk/ctktrayicon-x11.c:178
+msgid "Icon Size"
+msgstr "Ikonoaren tamaina"
+
 #: ctk/ctkstackswitcher.c:687
 msgid "Symbolic size to use for named icon"
 msgstr "Tamaina sinbolikoa izendatutako ikonoan erabiltzeko"
@@ -7652,6 +7852,62 @@ msgstr "Tamaina sinbolikoa izendatutako ikonoan erabiltzeko"
 #: ctk/ctkstatusbar.c:178
 msgid "Style of bevel around the statusbar text"
 msgstr "Egoera-barrako testuaren inguruko alaka-estiloa"
+
+#: ctk/ctkstatusicon.c:287
+msgid "The size of the icon"
+msgstr "Ikonoaren tamaina"
+
+#: ctk/ctkstatusicon.c:297
+msgid "The screen where this status icon will be displayed"
+msgstr "Egoerako ikono hau bistaratuko den pantaila"
+
+#: ctk/ctkstatusicon.c:305
+msgid "Whether the status icon is visible"
+msgstr "Egoerako ikonoa ikusgai dagoen edo ez"
+
+#: ctk/ctkstatusicon.c:321
+msgid "Whether the status icon is embedded"
+msgstr "Egoerako ikonoa kapsulatuta dagoen edo ez"
+
+#: ctk/ctkstatusicon.c:337 ctk/ctktrayicon-x11.c:128
+msgid "The orientation of the tray"
+msgstr "Erretiluaren orientazioa"
+
+#: ctk/ctkstatusicon.c:364 ctk/ctkwidget.c:1285
+msgid "Has tooltip"
+msgstr "Argibidea du"
+
+#: ctk/ctkstatusicon.c:365
+msgid "Whether this tray icon has a tooltip"
+msgstr "Erretiluko ikonoak argibidea duen edo ez"
+
+#: ctk/ctkstatusicon.c:391 ctk/ctkwidget.c:1309
+msgid "Tooltip Text"
+msgstr "Argibidearen testua"
+
+#: ctk/ctkstatusicon.c:392 ctk/ctkwidget.c:1310 ctk/ctkwidget.c:1334
+msgid "The contents of the tooltip for this widget"
+msgstr "Trepetaren argibidearen edukia"
+
+#: ctk/ctkstatusicon.c:415 ctk/ctkwidget.c:1333
+msgid "Tooltip markup"
+msgstr "Markaren argibidea"
+
+#: ctk/ctkstatusicon.c:416
+msgid "The contents of the tooltip for this tray icon"
+msgstr "Erretiluko ikonoaren argibidearen edukia"
+
+#: ctk/ctkstatusicon.c:434
+msgid "The title of this tray icon"
+msgstr "Erretiluko ikono honen titulua"
+
+#: ctk/ctkstyle.c:466
+msgid "Style context"
+msgstr "Estiloaren testuingurua"
+
+#: ctk/ctkstyle.c:467
+msgid "CtkStyleContext to get style from"
+msgstr "CtkStyleContext (hortik estiloa eskuratzeko)"
 
 #: ctk/ctkstylecontext.c:230
 msgid "The associated CdkScreen"
@@ -7738,7 +7994,8 @@ msgstr "Kurtsorearen posizioa"
 #: ctk/ctktextbuffer.c:250
 msgid ""
 "The position of the insert mark (as offset from the beginning of the buffer)"
-msgstr "Txertatze-markaren kokalekua (desplazamendu gisa bufferraren hasieratik)"
+msgstr ""
+"Txertatze-markaren kokalekua (desplazamendu gisa bufferraren hasieratik)"
 
 #: ctk/ctktextbuffer.c:265
 msgid "Copy target list"
@@ -7747,7 +8004,9 @@ msgstr "Kopia-helburuen zerrenda"
 #: ctk/ctktextbuffer.c:266
 msgid ""
 "The list of targets this buffer supports for clipboard copying and DND source"
-msgstr "Buffer honek onartzen dituen helburuen zerrenda arbeletik kopiatzeko eta DNDren iturburua"
+msgstr ""
+"Buffer honek onartzen dituen helburuen zerrenda arbeletik kopiatzeko eta "
+"DNDren iturburua"
 
 #: ctk/ctktextbuffer.c:280
 msgid "Paste target list"
@@ -7757,7 +8016,9 @@ msgstr "Itsaste-helburuen zerrenda"
 msgid ""
 "The list of targets this buffer supports for clipboard pasting and DND "
 "destination"
-msgstr "Buffer honek onartzen dituen helburuen zerrenda arbeletik itsasteko eta DNDren helburua"
+msgstr ""
+"Buffer honek onartzen dituen helburuen zerrenda arbeletik itsasteko eta "
+"DNDren helburua"
 
 #
 #: ctk/ctktexthandle.c:721 ctk/ctktexthandle.c:722 ctk/ctkwidget.c:1125
@@ -7782,7 +8043,8 @@ msgstr "Etiketa-izena"
 
 #: ctk/ctktexttag.c:207
 msgid "Name used to refer to the text tag. NULL for anonymous tags"
-msgstr "Testu-etiketa aipatzeko erabiltzen den izena. NULUA etiketa anonimoentzat"
+msgstr ""
+"Testu-etiketa aipatzeko erabiltzen den izena. NULUA etiketa anonimoentzat"
 
 #: ctk/ctktexttag.c:246
 msgid "Background RGBA"
@@ -7796,7 +8058,9 @@ msgstr "Atzeko planoaren altuera osoa"
 msgid ""
 "Whether the background color fills the entire line height or only the height "
 "of the tagged characters"
-msgstr "Atzeko planoaren koloreak lerroaren altuera osoa betetzen duen edo etiketatutako karaktereen altuera bakarrik adierazten duen"
+msgstr ""
+"Atzeko planoaren koloreak lerroaren altuera osoa betetzen duen edo "
+"etiketatutako karaktereen altuera bakarrik adierazten duen"
 
 #: ctk/ctktexttag.c:292
 msgid "Foreground RGBA"
@@ -7804,7 +8068,8 @@ msgstr "Aurreko planoaren RGBA"
 
 #: ctk/ctktexttag.c:301
 msgid "Text direction, e.g. right-to-left or left-to-right"
-msgstr "Testuaren norabidea; adibidez, eskuinetik ezkerrera edo ezkerretik eskuinera"
+msgstr ""
+"Testuaren norabidea; adibidez, eskuinetik ezkerrera edo ezkerretik eskuinera"
 
 #: ctk/ctktexttag.c:350
 msgid "Font style as a PangoStyle, e.g. PANGO_STYLE_ITALIC"
@@ -7812,17 +8077,21 @@ msgstr "Letra-tipoaren estiloa PangoStyle gisa; adibidez, PANGO_STYLE_ITALIC"
 
 #: ctk/ctktexttag.c:359
 msgid "Font variant as a PangoVariant, e.g. PANGO_VARIANT_SMALL_CAPS"
-msgstr "Letra-tipoaren aldaera PangoVariant gisa; adibidez, PANGO_VARIANT_SMALL_CAPS"
+msgstr ""
+"Letra-tipoaren aldaera PangoVariant gisa; adibidez, PANGO_VARIANT_SMALL_CAPS"
 
 #: ctk/ctktexttag.c:368
 msgid ""
 "Font weight as an integer, see predefined values in PangoWeight; for "
 "example, PANGO_WEIGHT_BOLD"
-msgstr "Letra-tipoaren pisua osoko gisa, ikus aurrez definitutako balioak PangoWeight-en; adibidez, PANGO_WEIGHT_BOLD"
+msgstr ""
+"Letra-tipoaren pisua osoko gisa, ikus aurrez definitutako balioak "
+"PangoWeight-en; adibidez, PANGO_WEIGHT_BOLD"
 
 #: ctk/ctktexttag.c:379
 msgid "Font stretch as a PangoStretch, e.g. PANGO_STRETCH_CONDENSED"
-msgstr "Letra-tipo tiratua PangoStretch gisa; adibidez, PANGO_STRETCH_CONDENSED"
+msgstr ""
+"Letra-tipo tiratua PangoStretch gisa; adibidez, PANGO_STRETCH_CONDENSED"
 
 #: ctk/ctktexttag.c:388
 msgid "Font size in Pango units"
@@ -7833,7 +8102,11 @@ msgid ""
 "Font size as a scale factor relative to the default font size. This properly "
 "adapts to theme changes etc. so is recommended. Pango predefines some scales "
 "such as PANGO_SCALE_X_LARGE"
-msgstr "Letra-tipoaren tamaina, letra-tipoaren tamaina lehenetsiari dagokion eskala-faktore gisa. Propietate hau gaiaren aldaketetara eta abarretara egokitzen denez, gomendagarria da. Pango-k zenbait eskala aurrez definitzen ditu; adibidez, PANGO_SCALE_X_LARGE."
+msgstr ""
+"Letra-tipoaren tamaina, letra-tipoaren tamaina lehenetsiari dagokion eskala-"
+"faktore gisa. Propietate hau gaiaren aldaketetara eta abarretara egokitzen "
+"denez, gomendagarria da. Pango-k zenbait eskala aurrez definitzen ditu; "
+"adibidez, PANGO_SCALE_X_LARGE."
 
 #: ctk/ctktexttag.c:418 ctk/ctktextview.c:843
 msgid "Left, right, or center justification"
@@ -7843,7 +8116,9 @@ msgstr "Ezkerreko, eskuineko edo erdiko justifikazioa"
 msgid ""
 "The language this text is in, as an ISO code. Pango can use this as a hint "
 "when rendering the text. If not set, an appropriate default will be used."
-msgstr "Testu honetako hizkuntza ISOren kode gisa dago. Pango-k laguntza gisa erabil dezake testua bihurtzean. Ez bada ezartzen, lehenetsitakoa erabiliko da."
+msgstr ""
+"Testu honetako hizkuntza ISOren kode gisa dago. Pango-k laguntza gisa erabil "
+"dezake testua bihurtzean. Ez bada ezartzen, lehenetsitakoa erabiliko da."
 
 #: ctk/ctktexttag.c:444
 msgid "Left margin"
@@ -7873,7 +8148,9 @@ msgstr "Paragrafoa koskatzeko pixel-kopurua"
 msgid ""
 "Offset of text above the baseline (below the baseline if rise is negative) "
 "in Pango units"
-msgstr "Testuaren desplazamendua oinarri-lerroaren gainetik (oinarri-lerroaren azpitik goratzea negatiboa bada), Pango unitateetan"
+msgstr ""
+"Testuaren desplazamendua oinarri-lerroaren gainetik (oinarri-lerroaren "
+"azpitik goratzea negatiboa bada), Pango unitateetan"
 
 #: ctk/ctktexttag.c:486
 msgid "Pixels above lines"
@@ -7918,7 +8195,9 @@ msgstr "Testua marratzeko erabiliko den kolorea"
 #: ctk/ctktexttag.c:570 ctk/ctktextview.c:834
 msgid ""
 "Whether to wrap lines never, at word boundaries, or at character boundaries"
-msgstr "Lerroak noiz itzulbiratu behar diren adierazten du: inoiz ez, hitzen mugetan edo karaktereen mugetan"
+msgstr ""
+"Lerroak noiz itzulbiratu behar diren adierazten du: inoiz ez, hitzen mugetan "
+"edo karaktereen mugetan"
 
 #: ctk/ctktexttag.c:580 ctk/ctktextview.c:942
 msgid "Custom tabs for this text"
@@ -7994,7 +8273,8 @@ msgstr "Atzeko planoaren altuera osoaren ezarpena"
 
 #: ctk/ctktexttag.c:727
 msgid "Whether this tag affects background height"
-msgstr "Etiketa honek atzeko planoaren altuerari eragiten dion ala ez adierazten du"
+msgstr ""
+"Etiketa honek atzeko planoaren altuerari eragiten dion ala ez adierazten du"
 
 #: ctk/ctktexttag.c:766
 msgid "Justification set"
@@ -8002,7 +8282,9 @@ msgstr "Justifikazioaren ezarpena"
 
 #: ctk/ctktexttag.c:767
 msgid "Whether this tag affects paragraph justification"
-msgstr "Etiketa honek paragrafoaren justifikazioari eragiten dion ala ez adierazten du"
+msgstr ""
+"Etiketa honek paragrafoaren justifikazioari eragiten dion ala ez adierazten "
+"du"
 
 #: ctk/ctktexttag.c:774
 msgid "Left margin set"
@@ -8026,7 +8308,9 @@ msgstr "Lerroen gaineko pixelen ezarpena"
 
 #: ctk/ctktexttag.c:787 ctk/ctktexttag.c:791
 msgid "Whether this tag affects the number of pixels above lines"
-msgstr "Etiketa honek lerroen gaineko pixel-kopuruari eragiten dion ala ez adierazten du"
+msgstr ""
+"Etiketa honek lerroen gaineko pixel-kopuruari eragiten dion ala ez "
+"adierazten du"
 
 #: ctk/ctktexttag.c:790
 msgid "Pixels below lines set"
@@ -8038,7 +8322,9 @@ msgstr "Itzulbiratzearen barruko pixelen ezarpena"
 
 #: ctk/ctktexttag.c:795
 msgid "Whether this tag affects the number of pixels between wrapped lines"
-msgstr "Etiketa honek itzulbiratutako lerroen arteko pixel-kopuruari eragiten dion ala ez adierazten du"
+msgstr ""
+"Etiketa honek itzulbiratutako lerroen arteko pixel-kopuruari eragiten dion "
+"ala ez adierazten du"
 
 #: ctk/ctktexttag.c:802
 msgid "Right margin set"
@@ -8054,7 +8340,8 @@ msgstr "RGBA azpimarraren ezarpena"
 
 #: ctk/ctktexttag.c:818
 msgid "Whether this tag affects underlining color"
-msgstr "Etiketa honek azpimarraren koloreari eragiten dion ala ez adierazten du"
+msgstr ""
+"Etiketa honek azpimarraren koloreari eragiten dion ala ez adierazten du"
 
 #: ctk/ctktexttag.c:828
 msgid "Strikethrough RGBA set"
@@ -8071,7 +8358,8 @@ msgstr "Itzulbiratze-moduaren ezarpena"
 
 #: ctk/ctktexttag.c:833
 msgid "Whether this tag affects line wrap mode"
-msgstr "Etiketa honek lerroen itzulbiratze-moduari eragiten dion ala ez adierazten du"
+msgstr ""
+"Etiketa honek lerroen itzulbiratze-moduari eragiten dion ala ez adierazten du"
 
 #: ctk/ctktexttag.c:836
 msgid "Tabs set"
@@ -8087,7 +8375,8 @@ msgstr "Ikusezintasunaren ezarpena"
 
 #: ctk/ctktexttag.c:841
 msgid "Whether this tag affects text visibility"
-msgstr "Etiketa honek testuaren ikusgaitasunari eragiten dion ala ez adierazten du"
+msgstr ""
+"Etiketa honek testuaren ikusgaitasunari eragiten dion ala ez adierazten du"
 
 #: ctk/ctktexttag.c:844
 msgid "Paragraph background set"
@@ -8095,7 +8384,8 @@ msgstr "Paragrafoaren atzeko planoaren ezarpena"
 
 #: ctk/ctktexttag.c:845
 msgid "Whether this tag affects the paragraph background color"
-msgstr "Etiketa honek paragrafoaren atzeko planoaren koloreari eragiten dion ala ez"
+msgstr ""
+"Etiketa honek paragrafoaren atzeko planoaren koloreari eragiten dion ala ez"
 
 #: ctk/ctktexttag.c:848
 msgid "Fallback set"
@@ -8181,7 +8471,9 @@ msgstr "Bistaratutako bufferra"
 
 #: ctk/ctktextview.c:966
 msgid "Whether entered text overwrites existing contents"
-msgstr "Sartutako testuak lehendik dauden edukiak gainidazten dituen ala ez adierazten du"
+msgstr ""
+"Sartutako testuak lehendik dauden edukiak gainidazten dituen ala ez "
+"adierazten du"
 
 #: ctk/ctktextview.c:973
 msgid "Accepts tab"
@@ -8206,6 +8498,20 @@ msgstr "Errore-azpimarren kolorea"
 #: ctk/ctktextview.c:1082
 msgid "Color with which to draw error-indication underlines"
 msgstr "Errorea adierazteko azpimarrak zein koloretakoa izan behar duen"
+
+#: ctk/ctktoggleaction.c:114
+msgid "Create the same proxies as a radio action"
+msgstr "Sortu aukera-botoien bidezko ekintzaren proxy berak"
+
+#: ctk/ctktoggleaction.c:115
+msgid "Whether the proxies for this action look like radio action proxies"
+msgstr ""
+"Ekintza honen proxy-ek aukera-botoien bidezko ekintzen proxy-en itxura duten "
+"adierazten du"
+
+#: ctk/ctktoggleaction.c:130
+msgid "Whether the toggle action should be active"
+msgstr "Txandakatzailearen ekintza aktibatuta egon behar duen edo ez"
 
 #: ctk/ctktogglebutton.c:189 ctk/ctktoggletoolbutton.c:131
 msgid "If the toggle button should be pressed in"
@@ -8253,11 +8559,15 @@ msgstr "Ikono-tamainaren propietatea ezarri den edo ez"
 
 #: ctk/ctktoolbar.c:590
 msgid "Whether the item should receive extra space when the toolbar grows"
-msgstr "Tresna-barra haztean, elementuak beste tarte bat eduki behar duen ala ez adierazten du"
+msgstr ""
+"Tresna-barra haztean, elementuak beste tarte bat eduki behar duen ala ez "
+"adierazten du"
 
 #: ctk/ctktoolbar.c:598 ctk/ctktoolitemgroup.c:1689
 msgid "Whether the item should be the same size as other homogeneous items"
-msgstr "Elementuak beste elementu homogeneoen tamaina bera eduki behar duen ala ez adierazten du"
+msgstr ""
+"Elementuak beste elementu homogeneoen tamaina bera eduki behar duen ala ez "
+"adierazten du"
 
 #: ctk/ctktoolbar.c:612
 msgid "Spacer size"
@@ -8299,47 +8609,50 @@ msgstr "Tresna-barraren botoien inguruko alaka-mota"
 msgid "Style of bevel around the toolbar"
 msgstr "Tresna-barraren inguruko alaka-estiloa"
 
-#: ctk/ctktoolbutton.c:244
+#: ctk/ctktoolbutton.c:205
 msgid "Text to show in the item."
 msgstr "Elementuan erakutsi beharreko testua."
 
-#: ctk/ctktoolbutton.c:251
+#: ctk/ctktoolbutton.c:212
 msgid ""
 "If set, an underline in the label property indicates that the next character "
 "should be used for the mnemonic accelerator key in the overflow menu"
-msgstr "Ezartzen bada, etiketa propietatearen azpimarrak adierazten du hurrengo karakterea tekla bizkortzaile mnemoteknikorako erabili behar dela gainezkatze menuan."
+msgstr ""
+"Ezartzen bada, etiketa propietatearen azpimarrak adierazten du hurrengo "
+"karakterea tekla bizkortzaile mnemoteknikorako erabili behar dela "
+"gainezkatze menuan."
 
-#: ctk/ctktoolbutton.c:258
+#: ctk/ctktoolbutton.c:219
 msgid "Widget to use as the item label"
 msgstr "Elementu-etiketa gisa erabili beharreko trepeta"
 
-#: ctk/ctktoolbutton.c:269
+#: ctk/ctktoolbutton.c:230
 msgid "Stock Id"
 msgstr "Stock-ID-a"
 
-#: ctk/ctktoolbutton.c:270
+#: ctk/ctktoolbutton.c:231
 msgid "The stock icon displayed on the item"
 msgstr "Elementuan bistaratutako stock-ikonoa"
 
-#: ctk/ctktoolbutton.c:288
+#: ctk/ctktoolbutton.c:249
 msgid "The name of the themed icon displayed on the item"
 msgstr "Elementuan bistaratutako ikono-gaiaren izena"
 
 #
-#: ctk/ctktoolbutton.c:294
+#: ctk/ctktoolbutton.c:255
 msgid "Icon widget"
 msgstr "Ikono-trepeta"
 
-#: ctk/ctktoolbutton.c:295
+#: ctk/ctktoolbutton.c:256
 msgid "Icon widget to display in the item"
 msgstr "Elementuan bistaratu beharreko ikono-trepeta"
 
 #
-#: ctk/ctktoolbutton.c:311
+#: ctk/ctktoolbutton.c:272
 msgid "Icon spacing"
 msgstr "Ikono-tartea"
 
-#: ctk/ctktoolbutton.c:312
+#: ctk/ctktoolbutton.c:273
 msgid "Spacing in pixels between the icon and label"
 msgstr "Ikono eta etiketaren arteko tartea (pixeletan)"
 
@@ -8347,7 +8660,10 @@ msgstr "Ikono eta etiketaren arteko tartea (pixeletan)"
 msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
 "show text in CTK_TOOLBAR_BOTH_HORIZ mode"
-msgstr "Tresna-barrako elementua garrantzitsua den ala ez adierazten du. TRUE (egia) bada, tresna-barrako botoiek testua CTK_TOOLBAR_BOTH_HORIZ moduan adierazten dute"
+msgstr ""
+"Tresna-barrako elementua garrantzitsua den ala ez adierazten du. TRUE (egia) "
+"bada, tresna-barrako botoiek testua CTK_TOOLBAR_BOTH_HORIZ moduan adierazten "
+"dute"
 
 #: ctk/ctktoolitemgroup.c:1640
 msgid "The human-readable title of this item group"
@@ -8391,7 +8707,9 @@ msgstr "Zabaltzailearen geziaren eta epigrafearen arteko tartea"
 
 #: ctk/ctktoolitemgroup.c:1696
 msgid "Whether the item should receive extra space when the group grows"
-msgstr "Taldea haztean, elementuak beste tarte bat eduki behar duen ala ez adierazten du"
+msgstr ""
+"Taldea haztean, elementuak beste tarte bat eduki behar duen ala ez "
+"adierazten du"
 
 #: ctk/ctktoolitemgroup.c:1703
 msgid "Whether the item should fill the available space"
@@ -8428,7 +8746,45 @@ msgstr "Elementuen taldea zehaztutako orduan soilik zabalduko den edo ez"
 #: ctk/ctktoolpalette.c:1028
 msgid ""
 "Whether the item group should receive extra space when the palette grows"
-msgstr "Paleta haztean, elementuen taldeak beste tarte bat eduki behar duen ala ez adierazten du"
+msgstr ""
+"Paleta haztean, elementuen taldeak beste tarte bat eduki behar duen ala ez "
+"adierazten du"
+
+#: ctk/ctktrayicon-x11.c:137
+msgid "Foreground color for symbolic icons"
+msgstr "Aurreko planoaren kolorea ikono sinbolikoentzako"
+
+#: ctk/ctktrayicon-x11.c:144
+msgid "Error color"
+msgstr "Errorearen kolorea"
+
+#: ctk/ctktrayicon-x11.c:145
+msgid "Error color for symbolic icons"
+msgstr "Ikono sinbolikoen erroreen kolorea"
+
+#: ctk/ctktrayicon-x11.c:152
+msgid "Warning color"
+msgstr "Abisuaren kolorea"
+
+#: ctk/ctktrayicon-x11.c:153
+msgid "Warning color for symbolic icons"
+msgstr "Ikono sinbolikoen abisuen kolorea"
+
+#: ctk/ctktrayicon-x11.c:160
+msgid "Success color"
+msgstr "Ongi burututakoaren kolorea"
+
+#: ctk/ctktrayicon-x11.c:161
+msgid "Success color for symbolic icons"
+msgstr "Ikono sinbolikoen ongi burututakoen kolorea"
+
+#: ctk/ctktrayicon-x11.c:169
+msgid "Padding that should be put around icons in the tray"
+msgstr "Betegarria (erretiluko ikonoaren inguruan jarri beharko litzatekeena)"
+
+#: ctk/ctktrayicon-x11.c:179
+msgid "The pixel size that icons should be forced to, or zero"
+msgstr "Derrigorrez ikonoek edukiko duten tamaina pixeletan, edo zero"
 
 #: ctk/ctktreemenu.c:265
 msgid "TreeMenu model"
@@ -8525,7 +8881,9 @@ msgstr "Arauen aholkua"
 
 #: ctk/ctktreeview.c:1075
 msgid "Set a hint to the theme engine to draw rows in alternating colors"
-msgstr "Gaiaren motorrarentzat aholku bat ezartzen du, errenkadak hainbat kolorez marrazteko"
+msgstr ""
+"Gaiaren motorrarentzat aholku bat ezartzen du, errenkadak hainbat kolorez "
+"marrazteko"
 
 #: ctk/ctktreeview.c:1081
 msgid "Enable Search"
@@ -8533,7 +8891,9 @@ msgstr "Gaitu bilaketa"
 
 #: ctk/ctktreeview.c:1082
 msgid "View allows user to search through columns interactively"
-msgstr "Ikuspegiak erabiltzailearen zutabeetan barrena interaktiboki bilatzeko baimena ematen dio"
+msgstr ""
+"Ikuspegiak erabiltzailearen zutabeetan barrena interaktiboki bilatzeko "
+"baimena ematen dio"
 
 #: ctk/ctktreeview.c:1088
 msgid "Search Column"
@@ -8549,7 +8909,8 @@ msgstr "Altuera finkoko modua"
 
 #: ctk/ctktreeview.c:1108
 msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
-msgstr "CtkTreeView azkartzen du, errenkada guztiek altuera bera dutela suposatuz"
+msgstr ""
+"CtkTreeView azkartzen du, errenkada guztiek altuera bera dutela suposatuz"
 
 #: ctk/ctktreeview.c:1127
 msgid "Hover Selection"
@@ -8591,7 +8952,9 @@ msgstr "Goma-banda"
 #: ctk/ctktreeview.c:1183
 msgid ""
 "Whether to enable selection of multiple items by dragging the mouse pointer"
-msgstr "Hainbat elementu hautatzen utziko duen edo ez saguaren erakuslearekin arrastatzean"
+msgstr ""
+"Hainbat elementu hautatzen utziko duen edo ez saguaren erakuslearekin "
+"arrastatzean"
 
 #: ctk/ctktreeview.c:1189
 msgid "Enable Grid Lines"
@@ -8762,7 +9125,9 @@ msgstr "Goiburua klikagarria den ala ez adierazten du"
 
 #: ctk/ctktreeviewcolumn.c:338
 msgid "Widget to put in column header button instead of column title"
-msgstr "Zutabearen goiburuko botoian zutabearen izenburuaren ordez ezarri beharreko trepeta"
+msgstr ""
+"Zutabearen goiburuko botoian zutabearen izenburuaren ordez ezarri beharreko "
+"trepeta"
 
 #: ctk/ctktreeviewcolumn.c:345
 msgid "X Alignment of the column header text or widget"
@@ -8794,11 +9159,27 @@ msgstr "Ordenatu ID zutabea"
 
 #: ctk/ctktreeviewcolumn.c:382
 msgid "Logical sort column ID this column sorts on when selected for sorting"
-msgstr "Zutabe honek (ordenatzeko hautatzean) ordenatzen duen ID zutabearen ordena logikoa"
+msgstr ""
+"Zutabe honek (ordenatzeko hautatzean) ordenatzen duen ID zutabearen ordena "
+"logikoa"
+
+#: ctk/ctkuimanager.c:453
+msgid "Whether tearoff menu items should be added to menus"
+msgstr ""
+"Menuei menu-elementu askagarriak gehitu behar zaizkien ala ez adierazten du"
+
+#: ctk/ctkuimanager.c:460
+msgid "Merged UI definition"
+msgstr "Batutako UI definizioa"
+
+#: ctk/ctkuimanager.c:461
+msgid "An XML string describing the merged UI"
+msgstr "Batutako UI azaltzen duen XML katea"
 
 #: ctk/ctkviewport.c:409
 msgid "Determines how the shadowed box around the viewport is drawn"
-msgstr "Leihatilaren inguruko lauki itzaleztatua nola marrazten den zehazten du"
+msgstr ""
+"Leihatilaren inguruko lauki itzaleztatua nola marrazten den zehazten du"
 
 #: ctk/ctkvolumebutton.c:168
 msgid "Use symbolic icons"
@@ -8829,7 +9210,9 @@ msgstr "Zabalera-eskaera"
 msgid ""
 "Override for width request of the widget, or -1 if natural request should be "
 "used"
-msgstr "Gainidatzi trepetaren zabalera-eskaera, edo -1 eskaera naturala erabili behar bada"
+msgstr ""
+"Gainidatzi trepetaren zabalera-eskaera, edo -1 eskaera naturala erabili "
+"behar bada"
 
 #: ctk/ctkwidget.c:1140
 msgid "Height request"
@@ -8839,7 +9222,9 @@ msgstr "Altuera-eskaera"
 msgid ""
 "Override for height request of the widget, or -1 if natural request should "
 "be used"
-msgstr "Gainidatzi trepetaren altuera-eskaera, edo -1 eskaera naturala erabili behar bada"
+msgstr ""
+"Gainidatzi trepetaren altuera-eskaera, edo -1 eskaera naturala erabili behar "
+"bada"
 
 #: ctk/ctkwidget.c:1149
 msgid "Whether the widget is visible"
@@ -8887,7 +9272,8 @@ msgstr "Fokua klik egindakoan"
 
 #: ctk/ctkwidget.c:1203
 msgid "Whether the widget should grab focus when it is clicked with the mouse"
-msgstr "Trepetak saguaren klik jasotakoan fokua hartzen duen ala ez adierazten du"
+msgstr ""
+"Trepetak saguaren klik jasotakoan fokua hartzen duen ala ez adierazten du"
 
 #
 #: ctk/ctkwidget.c:1209
@@ -8931,7 +9317,9 @@ msgstr "Estiloa"
 msgid ""
 "The style of the widget, which contains information about how it will look "
 "(colors etc)"
-msgstr "Trepetaren estiloa, zein itxura edukiko duen azaltzen duena (koloreak eta abar)"
+msgstr ""
+"Trepetaren estiloa, zein itxura edukiko duen azaltzen duena (koloreak eta "
+"abar)"
 
 #: ctk/ctkwidget.c:1255
 msgid "Events"
@@ -8939,7 +9327,9 @@ msgstr "Gertaerak"
 
 #: ctk/ctkwidget.c:1256
 msgid "The event mask that decides what kind of CdkEvents this widget gets"
-msgstr "Trepeta honek zein motatako CdkEvents eskuratuko duen erabakitzen duen gertaera-maskara"
+msgstr ""
+"Trepeta honek zein motatako CdkEvents eskuratuko duen erabakitzen duen "
+"gertaera-maskara"
 
 #: ctk/ctkwidget.c:1263
 msgid "No show all"
@@ -8947,7 +9337,8 @@ msgstr "Ez erakutsi dena"
 
 #: ctk/ctkwidget.c:1264
 msgid "Whether ctk_widget_show_all() should not affect this widget"
-msgstr "ctk_widget_show_all()-ek trepeta honi ez dion eragingo ala bai adierazten du"
+msgstr ""
+"ctk_widget_show_all()-ek trepeta honi ez dion eragingo ala bai adierazten du"
 
 #: ctk/ctkwidget.c:1286
 msgid "Whether this widget has a tooltip"
@@ -9091,7 +9482,8 @@ msgstr "Barneko fokua"
 
 #: ctk/ctkwidget.c:3498
 msgid "Whether to draw the focus indicator inside widgets"
-msgstr "Foku-adierazlea trepeten barruan marraztu behar den ala ez adierazten du"
+msgstr ""
+"Foku-adierazlea trepeten barruan marraztu behar den ala ez adierazten du"
 
 #: ctk/ctkwidget.c:3511
 msgid "Focus linewidth"
@@ -9109,7 +9501,9 @@ msgstr "Enfokatu marra etenaren eredua"
 msgid ""
 "Dash pattern used to draw the focus indicator. The character values are "
 "interpreted as pixel widths of alternating on and off segments of the line."
-msgstr "Fokuaren adierazle gisa marrazteko erabilitako marraren eredua. Karaktereen balioak marra eta etenaren pixelen zabalera gisa hartzen dira."
+msgstr ""
+"Fokuaren adierazle gisa marrazteko erabilitako marraren eredua. Karaktereen "
+"balioak marra eta etenaren pixelen zabalera gisa hartzen dira."
 
 #: ctk/ctkwidget.c:3540
 msgid "Focus padding"
@@ -9117,7 +9511,8 @@ msgstr "Fokuaren tarte betegarria"
 
 #: ctk/ctkwidget.c:3541
 msgid "Width, in pixels, between focus indicator and the widget 'box'"
-msgstr "Foku-adierazlearen eta trepetako 'laukia'ren arteko zabalera, pixeletan"
+msgstr ""
+"Foku-adierazlearen eta trepetako 'laukia'ren arteko zabalera, pixeletan"
 
 #: ctk/ctkwidget.c:3555
 msgid "Cursor color"
@@ -9135,7 +9530,9 @@ msgstr "Kurtsorearen bigarren mailako kolorea"
 msgid ""
 "Color with which to draw the secondary insertion cursor when editing mixed "
 "right-to-left and left-to-right text"
-msgstr "Eskuinetik ezkerrera eta ezkerretik eskuinera doan testu nahasia editatzean, bigarren txertatze-kurtsorea marrazteko kolorea"
+msgstr ""
+"Eskuinetik ezkerrera eta ezkerretik eskuinera doan testu nahasia editatzean, "
+"bigarren txertatze-kurtsorea marrazteko kolorea"
 
 #: ctk/ctkwidget.c:3576
 msgid "Cursor line aspect ratio"
@@ -9151,7 +9548,8 @@ msgstr "Leihoa arrastatzea"
 
 #: ctk/ctkwidget.c:3584
 msgid "Whether windows can be dragged and maximized by clicking on empty areas"
-msgstr "Area hutsetan klik eginez leihoak arrasta eta maximiza daitekeen edo ez"
+msgstr ""
+"Area hutsetan klik eginez leihoak arrasta eta maximiza daitekeen edo ez"
 
 #
 #: ctk/ctkwidget.c:3601
@@ -9179,7 +9577,9 @@ msgstr "Bereizle zabalak"
 msgid ""
 "Whether separators have configurable width and should be drawn using a box "
 "instead of a line"
-msgstr "Bereizleen zabalera konfiguragarriak diren edo ez, eta marra erabili beharrean kutxa bat erabili marraztu behar diren edo ez"
+msgstr ""
+"Bereizleen zabalera konfiguragarriak diren edo ez, eta marra erabili "
+"beharrean kutxa bat erabili marraztu behar diren edo ez"
 
 #: ctk/ctkwidget.c:3655
 msgid "Separator Width"
@@ -9247,7 +9647,8 @@ msgstr "Leihoaren funtzioa"
 
 #: ctk/ctkwindow.c:760
 msgid "Unique identifier for the window to be used when restoring a session"
-msgstr "Saio bat leheneratzean leihorako erabili beharreko identifikatzaile bakarra"
+msgstr ""
+"Saio bat leheneratzean leihorako erabili beharreko identifikatzaile bakarra"
 
 #: ctk/ctkwindow.c:775
 msgid "Startup ID"
@@ -9255,7 +9656,9 @@ msgstr "Abioko IDa"
 
 #: ctk/ctkwindow.c:776
 msgid "Unique startup identifier for the window used by startup-notification"
-msgstr "Abioko jakinarazpenak erabiltzen duen leihoaren abioko identifikatzaile bakarra"
+msgstr ""
+"Abioko jakinarazpenak erabiltzen duen leihoaren abioko identifikatzaile "
+"bakarra"
 
 #: ctk/ctkwindow.c:783
 msgid "If TRUE, users can resize the window"
@@ -9265,7 +9668,9 @@ msgstr "TRUE (egia) bada, erabiltzaileek leihoaren tamaina alda dezakete"
 msgid ""
 "If TRUE, the window is modal (other windows are not usable while this one is "
 "up)"
-msgstr "TRUE (egia) bada, leihoa modala da (beste leihoak ezin dira erabili hau gainean dagoen bitartean)"
+msgstr ""
+"TRUE (egia) bada, leihoa modala da (beste leihoak ezin dira erabili hau "
+"gainean dagoen bitartean)"
 
 #: ctk/ctkwindow.c:796
 msgid "Window Position"
@@ -9281,7 +9686,8 @@ msgstr "Zabalera lehenetsia"
 
 #: ctk/ctkwindow.c:805
 msgid "The default width of the window, used when initially showing the window"
-msgstr "Leihoaren zabalera lehenetsia, hasieran leihoa erakustean erabiltzen dena"
+msgstr ""
+"Leihoaren zabalera lehenetsia, hasieran leihoa erakustean erabiltzen dena"
 
 #: ctk/ctkwindow.c:812
 msgid "Default Height"
@@ -9290,7 +9696,8 @@ msgstr "Altuera lehenetsia"
 #: ctk/ctkwindow.c:813
 msgid ""
 "The default height of the window, used when initially showing the window"
-msgstr "Leihoaren altuera lehenetsia, hasieran leihoa erakustean erabiltzen dena"
+msgstr ""
+"Leihoaren altuera lehenetsia, hasieran leihoa erakustean erabiltzen dena"
 
 #: ctk/ctkwindow.c:820
 msgid "Destroy with Parent"
@@ -9298,7 +9705,9 @@ msgstr "Deuseztatu gurasoarekin"
 
 #: ctk/ctkwindow.c:821
 msgid "If this window should be destroyed when the parent is destroyed"
-msgstr "Gurasoa deuseztatzean, leiho hau ere deuseztatu behar den ala ez adierazten du"
+msgstr ""
+"Gurasoa deuseztatzean, leiho hau ere deuseztatu behar den ala ez adierazten "
+"du"
 
 #: ctk/ctkwindow.c:834
 msgid "Hide the titlebar during maximization"
@@ -9356,7 +9765,9 @@ msgstr "Motari buruzko arrastoa"
 msgid ""
 "Hint to help the desktop environment understand what kind of window this is "
 "and how to treat it."
-msgstr "Mahai-gaineko inguruneari hau zein leiho-mota den eta nola tratatu behar den ulertzen laguntzeko informazio laburra."
+msgstr ""
+"Mahai-gaineko inguruneari hau zein leiho-mota den eta nola tratatu behar den "
+"ulertzen laguntzeko informazio laburra."
 
 #: ctk/ctkwindow.c:926
 msgid "Skip taskbar"
@@ -9429,7 +9840,8 @@ msgstr "Tamaina aldatzeko heldulekua ikusgai dago"
 
 #: ctk/ctkwindow.c:1034
 msgid "Specifies whether the window's resize grip is visible."
-msgstr "Leihoa tamainaz aldatzeko heldulekua ikusgai dagoen ala ez zehazten du."
+msgstr ""
+"Leihoa tamainaz aldatzeko heldulekua ikusgai dagoen ala ez zehazten du."
 
 #: ctk/ctkwindow.c:1048
 msgid "Gravity"

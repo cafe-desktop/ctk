@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ctk+ 1.3.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-01 15:11+0000\n"
+"POT-Creation-Date: 2022-03-23 18:06+0100\n"
 "PO-Revision-Date: 2020-01-03 18:36+0800\n"
 "Last-Translator: abuyop <abuyop@gmail.com>\n"
 "Language-Team: Projek Gabai <gabai-penyumbang@list.sourceforge.net>\n"
@@ -212,77 +212,76 @@ msgstr "Penerap sel"
 msgid "The cell renderer represented by this accessible"
 msgstr "Penerap sel diwakili oleh boleh capai ini"
 
-#: ctk/ctkaction.c:243 ctk/ctkactiongroup.c:200
+#: ctk/ctkaction.c:233 ctk/ctkactiongroup.c:196
 #: ctk/deprecated/ctkthemingengine.c:247 ctk/ctkcssnode.c:638
 #: ctk/ctkprinter.c:121 ctk/ctkstack.c:516 ctk/ctktextmark.c:136
 msgid "Name"
 msgstr "Nama"
 
-#: ctk/ctkaction.c:244
+#: ctk/ctkaction.c:234
 msgid "A unique name for the action."
 msgstr "Nama unik untuk tindakan."
 
-#: ctk/ctkaction.c:264 ctk/ctkbutton.c:281 ctk/ctkexpander.c:308
+#: ctk/ctkaction.c:252 ctk/ctkbutton.c:281 ctk/ctkexpander.c:308
 #: ctk/ctkframe.c:231 ctk/ctklabel.c:805 ctk/ctkmenuitem.c:789
-#: ctk/ctktoolbutton.c:243 ctk/ctktoolitemgroup.c:1639
+#: ctk/ctktoolbutton.c:204 ctk/ctktoolitemgroup.c:1639
 msgid "Label"
 msgstr "Label"
 
-#: ctk/ctkaction.c:265
+#: ctk/ctkaction.c:253
 msgid "The label used for menu items and buttons that activate this action."
 msgstr ""
 "Label digunakan bagi item menu dan butang yang mengaktifkan tindakan ini."
 
-#: ctk/ctkaction.c:284
+#: ctk/ctkaction.c:269
 msgid "Short label"
 msgstr "Label pendek"
 
-#: ctk/ctkaction.c:285
+#: ctk/ctkaction.c:270
 msgid "A shorter label that may be used on toolbar buttons."
 msgstr ""
 "Satu label lebih pendek yang mungkin digunakan pada butang palang alat."
 
-#: ctk/ctkaction.c:300
+#: ctk/ctkaction.c:283
 msgid "Tooltip"
 msgstr "Tip Alat"
 
-#: ctk/ctkaction.c:301
+#: ctk/ctkaction.c:284
 msgid "A tooltip for this action."
 msgstr "Satu tip alat untuk tindakan ini."
 
-#: ctk/ctkaction.c:319
+#: ctk/ctkaction.c:299
 msgid "Stock Icon"
 msgstr "Ikon Stok"
 
-#: ctk/ctkaction.c:320
+#: ctk/ctkaction.c:300
 msgid "The stock icon displayed in widgets representing this action."
 msgstr "Ikon stok dipaparkan dalam widget yang mewakili tindakan ini."
 
-#: ctk/ctkaction.c:342 ctk/ctkstatusicon.c:279
+#: ctk/ctkaction.c:320 ctk/ctkstatusicon.c:269
 msgid "GIcon"
 msgstr "GIcon"
 
-#: ctk/ctkaction.c:343 ctk/ctkstatusicon.c:280
-#: ctk/ctkcellrendererpixbuf.c:282 ctk/ctkimage.c:360
+#: ctk/ctkaction.c:321 ctk/ctkcellrendererpixbuf.c:282 ctk/ctkimage.c:358
+#: ctk/ctkstatusicon.c:270
 msgid "The GIcon being displayed"
 msgstr "GIcon sedang dipaparkan"
 
-#: ctk/ctkaction.c:365 ctk/ctkstatusicon.c:263
-#: ctk/ctkcellrendererpixbuf.c:245 ctk/ctkimage.c:343 ctk/ctkprinter.c:170
-#: ctk/ctkwindow.c:890
+#: ctk/ctkaction.c:341 ctk/ctkcellrendererpixbuf.c:245 ctk/ctkimage.c:341
+#: ctk/ctkprinter.c:170 ctk/ctkstatusicon.c:253 ctk/ctkwindow.c:890
 msgid "Icon Name"
 msgstr "Nama Ikon"
 
-#: ctk/ctkaction.c:366 ctk/ctkstatusicon.c:264
-#: ctk/ctkcellrendererpixbuf.c:246 ctk/ctkimage.c:344
+#: ctk/ctkaction.c:342 ctk/ctkcellrendererpixbuf.c:246 ctk/ctkimage.c:342
+#: ctk/ctkstatusicon.c:254
 msgid "The name of the icon from the icon theme"
 msgstr "Nama ikon dari tema ikon"
 
-#: ctk/ctkaction.c:381 ctk/ctktoolitem.c:179
+#: ctk/ctkaction.c:354 ctk/ctktoolitem.c:179
 msgid "Visible when horizontal"
 msgstr "Kelihatan bila mengufuk"
 
-#: ctk/ctkaction.c:382 ctk/ctktoolitem.c:180
+#: ctk/ctkaction.c:355 ctk/ctktoolitem.c:180
 msgid ""
 "Whether the toolbar item is visible when the toolbar is in a horizontal "
 "orientation."
@@ -290,11 +289,11 @@ msgstr ""
 "Sama ada item palang adalah kelihatan bila palang alat dalam orientasi "
 "mengufuk."
 
-#: ctk/ctkaction.c:400
+#: ctk/ctkaction.c:370
 msgid "Visible when overflown"
 msgstr "Kelihatan bila melimpah"
 
-#: ctk/ctkaction.c:401
+#: ctk/ctkaction.c:371
 msgid ""
 "When TRUE, toolitem proxies for this action are represented in the toolbar "
 "overflow menu."
@@ -302,11 +301,11 @@ msgstr ""
 "Bila BENAR, proksi item alat bagi tindakan ini diwakilkan dalam menu limpah "
 "palang alat."
 
-#: ctk/ctkaction.c:417 ctk/ctktoolitem.c:186
+#: ctk/ctkaction.c:384 ctk/ctktoolitem.c:186
 msgid "Visible when vertical"
 msgstr "Kelihatan bila menegak"
 
-#: ctk/ctkaction.c:418 ctk/ctktoolitem.c:187
+#: ctk/ctkaction.c:385 ctk/ctktoolitem.c:187
 msgid ""
 "Whether the toolbar item is visible when the toolbar is in a vertical "
 "orientation."
@@ -314,11 +313,11 @@ msgstr ""
 "Sama ada item palang alat adalah kelihatan bila palang alat dalam orientasi "
 "menegak."
 
-#: ctk/ctkaction.c:434 ctk/ctktoolitem.c:193
+#: ctk/ctkaction.c:398 ctk/ctktoolitem.c:193
 msgid "Is important"
 msgstr "Adalah penting"
 
-#: ctk/ctkaction.c:435
+#: ctk/ctkaction.c:399
 msgid ""
 "Whether the action is considered important. When TRUE, toolitem proxies for "
 "this action show text in CTK_TOOLBAR_BOTH_HORIZ mode."
@@ -326,38 +325,38 @@ msgstr ""
 "Sama ada tindakan dianggap penting. Bila BENAR, proksi item alat bagi "
 "tindakan ini tunjukkan teks dalam mod CTK_TOOLBAR_BOTH_HORIZ."
 
-#: ctk/ctkaction.c:451
+#: ctk/ctkaction.c:412
 msgid "Hide if empty"
 msgstr "Sembunyi jika kosong"
 
-#: ctk/ctkaction.c:452
+#: ctk/ctkaction.c:413
 msgid "When TRUE, empty menu proxies for this action are hidden."
 msgstr "Bila BENAR, proksi menu kosong bagi tindakan ini disembunyikan."
 
-#: ctk/ctkaction.c:466 ctk/ctkactiongroup.c:214
-#: ctk/ctkcellrenderer.c:308 ctk/ctkwidget.c:1155
+#: ctk/ctkaction.c:424 ctk/ctkactiongroup.c:208 ctk/ctkcellrenderer.c:308
+#: ctk/ctkwidget.c:1155
 msgid "Sensitive"
 msgstr "Sensitif"
 
-#: ctk/ctkaction.c:467
+#: ctk/ctkaction.c:425
 msgid "Whether the action is enabled."
 msgstr "Sama ada tindakan dibenarkan."
 
-#: ctk/ctkaction.c:481 ctk/ctkactiongroup.c:228
-#: ctk/ctkstatusicon.c:314 ctk/ctkcssnode.c:649
-#: ctk/ctknativedialog.c:242 ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1148
+#: ctk/ctkaction.c:436 ctk/ctkactiongroup.c:220 ctk/ctkcssnode.c:649
+#: ctk/ctknativedialog.c:242 ctk/ctkstatusicon.c:304
+#: ctk/ctktreeviewcolumn.c:246 ctk/ctkwidget.c:1148
 msgid "Visible"
 msgstr "Tampak"
 
-#: ctk/ctkaction.c:482
+#: ctk/ctkaction.c:437
 msgid "Whether the action is visible."
 msgstr "Sama ada tindakan adalah tampak."
 
-#: ctk/ctkaction.c:497
+#: ctk/ctkaction.c:449
 msgid "Action Group"
 msgstr "Kumpulan Tindakan"
 
-#: ctk/ctkaction.c:498
+#: ctk/ctkaction.c:450
 msgid ""
 "The CtkActionGroup this CtkAction is associated with, or NULL (for internal "
 "use)."
@@ -365,49 +364,47 @@ msgstr ""
 "CtkActionGroup bagi CtkAction ini dikaitkan dengannya, atau NOL (untuk "
 "kegunaan luar)."
 
-#: ctk/ctkaction.c:519 ctk/ctkimagemenuitem.c:264
-#: ctk/ctkbutton.c:393
+#: ctk/ctkaction.c:468 ctk/ctkbutton.c:393 ctk/ctkimagemenuitem.c:254
 msgid "Always show image"
 msgstr "Sentiasa tunjuk imej"
 
-#: ctk/ctkaction.c:520 ctk/ctkimagemenuitem.c:265
-#: ctk/ctkbutton.c:394
+#: ctk/ctkaction.c:469 ctk/ctkbutton.c:394 ctk/ctkimagemenuitem.c:255
 msgid "Whether the image will always be shown"
 msgstr "Sama ada imej akan sentiasa ditunjukkan"
 
-#: ctk/ctkactiongroup.c:201
+#: ctk/ctkactiongroup.c:197
 msgid "A name for the action group."
 msgstr "Satu nama bagi kumpulan tindakan."
 
-#: ctk/ctkactiongroup.c:215
+#: ctk/ctkactiongroup.c:209
 msgid "Whether the action group is enabled."
 msgstr "Sama ada kumpulan tindakan dibenarkan."
 
-#: ctk/ctkactiongroup.c:229
+#: ctk/ctkactiongroup.c:221
 msgid "Whether the action group is visible."
 msgstr "Sama ada kumpulan tindakan adalah tampak."
 
-#: ctk/ctkactiongroup.c:242
+#: ctk/ctkactiongroup.c:232
 msgid "Accelerator Group"
 msgstr "Kumpulan pemecut"
 
-#: ctk/ctkactiongroup.c:243
+#: ctk/ctkactiongroup.c:233
 msgid "The accelerator group the actions of this group should use."
 msgstr "Tindakan kumpulan pemecut bagi kumpulan ini patut gunakan."
 
-#: ctk/ctkactivatable.c:290
+#: ctk/ctkactivatable.c:286
 msgid "Related Action"
 msgstr "Tindakan Berkaitan"
 
-#: ctk/ctkactivatable.c:291
+#: ctk/ctkactivatable.c:287
 msgid "The action this activatable will activate and receive updates from"
 msgstr "Tindakan boleh aktif ini akan diaktifkan dan menerima kemas kini"
 
-#: ctk/ctkactivatable.c:315
+#: ctk/ctkactivatable.c:309
 msgid "Use Action Appearance"
 msgstr "Guna Penampilan Tindakan"
 
-#: ctk/ctkactivatable.c:316
+#: ctk/ctkactivatable.c:310
 msgid "Whether to use the related actions appearance properties"
 msgstr "Sama ada hendak gunakan sifat penampilan tindakan berkaitan"
 
@@ -660,30 +657,6 @@ msgstr ""
 "Nilai boolean menunjukkan sama ada anak pengendali kotak dilampir atau "
 "ditanggalkan."
 
-#: ctk/ctkimagemenuitem.c:226 ctk/ctkbutton.c:360
-msgid "Image widget"
-msgstr "Widget imej"
-
-#: ctk/ctkimagemenuitem.c:227
-msgid "Child widget to appear next to the menu text"
-msgstr "Widget anak yang muncul di sebelah teks menu"
-
-#: ctk/ctkimagemenuitem.c:243 ctk/ctkbutton.c:300
-msgid "Use stock"
-msgstr "Guna stok"
-
-#: ctk/ctkimagemenuitem.c:244
-msgid "Whether to use the label text to create a stock menu item"
-msgstr "Sama ada mahu menggunakan teks label untuk mencipta item menu stok"
-
-#: ctk/ctkimagemenuitem.c:281 ctk/ctkmenu.c:655
-msgid "Accel Group"
-msgstr "Kumpulan  Pemecut"
-
-#: ctk/ctkimagemenuitem.c:282
-msgid "The Accel Group to use for stock accelerator keys"
-msgstr "Kumpulan Pemecut yang digunakan untuk kekunci pemecut"
-
 #: ctk/deprecated/ctkmisc.c:114 ctk/ctkentry.c:968 ctk/ctklabel.c:851
 msgid "X align"
 msgstr "Jajar X"
@@ -721,202 +694,45 @@ msgid ""
 "The amount of space to add on the top and bottom of the widget, in pixels"
 msgstr "Amaun ruang yang ditambah pada atas dan bawah widget, dalam piksel"
 
-#: ctk/deprecated/ctknumerableicon.c:642
+#: ctk/deprecated/ctknumerableicon.c:643
 msgid "Icon's count"
 msgstr "Kiraan ikon"
 
-#: ctk/deprecated/ctknumerableicon.c:643
+#: ctk/deprecated/ctknumerableicon.c:644
 msgid "The count of the emblem currently displayed"
 msgstr "Kiraan lambang semasa yang dipaparkan"
 
-#: ctk/deprecated/ctknumerableicon.c:649
+#: ctk/deprecated/ctknumerableicon.c:650
 msgid "Icon's label"
 msgstr "Label ikon"
 
-#: ctk/deprecated/ctknumerableicon.c:650
+#: ctk/deprecated/ctknumerableicon.c:651
 msgid "The label to be displayed over the icon"
 msgstr "Label yang dipaparkan pada ikon"
 
-#: ctk/deprecated/ctknumerableicon.c:656
+#: ctk/deprecated/ctknumerableicon.c:657
 msgid "Icon's style context"
 msgstr "Konteks gaya ikon"
 
-#: ctk/deprecated/ctknumerableicon.c:657
+#: ctk/deprecated/ctknumerableicon.c:658
 msgid "The style context to theme the icon appearance"
 msgstr "Konteks gaya untuk temakan penampilan ikon"
 
-#: ctk/deprecated/ctknumerableicon.c:663
+#: ctk/deprecated/ctknumerableicon.c:664
 msgid "Background icon"
 msgstr "Ikon latar belakang"
 
-#: ctk/deprecated/ctknumerableicon.c:664
+#: ctk/deprecated/ctknumerableicon.c:665
 msgid "The icon for the number emblem background"
 msgstr "Ikon untuk bilangan latar belakang lambang"
 
-#: ctk/deprecated/ctknumerableicon.c:670
+#: ctk/deprecated/ctknumerableicon.c:671
 msgid "Background icon name"
 msgstr "Nama ikon latar belakang"
 
-#: ctk/deprecated/ctknumerableicon.c:671
+#: ctk/deprecated/ctknumerableicon.c:672
 msgid "The icon name for the number emblem background"
 msgstr "Nama ikon untuk bilangan latar belakang lambang"
-
-#: ctk/ctkradioaction.c:120
-msgid "The value"
-msgstr "Nilai"
-
-#: ctk/ctkradioaction.c:121
-msgid ""
-"The value returned by ctk_radio_action_get_current_value() when this action "
-"is the current action of its group."
-msgstr ""
-"Nilai yang dikembalikan oleh ctk_radio_action_get_curent_valu() bila "
-"tindakan ini adalah tindakan semasa bagi kumpulannya."
-
-#: ctk/ctkradioaction.c:139 ctk/ctkradiobutton.c:184
-#: ctk/ctkradiomenuitem.c:424 ctk/ctkradiotoolbutton.c:83
-msgid "Group"
-msgstr "Kumpulan"
-
-#: ctk/ctkradioaction.c:140
-msgid "The radio action whose group this action belongs to."
-msgstr "Tindakan radio yang mana tindakan ini dimiliki oleh kumpulan ini."
-
-#: ctk/ctkradioaction.c:157
-msgid "The current value"
-msgstr "Nilai semasa"
-
-#: ctk/ctkradioaction.c:158
-msgid ""
-"The value property of the currently active member of the group to which this "
-"action belongs."
-msgstr ""
-"Sifat nilai ahli aktif semasa kumpulan yang mana tindakan ini dipunyai."
-
-#: ctk/ctkrecentaction.c:674 ctk/ctkrecentchoosermenu.c:239
-msgid "Show Numbers"
-msgstr "Tunjuk Nombor"
-
-#: ctk/ctkrecentaction.c:675 ctk/ctkrecentchoosermenu.c:240
-msgid "Whether the items should be displayed with a number"
-msgstr "Sama ada item patut dipaparkan dengan nombor"
-
-#: ctk/ctkstatusicon.c:234 ctk/ctkimage.c:256
-msgid "Pixbuf"
-msgstr "Pixbuf"
-
-#: ctk/ctkstatusicon.c:235 ctk/ctkimage.c:257
-msgid "A GdkPixbuf to display"
-msgstr "Satu GdkPixbuf untuk dipaparkan"
-
-#: ctk/ctkstatusicon.c:242 ctk/ctkimage.c:270
-#: ctk/ctkrecentmanager.c:289
-msgid "Filename"
-msgstr "Nama fail"
-
-#: ctk/ctkstatusicon.c:243 ctk/ctkimage.c:271
-msgid "Filename to load and display"
-msgstr "Nama fail yang dimuatkan dan dipaparkan"
-
-#: ctk/ctkstatusicon.c:255 ctk/ctkcellrendererpixbuf.c:195
-#: ctk/ctkimage.c:282
-msgid "Stock ID"
-msgstr "ID Stok"
-
-#: ctk/ctkstatusicon.c:256 ctk/ctkimage.c:283
-msgid "Stock ID for a stock image to display"
-msgstr "ID stok bagi satu imej stok yang dipaparkan"
-
-#: ctk/ctkstatusicon.c:287 ctk/ctkimage.c:380
-msgid "Storage type"
-msgstr "Jenis storan"
-
-#: ctk/ctkstatusicon.c:288 ctk/ctkimage.c:381
-msgid "The representation being used for image data"
-msgstr "Perwakilan yang digunakan oleh data imej"
-
-#: ctk/ctkstatusicon.c:296 ctk/ctkcellrendererpixbuf.c:210
-#: ctk/ctkcellrendererspinner.c:159 ctk/ctkrecentmanager.c:304
-msgid "Size"
-msgstr "Saiz"
-
-#: ctk/ctkstatusicon.c:297
-msgid "The size of the icon"
-msgstr "Saiz ikon"
-
-#: ctk/ctkstatusicon.c:306 ctk/ctkinvisible.c:98
-#: ctk/ctkmountoperation.c:183 ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:897
-msgid "Screen"
-msgstr "Skrin"
-
-#: ctk/ctkstatusicon.c:307
-msgid "The screen where this status icon will be displayed"
-msgstr "Skrin yang mana ikon status ini akan dipaparkan"
-
-#: ctk/ctkstatusicon.c:315
-msgid "Whether the status icon is visible"
-msgstr "Sama ada ikon status kelihatan"
-
-#: ctk/ctkstatusicon.c:330 ctk/ctkplug.c:196
-msgid "Embedded"
-msgstr "Terbenam"
-
-#: ctk/ctkstatusicon.c:331
-msgid "Whether the status icon is embedded"
-msgstr "Sama ada ikon status adalah terbenam"
-
-#: ctk/ctkstatusicon.c:346 ctk/ctktrayicon-x11.c:127
-#: ctk/ctkgesturepan.c:238 ctk/ctkorientable.c:61
-msgid "Orientation"
-msgstr "Orientasi"
-
-#: ctk/ctkstatusicon.c:347 ctk/ctktrayicon-x11.c:128
-msgid "The orientation of the tray"
-msgstr "Orientasi talam"
-
-#: ctk/ctkstatusicon.c:374 ctk/ctkwidget.c:1285
-msgid "Has tooltip"
-msgstr "Mempunyai tip alat"
-
-#: ctk/ctkstatusicon.c:375
-msgid "Whether this tray icon has a tooltip"
-msgstr "Sama ada ikon talam ini mempunyai tip alat"
-
-#: ctk/ctkstatusicon.c:401 ctk/ctkwidget.c:1309
-msgid "Tooltip Text"
-msgstr "Teks Tip Alat"
-
-#: ctk/ctkstatusicon.c:402 ctk/ctkwidget.c:1310 ctk/ctkwidget.c:1334
-msgid "The contents of the tooltip for this widget"
-msgstr "Kandungan tip alat untuk widget ini"
-
-#: ctk/ctkstatusicon.c:425 ctk/ctkwidget.c:1333
-msgid "Tooltip markup"
-msgstr "Penanda tip alat"
-
-#: ctk/ctkstatusicon.c:426
-msgid "The contents of the tooltip for this tray icon"
-msgstr "Kandungan tip alat bagi ikon talam ini"
-
-#: ctk/ctkstatusicon.c:443 ctk/ctkcolorbutton.c:183
-#: ctk/ctkfilechooserbutton.c:443 ctk/ctkfontbutton.c:490
-#: ctk/ctkheaderbar.c:2027 ctk/ctkprintjob.c:133 ctk/ctkshortcutsgroup.c:308
-#: ctk/ctkshortcutssection.c:376 ctk/ctkshortcutsshortcut.c:575
-#: ctk/ctkstack.c:523 ctk/ctktreeviewcolumn.c:316
-msgid "Title"
-msgstr "Tajuk"
-
-#: ctk/ctkstatusicon.c:444
-msgid "The title of this tray icon"
-msgstr "Tajuk ikon talam ini"
-
-#: ctk/ctkstyle.c:471
-msgid "Style context"
-msgstr "Konteks gaya"
-
-#: ctk/ctkstyle.c:472
-msgid "CtkStyleContext to get style from"
-msgstr "CtkStyleContext untuk dapatkan gaya dari"
 
 #: ctk/deprecated/ctktable.c:185
 msgid "Rows"
@@ -1035,95 +851,11 @@ msgstr ""
 msgid "Theming engine name"
 msgstr "Nama enjin tema"
 
-#: ctk/ctktoggleaction.c:118
-msgid "Create the same proxies as a radio action"
-msgstr "Cipta proksi yang sama sebagai butang radio"
-
-#: ctk/ctktoggleaction.c:119
-msgid "Whether the proxies for this action look like radio action proxies"
-msgstr "Sama ada proksi bagi tindakan ini nampak seperti proksi tindakan radio"
-
-#: ctk/ctktoggleaction.c:135 ctk/ctkcellrendererspinner.c:125
-#: ctk/ctkcheckmenuitem.c:209 ctk/ctkmenu.c:640 ctk/ctkmodelbutton.c:1189
-#: ctk/ctkmodelbutton.c:1190 ctk/ctkspinner.c:221 ctk/ctkswitch.c:875
-#: ctk/ctktogglebutton.c:188 ctk/ctktoggletoolbutton.c:130
-msgid "Active"
-msgstr "Aktif"
-
-#: ctk/ctktoggleaction.c:136
-msgid "Whether the toggle action should be active"
-msgstr "Sama ada tindakan togol patut aktif"
-
-#: ctk/ctktrayicon-x11.c:136 ctk/ctkcellrenderertext.c:334
-#: ctk/ctktexttag.c:276
-msgid "Foreground color"
-msgstr "Warna latar hadapan"
-
-#: ctk/ctktrayicon-x11.c:137
-msgid "Foreground color for symbolic icons"
-msgstr "Warna latar hadapan untuk ikon simbolik"
-
-#: ctk/ctktrayicon-x11.c:144
-msgid "Error color"
-msgstr "Warna ralat"
-
-#: ctk/ctktrayicon-x11.c:145
-msgid "Error color for symbolic icons"
-msgstr "Warna ralat untuk ikon simbolik"
-
-#: ctk/ctktrayicon-x11.c:152
-msgid "Warning color"
-msgstr "Warna amaran"
-
-#: ctk/ctktrayicon-x11.c:153
-msgid "Warning color for symbolic icons"
-msgstr "Warna amaran untuk ikon simbolik"
-
-#: ctk/ctktrayicon-x11.c:160
-msgid "Success color"
-msgstr "Warna berjaya"
-
-#: ctk/ctktrayicon-x11.c:161
-msgid "Success color for symbolic icons"
-msgstr "Warna berjaya untuk ikon simbolik"
-
-#: ctk/ctktrayicon-x11.c:168 ctk/ctkbox.c:350
-msgid "Padding"
-msgstr "Pemadatan"
-
-#: ctk/ctktrayicon-x11.c:169
-msgid "Padding that should be put around icons in the tray"
-msgstr "Pemadatan yang patut diletak sekitar ikon dalam talam"
-
-#: ctk/ctktrayicon-x11.c:178 ctk/ctkstackswitcher.c:686
-msgid "Icon Size"
-msgstr "Saiz Ikon"
-
-#: ctk/ctktrayicon-x11.c:179
-msgid "The pixel size that icons should be forced to, or zero"
-msgstr "Saiz piksel ikon yang patut dipaksakan, atau sifar"
-
-#: ctk/ctkuimanager.c:463 ctk/ctkcombobox.c:1010
-msgid "Add tearoffs to menus"
-msgstr "Tambah pengoyak pada menu"
-
-#: ctk/ctkuimanager.c:464
-msgid "Whether tearoff menu items should be added to menus"
-msgstr "Samada item menu pengoyak patut ditambah pada menu"
-
-#: ctk/ctkuimanager.c:471
-msgid "Merged UI definition"
-msgstr "Takrifan UI tergabung"
-
-#: ctk/ctkuimanager.c:472
-msgid "An XML string describing the merged UI"
-msgstr "Satu rentetan XML yang menjelaskan UI tergabung"
-
-#: ctk/ctkaboutdialog.c:343
+#: ctk/ctkaboutdialog.c:349
 msgid "Program name"
 msgstr "Nama program"
 
-#: ctk/ctkaboutdialog.c:344
+#: ctk/ctkaboutdialog.c:350
 msgid ""
 "The name of the program. If this is not set, it defaults to "
 "g_get_application_name()"
@@ -1131,105 +863,105 @@ msgstr ""
 "Nama bagi program. Jika ini tidak ditetapkan, lalainya akan ke "
 "g_get_application_name()"
 
-#: ctk/ctkaboutdialog.c:357
+#: ctk/ctkaboutdialog.c:363
 msgid "Program version"
 msgstr "Versi program"
 
-#: ctk/ctkaboutdialog.c:358
+#: ctk/ctkaboutdialog.c:364
 msgid "The version of the program"
 msgstr "Versi bagi program"
 
-#: ctk/ctkaboutdialog.c:371
+#: ctk/ctkaboutdialog.c:377
 msgid "Copyright string"
 msgstr "Rentetan hak cipta"
 
-#: ctk/ctkaboutdialog.c:372
+#: ctk/ctkaboutdialog.c:378
 msgid "Copyright information for the program"
 msgstr "Maklumat hak cipta mengenai program ini"
 
-#: ctk/ctkaboutdialog.c:387
+#: ctk/ctkaboutdialog.c:393
 msgid "Comments string"
 msgstr "Rentetan ulasan"
 
-#: ctk/ctkaboutdialog.c:388
+#: ctk/ctkaboutdialog.c:394
 msgid "Comments about the program"
 msgstr "Ulasan mengenai program ini"
 
-#: ctk/ctkaboutdialog.c:408
+#: ctk/ctkaboutdialog.c:414
 msgid "License"
 msgstr "Lesen"
 
-#: ctk/ctkaboutdialog.c:409
+#: ctk/ctkaboutdialog.c:415
 msgid "The license of the program"
 msgstr "Lesen program"
 
-#: ctk/ctkaboutdialog.c:436
+#: ctk/ctkaboutdialog.c:442
 msgid "License Type"
 msgstr "Jenis Lesen"
 
-#: ctk/ctkaboutdialog.c:437
+#: ctk/ctkaboutdialog.c:443
 msgid "The license type of the program"
 msgstr "Jenis lesen bagi program ini"
 
-#: ctk/ctkaboutdialog.c:452
+#: ctk/ctkaboutdialog.c:458
 msgid "Website URL"
 msgstr "URL Tapak Sesawang"
 
-#: ctk/ctkaboutdialog.c:453
+#: ctk/ctkaboutdialog.c:459
 msgid "The URL for the link to the website of the program"
 msgstr "URL bagi pautan ke tapak sesawang program"
 
-#: ctk/ctkaboutdialog.c:466
+#: ctk/ctkaboutdialog.c:472
 msgid "Website label"
 msgstr "Label tapak sesawang"
 
-#: ctk/ctkaboutdialog.c:467
+#: ctk/ctkaboutdialog.c:473
 msgid "The label for the link to the website of the program"
 msgstr "Label bagi pautan ke tapak sesawang program"
 
-#: ctk/ctkaboutdialog.c:482
+#: ctk/ctkaboutdialog.c:488
 msgid "Authors"
 msgstr "Pengarang"
 
-#: ctk/ctkaboutdialog.c:483
+#: ctk/ctkaboutdialog.c:489
 msgid "List of authors of the program"
 msgstr "Senarai pengarang program"
 
-#: ctk/ctkaboutdialog.c:498
+#: ctk/ctkaboutdialog.c:504
 msgid "Documenters"
 msgstr "Pendokumen"
 
-#: ctk/ctkaboutdialog.c:499
+#: ctk/ctkaboutdialog.c:505
 msgid "List of people documenting the program"
 msgstr "Senarai Individu yang mendokumentasikan program ini"
 
-#: ctk/ctkaboutdialog.c:514
+#: ctk/ctkaboutdialog.c:520
 msgid "Artists"
 msgstr "Artis"
 
-#: ctk/ctkaboutdialog.c:515
+#: ctk/ctkaboutdialog.c:521
 msgid "List of people who have contributed artwork to the program"
 msgstr "Senarai individu yang menyumbang kerja seni program"
 
-#: ctk/ctkaboutdialog.c:530
+#: ctk/ctkaboutdialog.c:536
 msgid "Translator credits"
 msgstr ""
 "abuyop\n"
 "Mohamad Afifi Omar (App)\n"
 "Hasbullah Bin Pit"
 
-#: ctk/ctkaboutdialog.c:531
+#: ctk/ctkaboutdialog.c:537
 msgid ""
 "Credits to the translators. This string should be marked as translatable"
 msgstr ""
 "Penghargaan kepada penterjemah. Rentetan ini patut ditanda sebagai boleh "
 "diterjemah"
 
-#: ctk/ctkaboutdialog.c:545
+#: ctk/ctkaboutdialog.c:551
 msgid "Logo"
 msgstr "Logo"
 
-#: ctk/ctkaboutdialog.c:546
+#: ctk/ctkaboutdialog.c:552
 msgid ""
 "A logo for the about box. If this is not set, it defaults to "
 "ctk_window_get_default_icon_list()"
@@ -1237,19 +969,19 @@ msgstr ""
 "Logo mengenai kotak perihal. Jika ini tidak ditetapkan, lalainya akan ke "
 "ctk_window_get_default_icon_list()"
 
-#: ctk/ctkaboutdialog.c:560
+#: ctk/ctkaboutdialog.c:566
 msgid "Logo Icon Name"
 msgstr "Nama Ikon Logo"
 
-#: ctk/ctkaboutdialog.c:561
+#: ctk/ctkaboutdialog.c:567
 msgid "A named icon to use as the logo for the about box."
 msgstr "Satu ikon bernama yang digunakan sebagai logo untuk kotak perihal."
 
-#: ctk/ctkaboutdialog.c:574
+#: ctk/ctkaboutdialog.c:580
 msgid "Wrap license"
 msgstr "Lilit lesen"
 
-#: ctk/ctkaboutdialog.c:575
+#: ctk/ctkaboutdialog.c:581
 msgid "Whether to wrap the license text."
 msgstr "Sama ada mahu lilitkan teks lesen."
 
@@ -1307,7 +1039,7 @@ msgstr ""
 "atau hujung induk"
 
 #: ctk/ctkactionbar.c:345 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
-#: ctk/ctknotebook.c:840 ctk/ctkpaned.c:368 ctk/ctkpopover.c:1758
+#: ctk/ctknotebook.c:840 ctk/ctkpaned.c:368 ctk/ctkpopover.c:1767
 #: ctk/ctkpopovermenu.c:384 ctk/ctkstack.c:537 ctk/ctktoolitemgroup.c:1716
 msgid "Position"
 msgstr "Kedudukan"
@@ -1318,7 +1050,7 @@ msgid "The index of the child in the parent"
 msgstr "Indeks anak dalam induk"
 
 #: ctk/ctkadjustment.c:142 ctk/ctkcellrendererprogress.c:138
-#: ctk/ctkscalebutton.c:196 ctk/ctkspinbutton.c:436
+#: ctk/ctkscalebutton.c:198 ctk/ctkspinbutton.c:436
 msgid "Value"
 msgstr "Nilai"
 
@@ -1386,11 +1118,11 @@ msgstr "Tunjuk item lalai"
 msgid "Whether the combobox should show the default application on top"
 msgstr "Sama ada kotak kombo patut menunjukkan aplikasi lalai di atas"
 
-#: ctk/ctkappchooserbutton.c:647 ctk/ctkappchooserdialog.c:686
+#: ctk/ctkappchooserbutton.c:647 ctk/ctkappchooserdialog.c:688
 msgid "Heading"
 msgstr "Kepala"
 
-#: ctk/ctkappchooserbutton.c:648 ctk/ctkappchooserdialog.c:687
+#: ctk/ctkappchooserbutton.c:648 ctk/ctkappchooserdialog.c:689
 msgid "The text to show at the top of the dialog"
 msgstr "Teks yang ditunjukkan pada bahagian atas dialog"
 
@@ -1402,11 +1134,11 @@ msgstr "Jenis kandungan"
 msgid "The content type used by the open with object"
 msgstr "Jenis kandungan yang digunakan okeh buka dengan objek"
 
-#: ctk/ctkappchooserdialog.c:672
+#: ctk/ctkappchooserdialog.c:674
 msgid "GFile"
 msgstr "GFile"
 
-#: ctk/ctkappchooserdialog.c:673
+#: ctk/ctkappchooserdialog.c:675
 msgid "The GFile used by the app chooser dialog"
 msgstr "GFile yang digunakan oleh dialog pemilih aplikasi"
 
@@ -1458,43 +1190,43 @@ msgstr "Teks lalai widget"
 msgid "The default text appearing when there are no applications"
 msgstr "Teks lalai muncul ketika tiada aplikasi"
 
-#: ctk/ctkapplication.c:833
+#: ctk/ctkapplication.c:845
 msgid "Register session"
 msgstr "Daftar sesi"
 
-#: ctk/ctkapplication.c:834
+#: ctk/ctkapplication.c:846
 msgid "Register with the session manager"
 msgstr "Daftar dengan pengurus sesi"
 
-#: ctk/ctkapplication.c:851
+#: ctk/ctkapplication.c:863
 msgid "Screensaver Active"
 msgstr "Penyelamat Skrin Aktif"
 
-#: ctk/ctkapplication.c:852
+#: ctk/ctkapplication.c:864
 msgid "Whether the screensaver is active"
 msgstr "Sama ada penyelamat skrin adalah aktif"
 
-#: ctk/ctkapplication.c:858
+#: ctk/ctkapplication.c:870
 msgid "Application menu"
 msgstr "Menu aplikasi"
 
-#: ctk/ctkapplication.c:859
+#: ctk/ctkapplication.c:871
 msgid "The GMenuModel for the application menu"
 msgstr "GMenuModel untuk menu aplikasi"
 
-#: ctk/ctkapplication.c:865
+#: ctk/ctkapplication.c:877
 msgid "Menubar"
 msgstr "Palang Menu"
 
-#: ctk/ctkapplication.c:866
+#: ctk/ctkapplication.c:878
 msgid "The GMenuModel for the menubar"
 msgstr "GMenuModel untuk palang menu"
 
-#: ctk/ctkapplication.c:872
+#: ctk/ctkapplication.c:884
 msgid "Active window"
 msgstr "Tetingkap aktif"
 
-#: ctk/ctkapplication.c:873
+#: ctk/ctkapplication.c:885
 msgid "The window which most recently had focus"
 msgstr "Tetingkap yang terkini mempunyai fokus"
 
@@ -1720,6 +1452,10 @@ msgstr ""
 "Sama ada jarak tambahan diberikan kepada anak patut diperuntuk pada anak "
 "atau digunakan sebagai pemadat"
 
+#: ctk/ctkbox.c:350 ctk/ctktrayicon-x11.c:168
+msgid "Padding"
+msgstr "Pemadatan"
+
 #: ctk/ctkbox.c:351
 msgid "Extra space to put between the child and its neighbors, in pixels"
 msgstr ""
@@ -1741,7 +1477,7 @@ msgstr ""
 "Teks widget label dalam butang, jika butang mengandungi satu widget label"
 
 #: ctk/ctkbutton.c:288 ctk/ctkexpander.c:316 ctk/ctklabel.c:826
-#: ctk/ctkmenuitem.c:803 ctk/ctktoolbutton.c:250
+#: ctk/ctkmenuitem.c:803 ctk/ctktoolbutton.c:211
 msgid "Use underline"
 msgstr "Guna garis bawah"
 
@@ -1753,6 +1489,10 @@ msgid ""
 msgstr ""
 "Jika ditetapkan, garis bawah dalam teks menunjukkan aksara berikutnya yang "
 "patut digunakan untuk kekunci pemecut mnemonik"
+
+#: ctk/ctkbutton.c:300 ctk/ctkimagemenuitem.c:236
+msgid "Use stock"
+msgstr "Guna stok"
 
 #: ctk/ctkbutton.c:301
 msgid ""
@@ -1776,6 +1516,10 @@ msgstr "Jajaran mengufuk bagi anak"
 #: ctk/ctkbutton.c:346
 msgid "Vertical alignment for child"
 msgstr "Jajaran menegak bagi anak"
+
+#: ctk/ctkbutton.c:360 ctk/ctkimagemenuitem.c:221
+msgid "Image widget"
+msgstr "Widget imej"
 
 #: ctk/ctkbutton.c:361
 msgid "Child widget to appear next to the button text"
@@ -2268,9 +2012,18 @@ msgstr "permukaan"
 msgid "The surface to render"
 msgstr "Permukaan untuk diterap"
 
+#: ctk/ctkcellrendererpixbuf.c:195 ctk/ctkimage.c:280 ctk/ctkstatusicon.c:245
+msgid "Stock ID"
+msgstr "ID Stok"
+
 #: ctk/ctkcellrendererpixbuf.c:196
 msgid "The stock ID of the stock icon to render"
 msgstr "ID stok bagi ikon stok untuk diterapkan"
+
+#: ctk/ctkcellrendererpixbuf.c:210 ctk/ctkcellrendererspinner.c:159
+#: ctk/ctkrecentmanager.c:303 ctk/ctkstatusicon.c:286
+msgid "Size"
+msgstr "Saiz"
 
 #: ctk/ctkcellrendererpixbuf.c:211
 msgid "The CtkIconSize value that specifies the size of the rendered icon"
@@ -2292,7 +2045,7 @@ msgstr "Ikuti Keadaan"
 msgid "Whether the rendered pixbuf should be colorized according to the state"
 msgstr "Sama ada pixbuf terterap patut diwarnakan mengikut keadaan"
 
-#: ctk/ctkcellrendererpixbuf.c:281 ctk/ctkimage.c:359 ctk/ctkmodelbutton.c:1144
+#: ctk/ctkcellrendererpixbuf.c:281 ctk/ctkimage.c:357 ctk/ctkmodelbutton.c:1166
 #: ctk/ctkshortcutsshortcut.c:550 ctk/ctkwindow.c:841
 msgid "Icon"
 msgstr "Ikon"
@@ -2303,7 +2056,7 @@ msgstr "Nilai palang kemajuan"
 
 #: ctk/ctkcellrendererprogress.c:156 ctk/ctkcellrenderertext.c:255
 #: ctk/ctkentrybuffer.c:350 ctk/ctkentry.c:953 ctk/ctkmessagedialog.c:214
-#: ctk/ctkmodelbutton.c:1158 ctk/ctkprogressbar.c:287 ctk/ctktextbuffer.c:218
+#: ctk/ctkmodelbutton.c:1180 ctk/ctkprogressbar.c:287 ctk/ctktextbuffer.c:219
 msgid "Text"
 msgstr "Teks"
 
@@ -2344,7 +2097,7 @@ msgid "The vertical text alignment, from 0 (top) to 1 (bottom)."
 msgstr "Jajaran teks menegak, dari 0 (atas) ke 1 (bawah)."
 
 #: ctk/ctkcellrendererprogress.c:226 ctk/ctklevelbar.c:1097
-#: ctk/ctkmodelbutton.c:1220 ctk/ctkprogressbar.c:264 ctk/ctkrange.c:441
+#: ctk/ctkmodelbutton.c:1242 ctk/ctkprogressbar.c:264 ctk/ctkrange.c:441
 msgid "Inverted"
 msgstr "Disongsangkan"
 
@@ -2352,7 +2105,7 @@ msgstr "Disongsangkan"
 msgid "Invert the direction in which the progress bar grows"
 msgstr "Songsangkan arah yang mana palang kemajuan membesar"
 
-#: ctk/ctkcellrendererspin.c:113 ctk/ctkrange.c:434 ctk/ctkscalebutton.c:215
+#: ctk/ctkcellrendererspin.c:113 ctk/ctkrange.c:434 ctk/ctkscalebutton.c:217
 #: ctk/ctkspinbutton.c:379
 msgid "Adjustment"
 msgstr "Pelarasan"
@@ -2376,6 +2129,13 @@ msgstr "Digit"
 #: ctk/ctkcellrendererspin.c:144 ctk/ctkspinbutton.c:396
 msgid "The number of decimal places to display"
 msgstr "Bilangan titik perpuluhan untuk dipaparkan"
+
+#: ctk/ctkcellrendererspinner.c:125 ctk/ctkcheckmenuitem.c:209
+#: ctk/ctkmenu.c:640 ctk/ctkmodelbutton.c:1211 ctk/ctkmodelbutton.c:1212
+#: ctk/ctkspinner.c:221 ctk/ctkswitch.c:878 ctk/ctktoggleaction.c:129
+#: ctk/ctktogglebutton.c:188 ctk/ctktoggletoolbutton.c:130
+msgid "Active"
+msgstr "Aktif"
 
 #: ctk/ctkcellrendererspinner.c:126
 msgid "Whether the spinner is active (ie. shown) in the cell"
@@ -2417,19 +2177,19 @@ msgstr "Mod Perenggan Tunggal"
 msgid "Whether to keep all text in a single paragraph"
 msgstr "Sama ada hendak kekalkan semua teks dalam satu perenggan"
 
-#: ctk/ctkcellrenderertext.c:283 ctk/ctkcellview.c:217 ctk/ctktexttag.c:215
+#: ctk/ctkcellrenderertext.c:283 ctk/ctkcellview.c:217 ctk/ctktexttag.c:216
 msgid "Background color name"
 msgstr "Nama warna latar belakang"
 
-#: ctk/ctkcellrenderertext.c:284 ctk/ctkcellview.c:218 ctk/ctktexttag.c:216
+#: ctk/ctkcellrenderertext.c:284 ctk/ctkcellview.c:218 ctk/ctktexttag.c:217
 msgid "Background color as a string"
 msgstr "Warna latar belakang sebagai satu rentetan"
 
-#: ctk/ctkcellrenderertext.c:298 ctk/ctkcellview.c:233 ctk/ctktexttag.c:230
+#: ctk/ctkcellrenderertext.c:298 ctk/ctkcellview.c:233 ctk/ctktexttag.c:231
 msgid "Background color"
 msgstr "Warna latar belakang"
 
-#: ctk/ctkcellrenderertext.c:299 ctk/ctkcellview.c:234 ctk/ctktexttag.c:231
+#: ctk/ctkcellrenderertext.c:299 ctk/ctkcellview.c:234 ctk/ctktexttag.c:232
 msgid "Background color as a CdkColor"
 msgstr "Warna latar belakang sebagai satu CdkColor"
 
@@ -2437,19 +2197,23 @@ msgstr "Warna latar belakang sebagai satu CdkColor"
 msgid "Background color as RGBA"
 msgstr "Warna latar belakang sebagai RGBA"
 
-#: ctk/ctkcellrenderertext.c:314 ctk/ctkcellview.c:249 ctk/ctktexttag.c:246
+#: ctk/ctkcellrenderertext.c:314 ctk/ctkcellview.c:249 ctk/ctktexttag.c:247
 msgid "Background color as a CdkRGBA"
 msgstr "Warna latar belakang sebagai satu CdkRGBA"
 
-#: ctk/ctkcellrenderertext.c:319 ctk/ctktexttag.c:261
+#: ctk/ctkcellrenderertext.c:319 ctk/ctktexttag.c:262
 msgid "Foreground color name"
 msgstr "Nama warna latar hadapan"
 
-#: ctk/ctkcellrenderertext.c:320 ctk/ctktexttag.c:262
+#: ctk/ctkcellrenderertext.c:320 ctk/ctktexttag.c:263
 msgid "Foreground color as a string"
 msgstr "Warna latar hadapan sebagai satu rentetan"
 
-#: ctk/ctkcellrenderertext.c:335 ctk/ctktexttag.c:277
+#: ctk/ctkcellrenderertext.c:334 ctk/ctktexttag.c:277 ctk/ctktrayicon-x11.c:136
+msgid "Foreground color"
+msgstr "Warna latar hadapan"
+
+#: ctk/ctkcellrenderertext.c:335 ctk/ctktexttag.c:278
 msgid "Foreground color as a CdkColor"
 msgstr "Warna latar hadapan sebagai satu CdkColor"
 
@@ -2457,74 +2221,74 @@ msgstr "Warna latar hadapan sebagai satu CdkColor"
 msgid "Foreground color as RGBA"
 msgstr "Warna latar hadapan sebagai satu RGBA"
 
-#: ctk/ctkcellrenderertext.c:350 ctk/ctktexttag.c:292
+#: ctk/ctkcellrenderertext.c:350 ctk/ctktexttag.c:293
 msgid "Foreground color as a CdkRGBA"
 msgstr "Warna latar hadapan sebagai satu CdkRGBA"
 
-#: ctk/ctkcellrenderertext.c:357 ctk/ctkentry.c:861 ctk/ctktexttag.c:308
+#: ctk/ctkcellrenderertext.c:357 ctk/ctkentry.c:861 ctk/ctktexttag.c:309
 #: ctk/ctktextview.c:825
 msgid "Editable"
 msgstr "Boleh Sunting"
 
-#: ctk/ctkcellrenderertext.c:358 ctk/ctktexttag.c:309 ctk/ctktextview.c:826
+#: ctk/ctkcellrenderertext.c:358 ctk/ctktexttag.c:310 ctk/ctktextview.c:826
 msgid "Whether the text can be modified by the user"
 msgstr "Sama ada teks boleh diubah suai oleh pengguna"
 
 #: ctk/ctkcellrenderertext.c:364 ctk/ctkcellrenderertext.c:371
-#: ctk/ctkfontchooser.c:64 ctk/ctktexttag.c:324 ctk/ctktexttag.c:332
+#: ctk/ctkfontchooser.c:64 ctk/ctktexttag.c:325 ctk/ctktexttag.c:333
 msgid "Font"
 msgstr "Fon"
 
-#: ctk/ctkcellrenderertext.c:365 ctk/ctkfontchooser.c:65 ctk/ctktexttag.c:325
+#: ctk/ctkcellrenderertext.c:365 ctk/ctkfontchooser.c:65 ctk/ctktexttag.c:326
 msgid "Font description as a string, e.g. \"Sans Italic 12\""
 msgstr "Keterangan Fon sebagai satu rentetan, cth. \"Sans Italic 12\""
 
-#: ctk/ctkcellrenderertext.c:372 ctk/ctkfontchooser.c:78 ctk/ctktexttag.c:333
+#: ctk/ctkcellrenderertext.c:372 ctk/ctkfontchooser.c:78 ctk/ctktexttag.c:334
 msgid "Font description as a PangoFontDescription struct"
 msgstr "Keterangan Fon sebagai struct PangoFontDescription"
 
-#: ctk/ctkcellrenderertext.c:378 ctk/ctktexttag.c:340
+#: ctk/ctkcellrenderertext.c:378 ctk/ctktexttag.c:341
 msgid "Font family"
 msgstr "Keluarga fon"
 
-#: ctk/ctkcellrenderertext.c:379 ctk/ctktexttag.c:341
+#: ctk/ctkcellrenderertext.c:379 ctk/ctktexttag.c:342
 msgid "Name of the font family, e.g. Sans, Helvetica, Times, Monospace"
 msgstr "Nama keluarga fon, seperti Sans, Helvetica, Times, Monospace"
 
 #: ctk/ctkcellrenderertext.c:385 ctk/ctkcellrenderertext.c:386
-#: ctk/ctktexttag.c:348
+#: ctk/ctktexttag.c:349
 msgid "Font style"
 msgstr "Gaya fon"
 
 #: ctk/ctkcellrenderertext.c:393 ctk/ctkcellrenderertext.c:394
-#: ctk/ctktexttag.c:357
+#: ctk/ctktexttag.c:358
 msgid "Font variant"
 msgstr "Varian fon"
 
 #: ctk/ctkcellrenderertext.c:401 ctk/ctkcellrenderertext.c:402
-#: ctk/ctktexttag.c:366
+#: ctk/ctktexttag.c:367
 msgid "Font weight"
 msgstr "Berat fon"
 
 #: ctk/ctkcellrenderertext.c:409 ctk/ctkcellrenderertext.c:410
-#: ctk/ctktexttag.c:377
+#: ctk/ctktexttag.c:378
 msgid "Font stretch"
 msgstr "Keregangan fon"
 
 #: ctk/ctkcellrenderertext.c:417 ctk/ctkcellrenderertext.c:418
-#: ctk/ctktexttag.c:386
+#: ctk/ctktexttag.c:387
 msgid "Font size"
 msgstr "Saiz fon"
 
-#: ctk/ctkcellrenderertext.c:425 ctk/ctktexttag.c:406
+#: ctk/ctkcellrenderertext.c:425 ctk/ctktexttag.c:407
 msgid "Font points"
 msgstr "Titik Fon"
 
-#: ctk/ctkcellrenderertext.c:426 ctk/ctktexttag.c:407
+#: ctk/ctkcellrenderertext.c:426 ctk/ctktexttag.c:408
 msgid "Font size in points"
 msgstr "Saiz fon dalam titik"
 
-#: ctk/ctkcellrenderertext.c:433 ctk/ctktexttag.c:396
+#: ctk/ctkcellrenderertext.c:433 ctk/ctktexttag.c:397
 msgid "Font scale"
 msgstr "Skala fon"
 
@@ -2532,7 +2296,7 @@ msgstr "Skala fon"
 msgid "Font scaling factor"
 msgstr "Faktor penskalaan fon"
 
-#: ctk/ctkcellrenderertext.c:441 ctk/ctktexttag.c:475
+#: ctk/ctkcellrenderertext.c:441 ctk/ctktexttag.c:476
 msgid "Rise"
 msgstr "Naik"
 
@@ -2543,23 +2307,23 @@ msgstr ""
 "Ofset bagi teks di atas garis asas (di bawah garis asas jika naik adalah "
 "negatif)"
 
-#: ctk/ctkcellrenderertext.c:450 ctk/ctktexttag.c:515
+#: ctk/ctkcellrenderertext.c:450 ctk/ctktexttag.c:516
 msgid "Strikethrough"
 msgstr "Coret tembus"
 
-#: ctk/ctkcellrenderertext.c:451 ctk/ctktexttag.c:516
+#: ctk/ctkcellrenderertext.c:451 ctk/ctktexttag.c:517
 msgid "Whether to strike through the text"
 msgstr "Sama ada coret menembusi teks"
 
-#: ctk/ctkcellrenderertext.c:457 ctk/ctktexttag.c:523
+#: ctk/ctkcellrenderertext.c:457 ctk/ctktexttag.c:524
 msgid "Underline"
 msgstr "Garis bawah"
 
-#: ctk/ctkcellrenderertext.c:458 ctk/ctktexttag.c:524
+#: ctk/ctkcellrenderertext.c:458 ctk/ctktexttag.c:525
 msgid "Style of underline for this text"
 msgstr "Gaya garis bawah bagi teks ini"
 
-#: ctk/ctkcellrenderertext.c:465 ctk/ctkfontchooser.c:154 ctk/ctktexttag.c:435
+#: ctk/ctkcellrenderertext.c:465 ctk/ctkfontchooser.c:154 ctk/ctktexttag.c:436
 msgid "Language"
 msgstr "Bahasa"
 
@@ -2602,7 +2366,7 @@ msgstr "Lebar Maksimum Dalam Aksara"
 msgid "The maximum width of the cell, in characters"
 msgstr "Lebar maksimum sel, dalam aksara"
 
-#: ctk/ctkcellrenderertext.c:542 ctk/ctktexttag.c:568
+#: ctk/ctkcellrenderertext.c:542 ctk/ctktexttag.c:569
 msgid "Wrap mode"
 msgstr "Mod lilit"
 
@@ -2638,115 +2402,115 @@ msgstr "Teks pemegang tempat"
 msgid "Text rendered when an editable cell is empty"
 msgstr "Teks diterap bila sel boleh sunting adalah kosong"
 
-#: ctk/ctkcellrenderertext.c:606 ctk/ctkcellview.c:353 ctk/ctktexttag.c:721
+#: ctk/ctkcellrenderertext.c:606 ctk/ctkcellview.c:353 ctk/ctktexttag.c:722
 msgid "Background set"
 msgstr "Set latar belakang"
 
-#: ctk/ctkcellrenderertext.c:607 ctk/ctkcellview.c:354 ctk/ctktexttag.c:722
+#: ctk/ctkcellrenderertext.c:607 ctk/ctkcellview.c:354 ctk/ctktexttag.c:723
 msgid "Whether this tag affects the background color"
 msgstr "Sama ada tag ini mempengaruhi warna latar belakang"
 
-#: ctk/ctkcellrenderertext.c:610 ctk/ctktexttag.c:729
+#: ctk/ctkcellrenderertext.c:610 ctk/ctktexttag.c:730
 msgid "Foreground set"
 msgstr "Set latar hadapan"
 
-#: ctk/ctkcellrenderertext.c:611 ctk/ctktexttag.c:730
+#: ctk/ctkcellrenderertext.c:611 ctk/ctktexttag.c:731
 msgid "Whether this tag affects the foreground color"
 msgstr "Sama ada tag ini mempengaruhi warna latar hadapan"
 
-#: ctk/ctkcellrenderertext.c:614 ctk/ctktexttag.c:733
+#: ctk/ctkcellrenderertext.c:614 ctk/ctktexttag.c:734
 msgid "Editability set"
 msgstr "Set kebolehsuntingan"
 
-#: ctk/ctkcellrenderertext.c:615 ctk/ctktexttag.c:734
+#: ctk/ctkcellrenderertext.c:615 ctk/ctktexttag.c:735
 msgid "Whether this tag affects text editability"
 msgstr "Sama ada tag ini mempengaruhi kebolehsuntingan teks"
 
-#: ctk/ctkcellrenderertext.c:618 ctk/ctktexttag.c:737
+#: ctk/ctkcellrenderertext.c:618 ctk/ctktexttag.c:738
 msgid "Font family set"
 msgstr "Set keluarga fon"
 
-#: ctk/ctkcellrenderertext.c:619 ctk/ctktexttag.c:738
+#: ctk/ctkcellrenderertext.c:619 ctk/ctktexttag.c:739
 msgid "Whether this tag affects the font family"
 msgstr "Sama ada tag ini mempengaruhi keluarga fon"
 
-#: ctk/ctkcellrenderertext.c:622 ctk/ctktexttag.c:741
+#: ctk/ctkcellrenderertext.c:622 ctk/ctktexttag.c:742
 msgid "Font style set"
 msgstr "Set gaya fon"
 
-#: ctk/ctkcellrenderertext.c:623 ctk/ctktexttag.c:742
+#: ctk/ctkcellrenderertext.c:623 ctk/ctktexttag.c:743
 msgid "Whether this tag affects the font style"
 msgstr "Sama ada tag ini mempengaruhi gaya fon"
 
-#: ctk/ctkcellrenderertext.c:626 ctk/ctktexttag.c:745
+#: ctk/ctkcellrenderertext.c:626 ctk/ctktexttag.c:746
 msgid "Font variant set"
 msgstr "Set varian fon"
 
-#: ctk/ctkcellrenderertext.c:627 ctk/ctktexttag.c:746
+#: ctk/ctkcellrenderertext.c:627 ctk/ctktexttag.c:747
 msgid "Whether this tag affects the font variant"
 msgstr "Sama ada tag ini mempengaruhi varian fon"
 
-#: ctk/ctkcellrenderertext.c:630 ctk/ctktexttag.c:749
+#: ctk/ctkcellrenderertext.c:630 ctk/ctktexttag.c:750
 msgid "Font weight set"
 msgstr "Set berat fon"
 
-#: ctk/ctkcellrenderertext.c:631 ctk/ctktexttag.c:750
+#: ctk/ctkcellrenderertext.c:631 ctk/ctktexttag.c:751
 msgid "Whether this tag affects the font weight"
 msgstr "Sama ada tag ini mempengaruhi berat fon"
 
-#: ctk/ctkcellrenderertext.c:634 ctk/ctktexttag.c:753
+#: ctk/ctkcellrenderertext.c:634 ctk/ctktexttag.c:754
 msgid "Font stretch set"
 msgstr "Set keregangan fon"
 
-#: ctk/ctkcellrenderertext.c:635 ctk/ctktexttag.c:754
+#: ctk/ctkcellrenderertext.c:635 ctk/ctktexttag.c:755
 msgid "Whether this tag affects the font stretch"
 msgstr "Sama ada tag ini mempengaruhi keregangan fon"
 
-#: ctk/ctkcellrenderertext.c:638 ctk/ctktexttag.c:757
+#: ctk/ctkcellrenderertext.c:638 ctk/ctktexttag.c:758
 msgid "Font size set"
 msgstr "Set saiz fon"
 
-#: ctk/ctkcellrenderertext.c:639 ctk/ctktexttag.c:758
+#: ctk/ctkcellrenderertext.c:639 ctk/ctktexttag.c:759
 msgid "Whether this tag affects the font size"
 msgstr "Sama ada tag ini mempengaruhi saiz fon"
 
-#: ctk/ctkcellrenderertext.c:642 ctk/ctktexttag.c:761
+#: ctk/ctkcellrenderertext.c:642 ctk/ctktexttag.c:762
 msgid "Font scale set"
 msgstr "Set skala fon"
 
-#: ctk/ctkcellrenderertext.c:643 ctk/ctktexttag.c:762
+#: ctk/ctkcellrenderertext.c:643 ctk/ctktexttag.c:763
 msgid "Whether this tag scales the font size by a factor"
 msgstr "Sama ada tag ini mempengaruhi skala fon"
 
-#: ctk/ctkcellrenderertext.c:646 ctk/ctktexttag.c:781
+#: ctk/ctkcellrenderertext.c:646 ctk/ctktexttag.c:782
 msgid "Rise set"
 msgstr "Set naik"
 
-#: ctk/ctkcellrenderertext.c:647 ctk/ctktexttag.c:782
+#: ctk/ctkcellrenderertext.c:647 ctk/ctktexttag.c:783
 msgid "Whether this tag affects the rise"
 msgstr "Sama ada tag ini mempengaruhi kenaikan"
 
-#: ctk/ctkcellrenderertext.c:650 ctk/ctktexttag.c:797
+#: ctk/ctkcellrenderertext.c:650 ctk/ctktexttag.c:798
 msgid "Strikethrough set"
 msgstr "Set coret tembus"
 
-#: ctk/ctkcellrenderertext.c:651 ctk/ctktexttag.c:798
+#: ctk/ctkcellrenderertext.c:651 ctk/ctktexttag.c:799
 msgid "Whether this tag affects strikethrough"
 msgstr "Sama ada tag ini mempengaruhi coret tembus"
 
-#: ctk/ctkcellrenderertext.c:654 ctk/ctktexttag.c:805
+#: ctk/ctkcellrenderertext.c:654 ctk/ctktexttag.c:806
 msgid "Underline set"
 msgstr "Set garis bawah"
 
-#: ctk/ctkcellrenderertext.c:655 ctk/ctktexttag.c:806
+#: ctk/ctkcellrenderertext.c:655 ctk/ctktexttag.c:807
 msgid "Whether this tag affects underlining"
 msgstr "Sama ada tag ini mempengaruhi garis bawah"
 
-#: ctk/ctkcellrenderertext.c:658 ctk/ctktexttag.c:769
+#: ctk/ctkcellrenderertext.c:658 ctk/ctktexttag.c:770
 msgid "Language set"
 msgstr "Set bahasa"
 
-#: ctk/ctkcellrenderertext.c:659 ctk/ctktexttag.c:770
+#: ctk/ctkcellrenderertext.c:659 ctk/ctktexttag.c:771
 msgid "Whether this tag affects the language the text is rendered as"
 msgstr "Sama ada tag ini mempengaruhi bahasa teks yang diterap"
 
@@ -2857,7 +2621,7 @@ msgstr "Sama ada mahu meminta ruang mencukupi untuk setiap baris dalam model"
 msgid "Indicator Size"
 msgstr "Saiz Penunjuk"
 
-#: ctk/ctkcheckbutton.c:249 ctk/ctkexpander.c:406
+#: ctk/ctkcheckbutton.c:249 ctk/ctkexpander.c:413
 msgid "Indicator Spacing"
 msgstr "Jarak Penunjuk"
 
@@ -2892,6 +2656,14 @@ msgstr "Guna alfa"
 #: ctk/ctkcolorbutton.c:169
 msgid "Whether to give the color an alpha value"
 msgstr "Sama ada mahu berikan warna satu nilai alfa"
+
+#: ctk/ctkcolorbutton.c:183 ctk/ctkfilechooserbutton.c:443
+#: ctk/ctkfontbutton.c:490 ctk/ctkheaderbar.c:2027 ctk/ctkprintjob.c:133
+#: ctk/ctkshortcutsgroup.c:308 ctk/ctkshortcutssection.c:376
+#: ctk/ctkshortcutsshortcut.c:575 ctk/ctkstack.c:523 ctk/ctkstatusicon.c:433
+#: ctk/ctktreeviewcolumn.c:316
+msgid "Title"
+msgstr "Tajuk"
 
 #: ctk/ctkcolorbutton.c:184
 msgid "The title of the color selection dialog"
@@ -2934,7 +2706,7 @@ msgstr "Warna semasa, sebagai satu CdkRGBA"
 msgid "Whether alpha should be shown"
 msgstr "Sama ada alfa patut dipaparkan"
 
-#: ctk/ctkcolorchooserdialog.c:213 ctk/ctkcolorchooserwidget.c:704
+#: ctk/ctkcolorchooserdialog.c:213 ctk/ctkcolorchooserwidget.c:695
 msgid "Show editor"
 msgstr "Tunjuk penyunting"
 
@@ -3001,6 +2773,10 @@ msgstr "Item aktif"
 #: ctk/ctkcombobox.c:989
 msgid "The item which is currently active"
 msgstr "Item yang kini aktif"
+
+#: ctk/ctkcombobox.c:1010 ctk/ctkuimanager.c:452
+msgid "Add tearoffs to menus"
+msgstr "Tambah pengoyak pada menu"
 
 #: ctk/ctkcombobox.c:1011
 msgid "Whether dropdowns should have a tearoff menu item"
@@ -3152,7 +2928,7 @@ msgstr "ID"
 msgid "Unique ID"
 msgstr "ID unik"
 
-#: ctk/ctkcssnode.c:643 ctk/ctkswitch.c:890
+#: ctk/ctkcssnode.c:643 ctk/ctkswitch.c:893
 msgid "State"
 msgstr "Keadaan"
 
@@ -3216,7 +2992,7 @@ msgstr "Nilai awalan"
 msgid "The initial specified value used for this property"
 msgstr "Nilai dinyatakan awal digunakan untuk sifat ini"
 
-#: ctk/ctkdialog.c:588 ctk/ctkinfobar.c:419
+#: ctk/ctkdialog.c:588 ctk/ctkinfobar.c:530
 msgid "Content area border"
 msgstr "Sempadan kawasan kandungan"
 
@@ -3224,7 +3000,7 @@ msgstr "Sempadan kawasan kandungan"
 msgid "Width of border around the main dialog area"
 msgstr "Lebar sempadan sekeliling kawasan dialog utama"
 
-#: ctk/ctkdialog.c:606 ctk/ctkinfobar.c:437
+#: ctk/ctkdialog.c:606 ctk/ctkinfobar.c:548
 msgid "Content area spacing"
 msgstr "Jarak kawasan kandungan"
 
@@ -3232,15 +3008,15 @@ msgstr "Jarak kawasan kandungan"
 msgid "Spacing between elements of the main dialog area"
 msgstr "Jarak antara unsur bagi kawasan dialog utama"
 
-#: ctk/ctkdialog.c:614 ctk/ctkinfobar.c:454
+#: ctk/ctkdialog.c:614 ctk/ctkinfobar.c:565
 msgid "Button spacing"
 msgstr "Jarak butang"
 
-#: ctk/ctkdialog.c:615 ctk/ctkinfobar.c:455
+#: ctk/ctkdialog.c:615 ctk/ctkinfobar.c:566
 msgid "Spacing between buttons"
 msgstr "Jarak antara butang"
 
-#: ctk/ctkdialog.c:631 ctk/ctkinfobar.c:471
+#: ctk/ctkdialog.c:631 ctk/ctkinfobar.c:582
 msgid "Action area border"
 msgstr "Sempadan kawasan tindakan"
 
@@ -3326,8 +3102,8 @@ msgstr "Aksara halimunan"
 #: ctk/ctkentry.c:907 ctk/ctkentry.c:1604
 msgid "The character to use when masking entry contents (in \"password mode\")"
 msgstr ""
-"Aksara digunakan ketika menopeng kandungan masukan (dalam \"mod kata laluan"
-"\")"
+"Aksara digunakan ketika menopeng kandungan masukan (dalam \"mod kata "
+"laluan\")"
 
 #: ctk/ctkentry.c:913
 msgid "Activates default"
@@ -3618,7 +3394,7 @@ msgstr "Populasikan semua"
 msgid "Whether to emit ::populate-popup for touch popups"
 msgstr "Sama ada hendak terbitkan ::populate-popup untuk timbul sentuhan"
 
-#: ctk/ctkentry.c:1522 ctk/ctktexttag.c:578 ctk/ctktextview.c:941
+#: ctk/ctkentry.c:1522 ctk/ctktexttag.c:579 ctk/ctktextview.c:941
 msgid "Tabs"
 msgstr "Tab"
 
@@ -3764,7 +3540,7 @@ msgstr "Frasa rambatan"
 msgid "Propagation phase at which this controller is run"
 msgstr "Fasa rambatan yang mana pengawal ini dijalankan"
 
-#: ctk/ctkeventcontrollerscroll.c:374 ctk/ctkeventcontrollerscroll.c:375
+#: ctk/ctkeventcontrollerscroll.c:373 ctk/ctkeventcontrollerscroll.c:374
 msgid "Flags"
 msgstr "Bendera"
 
@@ -3780,7 +3556,7 @@ msgstr "Samada pengembang telah dibuka untuk mendedahkan  widget anak"
 msgid "Text of the expander's label"
 msgstr "Teks bagi label pengembang"
 
-#: ctk/ctkexpander.c:324 ctk/ctklabel.c:819 ctk/ctkmodelbutton.c:1174
+#: ctk/ctkexpander.c:324 ctk/ctklabel.c:819 ctk/ctkmodelbutton.c:1196
 msgid "Use markup"
 msgstr "Guna penanda"
 
@@ -3792,7 +3568,7 @@ msgstr "Teks bagi label termasuk penanda XML. Sila rujuk pango_parse_markup()"
 msgid "Space to put between the label and the child"
 msgstr "Jarak yang diletak antara label dengan anaknya"
 
-#: ctk/ctkexpander.c:351 ctk/ctkframe.c:262 ctk/ctktoolbutton.c:257
+#: ctk/ctkexpander.c:351 ctk/ctkframe.c:262 ctk/ctktoolbutton.c:218
 #: ctk/ctktoolitemgroup.c:1646
 msgid "Label widget"
 msgstr "Widget label"
@@ -3801,19 +3577,19 @@ msgstr "Widget label"
 msgid "A widget to display in place of the usual expander label"
 msgstr "Satu widget untuk memaparkan pada tempat label pengembang"
 
-#: ctk/ctkexpander.c:359
+#: ctk/ctkexpander.c:366
 msgid "Label fill"
 msgstr "Isi label"
 
-#: ctk/ctkexpander.c:360
+#: ctk/ctkexpander.c:367
 msgid "Whether the label widget should fill all available horizontal space"
 msgstr "Sama ada widget label patut isi semua ruang mengufuk yang tersedia"
 
-#: ctk/ctkexpander.c:375
+#: ctk/ctkexpander.c:382
 msgid "Resize toplevel"
 msgstr "Saiz semula aras tertinggi"
 
-#: ctk/ctkexpander.c:376
+#: ctk/ctkexpander.c:383
 msgid ""
 "Whether the expander will resize the toplevel window upon expanding and "
 "collapsing"
@@ -3821,15 +3597,15 @@ msgstr ""
 "Sama ada pengembang akan saizkan semula tetingkap aras atas bila mengembang "
 "dan menguncup"
 
-#: ctk/ctkexpander.c:389 ctk/ctktoolitemgroup.c:1674 ctk/ctktreeview.c:1234
+#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1674 ctk/ctktreeview.c:1234
 msgid "Expander Size"
 msgstr "Saiz Pengembang"
 
-#: ctk/ctkexpander.c:390 ctk/ctktoolitemgroup.c:1675 ctk/ctktreeview.c:1235
+#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1675 ctk/ctktreeview.c:1235
 msgid "Size of the expander arrow"
 msgstr "Saiz bagi anak panah pegembang"
 
-#: ctk/ctkexpander.c:407
+#: ctk/ctkexpander.c:414
 msgid "Spacing around expander arrow"
 msgstr "Jarak sekeliling anak panah pengembang"
 
@@ -3866,7 +3642,7 @@ msgid "The current filter for selecting which files are displayed"
 msgstr "Penapis semasa bagi memilih fail yang dipaparkan"
 
 #: ctk/ctkfilechooser.c:388 ctk/ctkplacessidebar.c:4836
-#: ctk/ctkplacesview.c:2322
+#: ctk/ctkplacesview.c:2348
 msgid "Local Only"
 msgstr "Setempat Sahaja"
 
@@ -3949,27 +3725,27 @@ msgstr ""
 "Sama ada satu pemilih fail yang tidak berada dalam mod buka akan menawarkan "
 "pengguna cipta folder baharu."
 
-#: ctk/ctkfilechoosernative.c:826
+#: ctk/ctkfilechoosernative.c:827
 msgid "Accept label"
 msgstr "Label terima"
 
-#: ctk/ctkfilechoosernative.c:827
+#: ctk/ctkfilechoosernative.c:828
 msgid "The label on the accept button"
 msgstr "Label pada butang terima"
 
-#: ctk/ctkfilechoosernative.c:839
+#: ctk/ctkfilechoosernative.c:840
 msgid "Cancel label"
 msgstr "Label batal"
 
-#: ctk/ctkfilechoosernative.c:840
+#: ctk/ctkfilechoosernative.c:841
 msgid "The label on the cancel button"
 msgstr "Label pada butang batal"
 
-#: ctk/ctkfilechooserwidget.c:8639 ctk/ctkfilechooserwidget.c:8640
+#: ctk/ctkfilechooserwidget.c:8668 ctk/ctkfilechooserwidget.c:8669
 msgid "Search mode"
 msgstr "Mod gelintar"
 
-#: ctk/ctkfilechooserwidget.c:8646 ctk/ctkfilechooserwidget.c:8647
+#: ctk/ctkfilechooserwidget.c:8675 ctk/ctkfilechooserwidget.c:8676
 #: ctk/ctkheaderbar.c:2034 ctk/ctkshortcutsshortcut.c:591
 msgid "Subtitle"
 msgstr "Sari kata"
@@ -4120,11 +3896,11 @@ msgstr "Fitur fon sebagai satu rentetan"
 msgid "Language for which features have been selected"
 msgstr "Bahasa bagi fitur yang terpilih"
 
-#: ctk/ctkfontchooserwidget.c:696
+#: ctk/ctkfontchooserwidget.c:691
 msgid "The tweak action"
 msgstr "Tindakan tweak"
 
-#: ctk/ctkfontchooserwidget.c:697
+#: ctk/ctkfontchooserwidget.c:692
 msgid "The toggle action to switch to the tweak page"
 msgstr "Tindakan togol yang beralih ke halaman tweak"
 
@@ -4179,6 +3955,11 @@ msgstr "Faktor lengah"
 #: ctk/ctkgesturelongpress.c:286
 msgid "Factor by which to modify the default timeout"
 msgstr "Faktor yang mengubah suai had masa tamat lalai"
+
+#: ctk/ctkgesturepan.c:238 ctk/ctkorientable.c:61 ctk/ctkstatusicon.c:336
+#: ctk/ctktrayicon-x11.c:127
+msgid "Orientation"
+msgstr "Orientasi"
 
 #: ctk/ctkgesturepan.c:239
 msgid "Allowed orientations"
@@ -4321,11 +4102,11 @@ msgstr "Tunjuk hiasan"
 msgid "Whether to show window decorations"
 msgstr "Sama ada mahu menunjukkan hiasan tetingkap"
 
-#: ctk/ctkheaderbar.c:2085 ctk/ctksettings.c:1617
+#: ctk/ctkheaderbar.c:2085 ctk/ctksettings.c:1627
 msgid "Decoration Layout"
 msgstr "Bentangan Hiasan"
 
-#: ctk/ctkheaderbar.c:2086 ctk/ctksettings.c:1618
+#: ctk/ctkheaderbar.c:2086 ctk/ctksettings.c:1628
 msgid "The layout for window decorations"
 msgstr "Bentangan untuk hiasan tetingkap"
 
@@ -4468,6 +4249,14 @@ msgstr "Alfa Kotak Pemilihan"
 msgid "Opacity of the selection box"
 msgstr "Kelegapan bagi kotak pemilihan"
 
+#: ctk/ctkimage.c:256 ctk/ctkstatusicon.c:226
+msgid "Pixbuf"
+msgstr "Pixbuf"
+
+#: ctk/ctkimage.c:257 ctk/ctkstatusicon.c:227
+msgid "A GdkPixbuf to display"
+msgstr "Satu GdkPixbuf untuk dipaparkan"
+
 #: ctk/ctkimage.c:263
 msgid "Surface"
 msgstr "Permukaan"
@@ -4476,92 +4265,133 @@ msgstr "Permukaan"
 msgid "A cairo_surface_t to display"
 msgstr "Satu Cairo_surface_t untuk dipaparkan"
 
-#: ctk/ctkimage.c:295
+#: ctk/ctkimage.c:270 ctk/ctkrecentmanager.c:288 ctk/ctkstatusicon.c:234
+msgid "Filename"
+msgstr "Nama fail"
+
+#: ctk/ctkimage.c:271 ctk/ctkstatusicon.c:235
+msgid "Filename to load and display"
+msgstr "Nama fail yang dimuatkan dan dipaparkan"
+
+#: ctk/ctkimage.c:281 ctk/ctkstatusicon.c:246
+msgid "Stock ID for a stock image to display"
+msgstr "ID stok bagi satu imej stok yang dipaparkan"
+
+#: ctk/ctkimage.c:293
 msgid "Icon set"
 msgstr "Set ikon"
 
-#: ctk/ctkimage.c:296
+#: ctk/ctkimage.c:294
 msgid "Icon set to display"
 msgstr "Set ikon yang dipaparkan"
 
-#: ctk/ctkimage.c:303 ctk/ctkscalebutton.c:206 ctk/ctktoolbar.c:564
+#: ctk/ctkimage.c:301 ctk/ctkscalebutton.c:208 ctk/ctktoolbar.c:564
 #: ctk/ctktoolpalette.c:965
 msgid "Icon size"
 msgstr "Saiz ikon"
 
-#: ctk/ctkimage.c:304
+#: ctk/ctkimage.c:302
 msgid "Symbolic size to use for stock icon, icon set or named icon"
 msgstr ""
 "Saiz simbolik yang digunakan untuk ikon stok, set ikon atau ikon bernama"
 
-#: ctk/ctkimage.c:320
+#: ctk/ctkimage.c:318
 msgid "Pixel size"
 msgstr "Saiz piksel"
 
-#: ctk/ctkimage.c:321
+#: ctk/ctkimage.c:319
 msgid "Pixel size to use for named icon"
 msgstr "Saiz piksel yang digunakan untuk ikon bernama"
 
-#: ctk/ctkimage.c:328
+#: ctk/ctkimage.c:326
 msgid "Animation"
 msgstr "Animasi"
 
-#: ctk/ctkimage.c:329
+#: ctk/ctkimage.c:327
 msgid "GdkPixbufAnimation to display"
 msgstr "GdkPixbufAnimation untuk dipaparkan"
 
-#: ctk/ctkimage.c:373
+#: ctk/ctkimage.c:371
 msgid "Resource"
 msgstr "Sumber"
 
-#: ctk/ctkimage.c:374
+#: ctk/ctkimage.c:372
 msgid "The resource path being displayed"
 msgstr "Laluan sumber yang dipaparkan"
 
-#: ctk/ctkimage.c:398
+#: ctk/ctkimage.c:378 ctk/ctkstatusicon.c:277
+msgid "Storage type"
+msgstr "Jenis storan"
+
+#: ctk/ctkimage.c:379 ctk/ctkstatusicon.c:278
+msgid "The representation being used for image data"
+msgstr "Perwakilan yang digunakan oleh data imej"
+
+#: ctk/ctkimage.c:396
 msgid "Use Fallback"
 msgstr "Guna jatuh-balik"
 
-#: ctk/ctkimage.c:399
+#: ctk/ctkimage.c:397
 msgid "Whether to use icon names fallback"
 msgstr "Sama ada mahu menggunakan jatuh-balik nama ikon"
 
-#: ctk/ctkinfobar.c:339 ctk/ctkmessagedialog.c:189
+#: ctk/ctkimagemenuitem.c:222
+msgid "Child widget to appear next to the menu text"
+msgstr "Widget anak yang muncul di sebelah teks menu"
+
+#: ctk/ctkimagemenuitem.c:237
+msgid "Whether to use the label text to create a stock menu item"
+msgstr "Sama ada mahu menggunakan teks label untuk mencipta item menu stok"
+
+#: ctk/ctkimagemenuitem.c:269 ctk/ctkmenu.c:655
+msgid "Accel Group"
+msgstr "Kumpulan  Pemecut"
+
+#: ctk/ctkimagemenuitem.c:270
+msgid "The Accel Group to use for stock accelerator keys"
+msgstr "Kumpulan Pemecut yang digunakan untuk kekunci pemecut"
+
+#: ctk/ctkinfobar.c:450 ctk/ctkmessagedialog.c:189
 msgid "Message Type"
 msgstr "Jenis mesej"
 
-#: ctk/ctkinfobar.c:340 ctk/ctkmessagedialog.c:190
+#: ctk/ctkinfobar.c:451 ctk/ctkmessagedialog.c:190
 msgid "The type of message"
 msgstr "Jenis bagi mesej"
 
-#: ctk/ctkinfobar.c:354 ctk/ctksearchbar.c:425
+#: ctk/ctkinfobar.c:465 ctk/ctksearchbar.c:425
 msgid "Show Close Button"
 msgstr "Tunjuk Butang Tutup"
 
-#: ctk/ctkinfobar.c:355
+#: ctk/ctkinfobar.c:466
 msgid "Whether to include a standard close button"
 msgstr "Sama ada mahu menyertakan satu butang tutup piawai"
 
-#: ctk/ctkinfobar.c:361
+#: ctk/ctkinfobar.c:472
 msgid "Reveal"
 msgstr "Dedah"
 
-#: ctk/ctkinfobar.c:362
+#: ctk/ctkinfobar.c:473
 msgid "Controls whether the action bar shows its contents or not"
 msgstr ""
 "Kawal sama ada palang tindakan menunjukkan kandungannya atau sebaliknya"
 
-#: ctk/ctkinfobar.c:420
+#: ctk/ctkinfobar.c:531
 msgid "Width of border around the content area"
 msgstr "Lebar sempadan sekeliling kawasan kandungan"
 
-#: ctk/ctkinfobar.c:438
+#: ctk/ctkinfobar.c:549
 msgid "Spacing between elements of the area"
 msgstr "Jarak antara unsur kawasan"
 
-#: ctk/ctkinfobar.c:472
+#: ctk/ctkinfobar.c:583
 msgid "Width of border around the action area"
 msgstr "Lebar sempadan sekeliling kawasan tindakan"
+
+#: ctk/ctkinvisible.c:98 ctk/ctkmountoperation.c:183 ctk/ctkstatusicon.c:296
+#: ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:897
+msgid "Screen"
+msgstr "Skrin"
 
 #: ctk/ctkinvisible.c:99 ctk/ctkwindow.c:898
 msgid "The screen where this window will be displayed"
@@ -4571,7 +4401,7 @@ msgstr "Skrin yang mana tetingkap akan dipaparkan"
 msgid "The text of the label"
 msgstr "Teks bagi label"
 
-#: ctk/ctklabel.c:833 ctk/ctktexttag.c:416 ctk/ctktextview.c:842
+#: ctk/ctklabel.c:833 ctk/ctktexttag.c:417 ctk/ctktextview.c:842
 msgid "Justification"
 msgstr "Sama Birai"
 
@@ -5201,53 +5031,53 @@ msgstr "Kawasan mesej"
 msgid "CtkBox that holds the dialog's primary and secondary labels"
 msgstr "CtkBox yang mengandungi label utama dan kedua dialog"
 
-#: ctk/ctkmodelbutton.c:1128
+#: ctk/ctkmodelbutton.c:1150
 msgid "Role"
 msgstr "Peranan"
 
-#: ctk/ctkmodelbutton.c:1129
+#: ctk/ctkmodelbutton.c:1151
 msgid "The role of this button"
 msgstr "Peranan bagi butang ini"
 
-#: ctk/ctkmodelbutton.c:1145
+#: ctk/ctkmodelbutton.c:1167
 msgid "The icon"
 msgstr "Ikon"
 
-#: ctk/ctkmodelbutton.c:1159
+#: ctk/ctkmodelbutton.c:1181
 msgid "The text"
 msgstr "Teks"
 
-#: ctk/ctkmodelbutton.c:1175
+#: ctk/ctkmodelbutton.c:1197
 msgid "The text of the button includes XML markup. See pango_parse_markup()"
 msgstr ""
 "Teks bagi butang yang menyertakan penanda XML. Sila rujuk "
 "pango_parse_markup()"
 
-#: ctk/ctkmodelbutton.c:1204
+#: ctk/ctkmodelbutton.c:1226
 msgid "Menu name"
 msgstr "Nama menu"
 
-#: ctk/ctkmodelbutton.c:1205
+#: ctk/ctkmodelbutton.c:1227
 msgid "The name of the menu to open"
 msgstr "Nama menu yang dibuka"
 
-#: ctk/ctkmodelbutton.c:1221
+#: ctk/ctkmodelbutton.c:1243
 msgid "Whether the menu is a parent"
 msgstr "Sama ada menu adalah induk"
 
-#: ctk/ctkmodelbutton.c:1235
+#: ctk/ctkmodelbutton.c:1257
 msgid "Centered"
 msgstr "Ditengahkan"
 
-#: ctk/ctkmodelbutton.c:1236
+#: ctk/ctkmodelbutton.c:1258
 msgid "Whether to center the contents"
 msgstr "Sama ada mahu tengahkan kandungan"
 
-#: ctk/ctkmodelbutton.c:1251
+#: ctk/ctkmodelbutton.c:1273
 msgid "Iconic"
 msgstr "Ikonik"
 
-#: ctk/ctkmodelbutton.c:1252
+#: ctk/ctkmodelbutton.c:1274
 msgid "Whether to prefer the icon over text"
 msgstr "Sama ada hendak utamakan ikon berbanding teks"
 
@@ -5279,7 +5109,7 @@ msgstr "Tajuk Dialog"
 msgid "The title of the file chooser dialog"
 msgstr "Tajuk bagi dialog pemilih fail"
 
-#: ctk/ctknativedialog.c:228 ctk/ctkpopover.c:1773 ctk/ctkwindow.c:789
+#: ctk/ctknativedialog.c:228 ctk/ctkpopover.c:1782 ctk/ctkwindow.c:789
 msgid "Modal"
 msgstr "Modal"
 
@@ -5493,19 +5323,19 @@ msgstr "Tab aktif dilukis dengan sela di bahagian bawah"
 msgid "The orientation of the orientable"
 msgstr "Orientasi bagi yang boleh orientasi"
 
-#: ctk/ctkoverlay.c:783
+#: ctk/ctkoverlay.c:790
 msgid "Pass Through"
 msgstr "Hantar Lintas"
 
-#: ctk/ctkoverlay.c:783
+#: ctk/ctkoverlay.c:790
 msgid "Pass through input, does not affect main child"
 msgstr "Hantar lintas input, tidak mempengaruhi anak utama"
 
-#: ctk/ctkoverlay.c:797
+#: ctk/ctkoverlay.c:804
 msgid "Index"
 msgstr "Indeks"
 
-#: ctk/ctkoverlay.c:798
+#: ctk/ctkoverlay.c:805
 msgid "The index of the overlay in the parent, -1 for the main child"
 msgstr "Indeks bagi tindihan atas dalam induk, -1 untuk anak utama"
 
@@ -5595,11 +5425,11 @@ msgstr "Lokasi untuk Pilih"
 msgid "The location to highlight in the sidebar"
 msgstr "Lokasi untuk disorot dalam palang sisi"
 
-#: ctk/ctkplacessidebar.c:4805 ctk/ctkplacesview.c:2343
+#: ctk/ctkplacessidebar.c:4805 ctk/ctkplacesview.c:2369
 msgid "Open Flags"
 msgstr "Buka Bendera"
 
-#: ctk/ctkplacessidebar.c:4806 ctk/ctkplacesview.c:2344
+#: ctk/ctkplacessidebar.c:4806 ctk/ctkplacesview.c:2370
 msgid ""
 "Modes in which the calling application can open locations selected in the "
 "sidebar"
@@ -5648,7 +5478,7 @@ msgstr ""
 "Sama ada palang sisi sertakan pintasan terbina-dalam untuk masukkan lokasi "
 "secara manual"
 
-#: ctk/ctkplacessidebar.c:4837 ctk/ctkplacesview.c:2323
+#: ctk/ctkplacessidebar.c:4837 ctk/ctkplacesview.c:2349
 msgid "Whether the sidebar only includes local files"
 msgstr "Sama ada palang sisi hanya sertakan fail setempat"
 
@@ -5684,19 +5514,19 @@ msgstr ""
 "Sama ada hendak pancarkan ::populate-popup untuk menu timbul yang mana bukan "
 "menu"
 
-#: ctk/ctkplacesview.c:2329
+#: ctk/ctkplacesview.c:2355
 msgid "Loading"
 msgstr "Memuatkan"
 
-#: ctk/ctkplacesview.c:2330
+#: ctk/ctkplacesview.c:2356
 msgid "Whether the view is loading locations"
 msgstr "Sama ada pandangan memuatkan lokasi"
 
-#: ctk/ctkplacesview.c:2336
+#: ctk/ctkplacesview.c:2362
 msgid "Fetching networks"
 msgstr "Mendapatkan rangkaian"
 
-#: ctk/ctkplacesview.c:2337
+#: ctk/ctkplacesview.c:2363
 msgid "Whether the view is fetching networks"
 msgstr "Sama ada pandangan mendapatkan rangkaian"
 
@@ -5752,55 +5582,59 @@ msgstr "Fail yang diwakili oleh baris, jika ada"
 msgid "Whether the row represents a network location"
 msgstr "Sama ada baris mewakili lokasi rangkaian"
 
-#: ctk/ctkplug.c:197
+#: ctk/ctkplug.c:198 ctk/ctkstatusicon.c:320
+msgid "Embedded"
+msgstr "Terbenam"
+
+#: ctk/ctkplug.c:199
 msgid "Whether the plug is embedded"
 msgstr "Sama ada pemalam dibenamkan"
 
-#: ctk/ctkplug.c:211
+#: ctk/ctkplug.c:213
 msgid "Socket Window"
 msgstr "Tetingkap Soket"
 
-#: ctk/ctkplug.c:212
+#: ctk/ctkplug.c:214
 msgid "The window of the socket the plug is embedded in"
 msgstr "Tetingkap soket pemalam yang dibenamkan"
 
-#: ctk/ctkpopover.c:1730
+#: ctk/ctkpopover.c:1739
 msgid "Relative to"
 msgstr "Relatif dengan"
 
-#: ctk/ctkpopover.c:1731
+#: ctk/ctkpopover.c:1740
 msgid "Widget the bubble window points to"
 msgstr "Widjet tetingkap buih dituju"
 
-#: ctk/ctkpopover.c:1744
+#: ctk/ctkpopover.c:1753
 msgid "Pointing to"
 msgstr "Tuju ke"
 
-#: ctk/ctkpopover.c:1745
+#: ctk/ctkpopover.c:1754
 msgid "Rectangle the bubble window points to"
 msgstr "Petakkan tetingkap buih ke"
 
-#: ctk/ctkpopover.c:1759
+#: ctk/ctkpopover.c:1768
 msgid "Position to place the bubble window"
 msgstr "Kedudukan untuk letak tetingkap buih"
 
-#: ctk/ctkpopover.c:1774
+#: ctk/ctkpopover.c:1783
 msgid "Whether the popover is modal"
 msgstr "Sama ada timbul-atas adalah modal"
 
-#: ctk/ctkpopover.c:1791
+#: ctk/ctkpopover.c:1800
 msgid "Transitions enabled"
 msgstr "Peralihan dibenarkan"
 
-#: ctk/ctkpopover.c:1792
+#: ctk/ctkpopover.c:1801
 msgid "Whether show/hide transitions are enabled or not"
 msgstr "Sama ada tunjuk/sembunyi peralihan dibenarkan atau sebaliknya"
 
-#: ctk/ctkpopover.c:1805
+#: ctk/ctkpopover.c:1814
 msgid "Constraint"
 msgstr "Kekangan"
 
-#: ctk/ctkpopover.c:1806
+#: ctk/ctkpopover.c:1815
 msgid "Constraint for the popover position"
 msgstr "Kekangan untuk kedudukan timbul-atas"
 
@@ -6206,6 +6040,38 @@ msgstr "Tinggi palang menegak minimum"
 msgid "The minimum vertical height of the progress bar"
 msgstr "Tinggi menegak minimum bagi palang kemajuan"
 
+#: ctk/ctkradioaction.c:116
+msgid "The value"
+msgstr "Nilai"
+
+#: ctk/ctkradioaction.c:117
+msgid ""
+"The value returned by ctk_radio_action_get_current_value() when this action "
+"is the current action of its group."
+msgstr ""
+"Nilai yang dikembalikan oleh ctk_radio_action_get_curent_valu() bila "
+"tindakan ini adalah tindakan semasa bagi kumpulannya."
+
+#: ctk/ctkradioaction.c:133 ctk/ctkradiobutton.c:184 ctk/ctkradiomenuitem.c:424
+#: ctk/ctkradiotoolbutton.c:83
+msgid "Group"
+msgstr "Kumpulan"
+
+#: ctk/ctkradioaction.c:134
+msgid "The radio action whose group this action belongs to."
+msgstr "Tindakan radio yang mana tindakan ini dimiliki oleh kumpulan ini."
+
+#: ctk/ctkradioaction.c:149
+msgid "The current value"
+msgstr "Nilai semasa"
+
+#: ctk/ctkradioaction.c:150
+msgid ""
+"The value property of the currently active member of the group to which this "
+"action belongs."
+msgstr ""
+"Sifat nilai ahli aktif semasa kumpulan yang mana tindakan ini dipunyai."
+
 #: ctk/ctkradiobutton.c:185
 msgid "The radio button whose group this widget belongs to."
 msgstr "Butang radio yang mana kumpulan widget ini dipunyai."
@@ -6278,7 +6144,7 @@ msgstr "Bundar Digit"
 msgid "The number of digits to round the value to."
 msgstr "Bilangan digit untuk dibundarkan nilai."
 
-#: ctk/ctkrange.c:538 ctk/ctkswitch.c:926
+#: ctk/ctkrange.c:538 ctk/ctkswitch.c:929
 msgid "Slider Width"
 msgstr "Lebar Pelungsur"
 
@@ -6349,6 +6215,14 @@ msgstr "Penskalaan anak panah"
 #: ctk/ctkrange.c:657
 msgid "Arrow scaling with regard to scroll button size"
 msgstr "Penskalaan anak panah bersandarkan pada saiz butang tatal"
+
+#: ctk/ctkrecentaction.c:666 ctk/ctkrecentchoosermenu.c:239
+msgid "Show Numbers"
+msgstr "Tunjuk Nombor"
+
+#: ctk/ctkrecentaction.c:667 ctk/ctkrecentchoosermenu.c:240
+msgid "Whether the items should be displayed with a number"
+msgstr "Sama ada item patut dipaparkan dengan nombor"
 
 #: ctk/ctkrecentchooser.c:130
 msgid "Recent Manager"
@@ -6423,11 +6297,11 @@ msgstr "Tertib mengisih bagi item yang dipaparkan"
 msgid "The current filter for selecting which resources are displayed"
 msgstr "Penapis semasa untuk memilih sumber yang dipaparkan"
 
-#: ctk/ctkrecentmanager.c:290
+#: ctk/ctkrecentmanager.c:289
 msgid "The full path to the file to be used to store and read the list"
 msgstr "Laluan penuh fail yang digunakan untuk menyimpan dan membaca senarai"
 
-#: ctk/ctkrecentmanager.c:305
+#: ctk/ctkrecentmanager.c:304
 msgid "The size of the recently used resources list"
 msgstr "Saiz bagi senarai sumber digunakan baru-baru ini"
 
@@ -6463,25 +6337,25 @@ msgstr "Anak Didedahkan"
 msgid "Whether the child is revealed and the animation target reached"
 msgstr "Sama ada anak didedahkan dan sasaran animasi tercapai"
 
-#: ctk/ctkscalebutton.c:197
+#: ctk/ctkscalebutton.c:199
 msgid "The value of the scale"
 msgstr "Nilai bagi skala"
 
-#: ctk/ctkscalebutton.c:207
+#: ctk/ctkscalebutton.c:209
 msgid "The icon size"
 msgstr "Saiz ikon"
 
-#: ctk/ctkscalebutton.c:216
+#: ctk/ctkscalebutton.c:218
 msgid ""
 "The CtkAdjustment that contains the current value of this scale button object"
 msgstr ""
 "CtkAdjustment yang mengandungi nilai semasa bagi objek butang skala ini"
 
-#: ctk/ctkscalebutton.c:244
+#: ctk/ctkscalebutton.c:246
 msgid "Icons"
 msgstr "Ikon"
 
-#: ctk/ctkscalebutton.c:245
+#: ctk/ctkscalebutton.c:247
 msgid "List of icon names"
 msgstr "Senarai bagi nama ikon"
 
@@ -6592,51 +6466,51 @@ msgid ""
 msgstr ""
 "Papar satu butang anak panah maju kedua pada hujung berlawanan palang tatal"
 
-#: ctk/ctkscrolledwindow.c:569
+#: ctk/ctkscrolledwindow.c:567
 msgid "Horizontal Adjustment"
 msgstr "Pelarasan Mengufuk"
 
-#: ctk/ctkscrolledwindow.c:570
+#: ctk/ctkscrolledwindow.c:568
 msgid "The CtkAdjustment for the horizontal position"
 msgstr "CtkAdjustment untuk kedudukan mengufuk"
 
-#: ctk/ctkscrolledwindow.c:576
+#: ctk/ctkscrolledwindow.c:574
 msgid "Vertical Adjustment"
 msgstr "Pelarasan Menegak"
 
-#: ctk/ctkscrolledwindow.c:577
+#: ctk/ctkscrolledwindow.c:575
 msgid "The CtkAdjustment for the vertical position"
 msgstr "CtkAdjustment untuk kedudukan menegak"
 
-#: ctk/ctkscrolledwindow.c:583
+#: ctk/ctkscrolledwindow.c:581
 msgid "Horizontal Scrollbar Policy"
 msgstr "Dasar Palang Tatal Mengufuk"
 
-#: ctk/ctkscrolledwindow.c:584
+#: ctk/ctkscrolledwindow.c:582
 msgid "When the horizontal scrollbar is displayed"
 msgstr "Bila palang tatal mengufuk dipaparkan"
 
-#: ctk/ctkscrolledwindow.c:591
+#: ctk/ctkscrolledwindow.c:589
 msgid "Vertical Scrollbar Policy"
 msgstr "Dasar Palang Tatal Menegak"
 
-#: ctk/ctkscrolledwindow.c:592
+#: ctk/ctkscrolledwindow.c:590
 msgid "When the vertical scrollbar is displayed"
 msgstr "Bila palang tatal menegak dipaparkan"
 
-#: ctk/ctkscrolledwindow.c:599
+#: ctk/ctkscrolledwindow.c:597
 msgid "Window Placement"
 msgstr "Penggantian Tetingkap"
 
-#: ctk/ctkscrolledwindow.c:600
+#: ctk/ctkscrolledwindow.c:598
 msgid "Where the contents are located with respect to the scrollbars."
 msgstr "Sama ada kandungan dicari dengan bantuan palang tatal."
 
-#: ctk/ctkscrolledwindow.c:618
+#: ctk/ctkscrolledwindow.c:616
 msgid "Window Placement Set"
 msgstr "Set Penggantian Tetingkap"
 
-#: ctk/ctkscrolledwindow.c:619
+#: ctk/ctkscrolledwindow.c:617
 msgid ""
 "Whether \"window-placement\" should be used to determine the location of the "
 "contents with respect to the scrollbars."
@@ -6645,91 +6519,91 @@ msgstr ""
 "lokasi kandungun melalui palang tatal."
 
 # Gila Bayang (Angau)
-#: ctk/ctkscrolledwindow.c:625 ctk/ctkspinbutton.c:455
+#: ctk/ctkscrolledwindow.c:623 ctk/ctkspinbutton.c:455
 msgid "Shadow Type"
 msgstr "Jenis Bayang"
 
-#: ctk/ctkscrolledwindow.c:626
+#: ctk/ctkscrolledwindow.c:624
 msgid "Style of bevel around the contents"
 msgstr "Gaya serong sekeliling kandungan"
 
-#: ctk/ctkscrolledwindow.c:642
+#: ctk/ctkscrolledwindow.c:640
 msgid "Scrollbars within bevel"
 msgstr "Palang Tatal dalam Serong"
 
-#: ctk/ctkscrolledwindow.c:643
+#: ctk/ctkscrolledwindow.c:641
 msgid "Place scrollbars within the scrolled window's bevel"
 msgstr "Letak palang tatal dalam serong tetingkap tertatal"
 
-#: ctk/ctkscrolledwindow.c:649
+#: ctk/ctkscrolledwindow.c:647
 msgid "Scrollbar spacing"
 msgstr "Jarak palang tatal"
 
-#: ctk/ctkscrolledwindow.c:650
+#: ctk/ctkscrolledwindow.c:648
 msgid "Number of pixels between the scrollbars and the scrolled window"
 msgstr "Bilangan piksel antara palang tatal dengan tetingkap tertatal"
 
-#: ctk/ctkscrolledwindow.c:665
+#: ctk/ctkscrolledwindow.c:663
 msgid "Minimum Content Width"
 msgstr "Lebar Kandungan Minimum"
 
-#: ctk/ctkscrolledwindow.c:666
+#: ctk/ctkscrolledwindow.c:664
 msgid "The minimum width that the scrolled window will allocate to its content"
 msgstr ""
 "Lebar minimum yang mana tetingkap tertatal akan peruntukkan kandungannya"
 
-#: ctk/ctkscrolledwindow.c:679
+#: ctk/ctkscrolledwindow.c:677
 msgid "Minimum Content Height"
 msgstr "Tinggi Kandungan Minimum"
 
-#: ctk/ctkscrolledwindow.c:680
+#: ctk/ctkscrolledwindow.c:678
 msgid ""
 "The minimum height that the scrolled window will allocate to its content"
 msgstr ""
 "Tinggi minimum yang mana tetingkap tertatal akan peruntukkan kandungannya"
 
-#: ctk/ctkscrolledwindow.c:694
+#: ctk/ctkscrolledwindow.c:692
 msgid "Kinetic Scrolling"
 msgstr "Penatalan Kinetik"
 
-#: ctk/ctkscrolledwindow.c:695
+#: ctk/ctkscrolledwindow.c:693
 msgid "Kinetic scrolling mode."
 msgstr "Mod penatalan kinetik."
 
-#: ctk/ctkscrolledwindow.c:714
+#: ctk/ctkscrolledwindow.c:712
 msgid "Overlay Scrolling"
 msgstr "Penatalan Tindihan Atas"
 
-#: ctk/ctkscrolledwindow.c:715
+#: ctk/ctkscrolledwindow.c:713
 msgid "Overlay scrolling mode"
 msgstr "Mod penatalan tindihan atas"
 
-#: ctk/ctkscrolledwindow.c:728
+#: ctk/ctkscrolledwindow.c:726
 msgid "Maximum Content Width"
 msgstr "Lebar Kandungan Maksimum"
 
-#: ctk/ctkscrolledwindow.c:729
+#: ctk/ctkscrolledwindow.c:727
 msgid "The maximum width that the scrolled window will allocate to its content"
 msgstr ""
 "Lebar maksimum yang mana tetingkap tertatal akan diperuntuk berdasarkan "
 "kandungannya"
 
-#: ctk/ctkscrolledwindow.c:742
+#: ctk/ctkscrolledwindow.c:740
 msgid "Maximum Content Height"
 msgstr "Tinggi Kandungan Maksimum"
 
-#: ctk/ctkscrolledwindow.c:743
+#: ctk/ctkscrolledwindow.c:741
 msgid ""
 "The maximum height that the scrolled window will allocate to its content"
 msgstr ""
 "Tinggi maksimum yang mana tetingkap tertatal akan diperuntuk berdasarkan "
 "kandungannya"
 
-#: ctk/ctkscrolledwindow.c:760 ctk/ctkscrolledwindow.c:761
+#: ctk/ctkscrolledwindow.c:758 ctk/ctkscrolledwindow.c:759
 msgid "Propagate Natural Width"
 msgstr "Rambat Lebar Tabii"
 
-#: ctk/ctkscrolledwindow.c:778 ctk/ctkscrolledwindow.c:779
+#: ctk/ctkscrolledwindow.c:776 ctk/ctkscrolledwindow.c:777
 msgid "Propagate Natural Height"
 msgstr "Rambat Tinggi Tabii"
 
@@ -6753,11 +6627,11 @@ msgstr "Lukis"
 msgid "Whether the separator is drawn, or just blank"
 msgstr "Sama ada pemisah dilukis, atau dibiarkan kosong"
 
-#: ctk/ctksettings.c:391
+#: ctk/ctksettings.c:392
 msgid "Double Click Time"
 msgstr "Masa Dwi-Klik"
 
-#: ctk/ctksettings.c:392
+#: ctk/ctksettings.c:393
 msgid ""
 "Maximum time allowed between two clicks for them to be considered a double "
 "click (in milliseconds)"
@@ -6765,11 +6639,11 @@ msgstr ""
 "Masa maksimum antara dua klik supaya ia boleh dipertimbangkan sebagai dwi-"
 "klik (dalam milisaat)"
 
-#: ctk/ctksettings.c:399
+#: ctk/ctksettings.c:400
 msgid "Double Click Distance"
 msgstr "Jarak Dwi Klik"
 
-#: ctk/ctksettings.c:400
+#: ctk/ctksettings.c:401
 msgid ""
 "Maximum distance allowed between two clicks for them to be considered a "
 "double click (in pixels)"
@@ -6777,35 +6651,35 @@ msgstr ""
 "Jarak maksimum dibenarkan antara dua klik supaya ia boleh dipertimbangkan "
 "sebagai dwi-klik (dalam piksel)"
 
-#: ctk/ctksettings.c:416
+#: ctk/ctksettings.c:417
 msgid "Cursor Blink"
 msgstr "Kerlipan Kursor"
 
-#: ctk/ctksettings.c:417
+#: ctk/ctksettings.c:418
 msgid "Whether the cursor should blink"
 msgstr "Sama ada kursor patut dikerlipkan"
 
-#: ctk/ctksettings.c:424
+#: ctk/ctksettings.c:425
 msgid "Cursor Blink Time"
 msgstr "Masa Kelipan Kursor"
 
-#: ctk/ctksettings.c:425
+#: ctk/ctksettings.c:426
 msgid "Length of the cursor blink cycle, in milliseconds"
 msgstr "Panjang kitar kerlipan kursor, dalam milisaat"
 
-#: ctk/ctksettings.c:444
+#: ctk/ctksettings.c:445
 msgid "Cursor Blink Timeout"
 msgstr "Had Masa Kerlipan Kursor"
 
-#: ctk/ctksettings.c:445
+#: ctk/ctksettings.c:446
 msgid "Time after which the cursor stops blinking, in seconds"
 msgstr "Masa selepas kursor berhenti mengerlip, dalam saat"
 
-#: ctk/ctksettings.c:452
+#: ctk/ctksettings.c:453
 msgid "Split Cursor"
 msgstr "Pisah Kursor"
 
-#: ctk/ctksettings.c:453
+#: ctk/ctksettings.c:454
 msgid ""
 "Whether two cursors should be displayed for mixed left-to-right and right-to-"
 "left text"
@@ -6813,151 +6687,161 @@ msgstr ""
 "Samada dua kursor patut dipaparkan bagi teks kiri-ke-kanan dan kanan-ke-kiri "
 "bercampur"
 
-#: ctk/ctksettings.c:460
+#: ctk/ctksettings.c:461
+#, fuzzy
+msgid "Cursor Aspect Ratio"
+msgstr "Nisbah bidang garisan kursor"
+
+#: ctk/ctksettings.c:462
+#, fuzzy
+msgid "The aspect ratio of the text caret"
+msgstr "Orientasi bagi yang boleh orientasi"
+
+#: ctk/ctksettings.c:470
 msgid "Theme Name"
 msgstr "Nama Tema"
 
-#: ctk/ctksettings.c:461
+#: ctk/ctksettings.c:471
 msgid "Name of theme to load"
 msgstr "Nama bagi tema yang dimuatkan"
 
-#: ctk/ctksettings.c:469
+#: ctk/ctksettings.c:479
 msgid "Icon Theme Name"
 msgstr "Nama Tema Ikon"
 
-#: ctk/ctksettings.c:470
+#: ctk/ctksettings.c:480
 msgid "Name of icon theme to use"
 msgstr "Nama bagi tema ikon yang digunakan"
 
-#: ctk/ctksettings.c:485
+#: ctk/ctksettings.c:495
 msgid "Fallback Icon Theme Name"
 msgstr "Nama Tema Ikon Jatuh-Balik"
 
-#: ctk/ctksettings.c:486
+#: ctk/ctksettings.c:496
 msgid "Name of a icon theme to fall back to"
 msgstr "Nama bagi tema ikon untuk dijatuh-balikkan"
 
-#: ctk/ctksettings.c:494
+#: ctk/ctksettings.c:504
 msgid "Key Theme Name"
 msgstr "Nama Tema Kekunci"
 
-#: ctk/ctksettings.c:495
+#: ctk/ctksettings.c:505
 msgid "Name of key theme to load"
 msgstr "Nama bagi tema kunci yang dimuatkan"
 
-#: ctk/ctksettings.c:511
+#: ctk/ctksettings.c:521
 msgid "Menu bar accelerator"
 msgstr "Pemecut palang menu"
 
-#: ctk/ctksettings.c:512
+#: ctk/ctksettings.c:522
 msgid "Keybinding to activate the menu bar"
 msgstr "Pengikatan kekunci untuk mengaktifkan palang menu"
 
-#: ctk/ctksettings.c:520
+#: ctk/ctksettings.c:530
 msgid "Drag threshold"
 msgstr "Ambang seret"
 
-#: ctk/ctksettings.c:521
+#: ctk/ctksettings.c:531
 msgid "Number of pixels the cursor can move before dragging"
 msgstr "Bilangan piksel kursor yang dialih sebelum diseret"
 
-#: ctk/ctksettings.c:534
+#: ctk/ctksettings.c:544
 msgid "Font Name"
 msgstr "Nama Fon"
 
-#: ctk/ctksettings.c:535
+#: ctk/ctksettings.c:545
 msgid "The default font family and size to use"
 msgstr "Keluarga dan saiz fon lalai yang digunakan"
 
-#: ctk/ctksettings.c:559
+#: ctk/ctksettings.c:569
 msgid "Icon Sizes"
 msgstr "Saiz Ikon"
 
-#: ctk/ctksettings.c:560
+#: ctk/ctksettings.c:570
 msgid "List of icon sizes (ctk-menu=16,16:ctk-button=20,20..."
 msgstr "Senarai saiz ikon (ctk-menu=16,16:ctk-button=20,20..."
 
-#: ctk/ctksettings.c:568
+#: ctk/ctksettings.c:578
 msgid "CTK Modules"
 msgstr "Modul CTK"
 
-#: ctk/ctksettings.c:569
+#: ctk/ctksettings.c:579
 msgid "List of currently active CTK modules"
 msgstr "Senarai modul CTK aktif buat masa ini"
 
-#: ctk/ctksettings.c:577
+#: ctk/ctksettings.c:587
 msgid "Xft Antialias"
 msgstr "Antialias Xft"
 
-#: ctk/ctksettings.c:578
+#: ctk/ctksettings.c:588
 msgid "Whether to antialias Xft fonts; 0=no, 1=yes, -1=default"
 msgstr "Sama ada mahu antialiaskan fon Xft; 0=tidak, 1=ya, -1=lalai"
 
-#: ctk/ctksettings.c:587
+#: ctk/ctksettings.c:597
 msgid "Xft Hinting"
 msgstr "Pembayang Xft"
 
-#: ctk/ctksettings.c:588
+#: ctk/ctksettings.c:598
 msgid "Whether to hint Xft fonts; 0=no, 1=yes, -1=default"
 msgstr "Sama ada mahu beri pembayang pada fon Xft; 0=tidak, 1=ya, -1=lalai"
 
-#: ctk/ctksettings.c:597
+#: ctk/ctksettings.c:607
 msgid "Xft Hint Style"
 msgstr "Gaya Pembayang Xft"
 
-#: ctk/ctksettings.c:598
+#: ctk/ctksettings.c:608
 msgid ""
 "What degree of hinting to use; hintnone, hintslight, hintmedium, or hintfull"
 msgstr ""
 "Apakah darjah pembayang yang digunakan; tiada pembayang, pembayang ringan, "
 "pembayang sederhana, atau pembayang penuh"
 
-#: ctk/ctksettings.c:607
+#: ctk/ctksettings.c:617
 msgid "Xft RGBA"
 msgstr "RGBA Xft"
 
-#: ctk/ctksettings.c:608
+#: ctk/ctksettings.c:618
 msgid "Type of subpixel antialiasing; none, rgb, bgr, vrgb, vbgr"
 msgstr "Jenis antialias subpiksel; tiada, rgb, bgr, vrgb, vbgr"
 
-#: ctk/ctksettings.c:617
+#: ctk/ctksettings.c:627
 msgid "Xft DPI"
 msgstr "DPI Xft"
 
-#: ctk/ctksettings.c:618
+#: ctk/ctksettings.c:628
 msgid "Resolution for Xft, in 1024 * dots/inch. -1 to use default value"
 msgstr ""
 "Resolusi untuk Xft, dalam 1024 * titik/inci. -1 untuk gunakan nilai lalai"
 
-#: ctk/ctksettings.c:627
+#: ctk/ctksettings.c:637
 msgid "Cursor theme name"
 msgstr "Nama tema kursor"
 
-#: ctk/ctksettings.c:628
+#: ctk/ctksettings.c:638
 msgid "Name of the cursor theme to use, or NULL to use the default theme"
 msgstr "Nama tema kursor yang digunakan, NOL untuk guna tema lalai"
 
-#: ctk/ctksettings.c:636
+#: ctk/ctksettings.c:646
 msgid "Cursor theme size"
 msgstr "Saiz tema kursor"
 
-#: ctk/ctksettings.c:637
+#: ctk/ctksettings.c:647
 msgid "Size to use for cursors, or 0 to use the default size"
 msgstr "Saiz untuk kurosr gunakan, atau 0 untuk gunakan nilai lalai"
 
-#: ctk/ctksettings.c:646
+#: ctk/ctksettings.c:656
 msgid "Alternative button order"
 msgstr "Tertib butang alternatif"
 
-#: ctk/ctksettings.c:647
+#: ctk/ctksettings.c:657
 msgid "Whether buttons in dialogs should use the alternative button order"
 msgstr "Sama ada butang dalam dialog patut gunakan tertib butang alternatif"
 
-#: ctk/ctksettings.c:664
+#: ctk/ctksettings.c:674
 msgid "Alternative sort indicator direction"
 msgstr "Arah penunjuk isih alternatif"
 
-#: ctk/ctksettings.c:665
+#: ctk/ctksettings.c:675
 msgid ""
 "Whether the direction of the sort indicators in list and tree views is "
 "inverted compared to the default (where down means ascending)"
@@ -6965,11 +6849,11 @@ msgstr ""
 "Sama ada arah penunjuk isih dalam senarai dan pandangan pepohon disonsangkan "
 "berbanding dengan lalai (iaitu ke bawah bermaksud menaik)"
 
-#: ctk/ctksettings.c:678
+#: ctk/ctksettings.c:688
 msgid "Show the 'Input Methods' menu"
 msgstr "Tunjuk menu 'Kaedah Masukan'"
 
-#: ctk/ctksettings.c:679
+#: ctk/ctksettings.c:689
 msgid ""
 "Whether the context menus of entries and text views should offer to change "
 "the input method"
@@ -6977,11 +6861,11 @@ msgstr ""
 "Sama ada menu konteks bagi masukan dan pandangan teks seharusnya ditawarkan "
 "untuk mengubah kaedah input"
 
-#: ctk/ctksettings.c:692
+#: ctk/ctksettings.c:702
 msgid "Show the 'Insert Unicode Control Character' menu"
 msgstr "Tunjuk menu 'Sisip Aksara Kawalan Unikod'"
 
-#: ctk/ctksettings.c:693
+#: ctk/ctksettings.c:703
 msgid ""
 "Whether the context menus of entries and text views should offer to insert "
 "control characters"
@@ -6989,244 +6873,244 @@ msgstr ""
 "Sama ada menu konteks masukan dan paparan teks seharusnya ditawarkan untuk "
 "menyisipkan aksara kawalan"
 
-#: ctk/ctksettings.c:706
+#: ctk/ctksettings.c:716
 msgid "Start timeout"
 msgstr "Had masa mula"
 
-#: ctk/ctksettings.c:707
+#: ctk/ctksettings.c:717
 msgid "Starting value for timeouts, when button is pressed"
 msgstr "Nilai permulaan bagi masa tamat, bila butang ditekan"
 
-#: ctk/ctksettings.c:721
+#: ctk/ctksettings.c:731
 msgid "Repeat timeout"
 msgstr "Ulang had masa"
 
-#: ctk/ctksettings.c:722
+#: ctk/ctksettings.c:732
 msgid "Repeat value for timeouts, when button is pressed"
 msgstr "Nilai ulangan bagi masa tamat, bila butang ditekan"
 
-#: ctk/ctksettings.c:736
+#: ctk/ctksettings.c:746
 msgid "Expand timeout"
 msgstr "Had masa kembang"
 
-#: ctk/ctksettings.c:737
+#: ctk/ctksettings.c:747
 msgid "Expand value for timeouts, when a widget is expanding a new region"
 msgstr ""
 "Nilai kembang bagi masa tamat, bila widget mengembang ke satu kawasan baharu"
 
-#: ctk/ctksettings.c:775
+#: ctk/ctksettings.c:785
 msgid "Color scheme"
 msgstr "Skema warna"
 
-#: ctk/ctksettings.c:776
+#: ctk/ctksettings.c:786
 msgid "A palette of named colors for use in themes"
 msgstr "Palet bagi warna bernama yang digunakan dalam tema"
 
-#: ctk/ctksettings.c:785
+#: ctk/ctksettings.c:795
 msgid "Enable Animations"
 msgstr "Benarkan Animasi"
 
-#: ctk/ctksettings.c:786
+#: ctk/ctksettings.c:796
 msgid "Whether to enable toolkit-wide animations."
 msgstr "Sama ada mahu membenarkan animasi menyeluruhi-kit-alat."
 
-#: ctk/ctksettings.c:807
+#: ctk/ctksettings.c:817
 msgid "Enable Touchscreen Mode"
 msgstr "Benarkan Mod Skrin Sentuh"
 
-#: ctk/ctksettings.c:808
+#: ctk/ctksettings.c:818
 msgid "When TRUE, there are no motion notify events delivered on this screen"
 msgstr "Bila BENAR, tiada perisitwa makluman gerakan dinyatakan pada skrin ini"
 
-#: ctk/ctksettings.c:827
+#: ctk/ctksettings.c:837
 msgid "Tooltip timeout"
 msgstr "Had masa tip alat"
 
-#: ctk/ctksettings.c:828
+#: ctk/ctksettings.c:838
 msgid "Timeout before tooltip is shown"
 msgstr "Had masa sebelum tip alat ditunjukkan"
 
-#: ctk/ctksettings.c:855
+#: ctk/ctksettings.c:865
 msgid "Tooltip browse timeout"
 msgstr "Had masa layar tip alat"
 
-#: ctk/ctksettings.c:856
+#: ctk/ctksettings.c:866
 msgid "Timeout before tooltip is shown when browse mode is enabled"
 msgstr "Had masa sebelum tip alat ditunjukkan ketika mod pelayar dibenarkan"
 
-#: ctk/ctksettings.c:879
+#: ctk/ctksettings.c:889
 msgid "Tooltip browse mode timeout"
 msgstr "Had masa mod layar tip alat"
 
-#: ctk/ctksettings.c:880
+#: ctk/ctksettings.c:890
 msgid "Timeout after which browse mode is disabled"
 msgstr "Had masa selepas mod layar dilumpuhkan"
 
-#: ctk/ctksettings.c:902
+#: ctk/ctksettings.c:912
 msgid "Keynav Cursor Only"
 msgstr "Kursor Keynav Sahaja"
 
-#: ctk/ctksettings.c:903
+#: ctk/ctksettings.c:913
 msgid "When TRUE, there are only cursor keys available to navigate widgets"
 msgstr "Bila BENAR, hanya kunci kursor yang tersedia untuk navigasikan widget"
 
-#: ctk/ctksettings.c:922
+#: ctk/ctksettings.c:932
 msgid "Keynav Wrap Around"
 msgstr "Keynav Melilit Sekeliling"
 
-#: ctk/ctksettings.c:923
+#: ctk/ctksettings.c:933
 msgid "Whether to wrap around when keyboard-navigating widgets"
 msgstr "Sama ada hendak melilit sekeliling keitka widget keyboard-navigating"
 
-#: ctk/ctksettings.c:943
+#: ctk/ctksettings.c:953
 msgid "Error Bell"
 msgstr "Loceng Ralat"
 
-#: ctk/ctksettings.c:944
+#: ctk/ctksettings.c:954
 msgid "When TRUE, keyboard navigation and other errors will cause a beep"
 msgstr ""
 "Bila BENAR, navigasi papan kekunci dan lain-lain ralat akan menyebabkan "
 "bunyi bip"
 
-#: ctk/ctksettings.c:963
+#: ctk/ctksettings.c:973
 msgid "Color Hash"
 msgstr "Pencincang Warna"
 
-#: ctk/ctksettings.c:964
+#: ctk/ctksettings.c:974
 msgid "A hash table representation of the color scheme."
 msgstr "Satu perwakilan jadual cincangan bagi skema warna."
 
-#: ctk/ctksettings.c:979
+#: ctk/ctksettings.c:989
 msgid "Default file chooser backend"
 msgstr "Bahagian belakang pemilih fail lalai"
 
-#: ctk/ctksettings.c:980
+#: ctk/ctksettings.c:990
 msgid "Name of the CtkFileChooser backend to use by default"
 msgstr "Nama bahagian belakang CtkFileChooser yang digunakan secara lalai"
 
-#: ctk/ctksettings.c:997
+#: ctk/ctksettings.c:1007
 msgid "Default print backend"
 msgstr "Bahagian belakang cetak lalai"
 
-#: ctk/ctksettings.c:998
+#: ctk/ctksettings.c:1008
 msgid "List of the CtkPrintBackend backends to use by default"
 msgstr "Senarai bahagian belakang CtkPrintBackend yang digunakan secara lalai"
 
-#: ctk/ctksettings.c:1021
+#: ctk/ctksettings.c:1031
 msgid "Default command to run when displaying a print preview"
 msgstr "Perintah lalai yang dijalankan bila memaparkan satu pratonton cetak"
 
-#: ctk/ctksettings.c:1022
+#: ctk/ctksettings.c:1032
 msgid "Command to run when displaying a print preview"
 msgstr "Perintah yang dijalankan bila memaparkan satu pratonton cetak"
 
-#: ctk/ctksettings.c:1041
+#: ctk/ctksettings.c:1051
 msgid "Enable Mnemonics"
 msgstr "Benarkan Mnemonik"
 
-#: ctk/ctksettings.c:1042
+#: ctk/ctksettings.c:1052
 msgid "Whether labels should have mnemonics"
 msgstr "Sama ada label patut mempunyai mnemonik"
 
-#: ctk/ctksettings.c:1058
+#: ctk/ctksettings.c:1068
 msgid "Enable Accelerators"
 msgstr "Benarkan Pemecut"
 
-#: ctk/ctksettings.c:1059
+#: ctk/ctksettings.c:1069
 msgid "Whether menu items should have accelerators"
 msgstr "Sama ada item menu patut mempunyai pemecut"
 
-#: ctk/ctksettings.c:1078
+#: ctk/ctksettings.c:1088
 msgid "Recent Files Limit"
 msgstr "Had Fail Baru-baru Ini"
 
-#: ctk/ctksettings.c:1079
+#: ctk/ctksettings.c:1089
 msgid "Number of recently used files"
 msgstr "Bilangan fail digunakan baru-baru ini"
 
-#: ctk/ctksettings.c:1099
+#: ctk/ctksettings.c:1109
 msgid "Default IM module"
 msgstr "Modul IM lalai"
 
-#: ctk/ctksettings.c:1100
+#: ctk/ctksettings.c:1110
 msgid "Which IM module should be used by default"
 msgstr "Modul IM yang manakah patut digunakan secara lalai"
 
-#: ctk/ctksettings.c:1118
+#: ctk/ctksettings.c:1128
 msgid "Recent Files Max Age"
 msgstr "Usia Maksimum Fail Baru-Baru Ini"
 
-#: ctk/ctksettings.c:1119
+#: ctk/ctksettings.c:1129
 msgid "Maximum age of recently used files, in days"
 msgstr "Usia maksimum bagi fail yang baru-baru ini digunakan, dalam hari"
 
-#: ctk/ctksettings.c:1128
+#: ctk/ctksettings.c:1138
 msgid "Fontconfig configuration timestamp"
 msgstr "Setem masa konfigurasi fontconfig"
 
-#: ctk/ctksettings.c:1129
+#: ctk/ctksettings.c:1139
 msgid "Timestamp of current fontconfig configuration"
 msgstr "Setem masa bagi konfogurasi fontconfig semasa"
 
-#: ctk/ctksettings.c:1151
+#: ctk/ctksettings.c:1161
 msgid "Sound Theme Name"
 msgstr "Nama Tema Bunyi"
 
-#: ctk/ctksettings.c:1152
+#: ctk/ctksettings.c:1162
 msgid "XDG sound theme name"
 msgstr "Nama tema bunyi XDG"
 
 #. Translators: this means sounds that are played as feedback to user input
-#: ctk/ctksettings.c:1174
+#: ctk/ctksettings.c:1184
 msgid "Audible Input Feedback"
 msgstr "Maklum Balas Input Boleh Dengar"
 
-#: ctk/ctksettings.c:1175
+#: ctk/ctksettings.c:1185
 msgid "Whether to play event sounds as feedback to user input"
 msgstr ""
 "Sama ada mahu memainkan bunyi peristiwa seperti maklum balas kepada input "
 "pengguna"
 
-#: ctk/ctksettings.c:1196
+#: ctk/ctksettings.c:1206
 msgid "Enable Event Sounds"
 msgstr "Benarkan Peristiwa Bunyi"
 
-#: ctk/ctksettings.c:1197
+#: ctk/ctksettings.c:1207
 msgid "Whether to play any event sounds at all"
 msgstr "Sama ada hendak mainkan sebarang bunyi peristiwa"
 
-#: ctk/ctksettings.c:1214
+#: ctk/ctksettings.c:1224
 msgid "Enable Tooltips"
 msgstr "Benarkan Tip Alat"
 
-#: ctk/ctksettings.c:1215
+#: ctk/ctksettings.c:1225
 msgid "Whether tooltips should be shown on widgets"
 msgstr "Sama ada tip alat patut ditunjukkan pada widget"
 
-#: ctk/ctksettings.c:1230
+#: ctk/ctksettings.c:1240
 msgid "Toolbar style"
 msgstr "Gaya palang alat"
 
-#: ctk/ctksettings.c:1231
+#: ctk/ctksettings.c:1241
 msgid ""
 "Whether default toolbars have text only, text and icons, icons only, etc."
 msgstr ""
 "Samada palang alat lalai mempunyai teks sahaja, teks dan ikon, ikon sahaja, "
 "dll."
 
-#: ctk/ctksettings.c:1247
+#: ctk/ctksettings.c:1257
 msgid "Toolbar Icon Size"
 msgstr "Saiz Ikon Palang Alat"
 
-#: ctk/ctksettings.c:1248
+#: ctk/ctksettings.c:1258
 msgid "The size of icons in default toolbars."
 msgstr "Saiz ikon dalam palang alat lalai."
 
-#: ctk/ctksettings.c:1267
+#: ctk/ctksettings.c:1277
 msgid "Auto Mnemonics"
 msgstr "Auto-Mnemonik"
 
-#: ctk/ctksettings.c:1268
+#: ctk/ctksettings.c:1278
 msgid ""
 "Whether mnemonics should be automatically shown and hidden when the user "
 "presses the mnemonic activator."
@@ -7234,20 +7118,20 @@ msgstr ""
 "Sama ada mnemonik seharusnya ditunjukkan dan disembunyikan secara automatik "
 "bila pengguna menekan pengaktif mnemonik."
 
-#: ctk/ctksettings.c:1290
+#: ctk/ctksettings.c:1300
 msgid "Primary button warps slider"
 msgstr "Butang utama ledingkan pelungsur"
 
-#: ctk/ctksettings.c:1291
+#: ctk/ctksettings.c:1301
 msgid ""
 "Whether a primary click on the trough should warp the slider into position"
 msgstr "Sama ada klik utama akan meleding pelungsur kepada kedudukannya"
 
-#: ctk/ctksettings.c:1309
+#: ctk/ctksettings.c:1319
 msgid "Visible Focus"
 msgstr "Fokus Tampak"
 
-#: ctk/ctksettings.c:1310
+#: ctk/ctksettings.c:1320
 msgid ""
 "Whether 'focus rectangles' should be hidden until the user starts to use the "
 "keyboard."
@@ -7255,60 +7139,60 @@ msgstr ""
 "Sama ada 'segiempat tepat fokus' patut disembunyikan sehingga pengguna mula "
 "menggunakan papan kekunci."
 
-#: ctk/ctksettings.c:1336
+#: ctk/ctksettings.c:1346
 msgid "Application prefers a dark theme"
 msgstr "Aplikasi utamakan satu tema gelap"
 
-#: ctk/ctksettings.c:1337
+#: ctk/ctksettings.c:1347
 msgid "Whether the application prefers to have a dark theme."
 msgstr "Sama ada aplikasi dikehendaki mempunyai satu tema gelap."
 
-#: ctk/ctksettings.c:1358
+#: ctk/ctksettings.c:1368
 msgid "Show button images"
 msgstr "Tunjuk butang imej"
 
-#: ctk/ctksettings.c:1359
+#: ctk/ctksettings.c:1369
 msgid "Whether images should be shown on buttons"
 msgstr "Sama ada imej patut ditunjukkan pada butang"
 
-#: ctk/ctksettings.c:1367 ctk/ctksettings.c:1502
+#: ctk/ctksettings.c:1377 ctk/ctksettings.c:1512
 msgid "Select on focus"
 msgstr "Pilih pada fokus"
 
-#: ctk/ctksettings.c:1368
+#: ctk/ctksettings.c:1378
 msgid "Whether to select the contents of an entry when it is focused"
 msgstr "Sama ada mahu memilih kandungan satu masukan ketika ia difokus"
 
-#: ctk/ctksettings.c:1385
+#: ctk/ctksettings.c:1395
 msgid "Password Hint Timeout"
 msgstr "Had Masa Pembayang Kata Laluan"
 
-#: ctk/ctksettings.c:1386
+#: ctk/ctksettings.c:1396
 msgid "How long to show the last input character in hidden entries"
 msgstr ""
 "Berapa lama untuk menunjukkan aksara input terakhir dalam masukan tersembunyi"
 
-#: ctk/ctksettings.c:1406
+#: ctk/ctksettings.c:1416
 msgid "Show menu images"
 msgstr "Tunjuk imej menu"
 
-#: ctk/ctksettings.c:1407
+#: ctk/ctksettings.c:1417
 msgid "Whether images should be shown in menus"
 msgstr "Sama ada imej patut ditunjukkan dalam menu"
 
-#: ctk/ctksettings.c:1422
+#: ctk/ctksettings.c:1432
 msgid "Delay before drop down menus appear"
 msgstr "Lengah sebelum menu tarik-turun muncul"
 
-#: ctk/ctksettings.c:1423
+#: ctk/ctksettings.c:1433
 msgid "Delay before the submenus of a menu bar appear"
 msgstr "Lengah sebelum submenu bagi palang menu muncul"
 
-#: ctk/ctksettings.c:1442
+#: ctk/ctksettings.c:1452
 msgid "Scrolled Window Placement"
 msgstr "Penggantian Tetingkap Tertatal"
 
-#: ctk/ctksettings.c:1443
+#: ctk/ctksettings.c:1453
 msgid ""
 "Where the contents of scrolled windows are located with respect to the "
 "scrollbars, if not overridden by the scrolled window's own placement."
@@ -7316,31 +7200,31 @@ msgstr ""
 "Lokasi kandungan tetingkap tertatal berada mengikut palang tatal, jika tidak "
 "dibatalkan oleh penggantian tetingkap tertatal sendiri."
 
-#: ctk/ctksettings.c:1459
+#: ctk/ctksettings.c:1469
 msgid "Can change accelerators"
 msgstr "Boleh ubah Pemecut"
 
-#: ctk/ctksettings.c:1460
+#: ctk/ctksettings.c:1470
 msgid ""
 "Whether menu accelerators can be changed by pressing a key over the menu item"
 msgstr ""
 "Sama ada pemecut menu boleh ubah dengan menekan satu kekunci atas item menu"
 
-#: ctk/ctksettings.c:1475
+#: ctk/ctksettings.c:1485
 msgid "Delay before submenus appear"
 msgstr "Lengah sebelum submenu muncul"
 
-#: ctk/ctksettings.c:1476
+#: ctk/ctksettings.c:1486
 msgid ""
 "Minimum time the pointer must stay over a menu item before the submenu appear"
 msgstr ""
 "Masa minimum penuding mesti kekal di atas item menu sebelum submenu muncul"
 
-#: ctk/ctksettings.c:1492
+#: ctk/ctksettings.c:1502
 msgid "Delay before hiding a submenu"
 msgstr "Lengah sebelum menyembunyikan satu submenu"
 
-#: ctk/ctksettings.c:1493
+#: ctk/ctksettings.c:1503
 msgid ""
 "The time before hiding a submenu when the pointer is moving towards the "
 "submenu"
@@ -7348,39 +7232,39 @@ msgstr ""
 "Masa sebelum menyembunyikan satu submenu ketika penuding digerakkan ke arah "
 "submenu"
 
-#: ctk/ctksettings.c:1503
+#: ctk/ctksettings.c:1513
 msgid "Whether to select the contents of a selectable label when it is focused"
 msgstr "Sama ada mahu memilih kandungan label boleh pilih bila ia difokus"
 
-#: ctk/ctksettings.c:1518
+#: ctk/ctksettings.c:1528
 msgid "Custom palette"
 msgstr "Palet suai"
 
-#: ctk/ctksettings.c:1519
+#: ctk/ctksettings.c:1529
 msgid "Palette to use in the color selector"
 msgstr "Palet yang digunakan dalam pemilih warna"
 
-#: ctk/ctksettings.c:1534
+#: ctk/ctksettings.c:1544
 msgid "IM Preedit style"
 msgstr "Gaya Pra-sunting IM"
 
-#: ctk/ctksettings.c:1535
+#: ctk/ctksettings.c:1545
 msgid "How to draw the input method preedit string"
 msgstr "Bagaimana mahu melukis rentetan pra-suntign kaedah input"
 
-#: ctk/ctksettings.c:1551
+#: ctk/ctksettings.c:1561
 msgid "IM Status style"
 msgstr "Gaya Status IM"
 
-#: ctk/ctksettings.c:1552
+#: ctk/ctksettings.c:1562
 msgid "How to draw the input method statusbar"
 msgstr "Bagaimana mahu melukis palang status kaedah input"
 
-#: ctk/ctksettings.c:1561
+#: ctk/ctksettings.c:1571
 msgid "Desktop shell shows app menu"
 msgstr "Shell atas meja menunjukkan menu apl"
 
-#: ctk/ctksettings.c:1562
+#: ctk/ctksettings.c:1572
 msgid ""
 "Set to TRUE if the desktop environment is displaying the app menu, FALSE if "
 "the app should display it itself."
@@ -7388,11 +7272,11 @@ msgstr ""
 "Tetapkan pada BENAR jika persekitaran ata meja memaparkan menu apl, PALSU "
 "jika apl patut paparkan dirinya sendiri."
 
-#: ctk/ctksettings.c:1571
+#: ctk/ctksettings.c:1581
 msgid "Desktop shell shows the menubar"
 msgstr "Shel ata meja menunjukkan palang menu"
 
-#: ctk/ctksettings.c:1572
+#: ctk/ctksettings.c:1582
 msgid ""
 "Set to TRUE if the desktop environment is displaying the menubar, FALSE if "
 "the app should display it itself."
@@ -7400,11 +7284,11 @@ msgstr ""
 "Tetap pada BENAR jika persekitaran atas memaparkan palang menu, PALSU jika "
 "apl patut paparkan dirinya sendiri."
 
-#: ctk/ctksettings.c:1581
+#: ctk/ctksettings.c:1591
 msgid "Desktop environment shows the desktop folder"
 msgstr "Persekitaran atas meja menunjukkan folder atas meja"
 
-#: ctk/ctksettings.c:1582
+#: ctk/ctksettings.c:1592
 msgid ""
 "Set to TRUE if the desktop environment is displaying the desktop folder, "
 "FALSE if not."
@@ -7412,35 +7296,35 @@ msgstr ""
 "Tetapkan pada BENAR jika persekitaran atas meja memaparkan folder atas meja, "
 "PALSU jika tiada."
 
-#: ctk/ctksettings.c:1636
+#: ctk/ctksettings.c:1646
 msgid "Titlebar double-click action"
 msgstr "Tindakan dwi-klik palang tajuk"
 
-#: ctk/ctksettings.c:1637
+#: ctk/ctksettings.c:1647
 msgid "The action to take on titlebar double-click"
 msgstr "Tindakan yang diambil jika dwi-klik palang tajuk"
 
-#: ctk/ctksettings.c:1655
+#: ctk/ctksettings.c:1665
 msgid "Titlebar middle-click action"
 msgstr "Tindakan klik-tengah palang tajuk"
 
-#: ctk/ctksettings.c:1656
+#: ctk/ctksettings.c:1666
 msgid "The action to take on titlebar middle-click"
 msgstr "Tindakan yang diambil bila klik-tengah palang tajuk"
 
-#: ctk/ctksettings.c:1674
+#: ctk/ctksettings.c:1684
 msgid "Titlebar right-click action"
 msgstr "Tindakan klik-kanan palang tajuk"
 
-#: ctk/ctksettings.c:1675
+#: ctk/ctksettings.c:1685
 msgid "The action to take on titlebar right-click"
 msgstr "Tindakan yang diambil bila klik-kanan palang tajuk"
 
-#: ctk/ctksettings.c:1697
+#: ctk/ctksettings.c:1707
 msgid "Dialogs use header bar"
 msgstr "Dialog guna palang pengepala"
 
-#: ctk/ctksettings.c:1698
+#: ctk/ctksettings.c:1708
 msgid ""
 "Whether builtin CTK+ dialogs should use a header bar instead of an action "
 "area."
@@ -7448,11 +7332,11 @@ msgstr ""
 "Sama ada dialog CTK+ terbina-dalam seharusnya guna palang pengepala selain "
 "dari kawasan tindakan."
 
-#: ctk/ctksettings.c:1714
+#: ctk/ctksettings.c:1724
 msgid "Enable primary paste"
 msgstr "Benarkan tampal utama"
 
-#: ctk/ctksettings.c:1715
+#: ctk/ctksettings.c:1725
 msgid ""
 "Whether a middle click on a mouse should paste the 'PRIMARY' clipboard "
 "content at the cursor location."
@@ -7460,29 +7344,29 @@ msgstr ""
 "Sama ada satu klik tengah pada tetikus patut menampal kandungan papan "
 "keratan 'UTAMA' pada lokasi kursor."
 
-#: ctk/ctksettings.c:1731
+#: ctk/ctksettings.c:1741
 msgid "Recent Files Enabled"
 msgstr "Fail Baru-baru Ini Dibenarkan"
 
-#: ctk/ctksettings.c:1732
+#: ctk/ctksettings.c:1742
 msgid "Whether CTK+ remembers recent files"
 msgstr "Sama ada CTK+ ingat fail baru-baru ini"
 
-#: ctk/ctksettings.c:1747
+#: ctk/ctksettings.c:1757
 msgid "Long press time"
 msgstr "Masa tekan lama"
 
-#: ctk/ctksettings.c:1748
+#: ctk/ctksettings.c:1758
 msgid ""
 "Time for a button/touch press to be considered a long press (in milliseconds)"
 msgstr ""
 "Masa bila menahan butang/sentuh yang dianggap tekan lama (dalam milisaat)"
 
-#: ctk/ctksettings.c:1765 ctk/ctksettings.c:1766
+#: ctk/ctksettings.c:1775 ctk/ctksettings.c:1776
 msgid "Whether to show cursor in text"
 msgstr "Sama ada mahu menunjuk kursor dalam teks"
 
-#: ctk/ctksettings.c:1783 ctk/ctksettings.c:1784
+#: ctk/ctksettings.c:1793 ctk/ctksettings.c:1794
 msgid "Whether to use overlay scrollbars"
 msgstr "Sama ada mahu guna palang tatal tindihan-atas"
 
@@ -7718,7 +7602,7 @@ msgstr "Nama bagi halaman anak"
 msgid "The title of the child page"
 msgstr "Tajuk bagi halaman anak"
 
-#: ctk/ctkstack.c:530 ctk/ctktoolbutton.c:287
+#: ctk/ctkstack.c:530 ctk/ctktoolbutton.c:248
 msgid "Icon name"
 msgstr "Nama ikon"
 
@@ -7744,6 +7628,10 @@ msgstr "Tindanan"
 msgid "Associated stack for this CtkStackSidebar"
 msgstr "Tindanan berkaitan untuk CtkStackSidebar ini"
 
+#: ctk/ctkstackswitcher.c:686 ctk/ctktrayicon-x11.c:178
+msgid "Icon Size"
+msgstr "Saiz Ikon"
+
 #: ctk/ctkstackswitcher.c:687
 msgid "Symbolic size to use for named icon"
 msgstr "Saiz simbolik yang digunakan untuk ikon bernama"
@@ -7751,6 +7639,62 @@ msgstr "Saiz simbolik yang digunakan untuk ikon bernama"
 #: ctk/ctkstatusbar.c:178
 msgid "Style of bevel around the statusbar text"
 msgstr "Gaya seorng sekeliling teks palang status"
+
+#: ctk/ctkstatusicon.c:287
+msgid "The size of the icon"
+msgstr "Saiz ikon"
+
+#: ctk/ctkstatusicon.c:297
+msgid "The screen where this status icon will be displayed"
+msgstr "Skrin yang mana ikon status ini akan dipaparkan"
+
+#: ctk/ctkstatusicon.c:305
+msgid "Whether the status icon is visible"
+msgstr "Sama ada ikon status kelihatan"
+
+#: ctk/ctkstatusicon.c:321
+msgid "Whether the status icon is embedded"
+msgstr "Sama ada ikon status adalah terbenam"
+
+#: ctk/ctkstatusicon.c:337 ctk/ctktrayicon-x11.c:128
+msgid "The orientation of the tray"
+msgstr "Orientasi talam"
+
+#: ctk/ctkstatusicon.c:364 ctk/ctkwidget.c:1285
+msgid "Has tooltip"
+msgstr "Mempunyai tip alat"
+
+#: ctk/ctkstatusicon.c:365
+msgid "Whether this tray icon has a tooltip"
+msgstr "Sama ada ikon talam ini mempunyai tip alat"
+
+#: ctk/ctkstatusicon.c:391 ctk/ctkwidget.c:1309
+msgid "Tooltip Text"
+msgstr "Teks Tip Alat"
+
+#: ctk/ctkstatusicon.c:392 ctk/ctkwidget.c:1310 ctk/ctkwidget.c:1334
+msgid "The contents of the tooltip for this widget"
+msgstr "Kandungan tip alat untuk widget ini"
+
+#: ctk/ctkstatusicon.c:415 ctk/ctkwidget.c:1333
+msgid "Tooltip markup"
+msgstr "Penanda tip alat"
+
+#: ctk/ctkstatusicon.c:416
+msgid "The contents of the tooltip for this tray icon"
+msgstr "Kandungan tip alat bagi ikon talam ini"
+
+#: ctk/ctkstatusicon.c:434
+msgid "The title of this tray icon"
+msgstr "Tajuk ikon talam ini"
+
+#: ctk/ctkstyle.c:466
+msgid "Style context"
+msgstr "Konteks gaya"
+
+#: ctk/ctkstyle.c:467
+msgid "CtkStyleContext to get style from"
+msgstr "CtkStyleContext untuk dapatkan gaya dari"
 
 #: ctk/ctkstylecontext.c:230
 msgid "The associated CdkScreen"
@@ -7764,7 +7708,7 @@ msgstr "Jam Bingkai"
 msgid "The associated CdkFrameClock"
 msgstr "CdkFrameClock yang berkaitan"
 
-#: ctk/ctkstylecontext.c:244 ctk/ctktexttag.c:299
+#: ctk/ctkstylecontext.c:244 ctk/ctktexttag.c:300
 msgid "Text direction"
 msgstr "Arah teks"
 
@@ -7788,71 +7732,71 @@ msgstr "Jenis nilai"
 msgid "The value type returned by CtkStyleContext"
 msgstr "Jenis nilai dikembalikan oleh CtkStyleContext"
 
-#: ctk/ctkswitch.c:876
+#: ctk/ctkswitch.c:879
 msgid "Whether the switch is on or off"
 msgstr "Sama ada suis hidup atau mati"
 
-#: ctk/ctkswitch.c:891
+#: ctk/ctkswitch.c:894
 msgid "The backend state"
 msgstr "Keadaan bahagian belakang"
 
-#: ctk/ctkswitch.c:927
+#: ctk/ctkswitch.c:930
 msgid "The minimum width of the handle"
 msgstr "Lebar minimum pemegang"
 
-#: ctk/ctkswitch.c:943
+#: ctk/ctkswitch.c:946
 msgid "Slider Height"
 msgstr "Tinggi pelungsur"
 
-#: ctk/ctkswitch.c:944
+#: ctk/ctkswitch.c:947
 msgid "The minimum height of the handle"
 msgstr "Tinggi minimum pemegang"
 
-#: ctk/ctktextbuffer.c:201
+#: ctk/ctktextbuffer.c:202
 msgid "Tag Table"
 msgstr "Jadual Tag"
 
-#: ctk/ctktextbuffer.c:202
+#: ctk/ctktextbuffer.c:203
 msgid "Text Tag Table"
 msgstr "Jadual Tag Teks"
 
-#: ctk/ctktextbuffer.c:219
+#: ctk/ctktextbuffer.c:220
 msgid "Current text of the buffer"
 msgstr "Teks semasa bagi penimbal"
 
-#: ctk/ctktextbuffer.c:232
+#: ctk/ctktextbuffer.c:233
 msgid "Has selection"
 msgstr "Mempunyai pemilihan"
 
-#: ctk/ctktextbuffer.c:233
+#: ctk/ctktextbuffer.c:234
 msgid "Whether the buffer has some text currently selected"
 msgstr "Sama ada penimbal mempunyai beberapa teks semasa yang terpilih"
 
-#: ctk/ctktextbuffer.c:248
+#: ctk/ctktextbuffer.c:249
 msgid "Cursor position"
 msgstr "Kedudukan kursor"
 
-#: ctk/ctktextbuffer.c:249
+#: ctk/ctktextbuffer.c:250
 msgid ""
 "The position of the insert mark (as offset from the beginning of the buffer)"
 msgstr "Kedudukan tanda sisip (sebagai ofset dari permulaan penimbal)"
 
-#: ctk/ctktextbuffer.c:264
+#: ctk/ctktextbuffer.c:265
 msgid "Copy target list"
 msgstr "Salin senarai sasaran"
 
-#: ctk/ctktextbuffer.c:265
+#: ctk/ctktextbuffer.c:266
 msgid ""
 "The list of targets this buffer supports for clipboard copying and DND source"
 msgstr ""
 "Senarai sasaran penimbal ini menyokong untuk penyalinan papan keratan dan "
 "sumber DND"
 
-#: ctk/ctktextbuffer.c:279
+#: ctk/ctktextbuffer.c:280
 msgid "Paste target list"
 msgstr "Tampal senarai sasaran"
 
-#: ctk/ctktextbuffer.c:280
+#: ctk/ctktextbuffer.c:281
 msgid ""
 "The list of targets this buffer supports for clipboard pasting and DND "
 "destination"
@@ -7876,23 +7820,23 @@ msgstr "Graviti kiri"
 msgid "Whether the mark has left gravity"
 msgstr "Sama ada tanda mempunyai graviti berbaki"
 
-#: ctk/ctktexttag.c:205
+#: ctk/ctktexttag.c:206
 msgid "Tag name"
 msgstr "Nama tag"
 
-#: ctk/ctktexttag.c:206
+#: ctk/ctktexttag.c:207
 msgid "Name used to refer to the text tag. NULL for anonymous tags"
 msgstr "Nama yang digunakan untuk merujuk tag teks, NOL bagi tag awanama"
 
-#: ctk/ctktexttag.c:245
+#: ctk/ctktexttag.c:246
 msgid "Background RGBA"
 msgstr "RGBA Latar Belakang"
 
-#: ctk/ctktexttag.c:253
+#: ctk/ctktexttag.c:254
 msgid "Background full height"
 msgstr "Tinggi penuh latar belakang"
 
-#: ctk/ctktexttag.c:254
+#: ctk/ctktexttag.c:255
 msgid ""
 "Whether the background color fills the entire line height or only the height "
 "of the tagged characters"
@@ -7900,23 +7844,23 @@ msgstr ""
 "Sama ada warna latar belakang memenuhi keseluruhan tinggi baris atau hanya "
 "tinggi berdasarkan aksara bertag"
 
-#: ctk/ctktexttag.c:291
+#: ctk/ctktexttag.c:292
 msgid "Foreground RGBA"
 msgstr "RGBA Latar Hadapan"
 
-#: ctk/ctktexttag.c:300
+#: ctk/ctktexttag.c:301
 msgid "Text direction, e.g. right-to-left or left-to-right"
 msgstr "Arah teks, iaitu kanan-ke-kiri atau kiri-ke-kanan"
 
-#: ctk/ctktexttag.c:349
+#: ctk/ctktexttag.c:350
 msgid "Font style as a PangoStyle, e.g. PANGO_STYLE_ITALIC"
 msgstr "Gaya fon sebagai satu PangoStyle, e.g. PANGO_STYLE_ITALIC"
 
-#: ctk/ctktexttag.c:358
+#: ctk/ctktexttag.c:359
 msgid "Font variant as a PangoVariant, e.g. PANGO_VARIANT_SMALL_CAPS"
 msgstr "Variasi fon sebagai PangoVariant, iaitu PANGO_VARIANT_SMALL_CAPS"
 
-#: ctk/ctktexttag.c:367
+#: ctk/ctktexttag.c:368
 msgid ""
 "Font weight as an integer, see predefined values in PangoWeight; for "
 "example, PANGO_WEIGHT_BOLD"
@@ -7924,15 +7868,15 @@ msgstr ""
 "Berat fon sebagai satu integer, lihat nilai pratakrif dalam PangoWeight; "
 "sebagai contoh, PANGO_WEIGHT_BOLD"
 
-#: ctk/ctktexttag.c:378
+#: ctk/ctktexttag.c:379
 msgid "Font stretch as a PangoStretch, e.g. PANGO_STRETCH_CONDENSED"
 msgstr "Fon diregang sebagai PAngoStretch, iaitu PANGGO_STRETCH_CONDENSED"
 
-#: ctk/ctktexttag.c:387
+#: ctk/ctktexttag.c:388
 msgid "Font size in Pango units"
 msgstr "Saiz fon dalam unit Pango"
 
-#: ctk/ctktexttag.c:397
+#: ctk/ctktexttag.c:398
 msgid ""
 "Font size as a scale factor relative to the default font size. This properly "
 "adapts to theme changes etc. so is recommended. Pango predefines some scales "
@@ -7942,11 +7886,11 @@ msgstr ""
 "disesuaikan dengan perubahan tema dll. oleh itu disarankan. Pango "
 "mempratakrif beberapa skala seperti PANGO_SCALE_X_LARGE"
 
-#: ctk/ctktexttag.c:417 ctk/ctktextview.c:843
+#: ctk/ctktexttag.c:418 ctk/ctktextview.c:843
 msgid "Left, right, or center justification"
 msgstr "Kiri, kanan, atau sama birai tengah"
 
-#: ctk/ctktexttag.c:436
+#: ctk/ctktexttag.c:437
 msgid ""
 "The language this text is in, as an ISO code. Pango can use this as a hint "
 "when rendering the text. If not set, an appropriate default will be used."
@@ -7955,31 +7899,31 @@ msgstr ""
 "pembayang ketika menerapkan teks. Jika tidak ditetapkan, nila lalai yang "
 "sesuai akan digunakan."
 
-#: ctk/ctktexttag.c:443
+#: ctk/ctktexttag.c:444
 msgid "Left margin"
 msgstr "Jidar kiri"
 
-#: ctk/ctktexttag.c:444 ctk/ctktextview.c:864
+#: ctk/ctktexttag.c:445 ctk/ctktextview.c:864
 msgid "Width of the left margin in pixels"
 msgstr "Lebar bagi jidar kiri dalam piksel"
 
-#: ctk/ctktexttag.c:453
+#: ctk/ctktexttag.c:454
 msgid "Right margin"
 msgstr "Jidar kanan"
 
-#: ctk/ctktexttag.c:454 ctk/ctktextview.c:884
+#: ctk/ctktexttag.c:455 ctk/ctktextview.c:884
 msgid "Width of the right margin in pixels"
 msgstr "Lebar bagi jidar kanan dalam piksel"
 
-#: ctk/ctktexttag.c:464 ctk/ctktextview.c:933
+#: ctk/ctktexttag.c:465 ctk/ctktextview.c:933
 msgid "Indent"
 msgstr "Engsot"
 
-#: ctk/ctktexttag.c:465 ctk/ctktextview.c:934
+#: ctk/ctktexttag.c:466 ctk/ctktextview.c:934
 msgid "Amount to indent the paragraph, in pixels"
 msgstr "Amaun untuk mengengsot perenggan, dalam piksel"
 
-#: ctk/ctktexttag.c:476
+#: ctk/ctktexttag.c:477
 msgid ""
 "Offset of text above the baseline (below the baseline if rise is negative) "
 "in Pango units"
@@ -7987,250 +7931,250 @@ msgstr ""
 "Ofset teks di atas garis dasar (bawah garis dasar jika angkat adalah "
 "negatif) dalam unit Pango"
 
-#: ctk/ctktexttag.c:485
+#: ctk/ctktexttag.c:486
 msgid "Pixels above lines"
 msgstr "Piksel atas garisan"
 
-#: ctk/ctktexttag.c:486 ctk/ctktextview.c:802
+#: ctk/ctktexttag.c:487 ctk/ctktextview.c:802
 msgid "Pixels of blank space above paragraphs"
 msgstr "Piksel ruang kosong di natas perenggan"
 
-#: ctk/ctktexttag.c:495
+#: ctk/ctktexttag.c:496
 msgid "Pixels below lines"
 msgstr "Piksel bawah garisan"
 
-#: ctk/ctktexttag.c:496 ctk/ctktextview.c:810
+#: ctk/ctktexttag.c:497 ctk/ctktextview.c:810
 msgid "Pixels of blank space below paragraphs"
 msgstr "Piksel ruang kosong di bawah perenggan"
 
-#: ctk/ctktexttag.c:505
+#: ctk/ctktexttag.c:506
 msgid "Pixels inside wrap"
 msgstr "Piksel dalam lilit"
 
-#: ctk/ctktexttag.c:506 ctk/ctktextview.c:818
+#: ctk/ctktexttag.c:507 ctk/ctktextview.c:818
 msgid "Pixels of blank space between wrapped lines in a paragraph"
 msgstr "Piksel bagi ruang kosong antara baris terlilit dalam satu perenggan"
 
-#: ctk/ctktexttag.c:544
+#: ctk/ctktexttag.c:545
 msgid "Underline RGBA"
 msgstr "RGBA bergaris bawah"
 
-#: ctk/ctktexttag.c:545
+#: ctk/ctktexttag.c:546
 msgid "Color of underline for this text"
 msgstr "Warna bagi garis bawah untuk teks ini"
 
-#: ctk/ctktexttag.c:560
+#: ctk/ctktexttag.c:561
 msgid "Strikethrough RGBA"
 msgstr "RGBA coret tembus"
 
-#: ctk/ctktexttag.c:561
+#: ctk/ctktexttag.c:562
 msgid "Color of strikethrough for this text"
 msgstr "Warna coret tembus bagi teks ini"
 
-#: ctk/ctktexttag.c:569 ctk/ctktextview.c:834
+#: ctk/ctktexttag.c:570 ctk/ctktextview.c:834
 msgid ""
 "Whether to wrap lines never, at word boundaries, or at character boundaries"
 msgstr ""
 "Sama ada mahu melilit baris tidak sesekali, pada sempadan perkataan, atau "
 "pada sempadan aksara"
 
-#: ctk/ctktexttag.c:579 ctk/ctktextview.c:942
+#: ctk/ctktexttag.c:580 ctk/ctktextview.c:942
 msgid "Custom tabs for this text"
 msgstr "Tab suai untuk teks ini"
 
-#: ctk/ctktexttag.c:597
+#: ctk/ctktexttag.c:598
 msgid "Invisible"
 msgstr "Halimunan"
 
-#: ctk/ctktexttag.c:598
+#: ctk/ctktexttag.c:599
 msgid "Whether this text is hidden."
 msgstr "Sama ada teks ini disembunyikan."
 
-#: ctk/ctktexttag.c:612
+#: ctk/ctktexttag.c:613
 msgid "Paragraph background color name"
 msgstr "Nama warna latar belakang perenggan"
 
-#: ctk/ctktexttag.c:613
+#: ctk/ctktexttag.c:614
 msgid "Paragraph background color as a string"
 msgstr "Warna latar belakang perenggan sebagai rentetan"
 
-#: ctk/ctktexttag.c:629
+#: ctk/ctktexttag.c:630
 msgid "Paragraph background color"
 msgstr "Warna latar belakang perenggan"
 
-#: ctk/ctktexttag.c:630
+#: ctk/ctktexttag.c:631
 msgid "Paragraph background color as a CdkColor"
 msgstr "Warna latar belakang perenggan sebagai CdkColor"
 
-#: ctk/ctktexttag.c:644
+#: ctk/ctktexttag.c:645
 msgid "Paragraph background RGBA"
 msgstr "Latar Belakang Perenggan RGBA"
 
-#: ctk/ctktexttag.c:645
+#: ctk/ctktexttag.c:646
 msgid "Paragraph background RGBA as a CdkRGBA"
 msgstr "Latar Belakang perenggan RGBA sebagai satu CdkRGBA"
 
-#: ctk/ctktexttag.c:662
+#: ctk/ctktexttag.c:663
 msgid "Fallback"
 msgstr "Jatuh balik"
 
-#: ctk/ctktexttag.c:663
+#: ctk/ctktexttag.c:664
 msgid "Whether font fallback is enabled."
 msgstr "Sama ada jatuh balik fon dibenarkan."
 
-#: ctk/ctktexttag.c:677
+#: ctk/ctktexttag.c:678
 msgid "Letter Spacing"
 msgstr "Jarak Abjad"
 
-#: ctk/ctktexttag.c:678
+#: ctk/ctktexttag.c:679
 msgid "Extra spacing between graphemes"
 msgstr "Jarak tambahan antara grafem"
 
-#: ctk/ctktexttag.c:692
+#: ctk/ctktexttag.c:693
 msgid "Font Features"
 msgstr "Fitur Fon"
 
-#: ctk/ctktexttag.c:693
+#: ctk/ctktexttag.c:694
 msgid "OpenType Font Features to use"
 msgstr "Fitur Fon OpenType yang digunakan"
 
-#: ctk/ctktexttag.c:711
+#: ctk/ctktexttag.c:712
 msgid "Margin Accumulates"
 msgstr "Jidar Dikumpulkan"
 
-#: ctk/ctktexttag.c:712
+#: ctk/ctktexttag.c:713
 msgid "Whether left and right margins accumulate."
 msgstr "Sama ada jidar kanan dan kiri dikumpulkan."
 
-#: ctk/ctktexttag.c:725
+#: ctk/ctktexttag.c:726
 msgid "Background full height set"
 msgstr "Set tinggi penuh latar belakang"
 
-#: ctk/ctktexttag.c:726
+#: ctk/ctktexttag.c:727
 msgid "Whether this tag affects background height"
 msgstr "Sama ada tag ini mempengaruhi tinggi latar belakang"
 
-#: ctk/ctktexttag.c:765
+#: ctk/ctktexttag.c:766
 msgid "Justification set"
 msgstr "Set sama birai"
 
-#: ctk/ctktexttag.c:766
+#: ctk/ctktexttag.c:767
 msgid "Whether this tag affects paragraph justification"
 msgstr "Sama ada tag ini mempengaruhi sama birai perenggan"
 
-#: ctk/ctktexttag.c:773
+#: ctk/ctktexttag.c:774
 msgid "Left margin set"
 msgstr "Set jidar kiri"
 
-#: ctk/ctktexttag.c:774
+#: ctk/ctktexttag.c:775
 msgid "Whether this tag affects the left margin"
 msgstr "Sama ada tag ini mempengaruhi jidar kiri"
 
-#: ctk/ctktexttag.c:777
+#: ctk/ctktexttag.c:778
 msgid "Indent set"
 msgstr "Set engsot"
 
-#: ctk/ctktexttag.c:778
+#: ctk/ctktexttag.c:779
 msgid "Whether this tag affects indentation"
 msgstr "Sama ada tag ini mempengaruhi pengensotan"
 
-#: ctk/ctktexttag.c:785
+#: ctk/ctktexttag.c:786
 msgid "Pixels above lines set"
 msgstr "Set piksel atas baris"
 
-#: ctk/ctktexttag.c:786 ctk/ctktexttag.c:790
+#: ctk/ctktexttag.c:787 ctk/ctktexttag.c:791
 msgid "Whether this tag affects the number of pixels above lines"
 msgstr "Sama ada tag ini mempengaruhi bilangan piksel di atas baris"
 
-#: ctk/ctktexttag.c:789
+#: ctk/ctktexttag.c:790
 msgid "Pixels below lines set"
 msgstr "Set piksel bawah baris"
 
-#: ctk/ctktexttag.c:793
+#: ctk/ctktexttag.c:794
 msgid "Pixels inside wrap set"
 msgstr "Set piksel dalam lilitan"
 
-#: ctk/ctktexttag.c:794
+#: ctk/ctktexttag.c:795
 msgid "Whether this tag affects the number of pixels between wrapped lines"
 msgstr "Sama ada tag ini mempengaruhi bilangan piksel antara baris terlilit"
 
-#: ctk/ctktexttag.c:801
+#: ctk/ctktexttag.c:802
 msgid "Right margin set"
 msgstr "Set margin kiri"
 
-#: ctk/ctktexttag.c:802
+#: ctk/ctktexttag.c:803
 msgid "Whether this tag affects the right margin"
 msgstr "Samada tag ini mempengaruhi margin kanan"
 
-#: ctk/ctktexttag.c:816
+#: ctk/ctktexttag.c:817
 msgid "Underline RGBA set"
 msgstr "Set GGBA garis bawah"
 
-#: ctk/ctktexttag.c:817
+#: ctk/ctktexttag.c:818
 msgid "Whether this tag affects underlining color"
 msgstr "Sama ada tag ini mempengaruhi warna bergaris bawah"
 
-#: ctk/ctktexttag.c:827
+#: ctk/ctktexttag.c:828
 msgid "Strikethrough RGBA set"
 msgstr "Set RGBA coret tembus"
 
-#: ctk/ctktexttag.c:828
+#: ctk/ctktexttag.c:829
 msgid "Whether this tag affects strikethrough color"
 msgstr "Sama ada tag ini mempengaruhi warna bercoret tembus"
 
-#: ctk/ctktexttag.c:831
+#: ctk/ctktexttag.c:832
 msgid "Wrap mode set"
 msgstr "Set mod lilit"
 
-#: ctk/ctktexttag.c:832
+#: ctk/ctktexttag.c:833
 msgid "Whether this tag affects line wrap mode"
 msgstr "Sama ada tag ini mempengaruhi mod lilit"
 
-#: ctk/ctktexttag.c:835
+#: ctk/ctktexttag.c:836
 msgid "Tabs set"
 msgstr "Set Tab"
 
-#: ctk/ctktexttag.c:836
+#: ctk/ctktexttag.c:837
 msgid "Whether this tag affects tabs"
 msgstr "Sama ada tag ini menpengaruhi tab"
 
-#: ctk/ctktexttag.c:839
+#: ctk/ctktexttag.c:840
 msgid "Invisible set"
 msgstr "Set halimunan"
 
-#: ctk/ctktexttag.c:840
+#: ctk/ctktexttag.c:841
 msgid "Whether this tag affects text visibility"
 msgstr "Sama ada tag ini mempengaruhi ketampakan teks"
 
-#: ctk/ctktexttag.c:843
+#: ctk/ctktexttag.c:844
 msgid "Paragraph background set"
 msgstr "Set latar belakang perenggan"
 
-#: ctk/ctktexttag.c:844
+#: ctk/ctktexttag.c:845
 msgid "Whether this tag affects the paragraph background color"
 msgstr "Sama ada tag ini mempengaruhi warna latar belakang perenggan"
 
-#: ctk/ctktexttag.c:847
+#: ctk/ctktexttag.c:848
 msgid "Fallback set"
 msgstr "Set jatuh balik"
 
-#: ctk/ctktexttag.c:848
+#: ctk/ctktexttag.c:849
 msgid "Whether this tag affects font fallback"
 msgstr "Sama ada tag ini mempengaruhi jatuh balik fon"
 
-#: ctk/ctktexttag.c:851
+#: ctk/ctktexttag.c:852
 msgid "Letter spacing set"
 msgstr "Set jarak abjad"
 
-#: ctk/ctktexttag.c:852
+#: ctk/ctktexttag.c:853
 msgid "Whether this tag affects letter spacing"
 msgstr "Sama ada tag ini mempengaruhi jarak abjad"
 
-#: ctk/ctktexttag.c:855
+#: ctk/ctktexttag.c:856
 msgid "Font features set"
 msgstr "Set fitur fon"
 
-#: ctk/ctktexttag.c:856
+#: ctk/ctktexttag.c:857
 msgid "Whether this tag affects font features"
 msgstr "Sama ada tag ini mempengaruhi fitur fon"
 
@@ -8317,6 +8261,18 @@ msgstr "Warna garis bawah ralat"
 #: ctk/ctktextview.c:1082
 msgid "Color with which to draw error-indication underlines"
 msgstr "Warna yang melukis garis bawah penunjuk-ralat"
+
+#: ctk/ctktoggleaction.c:114
+msgid "Create the same proxies as a radio action"
+msgstr "Cipta proksi yang sama sebagai butang radio"
+
+#: ctk/ctktoggleaction.c:115
+msgid "Whether the proxies for this action look like radio action proxies"
+msgstr "Sama ada proksi bagi tindakan ini nampak seperti proksi tindakan radio"
+
+#: ctk/ctktoggleaction.c:130
+msgid "Whether the toggle action should be active"
+msgstr "Sama ada tindakan togol patut aktif"
 
 #: ctk/ctktogglebutton.c:189 ctk/ctktoggletoolbutton.c:131
 msgid "If the toggle button should be pressed in"
@@ -8411,11 +8367,11 @@ msgstr "Jenis serong sekeliling butang palang alat"
 msgid "Style of bevel around the toolbar"
 msgstr "Gaya bagi serong sekeliling palang alat"
 
-#: ctk/ctktoolbutton.c:244
+#: ctk/ctktoolbutton.c:205
 msgid "Text to show in the item."
 msgstr "Teks yang ditunjukkan dalam item."
 
-#: ctk/ctktoolbutton.c:251
+#: ctk/ctktoolbutton.c:212
 msgid ""
 "If set, an underline in the label property indicates that the next character "
 "should be used for the mnemonic accelerator key in the overflow menu"
@@ -8423,35 +8379,35 @@ msgstr ""
 "Jika ditetapkan, garisb awah dalam sifat label iaitu aksara berikutnya patut "
 "gunakan sebagai kekunci pemecut menmonik dalam menu melimpah"
 
-#: ctk/ctktoolbutton.c:258
+#: ctk/ctktoolbutton.c:219
 msgid "Widget to use as the item label"
 msgstr "Widget yang digunakan sebagai label item"
 
-#: ctk/ctktoolbutton.c:269
+#: ctk/ctktoolbutton.c:230
 msgid "Stock Id"
 msgstr "Id stok"
 
-#: ctk/ctktoolbutton.c:270
+#: ctk/ctktoolbutton.c:231
 msgid "The stock icon displayed on the item"
 msgstr "Ikon stok yang dipaparkan pada item"
 
-#: ctk/ctktoolbutton.c:288
+#: ctk/ctktoolbutton.c:249
 msgid "The name of the themed icon displayed on the item"
 msgstr "Nama ikon bertema yang dipaparkan pada item"
 
-#: ctk/ctktoolbutton.c:294
+#: ctk/ctktoolbutton.c:255
 msgid "Icon widget"
 msgstr "Wiget ikon"
 
-#: ctk/ctktoolbutton.c:295
+#: ctk/ctktoolbutton.c:256
 msgid "Icon widget to display in the item"
 msgstr "Wiget ikon untuk dipaparkan pada item"
 
-#: ctk/ctktoolbutton.c:311
+#: ctk/ctktoolbutton.c:272
 msgid "Icon spacing"
 msgstr "Jarak ikon"
 
-#: ctk/ctktoolbutton.c:312
+#: ctk/ctktoolbutton.c:273
 msgid "Spacing in pixels between the icon and label"
 msgstr "Jarak dalam piksel antara ikon dengan label"
 
@@ -8544,6 +8500,42 @@ msgid ""
 "Whether the item group should receive extra space when the palette grows"
 msgstr ""
 "Sama ada kumpulan item patut menerima ruang tambahan bila palet membesar"
+
+#: ctk/ctktrayicon-x11.c:137
+msgid "Foreground color for symbolic icons"
+msgstr "Warna latar hadapan untuk ikon simbolik"
+
+#: ctk/ctktrayicon-x11.c:144
+msgid "Error color"
+msgstr "Warna ralat"
+
+#: ctk/ctktrayicon-x11.c:145
+msgid "Error color for symbolic icons"
+msgstr "Warna ralat untuk ikon simbolik"
+
+#: ctk/ctktrayicon-x11.c:152
+msgid "Warning color"
+msgstr "Warna amaran"
+
+#: ctk/ctktrayicon-x11.c:153
+msgid "Warning color for symbolic icons"
+msgstr "Warna amaran untuk ikon simbolik"
+
+#: ctk/ctktrayicon-x11.c:160
+msgid "Success color"
+msgstr "Warna berjaya"
+
+#: ctk/ctktrayicon-x11.c:161
+msgid "Success color for symbolic icons"
+msgstr "Warna berjaya untuk ikon simbolik"
+
+#: ctk/ctktrayicon-x11.c:169
+msgid "Padding that should be put around icons in the tray"
+msgstr "Pemadatan yang patut diletak sekitar ikon dalam talam"
+
+#: ctk/ctktrayicon-x11.c:179
+msgid "The pixel size that icons should be forced to, or zero"
+msgstr "Saiz piksel ikon yang patut dipaksakan, atau sifar"
 
 #: ctk/ctktreemenu.c:265
 msgid "TreeMenu model"
@@ -8913,6 +8905,18 @@ msgstr "ID lajur isih"
 msgid "Logical sort column ID this column sorts on when selected for sorting"
 msgstr ""
 "ID lajur isih logikal bagi isih lajur ini bila terpilih untuk pengisihan"
+
+#: ctk/ctkuimanager.c:453
+msgid "Whether tearoff menu items should be added to menus"
+msgstr "Samada item menu pengoyak patut ditambah pada menu"
+
+#: ctk/ctkuimanager.c:460
+msgid "Merged UI definition"
+msgstr "Takrifan UI tergabung"
+
+#: ctk/ctkuimanager.c:461
+msgid "An XML string describing the merged UI"
+msgstr "Satu rentetan XML yang menjelaskan UI tergabung"
 
 #: ctk/ctkviewport.c:409
 msgid "Determines how the shadowed box around the viewport is drawn"
