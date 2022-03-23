@@ -1,5 +1,5 @@
 project('ctk+-3.0', 'c',
-        version: '3.25.1',
+        version: '3.25.2',
         default_options: [
           'buildtype=debugoptimized',
           'warning_level=1'
@@ -52,7 +52,7 @@ ctk_version       = meson.project_version()
 ctk_major_version = ctk_version.split('.')[0].to_int()
 ctk_minor_version = ctk_version.split('.')[1].to_int()
 ctk_micro_version = ctk_version.split('.')[2].to_int()
-ctk_interface_age = 1
+ctk_interface_age = 0
 add_project_arguments('-DCTK_VERSION="@0@"'.format(meson.project_version()), language: 'c')
 
 add_project_arguments('-D_GNU_SOURCE', language: 'c')
