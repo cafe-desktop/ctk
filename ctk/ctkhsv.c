@@ -613,15 +613,14 @@ set_cross_grab (CtkHSV    *hsv,
 
   cursor = cdk_cursor_new_for_display (ctk_widget_get_display (CTK_WIDGET (hsv)),
                                        CDK_CROSSHAIR);
-  cdk_device_grab (device,
-                   priv->window,
-                   CDK_OWNERSHIP_NONE,
-                   FALSE,
-                   CDK_POINTER_MOTION_MASK
-                    | CDK_POINTER_MOTION_HINT_MASK
-                    | CDK_BUTTON_RELEASE_MASK,
-                   cursor,
-                   time);
+  cdk_seat_grab (cdk_device_get_seat (device),
+                 priv->window,
+                 CDK_SEAT_CAPABILITY_ALL_POINTING,
+                 FALSE,
+                 cursor,
+                 NULL,
+                 NULL,
+                 NULL);
   g_object_unref (cursor);
 }
 
@@ -723,7 +722,7 @@ ctk_hsv_button_release (CtkWidget      *widget,
       g_assert_not_reached ();
     }
 
-  cdk_device_ungrab (cdk_event_get_device ((CdkEvent *) event), event->time);
+  cdk_seat_ungrab (cdk_device_get_seat (cdk_event_get_device ((CdkEvent *) event)));
 
   return TRUE;
 }
