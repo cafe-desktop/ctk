@@ -1085,33 +1085,6 @@ ctk_dialog_add_button (CtkDialog   *dialog,
   return button;
 }
 
-static void
-ctk_dialog_add_buttons_valist (CtkDialog      *dialog,
-                               const gchar    *first_button_text,
-                               va_list         args)
-{
-  const gchar* text;
-  gint response_id;
-
-  g_return_if_fail (CTK_IS_DIALOG (dialog));
-
-  if (first_button_text == NULL)
-    return;
-
-  text = first_button_text;
-  response_id = va_arg (args, gint);
-
-  while (text != NULL)
-    {
-      ctk_dialog_add_button (dialog, text, response_id);
-
-      text = va_arg (args, gchar*);
-      if (text == NULL)
-        break;
-      response_id = va_arg (args, int);
-    }
-}
-
 /**
  * ctk_dialog_add_button_with_icon_name:
  * @dialog: a #CtkDialog
@@ -1150,6 +1123,33 @@ ctk_dialog_add_button_with_icon_name (CtkDialog   *dialog,
   ctk_dialog_add_action_widget (CTK_DIALOG (dialog), button, response_id);
 
   return button;
+}
+
+static void
+ctk_dialog_add_buttons_valist (CtkDialog      *dialog,
+                               const gchar    *first_button_text,
+                               va_list         args)
+{
+  const gchar* text;
+  gint response_id;
+
+  g_return_if_fail (CTK_IS_DIALOG (dialog));
+
+  if (first_button_text == NULL)
+    return;
+
+  text = first_button_text;
+  response_id = va_arg (args, gint);
+
+  while (text != NULL)
+    {
+      ctk_dialog_add_button (dialog, text, response_id);
+
+      text = va_arg (args, gchar*);
+      if (text == NULL)
+        break;
+      response_id = va_arg (args, int);
+    }
 }
 
 /**
