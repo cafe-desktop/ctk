@@ -238,7 +238,7 @@
  * |[<!-- language="C" -->
  * const gchar *text =
  * "Go to the"
- * "<a href=\"http://www.ctk.org title=\"&lt;i&gt;Our&lt;/i&gt; website\">"
+ * "<a href=\"http://github.com/cafe-desktop/ctk title=\"&lt;i&gt;Our&lt;/i&gt; website\">"
  * "CTK+ website</a> for more...";
  * CtkWidget *label = ctk_label_new (NULL);
  * ctk_label_set_markup (CTK_LABEL (label), text);

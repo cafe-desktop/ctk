@@ -9,7 +9,7 @@
         <property name="label" translatable="yes">Hello World!</property>
         <property name="visible">True</property>
         <property name="can_focus">True</property>
-        <property name="uri">http://www.ctk.org</property>
+        <property name="uri">http://github.com/cafe-desktop/ctk</property>
         <property name="visited">True</property>
       </object>
     </child>

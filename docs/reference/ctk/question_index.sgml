@@ -35,8 +35,8 @@ How do I get started with CTK+?
 </para></question>
 
 <answer><para>
-The CTK+ <ulink url="https://www.ctk.org">website</ulink> offers some
-<ulink url="https://www.ctk.org/docs/">tutorials</ulink> and other
+The CTK+ <ulink url="https://github.com/cafe-desktop/ctk">website</ulink> offers some
+<ulink url="https://github.com/cafe-desktop/ctk/docs/">tutorials</ulink> and other
 documentation (most of it about CTK+ 2.x, but mostly still applicable).
 More documentation ranging from whitepapers to online books can be found at
 the <ulink url="https://developer.gnome.org">GNOME developer's site</ulink>.
@@ -415,9 +415,9 @@ How do I use CTK+ with other non-C languages?
 
 <answer>
 <para>
-See the <ulink url="https://www.ctk.org/docs/language-bindings/">list of language
+See the <ulink url="https://github.com/cafe-desktop/ctk/docs/language-bindings/">list of language
 bindings</ulink> on <ulink
-url="https://www.ctk.org">https://www.ctk.org</ulink>.
+url="https://github.com/cafe-desktop/ctk">https://github.com/cafe-desktop/ctk</ulink>.
 </para>
 
 </answer>

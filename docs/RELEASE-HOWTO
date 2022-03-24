@@ -104,5 +104,5 @@ Make sure that gtk-doc is the latest released version.
 17) Send it to gnome-announce-list, ctk-list, ctk-app-devel-list and
     ctk-devel-list. Set reply-to to desktop-devel-list.
 
-18) Add a link to the release announcement to www.ctk.org which lives
+18) Add a link to the release announcement to github.com/cafe-desktop/ctk which lives
     in the ctk-web git module.

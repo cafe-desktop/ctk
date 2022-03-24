@@ -327,7 +327,7 @@ window1
               <AtkHyperlink>
               start index: 0
               end index: 7
-              anchors: http://www.ctk.org
+              anchors: http://github.com/cafe-desktop/ctk
             unnamed-CtkLabelAccessibleLinkImpl-6
               "link"
               parent: website_label
@@ -336,7 +336,7 @@ window1
                 <AtkHyperlink>
                 start index: 0
                 end index: 7
-                anchors: http://www.ctk.org
+                anchors: http://github.com/cafe-desktop/ctk
           copyright_label
             "label"
             parent: page_vbox

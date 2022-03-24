@@ -50,7 +50,7 @@ window1
       <AtkHyperlink>
       start index: 10
       end index: 22
-      anchors: http://www.ctk.org
+      anchors: http://github.com/cafe-desktop/ctk
       <AtkHyperlink>
       start index: 27
       end index: 36
@@ -63,7 +63,7 @@ window1
         <AtkHyperlink>
         start index: 10
         end index: 22
-        anchors: http://www.ctk.org
+        anchors: http://github.com/cafe-desktop/ctk
     unnamed-CtkLabelAccessibleLinkImpl-1
       "link"
       parent: label1

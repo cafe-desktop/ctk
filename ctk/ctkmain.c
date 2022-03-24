@@ -383,7 +383,7 @@ check_setugid (void)
       g_warning ("This process is currently running setuid or setgid.\n"
                  "This is not a supported use of CTK+. You must create a helper\n"
                  "program instead. For further details, see:\n\n"
-                 "    http://www.ctk.org/setuid.html\n\n"
+                 "    http://github.com/cafe-desktop/ctk/setuid.html\n\n"
                  "Refusing to initialize CTK+.");
       exit (1);
     }

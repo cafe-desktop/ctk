@@ -140,7 +140,7 @@
                 <property name="can_focus">1</property>
                 <property name="receives_default">1</property>
                 <property name="relief">none</property>
-                <property name="uri">http://www.ctk.org</property>
+                <property name="uri">http://github.com/cafe-desktop/ctk</property>
               </object>
               <packing>
                 <property name="position">2</property>

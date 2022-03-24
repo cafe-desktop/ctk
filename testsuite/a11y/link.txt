@@ -27,4 +27,4 @@ window1
       <AtkHyperlink>
       start index: 0
       end index: 0
-      anchors: http://www.ctk.org
+      anchors: http://github.com/cafe-desktop/ctk

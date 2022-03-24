@@ -45,7 +45,7 @@
  * cdk_app_launch_context_set_screen (screen);
  * cdk_app_launch_context_set_timestamp (event->time);
  *
- * if (!g_app_info_launch_default_for_uri ("http://www.ctk.org", context, &error))
+ * if (!g_app_info_launch_default_for_uri ("http://github.com/cafe-desktop/ctk", context, &error))
  *   g_warning ("Launching failed: %s\n", error->message);
  *
  * g_object_unref (context);

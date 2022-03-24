@@ -1294,7 +1294,7 @@ Suspendisse feugiat quam quis dolor accumsan cursus. </property>
                             <property name="has_tooltip">True</property>
                             <property name="use_action_appearance">False</property>
                             <property name="relief">none</property>
-                            <property name="uri">http://www.ctk.org</property>
+                            <property name="uri">http://github.com/cafe-desktop/ctk</property>
                           </object>
                         </child>
                       </object>

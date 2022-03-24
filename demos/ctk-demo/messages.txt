@@ -69,7 +69,7 @@
 69|CTK+ and friends|CTKtoolkit|Another update in the effort to improve #a11y in #ctk: http://mail.gnome.org/archives/ctk-devel-list/2011-June/msg00057.html #ctk3|1309606597|0||0|0
 70|CTK+ and friends|CTKtoolkit|@cd0 What is wrong in that page? freetype already appears as a required dependency. Anyway patches always welcomed ;)|1307359139|0||0|0
 71|CTK+ and friends|CTKtoolkit|Of course, everyone is welcomed to improve the #ctk website. git repo: http://ur1.ca/4bwbw bugzilla: http://ur1.ca/4bwc1|1307038767|0||0|1
-72|CTK+ and friends|CTKtoolkit|Check out the new #ctk website!!: www.ctk.org|1307036644|0||0|4
+72|CTK+ and friends|CTKtoolkit|Check out the new #ctk website!!: github.com/cafe-desktop/ctk|1307036644|0||0|4
 73|CTK+ and friends|CTKtoolkit|@jikri Take a look to http://live.gnome.org/action/login/CTK+/Roadmap and http://developer.gnome.org/ctk3/stable/ctk-migrating-2-to-3.html|1306673774|0||0|0
 74|CTK+ and friends|CTKtoolkit|Introducing Cossa, a CTK+ theme previewer for gedit, by @garnacho http://ur1.ca/4ate8 #ctk #ctk3|1306672611|0||1|5
 75|CTK+ and friends|CTKtoolkit|#GProperty, new API for Property and Accessor declaration, by @ebassi : http://ur1.ca/47lgk #ctk #glib|1305717028|0||0|2

@@ -7,6 +7,6 @@
     <property name="copyright">no comments</property>
     <property name="comments">comments</property>
     <property name="license-type">gpl-3-0</property>
-    <property name="website">http://www.ctk.org</property>
+    <property name="website">http://github.com/cafe-desktop/ctk</property>
   </object>
 </interface>

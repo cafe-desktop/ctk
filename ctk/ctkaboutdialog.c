@@ -78,7 +78,7 @@
  *
  * To specify a person with an email address, use a string like
  * "Edgar Allan Poe <edgar\@poe.com>". To specify a website with a title,
- * use a string like "CTK+ team http://www.ctk.org".
+ * use a string like "CTK+ team http://github.com/cafe-desktop/ctk".
  *
  * To make constructing a CtkAboutDialog as convenient as possible, you can
  * use the function ctk_show_about_dialog() which constructs and shows a dialog

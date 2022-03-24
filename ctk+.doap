@@ -22,7 +22,7 @@ CTK+ is free software and part of the GNU Project. However, the
 licensing terms for CTK+, the GNU LGPL, allow it to be used by all
 developers, including those developing proprietary software, without
 any license fees or royalties.</description>
-  <homepage rdf:resource="http://www.ctk.org/" />
+  <homepage rdf:resource="http://github.com/cafe-desktop/ctk/" />
   <license rdf:resource="http://usefulinc.com/doap/licenses/lgpl" />
   <bug-database rdf:resource="http://bugzilla.gnome.org/enter_bug.cgi?product=ctk%2B" />
   <download-page rdf:resource="http://download.gnome.org/sources/ctk+/" />

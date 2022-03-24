@@ -133,7 +133,7 @@ create_link_button (void)
   CtkWidget *widget;
   CtkWidget *align;
 
-  widget = ctk_link_button_new_with_label ("http://www.ctk.org", "Link Button");
+  widget = ctk_link_button_new_with_label ("http://github.com/cafe-desktop/ctk", "Link Button");
   align = ctk_alignment_new (0.5, 0.5, 0.0, 0.0);
   ctk_container_add (CTK_CONTAINER (align), widget);
 
@@ -946,7 +946,7 @@ create_about_dialog (void)
                 "program-name", "CTK+ Code Demos",
                 "version", PACKAGE_VERSION,
                 "copyright", "© 1997-2013 The CTK+ Team",
-                "website", "http://www.ctk.org",
+                "website", "http://github.com/cafe-desktop/ctk",
                 "comments", "Program to demonstrate CTK+ functions.",
                 "logo-icon-name", "help-about",
                 "title", "About CTK+ Code Demos",
