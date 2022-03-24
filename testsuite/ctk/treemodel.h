@@ -1,5 +1,5 @@
 /* Main wrapper for TreeModel test suite.
- * Copyright (C) 2011  Kristian Rietveld  <kris@ctk.org>
+ * Copyright (C) 2011  Kristian Rietveld  <kris@gtk.org>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public

@@ -54,7 +54,7 @@ any license fees or royalties.</description>
   <maintainer>
     <foaf:Person>
       <foaf:name>Tim Janik</foaf:name>
-      <foaf:mbox rdf:resource="mailto:timj@ctk.org"/>
+      <foaf:mbox rdf:resource="mailto:timj@gtk.org"/>
       <gnome:userid>timj</gnome:userid>
     </foaf:Person>
   </maintainer>

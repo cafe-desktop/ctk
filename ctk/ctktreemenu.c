@@ -5,7 +5,7 @@
  * Authors:
  *      Tristan Van Berkom <tristanvb@openismus.com>
  *
- * Based on some CtkComboBox menu code by Kristian Rietveld <kris@ctk.org>
+ * Based on some CtkComboBox menu code by Kristian Rietveld <kris@gtk.org>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public

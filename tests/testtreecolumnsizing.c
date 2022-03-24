@@ -1,6 +1,6 @@
 /* testtreecolumnsizing.c: Test case for tree view column resizing.
  *
- * Copyright (C) 2008  Kristian Rietveld  <kris@ctk.org>
+ * Copyright (C) 2008  Kristian Rietveld  <kris@gtk.org>
  *
  * This work is provided "as is"; redistribution and modification
  * in whole or in part, in any medium, physical or electronic is

@@ -15,7 +15,7 @@
  * License along with this library. If not, see <http://www.gnu.org/licenses/>.Free
  */
 
-/* By Owen Taylor <otaylor@ctk.org>              98/4/4 */
+/* By Owen Taylor <otaylor@gtk.org>              98/4/4 */
 
 /*
  * Modified by the CTK+ Team and others 1997-2000.  See the AUTHORS
