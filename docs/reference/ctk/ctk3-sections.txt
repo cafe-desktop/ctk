@@ -1056,6 +1056,7 @@ ctk_dialog_new_with_buttons
 ctk_dialog_run
 ctk_dialog_response
 ctk_dialog_add_button
+ctk_dialog_add_button_with_icon_name
 ctk_dialog_add_buttons
 ctk_dialog_add_action_widget
 ctk_dialog_set_default_response
