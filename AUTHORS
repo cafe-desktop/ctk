@@ -1,13 +1,28 @@
 Please do not mail any of the authors listed here 
 asking questions about this version of CTK+. 
 
+
+The CTK+ Team
+-------------
+Pablo Barciela <scow@riseup.net>
+
+
+There are many others who have contributed patches; we thank them,
+CTK+ is much better because of them.
+
+
+Over time, CTK+ has incorporated some pieces of software which 
+started as independent projects. We list the original authors here:
+
+
 Original Authors
 ----------------
 Peter Mattis      <petm@xcf.berkeley.edu>
 Spencer Kimball   <spencer@xcf.berkeley.edu>
 Josh MacDonald    <jmacd@xcf.berkeley.edu>
 
-The CTK+ Team (in alphabetical order)
+
+The GTK+ Team (in alphabetical order)
 -------------------------------------
 Shawn T. Amundson <amundson@gtk.org>
 Jerome Bolliet    <bolliet@gtk.org>
@@ -27,13 +42,6 @@ Paolo Molaro      <lupus@gtk.org>
 Jay Painter       <jpaint@gtk.org>
 Manish Singh      <manish@gtk.org>
 Owen Taylor       <otaylor@gtk.org>
-
-There are many others who have contributed patches; we thank them,
-CTK+ is much better because of them.
-
-
-Over time, CTK+ has incorporated some pieces of software which 
-started as independent projects. We list the original authors here:
 
 
 MS-Windows theme engine
