@@ -1232,7 +1232,7 @@ static CtkActionEntry create_toolbar_items[] = {
     { .label = "Both", .tooltip = "Show toolbar icons and text", .callback = G_CALLBACK (set_toolbar_both) },
     { .label = "Both (horizontal)", .tooltip = "Show toolbar icons and text in a horizontal fashion", .callback = G_CALLBACK (set_toolbar_both_horiz) },
     { NULL },
-    { .name = "entry", .accelerator = "This is an unusable CtkEntry ;)" },
+    { .label = "entry", .tooltip = "This is an unusable CtkEntry ;)" },
     { NULL },
     { NULL },
     { .label = "Frobate", .tooltip = "Frobate tooltip" },
