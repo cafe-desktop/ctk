@@ -37,15 +37,13 @@ ipa_register_type (GTypeModule *module)
 {
   const GTypeInfo object_info =
   {
-    sizeof (CtkIMContextSimpleClass),
-    (GBaseInitFunc) NULL,
-    (GBaseFinalizeFunc) NULL,
-    (GClassInitFunc) ipa_class_init,
-    NULL,           /* class_finalize */
-    NULL,           /* class_data */
-    sizeof (CtkIMContextSimple),
-    0,
-    (GInstanceInitFunc) ipa_init,
+    .class_size = sizeof (CtkIMContextSimpleClass),
+    .base_init = (GBaseInitFunc) NULL,
+    .base_finalize = (GBaseFinalizeFunc) NULL,
+    .class_init = (GClassInitFunc) ipa_class_init,
+    .instance_size = sizeof (CtkIMContextSimple),
+    .n_preallocs = 0,
+    .instance_init = (GInstanceInitFunc) ipa_init,
   };
 
   type_ipa = 

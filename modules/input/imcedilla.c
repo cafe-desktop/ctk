@@ -38,15 +38,13 @@ cedilla_register_type (GTypeModule *module)
 {
   const GTypeInfo object_info =
   {
-    sizeof (CtkIMContextSimpleClass),
-    (GBaseInitFunc) NULL,
-    (GBaseFinalizeFunc) NULL,
-    (GClassInitFunc) cedilla_class_init,
-    NULL,           /* class_finalize */
-    NULL,           /* class_data */
-    sizeof (CtkIMContextSimple),
-    0,
-    (GInstanceInitFunc) cedilla_init,
+    .class_size = sizeof (CtkIMContextSimpleClass),
+    .base_init = (GBaseInitFunc) NULL,
+    .base_finalize = (GBaseFinalizeFunc) NULL,
+    .class_init = (GClassInitFunc) cedilla_class_init,
+    .instance_size = sizeof (CtkIMContextSimple),
+    .n_preallocs = 0,
+    .instance_init = (GInstanceInitFunc) cedilla_init,
   };
 
   type_cedilla = 

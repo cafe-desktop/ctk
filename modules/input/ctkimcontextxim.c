@@ -158,15 +158,13 @@ ctk_im_context_xim_register_type (GTypeModule *type_module)
 {
   const GTypeInfo im_context_xim_info =
   {
-    sizeof (CtkIMContextXIMClass),
-    (GBaseInitFunc) NULL,
-    (GBaseFinalizeFunc) NULL,
-    (GClassInitFunc) ctk_im_context_xim_class_init,
-    NULL,           /* class_finalize */    
-    NULL,           /* class_data */
-    sizeof (CtkIMContextXIM),
-    0,
-    (GInstanceInitFunc) ctk_im_context_xim_init,
+    .class_size = sizeof (CtkIMContextXIMClass),
+    .base_init = (GBaseInitFunc) NULL,
+    .base_finalize = (GBaseFinalizeFunc) NULL,
+    .class_init = (GClassInitFunc) ctk_im_context_xim_class_init,
+    .instance_size = sizeof (CtkIMContextXIM),
+    .n_preallocs = 0,
+    .instance_init = (GInstanceInitFunc) ctk_im_context_xim_init,
   };
 
   ctk_type_im_context_xim = 

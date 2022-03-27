@@ -53,15 +53,13 @@ ctk_printer_cups_register_type (GTypeModule *module)
 {
   const GTypeInfo object_info =
   {
-    sizeof (CtkPrinterCupsClass),
-    (GBaseInitFunc) NULL,
-    (GBaseFinalizeFunc) NULL,
-    (GClassInitFunc) ctk_printer_cups_class_init,
-    NULL,           /* class_finalize */
-    NULL,           /* class_data */
-    sizeof (CtkPrinterCups),
-    0,              /* n_preallocs */
-    (GInstanceInitFunc) ctk_printer_cups_init,
+    .class_size = sizeof (CtkPrinterCupsClass),
+    .base_init = (GBaseInitFunc) NULL,
+    .base_finalize = (GBaseFinalizeFunc) NULL,
+    .class_init = (GClassInitFunc) ctk_printer_cups_class_init,
+    .instance_size = sizeof (CtkPrinterCups),
+    .n_preallocs = 0,
+    .instance_init = (GInstanceInitFunc) ctk_printer_cups_init,
   };
 
  ctk_printer_cups_type = g_type_module_register_type (module,

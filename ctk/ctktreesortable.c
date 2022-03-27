@@ -45,15 +45,10 @@ ctk_tree_sortable_get_type (void)
     {
       const GTypeInfo tree_sortable_info =
       {
-	sizeof (CtkTreeSortableIface), /* class_size */
-	ctk_tree_sortable_base_init,   /* base_init */
-	NULL,		/* base_finalize */
-	NULL,
-	NULL,		/* class_finalize */
-	NULL,		/* class_data */
-	0,
-	0,
-	NULL
+	.class_size = sizeof (CtkTreeSortableIface),
+	.base_init = ctk_tree_sortable_base_init,
+	.instance_size = 0,
+	.n_preallocs = 0
       };
 
       tree_sortable_type =

@@ -69,15 +69,11 @@ ctk_printer_cloudprint_register_type (GTypeModule *module)
 {
   const GTypeInfo printer_cloudprint_info =
   {
-    sizeof (CtkPrinterCloudprintClass),
-    NULL,		/* base_init */
-    NULL,		/* base_finalize */
-    (GClassInitFunc) ctk_printer_cloudprint_class_init,
-    NULL,		/* class_finalize */
-    NULL,		/* class_data */
-    sizeof (CtkPrinterCloudprint),
-    0,		/* n_preallocs */
-    (GInstanceInitFunc) ctk_printer_cloudprint_init,
+    .class_size = sizeof (CtkPrinterCloudprintClass),
+    .class_init = (GClassInitFunc) ctk_printer_cloudprint_class_init,
+    .instance_size = sizeof (CtkPrinterCloudprint),
+    .n_preallocs = 0,
+    .instance_init = (GInstanceInitFunc) ctk_printer_cloudprint_init,
   };
 
   printer_cloudprint_type = g_type_module_register_type (module,

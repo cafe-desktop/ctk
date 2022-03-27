@@ -34,15 +34,10 @@ ctk_print_operation_preview_get_type (void)
     {
       const GTypeInfo print_operation_preview_info =
       {
-        sizeof (CtkPrintOperationPreviewIface), /* class_size */
-	ctk_print_operation_preview_base_init,   /* base_init */
-	NULL,		/* base_finalize */
-	NULL,
-	NULL,		/* class_finalize */
-	NULL,		/* class_data */
-	0,
-	0,              /* n_preallocs */
-	NULL
+        .class_size = sizeof (CtkPrintOperationPreviewIface),
+        .base_init = ctk_print_operation_preview_base_init,
+        .instance_size = 0,
+        .n_preallocs = 0
       };
 
       print_operation_preview_type =

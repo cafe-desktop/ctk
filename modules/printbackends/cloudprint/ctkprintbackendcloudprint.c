@@ -110,15 +110,11 @@ ctk_print_backend_cloudprint_register_type (GTypeModule *module)
 {
   const GTypeInfo print_backend_cloudprint_info =
   {
-    sizeof (CtkPrintBackendCloudprintClass),
-    NULL,		/* base_init */
-    NULL,		/* base_finalize */
-    (GClassInitFunc) ctk_print_backend_cloudprint_class_init,
-    NULL,		/* class_finalize */
-    NULL,		/* class_data */
-    sizeof (CtkPrintBackendCloudprint),
-    0,		/* n_preallocs */
-    (GInstanceInitFunc) ctk_print_backend_cloudprint_init,
+    .class_size = sizeof (CtkPrintBackendCloudprintClass),
+    .class_init = (GClassInitFunc) ctk_print_backend_cloudprint_class_init,
+    .instance_size = sizeof (CtkPrintBackendCloudprint),
+    .n_preallocs = 0,
+    .instance_init = (GInstanceInitFunc) ctk_print_backend_cloudprint_init,
   };
 
   print_backend_cloudprint_type = g_type_module_register_type (module,

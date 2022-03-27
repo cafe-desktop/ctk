@@ -109,15 +109,11 @@ ctk_print_backend_file_register_type (GTypeModule *module)
 {
   const GTypeInfo print_backend_file_info =
   {
-    sizeof (CtkPrintBackendFileClass),
-    NULL,		/* base_init */
-    NULL,		/* base_finalize */
-    (GClassInitFunc) ctk_print_backend_file_class_init,
-    NULL,		/* class_finalize */
-    NULL,		/* class_data */
-    sizeof (CtkPrintBackendFile),
-    0,		/* n_preallocs */
-    (GInstanceInitFunc) ctk_print_backend_file_init,
+    .class_size = sizeof (CtkPrintBackendFileClass),
+    .class_init = (GClassInitFunc) ctk_print_backend_file_class_init,
+    .instance_size = sizeof (CtkPrintBackendFile),
+    .n_preallocs = 0,
+    .instance_init = (GInstanceInitFunc) ctk_print_backend_file_init,
   };
 
   print_backend_file_type = g_type_module_register_type (module,
