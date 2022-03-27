@@ -990,7 +990,7 @@ activate (GApplication *app)
   CtkWidget *item;
 
   static GActionEntry win_entries[] = {
-    { "run", activate_run, NULL, NULL, NULL }
+    { .name = "run", .activate = activate_run }
   };
 
   builder = ctk_builder_new ();
@@ -1182,8 +1182,8 @@ main (int argc, char **argv)
 {
   CtkApplication *app;
   static GActionEntry app_entries[] = {
-    { "about", activate_about, NULL, NULL, NULL },
-    { "quit", activate_quit, NULL, NULL, NULL },
+    { .name = "about", .activate = activate_about },
+    { .name = "quit", .activate = activate_quit },
   };
 
   /* Most code in ctk-demo is intended to be exemplary, but not

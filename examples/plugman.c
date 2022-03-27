@@ -60,9 +60,9 @@ window_paste (GSimpleAction *action,
 }
 
 static GActionEntry win_entries[] = {
-  { "copy", window_copy, NULL, NULL, NULL },
-  { "paste", window_paste, NULL, NULL, NULL },
-  { "fullscreen", activate_toggle, NULL, "false", change_fullscreen_state }
+  { .name = "copy", .activate = window_copy },
+  { .name = "paste", .activate = window_paste },
+  { .name = "fullscreen", .activate = activate_toggle, .state = "false", .change_state = change_fullscreen_state }
 };
 
 static void
@@ -380,9 +380,9 @@ out:
 }
 
 static GActionEntry app_entries[] = {
-  { "about", show_about, NULL, NULL, NULL },
-  { "quit", quit_app, NULL, NULL, NULL },
-  { "plugins", configure_plugins, NULL, NULL, NULL },
+  { .name = "about", .activate = show_about },
+  { .name = "quit", .activate = quit_app },
+  { .name = "plugins", .activate = configure_plugins },
 };
 
 static void

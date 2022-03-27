@@ -28,10 +28,10 @@ do_modelbutton (CtkWidget *do_widget)
 {
   static CtkWidget *window = NULL;
   static GActionEntry win_entries[] = {
-    { "color", NULL, "s", "'red'", NULL },
-    { "chocolate", NULL, NULL, "true", NULL },
-    { "vanilla", NULL, NULL, "false", NULL },
-    { "sprinkles", NULL, NULL, NULL, NULL }
+    { .name = "color", .parameter_type = "s", .state = "'red'" },
+    { .name = "chocolate", .state = "true" },
+    { .name = "vanilla", .state = "false" },
+    { .name = "sprinkles" }
   };
 
   if (!window)

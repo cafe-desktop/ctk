@@ -22,14 +22,14 @@ action_activated (GSimpleAction *action,
 }
 
 static GActionEntry doc_entries[] = {
-  { "save", action_activated },
-  { "print", action_activated },
-  { "share", action_activated }
+  { .name = "save", .activate = action_activated },
+  { .name = "print", .activate = action_activated },
+  { .name = "share", .activate = action_activated }
 };
 
 static GActionEntry win_entries[] = {
-  { "fullscreen", action_activated },
-  { "close", action_activated },
+  { .name = "fullscreen", .activate = action_activated },
+  { .name = "close", .activate = action_activated },
 };
 
 const gchar *menu_ui =

@@ -2248,18 +2248,18 @@ check_file_list_popover_sensitivity (CtkFileChooserWidget *impl)
 }
 
 static GActionEntry entries[] = {
-  { "visit", visit_file_cb, NULL, NULL, NULL },
-  { "open", open_folder_cb, NULL, NULL, NULL },
-  { "copy-location", copy_file_location_cb, NULL, NULL, NULL },
-  { "add-shortcut", add_to_shortcuts_cb, NULL, NULL, NULL },
-  { "rename", rename_file_cb, NULL, NULL, NULL },
-  { "delete", delete_file_cb, NULL, NULL, NULL },
-  { "trash", trash_file_cb, NULL, NULL, NULL },
-  { "toggle-show-hidden", NULL, NULL, "false", change_show_hidden_state },
-  { "toggle-show-size", NULL, NULL, "false", change_show_size_state },
-  { "toggle-show-type", NULL, NULL, "false", change_show_type_state },
-  { "toggle-show-time", NULL, NULL, "false", change_show_time_state },
-  { "toggle-sort-dirs-first", NULL, NULL, "false", change_sort_directories_first_state }
+  { .name = "visit", .activate = visit_file_cb },
+  { .name = "open", .activate = open_folder_cb },
+  { .name = "copy-location", .activate = copy_file_location_cb },
+  { .name = "add-shortcut", .activate = add_to_shortcuts_cb },
+  { .name = "rename", .activate = rename_file_cb },
+  { .name = "delete", .activate = delete_file_cb },
+  { .name = "trash", .activate = trash_file_cb },
+  { .name = "toggle-show-hidden", .state = "false", .change_state = change_show_hidden_state },
+  { .name = "toggle-show-size", .state = "false", .change_state = change_show_size_state },
+  { .name = "toggle-show-type", .state = "false", .change_state = change_show_type_state },
+  { .name = "toggle-show-time", .state = "false", .change_state = change_show_time_state },
+  { .name = "toggle-sort-dirs-first", .state = "false", .change_state = change_sort_directories_first_state }
 };
 
 static void

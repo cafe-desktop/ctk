@@ -204,12 +204,12 @@ text_buffer_changed_cb (CtkTextBuffer *buffer,
 }
 
 static GActionEntry win_entries[] = {
-  { "copy", window_copy, NULL, NULL, NULL },
-  { "paste", window_paste, NULL, NULL, NULL },
-  { "fullscreen", activate_toggle, NULL, "false", change_fullscreen_state },
-  { "busy", activate_toggle, NULL, "false", change_busy_state },
-  { "justify", activate_radio, "s", "'left'", change_justify_state },
-  { "clear", activate_clear, NULL, NULL, NULL }
+  { .name = "copy", .activate = window_copy },
+  { .name = "paste", .activate = window_paste },
+  { .name = "fullscreen", .activate = activate_toggle, .state = "false", .change_state = change_fullscreen_state },
+  { .name = "busy", .activate = activate_toggle, .state = "false", .change_state = change_busy_state },
+  { .name = "justify", .activate = activate_radio, .parameter_type = "s", .state = "'left'", .change_state = change_justify_state },
+  { .name = "clear", .activate = activate_clear }
 
 };
 
@@ -482,12 +482,12 @@ time_active_changed (GSimpleAction *action,
 }
 
 static GActionEntry app_entries[] = {
-  { "new", new_activated, NULL, NULL, NULL },
-  { "about", about_activated, NULL, NULL, NULL },
-  { "quit", quit_activated, NULL, NULL, NULL },
-  { "edit-accels", edit_accels },
-  { "time-active", NULL, NULL, "false", time_active_changed },
-  { "clear-all", activate_clear_all }
+  { .name = "new", .activate = new_activated },
+  { .name = "about", .activate = about_activated },
+  { .name = "quit", .activate = quit_activated },
+  { .name = "edit-accels", .activate = edit_accels },
+  { .name = "time-active", .state ="false", .change_state = time_active_changed },
+  { .name = "clear-all", .activate = activate_clear_all }
 };
 
 static void
