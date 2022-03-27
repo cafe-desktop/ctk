@@ -305,15 +305,10 @@ ctk_tree_model_get_type (void)
     {
       const GTypeInfo tree_model_info =
       {
-        sizeof (CtkTreeModelIface), /* class_size */
-        ctk_tree_model_base_init,   /* base_init */
-        NULL,           /* base_finalize */
-        NULL,
-        NULL,           /* class_finalize */
-        NULL,           /* class_data */
-        0,
-        0,              /* n_preallocs */
-        NULL
+        .class_size = sizeof (CtkTreeModelIface),
+        .base_init = ctk_tree_model_base_init,
+        .instance_size = 0,
+        .n_preallocs = 0
       };
 
       tree_model_type =

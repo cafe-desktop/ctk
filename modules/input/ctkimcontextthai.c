@@ -43,15 +43,13 @@ ctk_im_context_thai_register_type (GTypeModule *type_module)
 {
   const GTypeInfo im_context_thai_info =
   {
-    sizeof (CtkIMContextThaiClass),
-    (GBaseInitFunc) NULL,
-    (GBaseFinalizeFunc) NULL,
-    (GClassInitFunc) ctk_im_context_thai_class_init,
-    NULL,           /* class_finalize */    
-    NULL,           /* class_data */
-    sizeof (CtkIMContextThai),
-    0,
-    (GInstanceInitFunc) ctk_im_context_thai_init,
+    .class_size = sizeof (CtkIMContextThaiClass),
+    .base_init = (GBaseInitFunc) NULL,
+    .base_finalize = (GBaseFinalizeFunc) NULL,
+    .class_init = (GClassInitFunc) ctk_im_context_thai_class_init,
+    .instance_size = sizeof (CtkIMContextThai),
+    .n_preallocs = 0,
+    .instance_init = (GInstanceInitFunc) ctk_im_context_thai_init,
   };
 
   ctk_type_im_context_thai = 

@@ -92,9 +92,8 @@ ctk_editable_get_type (void)
     {
       const GTypeInfo editable_info =
       {
-	sizeof (CtkEditableInterface),  /* class_size */
-	ctk_editable_base_init,	    /* base_init */
-	NULL,			    /* base_finalize */
+	.class_size = sizeof (CtkEditableInterface),
+	.base_init = ctk_editable_base_init
       };
 
       editable_type = g_type_register_static (G_TYPE_INTERFACE, I_("CtkEditable"),

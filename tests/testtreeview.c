@@ -801,15 +801,10 @@ ctk_tree_model_types_get_type (void)
     {
       const GTypeInfo model_types_info =
       {
-        sizeof (CtkTreeModelTypesClass),
-	NULL,		/* base_init */
-	NULL,		/* base_finalize */
-        NULL,           /* class_init */
-	NULL,		/* class_finalize */
-	NULL,		/* class_data */
-        sizeof (CtkTreeModelTypes),
-	0,
-        (GInstanceInitFunc) ctk_tree_model_types_init
+        .class_size = sizeof (CtkTreeModelTypesClass),
+        .instance_size = sizeof (CtkTreeModelTypes),
+        .n_preallocs = 0,
+        .instance_init = (GInstanceInitFunc) ctk_tree_model_types_init
       };
 
       const GInterfaceInfo tree_model_info =

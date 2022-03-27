@@ -243,15 +243,11 @@ ctk_print_backend_cups_register_type (GTypeModule *module)
 {
   const GTypeInfo print_backend_cups_info =
   {
-    sizeof (CtkPrintBackendCupsClass),
-    NULL,		/* base_init */
-    NULL,		/* base_finalize */
-    (GClassInitFunc) ctk_print_backend_cups_class_init,
-    NULL,		/* class_finalize */
-    NULL,		/* class_data */
-    sizeof (CtkPrintBackendCups),
-    0,	          	/* n_preallocs */
-    (GInstanceInitFunc) ctk_print_backend_cups_init
+    .class_size = sizeof (CtkPrintBackendCupsClass),
+    .class_init = (GClassInitFunc) ctk_print_backend_cups_class_init,
+    .instance_size = sizeof (CtkPrintBackendCups),
+    .n_preallocs = 0,
+    .instance_init = (GInstanceInitFunc) ctk_print_backend_cups_init
   };
 
   print_backend_cups_type = g_type_module_register_type (module,

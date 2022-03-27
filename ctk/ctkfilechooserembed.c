@@ -128,10 +128,8 @@ _ctk_file_chooser_embed_get_type (void)
     {
       const GTypeInfo file_chooser_embed_info =
       {
-	sizeof (CtkFileChooserEmbedIface),  /* class_size */
-	NULL,                          /* base_init */
-	NULL,			       /* base_finalize */
-	(GClassInitFunc)ctk_file_chooser_embed_class_init, /* class_init */
+	.class_size = sizeof (CtkFileChooserEmbedIface),
+	.class_init = (GClassInitFunc)ctk_file_chooser_embed_class_init
       };
 
       file_chooser_embed_type = g_type_register_static (G_TYPE_INTERFACE,
