@@ -1729,15 +1729,15 @@ activate (GApplication *app)
   CtkAdjustment *adj;
   CtkCssProvider *provider;
   static GActionEntry win_entries[] = {
-    { "dark", NULL, NULL, "false", change_theme_state },
-    { "transition", NULL, NULL, "false", change_transition_state },
-    { "search", activate_search, NULL, NULL, NULL },
-    { "delete", activate_delete, NULL, NULL, NULL },
-    { "busy", get_busy, NULL, NULL, NULL },
-    { "background", activate_background, NULL, NULL, NULL },
-    { "open", activate_open, NULL, NULL, NULL },
-    { "record", activate_record, NULL, NULL, NULL },
-    { "lock", activate_lock, NULL, NULL, NULL },
+    { .name = "dark", .state = "false", .change_state = change_theme_state },
+    { .name = "transition", .state = "false", .change_state = change_transition_state },
+    { .name = "search", .activate = activate_search },
+    { .name = "delete", .activate = activate_delete },
+    { .name = "busy", .activate = get_busy },
+    { .name = "background", .activate = activate_background },
+    { .name = "open", .activate = activate_open },
+    { .name = "record", .activate = activate_record },
+    { .name = "lock", .activate = activate_lock },
   };
   struct {
     const gchar *action_and_target;
@@ -2044,15 +2044,15 @@ main (int argc, char *argv[])
   CtkApplication *app;
   GAction *action;
   static GActionEntry app_entries[] = {
-    { "about", activate_about, NULL, NULL, NULL },
-    { "quit", activate_quit, NULL, NULL, NULL },
-    { "inspector", activate_inspector, NULL, NULL, NULL },
-    { "main", NULL, "s", "'steak'", NULL },
-    { "wine", NULL, NULL, "false", NULL },
-    { "beer", NULL, NULL, "false", NULL },
-    { "water", NULL, NULL, "true", NULL },
-    { "dessert", NULL, "s", "'bars'", NULL },
-    { "pay", NULL, "s", NULL, NULL }
+    { .name = "about", .activate = activate_about },
+    { .name = "quit", .activate = activate_quit },
+    { .name = "inspector", .activate = activate_inspector },
+    { .name = "main", .parameter_type = "s", .state = "'steak'" },
+    { .name = "wine", .state = "false" },
+    { .name = "beer", .state = "false" },
+    { .name = "water", .state = "true" },
+    { .name = "dessert", .parameter_type = "s", .state = "'bars'" },
+    { .name = "pay", .parameter_type = "s" }
   };
   gint status;
 

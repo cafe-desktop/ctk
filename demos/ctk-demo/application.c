@@ -313,21 +313,21 @@ change_radio_state (GSimpleAction *action,
 }
 
 static GActionEntry app_entries[] = {
-  { "new", activate_new, NULL, NULL, NULL },
-  { "open", activate_open, NULL, NULL, NULL },
-  { "save", activate_action, NULL, NULL, NULL },
-  { "save-as", activate_action, NULL, NULL, NULL },
-  { "quit", activate_quit, NULL, NULL, NULL },
-  { "dark", activate_toggle, NULL, "false", change_theme_state }
+  { .name = "new", .activate = activate_new },
+  { .name = "open", .activate = activate_open },
+  { .name = "save", .activate = activate_action },
+  { .name = "save-as", .activate = activate_action },
+  { .name = "quit", .activate = activate_quit },
+  { .name = "dark", .activate = activate_toggle, .state = "false", .change_state = change_theme_state }
 };
 
 static GActionEntry win_entries[] = {
-  { "titlebar", activate_toggle, NULL, "false", change_titlebar_state },
-  { "shape", activate_radio, "s", "'oval'", change_radio_state },
-  { "bold", activate_toggle, NULL, "false", NULL },
-  { "about", activate_about, NULL, NULL, NULL },
-  { "file1", activate_action, NULL, NULL, NULL },
-  { "logo", activate_action, NULL, NULL, NULL }
+  { .name = "titlebar", .activate = activate_toggle, .state = "false", .change_state = change_titlebar_state },
+  { .name = "shape", .activate = activate_radio, .parameter_type = "s", .state = "'oval'", .change_state = change_radio_state },
+  { .name = "bold", .activate = activate_toggle, .state = "false" },
+  { .name = "about", .activate = activate_about },
+  { .name = "file1", .activate = activate_action },
+  { .name = "logo", .activate = activate_action }
 };
 
 static void

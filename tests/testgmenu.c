@@ -168,13 +168,13 @@ activate_radio (GSimpleAction *action, GVariant *parameter, gpointer user_data)
 }
 
 static GActionEntry actions[] = {
-  { "undo",  activate_action, NULL, NULL,      NULL },
-  { "redo",  activate_action, NULL, NULL,      NULL },
-  { "cut",   activate_action, NULL, NULL,      NULL },
-  { "copy",  activate_action, NULL, NULL,      NULL },
-  { "paste", activate_action, NULL, NULL,      NULL },
-  { "bold",  activate_toggle, NULL, "true",    NULL },
-  { "lang",  activate_radio,  "s",  "'latin'", NULL },
+  { .name = "undo",  .activate = activate_action },
+  { .name = "redo",  .activate = activate_action },
+  { .name = "cut",   .activate = activate_action },
+  { .name = "copy",  .activate = activate_action },
+  { .name = "paste", .activate = activate_action },
+  { .name = "bold",  .activate = activate_toggle, .state = "true" },
+  { .name = "lang",  .activate = activate_radio, .parameter_type = "s", .state = "'latin'" },
 };
 
 static GActionGroup *

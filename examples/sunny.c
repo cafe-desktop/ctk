@@ -120,9 +120,9 @@ new_activated (GSimpleAction *action,
 }
 
 static GActionEntry app_entries[] = {
-  { "about", show_about, NULL, NULL, NULL },
-  { "quit", quit_app, NULL, NULL, NULL },
-  { "new", new_activated, NULL, NULL, NULL }
+  { .name = "about", .activate = show_about },
+  { .name = "quit", .activate = quit_app },
+  { .name = "new", .activate = new_activated }
 };
 
 static void

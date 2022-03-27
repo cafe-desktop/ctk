@@ -30,7 +30,7 @@ quit_activated (GSimpleAction *action,
 
 static GActionEntry app_entries[] =
 {
-  { "quit", quit_activated, NULL, NULL, NULL }
+  { .name = "quit", .activate = quit_activated }
 };
 
 static void

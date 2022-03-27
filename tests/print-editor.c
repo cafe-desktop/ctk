@@ -786,15 +786,15 @@ activate_quit (GSimpleAction *action,
 }
 
 static GActionEntry app_entries[] = {
-  { "new", activate_new, NULL, NULL, NULL },
-  { "open", activate_open, NULL, NULL, NULL },
-  { "save", activate_save, NULL, NULL, NULL },
-  { "save-as", activate_save_as, NULL, NULL, NULL },
-  { "quit", activate_quit, NULL, NULL, NULL },
-  { "about", activate_about, NULL, NULL, NULL },
-  { "page-setup", activate_page_setup, NULL, NULL, NULL },
-  { "preview", activate_preview, NULL, NULL, NULL },
-  { "print", activate_print, NULL, NULL, NULL }
+  { .name = "new", .activate = activate_new },
+  { .name = "open", .activate = activate_open },
+  { .name = "save", .activate = activate_save },
+  { .name = "save-as", .activate = activate_save_as },
+  { .name = "quit", .activate = activate_quit },
+  { .name = "about", .activate = activate_about },
+  { .name = "page-setup", .activate = activate_page_setup },
+  { .name = "preview", .activate = activate_preview },
+  { .name = "print", .activate = activate_print }
 };
 
 static const gchar ui_info[] =

@@ -39,9 +39,9 @@ help_activate (GSimpleAction *action,
 }
 
 static GActionEntry win_entries[] = {
-  { "quit", quit_activate, NULL, NULL, NULL },
-  { "about", about_activate, NULL, NULL, NULL },
-  { "help", help_activate, NULL, NULL, NULL }
+  { .name = "quit", .activate = quit_activate },
+  { .name = "about", .activate = about_activate },
+  { .name = "help", .activate = help_activate }
 };
 
 CtkWidget *
