@@ -176,22 +176,22 @@ radio_action_changed (CtkAction *action, CtkRadioAction *current)
 }
 
 static CtkActionEntry entries[] = {
-  { "FileMenuAction", NULL, "_File" },
-  { "EditMenuAction", NULL, "_Edit" },
-  { "HelpMenuAction", NULL, "_Help" },
-  { "JustifyMenuAction", NULL, "_Justify" },
-  { "EmptyMenu1Action", NULL, "Empty 1" },
-  { "EmptyMenu2Action", NULL, "Empty 2" },
-  { "Test", NULL, "Test" },
+  { .name = "FileMenuAction",    .label = "_File" },
+  { .name = "EditMenuAction",    .label = "_Edit" },
+  { .name = "HelpMenuAction",    .label = "_Help" },
+  { .name = "JustifyMenuAction", .label = "_Justify" },
+  { .name = "EmptyMenu1Action",  .label = "Empty 1" },
+  { .name = "EmptyMenu2Action",  .label = "Empty 2" },
+  { .name = "Test",              .label = "Test" },
 
-  { "QuitAction",  CTK_STOCK_QUIT,  NULL,     "<control>q", "Quit", G_CALLBACK (ctk_main_quit) },
-  { "NewAction",   CTK_STOCK_NEW,   NULL,     "<control>n", "Create something", G_CALLBACK (activate_action) },
-  { "New2Action",  CTK_STOCK_NEW,   NULL,     "<control>m", "Create something else", G_CALLBACK (activate_action) },
-  { "OpenAction",  CTK_STOCK_OPEN,  NULL,     NULL,         "Open it", G_CALLBACK (activate_action) },
-  { "CutAction",   CTK_STOCK_CUT,   NULL,     "<control>x", "Knive", G_CALLBACK (activate_action) },
-  { "CopyAction",  CTK_STOCK_COPY,  NULL,     "<control>c", "Copy", G_CALLBACK (activate_action) },
-  { "PasteAction", CTK_STOCK_PASTE, NULL,     "<control>v", "Paste", G_CALLBACK (activate_action) },
-  { "AboutAction", NULL,            "_About", NULL,         "About", G_CALLBACK (activate_action) },
+  { .name = "QuitAction",  .stock_id = CTK_STOCK_QUIT,  .accelerator = "<control>q", .tooltip = "Quit", .callback = G_CALLBACK (ctk_main_quit) },
+  { .name = "NewAction",   .stock_id = CTK_STOCK_NEW,   .accelerator = "<control>n", .tooltip = "Create something", .callback = G_CALLBACK (activate_action) },
+  { .name = "New2Action",  .stock_id = CTK_STOCK_NEW,   .accelerator = "<control>m", .tooltip = "Create something else", .callback = G_CALLBACK (activate_action) },
+  { .name = "OpenAction",  .stock_id = CTK_STOCK_OPEN,                               .tooltip = "Open it", .callback = G_CALLBACK (activate_action) },
+  { .name = "CutAction",   .stock_id = CTK_STOCK_CUT,   .accelerator = "<control>x", .tooltip = "Knive", .callback = G_CALLBACK (activate_action) },
+  { .name = "CopyAction",  .stock_id = CTK_STOCK_COPY,  .accelerator = "<control>c", .tooltip = "Copy", .callback = G_CALLBACK (activate_action) },
+  { .name = "PasteAction", .stock_id = CTK_STOCK_PASTE, .accelerator = "<control>v", .tooltip = "Paste", .callback = G_CALLBACK (activate_action) },
+  { .name = "AboutAction", .label = "_About",                                        .tooltip = "About", .callback = G_CALLBACK (activate_action) },
 };
 static guint n_entries = G_N_ELEMENTS (entries);
 

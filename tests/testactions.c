@@ -124,26 +124,18 @@ toolbar_size_large (CtkAction *action)
 
 /* convenience functions for declaring actions */
 static CtkActionEntry entries[] = {
-  { "Menu1Action", NULL, "Menu _1" },
-  { "Menu2Action", NULL, "Menu _2" },
-  { "Menu3Action", NULL, "_Dynamic Menu" },
+  { .name = "Menu1Action",                           .label = "Menu _1" },
+  { .name = "Menu2Action",                           .label = "Menu _2" },
+  { .name = "Menu3Action",                           .label = "_Dynamic Menu" },
 
-  { "attach", "mail-attachment", "_Attachment...", "<Control>m",
-    "Attach a file", G_CALLBACK (activate_action) },
-  { "cut", CTK_STOCK_CUT, "C_ut", "<control>X",
-    "Cut the selected text to the clipboard", G_CALLBACK (activate_action) },
-  { "copy", CTK_STOCK_COPY, "_Copy", "<control>C",
-    "Copy the selected text to the clipboard", G_CALLBACK (activate_action) },
-  { "paste", CTK_STOCK_PASTE, "_Paste", "<control>V",
-    "Paste the text from the clipboard", G_CALLBACK (activate_action) },
-  { "quit", CTK_STOCK_QUIT,  NULL, "<control>Q",
-    "Quit the application", G_CALLBACK (ctk_main_quit) },
-  { "customise-accels", NULL, "Customise _Accels", NULL,
-    "Customise keyboard shortcuts", G_CALLBACK (show_accel_dialog) },
-  { "toolbar-small-icons", NULL, "Small Icons", NULL, 
-    NULL, G_CALLBACK (toolbar_size_small) },
-  { "toolbar-large-icons", NULL, "Large Icons", NULL,
-    NULL, G_CALLBACK (toolbar_size_large) }
+  { .name = "attach", .stock_id = "mail-attachment", .label = "_Attachment...", .accelerator = "<Control>m", .tooltip = "Attach a file", .callback = G_CALLBACK (activate_action) },
+  { .name = "cut",    .stock_id = CTK_STOCK_CUT,     .label = "C_ut",           .accelerator = "<control>X", .tooltip = "Cut the selected text to the clipboard", .callback = G_CALLBACK (activate_action) },
+  { .name = "copy",   .stock_id = CTK_STOCK_COPY,    .label = "_Copy",          .accelerator = "<control>C", .tooltip = "Copy the selected text to the clipboard", .callback = G_CALLBACK (activate_action) },
+  { .name = "paste",  .stock_id = CTK_STOCK_PASTE,   .label = "_Paste",         .accelerator = "<control>V", .tooltip = "Paste the text from the clipboard", .callback = G_CALLBACK (activate_action) },
+  { .name = "quit",   .stock_id = CTK_STOCK_QUIT,                               .accelerator = "<control>Q", .tooltip = "Quit the application", .callback = G_CALLBACK (ctk_main_quit) },
+  { .name = "customise-accels",                      .label = "Customise _Accels",                           .tooltip = "Customise keyboard shortcuts", .callback = G_CALLBACK (show_accel_dialog) },
+  { .name = "toolbar-small-icons",                   .label = "Small Icons", .callback = G_CALLBACK (toolbar_size_small) },
+  { .name = "toolbar-large-icons",                   .label = "Large Icons", .callback = G_CALLBACK (toolbar_size_large) }
 };
 static guint n_entries = G_N_ELEMENTS (entries);
 
