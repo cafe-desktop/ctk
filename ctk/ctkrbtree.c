@@ -43,9 +43,7 @@ static void        _ctk_rbtree_debug_spew         (CtkRBTree  *tree,
 #endif
 
 static const CtkRBNode nil = {
-  /* .flags = */ CTK_RBNODE_BLACK,
-
-  /* rest is NULL */
+  .flags = CTK_RBNODE_BLACK,
 };
 
 gboolean
