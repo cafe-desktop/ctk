@@ -699,9 +699,7 @@ ctk_application_dbus_register (GApplication     *application,
 {
   CtkApplicationPrivate *priv = ctk_application_get_instance_private (CTK_APPLICATION (application));
   GDBusInterfaceVTable vtable = {
-    sysprof_profiler_method_call,
-    NULL,
-    NULL
+    .method_call = sysprof_profiler_method_call
   };
 
   if (org_gnome_Sysprof3_Profiler == NULL)
