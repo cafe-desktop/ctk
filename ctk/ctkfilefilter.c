@@ -320,9 +320,9 @@ parser_end_element (GMarkupParseContext *context,
 
 static const GMarkupParser sub_parser =
   {
-    parser_start_element,
-    parser_end_element,
-    parser_text_element,
+    .start_element = parser_start_element,
+    .end_element = parser_end_element,
+    .text = parser_text_element,
   };
 
 static gboolean

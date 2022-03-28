@@ -2581,9 +2581,9 @@ list_store_text (GMarkupParseContext  *context,
 
 static const GMarkupParser list_store_parser =
   {
-    list_store_start_element,
-    list_store_end_element,
-    list_store_text
+    .start_element = list_store_start_element,
+    .end_element = list_store_end_element,
+    .text = list_store_text
   };
 
 static gboolean

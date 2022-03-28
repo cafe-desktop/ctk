@@ -14321,9 +14321,8 @@ accessibility_text (GMarkupParseContext  *context,
 
 static const GMarkupParser accessibility_parser =
   {
-    accessibility_start_element,
-    NULL,
-    accessibility_text,
+    .start_element = accessibility_start_element,
+    .text = accessibility_text,
   };
 
 typedef struct
@@ -14407,7 +14406,7 @@ accel_group_start_element (GMarkupParseContext  *context,
 
 static const GMarkupParser accel_group_parser =
   {
-    accel_group_start_element,
+    .start_element = accel_group_start_element,
   };
 
 typedef struct
@@ -14463,7 +14462,7 @@ style_start_element (GMarkupParseContext  *context,
 
 static const GMarkupParser style_parser =
   {
-    style_start_element,
+    .start_element = style_start_element,
   };
 
 static gboolean

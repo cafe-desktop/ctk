@@ -725,9 +725,9 @@ attributes_end_element (GMarkupParseContext  *context,
 
 static const GMarkupParser attributes_parser =
   {
-    attributes_start_element,
-    attributes_end_element,
-    attributes_text_element
+    .start_element = attributes_start_element,
+    .end_element = attributes_end_element,
+    .text = attributes_text_element
   };
 
 
@@ -891,9 +891,9 @@ cell_packing_end_element (GMarkupParseContext *context,
 
 static const GMarkupParser cell_packing_parser =
   {
-    cell_packing_start_element,
-    cell_packing_end_element,
-    cell_packing_text_element
+    .start_element = cell_packing_start_element,
+    .end_element = cell_packing_end_element,
+    .text = cell_packing_text_element
   };
 
 gboolean

@@ -438,7 +438,7 @@ accelerator_start_element (GMarkupParseContext *context,
 
 static const GMarkupParser accelerator_parser =
   {
-    accelerator_start_element
+    .start_element = accelerator_start_element
   };
 
 static gboolean

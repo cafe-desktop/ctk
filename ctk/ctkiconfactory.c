@@ -2468,7 +2468,7 @@ icon_source_start_element (GMarkupParseContext  *context,
 
 static const GMarkupParser icon_source_parser =
   {
-    icon_source_start_element,
+    .start_element = icon_source_start_element,
   };
 
 static gboolean

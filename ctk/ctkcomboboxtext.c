@@ -269,9 +269,9 @@ item_end_element (GMarkupParseContext  *context,
 
 static const GMarkupParser item_parser =
   {
-    item_start_element,
-    item_end_element,
-    item_text
+    .start_element = item_start_element,
+    .end_element = item_end_element,
+    .text = item_text
   };
 
 static gboolean

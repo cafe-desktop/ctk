@@ -1204,10 +1204,9 @@ free_info (CommonInfo *info)
 }
 
 static const GMarkupParser parser = {
-  start_element,
-  end_element,
-  text,
-  NULL,
+  .start_element = start_element,
+  .end_element = end_element,
+  .text = text
 };
 
 void
