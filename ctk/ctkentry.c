@@ -6302,7 +6302,7 @@ ctk_entry_get_placeholder_text_color (CtkEntry   *entry,
 {
   CtkWidget *widget = CTK_WIDGET (entry);
   CtkStyleContext *context;
-  CdkRGBA fg = { 0.5, 0.5, 0.5 };
+  CdkRGBA fg = { .red = 0.5, .green = 0.5, .blue = 0.5 };
 
   context = ctk_widget_get_style_context (widget);
   ctk_style_context_lookup_color (context, "placeholder_text_color", &fg);
