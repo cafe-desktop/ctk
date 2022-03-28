@@ -2161,7 +2161,7 @@ window_start_element (GMarkupParseContext  *context,
 
 static const GMarkupParser window_parser =
   {
-    window_start_element
+    .start_element = window_start_element
   };
 
 typedef struct {
@@ -2210,7 +2210,7 @@ focus_start_element (GMarkupParseContext  *context,
 
 static const GMarkupParser focus_parser =
 {
-  focus_start_element
+  .start_element = focus_start_element
 };
 
 static gboolean

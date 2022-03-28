@@ -810,7 +810,7 @@ offset_start_element (GMarkupParseContext  *context,
 
 static const GMarkupParser offset_parser =
 {
-  offset_start_element
+  .start_element = offset_start_element
 };
 
 static gboolean

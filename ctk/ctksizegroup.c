@@ -614,7 +614,7 @@ size_group_start_element (GMarkupParseContext  *context,
 
 static const GMarkupParser size_group_parser =
   {
-    size_group_start_element
+    .start_element = size_group_start_element
   };
 
 static gboolean

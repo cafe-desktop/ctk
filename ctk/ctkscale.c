@@ -2480,9 +2480,8 @@ marks_text (GMarkupParseContext  *context,
 
 static const GMarkupParser marks_parser =
   {
-    marks_start_element,
-    NULL,
-    marks_text,
+    .start_element = marks_start_element,
+    .text = marks_text,
   };
 
 

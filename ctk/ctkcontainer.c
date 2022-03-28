@@ -830,9 +830,9 @@ packing_end_element (GMarkupParseContext  *context,
 
 static const GMarkupParser packing_parser =
   {
-    packing_start_element,
-    packing_end_element,
-    packing_text_element,
+    .start_element = packing_start_element,
+    .end_element = packing_end_element,
+    .text = packing_text_element,
   };
 
 typedef struct
@@ -911,7 +911,7 @@ focus_chain_start_element (GMarkupParseContext  *context,
 
 static const GMarkupParser focus_chain_parser =
   {
-    focus_chain_start_element
+    .start_element = focus_chain_start_element
   };
 
 static gboolean

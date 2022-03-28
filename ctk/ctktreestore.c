@@ -3434,8 +3434,8 @@ tree_model_end_element (GMarkupParseContext  *context,
 
 static const GMarkupParser tree_model_parser =
   {
-    tree_model_start_element,
-    tree_model_end_element
+    .start_element = tree_model_start_element,
+    .end_element = tree_model_end_element
   };
 
 

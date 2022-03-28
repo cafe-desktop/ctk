@@ -1685,7 +1685,7 @@ pango_start_element (GMarkupParseContext *context,
 
 static const GMarkupParser pango_parser =
   {
-    pango_start_element,
+    .start_element = pango_start_element,
   };
 
 static gboolean
