@@ -1022,7 +1022,7 @@ static void
 color_sample_setup_dnd (CtkColorSelection *colorsel, CtkWidget *sample)
 {
   static const CtkTargetEntry targets[] = {
-    { "application/x-color", 0 }
+    { .target = "application/x-color", .flags = 0 }
   };
   CtkColorSelectionPrivate *priv;
   priv = colorsel->private_data;
@@ -1395,7 +1395,7 @@ palette_set_color (CtkWidget         *drawing_area,
   if (GPOINTER_TO_INT (g_object_get_data (G_OBJECT (drawing_area), "color_set")) == 0)
     {
       static const CtkTargetEntry targets[] = {
-        { "application/x-color", 0 }
+        { .target = "application/x-color", .flags = 0 }
       };
       ctk_drag_source_set (drawing_area,
                            CDK_BUTTON1_MASK | CDK_BUTTON3_MASK,
@@ -1620,7 +1620,7 @@ palette_new (CtkColorSelection *colorsel)
   CtkWidget *retval;
 
   static const CtkTargetEntry targets[] = {
-    { "application/x-color", 0 }
+    { .target = "application/x-color", .flags = 0 }
   };
 
   retval = ctk_drawing_area_new ();
