@@ -193,7 +193,7 @@ ctk_offscreen_window_realize (CtkWidget *widget)
 static void
 ctk_offscreen_window_resize (CtkWidget *widget)
 {
-  CtkAllocation allocation = { 0, 0 };
+  CtkAllocation allocation = { .x= 0, .y= 0 };
   CtkRequisition requisition;
 
   ctk_widget_get_preferred_size (widget, &requisition, NULL);
