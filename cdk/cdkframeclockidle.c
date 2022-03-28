@@ -111,10 +111,9 @@ sleep_source_dispatch (GSource     *source,
 }
 
 static GSourceFuncs sleep_source_funcs = {
-  sleep_source_prepare,
-  sleep_source_check,
-  sleep_source_dispatch,
-  NULL /* finalize */
+  .prepare = sleep_source_prepare,
+  .check = sleep_source_check,
+  .dispatch = sleep_source_dispatch
 };
 
 static gint64
