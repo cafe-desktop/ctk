@@ -778,7 +778,7 @@ ctk_color_swatch_new (void)
 }
 
 static const CtkTargetEntry dnd_targets[] = {
-  { "application/x-color", 0 }
+  { .target = "application/x-color", .flags = 0 }
 };
 
 void
