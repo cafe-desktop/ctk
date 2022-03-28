@@ -45,10 +45,10 @@ struct _CdkEventSource
 };
 
 static GSourceFuncs event_funcs = {
-  cdk_event_source_prepare,
-  cdk_event_source_check,
-  cdk_event_source_dispatch,
-  cdk_event_source_finalize
+  .prepare = cdk_event_source_prepare,
+  .check = cdk_event_source_check,
+  .dispatch = cdk_event_source_dispatch,
+  .finalize = cdk_event_source_finalize
 };
 
 static gint

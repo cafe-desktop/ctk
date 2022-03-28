@@ -1647,10 +1647,10 @@ cups_dispatch_watch_finalize (GSource *source)
 }
 
 static GSourceFuncs _cups_dispatch_watch_funcs = {
-  cups_dispatch_watch_prepare,
-  cups_dispatch_watch_check,
-  cups_dispatch_watch_dispatch,
-  cups_dispatch_watch_finalize
+  .prepare = cups_dispatch_watch_prepare,
+  .check = cups_dispatch_watch_check,
+  .dispatch = cups_dispatch_watch_dispatch,
+  .finalize = cups_dispatch_watch_finalize
 };
 
 
