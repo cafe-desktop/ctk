@@ -133,9 +133,9 @@ _cdk_x11_window_simulate_button (CdkWindow      *window,
 {
   CdkScreen *screen;
   XButtonEvent xev = {
-    0,  /* type */
-    0,  /* serial */
-    1,  /* send_event */
+    .type = 0,
+    .serial = 0,
+    .send_event = 1,
   };
   gboolean success;
 
