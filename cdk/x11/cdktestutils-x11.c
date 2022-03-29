@@ -53,9 +53,9 @@ _cdk_x11_window_simulate_key (CdkWindow      *window,
   gboolean success;
   gint n_keys = 0;
   XKeyEvent xev = {
-    0,  /* type */
-    0,  /* serial */
-    1,  /* send_event */
+    .type = 0,
+    .serial = 0,
+    .send_event = 1,
   };
   g_return_val_if_fail (key_pressrelease == CDK_KEY_PRESS || key_pressrelease == CDK_KEY_RELEASE, FALSE);
   g_return_val_if_fail (window != NULL, FALSE);
