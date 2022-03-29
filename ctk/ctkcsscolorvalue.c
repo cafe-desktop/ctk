@@ -575,7 +575,7 @@ _ctk_css_color_value_new_win32 (const gchar *theme_class,
 CtkCssValue *
 _ctk_css_color_value_new_current_color (void)
 {
-  static CtkCssValue current_color = { &CTK_CSS_VALUE_COLOR, 1, COLOR_TYPE_CURRENT_COLOR, NULL, };
+  static CtkCssValue current_color = { .class = &CTK_CSS_VALUE_COLOR, .ref_count = 1, .type = COLOR_TYPE_CURRENT_COLOR, };
 
   return _ctk_css_value_ref (&current_color);
 }
