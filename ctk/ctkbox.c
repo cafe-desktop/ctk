@@ -836,7 +836,7 @@ ctk_box_size_allocate_with_center (CtkWidget           *widget,
   CtkTextDirection direction;
   CtkAllocation child_allocation;
   CtkRequestedSize *sizes[2];
-  CtkRequestedSize center_req = {0, 0};
+  CtkRequestedSize center_req = {.minimum_size = 0, .natural_size = 0};
   gint child_minimum_baseline, child_natural_baseline;
   gint minimum_above, natural_above;
   gint minimum_below, natural_below;
