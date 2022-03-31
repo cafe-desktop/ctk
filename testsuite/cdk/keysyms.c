@@ -9,14 +9,14 @@ test_keysyms_basic (void)
     const gchar *name;
     const gchar *other_name;
   } tests[] = {
-    { CDK_KEY_space, "space", NULL },
-    { CDK_KEY_a, "a", NULL },
-    { CDK_KEY_Thorn, "Thorn", "THORN" },
-    { CDK_KEY_Hangul_J_RieulTieut, "Hangul_J_RieulTieut", NULL },
-    { CDK_KEY_Page_Up, "Page_Up", NULL },
-    { CDK_KEY_KP_Multiply, "KP_Multiply", NULL },
-    { CDK_KEY_MonBrightnessUp, "MonBrightnessUp", NULL },
-    { 0, NULL }
+    { .keyval = CDK_KEY_space, .name = "space" },
+    { .keyval = CDK_KEY_a, .name = "a" },
+    { .keyval = CDK_KEY_Thorn, .name = "Thorn", .other_name = "THORN" },
+    { .keyval = CDK_KEY_Hangul_J_RieulTieut, .name = "Hangul_J_RieulTieut" },
+    { .keyval = CDK_KEY_Page_Up, .name = "Page_Up" },
+    { .keyval = CDK_KEY_KP_Multiply, .name = "KP_Multiply" },
+    { .keyval = CDK_KEY_MonBrightnessUp, .name = "MonBrightnessUp" },
+    { .keyval = 0 }
   };
   gint i;
 
