@@ -278,12 +278,12 @@ static struct {
   GdkPixbuf    *pixbuf;
   CdkCursor    *cursor;
 } drag_cursors[] = {
-  { CDK_ACTION_DEFAULT, NULL },
-  { CDK_ACTION_ASK,   "dnd-ask",  NULL, NULL },
-  { CDK_ACTION_COPY,  "copy", NULL, NULL },
-  { CDK_ACTION_MOVE,  "move", NULL, NULL },
-  { CDK_ACTION_LINK,  "alias", NULL, NULL },
-  { 0              ,  "no-drop", NULL, NULL },
+  { .action = CDK_ACTION_DEFAULT },
+  { .action = CDK_ACTION_ASK,  .name = "dnd-ask" },
+  { .action = CDK_ACTION_COPY, .name = "copy" },
+  { .action = CDK_ACTION_MOVE, .name = "move" },
+  { .action = CDK_ACTION_LINK, .name = "alias" },
+  { .action = 0              , .name = "no-drop" },
 };
 
 /*********************
