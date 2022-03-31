@@ -828,7 +828,7 @@ test_words (CtkWidget *widget)
     {  1, 18, ATK_TEXT_BOUNDARY_LINE_END,       20, 20, "" },
     {  1, 19, ATK_TEXT_BOUNDARY_LINE_END,       20, 20, "" },
     {  1, 20, ATK_TEXT_BOUNDARY_LINE_END,       20, 20, "" },
-    {  0, -1, }
+    {  .gravity = 0, .offset = -1, }
   };
   gint start, end;
   gchar *word;
