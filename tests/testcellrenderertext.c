@@ -71,7 +71,8 @@ struct cell_params {
  * to keep things tidy.                                                                                        v
  */
 static const struct cell_params cell_params[] = {
-  { "xp yp xa ya se wi he wc ww wm sp el", "",    0,  0, 0.0, 0.5, TRUE,  -1, -1, -1, -1, CH, FALSE, NO },  /* 0 */
+  { .description = "xp yp xa ya se wi he wc ww wm sp el", .test = "", .xpad = 0, .ypad = 0, .xalign = 0.0, .yalign = 0.5, .sensitive = TRUE,
+    .width = -1, .height = -1, .width_chars = -1, .wrap_width = -1, .wrap_mode = CH, .single_paragraph_mode = FALSE, .ellipsize = NO },  /* 0 */
 
   /* Test alignment */
 
