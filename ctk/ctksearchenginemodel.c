@@ -84,6 +84,7 @@ do_search (gpointer data)
   CtkSearchEngineModel *model = data;
   CtkTreeIter iter;
   GList *hits = NULL;
+  gboolean got_results = FALSE;
 
   if (ctk_tree_model_get_iter_first (CTK_TREE_MODEL (model->model), &iter))
     {
@@ -110,10 +111,13 @@ do_search (gpointer data)
         {
           _ctk_search_engine_hits_added (CTK_SEARCH_ENGINE (model), hits);
           g_list_free_full (hits, (GDestroyNotify)_ctk_search_hit_free);
+          got_results = TRUE;
         }
     }
 
   model->idle = 0;
+
+  _ctk_search_engine_finished (CTK_SEARCH_ENGINE (model), got_results);
 
   return G_SOURCE_REMOVE;
 }
