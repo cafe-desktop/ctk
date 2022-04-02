@@ -1727,7 +1727,7 @@ get_tree (GByteArray *array, gint32 offset)
 static CtkCssSelectorTree *
 alloc_tree (GByteArray *array, gint32 *offset)
 {
-  CtkCssSelectorTree tree = { { NULL} };
+  CtkCssSelectorTree tree = { .selector = { NULL } };
 
   *offset = array->len;
   g_byte_array_append (array, (guint8 *)&tree, sizeof (CtkCssSelectorTree));
