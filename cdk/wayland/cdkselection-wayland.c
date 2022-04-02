@@ -100,7 +100,7 @@ struct _CdkWaylandSelection
 
   /* Source-side data */
   GPtrArray *stored_selections; /* Array of StoredSelection */
-  CdkAtom current_request_selection;
+  StoredSelection *current_request_selection;
   GArray *source_targets;
   CdkAtom requested_target;
 
@@ -859,7 +859,12 @@ cdk_wayland_selection_reset_selection (CdkWaylandSelection *wayland_selection,
       stored_selection = g_ptr_array_index (wayland_selection->stored_selections, i);
 
       if (stored_selection->selection_atom == selection)
-        g_ptr_array_remove_index_fast (wayland_selection->stored_selections, i);
+        {
+          if (wayland_selection->current_request_selection == stored_selection)
+            wayland_selection->current_request_selection = NULL;
+
+          g_ptr_array_remove_index_fast (wayland_selection->stored_selections, i);
+        }
       else
         i++;
     }
@@ -878,21 +883,10 @@ cdk_wayland_selection_store (CdkWindow    *window,
 
   if (type == cdk_atom_intern_static_string ("NULL"))
     return;
-  if (selection->current_request_selection == CDK_NONE)
+  if (!selection->current_request_selection)
     return;
 
-  stored_selection =
-    cdk_wayland_selection_find_stored_selection (selection, window,
-                                                 selection->current_request_selection,
-                                                 type);
-
-  if (!stored_selection)
-    {
-      stored_selection = stored_selection_new (selection, window,
-                                               selection->current_request_selection,
-                                               type);
-      g_ptr_array_add (selection->stored_selections, stored_selection);
-    }
+  stored_selection = selection->current_request_selection;
 
   if ((mode == CDK_PROP_MODE_PREPEND ||
        mode == CDK_PROP_MODE_REPLACE) &&
@@ -916,7 +910,7 @@ cdk_wayland_selection_store (CdkWindow    *window,
     }
 
   /* Handle the next CDK_SELECTION_REQUEST / store, if any */
-  selection->current_request_selection = CDK_NONE;
+  selection->current_request_selection = NULL;
   cdk_wayland_selection_handle_next_request (selection);
 }
 
@@ -980,7 +974,7 @@ cdk_wayland_selection_handle_next_request (CdkWaylandSelection *wayland_selectio
           cdk_wayland_selection_emit_request (stored_selection->source,
                                               stored_selection->selection_atom,
                                               stored_selection->type);
-          wayland_selection->current_request_selection = stored_selection->selection_atom;
+          wayland_selection->current_request_selection = stored_selection;
           break;
         }
     }
@@ -1024,7 +1018,7 @@ cdk_wayland_selection_request_target (CdkWaylandSelection *wayland_selection,
 
   write_data = async_write_data_new (stored_selection, fd);
 
-  if (wayland_selection->current_request_selection == CDK_NONE)
+  if (!wayland_selection->current_request_selection)
     cdk_wayland_selection_handle_next_request (wayland_selection);
 
   return TRUE;
@@ -1436,13 +1430,29 @@ _cdk_wayland_display_set_selection_owner (CdkDisplay *display,
 }
 
 void
-_cdk_wayland_display_send_selection_notify (CdkDisplay *dispay,
+_cdk_wayland_display_send_selection_notify (CdkDisplay *display,
                                             CdkWindow  *requestor,
                                             CdkAtom     selection,
                                             CdkAtom     target,
                                             CdkAtom     property,
                                             guint32     time)
 {
+  CdkWaylandSelection *wayland_selection;
+
+  if (property != CDK_NONE)
+    return;
+
+  wayland_selection = cdk_wayland_display_get_selection (display);
+
+  if (!wayland_selection->current_request_selection)
+    return;
+
+  g_ptr_array_remove_fast (wayland_selection->stored_selections,
+                           wayland_selection->current_request_selection);
+
+  /* Handle the next CDK_SELECTION_REQUEST / store, if any */
+  wayland_selection->current_request_selection = NULL;
+  cdk_wayland_selection_handle_next_request (wayland_selection);
 }
 
 gint
