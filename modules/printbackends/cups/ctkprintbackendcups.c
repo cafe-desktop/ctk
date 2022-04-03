@@ -1889,10 +1889,11 @@ mark_printer_inactive (CtkPrinter      *printer,
                        CtkPrintBackend *backend)
 {
   CtkPrinterCups *cups_printer = CTK_PRINTER_CUPS (printer);
-  GList          *iter;
 
   if (cups_printer->is_temporary)
     {
+      GList *iter;
+
       /* Do not recreate printers which disappeared from Avahi. */
       iter = g_list_find_custom (CTK_PRINT_BACKEND_CUPS (backend)->temporary_queues_removed,
                                  ctk_printer_get_name (printer), (GCompareFunc) g_strcmp0);
@@ -2992,7 +2993,6 @@ cups_create_local_printer_cb (CtkPrintBackendCups *print_backend,
                               CtkCupsResult       *result,
                               gpointer             user_data)
 {
-  ipp_attribute_t *attr;
   gchar           *printer_name = NULL;
   ipp_t           *response;
   GList           *iter;
@@ -3001,6 +3001,8 @@ cups_create_local_printer_cb (CtkPrintBackendCups *print_backend,
 
   if (ippGetStatusCode (response) <= IPP_OK_CONFLICT)
     {
+      ipp_attribute_t *attr;
+
       if ((attr = ippFindAttribute (response, "printer-uri-supported", IPP_TAG_URI)) != NULL)
         {
           printer_name = g_strdup (g_strrstr (ippGetString (attr, 0, NULL), "/") + 1);
@@ -3266,7 +3268,6 @@ avahi_service_resolver_cb (GObject      *source_object,
   guint32                  flags;
   guint16                  port;
   GError                  *error = NULL;
-  GList                   *iter;
   gchar                  **printer_name_strv;
   gchar                   *endptr;
   gchar                   *key;
@@ -3363,6 +3364,7 @@ avahi_service_resolver_cb (GObject      *source_object,
         {
           gchar **printer_name_compressed_strv;
           gchar  *printer_name;
+          GList  *iter;
 
           /*
            * Create name of temporary queue from the name of the discovered service.
