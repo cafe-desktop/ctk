@@ -3375,7 +3375,15 @@ avahi_service_resolver_cb (GObject      *source_object,
           printer_name_compressed_strv = g_new0 (gchar *, g_strv_length (printer_name_strv) + 1);
           for (i = 0, j = 0; printer_name_strv[i] != NULL; i++)
             {
-              if (printer_name_strv[i][0] != '\0')
+              /*
+               * Keep an empty segment at the beginning or end, if any.
+               * This emulates the way cups-browsed in Debian 11 created
+               * printer names (before 1.28.11), for example:
+               * "Some Printer (123456)" -> Some_Printer_123456_
+               * and hypothetically
+               * "(Really) Working Printer" -> _Really_Working_Printer
+               */
+              if (printer_name_strv[i][0] != '\0' || i == 0 || printer_name_strv[i + 1] == NULL)
                 {
                   printer_name_compressed_strv[j] = printer_name_strv[i];
                   j++;
