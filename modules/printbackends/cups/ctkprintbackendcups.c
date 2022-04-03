@@ -61,6 +61,10 @@
 #include <colord.h>
 #endif
 
+#if ((CUPS_VERSION_MAJOR == 2 && CUPS_VERSION_MINOR >= 2) || CUPS_VERSION_MAJOR > 2)
+#define HAVE_CUPS_2_2
+#endif
+
 typedef struct _CtkPrintBackendCupsClass CtkPrintBackendCupsClass;
 
 #define CTK_PRINT_BACKEND_CUPS_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), CTK_TYPE_PRINT_BACKEND_CUPS, CtkPrintBackendCupsClass))
@@ -242,10 +246,12 @@ static void                 secrets_service_vanished_cb             (GDBusConnec
                                                                      const gchar *name,
                                                                      gpointer user_data);
 
+#ifdef HAVE_CUPS_2_2
 static void                 create_temporary_queue                  (CtkPrintBackendCups *backend,
                                                                      const gchar         *printer_name,
                                                                      const gchar         *printer_uri,
                                                                      const gchar         *device_uri);
+#endif
 
 static void
 ctk_print_backend_cups_register_type (GTypeModule *module)
@@ -1893,10 +1899,12 @@ mark_printer_inactive (CtkPrinter      *printer,
       if (iter == NULL)
         {
           /* Recreate temporary queue since they are created for 60 seconds only. */
+#ifdef HAVE_CUPS_2_2
           create_temporary_queue (CTK_PRINT_BACKEND_CUPS (backend),
                                   ctk_printer_get_name (printer),
                                   cups_printer->printer_uri,
                                   cups_printer->temporary_queue_device_uri);
+#endif
         }
     }
   else
@@ -3020,6 +3028,7 @@ cups_create_local_printer_cb (CtkPrintBackendCups *print_backend,
 /*
  *  Create CUPS temporary queue.
  */
+#ifdef HAVE_CUPS_2_2
 static void
 create_temporary_queue (CtkPrintBackendCups *backend,
                         const gchar         *printer_name,
@@ -3060,7 +3069,7 @@ create_temporary_queue (CtkPrintBackendCups *backend,
                         NULL,
                         NULL);
 }
-
+#endif
 /*
  *  Create new CtkPrinter from informations included in TXT records.
  */
@@ -4563,10 +4572,12 @@ cups_printer_request_details (CtkPrinter *printer)
 
   if (cups_printer->avahi_browsed)
     {
+#ifdef HAVE_CUPS_2_2
       create_temporary_queue (CTK_PRINT_BACKEND_CUPS (ctk_printer_get_backend (printer)),
                               ctk_printer_get_name (printer),
                               cups_printer->printer_uri,
                               cups_printer->temporary_queue_device_uri);
+#endif
     }
   else if (!cups_printer->reading_ppd &&
            ctk_printer_cups_get_ppd (cups_printer) == NULL)
