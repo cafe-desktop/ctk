@@ -4084,8 +4084,6 @@ after_process_all_updates (void)
  *
  * Calls cdk_window_process_updates() for all windows (see #CdkWindow)
  * in the application.
- *
- * Deprecated: 3.22
  **/
 void
 cdk_window_process_all_updates (void)
