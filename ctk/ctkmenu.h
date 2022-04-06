@@ -134,7 +134,7 @@ CDK_AVAILABLE_IN_3_4
 CtkWidget* ctk_menu_new_from_model        (GMenuModel *model);
 
 /* Display the menu onscreen */
-CDK_DEPRECATED_IN_3_22_FOR((ctk_menu_popup_at_widget, ctk_menu_popup_at_pointer, ctk_menu_popup_at_rect))
+CDK_AVAILABLE_IN_ALL
 void	   ctk_menu_popup		  (CtkMenu	       *menu,
 					   CtkWidget	       *parent_menu_shell,
 					   CtkWidget	       *parent_menu_item,
@@ -142,7 +142,7 @@ void	   ctk_menu_popup		  (CtkMenu	       *menu,
 					   gpointer		data,
 					   guint		button,
 					   guint32		activate_time);
-CDK_DEPRECATED_IN_3_22_FOR((ctk_menu_popup_at_widget, ctk_menu_popup_at_pointer, ctk_menu_popup_at_rect))
+CDK_AVAILABLE_IN_ALL
 void       ctk_menu_popup_for_device      (CtkMenu             *menu,
                                            CdkDevice           *device,
                                            CtkWidget           *parent_menu_shell,

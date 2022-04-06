@@ -2055,9 +2055,6 @@ ctk_menu_popup_internal (CtkMenu             *menu,
  * have this problem.
  *
  * Since: 3.0
- *
- * Deprecated: 3.22: Please use ctk_menu_popup_at_widget(),
- *     ctk_menu_popup_at_pointer(). or ctk_menu_popup_at_rect() instead
  */
 void
 ctk_menu_popup_for_device (CtkMenu             *menu,
@@ -2126,9 +2123,6 @@ ctk_menu_popup_for_device (CtkMenu             *menu,
  * do not have global coordinates, such as Wayland or Mir. You should
  * probably use one of the ctk_menu_popup_at_ variants, which do not
  * have this problem.
- *
- * Deprecated: 3.22: Please use ctk_menu_popup_at_widget(),
- *     ctk_menu_popup_at_pointer(). or ctk_menu_popup_at_rect() instead
  */
 void
 ctk_menu_popup (CtkMenu             *menu,
@@ -2141,7 +2135,6 @@ ctk_menu_popup (CtkMenu             *menu,
 {
   g_return_if_fail (CTK_IS_MENU (menu));
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   ctk_menu_popup_for_device (menu,
                              NULL,
                              parent_menu_shell,
@@ -2149,7 +2142,6 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
                              func, data, NULL,
                              button, activate_time);
-G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static CdkDevice *
