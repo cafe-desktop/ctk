@@ -4231,8 +4231,6 @@ cdk_window_process_updates_with_mode (CdkWindow     *window,
  * to be delivered immediately and synchronously (vs. the usual
  * case, where CDK delivers them in an idle handler). Occasionally
  * this is useful to produce nicer scrolling behavior, for example.
- *
- * Deprecated: 3.22
  **/
 void
 cdk_window_process_updates (CdkWindow *window,

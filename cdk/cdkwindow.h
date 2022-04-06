@@ -1065,7 +1065,7 @@ void       cdk_window_thaw_toplevel_updates_libctk_only   (CdkWindow *window);
 
 CDK_AVAILABLE_IN_ALL
 void       cdk_window_process_all_updates (void);
-CDK_DEPRECATED_IN_3_22
+CDK_AVAILABLE_IN_ALL
 void       cdk_window_process_updates     (CdkWindow    *window,
 					   gboolean      update_children);
 
