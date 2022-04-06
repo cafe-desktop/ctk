@@ -1070,7 +1070,7 @@ void       cdk_window_process_updates     (CdkWindow    *window,
 					   gboolean      update_children);
 
 /* Enable/disable flicker, so you can tell if your code is inefficient. */
-CDK_DEPRECATED_IN_3_22
+CDK_AVAILABLE_IN_ALL
 void       cdk_window_set_debug_updates   (gboolean      setting);
 
 CDK_AVAILABLE_IN_ALL

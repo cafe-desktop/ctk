@@ -739,10 +739,8 @@ do_post_parse_initialization (int    *argc,
       g_log_set_always_fatal (fatal_mask);
     }
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   if (debug_flags[0].flags & CTK_DEBUG_UPDATES)
     cdk_window_set_debug_updates (TRUE);
-G_GNUC_END_IGNORE_DEPRECATIONS
 
   ctk_widget_set_default_direction (ctk_get_locale_direction ());
 

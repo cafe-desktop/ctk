@@ -4831,8 +4831,6 @@ cdk_window_thaw_toplevel_updates (CdkWindow *window)
  * usually more useful than calling cdk_window_set_debug_updates()
  * yourself, though you might want to use this function to enable
  * updates sometime after application startup time.
- *
- * Deprecated: 3.22
  */
 void
 cdk_window_set_debug_updates (gboolean setting)
