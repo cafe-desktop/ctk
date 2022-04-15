@@ -622,11 +622,9 @@ render_para (CtkTextRenderer    *text_renderer,
   selection_node = ctk_text_view_get_selection_node ((CtkTextView*)text_renderer->widget);
   ctk_style_context_save_to_node (context, selection_node);
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   ctk_style_context_get_background_color (context, ctk_style_context_get_state (context), &selection);
-G_GNUC_END_IGNORE_DEPRECATIONS
 
- ctk_style_context_restore (context);
+  ctk_style_context_restore (context);
 
   do
     {
@@ -817,9 +815,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                 {
                   CdkRGBA color;
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
                   ctk_style_context_get_background_color (context, ctk_style_context_get_state (context), &color);
-G_GNUC_END_IGNORE_DEPRECATIONS
 
                   cdk_cairo_set_source_rgba (cr, &color);
 

@@ -1197,7 +1197,7 @@ CDK_AVAILABLE_IN_ALL
 void ctk_style_context_get_color            (CtkStyleContext *context,
                                              CtkStateFlags    state,
                                              CdkRGBA         *color);
-CDK_DEPRECATED_IN_3_16_FOR(ctk_render_background)
+CDK_AVAILABLE_IN_ALL
 void ctk_style_context_get_background_color (CtkStyleContext *context,
                                              CtkStateFlags    state,
                                              CdkRGBA         *color);

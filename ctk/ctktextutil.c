@@ -262,9 +262,7 @@ set_attributes_from_style (CtkStyleContext   *context,
 
   state = ctk_style_context_get_state (context);
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   ctk_style_context_get_background_color (context, state, &bg_color);
-G_GNUC_END_IGNORE_DEPRECATIONS
   ctk_style_context_get_color (context, state, &fg_color);
 
   values->appearance.bg_color.red = CLAMP (bg_color.red * 65535. + 0.5, 0, 65535);

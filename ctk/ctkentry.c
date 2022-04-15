@@ -6630,11 +6630,9 @@ ctk_entry_draw_cursor (CtkEntry  *entry,
         {
           CdkRGBA color;
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
           ctk_style_context_get_background_color (context,
                                                   ctk_style_context_get_state (context),
                                                   &color);
-G_GNUC_END_IGNORE_DEPRECATIONS
 
           cdk_cairo_rectangle (cr, &rect);
           cairo_clip (cr);
