@@ -36,9 +36,9 @@ int main (int argc, char *argv[])
 
 	hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 0);
 	ctk_container_add (CTK_CONTAINER (box), hbox);
-        G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
+
 	button = ctk_button_new_from_stock (CTK_STOCK_SAVE);
-        G_GNUC_END_IGNORE_DEPRECATIONS;
+
 	ctk_container_add (CTK_CONTAINER (hbox), button);
 
 	g_object_get (button,

@@ -1461,9 +1461,6 @@ ctk_button_new_from_icon_name (const gchar *icon_name,
  * label (as for ctk_button_new_with_mnemonic()).
  *
  * Returns: a new #CtkButton
- *
- * Deprecated: 3.10: Stock items are deprecated. Use ctk_button_new_with_label()
- * instead.
  */
 CtkWidget*
 ctk_button_new_from_stock (const gchar *stock_id)

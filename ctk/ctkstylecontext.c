@@ -2544,6 +2544,8 @@ ctk_style_context_get_color (CtkStyleContext *context,
  * to use the returned value to draw the background with it; the correct way to
  * achieve this result is to use ctk_render_background() instead, along with CSS
  * style classes to modify the color to be rendered.
+ *
+ * Since: 3.0
  **/
 void
 ctk_style_context_get_background_color (CtkStyleContext *context,

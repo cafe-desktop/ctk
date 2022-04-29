@@ -190,9 +190,8 @@ populate_flowbox_stock (CtkFlowBox *flowbox)
       gchar *stock_id = l->data;
       gchar *text = g_strdup_printf ("Item %02d", i);
 
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       widget = ctk_button_new_from_stock (stock_id);
-      G_GNUC_END_IGNORE_DEPRECATIONS;
+
       ctk_widget_show (widget);
 
       g_object_set_data_full (G_OBJECT (widget), "id", (gpointer)g_strdup (text), g_free);

@@ -99,7 +99,7 @@ CtkWidget*     ctk_button_new_with_label    (const gchar    *label);
 CDK_AVAILABLE_IN_3_10
 CtkWidget*     ctk_button_new_from_icon_name (const gchar    *icon_name,
 					      CtkIconSize     size);
-CDK_DEPRECATED_IN_3_10_FOR(ctk_button_new_with_label)
+CDK_AVAILABLE_IN_ALL
 CtkWidget*     ctk_button_new_from_stock    (const gchar    *stock_id);
 CDK_AVAILABLE_IN_ALL
 CtkWidget*     ctk_button_new_with_mnemonic (const gchar    *label);
