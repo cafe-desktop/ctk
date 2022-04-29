@@ -3,6 +3,7 @@
 ##########################################################
 requires:
   debian:
+    - aptitude
     - autoconf
     - autoconf-archive
     - automake
