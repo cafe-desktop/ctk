@@ -9,7 +9,7 @@
       <object class="CtkImage" id="image1">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="icon_name">media-playback-stop-symbolic</property>
+        <property name="icon_name">format-justify-fill-symbolic</property>
       </object>
     </child>
   </object>
