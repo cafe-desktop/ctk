@@ -135,9 +135,7 @@ ctk_recent_chooser_dialog_init (CtkRecentChooserDialog *dialog)
   ctk_dialog_set_use_header_bar_from_setting (CTK_DIALOG (dialog));
 
   content_area = ctk_dialog_get_content_area (rc_dialog);
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   action_area = ctk_dialog_get_action_area (rc_dialog);
-G_GNUC_END_IGNORE_DEPRECATIONS
 
   ctk_container_set_border_width (CTK_CONTAINER (rc_dialog), 5);
   ctk_box_set_spacing (CTK_BOX (content_area), 2); /* 2 * 5 + 2 = 12 */
@@ -162,9 +160,8 @@ ctk_recent_chooser_item_activated_cb (CtkRecentChooser *chooser,
   if (ctk_window_activate_default (CTK_WINDOW (dialog)))
     return;
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   action_area = ctk_dialog_get_action_area (rc_dialog);
-G_GNUC_END_IGNORE_DEPRECATIONS
+
   children = ctk_container_get_children (CTK_CONTAINER (action_area));
   
   for (l = children; l; l = l->next)
@@ -181,7 +178,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
           response_id == CTK_RESPONSE_APPLY)
         {
           g_list_free (children);
-	  
+
           ctk_dialog_response (CTK_DIALOG (dialog), response_id);
 
           return;

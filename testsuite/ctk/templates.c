@@ -37,9 +37,9 @@ test_dialog_basic (void)
 
   dialog = ctk_dialog_new();
   g_assert (CTK_IS_DIALOG (dialog));
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+
   g_assert (ctk_dialog_get_action_area (CTK_DIALOG (dialog)) != NULL);
-G_GNUC_END_IGNORE_DEPRECATIONS
+
   g_assert (ctk_dialog_get_content_area (CTK_DIALOG (dialog)) != NULL);
 
   ctk_widget_destroy (dialog);

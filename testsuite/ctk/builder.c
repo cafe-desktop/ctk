@@ -1044,9 +1044,8 @@ test_children (void)
   g_assert (strcmp (ctk_buildable_get_name (CTK_BUILDABLE (content_area)), "dialog1-vbox") == 0);
 
   action_area = ctk_builder_get_object (builder, "dialog1-action_area");
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   dialog_action_area = ctk_dialog_get_action_area (CTK_DIALOG (dialog));
-G_GNUC_END_IGNORE_DEPRECATIONS
+
   g_assert (action_area != NULL);
   g_assert (CTK_IS_BUTTON_BOX (action_area));
   g_assert (ctk_orientable_get_orientation (CTK_ORIENTABLE (action_area)) == CTK_ORIENTATION_HORIZONTAL);

@@ -544,9 +544,8 @@ update_spacings (CtkAppChooserDialog *self)
   widget = ctk_dialog_get_content_area (CTK_DIALOG (self));
   ctk_container_set_border_width (CTK_CONTAINER (widget), 0);
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   widget = ctk_dialog_get_action_area (CTK_DIALOG (self));
-G_GNUC_END_IGNORE_DEPRECATIONS
+
   ctk_container_set_border_width (CTK_CONTAINER (widget), 5 + content_area_border + action_area_border);
 
   widget = self->priv->inner_box;

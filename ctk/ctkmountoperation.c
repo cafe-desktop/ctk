@@ -576,9 +576,8 @@ ctk_mount_operation_ask_password_do_ctk (CtkMountOperation *operation,
   priv->dialog = dialog;
 
   content_area = ctk_dialog_get_content_area (dialog);
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+
   action_area = ctk_dialog_get_action_area (dialog);
-G_GNUC_END_IGNORE_DEPRECATIONS
 
   /* Set the dialog up with HIG properties */
   ctk_container_set_border_width (CTK_CONTAINER (dialog), 5);

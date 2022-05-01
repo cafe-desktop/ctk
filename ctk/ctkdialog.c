@@ -1984,9 +1984,6 @@ ctk_dialog_buildable_add_child (CtkBuildable  *buildable,
  * Returns: (type Ctk.Box) (transfer none): the action area
  *
  * Since: 2.14
- *
- * Deprecated:3.12: Direct access to the action area
- *   is discouraged; use ctk_dialog_add_button(), etc.
  */
 CtkWidget *
 ctk_dialog_get_action_area (CtkDialog *dialog)

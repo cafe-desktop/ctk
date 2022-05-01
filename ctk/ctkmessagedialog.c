@@ -324,9 +324,9 @@ ctk_message_dialog_init (CtkMessageDialog *dialog)
 
   ctk_widget_init_template (CTK_WIDGET (dialog));
   ctk_message_dialog_style_updated (CTK_WIDGET (dialog));
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+
   action_area = ctk_dialog_get_action_area (CTK_DIALOG (dialog));
-G_GNUC_END_IGNORE_DEPRECATIONS
+
   ctk_button_box_set_layout (CTK_BUTTON_BOX (action_area), CTK_BUTTONBOX_EXPAND);
 
   settings = ctk_widget_get_settings (CTK_WIDGET (dialog));

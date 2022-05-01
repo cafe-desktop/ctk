@@ -205,7 +205,7 @@ void ctk_dialog_response           (CtkDialog *dialog,
 CDK_AVAILABLE_IN_ALL
 gint ctk_dialog_run                (CtkDialog *dialog);
 
-CDK_DEPRECATED_IN_3_10
+CDK_AVAILABLE_IN_ALL
 CtkWidget * ctk_dialog_get_action_area  (CtkDialog *dialog);
 CDK_AVAILABLE_IN_ALL
 CtkWidget * ctk_dialog_get_content_area (CtkDialog *dialog);

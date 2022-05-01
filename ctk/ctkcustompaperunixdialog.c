@@ -1033,9 +1033,8 @@ populate_dialog (CtkCustomPaperUnixDialog *dialog)
   CtkStyleContext *context;
 
   content_area = ctk_dialog_get_content_area (cpu_dialog);
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS 
   action_area = ctk_dialog_get_action_area (cpu_dialog);
-G_GNUC_END_IGNORE_DEPRECATIONS 
+
   ctk_container_set_border_width (CTK_CONTAINER (dialog), 5);
   ctk_box_set_spacing (CTK_BOX (content_area), 2); /* 2 * 5 + 2 = 12 */
   ctk_container_set_border_width (CTK_CONTAINER (action_area), 5);

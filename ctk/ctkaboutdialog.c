@@ -696,9 +696,7 @@ apply_use_header_bar (CtkAboutDialog *about)
     {
       CtkWidget *action_area;
 
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       action_area = ctk_dialog_get_action_area (CTK_DIALOG (about));
-      G_GNUC_END_IGNORE_DEPRECATIONS
 
       priv->credits_button = ctk_toggle_button_new_with_mnemonic (_("C_redits"));
       g_object_bind_property (priv->credits_page, "visible",
