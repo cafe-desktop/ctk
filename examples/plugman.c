@@ -209,9 +209,7 @@ plugin_action (GAction  *action,
 
   cdk_rgba_parse (&color, g_action_get_name (action));
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   ctk_widget_override_color (text, 0, &color);
-G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void

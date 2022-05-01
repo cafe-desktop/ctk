@@ -9766,8 +9766,6 @@ _ctk_widget_get_modifier_properties (CtkWidget *widget)
  * priority.
  *
  * Since: 3.0
- *
- * Deprecated:3.16: Use a custom style provider and style classes instead
  */
 void
 ctk_widget_override_color (CtkWidget     *widget,

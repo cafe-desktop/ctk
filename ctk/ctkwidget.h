@@ -1140,7 +1140,7 @@ CDK_AVAILABLE_IN_ALL
 gboolean     ctk_widget_hide_on_delete	(CtkWidget	*widget);
 
 /* Functions to override widget styling */
-CDK_DEPRECATED_IN_3_16
+CDK_AVAILABLE_IN_ALL
 void         ctk_widget_override_color            (CtkWidget     *widget,
                                                    CtkStateFlags  state,
                                                    const CdkRGBA *color);
