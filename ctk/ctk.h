@@ -39,6 +39,7 @@
 #include <ctk/ctkactionbar.h>
 #include <ctk/ctkactivatable.h>
 #include <ctk/ctkadjustment.h>
+#include <ctk/ctkalignment.h>
 #include <ctk/ctkappchooser.h>
 #include <ctk/ctkappchooserdialog.h>
 #include <ctk/ctkappchooserwidget.h>
@@ -265,7 +266,6 @@
 
 #ifndef CTK_DISABLE_DEPRECATED
 #include <ctk/deprecated/ctkarrow.h>
-#include <ctk/deprecated/ctkalignment.h>
 #include <ctk/deprecated/ctkcolorsel.h>
 #include <ctk/deprecated/ctkcolorseldialog.h>
 #include <ctk/deprecated/ctkfontsel.h>
