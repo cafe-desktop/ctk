@@ -832,9 +832,7 @@ ctk_tree_view_column_create_button (CtkTreeViewColumn *tree_column)
 		    G_CALLBACK (ctk_tree_view_column_button_clicked),
 		    tree_column);
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   priv->alignment = ctk_alignment_new (priv->xalign, 0.5, 0.0, 0.0);
-G_GNUC_END_IGNORE_DEPRECATIONS
 
   hbox = ctk_box_new (CTK_ORIENTATION_HORIZONTAL, 2);
   priv->arrow = ctk_image_new_from_icon_name ("pan-down-symbolic", CTK_ICON_SIZE_BUTTON);
@@ -892,9 +890,7 @@ ctk_tree_view_column_update_button (CtkTreeViewColumn *tree_column)
   current_child = ctk_bin_get_child (CTK_BIN (alignment));
 
   /* Set up the actual button */
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   ctk_alignment_set (CTK_ALIGNMENT (alignment), priv->xalign, 0.5, 0.0, 0.0);
-G_GNUC_END_IGNORE_DEPRECATIONS
       
   if (priv->child)
     {
