@@ -636,11 +636,6 @@ struct _CdkEventExpose
  *   %CDK_VISIBILITY_PARTIAL or %CDK_VISIBILITY_UNOBSCURED).
  *
  * Generated when the window visibility status has changed.
- *
- * Deprecated: 3.12: Modern composited windowing systems with pervasive
- *     transparency make it impossible to track the visibility of a window
- *     reliably, so this event can not be guaranteed to provide useful
- *     information.
  */
 struct _CdkEventVisibility
 {

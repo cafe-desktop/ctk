@@ -51,8 +51,6 @@ typedef struct _CtkColorSelectionClass  CtkColorSelectionClass;
  * CtkColorSelectionChangePaletteFunc:
  * @colors: (array length=n_colors): Array of colors
  * @n_colors: Number of colors in the array
- *
- * Deprecated: 3.4
  */
 typedef void (* CtkColorSelectionChangePaletteFunc) (const CdkColor    *colors,
                                                      gint               n_colors);
@@ -64,7 +62,6 @@ typedef void (* CtkColorSelectionChangePaletteFunc) (const CdkColor    *colors,
  * @n_colors: Number of colors in the array
  *
  * Since: 2.2
- * Deprecated: 3.4
  */
 typedef void (* CtkColorSelectionChangePaletteWithScreenFunc) (CdkScreen         *screen,
 							       const CdkColor    *colors,

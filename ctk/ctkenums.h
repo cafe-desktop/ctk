@@ -501,9 +501,6 @@ typedef enum
  * the widget is drawn. The #CtkStateType enumeration is also used to
  * identify different colors in a #CtkStyle for drawing, so states can be
  * used for subparts of a widget as well as entire widgets.
- *
- * Deprecated: 3.14: All APIs that are using this enumeration have been deprecated
- *     in favor of alternatives using #CtkStateFlags.
  */
 typedef enum
 {
@@ -580,8 +577,6 @@ typedef enum
  *
  * Style for input method preedit. See also
  * #CtkSettings:ctk-im-preedit-style
- *
- * Deprecated: 3.10
  */
 typedef enum
 {
@@ -598,8 +593,6 @@ typedef enum
  *
  * Style for input method status. See also
  * #CtkSettings:ctk-im-status-style
- *
- * Deprecated: 3.10
  */
 typedef enum
 {

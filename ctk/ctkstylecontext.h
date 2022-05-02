@@ -983,8 +983,6 @@ struct _CtkStyleContextClass
  * CTK_STYLE_REGION_ROW:
  *
  * A widget region name to define a treeview row.
- *
- * Deprecated: 3.20: Don't use regions.
  */
 #define CTK_STYLE_REGION_ROW "row"
 
@@ -992,8 +990,6 @@ struct _CtkStyleContextClass
  * CTK_STYLE_REGION_COLUMN:
  *
  * A widget region name to define a treeview column.
- *
- * Deprecated: 3.20: Don't use regions.
  */
 #define CTK_STYLE_REGION_COLUMN "column"
 
@@ -1001,8 +997,6 @@ struct _CtkStyleContextClass
  * CTK_STYLE_REGION_COLUMN_HEADER:
  *
  * A widget region name to define a treeview column header.
- *
- * Deprecated: 3.20: Don't use regions.
  */
 #define CTK_STYLE_REGION_COLUMN_HEADER "column-header"
 
@@ -1010,8 +1004,6 @@ struct _CtkStyleContextClass
  * CTK_STYLE_REGION_TAB:
  *
  * A widget region name to define a notebook tab.
- *
- * Deprecated: 3.20: Don't use regions.
  */
 #define CTK_STYLE_REGION_TAB "tab"
 

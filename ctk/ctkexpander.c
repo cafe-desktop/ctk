@@ -1337,8 +1337,6 @@ ctk_expander_get_expanded (CtkExpander *expander)
  * pixels to place between expander and the child.
  *
  * Since: 2.4
- *
- * Deprecated: 3.20: Use margins on the child instead.
  */
 void
 ctk_expander_set_spacing (CtkExpander *expander,
@@ -1366,8 +1364,6 @@ ctk_expander_set_spacing (CtkExpander *expander,
  * Returns: spacing between the expander and child
  *
  * Since: 2.4
- *
- * Deprecated: 3.20: Use margins on the child instead.
  */
 gint
 ctk_expander_get_spacing (CtkExpander *expander)

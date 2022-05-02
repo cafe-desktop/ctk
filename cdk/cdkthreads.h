@@ -89,9 +89,6 @@ guint    cdk_threads_add_timeout_seconds      (guint          interval,
  * section. The macro expands to a no-op if #G_THREADS_ENABLED has not
  * been defined. Typically cdk_threads_enter() should be used instead of
  * this macro.
- *
- * Deprecated:3.6: Use g_main_context_invoke(), g_idle_add() and related
- *     functions if you need to schedule CTK+ calls from other threads.
  */
 #define CDK_THREADS_ENTER() cdk_threads_enter()
 
@@ -100,8 +97,6 @@ guint    cdk_threads_add_timeout_seconds      (guint          interval,
  *
  * This macro marks the end of a critical section
  * begun with #CDK_THREADS_ENTER.
- *
- * Deprecated:3.6: Deprecated in 3.6.
  */
 #define CDK_THREADS_LEAVE() cdk_threads_leave()
 
