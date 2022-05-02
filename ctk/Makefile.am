@@ -136,6 +136,7 @@ ctk_public_h_sources = 		\
 	ctkactionbar.h		\
 	ctkactivatable.h	\
 	ctkadjustment.h		\
+	ctkalignment.h		\
 	ctkappchooser.h		\
 	ctkappchooserbutton.h	\
 	ctkappchooserdialog.h	\
@@ -632,6 +633,7 @@ ctk_base_c_sources = 		\
 	ctkactionobservable.c	\
 	ctkactionable.c		\
 	ctkactivatable.c	\
+	ctkalignment.c		\
 	ctkquery.c		\
 	ctksearchbar.c		\
 	ctksearchentry.c	\

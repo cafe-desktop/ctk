@@ -40,8 +40,7 @@
  * Of course, if the scale settings are both set to 1, the alignment settings
  * have no effect.
  *
- * CtkAlignment has been deprecated in 3.14 and should not be used in
- * newly-written code. The desired effect can be achieved by using the
+ * The desired effect can be achieved by using the
  * #CtkWidget:halign, #CtkWidget:valign and #CtkWidget:margin properties on the
  * child widget.
  */
@@ -51,9 +50,6 @@
 #include "ctksizerequest.h"
 #include "ctkprivate.h"
 #include "ctkintl.h"
-
-
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
 
 struct _CtkAlignmentPrivate
@@ -142,8 +138,6 @@ ctk_alignment_class_init (CtkAlignmentClass *class)
    * Horizontal position of child in available space. A value of 0.0
    * will flush the child left (or right, in RTL locales); a value
    * of 1.0 will flush the child right (or left, in RTL locales).
-   *
-   * Deprecated: 3.14: Use ctk_widget_set_halign() on the child instead
    */
   g_object_class_install_property (gobject_class,
                                    PROP_XALIGN,
@@ -153,7 +147,7 @@ ctk_alignment_class_init (CtkAlignmentClass *class)
                                                       0.0,
                                                       1.0,
                                                       0.5,
-                                                      CTK_PARAM_READWRITE|G_PARAM_DEPRECATED));
+                                                      CTK_PARAM_READWRITE));
    
   /**
    * CtkAlignment:yalign:
@@ -161,8 +155,6 @@ ctk_alignment_class_init (CtkAlignmentClass *class)
    * Vertical position of child in available space. A value of 0.0
    * will flush the child to the top; a value of 1.0 will flush the
    * child to the bottom.
-   *
-   * Deprecated: 3.14: Use ctk_widget_set_valign() on the child instead
    */
   g_object_class_install_property (gobject_class,
                                    PROP_YALIGN,
@@ -172,15 +164,13 @@ ctk_alignment_class_init (CtkAlignmentClass *class)
                                                       0.0,
                                                       1.0,
 						      0.5,
-                                                      CTK_PARAM_READWRITE|G_PARAM_DEPRECATED));
+                                                      CTK_PARAM_READWRITE));
   /**
    * CtkAlignment:xscale:
    *
    * If available horizontal space is bigger than needed, how much
    * of it to use for the child. A value of 0.0 means none; a value
    * of 1.0 means all.
-   *
-   * Deprecated: 3.14: Use ctk_widget_set_hexpand() on the child instead
    */
   g_object_class_install_property (gobject_class,
                                    PROP_XSCALE,
@@ -190,15 +180,13 @@ ctk_alignment_class_init (CtkAlignmentClass *class)
                                                       0.0,
                                                       1.0,
                                                       1.0,
-                                                      CTK_PARAM_READWRITE|G_PARAM_DEPRECATED));
+                                                      CTK_PARAM_READWRITE));
   /**
    * CtkAlignment:yscale:
    *
    * If available vertical space is bigger than needed, how much
    * of it to use for the child. A value of 0.0 means none; a value
    * of 1.0 means all.
-   *
-   * Deprecated: 3.14: Use ctk_widget_set_vexpand() on the child instead
    */
   g_object_class_install_property (gobject_class,
                                    PROP_YSCALE,
@@ -208,7 +196,7 @@ ctk_alignment_class_init (CtkAlignmentClass *class)
                                                       0.0,
                                                       1.0,
                                                       1.0,
-                                                      CTK_PARAM_READWRITE|G_PARAM_DEPRECATED));
+                                                      CTK_PARAM_READWRITE));
 
 
 /**
@@ -217,8 +205,6 @@ ctk_alignment_class_init (CtkAlignmentClass *class)
  * The padding to insert at the top of the widget.
  *
  * Since: 2.4
- *
- * Deprecated: 3.14: Use ctk_widget_set_margin_top() instead
  */
   g_object_class_install_property (gobject_class,
                                    PROP_TOP_PADDING,
@@ -228,7 +214,7 @@ ctk_alignment_class_init (CtkAlignmentClass *class)
                                                       0,
                                                       G_MAXINT,
                                                       0,
-                                                      CTK_PARAM_READWRITE|G_PARAM_DEPRECATED));
+                                                      CTK_PARAM_READWRITE));
 
 /**
  * CtkAlignment:bottom-padding:
@@ -236,8 +222,6 @@ ctk_alignment_class_init (CtkAlignmentClass *class)
  * The padding to insert at the bottom of the widget.
  *
  * Since: 2.4
- *
- * Deprecated: 3.14: Use ctk_widget_set_margin_bottom() instead
  */
   g_object_class_install_property (gobject_class,
                                    PROP_BOTTOM_PADDING,
@@ -247,7 +231,7 @@ ctk_alignment_class_init (CtkAlignmentClass *class)
                                                       0,
                                                       G_MAXINT,
                                                       0,
-                                                      CTK_PARAM_READWRITE|G_PARAM_DEPRECATED));
+                                                      CTK_PARAM_READWRITE));
 
 /**
  * CtkAlignment:left-padding:
@@ -255,8 +239,6 @@ ctk_alignment_class_init (CtkAlignmentClass *class)
  * The padding to insert at the left of the widget.
  *
  * Since: 2.4
- *
- * Deprecated: 3.14: Use ctk_widget_set_margin_start() instead
  */
   g_object_class_install_property (gobject_class,
                                    PROP_LEFT_PADDING,
@@ -266,7 +248,7 @@ ctk_alignment_class_init (CtkAlignmentClass *class)
                                                       0,
                                                       G_MAXINT,
                                                       0,
-                                                      CTK_PARAM_READWRITE|G_PARAM_DEPRECATED));
+                                                      CTK_PARAM_READWRITE));
 
 /**
  * CtkAlignment:right-padding:
@@ -274,8 +256,6 @@ ctk_alignment_class_init (CtkAlignmentClass *class)
  * The padding to insert at the right of the widget.
  *
  * Since: 2.4
- *
- * Deprecated: 3.14: Use ctk_widget_set_margin_end() instead
  */
   g_object_class_install_property (gobject_class,
                                    PROP_RIGHT_PADDING,
@@ -285,7 +265,7 @@ ctk_alignment_class_init (CtkAlignmentClass *class)
                                                       0,
                                                       G_MAXINT,
                                                       0,
-                                                      CTK_PARAM_READWRITE|G_PARAM_DEPRECATED));
+                                                      CTK_PARAM_READWRITE));
 }
 
 static void
@@ -327,8 +307,6 @@ ctk_alignment_init (CtkAlignment *alignment)
  * Creates a new #CtkAlignment.
  *
  * Returns: the new #CtkAlignment
- *
- * Deprecated: 3.14: Use #CtkWidget alignment and margin properties
  */
 CtkWidget*
 ctk_alignment_new (gfloat xalign,
@@ -487,8 +465,6 @@ ctk_alignment_get_property (GObject         *object,
  *  unused space, from 0 to 1. The values are similar to @xscale.
  *
  * Sets the #CtkAlignment values.
- *
- * Deprecated: 3.14: Use #CtkWidget alignment and margin properties
  */
 void
 ctk_alignment_set (CtkAlignment *alignment,
@@ -796,8 +772,6 @@ ctk_alignment_get_preferred_height_and_baseline_for_width (CtkWidget           *
  * padding on the left.
  *
  * Since: 2.4
- *
- * Deprecated: 3.14: Use #CtkWidget alignment and margin properties
  */
 void
 ctk_alignment_set_padding (CtkAlignment    *alignment,
@@ -862,8 +836,6 @@ ctk_alignment_set_padding (CtkAlignment    *alignment,
  * See ctk_alignment_set_padding ().
  *
  * Since: 2.4
- *
- * Deprecated: 3.14: Use #CtkWidget alignment and margin properties
  */
 void
 ctk_alignment_get_padding (CtkAlignment    *alignment,
