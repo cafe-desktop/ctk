@@ -80,9 +80,7 @@ create_alignment (void)
 {
   CtkWidget *alignment;
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   alignment = ctk_alignment_new (0.5, 0.5, 1.0, 1.0);
-G_GNUC_END_IGNORE_DEPRECATIONS
 
   /* make the alignment visible */
   ctk_widget_set_redraw_on_allocate (alignment, TRUE);
