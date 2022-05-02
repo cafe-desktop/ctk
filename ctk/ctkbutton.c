@@ -57,7 +57,7 @@
 #include "ctkbuttonprivate.h"
 
 #include <string.h>
-#include "deprecated/ctkalignment.h"
+#include "ctkalignment.h"
 #include "ctklabel.h"
 #include "ctkmain.h"
 #include "ctkmarshalers.h"

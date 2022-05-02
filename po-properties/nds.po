@@ -453,11 +453,11 @@ msgstr ""
 "Legt fest, ob die zugewiesene Eigenschaft der Aktionserscheinung verwendet "
 "werden soll"
 
-#: ctk/deprecated/ctkalignment.c:151
+#: ctk/ctkalignment.c:151
 msgid "Horizontal alignment"
 msgstr "Horizontale Utrichten"
 
-#: ctk/deprecated/ctkalignment.c:152 ctk/ctkbutton.c:328
+#: ctk/ctkalignment.c:152 ctk/ctkbutton.c:328
 #, fuzzy
 msgid ""
 "Horizontal position of child in available space. 0.0 is left aligned, 1.0 is "
@@ -466,11 +466,11 @@ msgstr ""
 "Die vertikale Position des Kindes in der verfügbaren Fläche. Bei 0.0 wird es "
 "links-, bei 1.0 rechtsbündig ausgerichtet"
 
-#: ctk/deprecated/ctkalignment.c:170
+#: ctk/ctkalignment.c:170
 msgid "Vertical alignment"
 msgstr "Vertikale Utrichten"
 
-#: ctk/deprecated/ctkalignment.c:171 ctk/ctkbutton.c:347
+#: ctk/ctkalignment.c:171 ctk/ctkbutton.c:347
 #, fuzzy
 msgid ""
 "Vertical position of child in available space. 0.0 is top aligned, 1.0 is "
@@ -479,11 +479,11 @@ msgstr ""
 "Die vertikale Position des Kindes in der verfügbaren Fläche. Bei 0.0 wird es "
 "am oberen, bei 1.0 am unteren Rand ausgerichtet"
 
-#: ctk/deprecated/ctkalignment.c:188
+#: ctk/ctkalignment.c:188
 msgid "Horizontal scale"
 msgstr "Horizontaler Maßstab"
 
-#: ctk/deprecated/ctkalignment.c:189
+#: ctk/ctkalignment.c:189
 msgid ""
 "If available horizontal space is bigger than needed for the child, how much "
 "of it to use for the child. 0.0 means none, 1.0 means all"
@@ -492,11 +492,11 @@ msgstr ""
 "verwendet werden, falls sie größer als die für das Kind angeforderte ist? "
 "0.0 heißt: keine, 1.0 heißt: die gesamte Fläche"
 
-#: ctk/deprecated/ctkalignment.c:206
+#: ctk/ctkalignment.c:206
 msgid "Vertical scale"
 msgstr "Vertikaler Maßstab"
 
-#: ctk/deprecated/ctkalignment.c:207
+#: ctk/ctkalignment.c:207
 msgid ""
 "If available vertical space is bigger than needed for the child, how much of "
 "it to use for the child. 0.0 means none, 1.0 means all"
@@ -505,39 +505,39 @@ msgstr ""
 "werden, falls sie größer als die für das Kind angeforderte ist? 0.0 heißt: "
 "keine, 1.0 heißt: die gesamte Fläche"
 
-#: ctk/deprecated/ctkalignment.c:226
+#: ctk/ctkalignment.c:226
 msgid "Top Padding"
 msgstr "Opfüllen boven"
 
-#: ctk/deprecated/ctkalignment.c:227
+#: ctk/ctkalignment.c:227
 #, fuzzy
 msgid "The padding to insert at the top of the widget."
 msgstr "Die oben am Widget anzufügende Auffüllung."
 
-#: ctk/deprecated/ctkalignment.c:245
+#: ctk/ctkalignment.c:245
 msgid "Bottom Padding"
 msgstr "Opfüllen unnen"
 
-#: ctk/deprecated/ctkalignment.c:246
+#: ctk/ctkalignment.c:246
 #, fuzzy
 msgid "The padding to insert at the bottom of the widget."
 msgstr "Die unten am Widget anzufügende Auffüllung."
 
-#: ctk/deprecated/ctkalignment.c:264
+#: ctk/ctkalignment.c:264
 #, fuzzy
 msgid "Left Padding"
 msgstr "Auffüllung links"
 
-#: ctk/deprecated/ctkalignment.c:265
+#: ctk/ctkalignment.c:265
 #, fuzzy
 msgid "The padding to insert at the left of the widget."
 msgstr "Die links am Widget anzufügende Auffüllung."
 
-#: ctk/deprecated/ctkalignment.c:283
+#: ctk/ctkalignment.c:283
 msgid "Right Padding"
 msgstr "Rechte Opfüllen"
 
-#: ctk/deprecated/ctkalignment.c:284
+#: ctk/ctkalignment.c:284
 #, fuzzy
 msgid "The padding to insert at the right of the widget."
 msgstr "Die rechts am Widget anzufügende Auffüllung."

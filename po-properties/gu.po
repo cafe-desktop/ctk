@@ -439,11 +439,11 @@ msgstr "Action Appearance ને વાપરો"
 msgid "Whether to use the related actions appearance properties"
 msgstr "ક્યાંતો સંબંધિત ક્રિયાઓ દેખાતા ગુણધર્મોને વાપરે છે"
 
-#: ctk/deprecated/ctkalignment.c:151
+#: ctk/ctkalignment.c:151
 msgid "Horizontal alignment"
 msgstr "આડી કતારબંધ ગોઠવણી"
 
-#: ctk/deprecated/ctkalignment.c:152 ctk/ctkbutton.c:328
+#: ctk/ctkalignment.c:152 ctk/ctkbutton.c:328
 msgid ""
 "Horizontal position of child in available space. 0.0 is left aligned, 1.0 is "
 "right aligned"
@@ -451,11 +451,11 @@ msgstr ""
 "પ્રાપ્ય જગ્યામાં બાળની આડી સ્થિતિ.0.0 ડાબી બાજુ, અને 1.0 જમણી બાજુ કતારબંધ રીતે "
 "ગોઠવાયેલી છે"
 
-#: ctk/deprecated/ctkalignment.c:170
+#: ctk/ctkalignment.c:170
 msgid "Vertical alignment"
 msgstr "ઊભી કતારબંધ ગોઠવણી"
 
-#: ctk/deprecated/ctkalignment.c:171 ctk/ctkbutton.c:347
+#: ctk/ctkalignment.c:171 ctk/ctkbutton.c:347
 msgid ""
 "Vertical position of child in available space. 0.0 is top aligned, 1.0 is "
 "bottom aligned"
@@ -463,11 +463,11 @@ msgstr ""
 "પ્રાપ્ય જગ્યામાં બાળની ઊભી સ્થિતિ.0.0 ઉપરની બાજુ,1.0 નીચેની બાજુ કતારબંધ રીતે ગોઠવાયેલી "
 "છે"
 
-#: ctk/deprecated/ctkalignment.c:188
+#: ctk/ctkalignment.c:188
 msgid "Horizontal scale"
 msgstr "આડુ માપદંડ"
 
-#: ctk/deprecated/ctkalignment.c:189
+#: ctk/ctkalignment.c:189
 msgid ""
 "If available horizontal space is bigger than needed for the child, how much "
 "of it to use for the child. 0.0 means none, 1.0 means all"
@@ -475,11 +475,11 @@ msgstr ""
 "જો પ્રાપ્ય આડી જગ્યા બાળને જરુર કરતા વધારે હોય તો, બાળ માટે તેનો કેટલોઉપયોગ થયો. 0.0 "
 "એટલે જરા પણ નહિ, 1.0 એટલે બધી"
 
-#: ctk/deprecated/ctkalignment.c:206
+#: ctk/ctkalignment.c:206
 msgid "Vertical scale"
 msgstr "ઉભુ માપદંડ"
 
-#: ctk/deprecated/ctkalignment.c:207
+#: ctk/ctkalignment.c:207
 msgid ""
 "If available vertical space is bigger than needed for the child, how much of "
 "it to use for the child. 0.0 means none, 1.0 means all"
@@ -487,35 +487,35 @@ msgstr ""
 "જો પ્રાપ્ય ઉભી જગ્યા બાળને જરુર કરતા વધારે હોય તો, બાળ માટે તેનો કેટલો ઉપયોગ થયો. 0.0 "
 "એટલે જરાપણ નહિ, 1.0 એટલે બધી"
 
-#: ctk/deprecated/ctkalignment.c:226
+#: ctk/ctkalignment.c:226
 msgid "Top Padding"
 msgstr "ખાલી જગ્યા ભરો"
 
-#: ctk/deprecated/ctkalignment.c:227
+#: ctk/ctkalignment.c:227
 msgid "The padding to insert at the top of the widget."
 msgstr "બાળ વિજેટની ઉપરની બાજુ જોડવા માટેનો હરોળનો ક્રમાંક."
 
-#: ctk/deprecated/ctkalignment.c:245
+#: ctk/ctkalignment.c:245
 msgid "Bottom Padding"
 msgstr "ખાલી જગ્યા ભરો"
 
-#: ctk/deprecated/ctkalignment.c:246
+#: ctk/ctkalignment.c:246
 msgid "The padding to insert at the bottom of the widget."
 msgstr "બાળને નીચેથી જોડવાની હરોળની સંખ્યા."
 
-#: ctk/deprecated/ctkalignment.c:264
+#: ctk/ctkalignment.c:264
 msgid "Left Padding"
 msgstr "ખાલી જગ્યા ભરો"
 
-#: ctk/deprecated/ctkalignment.c:265
+#: ctk/ctkalignment.c:265
 msgid "The padding to insert at the left of the widget."
 msgstr "બાળની ડાબી બાજુ જોડવા માટેનો સ્તંભનો ક્રમાંક."
 
-#: ctk/deprecated/ctkalignment.c:283
+#: ctk/ctkalignment.c:283
 msgid "Right Padding"
 msgstr "જમણો હાંસ્યો"
 
-#: ctk/deprecated/ctkalignment.c:284
+#: ctk/ctkalignment.c:284
 msgid "The padding to insert at the right of the widget."
 msgstr "વિજેટની ડાબી અને જમણી બાજુને ઉમેરવામાં આવતી જગ્યા પિક્સેલમાં."
 
