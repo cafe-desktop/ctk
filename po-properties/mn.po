@@ -478,12 +478,12 @@ msgid "Whether to use the related actions appearance properties"
 msgstr "Текст хулганаар сонгогдож чадах эсэх"
 
 # ctk/ctkalignment.c:102
-#: ctk/deprecated/ctkalignment.c:151
+#: ctk/ctkalignment.c:151
 msgid "Horizontal alignment"
 msgstr "Хэвтээ зэрэгцүүлэлт "
 
 # ctk/ctkalignment.c:103
-#: ctk/deprecated/ctkalignment.c:152 ctk/ctkbutton.c:328
+#: ctk/ctkalignment.c:152 ctk/ctkbutton.c:328
 msgid ""
 "Horizontal position of child in available space. 0.0 is left aligned, 1.0 is "
 "right aligned"
@@ -492,12 +492,12 @@ msgstr ""
 "баруун зэрэгцүүлсэн "
 
 # ctk/ctkalignment.c:112
-#: ctk/deprecated/ctkalignment.c:170
+#: ctk/ctkalignment.c:170
 msgid "Vertical alignment"
 msgstr "Босоо зэрэгцүүлэлт "
 
 # ctk/ctkalignment.c:113
-#: ctk/deprecated/ctkalignment.c:171 ctk/ctkbutton.c:347
+#: ctk/ctkalignment.c:171 ctk/ctkbutton.c:347
 msgid ""
 "Vertical position of child in available space. 0.0 is top aligned, 1.0 is "
 "bottom aligned"
@@ -506,11 +506,11 @@ msgstr ""
 "бол доод хэсэгт зэрэгцүүлсэн ."
 
 # ctk/ctkalignment.c:121
-#: ctk/deprecated/ctkalignment.c:188
+#: ctk/ctkalignment.c:188
 msgid "Horizontal scale"
 msgstr "Хэвтээ масштаб"
 
-#: ctk/deprecated/ctkalignment.c:189
+#: ctk/ctkalignment.c:189
 msgid ""
 "If available horizontal space is bigger than needed for the child, how much "
 "of it to use for the child. 0.0 means none, 1.0 means all"
@@ -519,11 +519,11 @@ msgstr ""
 "зориулсан нь: 0.0 дунд зэргийн юу ч үгүй, 1.0 дунд зэргийн бүгд"
 
 # ctk/ctkalignment.c:130
-#: ctk/deprecated/ctkalignment.c:206
+#: ctk/ctkalignment.c:206
 msgid "Vertical scale"
 msgstr "Босоо масштаб"
 
-#: ctk/deprecated/ctkalignment.c:207
+#: ctk/ctkalignment.c:207
 msgid ""
 "If available vertical space is bigger than needed for the child, how much of "
 "it to use for the child. 0.0 means none, 1.0 means all"
@@ -531,36 +531,36 @@ msgstr ""
 "Хэрэв сул босоо зай нь багадаад ихэсгэгч хэрэглэсэн, бяцхан хэрэглээнд  "
 "зориулсан нь: 0.0 дунд зэргийн юу ч үгүй, 1.0 дунд зэргийн бүгд"
 
-#: ctk/deprecated/ctkalignment.c:226
+#: ctk/ctkalignment.c:226
 msgid "Top Padding"
 msgstr "Дээд доторлогоо"
 
-#: ctk/deprecated/ctkalignment.c:227
+#: ctk/ctkalignment.c:227
 msgid "The padding to insert at the top of the widget."
 msgstr "Вижетын оройд оруулах доторлогоо"
 
-#: ctk/deprecated/ctkalignment.c:245
+#: ctk/ctkalignment.c:245
 msgid "Bottom Padding"
 msgstr "Доод доторлогоо"
 
-#: ctk/deprecated/ctkalignment.c:246
+#: ctk/ctkalignment.c:246
 msgid "The padding to insert at the bottom of the widget."
 msgstr "Вижетын ёроолд оруулах доторлогоо."
 
-#: ctk/deprecated/ctkalignment.c:264
+#: ctk/ctkalignment.c:264
 msgid "Left Padding"
 msgstr "Зүүн доторлогоо"
 
-#: ctk/deprecated/ctkalignment.c:265
+#: ctk/ctkalignment.c:265
 msgid "The padding to insert at the left of the widget."
 msgstr "Вижетын зүүнтээ оруулах доторлогоо."
 
 # ctk/ctktextview.c:604
-#: ctk/deprecated/ctkalignment.c:283
+#: ctk/ctkalignment.c:283
 msgid "Right Padding"
 msgstr "Баруун доторлогоо"
 
-#: ctk/deprecated/ctkalignment.c:284
+#: ctk/ctkalignment.c:284
 msgid "The padding to insert at the right of the widget."
 msgstr "Вижетын баруунтаа оруулах доторлогоо."
 

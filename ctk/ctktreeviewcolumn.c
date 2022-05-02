@@ -25,7 +25,7 @@
 #include "ctktreeprivate.h"
 #include "ctkcelllayout.h"
 #include "ctkbutton.h"
-#include "deprecated/ctkalignment.h"
+#include "ctkalignment.h"
 #include "ctklabel.h"
 #include "ctkbox.h"
 #include "ctkmarshalers.h"

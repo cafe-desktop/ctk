@@ -413,11 +413,11 @@ msgstr "কাৰ্য্যৰ প্ৰদৰ্শন ব্যৱহাৰ 
 msgid "Whether to use the related actions appearance properties"
 msgstr "সম্বন্ধিত কাৰ্য্যৰ প্ৰদৰ্শনৰ গুণ ব্যৱহাৰ কৰা যাব নে"
 
-#: ctk/deprecated/ctkalignment.c:151
+#: ctk/ctkalignment.c:151
 msgid "Horizontal alignment"
 msgstr "পথালিকে কৰা সংৰেখন"
 
-#: ctk/deprecated/ctkalignment.c:152 ctk/ctkbutton.c:328
+#: ctk/ctkalignment.c:152 ctk/ctkbutton.c:328
 msgid ""
 "Horizontal position of child in available space. 0.0 is left aligned, 1.0 is "
 "right aligned"
@@ -425,11 +425,11 @@ msgstr ""
 "ব্যৱহাৰযোগ্য স্থানত চাইল্ডৰ পথালি অৱস্থান। ০.০ হ'লে বাওঁৰ পৰা সংৰেখন কৰা হয় আৰু ১.০ "
 "হ'লে সোঁ-ফালৰ পৰা সংৰেখন কৰা হয়"
 
-#: ctk/deprecated/ctkalignment.c:170
+#: ctk/ctkalignment.c:170
 msgid "Vertical alignment"
 msgstr "উলম্বভাবে সংৰেখন কৰা"
 
-#: ctk/deprecated/ctkalignment.c:171 ctk/ctkbutton.c:347
+#: ctk/ctkalignment.c:171 ctk/ctkbutton.c:347
 msgid ""
 "Vertical position of child in available space. 0.0 is top aligned, 1.0 is "
 "bottom aligned"
@@ -437,11 +437,11 @@ msgstr ""
 "ব্যৱহাৰযোগ্য স্থানত চাইল্ডৰ উলম্ব অৱস্থান। ০.০ হ'লে ওপৰৰ পৰা সংৰেখন কৰা হয় আৰু ১.০ "
 "হ'লে তলৰ পৰা সংৰেখন কৰা হয়"
 
-#: ctk/deprecated/ctkalignment.c:188
+#: ctk/ctkalignment.c:188
 msgid "Horizontal scale"
 msgstr "পথালি মাপদণ্ড"
 
-#: ctk/deprecated/ctkalignment.c:189
+#: ctk/ctkalignment.c:189
 msgid ""
 "If available horizontal space is bigger than needed for the child, how much "
 "of it to use for the child. 0.0 means none, 1.0 means all"
@@ -450,11 +450,11 @@ msgstr ""
 "স্থান ব্যৱহাৰ কৰা হ'ব।  ইয়াৰ মান ০.০ হ'লে কোনো স্থান ব্যৱহাৰ কৰা নহ'ব আৰ মান ১.০ "
 "হ'লে সম্পূৰ্ণ স্থান ব্যৱহাৰ কৰা হ'ব"
 
-#: ctk/deprecated/ctkalignment.c:206
+#: ctk/ctkalignment.c:206
 msgid "Vertical scale"
 msgstr "উলম্ব মাপদণ্ড"
 
-#: ctk/deprecated/ctkalignment.c:207
+#: ctk/ctkalignment.c:207
 msgid ""
 "If available vertical space is bigger than needed for the child, how much of "
 "it to use for the child. 0.0 means none, 1.0 means all"
@@ -463,35 +463,35 @@ msgstr ""
 "স্থান ব্যৱহাৰ কৰা হ'ব।  ইয়াৰ মান ০.০ হ'লে কোনো স্থান ব্যৱহাৰ কৰা নহ'ব আৰ মান ১.০ "
 "হ'লে সম্পূৰ্ণ স্থান ব্যৱহাৰ কৰা হ'ব"
 
-#: ctk/deprecated/ctkalignment.c:226
+#: ctk/ctkalignment.c:226
 msgid "Top Padding"
 msgstr "ওপৰৰ অংশৰ পেডিং"
 
-#: ctk/deprecated/ctkalignment.c:227
+#: ctk/ctkalignment.c:227
 msgid "The padding to insert at the top of the widget."
 msgstr "উইজেটৰ ওপৰৰ অংশত যি পেডিং ভৰোৱা হ'ব।"
 
-#: ctk/deprecated/ctkalignment.c:245
+#: ctk/ctkalignment.c:245
 msgid "Bottom Padding"
 msgstr "তলৰ পেডিং"
 
-#: ctk/deprecated/ctkalignment.c:246
+#: ctk/ctkalignment.c:246
 msgid "The padding to insert at the bottom of the widget."
 msgstr "উইজেটৰ তলৰ অংশত যি পেডিং ভৰোৱা হ'ব।"
 
-#: ctk/deprecated/ctkalignment.c:264
+#: ctk/ctkalignment.c:264
 msgid "Left Padding"
 msgstr "বাওঁ ফালৰ পেডিং"
 
-#: ctk/deprecated/ctkalignment.c:265
+#: ctk/ctkalignment.c:265
 msgid "The padding to insert at the left of the widget."
 msgstr "উইজেটৰ বাওঁফালে যি পেডিং ভৰোৱা হ'ব।"
 
-#: ctk/deprecated/ctkalignment.c:283
+#: ctk/ctkalignment.c:283
 msgid "Right Padding"
 msgstr "সোঁফালৰ পেডিং"
 
-#: ctk/deprecated/ctkalignment.c:284
+#: ctk/ctkalignment.c:284
 msgid "The padding to insert at the right of the widget."
 msgstr "উইজেটৰ সোঁফালে যি পেডিং ভৰোৱা হ'ব।"
 

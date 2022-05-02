@@ -443,11 +443,11 @@ msgstr ""
 msgid "Whether to use the related actions appearance properties"
 msgstr "Да ли се текст ознаке може изабрати мишем"
 
-#: ctk/deprecated/ctkalignment.c:151
+#: ctk/ctkalignment.c:151
 msgid "Horizontal alignment"
 msgstr "Водоравно поравнање"
 
-#: ctk/deprecated/ctkalignment.c:152 ctk/ctkbutton.c:328
+#: ctk/ctkalignment.c:152 ctk/ctkbutton.c:328
 msgid ""
 "Horizontal position of child in available space. 0.0 is left aligned, 1.0 is "
 "right aligned"
@@ -455,11 +455,11 @@ msgstr ""
 "Водоравни положај садржаног елемента у доступном простору. 0.0 означава "
 "лијево поравнање, 1.0 десно поравнање."
 
-#: ctk/deprecated/ctkalignment.c:170
+#: ctk/ctkalignment.c:170
 msgid "Vertical alignment"
 msgstr "Усправно поравнање"
 
-#: ctk/deprecated/ctkalignment.c:171 ctk/ctkbutton.c:347
+#: ctk/ctkalignment.c:171 ctk/ctkbutton.c:347
 msgid ""
 "Vertical position of child in available space. 0.0 is top aligned, 1.0 is "
 "bottom aligned"
@@ -467,11 +467,11 @@ msgstr ""
 "Усправни положај садржаног елемента у доступном простору. 0.0 означава "
 "поравнање са врхом, а 1.0 поравнање са дном."
 
-#: ctk/deprecated/ctkalignment.c:188
+#: ctk/ctkalignment.c:188
 msgid "Horizontal scale"
 msgstr "Водоравна размјера"
 
-#: ctk/deprecated/ctkalignment.c:189
+#: ctk/ctkalignment.c:189
 msgid ""
 "If available horizontal space is bigger than needed for the child, how much "
 "of it to use for the child. 0.0 means none, 1.0 means all"
@@ -479,11 +479,11 @@ msgstr ""
 "Уколико је доступан водоравни простор већи од неопходног за дијете, колико "
 "искористити за дијете. 0.0 стоји за нимало, а 1.0 за сав"
 
-#: ctk/deprecated/ctkalignment.c:206
+#: ctk/ctkalignment.c:206
 msgid "Vertical scale"
 msgstr "Усправна размјера"
 
-#: ctk/deprecated/ctkalignment.c:207
+#: ctk/ctkalignment.c:207
 msgid ""
 "If available vertical space is bigger than needed for the child, how much of "
 "it to use for the child. 0.0 means none, 1.0 means all"
@@ -491,35 +491,35 @@ msgstr ""
 "Уколико је доступан усправни простор већи од неопходног за дијете, колико "
 "искористити за дијете. 0.0 стоји за нимало, а 1.0 за сав"
 
-#: ctk/deprecated/ctkalignment.c:226
+#: ctk/ctkalignment.c:226
 msgid "Top Padding"
 msgstr "Попуна на врху"
 
-#: ctk/deprecated/ctkalignment.c:227
+#: ctk/ctkalignment.c:227
 msgid "The padding to insert at the top of the widget."
 msgstr "Попуна која се убацује на врх елемента."
 
-#: ctk/deprecated/ctkalignment.c:245
+#: ctk/ctkalignment.c:245
 msgid "Bottom Padding"
 msgstr "Попуна на дну"
 
-#: ctk/deprecated/ctkalignment.c:246
+#: ctk/ctkalignment.c:246
 msgid "The padding to insert at the bottom of the widget."
 msgstr "Попуна која се убацује на дно елемента."
 
-#: ctk/deprecated/ctkalignment.c:264
+#: ctk/ctkalignment.c:264
 msgid "Left Padding"
 msgstr "Лијева попуна"
 
-#: ctk/deprecated/ctkalignment.c:265
+#: ctk/ctkalignment.c:265
 msgid "The padding to insert at the left of the widget."
 msgstr "Попуна која се убацује на лијеву страну елемента."
 
-#: ctk/deprecated/ctkalignment.c:283
+#: ctk/ctkalignment.c:283
 msgid "Right Padding"
 msgstr "Десна попуна"
 
-#: ctk/deprecated/ctkalignment.c:284
+#: ctk/ctkalignment.c:284
 msgid "The padding to insert at the right of the widget."
 msgstr "Попуна која се убацује на десну страну елемента."
 
