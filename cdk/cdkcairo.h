@@ -23,7 +23,7 @@
 #endif
 
 #include <cdk/cdkversionmacros.h>
-#include <cdk/deprecated/cdkcolor.h>
+#include <cdk/cdkcolor.h>
 #include <cdk/cdkrgba.h>
 #include <cdk/cdkdrawingcontext.h>
 #include <cdk/gdkpixbuf.h>
