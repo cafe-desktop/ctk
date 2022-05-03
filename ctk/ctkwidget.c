@@ -1246,7 +1246,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
                            P_("Style"),
                            P_("The style of the widget, which contains information about how it will look (colors etc)"),
                            CTK_TYPE_STYLE,
-                           CTK_PARAM_READWRITE|G_PARAM_DEPRECATED);
+                           CTK_PARAM_READWRITE);
 
 G_GNUC_END_IGNORE_DEPRECATIONS
 
@@ -1880,8 +1880,6 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * Deprecated:3.0: Use the #CtkWidget::style-updated signal
    */
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-
   widget_signals[STYLE_SET] =
     g_signal_new (I_("style-set"),
 		  G_TYPE_FROM_CLASS (gobject_class),
@@ -1891,8 +1889,6 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 		  NULL,
 		  G_TYPE_NONE, 1,
 		  CTK_TYPE_STYLE);
-
-G_GNUC_END_IGNORE_DEPRECATIONS
 
   /**
    * CtkWidget::style-updated:
@@ -3801,9 +3797,7 @@ ctk_widget_set_property (GObject         *object,
       ctk_widget_set_receives_default (widget, g_value_get_boolean (value));
       break;
     case PROP_STYLE:
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       ctk_widget_set_style (widget, g_value_get_object (value));
-      G_GNUC_END_IGNORE_DEPRECATIONS;
       break;
     case PROP_EVENTS:
       if (!_ctk_widget_get_realized (widget) && _ctk_widget_get_has_window (widget))
@@ -3996,9 +3990,7 @@ ctk_widget_get_property (GObject         *object,
       g_value_set_boolean (value, widget->priv->composite_child);
       break;
     case PROP_STYLE:
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       g_value_set_object (value, ctk_widget_get_style (widget));
-      G_GNUC_END_IGNORE_DEPRECATIONS;
       break;
     case PROP_EVENTS:
       eventp = g_object_get_qdata (G_OBJECT (widget), quark_event_mask);
@@ -4471,9 +4463,8 @@ ctk_widget_init (GTypeInstance *instance, gpointer g_class)
   ctk_css_node_set_widget_type (priv->cssnode, G_TYPE_FROM_CLASS (g_class));
   ctk_css_node_set_name (priv->cssnode, CTK_WIDGET_CLASS (g_class)->priv->css_name);
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   priv->style = ctk_widget_get_default_style ();
-  G_GNUC_END_IGNORE_DEPRECATIONS;
+
   g_object_ref (priv->style);
 }
 
@@ -5512,9 +5503,7 @@ ctk_widget_realize (CtkWidget *widget)
       if (priv->parent && !_ctk_widget_get_realized (priv->parent))
 	ctk_widget_realize (priv->parent);
 
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       ctk_widget_ensure_style (widget);
-      G_GNUC_END_IGNORE_DEPRECATIONS
 
       g_signal_emit (widget, widget_signals[REALIZE], 0);
 
@@ -8270,7 +8259,6 @@ ctk_widget_real_style_updated (CtkWidget *widget)
         ctk_widget_queue_resize (widget);
     }
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   if (priv->style != NULL &&
       priv->style != ctk_widget_get_default_style ())
     {
@@ -8282,8 +8270,6 @@ ctk_widget_real_style_updated (CtkWidget *widget)
                      0,
                      widget->priv->style);
     }
-  G_GNUC_END_IGNORE_DEPRECATIONS;
-
 }
 
 static gboolean
@@ -12344,12 +12330,10 @@ ctk_widget_real_destroy (CtkWidget *object)
 
   destroy_tick_callbacks (widget);
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   if (priv->style)
     g_object_unref (priv->style);
   priv->style = ctk_widget_get_default_style ();
   g_object_ref (priv->style);
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 }
 
 static void
