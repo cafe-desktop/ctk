@@ -252,9 +252,7 @@ ctk_text_renderer_prepare_run (PangoRenderer  *renderer,
 	      rgba.green = color->green / 65535.;
 	      rgba.blue = color->blue / 65535.;
 	      rgba.alpha = 1;
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 	      cdk_color_free (color);
-G_GNUC_END_IGNORE_DEPRECATIONS
 
 	      text_renderer->error_color = cdk_rgba_copy (&rgba);
 	    }
