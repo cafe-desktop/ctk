@@ -31,7 +31,6 @@
 
 #include <time.h>
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 
 /**
  * SECTION:colors
@@ -41,8 +40,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
  * A #CdkColor represents a color.
  *
  * When working with cairo, it is often more convenient
- * to use a #CdkRGBA instead, and #CdkColor has been
- * deprecated in favor of #CdkRGBA.
+ * to use a #CdkRGBA instead.
  */
 
 
@@ -55,8 +53,6 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
  * The result must be freed using cdk_color_free().
  *
  * Returns: a copy of @color
- *
- * Deprecated: 3.14: Use #CdkRGBA
  */
 CdkColor*
 cdk_color_copy (const CdkColor *color)
@@ -75,8 +71,6 @@ cdk_color_copy (const CdkColor *color)
  * @color: a #CdkColor
  *
  * Frees a #CdkColor created with cdk_color_copy().
- *
- * Deprecated: 3.14: Use #CdkRGBA
  */
 void
 cdk_color_free (CdkColor *color)
@@ -94,8 +88,6 @@ cdk_color_free (CdkColor *color)
  * table that stores #CdkColors.
  *
  * Returns: The hash function applied to @color
- *
- * Deprecated: 3.14: Use #CdkRGBA
  */
 guint
 cdk_color_hash (const CdkColor *color)
@@ -114,8 +106,6 @@ cdk_color_hash (const CdkColor *color)
  * Compares two colors.
  *
  * Returns: %TRUE if the two colors compare equal
- *
- * Deprecated: 3.14: Use #CdkRGBA
  */
 gboolean
 cdk_color_equal (const CdkColor *colora,
@@ -150,8 +140,6 @@ G_DEFINE_BOXED_TYPE (CdkColor, cdk_color,
  * and “\#ffffffffffff”).
  *
  * Returns: %TRUE if the parsing succeeded
- *
- * Deprecated: 3.14: Use #CdkRGBA
  */
 gboolean
 cdk_color_parse (const gchar *spec,
@@ -184,8 +172,6 @@ cdk_color_parse (const gchar *spec,
  * Returns: a newly-allocated text string
  *
  * Since: 2.12
- *
- * Deprecated: 3.14: Use #CdkRGBA
  */
 gchar *
 cdk_color_to_string (const CdkColor *color)

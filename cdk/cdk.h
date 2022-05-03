@@ -31,6 +31,7 @@
 #include <cdk/cdkversionmacros.h>
 #include <cdk/cdkapplaunchcontext.h>
 #include <cdk/cdkcairo.h>
+#include <cdk/cdkcolor.h>
 #include <cdk/cdkcursor.h>
 #include <cdk/cdkdevice.h>
 #include <cdk/cdkdevicepad.h>
@@ -62,10 +63,6 @@
 #include <cdk/cdktypes.h>
 #include <cdk/cdkvisual.h>
 #include <cdk/cdkwindow.h>
-
-#ifndef CDK_DISABLE_DEPRECATED
-#include <cdk/deprecated/cdkcolor.h>
-#endif
 
 #include <cdk/cdk-autocleanup.h>
 

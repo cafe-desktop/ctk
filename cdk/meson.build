@@ -1,9 +1,9 @@
-deprecated_cdk_sources = files('deprecated/cdkcolor.c')
 cdk_sources = files(
   'cdk-private.c',
   'cdk.c',
   'cdkapplaunchcontext.c',
   'cdkcairo.c',
+  'cdkcolor.c',
   'cdkcursor.c',
   'cdkdeprecated.c',
   'cdkdevice.c',
@@ -45,6 +45,7 @@ cdk_gir_public_headers = files(
   'cdk-autocleanup.h',
   'cdkapplaunchcontext.h',
   'cdkcairo.h',
+  'cdkcolor.h',
   'cdkcursor.h',
   'cdkdevice.h',
   'cdkdevicetool.h',
@@ -80,9 +81,6 @@ cdk_gir_public_headers = files(
 cdk_nogir_public_headers = [files('cdkkeysyms-compat.h')]
 cdk_public_headers = cdk_gir_public_headers + cdk_nogir_public_headers
 install_headers(cdk_public_headers, subdir : 'ctk-3.0/cdk')
-
-deprecated_h_sources = files('deprecated/cdkcolor.h')
-install_headers(deprecated_h_sources, subdir : 'ctk-3.0/cdk/deprecated')
 
 # This variable is unused, but added just for completeness
 cdk_private_headers = files(
@@ -243,7 +241,6 @@ cdk_sources = [
   cdkversionmacros,
   # Static
   cdk_sources,
-  deprecated_cdk_sources,
 ]
 
 if wayland_enabled or broadway_enabled
@@ -323,7 +320,7 @@ if build_gir
     cdk_gir_inc += 'Pango-1.0'
   endif
 
-  cdk_gir_sources = cdk_gir_public_headers + deprecated_h_sources
+  cdk_gir_sources = cdk_gir_public_headers
   cdk_gir_sources += cdk_sources + cdk_enums + [cdkconfig]
   cdk_gir = gnome.generate_gir(libcdk,
                                sources: cdk_gir_sources,
