@@ -224,7 +224,6 @@ ctk_toggle_tool_button_create_menu_proxy (CtkToolItem *item)
 
   label_widget = ctk_tool_button_get_label_widget (tool_button);
   label_text = ctk_tool_button_get_label (tool_button);
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   stock_id = ctk_tool_button_get_stock_id (tool_button);
 
   if (CTK_IS_LABEL (label_widget))
@@ -245,8 +244,6 @@ ctk_toggle_tool_button_create_menu_proxy (CtkToolItem *item)
     {
       label = "";
     }
-
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 
   if (use_mnemonic)
     menu_item = ctk_check_menu_item_new_with_mnemonic (label);

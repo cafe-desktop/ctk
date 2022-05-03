@@ -160,7 +160,6 @@ main (int argc, char **argv)
   label = ctk_label_new ("CTK_IMAGE_STOCK");
   ctk_grid_attach (CTK_GRID (grid), label, 0, 2, 1, 1);
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   image = ctk_image_new_from_stock (CTK_STOCK_REDO, CTK_ICON_SIZE_DIALOG);
   ctk_grid_attach (CTK_GRID (grid), image, 1, 2, 1, 1);
 
@@ -173,7 +172,6 @@ main (int argc, char **argv)
   ctk_icon_set_add_source (iconset, iconsource);
   image = ctk_image_new_from_icon_set (iconset, CTK_ICON_SIZE_DIALOG);
   ctk_grid_attach (CTK_GRID (grid), image, 1, 3, 1, 1);
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 
   label = ctk_label_new ("CTK_IMAGE_ICON_NAME");
   ctk_grid_attach (CTK_GRID (grid), label, 0, 4, 1, 1);

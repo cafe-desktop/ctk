@@ -2342,9 +2342,7 @@ test_menus (void)
 
   ctk_widget_show_all (window);
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   sample_menu_item = ctk_image_menu_item_new_from_stock (CTK_STOCK_NEW, accel_group);
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 
   child = ctk_bin_get_child (CTK_BIN (sample_menu_item));
   g_assert (child);

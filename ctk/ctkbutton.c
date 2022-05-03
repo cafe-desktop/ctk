@@ -1302,8 +1302,6 @@ ctk_button_construct_child (CtkButton *button)
   if (child)
     ctk_container_remove (CTK_CONTAINER (button), child);
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-
   if (priv->use_stock &&
       priv->label_text &&
       ctk_stock_lookup (priv->label_text, &item))
@@ -1315,8 +1313,6 @@ ctk_button_construct_child (CtkButton *button)
     }
   else
     label_text = priv->label_text;
-
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 
   if (image)
     {
