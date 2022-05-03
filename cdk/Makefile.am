@@ -72,6 +72,7 @@ cdk_public_h_sources = 				\
 	cdk-autocleanup.h			\
 	cdkapplaunchcontext.h			\
 	cdkcairo.h				\
+	cdkcolor.h				\
 	cdkcursor.h				\
 	cdkdevice.h				\
 	cdkdevicepad.h				\
@@ -105,12 +106,8 @@ cdk_public_h_sources = 				\
 	cdkvisual.h				\
 	cdkwindow.h
 
-deprecated_h_sources =				\
-	deprecated/cdkcolor.h
-
 cdk_h_sources =					\
-	$(cdk_public_h_sources)			\
-	$(deprecated_h_sources)
+	$(cdk_public_h_sources)
 
 cdk_private_headers = 				\
 	cdk-private.h				\
@@ -139,15 +136,12 @@ cdk_private_headers = 				\
 	cdkvisualprivate.h			\
 	cdkx.h
 
-deprecated_c_sources =				\
-	deprecated/cdkcolor.c
-
 cdk_c_sources = 				\
-	$(deprecated_c_sources)			\
 	cdk-private.c				\
 	cdk.c					\
 	cdkapplaunchcontext.c			\
 	cdkcairo.c				\
+	cdkcolor.c				\
 	cdkcursor.c				\
 	cdkdeprecated.c				\
 	cdkdevice.c				\
@@ -199,9 +193,6 @@ cdk_built_sources = 				\
 cdkincludedir = $(includedir)/ctk-3.0/cdk
 cdkinclude_HEADERS = $(cdk_public_h_sources)
 nodist_cdkinclude_HEADERS = cdkconfig.h cdkenumtypes.h cdkversionmacros.h
-
-deprecatedincludedir = $(includedir)/ctk-3.0/cdk/deprecated
-deprecatedinclude_HEADERS = $(deprecated_h_sources)
 
 libcdk_3_la_SOURCES = $(cdk_private_headers) $(cdk_c_sources)
 nodist_libcdk_3_la_SOURCES = $(cdk_built_sources)
@@ -495,7 +486,6 @@ cdk_3_HEADERS_DIR = $(cdkincludedir)
 
 cdk_3_HEADERS_INST = \
 	$(cdkinclude_HEADERS)		\
-	$(deprecatedinclude_HEADERS)	\
 	$(nodist_cdkinclude_HEADERS)
 
 cdk_3_HEADERS_EXCLUDES = dummy

@@ -59,24 +59,24 @@ struct _CdkColor
 
 #define CDK_TYPE_COLOR (cdk_color_get_type ())
 
-CDK_DEPRECATED_IN_3_14_FOR(cdk_rgba_get_type)
+CDK_AVAILABLE_IN_ALL
 GType     cdk_color_get_type (void) G_GNUC_CONST;
 
-CDK_DEPRECATED_IN_3_14_FOR(cdk_rgba_copy)
+CDK_AVAILABLE_IN_ALL
 CdkColor *cdk_color_copy      (const CdkColor *color);
-CDK_DEPRECATED_IN_3_14_FOR(cdk_rgba_free)
+CDK_AVAILABLE_IN_ALL
 void      cdk_color_free      (CdkColor       *color);
 
-CDK_DEPRECATED_IN_3_14_FOR(cdk_rgba_hash)
+CDK_AVAILABLE_IN_ALL
 guint     cdk_color_hash      (const CdkColor *color);
-CDK_DEPRECATED_IN_3_14_FOR(cdk_rgba_equal)
+CDK_AVAILABLE_IN_ALL
 gboolean  cdk_color_equal     (const CdkColor *colora,
                                const CdkColor *colorb);
 
-CDK_DEPRECATED_IN_3_14_FOR(cdk_rgba_parse)
+CDK_AVAILABLE_IN_ALL
 gboolean  cdk_color_parse     (const gchar    *spec,
                                CdkColor       *color);
-CDK_DEPRECATED_IN_3_14_FOR(cdk_rgba_to_string)
+CDK_AVAILABLE_IN_ALL
 gchar *   cdk_color_to_string (const CdkColor *color);
 
 
