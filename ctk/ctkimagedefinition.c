@@ -170,9 +170,7 @@ ctk_image_definition_new_icon_set (CtkIconSet *icon_set)
     return NULL;
 
   def = ctk_image_definition_alloc (CTK_IMAGE_ICON_SET);
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   def->icon_set.icon_set = ctk_icon_set_ref (icon_set);
-G_GNUC_END_IGNORE_DEPRECATIONS;
 
   return def;
 }
@@ -270,9 +268,7 @@ ctk_image_definition_unref (CtkImageDefinition *def)
       g_free (def->stock.id);
       break;
     case CTK_IMAGE_ICON_SET:
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       ctk_icon_set_unref (def->icon_set.icon_set);
-G_GNUC_END_IGNORE_DEPRECATIONS;
       break;
     case CTK_IMAGE_ICON_NAME:
       g_free (def->icon_name.icon_name);

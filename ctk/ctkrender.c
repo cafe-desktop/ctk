@@ -1083,14 +1083,12 @@ ctk_render_icon_pixbuf (CtkStyleContext     *context,
   g_return_val_if_fail (size > CTK_ICON_SIZE_INVALID || size == (CtkIconSize)-1, NULL);
   g_return_val_if_fail (source != NULL, NULL);
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   return ctk_render_icon_pixbuf_unpacked (ctk_icon_source_get_pixbuf (source),
                                           ctk_icon_source_get_size_wildcarded (source) ? size : -1,
                                           ctk_icon_source_get_state_wildcarded (source)
                                           ? _ctk_css_icon_effect_value_get (
                                              _ctk_style_context_peek_property (context, CTK_CSS_PROPERTY_ICON_EFFECT))
                                           : CTK_CSS_ICON_EFFECT_NONE);
-G_GNUC_END_IGNORE_DEPRECATIONS;
 }
 
 /**

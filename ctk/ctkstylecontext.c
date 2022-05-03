@@ -1945,11 +1945,7 @@ ctk_style_context_lookup_icon_set (CtkStyleContext *context,
   g_return_val_if_fail (CTK_IS_STYLE_CONTEXT (context), NULL);
   g_return_val_if_fail (stock_id != NULL, NULL);
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-
   icon_set = ctk_icon_factory_lookup_default (stock_id);
-
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 
   return icon_set;
 }

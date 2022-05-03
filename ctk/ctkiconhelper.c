@@ -538,9 +538,7 @@ ctk_icon_helper_load_surface (CtkIconHelper   *self,
       break;
 
     case CTK_IMAGE_STOCK:
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       icon_set = ctk_icon_factory_lookup_default (ctk_image_definition_get_stock (self->priv->def));
-G_GNUC_END_IGNORE_DEPRECATIONS;
       if (icon_set != NULL)
 	surface = ensure_surface_for_icon_set (self,
                                                ctk_css_node_get_style (ctk_css_gadget_get_node (CTK_CSS_GADGET (self))),

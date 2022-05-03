@@ -1172,8 +1172,6 @@ ctk_image_set_from_icon_set  (CtkImage       *image,
 
   g_object_freeze_notify (G_OBJECT (image));
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-
   if (icon_set)
     ctk_icon_set_ref (icon_set);
 
@@ -1184,8 +1182,6 @@ ctk_image_set_from_icon_set  (CtkImage       *image,
       _ctk_icon_helper_set_icon_set (priv->icon_helper, icon_set, size);
       ctk_icon_set_unref (icon_set);
     }
-
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 
   g_object_notify_by_pspec (G_OBJECT (image), image_props[PROP_ICON_SET]);
   g_object_notify_by_pspec (G_OBJECT (image), image_props[PROP_ICON_SIZE]);

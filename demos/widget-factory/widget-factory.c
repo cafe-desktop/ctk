@@ -1527,13 +1527,11 @@ register_icon_sizes (void)
 
   registered = TRUE;
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   icon_sizes[0] = ctk_icon_size_register ("a", 16, 16);
   icon_sizes[1] = ctk_icon_size_register ("b", 24, 24);
   icon_sizes[2] = ctk_icon_size_register ("c", 32, 32);
   icon_sizes[3] = ctk_icon_size_register ("d", 48, 48);
   icon_sizes[4] = ctk_icon_size_register ("e", 64, 64);
-G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static int
@@ -1542,15 +1540,14 @@ find_icon_size (CtkIconSize size)
   gint w, h, w2, h2;
   gint i;
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   ctk_icon_size_lookup (size, &w, &h);
+
   for (i = 0; i < G_N_ELEMENTS (icon_sizes); i++)
     {
       ctk_icon_size_lookup (icon_sizes[i], &w2, &h2);
       if (w == w2)
         return i;
     }
-G_GNUC_END_IGNORE_DEPRECATIONS
 
   return 2;
 }

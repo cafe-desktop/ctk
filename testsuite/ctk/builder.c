@@ -1898,8 +1898,6 @@ test_icon_factory (void)
   CtkIconSource *icon_source;
   CtkWidget *image;
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-
   builder = builder_new_from_string (buffer1, -1, NULL);
   factory = ctk_builder_get_object (builder, "iconfactory1");
   g_assert (factory != NULL);
@@ -1937,9 +1935,6 @@ test_icon_factory (void)
   g_assert (g_str_has_suffix (ctk_icon_source_get_filename (icon_source), "slurf.png"));
 
   g_object_unref (builder);
-
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-
 }
 
 typedef struct {
