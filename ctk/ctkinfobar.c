@@ -797,16 +797,12 @@ ctk_info_bar_add_button (CtkInfoBar  *info_bar,
   button = ctk_button_new_with_label (button_text);
   ctk_button_set_use_underline (CTK_BUTTON (button), TRUE);
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-
   if (button_text)
     {
       CtkStockItem item;
       if (ctk_stock_lookup (button_text, &item))
         g_object_set (button, "use-stock", TRUE, NULL);
     }
-
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 
   ctk_widget_set_can_default (button, TRUE);
 

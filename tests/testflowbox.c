@@ -178,9 +178,7 @@ populate_flowbox_stock (CtkFlowBox *flowbox)
 
   if (!stock_ids)
     {
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       stock_ids = ctk_stock_list_ids ();
-      G_GNUC_END_IGNORE_DEPRECATIONS;
     }
 
   for (i = 0, l = stock_ids; i < 30 && l != NULL; i++, l = l->next)

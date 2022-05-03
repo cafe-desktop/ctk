@@ -412,8 +412,6 @@ ctk_tool_button_construct_contents (CtkToolItem *tool_item)
 	  gboolean elide;
 	  gchar *label_text;
 
-          G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-
 	  if (button->priv->label_text)
 	    {
 	      label_text = button->priv->label_text;
@@ -429,8 +427,6 @@ ctk_tool_button_construct_contents (CtkToolItem *tool_item)
 	      label_text = "";
 	      elide = FALSE;
 	    }
-
-          G_GNUC_END_IGNORE_DEPRECATIONS;
 
 	  if (elide)
 	    label_text = _ctk_toolbar_elide_underscores (label_text);
@@ -843,7 +839,6 @@ ctk_tool_button_create_menu_proxy (CtkToolItem *item)
   if (_ctk_tool_item_create_menu_proxy (item))
     return TRUE;
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
   if (CTK_IS_LABEL (button->priv->label_widget))
     {
@@ -880,8 +875,6 @@ ctk_tool_button_create_menu_proxy (CtkToolItem *item)
 
   if (menu_image)
     ctk_image_menu_item_set_image (CTK_IMAGE_MENU_ITEM (menu_item), menu_image);
-
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 
   g_signal_connect_closure_by_id (menu_item,
 				  g_signal_lookup ("activate", G_OBJECT_TYPE (menu_item)), 0,

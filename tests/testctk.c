@@ -679,7 +679,6 @@ create_buttons (CtkWidget *widget)
       ctk_container_set_border_width (CTK_CONTAINER (grid), 10);
       ctk_box_pack_start (CTK_BOX (box1), grid, TRUE, TRUE, 0);
 
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       button[0] = ctk_button_new_with_label ("button1");
       button[1] = ctk_button_new_with_mnemonic ("_button2");
       button[2] = ctk_button_new_with_mnemonic ("_button3");
@@ -689,7 +688,6 @@ create_buttons (CtkWidget *widget)
       button[6] = ctk_button_new_with_label ("button7");
       button[7] = ctk_button_new_from_stock (CTK_STOCK_CLOSE);
       button[8] = ctk_button_new_with_label ("button9");
-      G_GNUC_END_IGNORE_DEPRECATIONS;
       
       for (i = 0; i < 9; i++)
         {

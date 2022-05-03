@@ -190,8 +190,6 @@ ctk_image_accessible_get_name (AtkObject *accessible)
   g_free (image_accessible->priv->stock_name);
   image_accessible->priv->stock_name = NULL;
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-
   storage_type = ctk_image_get_storage_type (image);
   if (storage_type == CTK_IMAGE_STOCK)
     {
@@ -201,8 +199,6 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
       if (!ctk_stock_lookup (stock_id, &stock_item))
         return NULL;
-
-G_GNUC_END_IGNORE_DEPRECATIONS;
 
       image_accessible->priv->stock_name = _ctk_toolbar_elide_underscores (stock_item.label);
     }
