@@ -485,9 +485,7 @@ ctk_tool_button_construct_contents (CtkToolItem *tool_item)
 
       if (button->priv->stock_id)
         {
-          G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
           icon_set = ctk_icon_factory_lookup_default (button->priv->stock_id);
-          G_GNUC_END_IGNORE_DEPRECATIONS;
         }
 
       if (button->priv->icon_widget)
@@ -978,9 +976,7 @@ ctk_tool_button_update (CtkActivatable *activatable,
 
       if (stock_id)
         {
-          G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
           icon_set = ctk_icon_factory_lookup_default (stock_id);
-          G_GNUC_END_IGNORE_DEPRECATIONS;
         }
       G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
@@ -1036,9 +1032,7 @@ ctk_tool_button_sync_action_properties (CtkActivatable *activatable,
 
   if (stock_id)
     {
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       icon_set = ctk_icon_factory_lookup_default (stock_id);
-      G_GNUC_END_IGNORE_DEPRECATIONS;
     }
 
   if (icon_set != NULL)
