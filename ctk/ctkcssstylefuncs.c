@@ -268,9 +268,7 @@ color_value_print (const GValue *value,
     g_string_append (string, "none");
   else
     {
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       char *s = cdk_color_to_string (color);
-G_GNUC_END_IGNORE_DEPRECATIONS
       g_string_append (string, s);
       g_free (s);
     }

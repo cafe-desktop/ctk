@@ -2079,7 +2079,6 @@ ctk_builder_value_from_string_type (CtkBuilder   *builder,
         {
           CdkColor color = { 0, };
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
           if (cdk_color_parse (string, &color))
             g_value_set_boxed (value, &color);
           else
@@ -2091,7 +2090,6 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
                            string);
               ret = FALSE;
             }
-G_GNUC_END_IGNORE_DEPRECATIONS
         }
       else if (G_VALUE_HOLDS (value, CDK_TYPE_RGBA))
         {

@@ -129,10 +129,8 @@ ctk_text_attributes_copy_values (CtkTextAttributes *src,
   if (dest->font)
     pango_font_description_free (dest->font);
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   if (dest->pg_bg_color)
     cdk_color_free (dest->pg_bg_color);
-G_GNUC_END_IGNORE_DEPRECATIONS
 
   if (dest->pg_bg_rgba)
     cdk_rgba_free (dest->pg_bg_rgba);
@@ -159,10 +157,8 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   if (src->font)
     dest->font = pango_font_description_copy (src->font);
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   if (src->pg_bg_color)
     dest->pg_bg_color = cdk_color_copy (src->pg_bg_color);
-G_GNUC_END_IGNORE_DEPRECATIONS
 
   if (src->pg_bg_rgba)
     dest->pg_bg_rgba = cdk_rgba_copy (src->pg_bg_rgba);
@@ -220,10 +216,8 @@ ctk_text_attributes_unref (CtkTextAttributes *values)
       if (values->font)
 	pango_font_description_free (values->font);
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       if (values->pg_bg_color)
 	cdk_color_free (values->pg_bg_color);
-G_GNUC_END_IGNORE_DEPRECATIONS
 
       if (values->pg_bg_rgba)
 	cdk_rgba_free (values->pg_bg_rgba);
@@ -296,19 +290,15 @@ _ctk_text_attributes_fill_from_tags (CtkTextAttributes *dest,
 
 	  if (dest->pg_bg_color)
 	    {
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 	      cdk_color_free (dest->pg_bg_color);
 	      dest->pg_bg_color = NULL;
-G_GNUC_END_IGNORE_DEPRECATIONS
 	    }
 
 	  if (vals->pg_bg_rgba)
 	    dest->pg_bg_rgba = cdk_rgba_copy (vals->pg_bg_rgba);
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 	  if (vals->pg_bg_color)
 	    dest->pg_bg_color = cdk_color_copy (vals->pg_bg_color);
-G_GNUC_END_IGNORE_DEPRECATIONS
         }
 
       if (vals->font)

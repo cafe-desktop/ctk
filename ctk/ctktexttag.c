@@ -1083,10 +1083,8 @@ set_pg_bg_rgba (CtkTextTag *tag, CdkRGBA *rgba)
   if (priv->values->pg_bg_rgba)
     cdk_rgba_free (priv->values->pg_bg_rgba);
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   if (priv->values->pg_bg_color)
     cdk_color_free (priv->values->pg_bg_color);
-G_GNUC_END_IGNORE_DEPRECATIONS
 
   priv->values->pg_bg_rgba = NULL;
   priv->values->pg_bg_color = NULL;
@@ -1104,9 +1102,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       priv->values->pg_bg_rgba = cdk_rgba_copy (rgba);
 
       copy_rgba_to_cdk_color (rgba, &color);
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       priv->values->pg_bg_color = cdk_color_copy (&color);
-G_GNUC_END_IGNORE_DEPRECATIONS
     }
   else
     {
