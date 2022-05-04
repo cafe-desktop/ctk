@@ -309,10 +309,8 @@ ctk_check_menu_item_update (CtkActivatable *activatable,
 
   if (strcmp (property_name, "draw-as-radio") == 0)
     {
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       ctk_check_menu_item_set_draw_as_radio (check_menu_item,
                                              ctk_toggle_action_get_draw_as_radio (CTK_TOGGLE_ACTION (action)));
-      G_GNUC_END_IGNORE_DEPRECATIONS;
     }
 }
 
@@ -328,9 +326,7 @@ ctk_check_menu_item_sync_action_properties (CtkActivatable *activatable,
 
   parent_activatable_iface->sync_action_properties (activatable, action);
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   is_toggle_action = CTK_IS_TOGGLE_ACTION (action);
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 
   if (!is_toggle_action)
     return;
@@ -344,10 +340,8 @@ ctk_check_menu_item_sync_action_properties (CtkActivatable *activatable,
   if (!use_action_appearance)
     return;
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   ctk_check_menu_item_set_draw_as_radio (check_menu_item,
                                          ctk_toggle_action_get_draw_as_radio (CTK_TOGGLE_ACTION (action)));
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 }
 
 /**

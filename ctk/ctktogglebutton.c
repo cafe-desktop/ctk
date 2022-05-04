@@ -276,9 +276,7 @@ ctk_toggle_button_sync_action_properties (CtkActivatable *activatable,
 
   parent_activatable_iface->sync_action_properties (activatable, action);
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   is_toggle_action = CTK_IS_TOGGLE_ACTION (action);
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 
   if (!is_toggle_action)
     return;
