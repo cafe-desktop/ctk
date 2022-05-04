@@ -260,11 +260,9 @@ ctk_toggle_button_update (CtkActivatable *activatable,
 
   if (strcmp (property_name, "active") == 0)
     {
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       ctk_action_block_activate (action);
       ctk_toggle_button_set_active (button, ctk_toggle_action_get_active (CTK_TOGGLE_ACTION (action)));
       ctk_action_unblock_activate (action);
-      G_GNUC_END_IGNORE_DEPRECATIONS;
     }
 
 }
@@ -287,11 +285,9 @@ ctk_toggle_button_sync_action_properties (CtkActivatable *activatable,
 
   button = CTK_TOGGLE_BUTTON (activatable);
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   ctk_action_block_activate (action);
   ctk_toggle_button_set_active (button, ctk_toggle_action_get_active (CTK_TOGGLE_ACTION (action)));
   ctk_action_unblock_activate (action);
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 }
 
 /**

@@ -544,8 +544,6 @@ _ctk_tool_item_create_menu_proxy (CtkToolItem *item)
   gboolean visible_overflown;
   gboolean ret = FALSE;
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-
   if (item->priv->action)
     {
       g_object_get (item->priv->action, "visible-overflown", &visible_overflown, NULL);
@@ -564,8 +562,6 @@ _ctk_tool_item_create_menu_proxy (CtkToolItem *item)
       ret = TRUE;
     }
 
-  G_GNUC_END_IGNORE_DEPRECATIONS;
-
   return ret;
 }
 
@@ -581,8 +577,6 @@ ctk_tool_item_update (CtkActivatable *activatable,
 		      CtkAction      *action,
 	     	      const gchar    *property_name)
 {
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-
   if (strcmp (property_name, "visible") == 0)
     {
       if (ctk_action_is_visible (action))
@@ -604,8 +598,6 @@ ctk_tool_item_update (CtkActivatable *activatable,
   else if (strcmp (property_name, "is-important") == 0)
     ctk_tool_item_set_is_important (CTK_TOOL_ITEM (activatable),
 				    ctk_action_get_is_important (action));
-
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 }
 
 static void
@@ -614,8 +606,6 @@ ctk_tool_item_sync_action_properties (CtkActivatable *activatable,
 {
   if (!action)
     return;
-
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
   if (ctk_action_is_visible (action))
     ctk_widget_show (CTK_WIDGET (activatable));
@@ -632,8 +622,6 @@ ctk_tool_item_sync_action_properties (CtkActivatable *activatable,
 				      ctk_action_get_visible_vertical (action));
   ctk_tool_item_set_is_important (CTK_TOOL_ITEM (activatable),
 				  ctk_action_get_is_important (action));
-
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 }
 
 static void

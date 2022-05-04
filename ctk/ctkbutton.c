@@ -1030,9 +1030,7 @@ activatable_update_stock_id (CtkButton *button,
   if (!use_stock)
     return;
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   ctk_button_set_label (button, ctk_action_get_stock_id (action));
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 }
 
 static void
@@ -1058,9 +1056,7 @@ activatable_update_short_label (CtkButton *button,
       child == NULL ||
       CTK_IS_LABEL (child))
     {
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       ctk_button_set_label (button, ctk_action_get_short_label (action));
-      G_GNUC_END_IGNORE_DEPRECATIONS;
       ctk_button_set_use_underline (button, TRUE);
     }
 }
@@ -1085,10 +1081,8 @@ activatable_update_icon_name (CtkButton *button,
       (ctk_image_get_storage_type (CTK_IMAGE (image)) == CTK_IMAGE_EMPTY ||
        ctk_image_get_storage_type (CTK_IMAGE (image)) == CTK_IMAGE_ICON_NAME))
     {
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       ctk_image_set_from_icon_name (CTK_IMAGE (image),
                                     ctk_action_get_icon_name (action), CTK_ICON_SIZE_MENU);
-      G_GNUC_END_IGNORE_DEPRECATIONS;
     }
 }
 
@@ -1099,9 +1093,7 @@ activatable_update_gicon (CtkButton *button,
   CtkWidget *image = ctk_button_get_image (button);
   GIcon *icon;
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   icon = ctk_action_get_gicon (action);
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 
   if (CTK_IS_IMAGE (image) &&
       (ctk_image_get_storage_type (CTK_IMAGE (image)) == CTK_IMAGE_EMPTY ||
@@ -1119,18 +1111,14 @@ ctk_button_update (CtkActivatable *activatable,
 
   if (strcmp (property_name, "visible") == 0)
     {
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       if (ctk_action_is_visible (action))
 	ctk_widget_show (CTK_WIDGET (activatable));
       else
 	ctk_widget_hide (CTK_WIDGET (activatable));
-      G_GNUC_END_IGNORE_DEPRECATIONS;
     }
   else if (strcmp (property_name, "sensitive") == 0)
     {
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       ctk_widget_set_sensitive (CTK_WIDGET (activatable), ctk_action_is_sensitive (action));
-      G_GNUC_END_IGNORE_DEPRECATIONS;
     }
 
   if (!priv->use_action_appearance)
@@ -1157,8 +1145,6 @@ ctk_button_sync_action_properties (CtkActivatable *activatable,
   if (!action)
     return;
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-
   if (ctk_action_is_visible (action))
     ctk_widget_show (CTK_WIDGET (activatable));
   else
@@ -1166,7 +1152,6 @@ ctk_button_sync_action_properties (CtkActivatable *activatable,
   
   ctk_widget_set_sensitive (CTK_WIDGET (activatable), ctk_action_is_sensitive (action));
   always_show_image = ctk_action_get_always_show_image (action);
-  G_GNUC_END_IGNORE_DEPRECATIONS
 
   if (priv->use_action_appearance)
     {

@@ -1822,7 +1822,6 @@ ctk_recent_chooser_update (CtkActivatable *activatable,
 			   CtkAction      *action,
 			   const gchar    *property_name)
 {
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   if (strcmp (property_name, "visible") == 0)
     {
       if (ctk_action_is_visible (action))
@@ -1834,8 +1833,6 @@ ctk_recent_chooser_update (CtkActivatable *activatable,
   if (strcmp (property_name, "sensitive") == 0)
     ctk_widget_set_sensitive (CTK_WIDGET (activatable), ctk_action_is_sensitive (action));
 
-  G_GNUC_END_IGNORE_DEPRECATIONS;
-
   _ctk_recent_chooser_update (activatable, action, property_name);
 }
 
@@ -1844,7 +1841,6 @@ static void
 ctk_recent_chooser_sync_action_properties (CtkActivatable *activatable,
 				           CtkAction      *action)
 {
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   if (action)
     {
       if (ctk_action_is_visible (action))
@@ -1854,7 +1850,6 @@ ctk_recent_chooser_sync_action_properties (CtkActivatable *activatable,
       
       ctk_widget_set_sensitive (CTK_WIDGET (activatable), ctk_action_is_sensitive (action));
     }
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 
   _ctk_recent_chooser_sync_action_properties (activatable, action);
 }
