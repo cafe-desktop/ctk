@@ -509,13 +509,9 @@ ctk_radio_menu_item_activate (CtkMenuItem *menu_item)
   gboolean active;
   gint toggled;
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-
   action = ctk_activatable_get_related_action (CTK_ACTIVATABLE (menu_item));
   if (action && ctk_menu_item_get_submenu (menu_item) == NULL)
     ctk_action_activate (action);
-
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 
   toggled = FALSE;
 

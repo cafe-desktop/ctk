@@ -295,8 +295,6 @@ ctk_check_menu_item_update (CtkActivatable *activatable,
 
   parent_activatable_iface->update (activatable, action, property_name);
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-
   if (strcmp (property_name, "active") == 0)
     {
       ctk_action_block_activate (action);
@@ -305,7 +303,6 @@ ctk_check_menu_item_update (CtkActivatable *activatable,
     }
 
   use_action_appearance = ctk_activatable_get_use_action_appearance (activatable);
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 
   if (!use_action_appearance)
     return;
@@ -338,13 +335,11 @@ ctk_check_menu_item_sync_action_properties (CtkActivatable *activatable,
   if (!is_toggle_action)
     return;
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   ctk_action_block_activate (action);
 
   ctk_check_menu_item_set_active (check_menu_item, ctk_toggle_action_get_active (CTK_TOGGLE_ACTION (action)));
   ctk_action_unblock_activate (action);
   use_action_appearance = ctk_activatable_get_use_action_appearance (activatable);
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 
   if (!use_action_appearance)
     return;

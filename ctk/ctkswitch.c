@@ -837,10 +837,8 @@ state_set (CtkSwitch *sw, gboolean state)
   if (sw->priv->action_helper)
     ctk_action_helper_activate (sw->priv->action_helper);
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   if (sw->priv->action)
     ctk_action_activate (sw->priv->action);
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 
   ctk_switch_set_state (sw, state);
 
@@ -1223,8 +1221,6 @@ ctk_switch_update (CtkActivatable *activatable,
                    CtkAction      *action,
                    const gchar    *property_name)
 {
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-
   if (strcmp (property_name, "visible") == 0)
     {
       if (ctk_action_is_visible (action))
@@ -1242,8 +1238,6 @@ ctk_switch_update (CtkActivatable *activatable,
       ctk_switch_set_active (CTK_SWITCH (activatable), ctk_toggle_action_get_active (CTK_TOGGLE_ACTION (action)));
       ctk_action_unblock_activate (action);
     }
-
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 }
 
 static void
@@ -1252,8 +1246,6 @@ ctk_switch_sync_action_properties (CtkActivatable *activatable,
 {
   if (!action)
     return;
-
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
   if (ctk_action_is_visible (action))
     ctk_widget_show (CTK_WIDGET (activatable));
@@ -1265,8 +1257,6 @@ ctk_switch_sync_action_properties (CtkActivatable *activatable,
   ctk_action_block_activate (action);
   ctk_switch_set_active (CTK_SWITCH (activatable), ctk_toggle_action_get_active (CTK_TOGGLE_ACTION (action)));
   ctk_action_unblock_activate (action);
-
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 }
 
 static void

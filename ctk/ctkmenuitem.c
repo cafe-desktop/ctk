@@ -1026,10 +1026,8 @@ ctk_menu_item_dispose (GObject *object)
 
   if (priv->action)
     {
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       ctk_action_disconnect_accelerator (priv->action);
       ctk_activatable_do_set_related_action (CTK_ACTIVATABLE (menu_item), NULL);
-      G_GNUC_END_IGNORE_DEPRECATIONS;
       priv->action = NULL;
     }
 
@@ -1247,9 +1245,7 @@ activatable_update_label (CtkMenuItem *menu_item, CtkAction *action)
     {
       const gchar *label;
 
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       label = ctk_action_get_label (action);
-      G_GNUC_END_IGNORE_DEPRECATIONS;
       ctk_menu_item_set_label (menu_item, label);
     }
 }
@@ -1315,16 +1311,12 @@ ctk_menu_item_update (CtkActivatable *activatable,
 
   if (strcmp (property_name, "visible") == 0)
     {
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       _ctk_action_sync_menu_visible (action, CTK_WIDGET (menu_item),
                                      ctk_menu_is_empty (ctk_menu_item_get_submenu (menu_item)));
-      G_GNUC_END_IGNORE_DEPRECATIONS;
     }
   else if (strcmp (property_name, "sensitive") == 0)
     {
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       ctk_widget_set_sensitive (CTK_WIDGET (menu_item), ctk_action_is_sensitive (action));
-      G_GNUC_END_IGNORE_DEPRECATIONS;
     }
   else if (priv->use_action_appearance)
     {
@@ -1355,9 +1347,7 @@ ctk_menu_item_sync_action_properties (CtkActivatable *activatable,
   _ctk_action_sync_menu_visible (action, CTK_WIDGET (menu_item),
                                  ctk_menu_is_empty (ctk_menu_item_get_submenu (menu_item)));
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   ctk_widget_set_sensitive (CTK_WIDGET (menu_item), ctk_action_is_sensitive (action));
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 
   if (priv->use_action_appearance)
     {
@@ -1376,14 +1366,12 @@ ctk_menu_item_sync_action_properties (CtkActivatable *activatable,
       /* Make label point to the menu_item's label */
       label = ctk_bin_get_child (CTK_BIN (menu_item));
 
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       if (CTK_IS_ACCEL_LABEL (label) && ctk_action_get_accel_path (action))
         {
           ctk_accel_label_set_accel_widget (CTK_ACCEL_LABEL (label), NULL);
           ctk_accel_label_set_accel_closure (CTK_ACCEL_LABEL (label),
                                              ctk_action_get_accel_closure (action));
         }
-      G_GNUC_END_IGNORE_DEPRECATIONS;
 
       activatable_update_label (menu_item, action);
     }
@@ -1812,15 +1800,11 @@ ctk_real_menu_item_activate (CtkMenuItem *menu_item)
 {
   CtkMenuItemPrivate *priv = menu_item->priv;
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-
   if (priv->action_helper)
     ctk_action_helper_activate (priv->action_helper);
 
   if (priv->action)
     ctk_action_activate (priv->action);
-
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 }
 
 

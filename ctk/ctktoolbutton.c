@@ -891,14 +891,10 @@ button_clicked (CtkWidget     *widget,
 {
   CtkAction *action;
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-
   action = ctk_activatable_get_related_action (CTK_ACTIVATABLE (button));
   
   if (action)
     ctk_action_activate (action);
-
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 
   g_signal_emit_by_name (button, "clicked");
 }
@@ -961,8 +957,6 @@ ctk_tool_button_update (CtkActivatable *activatable,
 
   button = CTK_TOOL_BUTTON (activatable);
   
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-
   if (strcmp (property_name, "short-label") == 0)
     ctk_tool_button_set_label (button, ctk_action_get_short_label (action));
   else if (strcmp (property_name, "stock-id") == 0)
@@ -978,7 +972,6 @@ ctk_tool_button_update (CtkActivatable *activatable,
         {
           icon_set = ctk_icon_factory_lookup_default (stock_id);
         }
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 
       if (icon_set != NULL || !icon)
 	image = NULL;
@@ -997,8 +990,6 @@ ctk_tool_button_update (CtkActivatable *activatable,
     }
   else if (strcmp (property_name, "icon-name") == 0)
     ctk_tool_button_set_icon_name (button, ctk_action_get_icon_name (action));
-
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 }
 
 static void
@@ -1019,15 +1010,11 @@ ctk_tool_button_sync_action_properties (CtkActivatable *activatable,
     return;
 
   button = CTK_TOOL_BUTTON (activatable);
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   stock_id = ctk_action_get_stock_id (action);
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 
   ctk_tool_button_set_label (button, ctk_action_get_short_label (action));
   ctk_tool_button_set_use_underline (button, TRUE);
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   ctk_tool_button_set_stock_id (button, stock_id);
-  G_GNUC_END_IGNORE_DEPRECATIONS;
   ctk_tool_button_set_icon_name (button, ctk_action_get_icon_name (action));
 
   if (stock_id)
