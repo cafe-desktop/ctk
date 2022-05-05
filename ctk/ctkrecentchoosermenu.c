@@ -834,9 +834,7 @@ ctk_recent_chooser_menu_create_item (CtkRecentChooserMenu *menu,
          */
         text = g_strdup_printf (C_("recent menu label", "%d. %s"), count, escaped);
 
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       item = ctk_image_menu_item_new_with_mnemonic (text);
-      G_GNUC_END_IGNORE_DEPRECATIONS;
 
       g_free (escaped);
       g_free (name);
@@ -844,18 +842,13 @@ ctk_recent_chooser_menu_create_item (CtkRecentChooserMenu *menu,
   else
     {
       text = g_strdup (ctk_recent_info_get_display_name (info));
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       item = ctk_image_menu_item_new_with_label (text);
-      G_GNUC_END_IGNORE_DEPRECATIONS;
     }
 
   g_free (text);
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   ctk_image_menu_item_set_always_show_image (CTK_IMAGE_MENU_ITEM (item),
                                              TRUE);
-  G_GNUC_END_IGNORE_DEPRECATIONS;
-
   /* ellipsize the menu item label, in case the recent document
    * display name is huge.
    */
@@ -871,10 +864,10 @@ ctk_recent_chooser_menu_create_item (CtkRecentChooserMenu *menu,
       icon = ctk_recent_info_get_gicon (info);
 
       image = ctk_image_new_from_gicon (icon, CTK_ICON_SIZE_MENU);
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
+
       ctk_image_menu_item_set_image (CTK_IMAGE_MENU_ITEM (item), image);
       ctk_image_menu_item_set_always_show_image (CTK_IMAGE_MENU_ITEM (item), TRUE);
-      G_GNUC_END_IGNORE_DEPRECATIONS;
+
       if (icon)
         g_object_unref (icon);
     }

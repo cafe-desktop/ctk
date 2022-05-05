@@ -2998,11 +2998,11 @@ create_menu (CdkScreen *screen, gint depth, gint length)
   image = ctk_image_new_from_icon_name ("document-open",
                                         CTK_ICON_SIZE_MENU);
   ctk_widget_show (image);
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
+
   menuitem = ctk_image_menu_item_new_with_label ("Image item");
   ctk_image_menu_item_set_image (CTK_IMAGE_MENU_ITEM (menuitem), image);
   ctk_image_menu_item_set_always_show_image (CTK_IMAGE_MENU_ITEM (menuitem), TRUE);
-  G_GNUC_END_IGNORE_DEPRECATIONS;
+
   ctk_menu_shell_append (CTK_MENU_SHELL (menu), menuitem);
   ctk_widget_show (menuitem);
   
@@ -3058,11 +3058,11 @@ create_table_menu (CdkScreen *screen, gint cols, gint rows)
   image = ctk_image_new_from_icon_name ("help-broswer",
                                         CTK_ICON_SIZE_MENU);
   ctk_widget_show (image);
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
+
   menuitem = ctk_image_menu_item_new_with_label ("Image");
   ctk_image_menu_item_set_image (CTK_IMAGE_MENU_ITEM (menuitem), image);
   ctk_image_menu_item_set_always_show_image (CTK_IMAGE_MENU_ITEM (menuitem), TRUE);
-  G_GNUC_END_IGNORE_DEPRECATIONS;
+
   ctk_menu_attach (CTK_MENU (submenu), menuitem, 0, 1, 0, 1);
   ctk_widget_show (menuitem);
 
@@ -3077,11 +3077,11 @@ create_table_menu (CdkScreen *screen, gint cols, gint rows)
   image = ctk_image_new_from_icon_name ("help-browser",
                                         CTK_ICON_SIZE_MENU);
   ctk_widget_show (image);
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
+
   menuitem = ctk_image_menu_item_new_with_label ("Image");
   ctk_image_menu_item_set_image (CTK_IMAGE_MENU_ITEM (menuitem), image);
   ctk_image_menu_item_set_always_show_image (CTK_IMAGE_MENU_ITEM (menuitem), TRUE);
-  G_GNUC_END_IGNORE_DEPRECATIONS;
+
   ctk_menu_attach (CTK_MENU (submenu), menuitem, 1, 2, 1, 2);
   ctk_widget_show (menuitem);
 
@@ -3285,11 +3285,11 @@ create_menus (CtkWidget *widget)
       image = ctk_image_new_from_icon_name ("help-browser",
                                             CTK_ICON_SIZE_MENU);
       ctk_widget_show (image);
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
+
       menuitem = ctk_image_menu_item_new_with_label ("Help");
       ctk_image_menu_item_set_image (CTK_IMAGE_MENU_ITEM (menuitem), image);
       ctk_image_menu_item_set_always_show_image (CTK_IMAGE_MENU_ITEM (menuitem), TRUE);
-      G_GNUC_END_IGNORE_DEPRECATIONS;
+
       ctk_menu_item_set_submenu (CTK_MENU_ITEM (menuitem), create_menu (screen, 4, 5));
       ctk_widget_set_hexpand (menuitem, TRUE);
       ctk_widget_set_halign (menuitem, CTK_ALIGN_END);
