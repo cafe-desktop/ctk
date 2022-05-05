@@ -117,12 +117,12 @@ static void ctk_check_menu_item_sync_action_properties     (CtkActivatable      
 static CtkActivatableIface *parent_activatable_iface;
 static guint                check_menu_item_signals[LAST_SIGNAL] = { 0 };
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
+
 G_DEFINE_TYPE_WITH_CODE (CtkCheckMenuItem, ctk_check_menu_item, CTK_TYPE_MENU_ITEM,
                          G_ADD_PRIVATE (CtkCheckMenuItem)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_ACTIVATABLE,
                                                 ctk_check_menu_item_activatable_interface_init))
-G_GNUC_END_IGNORE_DEPRECATIONS;
+
 
 static void
 ctk_check_menu_item_size_allocate (CtkWidget     *widget,

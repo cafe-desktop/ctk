@@ -220,13 +220,13 @@ static gboolean ctk_button_render   (CtkCssGadget        *gadget,
 static GParamSpec *props[LAST_PROP] = { NULL, };
 static guint button_signals[LAST_SIGNAL] = { 0 };
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
+
 G_DEFINE_TYPE_WITH_CODE (CtkButton, ctk_button, CTK_TYPE_BIN,
                          G_ADD_PRIVATE (CtkButton)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_ACTIONABLE, ctk_button_actionable_iface_init)
 			 G_IMPLEMENT_INTERFACE (CTK_TYPE_ACTIVATABLE,
 						ctk_button_activatable_interface_init))
-G_GNUC_END_IGNORE_DEPRECATIONS;
+
 
 static void
 ctk_button_class_init (CtkButtonClass *klass)
@@ -829,9 +829,7 @@ ctk_button_dispose (GObject *object)
 
   if (priv->action)
     {
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       ctk_activatable_do_set_related_action (CTK_ACTIVATABLE (button), NULL);
-      G_GNUC_END_IGNORE_DEPRECATIONS;
       priv->action = NULL;
     }
   G_OBJECT_CLASS (ctk_button_parent_class)->dispose (object);
@@ -1184,9 +1182,7 @@ ctk_button_set_related_action (CtkButton *button,
     g_signal_connect_after (button, "clicked",
                             G_CALLBACK (ctk_real_button_clicked), NULL);
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   ctk_activatable_do_set_related_action (CTK_ACTIVATABLE (button), action);
-  G_GNUC_END_IGNORE_DEPRECATIONS
 
   priv->action = action;
 }
@@ -1201,10 +1197,7 @@ ctk_button_set_use_action_appearance (CtkButton *button,
     {
       priv->use_action_appearance = use_appearance;
 
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       ctk_activatable_sync_action_properties (CTK_ACTIVATABLE (button), priv->action);
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-
     }
 }
 

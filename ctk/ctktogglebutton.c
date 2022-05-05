@@ -156,12 +156,11 @@ static void ctk_toggle_button_sync_action_properties (CtkActivatable       *acti
 static CtkActivatableIface *parent_activatable_iface;
 static guint                toggle_button_signals[LAST_SIGNAL] = { 0 };
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 G_DEFINE_TYPE_WITH_CODE (CtkToggleButton, ctk_toggle_button, CTK_TYPE_BUTTON,
                          G_ADD_PRIVATE (CtkToggleButton)
 			 G_IMPLEMENT_INTERFACE (CTK_TYPE_ACTIVATABLE,
 						ctk_toggle_button_activatable_interface_init))
-G_GNUC_END_IGNORE_DEPRECATIONS;
+
 
 static void
 ctk_toggle_button_class_init (CtkToggleButtonClass *class)

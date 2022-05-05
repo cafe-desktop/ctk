@@ -177,7 +177,7 @@ static void ctk_recent_chooser_update                 (CtkActivatable       *act
 static void ctk_recent_chooser_sync_action_properties (CtkActivatable       *activatable,
 						       CtkAction            *action);
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
+
 G_DEFINE_TYPE_WITH_CODE (CtkRecentChooserMenu,
 			 ctk_recent_chooser_menu,
 			 CTK_TYPE_MENU,
@@ -186,7 +186,7 @@ G_DEFINE_TYPE_WITH_CODE (CtkRecentChooserMenu,
 				 		ctk_recent_chooser_iface_init)
 			 G_IMPLEMENT_INTERFACE (CTK_TYPE_ACTIVATABLE,
 				 		ctk_recent_chooser_activatable_iface_init))
-G_GNUC_END_IGNORE_DEPRECATIONS;
+
 
 static void
 ctk_recent_chooser_iface_init (CtkRecentChooserIface *iface)

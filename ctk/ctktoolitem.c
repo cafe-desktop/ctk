@@ -138,12 +138,12 @@ static void ctk_tool_item_set_use_action_appearance  (CtkToolItem          *item
 
 static guint toolitem_signals[LAST_SIGNAL] = { 0 };
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
+
 G_DEFINE_TYPE_WITH_CODE (CtkToolItem, ctk_tool_item, CTK_TYPE_BIN,
                          G_ADD_PRIVATE (CtkToolItem)
 			 G_IMPLEMENT_INTERFACE (CTK_TYPE_ACTIVATABLE,
 						ctk_tool_item_activatable_interface_init))
-G_GNUC_END_IGNORE_DEPRECATIONS;
+
 
 static void
 ctk_tool_item_class_init (CtkToolItemClass *klass)
@@ -293,9 +293,7 @@ ctk_tool_item_dispose (GObject *object)
 
   if (item->priv->action)
     {
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       ctk_activatable_do_set_related_action (CTK_ACTIVATABLE (item), NULL);      
-      G_GNUC_END_IGNORE_DEPRECATIONS;
       item->priv->action = NULL;
     }
   G_OBJECT_CLASS (ctk_tool_item_parent_class)->dispose (object);
@@ -631,10 +629,7 @@ ctk_tool_item_set_related_action (CtkToolItem *item,
   if (item->priv->action == action)
     return;
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   ctk_activatable_do_set_related_action (CTK_ACTIVATABLE (item), action);
-  G_GNUC_END_IGNORE_DEPRECATIONS;
-
   item->priv->action = action;
 
   if (action)
@@ -651,9 +646,7 @@ ctk_tool_item_set_use_action_appearance (CtkToolItem *item,
     {
       item->priv->use_action_appearance = use_appearance;
 
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       ctk_activatable_sync_action_properties (CTK_ACTIVATABLE (item), item->priv->action);
-      G_GNUC_END_IGNORE_DEPRECATIONS;
     }
 }
 

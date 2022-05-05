@@ -93,12 +93,12 @@ static void ctk_toggle_tool_button_sync_action_properties     (CtkActivatable   
 static CtkActivatableIface *parent_activatable_iface;
 static guint                toggle_signals[LAST_SIGNAL] = { 0 };
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
+
 G_DEFINE_TYPE_WITH_CODE (CtkToggleToolButton, ctk_toggle_tool_button, CTK_TYPE_TOOL_BUTTON,
                          G_ADD_PRIVATE (CtkToggleToolButton)
 			 G_IMPLEMENT_INTERFACE (CTK_TYPE_ACTIVATABLE,
 						ctk_toggle_tool_button_activatable_interface_init))
-G_GNUC_END_IGNORE_DEPRECATIONS;
+
 
 static void
 ctk_toggle_tool_button_class_init (CtkToggleToolButtonClass *klass)

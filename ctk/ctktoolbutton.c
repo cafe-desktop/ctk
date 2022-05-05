@@ -948,9 +948,7 @@ ctk_tool_button_update (CtkActivatable *activatable,
 
   parent_activatable_iface->update (activatable, action, property_name);
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   use_action_appearance = ctk_activatable_get_use_action_appearance (activatable);
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 
   if (!use_action_appearance)
     return;
