@@ -1480,13 +1480,8 @@ ctk_menu_shell_select_first (CtkMenuShell *menu_shell,
         {
           to_select = child;
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-
           if (!CTK_IS_TEAROFF_MENU_ITEM (child))
             break;
-
-G_GNUC_END_IGNORE_DEPRECATIONS
-
         }
 
       tmp_list = tmp_list->next;
@@ -1514,12 +1509,8 @@ _ctk_menu_shell_select_last (CtkMenuShell *menu_shell,
         {
           to_select = child;
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-
           if (!CTK_IS_TEAROFF_MENU_ITEM (child))
             break;
-
-G_GNUC_END_IGNORE_DEPRECATIONS
         }
 
       tmp_list = tmp_list->prev;

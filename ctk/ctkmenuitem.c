@@ -1280,18 +1280,12 @@ ctk_menu_is_empty (CtkWidget *menu)
     {
       if (ctk_widget_get_visible (cur->data))
 	{
-
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-
 	  if (!CTK_IS_TEAROFF_MENU_ITEM (cur->data) &&
 	      !g_object_get_data (cur->data, "ctk-empty-menu-item"))
             {
 	      result = FALSE;
               break;
             }
-
-G_GNUC_END_IGNORE_DEPRECATIONS
-
 	}
       cur = cur->next;
     }
