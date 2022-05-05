@@ -126,14 +126,14 @@ static GParamSpec *switch_props[LAST_PROP] = { NULL, };
 static void ctk_switch_actionable_iface_init (CtkActionableInterface *iface);
 static void ctk_switch_activatable_interface_init (CtkActivatableIface *iface);
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
+
 G_DEFINE_TYPE_WITH_CODE (CtkSwitch, ctk_switch, CTK_TYPE_WIDGET,
                          G_ADD_PRIVATE (CtkSwitch)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_ACTIONABLE,
                                                 ctk_switch_actionable_iface_init)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_ACTIVATABLE,
                                                 ctk_switch_activatable_interface_init));
-G_GNUC_END_IGNORE_DEPRECATIONS;
+
 
 static void
 ctk_switch_end_toggle_animation (CtkSwitch *sw)
@@ -647,9 +647,7 @@ ctk_switch_set_related_action (CtkSwitch *sw,
   if (priv->action == action)
     return;
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   ctk_activatable_do_set_related_action (CTK_ACTIVATABLE (sw), action);
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 
   priv->action = action;
 }
@@ -664,9 +662,7 @@ ctk_switch_set_use_action_appearance (CtkSwitch *sw,
     {
       priv->use_action_appearance = use_appearance;
 
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       ctk_activatable_sync_action_properties (CTK_ACTIVATABLE (sw), priv->action);
-      G_GNUC_END_IGNORE_DEPRECATIONS;
     }
 }
 
@@ -806,9 +802,7 @@ ctk_switch_dispose (GObject *object)
 
   if (priv->action)
     {
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       ctk_activatable_do_set_related_action (CTK_ACTIVATABLE (object), NULL);
-      G_GNUC_END_IGNORE_DEPRECATIONS;
       priv->action = NULL;
     }
 
@@ -852,9 +846,7 @@ ctk_switch_class_init (CtkSwitchClass *klass)
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
   gpointer activatable_iface;
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   activatable_iface = g_type_default_interface_peek (CTK_TYPE_ACTIVATABLE);
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 
   switch_props[PROP_RELATED_ACTION] =
     g_param_spec_override ("related-action",

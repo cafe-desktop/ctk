@@ -1114,9 +1114,8 @@ _ctk_recent_chooser_set_related_action (CtkRecentChooser *recent_chooser,
   if (prev_action == action)
     return;
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   ctk_activatable_do_set_related_action (CTK_ACTIVATABLE (recent_chooser), action);
-  G_GNUC_END_IGNORE_DEPRECATIONS;
+
   g_object_set_qdata (G_OBJECT (recent_chooser), quark_ctk_related_action, action);
 }
 
@@ -1144,9 +1143,7 @@ _ctk_recent_chooser_set_use_action_appearance (CtkRecentChooser *recent_chooser,
 
       g_object_set_qdata (G_OBJECT (recent_chooser), quark_ctk_use_action_appearance, GINT_TO_POINTER (!use_appearance));
  
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       ctk_activatable_sync_action_properties (CTK_ACTIVATABLE (recent_chooser), action);
-      G_GNUC_END_IGNORE_DEPRECATIONS;
     }
 }
 

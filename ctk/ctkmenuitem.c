@@ -215,7 +215,6 @@ static GParamSpec *menu_item_props[LAST_PROP];
 
 static CtkBuildableIface *parent_buildable_iface;
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
 G_DEFINE_TYPE_WITH_CODE (CtkMenuItem, ctk_menu_item, CTK_TYPE_BIN,
                          G_ADD_PRIVATE (CtkMenuItem)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_BUILDABLE,
@@ -224,7 +223,7 @@ G_DEFINE_TYPE_WITH_CODE (CtkMenuItem, ctk_menu_item, CTK_TYPE_BIN,
                                                 ctk_menu_item_activatable_interface_init)
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_ACTIONABLE,
                                                 ctk_menu_item_actionable_interface_init))
-G_GNUC_END_IGNORE_DEPRECATIONS;
+
 
 static void
 ctk_menu_item_set_action_name (CtkActionable *actionable,
@@ -1380,8 +1379,6 @@ ctk_menu_item_set_related_action (CtkMenuItem *menu_item,
     if (priv->action == action)
       return;
 
-    G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-
     if (priv->action)
       {
         ctk_action_disconnect_accelerator (priv->action);
@@ -1401,8 +1398,6 @@ ctk_menu_item_set_related_action (CtkMenuItem *menu_item,
 
     ctk_activatable_do_set_related_action (CTK_ACTIVATABLE (menu_item), action);
 
-    G_GNUC_END_IGNORE_DEPRECATIONS;
-
     priv->action = action;
 }
 
@@ -1416,9 +1411,7 @@ ctk_menu_item_set_use_action_appearance (CtkMenuItem *menu_item,
       {
         priv->use_action_appearance = use_appearance;
 
-        G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
         ctk_activatable_sync_action_properties (CTK_ACTIVATABLE (menu_item), priv->action);
-        G_GNUC_END_IGNORE_DEPRECATIONS;
       }
 }
 
