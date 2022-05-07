@@ -1039,18 +1039,14 @@ _ctk_recent_chooser_update (CtkActivatable *activatable,
   CtkRecentChooser *action_chooser;
   CtkRecentAction  *recent_action;
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   recent_chooser = CTK_RECENT_CHOOSER (activatable);
   action_chooser = CTK_RECENT_CHOOSER (action);
   recent_action  = CTK_RECENT_ACTION (action);
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 
   if (strcmp (property_name, "show-numbers") == 0 && recent_chooser_has_show_numbers (recent_chooser))
     {
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       g_object_set (recent_chooser, "show-numbers",
                     ctk_recent_action_get_show_numbers (recent_action), NULL);
-      G_GNUC_END_IGNORE_DEPRECATIONS;
     }
   else if (strcmp (property_name, "show-private") == 0)
     ctk_recent_chooser_set_show_private (recent_chooser, ctk_recent_chooser_get_show_private (action_chooser));
@@ -1087,11 +1083,9 @@ _ctk_recent_chooser_sync_action_properties (CtkActivatable *activatable,
 
   if (recent_chooser_has_show_numbers (recent_chooser))
     {
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       g_object_set (recent_chooser, "show-numbers", 
                     ctk_recent_action_get_show_numbers (CTK_RECENT_ACTION (action)),
                     NULL);
-      G_GNUC_END_IGNORE_DEPRECATIONS;
     }
   ctk_recent_chooser_set_show_private (recent_chooser, ctk_recent_chooser_get_show_private (action_chooser));
   ctk_recent_chooser_set_show_not_found (recent_chooser, ctk_recent_chooser_get_show_not_found (action_chooser));
