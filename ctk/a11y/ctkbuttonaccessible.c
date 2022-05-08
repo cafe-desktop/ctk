@@ -100,10 +100,9 @@ get_label_from_button (CtkWidget *button)
   CtkWidget *child;
 
   child = ctk_bin_get_child (CTK_BIN (button));
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+
   if (CTK_IS_ALIGNMENT (child))
     child = ctk_bin_get_child (CTK_BIN (child));
-G_GNUC_END_IGNORE_DEPRECATIONS
 
   if (CTK_IS_CONTAINER (child))
     child = find_label_child (CTK_CONTAINER (child));

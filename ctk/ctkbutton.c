@@ -800,14 +800,12 @@ maybe_set_alignment (CtkButton *button,
   if (!priv->align_set)
     return;
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   if (CTK_IS_LABEL (widget))
     g_object_set (widget, "xalign", priv->xalign, "yalign", priv->yalign, NULL);
   else if (CTK_IS_MISC (widget))
     ctk_misc_set_alignment (CTK_MISC (widget), priv->xalign, priv->yalign);
   else if (CTK_IS_ALIGNMENT (widget))
     g_object_set (widget, "xalign", priv->xalign, "yalign", priv->yalign, NULL);
-G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
