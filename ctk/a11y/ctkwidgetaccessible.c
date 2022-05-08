@@ -283,7 +283,7 @@ ctk_widget_accessible_ref_relation_set (AtkObject *obj)
               CtkWidget *temp_widget;
 
               temp_widget = ctk_widget_get_parent (widget);
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+
               if (CTK_IS_ALIGNMENT (temp_widget))
                 {
                   temp_widget = ctk_widget_get_parent (temp_widget);
@@ -294,7 +294,6 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
                         label = find_label (ctk_widget_get_parent (temp_widget));
                     }
                 }
-G_GNUC_END_IGNORE_DEPRECATIONS
             }
           else if (CTK_IS_COMBO_BOX (widget))
             /*
