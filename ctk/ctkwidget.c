@@ -3537,36 +3537,31 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 							     P_("Width, in pixels, between focus indicator and the widget 'box'"),
 							     0, G_MAXINT, 1,
 							     CTK_PARAM_READABLE | G_PARAM_DEPRECATED));
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   /**
    * CtkWidget:cursor-color:
    *
    * The color with which to draw the insertion cursor in entries and
    * text views.
-   *
-   * Deprecated: 3.20: Use the caret-color CSS property
    */
   ctk_widget_class_install_style_property (klass,
 					   g_param_spec_boxed ("cursor-color",
 							       P_("Cursor color"),
 							       P_("Color with which to draw insertion cursor"),
 							       CDK_TYPE_COLOR,
-							       CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
+							       CTK_PARAM_READABLE));
   /**
    * CtkWidget:secondary-cursor-color:
    *
    * The color with which to draw the secondary insertion cursor in entries and
    * text views when editing mixed right-to-left and left-to-right text.
-   *
-   * Deprecated: 3.20: Use the -ctk-secondary-caret-color CSS property
    */
   ctk_widget_class_install_style_property (klass,
 					   g_param_spec_boxed ("secondary-cursor-color",
 							       P_("Secondary cursor color"),
 							       P_("Color with which to draw the secondary insertion cursor when editing mixed right-to-left and left-to-right text"),
 							       CDK_TYPE_COLOR,
-							       CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
-G_GNUC_END_IGNORE_DEPRECATIONS
+							       CTK_PARAM_READABLE));
+
   ctk_widget_class_install_style_property (klass,
 					   g_param_spec_float ("cursor-aspect-ratio",
 							       P_("Cursor line aspect ratio"),
@@ -3580,24 +3575,19 @@ G_GNUC_END_IGNORE_DEPRECATIONS
                                                                  P_("Whether windows can be dragged and maximized by clicking on empty areas"),
                                                                  FALSE,
                                                                  CTK_PARAM_READABLE));
-
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   /**
    * CtkWidget:link-color:
    *
    * The "link-color" style property defines the color of unvisited links.
    *
    * Since: 2.10
-   *
-   * Deprecated: 3.12: Links now use a separate state flags for selecting
-   *     different theming, this style property is ignored
    */
   ctk_widget_class_install_style_property (klass,
 					   g_param_spec_boxed ("link-color",
 							       P_("Unvisited Link Color"),
 							       P_("Color of unvisited links"),
 							       CDK_TYPE_COLOR,
-							       CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
+							       CTK_PARAM_READABLE));
 
   /**
    * CtkWidget:visited-link-color:
@@ -3605,17 +3595,13 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
    * The "visited-link-color" style property defines the color of visited links.
    *
    * Since: 2.10
-   *
-   * Deprecated: 3.12: Links now use a separate state flags for selecting
-   *     different theming, this style property is ignored
    */
   ctk_widget_class_install_style_property (klass,
 					   g_param_spec_boxed ("visited-link-color",
 							       P_("Visited Link Color"),
 							       P_("Color of visited links"),
 							       CDK_TYPE_COLOR,
-							       CTK_PARAM_READABLE|G_PARAM_DEPRECATED));
-G_GNUC_END_IGNORE_DEPRECATIONS
+							       CTK_PARAM_READABLE));
 
   /**
    * CtkWidget:wide-separators:

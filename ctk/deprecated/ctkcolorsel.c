@@ -338,8 +338,6 @@ ctk_color_selection_class_init (CtkColorSelectionClass *klass)
    * CtkColorSelection:current-color:
    *
    * The current CdkColor color.
-   *
-   * Deprecated: 3.4: Use #CtkColorSelection:current-rgba instead.
    */
   g_object_class_install_property (gobject_class,
                                    PROP_CURRENT_COLOR,
@@ -347,7 +345,7 @@ ctk_color_selection_class_init (CtkColorSelectionClass *klass)
                                                        P_("Current Color"),
                                                        P_("The current color"),
                                                        CDK_TYPE_COLOR,
-                                                       CTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
+                                                       CTK_PARAM_READWRITE));
   g_object_class_install_property (gobject_class,
                                    PROP_CURRENT_ALPHA,
                                    g_param_spec_uint ("current-alpha",

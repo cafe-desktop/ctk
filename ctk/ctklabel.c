@@ -1516,8 +1516,6 @@ attribute_from_text (CtkBuilder   *builder,
 	}
       break;
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-
       /* PangoAttrColor */
     case PANGO_ATTR_FOREGROUND:
       if (ctk_builder_value_from_string_type (builder, CDK_TYPE_COLOR, value, &val, error))
@@ -1547,8 +1545,6 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 	  attribute = pango_attr_strikethrough_color_new (color->red, color->green, color->blue);
 	}
       break;
-
-G_GNUC_END_IGNORE_DEPRECATIONS
 
       /* PangoAttrShape */
     case PANGO_ATTR_SHAPE:

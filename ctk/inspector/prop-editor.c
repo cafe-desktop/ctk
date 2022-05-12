@@ -781,7 +781,6 @@ color_modified (CtkColorButton *cb, GParamSpec *ignored, ObjectProperty *p)
   g_value_unset (&val);
 }
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 static void
 color_changed (GObject *object, GParamSpec *pspec, gpointer data)
 {
@@ -807,7 +806,6 @@ color_changed (GObject *object, GParamSpec *pspec, gpointer data)
 
   g_value_unset (&val);
 }
-G_GNUC_END_IGNORE_DEPRECATIONS
 
 static void
 font_modified (CtkFontChooser *fb, GParamSpec *pspec, ObjectProperty *p)
