@@ -289,17 +289,13 @@ ctk_cell_renderer_text_class_init (CtkCellRendererTextClass *class)
    * CtkCellRendererText:background-cdk:
    *
    * Background color as a #CdkColor
-   *
-   * Deprecated: 3.4: Use #CtkCellRendererText:background-rgba instead.
    */
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   text_cell_renderer_props[PROP_BACKGROUND_CDK] =
       g_param_spec_boxed ("background-cdk",
                           P_("Background color"),
                           P_("Background color as a CdkColor"),
                           CDK_TYPE_COLOR,
-                          CTK_PARAM_READWRITE | G_PARAM_DEPRECATED);
-G_GNUC_END_IGNORE_DEPRECATIONS
+                          CTK_PARAM_READWRITE);
 
   /**
    * CtkCellRendererText:background-rgba:
@@ -325,17 +321,13 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    * CtkCellRendererText:foreground-cdk:
    *
    * Foreground color as a #CdkColor
-   *
-   * Deprecated: 3.4: Use #CtkCellRendererText:foreground-rgba instead.
    */
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   text_cell_renderer_props[PROP_FOREGROUND_CDK] =
       g_param_spec_boxed ("foreground-cdk",
                           P_("Foreground color"),
                           P_("Foreground color as a CdkColor"),
                           CDK_TYPE_COLOR,
-                          CTK_PARAM_READWRITE | G_PARAM_DEPRECATED);
-G_GNUC_END_IGNORE_DEPRECATIONS
+                          CTK_PARAM_READWRITE);
 
   /**
    * CtkCellRendererText:foreground-rgba:

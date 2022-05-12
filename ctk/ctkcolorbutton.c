@@ -191,18 +191,14 @@ ctk_color_button_class_init (CtkColorButtonClass *klass)
    * The selected color.
    *
    * Since: 2.4
-   *
-   * Deprecated: 3.4: Use #CtkColorButton:rgba instead.
    */
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   g_object_class_install_property (gobject_class,
                                    PROP_COLOR,
                                    g_param_spec_boxed ("color",
                                                        P_("Current Color"),
                                                        P_("The selected color"),
                                                        CDK_TYPE_COLOR,
-                                                       CTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
-G_GNUC_END_IGNORE_DEPRECATIONS
+                                                       CTK_PARAM_READWRITE));
 
   /**
    * CtkColorButton:alpha:

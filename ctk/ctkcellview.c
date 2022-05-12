@@ -223,18 +223,14 @@ ctk_cell_view_class_init (CtkCellViewClass *klass)
    * CtkCellView:background-cdk:
    *
    * The background color as a #CdkColor
-   *
-   * Deprecated: 3.4: Use #CtkCellView:background-rgba instead.
    */
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   g_object_class_install_property (gobject_class,
                                    PROP_BACKGROUND_CDK,
                                    g_param_spec_boxed ("background-cdk",
                                                       P_("Background color"),
                                                       P_("Background color as a CdkColor"),
                                                       CDK_TYPE_COLOR,
-                                                      CTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
-G_GNUC_END_IGNORE_DEPRECATIONS
+                                                      CTK_PARAM_READWRITE));
   /**
    * CtkCellView:background-rgba:
    *

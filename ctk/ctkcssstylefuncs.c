@@ -285,8 +285,6 @@ color_value_compute (CtkStyleProviderPrivate *provider,
 
   value = _ctk_css_typed_value_get (specified);
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-
   if (G_VALUE_HOLDS (value, CTK_TYPE_SYMBOLIC_COLOR))
     {
       GValue new_value = G_VALUE_INIT;
@@ -311,8 +309,6 @@ color_value_compute (CtkStyleProviderPrivate *provider,
     }
   else
     return _ctk_css_value_ref (specified);
-
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 }
 
 static gboolean
@@ -977,8 +973,6 @@ ctk_css_style_funcs_init (void)
                                 rgba_value_print,
                                 rgba_value_compute);
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-
   register_conversion_function (CDK_TYPE_COLOR,
                                 color_value_parse,
                                 color_value_print,
@@ -988,8 +982,6 @@ ctk_css_style_funcs_init (void)
                                 symbolic_color_value_parse,
                                 symbolic_color_value_print,
                                 NULL);
-
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 
   register_conversion_function (PANGO_TYPE_FONT_DESCRIPTION,
                                 font_description_value_parse,

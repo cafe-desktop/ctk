@@ -1075,14 +1075,12 @@ ctk_text_view_class_init (CtkTextViewClass *klass)
   /*
    * Style properties
    */
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   ctk_widget_class_install_style_property (widget_class,
 					   g_param_spec_boxed ("error-underline-color",
 							       P_("Error underline color"),
 							       P_("Color with which to draw error-indication underlines"),
 							       CDK_TYPE_COLOR,
 							       CTK_PARAM_READABLE));
-G_GNUC_END_IGNORE_DEPRECATIONS
   
   /*
    * Signals
