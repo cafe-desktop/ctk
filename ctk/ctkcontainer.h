@@ -173,13 +173,13 @@ void     ctk_container_propagate_draw   (CtkContainer   *container,
 					 CtkWidget      *child,
 					 cairo_t        *cr);
 
-CDK_DEPRECATED_IN_3_24
+CDK_AVAILABLE_IN_ALL
 void     ctk_container_set_focus_chain  (CtkContainer   *container,
                                          GList          *focusable_widgets);
-CDK_DEPRECATED_IN_3_24
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_container_get_focus_chain  (CtkContainer   *container,
 					 GList         **focusable_widgets);
-CDK_DEPRECATED_IN_3_24
+CDK_AVAILABLE_IN_ALL
 void     ctk_container_unset_focus_chain (CtkContainer  *container);
 
 #define CTK_IS_RESIZE_CONTAINER(widget) (CTK_IS_CONTAINER (widget) && \

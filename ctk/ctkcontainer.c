@@ -3343,9 +3343,6 @@ chain_widget_destroyed (CtkWidget *widget,
  * to set the focus chain before you pack the widgets, or have a widget
  * in the chain that isn’t always packed. The necessary checks are done
  * when the focus chain is actually traversed.
- *
- * Deprecated: 3.24: For overriding focus behavior, use the
- *     CtkWidgetClass::focus signal.
  **/
 void
 ctk_container_set_focus_chain (CtkContainer *container,
@@ -3410,9 +3407,6 @@ ctk_container_set_focus_chain (CtkContainer *container,
  *
  * Returns: %TRUE if the focus chain of the container
  * has been set explicitly.
- *
- * Deprecated: 3.24: For overriding focus behavior, use the
- *     CtkWidgetClass::focus signal.
  **/
 gboolean
 ctk_container_get_focus_chain (CtkContainer *container,
@@ -3440,9 +3434,6 @@ ctk_container_get_focus_chain (CtkContainer *container,
  * @container: a #CtkContainer
  *
  * Removes a focus chain explicitly set with ctk_container_set_focus_chain().
- *
- * Deprecated: 3.24: For overriding focus behavior, use the
- *     CtkWidgetClass::focus signal.
  **/
 void
 ctk_container_unset_focus_chain (CtkContainer  *container)
