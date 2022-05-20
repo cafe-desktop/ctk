@@ -64,7 +64,7 @@ cairo_region_t *
            cdk_cairo_region_create_from_surface
                                         (cairo_surface_t      *surface);
 
-CDK_DEPRECATED_IN_3_4_FOR(cdk_cairo_set_source_rgba)
+CDK_AVAILABLE_IN_ALL
 void       cdk_cairo_set_source_color   (cairo_t              *cr,
                                          const CdkColor       *color);
 
