@@ -8739,8 +8739,6 @@ cdk_pointer_grab (CdkWindow *	  window,
  * are emitted when the grab ends unvoluntarily.
  *
  * Returns: %CDK_GRAB_SUCCESS if the grab was successful.
- *
- * Deprecated: 3.0: Use cdk_device_grab() instead.
  **/
 CdkGrabStatus
 cdk_keyboard_grab (CdkWindow *window,

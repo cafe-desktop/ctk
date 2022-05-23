@@ -89,7 +89,7 @@ CdkGrabStatus cdk_pointer_grab       (CdkWindow    *window,
                                       CdkWindow    *confine_to,
                                       CdkCursor    *cursor,
                                       guint32       time_);
-CDK_DEPRECATED_IN_3_0_FOR(cdk_device_grab)
+CDK_AVAILABLE_IN_ALL
 CdkGrabStatus cdk_keyboard_grab      (CdkWindow    *window,
                                       gboolean      owner_events,
                                       guint32       time_);
