@@ -118,7 +118,7 @@ CDK_DEPRECATED_IN_3_0_FOR(cdk_device_get_window_at_position)
 CdkWindow *      cdk_display_get_window_at_pointer (CdkDisplay             *display,
                                                     gint                   *win_x,
                                                     gint                   *win_y);
-CDK_DEPRECATED_IN_3_0_FOR(cdk_device_warp)
+CDK_AVAILABLE_IN_ALL
 void             cdk_display_warp_pointer          (CdkDisplay             *display,
                                                     CdkScreen              *screen,
                                                     gint                   x,

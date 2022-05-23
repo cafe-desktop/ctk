@@ -2106,8 +2106,6 @@ cdk_display_get_maximal_cursor_size (CdkDisplay *display,
  * for the color picker in the #CtkColorSelectionDialog.
  *
  * Since: 2.8
- *
- * Deprecated: 3.0: Use cdk_device_warp() instead.
  */
 void
 cdk_display_warp_pointer (CdkDisplay *display,
