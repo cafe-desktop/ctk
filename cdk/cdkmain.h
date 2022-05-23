@@ -82,7 +82,7 @@ CDK_DEPRECATED_IN_3_8_FOR(cdk_display_get_name (cdk_display_get_default ()))
 gchar*        cdk_get_display        (void);
 
 #ifndef CDK_MULTIDEVICE_SAFE
-CDK_DEPRECATED_IN_3_0_FOR(cdk_device_grab)
+CDK_AVAILABLE_IN_ALL
 CdkGrabStatus cdk_pointer_grab       (CdkWindow    *window,
                                       gboolean      owner_events,
                                       CdkEventMask  event_mask,

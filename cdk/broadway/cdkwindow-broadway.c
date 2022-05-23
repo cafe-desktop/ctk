@@ -1332,7 +1332,6 @@ create_moveresize_window (MoveResizeData *mv_resize,
 
   cdk_window_show (mv_resize->moveresize_emulation_window);
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   status = cdk_pointer_grab (mv_resize->moveresize_emulation_window,
 			     FALSE,
 			     CDK_BUTTON_RELEASE_MASK |
@@ -1340,7 +1339,6 @@ create_moveresize_window (MoveResizeData *mv_resize,
 			     NULL,
 			     NULL,
 			     timestamp);
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 
   if (status != CDK_GRAB_SUCCESS)
     {
