@@ -647,8 +647,6 @@ _cdk_display_enable_motion_hints (CdkDisplay *display,
  * mask for a given display.
  *
  * Since: 2.2
- *
- * Deprecated: 3.0: Use cdk_device_get_position() instead.
  **/
 void
 cdk_display_get_pointer (CdkDisplay      *display,

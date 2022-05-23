@@ -108,7 +108,7 @@ CDK_AVAILABLE_IN_ALL
 CdkDisplay *cdk_display_get_default (void);
 
 #ifndef CDK_MULTIDEVICE_SAFE
-CDK_DEPRECATED_IN_3_0_FOR(cdk_device_get_position)
+CDK_AVAILABLE_IN_ALL
 void             cdk_display_get_pointer           (CdkDisplay             *display,
                                                     CdkScreen             **screen,
                                                     gint                   *x,
