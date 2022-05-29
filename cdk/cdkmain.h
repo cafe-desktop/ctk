@@ -96,7 +96,7 @@ CdkGrabStatus cdk_keyboard_grab      (CdkWindow    *window,
 #endif /* CDK_MULTIDEVICE_SAFE */
 
 #ifndef CDK_MULTIDEVICE_SAFE
-CDK_DEPRECATED_IN_3_0_FOR(cdk_device_ungrab)
+CDK_AVAILABLE_IN_ALL
 void          cdk_pointer_ungrab     (guint32       time_);
 CDK_AVAILABLE_IN_ALL
 void          cdk_keyboard_ungrab    (guint32       time_);

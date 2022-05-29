@@ -28,23 +28,6 @@
 #include "cdkwindow.h"
 
 /**
- * cdk_pointer_ungrab:
- * @time_: a timestamp from a #CdkEvent, or %CDK_CURRENT_TIME if no 
- *  timestamp is available.
- *
- * Ungrabs the pointer on the default display, if it is grabbed by this 
- * application.
- *
- * Deprecated: 3.0: Use cdk_device_ungrab(), together with cdk_device_grab()
- *             instead.
- **/
-void
-cdk_pointer_ungrab (guint32 time)
-{
-  cdk_display_pointer_ungrab (cdk_display_get_default (), time);
-}
-
-/**
  * cdk_pointer_is_grabbed:
  * 
  * Returns %TRUE if the pointer on the default display is currently 
