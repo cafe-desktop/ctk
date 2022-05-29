@@ -524,7 +524,7 @@ CdkScreen *   cdk_window_get_screen            (CdkWindow     *window);
 CDK_AVAILABLE_IN_ALL
 CdkDisplay *  cdk_window_get_display           (CdkWindow     *window);
 #ifndef CDK_MULTIDEVICE_SAFE
-CDK_DEPRECATED_IN_3_0_FOR(cdk_device_get_window_at_position)
+CDK_AVAILABLE_IN_ALL
 CdkWindow*    cdk_window_at_pointer            (gint          *win_x,
                                                 gint          *win_y);
 #endif /* CDK_MULTIDEVICE_SAFE */
@@ -856,7 +856,7 @@ CDK_AVAILABLE_IN_3_10
 gint          cdk_window_get_scale_factor  (CdkWindow     *window);
 
 #ifndef CDK_MULTIDEVICE_SAFE
-CDK_DEPRECATED_IN_3_0_FOR(cdk_window_get_device_position)
+CDK_AVAILABLE_IN_ALL
 CdkWindow *   cdk_window_get_pointer     (CdkWindow       *window,
                                           gint            *x,
                                           gint            *y,

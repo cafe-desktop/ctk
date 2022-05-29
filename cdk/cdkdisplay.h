@@ -114,7 +114,7 @@ void             cdk_display_get_pointer           (CdkDisplay             *disp
                                                     gint                   *x,
                                                     gint                   *y,
                                                     CdkModifierType        *mask);
-CDK_DEPRECATED_IN_3_0_FOR(cdk_device_get_window_at_position)
+CDK_AVAILABLE_IN_ALL
 CdkWindow *      cdk_display_get_window_at_pointer (CdkDisplay             *display,
                                                     gint                   *win_x,
                                                     gint                   *win_y);

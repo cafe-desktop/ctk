@@ -706,8 +706,6 @@ cdk_display_get_pointer (CdkDisplay      *display,
  *   pointer, or %NULL
  *
  * Since: 2.2
- *
- * Deprecated: 3.0: Use cdk_device_get_window_at_position() instead.
  **/
 CdkWindow *
 cdk_display_get_window_at_pointer (CdkDisplay *display,

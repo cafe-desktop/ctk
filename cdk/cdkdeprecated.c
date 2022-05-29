@@ -79,29 +79,3 @@ cdk_keyboard_ungrab (guint32 time)
 {
   cdk_display_keyboard_ungrab (cdk_display_get_default (), time);
 }
-
-/**
- * cdk_window_at_pointer:
- * @win_x: (out) (allow-none): return location for origin of the window under the pointer
- * @win_y: (out) (allow-none): return location for origin of the window under the pointer
- *
- * Obtains the window underneath the mouse pointer, returning the
- * location of that window in @win_x, @win_y. Returns %NULL if the
- * window under the mouse pointer is not known to CDK (if the window
- * belongs to another application and a #CdkWindow hasn’t been created
- * for it with cdk_window_foreign_new())
- *
- * NOTE: For multihead-aware widgets or applications use
- * cdk_display_get_window_at_pointer() instead.
- *
- * Returns: (transfer none): window under the mouse pointer
- *
- * Deprecated: 3.0: Use cdk_device_get_window_at_position() instead.
- **/
-CdkWindow*
-cdk_window_at_pointer (gint *win_x,
-		       gint *win_y)
-{
-  return cdk_display_get_window_at_pointer (cdk_display_get_default (), win_x, win_y);
-}
-
