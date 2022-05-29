@@ -62,7 +62,7 @@ CdkScreen * cdk_display_get_default_screen (CdkDisplay  *display);
 CDK_DEPRECATED_IN_3_0_FOR(cdk_device_ungrab)
 void        cdk_display_pointer_ungrab     (CdkDisplay  *display,
                                             guint32      time_);
-CDK_DEPRECATED_IN_3_0_FOR(cdk_device_ungrab)
+CDK_AVAILABLE_IN_ALL
 void        cdk_display_keyboard_ungrab    (CdkDisplay  *display,
                                             guint32      time_);
 CDK_DEPRECATED_IN_3_0_FOR(cdk_display_device_is_grabbed)

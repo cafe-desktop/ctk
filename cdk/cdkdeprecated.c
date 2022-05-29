@@ -62,20 +62,3 @@ cdk_pointer_is_grabbed (void)
 {
   return cdk_display_pointer_is_grabbed (cdk_display_get_default ());
 }
-
-/**
- * cdk_keyboard_ungrab:
- * @time_: a timestamp from a #CdkEvent, or %CDK_CURRENT_TIME if no
- *        timestamp is available.
- * 
- * Ungrabs the keyboard on the default display, if it is grabbed by this 
- * application.
- *
- * Deprecated: 3.0: Use cdk_device_ungrab(), together with cdk_device_grab()
- *             instead.
- **/
-void
-cdk_keyboard_ungrab (guint32 time)
-{
-  cdk_display_keyboard_ungrab (cdk_display_get_default (), time);
-}
