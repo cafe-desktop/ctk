@@ -549,6 +549,23 @@ cdk_pointer_ungrab (guint32 time)
 }
 
 /**
+ * cdk_pointer_is_grabbed:
+ * 
+ * Returns %TRUE if the pointer on the default display is currently 
+ * grabbed by this application.
+ *
+ * Note that this does not take the inmplicit pointer grab on button
+ * presses into account.
+ *
+ * Returns: %TRUE if the pointer is currently grabbed by this application.
+ **/
+gboolean
+cdk_pointer_is_grabbed (void)
+{
+  return cdk_display_pointer_is_grabbed (cdk_display_get_default ());
+}
+
+/**
  * cdk_display_keyboard_ungrab:
  * @display: a #CdkDisplay.
  * @time_: a timestap (e.g #CDK_CURRENT_TIME).
@@ -1514,8 +1531,6 @@ cdk_device_grab_info_libctk_only (CdkDisplay  *display,
  * Returns: %TRUE if an active X pointer grab is in effect
  *
  * Since: 2.2
- *
- * Deprecated: 3.0: Use cdk_display_device_is_grabbed() instead.
  */
 gboolean
 cdk_display_pointer_is_grabbed (CdkDisplay *display)

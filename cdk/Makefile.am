@@ -143,7 +143,6 @@ cdk_c_sources = 				\
 	cdkcairo.c				\
 	cdkcolor.c				\
 	cdkcursor.c				\
-	cdkdeprecated.c				\
 	cdkdevice.c				\
 	cdkdevicepad.c				\
 	cdkdevicetool.c				\

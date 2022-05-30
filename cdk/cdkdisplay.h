@@ -65,7 +65,7 @@ void        cdk_display_pointer_ungrab     (CdkDisplay  *display,
 CDK_AVAILABLE_IN_ALL
 void        cdk_display_keyboard_ungrab    (CdkDisplay  *display,
                                             guint32      time_);
-CDK_DEPRECATED_IN_3_0_FOR(cdk_display_device_is_grabbed)
+CDK_AVAILABLE_IN_ALL
 gboolean    cdk_display_pointer_is_grabbed (CdkDisplay  *display);
 #endif /* CDK_MULTIDEVICE_SAFE */
 

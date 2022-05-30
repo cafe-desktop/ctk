@@ -100,7 +100,7 @@ CDK_AVAILABLE_IN_ALL
 void          cdk_pointer_ungrab     (guint32       time_);
 CDK_AVAILABLE_IN_ALL
 void          cdk_keyboard_ungrab    (guint32       time_);
-CDK_DEPRECATED_IN_3_0_FOR(cdk_display_device_is_grabbed)
+CDK_AVAILABLE_IN_ALL
 gboolean      cdk_pointer_is_grabbed (void);
 #endif /* CDK_MULTIDEVICE_SAFE */
 
