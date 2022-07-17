@@ -9765,13 +9765,6 @@ ctk_widget_override_color (CtkWidget     *widget,
  * See ctk_widget_override_color().
  *
  * Since: 3.0
- *
- * Deprecated: 3.16: This function is not useful in the context of CSS-based
- *   rendering. If you wish to change the way a widget renders its background
- *   you should use a custom CSS style, through an application-specific
- *   #CtkStyleProvider and a CSS style class. You can also override the default
- *   drawing of a widget through the #CtkWidget::draw signal, and use Cairo to
- *   draw a specific color, regardless of the CSS style.
  */
 void
 ctk_widget_override_background_color (CtkWidget     *widget,
