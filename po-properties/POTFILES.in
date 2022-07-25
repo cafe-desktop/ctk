@@ -42,7 +42,7 @@ ctk/ctkactiongroup.c
 ctk/ctkactivatable.c
 ctk/deprecated/ctkarrow.c
 ctk/ctkcolorsel.c
-ctk/deprecated/ctkcolorseldialog.c
+ctk/ctkcolorseldialog.c
 ctk/deprecated/ctkfontsel.c
 ctk/deprecated/ctkhandlebox.c
 ctk/deprecated/ctkmisc.c

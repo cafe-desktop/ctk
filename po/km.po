@@ -1238,7 +1238,7 @@ msgstr ""
 "ចុច​​លើ​ធាតុ​ក្ដារ​ពណ៌​នេះ ដើម្បី​​ដាក់​ពណ៌​វា​បច្ចុប្បន្ន ។ ប្ដូរ​ធាតុ​នេះ អូស​ពណ៌​នៅ​ទី​នេះ ចុច​កណ្ដុរ​ស្ដាំ​លើ​វា ហើយ​"
 "ជ្រើស \"រក្សាទុក​ពណ៌​នៅ​ទីនេះ ។\""
 
-#: ctk/deprecated/ctkcolorseldialog.c:191 ctk/deprecated/ctkfontsel.c:1689
+#: ctk/ctkcolorseldialog.c:191 ctk/deprecated/ctkfontsel.c:1689
 #: ctk/ctkfilechoosernative.c:545 ctk/ctkfilechoosernative.c:637
 #: ctk/ctkfilechooserwidget.c:1498 ctk/ctkfilechooserwidget.c:6572
 #: ctk/ctkmessagedialog.c:952 ctk/ctkmessagedialog.c:965
@@ -1252,18 +1252,18 @@ msgstr ""
 msgid "_Cancel"
 msgstr "បោះបង់"
 
-#: ctk/deprecated/ctkcolorseldialog.c:195 ctk/ctkprinteroptionwidget.c:546
+#: ctk/ctkcolorseldialog.c:195 ctk/ctkprinteroptionwidget.c:546
 #: ctk/ui/ctkappchooserdialog.ui:67 ctk/ui/ctkcolorchooserdialog.ui:40
 #: ctk/ui/ctkfontchooserdialog.ui:37
 msgid "_Select"
 msgstr "ជ្រើស"
 
-#: ctk/deprecated/ctkcolorseldialog.c:201
+#: ctk/ctkcolorseldialog.c:201
 #, fuzzy
 msgid "_Help"
 msgstr "ជំនួយ"
 
-#: ctk/deprecated/ctkcolorseldialog.c:213
+#: ctk/ctkcolorseldialog.c:213
 msgid "Color Selection"
 msgstr "ជម្រើស​ពណ៌"
 

@@ -1259,7 +1259,7 @@ msgstr ""
 "વર્તમાન રંગ બનાવવા માટે પેલેટ પ્રવેશ ઉપર ક્લિક કરો. આ પ્રવેશને બદલવા માટે નમૂના માટેરંગને "
 "ઘસેડો અથવા તે રંગ પર જમણી બાજુનુ ક્લિક કરો અને \"રંગનો સંગ્રહ અહી કરો\" પસંદ કરો"
 
-#: ctk/deprecated/ctkcolorseldialog.c:191 ctk/deprecated/ctkfontsel.c:1689
+#: ctk/ctkcolorseldialog.c:191 ctk/deprecated/ctkfontsel.c:1689
 #: ctk/ctkfilechoosernative.c:545 ctk/ctkfilechoosernative.c:637
 #: ctk/ctkfilechooserwidget.c:1498 ctk/ctkfilechooserwidget.c:6572
 #: ctk/ctkmessagedialog.c:952 ctk/ctkmessagedialog.c:965
@@ -1272,17 +1272,17 @@ msgstr ""
 msgid "_Cancel"
 msgstr "રદ કરો (_C)"
 
-#: ctk/deprecated/ctkcolorseldialog.c:195 ctk/ctkprinteroptionwidget.c:546
+#: ctk/ctkcolorseldialog.c:195 ctk/ctkprinteroptionwidget.c:546
 #: ctk/ui/ctkappchooserdialog.ui:67 ctk/ui/ctkcolorchooserdialog.ui:40
 #: ctk/ui/ctkfontchooserdialog.ui:37
 msgid "_Select"
 msgstr "પસંદ કરો (_S)"
 
-#: ctk/deprecated/ctkcolorseldialog.c:201
+#: ctk/ctkcolorseldialog.c:201
 msgid "_Help"
 msgstr "મદદ (_H)"
 
-#: ctk/deprecated/ctkcolorseldialog.c:213
+#: ctk/ctkcolorseldialog.c:213
 msgid "Color Selection"
 msgstr "રંગની પસંદગી"
 

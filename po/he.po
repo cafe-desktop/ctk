@@ -1231,7 +1231,7 @@ msgstr ""
 "יש ללחוץ על ערך הפלטה כדי להפוך אותו לצבע הנוכחי. כדי לשנות רשומה זו, יש "
 "לגרור פיסת צבע לכאן או ללחוץ לחיצה ימנית ולבחור ב„שמור צבע כאן”."
 
-#: ctk/deprecated/ctkcolorseldialog.c:191 ctk/deprecated/ctkfontsel.c:1689
+#: ctk/ctkcolorseldialog.c:191 ctk/deprecated/ctkfontsel.c:1689
 #: ctk/ctkfilechoosernative.c:545 ctk/ctkfilechoosernative.c:637
 #: ctk/ctkfilechooserwidget.c:1498 ctk/ctkfilechooserwidget.c:6572
 #: ctk/ctkmessagedialog.c:952 ctk/ctkmessagedialog.c:965
@@ -1244,17 +1244,17 @@ msgstr ""
 msgid "_Cancel"
 msgstr "_ביטול"
 
-#: ctk/deprecated/ctkcolorseldialog.c:195 ctk/ctkprinteroptionwidget.c:546
+#: ctk/ctkcolorseldialog.c:195 ctk/ctkprinteroptionwidget.c:546
 #: ctk/ui/ctkappchooserdialog.ui:67 ctk/ui/ctkcolorchooserdialog.ui:40
 #: ctk/ui/ctkfontchooserdialog.ui:37
 msgid "_Select"
 msgstr "ב_חירה"
 
-#: ctk/deprecated/ctkcolorseldialog.c:201
+#: ctk/ctkcolorseldialog.c:201
 msgid "_Help"
 msgstr "ע_זרה"
 
-#: ctk/deprecated/ctkcolorseldialog.c:213
+#: ctk/ctkcolorseldialog.c:213
 msgid "Color Selection"
 msgstr "בחירת צבע"
 

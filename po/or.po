@@ -1249,7 +1249,7 @@ msgstr ""
 "ଏଠାରେ ରଙ୍ଗ ନମୁନା ଟାଣି ଆଣନ୍ତୁ ବା ଏହା ଉପରେ ଡାହାଣ ମାଉସ ଚାବି ଦବାଇ \"Save color here.\" "
 "ବାଛନ୍ତୁ।"
 
-#: ctk/deprecated/ctkcolorseldialog.c:191 ctk/deprecated/ctkfontsel.c:1689
+#: ctk/ctkcolorseldialog.c:191 ctk/deprecated/ctkfontsel.c:1689
 #: ctk/ctkfilechoosernative.c:545 ctk/ctkfilechoosernative.c:637
 #: ctk/ctkfilechooserwidget.c:1498 ctk/ctkfilechooserwidget.c:6572
 #: ctk/ctkmessagedialog.c:952 ctk/ctkmessagedialog.c:965
@@ -1263,18 +1263,18 @@ msgstr ""
 msgid "_Cancel"
 msgstr "ବାତିଲ କରନ୍ତୁ (_C)"
 
-#: ctk/deprecated/ctkcolorseldialog.c:195 ctk/ctkprinteroptionwidget.c:546
+#: ctk/ctkcolorseldialog.c:195 ctk/ctkprinteroptionwidget.c:546
 #: ctk/ui/ctkappchooserdialog.ui:67 ctk/ui/ctkcolorchooserdialog.ui:40
 #: ctk/ui/ctkfontchooserdialog.ui:37
 msgid "_Select"
 msgstr "ବାଛନ୍ତୁ (_S)"
 
-#: ctk/deprecated/ctkcolorseldialog.c:201
+#: ctk/ctkcolorseldialog.c:201
 #, fuzzy
 msgid "_Help"
 msgstr "ସହାୟତା (_H)"
 
-#: ctk/deprecated/ctkcolorseldialog.c:213
+#: ctk/ctkcolorseldialog.c:213
 msgid "Color Selection"
 msgstr "ରଙ୍ଗ ଚୟନ"
 

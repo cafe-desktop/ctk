@@ -582,41 +582,41 @@ msgstr "RGBA:"
 msgid "The current RGBA color"
 msgstr "रङको हेक्साडेसिमल RGBA मान"
 
-#: ctk/deprecated/ctkcolorseldialog.c:136
+#: ctk/ctkcolorseldialog.c:136
 msgid "Color Selection"
 msgstr "रङ चयन"
 
-#: ctk/deprecated/ctkcolorseldialog.c:137
+#: ctk/ctkcolorseldialog.c:137
 #, fuzzy
 msgid "The color selection embedded in the dialog."
 msgstr "रङ चयन संवाद"
 
-#: ctk/deprecated/ctkcolorseldialog.c:143
+#: ctk/ctkcolorseldialog.c:143
 #, fuzzy
 msgid "OK Button"
 msgstr "_ठिक छ"
 
-#: ctk/deprecated/ctkcolorseldialog.c:144
+#: ctk/ctkcolorseldialog.c:144
 #, fuzzy
 msgid "The OK button of the dialog."
 msgstr "_ठिक छ"
 
-#: ctk/deprecated/ctkcolorseldialog.c:150
+#: ctk/ctkcolorseldialog.c:150
 #, fuzzy
 msgid "Cancel Button"
 msgstr "रद्द गर्नुहोस्"
 
-#: ctk/deprecated/ctkcolorseldialog.c:151
+#: ctk/ctkcolorseldialog.c:151
 #, fuzzy
 msgid "The cancel button of the dialog."
 msgstr "रोक्नुहोस"
 
-#: ctk/deprecated/ctkcolorseldialog.c:157
+#: ctk/ctkcolorseldialog.c:157
 #, fuzzy
 msgid "Help Button"
 msgstr "'मद्दत' बटन देखाउनुहोस्"
 
-#: ctk/deprecated/ctkcolorseldialog.c:158
+#: ctk/ctkcolorseldialog.c:158
 #, fuzzy
 msgid "The help button of the dialog."
 msgstr "'मद्दत' बटन देखाउनुहोस्"

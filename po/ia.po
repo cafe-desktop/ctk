@@ -1269,7 +1269,7 @@ msgstr ""
 "modificar iste entrata, trahe un monstra de color hic o clicca con le button "
 "dextere sur illo e selige \"Salveguardar le color hic\"."
 
-#: ctk/deprecated/ctkcolorseldialog.c:191 ctk/deprecated/ctkfontsel.c:1689
+#: ctk/ctkcolorseldialog.c:191 ctk/deprecated/ctkfontsel.c:1689
 #: ctk/ctkfilechoosernative.c:545 ctk/ctkfilechoosernative.c:637
 #: ctk/ctkfilechooserwidget.c:1498 ctk/ctkfilechooserwidget.c:6572
 #: ctk/ctkmessagedialog.c:952 ctk/ctkmessagedialog.c:965
@@ -1283,18 +1283,18 @@ msgstr ""
 msgid "_Cancel"
 msgstr "A_nnullar"
 
-#: ctk/deprecated/ctkcolorseldialog.c:195 ctk/ctkprinteroptionwidget.c:546
+#: ctk/ctkcolorseldialog.c:195 ctk/ctkprinteroptionwidget.c:546
 #: ctk/ui/ctkappchooserdialog.ui:67 ctk/ui/ctkcolorchooserdialog.ui:40
 #: ctk/ui/ctkfontchooserdialog.ui:37
 msgid "_Select"
 msgstr "_Seliger"
 
-#: ctk/deprecated/ctkcolorseldialog.c:201
+#: ctk/ctkcolorseldialog.c:201
 #, fuzzy
 msgid "_Help"
 msgstr "Adj_uta"
 
-#: ctk/deprecated/ctkcolorseldialog.c:213
+#: ctk/ctkcolorseldialog.c:213
 msgid "Color Selection"
 msgstr "Selection de color"
 

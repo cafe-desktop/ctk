@@ -1331,7 +1331,7 @@ msgstr ""
 "די פּאַליטרע פּאָזיציע, שלעפּ אַ פֿאַרבמוסטער אַהער אָדער געב אַ קליק מיט דעם רעכטן "
 "קנעפּל און קלײַב אױס \"היט אױף די פֿאַרב דאָ\"."
 
-#: ctk/deprecated/ctkcolorseldialog.c:191 ctk/deprecated/ctkfontsel.c:1689
+#: ctk/ctkcolorseldialog.c:191 ctk/deprecated/ctkfontsel.c:1689
 #: ctk/ctkfilechoosernative.c:545 ctk/ctkfilechoosernative.c:637
 #: ctk/ctkfilechooserwidget.c:1498 ctk/ctkfilechooserwidget.c:6572
 #: ctk/ctkmessagedialog.c:952 ctk/ctkmessagedialog.c:965
@@ -1345,19 +1345,19 @@ msgstr ""
 msgid "_Cancel"
 msgstr "רוף אָפּ"
 
-#: ctk/deprecated/ctkcolorseldialog.c:195 ctk/ctkprinteroptionwidget.c:546
+#: ctk/ctkcolorseldialog.c:195 ctk/ctkprinteroptionwidget.c:546
 #: ctk/ui/ctkappchooserdialog.ui:67 ctk/ui/ctkcolorchooserdialog.ui:40
 #: ctk/ui/ctkfontchooserdialog.ui:37
 #, fuzzy
 msgid "_Select"
 msgstr "סעלעקציע: "
 
-#: ctk/deprecated/ctkcolorseldialog.c:201
+#: ctk/ctkcolorseldialog.c:201
 #, fuzzy
 msgid "_Help"
 msgstr "געהילף"
 
-#: ctk/deprecated/ctkcolorseldialog.c:213
+#: ctk/ctkcolorseldialog.c:213
 #, fuzzy
 msgid "Color Selection"
 msgstr "שריפֿט סעלעקציע"

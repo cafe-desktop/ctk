@@ -594,41 +594,41 @@ msgstr "Тренутна провидност"
 msgid "The current RGBA color"
 msgstr "Тренутна боја"
 
-#: ctk/deprecated/ctkcolorseldialog.c:136
+#: ctk/ctkcolorseldialog.c:136
 #, fuzzy
 msgid "Color Selection"
 msgstr "Наслов прозорчета за избор писма"
 
-#: ctk/deprecated/ctkcolorseldialog.c:137
+#: ctk/ctkcolorseldialog.c:137
 #, fuzzy
 msgid "The color selection embedded in the dialog."
 msgstr "Наслов прозорчета за избор боје"
 
-#: ctk/deprecated/ctkcolorseldialog.c:143
+#: ctk/ctkcolorseldialog.c:143
 msgid "OK Button"
 msgstr ""
 
-#: ctk/deprecated/ctkcolorseldialog.c:144
+#: ctk/ctkcolorseldialog.c:144
 #, fuzzy
 msgid "The OK button of the dialog."
 msgstr "Дугмићи који се приказују у прозорчету са поруком"
 
-#: ctk/deprecated/ctkcolorseldialog.c:150
+#: ctk/ctkcolorseldialog.c:150
 #, fuzzy
 msgid "Cancel Button"
 msgstr "Дугмићи обавјештења"
 
-#: ctk/deprecated/ctkcolorseldialog.c:151
+#: ctk/ctkcolorseldialog.c:151
 #, fuzzy
 msgid "The cancel button of the dialog."
 msgstr "Дугмићи који се приказују у прозорчету са поруком"
 
-#: ctk/deprecated/ctkcolorseldialog.c:157
+#: ctk/ctkcolorseldialog.c:157
 #, fuzzy
 msgid "Help Button"
 msgstr "Дугмићи обавјештења"
 
-#: ctk/deprecated/ctkcolorseldialog.c:158
+#: ctk/ctkcolorseldialog.c:158
 #, fuzzy
 msgid "The help button of the dialog."
 msgstr "Дугмићи који се приказују у прозорчету са поруком"

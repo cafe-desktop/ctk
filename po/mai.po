@@ -1252,7 +1252,7 @@ msgstr ""
 "पैलेट प्रविष्टिकेँ एकरा वर्तमान रँगमे लाबै क' लेल क्लिक करू. ई प्रविष्टिकेँ बदलबाक लेल, रँग "
 "नमूनाकेँ एतए खींचू अथवा एकरा दाहिन्ने क्लिक करू आओर चुनू \"एतए रँग सहेजू.\""
 
-#: ctk/deprecated/ctkcolorseldialog.c:191 ctk/deprecated/ctkfontsel.c:1689
+#: ctk/ctkcolorseldialog.c:191 ctk/deprecated/ctkfontsel.c:1689
 #: ctk/ctkfilechoosernative.c:545 ctk/ctkfilechoosernative.c:637
 #: ctk/ctkfilechooserwidget.c:1498 ctk/ctkfilechooserwidget.c:6572
 #: ctk/ctkmessagedialog.c:952 ctk/ctkmessagedialog.c:965
@@ -1266,19 +1266,19 @@ msgstr ""
 msgid "_Cancel"
 msgstr "रद करू (_C)"
 
-#: ctk/deprecated/ctkcolorseldialog.c:195 ctk/ctkprinteroptionwidget.c:546
+#: ctk/ctkcolorseldialog.c:195 ctk/ctkprinteroptionwidget.c:546
 #: ctk/ui/ctkappchooserdialog.ui:67 ctk/ui/ctkcolorchooserdialog.ui:40
 #: ctk/ui/ctkfontchooserdialog.ui:37
 #, fuzzy
 msgid "_Select"
 msgstr "चयन (_S): "
 
-#: ctk/deprecated/ctkcolorseldialog.c:201
+#: ctk/ctkcolorseldialog.c:201
 #, fuzzy
 msgid "_Help"
 msgstr "मदति (_H)"
 
-#: ctk/deprecated/ctkcolorseldialog.c:213
+#: ctk/ctkcolorseldialog.c:213
 msgid "Color Selection"
 msgstr "रँग चयन"
 
