@@ -528,47 +528,47 @@ msgstr "Skalowanie strzałek"
 msgid "Amount of space used up by arrow"
 msgstr "Ilość miejsca zajęta przez strzałkę"
 
-#: ctk/deprecated/ctkcolorsel.c:325
+#: ctk/ctkcolorsel.c:325
 msgid "Has Opacity Control"
 msgstr "Ustawienie nieprzezroczystości"
 
-#: ctk/deprecated/ctkcolorsel.c:326
+#: ctk/ctkcolorsel.c:326
 msgid "Whether the color selector should allow setting opacity"
 msgstr ""
 "Określa, czy przy wyborze koloru powinna być możliwość określenia jego "
 "nieprzezroczystości"
 
-#: ctk/deprecated/ctkcolorsel.c:332
+#: ctk/ctkcolorsel.c:332
 msgid "Has palette"
 msgstr "Paleta"
 
-#: ctk/deprecated/ctkcolorsel.c:333
+#: ctk/ctkcolorsel.c:333
 msgid "Whether a palette should be used"
 msgstr "Określa, czy powinna być użyta paleta"
 
-#: ctk/deprecated/ctkcolorsel.c:347 ctk/ctkcolorbutton.c:201
+#: ctk/ctkcolorsel.c:347 ctk/ctkcolorbutton.c:201
 msgid "Current Color"
 msgstr "Bieżący kolor"
 
-#: ctk/deprecated/ctkcolorsel.c:348
+#: ctk/ctkcolorsel.c:348
 msgid "The current color"
 msgstr "Bieżący kolor"
 
-#: ctk/deprecated/ctkcolorsel.c:354 ctk/ctkcolorbutton.c:217
+#: ctk/ctkcolorsel.c:354 ctk/ctkcolorbutton.c:217
 msgid "Current Alpha"
 msgstr "Bieżąca wartość alfa"
 
-#: ctk/deprecated/ctkcolorsel.c:355
+#: ctk/ctkcolorsel.c:355
 msgid "The current opacity value (0 fully transparent, 65535 fully opaque)"
 msgstr ""
 "Bieżąca wartość nieprzezroczystości (0 — w pełni przezroczysty, 65535 — "
 "w pełni nieprzezroczysty)"
 
-#: ctk/deprecated/ctkcolorsel.c:369
+#: ctk/ctkcolorsel.c:369
 msgid "Current RGBA"
 msgstr "Bieżąca wartość RGBA"
 
-#: ctk/deprecated/ctkcolorsel.c:370
+#: ctk/ctkcolorsel.c:370
 msgid "The current RGBA color"
 msgstr "Bieżący kolor RGBA"
 

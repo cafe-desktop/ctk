@@ -524,43 +524,43 @@ msgstr "Škálování šipky"
 msgid "Amount of space used up by arrow"
 msgstr "Množství prostoru použitého šipkou"
 
-#: ctk/deprecated/ctkcolorsel.c:325
+#: ctk/ctkcolorsel.c:325
 msgid "Has Opacity Control"
 msgstr "Má ovládání stupně krytí"
 
-#: ctk/deprecated/ctkcolorsel.c:326
+#: ctk/ctkcolorsel.c:326
 msgid "Whether the color selector should allow setting opacity"
 msgstr "Jestli má prvek pro výběr barvy povolit nastavení stupně krytí"
 
-#: ctk/deprecated/ctkcolorsel.c:332
+#: ctk/ctkcolorsel.c:332
 msgid "Has palette"
 msgstr "Má paletu"
 
-#: ctk/deprecated/ctkcolorsel.c:333
+#: ctk/ctkcolorsel.c:333
 msgid "Whether a palette should be used"
 msgstr "Jestli má být použita paleta"
 
-#: ctk/deprecated/ctkcolorsel.c:347 ctk/ctkcolorbutton.c:201
+#: ctk/ctkcolorsel.c:347 ctk/ctkcolorbutton.c:201
 msgid "Current Color"
 msgstr "Aktuální barva"
 
-#: ctk/deprecated/ctkcolorsel.c:348
+#: ctk/ctkcolorsel.c:348
 msgid "The current color"
 msgstr "Aktuální barva"
 
-#: ctk/deprecated/ctkcolorsel.c:354 ctk/ctkcolorbutton.c:217
+#: ctk/ctkcolorsel.c:354 ctk/ctkcolorbutton.c:217
 msgid "Current Alpha"
 msgstr "Aktuální Alfa"
 
-#: ctk/deprecated/ctkcolorsel.c:355
+#: ctk/ctkcolorsel.c:355
 msgid "The current opacity value (0 fully transparent, 65535 fully opaque)"
 msgstr "Aktuální hodnota krytí (0 zcela průhledné, 65535 zcela neprůhledné)"
 
-#: ctk/deprecated/ctkcolorsel.c:369
+#: ctk/ctkcolorsel.c:369
 msgid "Current RGBA"
 msgstr "Aktuální RGBA"
 
-#: ctk/deprecated/ctkcolorsel.c:370
+#: ctk/ctkcolorsel.c:370
 msgid "The current RGBA color"
 msgstr "Aktuální barva RGBA"
 

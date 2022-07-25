@@ -595,53 +595,53 @@ msgid "Amount of space used up by arrow"
 msgstr ""
 
 # ctk/ctkcolorsel.c:1704
-#: ctk/deprecated/ctkcolorsel.c:325
+#: ctk/ctkcolorsel.c:325
 msgid "Has Opacity Control"
 msgstr "Тохиргоо тодорхойгүй "
 
 # ctk/ctkcolorsel.c:1705
-#: ctk/deprecated/ctkcolorsel.c:326
+#: ctk/ctkcolorsel.c:326
 msgid "Whether the color selector should allow setting opacity"
 msgstr "Өнгө сонгогч нь тодорхойгүй тогтоохыг зөвшөөрөөд тодорхойлж байна "
 
 # ctk/ctkcolorsel.c:1711
-#: ctk/deprecated/ctkcolorsel.c:332
+#: ctk/ctkcolorsel.c:332
 msgid "Has palette"
 msgstr "Өнгөний нийлүүлэг "
 
 # ctk/ctkcolorsel.c:1712
-#: ctk/deprecated/ctkcolorsel.c:333
+#: ctk/ctkcolorsel.c:333
 msgid "Whether a palette should be used"
 msgstr "Ашигласан өнгөний нийлүүлэг үү, эсвэл "
 
 # ctk/ctkcolorsel.c:1718
-#: ctk/deprecated/ctkcolorsel.c:347 ctk/ctkcolorbutton.c:201
+#: ctk/ctkcolorsel.c:347 ctk/ctkcolorbutton.c:201
 msgid "Current Color"
 msgstr "Идэвхитэй өнгө "
 
 # ctk/ctkcolorsel.c:1719
-#: ctk/deprecated/ctkcolorsel.c:348
+#: ctk/ctkcolorsel.c:348
 msgid "The current color"
 msgstr "Харгалзах өнгө "
 
 # ctk/ctkcolorsel.c:1725
-#: ctk/deprecated/ctkcolorsel.c:354 ctk/ctkcolorbutton.c:217
+#: ctk/ctkcolorsel.c:354 ctk/ctkcolorbutton.c:217
 msgid "Current Alpha"
 msgstr "Харгалзах альфа-суваг "
 
 # ctk/ctkcolorsel.c:1726
-#: ctk/deprecated/ctkcolorsel.c:355
+#: ctk/ctkcolorsel.c:355
 msgid "The current opacity value (0 fully transparent, 65535 fully opaque)"
 msgstr "Одоогын тодорхойгүй утга (\"0\" -ээс , \"65535\" -хүртэлх) "
 
 # ctk/ctkcolorsel.c:1725
-#: ctk/deprecated/ctkcolorsel.c:369
+#: ctk/ctkcolorsel.c:369
 #, fuzzy
 msgid "Current RGBA"
 msgstr "Харгалзах альфа-суваг "
 
 # ctk/ctkcolorsel.c:1719
-#: ctk/deprecated/ctkcolorsel.c:370
+#: ctk/ctkcolorsel.c:370
 #, fuzzy
 msgid "The current RGBA color"
 msgstr "Харгалзах өнгө "

@@ -526,45 +526,45 @@ msgstr "Rodyklės Mastelis"
 msgid "Amount of space used up by arrow"
 msgstr "Rodyklės užimta vieta"
 
-#: ctk/deprecated/ctkcolorsel.c:325
+#: ctk/ctkcolorsel.c:325
 msgid "Has Opacity Control"
 msgstr "Rodyti skaidrumo keitiklį"
 
-#: ctk/deprecated/ctkcolorsel.c:326
+#: ctk/ctkcolorsel.c:326
 msgid "Whether the color selector should allow setting opacity"
 msgstr "Ar spalvų parinkiklis leidžia keisti skaidrumą"
 
-#: ctk/deprecated/ctkcolorsel.c:332
+#: ctk/ctkcolorsel.c:332
 msgid "Has palette"
 msgstr "Rodyti paletę"
 
-#: ctk/deprecated/ctkcolorsel.c:333
+#: ctk/ctkcolorsel.c:333
 msgid "Whether a palette should be used"
 msgstr "Ar paletė bus naudojama"
 
-#: ctk/deprecated/ctkcolorsel.c:347 ctk/ctkcolorbutton.c:201
+#: ctk/ctkcolorsel.c:347 ctk/ctkcolorbutton.c:201
 msgid "Current Color"
 msgstr "Esama spalva"
 
-#: ctk/deprecated/ctkcolorsel.c:348
+#: ctk/ctkcolorsel.c:348
 msgid "The current color"
 msgstr "Dabar pasirinkta spalva"
 
-#: ctk/deprecated/ctkcolorsel.c:354 ctk/ctkcolorbutton.c:217
+#: ctk/ctkcolorsel.c:354 ctk/ctkcolorbutton.c:217
 msgid "Current Alpha"
 msgstr "Esamas permatomumas"
 
-#: ctk/deprecated/ctkcolorsel.c:355
+#: ctk/ctkcolorsel.c:355
 msgid "The current opacity value (0 fully transparent, 65535 fully opaque)"
 msgstr ""
 "Nustatyta neskaidrumo reikšmė (0 - visiškai skaidrus, 65535 - visiškai "
 "nepermatomas)"
 
-#: ctk/deprecated/ctkcolorsel.c:369
+#: ctk/ctkcolorsel.c:369
 msgid "Current RGBA"
 msgstr "Esama RGBA"
 
-#: ctk/deprecated/ctkcolorsel.c:370
+#: ctk/ctkcolorsel.c:370
 msgid "The current RGBA color"
 msgstr "Dabartinė RGBA spalva"
 

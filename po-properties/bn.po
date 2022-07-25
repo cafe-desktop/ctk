@@ -542,45 +542,45 @@ msgstr "তীরের আকার পরিবর্তন"
 msgid "Amount of space used up by arrow"
 msgstr "তীরচিহ্ন দ্বারা ব্যবহৃত স্থানের পরিমান"
 
-#: ctk/deprecated/ctkcolorsel.c:325
+#: ctk/ctkcolorsel.c:325
 msgid "Has Opacity Control"
 msgstr "ওপাসিটি (অস্বচ্ছতা) নিয়ন্ত্রণ আছে"
 
-#: ctk/deprecated/ctkcolorsel.c:326
+#: ctk/ctkcolorsel.c:326
 msgid "Whether the color selector should allow setting opacity"
 msgstr "রং নির্বাচক থেকে ওপাসিটি (অস্বচ্ছতা) নির্ধারণ করা যাবে কিনা"
 
-#: ctk/deprecated/ctkcolorsel.c:332
+#: ctk/ctkcolorsel.c:332
 msgid "Has palette"
 msgstr "প্যালেট আছে"
 
-#: ctk/deprecated/ctkcolorsel.c:333
+#: ctk/ctkcolorsel.c:333
 msgid "Whether a palette should be used"
 msgstr "প্যালেট ব্যবহৃত হবে কিনা"
 
-#: ctk/deprecated/ctkcolorsel.c:347 ctk/ctkcolorbutton.c:201
+#: ctk/ctkcolorsel.c:347 ctk/ctkcolorbutton.c:201
 msgid "Current Color"
 msgstr "বর্তমান রং"
 
-#: ctk/deprecated/ctkcolorsel.c:348
+#: ctk/ctkcolorsel.c:348
 msgid "The current color"
 msgstr "বর্তমান রংটি"
 
-#: ctk/deprecated/ctkcolorsel.c:354 ctk/ctkcolorbutton.c:217
+#: ctk/ctkcolorsel.c:354 ctk/ctkcolorbutton.c:217
 msgid "Current Alpha"
 msgstr "বর্তমান আলফা"
 
-#: ctk/deprecated/ctkcolorsel.c:355
+#: ctk/ctkcolorsel.c:355
 msgid "The current opacity value (0 fully transparent, 65535 fully opaque)"
 msgstr ""
 "অস্বচ্ছতা (Opacity) বর্তমান মান (পূর্ণ স্বচ্ছতার জন্য ০, পূর্ণ অস্বচ্ছতার জন্য ৬৫৫৩৫)"
 
-#: ctk/deprecated/ctkcolorsel.c:369
+#: ctk/ctkcolorsel.c:369
 #, fuzzy
 msgid "Current RGBA"
 msgstr "বর্তমান আলফা"
 
-#: ctk/deprecated/ctkcolorsel.c:370
+#: ctk/ctkcolorsel.c:370
 #, fuzzy
 msgid "The current RGBA color"
 msgstr "বর্তমান রংটি"

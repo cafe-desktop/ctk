@@ -1093,7 +1093,7 @@ msgctxt "Action description"
 msgid "Toggles the switch"
 msgstr "Aldatzailea txandakatzen du"
 
-#: ctk/deprecated/ctkcolorsel.c:425
+#: ctk/ctkcolorsel.c:425
 msgid ""
 "Select the color you want from the outer ring. Select the darkness or "
 "lightness of that color using the inner triangle."
@@ -1101,7 +1101,7 @@ msgstr ""
 "Hautatu nahi duzun kolorea kanpoko biribiletik. Hautatu kolore horren "
 "iluntasuna edo argitasuna barruko triangelua erabiliz"
 
-#: ctk/deprecated/ctkcolorsel.c:451
+#: ctk/ctkcolorsel.c:451
 msgid ""
 "Click the eyedropper, then click a color anywhere on your screen to select "
 "that color."
@@ -1109,67 +1109,67 @@ msgstr ""
 "Egin klik tanta-kontacailuan, eta egin klik zure pantailako edozein "
 "koloretan kolore hori hautatzeko."
 
-#: ctk/deprecated/ctkcolorsel.c:461
+#: ctk/ctkcolorsel.c:461
 msgid "_Hue:"
 msgstr "_Ñabardura:"
 
-#: ctk/deprecated/ctkcolorsel.c:462
+#: ctk/ctkcolorsel.c:462
 msgid "Position on the color wheel."
 msgstr "Kolore-gurpileko kokalekua."
 
-#: ctk/deprecated/ctkcolorsel.c:464
+#: ctk/ctkcolorsel.c:464
 msgid "S_aturation:"
 msgstr "_Saturazioa:"
 
-#: ctk/deprecated/ctkcolorsel.c:465
+#: ctk/ctkcolorsel.c:465
 msgid "Intensity of the color."
 msgstr "Kolorearen intentsitatea."
 
-#: ctk/deprecated/ctkcolorsel.c:466
+#: ctk/ctkcolorsel.c:466
 msgid "_Value:"
 msgstr "_Balioa:"
 
-#: ctk/deprecated/ctkcolorsel.c:467
+#: ctk/ctkcolorsel.c:467
 msgid "Brightness of the color."
 msgstr "Kolorearen distira."
 
-#: ctk/deprecated/ctkcolorsel.c:468
+#: ctk/ctkcolorsel.c:468
 msgid "_Red:"
 msgstr "_Gorria:"
 
-#: ctk/deprecated/ctkcolorsel.c:469
+#: ctk/ctkcolorsel.c:469
 msgid "Amount of red light in the color."
 msgstr "Argi gorriaren kantitatea kolorean."
 
-#: ctk/deprecated/ctkcolorsel.c:470
+#: ctk/ctkcolorsel.c:470
 msgid "_Green:"
 msgstr "Be_rdea:"
 
-#: ctk/deprecated/ctkcolorsel.c:471
+#: ctk/ctkcolorsel.c:471
 msgid "Amount of green light in the color."
 msgstr "Argi berdearen kantitatea kolorean."
 
-#: ctk/deprecated/ctkcolorsel.c:472
+#: ctk/ctkcolorsel.c:472
 msgid "_Blue:"
 msgstr "_Urdina:"
 
-#: ctk/deprecated/ctkcolorsel.c:473
+#: ctk/ctkcolorsel.c:473
 msgid "Amount of blue light in the color."
 msgstr "Argi urdinaren kantitatea kolorean."
 
-#: ctk/deprecated/ctkcolorsel.c:476
+#: ctk/ctkcolorsel.c:476
 msgid "Op_acity:"
 msgstr "_Opakutasuna:"
 
-#: ctk/deprecated/ctkcolorsel.c:484 ctk/deprecated/ctkcolorsel.c:494
+#: ctk/ctkcolorsel.c:484 ctk/ctkcolorsel.c:494
 msgid "Transparency of the color."
 msgstr "Kolorearen gardentasuna."
 
-#: ctk/deprecated/ctkcolorsel.c:501
+#: ctk/ctkcolorsel.c:501
 msgid "Color _name:"
 msgstr "Kolorearen i_zena:"
 
-#: ctk/deprecated/ctkcolorsel.c:516
+#: ctk/ctkcolorsel.c:516
 msgid ""
 "You can enter an HTML-style hexadecimal color value, or simply a color name "
 "such as “orange” in this entry."
@@ -1177,15 +1177,15 @@ msgstr ""
 "HTML estiloko kolore-balio hamaseitarra sar dezakezu edo bestela kolore  "
 "baten izena, adibidez 'laranja', sarrera honetan."
 
-#: ctk/deprecated/ctkcolorsel.c:548
+#: ctk/ctkcolorsel.c:548
 msgid "_Palette:"
 msgstr "_Paleta:"
 
-#: ctk/deprecated/ctkcolorsel.c:578
+#: ctk/ctkcolorsel.c:578
 msgid "Color Wheel"
 msgstr "Kolore-gurpila"
 
-#: ctk/deprecated/ctkcolorsel.c:1072
+#: ctk/ctkcolorsel.c:1072
 msgid ""
 "The previously-selected color, for comparison to the color you’re selecting "
 "now. You can drag this color to a palette entry, or select this color as "
@@ -1195,7 +1195,7 @@ msgstr ""
 "konparatzeko. Kolore hori paleta-sarrerara arrasta dezakezu edo kolore hori "
 "uneko kolore gisa hauta dezakezu, koloreen ondoko lagin-multzora arrastatuz."
 
-#: ctk/deprecated/ctkcolorsel.c:1078
+#: ctk/ctkcolorsel.c:1078
 msgid ""
 "The color you’ve chosen. You can drag this color to a palette entry to save "
 "it for use in the future."
@@ -1203,7 +1203,7 @@ msgstr ""
 "Hautatu duzun kolorea. Kolore hori paleta-sarrerara arrasta dezakezu eta han "
 "gorde aurrerago erabiltzeko."
 
-#: ctk/deprecated/ctkcolorsel.c:1084
+#: ctk/ctkcolorsel.c:1084
 msgid ""
 "The previously-selected color, for comparison to the color you’re selecting "
 "now."
@@ -1211,15 +1211,15 @@ msgstr ""
 "Aurrez hautatutako kolorea, orain hautatzen ari zaren kolorearekin "
 "konparatzeko."
 
-#: ctk/deprecated/ctkcolorsel.c:1088
+#: ctk/ctkcolorsel.c:1088
 msgid "The color you’ve chosen."
 msgstr "Aukeratu duzun kolorea."
 
-#: ctk/deprecated/ctkcolorsel.c:1458
+#: ctk/ctkcolorsel.c:1458
 msgid "_Save color here"
 msgstr "_Gorde kolorea hemen"
 
-#: ctk/deprecated/ctkcolorsel.c:1664
+#: ctk/ctkcolorsel.c:1664
 msgid ""
 "Click this palette entry to make it the current color. To change this entry, "
 "drag a color swatch here or right-click it and select “Save color here.”"

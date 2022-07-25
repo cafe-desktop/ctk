@@ -547,48 +547,48 @@ msgstr "Skalowanie strełak"
 msgid "Amount of space used up by arrow"
 msgstr "Kolkaść miesca, zaniataha strełkaj"
 
-#: ctk/deprecated/ctkcolorsel.c:325
+#: ctk/ctkcolorsel.c:325
 msgid "Has Opacity Control"
 msgstr "Nałady nieprazrystaści"
 
-#: ctk/deprecated/ctkcolorsel.c:326
+#: ctk/ctkcolorsel.c:326
 msgid "Whether the color selector should allow setting opacity"
 msgstr ""
 "Akreślivaje, ci pry vybary koleru pavinna być mahčymaść akreśleńnia jahonaj "
 "prazrystaści."
 
-#: ctk/deprecated/ctkcolorsel.c:332
+#: ctk/ctkcolorsel.c:332
 msgid "Has palette"
 msgstr "Z palitraj"
 
-#: ctk/deprecated/ctkcolorsel.c:333
+#: ctk/ctkcolorsel.c:333
 msgid "Whether a palette should be used"
 msgstr "Akreślivaje, ci pavinna być vykarystanaja palitra"
 
-#: ctk/deprecated/ctkcolorsel.c:347 ctk/ctkcolorbutton.c:201
+#: ctk/ctkcolorsel.c:347 ctk/ctkcolorbutton.c:201
 msgid "Current Color"
 msgstr "Dziejny koler"
 
-#: ctk/deprecated/ctkcolorsel.c:348
+#: ctk/ctkcolorsel.c:348
 msgid "The current color"
 msgstr "Dziejny koler"
 
-#: ctk/deprecated/ctkcolorsel.c:354 ctk/ctkcolorbutton.c:217
+#: ctk/ctkcolorsel.c:354 ctk/ctkcolorbutton.c:217
 msgid "Current Alpha"
 msgstr "Dziejnaja vartaść alfa"
 
-#: ctk/deprecated/ctkcolorsel.c:355
+#: ctk/ctkcolorsel.c:355
 msgid "The current opacity value (0 fully transparent, 65535 fully opaque)"
 msgstr ""
 "Dziejnaja vartaść nieprazrystaści (0 – całkam prazrysty, 65535 – całkam "
 "nieprazrysty)"
 
-#: ctk/deprecated/ctkcolorsel.c:369
+#: ctk/ctkcolorsel.c:369
 #, fuzzy
 msgid "Current RGBA"
 msgstr "Dziejnaja vartaść alfa"
 
-#: ctk/deprecated/ctkcolorsel.c:370
+#: ctk/ctkcolorsel.c:370
 #, fuzzy
 msgid "The current RGBA color"
 msgstr "Dziejny koler"

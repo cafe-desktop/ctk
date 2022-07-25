@@ -1206,7 +1206,7 @@ msgctxt "Action description"
 msgid "Toggles the switch"
 msgstr ""
 
-#: ctk/deprecated/ctkcolorsel.c:425
+#: ctk/ctkcolorsel.c:425
 msgid ""
 "Select the color you want from the outer ring. Select the darkness or "
 "lightness of that color using the inner triangle."
@@ -1214,7 +1214,7 @@ msgstr ""
 "ཁྱོད་རང་དགོ་མི་ ཚོས་གཞི་འདི་ ཕྱི་རིམ་སྒོར་ཐིག་ནང་ལས་ སེལ་འཐུ་འབད། ཚོས་གཞིའི་སྲབ་སྟུག་ཚུ་ ནང་གི་གྲུ་"
 "གསུམ་ནང་ལས་ སེལ་འཐུ་འབད།"
 
-#: ctk/deprecated/ctkcolorsel.c:451
+#: ctk/ctkcolorsel.c:451
 msgid ""
 "Click the eyedropper, then click a color anywhere on your screen to select "
 "that color."
@@ -1222,69 +1222,69 @@ msgstr ""
 "ཨའི་ཌོབ་པར་ལུ་ ཨེབ་གཏང་འབད་ཞིནམ་ལས་ ཚོས་གཞི་དེ་ སེལ་འཐུ་འབད་ནི་ལུ་ ཁྱོད་རའི་གསལ་གཞི་གུ་ ཚོས་གཞི་"
 "ཅིག་ལུ་ ཨེབ་གཏང་འབད།"
 
-#: ctk/deprecated/ctkcolorsel.c:461
+#: ctk/ctkcolorsel.c:461
 msgid "_Hue:"
 msgstr "ཚོན་མདངས།(_H)"
 
-#: ctk/deprecated/ctkcolorsel.c:462
+#: ctk/ctkcolorsel.c:462
 msgid "Position on the color wheel."
 msgstr "ཚོས་གཞིའི་འཁོར་ལོ་གུ་གནས་ས།"
 
-#: ctk/deprecated/ctkcolorsel.c:464
+#: ctk/ctkcolorsel.c:464
 #, fuzzy
 msgid "S_aturation:"
 msgstr "མཐའ་ཚད།(_S)"
 
-#: ctk/deprecated/ctkcolorsel.c:465
+#: ctk/ctkcolorsel.c:465
 #, fuzzy
 msgid "Intensity of the color."
 msgstr "ཚོས་གཞིའི་དྭངས་གསལ།"
 
-#: ctk/deprecated/ctkcolorsel.c:466
+#: ctk/ctkcolorsel.c:466
 msgid "_Value:"
 msgstr "བེ་ལུ།(_V)"
 
-#: ctk/deprecated/ctkcolorsel.c:467
+#: ctk/ctkcolorsel.c:467
 msgid "Brightness of the color."
 msgstr "ཚོས་གཞིའི་སྐྱ་མདངས།"
 
-#: ctk/deprecated/ctkcolorsel.c:468
+#: ctk/ctkcolorsel.c:468
 msgid "_Red:"
 msgstr "དམརཔོ།(_R)"
 
-#: ctk/deprecated/ctkcolorsel.c:469
+#: ctk/ctkcolorsel.c:469
 msgid "Amount of red light in the color."
 msgstr "ཚོས་གཞི་ནང་ལུ་ དམར་མདངས་ཆེ་ཆུང༌།"
 
-#: ctk/deprecated/ctkcolorsel.c:470
+#: ctk/ctkcolorsel.c:470
 msgid "_Green:"
 msgstr "ལྗང་ཁུ་:(_G)"
 
-#: ctk/deprecated/ctkcolorsel.c:471
+#: ctk/ctkcolorsel.c:471
 msgid "Amount of green light in the color."
 msgstr "ཚོས་གཞི་ནང་ལུ་ ལྗང་མདངས་ཆེ་ཆུང༌།"
 
-#: ctk/deprecated/ctkcolorsel.c:472
+#: ctk/ctkcolorsel.c:472
 msgid "_Blue:"
 msgstr "ཧོནམ།(_B)"
 
-#: ctk/deprecated/ctkcolorsel.c:473
+#: ctk/ctkcolorsel.c:473
 msgid "Amount of blue light in the color."
 msgstr "ཚོས་གཞི་ནང་ ཧོན་མདངས་ཆེ་ཆུང༌།"
 
-#: ctk/deprecated/ctkcolorsel.c:476
+#: ctk/ctkcolorsel.c:476
 msgid "Op_acity:"
 msgstr "དྭངས་སྒྲིབ་:(_a)"
 
-#: ctk/deprecated/ctkcolorsel.c:484 ctk/deprecated/ctkcolorsel.c:494
+#: ctk/ctkcolorsel.c:484 ctk/ctkcolorsel.c:494
 msgid "Transparency of the color."
 msgstr "ཚོས་གཞིའི་དྭངས་གསལ།"
 
-#: ctk/deprecated/ctkcolorsel.c:501
+#: ctk/ctkcolorsel.c:501
 msgid "Color _name:"
 msgstr "ཚོས་གཞིའི་མིང༌:(_n)"
 
-#: ctk/deprecated/ctkcolorsel.c:516
+#: ctk/ctkcolorsel.c:516
 #, fuzzy
 msgid ""
 "You can enter an HTML-style hexadecimal color value, or simply a color name "
@@ -1293,15 +1293,15 @@ msgstr ""
 "ཁྱོད་ཀྱིས་ཨེཆ་ཊི་ཨེམ་ཨེལ་-བཟོ་རྣམ་གྱི་ ཧེག་ཟ་ཌེ་སི་མཱལ་ ཚོས་གཞིའི་བེ་ལུ་ཅིག་བཀོད་དགོ ཡང་ཅིན་ ཐོ་བཀོད་འདི་"
 "ནང་ ཚོས་གཞིའི་མིང་ དཔེར་ན་ 'ལི་ཝང་' བཟུམ་ཅིག་བཀོད་དགོ"
 
-#: ctk/deprecated/ctkcolorsel.c:548
+#: ctk/ctkcolorsel.c:548
 msgid "_Palette:"
 msgstr "པེ་ལེཊི་:(_P)"
 
-#: ctk/deprecated/ctkcolorsel.c:578
+#: ctk/ctkcolorsel.c:578
 msgid "Color Wheel"
 msgstr "ཚོས་གཞིའི་འཁོར་ལོ།"
 
-#: ctk/deprecated/ctkcolorsel.c:1072
+#: ctk/ctkcolorsel.c:1072
 #, fuzzy
 msgid ""
 "The previously-selected color, for comparison to the color you’re selecting "
@@ -1312,7 +1312,7 @@ msgstr ""
 "དེ། ཁྱོད་ཀྱིས་ཚོས་གཞི་འདི་ པེ་ལེཊི་ཐོ་བཀོད་ཅིག་ལུ་འདྲུད་བཏུབ། ཡང་ཅིན་ ཚོས་གཞི་འདི་ ཟུར་ཁ་ཡོད་མི་ ཚོས་"
 "དཔེ་གཞན་ཅིག་ལུ་ འདྲུད་པའི་ཐོག་ལས་ ད་ལྟོའི་ཚོས་གཞི་སྦེ སེལ་འཐུ་འབད་བཏུབ།"
 
-#: ctk/deprecated/ctkcolorsel.c:1078
+#: ctk/ctkcolorsel.c:1078
 #, fuzzy
 msgid ""
 "The color you’ve chosen. You can drag this color to a palette entry to save "
@@ -1321,21 +1321,21 @@ msgstr ""
 "ཁྱོད་ཀྱིས་ཚོས་གཞི་སེལ་འཐུ་འབད་མི་དེ་ པེ་ལེཊི་ཐོ་བཀོད་ཅིག་ནང་ འདྲུད་ཞིནམ་ལས་ ཤུལ་ལས་ལག་ལེན་འཐབ་ནིའི་"
 "དོན་ལུ་ བསྲུང་སྟེ་བཞག་བཏུབ།"
 
-#: ctk/deprecated/ctkcolorsel.c:1084
+#: ctk/ctkcolorsel.c:1084
 msgid ""
 "The previously-selected color, for comparison to the color you’re selecting "
 "now."
 msgstr ""
 
-#: ctk/deprecated/ctkcolorsel.c:1088
+#: ctk/ctkcolorsel.c:1088
 msgid "The color you’ve chosen."
 msgstr ""
 
-#: ctk/deprecated/ctkcolorsel.c:1458
+#: ctk/ctkcolorsel.c:1458
 msgid "_Save color here"
 msgstr "ཚོས་གཞི་ནཱ་ལུ་སྲུངས།(_S)"
 
-#: ctk/deprecated/ctkcolorsel.c:1664
+#: ctk/ctkcolorsel.c:1664
 #, fuzzy
 msgid ""
 "Click this palette entry to make it the current color. To change this entry, "

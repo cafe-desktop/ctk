@@ -1109,14 +1109,14 @@ msgctxt "Action description"
 msgid "Toggles the switch"
 msgstr ""
 
-#: ctk/deprecated/ctkcolorsel.c:425
+#: ctk/ctkcolorsel.c:425
 msgid ""
 "Select the color you want from the outer ring. Select the darkness or "
 "lightness of that color using the inner triangle."
 msgstr ""
 "အပြင်စည်းမှ သင်လိုချင်တဲ့ အရောင်ကို ရွေးပါ။ အတွင်း တြိဂံကို သုံးပြီး အဲဒီ အရောင်ရဲ့ အလင်း အမှောင်ကို ရွေးပါ။"
 
-#: ctk/deprecated/ctkcolorsel.c:451
+#: ctk/ctkcolorsel.c:451
 msgid ""
 "Click the eyedropper, then click a color anywhere on your screen to select "
 "that color."
@@ -1124,69 +1124,69 @@ msgstr ""
 "မျက်စည်းခတ်ကိရိယာကို နှိုပ်ပါ၊ နောက် အဲဒီ အရောင်ကို ရွေးဖို့ သင့် မျက်နှာပြင်ပေါ် ​တနေရာရာမှာ အရောင်တခုကို "
 "နှိုပ်ပါ"
 
-#: ctk/deprecated/ctkcolorsel.c:461
+#: ctk/ctkcolorsel.c:461
 msgid "_Hue:"
 msgstr "အရောင်အသွေး -"
 
-#: ctk/deprecated/ctkcolorsel.c:462
+#: ctk/ctkcolorsel.c:462
 msgid "Position on the color wheel."
 msgstr "အရောင်ဘီးပေါ်မှာ နေရာယူပါ"
 
-#: ctk/deprecated/ctkcolorsel.c:464
+#: ctk/ctkcolorsel.c:464
 #, fuzzy
 msgid "S_aturation:"
 msgstr "ပျော်၀င်မှု -"
 
-#: ctk/deprecated/ctkcolorsel.c:465
+#: ctk/ctkcolorsel.c:465
 #, fuzzy
 msgid "Intensity of the color."
 msgstr "အရောင်ရဲ့ ဖေါက်ထွင်းနိုင်မှု။"
 
-#: ctk/deprecated/ctkcolorsel.c:466
+#: ctk/ctkcolorsel.c:466
 msgid "_Value:"
 msgstr "တန်ဖိုး -"
 
-#: ctk/deprecated/ctkcolorsel.c:467
+#: ctk/ctkcolorsel.c:467
 msgid "Brightness of the color."
 msgstr "အရောင်ရဲ့ တောက်ပမှု။"
 
-#: ctk/deprecated/ctkcolorsel.c:468
+#: ctk/ctkcolorsel.c:468
 msgid "_Red:"
 msgstr "အနီ -"
 
-#: ctk/deprecated/ctkcolorsel.c:469
+#: ctk/ctkcolorsel.c:469
 msgid "Amount of red light in the color."
 msgstr "အရောင်ထဲက အနီရောင် အလင်း ပမာဏ။"
 
-#: ctk/deprecated/ctkcolorsel.c:470
+#: ctk/ctkcolorsel.c:470
 msgid "_Green:"
 msgstr "အစိမ်းရော -"
 
-#: ctk/deprecated/ctkcolorsel.c:471
+#: ctk/ctkcolorsel.c:471
 msgid "Amount of green light in the color."
 msgstr "အရောင်ထဲက အစိမ်းရောင် အလင်း ပမာဏ။"
 
-#: ctk/deprecated/ctkcolorsel.c:472
+#: ctk/ctkcolorsel.c:472
 msgid "_Blue:"
 msgstr "အ​ပြာရောင် -"
 
-#: ctk/deprecated/ctkcolorsel.c:473
+#: ctk/ctkcolorsel.c:473
 msgid "Amount of blue light in the color."
 msgstr "အရောင်ထဲက အပြာရောင် အလင်း ပမာဏ။"
 
-#: ctk/deprecated/ctkcolorsel.c:476
+#: ctk/ctkcolorsel.c:476
 msgid "Op_acity:"
 msgstr "အလင်းပိတ်မှု -"
 
-#: ctk/deprecated/ctkcolorsel.c:484 ctk/deprecated/ctkcolorsel.c:494
+#: ctk/ctkcolorsel.c:484 ctk/ctkcolorsel.c:494
 msgid "Transparency of the color."
 msgstr "အရောင်ရဲ့ ဖေါက်ထွင်းနိုင်မှု။"
 
-#: ctk/deprecated/ctkcolorsel.c:501
+#: ctk/ctkcolorsel.c:501
 msgid "Color _name:"
 msgstr "အရောင် အမည် -"
 
-#: ctk/deprecated/ctkcolorsel.c:516
+#: ctk/ctkcolorsel.c:516
 #, fuzzy
 msgid ""
 "You can enter an HTML-style hexadecimal color value, or simply a color name "
@@ -1195,15 +1195,15 @@ msgstr ""
 "HTML-စတိုင် hexadecimal ​အရောင် တန်ဖိုးတခု၊ (သို့) ဒီရေးသွင်းချက်ထဲမှာ ရိုးရိုး 'လိမ္မော်ရောင်' လို "
 "အရောင် အမည်တခုကို သင် ရေးထည့်နိုင်တယ"
 
-#: ctk/deprecated/ctkcolorsel.c:548
+#: ctk/ctkcolorsel.c:548
 msgid "_Palette:"
 msgstr "အရောင်စပ် ဆေးခွက် -"
 
-#: ctk/deprecated/ctkcolorsel.c:578
+#: ctk/ctkcolorsel.c:578
 msgid "Color Wheel"
 msgstr "အရောင်ဘီး"
 
-#: ctk/deprecated/ctkcolorsel.c:1072
+#: ctk/ctkcolorsel.c:1072
 #, fuzzy
 msgid ""
 "The previously-selected color, for comparison to the color you’re selecting "
@@ -1214,7 +1214,7 @@ msgstr ""
 "ရေးသွင်းချက် တခုထဲ သင် ဒရွတ်ဆွဲနိုင်တယ်၊ (သို့) ဒီအရောင်ကို လက်ရှိအတိုင်း အခြား အရောင် နမူနာ တလျှောက် "
 "ဒရွတ်ဆွဲသွားရင်း ရွေးချယ်ပါ။"
 
-#: ctk/deprecated/ctkcolorsel.c:1078
+#: ctk/ctkcolorsel.c:1078
 #, fuzzy
 msgid ""
 "The color you’ve chosen. You can drag this color to a palette entry to save "
@@ -1223,21 +1223,21 @@ msgstr ""
 "အရောင်ကို သင်ရွေးထားပြီ။ ဒီအရောင်ကို အရောင်စပ်​ ဆေးခွက် ရေးသွင်းချက် တခုဆီ ဒရွတ်ဆွဲသွားပြီ နောက်မှာ သုံးဖို့ "
 "၄င်းကို သိမ်းဆည်းပါ။"
 
-#: ctk/deprecated/ctkcolorsel.c:1084
+#: ctk/ctkcolorsel.c:1084
 msgid ""
 "The previously-selected color, for comparison to the color you’re selecting "
 "now."
 msgstr ""
 
-#: ctk/deprecated/ctkcolorsel.c:1088
+#: ctk/ctkcolorsel.c:1088
 msgid "The color you’ve chosen."
 msgstr ""
 
-#: ctk/deprecated/ctkcolorsel.c:1458
+#: ctk/ctkcolorsel.c:1458
 msgid "_Save color here"
 msgstr "အ​ရောင်ကို ဒီမှာ သိမ်းဆည်းပါ"
 
-#: ctk/deprecated/ctkcolorsel.c:1664
+#: ctk/ctkcolorsel.c:1664
 #, fuzzy
 msgid ""
 "Click this palette entry to make it the current color. To change this entry, "

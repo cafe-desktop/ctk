@@ -1204,7 +1204,7 @@ msgctxt "Action description"
 msgid "Toggles the switch"
 msgstr ""
 
-#: ctk/deprecated/ctkcolorsel.c:425
+#: ctk/ctkcolorsel.c:425
 msgid ""
 "Select the color you want from the outer ring. Select the darkness or "
 "lightness of that color using the inner triangle."
@@ -1212,76 +1212,76 @@ msgstr ""
 "შეარჩიეთ სასურველი ფერი გარე წრეზე. შეარჩიეთ მუქი ან ღია ტონალობები შიდა "
 "სამკუთხედის გამოყენებით."
 
-#: ctk/deprecated/ctkcolorsel.c:451
+#: ctk/ctkcolorsel.c:451
 msgid ""
 "Click the eyedropper, then click a color anywhere on your screen to select "
 "that color."
 msgstr ""
 "დაწკაპეთ პიპეტი და შემდეგ ფერი ეკრანის ნებისმიერ ადგილზე ამ ფერის ასარჩევად."
 
-#: ctk/deprecated/ctkcolorsel.c:461
+#: ctk/ctkcolorsel.c:461
 msgid "_Hue:"
 msgstr "_ტონი:"
 
-#: ctk/deprecated/ctkcolorsel.c:462
+#: ctk/ctkcolorsel.c:462
 msgid "Position on the color wheel."
 msgstr "სპექტრის განლაგება."
 
-#: ctk/deprecated/ctkcolorsel.c:464
+#: ctk/ctkcolorsel.c:464
 #, fuzzy
 msgid "S_aturation:"
 msgstr "_სიმსუყე:"
 
-#: ctk/deprecated/ctkcolorsel.c:465
+#: ctk/ctkcolorsel.c:465
 #, fuzzy
 msgid "Intensity of the color."
 msgstr "ფერის გამჭვირვალობა."
 
-#: ctk/deprecated/ctkcolorsel.c:466
+#: ctk/ctkcolorsel.c:466
 msgid "_Value:"
 msgstr "_მნიშვნელობა:"
 
-#: ctk/deprecated/ctkcolorsel.c:467
+#: ctk/ctkcolorsel.c:467
 msgid "Brightness of the color."
 msgstr "ფერის სიკაშკაშე."
 
-#: ctk/deprecated/ctkcolorsel.c:468
+#: ctk/ctkcolorsel.c:468
 msgid "_Red:"
 msgstr "_წითელი:"
 
-#: ctk/deprecated/ctkcolorsel.c:469
+#: ctk/ctkcolorsel.c:469
 msgid "Amount of red light in the color."
 msgstr "წითელი ფერის წილი."
 
-#: ctk/deprecated/ctkcolorsel.c:470
+#: ctk/ctkcolorsel.c:470
 msgid "_Green:"
 msgstr "_მწვანე:"
 
-#: ctk/deprecated/ctkcolorsel.c:471
+#: ctk/ctkcolorsel.c:471
 msgid "Amount of green light in the color."
 msgstr "მწვანე ფერის წილი."
 
-#: ctk/deprecated/ctkcolorsel.c:472
+#: ctk/ctkcolorsel.c:472
 msgid "_Blue:"
 msgstr "_ლურჯი:"
 
-#: ctk/deprecated/ctkcolorsel.c:473
+#: ctk/ctkcolorsel.c:473
 msgid "Amount of blue light in the color."
 msgstr "ლურჯი ფერის წილი."
 
-#: ctk/deprecated/ctkcolorsel.c:476
+#: ctk/ctkcolorsel.c:476
 msgid "Op_acity:"
 msgstr "_გამჭოლიანობ:"
 
-#: ctk/deprecated/ctkcolorsel.c:484 ctk/deprecated/ctkcolorsel.c:494
+#: ctk/ctkcolorsel.c:484 ctk/ctkcolorsel.c:494
 msgid "Transparency of the color."
 msgstr "ფერის გამჭვირვალობა."
 
-#: ctk/deprecated/ctkcolorsel.c:501
+#: ctk/ctkcolorsel.c:501
 msgid "Color _name:"
 msgstr "ფერის _სახელი:"
 
-#: ctk/deprecated/ctkcolorsel.c:516
+#: ctk/ctkcolorsel.c:516
 #, fuzzy
 msgid ""
 "You can enter an HTML-style hexadecimal color value, or simply a color name "
@@ -1290,15 +1290,15 @@ msgstr ""
 "აქ შეგიძლიათ მიუთითოთ ფერის თექვსმეტობითი კოდი (HTML სტილით), ან ფარის "
 "სახელი, მაგალითად \"orange\"."
 
-#: ctk/deprecated/ctkcolorsel.c:548
+#: ctk/ctkcolorsel.c:548
 msgid "_Palette:"
 msgstr "_პალიტრა"
 
-#: ctk/deprecated/ctkcolorsel.c:578
+#: ctk/ctkcolorsel.c:578
 msgid "Color Wheel"
 msgstr "სპექტრი"
 
-#: ctk/deprecated/ctkcolorsel.c:1072
+#: ctk/ctkcolorsel.c:1072
 #, fuzzy
 msgid ""
 "The previously-selected color, for comparison to the color you’re selecting "
@@ -1309,7 +1309,7 @@ msgstr ""
 "ეს ფერი პალიტრაში ან მიუთითოთ როგორც მიმდინარე გვერდით მდებარე ნიმუშებში "
 "გადატანით."
 
-#: ctk/deprecated/ctkcolorsel.c:1078
+#: ctk/ctkcolorsel.c:1078
 #, fuzzy
 msgid ""
 "The color you’ve chosen. You can drag this color to a palette entry to save "
@@ -1318,21 +1318,21 @@ msgstr ""
 "თქვენი არჩეული ფერი. შეგიძლიათ გადაათრიოთ პალიტრაში მისი მოგვიანებით "
 "გამოყენებისთვის."
 
-#: ctk/deprecated/ctkcolorsel.c:1084
+#: ctk/ctkcolorsel.c:1084
 msgid ""
 "The previously-selected color, for comparison to the color you’re selecting "
 "now."
 msgstr ""
 
-#: ctk/deprecated/ctkcolorsel.c:1088
+#: ctk/ctkcolorsel.c:1088
 msgid "The color you’ve chosen."
 msgstr ""
 
-#: ctk/deprecated/ctkcolorsel.c:1458
+#: ctk/ctkcolorsel.c:1458
 msgid "_Save color here"
 msgstr "ფერის _შენახვა აქ"
 
-#: ctk/deprecated/ctkcolorsel.c:1664
+#: ctk/ctkcolorsel.c:1664
 #, fuzzy
 msgid ""
 "Click this palette entry to make it the current color. To change this entry, "

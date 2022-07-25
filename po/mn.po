@@ -1297,7 +1297,7 @@ msgid "Toggles the switch"
 msgstr ""
 
 # ctk/ctkcolorsel.c:1784
-#: ctk/deprecated/ctkcolorsel.c:425
+#: ctk/ctkcolorsel.c:425
 msgid ""
 "Select the color you want from the outer ring. Select the darkness or "
 "lightness of that color using the inner triangle."
@@ -1306,7 +1306,7 @@ msgstr ""
 "Харавтар эсвэл  Гэгээлэг өнгө сонго "
 
 # ctk/ctkcolorsel.c:1812
-#: ctk/deprecated/ctkcolorsel.c:451
+#: ctk/ctkcolorsel.c:451
 msgid ""
 "Click the eyedropper, then click a color anywhere on your screen to select "
 "that color."
@@ -1315,85 +1315,85 @@ msgstr ""
 "сонгох болно. "
 
 # ctk/ctkcolorsel.c:1821
-#: ctk/deprecated/ctkcolorsel.c:461
+#: ctk/ctkcolorsel.c:461
 msgid "_Hue:"
 msgstr "_Өнгө:"
 
 # ctk/ctkcolorsel.c:1822
-#: ctk/deprecated/ctkcolorsel.c:462
+#: ctk/ctkcolorsel.c:462
 msgid "Position on the color wheel."
 msgstr "Өнгөндээрх дугуй байрлал."
 
 # ctk/ctkcolorsel.c:1823
-#: ctk/deprecated/ctkcolorsel.c:464
+#: ctk/ctkcolorsel.c:464
 #, fuzzy
 msgid "S_aturation:"
 msgstr "Хан_галуун:"
 
 # ctk/ctkcolorsel.c:1843
-#: ctk/deprecated/ctkcolorsel.c:465
+#: ctk/ctkcolorsel.c:465
 #, fuzzy
 msgid "Intensity of the color."
 msgstr "Өнгөний тунгалаг."
 
 # ctk/ctkcolorsel.c:1825
-#: ctk/deprecated/ctkcolorsel.c:466
+#: ctk/ctkcolorsel.c:466
 msgid "_Value:"
 msgstr "Ут_га:"
 
 # ctk/ctkcolorsel.c:1826
-#: ctk/deprecated/ctkcolorsel.c:467
+#: ctk/ctkcolorsel.c:467
 msgid "Brightness of the color."
 msgstr "Өнгөний гэрэлдэлт."
 
 # ctk/ctkcolorsel.c:1827
-#: ctk/deprecated/ctkcolorsel.c:468
+#: ctk/ctkcolorsel.c:468
 msgid "_Red:"
 msgstr "Улаан:"
 
 # ctk/ctkcolorsel.c:1828
-#: ctk/deprecated/ctkcolorsel.c:469
+#: ctk/ctkcolorsel.c:469
 msgid "Amount of red light in the color."
 msgstr "Өнгө дахь цайвар улааны утга."
 
 # ctk/ctkcolorsel.c:1829
-#: ctk/deprecated/ctkcolorsel.c:470
+#: ctk/ctkcolorsel.c:470
 msgid "_Green:"
 msgstr "Ногоон:"
 
 # ctk/ctkcolorsel.c:1830
-#: ctk/deprecated/ctkcolorsel.c:471
+#: ctk/ctkcolorsel.c:471
 msgid "Amount of green light in the color."
 msgstr "Өнгө дахь цайвар ногооны утга."
 
 # ctk/ctkcolorsel.c:1831
-#: ctk/deprecated/ctkcolorsel.c:472
+#: ctk/ctkcolorsel.c:472
 msgid "_Blue:"
 msgstr "Хөх:"
 
 # ctk/ctkcolorsel.c:1832
-#: ctk/deprecated/ctkcolorsel.c:473
+#: ctk/ctkcolorsel.c:473
 msgid "Amount of blue light in the color."
 msgstr "Өнгө дахь цайвар хөхийн утга."
 
 # ctk/ctkcolorsel.c:1835
-#: ctk/deprecated/ctkcolorsel.c:476
+#: ctk/ctkcolorsel.c:476
 #, fuzzy
 msgid "Op_acity:"
 msgstr "Харанхуй:"
 
 # ctk/ctkcolorsel.c:1843
-#: ctk/deprecated/ctkcolorsel.c:484 ctk/deprecated/ctkcolorsel.c:494
+#: ctk/ctkcolorsel.c:484 ctk/ctkcolorsel.c:494
 msgid "Transparency of the color."
 msgstr "Өнгөний тунгалаг."
 
 # ctk/ctkcolorsel.c:1858
-#: ctk/deprecated/ctkcolorsel.c:501
+#: ctk/ctkcolorsel.c:501
 #, fuzzy
 msgid "Color _name:"
 msgstr "Өнгөний _Нэр:"
 
-#: ctk/deprecated/ctkcolorsel.c:516
+#: ctk/ctkcolorsel.c:516
 #, fuzzy
 msgid ""
 "You can enter an HTML-style hexadecimal color value, or simply a color name "
@@ -1403,18 +1403,18 @@ msgstr ""
 "өнгөний нэрээр оруулж болно."
 
 # ctk/ctkcolorsel.c:1889
-#: ctk/deprecated/ctkcolorsel.c:548
+#: ctk/ctkcolorsel.c:548
 #, fuzzy
 msgid "_Palette:"
 msgstr "Будгийн нийлүүр"
 
 # ctk/ctkinputdialog.c:479
-#: ctk/deprecated/ctkcolorsel.c:578
+#: ctk/ctkcolorsel.c:578
 #, fuzzy
 msgid "Color Wheel"
 msgstr "Дугуй"
 
-#: ctk/deprecated/ctkcolorsel.c:1072
+#: ctk/ctkcolorsel.c:1072
 #, fuzzy
 msgid ""
 "The previously-selected color, for comparison to the color you’re selecting "
@@ -1425,7 +1425,7 @@ msgstr ""
 "нийлүүрийг чирч орох, эсвэл энэ бусад өнгөний жижигрүүлсэн юм уу  чирч "
 "байгаа шиг өнгө сонгох. "
 
-#: ctk/deprecated/ctkcolorsel.c:1078
+#: ctk/ctkcolorsel.c:1078
 #, fuzzy
 msgid ""
 "The color you’ve chosen. You can drag this color to a palette entry to save "
@@ -1434,21 +1434,21 @@ msgstr ""
 "Таны сонгосон өнгө. Та энэ өнгөний нийлүүлгэтэйгээ дараа нь ашиглахын  тулд "
 "хадгалж орж чадна."
 
-#: ctk/deprecated/ctkcolorsel.c:1084
+#: ctk/ctkcolorsel.c:1084
 msgid ""
 "The previously-selected color, for comparison to the color you’re selecting "
 "now."
 msgstr ""
 
-#: ctk/deprecated/ctkcolorsel.c:1088
+#: ctk/ctkcolorsel.c:1088
 msgid "The color you’ve chosen."
 msgstr ""
 
-#: ctk/deprecated/ctkcolorsel.c:1458
+#: ctk/ctkcolorsel.c:1458
 msgid "_Save color here"
 msgstr "Энд _Хадгалах өнгө "
 
-#: ctk/deprecated/ctkcolorsel.c:1664
+#: ctk/ctkcolorsel.c:1664
 #, fuzzy
 msgid ""
 "Click this palette entry to make it the current color. To change this entry, "
