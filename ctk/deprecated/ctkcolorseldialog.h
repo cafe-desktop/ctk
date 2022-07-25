@@ -30,7 +30,7 @@
 #endif
 
 #include <ctk/ctkdialog.h>
-#include <ctk/deprecated/ctkcolorsel.h>
+#include <ctk/ctkcolorsel.h>
 
 G_BEGIN_DECLS
 
