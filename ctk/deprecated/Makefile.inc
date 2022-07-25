@@ -1,6 +1,5 @@
 deprecated_h_sources = 			\
 	deprecated/ctkarrow.h		\
-	deprecated/ctkcolorsel.h	\
 	deprecated/ctkcolorseldialog.h	\
 	deprecated/ctkfontsel.h		\
 	deprecated/ctkgradient.h	\
@@ -33,7 +32,6 @@ deprecated_private_h_sources =			\
 
 deprecated_c_sources = 			\
 	deprecated/ctkarrow.c		\
-	deprecated/ctkcolorsel.c	\
 	deprecated/ctkcolorseldialog.c	\
 	deprecated/ctkfontsel.c		\
 	deprecated/ctkgradient.c	\

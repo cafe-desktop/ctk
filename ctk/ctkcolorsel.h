@@ -98,70 +98,70 @@ struct _CtkColorSelectionClass
 
 /* ColorSelection */
 
-CDK_DEPRECATED_IN_3_4
+CDK_AVAILABLE_IN_ALL
 GType      ctk_color_selection_get_type                (void) G_GNUC_CONST;
-CDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_widget_new)
+CDK_AVAILABLE_IN_ALL
 CtkWidget *ctk_color_selection_new                     (void);
-CDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_get_use_alpha)
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_color_selection_get_has_opacity_control (CtkColorSelection *colorsel);
-CDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_set_use_alpha)
+CDK_AVAILABLE_IN_ALL
 void       ctk_color_selection_set_has_opacity_control (CtkColorSelection *colorsel,
 							gboolean           has_opacity);
-CDK_DEPRECATED_IN_3_4
+CDK_AVAILABLE_IN_ALL
 gboolean   ctk_color_selection_get_has_palette         (CtkColorSelection *colorsel);
-CDK_DEPRECATED_IN_3_4
+CDK_AVAILABLE_IN_ALL
 void       ctk_color_selection_set_has_palette         (CtkColorSelection *colorsel,
 							gboolean           has_palette);
 
 
-CDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_set_rgba)
+CDK_AVAILABLE_IN_ALL
 void     ctk_color_selection_set_current_alpha   (CtkColorSelection *colorsel,
 						  guint16            alpha);
-CDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_get_rgba)
+CDK_AVAILABLE_IN_ALL
 guint16  ctk_color_selection_get_current_alpha   (CtkColorSelection *colorsel);
-CDK_DEPRECATED_IN_3_4
+CDK_AVAILABLE_IN_ALL
 void     ctk_color_selection_set_previous_alpha  (CtkColorSelection *colorsel,
 						  guint16            alpha);
-CDK_DEPRECATED_IN_3_4
+CDK_AVAILABLE_IN_ALL
 guint16  ctk_color_selection_get_previous_alpha  (CtkColorSelection *colorsel);
 
-CDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_set_rgba)
+CDK_AVAILABLE_IN_ALL
 void     ctk_color_selection_set_current_rgba    (CtkColorSelection *colorsel,
                                                   const CdkRGBA     *rgba);
-CDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_get_rgba)
+CDK_AVAILABLE_IN_ALL
 void     ctk_color_selection_get_current_rgba    (CtkColorSelection *colorsel,
                                                   CdkRGBA           *rgba);
-CDK_DEPRECATED_IN_3_4
+CDK_AVAILABLE_IN_ALL
 void     ctk_color_selection_set_previous_rgba   (CtkColorSelection *colorsel,
                                                   const CdkRGBA     *rgba);
-CDK_DEPRECATED_IN_3_4
+CDK_AVAILABLE_IN_ALL
 void     ctk_color_selection_get_previous_rgba   (CtkColorSelection *colorsel,
                                                   CdkRGBA           *rgba);
 
-CDK_DEPRECATED_IN_3_4
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_color_selection_is_adjusting        (CtkColorSelection *colorsel);
 
-CDK_DEPRECATED_IN_3_4
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_color_selection_palette_from_string (const gchar       *str,
                                                   CdkColor         **colors,
                                                   gint              *n_colors);
-CDK_DEPRECATED_IN_3_4
+CDK_AVAILABLE_IN_ALL
 gchar*   ctk_color_selection_palette_to_string   (const CdkColor    *colors,
                                                   gint               n_colors);
 
-CDK_DEPRECATED_IN_3_4
+CDK_AVAILABLE_IN_ALL
 CtkColorSelectionChangePaletteWithScreenFunc ctk_color_selection_set_change_palette_with_screen_hook (CtkColorSelectionChangePaletteWithScreenFunc func);
 
-CDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_set_rgba)
+CDK_AVAILABLE_IN_ALL
 void     ctk_color_selection_set_current_color   (CtkColorSelection *colorsel,
                                                   const CdkColor    *color);
-CDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_get_rgba)
+CDK_AVAILABLE_IN_ALL
 void     ctk_color_selection_get_current_color   (CtkColorSelection *colorsel,
                                                   CdkColor          *color);
-CDK_DEPRECATED_IN_3_4
+CDK_AVAILABLE_IN_ALL
 void     ctk_color_selection_set_previous_color  (CtkColorSelection *colorsel,
                                                   const CdkColor    *color);
-CDK_DEPRECATED_IN_3_4
+CDK_AVAILABLE_IN_ALL
 void     ctk_color_selection_get_previous_color  (CtkColorSelection *colorsel,
                                                   CdkColor          *color);
 

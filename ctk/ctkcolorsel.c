@@ -25,8 +25,6 @@
 
 #include "config.h"
 
-#define CDK_DISABLE_DEPRECATION_WARNINGS
-
 #include "ctkcolorsel.h"
 
 #include <math.h>
@@ -66,7 +64,7 @@
 
 /**
  * SECTION:ctkcolorsel
- * @Short_description: Deprecated widget used to select a color
+ * @Short_description: Widget used to select a color
  * @Title: CtkColorSelection
  *
  * The #CtkColorSelection is a widget that is used to select
@@ -2486,8 +2484,6 @@ ctk_color_selection_set_has_palette (CtkColorSelection *colorsel,
  *
  * The first time this is called, it will also set
  * the original color to be @color too.
- *
- * Deprecated: 3.4: Use ctk_color_selection_set_current_rgba() instead.
  */
 void
 ctk_color_selection_set_current_color (CtkColorSelection *colorsel,
@@ -2556,8 +2552,6 @@ ctk_color_selection_set_current_alpha (CtkColorSelection *colorsel,
  * @color: (out): a #CdkColor to fill in with the current color
  *
  * Sets @color to be the current color in the CtkColorSelection widget.
- *
- * Deprecated: 3.4: Use ctk_color_selection_get_current_rgba() instead.
  */
 void
 ctk_color_selection_get_current_color (CtkColorSelection *colorsel,
@@ -2604,8 +2598,6 @@ ctk_color_selection_get_current_alpha (CtkColorSelection *colorsel)
  * as it might seem confusing to have that color change.
  * Calling ctk_color_selection_set_current_color() will also
  * set this color the first time it is called.
- *
- * Deprecated: 3.4: Use ctk_color_selection_set_previous_rgba() instead.
  */
 void
 ctk_color_selection_set_previous_color (CtkColorSelection *colorsel,
@@ -2665,8 +2657,6 @@ ctk_color_selection_set_previous_alpha (CtkColorSelection *colorsel,
  * @color: (out): a #CdkColor to fill in with the original color value
  *
  * Fills @color in with the original color value.
- *
- * Deprecated: 3.4: Use ctk_color_selection_get_previous_rgba() instead.
  */
 void
 ctk_color_selection_get_previous_color (CtkColorSelection *colorsel,
