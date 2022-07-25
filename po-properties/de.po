@@ -587,35 +587,35 @@ msgstr "Aktuelles RGBA"
 msgid "The current RGBA color"
 msgstr "Die aktuelle RGBA-Farbe"
 
-#: ctk/deprecated/ctkcolorseldialog.c:136
+#: ctk/ctkcolorseldialog.c:136
 msgid "Color Selection"
 msgstr "Farbauswahl"
 
-#: ctk/deprecated/ctkcolorseldialog.c:137
+#: ctk/ctkcolorseldialog.c:137
 msgid "The color selection embedded in the dialog."
 msgstr "Die in den Dialog eingebundene Farbauswahl."
 
-#: ctk/deprecated/ctkcolorseldialog.c:143
+#: ctk/ctkcolorseldialog.c:143
 msgid "OK Button"
 msgstr "OK-Knopf"
 
-#: ctk/deprecated/ctkcolorseldialog.c:144
+#: ctk/ctkcolorseldialog.c:144
 msgid "The OK button of the dialog."
 msgstr "Der OK-Knopf des Dialogs"
 
-#: ctk/deprecated/ctkcolorseldialog.c:150
+#: ctk/ctkcolorseldialog.c:150
 msgid "Cancel Button"
 msgstr "Abbrechen-Knopf"
 
-#: ctk/deprecated/ctkcolorseldialog.c:151
+#: ctk/ctkcolorseldialog.c:151
 msgid "The cancel button of the dialog."
 msgstr "Der Abbrechen-Knopf des Dialogs"
 
-#: ctk/deprecated/ctkcolorseldialog.c:157
+#: ctk/ctkcolorseldialog.c:157
 msgid "Help Button"
 msgstr "Hilfe-Knopf"
 
-#: ctk/deprecated/ctkcolorseldialog.c:158
+#: ctk/ctkcolorseldialog.c:158
 msgid "The help button of the dialog."
 msgstr "Der Hilfe-Knopf des Dialogs"
 

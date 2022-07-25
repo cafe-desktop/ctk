@@ -574,35 +574,35 @@ msgstr "നിലവിലുളള Alpha"
 msgid "The current RGBA color"
 msgstr "നിലവിലുളള നിറം"
 
-#: ctk/deprecated/ctkcolorseldialog.c:136
+#: ctk/ctkcolorseldialog.c:136
 msgid "Color Selection"
 msgstr "നിറം തെരഞ്ഞെടുക്കല്‍"
 
-#: ctk/deprecated/ctkcolorseldialog.c:137
+#: ctk/ctkcolorseldialog.c:137
 msgid "The color selection embedded in the dialog."
 msgstr "ഡയലോഗില്‍ ഉള്‍പ്പെടുത്തിയിരിക്കുന്ന നിറം തെരഞ്ഞെടുക്കല്‍."
 
-#: ctk/deprecated/ctkcolorseldialog.c:143
+#: ctk/ctkcolorseldialog.c:143
 msgid "OK Button"
 msgstr "ശരി ബട്ടണ്‍"
 
-#: ctk/deprecated/ctkcolorseldialog.c:144
+#: ctk/ctkcolorseldialog.c:144
 msgid "The OK button of the dialog."
 msgstr "ഡയലോഗ് ബോക്സിന്റെ ശരി ബട്ടണ്‍"
 
-#: ctk/deprecated/ctkcolorseldialog.c:150
+#: ctk/ctkcolorseldialog.c:150
 msgid "Cancel Button"
 msgstr "റദ്ദാക്കല്‍ ബട്ടണ്‍"
 
-#: ctk/deprecated/ctkcolorseldialog.c:151
+#: ctk/ctkcolorseldialog.c:151
 msgid "The cancel button of the dialog."
 msgstr "ഡയലോഗ് ബോക്സിലുള്ള റദ്ദാക്കല്‍ ബട്ടണ്‍"
 
-#: ctk/deprecated/ctkcolorseldialog.c:157
+#: ctk/ctkcolorseldialog.c:157
 msgid "Help Button"
 msgstr "സഹായത്തിനുള്ള ബട്ടണ്‍"
 
-#: ctk/deprecated/ctkcolorseldialog.c:158
+#: ctk/ctkcolorseldialog.c:158
 msgid "The help button of the dialog."
 msgstr "ഡയലോഗ് ബോക്സിലുള്ള സഹായ ബട്ടണ്‍"
 

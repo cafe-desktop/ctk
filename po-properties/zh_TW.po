@@ -543,35 +543,35 @@ msgstr "目前的 RGBA"
 msgid "The current RGBA color"
 msgstr "目前的 RGBA 顏色"
 
-#: ctk/deprecated/ctkcolorseldialog.c:136
+#: ctk/ctkcolorseldialog.c:136
 msgid "Color Selection"
 msgstr "顏色選擇"
 
-#: ctk/deprecated/ctkcolorseldialog.c:137
+#: ctk/ctkcolorseldialog.c:137
 msgid "The color selection embedded in the dialog."
 msgstr "內嵌在對話盒的色彩選取區。"
 
-#: ctk/deprecated/ctkcolorseldialog.c:143
+#: ctk/ctkcolorseldialog.c:143
 msgid "OK Button"
 msgstr "確定按鈕"
 
-#: ctk/deprecated/ctkcolorseldialog.c:144
+#: ctk/ctkcolorseldialog.c:144
 msgid "The OK button of the dialog."
 msgstr "對話盒的確定按鈕。"
 
-#: ctk/deprecated/ctkcolorseldialog.c:150
+#: ctk/ctkcolorseldialog.c:150
 msgid "Cancel Button"
 msgstr "取消按鈕"
 
-#: ctk/deprecated/ctkcolorseldialog.c:151
+#: ctk/ctkcolorseldialog.c:151
 msgid "The cancel button of the dialog."
 msgstr "對話盒的取消按鈕。"
 
-#: ctk/deprecated/ctkcolorseldialog.c:157
+#: ctk/ctkcolorseldialog.c:157
 msgid "Help Button"
 msgstr "求助按鈕"
 
-#: ctk/deprecated/ctkcolorseldialog.c:158
+#: ctk/ctkcolorseldialog.c:158
 msgid "The help button of the dialog."
 msgstr "對話盒的求助按鈕。"
 

@@ -585,38 +585,38 @@ msgstr "Yr Alffa Gyfredol"
 msgid "The current RGBA color"
 msgstr "Y lliw cyfredol"
 
-#: ctk/deprecated/ctkcolorseldialog.c:136
+#: ctk/ctkcolorseldialog.c:136
 msgid "Color Selection"
 msgstr "Dewis Lliw"
 
-#: ctk/deprecated/ctkcolorseldialog.c:137
+#: ctk/ctkcolorseldialog.c:137
 #, fuzzy
 msgid "The color selection embedded in the dialog."
 msgstr "Teitl y deialog dewis lliw"
 
-#: ctk/deprecated/ctkcolorseldialog.c:143
+#: ctk/ctkcolorseldialog.c:143
 msgid "OK Button"
 msgstr "Botwm OK"
 
-#: ctk/deprecated/ctkcolorseldialog.c:144
+#: ctk/ctkcolorseldialog.c:144
 msgid "The OK button of the dialog."
 msgstr "Botwm OK y deialog."
 
-#: ctk/deprecated/ctkcolorseldialog.c:150
+#: ctk/ctkcolorseldialog.c:150
 #, fuzzy
 msgid "Cancel Button"
 msgstr "Botymau Neges"
 
-#: ctk/deprecated/ctkcolorseldialog.c:151
+#: ctk/ctkcolorseldialog.c:151
 #, fuzzy
 msgid "The cancel button of the dialog."
 msgstr "Rhiant darfodedig y ddeialog"
 
-#: ctk/deprecated/ctkcolorseldialog.c:157
+#: ctk/ctkcolorseldialog.c:157
 msgid "Help Button"
 msgstr "Botwm Cymorth"
 
-#: ctk/deprecated/ctkcolorseldialog.c:158
+#: ctk/ctkcolorseldialog.c:158
 msgid "The help button of the dialog."
 msgstr "Botwm cymorth y deialog."
 

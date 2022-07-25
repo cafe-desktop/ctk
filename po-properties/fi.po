@@ -576,35 +576,35 @@ msgstr "Nykyinen RGBA"
 msgid "The current RGBA color"
 msgstr "Nykyinen RGBA-väri"
 
-#: ctk/deprecated/ctkcolorseldialog.c:136
+#: ctk/ctkcolorseldialog.c:136
 msgid "Color Selection"
 msgstr "Värin valinta"
 
-#: ctk/deprecated/ctkcolorseldialog.c:137
+#: ctk/ctkcolorseldialog.c:137
 msgid "The color selection embedded in the dialog."
 msgstr "Ikkunaan upotettu värinvalitsin."
 
-#: ctk/deprecated/ctkcolorseldialog.c:143
+#: ctk/ctkcolorseldialog.c:143
 msgid "OK Button"
 msgstr "OK-painike"
 
-#: ctk/deprecated/ctkcolorseldialog.c:144
+#: ctk/ctkcolorseldialog.c:144
 msgid "The OK button of the dialog."
 msgstr "Ikkunan OK-painike."
 
-#: ctk/deprecated/ctkcolorseldialog.c:150
+#: ctk/ctkcolorseldialog.c:150
 msgid "Cancel Button"
 msgstr "Perumispainike"
 
-#: ctk/deprecated/ctkcolorseldialog.c:151
+#: ctk/ctkcolorseldialog.c:151
 msgid "The cancel button of the dialog."
 msgstr "Ikkunan perumispainike."
 
-#: ctk/deprecated/ctkcolorseldialog.c:157
+#: ctk/ctkcolorseldialog.c:157
 msgid "Help Button"
 msgstr "Ohjepainike"
 
-#: ctk/deprecated/ctkcolorseldialog.c:158
+#: ctk/ctkcolorseldialog.c:158
 msgid "The help button of the dialog."
 msgstr "Ikkunan ohjepainike."
 

@@ -564,35 +564,35 @@ msgstr "ପ୍ରଚଳିତ RGBA"
 msgid "The current RGBA color"
 msgstr "ପ୍ରଚଳିତ RGBA ରଙ୍ଗ"
 
-#: ctk/deprecated/ctkcolorseldialog.c:136
+#: ctk/ctkcolorseldialog.c:136
 msgid "Color Selection"
 msgstr "ରଙ୍ଗ ଚୟନ"
 
-#: ctk/deprecated/ctkcolorseldialog.c:137
+#: ctk/ctkcolorseldialog.c:137
 msgid "The color selection embedded in the dialog."
 msgstr "ସଂଳାପରେ ସଂଯୁକ୍ତ ରଙ୍ଗ ଚୟନ।"
 
-#: ctk/deprecated/ctkcolorseldialog.c:143
+#: ctk/ctkcolorseldialog.c:143
 msgid "OK Button"
 msgstr "ଠିକ ଅଛି ବଟନ"
 
-#: ctk/deprecated/ctkcolorseldialog.c:144
+#: ctk/ctkcolorseldialog.c:144
 msgid "The OK button of the dialog."
 msgstr "ସଂଳାପର OK ବଟନ।"
 
-#: ctk/deprecated/ctkcolorseldialog.c:150
+#: ctk/ctkcolorseldialog.c:150
 msgid "Cancel Button"
 msgstr "ବାତିଲ କରନ୍ତୁ ବଟନ"
 
-#: ctk/deprecated/ctkcolorseldialog.c:151
+#: ctk/ctkcolorseldialog.c:151
 msgid "The cancel button of the dialog."
 msgstr "ସଂଳାପର ବାତିଲ କରନ୍ତୁ ବଟନ।"
 
-#: ctk/deprecated/ctkcolorseldialog.c:157
+#: ctk/ctkcolorseldialog.c:157
 msgid "Help Button"
 msgstr "ସହାୟତା ବଟନ"
 
-#: ctk/deprecated/ctkcolorseldialog.c:158
+#: ctk/ctkcolorseldialog.c:158
 msgid "The help button of the dialog."
 msgstr "ସଂଳାପର ସହାୟତା ବଟନ"
 

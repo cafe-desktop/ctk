@@ -562,41 +562,41 @@ msgid "The current RGBA color"
 msgstr "বৰ্তমান RGBA ৰংটো"
 
 #
-#: ctk/deprecated/ctkcolorseldialog.c:136
+#: ctk/ctkcolorseldialog.c:136
 msgid "Color Selection"
 msgstr "ৰং নিৰ্বাচন"
 
 #
-#: ctk/deprecated/ctkcolorseldialog.c:137
+#: ctk/ctkcolorseldialog.c:137
 msgid "The color selection embedded in the dialog."
 msgstr "ডাইলগত অন্তৰ্ভুক্ত ৰং নিৰ্বাচক "
 
-#: ctk/deprecated/ctkcolorseldialog.c:143
+#: ctk/ctkcolorseldialog.c:143
 msgid "OK Button"
 msgstr "OK বুটাম"
 
 #
-#: ctk/deprecated/ctkcolorseldialog.c:144
+#: ctk/ctkcolorseldialog.c:144
 msgid "The OK button of the dialog."
 msgstr "বাৰ্তা বুটামত প্ৰদৰ্শিত বুটাম"
 
 #
-#: ctk/deprecated/ctkcolorseldialog.c:150
+#: ctk/ctkcolorseldialog.c:150
 msgid "Cancel Button"
 msgstr "বাৰ্তা বুটাম"
 
 #
-#: ctk/deprecated/ctkcolorseldialog.c:151
+#: ctk/ctkcolorseldialog.c:151
 msgid "The cancel button of the dialog."
 msgstr "parent সৰ্বমোট"
 
 #
-#: ctk/deprecated/ctkcolorseldialog.c:157
+#: ctk/ctkcolorseldialog.c:157
 msgid "Help Button"
 msgstr "বাৰ্তা বুটাম"
 
 #
-#: ctk/deprecated/ctkcolorseldialog.c:158
+#: ctk/ctkcolorseldialog.c:158
 msgid "The help button of the dialog."
 msgstr "বাৰ্তা বুটামত প্ৰদৰ্শিত বুটাম"
 

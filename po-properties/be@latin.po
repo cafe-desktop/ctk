@@ -593,41 +593,41 @@ msgstr "Dziejnaja vartaść alfa"
 msgid "The current RGBA color"
 msgstr "Dziejny koler"
 
-#: ctk/deprecated/ctkcolorseldialog.c:136
+#: ctk/ctkcolorseldialog.c:136
 #, fuzzy
 msgid "Color Selection"
 msgstr "Zaznačaj abranaje"
 
-#: ctk/deprecated/ctkcolorseldialog.c:137
+#: ctk/ctkcolorseldialog.c:137
 #, fuzzy
 msgid "The color selection embedded in the dialog."
 msgstr "Zahałovak akna dyjalohu vybaru koleru"
 
-#: ctk/deprecated/ctkcolorseldialog.c:143
+#: ctk/ctkcolorseldialog.c:143
 msgid "OK Button"
 msgstr ""
 
-#: ctk/deprecated/ctkcolorseldialog.c:144
+#: ctk/ctkcolorseldialog.c:144
 #, fuzzy
 msgid "The OK button of the dialog."
 msgstr "Knopki ŭ vaknie paviedamleńnia"
 
-#: ctk/deprecated/ctkcolorseldialog.c:150
+#: ctk/ctkcolorseldialog.c:150
 #, fuzzy
 msgid "Cancel Button"
 msgstr "Knopki pad paviedamleńniem"
 
-#: ctk/deprecated/ctkcolorseldialog.c:151
+#: ctk/ctkcolorseldialog.c:151
 #, fuzzy
 msgid "The cancel button of the dialog."
 msgstr "Pierachodny baćka dyjalohu"
 
-#: ctk/deprecated/ctkcolorseldialog.c:157
+#: ctk/ctkcolorseldialog.c:157
 #, fuzzy
 msgid "Help Button"
 msgstr "Knopki pad paviedamleńniem"
 
-#: ctk/deprecated/ctkcolorseldialog.c:158
+#: ctk/ctkcolorseldialog.c:158
 #, fuzzy
 msgid "The help button of the dialog."
 msgstr "Knopki ŭ vaknie paviedamleńnia"

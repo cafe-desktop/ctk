@@ -593,41 +593,41 @@ msgstr "איצטיקע α"
 msgid "The current RGBA color"
 msgstr "די איצטיקע פֿאַרב"
 
-#: ctk/deprecated/ctkcolorseldialog.c:136
+#: ctk/ctkcolorseldialog.c:136
 #, fuzzy
 msgid "Color Selection"
 msgstr "דער טיטל פֿונעם פֿענצטער"
 
-#: ctk/deprecated/ctkcolorseldialog.c:137
+#: ctk/ctkcolorseldialog.c:137
 #, fuzzy
 msgid "The color selection embedded in the dialog."
 msgstr "דער טיטל פֿונעם פֿענצטער"
 
-#: ctk/deprecated/ctkcolorseldialog.c:143
+#: ctk/ctkcolorseldialog.c:143
 msgid "OK Button"
 msgstr ""
 
-#: ctk/deprecated/ctkcolorseldialog.c:144
+#: ctk/ctkcolorseldialog.c:144
 #, fuzzy
 msgid "The OK button of the dialog."
 msgstr "די קנעפּלעך װאָס װײַזן זיך אין דעם דיִאַלאָג־פֿענצטער"
 
-#: ctk/deprecated/ctkcolorseldialog.c:150
+#: ctk/ctkcolorseldialog.c:150
 #, fuzzy
 msgid "Cancel Button"
 msgstr "אָנזאָג קנעפּלעך"
 
-#: ctk/deprecated/ctkcolorseldialog.c:151
+#: ctk/ctkcolorseldialog.c:151
 #, fuzzy
 msgid "The cancel button of the dialog."
 msgstr "די קנעפּלעך װאָס װײַזן זיך אין דעם דיִאַלאָג־פֿענצטער"
 
-#: ctk/deprecated/ctkcolorseldialog.c:157
+#: ctk/ctkcolorseldialog.c:157
 #, fuzzy
 msgid "Help Button"
 msgstr "אָנזאָג קנעפּלעך"
 
-#: ctk/deprecated/ctkcolorseldialog.c:158
+#: ctk/ctkcolorseldialog.c:158
 #, fuzzy
 msgid "The help button of the dialog."
 msgstr "די קנעפּלעך װאָס װײַזן זיך אין דעם דיִאַלאָג־פֿענצטער"

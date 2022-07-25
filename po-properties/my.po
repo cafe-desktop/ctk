@@ -569,35 +569,35 @@ msgstr "လက်ရှိ အယ်ဖါ"
 msgid "The current RGBA color"
 msgstr "လက်ရှိ အရောင်"
 
-#: ctk/deprecated/ctkcolorseldialog.c:136
+#: ctk/ctkcolorseldialog.c:136
 msgid "Color Selection"
 msgstr "အရောက် ရွေးချယ်ခြင်း"
 
-#: ctk/deprecated/ctkcolorseldialog.c:137
+#: ctk/ctkcolorseldialog.c:137
 msgid "The color selection embedded in the dialog."
 msgstr "အညွှန်းစာမျက်နှာမှာ အရောင် ရွေးချယ်မှု ထည့်မြုပ်ထားတယ်။"
 
-#: ctk/deprecated/ctkcolorseldialog.c:143
+#: ctk/ctkcolorseldialog.c:143
 msgid "OK Button"
 msgstr "ကောင်းပြီ ခလုတ်"
 
-#: ctk/deprecated/ctkcolorseldialog.c:144
+#: ctk/ctkcolorseldialog.c:144
 msgid "The OK button of the dialog."
 msgstr "အညွှန်းစာမျက်နှာရဲ့ ကောင်းပြီ ခလုတ်"
 
-#: ctk/deprecated/ctkcolorseldialog.c:150
+#: ctk/ctkcolorseldialog.c:150
 msgid "Cancel Button"
 msgstr "ရပ်ဆိုင်းမှု ခလုတ်"
 
-#: ctk/deprecated/ctkcolorseldialog.c:151
+#: ctk/ctkcolorseldialog.c:151
 msgid "The cancel button of the dialog."
 msgstr "အညွှန်း စာမျက်နှာရဲ့ ရပ်ဆိုင်းမှု ခလုတ်"
 
-#: ctk/deprecated/ctkcolorseldialog.c:157
+#: ctk/ctkcolorseldialog.c:157
 msgid "Help Button"
 msgstr "အကူအညီ ခလုတ်"
 
-#: ctk/deprecated/ctkcolorseldialog.c:158
+#: ctk/ctkcolorseldialog.c:158
 msgid "The help button of the dialog."
 msgstr "အညွှန်းစာမျက်နှာရဲ့ အကူအညီ ခလုတ်"
 
