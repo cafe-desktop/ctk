@@ -419,6 +419,7 @@ ctk_private_h_sources =		\
 	ctkcolorpickershellprivate.h	\
 	ctkcolorplaneprivate.h	\
 	ctkcolorscaleprivate.h	\
+	ctkcolorsel.h		\
 	ctkcolorchooserprivate.h	\
 	ctkcomboboxprivate.h	\
 	ctkcomposetable.h	\
@@ -704,6 +705,7 @@ ctk_base_c_sources = 		\
 	ctkcolorpickershell.c	\
 	ctkcolorplane.c		\
 	ctkcolorscale.c		\
+	ctkcolorsel.c		\
 	ctkcolorswatch.c	\
 	ctkcolorutils.c		\
 	ctkcombobox.c		\
