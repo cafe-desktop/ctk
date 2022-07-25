@@ -520,43 +520,43 @@ msgstr "బాణపు స్కేలింగ్"
 msgid "Amount of space used up by arrow"
 msgstr "బాణము ద్వారా వినియోగించబడిన ఖాళీమొత్తం"
 
-#: ctk/deprecated/ctkcolorsel.c:325
+#: ctk/ctkcolorsel.c:325
 msgid "Has Opacity Control"
 msgstr "అపారదర్శక నియంత్రణను కలిగిఉన్నది"
 
-#: ctk/deprecated/ctkcolorsel.c:326
+#: ctk/ctkcolorsel.c:326
 msgid "Whether the color selector should allow setting opacity"
 msgstr "రంగులను ఎంచుకొనేది అమరిక అపారదర్శకతను అనుమతించాలా"
 
-#: ctk/deprecated/ctkcolorsel.c:332
+#: ctk/ctkcolorsel.c:332
 msgid "Has palette"
 msgstr "వర్ణపలకమును కలిగిఉన్నది"
 
-#: ctk/deprecated/ctkcolorsel.c:333
+#: ctk/ctkcolorsel.c:333
 msgid "Whether a palette should be used"
 msgstr "ఒక వర్ణపలకమును తప్పక ఉపయోగించవలెనా"
 
-#: ctk/deprecated/ctkcolorsel.c:347 ctk/ctkcolorbutton.c:201
+#: ctk/ctkcolorsel.c:347 ctk/ctkcolorbutton.c:201
 msgid "Current Color"
 msgstr "ప్రస్తుత రంగు"
 
-#: ctk/deprecated/ctkcolorsel.c:348
+#: ctk/ctkcolorsel.c:348
 msgid "The current color"
 msgstr "ప్రస్తుత రంగు"
 
-#: ctk/deprecated/ctkcolorsel.c:354 ctk/ctkcolorbutton.c:217
+#: ctk/ctkcolorsel.c:354 ctk/ctkcolorbutton.c:217
 msgid "Current Alpha"
 msgstr "ప్రస్తుత ఆల్ఫా"
 
-#: ctk/deprecated/ctkcolorsel.c:355
+#: ctk/ctkcolorsel.c:355
 msgid "The current opacity value (0 fully transparent, 65535 fully opaque)"
 msgstr "ఎన్నుకొన్న అపారదర్శక విలువ(0 పూర్తి పారదర్శకత, 65535 పూర్తి అపారదర్శకత)"
 
-#: ctk/deprecated/ctkcolorsel.c:369
+#: ctk/ctkcolorsel.c:369
 msgid "Current RGBA"
 msgstr "ప్రస్తుత RGBA"
 
-#: ctk/deprecated/ctkcolorsel.c:370
+#: ctk/ctkcolorsel.c:370
 msgid "The current RGBA color"
 msgstr "ప్రస్తుత ఆ RGBA రంగు"
 

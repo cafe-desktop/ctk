@@ -1123,7 +1123,7 @@ msgctxt "Action description"
 msgid "Toggles the switch"
 msgstr "સ્વીચ ટોગલ કરે છે"
 
-#: ctk/deprecated/ctkcolorsel.c:425
+#: ctk/ctkcolorsel.c:425
 msgid ""
 "Select the color you want from the outer ring. Select the darkness or "
 "lightness of that color using the inner triangle."
@@ -1131,73 +1131,73 @@ msgstr ""
 "તમારે જે રંગ પસંદ કરવો હોય તે બહારની રીંગમાંથી પસંદ કરો.અંદરના ત્રિકોણનો ઉપયોગ કરીને "
 "રંગનું ઘાટાપણું અને ઝાંખાપણું પસંદ કરો."
 
-#: ctk/deprecated/ctkcolorsel.c:451
+#: ctk/ctkcolorsel.c:451
 msgid ""
 "Click the eyedropper, then click a color anywhere on your screen to select "
 "that color."
 msgstr "આઈડ્રોપર પર ક્લિક કરો, પછી રંગ પસંદ કરવા સ્ક્રીન પર ગમે ત્યાં એ રંગ પર ક્લિક કરો."
 
-#: ctk/deprecated/ctkcolorsel.c:461
+#: ctk/ctkcolorsel.c:461
 msgid "_Hue:"
 msgstr "વર્ણ (_H):"
 
-#: ctk/deprecated/ctkcolorsel.c:462
+#: ctk/ctkcolorsel.c:462
 msgid "Position on the color wheel."
 msgstr "રંગચક્ર પર સ્થાન."
 
-#: ctk/deprecated/ctkcolorsel.c:464
+#: ctk/ctkcolorsel.c:464
 msgid "S_aturation:"
 msgstr "સંતૃપ્ત (_a):"
 
-#: ctk/deprecated/ctkcolorsel.c:465
+#: ctk/ctkcolorsel.c:465
 msgid "Intensity of the color."
 msgstr "રંગની પારદર્શકતા."
 
-#: ctk/deprecated/ctkcolorsel.c:466
+#: ctk/ctkcolorsel.c:466
 msgid "_Value:"
 msgstr "કિંમત (_V):"
 
-#: ctk/deprecated/ctkcolorsel.c:467
+#: ctk/ctkcolorsel.c:467
 msgid "Brightness of the color."
 msgstr "રંગની તીવ્રતા."
 
-#: ctk/deprecated/ctkcolorsel.c:468
+#: ctk/ctkcolorsel.c:468
 msgid "_Red:"
 msgstr "લાલ (_R):"
 
-#: ctk/deprecated/ctkcolorsel.c:469
+#: ctk/ctkcolorsel.c:469
 msgid "Amount of red light in the color."
 msgstr "રંગમાં લાલરંગનું પ્રમાણ."
 
-#: ctk/deprecated/ctkcolorsel.c:470
+#: ctk/ctkcolorsel.c:470
 msgid "_Green:"
 msgstr "લીલું (_G):"
 
-#: ctk/deprecated/ctkcolorsel.c:471
+#: ctk/ctkcolorsel.c:471
 msgid "Amount of green light in the color."
 msgstr "રંગમાં લીલા રંગનું પ્રમાણ."
 
-#: ctk/deprecated/ctkcolorsel.c:472
+#: ctk/ctkcolorsel.c:472
 msgid "_Blue:"
 msgstr "વાદળી (_B):"
 
-#: ctk/deprecated/ctkcolorsel.c:473
+#: ctk/ctkcolorsel.c:473
 msgid "Amount of blue light in the color."
 msgstr "રંગમાં વાદળીરંગનું પ્રમાણ."
 
-#: ctk/deprecated/ctkcolorsel.c:476
+#: ctk/ctkcolorsel.c:476
 msgid "Op_acity:"
 msgstr "અપારદર્શકતા (_a):"
 
-#: ctk/deprecated/ctkcolorsel.c:484 ctk/deprecated/ctkcolorsel.c:494
+#: ctk/ctkcolorsel.c:484 ctk/ctkcolorsel.c:494
 msgid "Transparency of the color."
 msgstr "રંગની પારદર્શકતા."
 
-#: ctk/deprecated/ctkcolorsel.c:501
+#: ctk/ctkcolorsel.c:501
 msgid "Color _name:"
 msgstr "રંગનું નામ (_n):"
 
-#: ctk/deprecated/ctkcolorsel.c:516
+#: ctk/ctkcolorsel.c:516
 #, fuzzy
 msgid ""
 "You can enter an HTML-style hexadecimal color value, or simply a color name "
@@ -1206,15 +1206,15 @@ msgstr ""
 "તમે HTML-શૈલીની ષષ્ટાંક રંગ કિંમત આપી શકો છો, અથવા તો માત્ર રંગનુ નામ જેમકે 'નારંગી' આપી "
 "શકો છો."
 
-#: ctk/deprecated/ctkcolorsel.c:548
+#: ctk/ctkcolorsel.c:548
 msgid "_Palette:"
 msgstr "પેલેટ (_P):"
 
-#: ctk/deprecated/ctkcolorsel.c:578
+#: ctk/ctkcolorsel.c:578
 msgid "Color Wheel"
 msgstr "રંગ પૈંડુ"
 
-#: ctk/deprecated/ctkcolorsel.c:1072
+#: ctk/ctkcolorsel.c:1072
 #, fuzzy
 msgid ""
 "The previously-selected color, for comparison to the color you’re selecting "
@@ -1225,7 +1225,7 @@ msgstr ""
 "પેલેટમાં આ રંગને પ્રવેશ કરાવી શકો છો અથવા તો આ રંગને બીજા રંગના નમૂનાઓની બાજુમાં ઘસેડીને આ "
 "રંગને તમે વર્તમાન રંગ તરીકે પસંદ કરી શકો છો."
 
-#: ctk/deprecated/ctkcolorsel.c:1078
+#: ctk/ctkcolorsel.c:1078
 #, fuzzy
 msgid ""
 "The color you’ve chosen. You can drag this color to a palette entry to save "
@@ -1234,23 +1234,23 @@ msgstr ""
 "તમે જે રંગને પસંદ કર્યો છે તે. રંગનો ભવિષ્યમાં ફરીથી ઉપયોગ કરવા માટે તમે તેને પેલેટ વિગતમાં "
 "સંગ્રહી શકો છો."
 
-#: ctk/deprecated/ctkcolorsel.c:1084
+#: ctk/ctkcolorsel.c:1084
 #, fuzzy
 msgid ""
 "The previously-selected color, for comparison to the color you’re selecting "
 "now."
 msgstr "પહેલાં પસંદ થયેલ રંગ, રંગની સરખામણી માટે તમે હવે પસંદ કરી રહ્યા છે."
 
-#: ctk/deprecated/ctkcolorsel.c:1088
+#: ctk/ctkcolorsel.c:1088
 #, fuzzy
 msgid "The color you’ve chosen."
 msgstr "રંગ જે તમે પસંદ કરેલ છે."
 
-#: ctk/deprecated/ctkcolorsel.c:1458
+#: ctk/ctkcolorsel.c:1458
 msgid "_Save color here"
 msgstr "રંગનો અહીં સંગ્રહ કરો (_S)"
 
-#: ctk/deprecated/ctkcolorsel.c:1664
+#: ctk/ctkcolorsel.c:1664
 #, fuzzy
 msgid ""
 "Click this palette entry to make it the current color. To change this entry, "

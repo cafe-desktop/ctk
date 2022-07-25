@@ -1104,80 +1104,80 @@ msgctxt "Action description"
 msgid "Toggles the switch"
 msgstr ""
 
-#: ctk/deprecated/ctkcolorsel.c:425
+#: ctk/ctkcolorsel.c:425
 msgid ""
 "Select the color you want from the outer ring. Select the darkness or "
 "lightness of that color using the inner triangle."
 msgstr ""
 "ជ្រើស​ពណ៌​ដែល​អ្នក​ចង់​បាន​ពី​រង្វង់​ខាងក្រៅ ។ ជ្រើស​ភាព​ងងឹត ឬ​ភាព​ភ្លឺ​របស់​ពណ៌​ដែល​ប្រើ​​ត្រីកោណ​ខាងក្នុង ។"
 
-#: ctk/deprecated/ctkcolorsel.c:451
+#: ctk/ctkcolorsel.c:451
 msgid ""
 "Click the eyedropper, then click a color anywhere on your screen to select "
 "that color."
 msgstr "ចុច​លើ​ឧបករណ៍​ចាក់​ពណ៌ បន្ទាប់​​មក​ចុច​លើ​ពណ៌​នៅ​លើ​អេក្រង់​របស់​អ្នក​ដើម្បី​ជ្រើស​ពណ៌​នោះ ។"
 
-#: ctk/deprecated/ctkcolorsel.c:461
+#: ctk/ctkcolorsel.c:461
 msgid "_Hue:"
 msgstr "ពណ៌លាំៗ ៖"
 
-#: ctk/deprecated/ctkcolorsel.c:462
+#: ctk/ctkcolorsel.c:462
 msgid "Position on the color wheel."
 msgstr "ទីតាំង​នៅ​ពេល​​បង្វិល​ពណ៌ ។"
 
-#: ctk/deprecated/ctkcolorsel.c:464
+#: ctk/ctkcolorsel.c:464
 msgid "S_aturation:"
 msgstr "តិត្ថិភាព ៖"
 
-#: ctk/deprecated/ctkcolorsel.c:465
+#: ctk/ctkcolorsel.c:465
 msgid "Intensity of the color."
 msgstr "អាំងតង់ស៊ីតេ​របស់​ពណ៌ ។"
 
-#: ctk/deprecated/ctkcolorsel.c:466
+#: ctk/ctkcolorsel.c:466
 msgid "_Value:"
 msgstr "តម្លៃ ៖"
 
-#: ctk/deprecated/ctkcolorsel.c:467
+#: ctk/ctkcolorsel.c:467
 msgid "Brightness of the color."
 msgstr "ពន្លឺ​របស់​ពណ៌ ។"
 
-#: ctk/deprecated/ctkcolorsel.c:468
+#: ctk/ctkcolorsel.c:468
 msgid "_Red:"
 msgstr "ក្រហម ៖"
 
-#: ctk/deprecated/ctkcolorsel.c:469
+#: ctk/ctkcolorsel.c:469
 msgid "Amount of red light in the color."
 msgstr "ចំនួន​ពណ៌​ក្រហម​ស្រាល ។"
 
-#: ctk/deprecated/ctkcolorsel.c:470
+#: ctk/ctkcolorsel.c:470
 msgid "_Green:"
 msgstr "បៃតង ៖"
 
-#: ctk/deprecated/ctkcolorsel.c:471
+#: ctk/ctkcolorsel.c:471
 msgid "Amount of green light in the color."
 msgstr "ចំនួន​ពណ៌​បៃតង​ស្រាល ។"
 
-#: ctk/deprecated/ctkcolorsel.c:472
+#: ctk/ctkcolorsel.c:472
 msgid "_Blue:"
 msgstr "ខៀវ ៖"
 
-#: ctk/deprecated/ctkcolorsel.c:473
+#: ctk/ctkcolorsel.c:473
 msgid "Amount of blue light in the color."
 msgstr "ចំនួន​ពណ៌​ខៀវ​ស្រាល ។"
 
-#: ctk/deprecated/ctkcolorsel.c:476
+#: ctk/ctkcolorsel.c:476
 msgid "Op_acity:"
 msgstr "ភាព​ស្រអាប់ ៖"
 
-#: ctk/deprecated/ctkcolorsel.c:484 ctk/deprecated/ctkcolorsel.c:494
+#: ctk/ctkcolorsel.c:484 ctk/ctkcolorsel.c:494
 msgid "Transparency of the color."
 msgstr "ភាព​ថ្លា​របស់​ពណ៌ ។"
 
-#: ctk/deprecated/ctkcolorsel.c:501
+#: ctk/ctkcolorsel.c:501
 msgid "Color _name:"
 msgstr "ឈ្មោះ​ពណ៌ ៖"
 
-#: ctk/deprecated/ctkcolorsel.c:516
+#: ctk/ctkcolorsel.c:516
 #, fuzzy
 msgid ""
 "You can enter an HTML-style hexadecimal color value, or simply a color name "
@@ -1186,15 +1186,15 @@ msgstr ""
 "អ្នក​អាច​បញ្ចូល​តម្លៃ​ពណ៌​ចំនួន​គោល​ដប់​ប្រាំ​មួយ​រចនាប័ទ្ម HTML ឬ​ឈ្មោះ​ពណ៌​សាមញ្ញ​ដូច​ជា 'ពណ៌​ទឹកក្រូច' នៅ​ក្នុង​ធាតុ​"
 "នេះ ។"
 
-#: ctk/deprecated/ctkcolorsel.c:548
+#: ctk/ctkcolorsel.c:548
 msgid "_Palette:"
 msgstr "ក្ដារ​ពណ៌ ៖"
 
-#: ctk/deprecated/ctkcolorsel.c:578
+#: ctk/ctkcolorsel.c:578
 msgid "Color Wheel"
 msgstr "កង់​បង្វិល​​ពណ៌"
 
-#: ctk/deprecated/ctkcolorsel.c:1072
+#: ctk/ctkcolorsel.c:1072
 #, fuzzy
 msgid ""
 "The previously-selected color, for comparison to the color you’re selecting "
@@ -1204,7 +1204,7 @@ msgstr ""
 "ពណ៌​ដែល​បាន​ជ្រើស​ពី​មុន សម្រាប់​ការ​ប្រៀបធៀប​ពណ៌​ដែល​អ្នក​ជ្រើស​​​​ឥឡូវ​នេះ ។ អ្នក​អាច​អូស​ពណ៌​នេះ​ទៅកាន់​ធាតុ​ក្ដារ​"
 "ពណ៌ ឬ​​ជ្រើស​ពណ៌​នេះ​ជា​ពណ៌​បច្ចុប្បន្ន ដោយ​អូស​​វា​ទៅកាន់​ពណ៌​ផ្សេង​ទៀត​នៅ​ជិត​នោះ ។"
 
-#: ctk/deprecated/ctkcolorsel.c:1078
+#: ctk/ctkcolorsel.c:1078
 #, fuzzy
 msgid ""
 "The color you’ve chosen. You can drag this color to a palette entry to save "
@@ -1213,23 +1213,23 @@ msgstr ""
 "ពណ៌​ដែល​អ្នក​បាន​ជ្រើស ។ អ្នក​អាច​អូស​ពណ៌​នេះ​ទៅកាន់​ធាតុ​ក្ដារ​ពណ៌ ដើម្បី​រក្សាទុក​វា​សម្រាប់​ប្រើ​នៅ​ពេល​អនាគត "
 "។"
 
-#: ctk/deprecated/ctkcolorsel.c:1084
+#: ctk/ctkcolorsel.c:1084
 #, fuzzy
 msgid ""
 "The previously-selected color, for comparison to the color you’re selecting "
 "now."
 msgstr "ពណ៌​ដែល​បាន​ជ្រើស​មុន សម្រាប់​ការ​ប្រៀបធៀប​ពណ៌​ដែល​អ្នក​ជ្រើស​​ឥឡូវ​នេះ ។"
 
-#: ctk/deprecated/ctkcolorsel.c:1088
+#: ctk/ctkcolorsel.c:1088
 #, fuzzy
 msgid "The color you’ve chosen."
 msgstr "ពណ៌​ដែល​អ្នក​បាន​ជ្រើស ។"
 
-#: ctk/deprecated/ctkcolorsel.c:1458
+#: ctk/ctkcolorsel.c:1458
 msgid "_Save color here"
 msgstr "រក្សាទុក​ពណ៌​នៅ​ទីនេះ"
 
-#: ctk/deprecated/ctkcolorsel.c:1664
+#: ctk/ctkcolorsel.c:1664
 #, fuzzy
 msgid ""
 "Click this palette entry to make it the current color. To change this entry, "

@@ -570,50 +570,50 @@ msgstr "Peilgröte"
 msgid "Amount of space used up by arrow"
 msgstr "Der vom Pfeil belegte Platz"
 
-#: ctk/deprecated/ctkcolorsel.c:325
+#: ctk/ctkcolorsel.c:325
 #, fuzzy
 msgid "Has Opacity Control"
 msgstr "Hat Deckkraftregler"
 
-#: ctk/deprecated/ctkcolorsel.c:326
+#: ctk/ctkcolorsel.c:326
 #, fuzzy
 msgid "Whether the color selector should allow setting opacity"
 msgstr "Soll der Farbwähler eine Regelung der Deckkraft zulassen?"
 
-#: ctk/deprecated/ctkcolorsel.c:332
+#: ctk/ctkcolorsel.c:332
 msgid "Has palette"
 msgstr "Het Paledde"
 
-#: ctk/deprecated/ctkcolorsel.c:333
+#: ctk/ctkcolorsel.c:333
 #, fuzzy
 msgid "Whether a palette should be used"
 msgstr "Soll eine Palette verwendet werden?"
 
-#: ctk/deprecated/ctkcolorsel.c:347 ctk/ctkcolorbutton.c:201
+#: ctk/ctkcolorsel.c:347 ctk/ctkcolorbutton.c:201
 msgid "Current Color"
 msgstr "Aktuelle Klöör"
 
-#: ctk/deprecated/ctkcolorsel.c:348
+#: ctk/ctkcolorsel.c:348
 msgid "The current color"
 msgstr "De aktuelle Klöör"
 
-#: ctk/deprecated/ctkcolorsel.c:354 ctk/ctkcolorbutton.c:217
+#: ctk/ctkcolorsel.c:354 ctk/ctkcolorbutton.c:217
 msgid "Current Alpha"
 msgstr "Aktuelles Alpha"
 
-#: ctk/deprecated/ctkcolorsel.c:355
+#: ctk/ctkcolorsel.c:355
 #, fuzzy
 msgid "The current opacity value (0 fully transparent, 65535 fully opaque)"
 msgstr ""
 "Die aktuelle Deckkraft (0 ist völlig transparent, 65535 völlig "
 "undurchsichtig)"
 
-#: ctk/deprecated/ctkcolorsel.c:369
+#: ctk/ctkcolorsel.c:369
 #, fuzzy
 msgid "Current RGBA"
 msgstr "Aktuelles Alpha"
 
-#: ctk/deprecated/ctkcolorsel.c:370
+#: ctk/ctkcolorsel.c:370
 #, fuzzy
 msgid "The current RGBA color"
 msgstr "De aktuelle Klöör"

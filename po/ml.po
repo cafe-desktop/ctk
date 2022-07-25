@@ -1097,7 +1097,7 @@ msgctxt "Action description"
 msgid "Toggles the switch"
 msgstr "സ്വിച്ച് മാറ്റുന്നു"
 
-#: ctk/deprecated/ctkcolorsel.c:425
+#: ctk/ctkcolorsel.c:425
 msgid ""
 "Select the color you want from the outer ring. Select the darkness or "
 "lightness of that color using the inner triangle."
@@ -1105,7 +1105,7 @@ msgstr ""
 "നിങ്ങള്‍ക്കാവശ്യമുള്ള നിറം പുറത്തുള്ള വട്ടത്തില്‍ നിന്നും തെരഞ്ഞെടുക്കുക. ഉള്ളിലുള്ള ത്രികോണത്തില്‍ "
 "നിന്നും ഈ നിറത്തിനുള്ള ഇരുളിമ അല്ലെങ്കില്‍ തെളിച്ചം തെരഞ്ഞെടുക്കുക."
 
-#: ctk/deprecated/ctkcolorsel.c:451
+#: ctk/ctkcolorsel.c:451
 msgid ""
 "Click the eyedropper, then click a color anywhere on your screen to select "
 "that color."
@@ -1113,67 +1113,67 @@ msgstr ""
 "ഐഡ്രോപ്പറില്‍ ക്ലിക്ക് ചെയ്യുക. ശേഷം നിങ്ങളുടെ സ്ക്രീനില്‍ എവിടെയെങ്കിലും ക്ലിക്ക് ചെയ്തു് ഈ നിറം "
 "തെരഞ്ഞെടുക്കുക."
 
-#: ctk/deprecated/ctkcolorsel.c:461
+#: ctk/ctkcolorsel.c:461
 msgid "_Hue:"
 msgstr "_ഹ്യൂ:"
 
-#: ctk/deprecated/ctkcolorsel.c:462
+#: ctk/ctkcolorsel.c:462
 msgid "Position on the color wheel."
 msgstr "കളര്‍ വീലിലുള്ള സ്ഥാനം."
 
-#: ctk/deprecated/ctkcolorsel.c:464
+#: ctk/ctkcolorsel.c:464
 msgid "S_aturation:"
 msgstr "_സാച്ചുറേഷന്‍:"
 
-#: ctk/deprecated/ctkcolorsel.c:465
+#: ctk/ctkcolorsel.c:465
 msgid "Intensity of the color."
 msgstr "നിറത്തിന്റെ കാഠിന്യത."
 
-#: ctk/deprecated/ctkcolorsel.c:466
+#: ctk/ctkcolorsel.c:466
 msgid "_Value:"
 msgstr "_മൂല്യം:"
 
-#: ctk/deprecated/ctkcolorsel.c:467
+#: ctk/ctkcolorsel.c:467
 msgid "Brightness of the color."
 msgstr "നിറത്തിന്റെ തെളിച്ചം."
 
-#: ctk/deprecated/ctkcolorsel.c:468
+#: ctk/ctkcolorsel.c:468
 msgid "_Red:"
 msgstr "_ചുവപ്പു്:"
 
-#: ctk/deprecated/ctkcolorsel.c:469
+#: ctk/ctkcolorsel.c:469
 msgid "Amount of red light in the color."
 msgstr "നിറത്തില്‍ ചുവപ്പു് നിറത്തിന്റെ അളവ്."
 
-#: ctk/deprecated/ctkcolorsel.c:470
+#: ctk/ctkcolorsel.c:470
 msgid "_Green:"
 msgstr "_പച്ച:"
 
-#: ctk/deprecated/ctkcolorsel.c:471
+#: ctk/ctkcolorsel.c:471
 msgid "Amount of green light in the color."
 msgstr "നിറത്തില്‍ പച്ച നിറത്തിന്റെ അളവ്."
 
-#: ctk/deprecated/ctkcolorsel.c:472
+#: ctk/ctkcolorsel.c:472
 msgid "_Blue:"
 msgstr "_നീല:"
 
-#: ctk/deprecated/ctkcolorsel.c:473
+#: ctk/ctkcolorsel.c:473
 msgid "Amount of blue light in the color."
 msgstr "നിറത്തില്‍ നീല നിറത്തിന്റെ അളവ്."
 
-#: ctk/deprecated/ctkcolorsel.c:476
+#: ctk/ctkcolorsel.c:476
 msgid "Op_acity:"
 msgstr "Op_acity:"
 
-#: ctk/deprecated/ctkcolorsel.c:484 ctk/deprecated/ctkcolorsel.c:494
+#: ctk/ctkcolorsel.c:484 ctk/ctkcolorsel.c:494
 msgid "Transparency of the color."
 msgstr "നിറത്തിന്റെ ട്രാന്‍സ്പെറന്‍സി"
 
-#: ctk/deprecated/ctkcolorsel.c:501
+#: ctk/ctkcolorsel.c:501
 msgid "Color _name:"
 msgstr "_ഏതു് നിറം:"
 
-#: ctk/deprecated/ctkcolorsel.c:516
+#: ctk/ctkcolorsel.c:516
 #, fuzzy
 msgid ""
 "You can enter an HTML-style hexadecimal color value, or simply a color name "
@@ -1182,15 +1182,15 @@ msgstr ""
 "നിങ്ങള്‍ക്കു് ഒരു HTML-രീതിയിലുള്ള ഹെക്സാഡെസിമല്‍ നിറമൂല്ല്യം നല്‍കാം. അല്ലെങ്കില്‍, വെറുതെ "
 "നിറത്തിന്റെ പേരു് നല്‍കുക, ഉദാ. 'orange'."
 
-#: ctk/deprecated/ctkcolorsel.c:548
+#: ctk/ctkcolorsel.c:548
 msgid "_Palette:"
 msgstr "_നിറക്കൂട്ട്:"
 
-#: ctk/deprecated/ctkcolorsel.c:578
+#: ctk/ctkcolorsel.c:578
 msgid "Color Wheel"
 msgstr "നിറങ്ങളുടെ ചക്രം"
 
-#: ctk/deprecated/ctkcolorsel.c:1072
+#: ctk/ctkcolorsel.c:1072
 #, fuzzy
 msgid ""
 "The previously-selected color, for comparison to the color you’re selecting "
@@ -1201,7 +1201,7 @@ msgstr ""
 "സഹായിക്കുന്നു. നിങ്ങള്‍ക്കു് ഇതു് താലത്തിലേക്കു് വലിച്ചിടുവാന്‍ സാധിക്കുന്നു അല്ലെങ്കില്‍, ഇതു് മറ്റൊരു "
 "സ്വാച്ചിലേക്കു് വലിച്ചിട്ടു് നിലവില്‍ ഉപയോഗിക്കുന്ന നിറമായി സജ്ജമാക്കുക."
 
-#: ctk/deprecated/ctkcolorsel.c:1078
+#: ctk/ctkcolorsel.c:1078
 #, fuzzy
 msgid ""
 "The color you’ve chosen. You can drag this color to a palette entry to save "
@@ -1210,7 +1210,7 @@ msgstr ""
 "നിങ്ങള്‍ തെരഞ്ഞെടുത്ത നിറം. ഭാവിയില്‍ വീണ്ടും ഉപയോഗിക്കുന്നതിനായി നിങ്ങള്‍ക്കു് ഈ നിറം "
 "താലത്തിലേക്കു് വലിച്ചിടുവാന്‍ സാധ്യമാകുന്നു."
 
-#: ctk/deprecated/ctkcolorsel.c:1084
+#: ctk/ctkcolorsel.c:1084
 #, fuzzy
 msgid ""
 "The previously-selected color, for comparison to the color you’re selecting "
@@ -1218,16 +1218,16 @@ msgid ""
 msgstr ""
 "നിങ്ങള്‍ മുമ്പു് തെരഞ്ഞെടുത്ത നിറം, ഇതു് നിങ്ങള്‍ മുമ്പു് തെരഞ്ഞെടുത്ത നിറവുമായി താരതമ്യപ്പെടുത്തുവാനാണു്."
 
-#: ctk/deprecated/ctkcolorsel.c:1088
+#: ctk/ctkcolorsel.c:1088
 #, fuzzy
 msgid "The color you’ve chosen."
 msgstr "നിങ്ങള്‍ തെരഞ്ഞെടുത്ത നിറം"
 
-#: ctk/deprecated/ctkcolorsel.c:1458
+#: ctk/ctkcolorsel.c:1458
 msgid "_Save color here"
 msgstr "നിറം ഇവിടെ _സൂക്ഷിക്കുക"
 
-#: ctk/deprecated/ctkcolorsel.c:1664
+#: ctk/ctkcolorsel.c:1664
 #, fuzzy
 msgid ""
 "Click this palette entry to make it the current color. To change this entry, "

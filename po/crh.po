@@ -1164,7 +1164,7 @@ msgid "Toggles the switch"
 msgstr ""
 
 # ctk/ctkcolorsel.c:1759
-#: ctk/deprecated/ctkcolorsel.c:425
+#: ctk/ctkcolorsel.c:425
 msgid ""
 "Select the color you want from the outer ring. Select the darkness or "
 "lightness of that color using the inner triangle."
@@ -1173,7 +1173,7 @@ msgstr ""
 "tüsniñ qoyulığını ya da açıqlığını saylañız."
 
 # ctk/ctkcolorsel.c:1787
-#: ctk/deprecated/ctkcolorsel.c:451
+#: ctk/ctkcolorsel.c:451
 msgid ""
 "Click the eyedropper, then click a color anywhere on your screen to select "
 "that color."
@@ -1183,83 +1183,83 @@ msgstr ""
 
 # tüklü
 # ctk/ctkcolorsel.c:1796
-#: ctk/deprecated/ctkcolorsel.c:461
+#: ctk/ctkcolorsel.c:461
 msgid "_Hue:"
 msgstr "_Renk:"
 
 # ctk/ctkcolorsel.c:1797
-#: ctk/deprecated/ctkcolorsel.c:462
+#: ctk/ctkcolorsel.c:462
 msgid "Position on the color wheel."
 msgstr "Tüs köpçegi üstündeki mevam."
 
 # ctk/ctkcolorsel.c:1798
-#: ctk/deprecated/ctkcolorsel.c:464
+#: ctk/ctkcolorsel.c:464
 msgid "S_aturation:"
 msgstr "_Toyğunlıq:"
 
 # ctk/ctkcolorsel.c:1818
 # tüklü
-#: ctk/deprecated/ctkcolorsel.c:465
+#: ctk/ctkcolorsel.c:465
 msgid "Intensity of the color."
 msgstr "Tüsniñ yoğunlığı."
 
 # ctk/ctkcolorsel.c:1800
-#: ctk/deprecated/ctkcolorsel.c:466
+#: ctk/ctkcolorsel.c:466
 msgid "_Value:"
 msgstr "_Deger:"
 
 # ctk/ctkcolorsel.c:1801
-#: ctk/deprecated/ctkcolorsel.c:467
+#: ctk/ctkcolorsel.c:467
 msgid "Brightness of the color."
 msgstr "Tüsniñ parlaqlığı."
 
 # ctk/ctkcolorsel.c:1802
-#: ctk/deprecated/ctkcolorsel.c:468
+#: ctk/ctkcolorsel.c:468
 msgid "_Red:"
 msgstr "_Qırmızı:"
 
 # ctk/ctkcolorsel.c:1803
-#: ctk/deprecated/ctkcolorsel.c:469
+#: ctk/ctkcolorsel.c:469
 msgid "Amount of red light in the color."
 msgstr "Tüsteki qırmızı ışıq miqdarı."
 
 # ctk/ctkcolorsel.c:1804
-#: ctk/deprecated/ctkcolorsel.c:470
+#: ctk/ctkcolorsel.c:470
 msgid "_Green:"
 msgstr "_Yeşil:"
 
 # ctk/ctkcolorsel.c:1805
-#: ctk/deprecated/ctkcolorsel.c:471
+#: ctk/ctkcolorsel.c:471
 msgid "Amount of green light in the color."
 msgstr "Tüsteki yeşil ışıq miqdarı."
 
 # ctk/ctkcolorsel.c:1806
-#: ctk/deprecated/ctkcolorsel.c:472
+#: ctk/ctkcolorsel.c:472
 msgid "_Blue:"
 msgstr "_Zenger:"
 
 # ctk/ctkcolorsel.c:1807
-#: ctk/deprecated/ctkcolorsel.c:473
+#: ctk/ctkcolorsel.c:473
 msgid "Amount of blue light in the color."
 msgstr "Tüsteki kök ışıq miqdarı."
 
 # ctk/ctkcolorsel.c:1810
-#: ctk/deprecated/ctkcolorsel.c:476
+#: ctk/ctkcolorsel.c:476
 msgid "Op_acity:"
 msgstr "_Tonuqlıq:"
 
 # ctk/ctkcolorsel.c:1818
-#: ctk/deprecated/ctkcolorsel.c:484 ctk/deprecated/ctkcolorsel.c:494
+#: ctk/ctkcolorsel.c:484 ctk/ctkcolorsel.c:494
 msgid "Transparency of the color."
 msgstr "Tüsniñ şeffaflığı."
 
 # ctk/ctkcolorsel.c:1833
-#: ctk/deprecated/ctkcolorsel.c:501
+#: ctk/ctkcolorsel.c:501
 msgid "Color _name:"
 msgstr "Tüs _ismi:"
 
 # ctk/ctkcolorsel.c:1845
-#: ctk/deprecated/ctkcolorsel.c:516
+#: ctk/ctkcolorsel.c:516
 #, fuzzy
 msgid ""
 "You can enter an HTML-style hexadecimal color value, or simply a color name "
@@ -1269,17 +1269,17 @@ msgstr ""
 "ismi kirsete bilirsiñiz."
 
 # ctk/ctkcolorsel.c:1864
-#: ctk/deprecated/ctkcolorsel.c:548
+#: ctk/ctkcolorsel.c:548
 msgid "_Palette:"
 msgstr "_Palet:"
 
 # ctk/ctkinputdialog.c:474
-#: ctk/deprecated/ctkcolorsel.c:578
+#: ctk/ctkcolorsel.c:578
 msgid "Color Wheel"
 msgstr "Tüs Çemberi"
 
 # ctk/ctkcolorsel.c:575
-#: ctk/deprecated/ctkcolorsel.c:1072
+#: ctk/ctkcolorsel.c:1072
 #, fuzzy
 msgid ""
 "The previously-selected color, for comparison to the color you’re selecting "
@@ -1291,7 +1291,7 @@ msgstr ""
 "mostrasına süyreklep onı ağımdaki tüs olaraq saylay bilirsiñiz."
 
 # ctk/ctkcolorsel.c:580
-#: ctk/deprecated/ctkcolorsel.c:1078
+#: ctk/ctkcolorsel.c:1078
 #, fuzzy
 msgid ""
 "The color you’ve chosen. You can drag this color to a palette entry to save "
@@ -1300,24 +1300,24 @@ msgstr ""
 "Saylağan olğanıñız tüs. Bu tüsni kelecek qullanım içün saqlamaq üzre bir "
 "palet kirildisine süyrekley bilirsiñiz."
 
-#: ctk/deprecated/ctkcolorsel.c:1084
+#: ctk/ctkcolorsel.c:1084
 msgid ""
 "The previously-selected color, for comparison to the color you’re selecting "
 "now."
 msgstr ""
 
-#: ctk/deprecated/ctkcolorsel.c:1088
+#: ctk/ctkcolorsel.c:1088
 #, fuzzy
 msgid "The color you’ve chosen."
 msgstr "Saylağanıñız tüs."
 
 # ctk/ctkcolorsel.c:884
-#: ctk/deprecated/ctkcolorsel.c:1458
+#: ctk/ctkcolorsel.c:1458
 msgid "_Save color here"
 msgstr "_Tüsni mında saqla"
 
 # ctk/ctkcolorsel.c:1052
-#: ctk/deprecated/ctkcolorsel.c:1664
+#: ctk/ctkcolorsel.c:1664
 #, fuzzy
 msgid ""
 "Click this palette entry to make it the current color. To change this entry, "

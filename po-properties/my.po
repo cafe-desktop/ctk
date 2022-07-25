@@ -527,44 +527,44 @@ msgstr "မြှား စကေးချခြင်း"
 msgid "Amount of space used up by arrow"
 msgstr "မြှားက နေရာယူတဲ့ အတိုင်းအတာ"
 
-#: ctk/deprecated/ctkcolorsel.c:325
+#: ctk/ctkcolorsel.c:325
 msgid "Has Opacity Control"
 msgstr "အလင်းပိတ်မှု အထိန်းရှိတယ်"
 
-#: ctk/deprecated/ctkcolorsel.c:326
+#: ctk/ctkcolorsel.c:326
 msgid "Whether the color selector should allow setting opacity"
 msgstr "အရောင် ရွေးကိရိယာက အပြင်အဆင် အလင်းပိတ်မှုကို ခွင့်ပြုသင့်၊ မသင့်"
 
-#: ctk/deprecated/ctkcolorsel.c:332
+#: ctk/ctkcolorsel.c:332
 msgid "Has palette"
 msgstr "အရောင်စပ် ဆေးခွက် ရှိတယ်"
 
-#: ctk/deprecated/ctkcolorsel.c:333
+#: ctk/ctkcolorsel.c:333
 msgid "Whether a palette should be used"
 msgstr "အရောင်စပ် ဆေးခွက် တခုကို သုံးသင့်၊ မသင့်"
 
-#: ctk/deprecated/ctkcolorsel.c:347 ctk/ctkcolorbutton.c:201
+#: ctk/ctkcolorsel.c:347 ctk/ctkcolorbutton.c:201
 msgid "Current Color"
 msgstr "လက်ရှိ အရောင်"
 
-#: ctk/deprecated/ctkcolorsel.c:348
+#: ctk/ctkcolorsel.c:348
 msgid "The current color"
 msgstr "လက်ရှိ အရောင်"
 
-#: ctk/deprecated/ctkcolorsel.c:354 ctk/ctkcolorbutton.c:217
+#: ctk/ctkcolorsel.c:354 ctk/ctkcolorbutton.c:217
 msgid "Current Alpha"
 msgstr "လက်ရှိ အယ်ဖါ"
 
-#: ctk/deprecated/ctkcolorsel.c:355
+#: ctk/ctkcolorsel.c:355
 msgid "The current opacity value (0 fully transparent, 65535 fully opaque)"
 msgstr "လက်ရှိ အလင်းပိတ်မှု တန်ဖိုး (၀ လုံး၀ ဖေါက်ထွင်းနိုင်မှု၊ ၆၅၅၃၅ လုံး၀ အလင်းပိတ်မှု)"
 
-#: ctk/deprecated/ctkcolorsel.c:369
+#: ctk/ctkcolorsel.c:369
 #, fuzzy
 msgid "Current RGBA"
 msgstr "လက်ရှိ အယ်ဖါ"
 
-#: ctk/deprecated/ctkcolorsel.c:370
+#: ctk/ctkcolorsel.c:370
 #, fuzzy
 msgid "The current RGBA color"
 msgstr "လက်ရှိ အရောင်"
