@@ -80,6 +80,7 @@
 #include <ctk/ctkcolorchooserdialog.h>
 #include <ctk/ctkcolorchooserwidget.h>
 #include <ctk/ctkcolorsel.h>
+#include <ctk/ctkcolorseldialog.h>
 #include <ctk/ctkcolorutils.h>
 #include <ctk/ctkcombobox.h>
 #include <ctk/ctkcomboboxtext.h>
@@ -267,7 +268,6 @@
 
 #ifndef CTK_DISABLE_DEPRECATED
 #include <ctk/deprecated/ctkarrow.h>
-#include <ctk/deprecated/ctkcolorseldialog.h>
 #include <ctk/deprecated/ctkfontsel.h>
 #include <ctk/deprecated/ctkgradient.h>
 #include <ctk/deprecated/ctkhandlebox.h>

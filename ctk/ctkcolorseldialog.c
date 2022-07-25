@@ -23,8 +23,6 @@
  */
 #include "config.h"
 
-#define CDK_DISABLE_DEPRECATION_WARNINGS
-
 #include <string.h>
 #include <glib.h>
 #include "ctkcolorseldialog.h"
@@ -37,7 +35,7 @@
 
 /**
  * SECTION:ctkcolorseldlg
- * @Short_description: Deprecated dialog box for selecting a color
+ * @Short_description: Dialog box for selecting a color
  * @Title: CtkColorSelectionDialog
  *
  * The #CtkColorSelectionDialog provides a standard dialog which

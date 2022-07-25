@@ -68,11 +68,11 @@ struct _CtkColorSelectionDialogClass
 
 
 /* ColorSelectionDialog */
-CDK_DEPRECATED_IN_3_4
+CDK_AVAILABLE_IN_ALL
 GType      ctk_color_selection_dialog_get_type            (void) G_GNUC_CONST;
-CDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_dialog_new)
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_color_selection_dialog_new                 (const gchar *title);
-CDK_DEPRECATED_IN_3_4_FOR(CtkColorChooser)
+CDK_AVAILABLE_IN_ALL
 CtkWidget* ctk_color_selection_dialog_get_color_selection (CtkColorSelectionDialog *colorsel);
 
 
