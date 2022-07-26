@@ -111,11 +111,11 @@ CtkWidget* ctk_message_dialog_new_with_markup   (CtkWindow      *parent,
                                                  const gchar    *message_format,
                                                  ...) G_GNUC_PRINTF (5, 6);
 
-CDK_DEPRECATED_IN_3_12
+CDK_AVAILABLE_IN_ALL
 void       ctk_message_dialog_set_image    (CtkMessageDialog *dialog,
 					    CtkWidget        *image);
 
-CDK_DEPRECATED_IN_3_12
+CDK_AVAILABLE_IN_ALL
 CtkWidget * ctk_message_dialog_get_image   (CtkMessageDialog *dialog);
 
 CDK_AVAILABLE_IN_ALL

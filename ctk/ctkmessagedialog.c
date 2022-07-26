@@ -269,7 +269,6 @@ ctk_message_dialog_class_init (CtkMessageDialogClass *class)
    * The image for this dialog.
    *
    * Since: 2.10
-   * Deprecated: 3.12: Use #CtkDialog to create dialogs with images
    */
   g_object_class_install_property (gobject_class,
                                    PROP_IMAGE,
@@ -277,7 +276,7 @@ ctk_message_dialog_class_init (CtkMessageDialogClass *class)
                                                         P_("Image"),
                                                         P_("The image"),
                                                         CTK_TYPE_WIDGET,
-                                                        CTK_PARAM_READWRITE|G_PARAM_DEPRECATED));
+                                                        CTK_PARAM_READWRITE));
 
   /**
    * CtkMessageDialog:message-area:
@@ -524,9 +523,7 @@ ctk_message_dialog_set_property (GObject      *object,
         }
       break;
     case PROP_IMAGE:
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       ctk_message_dialog_set_image (dialog, g_value_get_object (value));
-G_GNUC_END_IGNORE_DEPRECATIONS
       break;
 
     default:
@@ -719,7 +716,6 @@ ctk_message_dialog_new_with_markup (CtkWindow     *parent,
  * Sets the dialog’s image to @image.
  *
  * Since: 2.10
- * Deprecated: 3.12: Use #CtkDialog to create dialogs with images
  **/
 void
 ctk_message_dialog_set_image (CtkMessageDialog *dialog,
@@ -762,7 +758,6 @@ ctk_message_dialog_set_image (CtkMessageDialog *dialog,
  * Returns: (transfer none): the dialog’s image
  *
  * Since: 2.14
- * Deprecated: 3.12: Use #CtkDialog for dialogs with images
  **/
 CtkWidget *
 ctk_message_dialog_get_image (CtkMessageDialog *dialog)
@@ -933,7 +928,6 @@ ctk_message_dialog_add_buttons (CtkMessageDialog* message_dialog,
 {
   CtkDialog* dialog = CTK_DIALOG (message_dialog);
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   switch (buttons)
     {
     case CTK_BUTTONS_NONE:
@@ -974,7 +968,6 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       g_warning ("Unknown CtkButtonsType");
       break;
     } 
-G_GNUC_END_IGNORE_DEPRECATIONS
 
   g_object_notify (G_OBJECT (message_dialog), "buttons");
 }
