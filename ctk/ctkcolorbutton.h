@@ -83,28 +83,28 @@ void         ctk_color_button_set_title     (CtkColorButton *button,
 CDK_AVAILABLE_IN_ALL
 const gchar *ctk_color_button_get_title     (CtkColorButton *button);
 
-CDK_DEPRECATED_IN_3_4_FOR(ctk_color_button_new_with_rgba)
+CDK_AVAILABLE_IN_ALL
 CtkWidget *ctk_color_button_new_with_color (const CdkColor *color);
-CDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_set_rgba)
+CDK_AVAILABLE_IN_ALL
 void       ctk_color_button_set_color      (CtkColorButton *button,
                                             const CdkColor *color);
-CDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_get_rgba)
+CDK_AVAILABLE_IN_ALL
 void       ctk_color_button_get_color      (CtkColorButton *button,
                                             CdkColor       *color);
-CDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_set_rgba)
+CDK_AVAILABLE_IN_ALL
 void       ctk_color_button_set_alpha      (CtkColorButton *button,
                                             guint16         alpha);
-CDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_get_rgba)
+CDK_AVAILABLE_IN_ALL
 guint16    ctk_color_button_get_alpha      (CtkColorButton *button);
-CDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_set_use_alpha)
+CDK_AVAILABLE_IN_ALL
 void         ctk_color_button_set_use_alpha (CtkColorButton *button,
                                              gboolean        use_alpha);
-CDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_get_use_alpha)
+CDK_AVAILABLE_IN_ALL
 gboolean     ctk_color_button_get_use_alpha (CtkColorButton *button);
-CDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_set_rgba)
+CDK_AVAILABLE_IN_ALL
 void         ctk_color_button_set_rgba      (CtkColorButton *button,
                                              const CdkRGBA  *rgba);
-CDK_DEPRECATED_IN_3_4_FOR(ctk_color_chooser_get_rgba)
+CDK_AVAILABLE_IN_ALL
 void         ctk_color_button_get_rgba      (CtkColorButton *button,
                                              CdkRGBA        *rgba);
 

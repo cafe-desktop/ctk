@@ -465,8 +465,6 @@ ctk_color_button_new (void)
  * Returns: a new color button
  *
  * Since: 2.4
- *
- * Deprecated: 3.4: Use ctk_color_button_new_with_rgba() instead.
  */
 CtkWidget *
 ctk_color_button_new_with_color (const CdkColor *color)
@@ -600,8 +598,6 @@ ctk_color_button_clicked (CtkButton *b)
  * Sets the current color to be @color.
  *
  * Since: 2.4
- *
- * Deprecated: Use ctk_color_chooser_set_rgba() instead.
  */
 void
 ctk_color_button_set_color (CtkColorButton *button,
@@ -631,8 +627,6 @@ ctk_color_button_set_color (CtkColorButton *button,
  * Sets the current opacity to be @alpha.
  *
  * Since: 2.4
- *
- * Deprecated: 3.4: Use ctk_color_chooser_set_rgba() instead.
  */
 void
 ctk_color_button_set_alpha (CtkColorButton *button,
@@ -658,8 +652,6 @@ ctk_color_button_set_alpha (CtkColorButton *button,
  * Sets @color to be the current color in the #CtkColorButton widget.
  *
  * Since: 2.4
- *
- * Deprecated: 3.4: Use ctk_color_chooser_get_rgba() instead.
  */
 void
 ctk_color_button_get_color (CtkColorButton *button,
@@ -683,8 +675,6 @@ ctk_color_button_get_color (CtkColorButton *button,
  * Returns: an integer between 0 and 65535
  *
  * Since: 2.4
- *
- * Deprecated: 3.4: Use ctk_color_chooser_get_rgba() instead.
  */
 guint16
 ctk_color_button_get_alpha (CtkColorButton *button)
@@ -702,8 +692,6 @@ ctk_color_button_get_alpha (CtkColorButton *button)
  * Sets the current color to be @rgba.
  *
  * Since: 3.0
- *
- * Deprecated: 3.4: Use ctk_color_chooser_set_rgba() instead.
  */
 void
 ctk_color_button_set_rgba (CtkColorButton *button,
@@ -730,8 +718,6 @@ ctk_color_button_set_rgba (CtkColorButton *button,
  * Sets @rgba to be the current color in the #CtkColorButton widget.
  *
  * Since: 3.0
- *
- * Deprecated: 3.4: Use ctk_color_chooser_get_rgba() instead.
  */
 void
 ctk_color_button_get_rgba (CtkColorButton *button,
@@ -769,8 +755,6 @@ set_use_alpha (CtkColorButton *button,
  * Sets whether or not the color button should use the alpha channel.
  *
  * Since: 2.4
- *
- * Deprecated: 3.4: Use ctk_color_chooser_set_use_alpha() instead.
  */
 void
 ctk_color_button_set_use_alpha (CtkColorButton *button,
@@ -789,8 +773,6 @@ ctk_color_button_set_use_alpha (CtkColorButton *button,
  * Returns: %TRUE if the color sample uses alpha channel, %FALSE if not
  *
  * Since: 2.4
- *
- * Deprecated: 3.4: Use ctk_color_chooser_get_use_alpha() instead.
  */
 gboolean
 ctk_color_button_get_use_alpha (CtkColorButton *button)
@@ -879,9 +861,7 @@ ctk_color_button_set_property (GObject      *object,
       }
       break;
     case PROP_ALPHA:
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       ctk_color_button_set_alpha (button, g_value_get_uint (value));
-G_GNUC_END_IGNORE_DEPRECATIONS
       break;
     case PROP_RGBA:
       ctk_color_chooser_set_rgba (CTK_COLOR_CHOOSER (button), g_value_get_boxed (value));
@@ -979,10 +959,8 @@ typedef void (* set_rgba) (CtkColorChooser *, const CdkRGBA *);
 static void
 ctk_color_button_iface_init (CtkColorChooserInterface *iface)
 {
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   iface->get_rgba = (get_rgba)ctk_color_button_get_rgba;
   iface->set_rgba = (set_rgba)ctk_color_button_set_rgba;
-G_GNUC_END_IGNORE_DEPRECATIONS
   iface->add_palette = ctk_color_button_add_palette;
 }
 
