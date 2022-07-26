@@ -794,9 +794,7 @@ paper_size_changed (CtkComboBox            *combo_box,
           /* And show the custom paper dialog */
           custom_paper_dialog = _ctk_custom_paper_unix_dialog_new (CTK_WINDOW (dialog), NULL);
           g_signal_connect (custom_paper_dialog, "response", G_CALLBACK (custom_paper_dialog_response_cb), dialog);
-          G_GNUC_BEGIN_IGNORE_DEPRECATIONS
           ctk_window_present (CTK_WINDOW (custom_paper_dialog));
-          G_GNUC_END_IGNORE_DEPRECATIONS
 
           return;
         }

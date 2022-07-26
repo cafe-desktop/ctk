@@ -585,9 +585,7 @@ ctk_color_button_clicked (CtkButton *b)
 
   ctk_color_chooser_set_rgba (CTK_COLOR_CHOOSER (priv->cs_dialog), &priv->rgba);
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   ctk_window_present (CTK_WINDOW (priv->cs_dialog));
-  G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 /**

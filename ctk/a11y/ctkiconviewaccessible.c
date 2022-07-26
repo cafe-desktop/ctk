@@ -627,9 +627,7 @@ ctk_icon_view_item_accessible_grab_focus (AtkComponent *component)
   toplevel = ctk_widget_get_toplevel (CTK_WIDGET (item->widget));
   if (ctk_widget_is_toplevel (toplevel))
     {
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       ctk_window_present (CTK_WINDOW (toplevel));
-      G_GNUC_END_IGNORE_DEPRECATIONS
     }
 
   return TRUE;

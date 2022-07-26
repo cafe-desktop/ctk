@@ -1007,9 +1007,7 @@ ctk_about_dialog_activate_link (CtkAboutDialog *about,
       g_signal_connect (dialog, "response",
                         G_CALLBACK (ctk_widget_destroy), NULL);
 
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       ctk_window_present (CTK_WINDOW (dialog));
-      G_GNUC_END_IGNORE_DEPRECATIONS
     }
 
   return TRUE;
@@ -2442,9 +2440,7 @@ ctk_show_about_dialog (CtkWindow   *parent,
 
     }
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   ctk_window_present (CTK_WINDOW (dialog));
-  G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 /**

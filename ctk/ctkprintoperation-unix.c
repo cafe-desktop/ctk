@@ -736,9 +736,7 @@ ctk_print_operation_unix_run_dialog_async (CtkPrintOperation          *op,
       g_signal_connect (pd, "response", 
 			G_CALLBACK (handle_print_response), rdata);
 
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       ctk_window_present (CTK_WINDOW (pd));
-      G_GNUC_END_IGNORE_DEPRECATIONS
     }
   else
     {
@@ -1041,9 +1039,7 @@ ctk_print_run_page_setup_dialog_async (CtkWindow            *parent,
   g_signal_connect (dialog, "response",
 		    G_CALLBACK (handle_page_setup_response), rdata);
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   ctk_window_present (CTK_WINDOW (dialog));
-  G_GNUC_END_IGNORE_DEPRECATIONS
  }
 
 struct _PrinterFinder 

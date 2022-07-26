@@ -999,9 +999,7 @@ preview_file (const char *filename,
       g_object_unref (widget);
     }
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   ctk_window_present (CTK_WINDOW (window));
-  G_GNUC_END_IGNORE_DEPRECATIONS
 
   ctk_main ();
 

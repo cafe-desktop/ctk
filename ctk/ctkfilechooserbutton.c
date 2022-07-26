@@ -2743,9 +2743,7 @@ open_dialog (CtkFileChooserButton *button)
   ctk_widget_set_sensitive (priv->combo_box, FALSE);
   if (priv->dialog)
     {
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       ctk_window_present (CTK_WINDOW (priv->dialog));
-      G_GNUC_END_IGNORE_DEPRECATIONS
     }
   else
     ctk_native_dialog_show (CTK_NATIVE_DIALOG (priv->native));

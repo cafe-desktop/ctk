@@ -12797,9 +12797,8 @@ ctk_window_set_debugging (gboolean enable,
 
   if (enable)
     {
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       ctk_window_present (CTK_WINDOW (inspector_window));
-      G_GNUC_END_IGNORE_DEPRECATIONS
+
       if (dialog)
         ctk_widget_show (dialog);
 

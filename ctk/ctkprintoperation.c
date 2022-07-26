@@ -2955,9 +2955,7 @@ handle_progress_response (CtkWidget *dialog,
 static gboolean
 show_progress_timeout (PrintPagesData *data)
 {
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   ctk_window_present (CTK_WINDOW (data->progress));
-  G_GNUC_END_IGNORE_DEPRECATIONS
 
   data->op->priv->show_progress_timeout_id = 0;
 

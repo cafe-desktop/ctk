@@ -651,9 +651,7 @@ ctk_widget_accessible_grab_focus (AtkComponent *component)
       else
 #endif
         {
-          G_GNUC_BEGIN_IGNORE_DEPRECATIONS
           ctk_window_present (CTK_WINDOW (toplevel));
-          G_GNUC_END_IGNORE_DEPRECATIONS
         }
     }
 

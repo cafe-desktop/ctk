@@ -657,9 +657,7 @@ show_dialog (CtkFileChooserNative *self)
                     G_CALLBACK (dialog_update_preview_cb),
                     self);
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   ctk_window_present (CTK_WINDOW (self->dialog));
-  G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void

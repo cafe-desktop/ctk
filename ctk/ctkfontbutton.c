@@ -1152,9 +1152,7 @@ ctk_font_button_clicked (CtkButton *button)
       ctk_font_chooser_set_font_desc (font_dialog, font_button->priv->font_desc);
     } 
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   ctk_window_present (CTK_WINDOW (font_button->priv->font_dialog));
-  G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 
