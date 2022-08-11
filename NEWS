@@ -1,3 +1,72 @@
+Overview of Changes in CTK+ 3.25.3
+===================================
+
+* ctk3-sections: add 'ctk_dialog_add_button_with_icon_name'
+
+* ctkdialog:
+ - move function 'ctk_dialog_add_button_with_icon_name'
+
+* update AUTHORS
+
+* Fix ctk website links
+
+* README: remove info about mailing lists
+
+* Fix [-Wmissing-field-initializers] warnings
+
+* testctk: Fix CtkActionEntry with label 'entry'
+
+* adapt debian patches from gtk+3.0 (3.24.24-4+deb11u1) and (3.24.24-4+deb11u2)
+
+* ctkprintbackendcups: reduce the scope of some variables
+
+* ci: add aptitude
+
+* reftests,symbolic-icon-translucent-color: update icon
+
+* don't make deprecated:
+ - cdkcolor
+ - cdk_cairo_set_source_color
+ - cdk_display_get_pointer
+ - cdk_display_get_window_at_pointer
+ - cdk_display_keyboard_ungrab
+ - cdk_display_pointer_ungrab
+ - cdk_display_pointer_is_grabbed
+ - cdk_display_warp_pointer
+ - cdk_keyboard_grab
+ - cdk_keyboard_ungrab
+ - cdk_pointer_grab
+ - cdk_pointer_is_grabbed
+ - cdk_pointer_ungrab
+ - cdk_window_at_pointer
+ - cdk_window_get_pointer
+ - cdk_window_process_all_updates
+ - cdk_window_process_updates
+ - cdk_window_set_debug_updates
+ - ctkalignment
+ - ctkcolorbutton
+ - ctkcolorsel
+ - ctkcolorseldialog
+ - ctk_button_new_from_stock
+ - ctk_container_get_focus_chain
+ - ctk_container_set_focus_chain
+ - ctk_container_unset_focus_chain
+ - ctk_dialog_get_action_area
+ - ctk_menu_popup
+ - ctk_menu_popup_for_device
+ - ctk_message_dialog_get_image
+ - ctk_message_dialog_set_image
+ - ctk_style_context_get_background_color
+ - ctk_widget_override_background_color
+ - ctk_widget_override_color
+
+* Avoid deprecated in the inline comments if no deprecation guards were found around the declaration
+
+* avoid unneeded G_GNUC_BEGIN/END_IGNORE_DEPRECATIONS at some points
+
+* Update translations
+
+
 Overview of Changes in CTK+ 3.25.2
 ===================================
 
