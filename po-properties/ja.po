@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+-properties ctk-2-22\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-23 18:06+0100\n"
+"POT-Creation-Date: 2022-08-11 17:19+0200\n"
 "PO-Revision-Date: 2020-04-14 17:30+0900\n"
 "Last-Translator: sicklylife translation@sicklylife.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
@@ -236,8 +236,8 @@ msgid "A unique name for the action."
 msgstr "アクションに固有の名称です"
 
 #: ctk/ctkaction.c:252 ctk/ctkbutton.c:281 ctk/ctkexpander.c:308
-#: ctk/ctkframe.c:231 ctk/ctklabel.c:805 ctk/ctkmenuitem.c:789
-#: ctk/ctktoolbutton.c:204 ctk/ctktoolitemgroup.c:1639
+#: ctk/ctkframe.c:231 ctk/ctklabel.c:805 ctk/ctkmenuitem.c:788
+#: ctk/ctktoolbutton.c:204 ctk/ctktoolitemgroup.c:1637
 msgid "Label"
 msgstr "ラベル"
 
@@ -416,84 +416,6 @@ msgstr "アクションアピアランスを使用"
 msgid "Whether to use the related actions appearance properties"
 msgstr "関連するアクションアピアランスの属性を使うかどうか"
 
-#: ctk/ctkalignment.c:151
-msgid "Horizontal alignment"
-msgstr "水平位置"
-
-#: ctk/ctkalignment.c:152 ctk/ctkbutton.c:328
-msgid ""
-"Horizontal position of child in available space. 0.0 is left aligned, 1.0 is "
-"right aligned"
-msgstr ""
-"利用可能なスペースでの子ウィジェットの水平位置 (0.0 で左寄せ、1.0 で右寄せ)"
-
-#: ctk/ctkalignment.c:170
-msgid "Vertical alignment"
-msgstr "垂直位置"
-
-#: ctk/ctkalignment.c:171 ctk/ctkbutton.c:347
-msgid ""
-"Vertical position of child in available space. 0.0 is top aligned, 1.0 is "
-"bottom aligned"
-msgstr ""
-"利用可能なスペースでの子ウィジェットの垂直位置 (0.0 で上寄せ、1.0 で下寄せ)"
-
-#: ctk/ctkalignment.c:188
-msgid "Horizontal scale"
-msgstr "水平スケール"
-
-#: ctk/ctkalignment.c:189
-msgid ""
-"If available horizontal space is bigger than needed for the child, how much "
-"of it to use for the child. 0.0 means none, 1.0 means all"
-msgstr ""
-"利用可能な水平方向のスペースが子ウィジェットが必要とする幅より大きい場合、子"
-"ウィジェットがどれくらい利用するか (0.0 でゼロ、1.0 で全部)"
-
-#: ctk/ctkalignment.c:206
-msgid "Vertical scale"
-msgstr "垂直スケール"
-
-#: ctk/ctkalignment.c:207
-msgid ""
-"If available vertical space is bigger than needed for the child, how much of "
-"it to use for the child. 0.0 means none, 1.0 means all"
-msgstr ""
-"利用可能な垂直方向のスペースが子ウィジェットが必要とする高さより大きい場合、"
-"子ウィジェットがどれくらい利用するか (0.0 でゼロ、1.0 で全部)"
-
-#: ctk/ctkalignment.c:226
-msgid "Top Padding"
-msgstr "上部パディング"
-
-#: ctk/ctkalignment.c:227
-msgid "The padding to insert at the top of the widget."
-msgstr "子ウィジェットの上部に挿入するパディング"
-
-#: ctk/ctkalignment.c:245
-msgid "Bottom Padding"
-msgstr "下部パディング"
-
-#: ctk/ctkalignment.c:246
-msgid "The padding to insert at the bottom of the widget."
-msgstr "子ウィジェットの下部に挿入するパディング"
-
-#: ctk/ctkalignment.c:264
-msgid "Left Padding"
-msgstr "左側パディング"
-
-#: ctk/ctkalignment.c:265
-msgid "The padding to insert at the left of the widget."
-msgstr "子ウィジェットの左側に挿入するパディング"
-
-#: ctk/ctkalignment.c:283
-msgid "Right Padding"
-msgstr "右側パディング"
-
-#: ctk/ctkalignment.c:284
-msgid "The padding to insert at the right of the widget."
-msgstr "ウィジェットの右側に挿入するパディングです"
-
 #: ctk/deprecated/ctkarrow.c:121
 msgid "Arrow direction"
 msgstr "矢印の方向"
@@ -511,7 +433,7 @@ msgid "Appearance of the shadow surrounding the arrow"
 msgstr "矢印を囲む影の外観です"
 
 #: ctk/deprecated/ctkarrow.c:138 ctk/ctkcombobox.c:1227 ctk/ctkmenu.c:1006
-#: ctk/ctkmenuitem.c:898
+#: ctk/ctkmenuitem.c:897
 msgid "Arrow Scaling"
 msgstr "矢印の大きさ"
 
@@ -519,75 +441,75 @@ msgstr "矢印の大きさ"
 msgid "Amount of space used up by arrow"
 msgstr "矢印が占有する大きさです"
 
-#: ctk/ctkcolorsel.c:325
+#: ctk/ctkcolorsel.c:323
 msgid "Has Opacity Control"
 msgstr "不透明コントロールあり"
 
-#: ctk/ctkcolorsel.c:326
+#: ctk/ctkcolorsel.c:324
 msgid "Whether the color selector should allow setting opacity"
 msgstr "色セレクターで不透明の属性を設定できるかどうか"
 
-#: ctk/ctkcolorsel.c:332
+#: ctk/ctkcolorsel.c:330
 msgid "Has palette"
 msgstr "パレットあり"
 
-#: ctk/ctkcolorsel.c:333
+#: ctk/ctkcolorsel.c:331
 msgid "Whether a palette should be used"
 msgstr "パレットを使用するかどうか"
 
-#: ctk/ctkcolorsel.c:347 ctk/ctkcolorbutton.c:201
+#: ctk/ctkcolorsel.c:343 ctk/ctkcolorbutton.c:198
 msgid "Current Color"
 msgstr "現在の色"
 
-#: ctk/ctkcolorsel.c:348
+#: ctk/ctkcolorsel.c:344
 msgid "The current color"
 msgstr "現在使用する色"
 
-#: ctk/ctkcolorsel.c:354 ctk/ctkcolorbutton.c:217
+#: ctk/ctkcolorsel.c:350 ctk/ctkcolorbutton.c:213
 msgid "Current Alpha"
 msgstr "現在のアルファ値"
 
-#: ctk/ctkcolorsel.c:355
+#: ctk/ctkcolorsel.c:351
 msgid "The current opacity value (0 fully transparent, 65535 fully opaque)"
 msgstr "現在使用する色の透明度 (0 :完全透明、65535: 完全不透明)"
 
-#: ctk/ctkcolorsel.c:369
+#: ctk/ctkcolorsel.c:365
 msgid "Current RGBA"
 msgstr "現在の RGBA 値"
 
-#: ctk/ctkcolorsel.c:370
+#: ctk/ctkcolorsel.c:366
 msgid "The current RGBA color"
 msgstr "現在使用する RGBA 色"
 
-#: ctk/ctkcolorseldialog.c:136
+#: ctk/ctkcolorseldialog.c:134
 msgid "Color Selection"
 msgstr "色の選択"
 
-#: ctk/ctkcolorseldialog.c:137
+#: ctk/ctkcolorseldialog.c:135
 msgid "The color selection embedded in the dialog."
 msgstr "色を選択するダイアログです"
 
-#: ctk/ctkcolorseldialog.c:143
+#: ctk/ctkcolorseldialog.c:141
 msgid "OK Button"
 msgstr "OK ボタン"
 
-#: ctk/ctkcolorseldialog.c:144
+#: ctk/ctkcolorseldialog.c:142
 msgid "The OK button of the dialog."
 msgstr "ダイアログに表示する OK ボタンです"
 
-#: ctk/ctkcolorseldialog.c:150
+#: ctk/ctkcolorseldialog.c:148
 msgid "Cancel Button"
 msgstr "キャンセルボタン"
 
-#: ctk/ctkcolorseldialog.c:151
+#: ctk/ctkcolorseldialog.c:149
 msgid "The cancel button of the dialog."
 msgstr "ダイアログに表示するキャンセルボタンです"
 
-#: ctk/ctkcolorseldialog.c:157
+#: ctk/ctkcolorseldialog.c:155
 msgid "Help Button"
 msgstr "ヘルプボタン"
 
-#: ctk/ctkcolorseldialog.c:158
+#: ctk/ctkcolorseldialog.c:156
 msgid "The help button of the dialog."
 msgstr "ダイアログに表示するヘルプボタンです"
 
@@ -778,7 +700,7 @@ msgid "The amount of space between two consecutive columns"
 msgstr "隣り合うセルの間に挿入する空白 (列間) の大きさです"
 
 #: ctk/deprecated/ctktable.c:221 ctk/ctkbox.c:285 ctk/ctkflowbox.c:3849
-#: ctk/ctkstack.c:459 ctk/ctktoolbar.c:597 ctk/ctktoolitemgroup.c:1688
+#: ctk/ctkstack.c:459 ctk/ctktoolbar.c:597 ctk/ctktoolitemgroup.c:1686
 msgid "Homogeneous"
 msgstr "均等に配置する"
 
@@ -1052,7 +974,7 @@ msgstr ""
 
 #: ctk/ctkactionbar.c:345 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
 #: ctk/ctknotebook.c:840 ctk/ctkpaned.c:368 ctk/ctkpopover.c:1767
-#: ctk/ctkpopovermenu.c:384 ctk/ctkstack.c:537 ctk/ctktoolitemgroup.c:1716
+#: ctk/ctkpopovermenu.c:384 ctk/ctkstack.c:537 ctk/ctktoolitemgroup.c:1714
 msgid "Position"
 msgstr "位置"
 
@@ -1110,6 +1032,84 @@ msgstr "ページサイズ"
 msgid "The page size of the adjustment"
 msgstr "アジャストメントのページサイズです"
 
+#: ctk/ctkalignment.c:145
+msgid "Horizontal alignment"
+msgstr "水平位置"
+
+#: ctk/ctkalignment.c:146 ctk/ctkbutton.c:328
+msgid ""
+"Horizontal position of child in available space. 0.0 is left aligned, 1.0 is "
+"right aligned"
+msgstr ""
+"利用可能なスペースでの子ウィジェットの水平位置 (0.0 で左寄せ、1.0 で右寄せ)"
+
+#: ctk/ctkalignment.c:162
+msgid "Vertical alignment"
+msgstr "垂直位置"
+
+#: ctk/ctkalignment.c:163 ctk/ctkbutton.c:347
+msgid ""
+"Vertical position of child in available space. 0.0 is top aligned, 1.0 is "
+"bottom aligned"
+msgstr ""
+"利用可能なスペースでの子ウィジェットの垂直位置 (0.0 で上寄せ、1.0 で下寄せ)"
+
+#: ctk/ctkalignment.c:178
+msgid "Horizontal scale"
+msgstr "水平スケール"
+
+#: ctk/ctkalignment.c:179
+msgid ""
+"If available horizontal space is bigger than needed for the child, how much "
+"of it to use for the child. 0.0 means none, 1.0 means all"
+msgstr ""
+"利用可能な水平方向のスペースが子ウィジェットが必要とする幅より大きい場合、子"
+"ウィジェットがどれくらい利用するか (0.0 でゼロ、1.0 で全部)"
+
+#: ctk/ctkalignment.c:194
+msgid "Vertical scale"
+msgstr "垂直スケール"
+
+#: ctk/ctkalignment.c:195
+msgid ""
+"If available vertical space is bigger than needed for the child, how much of "
+"it to use for the child. 0.0 means none, 1.0 means all"
+msgstr ""
+"利用可能な垂直方向のスペースが子ウィジェットが必要とする高さより大きい場合、"
+"子ウィジェットがどれくらい利用するか (0.0 でゼロ、1.0 で全部)"
+
+#: ctk/ctkalignment.c:212
+msgid "Top Padding"
+msgstr "上部パディング"
+
+#: ctk/ctkalignment.c:213
+msgid "The padding to insert at the top of the widget."
+msgstr "子ウィジェットの上部に挿入するパディング"
+
+#: ctk/ctkalignment.c:229
+msgid "Bottom Padding"
+msgstr "下部パディング"
+
+#: ctk/ctkalignment.c:230
+msgid "The padding to insert at the bottom of the widget."
+msgstr "子ウィジェットの下部に挿入するパディング"
+
+#: ctk/ctkalignment.c:246
+msgid "Left Padding"
+msgstr "左側パディング"
+
+#: ctk/ctkalignment.c:247
+msgid "The padding to insert at the left of the widget."
+msgstr "子ウィジェットの左側に挿入するパディング"
+
+#: ctk/ctkalignment.c:263
+msgid "Right Padding"
+msgstr "右側パディング"
+
+#: ctk/ctkalignment.c:264
+msgid "The padding to insert at the right of the widget."
+msgstr "ウィジェットの右側に挿入するパディングです"
+
 #: ctk/ctkappchooserbutton.c:618
 msgid "Include an 'Other…' item"
 msgstr ""
@@ -1130,12 +1130,12 @@ msgstr "メニュー画像の表示"
 msgid "Whether the combobox should show the default application on top"
 msgstr "ウィジェットはデフォルトのウィジェットかどうか"
 
-#: ctk/ctkappchooserbutton.c:647 ctk/ctkappchooserdialog.c:688
+#: ctk/ctkappchooserbutton.c:647 ctk/ctkappchooserdialog.c:687
 #, fuzzy
 msgid "Heading"
 msgstr "年/月を表示する"
 
-#: ctk/ctkappchooserbutton.c:648 ctk/ctkappchooserdialog.c:689
+#: ctk/ctkappchooserbutton.c:648 ctk/ctkappchooserdialog.c:688
 #, fuzzy
 msgid "The text to show at the top of the dialog"
 msgstr "子ウィジェットの上部に挿入するパディング"
@@ -1150,12 +1150,12 @@ msgstr "フォントスタイル"
 msgid "The content type used by the open with object"
 msgstr "エントリの内容"
 
-#: ctk/ctkappchooserdialog.c:674
+#: ctk/ctkappchooserdialog.c:673
 #, fuzzy
 msgid "GFile"
 msgstr "フィルター"
 
-#: ctk/ctkappchooserdialog.c:675
+#: ctk/ctkappchooserdialog.c:674
 #, fuzzy
 msgid "The GFile used by the app chooser dialog"
 msgstr "フォント選択ダイアログのタイトル"
@@ -1215,50 +1215,50 @@ msgstr ""
 msgid "The default text appearing when there are no applications"
 msgstr ""
 
-#: ctk/ctkapplication.c:845
+#: ctk/ctkapplication.c:843
 msgid "Register session"
 msgstr ""
 
-#: ctk/ctkapplication.c:846
+#: ctk/ctkapplication.c:844
 #, fuzzy
 msgid "Register with the session manager"
 msgstr "デバイスマネージャーでのデバイスの役割"
 
-#: ctk/ctkapplication.c:863
+#: ctk/ctkapplication.c:861
 msgid "Screensaver Active"
 msgstr ""
 
-#: ctk/ctkapplication.c:864
+#: ctk/ctkapplication.c:862
 #, fuzzy
 msgid "Whether the screensaver is active"
 msgstr "スピナーを有効にするかどうか"
 
-#: ctk/ctkapplication.c:870
+#: ctk/ctkapplication.c:868
 #, fuzzy
 msgid "Application menu"
 msgstr "アプリケーション表示可否"
 
-#: ctk/ctkapplication.c:871
+#: ctk/ctkapplication.c:869
 #, fuzzy
 msgid "The GMenuModel for the application menu"
 msgstr "アイコン表示に使用するモデルです"
 
-#: ctk/ctkapplication.c:877
+#: ctk/ctkapplication.c:875
 #, fuzzy
 msgid "Menubar"
 msgstr "メニュー"
 
-#: ctk/ctkapplication.c:878
+#: ctk/ctkapplication.c:876
 #, fuzzy
 msgid "The GMenuModel for the menubar"
 msgstr "ツリービューで使用するモデルです"
 
-#: ctk/ctkapplication.c:884
+#: ctk/ctkapplication.c:882
 #, fuzzy
 msgid "Active window"
 msgstr "有効"
 
-#: ctk/ctkapplication.c:885
+#: ctk/ctkapplication.c:883
 #, fuzzy
 msgid "The window which most recently had focus"
 msgstr "現在アクティブな項目"
@@ -1470,7 +1470,7 @@ msgid ""
 msgstr ""
 
 #: ctk/ctkbox.c:318 ctk/ctkcellareabox.c:330 ctk/ctktoolbar.c:589
-#: ctk/ctktoolitemgroup.c:1695 ctk/ctktoolpalette.c:1027
+#: ctk/ctktoolitemgroup.c:1693 ctk/ctktoolpalette.c:1027
 #: ctk/ctktreeviewcolumn.c:323
 msgid "Expand"
 msgstr "展張"
@@ -1480,7 +1480,7 @@ msgid "Whether the child should receive extra space when the parent grows"
 msgstr ""
 "親ウィジェットが大きくなった際に子ウィジェットに追加のスペースが付くかどうか"
 
-#: ctk/ctkbox.c:335 ctk/ctktoolitemgroup.c:1702
+#: ctk/ctkbox.c:335 ctk/ctktoolitemgroup.c:1700
 msgid "Fill"
 msgstr "フィル"
 
@@ -1519,12 +1519,12 @@ msgstr ""
 "上の文字"
 
 #: ctk/ctkbutton.c:288 ctk/ctkexpander.c:316 ctk/ctklabel.c:826
-#: ctk/ctkmenuitem.c:803 ctk/ctktoolbutton.c:211
+#: ctk/ctkmenuitem.c:802 ctk/ctktoolbutton.c:211
 msgid "Use underline"
 msgstr "下線を使用する"
 
 #: ctk/ctkbutton.c:289 ctk/ctkexpander.c:317 ctk/ctklabel.c:827
-#: ctk/ctkmenuitem.c:804
+#: ctk/ctkmenuitem.c:803
 msgid ""
 "If set, an underline in the text indicates the next character should be used "
 "for the mnemonic accelerator key"
@@ -1976,35 +1976,35 @@ msgstr "セルの背景色の名前"
 msgid "Cell background color as a string"
 msgstr "セルの背景色の文字表現"
 
-#: ctk/ctkcellrenderer.c:409
+#: ctk/ctkcellrenderer.c:406
 msgid "Cell background color"
 msgstr "セルの背景色"
 
-#: ctk/ctkcellrenderer.c:410
+#: ctk/ctkcellrenderer.c:407
 msgid "Cell background color as a CdkColor"
 msgstr "セルの背景色を示す CdkColor 形式の文字列です"
 
-#: ctk/ctkcellrenderer.c:424
+#: ctk/ctkcellrenderer.c:421
 msgid "Cell background RGBA color"
 msgstr "セルの RGBA 背景色"
 
-#: ctk/ctkcellrenderer.c:425
+#: ctk/ctkcellrenderer.c:422
 msgid "Cell background color as a CdkRGBA"
 msgstr "セルの背景色を示す CdkRGBA 形式の文字列です"
 
-#: ctk/ctkcellrenderer.c:432
+#: ctk/ctkcellrenderer.c:429
 msgid "Editing"
 msgstr "編集できるかどうか"
 
-#: ctk/ctkcellrenderer.c:433
+#: ctk/ctkcellrenderer.c:430
 msgid "Whether the cell renderer is currently in editing mode"
 msgstr "現在セルレンダラーが編集モードになっているかどうか"
 
-#: ctk/ctkcellrenderer.c:441
+#: ctk/ctkcellrenderer.c:438
 msgid "Cell background set"
 msgstr "セルの背景色設定"
 
-#: ctk/ctkcellrenderer.c:442
+#: ctk/ctkcellrenderer.c:439
 #, fuzzy
 msgid "Whether the cell background color is set"
 msgstr "このタグがセルの背景色に影響を与えるかどうか"
@@ -2186,8 +2186,8 @@ msgstr "表示する小数点以下の桁数です"
 
 #: ctk/ctkcellrendererspinner.c:125 ctk/ctkcheckmenuitem.c:209
 #: ctk/ctkmenu.c:640 ctk/ctkmodelbutton.c:1211 ctk/ctkmodelbutton.c:1212
-#: ctk/ctkspinner.c:221 ctk/ctkswitch.c:878 ctk/ctktoggleaction.c:129
-#: ctk/ctktogglebutton.c:188 ctk/ctktoggletoolbutton.c:130
+#: ctk/ctkspinner.c:221 ctk/ctkswitch.c:868 ctk/ctktoggleaction.c:129
+#: ctk/ctktogglebutton.c:187 ctk/ctktoggletoolbutton.c:130
 msgid "Active"
 msgstr "有効"
 
@@ -2239,147 +2239,147 @@ msgstr "背景色の名前"
 msgid "Background color as a string"
 msgstr "背景色を示す文字列です"
 
-#: ctk/ctkcellrenderertext.c:298 ctk/ctkcellview.c:233 ctk/ctktexttag.c:231
+#: ctk/ctkcellrenderertext.c:295 ctk/ctkcellview.c:230 ctk/ctktexttag.c:231
 msgid "Background color"
 msgstr "背景色"
 
-#: ctk/ctkcellrenderertext.c:299 ctk/ctkcellview.c:234 ctk/ctktexttag.c:232
+#: ctk/ctkcellrenderertext.c:296 ctk/ctkcellview.c:231 ctk/ctktexttag.c:232
 msgid "Background color as a CdkColor"
 msgstr "背景色を示す CdkColor 形式の文字列です"
 
-#: ctk/ctkcellrenderertext.c:313
+#: ctk/ctkcellrenderertext.c:309
 msgid "Background color as RGBA"
 msgstr "RGBA 背景色"
 
-#: ctk/ctkcellrenderertext.c:314 ctk/ctkcellview.c:249 ctk/ctktexttag.c:247
+#: ctk/ctkcellrenderertext.c:310 ctk/ctkcellview.c:245 ctk/ctktexttag.c:247
 msgid "Background color as a CdkRGBA"
 msgstr "背景色を示す CdkRGBA 形式の文字列です"
 
-#: ctk/ctkcellrenderertext.c:319 ctk/ctktexttag.c:262
+#: ctk/ctkcellrenderertext.c:315 ctk/ctktexttag.c:262
 msgid "Foreground color name"
 msgstr "前景色の名前"
 
-#: ctk/ctkcellrenderertext.c:320 ctk/ctktexttag.c:263
+#: ctk/ctkcellrenderertext.c:316 ctk/ctktexttag.c:263
 msgid "Foreground color as a string"
 msgstr "前景色を示す文字列です"
 
-#: ctk/ctkcellrenderertext.c:334 ctk/ctktexttag.c:277 ctk/ctktrayicon-x11.c:136
+#: ctk/ctkcellrenderertext.c:327 ctk/ctktexttag.c:277 ctk/ctktrayicon-x11.c:136
 msgid "Foreground color"
 msgstr "前景色"
 
-#: ctk/ctkcellrenderertext.c:335 ctk/ctktexttag.c:278
+#: ctk/ctkcellrenderertext.c:328 ctk/ctktexttag.c:278
 msgid "Foreground color as a CdkColor"
 msgstr "前景色を示す CdkColor 形式の文字列です"
 
-#: ctk/ctkcellrenderertext.c:349
+#: ctk/ctkcellrenderertext.c:341
 msgid "Foreground color as RGBA"
 msgstr "RGBA 前景色"
 
-#: ctk/ctkcellrenderertext.c:350 ctk/ctktexttag.c:293
+#: ctk/ctkcellrenderertext.c:342 ctk/ctktexttag.c:293
 msgid "Foreground color as a CdkRGBA"
 msgstr "前景色を示す CdkRGBA 形式の文字列です"
 
-#: ctk/ctkcellrenderertext.c:357 ctk/ctkentry.c:861 ctk/ctktexttag.c:309
+#: ctk/ctkcellrenderertext.c:349 ctk/ctkentry.c:861 ctk/ctktexttag.c:309
 #: ctk/ctktextview.c:825
 msgid "Editable"
 msgstr "編集可能"
 
-#: ctk/ctkcellrenderertext.c:358 ctk/ctktexttag.c:310 ctk/ctktextview.c:826
+#: ctk/ctkcellrenderertext.c:350 ctk/ctktexttag.c:310 ctk/ctktextview.c:826
 msgid "Whether the text can be modified by the user"
 msgstr "ユーザーがテキストを変更できるかどうか"
 
-#: ctk/ctkcellrenderertext.c:364 ctk/ctkcellrenderertext.c:371
+#: ctk/ctkcellrenderertext.c:356 ctk/ctkcellrenderertext.c:363
 #: ctk/ctkfontchooser.c:64 ctk/ctktexttag.c:325 ctk/ctktexttag.c:333
 msgid "Font"
 msgstr "フォント"
 
-#: ctk/ctkcellrenderertext.c:365 ctk/ctkfontchooser.c:65 ctk/ctktexttag.c:326
+#: ctk/ctkcellrenderertext.c:357 ctk/ctkfontchooser.c:65 ctk/ctktexttag.c:326
 msgid "Font description as a string, e.g. \"Sans Italic 12\""
 msgstr "文字列によるフォント記述 (例: \"Sans Italic 12\")"
 
-#: ctk/ctkcellrenderertext.c:372 ctk/ctkfontchooser.c:78 ctk/ctktexttag.c:334
+#: ctk/ctkcellrenderertext.c:364 ctk/ctkfontchooser.c:78 ctk/ctktexttag.c:334
 msgid "Font description as a PangoFontDescription struct"
 msgstr "PangoFontDescription 構造体によるフォント記述"
 
-#: ctk/ctkcellrenderertext.c:378 ctk/ctktexttag.c:341
+#: ctk/ctkcellrenderertext.c:370 ctk/ctktexttag.c:341
 msgid "Font family"
 msgstr "フォントファミリ"
 
-#: ctk/ctkcellrenderertext.c:379 ctk/ctktexttag.c:342
+#: ctk/ctkcellrenderertext.c:371 ctk/ctktexttag.c:342
 msgid "Name of the font family, e.g. Sans, Helvetica, Times, Monospace"
 msgstr "フォントファミリの名前 (例: Sans, Helvetica, Times, Monospace)"
 
-#: ctk/ctkcellrenderertext.c:385 ctk/ctkcellrenderertext.c:386
+#: ctk/ctkcellrenderertext.c:377 ctk/ctkcellrenderertext.c:378
 #: ctk/ctktexttag.c:349
 msgid "Font style"
 msgstr "フォントスタイル"
 
-#: ctk/ctkcellrenderertext.c:393 ctk/ctkcellrenderertext.c:394
+#: ctk/ctkcellrenderertext.c:385 ctk/ctkcellrenderertext.c:386
 #: ctk/ctktexttag.c:358
 msgid "Font variant"
 msgstr "フォントバリアント"
 
-#: ctk/ctkcellrenderertext.c:401 ctk/ctkcellrenderertext.c:402
+#: ctk/ctkcellrenderertext.c:393 ctk/ctkcellrenderertext.c:394
 #: ctk/ctktexttag.c:367
 msgid "Font weight"
 msgstr "フォントウェイト"
 
-#: ctk/ctkcellrenderertext.c:409 ctk/ctkcellrenderertext.c:410
+#: ctk/ctkcellrenderertext.c:401 ctk/ctkcellrenderertext.c:402
 #: ctk/ctktexttag.c:378
 msgid "Font stretch"
 msgstr "フォントストレッチ"
 
-#: ctk/ctkcellrenderertext.c:417 ctk/ctkcellrenderertext.c:418
+#: ctk/ctkcellrenderertext.c:409 ctk/ctkcellrenderertext.c:410
 #: ctk/ctktexttag.c:387
 msgid "Font size"
 msgstr "フォントサイズ"
 
-#: ctk/ctkcellrenderertext.c:425 ctk/ctktexttag.c:407
+#: ctk/ctkcellrenderertext.c:417 ctk/ctktexttag.c:407
 msgid "Font points"
 msgstr "フォントポイント"
 
-#: ctk/ctkcellrenderertext.c:426 ctk/ctktexttag.c:408
+#: ctk/ctkcellrenderertext.c:418 ctk/ctktexttag.c:408
 msgid "Font size in points"
 msgstr "ポイント単位でのフォントの大きさ"
 
-#: ctk/ctkcellrenderertext.c:433 ctk/ctktexttag.c:397
+#: ctk/ctkcellrenderertext.c:425 ctk/ctktexttag.c:397
 msgid "Font scale"
 msgstr "フォントスケール"
 
-#: ctk/ctkcellrenderertext.c:434
+#: ctk/ctkcellrenderertext.c:426
 msgid "Font scaling factor"
 msgstr "フォントのスケール (率)"
 
-#: ctk/ctkcellrenderertext.c:441 ctk/ctktexttag.c:476
+#: ctk/ctkcellrenderertext.c:433 ctk/ctktexttag.c:476
 msgid "Rise"
 msgstr "ライズ"
 
-#: ctk/ctkcellrenderertext.c:442
+#: ctk/ctkcellrenderertext.c:434
 msgid ""
 "Offset of text above the baseline (below the baseline if rise is negative)"
 msgstr "テキストの基準線から上のオフセット (基準線から下の場合には負)"
 
-#: ctk/ctkcellrenderertext.c:450 ctk/ctktexttag.c:516
+#: ctk/ctkcellrenderertext.c:442 ctk/ctktexttag.c:516
 msgid "Strikethrough"
 msgstr "打ち消し"
 
-#: ctk/ctkcellrenderertext.c:451 ctk/ctktexttag.c:517
+#: ctk/ctkcellrenderertext.c:443 ctk/ctktexttag.c:517
 msgid "Whether to strike through the text"
 msgstr "テキストに打ち消し線を引くかどうか"
 
-#: ctk/ctkcellrenderertext.c:457 ctk/ctktexttag.c:524
+#: ctk/ctkcellrenderertext.c:449 ctk/ctktexttag.c:524
 msgid "Underline"
 msgstr "下線"
 
-#: ctk/ctkcellrenderertext.c:458 ctk/ctktexttag.c:525
+#: ctk/ctkcellrenderertext.c:450 ctk/ctktexttag.c:525
 msgid "Style of underline for this text"
 msgstr "このテキストの下線のスタイル"
 
-#: ctk/ctkcellrenderertext.c:465 ctk/ctkfontchooser.c:154 ctk/ctktexttag.c:436
+#: ctk/ctkcellrenderertext.c:457 ctk/ctkfontchooser.c:154 ctk/ctktexttag.c:436
 msgid "Language"
 msgstr "言語"
 
-#: ctk/ctkcellrenderertext.c:466
+#: ctk/ctkcellrenderertext.c:458
 msgid ""
 "The language this text is in, as an ISO code. Pango can use this as a hint "
 "when rendering the text. If you don't understand this parameter, you "
@@ -2389,11 +2389,11 @@ msgstr ""
 "報をヒントとして利用することができます。もしこのパラメーターの意味を理解して"
 "いない場合、これを必要とすることはないでしょう。"
 
-#: ctk/ctkcellrenderertext.c:484 ctk/ctklabel.c:963 ctk/ctkprogressbar.c:330
+#: ctk/ctkcellrenderertext.c:476 ctk/ctklabel.c:963 ctk/ctkprogressbar.c:330
 msgid "Ellipsize"
 msgstr "省略記号で置き換える"
 
-#: ctk/ctkcellrenderertext.c:485
+#: ctk/ctkcellrenderertext.c:477
 msgid ""
 "The preferred place to ellipsize the string, if the cell renderer does not "
 "have enough room to display the entire string"
@@ -2401,28 +2401,28 @@ msgstr ""
 "セルレンダラーが文字列のすべてを表示しきれない場合に文字列を省略記号で置き換"
 "える場所です"
 
-#: ctk/ctkcellrenderertext.c:503 ctk/ctkfilechooserbutton.c:457
+#: ctk/ctkcellrenderertext.c:495 ctk/ctkfilechooserbutton.c:457
 #: ctk/ctklabel.c:983
 msgid "Width In Characters"
 msgstr "ボタンの幅"
 
-#: ctk/ctkcellrenderertext.c:504 ctk/ctklabel.c:984
+#: ctk/ctkcellrenderertext.c:496 ctk/ctklabel.c:984
 msgid "The desired width of the label, in characters"
 msgstr "ラベルの幅 (文字単位)"
 
-#: ctk/ctkcellrenderertext.c:525 ctk/ctklabel.c:1039
+#: ctk/ctkcellrenderertext.c:517 ctk/ctklabel.c:1039
 msgid "Maximum Width In Characters"
 msgstr "文字数単位での最大幅"
 
-#: ctk/ctkcellrenderertext.c:526
+#: ctk/ctkcellrenderertext.c:518
 msgid "The maximum width of the cell, in characters"
 msgstr "セルの最大幅 (文字数) です"
 
-#: ctk/ctkcellrenderertext.c:542 ctk/ctktexttag.c:569
+#: ctk/ctkcellrenderertext.c:534 ctk/ctktexttag.c:569
 msgid "Wrap mode"
 msgstr "ラップモード"
 
-#: ctk/ctkcellrenderertext.c:543
+#: ctk/ctkcellrenderertext.c:535
 msgid ""
 "How to break the string into multiple lines, if the cell renderer does not "
 "have enough room to display the entire string"
@@ -2430,155 +2430,155 @@ msgstr ""
 "セルレンダラーが文字列全体を表示できるだけの充分な領域を持たない場合に文字列"
 "を複数行に分割する際の数です"
 
-#: ctk/ctkcellrenderertext.c:561 ctk/ctkcombobox.c:923
+#: ctk/ctkcellrenderertext.c:553 ctk/ctkcombobox.c:923
 msgid "Wrap width"
 msgstr "折り返し幅"
 
-#: ctk/ctkcellrenderertext.c:562
+#: ctk/ctkcellrenderertext.c:554
 msgid "The width at which the text is wrapped"
 msgstr "ラベルをラップする際の幅です"
 
-#: ctk/ctkcellrenderertext.c:580 ctk/ctktreeviewcolumn.c:344
+#: ctk/ctkcellrenderertext.c:572 ctk/ctktreeviewcolumn.c:344
 msgid "Alignment"
 msgstr "配置"
 
-#: ctk/ctkcellrenderertext.c:581
+#: ctk/ctkcellrenderertext.c:573
 msgid "How to align the lines"
 msgstr "線の配置"
 
-#: ctk/ctkcellrenderertext.c:596 ctk/ctkentry.c:1109
+#: ctk/ctkcellrenderertext.c:588 ctk/ctkentry.c:1109
 msgid "Placeholder text"
 msgstr ""
 
-#: ctk/ctkcellrenderertext.c:597
+#: ctk/ctkcellrenderertext.c:589
 msgid "Text rendered when an editable cell is empty"
 msgstr ""
 
-#: ctk/ctkcellrenderertext.c:606 ctk/ctkcellview.c:353 ctk/ctktexttag.c:722
+#: ctk/ctkcellrenderertext.c:598 ctk/ctkcellview.c:349 ctk/ctktexttag.c:722
 msgid "Background set"
 msgstr "背景色の設定"
 
-#: ctk/ctkcellrenderertext.c:607 ctk/ctkcellview.c:354 ctk/ctktexttag.c:723
+#: ctk/ctkcellrenderertext.c:599 ctk/ctkcellview.c:350 ctk/ctktexttag.c:723
 msgid "Whether this tag affects the background color"
 msgstr "このタグが背景色に影響するかどうか"
 
-#: ctk/ctkcellrenderertext.c:610 ctk/ctktexttag.c:730
+#: ctk/ctkcellrenderertext.c:602 ctk/ctktexttag.c:730
 msgid "Foreground set"
 msgstr "前景色の設定"
 
-#: ctk/ctkcellrenderertext.c:611 ctk/ctktexttag.c:731
+#: ctk/ctkcellrenderertext.c:603 ctk/ctktexttag.c:731
 msgid "Whether this tag affects the foreground color"
 msgstr "このタグが前景色に影響するかどうか"
 
-#: ctk/ctkcellrenderertext.c:614 ctk/ctktexttag.c:734
+#: ctk/ctkcellrenderertext.c:606 ctk/ctktexttag.c:734
 msgid "Editability set"
 msgstr "編集可否の設定"
 
-#: ctk/ctkcellrenderertext.c:615 ctk/ctktexttag.c:735
+#: ctk/ctkcellrenderertext.c:607 ctk/ctktexttag.c:735
 msgid "Whether this tag affects text editability"
 msgstr "このタグがテキストの編集可能に影響するかどうか"
 
-#: ctk/ctkcellrenderertext.c:618 ctk/ctktexttag.c:738
+#: ctk/ctkcellrenderertext.c:610 ctk/ctktexttag.c:738
 msgid "Font family set"
 msgstr "フォントファミリの設定"
 
-#: ctk/ctkcellrenderertext.c:619 ctk/ctktexttag.c:739
+#: ctk/ctkcellrenderertext.c:611 ctk/ctktexttag.c:739
 msgid "Whether this tag affects the font family"
 msgstr "このタグがフォントファミリに影響するかどうか"
 
-#: ctk/ctkcellrenderertext.c:622 ctk/ctktexttag.c:742
+#: ctk/ctkcellrenderertext.c:614 ctk/ctktexttag.c:742
 msgid "Font style set"
 msgstr "フォントスタイルの設定"
 
-#: ctk/ctkcellrenderertext.c:623 ctk/ctktexttag.c:743
+#: ctk/ctkcellrenderertext.c:615 ctk/ctktexttag.c:743
 msgid "Whether this tag affects the font style"
 msgstr "このタグがフォントスタイルに影響するかどうか"
 
-#: ctk/ctkcellrenderertext.c:626 ctk/ctktexttag.c:746
+#: ctk/ctkcellrenderertext.c:618 ctk/ctktexttag.c:746
 msgid "Font variant set"
 msgstr "フォントバリアント設定"
 
-#: ctk/ctkcellrenderertext.c:627 ctk/ctktexttag.c:747
+#: ctk/ctkcellrenderertext.c:619 ctk/ctktexttag.c:747
 msgid "Whether this tag affects the font variant"
 msgstr "このタグがフォントバリアントに影響するかどうか"
 
-#: ctk/ctkcellrenderertext.c:630 ctk/ctktexttag.c:750
+#: ctk/ctkcellrenderertext.c:622 ctk/ctktexttag.c:750
 msgid "Font weight set"
 msgstr "フォントの太さの設定"
 
-#: ctk/ctkcellrenderertext.c:631 ctk/ctktexttag.c:751
+#: ctk/ctkcellrenderertext.c:623 ctk/ctktexttag.c:751
 msgid "Whether this tag affects the font weight"
 msgstr "このタグがフォントの太さに影響するかどうか"
 
-#: ctk/ctkcellrenderertext.c:634 ctk/ctktexttag.c:754
+#: ctk/ctkcellrenderertext.c:626 ctk/ctktexttag.c:754
 msgid "Font stretch set"
 msgstr "フォントの展張の設定"
 
-#: ctk/ctkcellrenderertext.c:635 ctk/ctktexttag.c:755
+#: ctk/ctkcellrenderertext.c:627 ctk/ctktexttag.c:755
 msgid "Whether this tag affects the font stretch"
 msgstr "このタグがフォントの展張に影響するかどうか"
 
-#: ctk/ctkcellrenderertext.c:638 ctk/ctktexttag.c:758
+#: ctk/ctkcellrenderertext.c:630 ctk/ctktexttag.c:758
 msgid "Font size set"
 msgstr "フォントサイズの設定"
 
-#: ctk/ctkcellrenderertext.c:639 ctk/ctktexttag.c:759
+#: ctk/ctkcellrenderertext.c:631 ctk/ctktexttag.c:759
 msgid "Whether this tag affects the font size"
 msgstr "このタグがフォントサイズに影響するかどうか"
 
-#: ctk/ctkcellrenderertext.c:642 ctk/ctktexttag.c:762
+#: ctk/ctkcellrenderertext.c:634 ctk/ctktexttag.c:762
 msgid "Font scale set"
 msgstr "フォントスケールのセット"
 
-#: ctk/ctkcellrenderertext.c:643 ctk/ctktexttag.c:763
+#: ctk/ctkcellrenderertext.c:635 ctk/ctktexttag.c:763
 msgid "Whether this tag scales the font size by a factor"
 msgstr "このタグが倍率でフォントサイズを変更するかどうか"
 
-#: ctk/ctkcellrenderertext.c:646 ctk/ctktexttag.c:782
+#: ctk/ctkcellrenderertext.c:638 ctk/ctktexttag.c:782
 msgid "Rise set"
 msgstr "ライズの設定"
 
-#: ctk/ctkcellrenderertext.c:647 ctk/ctktexttag.c:783
+#: ctk/ctkcellrenderertext.c:639 ctk/ctktexttag.c:783
 msgid "Whether this tag affects the rise"
 msgstr "このタグがライズに影響するかどうか"
 
-#: ctk/ctkcellrenderertext.c:650 ctk/ctktexttag.c:798
+#: ctk/ctkcellrenderertext.c:642 ctk/ctktexttag.c:798
 msgid "Strikethrough set"
 msgstr "打ち消し線の設定"
 
-#: ctk/ctkcellrenderertext.c:651 ctk/ctktexttag.c:799
+#: ctk/ctkcellrenderertext.c:643 ctk/ctktexttag.c:799
 msgid "Whether this tag affects strikethrough"
 msgstr "このタグが打ち消し線に影響するかどうか"
 
-#: ctk/ctkcellrenderertext.c:654 ctk/ctktexttag.c:806
+#: ctk/ctkcellrenderertext.c:646 ctk/ctktexttag.c:806
 msgid "Underline set"
 msgstr "下線の設定"
 
-#: ctk/ctkcellrenderertext.c:655 ctk/ctktexttag.c:807
+#: ctk/ctkcellrenderertext.c:647 ctk/ctktexttag.c:807
 msgid "Whether this tag affects underlining"
 msgstr "このタグが下線に影響するかどうか"
 
-#: ctk/ctkcellrenderertext.c:658 ctk/ctktexttag.c:770
+#: ctk/ctkcellrenderertext.c:650 ctk/ctktexttag.c:770
 msgid "Language set"
 msgstr "言語の設定"
 
-#: ctk/ctkcellrenderertext.c:659 ctk/ctktexttag.c:771
+#: ctk/ctkcellrenderertext.c:651 ctk/ctktexttag.c:771
 msgid "Whether this tag affects the language the text is rendered as"
 msgstr "このタグが描画するテキストの言語に影響するかどうか"
 
-#: ctk/ctkcellrenderertext.c:662
+#: ctk/ctkcellrenderertext.c:654
 msgid "Ellipsize set"
 msgstr "省略記号で置き換える"
 
-#: ctk/ctkcellrenderertext.c:663
+#: ctk/ctkcellrenderertext.c:655
 msgid "Whether this tag affects the ellipsize mode"
 msgstr "このタグが省略記号で置き換えるモードに対応するかどうか"
 
-#: ctk/ctkcellrenderertext.c:666
+#: ctk/ctkcellrenderertext.c:658
 msgid "Align set"
 msgstr "配置タグ"
 
-#: ctk/ctkcellrenderertext.c:667
+#: ctk/ctkcellrenderertext.c:659
 msgid "Whether this tag affects the alignment mode"
 msgstr "このタグが配置モードに作用するかどうか"
 
@@ -2623,52 +2623,52 @@ msgstr "表示器の大きさ"
 msgid "Size of check or radio indicator"
 msgstr "チェックボタンまたはラジオボタンの表示部の大きさ"
 
-#: ctk/ctkcellview.c:248
+#: ctk/ctkcellview.c:244
 msgid "Background RGBA color"
 msgstr "RGBA 背景色"
 
-#: ctk/ctkcellview.c:263
+#: ctk/ctkcellview.c:259
 msgid "CellView model"
 msgstr "CellView モデル"
 
-#: ctk/ctkcellview.c:264
+#: ctk/ctkcellview.c:260
 msgid "The model for cell view"
 msgstr "セル表示に使用するモデルです"
 
-#: ctk/ctkcellview.c:282 ctk/ctkcombobox.c:1182 ctk/ctkentrycompletion.c:467
+#: ctk/ctkcellview.c:278 ctk/ctkcombobox.c:1182 ctk/ctkentrycompletion.c:467
 #: ctk/ctkiconview.c:649 ctk/ctktreemenu.c:307 ctk/ctktreeviewcolumn.c:399
 msgid "Cell Area"
 msgstr ""
 
-#: ctk/ctkcellview.c:283 ctk/ctkcombobox.c:1183 ctk/ctkentrycompletion.c:468
+#: ctk/ctkcellview.c:279 ctk/ctkcombobox.c:1183 ctk/ctkentrycompletion.c:468
 #: ctk/ctkiconview.c:650 ctk/ctktreemenu.c:308 ctk/ctktreeviewcolumn.c:400
 msgid "The CtkCellArea used to layout cells"
 msgstr ""
 
-#: ctk/ctkcellview.c:306
+#: ctk/ctkcellview.c:302
 msgid "Cell Area Context"
 msgstr ""
 
-#: ctk/ctkcellview.c:307
+#: ctk/ctkcellview.c:303
 msgid "The CtkCellAreaContext used to compute the geometry of the cell view"
 msgstr ""
 
-#: ctk/ctkcellview.c:324
+#: ctk/ctkcellview.c:320
 #, fuzzy
 msgid "Draw Sensitive"
 msgstr "感応可否"
 
-#: ctk/ctkcellview.c:325
+#: ctk/ctkcellview.c:321
 #, fuzzy
 msgid "Whether to force cells to be drawn in a sensitive state"
 msgstr "ツリー表示でツリー線を描画するかどうか"
 
-#: ctk/ctkcellview.c:343
+#: ctk/ctkcellview.c:339
 #, fuzzy
 msgid "Fit Model"
 msgstr "モデル"
 
-#: ctk/ctkcellview.c:344
+#: ctk/ctkcellview.c:340
 msgid "Whether to request enough space for every row in the model"
 msgstr ""
 
@@ -2688,7 +2688,7 @@ msgstr "チェックボタンまたはラジオボタンの表示部の間隔"
 msgid "Whether the menu item is checked"
 msgstr "メニューアイテムがチェックされているかどうか"
 
-#: ctk/ctkcheckmenuitem.c:217 ctk/ctktogglebutton.c:195
+#: ctk/ctkcheckmenuitem.c:217 ctk/ctktogglebutton.c:194
 msgid "Inconsistent"
 msgstr "矛盾している"
 
@@ -2724,28 +2724,28 @@ msgstr "タイトル"
 msgid "The title of the color selection dialog"
 msgstr "色選択ダイアログのタイトル"
 
-#: ctk/ctkcolorbutton.c:202
+#: ctk/ctkcolorbutton.c:199
 msgid "The selected color"
 msgstr "選択した色"
 
-#: ctk/ctkcolorbutton.c:218
+#: ctk/ctkcolorbutton.c:214
 msgid "The selected opacity value (0 fully transparent, 65535 fully opaque)"
 msgstr "選択した色の透明度 (0 :完全透明、65535: 完全不透明)"
 
-#: ctk/ctkcolorbutton.c:232
+#: ctk/ctkcolorbutton.c:228
 msgid "Current RGBA Color"
 msgstr "現在の RGBA 色"
 
-#: ctk/ctkcolorbutton.c:233
+#: ctk/ctkcolorbutton.c:229
 msgid "The selected RGBA color"
 msgstr "選択した RGBA 色"
 
-#: ctk/ctkcolorbutton.c:274
+#: ctk/ctkcolorbutton.c:270
 #, fuzzy
 msgid "Show Editor"
 msgstr "文字列の表示"
 
-#: ctk/ctkcolorbutton.c:275
+#: ctk/ctkcolorbutton.c:271
 #, fuzzy
 msgid "Whether to show the color editor right away"
 msgstr "ソート表示器を描画するかどうか"
@@ -2996,7 +2996,7 @@ msgstr ""
 msgid "Unique ID"
 msgstr ""
 
-#: ctk/ctkcssnode.c:643 ctk/ctkswitch.c:893
+#: ctk/ctkcssnode.c:643 ctk/ctkswitch.c:883
 #, fuzzy
 msgid "State"
 msgstr "状態"
@@ -3653,7 +3653,7 @@ msgid "Space to put between the label and the child"
 msgstr "ラベルと子ウィジェットとの間に置くスペースを指定します"
 
 #: ctk/ctkexpander.c:351 ctk/ctkframe.c:262 ctk/ctktoolbutton.c:218
-#: ctk/ctktoolitemgroup.c:1646
+#: ctk/ctktoolitemgroup.c:1644
 msgid "Label widget"
 msgstr "ラベルウィジェット"
 
@@ -3680,11 +3680,11 @@ msgid ""
 "collapsing"
 msgstr ""
 
-#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1674 ctk/ctktreeview.c:1234
+#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1672 ctk/ctktreeview.c:1234
 msgid "Expander Size"
 msgstr "展張サイズ"
 
-#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1675 ctk/ctktreeview.c:1235
+#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1673 ctk/ctktreeview.c:1235
 msgid "Size of the expander arrow"
 msgstr "展張矢印の大きさ"
 
@@ -3808,22 +3808,22 @@ msgstr ""
 "ファイルを開くモードでファイル選択ウィジェットを表示した場合に、新規フォル"
 "ダーの作成をできるようにするかどうか。"
 
-#: ctk/ctkfilechoosernative.c:827
+#: ctk/ctkfilechoosernative.c:825
 #, fuzzy
 msgid "Accept label"
 msgstr "タブを許可する"
 
-#: ctk/ctkfilechoosernative.c:828
+#: ctk/ctkfilechoosernative.c:826
 #, fuzzy
 msgid "The label on the accept button"
 msgstr "トグルボタンの状態"
 
-#: ctk/ctkfilechoosernative.c:840
+#: ctk/ctkfilechoosernative.c:838
 #, fuzzy
 msgid "Cancel label"
 msgstr "タブのラベル"
 
-#: ctk/ctkfilechoosernative.c:841
+#: ctk/ctkfilechoosernative.c:839
 #, fuzzy
 msgid "The label on the cancel button"
 msgstr "トグルボタンの状態"
@@ -4902,7 +4902,7 @@ msgstr "現在選択されているメニュー項目の通番です"
 msgid "The accel group holding accelerators for the menu"
 msgstr "メニュー項目のアクセラレータを格納するためのグループです"
 
-#: ctk/ctkmenu.c:670 ctk/ctkmenuitem.c:775
+#: ctk/ctkmenu.c:670 ctk/ctkmenuitem.c:774
 msgid "Accel Path"
 msgstr "アクセラレータのパス"
 
@@ -5068,40 +5068,40 @@ msgstr "下アタッチ"
 msgid "Arbitrary constant to scale down the size of the scroll arrow"
 msgstr "スクロールバーの矢印のサイズを小さくしていく際に適用する倍率です"
 
-#: ctk/ctkmenuitem.c:745
+#: ctk/ctkmenuitem.c:744
 msgid "Right Justified"
 msgstr "右寄せにするかどうか"
 
-#: ctk/ctkmenuitem.c:746
+#: ctk/ctkmenuitem.c:745
 msgid ""
 "Sets whether the menu item appears justified at the right side of a menu bar"
 msgstr "メニュー項目をメニューバーの右端に寄せて表示するかどうか"
 
-#: ctk/ctkmenuitem.c:759 ctk/ctkpopovermenu.c:376
+#: ctk/ctkmenuitem.c:758 ctk/ctkpopovermenu.c:376
 msgid "Submenu"
 msgstr "サブメニュー"
 
-#: ctk/ctkmenuitem.c:760
+#: ctk/ctkmenuitem.c:759
 msgid "The submenu attached to the menu item, or NULL if it has none"
 msgstr "メニュー項目に取り付けるサブメニューです (取り付けない場合は NULL)"
 
-#: ctk/ctkmenuitem.c:776
+#: ctk/ctkmenuitem.c:775
 msgid "Sets the accelerator path of the menu item"
 msgstr "メニュー項目に対するアクセラレータのパスです"
 
-#: ctk/ctkmenuitem.c:790
+#: ctk/ctkmenuitem.c:789
 msgid "The text for the child label"
 msgstr "子ラベルに表示する文字列です"
 
-#: ctk/ctkmenuitem.c:899
+#: ctk/ctkmenuitem.c:898
 msgid "Amount of space used up by arrow, relative to the menu item's font size"
 msgstr "メニュー項目のフォントサイズに対して矢印が占有する大きさです"
 
-#: ctk/ctkmenuitem.c:915
+#: ctk/ctkmenuitem.c:914
 msgid "Width in Characters"
 msgstr "メニュー項目の幅"
 
-#: ctk/ctkmenuitem.c:916
+#: ctk/ctkmenuitem.c:915
 msgid "The minimum desired width of the menu item in characters"
 msgstr "メニュー項目の希望最小幅 (文字数単位) です"
 
@@ -5167,19 +5167,19 @@ msgstr "二段目のテキストもマークアップを使用する"
 msgid "The secondary text includes Pango markup."
 msgstr "二段目のテキストにも Pango マークアップを含めるかどうか"
 
-#: ctk/ctkmessagedialog.c:277
+#: ctk/ctkmessagedialog.c:276
 msgid "Image"
 msgstr "画像"
 
-#: ctk/ctkmessagedialog.c:278
+#: ctk/ctkmessagedialog.c:277
 msgid "The image"
 msgstr "画像"
 
-#: ctk/ctkmessagedialog.c:294
+#: ctk/ctkmessagedialog.c:293
 msgid "Message area"
 msgstr "メッセージエリア"
 
-#: ctk/ctkmessagedialog.c:295
+#: ctk/ctkmessagedialog.c:294
 #, fuzzy
 msgid "CtkBox that holds the dialog's primary and secondary labels"
 msgstr "ダイアログのプライマリとセカンダリのラベルを保持する CtkVBox"
@@ -6344,7 +6344,7 @@ msgstr "桁数"
 msgid "The number of digits to round the value to."
 msgstr "ドキュメントのページ数です"
 
-#: ctk/ctkrange.c:538 ctk/ctkswitch.c:929
+#: ctk/ctkrange.c:538 ctk/ctkswitch.c:919
 msgid "Slider Width"
 msgstr "スライダーの幅"
 
@@ -7971,27 +7971,27 @@ msgstr "ページの種類"
 msgid "The value type returned by CtkStyleContext"
 msgstr ""
 
-#: ctk/ctkswitch.c:879
+#: ctk/ctkswitch.c:869
 #, fuzzy
 msgid "Whether the switch is on or off"
 msgstr "ウィジェットがダブルバッファーかどうか"
 
-#: ctk/ctkswitch.c:894
+#: ctk/ctkswitch.c:884
 #, fuzzy
 msgid "The backend state"
 msgstr "セルの背景色設定"
 
-#: ctk/ctkswitch.c:930
+#: ctk/ctkswitch.c:920
 #, fuzzy
 msgid "The minimum width of the handle"
 msgstr "アジャストメントの最小値です"
 
-#: ctk/ctkswitch.c:946
+#: ctk/ctkswitch.c:936
 #, fuzzy
 msgid "Slider Height"
 msgstr "スライダーの長さ"
 
-#: ctk/ctkswitch.c:947
+#: ctk/ctkswitch.c:937
 #, fuzzy
 msgid "The minimum height of the handle"
 msgstr "アジャストメントの最小値です"
@@ -8512,11 +8512,11 @@ msgstr "カラースペース"
 msgid "Whether to use a monospace font"
 msgstr "シンボリックアイコンの警告を表すの色です"
 
-#: ctk/ctktextview.c:1081
+#: ctk/ctktextview.c:1080
 msgid "Error underline color"
 msgstr "エラーを示す下線の色"
 
-#: ctk/ctktextview.c:1082
+#: ctk/ctktextview.c:1081
 msgid "Color with which to draw error-indication underlines"
 msgstr "エラーを示す下線を描画する色です"
 
@@ -8533,19 +8533,19 @@ msgstr ""
 msgid "Whether the toggle action should be active"
 msgstr "トグル操作をアクティブにするかどうか"
 
-#: ctk/ctktogglebutton.c:189 ctk/ctktoggletoolbutton.c:131
+#: ctk/ctktogglebutton.c:188 ctk/ctktoggletoolbutton.c:131
 msgid "If the toggle button should be pressed in"
 msgstr "トグルボタンを押下されたか"
 
-#: ctk/ctktogglebutton.c:196
+#: ctk/ctktogglebutton.c:195
 msgid "If the toggle button is in an \"in between\" state"
 msgstr "トグルボタンが \"in between\" 状態にあるかどうか"
 
-#: ctk/ctktogglebutton.c:202
+#: ctk/ctktogglebutton.c:201
 msgid "Draw Indicator"
 msgstr "表示部の描画"
 
-#: ctk/ctktogglebutton.c:203
+#: ctk/ctktogglebutton.c:202
 msgid "If the toggle part of the button is displayed"
 msgstr "ボタンのトグル部分を表示するかどうか"
 
@@ -8583,7 +8583,7 @@ msgstr ""
 "ツールバーが大きくなった際にアイテムも余白のスペースを受け取るべきかどうかで"
 "す"
 
-#: ctk/ctktoolbar.c:598 ctk/ctktoolitemgroup.c:1689
+#: ctk/ctktoolbar.c:598 ctk/ctktoolitemgroup.c:1687
 msgid "Whether the item should be the same size as other homogeneous items"
 msgstr "すべての同種のアイテムを同じ大きさにするかどうか"
 
@@ -8679,63 +8679,63 @@ msgstr ""
 "ツールバーの項目を重要と見なすかどうか。TRUE の場合、ツールバーのボタンは "
 "CTK_TOOLBAR_BOTH_HORIZ モードで表示されます。"
 
-#: ctk/ctktoolitemgroup.c:1640
+#: ctk/ctktoolitemgroup.c:1638
 msgid "The human-readable title of this item group"
 msgstr "このアイテムグループの可読なタイトルです"
 
-#: ctk/ctktoolitemgroup.c:1647
+#: ctk/ctktoolitemgroup.c:1645
 msgid "A widget to display in place of the usual label"
 msgstr "通常のラベルの場所に表示するウィジェット"
 
-#: ctk/ctktoolitemgroup.c:1653
+#: ctk/ctktoolitemgroup.c:1651
 msgid "Collapsed"
 msgstr "畳まれている"
 
-#: ctk/ctktoolitemgroup.c:1654
+#: ctk/ctktoolitemgroup.c:1652
 msgid "Whether the group has been collapsed and items are hidden"
 msgstr "グループが畳まれて、アイテムが隠れているかどうか"
 
-#: ctk/ctktoolitemgroup.c:1660
+#: ctk/ctktoolitemgroup.c:1658
 msgid "ellipsize"
 msgstr "省略記号で置き換え"
 
-#: ctk/ctktoolitemgroup.c:1661
+#: ctk/ctktoolitemgroup.c:1659
 msgid "Ellipsize for item group headers"
 msgstr "アイテムグループのヘッダーを省略記号で置き換える"
 
-#: ctk/ctktoolitemgroup.c:1667
+#: ctk/ctktoolitemgroup.c:1665
 msgid "Header Relief"
 msgstr "ヘッダーの縁"
 
-#: ctk/ctktoolitemgroup.c:1668
+#: ctk/ctktoolitemgroup.c:1666
 msgid "Relief of the group header button"
 msgstr "グループヘッダーのボタンの縁"
 
-#: ctk/ctktoolitemgroup.c:1681
+#: ctk/ctktoolitemgroup.c:1679
 msgid "Header Spacing"
 msgstr "ヘッダーの間隔"
 
-#: ctk/ctktoolitemgroup.c:1682
+#: ctk/ctktoolitemgroup.c:1680
 msgid "Spacing between expander arrow and caption"
 msgstr "展張矢印とキャプションの間隔"
 
-#: ctk/ctktoolitemgroup.c:1696
+#: ctk/ctktoolitemgroup.c:1694
 msgid "Whether the item should receive extra space when the group grows"
 msgstr "グループ大きくなった際にアイテムに余白のスペースが付くかどうかです"
 
-#: ctk/ctktoolitemgroup.c:1703
+#: ctk/ctktoolitemgroup.c:1701
 msgid "Whether the item should fill the available space"
 msgstr "アイテムが利用可能なスペースいっぱいに拡がるかどうか"
 
-#: ctk/ctktoolitemgroup.c:1709
+#: ctk/ctktoolitemgroup.c:1707
 msgid "New Row"
 msgstr "新しい行"
 
-#: ctk/ctktoolitemgroup.c:1710
+#: ctk/ctktoolitemgroup.c:1708
 msgid "Whether the item should start a new row"
 msgstr "アイテムが新しい行を開始するかどうか"
 
-#: ctk/ctktoolitemgroup.c:1717
+#: ctk/ctktoolitemgroup.c:1715
 msgid "Position of the item within this group"
 msgstr "このグループでのアイテムの位置"
 
@@ -9493,54 +9493,54 @@ msgstr "フォントのスケール (率)"
 msgid "The scaling factor of the window"
 msgstr "ウィンドウのタイトル"
 
-#: ctk/ctkwidget.c:3497
+#: ctk/ctkwidget.c:3493
 msgid "Interior Focus"
 msgstr "内部フォーカス"
 
-#: ctk/ctkwidget.c:3498
+#: ctk/ctkwidget.c:3494
 msgid "Whether to draw the focus indicator inside widgets"
 msgstr ""
 "フォーカスが当たったことを示す矩形の内側のウィジェットを描画するかどうか"
 
-#: ctk/ctkwidget.c:3511
+#: ctk/ctkwidget.c:3507
 msgid "Focus linewidth"
 msgstr "フォーカス線の幅"
 
-#: ctk/ctkwidget.c:3512
+#: ctk/ctkwidget.c:3508
 msgid "Width, in pixels, of the focus indicator line"
 msgstr "フォーカスが当たったことを示す表示線の幅 (ピクセル単位)"
 
-#: ctk/ctkwidget.c:3526
+#: ctk/ctkwidget.c:3522
 msgid "Focus line dash pattern"
 msgstr "フォーカス線のダッシュパターン"
 
-#: ctk/ctkwidget.c:3527
+#: ctk/ctkwidget.c:3523
 msgid ""
 "Dash pattern used to draw the focus indicator. The character values are "
 "interpreted as pixel widths of alternating on and off segments of the line."
 msgstr ""
 
-#: ctk/ctkwidget.c:3540
+#: ctk/ctkwidget.c:3536
 msgid "Focus padding"
 msgstr "フォーカスのパディング"
 
-#: ctk/ctkwidget.c:3541
+#: ctk/ctkwidget.c:3537
 msgid "Width, in pixels, between focus indicator and the widget 'box'"
 msgstr "フォーカスが当たった表示部と 'box' ウィジェット間の幅 (ピクセル単位)"
 
-#: ctk/ctkwidget.c:3555
+#: ctk/ctkwidget.c:3548
 msgid "Cursor color"
 msgstr "カーソルの色"
 
-#: ctk/ctkwidget.c:3556
+#: ctk/ctkwidget.c:3549
 msgid "Color with which to draw insertion cursor"
 msgstr "挿入カーソルを描画する色"
 
-#: ctk/ctkwidget.c:3569
+#: ctk/ctkwidget.c:3560
 msgid "Secondary cursor color"
 msgstr "二番目のカーソルの色"
 
-#: ctk/ctkwidget.c:3570
+#: ctk/ctkwidget.c:3561
 msgid ""
 "Color with which to draw the secondary insertion cursor when editing mixed "
 "right-to-left and left-to-right text"
@@ -9548,88 +9548,88 @@ msgstr ""
 "右→左と左→右文字列とが混在している際に使用する二番目の挿入カーソルを描画する"
 "色"
 
-#: ctk/ctkwidget.c:3576
+#: ctk/ctkwidget.c:3567
 msgid "Cursor line aspect ratio"
 msgstr "カーソル行のアスペクト比"
 
-#: ctk/ctkwidget.c:3577
+#: ctk/ctkwidget.c:3568
 msgid "Aspect ratio with which to draw insertion cursor"
 msgstr "挿入カーソルを描画する際に使用するアスペクト比です"
 
-#: ctk/ctkwidget.c:3583
+#: ctk/ctkwidget.c:3574
 msgid "Window dragging"
 msgstr "ウィンドウのドラッグ"
 
-#: ctk/ctkwidget.c:3584
+#: ctk/ctkwidget.c:3575
 #, fuzzy
 msgid "Whether windows can be dragged and maximized by clicking on empty areas"
 msgstr "空白の領域をクリックすることでウィンドウをドラッグできるかどうか"
 
-#: ctk/ctkwidget.c:3601
+#: ctk/ctkwidget.c:3587
 msgid "Unvisited Link Color"
 msgstr "未訪問リンクの色"
 
-#: ctk/ctkwidget.c:3602
+#: ctk/ctkwidget.c:3588
 msgid "Color of unvisited links"
 msgstr "未だ訪問していないリンクの色です"
 
-#: ctk/ctkwidget.c:3618
+#: ctk/ctkwidget.c:3601
 msgid "Visited Link Color"
 msgstr "訪問したリンクの色"
 
-#: ctk/ctkwidget.c:3619
+#: ctk/ctkwidget.c:3602
 msgid "Color of visited links"
 msgstr "訪問したリンクの色です"
 
-#: ctk/ctkwidget.c:3637
+#: ctk/ctkwidget.c:3619
 msgid "Wide Separators"
 msgstr "幅の広いセパレーター"
 
-#: ctk/ctkwidget.c:3638
+#: ctk/ctkwidget.c:3620
 msgid ""
 "Whether separators have configurable width and should be drawn using a box "
 "instead of a line"
 msgstr ""
 "セパレーターが設定可能な幅を持ち、単なる線ではなく矩形も描画できるかどうか"
 
-#: ctk/ctkwidget.c:3655
+#: ctk/ctkwidget.c:3637
 msgid "Separator Width"
 msgstr "セパレーターの幅"
 
-#: ctk/ctkwidget.c:3656
+#: ctk/ctkwidget.c:3638
 msgid "The width of separators if wide-separators is TRUE"
 msgstr "wide-separators が TRUE の場合のセパレーターの幅です"
 
-#: ctk/ctkwidget.c:3673
+#: ctk/ctkwidget.c:3655
 msgid "Separator Height"
 msgstr "セパレーターの高さ"
 
-#: ctk/ctkwidget.c:3674
+#: ctk/ctkwidget.c:3656
 msgid "The height of separators if \"wide-separators\" is TRUE"
 msgstr "\"wide-separators\" が TRUE の場合のセパレーターの高さです"
 
-#: ctk/ctkwidget.c:3688
+#: ctk/ctkwidget.c:3670
 msgid "Horizontal Scroll Arrow Length"
 msgstr "水平スクロールバーの矢印の長さ"
 
-#: ctk/ctkwidget.c:3689
+#: ctk/ctkwidget.c:3671
 msgid "The length of horizontal scroll arrows"
 msgstr "水平スクロールバーに付ける矢印の長さです"
 
-#: ctk/ctkwidget.c:3703
+#: ctk/ctkwidget.c:3685
 msgid "Vertical Scroll Arrow Length"
 msgstr "垂直スクロールバーの矢印の長さ"
 
-#: ctk/ctkwidget.c:3704
+#: ctk/ctkwidget.c:3686
 msgid "The length of vertical scroll arrows"
 msgstr "垂直スクロールバーに付ける矢印の長さです"
 
-#: ctk/ctkwidget.c:3710 ctk/ctkwidget.c:3711
+#: ctk/ctkwidget.c:3692 ctk/ctkwidget.c:3693
 #, fuzzy
 msgid "Width of text selection handles"
 msgstr "取っ手の幅"
 
-#: ctk/ctkwidget.c:3716 ctk/ctkwidget.c:3717
+#: ctk/ctkwidget.c:3698 ctk/ctkwidget.c:3699
 #, fuzzy
 msgid "Height of text selection handles"
 msgstr "フォント選択ダイアログのタイトル"
@@ -9894,28 +9894,28 @@ msgstr ""
 msgid "Decoration resize handle size"
 msgstr ""
 
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:137
+#: modules/printbackends/cloudprint/ctkprintercloudprint.c:133
 msgid "Cloud Print account"
 msgstr ""
 
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:138
+#: modules/printbackends/cloudprint/ctkprintercloudprint.c:134
 msgid "CtkCloudprintAccount instance"
 msgstr ""
 
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:147
+#: modules/printbackends/cloudprint/ctkprintercloudprint.c:143
 #, fuzzy
 msgid "Printer ID"
 msgstr "プリンター"
 
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:148
+#: modules/printbackends/cloudprint/ctkprintercloudprint.c:144
 msgid "Cloud Print printer ID"
 msgstr ""
 
-#: modules/printbackends/cups/ctkprintercups.c:93
+#: modules/printbackends/cups/ctkprintercups.c:91
 msgid "Color Profile Title"
 msgstr ""
 
-#: modules/printbackends/cups/ctkprintercups.c:94
+#: modules/printbackends/cups/ctkprintercups.c:92
 #, fuzzy
 msgid "The title of the color profile to use"
 msgstr "色選択ダイアログのタイトル"

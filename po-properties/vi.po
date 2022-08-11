@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+-properties master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-23 18:06+0100\n"
+"POT-Creation-Date: 2022-08-11 17:19+0200\n"
 "PO-Revision-Date: 2015-09-28 15:48+0700\n"
 "Last-Translator: Trần Ngọc Quân <vnwildman@gmail.com>\n"
 "Language-Team: Vietnamese <gnome-vi-list@gnome.org>\n"
@@ -231,8 +231,8 @@ msgid "A unique name for the action."
 msgstr "Tên duy nhất cho hành động này."
 
 #: ctk/ctkaction.c:252 ctk/ctkbutton.c:281 ctk/ctkexpander.c:308
-#: ctk/ctkframe.c:231 ctk/ctklabel.c:805 ctk/ctkmenuitem.c:789
-#: ctk/ctktoolbutton.c:204 ctk/ctktoolitemgroup.c:1639
+#: ctk/ctkframe.c:231 ctk/ctklabel.c:805 ctk/ctkmenuitem.c:788
+#: ctk/ctktoolbutton.c:204 ctk/ctktoolitemgroup.c:1637
 msgid "Label"
 msgstr "Nhãn"
 
@@ -416,86 +416,6 @@ msgstr "Dùng hình thức hành vi"
 msgid "Whether to use the related actions appearance properties"
 msgstr "Có nên sử dụng các thuộc tính hình thức hành vi liên quan hay không"
 
-#: ctk/ctkalignment.c:151
-msgid "Horizontal alignment"
-msgstr "Canh hàng ngang"
-
-#: ctk/ctkalignment.c:152 ctk/ctkbutton.c:328
-msgid ""
-"Horizontal position of child in available space. 0.0 is left aligned, 1.0 is "
-"right aligned"
-msgstr ""
-"Vị trí theo chiều ngang của một cửa sổ con trong khoảng cách sẵn sàng. 0.0 "
-"là canh trái, 1.0 là canh phải"
-
-#: ctk/ctkalignment.c:170
-msgid "Vertical alignment"
-msgstr "Canh hàng dọc"
-
-#: ctk/ctkalignment.c:171 ctk/ctkbutton.c:347
-msgid ""
-"Vertical position of child in available space. 0.0 is top aligned, 1.0 is "
-"bottom aligned"
-msgstr ""
-"Vị trí theo chiều dọc của một cửa sổ con trong khoảng cách sẵn sàng. 0.0 là "
-"trên cùng, 1.0 là dưới đáy"
-
-#: ctk/ctkalignment.c:188
-msgid "Horizontal scale"
-msgstr "Tỷ lệ ngang"
-
-#: ctk/ctkalignment.c:189
-msgid ""
-"If available horizontal space is bigger than needed for the child, how much "
-"of it to use for the child. 0.0 means none, 1.0 means all"
-msgstr ""
-"Nếu vùng ngang sẵn sàng có lớn hơn cần thiết cho cửa sổ con, bao nhiêu phần "
-"cần dùng cho nó. 0.0 là không có gì, 1.0 là tất cả"
-
-#: ctk/ctkalignment.c:206
-msgid "Vertical scale"
-msgstr "Tỷ lệ dọc"
-
-#: ctk/ctkalignment.c:207
-msgid ""
-"If available vertical space is bigger than needed for the child, how much of "
-"it to use for the child. 0.0 means none, 1.0 means all"
-msgstr ""
-"Nếu vùng dọc sẵn sàng có lớn hơn cần thiết cho cửa sổ con, bao nhiêu phần "
-"cần dùng cho nó. 0.0 là không có gì, 1.0 là tất cả"
-
-#: ctk/ctkalignment.c:226
-msgid "Top Padding"
-msgstr "Đệm trên"
-
-#: ctk/ctkalignment.c:227
-msgid "The padding to insert at the top of the widget."
-msgstr "Đệm cần chèn trên ô điều khiển."
-
-#: ctk/ctkalignment.c:245
-msgid "Bottom Padding"
-msgstr "Đệm dưới"
-
-#: ctk/ctkalignment.c:246
-msgid "The padding to insert at the bottom of the widget."
-msgstr "Đệm cần chèn dưới ô điều khiển."
-
-#: ctk/ctkalignment.c:264
-msgid "Left Padding"
-msgstr "Đệm trái"
-
-#: ctk/ctkalignment.c:265
-msgid "The padding to insert at the left of the widget."
-msgstr "Đệm cần chèn bên trái ô điều khiển."
-
-#: ctk/ctkalignment.c:283
-msgid "Right Padding"
-msgstr "Đệm phải"
-
-#: ctk/ctkalignment.c:284
-msgid "The padding to insert at the right of the widget."
-msgstr "Đệm cần chèn bên phải ô điều khiển."
-
 #: ctk/deprecated/ctkarrow.c:121
 msgid "Arrow direction"
 msgstr "Hướng mũi tên"
@@ -513,7 +433,7 @@ msgid "Appearance of the shadow surrounding the arrow"
 msgstr "Diện mạo của bóng chung quang mũi tên"
 
 #: ctk/deprecated/ctkarrow.c:138 ctk/ctkcombobox.c:1227 ctk/ctkmenu.c:1006
-#: ctk/ctkmenuitem.c:898
+#: ctk/ctkmenuitem.c:897
 msgid "Arrow Scaling"
 msgstr "Co giãn mũi tên"
 
@@ -521,76 +441,76 @@ msgstr "Co giãn mũi tên"
 msgid "Amount of space used up by arrow"
 msgstr "Khoảng cách dùng bởi một mũi tên"
 
-#: ctk/ctkcolorsel.c:325
+#: ctk/ctkcolorsel.c:323
 msgid "Has Opacity Control"
 msgstr "Điều khiển độ đục"
 
-#: ctk/ctkcolorsel.c:326
+#: ctk/ctkcolorsel.c:324
 msgid "Whether the color selector should allow setting opacity"
 msgstr "Bộ chọn màu cho phép đặt độ đục hay không"
 
-#: ctk/ctkcolorsel.c:332
+#: ctk/ctkcolorsel.c:330
 msgid "Has palette"
 msgstr "Có bảng chọn"
 
-#: ctk/ctkcolorsel.c:333
+#: ctk/ctkcolorsel.c:331
 msgid "Whether a palette should be used"
 msgstr "Bảng chọn có được dùng hay không"
 
-#: ctk/ctkcolorsel.c:347 ctk/ctkcolorbutton.c:201
+#: ctk/ctkcolorsel.c:343 ctk/ctkcolorbutton.c:198
 msgid "Current Color"
 msgstr "Màu hiện có"
 
-#: ctk/ctkcolorsel.c:348
+#: ctk/ctkcolorsel.c:344
 msgid "The current color"
 msgstr "Màu hiện thời"
 
-#: ctk/ctkcolorsel.c:354 ctk/ctkcolorbutton.c:217
+#: ctk/ctkcolorsel.c:350 ctk/ctkcolorbutton.c:213
 msgid "Current Alpha"
 msgstr "Độ anfa hiện thời"
 
-#: ctk/ctkcolorsel.c:355
+#: ctk/ctkcolorsel.c:351
 msgid "The current opacity value (0 fully transparent, 65535 fully opaque)"
 msgstr ""
 "Giá trị độ đục hiện thời (0 là trong suốt hoàn toàn, 65535 là đục hoàn toàn)"
 
-#: ctk/ctkcolorsel.c:369
+#: ctk/ctkcolorsel.c:365
 msgid "Current RGBA"
 msgstr "RGBA hiện tại"
 
-#: ctk/ctkcolorsel.c:370
+#: ctk/ctkcolorsel.c:366
 msgid "The current RGBA color"
 msgstr "Màu RGBA hiện tại"
 
-#: ctk/ctkcolorseldialog.c:136
+#: ctk/ctkcolorseldialog.c:134
 msgid "Color Selection"
 msgstr "Chọn Màu"
 
-#: ctk/ctkcolorseldialog.c:137
+#: ctk/ctkcolorseldialog.c:135
 msgid "The color selection embedded in the dialog."
 msgstr "Lựa chọn màu nhúng trong hộp thoại."
 
-#: ctk/ctkcolorseldialog.c:143
+#: ctk/ctkcolorseldialog.c:141
 msgid "OK Button"
 msgstr "Nút OK"
 
-#: ctk/ctkcolorseldialog.c:144
+#: ctk/ctkcolorseldialog.c:142
 msgid "The OK button of the dialog."
 msgstr "Nút OK (đồng ý) của hộp thoại."
 
-#: ctk/ctkcolorseldialog.c:150
+#: ctk/ctkcolorseldialog.c:148
 msgid "Cancel Button"
 msgstr "Nút Thôi"
 
-#: ctk/ctkcolorseldialog.c:151
+#: ctk/ctkcolorseldialog.c:149
 msgid "The cancel button of the dialog."
 msgstr "Cái nút Thôi của hộp thoại."
 
-#: ctk/ctkcolorseldialog.c:157
+#: ctk/ctkcolorseldialog.c:155
 msgid "Help Button"
 msgstr "Nút Trợ giúp"
 
-#: ctk/ctkcolorseldialog.c:158
+#: ctk/ctkcolorseldialog.c:156
 msgid "The help button of the dialog."
 msgstr "Cái nút Trợ giúp của hộp thoại."
 
@@ -772,7 +692,7 @@ msgid "The amount of space between two consecutive columns"
 msgstr "Khoảng cách giữa hai cột liên tiếp"
 
 #: ctk/deprecated/ctktable.c:221 ctk/ctkbox.c:285 ctk/ctkflowbox.c:3849
-#: ctk/ctkstack.c:459 ctk/ctktoolbar.c:597 ctk/ctktoolitemgroup.c:1688
+#: ctk/ctkstack.c:459 ctk/ctktoolbar.c:597 ctk/ctktoolitemgroup.c:1686
 msgid "Homogeneous"
 msgstr "Đồng đều"
 
@@ -1045,7 +965,7 @@ msgstr ""
 
 #: ctk/ctkactionbar.c:345 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
 #: ctk/ctknotebook.c:840 ctk/ctkpaned.c:368 ctk/ctkpopover.c:1767
-#: ctk/ctkpopovermenu.c:384 ctk/ctkstack.c:537 ctk/ctktoolitemgroup.c:1716
+#: ctk/ctkpopovermenu.c:384 ctk/ctkstack.c:537 ctk/ctktoolitemgroup.c:1714
 msgid "Position"
 msgstr "Vị trí"
 
@@ -1103,6 +1023,86 @@ msgstr "Cỡ trang"
 msgid "The page size of the adjustment"
 msgstr "Kích thước trang của hiệu số chỉnh"
 
+#: ctk/ctkalignment.c:145
+msgid "Horizontal alignment"
+msgstr "Canh hàng ngang"
+
+#: ctk/ctkalignment.c:146 ctk/ctkbutton.c:328
+msgid ""
+"Horizontal position of child in available space. 0.0 is left aligned, 1.0 is "
+"right aligned"
+msgstr ""
+"Vị trí theo chiều ngang của một cửa sổ con trong khoảng cách sẵn sàng. 0.0 "
+"là canh trái, 1.0 là canh phải"
+
+#: ctk/ctkalignment.c:162
+msgid "Vertical alignment"
+msgstr "Canh hàng dọc"
+
+#: ctk/ctkalignment.c:163 ctk/ctkbutton.c:347
+msgid ""
+"Vertical position of child in available space. 0.0 is top aligned, 1.0 is "
+"bottom aligned"
+msgstr ""
+"Vị trí theo chiều dọc của một cửa sổ con trong khoảng cách sẵn sàng. 0.0 là "
+"trên cùng, 1.0 là dưới đáy"
+
+#: ctk/ctkalignment.c:178
+msgid "Horizontal scale"
+msgstr "Tỷ lệ ngang"
+
+#: ctk/ctkalignment.c:179
+msgid ""
+"If available horizontal space is bigger than needed for the child, how much "
+"of it to use for the child. 0.0 means none, 1.0 means all"
+msgstr ""
+"Nếu vùng ngang sẵn sàng có lớn hơn cần thiết cho cửa sổ con, bao nhiêu phần "
+"cần dùng cho nó. 0.0 là không có gì, 1.0 là tất cả"
+
+#: ctk/ctkalignment.c:194
+msgid "Vertical scale"
+msgstr "Tỷ lệ dọc"
+
+#: ctk/ctkalignment.c:195
+msgid ""
+"If available vertical space is bigger than needed for the child, how much of "
+"it to use for the child. 0.0 means none, 1.0 means all"
+msgstr ""
+"Nếu vùng dọc sẵn sàng có lớn hơn cần thiết cho cửa sổ con, bao nhiêu phần "
+"cần dùng cho nó. 0.0 là không có gì, 1.0 là tất cả"
+
+#: ctk/ctkalignment.c:212
+msgid "Top Padding"
+msgstr "Đệm trên"
+
+#: ctk/ctkalignment.c:213
+msgid "The padding to insert at the top of the widget."
+msgstr "Đệm cần chèn trên ô điều khiển."
+
+#: ctk/ctkalignment.c:229
+msgid "Bottom Padding"
+msgstr "Đệm dưới"
+
+#: ctk/ctkalignment.c:230
+msgid "The padding to insert at the bottom of the widget."
+msgstr "Đệm cần chèn dưới ô điều khiển."
+
+#: ctk/ctkalignment.c:246
+msgid "Left Padding"
+msgstr "Đệm trái"
+
+#: ctk/ctkalignment.c:247
+msgid "The padding to insert at the left of the widget."
+msgstr "Đệm cần chèn bên trái ô điều khiển."
+
+#: ctk/ctkalignment.c:263
+msgid "Right Padding"
+msgstr "Đệm phải"
+
+#: ctk/ctkalignment.c:264
+msgid "The padding to insert at the right of the widget."
+msgstr "Đệm cần chèn bên phải ô điều khiển."
+
 #: ctk/ctkappchooserbutton.c:618
 msgid "Include an 'Other…' item"
 msgstr "Bao gồm mục “Khác…”"
@@ -1121,11 +1121,11 @@ msgstr "Hiển thị mục mặc định"
 msgid "Whether the combobox should show the default application on top"
 msgstr "Hộp chọn có nên hiển thị ứng dụng mặc định trên cùng hay không"
 
-#: ctk/ctkappchooserbutton.c:647 ctk/ctkappchooserdialog.c:688
+#: ctk/ctkappchooserbutton.c:647 ctk/ctkappchooserdialog.c:687
 msgid "Heading"
 msgstr "Tiêu đề"
 
-#: ctk/ctkappchooserbutton.c:648 ctk/ctkappchooserdialog.c:689
+#: ctk/ctkappchooserbutton.c:648 ctk/ctkappchooserdialog.c:688
 msgid "The text to show at the top of the dialog"
 msgstr "Văn bản hiện ở đầu hộp thoại"
 
@@ -1137,11 +1137,11 @@ msgstr "Kiểu nội dung"
 msgid "The content type used by the open with object"
 msgstr "Kiểu nội dung được dùng bởi mở với đối tượng"
 
-#: ctk/ctkappchooserdialog.c:674
+#: ctk/ctkappchooserdialog.c:673
 msgid "GFile"
 msgstr "GFile"
 
-#: ctk/ctkappchooserdialog.c:675
+#: ctk/ctkappchooserdialog.c:674
 msgid "The GFile used by the app chooser dialog"
 msgstr "GFile được dùng bởi hộp thoại bộ chọn ứng dụng"
 
@@ -1193,44 +1193,44 @@ msgstr "Văn bản mặc định của Widget"
 msgid "The default text appearing when there are no applications"
 msgstr "Văn bản mặc định xuất hiện khi ở đây không có ứng dụng nào"
 
-#: ctk/ctkapplication.c:845
+#: ctk/ctkapplication.c:843
 msgid "Register session"
 msgstr "Đăng ký phiên"
 
-#: ctk/ctkapplication.c:846
+#: ctk/ctkapplication.c:844
 msgid "Register with the session manager"
 msgstr "Đăng ký với bộ quản lý phiên"
 
-#: ctk/ctkapplication.c:863
+#: ctk/ctkapplication.c:861
 msgid "Screensaver Active"
 msgstr ""
 
-#: ctk/ctkapplication.c:864
+#: ctk/ctkapplication.c:862
 #, fuzzy
 msgid "Whether the screensaver is active"
 msgstr "Nút xoay tròn vẫn hoạt động không"
 
-#: ctk/ctkapplication.c:870
+#: ctk/ctkapplication.c:868
 msgid "Application menu"
 msgstr "Trình đơn ứng dụng"
 
-#: ctk/ctkapplication.c:871
+#: ctk/ctkapplication.c:869
 msgid "The GMenuModel for the application menu"
 msgstr "GMenuModel cho trình đơn ứng dụng"
 
-#: ctk/ctkapplication.c:877
+#: ctk/ctkapplication.c:875
 msgid "Menubar"
 msgstr "Thanh trình đơn"
 
-#: ctk/ctkapplication.c:878
+#: ctk/ctkapplication.c:876
 msgid "The GMenuModel for the menubar"
 msgstr "GMenuModel cho thanh trình đơn"
 
-#: ctk/ctkapplication.c:884
+#: ctk/ctkapplication.c:882
 msgid "Active window"
 msgstr "Kích hoạt cửa sổ"
 
-#: ctk/ctkapplication.c:885
+#: ctk/ctkapplication.c:883
 msgid "The window which most recently had focus"
 msgstr "Cửa sổ mới mất focus gần đây"
 
@@ -1433,7 +1433,7 @@ msgid ""
 msgstr "Vị trí của đường cơ sở widget đã căn chỉnh nếu có khoảng trống thêm"
 
 #: ctk/ctkbox.c:318 ctk/ctkcellareabox.c:330 ctk/ctktoolbar.c:589
-#: ctk/ctktoolitemgroup.c:1695 ctk/ctktoolpalette.c:1027
+#: ctk/ctktoolitemgroup.c:1693 ctk/ctktoolpalette.c:1027
 #: ctk/ctktreeviewcolumn.c:323
 msgid "Expand"
 msgstr "Mở rộng"
@@ -1444,7 +1444,7 @@ msgstr ""
 "Ô điều khiển con có nên nhận thêm không gian bổ sung khi ô điều khiển mẹ to "
 "ra không"
 
-#: ctk/ctkbox.c:335 ctk/ctktoolitemgroup.c:1702
+#: ctk/ctkbox.c:335 ctk/ctktoolitemgroup.c:1700
 msgid "Fill"
 msgstr "Điền đầy"
 
@@ -1483,12 +1483,12 @@ msgstr ""
 "khiển"
 
 #: ctk/ctkbutton.c:288 ctk/ctkexpander.c:316 ctk/ctklabel.c:826
-#: ctk/ctkmenuitem.c:803 ctk/ctktoolbutton.c:211
+#: ctk/ctkmenuitem.c:802 ctk/ctktoolbutton.c:211
 msgid "Use underline"
 msgstr "Gạch dưới"
 
 #: ctk/ctkbutton.c:289 ctk/ctkexpander.c:317 ctk/ctklabel.c:827
-#: ctk/ctkmenuitem.c:804
+#: ctk/ctkmenuitem.c:803
 msgid ""
 "If set, an underline in the text indicates the next character should be used "
 "for the mnemonic accelerator key"
@@ -1929,35 +1929,35 @@ msgstr "Tên màu nền ô"
 msgid "Cell background color as a string"
 msgstr "Màu nền ô theo chuỗi"
 
-#: ctk/ctkcellrenderer.c:409
+#: ctk/ctkcellrenderer.c:406
 msgid "Cell background color"
 msgstr "Màu nền ô"
 
-#: ctk/ctkcellrenderer.c:410
+#: ctk/ctkcellrenderer.c:407
 msgid "Cell background color as a CdkColor"
 msgstr "Màu nền ô là CdkColor"
 
-#: ctk/ctkcellrenderer.c:424
+#: ctk/ctkcellrenderer.c:421
 msgid "Cell background RGBA color"
 msgstr "Màu RGBA nền ô"
 
-#: ctk/ctkcellrenderer.c:425
+#: ctk/ctkcellrenderer.c:422
 msgid "Cell background color as a CdkRGBA"
 msgstr "Màu nền ô là CdkRGBA"
 
-#: ctk/ctkcellrenderer.c:432
+#: ctk/ctkcellrenderer.c:429
 msgid "Editing"
 msgstr "Sửa"
 
-#: ctk/ctkcellrenderer.c:433
+#: ctk/ctkcellrenderer.c:430
 msgid "Whether the cell renderer is currently in editing mode"
 msgstr "Công cụ vẽ ô đang trong chế độ chỉnh sửa không"
 
-#: ctk/ctkcellrenderer.c:441
+#: ctk/ctkcellrenderer.c:438
 msgid "Cell background set"
 msgstr "Đặt màu nền ô"
 
-#: ctk/ctkcellrenderer.c:442
+#: ctk/ctkcellrenderer.c:439
 msgid "Whether the cell background color is set"
 msgstr "Có đặt màu nền ô hay không"
 
@@ -2136,8 +2136,8 @@ msgstr "Số lần số cần hiển thị"
 
 #: ctk/ctkcellrendererspinner.c:125 ctk/ctkcheckmenuitem.c:209
 #: ctk/ctkmenu.c:640 ctk/ctkmodelbutton.c:1211 ctk/ctkmodelbutton.c:1212
-#: ctk/ctkspinner.c:221 ctk/ctkswitch.c:878 ctk/ctktoggleaction.c:129
-#: ctk/ctktogglebutton.c:188 ctk/ctktoggletoolbutton.c:130
+#: ctk/ctkspinner.c:221 ctk/ctkswitch.c:868 ctk/ctktoggleaction.c:129
+#: ctk/ctktogglebutton.c:187 ctk/ctktoggletoolbutton.c:130
 msgid "Active"
 msgstr "Hoạt động"
 
@@ -2189,152 +2189,152 @@ msgstr "Tên màu nền"
 msgid "Background color as a string"
 msgstr "Tên màu nền là chuỗi"
 
-#: ctk/ctkcellrenderertext.c:298 ctk/ctkcellview.c:233 ctk/ctktexttag.c:231
+#: ctk/ctkcellrenderertext.c:295 ctk/ctkcellview.c:230 ctk/ctktexttag.c:231
 msgid "Background color"
 msgstr "Màu nền"
 
-#: ctk/ctkcellrenderertext.c:299 ctk/ctkcellview.c:234 ctk/ctktexttag.c:232
+#: ctk/ctkcellrenderertext.c:296 ctk/ctkcellview.c:231 ctk/ctktexttag.c:232
 msgid "Background color as a CdkColor"
 msgstr "Màu nền theo CdkColor"
 
-#: ctk/ctkcellrenderertext.c:313
+#: ctk/ctkcellrenderertext.c:309
 msgid "Background color as RGBA"
 msgstr "Màu nền là RGBA"
 
-#: ctk/ctkcellrenderertext.c:314 ctk/ctkcellview.c:249 ctk/ctktexttag.c:247
+#: ctk/ctkcellrenderertext.c:310 ctk/ctkcellview.c:245 ctk/ctktexttag.c:247
 msgid "Background color as a CdkRGBA"
 msgstr "Màu nền là CdkRGBA"
 
-#: ctk/ctkcellrenderertext.c:319 ctk/ctktexttag.c:262
+#: ctk/ctkcellrenderertext.c:315 ctk/ctktexttag.c:262
 msgid "Foreground color name"
 msgstr "Tên màu tiền cảnh"
 
-#: ctk/ctkcellrenderertext.c:320 ctk/ctktexttag.c:263
+#: ctk/ctkcellrenderertext.c:316 ctk/ctktexttag.c:263
 msgid "Foreground color as a string"
 msgstr "Tên màu tiền cảnh là chuỗi"
 
-#: ctk/ctkcellrenderertext.c:334 ctk/ctktexttag.c:277 ctk/ctktrayicon-x11.c:136
+#: ctk/ctkcellrenderertext.c:327 ctk/ctktexttag.c:277 ctk/ctktrayicon-x11.c:136
 msgid "Foreground color"
 msgstr "Màu tiền cảnh"
 
-#: ctk/ctkcellrenderertext.c:335 ctk/ctktexttag.c:278
+#: ctk/ctkcellrenderertext.c:328 ctk/ctktexttag.c:278
 msgid "Foreground color as a CdkColor"
 msgstr "Màu tiền cảnh là CdkColor"
 
-#: ctk/ctkcellrenderertext.c:349
+#: ctk/ctkcellrenderertext.c:341
 msgid "Foreground color as RGBA"
 msgstr "Màu tiền cảnh là RGBA"
 
-#: ctk/ctkcellrenderertext.c:350 ctk/ctktexttag.c:293
+#: ctk/ctkcellrenderertext.c:342 ctk/ctktexttag.c:293
 msgid "Foreground color as a CdkRGBA"
 msgstr "Màu tiền cảnh là CdkRGBA"
 
-#: ctk/ctkcellrenderertext.c:357 ctk/ctkentry.c:861 ctk/ctktexttag.c:309
+#: ctk/ctkcellrenderertext.c:349 ctk/ctkentry.c:861 ctk/ctktexttag.c:309
 #: ctk/ctktextview.c:825
 msgid "Editable"
 msgstr "Sửa được"
 
-#: ctk/ctkcellrenderertext.c:358 ctk/ctktexttag.c:310 ctk/ctktextview.c:826
+#: ctk/ctkcellrenderertext.c:350 ctk/ctktexttag.c:310 ctk/ctktextview.c:826
 msgid "Whether the text can be modified by the user"
 msgstr "Người dùng có thể hiệu chỉnh văn bản hay không"
 
-#: ctk/ctkcellrenderertext.c:364 ctk/ctkcellrenderertext.c:371
+#: ctk/ctkcellrenderertext.c:356 ctk/ctkcellrenderertext.c:363
 #: ctk/ctkfontchooser.c:64 ctk/ctktexttag.c:325 ctk/ctktexttag.c:333
 msgid "Font"
 msgstr "Phông chữ"
 
-#: ctk/ctkcellrenderertext.c:365 ctk/ctkfontchooser.c:65 ctk/ctktexttag.c:326
+#: ctk/ctkcellrenderertext.c:357 ctk/ctkfontchooser.c:65 ctk/ctktexttag.c:326
 msgid "Font description as a string, e.g. \"Sans Italic 12\""
 msgstr ""
 "Mô tả phông chữ dạng chuỗi, v.d. “Sans Italic 12” (không chân nghiêng 12 "
 "điểm)"
 
-#: ctk/ctkcellrenderertext.c:372 ctk/ctkfontchooser.c:78 ctk/ctktexttag.c:334
+#: ctk/ctkcellrenderertext.c:364 ctk/ctkfontchooser.c:78 ctk/ctktexttag.c:334
 msgid "Font description as a PangoFontDescription struct"
 msgstr "Mô tả phông chữ theo cấu trúc PangoFontDescription"
 
-#: ctk/ctkcellrenderertext.c:378 ctk/ctktexttag.c:341
+#: ctk/ctkcellrenderertext.c:370 ctk/ctktexttag.c:341
 msgid "Font family"
 msgstr "Họ phông chữ"
 
-#: ctk/ctkcellrenderertext.c:379 ctk/ctktexttag.c:342
+#: ctk/ctkcellrenderertext.c:371 ctk/ctktexttag.c:342
 msgid "Name of the font family, e.g. Sans, Helvetica, Times, Monospace"
 msgstr ""
 "Tên họ phông chữ, v.d. Sans (không chân), Helvetica, Times, Monospace (đơn "
 "cách)"
 
-#: ctk/ctkcellrenderertext.c:385 ctk/ctkcellrenderertext.c:386
+#: ctk/ctkcellrenderertext.c:377 ctk/ctkcellrenderertext.c:378
 #: ctk/ctktexttag.c:349
 msgid "Font style"
 msgstr "Kiểu phông chữ"
 
-#: ctk/ctkcellrenderertext.c:393 ctk/ctkcellrenderertext.c:394
+#: ctk/ctkcellrenderertext.c:385 ctk/ctkcellrenderertext.c:386
 #: ctk/ctktexttag.c:358
 msgid "Font variant"
 msgstr "Biến thể phông chữ"
 
-#: ctk/ctkcellrenderertext.c:401 ctk/ctkcellrenderertext.c:402
+#: ctk/ctkcellrenderertext.c:393 ctk/ctkcellrenderertext.c:394
 #: ctk/ctktexttag.c:367
 msgid "Font weight"
 msgstr "Độ đậm phông chữ"
 
-#: ctk/ctkcellrenderertext.c:409 ctk/ctkcellrenderertext.c:410
+#: ctk/ctkcellrenderertext.c:401 ctk/ctkcellrenderertext.c:402
 #: ctk/ctktexttag.c:378
 msgid "Font stretch"
 msgstr "Độ giãn phông chữ"
 
-#: ctk/ctkcellrenderertext.c:417 ctk/ctkcellrenderertext.c:418
+#: ctk/ctkcellrenderertext.c:409 ctk/ctkcellrenderertext.c:410
 #: ctk/ctktexttag.c:387
 msgid "Font size"
 msgstr "Cỡ phông chữ"
 
-#: ctk/ctkcellrenderertext.c:425 ctk/ctktexttag.c:407
+#: ctk/ctkcellrenderertext.c:417 ctk/ctktexttag.c:407
 msgid "Font points"
 msgstr "Điểm phông chữ"
 
-#: ctk/ctkcellrenderertext.c:426 ctk/ctktexttag.c:408
+#: ctk/ctkcellrenderertext.c:418 ctk/ctktexttag.c:408
 msgid "Font size in points"
 msgstr "Kích thước phông chữ theo điểm"
 
-#: ctk/ctkcellrenderertext.c:433 ctk/ctktexttag.c:397
+#: ctk/ctkcellrenderertext.c:425 ctk/ctktexttag.c:397
 msgid "Font scale"
 msgstr "Tỷ lệ phông chữ"
 
-#: ctk/ctkcellrenderertext.c:434
+#: ctk/ctkcellrenderertext.c:426
 msgid "Font scaling factor"
 msgstr "Hệ số tỷ lệ của phông chữ"
 
-#: ctk/ctkcellrenderertext.c:441 ctk/ctktexttag.c:476
+#: ctk/ctkcellrenderertext.c:433 ctk/ctktexttag.c:476
 msgid "Rise"
 msgstr "Độ nâng lên"
 
-#: ctk/ctkcellrenderertext.c:442
+#: ctk/ctkcellrenderertext.c:434
 msgid ""
 "Offset of text above the baseline (below the baseline if rise is negative)"
 msgstr ""
 "Hiệu số của chữ trên đường cơ bản (dưới đường cơ bản nếu độ có nâng lên âm)"
 
-#: ctk/ctkcellrenderertext.c:450 ctk/ctktexttag.c:516
+#: ctk/ctkcellrenderertext.c:442 ctk/ctktexttag.c:516
 msgid "Strikethrough"
 msgstr "Gạch đè"
 
-#: ctk/ctkcellrenderertext.c:451 ctk/ctktexttag.c:517
+#: ctk/ctkcellrenderertext.c:443 ctk/ctktexttag.c:517
 msgid "Whether to strike through the text"
 msgstr "Văn bản có bị gạch đè hay không"
 
-#: ctk/ctkcellrenderertext.c:457 ctk/ctktexttag.c:524
+#: ctk/ctkcellrenderertext.c:449 ctk/ctktexttag.c:524
 msgid "Underline"
 msgstr "Gạch chân"
 
-#: ctk/ctkcellrenderertext.c:458 ctk/ctktexttag.c:525
+#: ctk/ctkcellrenderertext.c:450 ctk/ctktexttag.c:525
 msgid "Style of underline for this text"
 msgstr "Kiểu dạng gạch chân của văn bản"
 
-#: ctk/ctkcellrenderertext.c:465 ctk/ctkfontchooser.c:154 ctk/ctktexttag.c:436
+#: ctk/ctkcellrenderertext.c:457 ctk/ctkfontchooser.c:154 ctk/ctktexttag.c:436
 msgid "Language"
 msgstr "Ngôn ngữ"
 
-#: ctk/ctkcellrenderertext.c:466
+#: ctk/ctkcellrenderertext.c:458
 msgid ""
 "The language this text is in, as an ISO code. Pango can use this as a hint "
 "when rendering the text. If you don't understand this parameter, you "
@@ -2344,11 +2344,11 @@ msgstr ""
 "mã này để vẽ văn bản. Nếu bạn không hiểu tham số này, rất có thể là bạn "
 "không cần nó"
 
-#: ctk/ctkcellrenderertext.c:484 ctk/ctklabel.c:963 ctk/ctkprogressbar.c:330
+#: ctk/ctkcellrenderertext.c:476 ctk/ctklabel.c:963 ctk/ctkprogressbar.c:330
 msgid "Ellipsize"
 msgstr "Chấm lửng hóa"
 
-#: ctk/ctkcellrenderertext.c:485
+#: ctk/ctkcellrenderertext.c:477
 msgid ""
 "The preferred place to ellipsize the string, if the cell renderer does not "
 "have enough room to display the entire string"
@@ -2356,28 +2356,28 @@ msgstr ""
 "Chỗ muốn đặt dấu chấm lửng, nếu bộ vẽ ô không có đủ chỗ để hiển thị toàn "
 "chuỗi"
 
-#: ctk/ctkcellrenderertext.c:503 ctk/ctkfilechooserbutton.c:457
+#: ctk/ctkcellrenderertext.c:495 ctk/ctkfilechooserbutton.c:457
 #: ctk/ctklabel.c:983
 msgid "Width In Characters"
 msgstr "Độ rộng tính theo ký tự"
 
-#: ctk/ctkcellrenderertext.c:504 ctk/ctklabel.c:984
+#: ctk/ctkcellrenderertext.c:496 ctk/ctklabel.c:984
 msgid "The desired width of the label, in characters"
 msgstr "Độ rộng nhãn mong muốn, theo ký tự"
 
-#: ctk/ctkcellrenderertext.c:525 ctk/ctklabel.c:1039
+#: ctk/ctkcellrenderertext.c:517 ctk/ctklabel.c:1039
 msgid "Maximum Width In Characters"
 msgstr "Độ rộng tối đa tính theo ký tự"
 
-#: ctk/ctkcellrenderertext.c:526
+#: ctk/ctkcellrenderertext.c:518
 msgid "The maximum width of the cell, in characters"
 msgstr "Độ rộng lớn nhất của ô, tính theo số kí tự"
 
-#: ctk/ctkcellrenderertext.c:542 ctk/ctktexttag.c:569
+#: ctk/ctkcellrenderertext.c:534 ctk/ctktexttag.c:569
 msgid "Wrap mode"
 msgstr "Chế độ cuộn"
 
-#: ctk/ctkcellrenderertext.c:543
+#: ctk/ctkcellrenderertext.c:535
 msgid ""
 "How to break the string into multiple lines, if the cell renderer does not "
 "have enough room to display the entire string"
@@ -2385,155 +2385,155 @@ msgstr ""
 "Cách ngắt toàn chuỗi ra nhiều dòng riêng, nếu bộ vẽ ô không có đủ chỗ để "
 "hiển thị toàn chuỗi"
 
-#: ctk/ctkcellrenderertext.c:561 ctk/ctkcombobox.c:923
+#: ctk/ctkcellrenderertext.c:553 ctk/ctkcombobox.c:923
 msgid "Wrap width"
 msgstr "Độ rộng cuộn"
 
-#: ctk/ctkcellrenderertext.c:562
+#: ctk/ctkcellrenderertext.c:554
 msgid "The width at which the text is wrapped"
 msgstr "Độ rộng nơi ngắt dòng văn bản"
 
-#: ctk/ctkcellrenderertext.c:580 ctk/ctktreeviewcolumn.c:344
+#: ctk/ctkcellrenderertext.c:572 ctk/ctktreeviewcolumn.c:344
 msgid "Alignment"
 msgstr "Canh lề"
 
-#: ctk/ctkcellrenderertext.c:581
+#: ctk/ctkcellrenderertext.c:573
 msgid "How to align the lines"
 msgstr "Cách canh các đường"
 
-#: ctk/ctkcellrenderertext.c:596 ctk/ctkentry.c:1109
+#: ctk/ctkcellrenderertext.c:588 ctk/ctkentry.c:1109
 msgid "Placeholder text"
 msgstr "Giữ chỗ văn bản"
 
-#: ctk/ctkcellrenderertext.c:597
+#: ctk/ctkcellrenderertext.c:589
 msgid "Text rendered when an editable cell is empty"
 msgstr "Văn bản được vẽ khi một ô cho nhập liệu là trống rỗng"
 
-#: ctk/ctkcellrenderertext.c:606 ctk/ctkcellview.c:353 ctk/ctktexttag.c:722
+#: ctk/ctkcellrenderertext.c:598 ctk/ctkcellview.c:349 ctk/ctktexttag.c:722
 msgid "Background set"
 msgstr "Đặt nền"
 
-#: ctk/ctkcellrenderertext.c:607 ctk/ctkcellview.c:354 ctk/ctktexttag.c:723
+#: ctk/ctkcellrenderertext.c:599 ctk/ctkcellview.c:350 ctk/ctktexttag.c:723
 msgid "Whether this tag affects the background color"
 msgstr "Nếu thẻ này có tắc động tới màu nền hay không"
 
-#: ctk/ctkcellrenderertext.c:610 ctk/ctktexttag.c:730
+#: ctk/ctkcellrenderertext.c:602 ctk/ctktexttag.c:730
 msgid "Foreground set"
 msgstr "Đặt tiền cảnh"
 
-#: ctk/ctkcellrenderertext.c:611 ctk/ctktexttag.c:731
+#: ctk/ctkcellrenderertext.c:603 ctk/ctktexttag.c:731
 msgid "Whether this tag affects the foreground color"
 msgstr "Nếu thẻ này có tắc động tới màu tiền cảnh hay không"
 
-#: ctk/ctkcellrenderertext.c:614 ctk/ctktexttag.c:734
+#: ctk/ctkcellrenderertext.c:606 ctk/ctktexttag.c:734
 msgid "Editability set"
 msgstr "Đặt khả năng hiệu chỉnh"
 
-#: ctk/ctkcellrenderertext.c:615 ctk/ctktexttag.c:735
+#: ctk/ctkcellrenderertext.c:607 ctk/ctktexttag.c:735
 msgid "Whether this tag affects text editability"
 msgstr "Nếu thẻ này có tắc động tới khả năng hiệu chỉnh văn bản hay không"
 
-#: ctk/ctkcellrenderertext.c:618 ctk/ctktexttag.c:738
+#: ctk/ctkcellrenderertext.c:610 ctk/ctktexttag.c:738
 msgid "Font family set"
 msgstr "Đặt họ phông chữ"
 
-#: ctk/ctkcellrenderertext.c:619 ctk/ctktexttag.c:739
+#: ctk/ctkcellrenderertext.c:611 ctk/ctktexttag.c:739
 msgid "Whether this tag affects the font family"
 msgstr "Nếu thẻ này có tắc động tới họ phông chữ hay không"
 
-#: ctk/ctkcellrenderertext.c:622 ctk/ctktexttag.c:742
+#: ctk/ctkcellrenderertext.c:614 ctk/ctktexttag.c:742
 msgid "Font style set"
 msgstr "Đặt kiểu dạng phông chữ"
 
-#: ctk/ctkcellrenderertext.c:623 ctk/ctktexttag.c:743
+#: ctk/ctkcellrenderertext.c:615 ctk/ctktexttag.c:743
 msgid "Whether this tag affects the font style"
 msgstr "Nếu thẻ này có tắc động tới kiểu dạng phông chữ hay không"
 
-#: ctk/ctkcellrenderertext.c:626 ctk/ctktexttag.c:746
+#: ctk/ctkcellrenderertext.c:618 ctk/ctktexttag.c:746
 msgid "Font variant set"
 msgstr "Đặt biến thể phông chữ"
 
-#: ctk/ctkcellrenderertext.c:627 ctk/ctktexttag.c:747
+#: ctk/ctkcellrenderertext.c:619 ctk/ctktexttag.c:747
 msgid "Whether this tag affects the font variant"
 msgstr "Nếu thẻ này có tắc động tới biến thể phông chữ hay không"
 
-#: ctk/ctkcellrenderertext.c:630 ctk/ctktexttag.c:750
+#: ctk/ctkcellrenderertext.c:622 ctk/ctktexttag.c:750
 msgid "Font weight set"
 msgstr "Đặt độ đậm phông chữ"
 
-#: ctk/ctkcellrenderertext.c:631 ctk/ctktexttag.c:751
+#: ctk/ctkcellrenderertext.c:623 ctk/ctktexttag.c:751
 msgid "Whether this tag affects the font weight"
 msgstr "Nếu thẻ này có tắc động tới độ đậm phông chữ hay không"
 
-#: ctk/ctkcellrenderertext.c:634 ctk/ctktexttag.c:754
+#: ctk/ctkcellrenderertext.c:626 ctk/ctktexttag.c:754
 msgid "Font stretch set"
 msgstr "Đặt độ giãn phông chữ"
 
-#: ctk/ctkcellrenderertext.c:635 ctk/ctktexttag.c:755
+#: ctk/ctkcellrenderertext.c:627 ctk/ctktexttag.c:755
 msgid "Whether this tag affects the font stretch"
 msgstr "Nếu thẻ này có tắc động tới độ giãn phông chữ hay không"
 
-#: ctk/ctkcellrenderertext.c:638 ctk/ctktexttag.c:758
+#: ctk/ctkcellrenderertext.c:630 ctk/ctktexttag.c:758
 msgid "Font size set"
 msgstr "Đặt cỡ phông chữ"
 
-#: ctk/ctkcellrenderertext.c:639 ctk/ctktexttag.c:759
+#: ctk/ctkcellrenderertext.c:631 ctk/ctktexttag.c:759
 msgid "Whether this tag affects the font size"
 msgstr "Nếu thẻ này có tắc động tới kích thước phông chữ hay không"
 
-#: ctk/ctkcellrenderertext.c:642 ctk/ctktexttag.c:762
+#: ctk/ctkcellrenderertext.c:634 ctk/ctktexttag.c:762
 msgid "Font scale set"
 msgstr "Đặt tỷ lệ phông chữ"
 
-#: ctk/ctkcellrenderertext.c:643 ctk/ctktexttag.c:763
+#: ctk/ctkcellrenderertext.c:635 ctk/ctktexttag.c:763
 msgid "Whether this tag scales the font size by a factor"
 msgstr "Nếu thẻ này có co giãn kích thước phông chữ bằng một hệ số hay không"
 
-#: ctk/ctkcellrenderertext.c:646 ctk/ctktexttag.c:782
+#: ctk/ctkcellrenderertext.c:638 ctk/ctktexttag.c:782
 msgid "Rise set"
 msgstr "Đặt độ nâng lên"
 
-#: ctk/ctkcellrenderertext.c:647 ctk/ctktexttag.c:783
+#: ctk/ctkcellrenderertext.c:639 ctk/ctktexttag.c:783
 msgid "Whether this tag affects the rise"
 msgstr "Nếu thẻ này có tác động tới độ nâng lên hay không"
 
-#: ctk/ctkcellrenderertext.c:650 ctk/ctktexttag.c:798
+#: ctk/ctkcellrenderertext.c:642 ctk/ctktexttag.c:798
 msgid "Strikethrough set"
 msgstr "Đặt gạch đè"
 
-#: ctk/ctkcellrenderertext.c:651 ctk/ctktexttag.c:799
+#: ctk/ctkcellrenderertext.c:643 ctk/ctktexttag.c:799
 msgid "Whether this tag affects strikethrough"
 msgstr "Nếu thẻ này có tác động tới gạch đè hay không"
 
-#: ctk/ctkcellrenderertext.c:654 ctk/ctktexttag.c:806
+#: ctk/ctkcellrenderertext.c:646 ctk/ctktexttag.c:806
 msgid "Underline set"
 msgstr "Đặt gạch chân"
 
-#: ctk/ctkcellrenderertext.c:655 ctk/ctktexttag.c:807
+#: ctk/ctkcellrenderertext.c:647 ctk/ctktexttag.c:807
 msgid "Whether this tag affects underlining"
 msgstr "Nếu thẻ này có tác động tới gạch chân hay không"
 
-#: ctk/ctkcellrenderertext.c:658 ctk/ctktexttag.c:770
+#: ctk/ctkcellrenderertext.c:650 ctk/ctktexttag.c:770
 msgid "Language set"
 msgstr "Đặt ngôn ngữ"
 
-#: ctk/ctkcellrenderertext.c:659 ctk/ctktexttag.c:771
+#: ctk/ctkcellrenderertext.c:651 ctk/ctktexttag.c:771
 msgid "Whether this tag affects the language the text is rendered as"
 msgstr "Nếu thẻ này có tác động tới ngôn ngữ của văn bản vẽ hay không"
 
-#: ctk/ctkcellrenderertext.c:662
+#: ctk/ctkcellrenderertext.c:654
 msgid "Ellipsize set"
 msgstr "Đặt chấm lửng hóa"
 
-#: ctk/ctkcellrenderertext.c:663
+#: ctk/ctkcellrenderertext.c:655
 msgid "Whether this tag affects the ellipsize mode"
 msgstr "Nếu thẻ này có tác động tới chế độ chấm lửng hóa hay không"
 
-#: ctk/ctkcellrenderertext.c:666
+#: ctk/ctkcellrenderertext.c:658
 msgid "Align set"
 msgstr "Canh lề đặt"
 
-#: ctk/ctkcellrenderertext.c:667
+#: ctk/ctkcellrenderertext.c:659
 msgid "Whether this tag affects the alignment mode"
 msgstr "Nếu thẻ này có tác động tới chế độ chỉnh canh hay không"
 
@@ -2578,49 +2578,49 @@ msgstr "Cỡ cái chỉ"
 msgid "Size of check or radio indicator"
 msgstr "Kích thước của vòng bên trong chỉ chọn một"
 
-#: ctk/ctkcellview.c:248
+#: ctk/ctkcellview.c:244
 msgid "Background RGBA color"
 msgstr "Màu nền RGBA"
 
-#: ctk/ctkcellview.c:263
+#: ctk/ctkcellview.c:259
 msgid "CellView model"
 msgstr "Mô hình Xem Ô"
 
-#: ctk/ctkcellview.c:264
+#: ctk/ctkcellview.c:260
 msgid "The model for cell view"
 msgstr "Mô hình cho khung xem ô"
 
-#: ctk/ctkcellview.c:282 ctk/ctkcombobox.c:1182 ctk/ctkentrycompletion.c:467
+#: ctk/ctkcellview.c:278 ctk/ctkcombobox.c:1182 ctk/ctkentrycompletion.c:467
 #: ctk/ctkiconview.c:649 ctk/ctktreemenu.c:307 ctk/ctktreeviewcolumn.c:399
 msgid "Cell Area"
 msgstr "Vùng ô"
 
-#: ctk/ctkcellview.c:283 ctk/ctkcombobox.c:1183 ctk/ctkentrycompletion.c:468
+#: ctk/ctkcellview.c:279 ctk/ctkcombobox.c:1183 ctk/ctkentrycompletion.c:468
 #: ctk/ctkiconview.c:650 ctk/ctktreemenu.c:308 ctk/ctktreeviewcolumn.c:400
 msgid "The CtkCellArea used to layout cells"
 msgstr "CtkCellArea được dùng để bố trí các ô"
 
-#: ctk/ctkcellview.c:306
+#: ctk/ctkcellview.c:302
 msgid "Cell Area Context"
 msgstr "Ngữ cảnh Vùng ô"
 
-#: ctk/ctkcellview.c:307
+#: ctk/ctkcellview.c:303
 msgid "The CtkCellAreaContext used to compute the geometry of the cell view"
 msgstr "CtkCellAreaContext được dùng để tính toán hình hài của phần xem ô"
 
-#: ctk/ctkcellview.c:324
+#: ctk/ctkcellview.c:320
 msgid "Draw Sensitive"
 msgstr "Vẽ nhạy cảm"
 
-#: ctk/ctkcellview.c:325
+#: ctk/ctkcellview.c:321
 msgid "Whether to force cells to be drawn in a sensitive state"
 msgstr "Có nên ép ô được vẽ trong trạng thái nhạy cảm hay không"
 
-#: ctk/ctkcellview.c:343
+#: ctk/ctkcellview.c:339
 msgid "Fit Model"
 msgstr "Mô hình khít"
 
-#: ctk/ctkcellview.c:344
+#: ctk/ctkcellview.c:340
 msgid "Whether to request enough space for every row in the model"
 msgstr "Có yêu cầu đủ chỗ trống cho mọi hàng trong mô hình hay không"
 
@@ -2640,7 +2640,7 @@ msgstr "Khoảng cách chung quanh vòng bên trong chỉ chọn một"
 msgid "Whether the menu item is checked"
 msgstr "Mục trình đơn có được chọn hay không"
 
-#: ctk/ctkcheckmenuitem.c:217 ctk/ctktogglebutton.c:195
+#: ctk/ctkcheckmenuitem.c:217 ctk/ctktogglebutton.c:194
 msgid "Inconsistent"
 msgstr "Không thống nhất"
 
@@ -2676,29 +2676,29 @@ msgstr "Tiêu đề"
 msgid "The title of the color selection dialog"
 msgstr "Tiêu đề của hộp thoại chọn màu"
 
-#: ctk/ctkcolorbutton.c:202
+#: ctk/ctkcolorbutton.c:199
 msgid "The selected color"
 msgstr "Màu hiện thời được chọn"
 
-#: ctk/ctkcolorbutton.c:218
+#: ctk/ctkcolorbutton.c:214
 msgid "The selected opacity value (0 fully transparent, 65535 fully opaque)"
 msgstr ""
 "Giá trị độ đục được chọn (0 là trong suốt hoàn toàn, 65535 là đặc hoàn toàn)"
 
-#: ctk/ctkcolorbutton.c:232
+#: ctk/ctkcolorbutton.c:228
 msgid "Current RGBA Color"
 msgstr "Màu RGBA hiện tại"
 
-#: ctk/ctkcolorbutton.c:233
+#: ctk/ctkcolorbutton.c:229
 msgid "The selected RGBA color"
 msgstr "Màu RGBA được chọn"
 
-#: ctk/ctkcolorbutton.c:274
+#: ctk/ctkcolorbutton.c:270
 #, fuzzy
 msgid "Show Editor"
 msgstr "Hiện bộ soạn thảo"
 
-#: ctk/ctkcolorbutton.c:275
+#: ctk/ctkcolorbutton.c:271
 #, fuzzy
 msgid "Whether to show the color editor right away"
 msgstr "Có nên hiển thị nút đóng trên thanh công cụ hay không"
@@ -2939,7 +2939,7 @@ msgstr "Mã số"
 msgid "Unique ID"
 msgstr ""
 
-#: ctk/ctkcssnode.c:643 ctk/ctkswitch.c:893
+#: ctk/ctkcssnode.c:643 ctk/ctkswitch.c:883
 msgid "State"
 msgstr "Tình trạng"
 
@@ -3583,7 +3583,7 @@ msgid "Space to put between the label and the child"
 msgstr "Khoảng cách cần chèn giữa nhãn và ô điều khiển con"
 
 #: ctk/ctkexpander.c:351 ctk/ctkframe.c:262 ctk/ctktoolbutton.c:218
-#: ctk/ctktoolitemgroup.c:1646
+#: ctk/ctktoolitemgroup.c:1644
 msgid "Label widget"
 msgstr "Ô điều khiển nhãn"
 
@@ -3610,11 +3610,11 @@ msgid ""
 msgstr ""
 "Bộ khai triển sẽ đổi cỡ cửa sổ mức đỉnh ở trên mở rộng và co nhỏ hay không"
 
-#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1674 ctk/ctktreeview.c:1234
+#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1672 ctk/ctktreeview.c:1234
 msgid "Expander Size"
 msgstr "Cỡ mũi tên bung"
 
-#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1675 ctk/ctktreeview.c:1235
+#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1673 ctk/ctktreeview.c:1235
 msgid "Size of the expander arrow"
 msgstr "Kích thước của mũi tên bung"
 
@@ -3741,22 +3741,22 @@ msgstr ""
 "Bộ chọn tập tin không phải trong chế độ mở có nên cho phép người dùng tạo "
 "thư mục mới, hay không."
 
-#: ctk/ctkfilechoosernative.c:827
+#: ctk/ctkfilechoosernative.c:825
 #, fuzzy
 msgid "Accept label"
 msgstr "Chấp nhận Tab"
 
-#: ctk/ctkfilechoosernative.c:828
+#: ctk/ctkfilechoosernative.c:826
 #, fuzzy
 msgid "The label on the accept button"
 msgstr "Vai trò của nút này"
 
-#: ctk/ctkfilechoosernative.c:840
+#: ctk/ctkfilechoosernative.c:838
 #, fuzzy
 msgid "Cancel label"
 msgstr "Nhãn thanh"
 
-#: ctk/ctkfilechoosernative.c:841
+#: ctk/ctkfilechoosernative.c:839
 #, fuzzy
 msgid "The label on the cancel button"
 msgstr "Vai trò của nút này"
@@ -4757,7 +4757,7 @@ msgstr "Mục trình đơn hiện thời được chọn"
 msgid "The accel group holding accelerators for the menu"
 msgstr "Nhóm tăng tốc chứa các phím tăng tốc cho trình đơn"
 
-#: ctk/ctkmenu.c:670 ctk/ctkmenuitem.c:775
+#: ctk/ctkmenu.c:670 ctk/ctkmenuitem.c:774
 msgid "Accel Path"
 msgstr "Đường dẫn Tăng tốc"
 
@@ -4929,44 +4929,44 @@ msgstr "Gắn đáy"
 msgid "Arbitrary constant to scale down the size of the scroll arrow"
 msgstr "Hằng số tùy ý để giảm dần kích cỡ của mũi tên cuộn"
 
-#: ctk/ctkmenuitem.c:745
+#: ctk/ctkmenuitem.c:744
 msgid "Right Justified"
 msgstr "Sắp thẳng bên phải"
 
-#: ctk/ctkmenuitem.c:746
+#: ctk/ctkmenuitem.c:745
 msgid ""
 "Sets whether the menu item appears justified at the right side of a menu bar"
 msgstr ""
 "Đặt nếu mục trình đơn xuất hiện được sắp thẳng bên phải thanh trình đơn, hay "
 "không"
 
-#: ctk/ctkmenuitem.c:759 ctk/ctkpopovermenu.c:376
+#: ctk/ctkmenuitem.c:758 ctk/ctkpopovermenu.c:376
 msgid "Submenu"
 msgstr "Trình đơn con"
 
-#: ctk/ctkmenuitem.c:760
+#: ctk/ctkmenuitem.c:759
 msgid "The submenu attached to the menu item, or NULL if it has none"
 msgstr "Trình đơn con được gắn vào mục trình đơn, hay NULL nếu không có"
 
-#: ctk/ctkmenuitem.c:776
+#: ctk/ctkmenuitem.c:775
 msgid "Sets the accelerator path of the menu item"
 msgstr "Đặt đường dẫn tăng tốc của mục trình đơn"
 
-#: ctk/ctkmenuitem.c:790
+#: ctk/ctkmenuitem.c:789
 msgid "The text for the child label"
 msgstr "Chuỗi trên nhãn con"
 
-#: ctk/ctkmenuitem.c:899
+#: ctk/ctkmenuitem.c:898
 msgid "Amount of space used up by arrow, relative to the menu item's font size"
 msgstr ""
 "Khoảng cách dùng bởi mũi tên chỉ lên, tương đối với kích cỡ phông chữ của "
 "mục trình đơn"
 
-#: ctk/ctkmenuitem.c:915
+#: ctk/ctkmenuitem.c:914
 msgid "Width in Characters"
 msgstr "Bề rộng theo ký tự"
 
-#: ctk/ctkmenuitem.c:916
+#: ctk/ctkmenuitem.c:915
 msgid "The minimum desired width of the menu item in characters"
 msgstr "Chiều rộng tối thiểu (theo ký tự) đã muốn cho mục trình đơn"
 
@@ -5032,19 +5032,19 @@ msgstr "Dùng Mã định dạng trong phần phụ"
 msgid "The secondary text includes Pango markup."
 msgstr "Văn bản phụ chứa mã định dạng Pango."
 
-#: ctk/ctkmessagedialog.c:277
+#: ctk/ctkmessagedialog.c:276
 msgid "Image"
 msgstr "Ảnh"
 
-#: ctk/ctkmessagedialog.c:278
+#: ctk/ctkmessagedialog.c:277
 msgid "The image"
 msgstr "Ảnh"
 
-#: ctk/ctkmessagedialog.c:294
+#: ctk/ctkmessagedialog.c:293
 msgid "Message area"
 msgstr "Vùng thông điệp"
 
-#: ctk/ctkmessagedialog.c:295
+#: ctk/ctkmessagedialog.c:294
 #, fuzzy
 msgid "CtkBox that holds the dialog's primary and secondary labels"
 msgstr "CtkVBox cái mà giữ nhãn chính và phụ của hộp thoại"
@@ -6176,7 +6176,7 @@ msgstr "Số làm tròn"
 msgid "The number of digits to round the value to."
 msgstr "Số chữ số cần làm tròn giá trị."
 
-#: ctk/ctkrange.c:538 ctk/ctkswitch.c:929
+#: ctk/ctkrange.c:538 ctk/ctkswitch.c:919
 msgid "Slider Width"
 msgstr "Độ rộng con trượt"
 
@@ -7800,23 +7800,23 @@ msgstr "Kiểu giá trị"
 msgid "The value type returned by CtkStyleContext"
 msgstr "Kiểu giá trị trả về bởi CtkStyleContext"
 
-#: ctk/ctkswitch.c:879
+#: ctk/ctkswitch.c:869
 msgid "Whether the switch is on or off"
 msgstr "Công tắc là bật hay tắt"
 
-#: ctk/ctkswitch.c:894
+#: ctk/ctkswitch.c:884
 msgid "The backend state"
 msgstr "Tình trạng ứng dụng chạy sau"
 
-#: ctk/ctkswitch.c:930
+#: ctk/ctkswitch.c:920
 msgid "The minimum width of the handle"
 msgstr "Độ rộng bộ xử lý nhỏ nhất"
 
-#: ctk/ctkswitch.c:946
+#: ctk/ctkswitch.c:936
 msgid "Slider Height"
 msgstr "Chiều cao con trượt"
 
-#: ctk/ctkswitch.c:947
+#: ctk/ctkswitch.c:937
 msgid "The minimum height of the handle"
 msgstr "Độ rộng tối thiểu của bộ xử lý"
 
@@ -8328,11 +8328,11 @@ msgstr "Monospace"
 msgid "Whether to use a monospace font"
 msgstr "Có nên sử dụng phông chữ có độ rộng cố định hay không"
 
-#: ctk/ctktextview.c:1081
+#: ctk/ctktextview.c:1080
 msgid "Error underline color"
 msgstr "Màu gạch dưới lỗi"
 
-#: ctk/ctktextview.c:1082
+#: ctk/ctktextview.c:1081
 msgid "Color with which to draw error-indication underlines"
 msgstr "Màu cần dùng khi vẽ gạch dưới để ngụ ý lỗi"
 
@@ -8350,19 +8350,19 @@ msgstr ""
 msgid "Whether the toggle action should be active"
 msgstr "Hành động bật/tắt có nên được kích hoạt hay không"
 
-#: ctk/ctktogglebutton.c:189 ctk/ctktoggletoolbutton.c:131
+#: ctk/ctktogglebutton.c:188 ctk/ctktoggletoolbutton.c:131
 msgid "If the toggle button should be pressed in"
 msgstr "Nếu nút bật/tắt nên được bấm vào"
 
-#: ctk/ctktogglebutton.c:196
+#: ctk/ctktogglebutton.c:195
 msgid "If the toggle button is in an \"in between\" state"
 msgstr "Nếu cái nút bật tắt có ở trong trạng thái “ở giữa” hay không"
 
-#: ctk/ctktogglebutton.c:202
+#: ctk/ctktogglebutton.c:201
 msgid "Draw Indicator"
 msgstr "Cái chỉ vẽ"
 
-#: ctk/ctktogglebutton.c:203
+#: ctk/ctktogglebutton.c:202
 msgid "If the toggle part of the button is displayed"
 msgstr "Nếu hiển thị phần bật tắt của cái nút hay không"
 
@@ -8399,7 +8399,7 @@ msgid "Whether the item should receive extra space when the toolbar grows"
 msgstr ""
 "Cửa sổ con có nên nhận thêm không gian bổ sung khi cửa sổ cha to ra không"
 
-#: ctk/ctktoolbar.c:598 ctk/ctktoolitemgroup.c:1689
+#: ctk/ctktoolbar.c:598 ctk/ctktoolitemgroup.c:1687
 msgid "Whether the item should be the same size as other homogeneous items"
 msgstr "Các cửa sổ con có nên có cùng kích thước hay không"
 
@@ -8496,63 +8496,63 @@ msgstr ""
 "cái nút của thanh công cụ sẽ hiển thị chữ trong chế độ "
 "“CTK_TOOLBAR_BOTH_HORIZ” (Ctk thanh công cụ cả hai nằm ngang)"
 
-#: ctk/ctktoolitemgroup.c:1640
+#: ctk/ctktoolitemgroup.c:1638
 msgid "The human-readable title of this item group"
 msgstr "Tiêu đề cho người đọc được của nhóm mục này"
 
-#: ctk/ctktoolitemgroup.c:1647
+#: ctk/ctktoolitemgroup.c:1645
 msgid "A widget to display in place of the usual label"
 msgstr "Ô điều khiển cần hiển thị thay cho nhãn bình thường"
 
-#: ctk/ctktoolitemgroup.c:1653
+#: ctk/ctktoolitemgroup.c:1651
 msgid "Collapsed"
 msgstr "Co lại"
 
-#: ctk/ctktoolitemgroup.c:1654
+#: ctk/ctktoolitemgroup.c:1652
 msgid "Whether the group has been collapsed and items are hidden"
 msgstr "Có để nhóm co lại và các mục bị ẩn, hay không"
 
-#: ctk/ctktoolitemgroup.c:1660
+#: ctk/ctktoolitemgroup.c:1658
 msgid "ellipsize"
 msgstr "chấm lửng hóa"
 
-#: ctk/ctktoolitemgroup.c:1661
+#: ctk/ctktoolitemgroup.c:1659
 msgid "Ellipsize for item group headers"
 msgstr "Chấm lửng hóa tiêu đề nhóm mục"
 
-#: ctk/ctktoolitemgroup.c:1667
+#: ctk/ctktoolitemgroup.c:1665
 msgid "Header Relief"
 msgstr "Nổi bật phần đầu"
 
-#: ctk/ctktoolitemgroup.c:1668
+#: ctk/ctktoolitemgroup.c:1666
 msgid "Relief of the group header button"
 msgstr "Trạng thái nổi bật của cái nút phần đầu nhóm"
 
-#: ctk/ctktoolitemgroup.c:1681
+#: ctk/ctktoolitemgroup.c:1679
 msgid "Header Spacing"
 msgstr "Khoảng cách phần đầu"
 
-#: ctk/ctktoolitemgroup.c:1682
+#: ctk/ctktoolitemgroup.c:1680
 msgid "Spacing between expander arrow and caption"
 msgstr "Khoảng cách giữa mũi tên bung và phụ đề"
 
-#: ctk/ctktoolitemgroup.c:1696
+#: ctk/ctktoolitemgroup.c:1694
 msgid "Whether the item should receive extra space when the group grows"
 msgstr "Mục có nên nhận thêm không gian bổ sung khi nhóm phóng to hay không"
 
-#: ctk/ctktoolitemgroup.c:1703
+#: ctk/ctktoolitemgroup.c:1701
 msgid "Whether the item should fill the available space"
 msgstr "Mục nên lấp khoảng cách sẵn sàng không"
 
-#: ctk/ctktoolitemgroup.c:1709
+#: ctk/ctktoolitemgroup.c:1707
 msgid "New Row"
 msgstr "Hàng mới"
 
-#: ctk/ctktoolitemgroup.c:1710
+#: ctk/ctktoolitemgroup.c:1708
 msgid "Whether the item should start a new row"
 msgstr "Mục nên bắt đầu một hàng mới hay không"
 
-#: ctk/ctktoolitemgroup.c:1717
+#: ctk/ctktoolitemgroup.c:1715
 msgid "Position of the item within this group"
 msgstr "Vị trí của mục bên trong nhóm này"
 
@@ -9291,27 +9291,27 @@ msgstr "Hệ số tỷ lệ giãn"
 msgid "The scaling factor of the window"
 msgstr "Hệ số gãn của cửa sổ"
 
-#: ctk/ctkwidget.c:3497
+#: ctk/ctkwidget.c:3493
 msgid "Interior Focus"
 msgstr "Tiêu điểm trong"
 
-#: ctk/ctkwidget.c:3498
+#: ctk/ctkwidget.c:3494
 msgid "Whether to draw the focus indicator inside widgets"
 msgstr "Có nên vẽ cái chỉ tiêu điểm ở trong các ô điều khiển"
 
-#: ctk/ctkwidget.c:3511
+#: ctk/ctkwidget.c:3507
 msgid "Focus linewidth"
 msgstr "Độ rộng dòng tiêu điểm"
 
-#: ctk/ctkwidget.c:3512
+#: ctk/ctkwidget.c:3508
 msgid "Width, in pixels, of the focus indicator line"
 msgstr "Độ rộng của dòng chỉ tiêu điểm (theo điểm ảnh)"
 
-#: ctk/ctkwidget.c:3526
+#: ctk/ctkwidget.c:3522
 msgid "Focus line dash pattern"
 msgstr "Mẫu gạch dòng tiêu điểm"
 
-#: ctk/ctkwidget.c:3527
+#: ctk/ctkwidget.c:3523
 msgid ""
 "Dash pattern used to draw the focus indicator. The character values are "
 "interpreted as pixel widths of alternating on and off segments of the line."
@@ -9319,27 +9319,27 @@ msgstr ""
 "Mẫu gạch dòng được dùng để vẽ bộ chỉ thị kích hoạt. Giá trị ký tự được phiên "
 "dịch như là độ rộng điểm ảnh của cái thay thế bật hay tắt"
 
-#: ctk/ctkwidget.c:3540
+#: ctk/ctkwidget.c:3536
 msgid "Focus padding"
 msgstr "Đệm tiêu điểm"
 
-#: ctk/ctkwidget.c:3541
+#: ctk/ctkwidget.c:3537
 msgid "Width, in pixels, between focus indicator and the widget 'box'"
 msgstr "Độ rộng giữa cái chỉ tiêu điểm và “hộp” ô điều khiển, theo điểm ảnh"
 
-#: ctk/ctkwidget.c:3555
+#: ctk/ctkwidget.c:3548
 msgid "Cursor color"
 msgstr "Màu con trỏ"
 
-#: ctk/ctkwidget.c:3556
+#: ctk/ctkwidget.c:3549
 msgid "Color with which to draw insertion cursor"
 msgstr "Màu vẽ con trỏ chèn"
 
-#: ctk/ctkwidget.c:3569
+#: ctk/ctkwidget.c:3560
 msgid "Secondary cursor color"
 msgstr "Màu con trỏ phụ"
 
-#: ctk/ctkwidget.c:3570
+#: ctk/ctkwidget.c:3561
 msgid ""
 "Color with which to draw the secondary insertion cursor when editing mixed "
 "right-to-left and left-to-right text"
@@ -9347,45 +9347,45 @@ msgstr ""
 "Màu vẽ con trỏ chèn phụ khi hiệu chỉnh văn bản cả phải-sang-trái lẫn trái-"
 "sang-phải đều trộn với nhau"
 
-#: ctk/ctkwidget.c:3576
+#: ctk/ctkwidget.c:3567
 msgid "Cursor line aspect ratio"
 msgstr "Tỷ lệ hình thể dòng con trỏ"
 
-#: ctk/ctkwidget.c:3577
+#: ctk/ctkwidget.c:3568
 msgid "Aspect ratio with which to draw insertion cursor"
 msgstr "Tỷ lệ hình thể với đó cần vẽ con trỏ chèn"
 
-#: ctk/ctkwidget.c:3583
+#: ctk/ctkwidget.c:3574
 msgid "Window dragging"
 msgstr "Kéo cửa sổ"
 
-#: ctk/ctkwidget.c:3584
+#: ctk/ctkwidget.c:3575
 msgid "Whether windows can be dragged and maximized by clicking on empty areas"
 msgstr ""
 "Có cho cửa sổ có thể kéo thả và phóng to tối đa bằng cách bấm vào một vùng "
 "trống hay không"
 
-#: ctk/ctkwidget.c:3601
+#: ctk/ctkwidget.c:3587
 msgid "Unvisited Link Color"
 msgstr "Màu liên kết chưa thăm"
 
-#: ctk/ctkwidget.c:3602
+#: ctk/ctkwidget.c:3588
 msgid "Color of unvisited links"
 msgstr "Màu của liên kết chưa thăm, chưa nhắp vào"
 
-#: ctk/ctkwidget.c:3618
+#: ctk/ctkwidget.c:3601
 msgid "Visited Link Color"
 msgstr "Màu liên kết đã thăm"
 
-#: ctk/ctkwidget.c:3619
+#: ctk/ctkwidget.c:3602
 msgid "Color of visited links"
 msgstr "Màu của liên kết đã thăm, đã nhắp vào"
 
-#: ctk/ctkwidget.c:3637
+#: ctk/ctkwidget.c:3619
 msgid "Wide Separators"
 msgstr "Bộ ngăn cách rộng"
 
-#: ctk/ctkwidget.c:3638
+#: ctk/ctkwidget.c:3620
 msgid ""
 "Whether separators have configurable width and should be drawn using a box "
 "instead of a line"
@@ -9393,45 +9393,45 @@ msgstr ""
 "Bộ ngăn cách có độ rộng có thể cấu hình hay không; nó nên được vẽ bằng hộp "
 "thay vào đường hay không"
 
-#: ctk/ctkwidget.c:3655
+#: ctk/ctkwidget.c:3637
 msgid "Separator Width"
 msgstr "Độ rộng bộ ngăn cách"
 
-#: ctk/ctkwidget.c:3656
+#: ctk/ctkwidget.c:3638
 msgid "The width of separators if wide-separators is TRUE"
 msgstr "Độ rộng của bộ ngăn cách nếu bộ ngăn cách có độ rộng"
 
-#: ctk/ctkwidget.c:3673
+#: ctk/ctkwidget.c:3655
 msgid "Separator Height"
 msgstr "Độ cao bộ ngăn cách"
 
-#: ctk/ctkwidget.c:3674
+#: ctk/ctkwidget.c:3656
 msgid "The height of separators if \"wide-separators\" is TRUE"
 msgstr ""
 "Độ cao của bộ ngăn cách nếu bộ ngăn cách có độ rộng (wide-separators) là "
 "TRUE (đúng)"
 
-#: ctk/ctkwidget.c:3688
+#: ctk/ctkwidget.c:3670
 msgid "Horizontal Scroll Arrow Length"
 msgstr "Độ dài mũi tên cuộn ngang"
 
-#: ctk/ctkwidget.c:3689
+#: ctk/ctkwidget.c:3671
 msgid "The length of horizontal scroll arrows"
 msgstr "Độ dài của các mũi tên cuộn theo chiều ngang"
 
-#: ctk/ctkwidget.c:3703
+#: ctk/ctkwidget.c:3685
 msgid "Vertical Scroll Arrow Length"
 msgstr "Độ dài mũi tên cuộn dọc"
 
-#: ctk/ctkwidget.c:3704
+#: ctk/ctkwidget.c:3686
 msgid "The length of vertical scroll arrows"
 msgstr "Độ dài của các mũi tên cuộn theo chiều dọc"
 
-#: ctk/ctkwidget.c:3710 ctk/ctkwidget.c:3711
+#: ctk/ctkwidget.c:3692 ctk/ctkwidget.c:3693
 msgid "Width of text selection handles"
 msgstr "Độ rộng của cán chọn chữ"
 
-#: ctk/ctkwidget.c:3716 ctk/ctkwidget.c:3717
+#: ctk/ctkwidget.c:3698 ctk/ctkwidget.c:3699
 msgid "Height of text selection handles"
 msgstr "Chiều cao của cán chọn chữ"
 
@@ -9687,27 +9687,27 @@ msgstr "Bố cục nút đã trang trí"
 msgid "Decoration resize handle size"
 msgstr "Cỡ của cán đổi cỡ trang trí"
 
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:137
+#: modules/printbackends/cloudprint/ctkprintercloudprint.c:133
 msgid "Cloud Print account"
 msgstr "Tài khoản in ấn trên mây"
 
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:138
+#: modules/printbackends/cloudprint/ctkprintercloudprint.c:134
 msgid "CtkCloudprintAccount instance"
 msgstr "Minh dụ CtkCloudprintAccount"
 
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:147
+#: modules/printbackends/cloudprint/ctkprintercloudprint.c:143
 msgid "Printer ID"
 msgstr "Mã số máy in"
 
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:148
+#: modules/printbackends/cloudprint/ctkprintercloudprint.c:144
 msgid "Cloud Print printer ID"
 msgstr "ID tài khoản in ấn trên mây"
 
-#: modules/printbackends/cups/ctkprintercups.c:93
+#: modules/printbackends/cups/ctkprintercups.c:91
 msgid "Color Profile Title"
 msgstr "Tiêu đề hồ sơ màu"
 
-#: modules/printbackends/cups/ctkprintercups.c:94
+#: modules/printbackends/cups/ctkprintercups.c:92
 msgid "The title of the color profile to use"
 msgstr "Tiêu đề của hộp thoại hồ sơ màu được dùng"
 

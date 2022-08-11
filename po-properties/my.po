@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+-properties\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-23 18:06+0100\n"
+"POT-Creation-Date: 2022-08-11 17:19+0200\n"
 "PO-Revision-Date: 2010-01-19 16:26+0200\n"
 "Last-Translator: Russell Kyaw <rkyaw@yahoo.com>\n"
 "Language-Team: Burmese <my@li.org>\n"
@@ -244,8 +244,8 @@ msgid "A unique name for the action."
 msgstr "လှုပ်ရှားမှုအတွက် သီးခြား အမည်တခု"
 
 #: ctk/ctkaction.c:252 ctk/ctkbutton.c:281 ctk/ctkexpander.c:308
-#: ctk/ctkframe.c:231 ctk/ctklabel.c:805 ctk/ctkmenuitem.c:789
-#: ctk/ctktoolbutton.c:204 ctk/ctktoolitemgroup.c:1639
+#: ctk/ctkframe.c:231 ctk/ctklabel.c:805 ctk/ctkmenuitem.c:788
+#: ctk/ctktoolbutton.c:204 ctk/ctktoolitemgroup.c:1637
 msgid "Label"
 msgstr "အမှတ်တံဆိပ်"
 
@@ -423,85 +423,6 @@ msgstr ""
 msgid "Whether to use the related actions appearance properties"
 msgstr "ကုန်စာရင်းမှတ် အချက်တခုကို ဖန်တိးဖို့ အမှတ်တံဆိပ် စာသားကို သုံးစွဲ၊ မသုံးစွဲ"
 
-#: ctk/ctkalignment.c:151
-msgid "Horizontal alignment"
-msgstr "ပြင်ညီ တန်းညှိခြင်း"
-
-#: ctk/ctkalignment.c:152 ctk/ctkbutton.c:328
-msgid ""
-"Horizontal position of child in available space. 0.0 is left aligned, 1.0 is "
-"right aligned"
-msgstr ""
-"ကလေးရဲ့ ပြင်ညီအနေအထားဟာ နေ​ရာလပ်မှာ ရှိတယ်။ ၀.၀ ဟာ ဘယ်ဘက်တန်းဖြစ်ပြီး၊ ၁.၀ ဟာ ညာဘက်တန်း ဖြစ်တယ်။"
-
-#: ctk/ctkalignment.c:170
-msgid "Vertical alignment"
-msgstr "ဒေါင်လိုက် တန်းညှိခြင်း"
-
-#: ctk/ctkalignment.c:171 ctk/ctkbutton.c:347
-msgid ""
-"Vertical position of child in available space. 0.0 is top aligned, 1.0 is "
-"bottom aligned"
-msgstr ""
-"ကလေးရဲ့ ဒေါင်လိုက် အနေအထားဟာ နေ​ရာလပ်မှာ ရှိတယ်။ ၀.၀ ဟာ ထိပ်ဘယ်တန်းဖြစ်ပြီး၊ ၁.၀ ဟာ အောက်ခြေတန်း "
-"ဖြစ်တယ်။"
-
-#: ctk/ctkalignment.c:188
-msgid "Horizontal scale"
-msgstr "ပြင်ညီ စကေး"
-
-#: ctk/ctkalignment.c:189
-msgid ""
-"If available horizontal space is bigger than needed for the child, how much "
-"of it to use for the child. 0.0 means none, 1.0 means all"
-msgstr ""
-"ရနိုင်တဲ့ ပြင်ညီနေရာလပ်ဟာ ကလေးအတွက် လိုအပ်တာထက် ကြီးနေရင်၊ ကလေးအတွက် ၄င်းကို ဘယ်လောက် သုံးစွဲရမလဲ။ ၀.၀ "
-"ဟာ ဗလာကို ဆိုလိုပြီး၊ ၁.၀ ဟာ အားလုံးကို ဆိုလိုတယ်"
-
-#: ctk/ctkalignment.c:206
-msgid "Vertical scale"
-msgstr "ဒေါင်လိုက် ​စကေး"
-
-#: ctk/ctkalignment.c:207
-msgid ""
-"If available vertical space is bigger than needed for the child, how much of "
-"it to use for the child. 0.0 means none, 1.0 means all"
-msgstr ""
-"ရနိုင်တဲ့ ဒေါင်လိုက်နေရာလပ်ဟာ ကလေးအတွက် လိုအပ်တာထက် ကြီးနေရင်၊ ကလေးအတွက် ၄င်းကို ဘယ်လောက် သုံးစွဲရမလဲ။ ၀.၀ "
-"ဟာ ဗလာကို ဆိုလိုပြီး၊ ၁.၀ ဟာ အားလုံးကို ဆိုလိုတယ်"
-
-#: ctk/ctkalignment.c:226
-msgid "Top Padding"
-msgstr "ထိပ် အခုအခံ"
-
-#: ctk/ctkalignment.c:227
-msgid "The padding to insert at the top of the widget."
-msgstr "widgetရဲ့ ထိပ်မှာ ထည့်သွင်းရမဲ့ အခုအခံ။"
-
-#: ctk/ctkalignment.c:245
-msgid "Bottom Padding"
-msgstr "အောက်ခြေ အခုအခံ"
-
-#: ctk/ctkalignment.c:246
-msgid "The padding to insert at the bottom of the widget."
-msgstr "widgetရဲ့ အောက်ခြေမှာ ထည့်သွင်းရမဲ့ အခုအခံ။"
-
-#: ctk/ctkalignment.c:264
-msgid "Left Padding"
-msgstr "ဘယ်ဘက် အခုအခံ"
-
-#: ctk/ctkalignment.c:265
-msgid "The padding to insert at the left of the widget."
-msgstr "widgetရဲ့ ဘယ်ဘက်မှာ ထည့်သွင်းရမဲ့ အခုအခံ။"
-
-#: ctk/ctkalignment.c:283
-msgid "Right Padding"
-msgstr "ညာဘက် အခုအခံ"
-
-#: ctk/ctkalignment.c:284
-msgid "The padding to insert at the right of the widget."
-msgstr "widgetရဲ့ ညာဘက်မှာ ထည့်သွင်းရမဲ့ အခုအခံ။"
-
 #: ctk/deprecated/ctkarrow.c:121
 msgid "Arrow direction"
 msgstr "မြှား ဦးတည်ချက်"
@@ -519,7 +440,7 @@ msgid "Appearance of the shadow surrounding the arrow"
 msgstr "မြှားကို ဝိုင်းရံနေတဲ့ အရိပ်ရဲ့ ပုံပန်းသဏ္ဍာန်"
 
 #: ctk/deprecated/ctkarrow.c:138 ctk/ctkcombobox.c:1227 ctk/ctkmenu.c:1006
-#: ctk/ctkmenuitem.c:898
+#: ctk/ctkmenuitem.c:897
 msgid "Arrow Scaling"
 msgstr "မြှား စကေးချခြင်း"
 
@@ -527,77 +448,77 @@ msgstr "မြှား စကေးချခြင်း"
 msgid "Amount of space used up by arrow"
 msgstr "မြှားက နေရာယူတဲ့ အတိုင်းအတာ"
 
-#: ctk/ctkcolorsel.c:325
+#: ctk/ctkcolorsel.c:323
 msgid "Has Opacity Control"
 msgstr "အလင်းပိတ်မှု အထိန်းရှိတယ်"
 
-#: ctk/ctkcolorsel.c:326
+#: ctk/ctkcolorsel.c:324
 msgid "Whether the color selector should allow setting opacity"
 msgstr "အရောင် ရွေးကိရိယာက အပြင်အဆင် အလင်းပိတ်မှုကို ခွင့်ပြုသင့်၊ မသင့်"
 
-#: ctk/ctkcolorsel.c:332
+#: ctk/ctkcolorsel.c:330
 msgid "Has palette"
 msgstr "အရောင်စပ် ဆေးခွက် ရှိတယ်"
 
-#: ctk/ctkcolorsel.c:333
+#: ctk/ctkcolorsel.c:331
 msgid "Whether a palette should be used"
 msgstr "အရောင်စပ် ဆေးခွက် တခုကို သုံးသင့်၊ မသင့်"
 
-#: ctk/ctkcolorsel.c:347 ctk/ctkcolorbutton.c:201
+#: ctk/ctkcolorsel.c:343 ctk/ctkcolorbutton.c:198
 msgid "Current Color"
 msgstr "လက်ရှိ အရောင်"
 
-#: ctk/ctkcolorsel.c:348
+#: ctk/ctkcolorsel.c:344
 msgid "The current color"
 msgstr "လက်ရှိ အရောင်"
 
-#: ctk/ctkcolorsel.c:354 ctk/ctkcolorbutton.c:217
+#: ctk/ctkcolorsel.c:350 ctk/ctkcolorbutton.c:213
 msgid "Current Alpha"
 msgstr "လက်ရှိ အယ်ဖါ"
 
-#: ctk/ctkcolorsel.c:355
+#: ctk/ctkcolorsel.c:351
 msgid "The current opacity value (0 fully transparent, 65535 fully opaque)"
 msgstr "လက်ရှိ အလင်းပိတ်မှု တန်ဖိုး (၀ လုံး၀ ဖေါက်ထွင်းနိုင်မှု၊ ၆၅၅၃၅ လုံး၀ အလင်းပိတ်မှု)"
 
-#: ctk/ctkcolorsel.c:369
+#: ctk/ctkcolorsel.c:365
 #, fuzzy
 msgid "Current RGBA"
 msgstr "လက်ရှိ အယ်ဖါ"
 
-#: ctk/ctkcolorsel.c:370
+#: ctk/ctkcolorsel.c:366
 #, fuzzy
 msgid "The current RGBA color"
 msgstr "လက်ရှိ အရောင်"
 
-#: ctk/ctkcolorseldialog.c:136
+#: ctk/ctkcolorseldialog.c:134
 msgid "Color Selection"
 msgstr "အရောက် ရွေးချယ်ခြင်း"
 
-#: ctk/ctkcolorseldialog.c:137
+#: ctk/ctkcolorseldialog.c:135
 msgid "The color selection embedded in the dialog."
 msgstr "အညွှန်းစာမျက်နှာမှာ အရောင် ရွေးချယ်မှု ထည့်မြုပ်ထားတယ်။"
 
-#: ctk/ctkcolorseldialog.c:143
+#: ctk/ctkcolorseldialog.c:141
 msgid "OK Button"
 msgstr "ကောင်းပြီ ခလုတ်"
 
-#: ctk/ctkcolorseldialog.c:144
+#: ctk/ctkcolorseldialog.c:142
 msgid "The OK button of the dialog."
 msgstr "အညွှန်းစာမျက်နှာရဲ့ ကောင်းပြီ ခလုတ်"
 
-#: ctk/ctkcolorseldialog.c:150
+#: ctk/ctkcolorseldialog.c:148
 msgid "Cancel Button"
 msgstr "ရပ်ဆိုင်းမှု ခလုတ်"
 
-#: ctk/ctkcolorseldialog.c:151
+#: ctk/ctkcolorseldialog.c:149
 msgid "The cancel button of the dialog."
 msgstr "အညွှန်း စာမျက်နှာရဲ့ ရပ်ဆိုင်းမှု ခလုတ်"
 
-#: ctk/ctkcolorseldialog.c:157
+#: ctk/ctkcolorseldialog.c:155
 msgid "Help Button"
 msgstr "အကူအညီ ခလုတ်"
 
-#: ctk/ctkcolorseldialog.c:158
+#: ctk/ctkcolorseldialog.c:156
 msgid "The help button of the dialog."
 msgstr "အညွှန်းစာမျက်နှာရဲ့ အကူအညီ ခလုတ်"
 
@@ -783,7 +704,7 @@ msgid "The amount of space between two consecutive columns"
 msgstr "အစဉ်လိုက် ကော်လံနှစ်ခုအကြား နေရာလပ် ပမာဏ"
 
 #: ctk/deprecated/ctktable.c:221 ctk/ctkbox.c:285 ctk/ctkflowbox.c:3849
-#: ctk/ctkstack.c:459 ctk/ctktoolbar.c:597 ctk/ctktoolitemgroup.c:1688
+#: ctk/ctkstack.c:459 ctk/ctktoolbar.c:597 ctk/ctktoolitemgroup.c:1686
 msgid "Homogeneous"
 msgstr "မျိုးတူဖြစ်ခြင်း"
 
@@ -1054,7 +975,7 @@ msgstr "CtkPackType တခုက မိဘရဲ့ အစ (သို့) အဆ
 
 #: ctk/ctkactionbar.c:345 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
 #: ctk/ctknotebook.c:840 ctk/ctkpaned.c:368 ctk/ctkpopover.c:1767
-#: ctk/ctkpopovermenu.c:384 ctk/ctkstack.c:537 ctk/ctktoolitemgroup.c:1716
+#: ctk/ctkpopovermenu.c:384 ctk/ctkstack.c:537 ctk/ctktoolitemgroup.c:1714
 msgid "Position"
 msgstr "တည်နေရာ"
 
@@ -1112,6 +1033,85 @@ msgstr "စာမျက်နှာ အရွယ်"
 msgid "The page size of the adjustment"
 msgstr "ညှိယူခြင်းရဲ့ စာမျက်နှာ အရွယ်"
 
+#: ctk/ctkalignment.c:145
+msgid "Horizontal alignment"
+msgstr "ပြင်ညီ တန်းညှိခြင်း"
+
+#: ctk/ctkalignment.c:146 ctk/ctkbutton.c:328
+msgid ""
+"Horizontal position of child in available space. 0.0 is left aligned, 1.0 is "
+"right aligned"
+msgstr ""
+"ကလေးရဲ့ ပြင်ညီအနေအထားဟာ နေ​ရာလပ်မှာ ရှိတယ်။ ၀.၀ ဟာ ဘယ်ဘက်တန်းဖြစ်ပြီး၊ ၁.၀ ဟာ ညာဘက်တန်း ဖြစ်တယ်။"
+
+#: ctk/ctkalignment.c:162
+msgid "Vertical alignment"
+msgstr "ဒေါင်လိုက် တန်းညှိခြင်း"
+
+#: ctk/ctkalignment.c:163 ctk/ctkbutton.c:347
+msgid ""
+"Vertical position of child in available space. 0.0 is top aligned, 1.0 is "
+"bottom aligned"
+msgstr ""
+"ကလေးရဲ့ ဒေါင်လိုက် အနေအထားဟာ နေ​ရာလပ်မှာ ရှိတယ်။ ၀.၀ ဟာ ထိပ်ဘယ်တန်းဖြစ်ပြီး၊ ၁.၀ ဟာ အောက်ခြေတန်း "
+"ဖြစ်တယ်။"
+
+#: ctk/ctkalignment.c:178
+msgid "Horizontal scale"
+msgstr "ပြင်ညီ စကေး"
+
+#: ctk/ctkalignment.c:179
+msgid ""
+"If available horizontal space is bigger than needed for the child, how much "
+"of it to use for the child. 0.0 means none, 1.0 means all"
+msgstr ""
+"ရနိုင်တဲ့ ပြင်ညီနေရာလပ်ဟာ ကလေးအတွက် လိုအပ်တာထက် ကြီးနေရင်၊ ကလေးအတွက် ၄င်းကို ဘယ်လောက် သုံးစွဲရမလဲ။ ၀.၀ "
+"ဟာ ဗလာကို ဆိုလိုပြီး၊ ၁.၀ ဟာ အားလုံးကို ဆိုလိုတယ်"
+
+#: ctk/ctkalignment.c:194
+msgid "Vertical scale"
+msgstr "ဒေါင်လိုက် ​စကေး"
+
+#: ctk/ctkalignment.c:195
+msgid ""
+"If available vertical space is bigger than needed for the child, how much of "
+"it to use for the child. 0.0 means none, 1.0 means all"
+msgstr ""
+"ရနိုင်တဲ့ ဒေါင်လိုက်နေရာလပ်ဟာ ကလေးအတွက် လိုအပ်တာထက် ကြီးနေရင်၊ ကလေးအတွက် ၄င်းကို ဘယ်လောက် သုံးစွဲရမလဲ။ ၀.၀ "
+"ဟာ ဗလာကို ဆိုလိုပြီး၊ ၁.၀ ဟာ အားလုံးကို ဆိုလိုတယ်"
+
+#: ctk/ctkalignment.c:212
+msgid "Top Padding"
+msgstr "ထိပ် အခုအခံ"
+
+#: ctk/ctkalignment.c:213
+msgid "The padding to insert at the top of the widget."
+msgstr "widgetရဲ့ ထိပ်မှာ ထည့်သွင်းရမဲ့ အခုအခံ။"
+
+#: ctk/ctkalignment.c:229
+msgid "Bottom Padding"
+msgstr "အောက်ခြေ အခုအခံ"
+
+#: ctk/ctkalignment.c:230
+msgid "The padding to insert at the bottom of the widget."
+msgstr "widgetရဲ့ အောက်ခြေမှာ ထည့်သွင်းရမဲ့ အခုအခံ။"
+
+#: ctk/ctkalignment.c:246
+msgid "Left Padding"
+msgstr "ဘယ်ဘက် အခုအခံ"
+
+#: ctk/ctkalignment.c:247
+msgid "The padding to insert at the left of the widget."
+msgstr "widgetရဲ့ ဘယ်ဘက်မှာ ထည့်သွင်းရမဲ့ အခုအခံ။"
+
+#: ctk/ctkalignment.c:263
+msgid "Right Padding"
+msgstr "ညာဘက် အခုအခံ"
+
+#: ctk/ctkalignment.c:264
+msgid "The padding to insert at the right of the widget."
+msgstr "widgetရဲ့ ညာဘက်မှာ ထည့်သွင်းရမဲ့ အခုအခံ။"
+
 #: ctk/ctkappchooserbutton.c:618
 msgid "Include an 'Other…' item"
 msgstr ""
@@ -1132,12 +1132,12 @@ msgstr "စာရင်းမှတ် ရုပ်ပုံများကိ�
 msgid "Whether the combobox should show the default application on top"
 msgstr "ပြီးစီးမှုများကို ပွင့်ထွက် ၀င်းဒိုးတခုမှာ ပြသသင့်၊ မသင့်"
 
-#: ctk/ctkappchooserbutton.c:647 ctk/ctkappchooserdialog.c:688
+#: ctk/ctkappchooserbutton.c:647 ctk/ctkappchooserdialog.c:687
 #, fuzzy
 msgid "Heading"
 msgstr "ခေါင်းစီးကို ပြပါ"
 
-#: ctk/ctkappchooserbutton.c:648 ctk/ctkappchooserdialog.c:689
+#: ctk/ctkappchooserbutton.c:648 ctk/ctkappchooserdialog.c:688
 #, fuzzy
 msgid "The text to show at the top of the dialog"
 msgstr "widgetရဲ့ ထိပ်မှာ ထည့်သွင်းရမဲ့ အခုအခံ။"
@@ -1152,12 +1152,12 @@ msgstr "ကိုက်ညီမှု မရှိတဲ့ အနေအထာ�
 msgid "The content type used by the open with object"
 msgstr "ရေးသွင်းချက် အကြောင်းအရာများ"
 
-#: ctk/ctkappchooserdialog.c:674
+#: ctk/ctkappchooserdialog.c:673
 #, fuzzy
 msgid "GFile"
 msgstr "ဖိုင်အမည်"
 
-#: ctk/ctkappchooserdialog.c:675
+#: ctk/ctkappchooserdialog.c:674
 #, fuzzy
 msgid "The GFile used by the app chooser dialog"
 msgstr "ဖိုင် ရွေးချယ်ကိရိယာ အညွှန်းစာမျက်နှာရဲ့ ခေါင်းစဉ်"
@@ -1217,49 +1217,49 @@ msgstr ""
 msgid "The default text appearing when there are no applications"
 msgstr ""
 
-#: ctk/ctkapplication.c:845
+#: ctk/ctkapplication.c:843
 msgid "Register session"
 msgstr ""
 
-#: ctk/ctkapplication.c:846
+#: ctk/ctkapplication.c:844
 msgid "Register with the session manager"
 msgstr ""
 
-#: ctk/ctkapplication.c:863
+#: ctk/ctkapplication.c:861
 msgid "Screensaver Active"
 msgstr ""
 
-#: ctk/ctkapplication.c:864
+#: ctk/ctkapplication.c:862
 #, fuzzy
 msgid "Whether the screensaver is active"
 msgstr "ပထမအဆင့် ပုံသ​င်္ကေတဟာ သက်၀င်စေနိုင်၊ မနိုင်"
 
-#: ctk/ctkapplication.c:870
+#: ctk/ctkapplication.c:868
 #, fuzzy
 msgid "Application menu"
 msgstr "အရောင်ဆိုးနိုင်တဲ့ လုပ်ငန်းသုံးကိရိယာ"
 
-#: ctk/ctkapplication.c:871
+#: ctk/ctkapplication.c:869
 #, fuzzy
 msgid "The GMenuModel for the application menu"
 msgstr "ပုံသင်္ကေတ မြင်ကွင်းအတွက် ပုံစံငယ်"
 
-#: ctk/ctkapplication.c:877
+#: ctk/ctkapplication.c:875
 #, fuzzy
 msgid "Menubar"
 msgstr "စာရင်းမှတ်"
 
-#: ctk/ctkapplication.c:878
+#: ctk/ctkapplication.c:876
 #, fuzzy
 msgid "The GMenuModel for the menubar"
 msgstr "စုပေါင်း အကွက် အတွက် ပုံစံငယ်"
 
-#: ctk/ctkapplication.c:884
+#: ctk/ctkapplication.c:882
 #, fuzzy
 msgid "Active window"
 msgstr "တက်ကြွတဲ့ အချက်"
 
-#: ctk/ctkapplication.c:885
+#: ctk/ctkapplication.c:883
 #, fuzzy
 msgid "The window which most recently had focus"
 msgstr "လောလောဆယ် တက်ကြွတဲ့ အချက်"
@@ -1472,7 +1472,7 @@ msgid ""
 msgstr ""
 
 #: ctk/ctkbox.c:318 ctk/ctkcellareabox.c:330 ctk/ctktoolbar.c:589
-#: ctk/ctktoolitemgroup.c:1695 ctk/ctktoolpalette.c:1027
+#: ctk/ctktoolitemgroup.c:1693 ctk/ctktoolpalette.c:1027
 #: ctk/ctktreeviewcolumn.c:323
 msgid "Expand"
 msgstr "ချဲ့ကားပါ"
@@ -1481,7 +1481,7 @@ msgstr "ချဲ့ကားပါ"
 msgid "Whether the child should receive extra space when the parent grows"
 msgstr "မိဘ ကြီးထွားတဲ့အခါ ကလေးက အပို နေရာလပ် ရရှိသင့် မသင့်"
 
-#: ctk/ctkbox.c:335 ctk/ctktoolitemgroup.c:1702
+#: ctk/ctkbox.c:335 ctk/ctktoolitemgroup.c:1700
 msgid "Fill"
 msgstr "ဖြည့်ဆည်းပါ"
 
@@ -1514,12 +1514,12 @@ msgid ""
 msgstr "ခလုတ်မှာ အမှတ်တံဆိပ် widget တခု ပါရှိရင်၊ ခလုတ်ထဲမှ အမှတ်တံဆိပ်ရဲ့ စာသား"
 
 #: ctk/ctkbutton.c:288 ctk/ctkexpander.c:316 ctk/ctklabel.c:826
-#: ctk/ctkmenuitem.c:803 ctk/ctktoolbutton.c:211
+#: ctk/ctkmenuitem.c:802 ctk/ctktoolbutton.c:211
 msgid "Use underline"
 msgstr "အောက်မျဉ်းသားခြင်းကို သုံးစွဲပါ"
 
 #: ctk/ctkbutton.c:289 ctk/ctkexpander.c:317 ctk/ctklabel.c:827
-#: ctk/ctkmenuitem.c:804
+#: ctk/ctkmenuitem.c:803
 msgid ""
 "If set, an underline in the text indicates the next character should be used "
 "for the mnemonic accelerator key"
@@ -1975,37 +1975,37 @@ msgstr "အခန်းငယ် နောက်ခံ အရောင် အမ
 msgid "Cell background color as a string"
 msgstr "စာသားတခု အဖြစ် အခန်းငယ် နောက်ခံ အရောင် အမည်"
 
-#: ctk/ctkcellrenderer.c:409
+#: ctk/ctkcellrenderer.c:406
 msgid "Cell background color"
 msgstr "အခန်းငယ် နောက်ခံ အရောင်"
 
-#: ctk/ctkcellrenderer.c:410
+#: ctk/ctkcellrenderer.c:407
 msgid "Cell background color as a CdkColor"
 msgstr "CdkColor တမျိုးအနေဖြင့် အခန်းငယ် နောက်ခံ အရောင်"
 
-#: ctk/ctkcellrenderer.c:424
+#: ctk/ctkcellrenderer.c:421
 #, fuzzy
 msgid "Cell background RGBA color"
 msgstr "အခန်းငယ် နောက်ခံ အရောင်"
 
-#: ctk/ctkcellrenderer.c:425
+#: ctk/ctkcellrenderer.c:422
 #, fuzzy
 msgid "Cell background color as a CdkRGBA"
 msgstr "CdkColor တမျိုးအနေဖြင့် အခန်းငယ် နောက်ခံ အရောင်"
 
-#: ctk/ctkcellrenderer.c:432
+#: ctk/ctkcellrenderer.c:429
 msgid "Editing"
 msgstr "တည်းဖြတ်နေတယ်"
 
-#: ctk/ctkcellrenderer.c:433
+#: ctk/ctkcellrenderer.c:430
 msgid "Whether the cell renderer is currently in editing mode"
 msgstr "အခန်းငယ် သရပ်ဖေါ်ပေးသူဟာ လက်ရှိမှာ တည်းဖြတ်တဲ့ စနစ်မှာ ရှိ မရှိ"
 
-#: ctk/ctkcellrenderer.c:441
+#: ctk/ctkcellrenderer.c:438
 msgid "Cell background set"
 msgstr "အခန်းငယ် နောက်ခံ အစု"
 
-#: ctk/ctkcellrenderer.c:442
+#: ctk/ctkcellrenderer.c:439
 #, fuzzy
 msgid "Whether the cell background color is set"
 msgstr "ဒီစာအမှတ်က အခန်းငယ် နောက်ခံ အရောက်ကို ထိခိုက် မခိုက်"
@@ -2188,8 +2188,8 @@ msgstr "ဖေါ်ပြမဲ့ ဆယ်လီ နေရာများ အ
 
 #: ctk/ctkcellrendererspinner.c:125 ctk/ctkcheckmenuitem.c:209
 #: ctk/ctkmenu.c:640 ctk/ctkmodelbutton.c:1211 ctk/ctkmodelbutton.c:1212
-#: ctk/ctkspinner.c:221 ctk/ctkswitch.c:878 ctk/ctktoggleaction.c:129
-#: ctk/ctktogglebutton.c:188 ctk/ctktoggletoolbutton.c:130
+#: ctk/ctkspinner.c:221 ctk/ctkswitch.c:868 ctk/ctktoggleaction.c:129
+#: ctk/ctktogglebutton.c:187 ctk/ctktoggletoolbutton.c:130
 msgid "Active"
 msgstr "သက်၀င်စေပါ"
 
@@ -2245,151 +2245,151 @@ msgstr "နောက်ခံ အရောင် အမည်"
 msgid "Background color as a string"
 msgstr "စာသား တခုအဖြစ် နောက်ခံ အရောင်"
 
-#: ctk/ctkcellrenderertext.c:298 ctk/ctkcellview.c:233 ctk/ctktexttag.c:231
+#: ctk/ctkcellrenderertext.c:295 ctk/ctkcellview.c:230 ctk/ctktexttag.c:231
 msgid "Background color"
 msgstr "နောက်ခံ အရောင်"
 
-#: ctk/ctkcellrenderertext.c:299 ctk/ctkcellview.c:234 ctk/ctktexttag.c:232
+#: ctk/ctkcellrenderertext.c:296 ctk/ctkcellview.c:231 ctk/ctktexttag.c:232
 msgid "Background color as a CdkColor"
 msgstr "CdkColor တခု အဖြစ် နောက်ခံ အရောင်"
 
-#: ctk/ctkcellrenderertext.c:313
+#: ctk/ctkcellrenderertext.c:309
 #, fuzzy
 msgid "Background color as RGBA"
 msgstr "နောက်ခံ အရောင် အမည်"
 
-#: ctk/ctkcellrenderertext.c:314 ctk/ctkcellview.c:249 ctk/ctktexttag.c:247
+#: ctk/ctkcellrenderertext.c:310 ctk/ctkcellview.c:245 ctk/ctktexttag.c:247
 #, fuzzy
 msgid "Background color as a CdkRGBA"
 msgstr "CdkColor တခု အဖြစ် နောက်ခံ အရောင်"
 
-#: ctk/ctkcellrenderertext.c:319 ctk/ctktexttag.c:262
+#: ctk/ctkcellrenderertext.c:315 ctk/ctktexttag.c:262
 msgid "Foreground color name"
 msgstr "အနီးမြင်ကွင်း အရောင် အမည်"
 
-#: ctk/ctkcellrenderertext.c:320 ctk/ctktexttag.c:263
+#: ctk/ctkcellrenderertext.c:316 ctk/ctktexttag.c:263
 msgid "Foreground color as a string"
 msgstr "စာသား တခုအဖြစ် အနီးမြင်ကွင်း အရောင်"
 
-#: ctk/ctkcellrenderertext.c:334 ctk/ctktexttag.c:277 ctk/ctktrayicon-x11.c:136
+#: ctk/ctkcellrenderertext.c:327 ctk/ctktexttag.c:277 ctk/ctktrayicon-x11.c:136
 msgid "Foreground color"
 msgstr "အနီးမြင်ကွင်း အရောင်"
 
-#: ctk/ctkcellrenderertext.c:335 ctk/ctktexttag.c:278
+#: ctk/ctkcellrenderertext.c:328 ctk/ctktexttag.c:278
 msgid "Foreground color as a CdkColor"
 msgstr "CdkColor တခု အဖြစ် အနီးမြင်ကွင်း အရောင်"
 
-#: ctk/ctkcellrenderertext.c:349
+#: ctk/ctkcellrenderertext.c:341
 #, fuzzy
 msgid "Foreground color as RGBA"
 msgstr "အနီးမြင်ကွင်း အရောင် အမည်"
 
-#: ctk/ctkcellrenderertext.c:350 ctk/ctktexttag.c:293
+#: ctk/ctkcellrenderertext.c:342 ctk/ctktexttag.c:293
 #, fuzzy
 msgid "Foreground color as a CdkRGBA"
 msgstr "CdkColor တခု အဖြစ် အနီးမြင်ကွင်း အရောင်"
 
-#: ctk/ctkcellrenderertext.c:357 ctk/ctkentry.c:861 ctk/ctktexttag.c:309
+#: ctk/ctkcellrenderertext.c:349 ctk/ctkentry.c:861 ctk/ctktexttag.c:309
 #: ctk/ctktextview.c:825
 msgid "Editable"
 msgstr "တည်းဖြတ်နိုင်တယ်"
 
-#: ctk/ctkcellrenderertext.c:358 ctk/ctktexttag.c:310 ctk/ctktextview.c:826
+#: ctk/ctkcellrenderertext.c:350 ctk/ctktexttag.c:310 ctk/ctktextview.c:826
 msgid "Whether the text can be modified by the user"
 msgstr "စာသားကို သုံးစွဲသူက ပြုပြင်နိုင်၊ မပြုပြင်နိုင်"
 
-#: ctk/ctkcellrenderertext.c:364 ctk/ctkcellrenderertext.c:371
+#: ctk/ctkcellrenderertext.c:356 ctk/ctkcellrenderertext.c:363
 #: ctk/ctkfontchooser.c:64 ctk/ctktexttag.c:325 ctk/ctktexttag.c:333
 msgid "Font"
 msgstr "ဖောင့်"
 
-#: ctk/ctkcellrenderertext.c:365 ctk/ctkfontchooser.c:65 ctk/ctktexttag.c:326
+#: ctk/ctkcellrenderertext.c:357 ctk/ctkfontchooser.c:65 ctk/ctktexttag.c:326
 msgid "Font description as a string, e.g. \"Sans Italic 12\""
 msgstr "စာသား တခုအဖြစ် ဖောင့် ဖေါ်ပြချက်၊ ဥပမာ - \"Sans Italic 12\""
 
-#: ctk/ctkcellrenderertext.c:372 ctk/ctkfontchooser.c:78 ctk/ctktexttag.c:334
+#: ctk/ctkcellrenderertext.c:364 ctk/ctkfontchooser.c:78 ctk/ctktexttag.c:334
 msgid "Font description as a PangoFontDescription struct"
 msgstr "PangoFontDescription ​ဖွဲ့စည်းပုံ တခု အဖြစ် ဖောင့် ဖေါ်ပြချက်"
 
-#: ctk/ctkcellrenderertext.c:378 ctk/ctktexttag.c:341
+#: ctk/ctkcellrenderertext.c:370 ctk/ctktexttag.c:341
 msgid "Font family"
 msgstr "ဖောင့် မိသားစု"
 
-#: ctk/ctkcellrenderertext.c:379 ctk/ctktexttag.c:342
+#: ctk/ctkcellrenderertext.c:371 ctk/ctktexttag.c:342
 msgid "Name of the font family, e.g. Sans, Helvetica, Times, Monospace"
 msgstr "ဖောင့် မိသားစု အမည်၊ ဥပမာ - Sans၊ Helvetica၊ Times၊ Monospace"
 
-#: ctk/ctkcellrenderertext.c:385 ctk/ctkcellrenderertext.c:386
+#: ctk/ctkcellrenderertext.c:377 ctk/ctkcellrenderertext.c:378
 #: ctk/ctktexttag.c:349
 msgid "Font style"
 msgstr "ဖောင့် စတိုင်"
 
-#: ctk/ctkcellrenderertext.c:393 ctk/ctkcellrenderertext.c:394
+#: ctk/ctkcellrenderertext.c:385 ctk/ctkcellrenderertext.c:386
 #: ctk/ctktexttag.c:358
 msgid "Font variant"
 msgstr "ဖောင့် မူကွဲ"
 
-#: ctk/ctkcellrenderertext.c:401 ctk/ctkcellrenderertext.c:402
+#: ctk/ctkcellrenderertext.c:393 ctk/ctkcellrenderertext.c:394
 #: ctk/ctktexttag.c:367
 msgid "Font weight"
 msgstr "ဖောင့် အထူ"
 
-#: ctk/ctkcellrenderertext.c:409 ctk/ctkcellrenderertext.c:410
+#: ctk/ctkcellrenderertext.c:401 ctk/ctkcellrenderertext.c:402
 #: ctk/ctktexttag.c:378
 msgid "Font stretch"
 msgstr "ဖောင့် ဆန့်ထုတ်မှု"
 
-#: ctk/ctkcellrenderertext.c:417 ctk/ctkcellrenderertext.c:418
+#: ctk/ctkcellrenderertext.c:409 ctk/ctkcellrenderertext.c:410
 #: ctk/ctktexttag.c:387
 msgid "Font size"
 msgstr "ဖောင့် အရွယ်"
 
-#: ctk/ctkcellrenderertext.c:425 ctk/ctktexttag.c:407
+#: ctk/ctkcellrenderertext.c:417 ctk/ctktexttag.c:407
 msgid "Font points"
 msgstr "ဖောင့် ပွိုင့်များ"
 
-#: ctk/ctkcellrenderertext.c:426 ctk/ctktexttag.c:408
+#: ctk/ctkcellrenderertext.c:418 ctk/ctktexttag.c:408
 msgid "Font size in points"
 msgstr "ပွိုင့်များနဲ့ ဖောင့် အရွယ်"
 
-#: ctk/ctkcellrenderertext.c:433 ctk/ctktexttag.c:397
+#: ctk/ctkcellrenderertext.c:425 ctk/ctktexttag.c:397
 msgid "Font scale"
 msgstr "ဖောင့် စကေး"
 
-#: ctk/ctkcellrenderertext.c:434
+#: ctk/ctkcellrenderertext.c:426
 msgid "Font scaling factor"
 msgstr "ဖောင့် စကေးချမှု အကြောင်းရင်း"
 
-#: ctk/ctkcellrenderertext.c:441 ctk/ctktexttag.c:476
+#: ctk/ctkcellrenderertext.c:433 ctk/ctktexttag.c:476
 msgid "Rise"
 msgstr "တိုးတက်မှု"
 
-#: ctk/ctkcellrenderertext.c:442
+#: ctk/ctkcellrenderertext.c:434
 msgid ""
 "Offset of text above the baseline (below the baseline if rise is negative)"
 msgstr "အခြေခံမျဉ်း ထက်မှ စာသား Offset (တိုးတက်မှု အနှုတ် ​သဘောဆောင်နေရင် အခြေခံမျဉ်း အောက်)"
 
-#: ctk/ctkcellrenderertext.c:450 ctk/ctktexttag.c:516
+#: ctk/ctkcellrenderertext.c:442 ctk/ctktexttag.c:516
 msgid "Strikethrough"
 msgstr "မျဉ်းဖြတ်စာလုံး"
 
-#: ctk/ctkcellrenderertext.c:451 ctk/ctktexttag.c:517
+#: ctk/ctkcellrenderertext.c:443 ctk/ctktexttag.c:517
 msgid "Whether to strike through the text"
 msgstr "စာသားကို မျဉ်း​ဖြတ်၊ မဖြတ်"
 
-#: ctk/ctkcellrenderertext.c:457 ctk/ctktexttag.c:524
+#: ctk/ctkcellrenderertext.c:449 ctk/ctktexttag.c:524
 msgid "Underline"
 msgstr "မျဉ်းသား စာလုံး"
 
-#: ctk/ctkcellrenderertext.c:458 ctk/ctktexttag.c:525
+#: ctk/ctkcellrenderertext.c:450 ctk/ctktexttag.c:525
 msgid "Style of underline for this text"
 msgstr "ဒီစာသားအတွက် မျဉ်းသားစာလုံး စတိုင်"
 
-#: ctk/ctkcellrenderertext.c:465 ctk/ctkfontchooser.c:154 ctk/ctktexttag.c:436
+#: ctk/ctkcellrenderertext.c:457 ctk/ctkfontchooser.c:154 ctk/ctktexttag.c:436
 msgid "Language"
 msgstr "ဘာသာစကား"
 
-#: ctk/ctkcellrenderertext.c:466
+#: ctk/ctkcellrenderertext.c:458
 msgid ""
 "The language this text is in, as an ISO code. Pango can use this as a hint "
 "when rendering the text. If you don't understand this parameter, you "
@@ -2398,40 +2398,40 @@ msgstr ""
 "ဒီစာသားရှိတဲ့ ဘာသာစကားဟာ ISO ကုဒ်​အနေနဲ့ ဖြစ်တယ်။ စာသားကို တင်ဆက်နေတဲ့ အခါ Pangoက ဒါကို အရိပ်အမြွတ် "
 "တခုအနေနဲ့ သုံးစွဲနိုင်တယ်။"
 
-#: ctk/ctkcellrenderertext.c:484 ctk/ctklabel.c:963 ctk/ctkprogressbar.c:330
+#: ctk/ctkcellrenderertext.c:476 ctk/ctklabel.c:963 ctk/ctkprogressbar.c:330
 msgid "Ellipsize"
 msgstr "မြှုပ်ချန်ခြင်း"
 
-#: ctk/ctkcellrenderertext.c:485
+#: ctk/ctkcellrenderertext.c:477
 msgid ""
 "The preferred place to ellipsize the string, if the cell renderer does not "
 "have enough room to display the entire string"
 msgstr ""
 "အခန်းငယ် သရုပ်ဖေါ်ပေးသူမှာ စာတန်းတခုလုံးကို ပြသဖို့ နေရာ မလုံလောက်ရင်၊ စာတန်းကို မြှုပ်ချန်ဖို့ နှစ်သက်တဲ့ နေရာ။"
 
-#: ctk/ctkcellrenderertext.c:503 ctk/ctkfilechooserbutton.c:457
+#: ctk/ctkcellrenderertext.c:495 ctk/ctkfilechooserbutton.c:457
 #: ctk/ctklabel.c:983
 msgid "Width In Characters"
 msgstr "အက္ခရာများ အကျယ်"
 
-#: ctk/ctkcellrenderertext.c:504 ctk/ctklabel.c:984
+#: ctk/ctkcellrenderertext.c:496 ctk/ctklabel.c:984
 msgid "The desired width of the label, in characters"
 msgstr "အက္ခရာများဖြင့်၊ အမှတ်အသားရဲ့ နှစ်သက်တဲ့ အကျယ်"
 
-#: ctk/ctkcellrenderertext.c:525 ctk/ctklabel.c:1039
+#: ctk/ctkcellrenderertext.c:517 ctk/ctklabel.c:1039
 msgid "Maximum Width In Characters"
 msgstr "အက္ခရာများအရ အများဆုံး အကျယ်"
 
-#: ctk/ctkcellrenderertext.c:526
+#: ctk/ctkcellrenderertext.c:518
 #, fuzzy
 msgid "The maximum width of the cell, in characters"
 msgstr "အက္ခရာများအရ၊ အမှတ်တံဆိပ်ရဲ့ နှစ်သက်ရာ အများဆုံး အကျယ်"
 
-#: ctk/ctkcellrenderertext.c:542 ctk/ctktexttag.c:569
+#: ctk/ctkcellrenderertext.c:534 ctk/ctktexttag.c:569
 msgid "Wrap mode"
 msgstr "ထုပ်ပိုးတဲ့ စနစ်"
 
-#: ctk/ctkcellrenderertext.c:543
+#: ctk/ctkcellrenderertext.c:535
 msgid ""
 "How to break the string into multiple lines, if the cell renderer does not "
 "have enough room to display the entire string"
@@ -2439,155 +2439,155 @@ msgstr ""
 "အခန်းငယ် သရုပ်ဖေါ်ပေးသူမှာ စာတန်းတခုလုံးကို ပြသဖို့ နေရာ မလုံလောက်ရင်၊ စာတန်းကို လိုင်းအများအပြား အဖြစ် "
 "ဘယ်လို ခွဲမလဲ။"
 
-#: ctk/ctkcellrenderertext.c:561 ctk/ctkcombobox.c:923
+#: ctk/ctkcellrenderertext.c:553 ctk/ctkcombobox.c:923
 msgid "Wrap width"
 msgstr "ထုပ်ပိုးမှု အကျယ်"
 
-#: ctk/ctkcellrenderertext.c:562
+#: ctk/ctkcellrenderertext.c:554
 msgid "The width at which the text is wrapped"
 msgstr "စာသားကို ထုတ်ပိုးတဲ့ အကျယ်"
 
-#: ctk/ctkcellrenderertext.c:580 ctk/ctktreeviewcolumn.c:344
+#: ctk/ctkcellrenderertext.c:572 ctk/ctktreeviewcolumn.c:344
 msgid "Alignment"
 msgstr "တန်းညှိခြင်း"
 
-#: ctk/ctkcellrenderertext.c:581
+#: ctk/ctkcellrenderertext.c:573
 msgid "How to align the lines"
 msgstr "လိုင်းများကို ဘယ်လို တန်းညှိမလဲ"
 
-#: ctk/ctkcellrenderertext.c:596 ctk/ctkentry.c:1109
+#: ctk/ctkcellrenderertext.c:588 ctk/ctkentry.c:1109
 msgid "Placeholder text"
 msgstr ""
 
-#: ctk/ctkcellrenderertext.c:597
+#: ctk/ctkcellrenderertext.c:589
 msgid "Text rendered when an editable cell is empty"
 msgstr ""
 
-#: ctk/ctkcellrenderertext.c:606 ctk/ctkcellview.c:353 ctk/ctktexttag.c:722
+#: ctk/ctkcellrenderertext.c:598 ctk/ctkcellview.c:349 ctk/ctktexttag.c:722
 msgid "Background set"
 msgstr "နောက်ခံ ချမှတ်ချက်"
 
-#: ctk/ctkcellrenderertext.c:607 ctk/ctkcellview.c:354 ctk/ctktexttag.c:723
+#: ctk/ctkcellrenderertext.c:599 ctk/ctkcellview.c:350 ctk/ctktexttag.c:723
 msgid "Whether this tag affects the background color"
 msgstr "ဒီစာအမှတ်က နောက်ခံအရောင်ကို ထိခိုက်၊ မထိခိုက်"
 
-#: ctk/ctkcellrenderertext.c:610 ctk/ctktexttag.c:730
+#: ctk/ctkcellrenderertext.c:602 ctk/ctktexttag.c:730
 msgid "Foreground set"
 msgstr "အနီးမြင်ကွင်း ချမှတ်ချက်"
 
-#: ctk/ctkcellrenderertext.c:611 ctk/ctktexttag.c:731
+#: ctk/ctkcellrenderertext.c:603 ctk/ctktexttag.c:731
 msgid "Whether this tag affects the foreground color"
 msgstr "ဒီစာအမှတ်က အနီးမြင်ကွင်း အရောင်ကို ထိခိုက်၊ မထိခိုက်"
 
-#: ctk/ctkcellrenderertext.c:614 ctk/ctktexttag.c:734
+#: ctk/ctkcellrenderertext.c:606 ctk/ctktexttag.c:734
 msgid "Editability set"
 msgstr "တည်းဖြတ်နိုင်မှု ချမှတ်ချက်"
 
-#: ctk/ctkcellrenderertext.c:615 ctk/ctktexttag.c:735
+#: ctk/ctkcellrenderertext.c:607 ctk/ctktexttag.c:735
 msgid "Whether this tag affects text editability"
 msgstr "ဒီစာအမှတ်က စာသား တည်းဖြတ်နိုင်မှုကို ထိခိုက်၊ မထိခိုက်"
 
-#: ctk/ctkcellrenderertext.c:618 ctk/ctktexttag.c:738
+#: ctk/ctkcellrenderertext.c:610 ctk/ctktexttag.c:738
 msgid "Font family set"
 msgstr "ဖောင့် အုပ်စု ချမှတ်ချက်"
 
-#: ctk/ctkcellrenderertext.c:619 ctk/ctktexttag.c:739
+#: ctk/ctkcellrenderertext.c:611 ctk/ctktexttag.c:739
 msgid "Whether this tag affects the font family"
 msgstr "ဒီစာအမှတ်က ဖောင့် အုပ်စုကို ထိခိုက်၊ မထိခိုက်"
 
-#: ctk/ctkcellrenderertext.c:622 ctk/ctktexttag.c:742
+#: ctk/ctkcellrenderertext.c:614 ctk/ctktexttag.c:742
 msgid "Font style set"
 msgstr "ဖောင့် စတိုင် ချမှတ်ချက်"
 
-#: ctk/ctkcellrenderertext.c:623 ctk/ctktexttag.c:743
+#: ctk/ctkcellrenderertext.c:615 ctk/ctktexttag.c:743
 msgid "Whether this tag affects the font style"
 msgstr "ဒီစာအမှတ်က ဖောင့် စတိုင်ကို ထိခိုက်၊ မထိခိုက်"
 
-#: ctk/ctkcellrenderertext.c:626 ctk/ctktexttag.c:746
+#: ctk/ctkcellrenderertext.c:618 ctk/ctktexttag.c:746
 msgid "Font variant set"
 msgstr "ဖောင့် မူကွဲ ချမှတ်ချက်"
 
-#: ctk/ctkcellrenderertext.c:627 ctk/ctktexttag.c:747
+#: ctk/ctkcellrenderertext.c:619 ctk/ctktexttag.c:747
 msgid "Whether this tag affects the font variant"
 msgstr "ဒီစာအမှတ်က ဖောင့် မူကွဲကို ထိခိုက်၊ မထိခိုက်"
 
-#: ctk/ctkcellrenderertext.c:630 ctk/ctktexttag.c:750
+#: ctk/ctkcellrenderertext.c:622 ctk/ctktexttag.c:750
 msgid "Font weight set"
 msgstr "ဖောင့် အထူ ချမှတ်ချက်"
 
-#: ctk/ctkcellrenderertext.c:631 ctk/ctktexttag.c:751
+#: ctk/ctkcellrenderertext.c:623 ctk/ctktexttag.c:751
 msgid "Whether this tag affects the font weight"
 msgstr "ဒီစာအမှတ်က ဖောင့် အထူကို ထိခိုက်၊ မထိခိုက်"
 
-#: ctk/ctkcellrenderertext.c:634 ctk/ctktexttag.c:754
+#: ctk/ctkcellrenderertext.c:626 ctk/ctktexttag.c:754
 msgid "Font stretch set"
 msgstr "ဖောင့် ဆန့်ထုတ်မှု ချမှတ်ချက်"
 
-#: ctk/ctkcellrenderertext.c:635 ctk/ctktexttag.c:755
+#: ctk/ctkcellrenderertext.c:627 ctk/ctktexttag.c:755
 msgid "Whether this tag affects the font stretch"
 msgstr "ဒီစာအမှတ်က ဖောင့် ဆန့်ထုတ်မှုကို ထိခိုက်၊ မထိခိုက်"
 
-#: ctk/ctkcellrenderertext.c:638 ctk/ctktexttag.c:758
+#: ctk/ctkcellrenderertext.c:630 ctk/ctktexttag.c:758
 msgid "Font size set"
 msgstr "ဖောင့်အရွယ် ချမှတ်ချက်"
 
-#: ctk/ctkcellrenderertext.c:639 ctk/ctktexttag.c:759
+#: ctk/ctkcellrenderertext.c:631 ctk/ctktexttag.c:759
 msgid "Whether this tag affects the font size"
 msgstr "ဒီစာအမှတ်က ဖောင့် အရွယ်ကို ထိခိုက်၊ မထိခိုက်"
 
-#: ctk/ctkcellrenderertext.c:642 ctk/ctktexttag.c:762
+#: ctk/ctkcellrenderertext.c:634 ctk/ctktexttag.c:762
 msgid "Font scale set"
 msgstr "ဖောင့် ​စကေး ချမှတ်ချက်"
 
-#: ctk/ctkcellrenderertext.c:643 ctk/ctktexttag.c:763
+#: ctk/ctkcellrenderertext.c:635 ctk/ctktexttag.c:763
 msgid "Whether this tag scales the font size by a factor"
 msgstr "ဒီစာအမှတ်က ဖောင့် အရွယ်ကို အကြောင်းရင်း တခုနဲ့ ထိခိုက်၊ မထိခိုက်"
 
-#: ctk/ctkcellrenderertext.c:646 ctk/ctktexttag.c:782
+#: ctk/ctkcellrenderertext.c:638 ctk/ctktexttag.c:782
 msgid "Rise set"
 msgstr "တိုးတက်မှု ချမှတ်ချက်"
 
-#: ctk/ctkcellrenderertext.c:647 ctk/ctktexttag.c:783
+#: ctk/ctkcellrenderertext.c:639 ctk/ctktexttag.c:783
 msgid "Whether this tag affects the rise"
 msgstr "ဒီစာအမှတ်က တိုးတက်မှုကို ထိခိုက်၊ မထိခိုက်"
 
-#: ctk/ctkcellrenderertext.c:650 ctk/ctktexttag.c:798
+#: ctk/ctkcellrenderertext.c:642 ctk/ctktexttag.c:798
 msgid "Strikethrough set"
 msgstr "မျဉ်းဖြတ်စာလုံး ချမှတ်ချက်"
 
-#: ctk/ctkcellrenderertext.c:651 ctk/ctktexttag.c:799
+#: ctk/ctkcellrenderertext.c:643 ctk/ctktexttag.c:799
 msgid "Whether this tag affects strikethrough"
 msgstr "ဒီစာအမှတ်က မျဉ်းဖြတ်စာလုံးကို ထိခိုက်၊ မထိခိုက်"
 
-#: ctk/ctkcellrenderertext.c:654 ctk/ctktexttag.c:806
+#: ctk/ctkcellrenderertext.c:646 ctk/ctktexttag.c:806
 msgid "Underline set"
 msgstr "မျဉ်းသားစာလုံး ချမှတ်ချက်"
 
-#: ctk/ctkcellrenderertext.c:655 ctk/ctktexttag.c:807
+#: ctk/ctkcellrenderertext.c:647 ctk/ctktexttag.c:807
 msgid "Whether this tag affects underlining"
 msgstr "ဒီစာအမှတ်က စာလုံးမျဉ်းသားခြင်းကို ထိခိုက်၊ မထိခိုက်"
 
-#: ctk/ctkcellrenderertext.c:658 ctk/ctktexttag.c:770
+#: ctk/ctkcellrenderertext.c:650 ctk/ctktexttag.c:770
 msgid "Language set"
 msgstr "ဘာသာစကား အစု"
 
-#: ctk/ctkcellrenderertext.c:659 ctk/ctktexttag.c:771
+#: ctk/ctkcellrenderertext.c:651 ctk/ctktexttag.c:771
 msgid "Whether this tag affects the language the text is rendered as"
 msgstr "ဒီစာအမှတ်က စာသားကို တင်ဆက်တဲ့ ပုံစံနဲ့ ဘာသာစကားကို ထိခိုက်၊ မထိခိုက်"
 
-#: ctk/ctkcellrenderertext.c:662
+#: ctk/ctkcellrenderertext.c:654
 msgid "Ellipsize set"
 msgstr "မြှုပ်ချန်ခြင်း ချမှတ်ချက်"
 
-#: ctk/ctkcellrenderertext.c:663
+#: ctk/ctkcellrenderertext.c:655
 msgid "Whether this tag affects the ellipsize mode"
 msgstr "ဒီစာအမှတ်က မြှုပ်ချန်ခြင်း စနစ်ကို ထိခိုက်၊ မထိခိုက်"
 
-#: ctk/ctkcellrenderertext.c:666
+#: ctk/ctkcellrenderertext.c:658
 msgid "Align set"
 msgstr "တန်းညှိခြင်း အစု"
 
-#: ctk/ctkcellrenderertext.c:667
+#: ctk/ctkcellrenderertext.c:659
 msgid "Whether this tag affects the alignment mode"
 msgstr "ဒီစာအမှတ်က တန်းညှိခြင်း စနစ်ကို ထိခိုက်၊ မထိခိုက်"
 
@@ -2632,53 +2632,53 @@ msgstr "ညွှန်တံ အရွယ်"
 msgid "Size of check or radio indicator"
 msgstr "စစ်ဆေးမှု အရွယ် (သို့) ကြယ်ပွင့် ညွှန်တံ"
 
-#: ctk/ctkcellview.c:248
+#: ctk/ctkcellview.c:244
 #, fuzzy
 msgid "Background RGBA color"
 msgstr "နောက်ခံ အရောင်"
 
-#: ctk/ctkcellview.c:263
+#: ctk/ctkcellview.c:259
 msgid "CellView model"
 msgstr "CellView ပုံစံငယ်"
 
-#: ctk/ctkcellview.c:264
+#: ctk/ctkcellview.c:260
 msgid "The model for cell view"
 msgstr "အခန်းငယ်မြင်ကွင်း အတွက် ပုံစံငယ်"
 
-#: ctk/ctkcellview.c:282 ctk/ctkcombobox.c:1182 ctk/ctkentrycompletion.c:467
+#: ctk/ctkcellview.c:278 ctk/ctkcombobox.c:1182 ctk/ctkentrycompletion.c:467
 #: ctk/ctkiconview.c:649 ctk/ctktreemenu.c:307 ctk/ctktreeviewcolumn.c:399
 msgid "Cell Area"
 msgstr ""
 
-#: ctk/ctkcellview.c:283 ctk/ctkcombobox.c:1183 ctk/ctkentrycompletion.c:468
+#: ctk/ctkcellview.c:279 ctk/ctkcombobox.c:1183 ctk/ctkentrycompletion.c:468
 #: ctk/ctkiconview.c:650 ctk/ctktreemenu.c:308 ctk/ctktreeviewcolumn.c:400
 msgid "The CtkCellArea used to layout cells"
 msgstr ""
 
-#: ctk/ctkcellview.c:306
+#: ctk/ctkcellview.c:302
 msgid "Cell Area Context"
 msgstr ""
 
-#: ctk/ctkcellview.c:307
+#: ctk/ctkcellview.c:303
 msgid "The CtkCellAreaContext used to compute the geometry of the cell view"
 msgstr ""
 
-#: ctk/ctkcellview.c:324
+#: ctk/ctkcellview.c:320
 #, fuzzy
 msgid "Draw Sensitive"
 msgstr "ထိခိုက်လွယ်သော"
 
-#: ctk/ctkcellview.c:325
+#: ctk/ctkcellview.c:321
 #, fuzzy
 msgid "Whether to force cells to be drawn in a sensitive state"
 msgstr "အပင်လိုင်းများကို အပင်မြင်ကွင်းနဲ့ ရေးဆွဲသင့်၊ မသင့်"
 
-#: ctk/ctkcellview.c:343
+#: ctk/ctkcellview.c:339
 #, fuzzy
 msgid "Fit Model"
 msgstr "ပုံစံငယ်"
 
-#: ctk/ctkcellview.c:344
+#: ctk/ctkcellview.c:340
 msgid "Whether to request enough space for every row in the model"
 msgstr ""
 
@@ -2698,7 +2698,7 @@ msgstr "စစ်ဆေးမှု ၀န်းကျင်ရှိ ကြာ�
 msgid "Whether the menu item is checked"
 msgstr "စာရင်းမှတ် အချက်ကို မှတ်သား၊ မမှတ်သား"
 
-#: ctk/ctkcheckmenuitem.c:217 ctk/ctktogglebutton.c:195
+#: ctk/ctkcheckmenuitem.c:217 ctk/ctktogglebutton.c:194
 msgid "Inconsistent"
 msgstr "မကိုက်ညီမှု"
 
@@ -2735,30 +2735,30 @@ msgstr "ခေါင်းစဉ်"
 msgid "The title of the color selection dialog"
 msgstr "ရွေးထားတဲ့ အညွှန်းစာမျက်နှာ အရောင် ခေါင်းဉ်"
 
-#: ctk/ctkcolorbutton.c:202
+#: ctk/ctkcolorbutton.c:199
 msgid "The selected color"
 msgstr "ရွေးထားတဲ့ အရောင်"
 
-#: ctk/ctkcolorbutton.c:218
+#: ctk/ctkcolorbutton.c:214
 msgid "The selected opacity value (0 fully transparent, 65535 fully opaque)"
 msgstr "​ရွေးထားတဲ့ အလင်းပိတ်မှု တန်ဖိုး (၀ လုံး၀ ဖေါက်ထွင်းနိုင်မှု၊ ၆၅၅၃၅ လုံး၀ အလင်းပိတ်မှု)"
 
-#: ctk/ctkcolorbutton.c:232
+#: ctk/ctkcolorbutton.c:228
 #, fuzzy
 msgid "Current RGBA Color"
 msgstr "လက်ရှိ အရောင်"
 
-#: ctk/ctkcolorbutton.c:233
+#: ctk/ctkcolorbutton.c:229
 #, fuzzy
 msgid "The selected RGBA color"
 msgstr "ရွေးထားတဲ့ အရောင်"
 
-#: ctk/ctkcolorbutton.c:274
+#: ctk/ctkcolorbutton.c:270
 #, fuzzy
 msgid "Show Editor"
 msgstr "ချဲ့ကားကိရိယာများကို ပြသပါ"
 
-#: ctk/ctkcolorbutton.c:275
+#: ctk/ctkcolorbutton.c:271
 #, fuzzy
 msgid "Whether to show the color editor right away"
 msgstr "မျိုးတူစု ညွှန်တံတခုကို ပြသ၊ မပြသ"
@@ -3009,7 +3009,7 @@ msgstr ""
 msgid "Unique ID"
 msgstr ""
 
-#: ctk/ctkcssnode.c:643 ctk/ctkswitch.c:893
+#: ctk/ctkcssnode.c:643 ctk/ctkswitch.c:883
 #, fuzzy
 msgid "State"
 msgstr "အနေအထား"
@@ -3657,7 +3657,7 @@ msgid "Space to put between the label and the child"
 msgstr "အမှတ်တံဆိပ်နဲ့ ကလေး အကြား ထားရှိမဲ့ နေရာလပ်"
 
 #: ctk/ctkexpander.c:351 ctk/ctkframe.c:262 ctk/ctktoolbutton.c:218
-#: ctk/ctktoolitemgroup.c:1646
+#: ctk/ctktoolitemgroup.c:1644
 msgid "Label widget"
 msgstr "အမှတ်တံဆိပ် widget"
 
@@ -3686,11 +3686,11 @@ msgid ""
 "collapsing"
 msgstr ""
 
-#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1674 ctk/ctktreeview.c:1234
+#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1672 ctk/ctktreeview.c:1234
 msgid "Expander Size"
 msgstr "ချဲ့ကားသူ အရွယ်"
 
-#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1675 ctk/ctktreeview.c:1235
+#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1673 ctk/ctktreeview.c:1235
 msgid "Size of the expander arrow"
 msgstr "ချဲ့ကားတဲ့ မြှားရဲ့ အ​ရွယ်"
 
@@ -3814,22 +3814,22 @@ msgstr ""
 "ဖိုင်ရွေးကိရိယာတခုက အန္တရာယ်ကင်း စနစ်နဲ့ လိုအပ်ရင် ထပ်မံ ဖြည့်စွတ်တဲ့ အတည်ပြုမှု အညွှန်းစာမျက်နှာ တခုကို တင်ပြ၊ "
 "မတင်ပြ"
 
-#: ctk/ctkfilechoosernative.c:827
+#: ctk/ctkfilechoosernative.c:825
 #, fuzzy
 msgid "Accept label"
 msgstr "စာအမှတ်များကို လက်ခံတယ်"
 
-#: ctk/ctkfilechoosernative.c:828
+#: ctk/ctkfilechoosernative.c:826
 #, fuzzy
 msgid "The label on the accept button"
 msgstr "ခလုတ်ရဲ့ ထိန်းကျောင်းတဲ့ အနေအထား"
 
-#: ctk/ctkfilechoosernative.c:840
+#: ctk/ctkfilechoosernative.c:838
 #, fuzzy
 msgid "Cancel label"
 msgstr "စာအမှတ် အမှတ်တံဆိပ်"
 
-#: ctk/ctkfilechoosernative.c:841
+#: ctk/ctkfilechoosernative.c:839
 #, fuzzy
 msgid "The label on the cancel button"
 msgstr "ခလုတ်ရဲ့ ထိန်းကျောင်းတဲ့ အနေအထား"
@@ -4908,7 +4908,7 @@ msgstr "လက်ရှိ ရွေးချယ်ထားတဲ့ စာအ�
 msgid "The accel group holding accelerators for the menu"
 msgstr "စာအမှတ်အတွက် အရှိန်မြှင့်ကိရိယာကို ထိန်းထားတဲ့ accel အုပ်စု"
 
-#: ctk/ctkmenu.c:670 ctk/ctkmenuitem.c:775
+#: ctk/ctkmenu.c:670 ctk/ctkmenuitem.c:774
 msgid "Accel Path"
 msgstr "accel လမ်းကြောင်း"
 
@@ -5074,40 +5074,40 @@ msgstr "အောက်ခြေ ပူးတွဲချက်"
 msgid "Arbitrary constant to scale down the size of the scroll arrow"
 msgstr "လှိမ်းဆင်း မြှားရဲ့ အရွယ်ကို လျှော့ချဖို့ Arbitrary constant"
 
-#: ctk/ctkmenuitem.c:745
+#: ctk/ctkmenuitem.c:744
 msgid "Right Justified"
 msgstr "ညာဖက် ညှိ​ထားချက်"
 
-#: ctk/ctkmenuitem.c:746
+#: ctk/ctkmenuitem.c:745
 msgid ""
 "Sets whether the menu item appears justified at the right side of a menu bar"
 msgstr "စာရင်းမှတ် အချက်ဟာ စာရင်းမှတ် တန်းလျာတခုရဲ့ ညာဖက်မှာ ညှိထားတဲ့ ပုံပေါ် မပေါ် ချမှတ်ချက်များ"
 
-#: ctk/ctkmenuitem.c:759 ctk/ctkpopovermenu.c:376
+#: ctk/ctkmenuitem.c:758 ctk/ctkpopovermenu.c:376
 msgid "Submenu"
 msgstr "စာရင်းမှတ်ခွဲ"
 
-#: ctk/ctkmenuitem.c:760
+#: ctk/ctkmenuitem.c:759
 msgid "The submenu attached to the menu item, or NULL if it has none"
 msgstr "စာရင်းမှတ် အချက်ဆီ ပူးတွဲထားတဲ့ စာရင်းမှတ်ခွဲ၊ (သို့) ၄င်းမှာ ဘာမှ မရှိရင် NULL"
 
-#: ctk/ctkmenuitem.c:776
+#: ctk/ctkmenuitem.c:775
 msgid "Sets the accelerator path of the menu item"
 msgstr "စာရင်းမှတ် အချက်ရဲ့ အရှိန်မြှင့်ကိရိယာ လမ်းကြောင်း ချမှတ်ချက်များ"
 
-#: ctk/ctkmenuitem.c:790
+#: ctk/ctkmenuitem.c:789
 msgid "The text for the child label"
 msgstr "ကလေး အမှတ်တံဆိပ်အတွက် စာသား"
 
-#: ctk/ctkmenuitem.c:899
+#: ctk/ctkmenuitem.c:898
 msgid "Amount of space used up by arrow, relative to the menu item's font size"
 msgstr "စာရင်းမှတ် အချက်ရဲ့ ဖောင့်အရွယ်နဲ့ ဆက်စပ်ပြီး၊ မြှားက သုံးစွဲခဲတဲ့ နေရာပမာဏ"
 
-#: ctk/ctkmenuitem.c:915
+#: ctk/ctkmenuitem.c:914
 msgid "Width in Characters"
 msgstr "အက္ခရာများ အလိုက် အကျယ်"
 
-#: ctk/ctkmenuitem.c:916
+#: ctk/ctkmenuitem.c:915
 msgid "The minimum desired width of the menu item in characters"
 msgstr "အက္ခရာများ အလိုက် စာရင်းမှတ် အချက်ရဲ့ နှစ်လိုဖွယ် အနည်းဆုံး အကျယ်"
 
@@ -5173,20 +5173,20 @@ msgstr "ဒုတိယအဆင့်မှ မြှင့်တင်ချ�
 msgid "The secondary text includes Pango markup."
 msgstr "ဒုတိယအဆင့် စာသားမှာ Pango မြှင့်တင်ချက် ပါ၀င်တယ်။"
 
-#: ctk/ctkmessagedialog.c:277
+#: ctk/ctkmessagedialog.c:276
 msgid "Image"
 msgstr "ရုပ်ပုံ"
 
-#: ctk/ctkmessagedialog.c:278
+#: ctk/ctkmessagedialog.c:277
 msgid "The image"
 msgstr "ရုပ်ပုံ"
 
-#: ctk/ctkmessagedialog.c:294
+#: ctk/ctkmessagedialog.c:293
 #, fuzzy
 msgid "Message area"
 msgstr "သတင်းတို အမျိုးအစား"
 
-#: ctk/ctkmessagedialog.c:295
+#: ctk/ctkmessagedialog.c:294
 msgid "CtkBox that holds the dialog's primary and secondary labels"
 msgstr ""
 
@@ -6349,7 +6349,7 @@ msgstr "ဂဏန်းခြေများ"
 msgid "The number of digits to round the value to."
 msgstr "စာတမ်းထဲမှ စာမျက်နှာများရဲ့ အရေအတွက်"
 
-#: ctk/ctkrange.c:538 ctk/ctkswitch.c:929
+#: ctk/ctkrange.c:538 ctk/ctkswitch.c:919
 msgid "Slider Width"
 msgstr "စလိုင်ဒါ အကျယ်"
 
@@ -7964,27 +7964,27 @@ msgstr "စာမျက်နှာ အမျိုးအစား"
 msgid "The value type returned by CtkStyleContext"
 msgstr ""
 
-#: ctk/ctkswitch.c:879
+#: ctk/ctkswitch.c:869
 #, fuzzy
 msgid "Whether the switch is on or off"
 msgstr "ပလတ်ကို ထည့်မြုပ်ထား၊ မထား"
 
-#: ctk/ctkswitch.c:894
+#: ctk/ctkswitch.c:884
 #, fuzzy
 msgid "The backend state"
 msgstr "အခန်းငယ် နောက်ခံ အစု"
 
-#: ctk/ctkswitch.c:930
+#: ctk/ctkswitch.c:920
 #, fuzzy
 msgid "The minimum width of the handle"
 msgstr "ညှိယူခြင်းရဲ့ အနည်းဆုံး တန်ဖိုး"
 
-#: ctk/ctkswitch.c:946
+#: ctk/ctkswitch.c:936
 #, fuzzy
 msgid "Slider Height"
 msgstr "စလိုင်ဒါရဲ့ အရှည်"
 
-#: ctk/ctkswitch.c:947
+#: ctk/ctkswitch.c:937
 #, fuzzy
 msgid "The minimum height of the handle"
 msgstr "ညှိယူခြင်းရဲ့ အနည်းဆုံး တန်ဖိုး"
@@ -8510,11 +8510,11 @@ msgstr "အရောင်နေရာ"
 msgid "Whether to use a monospace font"
 msgstr "ကုန်စာရင်းမှတ် အချက်တခုကို ဖန်တိးဖို့ အမှတ်တံဆိပ် စာသားကို သုံးစွဲ၊ မသုံးစွဲ"
 
-#: ctk/ctktextview.c:1081
+#: ctk/ctktextview.c:1080
 msgid "Error underline color"
 msgstr "မျဉ်းသားချက် အရောင် အမှား"
 
-#: ctk/ctktextview.c:1082
+#: ctk/ctktextview.c:1081
 msgid "Color with which to draw error-indication underlines"
 msgstr "အမှား ညွှန်ပြချက် မျဉ်းသားချက်များကို ရေးဆွဲရမဲ့ အရောင်"
 
@@ -8531,20 +8531,20 @@ msgstr "ဒီလှုပ်ရှားမှုရဲ့ ကြားခံ�
 msgid "Whether the toggle action should be active"
 msgstr "အထိန်း လုပ်ဆာင်ချက်က တက်ကြွသင့်၊ မတက်ကြွသင့်"
 
-#: ctk/ctktogglebutton.c:189 ctk/ctktoggletoolbutton.c:131
+#: ctk/ctktogglebutton.c:188 ctk/ctktoggletoolbutton.c:131
 #, fuzzy
 msgid "If the toggle button should be pressed in"
 msgstr "အထိန်း ခလုတ်ကို ဖိနှိုပ်သင့်၊ မသင့်"
 
-#: ctk/ctktogglebutton.c:196
+#: ctk/ctktogglebutton.c:195
 msgid "If the toggle button is in an \"in between\" state"
 msgstr "အထိန်း ခလုတ်ဟာ \"in between\" အနေအထား တခုမှာ ရှိနေ၊ မရှိနေ"
 
-#: ctk/ctktogglebutton.c:202
+#: ctk/ctktogglebutton.c:201
 msgid "Draw Indicator"
 msgstr "ညွှန်တံ ရေးဆွဲပါ"
 
-#: ctk/ctktogglebutton.c:203
+#: ctk/ctktogglebutton.c:202
 msgid "If the toggle part of the button is displayed"
 msgstr "ခလုတ်ရဲ့ အထိန်း ကဏ္ဍကို ပြသထား၊ မထား"
 
@@ -8580,7 +8580,7 @@ msgstr "ပုံသင်္ကေတအ​ရွယ် ဂုဏ်အင်�
 msgid "Whether the item should receive extra space when the toolbar grows"
 msgstr "ခလုတ်တန်း ကြီးထွားတဲ့အခါ အချက်က အပို နေရာလပ်ကို ယူသင့်၊ မယူသင့်"
 
-#: ctk/ctktoolbar.c:598 ctk/ctktoolitemgroup.c:1689
+#: ctk/ctktoolbar.c:598 ctk/ctktoolitemgroup.c:1687
 msgid "Whether the item should be the same size as other homogeneous items"
 msgstr "အချက်ဟာ အခြား တသားတည်း အချက်များလို တူညီတဲ့ အရွယ် ရှိသင့်၊ မရှိသင့်"
 
@@ -8676,74 +8676,74 @@ msgstr ""
 "ခလုတ်တန်း အချက်ကို အရေးတကြီး အဖြစ် မှတ်ယူ၊ မမှတ်ယူ။ မှန်ရင်၊ ခလုတ်တန်း ခလုတ်များက စသားကို "
 "CTK_TOOLBAR_BOTH_HORIZ စနစ်နဲပ ပြသတယ်။"
 
-#: ctk/ctktoolitemgroup.c:1640
+#: ctk/ctktoolitemgroup.c:1638
 #, fuzzy
 msgid "The human-readable title of this item group"
 msgstr "အနေအထားရဲ့ လူသား ဖတ်နိုင်တဲ့ ဖေါ်ပြချက်တခု"
 
-#: ctk/ctktoolitemgroup.c:1647
+#: ctk/ctktoolitemgroup.c:1645
 #, fuzzy
 msgid "A widget to display in place of the usual label"
 msgstr "ပုံမှန် ဘောင် အမှတ်တံဆိပ်ရဲ့ နေရာမှာ ပြသမဲ့ widgetတခု"
 
-#: ctk/ctktoolitemgroup.c:1653
+#: ctk/ctktoolitemgroup.c:1651
 msgid "Collapsed"
 msgstr ""
 
-#: ctk/ctktoolitemgroup.c:1654
+#: ctk/ctktoolitemgroup.c:1652
 #, fuzzy
 msgid "Whether the group has been collapsed and items are hidden"
 msgstr "ကလေး widgetကို ဖေါ်ပြဖို့ ချဲ့ကားသူကို ဖွင့်ထား၊ မထား"
 
-#: ctk/ctktoolitemgroup.c:1660
+#: ctk/ctktoolitemgroup.c:1658
 #, fuzzy
 msgid "ellipsize"
 msgstr "မြှုပ်ချန်ခြင်း"
 
-#: ctk/ctktoolitemgroup.c:1661
+#: ctk/ctktoolitemgroup.c:1659
 msgid "Ellipsize for item group headers"
 msgstr ""
 
-#: ctk/ctktoolitemgroup.c:1667
+#: ctk/ctktoolitemgroup.c:1665
 #, fuzzy
 msgid "Header Relief"
 msgstr "ခေါင်းစီး ရုပ်ပုံ"
 
-#: ctk/ctktoolitemgroup.c:1668
+#: ctk/ctktoolitemgroup.c:1666
 #, fuzzy
 msgid "Relief of the group header button"
 msgstr "ကော်လံ​ ခေါင်းစီး ခလုတ်များကို ပြသပါ"
 
-#: ctk/ctktoolitemgroup.c:1681
+#: ctk/ctktoolitemgroup.c:1679
 #, fuzzy
 msgid "Header Spacing"
 msgstr "ခေါင်းစီး အခုအခံ"
 
-#: ctk/ctktoolitemgroup.c:1682
+#: ctk/ctktoolitemgroup.c:1680
 #, fuzzy
 msgid "Spacing between expander arrow and caption"
 msgstr "ချဲ့ကားတဲ့ မြှား ၀န်းကျင်မှ ကြားအကွာအဝေး"
 
-#: ctk/ctktoolitemgroup.c:1696
+#: ctk/ctktoolitemgroup.c:1694
 #, fuzzy
 msgid "Whether the item should receive extra space when the group grows"
 msgstr "ခလုတ်တန်း ကြီးထွားတဲ့အခါ အချက်က အပို နေရာလပ်ကို ယူသင့်၊ မယူသင့်"
 
-#: ctk/ctktoolitemgroup.c:1703
+#: ctk/ctktoolitemgroup.c:1701
 #, fuzzy
 msgid "Whether the item should fill the available space"
 msgstr "ကလေးများ အားလုံးဟာ တရွယ်တည်း ဖြစ် မဖြစ်"
 
-#: ctk/ctktoolitemgroup.c:1709
+#: ctk/ctktoolitemgroup.c:1707
 msgid "New Row"
 msgstr ""
 
-#: ctk/ctktoolitemgroup.c:1710
+#: ctk/ctktoolitemgroup.c:1708
 #, fuzzy
 msgid "Whether the item should start a new row"
 msgstr "အချက်များကို ကိန်းဂဏန်း တခုနဲ့ ပြသသင့်၊ မသင့်"
 
-#: ctk/ctktoolitemgroup.c:1717
+#: ctk/ctktoolitemgroup.c:1715
 #, fuzzy
 msgid "Position of the item within this group"
 msgstr "ပေတံပေါ်မှ အမှတ်ရဲ့ တည်နေရာ"
@@ -9512,53 +9512,53 @@ msgstr "ဖောင့် စကေးချမှု အကြောင်း�
 msgid "The scaling factor of the window"
 msgstr "၀င်းဒိုးရဲ့ ခေါင်းစဉ်"
 
-#: ctk/ctkwidget.c:3497
+#: ctk/ctkwidget.c:3493
 msgid "Interior Focus"
 msgstr "အတွင်းပိုင်း ဗဟိုပြုချက်"
 
-#: ctk/ctkwidget.c:3498
+#: ctk/ctkwidget.c:3494
 msgid "Whether to draw the focus indicator inside widgets"
 msgstr "widget များ အတွင်းမှာ ဗဟိုပြုချက် ညွှန်တံကို ရေးဆွဲ၊ မဆွဲ"
 
-#: ctk/ctkwidget.c:3511
+#: ctk/ctkwidget.c:3507
 msgid "Focus linewidth"
 msgstr "ဗဟိုပြုတဲ့ linewidth"
 
-#: ctk/ctkwidget.c:3512
+#: ctk/ctkwidget.c:3508
 msgid "Width, in pixels, of the focus indicator line"
 msgstr "ဗဟိုပြုထားတဲ့ ညွှန်တံလိုင်းရဲ့ pixel များအလိုက် အကျယ်"
 
-#: ctk/ctkwidget.c:3526
+#: ctk/ctkwidget.c:3522
 msgid "Focus line dash pattern"
 msgstr "ဗဟိုပြုချက် လိုင်း မျဉ်းတို ပုံစံ"
 
-#: ctk/ctkwidget.c:3527
+#: ctk/ctkwidget.c:3523
 msgid ""
 "Dash pattern used to draw the focus indicator. The character values are "
 "interpreted as pixel widths of alternating on and off segments of the line."
 msgstr ""
 
-#: ctk/ctkwidget.c:3540
+#: ctk/ctkwidget.c:3536
 msgid "Focus padding"
 msgstr "ဗဟိုပြုချက် အခုအခံ"
 
-#: ctk/ctkwidget.c:3541
+#: ctk/ctkwidget.c:3537
 msgid "Width, in pixels, between focus indicator and the widget 'box'"
 msgstr "ဗဟိုပြုချက် ညွှန်တံနဲ့ widget 'အကွက်' အကြား pixel များအလိုက် အကျယ်"
 
-#: ctk/ctkwidget.c:3555
+#: ctk/ctkwidget.c:3548
 msgid "Cursor color"
 msgstr "ခါဆာ အရောင်"
 
-#: ctk/ctkwidget.c:3556
+#: ctk/ctkwidget.c:3549
 msgid "Color with which to draw insertion cursor"
 msgstr "ထည့်သွင်းချက် ခါဆာကို ရေးဆွဲမဲ့ အရောင်"
 
-#: ctk/ctkwidget.c:3569
+#: ctk/ctkwidget.c:3560
 msgid "Secondary cursor color"
 msgstr "ဒုတိယအဆင့်ခါဆာ အရောင်"
 
-#: ctk/ctkwidget.c:3570
+#: ctk/ctkwidget.c:3561
 msgid ""
 "Color with which to draw the secondary insertion cursor when editing mixed "
 "right-to-left and left-to-right text"
@@ -9566,87 +9566,87 @@ msgstr ""
 "ညာ-မှ-ဘယ်နဲ့ ဘယ်-မှ-ညာ စာသား ရောနှောချက်ကို တည်းဖြတ်တဲ့အခါ ဒုတိယအဆင့် ထည့်သွင်းချက် ခါဆာကို​ ရေးဆွဲမဲ့ "
 "အရောင်"
 
-#: ctk/ctkwidget.c:3576
+#: ctk/ctkwidget.c:3567
 msgid "Cursor line aspect ratio"
 msgstr "ခါဆာ လိုင်း ရှုထောင့် အချိုး"
 
-#: ctk/ctkwidget.c:3577
+#: ctk/ctkwidget.c:3568
 msgid "Aspect ratio with which to draw insertion cursor"
 msgstr "ထည့်သွင်းချက် ခါဆာကို ရေးဆွဲပေးတဲ့ ရှုထောင့် အချိုး"
 
-#: ctk/ctkwidget.c:3583
+#: ctk/ctkwidget.c:3574
 #, fuzzy
 msgid "Window dragging"
 msgstr "၀င်းဒိုး တည်နေရာ"
 
-#: ctk/ctkwidget.c:3584
+#: ctk/ctkwidget.c:3575
 msgid "Whether windows can be dragged and maximized by clicking on empty areas"
 msgstr ""
 
-#: ctk/ctkwidget.c:3601
+#: ctk/ctkwidget.c:3587
 msgid "Unvisited Link Color"
 msgstr "လည်ပတ်မထားတဲ့ အချိတ်အဆက် အရောင်"
 
-#: ctk/ctkwidget.c:3602
+#: ctk/ctkwidget.c:3588
 msgid "Color of unvisited links"
 msgstr "လည်ပတ်မထားတဲ့ အချိတ်အဆက်များရဲ့ အရောင်"
 
-#: ctk/ctkwidget.c:3618
+#: ctk/ctkwidget.c:3601
 msgid "Visited Link Color"
 msgstr "လည်ပတ်ထားတဲ့ အချိတ်အဆက် အရောင်"
 
-#: ctk/ctkwidget.c:3619
+#: ctk/ctkwidget.c:3602
 msgid "Color of visited links"
 msgstr "လည်ပတ်ထားတဲ့ အချိတ်အဆက်များရဲ့ အရောင်"
 
-#: ctk/ctkwidget.c:3637
+#: ctk/ctkwidget.c:3619
 msgid "Wide Separators"
 msgstr "ကျယ်ပြန့်တဲ့ ပုဒ်ခွဲများ"
 
-#: ctk/ctkwidget.c:3638
+#: ctk/ctkwidget.c:3620
 msgid ""
 "Whether separators have configurable width and should be drawn using a box "
 "instead of a line"
 msgstr "ပုဒ်ခွဲများမှာ ပြုပြင်ဖန်တီးနိုင်တဲ့ အကျယ်ရှိပြီး လိုင်းအစား အကွက်တခုကို သုံးစွဲကာ ရေးဆွဲသင့်၊ မသင့်"
 
-#: ctk/ctkwidget.c:3655
+#: ctk/ctkwidget.c:3637
 msgid "Separator Width"
 msgstr "ပုဒ်ခွဲ အကျယ်"
 
-#: ctk/ctkwidget.c:3656
+#: ctk/ctkwidget.c:3638
 msgid "The width of separators if wide-separators is TRUE"
 msgstr "wide-separators မှန်ကန်နေရင် ပုဒ်ခွဲများရဲ့ အကျယ်"
 
-#: ctk/ctkwidget.c:3673
+#: ctk/ctkwidget.c:3655
 msgid "Separator Height"
 msgstr "ပုဒ်ခွဲ အမြင့်"
 
-#: ctk/ctkwidget.c:3674
+#: ctk/ctkwidget.c:3656
 msgid "The height of separators if \"wide-separators\" is TRUE"
 msgstr "အကယ်၍ \"wide-separators\" ဟာ မှန်နေရင် ပုဒ်ခွဲများရဲ့ အမြင့်"
 
-#: ctk/ctkwidget.c:3688
+#: ctk/ctkwidget.c:3670
 msgid "Horizontal Scroll Arrow Length"
 msgstr "ပြင်ညီ လှိမ့်ဆင်းတဲ့ မြှား အရှည်"
 
-#: ctk/ctkwidget.c:3689
+#: ctk/ctkwidget.c:3671
 msgid "The length of horizontal scroll arrows"
 msgstr "ပြင်ညီ လှိမ့်ဆင်းတဲ့ မြှားရဲ့ အရှည်"
 
-#: ctk/ctkwidget.c:3703
+#: ctk/ctkwidget.c:3685
 msgid "Vertical Scroll Arrow Length"
 msgstr "ဒေါင်လိုက် လှိမ့်ဆင်းတဲ့ မြှား အရှည်"
 
-#: ctk/ctkwidget.c:3704
+#: ctk/ctkwidget.c:3686
 msgid "The length of vertical scroll arrows"
 msgstr "ဒေါင်လိုက် လှိမ့်ဆင်းတဲ့ မြှားရဲ့ အရှည်"
 
-#: ctk/ctkwidget.c:3710 ctk/ctkwidget.c:3711
+#: ctk/ctkwidget.c:3692 ctk/ctkwidget.c:3693
 #, fuzzy
 msgid "Width of text selection handles"
 msgstr "လက်ကိုင် အကျယ်"
 
-#: ctk/ctkwidget.c:3716 ctk/ctkwidget.c:3717
+#: ctk/ctkwidget.c:3698 ctk/ctkwidget.c:3699
 #, fuzzy
 msgid "Height of text selection handles"
 msgstr "ဖောင့် ရွေးချယ်ရေး အညွှန်းစာမျက်နှာရဲ့ ​ခေါင်းစဉ်"
@@ -9910,28 +9910,28 @@ msgstr ""
 msgid "Decoration resize handle size"
 msgstr ""
 
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:137
+#: modules/printbackends/cloudprint/ctkprintercloudprint.c:133
 msgid "Cloud Print account"
 msgstr ""
 
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:138
+#: modules/printbackends/cloudprint/ctkprintercloudprint.c:134
 msgid "CtkCloudprintAccount instance"
 msgstr ""
 
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:147
+#: modules/printbackends/cloudprint/ctkprintercloudprint.c:143
 #, fuzzy
 msgid "Printer ID"
 msgstr "ပုံနှိုပ်စက်"
 
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:148
+#: modules/printbackends/cloudprint/ctkprintercloudprint.c:144
 msgid "Cloud Print printer ID"
 msgstr ""
 
-#: modules/printbackends/cups/ctkprintercups.c:93
+#: modules/printbackends/cups/ctkprintercups.c:91
 msgid "Color Profile Title"
 msgstr ""
 
-#: modules/printbackends/cups/ctkprintercups.c:94
+#: modules/printbackends/cups/ctkprintercups.c:92
 #, fuzzy
 msgid "The title of the color profile to use"
 msgstr "ရွေးထားတဲ့ အညွှန်းစာမျက်နှာ အရောင် ခေါင်းဉ်"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+ 2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-23 18:06+0100\n"
+"POT-Creation-Date: 2022-08-11 17:19+0200\n"
 "PO-Revision-Date: 2009-12-21 17:30+0100\n"
 "Last-Translator: Iestyn Pryce <dylunio@gmail.com>\n"
 "Language-Team: Cymraeg <gnome-cy@pengwyn.linux.org.uk>\n"
@@ -249,8 +249,8 @@ msgid "A unique name for the action."
 msgstr "Enw unigryw ar gyfer y weithred."
 
 #: ctk/ctkaction.c:252 ctk/ctkbutton.c:281 ctk/ctkexpander.c:308
-#: ctk/ctkframe.c:231 ctk/ctklabel.c:805 ctk/ctkmenuitem.c:789
-#: ctk/ctktoolbutton.c:204 ctk/ctktoolitemgroup.c:1639
+#: ctk/ctkframe.c:231 ctk/ctklabel.c:805 ctk/ctkmenuitem.c:788
+#: ctk/ctktoolbutton.c:204 ctk/ctktoolitemgroup.c:1637
 msgid "Label"
 msgstr "Label"
 
@@ -436,88 +436,6 @@ msgstr ""
 msgid "Whether to use the related actions appearance properties"
 msgstr "A gellir dewis testun y label gyda'r llygoden"
 
-#: ctk/ctkalignment.c:151
-msgid "Horizontal alignment"
-msgstr "Cyfuniad llorweddol"
-
-#: ctk/ctkalignment.c:152 ctk/ctkbutton.c:328
-msgid ""
-"Horizontal position of child in available space. 0.0 is left aligned, 1.0 is "
-"right aligned"
-msgstr ""
-"Safle llorweddol y plentyn o fewn y lle sydd ar gael. Mae 0.0 ar y chwith a "
-"1.0 ar y dde."
-
-#: ctk/ctkalignment.c:170
-msgid "Vertical alignment"
-msgstr "Cyfuniad fertigol"
-
-#: ctk/ctkalignment.c:171 ctk/ctkbutton.c:347
-msgid ""
-"Vertical position of child in available space. 0.0 is top aligned, 1.0 is "
-"bottom aligned"
-msgstr ""
-"Safle fertigol y plentyn o fewn y lle sydd ar gael. Mae 0.0 ar y brig a 1.0 "
-"ar y gwaelod."
-
-#: ctk/ctkalignment.c:188
-msgid "Horizontal scale"
-msgstr "Graddfa lorweddol"
-
-#: ctk/ctkalignment.c:189
-msgid ""
-"If available horizontal space is bigger than needed for the child, how much "
-"of it to use for the child. 0.0 means none, 1.0 means all"
-msgstr ""
-"Os mae'r gofod llorweddol sydd ar gael yn fwy na sydd angen gan y plentyn, "
-"faint ohoni i'w ddefnyddio ar gyfer y plentyn. Mae 0.0 yn golygu dim. Mae "
-"1.0 yn golygu popeth."
-
-#: ctk/ctkalignment.c:206
-msgid "Vertical scale"
-msgstr "Graddfa fertigol"
-
-#: ctk/ctkalignment.c:207
-msgid ""
-"If available vertical space is bigger than needed for the child, how much of "
-"it to use for the child. 0.0 means none, 1.0 means all"
-msgstr ""
-"Os mae'r gofod fertigol sydd ar gael yn fwy na sydd angen gan y plentyn, "
-"faint ohoni i'w ddefnyddio ar gyfer y plentyn. Mae 0.0 yn golygu dim. Mae "
-"1.0 yn golygu popeth."
-
-#: ctk/ctkalignment.c:226
-msgid "Top Padding"
-msgstr "Bylchu Pen"
-
-#: ctk/ctkalignment.c:227
-msgid "The padding to insert at the top of the widget."
-msgstr "Y bylchu i fewnosod ar ben y teclyn."
-
-#: ctk/ctkalignment.c:245
-msgid "Bottom Padding"
-msgstr "Bylchu Gwaelod"
-
-#: ctk/ctkalignment.c:246
-msgid "The padding to insert at the bottom of the widget."
-msgstr "Y bylchu i fewnosod ar waelod y teclyn."
-
-#: ctk/ctkalignment.c:264
-msgid "Left Padding"
-msgstr "Bylchu Chwith"
-
-#: ctk/ctkalignment.c:265
-msgid "The padding to insert at the left of the widget."
-msgstr "Y bylchu i fewnosod ar ochr chwith y teclyn."
-
-#: ctk/ctkalignment.c:283
-msgid "Right Padding"
-msgstr "Bylchu De"
-
-#: ctk/ctkalignment.c:284
-msgid "The padding to insert at the right of the widget."
-msgstr "Y bylchu i fewnosod ar ochr dde'r teclyn."
-
 #: ctk/deprecated/ctkarrow.c:121
 msgid "Arrow direction"
 msgstr "Cyfeiriad y saeth"
@@ -535,7 +453,7 @@ msgid "Appearance of the shadow surrounding the arrow"
 msgstr "Edrychiad y cysgod o amgylch y saeth"
 
 #: ctk/deprecated/ctkarrow.c:138 ctk/ctkcombobox.c:1227 ctk/ctkmenu.c:1006
-#: ctk/ctkmenuitem.c:898
+#: ctk/ctkmenuitem.c:897
 msgid "Arrow Scaling"
 msgstr "Graddio Saeth"
 
@@ -543,80 +461,80 @@ msgstr "Graddio Saeth"
 msgid "Amount of space used up by arrow"
 msgstr "Faint o le ddefnyddir gan y saeth"
 
-#: ctk/ctkcolorsel.c:325
+#: ctk/ctkcolorsel.c:323
 msgid "Has Opacity Control"
 msgstr "Biau Rheolwr Tryloywder"
 
-#: ctk/ctkcolorsel.c:326
+#: ctk/ctkcolorsel.c:324
 msgid "Whether the color selector should allow setting opacity"
 msgstr "A ydy'r dewisydd lliw yn caniatáu gosod tryloywder"
 
-#: ctk/ctkcolorsel.c:332
+#: ctk/ctkcolorsel.c:330
 msgid "Has palette"
 msgstr "Biau Palet"
 
-#: ctk/ctkcolorsel.c:333
+#: ctk/ctkcolorsel.c:331
 msgid "Whether a palette should be used"
 msgstr "A ddylid darparu palet"
 
-#: ctk/ctkcolorsel.c:347 ctk/ctkcolorbutton.c:201
+#: ctk/ctkcolorsel.c:343 ctk/ctkcolorbutton.c:198
 msgid "Current Color"
 msgstr "Y Lliw Cyfredol"
 
-#: ctk/ctkcolorsel.c:348
+#: ctk/ctkcolorsel.c:344
 msgid "The current color"
 msgstr "Y lliw cyfredol"
 
-#: ctk/ctkcolorsel.c:354 ctk/ctkcolorbutton.c:217
+#: ctk/ctkcolorsel.c:350 ctk/ctkcolorbutton.c:213
 msgid "Current Alpha"
 msgstr "Yr Alffa Gyfredol"
 
-#: ctk/ctkcolorsel.c:355
+#: ctk/ctkcolorsel.c:351
 msgid "The current opacity value (0 fully transparent, 65535 fully opaque)"
 msgstr "Y gwerth tryloywder cyfredol (0 cwbl dryloyw, 65535 cwbl afloyw)"
 
-#: ctk/ctkcolorsel.c:369
+#: ctk/ctkcolorsel.c:365
 #, fuzzy
 msgid "Current RGBA"
 msgstr "Yr Alffa Gyfredol"
 
-#: ctk/ctkcolorsel.c:370
+#: ctk/ctkcolorsel.c:366
 #, fuzzy
 msgid "The current RGBA color"
 msgstr "Y lliw cyfredol"
 
-#: ctk/ctkcolorseldialog.c:136
+#: ctk/ctkcolorseldialog.c:134
 msgid "Color Selection"
 msgstr "Dewis Lliw"
 
-#: ctk/ctkcolorseldialog.c:137
+#: ctk/ctkcolorseldialog.c:135
 #, fuzzy
 msgid "The color selection embedded in the dialog."
 msgstr "Teitl y deialog dewis lliw"
 
-#: ctk/ctkcolorseldialog.c:143
+#: ctk/ctkcolorseldialog.c:141
 msgid "OK Button"
 msgstr "Botwm OK"
 
-#: ctk/ctkcolorseldialog.c:144
+#: ctk/ctkcolorseldialog.c:142
 msgid "The OK button of the dialog."
 msgstr "Botwm OK y deialog."
 
-#: ctk/ctkcolorseldialog.c:150
+#: ctk/ctkcolorseldialog.c:148
 #, fuzzy
 msgid "Cancel Button"
 msgstr "Botymau Neges"
 
-#: ctk/ctkcolorseldialog.c:151
+#: ctk/ctkcolorseldialog.c:149
 #, fuzzy
 msgid "The cancel button of the dialog."
 msgstr "Rhiant darfodedig y ddeialog"
 
-#: ctk/ctkcolorseldialog.c:157
+#: ctk/ctkcolorseldialog.c:155
 msgid "Help Button"
 msgstr "Botwm Cymorth"
 
-#: ctk/ctkcolorseldialog.c:158
+#: ctk/ctkcolorseldialog.c:156
 msgid "The help button of the dialog."
 msgstr "Botwm cymorth y deialog."
 
@@ -813,7 +731,7 @@ msgid "The amount of space between two consecutive columns"
 msgstr "Faint o le rhwng dwy golofn"
 
 #: ctk/deprecated/ctktable.c:221 ctk/ctkbox.c:285 ctk/ctkflowbox.c:3849
-#: ctk/ctkstack.c:459 ctk/ctktoolbar.c:597 ctk/ctktoolitemgroup.c:1688
+#: ctk/ctkstack.c:459 ctk/ctktoolbar.c:597 ctk/ctktoolitemgroup.c:1686
 msgid "Homogeneous"
 msgstr "Cydryw"
 
@@ -1091,7 +1009,7 @@ msgstr ""
 
 #: ctk/ctkactionbar.c:345 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
 #: ctk/ctknotebook.c:840 ctk/ctkpaned.c:368 ctk/ctkpopover.c:1767
-#: ctk/ctkpopovermenu.c:384 ctk/ctkstack.c:537 ctk/ctktoolitemgroup.c:1716
+#: ctk/ctkpopovermenu.c:384 ctk/ctkstack.c:537 ctk/ctktoolitemgroup.c:1714
 msgid "Position"
 msgstr "Safle"
 
@@ -1149,6 +1067,88 @@ msgstr "Maint Tudalen"
 msgid "The page size of the adjustment"
 msgstr "Maint tudalen yr addasiad"
 
+#: ctk/ctkalignment.c:145
+msgid "Horizontal alignment"
+msgstr "Cyfuniad llorweddol"
+
+#: ctk/ctkalignment.c:146 ctk/ctkbutton.c:328
+msgid ""
+"Horizontal position of child in available space. 0.0 is left aligned, 1.0 is "
+"right aligned"
+msgstr ""
+"Safle llorweddol y plentyn o fewn y lle sydd ar gael. Mae 0.0 ar y chwith a "
+"1.0 ar y dde."
+
+#: ctk/ctkalignment.c:162
+msgid "Vertical alignment"
+msgstr "Cyfuniad fertigol"
+
+#: ctk/ctkalignment.c:163 ctk/ctkbutton.c:347
+msgid ""
+"Vertical position of child in available space. 0.0 is top aligned, 1.0 is "
+"bottom aligned"
+msgstr ""
+"Safle fertigol y plentyn o fewn y lle sydd ar gael. Mae 0.0 ar y brig a 1.0 "
+"ar y gwaelod."
+
+#: ctk/ctkalignment.c:178
+msgid "Horizontal scale"
+msgstr "Graddfa lorweddol"
+
+#: ctk/ctkalignment.c:179
+msgid ""
+"If available horizontal space is bigger than needed for the child, how much "
+"of it to use for the child. 0.0 means none, 1.0 means all"
+msgstr ""
+"Os mae'r gofod llorweddol sydd ar gael yn fwy na sydd angen gan y plentyn, "
+"faint ohoni i'w ddefnyddio ar gyfer y plentyn. Mae 0.0 yn golygu dim. Mae "
+"1.0 yn golygu popeth."
+
+#: ctk/ctkalignment.c:194
+msgid "Vertical scale"
+msgstr "Graddfa fertigol"
+
+#: ctk/ctkalignment.c:195
+msgid ""
+"If available vertical space is bigger than needed for the child, how much of "
+"it to use for the child. 0.0 means none, 1.0 means all"
+msgstr ""
+"Os mae'r gofod fertigol sydd ar gael yn fwy na sydd angen gan y plentyn, "
+"faint ohoni i'w ddefnyddio ar gyfer y plentyn. Mae 0.0 yn golygu dim. Mae "
+"1.0 yn golygu popeth."
+
+#: ctk/ctkalignment.c:212
+msgid "Top Padding"
+msgstr "Bylchu Pen"
+
+#: ctk/ctkalignment.c:213
+msgid "The padding to insert at the top of the widget."
+msgstr "Y bylchu i fewnosod ar ben y teclyn."
+
+#: ctk/ctkalignment.c:229
+msgid "Bottom Padding"
+msgstr "Bylchu Gwaelod"
+
+#: ctk/ctkalignment.c:230
+msgid "The padding to insert at the bottom of the widget."
+msgstr "Y bylchu i fewnosod ar waelod y teclyn."
+
+#: ctk/ctkalignment.c:246
+msgid "Left Padding"
+msgstr "Bylchu Chwith"
+
+#: ctk/ctkalignment.c:247
+msgid "The padding to insert at the left of the widget."
+msgstr "Y bylchu i fewnosod ar ochr chwith y teclyn."
+
+#: ctk/ctkalignment.c:263
+msgid "Right Padding"
+msgstr "Bylchu De"
+
+#: ctk/ctkalignment.c:264
+msgid "The padding to insert at the right of the widget."
+msgstr "Y bylchu i fewnosod ar ochr dde'r teclyn."
+
 #: ctk/ctkappchooserbutton.c:618
 msgid "Include an 'Other…' item"
 msgstr ""
@@ -1169,12 +1169,12 @@ msgstr "Dangos delweddau dewislen"
 msgid "Whether the combobox should show the default application on top"
 msgstr "A ddylid dangos yr awgrymiadau gorffen mewn naidlen ai peidio"
 
-#: ctk/ctkappchooserbutton.c:647 ctk/ctkappchooserdialog.c:688
+#: ctk/ctkappchooserbutton.c:647 ctk/ctkappchooserdialog.c:687
 #, fuzzy
 msgid "Heading"
 msgstr "Dangos Pennawd"
 
-#: ctk/ctkappchooserbutton.c:648 ctk/ctkappchooserdialog.c:689
+#: ctk/ctkappchooserbutton.c:648 ctk/ctkappchooserdialog.c:688
 #, fuzzy
 msgid "The text to show at the top of the dialog"
 msgstr "Y bylchu i fewnosod ar ben y teclyn."
@@ -1189,12 +1189,12 @@ msgstr "Cyflwr anghyson"
 msgid "The content type used by the open with object"
 msgstr "Cynnwys y cofnod"
 
-#: ctk/ctkappchooserdialog.c:674
+#: ctk/ctkappchooserdialog.c:673
 #, fuzzy
 msgid "GFile"
 msgstr "Enw Ffeil"
 
-#: ctk/ctkappchooserdialog.c:675
+#: ctk/ctkappchooserdialog.c:674
 #, fuzzy
 msgid "The GFile used by the app chooser dialog"
 msgstr "Teitl y deialog dewis ffeil"
@@ -1254,50 +1254,50 @@ msgstr ""
 msgid "The default text appearing when there are no applications"
 msgstr ""
 
-#: ctk/ctkapplication.c:845
+#: ctk/ctkapplication.c:843
 msgid "Register session"
 msgstr ""
 
-#: ctk/ctkapplication.c:846
+#: ctk/ctkapplication.c:844
 msgid "Register with the session manager"
 msgstr ""
 
-#: ctk/ctkapplication.c:863
+#: ctk/ctkapplication.c:861
 msgid "Screensaver Active"
 msgstr ""
 
-#: ctk/ctkapplication.c:864
+#: ctk/ctkapplication.c:862
 #, fuzzy
 msgid "Whether the screensaver is active"
 msgstr "A ydy'r weithred wedi ei alluogi"
 
-#: ctk/ctkapplication.c:870
+#: ctk/ctkapplication.c:868
 #, fuzzy
 msgid "Application menu"
 msgstr "Peintiadwy gan y rhaglen"
 
 # EFALLAI (golwg?)
-#: ctk/ctkapplication.c:871
+#: ctk/ctkapplication.c:869
 #, fuzzy
 msgid "The GMenuModel for the application menu"
 msgstr "Y model ar gyfer yr olwg eicon"
 
-#: ctk/ctkapplication.c:877
+#: ctk/ctkapplication.c:875
 #, fuzzy
 msgid "Menubar"
 msgstr "Dewislen"
 
-#: ctk/ctkapplication.c:878
+#: ctk/ctkapplication.c:876
 #, fuzzy
 msgid "The GMenuModel for the menubar"
 msgstr "Y model ar gyfer y blwch combo"
 
-#: ctk/ctkapplication.c:884
+#: ctk/ctkapplication.c:882
 #, fuzzy
 msgid "Active window"
 msgstr "Eitem weithredol"
 
-#: ctk/ctkapplication.c:885
+#: ctk/ctkapplication.c:883
 #, fuzzy
 msgid "The window which most recently had focus"
 msgstr "Yr eitem sydd yn weithredol yn gyfredol"
@@ -1510,7 +1510,7 @@ msgid ""
 msgstr ""
 
 #: ctk/ctkbox.c:318 ctk/ctkcellareabox.c:330 ctk/ctktoolbar.c:589
-#: ctk/ctktoolitemgroup.c:1695 ctk/ctktoolpalette.c:1027
+#: ctk/ctktoolitemgroup.c:1693 ctk/ctktoolpalette.c:1027
 #: ctk/ctktreeviewcolumn.c:323
 msgid "Expand"
 msgstr "Ehangu"
@@ -1519,7 +1519,7 @@ msgstr "Ehangu"
 msgid "Whether the child should receive extra space when the parent grows"
 msgstr "A ddylai'r plentyn dderbyn lle ychwanegol pan mae'r oedolyn yn tyfu"
 
-#: ctk/ctkbox.c:335 ctk/ctktoolitemgroup.c:1702
+#: ctk/ctkbox.c:335 ctk/ctktoolitemgroup.c:1700
 msgid "Fill"
 msgstr "Llenwi"
 
@@ -1555,12 +1555,12 @@ msgstr ""
 "Testun y teclyn label o fewn y botwm, os mae'r botwm yn cynnwys teclyn label"
 
 #: ctk/ctkbutton.c:288 ctk/ctkexpander.c:316 ctk/ctklabel.c:826
-#: ctk/ctkmenuitem.c:803 ctk/ctktoolbutton.c:211
+#: ctk/ctkmenuitem.c:802 ctk/ctktoolbutton.c:211
 msgid "Use underline"
 msgstr "Defnyddio tanlinellu"
 
 #: ctk/ctkbutton.c:289 ctk/ctkexpander.c:317 ctk/ctklabel.c:827
-#: ctk/ctkmenuitem.c:804
+#: ctk/ctkmenuitem.c:803
 msgid ""
 "If set, an underline in the text indicates the next character should be used "
 "for the mnemonic accelerator key"
@@ -2026,39 +2026,39 @@ msgstr "Enw lliw cefndir y gell"
 msgid "Cell background color as a string"
 msgstr "Lliw cefndir y gell fel llinyn"
 
-#: ctk/ctkcellrenderer.c:409
+#: ctk/ctkcellrenderer.c:406
 msgid "Cell background color"
 msgstr "Lliw cefndir y gell"
 
-#: ctk/ctkcellrenderer.c:410
+#: ctk/ctkcellrenderer.c:407
 msgid "Cell background color as a CdkColor"
 msgstr "Lliw cefndir y gell fel CdkColor"
 
-#: ctk/ctkcellrenderer.c:424
+#: ctk/ctkcellrenderer.c:421
 #, fuzzy
 msgid "Cell background RGBA color"
 msgstr "Lliw cefndir y gell"
 
-#: ctk/ctkcellrenderer.c:425
+#: ctk/ctkcellrenderer.c:422
 #, fuzzy
 msgid "Cell background color as a CdkRGBA"
 msgstr "Lliw cefndir y gell fel CdkColor"
 
 # EFALLAI
-#: ctk/ctkcellrenderer.c:432
+#: ctk/ctkcellrenderer.c:429
 msgid "Editing"
 msgstr "Golygu"
 
-#: ctk/ctkcellrenderer.c:433
+#: ctk/ctkcellrenderer.c:430
 #, fuzzy
 msgid "Whether the cell renderer is currently in editing mode"
 msgstr "A yw'r label mewn modd un llinell"
 
-#: ctk/ctkcellrenderer.c:441
+#: ctk/ctkcellrenderer.c:438
 msgid "Cell background set"
 msgstr "Gosodir cefndir y gell"
 
-#: ctk/ctkcellrenderer.c:442
+#: ctk/ctkcellrenderer.c:439
 #, fuzzy
 msgid "Whether the cell background color is set"
 msgstr "A ydy'r tag hwn yn effeithio ar liw cefndir y gell"
@@ -2245,8 +2245,8 @@ msgstr "Y nifer o lefydd degol i'w dangos"
 
 #: ctk/ctkcellrendererspinner.c:125 ctk/ctkcheckmenuitem.c:209
 #: ctk/ctkmenu.c:640 ctk/ctkmodelbutton.c:1211 ctk/ctkmodelbutton.c:1212
-#: ctk/ctkspinner.c:221 ctk/ctkswitch.c:878 ctk/ctktoggleaction.c:129
-#: ctk/ctktogglebutton.c:188 ctk/ctktoggletoolbutton.c:130
+#: ctk/ctkspinner.c:221 ctk/ctkswitch.c:868 ctk/ctktoggleaction.c:129
+#: ctk/ctktogglebutton.c:187 ctk/ctktoggletoolbutton.c:130
 msgid "Active"
 msgstr "Gweithredol"
 
@@ -2303,153 +2303,153 @@ msgstr "Enw lliw'r cefndir"
 msgid "Background color as a string"
 msgstr "Lliw'r cefndir fel llinyn"
 
-#: ctk/ctkcellrenderertext.c:298 ctk/ctkcellview.c:233 ctk/ctktexttag.c:231
+#: ctk/ctkcellrenderertext.c:295 ctk/ctkcellview.c:230 ctk/ctktexttag.c:231
 msgid "Background color"
 msgstr "Lliw'r cefndir"
 
-#: ctk/ctkcellrenderertext.c:299 ctk/ctkcellview.c:234 ctk/ctktexttag.c:232
+#: ctk/ctkcellrenderertext.c:296 ctk/ctkcellview.c:231 ctk/ctktexttag.c:232
 msgid "Background color as a CdkColor"
 msgstr "Lliw'r cefndir fel CdkColor"
 
-#: ctk/ctkcellrenderertext.c:313
+#: ctk/ctkcellrenderertext.c:309
 #, fuzzy
 msgid "Background color as RGBA"
 msgstr "Enw lliw'r cefndir"
 
-#: ctk/ctkcellrenderertext.c:314 ctk/ctkcellview.c:249 ctk/ctktexttag.c:247
+#: ctk/ctkcellrenderertext.c:310 ctk/ctkcellview.c:245 ctk/ctktexttag.c:247
 #, fuzzy
 msgid "Background color as a CdkRGBA"
 msgstr "Lliw'r cefndir fel CdkColor"
 
-#: ctk/ctkcellrenderertext.c:319 ctk/ctktexttag.c:262
+#: ctk/ctkcellrenderertext.c:315 ctk/ctktexttag.c:262
 msgid "Foreground color name"
 msgstr "Enw lliw'r blaendir"
 
-#: ctk/ctkcellrenderertext.c:320 ctk/ctktexttag.c:263
+#: ctk/ctkcellrenderertext.c:316 ctk/ctktexttag.c:263
 msgid "Foreground color as a string"
 msgstr "Lliw'r blaendir fel llinyn"
 
-#: ctk/ctkcellrenderertext.c:334 ctk/ctktexttag.c:277 ctk/ctktrayicon-x11.c:136
+#: ctk/ctkcellrenderertext.c:327 ctk/ctktexttag.c:277 ctk/ctktrayicon-x11.c:136
 msgid "Foreground color"
 msgstr "Lliw'r blaendir"
 
-#: ctk/ctkcellrenderertext.c:335 ctk/ctktexttag.c:278
+#: ctk/ctkcellrenderertext.c:328 ctk/ctktexttag.c:278
 msgid "Foreground color as a CdkColor"
 msgstr "Lliw'r blaendir fel CdkColor"
 
-#: ctk/ctkcellrenderertext.c:349
+#: ctk/ctkcellrenderertext.c:341
 #, fuzzy
 msgid "Foreground color as RGBA"
 msgstr "Enw lliw'r blaendir"
 
-#: ctk/ctkcellrenderertext.c:350 ctk/ctktexttag.c:293
+#: ctk/ctkcellrenderertext.c:342 ctk/ctktexttag.c:293
 #, fuzzy
 msgid "Foreground color as a CdkRGBA"
 msgstr "Lliw'r blaendir fel CdkColor"
 
-#: ctk/ctkcellrenderertext.c:357 ctk/ctkentry.c:861 ctk/ctktexttag.c:309
+#: ctk/ctkcellrenderertext.c:349 ctk/ctkentry.c:861 ctk/ctktexttag.c:309
 #: ctk/ctktextview.c:825
 msgid "Editable"
 msgstr "Golygadwy"
 
-#: ctk/ctkcellrenderertext.c:358 ctk/ctktexttag.c:310 ctk/ctktextview.c:826
+#: ctk/ctkcellrenderertext.c:350 ctk/ctktexttag.c:310 ctk/ctktextview.c:826
 msgid "Whether the text can be modified by the user"
 msgstr "A chaiff y defnyddiwr olygu'r testun"
 
-#: ctk/ctkcellrenderertext.c:364 ctk/ctkcellrenderertext.c:371
+#: ctk/ctkcellrenderertext.c:356 ctk/ctkcellrenderertext.c:363
 #: ctk/ctkfontchooser.c:64 ctk/ctktexttag.c:325 ctk/ctktexttag.c:333
 msgid "Font"
 msgstr "Ffont"
 
-#: ctk/ctkcellrenderertext.c:365 ctk/ctkfontchooser.c:65 ctk/ctktexttag.c:326
+#: ctk/ctkcellrenderertext.c:357 ctk/ctkfontchooser.c:65 ctk/ctktexttag.c:326
 msgid "Font description as a string, e.g. \"Sans Italic 12\""
 msgstr "Disgrifiad ffont fel llinyn, e.e. \"Sans Italic 12\""
 
-#: ctk/ctkcellrenderertext.c:372 ctk/ctkfontchooser.c:78 ctk/ctktexttag.c:334
+#: ctk/ctkcellrenderertext.c:364 ctk/ctkfontchooser.c:78 ctk/ctktexttag.c:334
 msgid "Font description as a PangoFontDescription struct"
 msgstr "Disgrifiad ffont fel strwythur PangoFontDescription"
 
-#: ctk/ctkcellrenderertext.c:378 ctk/ctktexttag.c:341
+#: ctk/ctkcellrenderertext.c:370 ctk/ctktexttag.c:341
 msgid "Font family"
 msgstr "Teulu'r ffont"
 
-#: ctk/ctkcellrenderertext.c:379 ctk/ctktexttag.c:342
+#: ctk/ctkcellrenderertext.c:371 ctk/ctktexttag.c:342
 msgid "Name of the font family, e.g. Sans, Helvetica, Times, Monospace"
 msgstr "Enw teulu'r ffont"
 
-#: ctk/ctkcellrenderertext.c:385 ctk/ctkcellrenderertext.c:386
+#: ctk/ctkcellrenderertext.c:377 ctk/ctkcellrenderertext.c:378
 #: ctk/ctktexttag.c:349
 msgid "Font style"
 msgstr "Arddull y ffont"
 
-#: ctk/ctkcellrenderertext.c:393 ctk/ctkcellrenderertext.c:394
+#: ctk/ctkcellrenderertext.c:385 ctk/ctkcellrenderertext.c:386
 #: ctk/ctktexttag.c:358
 msgid "Font variant"
 msgstr "Amrywiad y ffont"
 
-#: ctk/ctkcellrenderertext.c:401 ctk/ctkcellrenderertext.c:402
+#: ctk/ctkcellrenderertext.c:393 ctk/ctkcellrenderertext.c:394
 #: ctk/ctktexttag.c:367
 msgid "Font weight"
 msgstr "Pwysau'r ffont"
 
-#: ctk/ctkcellrenderertext.c:409 ctk/ctkcellrenderertext.c:410
+#: ctk/ctkcellrenderertext.c:401 ctk/ctkcellrenderertext.c:402
 #: ctk/ctktexttag.c:378
 msgid "Font stretch"
 msgstr "Ymestyniad y ffont"
 
-#: ctk/ctkcellrenderertext.c:417 ctk/ctkcellrenderertext.c:418
+#: ctk/ctkcellrenderertext.c:409 ctk/ctkcellrenderertext.c:410
 #: ctk/ctktexttag.c:387
 msgid "Font size"
 msgstr "Maint y ffont"
 
-#: ctk/ctkcellrenderertext.c:425 ctk/ctktexttag.c:407
+#: ctk/ctkcellrenderertext.c:417 ctk/ctktexttag.c:407
 msgid "Font points"
 msgstr "Pwyntiau'r ffont"
 
-#: ctk/ctkcellrenderertext.c:426 ctk/ctktexttag.c:408
+#: ctk/ctkcellrenderertext.c:418 ctk/ctktexttag.c:408
 msgid "Font size in points"
 msgstr "Maint y ffont mewn pwyntiau"
 
-#: ctk/ctkcellrenderertext.c:433 ctk/ctktexttag.c:397
+#: ctk/ctkcellrenderertext.c:425 ctk/ctktexttag.c:397
 msgid "Font scale"
 msgstr "Graddfa'r ffont"
 
-#: ctk/ctkcellrenderertext.c:434
+#: ctk/ctkcellrenderertext.c:426
 msgid "Font scaling factor"
 msgstr "Ffactor graddio'r  ffont"
 
-#: ctk/ctkcellrenderertext.c:441 ctk/ctktexttag.c:476
+#: ctk/ctkcellrenderertext.c:433 ctk/ctktexttag.c:476
 msgid "Rise"
 msgstr "Esgyniad"
 
-#: ctk/ctkcellrenderertext.c:442
+#: ctk/ctkcellrenderertext.c:434
 msgid ""
 "Offset of text above the baseline (below the baseline if rise is negative)"
 msgstr ""
 "Atred y testun uwchben y llinell sail (islaw'r llinell sail os yw'r esgyniad "
 "yn negyddol)"
 
-#: ctk/ctkcellrenderertext.c:450 ctk/ctktexttag.c:516
+#: ctk/ctkcellrenderertext.c:442 ctk/ctktexttag.c:516
 msgid "Strikethrough"
 msgstr "Taro drwyddo"
 
-#: ctk/ctkcellrenderertext.c:451 ctk/ctktexttag.c:517
+#: ctk/ctkcellrenderertext.c:443 ctk/ctktexttag.c:517
 msgid "Whether to strike through the text"
 msgstr "A ddylid croesi drwy'r testun"
 
-#: ctk/ctkcellrenderertext.c:457 ctk/ctktexttag.c:524
+#: ctk/ctkcellrenderertext.c:449 ctk/ctktexttag.c:524
 msgid "Underline"
 msgstr "Tanlinelli"
 
-#: ctk/ctkcellrenderertext.c:458 ctk/ctktexttag.c:525
+#: ctk/ctkcellrenderertext.c:450 ctk/ctktexttag.c:525
 msgid "Style of underline for this text"
 msgstr "Arddull tanlinellu'r testun"
 
-#: ctk/ctkcellrenderertext.c:465 ctk/ctkfontchooser.c:154 ctk/ctktexttag.c:436
+#: ctk/ctkcellrenderertext.c:457 ctk/ctkfontchooser.c:154 ctk/ctktexttag.c:436
 msgid "Language"
 msgstr "Iaith"
 
-#: ctk/ctkcellrenderertext.c:466
+#: ctk/ctkcellrenderertext.c:458
 msgid ""
 "The language this text is in, as an ISO code. Pango can use this as a hint "
 "when rendering the text. If you don't understand this parameter, you "
@@ -2460,11 +2460,11 @@ msgstr ""
 "nad ydych chi ei angen"
 
 # EFALLAI - angen edrych yn GyA
-#: ctk/ctkcellrenderertext.c:484 ctk/ctklabel.c:963 ctk/ctkprogressbar.c:330
+#: ctk/ctkcellrenderertext.c:476 ctk/ctklabel.c:963 ctk/ctkprogressbar.c:330
 msgid "Ellipsize"
 msgstr "Colli Geiriau"
 
-#: ctk/ctkcellrenderertext.c:485
+#: ctk/ctkcellrenderertext.c:477
 msgid ""
 "The preferred place to ellipsize the string, if the cell renderer does not "
 "have enough room to display the entire string"
@@ -2472,29 +2472,29 @@ msgstr ""
 "Y man dewisol i roi marc colli geiriau (...) yn y llinyn, os nad oes gan y "
 "llunydd cellau ddigon o le i ddangos y llinyn yn gyfan"
 
-#: ctk/ctkcellrenderertext.c:503 ctk/ctkfilechooserbutton.c:457
+#: ctk/ctkcellrenderertext.c:495 ctk/ctkfilechooserbutton.c:457
 #: ctk/ctklabel.c:983
 msgid "Width In Characters"
 msgstr "Lled Mewn Nodau"
 
-#: ctk/ctkcellrenderertext.c:504 ctk/ctklabel.c:984
+#: ctk/ctkcellrenderertext.c:496 ctk/ctklabel.c:984
 msgid "The desired width of the label, in characters"
 msgstr "Lled ddewisol y label, mewn nodau"
 
-#: ctk/ctkcellrenderertext.c:525 ctk/ctklabel.c:1039
+#: ctk/ctkcellrenderertext.c:517 ctk/ctklabel.c:1039
 msgid "Maximum Width In Characters"
 msgstr "Uchafswm Lled Mewn Nodau"
 
-#: ctk/ctkcellrenderertext.c:526
+#: ctk/ctkcellrenderertext.c:518
 #, fuzzy
 msgid "The maximum width of the cell, in characters"
 msgstr "Uchafswm dewisedig lled y label, mewn nodau"
 
-#: ctk/ctkcellrenderertext.c:542 ctk/ctktexttag.c:569
+#: ctk/ctkcellrenderertext.c:534 ctk/ctktexttag.c:569
 msgid "Wrap mode"
 msgstr "Modd amlapio"
 
-#: ctk/ctkcellrenderertext.c:543
+#: ctk/ctkcellrenderertext.c:535
 msgid ""
 "How to break the string into multiple lines, if the cell renderer does not "
 "have enough room to display the entire string"
@@ -2502,156 +2502,156 @@ msgstr ""
 "Sut i dorri'r llinyn yn amryw linellau, os nad oes gan y llunydd cellau "
 "ddigon o le i ddangos y llinyn yn gyfan, neu o gwbl"
 
-#: ctk/ctkcellrenderertext.c:561 ctk/ctkcombobox.c:923
+#: ctk/ctkcellrenderertext.c:553 ctk/ctkcombobox.c:923
 msgid "Wrap width"
 msgstr "Lled amlapio"
 
-#: ctk/ctkcellrenderertext.c:562
+#: ctk/ctkcellrenderertext.c:554
 msgid "The width at which the text is wrapped"
 msgstr "At ba led i amlapio'r testun"
 
-#: ctk/ctkcellrenderertext.c:580 ctk/ctktreeviewcolumn.c:344
+#: ctk/ctkcellrenderertext.c:572 ctk/ctktreeviewcolumn.c:344
 msgid "Alignment"
 msgstr "Aliniad"
 
-#: ctk/ctkcellrenderertext.c:581
+#: ctk/ctkcellrenderertext.c:573
 msgid "How to align the lines"
 msgstr "Sut i alinio'r llinellau"
 
-#: ctk/ctkcellrenderertext.c:596 ctk/ctkentry.c:1109
+#: ctk/ctkcellrenderertext.c:588 ctk/ctkentry.c:1109
 msgid "Placeholder text"
 msgstr ""
 
-#: ctk/ctkcellrenderertext.c:597
+#: ctk/ctkcellrenderertext.c:589
 msgid "Text rendered when an editable cell is empty"
 msgstr ""
 
-#: ctk/ctkcellrenderertext.c:606 ctk/ctkcellview.c:353 ctk/ctktexttag.c:722
+#: ctk/ctkcellrenderertext.c:598 ctk/ctkcellview.c:349 ctk/ctktexttag.c:722
 msgid "Background set"
 msgstr "Gosod cefndir"
 
-#: ctk/ctkcellrenderertext.c:607 ctk/ctkcellview.c:354 ctk/ctktexttag.c:723
+#: ctk/ctkcellrenderertext.c:599 ctk/ctkcellview.c:350 ctk/ctktexttag.c:723
 msgid "Whether this tag affects the background color"
 msgstr "A ydy'r tag hwn yn effeithio ar liw'r cefndir"
 
-#: ctk/ctkcellrenderertext.c:610 ctk/ctktexttag.c:730
+#: ctk/ctkcellrenderertext.c:602 ctk/ctktexttag.c:730
 msgid "Foreground set"
 msgstr "Gosod blaendir"
 
-#: ctk/ctkcellrenderertext.c:611 ctk/ctktexttag.c:731
+#: ctk/ctkcellrenderertext.c:603 ctk/ctktexttag.c:731
 msgid "Whether this tag affects the foreground color"
 msgstr "A ydy'r tag hwn yn effeithio ar liw'r blaendir"
 
-#: ctk/ctkcellrenderertext.c:614 ctk/ctktexttag.c:734
+#: ctk/ctkcellrenderertext.c:606 ctk/ctktexttag.c:734
 msgid "Editability set"
 msgstr "Gosod a yw'n olygadwy"
 
-#: ctk/ctkcellrenderertext.c:615 ctk/ctktexttag.c:735
+#: ctk/ctkcellrenderertext.c:607 ctk/ctktexttag.c:735
 msgid "Whether this tag affects text editability"
 msgstr "A ydy'r tag hwn yn effeithio ar olygadwyedd y testun"
 
-#: ctk/ctkcellrenderertext.c:618 ctk/ctktexttag.c:738
+#: ctk/ctkcellrenderertext.c:610 ctk/ctktexttag.c:738
 msgid "Font family set"
 msgstr "Gosodir teulu ffont"
 
-#: ctk/ctkcellrenderertext.c:619 ctk/ctktexttag.c:739
+#: ctk/ctkcellrenderertext.c:611 ctk/ctktexttag.c:739
 msgid "Whether this tag affects the font family"
 msgstr "A ydy'r tag hwn yn gosod teulu'r ffont"
 
-#: ctk/ctkcellrenderertext.c:622 ctk/ctktexttag.c:742
+#: ctk/ctkcellrenderertext.c:614 ctk/ctktexttag.c:742
 msgid "Font style set"
 msgstr "Gosod Arddull Ffont"
 
-#: ctk/ctkcellrenderertext.c:623 ctk/ctktexttag.c:743
+#: ctk/ctkcellrenderertext.c:615 ctk/ctktexttag.c:743
 msgid "Whether this tag affects the font style"
 msgstr "A ydy'r tag hwn yn effeithio ar arddull y ffont"
 
-#: ctk/ctkcellrenderertext.c:626 ctk/ctktexttag.c:746
+#: ctk/ctkcellrenderertext.c:618 ctk/ctktexttag.c:746
 msgid "Font variant set"
 msgstr "Gosod amrywiant ffont"
 
-#: ctk/ctkcellrenderertext.c:627 ctk/ctktexttag.c:747
+#: ctk/ctkcellrenderertext.c:619 ctk/ctktexttag.c:747
 msgid "Whether this tag affects the font variant"
 msgstr "A ydy'r tag hwn yn effeithio amrywiant y ffont"
 
-#: ctk/ctkcellrenderertext.c:630 ctk/ctktexttag.c:750
+#: ctk/ctkcellrenderertext.c:622 ctk/ctktexttag.c:750
 msgid "Font weight set"
 msgstr "Gosod pwysau ffont"
 
-#: ctk/ctkcellrenderertext.c:631 ctk/ctktexttag.c:751
+#: ctk/ctkcellrenderertext.c:623 ctk/ctktexttag.c:751
 msgid "Whether this tag affects the font weight"
 msgstr "A ydy'r tag hwn yn effeithio pwysau'r ffont"
 
-#: ctk/ctkcellrenderertext.c:634 ctk/ctktexttag.c:754
+#: ctk/ctkcellrenderertext.c:626 ctk/ctktexttag.c:754
 msgid "Font stretch set"
 msgstr "Gosod estyniad ffont"
 
-#: ctk/ctkcellrenderertext.c:635 ctk/ctktexttag.c:755
+#: ctk/ctkcellrenderertext.c:627 ctk/ctktexttag.c:755
 msgid "Whether this tag affects the font stretch"
 msgstr "A ydy'r tag hwn yn effeithio ar estyniad y ffont"
 
-#: ctk/ctkcellrenderertext.c:638 ctk/ctktexttag.c:758
+#: ctk/ctkcellrenderertext.c:630 ctk/ctktexttag.c:758
 msgid "Font size set"
 msgstr "Gosod maint ffont"
 
-#: ctk/ctkcellrenderertext.c:639 ctk/ctktexttag.c:759
+#: ctk/ctkcellrenderertext.c:631 ctk/ctktexttag.c:759
 msgid "Whether this tag affects the font size"
 msgstr "A ydy'r tag hwn yn effeithio ar faint y ffont"
 
-#: ctk/ctkcellrenderertext.c:642 ctk/ctktexttag.c:762
+#: ctk/ctkcellrenderertext.c:634 ctk/ctktexttag.c:762
 msgid "Font scale set"
 msgstr "Gosod graddfa ffont"
 
-#: ctk/ctkcellrenderertext.c:643 ctk/ctktexttag.c:763
+#: ctk/ctkcellrenderertext.c:635 ctk/ctktexttag.c:763
 msgid "Whether this tag scales the font size by a factor"
 msgstr "A ydy'r tag hwn yn graddio'r ffont"
 
-#: ctk/ctkcellrenderertext.c:646 ctk/ctktexttag.c:782
+#: ctk/ctkcellrenderertext.c:638 ctk/ctktexttag.c:782
 msgid "Rise set"
 msgstr "Gosod esgyniad"
 
-#: ctk/ctkcellrenderertext.c:647 ctk/ctktexttag.c:783
+#: ctk/ctkcellrenderertext.c:639 ctk/ctktexttag.c:783
 msgid "Whether this tag affects the rise"
 msgstr "A ydy'r tag hwn yn effeithio'r esgyniad"
 
-#: ctk/ctkcellrenderertext.c:650 ctk/ctktexttag.c:798
+#: ctk/ctkcellrenderertext.c:642 ctk/ctktexttag.c:798
 msgid "Strikethrough set"
 msgstr "Gosod croesi"
 
-#: ctk/ctkcellrenderertext.c:651 ctk/ctktexttag.c:799
+#: ctk/ctkcellrenderertext.c:643 ctk/ctktexttag.c:799
 msgid "Whether this tag affects strikethrough"
 msgstr "A ydy'r tag hwn yn effeithio ar groesi"
 
-#: ctk/ctkcellrenderertext.c:654 ctk/ctktexttag.c:806
+#: ctk/ctkcellrenderertext.c:646 ctk/ctktexttag.c:806
 msgid "Underline set"
 msgstr "Gosod Tanlinelli"
 
-#: ctk/ctkcellrenderertext.c:655 ctk/ctktexttag.c:807
+#: ctk/ctkcellrenderertext.c:647 ctk/ctktexttag.c:807
 msgid "Whether this tag affects underlining"
 msgstr "A ydy'r tag hwn yn effeithio ar danlinelli"
 
-#: ctk/ctkcellrenderertext.c:658 ctk/ctktexttag.c:770
+#: ctk/ctkcellrenderertext.c:650 ctk/ctktexttag.c:770
 msgid "Language set"
 msgstr "Gosod iaith"
 
 # EFALLAI
-#: ctk/ctkcellrenderertext.c:659 ctk/ctktexttag.c:771
+#: ctk/ctkcellrenderertext.c:651 ctk/ctktexttag.c:771
 msgid "Whether this tag affects the language the text is rendered as"
 msgstr "A ydy'r tag hwn yn effeithio'r iaith y llunnir y testun yma ynddi"
 
-#: ctk/ctkcellrenderertext.c:662
+#: ctk/ctkcellrenderertext.c:654
 msgid "Ellipsize set"
 msgstr "Gosod man colli geiriau"
 
-#: ctk/ctkcellrenderertext.c:663
+#: ctk/ctkcellrenderertext.c:655
 msgid "Whether this tag affects the ellipsize mode"
 msgstr "A ydy'r tag hwn yn effeithio'r man colli geiriau"
 
-#: ctk/ctkcellrenderertext.c:666
+#: ctk/ctkcellrenderertext.c:658
 msgid "Align set"
 msgstr "Alinio set"
 
-#: ctk/ctkcellrenderertext.c:667
+#: ctk/ctkcellrenderertext.c:659
 msgid "Whether this tag affects the alignment mode"
 msgstr "A ydy'r tag hwn yn effeithio'r modd alinio"
 
@@ -2696,54 +2696,54 @@ msgstr "Maint dangosydd"
 msgid "Size of check or radio indicator"
 msgstr "Maint y dangosydd gwirio neu radio"
 
-#: ctk/ctkcellview.c:248
+#: ctk/ctkcellview.c:244
 #, fuzzy
 msgid "Background RGBA color"
 msgstr "Lliw'r cefndir"
 
-#: ctk/ctkcellview.c:263
+#: ctk/ctkcellview.c:259
 msgid "CellView model"
 msgstr "Model CellView"
 
 # EFALLAI (golwg?)
-#: ctk/ctkcellview.c:264
+#: ctk/ctkcellview.c:260
 msgid "The model for cell view"
 msgstr "Y model ar gyfer yr olwg cell"
 
-#: ctk/ctkcellview.c:282 ctk/ctkcombobox.c:1182 ctk/ctkentrycompletion.c:467
+#: ctk/ctkcellview.c:278 ctk/ctkcombobox.c:1182 ctk/ctkentrycompletion.c:467
 #: ctk/ctkiconview.c:649 ctk/ctktreemenu.c:307 ctk/ctktreeviewcolumn.c:399
 msgid "Cell Area"
 msgstr ""
 
-#: ctk/ctkcellview.c:283 ctk/ctkcombobox.c:1183 ctk/ctkentrycompletion.c:468
+#: ctk/ctkcellview.c:279 ctk/ctkcombobox.c:1183 ctk/ctkentrycompletion.c:468
 #: ctk/ctkiconview.c:650 ctk/ctktreemenu.c:308 ctk/ctktreeviewcolumn.c:400
 msgid "The CtkCellArea used to layout cells"
 msgstr ""
 
-#: ctk/ctkcellview.c:306
+#: ctk/ctkcellview.c:302
 msgid "Cell Area Context"
 msgstr ""
 
-#: ctk/ctkcellview.c:307
+#: ctk/ctkcellview.c:303
 msgid "The CtkCellAreaContext used to compute the geometry of the cell view"
 msgstr ""
 
-#: ctk/ctkcellview.c:324
+#: ctk/ctkcellview.c:320
 #, fuzzy
 msgid "Draw Sensitive"
 msgstr "Yn ymateb"
 
-#: ctk/ctkcellview.c:325
+#: ctk/ctkcellview.c:321
 #, fuzzy
 msgid "Whether to force cells to be drawn in a sensitive state"
 msgstr "A ddylid dangos llinellau coeden yn yr olwg goeden"
 
-#: ctk/ctkcellview.c:343
+#: ctk/ctkcellview.c:339
 #, fuzzy
 msgid "Fit Model"
 msgstr "Model"
 
-#: ctk/ctkcellview.c:344
+#: ctk/ctkcellview.c:340
 msgid "Whether to request enough space for every row in the model"
 msgstr ""
 
@@ -2764,7 +2764,7 @@ msgstr "Bylchu o amgylch y dangosydd gwirio neu radio"
 msgid "Whether the menu item is checked"
 msgstr "A ydy'r eitem dewislen wedi ei ..."
 
-#: ctk/ctkcheckmenuitem.c:217 ctk/ctktogglebutton.c:195
+#: ctk/ctkcheckmenuitem.c:217 ctk/ctktogglebutton.c:194
 msgid "Inconsistent"
 msgstr "Anghyson"
 
@@ -2801,30 +2801,30 @@ msgstr "Teitl"
 msgid "The title of the color selection dialog"
 msgstr "Teitl y deialog dewis lliw"
 
-#: ctk/ctkcolorbutton.c:202
+#: ctk/ctkcolorbutton.c:199
 msgid "The selected color"
 msgstr "Y lliw dewisedig"
 
-#: ctk/ctkcolorbutton.c:218
+#: ctk/ctkcolorbutton.c:214
 msgid "The selected opacity value (0 fully transparent, 65535 fully opaque)"
 msgstr "Y gwerth tryloywder dewisedig (0 cwbl dryloyw, 65535 cwbl afloyw)"
 
-#: ctk/ctkcolorbutton.c:232
+#: ctk/ctkcolorbutton.c:228
 #, fuzzy
 msgid "Current RGBA Color"
 msgstr "Y Lliw Cyfredol"
 
-#: ctk/ctkcolorbutton.c:233
+#: ctk/ctkcolorbutton.c:229
 #, fuzzy
 msgid "The selected RGBA color"
 msgstr "Y lliw dewisedig"
 
-#: ctk/ctkcolorbutton.c:274
+#: ctk/ctkcolorbutton.c:270
 #, fuzzy
 msgid "Show Editor"
 msgstr "Dangos Ehangwyr"
 
-#: ctk/ctkcolorbutton.c:275
+#: ctk/ctkcolorbutton.c:271
 #, fuzzy
 msgid "Whether to show the color editor right away"
 msgstr "A ddylid dangos dangosydd trefnu"
@@ -3079,7 +3079,7 @@ msgstr ""
 msgid "Unique ID"
 msgstr ""
 
-#: ctk/ctkcssnode.c:643 ctk/ctkswitch.c:893
+#: ctk/ctkcssnode.c:643 ctk/ctkswitch.c:883
 #, fuzzy
 msgid "State"
 msgstr "Statws"
@@ -3765,7 +3765,7 @@ msgid "Space to put between the label and the child"
 msgstr "Gofod i'w rhoi rhwng y label a'r plentyn"
 
 #: ctk/ctkexpander.c:351 ctk/ctkframe.c:262 ctk/ctktoolbutton.c:218
-#: ctk/ctktoolitemgroup.c:1646
+#: ctk/ctktoolitemgroup.c:1644
 msgid "Label widget"
 msgstr "Teclyn label"
 
@@ -3795,11 +3795,11 @@ msgid ""
 "collapsing"
 msgstr ""
 
-#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1674 ctk/ctktreeview.c:1234
+#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1672 ctk/ctktreeview.c:1234
 msgid "Expander Size"
 msgstr "Maint yr Ehangwr"
 
-#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1675 ctk/ctktreeview.c:1235
+#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1673 ctk/ctktreeview.c:1235
 msgid "Size of the expander arrow"
 msgstr "Maint y saeth ehangu"
 
@@ -3925,22 +3925,22 @@ msgstr ""
 "A fydd dewisydd ffeil wrth gadw yn rhoi deialog cadarnhau trosysgrifo os yn "
 "briodol."
 
-#: ctk/ctkfilechoosernative.c:827
+#: ctk/ctkfilechoosernative.c:825
 #, fuzzy
 msgid "Accept label"
 msgstr "Yn derbyn tab"
 
-#: ctk/ctkfilechoosernative.c:828
+#: ctk/ctkfilechoosernative.c:826
 #, fuzzy
 msgid "The label on the accept button"
 msgstr "Cyflwr toglu'r botwm"
 
-#: ctk/ctkfilechoosernative.c:840
+#: ctk/ctkfilechoosernative.c:838
 #, fuzzy
 msgid "Cancel label"
 msgstr "Label tab"
 
-#: ctk/ctkfilechoosernative.c:841
+#: ctk/ctkfilechoosernative.c:839
 #, fuzzy
 msgid "The label on the cancel button"
 msgstr "Cyflwr toglu'r botwm"
@@ -5052,7 +5052,7 @@ msgstr "Y ffeil sydd wedi ei ddewis"
 msgid "The accel group holding accelerators for the menu"
 msgstr "Y fysell coflythyren cyflymu ar gyfer y label hwn"
 
-#: ctk/ctkmenu.c:670 ctk/ctkmenuitem.c:775
+#: ctk/ctkmenu.c:670 ctk/ctkmenuitem.c:774
 msgid "Accel Path"
 msgstr ""
 
@@ -5227,43 +5227,43 @@ msgstr "Clwm Gwaelod"
 msgid "Arbitrary constant to scale down the size of the scroll arrow"
 msgstr ""
 
-#: ctk/ctkmenuitem.c:745
+#: ctk/ctkmenuitem.c:744
 msgid "Right Justified"
 msgstr ""
 
-#: ctk/ctkmenuitem.c:746
+#: ctk/ctkmenuitem.c:745
 msgid ""
 "Sets whether the menu item appears justified at the right side of a menu bar"
 msgstr ""
 
-#: ctk/ctkmenuitem.c:759 ctk/ctkpopovermenu.c:376
+#: ctk/ctkmenuitem.c:758 ctk/ctkpopovermenu.c:376
 msgid "Submenu"
 msgstr ""
 
-#: ctk/ctkmenuitem.c:760
+#: ctk/ctkmenuitem.c:759
 msgid "The submenu attached to the menu item, or NULL if it has none"
 msgstr ""
 
-#: ctk/ctkmenuitem.c:776
+#: ctk/ctkmenuitem.c:775
 msgid "Sets the accelerator path of the menu item"
 msgstr ""
 
-#: ctk/ctkmenuitem.c:790
+#: ctk/ctkmenuitem.c:789
 #, fuzzy
 msgid "The text for the child label"
 msgstr "Testun y label"
 
-#: ctk/ctkmenuitem.c:899
+#: ctk/ctkmenuitem.c:898
 #, fuzzy
 msgid "Amount of space used up by arrow, relative to the menu item's font size"
 msgstr "Faint o le ddefnyddir gan y saeth"
 
-#: ctk/ctkmenuitem.c:915
+#: ctk/ctkmenuitem.c:914
 #, fuzzy
 msgid "Width in Characters"
 msgstr "Lled Mewn Nodau"
 
-#: ctk/ctkmenuitem.c:916
+#: ctk/ctkmenuitem.c:915
 #, fuzzy
 msgid "The minimum desired width of the menu item in characters"
 msgstr "Lled ddewisol y label, mewn nodau"
@@ -5331,20 +5331,20 @@ msgstr "Defnyddio Uwchfarcio o fewn yr eilaidd"
 msgid "The secondary text includes Pango markup."
 msgstr "Mae'r testun eilaidd yn cynnwys uwchdestun Pango."
 
-#: ctk/ctkmessagedialog.c:277
+#: ctk/ctkmessagedialog.c:276
 msgid "Image"
 msgstr "Delwedd"
 
-#: ctk/ctkmessagedialog.c:278
+#: ctk/ctkmessagedialog.c:277
 msgid "The image"
 msgstr "Y ddelwedd"
 
-#: ctk/ctkmessagedialog.c:294
+#: ctk/ctkmessagedialog.c:293
 #, fuzzy
 msgid "Message area"
 msgstr "Math Neges"
 
-#: ctk/ctkmessagedialog.c:295
+#: ctk/ctkmessagedialog.c:294
 msgid "CtkBox that holds the dialog's primary and secondary labels"
 msgstr ""
 
@@ -6547,7 +6547,7 @@ msgstr "Digidau"
 msgid "The number of digits to round the value to."
 msgstr "Nifer y tudalennau yn y ddogfen"
 
-#: ctk/ctkrange.c:538 ctk/ctkswitch.c:929
+#: ctk/ctkrange.c:538 ctk/ctkswitch.c:919
 msgid "Slider Width"
 msgstr "Lled y Llithrydd"
 
@@ -8221,27 +8221,27 @@ msgstr "Math tudalen"
 msgid "The value type returned by CtkStyleContext"
 msgstr ""
 
-#: ctk/ctkswitch.c:879
+#: ctk/ctkswitch.c:869
 #, fuzzy
 msgid "Whether the switch is on or off"
 msgstr "A yw'r plwg yn blanedig ai peidio"
 
-#: ctk/ctkswitch.c:894
+#: ctk/ctkswitch.c:884
 #, fuzzy
 msgid "The backend state"
 msgstr "Gosodir cefndir y gell"
 
-#: ctk/ctkswitch.c:930
+#: ctk/ctkswitch.c:920
 #, fuzzy
 msgid "The minimum width of the handle"
 msgstr "Gwerth lleiaf yr addasiad"
 
-#: ctk/ctkswitch.c:946
+#: ctk/ctkswitch.c:936
 #, fuzzy
 msgid "Slider Height"
 msgstr "Hyd y Llithrydd"
 
-#: ctk/ctkswitch.c:947
+#: ctk/ctkswitch.c:937
 #, fuzzy
 msgid "The minimum height of the handle"
 msgstr "Gwerth lleiaf yr addasiad"
@@ -8789,11 +8789,11 @@ msgstr "Gofod lliw"
 msgid "Whether to use a monospace font"
 msgstr "A gellir dewis testun y label gyda'r llygoden"
 
-#: ctk/ctktextview.c:1081
+#: ctk/ctktextview.c:1080
 msgid "Error underline color"
 msgstr "Lliw tanlinellu gwall"
 
-#: ctk/ctktextview.c:1082
+#: ctk/ctktextview.c:1081
 msgid "Color with which to draw error-indication underlines"
 msgstr "Pa liw i dynnu'r tanlinellau amlygu gwall"
 
@@ -8810,20 +8810,20 @@ msgstr "A ydy dirprwyon y weithred hon yn edrych fel dirprwyon gweithred radio"
 msgid "Whether the toggle action should be active"
 msgstr "A ddylai'r weithred togl fod ar waith ai peidio"
 
-#: ctk/ctktogglebutton.c:189 ctk/ctktoggletoolbutton.c:131
+#: ctk/ctktogglebutton.c:188 ctk/ctktoggletoolbutton.c:131
 #, fuzzy
 msgid "If the toggle button should be pressed in"
 msgstr "A ddylai'r botwm togl fod wedi ei wasgu i mewn ai peidio"
 
-#: ctk/ctktogglebutton.c:196
+#: ctk/ctktogglebutton.c:195
 msgid "If the toggle button is in an \"in between\" state"
 msgstr "A ydy'r botwm togl mewn cyflwr \"yn y canol\""
 
-#: ctk/ctktogglebutton.c:202
+#: ctk/ctktogglebutton.c:201
 msgid "Draw Indicator"
 msgstr "Arlunio Dangosydd"
 
-#: ctk/ctktogglebutton.c:203
+#: ctk/ctktogglebutton.c:202
 msgid "If the toggle part of the button is displayed"
 msgstr "A chaiff rhan togl y botwm ei ddangos"
 
@@ -8859,7 +8859,7 @@ msgstr "A yw'r briodwedd maint eicon wedi ei osod"
 msgid "Whether the item should receive extra space when the toolbar grows"
 msgstr "A ddylai'r eitem dderbyn lle ychwanegol pan mae'r bar offer yn tyfu"
 
-#: ctk/ctktoolbar.c:598 ctk/ctktoolitemgroup.c:1689
+#: ctk/ctktoolbar.c:598 ctk/ctktoolitemgroup.c:1687
 msgid "Whether the item should be the same size as other homogeneous items"
 msgstr "A ddylai'r eitem fod o'r un maint ac eitemau cydryw eraill"
 
@@ -8956,76 +8956,76 @@ msgstr ""
 "A ydy'r eitem bar offer yn bwysig. Pan yn wir, mae botymau bar offer yn "
 "dangos testun yn y modd CTK_TOOLBAR_BOTH_HORIZ"
 
-#: ctk/ctktoolitemgroup.c:1640
+#: ctk/ctktoolitemgroup.c:1638
 #, fuzzy
 msgid "The human-readable title of this item group"
 msgstr "Disgrifiad o'r statws er mwyn i ddefnyddwyr ei ddarllen"
 
-#: ctk/ctktoolitemgroup.c:1647
+#: ctk/ctktoolitemgroup.c:1645
 #, fuzzy
 msgid "A widget to display in place of the usual label"
 msgstr "Teclyn i'w ddangos yn lle'r label arferol"
 
-#: ctk/ctktoolitemgroup.c:1653
+#: ctk/ctktoolitemgroup.c:1651
 msgid "Collapsed"
 msgstr ""
 
-#: ctk/ctktoolitemgroup.c:1654
+#: ctk/ctktoolitemgroup.c:1652
 #, fuzzy
 msgid "Whether the group has been collapsed and items are hidden"
 msgstr "A ydy'r ehangydd wedi ei agor er mwyn dangos y teclyn plentyn"
 
 # EFALLAI - angen edrych yn GyA
-#: ctk/ctktoolitemgroup.c:1660
+#: ctk/ctktoolitemgroup.c:1658
 #, fuzzy
 msgid "ellipsize"
 msgstr "Colli Geiriau"
 
-#: ctk/ctktoolitemgroup.c:1661
+#: ctk/ctktoolitemgroup.c:1659
 msgid "Ellipsize for item group headers"
 msgstr ""
 
-#: ctk/ctktoolitemgroup.c:1667
+#: ctk/ctktoolitemgroup.c:1665
 #, fuzzy
 msgid "Header Relief"
 msgstr "Delwedd pennyn"
 
-#: ctk/ctktoolitemgroup.c:1668
+#: ctk/ctktoolitemgroup.c:1666
 #, fuzzy
 msgid "Relief of the group header button"
 msgstr "Dangos botymau pennawd colofnau"
 
-#: ctk/ctktoolitemgroup.c:1681
+#: ctk/ctktoolitemgroup.c:1679
 #, fuzzy
 msgid "Header Spacing"
 msgstr "Padio Pennyn"
 
-#: ctk/ctktoolitemgroup.c:1682
+#: ctk/ctktoolitemgroup.c:1680
 #, fuzzy
 msgid "Spacing between expander arrow and caption"
 msgstr "Bylchu o amgylch y saeth ehangu"
 
-#: ctk/ctktoolitemgroup.c:1696
+#: ctk/ctktoolitemgroup.c:1694
 #, fuzzy
 msgid "Whether the item should receive extra space when the group grows"
 msgstr "A ddylai'r eitem dderbyn lle ychwanegol pan mae'r bar offer yn tyfu"
 
-#: ctk/ctktoolitemgroup.c:1703
+#: ctk/ctktoolitemgroup.c:1701
 #, fuzzy
 msgid "Whether the item should fill the available space"
 msgstr "A ddylai'r plant fod o'r un maint"
 
-#: ctk/ctktoolitemgroup.c:1709
+#: ctk/ctktoolitemgroup.c:1707
 msgid "New Row"
 msgstr ""
 
-#: ctk/ctktoolitemgroup.c:1710
+#: ctk/ctktoolitemgroup.c:1708
 #, fuzzy
 msgid "Whether the item should start a new row"
 msgstr "A ddylid dangos rhifau gyda'r eitemau"
 
 # EFALLAI
-#: ctk/ctktoolitemgroup.c:1717
+#: ctk/ctktoolitemgroup.c:1715
 #, fuzzy
 msgid "Position of the item within this group"
 msgstr "Safle'r marc ar y mesur"
@@ -9831,53 +9831,53 @@ msgstr "Ffactor graddio'r  ffont"
 msgid "The scaling factor of the window"
 msgstr "Teitl y ffenestr"
 
-#: ctk/ctkwidget.c:3497
+#: ctk/ctkwidget.c:3493
 msgid "Interior Focus"
 msgstr "Ffocws Mewnol"
 
-#: ctk/ctkwidget.c:3498
+#: ctk/ctkwidget.c:3494
 msgid "Whether to draw the focus indicator inside widgets"
 msgstr "A ddylid arlunio’r dangosydd ffocws o fewn teclynnau"
 
-#: ctk/ctkwidget.c:3511
+#: ctk/ctkwidget.c:3507
 msgid "Focus linewidth"
 msgstr "Lled y llinell ffocws"
 
-#: ctk/ctkwidget.c:3512
+#: ctk/ctkwidget.c:3508
 msgid "Width, in pixels, of the focus indicator line"
 msgstr "Lled, mewn picseli, y llinell dangos ffocws"
 
-#: ctk/ctkwidget.c:3526
+#: ctk/ctkwidget.c:3522
 msgid "Focus line dash pattern"
 msgstr "Patrwm llinell ffocws"
 
-#: ctk/ctkwidget.c:3527
+#: ctk/ctkwidget.c:3523
 msgid ""
 "Dash pattern used to draw the focus indicator. The character values are "
 "interpreted as pixel widths of alternating on and off segments of the line."
 msgstr ""
 
-#: ctk/ctkwidget.c:3540
+#: ctk/ctkwidget.c:3536
 msgid "Focus padding"
 msgstr "Padio ffocws"
 
-#: ctk/ctkwidget.c:3541
+#: ctk/ctkwidget.c:3537
 msgid "Width, in pixels, between focus indicator and the widget 'box'"
 msgstr "Lled, mewn picsel, rhwng y dangosydd ffocws a 'bocs' y teclyn"
 
-#: ctk/ctkwidget.c:3555
+#: ctk/ctkwidget.c:3548
 msgid "Cursor color"
 msgstr "Lliw'r cyrchydd"
 
-#: ctk/ctkwidget.c:3556
+#: ctk/ctkwidget.c:3549
 msgid "Color with which to draw insertion cursor"
 msgstr "Pa liw i arlunio'r cyrchydd mewnosod"
 
-#: ctk/ctkwidget.c:3569
+#: ctk/ctkwidget.c:3560
 msgid "Secondary cursor color"
 msgstr "Lliw'r cyrchydd eilaidd"
 
-#: ctk/ctkwidget.c:3570
+#: ctk/ctkwidget.c:3561
 msgid ""
 "Color with which to draw the secondary insertion cursor when editing mixed "
 "right-to-left and left-to-right text"
@@ -9885,44 +9885,44 @@ msgstr ""
 "Y lliw i'w ddefnyddio er mwyn arlunio'r cyrchydd mewnosod eilaidd wrth olygu "
 "testun chwith-i'r-dde a dde-i'r-chwith cymysg"
 
-#: ctk/ctkwidget.c:3576
+#: ctk/ctkwidget.c:3567
 msgid "Cursor line aspect ratio"
 msgstr "Cymhareb agwedd llinell cyrchydd"
 
-#: ctk/ctkwidget.c:3577
+#: ctk/ctkwidget.c:3568
 msgid "Aspect ratio with which to draw insertion cursor"
 msgstr "Cymhareb agwedd er mwyn arlunio'r cyrchydd mewnosod"
 
-#: ctk/ctkwidget.c:3583
+#: ctk/ctkwidget.c:3574
 #, fuzzy
 msgid "Window dragging"
 msgstr "Safle'r Ffenestr"
 
-#: ctk/ctkwidget.c:3584
+#: ctk/ctkwidget.c:3575
 msgid "Whether windows can be dragged and maximized by clicking on empty areas"
 msgstr ""
 
-#: ctk/ctkwidget.c:3601
+#: ctk/ctkwidget.c:3587
 msgid "Unvisited Link Color"
 msgstr "Lliw Cyswllt heb ei Ymweld"
 
-#: ctk/ctkwidget.c:3602
+#: ctk/ctkwidget.c:3588
 msgid "Color of unvisited links"
 msgstr "Lliw'r cysylltion na ymwelwyd â hwy"
 
-#: ctk/ctkwidget.c:3618
+#: ctk/ctkwidget.c:3601
 msgid "Visited Link Color"
 msgstr "Lliw Cyswllt wedi ei Ymweld"
 
-#: ctk/ctkwidget.c:3619
+#: ctk/ctkwidget.c:3602
 msgid "Color of visited links"
 msgstr "Lliw'r cysylltion ymwelwyd â hwy"
 
-#: ctk/ctkwidget.c:3637
+#: ctk/ctkwidget.c:3619
 msgid "Wide Separators"
 msgstr "Gwahanyddion Llydan"
 
-#: ctk/ctkwidget.c:3638
+#: ctk/ctkwidget.c:3620
 msgid ""
 "Whether separators have configurable width and should be drawn using a box "
 "instead of a line"
@@ -9930,44 +9930,44 @@ msgstr ""
 "A oes modd cyflunio lled gwahanyddion, ac a ddylid eu tynnu gan ddefnyddio "
 "bocs yn hytrach na llinell"
 
-#: ctk/ctkwidget.c:3655
+#: ctk/ctkwidget.c:3637
 msgid "Separator Width"
 msgstr "Lled Gwahanydd"
 
-#: ctk/ctkwidget.c:3656
+#: ctk/ctkwidget.c:3638
 msgid "The width of separators if wide-separators is TRUE"
 msgstr "Lled gwahanyddion os yw \"wide-separators\" yn WIR"
 
-#: ctk/ctkwidget.c:3673
+#: ctk/ctkwidget.c:3655
 msgid "Separator Height"
 msgstr "Uchder Gwahanydd"
 
-#: ctk/ctkwidget.c:3674
+#: ctk/ctkwidget.c:3656
 msgid "The height of separators if \"wide-separators\" is TRUE"
 msgstr "Uchder gwahanyddion os yw \"wide-separators\" yn WIR"
 
-#: ctk/ctkwidget.c:3688
+#: ctk/ctkwidget.c:3670
 msgid "Horizontal Scroll Arrow Length"
 msgstr "Hyd Saeth Sgrolio Lorweddol"
 
-#: ctk/ctkwidget.c:3689
+#: ctk/ctkwidget.c:3671
 msgid "The length of horizontal scroll arrows"
 msgstr "Hyd y saethau sgrolio llorweddol"
 
-#: ctk/ctkwidget.c:3703
+#: ctk/ctkwidget.c:3685
 msgid "Vertical Scroll Arrow Length"
 msgstr "Hyd Saeth Sgrolio Fertigol"
 
-#: ctk/ctkwidget.c:3704
+#: ctk/ctkwidget.c:3686
 msgid "The length of vertical scroll arrows"
 msgstr "Hyd y saethau sgrolio fertigol"
 
-#: ctk/ctkwidget.c:3710 ctk/ctkwidget.c:3711
+#: ctk/ctkwidget.c:3692 ctk/ctkwidget.c:3693
 #, fuzzy
 msgid "Width of text selection handles"
 msgstr "Lled y ddolen"
 
-#: ctk/ctkwidget.c:3716 ctk/ctkwidget.c:3717
+#: ctk/ctkwidget.c:3698 ctk/ctkwidget.c:3699
 #, fuzzy
 msgid "Height of text selection handles"
 msgstr "Teitl y deialog dewis ffont"
@@ -10249,28 +10249,28 @@ msgstr ""
 msgid "Decoration resize handle size"
 msgstr ""
 
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:137
+#: modules/printbackends/cloudprint/ctkprintercloudprint.c:133
 msgid "Cloud Print account"
 msgstr ""
 
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:138
+#: modules/printbackends/cloudprint/ctkprintercloudprint.c:134
 msgid "CtkCloudprintAccount instance"
 msgstr ""
 
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:147
+#: modules/printbackends/cloudprint/ctkprintercloudprint.c:143
 #, fuzzy
 msgid "Printer ID"
 msgstr "Argraffydd"
 
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:148
+#: modules/printbackends/cloudprint/ctkprintercloudprint.c:144
 msgid "Cloud Print printer ID"
 msgstr ""
 
-#: modules/printbackends/cups/ctkprintercups.c:93
+#: modules/printbackends/cups/ctkprintercups.c:91
 msgid "Color Profile Title"
 msgstr ""
 
-#: modules/printbackends/cups/ctkprintercups.c:94
+#: modules/printbackends/cups/ctkprintercups.c:92
 #, fuzzy
 msgid "The title of the color profile to use"
 msgstr "Teitl y deialog dewis lliw"

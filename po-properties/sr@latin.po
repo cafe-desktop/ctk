@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-23 18:06+0100\n"
+"POT-Creation-Date: 2022-08-11 17:19+0200\n"
 "PO-Revision-Date: 2018-02-20 20:37+0100\n"
 "Last-Translator: Marko M. Kostić <marko.m.kostic@gmail.com>\n"
 "Language-Team: srpski <gnome-sr@googlegroups.org>\n"
@@ -233,8 +233,8 @@ msgid "A unique name for the action."
 msgstr "Jedinstveni naziv za radnju."
 
 #: ctk/ctkaction.c:252 ctk/ctkbutton.c:281 ctk/ctkexpander.c:308
-#: ctk/ctkframe.c:231 ctk/ctklabel.c:805 ctk/ctkmenuitem.c:789
-#: ctk/ctktoolbutton.c:204 ctk/ctktoolitemgroup.c:1639
+#: ctk/ctkframe.c:231 ctk/ctklabel.c:805 ctk/ctkmenuitem.c:788
+#: ctk/ctktoolbutton.c:204 ctk/ctktoolitemgroup.c:1637
 msgid "Label"
 msgstr "Natpis"
 
@@ -422,86 +422,6 @@ msgstr "Koristi izgled radnje"
 msgid "Whether to use the related actions appearance properties"
 msgstr "Da li će se koristiti svojstva izgleda povezanih radnji"
 
-#: ctk/ctkalignment.c:151
-msgid "Horizontal alignment"
-msgstr "Vodoravno poravnanje"
-
-#: ctk/ctkalignment.c:152 ctk/ctkbutton.c:328
-msgid ""
-"Horizontal position of child in available space. 0.0 is left aligned, 1.0 is "
-"right aligned"
-msgstr ""
-"Vodoravni položaj sadržanog elementa u dostupnom prostoru. 0.0 označava levo "
-"poravnanje, 1.0 desno poravnanje."
-
-#: ctk/ctkalignment.c:170
-msgid "Vertical alignment"
-msgstr "Uspravno poravnanje"
-
-#: ctk/ctkalignment.c:171 ctk/ctkbutton.c:347
-msgid ""
-"Vertical position of child in available space. 0.0 is top aligned, 1.0 is "
-"bottom aligned"
-msgstr ""
-"Uspravni položaj sadržanog elementa u dostupnom prostoru. 0.0 označava "
-"poravnanje sa vrhom, a 1.0 poravnanje sa dnom."
-
-#: ctk/ctkalignment.c:188
-msgid "Horizontal scale"
-msgstr "Vodoravna razmera"
-
-#: ctk/ctkalignment.c:189
-msgid ""
-"If available horizontal space is bigger than needed for the child, how much "
-"of it to use for the child. 0.0 means none, 1.0 means all"
-msgstr ""
-"Ako je dostupan vodoravni prostor veći od neophodnog za porod, koliko "
-"iskoristiti za porod. 0.0 znači ništa, a 1.0 znači sve"
-
-#: ctk/ctkalignment.c:206
-msgid "Vertical scale"
-msgstr "Uspravna razmera"
-
-#: ctk/ctkalignment.c:207
-msgid ""
-"If available vertical space is bigger than needed for the child, how much of "
-"it to use for the child. 0.0 means none, 1.0 means all"
-msgstr ""
-"Ako je dostupan uspravni prostor veći od neophodnog za porod, koliko "
-"iskoristiti za porod. 0.0 znači ništa, a 1.0 znači sve"
-
-#: ctk/ctkalignment.c:226
-msgid "Top Padding"
-msgstr "Popuna na vrhu"
-
-#: ctk/ctkalignment.c:227
-msgid "The padding to insert at the top of the widget."
-msgstr "Popuna koja se ubacuje na vrh elementa."
-
-#: ctk/ctkalignment.c:245
-msgid "Bottom Padding"
-msgstr "Popuna na dnu"
-
-#: ctk/ctkalignment.c:246
-msgid "The padding to insert at the bottom of the widget."
-msgstr "Popuna koja se ubacuje na dno elementa."
-
-#: ctk/ctkalignment.c:264
-msgid "Left Padding"
-msgstr "Leva popuna"
-
-#: ctk/ctkalignment.c:265
-msgid "The padding to insert at the left of the widget."
-msgstr "Popuna koja se ubacuje na levu stranu elementa."
-
-#: ctk/ctkalignment.c:283
-msgid "Right Padding"
-msgstr "Desna popuna"
-
-#: ctk/ctkalignment.c:284
-msgid "The padding to insert at the right of the widget."
-msgstr "Popuna koja se ubacuje na desnu stranu elementa."
-
 #: ctk/deprecated/ctkarrow.c:121
 msgid "Arrow direction"
 msgstr "Smer strelice"
@@ -519,7 +439,7 @@ msgid "Appearance of the shadow surrounding the arrow"
 msgstr "Izgled senke koja okružuje strelicu"
 
 #: ctk/deprecated/ctkarrow.c:138 ctk/ctkcombobox.c:1227 ctk/ctkmenu.c:1006
-#: ctk/ctkmenuitem.c:898
+#: ctk/ctkmenuitem.c:897
 msgid "Arrow Scaling"
 msgstr "Širenje strelice"
 
@@ -528,77 +448,77 @@ msgid "Amount of space used up by arrow"
 msgstr "Količina prostora za strelicu"
 
 # Ovde nema greske!!!
-#: ctk/ctkcolorsel.c:325
+#: ctk/ctkcolorsel.c:323
 msgid "Has Opacity Control"
 msgstr "Sadrži upravljanje providnošću"
 
-#: ctk/ctkcolorsel.c:326
+#: ctk/ctkcolorsel.c:324
 msgid "Whether the color selector should allow setting opacity"
 msgstr "Da li izbornik boje dozvoljava postavljanje providnosti"
 
-#: ctk/ctkcolorsel.c:332
+#: ctk/ctkcolorsel.c:330
 msgid "Has palette"
 msgstr "Sadrži paletu"
 
-#: ctk/ctkcolorsel.c:333
+#: ctk/ctkcolorsel.c:331
 msgid "Whether a palette should be used"
 msgstr "Da li treba koristiti paletu"
 
-#: ctk/ctkcolorsel.c:347 ctk/ctkcolorbutton.c:201
+#: ctk/ctkcolorsel.c:343 ctk/ctkcolorbutton.c:198
 msgid "Current Color"
 msgstr "Trenutna boja"
 
-#: ctk/ctkcolorsel.c:348
+#: ctk/ctkcolorsel.c:344
 msgid "The current color"
 msgstr "Trenutna boja"
 
-#: ctk/ctkcolorsel.c:354 ctk/ctkcolorbutton.c:217
+#: ctk/ctkcolorsel.c:350 ctk/ctkcolorbutton.c:213
 msgid "Current Alpha"
 msgstr "Trenutna providnost"
 
-#: ctk/ctkcolorsel.c:355
+#: ctk/ctkcolorsel.c:351
 msgid "The current opacity value (0 fully transparent, 65535 fully opaque)"
 msgstr ""
 "Trenutna vrednost providnosti (0 — potpuno providno, 65535 — potpuno "
 "neprovidno)"
 
-#: ctk/ctkcolorsel.c:369
+#: ctk/ctkcolorsel.c:365
 msgid "Current RGBA"
 msgstr "Trenutna RGBA"
 
-#: ctk/ctkcolorsel.c:370
+#: ctk/ctkcolorsel.c:366
 msgid "The current RGBA color"
 msgstr "Trenutna RGBA boja"
 
-#: ctk/ctkcolorseldialog.c:136
+#: ctk/ctkcolorseldialog.c:134
 msgid "Color Selection"
 msgstr "Izbor boje"
 
-#: ctk/ctkcolorseldialog.c:137
+#: ctk/ctkcolorseldialog.c:135
 msgid "The color selection embedded in the dialog."
 msgstr "Izbor boje ugnježden u prozorčetu."
 
-#: ctk/ctkcolorseldialog.c:143
+#: ctk/ctkcolorseldialog.c:141
 msgid "OK Button"
 msgstr "Dugme „U redu“"
 
-#: ctk/ctkcolorseldialog.c:144
+#: ctk/ctkcolorseldialog.c:142
 msgid "The OK button of the dialog."
 msgstr "Dugme „U redu“ na prozorčetu."
 
-#: ctk/ctkcolorseldialog.c:150
+#: ctk/ctkcolorseldialog.c:148
 msgid "Cancel Button"
 msgstr "Dugme „Otkaži“"
 
-#: ctk/ctkcolorseldialog.c:151
+#: ctk/ctkcolorseldialog.c:149
 msgid "The cancel button of the dialog."
 msgstr "Dugme „Otkaži“ na prozorčetu."
 
-#: ctk/ctkcolorseldialog.c:157
+#: ctk/ctkcolorseldialog.c:155
 msgid "Help Button"
 msgstr "Dugme „Pomoć“"
 
-#: ctk/ctkcolorseldialog.c:158
+#: ctk/ctkcolorseldialog.c:156
 msgid "The help button of the dialog."
 msgstr "Dugme „Pomoć“ na prozorčetu."
 
@@ -781,7 +701,7 @@ msgid "The amount of space between two consecutive columns"
 msgstr "Razmak između dva susedna stupca"
 
 #: ctk/deprecated/ctktable.c:221 ctk/ctkbox.c:285 ctk/ctkflowbox.c:3849
-#: ctk/ctkstack.c:459 ctk/ctktoolbar.c:597 ctk/ctktoolitemgroup.c:1688
+#: ctk/ctkstack.c:459 ctk/ctktoolbar.c:597 ctk/ctktoolitemgroup.c:1686
 msgid "Homogeneous"
 msgstr "Jednoobrazno"
 
@@ -1047,7 +967,7 @@ msgstr "Određuje da li je sadržani element vezan za početak ili kraj sadržao
 
 #: ctk/ctkactionbar.c:345 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
 #: ctk/ctknotebook.c:840 ctk/ctkpaned.c:368 ctk/ctkpopover.c:1767
-#: ctk/ctkpopovermenu.c:384 ctk/ctkstack.c:537 ctk/ctktoolitemgroup.c:1716
+#: ctk/ctkpopovermenu.c:384 ctk/ctkstack.c:537 ctk/ctktoolitemgroup.c:1714
 msgid "Position"
 msgstr "Položaj"
 
@@ -1105,6 +1025,86 @@ msgstr "Veličina stranice"
 msgid "The page size of the adjustment"
 msgstr "Veličina stranice doterivanja"
 
+#: ctk/ctkalignment.c:145
+msgid "Horizontal alignment"
+msgstr "Vodoravno poravnanje"
+
+#: ctk/ctkalignment.c:146 ctk/ctkbutton.c:328
+msgid ""
+"Horizontal position of child in available space. 0.0 is left aligned, 1.0 is "
+"right aligned"
+msgstr ""
+"Vodoravni položaj sadržanog elementa u dostupnom prostoru. 0.0 označava levo "
+"poravnanje, 1.0 desno poravnanje."
+
+#: ctk/ctkalignment.c:162
+msgid "Vertical alignment"
+msgstr "Uspravno poravnanje"
+
+#: ctk/ctkalignment.c:163 ctk/ctkbutton.c:347
+msgid ""
+"Vertical position of child in available space. 0.0 is top aligned, 1.0 is "
+"bottom aligned"
+msgstr ""
+"Uspravni položaj sadržanog elementa u dostupnom prostoru. 0.0 označava "
+"poravnanje sa vrhom, a 1.0 poravnanje sa dnom."
+
+#: ctk/ctkalignment.c:178
+msgid "Horizontal scale"
+msgstr "Vodoravna razmera"
+
+#: ctk/ctkalignment.c:179
+msgid ""
+"If available horizontal space is bigger than needed for the child, how much "
+"of it to use for the child. 0.0 means none, 1.0 means all"
+msgstr ""
+"Ako je dostupan vodoravni prostor veći od neophodnog za porod, koliko "
+"iskoristiti za porod. 0.0 znači ništa, a 1.0 znači sve"
+
+#: ctk/ctkalignment.c:194
+msgid "Vertical scale"
+msgstr "Uspravna razmera"
+
+#: ctk/ctkalignment.c:195
+msgid ""
+"If available vertical space is bigger than needed for the child, how much of "
+"it to use for the child. 0.0 means none, 1.0 means all"
+msgstr ""
+"Ako je dostupan uspravni prostor veći od neophodnog za porod, koliko "
+"iskoristiti za porod. 0.0 znači ništa, a 1.0 znači sve"
+
+#: ctk/ctkalignment.c:212
+msgid "Top Padding"
+msgstr "Popuna na vrhu"
+
+#: ctk/ctkalignment.c:213
+msgid "The padding to insert at the top of the widget."
+msgstr "Popuna koja se ubacuje na vrh elementa."
+
+#: ctk/ctkalignment.c:229
+msgid "Bottom Padding"
+msgstr "Popuna na dnu"
+
+#: ctk/ctkalignment.c:230
+msgid "The padding to insert at the bottom of the widget."
+msgstr "Popuna koja se ubacuje na dno elementa."
+
+#: ctk/ctkalignment.c:246
+msgid "Left Padding"
+msgstr "Leva popuna"
+
+#: ctk/ctkalignment.c:247
+msgid "The padding to insert at the left of the widget."
+msgstr "Popuna koja se ubacuje na levu stranu elementa."
+
+#: ctk/ctkalignment.c:263
+msgid "Right Padding"
+msgstr "Desna popuna"
+
+#: ctk/ctkalignment.c:264
+msgid "The padding to insert at the right of the widget."
+msgstr "Popuna koja se ubacuje na desnu stranu elementa."
+
 #: ctk/ctkappchooserbutton.c:618
 msgid "Include an 'Other…' item"
 msgstr "Uključivanje stavke „Ostalo…“"
@@ -1125,11 +1125,11 @@ msgstr "Prikazuje podrazumevanu stavku"
 msgid "Whether the combobox should show the default application on top"
 msgstr "Da li prozorče za izbor treba da pokaže podrazumevani program na vrhu"
 
-#: ctk/ctkappchooserbutton.c:647 ctk/ctkappchooserdialog.c:688
+#: ctk/ctkappchooserbutton.c:647 ctk/ctkappchooserdialog.c:687
 msgid "Heading"
 msgstr "Naslov"
 
-#: ctk/ctkappchooserbutton.c:648 ctk/ctkappchooserdialog.c:689
+#: ctk/ctkappchooserbutton.c:648 ctk/ctkappchooserdialog.c:688
 msgid "The text to show at the top of the dialog"
 msgstr "Tekst za prikazivanje na vrhu prozorčeta"
 
@@ -1141,11 +1141,11 @@ msgstr "Vrsta sadržaja"
 msgid "The content type used by the open with object"
 msgstr "Vrsta sadržaja koju koristi otvori predmetom"
 
-#: ctk/ctkappchooserdialog.c:674
+#: ctk/ctkappchooserdialog.c:673
 msgid "GFile"
 msgstr "Gdatoteka"
 
-#: ctk/ctkappchooserdialog.c:675
+#: ctk/ctkappchooserdialog.c:674
 msgid "The GFile used by the app chooser dialog"
 msgstr "Gdatoteka koju koristi prozorče birača programa"
 
@@ -1197,44 +1197,44 @@ msgstr "Podrazumevani tekst elementa"
 msgid "The default text appearing when there are no applications"
 msgstr "Podrazumevani tekst koji se pojavljuje kada nema programa"
 
-#: ctk/ctkapplication.c:845
+#: ctk/ctkapplication.c:843
 msgid "Register session"
 msgstr "Sesija registra"
 
-#: ctk/ctkapplication.c:846
+#: ctk/ctkapplication.c:844
 msgid "Register with the session manager"
 msgstr "Registar sa upravnikom uređaja"
 
-#: ctk/ctkapplication.c:863
+#: ctk/ctkapplication.c:861
 msgid "Screensaver Active"
 msgstr ""
 
-#: ctk/ctkapplication.c:864
+#: ctk/ctkapplication.c:862
 #, fuzzy
 msgid "Whether the screensaver is active"
 msgstr "Da li je vrteška uključena"
 
-#: ctk/ctkapplication.c:870
+#: ctk/ctkapplication.c:868
 msgid "Application menu"
 msgstr "Izbornik programa"
 
-#: ctk/ctkapplication.c:871
+#: ctk/ctkapplication.c:869
 msgid "The GMenuModel for the application menu"
 msgstr "Model Gizbornika za izbornik programa"
 
-#: ctk/ctkapplication.c:877
+#: ctk/ctkapplication.c:875
 msgid "Menubar"
 msgstr "Traka izbornika"
 
-#: ctk/ctkapplication.c:878
+#: ctk/ctkapplication.c:876
 msgid "The GMenuModel for the menubar"
 msgstr "Model Gizbornika za traku izbornika"
 
-#: ctk/ctkapplication.c:884
+#: ctk/ctkapplication.c:882
 msgid "Active window"
 msgstr "Pokrenut prozor"
 
-#: ctk/ctkapplication.c:885
+#: ctk/ctkapplication.c:883
 msgid "The window which most recently had focus"
 msgstr "Prozor koji je poslednji bio u prvom planu"
 
@@ -1444,7 +1444,7 @@ msgstr ""
 "Položaj poređanih elemenata linije osnove ako je dostupan dodatni prostor"
 
 #: ctk/ctkbox.c:318 ctk/ctkcellareabox.c:330 ctk/ctktoolbar.c:589
-#: ctk/ctktoolitemgroup.c:1695 ctk/ctktoolpalette.c:1027
+#: ctk/ctktoolitemgroup.c:1693 ctk/ctktoolpalette.c:1027
 #: ctk/ctktreeviewcolumn.c:323
 msgid "Expand"
 msgstr "Raširi"
@@ -1453,7 +1453,7 @@ msgstr "Raširi"
 msgid "Whether the child should receive extra space when the parent grows"
 msgstr "Da li sadržani element dobija dodatni prostor kada mu sadržalac raste"
 
-#: ctk/ctkbox.c:335 ctk/ctktoolitemgroup.c:1702
+#: ctk/ctkbox.c:335 ctk/ctktoolitemgroup.c:1700
 msgid "Fill"
 msgstr "Ispuni"
 
@@ -1490,12 +1490,12 @@ msgid ""
 msgstr "Sadržaj oznake unutar dugmeta, ukoliko dugme sadrži oznaku"
 
 #: ctk/ctkbutton.c:288 ctk/ctkexpander.c:316 ctk/ctklabel.c:826
-#: ctk/ctkmenuitem.c:803 ctk/ctktoolbutton.c:211
+#: ctk/ctkmenuitem.c:802 ctk/ctktoolbutton.c:211
 msgid "Use underline"
 msgstr "Koristi podvlaku"
 
 #: ctk/ctkbutton.c:289 ctk/ctkexpander.c:317 ctk/ctklabel.c:827
-#: ctk/ctkmenuitem.c:804
+#: ctk/ctkmenuitem.c:803
 msgid ""
 "If set, an underline in the text indicates the next character should be used "
 "for the mnemonic accelerator key"
@@ -1938,35 +1938,35 @@ msgstr "Naziv boje pozadine ćelije"
 msgid "Cell background color as a string"
 msgstr "Boja pozadine ćelije kao niz znakova"
 
-#: ctk/ctkcellrenderer.c:409
+#: ctk/ctkcellrenderer.c:406
 msgid "Cell background color"
 msgstr "Boja pozadine ćelije"
 
-#: ctk/ctkcellrenderer.c:410
+#: ctk/ctkcellrenderer.c:407
 msgid "Cell background color as a CdkColor"
 msgstr "Boja pozadine ćelije kao Cdk boja"
 
-#: ctk/ctkcellrenderer.c:424
+#: ctk/ctkcellrenderer.c:421
 msgid "Cell background RGBA color"
 msgstr "RGBA boja pozadine ćelije"
 
-#: ctk/ctkcellrenderer.c:425
+#: ctk/ctkcellrenderer.c:422
 msgid "Cell background color as a CdkRGBA"
 msgstr "Boja pozadine ćelije kao CdkRGBA"
 
-#: ctk/ctkcellrenderer.c:432
+#: ctk/ctkcellrenderer.c:429
 msgid "Editing"
 msgstr "Uređivanje"
 
-#: ctk/ctkcellrenderer.c:433
+#: ctk/ctkcellrenderer.c:430
 msgid "Whether the cell renderer is currently in editing mode"
 msgstr "Da li je iscrtavač ćelije trenutno u režimu menjanja"
 
-#: ctk/ctkcellrenderer.c:441
+#: ctk/ctkcellrenderer.c:438
 msgid "Cell background set"
 msgstr "Postaviti boju pozadine ćelije"
 
-#: ctk/ctkcellrenderer.c:442
+#: ctk/ctkcellrenderer.c:439
 msgid "Whether the cell background color is set"
 msgstr "Da li je podešena boja pozadine ćelije"
 
@@ -2146,8 +2146,8 @@ msgstr "Broj decimalnih mesta koje želite da prikažete"
 
 #: ctk/ctkcellrendererspinner.c:125 ctk/ctkcheckmenuitem.c:209
 #: ctk/ctkmenu.c:640 ctk/ctkmodelbutton.c:1211 ctk/ctkmodelbutton.c:1212
-#: ctk/ctkspinner.c:221 ctk/ctkswitch.c:878 ctk/ctktoggleaction.c:129
-#: ctk/ctktogglebutton.c:188 ctk/ctktoggletoolbutton.c:130
+#: ctk/ctkspinner.c:221 ctk/ctkswitch.c:868 ctk/ctktoggleaction.c:129
+#: ctk/ctktogglebutton.c:187 ctk/ctktoggletoolbutton.c:130
 msgid "Active"
 msgstr "Radan"
 
@@ -2199,149 +2199,149 @@ msgstr "Naziv boje pozadine"
 msgid "Background color as a string"
 msgstr "Boja pozadine kao niz znakova"
 
-#: ctk/ctkcellrenderertext.c:298 ctk/ctkcellview.c:233 ctk/ctktexttag.c:231
+#: ctk/ctkcellrenderertext.c:295 ctk/ctkcellview.c:230 ctk/ctktexttag.c:231
 msgid "Background color"
 msgstr "Boja pozadine"
 
-#: ctk/ctkcellrenderertext.c:299 ctk/ctkcellview.c:234 ctk/ctktexttag.c:232
+#: ctk/ctkcellrenderertext.c:296 ctk/ctkcellview.c:231 ctk/ctktexttag.c:232
 msgid "Background color as a CdkColor"
 msgstr "Boja pozadine kao Cdk boja"
 
-#: ctk/ctkcellrenderertext.c:313
+#: ctk/ctkcellrenderertext.c:309
 msgid "Background color as RGBA"
 msgstr "Boja pozadine kao RGBA"
 
-#: ctk/ctkcellrenderertext.c:314 ctk/ctkcellview.c:249 ctk/ctktexttag.c:247
+#: ctk/ctkcellrenderertext.c:310 ctk/ctkcellview.c:245 ctk/ctktexttag.c:247
 msgid "Background color as a CdkRGBA"
 msgstr "Boja pozadine kao CdkRGBA"
 
-#: ctk/ctkcellrenderertext.c:319 ctk/ctktexttag.c:262
+#: ctk/ctkcellrenderertext.c:315 ctk/ctktexttag.c:262
 msgid "Foreground color name"
 msgstr "Naziv boje iscrtavanja"
 
-#: ctk/ctkcellrenderertext.c:320 ctk/ctktexttag.c:263
+#: ctk/ctkcellrenderertext.c:316 ctk/ctktexttag.c:263
 msgid "Foreground color as a string"
 msgstr "Boja iscrtavanja kao niz znakova"
 
-#: ctk/ctkcellrenderertext.c:334 ctk/ctktexttag.c:277 ctk/ctktrayicon-x11.c:136
+#: ctk/ctkcellrenderertext.c:327 ctk/ctktexttag.c:277 ctk/ctktrayicon-x11.c:136
 msgid "Foreground color"
 msgstr "Boja iscrtavanja"
 
-#: ctk/ctkcellrenderertext.c:335 ctk/ctktexttag.c:278
+#: ctk/ctkcellrenderertext.c:328 ctk/ctktexttag.c:278
 msgid "Foreground color as a CdkColor"
 msgstr "Boja iscrtavanja kao Cdk boja"
 
-#: ctk/ctkcellrenderertext.c:349
+#: ctk/ctkcellrenderertext.c:341
 msgid "Foreground color as RGBA"
 msgstr "Boja iscrtavanja kao RGBA"
 
-#: ctk/ctkcellrenderertext.c:350 ctk/ctktexttag.c:293
+#: ctk/ctkcellrenderertext.c:342 ctk/ctktexttag.c:293
 msgid "Foreground color as a CdkRGBA"
 msgstr "Boja iscrtavanja kao CdkRGBA"
 
-#: ctk/ctkcellrenderertext.c:357 ctk/ctkentry.c:861 ctk/ctktexttag.c:309
+#: ctk/ctkcellrenderertext.c:349 ctk/ctkentry.c:861 ctk/ctktexttag.c:309
 #: ctk/ctktextview.c:825
 msgid "Editable"
 msgstr "Izmenjivost"
 
-#: ctk/ctkcellrenderertext.c:358 ctk/ctktexttag.c:310 ctk/ctktextview.c:826
+#: ctk/ctkcellrenderertext.c:350 ctk/ctktexttag.c:310 ctk/ctktextview.c:826
 msgid "Whether the text can be modified by the user"
 msgstr "Da li korisnik može menjati tekst"
 
-#: ctk/ctkcellrenderertext.c:364 ctk/ctkcellrenderertext.c:371
+#: ctk/ctkcellrenderertext.c:356 ctk/ctkcellrenderertext.c:363
 #: ctk/ctkfontchooser.c:64 ctk/ctktexttag.c:325 ctk/ctktexttag.c:333
 msgid "Font"
 msgstr "Font"
 
-#: ctk/ctkcellrenderertext.c:365 ctk/ctkfontchooser.c:65 ctk/ctktexttag.c:326
+#: ctk/ctkcellrenderertext.c:357 ctk/ctkfontchooser.c:65 ctk/ctktexttag.c:326
 msgid "Font description as a string, e.g. \"Sans Italic 12\""
 msgstr "Opis pisma kao niz znakova, npr. „Sans Italic 12“"
 
-#: ctk/ctkcellrenderertext.c:372 ctk/ctkfontchooser.c:78 ctk/ctktexttag.c:334
+#: ctk/ctkcellrenderertext.c:364 ctk/ctkfontchooser.c:78 ctk/ctktexttag.c:334
 msgid "Font description as a PangoFontDescription struct"
 msgstr "Opis pisma kao struktura „PangoFontDescription“"
 
-#: ctk/ctkcellrenderertext.c:378 ctk/ctktexttag.c:341
+#: ctk/ctkcellrenderertext.c:370 ctk/ctktexttag.c:341
 msgid "Font family"
 msgstr "Porodica pisma"
 
-#: ctk/ctkcellrenderertext.c:379 ctk/ctktexttag.c:342
+#: ctk/ctkcellrenderertext.c:371 ctk/ctktexttag.c:342
 msgid "Name of the font family, e.g. Sans, Helvetica, Times, Monospace"
 msgstr "Naziv porodice pisma, npr.: „Sans, Helvetica, Times, Monospace“"
 
-#: ctk/ctkcellrenderertext.c:385 ctk/ctkcellrenderertext.c:386
+#: ctk/ctkcellrenderertext.c:377 ctk/ctkcellrenderertext.c:378
 #: ctk/ctktexttag.c:349
 msgid "Font style"
 msgstr "Stil pisma"
 
-#: ctk/ctkcellrenderertext.c:393 ctk/ctkcellrenderertext.c:394
+#: ctk/ctkcellrenderertext.c:385 ctk/ctkcellrenderertext.c:386
 #: ctk/ctktexttag.c:358
 msgid "Font variant"
 msgstr "Varijanta pisma"
 
-#: ctk/ctkcellrenderertext.c:401 ctk/ctkcellrenderertext.c:402
+#: ctk/ctkcellrenderertext.c:393 ctk/ctkcellrenderertext.c:394
 #: ctk/ctktexttag.c:367
 msgid "Font weight"
 msgstr "Težina pisma"
 
-#: ctk/ctkcellrenderertext.c:409 ctk/ctkcellrenderertext.c:410
+#: ctk/ctkcellrenderertext.c:401 ctk/ctkcellrenderertext.c:402
 #: ctk/ctktexttag.c:378
 msgid "Font stretch"
 msgstr "Razvlačenje pisma"
 
-#: ctk/ctkcellrenderertext.c:417 ctk/ctkcellrenderertext.c:418
+#: ctk/ctkcellrenderertext.c:409 ctk/ctkcellrenderertext.c:410
 #: ctk/ctktexttag.c:387
 msgid "Font size"
 msgstr "Veličina pisma"
 
-#: ctk/ctkcellrenderertext.c:425 ctk/ctktexttag.c:407
+#: ctk/ctkcellrenderertext.c:417 ctk/ctktexttag.c:407
 msgid "Font points"
 msgstr "Pismo u tačkama"
 
-#: ctk/ctkcellrenderertext.c:426 ctk/ctktexttag.c:408
+#: ctk/ctkcellrenderertext.c:418 ctk/ctktexttag.c:408
 msgid "Font size in points"
 msgstr "Veličina pisma u štamparskim tačkama (pointima)"
 
-#: ctk/ctkcellrenderertext.c:433 ctk/ctktexttag.c:397
+#: ctk/ctkcellrenderertext.c:425 ctk/ctktexttag.c:397
 msgid "Font scale"
 msgstr "Razmera pisma"
 
-#: ctk/ctkcellrenderertext.c:434
+#: ctk/ctkcellrenderertext.c:426
 msgid "Font scaling factor"
 msgstr "Činilac kojim se uvećava ili umanjuje veličina pisma"
 
-#: ctk/ctkcellrenderertext.c:441 ctk/ctktexttag.c:476
+#: ctk/ctkcellrenderertext.c:433 ctk/ctktexttag.c:476
 msgid "Rise"
 msgstr "Pomeraj"
 
-#: ctk/ctkcellrenderertext.c:442
+#: ctk/ctkcellrenderertext.c:434
 msgid ""
 "Offset of text above the baseline (below the baseline if rise is negative)"
 msgstr ""
 "Pomeraj teksta iznad podrazumevane linije (ispod podrazumevane linije ako je "
 "pomeraj negativan)"
 
-#: ctk/ctkcellrenderertext.c:450 ctk/ctktexttag.c:516
+#: ctk/ctkcellrenderertext.c:442 ctk/ctktexttag.c:516
 msgid "Strikethrough"
 msgstr "Precrtano"
 
-#: ctk/ctkcellrenderertext.c:451 ctk/ctktexttag.c:517
+#: ctk/ctkcellrenderertext.c:443 ctk/ctktexttag.c:517
 msgid "Whether to strike through the text"
 msgstr "Da li precrtati tekst uzdužnom linijom"
 
-#: ctk/ctkcellrenderertext.c:457 ctk/ctktexttag.c:524
+#: ctk/ctkcellrenderertext.c:449 ctk/ctktexttag.c:524
 msgid "Underline"
 msgstr "Podvlačenje"
 
-#: ctk/ctkcellrenderertext.c:458 ctk/ctktexttag.c:525
+#: ctk/ctkcellrenderertext.c:450 ctk/ctktexttag.c:525
 msgid "Style of underline for this text"
 msgstr "Način podvlačenja za ovaj tekst"
 
-#: ctk/ctkcellrenderertext.c:465 ctk/ctkfontchooser.c:154 ctk/ctktexttag.c:436
+#: ctk/ctkcellrenderertext.c:457 ctk/ctkfontchooser.c:154 ctk/ctktexttag.c:436
 msgid "Language"
 msgstr "Jezik"
 
-#: ctk/ctkcellrenderertext.c:466
+#: ctk/ctkcellrenderertext.c:458
 msgid ""
 "The language this text is in, as an ISO code. Pango can use this as a hint "
 "when rendering the text. If you don't understand this parameter, you "
@@ -2351,11 +2351,11 @@ msgstr ""
 "pri iscrtavanju teksta. Ako ne razumete ovaj parametar, onda vam "
 "najverovatnije ni ne treba"
 
-#: ctk/ctkcellrenderertext.c:484 ctk/ctklabel.c:963 ctk/ctkprogressbar.c:330
+#: ctk/ctkcellrenderertext.c:476 ctk/ctklabel.c:963 ctk/ctkprogressbar.c:330
 msgid "Ellipsize"
 msgstr "Skraćivanje"
 
-#: ctk/ctkcellrenderertext.c:485
+#: ctk/ctkcellrenderertext.c:477
 msgid ""
 "The preferred place to ellipsize the string, if the cell renderer does not "
 "have enough room to display the entire string"
@@ -2363,28 +2363,28 @@ msgstr ""
 "Željeno mesto za skraćivanje teksta, ukoliko renderer ćelije ne raspolaže "
 "dovoljnim prostorom za prikaz celog teksta."
 
-#: ctk/ctkcellrenderertext.c:503 ctk/ctkfilechooserbutton.c:457
+#: ctk/ctkcellrenderertext.c:495 ctk/ctkfilechooserbutton.c:457
 #: ctk/ctklabel.c:983
 msgid "Width In Characters"
 msgstr "Širina u znakovima"
 
-#: ctk/ctkcellrenderertext.c:504 ctk/ctklabel.c:984
+#: ctk/ctkcellrenderertext.c:496 ctk/ctklabel.c:984
 msgid "The desired width of the label, in characters"
 msgstr "Željena širina oznake, kao broj znakova"
 
-#: ctk/ctkcellrenderertext.c:525 ctk/ctklabel.c:1039
+#: ctk/ctkcellrenderertext.c:517 ctk/ctklabel.c:1039
 msgid "Maximum Width In Characters"
 msgstr "Najveća širina u znakovima"
 
-#: ctk/ctkcellrenderertext.c:526
+#: ctk/ctkcellrenderertext.c:518
 msgid "The maximum width of the cell, in characters"
 msgstr "Najveća širina ćelije, kao broj znakova"
 
-#: ctk/ctkcellrenderertext.c:542 ctk/ctktexttag.c:569
+#: ctk/ctkcellrenderertext.c:534 ctk/ctktexttag.c:569
 msgid "Wrap mode"
 msgstr "Prelamanje"
 
-#: ctk/ctkcellrenderertext.c:543
+#: ctk/ctkcellrenderertext.c:535
 msgid ""
 "How to break the string into multiple lines, if the cell renderer does not "
 "have enough room to display the entire string"
@@ -2392,155 +2392,155 @@ msgstr ""
 "Kako prelomiti tekst u više redova, ukoliko iscrtavač ćelije ne raspolaže "
 "dovoljnim prostorom za prikaz celog teksta"
 
-#: ctk/ctkcellrenderertext.c:561 ctk/ctkcombobox.c:923
+#: ctk/ctkcellrenderertext.c:553 ctk/ctkcombobox.c:923
 msgid "Wrap width"
 msgstr "Širina za prelom"
 
-#: ctk/ctkcellrenderertext.c:562
+#: ctk/ctkcellrenderertext.c:554
 msgid "The width at which the text is wrapped"
 msgstr "Položaj na kojem se prelama tekst"
 
-#: ctk/ctkcellrenderertext.c:580 ctk/ctktreeviewcolumn.c:344
+#: ctk/ctkcellrenderertext.c:572 ctk/ctktreeviewcolumn.c:344
 msgid "Alignment"
 msgstr "Poravnanje"
 
-#: ctk/ctkcellrenderertext.c:581
+#: ctk/ctkcellrenderertext.c:573
 msgid "How to align the lines"
 msgstr "Kako poravnati linije"
 
-#: ctk/ctkcellrenderertext.c:596 ctk/ctkentry.c:1109
+#: ctk/ctkcellrenderertext.c:588 ctk/ctkentry.c:1109
 msgid "Placeholder text"
 msgstr "Tekst čuvara mesta"
 
-#: ctk/ctkcellrenderertext.c:597
+#: ctk/ctkcellrenderertext.c:589
 msgid "Text rendered when an editable cell is empty"
 msgstr "Iscrtani tekst kada je prazna uredljiva ćelija"
 
-#: ctk/ctkcellrenderertext.c:606 ctk/ctkcellview.c:353 ctk/ctktexttag.c:722
+#: ctk/ctkcellrenderertext.c:598 ctk/ctkcellview.c:349 ctk/ctktexttag.c:722
 msgid "Background set"
 msgstr "Postavljena pozadina"
 
-#: ctk/ctkcellrenderertext.c:607 ctk/ctkcellview.c:354 ctk/ctktexttag.c:723
+#: ctk/ctkcellrenderertext.c:599 ctk/ctkcellview.c:350 ctk/ctktexttag.c:723
 msgid "Whether this tag affects the background color"
 msgstr "Da li ove postavke utiču na boju pozadine"
 
-#: ctk/ctkcellrenderertext.c:610 ctk/ctktexttag.c:730
+#: ctk/ctkcellrenderertext.c:602 ctk/ctktexttag.c:730
 msgid "Foreground set"
 msgstr "Postavljena boja"
 
-#: ctk/ctkcellrenderertext.c:611 ctk/ctktexttag.c:731
+#: ctk/ctkcellrenderertext.c:603 ctk/ctktexttag.c:731
 msgid "Whether this tag affects the foreground color"
 msgstr "Da li ove postavke utiču na boju iscrtavanja"
 
-#: ctk/ctkcellrenderertext.c:614 ctk/ctktexttag.c:734
+#: ctk/ctkcellrenderertext.c:606 ctk/ctktexttag.c:734
 msgid "Editability set"
 msgstr "Postavljena izmenjivost"
 
-#: ctk/ctkcellrenderertext.c:615 ctk/ctktexttag.c:735
+#: ctk/ctkcellrenderertext.c:607 ctk/ctktexttag.c:735
 msgid "Whether this tag affects text editability"
 msgstr "Da li ove postavke utiču na to da li je tekst izmenjiv"
 
-#: ctk/ctkcellrenderertext.c:618 ctk/ctktexttag.c:738
+#: ctk/ctkcellrenderertext.c:610 ctk/ctktexttag.c:738
 msgid "Font family set"
 msgstr "Postavljena porodica pisma"
 
-#: ctk/ctkcellrenderertext.c:619 ctk/ctktexttag.c:739
+#: ctk/ctkcellrenderertext.c:611 ctk/ctktexttag.c:739
 msgid "Whether this tag affects the font family"
 msgstr "Da li ove postavke utiču na porodicu pisma"
 
-#: ctk/ctkcellrenderertext.c:622 ctk/ctktexttag.c:742
+#: ctk/ctkcellrenderertext.c:614 ctk/ctktexttag.c:742
 msgid "Font style set"
 msgstr "Postavljen stil pisma"
 
-#: ctk/ctkcellrenderertext.c:623 ctk/ctktexttag.c:743
+#: ctk/ctkcellrenderertext.c:615 ctk/ctktexttag.c:743
 msgid "Whether this tag affects the font style"
 msgstr "Da li ove postavke utiču na stil pisma"
 
-#: ctk/ctkcellrenderertext.c:626 ctk/ctktexttag.c:746
+#: ctk/ctkcellrenderertext.c:618 ctk/ctktexttag.c:746
 msgid "Font variant set"
 msgstr "Postavljena varijanta pisma"
 
-#: ctk/ctkcellrenderertext.c:627 ctk/ctktexttag.c:747
+#: ctk/ctkcellrenderertext.c:619 ctk/ctktexttag.c:747
 msgid "Whether this tag affects the font variant"
 msgstr "Da li ove postavke utiču na varijantu pisma"
 
-#: ctk/ctkcellrenderertext.c:630 ctk/ctktexttag.c:750
+#: ctk/ctkcellrenderertext.c:622 ctk/ctktexttag.c:750
 msgid "Font weight set"
 msgstr "Postavljena težina pisma"
 
-#: ctk/ctkcellrenderertext.c:631 ctk/ctktexttag.c:751
+#: ctk/ctkcellrenderertext.c:623 ctk/ctktexttag.c:751
 msgid "Whether this tag affects the font weight"
 msgstr "Da li ove postavke utiču na težinu pisma"
 
-#: ctk/ctkcellrenderertext.c:634 ctk/ctktexttag.c:754
+#: ctk/ctkcellrenderertext.c:626 ctk/ctktexttag.c:754
 msgid "Font stretch set"
 msgstr "Postavljeno razvlačenje pisma"
 
-#: ctk/ctkcellrenderertext.c:635 ctk/ctktexttag.c:755
+#: ctk/ctkcellrenderertext.c:627 ctk/ctktexttag.c:755
 msgid "Whether this tag affects the font stretch"
 msgstr "Da li ove postavke utiču na razvlačenje pisma"
 
-#: ctk/ctkcellrenderertext.c:638 ctk/ctktexttag.c:758
+#: ctk/ctkcellrenderertext.c:630 ctk/ctktexttag.c:758
 msgid "Font size set"
 msgstr "Postavljena veličina pisma"
 
-#: ctk/ctkcellrenderertext.c:639 ctk/ctktexttag.c:759
+#: ctk/ctkcellrenderertext.c:631 ctk/ctktexttag.c:759
 msgid "Whether this tag affects the font size"
 msgstr "Da li ove postavke utiču na veličinu pisma"
 
-#: ctk/ctkcellrenderertext.c:642 ctk/ctktexttag.c:762
+#: ctk/ctkcellrenderertext.c:634 ctk/ctktexttag.c:762
 msgid "Font scale set"
 msgstr "Postavljena razmera pisma"
 
-#: ctk/ctkcellrenderertext.c:643 ctk/ctktexttag.c:763
+#: ctk/ctkcellrenderertext.c:635 ctk/ctktexttag.c:763
 msgid "Whether this tag scales the font size by a factor"
 msgstr "Da li ove postavke utiču na izmenu veličine pisma pomoću činioca"
 
-#: ctk/ctkcellrenderertext.c:646 ctk/ctktexttag.c:782
+#: ctk/ctkcellrenderertext.c:638 ctk/ctktexttag.c:782
 msgid "Rise set"
 msgstr "Postavljen pomeraj"
 
-#: ctk/ctkcellrenderertext.c:647 ctk/ctktexttag.c:783
+#: ctk/ctkcellrenderertext.c:639 ctk/ctktexttag.c:783
 msgid "Whether this tag affects the rise"
 msgstr "Da li ove postavke utiču na pomeraj u odnosu na podrazumevanu liniju"
 
-#: ctk/ctkcellrenderertext.c:650 ctk/ctktexttag.c:798
+#: ctk/ctkcellrenderertext.c:642 ctk/ctktexttag.c:798
 msgid "Strikethrough set"
 msgstr "Postavljeno precrtavanje"
 
-#: ctk/ctkcellrenderertext.c:651 ctk/ctktexttag.c:799
+#: ctk/ctkcellrenderertext.c:643 ctk/ctktexttag.c:799
 msgid "Whether this tag affects strikethrough"
 msgstr "Da li ove postavke utiču na precrtavanje teksta"
 
-#: ctk/ctkcellrenderertext.c:654 ctk/ctktexttag.c:806
+#: ctk/ctkcellrenderertext.c:646 ctk/ctktexttag.c:806
 msgid "Underline set"
 msgstr "Postavljeno podvlačenje"
 
-#: ctk/ctkcellrenderertext.c:655 ctk/ctktexttag.c:807
+#: ctk/ctkcellrenderertext.c:647 ctk/ctktexttag.c:807
 msgid "Whether this tag affects underlining"
 msgstr "Da li ove postavke utiču na podvlačenje teksta"
 
-#: ctk/ctkcellrenderertext.c:658 ctk/ctktexttag.c:770
+#: ctk/ctkcellrenderertext.c:650 ctk/ctktexttag.c:770
 msgid "Language set"
 msgstr "Postavljen jezik"
 
-#: ctk/ctkcellrenderertext.c:659 ctk/ctktexttag.c:771
+#: ctk/ctkcellrenderertext.c:651 ctk/ctktexttag.c:771
 msgid "Whether this tag affects the language the text is rendered as"
 msgstr "Da li ova postavka utiče na jezik u kom se tekst iscrtava"
 
-#: ctk/ctkcellrenderertext.c:662
+#: ctk/ctkcellrenderertext.c:654
 msgid "Ellipsize set"
 msgstr "Skraćivanje (sa tri tačke)"
 
-#: ctk/ctkcellrenderertext.c:663
+#: ctk/ctkcellrenderertext.c:655
 msgid "Whether this tag affects the ellipsize mode"
 msgstr "Da li ove postavke utiču na režim skraćivanja teksta"
 
-#: ctk/ctkcellrenderertext.c:666
+#: ctk/ctkcellrenderertext.c:658
 msgid "Align set"
 msgstr "Postavljeno poravnjanje"
 
-#: ctk/ctkcellrenderertext.c:667
+#: ctk/ctkcellrenderertext.c:659
 msgid "Whether this tag affects the alignment mode"
 msgstr "Da li ove postavke utiču na režim poravnjanja"
 
@@ -2588,51 +2588,51 @@ msgstr "Veličina pokazatelja"
 msgid "Size of check or radio indicator"
 msgstr "Veličina pokazatelja štikliranja ili radio dugmeta"
 
-#: ctk/ctkcellview.c:248
+#: ctk/ctkcellview.c:244
 msgid "Background RGBA color"
 msgstr "RGBA boja pozadine"
 
-#: ctk/ctkcellview.c:263
+#: ctk/ctkcellview.c:259
 msgid "CellView model"
 msgstr "Model prikaza ćelije"
 
-#: ctk/ctkcellview.c:264
+#: ctk/ctkcellview.c:260
 msgid "The model for cell view"
 msgstr "Model za prikaz ćelije"
 
-#: ctk/ctkcellview.c:282 ctk/ctkcombobox.c:1182 ctk/ctkentrycompletion.c:467
+#: ctk/ctkcellview.c:278 ctk/ctkcombobox.c:1182 ctk/ctkentrycompletion.c:467
 #: ctk/ctkiconview.c:649 ctk/ctktreemenu.c:307 ctk/ctktreeviewcolumn.c:399
 msgid "Cell Area"
 msgstr "Oblast ćelije"
 
-#: ctk/ctkcellview.c:283 ctk/ctkcombobox.c:1183 ctk/ctkentrycompletion.c:468
+#: ctk/ctkcellview.c:279 ctk/ctkcombobox.c:1183 ctk/ctkentrycompletion.c:468
 #: ctk/ctkiconview.c:650 ctk/ctktreemenu.c:308 ctk/ctktreeviewcolumn.c:400
 msgid "The CtkCellArea used to layout cells"
 msgstr "Oblast Ctk ćelije korišćena za raspoređivanje ćelija"
 
-#: ctk/ctkcellview.c:306
+#: ctk/ctkcellview.c:302
 msgid "Cell Area Context"
 msgstr "Kontekst oblasti ćelije"
 
-#: ctk/ctkcellview.c:307
+#: ctk/ctkcellview.c:303
 msgid "The CtkCellAreaContext used to compute the geometry of the cell view"
 msgstr ""
 "Kontekst oblasti Ctk ćelije korišćen za izračunavanje geometrije prikaza "
 "ćelije"
 
-#: ctk/ctkcellview.c:324
+#: ctk/ctkcellview.c:320
 msgid "Draw Sensitive"
 msgstr "Osetljivost iscrtavanja"
 
-#: ctk/ctkcellview.c:325
+#: ctk/ctkcellview.c:321
 msgid "Whether to force cells to be drawn in a sensitive state"
 msgstr "Da li da natera ćelije da budu iscrtane u osetljivom stanju"
 
-#: ctk/ctkcellview.c:343
+#: ctk/ctkcellview.c:339
 msgid "Fit Model"
 msgstr "Model ispunjavanja"
 
-#: ctk/ctkcellview.c:344
+#: ctk/ctkcellview.c:340
 msgid "Whether to request enough space for every row in the model"
 msgstr "Da li treba tražiti dovoljno prostora za svaki red u modelu"
 
@@ -2652,7 +2652,7 @@ msgstr "Razmaci oko pokazatelja štikliranja ili radio dela dugmeta"
 msgid "Whether the menu item is checked"
 msgstr "Da li je stavka izbornika štiklirana"
 
-#: ctk/ctkcheckmenuitem.c:217 ctk/ctktogglebutton.c:195
+#: ctk/ctkcheckmenuitem.c:217 ctk/ctktogglebutton.c:194
 msgid "Inconsistent"
 msgstr "Nedosledno"
 
@@ -2688,29 +2688,29 @@ msgstr "Naslov"
 msgid "The title of the color selection dialog"
 msgstr "Naslov prozorčeta za izbor boje"
 
-#: ctk/ctkcolorbutton.c:202
+#: ctk/ctkcolorbutton.c:199
 msgid "The selected color"
 msgstr "Izabrana boja"
 
-#: ctk/ctkcolorbutton.c:218
+#: ctk/ctkcolorbutton.c:214
 msgid "The selected opacity value (0 fully transparent, 65535 fully opaque)"
 msgstr ""
 "Trenutna vrednost providnosti (0 — potpuno providno, 65535 — potpuno "
 "neprovidno)"
 
-#: ctk/ctkcolorbutton.c:232
+#: ctk/ctkcolorbutton.c:228
 msgid "Current RGBA Color"
 msgstr "Trenutna RGBA boja"
 
-#: ctk/ctkcolorbutton.c:233
+#: ctk/ctkcolorbutton.c:229
 msgid "The selected RGBA color"
 msgstr "Izabrana RGBA boja"
 
-#: ctk/ctkcolorbutton.c:274
+#: ctk/ctkcolorbutton.c:270
 msgid "Show Editor"
 msgstr "Prikazuje uređivač"
 
-#: ctk/ctkcolorbutton.c:275
+#: ctk/ctkcolorbutton.c:271
 msgid "Whether to show the color editor right away"
 msgstr "Da li će biti prikazan uređivač boja"
 
@@ -2950,7 +2950,7 @@ msgstr "IB"
 msgid "Unique ID"
 msgstr "Jedinstveni IB"
 
-#: ctk/ctkcssnode.c:643 ctk/ctkswitch.c:893
+#: ctk/ctkcssnode.c:643 ctk/ctkswitch.c:883
 msgid "State"
 msgstr "Stanje"
 
@@ -3592,7 +3592,7 @@ msgid "Space to put between the label and the child"
 msgstr "Razmak koji se stavlja između oznake i sadržanog elementa"
 
 #: ctk/ctkexpander.c:351 ctk/ctkframe.c:262 ctk/ctktoolbutton.c:218
-#: ctk/ctktoolitemgroup.c:1646
+#: ctk/ctktoolitemgroup.c:1644
 msgid "Label widget"
 msgstr "Element oznake"
 
@@ -3622,11 +3622,11 @@ msgstr ""
 "skupljanjem"
 
 # Ovo je LOSE!
-#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1674 ctk/ctktreeview.c:1234
+#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1672 ctk/ctktreeview.c:1234
 msgid "Expander Size"
 msgstr "Veličina razgranika"
 
-#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1675 ctk/ctktreeview.c:1235
+#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1673 ctk/ctktreeview.c:1235
 msgid "Size of the expander arrow"
 msgstr "Veličina strelice za grananje"
 
@@ -3748,19 +3748,19 @@ msgstr ""
 "Da li birač datoteke kad nije u režimu otvaranja nudi korisniku da pravi "
 "nove fascikle."
 
-#: ctk/ctkfilechoosernative.c:827
+#: ctk/ctkfilechoosernative.c:825
 msgid "Accept label"
 msgstr "Natpis prihvata"
 
-#: ctk/ctkfilechoosernative.c:828
+#: ctk/ctkfilechoosernative.c:826
 msgid "The label on the accept button"
 msgstr "Natpis na dugmetu za prihvatanje"
 
-#: ctk/ctkfilechoosernative.c:840
+#: ctk/ctkfilechoosernative.c:838
 msgid "Cancel label"
 msgstr "Natpis otkazivanja"
 
-#: ctk/ctkfilechoosernative.c:841
+#: ctk/ctkfilechoosernative.c:839
 msgid "The label on the cancel button"
 msgstr "Natpis na dugmetu za otkazivanje"
 
@@ -4776,7 +4776,7 @@ msgstr "Trenutno izabrana stavka izbornika"
 msgid "The accel group holding accelerators for the menu"
 msgstr "Grupa prečica koja čuva prečice izbornika"
 
-#: ctk/ctkmenu.c:670 ctk/ctkmenuitem.c:775
+#: ctk/ctkmenu.c:670 ctk/ctkmenuitem.c:774
 msgid "Accel Path"
 msgstr "Putanja prečice"
 
@@ -4943,44 +4943,44 @@ msgstr "Donje pripajanje"
 msgid "Arbitrary constant to scale down the size of the scroll arrow"
 msgstr "Proizvoljna konstanta za smanjivanje veličine strelice za klizanje"
 
-#: ctk/ctkmenuitem.c:745
+#: ctk/ctkmenuitem.c:744
 msgid "Right Justified"
 msgstr "Desno poravnate"
 
-#: ctk/ctkmenuitem.c:746
+#: ctk/ctkmenuitem.c:745
 msgid ""
 "Sets whether the menu item appears justified at the right side of a menu bar"
 msgstr ""
 "Postavlja da li stavke izbornika izgledaju poravnate na desnoj strani trake "
 "izbornika"
 
-#: ctk/ctkmenuitem.c:759 ctk/ctkpopovermenu.c:376
+#: ctk/ctkmenuitem.c:758 ctk/ctkpopovermenu.c:376
 msgid "Submenu"
 msgstr "Podmeni"
 
-#: ctk/ctkmenuitem.c:760
+#: ctk/ctkmenuitem.c:759
 msgid "The submenu attached to the menu item, or NULL if it has none"
 msgstr "Podmeni vezan na stavku izbornika, ili NULL ako ne postoji"
 
-#: ctk/ctkmenuitem.c:776
+#: ctk/ctkmenuitem.c:775
 msgid "Sets the accelerator path of the menu item"
 msgstr "Postavite putanju prečice za stavku izbornika"
 
-#: ctk/ctkmenuitem.c:790
+#: ctk/ctkmenuitem.c:789
 msgid "The text for the child label"
 msgstr "Tekst oznake deteta"
 
-#: ctk/ctkmenuitem.c:899
+#: ctk/ctkmenuitem.c:898
 msgid "Amount of space used up by arrow, relative to the menu item's font size"
 msgstr ""
 "Količina prostora koju koristi strelica, relativno u odnosu na veličinu "
 "fonta stavke izbornika"
 
-#: ctk/ctkmenuitem.c:915
+#: ctk/ctkmenuitem.c:914
 msgid "Width in Characters"
 msgstr "Širina u znakovima"
 
-#: ctk/ctkmenuitem.c:916
+#: ctk/ctkmenuitem.c:915
 msgid "The minimum desired width of the menu item in characters"
 msgstr "Najmanja željena širina stavke izbornika u karakterima"
 
@@ -5045,19 +5045,19 @@ msgstr "Koristi oznake u pomoćnom"
 msgid "The secondary text includes Pango markup."
 msgstr "Pomoćni tekst uključuje Pango oznake."
 
-#: ctk/ctkmessagedialog.c:277
+#: ctk/ctkmessagedialog.c:276
 msgid "Image"
 msgstr "Slika"
 
-#: ctk/ctkmessagedialog.c:278
+#: ctk/ctkmessagedialog.c:277
 msgid "The image"
 msgstr "Slika"
 
-#: ctk/ctkmessagedialog.c:294
+#: ctk/ctkmessagedialog.c:293
 msgid "Message area"
 msgstr "Oblast poruke"
 
-#: ctk/ctkmessagedialog.c:295
+#: ctk/ctkmessagedialog.c:294
 msgid "CtkBox that holds the dialog's primary and secondary labels"
 msgstr "CtkBoks koji sadrži primarnu i sekundarnu oznaku prozorčeta"
 
@@ -6172,7 +6172,7 @@ msgstr "Zaokruživanje cifara"
 msgid "The number of digits to round the value to."
 msgstr "Broj cifara na koji će biti zaokružena vrednost."
 
-#: ctk/ctkrange.c:538 ctk/ctkswitch.c:929
+#: ctk/ctkrange.c:538 ctk/ctkswitch.c:919
 msgid "Slider Width"
 msgstr "Širina klizača"
 
@@ -7763,23 +7763,23 @@ msgstr "Vrsta vrednosti"
 msgid "The value type returned by CtkStyleContext"
 msgstr "Vrsta vrednosti koju vraća sadržaj Ctk stila"
 
-#: ctk/ctkswitch.c:879
+#: ctk/ctkswitch.c:869
 msgid "Whether the switch is on or off"
 msgstr "Da li je prekidač uključen ili isključen"
 
-#: ctk/ctkswitch.c:894
+#: ctk/ctkswitch.c:884
 msgid "The backend state"
 msgstr "Stanje pozadinca"
 
-#: ctk/ctkswitch.c:930
+#: ctk/ctkswitch.c:920
 msgid "The minimum width of the handle"
 msgstr "Najmanja širina ručice"
 
-#: ctk/ctkswitch.c:946
+#: ctk/ctkswitch.c:936
 msgid "Slider Height"
 msgstr "Visina klizača"
 
-#: ctk/ctkswitch.c:947
+#: ctk/ctkswitch.c:937
 msgid "The minimum height of the handle"
 msgstr "Najmanja visina ručke"
 
@@ -8284,11 +8284,11 @@ msgstr "Utvrđena širina"
 msgid "Whether to use a monospace font"
 msgstr "Da li se koristi font utvrđene širine"
 
-#: ctk/ctktextview.c:1081
+#: ctk/ctktextview.c:1080
 msgid "Error underline color"
 msgstr "Boja podvlačenja grešaka"
 
-#: ctk/ctktextview.c:1082
+#: ctk/ctktextview.c:1081
 msgid "Color with which to draw error-indication underlines"
 msgstr "Boja kojom se iscrtavaju podvlake za isticanje grešaka"
 
@@ -8305,19 +8305,19 @@ msgstr ""
 msgid "Whether the toggle action should be active"
 msgstr "Da li prekidačka radnja treba da bude radna ili ne"
 
-#: ctk/ctktogglebutton.c:189 ctk/ctktoggletoolbutton.c:131
+#: ctk/ctktogglebutton.c:188 ctk/ctktoggletoolbutton.c:131
 msgid "If the toggle button should be pressed in"
 msgstr "Da li prekidačko dugme treba da bude pritisnuto ili ne"
 
-#: ctk/ctktogglebutton.c:196
+#: ctk/ctktogglebutton.c:195
 msgid "If the toggle button is in an \"in between\" state"
 msgstr "Da li je prekidačko dugme u stanju „između“"
 
-#: ctk/ctktogglebutton.c:202
+#: ctk/ctktogglebutton.c:201
 msgid "Draw Indicator"
 msgstr "Prikaz pokazatelja"
 
-#: ctk/ctktogglebutton.c:203
+#: ctk/ctktogglebutton.c:202
 msgid "If the toggle part of the button is displayed"
 msgstr "Da li se prikazuje prekidački deo dugmeta"
 
@@ -8354,7 +8354,7 @@ msgstr "Da li je svojstvo veličine ikonica postavljeno"
 msgid "Whether the item should receive extra space when the toolbar grows"
 msgstr "Da li stavka treba da dobije dodatni prostor kada raste traka alata"
 
-#: ctk/ctktoolbar.c:598 ctk/ctktoolitemgroup.c:1689
+#: ctk/ctktoolbar.c:598 ctk/ctktoolitemgroup.c:1687
 msgid "Whether the item should be the same size as other homogeneous items"
 msgstr ""
 "Da li stavka treba da bude iste veličine kao i ostale jednoobrazne stavke"
@@ -8451,63 +8451,63 @@ msgstr ""
 "Da li se stavka alatki smatra važnom. Ako je postavljeno, dugmad alatke "
 "prikazuju i tekst u režimu CTK_TOOLBAR_BOTH_HORIZ"
 
-#: ctk/ctktoolitemgroup.c:1640
+#: ctk/ctktoolitemgroup.c:1638
 msgid "The human-readable title of this item group"
 msgstr "Jednostavni naziv za ovu grupu stavki"
 
-#: ctk/ctktoolitemgroup.c:1647
+#: ctk/ctktoolitemgroup.c:1645
 msgid "A widget to display in place of the usual label"
 msgstr "Element koji se prikazuje namesto uobičajene oznake"
 
-#: ctk/ctktoolitemgroup.c:1653
+#: ctk/ctktoolitemgroup.c:1651
 msgid "Collapsed"
 msgstr "Sakupljeno"
 
-#: ctk/ctktoolitemgroup.c:1654
+#: ctk/ctktoolitemgroup.c:1652
 msgid "Whether the group has been collapsed and items are hidden"
 msgstr "Određuje da li je grupa sakupljena, a njene stavke skrivene"
 
-#: ctk/ctktoolitemgroup.c:1660
+#: ctk/ctktoolitemgroup.c:1658
 msgid "ellipsize"
 msgstr "skrati"
 
-#: ctk/ctktoolitemgroup.c:1661
+#: ctk/ctktoolitemgroup.c:1659
 msgid "Ellipsize for item group headers"
 msgstr "Skraćuje zaglavlja za grupe stavki"
 
-#: ctk/ctktoolitemgroup.c:1667
+#: ctk/ctktoolitemgroup.c:1665
 msgid "Header Relief"
 msgstr "Reljef zaglavlja"
 
-#: ctk/ctktoolitemgroup.c:1668
+#: ctk/ctktoolitemgroup.c:1666
 msgid "Relief of the group header button"
 msgstr "Reljef za grupu dugmadi zaglavlja"
 
-#: ctk/ctktoolitemgroup.c:1681
+#: ctk/ctktoolitemgroup.c:1679
 msgid "Header Spacing"
 msgstr "Razmak zaglavlja"
 
-#: ctk/ctktoolitemgroup.c:1682
+#: ctk/ctktoolitemgroup.c:1680
 msgid "Spacing between expander arrow and caption"
 msgstr "Razmak između strelice za grananje i naslova"
 
-#: ctk/ctktoolitemgroup.c:1696
+#: ctk/ctktoolitemgroup.c:1694
 msgid "Whether the item should receive extra space when the group grows"
 msgstr "Da li stavka treba da dobije dodatni prostor kada se uveća grupa"
 
-#: ctk/ctktoolitemgroup.c:1703
+#: ctk/ctktoolitemgroup.c:1701
 msgid "Whether the item should fill the available space"
 msgstr "Da li svi stavka treba da popuni dostupni prostor"
 
-#: ctk/ctktoolitemgroup.c:1709
+#: ctk/ctktoolitemgroup.c:1707
 msgid "New Row"
 msgstr "Novi red"
 
-#: ctk/ctktoolitemgroup.c:1710
+#: ctk/ctktoolitemgroup.c:1708
 msgid "Whether the item should start a new row"
 msgstr "Da li stavka treba početi u novom redu"
 
-#: ctk/ctktoolitemgroup.c:1717
+#: ctk/ctktoolitemgroup.c:1715
 msgid "Position of the item within this group"
 msgstr "Mesto stavke unutar ove grupi"
 
@@ -9242,27 +9242,27 @@ msgstr "Činilac srazmere"
 msgid "The scaling factor of the window"
 msgstr "Činilac promene veličine prozora"
 
-#: ctk/ctkwidget.c:3497
+#: ctk/ctkwidget.c:3493
 msgid "Interior Focus"
 msgstr "Unutrašnji fokus"
 
-#: ctk/ctkwidget.c:3498
+#: ctk/ctkwidget.c:3494
 msgid "Whether to draw the focus indicator inside widgets"
 msgstr "Da li iscrtati pokazatelj fokusa unutar elemenata"
 
-#: ctk/ctkwidget.c:3511
+#: ctk/ctkwidget.c:3507
 msgid "Focus linewidth"
 msgstr "Debljina linije fokusa"
 
-#: ctk/ctkwidget.c:3512
+#: ctk/ctkwidget.c:3508
 msgid "Width, in pixels, of the focus indicator line"
 msgstr "Debljina u tačkama linije koju pokazuje element u fokusu"
 
-#: ctk/ctkwidget.c:3526
+#: ctk/ctkwidget.c:3522
 msgid "Focus line dash pattern"
 msgstr "Obrazac crtkanja linije fokusa"
 
-#: ctk/ctkwidget.c:3527
+#: ctk/ctkwidget.c:3523
 msgid ""
 "Dash pattern used to draw the focus indicator. The character values are "
 "interpreted as pixel widths of alternating on and off segments of the line."
@@ -9271,28 +9271,28 @@ msgstr ""
 "tumače kao širine tačkica naizmeničnih uključenih i isključenih odlomaka "
 "linije."
 
-#: ctk/ctkwidget.c:3540
+#: ctk/ctkwidget.c:3536
 msgid "Focus padding"
 msgstr "Popuna fokusa"
 
-#: ctk/ctkwidget.c:3541
+#: ctk/ctkwidget.c:3537
 msgid "Width, in pixels, between focus indicator and the widget 'box'"
 msgstr ""
 "Širina u tačkama između pokazatelja elementa u fokusu i okvira elementa"
 
-#: ctk/ctkwidget.c:3555
+#: ctk/ctkwidget.c:3548
 msgid "Cursor color"
 msgstr "Boja kurzora"
 
-#: ctk/ctkwidget.c:3556
+#: ctk/ctkwidget.c:3549
 msgid "Color with which to draw insertion cursor"
 msgstr "Boja kojom se iscrtava kurzor za unos"
 
-#: ctk/ctkwidget.c:3569
+#: ctk/ctkwidget.c:3560
 msgid "Secondary cursor color"
 msgstr "Druga boja kurzora"
 
-#: ctk/ctkwidget.c:3570
+#: ctk/ctkwidget.c:3561
 msgid ""
 "Color with which to draw the secondary insertion cursor when editing mixed "
 "right-to-left and left-to-right text"
@@ -9300,43 +9300,43 @@ msgstr ""
 "Boja kojom se iscrtava drugi kurzor za unos pri unosu mešanog teksta sa "
 "desna na levo, i teksta sa leva na desno"
 
-#: ctk/ctkwidget.c:3576
+#: ctk/ctkwidget.c:3567
 msgid "Cursor line aspect ratio"
 msgstr "Razmera kurzorne linije"
 
-#: ctk/ctkwidget.c:3577
+#: ctk/ctkwidget.c:3568
 msgid "Aspect ratio with which to draw insertion cursor"
 msgstr "Razmera u kojoj se crta kurzor za unos"
 
-#: ctk/ctkwidget.c:3583
+#: ctk/ctkwidget.c:3574
 msgid "Window dragging"
 msgstr "Prevlačenje prozora"
 
-#: ctk/ctkwidget.c:3584
+#: ctk/ctkwidget.c:3575
 msgid "Whether windows can be dragged and maximized by clicking on empty areas"
 msgstr "Da li prozori mogu da se prevuku i uvećaju pritiskom na prazne oblasti"
 
-#: ctk/ctkwidget.c:3601
+#: ctk/ctkwidget.c:3587
 msgid "Unvisited Link Color"
 msgstr "Boja neposećene veze"
 
-#: ctk/ctkwidget.c:3602
+#: ctk/ctkwidget.c:3588
 msgid "Color of unvisited links"
 msgstr "Boja neposećenih veza"
 
-#: ctk/ctkwidget.c:3618
+#: ctk/ctkwidget.c:3601
 msgid "Visited Link Color"
 msgstr "Boja posećene veze"
 
-#: ctk/ctkwidget.c:3619
+#: ctk/ctkwidget.c:3602
 msgid "Color of visited links"
 msgstr "Boja posećenih veza"
 
-#: ctk/ctkwidget.c:3637
+#: ctk/ctkwidget.c:3619
 msgid "Wide Separators"
 msgstr "Široki razdvojnici"
 
-#: ctk/ctkwidget.c:3638
+#: ctk/ctkwidget.c:3620
 msgid ""
 "Whether separators have configurable width and should be drawn using a box "
 "instead of a line"
@@ -9344,43 +9344,43 @@ msgstr ""
 "Da li razdvojnici imaju podesivu širinu i treba da budu iscrtavani pomoću "
 "kutije umesto linije"
 
-#: ctk/ctkwidget.c:3655
+#: ctk/ctkwidget.c:3637
 msgid "Separator Width"
 msgstr "Širina razdvojnika"
 
-#: ctk/ctkwidget.c:3656
+#: ctk/ctkwidget.c:3638
 msgid "The width of separators if wide-separators is TRUE"
 msgstr "Širina razdvojnika ako su postavljeni široki razdvojnici"
 
-#: ctk/ctkwidget.c:3673
+#: ctk/ctkwidget.c:3655
 msgid "Separator Height"
 msgstr "Visina razdvojnika"
 
-#: ctk/ctkwidget.c:3674
+#: ctk/ctkwidget.c:3656
 msgid "The height of separators if \"wide-separators\" is TRUE"
 msgstr "Visina razdvojnika ako su postavljeni široki razdvojnici"
 
-#: ctk/ctkwidget.c:3688
+#: ctk/ctkwidget.c:3670
 msgid "Horizontal Scroll Arrow Length"
 msgstr "Dužina strelice za vodoravno pomeranje"
 
-#: ctk/ctkwidget.c:3689
+#: ctk/ctkwidget.c:3671
 msgid "The length of horizontal scroll arrows"
 msgstr "Dužina strelice za vodoravno pomeranje"
 
-#: ctk/ctkwidget.c:3703
+#: ctk/ctkwidget.c:3685
 msgid "Vertical Scroll Arrow Length"
 msgstr "Dužina strelice za uspravno pomeranje"
 
-#: ctk/ctkwidget.c:3704
+#: ctk/ctkwidget.c:3686
 msgid "The length of vertical scroll arrows"
 msgstr "Dužina strelice za uspravno pomeranje"
 
-#: ctk/ctkwidget.c:3710 ctk/ctkwidget.c:3711
+#: ctk/ctkwidget.c:3692 ctk/ctkwidget.c:3693
 msgid "Width of text selection handles"
 msgstr "Širina ručke za izbor teksta"
 
-#: ctk/ctkwidget.c:3716 ctk/ctkwidget.c:3717
+#: ctk/ctkwidget.c:3698 ctk/ctkwidget.c:3699
 msgid "Height of text selection handles"
 msgstr "Visina ručke za izbor teksta"
 
@@ -9638,27 +9638,27 @@ msgstr "Raspored ukrašenog dugmeta"
 msgid "Decoration resize handle size"
 msgstr "Veličina ručke za promenu veličine ukrasa"
 
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:137
+#: modules/printbackends/cloudprint/ctkprintercloudprint.c:133
 msgid "Cloud Print account"
 msgstr "Nalog štampanja u oblaku"
 
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:138
+#: modules/printbackends/cloudprint/ctkprintercloudprint.c:134
 msgid "CtkCloudprintAccount instance"
 msgstr "Primerak naloga Ctk štampanja u oblaku"
 
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:147
+#: modules/printbackends/cloudprint/ctkprintercloudprint.c:143
 msgid "Printer ID"
 msgstr "IB štampača"
 
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:148
+#: modules/printbackends/cloudprint/ctkprintercloudprint.c:144
 msgid "Cloud Print printer ID"
 msgstr "IB štampača štampanja u oblaku"
 
-#: modules/printbackends/cups/ctkprintercups.c:93
+#: modules/printbackends/cups/ctkprintercups.c:91
 msgid "Color Profile Title"
 msgstr "Naslov profila boje"
 
-#: modules/printbackends/cups/ctkprintercups.c:94
+#: modules/printbackends/cups/ctkprintercups.c:92
 msgid "The title of the color profile to use"
 msgstr "Naslov prozorčeta za izbor boje"
 
