@@ -34,7 +34,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CTK+ master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-23 17:45+0100\n"
+"POT-Creation-Date: 2022-08-11 17:18+0200\n"
 "PO-Revision-Date: 2020-11-01 15:00+0100\n"
 "Last-Translator: Tim Sabsch <tim@sabsch.com>\n"
 "Language-Team: Deutsch <gnome-de@gnome.org>\n"
@@ -581,12 +581,12 @@ msgctxt "Action name"
 msgid "Toggle"
 msgstr "Umschalten"
 
-#: ctk/a11y/ctkbuttonaccessible.c:323 ctk/a11y/ctkmenuitemaccessible.c:439
+#: ctk/a11y/ctkbuttonaccessible.c:322 ctk/a11y/ctkmenuitemaccessible.c:439
 msgctxt "Action name"
 msgid "Click"
 msgstr "Klicken"
 
-#: ctk/a11y/ctkbuttonaccessible.c:332
+#: ctk/a11y/ctkbuttonaccessible.c:331
 msgctxt "Action description"
 msgid "Clicks the button"
 msgstr "Klickt den Knopf an"
@@ -1125,7 +1125,7 @@ msgctxt "Action description"
 msgid "Toggles the switch"
 msgstr "Schaltet den Schalter um"
 
-#: ctk/ctkcolorsel.c:425
+#: ctk/ctkcolorsel.c:421
 msgid ""
 "Select the color you want from the outer ring. Select the darkness or "
 "lightness of that color using the inner triangle."
@@ -1134,7 +1134,7 @@ msgstr ""
 "Helligkeit dieser Farbe mit dem inneren Dreieck."
 
 # ctk/ctkcolor
-#: ctk/ctkcolorsel.c:451
+#: ctk/ctkcolorsel.c:447
 msgid ""
 "Click the eyedropper, then click a color anywhere on your screen to select "
 "that color."
@@ -1142,67 +1142,67 @@ msgstr ""
 "Klicken Sie auf die Pipette und dann Sie auf eine Farbe irgendwo auf Ihrem "
 "Bildschirm, um sie auszuwählen."
 
-#: ctk/ctkcolorsel.c:461
+#: ctk/ctkcolorsel.c:457
 msgid "_Hue:"
 msgstr "_Ton:"
 
-#: ctk/ctkcolorsel.c:462
+#: ctk/ctkcolorsel.c:458
 msgid "Position on the color wheel."
 msgstr "Die Position auf dem Farbrad."
 
-#: ctk/ctkcolorsel.c:464
+#: ctk/ctkcolorsel.c:460
 msgid "S_aturation:"
 msgstr "_Sättigung:"
 
-#: ctk/ctkcolorsel.c:465
+#: ctk/ctkcolorsel.c:461
 msgid "Intensity of the color."
 msgstr "Intensität der Farbe."
 
-#: ctk/ctkcolorsel.c:466
+#: ctk/ctkcolorsel.c:462
 msgid "_Value:"
 msgstr "_Wert:"
 
-#: ctk/ctkcolorsel.c:467
+#: ctk/ctkcolorsel.c:463
 msgid "Brightness of the color."
 msgstr "Die Helligkeit der Farbe."
 
-#: ctk/ctkcolorsel.c:468
+#: ctk/ctkcolorsel.c:464
 msgid "_Red:"
 msgstr "_Rot:"
 
-#: ctk/ctkcolorsel.c:469
+#: ctk/ctkcolorsel.c:465
 msgid "Amount of red light in the color."
 msgstr "Der Rotanteil der Farbe."
 
-#: ctk/ctkcolorsel.c:470
+#: ctk/ctkcolorsel.c:466
 msgid "_Green:"
 msgstr "_Grün:"
 
-#: ctk/ctkcolorsel.c:471
+#: ctk/ctkcolorsel.c:467
 msgid "Amount of green light in the color."
 msgstr "Der Grünanteil der Farbe."
 
-#: ctk/ctkcolorsel.c:472
+#: ctk/ctkcolorsel.c:468
 msgid "_Blue:"
 msgstr "_Blau:"
 
-#: ctk/ctkcolorsel.c:473
+#: ctk/ctkcolorsel.c:469
 msgid "Amount of blue light in the color."
 msgstr "Der Blauanteil der Farbe."
 
-#: ctk/ctkcolorsel.c:476
+#: ctk/ctkcolorsel.c:472
 msgid "Op_acity:"
 msgstr "_Deckkraft:"
 
-#: ctk/ctkcolorsel.c:484 ctk/ctkcolorsel.c:494
+#: ctk/ctkcolorsel.c:480 ctk/ctkcolorsel.c:490
 msgid "Transparency of the color."
 msgstr "Transparenz der Farbe."
 
-#: ctk/ctkcolorsel.c:501
+#: ctk/ctkcolorsel.c:497
 msgid "Color _name:"
 msgstr "Farb_name:"
 
-#: ctk/ctkcolorsel.c:516
+#: ctk/ctkcolorsel.c:512
 msgid ""
 "You can enter an HTML-style hexadecimal color value, or simply a color name "
 "such as “orange” in this entry."
@@ -1210,15 +1210,15 @@ msgstr ""
 "Sie können in diesem Feld einen hexadezimalen Farbwert wie bei HTML oder "
 "einen Farbnamen wie »orange« eingeben."
 
-#: ctk/ctkcolorsel.c:548
+#: ctk/ctkcolorsel.c:544
 msgid "_Palette:"
 msgstr "_Palette:"
 
-#: ctk/ctkcolorsel.c:578
+#: ctk/ctkcolorsel.c:574
 msgid "Color Wheel"
 msgstr "Farbrad"
 
-#: ctk/ctkcolorsel.c:1072
+#: ctk/ctkcolorsel.c:1068
 msgid ""
 "The previously-selected color, for comparison to the color you’re selecting "
 "now. You can drag this color to a palette entry, or select this color as "
@@ -1228,7 +1228,7 @@ msgstr ""
 "Sie können diese Farbe auf einen Paletteneintrag ziehen, oder sie als "
 "aktuell auswählen, indem Sie sie auf den anderen Farbfleck daneben ziehen."
 
-#: ctk/ctkcolorsel.c:1078
+#: ctk/ctkcolorsel.c:1074
 msgid ""
 "The color you’ve chosen. You can drag this color to a palette entry to save "
 "it for use in the future."
@@ -1236,22 +1236,22 @@ msgstr ""
 "Die von Ihnen gewählte Farbe. Sie können diese Farbe auf einen "
 "Paletteneintrag ziehen, um sie für späteren Gebrauch zu speichern."
 
-#: ctk/ctkcolorsel.c:1084
+#: ctk/ctkcolorsel.c:1080
 msgid ""
 "The previously-selected color, for comparison to the color you’re selecting "
 "now."
 msgstr ""
 "Die zuvor gewählte Farbe, für Vergleichszwecke zur aktuell gewählten Farbe."
 
-#: ctk/ctkcolorsel.c:1088
+#: ctk/ctkcolorsel.c:1084
 msgid "The color you’ve chosen."
 msgstr "Die von Ihnen gewählte Farbe."
 
-#: ctk/ctkcolorsel.c:1458
+#: ctk/ctkcolorsel.c:1454
 msgid "_Save color here"
 msgstr "Farbe hier _speichern"
 
-#: ctk/ctkcolorsel.c:1664
+#: ctk/ctkcolorsel.c:1660
 msgid ""
 "Click this palette entry to make it the current color. To change this entry, "
 "drag a color swatch here or right-click it and select “Save color here.”"
@@ -1261,11 +1261,11 @@ msgstr ""
 "der rechten Maustaste darauf und wählen Sie »Farbe hier speichern«, um ihn "
 "zu ändern."
 
-#: ctk/ctkcolorseldialog.c:191 ctk/deprecated/ctkfontsel.c:1689
+#: ctk/ctkcolorseldialog.c:189 ctk/deprecated/ctkfontsel.c:1689
 #: ctk/ctkfilechoosernative.c:545 ctk/ctkfilechoosernative.c:637
 #: ctk/ctkfilechooserwidget.c:1498 ctk/ctkfilechooserwidget.c:6572
-#: ctk/ctkmessagedialog.c:952 ctk/ctkmessagedialog.c:965
-#: ctk/ctkmountoperation.c:594 ctk/ctkpagesetupunixdialog.c:197
+#: ctk/ctkmessagedialog.c:946 ctk/ctkmessagedialog.c:959
+#: ctk/ctkmountoperation.c:593 ctk/ctkpagesetupunixdialog.c:197
 #: ctk/ctkprintbackend.c:781 ctk/ctkprinteroptionwidget.c:545
 #: ctk/ctkprintunixdialog.c:674 ctk/ctkprintunixdialog.c:747
 #: ctk/ctkwindow.c:12789 ctk/inspector/css-editor.c:201
@@ -1274,17 +1274,17 @@ msgstr ""
 msgid "_Cancel"
 msgstr "_Abbrechen"
 
-#: ctk/ctkcolorseldialog.c:195 ctk/ctkprinteroptionwidget.c:546
+#: ctk/ctkcolorseldialog.c:193 ctk/ctkprinteroptionwidget.c:546
 #: ctk/ui/ctkappchooserdialog.ui:67 ctk/ui/ctkcolorchooserdialog.ui:40
 #: ctk/ui/ctkfontchooserdialog.ui:37
 msgid "_Select"
 msgstr "Aus_wählen"
 
-#: ctk/ctkcolorseldialog.c:201
+#: ctk/ctkcolorseldialog.c:199
 msgid "_Help"
 msgstr "_Hilfe"
 
-#: ctk/ctkcolorseldialog.c:213
+#: ctk/ctkcolorseldialog.c:211
 msgid "Color Selection"
 msgstr "Farbwahl"
 
@@ -1316,8 +1316,8 @@ msgstr "_Vorschau:"
 msgid "_Apply"
 msgstr "An_wenden"
 
-#: ctk/deprecated/ctkfontsel.c:1698 ctk/ctkmessagedialog.c:944
-#: ctk/ctkmessagedialog.c:966 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12790
+#: ctk/deprecated/ctkfontsel.c:1698 ctk/ctkmessagedialog.c:938
+#: ctk/ctkmessagedialog.c:960 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12790
 msgid "_OK"
 msgstr "_OK"
 
@@ -1430,53 +1430,53 @@ msgstr "Apache Lizenz, Version 2.0"
 msgid "Mozilla Public License 2.0"
 msgstr "Mozilla Public Lizenz 2.0"
 
-#: ctk/ctkaboutdialog.c:703
+#: ctk/ctkaboutdialog.c:701
 msgid "C_redits"
 msgstr "_Mitwirkende"
 
-#: ctk/ctkaboutdialog.c:711
+#: ctk/ctkaboutdialog.c:709
 msgid "_License"
 msgstr "_Lizenz"
 
-#: ctk/ctkaboutdialog.c:720 ctk/ctkcustompaperunixdialog.c:329
-#: ctk/ctkmessagedialog.c:948 ctk/ui/ctkassistant.ui:144
+#: ctk/ctkaboutdialog.c:718 ctk/ctkcustompaperunixdialog.c:329
+#: ctk/ctkmessagedialog.c:942 ctk/ui/ctkassistant.ui:144
 msgid "_Close"
 msgstr "_Schließen"
 
-#: ctk/ctkaboutdialog.c:1004
+#: ctk/ctkaboutdialog.c:1002
 msgid "Could not show link"
 msgstr "Link konnte nicht angezeigt werden"
 
-#: ctk/ctkaboutdialog.c:1043
+#: ctk/ctkaboutdialog.c:1039
 msgid "Website"
 msgstr "Webseite"
 
 #. used for the application menu on MacOS.  %s is replaced with the application name.
-#: ctk/ctkaboutdialog.c:1093 ctk/ui/ctkapplication-quartz.ui:7
+#: ctk/ctkaboutdialog.c:1089 ctk/ui/ctkapplication-quartz.ui:7
 #, c-format
 msgid "About %s"
 msgstr "Info zu %s"
 
-#: ctk/ctkaboutdialog.c:2320
+#: ctk/ctkaboutdialog.c:2316
 msgid "Created by"
 msgstr "Erstellt von"
 
-#: ctk/ctkaboutdialog.c:2323
+#: ctk/ctkaboutdialog.c:2319
 msgid "Documented by"
 msgstr "Dokumentation von"
 
-#: ctk/ctkaboutdialog.c:2333
+#: ctk/ctkaboutdialog.c:2329
 msgid "Translated by"
 msgstr "Übersetzung von"
 
-#: ctk/ctkaboutdialog.c:2338
+#: ctk/ctkaboutdialog.c:2334
 msgid "Artwork by"
 msgstr "Künstlerische Darstellung von"
 
 #. Translators: this is the license preamble; the string at the end
 #. * contains the name of the license as link text.
 #.
-#: ctk/ctkaboutdialog.c:2500
+#: ctk/ctkaboutdialog.c:2494
 #, c-format
 msgid ""
 "This program comes with absolutely no warranty.\n"
@@ -1622,7 +1622,7 @@ msgid "Other Applications"
 msgstr "Weitere Anwendungen"
 
 #: ctk/ctkapplicationwindow.c:345 ctk/ctkprintoperation-unix.c:485
-#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1690
+#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1688
 msgid "Application"
 msgstr "Anwendung"
 
@@ -1676,7 +1676,7 @@ msgstr "Wert für %s::%s konnte nicht verarbeitet werden: %s\n"
 msgid "Can't parse file: %s\n"
 msgstr "Datei kann nicht verarbeitet werden: %s\n"
 
-#: ctk/ctk-builder-tool.c:1062
+#: ctk/ctk-builder-tool.c:1060
 #, c-format
 msgid ""
 "Usage:\n"
@@ -1824,7 +1824,7 @@ msgctxt "progress bar label"
 msgid "%d %%"
 msgstr "%d %%"
 
-#: ctk/ctkcolorbutton.c:185 ctk/ctkcolorbutton.c:398
+#: ctk/ctkcolorbutton.c:185 ctk/ctkcolorbutton.c:394
 msgid "Pick a Color"
 msgstr "Wählen Sie eine Farbe"
 
@@ -2121,11 +2121,11 @@ msgstr "default:mm"
 msgid "Manage Custom Sizes"
 msgstr "Benutzerdefinierte Größen verwalten"
 
-#: ctk/ctkcustompaperunixdialog.c:567 ctk/ctkpagesetupunixdialog.c:814
+#: ctk/ctkcustompaperunixdialog.c:567 ctk/ctkpagesetupunixdialog.c:812
 msgid "inch"
 msgstr "Zoll"
 
-#: ctk/ctkcustompaperunixdialog.c:569 ctk/ctkpagesetupunixdialog.c:812
+#: ctk/ctkcustompaperunixdialog.c:569 ctk/ctkpagesetupunixdialog.c:810
 msgid "mm"
 msgstr "mm"
 
@@ -2139,84 +2139,84 @@ msgstr "Ränder des Druckers …"
 msgid "Custom Size %d"
 msgstr "Benutzerdefinierte Größe %d"
 
-#: ctk/ctkcustompaperunixdialog.c:1120
+#: ctk/ctkcustompaperunixdialog.c:1119
 msgid "_Width:"
 msgstr "_Breite:"
 
-#: ctk/ctkcustompaperunixdialog.c:1131
+#: ctk/ctkcustompaperunixdialog.c:1130
 msgid "_Height:"
 msgstr "_Höhe:"
 
-#: ctk/ctkcustompaperunixdialog.c:1142
+#: ctk/ctkcustompaperunixdialog.c:1141
 msgid "Paper Size"
 msgstr "Papiergröße"
 
-#: ctk/ctkcustompaperunixdialog.c:1151
+#: ctk/ctkcustompaperunixdialog.c:1150
 msgid "_Top:"
 msgstr "_Oben:"
 
-#: ctk/ctkcustompaperunixdialog.c:1162
+#: ctk/ctkcustompaperunixdialog.c:1161
 msgid "_Bottom:"
 msgstr "_Unten:"
 
-#: ctk/ctkcustompaperunixdialog.c:1173
+#: ctk/ctkcustompaperunixdialog.c:1172
 msgid "_Left:"
 msgstr "_Links:"
 
-#: ctk/ctkcustompaperunixdialog.c:1184
+#: ctk/ctkcustompaperunixdialog.c:1183
 msgid "_Right:"
 msgstr "_Rechts:"
 
-#: ctk/ctkcustompaperunixdialog.c:1223
+#: ctk/ctkcustompaperunixdialog.c:1222
 msgid "Paper Margins"
 msgstr "Papierränder"
 
-#: ctk/ctkentry.c:9591 ctk/ctklabel.c:6680 ctk/ctktextview.c:9520
+#: ctk/ctkentry.c:9589 ctk/ctklabel.c:6676 ctk/ctktextview.c:9516
 msgid "Cu_t"
 msgstr "_Ausschneiden"
 
-#: ctk/ctkentry.c:9595 ctk/ctklabel.c:6681 ctk/ctktextview.c:9524
+#: ctk/ctkentry.c:9593 ctk/ctklabel.c:6677 ctk/ctktextview.c:9520
 msgid "_Copy"
 msgstr "_Kopieren"
 
-#: ctk/ctkentry.c:9599 ctk/ctklabel.c:6682 ctk/ctktextview.c:9526
+#: ctk/ctkentry.c:9597 ctk/ctklabel.c:6678 ctk/ctktextview.c:9522
 msgid "_Paste"
 msgstr "E_infügen"
 
-#: ctk/ctkentry.c:9602 ctk/ctkfilechooserwidget.c:1499
-#: ctk/ctkfilechooserwidget.c:2334 ctk/ctklabel.c:6684 ctk/ctktextview.c:9529
+#: ctk/ctkentry.c:9600 ctk/ctkfilechooserwidget.c:1499
+#: ctk/ctkfilechooserwidget.c:2334 ctk/ctklabel.c:6680 ctk/ctktextview.c:9525
 msgid "_Delete"
 msgstr "_Löschen"
 
-#: ctk/ctkentry.c:9613 ctk/ctklabel.c:6693 ctk/ctktextview.c:9543
+#: ctk/ctkentry.c:9611 ctk/ctklabel.c:6689 ctk/ctktextview.c:9539
 msgid "Select _All"
 msgstr "_Alles auswählen"
 
-#: ctk/ctkentry.c:9623 ctk/ctktextview.c:9553
+#: ctk/ctkentry.c:9621 ctk/ctktextview.c:9549
 msgid "Insert _Emoji"
 msgstr "_Emoji einfügen"
 
-#: ctk/ctkentry.c:9799 ctk/ctktextview.c:9777
+#: ctk/ctkentry.c:9797 ctk/ctktextview.c:9773
 msgid "Select all"
 msgstr "Alle auswählen"
 
-#: ctk/ctkentry.c:9802 ctk/ctktextview.c:9780
+#: ctk/ctkentry.c:9800 ctk/ctktextview.c:9776
 msgid "Cut"
 msgstr "Ausschneiden"
 
-#: ctk/ctkentry.c:9805 ctk/ctktextview.c:9783
+#: ctk/ctkentry.c:9803 ctk/ctktextview.c:9779
 msgid "Copy"
 msgstr "Kopieren"
 
-#: ctk/ctkentry.c:9808 ctk/ctktextview.c:9786
+#: ctk/ctkentry.c:9806 ctk/ctktextview.c:9782
 msgid "Paste"
 msgstr "Einfügen"
 
-#: ctk/ctkentry.c:10880
+#: ctk/ctkentry.c:10878
 msgid "Caps Lock is on"
 msgstr "Feststelltaste ist aktiviert"
 
-#: ctk/ctkentry.c:11158
+#: ctk/ctkentry.c:11156
 msgid "Insert Emoji"
 msgstr "Emoji einfügen"
 
@@ -2567,8 +2567,8 @@ msgstr "Tabellenkalkulation"
 #. Translators: We don't know whether this printer is
 #. * available to print to.
 #: ctk/ctkfilechooserwidget.c:5054 ctk/ctkfilechooserwidget.c:5243
-#: ctk/inspector/prop-editor.c:1693
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:748
+#: ctk/inspector/prop-editor.c:1691
+#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:744
 msgid "Unknown"
 msgstr "Unbekannt"
 
@@ -2632,7 +2632,7 @@ msgstr "Sans 12"
 msgid "Pick a Font"
 msgstr "Wählen Sie eine Schrift"
 
-#: ctk/ctkfontbutton.c:1395
+#: ctk/ctkfontbutton.c:1393
 msgctxt "font"
 msgid "None"
 msgstr "Keine"
@@ -2657,7 +2657,7 @@ msgstr "Schräg"
 msgid "Optical Size"
 msgstr "Optische Größe"
 
-#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1680
+#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1678
 msgid "Default"
 msgstr "Standard"
 
@@ -2728,29 +2728,29 @@ msgctxt "input method menu"
 msgid "System (%s)"
 msgstr "System (%s)"
 
-#: ctk/ctkinfobar.c:1307 ctk/ctkmessagedialog.c:385
+#: ctk/ctkinfobar.c:1303 ctk/ctkmessagedialog.c:384
 msgid "Information"
 msgstr "Information"
 
-#: ctk/ctkinfobar.c:1311 ctk/ctkmessagedialog.c:389
+#: ctk/ctkinfobar.c:1307 ctk/ctkmessagedialog.c:388
 msgid "Question"
 msgstr "Frage"
 
-#: ctk/ctkinfobar.c:1315 ctk/ctkmessagedialog.c:393
+#: ctk/ctkinfobar.c:1311 ctk/ctkmessagedialog.c:392
 msgid "Warning"
 msgstr "Warnung"
 
-#: ctk/ctkinfobar.c:1319 ctk/ctkmessagedialog.c:397
+#: ctk/ctkinfobar.c:1315 ctk/ctkmessagedialog.c:396
 msgid "Error"
 msgstr "Fehler"
 
 #. Open Link
-#: ctk/ctklabel.c:6661
+#: ctk/ctklabel.c:6657
 msgid "_Open Link"
 msgstr "Link ö_ffnen"
 
 #. Copy Link Address
-#: ctk/ctklabel.c:6670
+#: ctk/ctklabel.c:6666
 msgid "Copy _Link Address"
 msgstr "Link-Adresse _kopieren"
 
@@ -2877,16 +2877,16 @@ msgstr "Zu übergebende CTK+-Fehlerdiagnoseoptionen"
 msgid "CTK+ debugging flags to unset"
 msgstr "Nicht zu übergebende CTK+-Fehlerdiagnoseoptionen"
 
-#: ctk/ctkmain.c:810 ctk/ctkmain.c:1004
+#: ctk/ctkmain.c:808 ctk/ctkmain.c:1002
 #, c-format
 msgid "Cannot open display: %s"
 msgstr "Anzeige kann nicht geöffnet werden: %s"
 
-#: ctk/ctkmain.c:922
+#: ctk/ctkmain.c:920
 msgid "CTK+ Options"
 msgstr "CTK+-Optionen"
 
-#: ctk/ctkmain.c:922
+#: ctk/ctkmain.c:920
 msgid "Show CTK+ Options"
 msgstr "CTK+-Optionen anzeigen"
 
@@ -2895,85 +2895,85 @@ msgstr "CTK+-Optionen anzeigen"
 #. * Do *not* translate it to "predefinito:LTR", if it
 #. * it isn't default:LTR or default:RTL it will not work
 #.
-#: ctk/ctkmain.c:1275
+#: ctk/ctkmain.c:1273
 msgid "default:LTR"
 msgstr "default:LTR"
 
-#: ctk/ctkmessagedialog.c:956
+#: ctk/ctkmessagedialog.c:950
 msgid "_No"
 msgstr "_Nein"
 
-#: ctk/ctkmessagedialog.c:957
+#: ctk/ctkmessagedialog.c:951
 msgid "_Yes"
 msgstr "_Ja"
 
-#: ctk/ctkmountoperation.c:595
+#: ctk/ctkmountoperation.c:594
 msgid "Co_nnect"
 msgstr "_Verbinden"
 
-#: ctk/ctkmountoperation.c:668
+#: ctk/ctkmountoperation.c:667
 msgid "Connect As"
 msgstr "Verbinden als"
 
-#: ctk/ctkmountoperation.c:677
+#: ctk/ctkmountoperation.c:676
 msgid "_Anonymous"
 msgstr "_Anonym verbinden"
 
-#: ctk/ctkmountoperation.c:686
+#: ctk/ctkmountoperation.c:685
 msgid "Registered U_ser"
 msgstr "Regi_strierter Benutzer"
 
-#: ctk/ctkmountoperation.c:697
+#: ctk/ctkmountoperation.c:696
 msgid "_Username"
 msgstr "_Benutzername"
 
-#: ctk/ctkmountoperation.c:702
+#: ctk/ctkmountoperation.c:701
 msgid "_Domain"
 msgstr "_Domäne"
 
-#: ctk/ctkmountoperation.c:711
+#: ctk/ctkmountoperation.c:710
 msgid "Volume type"
 msgstr "Typ des Datenträgers"
 
-#: ctk/ctkmountoperation.c:721
+#: ctk/ctkmountoperation.c:720
 msgid "_Hidden"
 msgstr "_Versteckt"
 
-#: ctk/ctkmountoperation.c:724
+#: ctk/ctkmountoperation.c:723
 msgid "_Windows system"
 msgstr "_Windows-System"
 
-#: ctk/ctkmountoperation.c:727
+#: ctk/ctkmountoperation.c:726
 msgid "_PIM"
 msgstr "_PIM"
 
-#: ctk/ctkmountoperation.c:733
+#: ctk/ctkmountoperation.c:732
 msgid "_Password"
 msgstr "_Passwort"
 
-#: ctk/ctkmountoperation.c:755
+#: ctk/ctkmountoperation.c:754
 msgid "Forget password _immediately"
 msgstr "Passwort sofort _vergessen"
 
-#: ctk/ctkmountoperation.c:765
+#: ctk/ctkmountoperation.c:764
 msgid "Remember password until you _logout"
 msgstr "Passwort erst beim Ab_melden vergessen"
 
-#: ctk/ctkmountoperation.c:775
+#: ctk/ctkmountoperation.c:774
 msgid "Remember _forever"
 msgstr "_Nie vergessen"
 
-#: ctk/ctkmountoperation.c:1170
+#: ctk/ctkmountoperation.c:1169
 #, c-format
 msgid "Unknown Application (PID %d)"
 msgstr "Unbekannte Anwendung (Kennung %d)"
 
-#: ctk/ctkmountoperation.c:1355
+#: ctk/ctkmountoperation.c:1354
 #, c-format
 msgid "Unable to end process"
 msgstr "Prozess kann nicht beendet werden"
 
-#: ctk/ctkmountoperation.c:1389
+#: ctk/ctkmountoperation.c:1388
 msgid "_End Process"
 msgstr "Prozess b_eenden"
 
@@ -3028,7 +3028,7 @@ msgstr "Beliebiger Drucker"
 msgid "For portable documents"
 msgstr "Für portable Dokumente"
 
-#: ctk/ctkpagesetupunixdialog.c:832
+#: ctk/ctkpagesetupunixdialog.c:830
 #, c-format
 msgid ""
 "Margins:\n"
@@ -3043,11 +3043,11 @@ msgstr ""
 " Oben: %s %s\n"
 " Unten: %s %s"
 
-#: ctk/ctkpagesetupunixdialog.c:881 ctk/ctkprintunixdialog.c:3393
+#: ctk/ctkpagesetupunixdialog.c:879 ctk/ctkprintunixdialog.c:3391
 msgid "Manage Custom Sizes…"
 msgstr "Benutzerdefinierte Größen verwalten …"
 
-#: ctk/ctkpagesetupunixdialog.c:903 ctk/ui/ctkpagesetupunixdialog.ui:31
+#: ctk/ctkpagesetupunixdialog.c:901 ctk/ui/ctkpagesetupunixdialog.ui:31
 #: ctk/ui/ctkprintunixdialog.ui:854
 msgid "Page Setup"
 msgstr "Seite einrichten"
@@ -3391,7 +3391,7 @@ msgstr "Passwort _behalten"
 msgid "Select a filename"
 msgstr "Dateiname auswählen"
 
-#: ctk/ctkprinteroptionwidget.c:769
+#: ctk/ctkprinteroptionwidget.c:767
 msgid "Not available"
 msgstr "Nicht verfügbar"
 
@@ -3454,7 +3454,7 @@ msgstr "Abgeschlossen mit Fehler"
 msgid "Preparing %d"
 msgstr "%d wird vorbereitet"
 
-#: ctk/ctkprintoperation.c:2376 ctk/ctkprintoperation.c:3007
+#: ctk/ctkprintoperation.c:2376 ctk/ctkprintoperation.c:3005
 #, c-format
 msgid "Preparing"
 msgstr "Vorbereitung"
@@ -3464,12 +3464,12 @@ msgstr "Vorbereitung"
 msgid "Printing %d"
 msgstr "%d wird gedruckt"
 
-#: ctk/ctkprintoperation.c:3038
+#: ctk/ctkprintoperation.c:3036
 #, c-format
 msgid "Error creating print preview"
 msgstr "Fehler beim Erzeugen der Druckvorschau"
 
-#: ctk/ctkprintoperation.c:3041
+#: ctk/ctkprintoperation.c:3039
 #, c-format
 msgid "The most probable reason is that a temporary file could not be created."
 msgstr ""
@@ -3478,7 +3478,7 @@ msgstr ""
 
 #. window
 #: ctk/ctkprintoperation-portal.c:231 ctk/ctkprintoperation-portal.c:549
-#: ctk/ctkprintoperation-portal.c:618 ctk/ctkprintunixdialog.c:3415
+#: ctk/ctkprintoperation-portal.c:618 ctk/ctkprintunixdialog.c:3413
 msgid "Print"
 msgstr "Drucken"
 
@@ -3492,7 +3492,7 @@ msgstr "Kein Papier mehr"
 
 #. Translators: this is a printer status.
 #: ctk/ctkprintoperation-win32.c:635
-#: modules/printbackends/cups/ctkprintbackendcups.c:2628
+#: modules/printbackends/cups/ctkprintbackendcups.c:2681
 msgid "Paused"
 msgstr "Pausiert"
 
@@ -3560,42 +3560,42 @@ msgstr "Informationen über Drucker werden geholt …"
 #. * multiple pages on a sheet when printing
 #.
 #: ctk/ctkprintunixdialog.c:3120
-#: modules/printbackends/cups/ctkprintbackendcups.c:5508
+#: modules/printbackends/cups/ctkprintbackendcups.c:5731
 msgid "Left to right, top to bottom"
 msgstr "Links nach rechts, oben nach unten"
 
 #: ctk/ctkprintunixdialog.c:3120
-#: modules/printbackends/cups/ctkprintbackendcups.c:5508
+#: modules/printbackends/cups/ctkprintbackendcups.c:5731
 msgid "Left to right, bottom to top"
 msgstr "Links nach rechts, unten nach oben"
 
 #: ctk/ctkprintunixdialog.c:3121
-#: modules/printbackends/cups/ctkprintbackendcups.c:5509
+#: modules/printbackends/cups/ctkprintbackendcups.c:5732
 msgid "Right to left, top to bottom"
 msgstr "Rechts nach links, oben nach unten"
 
 #: ctk/ctkprintunixdialog.c:3121
-#: modules/printbackends/cups/ctkprintbackendcups.c:5509
+#: modules/printbackends/cups/ctkprintbackendcups.c:5732
 msgid "Right to left, bottom to top"
 msgstr "Rechts nach links, unten nach oben"
 
 #: ctk/ctkprintunixdialog.c:3122
-#: modules/printbackends/cups/ctkprintbackendcups.c:5510
+#: modules/printbackends/cups/ctkprintbackendcups.c:5733
 msgid "Top to bottom, left to right"
 msgstr "Oben nach unten, links nach rechts"
 
 #: ctk/ctkprintunixdialog.c:3122
-#: modules/printbackends/cups/ctkprintbackendcups.c:5510
+#: modules/printbackends/cups/ctkprintbackendcups.c:5733
 msgid "Top to bottom, right to left"
 msgstr "Oben nach unten, rechts nach links"
 
 #: ctk/ctkprintunixdialog.c:3123
-#: modules/printbackends/cups/ctkprintbackendcups.c:5511
+#: modules/printbackends/cups/ctkprintbackendcups.c:5734
 msgid "Bottom to top, left to right"
 msgstr "Unten nach oben, links nach rechts"
 
 #: ctk/ctkprintunixdialog.c:3123
-#: modules/printbackends/cups/ctkprintbackendcups.c:5511
+#: modules/printbackends/cups/ctkprintbackendcups.c:5734
 msgid "Bottom to top, right to left"
 msgstr "Unten nach oben, rechts nach links"
 
@@ -3625,37 +3625,37 @@ msgctxt "progress bar label"
 msgid "%.0f %%"
 msgstr "%.0f %%"
 
-#: ctk/ctkrecentchooserdefault.c:1075 ctk/ctkrecentchooserdefault.c:1112
+#: ctk/ctkrecentchooserdefault.c:1072 ctk/ctkrecentchooserdefault.c:1109
 #, c-format
 msgid "No item for URI '%s' found"
 msgstr "Es konnte kein Eintrag für die Adresse »%s« gefunden werden"
 
-#: ctk/ctkrecentchooserdefault.c:1239
+#: ctk/ctkrecentchooserdefault.c:1236
 msgid "Untitled filter"
 msgstr "Namenloser Filter"
 
-#: ctk/ctkrecentchooserdefault.c:1561
+#: ctk/ctkrecentchooserdefault.c:1558
 msgid "Could not remove item"
 msgstr "Eintrag konnte nicht entfernt werden"
 
-#: ctk/ctkrecentchooserdefault.c:1605
+#: ctk/ctkrecentchooserdefault.c:1602
 msgid "Could not clear list"
 msgstr "Liste konnte nicht geleert werden"
 
-#: ctk/ctkrecentchooserdefault.c:1689
+#: ctk/ctkrecentchooserdefault.c:1686
 msgid "Copy _Location"
 msgstr "O_rt kopieren"
 
-#: ctk/ctkrecentchooserdefault.c:1700
+#: ctk/ctkrecentchooserdefault.c:1697
 msgid "_Remove From List"
 msgstr "Von Liste _entfernen"
 
-#: ctk/ctkrecentchooserdefault.c:1707
+#: ctk/ctkrecentchooserdefault.c:1704
 msgid "_Clear List"
 msgstr "_Liste leeren"
 
 # CHECK
-#: ctk/ctkrecentchooserdefault.c:1719
+#: ctk/ctkrecentchooserdefault.c:1716
 msgid "Show _Private Resources"
 msgstr "_Private Ressourcen anzeigen"
 
@@ -4280,7 +4280,7 @@ msgstr "Unbenannter Abschnitt"
 msgid "Label"
 msgstr "Bezeichnung"
 
-#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1389
+#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1387
 msgid "Action"
 msgstr "Aktion"
 
@@ -4311,9 +4311,9 @@ msgstr "Vorgegebenes Widget"
 # Auch wenn im Original die Tastenkürzel kollidieren (_Preferences),
 # wir verwenden Ei_genschaften.
 #: ctk/inspector/misc-info.ui:192 ctk/inspector/misc-info.ui:237
-#: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1071
-#: ctk/inspector/prop-editor.c:1270 ctk/inspector/prop-editor.c:1397
-#: ctk/inspector/prop-editor.c:1508 ctk/inspector/window.ui:382
+#: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1069
+#: ctk/inspector/prop-editor.c:1268 ctk/inspector/prop-editor.c:1395
+#: ctk/inspector/prop-editor.c:1506 ctk/inspector/window.ui:382
 msgid "Properties"
 msgstr "Eigenschaften"
 
@@ -4405,71 +4405,71 @@ msgstr "Unbekannt"
 msgid "Object: %p (%s)"
 msgstr "Objekt: %p (%s)"
 
-#: ctk/inspector/prop-editor.c:1141
+#: ctk/inspector/prop-editor.c:1139
 #, c-format
 msgid "Uneditable property type: %s"
 msgstr "Nicht bearbeitbarer Eigenschaftentyp: %s"
 
-#: ctk/inspector/prop-editor.c:1261
+#: ctk/inspector/prop-editor.c:1259
 msgid "Attribute mapping"
 msgstr "Abbildung der Attribute"
 
-#: ctk/inspector/prop-editor.c:1266
+#: ctk/inspector/prop-editor.c:1264
 msgid "Model:"
 msgstr "Modell:"
 
-#: ctk/inspector/prop-editor.c:1267
+#: ctk/inspector/prop-editor.c:1265
 #, c-format
 msgid "%p (%s)"
 msgstr "%p (%s)"
 
-#: ctk/inspector/prop-editor.c:1277
+#: ctk/inspector/prop-editor.c:1275
 msgid "Column:"
 msgstr "Spalte:"
 
-#: ctk/inspector/prop-editor.c:1287
+#: ctk/inspector/prop-editor.c:1285
 msgctxt "property name"
 msgid "None"
 msgstr "Kein"
 
-#: ctk/inspector/prop-editor.c:1393
+#: ctk/inspector/prop-editor.c:1391
 #, c-format
 msgid "Defined at: %p (%s)"
 msgstr "Definiert bei: %p (%s)"
 
-#: ctk/inspector/prop-editor.c:1457 ctk/inspector/prop-editor.c:1473
+#: ctk/inspector/prop-editor.c:1455 ctk/inspector/prop-editor.c:1471
 msgid "inverted"
 msgstr "umgekehrt"
 
-#: ctk/inspector/prop-editor.c:1489
+#: ctk/inspector/prop-editor.c:1487
 msgid "bidirectional, inverted"
 msgstr "bidirektional, umgekehrt"
 
-#: ctk/inspector/prop-editor.c:1494 ctk/inspector/prop-editor.c:1608
+#: ctk/inspector/prop-editor.c:1492 ctk/inspector/prop-editor.c:1606
 msgid "bidirectional"
 msgstr "bidirektional"
 
-#: ctk/inspector/prop-editor.c:1499
+#: ctk/inspector/prop-editor.c:1497
 msgid "Binding:"
 msgstr "Kürzel:"
 
-#: ctk/inspector/prop-editor.c:1627
+#: ctk/inspector/prop-editor.c:1625
 msgid "Setting:"
 msgstr "Einstellung:"
 
-#: ctk/inspector/prop-editor.c:1667
+#: ctk/inspector/prop-editor.c:1665
 msgid "Source:"
 msgstr "Quelle:"
 
-#: ctk/inspector/prop-editor.c:1669
+#: ctk/inspector/prop-editor.c:1667
 msgid "Reset"
 msgstr "Zurücksetzen"
 
-#: ctk/inspector/prop-editor.c:1683
+#: ctk/inspector/prop-editor.c:1681
 msgid "Theme"
 msgstr "Thema"
 
-#: ctk/inspector/prop-editor.c:1686
+#: ctk/inspector/prop-editor.c:1684
 msgid "XSettings"
 msgstr "XSettings"
 
@@ -7750,7 +7750,7 @@ msgstr ""
 "bitte --ignore-theme-index.\n"
 
 #. ID
-#: modules/input/imam-et.c:452
+#: modules/input/imam-et.c:450
 msgctxt "input method menu"
 msgid "Amharic (EZ+)"
 msgstr "Amharisch (EZ+)"
@@ -7762,13 +7762,13 @@ msgid "Broadway"
 msgstr "Broadway"
 
 #. ID
-#: modules/input/imcedilla.c:90
+#: modules/input/imcedilla.c:88
 msgctxt "input method menu"
 msgid "Cedilla"
 msgstr "Cédille"
 
 #. ID
-#: modules/input/imcyrillic-translit.c:215
+#: modules/input/imcyrillic-translit.c:213
 msgctxt "input menthod menu"
 msgid "Cyrillic (Transliterated)"
 msgstr "Kyrillisch (transliteriert)"
@@ -7780,13 +7780,13 @@ msgstr "Windows IME"
 
 # CHECK
 #. ID
-#: modules/input/iminuktitut.c:125
+#: modules/input/iminuktitut.c:123
 msgctxt "input method menu"
 msgid "Inuktitut (Transliterated)"
 msgstr "Inukitut (transliteriert)"
 
 #. ID
-#: modules/input/imipa.c:143
+#: modules/input/imipa.c:141
 msgctxt "input method menu"
 msgid "IPA"
 msgstr "IPA"
@@ -7809,19 +7809,19 @@ msgid "Thai-Lao"
 msgstr "Thai-Lao"
 
 #. ID
-#: modules/input/imti-er.c:451
+#: modules/input/imti-er.c:449
 msgctxt "input method menu"
 msgid "Tigrigna-Eritrean (EZ+)"
 msgstr "Tigrigna-Eritreisch (EZ+)"
 
 #. ID
-#: modules/input/imti-et.c:451
+#: modules/input/imti-et.c:449
 msgctxt "input method menu"
 msgid "Tigrigna-Ethiopian (EZ+)"
 msgstr "Tigrigna-Äthiopisch (EZ+)"
 
 #. ID
-#: modules/input/imviqr.c:242
+#: modules/input/imviqr.c:240
 msgctxt "input method menu"
 msgid "Vietnamese (VIQR)"
 msgstr "Vietnamesisch (VIQR)"
@@ -7846,12 +7846,12 @@ msgstr "X-Eingabemethode"
 
 #. Translators: The printer status is online, i.e. it is
 #. * ready to print.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:744
+#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:740
 msgid "Online"
 msgstr "In Betrieb"
 
 #. Translators: The printer is offline.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:751
+#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:747
 msgid "Offline"
 msgstr "Außer Betrieb"
 
@@ -7859,410 +7859,410 @@ msgstr "Außer Betrieb"
 #. We shouldn't get here because the query omits dormant
 #. * printers by default.
 #. Translators: Printer has been offline for a long time.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:757
+#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:753
 msgid "Dormant"
 msgstr "Verschollen"
 
 #. How many document pages to go onto one side of paper.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:941
-#: modules/printbackends/file/ctkprintbackendfile.c:679
+#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:937
+#: modules/printbackends/file/ctkprintbackendfile.c:675
 #: modules/printbackends/test/ctkprintbackendtest.c:503
 msgid "Pages per _sheet:"
 msgstr "Seiten pro _Blatt:"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1129
-#: modules/printbackends/cups/ctkprintbackendcups.c:1439
+#: modules/printbackends/cups/ctkprintbackendcups.c:1155
+#: modules/printbackends/cups/ctkprintbackendcups.c:1465
 msgid "Username:"
 msgstr "Benutzername:"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1130
-#: modules/printbackends/cups/ctkprintbackendcups.c:1448
+#: modules/printbackends/cups/ctkprintbackendcups.c:1156
+#: modules/printbackends/cups/ctkprintbackendcups.c:1474
 msgid "Password:"
 msgstr "Passwort:"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1169
-#: modules/printbackends/cups/ctkprintbackendcups.c:1461
+#: modules/printbackends/cups/ctkprintbackendcups.c:1195
+#: modules/printbackends/cups/ctkprintbackendcups.c:1487
 #, c-format
 msgid "Authentication is required to print document “%s” on printer %s"
 msgstr "Das Drucken des Dokuments »%s« auf Drucker %s erfordert Legitimation"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1171
+#: modules/printbackends/cups/ctkprintbackendcups.c:1197
 #, c-format
 msgid "Authentication is required to print a document on %s"
 msgstr "Das Drucken eines Dokuments auf %s erfordert Legitimation"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1175
+#: modules/printbackends/cups/ctkprintbackendcups.c:1201
 #, c-format
 msgid "Authentication is required to get attributes of job “%s”"
 msgstr ""
 "Das Auslesen von Attributen des Druckauftrags »%s« erfordert Legitimation"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1177
+#: modules/printbackends/cups/ctkprintbackendcups.c:1203
 msgid "Authentication is required to get attributes of a job"
 msgstr "Das Auslesen von Attributen eines Druckauftrags erfordert Legitimation"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1181
+#: modules/printbackends/cups/ctkprintbackendcups.c:1207
 #, c-format
 msgid "Authentication is required to get attributes of printer %s"
 msgstr "Das Auslesen von Attributen des Druckers %s erfordert Legitimation"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1183
+#: modules/printbackends/cups/ctkprintbackendcups.c:1209
 msgid "Authentication is required to get attributes of a printer"
 msgstr "Das Auslesen von Attributen eines Druckers erfordert Legitimation"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1186
+#: modules/printbackends/cups/ctkprintbackendcups.c:1212
 #, c-format
 msgid "Authentication is required to get default printer of %s"
 msgstr "Das Feststellen des Vorgabedruckers auf %s erfordert Legitimation"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1189
+#: modules/printbackends/cups/ctkprintbackendcups.c:1215
 #, c-format
 msgid "Authentication is required to get printers from %s"
 msgstr "Das Auslesen von Druckern auf %s erfordert Legitimation"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1194
+#: modules/printbackends/cups/ctkprintbackendcups.c:1220
 #, c-format
 msgid "Authentication is required to get a file from %s"
 msgstr "Der Zugriff auf eine Datei von %s erfordert Legitimation"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1196
+#: modules/printbackends/cups/ctkprintbackendcups.c:1222
 #, c-format
 msgid "Authentication is required on %s"
 msgstr "Der Zugriff auf %s erfordert Legitimation"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1433
+#: modules/printbackends/cups/ctkprintbackendcups.c:1459
 msgid "Domain:"
 msgstr "Domäne:"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1463
+#: modules/printbackends/cups/ctkprintbackendcups.c:1489
 #, c-format
 msgid "Authentication is required to print document “%s”"
 msgstr "Das Drucken des Dokuments »%s« erfordert Legitimation"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1468
+#: modules/printbackends/cups/ctkprintbackendcups.c:1494
 #, c-format
 msgid "Authentication is required to print this document on printer %s"
 msgstr "Das Drucken dieses Dokuments auf Drucker %s erfordert Legitimation"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1470
+#: modules/printbackends/cups/ctkprintbackendcups.c:1496
 msgid "Authentication is required to print this document"
 msgstr "Das Drucken dieses Dokuments erfordert Legitimation"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2557
+#: modules/printbackends/cups/ctkprintbackendcups.c:2610
 #, c-format
 msgid "Printer “%s” is low on toner."
 msgstr "Drucker »%s« hat nur noch wenig Toner."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2561
+#: modules/printbackends/cups/ctkprintbackendcups.c:2614
 #, c-format
 msgid "Printer “%s” has no toner left."
 msgstr "Drucker »%s« hat keinen Toner mehr."
 
 #. Translators: "Developer" like on photo development context
-#: modules/printbackends/cups/ctkprintbackendcups.c:2566
+#: modules/printbackends/cups/ctkprintbackendcups.c:2619
 #, c-format
 msgid "Printer “%s” is low on developer."
 msgstr "Drucker »%s« hat nur noch wenig Entwickler."
 
 #. Translators: "Developer" like on photo development context
-#: modules/printbackends/cups/ctkprintbackendcups.c:2571
+#: modules/printbackends/cups/ctkprintbackendcups.c:2624
 #, c-format
 msgid "Printer “%s” is out of developer."
 msgstr "Drucker »%s« hat keinen Entwickler mehr."
 
 #. Translators: "marker" is one color bin of the printer
-#: modules/printbackends/cups/ctkprintbackendcups.c:2576
+#: modules/printbackends/cups/ctkprintbackendcups.c:2629
 #, c-format
 msgid "Printer “%s” is low on at least one marker supply."
 msgstr ""
 "Drucker »%s« hat nur noch wenig Farbe in mindestens einem Farbbehälter."
 
 #. Translators: "marker" is one color bin of the printer
-#: modules/printbackends/cups/ctkprintbackendcups.c:2581
+#: modules/printbackends/cups/ctkprintbackendcups.c:2634
 #, c-format
 msgid "Printer “%s” is out of at least one marker supply."
 msgstr "Drucker »%s« hat keine Farbe mehr in mindestens einem Farbbehälter."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2585
+#: modules/printbackends/cups/ctkprintbackendcups.c:2638
 #, c-format
 msgid "The cover is open on printer “%s”."
 msgstr "Die Abdeckung des Druckers »%s« ist offen."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2589
+#: modules/printbackends/cups/ctkprintbackendcups.c:2642
 #, c-format
 msgid "The door is open on printer “%s”."
 msgstr "Die Klappe des Druckers »%s« ist offen."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2593
+#: modules/printbackends/cups/ctkprintbackendcups.c:2646
 #, c-format
 msgid "Printer “%s” is low on paper."
 msgstr "Der Drucker »%s« hat nur noch wenig Papier."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2597
+#: modules/printbackends/cups/ctkprintbackendcups.c:2650
 #, c-format
 msgid "Printer “%s” is out of paper."
 msgstr "Der Drucker »%s« hat kein Papier mehr."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2601
+#: modules/printbackends/cups/ctkprintbackendcups.c:2654
 #, c-format
 msgid "Printer “%s” is currently offline."
 msgstr "Der Drucker »%s« ist momentan nicht betriebsbereit."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2605
+#: modules/printbackends/cups/ctkprintbackendcups.c:2658
 #, c-format
 msgid "There is a problem on printer “%s”."
 msgstr "Es besteht ein Problem mit dem Drucker »%s«."
 
 #. Translators: this is a printer status.
-#: modules/printbackends/cups/ctkprintbackendcups.c:2625
+#: modules/printbackends/cups/ctkprintbackendcups.c:2678
 msgid "Paused; Rejecting Jobs"
 msgstr "Pausiert; Aufträge werden abgewiesen"
 
 #. Translators: this is a printer status.
-#: modules/printbackends/cups/ctkprintbackendcups.c:2631
+#: modules/printbackends/cups/ctkprintbackendcups.c:2684
 msgid "Rejecting Jobs"
 msgstr "Aufträge werden abgewiesen"
 
 #. Translators: this string connects multiple printer states together.
-#: modules/printbackends/cups/ctkprintbackendcups.c:2672
+#: modules/printbackends/cups/ctkprintbackendcups.c:2725
 msgid "; "
 msgstr "; "
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4453
-#: modules/printbackends/cups/ctkprintbackendcups.c:4520
+#: modules/printbackends/cups/ctkprintbackendcups.c:4676
+#: modules/printbackends/cups/ctkprintbackendcups.c:4743
 msgctxt "printing option"
 msgid "Two Sided"
 msgstr "Beidseitig"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4454
+#: modules/printbackends/cups/ctkprintbackendcups.c:4677
 msgctxt "printing option"
 msgid "Paper Type"
 msgstr "Papierart"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4455
+#: modules/printbackends/cups/ctkprintbackendcups.c:4678
 msgctxt "printing option"
 msgid "Paper Source"
 msgstr "Papiereinzug"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4456
-#: modules/printbackends/cups/ctkprintbackendcups.c:4521
+#: modules/printbackends/cups/ctkprintbackendcups.c:4679
+#: modules/printbackends/cups/ctkprintbackendcups.c:4744
 msgctxt "printing option"
 msgid "Output Tray"
 msgstr "Ausgabeschacht"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4457
+#: modules/printbackends/cups/ctkprintbackendcups.c:4680
 msgctxt "printing option"
 msgid "Resolution"
 msgstr "Auflösung"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4458
+#: modules/printbackends/cups/ctkprintbackendcups.c:4681
 msgctxt "printing option"
 msgid "GhostScript pre-filtering"
 msgstr "GhostScript-Vorfilterung"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4467
+#: modules/printbackends/cups/ctkprintbackendcups.c:4690
 msgctxt "printing option value"
 msgid "One Sided"
 msgstr "Einseitig"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4469
+#: modules/printbackends/cups/ctkprintbackendcups.c:4692
 msgctxt "printing option value"
 msgid "Long Edge (Standard)"
 msgstr "Langer Rand (Vorgabe)"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4471
+#: modules/printbackends/cups/ctkprintbackendcups.c:4694
 msgctxt "printing option value"
 msgid "Short Edge (Flip)"
 msgstr "Kurzer Rand (Umdrehen)"
 
 #. Translators: this is an option of "Paper Source"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4473
-#: modules/printbackends/cups/ctkprintbackendcups.c:4475
-#: modules/printbackends/cups/ctkprintbackendcups.c:4483
+#: modules/printbackends/cups/ctkprintbackendcups.c:4696
+#: modules/printbackends/cups/ctkprintbackendcups.c:4698
+#: modules/printbackends/cups/ctkprintbackendcups.c:4706
 msgctxt "printing option value"
 msgid "Auto Select"
 msgstr "Automatische Auswahl"
 
 #. Translators: this is an option of "Paper Source"
 #. Translators: this is an option of "Resolution"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4477
-#: modules/printbackends/cups/ctkprintbackendcups.c:4479
-#: modules/printbackends/cups/ctkprintbackendcups.c:4481
-#: modules/printbackends/cups/ctkprintbackendcups.c:4485
+#: modules/printbackends/cups/ctkprintbackendcups.c:4700
+#: modules/printbackends/cups/ctkprintbackendcups.c:4702
+#: modules/printbackends/cups/ctkprintbackendcups.c:4704
+#: modules/printbackends/cups/ctkprintbackendcups.c:4708
 msgctxt "printing option value"
 msgid "Printer Default"
 msgstr "Vorgabe-Drucker"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4487
+#: modules/printbackends/cups/ctkprintbackendcups.c:4710
 msgctxt "printing option value"
 msgid "Embed GhostScript fonts only"
 msgstr "Nur GhostScript-Schriften einbinden"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4489
+#: modules/printbackends/cups/ctkprintbackendcups.c:4712
 msgctxt "printing option value"
 msgid "Convert to PS level 1"
 msgstr "Zu PS Level 1 konvertieren"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4491
+#: modules/printbackends/cups/ctkprintbackendcups.c:4714
 msgctxt "printing option value"
 msgid "Convert to PS level 2"
 msgstr "Zu PS Level 2 konvertieren"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4493
+#: modules/printbackends/cups/ctkprintbackendcups.c:4716
 msgctxt "printing option value"
 msgid "No pre-filtering"
 msgstr "Keine Vorfilterung"
 
 #. Translators: "Miscellaneous" is the label for a button, that opens
 #. up an extra panel of settings in a print dialog.
-#: modules/printbackends/cups/ctkprintbackendcups.c:4502
+#: modules/printbackends/cups/ctkprintbackendcups.c:4725
 msgctxt "printing option group"
 msgid "Miscellaneous"
 msgstr "Erweitert"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4529
+#: modules/printbackends/cups/ctkprintbackendcups.c:4752
 msgctxt "sides"
 msgid "One Sided"
 msgstr "Einseitig"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4531
+#: modules/printbackends/cups/ctkprintbackendcups.c:4754
 msgctxt "sides"
 msgid "Long Edge (Standard)"
 msgstr "Langer Rand (Vorgabe)"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4533
+#: modules/printbackends/cups/ctkprintbackendcups.c:4756
 msgctxt "sides"
 msgid "Short Edge (Flip)"
 msgstr "Kurzer Rand (Umdrehen)"
 
 #. Translators: Top output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4536
+#: modules/printbackends/cups/ctkprintbackendcups.c:4759
 msgctxt "output-bin"
 msgid "Top Bin"
 msgstr "Oberer Bin"
 
 #. Translators: Middle output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4538
+#: modules/printbackends/cups/ctkprintbackendcups.c:4761
 msgctxt "output-bin"
 msgid "Middle Bin"
 msgstr "Mittlerer Bin"
 
 #. Translators: Bottom output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4540
+#: modules/printbackends/cups/ctkprintbackendcups.c:4763
 msgctxt "output-bin"
 msgid "Bottom Bin"
 msgstr "Unterer Bin"
 
 #. Translators: Side output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4542
+#: modules/printbackends/cups/ctkprintbackendcups.c:4765
 msgctxt "output-bin"
 msgid "Side Bin"
 msgstr "Seiten-Bin"
 
 #. Translators: Left output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4544
+#: modules/printbackends/cups/ctkprintbackendcups.c:4767
 msgctxt "output-bin"
 msgid "Left Bin"
 msgstr "Linker Bin"
 
 #. Translators: Right output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4546
+#: modules/printbackends/cups/ctkprintbackendcups.c:4769
 msgctxt "output-bin"
 msgid "Right Bin"
 msgstr "Rechter Bin"
 
 #. Translators: Center output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4548
+#: modules/printbackends/cups/ctkprintbackendcups.c:4771
 msgctxt "output-bin"
 msgid "Center Bin"
 msgstr "Mittlerer Bin"
 
 #. Translators: Rear output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4550
+#: modules/printbackends/cups/ctkprintbackendcups.c:4773
 msgctxt "output-bin"
 msgid "Rear Bin"
 msgstr "Hinterer Bin"
 
 #. Translators: Output bin where one sided output is oriented in the face-up position
-#: modules/printbackends/cups/ctkprintbackendcups.c:4552
+#: modules/printbackends/cups/ctkprintbackendcups.c:4775
 msgctxt "output-bin"
 msgid "Face Up Bin"
 msgstr "Bin nach oben"
 
 #. Translators: Output bin where one sided output is oriented in the face-down position
-#: modules/printbackends/cups/ctkprintbackendcups.c:4554
+#: modules/printbackends/cups/ctkprintbackendcups.c:4777
 msgctxt "output-bin"
 msgid "Face Down Bin"
 msgstr "Bin nach unten"
 
 #. Translators: Large capacity output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4556
+#: modules/printbackends/cups/ctkprintbackendcups.c:4779
 msgctxt "output-bin"
 msgid "Large Capacity Bin"
 msgstr "Großer Bin"
 
 #. Translators: Output stacker number %d
-#: modules/printbackends/cups/ctkprintbackendcups.c:4578
+#: modules/printbackends/cups/ctkprintbackendcups.c:4801
 #, c-format
 msgctxt "output-bin"
 msgid "Stacker %d"
 msgstr "Stacker %d"
 
 #. Translators: Output mailbox number %d
-#: modules/printbackends/cups/ctkprintbackendcups.c:4582
+#: modules/printbackends/cups/ctkprintbackendcups.c:4805
 #, c-format
 msgctxt "output-bin"
 msgid "Mailbox %d"
 msgstr "Postfach %d"
 
 #. Translators: Private mailbox
-#: modules/printbackends/cups/ctkprintbackendcups.c:4586
+#: modules/printbackends/cups/ctkprintbackendcups.c:4809
 msgctxt "output-bin"
 msgid "My Mailbox"
 msgstr "Eigenes Postfach"
 
 #. Translators: Output tray number %d
-#: modules/printbackends/cups/ctkprintbackendcups.c:4590
+#: modules/printbackends/cups/ctkprintbackendcups.c:4813
 #, c-format
 msgctxt "output-bin"
 msgid "Tray %d"
 msgstr "Ablage %d"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5061
+#: modules/printbackends/cups/ctkprintbackendcups.c:5284
 msgid "Printer Default"
 msgstr "Vorgabe-Drucker"
 
 #. Translators: These strings name the possible values of the
 #. * job priority option in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5503
+#: modules/printbackends/cups/ctkprintbackendcups.c:5726
 msgid "Urgent"
 msgstr "Dringend"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5503
+#: modules/printbackends/cups/ctkprintbackendcups.c:5726
 msgid "High"
 msgstr "Hoch"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5503
+#: modules/printbackends/cups/ctkprintbackendcups.c:5726
 msgid "Medium"
 msgstr "Mittel"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5503
+#: modules/printbackends/cups/ctkprintbackendcups.c:5726
 msgid "Low"
 msgstr "Niedrig"
 
 #. Translators, this string is used to label the job priority option
 #. * in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5533
+#: modules/printbackends/cups/ctkprintbackendcups.c:5756
 msgid "Job Priority"
 msgstr "Priorität"
 
@@ -8270,41 +8270,41 @@ msgstr "Priorität"
 #. Translators, this string is used to label the billing info entry
 #. * in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5544
+#: modules/printbackends/cups/ctkprintbackendcups.c:5767
 msgid "Billing Info"
 msgstr "Abrechnungsinfo"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5568
+#: modules/printbackends/cups/ctkprintbackendcups.c:5791
 msgctxt "cover page"
 msgid "None"
 msgstr "Keine"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5569
+#: modules/printbackends/cups/ctkprintbackendcups.c:5792
 msgctxt "cover page"
 msgid "Classified"
 msgstr "Klassifiziert"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5570
+#: modules/printbackends/cups/ctkprintbackendcups.c:5793
 msgctxt "cover page"
 msgid "Confidential"
 msgstr "Vertraulich"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5571
+#: modules/printbackends/cups/ctkprintbackendcups.c:5794
 msgctxt "cover page"
 msgid "Secret"
 msgstr "Geheim"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5572
+#: modules/printbackends/cups/ctkprintbackendcups.c:5795
 msgctxt "cover page"
 msgid "Standard"
 msgstr "Standard"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5573
+#: modules/printbackends/cups/ctkprintbackendcups.c:5796
 msgctxt "cover page"
 msgid "Top Secret"
 msgstr "Streng geheim"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5574
+#: modules/printbackends/cups/ctkprintbackendcups.c:5797
 msgctxt "cover page"
 msgid "Unclassified"
 msgstr "Unklassifiziert"
@@ -8312,7 +8312,7 @@ msgstr "Unklassifiziert"
 #. Translators, this string is used to label the pages-per-sheet option
 #. * in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5586
+#: modules/printbackends/cups/ctkprintbackendcups.c:5809
 msgctxt "printer option"
 msgid "Pages per Sheet"
 msgstr "Seiten pro Blatt"
@@ -8320,7 +8320,7 @@ msgstr "Seiten pro Blatt"
 #. Translators, this string is used to label the option in the print
 #. * dialog that controls in what order multiple pages are arranged
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5603
+#: modules/printbackends/cups/ctkprintbackendcups.c:5826
 msgctxt "printer option"
 msgid "Page Ordering"
 msgstr "Reihenfolge"
@@ -8328,7 +8328,7 @@ msgstr "Reihenfolge"
 #. Translators, this is the label used for the option in the print
 #. * dialog that controls the front cover page.
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5645
+#: modules/printbackends/cups/ctkprintbackendcups.c:5868
 msgctxt "printer option"
 msgid "Before"
 msgstr "Vorne"
@@ -8336,7 +8336,7 @@ msgstr "Vorne"
 #. Translators, this is the label used for the option in the print
 #. * dialog that controls the back cover page.
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5660
+#: modules/printbackends/cups/ctkprintbackendcups.c:5883
 msgctxt "printer option"
 msgid "After"
 msgstr "Hinten"
@@ -8345,7 +8345,7 @@ msgstr "Hinten"
 #. * a print job is printed. Possible values are 'now', a specified time,
 #. * or 'on hold'
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5680
+#: modules/printbackends/cups/ctkprintbackendcups.c:5903
 msgctxt "printer option"
 msgid "Print at"
 msgstr "Drucken um"
@@ -8353,7 +8353,7 @@ msgstr "Drucken um"
 #. Translators: this is the name of the option that allows the user
 #. * to specify a time when a print job will be printed.
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5691
+#: modules/printbackends/cups/ctkprintbackendcups.c:5914
 msgctxt "printer option"
 msgid "Print at time"
 msgstr "Drucken zu Uhrzeit"
@@ -8363,75 +8363,75 @@ msgstr "Drucken zu Uhrzeit"
 #. * the width and height in points. E.g: "Custom
 #. * 230.4x142.9"
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5737
+#: modules/printbackends/cups/ctkprintbackendcups.c:5960
 #, c-format
 msgid "Custom %s×%s"
 msgstr "Benutzerdefiniert %s×%s"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5847
+#: modules/printbackends/cups/ctkprintbackendcups.c:6070
 msgctxt "printer option"
 msgid "Printer Profile"
 msgstr "Druckerfarbprofil"
 
 #. TRANSLATORS: this is when color profile information is unavailable
-#: modules/printbackends/cups/ctkprintbackendcups.c:5854
+#: modules/printbackends/cups/ctkprintbackendcups.c:6077
 msgctxt "printer option value"
 msgid "Unavailable"
 msgstr "Nicht verfügbar"
 
 #. TRANSLATORS: when we're running an old CUPS, and
 #. * it hasn't registered the device with colord
-#: modules/printbackends/cups/ctkprintercups.c:275
+#: modules/printbackends/cups/ctkprintercups.c:273
 msgid "Color management unavailable"
 msgstr "Farbverwaltung ist nicht verfügbar"
 
 #. TRANSLATORS: when there is no color profile available
-#: modules/printbackends/cups/ctkprintercups.c:287
+#: modules/printbackends/cups/ctkprintercups.c:285
 msgid "No profile available"
 msgstr "Kein Profil verfügbar"
 
 #. TRANSLATORS: when the color profile has no title
-#: modules/printbackends/cups/ctkprintercups.c:298
+#: modules/printbackends/cups/ctkprintercups.c:296
 msgid "Unspecified profile"
 msgstr "Nicht angegebenes Profil"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:250
+#: modules/printbackends/file/ctkprintbackendfile.c:246
 msgid "output"
 msgstr "Ausgabe"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:539
+#: modules/printbackends/file/ctkprintbackendfile.c:535
 msgid "Print to File"
 msgstr "In Datei drucken"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:667
+#: modules/printbackends/file/ctkprintbackendfile.c:663
 msgid "PDF"
 msgstr "PDF"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:667
+#: modules/printbackends/file/ctkprintbackendfile.c:663
 msgid "Postscript"
 msgstr "Postscript"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:667
+#: modules/printbackends/file/ctkprintbackendfile.c:663
 msgid "SVG"
 msgstr "SVG"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:738
+#: modules/printbackends/file/ctkprintbackendfile.c:734
 msgid "File"
 msgstr "Datei"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:750
+#: modules/printbackends/file/ctkprintbackendfile.c:746
 msgid "_Output format"
 msgstr "_Ausgabeformat"
 
-#: modules/printbackends/lpr/ctkprintbackendlpr.c:394
+#: modules/printbackends/lpr/ctkprintbackendlpr.c:390
 msgid "Print to LPR"
 msgstr "Drucken mit LPR"
 
-#: modules/printbackends/lpr/ctkprintbackendlpr.c:423
+#: modules/printbackends/lpr/ctkprintbackendlpr.c:419
 msgid "Pages Per Sheet"
 msgstr "Seiten pro Blatt"
 
-#: modules/printbackends/lpr/ctkprintbackendlpr.c:430
+#: modules/printbackends/lpr/ctkprintbackendlpr.c:426
 msgid "Command Line"
 msgstr "Befehlszeile"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-23 17:45+0100\n"
+"POT-Creation-Date: 2022-08-11 17:18+0200\n"
 "PO-Revision-Date: 2013-02-02 11:55+0900\n"
 "Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -560,12 +560,12 @@ msgctxt "Action name"
 msgid "Toggle"
 msgstr ""
 
-#: ctk/a11y/ctkbuttonaccessible.c:323 ctk/a11y/ctkmenuitemaccessible.c:439
+#: ctk/a11y/ctkbuttonaccessible.c:322 ctk/a11y/ctkmenuitemaccessible.c:439
 msgctxt "Action name"
 msgid "Click"
 msgstr ""
 
-#: ctk/a11y/ctkbuttonaccessible.c:332
+#: ctk/a11y/ctkbuttonaccessible.c:331
 msgctxt "Action description"
 msgid "Clicks the button"
 msgstr ""
@@ -1103,7 +1103,7 @@ msgctxt "Action description"
 msgid "Toggles the switch"
 msgstr ""
 
-#: ctk/ctkcolorsel.c:425
+#: ctk/ctkcolorsel.c:421
 msgid ""
 "Select the color you want from the outer ring. Select the darkness or "
 "lightness of that color using the inner triangle."
@@ -1111,73 +1111,73 @@ msgstr ""
 "سىرتقى ئايلانمىدىن سىزگە لازىملىق رەڭنى تاللاڭ .ئىچكى ئۈچ بۇلۇڭدىن رەڭنىڭ "
 "كۈچلۈكلۈكىنى تاللاڭ."
 
-#: ctk/ctkcolorsel.c:451
+#: ctk/ctkcolorsel.c:447
 msgid ""
 "Click the eyedropper, then click a color anywhere on your screen to select "
 "that color."
 msgstr "تېمىتقۇچنى تاق چېكىپ ئاندىن ئېكراننىڭ خالىغان يېرىدىن رەڭ تۇتۇڭ."
 
-#: ctk/ctkcolorsel.c:461
+#: ctk/ctkcolorsel.c:457
 msgid "_Hue:"
 msgstr "رەڭ تەڭشەش(_H):"
 
-#: ctk/ctkcolorsel.c:462
+#: ctk/ctkcolorsel.c:458
 msgid "Position on the color wheel."
 msgstr "رەڭ ھالقىسىدىكى ئورنى"
 
-#: ctk/ctkcolorsel.c:464
+#: ctk/ctkcolorsel.c:460
 msgid "S_aturation:"
 msgstr "تويۇنۇشچانلىقى(_A):"
 
-#: ctk/ctkcolorsel.c:465
+#: ctk/ctkcolorsel.c:461
 msgid "Intensity of the color."
 msgstr "رەڭ يورۇقلۇق دەرىجىسى."
 
-#: ctk/ctkcolorsel.c:466
+#: ctk/ctkcolorsel.c:462
 msgid "_Value:"
 msgstr "قىممىتى(_V):"
 
-#: ctk/ctkcolorsel.c:467
+#: ctk/ctkcolorsel.c:463
 msgid "Brightness of the color."
 msgstr "رەڭ يورۇقلۇقى."
 
-#: ctk/ctkcolorsel.c:468
+#: ctk/ctkcolorsel.c:464
 msgid "_Red:"
 msgstr "قىزىل(_R):"
 
-#: ctk/ctkcolorsel.c:469
+#: ctk/ctkcolorsel.c:465
 msgid "Amount of red light in the color."
 msgstr "رەڭ تەركىبىدىكى قىزىل رەڭ مىقدارى."
 
-#: ctk/ctkcolorsel.c:470
+#: ctk/ctkcolorsel.c:466
 msgid "_Green:"
 msgstr "يېشىل(_G):"
 
-#: ctk/ctkcolorsel.c:471
+#: ctk/ctkcolorsel.c:467
 msgid "Amount of green light in the color."
 msgstr "رەڭ تەركىبىدىكى يېشىل رەڭ مىقدارى."
 
-#: ctk/ctkcolorsel.c:472
+#: ctk/ctkcolorsel.c:468
 msgid "_Blue:"
 msgstr "كۆك(_B):"
 
-#: ctk/ctkcolorsel.c:473
+#: ctk/ctkcolorsel.c:469
 msgid "Amount of blue light in the color."
 msgstr "رەڭ تەركىبىدىكى كۆك رەڭ مىقدارى."
 
-#: ctk/ctkcolorsel.c:476
+#: ctk/ctkcolorsel.c:472
 msgid "Op_acity:"
 msgstr "سۈزۈكلۈك(_A):"
 
-#: ctk/ctkcolorsel.c:484 ctk/ctkcolorsel.c:494
+#: ctk/ctkcolorsel.c:480 ctk/ctkcolorsel.c:490
 msgid "Transparency of the color."
 msgstr "رەڭ سۈزۈكلۈكى."
 
-#: ctk/ctkcolorsel.c:501
+#: ctk/ctkcolorsel.c:497
 msgid "Color _name:"
 msgstr "رەڭ ئاتى(_N):"
 
-#: ctk/ctkcolorsel.c:516
+#: ctk/ctkcolorsel.c:512
 #, fuzzy
 msgid ""
 "You can enter an HTML-style hexadecimal color value, or simply a color name "
@@ -1186,15 +1186,15 @@ msgstr ""
 "سىز بۇ جايغا HTML ئۇسلۇبىدىكى 16 لىك سىستېما رەت نومۇرى ياكى “orange” گە "
 "ئوخشاش رەڭ ئاتلىرىنى كىرگۈزسىڭىز بولىدۇ."
 
-#: ctk/ctkcolorsel.c:548
+#: ctk/ctkcolorsel.c:544
 msgid "_Palette:"
 msgstr "رەڭ تاختىسى(_P):"
 
-#: ctk/ctkcolorsel.c:578
+#: ctk/ctkcolorsel.c:574
 msgid "Color Wheel"
 msgstr "رەڭ ھالقىسى"
 
-#: ctk/ctkcolorsel.c:1072
+#: ctk/ctkcolorsel.c:1068
 #, fuzzy
 msgid ""
 "The previously-selected color, for comparison to the color you’re selecting "
@@ -1205,7 +1205,7 @@ msgstr ""
 "رەڭ تاللاش تاختىسىغا سۆرەپ ياكى بۇ رەڭنى كېيىنكى رەڭ كاتەكچىسىگە سۆرەپ "
 "نۆۋەتتىكى رەڭ قىلىپ بەلگىلىسىڭىز بولىدۇ."
 
-#: ctk/ctkcolorsel.c:1078
+#: ctk/ctkcolorsel.c:1074
 #, fuzzy
 msgid ""
 "The color you’ve chosen. You can drag this color to a palette entry to save "
@@ -1213,23 +1213,23 @@ msgid ""
 msgstr ""
 "سىز تاللىغان رەڭ .سىز بۇ رەڭنى تاللاپ ساقلاپ قويۇپ كىيىن ئىشلەتسىڭىز بولىدۇ."
 
-#: ctk/ctkcolorsel.c:1084
+#: ctk/ctkcolorsel.c:1080
 #, fuzzy
 msgid ""
 "The previously-selected color, for comparison to the color you’re selecting "
 "now."
 msgstr "ئىلگىرى تاللانغان رەڭ، سىزنىڭ ھازىر تاللىغىنىڭىزغا قارىتىلغان."
 
-#: ctk/ctkcolorsel.c:1088
+#: ctk/ctkcolorsel.c:1084
 #, fuzzy
 msgid "The color you’ve chosen."
 msgstr "سىز تاللىغان رەڭ."
 
-#: ctk/ctkcolorsel.c:1458
+#: ctk/ctkcolorsel.c:1454
 msgid "_Save color here"
 msgstr "رەڭنى بۇ جايغا ساقلا(_S)"
 
-#: ctk/ctkcolorsel.c:1664
+#: ctk/ctkcolorsel.c:1660
 #, fuzzy
 msgid ""
 "Click this palette entry to make it the current color. To change this entry, "
@@ -1239,11 +1239,11 @@ msgstr ""
 "ئۆزگەرتىشتە، رەڭنى بۇ جايغا سۆرەڭ ياكى چاشقىنەك ئوڭ توپچىسىنى چەككەندىن "
 "كېيىن بۇ جايدا «رەڭنى بۇ جايغا ساقلا»نى تاللاڭ."
 
-#: ctk/ctkcolorseldialog.c:191 ctk/deprecated/ctkfontsel.c:1689
+#: ctk/ctkcolorseldialog.c:189 ctk/deprecated/ctkfontsel.c:1689
 #: ctk/ctkfilechoosernative.c:545 ctk/ctkfilechoosernative.c:637
 #: ctk/ctkfilechooserwidget.c:1498 ctk/ctkfilechooserwidget.c:6572
-#: ctk/ctkmessagedialog.c:952 ctk/ctkmessagedialog.c:965
-#: ctk/ctkmountoperation.c:594 ctk/ctkpagesetupunixdialog.c:197
+#: ctk/ctkmessagedialog.c:946 ctk/ctkmessagedialog.c:959
+#: ctk/ctkmountoperation.c:593 ctk/ctkpagesetupunixdialog.c:197
 #: ctk/ctkprintbackend.c:781 ctk/ctkprinteroptionwidget.c:545
 #: ctk/ctkprintunixdialog.c:674 ctk/ctkprintunixdialog.c:747
 #: ctk/ctkwindow.c:12789 ctk/inspector/css-editor.c:201
@@ -1253,18 +1253,18 @@ msgstr ""
 msgid "_Cancel"
 msgstr "ئەمەلدىن قالدۇر(_C)"
 
-#: ctk/ctkcolorseldialog.c:195 ctk/ctkprinteroptionwidget.c:546
+#: ctk/ctkcolorseldialog.c:193 ctk/ctkprinteroptionwidget.c:546
 #: ctk/ui/ctkappchooserdialog.ui:67 ctk/ui/ctkcolorchooserdialog.ui:40
 #: ctk/ui/ctkfontchooserdialog.ui:37
 msgid "_Select"
 msgstr "تاللا(_S)"
 
-#: ctk/ctkcolorseldialog.c:201
+#: ctk/ctkcolorseldialog.c:199
 #, fuzzy
 msgid "_Help"
 msgstr "ياردەم(_H)"
 
-#: ctk/ctkcolorseldialog.c:213
+#: ctk/ctkcolorseldialog.c:211
 msgid "Color Selection"
 msgstr "رەڭ تاللاش"
 
@@ -1297,8 +1297,8 @@ msgstr "ئالدىن كۆزەت(_P):"
 msgid "_Apply"
 msgstr "قوللان(_A)"
 
-#: ctk/deprecated/ctkfontsel.c:1698 ctk/ctkmessagedialog.c:944
-#: ctk/ctkmessagedialog.c:966 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12790
+#: ctk/deprecated/ctkfontsel.c:1698 ctk/ctkmessagedialog.c:938
+#: ctk/ctkmessagedialog.c:960 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12790
 #, fuzzy
 msgid "_OK"
 msgstr "جەزملە(_O)"
@@ -1413,54 +1413,54 @@ msgstr ""
 msgid "Mozilla Public License 2.0"
 msgstr ""
 
-#: ctk/ctkaboutdialog.c:703
+#: ctk/ctkaboutdialog.c:701
 msgid "C_redits"
 msgstr "تەشەككۈر(_R)"
 
-#: ctk/ctkaboutdialog.c:711
+#: ctk/ctkaboutdialog.c:709
 msgid "_License"
 msgstr "ئىجازەت(_L)"
 
-#: ctk/ctkaboutdialog.c:720 ctk/ctkcustompaperunixdialog.c:329
-#: ctk/ctkmessagedialog.c:948 ctk/ui/ctkassistant.ui:144
+#: ctk/ctkaboutdialog.c:718 ctk/ctkcustompaperunixdialog.c:329
+#: ctk/ctkmessagedialog.c:942 ctk/ui/ctkassistant.ui:144
 #, fuzzy
 msgid "_Close"
 msgstr "ياپ(_C)"
 
-#: ctk/ctkaboutdialog.c:1004
+#: ctk/ctkaboutdialog.c:1002
 msgid "Could not show link"
 msgstr "ئۇلانمىنى كۆرسىتەلمىدى"
 
-#: ctk/ctkaboutdialog.c:1043
+#: ctk/ctkaboutdialog.c:1039
 msgid "Website"
 msgstr "تورتۇرا"
 
 #. used for the application menu on MacOS.  %s is replaced with the application name.
-#: ctk/ctkaboutdialog.c:1093 ctk/ui/ctkapplication-quartz.ui:7
+#: ctk/ctkaboutdialog.c:1089 ctk/ui/ctkapplication-quartz.ui:7
 #, c-format
 msgid "About %s"
 msgstr "%s ھەققىدە"
 
-#: ctk/ctkaboutdialog.c:2320
+#: ctk/ctkaboutdialog.c:2316
 msgid "Created by"
 msgstr "قۇرغۇچى"
 
-#: ctk/ctkaboutdialog.c:2323
+#: ctk/ctkaboutdialog.c:2319
 msgid "Documented by"
 msgstr "پۈتۈكچى"
 
-#: ctk/ctkaboutdialog.c:2333
+#: ctk/ctkaboutdialog.c:2329
 msgid "Translated by"
 msgstr "تەرجىمان"
 
-#: ctk/ctkaboutdialog.c:2338
+#: ctk/ctkaboutdialog.c:2334
 msgid "Artwork by"
 msgstr "گۈزەل سەنئەت تەھرىرى"
 
 #. Translators: this is the license preamble; the string at the end
 #. * contains the name of the license as link text.
 #.
-#: ctk/ctkaboutdialog.c:2500
+#: ctk/ctkaboutdialog.c:2494
 #, c-format
 msgid ""
 "This program comes with absolutely no warranty.\n"
@@ -1605,7 +1605,7 @@ msgid "Other Applications"
 msgstr "باشقا پروگراممىلار"
 
 #: ctk/ctkapplicationwindow.c:345 ctk/ctkprintoperation-unix.c:485
-#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1690
+#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1688
 msgid "Application"
 msgstr "پروگرامما"
 
@@ -1659,7 +1659,7 @@ msgstr "%s نى %s غا ئات ئۆزگەرتەلمىدى:%s\n"
 msgid "Can't parse file: %s\n"
 msgstr "ئېكران ئېچىلمىدى: (%s)"
 
-#: ctk/ctk-builder-tool.c:1062
+#: ctk/ctk-builder-tool.c:1060
 #, c-format
 msgid ""
 "Usage:\n"
@@ -1790,7 +1790,7 @@ msgctxt "progress bar label"
 msgid "%d %%"
 msgstr ""
 
-#: ctk/ctkcolorbutton.c:185 ctk/ctkcolorbutton.c:398
+#: ctk/ctkcolorbutton.c:185 ctk/ctkcolorbutton.c:394
 msgid "Pick a Color"
 msgstr "رەڭ ئال"
 
@@ -2125,11 +2125,11 @@ msgstr "default:mm"
 msgid "Manage Custom Sizes"
 msgstr "ئىختىيارى چوڭلۇقنى باشقۇر"
 
-#: ctk/ctkcustompaperunixdialog.c:567 ctk/ctkpagesetupunixdialog.c:814
+#: ctk/ctkcustompaperunixdialog.c:567 ctk/ctkpagesetupunixdialog.c:812
 msgid "inch"
 msgstr "دىيۇيم"
 
-#: ctk/ctkcustompaperunixdialog.c:569 ctk/ctkpagesetupunixdialog.c:812
+#: ctk/ctkcustompaperunixdialog.c:569 ctk/ctkpagesetupunixdialog.c:810
 msgid "mm"
 msgstr "mm"
 
@@ -2142,94 +2142,94 @@ msgstr "پرىنتېر ئارىلىقى…"
 msgid "Custom Size %d"
 msgstr "ئىختىيارى چوڭلۇقى %d"
 
-#: ctk/ctkcustompaperunixdialog.c:1120
+#: ctk/ctkcustompaperunixdialog.c:1119
 msgid "_Width:"
 msgstr "كەڭلىك(_W):"
 
-#: ctk/ctkcustompaperunixdialog.c:1131
+#: ctk/ctkcustompaperunixdialog.c:1130
 msgid "_Height:"
 msgstr "ئېگىزلىك(_H):"
 
-#: ctk/ctkcustompaperunixdialog.c:1142
+#: ctk/ctkcustompaperunixdialog.c:1141
 msgid "Paper Size"
 msgstr "قەغەز چوڭلۇقى"
 
-#: ctk/ctkcustompaperunixdialog.c:1151
+#: ctk/ctkcustompaperunixdialog.c:1150
 msgid "_Top:"
 msgstr "ئۈستى(_T):"
 
-#: ctk/ctkcustompaperunixdialog.c:1162
+#: ctk/ctkcustompaperunixdialog.c:1161
 msgid "_Bottom:"
 msgstr "ئاستى(_B):"
 
-#: ctk/ctkcustompaperunixdialog.c:1173
+#: ctk/ctkcustompaperunixdialog.c:1172
 msgid "_Left:"
 msgstr "سول(_L):"
 
-#: ctk/ctkcustompaperunixdialog.c:1184
+#: ctk/ctkcustompaperunixdialog.c:1183
 msgid "_Right:"
 msgstr "ئوڭ(_R):"
 
-#: ctk/ctkcustompaperunixdialog.c:1223
+#: ctk/ctkcustompaperunixdialog.c:1222
 msgid "Paper Margins"
 msgstr "قەغەز يان ئارىلىقى"
 
-#: ctk/ctkentry.c:9591 ctk/ctklabel.c:6680 ctk/ctktextview.c:9520
+#: ctk/ctkentry.c:9589 ctk/ctklabel.c:6676 ctk/ctktextview.c:9516
 #, fuzzy
 msgid "Cu_t"
 msgstr "كەس(_T)"
 
-#: ctk/ctkentry.c:9595 ctk/ctklabel.c:6681 ctk/ctktextview.c:9524
+#: ctk/ctkentry.c:9593 ctk/ctklabel.c:6677 ctk/ctktextview.c:9520
 #, fuzzy
 msgid "_Copy"
 msgstr "كۆچۈر(_C)"
 
-#: ctk/ctkentry.c:9599 ctk/ctklabel.c:6682 ctk/ctktextview.c:9526
+#: ctk/ctkentry.c:9597 ctk/ctklabel.c:6678 ctk/ctktextview.c:9522
 #, fuzzy
 msgid "_Paste"
 msgstr "چاپلا(_P)"
 
-#: ctk/ctkentry.c:9602 ctk/ctkfilechooserwidget.c:1499
-#: ctk/ctkfilechooserwidget.c:2334 ctk/ctklabel.c:6684 ctk/ctktextview.c:9529
+#: ctk/ctkentry.c:9600 ctk/ctkfilechooserwidget.c:1499
+#: ctk/ctkfilechooserwidget.c:2334 ctk/ctklabel.c:6680 ctk/ctktextview.c:9525
 #, fuzzy
 msgid "_Delete"
 msgstr "ئۆچۈر(_D)"
 
-#: ctk/ctkentry.c:9613 ctk/ctklabel.c:6693 ctk/ctktextview.c:9543
+#: ctk/ctkentry.c:9611 ctk/ctklabel.c:6689 ctk/ctktextview.c:9539
 #, fuzzy
 msgid "Select _All"
 msgstr "ھەممىنى تاللا(_A)"
 
-#: ctk/ctkentry.c:9623 ctk/ctktextview.c:9553
+#: ctk/ctkentry.c:9621 ctk/ctktextview.c:9549
 #, fuzzy
 msgid "Insert _Emoji"
 msgstr "Insert"
 
-#: ctk/ctkentry.c:9799 ctk/ctktextview.c:9777
+#: ctk/ctkentry.c:9797 ctk/ctktextview.c:9773
 #, fuzzy
 msgid "Select all"
 msgstr "ھەممىنى تاللا(_A)"
 
-#: ctk/ctkentry.c:9802 ctk/ctktextview.c:9780
+#: ctk/ctkentry.c:9800 ctk/ctktextview.c:9776
 #, fuzzy
 msgid "Cut"
 msgstr "كەس(_T)"
 
-#: ctk/ctkentry.c:9805 ctk/ctktextview.c:9783
+#: ctk/ctkentry.c:9803 ctk/ctktextview.c:9779
 #, fuzzy
 msgid "Copy"
 msgstr "كۆچۈر(_C)"
 
-#: ctk/ctkentry.c:9808 ctk/ctktextview.c:9786
+#: ctk/ctkentry.c:9806 ctk/ctktextview.c:9782
 #, fuzzy
 msgid "Paste"
 msgstr "چاپلا(_P)"
 
-#: ctk/ctkentry.c:10880
+#: ctk/ctkentry.c:10878
 msgid "Caps Lock is on"
 msgstr "Caps Lock ئوچۇق"
 
-#: ctk/ctkentry.c:11158
+#: ctk/ctkentry.c:11156
 #, fuzzy
 msgid "Insert Emoji"
 msgstr "Insert"
@@ -2607,8 +2607,8 @@ msgstr ""
 #. Translators: We don't know whether this printer is
 #. * available to print to.
 #: ctk/ctkfilechooserwidget.c:5054 ctk/ctkfilechooserwidget.c:5243
-#: ctk/inspector/prop-editor.c:1693
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:748
+#: ctk/inspector/prop-editor.c:1691
+#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:744
 msgid "Unknown"
 msgstr "نامەلۇم"
 
@@ -2673,7 +2673,7 @@ msgstr "UKIJ Tuz Tom 10"
 msgid "Pick a Font"
 msgstr "خەت نۇسخا تاللا"
 
-#: ctk/ctkfontbutton.c:1395
+#: ctk/ctkfontbutton.c:1393
 #, fuzzy
 msgctxt "font"
 msgid "None"
@@ -2702,7 +2702,7 @@ msgstr ""
 msgid "Optical Size"
 msgstr ""
 
-#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1680
+#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1678
 #, fuzzy
 msgid "Default"
 msgstr "default:mm"
@@ -2778,33 +2778,33 @@ msgctxt "input method menu"
 msgid "System (%s)"
 msgstr "سىستېما(%s)"
 
-#: ctk/ctkinfobar.c:1307 ctk/ctkmessagedialog.c:385
+#: ctk/ctkinfobar.c:1303 ctk/ctkmessagedialog.c:384
 #, fuzzy
 msgid "Information"
 msgstr "ئۇچۇر"
 
-#: ctk/ctkinfobar.c:1311 ctk/ctkmessagedialog.c:389
+#: ctk/ctkinfobar.c:1307 ctk/ctkmessagedialog.c:388
 #, fuzzy
 msgid "Question"
 msgstr "سوئال"
 
-#: ctk/ctkinfobar.c:1315 ctk/ctkmessagedialog.c:393
+#: ctk/ctkinfobar.c:1311 ctk/ctkmessagedialog.c:392
 #, fuzzy
 msgid "Warning"
 msgstr "ئاگاھلاندۇرۇش"
 
-#: ctk/ctkinfobar.c:1319 ctk/ctkmessagedialog.c:397
+#: ctk/ctkinfobar.c:1315 ctk/ctkmessagedialog.c:396
 #, fuzzy
 msgid "Error"
 msgstr "خاتالىق"
 
 #. Open Link
-#: ctk/ctklabel.c:6661
+#: ctk/ctklabel.c:6657
 msgid "_Open Link"
 msgstr "ئۇلانما ئاچ(_O)"
 
 #. Copy Link Address
-#: ctk/ctklabel.c:6670
+#: ctk/ctklabel.c:6666
 msgid "Copy _Link Address"
 msgstr "ئۇلانما مەنزىل كۆچۈر(_L)"
 
@@ -2931,16 +2931,16 @@ msgstr "تەڭشەيدىغان CTK+ سازلاش بەلگىسى"
 msgid "CTK+ debugging flags to unset"
 msgstr "قالدۇرماقچى بولغان CTK+ سازلاش بەلگىسى"
 
-#: ctk/ctkmain.c:810 ctk/ctkmain.c:1004
+#: ctk/ctkmain.c:808 ctk/ctkmain.c:1002
 #, c-format
 msgid "Cannot open display: %s"
 msgstr "ئېكران ئېچىلمىدى: (%s)"
 
-#: ctk/ctkmain.c:922
+#: ctk/ctkmain.c:920
 msgid "CTK+ Options"
 msgstr "CTK+ تاللانما"
 
-#: ctk/ctkmain.c:922
+#: ctk/ctkmain.c:920
 msgid "Show CTK+ Options"
 msgstr "CTK+ تاللانما كۆرسەت"
 
@@ -2949,88 +2949,88 @@ msgstr "CTK+ تاللانما كۆرسەت"
 #. * Do *not* translate it to "predefinito:LTR", if it
 #. * it isn't default:LTR or default:RTL it will not work
 #.
-#: ctk/ctkmain.c:1275
+#: ctk/ctkmain.c:1273
 msgid "default:LTR"
 msgstr "default:RTL"
 
-#: ctk/ctkmessagedialog.c:956
+#: ctk/ctkmessagedialog.c:950
 #, fuzzy
 msgid "_No"
 msgstr "ياق(_N)"
 
-#: ctk/ctkmessagedialog.c:957
+#: ctk/ctkmessagedialog.c:951
 #, fuzzy
 msgid "_Yes"
 msgstr "ھەئە(_Y)"
 
-#: ctk/ctkmountoperation.c:595
+#: ctk/ctkmountoperation.c:594
 msgid "Co_nnect"
 msgstr "باغلا(_N)"
 
-#: ctk/ctkmountoperation.c:668
+#: ctk/ctkmountoperation.c:667
 msgid "Connect As"
 msgstr "باغلىنىدىغان ئىشلەتكۈچى تىپى"
 
-#: ctk/ctkmountoperation.c:677
+#: ctk/ctkmountoperation.c:676
 msgid "_Anonymous"
 msgstr "ئاتسىز"
 
-#: ctk/ctkmountoperation.c:686
+#: ctk/ctkmountoperation.c:685
 msgid "Registered U_ser"
 msgstr "خەتلەتكەن ئىشلەتكۈچى(_U)"
 
-#: ctk/ctkmountoperation.c:697
+#: ctk/ctkmountoperation.c:696
 msgid "_Username"
 msgstr "ئىشلەتكۈچى ئاتى(_U)"
 
-#: ctk/ctkmountoperation.c:702
+#: ctk/ctkmountoperation.c:701
 msgid "_Domain"
 msgstr "دائىرە(_D)"
 
-#: ctk/ctkmountoperation.c:711
+#: ctk/ctkmountoperation.c:710
 #, fuzzy
 msgid "Volume type"
 msgstr "ئاۋازنى يۇقىرىلات"
 
-#: ctk/ctkmountoperation.c:721
+#: ctk/ctkmountoperation.c:720
 msgid "_Hidden"
 msgstr ""
 
-#: ctk/ctkmountoperation.c:724
+#: ctk/ctkmountoperation.c:723
 msgid "_Windows system"
 msgstr ""
 
-#: ctk/ctkmountoperation.c:727
+#: ctk/ctkmountoperation.c:726
 msgid "_PIM"
 msgstr ""
 
-#: ctk/ctkmountoperation.c:733
+#: ctk/ctkmountoperation.c:732
 msgid "_Password"
 msgstr "ئىم(_P)"
 
-#: ctk/ctkmountoperation.c:755
+#: ctk/ctkmountoperation.c:754
 msgid "Forget password _immediately"
 msgstr "ئىمنى دەرھال ئۇنتۇ(_I)"
 
-#: ctk/ctkmountoperation.c:765
+#: ctk/ctkmountoperation.c:764
 msgid "Remember password until you _logout"
 msgstr "تىزىمدىن چىقىشتىن ئىلگىرى ئىمنى ئەستە تۇت(_L)"
 
-#: ctk/ctkmountoperation.c:775
+#: ctk/ctkmountoperation.c:774
 msgid "Remember _forever"
 msgstr "مەڭگۈ ئەستە تۇت(_F)"
 
-#: ctk/ctkmountoperation.c:1170
+#: ctk/ctkmountoperation.c:1169
 #, c-format
 msgid "Unknown Application (PID %d)"
 msgstr "نامەلۇم پروگرامما (PID %d)"
 
-#: ctk/ctkmountoperation.c:1355
+#: ctk/ctkmountoperation.c:1354
 #, c-format
 msgid "Unable to end process"
 msgstr "جەرياننى ئاخىرلاشتۇرالمايدۇ"
 
-#: ctk/ctkmountoperation.c:1389
+#: ctk/ctkmountoperation.c:1388
 msgid "_End Process"
 msgstr "ئىجرانى ئاخىرلاشتۇر(_E)"
 
@@ -3082,7 +3082,7 @@ msgstr "خالىغان پرىنتېر"
 msgid "For portable documents"
 msgstr "ئەپچىل پۈتۈك ئۈچۈن"
 
-#: ctk/ctkpagesetupunixdialog.c:832
+#: ctk/ctkpagesetupunixdialog.c:830
 #, c-format
 msgid ""
 "Margins:\n"
@@ -3097,11 +3097,11 @@ msgstr ""
 " ئۈستى: %s %s\n"
 " ئاستى: %s %s"
 
-#: ctk/ctkpagesetupunixdialog.c:881 ctk/ctkprintunixdialog.c:3393
+#: ctk/ctkpagesetupunixdialog.c:879 ctk/ctkprintunixdialog.c:3391
 msgid "Manage Custom Sizes…"
 msgstr "ئىختىيارى چوڭلۇقلارنى باشقۇر"
 
-#: ctk/ctkpagesetupunixdialog.c:903 ctk/ui/ctkpagesetupunixdialog.ui:31
+#: ctk/ctkpagesetupunixdialog.c:901 ctk/ui/ctkpagesetupunixdialog.ui:31
 #: ctk/ui/ctkprintunixdialog.ui:854
 msgid "Page Setup"
 msgstr "بەت تەڭشەك"
@@ -3472,7 +3472,7 @@ msgstr "تىزىمدىن چىقىشتىن ئىلگىرى ئىمنى ئەستە �
 msgid "Select a filename"
 msgstr "ھۆججەت تاللاڭ"
 
-#: ctk/ctkprinteroptionwidget.c:769
+#: ctk/ctkprinteroptionwidget.c:767
 msgid "Not available"
 msgstr "ئىشلەتكىلى بولمايدۇ"
 
@@ -3535,7 +3535,7 @@ msgstr "خاتالىق بىلەن تاماملاندى"
 msgid "Preparing %d"
 msgstr "%d تەييارلاۋاتىدۇ"
 
-#: ctk/ctkprintoperation.c:2376 ctk/ctkprintoperation.c:3007
+#: ctk/ctkprintoperation.c:2376 ctk/ctkprintoperation.c:3005
 #, c-format
 msgid "Preparing"
 msgstr "تەييارلىق ھالەت"
@@ -3545,12 +3545,12 @@ msgstr "تەييارلىق ھالەت"
 msgid "Printing %d"
 msgstr "%d نى بېسىۋاتىدۇ"
 
-#: ctk/ctkprintoperation.c:3038
+#: ctk/ctkprintoperation.c:3036
 #, c-format
 msgid "Error creating print preview"
 msgstr "بېسىشنى ئالدىن كۆزىتىش قۇرۇشتا خاتالىق كۆرۈلدى"
 
-#: ctk/ctkprintoperation.c:3041
+#: ctk/ctkprintoperation.c:3039
 #, c-format
 msgid "The most probable reason is that a temporary file could not be created."
 msgstr ""
@@ -3558,7 +3558,7 @@ msgstr ""
 
 #. window
 #: ctk/ctkprintoperation-portal.c:231 ctk/ctkprintoperation-portal.c:549
-#: ctk/ctkprintoperation-portal.c:618 ctk/ctkprintunixdialog.c:3415
+#: ctk/ctkprintoperation-portal.c:618 ctk/ctkprintunixdialog.c:3413
 msgid "Print"
 msgstr "بېسىپ چىقار"
 
@@ -3572,7 +3572,7 @@ msgstr "قەغەز يېتىشمىدى"
 
 #. Translators: this is a printer status.
 #: ctk/ctkprintoperation-win32.c:635
-#: modules/printbackends/cups/ctkprintbackendcups.c:2628
+#: modules/printbackends/cups/ctkprintbackendcups.c:2681
 msgid "Paused"
 msgstr "ۋاقىتلىق توختىدى"
 
@@ -3642,42 +3642,42 @@ msgstr "پرىنتېر ئۇچۇرىغا ئېرىشىۋاتىدۇ…"
 #. * multiple pages on a sheet when printing
 #.
 #: ctk/ctkprintunixdialog.c:3120
-#: modules/printbackends/cups/ctkprintbackendcups.c:5508
+#: modules/printbackends/cups/ctkprintbackendcups.c:5731
 msgid "Left to right, top to bottom"
 msgstr "سولدىن ئوڭغا، ئۈستىدىن ئاستىغا"
 
 #: ctk/ctkprintunixdialog.c:3120
-#: modules/printbackends/cups/ctkprintbackendcups.c:5508
+#: modules/printbackends/cups/ctkprintbackendcups.c:5731
 msgid "Left to right, bottom to top"
 msgstr "سولدىن ئوڭغا، ئاستىدىن ئۈستىگە"
 
 #: ctk/ctkprintunixdialog.c:3121
-#: modules/printbackends/cups/ctkprintbackendcups.c:5509
+#: modules/printbackends/cups/ctkprintbackendcups.c:5732
 msgid "Right to left, top to bottom"
 msgstr "ئوڭدىن سولغا، ئۈستىدىن ئاستىغا"
 
 #: ctk/ctkprintunixdialog.c:3121
-#: modules/printbackends/cups/ctkprintbackendcups.c:5509
+#: modules/printbackends/cups/ctkprintbackendcups.c:5732
 msgid "Right to left, bottom to top"
 msgstr "ئوڭدىن سولغا، ئاستىدىن ئۈستىگە"
 
 #: ctk/ctkprintunixdialog.c:3122
-#: modules/printbackends/cups/ctkprintbackendcups.c:5510
+#: modules/printbackends/cups/ctkprintbackendcups.c:5733
 msgid "Top to bottom, left to right"
 msgstr "ئۈستىدىن ئاستىغا، سولدىن ئوڭغا"
 
 #: ctk/ctkprintunixdialog.c:3122
-#: modules/printbackends/cups/ctkprintbackendcups.c:5510
+#: modules/printbackends/cups/ctkprintbackendcups.c:5733
 msgid "Top to bottom, right to left"
 msgstr "ئۈستىدىن ئاستىغا، ئوڭدىن سولغا"
 
 #: ctk/ctkprintunixdialog.c:3123
-#: modules/printbackends/cups/ctkprintbackendcups.c:5511
+#: modules/printbackends/cups/ctkprintbackendcups.c:5734
 msgid "Bottom to top, left to right"
 msgstr "ئاستىدىن ئۈستىگە، سولدىن ئوڭغا"
 
 #: ctk/ctkprintunixdialog.c:3123
-#: modules/printbackends/cups/ctkprintbackendcups.c:5511
+#: modules/printbackends/cups/ctkprintbackendcups.c:5734
 msgid "Bottom to top, right to left"
 msgstr "ئاستىدىن ئۈستىگە، ئوڭدىن سولغا"
 
@@ -3707,36 +3707,36 @@ msgctxt "progress bar label"
 msgid "%.0f %%"
 msgstr ""
 
-#: ctk/ctkrecentchooserdefault.c:1075 ctk/ctkrecentchooserdefault.c:1112
+#: ctk/ctkrecentchooserdefault.c:1072 ctk/ctkrecentchooserdefault.c:1109
 #, c-format
 msgid "No item for URI '%s' found"
 msgstr "URI «%s» تۈرنى تاپالمىدى"
 
-#: ctk/ctkrecentchooserdefault.c:1239
+#: ctk/ctkrecentchooserdefault.c:1236
 msgid "Untitled filter"
 msgstr "تېمىسىز سۈزگۈچ"
 
-#: ctk/ctkrecentchooserdefault.c:1561
+#: ctk/ctkrecentchooserdefault.c:1558
 msgid "Could not remove item"
 msgstr "تۈرنى چىقىرىۋېتەلمەيدۇ"
 
-#: ctk/ctkrecentchooserdefault.c:1605
+#: ctk/ctkrecentchooserdefault.c:1602
 msgid "Could not clear list"
 msgstr "تىزىملىكنى تازىلىيالمايدۇ"
 
-#: ctk/ctkrecentchooserdefault.c:1689
+#: ctk/ctkrecentchooserdefault.c:1686
 msgid "Copy _Location"
 msgstr "ئورۇن كۆچۈر(_L)"
 
-#: ctk/ctkrecentchooserdefault.c:1700
+#: ctk/ctkrecentchooserdefault.c:1697
 msgid "_Remove From List"
 msgstr "تىزىملىكتىن چىقىرىۋەت(_R)"
 
-#: ctk/ctkrecentchooserdefault.c:1707
+#: ctk/ctkrecentchooserdefault.c:1704
 msgid "_Clear List"
 msgstr "تىزىملىكنى تازىلا(_C)"
 
-#: ctk/ctkrecentchooserdefault.c:1719
+#: ctk/ctkrecentchooserdefault.c:1716
 msgid "Show _Private Resources"
 msgstr "شەخسى مەنبەنى كۆرسەت(_P)"
 
@@ -4361,7 +4361,7 @@ msgstr ""
 msgid "Label"
 msgstr ""
 
-#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1389
+#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1387
 #, fuzzy
 msgid "Action"
 msgstr "ئورنى"
@@ -4392,9 +4392,9 @@ msgid "Default Widget"
 msgstr "كۆڭۈلدىكى پروگرامما"
 
 #: ctk/inspector/misc-info.ui:192 ctk/inspector/misc-info.ui:237
-#: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1071
-#: ctk/inspector/prop-editor.c:1270 ctk/inspector/prop-editor.c:1397
-#: ctk/inspector/prop-editor.c:1508 ctk/inspector/window.ui:382
+#: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1069
+#: ctk/inspector/prop-editor.c:1268 ctk/inspector/prop-editor.c:1395
+#: ctk/inspector/prop-editor.c:1506 ctk/inspector/window.ui:382
 #, fuzzy
 msgid "Properties"
 msgstr "خاسلىق(_P)"
@@ -4488,76 +4488,76 @@ msgstr "نامەلۇم"
 msgid "Object: %p (%s)"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1141
+#: ctk/inspector/prop-editor.c:1139
 #, c-format
 msgid "Uneditable property type: %s"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1261
+#: ctk/inspector/prop-editor.c:1259
 msgid "Attribute mapping"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1266
+#: ctk/inspector/prop-editor.c:1264
 msgid "Model:"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1267
+#: ctk/inspector/prop-editor.c:1265
 #, c-format
 msgid "%p (%s)"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1277
+#: ctk/inspector/prop-editor.c:1275
 #, fuzzy
 msgid "Column:"
 msgstr "ئاۋاز مىقدارى"
 
-#: ctk/inspector/prop-editor.c:1287
+#: ctk/inspector/prop-editor.c:1285
 #, fuzzy
 msgctxt "property name"
 msgid "None"
 msgstr "يوق"
 
-#: ctk/inspector/prop-editor.c:1393
+#: ctk/inspector/prop-editor.c:1391
 #, c-format
 msgid "Defined at: %p (%s)"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1457 ctk/inspector/prop-editor.c:1473
+#: ctk/inspector/prop-editor.c:1455 ctk/inspector/prop-editor.c:1471
 #, fuzzy
 msgid "inverted"
 msgstr "ئايلاندۇر(_C)"
 
-#: ctk/inspector/prop-editor.c:1489
+#: ctk/inspector/prop-editor.c:1487
 msgid "bidirectional, inverted"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1494 ctk/inspector/prop-editor.c:1608
+#: ctk/inspector/prop-editor.c:1492 ctk/inspector/prop-editor.c:1606
 msgid "bidirectional"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1499
+#: ctk/inspector/prop-editor.c:1497
 msgid "Binding:"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1627
+#: ctk/inspector/prop-editor.c:1625
 #, fuzzy
 msgid "Setting:"
 msgstr "قوزغىلىۋاتقىنى %s"
 
-#: ctk/inspector/prop-editor.c:1667
+#: ctk/inspector/prop-editor.c:1665
 #, fuzzy
 msgid "Source:"
 msgstr "قەغەز مەنبەسى"
 
-#: ctk/inspector/prop-editor.c:1669
+#: ctk/inspector/prop-editor.c:1667
 msgid "Reset"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1683
+#: ctk/inspector/prop-editor.c:1681
 msgid "Theme"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1686
+#: ctk/inspector/prop-editor.c:1684
 #, fuzzy
 msgid "XSettings"
 msgstr "قوزغىلىۋاتقىنى %s"
@@ -7918,7 +7918,7 @@ msgstr ""
 "index ئىشلىتىڭ\n"
 
 #. ID
-#: modules/input/imam-et.c:452
+#: modules/input/imam-et.c:450
 #, fuzzy
 msgctxt "input method menu"
 msgid "Amharic (EZ+)"
@@ -7931,14 +7931,14 @@ msgid "Broadway"
 msgstr ""
 
 #. ID
-#: modules/input/imcedilla.c:90
+#: modules/input/imcedilla.c:88
 #, fuzzy
 msgctxt "input method menu"
 msgid "Cedilla"
 msgstr "ئاۋاز ئۆزگەرتىش بەلگىسى"
 
 #. ID
-#: modules/input/imcyrillic-translit.c:215
+#: modules/input/imcyrillic-translit.c:213
 #, fuzzy
 msgctxt "input menthod menu"
 msgid "Cyrillic (Transliterated)"
@@ -7950,14 +7950,14 @@ msgid "Windows IME"
 msgstr ""
 
 #. ID
-#: modules/input/iminuktitut.c:125
+#: modules/input/iminuktitut.c:123
 #, fuzzy
 msgctxt "input method menu"
 msgid "Inuktitut (Transliterated)"
 msgstr "ئىنۇكتىتۇت (ئاھاڭ تەرجىمىسى)"
 
 #. ID
-#: modules/input/imipa.c:143
+#: modules/input/imipa.c:141
 #, fuzzy
 msgctxt "input method menu"
 msgid "IPA"
@@ -7983,21 +7983,21 @@ msgid "Thai-Lao"
 msgstr "تايلاند-لائۇس"
 
 #. ID
-#: modules/input/imti-er.c:451
+#: modules/input/imti-er.c:449
 #, fuzzy
 msgctxt "input method menu"
 msgid "Tigrigna-Eritrean (EZ+)"
 msgstr "تىگرىگنا-ئېرىترىيە(EZ+)"
 
 #. ID
-#: modules/input/imti-et.c:451
+#: modules/input/imti-et.c:449
 #, fuzzy
 msgctxt "input method menu"
 msgid "Tigrigna-Ethiopian (EZ+)"
 msgstr "تىگرىگنا-ئېفىئوپىيە(EZ+)"
 
 #. ID
-#: modules/input/imviqr.c:242
+#: modules/input/imviqr.c:240
 #, fuzzy
 msgctxt "input method menu"
 msgid "Vietnamese (VIQR)"
@@ -8024,248 +8024,248 @@ msgstr "X كىرگۈزگۈچ"
 
 #. Translators: The printer status is online, i.e. it is
 #. * ready to print.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:744
+#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:740
 #, fuzzy
 msgid "Online"
 msgstr "ئاستى سىزىق(_U)"
 
 #. Translators: The printer is offline.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:751
+#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:747
 msgid "Offline"
 msgstr ""
 
 #. We shouldn't get here because the query omits dormant
 #. * printers by default.
 #. Translators: Printer has been offline for a long time.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:757
+#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:753
 msgid "Dormant"
 msgstr ""
 
 #. How many document pages to go onto one side of paper.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:941
-#: modules/printbackends/file/ctkprintbackendfile.c:679
+#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:937
+#: modules/printbackends/file/ctkprintbackendfile.c:675
 #: modules/printbackends/test/ctkprintbackendtest.c:503
 msgid "Pages per _sheet:"
 msgstr "ھەر ۋاراق بەت سانى(_S):"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1129
-#: modules/printbackends/cups/ctkprintbackendcups.c:1439
+#: modules/printbackends/cups/ctkprintbackendcups.c:1155
+#: modules/printbackends/cups/ctkprintbackendcups.c:1465
 msgid "Username:"
 msgstr "ئىشلەتكۈچى ئاتى:"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1130
-#: modules/printbackends/cups/ctkprintbackendcups.c:1448
+#: modules/printbackends/cups/ctkprintbackendcups.c:1156
+#: modules/printbackends/cups/ctkprintbackendcups.c:1474
 msgid "Password:"
 msgstr "ئىم:"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1169
-#: modules/printbackends/cups/ctkprintbackendcups.c:1461
+#: modules/printbackends/cups/ctkprintbackendcups.c:1195
+#: modules/printbackends/cups/ctkprintbackendcups.c:1487
 #, fuzzy, c-format
 msgid "Authentication is required to print document “%s” on printer %s"
 msgstr "باسىدىغان ‹%s› پۈتۈكنى %s پرىنتېردا بېسىشتا دەلىللەش لازىم"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1171
+#: modules/printbackends/cups/ctkprintbackendcups.c:1197
 #, c-format
 msgid "Authentication is required to print a document on %s"
 msgstr "%s دا پۈتۈكتىن بىرنى بېسىشتا دەلىللەش لازىم"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1175
+#: modules/printbackends/cups/ctkprintbackendcups.c:1201
 #, fuzzy, c-format
 msgid "Authentication is required to get attributes of job “%s”"
 msgstr "ۋەزىپە ‹%s› نىڭ خاسلىقىغا ئېرىشىشتە دەلىللەش لازىم"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1177
+#: modules/printbackends/cups/ctkprintbackendcups.c:1203
 msgid "Authentication is required to get attributes of a job"
 msgstr "بىر ۋەزىپىنىڭ خاسلىقىغا ئېرىشىش ئۈچۈن دەلىللەش لازىم"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1181
+#: modules/printbackends/cups/ctkprintbackendcups.c:1207
 #, c-format
 msgid "Authentication is required to get attributes of printer %s"
 msgstr "%s پرىنتېرنىڭ خاسلىقىغا ئېرىشىشتە دەلىللەش لازىم"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1183
+#: modules/printbackends/cups/ctkprintbackendcups.c:1209
 msgid "Authentication is required to get attributes of a printer"
 msgstr "بىر پرىنتېرنىڭ خاسلىقىغا ئېرىشىشتە دەلىللەش لازىم"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1186
+#: modules/printbackends/cups/ctkprintbackendcups.c:1212
 #, c-format
 msgid "Authentication is required to get default printer of %s"
 msgstr "%s نىڭ كۆڭۈلدىكى پرىنتېرىغا ئېرىشىشتە دەلىللەش لازىم"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1189
+#: modules/printbackends/cups/ctkprintbackendcups.c:1215
 #, c-format
 msgid "Authentication is required to get printers from %s"
 msgstr "%s دىن پرىنتېرغا ئېرىشىشتە دەلىللەش لازىم"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1194
+#: modules/printbackends/cups/ctkprintbackendcups.c:1220
 #, c-format
 msgid "Authentication is required to get a file from %s"
 msgstr "%s دىن ھۆججەتكە ئېرىشىشتە دەلىللەش لازىم"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1196
+#: modules/printbackends/cups/ctkprintbackendcups.c:1222
 #, c-format
 msgid "Authentication is required on %s"
 msgstr "%s دا دەلىللەش لازىم"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1433
+#: modules/printbackends/cups/ctkprintbackendcups.c:1459
 msgid "Domain:"
 msgstr "دائىرە:"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1463
+#: modules/printbackends/cups/ctkprintbackendcups.c:1489
 #, fuzzy, c-format
 msgid "Authentication is required to print document “%s”"
 msgstr "%s دا پۈتۈك بېسىشتا دەلىللەش لازىم"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1468
+#: modules/printbackends/cups/ctkprintbackendcups.c:1494
 #, c-format
 msgid "Authentication is required to print this document on printer %s"
 msgstr "بۇ پۈتۈكنى %s دا بېسىشتا دەلىللەش لازىم"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1470
+#: modules/printbackends/cups/ctkprintbackendcups.c:1496
 msgid "Authentication is required to print this document"
 msgstr "بۇ پۈتۈكنى بېسىشتا دەلىللەش لازىم"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2557
+#: modules/printbackends/cups/ctkprintbackendcups.c:2610
 #, fuzzy, c-format
 msgid "Printer “%s” is low on toner."
 msgstr "‹%s› پرىنتېرنىڭ كۇكۇنى ئاز."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2561
+#: modules/printbackends/cups/ctkprintbackendcups.c:2614
 #, fuzzy, c-format
 msgid "Printer “%s” has no toner left."
 msgstr "‹%s› پرىنتېرنىڭ كۇكۇنى قالمىغان."
 
 #. Translators: "Developer" like on photo development context
-#: modules/printbackends/cups/ctkprintbackendcups.c:2566
+#: modules/printbackends/cups/ctkprintbackendcups.c:2619
 #, fuzzy, c-format
 msgid "Printer “%s” is low on developer."
 msgstr "‹%s› پرىنتېر روشەنلەشتۈرۈش خۇرۇچى ئاز"
 
 #. Translators: "Developer" like on photo development context
-#: modules/printbackends/cups/ctkprintbackendcups.c:2571
+#: modules/printbackends/cups/ctkprintbackendcups.c:2624
 #, fuzzy, c-format
 msgid "Printer “%s” is out of developer."
 msgstr "‹%s› پرىنتېر روشەنلەشتۈرۈش خۇرۇچى قالمىغان."
 
 #. Translators: "marker" is one color bin of the printer
-#: modules/printbackends/cups/ctkprintbackendcups.c:2576
+#: modules/printbackends/cups/ctkprintbackendcups.c:2629
 #, fuzzy, c-format
 msgid "Printer “%s” is low on at least one marker supply."
 msgstr "‹%s› پرىنتېرنىڭ ئاز دېگەندە بىر رەڭ قۇتىسىنىڭ سىياھى ئاز."
 
 #. Translators: "marker" is one color bin of the printer
-#: modules/printbackends/cups/ctkprintbackendcups.c:2581
+#: modules/printbackends/cups/ctkprintbackendcups.c:2634
 #, fuzzy, c-format
 msgid "Printer “%s” is out of at least one marker supply."
 msgstr "‹%s› پرىنتېرنىڭ ئاز دېگەندە بىر رەڭ قۇتىسىنىڭ سىياھى تۈگىگەن."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2585
+#: modules/printbackends/cups/ctkprintbackendcups.c:2638
 #, fuzzy, c-format
 msgid "The cover is open on printer “%s”."
 msgstr "‹%s› پرىنتېرنىڭ قاپقىقى ئوچۇق."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2589
+#: modules/printbackends/cups/ctkprintbackendcups.c:2642
 #, fuzzy, c-format
 msgid "The door is open on printer “%s”."
 msgstr "‹%s› پرىنتېرنىڭ ئىشىكى ئوچۇق."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2593
+#: modules/printbackends/cups/ctkprintbackendcups.c:2646
 #, fuzzy, c-format
 msgid "Printer “%s” is low on paper."
 msgstr "‹%s› پرىنتېرنىڭ قەغىزى قالمىغان."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2597
+#: modules/printbackends/cups/ctkprintbackendcups.c:2650
 #, fuzzy, c-format
 msgid "Printer “%s” is out of paper."
 msgstr "‹%s› پرىنتېردا قەغەز كەم."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2601
+#: modules/printbackends/cups/ctkprintbackendcups.c:2654
 #, fuzzy, c-format
 msgid "Printer “%s” is currently offline."
 msgstr "‹%s› پرىنتېر نۆۋەتتە توردا يوق."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2605
+#: modules/printbackends/cups/ctkprintbackendcups.c:2658
 #, fuzzy, c-format
 msgid "There is a problem on printer “%s”."
 msgstr "‹%s› پرىنتېردا مەسىلە بار."
 
 #. Translators: this is a printer status.
-#: modules/printbackends/cups/ctkprintbackendcups.c:2625
+#: modules/printbackends/cups/ctkprintbackendcups.c:2678
 msgid "Paused; Rejecting Jobs"
 msgstr "ۋاقىتلىق توختىتىلدى؛ ۋەزىپىنى رەت قىلىدۇ"
 
 #. Translators: this is a printer status.
-#: modules/printbackends/cups/ctkprintbackendcups.c:2631
+#: modules/printbackends/cups/ctkprintbackendcups.c:2684
 msgid "Rejecting Jobs"
 msgstr "ۋەزىپىنى رەت قىلىدۇ"
 
 #. Translators: this string connects multiple printer states together.
-#: modules/printbackends/cups/ctkprintbackendcups.c:2672
+#: modules/printbackends/cups/ctkprintbackendcups.c:2725
 msgid "; "
 msgstr ""
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4453
-#: modules/printbackends/cups/ctkprintbackendcups.c:4520
+#: modules/printbackends/cups/ctkprintbackendcups.c:4676
+#: modules/printbackends/cups/ctkprintbackendcups.c:4743
 #, fuzzy
 msgctxt "printing option"
 msgid "Two Sided"
 msgstr "قوش يۈزلۈك"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4454
+#: modules/printbackends/cups/ctkprintbackendcups.c:4677
 #, fuzzy
 msgctxt "printing option"
 msgid "Paper Type"
 msgstr "قەغەز تىپى"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4455
+#: modules/printbackends/cups/ctkprintbackendcups.c:4678
 #, fuzzy
 msgctxt "printing option"
 msgid "Paper Source"
 msgstr "قەغەز مەنبەسى"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4456
-#: modules/printbackends/cups/ctkprintbackendcups.c:4521
+#: modules/printbackends/cups/ctkprintbackendcups.c:4679
+#: modules/printbackends/cups/ctkprintbackendcups.c:4744
 #, fuzzy
 msgctxt "printing option"
 msgid "Output Tray"
 msgstr "قەغەز چىقارغۇچ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4457
+#: modules/printbackends/cups/ctkprintbackendcups.c:4680
 #, fuzzy
 msgctxt "printing option"
 msgid "Resolution"
 msgstr "ئېنىقلىق"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4458
+#: modules/printbackends/cups/ctkprintbackendcups.c:4681
 #, fuzzy
 msgctxt "printing option"
 msgid "GhostScript pre-filtering"
 msgstr "GhostScript ئالدىن سۈزگۈچ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4467
+#: modules/printbackends/cups/ctkprintbackendcups.c:4690
 #, fuzzy
 msgctxt "printing option value"
 msgid "One Sided"
 msgstr "تاق تەرەپلىك"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4469
+#: modules/printbackends/cups/ctkprintbackendcups.c:4692
 #, fuzzy
 msgctxt "printing option value"
 msgid "Long Edge (Standard)"
 msgstr "ئۇزۇن يان (ئۆلچەملىك)"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4471
+#: modules/printbackends/cups/ctkprintbackendcups.c:4694
 #, fuzzy
 msgctxt "printing option value"
 msgid "Short Edge (Flip)"
 msgstr "قىسقا يان (ئۆرۈ)"
 
 #. Translators: this is an option of "Paper Source"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4473
-#: modules/printbackends/cups/ctkprintbackendcups.c:4475
-#: modules/printbackends/cups/ctkprintbackendcups.c:4483
+#: modules/printbackends/cups/ctkprintbackendcups.c:4696
+#: modules/printbackends/cups/ctkprintbackendcups.c:4698
+#: modules/printbackends/cups/ctkprintbackendcups.c:4706
 #, fuzzy
 msgctxt "printing option value"
 msgid "Auto Select"
@@ -8273,38 +8273,38 @@ msgstr "ئۆزلۈكىدىن تاللا"
 
 #. Translators: this is an option of "Paper Source"
 #. Translators: this is an option of "Resolution"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4477
-#: modules/printbackends/cups/ctkprintbackendcups.c:4479
-#: modules/printbackends/cups/ctkprintbackendcups.c:4481
-#: modules/printbackends/cups/ctkprintbackendcups.c:4485
+#: modules/printbackends/cups/ctkprintbackendcups.c:4700
+#: modules/printbackends/cups/ctkprintbackendcups.c:4702
+#: modules/printbackends/cups/ctkprintbackendcups.c:4704
+#: modules/printbackends/cups/ctkprintbackendcups.c:4708
 #, fuzzy
 msgctxt "printing option value"
 msgid "Printer Default"
 msgstr "ئالدىن تەڭشەلگەن پرىنتېر"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4487
+#: modules/printbackends/cups/ctkprintbackendcups.c:4710
 #, fuzzy
 msgctxt "printing option value"
 msgid "Embed GhostScript fonts only"
 msgstr "GhostScript خەت نۇسخىنىلا سىڭدۈر"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4489
+#: modules/printbackends/cups/ctkprintbackendcups.c:4712
 #, fuzzy
 msgctxt "printing option value"
 msgid "Convert to PS level 1"
 msgstr "PS دەرىجە 1 گە ئايلاندۇر"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4491
+#: modules/printbackends/cups/ctkprintbackendcups.c:4714
 #, fuzzy
 msgctxt "printing option value"
 msgid "Convert to PS level 2"
 msgstr "PS دەرىجە 2 گە ئايلاندۇر"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4493
+#: modules/printbackends/cups/ctkprintbackendcups.c:4716
 #, fuzzy
 msgctxt "printing option value"
 msgid "No pre-filtering"
@@ -8312,203 +8312,203 @@ msgstr "ئالدىن سۈزگۈچ يوق"
 
 #. Translators: "Miscellaneous" is the label for a button, that opens
 #. up an extra panel of settings in a print dialog.
-#: modules/printbackends/cups/ctkprintbackendcups.c:4502
+#: modules/printbackends/cups/ctkprintbackendcups.c:4725
 #, fuzzy
 msgctxt "printing option group"
 msgid "Miscellaneous"
 msgstr "باشقىلار"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4529
+#: modules/printbackends/cups/ctkprintbackendcups.c:4752
 #, fuzzy
 msgctxt "sides"
 msgid "One Sided"
 msgstr "تاق تەرەپلىك"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4531
+#: modules/printbackends/cups/ctkprintbackendcups.c:4754
 #, fuzzy
 msgctxt "sides"
 msgid "Long Edge (Standard)"
 msgstr "ئۇزۇن يان (ئۆلچەملىك)"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4533
+#: modules/printbackends/cups/ctkprintbackendcups.c:4756
 #, fuzzy
 msgctxt "sides"
 msgid "Short Edge (Flip)"
 msgstr "قىسقا يان (ئۆرۈ)"
 
 #. Translators: Top output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4536
+#: modules/printbackends/cups/ctkprintbackendcups.c:4759
 msgctxt "output-bin"
 msgid "Top Bin"
 msgstr ""
 
 #. Translators: Middle output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4538
+#: modules/printbackends/cups/ctkprintbackendcups.c:4761
 msgctxt "output-bin"
 msgid "Middle Bin"
 msgstr ""
 
 #. Translators: Bottom output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4540
+#: modules/printbackends/cups/ctkprintbackendcups.c:4763
 #, fuzzy
 msgctxt "output-bin"
 msgid "Bottom Bin"
 msgstr "ئاستى(_B)"
 
 #. Translators: Side output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4542
+#: modules/printbackends/cups/ctkprintbackendcups.c:4765
 msgctxt "output-bin"
 msgid "Side Bin"
 msgstr ""
 
 #. Translators: Left output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4544
+#: modules/printbackends/cups/ctkprintbackendcups.c:4767
 #, fuzzy
 msgctxt "output-bin"
 msgid "Left Bin"
 msgstr "Left"
 
 #. Translators: Right output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4546
+#: modules/printbackends/cups/ctkprintbackendcups.c:4769
 #, fuzzy
 msgctxt "output-bin"
 msgid "Right Bin"
 msgstr "Right"
 
 #. Translators: Center output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4548
+#: modules/printbackends/cups/ctkprintbackendcups.c:4771
 #, fuzzy
 msgctxt "output-bin"
 msgid "Center Bin"
 msgstr "ئوتتۇرا(_C)"
 
 #. Translators: Rear output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4550
+#: modules/printbackends/cups/ctkprintbackendcups.c:4773
 msgctxt "output-bin"
 msgid "Rear Bin"
 msgstr ""
 
 #. Translators: Output bin where one sided output is oriented in the face-up position
-#: modules/printbackends/cups/ctkprintbackendcups.c:4552
+#: modules/printbackends/cups/ctkprintbackendcups.c:4775
 msgctxt "output-bin"
 msgid "Face Up Bin"
 msgstr ""
 
 #. Translators: Output bin where one sided output is oriented in the face-down position
-#: modules/printbackends/cups/ctkprintbackendcups.c:4554
+#: modules/printbackends/cups/ctkprintbackendcups.c:4777
 msgctxt "output-bin"
 msgid "Face Down Bin"
 msgstr ""
 
 #. Translators: Large capacity output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4556
+#: modules/printbackends/cups/ctkprintbackendcups.c:4779
 msgctxt "output-bin"
 msgid "Large Capacity Bin"
 msgstr ""
 
 #. Translators: Output stacker number %d
-#: modules/printbackends/cups/ctkprintbackendcups.c:4578
+#: modules/printbackends/cups/ctkprintbackendcups.c:4801
 #, c-format
 msgctxt "output-bin"
 msgid "Stacker %d"
 msgstr ""
 
 #. Translators: Output mailbox number %d
-#: modules/printbackends/cups/ctkprintbackendcups.c:4582
+#: modules/printbackends/cups/ctkprintbackendcups.c:4805
 #, c-format
 msgctxt "output-bin"
 msgid "Mailbox %d"
 msgstr ""
 
 #. Translators: Private mailbox
-#: modules/printbackends/cups/ctkprintbackendcups.c:4586
+#: modules/printbackends/cups/ctkprintbackendcups.c:4809
 msgctxt "output-bin"
 msgid "My Mailbox"
 msgstr ""
 
 #. Translators: Output tray number %d
-#: modules/printbackends/cups/ctkprintbackendcups.c:4590
+#: modules/printbackends/cups/ctkprintbackendcups.c:4813
 #, c-format
 msgctxt "output-bin"
 msgid "Tray %d"
 msgstr ""
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5061
+#: modules/printbackends/cups/ctkprintbackendcups.c:5284
 msgid "Printer Default"
 msgstr "ئالدىن تەڭشەلگەن پرىنتېر"
 
 #. Translators: These strings name the possible values of the
 #. * job priority option in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5503
+#: modules/printbackends/cups/ctkprintbackendcups.c:5726
 msgid "Urgent"
 msgstr "جىددىي"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5503
+#: modules/printbackends/cups/ctkprintbackendcups.c:5726
 msgid "High"
 msgstr "يۇقىرى"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5503
+#: modules/printbackends/cups/ctkprintbackendcups.c:5726
 msgid "Medium"
 msgstr "ئوتتۇراھال"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5503
+#: modules/printbackends/cups/ctkprintbackendcups.c:5726
 msgid "Low"
 msgstr "تۆۋەن"
 
 #. Translators, this string is used to label the job priority option
 #. * in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5533
+#: modules/printbackends/cups/ctkprintbackendcups.c:5756
 msgid "Job Priority"
 msgstr "ۋەزىپىنىڭ مەرتىۋىسى"
 
 #. Translators, this string is used to label the billing info entry
 #. * in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5544
+#: modules/printbackends/cups/ctkprintbackendcups.c:5767
 msgid "Billing Info"
 msgstr "ھەق ھېسابلاش ئۇچۇرى"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5568
+#: modules/printbackends/cups/ctkprintbackendcups.c:5791
 #, fuzzy
 msgctxt "cover page"
 msgid "None"
 msgstr "يوق"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5569
+#: modules/printbackends/cups/ctkprintbackendcups.c:5792
 #, fuzzy
 msgctxt "cover page"
 msgid "Classified"
 msgstr "تۈرگە ئايرىلغان"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5570
+#: modules/printbackends/cups/ctkprintbackendcups.c:5793
 #, fuzzy
 msgctxt "cover page"
 msgid "Confidential"
 msgstr "مەخپىي"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5571
+#: modules/printbackends/cups/ctkprintbackendcups.c:5794
 #, fuzzy
 msgctxt "cover page"
 msgid "Secret"
 msgstr "سىر"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5572
+#: modules/printbackends/cups/ctkprintbackendcups.c:5795
 #, fuzzy
 msgctxt "cover page"
 msgid "Standard"
 msgstr "ئۆلچەملىك"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5573
+#: modules/printbackends/cups/ctkprintbackendcups.c:5796
 #, fuzzy
 msgctxt "cover page"
 msgid "Top Secret"
 msgstr "قەتئىي مەخپىي"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5574
+#: modules/printbackends/cups/ctkprintbackendcups.c:5797
 #, fuzzy
 msgctxt "cover page"
 msgid "Unclassified"
@@ -8517,7 +8517,7 @@ msgstr "تۈرگە ئايرىلمىغان"
 #. Translators, this string is used to label the pages-per-sheet option
 #. * in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5586
+#: modules/printbackends/cups/ctkprintbackendcups.c:5809
 #, fuzzy
 msgctxt "printer option"
 msgid "Pages per Sheet"
@@ -8526,7 +8526,7 @@ msgstr "ھەر ۋاراق بەت سانى"
 #. Translators, this string is used to label the option in the print
 #. * dialog that controls in what order multiple pages are arranged
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5603
+#: modules/printbackends/cups/ctkprintbackendcups.c:5826
 #, fuzzy
 msgctxt "printer option"
 msgid "Page Ordering"
@@ -8535,7 +8535,7 @@ msgstr "بەت تەرتىپى"
 #. Translators, this is the label used for the option in the print
 #. * dialog that controls the front cover page.
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5645
+#: modules/printbackends/cups/ctkprintbackendcups.c:5868
 #, fuzzy
 msgctxt "printer option"
 msgid "Before"
@@ -8544,7 +8544,7 @@ msgstr "ئاۋۋال"
 #. Translators, this is the label used for the option in the print
 #. * dialog that controls the back cover page.
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5660
+#: modules/printbackends/cups/ctkprintbackendcups.c:5883
 #, fuzzy
 msgctxt "printer option"
 msgid "After"
@@ -8554,7 +8554,7 @@ msgstr "داۋامى"
 #. * a print job is printed. Possible values are 'now', a specified time,
 #. * or 'on hold'
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5680
+#: modules/printbackends/cups/ctkprintbackendcups.c:5903
 #, fuzzy
 msgctxt "printer option"
 msgid "Print at"
@@ -8563,7 +8563,7 @@ msgstr "باسىدۇ"
 #. Translators: this is the name of the option that allows the user
 #. * to specify a time when a print job will be printed.
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5691
+#: modules/printbackends/cups/ctkprintbackendcups.c:5914
 #, fuzzy
 msgctxt "printer option"
 msgid "Print at time"
@@ -8574,19 +8574,19 @@ msgstr "بەلگىلەنگەن ۋاقىتتا باسىدۇ"
 #. * the width and height in points. E.g: "Custom
 #. * 230.4x142.9"
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5737
+#: modules/printbackends/cups/ctkprintbackendcups.c:5960
 #, fuzzy, c-format
 msgid "Custom %s×%s"
 msgstr "ئىختىيارى %sx%s"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5847
+#: modules/printbackends/cups/ctkprintbackendcups.c:6070
 #, fuzzy
 msgctxt "printer option"
 msgid "Printer Profile"
 msgstr "پرىنتېر سەپلىمە ھۆججەت"
 
 #. TRANSLATORS: this is when color profile information is unavailable
-#: modules/printbackends/cups/ctkprintbackendcups.c:5854
+#: modules/printbackends/cups/ctkprintbackendcups.c:6077
 #, fuzzy
 msgctxt "printer option value"
 msgid "Unavailable"
@@ -8594,57 +8594,57 @@ msgstr "ئىشلەتكىلى بولمايدۇ"
 
 #. TRANSLATORS: when we're running an old CUPS, and
 #. * it hasn't registered the device with colord
-#: modules/printbackends/cups/ctkprintercups.c:275
+#: modules/printbackends/cups/ctkprintercups.c:273
 msgid "Color management unavailable"
 msgstr "رەڭ باشقۇرغۇچنى ئىشلەتكىلى بولمايدۇ"
 
 #. TRANSLATORS: when there is no color profile available
-#: modules/printbackends/cups/ctkprintercups.c:287
+#: modules/printbackends/cups/ctkprintercups.c:285
 msgid "No profile available"
 msgstr "ئىشلىتىلىشچان سەپلىمە ھۆججەت يوق"
 
 #. TRANSLATORS: when the color profile has no title
-#: modules/printbackends/cups/ctkprintercups.c:298
+#: modules/printbackends/cups/ctkprintercups.c:296
 msgid "Unspecified profile"
 msgstr "بەلگىلەنمىگەن سەپلىمە ھۆججەت"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:250
+#: modules/printbackends/file/ctkprintbackendfile.c:246
 msgid "output"
 msgstr "چىقىرىش"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:539
+#: modules/printbackends/file/ctkprintbackendfile.c:535
 msgid "Print to File"
 msgstr "ھۆججەتكە باس"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:667
+#: modules/printbackends/file/ctkprintbackendfile.c:663
 msgid "PDF"
 msgstr "PDF"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:667
+#: modules/printbackends/file/ctkprintbackendfile.c:663
 msgid "Postscript"
 msgstr "Postscript"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:667
+#: modules/printbackends/file/ctkprintbackendfile.c:663
 msgid "SVG"
 msgstr "SVG"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:738
+#: modules/printbackends/file/ctkprintbackendfile.c:734
 msgid "File"
 msgstr "ھۆججەت"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:750
+#: modules/printbackends/file/ctkprintbackendfile.c:746
 msgid "_Output format"
 msgstr "چىقىرىش فورماتى(_O)"
 
-#: modules/printbackends/lpr/ctkprintbackendlpr.c:394
+#: modules/printbackends/lpr/ctkprintbackendlpr.c:390
 msgid "Print to LPR"
 msgstr "LPR غا باس"
 
-#: modules/printbackends/lpr/ctkprintbackendlpr.c:423
+#: modules/printbackends/lpr/ctkprintbackendlpr.c:419
 msgid "Pages Per Sheet"
 msgstr "ھەر ۋاراقتىكى بەت سانى"
 
-#: modules/printbackends/lpr/ctkprintbackendlpr.c:430
+#: modules/printbackends/lpr/ctkprintbackendlpr.c:426
 msgid "Command Line"
 msgstr "بۇيرۇق قۇرى"
 

@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-23 17:45+0100\n"
+"POT-Creation-Date: 2022-08-11 17:18+0200\n"
 "PO-Revision-Date: 2020-08-28 17:42+0300\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: suomi <lokalisointi-lista@googlegroups.com>\n"
@@ -567,12 +567,12 @@ msgctxt "Action name"
 msgid "Toggle"
 msgstr ""
 
-#: ctk/a11y/ctkbuttonaccessible.c:323 ctk/a11y/ctkmenuitemaccessible.c:439
+#: ctk/a11y/ctkbuttonaccessible.c:322 ctk/a11y/ctkmenuitemaccessible.c:439
 msgctxt "Action name"
 msgid "Click"
 msgstr "Napsauta"
 
-#: ctk/a11y/ctkbuttonaccessible.c:332
+#: ctk/a11y/ctkbuttonaccessible.c:331
 msgctxt "Action description"
 msgid "Clicks the button"
 msgstr "Napsauttaa painiketta"
@@ -1104,7 +1104,7 @@ msgctxt "Action description"
 msgid "Toggles the switch"
 msgstr ""
 
-#: ctk/ctkcolorsel.c:425
+#: ctk/ctkcolorsel.c:421
 msgid ""
 "Select the color you want from the outer ring. Select the darkness or "
 "lightness of that color using the inner triangle."
@@ -1112,7 +1112,7 @@ msgstr ""
 "Valitse haluamasi väri ulkorenkaasta ja kylläisyys sekä tummuus "
 "sisäkolmiosta."
 
-#: ctk/ctkcolorsel.c:451
+#: ctk/ctkcolorsel.c:447
 msgid ""
 "Click the eyedropper, then click a color anywhere on your screen to select "
 "that color."
@@ -1120,67 +1120,67 @@ msgstr ""
 "Napsauta pipettiä ja sen jälkeen mitä tahansa ruudun kohtaa valitaksesi "
 "kyseisen kohdan värin."
 
-#: ctk/ctkcolorsel.c:461
+#: ctk/ctkcolorsel.c:457
 msgid "_Hue:"
 msgstr "_Sävy:"
 
-#: ctk/ctkcolorsel.c:462
+#: ctk/ctkcolorsel.c:458
 msgid "Position on the color wheel."
 msgstr "Sijainti väripyörällä."
 
-#: ctk/ctkcolorsel.c:464
+#: ctk/ctkcolorsel.c:460
 msgid "S_aturation:"
 msgstr "K_ylläisyys:"
 
-#: ctk/ctkcolorsel.c:465
+#: ctk/ctkcolorsel.c:461
 msgid "Intensity of the color."
 msgstr "Värin kylläisyys."
 
-#: ctk/ctkcolorsel.c:466
+#: ctk/ctkcolorsel.c:462
 msgid "_Value:"
 msgstr "_Arvo:"
 
-#: ctk/ctkcolorsel.c:467
+#: ctk/ctkcolorsel.c:463
 msgid "Brightness of the color."
 msgstr "Värin kirkkaus."
 
-#: ctk/ctkcolorsel.c:468
+#: ctk/ctkcolorsel.c:464
 msgid "_Red:"
 msgstr "_Punainen:"
 
-#: ctk/ctkcolorsel.c:469
+#: ctk/ctkcolorsel.c:465
 msgid "Amount of red light in the color."
 msgstr "Punaisen määrä värissä."
 
-#: ctk/ctkcolorsel.c:470
+#: ctk/ctkcolorsel.c:466
 msgid "_Green:"
 msgstr "_Vihreä:"
 
-#: ctk/ctkcolorsel.c:471
+#: ctk/ctkcolorsel.c:467
 msgid "Amount of green light in the color."
 msgstr "Vihreän määrä värissä."
 
-#: ctk/ctkcolorsel.c:472
+#: ctk/ctkcolorsel.c:468
 msgid "_Blue:"
 msgstr "S_ininen:"
 
-#: ctk/ctkcolorsel.c:473
+#: ctk/ctkcolorsel.c:469
 msgid "Amount of blue light in the color."
 msgstr "Sinisen määrä värissä."
 
-#: ctk/ctkcolorsel.c:476
+#: ctk/ctkcolorsel.c:472
 msgid "Op_acity:"
 msgstr "Läpi_näkyvyys::"
 
-#: ctk/ctkcolorsel.c:484 ctk/ctkcolorsel.c:494
+#: ctk/ctkcolorsel.c:480 ctk/ctkcolorsel.c:490
 msgid "Transparency of the color."
 msgstr "Värin läpinäkyvyys."
 
-#: ctk/ctkcolorsel.c:501
+#: ctk/ctkcolorsel.c:497
 msgid "Color _name:"
 msgstr "Värin _nimi:"
 
-#: ctk/ctkcolorsel.c:516
+#: ctk/ctkcolorsel.c:512
 msgid ""
 "You can enter an HTML-style hexadecimal color value, or simply a color name "
 "such as “orange” in this entry."
@@ -1188,15 +1188,15 @@ msgstr ""
 "Voit kirjoittaa tähän kenttään HTML-tyylisen heksadesimaaliväriarvon, tai "
 "pelkästään värin nimen, esimerkiksi ”orange”."
 
-#: ctk/ctkcolorsel.c:548
+#: ctk/ctkcolorsel.c:544
 msgid "_Palette:"
 msgstr "_Paletti:"
 
-#: ctk/ctkcolorsel.c:578
+#: ctk/ctkcolorsel.c:574
 msgid "Color Wheel"
 msgstr "Väriympyrä"
 
-#: ctk/ctkcolorsel.c:1072
+#: ctk/ctkcolorsel.c:1068
 msgid ""
 "The previously-selected color, for comparison to the color you’re selecting "
 "now. You can drag this color to a palette entry, or select this color as "
@@ -1206,7 +1206,7 @@ msgstr ""
 "tämän värin paletin kohtaan tai valita sen nykyiseksi vetämällä sen vieressä "
 "olevaan värilaikkuun."
 
-#: ctk/ctkcolorsel.c:1078
+#: ctk/ctkcolorsel.c:1074
 msgid ""
 "The color you’ve chosen. You can drag this color to a palette entry to save "
 "it for use in the future."
@@ -1214,21 +1214,21 @@ msgstr ""
 "Valitsemasi väri. Voit vetää tämän värin paletin kohtaan tallentaaksesi sen "
 "myöhempää käyttöä varten."
 
-#: ctk/ctkcolorsel.c:1084
+#: ctk/ctkcolorsel.c:1080
 msgid ""
 "The previously-selected color, for comparison to the color you’re selecting "
 "now."
 msgstr "Aiemmin valittu väri verrokkina nyt valitsemaasi väriin."
 
-#: ctk/ctkcolorsel.c:1088
+#: ctk/ctkcolorsel.c:1084
 msgid "The color you’ve chosen."
 msgstr "Valitsemasi väri."
 
-#: ctk/ctkcolorsel.c:1458
+#: ctk/ctkcolorsel.c:1454
 msgid "_Save color here"
 msgstr "_Tallenna väri tähän"
 
-#: ctk/ctkcolorsel.c:1664
+#: ctk/ctkcolorsel.c:1660
 msgid ""
 "Click this palette entry to make it the current color. To change this entry, "
 "drag a color swatch here or right-click it and select “Save color here.”"
@@ -1237,11 +1237,11 @@ msgstr ""
 "kohdan vedä väri tähän tai napsauta oikealla painikkeella ja valitse "
 "”Tallenna väri tähän”."
 
-#: ctk/ctkcolorseldialog.c:191 ctk/deprecated/ctkfontsel.c:1689
+#: ctk/ctkcolorseldialog.c:189 ctk/deprecated/ctkfontsel.c:1689
 #: ctk/ctkfilechoosernative.c:545 ctk/ctkfilechoosernative.c:637
 #: ctk/ctkfilechooserwidget.c:1498 ctk/ctkfilechooserwidget.c:6572
-#: ctk/ctkmessagedialog.c:952 ctk/ctkmessagedialog.c:965
-#: ctk/ctkmountoperation.c:594 ctk/ctkpagesetupunixdialog.c:197
+#: ctk/ctkmessagedialog.c:946 ctk/ctkmessagedialog.c:959
+#: ctk/ctkmountoperation.c:593 ctk/ctkpagesetupunixdialog.c:197
 #: ctk/ctkprintbackend.c:781 ctk/ctkprinteroptionwidget.c:545
 #: ctk/ctkprintunixdialog.c:674 ctk/ctkprintunixdialog.c:747
 #: ctk/ctkwindow.c:12789 ctk/inspector/css-editor.c:201
@@ -1250,17 +1250,17 @@ msgstr ""
 msgid "_Cancel"
 msgstr "_Peru"
 
-#: ctk/ctkcolorseldialog.c:195 ctk/ctkprinteroptionwidget.c:546
+#: ctk/ctkcolorseldialog.c:193 ctk/ctkprinteroptionwidget.c:546
 #: ctk/ui/ctkappchooserdialog.ui:67 ctk/ui/ctkcolorchooserdialog.ui:40
 #: ctk/ui/ctkfontchooserdialog.ui:37
 msgid "_Select"
 msgstr "_Valitse"
 
-#: ctk/ctkcolorseldialog.c:201
+#: ctk/ctkcolorseldialog.c:199
 msgid "_Help"
 msgstr "_Ohje"
 
-#: ctk/ctkcolorseldialog.c:213
+#: ctk/ctkcolorseldialog.c:211
 msgid "Color Selection"
 msgstr "Värin valinta"
 
@@ -1292,8 +1292,8 @@ msgstr "_Esikatselu:"
 msgid "_Apply"
 msgstr "_Toteuta"
 
-#: ctk/deprecated/ctkfontsel.c:1698 ctk/ctkmessagedialog.c:944
-#: ctk/ctkmessagedialog.c:966 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12790
+#: ctk/deprecated/ctkfontsel.c:1698 ctk/ctkmessagedialog.c:938
+#: ctk/ctkmessagedialog.c:960 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12790
 msgid "_OK"
 msgstr "_OK"
 
@@ -1406,53 +1406,53 @@ msgstr "Apache-lisenssi, versio 2.0"
 msgid "Mozilla Public License 2.0"
 msgstr "Mozilla Public License 2.0"
 
-#: ctk/ctkaboutdialog.c:703
+#: ctk/ctkaboutdialog.c:701
 msgid "C_redits"
 msgstr "_Tekijät"
 
-#: ctk/ctkaboutdialog.c:711
+#: ctk/ctkaboutdialog.c:709
 msgid "_License"
 msgstr "_Lisenssi"
 
-#: ctk/ctkaboutdialog.c:720 ctk/ctkcustompaperunixdialog.c:329
-#: ctk/ctkmessagedialog.c:948 ctk/ui/ctkassistant.ui:144
+#: ctk/ctkaboutdialog.c:718 ctk/ctkcustompaperunixdialog.c:329
+#: ctk/ctkmessagedialog.c:942 ctk/ui/ctkassistant.ui:144
 msgid "_Close"
 msgstr "_Sulje"
 
-#: ctk/ctkaboutdialog.c:1004
+#: ctk/ctkaboutdialog.c:1002
 msgid "Could not show link"
 msgstr "Linkkiä ei voitu näyttää"
 
-#: ctk/ctkaboutdialog.c:1043
+#: ctk/ctkaboutdialog.c:1039
 msgid "Website"
 msgstr "Verkkosivusto"
 
 #. used for the application menu on MacOS.  %s is replaced with the application name.
-#: ctk/ctkaboutdialog.c:1093 ctk/ui/ctkapplication-quartz.ui:7
+#: ctk/ctkaboutdialog.c:1089 ctk/ui/ctkapplication-quartz.ui:7
 #, c-format
 msgid "About %s"
 msgstr "Tietoja - %s"
 
-#: ctk/ctkaboutdialog.c:2320
+#: ctk/ctkaboutdialog.c:2316
 msgid "Created by"
 msgstr "Luonut"
 
-#: ctk/ctkaboutdialog.c:2323
+#: ctk/ctkaboutdialog.c:2319
 msgid "Documented by"
 msgstr "Dokumentoijat"
 
-#: ctk/ctkaboutdialog.c:2333
+#: ctk/ctkaboutdialog.c:2329
 msgid "Translated by"
 msgstr "Kääntäjät"
 
-#: ctk/ctkaboutdialog.c:2338
+#: ctk/ctkaboutdialog.c:2334
 msgid "Artwork by"
 msgstr "Graafinen ulkoasu"
 
 #. Translators: this is the license preamble; the string at the end
 #. * contains the name of the license as link text.
 #.
-#: ctk/ctkaboutdialog.c:2500
+#: ctk/ctkaboutdialog.c:2494
 #, c-format
 msgid ""
 "This program comes with absolutely no warranty.\n"
@@ -1598,7 +1598,7 @@ msgid "Other Applications"
 msgstr "Muut sovellukset"
 
 #: ctk/ctkapplicationwindow.c:345 ctk/ctkprintoperation-unix.c:485
-#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1690
+#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1688
 msgid "Application"
 msgstr "Sovellus"
 
@@ -1652,7 +1652,7 @@ msgstr "Tiedoston %s uudelleennimeäminen nimelle %s epäonnistui: %s\n"
 msgid "Can't parse file: %s\n"
 msgstr "Tiedoston jäsentäminen ei onnistu: %s\n"
 
-#: ctk/ctk-builder-tool.c:1062
+#: ctk/ctk-builder-tool.c:1060
 #, c-format
 msgid ""
 "Usage:\n"
@@ -1783,7 +1783,7 @@ msgctxt "progress bar label"
 msgid "%d %%"
 msgstr "%d %%"
 
-#: ctk/ctkcolorbutton.c:185 ctk/ctkcolorbutton.c:398
+#: ctk/ctkcolorbutton.c:185 ctk/ctkcolorbutton.c:394
 msgid "Pick a Color"
 msgstr "Valitse väri"
 
@@ -2115,11 +2115,11 @@ msgstr "default:mm"
 msgid "Manage Custom Sizes"
 msgstr "Hallitse omia kokoja"
 
-#: ctk/ctkcustompaperunixdialog.c:567 ctk/ctkpagesetupunixdialog.c:814
+#: ctk/ctkcustompaperunixdialog.c:567 ctk/ctkpagesetupunixdialog.c:812
 msgid "inch"
 msgstr "tuumaa"
 
-#: ctk/ctkcustompaperunixdialog.c:569 ctk/ctkpagesetupunixdialog.c:812
+#: ctk/ctkcustompaperunixdialog.c:569 ctk/ctkpagesetupunixdialog.c:810
 msgid "mm"
 msgstr "mm"
 
@@ -2132,84 +2132,84 @@ msgstr "Marginaalit tulostimelta…"
 msgid "Custom Size %d"
 msgstr "Oma koko %d"
 
-#: ctk/ctkcustompaperunixdialog.c:1120
+#: ctk/ctkcustompaperunixdialog.c:1119
 msgid "_Width:"
 msgstr "_Leveys:"
 
-#: ctk/ctkcustompaperunixdialog.c:1131
+#: ctk/ctkcustompaperunixdialog.c:1130
 msgid "_Height:"
 msgstr "_Korkeus:"
 
-#: ctk/ctkcustompaperunixdialog.c:1142
+#: ctk/ctkcustompaperunixdialog.c:1141
 msgid "Paper Size"
 msgstr "Paperin koko"
 
-#: ctk/ctkcustompaperunixdialog.c:1151
+#: ctk/ctkcustompaperunixdialog.c:1150
 msgid "_Top:"
 msgstr "_Ylä:"
 
-#: ctk/ctkcustompaperunixdialog.c:1162
+#: ctk/ctkcustompaperunixdialog.c:1161
 msgid "_Bottom:"
 msgstr "_Ala:"
 
-#: ctk/ctkcustompaperunixdialog.c:1173
+#: ctk/ctkcustompaperunixdialog.c:1172
 msgid "_Left:"
 msgstr "_Vasen:"
 
-#: ctk/ctkcustompaperunixdialog.c:1184
+#: ctk/ctkcustompaperunixdialog.c:1183
 msgid "_Right:"
 msgstr "_Oikea:"
 
-#: ctk/ctkcustompaperunixdialog.c:1223
+#: ctk/ctkcustompaperunixdialog.c:1222
 msgid "Paper Margins"
 msgstr "Paperin marginaalit"
 
-#: ctk/ctkentry.c:9591 ctk/ctklabel.c:6680 ctk/ctktextview.c:9520
+#: ctk/ctkentry.c:9589 ctk/ctklabel.c:6676 ctk/ctktextview.c:9516
 msgid "Cu_t"
 msgstr "_Leikkaa"
 
-#: ctk/ctkentry.c:9595 ctk/ctklabel.c:6681 ctk/ctktextview.c:9524
+#: ctk/ctkentry.c:9593 ctk/ctklabel.c:6677 ctk/ctktextview.c:9520
 msgid "_Copy"
 msgstr "_Kopioi"
 
-#: ctk/ctkentry.c:9599 ctk/ctklabel.c:6682 ctk/ctktextview.c:9526
+#: ctk/ctkentry.c:9597 ctk/ctklabel.c:6678 ctk/ctktextview.c:9522
 msgid "_Paste"
 msgstr "L_iitä"
 
-#: ctk/ctkentry.c:9602 ctk/ctkfilechooserwidget.c:1499
-#: ctk/ctkfilechooserwidget.c:2334 ctk/ctklabel.c:6684 ctk/ctktextview.c:9529
+#: ctk/ctkentry.c:9600 ctk/ctkfilechooserwidget.c:1499
+#: ctk/ctkfilechooserwidget.c:2334 ctk/ctklabel.c:6680 ctk/ctktextview.c:9525
 msgid "_Delete"
 msgstr "_Poista"
 
-#: ctk/ctkentry.c:9613 ctk/ctklabel.c:6693 ctk/ctktextview.c:9543
+#: ctk/ctkentry.c:9611 ctk/ctklabel.c:6689 ctk/ctktextview.c:9539
 msgid "Select _All"
 msgstr "Valitse k_aikki"
 
-#: ctk/ctkentry.c:9623 ctk/ctktextview.c:9553
+#: ctk/ctkentry.c:9621 ctk/ctktextview.c:9549
 msgid "Insert _Emoji"
 msgstr "Sy_ötä emoji"
 
-#: ctk/ctkentry.c:9799 ctk/ctktextview.c:9777
+#: ctk/ctkentry.c:9797 ctk/ctktextview.c:9773
 msgid "Select all"
 msgstr "Valitse kaikki"
 
-#: ctk/ctkentry.c:9802 ctk/ctktextview.c:9780
+#: ctk/ctkentry.c:9800 ctk/ctktextview.c:9776
 msgid "Cut"
 msgstr "Leikkaa"
 
-#: ctk/ctkentry.c:9805 ctk/ctktextview.c:9783
+#: ctk/ctkentry.c:9803 ctk/ctktextview.c:9779
 msgid "Copy"
 msgstr "Kopioi"
 
-#: ctk/ctkentry.c:9808 ctk/ctktextview.c:9786
+#: ctk/ctkentry.c:9806 ctk/ctktextview.c:9782
 msgid "Paste"
 msgstr "Liitä"
 
-#: ctk/ctkentry.c:10880
+#: ctk/ctkentry.c:10878
 msgid "Caps Lock is on"
 msgstr "CapsLock on päällä"
 
-#: ctk/ctkentry.c:11158
+#: ctk/ctkentry.c:11156
 msgid "Insert Emoji"
 msgstr "Syötä emoji"
 
@@ -2554,8 +2554,8 @@ msgstr "Laskentataulukko"
 #. Translators: We don't know whether this printer is
 #. * available to print to.
 #: ctk/ctkfilechooserwidget.c:5054 ctk/ctkfilechooserwidget.c:5243
-#: ctk/inspector/prop-editor.c:1693
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:748
+#: ctk/inspector/prop-editor.c:1691
+#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:744
 msgid "Unknown"
 msgstr "Tuntematon"
 
@@ -2617,7 +2617,7 @@ msgstr "Sans 12"
 msgid "Pick a Font"
 msgstr "Valitse fontti"
 
-#: ctk/ctkfontbutton.c:1395
+#: ctk/ctkfontbutton.c:1393
 msgctxt "font"
 msgid "None"
 msgstr "Ei mitään"
@@ -2642,7 +2642,7 @@ msgstr ""
 msgid "Optical Size"
 msgstr ""
 
-#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1680
+#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1678
 msgid "Default"
 msgstr "Oletus"
 
@@ -2714,29 +2714,29 @@ msgctxt "input method menu"
 msgid "System (%s)"
 msgstr "Järjestelmä (%s)"
 
-#: ctk/ctkinfobar.c:1307 ctk/ctkmessagedialog.c:385
+#: ctk/ctkinfobar.c:1303 ctk/ctkmessagedialog.c:384
 msgid "Information"
 msgstr "Tietoja"
 
-#: ctk/ctkinfobar.c:1311 ctk/ctkmessagedialog.c:389
+#: ctk/ctkinfobar.c:1307 ctk/ctkmessagedialog.c:388
 msgid "Question"
 msgstr "Kysymys"
 
-#: ctk/ctkinfobar.c:1315 ctk/ctkmessagedialog.c:393
+#: ctk/ctkinfobar.c:1311 ctk/ctkmessagedialog.c:392
 msgid "Warning"
 msgstr "Varoitus"
 
-#: ctk/ctkinfobar.c:1319 ctk/ctkmessagedialog.c:397
+#: ctk/ctkinfobar.c:1315 ctk/ctkmessagedialog.c:396
 msgid "Error"
 msgstr "Virhe"
 
 #. Open Link
-#: ctk/ctklabel.c:6661
+#: ctk/ctklabel.c:6657
 msgid "_Open Link"
 msgstr "_Avaa linkki"
 
 #. Copy Link Address
-#: ctk/ctklabel.c:6670
+#: ctk/ctklabel.c:6666
 msgid "Copy _Link Address"
 msgstr "Kopioi _linkin osoite"
 
@@ -2857,16 +2857,16 @@ msgstr "Asetettavat CTK+-vianjäljitysvalinnat"
 msgid "CTK+ debugging flags to unset"
 msgstr "Poistettavat CTK+-vianjäljitysvalinnat"
 
-#: ctk/ctkmain.c:810 ctk/ctkmain.c:1004
+#: ctk/ctkmain.c:808 ctk/ctkmain.c:1002
 #, c-format
 msgid "Cannot open display: %s"
 msgstr "Näyttöä ei voi avata: %s"
 
-#: ctk/ctkmain.c:922
+#: ctk/ctkmain.c:920
 msgid "CTK+ Options"
 msgstr "CTK+-valitsimet"
 
-#: ctk/ctkmain.c:922
+#: ctk/ctkmain.c:920
 msgid "Show CTK+ Options"
 msgstr "Näytä CTK+-valitsimet"
 
@@ -2875,85 +2875,85 @@ msgstr "Näytä CTK+-valitsimet"
 #. * Do *not* translate it to "predefinito:LTR", if it
 #. * it isn't default:LTR or default:RTL it will not work
 #.
-#: ctk/ctkmain.c:1275
+#: ctk/ctkmain.c:1273
 msgid "default:LTR"
 msgstr "default:LTR"
 
-#: ctk/ctkmessagedialog.c:956
+#: ctk/ctkmessagedialog.c:950
 msgid "_No"
 msgstr "_Ei"
 
-#: ctk/ctkmessagedialog.c:957
+#: ctk/ctkmessagedialog.c:951
 msgid "_Yes"
 msgstr "_Kyllä"
 
-#: ctk/ctkmountoperation.c:595
+#: ctk/ctkmountoperation.c:594
 msgid "Co_nnect"
 msgstr "_Yhdistä"
 
-#: ctk/ctkmountoperation.c:668
+#: ctk/ctkmountoperation.c:667
 msgid "Connect As"
 msgstr "Yhdistä"
 
-#: ctk/ctkmountoperation.c:677
+#: ctk/ctkmountoperation.c:676
 msgid "_Anonymous"
 msgstr "_Anonyymisti"
 
-#: ctk/ctkmountoperation.c:686
+#: ctk/ctkmountoperation.c:685
 msgid "Registered U_ser"
 msgstr "_Rekisteröityneenä käyttäjänä"
 
-#: ctk/ctkmountoperation.c:697
+#: ctk/ctkmountoperation.c:696
 msgid "_Username"
 msgstr "_Käyttäjätunnus"
 
-#: ctk/ctkmountoperation.c:702
+#: ctk/ctkmountoperation.c:701
 msgid "_Domain"
 msgstr "_Toimialue"
 
-#: ctk/ctkmountoperation.c:711
+#: ctk/ctkmountoperation.c:710
 msgid "Volume type"
 msgstr "Taltion tyyppi"
 
-#: ctk/ctkmountoperation.c:721
+#: ctk/ctkmountoperation.c:720
 msgid "_Hidden"
 msgstr "_Piilotettu"
 
-#: ctk/ctkmountoperation.c:724
+#: ctk/ctkmountoperation.c:723
 msgid "_Windows system"
 msgstr "_Windows-järjestelmä"
 
-#: ctk/ctkmountoperation.c:727
+#: ctk/ctkmountoperation.c:726
 msgid "_PIM"
 msgstr "_PIM"
 
-#: ctk/ctkmountoperation.c:733
+#: ctk/ctkmountoperation.c:732
 msgid "_Password"
 msgstr "_Salasana"
 
-#: ctk/ctkmountoperation.c:755
+#: ctk/ctkmountoperation.c:754
 msgid "Forget password _immediately"
 msgstr "_Unohda salasana heti"
 
-#: ctk/ctkmountoperation.c:765
+#: ctk/ctkmountoperation.c:764
 msgid "Remember password until you _logout"
 msgstr "Muista _uloskirjautumiseen saakka"
 
-#: ctk/ctkmountoperation.c:775
+#: ctk/ctkmountoperation.c:774
 msgid "Remember _forever"
 msgstr "_Muista aina"
 
-#: ctk/ctkmountoperation.c:1170
+#: ctk/ctkmountoperation.c:1169
 #, c-format
 msgid "Unknown Application (PID %d)"
 msgstr "Tuntematon sovellus (prosessitunniste %d)"
 
-#: ctk/ctkmountoperation.c:1355
+#: ctk/ctkmountoperation.c:1354
 #, c-format
 msgid "Unable to end process"
 msgstr "Ei voitu päättää prosessia"
 
-#: ctk/ctkmountoperation.c:1389
+#: ctk/ctkmountoperation.c:1388
 msgid "_End Process"
 msgstr "_Päätä prosessi"
 
@@ -3008,7 +3008,7 @@ msgstr "Mikä tahansa tulostin"
 msgid "For portable documents"
 msgstr "siirrettäville asiakirjoille"
 
-#: ctk/ctkpagesetupunixdialog.c:832
+#: ctk/ctkpagesetupunixdialog.c:830
 #, c-format
 msgid ""
 "Margins:\n"
@@ -3023,12 +3023,12 @@ msgstr ""
 " Ylä: %s %s\n"
 " Ala: %s %s"
 
-#: ctk/ctkpagesetupunixdialog.c:881 ctk/ctkprintunixdialog.c:3393
+#: ctk/ctkpagesetupunixdialog.c:879 ctk/ctkprintunixdialog.c:3391
 msgid "Manage Custom Sizes…"
 msgstr "Hallitse omia kokoja…"
 
 # , c-format
-#: ctk/ctkpagesetupunixdialog.c:903 ctk/ui/ctkpagesetupunixdialog.ui:31
+#: ctk/ctkpagesetupunixdialog.c:901 ctk/ui/ctkpagesetupunixdialog.ui:31
 #: ctk/ui/ctkprintunixdialog.ui:854
 msgid "Page Setup"
 msgstr "Sivun asetukset"
@@ -3372,7 +3372,7 @@ msgstr "_Muista salasana"
 msgid "Select a filename"
 msgstr "Valitse tiedostonimi"
 
-#: ctk/ctkprinteroptionwidget.c:769
+#: ctk/ctkprinteroptionwidget.c:767
 msgid "Not available"
 msgstr "Ei saatavilla"
 
@@ -3435,7 +3435,7 @@ msgstr "Valmistui virheellisesti"
 msgid "Preparing %d"
 msgstr "Valmistellaan %d"
 
-#: ctk/ctkprintoperation.c:2376 ctk/ctkprintoperation.c:3007
+#: ctk/ctkprintoperation.c:2376 ctk/ctkprintoperation.c:3005
 #, c-format
 msgid "Preparing"
 msgstr "Valmistelaan"
@@ -3445,19 +3445,19 @@ msgstr "Valmistelaan"
 msgid "Printing %d"
 msgstr "Tulostetaan %d"
 
-#: ctk/ctkprintoperation.c:3038
+#: ctk/ctkprintoperation.c:3036
 #, c-format
 msgid "Error creating print preview"
 msgstr "Virhe luotaessa tulostuksen esikatselua"
 
-#: ctk/ctkprintoperation.c:3041
+#: ctk/ctkprintoperation.c:3039
 #, c-format
 msgid "The most probable reason is that a temporary file could not be created."
 msgstr "Yleisin vian syy on, ettei väliaikaistiedostoa voitu luoda."
 
 #. window
 #: ctk/ctkprintoperation-portal.c:231 ctk/ctkprintoperation-portal.c:549
-#: ctk/ctkprintoperation-portal.c:618 ctk/ctkprintunixdialog.c:3415
+#: ctk/ctkprintoperation-portal.c:618 ctk/ctkprintunixdialog.c:3413
 msgid "Print"
 msgstr "Tulosta"
 
@@ -3471,7 +3471,7 @@ msgstr "Paperi on loppu"
 
 #. Translators: this is a printer status.
 #: ctk/ctkprintoperation-win32.c:635
-#: modules/printbackends/cups/ctkprintbackendcups.c:2628
+#: modules/printbackends/cups/ctkprintbackendcups.c:2681
 msgid "Paused"
 msgstr "Pysäytetty"
 
@@ -3539,42 +3539,42 @@ msgstr "Haetaan tulostimen tietoja…"
 #. * multiple pages on a sheet when printing
 #.
 #: ctk/ctkprintunixdialog.c:3120
-#: modules/printbackends/cups/ctkprintbackendcups.c:5508
+#: modules/printbackends/cups/ctkprintbackendcups.c:5731
 msgid "Left to right, top to bottom"
 msgstr "Vasemmalta oikealle, ylhäältä alas"
 
 #: ctk/ctkprintunixdialog.c:3120
-#: modules/printbackends/cups/ctkprintbackendcups.c:5508
+#: modules/printbackends/cups/ctkprintbackendcups.c:5731
 msgid "Left to right, bottom to top"
 msgstr "Vasemmalta oikealle, alhaalta ylös"
 
 #: ctk/ctkprintunixdialog.c:3121
-#: modules/printbackends/cups/ctkprintbackendcups.c:5509
+#: modules/printbackends/cups/ctkprintbackendcups.c:5732
 msgid "Right to left, top to bottom"
 msgstr "Oikealta vasemmalle, ylhäältä alas"
 
 #: ctk/ctkprintunixdialog.c:3121
-#: modules/printbackends/cups/ctkprintbackendcups.c:5509
+#: modules/printbackends/cups/ctkprintbackendcups.c:5732
 msgid "Right to left, bottom to top"
 msgstr "Oikealta vasemmalle, alhaalta ylös"
 
 #: ctk/ctkprintunixdialog.c:3122
-#: modules/printbackends/cups/ctkprintbackendcups.c:5510
+#: modules/printbackends/cups/ctkprintbackendcups.c:5733
 msgid "Top to bottom, left to right"
 msgstr "Ylhäältä alas, vasemmalta oikealle"
 
 #: ctk/ctkprintunixdialog.c:3122
-#: modules/printbackends/cups/ctkprintbackendcups.c:5510
+#: modules/printbackends/cups/ctkprintbackendcups.c:5733
 msgid "Top to bottom, right to left"
 msgstr "Ylhäältä alas, oikealta vasemmalle"
 
 #: ctk/ctkprintunixdialog.c:3123
-#: modules/printbackends/cups/ctkprintbackendcups.c:5511
+#: modules/printbackends/cups/ctkprintbackendcups.c:5734
 msgid "Bottom to top, left to right"
 msgstr "Alhaalta ylös, vasemmalta oikealle"
 
 #: ctk/ctkprintunixdialog.c:3123
-#: modules/printbackends/cups/ctkprintbackendcups.c:5511
+#: modules/printbackends/cups/ctkprintbackendcups.c:5734
 msgid "Bottom to top, right to left"
 msgstr "Alhaalta ylös, oikealta vasemmalle"
 
@@ -3604,36 +3604,36 @@ msgctxt "progress bar label"
 msgid "%.0f %%"
 msgstr "%.0f %%"
 
-#: ctk/ctkrecentchooserdefault.c:1075 ctk/ctkrecentchooserdefault.c:1112
+#: ctk/ctkrecentchooserdefault.c:1072 ctk/ctkrecentchooserdefault.c:1109
 #, c-format
 msgid "No item for URI '%s' found"
 msgstr "Kohtaa URIlle ”%s” ei löytynyt"
 
-#: ctk/ctkrecentchooserdefault.c:1239
+#: ctk/ctkrecentchooserdefault.c:1236
 msgid "Untitled filter"
 msgstr "Nimeämätön suodatin"
 
-#: ctk/ctkrecentchooserdefault.c:1561
+#: ctk/ctkrecentchooserdefault.c:1558
 msgid "Could not remove item"
 msgstr "Kohteen poistaminen ei onnistunut"
 
-#: ctk/ctkrecentchooserdefault.c:1605
+#: ctk/ctkrecentchooserdefault.c:1602
 msgid "Could not clear list"
 msgstr "Luetteloa ei voitu tyhjentää"
 
-#: ctk/ctkrecentchooserdefault.c:1689
+#: ctk/ctkrecentchooserdefault.c:1686
 msgid "Copy _Location"
 msgstr "Kopioi si_jainti"
 
-#: ctk/ctkrecentchooserdefault.c:1700
+#: ctk/ctkrecentchooserdefault.c:1697
 msgid "_Remove From List"
 msgstr "_Poista luettelosta"
 
-#: ctk/ctkrecentchooserdefault.c:1707
+#: ctk/ctkrecentchooserdefault.c:1704
 msgid "_Clear List"
 msgstr "_Tyhjennä luettelo"
 
-#: ctk/ctkrecentchooserdefault.c:1719
+#: ctk/ctkrecentchooserdefault.c:1716
 msgid "Show _Private Resources"
 msgstr "Näytä _yksityiset resurssit"
 
@@ -4252,7 +4252,7 @@ msgstr ""
 msgid "Label"
 msgstr ""
 
-#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1389
+#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1387
 msgid "Action"
 msgstr "Toiminto"
 
@@ -4283,9 +4283,9 @@ msgid "Default Widget"
 msgstr "Oletussovellus"
 
 #: ctk/inspector/misc-info.ui:192 ctk/inspector/misc-info.ui:237
-#: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1071
-#: ctk/inspector/prop-editor.c:1270 ctk/inspector/prop-editor.c:1397
-#: ctk/inspector/prop-editor.c:1508 ctk/inspector/window.ui:382
+#: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1069
+#: ctk/inspector/prop-editor.c:1268 ctk/inspector/prop-editor.c:1395
+#: ctk/inspector/prop-editor.c:1506 ctk/inspector/window.ui:382
 msgid "Properties"
 msgstr "Ominaisuudet"
 
@@ -4377,71 +4377,71 @@ msgstr "Tuntematon"
 msgid "Object: %p (%s)"
 msgstr "Objekti: %p (%s)"
 
-#: ctk/inspector/prop-editor.c:1141
+#: ctk/inspector/prop-editor.c:1139
 #, fuzzy, c-format
 msgid "Uneditable property type: %s"
 msgstr "Kohteen %s pysäyttäminen ei onnistunut"
 
-#: ctk/inspector/prop-editor.c:1261
+#: ctk/inspector/prop-editor.c:1259
 msgid "Attribute mapping"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1266
+#: ctk/inspector/prop-editor.c:1264
 msgid "Model:"
 msgstr "Malli:"
 
-#: ctk/inspector/prop-editor.c:1267
+#: ctk/inspector/prop-editor.c:1265
 #, c-format
 msgid "%p (%s)"
 msgstr "%p (%s)"
 
-#: ctk/inspector/prop-editor.c:1277
+#: ctk/inspector/prop-editor.c:1275
 msgid "Column:"
 msgstr "Sarake:"
 
-#: ctk/inspector/prop-editor.c:1287
+#: ctk/inspector/prop-editor.c:1285
 msgctxt "property name"
 msgid "None"
 msgstr "Ei mitään"
 
-#: ctk/inspector/prop-editor.c:1393
+#: ctk/inspector/prop-editor.c:1391
 #, c-format
 msgid "Defined at: %p (%s)"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1457 ctk/inspector/prop-editor.c:1473
+#: ctk/inspector/prop-editor.c:1455 ctk/inspector/prop-editor.c:1471
 msgid "inverted"
 msgstr "käänteinen"
 
-#: ctk/inspector/prop-editor.c:1489
+#: ctk/inspector/prop-editor.c:1487
 msgid "bidirectional, inverted"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1494 ctk/inspector/prop-editor.c:1608
+#: ctk/inspector/prop-editor.c:1492 ctk/inspector/prop-editor.c:1606
 msgid "bidirectional"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1499
+#: ctk/inspector/prop-editor.c:1497
 msgid "Binding:"
 msgstr "Sidonta:"
 
-#: ctk/inspector/prop-editor.c:1627
+#: ctk/inspector/prop-editor.c:1625
 msgid "Setting:"
 msgstr "Asetus:"
 
-#: ctk/inspector/prop-editor.c:1667
+#: ctk/inspector/prop-editor.c:1665
 msgid "Source:"
 msgstr "Lähde:"
 
-#: ctk/inspector/prop-editor.c:1669
+#: ctk/inspector/prop-editor.c:1667
 msgid "Reset"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1683
+#: ctk/inspector/prop-editor.c:1681
 msgid "Theme"
 msgstr "Teema"
 
-#: ctk/inspector/prop-editor.c:1686
+#: ctk/inspector/prop-editor.c:1684
 msgid "XSettings"
 msgstr "XSettings"
 
@@ -7743,7 +7743,7 @@ msgstr ""
 "--ignore-theme-index.\n"
 
 #. ID
-#: modules/input/imam-et.c:452
+#: modules/input/imam-et.c:450
 #, fuzzy
 msgctxt "input method menu"
 msgid "Amharic (EZ+)"
@@ -7756,14 +7756,14 @@ msgid "Broadway"
 msgstr "Broadway"
 
 #. ID
-#: modules/input/imcedilla.c:90
+#: modules/input/imcedilla.c:88
 #, fuzzy
 msgctxt "input method menu"
 msgid "Cedilla"
 msgstr "Sedilji"
 
 #. ID
-#: modules/input/imcyrillic-translit.c:215
+#: modules/input/imcyrillic-translit.c:213
 #, fuzzy
 msgctxt "input menthod menu"
 msgid "Cyrillic (Transliterated)"
@@ -7775,14 +7775,14 @@ msgid "Windows IME"
 msgstr "Windows IME"
 
 #. ID
-#: modules/input/iminuktitut.c:125
+#: modules/input/iminuktitut.c:123
 #, fuzzy
 msgctxt "input method menu"
 msgid "Inuktitut (Transliterated)"
 msgstr "Inukitut (translitteroitu)"
 
 #. ID
-#: modules/input/imipa.c:143
+#: modules/input/imipa.c:141
 #, fuzzy
 msgctxt "input method menu"
 msgid "IPA"
@@ -7808,21 +7808,21 @@ msgid "Thai-Lao"
 msgstr "Thai-Lao"
 
 #. ID
-#: modules/input/imti-er.c:451
+#: modules/input/imti-er.c:449
 #, fuzzy
 msgctxt "input method menu"
 msgid "Tigrigna-Eritrean (EZ+)"
 msgstr "Tigrigna-Eritrea (EZ+)"
 
 #. ID
-#: modules/input/imti-et.c:451
+#: modules/input/imti-et.c:449
 #, fuzzy
 msgctxt "input method menu"
 msgid "Tigrigna-Ethiopian (EZ+)"
 msgstr "Tigrigna-Etiopia (EZ+)"
 
 #. ID
-#: modules/input/imviqr.c:242
+#: modules/input/imviqr.c:240
 #, fuzzy
 msgctxt "input method menu"
 msgid "Vietnamese (VIQR)"
@@ -7848,466 +7848,466 @@ msgstr "X-syöttötapa"
 
 #. Translators: The printer status is online, i.e. it is
 #. * ready to print.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:744
+#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:740
 msgid "Online"
 msgstr "Valmiina"
 
 #. Translators: The printer is offline.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:751
+#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:747
 msgid "Offline"
 msgstr ""
 
 #. We shouldn't get here because the query omits dormant
 #. * printers by default.
 #. Translators: Printer has been offline for a long time.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:757
+#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:753
 msgid "Dormant"
 msgstr ""
 
 #. How many document pages to go onto one side of paper.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:941
-#: modules/printbackends/file/ctkprintbackendfile.c:679
+#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:937
+#: modules/printbackends/file/ctkprintbackendfile.c:675
 #: modules/printbackends/test/ctkprintbackendtest.c:503
 msgid "Pages per _sheet:"
 msgstr "Sivuja a_rkille:"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1129
-#: modules/printbackends/cups/ctkprintbackendcups.c:1439
+#: modules/printbackends/cups/ctkprintbackendcups.c:1155
+#: modules/printbackends/cups/ctkprintbackendcups.c:1465
 msgid "Username:"
 msgstr "Käyttäjätunnus:"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1130
-#: modules/printbackends/cups/ctkprintbackendcups.c:1448
+#: modules/printbackends/cups/ctkprintbackendcups.c:1156
+#: modules/printbackends/cups/ctkprintbackendcups.c:1474
 msgid "Password:"
 msgstr "Salasana:"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1169
-#: modules/printbackends/cups/ctkprintbackendcups.c:1461
+#: modules/printbackends/cups/ctkprintbackendcups.c:1195
+#: modules/printbackends/cups/ctkprintbackendcups.c:1487
 #, c-format
 msgid "Authentication is required to print document “%s” on printer %s"
 msgstr ""
 "Tunnistautuminen vaaditaan asiakirjan “%s” tulostamiseksi tulostimella %s"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1171
+#: modules/printbackends/cups/ctkprintbackendcups.c:1197
 #, c-format
 msgid "Authentication is required to print a document on %s"
 msgstr "Todennus vaaditaan asiakirjan tulostamiseksi isännällä %s"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1175
+#: modules/printbackends/cups/ctkprintbackendcups.c:1201
 #, c-format
 msgid "Authentication is required to get attributes of job “%s”"
 msgstr "Tunnistautuminen vaaditaan työn “%s” määreiden saamiseksi"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1177
+#: modules/printbackends/cups/ctkprintbackendcups.c:1203
 msgid "Authentication is required to get attributes of a job"
 msgstr "Todennus vaaditaan työn määreiden saamiseksi"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1181
+#: modules/printbackends/cups/ctkprintbackendcups.c:1207
 #, c-format
 msgid "Authentication is required to get attributes of printer %s"
 msgstr "Todennus vaaditaan tulostimen %s määreiden saamiseksi"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1183
+#: modules/printbackends/cups/ctkprintbackendcups.c:1209
 msgid "Authentication is required to get attributes of a printer"
 msgstr "Todennus vaaditaan tulostimen määreiden saamiseksi"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1186
+#: modules/printbackends/cups/ctkprintbackendcups.c:1212
 #, c-format
 msgid "Authentication is required to get default printer of %s"
 msgstr "Todennus vaaditaan isännän %s oletustulostimen saamiseksi"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1189
+#: modules/printbackends/cups/ctkprintbackendcups.c:1215
 #, c-format
 msgid "Authentication is required to get printers from %s"
 msgstr "Todennus vaaditaan tulostimien saamiseksi isännältä %s"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1194
+#: modules/printbackends/cups/ctkprintbackendcups.c:1220
 #, c-format
 msgid "Authentication is required to get a file from %s"
 msgstr "Todennus vaaditaan tiedoston saamiksesi isännältä %s"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1196
+#: modules/printbackends/cups/ctkprintbackendcups.c:1222
 #, c-format
 msgid "Authentication is required on %s"
 msgstr "Todennus vaaditaan isännällä %s"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1433
+#: modules/printbackends/cups/ctkprintbackendcups.c:1459
 msgid "Domain:"
 msgstr "Toimialue:"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1463
+#: modules/printbackends/cups/ctkprintbackendcups.c:1489
 #, c-format
 msgid "Authentication is required to print document “%s”"
 msgstr "Asiakirjan “%s” tulostus vaatii tunnistautumisen"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1468
+#: modules/printbackends/cups/ctkprintbackendcups.c:1494
 #, c-format
 msgid "Authentication is required to print this document on printer %s"
 msgstr "Tämän asiakirjan tulostaminen tulostimella %s vaatii tunnistautumisen"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1470
+#: modules/printbackends/cups/ctkprintbackendcups.c:1496
 msgid "Authentication is required to print this document"
 msgstr "Tämän asiakirjan tulostaminen vaatii tunnistautumisen"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2557
+#: modules/printbackends/cups/ctkprintbackendcups.c:2610
 #, c-format
 msgid "Printer “%s” is low on toner."
 msgstr "Tulostimesta “%s” on väri vähissä."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2561
+#: modules/printbackends/cups/ctkprintbackendcups.c:2614
 #, c-format
 msgid "Printer “%s” has no toner left."
 msgstr "Tulostimesta “%s” on väri loppu."
 
 #. Translators: "Developer" like on photo development context
-#: modules/printbackends/cups/ctkprintbackendcups.c:2566
+#: modules/printbackends/cups/ctkprintbackendcups.c:2619
 #, c-format
 msgid "Printer “%s” is low on developer."
 msgstr "Tulostimesta “%s” on kehite vähissä."
 
 #. Translators: "Developer" like on photo development context
-#: modules/printbackends/cups/ctkprintbackendcups.c:2571
+#: modules/printbackends/cups/ctkprintbackendcups.c:2624
 #, c-format
 msgid "Printer “%s” is out of developer."
 msgstr "Tulostimesta “%s” on kehite loppu."
 
 #. Translators: "marker" is one color bin of the printer
-#: modules/printbackends/cups/ctkprintbackendcups.c:2576
+#: modules/printbackends/cups/ctkprintbackendcups.c:2629
 #, c-format
 msgid "Printer “%s” is low on at least one marker supply."
 msgstr "Tulostimesta “%s” on ainakin yksi väri vähissä."
 
 #. Translators: "marker" is one color bin of the printer
-#: modules/printbackends/cups/ctkprintbackendcups.c:2581
+#: modules/printbackends/cups/ctkprintbackendcups.c:2634
 #, c-format
 msgid "Printer “%s” is out of at least one marker supply."
 msgstr "Tulostimesta “%s” on ainakin yksi väri loppu."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2585
+#: modules/printbackends/cups/ctkprintbackendcups.c:2638
 #, c-format
 msgid "The cover is open on printer “%s”."
 msgstr "Tulostimen “%s” kansi on auki."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2589
+#: modules/printbackends/cups/ctkprintbackendcups.c:2642
 #, c-format
 msgid "The door is open on printer “%s”."
 msgstr "Tulostimen “%s” luukku on auki."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2593
+#: modules/printbackends/cups/ctkprintbackendcups.c:2646
 #, c-format
 msgid "Printer “%s” is low on paper."
 msgstr "Tulostimesta “%s” on paperi vähissä."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2597
+#: modules/printbackends/cups/ctkprintbackendcups.c:2650
 #, c-format
 msgid "Printer “%s” is out of paper."
 msgstr "Tulostimesta “%s” on paperi loppu."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2601
+#: modules/printbackends/cups/ctkprintbackendcups.c:2654
 #, c-format
 msgid "Printer “%s” is currently offline."
 msgstr "Tulostin “%s” ei ole yhdistettynä."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2605
+#: modules/printbackends/cups/ctkprintbackendcups.c:2658
 #, c-format
 msgid "There is a problem on printer “%s”."
 msgstr "Tulostimessa “%s” on ongelma."
 
 #. Translators: this is a printer status.
-#: modules/printbackends/cups/ctkprintbackendcups.c:2625
+#: modules/printbackends/cups/ctkprintbackendcups.c:2678
 msgid "Paused; Rejecting Jobs"
 msgstr "Keskeytetty; työt hylätään"
 
 #. Translators: this is a printer status.
-#: modules/printbackends/cups/ctkprintbackendcups.c:2631
+#: modules/printbackends/cups/ctkprintbackendcups.c:2684
 msgid "Rejecting Jobs"
 msgstr "Työt hylätään"
 
 #. Translators: this string connects multiple printer states together.
-#: modules/printbackends/cups/ctkprintbackendcups.c:2672
+#: modules/printbackends/cups/ctkprintbackendcups.c:2725
 msgid "; "
 msgstr "; "
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4453
-#: modules/printbackends/cups/ctkprintbackendcups.c:4520
+#: modules/printbackends/cups/ctkprintbackendcups.c:4676
+#: modules/printbackends/cups/ctkprintbackendcups.c:4743
 msgctxt "printing option"
 msgid "Two Sided"
 msgstr "Kaksipuolinen"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4454
+#: modules/printbackends/cups/ctkprintbackendcups.c:4677
 msgctxt "printing option"
 msgid "Paper Type"
 msgstr "Paperin tyyppi"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4455
+#: modules/printbackends/cups/ctkprintbackendcups.c:4678
 msgctxt "printing option"
 msgid "Paper Source"
 msgstr "Paperin lähde"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4456
-#: modules/printbackends/cups/ctkprintbackendcups.c:4521
+#: modules/printbackends/cups/ctkprintbackendcups.c:4679
+#: modules/printbackends/cups/ctkprintbackendcups.c:4744
 msgctxt "printing option"
 msgid "Output Tray"
 msgstr "Tulostuskaukalo"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4457
+#: modules/printbackends/cups/ctkprintbackendcups.c:4680
 msgctxt "printing option"
 msgid "Resolution"
 msgstr "Tarkkuus"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4458
+#: modules/printbackends/cups/ctkprintbackendcups.c:4681
 msgctxt "printing option"
 msgid "GhostScript pre-filtering"
 msgstr "GhostScript-esisuodatus"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4467
+#: modules/printbackends/cups/ctkprintbackendcups.c:4690
 msgctxt "printing option value"
 msgid "One Sided"
 msgstr "Yksipuolinen"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4469
+#: modules/printbackends/cups/ctkprintbackendcups.c:4692
 msgctxt "printing option value"
 msgid "Long Edge (Standard)"
 msgstr "Pitkä reuna (tavallinen)"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4471
+#: modules/printbackends/cups/ctkprintbackendcups.c:4694
 msgctxt "printing option value"
 msgid "Short Edge (Flip)"
 msgstr "Lyhyt reuna (käännetty)"
 
 #. Translators: this is an option of "Paper Source"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4473
-#: modules/printbackends/cups/ctkprintbackendcups.c:4475
-#: modules/printbackends/cups/ctkprintbackendcups.c:4483
+#: modules/printbackends/cups/ctkprintbackendcups.c:4696
+#: modules/printbackends/cups/ctkprintbackendcups.c:4698
+#: modules/printbackends/cups/ctkprintbackendcups.c:4706
 msgctxt "printing option value"
 msgid "Auto Select"
 msgstr "Valitse automaattisesti"
 
 #. Translators: this is an option of "Paper Source"
 #. Translators: this is an option of "Resolution"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4477
-#: modules/printbackends/cups/ctkprintbackendcups.c:4479
-#: modules/printbackends/cups/ctkprintbackendcups.c:4481
-#: modules/printbackends/cups/ctkprintbackendcups.c:4485
+#: modules/printbackends/cups/ctkprintbackendcups.c:4700
+#: modules/printbackends/cups/ctkprintbackendcups.c:4702
+#: modules/printbackends/cups/ctkprintbackendcups.c:4704
+#: modules/printbackends/cups/ctkprintbackendcups.c:4708
 msgctxt "printing option value"
 msgid "Printer Default"
 msgstr "Tulostimen oletus"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4487
+#: modules/printbackends/cups/ctkprintbackendcups.c:4710
 msgctxt "printing option value"
 msgid "Embed GhostScript fonts only"
 msgstr "Upota vain GhostScript-fontit"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4489
+#: modules/printbackends/cups/ctkprintbackendcups.c:4712
 msgctxt "printing option value"
 msgid "Convert to PS level 1"
 msgstr "Muunna PS-tasoksi 1"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4491
+#: modules/printbackends/cups/ctkprintbackendcups.c:4714
 msgctxt "printing option value"
 msgid "Convert to PS level 2"
 msgstr "Muunna PS-tasoksi 2"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4493
+#: modules/printbackends/cups/ctkprintbackendcups.c:4716
 msgctxt "printing option value"
 msgid "No pre-filtering"
 msgstr "Ei esisuodatusta"
 
 #. Translators: "Miscellaneous" is the label for a button, that opens
 #. up an extra panel of settings in a print dialog.
-#: modules/printbackends/cups/ctkprintbackendcups.c:4502
+#: modules/printbackends/cups/ctkprintbackendcups.c:4725
 msgctxt "printing option group"
 msgid "Miscellaneous"
 msgstr "Lisäasetukset"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4529
+#: modules/printbackends/cups/ctkprintbackendcups.c:4752
 msgctxt "sides"
 msgid "One Sided"
 msgstr "Yksipuolinen"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4531
+#: modules/printbackends/cups/ctkprintbackendcups.c:4754
 msgctxt "sides"
 msgid "Long Edge (Standard)"
 msgstr "Pitkä reuna (tavallinen)"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4533
+#: modules/printbackends/cups/ctkprintbackendcups.c:4756
 msgctxt "sides"
 msgid "Short Edge (Flip)"
 msgstr "Lyhyt reuna (käännetty)"
 
 #. Translators: Top output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4536
+#: modules/printbackends/cups/ctkprintbackendcups.c:4759
 msgctxt "output-bin"
 msgid "Top Bin"
 msgstr ""
 
 #. Translators: Middle output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4538
+#: modules/printbackends/cups/ctkprintbackendcups.c:4761
 msgctxt "output-bin"
 msgid "Middle Bin"
 msgstr ""
 
 #. Translators: Bottom output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4540
+#: modules/printbackends/cups/ctkprintbackendcups.c:4763
 #, fuzzy
 msgctxt "output-bin"
 msgid "Bottom Bin"
 msgstr "_Alin"
 
 #. Translators: Side output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4542
+#: modules/printbackends/cups/ctkprintbackendcups.c:4765
 msgctxt "output-bin"
 msgid "Side Bin"
 msgstr ""
 
 #. Translators: Left output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4544
+#: modules/printbackends/cups/ctkprintbackendcups.c:4767
 #, fuzzy
 msgctxt "output-bin"
 msgid "Left Bin"
 msgstr "Vasen"
 
 #. Translators: Right output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4546
+#: modules/printbackends/cups/ctkprintbackendcups.c:4769
 #, fuzzy
 msgctxt "output-bin"
 msgid "Right Bin"
 msgstr "Oikea"
 
 #. Translators: Center output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4548
+#: modules/printbackends/cups/ctkprintbackendcups.c:4771
 #, fuzzy
 msgctxt "output-bin"
 msgid "Center Bin"
 msgstr "_Keskitä"
 
 #. Translators: Rear output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4550
+#: modules/printbackends/cups/ctkprintbackendcups.c:4773
 msgctxt "output-bin"
 msgid "Rear Bin"
 msgstr ""
 
 #. Translators: Output bin where one sided output is oriented in the face-up position
-#: modules/printbackends/cups/ctkprintbackendcups.c:4552
+#: modules/printbackends/cups/ctkprintbackendcups.c:4775
 msgctxt "output-bin"
 msgid "Face Up Bin"
 msgstr ""
 
 #. Translators: Output bin where one sided output is oriented in the face-down position
-#: modules/printbackends/cups/ctkprintbackendcups.c:4554
+#: modules/printbackends/cups/ctkprintbackendcups.c:4777
 msgctxt "output-bin"
 msgid "Face Down Bin"
 msgstr ""
 
 #. Translators: Large capacity output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4556
+#: modules/printbackends/cups/ctkprintbackendcups.c:4779
 msgctxt "output-bin"
 msgid "Large Capacity Bin"
 msgstr ""
 
 #. Translators: Output stacker number %d
-#: modules/printbackends/cups/ctkprintbackendcups.c:4578
+#: modules/printbackends/cups/ctkprintbackendcups.c:4801
 #, c-format
 msgctxt "output-bin"
 msgid "Stacker %d"
 msgstr ""
 
 #. Translators: Output mailbox number %d
-#: modules/printbackends/cups/ctkprintbackendcups.c:4582
+#: modules/printbackends/cups/ctkprintbackendcups.c:4805
 #, c-format
 msgctxt "output-bin"
 msgid "Mailbox %d"
 msgstr "Postilokero %d"
 
 #. Translators: Private mailbox
-#: modules/printbackends/cups/ctkprintbackendcups.c:4586
+#: modules/printbackends/cups/ctkprintbackendcups.c:4809
 msgctxt "output-bin"
 msgid "My Mailbox"
 msgstr "Oma postilokero"
 
 #. Translators: Output tray number %d
-#: modules/printbackends/cups/ctkprintbackendcups.c:4590
+#: modules/printbackends/cups/ctkprintbackendcups.c:4813
 #, c-format
 msgctxt "output-bin"
 msgid "Tray %d"
 msgstr "Tulostuskaukalo %d"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5061
+#: modules/printbackends/cups/ctkprintbackendcups.c:5284
 msgid "Printer Default"
 msgstr "Tulostimen oletus"
 
 #. Translators: These strings name the possible values of the
 #. * job priority option in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5503
+#: modules/printbackends/cups/ctkprintbackendcups.c:5726
 msgid "Urgent"
 msgstr "Kiireellinen"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5503
+#: modules/printbackends/cups/ctkprintbackendcups.c:5726
 msgid "High"
 msgstr "Tärkeä"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5503
+#: modules/printbackends/cups/ctkprintbackendcups.c:5726
 msgid "Medium"
 msgstr "Tavallinen"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5503
+#: modules/printbackends/cups/ctkprintbackendcups.c:5726
 msgid "Low"
 msgstr "Ei kiireellinen"
 
 #. Translators, this string is used to label the job priority option
 #. * in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5533
+#: modules/printbackends/cups/ctkprintbackendcups.c:5756
 msgid "Job Priority"
 msgstr "Työn tärkeys"
 
 #. Translators, this string is used to label the billing info entry
 #. * in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5544
+#: modules/printbackends/cups/ctkprintbackendcups.c:5767
 msgid "Billing Info"
 msgstr "Laskutustiedot"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5568
+#: modules/printbackends/cups/ctkprintbackendcups.c:5791
 msgctxt "cover page"
 msgid "None"
 msgstr "Ei mitään"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5569
+#: modules/printbackends/cups/ctkprintbackendcups.c:5792
 msgctxt "cover page"
 msgid "Classified"
 msgstr "Luokiteltu"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5570
+#: modules/printbackends/cups/ctkprintbackendcups.c:5793
 msgctxt "cover page"
 msgid "Confidential"
 msgstr "Luottamuksellinen"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5571
+#: modules/printbackends/cups/ctkprintbackendcups.c:5794
 msgctxt "cover page"
 msgid "Secret"
 msgstr "Salainen"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5572
+#: modules/printbackends/cups/ctkprintbackendcups.c:5795
 msgctxt "cover page"
 msgid "Standard"
 msgstr "Normaali"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5573
+#: modules/printbackends/cups/ctkprintbackendcups.c:5796
 msgctxt "cover page"
 msgid "Top Secret"
 msgstr "Erittäin salainen"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5574
+#: modules/printbackends/cups/ctkprintbackendcups.c:5797
 msgctxt "cover page"
 msgid "Unclassified"
 msgstr "Luokittelematon"
@@ -8315,7 +8315,7 @@ msgstr "Luokittelematon"
 #. Translators, this string is used to label the pages-per-sheet option
 #. * in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5586
+#: modules/printbackends/cups/ctkprintbackendcups.c:5809
 msgctxt "printer option"
 msgid "Pages per Sheet"
 msgstr "Sivuja arkkia kohti"
@@ -8323,7 +8323,7 @@ msgstr "Sivuja arkkia kohti"
 #. Translators, this string is used to label the option in the print
 #. * dialog that controls in what order multiple pages are arranged
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5603
+#: modules/printbackends/cups/ctkprintbackendcups.c:5826
 msgctxt "printer option"
 msgid "Page Ordering"
 msgstr "Sivun järjestys"
@@ -8331,7 +8331,7 @@ msgstr "Sivun järjestys"
 #. Translators, this is the label used for the option in the print
 #. * dialog that controls the front cover page.
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5645
+#: modules/printbackends/cups/ctkprintbackendcups.c:5868
 msgctxt "printer option"
 msgid "Before"
 msgstr "Ennen"
@@ -8339,7 +8339,7 @@ msgstr "Ennen"
 #. Translators, this is the label used for the option in the print
 #. * dialog that controls the back cover page.
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5660
+#: modules/printbackends/cups/ctkprintbackendcups.c:5883
 msgctxt "printer option"
 msgid "After"
 msgstr "Jälkeen"
@@ -8348,7 +8348,7 @@ msgstr "Jälkeen"
 #. * a print job is printed. Possible values are 'now', a specified time,
 #. * or 'on hold'
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5680
+#: modules/printbackends/cups/ctkprintbackendcups.c:5903
 msgctxt "printer option"
 msgid "Print at"
 msgstr "Tulostusaika"
@@ -8356,7 +8356,7 @@ msgstr "Tulostusaika"
 #. Translators: this is the name of the option that allows the user
 #. * to specify a time when a print job will be printed.
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5691
+#: modules/printbackends/cups/ctkprintbackendcups.c:5914
 msgctxt "printer option"
 msgid "Print at time"
 msgstr "Tulosta ajankohtana"
@@ -8366,75 +8366,75 @@ msgstr "Tulosta ajankohtana"
 #. * the width and height in points. E.g: "Custom
 #. * 230.4x142.9"
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5737
+#: modules/printbackends/cups/ctkprintbackendcups.c:5960
 #, c-format
 msgid "Custom %s×%s"
 msgstr "Omavalintainen %s×%s"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5847
+#: modules/printbackends/cups/ctkprintbackendcups.c:6070
 msgctxt "printer option"
 msgid "Printer Profile"
 msgstr "Tulostinprofiili"
 
 #. TRANSLATORS: this is when color profile information is unavailable
-#: modules/printbackends/cups/ctkprintbackendcups.c:5854
+#: modules/printbackends/cups/ctkprintbackendcups.c:6077
 msgctxt "printer option value"
 msgid "Unavailable"
 msgstr "Ei saatavilla"
 
 #. TRANSLATORS: when we're running an old CUPS, and
 #. * it hasn't registered the device with colord
-#: modules/printbackends/cups/ctkprintercups.c:275
+#: modules/printbackends/cups/ctkprintercups.c:273
 msgid "Color management unavailable"
 msgstr "Värinhallinta ei ole käytettävissä"
 
 #. TRANSLATORS: when there is no color profile available
-#: modules/printbackends/cups/ctkprintercups.c:287
+#: modules/printbackends/cups/ctkprintercups.c:285
 msgid "No profile available"
 msgstr "Ei profiilia saatavilla"
 
 #. TRANSLATORS: when the color profile has no title
-#: modules/printbackends/cups/ctkprintercups.c:298
+#: modules/printbackends/cups/ctkprintercups.c:296
 msgid "Unspecified profile"
 msgstr "Määrittelemätön profiili"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:250
+#: modules/printbackends/file/ctkprintbackendfile.c:246
 msgid "output"
 msgstr "tuloste"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:539
+#: modules/printbackends/file/ctkprintbackendfile.c:535
 msgid "Print to File"
 msgstr "Tulosta tiedostoon"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:667
+#: modules/printbackends/file/ctkprintbackendfile.c:663
 msgid "PDF"
 msgstr "PDF"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:667
+#: modules/printbackends/file/ctkprintbackendfile.c:663
 msgid "Postscript"
 msgstr "Postscript"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:667
+#: modules/printbackends/file/ctkprintbackendfile.c:663
 msgid "SVG"
 msgstr "SVG"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:738
+#: modules/printbackends/file/ctkprintbackendfile.c:734
 msgid "File"
 msgstr "Tiedosto"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:750
+#: modules/printbackends/file/ctkprintbackendfile.c:746
 msgid "_Output format"
 msgstr "_Tulostusformaatti"
 
-#: modules/printbackends/lpr/ctkprintbackendlpr.c:394
+#: modules/printbackends/lpr/ctkprintbackendlpr.c:390
 msgid "Print to LPR"
 msgstr "Tulosta LPR:ää käyttäen"
 
-#: modules/printbackends/lpr/ctkprintbackendlpr.c:423
+#: modules/printbackends/lpr/ctkprintbackendlpr.c:419
 msgid "Pages Per Sheet"
 msgstr "Sivuja arkilla"
 
-#: modules/printbackends/lpr/ctkprintbackendlpr.c:430
+#: modules/printbackends/lpr/ctkprintbackendlpr.c:426
 msgid "Command Line"
 msgstr "Komentorivi"
 

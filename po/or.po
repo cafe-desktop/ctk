@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: or\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-23 17:45+0100\n"
+"POT-Creation-Date: 2022-08-11 17:18+0200\n"
 "PO-Revision-Date: 2013-03-15 16:59+0530\n"
 "Last-Translator: Manoj Kumar Giri <mgiri@redhat.com>\n"
 "Language-Team: Oriya <oriya-it@googlegroups.com>\n"
@@ -578,12 +578,12 @@ msgctxt "Action name"
 msgid "Toggle"
 msgstr "ଏପଟ ସେପଟ କରନ୍ତୁ"
 
-#: ctk/a11y/ctkbuttonaccessible.c:323 ctk/a11y/ctkmenuitemaccessible.c:439
+#: ctk/a11y/ctkbuttonaccessible.c:322 ctk/a11y/ctkmenuitemaccessible.c:439
 msgctxt "Action name"
 msgid "Click"
 msgstr "କ୍ଲିକ କରନ୍ତୁ"
 
-#: ctk/a11y/ctkbuttonaccessible.c:332
+#: ctk/a11y/ctkbuttonaccessible.c:331
 msgctxt "Action description"
 msgid "Clicks the button"
 msgstr "ବଟନକୁ କ୍ଲିକ କରିଥାଏ"
@@ -1114,80 +1114,80 @@ msgctxt "Action description"
 msgid "Toggles the switch"
 msgstr "ସ୍ୱୀଚକୁ ଅନଅଫ କରିଥାଏ"
 
-#: ctk/ctkcolorsel.c:425
+#: ctk/ctkcolorsel.c:421
 msgid ""
 "Select the color you want from the outer ring. Select the darkness or "
 "lightness of that color using the inner triangle."
 msgstr "ବାହାର ମଣ୍ଡଳରୁ ରଙ୍ଗ ବାଛନ୍ତୁ. ଭିତର ତ୍ରିଭୁଜରୁ ରଙ୍ଗର ପ୍ରଗାଢ଼ତା ବାଛନ୍ତୁ।"
 
-#: ctk/ctkcolorsel.c:451
+#: ctk/ctkcolorsel.c:447
 msgid ""
 "Click the eyedropper, then click a color anywhere on your screen to select "
 "that color."
 msgstr ""
 "ଆଖିଡ୍ରପର ଉପରେ ମାଉସ ଚାବି ଦବାଇ, ରଙ୍ଗ ବାଛିବା ପାଇଁ ପରଦାର କୌଣସି ରଙ୍ଗ ଉପରେ ମାଉସ ଚାବି ଦବାନ୍ତୁ।"
 
-#: ctk/ctkcolorsel.c:461
+#: ctk/ctkcolorsel.c:457
 msgid "_Hue:"
 msgstr "ରଙ୍ଗ (_H):"
 
-#: ctk/ctkcolorsel.c:462
+#: ctk/ctkcolorsel.c:458
 msgid "Position on the color wheel."
 msgstr "ରଙ୍ଗ ଚକ୍ରରେ ଅବସ୍ଥାନ।"
 
-#: ctk/ctkcolorsel.c:464
+#: ctk/ctkcolorsel.c:460
 msgid "S_aturation:"
 msgstr "ପରିପୂର୍ଣ୍ଣତା (_a):"
 
-#: ctk/ctkcolorsel.c:465
+#: ctk/ctkcolorsel.c:461
 msgid "Intensity of the color."
 msgstr "ରଙ୍ଗର ଉଜ୍ଜ୍ବଳତା"
 
-#: ctk/ctkcolorsel.c:466
+#: ctk/ctkcolorsel.c:462
 msgid "_Value:"
 msgstr "ମୂଲ୍ଯ (_V):"
 
-#: ctk/ctkcolorsel.c:467
+#: ctk/ctkcolorsel.c:463
 msgid "Brightness of the color."
 msgstr "ରଙ୍ଗର ଉଜ୍ଜ୍ବଳତା।"
 
-#: ctk/ctkcolorsel.c:468
+#: ctk/ctkcolorsel.c:464
 msgid "_Red:"
 msgstr "ନାଲି (_R):"
 
-#: ctk/ctkcolorsel.c:469
+#: ctk/ctkcolorsel.c:465
 msgid "Amount of red light in the color."
 msgstr "ରଙ୍ଗରେ ନାଲି ଆଲୋକର ମାତ୍ରା।"
 
-#: ctk/ctkcolorsel.c:470
+#: ctk/ctkcolorsel.c:466
 msgid "_Green:"
 msgstr "ସବୁଜ (_G):"
 
-#: ctk/ctkcolorsel.c:471
+#: ctk/ctkcolorsel.c:467
 msgid "Amount of green light in the color."
 msgstr "ରଙ୍ଗରେ ସାଗୁଆ ଆଲୋକର ମାତ୍ରା।"
 
-#: ctk/ctkcolorsel.c:472
+#: ctk/ctkcolorsel.c:468
 msgid "_Blue:"
 msgstr "ନୀଳ (_B):"
 
-#: ctk/ctkcolorsel.c:473
+#: ctk/ctkcolorsel.c:469
 msgid "Amount of blue light in the color."
 msgstr "ରଙ୍ଗରେ ନିଳ ଆଲୋକର ମାତ୍ରା।"
 
-#: ctk/ctkcolorsel.c:476
+#: ctk/ctkcolorsel.c:472
 msgid "Op_acity:"
 msgstr "ଅସ୍ବଚ୍ଛତା (_a):"
 
-#: ctk/ctkcolorsel.c:484 ctk/ctkcolorsel.c:494
+#: ctk/ctkcolorsel.c:480 ctk/ctkcolorsel.c:490
 msgid "Transparency of the color."
 msgstr "ରଙ୍ଗର ସ୍ବଚ୍ଛତା।"
 
-#: ctk/ctkcolorsel.c:501
+#: ctk/ctkcolorsel.c:497
 msgid "Color _name:"
 msgstr "ରଙ୍ଗର ନାମ (_n):"
 
-#: ctk/ctkcolorsel.c:516
+#: ctk/ctkcolorsel.c:512
 #, fuzzy
 msgid ""
 "You can enter an HTML-style hexadecimal color value, or simply a color name "
@@ -1196,15 +1196,15 @@ msgstr ""
 "ଏହି ଭରଣରେ ଆପଣ ଗୋଟିଏ HTML-ଶୈଳୀର ଷୋହଳମିକ ରଙ୍ଗ ମୂଲ୍ଯ, କିମ୍ବା ସରଳ ଭାବରେ ଗୋଟିଏ ରଙ୍ଗର ନାମ, "
 "ଯେପରି କି 'ନାରଙ୍ଗ' ଭରି ପାରନ୍ତି।"
 
-#: ctk/ctkcolorsel.c:548
+#: ctk/ctkcolorsel.c:544
 msgid "_Palette:"
 msgstr "ଥାଳି (_P):"
 
-#: ctk/ctkcolorsel.c:578
+#: ctk/ctkcolorsel.c:574
 msgid "Color Wheel"
 msgstr "ରଙ୍ଗ ଚକ୍ର"
 
-#: ctk/ctkcolorsel.c:1072
+#: ctk/ctkcolorsel.c:1068
 #, fuzzy
 msgid ""
 "The previously-selected color, for comparison to the color you’re selecting "
@@ -1214,7 +1214,7 @@ msgstr ""
 "ପୂର୍ବରୁ ବଛାଯାଇଥିବା ରଙ୍ଗ, ବର୍ତମାନ ବଛାଯାଇଥିବା ରଙ୍ଗ ସଙ୍ଗେ ଦୁଳନା ପାଇଁ. ଆପଣ ଏହି ରଙ୍ଗକୁ ଆଳି ଭରଣକୁ "
 "ଟାଣିପାରନ୍ତି କିମ୍ବା ଏହାକୁ ପାଖରେ ସ୍ଥିତ ରଙ୍ଗ ନମୁନା କ୍ଷେତ୍ରକୁ ଟାଣି ସାମ୍ପ୍ରତିକ ରଙ୍ଗ ଭାବରେ ବାଛିପାରନ୍ତି।"
 
-#: ctk/ctkcolorsel.c:1078
+#: ctk/ctkcolorsel.c:1074
 #, fuzzy
 msgid ""
 "The color you’ve chosen. You can drag this color to a palette entry to save "
@@ -1223,23 +1223,23 @@ msgstr ""
 "ଆପଣଙ୍କ ଦ୍ବାରା ବଛା ରଙ୍ଗ. ଆପଣ ଏହାକୁ ଗୋଟିଏ ଆଳି ଭରଣକୁ ଟାଣି ଭବିଷ୍ଯତରେ ବ୍ଯବହାର ପାଇଁ ସଂରକ୍ଷିତ "
 "କରିପାରନ୍ତି।"
 
-#: ctk/ctkcolorsel.c:1084
+#: ctk/ctkcolorsel.c:1080
 #, fuzzy
 msgid ""
 "The previously-selected color, for comparison to the color you’re selecting "
 "now."
 msgstr "ପୂର୍ବରୁ ବଛାଯାଇଥିବା ରଙ୍ଗ, ଆପଣ ବର୍ତ୍ତମାନ ବାଛିଥିବା ରଙ୍ଗକୁ ତୁଳନା କରିବା ପାଇଁ।"
 
-#: ctk/ctkcolorsel.c:1088
+#: ctk/ctkcolorsel.c:1084
 #, fuzzy
 msgid "The color you’ve chosen."
 msgstr "ଆପଣ ବାଛିଥିବା ରଙ୍ଗ"
 
-#: ctk/ctkcolorsel.c:1458
+#: ctk/ctkcolorsel.c:1454
 msgid "_Save color here"
 msgstr "ଏଠାରେ ରଙ୍ଗ  ସଂରକ୍ଷିତ କରନ୍ତୁ (_S)"
 
-#: ctk/ctkcolorsel.c:1664
+#: ctk/ctkcolorsel.c:1660
 #, fuzzy
 msgid ""
 "Click this palette entry to make it the current color. To change this entry, "
@@ -1249,11 +1249,11 @@ msgstr ""
 "ଏଠାରେ ରଙ୍ଗ ନମୁନା ଟାଣି ଆଣନ୍ତୁ ବା ଏହା ଉପରେ ଡାହାଣ ମାଉସ ଚାବି ଦବାଇ \"Save color here.\" "
 "ବାଛନ୍ତୁ।"
 
-#: ctk/ctkcolorseldialog.c:191 ctk/deprecated/ctkfontsel.c:1689
+#: ctk/ctkcolorseldialog.c:189 ctk/deprecated/ctkfontsel.c:1689
 #: ctk/ctkfilechoosernative.c:545 ctk/ctkfilechoosernative.c:637
 #: ctk/ctkfilechooserwidget.c:1498 ctk/ctkfilechooserwidget.c:6572
-#: ctk/ctkmessagedialog.c:952 ctk/ctkmessagedialog.c:965
-#: ctk/ctkmountoperation.c:594 ctk/ctkpagesetupunixdialog.c:197
+#: ctk/ctkmessagedialog.c:946 ctk/ctkmessagedialog.c:959
+#: ctk/ctkmountoperation.c:593 ctk/ctkpagesetupunixdialog.c:197
 #: ctk/ctkprintbackend.c:781 ctk/ctkprinteroptionwidget.c:545
 #: ctk/ctkprintunixdialog.c:674 ctk/ctkprintunixdialog.c:747
 #: ctk/ctkwindow.c:12789 ctk/inspector/css-editor.c:201
@@ -1263,18 +1263,18 @@ msgstr ""
 msgid "_Cancel"
 msgstr "ବାତିଲ କରନ୍ତୁ (_C)"
 
-#: ctk/ctkcolorseldialog.c:195 ctk/ctkprinteroptionwidget.c:546
+#: ctk/ctkcolorseldialog.c:193 ctk/ctkprinteroptionwidget.c:546
 #: ctk/ui/ctkappchooserdialog.ui:67 ctk/ui/ctkcolorchooserdialog.ui:40
 #: ctk/ui/ctkfontchooserdialog.ui:37
 msgid "_Select"
 msgstr "ବାଛନ୍ତୁ (_S)"
 
-#: ctk/ctkcolorseldialog.c:201
+#: ctk/ctkcolorseldialog.c:199
 #, fuzzy
 msgid "_Help"
 msgstr "ସହାୟତା (_H)"
 
-#: ctk/ctkcolorseldialog.c:213
+#: ctk/ctkcolorseldialog.c:211
 msgid "Color Selection"
 msgstr "ରଙ୍ଗ ଚୟନ"
 
@@ -1307,8 +1307,8 @@ msgstr "ପୂର୍ବାବଲୋକନ (_P):"
 msgid "_Apply"
 msgstr "ପ୍ରୟୋଗ କରନ୍ତୁ (_A)"
 
-#: ctk/deprecated/ctkfontsel.c:1698 ctk/ctkmessagedialog.c:944
-#: ctk/ctkmessagedialog.c:966 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12790
+#: ctk/deprecated/ctkfontsel.c:1698 ctk/ctkmessagedialog.c:938
+#: ctk/ctkmessagedialog.c:960 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12790
 #, fuzzy
 msgid "_OK"
 msgstr "ଠିକ ଅଛି (_O)"
@@ -1423,54 +1423,54 @@ msgstr ""
 msgid "Mozilla Public License 2.0"
 msgstr ""
 
-#: ctk/ctkaboutdialog.c:703
+#: ctk/ctkaboutdialog.c:701
 msgid "C_redits"
 msgstr "ସ୍ବୀକୃତି (_r)"
 
-#: ctk/ctkaboutdialog.c:711
+#: ctk/ctkaboutdialog.c:709
 msgid "_License"
 msgstr "ଅନୁମତି ପତ୍ର (_L)"
 
-#: ctk/ctkaboutdialog.c:720 ctk/ctkcustompaperunixdialog.c:329
-#: ctk/ctkmessagedialog.c:948 ctk/ui/ctkassistant.ui:144
+#: ctk/ctkaboutdialog.c:718 ctk/ctkcustompaperunixdialog.c:329
+#: ctk/ctkmessagedialog.c:942 ctk/ui/ctkassistant.ui:144
 #, fuzzy
 msgid "_Close"
 msgstr "ବନ୍ଦ କରନ୍ତୁ (_C)"
 
-#: ctk/ctkaboutdialog.c:1004
+#: ctk/ctkaboutdialog.c:1002
 msgid "Could not show link"
 msgstr "ସଂଯୋଗକୁ ଦର୍ଶାଇପାରିଲା ନାହିଁ"
 
-#: ctk/ctkaboutdialog.c:1043
+#: ctk/ctkaboutdialog.c:1039
 msgid "Website"
 msgstr "ୱେବସାଇଟ"
 
 #. used for the application menu on MacOS.  %s is replaced with the application name.
-#: ctk/ctkaboutdialog.c:1093 ctk/ui/ctkapplication-quartz.ui:7
+#: ctk/ctkaboutdialog.c:1089 ctk/ui/ctkapplication-quartz.ui:7
 #, c-format
 msgid "About %s"
 msgstr "%s ବିଷୟରେ"
 
-#: ctk/ctkaboutdialog.c:2320
+#: ctk/ctkaboutdialog.c:2316
 msgid "Created by"
 msgstr "ଦ୍ବାରା ସୃଷ୍ଟି"
 
-#: ctk/ctkaboutdialog.c:2323
+#: ctk/ctkaboutdialog.c:2319
 msgid "Documented by"
 msgstr "ଦଲିଲକରଣ ଲେଖକ"
 
-#: ctk/ctkaboutdialog.c:2333
+#: ctk/ctkaboutdialog.c:2329
 msgid "Translated by"
 msgstr "ଅନୁବାଦକ"
 
-#: ctk/ctkaboutdialog.c:2338
+#: ctk/ctkaboutdialog.c:2334
 msgid "Artwork by"
 msgstr "ଚିତ୍ରକାର"
 
 #. Translators: this is the license preamble; the string at the end
 #. * contains the name of the license as link text.
 #.
-#: ctk/ctkaboutdialog.c:2500
+#: ctk/ctkaboutdialog.c:2494
 #, c-format
 msgid ""
 "This program comes with absolutely no warranty.\n"
@@ -1615,7 +1615,7 @@ msgid "Other Applications"
 msgstr "ଅନ୍ୟ ପ୍ରୟୋଗଗୁଡ଼ିକ"
 
 #: ctk/ctkapplicationwindow.c:345 ctk/ctkprintoperation-unix.c:485
-#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1690
+#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1688
 msgid "Application"
 msgstr "ପ୍ରୟୋଗ"
 
@@ -1669,7 +1669,7 @@ msgstr "%sର ନାମକୁ %sରେ ବଦଳାଇ ପାରିଲା ନା
 msgid "Can't parse file: %s\n"
 msgstr "ପ୍ରଦର୍ଶନକୁ ଖୋଲିପାରିବେ ନାହିଁ: %s"
 
-#: ctk/ctk-builder-tool.c:1062
+#: ctk/ctk-builder-tool.c:1060
 #, c-format
 msgid ""
 "Usage:\n"
@@ -1800,7 +1800,7 @@ msgctxt "progress bar label"
 msgid "%d %%"
 msgstr ""
 
-#: ctk/ctkcolorbutton.c:185 ctk/ctkcolorbutton.c:398
+#: ctk/ctkcolorbutton.c:185 ctk/ctkcolorbutton.c:394
 msgid "Pick a Color"
 msgstr "ରଙ୍ଗ ବାଛନ୍ତୁ"
 
@@ -2135,11 +2135,11 @@ msgstr "default:mm"
 msgid "Manage Custom Sizes"
 msgstr "ଇଚ୍ଚାରୂପଣ ଆକାର ପରିଚାଳନା କରନ୍ତୁ"
 
-#: ctk/ctkcustompaperunixdialog.c:567 ctk/ctkpagesetupunixdialog.c:814
+#: ctk/ctkcustompaperunixdialog.c:567 ctk/ctkpagesetupunixdialog.c:812
 msgid "inch"
 msgstr "ଇଞ୍ଚ"
 
-#: ctk/ctkcustompaperunixdialog.c:569 ctk/ctkpagesetupunixdialog.c:812
+#: ctk/ctkcustompaperunixdialog.c:569 ctk/ctkpagesetupunixdialog.c:810
 msgid "mm"
 msgstr "ମିମି"
 
@@ -2152,94 +2152,94 @@ msgstr "ମୂଦ୍ରଣୀରୁ ସୀମା…"
 msgid "Custom Size %d"
 msgstr "ଇଚ୍ଚାରୂପଣ ଆକାର %d"
 
-#: ctk/ctkcustompaperunixdialog.c:1120
+#: ctk/ctkcustompaperunixdialog.c:1119
 msgid "_Width:"
 msgstr "ଓସାର (_W):"
 
-#: ctk/ctkcustompaperunixdialog.c:1131
+#: ctk/ctkcustompaperunixdialog.c:1130
 msgid "_Height:"
 msgstr "ଉଚ୍ଛତା (_H):"
 
-#: ctk/ctkcustompaperunixdialog.c:1142
+#: ctk/ctkcustompaperunixdialog.c:1141
 msgid "Paper Size"
 msgstr "କାଗଜର ଆକାର"
 
-#: ctk/ctkcustompaperunixdialog.c:1151
+#: ctk/ctkcustompaperunixdialog.c:1150
 msgid "_Top:"
 msgstr "ଉପର (_T):"
 
-#: ctk/ctkcustompaperunixdialog.c:1162
+#: ctk/ctkcustompaperunixdialog.c:1161
 msgid "_Bottom:"
 msgstr "ତଳ (_B):"
 
-#: ctk/ctkcustompaperunixdialog.c:1173
+#: ctk/ctkcustompaperunixdialog.c:1172
 msgid "_Left:"
 msgstr "ବାମ (_L):"
 
-#: ctk/ctkcustompaperunixdialog.c:1184
+#: ctk/ctkcustompaperunixdialog.c:1183
 msgid "_Right:"
 msgstr "ଡାହାଣ (_R):"
 
-#: ctk/ctkcustompaperunixdialog.c:1223
+#: ctk/ctkcustompaperunixdialog.c:1222
 msgid "Paper Margins"
 msgstr "କାଗଜ ମାର୍ଜିନ"
 
-#: ctk/ctkentry.c:9591 ctk/ctklabel.c:6680 ctk/ctktextview.c:9520
+#: ctk/ctkentry.c:9589 ctk/ctklabel.c:6676 ctk/ctktextview.c:9516
 #, fuzzy
 msgid "Cu_t"
 msgstr "କାଟନ୍ତୁ (_t)"
 
-#: ctk/ctkentry.c:9595 ctk/ctklabel.c:6681 ctk/ctktextview.c:9524
+#: ctk/ctkentry.c:9593 ctk/ctklabel.c:6677 ctk/ctktextview.c:9520
 #, fuzzy
 msgid "_Copy"
 msgstr "ନକଲ କରନ୍ତୁ (_C)"
 
-#: ctk/ctkentry.c:9599 ctk/ctklabel.c:6682 ctk/ctktextview.c:9526
+#: ctk/ctkentry.c:9597 ctk/ctklabel.c:6678 ctk/ctktextview.c:9522
 #, fuzzy
 msgid "_Paste"
 msgstr "ଲଗାନ୍ତୁ (_P)"
 
-#: ctk/ctkentry.c:9602 ctk/ctkfilechooserwidget.c:1499
-#: ctk/ctkfilechooserwidget.c:2334 ctk/ctklabel.c:6684 ctk/ctktextview.c:9529
+#: ctk/ctkentry.c:9600 ctk/ctkfilechooserwidget.c:1499
+#: ctk/ctkfilechooserwidget.c:2334 ctk/ctklabel.c:6680 ctk/ctktextview.c:9525
 #, fuzzy
 msgid "_Delete"
 msgstr "ଲିଭାନ୍ତୁ (_D)"
 
-#: ctk/ctkentry.c:9613 ctk/ctklabel.c:6693 ctk/ctktextview.c:9543
+#: ctk/ctkentry.c:9611 ctk/ctklabel.c:6689 ctk/ctktextview.c:9539
 #, fuzzy
 msgid "Select _All"
 msgstr "ସବୁ ବାଛନ୍ତୁ (_A)"
 
-#: ctk/ctkentry.c:9623 ctk/ctktextview.c:9553
+#: ctk/ctkentry.c:9621 ctk/ctktextview.c:9549
 #, fuzzy
 msgid "Insert _Emoji"
 msgstr "ଭର୍ତ୍ତି କରନ୍ତୁ"
 
-#: ctk/ctkentry.c:9799 ctk/ctktextview.c:9777
+#: ctk/ctkentry.c:9797 ctk/ctktextview.c:9773
 #, fuzzy
 msgid "Select all"
 msgstr "ସବୁ ବାଛନ୍ତୁ (_A)"
 
-#: ctk/ctkentry.c:9802 ctk/ctktextview.c:9780
+#: ctk/ctkentry.c:9800 ctk/ctktextview.c:9776
 #, fuzzy
 msgid "Cut"
 msgstr "କାଟନ୍ତୁ (_t)"
 
-#: ctk/ctkentry.c:9805 ctk/ctktextview.c:9783
+#: ctk/ctkentry.c:9803 ctk/ctktextview.c:9779
 #, fuzzy
 msgid "Copy"
 msgstr "ନକଲ କରନ୍ତୁ (_C)"
 
-#: ctk/ctkentry.c:9808 ctk/ctktextview.c:9786
+#: ctk/ctkentry.c:9806 ctk/ctktextview.c:9782
 #, fuzzy
 msgid "Paste"
 msgstr "ଲଗାନ୍ତୁ (_P)"
 
-#: ctk/ctkentry.c:10880
+#: ctk/ctkentry.c:10878
 msgid "Caps Lock is on"
 msgstr "Caps Lock ଅନ ଅଛି"
 
-#: ctk/ctkentry.c:11158
+#: ctk/ctkentry.c:11156
 #, fuzzy
 msgid "Insert Emoji"
 msgstr "ଭର୍ତ୍ତି କରନ୍ତୁ"
@@ -2618,8 +2618,8 @@ msgstr ""
 #. Translators: We don't know whether this printer is
 #. * available to print to.
 #: ctk/ctkfilechooserwidget.c:5054 ctk/ctkfilechooserwidget.c:5243
-#: ctk/inspector/prop-editor.c:1693
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:748
+#: ctk/inspector/prop-editor.c:1691
+#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:744
 msgid "Unknown"
 msgstr "ଅଜଣା"
 
@@ -2682,7 +2682,7 @@ msgstr "Sans 12"
 msgid "Pick a Font"
 msgstr "ଗୋଟିଏ ଅକ୍ଷରରୂପ ବାଛନ୍ତୁ"
 
-#: ctk/ctkfontbutton.c:1395
+#: ctk/ctkfontbutton.c:1393
 #, fuzzy
 msgctxt "font"
 msgid "None"
@@ -2711,7 +2711,7 @@ msgstr ""
 msgid "Optical Size"
 msgstr ""
 
-#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1680
+#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1678
 #, fuzzy
 msgid "Default"
 msgstr "default:mm"
@@ -2787,33 +2787,33 @@ msgctxt "input method menu"
 msgid "System (%s)"
 msgstr "ତନ୍ତ୍ର (%s)"
 
-#: ctk/ctkinfobar.c:1307 ctk/ctkmessagedialog.c:385
+#: ctk/ctkinfobar.c:1303 ctk/ctkmessagedialog.c:384
 #, fuzzy
 msgid "Information"
 msgstr "ସୂଚନା"
 
-#: ctk/ctkinfobar.c:1311 ctk/ctkmessagedialog.c:389
+#: ctk/ctkinfobar.c:1307 ctk/ctkmessagedialog.c:388
 #, fuzzy
 msgid "Question"
 msgstr "ପ୍ରଶ୍ନ"
 
-#: ctk/ctkinfobar.c:1315 ctk/ctkmessagedialog.c:393
+#: ctk/ctkinfobar.c:1311 ctk/ctkmessagedialog.c:392
 #, fuzzy
 msgid "Warning"
 msgstr "ଚେତାବନୀ"
 
-#: ctk/ctkinfobar.c:1319 ctk/ctkmessagedialog.c:397
+#: ctk/ctkinfobar.c:1315 ctk/ctkmessagedialog.c:396
 #, fuzzy
 msgid "Error"
 msgstr "ତୃଟି"
 
 #. Open Link
-#: ctk/ctklabel.c:6661
+#: ctk/ctklabel.c:6657
 msgid "_Open Link"
 msgstr "ସଂଯୋଗ ଖୋଲନ୍ତୁ (_O)"
 
 #. Copy Link Address
-#: ctk/ctklabel.c:6670
+#: ctk/ctklabel.c:6666
 msgid "Copy _Link Address"
 msgstr "ସଂଯୋଗ ଠିକଣାକୁ ନକଲ କରନ୍ତୁ (_L)"
 
@@ -2939,16 +2939,16 @@ msgstr "ବିନ୍ଯାସ ପାଇଁ CTK+ ତୃଟିମୁକ୍ତକ�
 msgid "CTK+ debugging flags to unset"
 msgstr "ଅବିନ୍ଯାସ ପାଇଁ ଜି.ଟି.କେ.+ ତୃଟିମୁକ୍ତିକରଣ ସୂଚକ"
 
-#: ctk/ctkmain.c:810 ctk/ctkmain.c:1004
+#: ctk/ctkmain.c:808 ctk/ctkmain.c:1002
 #, c-format
 msgid "Cannot open display: %s"
 msgstr "ପ୍ରଦର୍ଶନକୁ ଖୋଲିପାରିବେ ନାହିଁ: %s"
 
-#: ctk/ctkmain.c:922
+#: ctk/ctkmain.c:920
 msgid "CTK+ Options"
 msgstr "ଜି.ଟି.କେ.+ ପସନ୍ଦ"
 
-#: ctk/ctkmain.c:922
+#: ctk/ctkmain.c:920
 msgid "Show CTK+ Options"
 msgstr "ଜି.ଟି.କେ.+ ପସନ୍ଦ ଦେଖାନ୍ତୁ"
 
@@ -2957,88 +2957,88 @@ msgstr "ଜି.ଟି.କେ.+ ପସନ୍ଦ ଦେଖାନ୍ତୁ"
 #. * Do *not* translate it to "predefinito:LTR", if it
 #. * it isn't default:LTR or default:RTL it will not work
 #.
-#: ctk/ctkmain.c:1275
+#: ctk/ctkmain.c:1273
 msgid "default:LTR"
 msgstr "default:LTR"
 
-#: ctk/ctkmessagedialog.c:956
+#: ctk/ctkmessagedialog.c:950
 #, fuzzy
 msgid "_No"
 msgstr "ନାଁ (_N)"
 
-#: ctk/ctkmessagedialog.c:957
+#: ctk/ctkmessagedialog.c:951
 #, fuzzy
 msgid "_Yes"
 msgstr "ହଁ (_Y)"
 
-#: ctk/ctkmountoperation.c:595
+#: ctk/ctkmountoperation.c:594
 msgid "Co_nnect"
 msgstr "ସଂଯୋଗ କରନ୍ତୁ (_n)"
 
-#: ctk/ctkmountoperation.c:668
+#: ctk/ctkmountoperation.c:667
 msgid "Connect As"
 msgstr "ଏହି ପରି ଭାବରେ ସଂଯୋଗ କରନ୍ତୁ"
 
-#: ctk/ctkmountoperation.c:677
+#: ctk/ctkmountoperation.c:676
 msgid "_Anonymous"
 msgstr "ଅଜ୍ଞାତ (_A)"
 
-#: ctk/ctkmountoperation.c:686
+#: ctk/ctkmountoperation.c:685
 msgid "Registered U_ser"
 msgstr "ପଞ୍ଜିକୃତ ବ୍ୟବହାରକାରୀ (_s)"
 
-#: ctk/ctkmountoperation.c:697
+#: ctk/ctkmountoperation.c:696
 msgid "_Username"
 msgstr "ବ୍ୟବହାରକାରୀ ନାମ (_U)"
 
-#: ctk/ctkmountoperation.c:702
+#: ctk/ctkmountoperation.c:701
 msgid "_Domain"
 msgstr "ଡମେନ (_D)"
 
-#: ctk/ctkmountoperation.c:711
+#: ctk/ctkmountoperation.c:710
 #, fuzzy
 msgid "Volume type"
 msgstr "ତିବ୍ରତା ଉପରକୁ କରନ୍ତୁ"
 
-#: ctk/ctkmountoperation.c:721
+#: ctk/ctkmountoperation.c:720
 msgid "_Hidden"
 msgstr ""
 
-#: ctk/ctkmountoperation.c:724
+#: ctk/ctkmountoperation.c:723
 msgid "_Windows system"
 msgstr ""
 
-#: ctk/ctkmountoperation.c:727
+#: ctk/ctkmountoperation.c:726
 msgid "_PIM"
 msgstr ""
 
-#: ctk/ctkmountoperation.c:733
+#: ctk/ctkmountoperation.c:732
 msgid "_Password"
 msgstr "ପ୍ରବେଶ ସଂଙ୍କେତ (_P)"
 
-#: ctk/ctkmountoperation.c:755
+#: ctk/ctkmountoperation.c:754
 msgid "Forget password _immediately"
 msgstr "ଅତିଶିଘ୍ର ପ୍ରବେଶ ସଂକେତ ଭୁଲିଯାଆନ୍ତୁ (_i)"
 
-#: ctk/ctkmountoperation.c:765
+#: ctk/ctkmountoperation.c:764
 msgid "Remember password until you _logout"
 msgstr "ଆପଣ ଲଗଆଉଟ ହେବା ପର୍ଯ୍ୟନ୍ତ ମନେରଖନ୍ତୁ (_l)"
 
-#: ctk/ctkmountoperation.c:775
+#: ctk/ctkmountoperation.c:774
 msgid "Remember _forever"
 msgstr "ସବୁଦିନ ପାଇଁ ମନେରଖନ୍ତୁ (_f)"
 
-#: ctk/ctkmountoperation.c:1170
+#: ctk/ctkmountoperation.c:1169
 #, c-format
 msgid "Unknown Application (PID %d)"
 msgstr "ଅଜଣା ପ୍ରୟୋଗ (PID %d)"
 
-#: ctk/ctkmountoperation.c:1355
+#: ctk/ctkmountoperation.c:1354
 #, c-format
 msgid "Unable to end process"
 msgstr "ପ୍ରଣାଳୀକୁ ଶେଷ କରିବାରେ ଅସମର୍ଥ"
 
-#: ctk/ctkmountoperation.c:1389
+#: ctk/ctkmountoperation.c:1388
 msgid "_End Process"
 msgstr "ପ୍ରଣାଳୀକୁ ଶେଷକରନ୍ତୁ (_E)"
 
@@ -3090,7 +3090,7 @@ msgstr "ଯେକୌଣସି ମୁଦ୍ରଣୀ"
 msgid "For portable documents"
 msgstr "ସଂକ୍ଷିପ୍ତ ଦଲିଲ ପାଇଁ"
 
-#: ctk/ctkpagesetupunixdialog.c:832
+#: ctk/ctkpagesetupunixdialog.c:830
 #, c-format
 msgid ""
 "Margins:\n"
@@ -3105,11 +3105,11 @@ msgstr ""
 " ଉପର: %s %s\n"
 " ତଳ: %s %s"
 
-#: ctk/ctkpagesetupunixdialog.c:881 ctk/ctkprintunixdialog.c:3393
+#: ctk/ctkpagesetupunixdialog.c:879 ctk/ctkprintunixdialog.c:3391
 msgid "Manage Custom Sizes…"
 msgstr "ଇଚ୍ଚାରୂପଣ ଆକାର ପରିଚାଳନା କରନ୍ତୁ…"
 
-#: ctk/ctkpagesetupunixdialog.c:903 ctk/ui/ctkpagesetupunixdialog.ui:31
+#: ctk/ctkpagesetupunixdialog.c:901 ctk/ui/ctkpagesetupunixdialog.ui:31
 #: ctk/ui/ctkprintunixdialog.ui:854
 msgid "Page Setup"
 msgstr "ପୃଷ୍ଠା ବ୍ଯବସ୍ଥାପନ"
@@ -3480,7 +3480,7 @@ msgstr "ଆପଣ ଲଗଆଉଟ ହେବା ପର୍ଯ୍ୟନ୍ତ ମ�
 msgid "Select a filename"
 msgstr "ଗୋଟିଏ ଫାଇଲ ନାମ ବାଛନ୍ତୁ"
 
-#: ctk/ctkprinteroptionwidget.c:769
+#: ctk/ctkprinteroptionwidget.c:767
 msgid "Not available"
 msgstr "ଅନୁପଲବ୍ଧ"
 
@@ -3543,7 +3543,7 @@ msgstr "ତୃଟି ସହିତ ସମାପ୍ତ"
 msgid "Preparing %d"
 msgstr "%dକୁ ପ୍ରସ୍ତୁତ କରୁଅଛି"
 
-#: ctk/ctkprintoperation.c:2376 ctk/ctkprintoperation.c:3007
+#: ctk/ctkprintoperation.c:2376 ctk/ctkprintoperation.c:3005
 #, c-format
 msgid "Preparing"
 msgstr "ପ୍ରସ୍ତୁତ କରୁଅଛି"
@@ -3553,19 +3553,19 @@ msgstr "ପ୍ରସ୍ତୁତ କରୁଅଛି"
 msgid "Printing %d"
 msgstr "%dକୁ ମୁଦ୍ରଣ କରୁଅଛି"
 
-#: ctk/ctkprintoperation.c:3038
+#: ctk/ctkprintoperation.c:3036
 #, c-format
 msgid "Error creating print preview"
 msgstr "ମୁଦ୍ରଣ ପ୍ରାକଦର୍ଶନକୁ ନିର୍ମାଣ କରିବା ସମୟରେ ତୃଟି"
 
-#: ctk/ctkprintoperation.c:3041
+#: ctk/ctkprintoperation.c:3039
 #, c-format
 msgid "The most probable reason is that a temporary file could not be created."
 msgstr "ଗୋଟିଏ ଅତି ସମ୍ଭାବ୍ୟ କାରଣ ହେଲା ଅସ୍ଥାୟୀ ଫାଇଲ ନିର୍ମାଣ କରିହେବ ନାହିଁ."
 
 #. window
 #: ctk/ctkprintoperation-portal.c:231 ctk/ctkprintoperation-portal.c:549
-#: ctk/ctkprintoperation-portal.c:618 ctk/ctkprintunixdialog.c:3415
+#: ctk/ctkprintoperation-portal.c:618 ctk/ctkprintunixdialog.c:3413
 msgid "Print"
 msgstr "ମୁଦ୍ରଣ କରନ୍ତୁ"
 
@@ -3579,7 +3579,7 @@ msgstr "କାଗଜ ବାହାରେ"
 
 #. Translators: this is a printer status.
 #: ctk/ctkprintoperation-win32.c:635
-#: modules/printbackends/cups/ctkprintbackendcups.c:2628
+#: modules/printbackends/cups/ctkprintbackendcups.c:2681
 msgid "Paused"
 msgstr "ସାମୟିକ ବିରାମ ନେଉଛି"
 
@@ -3649,42 +3649,42 @@ msgstr "ମୁଦ୍ରଣୀ ସୂଚନା ଗ୍ରହଣକରୁଅଛି�
 #. * multiple pages on a sheet when printing
 #.
 #: ctk/ctkprintunixdialog.c:3120
-#: modules/printbackends/cups/ctkprintbackendcups.c:5508
+#: modules/printbackends/cups/ctkprintbackendcups.c:5731
 msgid "Left to right, top to bottom"
 msgstr "ବାମରୁ ଡାହାଣ, ଉପରୁ ତଳ"
 
 #: ctk/ctkprintunixdialog.c:3120
-#: modules/printbackends/cups/ctkprintbackendcups.c:5508
+#: modules/printbackends/cups/ctkprintbackendcups.c:5731
 msgid "Left to right, bottom to top"
 msgstr "ବାମରୁ ଡାହାଣ, ତଳୁ ଉପର"
 
 #: ctk/ctkprintunixdialog.c:3121
-#: modules/printbackends/cups/ctkprintbackendcups.c:5509
+#: modules/printbackends/cups/ctkprintbackendcups.c:5732
 msgid "Right to left, top to bottom"
 msgstr "ଡାହାଣରୁ ବାମ, ଉପରୁ ତଳ"
 
 #: ctk/ctkprintunixdialog.c:3121
-#: modules/printbackends/cups/ctkprintbackendcups.c:5509
+#: modules/printbackends/cups/ctkprintbackendcups.c:5732
 msgid "Right to left, bottom to top"
 msgstr "ଡାହାଣରୁ ବାମ, ତଳୁ ଉପର"
 
 #: ctk/ctkprintunixdialog.c:3122
-#: modules/printbackends/cups/ctkprintbackendcups.c:5510
+#: modules/printbackends/cups/ctkprintbackendcups.c:5733
 msgid "Top to bottom, left to right"
 msgstr "ଉପରୁ ତଳ, ବାମରୁ ଡାହାଣ"
 
 #: ctk/ctkprintunixdialog.c:3122
-#: modules/printbackends/cups/ctkprintbackendcups.c:5510
+#: modules/printbackends/cups/ctkprintbackendcups.c:5733
 msgid "Top to bottom, right to left"
 msgstr "ଉପରୁ ତଳ, ଡାହାଣରୁ ବାମ"
 
 #: ctk/ctkprintunixdialog.c:3123
-#: modules/printbackends/cups/ctkprintbackendcups.c:5511
+#: modules/printbackends/cups/ctkprintbackendcups.c:5734
 msgid "Bottom to top, left to right"
 msgstr "ତଳୁ ଉପର, ବାମରୁ ଡାହାଣ"
 
 #: ctk/ctkprintunixdialog.c:3123
-#: modules/printbackends/cups/ctkprintbackendcups.c:5511
+#: modules/printbackends/cups/ctkprintbackendcups.c:5734
 msgid "Bottom to top, right to left"
 msgstr "ତଳୁ ଉପର, ଡାହାଣରୁ ବାମ"
 
@@ -3714,36 +3714,36 @@ msgctxt "progress bar label"
 msgid "%.0f %%"
 msgstr ""
 
-#: ctk/ctkrecentchooserdefault.c:1075 ctk/ctkrecentchooserdefault.c:1112
+#: ctk/ctkrecentchooserdefault.c:1072 ctk/ctkrecentchooserdefault.c:1109
 #, c-format
 msgid "No item for URI '%s' found"
 msgstr "'%s' ୟୁ.ଆର.ଆଇ. ପାଇଁ କୌଣସି ବସ୍ତୁ ମିଳିଲା ନାହିଁ"
 
-#: ctk/ctkrecentchooserdefault.c:1239
+#: ctk/ctkrecentchooserdefault.c:1236
 msgid "Untitled filter"
 msgstr "ଶୀର୍ଷକହୀନ ଛାଣ"
 
-#: ctk/ctkrecentchooserdefault.c:1561
+#: ctk/ctkrecentchooserdefault.c:1558
 msgid "Could not remove item"
 msgstr "ବସ୍ତୁକୁ ଅପସାରିତ ହେଲା ନାହିଁ"
 
-#: ctk/ctkrecentchooserdefault.c:1605
+#: ctk/ctkrecentchooserdefault.c:1602
 msgid "Could not clear list"
 msgstr "ତାଲିକାକୁ ସଫା କରିହେଲା ନାହିଁ"
 
-#: ctk/ctkrecentchooserdefault.c:1689
+#: ctk/ctkrecentchooserdefault.c:1686
 msgid "Copy _Location"
 msgstr "ଅବସ୍ଥାନକୁ ନକଲ କରନ୍ତୁ (_L)"
 
-#: ctk/ctkrecentchooserdefault.c:1700
+#: ctk/ctkrecentchooserdefault.c:1697
 msgid "_Remove From List"
 msgstr "ତାଲିକାରୁ ବାହାର କରି ଦିଅନ୍ତୁ (_R)"
 
-#: ctk/ctkrecentchooserdefault.c:1707
+#: ctk/ctkrecentchooserdefault.c:1704
 msgid "_Clear List"
 msgstr "ତାଲିକାକୁ ସଫା କରନ୍ତୁ (_C)"
 
-#: ctk/ctkrecentchooserdefault.c:1719
+#: ctk/ctkrecentchooserdefault.c:1716
 msgid "Show _Private Resources"
 msgstr "ବ୍ଯକ୍ତିଗତ ସମ୍ବଳ ଗୁଡିକୁ ଦେଖାନ୍ତୁ (_P)"
 
@@ -4365,7 +4365,7 @@ msgstr ""
 msgid "Label"
 msgstr ""
 
-#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1389
+#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1387
 #, fuzzy
 msgid "Action"
 msgstr "ଅବସ୍ଥାନ"
@@ -4397,9 +4397,9 @@ msgid "Default Widget"
 msgstr "ପୂର୍ବନିର୍ଦ୍ଧାରିତ ପ୍ରୟୋଗ"
 
 #: ctk/inspector/misc-info.ui:192 ctk/inspector/misc-info.ui:237
-#: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1071
-#: ctk/inspector/prop-editor.c:1270 ctk/inspector/prop-editor.c:1397
-#: ctk/inspector/prop-editor.c:1508 ctk/inspector/window.ui:382
+#: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1069
+#: ctk/inspector/prop-editor.c:1268 ctk/inspector/prop-editor.c:1395
+#: ctk/inspector/prop-editor.c:1506 ctk/inspector/window.ui:382
 #, fuzzy
 msgid "Properties"
 msgstr "ଗୁଣଧର୍ମ (_P)"
@@ -4493,77 +4493,77 @@ msgstr "ଅଜଣା"
 msgid "Object: %p (%s)"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1141
+#: ctk/inspector/prop-editor.c:1139
 #, c-format
 msgid "Uneditable property type: %s"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1261
+#: ctk/inspector/prop-editor.c:1259
 msgid "Attribute mapping"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1266
+#: ctk/inspector/prop-editor.c:1264
 #, fuzzy
 msgid "Model:"
 msgstr "ଧାରା (_M):"
 
-#: ctk/inspector/prop-editor.c:1267
+#: ctk/inspector/prop-editor.c:1265
 #, c-format
 msgid "%p (%s)"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1277
+#: ctk/inspector/prop-editor.c:1275
 #, fuzzy
 msgid "Column:"
 msgstr "ତିବ୍ରତା"
 
-#: ctk/inspector/prop-editor.c:1287
+#: ctk/inspector/prop-editor.c:1285
 #, fuzzy
 msgctxt "property name"
 msgid "None"
 msgstr "(କିଛି ନୁହେଁ)"
 
-#: ctk/inspector/prop-editor.c:1393
+#: ctk/inspector/prop-editor.c:1391
 #, c-format
 msgid "Defined at: %p (%s)"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1457 ctk/inspector/prop-editor.c:1473
+#: ctk/inspector/prop-editor.c:1455 ctk/inspector/prop-editor.c:1471
 #, fuzzy
 msgid "inverted"
 msgstr "ରୂପାନ୍ତରିତ କରନ୍ତୁ (_C)"
 
-#: ctk/inspector/prop-editor.c:1489
+#: ctk/inspector/prop-editor.c:1487
 msgid "bidirectional, inverted"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1494 ctk/inspector/prop-editor.c:1608
+#: ctk/inspector/prop-editor.c:1492 ctk/inspector/prop-editor.c:1606
 msgid "bidirectional"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1499
+#: ctk/inspector/prop-editor.c:1497
 msgid "Binding:"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1627
+#: ctk/inspector/prop-editor.c:1625
 #, fuzzy
 msgid "Setting:"
 msgstr "%sକୁ ଆରମ୍ଭ କରୁଅଛି"
 
-#: ctk/inspector/prop-editor.c:1667
+#: ctk/inspector/prop-editor.c:1665
 #, fuzzy
 msgid "Source:"
 msgstr "କାଗଜ ଉତ୍ସ"
 
-#: ctk/inspector/prop-editor.c:1669
+#: ctk/inspector/prop-editor.c:1667
 msgid "Reset"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1683
+#: ctk/inspector/prop-editor.c:1681
 msgid "Theme"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1686
+#: ctk/inspector/prop-editor.c:1684
 #, fuzzy
 msgid "XSettings"
 msgstr "%sକୁ ଆରମ୍ଭ କରୁଅଛି"
@@ -7926,7 +7926,7 @@ msgstr ""
 "ignore-theme-index ନିର୍ଦ୍ଦେଶ କୁ ବ୍ଯବହାର କରନ୍ତୁ।\n"
 
 #. ID
-#: modules/input/imam-et.c:452
+#: modules/input/imam-et.c:450
 #, fuzzy
 msgctxt "input method menu"
 msgid "Amharic (EZ+)"
@@ -7939,14 +7939,14 @@ msgid "Broadway"
 msgstr ""
 
 #. ID
-#: modules/input/imcedilla.c:90
+#: modules/input/imcedilla.c:88
 #, fuzzy
 msgctxt "input method menu"
 msgid "Cedilla"
 msgstr "ଶେଡିଲା"
 
 #. ID
-#: modules/input/imcyrillic-translit.c:215
+#: modules/input/imcyrillic-translit.c:213
 #, fuzzy
 msgctxt "input menthod menu"
 msgid "Cyrillic (Transliterated)"
@@ -7959,14 +7959,14 @@ msgid "Windows IME"
 msgstr "ୱିଣ୍ଡୋ"
 
 #. ID
-#: modules/input/iminuktitut.c:125
+#: modules/input/iminuktitut.c:123
 #, fuzzy
 msgctxt "input method menu"
 msgid "Inuktitut (Transliterated)"
 msgstr "ଇନୁକ୍ଟିଟୁଟ (ଉଚ୍ଚାରଣ ସଂଗତିରେ ଲିପିବଦ୍ଧ)"
 
 #. ID
-#: modules/input/imipa.c:143
+#: modules/input/imipa.c:141
 #, fuzzy
 msgctxt "input method menu"
 msgid "IPA"
@@ -7992,21 +7992,21 @@ msgid "Thai-Lao"
 msgstr "ଥାଇ-ଲାଓ"
 
 #. ID
-#: modules/input/imti-er.c:451
+#: modules/input/imti-er.c:449
 #, fuzzy
 msgctxt "input method menu"
 msgid "Tigrigna-Eritrean (EZ+)"
 msgstr "ଟିଗ୍ରିନା-ଏରିଟ୍ରୀୟ (ଇ.ଜେଡ.+)"
 
 #. ID
-#: modules/input/imti-et.c:451
+#: modules/input/imti-et.c:449
 #, fuzzy
 msgctxt "input method menu"
 msgid "Tigrigna-Ethiopian (EZ+)"
 msgstr "ଟିଗ୍ରିନା-ଏଥିଓପୀୟ (ଇ.ଜେଡ.+)"
 
 #. ID
-#: modules/input/imviqr.c:242
+#: modules/input/imviqr.c:240
 #, fuzzy
 msgctxt "input method menu"
 msgid "Vietnamese (VIQR)"
@@ -8033,248 +8033,248 @@ msgstr "ଏକ୍ସ ନିବେଶ ପ୍ରଣାଳୀ"
 
 #. Translators: The printer status is online, i.e. it is
 #. * ready to print.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:744
+#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:740
 #, fuzzy
 msgid "Online"
 msgstr "ଅବରେଖନ କରନ୍ତୁ (_U)"
 
 #. Translators: The printer is offline.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:751
+#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:747
 msgid "Offline"
 msgstr ""
 
 #. We shouldn't get here because the query omits dormant
 #. * printers by default.
 #. Translators: Printer has been offline for a long time.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:757
+#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:753
 msgid "Dormant"
 msgstr ""
 
 #. How many document pages to go onto one side of paper.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:941
-#: modules/printbackends/file/ctkprintbackendfile.c:679
+#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:937
+#: modules/printbackends/file/ctkprintbackendfile.c:675
 #: modules/printbackends/test/ctkprintbackendtest.c:503
 msgid "Pages per _sheet:"
 msgstr "ପୃଷ୍ଠା ପ୍ରତି ସୀଟରେ (_s):"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1129
-#: modules/printbackends/cups/ctkprintbackendcups.c:1439
+#: modules/printbackends/cups/ctkprintbackendcups.c:1155
+#: modules/printbackends/cups/ctkprintbackendcups.c:1465
 msgid "Username:"
 msgstr "ଚାଳକ ନାମ:"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1130
-#: modules/printbackends/cups/ctkprintbackendcups.c:1448
+#: modules/printbackends/cups/ctkprintbackendcups.c:1156
+#: modules/printbackends/cups/ctkprintbackendcups.c:1474
 msgid "Password:"
 msgstr "ପ୍ରବେଶ ସଂକେତ:"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1169
-#: modules/printbackends/cups/ctkprintbackendcups.c:1461
+#: modules/printbackends/cups/ctkprintbackendcups.c:1195
+#: modules/printbackends/cups/ctkprintbackendcups.c:1487
 #, fuzzy, c-format
 msgid "Authentication is required to print document “%s” on printer %s"
 msgstr "ଦଲିଲ '%s' କୁ ମୁଦ୍ରଣୀ %s ରେ ମୁଦ୍ରଣ କରିବା ପାଇଁ ବୈଧିକରଣ ଆବଶ୍ୟକ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1171
+#: modules/printbackends/cups/ctkprintbackendcups.c:1197
 #, c-format
 msgid "Authentication is required to print a document on %s"
 msgstr "%s ରେ ଗୋଟିଏ ଦଲିଲ ମୁଦ୍ରଣ କରିବା ପାଇଁ ବୈଧିକରଣ ଆବଶ୍ୟକ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1175
+#: modules/printbackends/cups/ctkprintbackendcups.c:1201
 #, fuzzy, c-format
 msgid "Authentication is required to get attributes of job “%s”"
 msgstr "କାର୍ଯ୍ୟ '%s' ର ଗୁଣଧର୍ମ ପାଇବା ପାଇଁ ବୈଧିକରଣ ଆବଶ୍ୟକ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1177
+#: modules/printbackends/cups/ctkprintbackendcups.c:1203
 msgid "Authentication is required to get attributes of a job"
 msgstr "ଗୋଟିଏ କାର୍ଯ୍ୟର ଗୁଣଧର୍ମ ପାଇବା ପାଇଁ ବୈଧିକରଣ ଆବଶ୍ୟକ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1181
+#: modules/printbackends/cups/ctkprintbackendcups.c:1207
 #, c-format
 msgid "Authentication is required to get attributes of printer %s"
 msgstr "ମୁଦ୍ରଣୀ %s ର ଗୁଣଧର୍ମ ପାଇବା ପାଇଁ ବୈଧିକରଣ ଆବଶ୍ୟକ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1183
+#: modules/printbackends/cups/ctkprintbackendcups.c:1209
 msgid "Authentication is required to get attributes of a printer"
 msgstr "ଗୋଟିଏ ମୁଦ୍ରଣୀର ଗୁଣଧର୍ମ ପାଇବା ପାଇଁ ବୈଧିକରଣ ଆବଶ୍ୟକ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1186
+#: modules/printbackends/cups/ctkprintbackendcups.c:1212
 #, c-format
 msgid "Authentication is required to get default printer of %s"
 msgstr "%s ର ପୂର୍ବନିର୍ଦ୍ଧାରିତ ମୁଦ୍ରଣୀର ଗୁଣଧର୍ମ ପାଇବା ପାଇଁ ବୈଧିକରଣ ଆବଶ୍ୟକ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1189
+#: modules/printbackends/cups/ctkprintbackendcups.c:1215
 #, c-format
 msgid "Authentication is required to get printers from %s"
 msgstr "%s ରୁ ମୁଦ୍ରଣୀଗୁଡ଼ିକୁ ପାଇବା ପାଇଁ ବୈଧିକରଣ ଆବଶ୍ୟକ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1194
+#: modules/printbackends/cups/ctkprintbackendcups.c:1220
 #, c-format
 msgid "Authentication is required to get a file from %s"
 msgstr "%s ରୁ ଗୋଟିଏ ଫାଇଲ ପାଇବା ପାଇଁ ବୈଧିକରଣ ଆବଶ୍ୟକ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1196
+#: modules/printbackends/cups/ctkprintbackendcups.c:1222
 #, c-format
 msgid "Authentication is required on %s"
 msgstr "%s ରେ ବୈଧିକରଣ ଆବଶ୍ୟକ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1433
+#: modules/printbackends/cups/ctkprintbackendcups.c:1459
 msgid "Domain:"
 msgstr "ପରିସର:"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1463
+#: modules/printbackends/cups/ctkprintbackendcups.c:1489
 #, fuzzy, c-format
 msgid "Authentication is required to print document “%s”"
 msgstr "'%s' ରେ ଗୋଟିଏ ଦଲିଲ ମୁଦ୍ରଣ କରିବା ପାଇଁ ବୈଧିକରଣ ଆବଶ୍ୟକ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1468
+#: modules/printbackends/cups/ctkprintbackendcups.c:1494
 #, c-format
 msgid "Authentication is required to print this document on printer %s"
 msgstr "ଏହି ଦଲିଲକୁ ମୁଦ୍ରଣୀ %s ରେ ମୁଦ୍ରଣ କରିବା ପାଇଁ ବୈଧିକରଣ ଆବଶ୍ୟକ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1470
+#: modules/printbackends/cups/ctkprintbackendcups.c:1496
 msgid "Authentication is required to print this document"
 msgstr "ଏହି ଦଲିଲକୁ ମୁଦ୍ରଣ କରିବା ପାଇଁ ବୈଧିକରଣ ଆବଶ୍ୟକ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2557
+#: modules/printbackends/cups/ctkprintbackendcups.c:2610
 #, fuzzy, c-format
 msgid "Printer “%s” is low on toner."
 msgstr "ମୁଦ୍ରଣୀ '%s'ରେ ଟନରର ଅଭାବ."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2561
+#: modules/printbackends/cups/ctkprintbackendcups.c:2614
 #, fuzzy, c-format
 msgid "Printer “%s” has no toner left."
 msgstr "ମୁଦ୍ରଣୀ '%s'ରେ କିଛି ଟନର ବଳିନାହିଁ."
 
 #. Translators: "Developer" like on photo development context
-#: modules/printbackends/cups/ctkprintbackendcups.c:2566
+#: modules/printbackends/cups/ctkprintbackendcups.c:2619
 #, fuzzy, c-format
 msgid "Printer “%s” is low on developer."
 msgstr "ମୁଦ୍ରଣୀ '%s'ରେ ବିକାଶକାରୀର ଅଭାବ."
 
 #. Translators: "Developer" like on photo development context
-#: modules/printbackends/cups/ctkprintbackendcups.c:2571
+#: modules/printbackends/cups/ctkprintbackendcups.c:2624
 #, fuzzy, c-format
 msgid "Printer “%s” is out of developer."
 msgstr "ମୁଦ୍ରଣୀ '%s' ରେ ବିକାଶକାରୀ ଶେଷ."
 
 #. Translators: "marker" is one color bin of the printer
-#: modules/printbackends/cups/ctkprintbackendcups.c:2576
+#: modules/printbackends/cups/ctkprintbackendcups.c:2629
 #, fuzzy, c-format
 msgid "Printer “%s” is low on at least one marker supply."
 msgstr "ମୁଦ୍ରଣୀ '%s'ରେ ଅତିକମରେ ଗୋଟିଏ ଚିହ୍ନଟ ସାମଗ୍ରୀର କମ ଅଛି."
 
 #. Translators: "marker" is one color bin of the printer
-#: modules/printbackends/cups/ctkprintbackendcups.c:2581
+#: modules/printbackends/cups/ctkprintbackendcups.c:2634
 #, fuzzy, c-format
 msgid "Printer “%s” is out of at least one marker supply."
 msgstr "ମୁଦ୍ରଣୀ '%s'ରେ ଅତିକମରେ ଗୋଟିଏ ଚିହ୍ନଟ ସାମଗ୍ରୀର ଅଭାବ ଅଛି."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2585
+#: modules/printbackends/cups/ctkprintbackendcups.c:2638
 #, fuzzy, c-format
 msgid "The cover is open on printer “%s”."
 msgstr "ମୁଦ୍ରଣୀ '%s'ରେ ଢ଼ାଙ୍କୁଣି ଖୋଲାଅଛି."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2589
+#: modules/printbackends/cups/ctkprintbackendcups.c:2642
 #, fuzzy, c-format
 msgid "The door is open on printer “%s”."
 msgstr "ମୁଦ୍ରଣୀ '%s'ରେ ଦ୍ୱାର ଖୋଲାଅଛି."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2593
+#: modules/printbackends/cups/ctkprintbackendcups.c:2646
 #, fuzzy, c-format
 msgid "Printer “%s” is low on paper."
 msgstr "ମୁଦ୍ରଣୀ '%s'ରେ କାଗଜର ଅଭାବ."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2597
+#: modules/printbackends/cups/ctkprintbackendcups.c:2650
 #, fuzzy, c-format
 msgid "Printer “%s” is out of paper."
 msgstr "ମୁଦ୍ରଣୀ '%s'ରେ କାଗଜ ଶେଷ."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2601
+#: modules/printbackends/cups/ctkprintbackendcups.c:2654
 #, fuzzy, c-format
 msgid "Printer “%s” is currently offline."
 msgstr "ମୂଦ୍ରଣୀ '%s' ବର୍ତ୍ତମାନ ଅଫ-ଲାଇନ ଅଛି।"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2605
+#: modules/printbackends/cups/ctkprintbackendcups.c:2658
 #, fuzzy, c-format
 msgid "There is a problem on printer “%s”."
 msgstr "ମୂଦ୍ରଣୀ '%s'ରେ ଗୋଟିଏ ସମସ୍ୟା ଅଛି."
 
 #. Translators: this is a printer status.
-#: modules/printbackends/cups/ctkprintbackendcups.c:2625
+#: modules/printbackends/cups/ctkprintbackendcups.c:2678
 msgid "Paused; Rejecting Jobs"
 msgstr "ବିରତି ; କାର୍ଯ୍ୟକୁ ଅସ୍ୱୀକାର କରୁଅଛି"
 
 #. Translators: this is a printer status.
-#: modules/printbackends/cups/ctkprintbackendcups.c:2631
+#: modules/printbackends/cups/ctkprintbackendcups.c:2684
 msgid "Rejecting Jobs"
 msgstr "କାର୍ଯ୍ୟକୁ ଅସ୍ୱୀକାର କରୁଅଛି"
 
 #. Translators: this string connects multiple printer states together.
-#: modules/printbackends/cups/ctkprintbackendcups.c:2672
+#: modules/printbackends/cups/ctkprintbackendcups.c:2725
 msgid "; "
 msgstr "; "
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4453
-#: modules/printbackends/cups/ctkprintbackendcups.c:4520
+#: modules/printbackends/cups/ctkprintbackendcups.c:4676
+#: modules/printbackends/cups/ctkprintbackendcups.c:4743
 #, fuzzy
 msgctxt "printing option"
 msgid "Two Sided"
 msgstr "ଉଭୟ ପାର୍ଶ୍ବ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4454
+#: modules/printbackends/cups/ctkprintbackendcups.c:4677
 #, fuzzy
 msgctxt "printing option"
 msgid "Paper Type"
 msgstr "କାଗଜର ପ୍ରକାର"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4455
+#: modules/printbackends/cups/ctkprintbackendcups.c:4678
 #, fuzzy
 msgctxt "printing option"
 msgid "Paper Source"
 msgstr "କାଗଜ ଉତ୍ସ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4456
-#: modules/printbackends/cups/ctkprintbackendcups.c:4521
+#: modules/printbackends/cups/ctkprintbackendcups.c:4679
+#: modules/printbackends/cups/ctkprintbackendcups.c:4744
 #, fuzzy
 msgctxt "printing option"
 msgid "Output Tray"
 msgstr "ନିର୍ଗମ ଟ୍ରେ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4457
+#: modules/printbackends/cups/ctkprintbackendcups.c:4680
 #, fuzzy
 msgctxt "printing option"
 msgid "Resolution"
 msgstr "ବିଭେଦ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4458
+#: modules/printbackends/cups/ctkprintbackendcups.c:4681
 #, fuzzy
 msgctxt "printing option"
 msgid "GhostScript pre-filtering"
 msgstr "GhostScript ପ୍ରାକ-ଛଣା"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4467
+#: modules/printbackends/cups/ctkprintbackendcups.c:4690
 #, fuzzy
 msgctxt "printing option value"
 msgid "One Sided"
 msgstr "ଗୋଟିଏ ପାଖ"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4469
+#: modules/printbackends/cups/ctkprintbackendcups.c:4692
 #, fuzzy
 msgctxt "printing option value"
 msgid "Long Edge (Standard)"
 msgstr "ବୃହତ ଧାର (ମାନକ)"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4471
+#: modules/printbackends/cups/ctkprintbackendcups.c:4694
 #, fuzzy
 msgctxt "printing option value"
 msgid "Short Edge (Flip)"
 msgstr "ସଂକ୍ଷିପ୍ତ ଧାର (ଫ୍ଲିପ)"
 
 #. Translators: this is an option of "Paper Source"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4473
-#: modules/printbackends/cups/ctkprintbackendcups.c:4475
-#: modules/printbackends/cups/ctkprintbackendcups.c:4483
+#: modules/printbackends/cups/ctkprintbackendcups.c:4696
+#: modules/printbackends/cups/ctkprintbackendcups.c:4698
+#: modules/printbackends/cups/ctkprintbackendcups.c:4706
 #, fuzzy
 msgctxt "printing option value"
 msgid "Auto Select"
@@ -8282,38 +8282,38 @@ msgstr "ସ୍ବତଃ ଚୟନ"
 
 #. Translators: this is an option of "Paper Source"
 #. Translators: this is an option of "Resolution"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4477
-#: modules/printbackends/cups/ctkprintbackendcups.c:4479
-#: modules/printbackends/cups/ctkprintbackendcups.c:4481
-#: modules/printbackends/cups/ctkprintbackendcups.c:4485
+#: modules/printbackends/cups/ctkprintbackendcups.c:4700
+#: modules/printbackends/cups/ctkprintbackendcups.c:4702
+#: modules/printbackends/cups/ctkprintbackendcups.c:4704
+#: modules/printbackends/cups/ctkprintbackendcups.c:4708
 #, fuzzy
 msgctxt "printing option value"
 msgid "Printer Default"
 msgstr "ପୂର୍ବନିର୍ଦ୍ଧାରିତ ମୂଦ୍ରଣୀ"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4487
+#: modules/printbackends/cups/ctkprintbackendcups.c:4710
 #, fuzzy
 msgctxt "printing option value"
 msgid "Embed GhostScript fonts only"
 msgstr "କୋବଳ GhostScript ଅକ୍ଷରରୂପଗୁଡ଼ିକୁ ଯୋଗକରନ୍ତୁ"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4489
+#: modules/printbackends/cups/ctkprintbackendcups.c:4712
 #, fuzzy
 msgctxt "printing option value"
 msgid "Convert to PS level 1"
 msgstr "PS ସ୍ତର 1କୁ ରୂପାନ୍ତରିତ କରନ୍ତୁ"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4491
+#: modules/printbackends/cups/ctkprintbackendcups.c:4714
 #, fuzzy
 msgctxt "printing option value"
 msgid "Convert to PS level 2"
 msgstr "PS ସ୍ତର 2କୁ ରୂପାନ୍ତରିତ କରନ୍ତୁ"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4493
+#: modules/printbackends/cups/ctkprintbackendcups.c:4716
 #, fuzzy
 msgctxt "printing option value"
 msgid "No pre-filtering"
@@ -8321,203 +8321,203 @@ msgstr "କୌଣସି ପ୍ରାକ-ମୁଦ୍ରଣୀ ନାହିଁ"
 
 #. Translators: "Miscellaneous" is the label for a button, that opens
 #. up an extra panel of settings in a print dialog.
-#: modules/printbackends/cups/ctkprintbackendcups.c:4502
+#: modules/printbackends/cups/ctkprintbackendcups.c:4725
 #, fuzzy
 msgctxt "printing option group"
 msgid "Miscellaneous"
 msgstr "ବିବିଧ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4529
+#: modules/printbackends/cups/ctkprintbackendcups.c:4752
 #, fuzzy
 msgctxt "sides"
 msgid "One Sided"
 msgstr "ଗୋଟିଏ ପାଖ"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4531
+#: modules/printbackends/cups/ctkprintbackendcups.c:4754
 #, fuzzy
 msgctxt "sides"
 msgid "Long Edge (Standard)"
 msgstr "ବୃହତ ଧାର (ମାନକ)"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4533
+#: modules/printbackends/cups/ctkprintbackendcups.c:4756
 #, fuzzy
 msgctxt "sides"
 msgid "Short Edge (Flip)"
 msgstr "ସଂକ୍ଷିପ୍ତ ଧାର (ଫ୍ଲିପ)"
 
 #. Translators: Top output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4536
+#: modules/printbackends/cups/ctkprintbackendcups.c:4759
 msgctxt "output-bin"
 msgid "Top Bin"
 msgstr ""
 
 #. Translators: Middle output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4538
+#: modules/printbackends/cups/ctkprintbackendcups.c:4761
 msgctxt "output-bin"
 msgid "Middle Bin"
 msgstr ""
 
 #. Translators: Bottom output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4540
+#: modules/printbackends/cups/ctkprintbackendcups.c:4763
 #, fuzzy
 msgctxt "output-bin"
 msgid "Bottom Bin"
 msgstr "ତଳ (_B)"
 
 #. Translators: Side output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4542
+#: modules/printbackends/cups/ctkprintbackendcups.c:4765
 msgctxt "output-bin"
 msgid "Side Bin"
 msgstr ""
 
 #. Translators: Left output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4544
+#: modules/printbackends/cups/ctkprintbackendcups.c:4767
 #, fuzzy
 msgctxt "output-bin"
 msgid "Left Bin"
 msgstr "ବାମ"
 
 #. Translators: Right output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4546
+#: modules/printbackends/cups/ctkprintbackendcups.c:4769
 #, fuzzy
 msgctxt "output-bin"
 msgid "Right Bin"
 msgstr "ଡାହାଣ"
 
 #. Translators: Center output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4548
+#: modules/printbackends/cups/ctkprintbackendcups.c:4771
 #, fuzzy
 msgctxt "output-bin"
 msgid "Center Bin"
 msgstr "କେନ୍ଦ୍ର (_C)"
 
 #. Translators: Rear output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4550
+#: modules/printbackends/cups/ctkprintbackendcups.c:4773
 msgctxt "output-bin"
 msgid "Rear Bin"
 msgstr ""
 
 #. Translators: Output bin where one sided output is oriented in the face-up position
-#: modules/printbackends/cups/ctkprintbackendcups.c:4552
+#: modules/printbackends/cups/ctkprintbackendcups.c:4775
 msgctxt "output-bin"
 msgid "Face Up Bin"
 msgstr ""
 
 #. Translators: Output bin where one sided output is oriented in the face-down position
-#: modules/printbackends/cups/ctkprintbackendcups.c:4554
+#: modules/printbackends/cups/ctkprintbackendcups.c:4777
 msgctxt "output-bin"
 msgid "Face Down Bin"
 msgstr ""
 
 #. Translators: Large capacity output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4556
+#: modules/printbackends/cups/ctkprintbackendcups.c:4779
 msgctxt "output-bin"
 msgid "Large Capacity Bin"
 msgstr ""
 
 #. Translators: Output stacker number %d
-#: modules/printbackends/cups/ctkprintbackendcups.c:4578
+#: modules/printbackends/cups/ctkprintbackendcups.c:4801
 #, c-format
 msgctxt "output-bin"
 msgid "Stacker %d"
 msgstr ""
 
 #. Translators: Output mailbox number %d
-#: modules/printbackends/cups/ctkprintbackendcups.c:4582
+#: modules/printbackends/cups/ctkprintbackendcups.c:4805
 #, c-format
 msgctxt "output-bin"
 msgid "Mailbox %d"
 msgstr ""
 
 #. Translators: Private mailbox
-#: modules/printbackends/cups/ctkprintbackendcups.c:4586
+#: modules/printbackends/cups/ctkprintbackendcups.c:4809
 msgctxt "output-bin"
 msgid "My Mailbox"
 msgstr ""
 
 #. Translators: Output tray number %d
-#: modules/printbackends/cups/ctkprintbackendcups.c:4590
+#: modules/printbackends/cups/ctkprintbackendcups.c:4813
 #, c-format
 msgctxt "output-bin"
 msgid "Tray %d"
 msgstr ""
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5061
+#: modules/printbackends/cups/ctkprintbackendcups.c:5284
 msgid "Printer Default"
 msgstr "ପୂର୍ବନିର୍ଦ୍ଧାରିତ ମୂଦ୍ରଣୀ"
 
 #. Translators: These strings name the possible values of the
 #. * job priority option in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5503
+#: modules/printbackends/cups/ctkprintbackendcups.c:5726
 msgid "Urgent"
 msgstr "ଜରୁରୀ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5503
+#: modules/printbackends/cups/ctkprintbackendcups.c:5726
 msgid "High"
 msgstr "ଉଚ୍ଚ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5503
+#: modules/printbackends/cups/ctkprintbackendcups.c:5726
 msgid "Medium"
 msgstr "ମଧ୍ଯମ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5503
+#: modules/printbackends/cups/ctkprintbackendcups.c:5726
 msgid "Low"
 msgstr "ନିମ୍ନ"
 
 #. Translators, this string is used to label the job priority option
 #. * in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5533
+#: modules/printbackends/cups/ctkprintbackendcups.c:5756
 msgid "Job Priority"
 msgstr "କାର୍ଯ୍ୟ ଅଗ୍ରାଧିକାର"
 
 #. Translators, this string is used to label the billing info entry
 #. * in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5544
+#: modules/printbackends/cups/ctkprintbackendcups.c:5767
 msgid "Billing Info"
 msgstr "ବିଲି ସମ୍ବନ୍ଧୀୟ ସୂଚନା"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5568
+#: modules/printbackends/cups/ctkprintbackendcups.c:5791
 #, fuzzy
 msgctxt "cover page"
 msgid "None"
 msgstr "(କିଛି ନୁହେଁ)"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5569
+#: modules/printbackends/cups/ctkprintbackendcups.c:5792
 #, fuzzy
 msgctxt "cover page"
 msgid "Classified"
 msgstr "ବର୍ଗୀକୃତ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5570
+#: modules/printbackends/cups/ctkprintbackendcups.c:5793
 #, fuzzy
 msgctxt "cover page"
 msgid "Confidential"
 msgstr "ଗୋପନୀୟ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5571
+#: modules/printbackends/cups/ctkprintbackendcups.c:5794
 #, fuzzy
 msgctxt "cover page"
 msgid "Secret"
 msgstr "ଗୁପ୍ତ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5572
+#: modules/printbackends/cups/ctkprintbackendcups.c:5795
 #, fuzzy
 msgctxt "cover page"
 msgid "Standard"
 msgstr "ମାନକ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5573
+#: modules/printbackends/cups/ctkprintbackendcups.c:5796
 #, fuzzy
 msgctxt "cover page"
 msgid "Top Secret"
 msgstr "ଅତ୍ଯନ୍ତ ଗୋପନୀୟ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5574
+#: modules/printbackends/cups/ctkprintbackendcups.c:5797
 #, fuzzy
 msgctxt "cover page"
 msgid "Unclassified"
@@ -8526,7 +8526,7 @@ msgstr "ଅବର୍ଗୀକୃତ"
 #. Translators, this string is used to label the pages-per-sheet option
 #. * in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5586
+#: modules/printbackends/cups/ctkprintbackendcups.c:5809
 #, fuzzy
 msgctxt "printer option"
 msgid "Pages per Sheet"
@@ -8535,7 +8535,7 @@ msgstr "ପ୍ରତି ସୀଟରେ ଥିବା ପୃଷ୍ଠାସଂଖ
 #. Translators, this string is used to label the option in the print
 #. * dialog that controls in what order multiple pages are arranged
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5603
+#: modules/printbackends/cups/ctkprintbackendcups.c:5826
 #, fuzzy
 msgctxt "printer option"
 msgid "Page Ordering"
@@ -8544,7 +8544,7 @@ msgstr "ପୃଷ୍ଠାକୁ କ୍ରମରେ ସଜାଡିବା"
 #. Translators, this is the label used for the option in the print
 #. * dialog that controls the front cover page.
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5645
+#: modules/printbackends/cups/ctkprintbackendcups.c:5868
 #, fuzzy
 msgctxt "printer option"
 msgid "Before"
@@ -8553,7 +8553,7 @@ msgstr "ଏହା ପୂର୍ବରୁ"
 #. Translators, this is the label used for the option in the print
 #. * dialog that controls the back cover page.
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5660
+#: modules/printbackends/cups/ctkprintbackendcups.c:5883
 #, fuzzy
 msgctxt "printer option"
 msgid "After"
@@ -8563,7 +8563,7 @@ msgstr "ଏହା ପରେ"
 #. * a print job is printed. Possible values are 'now', a specified time,
 #. * or 'on hold'
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5680
+#: modules/printbackends/cups/ctkprintbackendcups.c:5903
 #, fuzzy
 msgctxt "printer option"
 msgid "Print at"
@@ -8572,7 +8572,7 @@ msgstr "ଠାରେ ମୁଦ୍ରଣ କରନ୍ତୁ"
 #. Translators: this is the name of the option that allows the user
 #. * to specify a time when a print job will be printed.
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5691
+#: modules/printbackends/cups/ctkprintbackendcups.c:5914
 #, fuzzy
 msgctxt "printer option"
 msgid "Print at time"
@@ -8583,19 +8583,19 @@ msgstr "ସମୟରେ ମୁଦ୍ରଣ କରନ୍ତୁ"
 #. * the width and height in points. E.g: "Custom
 #. * 230.4x142.9"
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5737
+#: modules/printbackends/cups/ctkprintbackendcups.c:5960
 #, fuzzy, c-format
 msgid "Custom %s×%s"
 msgstr "%sx%s କୁ ଇଚ୍ଛାରୂପଣ କରନ୍ତୁ"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5847
+#: modules/printbackends/cups/ctkprintbackendcups.c:6070
 #, fuzzy
 msgctxt "printer option"
 msgid "Printer Profile"
 msgstr "ମୂଦ୍ରଣୀ ରୂପରେଖା"
 
 #. TRANSLATORS: this is when color profile information is unavailable
-#: modules/printbackends/cups/ctkprintbackendcups.c:5854
+#: modules/printbackends/cups/ctkprintbackendcups.c:6077
 #, fuzzy
 msgctxt "printer option value"
 msgid "Unavailable"
@@ -8603,57 +8603,57 @@ msgstr "ଉପଲବ୍ଧନାହିଁ"
 
 #. TRANSLATORS: when we're running an old CUPS, and
 #. * it hasn't registered the device with colord
-#: modules/printbackends/cups/ctkprintercups.c:275
+#: modules/printbackends/cups/ctkprintercups.c:273
 msgid "Color management unavailable"
 msgstr "ରଙ୍ଗ ପରିଚାଳନା ଉପଲବ୍ଧ ନାହିଁ"
 
 #. TRANSLATORS: when there is no color profile available
-#: modules/printbackends/cups/ctkprintercups.c:287
+#: modules/printbackends/cups/ctkprintercups.c:285
 msgid "No profile available"
 msgstr "କୌଣସି ରୂପରେଖା ଉପଲବ୍ଧ ନାହିଁ"
 
 #. TRANSLATORS: when the color profile has no title
-#: modules/printbackends/cups/ctkprintercups.c:298
+#: modules/printbackends/cups/ctkprintercups.c:296
 msgid "Unspecified profile"
 msgstr "ଅନିର୍ଦ୍ଦିଷ୍ଟ ରୂପରେଖା"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:250
+#: modules/printbackends/file/ctkprintbackendfile.c:246
 msgid "output"
 msgstr "ଫଳାଫଳ"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:539
+#: modules/printbackends/file/ctkprintbackendfile.c:535
 msgid "Print to File"
 msgstr "ଫାଇଲରେ ମୁଦ୍ରଣ କରନ୍ତୁ (_P)"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:667
+#: modules/printbackends/file/ctkprintbackendfile.c:663
 msgid "PDF"
 msgstr "PDF"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:667
+#: modules/printbackends/file/ctkprintbackendfile.c:663
 msgid "Postscript"
 msgstr "ପୋଷ୍ଟ-ସ୍କ୍ରିପ୍ଟ"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:667
+#: modules/printbackends/file/ctkprintbackendfile.c:663
 msgid "SVG"
 msgstr "SVG"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:738
+#: modules/printbackends/file/ctkprintbackendfile.c:734
 msgid "File"
 msgstr "ଫାଇଲ"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:750
+#: modules/printbackends/file/ctkprintbackendfile.c:746
 msgid "_Output format"
 msgstr "ନିର୍ଗମ ଶୈଳୀ (_O)"
 
-#: modules/printbackends/lpr/ctkprintbackendlpr.c:394
+#: modules/printbackends/lpr/ctkprintbackendlpr.c:390
 msgid "Print to LPR"
 msgstr "LPR ରେ ମୂଦ୍ରଣ କରନ୍ତୁ"
 
-#: modules/printbackends/lpr/ctkprintbackendlpr.c:423
+#: modules/printbackends/lpr/ctkprintbackendlpr.c:419
 msgid "Pages Per Sheet"
 msgstr "ପୃଷ୍ଠା ପ୍ରତି ସୀଟରେ"
 
-#: modules/printbackends/lpr/ctkprintbackendlpr.c:430
+#: modules/printbackends/lpr/ctkprintbackendlpr.c:426
 msgid "Command Line"
 msgstr "ପାଠ୍ଯ ନିର୍ଦ୍ଦେଶ"
 

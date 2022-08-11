@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+.master.ta\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-23 17:45+0100\n"
+"POT-Creation-Date: 2022-08-11 17:18+0200\n"
 "PO-Revision-Date: 2014-09-23 16:38+0530\n"
 "Last-Translator: Shantha kumar <shkumar@redhat.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -572,12 +572,12 @@ msgctxt "Action name"
 msgid "Toggle"
 msgstr "நிலைமாற்று"
 
-#: ctk/a11y/ctkbuttonaccessible.c:323 ctk/a11y/ctkmenuitemaccessible.c:439
+#: ctk/a11y/ctkbuttonaccessible.c:322 ctk/a11y/ctkmenuitemaccessible.c:439
 msgctxt "Action name"
 msgid "Click"
 msgstr "சொடுக்கு"
 
-#: ctk/a11y/ctkbuttonaccessible.c:332
+#: ctk/a11y/ctkbuttonaccessible.c:331
 msgctxt "Action description"
 msgid "Clicks the button"
 msgstr "பொத்தானை சொடுக்கும்"
@@ -1109,7 +1109,7 @@ msgctxt "Action description"
 msgid "Toggles the switch"
 msgstr "ஸ்விட்ச்சை நிலைமாற்றும்"
 
-#: ctk/ctkcolorsel.c:425
+#: ctk/ctkcolorsel.c:421
 msgid ""
 "Select the color you want from the outer ring. Select the darkness or "
 "lightness of that color using the inner triangle."
@@ -1117,7 +1117,7 @@ msgstr ""
 "Select the color you want from the outer ring. Select the darkness or "
 "lightness of that color using the inner triangle."
 
-#: ctk/ctkcolorsel.c:451
+#: ctk/ctkcolorsel.c:447
 msgid ""
 "Click the eyedropper, then click a color anywhere on your screen to select "
 "that color."
@@ -1125,67 +1125,67 @@ msgstr ""
 "Click the eyedropper, then click a color anywhere on your screen to select "
 "that color."
 
-#: ctk/ctkcolorsel.c:461
+#: ctk/ctkcolorsel.c:457
 msgid "_Hue:"
 msgstr "நிறம்:"
 
-#: ctk/ctkcolorsel.c:462
+#: ctk/ctkcolorsel.c:458
 msgid "Position on the color wheel."
 msgstr "வண்ணச் சக்கரத்தில் இடம்."
 
-#: ctk/ctkcolorsel.c:464
+#: ctk/ctkcolorsel.c:460
 msgid "S_aturation:"
 msgstr "சேச்சுரேஷன் (_a):"
 
-#: ctk/ctkcolorsel.c:465
+#: ctk/ctkcolorsel.c:461
 msgid "Intensity of the color."
 msgstr "வண்ணத்தின் அடர்த்தி."
 
-#: ctk/ctkcolorsel.c:466
+#: ctk/ctkcolorsel.c:462
 msgid "_Value:"
 msgstr "மதிப்பு:"
 
-#: ctk/ctkcolorsel.c:467
+#: ctk/ctkcolorsel.c:463
 msgid "Brightness of the color."
 msgstr "இந்த வண்ணத்தின் ஒளிர்வு."
 
-#: ctk/ctkcolorsel.c:468
+#: ctk/ctkcolorsel.c:464
 msgid "_Red:"
 msgstr "சிவப்பு:"
 
-#: ctk/ctkcolorsel.c:469
+#: ctk/ctkcolorsel.c:465
 msgid "Amount of red light in the color."
 msgstr "வண்ணத்தில் உல்ல சிவப்பு நிற ஒளி அளவு."
 
-#: ctk/ctkcolorsel.c:470
+#: ctk/ctkcolorsel.c:466
 msgid "_Green:"
 msgstr "பச்சை:"
 
-#: ctk/ctkcolorsel.c:471
+#: ctk/ctkcolorsel.c:467
 msgid "Amount of green light in the color."
 msgstr "வண்ணத்தில் உல்ல பச்சை நிற ஒளி அளவு."
 
-#: ctk/ctkcolorsel.c:472
+#: ctk/ctkcolorsel.c:468
 msgid "_Blue:"
 msgstr "நீலம்:"
 
-#: ctk/ctkcolorsel.c:473
+#: ctk/ctkcolorsel.c:469
 msgid "Amount of blue light in the color."
 msgstr "வண்ணத்தில் உல்ல நீல நிற ஒளி அளவு."
 
-#: ctk/ctkcolorsel.c:476
+#: ctk/ctkcolorsel.c:472
 msgid "Op_acity:"
 msgstr "ஒளிபுகாமை: (_a)"
 
-#: ctk/ctkcolorsel.c:484 ctk/ctkcolorsel.c:494
+#: ctk/ctkcolorsel.c:480 ctk/ctkcolorsel.c:490
 msgid "Transparency of the color."
 msgstr "நிறத்தின் ஊடுருவல்."
 
-#: ctk/ctkcolorsel.c:501
+#: ctk/ctkcolorsel.c:497
 msgid "Color _name:"
 msgstr "நிறப் பெயர்: (_n)"
 
-#: ctk/ctkcolorsel.c:516
+#: ctk/ctkcolorsel.c:512
 #, fuzzy
 msgid ""
 "You can enter an HTML-style hexadecimal color value, or simply a color name "
@@ -1194,15 +1194,15 @@ msgstr ""
 "You can enter an HTML-style hexadecimal color value, or simply a color name "
 "such as 'orange' in this entry."
 
-#: ctk/ctkcolorsel.c:548
+#: ctk/ctkcolorsel.c:544
 msgid "_Palette:"
 msgstr "நிறத்தட்டு: (_P)"
 
-#: ctk/ctkcolorsel.c:578
+#: ctk/ctkcolorsel.c:574
 msgid "Color Wheel"
 msgstr "நிறச் சக்கரம்"
 
-#: ctk/ctkcolorsel.c:1072
+#: ctk/ctkcolorsel.c:1068
 #, fuzzy
 msgid ""
 "The previously-selected color, for comparison to the color you’re selecting "
@@ -1213,7 +1213,7 @@ msgstr ""
 "now. You can drag this color to a palette entry, or select this color as "
 "current by dragging it to the other color swatch alongside."
 
-#: ctk/ctkcolorsel.c:1078
+#: ctk/ctkcolorsel.c:1074
 #, fuzzy
 msgid ""
 "The color you’ve chosen. You can drag this color to a palette entry to save "
@@ -1222,23 +1222,23 @@ msgstr ""
 "தேர்திருக்கும் வண்ணம். எதிர்காலத்தில் பயண்படுத்துவதற்கு, இந்த வண்ணத்தை இழுத்து வண்ணத் தட்டில் "
 "போடவும்."
 
-#: ctk/ctkcolorsel.c:1084
+#: ctk/ctkcolorsel.c:1080
 #, fuzzy
 msgid ""
 "The previously-selected color, for comparison to the color you’re selecting "
 "now."
 msgstr "முந்தைய தேர்ந்தெடுக்கப்பட்ட வண்ணம், இப்போது நீங்கள் தேர்ந்தெடுக்கும் வண்ணத்தை ஒப்பிடவும்."
 
-#: ctk/ctkcolorsel.c:1088
+#: ctk/ctkcolorsel.c:1084
 #, fuzzy
 msgid "The color you’ve chosen."
 msgstr "நீங்கள் தேர்வு செய்த வண்ணம்."
 
-#: ctk/ctkcolorsel.c:1458
+#: ctk/ctkcolorsel.c:1454
 msgid "_Save color here"
 msgstr "_வண்ணத்தை இங்கு சேமி"
 
-#: ctk/ctkcolorsel.c:1664
+#: ctk/ctkcolorsel.c:1660
 #, fuzzy
 msgid ""
 "Click this palette entry to make it the current color. To change this entry, "
@@ -1247,11 +1247,11 @@ msgstr ""
 "Click this palette entry to make it the current color. To change this entry, "
 "drag a color swatch here or right-click it and select \"Save color here.\""
 
-#: ctk/ctkcolorseldialog.c:191 ctk/deprecated/ctkfontsel.c:1689
+#: ctk/ctkcolorseldialog.c:189 ctk/deprecated/ctkfontsel.c:1689
 #: ctk/ctkfilechoosernative.c:545 ctk/ctkfilechoosernative.c:637
 #: ctk/ctkfilechooserwidget.c:1498 ctk/ctkfilechooserwidget.c:6572
-#: ctk/ctkmessagedialog.c:952 ctk/ctkmessagedialog.c:965
-#: ctk/ctkmountoperation.c:594 ctk/ctkpagesetupunixdialog.c:197
+#: ctk/ctkmessagedialog.c:946 ctk/ctkmessagedialog.c:959
+#: ctk/ctkmountoperation.c:593 ctk/ctkpagesetupunixdialog.c:197
 #: ctk/ctkprintbackend.c:781 ctk/ctkprinteroptionwidget.c:545
 #: ctk/ctkprintunixdialog.c:674 ctk/ctkprintunixdialog.c:747
 #: ctk/ctkwindow.c:12789 ctk/inspector/css-editor.c:201
@@ -1260,17 +1260,17 @@ msgstr ""
 msgid "_Cancel"
 msgstr "ரத்து (_C)"
 
-#: ctk/ctkcolorseldialog.c:195 ctk/ctkprinteroptionwidget.c:546
+#: ctk/ctkcolorseldialog.c:193 ctk/ctkprinteroptionwidget.c:546
 #: ctk/ui/ctkappchooserdialog.ui:67 ctk/ui/ctkcolorchooserdialog.ui:40
 #: ctk/ui/ctkfontchooserdialog.ui:37
 msgid "_Select"
 msgstr "தேர்ந்தெடு (_S)"
 
-#: ctk/ctkcolorseldialog.c:201
+#: ctk/ctkcolorseldialog.c:199
 msgid "_Help"
 msgstr "உதவி (_H)"
 
-#: ctk/ctkcolorseldialog.c:213
+#: ctk/ctkcolorseldialog.c:211
 msgid "Color Selection"
 msgstr "வண்ணம் தேர்ந்தெடுத்தல்"
 
@@ -1302,8 +1302,8 @@ msgstr "_முன்காட்சி"
 msgid "_Apply"
 msgstr "செயல்படுத்து (_A)"
 
-#: ctk/deprecated/ctkfontsel.c:1698 ctk/ctkmessagedialog.c:944
-#: ctk/ctkmessagedialog.c:966 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12790
+#: ctk/deprecated/ctkfontsel.c:1698 ctk/ctkmessagedialog.c:938
+#: ctk/ctkmessagedialog.c:960 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12790
 msgid "_OK"
 msgstr "சரி (_O)"
 
@@ -1420,53 +1420,53 @@ msgstr ""
 msgid "Mozilla Public License 2.0"
 msgstr "ஆர்ட்டிஸ்ட்டிக் உரிமம் 2.0"
 
-#: ctk/ctkaboutdialog.c:703
+#: ctk/ctkaboutdialog.c:701
 msgid "C_redits"
 msgstr "சன்மானம் (_r)"
 
-#: ctk/ctkaboutdialog.c:711
+#: ctk/ctkaboutdialog.c:709
 msgid "_License"
 msgstr "அங்கீகாரம் (_L)"
 
-#: ctk/ctkaboutdialog.c:720 ctk/ctkcustompaperunixdialog.c:329
-#: ctk/ctkmessagedialog.c:948 ctk/ui/ctkassistant.ui:144
+#: ctk/ctkaboutdialog.c:718 ctk/ctkcustompaperunixdialog.c:329
+#: ctk/ctkmessagedialog.c:942 ctk/ui/ctkassistant.ui:144
 msgid "_Close"
 msgstr "மூடு (_C)"
 
-#: ctk/ctkaboutdialog.c:1004
+#: ctk/ctkaboutdialog.c:1002
 msgid "Could not show link"
 msgstr "இணைப்பைக் காட்ட முடியவில்லை"
 
-#: ctk/ctkaboutdialog.c:1043
+#: ctk/ctkaboutdialog.c:1039
 msgid "Website"
 msgstr "வலைத்தளம்"
 
 #. used for the application menu on MacOS.  %s is replaced with the application name.
-#: ctk/ctkaboutdialog.c:1093 ctk/ui/ctkapplication-quartz.ui:7
+#: ctk/ctkaboutdialog.c:1089 ctk/ui/ctkapplication-quartz.ui:7
 #, c-format
 msgid "About %s"
 msgstr "%s பற்றி"
 
-#: ctk/ctkaboutdialog.c:2320
+#: ctk/ctkaboutdialog.c:2316
 msgid "Created by"
 msgstr "இதன்படி உருவாக்கப்பட்டது"
 
-#: ctk/ctkaboutdialog.c:2323
+#: ctk/ctkaboutdialog.c:2319
 msgid "Documented by"
 msgstr "ஆவணமாக்கம்"
 
-#: ctk/ctkaboutdialog.c:2333
+#: ctk/ctkaboutdialog.c:2329
 msgid "Translated by"
 msgstr "மொழிபெயர்ப்பு"
 
-#: ctk/ctkaboutdialog.c:2338
+#: ctk/ctkaboutdialog.c:2334
 msgid "Artwork by"
 msgstr "கலை வேலை"
 
 #. Translators: this is the license preamble; the string at the end
 #. * contains the name of the license as link text.
 #.
-#: ctk/ctkaboutdialog.c:2500
+#: ctk/ctkaboutdialog.c:2494
 #, fuzzy, c-format
 msgid ""
 "This program comes with absolutely no warranty.\n"
@@ -1612,7 +1612,7 @@ msgid "Other Applications"
 msgstr "மற்ற பயன்பாடுகள்"
 
 #: ctk/ctkapplicationwindow.c:345 ctk/ctkprintoperation-unix.c:485
-#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1690
+#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1688
 msgid "Application"
 msgstr "பயன்பாடு"
 
@@ -1666,7 +1666,7 @@ msgstr "%s லிருந்து %sக்கு மறுபெயரிட �
 msgid "Can't parse file: %s\n"
 msgstr "காட்சியை திறக்கமுடியவில்லை: %s"
 
-#: ctk/ctk-builder-tool.c:1062
+#: ctk/ctk-builder-tool.c:1060
 #, c-format
 msgid ""
 "Usage:\n"
@@ -1797,7 +1797,7 @@ msgctxt "progress bar label"
 msgid "%d %%"
 msgstr ""
 
-#: ctk/ctkcolorbutton.c:185 ctk/ctkcolorbutton.c:398
+#: ctk/ctkcolorbutton.c:185 ctk/ctkcolorbutton.c:394
 msgid "Pick a Color"
 msgstr "ஒரு நிறத்தை தேர்ந்தெடுக்கவும்"
 
@@ -2130,11 +2130,11 @@ msgstr "default:mm"
 msgid "Manage Custom Sizes"
 msgstr "தனிபயன் அளவுகளை மேலாண்மை செய்"
 
-#: ctk/ctkcustompaperunixdialog.c:567 ctk/ctkpagesetupunixdialog.c:814
+#: ctk/ctkcustompaperunixdialog.c:567 ctk/ctkpagesetupunixdialog.c:812
 msgid "inch"
 msgstr "அங்குலம்"
 
-#: ctk/ctkcustompaperunixdialog.c:569 ctk/ctkpagesetupunixdialog.c:812
+#: ctk/ctkcustompaperunixdialog.c:569 ctk/ctkpagesetupunixdialog.c:810
 msgid "mm"
 msgstr "மிமீ"
 
@@ -2147,89 +2147,89 @@ msgstr "அச்சடிப்பிக்கான ஓரங்கள்…�
 msgid "Custom Size %d"
 msgstr "தனிபயன் அளவு %d"
 
-#: ctk/ctkcustompaperunixdialog.c:1120
+#: ctk/ctkcustompaperunixdialog.c:1119
 msgid "_Width:"
 msgstr "அகலம்: (_W)"
 
-#: ctk/ctkcustompaperunixdialog.c:1131
+#: ctk/ctkcustompaperunixdialog.c:1130
 msgid "_Height:"
 msgstr "உயரம்: (_H)"
 
-#: ctk/ctkcustompaperunixdialog.c:1142
+#: ctk/ctkcustompaperunixdialog.c:1141
 msgid "Paper Size"
 msgstr "தாள் அளவு"
 
-#: ctk/ctkcustompaperunixdialog.c:1151
+#: ctk/ctkcustompaperunixdialog.c:1150
 msgid "_Top:"
 msgstr "மேல்: (_T)"
 
-#: ctk/ctkcustompaperunixdialog.c:1162
+#: ctk/ctkcustompaperunixdialog.c:1161
 msgid "_Bottom:"
 msgstr "கீழ்: (_B)"
 
-#: ctk/ctkcustompaperunixdialog.c:1173
+#: ctk/ctkcustompaperunixdialog.c:1172
 msgid "_Left:"
 msgstr "இடது: (_L)"
 
-#: ctk/ctkcustompaperunixdialog.c:1184
+#: ctk/ctkcustompaperunixdialog.c:1183
 msgid "_Right:"
 msgstr "வலது: (_R)"
 
-#: ctk/ctkcustompaperunixdialog.c:1223
+#: ctk/ctkcustompaperunixdialog.c:1222
 msgid "Paper Margins"
 msgstr "தாள் ஓரங்கள்"
 
-#: ctk/ctkentry.c:9591 ctk/ctklabel.c:6680 ctk/ctktextview.c:9520
+#: ctk/ctkentry.c:9589 ctk/ctklabel.c:6676 ctk/ctktextview.c:9516
 msgid "Cu_t"
 msgstr "வெட்டு (_t)"
 
-#: ctk/ctkentry.c:9595 ctk/ctklabel.c:6681 ctk/ctktextview.c:9524
+#: ctk/ctkentry.c:9593 ctk/ctklabel.c:6677 ctk/ctktextview.c:9520
 msgid "_Copy"
 msgstr "நகலெடு (_C)"
 
-#: ctk/ctkentry.c:9599 ctk/ctklabel.c:6682 ctk/ctktextview.c:9526
+#: ctk/ctkentry.c:9597 ctk/ctklabel.c:6678 ctk/ctktextview.c:9522
 msgid "_Paste"
 msgstr "ஒட்டு (_P)"
 
-#: ctk/ctkentry.c:9602 ctk/ctkfilechooserwidget.c:1499
-#: ctk/ctkfilechooserwidget.c:2334 ctk/ctklabel.c:6684 ctk/ctktextview.c:9529
+#: ctk/ctkentry.c:9600 ctk/ctkfilechooserwidget.c:1499
+#: ctk/ctkfilechooserwidget.c:2334 ctk/ctklabel.c:6680 ctk/ctktextview.c:9525
 msgid "_Delete"
 msgstr "அழி (_D)"
 
-#: ctk/ctkentry.c:9613 ctk/ctklabel.c:6693 ctk/ctktextview.c:9543
+#: ctk/ctkentry.c:9611 ctk/ctklabel.c:6689 ctk/ctktextview.c:9539
 msgid "Select _All"
 msgstr "அனைத்தையும் தேர்ந்தெடு (_A)"
 
-#: ctk/ctkentry.c:9623 ctk/ctktextview.c:9553
+#: ctk/ctkentry.c:9621 ctk/ctktextview.c:9549
 #, fuzzy
 msgid "Insert _Emoji"
 msgstr "உள்நுழை"
 
-#: ctk/ctkentry.c:9799 ctk/ctktextview.c:9777
+#: ctk/ctkentry.c:9797 ctk/ctktextview.c:9773
 #, fuzzy
 msgid "Select all"
 msgstr "அனைத்தையும் தேர்ந்தெடு (_A)"
 
-#: ctk/ctkentry.c:9802 ctk/ctktextview.c:9780
+#: ctk/ctkentry.c:9800 ctk/ctktextview.c:9776
 #, fuzzy
 msgid "Cut"
 msgstr "வெட்டு (_t)"
 
-#: ctk/ctkentry.c:9805 ctk/ctktextview.c:9783
+#: ctk/ctkentry.c:9803 ctk/ctktextview.c:9779
 #, fuzzy
 msgid "Copy"
 msgstr "நகலெடு (_C)"
 
-#: ctk/ctkentry.c:9808 ctk/ctktextview.c:9786
+#: ctk/ctkentry.c:9806 ctk/ctktextview.c:9782
 #, fuzzy
 msgid "Paste"
 msgstr "ஒட்டு (_P)"
 
-#: ctk/ctkentry.c:10880
+#: ctk/ctkentry.c:10878
 msgid "Caps Lock is on"
 msgstr "Caps Lock செயலிலுள்ளது"
 
-#: ctk/ctkentry.c:11158
+#: ctk/ctkentry.c:11156
 #, fuzzy
 msgid "Insert Emoji"
 msgstr "உள்நுழை"
@@ -2601,8 +2601,8 @@ msgstr ""
 #. Translators: We don't know whether this printer is
 #. * available to print to.
 #: ctk/ctkfilechooserwidget.c:5054 ctk/ctkfilechooserwidget.c:5243
-#: ctk/inspector/prop-editor.c:1693
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:748
+#: ctk/inspector/prop-editor.c:1691
+#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:744
 msgid "Unknown"
 msgstr "தெரியாதது"
 
@@ -2666,7 +2666,7 @@ msgstr "சான்ஸ் 12"
 msgid "Pick a Font"
 msgstr "எழுத்துரு தேர்ந்தெடுக"
 
-#: ctk/ctkfontbutton.c:1395
+#: ctk/ctkfontbutton.c:1393
 #, fuzzy
 msgctxt "font"
 msgid "None"
@@ -2695,7 +2695,7 @@ msgstr ""
 msgid "Optical Size"
 msgstr ""
 
-#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1680
+#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1678
 msgid "Default"
 msgstr "முன்னிருப்பு"
 
@@ -2770,29 +2770,29 @@ msgctxt "input method menu"
 msgid "System (%s)"
 msgstr "கணினி (%s)"
 
-#: ctk/ctkinfobar.c:1307 ctk/ctkmessagedialog.c:385
+#: ctk/ctkinfobar.c:1303 ctk/ctkmessagedialog.c:384
 msgid "Information"
 msgstr "தகவல்"
 
-#: ctk/ctkinfobar.c:1311 ctk/ctkmessagedialog.c:389
+#: ctk/ctkinfobar.c:1307 ctk/ctkmessagedialog.c:388
 msgid "Question"
 msgstr "கேள்வி"
 
-#: ctk/ctkinfobar.c:1315 ctk/ctkmessagedialog.c:393
+#: ctk/ctkinfobar.c:1311 ctk/ctkmessagedialog.c:392
 msgid "Warning"
 msgstr "எச்சரிக்கை"
 
-#: ctk/ctkinfobar.c:1319 ctk/ctkmessagedialog.c:397
+#: ctk/ctkinfobar.c:1315 ctk/ctkmessagedialog.c:396
 msgid "Error"
 msgstr "பிழை"
 
 #. Open Link
-#: ctk/ctklabel.c:6661
+#: ctk/ctklabel.c:6657
 msgid "_Open Link"
 msgstr "இணைப்பை திற (_O)"
 
 #. Copy Link Address
-#: ctk/ctklabel.c:6670
+#: ctk/ctklabel.c:6666
 msgid "Copy _Link Address"
 msgstr "இணைப்பு முகவரியை நகலெடு (_L)"
 
@@ -2919,16 +2919,16 @@ msgstr "CTK+ பிழைத்திருத்தும் கொடிகள
 msgid "CTK+ debugging flags to unset"
 msgstr "CTK+ பிழைத்திருத்தும் கொடிகளை நீக்குகிறது"
 
-#: ctk/ctkmain.c:810 ctk/ctkmain.c:1004
+#: ctk/ctkmain.c:808 ctk/ctkmain.c:1002
 #, c-format
 msgid "Cannot open display: %s"
 msgstr "காட்சியை திறக்கமுடியவில்லை: %s"
 
-#: ctk/ctkmain.c:922
+#: ctk/ctkmain.c:920
 msgid "CTK+ Options"
 msgstr "CTK+ விருப்பங்கள்"
 
-#: ctk/ctkmain.c:922
+#: ctk/ctkmain.c:920
 msgid "Show CTK+ Options"
 msgstr "CTK+ விருப்பங்களை காட்டு"
 
@@ -2937,86 +2937,86 @@ msgstr "CTK+ விருப்பங்களை காட்டு"
 #. * Do *not* translate it to "predefinito:LTR", if it
 #. * it isn't default:LTR or default:RTL it will not work
 #.
-#: ctk/ctkmain.c:1275
+#: ctk/ctkmain.c:1273
 msgid "default:LTR"
 msgstr "default:LTR"
 
-#: ctk/ctkmessagedialog.c:956
+#: ctk/ctkmessagedialog.c:950
 msgid "_No"
 msgstr "இல்லை (_N)"
 
-#: ctk/ctkmessagedialog.c:957
+#: ctk/ctkmessagedialog.c:951
 msgid "_Yes"
 msgstr "ஆம் (_Y)"
 
-#: ctk/ctkmountoperation.c:595
+#: ctk/ctkmountoperation.c:594
 msgid "Co_nnect"
 msgstr "இணை (_n)"
 
-#: ctk/ctkmountoperation.c:668
+#: ctk/ctkmountoperation.c:667
 msgid "Connect As"
 msgstr "இவ்வாறாக இணை"
 
-#: ctk/ctkmountoperation.c:677
+#: ctk/ctkmountoperation.c:676
 msgid "_Anonymous"
 msgstr "பெயரில்லாமல் (_A)"
 
-#: ctk/ctkmountoperation.c:686
+#: ctk/ctkmountoperation.c:685
 msgid "Registered U_ser"
 msgstr "பதிவு செய்த பயனர் (_s)"
 
-#: ctk/ctkmountoperation.c:697
+#: ctk/ctkmountoperation.c:696
 msgid "_Username"
 msgstr "பயனர்பெயர் (_U)"
 
-#: ctk/ctkmountoperation.c:702
+#: ctk/ctkmountoperation.c:701
 msgid "_Domain"
 msgstr "களம் (_D)"
 
-#: ctk/ctkmountoperation.c:711
+#: ctk/ctkmountoperation.c:710
 #, fuzzy
 msgid "Volume type"
 msgstr "ஒலியளவை ஏற்றல்"
 
-#: ctk/ctkmountoperation.c:721
+#: ctk/ctkmountoperation.c:720
 msgid "_Hidden"
 msgstr ""
 
-#: ctk/ctkmountoperation.c:724
+#: ctk/ctkmountoperation.c:723
 msgid "_Windows system"
 msgstr ""
 
-#: ctk/ctkmountoperation.c:727
+#: ctk/ctkmountoperation.c:726
 msgid "_PIM"
 msgstr ""
 
-#: ctk/ctkmountoperation.c:733
+#: ctk/ctkmountoperation.c:732
 msgid "_Password"
 msgstr "கடவுச்சொல் (_P)"
 
-#: ctk/ctkmountoperation.c:755
+#: ctk/ctkmountoperation.c:754
 msgid "Forget password _immediately"
 msgstr "கடவிச்சொல்லை உடனே மறக்கவும் (_i)"
 
-#: ctk/ctkmountoperation.c:765
+#: ctk/ctkmountoperation.c:764
 msgid "Remember password until you _logout"
 msgstr "வெளியேறும் வரை கடவுச்சொல்லை நினைவு கொள்ளவும் (_l)"
 
-#: ctk/ctkmountoperation.c:775
+#: ctk/ctkmountoperation.c:774
 msgid "Remember _forever"
 msgstr "எப்பொழுதும் நினைவில் கொள்ளவும் (_f)"
 
-#: ctk/ctkmountoperation.c:1170
+#: ctk/ctkmountoperation.c:1169
 #, c-format
 msgid "Unknown Application (PID %d)"
 msgstr "தெரியாத பயன்பாடு (PID %d)"
 
-#: ctk/ctkmountoperation.c:1355
+#: ctk/ctkmountoperation.c:1354
 #, c-format
 msgid "Unable to end process"
 msgstr "செயலை முடிக்க முடியவில்லை"
 
-#: ctk/ctkmountoperation.c:1389
+#: ctk/ctkmountoperation.c:1388
 msgid "_End Process"
 msgstr "செயலை முடிக்கவும் (_E)"
 
@@ -3068,7 +3068,7 @@ msgstr "எந்த அச்சடிப்பியும்"
 msgid "For portable documents"
 msgstr "சிறிய ஆவணங்களுக்கு"
 
-#: ctk/ctkpagesetupunixdialog.c:832
+#: ctk/ctkpagesetupunixdialog.c:830
 #, c-format
 msgid ""
 "Margins:\n"
@@ -3083,11 +3083,11 @@ msgstr ""
 " மேல்: %s %s\n"
 " கீழ்: %s %s"
 
-#: ctk/ctkpagesetupunixdialog.c:881 ctk/ctkprintunixdialog.c:3393
+#: ctk/ctkpagesetupunixdialog.c:879 ctk/ctkprintunixdialog.c:3391
 msgid "Manage Custom Sizes…"
 msgstr "தனிப்பயன் அளவுகளை நிர்வகி…ண்மை செய்"
 
-#: ctk/ctkpagesetupunixdialog.c:903 ctk/ui/ctkpagesetupunixdialog.ui:31
+#: ctk/ctkpagesetupunixdialog.c:901 ctk/ui/ctkpagesetupunixdialog.ui:31
 #: ctk/ui/ctkprintunixdialog.ui:854
 msgid "Page Setup"
 msgstr "பக்க அமைவு"
@@ -3451,7 +3451,7 @@ msgstr "கடவுச்சொல்லை நினைவில் கொள�
 msgid "Select a filename"
 msgstr "ஒரு கோப்புப் பெயரைத் தேர்ந்தெடுக்கவும்"
 
-#: ctk/ctkprinteroptionwidget.c:769
+#: ctk/ctkprinteroptionwidget.c:767
 msgid "Not available"
 msgstr "இல்லை"
 
@@ -3514,7 +3514,7 @@ msgstr "பிழையோடு முடிக்கப்பட்டது"
 msgid "Preparing %d"
 msgstr "%d தயாராகிறது"
 
-#: ctk/ctkprintoperation.c:2376 ctk/ctkprintoperation.c:3007
+#: ctk/ctkprintoperation.c:2376 ctk/ctkprintoperation.c:3005
 #, c-format
 msgid "Preparing"
 msgstr "தயாராகிறது"
@@ -3524,12 +3524,12 @@ msgstr "தயாராகிறது"
 msgid "Printing %d"
 msgstr "அச்சிடுகிறது %d"
 
-#: ctk/ctkprintoperation.c:3038
+#: ctk/ctkprintoperation.c:3036
 #, c-format
 msgid "Error creating print preview"
 msgstr "பிழையை உருவாக்கும் அச்சடிப்பியின் முன்பார்வை"
 
-#: ctk/ctkprintoperation.c:3041
+#: ctk/ctkprintoperation.c:3039
 #, c-format
 msgid "The most probable reason is that a temporary file could not be created."
 msgstr ""
@@ -3537,7 +3537,7 @@ msgstr ""
 
 #. window
 #: ctk/ctkprintoperation-portal.c:231 ctk/ctkprintoperation-portal.c:549
-#: ctk/ctkprintoperation-portal.c:618 ctk/ctkprintunixdialog.c:3415
+#: ctk/ctkprintoperation-portal.c:618 ctk/ctkprintunixdialog.c:3413
 msgid "Print"
 msgstr "அச்சிடு"
 
@@ -3551,7 +3551,7 @@ msgstr "தாள் வெளியே உள்ளது"
 
 #. Translators: this is a printer status.
 #: ctk/ctkprintoperation-win32.c:635
-#: modules/printbackends/cups/ctkprintbackendcups.c:2628
+#: modules/printbackends/cups/ctkprintbackendcups.c:2681
 msgid "Paused"
 msgstr "இடை நிறுத்தப்பட்டது"
 
@@ -3619,42 +3619,42 @@ msgstr "அச்சடிப்பி தகவலை பெறுகிறத�
 #. * multiple pages on a sheet when printing
 #.
 #: ctk/ctkprintunixdialog.c:3120
-#: modules/printbackends/cups/ctkprintbackendcups.c:5508
+#: modules/printbackends/cups/ctkprintbackendcups.c:5731
 msgid "Left to right, top to bottom"
 msgstr "இடமிருந்து வலம், மேலிருந்து கீழே"
 
 #: ctk/ctkprintunixdialog.c:3120
-#: modules/printbackends/cups/ctkprintbackendcups.c:5508
+#: modules/printbackends/cups/ctkprintbackendcups.c:5731
 msgid "Left to right, bottom to top"
 msgstr "இடமிருந்து வலம், கீழேயிருந்து மேலே"
 
 #: ctk/ctkprintunixdialog.c:3121
-#: modules/printbackends/cups/ctkprintbackendcups.c:5509
+#: modules/printbackends/cups/ctkprintbackendcups.c:5732
 msgid "Right to left, top to bottom"
 msgstr "வலமிருந்து இடம், மேலிருந்து கீழே"
 
 #: ctk/ctkprintunixdialog.c:3121
-#: modules/printbackends/cups/ctkprintbackendcups.c:5509
+#: modules/printbackends/cups/ctkprintbackendcups.c:5732
 msgid "Right to left, bottom to top"
 msgstr "வலமிருந்து இடம், கீழேயிருந்து மேலே"
 
 #: ctk/ctkprintunixdialog.c:3122
-#: modules/printbackends/cups/ctkprintbackendcups.c:5510
+#: modules/printbackends/cups/ctkprintbackendcups.c:5733
 msgid "Top to bottom, left to right"
 msgstr "மேலிருந்து கீழே, இடமிருந்து வலம்"
 
 #: ctk/ctkprintunixdialog.c:3122
-#: modules/printbackends/cups/ctkprintbackendcups.c:5510
+#: modules/printbackends/cups/ctkprintbackendcups.c:5733
 msgid "Top to bottom, right to left"
 msgstr "மேலிருந்து கீழே, வலமிருந்து இடம்"
 
 #: ctk/ctkprintunixdialog.c:3123
-#: modules/printbackends/cups/ctkprintbackendcups.c:5511
+#: modules/printbackends/cups/ctkprintbackendcups.c:5734
 msgid "Bottom to top, left to right"
 msgstr "கீழேயிருந்து மேலே, இடமிருந்து வலம்"
 
 #: ctk/ctkprintunixdialog.c:3123
-#: modules/printbackends/cups/ctkprintbackendcups.c:5511
+#: modules/printbackends/cups/ctkprintbackendcups.c:5734
 msgid "Bottom to top, right to left"
 msgstr "கீழேயிருந்து மேலே, வலமிருந்து இடம்"
 
@@ -3684,36 +3684,36 @@ msgctxt "progress bar label"
 msgid "%.0f %%"
 msgstr ""
 
-#: ctk/ctkrecentchooserdefault.c:1075 ctk/ctkrecentchooserdefault.c:1112
+#: ctk/ctkrecentchooserdefault.c:1072 ctk/ctkrecentchooserdefault.c:1109
 #, c-format
 msgid "No item for URI '%s' found"
 msgstr "URI '%s'க்கு ஒரு உருப்படியும் இல்லை"
 
-#: ctk/ctkrecentchooserdefault.c:1239
+#: ctk/ctkrecentchooserdefault.c:1236
 msgid "Untitled filter"
 msgstr "தலைப்பிடப்படாத வடிப்பி"
 
-#: ctk/ctkrecentchooserdefault.c:1561
+#: ctk/ctkrecentchooserdefault.c:1558
 msgid "Could not remove item"
 msgstr "உருப்படியை நீக்க முடியாது"
 
-#: ctk/ctkrecentchooserdefault.c:1605
+#: ctk/ctkrecentchooserdefault.c:1602
 msgid "Could not clear list"
 msgstr "பட்டியலை துடைக்க முடியவில்லை"
 
-#: ctk/ctkrecentchooserdefault.c:1689
+#: ctk/ctkrecentchooserdefault.c:1686
 msgid "Copy _Location"
 msgstr "இடத்தை நகலெடு (_L)"
 
-#: ctk/ctkrecentchooserdefault.c:1700
+#: ctk/ctkrecentchooserdefault.c:1697
 msgid "_Remove From List"
 msgstr "பட்டியலிலிருந்து நீக்கு (_R)"
 
-#: ctk/ctkrecentchooserdefault.c:1707
+#: ctk/ctkrecentchooserdefault.c:1704
 msgid "_Clear List"
 msgstr "பட்டியலை துடை (_C)"
 
-#: ctk/ctkrecentchooserdefault.c:1719
+#: ctk/ctkrecentchooserdefault.c:1716
 msgid "Show _Private Resources"
 msgstr "தனிப்பட்ட மூலங்களை காட்டு (_P)"
 
@@ -4343,7 +4343,7 @@ msgstr "பெயரில்லா பிரிவு"
 msgid "Label"
 msgstr "லேபிள்"
 
-#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1389
+#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1387
 msgid "Action"
 msgstr "செயல்"
 
@@ -4373,9 +4373,9 @@ msgid "Default Widget"
 msgstr "முன்னிருப்பு விட்ஜெட்"
 
 #: ctk/inspector/misc-info.ui:192 ctk/inspector/misc-info.ui:237
-#: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1071
-#: ctk/inspector/prop-editor.c:1270 ctk/inspector/prop-editor.c:1397
-#: ctk/inspector/prop-editor.c:1508 ctk/inspector/window.ui:382
+#: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1069
+#: ctk/inspector/prop-editor.c:1268 ctk/inspector/prop-editor.c:1395
+#: ctk/inspector/prop-editor.c:1506 ctk/inspector/window.ui:382
 msgid "Properties"
 msgstr "பண்புகள்"
 
@@ -4468,72 +4468,72 @@ msgstr "தெரியாதது"
 msgid "Object: %p (%s)"
 msgstr "பொருள்: %p (%s)"
 
-#: ctk/inspector/prop-editor.c:1141
+#: ctk/inspector/prop-editor.c:1139
 #, c-format
 msgid "Uneditable property type: %s"
 msgstr "திருத்த முடியாத பண்பு வகை: %s"
 
-#: ctk/inspector/prop-editor.c:1261
+#: ctk/inspector/prop-editor.c:1259
 msgid "Attribute mapping"
 msgstr "பண்புக்கூறு மேப்பிங்"
 
-#: ctk/inspector/prop-editor.c:1266
+#: ctk/inspector/prop-editor.c:1264
 msgid "Model:"
 msgstr "மாதிரி:"
 
-#: ctk/inspector/prop-editor.c:1267
+#: ctk/inspector/prop-editor.c:1265
 #, c-format
 msgid "%p (%s)"
 msgstr "%p (%s)"
 
-#: ctk/inspector/prop-editor.c:1277
+#: ctk/inspector/prop-editor.c:1275
 msgid "Column:"
 msgstr "நெடுவரிசை:"
 
-#: ctk/inspector/prop-editor.c:1287
+#: ctk/inspector/prop-editor.c:1285
 #, fuzzy
 msgctxt "property name"
 msgid "None"
 msgstr "ஒன்றுமில்லை"
 
-#: ctk/inspector/prop-editor.c:1393
+#: ctk/inspector/prop-editor.c:1391
 #, c-format
 msgid "Defined at: %p (%s)"
 msgstr "இங்கு வரையறுக்கப்பட்டது: %p (%s)"
 
-#: ctk/inspector/prop-editor.c:1457 ctk/inspector/prop-editor.c:1473
+#: ctk/inspector/prop-editor.c:1455 ctk/inspector/prop-editor.c:1471
 msgid "inverted"
 msgstr "தலைகீழ்"
 
-#: ctk/inspector/prop-editor.c:1489
+#: ctk/inspector/prop-editor.c:1487
 msgid "bidirectional, inverted"
 msgstr "இருதிசை கொண்டது, தலைகீழானது"
 
-#: ctk/inspector/prop-editor.c:1494 ctk/inspector/prop-editor.c:1608
+#: ctk/inspector/prop-editor.c:1492 ctk/inspector/prop-editor.c:1606
 msgid "bidirectional"
 msgstr "இருதிசை கொண்டது"
 
-#: ctk/inspector/prop-editor.c:1499
+#: ctk/inspector/prop-editor.c:1497
 msgid "Binding:"
 msgstr "பிணைப்பாக்கம்:"
 
-#: ctk/inspector/prop-editor.c:1627
+#: ctk/inspector/prop-editor.c:1625
 msgid "Setting:"
 msgstr "அமைவு:"
 
-#: ctk/inspector/prop-editor.c:1667
+#: ctk/inspector/prop-editor.c:1665
 msgid "Source:"
 msgstr "மூலம்:"
 
-#: ctk/inspector/prop-editor.c:1669
+#: ctk/inspector/prop-editor.c:1667
 msgid "Reset"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1683
+#: ctk/inspector/prop-editor.c:1681
 msgid "Theme"
 msgstr "தீம்"
 
-#: ctk/inspector/prop-editor.c:1686
+#: ctk/inspector/prop-editor.c:1684
 msgid "XSettings"
 msgstr "XSettings"
 
@@ -7886,7 +7886,7 @@ msgstr ""
 "பயன்படுத்தவும்.\n"
 
 #. ID
-#: modules/input/imam-et.c:452
+#: modules/input/imam-et.c:450
 #, fuzzy
 msgctxt "input method menu"
 msgid "Amharic (EZ+)"
@@ -7899,14 +7899,14 @@ msgid "Broadway"
 msgstr ""
 
 #. ID
-#: modules/input/imcedilla.c:90
+#: modules/input/imcedilla.c:88
 #, fuzzy
 msgctxt "input method menu"
 msgid "Cedilla"
 msgstr "சிடிலா"
 
 #. ID
-#: modules/input/imcyrillic-translit.c:215
+#: modules/input/imcyrillic-translit.c:213
 #, fuzzy
 msgctxt "input menthod menu"
 msgid "Cyrillic (Transliterated)"
@@ -7918,14 +7918,14 @@ msgid "Windows IME"
 msgstr ""
 
 #. ID
-#: modules/input/iminuktitut.c:125
+#: modules/input/iminuktitut.c:123
 #, fuzzy
 msgctxt "input method menu"
 msgid "Inuktitut (Transliterated)"
 msgstr "இனுக்டிடுட் (ஒலிபெயர்க்கப்பட்டது)"
 
 #. ID
-#: modules/input/imipa.c:143
+#: modules/input/imipa.c:141
 #, fuzzy
 msgctxt "input method menu"
 msgid "IPA"
@@ -7951,21 +7951,21 @@ msgid "Thai-Lao"
 msgstr "Thai-Lao"
 
 #. ID
-#: modules/input/imti-er.c:451
+#: modules/input/imti-er.c:449
 #, fuzzy
 msgctxt "input method menu"
 msgid "Tigrigna-Eritrean (EZ+)"
 msgstr "டிக்ரிகனா-எரிட்டிரியா (EZ+)"
 
 #. ID
-#: modules/input/imti-et.c:451
+#: modules/input/imti-et.c:449
 #, fuzzy
 msgctxt "input method menu"
 msgid "Tigrigna-Ethiopian (EZ+)"
 msgstr "டிக்ரிகனா-எதியோபியா (EZ+)"
 
 #. ID
-#: modules/input/imviqr.c:242
+#: modules/input/imviqr.c:240
 #, fuzzy
 msgctxt "input method menu"
 msgid "Vietnamese (VIQR)"
@@ -7992,247 +7992,247 @@ msgstr "X உள்ளீட்டு முறை"
 
 #. Translators: The printer status is online, i.e. it is
 #. * ready to print.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:744
+#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:740
 msgid "Online"
 msgstr "ஆன்லைன்"
 
 #. Translators: The printer is offline.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:751
+#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:747
 msgid "Offline"
 msgstr "ஆஃப்லைன்"
 
 #. We shouldn't get here because the query omits dormant
 #. * printers by default.
 #. Translators: Printer has been offline for a long time.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:757
+#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:753
 msgid "Dormant"
 msgstr "டோர்மண்ட்"
 
 #. How many document pages to go onto one side of paper.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:941
-#: modules/printbackends/file/ctkprintbackendfile.c:679
+#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:937
+#: modules/printbackends/file/ctkprintbackendfile.c:675
 #: modules/printbackends/test/ctkprintbackendtest.c:503
 msgid "Pages per _sheet:"
 msgstr "தாளுக்கான பக்கங்கள்: (_s)"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1129
-#: modules/printbackends/cups/ctkprintbackendcups.c:1439
+#: modules/printbackends/cups/ctkprintbackendcups.c:1155
+#: modules/printbackends/cups/ctkprintbackendcups.c:1465
 msgid "Username:"
 msgstr "பயனர்பெயர்:"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1130
-#: modules/printbackends/cups/ctkprintbackendcups.c:1448
+#: modules/printbackends/cups/ctkprintbackendcups.c:1156
+#: modules/printbackends/cups/ctkprintbackendcups.c:1474
 msgid "Password:"
 msgstr "கடவுச்சொல்:"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1169
-#: modules/printbackends/cups/ctkprintbackendcups.c:1461
+#: modules/printbackends/cups/ctkprintbackendcups.c:1195
+#: modules/printbackends/cups/ctkprintbackendcups.c:1487
 #, fuzzy, c-format
 msgid "Authentication is required to print document “%s” on printer %s"
 msgstr "%sஇல் அச்சடிப்பி %s ஒரு ஆவணத்தை அச்சிட அங்கீகாரம் தேவை"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1171
+#: modules/printbackends/cups/ctkprintbackendcups.c:1197
 #, c-format
 msgid "Authentication is required to print a document on %s"
 msgstr "%sஇல் ஒரு ஆவணத்தை அச்சிட அங்கீகாரம் தேவை"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1175
+#: modules/printbackends/cups/ctkprintbackendcups.c:1201
 #, fuzzy, c-format
 msgid "Authentication is required to get attributes of job “%s”"
 msgstr "பணி %sஇன் அளவுருகளை பெற அங்கீகாரம் தேவை"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1177
+#: modules/printbackends/cups/ctkprintbackendcups.c:1203
 msgid "Authentication is required to get attributes of a job"
 msgstr "ஒரு பணியின் அளவுருகளை பெற அங்கீகாரம் தேவை"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1181
+#: modules/printbackends/cups/ctkprintbackendcups.c:1207
 #, c-format
 msgid "Authentication is required to get attributes of printer %s"
 msgstr "அச்சடிப்பி %sஇன் அளவுருகளை பெற அங்கீகாரம் தேவை"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1183
+#: modules/printbackends/cups/ctkprintbackendcups.c:1209
 msgid "Authentication is required to get attributes of a printer"
 msgstr "ஒரு அச்சடிப்பியின் அளவுருகளை பெற அங்கீகாரம் தேவை"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1186
+#: modules/printbackends/cups/ctkprintbackendcups.c:1212
 #, c-format
 msgid "Authentication is required to get default printer of %s"
 msgstr "%sஇன் முன்னிருப்பு அச்சடிப்பிகளை பெற அங்கீகாரம் தேவை"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1189
+#: modules/printbackends/cups/ctkprintbackendcups.c:1215
 #, c-format
 msgid "Authentication is required to get printers from %s"
 msgstr "%sஇலிருந்து அச்சடிப்பிகளை பெற அங்கீகாரம் தேவைப்படுகிறது"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1194
+#: modules/printbackends/cups/ctkprintbackendcups.c:1220
 #, c-format
 msgid "Authentication is required to get a file from %s"
 msgstr "%sஇலிருந்து ஒரு கோப்பினை பெற அங்கீகாரம் தேவை"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1196
+#: modules/printbackends/cups/ctkprintbackendcups.c:1222
 #, c-format
 msgid "Authentication is required on %s"
 msgstr "%sக்கு அங்கீகாரம் தேவைப்படுகிறது"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1433
+#: modules/printbackends/cups/ctkprintbackendcups.c:1459
 msgid "Domain:"
 msgstr "செயற்களம்:"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1463
+#: modules/printbackends/cups/ctkprintbackendcups.c:1489
 #, fuzzy, c-format
 msgid "Authentication is required to print document “%s”"
 msgstr "'%s'இல் ஒரு ஆவணத்தை அச்சிட அங்கீகாரம் தேவைப்பட்டது"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1468
+#: modules/printbackends/cups/ctkprintbackendcups.c:1494
 #, c-format
 msgid "Authentication is required to print this document on printer %s"
 msgstr "அச்சடிப்பி %s இல் இந்த ஆவணத்தை அச்சிட அங்கீகாரம் தேவைப்பட்டது"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:1470
+#: modules/printbackends/cups/ctkprintbackendcups.c:1496
 msgid "Authentication is required to print this document"
 msgstr "இந்த ஆவணத்தை அச்சிட அங்கீகாரம் தேவைப்பட்டது"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2557
+#: modules/printbackends/cups/ctkprintbackendcups.c:2610
 #, fuzzy, c-format
 msgid "Printer “%s” is low on toner."
 msgstr "அச்சடிப்பி '%s' டோனர் குறைவாக உள்ளது."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2561
+#: modules/printbackends/cups/ctkprintbackendcups.c:2614
 #, fuzzy, c-format
 msgid "Printer “%s” has no toner left."
 msgstr "அச்சடிப்பி '%s' இல் டோனர் இல்லை."
 
 #. Translators: "Developer" like on photo development context
-#: modules/printbackends/cups/ctkprintbackendcups.c:2566
+#: modules/printbackends/cups/ctkprintbackendcups.c:2619
 #, fuzzy, c-format
 msgid "Printer “%s” is low on developer."
 msgstr "அச்சடிப்பி '%s' டெவலப்பரில் குறைவாக உள்ளது."
 
 #. Translators: "Developer" like on photo development context
-#: modules/printbackends/cups/ctkprintbackendcups.c:2571
+#: modules/printbackends/cups/ctkprintbackendcups.c:2624
 #, fuzzy, c-format
 msgid "Printer “%s” is out of developer."
 msgstr "அச்சடிப்பி '%s'இல் டெவலப்பர் இல்லை."
 
 #. Translators: "marker" is one color bin of the printer
-#: modules/printbackends/cups/ctkprintbackendcups.c:2576
+#: modules/printbackends/cups/ctkprintbackendcups.c:2629
 #, fuzzy, c-format
 msgid "Printer “%s” is low on at least one marker supply."
 msgstr "அச்சடிப்பி '%s' கொடுக்கப்பட்ட மார்க்கரில் குறைந்தது ஒன்றில் குறைவாக உள்ளது."
 
 #. Translators: "marker" is one color bin of the printer
-#: modules/printbackends/cups/ctkprintbackendcups.c:2581
+#: modules/printbackends/cups/ctkprintbackendcups.c:2634
 #, fuzzy, c-format
 msgid "Printer “%s” is out of at least one marker supply."
 msgstr "அச்சடிப்பி '%s' கொடுக்கப்பட்ட ஒரு மார்க்கர் கூட இல்லை."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2585
+#: modules/printbackends/cups/ctkprintbackendcups.c:2638
 #, fuzzy, c-format
 msgid "The cover is open on printer “%s”."
 msgstr "அச்சடிப்பியின் உறை திறந்திருக்கிறது '%s'."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2589
+#: modules/printbackends/cups/ctkprintbackendcups.c:2642
 #, fuzzy, c-format
 msgid "The door is open on printer “%s”."
 msgstr "'%s' அச்சடிப்பியின் கதவு திறந்துள்ளது."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2593
+#: modules/printbackends/cups/ctkprintbackendcups.c:2646
 #, fuzzy, c-format
 msgid "Printer “%s” is low on paper."
 msgstr "அச்சடிப்பி '%s' தாளை விட கீழே உள்ளது."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2597
+#: modules/printbackends/cups/ctkprintbackendcups.c:2650
 #, fuzzy, c-format
 msgid "Printer “%s” is out of paper."
 msgstr "அச்சடிப்பி '%s' தாளிற்கு வெளியில் உள்ளது."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2601
+#: modules/printbackends/cups/ctkprintbackendcups.c:2654
 #, fuzzy, c-format
 msgid "Printer “%s” is currently offline."
 msgstr "அச்சடிப்பி '%s' தற்போது ஆஃப்லைனில் உள்ளது."
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:2605
+#: modules/printbackends/cups/ctkprintbackendcups.c:2658
 #, fuzzy, c-format
 msgid "There is a problem on printer “%s”."
 msgstr "அச்சடிப்பியில் ஒரு பிழை இருக்கிறது '%s'."
 
 #. Translators: this is a printer status.
-#: modules/printbackends/cups/ctkprintbackendcups.c:2625
+#: modules/printbackends/cups/ctkprintbackendcups.c:2678
 msgid "Paused; Rejecting Jobs"
 msgstr "நிறுதப்பட்டது ; வேலைகளை ஏற்க மறுக்கிறதுை ஏற்க மறுக்கிறது"
 
 #. Translators: this is a printer status.
-#: modules/printbackends/cups/ctkprintbackendcups.c:2631
+#: modules/printbackends/cups/ctkprintbackendcups.c:2684
 msgid "Rejecting Jobs"
 msgstr "வேலைகளை ஏற்க மறுக்கிறது"
 
 #. Translators: this string connects multiple printer states together.
-#: modules/printbackends/cups/ctkprintbackendcups.c:2672
+#: modules/printbackends/cups/ctkprintbackendcups.c:2725
 msgid "; "
 msgstr "; "
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4453
-#: modules/printbackends/cups/ctkprintbackendcups.c:4520
+#: modules/printbackends/cups/ctkprintbackendcups.c:4676
+#: modules/printbackends/cups/ctkprintbackendcups.c:4743
 #, fuzzy
 msgctxt "printing option"
 msgid "Two Sided"
 msgstr "இரண்டு பக்கம்"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4454
+#: modules/printbackends/cups/ctkprintbackendcups.c:4677
 #, fuzzy
 msgctxt "printing option"
 msgid "Paper Type"
 msgstr "தாள் வகை"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4455
+#: modules/printbackends/cups/ctkprintbackendcups.c:4678
 #, fuzzy
 msgctxt "printing option"
 msgid "Paper Source"
 msgstr "தாள் மூலம்"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4456
-#: modules/printbackends/cups/ctkprintbackendcups.c:4521
+#: modules/printbackends/cups/ctkprintbackendcups.c:4679
+#: modules/printbackends/cups/ctkprintbackendcups.c:4744
 #, fuzzy
 msgctxt "printing option"
 msgid "Output Tray"
 msgstr "வெளியீடு தட்டு"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4457
+#: modules/printbackends/cups/ctkprintbackendcups.c:4680
 #, fuzzy
 msgctxt "printing option"
 msgid "Resolution"
 msgstr "திரைதிறன்"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4458
+#: modules/printbackends/cups/ctkprintbackendcups.c:4681
 #, fuzzy
 msgctxt "printing option"
 msgid "GhostScript pre-filtering"
 msgstr "GhostScript pre-filtering"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4467
+#: modules/printbackends/cups/ctkprintbackendcups.c:4690
 #, fuzzy
 msgctxt "printing option value"
 msgid "One Sided"
 msgstr "ஒற்றை பக்கம்"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4469
+#: modules/printbackends/cups/ctkprintbackendcups.c:4692
 #, fuzzy
 msgctxt "printing option value"
 msgid "Long Edge (Standard)"
 msgstr "Long Edge (Standard)"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4471
+#: modules/printbackends/cups/ctkprintbackendcups.c:4694
 #, fuzzy
 msgctxt "printing option value"
 msgid "Short Edge (Flip)"
 msgstr "Short Edge (Flip)"
 
 #. Translators: this is an option of "Paper Source"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4473
-#: modules/printbackends/cups/ctkprintbackendcups.c:4475
-#: modules/printbackends/cups/ctkprintbackendcups.c:4483
+#: modules/printbackends/cups/ctkprintbackendcups.c:4696
+#: modules/printbackends/cups/ctkprintbackendcups.c:4698
+#: modules/printbackends/cups/ctkprintbackendcups.c:4706
 #, fuzzy
 msgctxt "printing option value"
 msgid "Auto Select"
@@ -8240,38 +8240,38 @@ msgstr "தானாக தேர்ந்தெடுத்தல்"
 
 #. Translators: this is an option of "Paper Source"
 #. Translators: this is an option of "Resolution"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4477
-#: modules/printbackends/cups/ctkprintbackendcups.c:4479
-#: modules/printbackends/cups/ctkprintbackendcups.c:4481
-#: modules/printbackends/cups/ctkprintbackendcups.c:4485
+#: modules/printbackends/cups/ctkprintbackendcups.c:4700
+#: modules/printbackends/cups/ctkprintbackendcups.c:4702
+#: modules/printbackends/cups/ctkprintbackendcups.c:4704
+#: modules/printbackends/cups/ctkprintbackendcups.c:4708
 #, fuzzy
 msgctxt "printing option value"
 msgid "Printer Default"
 msgstr "முன்னிருப்பு அச்சடிப்பி"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4487
+#: modules/printbackends/cups/ctkprintbackendcups.c:4710
 #, fuzzy
 msgctxt "printing option value"
 msgid "Embed GhostScript fonts only"
 msgstr "உட்பொதியப்பட்ட GhostScript எழுத்துருக்கள் மட்டும்"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4489
+#: modules/printbackends/cups/ctkprintbackendcups.c:4712
 #, fuzzy
 msgctxt "printing option value"
 msgid "Convert to PS level 1"
 msgstr "PS level 1க்கு மாற்று"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4491
+#: modules/printbackends/cups/ctkprintbackendcups.c:4714
 #, fuzzy
 msgctxt "printing option value"
 msgid "Convert to PS level 2"
 msgstr "PS level 2க்கு மாற்று"
 
 #. Translators: this is an option of "GhostScript"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4493
+#: modules/printbackends/cups/ctkprintbackendcups.c:4716
 #, fuzzy
 msgctxt "printing option value"
 msgid "No pre-filtering"
@@ -8279,203 +8279,203 @@ msgstr "முன் வடிப்பி எதுவும் இல்லை
 
 #. Translators: "Miscellaneous" is the label for a button, that opens
 #. up an extra panel of settings in a print dialog.
-#: modules/printbackends/cups/ctkprintbackendcups.c:4502
+#: modules/printbackends/cups/ctkprintbackendcups.c:4725
 #, fuzzy
 msgctxt "printing option group"
 msgid "Miscellaneous"
 msgstr "மற்றவைகள்"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:4529
+#: modules/printbackends/cups/ctkprintbackendcups.c:4752
 #, fuzzy
 msgctxt "sides"
 msgid "One Sided"
 msgstr "ஒற்றை பக்கம்"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4531
+#: modules/printbackends/cups/ctkprintbackendcups.c:4754
 #, fuzzy
 msgctxt "sides"
 msgid "Long Edge (Standard)"
 msgstr "Long Edge (Standard)"
 
 #. Translators: this is an option of "Two Sided"
-#: modules/printbackends/cups/ctkprintbackendcups.c:4533
+#: modules/printbackends/cups/ctkprintbackendcups.c:4756
 #, fuzzy
 msgctxt "sides"
 msgid "Short Edge (Flip)"
 msgstr "Short Edge (Flip)"
 
 #. Translators: Top output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4536
+#: modules/printbackends/cups/ctkprintbackendcups.c:4759
 msgctxt "output-bin"
 msgid "Top Bin"
 msgstr ""
 
 #. Translators: Middle output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4538
+#: modules/printbackends/cups/ctkprintbackendcups.c:4761
 msgctxt "output-bin"
 msgid "Middle Bin"
 msgstr ""
 
 #. Translators: Bottom output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4540
+#: modules/printbackends/cups/ctkprintbackendcups.c:4763
 #, fuzzy
 msgctxt "output-bin"
 msgid "Bottom Bin"
 msgstr "கீழே (_B)"
 
 #. Translators: Side output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4542
+#: modules/printbackends/cups/ctkprintbackendcups.c:4765
 msgctxt "output-bin"
 msgid "Side Bin"
 msgstr ""
 
 #. Translators: Left output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4544
+#: modules/printbackends/cups/ctkprintbackendcups.c:4767
 #, fuzzy
 msgctxt "output-bin"
 msgid "Left Bin"
 msgstr "இடது"
 
 #. Translators: Right output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4546
+#: modules/printbackends/cups/ctkprintbackendcups.c:4769
 #, fuzzy
 msgctxt "output-bin"
 msgid "Right Bin"
 msgstr "வலது"
 
 #. Translators: Center output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4548
+#: modules/printbackends/cups/ctkprintbackendcups.c:4771
 #, fuzzy
 msgctxt "output-bin"
 msgid "Center Bin"
 msgstr "மையம் (_C)"
 
 #. Translators: Rear output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4550
+#: modules/printbackends/cups/ctkprintbackendcups.c:4773
 msgctxt "output-bin"
 msgid "Rear Bin"
 msgstr ""
 
 #. Translators: Output bin where one sided output is oriented in the face-up position
-#: modules/printbackends/cups/ctkprintbackendcups.c:4552
+#: modules/printbackends/cups/ctkprintbackendcups.c:4775
 msgctxt "output-bin"
 msgid "Face Up Bin"
 msgstr ""
 
 #. Translators: Output bin where one sided output is oriented in the face-down position
-#: modules/printbackends/cups/ctkprintbackendcups.c:4554
+#: modules/printbackends/cups/ctkprintbackendcups.c:4777
 msgctxt "output-bin"
 msgid "Face Down Bin"
 msgstr ""
 
 #. Translators: Large capacity output bin
-#: modules/printbackends/cups/ctkprintbackendcups.c:4556
+#: modules/printbackends/cups/ctkprintbackendcups.c:4779
 msgctxt "output-bin"
 msgid "Large Capacity Bin"
 msgstr ""
 
 #. Translators: Output stacker number %d
-#: modules/printbackends/cups/ctkprintbackendcups.c:4578
+#: modules/printbackends/cups/ctkprintbackendcups.c:4801
 #, c-format
 msgctxt "output-bin"
 msgid "Stacker %d"
 msgstr ""
 
 #. Translators: Output mailbox number %d
-#: modules/printbackends/cups/ctkprintbackendcups.c:4582
+#: modules/printbackends/cups/ctkprintbackendcups.c:4805
 #, c-format
 msgctxt "output-bin"
 msgid "Mailbox %d"
 msgstr ""
 
 #. Translators: Private mailbox
-#: modules/printbackends/cups/ctkprintbackendcups.c:4586
+#: modules/printbackends/cups/ctkprintbackendcups.c:4809
 msgctxt "output-bin"
 msgid "My Mailbox"
 msgstr ""
 
 #. Translators: Output tray number %d
-#: modules/printbackends/cups/ctkprintbackendcups.c:4590
+#: modules/printbackends/cups/ctkprintbackendcups.c:4813
 #, c-format
 msgctxt "output-bin"
 msgid "Tray %d"
 msgstr ""
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5061
+#: modules/printbackends/cups/ctkprintbackendcups.c:5284
 msgid "Printer Default"
 msgstr "முன்னிருப்பு அச்சடிப்பி"
 
 #. Translators: These strings name the possible values of the
 #. * job priority option in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5503
+#: modules/printbackends/cups/ctkprintbackendcups.c:5726
 msgid "Urgent"
 msgstr "அவசரம்"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5503
+#: modules/printbackends/cups/ctkprintbackendcups.c:5726
 msgid "High"
 msgstr "உயர்ந்த"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5503
+#: modules/printbackends/cups/ctkprintbackendcups.c:5726
 msgid "Medium"
 msgstr "நடுத்தரம்"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5503
+#: modules/printbackends/cups/ctkprintbackendcups.c:5726
 msgid "Low"
 msgstr "குறைந்த"
 
 #. Translators, this string is used to label the job priority option
 #. * in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5533
+#: modules/printbackends/cups/ctkprintbackendcups.c:5756
 msgid "Job Priority"
 msgstr "பணி முன்னுரிமை"
 
 #. Translators, this string is used to label the billing info entry
 #. * in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5544
+#: modules/printbackends/cups/ctkprintbackendcups.c:5767
 msgid "Billing Info"
 msgstr "இரசீது தகவல்"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5568
+#: modules/printbackends/cups/ctkprintbackendcups.c:5791
 #, fuzzy
 msgctxt "cover page"
 msgid "None"
 msgstr "ஒன்றுமில்லை"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5569
+#: modules/printbackends/cups/ctkprintbackendcups.c:5792
 #, fuzzy
 msgctxt "cover page"
 msgid "Classified"
 msgstr "வகைப்படுத்தல்"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5570
+#: modules/printbackends/cups/ctkprintbackendcups.c:5793
 #, fuzzy
 msgctxt "cover page"
 msgid "Confidential"
 msgstr "அந்தரங்கம்"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5571
+#: modules/printbackends/cups/ctkprintbackendcups.c:5794
 #, fuzzy
 msgctxt "cover page"
 msgid "Secret"
 msgstr "இரகசியம்"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5572
+#: modules/printbackends/cups/ctkprintbackendcups.c:5795
 #, fuzzy
 msgctxt "cover page"
 msgid "Standard"
 msgstr "இயல்பான"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5573
+#: modules/printbackends/cups/ctkprintbackendcups.c:5796
 #, fuzzy
 msgctxt "cover page"
 msgid "Top Secret"
 msgstr "உயர்ந்த இரகசியம்"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5574
+#: modules/printbackends/cups/ctkprintbackendcups.c:5797
 #, fuzzy
 msgctxt "cover page"
 msgid "Unclassified"
@@ -8484,7 +8484,7 @@ msgstr "வகைப்படுத்தாதது"
 #. Translators, this string is used to label the pages-per-sheet option
 #. * in the print dialog
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5586
+#: modules/printbackends/cups/ctkprintbackendcups.c:5809
 #, fuzzy
 msgctxt "printer option"
 msgid "Pages per Sheet"
@@ -8493,7 +8493,7 @@ msgstr "தாளுக்கான பக்கங்கள்"
 #. Translators, this string is used to label the option in the print
 #. * dialog that controls in what order multiple pages are arranged
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5603
+#: modules/printbackends/cups/ctkprintbackendcups.c:5826
 #, fuzzy
 msgctxt "printer option"
 msgid "Page Ordering"
@@ -8502,7 +8502,7 @@ msgstr "பக்க வரிசைப்படுத்தல்"
 #. Translators, this is the label used for the option in the print
 #. * dialog that controls the front cover page.
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5645
+#: modules/printbackends/cups/ctkprintbackendcups.c:5868
 #, fuzzy
 msgctxt "printer option"
 msgid "Before"
@@ -8511,7 +8511,7 @@ msgstr "முன்"
 #. Translators, this is the label used for the option in the print
 #. * dialog that controls the back cover page.
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5660
+#: modules/printbackends/cups/ctkprintbackendcups.c:5883
 #, fuzzy
 msgctxt "printer option"
 msgid "After"
@@ -8521,7 +8521,7 @@ msgstr "பின்"
 #. * a print job is printed. Possible values are 'now', a specified time,
 #. * or 'on hold'
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5680
+#: modules/printbackends/cups/ctkprintbackendcups.c:5903
 #, fuzzy
 msgctxt "printer option"
 msgid "Print at"
@@ -8530,7 +8530,7 @@ msgstr "அச்சிடு"
 #. Translators: this is the name of the option that allows the user
 #. * to specify a time when a print job will be printed.
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5691
+#: modules/printbackends/cups/ctkprintbackendcups.c:5914
 #, fuzzy
 msgctxt "printer option"
 msgid "Print at time"
@@ -8541,19 +8541,19 @@ msgstr "நேரத்திற்கு அச்சிடவும்"
 #. * the width and height in points. E.g: "Custom
 #. * 230.4x142.9"
 #.
-#: modules/printbackends/cups/ctkprintbackendcups.c:5737
+#: modules/printbackends/cups/ctkprintbackendcups.c:5960
 #, fuzzy, c-format
 msgid "Custom %s×%s"
 msgstr "தனிபயன் %sx%s"
 
-#: modules/printbackends/cups/ctkprintbackendcups.c:5847
+#: modules/printbackends/cups/ctkprintbackendcups.c:6070
 #, fuzzy
 msgctxt "printer option"
 msgid "Printer Profile"
 msgstr "அச்சடிப்பி விவரக்குறிப்பு"
 
 #. TRANSLATORS: this is when color profile information is unavailable
-#: modules/printbackends/cups/ctkprintbackendcups.c:5854
+#: modules/printbackends/cups/ctkprintbackendcups.c:6077
 #, fuzzy
 msgctxt "printer option value"
 msgid "Unavailable"
@@ -8561,57 +8561,57 @@ msgstr "கிடைக்கவில்லை"
 
 #. TRANSLATORS: when we're running an old CUPS, and
 #. * it hasn't registered the device with colord
-#: modules/printbackends/cups/ctkprintercups.c:275
+#: modules/printbackends/cups/ctkprintercups.c:273
 msgid "Color management unavailable"
 msgstr "வண்ண மேலாண்மை கிடைக்கவில்லை"
 
 #. TRANSLATORS: when there is no color profile available
-#: modules/printbackends/cups/ctkprintercups.c:287
+#: modules/printbackends/cups/ctkprintercups.c:285
 msgid "No profile available"
 msgstr "விவரக்குறிப்பு எதுவும் இல்லை"
 
 #. TRANSLATORS: when the color profile has no title
-#: modules/printbackends/cups/ctkprintercups.c:298
+#: modules/printbackends/cups/ctkprintercups.c:296
 msgid "Unspecified profile"
 msgstr "குறிப்பிடப்படாத விவரக்குறிப்பு"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:250
+#: modules/printbackends/file/ctkprintbackendfile.c:246
 msgid "output"
 msgstr "வெளியீடு"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:539
+#: modules/printbackends/file/ctkprintbackendfile.c:535
 msgid "Print to File"
 msgstr "கோப்புக்கு அச்சிடவும்"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:667
+#: modules/printbackends/file/ctkprintbackendfile.c:663
 msgid "PDF"
 msgstr "PDF"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:667
+#: modules/printbackends/file/ctkprintbackendfile.c:663
 msgid "Postscript"
 msgstr "பின்உரை"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:667
+#: modules/printbackends/file/ctkprintbackendfile.c:663
 msgid "SVG"
 msgstr "SVG"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:738
+#: modules/printbackends/file/ctkprintbackendfile.c:734
 msgid "File"
 msgstr "கோப்பு"
 
-#: modules/printbackends/file/ctkprintbackendfile.c:750
+#: modules/printbackends/file/ctkprintbackendfile.c:746
 msgid "_Output format"
 msgstr "வெளியீடு வடிவம் (_O)"
 
-#: modules/printbackends/lpr/ctkprintbackendlpr.c:394
+#: modules/printbackends/lpr/ctkprintbackendlpr.c:390
 msgid "Print to LPR"
 msgstr "LPRலிருந்து அச்சுக்கு"
 
-#: modules/printbackends/lpr/ctkprintbackendlpr.c:423
+#: modules/printbackends/lpr/ctkprintbackendlpr.c:419
 msgid "Pages Per Sheet"
 msgstr "தாளுக்கான பக்கங்கள்"
 
-#: modules/printbackends/lpr/ctkprintbackendlpr.c:430
+#: modules/printbackends/lpr/ctkprintbackendlpr.c:426
 msgid "Command Line"
 msgstr "கட்டளை வரி"
 
