@@ -176,6 +176,8 @@ ctk_public_h_sources = 		\
 	ctkcolorchooser.h	\
 	ctkcolorchooserwidget.h	\
 	ctkcolorchooserdialog.h	\
+	ctkcolorsel.h		\
+	ctkcolorseldialog.h	\
 	ctkcolorutils.h		\
 	ctkcombobox.h		\
 	ctkcomboboxtext.h	\
@@ -419,8 +421,6 @@ ctk_private_h_sources =		\
 	ctkcolorpickershellprivate.h	\
 	ctkcolorplaneprivate.h	\
 	ctkcolorscaleprivate.h	\
-	ctkcolorsel.h		\
-	ctkcolorseldialog.h		\
 	ctkcolorchooserprivate.h	\
 	ctkcomboboxprivate.h	\
 	ctkcomposetable.h	\
