@@ -6418,9 +6418,7 @@ cdk_window_set_background (CdkWindow      *window,
                                       color->green / 65535.,
                                       color->blue  / 65535.);
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   cdk_window_set_background_pattern (window, pattern);
-G_GNUC_END_IGNORE_DEPRECATIONS
 
   cairo_pattern_destroy (pattern);
 }
@@ -6463,9 +6461,7 @@ cdk_window_set_background_rgba (CdkWindow     *window,
   pattern = cairo_pattern_create_rgba (rgba->red, rgba->green,
                                        rgba->blue, rgba->alpha);
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   cdk_window_set_background_pattern (window, pattern);
-G_GNUC_END_IGNORE_DEPRECATIONS
 
   cairo_pattern_destroy (pattern);
 }
@@ -6484,8 +6480,6 @@ G_GNUC_END_IGNORE_DEPRECATIONS
  *
  * The windowing system will normally fill a window with its background
  * when the window is obscured then exposed.
- *
- * Deprecated: 3.22: Don't use this function
  */
 void
 cdk_window_set_background_pattern (CdkWindow       *window,

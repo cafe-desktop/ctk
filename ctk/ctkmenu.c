@@ -1751,10 +1751,8 @@ ctk_menu_tearoff_bg_copy (CtkMenu *menu)
 
       ctk_widget_set_size_request (priv->tearoff_window, width, height);
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       pattern = cairo_pattern_create_for_surface (surface);
       cdk_window_set_background_pattern (window, pattern);
-G_GNUC_END_IGNORE_DEPRECATIONS
 
       cairo_pattern_destroy (pattern);
       cairo_surface_destroy (surface);

@@ -786,7 +786,7 @@ void	      cdk_window_set_background	 (CdkWindow	  *window,
 CDK_DEPRECATED_IN_3_22
 void          cdk_window_set_background_rgba (CdkWindow     *window,
                                               const CdkRGBA *rgba);
-CDK_DEPRECATED_IN_3_22
+CDK_AVAILABLE_IN_ALL
 void	      cdk_window_set_background_pattern (CdkWindow	 *window,
                                                  cairo_pattern_t *pattern);
 CDK_AVAILABLE_IN_ALL
