@@ -3534,9 +3534,8 @@ cdk_window_clear_backing_region (CdkWindow *window)
 
   for (bg_window = window; bg_window; bg_window = bg_window->parent)
     {
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       pattern = cdk_window_get_background_pattern (bg_window);
-G_GNUC_END_IGNORE_DEPRECATIONS
+
       if (pattern)
         break;
 
@@ -6522,8 +6521,6 @@ cdk_window_set_background_pattern (CdkWindow       *window,
  * background or %NULL if there is no background.
  *
  * Since: 2.22
- *
- * Deprecated: 3.22: Don't use this function
  **/
 cairo_pattern_t *
 cdk_window_get_background_pattern (CdkWindow *window)
