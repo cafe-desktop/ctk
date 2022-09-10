@@ -121,6 +121,7 @@ assert_icon_lookup_fails (const char         *icon_name,
 }
 
 static GList *lookups = NULL;
+static gboolean collecting_lookups = FALSE;
 
 static GLogWriterOutput
 log_writer (GLogLevelFlags   log_level,
@@ -131,6 +132,9 @@ log_writer (GLogLevelFlags   log_level,
   const char *domain = NULL;
   const char *msg = NULL;
   int i;
+
+  if (!collecting_lookups)
+    return g_log_writer_default (log_level, fields, n_fields, user_data);
 
   for (i = 0; i < n_fields; i++)
     {
@@ -160,26 +164,20 @@ assert_lookup_order (const char         *icon_name,
                      const char         *first,
                      ...)
 {
-  guint debug_flags;
   va_list args;
   const gchar *s;
   CtkIconInfo *info;
   GList *l;
 
-/* this hack is only usable in debug builds */
-#ifndef G_ENABLE_DEBUG
-  g_assert_not_reached ();
-#endif
-
-  debug_flags = ctk_get_debug_flags ();
-  ctk_set_debug_flags (debug_flags | CTK_DEBUG_ICONTHEME);
-  g_log_set_writer_func (log_writer, NULL, NULL);
-
   g_assert (lookups == NULL);
+  collecting_lookups = TRUE;
 
   info = ctk_icon_theme_lookup_icon (get_test_icontheme (FALSE), icon_name, size, flags);
+
   if (info)
     g_object_unref (info);
+
+  collecting_lookups = FALSE;
   
   va_start (args, first);
   s = first;
@@ -196,9 +194,6 @@ assert_lookup_order (const char         *icon_name,
 
   g_list_free_full (lookups, g_free);
   lookups = NULL;
-
-  g_log_set_writer_func (g_log_writer_default, NULL, NULL);
-  ctk_set_debug_flags (debug_flags);
 }
 
 #ifdef G_ENABLE_DEBUG
@@ -209,109 +204,123 @@ assert_lookup_order (const char         *icon_name,
   return;
 #endif
 
+static void
+test_lookup_order (void)
+{
+  require_debug ();
+
+  if (g_test_subprocess ())
+    {
+      guint debug_flags;
+
+      debug_flags = ctk_get_debug_flags ();
+      ctk_set_debug_flags (debug_flags | CTK_DEBUG_ICONTHEME);
+
+      g_log_set_writer_func (log_writer, NULL, NULL);
+
+      assert_lookup_order ("foo-bar-baz", 16, CTK_ICON_LOOKUP_GENERIC_FALLBACK,
+                           "foo-bar-baz",
+                           "foo-bar",
+                           "foo",
+                           NULL);
+      assert_lookup_order ("foo-bar-baz", 16, CTK_ICON_LOOKUP_GENERIC_FALLBACK|CTK_ICON_LOOKUP_DIR_RTL,
+                           "foo-bar-baz-rtl",
+                           "foo-bar-baz",
+                           "foo-bar-rtl",
+                           "foo-bar",
+                           "foo-rtl",
+                           "foo",
+                           NULL);
+      assert_lookup_order ("foo-bar-baz", 16, CTK_ICON_LOOKUP_DIR_RTL,
+                           "foo-bar-baz-rtl",
+                           "foo-bar-baz",
+                           NULL);
+      assert_lookup_order ("foo-bar-baz-symbolic", 16, CTK_ICON_LOOKUP_GENERIC_FALLBACK,
+                           "foo-bar-baz-symbolic",
+                           "foo-bar-symbolic",
+                           "foo-symbolic",
+                           "foo-bar-baz",
+                           "foo-bar",
+                           "foo",
+                           NULL);
+
+      assert_lookup_order ("bla-bla", 16, CTK_ICON_LOOKUP_GENERIC_FALLBACK|CTK_ICON_LOOKUP_FORCE_SYMBOLIC,
+                           "bla-bla-symbolic",
+                           "bla-symbolic",
+                           "bla-bla",
+                           "bla",
+                           NULL);
+      assert_lookup_order ("bla-bla-symbolic", 16, CTK_ICON_LOOKUP_GENERIC_FALLBACK|CTK_ICON_LOOKUP_FORCE_SYMBOLIC,
+                           "bla-bla-symbolic",
+                           "bla-symbolic",
+                           "bla-bla-symbolic", /* awkward */
+                           "bla-symbolic", /* awkward */
+                           "bla-bla",
+                           "bla",
+                           NULL);
+
+      assert_lookup_order ("bar-baz", 16, CTK_ICON_LOOKUP_FORCE_SYMBOLIC|CTK_ICON_LOOKUP_GENERIC_FALLBACK|CTK_ICON_LOOKUP_DIR_RTL,
+                           "bar-baz-symbolic-rtl",
+                           "bar-baz-symbolic",
+                           "bar-symbolic-rtl",
+                           "bar-symbolic",
+                           "bar-baz-rtl",
+                           "bar-baz",
+                           "bar-rtl",
+                           "bar",
+                           NULL);
+      assert_lookup_order ("bar-baz-symbolic", 16, CTK_ICON_LOOKUP_FORCE_SYMBOLIC|CTK_ICON_LOOKUP_GENERIC_FALLBACK|CTK_ICON_LOOKUP_DIR_RTL,
+                           "bar-baz-symbolic-rtl",
+                           "bar-baz-symbolic",
+                           "bar-symbolic-rtl",
+                           "bar-symbolic",
+                           "bar-baz-symbolic-rtl", /* awkward */
+                           "bar-baz-symbolic", /* awkward */
+                           "bar-symbolic-rtl", /* awkward */
+                           "bar-symbolic", /* awkward */
+                           "bar-baz-rtl",
+                           "bar-baz",
+                           "bar-rtl",
+                           "bar",
+                           NULL);
+
+      assert_lookup_order ("bar-baz", 16, CTK_ICON_LOOKUP_FORCE_SYMBOLIC|CTK_ICON_LOOKUP_GENERIC_FALLBACK|CTK_ICON_LOOKUP_DIR_LTR,
+                           "bar-baz-symbolic-ltr",
+                           "bar-baz-symbolic",
+                           "bar-symbolic-ltr",
+                           "bar-symbolic",
+                           "bar-baz-ltr",
+                           "bar-baz",
+                           "bar-ltr",
+                           "bar",
+                           NULL);
+      assert_lookup_order ("bar-baz-symbolic", 16, CTK_ICON_LOOKUP_FORCE_SYMBOLIC|CTK_ICON_LOOKUP_GENERIC_FALLBACK|CTK_ICON_LOOKUP_DIR_LTR,
+                           "bar-baz-symbolic-ltr",
+                           "bar-baz-symbolic",
+                           "bar-symbolic-ltr",
+                           "bar-symbolic",
+                           "bar-baz-symbolic-ltr", /* awkward */
+                           "bar-baz-symbolic", /* awkward */
+                           "bar-symbolic-ltr", /* awkward */
+                           "bar-symbolic", /* awkward */
+                           "bar-baz-ltr",
+                           "bar-baz",
+                           "bar-ltr",
+                           "bar",
+                           NULL);
+
+      return;
+    }
+
+  g_test_trap_subprocess (NULL, 0, 0);
+  g_test_trap_has_passed ();
+}
 
 static void
 test_basics (void)
 {
   /* just a basic boring lookup so we know everything works */
   assert_icon_lookup ("simple", 16, 0, "/icons/16x16/simple.png");
-}
-
-static void
-test_lookup_order (void)
-{
-  require_debug ();
-
-  assert_lookup_order ("foo-bar-baz", 16, CTK_ICON_LOOKUP_GENERIC_FALLBACK,
-                       "foo-bar-baz",
-                       "foo-bar",
-                       "foo",
-                       NULL);
-  assert_lookup_order ("foo-bar-baz", 16, CTK_ICON_LOOKUP_GENERIC_FALLBACK|CTK_ICON_LOOKUP_DIR_RTL,
-                       "foo-bar-baz-rtl",
-                       "foo-bar-baz",
-                       "foo-bar-rtl",
-                       "foo-bar",
-                       "foo-rtl",
-                       "foo",
-                       NULL);
-  assert_lookup_order ("foo-bar-baz", 16, CTK_ICON_LOOKUP_DIR_RTL,
-                       "foo-bar-baz-rtl",
-                       "foo-bar-baz",
-                       NULL);
-  assert_lookup_order ("foo-bar-baz-symbolic", 16, CTK_ICON_LOOKUP_GENERIC_FALLBACK,
-                       "foo-bar-baz-symbolic",
-                       "foo-bar-symbolic",
-                       "foo-symbolic",
-                       "foo-bar-baz",
-                       "foo-bar",
-                       "foo",
-                       NULL);
-
-  assert_lookup_order ("bla-bla", 16, CTK_ICON_LOOKUP_GENERIC_FALLBACK|CTK_ICON_LOOKUP_FORCE_SYMBOLIC,
-                       "bla-bla-symbolic",
-                       "bla-symbolic",
-                       "bla-bla",
-                       "bla",
-                       NULL);
-  assert_lookup_order ("bla-bla-symbolic", 16, CTK_ICON_LOOKUP_GENERIC_FALLBACK|CTK_ICON_LOOKUP_FORCE_SYMBOLIC,
-                       "bla-bla-symbolic",
-                       "bla-symbolic",
-                       "bla-bla-symbolic", /* awkward */
-                       "bla-symbolic", /* awkward */
-                       "bla-bla",
-                       "bla",
-                       NULL);
-
-  assert_lookup_order ("bar-baz", 16, CTK_ICON_LOOKUP_FORCE_SYMBOLIC|CTK_ICON_LOOKUP_GENERIC_FALLBACK|CTK_ICON_LOOKUP_DIR_RTL,
-                       "bar-baz-symbolic-rtl",
-                       "bar-baz-symbolic",
-                       "bar-symbolic-rtl",
-                       "bar-symbolic",
-                       "bar-baz-rtl",
-                       "bar-baz",
-                       "bar-rtl",
-                       "bar",
-                       NULL);
-  assert_lookup_order ("bar-baz-symbolic", 16, CTK_ICON_LOOKUP_FORCE_SYMBOLIC|CTK_ICON_LOOKUP_GENERIC_FALLBACK|CTK_ICON_LOOKUP_DIR_RTL,
-                       "bar-baz-symbolic-rtl",
-                       "bar-baz-symbolic",
-                       "bar-symbolic-rtl",
-                       "bar-symbolic",
-                       "bar-baz-symbolic-rtl", /* awkward */
-                       "bar-baz-symbolic", /* awkward */
-                       "bar-symbolic-rtl", /* awkward */
-                       "bar-symbolic", /* awkward */
-                       "bar-baz-rtl",
-                       "bar-baz",
-                       "bar-rtl",
-                       "bar",
-                       NULL);
-
-  assert_lookup_order ("bar-baz", 16, CTK_ICON_LOOKUP_FORCE_SYMBOLIC|CTK_ICON_LOOKUP_GENERIC_FALLBACK|CTK_ICON_LOOKUP_DIR_LTR,
-                       "bar-baz-symbolic-ltr",
-                       "bar-baz-symbolic",
-                       "bar-symbolic-ltr",
-                       "bar-symbolic",
-                       "bar-baz-ltr",
-                       "bar-baz",
-                       "bar-ltr",
-                       "bar",
-                       NULL);
-  assert_lookup_order ("bar-baz-symbolic", 16, CTK_ICON_LOOKUP_FORCE_SYMBOLIC|CTK_ICON_LOOKUP_GENERIC_FALLBACK|CTK_ICON_LOOKUP_DIR_LTR,
-                       "bar-baz-symbolic-ltr",
-                       "bar-baz-symbolic",
-                       "bar-symbolic-ltr",
-                       "bar-symbolic",
-                       "bar-baz-symbolic-ltr", /* awkward */
-                       "bar-baz-symbolic", /* awkward */
-                       "bar-symbolic-ltr", /* awkward */
-                       "bar-symbolic", /* awkward */
-                       "bar-baz-ltr",
-                       "bar-baz",
-                       "bar-ltr",
-                       "bar",
-                       NULL);
 }
 
 static void
@@ -806,7 +815,6 @@ main (int argc, char *argv[])
   ignore_warnings = FALSE;
 
   g_test_add_func ("/icontheme/basics", test_basics);
-  g_test_add_func ("/icontheme/lookup-order", test_lookup_order);
   g_test_add_func ("/icontheme/generic-fallback", test_generic_fallback);
   g_test_add_func ("/icontheme/force-symbolic", test_force_symbolic);
   g_test_add_func ("/icontheme/force-regular", test_force_regular);
@@ -819,6 +827,7 @@ main (int argc, char *argv[])
   g_test_add_func ("/icontheme/async", test_async);
   g_test_add_func ("/icontheme/inherit", test_inherit);
   g_test_add_func ("/icontheme/nonsquare-symbolic", test_nonsquare_symbolic);
+  g_test_add_func ("/icontheme/lookup-order", test_lookup_order);
 
   return g_test_run();
 }
