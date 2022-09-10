@@ -50,7 +50,7 @@ main (gint argc,
   CtkApplication *app;
 
   app = ctk_application_new ("org.ctk.Example.CtkSearchBar",
-      G_APPLICATION_FLAGS_NONE);
+      G_APPLICATION_DEFAULT_FLAGS);
   g_signal_connect (app, "activate",
       G_CALLBACK (activate_cb), NULL);
 
