@@ -1587,7 +1587,7 @@ AC_ARG_ENABLE(cloudprint,
 if test "x$enable_cloudprint" = "xno"; then
   AM_CONDITIONAL(HAVE_CLOUDPRINT, false)
 else
-  PKG_CHECK_MODULES(REST, [rest-0.7], have_rest=yes, have_rest=no)
+  PKG_CHECK_MODULES(REST, [rest-1.0], have_rest=yes, have_rest=no)
   PKG_CHECK_MODULES(JSON_GLIB, [json-glib-1.0], have_json_glib=yes, have_json_glib=no)
   if test "x$have_rest" = "xyes" -a "x$have_json_glib" = "xyes"; then
     PRINT_BACKENDS="$PRINT_BACKENDS cloudprint"
