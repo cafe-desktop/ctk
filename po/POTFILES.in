@@ -396,8 +396,6 @@ modules/input/imviqr.c
 modules/input/imwayland.c
 modules/input/imwaylandctk.c
 modules/input/imxim.c
-modules/printbackends/cloudprint/ctkprintbackendcloudprint.c
-modules/printbackends/cloudprint/ctkprintercloudprint.c
 modules/printbackends/cups/ctkprintbackendcups.c
 modules/printbackends/cups/ctkprintercups.c
 modules/printbackends/file/ctkprintbackendfile.c
