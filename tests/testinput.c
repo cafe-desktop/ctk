@@ -52,9 +52,7 @@ update_cursor (CtkWidget *widget,  gdouble x, gdouble y)
 
   if (surface != NULL)
     {
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       cairo_t *cr = cdk_cairo_create (ctk_widget_get_window (widget));
-G_GNUC_END_IGNORE_DEPRECATIONS
 
       if (cursor_present && (cursor_present != state ||
 			     x != cursor_x || y != cursor_y))

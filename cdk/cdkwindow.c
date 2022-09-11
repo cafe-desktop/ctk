@@ -3621,9 +3621,6 @@ _cdk_window_ref_cairo_surface (CdkWindow *window)
  *  cairo_destroy() when you are done drawing.
  * 
  * Since: 2.8
- *
- * Deprecated: 3.22: Use cdk_window_begin_draw_frame() and
- *   cdk_drawing_context_get_cairo_context() instead
  **/
 cairo_t *
 cdk_cairo_create (CdkWindow *window)
@@ -4323,9 +4320,7 @@ draw_ugly_color (CdkWindow       *window,
 {
   cairo_t *cr;
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   cr = cdk_cairo_create (window);
-G_GNUC_END_IGNORE_DEPRECATIONS
 
   /* Draw ugly color all over the newly-invalid region */
   if (color == 0)

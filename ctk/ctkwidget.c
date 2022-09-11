@@ -17555,9 +17555,7 @@ ctk_widget_render (CtkWidget            *widget,
        *
        * Candidate for deletion in the next major API bump.
        */
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       cr = cdk_cairo_create (window);
-G_GNUC_END_IGNORE_DEPRECATIONS
     }
 
   do_clip = _ctk_widget_get_translation_to_window (widget, window, &x, &y);

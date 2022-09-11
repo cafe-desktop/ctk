@@ -31,7 +31,7 @@
 
 G_BEGIN_DECLS
 
-CDK_DEPRECATED_IN_3_22_FOR(cdk_window_begin_draw_frame() and cdk_drawing_context_get_cairo_context())
+CDK_AVAILABLE_IN_ALL
 cairo_t  * cdk_cairo_create             (CdkWindow          *window);
 
 CDK_AVAILABLE_IN_ALL
