@@ -17,7 +17,7 @@
 
 #include "config.h"
 
-#include <rest/oauth2-proxy.h>
+#include <rest/rest-oauth2-proxy.h>
 #include <rest/rest-proxy.h>
 #include <rest/rest-proxy-call.h>
 #include <json-glib/json-glib.h>
