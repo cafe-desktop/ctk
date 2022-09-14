@@ -819,7 +819,7 @@ void                  ctk_widget_set_name               (CtkWidget    *widget,
 CDK_AVAILABLE_IN_ALL
 const gchar *         ctk_widget_get_name               (CtkWidget    *widget);
 
-CDK_DEPRECATED_IN_3_0_FOR(ctk_widget_set_state_flags)
+CDK_AVAILABLE_IN_ALL
 void                  ctk_widget_set_state              (CtkWidget    *widget,
 							 CtkStateType  state);
 

@@ -8944,8 +8944,6 @@ ctk_widget_get_state_flags (CtkWidget *widget)
  * This function is for use in widget implementations. Sets the state
  * of a widget (insensitive, prelighted, etc.) Usually you should set
  * the state using wrapper functions such as ctk_widget_set_sensitive().
- *
- * Deprecated: 3.0: Use ctk_widget_set_state_flags() instead.
  **/
 void
 ctk_widget_set_state (CtkWidget           *widget,
