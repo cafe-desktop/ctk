@@ -1789,8 +1789,6 @@ G_GNUC_END_IGNORE_DEPRECATIONS
    *
    * The ::state-changed signal is emitted when the widget state changes.
    * See ctk_widget_get_state().
-   *
-   * Deprecated: 3.0: Use #CtkWidget::state-flags-changed instead.
    */
   widget_signals[STATE_CHANGED] =
     g_signal_new (I_("state-changed"),
@@ -8955,10 +8953,8 @@ ctk_widget_set_state (CtkWidget           *widget,
 {
   CtkStateFlags flags;
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   if (state == ctk_widget_get_state (widget))
     return;
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 
   switch (state)
     {
@@ -9001,8 +8997,6 @@ ctk_widget_set_state (CtkWidget           *widget,
  * Returns: the state of @widget.
  *
  * Since: 2.18
- *
- * Deprecated: 3.0: Use ctk_widget_get_state_flags() instead.
  */
 CtkStateType
 ctk_widget_get_state (CtkWidget *widget)
@@ -12854,9 +12848,7 @@ ctk_widget_propagate_state (CtkWidget    *widget,
   CtkStateType old_state;
   gint new_scale_factor = ctk_widget_get_scale_factor (widget);
 
-  G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   old_state = ctk_widget_get_state (widget);
-  G_GNUC_END_IGNORE_DEPRECATIONS;
 
   priv->state_flags |= data->flags_to_set;
   priv->state_flags &= ~(data->flags_to_unset);

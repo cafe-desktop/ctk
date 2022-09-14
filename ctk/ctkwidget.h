@@ -823,7 +823,7 @@ CDK_DEPRECATED_IN_3_0_FOR(ctk_widget_set_state_flags)
 void                  ctk_widget_set_state              (CtkWidget    *widget,
 							 CtkStateType  state);
 
-CDK_DEPRECATED_IN_3_0_FOR(ctk_widget_get_state_flags)
+CDK_AVAILABLE_IN_ALL
 CtkStateType          ctk_widget_get_state              (CtkWidget    *widget);
 
 CDK_AVAILABLE_IN_ALL
