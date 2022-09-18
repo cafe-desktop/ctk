@@ -427,8 +427,6 @@ ctk_button_class_init (CtkButtonClass *klass)
    * @button: the object that received the signal
    *
    * Emitted when the button is released.
-   *
-   * Deprecated: 2.8: Use the #CtkWidget::button-release-event signal.
    */ 
   button_signals[RELEASED] =
     g_signal_new (I_("released"),
@@ -1485,8 +1483,6 @@ ctk_button_pressed (CtkButton *button)
  * @button: The #CtkButton you want to send the signal to.
  *
  * Emits a #CtkButton::released signal to the given #CtkButton.
- *
- * Deprecated: 2.20: Use the #CtkWidget::button-release-event signal.
  */
 void
 ctk_button_released (CtkButton *button)

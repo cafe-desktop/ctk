@@ -59,7 +59,7 @@ struct _CtkButton
  * CtkButtonClass:
  * @parent_class: The parent class.
  * @pressed: Signal emitted when the button is pressed. Deprecated: 2.8.
- * @released: Signal emitted when the button is released. Deprecated: 2.8.
+ * @released: Signal emitted when the button is released.
  * @clicked: Signal emitted when the button has been activated (pressed and released).
  * @enter: Signal emitted when the pointer enters the button. Deprecated: 2.8.
  * @leave: Signal emitted when the pointer leaves the button. Deprecated: 2.8.
@@ -107,7 +107,7 @@ CDK_AVAILABLE_IN_ALL
 void           ctk_button_clicked           (CtkButton      *button);
 CDK_DEPRECATED
 void           ctk_button_pressed           (CtkButton      *button);
-CDK_DEPRECATED
+CDK_AVAILABLE_IN_ALL
 void           ctk_button_released          (CtkButton      *button);
 CDK_DEPRECATED
 void           ctk_button_enter             (CtkButton      *button);
