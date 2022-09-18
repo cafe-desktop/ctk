@@ -410,8 +410,6 @@ ctk_button_class_init (CtkButtonClass *klass)
    * @button: the object that received the signal
    *
    * Emitted when the button is pressed.
-   *
-   * Deprecated: 2.8: Use the #CtkWidget::button-press-event signal.
    */ 
   button_signals[PRESSED] =
     g_signal_new (I_("pressed"),
@@ -1467,8 +1465,6 @@ ctk_button_new_with_mnemonic (const gchar *label)
  * @button: The #CtkButton you want to send the signal to.
  *
  * Emits a #CtkButton::pressed signal to the given #CtkButton.
- *
- * Deprecated: 2.20: Use the #CtkWidget::button-press-event signal.
  */
 void
 ctk_button_pressed (CtkButton *button)
