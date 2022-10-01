@@ -1,3 +1,18 @@
+Overview of Changes in CTK+ 3.25.4
+===================================
+
+* ctk,Makefile: move 'ctkcolorsel' and 'ctkcolorseldialog' from 'ctk_private_h_sources' to 'ctk_public_h_sources'
+* cdkwindow: don't make deprecated 'cdk_window_get_background_pattern', 'cdk_window_set_background_pattern'
+* testsuit,ctk: Avoid 'g_log_set_writer_func' in tests
+* avoid deprecated G_APPLICATION_FLAGS_NONE
+* don't make deprecated 'cdk_cairo_create'
+* Remove Google Cloud Print backend
+* ci: remove libjson-glib-dev,librest-dev,libsoup2.4-dev
+* ci: build without --enable-cloudprint
+* ctkwidget: don't make deprecated 'ctk_widget_get_state', 'ctk_widget_set_state'
+* ctkbutton: don't make deprecated 'ctk_button_released', 'ctk_button_pressed'
+
+
 Overview of Changes in CTK+ 3.25.3
 ===================================
 
