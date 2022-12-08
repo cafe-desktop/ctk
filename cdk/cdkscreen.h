@@ -83,7 +83,7 @@ void         cdk_screen_get_monitor_workarea  (CdkScreen    *screen,
                                                gint          monitor_num,
                                                CdkRectangle *dest);
 
-CDK_DEPRECATED_IN_3_22_FOR(cdk_display_get_monitor_at_point)
+CDK_AVAILABLE_IN_ALL
 gint          cdk_screen_get_monitor_at_point  (CdkScreen *screen,
                                                 gint       x,
                                                 gint       y);

@@ -224,8 +224,6 @@ get_monitor_num (CdkMonitor *monitor)
  *   a monitor close to (@x,@y) if the point is not in any monitor.
  *
  * Since: 2.2
- *
- * Deprecated: 3.22: Use cdk_display_get_monitor_at_point() instead
  **/
 gint
 cdk_screen_get_monitor_at_point (CdkScreen *screen,
