@@ -87,7 +87,7 @@ CDK_DEPRECATED_IN_3_22_FOR(cdk_display_get_monitor_at_point)
 gint          cdk_screen_get_monitor_at_point  (CdkScreen *screen,
                                                 gint       x,
                                                 gint       y);
-CDK_DEPRECATED_IN_3_22_FOR(cdk_display_get_monitor_at_window)
+CDK_AVAILABLE_IN_ALL
 gint          cdk_screen_get_monitor_at_window (CdkScreen *screen,
                                                 CdkWindow *window);
 CDK_DEPRECATED_IN_3_22_FOR(cdk_monitor_get_width_mm)

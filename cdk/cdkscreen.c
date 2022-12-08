@@ -255,8 +255,6 @@ cdk_screen_get_monitor_at_point (CdkScreen *screen,
  *     close to @window.
  *
  * Since: 2.2
- *
- * Deprecated: 3.22: Use cdk_display_get_monitor_at_window() instead
  **/
 gint
 cdk_screen_get_monitor_at_window (CdkScreen *screen,
