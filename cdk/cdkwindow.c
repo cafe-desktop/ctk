@@ -6398,8 +6398,6 @@ cdk_window_move_region (CdkWindow            *window,
  * using a style class or CSS — if you’re an application — or with
  * ctk_style_context_set_background() — if you're implementing a
  * custom widget.
- *
- * Deprecated: 3.4: Don't use this function
  */
 void
 cdk_window_set_background (CdkWindow      *window,
@@ -6426,8 +6424,6 @@ cdk_window_set_background (CdkWindow      *window,
  * Sets the background color of @window.
  *
  * See also cdk_window_set_background_pattern().
- *
- * Deprecated: 3.22: Don't use this function
  **/
 void
 cdk_window_set_background_rgba (CdkWindow     *window,

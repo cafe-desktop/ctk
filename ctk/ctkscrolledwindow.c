@@ -4250,9 +4250,7 @@ create_indicator_window (CtkScrolledWindow *scrolled_window,
                            &attributes, attributes_mask);
   ctk_widget_register_window (widget, window);
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   cdk_window_set_background_rgba (window, &transparent);
-G_GNUC_END_IGNORE_DEPRECATIONS
 
   if (scrolled_window->priv->use_indicators)
     ctk_widget_set_parent_window (child, window);

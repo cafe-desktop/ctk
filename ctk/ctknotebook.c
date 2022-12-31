@@ -2993,9 +2993,7 @@ show_drag_window (CtkNotebook        *notebook,
                                           &attributes,
                                           attributes_mask);
       ctk_widget_register_window (widget, priv->drag_window);
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       cdk_window_set_background_rgba (priv->drag_window, &transparent);
-G_GNUC_END_IGNORE_DEPRECATIONS
     }
 
   ctk_widget_set_child_visible (page->tab_label, FALSE);

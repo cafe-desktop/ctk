@@ -780,10 +780,10 @@ void          cdk_window_set_startup_id    (CdkWindow     *window,
 CDK_AVAILABLE_IN_ALL
 void          cdk_window_set_transient_for (CdkWindow     *window,
 					    CdkWindow     *parent);
-CDK_DEPRECATED_IN_3_4
+CDK_AVAILABLE_IN_ALL
 void	      cdk_window_set_background	 (CdkWindow	  *window,
 					  const CdkColor  *color);
-CDK_DEPRECATED_IN_3_22
+CDK_AVAILABLE_IN_ALL
 void          cdk_window_set_background_rgba (CdkWindow     *window,
                                               const CdkRGBA *rgba);
 CDK_AVAILABLE_IN_ALL
