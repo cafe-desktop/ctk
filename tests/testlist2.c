@@ -20,9 +20,7 @@ remove_this_row (CtkButton *button, CtkWidget *child)
   revealer = ctk_revealer_new ();
   ctk_revealer_set_reveal_child (CTK_REVEALER (revealer), TRUE);
   ctk_widget_show (revealer);
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   ctk_widget_reparent (child, revealer);
-G_GNUC_END_IGNORE_DEPRECATIONS
   ctk_container_add (CTK_CONTAINER (row), revealer);
   g_signal_connect (revealer, "notify::child-revealed",
                     G_CALLBACK (row_unrevealed), NULL);

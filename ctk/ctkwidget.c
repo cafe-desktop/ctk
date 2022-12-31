@@ -7904,8 +7904,6 @@ ctk_widget_reparent_fixup_child (CtkWidget *widget,
  *
  * Moves a widget from one #CtkContainer to another, handling reference
  * count issues to avoid destroying the widget.
- *
- * Deprecated: 3.14: Use ctk_container_remove() and ctk_container_add().
  **/
 void
 ctk_widget_reparent (CtkWidget *widget,

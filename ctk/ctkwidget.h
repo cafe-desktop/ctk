@@ -751,7 +751,7 @@ gboolean   ctk_widget_send_focus_change   (CtkWidget           *widget,
 CDK_AVAILABLE_IN_ALL
 gboolean   ctk_widget_activate		     (CtkWidget	       *widget);
      
-CDK_DEPRECATED_IN_3_14
+CDK_AVAILABLE_IN_ALL
 void	   ctk_widget_reparent		  (CtkWidget	       *widget,
 					   CtkWidget	       *new_parent);
 CDK_AVAILABLE_IN_ALL

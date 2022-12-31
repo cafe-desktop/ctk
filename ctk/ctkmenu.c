@@ -5632,9 +5632,7 @@ ctk_menu_reparent (CtkMenu   *menu,
     }
   else
     {
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       ctk_widget_reparent (widget, new_parent);
-      G_GNUC_END_IGNORE_DEPRECATIONS;
     }
 
   if (was_floating)

@@ -2102,9 +2102,7 @@ reparent_label (CtkWidget *widget,
 
   label = g_object_get_data (G_OBJECT (widget), "user_data");
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   ctk_widget_reparent (label, new_parent);
-G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
@@ -3654,9 +3652,7 @@ static gulong sw_destroyed_handler = 0;
 static gboolean
 scrolled_windows_delete_cb (CtkWidget *widget, CdkEventAny *event, CtkWidget *scrollwin)
 {
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   ctk_widget_reparent (scrollwin, sw_parent);
-G_GNUC_END_IGNORE_DEPRECATIONS
   
   g_signal_handler_disconnect (sw_parent, sw_destroyed_handler);
   sw_float_parent = NULL;
@@ -3687,9 +3683,7 @@ scrolled_windows_remove (CtkWidget *dialog, gint response, CtkWidget *scrollwin)
 
   if (sw_parent)
     {
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       ctk_widget_reparent (scrollwin, sw_parent);
-G_GNUC_END_IGNORE_DEPRECATIONS
       ctk_widget_destroy (sw_float_parent);
 
       g_signal_handler_disconnect (sw_parent, sw_destroyed_handler);
@@ -3706,9 +3700,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
       
       ctk_window_set_default_size (CTK_WINDOW (sw_float_parent), 200, 200);
       
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       ctk_widget_reparent (scrollwin, sw_float_parent);
-G_GNUC_END_IGNORE_DEPRECATIONS
       ctk_widget_show (sw_float_parent);
 
       sw_destroyed_handler =
