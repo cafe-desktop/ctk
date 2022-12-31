@@ -7436,14 +7436,12 @@ cdk_window_set_composited (CdkWindow *window,
 
   impl_class = CDK_WINDOW_IMPL_GET_CLASS (window->impl);
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   if (composited && (!cdk_display_supports_composite (display) || !impl_class->set_composited))
     {
       g_warning ("cdk_window_set_composited called but "
                  "compositing is not supported");
       return;
     }
-G_GNUC_END_IGNORE_DEPRECATIONS
 
   impl_class->set_composited (window, composited);
 

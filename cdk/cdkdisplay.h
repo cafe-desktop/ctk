@@ -161,7 +161,7 @@ CDK_AVAILABLE_IN_ALL
 gboolean cdk_display_supports_shapes           (CdkDisplay    *display);
 CDK_AVAILABLE_IN_ALL
 gboolean cdk_display_supports_input_shapes     (CdkDisplay    *display);
-CDK_DEPRECATED_IN_3_16
+CDK_AVAILABLE_IN_ALL
 gboolean cdk_display_supports_composite        (CdkDisplay    *display);
 CDK_AVAILABLE_IN_ALL
 void     cdk_display_notify_startup_complete   (CdkDisplay    *display,
