@@ -631,9 +631,9 @@ void cdk_window_shape_combine_region (CdkWindow	      *window,
 CDK_AVAILABLE_IN_ALL
 void cdk_window_set_child_shapes (CdkWindow *window);
 
-CDK_DEPRECATED_IN_3_16
+CDK_AVAILABLE_IN_ALL
 gboolean cdk_window_get_composited (CdkWindow *window);
-CDK_DEPRECATED_IN_3_16
+CDK_AVAILABLE_IN_ALL
 void cdk_window_set_composited   (CdkWindow *window,
                                   gboolean   composited);
 

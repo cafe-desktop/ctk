@@ -415,10 +415,8 @@ create_composited_window (CtkWidget *widget)
       /* set the event box CdkWindow to be composited.
        * obviously must be performed after event box is realised.
        */
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       cdk_window_set_composited (ctk_widget_get_window (event),
                                  TRUE);
-G_GNUC_END_IGNORE_DEPRECATIONS
 
       /* set up the compositing handler.
        * note that we do _after so that the normal (red) background is drawn

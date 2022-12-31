@@ -7370,9 +7370,6 @@ cdk_window_set_static_gravities (CdkWindow *window,
  * Returns: %TRUE if the window is composited.
  *
  * Since: 2.22
- *
- * Deprecated: 3.16: Compositing is an outdated technology that
- *   only ever worked on X11.
  **/
 gboolean
 cdk_window_get_composited (CdkWindow *window)
@@ -7411,9 +7408,6 @@ cdk_window_get_composited (CdkWindow *window)
  * attempting to do so.
  *
  * Since: 2.12
- *
- * Deprecated: 3.16: Compositing is an outdated technology that
- *   only ever worked on X11.
  */
 void
 cdk_window_set_composited (CdkWindow *window,
