@@ -68,6 +68,7 @@ combochange_log (const char *fmt,
   ctk_text_buffer_delete_mark (buffer, tmp_mark);
 
   g_free (msg);
+  va_end (vap);
 }
 
 static CtkWidget *
