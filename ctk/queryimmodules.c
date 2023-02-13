@@ -154,7 +154,6 @@ query_module (const char *dir, const char *name, GString *contents)
 int main (int argc, char **argv)
 {
   int i;
-  char *path;
   gboolean error = FALSE;
   gchar *cache_file = NULL;
   gint first_file = 1;
@@ -178,6 +177,7 @@ int main (int argc, char **argv)
   if (argc == first_file)  /* No file arguments given */
     {
       char **dirs;
+      char *path;
       GHashTable *dirs_done;
 
       path = ctk_rc_get_im_module_path ();
