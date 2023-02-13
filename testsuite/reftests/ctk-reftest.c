@@ -168,7 +168,7 @@ get_test_file (const char *test_file,
                const char *extension,
                gboolean    must_exist)
 {
-  GString *file = g_string_new (NULL);
+  GString *file;
   char *dir, *base;
 
   get_components_of_test_file (test_file, &dir, &base);
