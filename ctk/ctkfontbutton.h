@@ -92,9 +92,9 @@ gboolean              ctk_font_button_get_use_size   (CtkFontButton *font_button
 CDK_AVAILABLE_IN_ALL
 void                  ctk_font_button_set_use_size   (CtkFontButton *font_button,
                                                       gboolean       use_size);
-CDK_DEPRECATED_IN_3_22
+CDK_AVAILABLE_IN_ALL
 const gchar *         ctk_font_button_get_font_name  (CtkFontButton *font_button);
-CDK_DEPRECATED_IN_3_22
+CDK_AVAILABLE_IN_ALL
 gboolean              ctk_font_button_set_font_name  (CtkFontButton *font_button,
                                                       const gchar   *fontname);
 CDK_AVAILABLE_IN_ALL

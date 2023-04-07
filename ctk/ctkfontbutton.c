@@ -1039,7 +1039,6 @@ ctk_font_button_set_show_size (CtkFontButton *font_button,
  * Returns: an internal copy of the font name which must not be freed.
  *
  * Since: 2.4
- * Deprecated: 3.22: Use ctk_font_chooser_get_font() instead
  */
 const gchar *
 ctk_font_button_get_font_name (CtkFontButton *font_button)
@@ -1069,7 +1068,6 @@ font_button_set_font_name (CtkFontButton *font_button,
  * Returns: %TRUE
  *
  * Since: 2.4
- * Deprecated: 3.22: Use ctk_font_chooser_set_font() instead
  */
 gboolean 
 ctk_font_button_set_font_name (CtkFontButton *font_button,
