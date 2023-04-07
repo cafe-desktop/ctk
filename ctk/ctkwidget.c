@@ -9779,11 +9779,6 @@ ctk_widget_override_background_color (CtkWidget     *widget,
  * left untouched. See ctk_widget_override_color().
  *
  * Since: 3.0
- *
- * Deprecated: 3.16: This function is not useful in the context of CSS-based
- *   rendering. If you wish to change the font a widget uses to render its text
- *   you should use a custom CSS style, through an application-specific
- *   #CtkStyleProvider and a CSS style class.
  */
 void
 ctk_widget_override_font (CtkWidget                  *widget,

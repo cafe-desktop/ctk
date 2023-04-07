@@ -1149,7 +1149,7 @@ void         ctk_widget_override_background_color (CtkWidget     *widget,
                                                    CtkStateFlags  state,
                                                    const CdkRGBA *color);
 
-CDK_DEPRECATED_IN_3_16
+CDK_AVAILABLE_IN_ALL
 void         ctk_widget_override_font             (CtkWidget                  *widget,
                                                    const PangoFontDescription *font_desc);
 
