@@ -1119,7 +1119,7 @@ CDK_AVAILABLE_IN_ALL
 void ctk_style_context_get_style          (CtkStyleContext *context,
                                            ...);
 
-CDK_DEPRECATED_IN_3_10_FOR(ctk_icon_theme_lookup_icon)
+CDK_AVAILABLE_IN_ALL
 CtkIconSet * ctk_style_context_lookup_icon_set (CtkStyleContext *context,
                                                 const gchar     *stock_id);
 CDK_DEPRECATED_IN_3_10

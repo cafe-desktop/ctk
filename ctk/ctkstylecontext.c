@@ -1933,8 +1933,6 @@ ctk_style_context_get_style (CtkStyleContext *context,
  * %NULL.
  *
  * Returns: (nullable) (transfer none): The looked up %CtkIconSet, or %NULL
- *
- * Deprecated: 3.10: Use ctk_icon_theme_lookup_icon() instead.
  **/
 CtkIconSet *
 ctk_style_context_lookup_icon_set (CtkStyleContext *context,
