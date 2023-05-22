@@ -1178,7 +1178,7 @@ CDK_AVAILABLE_IN_ALL
 PangoLayout  *ctk_widget_create_pango_layout  (CtkWidget   *widget,
 					       const gchar *text);
 
-CDK_DEPRECATED_IN_3_10_FOR(ctk_icon_theme_load_icon)
+CDK_AVAILABLE_IN_ALL
 GdkPixbuf    *ctk_widget_render_icon_pixbuf   (CtkWidget   *widget,
                                                const gchar *stock_id,
                                                CtkIconSize  size);

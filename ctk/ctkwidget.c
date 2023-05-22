@@ -10611,8 +10611,6 @@ ctk_widget_create_pango_layout (CtkWidget   *widget,
  *     stock ID wasn’t known
  *
  * Since: 3.0
- *
- * Deprecated: 3.10: Use ctk_icon_theme_load_icon() instead.
  **/
 GdkPixbuf*
 ctk_widget_render_icon_pixbuf (CtkWidget   *widget,
