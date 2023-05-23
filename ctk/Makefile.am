@@ -381,6 +381,7 @@ ctk_semi_private_h_sources = \
 
 ctk_private_type_h_sources =	\
 	ctkcsstypesprivate.h	\
+	ctkiconfactoryprivate.h	\
 	ctktexthandleprivate.h
 
 

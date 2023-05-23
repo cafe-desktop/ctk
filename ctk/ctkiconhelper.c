@@ -31,7 +31,7 @@
 #include "ctkcsstransientnodeprivate.h"
 #include "ctkiconthemeprivate.h"
 #include "ctkrendericonprivate.h"
-#include "deprecated/ctkiconfactoryprivate.h"
+#include "ctkiconfactoryprivate.h"
 #include "ctkstock.h"
 
 struct _CtkIconHelperPrivate {

@@ -407,6 +407,7 @@ ctk_sources = files(
 
 ctk_private_type_headers = files(
   'ctkcsstypesprivate.h',
+  'ctkiconfactoryprivate.h',
   'ctktexthandleprivate.h',
 )
 

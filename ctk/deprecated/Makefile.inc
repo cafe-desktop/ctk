@@ -24,7 +24,6 @@ deprecated_h_sources = 			\
 
 deprecated_private_h_sources =			\
 	deprecated/ctkgradientprivate.h		\
-	deprecated/ctkiconfactoryprivate.h	\
 	deprecated/ctknumerableiconprivate.h	\
 	deprecated/ctkstylepropertiesprivate.h	\
 	deprecated/ctksymboliccolorprivate.h

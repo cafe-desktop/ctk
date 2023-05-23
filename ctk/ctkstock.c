@@ -29,7 +29,7 @@
 #include "ctkprivate.h"
 #include "ctkstock.h"
 #include "ctkiconfactory.h"
-#include "deprecated/ctkiconfactoryprivate.h"
+#include "ctkiconfactoryprivate.h"
 #include "ctkintl.h"
 
 /**
