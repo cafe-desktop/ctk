@@ -4085,9 +4085,6 @@ ctk_scrolled_window_remove (CtkContainer *container,
  *
  * A widget supports scrolling natively if it implements the
  * #CtkScrollable interface.
- *
- * Deprecated: 3.8: ctk_container_add() will automatically add
- * a #CtkViewport if the child doesn’t implement #CtkScrollable.
  */
 void
 ctk_scrolled_window_add_with_viewport (CtkScrolledWindow *scrolled_window,

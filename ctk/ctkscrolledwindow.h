@@ -182,7 +182,7 @@ void           ctk_scrolled_window_set_shadow_type   (CtkScrolledWindow *scrolle
 						      CtkShadowType      type);
 CDK_AVAILABLE_IN_ALL
 CtkShadowType  ctk_scrolled_window_get_shadow_type   (CtkScrolledWindow *scrolled_window);
-CDK_DEPRECATED_IN_3_8_FOR(ctk_container_add)
+CDK_AVAILABLE_IN_ALL
 void	       ctk_scrolled_window_add_with_viewport (CtkScrolledWindow *scrolled_window,
 						      CtkWidget		*child);
 
