@@ -23,6 +23,7 @@
 
 #include <glib/gi18n.h>
 #include <ctk/ctk.h>
+#include "fallback-memdup.h"
 
 typedef struct {
   CdkDevice *last_source;
