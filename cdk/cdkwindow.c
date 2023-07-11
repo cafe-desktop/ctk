@@ -50,6 +50,8 @@
 /* for the use of round() */
 #include "fallback-c89.c"
 
+#include "fallback-memdup.h"
+
 #ifdef CDK_WINDOWING_WAYLAND
 #include "wayland/cdkwayland.h"
 #endif
