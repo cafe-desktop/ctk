@@ -73,6 +73,8 @@
 /* for the use of round() */
 #include "fallback-c89.c"
 
+#include "fallback-memdup.h"
+
 /**
  * SECTION:ctkwidget
  * @Short_description: Base class for all widgets
