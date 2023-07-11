@@ -24,6 +24,7 @@
 #include "cdkasync.h"
 #include "cdkprivate-x11.h"
 
+
 #include <stdlib.h>
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
@@ -33,6 +34,8 @@
 
 /* for the use of round() */
 #include "fallback-c89.c"
+
+#include "fallback-memdup.h"
 
 typedef struct _ScrollValuator ScrollValuator;
 

@@ -45,6 +45,7 @@
 #elif defined(HAVE_LINUX_INPUT_H)
 #include <linux/input.h>
 #endif
+#include "fallback-memdup.h"
 
 #define BUTTON_BASE (BTN_LEFT - 1) /* Used to translate to 1-indexed buttons */
 

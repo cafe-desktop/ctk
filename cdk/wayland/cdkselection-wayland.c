@@ -34,6 +34,8 @@
 
 #include <string.h>
 
+#include "fallback-memdup.h"
+
 typedef struct _SelectionBuffer SelectionBuffer;
 typedef struct _SelectionData SelectionData;
 typedef struct _StoredSelection StoredSelection;

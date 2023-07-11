@@ -29,6 +29,7 @@
 #include "ctkversion.h"
 #include "ctktypebuiltins.h"
 #include "ctkintl.h"
+#include "fallback-memdup.h"
 
 
 static void free_property_info (PropertyInfo *info);

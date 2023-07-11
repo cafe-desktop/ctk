@@ -29,6 +29,7 @@
 #include <windows.h>
 #endif
 #include "cdkintl.h"
+#include "fallback-memdup.h"
 
 typedef struct BroadwayInput BroadwayInput;
 

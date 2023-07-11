@@ -72,6 +72,8 @@
 #include <X11/extensions/Xdamage.h>
 #endif
 
+#include "fallback-memdup.h"
+
 const int _cdk_x11_event_mask_table[21] =
 {
   ExposureMask,

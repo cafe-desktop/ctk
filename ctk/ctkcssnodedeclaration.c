@@ -19,6 +19,7 @@
 
 #include "ctkcssnodedeclarationprivate.h"
 #include "ctkwidgetpathprivate.h"
+#include "fallback-memdup.h"
 
 #include <string.h>
 

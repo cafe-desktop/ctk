@@ -27,6 +27,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "fallback-memdup.h"
+
 struct _CtkCssKeyframes {
   int ref_count;                /* ref count */
   int n_keyframes;              /* number of keyframes (at least 2 for 0% and 100% */

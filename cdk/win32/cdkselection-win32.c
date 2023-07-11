@@ -292,6 +292,8 @@ which emits the "drag-data-received" signal for the app.
 #include "cdkwin32dnd-private.h"
 #include "cdkwin32.h"
 
+#include "fallback-memdup.h"
+
 typedef struct _CdkWin32ClipboardQueueInfo CdkWin32ClipboardQueueInfo;
 
 typedef enum _CdkWin32ClipboardQueueAction CdkWin32ClipboardQueueAction;

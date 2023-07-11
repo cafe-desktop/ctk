@@ -24,12 +24,15 @@
 
 #include "config.h"
 
+
 #include "cdkinternals.h"
 #include "cdkdisplayprivate.h"
 #include "cdkdndprivate.h"
 
 #include <string.h>
 #include <math.h>
+
+#include "fallback-memdup.h"
 
 
 /**

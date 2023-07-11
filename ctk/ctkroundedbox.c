@@ -22,6 +22,7 @@
 #include "ctkcsscornervalueprivate.h"
 #include "ctkcsstypesprivate.h"
 #include "ctkstylecontextprivate.h"
+#include "fallback-memdup.h"
 
 #include <string.h>
 

@@ -30,6 +30,7 @@
 #include "ctkpango.h"
 
 #include "fallback-c89.c"
+#include "fallback-memdup.h"
 #include <float.h>
 
 #define CORNER_MASK_CACHE_MAX_SIZE 2000U

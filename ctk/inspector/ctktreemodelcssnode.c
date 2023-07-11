@@ -19,6 +19,7 @@
 
 #include "ctktreemodelcssnode.h"
 #include "ctk/ctkcsstransientnodeprivate.h"
+#include "fallback-memdup.h"
 
 struct _CtkTreeModelCssNodePrivate
 {

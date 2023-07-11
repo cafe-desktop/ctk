@@ -50,6 +50,8 @@
 #include "a11y/ctkrangeaccessible.h"
 #include "ctkcssstylepropertyprivate.h"
 
+#include "fallback-memdup.h"
+
 /**
  * SECTION:ctkrange
  * @Short_description: Base class for widgets which visualize an adjustment

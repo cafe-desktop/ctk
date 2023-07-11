@@ -32,6 +32,7 @@
 #include "ctkselectionprivate.h"
 #include "ctkquartz.h"
 #include "quartz/cdkquartz-ctk-only.h"
+#include "fallback-memdup.h"
 
 enum {
   OWNER_CHANGE,

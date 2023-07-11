@@ -24,6 +24,7 @@
 #include "ctkcellareabox.h"
 #include "ctkcellareaboxcontextprivate.h"
 #include "ctkorientable.h"
+#include "fallback-memdup.h"
 
 /* GObjectClass */
 static void      _ctk_cell_area_box_context_finalize              (GObject               *object);

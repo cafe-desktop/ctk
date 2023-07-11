@@ -116,6 +116,9 @@
 #include "broadway/cdkbroadway.h"
 #endif
 
+#include "fallback-memdup.h"
+
+
 #undef DEBUG_SELECTION
 
 /* Maximum size of a sent chunk, in bytes. Also the default size of

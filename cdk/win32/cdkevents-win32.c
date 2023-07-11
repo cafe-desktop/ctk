@@ -62,6 +62,7 @@
 
 #include <windowsx.h>
 
+
 #ifdef G_WITH_CYGWIN
 #include <fcntl.h>
 #include <errno.h>
@@ -70,6 +71,9 @@
 #include <objbase.h>
 
 #include <imm.h>
+
+#include "fallback-memdup.h"
+
 
 #ifndef XBUTTON1
 #define XBUTTON1 1

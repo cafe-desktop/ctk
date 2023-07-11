@@ -41,6 +41,8 @@
 #include "win32/cdkwin32.h"
 #endif
 
+#include "fallback-memdup.h"
+
 
 /**
  * SECTION:ctkclipboard

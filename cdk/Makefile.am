@@ -134,8 +134,9 @@ cdk_private_headers = 				\
 	cdkintl.h				\
 	cdkkeysprivate.h			\
 	cdkvisualprivate.h			\
-	cdkx.h
-
+	cdkx.h						\
+	fallback-memdup.h
+	
 cdk_c_sources = 				\
 	cdk-private.c				\
 	cdk.c					\
@@ -395,7 +396,7 @@ endif
 lib_LTLIBRARIES = libcdk-3.la
 
 DISTCLEANFILES = $(cdk_built_sources) stamp-cdkenumtypes.h
-EXTRA_DIST += fallback-c89.c
+EXTRA_DIST += fallback-c89.c fallback-memdup.h
 
 install-exec-hook:
 if DISABLE_EXPLICIT_DEPS

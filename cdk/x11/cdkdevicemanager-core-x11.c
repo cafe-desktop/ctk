@@ -28,6 +28,8 @@
 #include "cdkprivate-x11.h"
 #include "cdkkeysyms.h"
 
+#include "fallback-memdup.h"
+
 
 #define HAS_FOCUS(toplevel)                           \
   ((toplevel)->has_focus || (toplevel)->has_pointer_focus)

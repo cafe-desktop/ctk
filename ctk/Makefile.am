@@ -622,8 +622,9 @@ ctk_private_h_sources =		\
 	gdkpixbufutilsprivate.h \
 	open-type-layout.h	\
 	language-names.h	\
-	script-names.h
-
+	script-names.h		\
+	fallback-memdup.h
+	
 # CTK+ C sources to build the library from
 ctk_base_c_sources = 		\
 	$(a11y_c_sources)	\

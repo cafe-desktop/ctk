@@ -34,6 +34,7 @@
 #include <X11/Xatom.h>
 #include <string.h>
 
+#include "fallback-memdup.h"
 
 typedef struct _OwnerInfo OwnerInfo;
 

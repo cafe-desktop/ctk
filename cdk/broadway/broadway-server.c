@@ -34,6 +34,7 @@
 #include <windows.h>
 #include <string.h>
 #endif
+#include "fallback-memdup.h"
 
 typedef struct BroadwayInput BroadwayInput;
 typedef struct BroadwayWindow BroadwayWindow;
