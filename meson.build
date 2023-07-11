@@ -8,8 +8,8 @@ project('ctk+-3.0', 'c',
         license: 'LGPLv2.1+')
 
 glib_major_req = 2
-glib_minor_req = 57
-glib_micro_req = 2
+glib_minor_req = 67
+glib_micro_req = 3
 
 if glib_minor_req.is_odd()
   glib_min_required = 'GLIB_VERSION_@0@_@1@'.format(glib_major_req, glib_minor_req - 1)
