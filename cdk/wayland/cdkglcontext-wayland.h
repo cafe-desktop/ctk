@@ -47,7 +47,8 @@ struct _CdkWaylandGLContextClass
   CdkGLContextClass parent_class;
 };
 
-gboolean        cdk_wayland_display_init_gl                         (CdkDisplay        *display);
+gboolean        cdk_wayland_display_init_gl                         (CdkDisplay        *display,
+                                                                     CdkGLContext      *share);
 CdkGLContext *  cdk_wayland_window_create_gl_context                (CdkWindow         *window,
 								     gboolean           attach,
                                                                      CdkGLContext      *share,

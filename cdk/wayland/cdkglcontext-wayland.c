@@ -309,11 +309,13 @@ cdk_wayland_get_display (CdkWaylandDisplay *display_wayland)
 }
 
 gboolean
-cdk_wayland_display_init_gl (CdkDisplay *display)
+cdk_wayland_display_init_gl (CdkDisplay *display,
+                             CdkGLContext *share)
 {
   CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (display);
   EGLint major, minor;
   EGLDisplay dpy;
+  gboolean use_es;
 
   if (display_wayland->have_egl)
     return TRUE;
@@ -326,8 +328,10 @@ cdk_wayland_display_init_gl (CdkDisplay *display)
   if (!eglInitialize (dpy, &major, &minor))
     return FALSE;
 
-  if (!eglBindAPI (EGL_OPENGL_API))
-    return FALSE;
+  use_es = (_cdk_gl_flags & CDK_GL_GLES) != 0 ||
+           (share != NULL && cdk_gl_context_get_use_es (share));
+  if (!eglBindAPI (use_es ? EGL_OPENGL_ES_API : EGL_OPENGL_API))
+      return FALSE;
 
   display_wayland->egl_display = dpy;
   display_wayland->egl_major_version = major;
@@ -461,7 +465,7 @@ cdk_wayland_window_create_gl_context (CdkWindow     *window,
   CdkWaylandGLContext *context;
   EGLConfig config;
 
-  if (!cdk_wayland_display_init_gl (display))
+  if (!cdk_wayland_display_init_gl (display, share))
     {
       g_set_error_literal (error, CDK_GL_ERROR,
                            CDK_GL_ERROR_NOT_AVAILABLE,
