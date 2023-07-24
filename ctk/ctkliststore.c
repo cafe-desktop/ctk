@@ -1452,10 +1452,34 @@ gboolean
 ctk_list_store_iter_is_valid (CtkListStore *list_store,
                               CtkTreeIter  *iter)
 {
+  CtkListStorePrivate *priv;
+  GSequenceIter *seq_iter;
+
   g_return_val_if_fail (CTK_IS_LIST_STORE (list_store), FALSE);
   g_return_val_if_fail (iter != NULL, FALSE);
 
-  return iter_is_valid (iter, list_store);
+  /* can't use iter_is_valid() here, because iter might point
+   * to random memory.
+   *
+   * We MUST NOT dereference it.
+   */
+
+  priv = list_store->priv;
+
+  if (iter == NULL ||
+      iter->user_data == NULL ||
+      priv->stamp != iter->stamp)
+    return FALSE;
+
+  for (seq_iter = g_sequence_get_begin_iter (priv->seq);
+       !g_sequence_iter_is_end (seq_iter);
+       seq_iter = g_sequence_iter_next (seq_iter))
+    {
+      if (seq_iter == iter->user_data)
+        return TRUE;
+    }
+
+  return FALSE;
 }
 
 static gboolean real_ctk_list_store_row_draggable (CtkTreeDragSource *drag_source,
