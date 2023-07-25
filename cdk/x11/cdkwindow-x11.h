@@ -187,11 +187,6 @@ struct _CdkToplevelX11
 
 GType cdk_window_impl_x11_get_type (void);
 
-void            cdk_x11_window_set_user_time        (CdkWindow *window,
-						     guint32    timestamp);
-void            cdk_x11_window_set_frame_sync_enabled (CdkWindow *window,
-                                                       gboolean   frame_sync_enabled);
-
 CdkToplevelX11 *_cdk_x11_window_get_toplevel        (CdkWindow *window);
 void            _cdk_x11_window_tmp_unset_bg        (CdkWindow *window,
 						     gboolean   recurse);
