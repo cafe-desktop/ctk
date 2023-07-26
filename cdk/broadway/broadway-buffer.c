@@ -29,7 +29,6 @@
 
 struct entry {
   int count;
-  int matches;
   guint32 hash;
   int x, y;
   int index;
