@@ -61,7 +61,7 @@ other used resources, such as ui files and icons.
       <listitem><para>List available examples.</para></listitem>
     </varlistentry>
     <varlistentry>
-    <term><option>-run <replaceable>EXAMPLE</replaceable></option></term>
+    <term><option>--run <replaceable>EXAMPLE</replaceable></option></term>
       <listitem><para>Run the named example. Use <option>--list</option> to
         see the available examples.</para></listitem>
     </varlistentry>
