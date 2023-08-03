@@ -42,6 +42,12 @@
 #endif
 #endif
 
+#if !GLIB_CHECK_VERSION(2,69,0)
+#if !defined g_pattern_spec_match_string
+#define g_pattern_spec_match_string g_pattern_match_string
+#endif
+#endif
+
 /* The system specific file cdkconfig.h contains such configuration
  * settings that are needed not only when compiling CDK (or CTK)
  * itself, but also occasionally when compiling programs that use CDK
