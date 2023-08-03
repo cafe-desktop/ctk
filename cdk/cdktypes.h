@@ -36,6 +36,15 @@
 #include <glib-object.h>
 #include <cairo.h>
 
+#if !GLIB_CHECK_VERSION(2,67,1)
+#if !defined g_binding_dup_source
+#define g_binding_dup_source g_binding_get_source
+#endif
+#if !defined g_binding_dup_target
+#define g_binding_dup_target g_binding_get_target
+#endif
+#endif
+
 #if !GLIB_CHECK_VERSION(2,67,3)
 #if !defined g_memdup2
 #define g_memdup2 g_memdup
