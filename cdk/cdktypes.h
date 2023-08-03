@@ -36,6 +36,12 @@
 #include <glib-object.h>
 #include <cairo.h>
 
+#if !GLIB_CHECK_VERSION(2,67,3)
+#if !defined g_memdup2
+#define g_memdup2 g_memdup
+#endif
+#endif
+
 /* The system specific file cdkconfig.h contains such configuration
  * settings that are needed not only when compiling CDK (or CTK)
  * itself, but also occasionally when compiling programs that use CDK
