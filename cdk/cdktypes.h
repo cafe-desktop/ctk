@@ -57,6 +57,12 @@
 #endif
 #endif
 
+#if !GLIB_CHECK_VERSION(2,73,3)
+#if !defined G_APPLICATION_DEFAULT_FLAGS
+#define G_APPLICATION_DEFAULT_FLAGS G_APPLICATION_FLAGS_NONE
+#endif
+#endif
+
 /* The system specific file cdkconfig.h contains such configuration
  * settings that are needed not only when compiling CDK (or CTK)
  * itself, but also occasionally when compiling programs that use CDK
