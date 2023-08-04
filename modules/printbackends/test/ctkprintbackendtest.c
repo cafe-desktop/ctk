@@ -107,15 +107,11 @@ ctk_print_backend_test_register_type (GTypeModule *module)
 {
   const GTypeInfo print_backend_test_info =
   {
-    sizeof (CtkPrintBackendTestClass),
-    NULL,		/* base_init */
-    NULL,		/* base_finalize */
-    (GClassInitFunc) ctk_print_backend_test_class_init,
-    NULL,		/* class_finalize */
-    NULL,		/* class_data */
-    sizeof (CtkPrintBackendTest),
-    0,		/* n_preallocs */
-    (GInstanceInitFunc) ctk_print_backend_test_init,
+    .class_size = sizeof (CtkPrintBackendTestClass),
+    .class_init = (GClassInitFunc) ctk_print_backend_test_class_init,
+    .instance_size = sizeof (CtkPrintBackendTest),
+    .n_preallocs = 0,
+    .instance_init = (GInstanceInitFunc) ctk_print_backend_test_init,
   };
 
   print_backend_test_type = g_type_module_register_type (module,
