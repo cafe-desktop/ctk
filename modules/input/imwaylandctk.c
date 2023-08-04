@@ -665,13 +665,11 @@ static void
 ctk_im_context_wayland_register_type (GTypeModule *module)
 {
   const GTypeInfo object_info = {
-    sizeof (CtkIMContextWaylandClass),
-    NULL, NULL,
-    (GClassInitFunc) ctk_im_context_wayland_class_init,
-    NULL, NULL,
-    sizeof (CtkIMContextWayland),
-    0,
-    (GInstanceInitFunc) ctk_im_context_wayland_init,
+    .class_size = sizeof (CtkIMContextWaylandClass),
+    .class_init = (GClassInitFunc) ctk_im_context_wayland_class_init,
+    .instance_size = sizeof (CtkIMContextWayland),
+    .n_preallocs = 0,
+    .instance_init = (GInstanceInitFunc) ctk_im_context_wayland_init,
   };
 
   type_wayland = g_type_module_register_type (module,
