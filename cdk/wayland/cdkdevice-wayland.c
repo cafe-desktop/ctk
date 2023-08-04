@@ -3073,15 +3073,15 @@ tablet_handle_removed (void                 *data,
 }
 
 static const struct wl_pointer_listener pointer_listener = {
-  pointer_handle_enter,
-  pointer_handle_leave,
-  pointer_handle_motion,
-  pointer_handle_button,
-  pointer_handle_axis,
-  pointer_handle_frame,
-  pointer_handle_axis_source,
-  pointer_handle_axis_stop,
-  pointer_handle_axis_discrete,
+  .enter = pointer_handle_enter,
+  .leave = pointer_handle_leave,
+  .motion = pointer_handle_motion,
+  .button = pointer_handle_button,
+  .axis = pointer_handle_axis,
+  .frame = pointer_handle_frame,
+  .axis_source = pointer_handle_axis_source,
+  .axis_stop = pointer_handle_axis_stop,
+  .axis_discrete = pointer_handle_axis_discrete,
 };
 
 static const struct wl_keyboard_listener keyboard_listener = {
@@ -3094,11 +3094,11 @@ static const struct wl_keyboard_listener keyboard_listener = {
 };
 
 static const struct wl_touch_listener touch_listener = {
-  touch_handle_down,
-  touch_handle_up,
-  touch_handle_motion,
-  touch_handle_frame,
-  touch_handle_cancel
+  .down = touch_handle_down,
+  .up = touch_handle_up,
+  .motion = touch_handle_motion,
+  .frame = touch_handle_frame,
+  .cancel = touch_handle_cancel
 };
 
 static const struct zwp_pointer_gesture_swipe_v1_listener gesture_swipe_listener = {
@@ -4772,8 +4772,8 @@ pointer_surface_leave (void              *data,
 }
 
 static const struct wl_surface_listener pointer_surface_listener = {
-  pointer_surface_enter,
-  pointer_surface_leave
+  .enter = pointer_surface_enter,
+  .leave = pointer_surface_leave
 };
 
 static CdkWindow *
