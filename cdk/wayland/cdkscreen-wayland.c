@@ -1717,10 +1717,10 @@ output_handle_mode (void             *data,
 
 static const struct wl_output_listener output_listener =
 {
-  output_handle_geometry,
-  output_handle_mode,
-  output_handle_done,
-  output_handle_scale,
+  .geometry = output_handle_geometry,
+  .mode = output_handle_mode,
+  .done = output_handle_done,
+  .scale = output_handle_scale,
 };
 
 void
