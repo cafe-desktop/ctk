@@ -1505,8 +1505,8 @@ surface_leave (void              *data,
 }
 
 static const struct wl_surface_listener surface_listener = {
-  surface_enter,
-  surface_leave
+  .enter = surface_enter,
+  .leave = surface_leave
 };
 
 static void
@@ -1832,8 +1832,8 @@ xdg_toplevel_close (void                *data,
 }
 
 static const struct xdg_toplevel_listener xdg_toplevel_listener = {
-  xdg_toplevel_configure,
-  xdg_toplevel_close,
+  .configure = xdg_toplevel_configure,
+  .close = xdg_toplevel_close,
 };
 
 static void
@@ -2100,8 +2100,8 @@ xdg_popup_done (void             *data,
 }
 
 static const struct xdg_popup_listener xdg_popup_listener = {
-  xdg_popup_configure,
-  xdg_popup_done,
+  .configure = xdg_popup_configure,
+  .popup_done = xdg_popup_done,
 };
 
 static void
