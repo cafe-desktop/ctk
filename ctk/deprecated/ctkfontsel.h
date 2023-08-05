@@ -138,8 +138,8 @@ void         ctk_font_selection_set_preview_text  (CtkFontSelection *fontsel,
                                                    const gchar      *text);
 
 /* These are all private functions intended to be used by CtkFontChooserWidget, dont export these. */
-void         ctk_font_selection_set_filter_func (GtkFontSelection *fontsel,
-                                         GtkFontFilterFunc filter,
+void         ctk_font_selection_set_filter_func (CtkFontSelection *fontsel,
+                                         CtkFontFilterFunc filter,
                                          gpointer          data,
                                          GDestroyNotify    destroy);
 
