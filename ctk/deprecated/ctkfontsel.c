@@ -836,7 +836,6 @@ ctk_font_selection_show_available_fonts (CtkFontSelection *fontsel)
 				goto fontsel_addfamily;
 			}
 		}
-		return;
     } else {
 		fontsel_addfamily:
 		{
