@@ -36,6 +36,7 @@
 
 #include <ctk/ctkdialog.h>
 #include <ctk/ctkbox.h>
+#include <ctk/ctkfontchooser.h>
 
 
 G_BEGIN_DECLS
