@@ -137,6 +137,12 @@ CDK_DEPRECATED_IN_3_2_FOR(CtkFontChooser)
 void         ctk_font_selection_set_preview_text  (CtkFontSelection *fontsel,
                                                    const gchar      *text);
 
+/* These are all private functions intended to be used by CtkFontChooserWidget, dont export these. */
+void         ctk_font_selection_set_filter_func (GtkFontSelection *fontsel,
+                                         GtkFontFilterFunc filter,
+                                         gpointer          data,
+                                         GDestroyNotify    destroy);
+
 CDK_DEPRECATED_IN_3_2
 GType      ctk_font_selection_dialog_get_type          (void) G_GNUC_CONST;
 CDK_DEPRECATED_IN_3_2_FOR(CtkFontChooser)
