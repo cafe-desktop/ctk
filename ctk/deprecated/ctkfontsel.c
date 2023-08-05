@@ -54,6 +54,7 @@
 #include "ctkorientable.h"
 #include "ctkprivate.h"
 #include "ctkfontsel.h"
+#include "ctkfontchooser.h"
 
 /**
  * SECTION:ctkfontsel
