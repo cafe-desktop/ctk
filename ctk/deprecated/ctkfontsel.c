@@ -95,6 +95,10 @@ struct _CtkFontSelectionPrivate
   PangoFontFace *face;          /* Current face */
 
   gint size;
+  
+  CtkFontFilterFunc filter_func;
+  gpointer          filter_data;
+  GDestroyNotify    filter_data_destroy;
 };
 
 
@@ -343,6 +347,9 @@ ctk_font_selection_init (CtkFontSelection *fontsel)
   ctk_orientable_set_orientation (CTK_ORIENTABLE (fontsel),
                                   CTK_ORIENTATION_VERTICAL);
 
+  // Font filtering functions
+  priv->filter_func = NULL;
+  
   ctk_widget_push_composite_child ();
 
   ctk_box_set_spacing (CTK_BOX (fontsel), 12);
@@ -811,22 +818,40 @@ ctk_font_selection_show_available_fonts (CtkFontSelection *fontsel)
 
   ctk_list_store_clear (model);
 
-  for (i=0; i<n_families; i++)
-    {
-      const gchar *name = pango_font_family_get_name (families[i]);
-      CtkTreeIter iter;
+ for (i = 0; i < n_families; i++) {
+			
+	const gchar * name;
+	CtkTreeIter iter;
 
-      ctk_list_store_insert_with_values (model, &iter, -1,
-                                         FAMILY_COLUMN, families[i],
-                                         FAMILY_NAME_COLUMN, name,
-                                         -1);
-
-      if (i == 0 || !g_ascii_strcasecmp (name, "sans"))
+	if (priv->filter_func != NULL)
 	{
-	  match_family = families[i];
-	  match_row = iter;
+		PangoFontFace** font_faces;
+		gint face_count;
+		gint ffi;
+		
+		pango_font_family_list_faces(families[i], &font_faces, &face_count);
+		
+		for (ffi = 0; ffi < face_count; ffi++) {
+			if (priv->filter_func (families[i], font_faces[ffi], priv->filter_data)) {
+				goto fontsel_addfamily;
+			}
+		}
+		return;
+    } else {
+		fontsel_addfamily:
+		{
+			name = pango_font_family_get_name(families[i]);
+
+			ctk_list_store_append(model, &iter);
+			ctk_list_store_set(model, &iter,FAMILY_COLUMN, families[i], FAMILY_NAME_COLUMN, name, -1);	
+		}
 	}
+
+    if (i == 0 || !g_ascii_strcasecmp(name, "sans")) {
+      match_family = families[i];
+      match_row = iter;
     }
+  }
 
   ctk_font_selection_ref_family (fontsel, match_family);
   if (match_family)
@@ -914,13 +939,22 @@ ctk_font_selection_show_available_styles (CtkFontSelection *fontsel)
 
   for (i=0; i < n_faces; i++)
     {
-      CtkTreeIter iter;
-      const gchar *str = pango_font_face_get_face_name (faces[i]);
-
-      ctk_list_store_insert_with_values (model, &iter, -1,
-                                         FACE_COLUMN, faces[i],
-                                         FACE_NAME_COLUMN, str,
-                                         -1);
+		CtkTreeIter iter;
+		const gchar *str;	
+		if (priv->filter_func != NULL)
+		{
+			if (priv->filter_func(pango_font_face_get_family(faces[i]), faces[i], priv->filter_data)) {
+				goto fontsel_addface;
+			}
+		} else {
+			fontsel_addface:
+			{
+				str = pango_font_face_get_face_name (faces[i]);
+				
+				ctk_list_store_append (model, &iter);
+				ctk_list_store_set (model, &iter, FACE_COLUMN, faces[i], FACE_NAME_COLUMN, str, -1);
+			}
+		}		
 
       if (i == 0)
 	{
@@ -1926,4 +1960,23 @@ ctk_font_selection_dialog_set_preview_text (CtkFontSelectionDialog *fsd,
   priv = fsd->priv;
 
   ctk_font_selection_set_preview_text (CTK_FONT_SELECTION (priv->fontsel), text);
+}
+
+
+void
+ctk_font_selection_set_filter_func (CtkFontSelection *fontsel,
+                                         CtkFontFilterFunc filter,
+                                         gpointer          data,
+                                         GDestroyNotify    destroy)
+{
+  CtkFontSelectionPrivate *priv = fontsel->priv;
+
+  if (priv->filter_data_destroy)
+    priv->filter_data_destroy (priv->filter_data);
+
+  priv->filter_func = filter;
+  priv->filter_data = data;
+  priv->filter_data_destroy = destroy;
+
+  ctk_font_selection_reload_fonts(fontsel);
 }
