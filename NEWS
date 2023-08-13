@@ -1,3 +1,37 @@
+Overview of Changes in CTK+ 3.25.5
+===================================
+
+  * cdkscreen: don't make 'cdk_screen_get_monitor_at_window' and 'cdk_screen_get_monitor_at_point' deprecated
+  * ci: some improvements
+  * ctkwidget: don't make 'ctk_widget_reparent' deprecated
+  * cdkwindow: dont make 'cdk_window_set_background' and 'cdk_window_set_background_rgba' deprecated
+  * cdkdisplay: don't make 'cdk_display_supports_composite' deprecated
+  * cdkwindow: don't make 'cdk_window_set_composited' and 'cdk_window_get_composited' deprecated
+  * queryimmodules: reduce the scope of variable
+  * testcombochange: Fix: va_list 'vap' was opened but not closed by va_end().
+  * ctk-reftest: avoid redundant initialization for variable
+  * cktfontbutton: don't make 'ctk_font_button_get_font_name' and 'ctk_font_button_set_font_name' deprecated
+  * ctkwidget: don't make 'ctk_widget_override_font' deprecated
+  * ctkstylecontext: don't make 'ctk_style_context_lookup_icon_set' deprecated
+  * ctkwidget: don't make 'ctk_widget_render_icon_pixbuf' deprecated
+  * ctkstylecontext: don't make 'ctk_icon_set_render_icon_pixbuf' deprecated
+  * ctkiconfactoryprivate: move to ctk folder
+  * ctkscrolledwindow: don't make 'ctk_scrolled_window_add_with_viewport' deprecated
+  * ctkfontchooserwidget: avoid deprecated 'hb_ot_layout_script_find_language'
+  * build: GLib 2.66.8 required
+  * remove obsolete GLIB_CHECK_VERSION
+  * liststore: Fix make check
+  * cdk_wayland_display_init_gl: use GLES API if required
+  * cdkwindow-x11: avoid redundant redeclarations
+  * cdk,broadway-buffer: remove unused struct member
+  * cdk,win32,rc: Fix malformed svg file
+  * reference,ctk: Fix '--run' with ctk3-demo in man
+  * ctk-demo and inspector: logo redesign
+  * rename and update README.in -> README.md
+  * Fix [-Wmissing-field-initializers] warnings
+  * Update translations
+
+
 Overview of Changes in CTK+ 3.25.4
 ===================================
 
