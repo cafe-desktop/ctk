@@ -10004,35 +10004,3 @@ msgstr "Títol del perfil de colors"
 #: modules/printbackends/cups/ctkprintercups.c:92
 msgid "The title of the color profile to use"
 msgstr "Lo títol del perfil de colors d'utilizar"
-
-#~ msgid "Cloud Print account"
-#~ msgstr "Compte d'impression « Cloud »"
-
-#~ msgid "CtkCloudprintAccount instance"
-#~ msgstr "Instància CtkCloudprintAccount"
-
-#~ msgid "Printer ID"
-#~ msgstr "Identificant d'imprimenta"
-
-#~ msgid "Cloud Print printer ID"
-#~ msgstr "Identificant d'imprimenta « Cloud Print »"
-
-#~ msgid "Titlebar clic doblek action"
-#~ msgstr "Accion pel clic doble sus la barra de títol"
-
-#~ msgid "The action to take on titlebar clic doblek"
-#~ msgstr "L'accion de realizar aprèp un clic doble sus la barra de títol"
-
-#~ msgid "Sans 12"
-#~ msgstr "Sans 12"
-
-#~ msgid "The CDK display the context is from"
-#~ msgstr "L'afichatge CDK origina del contèxte"
-
-#~ msgid "Whether the combo box grabs focus when it is clicked with the mouse"
-#~ msgstr ""
-#~ "Indica se la bóstia combinada aquerís lo focus quand es clicada amb la "
-#~ "mirga"
-
-#~ msgid "Name of default font to use"
-#~ msgstr "Nom de la poliça d'utilizar per defaut"

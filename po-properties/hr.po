@@ -9609,15 +9609,3 @@ msgstr "Naslov boje profila"
 #: modules/printbackends/cups/ctkprintercups.c:92
 msgid "The title of the color profile to use"
 msgstr "Naslov boje profila koji se koristi"
-
-#~ msgid "Cloud Print account"
-#~ msgstr "Račun ispisa u obalku"
-
-#~ msgid "CtkCloudprintAccount instance"
-#~ msgstr "CtkRačunOblaka Ispisa primjerak"
-
-#~ msgid "Printer ID"
-#~ msgstr "ID pisača"
-
-#~ msgid "Cloud Print printer ID"
-#~ msgstr "ID pisača ispisavanja u oblaku"

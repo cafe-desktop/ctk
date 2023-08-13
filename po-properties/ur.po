@@ -9385,26 +9385,3 @@ msgid "The title of the color profile to use"
 msgstr ""
 
 #, fuzzy
-#~ msgid "State Hint"
-#~ msgstr "سٹیٹس"
-
-#~ msgid "NAME"
-#~ msgstr "نام"
-
-#~ msgid "General"
-#~ msgstr "عمومی"
-
-#~ msgid "Job"
-#~ msgstr "کام"
-
-#~ msgid "Advanced"
-#~ msgstr "اعلٰی ترین"
-
-#~ msgid "None"
-#~ msgstr "کچھ نہیں"
-
-#~ msgid "A3"
-#~ msgstr "ٓA3"
-
-#~ msgid "A4"
-#~ msgstr "A4"

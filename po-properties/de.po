@@ -9863,15 +9863,3 @@ msgstr "Titel des Farbprofils"
 #: modules/printbackends/cups/ctkprintercups.c:92
 msgid "The title of the color profile to use"
 msgstr "Der Titel des zu verwendenden Farbprofils"
-
-#~ msgid "Cloud Print account"
-#~ msgstr "Cloud-Druckkonto"
-
-#~ msgid "CtkCloudprintAccount instance"
-#~ msgstr "CtkCloudprintAccount-Instanz"
-
-#~ msgid "Printer ID"
-#~ msgstr "Drucker-Kennung"
-
-#~ msgid "Cloud Print printer ID"
-#~ msgstr "Cloud-Print Druckerkennung"

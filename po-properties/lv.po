@@ -9562,22 +9562,3 @@ msgstr "Krāsu profila nosaukums"
 #: modules/printbackends/cups/ctkprintercups.c:92
 msgid "The title of the color profile to use"
 msgstr "Lietojamā krāsu profila nosaukums"
-
-#~ msgid "Cloud Print account"
-#~ msgstr "Mākoņa drukāšanas konts"
-
-#~ msgid "CtkCloudprintAccount instance"
-#~ msgstr "CtkCloudprintAccount instance"
-
-#~ msgid "Printer ID"
-#~ msgstr "Printera ID"
-
-#~ msgid "Cloud Print printer ID"
-#~ msgstr "Mākoņa drukāšanas printera ID"
-
-#~| msgid "The number of decimal places that are displayed in the value"
-#~ msgid "The number of decimal places to which the value is rounded"
-#~ msgstr "Zīmes aiz komata, līdz kurai tiek noapaļotas vērtības"
-
-#~ msgid "Sans 12"
-#~ msgstr "Sans 12"

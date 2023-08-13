@@ -9589,24 +9589,3 @@ msgstr "Renk Profili Başlığı"
 #: modules/printbackends/cups/ctkprintercups.c:92
 msgid "The title of the color profile to use"
 msgstr "Kullanılacak renk profili başlığı"
-
-#~ msgid "Cloud Print account"
-#~ msgstr "Bulut Yazdırma hesabı"
-
-#~ msgid "CtkCloudprintAccount instance"
-#~ msgstr "CtkCloudprintAccount örneği"
-
-#~ msgid "Printer ID"
-#~ msgstr "Yazıcı Kimliği"
-
-#~ msgid "Cloud Print printer ID"
-#~ msgstr "Bulut Yazdırma yazıcısı kimliği"
-
-#~ msgid "Whether the combo box grabs focus when it is clicked with the mouse"
-#~ msgstr "Çoklu kutunun fare ile tıklandığında odağı yakalaması"
-
-#~ msgid "Sans 12"
-#~ msgstr "Sans 12"
-
-#~ msgid "Name of default font to use"
-#~ msgstr "Kullanılacak öntanımlı yazıtipi adı"

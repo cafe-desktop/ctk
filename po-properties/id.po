@@ -9652,15 +9652,3 @@ msgstr "Judul Profil Warna"
 #: modules/printbackends/cups/ctkprintercups.c:92
 msgid "The title of the color profile to use"
 msgstr "Judul profil warna yang akan dipakai"
-
-#~ msgid "Cloud Print account"
-#~ msgstr "Akun Cetak Cloud"
-
-#~ msgid "CtkCloudprintAccount instance"
-#~ msgstr "Instansi CtkCloudprintAccount"
-
-#~ msgid "Printer ID"
-#~ msgstr "ID Pencetak"
-
-#~ msgid "Cloud Print printer ID"
-#~ msgstr "ID pencetak Cetak Cloud"

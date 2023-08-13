@@ -9463,21 +9463,3 @@ msgstr "Titul profîl colôr"
 #: modules/printbackends/cups/ctkprintercups.c:92
 msgid "The title of the color profile to use"
 msgstr "Il titul dal profîl colôr di doprâ"
-
-#~ msgid "Cloud Print account"
-#~ msgstr "Account Cloud Print"
-
-#~ msgid "CtkCloudprintAccount instance"
-#~ msgstr "Istance CtkCloudprintAccount"
-
-#~ msgid "Printer ID"
-#~ msgstr "ID stampant"
-
-#~ msgid "Cloud Print printer ID"
-#~ msgstr "ID stampant Cloud Print"
-
-#~ msgid "System Information"
-#~ msgstr "Informazion di sisteme"
-
-#~ msgid "Information about the system on which the program is running"
-#~ msgstr "Informazions sul sisteme dulà che il program al è in esecuzion"

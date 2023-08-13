@@ -9645,15 +9645,3 @@ msgstr "Назва профілю кольору"
 #: modules/printbackends/cups/ctkprintercups.c:92
 msgid "The title of the color profile to use"
 msgstr "Заголовок вікна вибору профілю кольору"
-
-#~ msgid "Cloud Print account"
-#~ msgstr "Обліковий запис служби віртуального друку"
-
-#~ msgid "CtkCloudprintAccount instance"
-#~ msgstr "Екземпляр CtkCloudprintAccount"
-
-#~ msgid "Printer ID"
-#~ msgstr "Ід. принтера"
-
-#~ msgid "Cloud Print printer ID"
-#~ msgstr "Ід. принтера служби віртуального друку"

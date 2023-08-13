@@ -9493,9 +9493,3 @@ msgstr "Titolo de la kolorprofilo"
 #: modules/printbackends/cups/ctkprintercups.c:92
 msgid "The title of the color profile to use"
 msgstr "La titolo de la uzota kolor-profilo"
-
-#~ msgid "Printer ID"
-#~ msgstr "Presilo-ID"
-
-#~ msgid "Sans 12"
-#~ msgstr "Sans 12"

@@ -9458,8 +9458,3 @@ msgid "The title of the color profile to use"
 msgstr "Þæt cynn þæs éagþyrles"
 
 #, fuzzy
-#~ msgid "Number of steps"
-#~ msgstr "Gerím channela"
-
-#~ msgid "Number of Channels"
-#~ msgstr "Gerím channela"

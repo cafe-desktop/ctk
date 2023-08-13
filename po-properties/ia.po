@@ -9628,21 +9628,3 @@ msgid "The title of the color profile to use"
 msgstr ""
 
 #, fuzzy
-#~ msgid "Printer ID"
-#~ msgstr "Archivos"
-
-#, fuzzy
-#~ msgid "Number of steps"
-#~ msgstr "Crear Directori"
-
-#, fuzzy
-#~ msgid "File System Backend"
-#~ msgstr "Archivos"
-
-#, fuzzy
-#~ msgid "Show Preview"
-#~ msgstr "Dimension:"
-
-#, fuzzy
-#~ msgid "Folder Mode"
-#~ msgstr "Renominar"

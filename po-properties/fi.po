@@ -9928,20 +9928,3 @@ msgid "The title of the color profile to use"
 msgstr "Värivalintaikkunan otsikko"
 
 #, fuzzy
-#~ msgid "Printer ID"
-#~ msgstr "Tulostin"
-
-#~ msgid "Whether the combo box grabs focus when it is clicked with the mouse"
-#~ msgstr ""
-#~ "Kaappaako monivalintalaatikko kohdistuksen kun sitä napsautetaan hiirellä"
-
-#, fuzzy
-#~| msgid "Whether this tag affects the font size"
-#~ msgid "Set if the value affects the font"
-#~ msgstr "Vaikuttaako tämä merkkaus fonttikokoon"
-
-#~ msgid "Sans 12"
-#~ msgstr "Sans 12"
-
-#~ msgid "Name of default font to use"
-#~ msgstr "Oletusfontin nimi"

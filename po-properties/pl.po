@@ -9747,18 +9747,3 @@ msgstr "Tytuł profilu kolorów"
 #: modules/printbackends/cups/ctkprintercups.c:92
 msgid "The title of the color profile to use"
 msgstr "Tytuł używanego profilu kolorów"
-
-#~ msgid "Cloud Print account"
-#~ msgstr "Konto serwisu Cloud Print"
-
-#~ msgid "CtkCloudprintAccount instance"
-#~ msgstr "Wystąpienie CtkCloudprintAccount"
-
-#~ msgid "Printer ID"
-#~ msgstr "Identyfikator drukarki"
-
-#~ msgid "Cloud Print printer ID"
-#~ msgstr "Identyfikator drukarki serwisu Cloud Print"
-
-#~ msgid "The number of decimal places to which the value is rounded"
-#~ msgstr "Liczba cyfr dziesiętnych, do których wartość jest zaokrąglana"

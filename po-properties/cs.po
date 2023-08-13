@@ -9579,15 +9579,3 @@ msgstr "Název profilu barev"
 #: modules/printbackends/cups/ctkprintercups.c:92
 msgid "The title of the color profile to use"
 msgstr "Název profilu barev, který se má použít"
-
-#~ msgid "Cloud Print account"
-#~ msgstr "Účet Cloud Print"
-
-#~ msgid "CtkCloudprintAccount instance"
-#~ msgstr "Instance CtkCloudprintAccount"
-
-#~ msgid "Printer ID"
-#~ msgstr "ID tiskárny"
-
-#~ msgid "Cloud Print printer ID"
-#~ msgstr "ID tiskárny Cloud Print"

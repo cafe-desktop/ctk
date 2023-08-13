@@ -9576,15 +9576,3 @@ msgstr ""
 #, fuzzy
 msgid "The title of the color profile to use"
 msgstr "หัวเรื่องของหน้าเครื่องมือช่วย"
-
-#~ msgid ""
-#~ "The label for the link to the website of the program. If this is not set, "
-#~ "it defaults to the URL"
-#~ msgstr "ฉลากสำหรับลิงก์ไปยังเว็บไซต์ของโปรแกรม ถ้าไม่กำหนด จะใช้ URL โดยปริยาย"
-
-#~ msgid "Sans 12"
-#~ msgstr "Sans 12"
-
-#, fuzzy
-#~ msgid "Loop"
-#~ msgstr "โลโก้"

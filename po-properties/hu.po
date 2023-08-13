@@ -9651,15 +9651,3 @@ msgstr "Színprofil neve"
 #: modules/printbackends/cups/ctkprintercups.c:92
 msgid "The title of the color profile to use"
 msgstr "A használandó színprofil neve"
-
-#~ msgid "Cloud Print account"
-#~ msgstr "Cloud Print fiók"
-
-#~ msgid "CtkCloudprintAccount instance"
-#~ msgstr "CtkCloudprintAccount példány"
-
-#~ msgid "Printer ID"
-#~ msgstr "Nyomtatóazonosító"
-
-#~ msgid "Cloud Print printer ID"
-#~ msgstr "Cloud Print nyomtatóazonosító"

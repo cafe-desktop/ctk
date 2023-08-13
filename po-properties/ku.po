@@ -9536,23 +9536,3 @@ msgid "The title of the color profile to use"
 msgstr "Guhertoya bernameyê"
 
 #, fuzzy
-#~ msgid "Printer ID"
-#~ msgstr "Fîltre"
-
-#, fuzzy
-#~ msgid "Number of steps"
-#~ msgstr "Hejmara stûnan"
-
-#, fuzzy
-#~ msgid "Loop"
-#~ msgstr "Logo"
-
-#~ msgid "Pixels"
-#~ msgstr "Pîksel"
-
-#~ msgid "User Data"
-#~ msgstr "Daneyên Bikarhener"
-
-#, fuzzy
-#~ msgid "Show Preview"
-#~ msgstr "Mezinahî nîşan bide"

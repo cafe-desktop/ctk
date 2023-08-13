@@ -9862,37 +9862,3 @@ msgstr "Tittel på fargeprofil"
 #: modules/printbackends/cups/ctkprintercups.c:92
 msgid "The title of the color profile to use"
 msgstr "Tittel på fargeprofilen som skal brukes"
-
-#~ msgid "Cloud Print account"
-#~ msgstr "Utskriftskonto i skyen"
-
-#~ msgid "CtkCloudprintAccount instance"
-#~ msgstr "CtkCloudPrintAccount-instans"
-
-#~ msgid "Printer ID"
-#~ msgstr "Skriver-ID"
-
-#~ msgid "Cloud Print printer ID"
-#~ msgstr "Skriver-ID for utskrift i skyen"
-
-#~ msgid "The CDK display the context is from"
-#~ msgstr "CDK-skjerm konteksten er fra"
-
-#~ msgid "Profile"
-#~ msgstr "Profil"
-
-#~ msgid "The GL profile the context was created for"
-#~ msgstr "GL-profil denne konteksten ble laget for"
-
-#~ msgid "Whether the combo box grabs focus when it is clicked with the mouse"
-#~ msgstr "Om kombinasjonsboksen tar fokus når den blir klikket på av musen"
-
-#~ msgid "Sans 12"
-#~ msgstr "Sans 12"
-
-#, fuzzy
-#~ msgid "The GL profile to use for the GL context"
-#~ msgstr "Ikonnavn som skal brukes for skriveren"
-
-#~ msgid "Name of default font to use"
-#~ msgstr "Navn på forvalgt skrift"

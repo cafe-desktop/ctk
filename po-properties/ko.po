@@ -9459,15 +9459,3 @@ msgstr "색 프로파일 제목"
 #: modules/printbackends/cups/ctkprintercups.c:92
 msgid "The title of the color profile to use"
 msgstr "사용할 색 프로파일의 제목"
-
-#~ msgid "Cloud Print account"
-#~ msgstr "클라우드 인쇄 계정"
-
-#~ msgid "CtkCloudprintAccount instance"
-#~ msgstr "CtkCloudprintAccount 인스턴스"
-
-#~ msgid "Printer ID"
-#~ msgstr "프린터 ID"
-
-#~ msgid "Cloud Print printer ID"
-#~ msgstr "클라우드 인쇄 프린터 ID"
