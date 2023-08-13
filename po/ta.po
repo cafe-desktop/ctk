@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+.master.ta\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-11 17:18+0200\n"
+"POT-Creation-Date: 2023-08-13 13:45+0200\n"
 "PO-Revision-Date: 2014-09-23 16:38+0530\n"
 "Last-Translator: Shantha kumar <shkumar@redhat.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -493,20 +493,20 @@ msgstr ""
 msgid "Unable to create a GL context"
 msgstr ""
 
-#: cdk/wayland/cdkglcontext-wayland.c:418
-#: cdk/wayland/cdkglcontext-wayland.c:428 cdk/win32/cdkglcontext-win32.c:910
+#: cdk/wayland/cdkglcontext-wayland.c:422
+#: cdk/wayland/cdkglcontext-wayland.c:432 cdk/win32/cdkglcontext-win32.c:910
 #: cdk/win32/cdkglcontext-win32.c:920 cdk/win32/cdkglcontext-win32.c:1037
 #: cdk/x11/cdkglcontext-x11.c:975
 msgid "No available configurations for the given pixel format"
 msgstr ""
 
-#: cdk/wayland/cdkglcontext-wayland.c:468 cdk/win32/cdkglcontext-win32.c:1179
+#: cdk/wayland/cdkglcontext-wayland.c:472 cdk/win32/cdkglcontext-win32.c:1179
 #: cdk/x11/cdkglcontext-x11.c:1281
 #, fuzzy
 msgid "No GL implementation is available"
 msgstr "விவரக்குறிப்பு எதுவும் இல்லை"
 
-#: cdk/wayland/cdkglcontext-wayland.c:476
+#: cdk/wayland/cdkglcontext-wayland.c:480
 msgid "Core GL is not available on EGL implementation"
 msgstr ""
 
@@ -2598,11 +2598,8 @@ msgstr "திசையமைப்பு: (_O)"
 msgid "Spreadsheet"
 msgstr ""
 
-#. Translators: We don't know whether this printer is
-#. * available to print to.
 #: ctk/ctkfilechooserwidget.c:5054 ctk/ctkfilechooserwidget.c:5243
 #: ctk/inspector/prop-editor.c:1691
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:744
 msgid "Unknown"
 msgstr "தெரியாதது"
 
@@ -2666,7 +2663,7 @@ msgstr "சான்ஸ் 12"
 msgid "Pick a Font"
 msgstr "எழுத்துரு தேர்ந்தெடுக"
 
-#: ctk/ctkfontbutton.c:1393
+#: ctk/ctkfontbutton.c:1391
 #, fuzzy
 msgctxt "font"
 msgid "None"
@@ -3051,7 +3048,7 @@ msgstr "Z Shell"
 msgid "Cannot end process with PID %d: %s"
 msgstr "PID %d உடன் முடிவை செயற்படுத்த முடியவில்லை: %s"
 
-#: ctk/ctknotebook.c:5150 ctk/ctknotebook.c:7428
+#: ctk/ctknotebook.c:5148 ctk/ctknotebook.c:7426
 #, c-format
 msgid "Page %u"
 msgstr "பக்கம் %u"
@@ -7827,55 +7824,55 @@ msgstr "%s லிருந்து %sக்கு மறுபெயரிட �
 msgid "Could not rename %s back to %s: %s.\n"
 msgstr "%s லிருந்து %sக்கு மாற்றாக மறுபெயரிட முடியாது: %s.\n"
 
-#: ctk/updateiconcache.c:1629
+#: ctk/updateiconcache.c:1625
 #, c-format
 msgid "Cache file created successfully.\n"
 msgstr "இடமாற்று கோப்பு வெற்றிகரமாக உருவாக்கப்பட்டது.\n"
 
-#: ctk/updateiconcache.c:1668
+#: ctk/updateiconcache.c:1664
 msgid "Overwrite an existing cache, even if up to date"
 msgstr "புதுப்பிக்கப்பட்டாத இருந்தாலும், ஏற்கனவே இருக்கும் இடமாற்றினை மேலேழுதுகிறது"
 
-#: ctk/updateiconcache.c:1669
+#: ctk/updateiconcache.c:1665
 msgid "Don't check for the existence of index.theme"
 msgstr "index.themeல் இருப்பதை சரிபார்க்க வேண்டாம்"
 
-#: ctk/updateiconcache.c:1670
+#: ctk/updateiconcache.c:1666
 msgid "Don't include image data in the cache"
 msgstr "இடமாற்றில் உரு தரவினை சேர்க்க வேண்டாம்"
 
-#: ctk/updateiconcache.c:1671
+#: ctk/updateiconcache.c:1667
 msgid "Include image data in the cache"
 msgstr "தேக்ககத்தில் படத் தரவினைச் சேர்க்கவும்"
 
-#: ctk/updateiconcache.c:1672
+#: ctk/updateiconcache.c:1668
 msgid "Output a C header file"
 msgstr "ஒரு C தலைப்பு கோப்பின் வெளியீடு"
 
-#: ctk/updateiconcache.c:1673
+#: ctk/updateiconcache.c:1669
 msgid "Turn off verbose output"
 msgstr "verbose வெளியீட்டை நிறுத்தவும்"
 
-#: ctk/updateiconcache.c:1674
+#: ctk/updateiconcache.c:1670
 msgid "Validate existing icon cache"
 msgstr "இருக்கும் சின்னத்தின் இடையக்கத்தை மதிப்பிடவும்"
 
-#: ctk/updateiconcache.c:1741
+#: ctk/updateiconcache.c:1737
 #, c-format
 msgid "File not found: %s\n"
 msgstr "கோப்பினை காண முடியவில்லை: %s\n"
 
-#: ctk/updateiconcache.c:1747
+#: ctk/updateiconcache.c:1743
 #, c-format
 msgid "Not a valid icon cache: %s\n"
 msgstr "ஒரு சரியான சின்னத்தின் இடையகம் இல்லை: %s\n"
 
-#: ctk/updateiconcache.c:1760
+#: ctk/updateiconcache.c:1756
 #, c-format
 msgid "No theme index file.\n"
 msgstr "தீம் இன்டக்ஸ் கோப்பு இல்லை.\n"
 
-#: ctk/updateiconcache.c:1764
+#: ctk/updateiconcache.c:1760
 #, c-format
 msgid ""
 "No theme index file in '%s'.\n"
@@ -7989,31 +7986,6 @@ msgstr ""
 msgctxt "input method menu"
 msgid "X Input Method"
 msgstr "X உள்ளீட்டு முறை"
-
-#. Translators: The printer status is online, i.e. it is
-#. * ready to print.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:740
-msgid "Online"
-msgstr "ஆன்லைன்"
-
-#. Translators: The printer is offline.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:747
-msgid "Offline"
-msgstr "ஆஃப்லைன்"
-
-#. We shouldn't get here because the query omits dormant
-#. * printers by default.
-#. Translators: Printer has been offline for a long time.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:753
-msgid "Dormant"
-msgstr "டோர்மண்ட்"
-
-#. How many document pages to go onto one side of paper.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:937
-#: modules/printbackends/file/ctkprintbackendfile.c:675
-#: modules/printbackends/test/ctkprintbackendtest.c:503
-msgid "Pages per _sheet:"
-msgstr "தாளுக்கான பக்கங்கள்: (_s)"
 
 #: modules/printbackends/cups/ctkprintbackendcups.c:1155
 #: modules/printbackends/cups/ctkprintbackendcups.c:1465
@@ -8595,6 +8567,11 @@ msgstr "பின்உரை"
 msgid "SVG"
 msgstr "SVG"
 
+#: modules/printbackends/file/ctkprintbackendfile.c:675
+#: modules/printbackends/test/ctkprintbackendtest.c:499
+msgid "Pages per _sheet:"
+msgstr "தாளுக்கான பக்கங்கள்: (_s)"
+
 #: modules/printbackends/file/ctkprintbackendfile.c:734
 msgid "File"
 msgstr "கோப்பு"
@@ -8641,14 +8618,23 @@ msgid "unknown"
 msgstr "தெரியாதது"
 
 #. default filename used for print-to-test
-#: modules/printbackends/test/ctkprintbackendtest.c:232
+#: modules/printbackends/test/ctkprintbackendtest.c:228
 #, c-format
 msgid "test-output.%s"
 msgstr "test-output.%s"
 
-#: modules/printbackends/test/ctkprintbackendtest.c:467
+#: modules/printbackends/test/ctkprintbackendtest.c:463
 msgid "Print to Test Printer"
 msgstr "அச்சடிப்பிலிருந்து சோதனை அச்சடிப்பிக்கு"
+
+#~ msgid "Online"
+#~ msgstr "ஆன்லைன்"
+
+#~ msgid "Offline"
+#~ msgstr "ஆஃப்லைன்"
+
+#~ msgid "Dormant"
+#~ msgstr "டோர்மண்ட்"
 
 #~ msgid "The license of the program"
 #~ msgstr "நிரலின் அங்கீகாரம்"

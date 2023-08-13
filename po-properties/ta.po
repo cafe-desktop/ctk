@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+-properties.master.ta\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-11 17:19+0200\n"
+"POT-Creation-Date: 2023-08-13 13:45+0200\n"
 "PO-Revision-Date: 2014-09-23 17:33+0530\n"
 "Last-Translator: Shantha kumar <shkumar@redhat.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -1533,19 +1533,19 @@ msgstr "படம் இடம்"
 msgid "The position of the image relative to the text"
 msgstr "உரையுடன் தொடர்புடைய படத்தின் இடம்"
 
-#: ctk/ctkbutton.c:523
+#: ctk/ctkbutton.c:519
 msgid "Default Spacing"
 msgstr "கொடா நிலை இடைவெளி"
 
-#: ctk/ctkbutton.c:524
+#: ctk/ctkbutton.c:520
 msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
 msgstr "CTK_CAN_DEFAULT  பொத்தான்களுக்கு கூடுதல் இடைவெளிக்காக சேர்க்கிறது "
 
-#: ctk/ctkbutton.c:541
+#: ctk/ctkbutton.c:537
 msgid "Default Outside Spacing"
 msgstr "முன்னிருப்பு வெளிப்பக்க இடைவெளி"
 
-#: ctk/ctkbutton.c:542
+#: ctk/ctkbutton.c:538
 msgid ""
 "Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
@@ -1553,47 +1553,47 @@ msgstr ""
 "எல்லைக்கு வெளியே எப்போதும் வரையப்படும்  CTK_CAN_DEFAULT  பொத்தான்களுக்கு கூடுதல் "
 "இடைவெளிக்காக சேர்க்கிறது "
 
-#: ctk/ctkbutton.c:556
+#: ctk/ctkbutton.c:552
 msgid "Child X Displacement"
 msgstr "சேய் X இடம்பெயர்வு"
 
-#: ctk/ctkbutton.c:557
+#: ctk/ctkbutton.c:553
 msgid ""
 "How far in the x direction to move the child when the button is depressed"
 msgstr "பொத்தான் ஐ அழுத்தினால் எவ்வளவு தூரம் x திசையில் சேயை நகர்த்த வேண்டும்"
 
-#: ctk/ctkbutton.c:573
+#: ctk/ctkbutton.c:569
 msgid "Child Y Displacement"
 msgstr "சேய் Y இடம்பெயர்வு"
 
-#: ctk/ctkbutton.c:574
+#: ctk/ctkbutton.c:570
 msgid ""
 "How far in the y direction to move the child when the button is depressed"
 msgstr "பொத்தான் ஐ அழுத்தினால் எவ்வளவு தூரம் y திசையில் சேயை நகர்த்த வேண்டும்"
 
-#: ctk/ctkbutton.c:593
+#: ctk/ctkbutton.c:589
 msgid "Displace focus"
 msgstr "முன்னிலைபடுத்தலை மாற்று"
 
-#: ctk/ctkbutton.c:594
+#: ctk/ctkbutton.c:590
 msgid ""
 "Whether the child_displacement_x/_y properties should also affect the focus "
 "rectangle"
 msgstr "child_displacement_x/_y பண்புகள் குவிப்பு செவ்வகத்தையும் பாதிக்க வேண்டுமா"
 
-#: ctk/ctkbutton.c:610 ctk/ctkentry.c:899 ctk/ctkentry.c:2117
+#: ctk/ctkbutton.c:606 ctk/ctkentry.c:899 ctk/ctkentry.c:2117
 msgid "Inner Border"
 msgstr "உள் எல்லை"
 
-#: ctk/ctkbutton.c:611
+#: ctk/ctkbutton.c:607
 msgid "Border between button edges and child."
 msgstr "பொத்தான் முனைகளுக்கும் சேய்க்கும் இடையேயான எல்லை."
 
-#: ctk/ctkbutton.c:626
+#: ctk/ctkbutton.c:622
 msgid "Image spacing"
 msgstr "படம் இடைவெளி"
 
-#: ctk/ctkbutton.c:627
+#: ctk/ctkbutton.c:623
 msgid "Spacing in pixels between the image and label"
 msgstr "பிக்ஸலில் படத்திற்கும் பெயருக்கும் இடையே உள்ள இடைவெளி"
 
@@ -9277,27 +9277,27 @@ msgstr "அளவுமாற்றக் காரணி"
 msgid "The scaling factor of the window"
 msgstr "சாளரத்தின் அளவுமாற்றக் காரணி"
 
-#: ctk/ctkwidget.c:3493
+#: ctk/ctkwidget.c:3491
 msgid "Interior Focus"
 msgstr "உள்ளார்ந்த ஃபோகஸ்"
 
-#: ctk/ctkwidget.c:3494
+#: ctk/ctkwidget.c:3492
 msgid "Whether to draw the focus indicator inside widgets"
 msgstr "விட்ஜிட்களின் உள்ளே ஃபோகஸ் காட்டியை வரைய வேண்டுமா"
 
-#: ctk/ctkwidget.c:3507
+#: ctk/ctkwidget.c:3505
 msgid "Focus linewidth"
 msgstr "ஃபோகஸ் வரிஅகலம்"
 
-#: ctk/ctkwidget.c:3508
+#: ctk/ctkwidget.c:3506
 msgid "Width, in pixels, of the focus indicator line"
 msgstr "அகலம், பிக்ஸில் ஃபோகஸ் காட்டி வரி"
 
-#: ctk/ctkwidget.c:3522
+#: ctk/ctkwidget.c:3520
 msgid "Focus line dash pattern"
 msgstr "ஃபோகஸ் வரி டேஸ் தோற்றம்"
 
-#: ctk/ctkwidget.c:3523
+#: ctk/ctkwidget.c:3521
 msgid ""
 "Dash pattern used to draw the focus indicator. The character values are "
 "interpreted as pixel widths of alternating on and off segments of the line."
@@ -9306,69 +9306,69 @@ msgstr ""
 "வரியின் ஒன்றுவிட்டு அடுத்தடுத்து அமைந்துள்ள ஆன் மற்றும் ஆஃப் சிக்மென்ட்டுகளின் பிக்ஸல் "
 "அகலங்களாகப் புரிந்துகொள்ளப்படுகின்றன."
 
-#: ctk/ctkwidget.c:3536
+#: ctk/ctkwidget.c:3534
 msgid "Focus padding"
 msgstr "ஃபோகஸ் பேடிங்"
 
-#: ctk/ctkwidget.c:3537
+#: ctk/ctkwidget.c:3535
 msgid "Width, in pixels, between focus indicator and the widget 'box'"
 msgstr "அகலம், பிக்ஸலில் ஃபோகஸ் காட்டிக்கிடையே மற்றும் விட்ஜிட் பெட்டி"
 
-#: ctk/ctkwidget.c:3548
+#: ctk/ctkwidget.c:3546
 msgid "Cursor color"
 msgstr "நிலைக்காட்டி நிறம்"
 
-#: ctk/ctkwidget.c:3549
+#: ctk/ctkwidget.c:3547
 msgid "Color with which to draw insertion cursor"
 msgstr "செருகுமிட நிலை காட்டியை வரையவேண்டிய வண்ணம்"
 
-#: ctk/ctkwidget.c:3560
+#: ctk/ctkwidget.c:3558
 msgid "Secondary cursor color"
 msgstr "இரண்டாம் நிலைக்காட்டி நிறம்"
 
-#: ctk/ctkwidget.c:3561
+#: ctk/ctkwidget.c:3559
 msgid ""
 "Color with which to draw the secondary insertion cursor when editing mixed "
 "right-to-left and left-to-right text"
 msgstr "நிறம் இதனால் வரைபு வலது இடது மற்றும் இடது வலது உரை"
 
-#: ctk/ctkwidget.c:3567
+#: ctk/ctkwidget.c:3565
 msgid "Cursor line aspect ratio"
 msgstr "நிலைகாட்டி கோடு விகிதம்"
 
-#: ctk/ctkwidget.c:3568
+#: ctk/ctkwidget.c:3566
 msgid "Aspect ratio with which to draw insertion cursor"
 msgstr "நுழைப்பு நிலைக்காட்டியை வரைய விகிதம்"
 
-#: ctk/ctkwidget.c:3574
+#: ctk/ctkwidget.c:3572
 msgid "Window dragging"
 msgstr "சாளரமானது இழுக்கப்படுகிறது"
 
-#: ctk/ctkwidget.c:3575
+#: ctk/ctkwidget.c:3573
 msgid "Whether windows can be dragged and maximized by clicking on empty areas"
 msgstr "காலியான பகுதிகளில் சொடுக்கி சாளரங்களை இழுக்கவும் பெரிதாக்கவும் முடிய வேண்டுமா"
 
-#: ctk/ctkwidget.c:3587
+#: ctk/ctkwidget.c:3585
 msgid "Unvisited Link Color"
 msgstr "உலாவாத இணைப்பின் நிறம்"
 
-#: ctk/ctkwidget.c:3588
+#: ctk/ctkwidget.c:3586
 msgid "Color of unvisited links"
 msgstr "உலாவாத இணைப்புகளின் நிறம்"
 
-#: ctk/ctkwidget.c:3601
+#: ctk/ctkwidget.c:3599
 msgid "Visited Link Color"
 msgstr "உலாவிய இணைப்பு நிறம்"
 
-#: ctk/ctkwidget.c:3602
+#: ctk/ctkwidget.c:3600
 msgid "Color of visited links"
 msgstr "உலாவிய இணைப்புகளின் நிறம்"
 
-#: ctk/ctkwidget.c:3619
+#: ctk/ctkwidget.c:3617
 msgid "Wide Separators"
 msgstr "அகண்ட பிரிப்புகள்"
 
-#: ctk/ctkwidget.c:3620
+#: ctk/ctkwidget.c:3618
 msgid ""
 "Whether separators have configurable width and should be drawn using a box "
 "instead of a line"
@@ -9376,43 +9376,43 @@ msgstr ""
 "Whether separators have configurable width and should be drawn using a box "
 "instead of a line"
 
-#: ctk/ctkwidget.c:3637
+#: ctk/ctkwidget.c:3635
 msgid "Separator Width"
 msgstr "பிரிப்பி அகலம்"
 
-#: ctk/ctkwidget.c:3638
+#: ctk/ctkwidget.c:3636
 msgid "The width of separators if wide-separators is TRUE"
 msgstr "அகலம் பரந்த பிரிப்பான்கள் உண்மையெனில்"
 
-#: ctk/ctkwidget.c:3655
+#: ctk/ctkwidget.c:3653
 msgid "Separator Height"
 msgstr "பிரிப்பி உயரம்"
 
-#: ctk/ctkwidget.c:3656
+#: ctk/ctkwidget.c:3654
 msgid "The height of separators if \"wide-separators\" is TRUE"
 msgstr "\"wide-separators\" உண்மையெனில் பிரிப்பானின் உயரம்"
 
-#: ctk/ctkwidget.c:3670
+#: ctk/ctkwidget.c:3668
 msgid "Horizontal Scroll Arrow Length"
 msgstr "கிடைமட்ட சுருள் அம்பின் நீளம்"
 
-#: ctk/ctkwidget.c:3671
+#: ctk/ctkwidget.c:3669
 msgid "The length of horizontal scroll arrows"
 msgstr "கிடைமட்ட சுருள் அம்புக்களின் நீளம்"
 
-#: ctk/ctkwidget.c:3685
+#: ctk/ctkwidget.c:3683
 msgid "Vertical Scroll Arrow Length"
 msgstr "செங்குத்து சுருள் அம்பின் நீளம்"
 
-#: ctk/ctkwidget.c:3686
+#: ctk/ctkwidget.c:3684
 msgid "The length of vertical scroll arrows"
 msgstr "செங்குத்து சுருள் அம்புகளின் நீளம்"
 
-#: ctk/ctkwidget.c:3692 ctk/ctkwidget.c:3693
+#: ctk/ctkwidget.c:3690 ctk/ctkwidget.c:3691
 msgid "Width of text selection handles"
 msgstr "உரை ரதேர்ந்தெடுப்பு கைப்பிடியின் அகலம்"
 
-#: ctk/ctkwidget.c:3698 ctk/ctkwidget.c:3699
+#: ctk/ctkwidget.c:3696 ctk/ctkwidget.c:3697
 msgid "Height of text selection handles"
 msgstr "எழுத்துரு தேர்ந்தெடுப்பின் கைப்பிடியின் உயரம்"
 
@@ -9665,22 +9665,6 @@ msgstr "அலங்கரிக்கப்பட்ட பொத்தான�
 msgid "Decoration resize handle size"
 msgstr "அலங்கரிப்பு மறுஅளவு கைப்பிடியின் அளவு"
 
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:133
-msgid "Cloud Print account"
-msgstr "கிளவுட் அச்சுக் கணக்கு"
-
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:134
-msgid "CtkCloudprintAccount instance"
-msgstr "CtkCloudprintAccount நேர்வு"
-
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:143
-msgid "Printer ID"
-msgstr "அச்சுப்பொறி ID"
-
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:144
-msgid "Cloud Print printer ID"
-msgstr "கிளவுடு அச்சு அச்சுப்பொறி ID"
-
 #: modules/printbackends/cups/ctkprintercups.c:91
 msgid "Color Profile Title"
 msgstr "வண்ண விவரக்குறிப்பு தலைப்பு"
@@ -9688,6 +9672,18 @@ msgstr "வண்ண விவரக்குறிப்பு தலைப்�
 #: modules/printbackends/cups/ctkprintercups.c:92
 msgid "The title of the color profile to use"
 msgstr "பயன்படுத்துவதற்கான வண்ண விவரக்குறிப்பின் தலைப்பு"
+
+#~ msgid "Cloud Print account"
+#~ msgstr "கிளவுட் அச்சுக் கணக்கு"
+
+#~ msgid "CtkCloudprintAccount instance"
+#~ msgstr "CtkCloudprintAccount நேர்வு"
+
+#~ msgid "Printer ID"
+#~ msgstr "அச்சுப்பொறி ID"
+
+#~ msgid "Cloud Print printer ID"
+#~ msgstr "கிளவுடு அச்சு அச்சுப்பொறி ID"
 
 #~ msgid "Whether the combo box grabs focus when it is clicked with the mouse"
 #~ msgstr "இணைந்த பெட்டி சொடுக்கிய போது குவிப்பைபெறுமா"

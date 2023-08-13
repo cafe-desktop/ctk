@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+.ctk-3-0.hi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-11 17:18+0200\n"
+"POT-Creation-Date: 2023-08-13 13:45+0200\n"
 "PO-Revision-Date: 2014-09-23 16:36+0630\n"
 "Last-Translator: rajesh <rajesh>\n"
 "Language-Team: Hindi <kde-i18n-doc@kde.org>\n"
@@ -491,20 +491,20 @@ msgstr ""
 msgid "Unable to create a GL context"
 msgstr ""
 
-#: cdk/wayland/cdkglcontext-wayland.c:418
-#: cdk/wayland/cdkglcontext-wayland.c:428 cdk/win32/cdkglcontext-win32.c:910
+#: cdk/wayland/cdkglcontext-wayland.c:422
+#: cdk/wayland/cdkglcontext-wayland.c:432 cdk/win32/cdkglcontext-win32.c:910
 #: cdk/win32/cdkglcontext-win32.c:920 cdk/win32/cdkglcontext-win32.c:1037
 #: cdk/x11/cdkglcontext-x11.c:975
 msgid "No available configurations for the given pixel format"
 msgstr ""
 
-#: cdk/wayland/cdkglcontext-wayland.c:468 cdk/win32/cdkglcontext-win32.c:1179
+#: cdk/wayland/cdkglcontext-wayland.c:472 cdk/win32/cdkglcontext-win32.c:1179
 #: cdk/x11/cdkglcontext-x11.c:1281
 #, fuzzy
 msgid "No GL implementation is available"
 msgstr "कोई प्रोफ़ाइल उपलब्ध नहीं"
 
-#: cdk/wayland/cdkglcontext-wayland.c:476
+#: cdk/wayland/cdkglcontext-wayland.c:480
 msgid "Core GL is not available on EGL implementation"
 msgstr ""
 
@@ -2623,11 +2623,8 @@ msgstr "अभिमुखन (_O):"
 msgid "Spreadsheet"
 msgstr ""
 
-#. Translators: We don't know whether this printer is
-#. * available to print to.
 #: ctk/ctkfilechooserwidget.c:5054 ctk/ctkfilechooserwidget.c:5243
 #: ctk/inspector/prop-editor.c:1691
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:744
 msgid "Unknown"
 msgstr "अज्ञात"
 
@@ -2691,7 +2688,7 @@ msgstr "संस12"
 msgid "Pick a Font"
 msgstr "फ़ॉन्ट चुनें"
 
-#: ctk/ctkfontbutton.c:1393
+#: ctk/ctkfontbutton.c:1391
 #, fuzzy
 msgctxt "font"
 msgid "None"
@@ -3087,7 +3084,7 @@ msgstr "जेड शेल"
 msgid "Cannot end process with PID %d: %s"
 msgstr "PID %d की प्रक्रिया समाप्त नहीं कर सकता: %s"
 
-#: ctk/ctknotebook.c:5150 ctk/ctknotebook.c:7428
+#: ctk/ctknotebook.c:5148 ctk/ctknotebook.c:7426
 #, c-format
 msgid "Page %u"
 msgstr "पृष्ठ %u"
@@ -7861,55 +7858,55 @@ msgstr "%s को फिर %s नाम नहीं दे सका: %s\n"
 msgid "Could not rename %s back to %s: %s.\n"
 msgstr "%s को फिर से %s नाम नहीं दे सका: %s.\n"
 
-#: ctk/updateiconcache.c:1629
+#: ctk/updateiconcache.c:1625
 #, c-format
 msgid "Cache file created successfully.\n"
 msgstr "कैश फ़ाइल सफलतापूर्वक बनाया गया.\n"
 
-#: ctk/updateiconcache.c:1668
+#: ctk/updateiconcache.c:1664
 msgid "Overwrite an existing cache, even if up to date"
 msgstr "मौजूदा कैश के ऊपर लिख रहा है, बावजूद कि यह अद्यतन है"
 
-#: ctk/updateiconcache.c:1669
+#: ctk/updateiconcache.c:1665
 msgid "Don't check for the existence of index.theme"
 msgstr "index.theme की मौजूदगी के लिये मत डाटें"
 
-#: ctk/updateiconcache.c:1670
+#: ctk/updateiconcache.c:1666
 msgid "Don't include image data in the cache"
 msgstr "कैश में चित्र आंकड़ा शामिल मत करें"
 
-#: ctk/updateiconcache.c:1671
+#: ctk/updateiconcache.c:1667
 msgid "Include image data in the cache"
 msgstr "कैश में चित्र आंकड़ा शामिल करें"
 
-#: ctk/updateiconcache.c:1672
+#: ctk/updateiconcache.c:1668
 msgid "Output a C header file"
 msgstr "एक C हेडर फ़ाइल आउटपुट दें"
 
-#: ctk/updateiconcache.c:1673
+#: ctk/updateiconcache.c:1669
 msgid "Turn off verbose output"
 msgstr "वर्बोस आउटपुट बंद करें"
 
-#: ctk/updateiconcache.c:1674
+#: ctk/updateiconcache.c:1670
 msgid "Validate existing icon cache"
 msgstr "मौजूदा प्रतीक कैश वैधीकृत करें"
 
-#: ctk/updateiconcache.c:1741
+#: ctk/updateiconcache.c:1737
 #, c-format
 msgid "File not found: %s\n"
 msgstr "फ़ाइल नहीं मिला: %s\n"
 
-#: ctk/updateiconcache.c:1747
+#: ctk/updateiconcache.c:1743
 #, c-format
 msgid "Not a valid icon cache: %s\n"
 msgstr "कोई वैध प्रतीक कैश है: %s\n"
 
-#: ctk/updateiconcache.c:1760
+#: ctk/updateiconcache.c:1756
 #, c-format
 msgid "No theme index file.\n"
 msgstr "कोई प्रसंग सूची फ़ाइल नहीं.\n"
 
-#: ctk/updateiconcache.c:1764
+#: ctk/updateiconcache.c:1760
 #, c-format
 msgid ""
 "No theme index file in '%s'.\n"
@@ -8031,31 +8028,6 @@ msgstr ""
 msgctxt "input method menu"
 msgid "X Input Method"
 msgstr "एक्स इनपुट विधि"
-
-#. Translators: The printer status is online, i.e. it is
-#. * ready to print.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:740
-msgid "Online"
-msgstr "ऑनलाइन"
-
-#. Translators: The printer is offline.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:747
-msgid "Offline"
-msgstr "ऑफ़लाइन"
-
-#. We shouldn't get here because the query omits dormant
-#. * printers by default.
-#. Translators: Printer has been offline for a long time.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:753
-msgid "Dormant"
-msgstr "सुसुप्त"
-
-#. How many document pages to go onto one side of paper.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:937
-#: modules/printbackends/file/ctkprintbackendfile.c:675
-#: modules/printbackends/test/ctkprintbackendtest.c:503
-msgid "Pages per _sheet:"
-msgstr "पृष्ठ प्रति शीट (_s):"
 
 #: modules/printbackends/cups/ctkprintbackendcups.c:1155
 #: modules/printbackends/cups/ctkprintbackendcups.c:1465
@@ -8637,6 +8609,11 @@ msgstr "पोस्टस्क्रिप्ट"
 msgid "SVG"
 msgstr "SVG"
 
+#: modules/printbackends/file/ctkprintbackendfile.c:675
+#: modules/printbackends/test/ctkprintbackendtest.c:499
+msgid "Pages per _sheet:"
+msgstr "पृष्ठ प्रति शीट (_s):"
+
 #: modules/printbackends/file/ctkprintbackendfile.c:734
 msgid "File"
 msgstr "फ़ाइल"
@@ -8683,14 +8660,23 @@ msgid "unknown"
 msgstr "(अज्ञात)"
 
 #. default filename used for print-to-test
-#: modules/printbackends/test/ctkprintbackendtest.c:232
+#: modules/printbackends/test/ctkprintbackendtest.c:228
 #, c-format
 msgid "test-output.%s"
 msgstr "test-output.%s"
 
-#: modules/printbackends/test/ctkprintbackendtest.c:467
+#: modules/printbackends/test/ctkprintbackendtest.c:463
 msgid "Print to Test Printer"
 msgstr "जाँच मुद्रक में छापें"
+
+#~ msgid "Online"
+#~ msgstr "ऑनलाइन"
+
+#~ msgid "Offline"
+#~ msgstr "ऑफ़लाइन"
+
+#~ msgid "Dormant"
+#~ msgstr "सुसुप्त"
 
 #~ msgid "The license of the program"
 #~ msgstr "प्रोग्राम का लाइसेंस"

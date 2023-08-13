@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+-properties.master.te\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-11 17:19+0200\n"
+"POT-Creation-Date: 2023-08-13 13:45+0200\n"
 "PO-Revision-Date: 2012-09-19 00:54+0530\n"
 "Last-Translator: Krishnababu Krothapalli <kkrothap@redhat.com>\n"
 "Language-Team: Telugu <Fedora-trans-te@redhat.com>\n"
@@ -1519,19 +1519,19 @@ msgstr "ప్రతిబింబము స్థానము"
 msgid "The position of the image relative to the text"
 msgstr "ప్రతిబింబము యొక్క స్థానము పాఠ్యముకు సారూప్యంగా వుంటుంది"
 
-#: ctk/ctkbutton.c:523
+#: ctk/ctkbutton.c:519
 msgid "Default Spacing"
 msgstr "అప్రమేయంగా ఖాళీఉంచుట"
 
-#: ctk/ctkbutton.c:524
+#: ctk/ctkbutton.c:520
 msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
 msgstr "CTK_CAN_DEFAULT బొత్తాముల కోసం జోడించడానికి అదనపు ఖాళీ "
 
-#: ctk/ctkbutton.c:541
+#: ctk/ctkbutton.c:537
 msgid "Default Outside Spacing"
 msgstr "అప్రమేయ బయటవైపు ఖాళీ"
 
-#: ctk/ctkbutton.c:542
+#: ctk/ctkbutton.c:538
 msgid ""
 "Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
@@ -1539,47 +1539,47 @@ msgstr ""
 "ఎల్లపుడూ సరిహద్దు బయట వైపు గీయబడిన CTK_CAN_DEFAULT బొత్తాముల కొరకు చేర్చవలసిన అదనపు "
 "ఖాళీసరిహద్దు"
 
-#: ctk/ctkbutton.c:556
+#: ctk/ctkbutton.c:552
 msgid "Child X Displacement"
 msgstr "శిశు X స్థానభ్రంశము"
 
-#: ctk/ctkbutton.c:557
+#: ctk/ctkbutton.c:553
 msgid ""
 "How far in the x direction to move the child when the button is depressed"
 msgstr "బొత్తామును వదలినపుడు శిశువును x దిశలో జరపవలసిన దూరము"
 
-#: ctk/ctkbutton.c:573
+#: ctk/ctkbutton.c:569
 msgid "Child Y Displacement"
 msgstr "శిశు Y స్థానభ్రంశము"
 
-#: ctk/ctkbutton.c:574
+#: ctk/ctkbutton.c:570
 msgid ""
 "How far in the y direction to move the child when the button is depressed"
 msgstr "బొత్తామును వదలినపుడు శిశువును y దిశలో జరపవలసిన దూరము"
 
-#: ctk/ctkbutton.c:593
+#: ctk/ctkbutton.c:589
 msgid "Displace focus"
 msgstr "కేంద్రమును స్థానభ్రంశము చెందించుము"
 
-#: ctk/ctkbutton.c:594
+#: ctk/ctkbutton.c:590
 msgid ""
 "Whether the child_displacement_x/_y properties should also affect the focus "
 "rectangle"
 msgstr "child_displacement_x/_y లక్షణాలు  దీర్ఘచతురస్ర కేంద్రమును తప్పక ప్రభావితము చేయవలెనా"
 
-#: ctk/ctkbutton.c:610 ctk/ctkentry.c:899 ctk/ctkentry.c:2117
+#: ctk/ctkbutton.c:606 ctk/ctkentry.c:899 ctk/ctkentry.c:2117
 msgid "Inner Border"
 msgstr "అంతర్గత సరిహద్దు"
 
-#: ctk/ctkbutton.c:611
+#: ctk/ctkbutton.c:607
 msgid "Border between button edges and child."
 msgstr "బటన్ అంచులకు మరియు శిశువుకు మధ్యనవున్న సరిహద్దు."
 
-#: ctk/ctkbutton.c:626
+#: ctk/ctkbutton.c:622
 msgid "Image spacing"
 msgstr "ప్రతిబింబము క్రమాంతరీకరణం"
 
-#: ctk/ctkbutton.c:627
+#: ctk/ctkbutton.c:623
 msgid "Spacing in pixels between the image and label"
 msgstr "ప్రతిబింబము మరియు లేబుల్ మధ్యన పిగ్జెల్స్‍‌నందు క్రమాంతరీకరణం"
 
@@ -9269,53 +9269,53 @@ msgstr "అక్షరశైలి కొలమాన కారకము"
 msgid "The scaling factor of the window"
 msgstr "విండో యొక్క శీర్షిక"
 
-#: ctk/ctkwidget.c:3493
+#: ctk/ctkwidget.c:3491
 msgid "Interior Focus"
 msgstr "ఇంటీరియర్ దృష్టి"
 
-#: ctk/ctkwidget.c:3494
+#: ctk/ctkwidget.c:3492
 msgid "Whether to draw the focus indicator inside widgets"
 msgstr "ఫోకస్ యిండికేటర్లను విడ్జట్ల మధ్య లేఖించాలా"
 
-#: ctk/ctkwidget.c:3507
+#: ctk/ctkwidget.c:3505
 msgid "Focus linewidth"
 msgstr "దృష్టి వరుసవెడల్పు"
 
-#: ctk/ctkwidget.c:3508
+#: ctk/ctkwidget.c:3506
 msgid "Width, in pixels, of the focus indicator line"
 msgstr "దృష్టి సూచకి వరుసయొక్కవెడల్పు, పిగ్జెల్సునందు."
 
-#: ctk/ctkwidget.c:3522
+#: ctk/ctkwidget.c:3520
 msgid "Focus line dash pattern"
 msgstr "దృష్టి వరుస డాష్ మాదిరి"
 
-#: ctk/ctkwidget.c:3523
+#: ctk/ctkwidget.c:3521
 msgid ""
 "Dash pattern used to draw the focus indicator. The character values are "
 "interpreted as pixel widths of alternating on and off segments of the line."
 msgstr ""
 
-#: ctk/ctkwidget.c:3536
+#: ctk/ctkwidget.c:3534
 msgid "Focus padding"
 msgstr "దృష్టి పాడింగ్"
 
-#: ctk/ctkwidget.c:3537
+#: ctk/ctkwidget.c:3535
 msgid "Width, in pixels, between focus indicator and the widget 'box'"
 msgstr "దృష్టి సూచకి మరియు విడ్జట్ 'box' మద్యన, వెడల్పు, పిగ్జెల్సునందు."
 
-#: ctk/ctkwidget.c:3548
+#: ctk/ctkwidget.c:3546
 msgid "Cursor color"
 msgstr "కర్సర్ వర్ణము"
 
-#: ctk/ctkwidget.c:3549
+#: ctk/ctkwidget.c:3547
 msgid "Color with which to draw insertion cursor"
 msgstr "చేర్పిక కర్సర్‌ను యే రంగుతో గీయాలి"
 
-#: ctk/ctkwidget.c:3560
+#: ctk/ctkwidget.c:3558
 msgid "Secondary cursor color"
 msgstr "ద్వితీయ కర్సర్ వర్ణము"
 
-#: ctk/ctkwidget.c:3561
+#: ctk/ctkwidget.c:3559
 msgid ""
 "Color with which to draw the secondary insertion cursor when editing mixed "
 "right-to-left and left-to-right text"
@@ -9323,86 +9323,86 @@ msgstr ""
 "మిశ్రమ కుడి-నుండి-ఎడమ మరియు ఎడమ-నుండి-కుడి పాఠమును సరికూర్చుతున్నప్పుడు రెండవ చేర్పిక కర్సర్‌ను "
 "గీయు వర్ణము"
 
-#: ctk/ctkwidget.c:3567
+#: ctk/ctkwidget.c:3565
 msgid "Cursor line aspect ratio"
 msgstr "కర్సర్ వరుస యాస్పెక్టు నిష్పత్తి"
 
-#: ctk/ctkwidget.c:3568
+#: ctk/ctkwidget.c:3566
 msgid "Aspect ratio with which to draw insertion cursor"
 msgstr "చేర్పిక కర్సర్‌ను గీయు యాస్పెక్టు నిష్పత్తి"
 
-#: ctk/ctkwidget.c:3574
+#: ctk/ctkwidget.c:3572
 msgid "Window dragging"
 msgstr "విండో లగుమ"
 
-#: ctk/ctkwidget.c:3575
+#: ctk/ctkwidget.c:3573
 #, fuzzy
 msgid "Whether windows can be dragged and maximized by clicking on empty areas"
 msgstr "విండౌస్  ఖాళీ ప్రాంతాల్లో క్లిక్ చేయడం ద్వారా డ్రాగ్ అనే విషయం"
 
-#: ctk/ctkwidget.c:3587
+#: ctk/ctkwidget.c:3585
 msgid "Unvisited Link Color"
 msgstr "బంధపు రంగు"
 
-#: ctk/ctkwidget.c:3588
+#: ctk/ctkwidget.c:3586
 msgid "Color of unvisited links"
 msgstr "అతిపరాబంధముల రంగు"
 
-#: ctk/ctkwidget.c:3601
+#: ctk/ctkwidget.c:3599
 msgid "Visited Link Color"
 msgstr "దర్శించిన లింకు రంగు"
 
-#: ctk/ctkwidget.c:3602
+#: ctk/ctkwidget.c:3600
 msgid "Color of visited links"
 msgstr "అతిపరాబంధముల రంగు"
 
-#: ctk/ctkwidget.c:3619
+#: ctk/ctkwidget.c:3617
 msgid "Wide Separators"
 msgstr "వెడల్పాటి విచ్ఛేదనిలు"
 
-#: ctk/ctkwidget.c:3620
+#: ctk/ctkwidget.c:3618
 msgid ""
 "Whether separators have configurable width and should be drawn using a box "
 "instead of a line"
 msgstr "విశ్చేదములు ఆకృతీకరించదగిన వెడల్పును కలిగివుండాలా మరియు గీత బదులుగా పెట్టె వుపయోగించి గీయాలా"
 
-#: ctk/ctkwidget.c:3637
+#: ctk/ctkwidget.c:3635
 msgid "Separator Width"
 msgstr "విచ్ఛేదని వెడల్పు"
 
-#: ctk/ctkwidget.c:3638
+#: ctk/ctkwidget.c:3636
 msgid "The width of separators if wide-separators is TRUE"
 msgstr "వెడల్పు-విశ్చేదములు TRUE అయితే విశ్చేదముల వెడల్పు"
 
-#: ctk/ctkwidget.c:3655
+#: ctk/ctkwidget.c:3653
 msgid "Separator Height"
 msgstr "విశ్చేదని ఎత్తు"
 
-#: ctk/ctkwidget.c:3656
+#: ctk/ctkwidget.c:3654
 msgid "The height of separators if \"wide-separators\" is TRUE"
 msgstr "\"wide-separators\" అనునవి TRUE అయితే విశ్చేదముల యొక్క యెత్తు"
 
-#: ctk/ctkwidget.c:3670
+#: ctk/ctkwidget.c:3668
 msgid "Horizontal Scroll Arrow Length"
 msgstr "హారిజాంటల్ జార్చు బాణము పొడవు"
 
-#: ctk/ctkwidget.c:3671
+#: ctk/ctkwidget.c:3669
 msgid "The length of horizontal scroll arrows"
 msgstr "హారిజాంటల్ స్క్రాల్ బాణములయొక్క పొడవు"
 
-#: ctk/ctkwidget.c:3685
+#: ctk/ctkwidget.c:3683
 msgid "Vertical Scroll Arrow Length"
 msgstr "నిలువు స్క్రాల్ బాణము పొడవు"
 
-#: ctk/ctkwidget.c:3686
+#: ctk/ctkwidget.c:3684
 msgid "The length of vertical scroll arrows"
 msgstr "నిలువు స్క్రాల్ బాణముల పొడవు"
 
-#: ctk/ctkwidget.c:3692 ctk/ctkwidget.c:3693
+#: ctk/ctkwidget.c:3690 ctk/ctkwidget.c:3691
 msgid "Width of text selection handles"
 msgstr "పాఠం యెంపిక సంభాలించే వెడల్పు"
 
-#: ctk/ctkwidget.c:3698 ctk/ctkwidget.c:3699
+#: ctk/ctkwidget.c:3696 ctk/ctkwidget.c:3697
 msgid "Height of text selection handles"
 msgstr "పాఠం యెంపిక సంభాలించే యెత్తు"
 
@@ -9652,23 +9652,6 @@ msgstr ""
 msgid "Decoration resize handle size"
 msgstr ""
 
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:133
-msgid "Cloud Print account"
-msgstr ""
-
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:134
-msgid "CtkCloudprintAccount instance"
-msgstr ""
-
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:143
-#, fuzzy
-msgid "Printer ID"
-msgstr "ముద్రణాయంత్రము"
-
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:144
-msgid "Cloud Print printer ID"
-msgstr ""
-
 #: modules/printbackends/cups/ctkprintercups.c:91
 msgid "Color Profile Title"
 msgstr "రంగు ప్రొఫైల్ శీర్షిక"
@@ -9676,6 +9659,10 @@ msgstr "రంగు ప్రొఫైల్ శీర్షిక"
 #: modules/printbackends/cups/ctkprintercups.c:92
 msgid "The title of the color profile to use"
 msgstr "ఉపయోగించడానికి రంగును ప్రొఫైల్ యొక్క శీర్షిక"
+
+#, fuzzy
+#~ msgid "Printer ID"
+#~ msgstr "ముద్రణాయంత్రము"
 
 #~ msgid "Whether the combo box grabs focus when it is clicked with the mouse"
 #~ msgstr "కాంబో పెట్టెను చుంచుతో నొక్కినపుడు అది కేంద్రమును లాక్కొంటుందా"

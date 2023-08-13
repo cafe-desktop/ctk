@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+ master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-11 17:19+0200\n"
+"POT-Creation-Date: 2023-08-13 13:45+0200\n"
 "PO-Revision-Date: 2014-01-09 20:12+0100\n"
 "Last-Translator: Jorge Pérez Pérez <jorgtum@gmail.com>\n"
 "Language-Team: Aragonese <softaragones@googlegroups.com>\n"
@@ -1572,19 +1572,19 @@ msgstr "Posición d'a imachen"
 msgid "The position of the image relative to the text"
 msgstr "A posición d'a imachen con relación a lo texto"
 
-#: ctk/ctkbutton.c:523
+#: ctk/ctkbutton.c:519
 msgid "Default Spacing"
 msgstr "Espaciau predeterminau"
 
-#: ctk/ctkbutton.c:524
+#: ctk/ctkbutton.c:520
 msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
 msgstr "Espacio adicional que adhibir ta los botons CAN_DEFAULT"
 
-#: ctk/ctkbutton.c:541
+#: ctk/ctkbutton.c:537
 msgid "Default Outside Spacing"
 msgstr "Espaciau exterior predeterminau"
 
-#: ctk/ctkbutton.c:542
+#: ctk/ctkbutton.c:538
 msgid ""
 "Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
@@ -1592,31 +1592,31 @@ msgstr ""
 "Espacio adicional que adhibir ta los botons CAN_DEFAULT que se dibuixa "
 "siempre difuera d'o canto"
 
-#: ctk/ctkbutton.c:556
+#: ctk/ctkbutton.c:552
 msgid "Child X Displacement"
 msgstr "Desplazamiento X d'o fillo"
 
-#: ctk/ctkbutton.c:557
+#: ctk/ctkbutton.c:553
 msgid ""
 "How far in the x direction to move the child when the button is depressed"
 msgstr ""
 "Quánta distancia en l'adreza x se mueve o fillo en que se suelta o botón"
 
-#: ctk/ctkbutton.c:573
+#: ctk/ctkbutton.c:569
 msgid "Child Y Displacement"
 msgstr "Desplazamiento Y d'o fillo"
 
-#: ctk/ctkbutton.c:574
+#: ctk/ctkbutton.c:570
 msgid ""
 "How far in the y direction to move the child when the button is depressed"
 msgstr ""
 "Quánta distancia en l'adreza y se mueve o fillo en que se suelta o botón"
 
-#: ctk/ctkbutton.c:593
+#: ctk/ctkbutton.c:589
 msgid "Displace focus"
 msgstr "Desplazar o foco"
 
-#: ctk/ctkbutton.c:594
+#: ctk/ctkbutton.c:590
 msgid ""
 "Whether the child_displacement_x/_y properties should also affect the focus "
 "rectangle"
@@ -1624,19 +1624,19 @@ msgstr ""
 "Indica si as propiedatz child_displacement_x/_y han d'afectar tamién a lo "
 "rectanglo d'o foco"
 
-#: ctk/ctkbutton.c:610 ctk/ctkentry.c:899 ctk/ctkentry.c:2117
+#: ctk/ctkbutton.c:606 ctk/ctkentry.c:899 ctk/ctkentry.c:2117
 msgid "Inner Border"
 msgstr "Canto interior"
 
-#: ctk/ctkbutton.c:611
+#: ctk/ctkbutton.c:607
 msgid "Border between button edges and child."
 msgstr "Canto entre os cantos d'o botón y o fillo."
 
-#: ctk/ctkbutton.c:626
+#: ctk/ctkbutton.c:622
 msgid "Image spacing"
 msgstr "Espaciau d'a imachen"
 
-#: ctk/ctkbutton.c:627
+#: ctk/ctkbutton.c:623
 msgid "Spacing in pixels between the image and label"
 msgstr "Espaciau en pixels entre a imachen y a etiqueta"
 
@@ -9897,53 +9897,53 @@ msgstr "Factor d'escalau"
 msgid "The scaling factor of the window"
 msgstr "O factor d'escalau d'a finestra"
 
-#: ctk/ctkwidget.c:3493
+#: ctk/ctkwidget.c:3491
 msgid "Interior Focus"
 msgstr "Foco interior"
 
-#: ctk/ctkwidget.c:3494
+#: ctk/ctkwidget.c:3492
 msgid "Whether to draw the focus indicator inside widgets"
 msgstr "Indica si s'ha de dibuixar l'indicador d'o foco adentro d'os widgets"
 
-#: ctk/ctkwidget.c:3507
+#: ctk/ctkwidget.c:3505
 msgid "Focus linewidth"
 msgstr "Dar foco a l'amplo de linia"
 
-#: ctk/ctkwidget.c:3508
+#: ctk/ctkwidget.c:3506
 msgid "Width, in pixels, of the focus indicator line"
 msgstr "Amplaria, en pixels, d'a linia indicadera d'o foco"
 
-#: ctk/ctkwidget.c:3522
+#: ctk/ctkwidget.c:3520
 msgid "Focus line dash pattern"
 msgstr "Dar foco a la linia con patrón puntiau"
 
-#: ctk/ctkwidget.c:3523
+#: ctk/ctkwidget.c:3521
 msgid ""
 "Dash pattern used to draw the focus indicator. The character values are "
 "interpreted as pixel widths of alternating on and off segments of the line."
 msgstr ""
 
-#: ctk/ctkwidget.c:3536
+#: ctk/ctkwidget.c:3534
 msgid "Focus padding"
 msgstr "Repleno d'o foco"
 
-#: ctk/ctkwidget.c:3537
+#: ctk/ctkwidget.c:3535
 msgid "Width, in pixels, between focus indicator and the widget 'box'"
 msgstr "Amplaria, en pixels, entre l'indicador de foco y a «caixa» d'o widget"
 
-#: ctk/ctkwidget.c:3548
+#: ctk/ctkwidget.c:3546
 msgid "Cursor color"
 msgstr "Color d'o cursor"
 
-#: ctk/ctkwidget.c:3549
+#: ctk/ctkwidget.c:3547
 msgid "Color with which to draw insertion cursor"
 msgstr "Color conque dibuixar o cursor d'inserción"
 
-#: ctk/ctkwidget.c:3560
+#: ctk/ctkwidget.c:3558
 msgid "Secondary cursor color"
 msgstr "Color secundaria d'o cursor"
 
-#: ctk/ctkwidget.c:3561
+#: ctk/ctkwidget.c:3559
 msgid ""
 "Color with which to draw the secondary insertion cursor when editing mixed "
 "right-to-left and left-to-right text"
@@ -9951,45 +9951,45 @@ msgstr ""
 "Color conque dibuixar o cursor d'inserción secundario quan se ye editando "
 "una mezcla de texto de dreita-a-cucha y cucha-a-dreita"
 
-#: ctk/ctkwidget.c:3567
+#: ctk/ctkwidget.c:3565
 msgid "Cursor line aspect ratio"
 msgstr "Proporción d'a linia d'o cursor"
 
-#: ctk/ctkwidget.c:3568
+#: ctk/ctkwidget.c:3566
 msgid "Aspect ratio with which to draw insertion cursor"
 msgstr "A proporción conque dibuixar o cursor d'inserción"
 
-#: ctk/ctkwidget.c:3574
+#: ctk/ctkwidget.c:3572
 msgid "Window dragging"
 msgstr "Arrociegue de finestra"
 
-#: ctk/ctkwidget.c:3575
+#: ctk/ctkwidget.c:3573
 msgid "Whether windows can be dragged and maximized by clicking on empty areas"
 msgstr ""
 "Indica si as finestras se pueden arrocegar y maximizar pretando en arias "
 "vuedas"
 
-#: ctk/ctkwidget.c:3587
+#: ctk/ctkwidget.c:3585
 msgid "Unvisited Link Color"
 msgstr "Color d'o vinclo no visitau"
 
-#: ctk/ctkwidget.c:3588
+#: ctk/ctkwidget.c:3586
 msgid "Color of unvisited links"
 msgstr "Color d'os vinclos no visitaus"
 
-#: ctk/ctkwidget.c:3601
+#: ctk/ctkwidget.c:3599
 msgid "Visited Link Color"
 msgstr "Color d'o vinclo visitau"
 
-#: ctk/ctkwidget.c:3602
+#: ctk/ctkwidget.c:3600
 msgid "Color of visited links"
 msgstr "Color d'os vinclos visitaus"
 
-#: ctk/ctkwidget.c:3619
+#: ctk/ctkwidget.c:3617
 msgid "Wide Separators"
 msgstr "Separadors amplos"
 
-#: ctk/ctkwidget.c:3620
+#: ctk/ctkwidget.c:3618
 msgid ""
 "Whether separators have configurable width and should be drawn using a box "
 "instead of a line"
@@ -9997,43 +9997,43 @@ msgstr ""
 "Indica si os separadors tienen amplaria configurable y han de dibuixar-se "
 "usando una caixa en cuenta d'una linia"
 
-#: ctk/ctkwidget.c:3637
+#: ctk/ctkwidget.c:3635
 msgid "Separator Width"
 msgstr "Amplaria d'o separador"
 
-#: ctk/ctkwidget.c:3638
+#: ctk/ctkwidget.c:3636
 msgid "The width of separators if wide-separators is TRUE"
 msgstr "L'amplaria d'os separadors si 'wide-separators' ye VERDADERO"
 
-#: ctk/ctkwidget.c:3655
+#: ctk/ctkwidget.c:3653
 msgid "Separator Height"
 msgstr "Altura d'o separador"
 
-#: ctk/ctkwidget.c:3656
+#: ctk/ctkwidget.c:3654
 msgid "The height of separators if \"wide-separators\" is TRUE"
 msgstr "L'altura d'os separadors si 'wide-separators' ye VERDADERO"
 
-#: ctk/ctkwidget.c:3670
+#: ctk/ctkwidget.c:3668
 msgid "Horizontal Scroll Arrow Length"
 msgstr "Longaria d'a flecha de desplazamiento horizontal"
 
-#: ctk/ctkwidget.c:3671
+#: ctk/ctkwidget.c:3669
 msgid "The length of horizontal scroll arrows"
 msgstr "A longaria d'as flechas de desplazamiento horizontal"
 
-#: ctk/ctkwidget.c:3685
+#: ctk/ctkwidget.c:3683
 msgid "Vertical Scroll Arrow Length"
 msgstr "Longaria d'as flechas de desplazamiento vertical"
 
-#: ctk/ctkwidget.c:3686
+#: ctk/ctkwidget.c:3684
 msgid "The length of vertical scroll arrows"
 msgstr "A longaria d'as flechas de desplazamiento vertical"
 
-#: ctk/ctkwidget.c:3692 ctk/ctkwidget.c:3693
+#: ctk/ctkwidget.c:3690 ctk/ctkwidget.c:3691
 msgid "Width of text selection handles"
 msgstr "Amplaria d'a selección de texto"
 
-#: ctk/ctkwidget.c:3698 ctk/ctkwidget.c:3699
+#: ctk/ctkwidget.c:3696 ctk/ctkwidget.c:3697
 msgid "Height of text selection handles"
 msgstr "Altura d'a selección de texto"
 
@@ -10304,23 +10304,6 @@ msgstr "Distribución d'o botón decorau"
 msgid "Decoration resize handle size"
 msgstr "A decoración redimensiona a grandaria maniada"
 
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:133
-msgid "Cloud Print account"
-msgstr ""
-
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:134
-msgid "CtkCloudprintAccount instance"
-msgstr ""
-
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:143
-#, fuzzy
-msgid "Printer ID"
-msgstr "Impresora"
-
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:144
-msgid "Cloud Print printer ID"
-msgstr ""
-
 #: modules/printbackends/cups/ctkprintercups.c:91
 msgid "Color Profile Title"
 msgstr "Titol d'o perfil de color"
@@ -10328,6 +10311,10 @@ msgstr "Titol d'o perfil de color"
 #: modules/printbackends/cups/ctkprintercups.c:92
 msgid "The title of the color profile to use"
 msgstr "O titol d'o perfil de color que fer servir"
+
+#, fuzzy
+#~ msgid "Printer ID"
+#~ msgstr "Impresora"
 
 #, fuzzy
 #~ msgid "Widget to display in center"

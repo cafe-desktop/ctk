@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+-properties.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-11 17:19+0200\n"
+"POT-Creation-Date: 2023-08-13 13:45+0200\n"
 "PO-Revision-Date: 2004-03-09 12:13+0100\n"
 "Last-Translator: Sanlig Badral <badral@openmn.org>\n"
 "Language-Team: Mongolian <openmn-core@lists.sf.net>\n"
@@ -1795,43 +1795,43 @@ msgid "The position of the image relative to the text"
 msgstr "Дэд удирдлагын элементтэй харьцангуй заагчийн байрлал."
 
 # ctk/ctkbutton.c:265
-#: ctk/ctkbutton.c:523
+#: ctk/ctkbutton.c:519
 msgid "Default Spacing"
 msgstr "Анхдагч зай"
 
-#: ctk/ctkbutton.c:524
+#: ctk/ctkbutton.c:520
 #, fuzzy
 msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
 msgstr "CAN_DEFAULT товчнуудад зориулсан нэмэлт зай."
 
 # ctk/ctkbutton.c:272
-#: ctk/ctkbutton.c:541
+#: ctk/ctkbutton.c:537
 msgid "Default Outside Spacing"
 msgstr "Анхдагч гадаад зай"
 
-#: ctk/ctkbutton.c:542
+#: ctk/ctkbutton.c:538
 #, fuzzy
 msgid ""
 "Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
 msgstr "CAN_DEFAULT товчнуудад зориулсан товчнуудыг хүрээлэх нэмэлт зай"
 
-#: ctk/ctkbutton.c:556
+#: ctk/ctkbutton.c:552
 msgid "Child X Displacement"
 msgstr "Дэд элементийн хэвтээ тэнхлэгийн дагуух шилжилт"
 
-#: ctk/ctkbutton.c:557
+#: ctk/ctkbutton.c:553
 msgid ""
 "How far in the x direction to move the child when the button is depressed"
 msgstr ""
 "Хэрэв товч дарагдсан бол дэд элемтентийг хэвтээ тэнхлэгийн дагуу хэр зэрэг "
 "шилжүүлэх"
 
-#: ctk/ctkbutton.c:573
+#: ctk/ctkbutton.c:569
 msgid "Child Y Displacement"
 msgstr "Дэд элементийн босоо тэнхлэгийн дагуух шилжилт"
 
-#: ctk/ctkbutton.c:574
+#: ctk/ctkbutton.c:570
 msgid ""
 "How far in the y direction to move the child when the button is depressed"
 msgstr ""
@@ -1839,33 +1839,33 @@ msgstr ""
 "шилжүүлэх"
 
 # ctk/ctkwidget.c:451
-#: ctk/ctkbutton.c:593
+#: ctk/ctkbutton.c:589
 #, fuzzy
 msgid "Displace focus"
 msgstr "Төв байна"
 
-#: ctk/ctkbutton.c:594
+#: ctk/ctkbutton.c:590
 msgid ""
 "Whether the child_displacement_x/_y properties should also affect the focus "
 "rectangle"
 msgstr ""
 
 # ctk/ctknotebook.c:379
-#: ctk/ctkbutton.c:610 ctk/ctkentry.c:899 ctk/ctkentry.c:2117
+#: ctk/ctkbutton.c:606 ctk/ctkentry.c:899 ctk/ctkentry.c:2117
 #, fuzzy
 msgid "Inner Border"
 msgstr "Tab хүрээ"
 
-#: ctk/ctkbutton.c:611
+#: ctk/ctkbutton.c:607
 msgid "Border between button edges and child."
 msgstr ""
 
-#: ctk/ctkbutton.c:626
+#: ctk/ctkbutton.c:622
 #, fuzzy
 msgid "Image spacing"
 msgstr "Зайн утга"
 
-#: ctk/ctkbutton.c:627
+#: ctk/ctkbutton.c:623
 #, fuzzy
 msgid "Spacing in pixels between the image and label"
 msgstr "Хүү ба бичээс хооронд тусгай зай авах"
@@ -10921,163 +10921,163 @@ msgstr "Бичгийн масштабыг үндэслэгч "
 msgid "The scaling factor of the window"
 msgstr "Цонхны гарчиг"
 
-#: ctk/ctkwidget.c:3493
+#: ctk/ctkwidget.c:3491
 msgid "Interior Focus"
 msgstr "Дотоод төв оролт"
 
-#: ctk/ctkwidget.c:3494
+#: ctk/ctkwidget.c:3492
 msgid "Whether to draw the focus indicator inside widgets"
 msgstr "Удирдлагын элемент дотор төв заагчыг зурах эсэх"
 
-#: ctk/ctkwidget.c:3507
+#: ctk/ctkwidget.c:3505
 msgid "Focus linewidth"
 msgstr "Төв шугамын өргөн"
 
-#: ctk/ctkwidget.c:3508
+#: ctk/ctkwidget.c:3506
 msgid "Width, in pixels, of the focus indicator line"
 msgstr "Төв заагчын шугамын өргөн (цэгээр)"
 
-#: ctk/ctkwidget.c:3522
+#: ctk/ctkwidget.c:3520
 msgid "Focus line dash pattern"
 msgstr "Төв шугаман хэв зургийн зураас"
 
-#: ctk/ctkwidget.c:3523
+#: ctk/ctkwidget.c:3521
 msgid ""
 "Dash pattern used to draw the focus indicator. The character values are "
 "interpreted as pixel widths of alternating on and off segments of the line."
 msgstr ""
 
-#: ctk/ctkwidget.c:3536
+#: ctk/ctkwidget.c:3534
 msgid "Focus padding"
 msgstr "Дотоод төв"
 
-#: ctk/ctkwidget.c:3537
+#: ctk/ctkwidget.c:3535
 msgid "Width, in pixels, between focus indicator and the widget 'box'"
 msgstr "Төв цэгийг заагч болон удирдлагын 'box' элементийн хоорондын өргөн "
 
 # ctk/ctkwidget.c:1077
-#: ctk/ctkwidget.c:3548
+#: ctk/ctkwidget.c:3546
 msgid "Cursor color"
 msgstr "Түүчээний өнгө"
 
-#: ctk/ctkwidget.c:3549
+#: ctk/ctkwidget.c:3547
 msgid "Color with which to draw insertion cursor"
 msgstr "Нэмэлт түүчээний өнгө."
 
 # ctk/ctkwidget.c:1083
-#: ctk/ctkwidget.c:3560
+#: ctk/ctkwidget.c:3558
 msgid "Secondary cursor color"
 msgstr "Хоёрдогч түүчээний өнгө."
 
-#: ctk/ctkwidget.c:3561
+#: ctk/ctkwidget.c:3559
 msgid ""
 "Color with which to draw the secondary insertion cursor when editing mixed "
 "right-to-left and left-to-right text"
 msgstr "Хоёрдахь нэмэлт түүчээний өнгө."
 
 # ctk/ctkwidget.c:1089
-#: ctk/ctkwidget.c:3567
+#: ctk/ctkwidget.c:3565
 msgid "Cursor line aspect ratio"
 msgstr "Түүчээний харьцаа"
 
 # ctk/ctkwidget.c:1090
-#: ctk/ctkwidget.c:3568
+#: ctk/ctkwidget.c:3566
 msgid "Aspect ratio with which to draw insertion cursor"
 msgstr "Түүчээний харьцаа."
 
 # ctk/ctkwindow.c:457
-#: ctk/ctkwidget.c:3574
+#: ctk/ctkwidget.c:3572
 #, fuzzy
 msgid "Window dragging"
 msgstr "Цонхны байрлал"
 
-#: ctk/ctkwidget.c:3575
+#: ctk/ctkwidget.c:3573
 msgid "Whether windows can be dragged and maximized by clicking on empty areas"
 msgstr ""
 
 # ctk/ctkcolorsel.c:1718
-#: ctk/ctkwidget.c:3587
+#: ctk/ctkwidget.c:3585
 #, fuzzy
 msgid "Unvisited Link Color"
 msgstr "Идэвхитэй өнгө "
 
 # ctk/ctkwindow.c:417
-#: ctk/ctkwidget.c:3588
+#: ctk/ctkwidget.c:3586
 #, fuzzy
 msgid "Color of unvisited links"
 msgstr "Бичиг сонгогч цонхны гарчиг"
 
 # ctk/ctkcolorsel.c:1718
-#: ctk/ctkwidget.c:3601
+#: ctk/ctkwidget.c:3599
 #, fuzzy
 msgid "Visited Link Color"
 msgstr "Идэвхитэй өнгө "
 
 # ctk/ctkwindow.c:417
-#: ctk/ctkwidget.c:3602
+#: ctk/ctkwidget.c:3600
 #, fuzzy
 msgid "Color of visited links"
 msgstr "Бичиг сонгогч цонхны гарчиг"
 
 # ctk/ctkdialog.c:128
-#: ctk/ctkwidget.c:3619
+#: ctk/ctkwidget.c:3617
 #, fuzzy
 msgid "Wide Separators"
 msgstr "Тусгаарлагч хэрэглэх"
 
-#: ctk/ctkwidget.c:3620
+#: ctk/ctkwidget.c:3618
 msgid ""
 "Whether separators have configurable width and should be drawn using a box "
 "instead of a line"
 msgstr ""
 
 # ctk/ctktreeview.c:609
-#: ctk/ctkwidget.c:3637
+#: ctk/ctkwidget.c:3635
 #, fuzzy
 msgid "Separator Width"
 msgstr "Босоо тусгаарлагчийн өргөн"
 
-#: ctk/ctkwidget.c:3638
+#: ctk/ctkwidget.c:3636
 msgid "The width of separators if wide-separators is TRUE"
 msgstr ""
 
 # ctk/ctkwindow.c:476
-#: ctk/ctkwidget.c:3655
+#: ctk/ctkwidget.c:3653
 #, fuzzy
 msgid "Separator Height"
 msgstr "Стандалрт өндөр"
 
-#: ctk/ctkwidget.c:3656
+#: ctk/ctkwidget.c:3654
 msgid "The height of separators if \"wide-separators\" is TRUE"
 msgstr ""
 
-#: ctk/ctkwidget.c:3670
+#: ctk/ctkwidget.c:3668
 #, fuzzy
 msgid "Horizontal Scroll Arrow Length"
 msgstr "Хэвтээ гүйх зурвас"
 
-#: ctk/ctkwidget.c:3671
+#: ctk/ctkwidget.c:3669
 #, fuzzy
 msgid "The length of horizontal scroll arrows"
 msgstr "Хэвтээ гүйх зурвас дүрслэгдэх үед"
 
-#: ctk/ctkwidget.c:3685
+#: ctk/ctkwidget.c:3683
 #, fuzzy
 msgid "Vertical Scroll Arrow Length"
 msgstr "Босоо гүйх зурвас"
 
-#: ctk/ctkwidget.c:3686
+#: ctk/ctkwidget.c:3684
 #, fuzzy
 msgid "The length of vertical scroll arrows"
 msgstr "Босоо гүйх зурвас дүрслэгдэх үед"
 
-#: ctk/ctkwidget.c:3692 ctk/ctkwidget.c:3693
+#: ctk/ctkwidget.c:3690 ctk/ctkwidget.c:3691
 #, fuzzy
 msgid "Width of text selection handles"
 msgstr "Элементийн өргөн"
 
 # ctk/ctkwindow.c:417
-#: ctk/ctkwidget.c:3698 ctk/ctkwidget.c:3699
+#: ctk/ctkwidget.c:3696 ctk/ctkwidget.c:3697
 #, fuzzy
 msgid "Height of text selection handles"
 msgstr "Бичиг сонгогч цонхны гарчиг"
@@ -11377,24 +11377,6 @@ msgstr ""
 msgid "Decoration resize handle size"
 msgstr ""
 
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:133
-msgid "Cloud Print account"
-msgstr ""
-
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:134
-msgid "CtkCloudprintAccount instance"
-msgstr ""
-
-# ctk/ctkfilesel.c:742
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:143
-#, fuzzy
-msgid "Printer ID"
-msgstr "Шүүлтүүр"
-
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:144
-msgid "Cloud Print printer ID"
-msgstr ""
-
 #: modules/printbackends/cups/ctkprintercups.c:91
 msgid "Color Profile Title"
 msgstr ""
@@ -11404,6 +11386,11 @@ msgstr ""
 #, fuzzy
 msgid "The title of the color profile to use"
 msgstr "Өнгө сонгогч диалогийн гарчиг"
+
+# ctk/ctkfilesel.c:742
+#, fuzzy
+#~ msgid "Printer ID"
+#~ msgstr "Шүүлтүүр"
 
 # ctk/ctkwidget.c:493
 #, fuzzy

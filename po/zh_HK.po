@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+ 3.3.11\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-11 17:18+0200\n"
+"POT-Creation-Date: 2023-08-13 13:45+0200\n"
 "PO-Revision-Date: 2014-09-14 06:34+0800\n"
 "Last-Translator: Chao-Hsiung Liao <j_h_liau@yahoo.com.tw>\n"
 "Language-Team: Chinese (Hong Kong) <community@linuxhall.org>\n"
@@ -481,20 +481,20 @@ msgstr ""
 msgid "Unable to create a GL context"
 msgstr ""
 
-#: cdk/wayland/cdkglcontext-wayland.c:418
-#: cdk/wayland/cdkglcontext-wayland.c:428 cdk/win32/cdkglcontext-win32.c:910
+#: cdk/wayland/cdkglcontext-wayland.c:422
+#: cdk/wayland/cdkglcontext-wayland.c:432 cdk/win32/cdkglcontext-win32.c:910
 #: cdk/win32/cdkglcontext-win32.c:920 cdk/win32/cdkglcontext-win32.c:1037
 #: cdk/x11/cdkglcontext-x11.c:975
 msgid "No available configurations for the given pixel format"
 msgstr ""
 
-#: cdk/wayland/cdkglcontext-wayland.c:468 cdk/win32/cdkglcontext-win32.c:1179
+#: cdk/wayland/cdkglcontext-wayland.c:472 cdk/win32/cdkglcontext-win32.c:1179
 #: cdk/x11/cdkglcontext-x11.c:1281
 #, fuzzy
 msgid "No GL implementation is available"
 msgstr "沒有可用的設定檔"
 
-#: cdk/wayland/cdkglcontext-wayland.c:476
+#: cdk/wayland/cdkglcontext-wayland.c:480
 msgid "Core GL is not available on EGL implementation"
 msgstr ""
 
@@ -2579,11 +2579,8 @@ msgstr "方向(_O):"
 msgid "Spreadsheet"
 msgstr ""
 
-#. Translators: We don't know whether this printer is
-#. * available to print to.
 #: ctk/ctkfilechooserwidget.c:5054 ctk/ctkfilechooserwidget.c:5243
 #: ctk/inspector/prop-editor.c:1691
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:744
 msgid "Unknown"
 msgstr "不明"
 
@@ -2645,7 +2642,7 @@ msgstr "Sans 12"
 msgid "Pick a Font"
 msgstr "請選擇字型"
 
-#: ctk/ctkfontbutton.c:1393
+#: ctk/ctkfontbutton.c:1391
 #, fuzzy
 msgctxt "font"
 msgid "None"
@@ -3029,7 +3026,7 @@ msgstr "Z Shell"
 msgid "Cannot end process with PID %d: %s"
 msgstr "不能結束 PID 為 %d 的程序：%s"
 
-#: ctk/ctknotebook.c:5150 ctk/ctknotebook.c:7428
+#: ctk/ctknotebook.c:5148 ctk/ctknotebook.c:7426
 #, c-format
 msgid "Page %u"
 msgstr "第 %u 頁"
@@ -7804,55 +7801,55 @@ msgstr "無法將 %s 的名稱更改為 %s：%s\n"
 msgid "Could not rename %s back to %s: %s.\n"
 msgstr "無法將 %s 的名稱改回 %s：%s。\n"
 
-#: ctk/updateiconcache.c:1629
+#: ctk/updateiconcache.c:1625
 #, c-format
 msgid "Cache file created successfully.\n"
 msgstr "快取檔案建立完成。\n"
 
-#: ctk/updateiconcache.c:1668
+#: ctk/updateiconcache.c:1664
 msgid "Overwrite an existing cache, even if up to date"
 msgstr "即使是最新的，仍複寫既存的快取"
 
-#: ctk/updateiconcache.c:1669
+#: ctk/updateiconcache.c:1665
 msgid "Don't check for the existence of index.theme"
 msgstr "不檢查 index.theme 是否存在"
 
-#: ctk/updateiconcache.c:1670
+#: ctk/updateiconcache.c:1666
 msgid "Don't include image data in the cache"
 msgstr "在快取中不要含有圖片資料"
 
-#: ctk/updateiconcache.c:1671
+#: ctk/updateiconcache.c:1667
 msgid "Include image data in the cache"
 msgstr "在快取中包含影像資料"
 
-#: ctk/updateiconcache.c:1672
+#: ctk/updateiconcache.c:1668
 msgid "Output a C header file"
 msgstr "輸出 C 語言標頭檔"
 
-#: ctk/updateiconcache.c:1673
+#: ctk/updateiconcache.c:1669
 msgid "Turn off verbose output"
 msgstr "關閉詳細輸出"
 
-#: ctk/updateiconcache.c:1674
+#: ctk/updateiconcache.c:1670
 msgid "Validate existing icon cache"
 msgstr "核對既存的圖示快取"
 
-#: ctk/updateiconcache.c:1741
+#: ctk/updateiconcache.c:1737
 #, c-format
 msgid "File not found: %s\n"
 msgstr "找不到檔案：%s\n"
 
-#: ctk/updateiconcache.c:1747
+#: ctk/updateiconcache.c:1743
 #, c-format
 msgid "Not a valid icon cache: %s\n"
 msgstr "不是有效的快取：%s\n"
 
-#: ctk/updateiconcache.c:1760
+#: ctk/updateiconcache.c:1756
 #, c-format
 msgid "No theme index file.\n"
 msgstr "沒有主題索引檔案。\n"
 
-#: ctk/updateiconcache.c:1764
+#: ctk/updateiconcache.c:1760
 #, c-format
 msgid ""
 "No theme index file in '%s'.\n"
@@ -7966,31 +7963,6 @@ msgstr ""
 msgctxt "input method menu"
 msgid "X Input Method"
 msgstr "一般輸入法 (XIM)"
-
-#. Translators: The printer status is online, i.e. it is
-#. * ready to print.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:740
-msgid "Online"
-msgstr "就緒"
-
-#. Translators: The printer is offline.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:747
-msgid "Offline"
-msgstr "離線"
-
-#. We shouldn't get here because the query omits dormant
-#. * printers by default.
-#. Translators: Printer has been offline for a long time.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:753
-msgid "Dormant"
-msgstr "休眠"
-
-#. How many document pages to go onto one side of paper.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:937
-#: modules/printbackends/file/ctkprintbackendfile.c:675
-#: modules/printbackends/test/ctkprintbackendtest.c:503
-msgid "Pages per _sheet:"
-msgstr "每張紙的頁數(_S)："
 
 #: modules/printbackends/cups/ctkprintbackendcups.c:1155
 #: modules/printbackends/cups/ctkprintbackendcups.c:1465
@@ -8572,6 +8544,11 @@ msgstr "Postscript"
 msgid "SVG"
 msgstr "SVG"
 
+#: modules/printbackends/file/ctkprintbackendfile.c:675
+#: modules/printbackends/test/ctkprintbackendtest.c:499
+msgid "Pages per _sheet:"
+msgstr "每張紙的頁數(_S)："
+
 #: modules/printbackends/file/ctkprintbackendfile.c:734
 msgid "File"
 msgstr "檔案"
@@ -8618,14 +8595,23 @@ msgid "unknown"
 msgstr "不明"
 
 #. default filename used for print-to-test
-#: modules/printbackends/test/ctkprintbackendtest.c:232
+#: modules/printbackends/test/ctkprintbackendtest.c:228
 #, c-format
 msgid "test-output.%s"
 msgstr "test-output.%s"
 
-#: modules/printbackends/test/ctkprintbackendtest.c:467
+#: modules/printbackends/test/ctkprintbackendtest.c:463
 msgid "Print to Test Printer"
 msgstr "列印至測試打印機"
+
+#~ msgid "Online"
+#~ msgstr "就緒"
+
+#~ msgid "Offline"
+#~ msgstr "離線"
+
+#~ msgid "Dormant"
+#~ msgstr "休眠"
 
 #~ msgid "The license of the program"
 #~ msgstr "程式的授權條款"

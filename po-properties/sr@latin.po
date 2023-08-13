@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-11 17:19+0200\n"
+"POT-Creation-Date: 2023-08-13 13:45+0200\n"
 "PO-Revision-Date: 2018-02-20 20:37+0100\n"
 "Last-Translator: Marko M. Kostić <marko.m.kostic@gmail.com>\n"
 "Language-Team: srpski <gnome-sr@googlegroups.org>\n"
@@ -1546,19 +1546,19 @@ msgstr "Položaj slike"
 msgid "The position of the image relative to the text"
 msgstr "Položaj slike u odnosu na tekst"
 
-#: ctk/ctkbutton.c:523
+#: ctk/ctkbutton.c:519
 msgid "Default Spacing"
 msgstr "Razmak podrazumevanih"
 
-#: ctk/ctkbutton.c:524
+#: ctk/ctkbutton.c:520
 msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
 msgstr "Razmak koji treba dodati za „CTK_CAN_DEFAULT“ dugmiće"
 
-#: ctk/ctkbutton.c:541
+#: ctk/ctkbutton.c:537
 msgid "Default Outside Spacing"
 msgstr "Razmak oko podrazumevanih"
 
-#: ctk/ctkbutton.c:542
+#: ctk/ctkbutton.c:538
 msgid ""
 "Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
@@ -1566,50 +1566,50 @@ msgstr ""
 "Razmak koji treba dodati oko „CTK_CAN_DEFAULT“ dugmića i koji se iscrtava "
 "oko granice"
 
-#: ctk/ctkbutton.c:556
+#: ctk/ctkbutton.c:552
 msgid "Child X Displacement"
 msgstr "Vodoravni pomeraj sadržanog elementa"
 
 # Da li je "kada se pritisne" ili "kada se otpusti"?
-#: ctk/ctkbutton.c:557
+#: ctk/ctkbutton.c:553
 msgid ""
 "How far in the x direction to move the child when the button is depressed"
 msgstr ""
 "Koliko da se pomeri sadržani element u pravcu X ose na pritisak dugmeta"
 
-#: ctk/ctkbutton.c:573
+#: ctk/ctkbutton.c:569
 msgid "Child Y Displacement"
 msgstr "Uspravni pomeraj sadržanog elementa"
 
-#: ctk/ctkbutton.c:574
+#: ctk/ctkbutton.c:570
 msgid ""
 "How far in the y direction to move the child when the button is depressed"
 msgstr "Koliko pomeriti sadržani element u pravcu Y ose kada se dugme pritisne"
 
-#: ctk/ctkbutton.c:593
+#: ctk/ctkbutton.c:589
 msgid "Displace focus"
 msgstr "Pomeri fokus"
 
-#: ctk/ctkbutton.c:594
+#: ctk/ctkbutton.c:590
 msgid ""
 "Whether the child_displacement_x/_y properties should also affect the focus "
 "rectangle"
 msgstr ""
 "Da li svojstva h/u razmeštaja poroda takođe utiču i na pravougaonik fokusa"
 
-#: ctk/ctkbutton.c:610 ctk/ctkentry.c:899 ctk/ctkentry.c:2117
+#: ctk/ctkbutton.c:606 ctk/ctkentry.c:899 ctk/ctkentry.c:2117
 msgid "Inner Border"
 msgstr "Unutrašnja granica"
 
-#: ctk/ctkbutton.c:611
+#: ctk/ctkbutton.c:607
 msgid "Border between button edges and child."
 msgstr "Granica između ivica dugmeta i deteta."
 
-#: ctk/ctkbutton.c:626
+#: ctk/ctkbutton.c:622
 msgid "Image spacing"
 msgstr "Razmak slike"
 
-#: ctk/ctkbutton.c:627
+#: ctk/ctkbutton.c:623
 msgid "Spacing in pixels between the image and label"
 msgstr "Razmak u pikselima između slike i oznake"
 
@@ -9242,27 +9242,27 @@ msgstr "Činilac srazmere"
 msgid "The scaling factor of the window"
 msgstr "Činilac promene veličine prozora"
 
-#: ctk/ctkwidget.c:3493
+#: ctk/ctkwidget.c:3491
 msgid "Interior Focus"
 msgstr "Unutrašnji fokus"
 
-#: ctk/ctkwidget.c:3494
+#: ctk/ctkwidget.c:3492
 msgid "Whether to draw the focus indicator inside widgets"
 msgstr "Da li iscrtati pokazatelj fokusa unutar elemenata"
 
-#: ctk/ctkwidget.c:3507
+#: ctk/ctkwidget.c:3505
 msgid "Focus linewidth"
 msgstr "Debljina linije fokusa"
 
-#: ctk/ctkwidget.c:3508
+#: ctk/ctkwidget.c:3506
 msgid "Width, in pixels, of the focus indicator line"
 msgstr "Debljina u tačkama linije koju pokazuje element u fokusu"
 
-#: ctk/ctkwidget.c:3522
+#: ctk/ctkwidget.c:3520
 msgid "Focus line dash pattern"
 msgstr "Obrazac crtkanja linije fokusa"
 
-#: ctk/ctkwidget.c:3523
+#: ctk/ctkwidget.c:3521
 msgid ""
 "Dash pattern used to draw the focus indicator. The character values are "
 "interpreted as pixel widths of alternating on and off segments of the line."
@@ -9271,28 +9271,28 @@ msgstr ""
 "tumače kao širine tačkica naizmeničnih uključenih i isključenih odlomaka "
 "linije."
 
-#: ctk/ctkwidget.c:3536
+#: ctk/ctkwidget.c:3534
 msgid "Focus padding"
 msgstr "Popuna fokusa"
 
-#: ctk/ctkwidget.c:3537
+#: ctk/ctkwidget.c:3535
 msgid "Width, in pixels, between focus indicator and the widget 'box'"
 msgstr ""
 "Širina u tačkama između pokazatelja elementa u fokusu i okvira elementa"
 
-#: ctk/ctkwidget.c:3548
+#: ctk/ctkwidget.c:3546
 msgid "Cursor color"
 msgstr "Boja kurzora"
 
-#: ctk/ctkwidget.c:3549
+#: ctk/ctkwidget.c:3547
 msgid "Color with which to draw insertion cursor"
 msgstr "Boja kojom se iscrtava kurzor za unos"
 
-#: ctk/ctkwidget.c:3560
+#: ctk/ctkwidget.c:3558
 msgid "Secondary cursor color"
 msgstr "Druga boja kurzora"
 
-#: ctk/ctkwidget.c:3561
+#: ctk/ctkwidget.c:3559
 msgid ""
 "Color with which to draw the secondary insertion cursor when editing mixed "
 "right-to-left and left-to-right text"
@@ -9300,43 +9300,43 @@ msgstr ""
 "Boja kojom se iscrtava drugi kurzor za unos pri unosu mešanog teksta sa "
 "desna na levo, i teksta sa leva na desno"
 
-#: ctk/ctkwidget.c:3567
+#: ctk/ctkwidget.c:3565
 msgid "Cursor line aspect ratio"
 msgstr "Razmera kurzorne linije"
 
-#: ctk/ctkwidget.c:3568
+#: ctk/ctkwidget.c:3566
 msgid "Aspect ratio with which to draw insertion cursor"
 msgstr "Razmera u kojoj se crta kurzor za unos"
 
-#: ctk/ctkwidget.c:3574
+#: ctk/ctkwidget.c:3572
 msgid "Window dragging"
 msgstr "Prevlačenje prozora"
 
-#: ctk/ctkwidget.c:3575
+#: ctk/ctkwidget.c:3573
 msgid "Whether windows can be dragged and maximized by clicking on empty areas"
 msgstr "Da li prozori mogu da se prevuku i uvećaju pritiskom na prazne oblasti"
 
-#: ctk/ctkwidget.c:3587
+#: ctk/ctkwidget.c:3585
 msgid "Unvisited Link Color"
 msgstr "Boja neposećene veze"
 
-#: ctk/ctkwidget.c:3588
+#: ctk/ctkwidget.c:3586
 msgid "Color of unvisited links"
 msgstr "Boja neposećenih veza"
 
-#: ctk/ctkwidget.c:3601
+#: ctk/ctkwidget.c:3599
 msgid "Visited Link Color"
 msgstr "Boja posećene veze"
 
-#: ctk/ctkwidget.c:3602
+#: ctk/ctkwidget.c:3600
 msgid "Color of visited links"
 msgstr "Boja posećenih veza"
 
-#: ctk/ctkwidget.c:3619
+#: ctk/ctkwidget.c:3617
 msgid "Wide Separators"
 msgstr "Široki razdvojnici"
 
-#: ctk/ctkwidget.c:3620
+#: ctk/ctkwidget.c:3618
 msgid ""
 "Whether separators have configurable width and should be drawn using a box "
 "instead of a line"
@@ -9344,43 +9344,43 @@ msgstr ""
 "Da li razdvojnici imaju podesivu širinu i treba da budu iscrtavani pomoću "
 "kutije umesto linije"
 
-#: ctk/ctkwidget.c:3637
+#: ctk/ctkwidget.c:3635
 msgid "Separator Width"
 msgstr "Širina razdvojnika"
 
-#: ctk/ctkwidget.c:3638
+#: ctk/ctkwidget.c:3636
 msgid "The width of separators if wide-separators is TRUE"
 msgstr "Širina razdvojnika ako su postavljeni široki razdvojnici"
 
-#: ctk/ctkwidget.c:3655
+#: ctk/ctkwidget.c:3653
 msgid "Separator Height"
 msgstr "Visina razdvojnika"
 
-#: ctk/ctkwidget.c:3656
+#: ctk/ctkwidget.c:3654
 msgid "The height of separators if \"wide-separators\" is TRUE"
 msgstr "Visina razdvojnika ako su postavljeni široki razdvojnici"
 
-#: ctk/ctkwidget.c:3670
+#: ctk/ctkwidget.c:3668
 msgid "Horizontal Scroll Arrow Length"
 msgstr "Dužina strelice za vodoravno pomeranje"
 
-#: ctk/ctkwidget.c:3671
+#: ctk/ctkwidget.c:3669
 msgid "The length of horizontal scroll arrows"
 msgstr "Dužina strelice za vodoravno pomeranje"
 
-#: ctk/ctkwidget.c:3685
+#: ctk/ctkwidget.c:3683
 msgid "Vertical Scroll Arrow Length"
 msgstr "Dužina strelice za uspravno pomeranje"
 
-#: ctk/ctkwidget.c:3686
+#: ctk/ctkwidget.c:3684
 msgid "The length of vertical scroll arrows"
 msgstr "Dužina strelice za uspravno pomeranje"
 
-#: ctk/ctkwidget.c:3692 ctk/ctkwidget.c:3693
+#: ctk/ctkwidget.c:3690 ctk/ctkwidget.c:3691
 msgid "Width of text selection handles"
 msgstr "Širina ručke za izbor teksta"
 
-#: ctk/ctkwidget.c:3698 ctk/ctkwidget.c:3699
+#: ctk/ctkwidget.c:3696 ctk/ctkwidget.c:3697
 msgid "Height of text selection handles"
 msgstr "Visina ručke za izbor teksta"
 
@@ -9638,22 +9638,6 @@ msgstr "Raspored ukrašenog dugmeta"
 msgid "Decoration resize handle size"
 msgstr "Veličina ručke za promenu veličine ukrasa"
 
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:133
-msgid "Cloud Print account"
-msgstr "Nalog štampanja u oblaku"
-
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:134
-msgid "CtkCloudprintAccount instance"
-msgstr "Primerak naloga Ctk štampanja u oblaku"
-
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:143
-msgid "Printer ID"
-msgstr "IB štampača"
-
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:144
-msgid "Cloud Print printer ID"
-msgstr "IB štampača štampanja u oblaku"
-
 #: modules/printbackends/cups/ctkprintercups.c:91
 msgid "Color Profile Title"
 msgstr "Naslov profila boje"
@@ -9661,6 +9645,18 @@ msgstr "Naslov profila boje"
 #: modules/printbackends/cups/ctkprintercups.c:92
 msgid "The title of the color profile to use"
 msgstr "Naslov prozorčeta za izbor boje"
+
+#~ msgid "Cloud Print account"
+#~ msgstr "Nalog štampanja u oblaku"
+
+#~ msgid "CtkCloudprintAccount instance"
+#~ msgstr "Primerak naloga Ctk štampanja u oblaku"
+
+#~ msgid "Printer ID"
+#~ msgstr "IB štampača"
+
+#~ msgid "Cloud Print printer ID"
+#~ msgstr "IB štampača štampanja u oblaku"
 
 #~| msgid "The number of decimal places that are displayed in the value"
 #~ msgid "The number of decimal places to which the value is rounded"

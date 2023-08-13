@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+ master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-11 17:18+0200\n"
+"POT-Creation-Date: 2023-08-13 13:45+0200\n"
 "PO-Revision-Date: 2016-04-10 16:49+0300\n"
 "Last-Translator: Zahari Yurukov <zahari.yurukov@gmail.com>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
@@ -495,19 +495,19 @@ msgstr "Не може да се създаде контекст за GL"
 msgid "Unable to create a GL context"
 msgstr "Не може да се създаде контекст за GL"
 
-#: cdk/wayland/cdkglcontext-wayland.c:418
-#: cdk/wayland/cdkglcontext-wayland.c:428 cdk/win32/cdkglcontext-win32.c:910
+#: cdk/wayland/cdkglcontext-wayland.c:422
+#: cdk/wayland/cdkglcontext-wayland.c:432 cdk/win32/cdkglcontext-win32.c:910
 #: cdk/win32/cdkglcontext-win32.c:920 cdk/win32/cdkglcontext-win32.c:1037
 #: cdk/x11/cdkglcontext-x11.c:975
 msgid "No available configurations for the given pixel format"
 msgstr "Няма налични конфигурации за указания формат на пикселите"
 
-#: cdk/wayland/cdkglcontext-wayland.c:468 cdk/win32/cdkglcontext-win32.c:1179
+#: cdk/wayland/cdkglcontext-wayland.c:472 cdk/win32/cdkglcontext-win32.c:1179
 #: cdk/x11/cdkglcontext-x11.c:1281
 msgid "No GL implementation is available"
 msgstr "Липсва реализация на GL"
 
-#: cdk/wayland/cdkglcontext-wayland.c:476
+#: cdk/wayland/cdkglcontext-wayland.c:480
 msgid "Core GL is not available on EGL implementation"
 msgstr "Профилът Core GL не е наличен в реализацията на EGL"
 
@@ -2594,11 +2594,8 @@ msgstr "_Ориентация:"
 msgid "Spreadsheet"
 msgstr ""
 
-#. Translators: We don't know whether this printer is
-#. * available to print to.
 #: ctk/ctkfilechooserwidget.c:5054 ctk/ctkfilechooserwidget.c:5243
 #: ctk/inspector/prop-editor.c:1691
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:744
 msgid "Unknown"
 msgstr "Неизвестно"
 
@@ -2660,7 +2657,7 @@ msgstr "Sans 12"
 msgid "Pick a Font"
 msgstr "Избор на шрифт"
 
-#: ctk/ctkfontbutton.c:1393
+#: ctk/ctkfontbutton.c:1391
 msgctxt "font"
 msgid "None"
 msgstr "Без"
@@ -3046,7 +3043,7 @@ msgstr "Обвивка zsh"
 msgid "Cannot end process with PID %d: %s"
 msgstr "Процесът с ид. пр. %d не може да бъде приключен: %s"
 
-#: ctk/ctknotebook.c:5150 ctk/ctknotebook.c:7428
+#: ctk/ctknotebook.c:5148 ctk/ctknotebook.c:7426
 #, c-format
 msgid "Page %u"
 msgstr "Страница %u"
@@ -7734,64 +7731,64 @@ msgstr "Грешка при преименуването на „%s“ към �
 msgid "Could not rename %s back to %s: %s.\n"
 msgstr "Грешка при преименуването на „%s“ обратно към „%s“: %s\n"
 
-#: ctk/updateiconcache.c:1629
+#: ctk/updateiconcache.c:1625
 #, c-format
 msgid "Cache file created successfully.\n"
 msgstr "Файлът за временно съхранение е създаден успешно.\n"
 
-#: ctk/updateiconcache.c:1668
+#: ctk/updateiconcache.c:1664
 msgid "Overwrite an existing cache, even if up to date"
 msgstr ""
 "Презаписване на файла за временно\n"
 "                                        съхранение, дори и да е актуален"
 
-#: ctk/updateiconcache.c:1669
+#: ctk/updateiconcache.c:1665
 msgid "Don't check for the existence of index.theme"
 msgstr ""
 "Да не се проверява за съществуването\n"
 "                                        на файл „index.theme“"
 
-#: ctk/updateiconcache.c:1670
+#: ctk/updateiconcache.c:1666
 msgid "Don't include image data in the cache"
 msgstr ""
 "Данните за изображения да не се за-\n"
 "                                        писват във файл за временно "
 "съхранение"
 
-#: ctk/updateiconcache.c:1671
+#: ctk/updateiconcache.c:1667
 msgid "Include image data in the cache"
 msgstr "Включване на данните за изображения във файла за временно съхранение"
 
-#: ctk/updateiconcache.c:1672
+#: ctk/updateiconcache.c:1668
 msgid "Output a C header file"
 msgstr "Генериране на заглавен файл на C"
 
-#: ctk/updateiconcache.c:1673
+#: ctk/updateiconcache.c:1669
 msgid "Turn off verbose output"
 msgstr "Изключване на подробния изход"
 
-#: ctk/updateiconcache.c:1674
+#: ctk/updateiconcache.c:1670
 msgid "Validate existing icon cache"
 msgstr ""
 "Проверка на съществуващия файл за\n"
 "                                        временно съхранение на икони"
 
-#: ctk/updateiconcache.c:1741
+#: ctk/updateiconcache.c:1737
 #, c-format
 msgid "File not found: %s\n"
 msgstr "Файлът не е открит: %s\n"
 
-#: ctk/updateiconcache.c:1747
+#: ctk/updateiconcache.c:1743
 #, c-format
 msgid "Not a valid icon cache: %s\n"
 msgstr "Неправилен файл за временно съхранение на икони: %s\n"
 
-#: ctk/updateiconcache.c:1760
+#: ctk/updateiconcache.c:1756
 #, c-format
 msgid "No theme index file.\n"
 msgstr "Няма файл с индекс за темите.\n"
 
-#: ctk/updateiconcache.c:1764
+#: ctk/updateiconcache.c:1760
 #, c-format
 msgid ""
 "No theme index file in '%s'.\n"
@@ -7895,31 +7892,6 @@ msgstr ""
 msgctxt "input method menu"
 msgid "X Input Method"
 msgstr "Метод за въвеждане към X"
-
-#. Translators: The printer status is online, i.e. it is
-#. * ready to print.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:740
-msgid "Online"
-msgstr "На линия"
-
-#. Translators: The printer is offline.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:747
-msgid "Offline"
-msgstr "Извън линия"
-
-#. We shouldn't get here because the query omits dormant
-#. * printers by default.
-#. Translators: Printer has been offline for a long time.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:753
-msgid "Dormant"
-msgstr "Неактивен"
-
-#. How many document pages to go onto one side of paper.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:937
-#: modules/printbackends/file/ctkprintbackendfile.c:675
-#: modules/printbackends/test/ctkprintbackendtest.c:503
-msgid "Pages per _sheet:"
-msgstr "Страници на _лист:"
 
 #: modules/printbackends/cups/ctkprintbackendcups.c:1155
 #: modules/printbackends/cups/ctkprintbackendcups.c:1465
@@ -8469,6 +8441,11 @@ msgstr "Postscript"
 msgid "SVG"
 msgstr "SVG"
 
+#: modules/printbackends/file/ctkprintbackendfile.c:675
+#: modules/printbackends/test/ctkprintbackendtest.c:499
+msgid "Pages per _sheet:"
+msgstr "Страници на _лист:"
+
 #: modules/printbackends/file/ctkprintbackendfile.c:734
 msgid "File"
 msgstr "Файл"
@@ -8515,14 +8492,23 @@ msgid "unknown"
 msgstr "(неизвестен)"
 
 #. default filename used for print-to-test
-#: modules/printbackends/test/ctkprintbackendtest.c:232
+#: modules/printbackends/test/ctkprintbackendtest.c:228
 #, c-format
 msgid "test-output.%s"
 msgstr "пробна-разпечатка.%s"
 
-#: modules/printbackends/test/ctkprintbackendtest.c:467
+#: modules/printbackends/test/ctkprintbackendtest.c:463
 msgid "Print to Test Printer"
 msgstr "Печат към тестов принтер"
+
+#~ msgid "Online"
+#~ msgstr "На линия"
+
+#~ msgid "Offline"
+#~ msgstr "Извън линия"
+
+#~ msgid "Dormant"
+#~ msgstr "Неактивен"
 
 #~ msgid "3.2 core GL profile is not available on EGL implementation"
 #~ msgstr "Профилът Core GL 3.2 не е наличен в реализацията на EGL"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-11 17:18+0200\n"
+"POT-Creation-Date: 2023-08-13 13:45+0200\n"
 "PO-Revision-Date: 2020-05-04 10:08+0200\n"
 "Last-Translator: Peter Mráz <etkinator@gmail.com>\n"
 "Language-Team: slovenčina <>\n"
@@ -483,19 +483,19 @@ msgstr "Nie je možné vytvoriť formát pixel GL"
 msgid "Unable to create a GL context"
 msgstr "Nie je možné vytvoriť kontext GL"
 
-#: cdk/wayland/cdkglcontext-wayland.c:418
-#: cdk/wayland/cdkglcontext-wayland.c:428 cdk/win32/cdkglcontext-win32.c:910
+#: cdk/wayland/cdkglcontext-wayland.c:422
+#: cdk/wayland/cdkglcontext-wayland.c:432 cdk/win32/cdkglcontext-win32.c:910
 #: cdk/win32/cdkglcontext-win32.c:920 cdk/win32/cdkglcontext-win32.c:1037
 #: cdk/x11/cdkglcontext-x11.c:975
 msgid "No available configurations for the given pixel format"
 msgstr "Žiadne dostupné konfigurácie pre zadaný formát pixelov"
 
-#: cdk/wayland/cdkglcontext-wayland.c:468 cdk/win32/cdkglcontext-win32.c:1179
+#: cdk/wayland/cdkglcontext-wayland.c:472 cdk/win32/cdkglcontext-win32.c:1179
 #: cdk/x11/cdkglcontext-x11.c:1281
 msgid "No GL implementation is available"
 msgstr "Nie je k dispozícii žiadna implementácia GL"
 
-#: cdk/wayland/cdkglcontext-wayland.c:476
+#: cdk/wayland/cdkglcontext-wayland.c:480
 msgid "Core GL is not available on EGL implementation"
 msgstr "Jadro GL nie je dostupné v implementácii EGL"
 
@@ -2607,11 +2607,8 @@ msgstr "Pracovný zošit"
 # PK: prever
 # PM: v master vetve
 # datum
-#. Translators: We don't know whether this printer is
-#. * available to print to.
 #: ctk/ctkfilechooserwidget.c:5054 ctk/ctkfilechooserwidget.c:5243
 #: ctk/inspector/prop-editor.c:1691
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:744
 msgid "Unknown"
 msgstr "Neznámy"
 
@@ -2677,7 +2674,7 @@ msgid "Pick a Font"
 msgstr "Výber písma"
 
 # jedná sa o titulnú stránku takže (žiadna)
-#: ctk/ctkfontbutton.c:1393
+#: ctk/ctkfontbutton.c:1391
 msgctxt "font"
 msgid "None"
 msgstr "Žiadne"
@@ -3061,7 +3058,7 @@ msgstr "Z shell"
 msgid "Cannot end process with PID %d: %s"
 msgstr "Nedá sa ukončiť proces s PID %d: %s"
 
-#: ctk/ctknotebook.c:5150 ctk/ctknotebook.c:7428
+#: ctk/ctknotebook.c:5148 ctk/ctknotebook.c:7426
 #, c-format
 msgid "Page %u"
 msgstr "Stránka č. %u"
@@ -7771,62 +7768,62 @@ msgstr "Nepodarilo sa premenovať %s na %s: %s\n"
 msgid "Could not rename %s back to %s: %s.\n"
 msgstr "Nepodarilo sa premenovať %s naspäť na %s: %s\n"
 
-#: ctk/updateiconcache.c:1629
+#: ctk/updateiconcache.c:1625
 #, c-format
 msgid "Cache file created successfully.\n"
 msgstr "Vyrovnávacie úložisko ikon úspešne vytvorené.\n"
 
 # cmd desc
-#: ctk/updateiconcache.c:1668
+#: ctk/updateiconcache.c:1664
 msgid "Overwrite an existing cache, even if up to date"
 msgstr "Prepíše existujúce vyrovnávacie úložisko, aj keď je aktuálne"
 
 # cmd desc
-#: ctk/updateiconcache.c:1669
+#: ctk/updateiconcache.c:1665
 msgid "Don't check for the existence of index.theme"
 msgstr "Neoverí existenciu index.theme"
 
 # cmd desc
-#: ctk/updateiconcache.c:1670
+#: ctk/updateiconcache.c:1666
 msgid "Don't include image data in the cache"
 msgstr "Do vyrovnávacieho úložiska nezahrnie obrázkové údaje"
 
 # cmd desc
-#: ctk/updateiconcache.c:1671
+#: ctk/updateiconcache.c:1667
 msgid "Include image data in the cache"
 msgstr "Do vyrovnávacieho úložiska zahrnie obrázkové údaje"
 
 # cmd desc
-#: ctk/updateiconcache.c:1672
+#: ctk/updateiconcache.c:1668
 msgid "Output a C header file"
 msgstr "Vytvorí hlavičkový súbor jazyka C"
 
 # cmd desc
-#: ctk/updateiconcache.c:1673
+#: ctk/updateiconcache.c:1669
 msgid "Turn off verbose output"
 msgstr "Vypne podrobný výstup"
 
 # cmd desc
-#: ctk/updateiconcache.c:1674
+#: ctk/updateiconcache.c:1670
 msgid "Validate existing icon cache"
 msgstr "Overí existujúce úložisko ikon"
 
-#: ctk/updateiconcache.c:1741
+#: ctk/updateiconcache.c:1737
 #, c-format
 msgid "File not found: %s\n"
 msgstr "Súbor nenájdený: %s\n"
 
-#: ctk/updateiconcache.c:1747
+#: ctk/updateiconcache.c:1743
 #, c-format
 msgid "Not a valid icon cache: %s\n"
 msgstr "Neplatná vyrovnávacia pamäť ikon: %s\n"
 
-#: ctk/updateiconcache.c:1760
+#: ctk/updateiconcache.c:1756
 #, c-format
 msgid "No theme index file.\n"
 msgstr "Žiaden indexový súbor témy.\n"
 
-#: ctk/updateiconcache.c:1764
+#: ctk/updateiconcache.c:1760
 #, c-format
 msgid ""
 "No theme index file in '%s'.\n"
@@ -7929,31 +7926,6 @@ msgstr "Waylandctk"
 msgctxt "input method menu"
 msgid "X Input Method"
 msgstr "Metóda vstupu X"
-
-#. Translators: The printer status is online, i.e. it is
-#. * ready to print.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:740
-msgid "Online"
-msgstr "Pripojená"
-
-#. Translators: The printer is offline.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:747
-msgid "Offline"
-msgstr "Nepripojená"
-
-#. We shouldn't get here because the query omits dormant
-#. * printers by default.
-#. Translators: Printer has been offline for a long time.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:753
-msgid "Dormant"
-msgstr "Dlhodobo nepripojená"
-
-#. How many document pages to go onto one side of paper.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:937
-#: modules/printbackends/file/ctkprintbackendfile.c:675
-#: modules/printbackends/test/ctkprintbackendtest.c:503
-msgid "Pages per _sheet:"
-msgstr "Stránok na _list:"
 
 #: modules/printbackends/cups/ctkprintbackendcups.c:1155
 #: modules/printbackends/cups/ctkprintbackendcups.c:1465
@@ -8503,6 +8475,11 @@ msgstr "Postscript"
 msgid "SVG"
 msgstr "SVG"
 
+#: modules/printbackends/file/ctkprintbackendfile.c:675
+#: modules/printbackends/test/ctkprintbackendtest.c:499
+msgid "Pages per _sheet:"
+msgstr "Stránok na _list:"
+
 #: modules/printbackends/file/ctkprintbackendfile.c:734
 msgid "File"
 msgstr "Súbor"
@@ -8550,14 +8527,23 @@ msgid "unknown"
 msgstr "neznámy"
 
 #. default filename used for print-to-test
-#: modules/printbackends/test/ctkprintbackendtest.c:232
+#: modules/printbackends/test/ctkprintbackendtest.c:228
 #, c-format
 msgid "test-output.%s"
 msgstr "vystup-test.%s"
 
-#: modules/printbackends/test/ctkprintbackendtest.c:467
+#: modules/printbackends/test/ctkprintbackendtest.c:463
 msgid "Print to Test Printer"
 msgstr "Vytlačiť na skúšobnej tlačiarni"
+
+#~ msgid "Online"
+#~ msgstr "Pripojená"
+
+#~ msgid "Offline"
+#~ msgstr "Nepripojená"
+
+#~ msgid "Dormant"
+#~ msgstr "Dlhodobo nepripojená"
 
 #~ msgctxt "Color name"
 #~ msgid "Scarlet Red"

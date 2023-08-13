@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Gnome Nepali Translation Project\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-11 17:18+0200\n"
+"POT-Creation-Date: 2023-08-13 13:45+0200\n"
 "PO-Revision-Date: 2017-08-21 04:28+0545\n"
 "Last-Translator: Pawan Chitrakar <chautari@gmail.com>\n"
 "Language-Team: Nepali Translation Team <chautari@gmail.com>\n"
@@ -511,20 +511,20 @@ msgstr "सन्दर्भ सिर्जना गर्न असक्ष
 msgid "Unable to create a GL context"
 msgstr "सन्दर्भ सिर्जना गर्न असक्षम"
 
-#: cdk/wayland/cdkglcontext-wayland.c:418
-#: cdk/wayland/cdkglcontext-wayland.c:428 cdk/win32/cdkglcontext-win32.c:910
+#: cdk/wayland/cdkglcontext-wayland.c:422
+#: cdk/wayland/cdkglcontext-wayland.c:432 cdk/win32/cdkglcontext-win32.c:910
 #: cdk/win32/cdkglcontext-win32.c:920 cdk/win32/cdkglcontext-win32.c:1037
 #: cdk/x11/cdkglcontext-x11.c:975
 msgid "No available configurations for the given pixel format"
 msgstr ""
 
-#: cdk/wayland/cdkglcontext-wayland.c:468 cdk/win32/cdkglcontext-win32.c:1179
+#: cdk/wayland/cdkglcontext-wayland.c:472 cdk/win32/cdkglcontext-win32.c:1179
 #: cdk/x11/cdkglcontext-x11.c:1281
 #, fuzzy
 msgid "No GL implementation is available"
 msgstr "प्रकार्य कार्यान्वयन उपलब्ध छैन।"
 
-#: cdk/wayland/cdkglcontext-wayland.c:476
+#: cdk/wayland/cdkglcontext-wayland.c:480
 msgid "Core GL is not available on EGL implementation"
 msgstr ""
 
@@ -2698,11 +2698,8 @@ msgstr "अभिमूखीकरण:"
 msgid "Spreadsheet"
 msgstr ""
 
-#. Translators: We don't know whether this printer is
-#. * available to print to.
 #: ctk/ctkfilechooserwidget.c:5054 ctk/ctkfilechooserwidget.c:5243
 #: ctk/inspector/prop-editor.c:1691
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:744
 msgid "Unknown"
 msgstr "अज्ञात"
 
@@ -2764,7 +2761,7 @@ msgstr "Sans 12"
 msgid "Pick a Font"
 msgstr "एउटा फन्ट छान्नुहोस्"
 
-#: ctk/ctkfontbutton.c:1393
+#: ctk/ctkfontbutton.c:1391
 msgctxt "font"
 msgid "None"
 msgstr "None"
@@ -3157,7 +3154,7 @@ msgstr "जेड शेल स्कृप्ट"
 msgid "Cannot end process with PID %d: %s"
 msgstr "PID %d सँग सङ्केत %d भएको प्रक्रिया नष्ट गर्न सकिदैन । %s"
 
-#: ctk/ctknotebook.c:5150 ctk/ctknotebook.c:7428
+#: ctk/ctknotebook.c:5148 ctk/ctknotebook.c:7426
 #, c-format
 msgid "Page %u"
 msgstr "पृष्ठ %u"
@@ -8106,51 +8103,51 @@ msgstr "%s लाई %s पुन: नामाकरण गर्न सके�
 msgid "Could not rename %s back to %s: %s.\n"
 msgstr "%s लाई फेरि %s मा पुन: नामाकरण गर्न सकेन: %s.\n"
 
-#: ctk/updateiconcache.c:1629
+#: ctk/updateiconcache.c:1625
 #, c-format
 msgid "Cache file created successfully.\n"
 msgstr "क्याश फाइल सफलतापूर्वक सिर्जना गरियो ।\n"
 
-#: ctk/updateiconcache.c:1668
+#: ctk/updateiconcache.c:1664
 msgid "Overwrite an existing cache, even if up to date"
 msgstr "एउटा अवस्थित क्याशलाई अधिलेखन गर्नुहोस्, यदि अद्यावधिक भए पनि"
 
-#: ctk/updateiconcache.c:1669
+#: ctk/updateiconcache.c:1665
 msgid "Don't check for the existence of index.theme"
 msgstr "अवस्थित index.theme को लागि जाँच नगर्नुहोस्"
 
-#: ctk/updateiconcache.c:1670
+#: ctk/updateiconcache.c:1666
 msgid "Don't include image data in the cache"
 msgstr "क्याशमा छवि डेटा समावेश नगर्नुहोस्"
 
-#: ctk/updateiconcache.c:1671
+#: ctk/updateiconcache.c:1667
 #, fuzzy
 msgid "Include image data in the cache"
 msgstr "क्याशमा छवि डेटा समावेश नगर्नुहोस्"
 
-#: ctk/updateiconcache.c:1672
+#: ctk/updateiconcache.c:1668
 msgid "Output a C header file"
 msgstr "सी हेडर फाइल निर्गत गर्नुहोस्"
 
-#: ctk/updateiconcache.c:1673
+#: ctk/updateiconcache.c:1669
 msgid "Turn off verbose output"
 msgstr "भरबोस निर्गत बन्द गर्नुहोस्"
 
-#: ctk/updateiconcache.c:1674
+#: ctk/updateiconcache.c:1670
 msgid "Validate existing icon cache"
 msgstr "अवस्थित प्रतिमा क्याश प्रमाणीत गर्नुहोस्"
 
-#: ctk/updateiconcache.c:1741
+#: ctk/updateiconcache.c:1737
 #, c-format
 msgid "File not found: %s\n"
 msgstr "फाइल फेला परेन: %s\n"
 
-#: ctk/updateiconcache.c:1747
+#: ctk/updateiconcache.c:1743
 #, c-format
 msgid "Not a valid icon cache: %s\n"
 msgstr "वैध प्रतिमा क्याश होइन: %s\n"
 
-#: ctk/updateiconcache.c:1760
+#: ctk/updateiconcache.c:1756
 #, fuzzy, c-format
 msgid "No theme index file.\n"
 msgstr ""
@@ -8158,7 +8155,7 @@ msgstr ""
 "यदि तपाईँ यहाँ साँच्चै एउटा प्रतिमा क्याश सिर्जना गर्न चाहनुहुन्छ भने, --ignore-theme-"
 "index प्रयोग गर्नुहोस् ।\n"
 
-#: ctk/updateiconcache.c:1764
+#: ctk/updateiconcache.c:1760
 #, c-format
 msgid ""
 "No theme index file in '%s'.\n"
@@ -8271,32 +8268,6 @@ msgstr ""
 msgctxt "input method menu"
 msgid "X Input Method"
 msgstr "X आगत विधि"
-
-#. Translators: The printer status is online, i.e. it is
-#. * ready to print.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:740
-msgid "Online"
-msgstr "अनलाइन"
-
-#. Translators: The printer is offline.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:747
-#, fuzzy
-msgid "Offline"
-msgstr "अफलाइन"
-
-#. We shouldn't get here because the query omits dormant
-#. * printers by default.
-#. Translators: Printer has been offline for a long time.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:753
-msgid "Dormant"
-msgstr ""
-
-#. How many document pages to go onto one side of paper.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:937
-#: modules/printbackends/file/ctkprintbackendfile.c:675
-#: modules/printbackends/test/ctkprintbackendtest.c:503
-msgid "Pages per _sheet:"
-msgstr "प्रति पाना पृष्ठहरू:"
 
 #: modules/printbackends/cups/ctkprintbackendcups.c:1155
 #: modules/printbackends/cups/ctkprintbackendcups.c:1465
@@ -8871,6 +8842,11 @@ msgstr "पोस्टस्क्रिप्ट"
 msgid "SVG"
 msgstr "SVG आगत"
 
+#: modules/printbackends/file/ctkprintbackendfile.c:675
+#: modules/printbackends/test/ctkprintbackendtest.c:499
+msgid "Pages per _sheet:"
+msgstr "प्रति पाना पृष्ठहरू:"
+
 #: modules/printbackends/file/ctkprintbackendfile.c:734
 #, fuzzy
 msgid "File"
@@ -8922,14 +8898,21 @@ msgid "unknown"
 msgstr "अज्ञात"
 
 #. default filename used for print-to-test
-#: modules/printbackends/test/ctkprintbackendtest.c:232
+#: modules/printbackends/test/ctkprintbackendtest.c:228
 #, c-format
 msgid "test-output.%s"
 msgstr "test-output.%s"
 
-#: modules/printbackends/test/ctkprintbackendtest.c:467
+#: modules/printbackends/test/ctkprintbackendtest.c:463
 msgid "Print to Test Printer"
 msgstr "परीक्षण मुद्रकमा मुद्रण गर्नुहोस्"
+
+#~ msgid "Online"
+#~ msgstr "अनलाइन"
+
+#, fuzzy
+#~ msgid "Offline"
+#~ msgstr "अफलाइन"
 
 #, fuzzy
 #~ msgid "Not implemented on OS X"

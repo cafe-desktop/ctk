@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+-properties.master.or\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-11 17:19+0200\n"
+"POT-Creation-Date: 2023-08-13 13:45+0200\n"
 "PO-Revision-Date: 2012-04-05 17:06+0530\n"
 "Last-Translator: Manoj Kumar Giri <mgiri@redhat.com>\n"
 "Language-Team: Oriya <oriya-it@googlegroups.com>\n"
@@ -1546,19 +1546,19 @@ msgstr "ପ୍ରତିଛବି ସ୍ଥାନ"
 msgid "The position of the image relative to the text"
 msgstr "ପାଠ୍ୟ ତୁଳନାରେ ପ୍ରତିଛବିର ସ୍ଥାନର"
 
-#: ctk/ctkbutton.c:523
+#: ctk/ctkbutton.c:519
 msgid "Default Spacing"
 msgstr "ପୂର୍ବନିର୍ଦ୍ଧାରିତ ଅନ୍ତରାଳ"
 
-#: ctk/ctkbutton.c:524
+#: ctk/ctkbutton.c:520
 msgid "Extra space to add for CTK_CAN_DEFAULT buttons"
 msgstr "CTK_CAN_DEFAULT ବଟନଗୁଡ଼ିକରେ ଯୋଗ କରିବା ପାଇଁ ଅଧିକ ସ୍ଥାନ"
 
-#: ctk/ctkbutton.c:541
+#: ctk/ctkbutton.c:537
 msgid "Default Outside Spacing"
 msgstr "ପୂର୍ବନିର୍ଦ୍ଧାରିତ ବାହ୍ୟ ଅନ୍ତରାଳ"
 
-#: ctk/ctkbutton.c:542
+#: ctk/ctkbutton.c:538
 msgid ""
 "Extra space to add for CTK_CAN_DEFAULT buttons that is always drawn outside "
 "the border"
@@ -1566,47 +1566,47 @@ msgstr ""
 "CTK_CAN_DEFAULT ବଟନଗୁଡ଼ିକରେ ଯୋଗ କରିବା ପାଇଁ ଅଧିକ ସ୍ଥାନ ଯ।ହାକି ସର୍ବଦା ଧାର ବାହାରେ "
 "ଅଙ୍କାଯାଇଥାଏ"
 
-#: ctk/ctkbutton.c:556
+#: ctk/ctkbutton.c:552
 msgid "Child X Displacement"
 msgstr "ନିର୍ଭରକ X ବିସ୍ଥାପନ"
 
-#: ctk/ctkbutton.c:557
+#: ctk/ctkbutton.c:553
 msgid ""
 "How far in the x direction to move the child when the button is depressed"
 msgstr "x ଦିଗରେ କେତେ ଦୂର ନିମ୍ନ ସ୍ତରକୁ ଗତି କରାଇବା ଉଚିତ ଯେତେବେଳେକି ବଟନକୁ ଦବିରହିଥାଏ"
 
-#: ctk/ctkbutton.c:573
+#: ctk/ctkbutton.c:569
 msgid "Child Y Displacement"
 msgstr "ନିର୍ଭରକ Y ବିସ୍ଥାପନ"
 
-#: ctk/ctkbutton.c:574
+#: ctk/ctkbutton.c:570
 msgid ""
 "How far in the y direction to move the child when the button is depressed"
 msgstr "y ଦିଗରେ କେତେ ଦୂର ନିମ୍ନ ସ୍ତରକୁ ଗତି କରାଇବା ଉଚିତ ଯେତେବେଳେକି ବଟନକୁ ଦବିରହିଥାଏ"
 
-#: ctk/ctkbutton.c:593
+#: ctk/ctkbutton.c:589
 msgid "Displace focus"
 msgstr "ଲକ୍ଷ୍ଯ ବିସ୍ଥାପନ କରନ୍ତୁ"
 
-#: ctk/ctkbutton.c:594
+#: ctk/ctkbutton.c:590
 msgid ""
 "Whether the child_displacement_x/_y properties should also affect the focus "
 "rectangle"
 msgstr "child_displacement_x/_y ଗୁଣଧର୍ମ ଲକ୍ଷ୍ୟ ଆୟତକ୍ଷେତ୍ର ଉପରେ ପ୍ରଭାବ ପକାଇବା ଉଚିତ କି"
 
-#: ctk/ctkbutton.c:610 ctk/ctkentry.c:899 ctk/ctkentry.c:2117
+#: ctk/ctkbutton.c:606 ctk/ctkentry.c:899 ctk/ctkentry.c:2117
 msgid "Inner Border"
 msgstr "ଆଭ୍ୟନ୍ତରୀଣ ସୀମା"
 
-#: ctk/ctkbutton.c:611
+#: ctk/ctkbutton.c:607
 msgid "Border between button edges and child."
 msgstr "ବଟନ ଧାର ଏବଂ ନିର୍ଭରକ ମଧ୍ଯରେ ସୀମା।"
 
-#: ctk/ctkbutton.c:626
+#: ctk/ctkbutton.c:622
 msgid "Image spacing"
 msgstr "ପ୍ରତିଛବି ଅନ୍ତରାଳ"
 
-#: ctk/ctkbutton.c:627
+#: ctk/ctkbutton.c:623
 msgid "Spacing in pixels between the image and label"
 msgstr "ପ୍ରତିଛବି ଏବଂ ସ୍ତର ମଧ୍ଯରେ ବ୍ୟବଧାନ ପିକସେଲରେ"
 
@@ -9388,53 +9388,53 @@ msgstr "ଅକ୍ଷରରୂପ ମାପ ଗୁଣାଙ୍କ"
 msgid "The scaling factor of the window"
 msgstr "ୱିଣ୍ଡୋର ଶୀର୍ଷକ"
 
-#: ctk/ctkwidget.c:3493
+#: ctk/ctkwidget.c:3491
 msgid "Interior Focus"
 msgstr "ଅଭ୍ଯନ୍ତରୀଣ ଫୋକସ"
 
-#: ctk/ctkwidget.c:3494
+#: ctk/ctkwidget.c:3492
 msgid "Whether to draw the focus indicator inside widgets"
 msgstr "ୱିଜେଟ ମଧ୍ଯରେ ଫୋକସ ସୂଚକକୁ ଅଙ୍କନ କରାଯିବ କି ନାହିଁ"
 
-#: ctk/ctkwidget.c:3507
+#: ctk/ctkwidget.c:3505
 msgid "Focus linewidth"
 msgstr "ଫୋକସ ଲାଇନ ଓସାର"
 
-#: ctk/ctkwidget.c:3508
+#: ctk/ctkwidget.c:3506
 msgid "Width, in pixels, of the focus indicator line"
 msgstr "ପିକ୍ସେଲରେ ଫୋକସ ସୂଚକ ରେଖାର ଓସାର"
 
-#: ctk/ctkwidget.c:3522
+#: ctk/ctkwidget.c:3520
 msgid "Focus line dash pattern"
 msgstr "ଫୋକସ ବିଖଣ୍ଡିତ ରେଖା ଶୈଳୀ"
 
-#: ctk/ctkwidget.c:3523
+#: ctk/ctkwidget.c:3521
 msgid ""
 "Dash pattern used to draw the focus indicator. The character values are "
 "interpreted as pixel widths of alternating on and off segments of the line."
 msgstr ""
 
-#: ctk/ctkwidget.c:3536
+#: ctk/ctkwidget.c:3534
 msgid "Focus padding"
 msgstr "ଫୋକସ ପ୍ଯାଡିଙ୍ଗ"
 
-#: ctk/ctkwidget.c:3537
+#: ctk/ctkwidget.c:3535
 msgid "Width, in pixels, between focus indicator and the widget 'box'"
 msgstr "ଫୋକସ ସୂଚକ ଏବଂ ୱିଜେଟ 'ବାକ୍ସ' ମଧ୍ଯରେ ଓସାର, ପିକ୍ସେଲରେ"
 
-#: ctk/ctkwidget.c:3548
+#: ctk/ctkwidget.c:3546
 msgid "Cursor color"
 msgstr "ଦର୍ଶିକା ରଙ୍ଗ"
 
-#: ctk/ctkwidget.c:3549
+#: ctk/ctkwidget.c:3547
 msgid "Color with which to draw insertion cursor"
 msgstr "ଯେଉଁ ରଙ୍ଗର ସନ୍ନିବେଶନ ଦର୍ଶିକାକୁ ଅଙ୍କନ କରିଯିବ"
 
-#: ctk/ctkwidget.c:3560
+#: ctk/ctkwidget.c:3558
 msgid "Secondary cursor color"
 msgstr "ଦ୍ବିତୀୟକ ଦର୍ଶିକା ରଙ୍ଗ"
 
-#: ctk/ctkwidget.c:3561
+#: ctk/ctkwidget.c:3559
 msgid ""
 "Color with which to draw the secondary insertion cursor when editing mixed "
 "right-to-left and left-to-right text"
@@ -9442,44 +9442,44 @@ msgstr ""
 "ମିଶ୍ର ଡାହାଣରୁ-ବାମକୁ ଏବଂ ବାମରୁ-ଡାହଣକୁ ପାଠ୍ଯକୁ ସମ୍ପାଦନ କରିବା ସମୟରେ ଯେଉଁ ରଙ୍ଗରେ ଦ୍ବିତୀୟକ "
 "ସନ୍ନିବେଶନ ଦର୍ଶିକାକୁ ଅଙ୍କନ କରାଯିବ"
 
-#: ctk/ctkwidget.c:3567
+#: ctk/ctkwidget.c:3565
 msgid "Cursor line aspect ratio"
 msgstr "ଦର୍ଶିକା ରେଖା ପରିମାପ ଅନୁପାତ"
 
-#: ctk/ctkwidget.c:3568
+#: ctk/ctkwidget.c:3566
 msgid "Aspect ratio with which to draw insertion cursor"
 msgstr "ପରିମାପ ଅନୁପାତ ଯାହା ସହିତ ସନ୍ନିବେଶନ ଦର୍ଶିକାକୁ ଅଙ୍କନ କରାଯିବ"
 
-#: ctk/ctkwidget.c:3574
+#: ctk/ctkwidget.c:3572
 #, fuzzy
 msgid "Window dragging"
 msgstr "ୱିଣ୍ଡୋର ଅବସ୍ଥାନ"
 
-#: ctk/ctkwidget.c:3575
+#: ctk/ctkwidget.c:3573
 msgid "Whether windows can be dragged and maximized by clicking on empty areas"
 msgstr ""
 
-#: ctk/ctkwidget.c:3587
+#: ctk/ctkwidget.c:3585
 msgid "Unvisited Link Color"
 msgstr "ଅପରଦର୍ଶିତ ସଂଯୋଗର ରଙ୍ଗ"
 
-#: ctk/ctkwidget.c:3588
+#: ctk/ctkwidget.c:3586
 msgid "Color of unvisited links"
 msgstr "ଅପରିଦର୍ଶିତ ସଂଯୋଗ ମାନଙ୍କର ରଙ୍ଗ"
 
-#: ctk/ctkwidget.c:3601
+#: ctk/ctkwidget.c:3599
 msgid "Visited Link Color"
 msgstr "ପରଦର୍ଶିତ ସଂଯୋଗର ରଙ୍ଗ"
 
-#: ctk/ctkwidget.c:3602
+#: ctk/ctkwidget.c:3600
 msgid "Color of visited links"
 msgstr "ପରିଦର୍ଶିତ ସଂଯୋଗ ମାନଙ୍କର ରଙ୍ଗ"
 
-#: ctk/ctkwidget.c:3619
+#: ctk/ctkwidget.c:3617
 msgid "Wide Separators"
 msgstr "ପ୍ରଶସ୍ତ"
 
-#: ctk/ctkwidget.c:3620
+#: ctk/ctkwidget.c:3618
 msgid ""
 "Whether separators have configurable width and should be drawn using a box "
 "instead of a line"
@@ -9487,44 +9487,44 @@ msgstr ""
 "ବିଭାଜକ ମାନଙ୍କର ବିନ୍ଯାସ ଯୋଗ୍ଯ ଓସାର ଅଛି କି ନାହିଁ ଏବଂ ସେମାନଙ୍କୁ ଗୋଟିଏ ରେଖା ପରିବର୍ତ୍ତେ ଗୋଟିଏ "
 "ବାକ୍ସ ବ୍ଯବହାର କରି ଅଙ୍କନ କରାଯିବା ଉଚିତ କି"
 
-#: ctk/ctkwidget.c:3637
+#: ctk/ctkwidget.c:3635
 msgid "Separator Width"
 msgstr "ବିଭାଜକର ଓସାର"
 
-#: ctk/ctkwidget.c:3638
+#: ctk/ctkwidget.c:3636
 msgid "The width of separators if wide-separators is TRUE"
 msgstr "ବିଭାଜକର ଓସାର ଯଦି ପ୍ରଶସ୍ତ-ବିଭାଜକ ସକ୍ରିୟ (TRUE) ଅଟେ"
 
-#: ctk/ctkwidget.c:3655
+#: ctk/ctkwidget.c:3653
 msgid "Separator Height"
 msgstr "ବିଭାଜକ ଉଚ୍ଚତା"
 
-#: ctk/ctkwidget.c:3656
+#: ctk/ctkwidget.c:3654
 msgid "The height of separators if \"wide-separators\" is TRUE"
 msgstr "ବିଭାଜକର ଉଚ୍ଚତା ଯଦି \"ପ୍ରଶସ୍ତ-ବିଭାଜକ\" ସକ୍ରିୟ (TRUE) ଅଟେ"
 
-#: ctk/ctkwidget.c:3670
+#: ctk/ctkwidget.c:3668
 msgid "Horizontal Scroll Arrow Length"
 msgstr "ଭୂସମାନ୍ତର ସ୍କ୍ରୋଲ ତୀର ଲମ୍ବ"
 
-#: ctk/ctkwidget.c:3671
+#: ctk/ctkwidget.c:3669
 msgid "The length of horizontal scroll arrows"
 msgstr "ଭୂସମାନ୍ତର ସ୍କ୍ରୋଲ ତୀରର ଲମ୍ବ"
 
-#: ctk/ctkwidget.c:3685
+#: ctk/ctkwidget.c:3683
 msgid "Vertical Scroll Arrow Length"
 msgstr "ଭୂଲମ୍ବ ସ୍କ୍ରୋଲ ତୀର ଲମ୍ବ"
 
-#: ctk/ctkwidget.c:3686
+#: ctk/ctkwidget.c:3684
 msgid "The length of vertical scroll arrows"
 msgstr "ଭୂଲମ୍ବ ସ୍କ୍ରୋଲ ତୀରର ଲମ୍ବ"
 
-#: ctk/ctkwidget.c:3692 ctk/ctkwidget.c:3693
+#: ctk/ctkwidget.c:3690 ctk/ctkwidget.c:3691
 #, fuzzy
 msgid "Width of text selection handles"
 msgstr "ନିୟନ୍ତ୍ରଣର ଓସାର"
 
-#: ctk/ctkwidget.c:3698 ctk/ctkwidget.c:3699
+#: ctk/ctkwidget.c:3696 ctk/ctkwidget.c:3697
 #, fuzzy
 msgid "Height of text selection handles"
 msgstr "ଅକ୍ଷରରୂପ ଚୟନ ସଂଳାପର ଶୀର୍ଷକ"
@@ -9791,23 +9791,6 @@ msgstr ""
 msgid "Decoration resize handle size"
 msgstr ""
 
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:133
-msgid "Cloud Print account"
-msgstr ""
-
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:134
-msgid "CtkCloudprintAccount instance"
-msgstr ""
-
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:143
-#, fuzzy
-msgid "Printer ID"
-msgstr "ମୁଦ୍ରଣୀ"
-
-#: modules/printbackends/cloudprint/ctkprintercloudprint.c:144
-msgid "Cloud Print printer ID"
-msgstr ""
-
 #: modules/printbackends/cups/ctkprintercups.c:91
 msgid "Color Profile Title"
 msgstr "ରଙ୍ଗ ରୂପରେଖା ଶୀର୍ଷକ"
@@ -9815,6 +9798,10 @@ msgstr "ରଙ୍ଗ ରୂପରେଖା ଶୀର୍ଷକ"
 #: modules/printbackends/cups/ctkprintercups.c:92
 msgid "The title of the color profile to use"
 msgstr "ବ୍ୟବହାର କରିବାକୁ ଥିବା ରଙ୍ଗ ରୂପରେଖାର ଶୀର୍ଷକ"
+
+#, fuzzy
+#~ msgid "Printer ID"
+#~ msgstr "ମୁଦ୍ରଣୀ"
 
 #~ msgid "Whether the combo box grabs focus when it is clicked with the mouse"
 #~ msgstr "କମ୍ବୋ ବାକ୍ସ ମାଉସ ଦ୍ୱାରା କ୍ଲିକ କରାହେବା ଦ୍ୱାରା ଲକ୍ଷ୍ୟ ସାଧନ କରିତାଏ କି ନାହିଁ"

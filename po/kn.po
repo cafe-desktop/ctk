@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+.master.kn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-11 17:18+0200\n"
+"POT-Creation-Date: 2023-08-13 13:45+0200\n"
 "PO-Revision-Date: 2014-09-23 10:15+0530\n"
 "Last-Translator: Shankar Prasad <svenkate AT redhat Dot com>\n"
 "Language-Team: Kannada <kde-i18n-doc@kde.org>\n"
@@ -482,20 +482,20 @@ msgstr ""
 msgid "Unable to create a GL context"
 msgstr ""
 
-#: cdk/wayland/cdkglcontext-wayland.c:418
-#: cdk/wayland/cdkglcontext-wayland.c:428 cdk/win32/cdkglcontext-win32.c:910
+#: cdk/wayland/cdkglcontext-wayland.c:422
+#: cdk/wayland/cdkglcontext-wayland.c:432 cdk/win32/cdkglcontext-win32.c:910
 #: cdk/win32/cdkglcontext-win32.c:920 cdk/win32/cdkglcontext-win32.c:1037
 #: cdk/x11/cdkglcontext-x11.c:975
 msgid "No available configurations for the given pixel format"
 msgstr ""
 
-#: cdk/wayland/cdkglcontext-wayland.c:468 cdk/win32/cdkglcontext-win32.c:1179
+#: cdk/wayland/cdkglcontext-wayland.c:472 cdk/win32/cdkglcontext-win32.c:1179
 #: cdk/x11/cdkglcontext-x11.c:1281
 #, fuzzy
 msgid "No GL implementation is available"
 msgstr "ಯಾವುದೆ ಪ್ರೊಫೈಲ್ ಲಭ್ಯವಿಲ್ಲ"
 
-#: cdk/wayland/cdkglcontext-wayland.c:476
+#: cdk/wayland/cdkglcontext-wayland.c:480
 msgid "Core GL is not available on EGL implementation"
 msgstr ""
 
@@ -2590,11 +2590,8 @@ msgstr "ವಾಲಿಕೆ (_O):"
 msgid "Spreadsheet"
 msgstr ""
 
-#. Translators: We don't know whether this printer is
-#. * available to print to.
 #: ctk/ctkfilechooserwidget.c:5054 ctk/ctkfilechooserwidget.c:5243
 #: ctk/inspector/prop-editor.c:1691
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:744
 msgid "Unknown"
 msgstr "ಗೊತ್ತಿರದ"
 
@@ -2658,7 +2655,7 @@ msgstr "Sans 12"
 msgid "Pick a Font"
 msgstr "ಒಂದು ಅಕ್ಷರಶೈಲಿಯನ್ನು ಆರಿಸಿ"
 
-#: ctk/ctkfontbutton.c:1393
+#: ctk/ctkfontbutton.c:1391
 #, fuzzy
 msgctxt "font"
 msgid "None"
@@ -3042,7 +3039,7 @@ msgstr "Z ಶೆಲ್"
 msgid "Cannot end process with PID %d: %s"
 msgstr "%d PIDಯೊಂದಿಗೆ ಪ್ರಕ್ರಿಯೆಯನ್ನು ಅಂತ್ಯಗೊಳಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ: %s"
 
-#: ctk/ctknotebook.c:5150 ctk/ctknotebook.c:7428
+#: ctk/ctknotebook.c:5148 ctk/ctknotebook.c:7426
 #, c-format
 msgid "Page %u"
 msgstr "ಪುಟ %u"
@@ -7820,55 +7817,55 @@ msgstr "%s ಅನ್ನು %s ಗೆ ಪುನರ್ ನಾಮಕರಣ ಮಾ�
 msgid "Could not rename %s back to %s: %s.\n"
 msgstr "%s ಅನ್ನು %s ಎಂದು ಮರಳಿ ಪುನರ್ ನಾಮಕರಣ ಮಾಡಲಾಗಿಲ್ಲ: %s.\n"
 
-#: ctk/updateiconcache.c:1629
+#: ctk/updateiconcache.c:1625
 #, c-format
 msgid "Cache file created successfully.\n"
 msgstr "ಕ್ಯಾಶೆಯು ಯಶಸ್ವಿಯಾಗಿ ರಚಿತಗೊಂಡಿದೆ.\n"
 
-#: ctk/updateiconcache.c:1668
+#: ctk/updateiconcache.c:1664
 msgid "Overwrite an existing cache, even if up to date"
 msgstr "ಪ್ರಸ್ತುತ ಇರುವ ಒಂದು ಕ್ಯಾಶೆಯು ನವೀಕೃತವಾಗಿದ್ದರೂ ಅದನ್ನು ತಿದ್ದಿಬರೆ"
 
-#: ctk/updateiconcache.c:1669
+#: ctk/updateiconcache.c:1665
 msgid "Don't check for the existence of index.theme"
 msgstr "index.theme ನ ಅಸ್ತಿತ್ವವನ್ನು ಪರೀಕ್ಷೆ ಮಾಡಬೇಡ"
 
-#: ctk/updateiconcache.c:1670
+#: ctk/updateiconcache.c:1666
 msgid "Don't include image data in the cache"
 msgstr "ಚಿತ್ರ ದತ್ತಾಂಶವನ್ನು ಕ್ಯಾಶೆಯಲ್ಲಿ ಅಡಕಗೊಳಿಸಬೇಡ"
 
-#: ctk/updateiconcache.c:1671
+#: ctk/updateiconcache.c:1667
 msgid "Include image data in the cache"
 msgstr "ಚಿತ್ರದ ದತ್ತಾಂಶವನ್ನು ಕ್ಯಾಶೆಯಲ್ಲಿ ಸೇರಿಸಬೇಡ"
 
-#: ctk/updateiconcache.c:1672
+#: ctk/updateiconcache.c:1668
 msgid "Output a C header file"
 msgstr "ಒಂದು C ಶೀರ್ಷಿಕಾ ಕಡತವನ್ನು ಆದಾನ ಮಾಡು"
 
-#: ctk/updateiconcache.c:1673
+#: ctk/updateiconcache.c:1669
 msgid "Turn off verbose output"
 msgstr "ವರ್ಬೊಸ್ ಔಟ್‌ಪುಟ್‌ ಅನ್ನು ಆಫ್ ಮಾಡಿ"
 
-#: ctk/updateiconcache.c:1674
+#: ctk/updateiconcache.c:1670
 msgid "Validate existing icon cache"
 msgstr "ಪ್ರಸ್ತುತ ಅಸ್ತಿತ್ವದಲ್ಲಿರುವ ಕ್ಯಾಶೆಯನ್ನು ಸಕ್ರಮಗೊಳಿಸು"
 
-#: ctk/updateiconcache.c:1741
+#: ctk/updateiconcache.c:1737
 #, c-format
 msgid "File not found: %s\n"
 msgstr "ಕಡತ ಕಂಡುಬಂದಿಲ್ಲ: %s\n"
 
-#: ctk/updateiconcache.c:1747
+#: ctk/updateiconcache.c:1743
 #, c-format
 msgid "Not a valid icon cache: %s\n"
 msgstr "ಒಂದು ಮಾನ್ಯ ಲಾಂಛನ ಕ್ಯಾಶೆ ಅಲ್ಲ: %s\n"
 
-#: ctk/updateiconcache.c:1760
+#: ctk/updateiconcache.c:1756
 #, c-format
 msgid "No theme index file.\n"
 msgstr "ಯಾವುದೆ ಪರಿಸರವಿನ್ಯಾಸ ಸೂಚಕ ಕಡತವಿಲ್ಲ.\n"
 
-#: ctk/updateiconcache.c:1764
+#: ctk/updateiconcache.c:1760
 #, c-format
 msgid ""
 "No theme index file in '%s'.\n"
@@ -7982,31 +7979,6 @@ msgstr ""
 msgctxt "input method menu"
 msgid "X Input Method"
 msgstr "X ಆದಾನ ಪದ್ದತಿ"
-
-#. Translators: The printer status is online, i.e. it is
-#. * ready to print.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:740
-msgid "Online"
-msgstr "ಆನ್‌ಲೈನ್"
-
-#. Translators: The printer is offline.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:747
-msgid "Offline"
-msgstr "ಆಫ್‌ಲೈನ್"
-
-#. We shouldn't get here because the query omits dormant
-#. * printers by default.
-#. Translators: Printer has been offline for a long time.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:753
-msgid "Dormant"
-msgstr "ಸುಪ್ತ"
-
-#. How many document pages to go onto one side of paper.
-#: modules/printbackends/cloudprint/ctkprintbackendcloudprint.c:937
-#: modules/printbackends/file/ctkprintbackendfile.c:675
-#: modules/printbackends/test/ctkprintbackendtest.c:503
-msgid "Pages per _sheet:"
-msgstr "ಪ್ರತಿ ಹಾಳೆಯಲ್ಲಿನ ಪುಟಗಳು (_s):"
 
 #: modules/printbackends/cups/ctkprintbackendcups.c:1155
 #: modules/printbackends/cups/ctkprintbackendcups.c:1465
@@ -8588,6 +8560,11 @@ msgstr "ಪೋಸ್ಟ್-ಸ್ಕ್ರಿಪ್ಟ್"
 msgid "SVG"
 msgstr "SVG"
 
+#: modules/printbackends/file/ctkprintbackendfile.c:675
+#: modules/printbackends/test/ctkprintbackendtest.c:499
+msgid "Pages per _sheet:"
+msgstr "ಪ್ರತಿ ಹಾಳೆಯಲ್ಲಿನ ಪುಟಗಳು (_s):"
+
 #: modules/printbackends/file/ctkprintbackendfile.c:734
 msgid "File"
 msgstr "ಕಡತ"
@@ -8634,14 +8611,23 @@ msgid "unknown"
 msgstr "ಗೊತ್ತಿರದ"
 
 #. default filename used for print-to-test
-#: modules/printbackends/test/ctkprintbackendtest.c:232
+#: modules/printbackends/test/ctkprintbackendtest.c:228
 #, c-format
 msgid "test-output.%s"
 msgstr "ಪರೀಕ್ಷಾ-ಔಟ್‌ಪುಟ್.%s"
 
-#: modules/printbackends/test/ctkprintbackendtest.c:467
+#: modules/printbackends/test/ctkprintbackendtest.c:463
 msgid "Print to Test Printer"
 msgstr "ಮುದ್ರಕವನ್ನು ಪರೀಕ್ಷಿಸಲು ಮುದ್ರಿಸು"
+
+#~ msgid "Online"
+#~ msgstr "ಆನ್‌ಲೈನ್"
+
+#~ msgid "Offline"
+#~ msgstr "ಆಫ್‌ಲೈನ್"
+
+#~ msgid "Dormant"
+#~ msgstr "ಸುಪ್ತ"
 
 #~ msgid "The license of the program"
 #~ msgstr "ಪ್ರೋಗ್ರಾಂನ ಪರವಾನಗಿ"
