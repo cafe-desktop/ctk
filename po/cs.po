@@ -8361,12 +8361,3 @@ msgstr "zkušební-výstup.%s"
 #: modules/printbackends/test/ctkprintbackendtest.c:463
 msgid "Print to Test Printer"
 msgstr "Tisknout na zkušební tiskárnu"
-
-#~ msgid "Online"
-#~ msgstr "Připravena"
-
-#~ msgid "Offline"
-#~ msgstr "Nepřipojena"
-
-#~ msgid "Dormant"
-#~ msgstr "Dlouhodobě nepřipojena"

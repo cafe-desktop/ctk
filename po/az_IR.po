@@ -8296,5 +8296,3 @@ msgid "Print to Test Printer"
 msgstr ""
 
 #, fuzzy
-#~ msgid "calendar:week:digits|%d"
-#~ msgstr "calendar:week_start:6"

@@ -8360,12 +8360,3 @@ msgstr "testutdata.%s"
 #: modules/printbackends/test/ctkprintbackendtest.c:463
 msgid "Print to Test Printer"
 msgstr "Skriv ut till testskrivare"
-
-#~ msgid "Online"
-#~ msgstr "På nätet"
-
-#~ msgid "Offline"
-#~ msgstr "Frånkopplad"
-
-#~ msgid "Dormant"
-#~ msgstr "Vilande"

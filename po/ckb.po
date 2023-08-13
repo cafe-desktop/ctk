@@ -8308,9 +8308,3 @@ msgstr ""
 #: modules/printbackends/test/ctkprintbackendtest.c:463
 msgid "Print to Test Printer"
 msgstr ""
-
-#~ msgid "Online"
-#~ msgstr "سەرهێڵ"
-
-#~ msgid "Offline"
-#~ msgstr "چاپکەر دەرهێڵ"

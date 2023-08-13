@@ -8349,9 +8349,3 @@ msgstr ""
 #: modules/printbackends/test/ctkprintbackendtest.c:463
 msgid "Print to Test Printer"
 msgstr ""
-
-#~ msgid "Remove"
-#~ msgstr "Өчүрүү"
-
-#~ msgid "Search:"
-#~ msgstr "Издөө:"

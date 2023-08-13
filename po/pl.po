@@ -8365,15 +8365,3 @@ msgstr "testowe-dane-wyjściowe.%s"
 #: modules/printbackends/test/ctkprintbackendtest.c:463
 msgid "Print to Test Printer"
 msgstr "Wydruk do drukarki testowej"
-
-#~ msgid "Online"
-#~ msgstr "Online"
-
-#~ msgid "Offline"
-#~ msgstr "Offline"
-
-#~ msgid "Dormant"
-#~ msgstr "Bezczynna"
-
-#~ msgid "Starred files"
-#~ msgstr "Ulubione pliki"

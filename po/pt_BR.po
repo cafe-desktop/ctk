@@ -8468,12 +8468,3 @@ msgstr "saida-teste.%s"
 #: modules/printbackends/test/ctkprintbackendtest.c:463
 msgid "Print to Test Printer"
 msgstr "Imprimir para testar impressora"
-
-#~ msgid "Online"
-#~ msgstr "Conectada"
-
-#~ msgid "Offline"
-#~ msgstr "Desconectada"
-
-#~ msgid "Dormant"
-#~ msgstr "Dormente"

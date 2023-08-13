@@ -8358,12 +8358,3 @@ msgstr "testutfil.%s"
 #: modules/printbackends/test/ctkprintbackendtest.c:463
 msgid "Print to Test Printer"
 msgstr "Skriv ut til testskriver"
-
-#~ msgid "Online"
-#~ msgstr "Tilkoblet"
-
-#~ msgid "Offline"
-#~ msgstr "Frakoblet"
-
-#~ msgid "Dormant"
-#~ msgstr "Hviler"

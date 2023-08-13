@@ -8362,12 +8362,3 @@ msgstr "keluaran.%s"
 #: modules/printbackends/test/ctkprintbackendtest.c:463
 msgid "Print to Test Printer"
 msgstr "Cetak untuk Menguji Pencetak"
-
-#~ msgid "Online"
-#~ msgstr "Daring"
-
-#~ msgid "Offline"
-#~ msgstr "Luring"
-
-#~ msgid "Dormant"
-#~ msgstr "Dormant"

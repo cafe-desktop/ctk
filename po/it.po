@@ -8473,12 +8473,3 @@ msgstr "output-prova.%s"
 #: modules/printbackends/test/ctkprintbackendtest.c:463
 msgid "Print to Test Printer"
 msgstr "Stampa su stampante di prova"
-
-#~ msgid "Online"
-#~ msgstr "Disponibile"
-
-#~ msgid "Offline"
-#~ msgstr "Non disponibile"
-
-#~ msgid "Dormant"
-#~ msgstr "Non attiva"
