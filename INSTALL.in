@@ -33,10 +33,10 @@ The Details
 ===========
 
 Complete information about installing CTK+ and related libraries
-can be found in the file:
+can be found in the file (after build with --enable-gtk-doc):
 
  docs/reference/ctk/html/ctk-building.html
 
-Or online at:
+Or after install at:
 
- http://library.gnome.org/devel/ctk/stable/ctk-building.html
+ /usr/share/gtk-doc/html/ctk3/ctk-building.html
