@@ -89,7 +89,7 @@ void ctk_drag_set_icon_pixbuf (CdkDragContext *context,
 			       GdkPixbuf      *pixbuf,
 			       gint            hot_x,
 			       gint            hot_y);
-CDK_DEPRECATED_IN_3_10_FOR(ctk_drag_set_icon_name)
+CDK_AVAILABLE_IN_ALL
 void ctk_drag_set_icon_stock  (CdkDragContext *context,
 			       const gchar    *stock_id,
 			       gint            hot_x,

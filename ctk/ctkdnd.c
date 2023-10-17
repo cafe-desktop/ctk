@@ -2245,8 +2245,6 @@ ctk_drag_set_icon_pixbuf (CdkDragContext *context,
  * @hot_y: the Y offset within the icon of the hotspot
  * 
  * Sets the icon for a given drag from a stock ID.
- *
- * Deprecated: 3.10: Use ctk_drag_set_icon_name() instead.
  */
 void 
 ctk_drag_set_icon_stock (CdkDragContext *context,
