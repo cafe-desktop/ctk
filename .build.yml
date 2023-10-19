@@ -9,7 +9,6 @@ requires:
     - automake
     - autopoint
     - autotools-dev
-    - adwaita-icon-theme
     - build-essential
     - ccache
     - clang
@@ -85,6 +84,7 @@ requires:
 
 before_scripts:
   - ./html-cppcheck
+  - ./install-from-git https://github.com/cafe-desktop/advaita-icon-theme master
 
 build_scripts:
   - ./before-build
