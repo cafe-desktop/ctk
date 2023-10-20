@@ -1,7 +1,7 @@
 FROM fedora:31
 
 RUN dnf -y install \
-    adwaita-icon-theme \
+    advaita-icon-theme \
     atk-devel \
     at-spi2-atk-devel \
     avahi-gobject-devel \

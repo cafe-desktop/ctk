@@ -1402,7 +1402,7 @@ gesture_sources = 				\
 	gesture/gesture-two-finger-swipe-left-symbolic.svg	\
 	gesture/gesture-two-finger-swipe-right-symbolic.svg
 
-adwaita_theme_scss = \
+advaita_theme_scss = \
 	theme/Adwaita/_colors-public.scss 	\
 	theme/Adwaita/_colors.scss 		\
 	theme/Adwaita/_common.scss 		\
@@ -1427,10 +1427,10 @@ scss_verbose_0 = @echo "  SCSS     $@";
 
 SASSC_OPTS = -a -M -t compact
 
-theme/Adwaita/ctk-contained.css: $(top_srcdir)/ctk/theme/Adwaita/ctk-contained.scss $(adwaita_theme_scss)
+theme/Adwaita/ctk-contained.css: $(top_srcdir)/ctk/theme/Adwaita/ctk-contained.scss $(advaita_theme_scss)
 	$(scss_verbose) $(MKDIR_P) $(dir $@) && $(SASSC) $(SASSC_OPTS) $< $@ || rm -f $@
 
-theme/Adwaita/ctk-contained-dark.css: $(top_srcdir)/ctk/theme/Adwaita/ctk-contained-dark.scss $(adwaita_theme_scss)
+theme/Adwaita/ctk-contained-dark.css: $(top_srcdir)/ctk/theme/Adwaita/ctk-contained-dark.scss $(advaita_theme_scss)
 	$(scss_verbose) $(MKDIR_P) $(dir $@) && $(SASSC) $(SASSC_OPTS) $< $@ || rm -f $@
 
 theme/HighContrast/ctk-contained.css: $(top_srcdir)/ctk/theme/HighContrast/ctk-contained.scss $(highcontrast_theme_scss)
@@ -1444,7 +1444,7 @@ endif # REBUILD_SCSS
 theme_sources = 				\
 	theme/win32/ctk.css	 		\
 	theme/win32/ctk-win32-base.css 		\
-	$(adwaita_theme_scss)			\
+	$(advaita_theme_scss)			\
 	theme/Adwaita/assets.txt 		\
 	theme/Adwaita/assets.svg 		\
 	theme/Adwaita/README 			\
