@@ -80,7 +80,7 @@ GType        ctk_tool_button_get_type       (void) G_GNUC_CONST;
 CDK_AVAILABLE_IN_ALL
 CtkToolItem *ctk_tool_button_new            (CtkWidget   *icon_widget,
 					     const gchar *label);
-CDK_DEPRECATED_IN_3_10_FOR(ctk_tool_button_new)
+CDK_AVAILABLE_IN_ALL
 CtkToolItem *ctk_tool_button_new_from_stock (const gchar *stock_id);
 
 CDK_AVAILABLE_IN_ALL
@@ -93,10 +93,10 @@ void                  ctk_tool_button_set_use_underline (CtkToolButton *button,
 							 gboolean       use_underline);
 CDK_AVAILABLE_IN_ALL
 gboolean              ctk_tool_button_get_use_underline (CtkToolButton *button);
-CDK_DEPRECATED_IN_3_10_FOR(ctk_tool_button_set_icon_name)
+CDK_AVAILABLE_IN_ALL
 void                  ctk_tool_button_set_stock_id      (CtkToolButton *button,
 							 const gchar   *stock_id);
-CDK_DEPRECATED_IN_3_10_FOR(ctk_tool_button_get_icon_name)
+CDK_AVAILABLE_IN_ALL
 const gchar *         ctk_tool_button_get_stock_id      (CtkToolButton *button);
 CDK_AVAILABLE_IN_ALL
 void                  ctk_tool_button_set_icon_name     (CtkToolButton *button,

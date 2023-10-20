@@ -627,9 +627,7 @@ ctk_tool_button_set_property (GObject         *object,
       ctk_tool_button_set_label_widget (button, g_value_get_object (value));
       break;
     case PROP_STOCK_ID:
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       ctk_tool_button_set_stock_id (button, g_value_get_string (value));
-      G_GNUC_END_IGNORE_DEPRECATIONS;
       break;
     case PROP_ICON_NAME:
       ctk_tool_button_set_icon_name (button, g_value_get_string (value));
@@ -1055,9 +1053,6 @@ ctk_tool_button_sync_action_properties (CtkActivatable *activatable,
  * Returns: A new #CtkToolButton
  * 
  * Since: 2.4
- *
- * Deprecated: 3.10: Use ctk_tool_button_new() together with
- * ctk_image_new_from_icon_name() instead.
  **/
 CtkToolItem *
 ctk_tool_button_new_from_stock (const gchar *stock_id)
@@ -1226,8 +1221,6 @@ ctk_tool_button_get_use_underline (CtkToolButton *button)
  * #CtkToolButton:label-widget and #CtkToolButton:icon-widget properties.
  * 
  * Since: 2.4
- *
- * Deprecated: 3.10: Use ctk_tool_button_set_icon_name() instead.
  **/
 void
 ctk_tool_button_set_stock_id (CtkToolButton *button,
@@ -1257,8 +1250,6 @@ ctk_tool_button_set_stock_id (CtkToolButton *button,
  * Returns: the name of the stock item for @button.
  * 
  * Since: 2.4
- *
- * Deprecated: 3.10: Use ctk_tool_button_get_icon_name() instead.
  **/
 const gchar *
 ctk_tool_button_get_stock_id (CtkToolButton *button)

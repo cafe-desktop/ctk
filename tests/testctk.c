@@ -1278,9 +1278,7 @@ create_toolbar (CtkWidget *widget)
             }
           else if (create_toolbar_items[i].stock_id)
             {
-              G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
               toolitem = ctk_tool_button_new_from_stock (create_toolbar_items[i].stock_id);
-              G_GNUC_END_IGNORE_DEPRECATIONS;
             }
           else
             {
