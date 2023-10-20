@@ -1,7 +1,7 @@
 FROM debian:buster
 
 RUN apt-get update -qq && apt-get install --no-install-recommends -qq -y \
-    adwaita-icon-theme \
+    advaita-icon-theme \
     ccache \
     dconf-gsettings-backend \
     g++ \

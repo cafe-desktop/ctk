@@ -43,7 +43,7 @@ $_switch_margin: if($_sizevariant=='default', 10px, 7px);
   -CtkDialog-action-area-border: 0;
 
   // We use the outline properties to signal the focus properties
-  // to the adwaita engine: using real CSS properties is faster,
+  // to the advaita engine: using real CSS properties is faster,
   // and we don't use any outlines for now.
 
   outline-color: ctkalpha(currentColor, 0.3);
