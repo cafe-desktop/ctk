@@ -96,7 +96,7 @@ built.  The introspection files that are built will be "installed" to
 successful build.  for building this in a different configuration, therefore,
 you will need to clean this project specifically and then rebuild.
 
-Please note, as CTK+ uses the Adwaita theme for all platforms by default,
+Please note, as CTK+ uses the Advaita theme for all platforms by default,
 most icons used are not included with CTK+ (which *are* needed), so please see
 https://live.gnome.org/CTK%2B/Win32/MSVCCompilationOfCTKStack (under the
 CTK+ section) on how to get those icons set up for use with CTK+.

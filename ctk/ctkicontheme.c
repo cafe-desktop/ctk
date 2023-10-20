@@ -1371,8 +1371,8 @@ load_themes (CtkIconTheme *icon_theme)
   if (priv->current_theme)
     insert_theme (icon_theme, priv->current_theme);
 
-  /* Always look in the Adwaita, gnome and hicolor icon themes.
-   * Looking in hicolor is mandated by the spec, looking in Adwaita
+  /* Always look in the Advaita, gnome and hicolor icon themes.
+   * Looking in hicolor is mandated by the spec, looking in Advaita
    * and gnome is a pragmatic solution to prevent missing icons in
    * CTK+ applications when run under, e.g. KDE.
    */

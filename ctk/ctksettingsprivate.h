@@ -23,8 +23,8 @@
 
 G_BEGIN_DECLS
 
-#define DEFAULT_THEME_NAME      "Adwaita"
-#define DEFAULT_ICON_THEME      "Adwaita"
+#define DEFAULT_THEME_NAME      "Advaita"
+#define DEFAULT_ICON_THEME      "Advaita"
 
 void                _ctk_settings_set_property_value_from_rc (CtkSettings            *settings,
                                                               const gchar            *name,

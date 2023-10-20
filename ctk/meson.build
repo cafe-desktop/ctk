@@ -726,7 +726,7 @@ sassc = find_program('sassc', required: false)
 if sassc.found()
   sassc_opts = [ '-a', '-M', '-t', 'compact' ]
 
-  subdir('theme/Adwaita')
+  subdir('theme/Advaita')
   subdir('theme/HighContrast')
 endif
 

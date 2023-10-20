@@ -382,7 +382,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
   if (g_type_is_a (type, CTK_TYPE_WIDGET))
     {
-      g_object_set (ctk_settings_get_default (), "ctk-theme-name", "Adwaita", NULL);
+      g_object_set (ctk_settings_get_default (), "ctk-theme-name", "Advaita", NULL);
       pspecs = ctk_widget_class_list_style_properties (CTK_WIDGET_CLASS (klass), &n_pspecs);
 
       for (i = 0; i < n_pspecs; ++i)
@@ -396,7 +396,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 	  if ((pspec->flags & G_PARAM_READABLE) == 0)
 	    continue;
 
-          /* These are overridden by Adwaita */
+          /* These are overridden by Advaita */
           if (g_type_is_a (type, CTK_TYPE_DIALOG) &&
               (strcmp (pspec->name, "action-area-border") == 0 ||
                strcmp (pspec->name, "button-spacing") == 0))
