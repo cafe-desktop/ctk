@@ -9,7 +9,7 @@ theme_variants = [
   'dark',
 ]
 
-theme_deps += custom_target('Adwaita',
+theme_deps += custom_target('Advaita',
                             input: 'ctk-contained.scss',
                             output: 'ctk-contained.css',
                             command: [
@@ -19,7 +19,7 @@ theme_deps += custom_target('Adwaita',
                             build_by_default: true)
 
 foreach variant: theme_variants
-  theme_deps += custom_target('Adwaita-' + variant,
+  theme_deps += custom_target('Advaita-' + variant,
                               input: 'ctk-contained-@0@.scss'.format(variant),
                               output: 'ctk-contained-@0@.css'.format(variant),
                               command: [

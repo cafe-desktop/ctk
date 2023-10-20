@@ -112,7 +112,7 @@ in 256 color mode.
 
 <para>
 By default the "system" cursor theme is used. This makes CTK prefer cursors
-that Windows currently uses, falling back to Adwaita cursors and (as the last
+that Windows currently uses, falling back to Advaita cursors and (as the last
 resort) built-in X cursors.
 </para>
 <para>

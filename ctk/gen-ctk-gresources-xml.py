@@ -17,19 +17,19 @@ def get_files(subdir,extension):
   return sorted(filter(lambda x: x.endswith((extension)), os.listdir(os.path.join(srcdir,subdir))))
 
 xml += '''
-    <file>theme/Adwaita/ctk.css</file>
-    <file>theme/Adwaita/ctk-dark.css</file>
-    <file>theme/Adwaita/ctk-contained.css</file>
-    <file>theme/Adwaita/ctk-contained-dark.css</file>
+    <file>theme/Advaita/ctk.css</file>
+    <file>theme/Advaita/ctk-dark.css</file>
+    <file>theme/Advaita/ctk-contained.css</file>
+    <file>theme/Advaita/ctk-contained-dark.css</file>
 '''
 
-for f in get_files('theme/Adwaita/assets', '.png'):
-  xml += '    <file preprocess=\'to-pixdata\'>theme/Adwaita/assets/{0}</file>\n'.format(f)
+for f in get_files('theme/Advaita/assets', '.png'):
+  xml += '    <file preprocess=\'to-pixdata\'>theme/Advaita/assets/{0}</file>\n'.format(f)
 
 xml += '\n'
 
-for f in get_files('theme/Adwaita/assets', '.svg'):
-  xml += '    <file>theme/Adwaita/assets/{0}</file>\n'.format(f)
+for f in get_files('theme/Advaita/assets', '.svg'):
+  xml += '    <file>theme/Advaita/assets/{0}</file>\n'.format(f)
 
 xml += '''
     <file>theme/HighContrast/ctk.css</file>

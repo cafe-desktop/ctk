@@ -135,12 +135,12 @@ all:	\
 	@echo ^<?xml version='1.0' encoding='UTF-8'?^>> $@
 	@echo ^<gresources^>>> $@
 	@echo   ^<gresource prefix='/org/ctk/libctk'^>>> $@
-	@echo     ^<file^>theme/Adwaita/ctk.css^</file^>>> $@
-	@echo     ^<file^>theme/Adwaita/ctk-dark.css^</file^>>> $@
-	@echo     ^<file^>theme/Adwaita/ctk-contained.css^</file^>>> $@
-	@echo     ^<file^>theme/Adwaita/ctk-contained-dark.css^</file^>>> $@
-	@for %%f in (..\ctk\theme\Adwaita\assets\*.png) do @echo     ^<file preprocess='to-pixdata'^>theme/Adwaita/assets/%%~nxf^</file^>>> $@
-	@for %%f in (..\ctk\theme\Adwaita\assets\*.svg) do @echo     ^<file^>theme/Adwaita/assets/%%~nxf^</file^>>> $@
+	@echo     ^<file^>theme/Advaita/ctk.css^</file^>>> $@
+	@echo     ^<file^>theme/Advaita/ctk-dark.css^</file^>>> $@
+	@echo     ^<file^>theme/Advaita/ctk-contained.css^</file^>>> $@
+	@echo     ^<file^>theme/Advaita/ctk-contained-dark.css^</file^>>> $@
+	@for %%f in (..\ctk\theme\Advaita\assets\*.png) do @echo     ^<file preprocess='to-pixdata'^>theme/Advaita/assets/%%~nxf^</file^>>> $@
+	@for %%f in (..\ctk\theme\Advaita\assets\*.svg) do @echo     ^<file^>theme/Advaita/assets/%%~nxf^</file^>>> $@
 	@echo     ^<file^>theme/HighContrast/ctk.css^</file^>>> $@
 	@echo     ^<file alias='theme/HighContrastInverse/ctk.css'^>theme/HighContrast/ctk-inverse.css^</file^>>> $@
 	@echo     ^<file^>theme/HighContrast/ctk-contained.css^</file^>>> $@

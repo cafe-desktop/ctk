@@ -1329,17 +1329,17 @@ ctk.gresource.xml: Makefile.am inspector/Makefile.inc
 	$(AM_V_GEN) echo "<?xml version='1.0' encoding='UTF-8'?>" > $@; \
 	echo "<gresources>" >> $@; \
 	echo "  <gresource prefix='/org/ctk/libctk'>" >> $@; \
-        echo "    <file>theme/Adwaita/ctk.css</file>" >> $@; \
-        echo "    <file>theme/Adwaita/ctk-dark.css</file>" >> $@; \
-        echo "    <file>theme/Adwaita/ctk-contained.css</file>" >> $@; \
-        echo "    <file>theme/Adwaita/ctk-contained-dark.css</file>" >> $@; \
-        for f in $(srcdir)/theme/Adwaita/assets/*.png; do \
+        echo "    <file>theme/Advaita/ctk.css</file>" >> $@; \
+        echo "    <file>theme/Advaita/ctk-dark.css</file>" >> $@; \
+        echo "    <file>theme/Advaita/ctk-contained.css</file>" >> $@; \
+        echo "    <file>theme/Advaita/ctk-contained-dark.css</file>" >> $@; \
+        for f in $(srcdir)/theme/Advaita/assets/*.png; do \
           n=`basename $$f`; \
-          echo "    <file preprocess='to-pixdata'>theme/Adwaita/assets/$$n</file>" >> $@; \
+          echo "    <file preprocess='to-pixdata'>theme/Advaita/assets/$$n</file>" >> $@; \
         done; \
-        for f in $(srcdir)/theme/Adwaita/assets/*.svg; do \
+        for f in $(srcdir)/theme/Advaita/assets/*.svg; do \
           n=`basename $$f`; \
-          echo "    <file>theme/Adwaita/assets/$$n</file>" >> $@; \
+          echo "    <file>theme/Advaita/assets/$$n</file>" >> $@; \
         done; \
 	echo "    <file>theme/HighContrast/ctk.css</file>" >> $@; \
 	echo "    <file alias='theme/HighContrastInverse/ctk.css'>theme/HighContrast/ctk-inverse.css</file>" >> $@; \
@@ -1403,12 +1403,12 @@ gesture_sources = 				\
 	gesture/gesture-two-finger-swipe-right-symbolic.svg
 
 advaita_theme_scss = \
-	theme/Adwaita/_colors-public.scss 	\
-	theme/Adwaita/_colors.scss 		\
-	theme/Adwaita/_common.scss 		\
-	theme/Adwaita/_drawing.scss 		\
-	theme/Adwaita/ctk-contained-dark.scss 	\
-	theme/Adwaita/ctk-contained.scss 	\
+	theme/Advaita/_colors-public.scss 	\
+	theme/Advaita/_colors.scss 		\
+	theme/Advaita/_common.scss 		\
+	theme/Advaita/_drawing.scss 		\
+	theme/Advaita/ctk-contained-dark.scss 	\
+	theme/Advaita/ctk-contained.scss 	\
 	$()
 
 highcontrast_theme_scss = \
@@ -1427,10 +1427,10 @@ scss_verbose_0 = @echo "  SCSS     $@";
 
 SASSC_OPTS = -a -M -t compact
 
-theme/Adwaita/ctk-contained.css: $(top_srcdir)/ctk/theme/Adwaita/ctk-contained.scss $(advaita_theme_scss)
+theme/Advaita/ctk-contained.css: $(top_srcdir)/ctk/theme/Advaita/ctk-contained.scss $(advaita_theme_scss)
 	$(scss_verbose) $(MKDIR_P) $(dir $@) && $(SASSC) $(SASSC_OPTS) $< $@ || rm -f $@
 
-theme/Adwaita/ctk-contained-dark.css: $(top_srcdir)/ctk/theme/Adwaita/ctk-contained-dark.scss $(advaita_theme_scss)
+theme/Advaita/ctk-contained-dark.css: $(top_srcdir)/ctk/theme/Advaita/ctk-contained-dark.scss $(advaita_theme_scss)
 	$(scss_verbose) $(MKDIR_P) $(dir $@) && $(SASSC) $(SASSC_OPTS) $< $@ || rm -f $@
 
 theme/HighContrast/ctk-contained.css: $(top_srcdir)/ctk/theme/HighContrast/ctk-contained.scss $(highcontrast_theme_scss)
@@ -1445,13 +1445,13 @@ theme_sources = 				\
 	theme/win32/ctk.css	 		\
 	theme/win32/ctk-win32-base.css 		\
 	$(advaita_theme_scss)			\
-	theme/Adwaita/assets.txt 		\
-	theme/Adwaita/assets.svg 		\
-	theme/Adwaita/README 			\
-	theme/Adwaita/ctk-contained.css 	\
-	theme/Adwaita/ctk-contained-dark.css 	\
-	theme/Adwaita/ctk.css 			\
-	theme/Adwaita/ctk-dark.css 		\
+	theme/Advaita/assets.txt 		\
+	theme/Advaita/assets.svg 		\
+	theme/Advaita/README 			\
+	theme/Advaita/ctk-contained.css 	\
+	theme/Advaita/ctk-contained-dark.css 	\
+	theme/Advaita/ctk.css 			\
+	theme/Advaita/ctk-dark.css 		\
 	$(highcontrast_theme_scss)		\
 	theme/HighContrast/ctk-contained.css 	\
 	theme/HighContrast/ctk-contained-inverse.css \
@@ -1833,9 +1833,9 @@ EXTRA_DIST +=                   \
 	a11y/meson.build \
 	deprecated/meson.build \
 	inspector/meson.build \
-	theme/Adwaita/meson.build \
-	theme/Adwaita/parse-sass.sh \
-	theme/Adwaita/render-assets.sh \
+	theme/Advaita/meson.build \
+	theme/Advaita/parse-sass.sh \
+	theme/Advaita/render-assets.sh \
 	theme/HighContrast/assets.svg \
 	theme/HighContrast/assets.txt \
 	theme/HighContrast/meson.build \

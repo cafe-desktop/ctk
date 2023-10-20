@@ -47,10 +47,10 @@ NULL=
 !if [call create-lists.bat header resources_sources.mak CTK_RESOURCES]
 !endif
 
-!if [for %f in (..\ctk\theme\Adwaita\ctk.css ..\ctk\theme\Adwaita\ctk-dark.css ..\ctk\theme\Adwaita\ctk-contained.css ..\ctk\theme\Adwaita\ctk-contained-dark.css) do @call create-lists.bat file resources_sources.mak %f]
+!if [for %f in (..\ctk\theme\Advaita\ctk.css ..\ctk\theme\Advaita\ctk-dark.css ..\ctk\theme\Advaita\ctk-contained.css ..\ctk\theme\Advaita\ctk-contained-dark.css) do @call create-lists.bat file resources_sources.mak %f]
 !endif
 
-!if [for %x in (png svg) do @(for %f in (..\ctk\theme\Adwaita\assets\*.%x) do @call create-lists.bat file resources_sources.mak %f)]
+!if [for %x in (png svg) do @(for %f in (..\ctk\theme\Advaita\assets\*.%x) do @call create-lists.bat file resources_sources.mak %f)]
 !endif
 
 !if [for %f in (..\ctk\theme\HighContrast\ctk.css ..\ctk\theme\HighContrast\ctk-inverse.css ..\ctk\theme\HighContrast\ctk-contained.css ..\ctk\theme\HighContrast\ctk-contained-inverse.css) do @call create-lists.bat file resources_sources.mak %f]

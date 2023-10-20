@@ -362,7 +362,7 @@ additional environment variables.
   </para>
   <para>
     It is also possible to specify a theme variant to load, by appending
-    the variant name with a colon, like this: `CTK_THEME=Adwaita:dark`.
+    the variant name with a colon, like this: `CTK_THEME=Advaita:dark`.
   </para>
 </formalpara>
 

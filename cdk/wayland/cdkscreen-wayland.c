@@ -519,10 +519,10 @@ update_xft_settings (CdkScreen *screen)
 #define CLASSIC_WM_SETTINGS_SCHEMA "org.gnome.shell.extensions.classic-overrides"
 
 static TranslationEntry translations[] = {
-  { FALSE, "org.gnome.desktop.interface", "ctk-theme", "ctk-theme-name" , G_TYPE_STRING, { .s = "Adwaita" } },
+  { FALSE, "org.gnome.desktop.interface", "ctk-theme", "ctk-theme-name" , G_TYPE_STRING, { .s = "Advaita" } },
   { FALSE, "org.gnome.desktop.interface", "ctk-key-theme", "ctk-key-theme-name" , G_TYPE_STRING, { .s = "Default" } },
   { FALSE, "org.gnome.desktop.interface", "icon-theme", "ctk-icon-theme-name", G_TYPE_STRING, { .s = "gnome" } },
-  { FALSE, "org.gnome.desktop.interface", "cursor-theme", "ctk-cursor-theme-name", G_TYPE_STRING, { .s = "Adwaita" } },
+  { FALSE, "org.gnome.desktop.interface", "cursor-theme", "ctk-cursor-theme-name", G_TYPE_STRING, { .s = "Advaita" } },
   { FALSE, "org.gnome.desktop.interface", "cursor-size", "ctk-cursor-theme-size", G_TYPE_INT, { .i = 32 } },
   { FALSE, "org.gnome.desktop.interface", "font-name", "ctk-font-name", G_TYPE_STRING, { .s = "Cantarell 11" } },
   { FALSE, "org.gnome.desktop.interface", "cursor-blink", "ctk-cursor-blink", G_TYPE_BOOLEAN,  { .b = TRUE } },

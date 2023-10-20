@@ -380,7 +380,7 @@ win32_cursor_theme_load (const gchar *name,
 
   if (strcmp (name, "system") == 0)
     {
-      win32_cursor_theme_load_from_dirs (result, "Adwaita", size);
+      win32_cursor_theme_load_from_dirs (result, "Advaita", size);
       win32_cursor_theme_load_system (result, size);
     }
   else

@@ -1,4 +1,4 @@
 [Test]
-Exec=/bin/sh -c "env CTK_THEME=Adwaita:dark G_ENABLE_DIAGNOSTIC=0 @libexecdir@/installed-tests/ctk+/ctk-reftest -k --verbose --tap --output $(pwd) --directory @libexecdir@/installed-tests/ctk+/reftests"
+Exec=/bin/sh -c "env CTK_THEME=Advaita:dark G_ENABLE_DIAGNOSTIC=0 @libexecdir@/installed-tests/ctk+/ctk-reftest -k --verbose --tap --output $(pwd) --directory @libexecdir@/installed-tests/ctk+/reftests"
 Type=session-exclusive
 Output=TAP
