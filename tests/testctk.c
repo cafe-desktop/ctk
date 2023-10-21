@@ -8198,9 +8198,9 @@ static void
 progressbar_toggle_ellipsize (CtkWidget *widget,
                               gpointer   data)
 {
-  ProgressData *pdata = data;
   if (ctk_widget_is_drawable (widget))
     {
+      ProgressData *pdata = data;
       gint i = ctk_combo_box_get_active (CTK_COMBO_BOX (widget));
       ctk_progress_bar_set_ellipsize (CTK_PROGRESS_BAR (pdata->pbar), i);
     }
