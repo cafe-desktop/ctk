@@ -1,0 +1,64 @@
+Migrating from GTK+3 to CTK
+===========================
+
+1. You need to rename a lot of code,
+   first the file/folder names, and later the code itself,
+   maybe using a script to make the job quikly:
+
+gtk -> ctk
+GTK -> CTK
+Gtk -> Ctk
+
+gdk -> cdk
+GDK -> CDK
+Gdk -> Cdk
+
+GAIL -> CAIL
+gail -> cail
+Gail -> Cail 
+
+2. CTK can build with GTK-Doc, if you have related code, you must rename:
+
+ctk-doc -> gtk-doc
+ctk_doc -> gtk_doc
+CTK-Doc -> GTK-Doc
+ctkdoc -> gtkdoc
+CTKDOC -> GTKDOC
+CTK_DOC -> GTK_DOC
+
+3. CTK can build with GdkPixbuf, if you have related code, you must rename:
+
+cdkpixbuf -> gdkpixbuf
+cdk-pixbuf -> gdk-pixbuf
+CdkPixbuf -> GdkPixbuf
+cdk_pixbuf -> gdk_pixbuf
+CDK-Pixbuf -> GDK-Pixbuf
+CDK_PIXBUF -> GDK_PIXBUF
+CDKPIXBUF -> GDKPIXBUF
+CDK_INTERP_BILINEAR -> GDK_INTERP_BILINEAR
+CDK_INTERP_HYPER -> GDK_INTERP_HYPER
+CDK_INTERP_NEAREST -> GDK_INTERP_NEAREST
+CDK_INTERP_TILES -> GDK_INTERP_TILES
+CdkInterpType -> GdkInterpType
+CDK_COLORSPACE_RGB -> GDK_COLORSPACE_RGB
+CDK_TYPE_PIXBUF -> GDK_TYPE_PIXBUF
+CDK_IS_PIXBUF -> GDK_IS_PIXBUF
+
+4. After all the process, maybe some translations are affected, you can check and rename:
+
+ctk-dok -> gtk-dok
+
+5. To improve the look, you need to have a ctk theme installed, for example:
+   https://github.com/cafe-desktop/cafe-themes
+
+6. If your project requires it, you can port now to them, already ported to ctk:
+
+   vte fork using ctk: https://github.com/cafe-desktop/bte
+
+   gtksourceview fork using ctk: https://github.com/cafe-desktop/ctksourceview
+
+   libpeas fork using ctk: https://github.com/cafe-desktop/libbean
+
+   libcanberra fork using ctk: https://github.com/cafe-desktop/libkanberra
+
+   libwnck fork using ctk: https://github.com/cafe-desktop/libvnck
