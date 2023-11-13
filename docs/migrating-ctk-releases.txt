@@ -1,0 +1,36 @@
+Migrating from one CTK release to another
+=========================================
+
+    While we try to maintain compatibility as far as possible, some minor
+    adjustments may be necessary when moving an application from one release
+    of CTK to the next.
+
+    Changes in CTK 3.25.1
+    =====================
+    ctkrecentmanager:
+
+    ctk_recent_info_get_added
+    ctk_recent_info_get_modified
+    ctk_recent_info_get_visited
+
+    All of them now return GDateTime instead time_t
+
+    Since the commit:
+    ctkrecentmanager: avoid deprecated GBookmarkFile functions
+    https://github.com/cafe-desktop/ctk/commit/33165914e3d0ffc1dd3be143fec03552e5531a47
+
+    Changes in CTK 3.25.2
+    =====================
+    ctkdialog:
+
+    New function:
+
+    CtkWidget *
+    ctk_dialog_add_button_with_icon_name (CtkDialog   *dialog,
+                                          const gchar *button_text,
+                                          const gchar *icon_name,
+                                          gint         response_id)
+
+    Since the commit:
+    ctkdialog: add function 'ctk_dialog_add_button_with_icon_name'
+    https://github.com/cafe-desktop/ctk/commit/3e456cbc39846b525af39257274af266853a17ce

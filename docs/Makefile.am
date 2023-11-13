@@ -9,6 +9,7 @@ EXTRA_DIST += \
 	dnd_internals.txt		\
 	focus_tracking.txt		\
 	iconcache.txt			\
+	migrating-ctk-releases.txt	\
 	migrating-gtk3-to-ctk.txt	\
 	RELEASE-HOWTO			\
 	sizing-test.txt			\
