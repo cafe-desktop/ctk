@@ -439,7 +439,7 @@ CDK_AVAILABLE_IN_ALL
 void     ctk_window_get_position     (CtkWindow   *window,
                                       gint        *root_x,
                                       gint        *root_y);
-CDK_DEPRECATED_IN_3_20
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_window_parse_geometry   (CtkWindow   *window,
                                       const gchar *geometry);
 

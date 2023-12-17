@@ -11668,8 +11668,6 @@ ctk_XParseGeometry (const char   *string,
  * ]|
  *
  * Returns: %TRUE if string was parsed successfully
- *
- * Deprecated: 3.20: Geometry handling in CTK is deprecated.
  **/
 gboolean
 ctk_window_parse_geometry (CtkWindow   *window,
