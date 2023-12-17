@@ -169,10 +169,8 @@ set_background (CtkWidget *widget)
        * don't chain up from draw().
        * This should be revisited next time we have a major API break.
        */
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       ctk_style_context_set_background (ctk_widget_get_style_context (widget),
                                         ctk_widget_get_window (widget));
-      G_GNUC_END_IGNORE_DEPRECATIONS;
     }
 }
 

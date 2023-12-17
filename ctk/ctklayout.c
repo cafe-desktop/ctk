@@ -873,9 +873,7 @@ set_background (CtkWidget *widget)
        * be set since the beginning of the draw() implementation.
        * This should be revisited next time we have a major API break.
        */
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
       ctk_style_context_set_background (ctk_widget_get_style_context (widget), priv->bin_window);
-      G_GNUC_END_IGNORE_DEPRECATIONS;
     }
 }
 

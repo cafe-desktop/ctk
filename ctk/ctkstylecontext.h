@@ -1220,7 +1220,7 @@ void ctk_style_context_invalidate           (CtkStyleContext *context);
 CDK_AVAILABLE_IN_ALL
 void ctk_style_context_reset_widgets        (CdkScreen       *screen);
 
-CDK_DEPRECATED_IN_3_18_FOR(ctk_render_background)
+CDK_AVAILABLE_IN_ALL
 void ctk_style_context_set_background       (CtkStyleContext *context,
                                              CdkWindow       *window);
 

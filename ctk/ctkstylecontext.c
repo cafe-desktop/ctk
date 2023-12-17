@@ -2453,10 +2453,6 @@ ctk_style_context_invalidate (CtkStyleContext *context)
  * color specified in @context for its current state.
  *
  * Since: 3.0
- *
- * Deprecated: 3.18: Use ctk_render_background() instead.
- *   Note that clients still using this function are now responsible
- *   for calling this function again whenever @context is invalidated.
  **/
 void
 ctk_style_context_set_background (CtkStyleContext *context,

@@ -238,10 +238,8 @@ ctk_win32_embed_widget_realize (CtkWidget *widget)
   styles = GetWindowLongPtr(CDK_WINDOW_HWND (cdk_window), GWL_STYLE);
   SetWindowLongPtrW(CDK_WINDOW_HWND (cdk_window), GWL_STYLE, styles | WS_TABSTOP);
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   ctk_style_context_set_background (ctk_widget_get_style_context (widget),
                                     cdk_window);
-G_GNUC_END_IGNORE_DEPRECATIONS;
 }
 
 static void
