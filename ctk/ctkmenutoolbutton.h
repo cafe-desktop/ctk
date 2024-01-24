@@ -75,7 +75,7 @@ GType         ctk_menu_tool_button_get_type       (void) G_GNUC_CONST;
 CDK_AVAILABLE_IN_ALL
 CtkToolItem  *ctk_menu_tool_button_new            (CtkWidget   *icon_widget,
                                                    const gchar *label);
-CDK_DEPRECATED_IN_3_10_FOR(ctk_menu_tool_button_new)
+CDK_AVAILABLE_IN_ALL
 CtkToolItem  *ctk_menu_tool_button_new_from_stock (const gchar *stock_id);
 
 CDK_AVAILABLE_IN_ALL

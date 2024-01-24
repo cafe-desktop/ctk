@@ -366,8 +366,6 @@ ctk_menu_tool_button_new (CtkWidget   *icon_widget,
  * Returns: the new #CtkMenuToolButton
  *
  * Since: 2.6
- *
- * Deprecated: 3.10: Use ctk_menu_tool_button_new() instead.
  **/
 CtkToolItem *
 ctk_menu_tool_button_new_from_stock (const gchar *stock_id)
