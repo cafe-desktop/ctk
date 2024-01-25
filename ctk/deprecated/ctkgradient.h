@@ -24,7 +24,7 @@
 
 #include <cdk/cdk.h>
 #include <ctk/ctkstylecontext.h>
-#include <ctk/deprecated/ctkstyleproperties.h>
+#include <ctk/ctkstyleproperties.h>
 #include <ctk/deprecated/ctksymboliccolor.h>
 
 G_BEGIN_DECLS

@@ -29,7 +29,7 @@
 #include "ctkcssunsetvalueprivate.h"
 #include "ctkintl.h"
 #include "ctkprivatetypebuiltins.h"
-#include "deprecated/ctkstylepropertiesprivate.h"
+#include "ctkstylepropertiesprivate.h"
 #include "ctkprivate.h"
 
 /* this is in case round() is not provided by the compiler, 

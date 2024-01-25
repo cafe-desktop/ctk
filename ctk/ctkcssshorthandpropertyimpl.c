@@ -39,7 +39,7 @@
 #include "ctkcssstringvalueprivate.h"
 #include "ctkcssstylefuncsprivate.h"
 #include "ctkcssvalueprivate.h"
-#include "deprecated/ctkstylepropertiesprivate.h"
+#include "ctkstylepropertiesprivate.h"
 #include "ctktypebuiltins.h"
 
 /* this is in case round() is not provided by the compiler, 

@@ -27,7 +27,7 @@
 
 #include <ctk/ctkborder.h>
 #include <ctk/ctkenums.h>
-#include <ctk/deprecated/ctkstyleproperties.h>
+#include <ctk/ctkstyleproperties.h>
 #include <ctk/ctktypes.h>
 
 G_BEGIN_DECLS
