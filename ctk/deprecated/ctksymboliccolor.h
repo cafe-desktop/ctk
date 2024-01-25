@@ -23,7 +23,7 @@
 #endif
 
 #include <cdk/cdk.h>
-#include <ctk/deprecated/ctkstyleproperties.h>
+#include <ctk/ctkstyleproperties.h>
 
 G_BEGIN_DECLS
 

@@ -25,7 +25,7 @@
 #include <glib-object.h>
 #include <ctk/ctkenums.h>
 #include <ctk/ctkiconfactory.h>
-#include <ctk/deprecated/ctkstyleproperties.h>
+#include <ctk/ctkstyleproperties.h>
 #include <ctk/ctktypes.h>
 
 G_BEGIN_DECLS

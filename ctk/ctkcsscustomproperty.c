@@ -25,7 +25,7 @@
 
 #include "ctkcssstylefuncsprivate.h"
 #include "ctkcsstypedvalueprivate.h"
-#include "deprecated/ctkstylepropertiesprivate.h"
+#include "ctkstylepropertiesprivate.h"
 
 #include "deprecated/ctkthemingengine.h"
 
