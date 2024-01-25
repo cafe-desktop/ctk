@@ -222,6 +222,7 @@
 #include <ctk/ctkstatusicon.h>
 #include <ctk/ctkstock.h>
 #include <ctk/ctkstylecontext.h>
+#include <ctk/ctkstyleproperties.h>
 #include <ctk/ctkstyleprovider.h>
 #include <ctk/ctkstyle.h>
 #include <ctk/ctkswitch.h>
@@ -279,7 +280,6 @@
 #include <ctk/deprecated/ctkhseparator.h>
 #include <ctk/deprecated/ctkmisc.h>
 #include <ctk/deprecated/ctknumerableicon.h>
-#include <ctk/deprecated/ctkstyleproperties.h>
 #include <ctk/deprecated/ctksymboliccolor.h>
 #include <ctk/deprecated/ctktable.h>
 #include <ctk/deprecated/ctkthemingengine.h>
