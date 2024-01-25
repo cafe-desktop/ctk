@@ -11,7 +11,6 @@ deprecated_h_sources = 			\
 	deprecated/ctkhseparator.h	\
 	deprecated/ctkmisc.h		\
 	deprecated/ctknumerableicon.h	\
-	deprecated/ctkstyleproperties.h	\
 	deprecated/ctksymboliccolor.h	\
 	deprecated/ctktable.h		\
 	deprecated/ctkthemingengine.h	\
@@ -25,7 +24,6 @@ deprecated_h_sources = 			\
 deprecated_private_h_sources =			\
 	deprecated/ctkgradientprivate.h		\
 	deprecated/ctknumerableiconprivate.h	\
-	deprecated/ctkstylepropertiesprivate.h	\
 	deprecated/ctksymboliccolorprivate.h
 
 deprecated_c_sources = 			\
@@ -41,7 +39,6 @@ deprecated_c_sources = 			\
 	deprecated/ctkhseparator.c	\
 	deprecated/ctkmisc.c		\
 	deprecated/ctknumerableicon.c	\
-	deprecated/ctkstyleproperties.c	\
 	deprecated/ctksymboliccolor.c	\
 	deprecated/ctktable.c		\
 	deprecated/ctkthemingengine.c	\

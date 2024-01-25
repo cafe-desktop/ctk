@@ -321,6 +321,7 @@ ctk_public_h_sources = 		\
 	ctkstatusicon.h		\
 	ctkstock.h		\
 	ctkstylecontext.h	\
+	ctkstyleproperties.h 	\
 	ctkstyleprovider.h	\
 	ctkstyle.h		\
 	ctkswitch.h		\
@@ -589,6 +590,7 @@ ctk_private_h_sources =		\
 	ctkstyleanimationprivate.h \
 	ctkstylecascadeprivate.h \
 	ctkstylecontextprivate.h \
+	ctkstylepropertiesprivate.h  \
 	ctkstylepropertyprivate.h \
 	ctkstyleproviderprivate.h \
 	ctktextattributesprivate.h \
@@ -955,6 +957,7 @@ ctk_base_c_sources = 		\
 	ctkstyleanimation.c	\
 	ctkstylecascade.c	\
 	ctkstylecontext.c	\
+	ctkstyleproperties.c	\
 	ctkstyleproperty.c	\
 	ctkstyleprovider.c	\
 	ctkstyleproviderprivate.c	\
