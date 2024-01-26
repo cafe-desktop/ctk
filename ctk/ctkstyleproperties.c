@@ -37,8 +37,6 @@
 #include "deprecated/ctkgradient.h"
 #include "deprecated/ctksymboliccolorprivate.h"
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
-
 /**
  * SECTION:ctkstyleproperties
  * @Short_description: Store for style property information
@@ -56,10 +54,6 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
  * and its variants are the preferred way to access styling information
  * from widget implementations and theming engine implementations
  * should use the APIs provided by #CtkThemingEngine instead.
- *
- * #CtkStyleProperties has been deprecated in CTK 3.16. The CSS
- * machinery does not use it anymore and all users of this object
- * have been deprecated.
  */
 
 typedef struct PropertyData PropertyData;
@@ -350,8 +344,6 @@ ctk_style_properties_provider_private_init (CtkStyleProviderPrivateInterface *if
  * Returns a newly created #CtkStyleProperties
  *
  * Returns: a new #CtkStyleProperties
- *
- * Deprecated: 3.16: #CtkStyleProperties are deprecated.
  **/
 CtkStyleProperties *
 ctk_style_properties_new (void)
@@ -466,8 +458,6 @@ _ctk_style_properties_set_property_by_property (CtkStyleProperties  *props,
  * Sets a styling property in @props.
  *
  * Since: 3.0
- *
- * Deprecated: 3.16: #CtkStyleProperties are deprecated.
  **/
 void
 ctk_style_properties_set_property (CtkStyleProperties *props,
@@ -506,8 +496,6 @@ ctk_style_properties_set_property (CtkStyleProperties *props,
  * Sets several style properties on @props.
  *
  * Since: 3.0
- *
- * Deprecated: 3.16: #CtkStyleProperties are deprecated.
  **/
 void
 ctk_style_properties_set_valist (CtkStyleProperties *props,
@@ -568,8 +556,6 @@ ctk_style_properties_set_valist (CtkStyleProperties *props,
  * Sets several style properties on @props.
  *
  * Since: 3.0
- *
- * Deprecated: 3.16: #CtkStyleProperties are deprecated.
  **/
 void
 ctk_style_properties_set (CtkStyleProperties *props,
@@ -618,8 +604,6 @@ style_query_func (guint    id,
  * Returns: %TRUE if the property exists in @props, %FALSE otherwise
  *
  * Since: 3.0
- *
- * Deprecated: 3.16: #CtkStyleProperties are deprecated.
  **/
 gboolean
 ctk_style_properties_get_property (CtkStyleProperties *props,
@@ -663,8 +647,6 @@ ctk_style_properties_get_property (CtkStyleProperties *props,
  * Retrieves several style property values from @props for a given state.
  *
  * Since: 3.0
- *
- * Deprecated: 3.16: #CtkStyleProperties are deprecated.
  **/
 void
 ctk_style_properties_get_valist (CtkStyleProperties *props,
@@ -712,8 +694,6 @@ ctk_style_properties_get_valist (CtkStyleProperties *props,
  * given state.
  *
  * Since: 3.0
- *
- * Deprecated: 3.16: #CtkStyleProperties are deprecated.
  **/
 void
 ctk_style_properties_get (CtkStyleProperties *props,
@@ -738,8 +718,6 @@ ctk_style_properties_get (CtkStyleProperties *props,
  * Unsets a style property in @props.
  *
  * Since: 3.0
- *
- * Deprecated: 3.16: #CtkStyleProperties are deprecated.
  **/
 void
 ctk_style_properties_unset_property (CtkStyleProperties *props,
@@ -807,8 +785,6 @@ ctk_style_properties_unset_property (CtkStyleProperties *props,
  * @props: a #CtkStyleProperties
  *
  * Clears all style information from @props.
- *
- * Deprecated: 3.16: #CtkStyleProperties are deprecated.
  **/
 void
 ctk_style_properties_clear (CtkStyleProperties *props)
@@ -836,7 +812,7 @@ ctk_style_properties_clear (CtkStyleProperties *props)
  *
  * Since: 3.0
  *
- * Deprecated: 3.16: #CtkStyleProperties are deprecated.
+ * Deprecated: 3.16: #CtkSymbolicColor is deprecated.
  **/
 void
 ctk_style_properties_merge (CtkStyleProperties       *props,
@@ -945,5 +921,3 @@ ctk_style_properties_merge (CtkStyleProperties       *props,
 
   _ctk_style_provider_private_changed (CTK_STYLE_PROVIDER_PRIVATE (props));
 }
-
-G_GNUC_END_IGNORE_DEPRECATIONS;

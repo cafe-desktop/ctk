@@ -179,9 +179,7 @@ _ctk_style_property_assign (CtkStyleProperty   *property,
   CtkStylePropertyClass *klass;
 
   g_return_if_fail (CTK_IS_STYLE_PROPERTY (property));
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS;
   g_return_if_fail (CTK_IS_STYLE_PROPERTIES (props));
-G_GNUC_END_IGNORE_DEPRECATIONS;
   g_return_if_fail (value != NULL);
 
   klass = CTK_STYLE_PROPERTY_GET_CLASS (property);
