@@ -20,8 +20,6 @@
 #include "ctkstyleproviderprivate.h"
 #include "ctkintl.h"
 
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
-
 typedef struct StylePropertyValue StylePropertyValue;
 
 struct _CtkModifierStylePrivate
@@ -277,5 +275,3 @@ _ctk_modifier_style_set_color_property (CtkModifierStyle *style,
 
   _ctk_style_provider_private_changed (CTK_STYLE_PROVIDER_PRIVATE (style));
 }
-
-G_GNUC_END_IGNORE_DEPRECATIONS

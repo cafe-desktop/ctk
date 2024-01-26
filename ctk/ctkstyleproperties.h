@@ -65,7 +65,7 @@ typedef gboolean (* CtkStylePropertyParser) (const gchar  *string,
                                              GValue       *value,
                                              GError      **error);
 
-CDK_DEPRECATED_IN_3_16
+CDK_AVAILABLE_IN_ALL
 GType ctk_style_properties_get_type (void) G_GNUC_CONST;
 
 /* Next 2 are implemented in ctkcsscustomproperty.c */
@@ -77,7 +77,7 @@ gboolean ctk_style_properties_lookup_property   (const gchar             *proper
                                                  CtkStylePropertyParser  *parse_func,
                                                  GParamSpec             **pspec);
 
-CDK_DEPRECATED_IN_3_16
+CDK_AVAILABLE_IN_ALL
 CtkStyleProperties * ctk_style_properties_new (void);
 
 CDK_DEPRECATED_IN_3_8
@@ -88,40 +88,40 @@ CDK_DEPRECATED_IN_3_8
 CtkSymbolicColor * ctk_style_properties_lookup_color (CtkStyleProperties *props,
                                                       const gchar        *name);
 
-CDK_DEPRECATED_IN_3_16
+CDK_AVAILABLE_IN_ALL
 void     ctk_style_properties_set_property (CtkStyleProperties *props,
                                             const gchar        *property,
                                             CtkStateFlags       state,
                                             const GValue       *value);
-CDK_DEPRECATED_IN_3_16
+CDK_AVAILABLE_IN_ALL
 void     ctk_style_properties_set_valist   (CtkStyleProperties *props,
                                             CtkStateFlags       state,
                                             va_list             args);
-CDK_DEPRECATED_IN_3_16
+CDK_AVAILABLE_IN_ALL
 void     ctk_style_properties_set          (CtkStyleProperties *props,
                                             CtkStateFlags       state,
                                             ...) G_GNUC_NULL_TERMINATED;
 
-CDK_DEPRECATED_IN_3_16
+CDK_AVAILABLE_IN_ALL
 gboolean ctk_style_properties_get_property (CtkStyleProperties *props,
                                             const gchar        *property,
                                             CtkStateFlags       state,
                                             GValue             *value);
-CDK_DEPRECATED_IN_3_16
+CDK_AVAILABLE_IN_ALL
 void     ctk_style_properties_get_valist   (CtkStyleProperties *props,
                                             CtkStateFlags       state,
                                             va_list             args);
-CDK_DEPRECATED_IN_3_16
+CDK_AVAILABLE_IN_ALL
 void     ctk_style_properties_get          (CtkStyleProperties *props,
                                             CtkStateFlags       state,
                                             ...) G_GNUC_NULL_TERMINATED;
 
-CDK_DEPRECATED_IN_3_16
+CDK_AVAILABLE_IN_ALL
 void     ctk_style_properties_unset_property (CtkStyleProperties *props,
                                               const gchar        *property,
                                               CtkStateFlags       state);
 
-CDK_DEPRECATED_IN_3_16
+CDK_AVAILABLE_IN_ALL
 void     ctk_style_properties_clear          (CtkStyleProperties  *props);
 
 CDK_DEPRECATED_IN_3_16
