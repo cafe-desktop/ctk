@@ -1,0 +1,1 @@
+build: use m4_pattern_allow with PKG_CONFIG_FOR_BUILD

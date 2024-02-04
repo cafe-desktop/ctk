@@ -1,0 +1,6 @@
+ctkstyleproperties: don't make deprecated CtkStyleProperties
+
+only keep deprecated because CtkSymbolicColor is deprecated:
+ctk_style_properties_map_color
+ctk_style_properties_lookup_color
+ctk_style_properties_merge
