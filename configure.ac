@@ -19,6 +19,8 @@ m4_define([ctk_version],
 # This is the X.Y used in -lctk-FOO-X.Y
 m4_define([ctk_api_version], [3.0])
 
+m4_pattern_allow(PKG_CONFIG_FOR_BUILD)
+
 AC_PREREQ([2.62])
 AC_INIT([ctk+], [ctk_version],
         [http://bugzilla.gnome.org/enter_bug.cgi?product=ctk%2B],
