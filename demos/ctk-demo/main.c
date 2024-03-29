@@ -154,14 +154,16 @@ activate_run (GSimpleAction *action,
               GVariant      *parameter,
               gpointer       user_data)
 {
-  CtkWidget *window = user_data;
   CtkTreeSelection *selection;
   CtkTreeModel *model;
   CtkTreeIter iter;
 
   selection = ctk_tree_view_get_selection (CTK_TREE_VIEW (treeview));
-  if (ctk_tree_selection_get_selected (selection, &model, &iter))
+
+  if (ctk_tree_selection_get_selected (selection, &model, &iter)) {
+    CtkWidget *window = user_data;
     run_example_for_row (window, model, &iter);
+  }
 }
 
 /* Stupid syntax highlighting.
