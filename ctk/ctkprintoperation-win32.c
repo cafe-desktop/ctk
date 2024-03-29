@@ -2169,21 +2169,20 @@ ctk_print_run_page_setup_dialog (CtkWindow        *parent,
   cdk_win32_set_modal_dialog_libctk_only (NULL);
 
   if (res)
-    {  
+    {
+      CtkPaperSize *paper_size;
+
       if (pagesetupdlg->hDevNames != NULL)
 	devnames_to_settings (settings, pagesetupdlg->hDevNames);
 
       if (pagesetupdlg->hDevMode != NULL)
 	devmode_to_settings (settings, pagesetupdlg->hDevMode);
-    }
-  
-  if (res)
-    {
-      CtkPaperSize *paper_size;
 
       ctk_page_setup_set_orientation (page_setup, 
 				      ctk_print_settings_get_orientation (settings));
+
       paper_size = ctk_print_settings_get_paper_size (settings);
+
       if (paper_size)
 	{
 	  ctk_page_setup_set_paper_size (page_setup, paper_size);
