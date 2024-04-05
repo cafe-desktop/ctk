@@ -52,10 +52,7 @@ load_from_stream (GdkPixbufLoader  *loader,
     }
 
   if (!gdk_pixbuf_loader_close (loader, error))
-    {
       res = FALSE;
-      error = NULL;
-    }
 
   pixbuf = NULL;
 
