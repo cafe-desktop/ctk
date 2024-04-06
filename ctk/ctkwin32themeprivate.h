@@ -34,30 +34,30 @@ CtkWin32Theme *         ctk_win32_theme_parse           (CtkCssParser   *parser)
 CtkWin32Theme *         ctk_win32_theme_ref             (CtkWin32Theme  *theme);
 void                    ctk_win32_theme_unref           (CtkWin32Theme  *theme);
 
-gboolean                ctk_win32_theme_equal           (CtkWin32Theme  *theme1,
-                                                         CtkWin32Theme  *theme2);
+gboolean                ctk_win32_theme_equal           (const CtkWin32Theme  *theme1,
+                                                         const CtkWin32Theme  *theme2);
 
 void                    ctk_win32_theme_print           (CtkWin32Theme  *theme,
                                                          GString        *string);
 
-cairo_surface_t *       ctk_win32_theme_create_surface  (CtkWin32Theme *theme,
-                                                         int            xp_part,
-                                                         int            state,
-                                                         int            margins[4],
-                                                         int            width,
-                                                         int            height,
-							 int           *x_offs_out,
-							 int           *y_offs_out);
+cairo_surface_t *       ctk_win32_theme_create_surface  (const CtkWin32Theme *theme,
+                                                         int                  xp_part,
+                                                         int                  state,
+                                                         const int            margins[4],
+                                                         int                  width,
+                                                         int                  height,
+							 int                 *x_offs_out,
+							 int                 *y_offs_out);
 
-void                    ctk_win32_theme_get_part_border (CtkWin32Theme  *theme,
-                                                         int             part,
-                                                         int             state,
-                                                         CtkBorder      *out_border);
-void                    ctk_win32_theme_get_part_size   (CtkWin32Theme  *theme,
-                                                         int             part,
-                                                         int             state,
-                                                         int            *width,
-                                                         int            *height);
+void                    ctk_win32_theme_get_part_border (const CtkWin32Theme  *theme,
+                                                         int                   part,
+                                                         int                   state,
+                                                         CtkBorder            *out_border);
+void                    ctk_win32_theme_get_part_size   (const CtkWin32Theme  *theme,
+                                                         int                   part,
+                                                         int                   state,
+                                                         int                  *width,
+                                                         int                  *height);
 int                     ctk_win32_theme_get_size        (CtkWin32Theme  *theme,
 			                                 int             id);
 void                    ctk_win32_theme_get_color       (CtkWin32Theme  *theme,

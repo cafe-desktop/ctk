@@ -136,8 +136,8 @@ ctk_win32_theme_unref (CtkWin32Theme *theme)
 }
 
 gboolean
-ctk_win32_theme_equal (CtkWin32Theme *theme1,
-                       CtkWin32Theme *theme2)
+ctk_win32_theme_equal (const CtkWin32Theme *theme1,
+                       const CtkWin32Theme *theme2)
 {
   /* Themes are cached so they're guaranteed unique. */
   return theme1 == theme2;
@@ -308,14 +308,14 @@ ctk_win32_theme_parse (CtkCssParser *parser)
 }
 
 cairo_surface_t *
-ctk_win32_theme_create_surface (CtkWin32Theme *theme,
-                                int            xp_part,
-				int            state,
-				int            margins[4],
-				int            width,
-                                int            height,
-				int           *x_offs_out,
-				int           *y_offs_out)
+ctk_win32_theme_create_surface (const CtkWin32Theme *theme,
+                                int                  xp_part,
+				int                  state,
+				const int            margins[4],
+				int                  width,
+                                int                  height,
+				int                 *x_offs_out,
+				int                 *y_offs_out)
 {
   cairo_surface_t *surface;
   cairo_t *cr;
@@ -396,10 +396,10 @@ ctk_win32_theme_create_surface (CtkWin32Theme *theme,
 }
 
 void
-ctk_win32_theme_get_part_border (CtkWin32Theme  *theme,
-                                 int             part,
-                                 int             state,
-                                 CtkBorder      *out_border)
+ctk_win32_theme_get_part_border (const CtkWin32Theme  *theme,
+                                 int                   part,
+                                 int                   state,
+                                 CtkBorder            *out_border)
 {
 #ifdef G_OS_WIN32
   HTHEME htheme = ctk_win32_theme_get_htheme (theme);
@@ -433,11 +433,11 @@ ctk_win32_theme_get_part_border (CtkWin32Theme  *theme,
 }
 
 void
-ctk_win32_theme_get_part_size (CtkWin32Theme  *theme,
-                               int             part,
-                               int             state,
-                               int            *width,
-                               int            *height)
+ctk_win32_theme_get_part_size (const CtkWin32Theme  *theme,
+                               int                   part,
+                               int                   state,
+                               int                  *width,
+                               int                  *height)
 {
 #ifdef G_OS_WIN32
   HTHEME htheme = ctk_win32_theme_get_htheme (theme);
