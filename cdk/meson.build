@@ -5,7 +5,6 @@ cdk_sources = files(
   'cdkcairo.c',
   'cdkcolor.c',
   'cdkcursor.c',
-  'cdkdeprecated.c',
   'cdkdevice.c',
   'cdkdevicemanager.c',
   'cdkdevicepad.c',
