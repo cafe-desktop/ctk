@@ -263,9 +263,19 @@ ctk_image_definition_ref (CtkImageDefinition *def)
 void
 ctk_image_definition_unref (CtkImageDefinition *def)
 {
-  def->empty.ref_count--;
+  CtkImageDefinitionEmpty *empty_def;
+  CtkImageDefinitionPixbuf *pixbuf_def;
+  CtkImageDefinitionAnimation *animation_def;
+  CtkImageDefinitionSurface *surface_def;
+  CtkImageDefinitionStock *stock_def;
+  CtkImageDefinitionIconSet *icon_set_def;
+  CtkImageDefinitionIconName *icon_name_def;
+  CtkImageDefinitionGIcon *gicon_def;
 
-  if (def->empty.ref_count > 0)
+  empty_def = (CtkImageDefinitionEmpty *) def;
+  empty_def->ref_count--;
+
+  if (empty_def->ref_count > 0)
     return;
 
   switch (def->type)
@@ -275,25 +285,32 @@ ctk_image_definition_unref (CtkImageDefinition *def)
       g_assert_not_reached ();
       break;
     case CTK_IMAGE_PIXBUF:
-      g_object_unref (def->pixbuf.pixbuf);
+      pixbuf_def = (CtkImageDefinitionPixbuf *) def;
+      g_object_unref (pixbuf_def->pixbuf);
       break;
     case CTK_IMAGE_ANIMATION:
-      g_object_unref (def->animation.animation);
+      animation_def = (CtkImageDefinitionAnimation *) def;
+      g_object_unref (animation_def->animation);
       break;
     case CTK_IMAGE_SURFACE:
-      cairo_surface_destroy (def->surface.surface);
+      surface_def = (CtkImageDefinitionSurface *) def;
+      cairo_surface_destroy (surface_def->surface);
       break;
     case CTK_IMAGE_STOCK:
-      g_free (def->stock.id);
+      stock_def = (CtkImageDefinitionStock *) def;
+      g_free (stock_def->id);
       break;
     case CTK_IMAGE_ICON_SET:
-      ctk_icon_set_unref (def->icon_set.icon_set);
+      icon_set_def = (CtkImageDefinitionIconSet *) def;
+      ctk_icon_set_unref (icon_set_def->icon_set);
       break;
     case CTK_IMAGE_ICON_NAME:
-      g_free (def->icon_name.icon_name);
+      icon_name_def = (CtkImageDefinitionIconName *) def;
+      g_free (icon_name_def->icon_name);
       break;
     case CTK_IMAGE_GICON:
-      g_object_unref (def->gicon.gicon);
+      gicon_def = (CtkImageDefinitionGIcon *) def;
+      g_object_unref (gicon_def->gicon);
       break;
     }
 
