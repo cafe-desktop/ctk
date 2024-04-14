@@ -81,7 +81,7 @@
 
 static CtkTextLineSegment *
 pixbuf_segment_cleanup_func (CtkTextLineSegment *seg,
-                             CtkTextLine        *line)
+                             CtkTextLine        *line G_GNUC_UNUSED)
 {
   /* nothing */
   return seg;
@@ -89,8 +89,8 @@ pixbuf_segment_cleanup_func (CtkTextLineSegment *seg,
 
 static int
 pixbuf_segment_delete_func (CtkTextLineSegment *seg,
-                            CtkTextLine        *line,
-                            gboolean            tree_gone)
+                            CtkTextLine        *line G_GNUC_UNUSED,
+                            gboolean            tree_gone G_GNUC_UNUSED)
 {
   if (seg->body.pixbuf.pixbuf)
     g_object_unref (seg->body.pixbuf.pixbuf);
@@ -102,7 +102,7 @@ pixbuf_segment_delete_func (CtkTextLineSegment *seg,
 
 static void
 pixbuf_segment_check_func (CtkTextLineSegment *seg,
-                           CtkTextLine        *line)
+                           CtkTextLine        *line G_GNUC_UNUSED)
 {
   if (seg->next == NULL)
     g_error ("pixbuf segment is the last segment in a line");
@@ -130,7 +130,7 @@ CtkTextLineSegment *
 _ctk_pixbuf_segment_new (GdkPixbuf *pixbuf)
 {
   /* gcc-11 issues a diagnostic here because the size allocated
-     for SEG does not cover the entire size of a GtkTextLineSegment
+     for SEG does not cover the entire size of a CtkTextLineSegment
      and gcc has no way to know that the union will only be used
      for limited types and the additional space is not needed.  */
 #pragma GCC diagnostic push
@@ -169,8 +169,8 @@ child_segment_cleanup_func (CtkTextLineSegment *seg,
 
 static int
 child_segment_delete_func (CtkTextLineSegment *seg,
-                           CtkTextLine       *line,
-                           gboolean           tree_gone)
+                           CtkTextLine        *line G_GNUC_UNUSED,
+                           gboolean            tree_gone G_GNUC_UNUSED)
 {
   GSList *tmp_list;
   GSList *copy;
@@ -206,7 +206,7 @@ child_segment_delete_func (CtkTextLineSegment *seg,
 
 static void
 child_segment_check_func (CtkTextLineSegment *seg,
-                          CtkTextLine        *line)
+                          CtkTextLine        *line G_GNUC_UNUSED)
 {
   if (seg->next == NULL)
     g_error ("child segment is the last segment in a line");
@@ -232,7 +232,7 @@ CtkTextLineSegment *
 _ctk_widget_segment_new (CtkTextChildAnchor *anchor)
 {
   /* gcc-11 issues a diagnostic here because the size allocated
-     for SEG does not cover the entire size of a GtkTextLineSegment
+     for SEG does not cover the entire size of a CtkTextLineSegment
      and gcc has no way to know that the union will only be used
      for limited types and the additional space is not needed.  */
 #pragma GCC diagnostic push
