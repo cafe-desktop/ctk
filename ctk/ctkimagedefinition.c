@@ -121,12 +121,14 @@ ctk_image_definition_alloc (CtkImageType type)
     sizeof (CtkImageDefinitionSurface)
   };
   CtkImageDefinition *def;
+  CtkImageDefinitionEmpty *empty_def;
 
   g_assert (type < G_N_ELEMENTS (sizes));
 
   def = g_malloc0 (sizes[type]);
-  def->type = type;
-  def->empty.ref_count = 1;
+  empty_def = (CtkImageDefinitionEmpty *) def;
+  empty_def->type = type;
+  empty_def->ref_count = 1;
 
   return def;
 }
@@ -136,13 +138,15 @@ ctk_image_definition_new_pixbuf (GdkPixbuf *pixbuf,
                                  int        scale)
 {
   CtkImageDefinition *def;
+  CtkImageDefinitionPixbuf *pixbuf_def;
 
   if (pixbuf == NULL || scale <= 0)
     return NULL;
 
   def = ctk_image_definition_alloc (CTK_IMAGE_PIXBUF);
-  def->pixbuf.pixbuf = g_object_ref (pixbuf);
-  def->pixbuf.scale = scale;
+  pixbuf_def = (CtkImageDefinitionPixbuf *) def;
+  pixbuf_def->pixbuf = g_object_ref (pixbuf);
+  pixbuf_def->scale = scale;
 
   return def;
 }
@@ -151,12 +155,14 @@ CtkImageDefinition *
 ctk_image_definition_new_stock (const char *stock_id)
 {
   CtkImageDefinition *def;
+  CtkImageDefinitionStock *stock_def;
 
   if (stock_id == NULL || stock_id[0] == '\0')
     return NULL;
 
   def = ctk_image_definition_alloc (CTK_IMAGE_STOCK);
-  def->stock.id = g_strdup (stock_id);
+  stock_def = (CtkImageDefinitionStock *) def;
+  stock_def->id = g_strdup (stock_id);
 
   return def;
 }
@@ -165,12 +171,14 @@ CtkImageDefinition *
 ctk_image_definition_new_icon_set (CtkIconSet *icon_set)
 {
   CtkImageDefinition *def;
+  CtkImageDefinitionIconSet *icon_set_def;
 
   if (icon_set == NULL)
     return NULL;
 
   def = ctk_image_definition_alloc (CTK_IMAGE_ICON_SET);
-  def->icon_set.icon_set = ctk_icon_set_ref (icon_set);
+  icon_set_def = (CtkImageDefinitionIconSet *) def;
+  icon_set_def->icon_set = ctk_icon_set_ref (icon_set);
 
   return def;
 }
@@ -180,13 +188,15 @@ ctk_image_definition_new_animation (GdkPixbufAnimation *animation,
                                     int                 scale)
 {
   CtkImageDefinition *def;
+  CtkImageDefinitionAnimation *animation_def;
 
   if (animation == NULL || scale <= 0)
     return NULL;
 
   def = ctk_image_definition_alloc (CTK_IMAGE_ANIMATION);
-  def->animation.animation = g_object_ref (animation);
-  def->animation.scale = scale;
+  animation_def = (CtkImageDefinitionAnimation *) def;
+  animation_def->animation = g_object_ref (animation);
+  animation_def->scale = scale;
 
   return def;
 }
@@ -195,12 +205,14 @@ CtkImageDefinition *
 ctk_image_definition_new_icon_name (const char *icon_name)
 {
   CtkImageDefinition *def;
+  CtkImageDefinitionIconName *icon_name_def;
 
   if (icon_name == NULL || icon_name[0] == '\0')
     return NULL;
 
   def = ctk_image_definition_alloc (CTK_IMAGE_ICON_NAME);
-  def->icon_name.icon_name = g_strdup (icon_name);
+  icon_name_def = (CtkImageDefinitionIconName *) def;
+  icon_name_def->icon_name = g_strdup (icon_name);
 
   return def;
 }
@@ -209,12 +221,14 @@ CtkImageDefinition *
 ctk_image_definition_new_gicon (GIcon *gicon)
 {
   CtkImageDefinition *def;
+  CtkImageDefinitionGIcon *gicon_def;
 
   if (gicon == NULL)
     return NULL;
 
   def = ctk_image_definition_alloc (CTK_IMAGE_GICON);
-  def->gicon.gicon = g_object_ref (gicon);
+  gicon_def = (CtkImageDefinitionGIcon *) def;
+  gicon_def->gicon = g_object_ref (gicon);
 
   return def;
 }
@@ -223,12 +237,14 @@ CtkImageDefinition *
 ctk_image_definition_new_surface (cairo_surface_t *surface)
 {
   CtkImageDefinition *def;
+  CtkImageDefinitionSurface *surface_def;
 
   if (surface == NULL)
     return NULL;
 
   def = ctk_image_definition_alloc (CTK_IMAGE_SURFACE);
-  def->surface.surface = cairo_surface_reference (surface);
+  surface_def = (CtkImageDefinitionSurface *) def;
+  surface_def->surface = cairo_surface_reference (surface);
 
   return def;
 }
@@ -236,7 +252,10 @@ ctk_image_definition_new_surface (cairo_surface_t *surface)
 CtkImageDefinition *
 ctk_image_definition_ref (CtkImageDefinition *def)
 {
-  def->empty.ref_count++;
+  CtkImageDefinitionEmpty *empty_def;
+
+  empty_def = (CtkImageDefinitionEmpty *) def;
+  empty_def->ref_count++;
 
   return def;
 }
