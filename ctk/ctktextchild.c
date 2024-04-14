@@ -129,6 +129,12 @@ const CtkTextLineSegmentClass ctk_text_pixbuf_type = {
 CtkTextLineSegment *
 _ctk_pixbuf_segment_new (GdkPixbuf *pixbuf)
 {
+  /* gcc-11 issues a diagnostic here because the size allocated
+     for SEG does not cover the entire size of a GtkTextLineSegment
+     and gcc has no way to know that the union will only be used
+     for limited types and the additional space is not needed.  */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Warray-bounds"
   CtkTextLineSegment *seg;
 
   seg = g_slice_alloc (PIXBUF_SEG_SIZE);
@@ -148,6 +154,7 @@ _ctk_pixbuf_segment_new (GdkPixbuf *pixbuf)
   g_object_ref (pixbuf);
 
   return seg;
+#pragma GCC diagnostic pop
 }
 
 
@@ -224,6 +231,12 @@ const CtkTextLineSegmentClass ctk_text_child_type = {
 CtkTextLineSegment *
 _ctk_widget_segment_new (CtkTextChildAnchor *anchor)
 {
+  /* gcc-11 issues a diagnostic here because the size allocated
+     for SEG does not cover the entire size of a GtkTextLineSegment
+     and gcc has no way to know that the union will only be used
+     for limited types and the additional space is not needed.  */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Warray-bounds"
   CtkTextLineSegment *seg;
 
   seg = g_slice_alloc (WIDGET_SEG_SIZE);
@@ -247,6 +260,7 @@ _ctk_widget_segment_new (CtkTextChildAnchor *anchor)
   g_object_ref (anchor);
   
   return seg;
+#pragma GCC diagnostic pop
 }
 
 void
