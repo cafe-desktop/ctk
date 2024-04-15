@@ -325,7 +325,8 @@ char_segment_split_func (CtkTextLineSegment *seg, int index)
 
         /* ARGSUSED */
 static CtkTextLineSegment *
-char_segment_cleanup_func (CtkTextLineSegment *segPtr, CtkTextLine *line)
+char_segment_cleanup_func (CtkTextLineSegment *segPtr,
+                           CtkTextLine        *line G_GNUC_UNUSED)
 {
   CtkTextLineSegment *segPtr2, *newPtr;
 
@@ -380,7 +381,9 @@ char_segment_cleanup_func (CtkTextLineSegment *segPtr, CtkTextLine *line)
 
         /* ARGSUSED */
 static int
-char_segment_delete_func (CtkTextLineSegment *segPtr, CtkTextLine *line, int treeGone)
+char_segment_delete_func (CtkTextLineSegment *segPtr,
+                          CtkTextLine        *line G_GNUC_UNUSED,
+                          int                 treeGone G_GNUC_UNUSED)
 {
   _ctk_char_segment_free (segPtr);
   return 0;
@@ -410,7 +413,8 @@ char_segment_delete_func (CtkTextLineSegment *segPtr, CtkTextLine *line, int tre
 
         /* ARGSUSED */
 static void
-char_segment_check_func (CtkTextLineSegment *segPtr, CtkTextLine *line)
+char_segment_check_func (CtkTextLineSegment *segPtr,
+                         CtkTextLine        *line G_GNUC_UNUSED)
 {
   char_segment_self_check (segPtr);
 
@@ -427,7 +431,7 @@ CtkTextLineSegment*
 _ctk_toggle_segment_new (CtkTextTagInfo *info, gboolean on)
 {
   /* gcc-11 issues a diagnostic here because the size allocated
-     for SEG does not cover the entire size of a GtkTextLineSegment
+     for SEG does not cover the entire size of a CtkTextLineSegment
      and gcc has no way to know that the union will only be used
      for limited types and the additional space is not needed.  */
 #pragma GCC diagnostic push
