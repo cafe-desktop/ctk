@@ -3,6 +3,8 @@
 ##########################################################
 requires:
   debian:
+    # Useful URL: https://github.com/cafe-desktop/debian-packages
+    # cafe B-D: advaita-icon-theme
     - aptitude
     - autoconf
     - autoconf-archive
