@@ -63,7 +63,7 @@ get_display_name (GFile     *file,
 }
 
 static GIcon *
-get_icon (GFile     *file,
+get_icon (GFile     *file G_GNUC_UNUSED,
           GFileInfo *info)
 {
   GIcon *icon;
@@ -461,7 +461,7 @@ cdk_x11_app_launch_context_class_init (CdkX11AppLaunchContextClass *klass)
 }
 
 static void
-cdk_x11_app_launch_context_init (CdkX11AppLaunchContext *ctx)
+cdk_x11_app_launch_context_init (CdkX11AppLaunchContext *ctx G_GNUC_UNUSED)
 {
 }
 
