@@ -25,7 +25,7 @@ G_DEFINE_INTERFACE (CdkEventTranslator, _cdk_x11_event_translator, G_TYPE_OBJECT
 
 
 static void
-_cdk_x11_event_translator_default_init (CdkEventTranslatorInterface *iface)
+_cdk_x11_event_translator_default_init (CdkEventTranslatorInterface *iface G_GNUC_UNUSED)
 {
 }
 
@@ -88,7 +88,7 @@ _cdk_x11_event_translator_select_window_events (CdkEventTranslator *translator,
 
 CdkWindow *
 _cdk_x11_event_translator_get_window (CdkEventTranslator *translator,
-                                      CdkDisplay         *display,
+                                      CdkDisplay         *display G_GNUC_UNUSED,
                                       XEvent             *xevent)
 {
   CdkEventTranslatorIface *iface;
