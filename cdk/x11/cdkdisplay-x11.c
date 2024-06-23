@@ -617,7 +617,7 @@ get_event_xwindow (XEvent             *xevent)
 }
 
 static gboolean
-cdk_x11_display_translate_event (CdkEventTranslator *translator,
+cdk_x11_display_translate_event (CdkEventTranslator *translator G_GNUC_UNUSED,
                                  CdkDisplay         *display,
                                  CdkEvent           *event,
                                  XEvent             *xevent)
@@ -1342,7 +1342,7 @@ server_time_to_monotonic_time (CdkX11Display *display_x11,
 CdkFilterReturn
 _cdk_wm_protocols_filter (CdkXEvent *xev,
 			  CdkEvent  *event,
-			  gpointer   data)
+			  gpointer   data G_GNUC_UNUSED)
 {
   XEvent *xevent = (XEvent *)xev;
   CdkWindow *win = event->any.window;
@@ -1819,8 +1819,8 @@ struct _CdkInternalConnection
 };
 
 static gboolean
-process_internal_connection (GIOChannel  *gioc,
-			     GIOCondition cond,
+process_internal_connection (GIOChannel  *gioc G_GNUC_UNUSED,
+			     GIOCondition cond G_GNUC_UNUSED,
 			     gpointer     data)
 {
   CdkInternalConnection *connection = (CdkInternalConnection *)data;
@@ -1874,7 +1874,7 @@ cdk_remove_connection_handler (CdkInternalConnection *connection)
 
 static void
 cdk_internal_connection_watch (Display  *display,
-			       XPointer  arg,
+			       XPointer  arg G_GNUC_UNUSED,
 			       gint      fd,
 			       gboolean  opening,
 			       XPointer *watch_data)
