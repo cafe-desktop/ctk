@@ -201,7 +201,7 @@ cdk_x11_cursor_class_init (CdkX11CursorClass *xcursor_class)
 }
 
 static void
-cdk_x11_cursor_init (CdkX11Cursor *cursor)
+cdk_x11_cursor_init (CdkX11Cursor *cursor G_GNUC_UNUSED)
 {
 }
 
@@ -426,7 +426,7 @@ _cdk_x11_cursor_update_theme (CdkCursor *cursor)
 
 static void
 update_cursor (gpointer data,
-               gpointer user_data)
+               gpointer user_data G_GNUC_UNUSED)
 {
   CdkCursor *cursor;
 
