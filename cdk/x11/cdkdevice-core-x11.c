@@ -214,7 +214,7 @@ cdk_x11_device_core_get_state (CdkDevice       *device,
 }
 
 static void
-cdk_x11_device_core_set_window_cursor (CdkDevice *device,
+cdk_x11_device_core_set_window_cursor (CdkDevice *device G_GNUC_UNUSED,
                                        CdkWindow *window,
                                        CdkCursor *cursor)
 {
@@ -248,7 +248,7 @@ cdk_x11_device_core_warp (CdkDevice *device,
 }
 
 static void
-cdk_x11_device_core_query_state (CdkDevice        *device,
+cdk_x11_device_core_query_state (CdkDevice        *device G_GNUC_UNUSED,
                                  CdkWindow        *window,
                                  CdkWindow       **root_window,
                                  CdkWindow       **child_window,
@@ -563,7 +563,7 @@ cdk_x11_device_core_window_at_position (CdkDevice       *device,
 }
 
 static void
-cdk_x11_device_core_select_window_events (CdkDevice    *device,
+cdk_x11_device_core_select_window_events (CdkDevice    *device G_GNUC_UNUSED,
                                           CdkWindow    *window,
                                           CdkEventMask  event_mask)
 {
