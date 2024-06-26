@@ -73,7 +73,7 @@ cdk_broadway_cursor_class_init (CdkBroadwayCursorClass *xcursor_class)
 }
 
 static void
-cdk_broadway_cursor_init (CdkBroadwayCursor *cursor)
+cdk_broadway_cursor_init (CdkBroadwayCursor *cursor G_GNUC_UNUSED)
 {
 }
 
@@ -81,7 +81,7 @@ cdk_broadway_cursor_init (CdkBroadwayCursor *cursor)
  * for a dead display.
  */
 void
-_cdk_broadway_cursor_display_finalize (CdkDisplay *display)
+_cdk_broadway_cursor_display_finalize (CdkDisplay *display G_GNUC_UNUSED)
 {
 }
 
@@ -103,8 +103,8 @@ _cdk_broadway_display_get_cursor_for_type (CdkDisplay    *display,
 
 static cairo_surface_t *
 cdk_broadway_cursor_get_surface (CdkCursor *cursor,
-				 gdouble *x_hot,
-				 gdouble *y_hot)
+				 gdouble   *x_hot G_GNUC_UNUSED,
+				 gdouble   *y_hot G_GNUC_UNUSED)
 {
   g_return_val_if_fail (cursor != NULL, NULL);
 
@@ -118,10 +118,10 @@ _cdk_broadway_cursor_update_theme (CdkCursor *cursor)
 }
 
 CdkCursor *
-_cdk_broadway_display_get_cursor_for_surface (CdkDisplay *display,
-					      cairo_surface_t *surface,
-					      gdouble     x,
-					      gdouble     y)
+_cdk_broadway_display_get_cursor_for_surface (CdkDisplay      *display,
+					      cairo_surface_t *surface G_GNUC_UNUSED,
+					      gdouble          x G_GNUC_UNUSED,
+					      gdouble          y G_GNUC_UNUSED)
 {
   CdkBroadwayCursor *private;
   CdkCursor *cursor;
@@ -137,7 +137,7 @@ _cdk_broadway_display_get_cursor_for_surface (CdkDisplay *display,
 
 CdkCursor*
 _cdk_broadway_display_get_cursor_for_name (CdkDisplay  *display,
-					   const gchar *name)
+					   const gchar *name G_GNUC_UNUSED)
 {
   CdkBroadwayCursor *private;
 
