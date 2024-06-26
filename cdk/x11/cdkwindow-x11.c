@@ -139,12 +139,12 @@ struct _CdkX11WindowClass {
 G_DEFINE_TYPE (CdkX11Window, cdk_x11_window, CDK_TYPE_WINDOW)
 
 static void
-cdk_x11_window_class_init (CdkX11WindowClass *x11_window_class)
+cdk_x11_window_class_init (CdkX11WindowClass *x11_window_class G_GNUC_UNUSED)
 {
 }
 
 static void
-cdk_x11_window_init (CdkX11Window *x11_window)
+cdk_x11_window_init (CdkX11Window *x11_window G_GNUC_UNUSED)
 {
 }
 
@@ -979,7 +979,7 @@ setup_toplevel_window (CdkWindow *window,
 }
 
 static void
-on_frame_clock_before_paint (CdkFrameClock *clock,
+on_frame_clock_before_paint (CdkFrameClock *clock G_GNUC_UNUSED,
                              CdkWindow     *window)
 {
   cdk_x11_window_predict_presentation_time (window);
@@ -987,7 +987,7 @@ on_frame_clock_before_paint (CdkFrameClock *clock,
 }
 
 static void
-on_frame_clock_after_paint (CdkFrameClock *clock,
+on_frame_clock_after_paint (CdkFrameClock *clock G_GNUC_UNUSED,
                             CdkWindow     *window)
 {
   cdk_x11_window_end_frame (window);
@@ -4792,7 +4792,7 @@ wmspec_moveresize (CdkWindow *window,
                    gint       button,
                    gint       root_x,
                    gint       root_y,
-                   guint32    timestamp)
+                   guint32    timestamp G_GNUC_UNUSED)
 {
   CdkDisplay *display = CDK_WINDOW_DISPLAY (window);
 
@@ -4912,7 +4912,7 @@ get_move_resize_data (CdkDisplay *display,
 
 static void
 check_maximize (MoveResizeData *mv_resize,
-                gdouble         x_root,
+                gdouble         x_root G_GNUC_UNUSED,
                 gdouble         y_root)
 {
   CdkWindowState state;
@@ -5231,7 +5231,7 @@ _cdk_x11_moveresize_configure_done (CdkDisplay *display,
 
 static void
 create_moveresize_window (MoveResizeData *mv_resize,
-                          guint32         timestamp)
+                          guint32         timestamp G_GNUC_UNUSED)
 {
   CdkWindowAttr attributes;
   gint attributes_mask;
@@ -5559,7 +5559,7 @@ cdk_x11_window_set_composited (CdkWindow *window,
 }
 
 void
-_cdk_x11_display_before_process_all_updates (CdkDisplay *display)
+_cdk_x11_display_before_process_all_updates (CdkDisplay *display G_GNUC_UNUSED)
 {
 }
 
@@ -5688,7 +5688,7 @@ cdk_x11_window_get_scale_factor (CdkWindow *window)
  */
 void
 cdk_x11_window_set_frame_sync_enabled (CdkWindow *window,
-                                       gboolean   frame_sync_enabled)
+                                       gboolean   frame_sync_enabled G_GNUC_UNUSED)
 {
   /* Try to ensure the window has a native window */
   if (!_cdk_window_has_impl (window))
