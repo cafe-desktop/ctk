@@ -65,7 +65,7 @@ G_DEFINE_TYPE (CdkBroadwayKeymap, cdk_broadway_keymap, CDK_TYPE_KEYMAP)
 static void  cdk_broadway_keymap_finalize   (GObject           *object);
 
 static void
-cdk_broadway_keymap_init (CdkBroadwayKeymap *keymap)
+cdk_broadway_keymap_init (CdkBroadwayKeymap *keymap G_GNUC_UNUSED)
 {
 }
 
@@ -92,37 +92,37 @@ _cdk_broadway_display_get_keymap (CdkDisplay *display)
 }
 
 static PangoDirection
-cdk_broadway_keymap_get_direction (CdkKeymap *keymap)
+cdk_broadway_keymap_get_direction (CdkKeymap *keymap G_GNUC_UNUSED)
 {
   return PANGO_DIRECTION_NEUTRAL;
 }
 
 static gboolean
-cdk_broadway_keymap_have_bidi_layouts (CdkKeymap *keymap)
+cdk_broadway_keymap_have_bidi_layouts (CdkKeymap *keymap G_GNUC_UNUSED)
 {
   return FALSE;
 }
 
 static gboolean
-cdk_broadway_keymap_get_caps_lock_state (CdkKeymap *keymap)
+cdk_broadway_keymap_get_caps_lock_state (CdkKeymap *keymap G_GNUC_UNUSED)
 {
   return FALSE;
 }
 
 static gboolean
-cdk_broadway_keymap_get_num_lock_state (CdkKeymap *keymap)
+cdk_broadway_keymap_get_num_lock_state (CdkKeymap *keymap G_GNUC_UNUSED)
 {
   return FALSE;
 }
 
 static gboolean
-cdk_broadway_keymap_get_scroll_lock_state (CdkKeymap *keymap)
+cdk_broadway_keymap_get_scroll_lock_state (CdkKeymap *keymap G_GNUC_UNUSED)
 {
   return FALSE;
 }
 
 static gboolean
-cdk_broadway_keymap_get_entries_for_keyval (CdkKeymap     *keymap,
+cdk_broadway_keymap_get_entries_for_keyval (CdkKeymap     *keymap G_GNUC_UNUSED,
 					    guint          keyval,
 					    CdkKeymapKey **keys,
 					    gint          *n_keys)
@@ -139,7 +139,7 @@ cdk_broadway_keymap_get_entries_for_keyval (CdkKeymap     *keymap,
 }
 
 static gboolean
-cdk_broadway_keymap_get_entries_for_keycode (CdkKeymap     *keymap,
+cdk_broadway_keymap_get_entries_for_keycode (CdkKeymap     *keymap G_GNUC_UNUSED,
 					     guint          hardware_keycode,
 					     CdkKeymapKey **keys,
 					     guint        **keyvals,
@@ -161,7 +161,7 @@ cdk_broadway_keymap_get_entries_for_keycode (CdkKeymap     *keymap,
 }
 
 static guint
-cdk_broadway_keymap_lookup_key (CdkKeymap          *keymap,
+cdk_broadway_keymap_lookup_key (CdkKeymap          *keymap G_GNUC_UNUSED,
 				const CdkKeymapKey *key)
 {
   return key->keycode;
@@ -169,14 +169,14 @@ cdk_broadway_keymap_lookup_key (CdkKeymap          *keymap,
 
 
 static gboolean
-cdk_broadway_keymap_translate_keyboard_state (CdkKeymap       *keymap,
+cdk_broadway_keymap_translate_keyboard_state (CdkKeymap       *keymap G_GNUC_UNUSED,
 					      guint            hardware_keycode,
-					      CdkModifierType  state,
-					      gint             group,
+					      CdkModifierType  state G_GNUC_UNUSED,
+					      gint             group G_GNUC_UNUSED,
 					      guint           *keyval,
 					      gint            *effective_group,
 					      gint            *level,
-					      CdkModifierType *consumed_modifiers)
+					      CdkModifierType *consumed_modifiers G_GNUC_UNUSED)
 {
   if (keyval)
     *keyval = hardware_keycode;
@@ -188,14 +188,14 @@ cdk_broadway_keymap_translate_keyboard_state (CdkKeymap       *keymap,
 }
 
 static void
-cdk_broadway_keymap_add_virtual_modifiers (CdkKeymap       *keymap,
-					   CdkModifierType *state)
+cdk_broadway_keymap_add_virtual_modifiers (CdkKeymap       *keymap G_GNUC_UNUSED,
+					   CdkModifierType *state G_GNUC_UNUSED)
 {
 }
 
 static gboolean
-cdk_broadway_keymap_map_virtual_modifiers (CdkKeymap       *keymap,
-					   CdkModifierType *state)
+cdk_broadway_keymap_map_virtual_modifiers (CdkKeymap       *keymap G_GNUC_UNUSED,
+					   CdkModifierType *state G_GNUC_UNUSED)
 {
   return TRUE;
 }
