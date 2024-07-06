@@ -36,35 +36,35 @@
 #include <string.h>
 
 gboolean
-_cdk_broadway_window_get_property (CdkWindow   *window,
-				   CdkAtom      property,
-				   CdkAtom      type,
-				   gulong       offset,
-				   gulong       length,
-				   gint         pdelete,
-				   CdkAtom     *actual_property_type,
-				   gint        *actual_format_type,
-				   gint        *actual_length,
-				   guchar     **data)
+_cdk_broadway_window_get_property (CdkWindow   *window G_GNUC_UNUSED,
+				   CdkAtom      property G_GNUC_UNUSED,
+				   CdkAtom      type G_GNUC_UNUSED,
+				   gulong       offset G_GNUC_UNUSED,
+				   gulong       length G_GNUC_UNUSED,
+				   gint         pdelete G_GNUC_UNUSED,
+				   CdkAtom     *actual_property_type G_GNUC_UNUSED,
+				   gint        *actual_format_type G_GNUC_UNUSED,
+				   gint        *actual_length G_GNUC_UNUSED,
+				   guchar     **data G_GNUC_UNUSED)
 {
   return FALSE;
 }
 
 void
 _cdk_broadway_window_change_property (CdkWindow    *window,
-				      CdkAtom       property,
-				      CdkAtom       type,
-				      gint          format,
-				      CdkPropMode   mode,
-				      const guchar *data,
-				      gint          nelements)
+				      CdkAtom       property G_GNUC_UNUSED,
+				      CdkAtom       type G_GNUC_UNUSED,
+				      gint          format G_GNUC_UNUSED,
+				      CdkPropMode   mode G_GNUC_UNUSED,
+				      const guchar *data G_GNUC_UNUSED,
+				      gint          nelements G_GNUC_UNUSED)
 {
   g_return_if_fail (!window || CDK_WINDOW_IS_BROADWAY (window));
 }
 
 void
 _cdk_broadway_window_delete_property (CdkWindow *window,
-				      CdkAtom    property)
+				      CdkAtom    property G_GNUC_UNUSED)
 {
   g_return_if_fail (!window || CDK_WINDOW_IS_BROADWAY (window));
 }
