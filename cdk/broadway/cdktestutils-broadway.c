@@ -22,17 +22,17 @@
 #include "cdkprivate-broadway.h"
 
 void
-_cdk_broadway_window_sync_rendering (CdkWindow *window)
+_cdk_broadway_window_sync_rendering (CdkWindow *window G_GNUC_UNUSED)
 {
   /* FIXME: Find out if there is a way to implement this on broadway. */
 }
 
 gboolean
 _cdk_broadway_window_simulate_key (CdkWindow      *window,
-				   gint            x,
-				   gint            y,
-				   guint           keyval,
-				   CdkModifierType modifiers,
+				   gint            x G_GNUC_UNUSED,
+				   gint            y G_GNUC_UNUSED,
+				   guint           keyval G_GNUC_UNUSED,
+				   CdkModifierType modifiers G_GNUC_UNUSED,
 				   CdkEventType    key_pressrelease)
 {
   g_return_val_if_fail (key_pressrelease == CDK_KEY_PRESS || key_pressrelease == CDK_KEY_RELEASE, FALSE);
@@ -48,10 +48,10 @@ _cdk_broadway_window_simulate_key (CdkWindow      *window,
 
 gboolean
 _cdk_broadway_window_simulate_button (CdkWindow      *window,
-				      gint            x,
-				      gint            y,
-				      guint           button, /*1..3*/
-				      CdkModifierType modifiers,
+				      gint            x G_GNUC_UNUSED,
+				      gint            y G_GNUC_UNUSED,
+				      guint           button G_GNUC_UNUSED, /*1..3*/
+				      CdkModifierType modifiers G_GNUC_UNUSED,
 				      CdkEventType    button_pressrelease)
 {
   g_return_val_if_fail (button_pressrelease == CDK_BUTTON_PRESS || button_pressrelease == CDK_BUTTON_RELEASE, FALSE);
