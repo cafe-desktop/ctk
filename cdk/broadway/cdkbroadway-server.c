@@ -78,8 +78,8 @@ cdk_broadway_server_class_init (CdkBroadwayServerClass * class)
 }
 
 gboolean
-_cdk_broadway_server_lookahead_event (CdkBroadwayServer  *server,
-				      const char         *types)
+_cdk_broadway_server_lookahead_event (CdkBroadwayServer  *server G_GNUC_UNUSED,
+				      const char         *types G_GNUC_UNUSED)
 {
 
   return FALSE;
@@ -171,7 +171,7 @@ _cdk_broadway_server_new (const char *display, GError **error)
 }
 
 guint32
-_cdk_broadway_server_get_last_seen_time (CdkBroadwayServer *server)
+_cdk_broadway_server_get_last_seen_time (CdkBroadwayServer *server G_GNUC_UNUSED)
 {
   return 0;
 }
@@ -342,7 +342,8 @@ queue_process_input_at_idle (CdkBroadwayServer *server)
 }
 
 static gboolean
-input_available_cb (gpointer stream, gpointer user_data)
+input_available_cb (gpointer stream G_GNUC_UNUSED,
+		    gpointer user_data)
 {
   CdkBroadwayServer *server = user_data;
 
