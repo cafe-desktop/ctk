@@ -139,10 +139,10 @@ _cdk_wayland_drag_context_emit_event (CdkDragContext *context,
 
 static CdkWindow *
 cdk_wayland_drag_context_find_window (CdkDragContext  *context,
-				      CdkWindow       *drag_window,
-				      CdkScreen       *screen,
-				      gint             x_root,
-				      gint             y_root,
+				      CdkWindow       *drag_window G_GNUC_UNUSED,
+				      CdkScreen       *screen G_GNUC_UNUSED,
+				      gint             x_root G_GNUC_UNUSED,
+				      gint             y_root G_GNUC_UNUSED,
 				      CdkDragProtocol *protocol)
 {
   CdkDevice *device;
@@ -186,11 +186,11 @@ cdk_wayland_drag_context_set_action (CdkDragContext *context,
 static gboolean
 cdk_wayland_drag_context_drag_motion (CdkDragContext *context,
 				      CdkWindow      *dest_window,
-				      CdkDragProtocol protocol,
+				      CdkDragProtocol protocol G_GNUC_UNUSED,
 				      gint            x_root,
 				      gint            y_root,
 				      CdkDragAction   suggested_action,
-				      CdkDragAction   possible_actions,
+				      CdkDragAction   possible_actions G_GNUC_UNUSED,
 				      guint32         time)
 {
   if (context->dest_window != dest_window)
@@ -206,14 +206,14 @@ cdk_wayland_drag_context_drag_motion (CdkDragContext *context,
 }
 
 static void
-cdk_wayland_drag_context_drag_abort (CdkDragContext *context,
-				     guint32         time)
+cdk_wayland_drag_context_drag_abort (CdkDragContext *context G_GNUC_UNUSED,
+				     guint32         time G_GNUC_UNUSED)
 {
 }
 
 static void
-cdk_wayland_drag_context_drag_drop (CdkDragContext *context,
-				    guint32         time)
+cdk_wayland_drag_context_drag_drop (CdkDragContext *context G_GNUC_UNUSED,
+				    guint32         time G_GNUC_UNUSED)
 {
 }
 
@@ -281,7 +281,7 @@ cdk_wayland_drag_context_commit_status (CdkDragContext *context)
 static void
 cdk_wayland_drag_context_drag_status (CdkDragContext *context,
 				      CdkDragAction   action,
-				      guint32         time_)
+				      guint32         time_ G_GNUC_UNUSED)
 {
   CdkWaylandDragContext *wayland_context;
 
@@ -292,7 +292,7 @@ cdk_wayland_drag_context_drag_status (CdkDragContext *context,
 static void
 cdk_wayland_drag_context_drop_reply (CdkDragContext *context,
 				     gboolean        accepted,
-				     guint32         time_)
+				     guint32         time_ G_GNUC_UNUSED)
 {
   if (!accepted)
     cdk_wayland_drop_context_set_status (context, accepted);
@@ -301,7 +301,7 @@ cdk_wayland_drag_context_drop_reply (CdkDragContext *context,
 static void
 cdk_wayland_drag_context_drop_finish (CdkDragContext *context,
 				      gboolean        success,
-				      guint32         time)
+				      guint32         time G_GNUC_UNUSED)
 {
   CdkDisplay *display = cdk_device_get_display (cdk_drag_context_get_device (context));
   CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (display);
@@ -327,13 +327,13 @@ cdk_wayland_drag_context_drop_finish (CdkDragContext *context,
 }
 
 static gboolean
-cdk_wayland_drag_context_drop_status (CdkDragContext *context)
+cdk_wayland_drag_context_drop_status (CdkDragContext *context G_GNUC_UNUSED)
 {
   return FALSE;
 }
 
 static CdkAtom
-cdk_wayland_drag_context_get_selection (CdkDragContext *context)
+cdk_wayland_drag_context_get_selection (CdkDragContext *context G_GNUC_UNUSED)
 {
   return cdk_atom_intern_static_string ("CdkWaylandSelection");
 }
@@ -380,7 +380,7 @@ cdk_wayland_drag_context_set_hotspot (CdkDragContext *context,
 
 static gboolean
 cdk_wayland_drag_context_manage_dnd (CdkDragContext *context,
-                                     CdkWindow      *ipc_window,
+                                     CdkWindow      *ipc_window G_GNUC_UNUSED,
                                      CdkDragAction   actions)
 {
   CdkWaylandDragContext *context_wayland;
@@ -433,14 +433,14 @@ cdk_wayland_drag_context_action_changed (CdkDragContext *context,
 
 static void
 cdk_wayland_drag_context_drop_performed (CdkDragContext *context,
-                                         guint32         time_)
+                                         guint32         time_ G_GNUC_UNUSED)
 {
   cdk_drag_context_set_cursor (context, NULL);
 }
 
 static void
 cdk_wayland_drag_context_cancel (CdkDragContext      *context,
-                                 CdkDragCancelReason  reason)
+                                 CdkDragCancelReason  reason G_GNUC_UNUSED)
 {
   cdk_drag_context_set_cursor (context, NULL);
 }
@@ -487,13 +487,14 @@ cdk_wayland_drag_context_class_init (CdkWaylandDragContextClass *klass)
 }
 
 CdkDragProtocol
-_cdk_wayland_window_get_drag_protocol (CdkWindow *window, CdkWindow **target)
+_cdk_wayland_window_get_drag_protocol (CdkWindow  *window G_GNUC_UNUSED,
+				       CdkWindow **target G_GNUC_UNUSED)
 {
   return CDK_DRAG_PROTO_WAYLAND;
 }
 
 void
-_cdk_wayland_window_register_dnd (CdkWindow *window)
+_cdk_wayland_window_register_dnd (CdkWindow *window G_GNUC_UNUSED)
 {
 }
 
@@ -519,8 +520,8 @@ CdkDragContext *
 _cdk_wayland_window_drag_begin (CdkWindow *window,
 				CdkDevice *device,
 				GList     *targets,
-                                gint       x_root,
-                                gint       y_root)
+				gint       x_root G_GNUC_UNUSED,
+				gint       y_root G_GNUC_UNUSED)
 {
   CdkWaylandDragContext *context_wayland;
   CdkDragContext *context;
@@ -563,7 +564,7 @@ _cdk_wayland_window_drag_begin (CdkWindow *window,
 
 CdkDragContext *
 _cdk_wayland_drop_context_new (CdkDisplay            *display,
-                               struct wl_data_device *data_device)
+                               struct wl_data_device *data_device G_GNUC_UNUSED)
 {
   CdkWaylandDragContext *context_wayland;
   CdkDragContext *context;
