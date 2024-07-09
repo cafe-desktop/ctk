@@ -32,8 +32,8 @@
 
 static char *
 cdk_wayland_app_launch_context_get_startup_notify_id (GAppLaunchContext *context,
-                                                      GAppInfo          *info,
-                                                      GList             *files)
+                                                      GAppInfo          *info G_GNUC_UNUSED,
+                                                      GList             *files G_GNUC_UNUSED)
 {
   CdkWaylandDisplay *display;
   gchar *id = NULL;
@@ -52,8 +52,8 @@ cdk_wayland_app_launch_context_get_startup_notify_id (GAppLaunchContext *context
 }
 
 static void
-cdk_wayland_app_launch_context_launch_failed (GAppLaunchContext *context,
-                                              const char        *startup_notify_id)
+cdk_wayland_app_launch_context_launch_failed (GAppLaunchContext *context G_GNUC_UNUSED,
+                                              const char        *startup_notify_id G_GNUC_UNUSED)
 {
 }
 
@@ -86,7 +86,7 @@ cdk_wayland_app_launch_context_class_init (CdkWaylandAppLaunchContextClass *klas
 }
 
 static void
-cdk_wayland_app_launch_context_init (CdkWaylandAppLaunchContext *ctx)
+cdk_wayland_app_launch_context_init (CdkWaylandAppLaunchContext *ctx G_GNUC_UNUSED)
 {
 }
 
