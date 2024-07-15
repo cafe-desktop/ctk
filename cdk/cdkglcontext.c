@@ -289,7 +289,7 @@ cdk_gl_context_upload_texture (CdkGLContext    *context,
 }
 
 static gboolean
-cdk_gl_context_real_realize (CdkGLContext  *self,
+cdk_gl_context_real_realize (CdkGLContext  *self G_GNUC_UNUSED,
                              GError       **error)
 {
   g_set_error_literal (error, CDK_GL_ERROR, CDK_GL_ERROR_NOT_AVAILABLE,
