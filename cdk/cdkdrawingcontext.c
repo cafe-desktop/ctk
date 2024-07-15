@@ -180,7 +180,7 @@ cdk_drawing_context_class_init (CdkDrawingContextClass *klass)
 }
 
 static void
-cdk_drawing_context_init (CdkDrawingContext *self)
+cdk_drawing_context_init (CdkDrawingContext *self G_GNUC_UNUSED)
 {
 }
 
