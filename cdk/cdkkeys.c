@@ -182,7 +182,7 @@ cdk_keymap_class_init (CdkKeymapClass *klass)
 }
 
 static void
-cdk_keymap_init (CdkKeymap *keymap)
+cdk_keymap_init (CdkKeymap *keymap G_GNUC_UNUSED)
 {
 }
 
@@ -632,7 +632,7 @@ cdk_keymap_map_virtual_modifiers (CdkKeymap       *keymap,
 }
 
 static CdkModifierType
-cdk_keymap_real_get_modifier_mask (CdkKeymap         *keymap,
+cdk_keymap_real_get_modifier_mask (CdkKeymap         *keymap G_GNUC_UNUSED,
                                    CdkModifierIntent  intent)
 {
   switch (intent)
