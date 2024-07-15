@@ -2394,7 +2394,7 @@ cdk_event_sequence_copy (CdkEventSequence *sequence)
 }
 
 static void
-cdk_event_sequence_free (CdkEventSequence *sequence)
+cdk_event_sequence_free (CdkEventSequence *sequence G_GNUC_UNUSED)
 {
   /* Nothing to free here */
 }
