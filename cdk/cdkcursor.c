@@ -143,7 +143,7 @@ cdk_cursor_class_init (CdkCursorClass *cursor_class)
 }
 
 static void
-cdk_cursor_init (CdkCursor *cursor)
+cdk_cursor_init (CdkCursor *cursor G_GNUC_UNUSED)
 {
 }
 
