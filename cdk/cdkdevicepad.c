@@ -51,7 +51,7 @@
 G_DEFINE_INTERFACE (CdkDevicePad, cdk_device_pad, CDK_TYPE_DEVICE)
 
 static void
-cdk_device_pad_default_init (CdkDevicePadInterface *pad)
+cdk_device_pad_default_init (CdkDevicePadInterface *pad G_GNUC_UNUSED)
 {
 }
 
