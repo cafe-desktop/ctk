@@ -210,7 +210,7 @@ cdk_seat_class_init (CdkSeatClass *klass)
 }
 
 static void
-cdk_seat_init (CdkSeat *seat)
+cdk_seat_init (CdkSeat *seat G_GNUC_UNUSED)
 {
 }
 
