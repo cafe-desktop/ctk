@@ -103,9 +103,9 @@ sleep_source_check (GSource *source)
 }
 
 static gboolean
-sleep_source_dispatch (GSource     *source,
-                       GSourceFunc  callback,
-                       gpointer     user_data)
+sleep_source_dispatch (GSource     *source G_GNUC_UNUSED,
+                       GSourceFunc  callback G_GNUC_UNUSED,
+                       gpointer     user_data G_GNUC_UNUSED)
 {
   return TRUE;
 }
