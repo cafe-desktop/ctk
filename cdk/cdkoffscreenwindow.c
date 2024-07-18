@@ -81,14 +81,14 @@ cdk_offscreen_window_finalize (GObject *object)
 }
 
 static void
-cdk_offscreen_window_init (CdkOffscreenWindow *window)
+cdk_offscreen_window_init (CdkOffscreenWindow *window G_GNUC_UNUSED)
 {
 }
 
 static void
 cdk_offscreen_window_destroy (CdkWindow *window,
                               gboolean   recursing,
-                              gboolean   foreign_destroy)
+                              gboolean   foreign_destroy G_GNUC_UNUSED)
 {
   cdk_offscreen_window_set_embedder (window, NULL);
 
@@ -159,7 +159,7 @@ _cdk_offscreen_window_create_surface (CdkWindow *offscreen,
 void
 _cdk_offscreen_window_new (CdkWindow     *window,
 			   CdkWindowAttr *attributes,
-			   gint           attributes_mask)
+			   gint           attributes_mask G_GNUC_UNUSED)
 {
   CdkOffscreenWindow *offscreen;
 
@@ -219,9 +219,9 @@ cdk_offscreen_window_reparent (CdkWindow *window,
 }
 
 static void
-cdk_offscreen_window_set_device_cursor (CdkWindow     *window,
-					CdkDevice     *device,
-					CdkCursor     *cursor)
+cdk_offscreen_window_set_device_cursor (CdkWindow *window G_GNUC_UNUSED,
+					CdkDevice *device G_GNUC_UNUSED,
+					CdkCursor *cursor G_GNUC_UNUSED)
 {
 }
 
@@ -365,7 +365,7 @@ cdk_offscreen_window_move_resize_internal (CdkWindow *window,
                                            gint       y,
                                            gint       width,
                                            gint       height,
-                                           gboolean   send_expose_events)
+                                           gboolean   send_expose_events G_GNUC_UNUSED)
 {
   CdkOffscreenWindow *offscreen;
 
@@ -442,7 +442,7 @@ cdk_offscreen_window_move_resize (CdkWindow *window,
 
 static void
 cdk_offscreen_window_show (CdkWindow *window,
-			   gboolean already_mapped)
+			   gboolean   already_mapped G_GNUC_UNUSED)
 {
   CdkRectangle area = { 0, 0, window->width, window->height };
 
@@ -451,7 +451,7 @@ cdk_offscreen_window_show (CdkWindow *window,
 
 
 static void
-cdk_offscreen_window_hide (CdkWindow *window)
+cdk_offscreen_window_hide (CdkWindow *window G_GNUC_UNUSED)
 {
   /* TODO: This needs updating to the new grab world */
 #if 0
@@ -483,41 +483,41 @@ cdk_offscreen_window_hide (CdkWindow *window)
 }
 
 static void
-cdk_offscreen_window_withdraw (CdkWindow *window)
+cdk_offscreen_window_withdraw (CdkWindow *window G_GNUC_UNUSED)
 {
 }
 
 static CdkEventMask
-cdk_offscreen_window_get_events (CdkWindow *window)
+cdk_offscreen_window_get_events (CdkWindow *window G_GNUC_UNUSED)
 {
   return 0;
 }
 
 static void
-cdk_offscreen_window_set_events (CdkWindow       *window,
-				 CdkEventMask     event_mask)
+cdk_offscreen_window_set_events (CdkWindow    *window G_GNUC_UNUSED,
+				 CdkEventMask  event_mask G_GNUC_UNUSED)
 {
 }
 
 static void
-cdk_offscreen_window_set_background (CdkWindow      *window,
-				     cairo_pattern_t *pattern)
+cdk_offscreen_window_set_background (CdkWindow       *window G_GNUC_UNUSED,
+				     cairo_pattern_t *pattern G_GNUC_UNUSED)
 {
 }
 
 static void
-cdk_offscreen_window_shape_combine_region (CdkWindow       *window,
-					   const cairo_region_t *shape_region,
-					   gint             offset_x,
-					   gint             offset_y)
+cdk_offscreen_window_shape_combine_region (CdkWindow            *window G_GNUC_UNUSED,
+					   const cairo_region_t *shape_region G_GNUC_UNUSED,
+					   gint                  offset_x G_GNUC_UNUSED,
+					   gint                  offset_y G_GNUC_UNUSED)
 {
 }
 
 static void
-cdk_offscreen_window_input_shape_combine_region (CdkWindow       *window,
-						 const cairo_region_t *shape_region,
-						 gint             offset_x,
-						 gint             offset_y)
+cdk_offscreen_window_input_shape_combine_region (CdkWindow            *window G_GNUC_UNUSED,
+						 const cairo_region_t *shape_region G_GNUC_UNUSED,
+						 gint                  offset_x G_GNUC_UNUSED,
+						 gint                  offset_y G_GNUC_UNUSED)
 {
 }
 
@@ -542,8 +542,8 @@ cdk_offscreen_window_get_geometry (CdkWindow *window,
 }
 
 static void
-cdk_offscreen_window_queue_antiexpose (CdkWindow *window,
-				       cairo_region_t *area)
+cdk_offscreen_window_queue_antiexpose (CdkWindow      *window G_GNUC_UNUSED,
+				       cairo_region_t *area G_GNUC_UNUSED)
 {
 }
 
@@ -616,47 +616,47 @@ cdk_offscreen_window_get_embedder (CdkWindow *window)
 }
 
 static void
-cdk_offscreen_window_do_nothing (CdkWindow *window)
+cdk_offscreen_window_do_nothing (CdkWindow *window G_GNUC_UNUSED)
 {
 }
 
 static void
-cdk_offscreen_window_set_boolean (CdkWindow *window,
-                                  gboolean   setting)
+cdk_offscreen_window_set_boolean (CdkWindow *window G_GNUC_UNUSED,
+				  gboolean   setting G_GNUC_UNUSED)
 {
 }
 
 static void
-cdk_offscreen_window_set_string (CdkWindow *window,
-				 const gchar *setting)
+cdk_offscreen_window_set_string (CdkWindow   *window G_GNUC_UNUSED,
+				 const gchar *setting G_GNUC_UNUSED)
 {
 }
 
 static void
-cdk_offscreen_window_set_list (CdkWindow *window,
-                               GList *list)
+cdk_offscreen_window_set_list (CdkWindow *window G_GNUC_UNUSED,
+			       GList     *list G_GNUC_UNUSED)
 {
 }
 
 static void
-cdk_offscreen_window_set_wmfunctions (CdkWindow	    *window,
-				      CdkWMFunction  functions)
+cdk_offscreen_window_set_wmfunctions (CdkWindow	    *window G_GNUC_UNUSED,
+				      CdkWMFunction  functions G_GNUC_UNUSED)
 {
 }
 
 static void
-cdk_offscreen_window_begin_move_drag (CdkWindow *window,
-                                      CdkDevice *device,
-                                      gint       button,
-                                      gint       root_x,
-                                      gint       root_y,
-                                      guint32    timestamp)
+cdk_offscreen_window_begin_move_drag (CdkWindow *window G_GNUC_UNUSED,
+                                      CdkDevice *device G_GNUC_UNUSED,
+                                      gint       button G_GNUC_UNUSED,
+                                      gint       root_x G_GNUC_UNUSED,
+                                      gint       root_y G_GNUC_UNUSED,
+                                      guint32    timestamp G_GNUC_UNUSED)
 {
 }
 
 static void
-cdk_offscreen_window_set_transient_for (CdkWindow *window,
-					CdkWindow *another)
+cdk_offscreen_window_set_transient_for (CdkWindow *window G_GNUC_UNUSED,
+					CdkWindow *another G_GNUC_UNUSED)
 {
 }
 
@@ -686,12 +686,13 @@ cdk_offscreen_window_get_scale_factor (CdkWindow *window)
 }
 
 static void
-cdk_offscreen_window_set_opacity (CdkWindow *window, gdouble opacity)
+cdk_offscreen_window_set_opacity (CdkWindow *window G_GNUC_UNUSED,
+				  gdouble    opacity G_GNUC_UNUSED)
 {
 }
 
 static gboolean
-cdk_offscreen_window_beep (CdkWindow *window)
+cdk_offscreen_window_beep (CdkWindow *window G_GNUC_UNUSED)
 {
   return FALSE;
 }
