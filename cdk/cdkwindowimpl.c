@@ -32,7 +32,7 @@
 G_DEFINE_TYPE (CdkWindowImpl, cdk_window_impl, G_TYPE_OBJECT);
 
 static gboolean
-cdk_window_impl_beep (CdkWindow *window)
+cdk_window_impl_beep (CdkWindow *window G_GNUC_UNUSED)
 {
   /* FALSE means windows can't beep, so the display will be
    * made to beep instead. */
@@ -342,6 +342,6 @@ cdk_window_impl_class_init (CdkWindowImplClass *impl_class)
 }
 
 static void
-cdk_window_impl_init (CdkWindowImpl *impl)
+cdk_window_impl_init (CdkWindowImpl *impl G_GNUC_UNUSED)
 {
 }
