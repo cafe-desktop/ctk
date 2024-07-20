@@ -267,7 +267,7 @@ G_DEFINE_TYPE_WITH_PRIVATE (CtkAboutDialog, ctk_about_dialog, CTK_TYPE_DIALOG)
 
 static gboolean
 stack_visible_child_notify (CtkStack       *stack,
-                            GParamSpec     *pspec,
+                            GParamSpec     *pspec G_GNUC_UNUSED,
                             CtkAboutDialog *about)
 {
   CtkAboutDialogPrivate *priv = about->priv;
@@ -1900,7 +1900,7 @@ ctk_about_dialog_set_logo_icon_name (CtkAboutDialog *about,
 
 static void
 follow_if_link (CtkAboutDialog *about,
-                CtkTextView    *text_view,
+                CtkTextView    *text_view G_GNUC_UNUSED,
                 CtkTextIter    *iter)
 {
   GSList *tags = NULL, *tagp = NULL;
