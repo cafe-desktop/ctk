@@ -363,9 +363,9 @@ ctk_action_group_buildable_init (CtkBuildableIface *iface)
 
 static void
 ctk_action_group_buildable_add_child (CtkBuildable  *buildable,
-				      CtkBuilder    *builder,
+				      CtkBuilder    *builder G_GNUC_UNUSED,
 				      GObject       *child,
-				      const gchar   *type)
+				      const gchar   *type G_GNUC_UNUSED)
 {
   ctk_action_group_add_action_with_accel (CTK_ACTION_GROUP (buildable),
 					  CTK_ACTION (child), NULL);
@@ -397,7 +397,7 @@ typedef struct {
 } AcceleratorParserData;
 
 static void
-accelerator_start_element (GMarkupParseContext *context,
+accelerator_start_element (GMarkupParseContext *context G_GNUC_UNUSED,
 			   const gchar         *element_name,
 			   const gchar        **names,
 			   const gchar        **values,
@@ -442,12 +442,12 @@ static const GMarkupParser accelerator_parser =
   };
 
 static gboolean
-ctk_action_group_buildable_custom_tag_start (CtkBuildable     *buildable,
-					     CtkBuilder       *builder,
-					     GObject          *child,
-					     const gchar      *tagname,
-					     GMarkupParser    *parser,
-					     gpointer         *user_data)
+ctk_action_group_buildable_custom_tag_start (CtkBuildable  *buildable G_GNUC_UNUSED,
+					     CtkBuilder    *builder G_GNUC_UNUSED,
+					     GObject       *child,
+					     const gchar   *tagname,
+					     GMarkupParser *parser,
+					     gpointer      *user_data)
 {
   AcceleratorParserData *parser_data;
 
@@ -465,7 +465,7 @@ ctk_action_group_buildable_custom_tag_start (CtkBuildable     *buildable,
 
 static void
 ctk_action_group_buildable_custom_tag_end (CtkBuildable *buildable,
-					   CtkBuilder   *builder,
+					   CtkBuilder   *builder G_GNUC_UNUSED,
 					   GObject      *child,
 					   const gchar  *tagname,
 					   gpointer     *user_data)
@@ -668,7 +668,7 @@ ctk_action_group_get_sensitive (CtkActionGroup *action_group)
 }
 
 static void
-cb_set_action_sensitivity (const gchar *name, 
+cb_set_action_sensitivity (const gchar *name G_GNUC_UNUSED,
 			   CtkAction   *action)
 {
   /* Minor optimization, the action_groups state only affects actions 
@@ -752,7 +752,7 @@ ctk_action_group_get_accel_group (CtkActionGroup *action_group)
 }
 
 static void
-cb_set_action_visiblity (const gchar *name, 
+cb_set_action_visiblity (const gchar *name G_GNUC_UNUSED,
 			 CtkAction   *action)
 {
   /* Minor optimization, the action_groups state only affects actions 
@@ -791,7 +791,9 @@ ctk_action_group_set_visible (CtkActionGroup *action_group,
 }
 
 static void 
-ctk_action_group_accel_group_foreach (gpointer key, gpointer val, gpointer data)
+ctk_action_group_accel_group_foreach (gpointer key G_GNUC_UNUSED,
+				      gpointer val,
+				      gpointer data)
 {
   ctk_action_set_accel_group (val, data);
 }
@@ -1014,8 +1016,8 @@ ctk_action_group_remove_action (CtkActionGroup *action_group,
 }
 
 static void
-add_single_action (gpointer key, 
-		   gpointer value, 
+add_single_action (gpointer key G_GNUC_UNUSED,
+		   gpointer value,
 		   gpointer user_data)
 {
   GList **list = user_data;
