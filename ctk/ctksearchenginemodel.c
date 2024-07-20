@@ -175,7 +175,7 @@ _ctk_search_engine_model_class_init (CtkSearchEngineModelClass *class)
 }
 
 static void
-_ctk_search_engine_model_init (CtkSearchEngineModel *engine)
+_ctk_search_engine_model_init (CtkSearchEngineModel *engine G_GNUC_UNUSED)
 {
 }
 
