@@ -277,7 +277,7 @@ ctk_accel_map_lookup_entry (const gchar *accel_path,
 }
 
 static void
-hash2slist_foreach (gpointer  key,
+hash2slist_foreach (gpointer  key G_GNUC_UNUSED,
 		    gpointer  value,
 		    gpointer  user_data)
 {
@@ -1020,7 +1020,7 @@ ctk_accel_map_class_init (CtkAccelMapClass *accel_map_class)
 }
 
 static void
-ctk_accel_map_init (CtkAccelMap *map)
+ctk_accel_map_init (CtkAccelMap *map G_GNUC_UNUSED)
 {
 }
 
