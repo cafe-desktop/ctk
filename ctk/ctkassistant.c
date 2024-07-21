@@ -283,7 +283,7 @@ ctk_assistant_get_property (GObject      *object,
 
 static void
 add_cb (CtkContainer *container,
-        CtkWidget    *widget,
+        CtkWidget    *widget G_GNUC_UNUSED,
         CtkAssistant *assistant)
 {
   CtkAssistantPrivate *priv = assistant->priv;
@@ -1047,14 +1047,14 @@ compute_next_step (CtkAssistant *assistant)
 }
 
 static void
-on_assistant_close (CtkWidget    *widget,
+on_assistant_close (CtkWidget    *widget G_GNUC_UNUSED,
                     CtkAssistant *assistant)
 {
   g_signal_emit (assistant, signals [CLOSE], 0, NULL);
 }
 
 static void
-on_assistant_apply (CtkWidget    *widget,
+on_assistant_apply (CtkWidget    *widget G_GNUC_UNUSED,
                     CtkAssistant *assistant)
 {
   gboolean success;
@@ -1071,28 +1071,28 @@ on_assistant_apply (CtkWidget    *widget,
 }
 
 static void
-on_assistant_forward (CtkWidget    *widget,
+on_assistant_forward (CtkWidget    *widget G_GNUC_UNUSED,
                       CtkAssistant *assistant)
 {
   ctk_assistant_next_page (assistant);
 }
 
 static void
-on_assistant_back (CtkWidget    *widget,
+on_assistant_back (CtkWidget    *widget G_GNUC_UNUSED,
                    CtkAssistant *assistant)
 {
   ctk_assistant_previous_page (assistant);
 }
 
 static void
-on_assistant_cancel (CtkWidget    *widget,
+on_assistant_cancel (CtkWidget    *widget G_GNUC_UNUSED,
                      CtkAssistant *assistant)
 {
   g_signal_emit (assistant, signals [CANCEL], 0, NULL);
 }
 
 static void
-on_assistant_last (CtkWidget    *widget,
+on_assistant_last (CtkWidget    *widget G_GNUC_UNUSED,
                    CtkAssistant *assistant)
 {
   CtkAssistantPrivate *priv = assistant->priv;
@@ -1119,8 +1119,8 @@ alternative_button_order (CtkAssistant *assistant)
 }
 
 static void
-on_page_notify (CtkWidget  *widget,
-                GParamSpec *arg,
+on_page_notify (CtkWidget  *widget G_GNUC_UNUSED,
+                GParamSpec *arg G_GNUC_UNUSED,
                 gpointer    data)
 {
   CtkAssistant *assistant = CTK_ASSISTANT (data);
@@ -1133,7 +1133,7 @@ on_page_notify (CtkWidget  *widget,
 }
 
 static void
-assistant_remove_page_cb (CtkContainer *container,
+assistant_remove_page_cb (CtkContainer *container G_GNUC_UNUSED,
                           CtkWidget    *page,
                           CtkAssistant *assistant)
 {
@@ -1439,7 +1439,7 @@ ctk_assistant_unmap (CtkWidget *widget)
 
 static gboolean
 ctk_assistant_delete_event (CtkWidget   *widget,
-                            CdkEventAny *event)
+                            CdkEventAny *event G_GNUC_UNUSED)
 {
   CtkAssistant *assistant = CTK_ASSISTANT (widget);
   CtkAssistantPrivate *priv = assistant->priv;
@@ -2607,7 +2607,7 @@ _ctk_assistant_accessible_class_init (CtkAssistantAccessibleClass *klass)
 }
 
 static void
-_ctk_assistant_accessible_init (CtkAssistantAccessible *self)
+_ctk_assistant_accessible_init (CtkAssistantAccessible *self G_GNUC_UNUSED)
 {
 }
 
