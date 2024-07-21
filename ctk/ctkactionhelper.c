@@ -261,8 +261,10 @@ ctk_action_helper_action_state_changed (CtkActionHelper *helper,
 }
 
 static void
-ctk_action_helper_get_property (GObject *object, guint prop_id,
-                                GValue *value, GParamSpec *pspec)
+ctk_action_helper_get_property (GObject    *object,
+                                guint       prop_id,
+                                GValue     *value,
+                                GParamSpec *pspec G_GNUC_UNUSED)
 {
   CtkActionHelper *helper = CTK_ACTION_HELPER (object);
 
@@ -301,8 +303,8 @@ ctk_action_helper_finalize (GObject *object)
 
 static void
 ctk_action_helper_observer_action_added (CtkActionObserver   *observer,
-                                         CtkActionObservable *observable,
-                                         const gchar         *action_name,
+                                         CtkActionObservable *observable G_GNUC_UNUSED,
+                                         const gchar         *action_name G_GNUC_UNUSED,
                                          const GVariantType  *parameter_type,
                                          gboolean             enabled,
                                          GVariant            *state)
@@ -312,8 +314,8 @@ ctk_action_helper_observer_action_added (CtkActionObserver   *observer,
 
 static void
 ctk_action_helper_observer_action_enabled_changed (CtkActionObserver   *observer,
-                                                   CtkActionObservable *observable,
-                                                   const gchar         *action_name,
+                                                   CtkActionObservable *observable G_GNUC_UNUSED,
+                                                   const gchar         *action_name G_GNUC_UNUSED,
                                                    gboolean             enabled)
 {
   ctk_action_helper_action_enabled_changed (CTK_ACTION_HELPER (observer), enabled);
@@ -321,8 +323,8 @@ ctk_action_helper_observer_action_enabled_changed (CtkActionObserver   *observer
 
 static void
 ctk_action_helper_observer_action_state_changed (CtkActionObserver   *observer,
-                                                 CtkActionObservable *observable,
-                                                 const gchar         *action_name,
+                                                 CtkActionObservable *observable G_GNUC_UNUSED,
+                                                 const gchar         *action_name G_GNUC_UNUSED,
                                                  GVariant            *state)
 {
   ctk_action_helper_action_state_changed (CTK_ACTION_HELPER (observer), state);
@@ -330,14 +332,14 @@ ctk_action_helper_observer_action_state_changed (CtkActionObserver   *observer,
 
 static void
 ctk_action_helper_observer_action_removed (CtkActionObserver   *observer,
-                                           CtkActionObservable *observable,
-                                           const gchar         *action_name)
+                                           CtkActionObservable *observable G_GNUC_UNUSED,
+                                           const gchar         *action_name G_GNUC_UNUSED)
 {
   ctk_action_helper_action_removed (CTK_ACTION_HELPER (observer), TRUE);
 }
 
 static void
-ctk_action_helper_init (CtkActionHelper *helper)
+ctk_action_helper_init (CtkActionHelper *helper G_GNUC_UNUSED)
 {
 }
 
