@@ -193,7 +193,7 @@ ctk_application_window_actions_change_action_state_full (GRemoteActionGroup *rem
 }
 
 static void
-ctk_application_window_actions_init (CtkApplicationWindowActions *actions)
+ctk_application_window_actions_init (CtkApplicationWindowActions *actions G_GNUC_UNUSED)
 {
 }
 
@@ -205,7 +205,7 @@ ctk_application_window_actions_iface_init (GRemoteActionGroupInterface *iface)
 }
 
 static void
-ctk_application_window_actions_class_init (CtkApplicationWindowActionsClass *class)
+ctk_application_window_actions_class_init (CtkApplicationWindowActionsClass *class G_GNUC_UNUSED)
 {
 }
 
@@ -384,7 +384,7 @@ ctk_application_window_update_shell_shows_menubar (CtkApplicationWindow *window,
 
 static void
 ctk_application_window_shell_shows_app_menu_changed (GObject    *object,
-                                                     GParamSpec *pspec,
+                                                     GParamSpec *pspec G_GNUC_UNUSED,
                                                      gpointer    user_data)
 {
   CtkApplicationWindow *window = user_data;
@@ -395,7 +395,7 @@ ctk_application_window_shell_shows_app_menu_changed (GObject    *object,
 
 static void
 ctk_application_window_shell_shows_menubar_changed (GObject    *object,
-                                                    GParamSpec *pspec,
+                                                    GParamSpec *pspec G_GNUC_UNUSED,
                                                     gpointer    user_data)
 {
   CtkApplicationWindow *window = user_data;
@@ -747,7 +747,7 @@ static void
 ctk_application_window_get_property (GObject    *object,
                                      guint       prop_id,
                                      GValue     *value,
-                                     GParamSpec *pspec)
+                                     GParamSpec *pspec G_GNUC_UNUSED)
 {
   CtkApplicationWindow *window = CTK_APPLICATION_WINDOW (object);
 
@@ -766,7 +766,7 @@ static void
 ctk_application_window_set_property (GObject      *object,
                                      guint         prop_id,
                                      const GValue *value,
-                                     GParamSpec   *pspec)
+                                     GParamSpec   *pspec G_GNUC_UNUSED)
 {
   CtkApplicationWindow *window = CTK_APPLICATION_WINDOW (object);
 
@@ -972,8 +972,8 @@ ctk_application_window_set_id (CtkApplicationWindow *window,
 }
 
 static void
-show_help_overlay (GSimpleAction *action,
-                   GVariant      *parameter,
+show_help_overlay (GSimpleAction *action G_GNUC_UNUSED,
+                   GVariant      *parameter G_GNUC_UNUSED,
                    gpointer       user_data)
 {
   CtkApplicationWindow *window = user_data;
