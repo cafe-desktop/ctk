@@ -215,7 +215,7 @@ get_app_info_for_event (CtkAppChooserWidget *self,
 
 static void
 popup_menu_detach (CtkWidget *attach_widget,
-                   CtkMenu   *menu)
+                   CtkMenu   *menu G_GNUC_UNUSED)
 {
   CtkAppChooserWidget *self = CTK_APP_CHOOSER_WIDGET (attach_widget);
 
@@ -223,7 +223,7 @@ popup_menu_detach (CtkWidget *attach_widget,
 }
 
 static gboolean
-widget_button_press_event_cb (CtkWidget      *widget,
+widget_button_press_event_cb (CtkWidget      *widget G_GNUC_UNUSED,
                               CdkEventButton *event,
                               gpointer        user_data)
 {
@@ -285,7 +285,7 @@ path_is_heading (CtkTreeView *view,
 static void
 program_list_selection_activated (CtkTreeView       *view,
                                   CtkTreePath       *path,
-                                  CtkTreeViewColumn *column,
+                                  CtkTreeViewColumn *column G_GNUC_UNUSED,
                                   gpointer           user_data)
 {
   CtkAppChooserWidget *self = user_data;
@@ -304,10 +304,10 @@ program_list_selection_activated (CtkTreeView       *view,
 
 static gboolean
 ctk_app_chooser_search_equal_func (CtkTreeModel *model,
-                                   gint          column,
+                                   gint          column G_GNUC_UNUSED,
                                    const gchar  *key,
                                    CtkTreeIter  *iter,
-                                   gpointer      user_data)
+                                   gpointer      user_data G_GNUC_UNUSED)
 {
   gchar *name;
   gchar *exec_name;
@@ -341,7 +341,7 @@ static gint
 ctk_app_chooser_sort_func (CtkTreeModel *model,
                            CtkTreeIter  *a,
                            CtkTreeIter  *b,
-                           gpointer      user_data)
+                           gpointer      user_data G_GNUC_UNUSED)
 {
   gboolean a_recommended, b_recommended;
   gboolean a_fallback, b_fallback;
@@ -446,11 +446,11 @@ ctk_app_chooser_sort_func (CtkTreeModel *model,
 }
 
 static void
-padding_cell_renderer_func (CtkTreeViewColumn *column,
+padding_cell_renderer_func (CtkTreeViewColumn *column G_GNUC_UNUSED,
                             CtkCellRenderer   *cell,
                             CtkTreeModel      *model,
                             CtkTreeIter       *iter,
-                            gpointer           user_data)
+                            gpointer           user_data G_GNUC_UNUSED)
 {
   gboolean heading;
 
@@ -472,11 +472,11 @@ padding_cell_renderer_func (CtkTreeViewColumn *column,
 }
 
 static gboolean
-ctk_app_chooser_selection_func (CtkTreeSelection *selection,
+ctk_app_chooser_selection_func (CtkTreeSelection *selection G_GNUC_UNUSED,
                                 CtkTreeModel     *model,
                                 CtkTreePath      *path,
-                                gboolean          path_currently_selected,
-                                gpointer          user_data)
+                                gboolean          path_currently_selected G_GNUC_UNUSED,
+                                gpointer          user_data G_GNUC_UNUSED)
 {
   CtkTreeIter iter;
   gboolean heading;
@@ -788,7 +788,7 @@ ctk_app_chooser_widget_initialize_items (CtkAppChooserWidget *self)
 }
 
 static void
-app_info_changed (GAppInfoMonitor     *monitor,
+app_info_changed (GAppInfoMonitor     *monitor G_GNUC_UNUSED,
                   CtkAppChooserWidget *self)
 {
   ctk_app_chooser_refresh (CTK_APP_CHOOSER (self));
