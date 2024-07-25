@@ -444,11 +444,11 @@ ctk_box_get_property (GObject    *object,
 static gboolean
 ctk_box_draw_contents (CtkCssGadget *gadget,
                        cairo_t      *cr,
-                       int           x,
-                       int           y,
-                       int           width,
-                       int           height,
-                       gpointer      unused)
+                       int           x G_GNUC_UNUSED,
+                       int           y G_GNUC_UNUSED,
+                       int           width G_GNUC_UNUSED,
+                       int           height G_GNUC_UNUSED,
+                       gpointer      unused G_GNUC_UNUSED)
 {
   CTK_WIDGET_CLASS (ctk_box_parent_class)->draw (ctk_css_gadget_get_owner (gadget), cr);
 
@@ -1197,9 +1197,9 @@ ctk_box_size_allocate_with_center (CtkWidget           *widget,
 static void
 ctk_box_allocate_contents (CtkCssGadget        *gadget,
                            const CtkAllocation *allocation,
-                           int                  baseline,
+                           int                  baseline G_GNUC_UNUSED,
                            CtkAllocation       *out_clip,
-                           gpointer             unused)
+                           gpointer             unused G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkBox *box = CTK_BOX (widget);
@@ -1231,7 +1231,7 @@ ctk_box_size_allocate (CtkWidget     *widget,
 }
 
 static GType
-ctk_box_child_type (CtkContainer   *container)
+ctk_box_child_type (CtkContainer   *container G_GNUC_UNUSED)
 {
   return CTK_TYPE_WIDGET;
 }
@@ -1457,7 +1457,7 @@ ctk_box_get_path_for_child (CtkContainer *container,
 
 static void
 ctk_box_buildable_add_child (CtkBuildable *buildable,
-                             CtkBuilder   *builder,
+                             CtkBuilder   *builder G_GNUC_UNUSED,
                              GObject      *child,
                              const gchar  *type)
 {
@@ -1510,7 +1510,7 @@ ctk_box_update_child_css_position (CtkBox      *box,
 
 static void
 ctk_box_direction_changed (CtkWidget        *widget,
-                           CtkTextDirection  previous_direction)
+                           CtkTextDirection  previous_direction G_GNUC_UNUSED)
 {
   CtkBox *box = CTK_BOX (widget);
 
@@ -2058,7 +2058,7 @@ ctk_box_get_content_size (CtkCssGadget   *gadget,
                           gint           *natural,
                           gint           *minimum_baseline,
                           gint           *natural_baseline,
-                          gpointer        unused)
+                          gpointer        unused G_GNUC_UNUSED)
 {
   CtkWidget     *widget  = ctk_css_gadget_get_owner (gadget);
   CtkBox        *box     = CTK_BOX (widget);
@@ -2653,7 +2653,7 @@ ctk_box_remove (CtkContainer *container,
 
 static void
 ctk_box_forall (CtkContainer *container,
-		gboolean      include_internals,
+		gboolean      include_internals G_GNUC_UNUSED,
 		CtkCallback   callback,
 		gpointer      callback_data)
 {
