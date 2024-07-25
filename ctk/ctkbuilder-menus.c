@@ -230,8 +230,8 @@ ctk_builder_menu_start_element (GMarkupParseContext  *context,
 }
 
 static void
-ctk_builder_menu_end_element (GMarkupParseContext  *context,
-                              const gchar          *element_name,
+ctk_builder_menu_end_element (GMarkupParseContext  *context G_GNUC_UNUSED,
+                              const gchar          *element_name G_GNUC_UNUSED,
                               gpointer              user_data,
                               GError              **error)
 {
@@ -321,8 +321,8 @@ ctk_builder_menu_text (GMarkupParseContext  *context,
 }
 
 static void
-ctk_builder_menu_error (GMarkupParseContext *context,
-                        GError              *error,
+ctk_builder_menu_error (GMarkupParseContext *context G_GNUC_UNUSED,
+                        GError              *error G_GNUC_UNUSED,
                         gpointer             user_data)
 {
   CtkBuilderMenuState *state = user_data;
