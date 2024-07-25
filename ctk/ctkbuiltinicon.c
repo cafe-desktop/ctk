@@ -58,7 +58,7 @@ G_DEFINE_TYPE_WITH_CODE (CtkBuiltinIcon, ctk_builtin_icon, CTK_TYPE_CSS_GADGET,
 static void
 ctk_builtin_icon_get_preferred_size (CtkCssGadget   *gadget,
                                      CtkOrientation  orientation,
-                                     gint            for_size,
+                                     gint            for_size G_GNUC_UNUSED,
                                      gint           *minimum,
                                      gint           *natural,
                                      gint           *minimum_baseline,
@@ -198,7 +198,7 @@ ctk_builtin_icon_class_init (CtkBuiltinIconClass *klass)
 }
 
 static void
-ctk_builtin_icon_init (CtkBuiltinIcon *custom_gadget)
+ctk_builtin_icon_init (CtkBuiltinIcon *custom_gadget G_GNUC_UNUSED)
 {
 }
 
