@@ -44,7 +44,7 @@ typedef CtkBuildableIface CtkBuildableInterface;
 G_DEFINE_INTERFACE (CtkBuildable, ctk_buildable, G_TYPE_OBJECT)
 
 static void
-ctk_buildable_default_init (CtkBuildableInterface *iface)
+ctk_buildable_default_init (CtkBuildableInterface *iface G_GNUC_UNUSED)
 {
 }
 
