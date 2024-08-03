@@ -1001,9 +1001,9 @@ get_allocated_cells (CtkCellAreaBox        *box,
 
 
 static void
-ctk_cell_area_box_focus_changed (CtkCellArea        *area,
-                                 GParamSpec         *pspec,
-                                 CtkCellAreaBox     *box)
+ctk_cell_area_box_focus_changed (CtkCellArea    *area,
+                                 GParamSpec     *pspec G_GNUC_UNUSED,
+                                 CtkCellAreaBox *box)
 {
   if (ctk_cell_area_get_focus_cell (area))
     box->priv->last_focus_cell = ctk_cell_area_get_focus_cell (area);
