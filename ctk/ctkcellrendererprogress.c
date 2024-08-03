@@ -545,11 +545,11 @@ get_bar_position (gint     start,
 
 static void
 ctk_cell_renderer_progress_render (CtkCellRenderer      *cell,
-                                   cairo_t              *cr,
+				   cairo_t              *cr,
 				   CtkWidget            *widget,
-				   const CdkRectangle   *background_area,
+				   const CdkRectangle   *background_area G_GNUC_UNUSED,
 				   const CdkRectangle   *cell_area,
-				   CtkCellRendererState  flags)
+				   CtkCellRendererState  flags G_GNUC_UNUSED)
 {
   CtkCellRendererProgress *cellprogress = CTK_CELL_RENDERER_PROGRESS (cell);
   CtkCellRendererProgressPrivate *priv= cellprogress->priv;
