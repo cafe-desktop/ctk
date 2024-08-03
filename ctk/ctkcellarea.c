@@ -991,7 +991,7 @@ ctk_cell_area_get_property (GObject     *object,
  *************************************************************/
 static void
 ctk_cell_area_real_add (CtkCellArea         *area,
-			CtkCellRenderer     *renderer)
+			CtkCellRenderer     *renderer G_GNUC_UNUSED)
 {
     g_warning ("CtkCellAreaClass::add not implemented for '%s'",
                g_type_name (G_TYPE_FROM_INSTANCE (area)));
@@ -999,7 +999,7 @@ ctk_cell_area_real_add (CtkCellArea         *area,
 
 static void      
 ctk_cell_area_real_remove (CtkCellArea         *area,
-			   CtkCellRenderer     *renderer)
+			   CtkCellRenderer     *renderer G_GNUC_UNUSED)
 {
     g_warning ("CtkCellAreaClass::remove not implemented for '%s'",
                g_type_name (G_TYPE_FROM_INSTANCE (area)));
@@ -1007,8 +1007,8 @@ ctk_cell_area_real_remove (CtkCellArea         *area,
 
 static void
 ctk_cell_area_real_foreach (CtkCellArea         *area,
-			    CtkCellCallback      callback,
-			    gpointer             callback_data)
+			    CtkCellCallback      callback G_GNUC_UNUSED,
+			    gpointer             callback_data G_GNUC_UNUSED)
 {
     g_warning ("CtkCellAreaClass::foreach not implemented for '%s'",
                g_type_name (G_TYPE_FROM_INSTANCE (area)));
@@ -1016,12 +1016,12 @@ ctk_cell_area_real_foreach (CtkCellArea         *area,
 
 static void
 ctk_cell_area_real_foreach_alloc (CtkCellArea         *area,
-				  CtkCellAreaContext  *context,
-				  CtkWidget           *widget,
-				  const CdkRectangle  *cell_area,
-				  const CdkRectangle  *background_area,
-				  CtkCellAllocCallback callback,
-				  gpointer             callback_data)
+				  CtkCellAreaContext  *context G_GNUC_UNUSED,
+				  CtkWidget           *widget G_GNUC_UNUSED,
+				  const CdkRectangle  *cell_area G_GNUC_UNUSED,
+				  const CdkRectangle  *background_area G_GNUC_UNUSED,
+				  CtkCellAllocCallback callback G_GNUC_UNUSED,
+				  gpointer             callback_data G_GNUC_UNUSED)
 {
     g_warning ("CtkCellAreaClass::foreach_alloc not implemented for '%s'",
                g_type_name (G_TYPE_FROM_INSTANCE (area)));
@@ -1303,7 +1303,7 @@ ctk_cell_area_real_create_context (CtkCellArea *area)
 
 static CtkCellAreaContext *
 ctk_cell_area_real_copy_context (CtkCellArea        *area,
-				 CtkCellAreaContext *context)
+				 CtkCellAreaContext *context G_GNUC_UNUSED)
 {
   g_warning ("CtkCellAreaClass::copy_context not implemented for '%s'",
              g_type_name (G_TYPE_FROM_INSTANCE (area)));
@@ -1312,7 +1312,7 @@ ctk_cell_area_real_copy_context (CtkCellArea        *area,
 }
 
 static CtkSizeRequestMode
-ctk_cell_area_real_get_request_mode (CtkCellArea *area)
+ctk_cell_area_real_get_request_mode (CtkCellArea *area G_GNUC_UNUSED)
 {
   /* By default cell areas are height-for-width. */
   return CTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH;
@@ -1320,10 +1320,10 @@ ctk_cell_area_real_get_request_mode (CtkCellArea *area)
 
 static void
 ctk_cell_area_real_get_preferred_width (CtkCellArea        *area,
-					CtkCellAreaContext *context,
-					CtkWidget          *widget,
-					gint               *minimum_width,
-					gint               *natural_width)
+					CtkCellAreaContext *context G_GNUC_UNUSED,
+					CtkWidget          *widget G_GNUC_UNUSED,
+					gint               *minimum_width G_GNUC_UNUSED,
+					gint               *natural_width G_GNUC_UNUSED)
 {
   g_warning ("CtkCellAreaClass::get_preferred_width not implemented for '%s'",
 	     g_type_name (G_TYPE_FROM_INSTANCE (area)));
@@ -1331,10 +1331,10 @@ ctk_cell_area_real_get_preferred_width (CtkCellArea        *area,
 
 static void
 ctk_cell_area_real_get_preferred_height (CtkCellArea        *area,
-					 CtkCellAreaContext *context,
-					 CtkWidget          *widget,
-					 gint               *minimum_height,
-					 gint               *natural_height)
+					 CtkCellAreaContext *context G_GNUC_UNUSED,
+					 CtkWidget          *widget G_GNUC_UNUSED,
+					 gint               *minimum_height G_GNUC_UNUSED,
+					 gint               *natural_height G_GNUC_UNUSED)
 {
   g_warning ("CtkCellAreaClass::get_preferred_height not implemented for '%s'",
 	     g_type_name (G_TYPE_FROM_INSTANCE (area)));
@@ -1344,7 +1344,7 @@ static void
 ctk_cell_area_real_get_preferred_height_for_width (CtkCellArea        *area,
                                                    CtkCellAreaContext *context,
                                                    CtkWidget          *widget,
-						   gint                width,
+                                                   gint                width G_GNUC_UNUSED,
                                                    gint               *minimum_height,
                                                    gint               *natural_height)
 {
@@ -1356,7 +1356,7 @@ static void
 ctk_cell_area_real_get_preferred_width_for_height (CtkCellArea        *area,
                                                    CtkCellAreaContext *context,
                                                    CtkWidget          *widget,
-                                                   gint                height,
+                                                   gint                height G_GNUC_UNUSED,
                                                    gint               *minimum_width,
                                                    gint               *natural_width)
 {
@@ -1457,7 +1457,7 @@ ctk_cell_area_real_activate (CtkCellArea         *area,
 
 static gboolean
 ctk_cell_area_real_focus (CtkCellArea           *area,
-			  CtkDirectionType       direction)
+			  CtkDirectionType       direction G_GNUC_UNUSED)
 {
   g_warning ("CtkCellAreaClass::focus not implemented for '%s'",
              g_type_name (G_TYPE_FROM_INSTANCE (area)));
@@ -1484,7 +1484,7 @@ ctk_cell_area_cell_layout_init (CtkCellLayoutIface *iface)
 static void
 ctk_cell_area_pack_default (CtkCellLayout         *cell_layout,
                             CtkCellRenderer       *renderer,
-                            gboolean               expand)
+                            gboolean               expand G_GNUC_UNUSED)
 {
   ctk_cell_area_add (CTK_CELL_AREA (cell_layout), renderer);
 }
@@ -1546,8 +1546,8 @@ ctk_cell_area_clear_attributes (CtkCellLayout         *cell_layout,
 
 static void
 ctk_cell_area_reorder (CtkCellLayout   *cell_layout,
-                       CtkCellRenderer *cell,
-                       gint             position)
+                       CtkCellRenderer *cell G_GNUC_UNUSED,
+                       gint             position G_GNUC_UNUSED)
 {
   g_warning ("CtkCellLayout::reorder not implemented for '%s'",
              g_type_name (G_TYPE_FROM_INSTANCE (cell_layout)));
@@ -1850,7 +1850,7 @@ ctk_cell_area_render (CtkCellArea          *area,
 static gboolean
 get_cell_allocation (CtkCellRenderer        *renderer,
                      const CdkRectangle     *cell_area,
-                     const CdkRectangle     *cell_background,
+                     const CdkRectangle     *cell_background G_GNUC_UNUSED,
                      RendererAllocationData *data)
 {
   if (data->renderer == renderer)
@@ -1900,7 +1900,7 @@ ctk_cell_area_get_cell_allocation (CtkCellArea          *area,
 static gboolean
 get_cell_by_position (CtkCellRenderer     *renderer,
                       const CdkRectangle  *cell_area,
-                      const CdkRectangle  *cell_background,
+                      const CdkRectangle  *cell_background G_GNUC_UNUSED,
                       CellByPositionData  *data)
 {
   if (data->x >= cell_area->x && data->x < cell_area->x + cell_area->width &&
