@@ -627,9 +627,9 @@ ctk_cell_view_size_allocate (CtkWidget     *widget,
 static void
 ctk_cell_view_allocate (CtkCssGadget        *gadget,
                         const CtkAllocation *allocation,
-                        int                  baseline,
+                        int                  baseline G_GNUC_UNUSED,
                         CtkAllocation       *out_clip,
-                        gpointer             data)
+                        gpointer             data G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkCellView *cellview;
@@ -778,9 +778,9 @@ ctk_cell_view_measure (CtkCssGadget   *gadget,
                        int             for_size,
                        int            *minimum,
                        int            *natural,
-                       int            *minimum_baseline,
-                       int            *natural_baseline,
-                       gpointer        data)
+                       int            *minimum_baseline G_GNUC_UNUSED,
+                       int            *natural_baseline G_GNUC_UNUSED,
+                       gpointer        data G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkCellView *cellview;
@@ -884,7 +884,7 @@ ctk_cell_view_render (CtkCssGadget *gadget,
                       int           y,
                       int           width,
                       int           height,
-                      gpointer      data)
+                      gpointer      data G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkCellView *cellview;
@@ -1010,9 +1010,9 @@ ctk_cell_view_buildable_custom_tag_end (CtkBuildable *buildable,
 }
 
 static void
-context_size_changed_cb (CtkCellAreaContext  *context,
-			 GParamSpec          *pspec,
-			 CtkWidget           *view)
+context_size_changed_cb (CtkCellAreaContext *context G_GNUC_UNUSED,
+			 GParamSpec         *pspec,
+			 CtkWidget          *view)
 {
   if (!strcmp (pspec->name, "minimum-width") ||
       !strcmp (pspec->name, "natural-width") ||
@@ -1022,10 +1022,10 @@ context_size_changed_cb (CtkCellAreaContext  *context,
 }
 
 static void
-row_changed_cb (CtkTreeModel         *model,
-		CtkTreePath          *path,
-		CtkTreeIter          *iter,
-		CtkCellView          *view)
+row_changed_cb (CtkTreeModel *model G_GNUC_UNUSED,
+		CtkTreePath  *path,
+		CtkTreeIter  *iter G_GNUC_UNUSED,
+		CtkCellView  *view)
 {
   CtkTreePath *row_path;
 
