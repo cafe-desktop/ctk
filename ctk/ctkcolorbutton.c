@@ -274,13 +274,13 @@ ctk_color_button_class_init (CtkColorButtonClass *klass)
 }
 
 static void
-ctk_color_button_drag_data_received (CtkWidget        *widget,
-                                     CdkDragContext   *context,
-                                     gint              x,
-                                     gint              y,
+ctk_color_button_drag_data_received (CtkWidget        *widget G_GNUC_UNUSED,
+                                     CdkDragContext   *context G_GNUC_UNUSED,
+                                     gint              x G_GNUC_UNUSED,
+                                     gint              y G_GNUC_UNUSED,
                                      CtkSelectionData *selection_data,
-                                     guint             info,
-                                     guint32           time,
+                                     guint             info G_GNUC_UNUSED,
+                                     guint32           time G_GNUC_UNUSED,
                                      CtkColorButton   *button)
 {
   CtkColorButtonPrivate *priv = button->priv;
@@ -340,7 +340,7 @@ set_color_icon (CdkDragContext *context,
 }
 
 static void
-ctk_color_button_drag_begin (CtkWidget      *widget,
+ctk_color_button_drag_begin (CtkWidget      *widget G_GNUC_UNUSED,
                              CdkDragContext *context,
                              gpointer        data)
 {
@@ -350,11 +350,11 @@ ctk_color_button_drag_begin (CtkWidget      *widget,
 }
 
 static void
-ctk_color_button_drag_data_get (CtkWidget        *widget,
-                                CdkDragContext   *context,
+ctk_color_button_drag_data_get (CtkWidget        *widget G_GNUC_UNUSED,
+                                CdkDragContext   *context G_GNUC_UNUSED,
                                 CtkSelectionData *selection_data,
-                                guint             info,
-                                guint             time,
+                                guint             info G_GNUC_UNUSED,
+                                guint             time G_GNUC_UNUSED,
                                 CtkColorButton   *button)
 {
   CtkColorButtonPrivate *priv = button->priv;
@@ -490,8 +490,8 @@ ctk_color_button_new_with_rgba (const CdkRGBA *rgba)
 
 static gboolean
 dialog_delete_event (CtkWidget *dialog,
-                     CdkEvent  *event,
-                     gpointer   user_data)
+                     CdkEvent  *event G_GNUC_UNUSED,
+                     gpointer   user_data G_GNUC_UNUSED)
 {
   g_signal_emit_by_name (dialog, "response", CTK_RESPONSE_CANCEL);
 
@@ -499,7 +499,7 @@ dialog_delete_event (CtkWidget *dialog,
 }
 
 static gboolean
-dialog_destroy (CtkWidget *widget,
+dialog_destroy (CtkWidget *widget G_GNUC_UNUSED,
                 gpointer   data)
 {
   CtkColorButton *button = CTK_COLOR_BUTTON (data);
