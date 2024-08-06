@@ -235,9 +235,9 @@ scale_set_property (GObject      *object,
 }
 
 static void
-hold_action (CtkGestureLongPress *gesture,
-             gdouble              x,
-             gdouble              y,
+hold_action (CtkGestureLongPress *gesture G_GNUC_UNUSED,
+             gdouble              x G_GNUC_UNUSED,
+             gdouble              y G_GNUC_UNUSED,
              CtkColorScale       *scale)
 {
   gboolean handled;
