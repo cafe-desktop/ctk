@@ -28,7 +28,7 @@ G_DEFINE_INTERFACE_WITH_CODE (CtkColorPicker, ctk_color_picker, G_TYPE_OBJECT,
                               g_type_interface_add_prerequisite (g_define_type_id, G_TYPE_INITABLE);)
 
 static void
-ctk_color_picker_default_init (CtkColorPickerInterface *iface)
+ctk_color_picker_default_init (CtkColorPickerInterface *iface G_GNUC_UNUSED)
 {
 }
 
