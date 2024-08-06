@@ -43,8 +43,8 @@ G_DEFINE_TYPE_WITH_CODE (CtkColorPickerKwin, ctk_color_picker_kwin, G_TYPE_OBJEC
 
 static gboolean
 ctk_color_picker_kwin_initable_init (GInitable     *initable,
-                                      GCancellable  *cancellable,
-                                      GError       **error)
+                                      GCancellable *cancellable G_GNUC_UNUSED,
+                                      GError      **error)
 {
   CtkColorPickerKwin *picker = CTK_COLOR_PICKER_KWIN (initable);
   char *owner;
@@ -84,7 +84,7 @@ ctk_color_picker_kwin_initable_iface_init (GInitableIface *iface)
 }
 
 static void
-ctk_color_picker_kwin_init (CtkColorPickerKwin *picker)
+ctk_color_picker_kwin_init (CtkColorPickerKwin *picker G_GNUC_UNUSED)
 {
 }
 
@@ -113,7 +113,7 @@ ctk_color_picker_kwin_new (void)
 }
 
 static void
-color_picked (GObject      *source,
+color_picked (GObject      *source G_GNUC_UNUSED,
               GAsyncResult *res,
               gpointer      data)
 {
