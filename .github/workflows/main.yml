@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  docker:
+  docker_testing:
     uses: cafe-desktop/cafe-common/.github/workflows/main.yml@master
     with:
       image_name: ctk
@@ -17,3 +17,13 @@ jobs:
     secrets:
       DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
       DOCKER_HUB_ACCESS_TOKEN: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+  docker_sid:
+    uses: cafe-desktop/cafe-common/.github/workflows/main.yml@master
+    with:
+      image_name: ctk
+      tag: $GITHUB_RUN_NUMBER
+    secrets:
+      DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+      DOCKER_HUB_ACCESS_TOKEN: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+      DOCKER_HUB_DISTRO: debian:sid
+      GH_PAGES_DEPLOY: 'false'
