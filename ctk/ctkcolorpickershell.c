@@ -43,7 +43,7 @@ G_DEFINE_TYPE_WITH_CODE (CtkColorPickerShell, ctk_color_picker_shell, G_TYPE_OBJ
 
 static gboolean
 ctk_color_picker_shell_initable_init (GInitable     *initable,
-                                      GCancellable  *cancellable,
+                                      GCancellable  *cancellable G_GNUC_UNUSED,
                                       GError       **error)
 {
   CtkColorPickerShell *picker = CTK_COLOR_PICKER_SHELL (initable);
@@ -84,7 +84,7 @@ ctk_color_picker_shell_initable_iface_init (GInitableIface *iface)
 }
 
 static void
-ctk_color_picker_shell_init (CtkColorPickerShell *picker)
+ctk_color_picker_shell_init (CtkColorPickerShell *picker G_GNUC_UNUSED)
 {
 }
 
@@ -113,7 +113,7 @@ ctk_color_picker_shell_new (void)
 }
 
 static void
-color_picked (GObject      *source,
+color_picked (GObject      *source G_GNUC_UNUSED,
               GAsyncResult *res,
               gpointer      data)
 {
