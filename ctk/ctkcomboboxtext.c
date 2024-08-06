@@ -224,11 +224,11 @@ item_start_element (GMarkupParseContext  *context,
 }
 
 static void
-item_text (GMarkupParseContext  *context,
+item_text (GMarkupParseContext  *context G_GNUC_UNUSED,
            const gchar          *text,
            gsize                 text_len,
            gpointer              user_data,
-           GError              **error)
+           GError              **error G_GNUC_UNUSED)
 {
   ItemParserData *data = (ItemParserData*)user_data;
 
@@ -237,10 +237,10 @@ item_text (GMarkupParseContext  *context,
 }
 
 static void
-item_end_element (GMarkupParseContext  *context,
-                  const gchar          *element_name,
+item_end_element (GMarkupParseContext  *context G_GNUC_UNUSED,
+                  const gchar          *element_name G_GNUC_UNUSED,
                   gpointer              user_data,
-                  GError              **error)
+                  GError              **error G_GNUC_UNUSED)
 {
   ItemParserData *data = (ItemParserData*)user_data;
 
