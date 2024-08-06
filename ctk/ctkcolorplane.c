@@ -244,9 +244,9 @@ update_color (CtkColorPlane *plane,
 }
 
 static void
-hold_action (CtkGestureLongPress *gesture,
-             gdouble              x,
-             gdouble              y,
+hold_action (CtkGestureLongPress *gesture G_GNUC_UNUSED,
+             gdouble              x G_GNUC_UNUSED,
+             gdouble              y G_GNUC_UNUSED,
              CtkColorPlane       *plane)
 {
   gboolean handled;
@@ -383,9 +383,9 @@ plane_drag_gesture_update (CtkGestureDrag *gesture,
 }
 
 static void
-plane_drag_gesture_end (CtkGestureDrag *gesture,
-                        gdouble         offset_x,
-                        gdouble         offset_y,
+plane_drag_gesture_end (CtkGestureDrag *gesture G_GNUC_UNUSED,
+                        gdouble         offset_x G_GNUC_UNUSED,
+                        gdouble         offset_y G_GNUC_UNUSED,
                         CtkColorPlane  *plane)
 {
   set_cross_cursor (CTK_WIDGET (plane), FALSE);
