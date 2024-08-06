@@ -736,7 +736,7 @@ ctk_color_selection_show_all (CtkWidget *widget)
 
 static gboolean
 ctk_color_selection_grab_broken (CtkWidget          *widget,
-                                 CdkEventGrabBroken *event)
+                                 CdkEventGrabBroken *event G_GNUC_UNUSED)
 {
   shutdown_eyedropper (widget);
 
@@ -824,20 +824,20 @@ color_sample_drag_begin (CtkWidget      *widget,
 
 static void
 color_sample_drag_end (CtkWidget      *widget,
-                       CdkDragContext *context,
-                       gpointer        data)
+                       CdkDragContext *context G_GNUC_UNUSED,
+                       gpointer        data G_GNUC_UNUSED)
 {
   g_object_set_data (G_OBJECT (widget), I_("ctk-color-selection-drag-window"), NULL);
 }
 
 static void
 color_sample_drop_handle (CtkWidget        *widget,
-                          CdkDragContext   *context,
-                          gint              x,
-                          gint              y,
+                          CdkDragContext   *context G_GNUC_UNUSED,
+                          gint              x G_GNUC_UNUSED,
+                          gint              y G_GNUC_UNUSED,
                           CtkSelectionData *selection_data,
-                          guint             info,
-                          guint             time,
+                          guint             info G_GNUC_UNUSED,
+                          guint             time G_GNUC_UNUSED,
                           gpointer          data)
 {
   CtkColorSelection *colorsel = data;
@@ -883,10 +883,10 @@ color_sample_drop_handle (CtkWidget        *widget,
 
 static void
 color_sample_drag_handle (CtkWidget        *widget,
-                          CdkDragContext   *context,
+                          CdkDragContext   *context G_GNUC_UNUSED,
                           CtkSelectionData *selection_data,
-                          guint             info,
-                          guint             time,
+                          guint             info G_GNUC_UNUSED,
+                          guint             time G_GNUC_UNUSED,
                           gpointer          data)
 {
   CtkColorSelection *colorsel = data;
@@ -996,7 +996,7 @@ color_sample_update_samples (CtkColorSelection *colorsel)
 }
 
 static gboolean
-color_old_sample_draw (CtkWidget         *da,
+color_old_sample_draw (CtkWidget         *da G_GNUC_UNUSED,
                        cairo_t           *cr,
                        CtkColorSelection *colorsel)
 {
@@ -1006,7 +1006,7 @@ color_old_sample_draw (CtkWidget         *da,
 
 
 static gboolean
-color_cur_sample_draw (CtkWidget         *da,
+color_cur_sample_draw (CtkWidget         *da G_GNUC_UNUSED,
                        cairo_t           *cr,
                        CtkColorSelection *colorsel)
 {
@@ -1145,8 +1145,8 @@ palette_get_color (CtkWidget *drawing_area, gdouble *color)
 
 static gboolean
 palette_draw (CtkWidget *drawing_area,
-               cairo_t   *cr,
-               gpointer   data)
+               cairo_t  *cr,
+               gpointer  data G_GNUC_UNUSED)
 {
   CtkStyleContext *context;
   gint focus_width;
@@ -1226,7 +1226,7 @@ set_focus_line_attributes (CtkWidget *drawing_area,
 static void
 palette_drag_begin (CtkWidget      *widget,
                     CdkDragContext *context,
-                    gpointer        data)
+                    gpointer        data G_GNUC_UNUSED)
 {
   gdouble colors[4];
 
@@ -1236,11 +1236,11 @@ palette_drag_begin (CtkWidget      *widget,
 
 static void
 palette_drag_handle (CtkWidget        *widget,
-                     CdkDragContext   *context,
+                     CdkDragContext   *context G_GNUC_UNUSED,
                      CtkSelectionData *selection_data,
-                     guint             info,
-                     guint             time,
-                     gpointer          data)
+                     guint             info G_GNUC_UNUSED,
+                     guint             time G_GNUC_UNUSED,
+                     gpointer          data G_GNUC_UNUSED)
 {
   guint16 vals[4];
   gdouble colsrc[4];
@@ -1259,8 +1259,8 @@ palette_drag_handle (CtkWidget        *widget,
 
 static void
 palette_drag_end (CtkWidget      *widget,
-                  CdkDragContext *context,
-                  gpointer        data)
+                  CdkDragContext *context G_GNUC_UNUSED,
+                  gpointer        data G_GNUC_UNUSED)
 {
   g_object_set_data (G_OBJECT (widget), I_("ctk-color-selection-drag-window"), NULL);
 }
@@ -1419,7 +1419,7 @@ palette_set_color (CtkWidget         *drawing_area,
 }
 
 static void
-save_color_selected (CtkWidget *menuitem,
+save_color_selected (CtkWidget *menuitem G_GNUC_UNUSED,
                      gpointer   data)
 {
   CtkColorSelection *colorsel;
@@ -1474,8 +1474,8 @@ do_popup (CtkColorSelection *colorsel,
 
 static gboolean
 palette_enter (CtkWidget        *drawing_area,
-               CdkEventCrossing *event,
-               gpointer        data)
+               CdkEventCrossing *event G_GNUC_UNUSED,
+               gpointer          data G_GNUC_UNUSED)
 {
   g_object_set_data (G_OBJECT (drawing_area),
                      I_("ctk-colorsel-have-pointer"),
@@ -1486,8 +1486,8 @@ palette_enter (CtkWidget        *drawing_area,
 
 static gboolean
 palette_leave (CtkWidget        *drawing_area,
-               CdkEventCrossing *event,
-               gpointer        data)
+               CdkEventCrossing *event G_GNUC_UNUSED,
+               gpointer          data G_GNUC_UNUSED)
 {
   g_object_set_data (G_OBJECT (drawing_area),
                      I_("ctk-colorsel-have-pointer"),
@@ -1540,12 +1540,12 @@ palette_release (CtkWidget      *drawing_area,
 
 static void
 palette_drop_handle (CtkWidget        *widget,
-                     CdkDragContext   *context,
-                     gint              x,
-                     gint              y,
+                     CdkDragContext   *context G_GNUC_UNUSED,
+                     gint              x G_GNUC_UNUSED,
+                     gint              y G_GNUC_UNUSED,
                      CtkSelectionData *selection_data,
-                     guint             info,
-                     guint             time,
+                     guint             info G_GNUC_UNUSED,
+                     guint             time G_GNUC_UNUSED,
                      gpointer          data)
 {
   CtkColorSelection *colorsel = CTK_COLOR_SELECTION (data);
@@ -1767,7 +1767,7 @@ shutdown_eyedropper (CtkWidget *widget)
 }
 
 static void
-mouse_motion (CtkWidget      *invisible,
+mouse_motion (CtkWidget      *invisible G_GNUC_UNUSED,
               CdkEventMotion *event,
               gpointer        data)
 {
@@ -1989,7 +1989,7 @@ get_screen_color (CtkWidget *button)
 }
 
 static void
-hex_changed (CtkWidget *hex_entry,
+hex_changed (CtkWidget *hex_entry G_GNUC_UNUSED,
              gpointer   data)
 {
   CtkColorSelection *colorsel;
@@ -2022,7 +2022,7 @@ hex_changed (CtkWidget *hex_entry,
 
 static gboolean
 hex_focus_out (CtkWidget     *hex_entry,
-               CdkEventFocus *event,
+               CdkEventFocus *event G_GNUC_UNUSED,
                gpointer       data)
 {
   hex_changed (hex_entry, data);
@@ -2110,7 +2110,7 @@ adjustment_changed (CtkAdjustment *adjustment,
 }
 
 static void
-opacity_entry_changed (CtkWidget *opacity_entry,
+opacity_entry_changed (CtkWidget *opacity_entry G_GNUC_UNUSED,
                        gpointer   data)
 {
   CtkColorSelection *colorsel;
@@ -2301,8 +2301,8 @@ update_palette (CtkColorSelection *colorsel)
 }
 
 static void
-palette_change_notify_instance (GObject    *object,
-                                GParamSpec *pspec,
+palette_change_notify_instance (GObject    *object G_GNUC_UNUSED,
+                                GParamSpec *pspec G_GNUC_UNUSED,
                                 gpointer    data)
 {
   update_palette (CTK_COLOR_SELECTION (data));
