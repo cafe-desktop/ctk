@@ -228,14 +228,14 @@ ctk_css_value_calc_multiply (const CtkCssValue *value,
 }
 
 static CtkCssValue *
-ctk_css_value_calc_try_add (const CtkCssValue *value1,
-                            const CtkCssValue *value2)
+ctk_css_value_calc_try_add (const CtkCssValue *value1 G_GNUC_UNUSED,
+                            const CtkCssValue *value2 G_GNUC_UNUSED)
 {
   return NULL;
 }
 
 static gint
-ctk_css_value_calc_get_calc_term_order (const CtkCssValue *value)
+ctk_css_value_calc_get_calc_term_order (const CtkCssValue *value G_GNUC_UNUSED)
 {
   /* This should never be needed because calc() can't contain calc(),
    * but eh...
