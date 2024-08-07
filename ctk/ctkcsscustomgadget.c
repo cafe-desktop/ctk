@@ -186,7 +186,7 @@ ctk_css_custom_gadget_class_init (CtkCssCustomGadgetClass *klass)
 }
 
 static void
-ctk_css_custom_gadget_init (CtkCssCustomGadget *custom_gadget)
+ctk_css_custom_gadget_init (CtkCssCustomGadget *custom_gadget G_GNUC_UNUSED)
 {
 
 }
