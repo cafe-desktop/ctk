@@ -40,10 +40,10 @@ ctk_css_value_enum_free (CtkCssValue *value)
 
 static CtkCssValue *
 ctk_css_value_enum_compute (CtkCssValue             *value,
-                            guint                    property_id,
-                            CtkStyleProviderPrivate *provider,
-                            CtkCssStyle             *style,
-                            CtkCssStyle             *parent_style)
+                            guint                    property_id G_GNUC_UNUSED,
+                            CtkStyleProviderPrivate *provider G_GNUC_UNUSED,
+                            CtkCssStyle             *style G_GNUC_UNUSED,
+                            CtkCssStyle             *parent_style G_GNUC_UNUSED)
 {
   return _ctk_css_value_ref (value);
 }
@@ -56,10 +56,10 @@ ctk_css_value_enum_equal (const CtkCssValue *enum1,
 }
 
 static CtkCssValue *
-ctk_css_value_enum_transition (CtkCssValue *start,
-                               CtkCssValue *end,
-                               guint        property_id,
-                               double       progress)
+ctk_css_value_enum_transition (CtkCssValue *start G_GNUC_UNUSED,
+                               CtkCssValue *end G_GNUC_UNUSED,
+                               guint        property_id G_GNUC_UNUSED,
+                               double       progress G_GNUC_UNUSED)
 {
   return NULL;
 }
@@ -222,7 +222,7 @@ ctk_css_font_size_get_default_px (CtkStyleProviderPrivate *provider,
 
 static CtkCssValue *
 ctk_css_value_font_size_compute (CtkCssValue             *value,
-                                 guint                    property_id,
+                                 guint                    property_id G_GNUC_UNUSED,
                                  CtkStyleProviderPrivate *provider,
                                  CtkCssStyle             *style,
                                  CtkCssStyle             *parent_style)
@@ -431,8 +431,8 @@ _ctk_css_font_variant_value_get (const CtkCssValue *value)
 static CtkCssValue *
 ctk_css_value_font_weight_compute (CtkCssValue             *value,
                                    guint                    property_id,
-                                   CtkStyleProviderPrivate *provider,
-                                   CtkCssStyle             *style,
+                                   CtkStyleProviderPrivate *provider G_GNUC_UNUSED,
+                                   CtkCssStyle             *style G_GNUC_UNUSED,
                                    CtkCssStyle             *parent_style)
 {
   PangoWeight new_weight;
@@ -476,8 +476,8 @@ ctk_css_value_font_weight_compute (CtkCssValue             *value,
 static CtkCssValue *
 ctk_css_value_font_weight_transition (CtkCssValue *start,
                                       CtkCssValue *end,
-                                      guint        property_id,
-                                      double       progress)
+                                      guint        property_id G_GNUC_UNUSED,
+                                      double       progress G_GNUC_UNUSED)
 {
   PangoWeight new_weight;
 
