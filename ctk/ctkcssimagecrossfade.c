@@ -277,7 +277,7 @@ _ctk_css_image_cross_fade_class_init (CtkCssImageCrossFadeClass *klass)
 }
 
 static void
-_ctk_css_image_cross_fade_init (CtkCssImageCrossFade *image_cross_fade)
+_ctk_css_image_cross_fade_init (CtkCssImageCrossFade *image_cross_fade G_GNUC_UNUSED)
 {
 }
 
