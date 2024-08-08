@@ -41,14 +41,14 @@
 G_DEFINE_ABSTRACT_TYPE (CtkCssStyle, ctk_css_style, G_TYPE_OBJECT)
 
 static CtkCssSection *
-ctk_css_style_real_get_section (CtkCssStyle *style,
-                                guint        id)
+ctk_css_style_real_get_section (CtkCssStyle *style G_GNUC_UNUSED,
+                                guint        id G_GNUC_UNUSED)
 {
   return NULL;
 }
 
 static gboolean
-ctk_css_style_real_is_static (CtkCssStyle *style)
+ctk_css_style_real_is_static (CtkCssStyle *style G_GNUC_UNUSED)
 {
   return TRUE;
 }
@@ -61,7 +61,7 @@ ctk_css_style_class_init (CtkCssStyleClass *klass)
 }
 
 static void
-ctk_css_style_init (CtkCssStyle *style)
+ctk_css_style_init (CtkCssStyle *style G_GNUC_UNUSED)
 {
 }
 
