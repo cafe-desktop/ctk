@@ -110,7 +110,7 @@ _ctk_css_number_value_new (double     value,
 CtkCssValue *
 ctk_css_number_value_transition (CtkCssValue *start,
                                  CtkCssValue *end,
-                                 guint        property_id,
+                                 guint        property_id G_GNUC_UNUSED,
                                  double       progress)
 {
   CtkCssValue *result, *mul_start, *mul_end;
