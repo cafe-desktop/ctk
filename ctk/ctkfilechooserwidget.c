@@ -802,8 +802,8 @@ error_dialog (CtkFileChooserWidget *impl,
 /* Shows an error dialog about not being able to create a folder */
 static void
 error_creating_folder_dialog (CtkFileChooserWidget *impl,
-                              GFile                 *file,
-                              GError                *error)
+                              GFile                *file G_GNUC_UNUSED,
+                              GError               *error)
 {
   error_dialog (impl, 
                 _("The folder could not be created"), 
@@ -815,7 +815,7 @@ error_creating_folder_dialog (CtkFileChooserWidget *impl,
  */
 static void
 error_creating_folder_over_existing_file_dialog (CtkFileChooserWidget *impl,
-                                                 GFile                 *file)
+                                                 GFile                *file G_GNUC_UNUSED)
 {
   error_message (impl,
                  _("The folder could not be created, as a file with the same "
@@ -864,7 +864,7 @@ error_selecting_folder_over_existing_file_dialog (CtkFileChooserWidget *impl)
 /* Shows an error dialog about not being able to create a filename */
 static void
 error_building_filename_dialog (CtkFileChooserWidget *impl,
-                                GError                *error)
+                                GError               *error)
 {
   error_dialog (impl, _("Invalid file name"), error);
 }
@@ -872,15 +872,15 @@ error_building_filename_dialog (CtkFileChooserWidget *impl,
 /* Shows an error dialog when we cannot switch to a folder */
 static void
 error_changing_folder_dialog (CtkFileChooserWidget *impl,
-                              GFile                 *file,
-                              GError                *error)
+                              GFile                *file G_GNUC_UNUSED,
+                              GError               *error)
 {
   error_dialog (impl, _("The folder contents could not be displayed"), error);
 }
 
 static void
 error_deleting_file (CtkFileChooserWidget *impl,
-                     GFile                *file,
+                     GFile                *file G_GNUC_UNUSED,
                      GError               *error)
 {
   error_dialog (impl, _("The file could not be deleted"), error);
@@ -888,7 +888,7 @@ error_deleting_file (CtkFileChooserWidget *impl,
 
 static void
 error_trashing_file (CtkFileChooserWidget *impl,
-                     GFile                *file,
+                     GFile                *file G_GNUC_UNUSED,
                      GError               *error)
 {
   error_dialog (impl, _("The file could not be moved to the Trash"), error);
@@ -992,8 +992,8 @@ set_preview_widget (CtkFileChooserWidget *impl,
 }
 
 static void
-new_folder_popover_active (CtkWidget            *button,
-                           GParamSpec           *pspec,
+new_folder_popover_active (CtkWidget            *button G_GNUC_UNUSED,
+                           GParamSpec           *pspec G_GNUC_UNUSED,
                            CtkFileChooserWidget *impl)
 {
   CtkFileChooserWidgetPrivate *priv = impl->priv;
@@ -1016,7 +1016,7 @@ struct FileExistsData
 static void
 name_exists_get_info_cb (GCancellable *cancellable,
                          GFileInfo    *info,
-                         const GError *error,
+                         const GError *error G_GNUC_UNUSED,
                          gpointer      user_data)
 {
   struct FileExistsData *data = user_data;
@@ -1157,7 +1157,7 @@ new_folder_name_changed (CtkEntry             *entry,
 }
 
 static void
-new_folder_create_clicked (CtkButton            *button,
+new_folder_create_clicked (CtkButton            *button G_GNUC_UNUSED,
                            CtkFileChooserWidget *impl)
 {
   CtkFileChooserWidgetPrivate *priv = impl->priv;
@@ -1192,7 +1192,7 @@ struct selection_check_closure {
 /* Used from ctk_tree_selection_selected_foreach() */
 static void
 selection_check_foreach_cb (CtkTreeModel *model,
-                            CtkTreePath  *path,
+                            CtkTreePath  *path G_GNUC_UNUSED,
                             CtkTreeIter  *iter,
                             gpointer      data)
 {
@@ -1264,9 +1264,9 @@ file_is_recent_uri (GFile *file)
 }
 
 static void
-places_sidebar_open_location_cb (CtkPlacesSidebar     *sidebar,
+places_sidebar_open_location_cb (CtkPlacesSidebar     *sidebar G_GNUC_UNUSED,
                                  GFile                *location,
-                                 CtkPlacesOpenFlags    open_flags,
+                                 CtkPlacesOpenFlags    open_flags G_GNUC_UNUSED,
                                  CtkFileChooserWidget *impl)
 {
   CtkFileChooserWidgetPrivate *priv = impl->priv;
@@ -1292,9 +1292,9 @@ places_sidebar_open_location_cb (CtkPlacesSidebar     *sidebar,
 
 /* Callback used when the places sidebar needs us to display an error message */
 static void
-places_sidebar_show_error_message_cb (CtkPlacesSidebar *sidebar,
-                                      const char       *primary,
-                                      const char       *secondary,
+places_sidebar_show_error_message_cb (CtkPlacesSidebar     *sidebar G_GNUC_UNUSED,
+                                      const char           *primary,
+                                      const char           *secondary,
                                       CtkFileChooserWidget *impl)
 {
   error_message (impl, primary, secondary);
@@ -1440,7 +1440,7 @@ ctk_file_chooser_widget_key_press_event (CtkWidget   *widget,
  */
 static void
 add_bookmark_foreach_cb (CtkTreeModel *model,
-                         CtkTreePath  *path,
+                         CtkTreePath  *path G_GNUC_UNUSED,
                          CtkTreeIter  *iter,
                          gpointer      data)
 {
@@ -1459,8 +1459,8 @@ add_bookmark_foreach_cb (CtkTreeModel *model,
 
 /* Callback used when the "Add to Bookmarks" menu item is activated */
 static void
-add_to_shortcuts_cb (GSimpleAction *action,
-                     GVariant      *parameter,
+add_to_shortcuts_cb (GSimpleAction *action G_GNUC_UNUSED,
+                     GVariant      *parameter G_GNUC_UNUSED,
                      gpointer       data)
 {
   CtkFileChooserWidget *impl = data;
@@ -1517,7 +1517,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
 static void
 delete_selected_cb (CtkTreeModel *model,
-                    CtkTreePath  *path,
+                    CtkTreePath  *path G_GNUC_UNUSED,
                     CtkTreeIter  *iter,
                     gpointer      data)
 {
@@ -1537,8 +1537,8 @@ delete_selected_cb (CtkTreeModel *model,
 }
 
 static void
-delete_file_cb (GSimpleAction *action,
-                GVariant      *parameter,
+delete_file_cb (GSimpleAction *action G_GNUC_UNUSED,
+                GVariant      *parameter G_GNUC_UNUSED,
                 gpointer       data)
 {
   CtkFileChooserWidget *impl = data;
@@ -1551,7 +1551,7 @@ delete_file_cb (GSimpleAction *action,
 
 static void
 trash_selected_cb (CtkTreeModel *model,
-                   CtkTreePath  *path,
+                   CtkTreePath  *path G_GNUC_UNUSED,
                    CtkTreeIter  *iter,
                    gpointer      data)
 {
@@ -1567,8 +1567,8 @@ trash_selected_cb (CtkTreeModel *model,
 
 
 static void
-trash_file_cb (GSimpleAction *action,
-               GVariant      *parameter,
+trash_file_cb (GSimpleAction *action G_GNUC_UNUSED,
+               GVariant      *parameter G_GNUC_UNUSED,
                gpointer       data)
 {
   CtkFileChooserWidget *impl = data;
@@ -1599,14 +1599,14 @@ rename_file_name_changed (CtkEntry             *entry,
 }
 
 static void
-rename_file_end (CtkPopover           *popover,
+rename_file_end (CtkPopover           *popover G_GNUC_UNUSED,
                  CtkFileChooserWidget *impl)
 {
   g_object_unref (impl->priv->rename_file_source_file);
 }
 
 static void
-rename_file_rename_clicked (CtkButton            *button,
+rename_file_rename_clicked (CtkButton            *button G_GNUC_UNUSED,
                             CtkFileChooserWidget *impl)
 {
   CtkFileChooserWidgetPrivate *priv = impl->priv;
@@ -1677,8 +1677,8 @@ rename_selected_cb (CtkTreeModel *model,
 }
 
 static void
-rename_file_cb (GSimpleAction *action,
-                GVariant      *parameter,
+rename_file_cb (GSimpleAction *action G_GNUC_UNUSED,
+                GVariant      *parameter G_GNUC_UNUSED,
                 gpointer       data)
 {
   CtkFileChooserWidget *impl = data;
@@ -1703,7 +1703,7 @@ rename_file_cb (GSimpleAction *action,
 
 /* callback used to set data to clipboard */
 static void
-copy_file_get_cb  (CtkClipboard     *clipboard,
+copy_file_get_cb  (CtkClipboard     *clipboard G_GNUC_UNUSED,
                    CtkSelectionData *selection_data,
                    guint             info,
                    gpointer          data)
@@ -1749,7 +1749,7 @@ copy_file_get_cb  (CtkClipboard     *clipboard,
 
 /* callback used to clear the clipboard data */
 static void
-copy_file_clear_cb (CtkClipboard *clipboard,
+copy_file_clear_cb (CtkClipboard *clipboard G_GNUC_UNUSED,
                     gpointer      data)
 {
   GSList *selected_files = data;
@@ -1759,8 +1759,8 @@ copy_file_clear_cb (CtkClipboard *clipboard,
 
 /* Callback used when the "Copy file’s location" menu item is activated */
 static void
-copy_file_location_cb (GSimpleAction *action,
-                       GVariant      *parameter,
+copy_file_location_cb (GSimpleAction *action G_GNUC_UNUSED,
+                       GVariant      *parameter G_GNUC_UNUSED,
                        gpointer       data)
 {
   CtkFileChooserWidget *impl = data;
@@ -1795,8 +1795,8 @@ copy_file_location_cb (GSimpleAction *action,
 
 /* Callback used when the "Visit this file" menu item is activated */
 static void
-visit_file_cb (GSimpleAction *action,
-               GVariant      *parameter,
+visit_file_cb (GSimpleAction *action G_GNUC_UNUSED,
+               GVariant      *parameter G_GNUC_UNUSED,
                gpointer       data)
 {
   CtkFileChooserWidget *impl = data;
@@ -1818,8 +1818,8 @@ visit_file_cb (GSimpleAction *action,
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 /* Callback used when the "Open this folder" menu item is activated */
 static void
-open_folder_cb (GSimpleAction *action,
-                GVariant      *parameter,
+open_folder_cb (GSimpleAction *action G_GNUC_UNUSED,
+                GVariant      *parameter G_GNUC_UNUSED,
                 gpointer       data)
 {
   CtkFileChooserWidget *impl = data;
@@ -1972,8 +1972,8 @@ change_show_time_state (GSimpleAction *action,
 /* Shows an error dialog about not being able to select a dragged file */
 static void
 error_selecting_dragged_file_dialog (CtkFileChooserWidget *impl,
-                                     GFile                 *file,
-                                     GError                *error)
+                                     GFile                *file G_GNUC_UNUSED,
+                                     GError               *error)
 {
   error_dialog (impl,
                 _("Could not select file"),
@@ -2061,11 +2061,11 @@ out:
 static void
 file_list_drag_data_received_cb (CtkWidget        *widget,
                                  CdkDragContext   *context,
-                                 gint              x,
-                                 gint              y,
+                                 gint              x G_GNUC_UNUSED,
+                                 gint              y G_GNUC_UNUSED,
                                  CtkSelectionData *selection_data,
-                                 guint             info,
-                                 guint             time_,
+                                 guint             info G_GNUC_UNUSED,
+                                 guint             time_ G_GNUC_UNUSED,
                                  gpointer          user_data)
 {
   CtkFileChooserWidget *impl = CTK_FILE_CHOOSER_WIDGET (user_data);
@@ -2110,19 +2110,19 @@ file_list_drag_data_received_cb (CtkWidget        *widget,
 
 /* Don't do anything with the drag_drop signal */
 static gboolean
-file_list_drag_drop_cb (CtkWidget             *widget,
-                        CdkDragContext        *context,
-                        gint                   x,
-                        gint                   y,
-                        guint                  time_,
-                        CtkFileChooserWidget *impl)
+file_list_drag_drop_cb (CtkWidget            *widget,
+                        CdkDragContext       *context G_GNUC_UNUSED,
+                        gint                  x G_GNUC_UNUSED,
+                        gint                  y G_GNUC_UNUSED,
+                        guint                 time_ G_GNUC_UNUSED,
+                        CtkFileChooserWidget *impl G_GNUC_UNUSED)
 {
   g_signal_stop_emission_by_name (widget, "drag-drop");
   return TRUE;
 }
 
 static void
-file_list_drag_begin_cb (CtkWidget            *widget,
+file_list_drag_begin_cb (CtkWidget            *widget G_GNUC_UNUSED,
                          CdkDragContext       *context,
                          CtkFileChooserWidget *impl)
 {
@@ -2134,19 +2134,19 @@ file_list_drag_begin_cb (CtkWidget            *widget,
 /* Disable the normal tree drag motion handler, it makes it look like you're
    dropping the dragged item onto a tree item */
 static gboolean
-file_list_drag_motion_cb (CtkWidget             *widget,
-                          CdkDragContext        *context,
-                          gint                   x,
-                          gint                   y,
-                          guint                  time_,
-                          CtkFileChooserWidget *impl)
+file_list_drag_motion_cb (CtkWidget            *widget,
+                          CdkDragContext       *context G_GNUC_UNUSED,
+                          gint                  x G_GNUC_UNUSED,
+                          gint                  y G_GNUC_UNUSED,
+                          guint                 time_ G_GNUC_UNUSED,
+                          CtkFileChooserWidget *impl G_GNUC_UNUSED)
 {
   g_signal_stop_emission_by_name (widget, "drag-motion");
   return TRUE;
 }
 
 static void
-file_list_drag_end_cb (CtkWidget      *widget,
+file_list_drag_end_cb (CtkWidget      *widget G_GNUC_UNUSED,
                        CdkDragContext *context,
                        gpointer        user_data)
 {
@@ -2429,7 +2429,7 @@ file_list_show_popover (CtkFileChooserWidget *impl,
 
 /* Callback used for the CtkWidget::popup-menu signal of the file list */
 static gboolean
-list_popup_menu_cb (CtkWidget            *widget,
+list_popup_menu_cb (CtkWidget            *widget G_GNUC_UNUSED,
                     CtkFileChooserWidget *impl)
 {
   CtkFileChooserWidgetPrivate *priv = impl->priv;
@@ -2444,7 +2444,7 @@ list_popup_menu_cb (CtkWidget            *widget,
  * bring up a popup menu.
  */
 static gboolean
-list_button_press_event_cb (CtkWidget            *widget,
+list_button_press_event_cb (CtkWidget            *widget G_GNUC_UNUSED,
                             CdkEventButton       *event,
                             CtkFileChooserWidget *impl)
 {
@@ -2470,7 +2470,7 @@ list_button_press_event_cb (CtkWidget            *widget,
 }
 
 static void
-long_press_cb (CtkGesture           *gesture,
+long_press_cb (CtkGesture           *gesture G_GNUC_UNUSED,
                gdouble               x,
                gdouble               y,
                CtkFileChooserWidget *impl)
@@ -2502,7 +2502,7 @@ file_list_set_sort_column_ids (CtkFileChooserWidget *impl)
 }
 
 static gboolean
-file_list_query_tooltip_cb (CtkWidget  *widget,
+file_list_query_tooltip_cb (CtkWidget  *widget G_GNUC_UNUSED,
                             gint        x,
                             gint        y,
                             gboolean    keyboard_tip,
@@ -2591,7 +2591,7 @@ reset_location_timeout (CtkFileChooserWidget *impl)
 }
 
 static void
-location_entry_changed_cb (CtkEditable          *editable,
+location_entry_changed_cb (CtkEditable          *editable G_GNUC_UNUSED,
                            CtkFileChooserWidget *impl)
 {
   CtkFileChooserWidgetPrivate *priv = impl->priv;
@@ -2664,7 +2664,7 @@ location_entry_create (CtkFileChooserWidget *impl)
 }
 
 static gboolean
-external_entry_key_press (CtkWidget            *entry,
+external_entry_key_press (CtkWidget            *entry G_GNUC_UNUSED,
                           CdkEventKey          *event,
                           CtkFileChooserWidget *impl)
 {
@@ -2863,8 +2863,8 @@ location_mode_set (CtkFileChooserWidget *impl,
 
 /* Callback used when the places sidebar asks us to show other locations */
 static void
-places_sidebar_show_other_locations_with_flags_cb (CtkPlacesSidebar     *sidebar,
-                                                   CtkPlacesOpenFlags    open_flags,
+places_sidebar_show_other_locations_with_flags_cb (CtkPlacesSidebar     *sidebar G_GNUC_UNUSED,
+                                                   CtkPlacesOpenFlags    open_flags G_GNUC_UNUSED,
                                                    CtkFileChooserWidget *impl)
 {
   CtkFileChooserWidgetPrivate *priv = impl->priv;
@@ -3018,8 +3018,8 @@ set_local_only (CtkFileChooserWidget *impl,
 /* Sets the file chooser to multiple selection mode */
 static void
 set_select_multiple (CtkFileChooserWidget *impl,
-                     gboolean               select_multiple,
-                     gboolean               property_notify)
+                     gboolean              select_multiple,
+                     gboolean              property_notify G_GNUC_UNUSED)
 {
   CtkFileChooserWidgetPrivate *priv = impl->priv;
   CtkTreeSelection *selection;
@@ -3702,8 +3702,8 @@ ctk_file_chooser_widget_show_all (CtkWidget *widget)
  * widget on our toplevel.  See ctk_file_chooser_widget_hierarchy_changed()
  */
 static void
-toplevel_set_focus_cb (CtkWindow             *window,
-                       CtkWidget             *focus,
+toplevel_set_focus_cb (CtkWindow            *window,
+                       CtkWidget            *focus G_GNUC_UNUSED,
                        CtkFileChooserWidget *impl)
 {
   CtkFileChooserWidgetPrivate *priv = impl->priv;
@@ -3767,8 +3767,8 @@ change_icon_theme (CtkFileChooserWidget *impl)
 
 /* Callback used when a CtkSettings value changes */
 static void
-settings_notify_cb (GObject               *object,
-                    GParamSpec            *pspec,
+settings_notify_cb (GObject              *object G_GNUC_UNUSED,
+                    GParamSpec           *pspec,
                     CtkFileChooserWidget *impl)
 {
   const char *name;
@@ -4164,7 +4164,7 @@ static gint
 compare_name (CtkFileSystemModel   *model,
               CtkTreeIter          *a,
               CtkTreeIter          *b,
-              CtkFileChooserWidget *impl)
+              CtkFileChooserWidget *impl G_GNUC_UNUSED)
 {
   const char *key_a, *key_b;
   gint result;
@@ -4188,7 +4188,7 @@ static gint
 compare_size (CtkFileSystemModel   *model,
               CtkTreeIter          *a,
               CtkTreeIter          *b,
-              CtkFileChooserWidget *impl)
+              CtkFileChooserWidget *impl G_GNUC_UNUSED)
 {
   gint64 size_a, size_b;
 
@@ -4202,7 +4202,7 @@ static gint
 compare_type (CtkFileSystemModel   *model,
               CtkTreeIter          *a,
               CtkTreeIter          *b,
-              CtkFileChooserWidget *impl)
+              CtkFileChooserWidget *impl G_GNUC_UNUSED)
 {
   const char *key_a, *key_b;
 
@@ -4216,7 +4216,7 @@ static gint
 compare_time (CtkFileSystemModel   *model,
               CtkTreeIter          *a,
               CtkTreeIter          *b,
-              CtkFileChooserWidget *impl)
+              CtkFileChooserWidget *impl G_GNUC_UNUSED)
 {
   glong ta, tb;
 
@@ -4230,7 +4230,7 @@ static gint
 compare_location (CtkFileSystemModel   *model,
                   CtkTreeIter          *a,
                   CtkTreeIter          *b,
-                  CtkFileChooserWidget *impl)
+                  CtkFileChooserWidget *impl G_GNUC_UNUSED)
 {
   const char *key_a, *key_b;
 
@@ -4563,10 +4563,10 @@ struct center_selected_row_closure {
  * selected row in the tree view.
  */
 static void
-center_selected_row_foreach_cb (CtkTreeModel      *model,
-                                CtkTreePath       *path,
-                                CtkTreeIter       *iter,
-                                gpointer           data)
+center_selected_row_foreach_cb (CtkTreeModel *model G_GNUC_UNUSED,
+                                CtkTreePath  *path,
+                                CtkTreeIter  *iter G_GNUC_UNUSED,
+                                gpointer      data)
 {
   struct center_selected_row_closure *closure;
 
@@ -4737,7 +4737,7 @@ show_error_on_reading_current_folder (CtkFileChooserWidget *impl, GError *error)
 
 /* Callback used when the file system model finishes loading */
 static void
-browse_files_model_finished_loading_cb (CtkFileSystemModel   *model,
+browse_files_model_finished_loading_cb (CtkFileSystemModel   *model G_GNUC_UNUSED,
                                         GError               *error,
                                         CtkFileChooserWidget *impl)
 {
@@ -4786,7 +4786,7 @@ browse_files_model_finished_loading_cb (CtkFileSystemModel   *model,
  * We detect here when a new renamed file appears and reveal it */
 static void
 browse_files_model_row_changed_cb (CtkTreeModel *model,
-                                   CtkTreePath  *path,
+                                   CtkTreePath  *path G_GNUC_UNUSED,
                                    CtkTreeIter  *iter,
                                    gpointer      data)
 {
@@ -5310,7 +5310,7 @@ file_system_model_set (CtkFileSystemModel *model,
 /* Gets rid of the old list model and creates a new one for the current folder */
 static gboolean
 set_list_model (CtkFileChooserWidget  *impl,
-                GError               **error)
+                GError               **error G_GNUC_UNUSED)
 {
   CtkFileChooserWidgetPrivate *priv = impl->priv;
 
@@ -5385,8 +5385,8 @@ compare_utf8_filenames (const gchar *a,
 }
 
 static void
-update_chooser_entry_selected_foreach (CtkTreeModel *model,
-                                       CtkTreePath  *path,
+update_chooser_entry_selected_foreach (CtkTreeModel *model G_GNUC_UNUSED,
+                                       CtkTreePath  *path G_GNUC_UNUSED,
                                        CtkTreeIter  *iter,
                                        gpointer      data)
 {
@@ -5562,7 +5562,7 @@ struct UpdateCurrentFolderData
 
 static void
 update_current_folder_mount_enclosing_volume_cb (GCancellable        *cancellable,
-                                                 CtkFileSystemVolume *volume,
+                                                 CtkFileSystemVolume *volume G_GNUC_UNUSED,
                                                  const GError        *error,
                                                  gpointer             user_data)
 {
@@ -5936,7 +5936,7 @@ ctk_file_chooser_widget_unselect_file (CtkFileChooser *chooser,
 
 static gboolean
 maybe_select (CtkTreeModel *model,
-              CtkTreePath  *path,
+              CtkTreePath  *path G_GNUC_UNUSED,
               CtkTreeIter  *iter,
               gpointer      data)
 {
@@ -6098,7 +6098,7 @@ struct get_files_closure {
 
 static void
 get_files_foreach (CtkTreeModel *model,
-                   CtkTreePath  *path,
+                   CtkTreePath  *path G_GNUC_UNUSED,
                    CtkTreeIter  *iter,
                    gpointer      data)
 {
@@ -6336,7 +6336,7 @@ ctk_file_chooser_widget_list_filters (CtkFileChooser *chooser)
 static gboolean
 ctk_file_chooser_widget_add_shortcut_folder (CtkFileChooser  *chooser,
                                              GFile           *file,
-                                             GError         **error)
+                                             GError         **error G_GNUC_UNUSED)
 {
   CtkFileChooserWidget *impl = CTK_FILE_CHOOSER_WIDGET (chooser);
   CtkFileChooserWidgetPrivate *priv = impl->priv;
@@ -6348,7 +6348,7 @@ ctk_file_chooser_widget_add_shortcut_folder (CtkFileChooser  *chooser,
 static gboolean
 ctk_file_chooser_widget_remove_shortcut_folder (CtkFileChooser  *chooser,
                                                 GFile           *file,
-                                                GError         **error)
+                                                GError         **error G_GNUC_UNUSED)
 {
   CtkFileChooserWidget *impl = CTK_FILE_CHOOSER_WIDGET (chooser);
   CtkFileChooserWidgetPrivate *priv = impl->priv;
@@ -6451,7 +6451,7 @@ struct switch_folder_closure {
 /* Used from ctk_tree_selection_selected_foreach() in switch_to_selected_folder() */
 static void
 switch_folder_foreach_cb (CtkTreeModel *model,
-                          CtkTreePath  *path,
+                          CtkTreePath  *path G_GNUC_UNUSED,
                           CtkTreeIter  *iter,
                           gpointer      data)
 {
@@ -6937,7 +6937,7 @@ out:
 }
 
 static void
-paste_text_received (CtkClipboard         *clipboard,
+paste_text_received (CtkClipboard         *clipboard G_GNUC_UNUSED,
                      const gchar          *text,
                      CtkFileChooserWidget *impl)
 {
@@ -7273,7 +7273,7 @@ ctk_file_chooser_widget_initial_focus (CtkFileChooserEmbed *chooser_embed)
 
 static void
 selected_foreach_get_file_cb (CtkTreeModel *model,
-                              CtkTreePath  *path,
+                              CtkTreePath  *path G_GNUC_UNUSED,
                               CtkTreeIter  *iter,
                               gpointer      data)
 {
@@ -7307,7 +7307,7 @@ get_selected_files (CtkFileChooserWidget *impl)
 
 static void
 selected_foreach_get_info_cb (CtkTreeModel *model,
-                              CtkTreePath  *path,
+                              CtkTreePath  *path G_GNUC_UNUSED,
                               CtkTreeIter  *iter,
                               gpointer      data)
 {
@@ -7338,7 +7338,7 @@ get_selected_infos (CtkFileChooserWidget *impl)
 
 /* Callback used from CtkSearchEngine when we get new hits */
 static void
-search_engine_hits_added_cb (CtkSearchEngine      *engine,
+search_engine_hits_added_cb (CtkSearchEngine      *engine G_GNUC_UNUSED,
                              GList                *hits,
                              CtkFileChooserWidget *impl)
 {
@@ -7381,7 +7381,7 @@ search_engine_hits_added_cb (CtkSearchEngine      *engine,
 
 /* Callback used from CtkSearchEngine when the query is done running */
 static void
-search_engine_finished_cb (CtkSearchEngine *engine,
+search_engine_finished_cb (CtkSearchEngine *engine G_GNUC_UNUSED,
                            gboolean         got_results,
                            gpointer         data)
 {
@@ -7405,7 +7405,7 @@ search_engine_finished_cb (CtkSearchEngine *engine,
 }
 
 static void
-search_engine_error_cb (CtkSearchEngine *engine,
+search_engine_error_cb (CtkSearchEngine *engine G_GNUC_UNUSED,
                         const gchar     *message,
                         gpointer         data)
 {
@@ -7981,10 +7981,10 @@ check_preview_change (CtkFileChooserWidget *impl)
 }
 
 static gboolean
-list_select_func (CtkTreeSelection *selection,
+list_select_func (CtkTreeSelection *selection G_GNUC_UNUSED,
                   CtkTreeModel     *model,
                   CtkTreePath      *path,
-                  gboolean          path_currently_selected,
+                  gboolean          path_currently_selected G_GNUC_UNUSED,
                   gpointer          data)
 {
   CtkFileChooserWidget *impl = data;
@@ -8011,7 +8011,7 @@ list_select_func (CtkTreeSelection *selection,
 }
 
 static void
-list_selection_changed (CtkTreeSelection     *selection,
+list_selection_changed (CtkTreeSelection     *selection G_GNUC_UNUSED,
                         CtkFileChooserWidget *impl)
 {
   CtkFileChooserWidgetPrivate *priv = impl->priv;
@@ -8030,7 +8030,7 @@ list_selection_changed (CtkTreeSelection     *selection,
 }
 
 static void
-list_cursor_changed (CtkTreeView          *list,
+list_cursor_changed (CtkTreeView          *list G_GNUC_UNUSED,
                      CtkFileChooserWidget *impl)
 {
   check_preview_change (impl);
@@ -8040,7 +8040,7 @@ list_cursor_changed (CtkTreeView          *list,
 static void
 list_row_activated (CtkTreeView          *tree_view,
                     CtkTreePath          *path,
-                    CtkTreeViewColumn    *column,
+                    CtkTreeViewColumn    *column G_GNUC_UNUSED,
                     CtkFileChooserWidget *impl)
 {
   CtkFileChooserWidgetPrivate *priv = impl->priv;
@@ -8078,7 +8078,7 @@ list_row_activated (CtkTreeView          *tree_view,
 }
 
 static void
-path_bar_clicked (CtkPathBar           *path_bar,
+path_bar_clicked (CtkPathBar           *path_bar G_GNUC_UNUSED,
                   GFile                *file,
                   GFile                *child_file,
                   gboolean              child_is_hidden,
