@@ -145,7 +145,7 @@ G_DEFINE_TYPE_WITH_CODE (CtkFileFilter, ctk_file_filter, G_TYPE_INITIALLY_UNOWNE
                                                 ctk_file_filter_buildable_init))
 
 static void
-ctk_file_filter_init (CtkFileFilter *object)
+ctk_file_filter_init (CtkFileFilter *object G_GNUC_UNUSED)
 {
 }
 
@@ -279,11 +279,11 @@ parser_start_element (GMarkupParseContext  *context,
 }
 
 static void
-parser_text_element (GMarkupParseContext *context,
+parser_text_element (GMarkupParseContext *context G_GNUC_UNUSED,
                      const gchar         *text,
                      gsize                text_len,
                      gpointer             user_data,
-                     GError             **error)
+                     GError             **error G_GNUC_UNUSED)
 {
   SubParserData *data = (SubParserData*)user_data;
 
@@ -292,10 +292,10 @@ parser_text_element (GMarkupParseContext *context,
 }
 
 static void
-parser_end_element (GMarkupParseContext *context,
-                    const gchar         *element_name,
+parser_end_element (GMarkupParseContext *context G_GNUC_UNUSED,
+                    const gchar         *element_name G_GNUC_UNUSED,
                     gpointer             user_data,
-                    GError             **error)
+                    GError             **error G_GNUC_UNUSED)
 {
   SubParserData *data = (SubParserData*)user_data;
 
@@ -328,7 +328,7 @@ static const GMarkupParser sub_parser =
 static gboolean
 ctk_file_filter_buildable_custom_tag_start (CtkBuildable  *buildable,
                                             CtkBuilder    *builder,
-                                            GObject       *child,
+                                            GObject       *child G_GNUC_UNUSED,
                                             const gchar   *tagname,
                                             GMarkupParser *parser,
                                             gpointer      *parser_data)
@@ -362,9 +362,9 @@ ctk_file_filter_buildable_custom_tag_start (CtkBuildable  *buildable,
 }
 
 static void
-ctk_file_filter_buildable_custom_tag_end (CtkBuildable *buildable,
-                                          CtkBuilder   *builder,
-                                          GObject      *child,
+ctk_file_filter_buildable_custom_tag_end (CtkBuildable *buildable G_GNUC_UNUSED,
+                                          CtkBuilder   *builder G_GNUC_UNUSED,
+                                          GObject      *child G_GNUC_UNUSED,
                                           const gchar  *tagname,
                                           gpointer     *user_data)
 {
