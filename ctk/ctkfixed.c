@@ -168,7 +168,7 @@ ctk_fixed_class_init (CtkFixedClass *class)
 }
 
 static GType
-ctk_fixed_child_type (CtkContainer *container)
+ctk_fixed_child_type (CtkContainer *container G_GNUC_UNUSED)
 {
   return CTK_TYPE_WIDGET;
 }
@@ -558,7 +558,7 @@ ctk_fixed_remove (CtkContainer *container,
 
 static void
 ctk_fixed_forall (CtkContainer *container,
-                  gboolean      include_internals,
+                  gboolean      include_internals G_GNUC_UNUSED,
                   CtkCallback   callback,
                   gpointer      callback_data)
 {
