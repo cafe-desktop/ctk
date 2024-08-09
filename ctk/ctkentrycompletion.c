@@ -845,7 +845,7 @@ static gboolean
 ctk_entry_completion_default_completion_func (CtkEntryCompletion *completion,
                                               const gchar        *key,
                                               CtkTreeIter        *iter,
-                                              gpointer            user_data)
+                                              gpointer            user_data G_GNUC_UNUSED)
 {
   gchar *item = NULL;
   gchar *normalized_string;
@@ -885,7 +885,7 @@ ctk_entry_completion_default_completion_func (CtkEntryCompletion *completion,
 }
 
 static gboolean
-ctk_entry_completion_visible_func (CtkTreeModel *model,
+ctk_entry_completion_visible_func (CtkTreeModel *model G_GNUC_UNUSED,
                                    CtkTreeIter  *iter,
                                    gpointer      data)
 {
@@ -911,7 +911,7 @@ ctk_entry_completion_visible_func (CtkTreeModel *model,
 }
 
 static gboolean
-ctk_entry_completion_popup_key_event (CtkWidget   *widget,
+ctk_entry_completion_popup_key_event (CtkWidget   *widget G_GNUC_UNUSED,
                                       CdkEventKey *event,
                                       gpointer     user_data)
 {
@@ -927,8 +927,8 @@ ctk_entry_completion_popup_key_event (CtkWidget   *widget,
 }
 
 static gboolean
-ctk_entry_completion_popup_button_press (CtkWidget      *widget,
-                                         CdkEventButton *event,
+ctk_entry_completion_popup_button_press (CtkWidget      *widget G_GNUC_UNUSED,
+                                         CdkEventButton *event G_GNUC_UNUSED,
                                          gpointer        user_data)
 {
   CtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (user_data);
@@ -1014,11 +1014,11 @@ ctk_entry_completion_action_button_press (CtkWidget      *widget,
 }
 
 static void
-ctk_entry_completion_action_data_func (CtkTreeViewColumn *tree_column,
+ctk_entry_completion_action_data_func (CtkTreeViewColumn *tree_column G_GNUC_UNUSED,
                                        CtkCellRenderer   *cell,
                                        CtkTreeModel      *model,
                                        CtkTreeIter       *iter,
-                                       gpointer           data)
+                                       gpointer           data G_GNUC_UNUSED)
 {
   gchar *string = NULL;
   gboolean markup;
@@ -1060,8 +1060,8 @@ ctk_entry_completion_selection_changed (CtkTreeSelection *selection,
 }
 
 static void
-prepare_popup_func (CdkSeat   *seat,
-                    CdkWindow *window,
+prepare_popup_func (CdkSeat   *seat G_GNUC_UNUSED,
+                    CdkWindow *window G_GNUC_UNUSED,
                     gpointer   user_data)
 {
   CtkEntryCompletion *completion = user_data;
@@ -1571,8 +1571,8 @@ ctk_entry_completion_get_text_column (CtkEntryCompletion *completion)
 /* private */
 
 static gboolean
-ctk_entry_completion_list_enter_notify (CtkWidget        *widget,
-                                        CdkEventCrossing *event,
+ctk_entry_completion_list_enter_notify (CtkWidget        *widget G_GNUC_UNUSED,
+                                        CdkEventCrossing *event G_GNUC_UNUSED,
                                         gpointer          data)
 {
   CtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (data);
@@ -1581,8 +1581,8 @@ ctk_entry_completion_list_enter_notify (CtkWidget        *widget,
 }
 
 static gboolean
-ctk_entry_completion_list_motion_notify (CtkWidget      *widget,
-                                         CdkEventMotion *event,
+ctk_entry_completion_list_motion_notify (CtkWidget      *widget G_GNUC_UNUSED,
+                                         CdkEventMotion *event G_GNUC_UNUSED,
                                          gpointer        data)
 {
   CtkEntryCompletion *completion = CTK_ENTRY_COMPLETION (data);
@@ -2589,10 +2589,10 @@ accept_completion_callback (CtkEntry *entry)
 }
 
 static void
-completion_insert_text_callback (CtkEntry           *entry,
-                                 const gchar        *text,
-                                 gint                length,
-                                 gint                position,
+completion_insert_text_callback (CtkEntry           *entry G_GNUC_UNUSED,
+                                 const gchar        *text G_GNUC_UNUSED,
+                                 gint                length G_GNUC_UNUSED,
+                                 gint                position G_GNUC_UNUSED,
                                  CtkEntryCompletion *completion)
 {
   if (!completion->priv->inline_completion)
