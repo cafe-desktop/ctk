@@ -47,7 +47,7 @@ struct _CtkDragSourceSite
   
 static void
 ctk_drag_source_gesture_begin (CtkGesture       *gesture,
-                               CdkEventSequence *sequence,
+                               CdkEventSequence *sequence G_GNUC_UNUSED,
                                gpointer          data)
 {
   CtkDragSourceSite *site = data;
