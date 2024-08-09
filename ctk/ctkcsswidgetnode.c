@@ -56,7 +56,7 @@ ctk_css_widget_node_style_changed (CtkCssNode        *cssnode,
 
 static gboolean
 ctk_css_widget_node_queue_callback (CtkWidget     *widget,
-                                    CdkFrameClock *frame_clock,
+                                    CdkFrameClock *frame_clock G_GNUC_UNUSED,
                                     gpointer       user_data)
 {
   CtkCssNode *node = user_data;
