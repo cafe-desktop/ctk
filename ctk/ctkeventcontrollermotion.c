@@ -181,7 +181,7 @@ ctk_event_controller_motion_class_init (CtkEventControllerMotionClass *klass)
 }
 
 static void
-ctk_event_controller_motion_init (CtkEventControllerMotion *motion)
+ctk_event_controller_motion_init (CtkEventControllerMotion *motion G_GNUC_UNUSED)
 {
 }
 
