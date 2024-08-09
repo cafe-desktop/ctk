@@ -55,7 +55,7 @@ ctk_css_transient_node_get_widget_path (CtkCssNode *node)
 static CtkCssStyle *
 ctk_css_transient_node_update_style (CtkCssNode   *cssnode,
                                      CtkCssChange  change,
-                                     gint64        timestamp,
+                                     gint64        timestamp G_GNUC_UNUSED,
                                      CtkCssStyle  *style)
 {
   /* This should get rid of animations */
