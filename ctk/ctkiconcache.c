@@ -468,7 +468,7 @@ _ctk_icon_cache_has_icon_in_directory (CtkIconCache *cache,
 }
 
 static void
-pixbuf_destroy_cb (guchar   *pixels, 
+pixbuf_destroy_cb (guchar   *pixels G_GNUC_UNUSED,
 		   gpointer  data)
 {
   CtkIconCache *cache = data;
