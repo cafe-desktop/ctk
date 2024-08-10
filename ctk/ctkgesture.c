@@ -698,7 +698,7 @@ gesture_within_window (CtkGesture *gesture,
 }
 
 static gboolean
-ctk_gesture_filter_event (CtkEventController *controller,
+ctk_gesture_filter_event (CtkEventController *controller G_GNUC_UNUSED,
                           const CdkEvent     *event)
 {
   /* Even though CtkGesture handles these events, we want
