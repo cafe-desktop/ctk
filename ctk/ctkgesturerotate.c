@@ -54,7 +54,7 @@ static guint signals[LAST_SIGNAL] = { 0 };
 G_DEFINE_TYPE_WITH_PRIVATE (CtkGestureRotate, ctk_gesture_rotate, CTK_TYPE_GESTURE)
 
 static void
-ctk_gesture_rotate_init (CtkGestureRotate *gesture)
+ctk_gesture_rotate_init (CtkGestureRotate *gesture G_GNUC_UNUSED)
 {
 }
 
@@ -151,7 +151,7 @@ _ctk_gesture_rotate_check_emit (CtkGestureRotate *gesture)
 
 static void
 ctk_gesture_rotate_begin (CtkGesture       *gesture,
-                          CdkEventSequence *sequence)
+                          CdkEventSequence *sequence G_GNUC_UNUSED)
 {
   CtkGestureRotate *rotate = CTK_GESTURE_ROTATE (gesture);
   CtkGestureRotatePrivate *priv;
@@ -162,7 +162,7 @@ ctk_gesture_rotate_begin (CtkGesture       *gesture,
 
 static void
 ctk_gesture_rotate_update (CtkGesture       *gesture,
-                           CdkEventSequence *sequence)
+                           CdkEventSequence *sequence G_GNUC_UNUSED)
 {
   _ctk_gesture_rotate_check_emit (CTK_GESTURE_ROTATE (gesture));
 }
