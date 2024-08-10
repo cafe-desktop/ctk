@@ -80,7 +80,7 @@ ctk_gesture_drag_filter_event (CtkEventController *controller,
 
 static void
 ctk_gesture_drag_begin (CtkGesture       *gesture,
-                        CdkEventSequence *sequence)
+                        CdkEventSequence *sequence G_GNUC_UNUSED)
 {
   CtkGestureDragPrivate *priv;
   CdkEventSequence *current;
@@ -112,7 +112,7 @@ ctk_gesture_drag_update (CtkGesture       *gesture,
 
 static void
 ctk_gesture_drag_end (CtkGesture       *gesture,
-                      CdkEventSequence *sequence)
+                      CdkEventSequence *sequence G_GNUC_UNUSED)
 {
   CtkGestureDragPrivate *priv;
   CdkEventSequence *current;
@@ -206,7 +206,7 @@ ctk_gesture_drag_class_init (CtkGestureDragClass *klass)
 }
 
 static void
-ctk_gesture_drag_init (CtkGestureDrag *gesture)
+ctk_gesture_drag_init (CtkGestureDrag *gesture G_GNUC_UNUSED)
 {
 }
 
