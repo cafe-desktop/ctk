@@ -606,7 +606,7 @@ compute_v (CtkHSV *hsv,
 static void
 set_cross_grab (CtkHSV    *hsv,
                 CdkDevice *device,
-                guint32    time)
+                guint32    time G_GNUC_UNUSED)
 {
   CtkHSVPrivate *priv = hsv->priv;
   CdkCursor *cursor;
@@ -626,7 +626,7 @@ set_cross_grab (CtkHSV    *hsv,
 
 static gboolean
 ctk_hsv_grab_broken (CtkWidget          *widget,
-                     CdkEventGrabBroken *event)
+                     CdkEventGrabBroken *event G_GNUC_UNUSED)
 {
   CtkHSV *hsv = CTK_HSV (widget);
   CtkHSVPrivate *priv = hsv->priv;
