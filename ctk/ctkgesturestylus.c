@@ -145,7 +145,7 @@ ctk_gesture_stylus_class_init (CtkGestureStylusClass *klass)
 }
 
 static void
-ctk_gesture_stylus_init (CtkGestureStylus *gesture)
+ctk_gesture_stylus_init (CtkGestureStylus *gesture G_GNUC_UNUSED)
 {
 }
 
