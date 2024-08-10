@@ -172,7 +172,7 @@ ctk_gesture_long_press_update (CtkGesture       *gesture,
 
 static void
 ctk_gesture_long_press_end (CtkGesture       *gesture,
-                            CdkEventSequence *sequence)
+                            CdkEventSequence *sequence G_GNUC_UNUSED)
 {
   CtkGestureLongPressPrivate *priv;
 
