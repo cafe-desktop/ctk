@@ -225,7 +225,9 @@ ctk_icon_factory_buildable_init (CtkBuildableIface *iface)
 }
 
 static void
-free_icon_set (gpointer key, gpointer value, gpointer data)
+free_icon_set (gpointer key,
+	       gpointer value,
+	       gpointer data G_GNUC_UNUSED)
 {
   g_free (key);
   ctk_icon_set_unref (value);
@@ -1378,8 +1380,8 @@ find_and_render_icon_source (CtkIconSet       *icon_set,
 
 static GdkPixbuf*
 render_fallback_image (CtkCssStyle       *style,
-                       CtkTextDirection   direction,
-                       CtkStateType       state,
+                       CtkTextDirection   direction G_GNUC_UNUSED,
+                       CtkStateType       state G_GNUC_UNUSED,
                        CtkIconSize        size)
 {
   /* This icon can be used for any direction/state/size */
@@ -1543,7 +1545,7 @@ ctk_icon_set_render_icon (CtkIconSet        *icon_set,
                           CtkStateType       state,
                           CtkIconSize        size,
                           CtkWidget         *widget,
-                          const char        *detail)
+                          const char        *detail G_GNUC_UNUSED)
 {
   GdkPixbuf *icon;
   CtkStyleContext *context = NULL;
@@ -2473,8 +2475,8 @@ static const GMarkupParser icon_source_parser =
 
 static gboolean
 ctk_icon_factory_buildable_custom_tag_start (CtkBuildable     *buildable,
-					     CtkBuilder       *builder,
-					     GObject          *child,
+					     CtkBuilder       *builder G_GNUC_UNUSED,
+					     GObject          *child G_GNUC_UNUSED,
 					     const gchar      *tagname,
 					     GMarkupParser    *parser,
 					     gpointer         *data)
@@ -2496,7 +2498,7 @@ ctk_icon_factory_buildable_custom_tag_start (CtkBuildable     *buildable,
 static void
 ctk_icon_factory_buildable_custom_tag_end (CtkBuildable *buildable,
 					   CtkBuilder   *builder,
-					   GObject      *child,
+					   GObject      *child G_GNUC_UNUSED,
 					   const gchar  *tagname,
 					   gpointer     *user_data)
 {
