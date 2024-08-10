@@ -110,11 +110,11 @@ _ctk_icon_helper_clear (CtkIconHelper *self)
 static void
 ctk_icon_helper_get_preferred_size (CtkCssGadget   *gadget,
                                     CtkOrientation  orientation,
-                                    gint            for_size,
+                                    gint            for_size G_GNUC_UNUSED,
                                     gint           *minimum,
                                     gint           *natural,
-                                    gint           *minimum_baseline,
-                                    gint           *natural_baseline)
+                                    gint           *minimum_baseline G_GNUC_UNUSED,
+                                    gint           *natural_baseline G_GNUC_UNUSED)
 {
   CtkIconHelper *self = CTK_ICON_HELPER (gadget);
   int icon_width, icon_height;
@@ -317,7 +317,7 @@ get_surface_size (CtkIconHelper   *self,
 }
 
 static cairo_surface_t *
-ensure_surface_from_surface (CtkIconHelper   *self,
+ensure_surface_from_surface (CtkIconHelper   *self G_GNUC_UNUSED,
                              cairo_surface_t *orig_surface)
 {
   return cairo_surface_reference (orig_surface);
