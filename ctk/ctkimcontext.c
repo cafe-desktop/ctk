@@ -352,15 +352,15 @@ ctk_im_context_class_init (CtkIMContextClass *klass)
 }
 
 static void
-ctk_im_context_init (CtkIMContext *im_context)
+ctk_im_context_init (CtkIMContext *im_context G_GNUC_UNUSED)
 {
 }
 
 static void
-ctk_im_context_real_get_preedit_string (CtkIMContext       *context,
-					gchar             **str,
-					PangoAttrList     **attrs,
-					gint               *cursor_pos)
+ctk_im_context_real_get_preedit_string (CtkIMContext   *context G_GNUC_UNUSED,
+					gchar         **str,
+					PangoAttrList **attrs,
+					gint           *cursor_pos)
 {
   if (str)
     *str = g_strdup ("");
@@ -371,8 +371,8 @@ ctk_im_context_real_get_preedit_string (CtkIMContext       *context,
 }
 
 static gboolean
-ctk_im_context_real_filter_keypress (CtkIMContext       *context,
-				     CdkEventKey        *event)
+ctk_im_context_real_filter_keypress (CtkIMContext *context G_GNUC_UNUSED,
+				     CdkEventKey  *event G_GNUC_UNUSED)
 {
   return FALSE;
 }
