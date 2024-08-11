@@ -429,7 +429,7 @@ load_modules (const char *module_str)
 }
 
 static void
-default_display_notify_cb (CdkDisplayManager *display_manager)
+default_display_notify_cb (CdkDisplayManager *display_manager G_GNUC_UNUSED)
 {
   GSList *slist;
 
@@ -456,7 +456,7 @@ default_display_notify_cb (CdkDisplayManager *display_manager)
 
 static void
 display_closed_cb (CdkDisplay *display,
-		   gboolean    is_error)
+		   gboolean    is_error G_GNUC_UNUSED)
 {
   CdkScreen *screen;
   CtkSettings *settings;
@@ -471,7 +471,7 @@ display_closed_cb (CdkDisplay *display,
 		   
 
 static void
-display_opened_cb (CdkDisplayManager *display_manager,
+display_opened_cb (CdkDisplayManager *display_manager G_GNUC_UNUSED,
 		   CdkDisplay        *display)
 {
   GValue value = G_VALUE_INIT;
