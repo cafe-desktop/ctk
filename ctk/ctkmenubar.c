@@ -371,9 +371,9 @@ ctk_menu_bar_measure (CtkCssGadget   *gadget,
                       int             size,
                       int            *minimum,
                       int            *natural,
-                      int            *minimum_baseline,
-                      int            *natural_baseline,
-                      gpointer        data)
+                      int            *minimum_baseline G_GNUC_UNUSED,
+                      int            *natural_baseline G_GNUC_UNUSED,
+                      gpointer        data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkMenuBar *menu_bar;
@@ -492,9 +492,9 @@ ctk_menu_bar_get_preferred_height_for_width (CtkWidget *widget,
 static void
 ctk_menu_bar_allocate (CtkCssGadget        *gadget,
                        const CtkAllocation *allocation,
-                       int                  baseline,
-                       CtkAllocation       *out_clip,
-                       gpointer             data)
+                       int                  baseline G_GNUC_UNUSED,
+                       CtkAllocation       *out_clip G_GNUC_UNUSED,
+                       gpointer             data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkMenuBar *menu_bar;
@@ -660,11 +660,11 @@ ctk_menu_bar_size_allocate (CtkWidget     *widget,
 static gboolean
 ctk_menu_bar_render (CtkCssGadget *gadget,
                      cairo_t      *cr,
-                     int           x,
-                     int           y,
-                     int           width,
-                     int           height,
-                     gpointer      data)
+                     int           x G_GNUC_UNUSED,
+                     int           y G_GNUC_UNUSED,
+                     int           width G_GNUC_UNUSED,
+                     int           height G_GNUC_UNUSED,
+                     gpointer      data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
 
@@ -806,7 +806,7 @@ _ctk_menu_bar_cycle_focus (CtkMenuBar       *menubar,
 }
 
 static gint
-ctk_menu_bar_get_popup_delay (CtkMenuShell *menu_shell)
+ctk_menu_bar_get_popup_delay (CtkMenuShell *menu_shell G_GNUC_UNUSED)
 {
   return MENU_BAR_POPUP_DELAY;
 }
