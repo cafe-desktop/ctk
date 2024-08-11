@@ -36,9 +36,9 @@ _ctk_mnemonic_hash_new (void)
 }
 
 static void
-mnemonic_hash_free_foreach (gpointer	key,
-			    gpointer	value,
-			    gpointer	user)
+mnemonic_hash_free_foreach (gpointer key,
+			    gpointer value,
+			    gpointer user G_GNUC_UNUSED)
 {
   guint keyval = GPOINTER_TO_UINT (key);
   GSList *targets = value;
