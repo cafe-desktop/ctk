@@ -176,8 +176,8 @@ ctk_magnifier_get_preferred_height (CtkWidget *widget,
 }
 
 static void
-resize_handler (CtkWidget     *widget,
-                CtkAllocation *alloc,
+resize_handler (CtkWidget     *widget G_GNUC_UNUSED,
+                CtkAllocation *alloc G_GNUC_UNUSED,
                 CtkWidget     *magnifier)
 {
   ctk_widget_queue_resize (magnifier);
@@ -211,8 +211,8 @@ disconnect_resize_handler (CtkMagnifier *magnifier)
 }
 
 static gboolean
-draw_handler (CtkWidget     *widget,
-              cairo_t       *cr,
+draw_handler (CtkWidget     *widget G_GNUC_UNUSED,
+              cairo_t       *cr G_GNUC_UNUSED,
               CtkWidget     *magnifier)
 {
   ctk_widget_queue_draw (magnifier);
