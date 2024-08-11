@@ -584,7 +584,7 @@ ctk_list_store_finalize (GObject *object)
 
 /* Fulfill the CtkTreeModel requirements */
 static CtkTreeModelFlags
-ctk_list_store_get_flags (CtkTreeModel *tree_model)
+ctk_list_store_get_flags (CtkTreeModel *tree_model G_GNUC_UNUSED)
 {
   return CTK_TREE_MODEL_ITERS_PERSIST | CTK_TREE_MODEL_LIST_ONLY;
 }
@@ -755,8 +755,8 @@ ctk_list_store_iter_children (CtkTreeModel *tree_model,
 }
 
 static gboolean
-ctk_list_store_iter_has_child (CtkTreeModel *tree_model,
-			       CtkTreeIter  *iter)
+ctk_list_store_iter_has_child (CtkTreeModel *tree_model G_GNUC_UNUSED,
+			       CtkTreeIter  *iter G_GNUC_UNUSED)
 {
   return FALSE;
 }
@@ -803,9 +803,9 @@ ctk_list_store_iter_nth_child (CtkTreeModel *tree_model,
 }
 
 static gboolean
-ctk_list_store_iter_parent (CtkTreeModel *tree_model,
+ctk_list_store_iter_parent (CtkTreeModel *tree_model G_GNUC_UNUSED,
 			    CtkTreeIter  *iter,
-			    CtkTreeIter  *child)
+			    CtkTreeIter  *child G_GNUC_UNUSED)
 {
   iter->stamp = 0;
   return FALSE;
@@ -1482,8 +1482,8 @@ ctk_list_store_iter_is_valid (CtkListStore *list_store,
   return FALSE;
 }
 
-static gboolean real_ctk_list_store_row_draggable (CtkTreeDragSource *drag_source,
-                                                   CtkTreePath       *path)
+static gboolean real_ctk_list_store_row_draggable (CtkTreeDragSource *drag_source G_GNUC_UNUSED,
+                                                   CtkTreePath       *path G_GNUC_UNUSED)
 {
   return TRUE;
 }
@@ -2030,7 +2030,7 @@ iter_is_sorted (CtkListStore *list_store,
 static void
 ctk_list_store_sort_iter_changed (CtkListStore *list_store,
 				  CtkTreeIter  *iter,
-				  gint          column)
+				  gint          column G_GNUC_UNUSED)
 
 {
   CtkListStorePrivate *priv = list_store->priv;
@@ -2490,10 +2490,10 @@ list_store_start_element (GMarkupParseContext  *context,
 }
 
 static void
-list_store_end_element (GMarkupParseContext  *context,
+list_store_end_element (GMarkupParseContext  *context G_GNUC_UNUSED,
                         const gchar          *element_name,
                         gpointer              user_data,
-                        GError              **error)
+                        GError              **error G_GNUC_UNUSED)
 {
   SubParserData *data = (SubParserData*)user_data;
 
@@ -2662,9 +2662,9 @@ ctk_list_store_buildable_custom_tag_start (CtkBuildable  *buildable,
 }
 
 static void
-ctk_list_store_buildable_custom_tag_end (CtkBuildable *buildable,
-                                         CtkBuilder   *builder,
-                                         GObject      *child,
+ctk_list_store_buildable_custom_tag_end (CtkBuildable *buildable G_GNUC_UNUSED,
+                                         CtkBuilder   *builder G_GNUC_UNUSED,
+                                         GObject      *child G_GNUC_UNUSED,
                                          const gchar  *tagname,
                                          gpointer     *parser_data)
 {
