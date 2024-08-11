@@ -220,7 +220,7 @@ ctk_im_module_class_init (CtkIMModuleClass *class)
 }
 
 static void 
-ctk_im_module_init (CtkIMModule* object)
+ctk_im_module_init (CtkIMModule* object G_GNUC_UNUSED)
 {
 }
 
