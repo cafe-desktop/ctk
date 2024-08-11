@@ -286,7 +286,7 @@ ctk_native_dialog_class_init (CtkNativeDialogClass *class)
 }
 
 static void
-ctk_native_dialog_init (CtkNativeDialog *self)
+ctk_native_dialog_init (CtkNativeDialog *self G_GNUC_UNUSED)
 {
 }
 
@@ -563,8 +563,8 @@ ctk_native_dialog_get_transient_for (CtkNativeDialog *self)
 
 static void
 run_response_cb (CtkNativeDialog *self,
-                 gint response_id,
-                 gpointer data)
+                 gint             response_id,
+                 gpointer         data G_GNUC_UNUSED)
 {
   CtkNativeDialogPrivate *priv = ctk_native_dialog_get_instance_private (self);
 
