@@ -417,7 +417,7 @@ setup_type (CtkMessageDialog *dialog,
 
 static void
 update_title (GObject    *dialog,
-              GParamSpec *pspec,
+              GParamSpec *pspec G_GNUC_UNUSED,
               CtkWidget  *label)
 {
   const gchar *title;
