@@ -194,7 +194,7 @@ button_press_event (CtkWidget *widget, CdkEventButton *event)
 
       print_axes (event->device, event->axes);
       cdk_event_get_axis ((CdkEvent *)event, CDK_AXIS_PRESSURE, &pressure);
-      draw_brush (widget, cdk_device_get_source (cdk_event_get_source_device (event)),
+      draw_brush (widget, cdk_device_get_source (cdk_event_get_source_device ((CdkEvent *) event)),
                   event->x, event->y, pressure);
 
       motion_time = event->time;
@@ -241,10 +241,10 @@ motion_notify_event (CtkWidget *widget, CdkEventMotion *event)
 	      cdk_device_get_axis (event->device, events[i]->axes, CDK_AXIS_X, &x);
 	      cdk_device_get_axis (event->device, events[i]->axes, CDK_AXIS_Y, &y);
 	      cdk_device_get_axis (event->device, events[i]->axes, CDK_AXIS_PRESSURE, &pressure);
-	      draw_brush (widget, cdk_device_get_source (cdk_event_get_source_device (event)),
+	      draw_brush (widget, cdk_device_get_source (cdk_event_get_source_device ((CdkEvent *) event)),
                           x, y, pressure);
 
-	      print_axes (cdk_event_get_source_device (event), events[i]->axes);
+	      print_axes (cdk_event_get_source_device ((CdkEvent *) event), events[i]->axes);
 	    }
 	  cdk_device_free_history (events, n_events);
 	}
@@ -254,7 +254,7 @@ motion_notify_event (CtkWidget *widget, CdkEventMotion *event)
 
 	  cdk_event_get_axis ((CdkEvent *)event, CDK_AXIS_PRESSURE, &pressure);
 
-	  draw_brush (widget, cdk_device_get_source (cdk_event_get_source_device (event)),
+	  draw_brush (widget, cdk_device_get_source (cdk_event_get_source_device ((CdkEvent *) event)),
                       event->x, event->y, pressure);
 	}
       motion_time = event->time;
