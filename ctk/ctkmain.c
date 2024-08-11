@@ -423,7 +423,9 @@ static gboolean g_fatal_warnings = FALSE;
 
 #ifdef G_ENABLE_DEBUG
 static gboolean
-ctk_arg_debug_cb (const char *key, const char *value, gpointer user_data)
+ctk_arg_debug_cb (const char *key G_GNUC_UNUSED,
+		  const char *value,
+		  gpointer    user_data G_GNUC_UNUSED)
 {
   debug_flags[0].flags |= g_parse_debug_string (value,
                                                 ctk_debug_keys,
@@ -433,7 +435,9 @@ ctk_arg_debug_cb (const char *key, const char *value, gpointer user_data)
 }
 
 static gboolean
-ctk_arg_no_debug_cb (const char *key, const char *value, gpointer user_data)
+ctk_arg_no_debug_cb (const char *key G_GNUC_UNUSED,
+		     const char *value,
+		     gpointer    user_data G_GNUC_UNUSED)
 {
   debug_flags[0].flags &= ~g_parse_debug_string (value,
                                                  ctk_debug_keys,
@@ -444,7 +448,9 @@ ctk_arg_no_debug_cb (const char *key, const char *value, gpointer user_data)
 #endif /* G_ENABLE_DEBUG */
 
 static gboolean
-ctk_arg_module_cb (const char *key, const char *value, gpointer user_data)
+ctk_arg_module_cb (const char *key G_GNUC_UNUSED,
+		   const char *value,
+		   gpointer    user_data G_GNUC_UNUSED)
 {
   if (value && *value)
     {
@@ -640,8 +646,8 @@ setlocale_initialization (void)
 }
 
 static void
-do_pre_parse_initialization (int    *argc,
-                             char ***argv)
+do_pre_parse_initialization (int    *argc G_GNUC_UNUSED,
+                             char ***argv G_GNUC_UNUSED)
 {
   const gchar *env_string;
   double slowdown;
@@ -709,7 +715,7 @@ gettext_initialization (void)
 }
 
 static void
-default_display_notify_cb (CdkDisplayManager *dm)
+default_display_notify_cb (CdkDisplayManager *dm G_GNUC_UNUSED)
 {
   _ctk_accessibility_init ();
   debug_flags[0].display = cdk_display_get_default ();
@@ -776,10 +782,10 @@ typedef struct
 } OptionGroupInfo;
 
 static gboolean
-pre_parse_hook (GOptionContext *context,
-                GOptionGroup   *group,
-                gpointer        data,
-                GError        **error)
+pre_parse_hook (GOptionContext *context G_GNUC_UNUSED,
+                GOptionGroup   *group G_GNUC_UNUSED,
+                gpointer        data G_GNUC_UNUSED,
+                GError        **error G_GNUC_UNUSED)
 {
   do_pre_parse_initialization (NULL, NULL);
   
@@ -787,8 +793,8 @@ pre_parse_hook (GOptionContext *context,
 }
 
 static gboolean
-post_parse_hook (GOptionContext *context,
-                 GOptionGroup   *group,
+post_parse_hook (GOptionContext *context G_GNUC_UNUSED,
+                 GOptionGroup   *group G_GNUC_UNUSED,
                  gpointer       data,
                  GError        **error)
 {
