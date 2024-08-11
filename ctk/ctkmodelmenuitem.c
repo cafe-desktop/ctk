@@ -62,7 +62,7 @@ ctk_model_menu_item_toggle_size_request (CtkMenuItem *menu_item,
 }
 
 static void
-ctk_model_menu_item_activate (CtkMenuItem *item)
+ctk_model_menu_item_activate (CtkMenuItem *item G_GNUC_UNUSED)
 {
   /* block the automatic toggle behaviour -- just do nothing */
 }
@@ -395,7 +395,7 @@ static void
 ctk_model_menu_item_get_property (GObject    *object,
                                   guint       prop_id,
                                   GValue     *value,
-                                  GParamSpec *pspec)
+                                  GParamSpec *pspec G_GNUC_UNUSED)
 {
   CtkModelMenuItem *item = CTK_MODEL_MENU_ITEM (object);
 
@@ -430,7 +430,7 @@ static void
 ctk_model_menu_item_set_property (GObject      *object,
                                   guint         prop_id,
                                   const GValue *value,
-                                  GParamSpec   *pspec)
+                                  GParamSpec   *pspec G_GNUC_UNUSED)
 {
   CtkModelMenuItem *item = CTK_MODEL_MENU_ITEM (object);
 
@@ -463,7 +463,7 @@ ctk_model_menu_item_set_property (GObject      *object,
 }
 
 static void
-ctk_model_menu_item_init (CtkModelMenuItem *item)
+ctk_model_menu_item_init (CtkModelMenuItem *item G_GNUC_UNUSED)
 {
 }
 
