@@ -221,7 +221,7 @@ ctk_menu_tracker_section_sync_separators (CtkMenuTrackerSection *section,
 
 static void
 ctk_menu_tracker_item_visibility_changed (CtkMenuTrackerItem *item,
-                                          GParamSpec         *pspec,
+                                          GParamSpec         *pspec G_GNUC_UNUSED,
                                           gpointer            user_data)
 {
   CtkMenuTracker *tracker = user_data;
