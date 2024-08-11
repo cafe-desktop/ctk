@@ -361,11 +361,11 @@ ctk_level_bar_draw_fill_discrete (CtkLevelBar *self,
 static gboolean
 ctk_level_bar_render_trough (CtkCssGadget *gadget,
                              cairo_t      *cr,
-                             int           x,
-                             int           y,
-                             int           width,
-                             int           height,
-                             gpointer      data)
+                             int           x G_GNUC_UNUSED,
+                             int           y G_GNUC_UNUSED,
+                             int           width G_GNUC_UNUSED,
+                             int           height G_GNUC_UNUSED,
+                             gpointer      data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkLevelBar *self = CTK_LEVEL_BAR (widget);
@@ -392,12 +392,12 @@ ctk_level_bar_draw (CtkWidget *widget,
 static void
 ctk_level_bar_measure_trough (CtkCssGadget   *gadget,
                               CtkOrientation  orientation,
-                              int             for_size,
+                              int             for_size G_GNUC_UNUSED,
                               int            *minimum,
                               int            *natural,
-                              int            *minimum_baseline,
-                              int            *natural_baseline,
-                              gpointer        data)
+                              int            *minimum_baseline G_GNUC_UNUSED,
+                              int            *natural_baseline G_GNUC_UNUSED,
+                              gpointer        data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkLevelBar *self = CTK_LEVEL_BAR (widget);
@@ -558,7 +558,7 @@ ctk_level_bar_allocate_trough (CtkCssGadget        *gadget,
                                const CtkAllocation *allocation,
                                int                  baseline,
                                CtkAllocation       *out_clip,
-                               gpointer             data)
+                               gpointer             data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkLevelBar *self = CTK_LEVEL_BAR (widget);
@@ -841,9 +841,9 @@ ctk_level_bar_buildable_custom_tag_start (CtkBuildable  *buildable,
 }
 
 static void
-ctk_level_bar_buildable_custom_finished (CtkBuildable *buildable,
-                                         CtkBuilder   *builder,
-                                         GObject      *child,
+ctk_level_bar_buildable_custom_finished (CtkBuildable *buildable G_GNUC_UNUSED,
+                                         CtkBuilder   *builder G_GNUC_UNUSED,
+                                         GObject      *child G_GNUC_UNUSED,
                                          const gchar  *tagname,
                                          gpointer      user_data)
 {
