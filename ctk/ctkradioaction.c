@@ -374,7 +374,7 @@ ctk_radio_action_activate (CtkAction *action)
 }
 
 static CtkWidget *
-create_menu_item (CtkAction *action)
+create_menu_item (CtkAction *action G_GNUC_UNUSED)
 {
   return g_object_new (CTK_TYPE_CHECK_MENU_ITEM, 
 		       "draw-as-radio", TRUE,
