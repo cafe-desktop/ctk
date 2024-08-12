@@ -101,7 +101,7 @@ ctk_fill_layout_renderer_draw_rectangle (PangoRenderer     *renderer,
 
 static void
 ctk_fill_layout_renderer_draw_trapezoid (PangoRenderer     *renderer,
-                                         PangoRenderPart    part,
+                                         PangoRenderPart    part G_GNUC_UNUSED,
                                          double             y1_,
                                          double             x11,
                                          double             x21,
@@ -187,7 +187,7 @@ ctk_fill_layout_renderer_finalize (GObject *object)
 }
 
 static void
-_ctk_fill_layout_renderer_init (CtkFillLayoutRenderer *renderer)
+_ctk_fill_layout_renderer_init (CtkFillLayoutRenderer *renderer G_GNUC_UNUSED)
 {
 }
 
