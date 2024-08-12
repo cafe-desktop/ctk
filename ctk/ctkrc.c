@@ -823,7 +823,7 @@ ctk_rc_get_module_dir (void)
  * end of ctk_init().
  **/
 void
-ctk_rc_add_default_file (const gchar *filename)
+ctk_rc_add_default_file (const gchar *filename G_GNUC_UNUSED)
 {
 }
 
@@ -836,7 +836,7 @@ ctk_rc_add_default_file (const gchar *filename)
  * end of ctk_init().
  **/
 void
-ctk_rc_set_default_files (gchar **filenames)
+ctk_rc_set_default_files (gchar **filenames G_GNUC_UNUSED)
 {
 }
 
@@ -1171,7 +1171,7 @@ ctk_rc_style_real_merge (CtkRcStyle *dest,
 }
 
 static CtkStyle *
-ctk_rc_style_real_create_style (CtkRcStyle *rc_style)
+ctk_rc_style_real_create_style (CtkRcStyle *rc_style G_GNUC_UNUSED)
 {
   return ctk_style_new ();
 }
@@ -1211,8 +1211,8 @@ ctk_rc_reset_styles (CtkSettings *settings)
  * Returns: %TRUE if the files were reread.
  **/
 gboolean
-ctk_rc_reparse_all_for_settings (CtkSettings *settings,
-				 gboolean     force_load)
+ctk_rc_reparse_all_for_settings (CtkSettings *settings G_GNUC_UNUSED,
+				 gboolean     force_load G_GNUC_UNUSED)
 {
   return FALSE;
 }
@@ -1426,8 +1426,8 @@ lookup_color (CtkRcStyle *style,
  * Returns: (type filename): the filename.
  **/
 gchar*
-ctk_rc_find_pixmap_in_path (CtkSettings  *settings,
-			    GScanner     *scanner,
+ctk_rc_find_pixmap_in_path (CtkSettings  *settings G_GNUC_UNUSED,
+			    GScanner     *scanner G_GNUC_UNUSED,
 			    const gchar  *pixmap_file)
 {
   g_warning ("Unable to locate image file in pixmap_path: \"%s\"",
