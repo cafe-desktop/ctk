@@ -732,12 +732,12 @@ get_current_text (CtkProgressBar *pbar)
 static void
 ctk_progress_bar_measure (CtkCssGadget   *gadget,
                           CtkOrientation  orientation,
-                          int             for_size,
+                          int             for_size G_GNUC_UNUSED,
                           int            *minimum,
                           int            *natural,
-                          int            *minimum_baseline,
-                          int            *natural_baseline,
-                          gpointer        data)
+                          int            *minimum_baseline G_GNUC_UNUSED,
+                          int            *natural_baseline G_GNUC_UNUSED,
+                          gpointer        data G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkProgressBar *pbar;
@@ -824,12 +824,12 @@ ctk_progress_bar_get_layout (CtkProgressBar *pbar)
 static void
 ctk_progress_bar_measure_text (CtkCssGadget   *gadget,
                                CtkOrientation  orientation,
-                               int             for_size,
+                               int             for_size G_GNUC_UNUSED,
                                int            *minimum,
                                int            *natural,
-                               int            *minimum_baseline,
-                               int            *natural_baseline,
-                               gpointer        data)
+                               int            *minimum_baseline G_GNUC_UNUSED,
+                               int            *natural_baseline G_GNUC_UNUSED,
+                               gpointer        data G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkProgressBar *pbar;
@@ -890,12 +890,12 @@ get_number (CtkCssStyle *style,
 static void
 ctk_progress_bar_measure_trough (CtkCssGadget   *gadget,
                                  CtkOrientation  orientation,
-                                 int             for_size,
+                                 int             for_size G_GNUC_UNUSED,
                                  int            *minimum,
                                  int            *natural,
                                  int            *minimum_baseline,
                                  int            *natural_baseline,
-                                 gpointer        data)
+                                 gpointer        data G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkProgressBarPrivate *priv;
@@ -943,12 +943,12 @@ ctk_progress_bar_measure_trough (CtkCssGadget   *gadget,
 static void
 ctk_progress_bar_measure_progress (CtkCssGadget   *gadget,
                                    CtkOrientation  orientation,
-                                   int             for_size,
+                                   int             for_size G_GNUC_UNUSED,
                                    int            *minimum,
                                    int            *natural,
                                    int            *minimum_baseline,
                                    int            *natural_baseline,
-                                   gpointer        data)
+                                   gpointer        data G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkProgressBar *pbar;
@@ -1014,9 +1014,9 @@ ctk_progress_bar_size_allocate (CtkWidget     *widget,
 static void
 ctk_progress_bar_allocate (CtkCssGadget        *gadget,
                            const CtkAllocation *allocation,
-                           int                  baseline,
+                           int                  baseline G_GNUC_UNUSED,
                            CtkAllocation       *out_clip,
-                           gpointer             data)
+                           gpointer             data G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkProgressBarPrivate *priv;
@@ -1094,9 +1094,9 @@ ctk_progress_bar_allocate (CtkCssGadget        *gadget,
 static void
 ctk_progress_bar_allocate_trough (CtkCssGadget        *gadget,
                                   const CtkAllocation *allocation,
-                                  int                  baseline,
+                                  int                  baseline G_GNUC_UNUSED,
                                   CtkAllocation       *out_clip,
-                                  gpointer             data)
+                                  gpointer             data G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkProgressBarPrivate *priv;
@@ -1199,7 +1199,7 @@ ctk_progress_bar_get_preferred_height (CtkWidget *widget,
 static gboolean
 tick_cb (CtkWidget     *widget,
          CdkFrameClock *frame_clock,
-         gpointer       user_data)
+         gpointer       user_data G_GNUC_UNUSED)
 {
   CtkProgressBar *pbar = CTK_PROGRESS_BAR (widget);
   CtkProgressBarPrivate *priv = pbar->priv;
@@ -1315,8 +1315,8 @@ ctk_progress_bar_render_text (CtkCssGadget *gadget,
                               int           x,
                               int           y,
                               int           width,
-                              int           height,
-                              gpointer      data)
+                              int           height G_GNUC_UNUSED,
+                              gpointer      data G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkProgressBar *pbar;
@@ -1348,11 +1348,11 @@ ctk_progress_bar_render_text (CtkCssGadget *gadget,
 static gboolean
 ctk_progress_bar_render_trough (CtkCssGadget *gadget,
                                 cairo_t      *cr,
-                                int           x,
-                                int           y,
-                                int           width,
-                                int           height,
-                                gpointer      data)
+                                int           x G_GNUC_UNUSED,
+                                int           y G_GNUC_UNUSED,
+                                int           width G_GNUC_UNUSED,
+                                int           height G_GNUC_UNUSED,
+                                gpointer      data G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkProgressBarPrivate *priv;
@@ -1368,11 +1368,11 @@ ctk_progress_bar_render_trough (CtkCssGadget *gadget,
 static gboolean
 ctk_progress_bar_render (CtkCssGadget *gadget,
                          cairo_t      *cr,
-                         int           x,
-                         int           y,
-                         int           width,
-                         int           height,
-                         gpointer      data)
+                         int           x G_GNUC_UNUSED,
+                         int           y G_GNUC_UNUSED,
+                         int           width G_GNUC_UNUSED,
+                         int           height G_GNUC_UNUSED,
+                         gpointer      data G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkProgressBarPrivate *priv;
@@ -1518,7 +1518,7 @@ ctk_progress_bar_set_text (CtkProgressBar *pbar,
 }
 
 static void
-ctk_progress_bar_text_style_changed (CtkCssNode        *node,
+ctk_progress_bar_text_style_changed (CtkCssNode        *node G_GNUC_UNUSED,
                                      CtkCssStyleChange *change,
                                      CtkProgressBar    *pbar)
 {
