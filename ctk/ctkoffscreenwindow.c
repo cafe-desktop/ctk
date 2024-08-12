@@ -268,7 +268,7 @@ ctk_offscreen_window_class_init (CtkOffscreenWindowClass *class)
 }
 
 static void
-ctk_offscreen_window_init (CtkOffscreenWindow *window)
+ctk_offscreen_window_init (CtkOffscreenWindow *window G_GNUC_UNUSED)
 {
 }
 
