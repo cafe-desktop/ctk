@@ -438,7 +438,7 @@ ctk_popover_realize (CtkWidget *widget)
 
 static gboolean
 window_focus_in (CtkWidget  *widget,
-                 CdkEvent   *event,
+                 CdkEvent   *event G_GNUC_UNUSED,
                  CtkPopover *popover)
 {
   CtkPopoverPrivate *priv = ctk_popover_get_instance_private (popover);
@@ -465,8 +465,8 @@ window_focus_in (CtkWidget  *widget,
 }
 
 static gboolean
-window_focus_out (CtkWidget  *widget,
-                  CdkEvent   *event,
+window_focus_out (CtkWidget  *widget G_GNUC_UNUSED,
+                  CdkEvent   *event G_GNUC_UNUSED,
                   CtkPopover *popover)
 {
   CtkPopoverPrivate *priv = ctk_popover_get_instance_private (popover);
@@ -483,7 +483,7 @@ window_focus_out (CtkWidget  *widget,
 }
 
 static void
-window_set_focus (CtkWindow  *window,
+window_set_focus (CtkWindow  *window G_GNUC_UNUSED,
                   CtkWidget  *widget,
                   CtkPopover *popover)
 {
@@ -509,7 +509,7 @@ window_set_focus (CtkWindow  *window,
 }
 
 static void
-prev_focus_unmap_cb (CtkWidget  *widget,
+prev_focus_unmap_cb (CtkWidget  *widget G_GNUC_UNUSED,
                      CtkPopover *popover)
 {
   popover_unset_prev_focus (popover);
@@ -572,7 +572,7 @@ ctk_popover_apply_modality (CtkPopover *popover,
 static gboolean
 show_animate_cb (CtkWidget     *widget,
                  CdkFrameClock *frame_clock,
-                 gpointer       user_data)
+                 gpointer       user_data G_GNUC_UNUSED)
 {
   CtkPopover *popover = CTK_POPOVER (widget);
   CtkPopoverPrivate *priv = ctk_popover_get_instance_private (popover);
@@ -1852,7 +1852,7 @@ ctk_popover_update_scrollable (CtkPopover *popover)
 
 static void
 _ctk_popover_parent_hierarchy_changed (CtkWidget  *widget,
-                                       CtkWidget  *previous_toplevel,
+                                       CtkWidget  *previous_toplevel G_GNUC_UNUSED,
                                        CtkPopover *popover)
 {
   CtkPopoverPrivate *priv = popover->priv;
@@ -1919,8 +1919,8 @@ _ctk_popover_parent_state_changed (CtkWidget     *widget,
 }
 
 static void
-_ctk_popover_parent_grab_notify (CtkWidget  *widget,
-                                 gboolean    was_shadowed,
+_ctk_popover_parent_grab_notify (CtkWidget  *widget G_GNUC_UNUSED,
+                                 gboolean    was_shadowed G_GNUC_UNUSED,
                                  CtkPopover *popover)
 {
   CtkPopoverPrivate *priv = popover->priv;
@@ -1939,7 +1939,7 @@ _ctk_popover_parent_grab_notify (CtkWidget  *widget,
 }
 
 static void
-_ctk_popover_parent_unmap (CtkWidget *widget,
+_ctk_popover_parent_unmap (CtkWidget *widget G_GNUC_UNUSED,
                            CtkPopover *popover)
 {
   CtkPopoverPrivate *priv = popover->priv;
@@ -1951,8 +1951,8 @@ _ctk_popover_parent_unmap (CtkWidget *widget,
 }
 
 static void
-_ctk_popover_parent_size_allocate (CtkWidget     *widget,
-                                   CtkAllocation *allocation,
+_ctk_popover_parent_size_allocate (CtkWidget     *widget G_GNUC_UNUSED,
+                                   CtkAllocation *allocation G_GNUC_UNUSED,
                                    CtkPopover    *popover)
 {
   ctk_popover_update_position (popover);
@@ -2000,7 +2000,7 @@ widget_unmanage_popover (CtkWidget  *widget,
 }
 
 static void
-adjustment_changed_cb (CtkAdjustment *adjustment,
+adjustment_changed_cb (CtkAdjustment *adjustment G_GNUC_UNUSED,
                        CtkPopover    *popover)
 {
   ctk_popover_update_position (popover);
@@ -2206,10 +2206,10 @@ ctk_popover_update_preferred_position (CtkPopover      *popover,
 }
 
 static void
-ctk_popover_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
-                                        gint                  n_press,
-                                        gdouble               widget_x,
-                                        gdouble               widget_y,
+ctk_popover_multipress_gesture_pressed (CtkGestureMultiPress *gesture G_GNUC_UNUSED,
+                                        gint                  n_press G_GNUC_UNUSED,
+                                        gdouble               widget_x G_GNUC_UNUSED,
+                                        gdouble               widget_y G_GNUC_UNUSED,
                                         CtkPopover           *popover)
 {
   CtkPopoverPrivate *priv = popover->priv;
