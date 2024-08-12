@@ -45,7 +45,7 @@ _ctk_set_slowdown (gdouble factor)
 }
 
 gdouble
-_ctk_get_slowdown (gdouble factor)
+_ctk_get_slowdown (gdouble factor G_GNUC_UNUSED)
 {
   return ctk_slowdown;
 }
