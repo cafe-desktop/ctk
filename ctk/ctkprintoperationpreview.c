@@ -51,7 +51,7 @@ ctk_print_operation_preview_get_type (void)
 }
 
 static void
-ctk_print_operation_preview_base_init (gpointer g_iface)
+ctk_print_operation_preview_base_init (gpointer g_iface G_GNUC_UNUSED)
 {
   static gboolean initialized = FALSE;
 
