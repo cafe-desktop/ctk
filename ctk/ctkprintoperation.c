@@ -362,8 +362,8 @@ preview_end_page (CtkPrintOperation *op,
 
 static void
 preview_end_run (CtkPrintOperation *op,
-		 gboolean           wait,
-		 gboolean           cancelled)
+		 gboolean           wait G_GNUC_UNUSED,
+		 gboolean           cancelled G_GNUC_UNUSED)
 {
   g_free (op->priv->page_ranges);
   op->priv->page_ranges = NULL;
@@ -613,7 +613,7 @@ preview_print_idle (gpointer data)
 
 static void
 preview_got_page_size (CtkPrintOperationPreview *preview, 
-		       CtkPrintContext          *context,
+		       CtkPrintContext          *context G_GNUC_UNUSED,
 		       CtkPageSetup             *page_setup,
 		       PreviewOp                *pop)
 {
@@ -691,14 +691,14 @@ ctk_print_operation_preview_handler (CtkPrintOperation        *op,
 }
 
 static CtkWidget *
-ctk_print_operation_create_custom_widget (CtkPrintOperation *operation)
+ctk_print_operation_create_custom_widget (CtkPrintOperation *operation G_GNUC_UNUSED)
 {
   return NULL;
 }
 
 static gboolean
-ctk_print_operation_paginate (CtkPrintOperation *operation,
-                              CtkPrintContext   *context)
+ctk_print_operation_paginate (CtkPrintOperation *operation G_GNUC_UNUSED,
+                              CtkPrintContext   *context G_GNUC_UNUSED)
 {
   /* assume the number of pages is already set and pagination is not needed */
   return TRUE;
@@ -706,7 +706,7 @@ ctk_print_operation_paginate (CtkPrintOperation *operation,
 
 static void
 ctk_print_operation_done (CtkPrintOperation       *operation,
-                          CtkPrintOperationResult  result)
+                          CtkPrintOperationResult  result G_GNUC_UNUSED)
 {
   CtkPrintOperationPrivate *priv = operation->priv;
 
@@ -718,10 +718,10 @@ ctk_print_operation_done (CtkPrintOperation       *operation,
 }
 
 static gboolean
-custom_widget_accumulator (GSignalInvocationHint *ihint,
+custom_widget_accumulator (GSignalInvocationHint *ihint G_GNUC_UNUSED,
 			   GValue                *return_accu,
 			   const GValue          *handler_return,
-			   gpointer               dummy)
+			   gpointer               dummy G_GNUC_UNUSED)
 {
   gboolean continue_emission;
   CtkWidget *widget;
@@ -735,10 +735,10 @@ custom_widget_accumulator (GSignalInvocationHint *ihint,
 }
 
 static gboolean
-paginate_accumulator (GSignalInvocationHint *ihint,
+paginate_accumulator (GSignalInvocationHint *ihint G_GNUC_UNUSED,
                       GValue                *return_accu,
                       const GValue          *handler_return,
-                      gpointer               dummy)
+                      gpointer               dummy G_GNUC_UNUSED)
 {
   *return_accu = *handler_return;
 
@@ -2072,7 +2072,7 @@ create_page_setup (CtkPrintOperation *op)
 
 static void 
 pdf_start_page (CtkPrintOperation *op,
-		CtkPrintContext   *print_context,
+		CtkPrintContext   *print_context G_GNUC_UNUSED,
 		CtkPageSetup      *page_setup)
 {
   cairo_surface_t *surface = op->priv->platform_data;
@@ -2100,8 +2100,8 @@ pdf_end_page (CtkPrintOperation *op,
 
 static void
 pdf_end_run (CtkPrintOperation *op,
-	     gboolean           wait,
-	     gboolean           cancelled)
+	     gboolean           wait G_GNUC_UNUSED,
+	     gboolean           cancelled G_GNUC_UNUSED)
 {
   CtkPrintOperationPrivate *priv = op->priv;
   cairo_surface_t *surface = priv->platform_data;
@@ -2115,7 +2115,7 @@ pdf_end_run (CtkPrintOperation *op,
 
 static CtkPrintOperationResult
 run_pdf (CtkPrintOperation  *op,
-	 CtkWindow          *parent,
+	 CtkWindow          *parent G_GNUC_UNUSED,
 	 gboolean           *do_print)
 {
   CtkPrintOperationPrivate *priv = op->priv;
@@ -2943,7 +2943,7 @@ print_pages_idle (gpointer user_data)
   
 static void
 handle_progress_response (CtkWidget *dialog, 
-			  gint       response,
+			  gint       response G_GNUC_UNUSED,
 			  gpointer   data)
 {
   CtkPrintOperation *op = (CtkPrintOperation *)data;
