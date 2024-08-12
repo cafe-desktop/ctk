@@ -127,10 +127,10 @@ _ctk_get_lc_ctype (void)
 }
 
 gboolean
-_ctk_boolean_handled_accumulator (GSignalInvocationHint *ihint,
+_ctk_boolean_handled_accumulator (GSignalInvocationHint *ihint G_GNUC_UNUSED,
                                   GValue                *return_accu,
                                   const GValue          *handler_return,
-                                  gpointer               dummy)
+                                  gpointer               dummy G_GNUC_UNUSED)
 {
   gboolean continue_emission;
   gboolean signal_handled;
@@ -143,10 +143,10 @@ _ctk_boolean_handled_accumulator (GSignalInvocationHint *ihint,
 }
 
 gboolean
-_ctk_single_string_accumulator (GSignalInvocationHint *ihint,
+_ctk_single_string_accumulator (GSignalInvocationHint *ihint G_GNUC_UNUSED,
 				GValue                *return_accu,
 				const GValue          *handler_return,
-				gpointer               dummy)
+				gpointer               dummy G_GNUC_UNUSED)
 {
   gboolean continue_emission;
   const gchar *str;
@@ -254,7 +254,7 @@ _ctk_translate_keyboard_accel_state (CdkKeymap       *keymap,
 }
 
 static gpointer
-register_resources (gpointer data)
+register_resources (gpointer data G_GNUC_UNUSED)
 {
   _ctk_register_resource ();
   return NULL;
