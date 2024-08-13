@@ -222,7 +222,7 @@ ctk_statusbar_new (void)
 
 static void
 ctk_statusbar_update (CtkStatusbar *statusbar,
-		      guint	    context_id,
+		      guint	    context_id G_GNUC_UNUSED,
 		      const gchar  *text)
 {
   CtkStatusbarPrivate *priv;
