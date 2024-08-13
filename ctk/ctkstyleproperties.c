@@ -272,7 +272,7 @@ ctk_style_properties_finalize (GObject *object)
 }
 
 static void
-ctk_style_properties_provider_init (CtkStyleProviderIface *iface)
+ctk_style_properties_provider_init (CtkStyleProviderIface *iface G_GNUC_UNUSED)
 {
 }
 
