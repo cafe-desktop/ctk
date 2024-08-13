@@ -279,14 +279,14 @@ delegate_notify (GObject    *object,
 }
 
 static void
-delegate_selection_changed (CtkRecentChooser *receiver,
+delegate_selection_changed (CtkRecentChooser *receiver G_GNUC_UNUSED,
 			    gpointer          user_data)
 {
   _ctk_recent_chooser_selection_changed (CTK_RECENT_CHOOSER (user_data));
 }
 
 static void
-delegate_item_activated (CtkRecentChooser *receiver,
+delegate_item_activated (CtkRecentChooser *receiver G_GNUC_UNUSED,
 			 gpointer          user_data)
 {
   _ctk_recent_chooser_item_activated (CTK_RECENT_CHOOSER (user_data));
@@ -295,7 +295,7 @@ delegate_item_activated (CtkRecentChooser *receiver,
 static gint
 sort_recent_items_mru (CtkRecentInfo *a,
 		       CtkRecentInfo *b,
-		       gpointer       unused)
+		       gpointer       unused G_GNUC_UNUSED)
 {
   g_assert (a != NULL && b != NULL);
   
@@ -305,7 +305,7 @@ sort_recent_items_mru (CtkRecentInfo *a,
 static gint
 sort_recent_items_lru (CtkRecentInfo *a,
 		       CtkRecentInfo *b,
-		       gpointer       unused)
+		       gpointer       unused G_GNUC_UNUSED)
 {
   g_assert (a != NULL && b != NULL);
   
