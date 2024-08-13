@@ -924,8 +924,8 @@ policy_may_be_visible (CtkPolicyType policy)
 
 static void
 scrolled_window_drag_begin_cb (CtkScrolledWindow *scrolled_window,
-                               gdouble            start_x,
-                               gdouble            start_y,
+                               gdouble            start_x G_GNUC_UNUSED,
+                               gdouble            start_y G_GNUC_UNUSED,
                                CtkGesture        *gesture)
 {
   CtkScrolledWindowPrivate *priv = scrolled_window->priv;
@@ -1082,9 +1082,9 @@ scrolled_window_swipe_cb (CtkScrolledWindow *scrolled_window,
 }
 
 static void
-scrolled_window_long_press_cb (CtkScrolledWindow *scrolled_window,
-                               gdouble            x,
-                               gdouble            y,
+scrolled_window_long_press_cb (CtkScrolledWindow *scrolled_window G_GNUC_UNUSED,
+                               gdouble            x G_GNUC_UNUSED,
+                               gdouble            y G_GNUC_UNUSED,
                                CtkGesture        *gesture)
 {
   CdkEventSequence *sequence;
@@ -1532,9 +1532,9 @@ _ctk_scrolled_window_get_scrollbar_spacing (CtkScrolledWindow *scrolled_window)
 static void
 ctk_scrolled_window_allocate (CtkCssGadget        *gadget,
                               const CtkAllocation *allocation,
-                              int                  baseline,
-                              CtkAllocation       *out_clip,
-                              gpointer             data)
+                              int                  baseline G_GNUC_UNUSED,
+                              CtkAllocation       *out_clip G_GNUC_UNUSED,
+                              gpointer             data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkScrolledWindow *scrolled_window = CTK_SCROLLED_WINDOW (widget);
@@ -1803,12 +1803,12 @@ ctk_scrolled_window_allocate (CtkCssGadget        *gadget,
 static void
 ctk_scrolled_window_measure (CtkCssGadget   *gadget,
                              CtkOrientation  orientation,
-                             int             for_size,
+                             int             for_size G_GNUC_UNUSED,
                              int            *minimum_size,
                              int            *natural_size,
-                             int            *minimum_baseline,
-                             int            *natural_baseline,
-                             gpointer        data)
+                             int            *minimum_baseline G_GNUC_UNUSED,
+                             int            *natural_baseline G_GNUC_UNUSED,
+                             gpointer        data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkScrolledWindow *scrolled_window = CTK_SCROLLED_WINDOW (widget);
@@ -2081,11 +2081,11 @@ ctk_scrolled_window_draw_undershoot (CtkScrolledWindow *scrolled_window,
 static gboolean
 ctk_scrolled_window_render (CtkCssGadget *gadget,
                             cairo_t      *cr,
-                            int           x,
-                            int           y,
-                            int           width,
-                            int           height,
-                            gpointer      data)
+                            int           x G_GNUC_UNUSED,
+                            int           y G_GNUC_UNUSED,
+                            int           width G_GNUC_UNUSED,
+                            int           height G_GNUC_UNUSED,
+                            gpointer      data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkScrolledWindow *scrolled_window = CTK_SCROLLED_WINDOW (widget);
@@ -3419,7 +3419,7 @@ clear_scroll_window (CtkScrolledWindow *scrolled_window)
 
 static void
 finalize_scroll_window (gpointer data,
-                        GObject *where_the_object_was)
+                        GObject *where_the_object_was G_GNUC_UNUSED)
 {
   clear_scroll_window ((CtkScrolledWindow *) data);
 }
@@ -3683,9 +3683,9 @@ _ctk_scrolled_window_set_adjustment_value (CtkScrolledWindow *scrolled_window,
 }
 
 static gboolean
-scrolled_window_deceleration_cb (CtkWidget         *widget,
-                                 CdkFrameClock     *frame_clock,
-                                 gpointer           user_data)
+scrolled_window_deceleration_cb (CtkWidget     *widget G_GNUC_UNUSED,
+                                 CdkFrameClock *frame_clock,
+                                 gpointer       user_data)
 {
   CtkScrolledWindow *scrolled_window = user_data;
   CtkScrolledWindowPrivate *priv = scrolled_window->priv;
@@ -4150,7 +4150,7 @@ ctk_scrolled_window_get_preferred_height (CtkWidget *widget,
 
 static void
 ctk_scrolled_window_get_preferred_height_for_width (CtkWidget *widget,
-                                                    gint       width,
+                                                    gint       width G_GNUC_UNUSED,
                                                     gint      *minimum_height,
                                                     gint      *natural_height)
 {
@@ -4159,7 +4159,7 @@ ctk_scrolled_window_get_preferred_height_for_width (CtkWidget *widget,
 
 static void
 ctk_scrolled_window_get_preferred_width_for_height (CtkWidget *widget,
-                                                    gint       height,
+                                                    gint       height G_GNUC_UNUSED,
                                                     gint      *minimum_width,
                                                     gint      *natural_width)
 {
@@ -4287,7 +4287,7 @@ indicator_set_fade (Indicator *indicator,
 }
 
 static gboolean
-indicator_fade_cb (CtkWidget     *widget,
+indicator_fade_cb (CtkWidget     *widget G_GNUC_UNUSED,
                    CdkFrameClock *frame_clock,
                    gpointer       user_data)
 {
@@ -4368,7 +4368,7 @@ maybe_hide_indicator (gpointer data)
 }
 
 static void
-indicator_value_changed (CtkAdjustment *adjustment,
+indicator_value_changed (CtkAdjustment *adjustment G_GNUC_UNUSED,
                          Indicator     *indicator)
 {
   indicator->last_scroll_time = g_get_monotonic_time ();
@@ -4593,7 +4593,7 @@ ctk_scrolled_window_unrealize (CtkWidget *widget)
 
 static void
 ctk_scrolled_window_grab_notify (CtkWidget *widget,
-                                 gboolean   was_grabbed)
+                                 gboolean   was_grabbed G_GNUC_UNUSED)
 {
   CtkScrolledWindow *scrolled_window = CTK_SCROLLED_WINDOW (widget);
   CtkScrolledWindowPrivate *priv = scrolled_window->priv;
