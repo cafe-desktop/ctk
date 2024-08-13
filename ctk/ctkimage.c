@@ -1683,12 +1683,12 @@ ctk_image_get_baseline_align (CtkImage *image)
 static void
 ctk_image_get_content_size (CtkCssGadget   *gadget,
                             CtkOrientation  orientation,
-                            gint            for_size,
+                            gint            for_size G_GNUC_UNUSED,
                             gint           *minimum,
                             gint           *natural,
                             gint           *minimum_baseline,
                             gint           *natural_baseline,
-                            gpointer        unused)
+                            gpointer        unused G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   gint width, height;
@@ -1739,7 +1739,7 @@ ctk_image_render_contents (CtkCssGadget *gadget,
                            int           y,
                            int           width,
                            int           height,
-                           gpointer      data)
+                           gpointer      data G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkImage *image;
