@@ -1799,7 +1799,7 @@ ctk_settings_class_init (CtkSettingsClass *class)
 }
 
 static void
-ctk_settings_provider_iface_init (CtkStyleProviderIface *iface)
+ctk_settings_provider_iface_init (CtkStyleProviderIface *iface G_GNUC_UNUSED)
 {
 }
 
@@ -1913,8 +1913,8 @@ settings_init_style (CtkSettings *settings)
 
 static void
 settings_display_closed (CdkDisplay *display,
-                         gboolean    is_error,
-                         gpointer    data)
+                         gboolean    is_error G_GNUC_UNUSED,
+                         gpointer    data G_GNUC_UNUSED)
 {
   DisplaySettings *ds;
   int i;
@@ -2070,7 +2070,7 @@ static void
 ctk_settings_set_property (GObject      *object,
                            guint         property_id,
                            const GValue *value,
-                           GParamSpec   *pspec)
+                           GParamSpec   *pspec G_GNUC_UNUSED)
 {
   CtkSettings *settings = CTK_SETTINGS (object);
   CtkSettingsPrivate *priv = settings->priv;
