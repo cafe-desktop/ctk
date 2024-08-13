@@ -73,7 +73,7 @@ push_recursion_check (CtkWidget       *widget,
 
 static void
 pop_recursion_check (CtkWidget       *widget,
-                     CtkOrientation   orientation)
+                     CtkOrientation   orientation G_GNUC_UNUSED)
 {
   g_object_set_qdata (G_OBJECT (widget), recursion_check_quark, NULL);
 }
