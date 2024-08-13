@@ -913,9 +913,9 @@ ctk_header_bar_get_content_size (CtkCssGadget   *gadget,
                                  gint            for_size,
                                  gint           *minimum,
                                  gint           *natural,
-                                 gint           *minimum_baseline,
-                                 gint           *natural_baseline,
-                                 gpointer        unused)
+                                 gint           *minimum_baseline G_GNUC_UNUSED,
+                                 gint           *natural_baseline G_GNUC_UNUSED,
+                                 gpointer        unused G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
 
@@ -1002,9 +1002,9 @@ ctk_header_bar_size_allocate (CtkWidget     *widget,
 static void
 ctk_header_bar_allocate_contents (CtkCssGadget        *gadget,
                                   const CtkAllocation *allocation,
-                                  int                  baseline,
+                                  int                  baseline G_GNUC_UNUSED,
                                   CtkAllocation       *out_clip,
-                                  gpointer             unused)
+                                  gpointer             unused G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkWidget *title_widget;
@@ -1635,8 +1635,8 @@ ctk_header_bar_set_property (GObject      *object,
 }
 
 static void
-notify_child_cb (GObject      *child,
-                 GParamSpec   *pspec,
+notify_child_cb (GObject      *child G_GNUC_UNUSED,
+                 GParamSpec   *pspec G_GNUC_UNUSED,
                  CtkHeaderBar *bar)
 {
   _ctk_header_bar_update_separator_visibility (bar);
@@ -1797,7 +1797,7 @@ ctk_header_bar_reorder_child (CtkHeaderBar *bar,
 }
 
 static GType
-ctk_header_bar_child_type (CtkContainer *container)
+ctk_header_bar_child_type (CtkContainer *container G_GNUC_UNUSED)
 {
   return CTK_TYPE_WIDGET;
 }
@@ -1888,11 +1888,11 @@ ctk_header_bar_draw (CtkWidget *widget,
 static gboolean
 ctk_header_bar_render_contents (CtkCssGadget *gadget,
                                 cairo_t      *cr,
-                                int           x,
-                                int           y,
-                                int           width,
-                                int           height,
-                                gpointer      unused)
+                                int           x G_GNUC_UNUSED,
+                                int           y G_GNUC_UNUSED,
+                                int           width G_GNUC_UNUSED,
+                                int           height G_GNUC_UNUSED,
+                                gpointer      unused G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
 
@@ -1929,7 +1929,7 @@ ctk_header_bar_unrealize (CtkWidget *widget)
 }
 
 static gboolean
-window_state_changed (CtkWidget           *window,
+window_state_changed (CtkWidget           *window G_GNUC_UNUSED,
                       CdkEventWindowState *event,
                       gpointer             data)
 {
@@ -2158,7 +2158,7 @@ ctk_header_bar_init (CtkHeaderBar *bar)
 
 static void
 ctk_header_bar_buildable_add_child (CtkBuildable *buildable,
-                                    CtkBuilder   *builder,
+                                    CtkBuilder   *builder G_GNUC_UNUSED,
                                     GObject      *child,
                                     const gchar  *type)
 {
