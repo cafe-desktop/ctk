@@ -578,7 +578,7 @@ ctk_do_render_slider (CtkStyleContext *context,
                       gdouble          y,
                       gdouble          width,
                       gdouble          height,
-                      CtkOrientation   orientation)
+                      CtkOrientation   orientation G_GNUC_UNUSED)
 {
   CtkCssStyle *style;
   CtkJunctionSides junction;
