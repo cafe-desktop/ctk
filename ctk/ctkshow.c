@@ -75,7 +75,7 @@ ctk_show_uri (CdkScreen    *screen,
 }
 
 static void
-launch_uri_done (GObject      *source,
+launch_uri_done (GObject      *source G_GNUC_UNUSED,
                  GAsyncResult *result,
                  gpointer      data)
 {
