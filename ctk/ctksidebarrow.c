@@ -372,7 +372,7 @@ ctk_sidebar_row_set_property (GObject      *object,
 
 static void
 on_child_revealed (GObject    *self,
-                   GParamSpec *pspec,
+                   GParamSpec *pspec G_GNUC_UNUSED,
                    gpointer    user_data)
 {
  /* We need to hide the actual widget because if not the CtkListBoxRow will
