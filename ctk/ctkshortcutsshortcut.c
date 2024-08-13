@@ -455,13 +455,13 @@ ctk_shortcuts_shortcut_finalize (GObject *object)
 
 static void
 ctk_shortcuts_shortcut_add (CtkContainer *container,
-                            CtkWidget    *widget)
+                            CtkWidget    *widget G_GNUC_UNUSED)
 {
   g_warning ("Can't add children to %s", G_OBJECT_TYPE_NAME (container));
 }
 
 static GType
-ctk_shortcuts_shortcut_child_type (CtkContainer *container)
+ctk_shortcuts_shortcut_child_type (CtkContainer *container G_GNUC_UNUSED)
 {
   return G_TYPE_NONE;
 }
