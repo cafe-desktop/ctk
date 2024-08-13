@@ -46,7 +46,7 @@ G_DEFINE_TYPE (CtkSeparatorMenuItem, ctk_separator_menu_item, CTK_TYPE_MENU_ITEM
 
 
 static const char *
-ctk_separator_menu_item_get_label (CtkMenuItem *item)
+ctk_separator_menu_item_get_label (CtkMenuItem *item G_GNUC_UNUSED)
 {
   return "";
 }
@@ -63,7 +63,7 @@ ctk_separator_menu_item_class_init (CtkSeparatorMenuItemClass *class)
 }
 
 static void
-ctk_separator_menu_item_init (CtkSeparatorMenuItem *item)
+ctk_separator_menu_item_init (CtkSeparatorMenuItem *item G_GNUC_UNUSED)
 {
 }
 
