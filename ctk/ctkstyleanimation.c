@@ -24,26 +24,26 @@
 G_DEFINE_ABSTRACT_TYPE (CtkStyleAnimation, _ctk_style_animation, G_TYPE_OBJECT)
 
 static CtkStyleAnimation *
-ctk_style_animation_real_advance (CtkStyleAnimation    *animation,
-                                  gint64                timestamp)
+ctk_style_animation_real_advance (CtkStyleAnimation *animation G_GNUC_UNUSED,
+                                  gint64             timestamp G_GNUC_UNUSED)
 {
   return NULL;
 }
 
 static void
-ctk_style_animation_real_apply_values (CtkStyleAnimation    *animation,
-                                       CtkCssAnimatedStyle  *style)
+ctk_style_animation_real_apply_values (CtkStyleAnimation   *animation G_GNUC_UNUSED,
+                                       CtkCssAnimatedStyle *style G_GNUC_UNUSED)
 {
 }
 
 static gboolean
-ctk_style_animation_real_is_finished (CtkStyleAnimation *animation)
+ctk_style_animation_real_is_finished (CtkStyleAnimation *animation G_GNUC_UNUSED)
 {
   return TRUE;
 }
 
 static gboolean
-ctk_style_animation_real_is_static (CtkStyleAnimation *animation)
+ctk_style_animation_real_is_static (CtkStyleAnimation *animation G_GNUC_UNUSED)
 {
   return FALSE;
 }
@@ -58,7 +58,7 @@ _ctk_style_animation_class_init (CtkStyleAnimationClass *klass)
 }
 
 static void
-_ctk_style_animation_init (CtkStyleAnimation *animation)
+_ctk_style_animation_init (CtkStyleAnimation *animation G_GNUC_UNUSED)
 {
 }
 
