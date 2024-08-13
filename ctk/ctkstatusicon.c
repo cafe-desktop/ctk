@@ -1335,7 +1335,7 @@ emit_size_changed_signal (CtkStatusIcon *status_icon,
 
 /* rounds the pixel size to the nearest size avaiable in the theme */
 static gint
-round_pixel_size (CtkWidget *widget, 
+round_pixel_size (CtkWidget *widget G_GNUC_UNUSED,
                   gint       pixel_size)
 {
   CtkIconSize s;
@@ -1570,7 +1570,7 @@ ctk_status_icon_fg_changed (CtkStatusIcon *status_icon)
 }
 
 static void
-ctk_status_icon_color_changed (CtkTrayIcon   *tray,
+ctk_status_icon_color_changed (CtkTrayIcon   *tray G_GNUC_UNUSED,
                                GParamSpec    *pspec,
                                CtkStatusIcon *status_icon)
 {
