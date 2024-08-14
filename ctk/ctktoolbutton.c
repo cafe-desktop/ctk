@@ -884,7 +884,7 @@ ctk_tool_button_create_menu_proxy (CtkToolItem *item)
 }
 
 static void
-button_clicked (CtkWidget     *widget,
+button_clicked (CtkWidget     *widget G_GNUC_UNUSED,
 		CtkToolButton *button)
 {
   CtkAction *action;
