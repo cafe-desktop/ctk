@@ -150,7 +150,7 @@ ctk_switch_end_toggle_animation (CtkSwitch *sw)
 static gboolean
 ctk_switch_on_frame_clock_update (CtkWidget     *widget,
                                   CdkFrameClock *clock,
-                                  gpointer       user_data)
+                                  gpointer       user_data G_GNUC_UNUSED)
 {
   CtkSwitch *sw = CTK_SWITCH (widget);
   CtkSwitchPrivate *priv = sw->priv;
@@ -198,9 +198,9 @@ ctk_switch_begin_toggle_animation (CtkSwitch *sw)
 
 static void
 ctk_switch_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
-                                       gint                  n_press,
+                                       gint                  n_press G_GNUC_UNUSED,
                                        gdouble               x,
-                                       gdouble               y,
+                                       gdouble               y G_GNUC_UNUSED,
                                        CtkSwitch            *sw)
 {
   CtkSwitchPrivate *priv = sw->priv;
@@ -220,9 +220,9 @@ ctk_switch_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
 
 static void
 ctk_switch_multipress_gesture_released (CtkGestureMultiPress *gesture,
-                                        gint                  n_press,
-                                        gdouble               x,
-                                        gdouble               y,
+                                        gint                  n_press G_GNUC_UNUSED,
+                                        gdouble               x G_GNUC_UNUSED,
+                                        gdouble               y G_GNUC_UNUSED,
                                         CtkSwitch            *sw)
 {
   CtkSwitchPrivate *priv = sw->priv;
@@ -267,8 +267,8 @@ ctk_switch_pan_gesture_pan (CtkGesturePan   *gesture,
 
 static void
 ctk_switch_pan_gesture_drag_end (CtkGestureDrag *gesture,
-                                 gdouble         x,
-                                 gdouble         y,
+                                 gdouble         x G_GNUC_UNUSED,
+                                 gdouble         y G_GNUC_UNUSED,
                                  CtkSwitch      *sw)
 {
   CtkSwitchPrivate *priv = sw->priv;
@@ -336,12 +336,12 @@ ctk_switch_activate (CtkSwitch *sw)
 static void
 ctk_switch_get_slider_size (CtkCssGadget   *gadget,
                             CtkOrientation  orientation,
-                            gint            for_size,
+                            gint            for_size G_GNUC_UNUSED,
                             gint           *minimum,
                             gint           *natural,
-                            gint           *minimum_baseline,
-                            gint           *natural_baseline,
-                            gpointer        unused)
+                            gint           *minimum_baseline G_GNUC_UNUSED,
+                            gint           *natural_baseline G_GNUC_UNUSED,
+                            gpointer        unused G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   gdouble min_size;
@@ -371,12 +371,12 @@ ctk_switch_get_slider_size (CtkCssGadget   *gadget,
 static void
 ctk_switch_get_content_size (CtkCssGadget   *gadget,
                              CtkOrientation  orientation,
-                             gint            for_size,
+                             gint            for_size G_GNUC_UNUSED,
                              gint           *minimum,
                              gint           *natural,
-                             gint           *minimum_baseline,
-                             gint           *natural_baseline,
-                             gpointer        unused)
+                             gint           *minimum_baseline G_GNUC_UNUSED,
+                             gint           *natural_baseline G_GNUC_UNUSED,
+                             gpointer        unused G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkSwitch *self;
@@ -447,7 +447,7 @@ ctk_switch_allocate_contents (CtkCssGadget        *gadget,
                               const CtkAllocation *allocation,
                               int                  baseline,
                               CtkAllocation       *out_clip,
-                              gpointer             unused)
+                              gpointer             unused G_GNUC_UNUSED)
 {
   CtkSwitch *self = CTK_SWITCH (ctk_css_gadget_get_owner (gadget));
   CtkSwitchPrivate *priv = self->priv;
@@ -585,12 +585,12 @@ ctk_switch_unmap (CtkWidget *widget)
 
 static gboolean
 ctk_switch_render_slider (CtkCssGadget *gadget,
-                          cairo_t      *cr,
-                          int           x,
-                          int           y,
-                          int           width,
-                          int           height,
-                          gpointer      data)
+                          cairo_t      *cr G_GNUC_UNUSED,
+                          int           x G_GNUC_UNUSED,
+                          int           y G_GNUC_UNUSED,
+                          int           width G_GNUC_UNUSED,
+                          int           height G_GNUC_UNUSED,
+                          gpointer      data G_GNUC_UNUSED)
 {
   return ctk_widget_has_visible_focus (ctk_css_gadget_get_owner (gadget));
 }
@@ -598,11 +598,11 @@ ctk_switch_render_slider (CtkCssGadget *gadget,
 static gboolean
 ctk_switch_render_trough (CtkCssGadget *gadget,
                           cairo_t      *cr,
-                          int           x,
-                          int           y,
-                          int           width,
-                          int           height,
-                          gpointer      data)
+                          int           x G_GNUC_UNUSED,
+                          int           y G_GNUC_UNUSED,
+                          int           width G_GNUC_UNUSED,
+                          int           height G_GNUC_UNUSED,
+                          gpointer      data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkSwitchPrivate *priv = CTK_SWITCH (widget)->priv;
