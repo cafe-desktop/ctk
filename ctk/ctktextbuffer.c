@@ -1070,7 +1070,7 @@ ctk_text_buffer_insert_interactive_at_cursor (CtkTextBuffer *buffer,
 
 static gboolean
 possibly_not_text (gunichar ch,
-                   gpointer user_data)
+                   gpointer user_data G_GNUC_UNUSED)
 {
   return ch == CTK_TEXT_UNKNOWN_CHAR;
 }
@@ -1080,7 +1080,7 @@ insert_text_range (CtkTextBuffer     *buffer,
                    CtkTextIter       *iter,
                    const CtkTextIter *orig_start,
                    const CtkTextIter *orig_end,
-                   gboolean           interactive)
+                   gboolean           interactive G_GNUC_UNUSED)
 {
   gchar *text;
 
@@ -2565,7 +2565,7 @@ ctk_text_buffer_real_changed (CtkTextBuffer *buffer)
 
 static void
 ctk_text_buffer_real_mark_set (CtkTextBuffer     *buffer,
-                               const CtkTextIter *iter,
+                               const CtkTextIter *iter G_GNUC_UNUSED,
                                CtkTextMark       *mark)
 {
   CtkTextMark *insert;
@@ -3186,7 +3186,7 @@ ctk_text_buffer_get_char_count (CtkTextBuffer *buffer)
 /* Called when we lose the primary selection.
  */
 static void
-clipboard_clear_selection_cb (CtkClipboard *clipboard,
+clipboard_clear_selection_cb (CtkClipboard *clipboard G_GNUC_UNUSED,
                               gpointer      data)
 {
   /* Move selection_bound to the insertion point */
@@ -3209,7 +3209,7 @@ clipboard_clear_selection_cb (CtkClipboard *clipboard,
  * data in order to paste it.
  */
 static void
-clipboard_get_selection_cb (CtkClipboard     *clipboard,
+clipboard_get_selection_cb (CtkClipboard     *clipboard G_GNUC_UNUSED,
                             CtkSelectionData *selection_data,
                             guint             info,
                             gpointer          data)
@@ -3280,7 +3280,7 @@ create_clipboard_contents_buffer (CtkTextBuffer *buffer)
 
 /* Provide cut/copied data */
 static void
-clipboard_get_contents_cb (CtkClipboard     *clipboard,
+clipboard_get_contents_cb (CtkClipboard     *clipboard G_GNUC_UNUSED,
                            CtkSelectionData *selection_data,
                            guint             info,
                            gpointer          data)
@@ -3336,7 +3336,7 @@ clipboard_get_contents_cb (CtkClipboard     *clipboard,
 }
 
 static void
-clipboard_clear_contents_cb (CtkClipboard *clipboard,
+clipboard_clear_contents_cb (CtkClipboard *clipboard G_GNUC_UNUSED,
                              gpointer      data)
 {
   CtkTextBuffer *contents = CTK_TEXT_BUFFER (data);
@@ -4683,7 +4683,7 @@ _ctk_text_buffer_get_text_at (CtkTextBuffer   *buffer,
 }
 
 void
-_ctk_text_buffer_get_text_after (CtkTextBuffer   *buffer,
+_ctk_text_buffer_get_text_after (CtkTextBuffer   *buffer G_GNUC_UNUSED,
                                  AtkTextBoundary  boundary_type,
                                  CtkTextIter     *position,
                                  CtkTextIter     *start,
