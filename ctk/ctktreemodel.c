@@ -491,12 +491,12 @@ ctk_tree_model_base_init (gpointer g_class)
 }
 
 static void
-row_inserted_marshal (GClosure          *closure,
-                      GValue /* out */  *return_value,
-                      guint              n_param_values,
+row_inserted_marshal (GClosure          *closure G_GNUC_UNUSED,
+                      GValue /* out */  *return_value G_GNUC_UNUSED,
+                      guint              n_param_values G_GNUC_UNUSED,
                       const GValue      *param_values,
-                      gpointer           invocation_hint,
-                      gpointer           marshal_data)
+                      gpointer           invocation_hint G_GNUC_UNUSED,
+                      gpointer           marshal_data G_GNUC_UNUSED)
 {
   CtkTreeModelIface *iface;
 
@@ -524,12 +524,12 @@ row_inserted_marshal (GClosure          *closure,
 }
 
 static void
-row_deleted_marshal (GClosure          *closure,
-                     GValue /* out */  *return_value,
-                     guint              n_param_values,
+row_deleted_marshal (GClosure          *closure G_GNUC_UNUSED,
+                     GValue /* out */  *return_value G_GNUC_UNUSED,
+                     guint              n_param_values G_GNUC_UNUSED,
                      const GValue      *param_values,
-                     gpointer           invocation_hint,
-                     gpointer           marshal_data)
+                     gpointer           invocation_hint G_GNUC_UNUSED,
+                     gpointer           marshal_data G_GNUC_UNUSED)
 {
   CtkTreeModelIface *iface;
   void (* row_deleted_callback) (CtkTreeModel *tree_model,
@@ -553,12 +553,12 @@ row_deleted_marshal (GClosure          *closure,
 }
 
 static void
-rows_reordered_marshal (GClosure          *closure,
-                        GValue /* out */  *return_value,
-                        guint              n_param_values,
+rows_reordered_marshal (GClosure          *closure G_GNUC_UNUSED,
+                        GValue /* out */  *return_value G_GNUC_UNUSED,
+                        guint              n_param_values G_GNUC_UNUSED,
                         const GValue      *param_values,
-                        gpointer           invocation_hint,
-                        gpointer           marshal_data)
+                        gpointer           invocation_hint G_GNUC_UNUSED,
+                        gpointer           marshal_data G_GNUC_UNUSED)
 {
   CtkTreeModelIface *iface;
   void (* rows_reordered_callback) (CtkTreeModel *tree_model,
@@ -2093,7 +2093,7 @@ release_row_references (gpointer data)
 static void
 ctk_tree_row_ref_inserted (RowRefList  *refs,
                            CtkTreePath *path,
-                           CtkTreeIter *iter)
+                           CtkTreeIter *iter G_GNUC_UNUSED)
 {
   GSList *tmp_list;
 
