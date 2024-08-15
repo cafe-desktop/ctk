@@ -663,9 +663,9 @@ ctk_ui_manager_buildable_init (CtkBuildableIface *iface)
 
 static void
 ctk_ui_manager_buildable_add_child (CtkBuildable  *buildable,
-				    CtkBuilder    *builder,
+				    CtkBuilder    *builder G_GNUC_UNUSED,
 				    GObject       *child,
-				    const gchar   *type)
+				    const gchar   *type G_GNUC_UNUSED)
 {
   CtkUIManager *manager = CTK_UI_MANAGER (buildable);
   guint pos;
@@ -681,7 +681,7 @@ ctk_ui_manager_buildable_add_child (CtkBuildable  *buildable,
 
 static void
 child_hierarchy_changed_cb (CtkWidget *widget,
-			    CtkWidget *unused,
+			    CtkWidget *unused G_GNUC_UNUSED,
 			    CtkUIManager *uimgr)
 {
   CtkWidget *toplevel;
@@ -704,7 +704,7 @@ child_hierarchy_changed_cb (CtkWidget *widget,
 
 static GObject *
 ctk_ui_manager_buildable_construct_child (CtkBuildable *buildable,
-					  CtkBuilder   *builder,
+					  CtkBuilder   *builder G_GNUC_UNUSED,
 					  const gchar  *id)
 {
   CtkWidget *widget;
@@ -879,25 +879,25 @@ ctk_ui_manager_do_set_add_tearoffs (CtkUIManager *manager,
 }
 
 static void
-cb_proxy_connect_proxy (CtkActionGroup *group, 
+cb_proxy_connect_proxy (CtkActionGroup *group G_GNUC_UNUSED,
                         CtkAction      *action,
-                        CtkWidget      *proxy, 
+                        CtkWidget      *proxy,
                         CtkUIManager *manager)
 {
   g_signal_emit (manager, ui_manager_signals[CONNECT_PROXY], 0, action, proxy);
 }
 
 static void
-cb_proxy_disconnect_proxy (CtkActionGroup *group, 
+cb_proxy_disconnect_proxy (CtkActionGroup *group G_GNUC_UNUSED,
                            CtkAction      *action,
-                           CtkWidget      *proxy, 
+                           CtkWidget      *proxy,
                            CtkUIManager *manager)
 {
   g_signal_emit (manager, ui_manager_signals[DISCONNECT_PROXY], 0, action, proxy);
 }
 
 static void
-cb_proxy_pre_activate (CtkActionGroup *group, 
+cb_proxy_pre_activate (CtkActionGroup *group G_GNUC_UNUSED,
                        CtkAction      *action,
                        CtkUIManager   *manager)
 {
@@ -905,7 +905,7 @@ cb_proxy_pre_activate (CtkActionGroup *group,
 }
 
 static void
-cb_proxy_post_activate (CtkActionGroup *group, 
+cb_proxy_post_activate (CtkActionGroup *group G_GNUC_UNUSED,
                         CtkAction      *action,
                         CtkUIManager   *manager)
 {
@@ -1739,10 +1739,10 @@ start_element_handler (GMarkupParseContext *context,
 }
 
 static void
-end_element_handler (GMarkupParseContext *context,
-		     const gchar         *element_name,
+end_element_handler (GMarkupParseContext *context G_GNUC_UNUSED,
+		     const gchar         *element_name G_GNUC_UNUSED,
 		     gpointer             user_data,
-		     GError             **error)
+		     GError             **error G_GNUC_UNUSED)
 {
   ParseContext *ctx = user_data;
 
@@ -1779,8 +1779,8 @@ end_element_handler (GMarkupParseContext *context,
 }
 
 static void
-cleanup (GMarkupParseContext *context,
-	 GError              *error,
+cleanup (GMarkupParseContext *context G_GNUC_UNUSED,
+	 GError              *error G_GNUC_UNUSED,
 	 gpointer             user_data)
 {
   ParseContext *ctx = user_data;
@@ -1802,7 +1802,7 @@ static void
 text_handler (GMarkupParseContext *context,
 	      const gchar         *text,
 	      gsize                text_len,  
-	      gpointer             user_data,
+	      gpointer             user_data G_GNUC_UNUSED,
 	      GError             **error)
 {
   const gchar *p;
@@ -3099,7 +3099,7 @@ ctk_ui_manager_ensure_update (CtkUIManager *manager)
 
 static gboolean
 dirty_traverse_func (GNode   *node,
-		     gpointer data)
+		     gpointer data G_GNUC_UNUSED)
 {
   NODE_INFO (node)->dirty = TRUE;
   return FALSE;
@@ -3236,7 +3236,7 @@ print_node (CtkUIManager *manager,
 
 static gboolean
 ctk_ui_manager_buildable_custom_tag_start (CtkBuildable  *buildable,
-					   CtkBuilder    *builder,
+					   CtkBuilder    *builder G_GNUC_UNUSED,
 					   GObject       *child,
 					   const gchar   *tagname,
 					   GMarkupParser *parser,
@@ -3267,9 +3267,9 @@ ctk_ui_manager_buildable_custom_tag_start (CtkBuildable  *buildable,
 
 static void
 ctk_ui_manager_buildable_custom_tag_end (CtkBuildable *buildable,
-					 CtkBuilder   *builder,
-					 GObject      *child,
-					 const gchar  *tagname,
+					 CtkBuilder   *builder G_GNUC_UNUSED,
+					 GObject      *child G_GNUC_UNUSED,
+					 const gchar  *tagname G_GNUC_UNUSED,
 					 gpointer     *data)
 {
   queue_update (CTK_UI_MANAGER (buildable));
