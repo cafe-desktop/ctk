@@ -180,7 +180,7 @@ ctk_tool_item_group_get_text_alignment (CtkToolShell *shell)
 }
 
 static CtkOrientation
-ctk_tool_item_group_get_text_orientation (CtkToolShell *shell)
+ctk_tool_item_group_get_text_orientation (CtkToolShell *shell G_GNUC_UNUSED)
 {
   return CTK_ORIENTATION_HORIZONTAL;
 }
@@ -213,7 +213,7 @@ animation_change_notify (CtkToolItemGroup *group)
 }
 
 static void
-ctk_tool_item_group_settings_change_notify (CtkSettings      *settings,
+ctk_tool_item_group_settings_change_notify (CtkSettings      *settings G_GNUC_UNUSED,
                                             const GParamSpec *pspec,
                                             CtkToolItemGroup *group)
 {
@@ -223,7 +223,7 @@ ctk_tool_item_group_settings_change_notify (CtkSettings      *settings,
 
 static void
 ctk_tool_item_group_screen_changed (CtkWidget *widget,
-                                    CdkScreen *previous_screen)
+                                    CdkScreen *previous_screen G_GNUC_UNUSED)
 {
   CtkToolItemGroup *group = CTK_TOOL_ITEM_GROUP (widget);
   CtkToolItemGroupPrivate* priv = group->priv;
@@ -319,7 +319,7 @@ ctk_tool_item_group_header_draw_cb (CtkWidget *widget,
 }
 
 static void
-ctk_tool_item_group_header_clicked_cb (CtkButton *button,
+ctk_tool_item_group_header_clicked_cb (CtkButton *button G_GNUC_UNUSED,
                                        gpointer   data)
 {
   CtkToolItemGroup *group = CTK_TOOL_ITEM_GROUP (data);
@@ -1118,7 +1118,7 @@ ctk_tool_item_group_size_allocate (CtkWidget     *widget,
 }
 
 static void
-ctk_tool_item_group_set_focus_cb (CtkWidget *window,
+ctk_tool_item_group_set_focus_cb (CtkWidget *window G_GNUC_UNUSED,
                                   CtkWidget *widget,
                                   gpointer   user_data)
 {
@@ -1303,7 +1303,7 @@ ctk_tool_item_group_style_updated (CtkWidget *widget)
 
 static void
 ctk_tool_item_group_state_flags_changed (CtkWidget     *widget,
-                                         CtkStateFlags  previous_flags)
+                                         CtkStateFlags  previous_flags G_GNUC_UNUSED)
 {
   update_arrow_state (CTK_TOOL_ITEM_GROUP (widget));
 }
@@ -1376,7 +1376,7 @@ ctk_tool_item_group_forall (CtkContainer *container,
 }
 
 static GType
-ctk_tool_item_group_child_type (CtkContainer *container)
+ctk_tool_item_group_child_type (CtkContainer *container G_GNUC_UNUSED)
 {
   return CTK_TYPE_TOOL_ITEM;
 }
@@ -2424,7 +2424,7 @@ _ctk_tool_item_group_get_width_for_height (CtkToolItemGroup *group,
 
 static void
 ctk_tool_palette_reconfigured_foreach_item (CtkWidget *child,
-                                            gpointer   data)
+                                            gpointer   data G_GNUC_UNUSED)
 {
   if (CTK_IS_TOOL_ITEM (child))
     ctk_tool_item_toolbar_reconfigured (CTK_TOOL_ITEM (child));
