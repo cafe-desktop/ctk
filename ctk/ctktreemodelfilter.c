@@ -665,7 +665,7 @@ filter_elt_free (gpointer elt)
 static gint
 filter_elt_cmp (gconstpointer a,
                 gconstpointer b,
-                gpointer      user_data)
+                gpointer      user_data G_GNUC_UNUSED)
 {
   const FilterElt *elt_a = a;
   const FilterElt *elt_b = b;
@@ -2524,7 +2524,7 @@ ctk_tree_model_filter_row_deleted_invisible_node (CtkTreeModelFilter *filter,
 }
 
 static void
-ctk_tree_model_filter_row_deleted (CtkTreeModel *c_model,
+ctk_tree_model_filter_row_deleted (CtkTreeModel *c_model G_GNUC_UNUSED,
                                    CtkTreePath  *c_path,
                                    gpointer      data)
 {
