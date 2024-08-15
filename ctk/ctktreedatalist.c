@@ -466,7 +466,7 @@ _ctk_tree_data_list_compare_func (CtkTreeModel *model,
 
 GList *
 _ctk_tree_data_list_header_new (gint   n_columns,
-				GType *types)
+				GType *types G_GNUC_UNUSED)
 {
   GList *retval = NULL;
 
