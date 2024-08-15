@@ -1092,14 +1092,15 @@ ctk_tree_view_column_button_event (CtkWidget *widget,
 
 
 static void
-ctk_tree_view_column_button_clicked (CtkWidget *widget, gpointer data)
+ctk_tree_view_column_button_clicked (CtkWidget *widget G_GNUC_UNUSED,
+				     gpointer   data)
 {
   g_signal_emit_by_name (data, "clicked");
 }
 
 static gboolean
-ctk_tree_view_column_mnemonic_activate (CtkWidget *widget,
-					gboolean   group_cycling,
+ctk_tree_view_column_mnemonic_activate (CtkWidget *widget G_GNUC_UNUSED,
+					gboolean   group_cycling G_GNUC_UNUSED,
 					gpointer   data)
 {
   CtkTreeViewColumn        *column = (CtkTreeViewColumn *)data;
@@ -1149,7 +1150,7 @@ ctk_tree_view_model_sort_column_changed (CtkTreeSortable   *sortable,
 
 static void
 ctk_tree_view_column_sort (CtkTreeViewColumn *tree_column,
-			   gpointer           data)
+			   gpointer           data G_GNUC_UNUSED)
 {
   CtkTreeViewColumnPrivate *priv = tree_column->priv;
   CtkTreeModel *model;
@@ -1237,9 +1238,9 @@ ctk_tree_view_column_setup_sort_column_id_callback (CtkTreeViewColumn *tree_colu
 }
 
 static void
-ctk_tree_view_column_context_changed  (CtkCellAreaContext      *context,
-				       GParamSpec              *pspec,
-				       CtkTreeViewColumn       *tree_column)
+ctk_tree_view_column_context_changed (CtkCellAreaContext *context G_GNUC_UNUSED,
+				      GParamSpec         *pspec,
+				      CtkTreeViewColumn  *tree_column)
 {
   /* Here we want the column re-requested if the underlying context was
    * actually reset for any reason, this can happen if the underlying
@@ -1259,12 +1260,12 @@ ctk_tree_view_column_context_changed  (CtkCellAreaContext      *context,
 }
 
 static void
-ctk_tree_view_column_add_editable_callback (CtkCellArea       *area,
-                                            CtkCellRenderer   *renderer,
-                                            CtkCellEditable   *edit_widget,
-                                            CdkRectangle      *cell_area,
-                                            const gchar       *path_string,
-                                            gpointer           user_data)
+ctk_tree_view_column_add_editable_callback (CtkCellArea     *area G_GNUC_UNUSED,
+                                            CtkCellRenderer *renderer G_GNUC_UNUSED,
+                                            CtkCellEditable *edit_widget,
+                                            CdkRectangle    *cell_area,
+                                            const gchar     *path_string,
+                                            gpointer         user_data)
 {
   CtkTreeViewColumn        *column = user_data;
   CtkTreeViewColumnPrivate *priv   = column->priv;
@@ -1285,8 +1286,8 @@ ctk_tree_view_column_add_editable_callback (CtkCellArea       *area,
 }
 
 static void
-ctk_tree_view_column_remove_editable_callback (CtkCellArea     *area,
-                                               CtkCellRenderer *renderer,
+ctk_tree_view_column_remove_editable_callback (CtkCellArea     *area G_GNUC_UNUSED,
+                                               CtkCellRenderer *renderer G_GNUC_UNUSED,
                                                CtkCellEditable *edit_widget,
                                                gpointer         user_data)
 {
@@ -2832,9 +2833,9 @@ ctk_tree_view_column_cell_set_cell_data (CtkTreeViewColumn *tree_column,
  **/
 void
 ctk_tree_view_column_cell_get_size (CtkTreeViewColumn  *tree_column,
-				    const CdkRectangle *cell_area,
-				    gint               *x_offset,
-				    gint               *y_offset,
+				    const CdkRectangle *cell_area G_GNUC_UNUSED,
+				    gint               *x_offset G_GNUC_UNUSED,
+				    gint               *y_offset G_GNUC_UNUSED,
 				    gint               *width,
 				    gint               *height)
 {
