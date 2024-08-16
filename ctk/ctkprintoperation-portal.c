@@ -97,7 +97,7 @@ op_portal_free (CtkPrintOperationPortal *op_portal)
 
 static void
 portal_start_page (CtkPrintOperation *op,
-                   CtkPrintContext   *print_context,
+                   CtkPrintContext   *print_context G_GNUC_UNUSED,
                    CtkPageSetup      *page_setup)
 {
   CtkPrintOperationPortal *op_portal = op->priv->platform_data;
@@ -159,9 +159,9 @@ portal_end_page (CtkPrintOperation *op,
 }
 
 static void
-print_file_done (GObject *source,
+print_file_done (GObject      *source G_GNUC_UNUSED,
                  GAsyncResult *result,
-                 gpointer data)
+                 gpointer      data)
 {
   CtkPrintOperation *op = data;
   CtkPrintOperationPortal *op_portal = op->priv->platform_data;
@@ -370,10 +370,10 @@ find_file_printer (void)
 
 static void
 prepare_print_response (GDBusConnection *connection,
-                        const char      *sender_name,
-                        const char      *object_path,
-                        const char      *interface_name,
-                        const char      *signal_name,
+                        const char      *sender_name G_GNUC_UNUSED,
+                        const char      *object_path G_GNUC_UNUSED,
+                        const char      *interface_name G_GNUC_UNUSED,
+                        const char      *signal_name G_GNUC_UNUSED,
                         GVariant        *parameters,
                         gpointer         data)
 {
@@ -440,7 +440,7 @@ prepare_print_response (GDBusConnection *connection,
 }
 
 static void
-prepare_print_called (GObject      *source,
+prepare_print_called (GObject      *source G_GNUC_UNUSED,
                       GAsyncResult *result,
                       gpointer      data)
 {
@@ -536,7 +536,7 @@ create_portal_data (CtkPrintOperation          *op,
 }
 
 static void
-window_handle_exported (CtkWindow  *window,
+window_handle_exported (CtkWindow  *window G_GNUC_UNUSED,
                         const char *handle_str,
                         gpointer    user_data)
 {
@@ -628,7 +628,7 @@ call_prepare_print (CtkPrintOperation *op,
 
 CtkPrintOperationResult
 ctk_print_operation_portal_run_dialog (CtkPrintOperation *op,
-                                       gboolean           show_dialog,
+                                       gboolean           show_dialog G_GNUC_UNUSED,
                                        CtkWindow         *parent,
                                        gboolean          *do_print)
 {
@@ -655,7 +655,7 @@ ctk_print_operation_portal_run_dialog (CtkPrintOperation *op,
 
 void
 ctk_print_operation_portal_run_dialog_async (CtkPrintOperation          *op,
-                                             gboolean                    show_dialog,
+                                             gboolean                    show_dialog G_GNUC_UNUSED,
                                              CtkWindow                  *parent,
                                              CtkPrintOperationPrintFunc  print_cb)
 {
@@ -669,8 +669,8 @@ ctk_print_operation_portal_run_dialog_async (CtkPrintOperation          *op,
 }
 
 void
-ctk_print_operation_portal_launch_preview (CtkPrintOperation *op,
-                                           cairo_surface_t   *surface,
+ctk_print_operation_portal_launch_preview (CtkPrintOperation *op G_GNUC_UNUSED,
+                                           cairo_surface_t   *surface G_GNUC_UNUSED,
                                            CtkWindow         *parent,
                                            const char        *filename)
 {
