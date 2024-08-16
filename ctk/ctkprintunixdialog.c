@@ -609,7 +609,7 @@ set_busy_cursor (CtkPrintUnixDialog *dialog,
 static gboolean
 error_dialogs (CtkPrintUnixDialog *print_dialog,
                gint                print_dialog_response_id,
-               gpointer            data)
+               gpointer            data G_GNUC_UNUSED)
 {
   CtkPrintUnixDialogPrivate *priv = print_dialog->priv;
   CtkPrinterOption          *option = NULL;
@@ -925,7 +925,7 @@ ctk_print_unix_dialog_finalize (GObject *object)
 }
 
 static void
-printer_removed_cb (CtkPrintBackend    *backend,
+printer_removed_cb (CtkPrintBackend    *backend G_GNUC_UNUSED,
                     CtkPrinter         *printer,
                     CtkPrintUnixDialog *dialog)
 {
@@ -958,11 +958,11 @@ ctk_print_unix_dialog_buildable_get_internal_child (CtkBuildable *buildable,
 /* This function controls "sensitive" property of CtkCellRenderer
  * based on pause state of printers.
  */
-void set_cell_sensitivity_func (CtkTreeViewColumn *tree_column,
+void set_cell_sensitivity_func (CtkTreeViewColumn *tree_column G_GNUC_UNUSED,
                                 CtkCellRenderer   *cell,
                                 CtkTreeModel      *tree_model,
                                 CtkTreeIter       *iter,
-                                gpointer           data)
+                                gpointer           data G_GNUC_UNUSED)
 {
   CtkPrinter *printer;
 
@@ -1015,7 +1015,7 @@ printer_status_cb (CtkPrintBackend    *backend,
 }
 
 static void
-printer_added_cb (CtkPrintBackend    *backend,
+printer_added_cb (CtkPrintBackend    *backend G_GNUC_UNUSED,
                   CtkPrinter         *printer,
                   CtkPrintUnixDialog *dialog)
 {
@@ -1239,7 +1239,7 @@ static gint
 default_printer_list_sort_func (CtkTreeModel *model,
                                 CtkTreeIter  *a,
                                 CtkTreeIter  *b,
-                                gpointer      user_data)
+                                gpointer      user_data G_GNUC_UNUSED)
 {
   gchar *a_name;
   gchar *b_name;
@@ -1996,7 +1996,7 @@ clear_per_printer_ui (CtkPrintUnixDialog *dialog)
 }
 
 static void
-printer_details_acquired (CtkPrinter         *printer,
+printer_details_acquired (CtkPrinter         *printer G_GNUC_UNUSED,
                           gboolean            success,
                           CtkPrintUnixDialog *dialog)
 {
@@ -2136,10 +2136,10 @@ selected_printer_changed (CtkTreeSelection   *selection,
 
 static gboolean
 printer_compare (CtkTreeModel *model,
-                 gint          column,
+                 gint          column G_GNUC_UNUSED,
                  const gchar  *key,
                  CtkTreeIter  *iter,
-                 gpointer      search_data)
+                 gpointer      search_data G_GNUC_UNUSED)
 {
   gboolean matches = FALSE;
 
@@ -2214,7 +2214,7 @@ printer_compare (CtkTreeModel *model,
 }
 
 static void
-update_collate_icon (CtkToggleButton    *toggle_button,
+update_collate_icon (CtkToggleButton    *toggle_button G_GNUC_UNUSED,
                      CtkPrintUnixDialog *dialog)
 {
   CtkPrintUnixDialogPrivate *priv = dialog->priv;
@@ -2355,9 +2355,9 @@ update_print_at_entry_sensitivity (CtkWidget *button,
 }
 
 static void
-emit_ok_response (CtkTreeView       *tree_view,
-                  CtkTreePath       *path,
-                  CtkTreeViewColumn *column,
+emit_ok_response (CtkTreeView       *tree_view G_GNUC_UNUSED,
+                  CtkTreePath       *path G_GNUC_UNUSED,
+                  CtkTreeViewColumn *column G_GNUC_UNUSED,
                   gpointer          *user_data)
 {
   CtkPrintUnixDialog *print_dialog;
@@ -3239,7 +3239,7 @@ update_number_up_layout (CtkPrintUnixDialog *dialog)
 
 static void
 custom_paper_dialog_response_cb (CtkDialog *custom_paper_dialog,
-                                 gint       response_id,
+                                 gint       response_id G_GNUC_UNUSED,
                                  gpointer   user_data)
 {
   CtkPrintUnixDialog        *print_dialog = CTK_PRINT_UNIX_DIALOG (user_data);
@@ -3277,7 +3277,7 @@ custom_paper_dialog_response_cb (CtkDialog *custom_paper_dialog,
 }
 
 static void
-orientation_changed (CtkComboBox        *combo_box,
+orientation_changed (CtkComboBox        *combo_box G_GNUC_UNUSED,
                      CtkPrintUnixDialog *dialog)
 {
   CtkPrintUnixDialogPrivate *priv = dialog->priv;
@@ -3358,7 +3358,7 @@ paper_size_changed (CtkComboBox        *combo_box,
 static gboolean
 paper_size_row_is_separator (CtkTreeModel *model,
                              CtkTreeIter  *iter,
-                             gpointer      data)
+                             gpointer      data G_GNUC_UNUSED)
 {
   gboolean separator;
 
@@ -3369,11 +3369,11 @@ paper_size_row_is_separator (CtkTreeModel *model,
 }
 
 static void
-page_name_func (CtkCellLayout   *cell_layout,
+page_name_func (CtkCellLayout   *cell_layout G_GNUC_UNUSED,
                 CtkCellRenderer *cell,
                 CtkTreeModel    *tree_model,
                 CtkTreeIter     *iter,
-                gpointer         data)
+                gpointer         data G_GNUC_UNUSED)
 {
   CtkPageSetup *page_setup;
   CtkPaperSize *paper_size;
