@@ -43,7 +43,7 @@ ctk_drag_dest_realized (CtkWidget *widget)
 
 static void
 ctk_drag_dest_hierarchy_changed (CtkWidget *widget,
-                                 CtkWidget *previous_toplevel)
+                                 CtkWidget *previous_toplevel G_GNUC_UNUSED)
 {
   CtkWidget *toplevel = ctk_widget_get_toplevel (widget);
 
