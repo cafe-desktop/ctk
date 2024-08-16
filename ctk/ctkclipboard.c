@@ -210,7 +210,7 @@ static guint         clipboard_signals[LAST_SIGNAL] = { 0 };
 G_DEFINE_TYPE (CtkClipboard, ctk_clipboard, G_TYPE_OBJECT)
 
 static void
-ctk_clipboard_init (CtkClipboard *object)
+ctk_clipboard_init (CtkClipboard *object G_GNUC_UNUSED)
 {
 }
 
@@ -297,7 +297,7 @@ ctk_clipboard_finalize (GObject *object)
 
 static void
 clipboard_display_closed (CdkDisplay   *display,
-			  gboolean      is_error,
+			  gboolean      is_error G_GNUC_UNUSED,
 			  CtkClipboard *clipboard)
 {
   GSList *clipboards;
@@ -399,10 +399,10 @@ ctk_clipboard_get_default (CdkDisplay *display)
 }
 
 static void 
-selection_get_cb (CtkWidget          *widget,
-		  CtkSelectionData   *selection_data,
-		  guint               info,
-		  guint               time)
+selection_get_cb (CtkWidget        *widget,
+		  CtkSelectionData *selection_data,
+		  guint             info,
+		  guint             time G_GNUC_UNUSED)
 {
   CtkClipboard *clipboard;
 
@@ -818,16 +818,16 @@ ctk_clipboard_real_clear (CtkClipboard *clipboard)
 }
 
 static void 
-text_get_func (CtkClipboard     *clipboard,
+text_get_func (CtkClipboard     *clipboard G_GNUC_UNUSED,
 	       CtkSelectionData *selection_data,
-	       guint             info,
+	       guint             info G_GNUC_UNUSED,
 	       gpointer          data)
 {
   ctk_selection_data_set_text (selection_data, data, -1);
 }
 
 static void 
-text_clear_func (CtkClipboard *clipboard,
+text_clear_func (CtkClipboard *clipboard G_GNUC_UNUSED,
 		 gpointer      data)
 {
   g_free (data);
@@ -877,16 +877,16 @@ ctk_clipboard_set_text (CtkClipboard *clipboard,
 }
 
 static void 
-pixbuf_get_func (CtkClipboard     *clipboard,
+pixbuf_get_func (CtkClipboard     *clipboard G_GNUC_UNUSED,
 		 CtkSelectionData *selection_data,
-		 guint             info,
+		 guint             info G_GNUC_UNUSED,
 		 gpointer          data)
 {
   ctk_selection_data_set_pixbuf (selection_data, data);
 }
 
 static void 
-pixbuf_clear_func (CtkClipboard *clipboard,
+pixbuf_clear_func (CtkClipboard *clipboard G_GNUC_UNUSED,
 		   gpointer      data)
 {
   g_object_unref (data);
@@ -950,9 +950,9 @@ get_request_contents_info (CtkWidget *widget)
 }
 
 static void 
-selection_received (CtkWidget            *widget,
-		    CtkSelectionData     *selection_data,
-		    guint                 time)
+selection_received (CtkWidget        *widget,
+		    CtkSelectionData *selection_data,
+		    guint             time G_GNUC_UNUSED)
 {
   RequestContentsInfo *request_info = get_request_contents_info (widget);
   set_request_contents_info (widget, NULL);
@@ -1387,7 +1387,7 @@ typedef struct
 } WaitResults;
 
 static void 
-clipboard_received_func (CtkClipboard     *clipboard,
+clipboard_received_func (CtkClipboard     *clipboard G_GNUC_UNUSED,
 			 CtkSelectionData *selection_data,
 			 gpointer          data)
 {
@@ -1443,7 +1443,7 @@ ctk_clipboard_wait_for_contents (CtkClipboard *clipboard,
 }
 
 static void 
-clipboard_text_received_func (CtkClipboard *clipboard,
+clipboard_text_received_func (CtkClipboard *clipboard G_GNUC_UNUSED,
 			      const gchar  *text,
 			      gpointer      data)
 {
@@ -1496,7 +1496,7 @@ ctk_clipboard_wait_for_text (CtkClipboard *clipboard)
 }
 
 static void
-clipboard_rich_text_received_func (CtkClipboard *clipboard,
+clipboard_rich_text_received_func (CtkClipboard *clipboard G_GNUC_UNUSED,
                                    CdkAtom       format,
                                    const guint8 *text,
                                    gsize         length,
@@ -1567,7 +1567,7 @@ ctk_clipboard_wait_for_rich_text (CtkClipboard  *clipboard,
 }
 
 static void 
-clipboard_image_received_func (CtkClipboard *clipboard,
+clipboard_image_received_func (CtkClipboard *clipboard G_GNUC_UNUSED,
 			       GdkPixbuf    *pixbuf,
 			       gpointer      data)
 {
@@ -1624,7 +1624,7 @@ ctk_clipboard_wait_for_image (CtkClipboard *clipboard)
 }
 
 static void 
-clipboard_uris_received_func (CtkClipboard *clipboard,
+clipboard_uris_received_func (CtkClipboard *clipboard G_GNUC_UNUSED,
 			      gchar       **uris,
 			      gpointer      data)
 {
@@ -1959,7 +1959,7 @@ clipboard_peek (CdkDisplay *display,
 
 static void
 ctk_clipboard_owner_change (CtkClipboard        *clipboard,
-			    CdkEventOwnerChange *event)
+			    CdkEventOwnerChange *event G_GNUC_UNUSED)
 {
   if (clipboard->n_cached_targets != -1)
     {
@@ -2110,7 +2110,7 @@ ctk_clipboard_real_set_can_store (CtkClipboard         *clipboard,
 }
 
 static gboolean
-ctk_clipboard_selection_notify (CtkWidget         *widget,
+ctk_clipboard_selection_notify (CtkWidget         *widget G_GNUC_UNUSED,
 				CdkEventSelection *event,
 				CtkClipboard      *clipboard)
 {
