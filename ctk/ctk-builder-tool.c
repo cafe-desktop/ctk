@@ -408,7 +408,7 @@ start_element (GMarkupParseContext  *context,
                const gchar         **attribute_names,
                const gchar         **attribute_values,
                gpointer              user_data,
-               GError              **error)
+               GError              **error G_GNUC_UNUSED)
 {
   gint i;
   MyParserData *data = user_data;
@@ -502,10 +502,10 @@ start_element (GMarkupParseContext  *context,
 }
 
 static void
-end_element (GMarkupParseContext  *context,
+end_element (GMarkupParseContext  *context G_GNUC_UNUSED,
              const gchar          *element_name,
              gpointer              user_data,
-             GError              **error)
+             GError              **error G_GNUC_UNUSED)
 {
   MyParserData *data = user_data;
 
@@ -576,11 +576,11 @@ end_element (GMarkupParseContext  *context,
 }
 
 static void
-text (GMarkupParseContext  *context,
+text (GMarkupParseContext  *context G_GNUC_UNUSED,
       const gchar          *text,
       gsize                 text_len,
       gpointer              user_data,
-      GError              **error)
+      GError              **error G_GNUC_UNUSED)
 {
   MyParserData *data = user_data;
 
@@ -592,11 +592,11 @@ text (GMarkupParseContext  *context,
 }
 
 static void
-passthrough (GMarkupParseContext  *context,
+passthrough (GMarkupParseContext  *context G_GNUC_UNUSED,
              const gchar          *text,
-             gsize                 text_len,
+             gsize                 text_len G_GNUC_UNUSED,
              gpointer              user_data,
-             GError              **error)
+             GError              **error G_GNUC_UNUSED)
 {
   MyParserData *data = user_data;
 
