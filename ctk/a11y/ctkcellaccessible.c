@@ -225,13 +225,13 @@ _ctk_cell_accessible_remove_state (CtkCellAccessible *cell,
 }
 
 static gint
-ctk_cell_accessible_action_get_n_actions (AtkAction *action)
+ctk_cell_accessible_action_get_n_actions (AtkAction *action G_GNUC_UNUSED)
 {
   return 3;
 }
 
 static const gchar *
-ctk_cell_accessible_action_get_name (AtkAction *action,
+ctk_cell_accessible_action_get_name (AtkAction *action G_GNUC_UNUSED,
                                      gint       index)
 {
   switch (index)
@@ -248,7 +248,7 @@ ctk_cell_accessible_action_get_name (AtkAction *action,
 }
 
 static const gchar *
-ctk_cell_accessible_action_get_localized_name (AtkAction *action,
+ctk_cell_accessible_action_get_localized_name (AtkAction *action G_GNUC_UNUSED,
                                                gint       index)
 {
   switch (index)
@@ -265,7 +265,7 @@ ctk_cell_accessible_action_get_localized_name (AtkAction *action,
 }
 
 static const gchar *
-ctk_cell_accessible_action_get_description (AtkAction *action,
+ctk_cell_accessible_action_get_description (AtkAction *action G_GNUC_UNUSED,
                                             gint       index)
 {
   switch (index)
@@ -282,8 +282,8 @@ ctk_cell_accessible_action_get_description (AtkAction *action,
 }
 
 static const gchar *
-ctk_cell_accessible_action_get_keybinding (AtkAction *action,
-                                           gint       index)
+ctk_cell_accessible_action_get_keybinding (AtkAction *action G_GNUC_UNUSED,
+                                           gint       index G_GNUC_UNUSED)
 {
   return NULL;
 }
@@ -369,7 +369,7 @@ atk_component_interface_init (AtkComponentIface *iface)
 }
 
 static int
-ctk_cell_accessible_get_column_span (AtkTableCell *table_cell)
+ctk_cell_accessible_get_column_span (AtkTableCell *table_cell G_GNUC_UNUSED)
 {
   return 1;
 }
@@ -405,7 +405,7 @@ ctk_cell_accessible_get_position (AtkTableCell *table_cell,
 }
 
 static int
-ctk_cell_accessible_get_row_span (AtkTableCell *table_cell)
+ctk_cell_accessible_get_row_span (AtkTableCell *table_cell G_GNUC_UNUSED)
 {
   return 1;
 }
