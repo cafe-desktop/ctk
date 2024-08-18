@@ -136,7 +136,7 @@ atk_key_event_from_cdk_event_key (CdkEventKey       *key,
 }
 
 gboolean
-_ctk_accessibility_key_snooper (CtkWidget   *widget,
+_ctk_accessibility_key_snooper (CtkWidget   *widget G_GNUC_UNUSED,
                                 CdkEventKey *event)
 {
   GSList *l;
