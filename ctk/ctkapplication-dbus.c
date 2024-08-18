@@ -85,10 +85,10 @@ send_quit_response (CtkApplicationImplDBus *dbus,
 }
 
 static void
-client_proxy_signal (GDBusProxy  *proxy,
-                     const gchar *sender_name,
+client_proxy_signal (GDBusProxy  *proxy G_GNUC_UNUSED,
+                     const gchar *sender_name G_GNUC_UNUSED,
                      const gchar *signal_name,
-                     GVariant    *parameters,
+                     GVariant    *parameters G_GNUC_UNUSED,
                      gpointer     user_data)
 {
   CtkApplicationImplDBus *dbus = user_data;
@@ -156,8 +156,8 @@ ctk_application_get_proxy_if_service_present (GDBusConnection *connection,
 }
 
 static void
-screensaver_signal_session (GDBusProxy     *proxy,
-                            const char     *sender_name,
+screensaver_signal_session (GDBusProxy     *proxy G_GNUC_UNUSED,
+                            const char     *sender_name G_GNUC_UNUSED,
                             const char     *signal_name,
                             GVariant       *parameters,
                             CtkApplication *application)
@@ -179,10 +179,10 @@ enum {
 };
 
 static void
-screensaver_signal_portal (GDBusConnection *connection,
-                           const char       *sender_name,
-                           const char       *object_path,
-                           const char       *interface_name,
+screensaver_signal_portal (GDBusConnection *connection G_GNUC_UNUSED,
+                           const char       *sender_name G_GNUC_UNUSED,
+                           const char       *object_path G_GNUC_UNUSED,
+                           const char       *interface_name G_GNUC_UNUSED,
                            const char       *signal_name,
                            GVariant         *parameters,
                            gpointer          data)
@@ -230,7 +230,7 @@ screensaver_signal_portal (GDBusConnection *connection,
 static void
 create_monitor_cb (GObject      *source,
                    GAsyncResult *result,
-                   gpointer      data)
+                   gpointer      data G_GNUC_UNUSED)
 {
   GDBusProxy *proxy = G_DBUS_PROXY (source);
   GError *error = NULL;
@@ -508,7 +508,7 @@ end:;
 }
 
 static void
-ctk_application_impl_dbus_shutdown (CtkApplicationImpl *impl)
+ctk_application_impl_dbus_shutdown (CtkApplicationImpl *impl G_GNUC_UNUSED)
 {
 }
 
@@ -554,8 +554,8 @@ ctk_application_impl_dbus_window_removed (CtkApplicationImpl *impl,
 }
 
 static void
-ctk_application_impl_dbus_active_window_changed (CtkApplicationImpl *impl,
-                                                 CtkWindow          *window)
+ctk_application_impl_dbus_active_window_changed (CtkApplicationImpl *impl G_GNUC_UNUSED,
+                                                 CtkWindow          *window G_GNUC_UNUSED)
 {
 }
 
@@ -616,8 +616,8 @@ ctk_application_impl_dbus_set_menubar (CtkApplicationImpl *impl,
 }
 
 static GVariant *
-ctk_application_impl_dbus_real_get_window_system_id (CtkApplicationImplDBus *dbus,
-                                                     CtkWindow              *window)
+ctk_application_impl_dbus_real_get_window_system_id (CtkApplicationImplDBus *dbus G_GNUC_UNUSED,
+                                                     CtkWindow              *window G_GNUC_UNUSED)
 {
   return g_variant_new_uint32 (0);
 }
@@ -820,7 +820,7 @@ ctk_application_impl_dbus_is_inhibited (CtkApplicationImpl         *impl,
 }
 
 static gboolean
-ctk_application_impl_dbus_prefers_app_menu (CtkApplicationImpl *impl)
+ctk_application_impl_dbus_prefers_app_menu (CtkApplicationImpl *impl G_GNUC_UNUSED)
 {
   static gboolean decided;
   static gboolean result;
@@ -852,7 +852,7 @@ ctk_application_impl_dbus_prefers_app_menu (CtkApplicationImpl *impl)
 }
 
 static void
-ctk_application_impl_dbus_init (CtkApplicationImplDBus *dbus)
+ctk_application_impl_dbus_init (CtkApplicationImplDBus *dbus G_GNUC_UNUSED)
 {
 }
 
