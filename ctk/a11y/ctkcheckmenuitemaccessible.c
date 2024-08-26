@@ -123,6 +123,6 @@ ctk_check_menu_item_accessible_class_init (CtkCheckMenuItemAccessibleClass *klas
 }
 
 static void
-ctk_check_menu_item_accessible_init (CtkCheckMenuItemAccessible *item)
+ctk_check_menu_item_accessible_init (CtkCheckMenuItemAccessible *item G_GNUC_UNUSED)
 {
 }
