@@ -206,7 +206,7 @@ ctk_expander_accessible_class_init (CtkExpanderAccessibleClass *klass)
 }
 
 static void
-ctk_expander_accessible_init (CtkExpanderAccessible *expander)
+ctk_expander_accessible_init (CtkExpanderAccessible *expander G_GNUC_UNUSED)
 {
 }
 
@@ -231,7 +231,7 @@ ctk_expander_accessible_do_action (AtkAction *action,
 }
 
 static gint
-ctk_expander_accessible_get_n_actions (AtkAction *action)
+ctk_expander_accessible_get_n_actions (AtkAction *action G_GNUC_UNUSED)
 {
   return 1;
 }
@@ -265,7 +265,7 @@ ctk_expander_accessible_get_keybinding (AtkAction *action,
 }
 
 static const gchar *
-ctk_expander_accessible_action_get_name (AtkAction *action,
+ctk_expander_accessible_action_get_name (AtkAction *action G_GNUC_UNUSED,
                                          gint       i)
 {
   if (i == 0)
@@ -274,7 +274,7 @@ ctk_expander_accessible_action_get_name (AtkAction *action,
 }
 
 static const gchar *
-ctk_expander_accessible_action_get_localized_name (AtkAction *action,
+ctk_expander_accessible_action_get_localized_name (AtkAction *action G_GNUC_UNUSED,
                                                    gint       i)
 {
   if (i == 0)
@@ -283,7 +283,7 @@ ctk_expander_accessible_action_get_localized_name (AtkAction *action,
 }
 
 static const gchar *
-ctk_expander_accessible_action_get_description (AtkAction *action,
+ctk_expander_accessible_action_get_description (AtkAction *action G_GNUC_UNUSED,
                                                 gint       i)
 {
   if (i == 0)
