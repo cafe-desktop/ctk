@@ -25,7 +25,7 @@
 G_DEFINE_TYPE (CtkFlowBoxChildAccessible, ctk_flow_box_child_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE)
 
 static void
-ctk_flow_box_child_accessible_init (CtkFlowBoxChildAccessible *accessible)
+ctk_flow_box_child_accessible_init (CtkFlowBoxChildAccessible *accessible G_GNUC_UNUSED)
 {
 }
 
