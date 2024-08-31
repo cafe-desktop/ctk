@@ -25,7 +25,7 @@
 G_DEFINE_TYPE (CtkListBoxRowAccessible, ctk_list_box_row_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE)
 
 static void
-ctk_list_box_row_accessible_init (CtkListBoxRowAccessible *accessible)
+ctk_list_box_row_accessible_init (CtkListBoxRowAccessible *accessible G_GNUC_UNUSED)
 {
 }
 
