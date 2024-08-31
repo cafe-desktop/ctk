@@ -60,7 +60,7 @@ ctk_link_button_accessible_link_new (CtkLinkButtonAccessible *button)
 
 static gchar *
 ctk_link_button_accessible_link_get_uri (AtkHyperlink *atk_link,
-                                         gint          i)
+                                         gint          i G_GNUC_UNUSED)
 {
   CtkLinkButtonAccessibleLink *l = (CtkLinkButtonAccessibleLink *)atk_link;
   CtkWidget *widget;
@@ -73,20 +73,20 @@ ctk_link_button_accessible_link_get_uri (AtkHyperlink *atk_link,
 }
 
 static gint
-ctk_link_button_accessible_link_get_n_anchors (AtkHyperlink *atk_link)
+ctk_link_button_accessible_link_get_n_anchors (AtkHyperlink *atk_link G_GNUC_UNUSED)
 {
   return 1;
 }
 
 static gboolean
-ctk_link_button_accessible_link_is_valid (AtkHyperlink *atk_link)
+ctk_link_button_accessible_link_is_valid (AtkHyperlink *atk_link G_GNUC_UNUSED)
 {
   return TRUE;
 }
 
 static AtkObject *
 ctk_link_button_accessible_link_get_object (AtkHyperlink *atk_link,
-                                            gint          i)
+                                            gint          i G_GNUC_UNUSED)
 {
   CtkLinkButtonAccessibleLink *l = (CtkLinkButtonAccessibleLink *)atk_link;
 
@@ -94,7 +94,7 @@ ctk_link_button_accessible_link_get_object (AtkHyperlink *atk_link,
 }
 
 static void
-_ctk_link_button_accessible_link_init (CtkLinkButtonAccessibleLink *l)
+_ctk_link_button_accessible_link_init (CtkLinkButtonAccessibleLink *l G_GNUC_UNUSED)
 {
 }
 
@@ -132,13 +132,13 @@ ctk_link_button_accessible_link_do_action (AtkAction *action,
 }
 
 static gint
-ctk_link_button_accessible_link_get_n_actions (AtkAction *action)
+ctk_link_button_accessible_link_get_n_actions (AtkAction *action G_GNUC_UNUSED)
 {
   return 1;
 }
 
 static const gchar *
-ctk_link_button_accessible_link_get_name (AtkAction *action,
+ctk_link_button_accessible_link_get_name (AtkAction *action G_GNUC_UNUSED,
                                           gint       i)
 {
   if (i != 0)
@@ -156,7 +156,7 @@ atk_action_interface_init (AtkActionIface *iface)
 }
 
 static gboolean
-activate_link (CtkLinkButton *button,
+activate_link (CtkLinkButton *button G_GNUC_UNUSED,
                AtkHyperlink  *atk_link)
 {
   g_signal_emit_by_name (atk_link, "link-activated");
