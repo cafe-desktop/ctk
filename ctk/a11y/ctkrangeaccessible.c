@@ -33,7 +33,7 @@ G_DEFINE_TYPE_WITH_CODE (CtkRangeAccessible, ctk_range_accessible, CTK_TYPE_WIDG
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_VALUE, atk_value_interface_init))
 
 static void
-ctk_range_accessible_value_changed (CtkAdjustment *adjustment,
+ctk_range_accessible_value_changed (CtkAdjustment *adjustment G_GNUC_UNUSED,
                                     gpointer       data)
 {
   g_object_notify (G_OBJECT (data), "accessible-value");
