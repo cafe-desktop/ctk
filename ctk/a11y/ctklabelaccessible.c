@@ -193,13 +193,13 @@ ctk_label_accessible_link_get_uri (AtkHyperlink *atk_link,
 }
 
 static gint
-ctk_label_accessible_link_get_n_anchors (AtkHyperlink *atk_link)
+ctk_label_accessible_link_get_n_anchors (AtkHyperlink *atk_link G_GNUC_UNUSED)
 {
   return 1;
 }
 
 static gboolean
-ctk_label_accessible_link_is_valid (AtkHyperlink *atk_link)
+ctk_label_accessible_link_is_valid (AtkHyperlink *atk_link G_GNUC_UNUSED)
 {
   return TRUE;
 }
@@ -248,7 +248,7 @@ ctk_label_accessible_link_get_end_index (AtkHyperlink *atk_link)
 }
 
 static void
-_ctk_label_accessible_link_init (CtkLabelAccessibleLink *link)
+_ctk_label_accessible_link_init (CtkLabelAccessibleLink *link G_GNUC_UNUSED)
 {
 }
 
@@ -308,13 +308,13 @@ ctk_label_accessible_link_do_action (AtkAction *action,
 }
 
 static gint
-ctk_label_accessible_link_get_n_actions (AtkAction *action)
+ctk_label_accessible_link_get_n_actions (AtkAction *action G_GNUC_UNUSED)
 {
   return 1;
 }
 
 static const gchar *
-ctk_label_accessible_link_get_name (AtkAction *action,
+ctk_label_accessible_link_get_name (AtkAction *action G_GNUC_UNUSED,
                                     gint       i)
 {
   if (i != 0)
