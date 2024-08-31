@@ -450,7 +450,7 @@ ctk_menu_item_accessible_action_get_description (AtkAction *action,
 }
 
 static gboolean
-find_accel_by_widget (CtkAccelKey *key,
+find_accel_by_widget (CtkAccelKey *key G_GNUC_UNUSED,
                       GClosure    *closure,
                       gpointer     data)
 {
@@ -461,7 +461,7 @@ find_accel_by_widget (CtkAccelKey *key,
 }
 
 static gboolean
-find_accel_by_closure (CtkAccelKey *key,
+find_accel_by_closure (CtkAccelKey *key G_GNUC_UNUSED,
                        GClosure    *closure,
                        gpointer     data)
 {
@@ -891,7 +891,7 @@ atk_selection_interface_init (AtkSelectionIface *iface)
 static gint
 menu_item_insert_ctk (CtkMenuShell *shell,
                       CtkWidget    *widget,
-                      gint          position)
+                      gint          position G_GNUC_UNUSED)
 {
   CtkWidget *parent_widget;
 
