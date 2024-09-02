@@ -25,9 +25,9 @@
 G_DEFINE_TYPE (CtkStatusbarAccessible, ctk_statusbar_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE)
 
 static void
-text_changed (CtkStatusbar *statusbar,
-              guint         context_id,
-              const gchar  *text,
+text_changed (CtkStatusbar *statusbar G_GNUC_UNUSED,
+              guint         context_id G_GNUC_UNUSED,
+              const gchar  *text G_GNUC_UNUSED,
               AtkObject    *obj)
 {
   if (!obj->name)
@@ -112,14 +112,14 @@ ctk_statusbar_accessible_get_name (AtkObject *obj)
 }
 
 static gint
-ctk_statusbar_accessible_get_n_children (AtkObject *obj)
+ctk_statusbar_accessible_get_n_children (AtkObject *obj G_GNUC_UNUSED)
 {
   return 0;
 }
 
 static AtkObject*
-ctk_statusbar_accessible_ref_child (AtkObject *obj,
-                                    gint       i)
+ctk_statusbar_accessible_ref_child (AtkObject *obj G_GNUC_UNUSED,
+                                    gint       i G_GNUC_UNUSED)
 {
   return NULL;
 }
@@ -143,6 +143,6 @@ ctk_statusbar_accessible_class_init (CtkStatusbarAccessibleClass *klass)
 }
 
 static void
-ctk_statusbar_accessible_init (CtkStatusbarAccessible *bar)
+ctk_statusbar_accessible_init (CtkStatusbarAccessible *bar G_GNUC_UNUSED)
 {
 }
