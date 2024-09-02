@@ -528,7 +528,7 @@ ctk_widget_accessible_notify_ctk (GObject    *obj,
 }
 
 static AtkAttributeSet *
-ctk_widget_accessible_get_attributes (AtkObject *obj)
+ctk_widget_accessible_get_attributes (AtkObject *obj G_GNUC_UNUSED)
 {
   AtkAttributeSet *attributes;
   AtkAttribute *toolkit;
