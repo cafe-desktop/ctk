@@ -1778,7 +1778,7 @@ typedef struct
 } PasteData;
 
 static void
-paste_received (CtkClipboard *clipboard,
+paste_received (CtkClipboard *clipboard G_GNUC_UNUSED,
                 const gchar  *text,
                 gpointer      data)
 {
@@ -1884,7 +1884,7 @@ insert_text_cb (CtkTextBuffer *buffer,
 }
 
 static void
-delete_range_cb (CtkTextBuffer *buffer,
+delete_range_cb (CtkTextBuffer *buffer G_GNUC_UNUSED,
                  CtkTextIter   *start,
                  CtkTextIter   *end,
                  gpointer       data)
@@ -1903,8 +1903,8 @@ delete_range_cb (CtkTextBuffer *buffer,
 
 static void
 delete_range_after_cb (CtkTextBuffer *buffer,
-                       CtkTextIter   *start,
-                       CtkTextIter   *end,
+                       CtkTextIter   *start G_GNUC_UNUSED,
+                       CtkTextIter   *end G_GNUC_UNUSED,
                        gpointer       data)
 {
   CtkTextViewAccessible *accessible = data;
@@ -1914,7 +1914,7 @@ delete_range_after_cb (CtkTextBuffer *buffer,
 
 static void
 mark_set_cb (CtkTextBuffer *buffer,
-             CtkTextIter   *location,
+             CtkTextIter   *location G_GNUC_UNUSED,
              CtkTextMark   *mark,
              gpointer       data)
 {
