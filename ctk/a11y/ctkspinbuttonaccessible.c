@@ -33,7 +33,7 @@ G_DEFINE_TYPE_WITH_CODE (CtkSpinButtonAccessible, ctk_spin_button_accessible, CT
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_VALUE, atk_value_interface_init))
 
 static void
-ctk_spin_button_accessible_value_changed (CtkAdjustment *adjustment,
+ctk_spin_button_accessible_value_changed (CtkAdjustment *adjustment G_GNUC_UNUSED,
                                           gpointer       data)
 {
   g_object_notify (G_OBJECT (data), "accessible-value");
