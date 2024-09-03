@@ -1174,7 +1174,7 @@ ctk_handle_box_get_invisible (void)
 }
 
 static gboolean
-ctk_handle_box_grab_event (CtkWidget    *widget,
+ctk_handle_box_grab_event (CtkWidget    *widget G_GNUC_UNUSED,
 			   CdkEvent     *event,
 			   CtkHandleBox *hb)
 {
