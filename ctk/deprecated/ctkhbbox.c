@@ -61,7 +61,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 G_DEFINE_TYPE (CtkHButtonBox, ctk_hbutton_box, CTK_TYPE_BUTTON_BOX)
 
 static void
-ctk_hbutton_box_class_init (CtkHButtonBoxClass *class)
+ctk_hbutton_box_class_init (CtkHButtonBoxClass *class G_GNUC_UNUSED)
 {
 }
 
