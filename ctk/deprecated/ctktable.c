@@ -282,7 +282,7 @@ ctk_table_class_init (CtkTableClass *class)
 }
 
 static GType
-ctk_table_child_type (CtkContainer   *container)
+ctk_table_child_type (CtkContainer *container G_GNUC_UNUSED)
 {
   return CTK_TYPE_WIDGET;
 }
@@ -1193,9 +1193,9 @@ ctk_table_remove (CtkContainer *container,
 
 static void
 ctk_table_forall (CtkContainer *container,
-		  gboolean	include_internals,
-		  CtkCallback	callback,
-		  gpointer	callback_data)
+		  gboolean      include_internals G_GNUC_UNUSED,
+		  CtkCallback   callback,
+		  gpointer      callback_data)
 {
   CtkTable *table = CTK_TABLE (container);
   CtkTablePrivate *priv = table->priv;
