@@ -46,7 +46,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 G_DEFINE_TYPE (CtkVPaned, ctk_vpaned, CTK_TYPE_PANED)
 
 static void
-ctk_vpaned_class_init (CtkVPanedClass *class)
+ctk_vpaned_class_init (CtkVPanedClass *class G_GNUC_UNUSED)
 {
 }
 
