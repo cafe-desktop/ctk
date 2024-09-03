@@ -46,7 +46,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 G_DEFINE_TYPE (CtkVSeparator, ctk_vseparator, CTK_TYPE_SEPARATOR)
 
 static void
-ctk_vseparator_class_init (CtkVSeparatorClass *klass)
+ctk_vseparator_class_init (CtkVSeparatorClass *klass G_GNUC_UNUSED)
 {
 }
 
