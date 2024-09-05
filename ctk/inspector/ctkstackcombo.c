@@ -105,15 +105,15 @@ clear_combo (CtkStackCombo *self)
 }
 
 static void
-on_stack_child_added (CtkContainer  *container,
-                      CtkWidget     *widget,
+on_stack_child_added (CtkContainer  *container G_GNUC_UNUSED,
+                      CtkWidget     *widget G_GNUC_UNUSED,
                       CtkStackCombo *self)
 {
   rebuild_combo (self);
 }
 
 static void
-on_stack_child_removed (CtkContainer  *container,
+on_stack_child_removed (CtkContainer  *container G_GNUC_UNUSED,
                         CtkWidget     *widget,
                         CtkStackCombo *self)
 {
