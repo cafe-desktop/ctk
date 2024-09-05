@@ -125,7 +125,9 @@ format_state_flags (CtkStateFlags state)
 }
 
 static void
-state_flags_changed (CtkWidget *w, CtkStateFlags old_flags, CtkInspectorMiscInfo *sl)
+state_flags_changed (CtkWidget            *w,
+                     CtkStateFlags         old_flags G_GNUC_UNUSED,
+                     CtkInspectorMiscInfo *sl)
 {
   gchar *s;
 
@@ -135,7 +137,9 @@ state_flags_changed (CtkWidget *w, CtkStateFlags old_flags, CtkInspectorMiscInfo
 }
 
 static void
-allocation_changed (CtkWidget *w, CdkRectangle *allocation, CtkInspectorMiscInfo *sl)
+allocation_changed (CtkWidget            *w,
+                    CdkRectangle         *allocation G_GNUC_UNUSED,
+                    CtkInspectorMiscInfo *sl)
 {
   CtkAllocation alloc;
   CtkAllocation clip;
@@ -230,7 +234,8 @@ update_default_widget (CtkInspectorMiscInfo *sl)
 }
 
 static void
-show_default_widget (CtkWidget *button, CtkInspectorMiscInfo *sl)
+show_default_widget (CtkWidget            *button G_GNUC_UNUSED,
+                     CtkInspectorMiscInfo *sl)
 {
   CtkWidget *widget;
 
@@ -262,13 +267,16 @@ update_focus_widget (CtkInspectorMiscInfo *sl)
 }
 
 static void
-set_focus_cb (CtkWindow *window, CtkWidget *focus, CtkInspectorMiscInfo *sl)
+set_focus_cb (CtkWindow            *window G_GNUC_UNUSED,
+              CtkWidget            *focus G_GNUC_UNUSED,
+              CtkInspectorMiscInfo *sl)
 {
   update_focus_widget (sl);
 }
 
 static void
-show_focus_widget (CtkWidget *button, CtkInspectorMiscInfo *sl)
+show_focus_widget (CtkWidget            *button G_GNUC_UNUSED,
+                   CtkInspectorMiscInfo *sl)
 {
   CtkWidget *widget;
 
@@ -288,7 +296,8 @@ show_mnemonic_label (CtkWidget *button, CtkInspectorMiscInfo *sl)
 }
 
 static void
-show_frame_clock (CtkWidget *button, CtkInspectorMiscInfo *sl)
+show_frame_clock (CtkWidget            *button G_GNUC_UNUSED,
+                  CtkInspectorMiscInfo *sl)
 {
   GObject *clock;
 
@@ -662,6 +671,3 @@ ctk_inspector_misc_info_class_init (CtkInspectorMiscInfoClass *klass)
   ctk_widget_class_bind_template_callback (widget_class, show_focus_widget);
   ctk_widget_class_bind_template_callback (widget_class, show_frame_clock);
 }
-
-// vim: set et sw=2 ts=2:
-
