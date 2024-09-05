@@ -225,7 +225,7 @@ select_widget (CtkInspectorWindow *iw,
 }
 
 static void
-on_inspect_widget (CtkWidget          *button,
+on_inspect_widget (CtkWidget          *button G_GNUC_UNUSED,
                    CdkEvent           *event,
                    CtkInspectorWindow *iw)
 {
@@ -242,7 +242,7 @@ on_inspect_widget (CtkWidget          *button,
 }
 
 static void
-on_highlight_widget (CtkWidget          *button,
+on_highlight_widget (CtkWidget          *button G_GNUC_UNUSED,
                      CdkEvent           *event,
                      CtkInspectorWindow *iw)
 {
@@ -351,7 +351,7 @@ property_query_event (CtkWidget *widget,
 }
 
 void
-ctk_inspector_on_inspect (CtkWidget          *button,
+ctk_inspector_on_inspect (CtkWidget          *button G_GNUC_UNUSED,
                           CtkInspectorWindow *iw)
 {
   CdkDisplay *display;
