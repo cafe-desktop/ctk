@@ -88,7 +88,7 @@ set_selected_object (CtkInspectorWindow *iw,
 static void
 on_object_activated (CtkInspectorObjectTree *wt,
                      GObject                *selected,
-                     const gchar            *name,
+                     const gchar            *name G_GNUC_UNUSED,
                      CtkInspectorWindow     *iw)
 {
   const gchar *tab;
@@ -105,7 +105,7 @@ on_object_activated (CtkInspectorObjectTree *wt,
 }
 
 static void
-on_object_selected (CtkInspectorObjectTree *wt,
+on_object_selected (CtkInspectorObjectTree *wt G_GNUC_UNUSED,
                     GObject                *selected,
                     CtkInspectorWindow     *iw)
 {
@@ -115,14 +115,16 @@ on_object_selected (CtkInspectorObjectTree *wt,
 }
 
 static void
-close_object_details (CtkWidget *button, CtkInspectorWindow *iw)
+close_object_details (CtkWidget          *button G_GNUC_UNUSED,
+                      CtkInspectorWindow *iw)
 {
   ctk_stack_set_visible_child_name (CTK_STACK (iw->object_stack), "object-tree");
   ctk_stack_set_visible_child_name (CTK_STACK (iw->object_buttons), "list");
 }
 
 static void
-open_object_details (CtkWidget *button, CtkInspectorWindow *iw)
+open_object_details (CtkWidget          *button G_GNUC_UNUSED,
+                     CtkInspectorWindow *iw)
 {
   GObject *selected;
 
@@ -136,7 +138,7 @@ open_object_details (CtkWidget *button, CtkInspectorWindow *iw)
 }
 
 static gboolean
-translate_visible_child_name (GBinding     *binding,
+translate_visible_child_name (GBinding     *binding G_GNUC_UNUSED,
                               const GValue *from,
                               GValue       *to,
                               gpointer      user_data)
@@ -232,8 +234,8 @@ ctk_inspector_window_constructed (GObject *object)
 }
 
 static void
-object_details_changed (CtkWidget          *combo,
-                        GParamSpec         *pspec,
+object_details_changed (CtkWidget          *combo G_GNUC_UNUSED,
+                        GParamSpec         *pspec G_GNUC_UNUSED,
                         CtkInspectorWindow *iw)
 {
   ctk_stack_set_visible_child_name (CTK_STACK (iw->object_center_stack), "title");
