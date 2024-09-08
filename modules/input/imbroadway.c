@@ -112,7 +112,7 @@ ctk_im_context_broadway_class_init (CtkIMContextClass *klass)
 }
 
 static void
-ctk_im_context_broadway_init (CtkIMContext *im_context)
+ctk_im_context_broadway_init (CtkIMContext *im_context G_GNUC_UNUSED)
 {
 }
 
