@@ -105,7 +105,7 @@ static guint16 inuktitut_compose_seqs[] = {
 };
 
 static void
-inuktitut_class_init (CtkIMContextSimpleClass *class)
+inuktitut_class_init (CtkIMContextSimpleClass *class G_GNUC_UNUSED)
 {
 }
 
