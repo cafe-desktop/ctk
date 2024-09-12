@@ -315,7 +315,7 @@ setup_im (CtkXIMInfo *info)
 
 static void
 xim_info_display_closed (CdkDisplay *display,
-			 gboolean    is_error,
+			 gboolean    is_error G_GNUC_UNUSED,
 			 CtkXIMInfo *info)
 {
   GSList *ics, *tmp_list;
@@ -349,7 +349,7 @@ xim_info_display_closed (CdkDisplay *display,
 
 static void
 xim_instantiate_callback (Display *display, XPointer client_data,
-			  XPointer call_data)
+			  XPointer call_data G_GNUC_UNUSED)
 {
   CtkXIMInfo *info = (CtkXIMInfo*)client_data;
   XIM im = NULL;
@@ -398,9 +398,9 @@ xim_info_try_im (CtkXIMInfo *info)
 }
 
 static void
-xim_destroy_callback (XIM      xim,
+xim_destroy_callback (XIM      xim G_GNUC_UNUSED,
 		      XPointer client_data,
-		      XPointer call_data)
+		      XPointer call_data G_GNUC_UNUSED)
 {
   CtkXIMInfo *info = (CtkXIMInfo*)client_data;
 
@@ -959,9 +959,9 @@ ctk_im_context_xim_get_preedit_string (CtkIMContext   *context,
 }
 
 static int
-preedit_start_callback (XIC      xic,
+preedit_start_callback (XIC      xic G_GNUC_UNUSED,
 			XPointer client_data,
-			XPointer call_data)
+			XPointer call_data G_GNUC_UNUSED)
 {
   CtkIMContext *context = CTK_IM_CONTEXT (client_data);
   CtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (context);
@@ -973,9 +973,9 @@ preedit_start_callback (XIC      xic,
 }		     
 
 static void
-preedit_done_callback (XIC      xic,
-		     XPointer client_data,
-		     XPointer call_data)
+preedit_done_callback (XIC      xic G_GNUC_UNUSED,
+		       XPointer client_data,
+		       XPointer call_data G_GNUC_UNUSED)
 {
   CtkIMContext *context = CTK_IM_CONTEXT (client_data);
   CtkIMContextXIM *context_xim = CTK_IM_CONTEXT_XIM (context);
@@ -1045,7 +1045,7 @@ xim_text_to_utf8 (CtkIMContextXIM *context, XIMText *xim_text, gchar **text)
 }
 
 static void
-preedit_draw_callback (XIC                           xic, 
+preedit_draw_callback (XIC                           xic G_GNUC_UNUSED,
 		       XPointer                      client_data,
 		       XIMPreeditDrawCallbackStruct *call_data)
 {
@@ -1118,7 +1118,7 @@ preedit_draw_callback (XIC                           xic,
     
 
 static void
-preedit_caret_callback (XIC                            xic,
+preedit_caret_callback (XIC                            xic G_GNUC_UNUSED,
 			XPointer                       client_data,
 			XIMPreeditCaretCallbackStruct *call_data)
 {
@@ -1138,23 +1138,23 @@ preedit_caret_callback (XIC                            xic,
 }	     
 
 static void
-status_start_callback (XIC      xic,
-		       XPointer client_data,
-		       XPointer call_data)
+status_start_callback (XIC      xic G_GNUC_UNUSED,
+		       XPointer client_data G_GNUC_UNUSED,
+		       XPointer call_data G_GNUC_UNUSED)
 {
   return;
 } 
 
 static void
-status_done_callback (XIC      xic,
-		      XPointer client_data,
-		      XPointer call_data)
+status_done_callback (XIC      xic G_GNUC_UNUSED,
+		      XPointer client_data G_GNUC_UNUSED,
+		      XPointer call_data G_GNUC_UNUSED)
 {
   return;
 }
 
 static void
-status_draw_callback (XIC      xic,
+status_draw_callback (XIC      xic G_GNUC_UNUSED,
 		      XPointer client_data,
 		      XIMStatusDrawCallbackStruct *call_data)
 {
@@ -1175,7 +1175,9 @@ status_draw_callback (XIC      xic,
 }
 
 static void
-string_conversion_callback (XIC xic, XPointer client_data, XPointer call_data)
+string_conversion_callback (XIC      xic G_GNUC_UNUSED,
+			    XPointer client_data,
+			    XPointer call_data)
 {
   CtkIMContextXIM *context_xim;
   XIMStringConversionCallbackStruct *conv_data;
@@ -1538,8 +1540,8 @@ update_in_toplevel (CtkIMContextXIM *context_xim)
  * window.
  */
 static void
-on_client_widget_hierarchy_changed (CtkWidget       *widget,
-				    CtkWidget       *old_toplevel,
+on_client_widget_hierarchy_changed (CtkWidget       *widget G_GNUC_UNUSED,
+				    CtkWidget       *old_toplevel G_GNUC_UNUSED,
 				    CtkIMContextXIM *context_xim)
 {
   update_in_toplevel (context_xim);
@@ -1595,7 +1597,7 @@ update_client_widget (CtkIMContextXIM *context_xim)
 /* Called when the toplevel is destroyed; frees the status window
  */
 static void
-on_status_toplevel_destroy (CtkWidget    *toplevel,
+on_status_toplevel_destroy (CtkWidget    *toplevel G_GNUC_UNUSED,
 			    StatusWindow *status_window)
 {
   status_window_free (status_window);
@@ -1606,7 +1608,7 @@ on_status_toplevel_destroy (CtkWidget    *toplevel,
  */
 static void
 on_status_toplevel_notify_screen (CtkWindow    *toplevel,
-				  GParamSpec   *pspec,
+				  GParamSpec   *pspec G_GNUC_UNUSED,
 				  StatusWindow *status_window)
 {
   if (status_window->window)
@@ -1619,7 +1621,7 @@ on_status_toplevel_notify_screen (CtkWindow    *toplevel,
  */
 static gboolean
 on_status_toplevel_configure (CtkWidget         *toplevel,
-			      CdkEventConfigure *event,
+			      CdkEventConfigure *event G_GNUC_UNUSED,
 			      StatusWindow      *status_window)
 {
   CdkRectangle rect;
