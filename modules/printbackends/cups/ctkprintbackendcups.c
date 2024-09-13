@@ -1333,7 +1333,7 @@ check_auth_info (gpointer user_data)
 }
 
 static void
-lookup_auth_info_cb (GObject      *source_object,
+lookup_auth_info_cb (GObject      *source_object G_GNUC_UNUSED,
                      GAsyncResult *res,
                      gpointer      user_data)
 {
@@ -1733,7 +1733,7 @@ typedef struct {
 
 static void
 job_object_died	(gpointer  user_data,
-		 GObject  *where_the_object_was)
+		 GObject  *where_the_object_was G_GNUC_UNUSED)
 {
   CupsJobPollData *data = user_data;
   data->job = NULL;
@@ -1749,7 +1749,7 @@ cups_job_poll_data_free (CupsJobPollData *data)
 }
 
 static void
-cups_request_job_info_cb (CtkPrintBackendCups *print_backend,
+cups_request_job_info_cb (CtkPrintBackendCups *print_backend G_GNUC_UNUSED,
 			  CtkCupsResult       *result,
 			  gpointer             user_data)
 {
@@ -2145,9 +2145,9 @@ ipp_version_cmp (guchar ipp_version_major1,
 }
 
 static void
-cups_printer_handle_attribute (CtkPrintBackendCups *cups_backend,
-			       ipp_attribute_t *attr,
-			       PrinterSetupInfo *info)
+cups_printer_handle_attribute (CtkPrintBackendCups *cups_backend G_GNUC_UNUSED,
+			       ipp_attribute_t     *attr,
+			       PrinterSetupInfo    *info)
 {
   gint i, j;
   if (strcmp (ippGetName (attr), "printer-name") == 0 &&
@@ -2991,7 +2991,7 @@ find_printer_by_uuid (CtkPrintBackendCups *backend,
 static void
 cups_create_local_printer_cb (CtkPrintBackendCups *print_backend,
                               CtkCupsResult       *result,
-                              gpointer             user_data)
+                              gpointer             user_data G_GNUC_UNUSED)
 {
   gchar           *printer_name = NULL;
   ipp_t           *response;
@@ -3452,10 +3452,10 @@ avahi_service_resolver_cb (GObject      *source_object,
 }
 
 static void
-avahi_service_browser_signal_handler (GDBusConnection *connection,
-                                      const gchar     *sender_name,
-                                      const gchar     *object_path,
-                                      const gchar     *interface_name,
+avahi_service_browser_signal_handler (GDBusConnection *connection G_GNUC_UNUSED,
+                                      const gchar     *sender_name G_GNUC_UNUSED,
+                                      const gchar     *object_path G_GNUC_UNUSED,
+                                      const gchar     *interface_name G_GNUC_UNUSED,
                                       const gchar     *signal_name,
                                       GVariant        *parameters,
                                       gpointer         user_data)
@@ -3624,7 +3624,7 @@ avahi_service_browser_new_cb (GObject      *source_object,
 }
 
 static void
-avahi_create_browsers (GObject      *source_object,
+avahi_create_browsers (GObject      *source_object G_GNUC_UNUSED,
                        GAsyncResult *res,
                        gpointer      user_data)
 {
@@ -3712,7 +3712,7 @@ avahi_request_printer_list (CtkPrintBackendCups *cups_backend)
 static void
 cups_request_printer_list_cb (CtkPrintBackendCups *cups_backend,
                               CtkCupsResult       *result,
-                              gpointer             user_data)
+                              gpointer             user_data G_GNUC_UNUSED)
 {
   CtkPrintBackend *backend = CTK_PRINT_BACKEND (cups_backend);
   ipp_attribute_t *attr;
@@ -4494,7 +4494,7 @@ cups_get_local_default_printer (CtkPrintBackendCups *backend)
 static void
 cups_request_default_printer_cb (CtkPrintBackendCups *print_backend,
 				 CtkCupsResult       *result,
-				 gpointer             user_data)
+				 gpointer             user_data G_GNUC_UNUSED)
 {
   ipp_t *response;
   ipp_attribute_t *attr;
@@ -5711,7 +5711,7 @@ static CtkPrinterOptionSet *
 cups_printer_get_options (CtkPrinter           *printer,
 			  CtkPrintSettings     *settings,
 			  CtkPageSetup         *page_setup,
-			  CtkPrintCapabilities  capabilities)
+			  CtkPrintCapabilities  capabilities G_GNUC_UNUSED)
 {
   CtkPrinterOptionSet *set;
   CtkPrinterOption *option;
@@ -6133,7 +6133,7 @@ mark_group_from_set (CtkPrinterOptionSet *set,
 
 static void
 set_conflicts_from_option (CtkPrinterOptionSet *set,
-			   ppd_file_t          *ppd_file,
+			   ppd_file_t          *ppd_file G_GNUC_UNUSED,
 			   ppd_option_t        *ppd_option)
 {
   CtkPrinterOption *option;
@@ -7122,9 +7122,9 @@ cups_printer_get_capabilities (CtkPrinter *printer)
 }
 
 static void
-secrets_service_appeared_cb (GDBusConnection *connection,
-                             const gchar     *name,
-                             const gchar     *name_owner,
+secrets_service_appeared_cb (GDBusConnection *connection G_GNUC_UNUSED,
+                             const gchar     *name G_GNUC_UNUSED,
+                             const gchar     *name_owner G_GNUC_UNUSED,
                              gpointer         user_data)
 {
   CtkPrintBackendCups *backend = CTK_PRINT_BACKEND_CUPS (user_data);
@@ -7133,8 +7133,8 @@ secrets_service_appeared_cb (GDBusConnection *connection,
 }
 
 static void
-secrets_service_vanished_cb (GDBusConnection *connection,
-                             const gchar     *name,
+secrets_service_vanished_cb (GDBusConnection *connection G_GNUC_UNUSED,
+                             const gchar     *name G_GNUC_UNUSED,
                              gpointer         user_data)
 {
   CtkPrintBackendCups *backend = CTK_PRINT_BACKEND_CUPS (user_data);
