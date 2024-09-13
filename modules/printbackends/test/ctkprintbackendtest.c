@@ -285,7 +285,7 @@ _cairo_write (void                *closure,
 
 
 static cairo_surface_t *
-test_printer_create_cairo_surface (CtkPrinter       *printer,
+test_printer_create_cairo_surface (CtkPrinter       *printer G_GNUC_UNUSED,
 				   CtkPrintSettings *settings,
 				   gdouble           width, 
 				   gdouble           height,
@@ -318,9 +318,9 @@ typedef struct {
 } _PrintStreamData;
 
 static void
-test_print_cb (CtkPrintBackendTest *print_backend,
+test_print_cb (CtkPrintBackendTest *print_backend G_GNUC_UNUSED,
                GError              *error,
-               gpointer            user_data)
+               gpointer             user_data)
 {
   _PrintStreamData *ps = (_PrintStreamData *) user_data;
 
@@ -344,7 +344,7 @@ test_print_cb (CtkPrintBackendTest *print_backend,
 
 static gboolean
 test_write (GIOChannel   *source,
-            GIOCondition  con,
+            GIOCondition  con G_GNUC_UNUSED,
             gpointer      user_data)
 {
   gchar buf[_STREAM_MAX_CHUNK_SIZE];
@@ -482,10 +482,10 @@ ctk_print_backend_test_init (CtkPrintBackendTest *backend)
 }
 
 static CtkPrinterOptionSet *
-test_printer_get_options (CtkPrinter           *printer,
+test_printer_get_options (CtkPrinter           *printer G_GNUC_UNUSED,
 			  CtkPrintSettings     *settings,
-			  CtkPageSetup         *page_setup,
-			  CtkPrintCapabilities  capabilities)
+			  CtkPageSetup         *page_setup G_GNUC_UNUSED,
+			  CtkPrintCapabilities  capabilities G_GNUC_UNUSED)
 {
   CtkPrinterOptionSet *set;
   CtkPrinterOption *option;
@@ -507,17 +507,17 @@ test_printer_get_options (CtkPrinter           *printer,
 }
 
 static void
-test_printer_get_settings_from_options (CtkPrinter          *printer,
-					CtkPrinterOptionSet *options,
-					CtkPrintSettings    *settings)
+test_printer_get_settings_from_options (CtkPrinter          *printer G_GNUC_UNUSED,
+					CtkPrinterOptionSet *options G_GNUC_UNUSED,
+					CtkPrintSettings    *settings G_GNUC_UNUSED)
 {
 }
 
 static void
-test_printer_prepare_for_print (CtkPrinter       *printer,
+test_printer_prepare_for_print (CtkPrinter       *printer G_GNUC_UNUSED,
 				CtkPrintJob      *print_job,
 				CtkPrintSettings *settings,
-				CtkPageSetup     *page_setup)
+				CtkPageSetup     *page_setup G_GNUC_UNUSED)
 {
   gdouble scale;
 
