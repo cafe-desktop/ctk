@@ -66,7 +66,7 @@ enum
 /* Finds the toplevel window under the mouse pointer, if any.
  */
 static CtkWidget *
-find_toplevel_at_pointer (CdkDisplay *display)
+find_toplevel_at_pointer (CdkDisplay *display G_GNUC_UNUSED)
 {
   CdkWindow *pointer_window;
   CtkWidget *widget = NULL;
@@ -88,9 +88,9 @@ find_toplevel_at_pointer (CdkDisplay *display)
 }
 
 static gboolean
-button_release_event_cb (CtkWidget       *widget,
-                         CdkEventButton  *event,
-                         gboolean        *clicked)
+button_release_event_cb (CtkWidget      *widget G_GNUC_UNUSED,
+                         CdkEventButton *event G_GNUC_UNUSED,
+                         gboolean       *clicked)
 {
   *clicked = TRUE;
   return TRUE;
@@ -195,7 +195,7 @@ response_cb (CtkDialog         *dialog,
  * to that display.
  */
 static void
-open_display_cb (CtkWidget         *button,
+open_display_cb (CtkWidget         *button G_GNUC_UNUSED,
                  ChangeDisplayInfo *info)
 {
   CtkWidget *content_area;
@@ -258,7 +258,7 @@ open_display_cb (CtkWidget         *button,
  * "Display" frame. Closes the selected display.
  */
 static void
-close_display_cb (CtkWidget         *button,
+close_display_cb (CtkWidget         *button G_GNUC_UNUSED,
                   ChangeDisplayInfo *info)
 {
   if (info->current_display)
@@ -393,7 +393,7 @@ create_display_frame (ChangeDisplayInfo *info)
  */
 static void
 display_closed_cb (CdkDisplay        *display,
-                   gboolean           is_error,
+                   gboolean           is_error G_GNUC_UNUSED,
                    ChangeDisplayInfo *info)
 {
   CtkTreeIter iter;
@@ -440,7 +440,7 @@ add_display (ChangeDisplayInfo *info,
 /* Called when a new display is opened
  */
 static void
-display_opened_cb (CdkDisplayManager *manager,
+display_opened_cb (CdkDisplayManager *manager G_GNUC_UNUSED,
                    CdkDisplay        *display,
                    ChangeDisplayInfo *info)
 {
@@ -499,7 +499,7 @@ destroy_info (ChangeDisplayInfo *info)
 }
 
 static void
-destroy_cb (GObject            *object,
+destroy_cb (GObject            *object G_GNUC_UNUSED,
             ChangeDisplayInfo **info)
 {
   destroy_info (*info);
