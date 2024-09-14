@@ -6,8 +6,8 @@
 #include <ctk/ctk.h>
 
 static void
-quit_activate (GSimpleAction *action,
-               GVariant      *parameter,
+quit_activate (GSimpleAction *action G_GNUC_UNUSED,
+               GVariant      *parameter G_GNUC_UNUSED,
                gpointer       user_data)
 {
   CtkWidget *window = user_data;
@@ -16,8 +16,8 @@ quit_activate (GSimpleAction *action,
 }
 
 static void
-about_activate (GSimpleAction *action,
-                GVariant      *parameter,
+about_activate (GSimpleAction *action G_GNUC_UNUSED,
+                GVariant      *parameter G_GNUC_UNUSED,
                 gpointer       user_data)
 {
   CtkWidget *window = user_data;
@@ -31,9 +31,9 @@ about_activate (GSimpleAction *action,
 }
 
 static void
-help_activate (GSimpleAction *action,
-               GVariant      *parameter,
-               gpointer       user_data)
+help_activate (GSimpleAction *action G_GNUC_UNUSED,
+               GVariant      *parameter G_GNUC_UNUSED,
+               gpointer       user_data G_GNUC_UNUSED)
 {
   g_print ("Help not available\n");
 }
