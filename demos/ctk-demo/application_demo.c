@@ -15,18 +15,18 @@ static gboolean name_seen;
 static CtkWidget *placeholder;
 
 static void
-on_name_appeared (GDBusConnection *connection,
-                  const gchar     *name,
-                  const gchar     *name_owner,
-                  gpointer         user_data)
+on_name_appeared (GDBusConnection *connection G_GNUC_UNUSED,
+                  const gchar     *name G_GNUC_UNUSED,
+                  const gchar     *name_owner G_GNUC_UNUSED,
+                  gpointer         user_data G_GNUC_UNUSED)
 {
   name_seen = TRUE;
 }
 
 static void
-on_name_vanished (GDBusConnection *connection,
-                  const gchar     *name,
-                  gpointer         user_data)
+on_name_vanished (GDBusConnection *connection G_GNUC_UNUSED,
+                  const gchar     *name G_GNUC_UNUSED,
+                  gpointer         user_data G_GNUC_UNUSED)
 {
   if (!name_seen)
     return;
@@ -46,7 +46,7 @@ on_name_vanished (GDBusConnection *connection,
 #endif
 
 CtkWidget *
-do_application_demo (CtkWidget *toplevel)
+do_application_demo (CtkWidget *toplevel G_GNUC_UNUSED)
 {
   static guint watch = 0;
 
