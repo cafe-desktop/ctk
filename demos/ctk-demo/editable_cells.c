@@ -137,7 +137,8 @@ create_numbers_model (void)
 }
 
 static void
-add_item (CtkWidget *button, gpointer data)
+add_item (CtkWidget *button G_GNUC_UNUSED,
+          gpointer   data)
 {
   Item foo;
   CtkTreeIter current, iter;
@@ -183,7 +184,8 @@ add_item (CtkWidget *button, gpointer data)
 }
 
 static void
-remove_item (CtkWidget *widget, gpointer data)
+remove_item (CtkWidget *widget G_GNUC_UNUSED,
+             gpointer   data)
 {
   CtkTreeIter iter;
   CtkTreeView *treeview = (CtkTreeView *)data;
@@ -208,7 +210,7 @@ remove_item (CtkWidget *widget, gpointer data)
 static gboolean
 separator_row (CtkTreeModel *model,
                CtkTreeIter  *iter,
-               gpointer      data)
+               gpointer      data G_GNUC_UNUSED)
 {
   CtkTreePath *path;
   gint idx;
@@ -222,10 +224,10 @@ separator_row (CtkTreeModel *model,
 }
 
 static void
-editing_started (CtkCellRenderer *cell,
+editing_started (CtkCellRenderer *cell G_GNUC_UNUSED,
                  CtkCellEditable *editable,
-                 const gchar     *path,
-                 gpointer         data)
+                 const gchar     *path G_GNUC_UNUSED,
+                 gpointer         data G_GNUC_UNUSED)
 {
   ctk_combo_box_set_row_separator_func (CTK_COMBO_BOX (editable),
                                         separator_row, NULL, NULL);
