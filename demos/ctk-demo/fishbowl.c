@@ -190,7 +190,7 @@ set_widget_type (CtkFishbowl *fishbowl,
 }
 
 void
-next_button_clicked_cb (CtkButton *source,
+next_button_clicked_cb (CtkButton *source G_GNUC_UNUSED,
                         gpointer   user_data)
 {
   CtkFishbowl *fishbowl = user_data;
@@ -205,7 +205,7 @@ next_button_clicked_cb (CtkButton *source,
 }
 
 void
-prev_button_clicked_cb (CtkButton *source,
+prev_button_clicked_cb (CtkButton *source G_GNUC_UNUSED,
                         gpointer   user_data)
 {
   CtkFishbowl *fishbowl = user_data;
