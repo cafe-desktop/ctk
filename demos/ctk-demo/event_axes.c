@@ -611,7 +611,7 @@ init_pad_controller (CtkWidget *window,
 }
 
 CtkWidget *
-do_event_axes (CtkWidget *toplevel)
+do_event_axes (CtkWidget *toplevel G_GNUC_UNUSED)
 {
   static CtkWidget *window = NULL;
 
