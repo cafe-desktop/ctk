@@ -16,7 +16,7 @@ static gboolean long_pressed = FALSE;
 static gboolean
 touchpad_swipe_gesture_begin (CtkGesture       *gesture,
                               CdkEventSequence *sequence,
-                              CtkWidget        *widget)
+                              CtkWidget        *widget G_GNUC_UNUSED)
 {
   /* Disallow touchscreen events here */
   if (sequence != NULL)
@@ -25,7 +25,7 @@ touchpad_swipe_gesture_begin (CtkGesture       *gesture,
 }
 
 static void
-swipe_gesture_swept (CtkGestureSwipe *gesture,
+swipe_gesture_swept (CtkGestureSwipe *gesture G_GNUC_UNUSED,
                      gdouble          velocity_x,
                      gdouble          velocity_y,
                      CtkWidget       *widget)
@@ -36,9 +36,9 @@ swipe_gesture_swept (CtkGestureSwipe *gesture,
 }
 
 static void
-long_press_gesture_pressed (CtkGestureLongPress *gesture,
-                            gdouble              x,
-                            gdouble              y,
+long_press_gesture_pressed (CtkGestureLongPress *gesture G_GNUC_UNUSED,
+                            gdouble              x G_GNUC_UNUSED,
+                            gdouble              y G_GNUC_UNUSED,
                             CtkWidget           *widget)
 {
   long_pressed = TRUE;
@@ -46,8 +46,8 @@ long_press_gesture_pressed (CtkGestureLongPress *gesture,
 }
 
 static void
-long_press_gesture_end (CtkGesture       *gesture,
-                        CdkEventSequence *sequence,
+long_press_gesture_end (CtkGesture       *gesture G_GNUC_UNUSED,
+                        CdkEventSequence *sequence G_GNUC_UNUSED,
                         CtkWidget        *widget)
 {
   long_pressed = FALSE;
@@ -55,17 +55,17 @@ long_press_gesture_end (CtkGesture       *gesture,
 }
 
 static void
-rotation_angle_changed (CtkGestureRotate *gesture,
-                        gdouble           angle,
-                        gdouble           delta,
+rotation_angle_changed (CtkGestureRotate *gesture G_GNUC_UNUSED,
+                        gdouble           angle G_GNUC_UNUSED,
+                        gdouble           delta G_GNUC_UNUSED,
                         CtkWidget        *widget)
 {
   ctk_widget_queue_draw (widget);
 }
 
 static void
-zoom_scale_changed (CtkGestureZoom *gesture,
-                    gdouble         scale,
+zoom_scale_changed (CtkGestureZoom *gesture G_GNUC_UNUSED,
+                    gdouble         scale G_GNUC_UNUSED,
                     CtkWidget      *widget)
 {
   ctk_widget_queue_draw (widget);
@@ -142,7 +142,7 @@ drawing_area_draw (CtkWidget *widget,
 }
 
 CtkWidget *
-do_gestures (CtkWidget *do_widget)
+do_gestures (CtkWidget *do_widget G_GNUC_UNUSED)
 {
   static CtkWidget *window = NULL;
 
