@@ -43,11 +43,11 @@ create_store (void)
 }
 
 static void
-set_cell_color (CtkCellLayout   *cell_layout,
+set_cell_color (CtkCellLayout   *cell_layout G_GNUC_UNUSED,
                 CtkCellRenderer *cell,
                 CtkTreeModel    *tree_model,
                 CtkTreeIter     *iter,
-                gpointer         data)
+                gpointer         data G_GNUC_UNUSED)
 {
   gchar *text;
   CdkRGBA color;
@@ -76,7 +76,7 @@ set_cell_color (CtkCellLayout   *cell_layout,
 }
 
 static void
-edited (CtkCellRendererText *cell,
+edited (CtkCellRendererText *cell G_GNUC_UNUSED,
         gchar               *path_string,
         gchar               *text,
         gpointer             data)
