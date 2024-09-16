@@ -42,11 +42,11 @@ progressive_prepared_callback (GdkPixbufLoader *loader,
 }
 
 static void
-progressive_updated_callback (GdkPixbufLoader *loader,
-                              gint                 x,
-                              gint                 y,
-                              gint                 width,
-                              gint                 height,
+progressive_updated_callback (GdkPixbufLoader *loader G_GNUC_UNUSED,
+                              gint                 x G_GNUC_UNUSED,
+                              gint                 y G_GNUC_UNUSED,
+                              gint                 width G_GNUC_UNUSED,
+                              gint                 height G_GNUC_UNUSED,
                               gpointer     data)
 {
   CtkWidget *image;
@@ -277,8 +277,8 @@ start_progressive_loading (CtkWidget *image)
 }
 
 static void
-cleanup_callback (GObject   *object,
-                  gpointer   data)
+cleanup_callback (GObject   *object G_GNUC_UNUSED,
+                  gpointer   data G_GNUC_UNUSED)
 {
   if (load_timeout)
     {
