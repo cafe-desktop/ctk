@@ -293,7 +293,7 @@ draw_triangle (void)
 
 static gboolean
 render (CtkGLArea    *area,
-        CdkGLContext *context)
+        CdkGLContext *context G_GNUC_UNUSED)
 {
   if (ctk_gl_area_get_error (area) != NULL)
     return FALSE;
@@ -372,7 +372,7 @@ create_axis_slider (int axis)
 }
 
 static void
-close_window (CtkWidget *widget)
+close_window (CtkWidget *widget G_GNUC_UNUSED)
 {
   /* Reset the state */
   demo_window = NULL;
