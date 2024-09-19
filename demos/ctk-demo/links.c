@@ -9,8 +9,8 @@
 
 static void
 response_cb (CtkWidget *dialog,
-             gint       response_id,
-             gpointer   data)
+             gint       response_id G_GNUC_UNUSED,
+             gpointer   data G_GNUC_UNUSED)
 {
   ctk_widget_destroy (dialog);
 }
@@ -18,7 +18,7 @@ response_cb (CtkWidget *dialog,
 static gboolean
 activate_link (CtkWidget   *label,
                const gchar *uri,
-               gpointer     data)
+               gpointer     data G_GNUC_UNUSED)
 {
   if (g_strcmp0 (uri, "keynav") == 0)
     {
