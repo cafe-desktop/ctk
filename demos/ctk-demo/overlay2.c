@@ -20,7 +20,7 @@ margin_changed (CtkAdjustment *adjustment,
 }
 
 CtkWidget *
-do_overlay2 (CtkWidget *do_widget)
+do_overlay2 (CtkWidget *do_widget G_GNUC_UNUSED)
 {
   static CtkWidget *window = NULL;
 
