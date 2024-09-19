@@ -16,7 +16,7 @@ do_number (CtkButton *button, CtkEntry *entry)
 }
 
 CtkWidget *
-do_overlay (CtkWidget *do_widget)
+do_overlay (CtkWidget *do_widget G_GNUC_UNUSED)
 {
   static CtkWidget *window = NULL;
 
