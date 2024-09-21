@@ -10,7 +10,7 @@
 static gboolean
 draw_text (CtkWidget *da,
            cairo_t   *cr,
-           gpointer   data)
+           gpointer   data G_GNUC_UNUSED)
 {
   cairo_pattern_t *pattern;
   PangoLayout *layout;
@@ -54,7 +54,7 @@ draw_text (CtkWidget *da,
 }
 
 CtkWidget *
-do_textmask (CtkWidget *do_widget)
+do_textmask (CtkWidget *do_widget G_GNUC_UNUSED)
 {
   static CtkWidget *window = NULL;
 
