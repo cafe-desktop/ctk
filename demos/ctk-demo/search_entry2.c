@@ -27,7 +27,7 @@ changed_cb (CtkEditable *editable)
 }
 
 static gboolean
-window_key_press_event_cb (CtkWidget    *widget,
+window_key_press_event_cb (CtkWidget    *widget G_GNUC_UNUSED,
 			   CdkEvent     *event,
 			   CtkSearchBar *bar)
 {
@@ -35,28 +35,28 @@ window_key_press_event_cb (CtkWidget    *widget,
 }
 
 static void
-search_changed (CtkSearchEntry *entry,
+search_changed (CtkSearchEntry *entry G_GNUC_UNUSED,
                 CtkLabel       *label)
 {
   ctk_label_set_text (label, "search-changed");
 }
 
 static void
-next_match (CtkSearchEntry *entry,
+next_match (CtkSearchEntry *entry G_GNUC_UNUSED,
             CtkLabel       *label)
 {
   ctk_label_set_text (label, "next-match");
 }
 
 static void
-previous_match (CtkSearchEntry *entry,
+previous_match (CtkSearchEntry *entry G_GNUC_UNUSED,
                 CtkLabel       *label)
 {
   ctk_label_set_text (label, "previous-match");
 }
 
 static void
-stop_search (CtkSearchEntry *entry,
+stop_search (CtkSearchEntry *entry G_GNUC_UNUSED,
              CtkLabel       *label)
 {
   ctk_label_set_text (label, "stop-search");
