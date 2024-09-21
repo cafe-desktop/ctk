@@ -53,7 +53,7 @@ begin_print (CtkPrintOperation *operation,
 }
 
 static void
-draw_page (CtkPrintOperation *operation,
+draw_page (CtkPrintOperation *operation G_GNUC_UNUSED,
            CtkPrintContext   *context,
            gint               page_nr,
            gpointer           user_data)
@@ -130,8 +130,8 @@ draw_page (CtkPrintOperation *operation,
 }
 
 static void
-end_print (CtkPrintOperation *operation,
-           CtkPrintContext   *context,
+end_print (CtkPrintOperation *operation G_GNUC_UNUSED,
+           CtkPrintContext   *context G_GNUC_UNUSED,
            gpointer           user_data)
 {
   PrintData *data = (PrintData *)user_data;
