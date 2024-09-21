@@ -556,8 +556,8 @@ recursive_attach_view (int                 depth,
 }
 
 static void
-easter_egg_callback (CtkWidget *button,
-                     gpointer   data)
+easter_egg_callback (CtkWidget *button G_GNUC_UNUSED,
+                     gpointer   data G_GNUC_UNUSED)
 {
   static CtkWidget *window = NULL;
   gpointer window_ptr;
