@@ -104,7 +104,9 @@ set_image (CtkWidget *image, const gchar *name, gint size)
 }
 
 static void
-item_activated (CtkIconView *icon_view, CtkTreePath *path, IconBrowserWindow *win)
+item_activated (CtkIconView       *icon_view G_GNUC_UNUSED,
+                CtkTreePath       *path,
+                IconBrowserWindow *win)
 {
   CtkTreeIter iter;
   gchar *name;
@@ -292,7 +294,7 @@ populate (IconBrowserWindow *win)
 }
 
 static gboolean
-key_press_event_cb (CtkWidget *widget,
+key_press_event_cb (CtkWidget *widget G_GNUC_UNUSED,
                     CdkEvent  *event,
                     gpointer   data)
 {
@@ -302,7 +304,7 @@ key_press_event_cb (CtkWidget *widget,
 }
 
 static void
-copy_to_clipboard (CtkButton         *button,
+copy_to_clipboard (CtkButton         *button G_GNUC_UNUSED,
                    IconBrowserWindow *win)
 {
   CtkClipboard *clipboard;
@@ -371,7 +373,9 @@ symbolic_toggled (CtkToggleButton *toggle, IconBrowserWindow *win)
 }
 
 static void
-search_mode_toggled (GObject *searchbar, GParamSpec *pspec, IconBrowserWindow *win)
+search_mode_toggled (GObject           *searchbar,
+                     GParamSpec        *pspec G_GNUC_UNUSED,
+                     IconBrowserWindow *win)
 {
   if (ctk_search_bar_get_search_mode (CTK_SEARCH_BAR (searchbar)))
     ctk_list_box_unselect_all (CTK_LIST_BOX (win->context_list));
@@ -379,11 +383,11 @@ search_mode_toggled (GObject *searchbar, GParamSpec *pspec, IconBrowserWindow *w
 
 static void
 get_image_data (CtkWidget        *widget,
-                CdkDragContext   *context,
+                CdkDragContext   *context G_GNUC_UNUSED,
                 CtkSelectionData *selection,
-                guint             target_info,
-                guint             time,
-                gpointer          data)
+                guint             target_info G_GNUC_UNUSED,
+                guint             time G_GNUC_UNUSED,
+                gpointer          data G_GNUC_UNUSED)
 {
   CtkWidget *image;
   const gchar *name;
@@ -402,11 +406,11 @@ get_image_data (CtkWidget        *widget,
 
 static void
 get_scalable_image_data (CtkWidget        *widget,
-                         CdkDragContext   *context,
+                         CdkDragContext   *context G_GNUC_UNUSED,
                          CtkSelectionData *selection,
-                         guint             target_info,
-                         guint             time,
-                         gpointer          data)
+                         guint             target_info G_GNUC_UNUSED,
+                         guint             time G_GNUC_UNUSED,
+                         gpointer          data G_GNUC_UNUSED)
 {
   gchar *uris[2];
   CtkIconInfo *info;
