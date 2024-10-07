@@ -31,13 +31,13 @@ icon_store_init (IconStore *store)
 }
 
 static void
-icon_store_class_init (IconStoreClass *class)
+icon_store_class_init (IconStoreClass *class G_GNUC_UNUSED)
 {
 }
 
 static gboolean
-row_draggable (CtkTreeDragSource *drag_source,
-               CtkTreePath       *path)
+row_draggable (CtkTreeDragSource *drag_source G_GNUC_UNUSED,
+               CtkTreePath       *path G_GNUC_UNUSED)
 {
   return TRUE;
 }
