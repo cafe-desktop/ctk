@@ -26,7 +26,7 @@
 static void
 change_theme_state (GSimpleAction *action,
                     GVariant      *state,
-                    gpointer       user_data)
+                    gpointer       user_data G_GNUC_UNUSED)
 {
   CtkSettings *settings = ctk_settings_get_default ();
 
@@ -43,7 +43,7 @@ static CtkWidget *page_stack;
 static void
 change_transition_state (GSimpleAction *action,
                          GVariant      *state,
-                         gpointer       user_data)
+                         gpointer       user_data G_GNUC_UNUSED)
 {
   CtkStackTransitionType transition;
 
@@ -71,8 +71,8 @@ get_idle (gpointer data)
 }
 
 static void
-get_busy (GSimpleAction *action,
-          GVariant      *parameter,
+get_busy (GSimpleAction *action G_GNUC_UNUSED,
+          GVariant      *parameter G_GNUC_UNUSED,
           gpointer       user_data)
 {
   CtkWidget *window = user_data;
@@ -96,8 +96,8 @@ on_page (gint i)
 }
 
 static void
-activate_search (GSimpleAction *action,
-                 GVariant      *parameter,
+activate_search (GSimpleAction *action G_GNUC_UNUSED,
+                 GVariant      *parameter G_GNUC_UNUSED,
                  gpointer       user_data)
 {
   CtkWidget *window = user_data;
@@ -111,8 +111,8 @@ activate_search (GSimpleAction *action,
 }
 
 static void
-activate_delete (GSimpleAction *action,
-                 GVariant      *parameter,
+activate_delete (GSimpleAction *action G_GNUC_UNUSED,
+                 GVariant      *parameter G_GNUC_UNUSED,
                  gpointer       user_data)
 {
   CtkWidget *window = user_data;
@@ -128,8 +128,8 @@ activate_delete (GSimpleAction *action,
 static void populate_flowbox (CtkWidget *flowbox);
 
 static void
-activate_background (GSimpleAction *action,
-                     GVariant      *parameter,
+activate_background (GSimpleAction *action G_GNUC_UNUSED,
+                     GVariant      *parameter G_GNUC_UNUSED,
                      gpointer       user_data)
 {
   CtkWidget *window = user_data;
@@ -147,8 +147,8 @@ activate_background (GSimpleAction *action,
 }
 
 static void
-activate_open (GSimpleAction *action,
-               GVariant      *parameter,
+activate_open (GSimpleAction *action G_GNUC_UNUSED,
+               GVariant      *parameter G_GNUC_UNUSED,
                gpointer       user_data)
 {
   CtkWidget *window = user_data;
@@ -162,8 +162,8 @@ activate_open (GSimpleAction *action,
 }
 
 static void
-activate_record (GSimpleAction *action,
-                 GVariant      *parameter,
+activate_record (GSimpleAction *action G_GNUC_UNUSED,
+                 GVariant      *parameter G_GNUC_UNUSED,
                  gpointer       user_data)
 {
   CtkWidget *window = user_data;
@@ -177,8 +177,8 @@ activate_record (GSimpleAction *action,
 }
 
 static void
-activate_lock (GSimpleAction *action,
-               GVariant      *parameter,
+activate_lock (GSimpleAction *action G_GNUC_UNUSED,
+               GVariant      *parameter G_GNUC_UNUSED,
                gpointer       user_data)
 {
   CtkWidget *window = user_data;
@@ -192,8 +192,8 @@ activate_lock (GSimpleAction *action,
 }
 
 static void
-activate_about (GSimpleAction *action,
-                GVariant      *parameter,
+activate_about (GSimpleAction *action G_GNUC_UNUSED,
+                GVariant      *parameter G_GNUC_UNUSED,
                 gpointer       user_data)
 {
   CtkApplication *app = user_data;
@@ -226,8 +226,8 @@ activate_about (GSimpleAction *action,
 }
 
 static void
-activate_quit (GSimpleAction *action,
-               GVariant      *parameter,
+activate_quit (GSimpleAction *action G_GNUC_UNUSED,
+               GVariant      *parameter G_GNUC_UNUSED,
                gpointer       user_data)
 {
   CtkApplication *app = user_data;
@@ -247,9 +247,9 @@ activate_quit (GSimpleAction *action,
 }
 
 static void
-activate_inspector (GSimpleAction *action,
-                    GVariant      *parameter,
-                    gpointer       user_data)
+activate_inspector (GSimpleAction *action G_GNUC_UNUSED,
+                    GVariant      *parameter G_GNUC_UNUSED,
+                    gpointer       user_data G_GNUC_UNUSED)
 {
   ctk_window_set_interactive_debugging (TRUE);
 }
@@ -345,8 +345,8 @@ update_pulse_time (CtkAdjustment *adjustment, CtkWidget *widget)
 static void
 on_entry_icon_release (CtkEntry            *entry,
                        CtkEntryIconPosition icon_pos,
-                       CdkEvent            *event,
-                       gpointer             user_data)
+                       CdkEvent            *event G_GNUC_UNUSED,
+                       gpointer             user_data G_GNUC_UNUSED)
 {
   if (icon_pos != CTK_ENTRY_ICON_SECONDARY)
     return;
@@ -374,11 +374,11 @@ on_entry_icon_release (CtkEntry            *entry,
 
 static gboolean
 on_scale_button_query_tooltip (CtkWidget  *button,
-                               gint        x,
-                               gint        y,
-                               gboolean    keyboard_mode,
+                               gint        x G_GNUC_UNUSED,
+                               gint        y G_GNUC_UNUSED,
+                               gboolean    keyboard_mode G_GNUC_UNUSED,
                                CtkTooltip *tooltip,
-                               gpointer    user_data)
+                               gpointer    user_data G_GNUC_UNUSED)
 {
   CtkScaleButton *scale_button = CTK_SCALE_BUTTON (button);
   CtkAdjustment *adjustment;
@@ -417,15 +417,15 @@ on_scale_button_query_tooltip (CtkWidget  *button,
 
 static void
 on_scale_button_value_changed (CtkScaleButton *button,
-                               gdouble         value,
-                               gpointer        user_data)
+                               gdouble         value G_GNUC_UNUSED,
+                               gpointer        user_data G_GNUC_UNUSED)
 {
   ctk_widget_trigger_tooltip_query (CTK_WIDGET (button));
 }
 
 static void
 on_record_button_toggled (CtkToggleButton *button,
-                          gpointer         user_data)
+                          gpointer         user_data G_GNUC_UNUSED)
 {
   CtkStyleContext *context;
 
@@ -438,7 +438,7 @@ on_record_button_toggled (CtkToggleButton *button,
 
 static void
 on_page_combo_changed (CtkComboBox *combo,
-                       gpointer     user_data)
+                       gpointer     user_data G_GNUC_UNUSED)
 {
   CtkWidget *from;
   CtkWidget *to;
@@ -511,7 +511,7 @@ on_range_to_changed (CtkSpinButton *to)
 static void
 update_header (CtkListBoxRow *row,
                CtkListBoxRow *before,
-               gpointer       data)
+               gpointer       data G_GNUC_UNUSED)
 {
   if (before != NULL &&
       ctk_list_box_row_get_header (row) == NULL)
@@ -532,7 +532,8 @@ info_bar_response (CtkWidget *infobar, gint response_id)
 }
 
 static void
-show_dialog (CtkWidget *button, CtkWidget *dialog)
+show_dialog (CtkWidget *button G_GNUC_UNUSED,
+             CtkWidget *dialog)
 {
   ctk_widget_show (dialog);
 }
@@ -566,13 +567,16 @@ demand_attention (gpointer stack)
 }
 
 static void
-action_dialog_button_clicked (CtkButton *button, CtkWidget *page)
+action_dialog_button_clicked (CtkButton *button G_GNUC_UNUSED,
+                              CtkWidget *page)
 {
   g_timeout_add (1000, demand_attention, page);
 }
 
 static void
-page_changed_cb (CtkWidget *stack, GParamSpec *pspec, gpointer data)
+page_changed_cb (CtkWidget  *stack,
+                 GParamSpec *pspec G_GNUC_UNUSED,
+                 gpointer    data G_GNUC_UNUSED)
 {
   const gchar *name;
   CtkWidget *window;
@@ -709,7 +713,9 @@ populate_model (CtkTreeStore *store)
 }
 
 static gboolean
-row_separator_func (CtkTreeModel *model, CtkTreeIter *iter, gpointer data)
+row_separator_func (CtkTreeModel *model,
+                    CtkTreeIter  *iter,
+                    gpointer      data G_GNUC_UNUSED)
 {
   gboolean is_sep;
 
@@ -720,8 +726,8 @@ row_separator_func (CtkTreeModel *model, CtkTreeIter *iter, gpointer data)
 
 static void
 update_title_header (CtkListBoxRow *row,
-                     CtkListBoxRow *before,
-                     gpointer       data)
+                     CtkListBoxRow *before G_GNUC_UNUSED,
+                     gpointer       data G_GNUC_UNUSED)
 {
   CtkWidget *header;
   gchar *title;
@@ -748,7 +754,9 @@ update_title_header (CtkListBoxRow *row,
 }
 
 static void
-overshot (CtkScrolledWindow *sw, CtkPositionType pos, CtkWidget *widget)
+overshot (CtkScrolledWindow *sw G_GNUC_UNUSED,
+          CtkPositionType    pos,
+          CtkWidget         *widget)
 {
   CtkWidget *box, *row, *label, *swatch;
   CdkRGBA rgba;
@@ -817,7 +825,9 @@ overshot (CtkScrolledWindow *sw, CtkPositionType pos, CtkWidget *widget)
 }
 
 static void
-rgba_changed (CtkColorChooser *chooser, GParamSpec *pspec, CtkListBox *box)
+rgba_changed (CtkColorChooser *chooser G_GNUC_UNUSED,
+              GParamSpec      *pspec G_GNUC_UNUSED,
+              CtkListBox      *box)
 {
   ctk_list_box_select_row (box, NULL);
 }
@@ -942,7 +952,7 @@ typedef struct {
 } BackgroundData;
 
 static void
-background_loaded_cb (GObject      *source,
+background_loaded_cb (GObject      *source G_GNUC_UNUSED,
                       GAsyncResult *res,
                       gpointer      data)
 {
@@ -1029,7 +1039,8 @@ populate_flowbox (CtkWidget *flowbox)
 }
 
 static void
-row_activated (CtkListBox *box, CtkListBoxRow *row)
+row_activated (CtkListBox    *box G_GNUC_UNUSED,
+               CtkListBoxRow *row)
 {
   CtkWidget *image;
   CtkWidget *dialog;
@@ -1082,7 +1093,7 @@ typedef CtkTextViewClass MyTextViewClass;
 G_DEFINE_TYPE (MyTextView, my_text_view, CTK_TYPE_TEXT_VIEW)
 
 static void
-my_text_view_init (MyTextView *tv)
+my_text_view_init (MyTextView *tv G_GNUC_UNUSED)
 {
 }
 
@@ -1185,7 +1196,7 @@ close_selection_dialog (CtkWidget *dialog, gint response, CtkWidget *tv)
 
 static void
 toggle_selection_mode (CtkSwitch  *sw,
-                       GParamSpec *pspec,
+                       GParamSpec *pspec G_GNUC_UNUSED,
                        CtkListBox *listbox)
 {
   if (ctk_switch_get_active (sw))
@@ -1242,7 +1253,9 @@ handle_cutcopypaste (CtkWidget *button, CtkWidget *textview)
 }
 
 static void
-clipboard_owner_change (CtkClipboard *clipboard, CdkEvent *event, CtkWidget *button)
+clipboard_owner_change (CtkClipboard *clipboard,
+                        CdkEvent     *event G_GNUC_UNUSED,
+                        CtkWidget    *button)
 {
   const gchar *id;
   gboolean has_text;
@@ -1255,7 +1268,7 @@ clipboard_owner_change (CtkClipboard *clipboard, CdkEvent *event, CtkWidget *but
 }
 
 static void
-textbuffer_notify_selection (GObject *object, GParamSpec *pspec, CtkWidget *button)
+textbuffer_notify_selection (GObject *object, GParamSpec *pspec G_GNUC_UNUSED, CtkWidget *button)
 {
   const gchar *id;
   gboolean has_selection;
@@ -1270,7 +1283,9 @@ textbuffer_notify_selection (GObject *object, GParamSpec *pspec, CtkWidget *butt
 }
 
 static gboolean
-osd_frame_button_press (CtkWidget *frame, CdkEventButton *event, gpointer data)
+osd_frame_button_press (CtkWidget      *frame,
+                        CdkEventButton *event G_GNUC_UNUSED,
+                        gpointer        data G_GNUC_UNUSED)
 {
   CtkWidget *osd;
   gboolean visible;
@@ -1285,7 +1300,7 @@ osd_frame_button_press (CtkWidget *frame, CdkEventButton *event, gpointer data)
 static gboolean
 page_combo_separator_func (CtkTreeModel *model,
                            CtkTreeIter  *iter,
-                           gpointer      data)
+                           gpointer      data G_GNUC_UNUSED)
 {
   gchar *text;
   gboolean res;
@@ -1391,7 +1406,9 @@ populate_popup (CtkTextView *tv,
 }
 
 static void
-open_popover_text_changed (CtkEntry *entry, GParamSpec *pspec, CtkWidget *button)
+open_popover_text_changed (CtkEntry   *entry,
+                           GParamSpec *pspec G_GNUC_UNUSED,
+                           CtkWidget  *button)
 {
   const gchar *text;
 
@@ -1445,15 +1462,15 @@ update_allowed (GPermission *permission,
 
 static gboolean
 acquire (GPermission   *permission,
-         GCancellable  *cancellable,
-         GError       **error)
+         GCancellable  *cancellable G_GNUC_UNUSED,
+         GError       **error G_GNUC_UNUSED)
 {
   return update_allowed (permission, TRUE);
 }
 
 static void
 acquire_async (GPermission         *permission,
-               GCancellable        *cancellable,
+               GCancellable        *cancellable G_GNUC_UNUSED,
                GAsyncReadyCallback  callback,
                gpointer             user_data)
 {
@@ -1465,7 +1482,7 @@ acquire_async (GPermission         *permission,
 }
 
 gboolean
-acquire_finish (GPermission   *permission,
+acquire_finish (GPermission   *permission G_GNUC_UNUSED,
                 GAsyncResult  *res,
                 GError       **error)
 {
@@ -1474,15 +1491,15 @@ acquire_finish (GPermission   *permission,
 
 static gboolean
 release (GPermission   *permission,
-         GCancellable  *cancellable,
-         GError       **error)
+         GCancellable  *cancellable G_GNUC_UNUSED,
+         GError       **error G_GNUC_UNUSED)
 {
   return update_allowed (permission, FALSE);
 }
 
 static void
 release_async (GPermission         *permission,
-               GCancellable        *cancellable,
+               GCancellable        *cancellable G_GNUC_UNUSED,
                GAsyncReadyCallback  callback,
                gpointer             user_data)
 {
@@ -1494,7 +1511,7 @@ release_async (GPermission         *permission,
 }
 
 gboolean
-release_finish (GPermission   *permission,
+release_finish (GPermission   *permission G_GNUC_UNUSED,
                 GAsyncResult  *result,
                 GError       **error)
 {
@@ -1631,13 +1648,15 @@ reset_icon_size (CtkWidget *iv)
 }
 
 static gchar *
-scale_format_value_blank (CtkScale *scale, gdouble value)
+scale_format_value_blank (CtkScale *scale G_GNUC_UNUSED,
+                          gdouble   value G_GNUC_UNUSED)
 {
   return g_strdup (" ");
 }
 
 static gchar *
-scale_format_value (CtkScale *scale, gdouble value)
+scale_format_value (CtkScale *scale G_GNUC_UNUSED,
+                    gdouble   value)
 {
   return g_strdup_printf ("%0.*f", 1, value);
 }
@@ -1654,7 +1673,7 @@ adjustment3_value_changed (CtkAdjustment *adj, CtkProgressBar *pbar)
 
 static void
 validate_more_details (CtkEntry   *entry,
-                       GParamSpec *pspec,
+                       GParamSpec *pspec G_GNUC_UNUSED,
                        CtkEntry   *details)
 {
   if (strlen (ctk_entry_get_text (entry)) > 0 &&
@@ -2018,9 +2037,9 @@ print_version (void)
 }
 
 static int
-local_options (GApplication *app,
+local_options (GApplication *app G_GNUC_UNUSED,
                GVariantDict *options,
-               gpointer      data)
+               gpointer      data G_GNUC_UNUSED)
 {
   gboolean version = FALSE;
 
