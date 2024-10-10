@@ -23,7 +23,7 @@
 
 static void
 dark_button_toggled_cb (CtkToggleButton *button,
-                        gpointer user_data)
+                        gpointer         user_data G_GNUC_UNUSED)
 {
   gboolean active = ctk_toggle_button_get_active (button);
   CtkSettings *settings = ctk_settings_get_default ();
