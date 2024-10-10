@@ -15,7 +15,8 @@ fill_text_view (CtkWidget *tv, const gchar *text)
 }
 
 int
-main (int argc, char *argv[])
+main (int   argc G_GNUC_UNUSED,
+      char *argv[] G_GNUC_UNUSED)
 {
   CtkWidget *win, *box, *tv, *sw, *sb;
   CtkAdjustment *adj;
