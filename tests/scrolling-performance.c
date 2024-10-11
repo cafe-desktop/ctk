@@ -20,10 +20,10 @@ typedef CtkTextViewClass MyTextViewClass;
 G_DEFINE_TYPE (MyTextView, my_text_view, CTK_TYPE_TEXT_VIEW)
 
 static void
-my_text_view_init (MyTextView *tv) {}
+my_text_view_init (MyTextView *tv G_GNUC_UNUSED) {}
 
 static void
-my_text_view_class_init (MyTextViewClass *tv_class) {}
+my_text_view_class_init (MyTextViewClass *tv_class G_GNUC_UNUSED) {}
 
 
 
@@ -67,7 +67,7 @@ set_adjustment_to_fraction (CtkAdjustment *adjustment,
 gboolean
 scroll_viewport (CtkWidget     *viewport,
                  CdkFrameClock *frame_clock,
-                 gpointer       user_data)
+                 gpointer       user_data G_GNUC_UNUSED)
 {
   static gint64 start_time;
   gint64 now = cdk_frame_clock_get_frame_time (frame_clock);
