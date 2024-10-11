@@ -19,7 +19,7 @@
 #include <cdk/cdkkeysyms.h>
 
 static void
-accel_edited_callback (CtkCellRendererText *cell,
+accel_edited_callback (CtkCellRendererText *cell G_GNUC_UNUSED,
                        const char          *path_string,
                        guint                keyval,
                        CdkModifierType      mask,
@@ -43,7 +43,7 @@ accel_edited_callback (CtkCellRendererText *cell,
 }
 
 static void
-accel_cleared_callback (CtkCellRendererText *cell,
+accel_cleared_callback (CtkCellRendererText *cell G_GNUC_UNUSED,
                         const char          *path_string,
                         gpointer             data)
 {
