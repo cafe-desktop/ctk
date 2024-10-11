@@ -100,7 +100,7 @@ close_callback (CtkWidget *widget)
 }
 
 static void
-apply_callback (CtkWidget *widget)
+apply_callback (CtkWidget *widget G_GNUC_UNUSED)
 {
   g_print ("apply\n");
 }
@@ -144,7 +144,7 @@ prepare_callback (CtkWidget *widget, CtkWidget *page)
 }
 
 static void
-create_simple_assistant (CtkWidget *widget)
+create_simple_assistant (CtkWidget *widget G_GNUC_UNUSED)
 {
   static CtkWidget *assistant = NULL;
 
@@ -188,7 +188,7 @@ create_simple_assistant (CtkWidget *widget)
 }
 
 static void
-create_anonymous_assistant (CtkWidget *widget)
+create_anonymous_assistant (CtkWidget *widget G_GNUC_UNUSED)
 {
   static CtkWidget *assistant = NULL;
 
@@ -242,7 +242,7 @@ visible_cb (CtkWidget *check,
 }
 
 static void
-create_generous_assistant (CtkWidget *widget)
+create_generous_assistant (CtkWidget *widget G_GNUC_UNUSED)
 {
   static CtkWidget *assistant = NULL;
 
@@ -328,13 +328,15 @@ create_generous_assistant (CtkWidget *widget)
 static gchar selected_branch = 'A';
 
 static void
-select_branch (CtkWidget *widget, gchar branch)
+select_branch (CtkWidget *widget G_GNUC_UNUSED,
+	       gchar      branch)
 {
   selected_branch = branch;
 }
 
 static gint
-nonlinear_assistant_forward_page (gint current_page, gpointer data)
+nonlinear_assistant_forward_page (gint     current_page,
+				  gpointer data G_GNUC_UNUSED)
 {
   switch (current_page)
     {
@@ -352,7 +354,7 @@ nonlinear_assistant_forward_page (gint current_page, gpointer data)
 }
 
 static void
-create_nonlinear_assistant (CtkWidget *widget)
+create_nonlinear_assistant (CtkWidget *widget G_GNUC_UNUSED)
 {
   static CtkWidget *assistant = NULL;
 
@@ -453,7 +455,7 @@ looping_assistant_forward_page (gint current_page, gpointer data)
 }
 
 static void
-create_looping_assistant (CtkWidget *widget)
+create_looping_assistant (CtkWidget *widget G_GNUC_UNUSED)
 {
   static CtkWidget *assistant = NULL;
 
@@ -520,7 +522,8 @@ create_looping_assistant (CtkWidget *widget)
 }
 
 static void
-toggle_invisible (CtkButton *button, CtkAssistant *assistant)
+toggle_invisible (CtkButton    *button G_GNUC_UNUSED,
+		  CtkAssistant *assistant)
 {
   CtkWidget *page;
 
@@ -530,7 +533,7 @@ toggle_invisible (CtkButton *button, CtkAssistant *assistant)
 }
 
 static void
-create_full_featured_assistant (CtkWidget *widget)
+create_full_featured_assistant (CtkWidget *widget G_GNUC_UNUSED)
 {
   static CtkWidget *assistant = NULL;
 
@@ -593,7 +596,8 @@ create_full_featured_assistant (CtkWidget *widget)
 }
 
 static void
-flip_pages (CtkButton *button, CtkAssistant *assistant)
+flip_pages (CtkButton    *button G_GNUC_UNUSED,
+	    CtkAssistant *assistant)
 {
   CtkWidget *page;
   gchar *title;
@@ -617,7 +621,7 @@ flip_pages (CtkButton *button, CtkAssistant *assistant)
 
 
 static void
-create_page_flipping_assistant (CtkWidget *widget)
+create_page_flipping_assistant (CtkWidget *widget G_GNUC_UNUSED)
 {
   static CtkWidget *assistant = NULL;
 
