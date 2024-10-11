@@ -240,10 +240,10 @@ begin_print (CtkPrintOperation *operation,
 }
 
 static void
-draw_page (CtkPrintOperation *operation,
-	   CtkPrintContext *context,
-	   int page_nr,
-	   PrintData *print_data)
+draw_page (CtkPrintOperation *operation G_GNUC_UNUSED,
+	   CtkPrintContext   *context,
+	   int                page_nr,
+	   PrintData         *print_data)
 {
   cairo_t *cr;
   GList *pagebreak;
@@ -303,7 +303,7 @@ draw_page (CtkPrintOperation *operation,
 
 static void
 status_changed_cb (CtkPrintOperation *op,
-		   gpointer user_data)
+		   gpointer           user_data G_GNUC_UNUSED)
 {
   if (ctk_print_operation_is_finished (op))
     {
@@ -340,9 +340,9 @@ create_custom_widget (CtkPrintOperation *operation,
 }
 
 static void
-custom_widget_apply (CtkPrintOperation *operation,
-		     CtkWidget *widget,
-		     PrintData *data)
+custom_widget_apply (CtkPrintOperation *operation G_GNUC_UNUSED,
+		     CtkWidget         *widget G_GNUC_UNUSED,
+		     PrintData         *data)
 {
   const char *selected_font;
   selected_font = ctk_font_chooser_get_font (CTK_FONT_CHOOSER (data->font_button));
@@ -364,7 +364,7 @@ typedef struct
 } PreviewOp;
 
 static gboolean
-preview_draw (CtkWidget *widget,
+preview_draw (CtkWidget *widget G_GNUC_UNUSED,
               cairo_t   *cr,
               gpointer   data)
 {
@@ -389,8 +389,8 @@ preview_draw (CtkWidget *widget,
 }
 
 static void
-preview_ready (CtkPrintOperationPreview *preview,
-	       CtkPrintContext          *context,
+preview_ready (CtkPrintOperationPreview *preview G_GNUC_UNUSED,
+	       CtkPrintContext          *context G_GNUC_UNUSED,
 	       gpointer                  data)
 {
   PreviewOp *pop = data;
@@ -409,7 +409,7 @@ preview_ready (CtkPrintOperationPreview *preview,
 }
 
 static void
-preview_got_page_size (CtkPrintOperationPreview *preview, 
+preview_got_page_size (CtkPrintOperationPreview *preview G_GNUC_UNUSED,
 		       CtkPrintContext          *context,
 		       CtkPageSetup             *page_setup,
 		       gpointer                  data)
@@ -455,7 +455,7 @@ update_page (CtkSpinButton *widget,
 }
 
 static void
-preview_destroy (CtkWindow *window, 
+preview_destroy (CtkWindow *window G_GNUC_UNUSED,
 		 PreviewOp *pop)
 {
   ctk_print_operation_preview_end_preview (pop->preview);
@@ -468,7 +468,7 @@ static gboolean
 preview_cb (CtkPrintOperation        *op,
 	    CtkPrintOperationPreview *preview,
 	    CtkPrintContext          *context,
-	    CtkWindow                *parent,
+	    CtkWindow                *parent G_GNUC_UNUSED,
 	    gpointer                  data)
 {
   CtkWidget *window, *close, *page, *hbox, *vbox, *da;
@@ -581,7 +581,9 @@ print_done (CtkPrintOperation *op,
 }
 
 static void
-end_print (CtkPrintOperation *op, CtkPrintContext *context, PrintData *print_data)
+end_print (CtkPrintOperation *op G_GNUC_UNUSED,
+           CtkPrintContext   *context G_GNUC_UNUSED,
+           PrintData         *print_data)
 {
   g_list_free (print_data->page_breaks);
   print_data->page_breaks = NULL;
@@ -590,7 +592,8 @@ end_print (CtkPrintOperation *op, CtkPrintContext *context, PrintData *print_dat
 }
 
 static void
-print_or_preview (GSimpleAction *action, CtkPrintOperationAction print_action)
+print_or_preview (GSimpleAction           *action G_GNUC_UNUSED,
+                  CtkPrintOperationAction  print_action)
 {
   CtkPrintOperation *print;
   PrintData *print_data;
@@ -630,9 +633,9 @@ print_or_preview (GSimpleAction *action, CtkPrintOperationAction print_action)
 }
 
 static void
-activate_page_setup (GSimpleAction *action,
-                     GVariant      *parameter,
-                     gpointer       user_data)
+activate_page_setup (GSimpleAction *action G_GNUC_UNUSED,
+                     GVariant      *parameter G_GNUC_UNUSED,
+                     gpointer       user_data G_GNUC_UNUSED)
 {
   CtkPageSetup *new_page_setup;
 
@@ -647,24 +650,24 @@ activate_page_setup (GSimpleAction *action,
 
 static void
 activate_print (GSimpleAction *action,
-                GVariant      *parameter,
-                gpointer       user_data)
+                GVariant      *parameter G_GNUC_UNUSED,
+                gpointer       user_data G_GNUC_UNUSED)
 {
   print_or_preview (action, CTK_PRINT_OPERATION_ACTION_PRINT_DIALOG);
 }
 
 static void
 activate_preview (GSimpleAction *action,
-                GVariant      *parameter,
-                gpointer       user_data)
+                  GVariant      *parameter G_GNUC_UNUSED,
+                  gpointer       user_data G_GNUC_UNUSED)
 {
   print_or_preview (action, CTK_PRINT_OPERATION_ACTION_PREVIEW);
 }
 
 static void
-activate_save_as (GSimpleAction *action,
-                  GVariant      *parameter,
-                  gpointer       user_data)
+activate_save_as (GSimpleAction *action G_GNUC_UNUSED,
+                  GVariant      *parameter G_GNUC_UNUSED,
+                  gpointer       user_data G_GNUC_UNUSED)
 {
   CtkWidget *dialog;
   gint response;
@@ -692,8 +695,8 @@ activate_save_as (GSimpleAction *action,
 
 static void
 activate_save (GSimpleAction *action,
-               GVariant      *parameter,
-               gpointer       user_data)
+               GVariant      *parameter G_GNUC_UNUSED,
+               gpointer       user_data G_GNUC_UNUSED)
 {
   if (filename == NULL)
     activate_save_as (action, NULL, NULL);
@@ -702,9 +705,9 @@ activate_save (GSimpleAction *action,
 }
 
 static void
-activate_open (GSimpleAction *action,
-               GVariant      *parameter,
-               gpointer       user_data)
+activate_open (GSimpleAction *action G_GNUC_UNUSED,
+               GVariant      *parameter G_GNUC_UNUSED,
+               gpointer       user_data G_GNUC_UNUSED)
 {
   CtkWidget *dialog;
   gint response;
@@ -731,9 +734,9 @@ activate_open (GSimpleAction *action,
 }
 
 static void
-activate_new (GSimpleAction *action,
-              GVariant      *parameter,
-              gpointer       user_data)
+activate_new (GSimpleAction *action G_GNUC_UNUSED,
+              GVariant      *parameter G_GNUC_UNUSED,
+              gpointer       user_data G_GNUC_UNUSED)
 {
   g_free (filename);
   filename = NULL;
@@ -741,9 +744,9 @@ activate_new (GSimpleAction *action,
 }
 
 static void
-activate_about (GSimpleAction *action,
-                GVariant      *parameter,
-                gpointer       user_data)
+activate_about (GSimpleAction *action G_GNUC_UNUSED,
+                GVariant      *parameter G_GNUC_UNUSED,
+                gpointer       user_data G_GNUC_UNUSED)
 {
   const gchar *authors[] = {
     "Alexander Larsson",
@@ -760,8 +763,8 @@ activate_about (GSimpleAction *action,
 }
 
 static void
-activate_quit (GSimpleAction *action,
-               GVariant      *parameter,
+activate_quit (GSimpleAction *action G_GNUC_UNUSED,
+               GVariant      *parameter G_GNUC_UNUSED,
                gpointer       user_data)
 {
   CtkApplication *app = user_data;
@@ -854,23 +857,23 @@ static const gchar ui_info[] =
   "</interface>";
 
 static void
-buffer_changed_callback (CtkTextBuffer *buffer)
+buffer_changed_callback (CtkTextBuffer *buffer G_GNUC_UNUSED)
 {
   file_changed = TRUE;
   update_statusbar ();
 }
 
 static void
-mark_set_callback (CtkTextBuffer     *buffer,
-                   const CtkTextIter *new_location,
-                   CtkTextMark       *mark,
-                   gpointer           data)
+mark_set_callback (CtkTextBuffer     *buffer G_GNUC_UNUSED,
+                   const CtkTextIter *new_location G_GNUC_UNUSED,
+                   CtkTextMark       *mark G_GNUC_UNUSED,
+                   gpointer           data G_GNUC_UNUSED)
 {
   update_statusbar ();
 }
 
 static gint
-command_line (GApplication            *application,
+command_line (GApplication            *application G_GNUC_UNUSED,
               GApplicationCommandLine *command_line)
 {
   int argc;
