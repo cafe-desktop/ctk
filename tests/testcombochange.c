@@ -192,7 +192,7 @@ static int n_animations = 0;
 static int timer = 0;
 
 static gint
-animation_timer (gpointer data)
+animation_timer (gpointer data G_GNUC_UNUSED)
 {
   switch (g_random_int_range (0, 3)) 
     {
