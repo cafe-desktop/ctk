@@ -40,7 +40,7 @@ enum {
 };
 
 static void
-image_drag_begin (CtkWidget      *widget,
+image_drag_begin (CtkWidget      *widget G_GNUC_UNUSED,
                   CdkDragContext *context,
                   gpointer        data)
 {
@@ -81,7 +81,9 @@ window_destroyed (CtkWidget *window, gpointer data)
 }
 
 static void
-window_drag_end (CtkWidget *ebox, CdkDragContext *context, gpointer data)
+window_drag_end (CtkWidget      *ebox,
+                 CdkDragContext *context G_GNUC_UNUSED,
+                 gpointer        data)
 {
   CtkWidget *window = data;
 
@@ -158,11 +160,11 @@ update_dest_target_list (CtkWidget *ebox)
 }
 
 void
-image_drag_data_get (CtkWidget        *widget,
-                     CdkDragContext   *context,
+image_drag_data_get (CtkWidget        *widget G_GNUC_UNUSED,
+                     CdkDragContext   *context G_GNUC_UNUSED,
                      CtkSelectionData *selection_data,
                      guint             info,
-                     guint             time,
+                     guint             time G_GNUC_UNUSED,
                      gpointer          data)
 {
   GdkPixbuf *pixbuf;
@@ -188,13 +190,13 @@ image_drag_data_get (CtkWidget        *widget,
 }
 
 static void
-image_drag_data_received (CtkWidget        *widget,
-                          CdkDragContext   *context,
-                          gint              x,
-                          gint              y,
+image_drag_data_received (CtkWidget        *widget G_GNUC_UNUSED,
+                          CdkDragContext   *context G_GNUC_UNUSED,
+                          gint              x G_GNUC_UNUSED,
+                          gint              y G_GNUC_UNUSED,
                           CtkSelectionData *selection_data,
                           guint             info,
-                          guint32           time,
+                          guint32           time G_GNUC_UNUSED,
                           gpointer          data)
 {
   GdkPixbuf *pixbuf;
@@ -272,9 +274,9 @@ make_image2 (const gchar *icon_name, int hotspot)
 }
 
 static void
-spinner_drag_begin (CtkWidget      *widget,
+spinner_drag_begin (CtkWidget      *widget G_GNUC_UNUSED,
                     CdkDragContext *context,
-                    gpointer        data)
+                    gpointer        data G_GNUC_UNUSED)
 {
   CtkWidget *spinner;
 
@@ -288,9 +290,9 @@ spinner_drag_begin (CtkWidget      *widget,
 }
 
 static void
-spinner_drag_end (CtkWidget      *widget,
+spinner_drag_end (CtkWidget      *widget G_GNUC_UNUSED,
                   CdkDragContext *context,
-                  gpointer        data)
+                  gpointer        data G_GNUC_UNUSED)
 {
   CtkWidget *spinner;
 
@@ -300,10 +302,10 @@ spinner_drag_end (CtkWidget      *widget,
 }
 
 static gboolean
-spinner_drag_failed (CtkWidget      *widget,
-                     CdkDragContext *context,
+spinner_drag_failed (CtkWidget      *widget G_GNUC_UNUSED,
+                     CdkDragContext *context G_GNUC_UNUSED,
                      CtkDragResult   result,
-                     gpointer        data)
+                     gpointer        data G_GNUC_UNUSED)
 {
   GTypeClass *class;
   GEnumValue *value;
@@ -317,12 +319,12 @@ spinner_drag_failed (CtkWidget      *widget,
 }
 
 void
-spinner_drag_data_get (CtkWidget        *widget,
-                       CdkDragContext   *context,
+spinner_drag_data_get (CtkWidget        *widget G_GNUC_UNUSED,
+                       CdkDragContext   *context G_GNUC_UNUSED,
                        CtkSelectionData *selection_data,
-                       guint             info,
-                       guint             time,
-                       gpointer          data)
+                       guint             info G_GNUC_UNUSED,
+                       guint             time G_GNUC_UNUSED,
+                       gpointer          data G_GNUC_UNUSED)
 {
   g_print ("CtkWidget::drag-data-get\n");
   ctk_selection_data_set_text (selection_data, "ACTIVE", -1);
@@ -351,7 +353,8 @@ make_spinner (void)
 }
 
 int
-main (int argc, char *Argv[])
+main (int   argc G_GNUC_UNUSED,
+      char *Argv[] G_GNUC_UNUSED)
 {
   CtkWidget *window;
   CtkWidget *grid;
