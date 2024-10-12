@@ -123,7 +123,8 @@ spacing_changed (CtkSpinButton *spin, CtkBox *box)
 }
 
 int
-main (int argc, char *argv[])
+main (int   argc G_GNUC_UNUSED,
+      char *argv[] G_GNUC_UNUSED)
 {
   CtkWidget *window;
   CtkWidget *vbox;
