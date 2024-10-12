@@ -303,9 +303,9 @@ static CtkTargetEntry target_table[] = {
 static guint n_targets = sizeof(target_table) / sizeof(target_table[0]);
 
 void  
-target_drag_leave	   (CtkWidget	       *widget,
-			    CdkDragContext     *context,
-			    guint               time)
+target_drag_leave (CtkWidget      *widget,
+		   CdkDragContext *context G_GNUC_UNUSED,
+		   guint           time G_GNUC_UNUSED)
 {
   g_print("leave\n");
   have_drag = FALSE;
@@ -313,11 +313,11 @@ target_drag_leave	   (CtkWidget	       *widget,
 }
 
 gboolean
-target_drag_motion	   (CtkWidget	       *widget,
-			    CdkDragContext     *context,
-			    gint                x,
-			    gint                y,
-			    guint               time)
+target_drag_motion (CtkWidget      *widget,
+		    CdkDragContext *context,
+		    gint            x G_GNUC_UNUSED,
+		    gint            y G_GNUC_UNUSED,
+		    guint           time)
 {
   CtkWidget *source_widget;
   GList *tmp_list;
@@ -349,11 +349,11 @@ target_drag_motion	   (CtkWidget	       *widget,
 }
 
 gboolean
-target_drag_drop	   (CtkWidget	       *widget,
-			    CdkDragContext     *context,
-			    gint                x,
-			    gint                y,
-			    guint               time)
+target_drag_drop (CtkWidget      *widget,
+		  CdkDragContext *context,
+		  gint            x G_GNUC_UNUSED,
+		  gint            y G_GNUC_UNUSED,
+		  guint           time)
 {
   g_print("drop\n");
   have_drag = FALSE;
@@ -372,13 +372,13 @@ target_drag_drop	   (CtkWidget	       *widget,
 }
 
 void  
-target_drag_data_received  (CtkWidget          *widget,
-			    CdkDragContext     *context,
-			    gint                x,
-			    gint                y,
-			    CtkSelectionData   *selection_data,
-			    guint               info,
-			    guint               time)
+target_drag_data_received (CtkWidget        *widget G_GNUC_UNUSED,
+			   CdkDragContext   *context,
+			   gint              x G_GNUC_UNUSED,
+			   gint              y G_GNUC_UNUSED,
+			   CtkSelectionData *selection_data,
+			   guint             info G_GNUC_UNUSED,
+			   guint             time)
 {
   if (ctk_selection_data_get_length (selection_data) >= 0 &&
       ctk_selection_data_get_format (selection_data) == 8)
@@ -392,13 +392,13 @@ target_drag_data_received  (CtkWidget          *widget,
 }
   
 void  
-label_drag_data_received  (CtkWidget          *widget,
-			    CdkDragContext     *context,
-			    gint                x,
-			    gint                y,
-			    CtkSelectionData   *selection_data,
-			    guint               info,
-			    guint               time)
+label_drag_data_received (CtkWidget          *widget G_GNUC_UNUSED,
+			  CdkDragContext     *context,
+			  gint                x G_GNUC_UNUSED,
+			  gint                y G_GNUC_UNUSED,
+			  CtkSelectionData   *selection_data,
+			  guint               info G_GNUC_UNUSED,
+			  guint               time)
 {
   if (ctk_selection_data_get_length (selection_data) >= 0 &&
       ctk_selection_data_get_format (selection_data) == 8)
@@ -412,12 +412,12 @@ label_drag_data_received  (CtkWidget          *widget,
 }
 
 void  
-source_drag_data_get  (CtkWidget          *widget,
-		       CdkDragContext     *context,
-		       CtkSelectionData   *selection_data,
-		       guint               info,
-		       guint               time,
-		       gpointer            data)
+source_drag_data_get (CtkWidget          *widget G_GNUC_UNUSED,
+		      CdkDragContext     *context G_GNUC_UNUSED,
+		      CtkSelectionData   *selection_data,
+		      guint               info,
+		      guint               time G_GNUC_UNUSED,
+		      gpointer            data G_GNUC_UNUSED)
 {
   if (info == TARGET_ROOTWIN)
     g_print ("I was dropped on the rootwin\n");
@@ -439,7 +439,7 @@ static guint popdown_timer = 0;
 static guint popup_timer = 0;
 
 gint
-popdown_cb (gpointer data)
+popdown_cb (gpointer data G_GNUC_UNUSED)
 {
   popdown_timer = 0;
 
@@ -450,11 +450,11 @@ popdown_cb (gpointer data)
 }
 
 gboolean
-popup_motion	   (CtkWidget	       *widget,
-		    CdkDragContext     *context,
-		    gint                x,
-		    gint                y,
-		    guint               time)
+popup_motion (CtkWidget      *widget G_GNUC_UNUSED,
+	      CdkDragContext *context G_GNUC_UNUSED,
+	      gint            x G_GNUC_UNUSED,
+	      gint            y G_GNUC_UNUSED,
+	      guint           time G_GNUC_UNUSED)
 {
   if (!in_popup)
     {
@@ -471,9 +471,9 @@ popup_motion	   (CtkWidget	       *widget,
 }
 
 void  
-popup_leave	   (CtkWidget	       *widget,
-		    CdkDragContext     *context,
-		    guint               time)
+popup_leave (CtkWidget      *widget G_GNUC_UNUSED,
+	     CdkDragContext *context G_GNUC_UNUSED,
+	     guint           time G_GNUC_UNUSED)
 {
   if (in_popup)
     {
@@ -487,7 +487,7 @@ popup_leave	   (CtkWidget	       *widget,
 }
 
 gboolean
-popup_cb (gpointer data)
+popup_cb (gpointer data G_GNUC_UNUSED)
 {
   if (!popped_up)
     {
@@ -539,11 +539,11 @@ popup_cb (gpointer data)
 }
 
 gboolean
-popsite_motion	   (CtkWidget	       *widget,
-		    CdkDragContext     *context,
-		    gint                x,
-		    gint                y,
-		    guint               time)
+popsite_motion (CtkWidget      *widget G_GNUC_UNUSED,
+		CdkDragContext *context G_GNUC_UNUSED,
+		gint            x G_GNUC_UNUSED,
+		gint            y G_GNUC_UNUSED,
+		guint           time G_GNUC_UNUSED)
 {
   if (!popup_timer)
     popup_timer = cdk_threads_add_timeout (500, popup_cb, NULL);
@@ -552,9 +552,9 @@ popsite_motion	   (CtkWidget	       *widget,
 }
 
 void  
-popsite_leave	   (CtkWidget	       *widget,
-		    CdkDragContext     *context,
-		    guint               time)
+popsite_leave (CtkWidget      *widget G_GNUC_UNUSED,
+	       CdkDragContext *context G_GNUC_UNUSED,
+	       guint           time G_GNUC_UNUSED)
 {
   if (popup_timer)
     {
@@ -564,9 +564,9 @@ popsite_leave	   (CtkWidget	       *widget,
 }
 
 void  
-source_drag_data_delete  (CtkWidget          *widget,
-			  CdkDragContext     *context,
-			  gpointer            data)
+source_drag_data_delete (CtkWidget      *widget G_GNUC_UNUSED,
+			 CdkDragContext *context G_GNUC_UNUSED,
+			 gpointer        data G_GNUC_UNUSED)
 {
   g_print ("Delete the data!\n");
 }
