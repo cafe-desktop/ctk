@@ -925,7 +925,7 @@ static TestInterface interfaces[] = {
 
 
 static void
-test_clicked (CtkWidget     *button, 
+test_clicked (CtkWidget     *button G_GNUC_UNUSED,
               TestInterface *interface)
 {
   if (!interface->window)
@@ -988,7 +988,9 @@ create_window (void)
 }
 
 static gboolean
-main_window_delete_cb (CtkWidget *widget, CdkEvent *event, gpointer user_data)
+main_window_delete_cb (CtkWidget *widget,
+		       CdkEvent  *event G_GNUC_UNUSED,
+		       gpointer   user_data G_GNUC_UNUSED)
 {
   gsize i;
 
