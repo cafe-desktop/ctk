@@ -33,7 +33,9 @@ test_widget (const gchar *label, const gchar *color)
 static CtkOrientation o;
 
 static gboolean
-toggle_orientation (CtkWidget *window, CdkEventButton *event, CtkGrid *grid)
+toggle_orientation (CtkWidget      *window G_GNUC_UNUSED,
+		    CdkEventButton *event G_GNUC_UNUSED,
+		    CtkGrid        *grid)
 {
   o = 1 - o;
 
@@ -452,7 +454,8 @@ spanning_grid (void)
 }
 
 int
-main (int argc, char *argv[])
+main (int   argc G_GNUC_UNUSED,
+      char *argv[] G_GNUC_UNUSED)
 {
   ctk_init (NULL, NULL);
 
