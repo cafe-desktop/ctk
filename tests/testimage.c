@@ -19,7 +19,7 @@
 #include <gio/gio.h>
 
 static void
-drag_begin (CtkWidget      *widget,
+drag_begin (CtkWidget      *widget G_GNUC_UNUSED,
 	    CdkDragContext *context,
 	    gpointer        data)
 {
@@ -31,11 +31,11 @@ drag_begin (CtkWidget      *widget,
 }
 
 void  
-drag_data_get  (CtkWidget        *widget,
-		CdkDragContext   *context,
+drag_data_get  (CtkWidget        *widget G_GNUC_UNUSED,
+		CdkDragContext   *context G_GNUC_UNUSED,
 		CtkSelectionData *selection_data,
-		guint             info,
-		guint             time,
+		guint             info G_GNUC_UNUSED,
+		guint             time G_GNUC_UNUSED,
 		gpointer          data)
 {
   CtkWidget *image = CTK_WIDGET (data);
@@ -46,13 +46,13 @@ drag_data_get  (CtkWidget        *widget,
 }
 
 static void
-drag_data_received (CtkWidget        *widget,
-		    CdkDragContext   *context,
-		    gint              x,
-		    gint              y,
-		    CtkSelectionData *selection_data,
-		    guint             info,
-		    guint32           time,
+drag_data_received (CtkWidget        *widget G_GNUC_UNUSED,
+		    CdkDragContext   *context G_GNUC_UNUSED,
+		    gint              x G_GNUC_UNUSED,
+		    gint              y G_GNUC_UNUSED,
+		    CtkSelectionData *selection_data G_GNUC_UNUSED,
+		    guint             info G_GNUC_UNUSED,
+		    guint32           time G_GNUC_UNUSED,
 		    gpointer          data)
 {
   CtkWidget *image = CTK_WIDGET (data);
@@ -68,7 +68,7 @@ drag_data_received (CtkWidget        *widget,
 }
 
 static gboolean
-idle_func (gpointer data)
+idle_func (gpointer data G_GNUC_UNUSED)
 {
   g_print ("keep me busy\n");
 
@@ -77,7 +77,7 @@ idle_func (gpointer data)
 
 static gboolean
 anim_image_draw (CtkWidget *widget,
-                 cairo_t   *cr,
+                 cairo_t   *cr G_GNUC_UNUSED,
                  gpointer   data)
 {
   g_print ("start busyness\n");
