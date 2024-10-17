@@ -1,7 +1,9 @@
 #include <ctk/ctk.h>
 
 static void
-row_unrevealed (GObject *revealer, GParamSpec *pspec, gpointer data)
+row_unrevealed (GObject    *revealer,
+		GParamSpec *pspec G_GNUC_UNUSED,
+		gpointer    data G_GNUC_UNUSED)
 {
   CtkWidget *row, *list;
 
@@ -12,7 +14,8 @@ row_unrevealed (GObject *revealer, GParamSpec *pspec, gpointer data)
 }
 
 static void
-remove_this_row (CtkButton *button, CtkWidget *child)
+remove_this_row (CtkButton *button G_GNUC_UNUSED,
+		 CtkWidget *child)
 {
   CtkWidget *row, *revealer;
 
@@ -30,7 +33,9 @@ remove_this_row (CtkButton *button, CtkWidget *child)
 static CtkWidget *create_row (const gchar *label);
 
 static void
-row_revealed (GObject *revealer, GParamSpec *pspec, gpointer data)
+row_revealed (GObject    *revealer,
+	      GParamSpec *pspec G_GNUC_UNUSED,
+	      gpointer    data G_GNUC_UNUSED)
 {
   CtkWidget *row, *child;
 
@@ -44,7 +49,8 @@ row_revealed (GObject *revealer, GParamSpec *pspec, gpointer data)
 }
 
 static void
-add_row_below (CtkButton *button, CtkWidget *child)
+add_row_below (CtkButton *button G_GNUC_UNUSED,
+	       CtkWidget *child)
 {
   CtkWidget *revealer, *row, *list;
   gint index;
@@ -63,7 +69,9 @@ add_row_below (CtkButton *button, CtkWidget *child)
 }
 
 static void
-add_separator (CtkListBoxRow *row, CtkListBoxRow *before, gpointer data)
+add_separator (CtkListBoxRow *row,
+	       CtkListBoxRow *before,
+	       gpointer       data G_GNUC_UNUSED)
 {
   if (!before)
     return;
@@ -93,7 +101,8 @@ create_row (const gchar *text)
   return row;
 }
 
-int main (int argc, char *argv[])
+int main (int   argc G_GNUC_UNUSED,
+	  char *argv[] G_GNUC_UNUSED)
 {
   CtkWidget *window, *list, *sw;
   gint i;
