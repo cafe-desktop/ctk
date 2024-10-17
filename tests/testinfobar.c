@@ -7,7 +7,7 @@ typedef enum {
 static void
 on_info_bar_response (CtkInfoBar *info_bar,
                       int         response_id,
-                      void       *user_data)
+                      void       *user_data G_GNUC_UNUSED)
 {
   switch (response_id)
   {
@@ -26,7 +26,7 @@ on_info_bar_response (CtkInfoBar *info_bar,
 
 static void
 on_activate (GApplication *application,
-             void         *user_data)
+             void         *user_data G_GNUC_UNUSED)
 {
   CtkWidget *box;
   CtkWidget *info_bar;
