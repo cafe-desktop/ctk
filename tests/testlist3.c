@@ -7,7 +7,7 @@ static CtkTargetEntry entries[] = {
 static void
 drag_begin (CtkWidget      *widget,
             CdkDragContext *context,
-            gpointer        data)
+            gpointer        data G_GNUC_UNUSED)
 {
   CtkWidget *row;
   CtkAllocation alloc;
@@ -39,8 +39,8 @@ drag_begin (CtkWidget      *widget,
 
 static void
 drag_end (CtkWidget      *widget,
-          CdkDragContext *context,
-          gpointer        data)
+          CdkDragContext *context G_GNUC_UNUSED,
+          gpointer        data G_GNUC_UNUSED)
 {
   CtkWidget *row;
 
@@ -52,11 +52,11 @@ drag_end (CtkWidget      *widget,
 
 void
 drag_data_get (CtkWidget        *widget,
-               CdkDragContext   *context,
+               CdkDragContext   *context G_GNUC_UNUSED,
                CtkSelectionData *selection_data,
-               guint             info,
-               guint             time,
-               gpointer          data)
+               guint             info G_GNUC_UNUSED,
+               guint             time G_GNUC_UNUSED,
+               gpointer          data G_GNUC_UNUSED)
 {
   ctk_selection_data_set (selection_data,
                           cdk_atom_intern_static_string ("CTK_LIST_BOX_ROW"),
@@ -101,13 +101,13 @@ get_row_after (CtkListBox    *list,
 
 static void
 drag_data_received (CtkWidget        *widget,
-                    CdkDragContext   *context,
-                    gint              x,
-                    gint              y,
+                    CdkDragContext   *context G_GNUC_UNUSED,
+                    gint              x G_GNUC_UNUSED,
+                    gint              y G_GNUC_UNUSED,
                     CtkSelectionData *selection_data,
-                    guint             info,
-                    guint32           time,
-                    gpointer          data)
+                    guint             info G_GNUC_UNUSED,
+                    guint32           time G_GNUC_UNUSED,
+                    gpointer          data G_GNUC_UNUSED)
 {
   CtkWidget *row_before;
   CtkWidget *row_after;
@@ -146,10 +146,10 @@ drag_data_received (CtkWidget        *widget,
 
 static gboolean
 drag_motion (CtkWidget      *widget,
-             CdkDragContext *context,
-             int             x,
+             CdkDragContext *context G_GNUC_UNUSED,
+             int             x G_GNUC_UNUSED,
              int             y,
-             guint           time)
+             guint           time G_GNUC_UNUSED)
 {
   CtkAllocation alloc;
   CtkWidget *row;
@@ -214,8 +214,8 @@ drag_motion (CtkWidget      *widget,
 
 static void
 drag_leave (CtkWidget      *widget,
-            CdkDragContext *context,
-            guint           time)
+            CdkDragContext *context G_GNUC_UNUSED,
+            guint           time G_GNUC_UNUSED)
 {
   CtkWidget *drag_row;
   CtkWidget *row_before;
@@ -258,7 +258,7 @@ create_row (const gchar *text)
 }
 
 static void
-on_row_activated (CtkListBox *self,
+on_row_activated (CtkListBox *self G_GNUC_UNUSED,
                   CtkWidget  *child)
 {
   const char *id;
@@ -267,13 +267,13 @@ on_row_activated (CtkListBox *self,
 }
 
 static void
-on_selected_children_changed (CtkListBox *self)
+on_selected_children_changed (CtkListBox *self G_GNUC_UNUSED)
 {
   g_message ("Selection changed");
 }
 
 static void
-a11y_selection_changed (AtkObject *obj)
+a11y_selection_changed (AtkObject *obj G_GNUC_UNUSED)
 {
   g_message ("Accessible selection changed");
 }
@@ -324,7 +324,8 @@ static const char *css =
 ;
 
 int
-main (int argc, char *argv[])
+main (int   argc G_GNUC_UNUSED,
+      char *argv[] G_GNUC_UNUSED)
 {
   CtkWidget *window, *list, *sw;
   CtkWidget *hbox, *vbox, *combo, *button;
