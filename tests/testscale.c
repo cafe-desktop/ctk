@@ -24,7 +24,7 @@ CtkWidget *flipbox;
 CtkWidget *extra_scale;
 
 static void
-invert (CtkButton *button)
+invert (CtkButton *button G_GNUC_UNUSED)
 {
   GSList *l;
 
@@ -36,7 +36,7 @@ invert (CtkButton *button)
 }
 
 static void
-flip (CtkButton *button)
+flip (CtkButton *button G_GNUC_UNUSED)
 {
   GSList *l;
 
