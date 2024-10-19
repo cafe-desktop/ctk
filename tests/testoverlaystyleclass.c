@@ -1,9 +1,9 @@
 #include <ctk/ctk.h>
 
 static void
-child_size_allocate (CtkWidget *child,
-                     CdkRectangle *allocation,
-                     gpointer user_data)
+child_size_allocate (CtkWidget    *child,
+                     CdkRectangle *allocation G_GNUC_UNUSED,
+                     gpointer      user_data G_GNUC_UNUSED)
 {
   CtkStyleContext *context;
   context = ctk_widget_get_style_context (child);
@@ -17,10 +17,10 @@ child_size_allocate (CtkWidget *child,
 }
 
 static gboolean
-overlay_get_child_position (CtkOverlay *overlay,
-                            CtkWidget *child,
+overlay_get_child_position (CtkOverlay   *overlay G_GNUC_UNUSED,
+                            CtkWidget    *child,
                             CdkRectangle *allocation,
-                            gpointer user_data)
+                            gpointer      user_data)
 {
   CtkWidget *custom_child = user_data;
   CtkRequisition req;
