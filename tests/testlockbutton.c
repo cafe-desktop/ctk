@@ -46,7 +46,7 @@ struct _GTestPermissionClass
 G_DEFINE_TYPE (GTestPermission, g_test_permission, G_TYPE_PERMISSION)
 
 static void
-g_test_permission_init (GTestPermission *test)
+g_test_permission_init (GTestPermission *test G_GNUC_UNUSED)
 {
 }
 
@@ -78,7 +78,7 @@ update_allowed (GTestPermission  *test,
 
 static gboolean
 acquire (GPermission   *permission,
-         GCancellable  *cancellable,
+         GCancellable  *cancellable G_GNUC_UNUSED,
          GError       **error)
 {
   GTestPermission *test = G_TEST_PERMISSION (permission);
@@ -103,7 +103,7 @@ acquire_async (GPermission         *permission,
 
 gboolean
 acquire_finish (GPermission   *permission,
-                GAsyncResult  *result,
+                GAsyncResult  *result G_GNUC_UNUSED,
                 GError       **error)
 {
   GTestPermission *test = G_TEST_PERMISSION (permission);
@@ -113,7 +113,7 @@ acquire_finish (GPermission   *permission,
 
 static gboolean
 release (GPermission   *permission,
-         GCancellable  *cancellable,
+         GCancellable  *cancellable G_GNUC_UNUSED,
          GError       **error)
 {
   GTestPermission *test = G_TEST_PERMISSION (permission);
@@ -137,7 +137,7 @@ release_async (GPermission         *permission,
 
 gboolean
 release_finish (GPermission   *permission,
-                GAsyncResult  *result,
+                GAsyncResult  *result G_GNUC_UNUSED,
                 GError       **error)
 {
   GTestPermission *test = G_TEST_PERMISSION (permission);
@@ -171,7 +171,8 @@ static CtkWidget *can_release_button;
 static CtkWidget *success_button;
 
 static void
-update_clicked (CtkButton *button, CtkLockButton *lockbutton)
+update_clicked (CtkButton     *button G_GNUC_UNUSED,
+		CtkLockButton *lockbutton)
 {
   GPermission *permission;
   gboolean allowed, can_acquire, can_release;
@@ -191,7 +192,7 @@ static CtkWidget *content;
 
 static void
 permission_changed (GPermission *permission,
-                    GParamSpec  *pspec)
+                    GParamSpec  *pspec G_GNUC_UNUSED)
 {
   gboolean allowed, can_acquire, can_release;
 
