@@ -159,11 +159,11 @@ selection_toggled (CtkWidget *widget)
 }
 
 void
-selection_get (CtkWidget *widget, 
+selection_get (CtkWidget        *widget G_GNUC_UNUSED, 
 	       CtkSelectionData *selection_data,
-	       guint      info,
-	       guint      time,
-	       gpointer   data)
+	       guint             info,
+	       guint             time G_GNUC_UNUSED,
+	       gpointer          data G_GNUC_UNUSED)
 {
   guchar *buffer;
   gint len;
@@ -195,7 +195,8 @@ selection_get (CtkWidget *widget,
 }
 
 gint
-selection_clear (CtkWidget *widget, CdkEventSelection *event)
+selection_clear (CtkWidget         *widget G_GNUC_UNUSED,
+		 CdkEventSelection *event G_GNUC_UNUSED)
 {
   have_selection = FALSE;
   ctk_toggle_button_set_active (CTK_TOGGLE_BUTTON(selection_button), FALSE);
@@ -265,7 +266,8 @@ stringify_span (guchar *data, gint *position)
 }
 
 void
-selection_received (CtkWidget *widget, CtkSelectionData *selection_data)
+selection_received (CtkWidget        *widget G_GNUC_UNUSED,
+		    CtkSelectionData *selection_data)
 {
   int position;
   int i;
