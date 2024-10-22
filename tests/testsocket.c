@@ -43,9 +43,9 @@ extern guint32 create_child_plug (guint32  xid,
 				  gboolean local);
 
 static void
-quit_cb (gpointer        callback_data,
-	 guint           callback_action,
-	 CtkWidget      *widget)
+quit_cb (gpointer   callback_data G_GNUC_UNUSED,
+	 guint      callback_action G_GNUC_UNUSED,
+	 CtkWidget *widget G_GNUC_UNUSED)
 {
   CtkWidget *message_dialog = ctk_message_dialog_new (CTK_WINDOW (window), 0,
 						      CTK_MESSAGE_QUESTION,
@@ -60,7 +60,7 @@ quit_cb (gpointer        callback_data,
 }
 
 static void
-socket_destroyed (CtkWidget *widget,
+socket_destroyed (CtkWidget *widget G_GNUC_UNUSED,
 		  Socket    *socket)
 {
   sockets = g_slist_remove (sockets, socket);
@@ -68,7 +68,7 @@ socket_destroyed (CtkWidget *widget,
 }
 
 static void
-plug_added (CtkWidget *widget,
+plug_added (CtkWidget *widget G_GNUC_UNUSED,
 	    Socket    *socket)
 {
   g_print ("Plug added to socket\n");
@@ -78,7 +78,7 @@ plug_added (CtkWidget *widget,
 }
 
 static gboolean
-plug_removed (CtkWidget *widget,
+plug_removed (CtkWidget *widget G_GNUC_UNUSED,
 	      Socket    *socket)
 {
   g_print ("Plug removed from socket\n");
@@ -126,7 +126,7 @@ create_socket (void)
 }
 
 void
-remove_child (CtkWidget *window)
+remove_child (CtkWidget *window G_GNUC_UNUSED)
 {
   if (sockets)
     {
@@ -136,7 +136,9 @@ remove_child (CtkWidget *window)
 }
 
 static gboolean
-child_read_watch (GIOChannel *channel, GIOCondition cond, gpointer data)
+child_read_watch (GIOChannel   *channel,
+		  GIOCondition  cond G_GNUC_UNUSED,
+		  gpointer      data G_GNUC_UNUSED)
 {
   GIOStatus status;
   GError *error = NULL;
@@ -181,7 +183,7 @@ child_read_watch (GIOChannel *channel, GIOCondition cond, gpointer data)
 }
 
 void
-add_child (CtkWidget *window,
+add_child (CtkWidget *window G_GNUC_UNUSED,
 	   gboolean   active)
 {
   char *argv[3] = { "./testsocket_child", NULL, NULL };
@@ -234,7 +236,7 @@ add_passive_child (CtkWidget *window)
 }
 
 void
-add_local_active_child (CtkWidget *window)
+add_local_active_child (CtkWidget *window G_GNUC_UNUSED)
 {
   Socket *socket;
 
@@ -246,7 +248,7 @@ add_local_active_child (CtkWidget *window)
 }
 
 void
-add_local_passive_child (CtkWidget *window)
+add_local_passive_child (CtkWidget *window G_GNUC_UNUSED)
 {
   Socket *socket;
   Window xid;
