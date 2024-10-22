@@ -93,7 +93,7 @@ update_icon (void)
 }
 
 static gboolean
-timeout_handler (gpointer data)
+timeout_handler (gpointer data G_GNUC_UNUSED)
 {
   if (status == TEST_STATUS_INFO)
     status = TEST_STATUS_QUESTION;
@@ -116,7 +116,7 @@ visible_toggle_toggled (CtkToggleButton *toggle)
 }
 
 static void
-timeout_toggle_toggled (CtkToggleButton *toggle)
+timeout_toggle_toggled (CtkToggleButton *toggle G_GNUC_UNUSED)
 {
   if (timeout)
     {
@@ -182,7 +182,7 @@ icon_activated (CtkStatusIcon *icon)
 }
 
 static void
-do_quit (CtkMenuItem *item)
+do_quit (CtkMenuItem *item G_GNUC_UNUSED)
 {
   GSList *l;
 
@@ -201,7 +201,7 @@ do_quit (CtkMenuItem *item)
 }
 
 static void
-do_exit (CtkMenuItem *item)
+do_exit (CtkMenuItem *item G_GNUC_UNUSED)
 {
   exit (0);
 }
