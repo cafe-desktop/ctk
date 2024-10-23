@@ -355,9 +355,9 @@ check_cursor (CtkTreeView *treeview)
 }
 
 static void
-check_selection_item (CtkTreeModel *model,
+check_selection_item (CtkTreeModel *model G_GNUC_UNUSED,
                       CtkTreePath  *path,
-                      CtkTreeIter  *iter,
+                      CtkTreeIter  *iter G_GNUC_UNUSED,
                       gpointer      listp)
 {
   GList **list = listp;
@@ -409,7 +409,7 @@ dance (gpointer treeview)
 
 static void
 cursor_changed_cb (CtkTreeView *treeview,
-                   gpointer     unused)
+                   gpointer     unused G_GNUC_UNUSED)
 {
   CtkTreePath *path;
   CtkTreeRowReference *ref;
@@ -434,7 +434,7 @@ selection_list_free (gpointer list)
 
 static void
 selection_changed_cb (CtkTreeSelection *tree_selection,
-                      gpointer          unused)
+                      gpointer          unused G_GNUC_UNUSED)
 {
   GList *selected, *list;
   CtkTreeModel *model;
