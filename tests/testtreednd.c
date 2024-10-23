@@ -10,7 +10,7 @@ G_DEFINE_TYPE_WITH_CODE (MyModel, my_model, CTK_TYPE_LIST_STORE,
                                                 my_model_drag_source_init))
 
 static void
-my_model_class_init (MyModelClass *class)
+my_model_class_init (MyModelClass *class G_GNUC_UNUSED)
 {
 }
 
@@ -87,11 +87,13 @@ get_dragsource (void)
 
 static void
 data_received (CtkWidget *widget,
-               CdkDragContext *context,
-               gint x, gint y,
+               CdkDragContext *context G_GNUC_UNUSED,
+               gint x G_GNUC_UNUSED,
+               gint y G_GNUC_UNUSED,
                CtkSelectionData *selda,
-               guint info, guint time,
-               gpointer dada)
+               guint info G_GNUC_UNUSED,
+               guint time G_GNUC_UNUSED,
+               gpointer dada G_GNUC_UNUSED)
 {
   gchar *text;
 
@@ -113,7 +115,8 @@ get_droptarget (void)
 }
 
 int
-main (int argc, char *argv[])
+main (int   argc G_GNUC_UNUSED,
+      char *argv[] G_GNUC_UNUSED)
 {
   CtkWidget *window;
   CtkWidget *box;
