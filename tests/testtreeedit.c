@@ -80,7 +80,7 @@ create_model (void)
 }
 
 static void
-editable_toggled (CtkCellRendererToggle *cell,
+editable_toggled (CtkCellRendererToggle *cell G_GNUC_UNUSED,
 		  gchar                 *path_string,
 		  gpointer               data)
 {
@@ -99,7 +99,7 @@ editable_toggled (CtkCellRendererToggle *cell,
 }
 
 static void
-sensitive_toggled (CtkCellRendererToggle *cell,
+sensitive_toggled (CtkCellRendererToggle *cell G_GNUC_UNUSED,
 		   gchar                 *path_string,
 		   gpointer               data)
 {
@@ -118,7 +118,7 @@ sensitive_toggled (CtkCellRendererToggle *cell,
 }
 
 static void
-edited (CtkCellRendererText *cell,
+edited (CtkCellRendererText *cell G_GNUC_UNUSED,
 	gchar               *path_string,
 	gchar               *new_text,
 	gpointer             data)
@@ -134,7 +134,7 @@ edited (CtkCellRendererText *cell,
 }
 
 static gboolean
-button_press_event (CtkWidget *widget, CdkEventButton *event, gpointer callback_data)
+button_press_event (CtkWidget *widget, CdkEventButton *event, gpointer callback_data G_GNUC_UNUSED)
 {
 	/* Deselect if people click outside any row. */
 	if (event->window == ctk_tree_view_get_bin_window (CTK_TREE_VIEW (widget))
