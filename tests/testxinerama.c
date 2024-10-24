@@ -58,7 +58,7 @@ request (CtkWidget      *widget,
 }
 
 static void
-monitors_changed_cb (CdkScreen *screen,
+monitors_changed_cb (CdkScreen *screen G_GNUC_UNUSED,
                      gpointer   data)
 {
   CtkWidget *label = (CtkWidget *)data;
