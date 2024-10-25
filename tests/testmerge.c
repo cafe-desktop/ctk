@@ -38,7 +38,7 @@ struct { const gchar *filename; guint merge_id; } merge_ids[] = {
 };
 
 static void
-dump_tree (CtkWidget    *button, 
+dump_tree (CtkWidget    *button G_GNUC_UNUSED,
 	   CtkUIManager *merge)
 {
   gchar *dump;
@@ -55,13 +55,14 @@ dump_accels (void)
 }
 
 static void
-print_toplevel (CtkWidget *widget, gpointer user_data)
+print_toplevel (CtkWidget *widget,
+		gpointer   user_data G_GNUC_UNUSED)
 {
   g_print ("%s\n", G_OBJECT_TYPE_NAME (widget));
 }
 
 static void
-dump_toplevels (CtkWidget    *button, 
+dump_toplevels (CtkWidget    *button G_GNUC_UNUSED,
 		CtkUIManager *merge)
 {
   GSList *toplevels;
@@ -76,7 +77,7 @@ dump_toplevels (CtkWidget    *button,
 }
 
 static void
-toggle_tearoffs (CtkWidget    *button, 
+toggle_tearoffs (CtkWidget    *button G_GNUC_UNUSED,
 		 CtkUIManager *merge)
 {
   gboolean add_tearoffs;
@@ -139,7 +140,7 @@ delayed_toggle_dynamic (CtkUIManager *merge)
 }
 
 static void
-toggle_dynamic (CtkWidget    *button, 
+toggle_dynamic (CtkWidget    *button G_GNUC_UNUSED, 
 		CtkUIManager *merge)
 {
   cdk_threads_add_timeout (2000, (GSourceFunc)delayed_toggle_dynamic, merge);
@@ -166,7 +167,8 @@ toggle_action (CtkAction *action)
 
 
 static void
-radio_action_changed (CtkAction *action, CtkRadioAction *current)
+radio_action_changed (CtkAction      *action G_GNUC_UNUSED,
+		      CtkRadioAction *current)
 {
   g_message ("RadioAction %s (type=%s) activated (active=%d) (value %d)", 
 	     ctk_action_get_name (CTK_ACTION (current)), 
@@ -221,8 +223,8 @@ static CtkRadioActionEntry radio_entries[] = {
 static guint n_radio_entries = G_N_ELEMENTS (radio_entries);
 
 static void
-add_widget (CtkUIManager *merge, 
-	    CtkWidget    *widget, 
+add_widget (CtkUIManager *merge G_GNUC_UNUSED,
+	    CtkWidget    *widget,
 	    CtkBox       *box)
 {
   ctk_box_pack_start (box, widget, FALSE, FALSE, 0);
@@ -268,11 +270,11 @@ toggle_merge (CtkWidget    *button,
 }
 
 static void  
-set_name_func (CtkTreeViewColumn *tree_column,
+set_name_func (CtkTreeViewColumn *tree_column G_GNUC_UNUSED,
 	       CtkCellRenderer   *cell,
 	       CtkTreeModel      *tree_model,
 	       CtkTreeIter       *iter,
-	       gpointer           data)
+	       gpointer           data G_GNUC_UNUSED)
 {
   CtkAction *action;
   char *name;
@@ -285,11 +287,11 @@ set_name_func (CtkTreeViewColumn *tree_column,
 }
 
 static void
-set_sensitive_func (CtkTreeViewColumn *tree_column,
+set_sensitive_func (CtkTreeViewColumn *tree_column G_GNUC_UNUSED,
 		    CtkCellRenderer   *cell,
 		    CtkTreeModel      *tree_model,
 		    CtkTreeIter       *iter,
-		    gpointer           data)
+		    gpointer           data G_GNUC_UNUSED)
 {
   CtkAction *action;
   gboolean sensitive;
@@ -302,11 +304,11 @@ set_sensitive_func (CtkTreeViewColumn *tree_column,
 
 
 static void
-set_visible_func (CtkTreeViewColumn *tree_column,
+set_visible_func (CtkTreeViewColumn *tree_column G_GNUC_UNUSED,
 		  CtkCellRenderer   *cell,
 		  CtkTreeModel      *tree_model,
 		  CtkTreeIter       *iter,
-		  gpointer           data)
+		  gpointer           data G_GNUC_UNUSED)
 {
   CtkAction *action;
   gboolean visible;
@@ -318,7 +320,7 @@ set_visible_func (CtkTreeViewColumn *tree_column,
 }
 
 static void
-sensitivity_toggled (CtkCellRendererToggle *cell, 
+sensitivity_toggled (CtkCellRendererToggle *cell G_GNUC_UNUSED,
 		     const gchar           *path_str,
 		     CtkTreeModel          *model)
 {
@@ -338,8 +340,8 @@ sensitivity_toggled (CtkCellRendererToggle *cell,
 }
 
 static void
-visibility_toggled (CtkCellRendererToggle *cell, 
-		    const gchar           *path_str, 
+visibility_toggled (CtkCellRendererToggle *cell G_GNUC_UNUSED,
+		    const gchar           *path_str,
 		    CtkTreeModel          *model)
 {
   CtkTreePath *path;
@@ -361,7 +363,7 @@ static gint
 iter_compare_func (CtkTreeModel *model, 
 		   CtkTreeIter  *a, 
 		   CtkTreeIter  *b,
-		   gpointer      user_data)
+		   gpointer      user_data G_GNUC_UNUSED)
 {
   GValue a_value = G_VALUE_INIT, b_value = G_VALUE_INIT;
   CtkAction *a_action, *b_action;
@@ -479,8 +481,8 @@ area_press (CtkWidget      *drawing_area,
 }
 
 static void
-activate_path (CtkWidget      *button,
-	       CtkUIManager   *merge)
+activate_path (CtkWidget    *button G_GNUC_UNUSED,
+	       CtkUIManager *merge)
 {
   CtkAction *action = ctk_ui_manager_get_action (merge, 
 						 "/menubar/HelpMenu/About");
@@ -539,7 +541,7 @@ unset_tip (CtkWidget *widget)
 }
 		    
 static void
-connect_proxy (CtkUIManager *merge,
+connect_proxy (CtkUIManager *merge G_GNUC_UNUSED,
 	       CtkAction    *action,
 	       CtkWidget    *proxy,
 	       CtkWidget    *statusbar)
