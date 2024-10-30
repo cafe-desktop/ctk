@@ -58,11 +58,11 @@ create_model (void)
 }
 
 static void
-set_color_func (CtkTreeViewColumn *column,
+set_color_func (CtkTreeViewColumn *column G_GNUC_UNUSED,
 		CtkCellRenderer   *cell,
 		CtkTreeModel      *model,
 		CtkTreeIter       *iter,
-		gpointer           data)
+		gpointer           data G_GNUC_UNUSED)
 {
   if (ctk_tree_model_iter_has_child (model, iter))
     g_object_set (cell, "cell-background", "Grey", NULL);
@@ -73,7 +73,7 @@ set_color_func (CtkTreeViewColumn *column,
 static void
 tree_view_row_activated (CtkTreeView       *tree_view,
 			 CtkTreePath       *path,
-			 CtkTreeViewColumn *column)
+			 CtkTreeViewColumn *column G_GNUC_UNUSED)
 {
   if (ctk_tree_path_get_depth (path) > 1)
     return;
@@ -85,11 +85,11 @@ tree_view_row_activated (CtkTreeView       *tree_view,
 }
 
 static gboolean
-tree_view_select_func (CtkTreeSelection *selection,
-		       CtkTreeModel     *model,
+tree_view_select_func (CtkTreeSelection *selection G_GNUC_UNUSED,
+		       CtkTreeModel     *model G_GNUC_UNUSED,
 		       CtkTreePath      *path,
-		       gboolean          path_currently_selected,
-		       gpointer          data)
+		       gboolean          path_currently_selected G_GNUC_UNUSED,
+		       gpointer          data G_GNUC_UNUSED)
 {
   if (ctk_tree_path_get_depth (path) > 1)
     return TRUE;
