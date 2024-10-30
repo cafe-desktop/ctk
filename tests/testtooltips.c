@@ -25,11 +25,11 @@
 
 static gboolean
 query_tooltip_cb (CtkWidget  *widget,
-		  gint        x,
-		  gint        y,
-		  gboolean    keyboard_tip,
+		  gint        x G_GNUC_UNUSED,
+		  gint        y G_GNUC_UNUSED,
+		  gboolean    keyboard_tip G_GNUC_UNUSED,
 		  CtkTooltip *tooltip,
-		  gpointer    data)
+		  gpointer    data G_GNUC_UNUSED)
 {
   ctk_tooltip_set_markup (tooltip, ctk_button_get_label (CTK_BUTTON (widget)));
   ctk_tooltip_set_icon_from_icon_name (tooltip, "edit-delete",
@@ -39,9 +39,9 @@ query_tooltip_cb (CtkWidget  *widget,
 }
 
 static gboolean
-draw_tooltip (CtkWidget *widget,
+draw_tooltip (CtkWidget *widget G_GNUC_UNUSED,
               cairo_t   *cr,
-              gpointer   unused)
+              gpointer   unused G_GNUC_UNUSED)
 {
   cairo_set_source_rgb (cr, 0, 0, 1);
   cairo_paint (cr);
@@ -51,11 +51,11 @@ draw_tooltip (CtkWidget *widget,
 
 static gboolean
 query_tooltip_custom_cb (CtkWidget  *widget,
-			 gint        x,
-			 gint        y,
-			 gboolean    keyboard_tip,
-			 CtkTooltip *tooltip,
-			 gpointer    data)
+			 gint        x G_GNUC_UNUSED,
+			 gint        y G_GNUC_UNUSED,
+			 gboolean    keyboard_tip G_GNUC_UNUSED,
+			 CtkTooltip *tooltip G_GNUC_UNUSED,
+			 gpointer    data G_GNUC_UNUSED)
 {
   CtkWindow *window = ctk_widget_get_tooltip_window (widget);
 
@@ -108,7 +108,7 @@ query_tooltip_tree_view_cb (CtkWidget  *widget,
 			    gint        y,
 			    gboolean    keyboard_tip,
 			    CtkTooltip *tooltip,
-			    gpointer    data)
+			    gpointer    data G_GNUC_UNUSED)
 {
   CtkTreeIter iter;
   CtkTreeView *tree_view = CTK_TREE_VIEW (widget);
@@ -165,7 +165,7 @@ create_model (void)
 }
 
 static void
-selection_changed_cb (CtkTreeSelection *selection,
+selection_changed_cb (CtkTreeSelection *selection G_GNUC_UNUSED,
 		      CtkWidget        *tree_view)
 {
   ctk_widget_trigger_tooltip_query (tree_view);
@@ -188,12 +188,12 @@ rectangles[] =
 };
 
 static gboolean
-query_tooltip_drawing_area_cb (CtkWidget  *widget,
+query_tooltip_drawing_area_cb (CtkWidget  *widget G_GNUC_UNUSED,
 			       gint        x,
 			       gint        y,
 			       gboolean    keyboard_tip,
 			       CtkTooltip *tooltip,
-			       gpointer    data)
+			       gpointer    data G_GNUC_UNUSED)
 {
   gint i;
 
@@ -216,9 +216,9 @@ query_tooltip_drawing_area_cb (CtkWidget  *widget,
 }
 
 static gboolean
-drawing_area_draw (CtkWidget *drawing_area,
+drawing_area_draw (CtkWidget *drawing_area G_GNUC_UNUSED,
 		   cairo_t   *cr,
-		   gpointer   data)
+		   gpointer   data G_GNUC_UNUSED)
 {
   gint i;
 
@@ -242,10 +242,10 @@ drawing_area_draw (CtkWidget *drawing_area,
 }
 
 static gboolean
-query_tooltip_label_cb (CtkWidget  *widget,
-			gint        x,
-			gint        y,
-			gboolean    keyboard_tip,
+query_tooltip_label_cb (CtkWidget  *widget G_GNUC_UNUSED,
+			gint        x G_GNUC_UNUSED,
+			gint        y G_GNUC_UNUSED,
+			gboolean    keyboard_tip G_GNUC_UNUSED,
 			CtkTooltip *tooltip,
 			gpointer    data)
 {
