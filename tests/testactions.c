@@ -87,7 +87,7 @@ toggle_cnp_actions (CtkAction *action)
 }
 
 static void
-show_accel_dialog (CtkAction *action)
+show_accel_dialog (CtkAction *action G_GNUC_UNUSED)
 {
   g_message ("Sorry, accel dialog not available");
 }
@@ -107,7 +107,7 @@ toolbar_style (CtkAction *action)
 }
 
 static void
-toolbar_size_small (CtkAction *action)
+toolbar_size_small (CtkAction *action G_GNUC_UNUSED)
 {
   g_return_if_fail (toolbar != NULL);
 
@@ -115,7 +115,7 @@ toolbar_size_small (CtkAction *action)
 }
 
 static void
-toolbar_size_large (CtkAction *action)
+toolbar_size_large (CtkAction *action G_GNUC_UNUSED)
 {
   g_return_if_fail (toolbar != NULL);
 
@@ -241,8 +241,8 @@ static const gchar *ui_info =
 "  </popup>\n";
 
 static void
-add_widget (CtkUIManager *merge,
-	    CtkWidget   *widget,
+add_widget (CtkUIManager *merge G_GNUC_UNUSED,
+	    CtkWidget    *widget,
 	    CtkContainer *container)
 {
 
@@ -320,7 +320,7 @@ add_cb (CtkWidget *button,
 }
 
 static void
-remove_cb (CtkWidget *button,
+remove_cb (CtkWidget    *button G_GNUC_UNUSED,
 	   CtkUIManager *manager)
 {
   if (ui_id == 0 || dag == NULL)
