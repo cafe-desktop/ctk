@@ -16,7 +16,7 @@ G_DEFINE_TYPE (MyTextView, my_text_view, CTK_TYPE_TEXT_VIEW);
 static void draw_background (CtkWidget *widget, cairo_t *cr);
 
 static void
-my_text_view_init (MyTextView *text_view)
+my_text_view_init (MyTextView *text_view G_GNUC_UNUSED)
 {
 }
 
