@@ -374,9 +374,9 @@ expand_cell_3_toggled (CtkToggleButton  *toggle,
 }
 
 gboolean 
-enable_submenu_headers (CtkTreeModel      *model,
-			CtkTreeIter       *iter,
-			gpointer           data)
+enable_submenu_headers (CtkTreeModel *model G_GNUC_UNUSED,
+			CtkTreeIter  *iter G_GNUC_UNUSED,
+			gpointer      data G_GNUC_UNUSED)
 {
   return TRUE;
 }
@@ -543,7 +543,8 @@ tree_menu (void)
 }
 
 int
-main (int argc, char *argv[])
+main (int   argc G_GNUC_UNUSED,
+      char *argv[] G_GNUC_UNUSED)
 {
   ctk_init (NULL, NULL);
 
