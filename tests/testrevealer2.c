@@ -6,7 +6,7 @@
 
 static void
 on_activate (GApplication *app,
-             gpointer      data)
+             gpointer      data G_GNUC_UNUSED)
 {
   static CtkWidget *window = NULL;
 
