@@ -10,7 +10,8 @@ GdkPixbuf *pixbuf;
 CtkWidget *darea;
   
 void
-set_interp_type (CtkWidget *widget, gpointer data)
+set_interp_type (CtkWidget *widget,
+		 gpointer   data G_GNUC_UNUSED)
 {
   guint types[] = { GDK_INTERP_NEAREST,
                     GDK_INTERP_BILINEAR,
@@ -22,7 +23,8 @@ set_interp_type (CtkWidget *widget, gpointer data)
 }
 
 void
-overall_changed_cb (CtkAdjustment *adjustment, gpointer data)
+overall_changed_cb (CtkAdjustment *adjustment,
+		    gpointer       data G_GNUC_UNUSED)
 {
   if (ctk_adjustment_get_value (adjustment) != overall_alpha)
     {
@@ -32,7 +34,9 @@ overall_changed_cb (CtkAdjustment *adjustment, gpointer data)
 }
 
 gboolean
-draw_cb (CtkWidget *widget, cairo_t *cr, gpointer data)
+draw_cb (CtkWidget *widget,
+	 cairo_t   *cr,
+	 gpointer   data G_GNUC_UNUSED)
 {
   GdkPixbuf *dest;
   int width, height;
