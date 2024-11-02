@@ -4,21 +4,22 @@ static CtkWidget *header_stack;
 static CtkWidget *page_stack;
 
 static void
-back_to_main (CtkButton *button)
+back_to_main (CtkButton *button G_GNUC_UNUSED)
 {
   ctk_stack_set_visible_child_name (CTK_STACK (header_stack), "main");
   ctk_stack_set_visible_child_name (CTK_STACK (page_stack), "page1");
 }
 
 static void
-go_to_secondary (CtkButton *button)
+go_to_secondary (CtkButton *button G_GNUC_UNUSED)
 {
   ctk_stack_set_visible_child_name (CTK_STACK (header_stack), "secondary");
   ctk_stack_set_visible_child_name (CTK_STACK (page_stack), "secondary");
 }
 
 int
-main (int argc, char *argv[])
+main (int   argc G_GNUC_UNUSED,
+      char *argv[] G_GNUC_UNUSED)
 {
   CtkBuilder *builder;
   CtkWidget *win;
