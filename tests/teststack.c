@@ -6,33 +6,38 @@ CtkWidget *sidebar;
 CtkWidget *w1;
 
 static void
-set_visible_child (CtkWidget *button, gpointer data)
+set_visible_child (CtkWidget *button G_GNUC_UNUSED,
+		   gpointer   data)
 {
   ctk_stack_set_visible_child (CTK_STACK (stack), CTK_WIDGET (data));
 }
 
 static void
-set_visible_child_name (CtkWidget *button, gpointer data)
+set_visible_child_name (CtkWidget *button G_GNUC_UNUSED,
+			gpointer   data)
 {
   ctk_stack_set_visible_child_name (CTK_STACK (stack), (const char *)data);
 }
 
 static void
-toggle_hhomogeneous (CtkWidget *button, gpointer data)
+toggle_hhomogeneous (CtkWidget *button,
+		     gpointer   data G_GNUC_UNUSED)
 {
   gboolean active = ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button));
   ctk_stack_set_hhomogeneous (CTK_STACK (stack), active);
 }
 
 static void
-toggle_vhomogeneous (CtkWidget *button, gpointer data)
+toggle_vhomogeneous (CtkWidget *button,
+		     gpointer   data G_GNUC_UNUSED)
 {
   gboolean active = ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button));
   ctk_stack_set_vhomogeneous (CTK_STACK (stack), active);
 }
 
 static void
-toggle_icon_name (CtkWidget *button, gpointer data)
+toggle_icon_name (CtkWidget *button,
+		  gpointer   data G_GNUC_UNUSED)
 {
   gboolean active = ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button));
   ctk_container_child_set (CTK_CONTAINER (stack), w1,
@@ -41,14 +46,16 @@ toggle_icon_name (CtkWidget *button, gpointer data)
 }
 
 static void
-toggle_transitions (CtkWidget *combo, gpointer data)
+toggle_transitions (CtkWidget *combo,
+		    gpointer   data G_GNUC_UNUSED)
 {
   int id = ctk_combo_box_get_active (CTK_COMBO_BOX (combo));
   ctk_stack_set_transition_type (CTK_STACK (stack), id);
 }
 
 static void
-on_back_button_clicked (CtkButton *button, CtkStack *stack)
+on_back_button_clicked (CtkButton *button G_GNUC_UNUSED,
+			CtkStack  *stack)
 {
   const gchar *seq[] = { "1", "2", "3" };
   const gchar *vis;
@@ -67,7 +74,8 @@ on_back_button_clicked (CtkButton *button, CtkStack *stack)
 }
 
 static void
-on_forward_button_clicked (CtkButton *button, CtkStack *stack)
+on_forward_button_clicked (CtkButton *button G_GNUC_UNUSED,
+			   CtkStack  *stack)
 {
   const gchar *seq[] = { "1", "2", "3" };
   const gchar *vis;
@@ -86,7 +94,9 @@ on_forward_button_clicked (CtkButton *button, CtkStack *stack)
 }
 
 static void
-update_back_button_sensitivity (CtkStack *stack, GParamSpec *pspec, CtkWidget *button)
+update_back_button_sensitivity (CtkStack   *stack,
+				GParamSpec *pspec G_GNUC_UNUSED,
+				CtkWidget  *button)
 {
   const gchar *vis;
 
@@ -95,7 +105,9 @@ update_back_button_sensitivity (CtkStack *stack, GParamSpec *pspec, CtkWidget *b
 }
 
 static void
-update_forward_button_sensitivity (CtkStack *stack, GParamSpec *pspec, CtkWidget *button)
+update_forward_button_sensitivity (CtkStack   *stack,
+				   GParamSpec *pspec G_GNUC_UNUSED,
+				   CtkWidget  *button)
 {
   const gchar *vis;
 
