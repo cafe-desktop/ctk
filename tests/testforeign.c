@@ -25,9 +25,9 @@ update_ui (void)
 }
 
 static void
-exported_callback (CdkWindow  *window,
+exported_callback (CdkWindow  *window G_GNUC_UNUSED,
                    const char *handle,
-                   gpointer    user_data)
+                   gpointer    user_data G_GNUC_UNUSED)
 {
   if (!export_handle)
     export_handle = g_strdup (handle);
@@ -40,8 +40,8 @@ exported_callback (CdkWindow  *window,
 }
 
 static void
-export_callback (CtkWidget *widget,
-                 gpointer   data)
+export_callback (CtkWidget *widget G_GNUC_UNUSED,
+                 gpointer   data G_GNUC_UNUSED)
 {
   if (!cdk_wayland_window_export_handle (ctk_widget_get_window (window),
                                          exported_callback,
@@ -52,8 +52,8 @@ export_callback (CtkWidget *widget,
 }
 
 static void
-unexport_callback (CtkWidget *widget,
-                   gpointer   data)
+unexport_callback (CtkWidget *widget G_GNUC_UNUSED,
+                   gpointer   data G_GNUC_UNUSED)
 {
   cdk_wayland_window_unexport_handle (ctk_widget_get_window (window));
 
