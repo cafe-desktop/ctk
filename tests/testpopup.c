@@ -1,9 +1,9 @@
 #include <ctk/ctk.h>
 
 static gboolean
-draw_popup (CtkWidget *widget,
+draw_popup (CtkWidget *widget G_GNUC_UNUSED,
             cairo_t   *cr,
-            gpointer   data)
+            gpointer   data G_GNUC_UNUSED)
 {
   cairo_set_source_rgb (cr, 1, 0, 0);
   cairo_paint (cr);
@@ -12,7 +12,7 @@ draw_popup (CtkWidget *widget,
 }
 
 static gboolean
-place_popup (CtkWidget *parent,
+place_popup (CtkWidget *parent G_GNUC_UNUSED,
              CdkEvent  *event,
              CtkWidget *popup)
 {
@@ -29,8 +29,8 @@ place_popup (CtkWidget *parent,
 
 static gboolean
 on_map_event (CtkWidget *parent,
-              CdkEvent  *event,
-              gpointer   data)
+              CdkEvent  *event G_GNUC_UNUSED,
+              gpointer   data G_GNUC_UNUSED)
 {
   CtkWidget *popup;
 
