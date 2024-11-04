@@ -40,10 +40,10 @@ test_text (void)
 }
 
 static void
-test_with_data_get (CtkClipboard *clipboard,
+test_with_data_get (CtkClipboard     *clipboard G_GNUC_UNUSED,
                     CtkSelectionData *selection_data,
-                    guint info,
-                    gpointer user_data_or_owner)
+                    guint             info,
+                    gpointer          user_data_or_owner G_GNUC_UNUSED)
 {
     gboolean success;
 
@@ -54,9 +54,9 @@ test_with_data_get (CtkClipboard *clipboard,
 }
 
 static void
-test_with_data_got (CtkClipboard *clipboard,
+test_with_data_got (CtkClipboard     *clipboard G_GNUC_UNUSED,
                     CtkSelectionData *selection_data,
-                    gpointer data)
+                    gpointer          data G_GNUC_UNUSED)
 {
     guchar *text;
 
