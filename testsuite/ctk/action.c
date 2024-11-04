@@ -28,21 +28,21 @@ typedef struct
 
 static void
 action_test_setup (ActionTest    *fixture,
-                   gconstpointer  test_data)
+                   gconstpointer  test_data G_GNUC_UNUSED)
 {
   fixture->action = ctk_action_new ("name", "label", NULL, NULL);
 }
 
 static void
 action_test_teardown (ActionTest    *fixture,
-                      gconstpointer  test_data)
+                      gconstpointer  test_data G_GNUC_UNUSED)
 {
   g_object_unref (fixture->action);
 }
 
 static void
-notify_count_emmisions (GObject    *object,
-			GParamSpec *pspec,
+notify_count_emmisions (GObject    *object G_GNUC_UNUSED, 
+			GParamSpec *pspec G_GNUC_UNUSED,
 			gpointer    data)
 {
   unsigned int *i = data;
@@ -51,7 +51,7 @@ notify_count_emmisions (GObject    *object,
 
 static void
 menu_item_label_notify_count (ActionTest    *fixture,
-                              gconstpointer  test_data)
+                              gconstpointer  test_data G_GNUC_UNUSED)
 {
   CtkWidget *item = ctk_menu_item_new ();
   unsigned int emmisions = 0;
