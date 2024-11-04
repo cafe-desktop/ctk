@@ -31,7 +31,9 @@ typedef struct {
 } EntryData;
 
 static void
-notify (CtkEditable *editable, GParamSpec *pspec, EntryData *data)
+notify (CtkEditable *editable,
+	GParamSpec  *pspec G_GNUC_UNUSED,
+	EntryData   *data)
 {
   data->serial = serial++;
   data->count++;
