@@ -627,7 +627,7 @@ static gint loaded;
 static void
 load_icon (GObject      *source,
            GAsyncResult *res,
-           gpointer      data)
+           gpointer      data G_GNUC_UNUSED)
 {
   CtkIconInfo *info = (CtkIconInfo *)source;
   GError *error = NULL;
@@ -644,7 +644,7 @@ load_icon (GObject      *source,
 static void
 load_symbolic (GObject      *source,
                GAsyncResult *res,
-               gpointer      data)
+               gpointer      data G_GNUC_UNUSED)
 {
   CtkIconInfo *info = (CtkIconInfo *)source;
   GError *error = NULL;
