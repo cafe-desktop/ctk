@@ -104,7 +104,7 @@ typedef struct {
 } AddManyClosure;
 
 static void
-check_bulk (CtkRecentManager *manager,
+check_bulk (CtkRecentManager *manager G_GNUC_UNUSED,
             gpointer          data)
 {
   AddManyClosure *closure = data;
