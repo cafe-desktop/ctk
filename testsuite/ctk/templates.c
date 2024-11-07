@@ -23,7 +23,7 @@
 #endif
 
 static gboolean
-main_loop_quit_cb (gpointer data)
+main_loop_quit_cb (gpointer data G_GNUC_UNUSED)
 {
   ctk_main_quit ();
 
@@ -206,10 +206,10 @@ test_color_chooser_dialog_basic (void)
 
 /* Avoid warnings from GVFS-RemoteVolumeMonitor */
 static gboolean
-ignore_gvfs_warning (const gchar *log_domain,
-		     GLogLevelFlags log_level,
-		     const gchar *message,
-		     gpointer user_data)
+ignore_gvfs_warning (const gchar    *log_domain,
+		     GLogLevelFlags  log_level G_GNUC_UNUSED,
+		     const gchar    *message G_GNUC_UNUSED,
+		     gpointer        user_data G_GNUC_UNUSED)
 {
   if (g_strcmp0 (log_domain, "GVFS-RemoteVolumeMonitor") == 0)
     return FALSE;
