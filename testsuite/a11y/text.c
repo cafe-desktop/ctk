@@ -109,7 +109,10 @@ typedef struct {
 } SignalData;
 
 static void
-text_deleted (AtkText *atk_text, gint position, gint length, SignalData *data)
+text_deleted (AtkText    *atk_text G_GNUC_UNUSED,
+	      gint        position,
+	      gint        length,
+	      SignalData *data)
 {
   data->count++;
   data->position = position;
@@ -117,7 +120,10 @@ text_deleted (AtkText *atk_text, gint position, gint length, SignalData *data)
 }
 
 static void
-text_inserted (AtkText *atk_text, gint position, gint length, SignalData *data)
+text_inserted (AtkText    *atk_text G_GNUC_UNUSED,
+	       gint        position,
+	       gint        length,
+	       SignalData *data)
 {
   data->count++;
   data->position = position;
@@ -946,7 +952,9 @@ typedef struct {
 } SelectionData;
 
 static void
-caret_moved_cb (AtkText *text, gint position, SelectionData *data)
+caret_moved_cb (AtkText       *text G_GNUC_UNUSED,
+		gint           position,
+		SelectionData *data)
 {
   data->count++;
   data->position = position;
