@@ -61,7 +61,7 @@ G_DEFINE_TYPE_WITH_CODE (CtkTreeModelRefCount, ctk_tree_model_ref_count, CTK_TYP
 
 static void
 row_removed (CtkTreeModelRefCount *ref_model,
-             CtkTreePath *path)
+             CtkTreePath          *path G_GNUC_UNUSED)
 {
   GHashTableIter iter;
   CtkTreeIter tree_iter;
