@@ -47,8 +47,9 @@ typedef struct
 } NotifyData;
 
 static void
-notify_cb (GObject    *obj,
-           GParamSpec *pspec, NotifyData *data)
+notify_cb (GObject    *obj G_GNUC_UNUSED,
+	   GParamSpec *pspec,
+	   NotifyData *data)
 {
   data->count++;
   g_free (data->last_name);
