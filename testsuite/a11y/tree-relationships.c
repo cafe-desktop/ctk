@@ -197,9 +197,9 @@ typedef struct {
 } SignalData;
 
 static void
-active_descendant_changed (AtkObject  *accessible,
-                  AtkObject *descendant,
-                  SignalData *data)
+active_descendant_changed (AtkObject  *accessible G_GNUC_UNUSED,
+			   AtkObject  *descendant,
+			   SignalData *data)
 {
   data->count++;
   if (data->descendant)
