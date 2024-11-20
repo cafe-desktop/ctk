@@ -82,7 +82,8 @@ reftest_uninhibit_snapshot (void)
 }
 
 static void
-check_for_draw (CdkEvent *event, gpointer data)
+check_for_draw (CdkEvent *event,
+		gpointer  data G_GNUC_UNUSED)
 {
   if (event->type == CDK_EXPOSE)
     {
