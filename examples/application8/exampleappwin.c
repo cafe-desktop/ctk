@@ -133,7 +133,7 @@ done:
 
 static void
 visible_child_changed (GObject    *stack,
-                       GParamSpec *pspec)
+                       GParamSpec *pspec G_GNUC_UNUSED)
 {
   ExampleAppWindow *win;
   ExampleAppWindowPrivate *priv;
@@ -149,8 +149,8 @@ visible_child_changed (GObject    *stack,
 }
 
 static void
-words_changed (GObject          *sidebar,
-               GParamSpec       *pspec,
+words_changed (GObject          *sidebar G_GNUC_UNUSED,
+               GParamSpec       *pspec G_GNUC_UNUSED,
                ExampleAppWindow *win)
 {
   update_words (win);
