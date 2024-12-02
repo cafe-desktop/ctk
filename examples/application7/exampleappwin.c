@@ -56,7 +56,7 @@ search_text_changed (CtkEntry *entry)
 
 static void
 visible_child_changed (GObject    *stack,
-                       GParamSpec *pspec)
+                       GParamSpec *pspec G_GNUC_UNUSED)
 {
   ExampleAppWindow *win;
   ExampleAppWindowPrivate *priv;
