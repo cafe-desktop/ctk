@@ -11,12 +11,12 @@ struct _ExampleAppWindow
 G_DEFINE_TYPE(ExampleAppWindow, example_app_window, CTK_TYPE_APPLICATION_WINDOW);
 
 static void
-example_app_window_init (ExampleAppWindow *app)
+example_app_window_init (ExampleAppWindow *app G_GNUC_UNUSED)
 {
 }
 
 static void
-example_app_window_class_init (ExampleAppWindowClass *class)
+example_app_window_class_init (ExampleAppWindowClass *class G_GNUC_UNUSED)
 {
 }
 
@@ -27,7 +27,7 @@ example_app_window_new (ExampleApp *app)
 }
 
 void
-example_app_window_open (ExampleAppWindow *win,
-                         GFile            *file)
+example_app_window_open (ExampleAppWindow *win G_GNUC_UNUSED,
+                         GFile            *file G_GNUC_UNUSED)
 {
 }
