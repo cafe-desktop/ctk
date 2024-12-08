@@ -1,8 +1,8 @@
 #include <ctk/ctk.h>
 
 static void
-print_hello (CtkWidget *widget,
-             gpointer   data)
+print_hello (CtkWidget *widget G_GNUC_UNUSED,
+             gpointer   data G_GNUC_UNUSED)
 {
   g_print ("Hello World\n");
 }
