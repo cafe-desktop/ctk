@@ -1,16 +1,16 @@
 #include <ctk/ctk.h>
 
 static gboolean
-window_key_press_event_cb (CtkWidget *window,
-    CdkEvent *event,
-    CtkSearchBar *search_bar)
+window_key_press_event_cb (CtkWidget    *window G_GNUC_UNUSED,
+			   CdkEvent     *event,
+			   CtkSearchBar *search_bar)
 {
   return ctk_search_bar_handle_event (search_bar, event);
 }
 
 static void
 activate_cb (CtkApplication *app,
-    gpointer user_data)
+	     gpointer        user_data G_GNUC_UNUSED)
 {
   CtkWidget *window;
   CtkWidget *search_bar;
