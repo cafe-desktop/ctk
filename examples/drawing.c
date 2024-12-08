@@ -19,8 +19,8 @@ clear_surface (void)
 /* Create a new surface of the appropriate size to store our scribbles */
 static gboolean
 configure_event_cb (CtkWidget         *widget,
-                    CdkEventConfigure *event,
-                    gpointer           data)
+                    CdkEventConfigure *event G_GNUC_UNUSED,
+                    gpointer           data G_GNUC_UNUSED)
 {
   if (surface)
     cairo_surface_destroy (surface);
@@ -42,9 +42,9 @@ configure_event_cb (CtkWidget         *widget,
  * clipped to only draw the exposed areas of the widget
  */
 static gboolean
-draw_cb (CtkWidget *widget,
+draw_cb (CtkWidget *widget G_GNUC_UNUSED,
          cairo_t   *cr,
-         gpointer   data)
+         gpointer   data G_GNUC_UNUSED)
 {
   cairo_set_source_surface (cr, surface, 0, 0);
   cairo_paint (cr);
@@ -80,7 +80,7 @@ draw_brush (CtkWidget *widget,
 static gboolean
 button_press_event_cb (CtkWidget      *widget,
                        CdkEventButton *event,
-                       gpointer        data)
+                       gpointer        data G_GNUC_UNUSED)
 {
   /* paranoia check, in case we haven't gotten a configure event */
   if (surface == NULL)
@@ -107,7 +107,7 @@ button_press_event_cb (CtkWidget      *widget,
 static gboolean
 motion_notify_event_cb (CtkWidget      *widget,
                         CdkEventMotion *event,
-                        gpointer        data)
+                        gpointer        data G_GNUC_UNUSED)
 {
   /* paranoia check, in case we haven't gotten a configure event */
   if (surface == NULL)
@@ -129,7 +129,7 @@ close_window (void)
 
 static void
 activate (CtkApplication *app,
-          gpointer        user_data)
+          gpointer        user_data G_GNUC_UNUSED)
 {
   CtkWidget *window;
   CtkWidget *frame;
