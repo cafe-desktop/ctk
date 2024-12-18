@@ -682,11 +682,11 @@ attributes_start_element (GMarkupParseContext *context,
 }
 
 static void
-attributes_text_element (GMarkupParseContext  *context,
+attributes_text_element (GMarkupParseContext  *context G_GNUC_UNUSED,
 			 const gchar          *text,
 			 gsize                 text_len,
 			 gpointer              user_data,
-			 GError              **error)
+			 GError              **error G_GNUC_UNUSED)
 {
   AttributesSubParserData *data = (AttributesSubParserData*)user_data;
 
@@ -696,7 +696,7 @@ attributes_text_element (GMarkupParseContext  *context,
 
 static void
 attributes_end_element (GMarkupParseContext  *context,
-			const gchar          *element_name,
+			const gchar          *element_name G_GNUC_UNUSED,
 			gpointer              user_data,
 			GError              **error)
 {
@@ -830,11 +830,11 @@ cell_packing_start_element (GMarkupParseContext *context,
 }
 
 static void
-cell_packing_text_element (GMarkupParseContext *context,
+cell_packing_text_element (GMarkupParseContext *context G_GNUC_UNUSED,
 			   const gchar         *text,
 			   gsize                text_len,
 			   gpointer             user_data,
-			   GError             **error)
+			   GError             **error G_GNUC_UNUSED)
 {
   CellPackingSubParserData *data = (CellPackingSubParserData*)user_data;
 
@@ -843,10 +843,10 @@ cell_packing_text_element (GMarkupParseContext *context,
 }
 
 static void
-cell_packing_end_element (GMarkupParseContext *context,
-			  const gchar         *element_name,
+cell_packing_end_element (GMarkupParseContext *context G_GNUC_UNUSED,
+			  const gchar         *element_name G_GNUC_UNUSED,
 			  gpointer             user_data,
-			  GError             **error)
+			  GError             **error G_GNUC_UNUSED)
 {
   CellPackingSubParserData *data = (CellPackingSubParserData*)user_data;
   CtkCellArea *area;
@@ -942,9 +942,9 @@ _ctk_cell_layout_buildable_custom_tag_start (CtkBuildable  *buildable,
 }
 
 gboolean
-_ctk_cell_layout_buildable_custom_tag_end (CtkBuildable *buildable,
-					   CtkBuilder   *builder,
-					   GObject      *child,
+_ctk_cell_layout_buildable_custom_tag_end (CtkBuildable *buildable G_GNUC_UNUSED,
+					   CtkBuilder   *builder G_GNUC_UNUSED,
+					   GObject      *child G_GNUC_UNUSED,
 					   const gchar  *tagname,
 					   gpointer     *data)
 {
@@ -974,9 +974,9 @@ _ctk_cell_layout_buildable_custom_tag_end (CtkBuildable *buildable,
 
 void
 _ctk_cell_layout_buildable_add_child (CtkBuildable      *buildable,
-				      CtkBuilder        *builder,
+				      CtkBuilder        *builder G_GNUC_UNUSED,
 				      GObject           *child,
-				      const gchar       *type)
+				      const gchar       *type G_GNUC_UNUSED)
 {
   g_return_if_fail (CTK_IS_CELL_LAYOUT (buildable));
   g_return_if_fail (CTK_IS_CELL_RENDERER (child));

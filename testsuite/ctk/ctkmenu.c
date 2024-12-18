@@ -51,7 +51,7 @@ static GType random_menu_get_type (void);
 G_DEFINE_TYPE (RandomMenu, random_menu, G_TYPE_MENU_MODEL);
 
 static gboolean
-random_menu_is_mutable (GMenuModel *model)
+random_menu_is_mutable (GMenuModel *model G_GNUC_UNUSED)
 {
   return TRUE;
 }
@@ -100,7 +100,7 @@ random_menu_finalize (GObject *object)
 }
 
 static void
-random_menu_init (RandomMenu *menu)
+random_menu_init (RandomMenu *menu G_GNUC_UNUSED)
 {
 }
 

@@ -918,11 +918,11 @@ ctk_recent_chooser_default_map (CtkWidget *widget)
 }
 
 static void
-recent_icon_data_func (CtkTreeViewColumn *tree_column,
+recent_icon_data_func (CtkTreeViewColumn *tree_column G_GNUC_UNUSED,
 		       CtkCellRenderer   *cell,
 		       CtkTreeModel      *model,
 		       CtkTreeIter       *iter,
-		       gpointer           user_data)
+		       gpointer           user_data G_GNUC_UNUSED)
 {
   CtkRecentInfo *info = NULL;
   GIcon *icon;
@@ -940,11 +940,11 @@ recent_icon_data_func (CtkTreeViewColumn *tree_column,
 }
 
 static void
-recent_meta_data_func (CtkTreeViewColumn *tree_column,
+recent_meta_data_func (CtkTreeViewColumn *tree_column G_GNUC_UNUSED,
 		       CtkCellRenderer   *cell,
 		       CtkTreeModel      *model,
 		       CtkTreeIter       *iter,
-		       gpointer           user_data)
+		       gpointer           user_data G_GNUC_UNUSED)
 {
   CtkRecentInfo *info = NULL;
   gchar *name;
@@ -1343,7 +1343,7 @@ get_icon_theme_for_widget (CtkWidget *widget)
 }
 
 static gint
-get_icon_size_for_widget (CtkWidget   *widget,
+get_icon_size_for_widget (CtkWidget   *widget G_GNUC_UNUSED,
 			  CtkIconSize  icon_size)
 {
   gint width, height;
@@ -1355,7 +1355,7 @@ get_icon_size_for_widget (CtkWidget   *widget,
 }
 
 static void
-recent_manager_changed_cb (CtkRecentManager *manager,
+recent_manager_changed_cb (CtkRecentManager *manager G_GNUC_UNUSED,
 			   gpointer          user_data)
 {
   CtkRecentChooserDefault *impl = CTK_RECENT_CHOOSER_DEFAULT (user_data);
@@ -1364,16 +1364,16 @@ recent_manager_changed_cb (CtkRecentManager *manager,
 }
 
 static void
-selection_changed_cb (CtkTreeSelection *selection,
+selection_changed_cb (CtkTreeSelection *selection G_GNUC_UNUSED,
 		      gpointer          user_data)
 {
   _ctk_recent_chooser_selection_changed (CTK_RECENT_CHOOSER (user_data));
 }
 
 static void
-row_activated_cb (CtkTreeView       *tree_view,
-		  CtkTreePath       *tree_path,
-		  CtkTreeViewColumn *tree_column,
+row_activated_cb (CtkTreeView       *tree_view G_GNUC_UNUSED,
+		  CtkTreePath       *tree_path G_GNUC_UNUSED,
+		  CtkTreeViewColumn *tree_column G_GNUC_UNUSED,
 		  gpointer           user_data)
 {
   _ctk_recent_chooser_item_activated (CTK_RECENT_CHOOSER (user_data));
@@ -1417,7 +1417,7 @@ get_drag_pixbuf (CtkRecentChooserDefault *impl)
 }
 
 static void
-recent_view_drag_begin_cb (CtkWidget      *widget,
+recent_view_drag_begin_cb (CtkWidget      *widget G_GNUC_UNUSED,
 			   CdkDragContext *context,
 			   gpointer        user_data)
 {
@@ -1442,7 +1442,7 @@ typedef struct
 
 static void
 append_uri_to_urilist (CtkTreeModel *model,
-		       CtkTreePath  *path,
+		       CtkTreePath  *path G_GNUC_UNUSED,
 		       CtkTreeIter  *iter,
 		       gpointer      user_data)
 {
@@ -1461,11 +1461,11 @@ append_uri_to_urilist (CtkTreeModel *model,
 }
 
 static void
-recent_view_drag_data_get_cb (CtkWidget        *widget,
-			      CdkDragContext   *context,
+recent_view_drag_data_get_cb (CtkWidget        *widget G_GNUC_UNUSED,
+			      CdkDragContext   *context G_GNUC_UNUSED,
 			      CtkSelectionData *selection_data,
-			      guint             info,
-			      guint32           time_,
+			      guint             info G_GNUC_UNUSED,
+			      guint32           time_ G_GNUC_UNUSED,
 			      gpointer          data)
 {
   CtkRecentChooserDefault *impl = CTK_RECENT_CHOOSER_DEFAULT (data);
@@ -1489,7 +1489,7 @@ recent_view_drag_data_get_cb (CtkWidget        *widget,
 }
 
 static gboolean
-recent_view_query_tooltip_cb (CtkWidget  *widget,
+recent_view_query_tooltip_cb (CtkWidget  *widget G_GNUC_UNUSED,
                               gint        x,
                               gint        y,
                               gboolean    keyboard_tip,
@@ -1566,7 +1566,7 @@ remove_selected_from_list (CtkRecentChooserDefault *impl)
 }
 
 static void
-copy_activated_cb (CtkMenuItem *menu_item,
+copy_activated_cb (CtkMenuItem *menu_item G_GNUC_UNUSED,
 		   gpointer     user_data)
 {
   CtkRecentChooserDefault *impl = CTK_RECENT_CHOOSER_DEFAULT (user_data);
@@ -1588,7 +1588,7 @@ copy_activated_cb (CtkMenuItem *menu_item,
 }
 
 static void
-remove_all_activated_cb (CtkMenuItem *menu_item,
+remove_all_activated_cb (CtkMenuItem *menu_item G_GNUC_UNUSED,
 			 gpointer     user_data)
 {
   CtkRecentChooserDefault *impl = CTK_RECENT_CHOOSER_DEFAULT (user_data);
@@ -1609,7 +1609,7 @@ remove_all_activated_cb (CtkMenuItem *menu_item,
 }
 
 static void
-remove_item_activated_cb (CtkMenuItem *menu_item,
+remove_item_activated_cb (CtkMenuItem *menu_item G_GNUC_UNUSED,
 			  gpointer     user_data)
 {
   CtkRecentChooserDefault *impl = CTK_RECENT_CHOOSER_DEFAULT (user_data);
@@ -1630,7 +1630,7 @@ show_private_toggled_cb (CtkCheckMenuItem *menu_item,
 
 static void
 recent_popup_menu_detach_cb (CtkWidget *attach_widget,
-			     CtkMenu   *menu)
+			     CtkMenu   *menu G_GNUC_UNUSED)
 {
   CtkRecentChooserDefault *impl;
   
@@ -1745,7 +1745,7 @@ recent_view_menu_popup (CtkRecentChooserDefault *impl,
 }
 
 static gboolean
-recent_view_popup_menu_cb (CtkWidget *widget,
+recent_view_popup_menu_cb (CtkWidget *widget G_GNUC_UNUSED,
 			   gpointer   user_data)
 {
   recent_view_menu_popup (CTK_RECENT_CHOOSER_DEFAULT (user_data), NULL);
@@ -1753,7 +1753,7 @@ recent_view_popup_menu_cb (CtkWidget *widget,
 }
 
 static gboolean
-recent_view_button_press_cb (CtkWidget      *widget,
+recent_view_button_press_cb (CtkWidget      *widget G_GNUC_UNUSED,
 			     CdkEventButton *event,
 			     gpointer        user_data)
 {

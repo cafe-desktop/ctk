@@ -385,7 +385,7 @@ ctk_pad_controller_class_init (CtkPadControllerClass *klass)
 }
 
 static void
-ctk_pad_controller_init (CtkPadController *controller)
+ctk_pad_controller_init (CtkPadController *controller G_GNUC_UNUSED)
 {
 }
 

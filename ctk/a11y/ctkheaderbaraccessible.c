@@ -24,7 +24,7 @@
 G_DEFINE_TYPE (CtkHeaderBarAccessible, ctk_header_bar_accessible, CTK_TYPE_CONTAINER_ACCESSIBLE)
 
 static void
-count_widget (CtkWidget *widget,
+count_widget (CtkWidget *widget G_GNUC_UNUSED,
               gint      *count)
 {
   (*count)++;
@@ -81,7 +81,7 @@ ctk_header_bar_accessible_class_init (CtkHeaderBarAccessibleClass *klass)
 }
 
 static void
-ctk_header_bar_accessible_init (CtkHeaderBarAccessible *header_bar)
+ctk_header_bar_accessible_init (CtkHeaderBarAccessible *header_bar G_GNUC_UNUSED)
 {
 }
 

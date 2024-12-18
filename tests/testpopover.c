@@ -2,8 +2,8 @@
 
 static void
 activate (GSimpleAction *action,
-          GVariant      *parameter,
-          gpointer       user_data)
+          GVariant      *parameter G_GNUC_UNUSED,
+          gpointer       user_data G_GNUC_UNUSED)
 {
   g_print ("%s activated\n", g_action_get_name (G_ACTION (action)));
 }

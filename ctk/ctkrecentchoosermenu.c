@@ -601,7 +601,7 @@ ctk_recent_chooser_menu_select_uri (CtkRecentChooser  *chooser,
 
 static void
 ctk_recent_chooser_menu_unselect_uri (CtkRecentChooser *chooser,
-				       const gchar     *uri)
+				      const gchar      *uri G_GNUC_UNUSED)
 {
   CtkRecentChooserMenu *menu = CTK_RECENT_CHOOSER_MENU (chooser);
   
@@ -1117,7 +1117,7 @@ item_activate_cb (CtkWidget *widget,
 
 /* we force a redraw if the manager changes when we are showing */
 static void
-manager_changed_cb (CtkRecentManager *manager,
+manager_changed_cb (CtkRecentManager *manager G_GNUC_UNUSED,
 		    gpointer          user_data)
 {
   CtkRecentChooserMenu *menu = CTK_RECENT_CHOOSER_MENU (user_data);

@@ -115,7 +115,7 @@ disconnect_func (gpointer data)
 
 static void
 signal_removed (gpointer  data,
-                GClosure *closure)
+                GClosure *closure G_GNUC_UNUSED)
 {
   DisconnectData *dd = data;
 
@@ -730,7 +730,9 @@ object_properties (CtkInspectorPropEditor *editor)
 }
 
 static void
-rgba_modified (CtkColorButton *cb, GParamSpec *ignored, ObjectProperty *p)
+rgba_modified (CtkColorButton *cb,
+               GParamSpec     *ignored G_GNUC_UNUSED,
+               ObjectProperty *p)
 {
   GValue val = G_VALUE_INIT;
 
@@ -764,7 +766,9 @@ rgba_changed (GObject *object, GParamSpec *pspec, gpointer data)
 }
 
 static void
-color_modified (CtkColorButton *cb, GParamSpec *ignored, ObjectProperty *p)
+color_modified (CtkColorButton *cb,
+                GParamSpec     *ignored G_GNUC_UNUSED,
+                ObjectProperty *p)
 {
   CdkRGBA rgba;
   CdkColor color;
@@ -808,7 +812,9 @@ color_changed (GObject *object, GParamSpec *pspec, gpointer data)
 }
 
 static void
-font_modified (CtkFontChooser *fb, GParamSpec *pspec, ObjectProperty *p)
+font_modified (CtkFontChooser *fb,
+               GParamSpec     *pspec G_GNUC_UNUSED,
+               ObjectProperty *p)
 {
   GValue val = G_VALUE_INIT;
 
@@ -1873,6 +1879,3 @@ ctk_inspector_prop_editor_should_expand (CtkInspectorPropEditor *editor)
 
   return FALSE;
 }
-
-
-// vim: set et:

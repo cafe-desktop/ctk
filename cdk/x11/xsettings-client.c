@@ -569,7 +569,7 @@ check_manager_window (CdkX11Screen *x11_screen,
 
 static CdkFilterReturn
 cdk_xsettings_root_window_filter (CdkXEvent *xevent,
-                                  CdkEvent  *event,
+                                  CdkEvent  *event G_GNUC_UNUSED,
                                   gpointer   data)
 {
   CdkX11Screen *x11_screen = data;
@@ -594,7 +594,7 @@ cdk_xsettings_root_window_filter (CdkXEvent *xevent,
 
 static CdkFilterReturn
 cdk_xsettings_manager_window_filter (CdkXEvent *xevent,
-                                     CdkEvent  *event,
+                                     CdkEvent  *event G_GNUC_UNUSED,
                                      gpointer   data)
 {
   CdkX11Screen *x11_screen = data;

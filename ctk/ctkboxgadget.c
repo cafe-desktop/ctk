@@ -201,8 +201,8 @@ ctk_box_gadget_measure_orientation (CtkCssGadget   *gadget,
                                     gint            for_size,
                                     gint           *minimum,
                                     gint           *natural,
-                                    gint           *minimum_baseline,
-                                    gint           *natural_baseline)
+                                    gint           *minimum_baseline G_GNUC_UNUSED,
+                                    gint           *natural_baseline G_GNUC_UNUSED)
 {
   CtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (CTK_BOX_GADGET (gadget));
   gint child_min, child_nat;
@@ -492,10 +492,10 @@ ctk_box_gadget_allocate (CtkCssGadget        *gadget,
 static gboolean
 ctk_box_gadget_draw (CtkCssGadget *gadget,
                      cairo_t      *cr,
-                     int           x,
-                     int           y,
-                     int           width,
-                     int           height)
+                     int           x G_GNUC_UNUSED,
+                     int           y G_GNUC_UNUSED,
+                     int           width G_GNUC_UNUSED,
+                     int           height G_GNUC_UNUSED)
 {
   CtkBoxGadgetPrivate *priv = ctk_box_gadget_get_instance_private (CTK_BOX_GADGET (gadget));
   CtkWidget *owner = ctk_css_gadget_get_owner (gadget);

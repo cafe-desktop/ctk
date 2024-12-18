@@ -263,7 +263,7 @@ sparql_append_string_literal_lower_case (GString     *sparql,
 }
 
 static void
-query_callback (GObject      *object,
+query_callback (GObject      *object G_GNUC_UNUSED,
                 GAsyncResult *res,
                 gpointer      user_data)
 {

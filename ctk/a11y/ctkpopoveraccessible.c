@@ -88,7 +88,7 @@ popover_update_modality (AtkObject  *object,
 static void
 popover_notify_cb (CtkPopover *popover,
                    GParamSpec *pspec,
-                   AtkObject  *object)
+                   AtkObject  *object G_GNUC_UNUSED)
 {
   AtkObject *popover_accessible;
 
@@ -156,6 +156,6 @@ ctk_popover_accessible_class_init (CtkPopoverAccessibleClass *klass)
 }
 
 static void
-ctk_popover_accessible_init (CtkPopoverAccessible *popover)
+ctk_popover_accessible_init (CtkPopoverAccessible *popover G_GNUC_UNUSED)
 {
 }

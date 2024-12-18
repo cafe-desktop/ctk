@@ -93,7 +93,7 @@ G_DEFINE_TYPE (CdkWaylandDisplay, cdk_wayland_display, CDK_TYPE_DISPLAY)
 static void
 async_roundtrip_callback (void               *data,
                           struct wl_callback *callback,
-                          uint32_t            time)
+                          uint32_t            time G_GNUC_UNUSED)
 {
   CdkWaylandDisplay *display_wayland = data;
 
@@ -158,7 +158,9 @@ static const struct zxdg_shell_v6_listener zxdg_shell_v6_listener = {
 };
 
 static gboolean
-is_known_global (gpointer key, gpointer value, gpointer user_data)
+is_known_global (gpointer key G_GNUC_UNUSED,
+		 gpointer value,
+		 gpointer user_data)
 {
   const char *required_global = user_data;
   const char *known_global = value;
@@ -343,8 +345,8 @@ get_format_name (enum wl_shm_format format)
 #endif
 
 static void
-wl_shm_format (void          *data,
-               struct wl_shm *wl_shm,
+wl_shm_format (void          *data G_GNUC_UNUSED,
+               struct wl_shm *wl_shm G_GNUC_UNUSED,
                uint32_t       format)
 {
   CDK_NOTE (MISC, g_message ("supported pixel format %s", get_format_name (format)));
@@ -356,7 +358,7 @@ static const struct wl_shm_listener wl_shm_listener = {
 
 static void
 server_decoration_manager_default_mode (void                                          *data,
-                                        struct org_kde_kwin_server_decoration_manager *manager,
+                                        struct org_kde_kwin_server_decoration_manager *manager G_GNUC_UNUSED,
                                         uint32_t                                       mode)
 {
   g_assert (mode <= ORG_KDE_KWIN_SERVER_DECORATION_MANAGER_MODE_SERVER);
@@ -385,7 +387,7 @@ cdk_wayland_display_prefers_ssd (CdkDisplay *display)
 
 static void
 cdk_registry_handle_global (void               *data,
-                            struct wl_registry *registry,
+                            struct wl_registry *registry G_GNUC_UNUSED,
                             uint32_t            id,
                             const char         *interface,
                             uint32_t            version)
@@ -539,7 +541,7 @@ cdk_registry_handle_global (void               *data,
 
 static void
 cdk_registry_handle_global_remove (void               *data,
-                                   struct wl_registry *registry,
+                                   struct wl_registry *registry G_GNUC_UNUSED,
                                    uint32_t            id)
 {
   CdkWaylandDisplay *display_wayland = data;
@@ -566,8 +568,8 @@ log_handler (const char *format, va_list args)
 }
 
 static void
-load_cursor_theme_closure_run (CdkWaylandDisplay *display_wayland,
-                               OnHasGlobalsClosure *closure)
+load_cursor_theme_closure_run (CdkWaylandDisplay   *display_wayland,
+                               OnHasGlobalsClosure *closure G_GNUC_UNUSED)
 {
   _cdk_wayland_display_load_cursor_theme (display_wayland);
 }
@@ -741,7 +743,7 @@ cdk_wayland_display_finalize (GObject *object)
 }
 
 static const gchar *
-cdk_wayland_display_get_name (CdkDisplay *display)
+cdk_wayland_display_get_name (CdkDisplay *display G_GNUC_UNUSED)
 {
   const gchar *name;
 
@@ -831,7 +833,7 @@ cdk_wayland_display_make_default (CdkDisplay *display)
 }
 
 static gboolean
-cdk_wayland_display_has_pending (CdkDisplay *display)
+cdk_wayland_display_has_pending (CdkDisplay *display G_GNUC_UNUSED)
 {
   return FALSE;
 }
@@ -846,65 +848,65 @@ cdk_wayland_display_get_default_group (CdkDisplay *display)
 
 
 static gboolean
-cdk_wayland_display_supports_selection_notification (CdkDisplay *display)
+cdk_wayland_display_supports_selection_notification (CdkDisplay *display G_GNUC_UNUSED)
 {
   return FALSE;
 }
 
 static gboolean
-cdk_wayland_display_request_selection_notification (CdkDisplay *display,
-						    CdkAtom     selection)
+cdk_wayland_display_request_selection_notification (CdkDisplay *display G_GNUC_UNUSED,
+						    CdkAtom     selection G_GNUC_UNUSED)
 
 {
     return FALSE;
 }
 
 static gboolean
-cdk_wayland_display_supports_clipboard_persistence (CdkDisplay *display)
+cdk_wayland_display_supports_clipboard_persistence (CdkDisplay *display G_GNUC_UNUSED)
 {
   return FALSE;
 }
 
 static void
-cdk_wayland_display_store_clipboard (CdkDisplay    *display,
-				     CdkWindow     *clipboard_window,
-				     guint32        time_,
-				     const CdkAtom *targets,
-				     gint           n_targets)
+cdk_wayland_display_store_clipboard (CdkDisplay    *display G_GNUC_UNUSED,
+				     CdkWindow     *clipboard_window G_GNUC_UNUSED,
+				     guint32        time_ G_GNUC_UNUSED,
+				     const CdkAtom *targets G_GNUC_UNUSED,
+				     gint           n_targets G_GNUC_UNUSED)
 {
 }
 
 static gboolean
-cdk_wayland_display_supports_shapes (CdkDisplay *display)
+cdk_wayland_display_supports_shapes (CdkDisplay *display G_GNUC_UNUSED)
 {
   return FALSE;
 }
 
 static gboolean
-cdk_wayland_display_supports_input_shapes (CdkDisplay *display)
+cdk_wayland_display_supports_input_shapes (CdkDisplay *display G_GNUC_UNUSED)
 {
   return TRUE;
 }
 
 static gboolean
-cdk_wayland_display_supports_composite (CdkDisplay *display)
+cdk_wayland_display_supports_composite (CdkDisplay *display G_GNUC_UNUSED)
 {
   return FALSE;
 }
 
 static void
-cdk_wayland_display_before_process_all_updates (CdkDisplay *display)
+cdk_wayland_display_before_process_all_updates (CdkDisplay *display G_GNUC_UNUSED)
 {
 }
 
 static void
-cdk_wayland_display_after_process_all_updates (CdkDisplay *display)
+cdk_wayland_display_after_process_all_updates (CdkDisplay *display G_GNUC_UNUSED)
 {
   /* Post the damage here instead? */
 }
 
 static gulong
-cdk_wayland_display_get_next_serial (CdkDisplay *display)
+cdk_wayland_display_get_next_serial (CdkDisplay *display G_GNUC_UNUSED)
 {
   static gulong serial = 0;
   return ++serial;
@@ -979,13 +981,13 @@ _cdk_wayland_display_get_keymap (CdkDisplay *display)
 }
 
 static void
-cdk_wayland_display_push_error_trap (CdkDisplay *display)
+cdk_wayland_display_push_error_trap (CdkDisplay *display G_GNUC_UNUSED)
 {
 }
 
 static gint
-cdk_wayland_display_pop_error_trap (CdkDisplay *display,
-				    gboolean    ignored)
+cdk_wayland_display_pop_error_trap (CdkDisplay *display G_GNUC_UNUSED,
+				    gboolean    ignored G_GNUC_UNUSED)
 {
   return 0;
 }

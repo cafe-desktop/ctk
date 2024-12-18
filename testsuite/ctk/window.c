@@ -8,7 +8,7 @@
 static gboolean interactive = FALSE;
 
 static gboolean
-stop_main (gpointer data)
+stop_main (gpointer data G_GNUC_UNUSED)
 {
   ctk_main_quit ();
 
@@ -38,7 +38,7 @@ on_draw (CtkWidget *widget, cairo_t *cr)
 }
 
 static gboolean
-on_keypress (CtkWidget *widget)
+on_keypress (CtkWidget *widget G_GNUC_UNUSED)
 {
   ctk_main_quit ();
 
@@ -339,7 +339,7 @@ test_show_hide3 (void)
 }
 
 static gboolean
-on_map_event (CtkWidget *window)
+on_map_event (CtkWidget *window G_GNUC_UNUSED)
 {
   ctk_main_quit ();
 

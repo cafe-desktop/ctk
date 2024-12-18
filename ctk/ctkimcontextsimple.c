@@ -230,10 +230,10 @@ ctk_im_context_simple_init_compose_table (CtkIMContextSimple *im_context_simple)
 }
 
 static void
-init_compose_table_thread_cb (GTask            *task,
-                              gpointer          source_object,
-                              gpointer          task_data,
-                              GCancellable     *cancellable)
+init_compose_table_thread_cb (GTask        *task,
+                              gpointer      source_object G_GNUC_UNUSED,
+                              gpointer      task_data,
+                              GCancellable *cancellable G_GNUC_UNUSED)
 {
   if (g_task_return_error_if_cancelled (task))
     return;

@@ -756,7 +756,7 @@ ctk_list_box_get_row_at_index (CtkListBox *box,
 static int
 row_y_cmp_func (gconstpointer a,
                 gconstpointer b,
-                gpointer      user_data)
+                gpointer      user_data G_GNUC_UNUSED)
 {
   int y = GPOINTER_TO_INT (b);
   CtkListBoxRowPrivate *row_priv = ROW_PRIV (a);
@@ -1071,7 +1071,7 @@ ctk_list_box_get_adjustment (CtkListBox *box)
 
 static void
 adjustment_changed (GObject    *object,
-                    GParamSpec *pspec,
+                    GParamSpec *pspec G_GNUC_UNUSED,
                     gpointer    data)
 {
   CtkAdjustment *adjustment;
@@ -1941,9 +1941,9 @@ ctk_list_box_motion_notify_event (CtkWidget      *widget,
 }
 
 static void
-ctk_list_box_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
+ctk_list_box_multipress_gesture_pressed (CtkGestureMultiPress *gesture G_GNUC_UNUSED,
                                          guint                 n_press,
-                                         gdouble               x,
+                                         gdouble               x G_GNUC_UNUSED,
                                          gdouble               y,
                                          CtkListBox           *box)
 {
@@ -1991,8 +1991,8 @@ get_current_selection_modifiers (CtkWidget *widget,
 static void
 ctk_list_box_multipress_gesture_released (CtkGestureMultiPress *gesture,
                                           guint                 n_press,
-                                          gdouble               x,
-                                          gdouble               y,
+                                          gdouble               x G_GNUC_UNUSED,
+                                          gdouble               y G_GNUC_UNUSED,
                                           CtkListBox           *box)
 {
   CtkListBoxPrivate *priv = BOX_PRIV (box);
@@ -2180,11 +2180,11 @@ ctk_list_box_draw (CtkWidget *widget,
 static gboolean
 ctk_list_box_render (CtkCssGadget *gadget,
                      cairo_t      *cr,
-                     int           x,
-                     int           y,
-                     int           width,
-                     int           height,
-                     gpointer      data)
+                     int           x G_GNUC_UNUSED,
+                     int           y G_GNUC_UNUSED,
+                     int           width G_GNUC_UNUSED,
+                     int           height G_GNUC_UNUSED,
+                     gpointer      data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
 
@@ -2325,7 +2325,7 @@ ctk_list_box_get_last_focusable (CtkListBox *box)
 }
 
 static GSequenceIter *
-ctk_list_box_get_previous_visible (CtkListBox    *box,
+ctk_list_box_get_previous_visible (CtkListBox    *box G_GNUC_UNUSED,
                                    GSequenceIter *iter)
 {
   CtkListBoxRow *row;
@@ -2346,7 +2346,7 @@ ctk_list_box_get_previous_visible (CtkListBox    *box,
 }
 
 static GSequenceIter *
-ctk_list_box_get_next_visible (CtkListBox    *box,
+ctk_list_box_get_next_visible (CtkListBox    *box G_GNUC_UNUSED,
                                GSequenceIter *iter)
 {
   CtkListBoxRow *row;
@@ -2604,7 +2604,7 @@ ctk_list_box_compute_expand (CtkWidget *widget,
 }
 
 static GType
-ctk_list_box_child_type (CtkContainer *container)
+ctk_list_box_child_type (CtkContainer *container G_GNUC_UNUSED)
 {
   /* We really support any type but we wrap it in a row. But that is
    * more like a C helper function, in an abstract sense we only support
@@ -2614,7 +2614,7 @@ ctk_list_box_child_type (CtkContainer *container)
 }
 
 static CtkSizeRequestMode
-ctk_list_box_get_request_mode (CtkWidget *widget)
+ctk_list_box_get_request_mode (CtkWidget *widget G_GNUC_UNUSED)
 {
   return CTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH;
 }
@@ -2675,9 +2675,9 @@ ctk_list_box_measure (CtkCssGadget   *gadget,
                       gint            for_size,
                       gint           *minimum,
                       gint           *natural,
-                      gint           *minimum_baseline,
-                      gint           *natural_baseline,
-                      gpointer        unused)
+                      gint           *minimum_baseline G_GNUC_UNUSED,
+                      gint           *natural_baseline G_GNUC_UNUSED,
+                      gpointer        unused G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkListBoxPrivate *priv = BOX_PRIV (widget);
@@ -2795,9 +2795,9 @@ ctk_list_box_size_allocate (CtkWidget     *widget,
 static void
 ctk_list_box_allocate (CtkCssGadget        *gadget,
                        const CtkAllocation *allocation,
-                       int                  baseline,
+                       int                  baseline G_GNUC_UNUSED,
                        CtkAllocation       *out_clip,
-                       gpointer             unused)
+                       gpointer             unused G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkListBoxPrivate *priv = BOX_PRIV (widget);
@@ -3026,8 +3026,8 @@ ctk_list_box_drag_highlight_row (CtkListBox    *box,
 
 static void
 ctk_list_box_drag_leave (CtkWidget      *widget,
-                         CdkDragContext *context,
-                         guint           time_)
+                         CdkDragContext *context G_GNUC_UNUSED,
+                         guint           time_ G_GNUC_UNUSED)
 {
   ctk_list_box_drag_unhighlight_row (CTK_LIST_BOX (widget));
 }
@@ -3321,11 +3321,11 @@ ctk_list_box_row_draw (CtkWidget *widget,
 static gboolean
 ctk_list_box_row_render (CtkCssGadget *gadget,
                          cairo_t      *cr,
-                         int           x,
-                         int           y,
-                         int           width,
-                         int           height,
-                         gpointer      data)
+                         int           x G_GNUC_UNUSED,
+                         int           y G_GNUC_UNUSED,
+                         int           width G_GNUC_UNUSED,
+                         int           height G_GNUC_UNUSED,
+                         gpointer      data G_GNUC_UNUSED)
 {
   CtkWidget *widget;
 
@@ -3342,9 +3342,9 @@ ctk_list_box_row_measure (CtkCssGadget   *gadget,
                           int             for_size,
                           int            *minimum,
                           int            *natural,
-                          int            *minimum_baseline,
-                          int            *natural_baseline,
-                          gpointer        data)
+                          int            *minimum_baseline G_GNUC_UNUSED,
+                          int            *natural_baseline G_GNUC_UNUSED,
+                          gpointer        data G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkWidget *child;
@@ -3442,9 +3442,9 @@ ctk_list_box_row_size_allocate (CtkWidget     *widget,
 static void
 ctk_list_box_row_allocate (CtkCssGadget        *gadget,
                            const CtkAllocation *allocation,
-                           int                  baseline,
+                           int                  baseline G_GNUC_UNUSED,
                            CtkAllocation       *out_clip,
-                           gpointer             data)
+                           gpointer             data G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkWidget *child;
@@ -3961,7 +3961,7 @@ ctk_list_box_row_init (CtkListBoxRow *row)
 
 static void
 ctk_list_box_buildable_add_child (CtkBuildable *buildable,
-                                  CtkBuilder   *builder,
+                                  CtkBuilder   *builder G_GNUC_UNUSED,
                                   GObject      *child,
                                   const gchar  *type)
 {

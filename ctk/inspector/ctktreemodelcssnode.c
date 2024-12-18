@@ -70,7 +70,7 @@ get_node_index (CtkCssNode *node)
 }
 
 static CtkTreeModelFlags
-ctk_tree_model_css_node_get_flags (CtkTreeModel *tree_model)
+ctk_tree_model_css_node_get_flags (CtkTreeModel *tree_model G_GNUC_UNUSED)
 {
   return CTK_TREE_MODEL_ITERS_PERSIST;
 }
@@ -415,9 +415,9 @@ ctk_tree_model_css_node_newv (CtkTreeModelCssNodeGetFunc  get_func,
 }
 
 static void
-child_added_cb (CtkCssNode          *node,
+child_added_cb (CtkCssNode          *node G_GNUC_UNUSED,
                 CtkCssNode          *child,
-                CtkCssNode          *previous,
+                CtkCssNode          *previous G_GNUC_UNUSED,
                 CtkTreeModelCssNode *model)
 {
   ctk_tree_model_css_node_connect_node (model, child, TRUE);
@@ -434,7 +434,7 @@ child_removed_cb (CtkCssNode          *node,
 
 static void
 notify_cb (CtkCssNode          *node,
-           GParamSpec          *pspec,
+           GParamSpec          *pspec G_GNUC_UNUSED,
            CtkTreeModelCssNode *model)
 {
   CtkTreeIter iter;
@@ -450,7 +450,7 @@ notify_cb (CtkCssNode          *node,
 
 static void
 style_changed_cb (CtkCssNode          *node,
-                  CtkCssStyleChange   *change,
+                  CtkCssStyleChange   *change G_GNUC_UNUSED,
                   CtkTreeModelCssNode *model)
 {
   CtkTreeIter iter;

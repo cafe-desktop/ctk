@@ -94,7 +94,7 @@ static gint
 sort_func (CtkTreeModel *model,
            CtkTreeIter  *a,
            CtkTreeIter  *b,
-           gpointer      user_data)
+           gpointer      user_data G_GNUC_UNUSED)
 {
   gboolean is_dir_a, is_dir_b;
   gchar *name_a, *name_b;
@@ -153,7 +153,7 @@ create_store (void)
 }
 
 static void
-item_activated (CtkIconView *icon_view,
+item_activated (CtkIconView *icon_view G_GNUC_UNUSED,
                 CtkTreePath *tree_path,
                 gpointer     user_data)
 {
@@ -188,7 +188,7 @@ item_activated (CtkIconView *icon_view,
 }
 
 static void
-up_clicked (CtkToolItem *item,
+up_clicked (CtkToolItem *item G_GNUC_UNUSED,
             gpointer     user_data)
 {
   CtkListStore *store;
@@ -209,7 +209,7 @@ up_clicked (CtkToolItem *item,
 }
 
 static void
-home_clicked (CtkToolItem *item,
+home_clicked (CtkToolItem *item G_GNUC_UNUSED,
               gpointer     user_data)
 {
   CtkListStore *store;

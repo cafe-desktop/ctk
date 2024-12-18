@@ -221,7 +221,7 @@ cdk_wayland_gl_context_realize (CdkGLContext *context,
 
 static void
 cdk_wayland_gl_context_end_frame (CdkGLContext   *context,
-                                  cairo_region_t *painted,
+                                  cairo_region_t *painted G_GNUC_UNUSED,
                                   cairo_region_t *damage)
 {
   CdkWindow *window = cdk_gl_context_get_window (context);
@@ -270,7 +270,7 @@ cdk_wayland_gl_context_class_init (CdkWaylandGLContextClass *klass)
 }
 
 static void
-cdk_wayland_gl_context_init (CdkWaylandGLContext *self)
+cdk_wayland_gl_context_init (CdkWaylandGLContext *self G_GNUC_UNUSED)
 {
 }
 

@@ -223,7 +223,7 @@ make_model (void)
 }
 
 static void
-alex_toggled (CtkCellRendererToggle *cell,
+alex_toggled (CtkCellRendererToggle *cell G_GNUC_UNUSED,
 	      gchar                 *path_str,
 	      gpointer               data)
 {
@@ -242,7 +242,7 @@ alex_toggled (CtkCellRendererToggle *cell,
 }
 
 static void
-havoc_toggled (CtkCellRendererToggle *cell,
+havoc_toggled (CtkCellRendererToggle *cell G_GNUC_UNUSED,
 	       gchar                 *path_str,
 	       gpointer               data)
 {
@@ -261,7 +261,7 @@ havoc_toggled (CtkCellRendererToggle *cell,
 }
 
 static void
-owen_toggled (CtkCellRendererToggle *cell,
+owen_toggled (CtkCellRendererToggle *cell G_GNUC_UNUSED,
 	      gchar                 *path_str,
 	      gpointer               data)
 {
@@ -280,7 +280,7 @@ owen_toggled (CtkCellRendererToggle *cell,
 }
 
 static void
-tim_toggled (CtkCellRendererToggle *cell,
+tim_toggled (CtkCellRendererToggle *cell G_GNUC_UNUSED,
 	     gchar                 *path_str,
 	     gpointer               data)
 {
@@ -299,7 +299,7 @@ tim_toggled (CtkCellRendererToggle *cell,
 }
 
 static void
-dave_toggled (CtkCellRendererToggle *cell,
+dave_toggled (CtkCellRendererToggle *cell G_GNUC_UNUSED,
 	      gchar                 *path_str,
 	      gpointer               data)
 {
@@ -318,11 +318,11 @@ dave_toggled (CtkCellRendererToggle *cell,
 }
 
 static void
-set_indicator_size (CtkTreeViewColumn *column,
-		    CtkCellRenderer *cell,
-		    CtkTreeModel *model,
-		    CtkTreeIter *iter,
-		    gpointer data)
+set_indicator_size (CtkTreeViewColumn *column G_GNUC_UNUSED,
+		    CtkCellRenderer   *cell,
+		    CtkTreeModel      *model,
+		    CtkTreeIter       *iter,
+		    gpointer           data G_GNUC_UNUSED)
 {
   gint size;
   CtkTreePath *path;

@@ -11,7 +11,8 @@ static CtkTargetEntry row_targets[] =
 };
 
 static void
-on_button_clicked (CtkWidget *widget, gpointer data)
+on_button_clicked (CtkWidget *widget G_GNUC_UNUSED,
+		   gpointer   data)
 {
   g_print ("Button %d clicked\n", GPOINTER_TO_INT (data));
 }
@@ -138,7 +139,8 @@ kinetic_scrolling (void)
 }
 
 int
-main (int argc, char **argv)
+main (int    argc G_GNUC_UNUSED,
+      char **argv G_GNUC_UNUSED)
 {
   ctk_init (NULL, NULL);
 

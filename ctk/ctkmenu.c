@@ -1381,7 +1381,7 @@ ctk_menu_init (CtkMenu *menu)
 }
 
 static void
-moved_to_rect_cb (CdkWindow          *window,
+moved_to_rect_cb (CdkWindow          *window G_GNUC_UNUSED,
                   const CdkRectangle *flipped_rect,
                   const CdkRectangle *final_rect,
                   gboolean            flipped_x,
@@ -1487,7 +1487,7 @@ menu_change_screen (CtkMenu   *menu,
 
 static void
 attach_widget_screen_changed (CtkWidget *attach_widget,
-                              CdkScreen *previous_screen,
+                              CdkScreen *previous_screen G_GNUC_UNUSED,
                               CtkMenu   *menu)
 {
   if (ctk_widget_has_screen (attach_widget) &&
@@ -1496,7 +1496,9 @@ attach_widget_screen_changed (CtkWidget *attach_widget,
 }
 
 static void
-menu_toplevel_attached_to (CtkWindow *toplevel, GParamSpec *pspec, CtkMenu *menu)
+menu_toplevel_attached_to (CtkWindow  *toplevel G_GNUC_UNUSED,
+                           GParamSpec *pspec G_GNUC_UNUSED,
+                           CtkMenu    *menu)
 {
   CtkMenuAttachData *data;
 
@@ -2464,9 +2466,9 @@ void
 ctk_menu_update_scroll_offset (CtkMenu            *menu,
                                const CdkRectangle *flipped_rect,
                                const CdkRectangle *final_rect,
-                               gboolean            flipped_x,
-                               gboolean            flipped_y,
-                               gpointer            user_data)
+                               gboolean            flipped_x G_GNUC_UNUSED,
+                               gboolean            flipped_y G_GNUC_UNUSED,
+                               gpointer            user_data G_GNUC_UNUSED)
 {
   CtkBorder arrows_border;
 
@@ -2928,7 +2930,7 @@ ctk_menu_get_toplevel (CtkWidget *menu)
 }
 
 static void
-tearoff_window_destroyed (CtkWidget *widget,
+tearoff_window_destroyed (CtkWidget *widget G_GNUC_UNUSED,
                           CtkMenu   *menu)
 {
   ctk_menu_set_tearoff_state (menu, FALSE);
@@ -3272,8 +3274,8 @@ ctk_menu_realize (CtkWidget *widget)
 }
 
 static gboolean
-ctk_menu_focus (CtkWidget       *widget,
-                CtkDirectionType direction)
+ctk_menu_focus (CtkWidget       *widget G_GNUC_UNUSED,
+                CtkDirectionType direction G_GNUC_UNUSED)
 {
   /* A menu or its menu items cannot have focus */
   return FALSE;
@@ -3979,7 +3981,7 @@ ctk_menu_key_press (CtkWidget   *widget,
 }
 
 static gboolean
-check_threshold (CtkWidget *widget,
+check_threshold (CtkWidget *widget G_GNUC_UNUSED,
                  gint       start_x,
                  gint       start_y,
                  gint       x,
@@ -4258,7 +4260,7 @@ ctk_menu_handle_scrolling (CtkMenu *menu,
                            gint     x,
                            gint     y,
                            gboolean enter,
-                           gboolean motion)
+                           gboolean motion G_GNUC_UNUSED)
 {
   CtkMenuPrivate *priv = menu->priv;
   CtkMenuShell *menu_shell;
@@ -5751,7 +5753,7 @@ ctk_menu_attach (CtkMenu   *menu,
 }
 
 static gint
-ctk_menu_get_popup_delay (CtkMenuShell *menu_shell)
+ctk_menu_get_popup_delay (CtkMenuShell *menu_shell G_GNUC_UNUSED)
 {
   return MENU_POPUP_DELAY;
 }
@@ -6191,7 +6193,7 @@ ctk_menu_get_for_attach_widget (CtkWidget *widget)
 
 static void
 ctk_menu_grab_notify (CtkWidget *widget,
-                      gboolean   was_grabbed)
+                      gboolean   was_grabbed G_GNUC_UNUSED)
 {
   CtkMenu *menu;
   CtkWidget *toplevel;

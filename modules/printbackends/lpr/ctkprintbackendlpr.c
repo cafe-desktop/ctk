@@ -195,7 +195,7 @@ _cairo_write (void                *closure,
 }
 
 static cairo_surface_t *
-lpr_printer_create_cairo_surface (CtkPrinter       *printer,
+lpr_printer_create_cairo_surface (CtkPrinter       *printer G_GNUC_UNUSED,
 				  CtkPrintSettings *settings,
 				  gdouble           width, 
 				  gdouble           height,
@@ -223,7 +223,7 @@ typedef struct {
 } _PrintStreamData;
 
 static void
-lpr_print_cb (CtkPrintBackendLpr *print_backend,
+lpr_print_cb (CtkPrintBackendLpr *print_backend G_GNUC_UNUSED,
               GError             *error,
               gpointer            user_data)
 {
@@ -250,7 +250,7 @@ lpr_print_cb (CtkPrintBackendLpr *print_backend,
 
 static gboolean
 lpr_write (GIOChannel   *source,
-           GIOCondition  con,
+           GIOCondition  con G_GNUC_UNUSED,
            gpointer      user_data)
 {
   gchar buf[_LPR_MAX_CHUNK_SIZE];
@@ -404,10 +404,10 @@ ctk_print_backend_lpr_init (CtkPrintBackendLpr *backend)
 }
 
 static CtkPrinterOptionSet *
-lpr_printer_get_options (CtkPrinter           *printer,
+lpr_printer_get_options (CtkPrinter           *printer G_GNUC_UNUSED,
 			 CtkPrintSettings     *settings,
-			 CtkPageSetup         *page_setup,
-			 CtkPrintCapabilities  capabilities)
+			 CtkPageSetup         *page_setup G_GNUC_UNUSED,
+			 CtkPrintCapabilities  capabilities G_GNUC_UNUSED)
 {
   CtkPrinterOptionSet *set;
   CtkPrinterOption *option;
@@ -437,7 +437,7 @@ lpr_printer_get_options (CtkPrinter           *printer,
 }
 
 static void
-lpr_printer_get_settings_from_options (CtkPrinter          *printer,
+lpr_printer_get_settings_from_options (CtkPrinter          *printer G_GNUC_UNUSED,
 				       CtkPrinterOptionSet *options,
 				       CtkPrintSettings    *settings)
 {
@@ -457,10 +457,10 @@ lpr_printer_get_settings_from_options (CtkPrinter          *printer,
 }
 
 static void
-lpr_printer_prepare_for_print (CtkPrinter       *printer,
+lpr_printer_prepare_for_print (CtkPrinter       *printer G_GNUC_UNUSED,
 			       CtkPrintJob      *print_job,
 			       CtkPrintSettings *settings,
-			       CtkPageSetup     *page_setup)
+			       CtkPageSetup     *page_setup G_GNUC_UNUSED)
 {
   double scale;
   CtkPrintPages pages;

@@ -439,8 +439,8 @@ update_suggested_action (CtkDialog *dialog)
 }
 
 static void
-add_cb (CtkContainer *container,
-        CtkWidget    *widget,
+add_cb (CtkContainer *container G_GNUC_UNUSED,
+        CtkWidget    *widget G_GNUC_UNUSED,
         CtkDialog    *dialog)
 {
   CtkDialogPrivate *priv = dialog->priv;
@@ -736,8 +736,8 @@ ctk_dialog_buildable_interface_init (CtkBuildableIface *iface)
 
 static gboolean
 ctk_dialog_delete_event_handler (CtkWidget   *widget,
-                                 CdkEventAny *event,
-                                 gpointer     user_data)
+                                 CdkEventAny *event G_GNUC_UNUSED,
+                                 gpointer     user_data G_GNUC_UNUSED)
 {
   /* emit response signal */
   ctk_dialog_response (CTK_DIALOG (widget), CTK_RESPONSE_DELETE_EVENT);
@@ -1288,7 +1288,8 @@ shutdown_loop (RunInfo *ri)
 }
 
 static void
-run_unmap_handler (CtkDialog *dialog, gpointer data)
+run_unmap_handler (CtkDialog *dialog G_GNUC_UNUSED,
+		   gpointer   data)
 {
   RunInfo *ri = data;
 
@@ -1296,7 +1297,7 @@ run_unmap_handler (CtkDialog *dialog, gpointer data)
 }
 
 static void
-run_response_handler (CtkDialog *dialog,
+run_response_handler (CtkDialog *dialog G_GNUC_UNUSED,
                       gint response_id,
                       gpointer data)
 {
@@ -1310,8 +1311,8 @@ run_response_handler (CtkDialog *dialog,
 }
 
 static gint
-run_delete_handler (CtkDialog *dialog,
-                    CdkEventAny *event,
+run_delete_handler (CtkDialog *dialog G_GNUC_UNUSED,
+                    CdkEventAny *event G_GNUC_UNUSED,
                     gpointer data)
 {
   RunInfo *ri = data;
@@ -1322,7 +1323,8 @@ run_delete_handler (CtkDialog *dialog,
 }
 
 static void
-run_destroy_handler (CtkDialog *dialog, gpointer data)
+run_destroy_handler (CtkDialog *dialog G_GNUC_UNUSED,
+		     gpointer   data)
 {
   RunInfo *ri = data;
 
@@ -1512,7 +1514,7 @@ ctk_dialog_get_widget_for_response (CtkDialog *dialog,
  * Since: 2.8
  */
 gint
-ctk_dialog_get_response_for_widget (CtkDialog *dialog,
+ctk_dialog_get_response_for_widget (CtkDialog *dialog G_GNUC_UNUSED,
 				    CtkWidget *widget)
 {
   ResponseData *rd;
@@ -1553,7 +1555,7 @@ ctk_alt_dialog_button_order (void)
  * Deprecated: 3.10: Deprecated
  */
 gboolean
-ctk_alternative_dialog_button_order (CdkScreen *screen)
+ctk_alternative_dialog_button_order (CdkScreen *screen G_GNUC_UNUSED)
 {
   return ctk_alt_dialog_button_order ();
 }
@@ -1794,11 +1796,11 @@ parser_start_element (GMarkupParseContext *context,
 }
 
 static void
-parser_text_element (GMarkupParseContext *context,
+parser_text_element (GMarkupParseContext *context G_GNUC_UNUSED,
                      const gchar         *text,
                      gsize                text_len,
                      gpointer             user_data,
-                     GError             **error)
+                     GError             **error G_GNUC_UNUSED)
 {
   SubParserData *data = (SubParserData*)user_data;
 
@@ -1807,10 +1809,10 @@ parser_text_element (GMarkupParseContext *context,
 }
 
 static void
-parser_end_element (GMarkupParseContext  *context,
-                    const gchar          *element_name,
+parser_end_element (GMarkupParseContext  *context G_GNUC_UNUSED,
+                    const gchar          *element_name G_GNUC_UNUSED,
                     gpointer              user_data,
-                    GError              **error)
+                    GError              **error G_GNUC_UNUSED)
 {
   SubParserData *data = (SubParserData*)user_data;
 
@@ -1951,7 +1953,7 @@ ctk_dialog_buildable_custom_finished (CtkBuildable *buildable,
 
 static void
 ctk_dialog_buildable_add_child (CtkBuildable  *buildable,
-                                CtkBuilder    *builder,
+                                CtkBuilder    *builder G_GNUC_UNUSED,
                                 GObject       *child,
                                 const gchar   *type)
 {

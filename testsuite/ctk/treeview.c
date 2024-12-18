@@ -161,7 +161,7 @@ test_select_collapsed_row (void)
 static gboolean
 test_row_separator_height_func (CtkTreeModel *model,
                                 CtkTreeIter  *iter,
-                                gpointer      data)
+                                gpointer      data G_GNUC_UNUSED)
 {
   gboolean ret = FALSE;
   CtkTreePath *path;
@@ -291,10 +291,10 @@ test_selection_count (void)
 }
 
 static void
-abort_cb (CtkTreeModel *model,
-          CtkTreePath  *path,
-          CtkTreeIter  *iter,
-          gpointer      data)
+abort_cb (CtkTreeModel *model G_GNUC_UNUSED,
+          CtkTreePath  *path G_GNUC_UNUSED,
+          CtkTreeIter  *iter G_GNUC_UNUSED,
+          gpointer      data G_GNUC_UNUSED)
 {
   g_assert_not_reached ();
 }

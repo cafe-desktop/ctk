@@ -96,7 +96,7 @@ create_touchscreen (CdkDeviceManager *device_manager,
 }
 
 static void
-cdk_broadway_device_manager_init (CdkBroadwayDeviceManager *device_manager)
+cdk_broadway_device_manager_init (CdkBroadwayDeviceManager *device_manager G_GNUC_UNUSED)
 {
 }
 

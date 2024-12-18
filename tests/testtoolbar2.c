@@ -1,6 +1,7 @@
 #include <ctk/ctk.h>
 
-int main (int argc, char *argv[])
+int main (int   argc G_GNUC_UNUSED,
+	  char *argv[] G_GNUC_UNUSED)
 {
   CtkWidget *window;
   CtkWidget *box;

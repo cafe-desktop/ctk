@@ -13,20 +13,24 @@
 static CtkWidget *window = NULL;
 
 static void
-response_cb (CtkDialog *dialog, gint response_id)
+response_cb (CtkDialog *dialog G_GNUC_UNUSED,
+	     gint       response_id G_GNUC_UNUSED)
 {
   ctk_widget_destroy (window);
   window = NULL;
 }
 
 static void
-expander_cb (CtkExpander *expander, GParamSpec *pspec, CtkWindow *dialog)
+expander_cb (CtkExpander *expander,
+	     GParamSpec  *pspec G_GNUC_UNUSED,
+	     CtkWindow   *dialog)
 {
   ctk_window_set_resizable (dialog, ctk_expander_get_expanded (expander));
 }
 
 static void
-do_not_expand (CtkWidget *child, gpointer data)
+do_not_expand (CtkWidget *child,
+	       gpointer   data G_GNUC_UNUSED)
 {
   ctk_container_child_set (CTK_CONTAINER (ctk_widget_get_parent (child)), child,
                            "expand", FALSE, "fill", FALSE, NULL);

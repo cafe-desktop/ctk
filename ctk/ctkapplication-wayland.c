@@ -61,7 +61,7 @@ ctk_application_impl_wayland_handle_window_realize (CtkApplicationImpl *impl,
 }
 
 static void
-ctk_application_impl_wayland_before_emit (CtkApplicationImpl *impl,
+ctk_application_impl_wayland_before_emit (CtkApplicationImpl *impl G_GNUC_UNUSED,
                                           GVariant           *platform_data)
 {
   const char *startup_notification_id = NULL;
@@ -72,7 +72,7 @@ ctk_application_impl_wayland_before_emit (CtkApplicationImpl *impl,
 }
 
 static void
-ctk_application_impl_wayland_init (CtkApplicationImplWayland *wayland)
+ctk_application_impl_wayland_init (CtkApplicationImplWayland *wayland G_GNUC_UNUSED)
 {
 }
 

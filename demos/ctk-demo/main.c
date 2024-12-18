@@ -36,8 +36,8 @@ struct _CallbackData
 };
 
 static void
-activate_about (GSimpleAction *action,
-                GVariant      *parameter,
+activate_about (GSimpleAction *action G_GNUC_UNUSED,
+                GVariant      *parameter G_GNUC_UNUSED,
                 gpointer       user_data)
 {
   CtkApplication *app = user_data;
@@ -64,8 +64,8 @@ activate_about (GSimpleAction *action,
 }
 
 static void
-activate_quit (GSimpleAction *action,
-               GVariant      *parameter,
+activate_quit (GSimpleAction *action G_GNUC_UNUSED,
+               GVariant      *parameter G_GNUC_UNUSED,
                gpointer       user_data)
 {
   CtkApplication *app = user_data;
@@ -86,7 +86,8 @@ activate_quit (GSimpleAction *action,
 }
 
 static void
-window_closed_cb (CtkWidget *window, gpointer data)
+window_closed_cb (CtkWidget *window G_GNUC_UNUSED,
+		  gpointer   data)
 {
   CallbackData *cbdata = data;
   CtkTreeIter iter;
@@ -150,8 +151,8 @@ run_example_for_row (CtkWidget    *window,
 }
 
 static void
-activate_run (GSimpleAction *action,
-              GVariant      *parameter,
+activate_run (GSimpleAction *action G_GNUC_UNUSED,
+              GVariant      *parameter G_GNUC_UNUSED,
               gpointer       user_data)
 {
   CtkTreeSelection *selection;
@@ -938,7 +939,7 @@ startup (GApplication *app)
 static void
 row_activated_cb (CtkWidget         *tree_view,
                   CtkTreePath       *path,
-                  CtkTreeViewColumn *column)
+                  CtkTreeViewColumn *column G_GNUC_UNUSED)
 {
   CtkTreeIter iter;
   CtkWidget *window;
@@ -952,7 +953,8 @@ row_activated_cb (CtkWidget         *tree_view,
 }
 
 static void
-start_cb (CtkMenuItem *item, CtkWidget *scrollbar)
+start_cb (CtkMenuItem *item G_GNUC_UNUSED,
+	  CtkWidget   *scrollbar)
 {
   CtkAdjustment *adj;
 
@@ -961,7 +963,8 @@ start_cb (CtkMenuItem *item, CtkWidget *scrollbar)
 }
 
 static void
-end_cb (CtkMenuItem *item, CtkWidget *scrollbar)
+end_cb (CtkMenuItem *item G_GNUC_UNUSED,
+	CtkWidget   *scrollbar)
 {
   CtkAdjustment *adj;
 
@@ -970,7 +973,8 @@ end_cb (CtkMenuItem *item, CtkWidget *scrollbar)
 }
 
 static gboolean
-scrollbar_popup (CtkWidget *scrollbar, CtkWidget *menu)
+scrollbar_popup (CtkWidget *scrollbar G_GNUC_UNUSED,
+		 CtkWidget *menu)
 {
   ctk_menu_popup_at_pointer (CTK_MENU (menu), NULL);
 
@@ -1162,9 +1166,9 @@ print_version (void)
 }
 
 static int
-local_options (GApplication *app,
+local_options (GApplication *app G_GNUC_UNUSED,
                GVariantDict *options,
-               gpointer      data)
+               gpointer      data G_GNUC_UNUSED)
 {
   gboolean version = FALSE;
 

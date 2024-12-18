@@ -1657,7 +1657,7 @@ ctk_icon_view_compute_n_items_for_size (CtkIconView    *icon_view,
 }
 
 static CtkSizeRequestMode
-ctk_icon_view_get_request_mode (CtkWidget *widget)
+ctk_icon_view_get_request_mode (CtkWidget *widget G_GNUC_UNUSED)
 {
   return CTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH;
 }
@@ -2054,7 +2054,7 @@ ctk_icon_view_motion (CtkWidget      *widget,
 
 static gboolean
 ctk_icon_view_leave (CtkWidget        *widget,
-                     CdkEventCrossing *event)
+                     CdkEventCrossing *event G_GNUC_UNUSED)
 {
   CtkIconView *icon_view;
   CtkIconViewPrivate *priv;
@@ -2101,7 +2101,7 @@ ctk_icon_view_remove (CtkContainer *container,
 
 static void
 ctk_icon_view_forall (CtkContainer *container,
-		      gboolean      include_internals,
+		      gboolean      include_internals G_GNUC_UNUSED,
 		      CtkCallback   callback,
 		      gpointer      callback_data)
 {
@@ -2141,12 +2141,12 @@ ctk_icon_view_item_selected_changed (CtkIconView      *icon_view,
 }
 
 static void
-ctk_icon_view_add_editable (CtkCellArea            *area,
-			    CtkCellRenderer        *renderer,
-			    CtkCellEditable        *editable,
-			    CdkRectangle           *cell_area,
-			    const gchar            *path,
-			    CtkIconView            *icon_view)
+ctk_icon_view_add_editable (CtkCellArea     *area G_GNUC_UNUSED,
+			    CtkCellRenderer *renderer G_GNUC_UNUSED,
+			    CtkCellEditable *editable,
+			    CdkRectangle    *cell_area,
+			    const gchar     *path G_GNUC_UNUSED,
+			    CtkIconView     *icon_view)
 {
   CtkIconViewChild *child;
   CtkWidget *widget = CTK_WIDGET (editable);
@@ -2168,10 +2168,10 @@ ctk_icon_view_add_editable (CtkCellArea            *area,
 }
 
 static void
-ctk_icon_view_remove_editable (CtkCellArea            *area,
-			       CtkCellRenderer        *renderer,
-			       CtkCellEditable        *editable,
-			       CtkIconView            *icon_view)
+ctk_icon_view_remove_editable (CtkCellArea     *area,
+			       CtkCellRenderer *renderer G_GNUC_UNUSED,
+			       CtkCellEditable *editable,
+			       CtkIconView     *icon_view)
 {
   CtkTreePath *path;
 
@@ -2661,9 +2661,9 @@ typedef struct {
 } HitTestData;
 
 static gboolean 
-hit_test (CtkCellRenderer    *renderer,
+hit_test (CtkCellRenderer    *renderer G_GNUC_UNUSED,
 	  const CdkRectangle *cell_area,
-	  const CdkRectangle *cell_background,
+	  const CdkRectangle *cell_background G_GNUC_UNUSED,
 	  HitTestData        *data)
 {
   if (MIN (data->hit_rect.x + data->hit_rect.width, cell_area->x + cell_area->width) - 
@@ -2926,7 +2926,7 @@ ctk_icon_view_set_vadjustment (CtkIconView   *icon_view,
 }
 
 static void
-ctk_icon_view_adjustment_changed (CtkAdjustment *adjustment,
+ctk_icon_view_adjustment_changed (CtkAdjustment *adjustment G_GNUC_UNUSED,
                                   CtkIconView   *icon_view)
 {
   CtkIconViewPrivate *priv = icon_view->priv;
@@ -2947,7 +2947,7 @@ ctk_icon_view_adjustment_changed (CtkAdjustment *adjustment,
 static gint
 compare_sizes (gconstpointer p1,
 	       gconstpointer p2,
-               gpointer      unused)
+               gpointer      unused G_GNUC_UNUSED)
 {
   return GPOINTER_TO_INT (((const CtkRequestedSize *) p1)->data)
        - GPOINTER_TO_INT (((const CtkRequestedSize *) p2)->data);
@@ -3426,9 +3426,9 @@ verify_items (CtkIconView *icon_view)
 }
 
 static void
-ctk_icon_view_row_changed (CtkTreeModel *model,
+ctk_icon_view_row_changed (CtkTreeModel *model G_GNUC_UNUSED,
                            CtkTreePath  *path,
-                           CtkTreeIter  *iter,
+                           CtkTreeIter  *iter G_GNUC_UNUSED,
                            gpointer      data)
 {
   CtkIconView *icon_view = CTK_ICON_VIEW (data);
@@ -3560,7 +3560,7 @@ ctk_icon_view_row_deleted (CtkTreeModel *model,
 
 static void
 ctk_icon_view_rows_reordered (CtkTreeModel *model,
-			      CtkTreePath  *parent,
+			      CtkTreePath  *parent G_GNUC_UNUSED,
 			      CtkTreeIter  *iter,
 			      gint         *new_order,
 			      gpointer      data)
@@ -4724,7 +4724,7 @@ ctk_icon_view_set_tooltip_query_cb (CtkWidget  *widget,
                                     gint        y,
                                     gboolean    keyboard_tip,
                                     CtkTooltip *tooltip,
-                                    gpointer    data)
+                                    gpointer    data G_GNUC_UNUSED)
 {
   gchar *str;
   CtkTreeIter iter;
@@ -6517,8 +6517,8 @@ ctk_icon_view_drag_begin (CtkWidget      *widget,
 }
 
 static void 
-ctk_icon_view_drag_end (CtkWidget      *widget,
-			CdkDragContext *context)
+ctk_icon_view_drag_end (CtkWidget      *widget G_GNUC_UNUSED,
+			CdkDragContext *context G_GNUC_UNUSED)
 {
   /* do nothing */
 }
@@ -6527,8 +6527,8 @@ static void
 ctk_icon_view_drag_data_get (CtkWidget        *widget,
 			     CdkDragContext   *context,
 			     CtkSelectionData *selection_data,
-			     guint             info,
-			     guint             time)
+			     guint             info G_GNUC_UNUSED,
+			     guint             time G_GNUC_UNUSED)
 {
   CtkIconView *icon_view;
   CtkTreeModel *model;
@@ -6602,8 +6602,8 @@ ctk_icon_view_drag_data_delete (CtkWidget      *widget,
 /* Target side drag signals */
 static void
 ctk_icon_view_drag_leave (CtkWidget      *widget,
-			  CdkDragContext *context,
-			  guint           time)
+			  CdkDragContext *context G_GNUC_UNUSED,
+			  guint           time G_GNUC_UNUSED)
 {
   CtkIconView *icon_view;
 
@@ -6737,10 +6737,10 @@ ctk_icon_view_drag_drop (CtkWidget      *widget,
 static void
 ctk_icon_view_drag_data_received (CtkWidget        *widget,
 				  CdkDragContext   *context,
-				  gint              x,
-				  gint              y,
+				  gint              x G_GNUC_UNUSED,
+				  gint              y G_GNUC_UNUSED,
 				  CtkSelectionData *selection_data,
-				  guint             info,
+				  guint             info G_GNUC_UNUSED,
 				  guint             time)
 {
   CtkTreePath *path;

@@ -133,9 +133,9 @@ on_frame (double progress)
 }
 
 static gboolean
-tick_callback (CtkWidget     *widget,
+tick_callback (CtkWidget     *widget G_GNUC_UNUSED,
                CdkFrameClock *frame_clock,
-               gpointer       user_data)
+               gpointer       user_data G_GNUC_UNUSED)
 {
   gint64 frame_time = cdk_frame_clock_get_frame_time (frame_clock);
   double scaled_time;
@@ -150,8 +150,8 @@ tick_callback (CtkWidget     *widget,
 }
 
 static gboolean
-on_map_event (CtkWidget	  *widget,
-              CdkEventAny *event)
+on_map_event (CtkWidget	  *widget G_GNUC_UNUSED,
+              CdkEventAny *event G_GNUC_UNUSED)
 {
   ctk_widget_add_tick_callback (window, tick_callback, NULL, NULL);
 

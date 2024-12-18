@@ -196,7 +196,7 @@ g_test_permission_init (GTestPermission *test)
 }
 
 static void
-g_test_permission_class_init (GTestPermissionClass *class)
+g_test_permission_class_init (GTestPermissionClass *class G_GNUC_UNUSED)
 {
 }
 

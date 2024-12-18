@@ -118,8 +118,8 @@ enum {
 G_DEFINE_TYPE (CtkPopoverMenu, ctk_popover_menu, CTK_TYPE_POPOVER)
 
 static void
-visible_submenu_changed (GObject        *object,
-                         GParamSpec     *pspec,
+visible_submenu_changed (GObject        *object G_GNUC_UNUSED,
+                         GParamSpec     *pspec G_GNUC_UNUSED,
                          CtkPopoverMenu *popover)
 {
   g_object_notify (G_OBJECT (popover), "visible-submenu");

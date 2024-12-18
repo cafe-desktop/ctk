@@ -24,7 +24,7 @@
 static gint count;
 
 static void
-counting_destroy (gpointer data)
+counting_destroy (gpointer data G_GNUC_UNUSED)
 {
   count++;
 }

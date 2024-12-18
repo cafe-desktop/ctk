@@ -166,7 +166,10 @@ static const GDebugKey cdk_debug_keys[] = {
 };
 
 static gboolean
-cdk_arg_debug_cb (const char *key, const char *value, gpointer user_data, GError **error)
+cdk_arg_debug_cb (const char *key G_GNUC_UNUSED,
+		  const char *value,
+		  gpointer    user_data G_GNUC_UNUSED,
+		  GError    **error)
 {
   guint debug_value = g_parse_debug_string (value,
                                             (GDebugKey *) cdk_debug_keys,
@@ -186,7 +189,10 @@ cdk_arg_debug_cb (const char *key, const char *value, gpointer user_data, GError
 }
 
 static gboolean
-cdk_arg_no_debug_cb (const char *key, const char *value, gpointer user_data, GError **error)
+cdk_arg_no_debug_cb (const char *key G_GNUC_UNUSED,
+		     const char *value,
+		     gpointer    user_data G_GNUC_UNUSED,
+		     GError    **error)
 {
   guint debug_value = g_parse_debug_string (value,
                                             (GDebugKey *) cdk_debug_keys,
@@ -207,7 +213,10 @@ cdk_arg_no_debug_cb (const char *key, const char *value, gpointer user_data, GEr
 #endif /* G_ENABLE_DEBUG */
 
 static gboolean
-cdk_arg_class_cb (const char *key, const char *value, gpointer user_data, GError **error)
+cdk_arg_class_cb (const char *key G_GNUC_UNUSED,
+		  const char *value,
+		  gpointer    user_data G_GNUC_UNUSED,
+		  GError    **error G_GNUC_UNUSED)
 {
   cdk_set_program_class (value);
   cdk_progclass_overridden = TRUE;
@@ -216,7 +225,10 @@ cdk_arg_class_cb (const char *key, const char *value, gpointer user_data, GError
 }
 
 static gboolean
-cdk_arg_name_cb (const char *key, const char *value, gpointer user_data, GError **error)
+cdk_arg_name_cb (const char *key G_GNUC_UNUSED,
+		 const char *value,
+		 gpointer    user_data G_GNUC_UNUSED,
+		 GError    **error G_GNUC_UNUSED)
 {
   g_set_prgname (value);
 

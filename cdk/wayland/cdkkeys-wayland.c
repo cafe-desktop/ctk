@@ -460,7 +460,7 @@ _cdk_wayland_keymap_class_init (CdkWaylandKeymapClass *klass)
 }
 
 static void
-_cdk_wayland_keymap_init (CdkWaylandKeymap *keymap)
+_cdk_wayland_keymap_init (CdkWaylandKeymap *keymap G_GNUC_UNUSED)
 {
 }
 

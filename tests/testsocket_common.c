@@ -33,7 +33,7 @@ enum
 };
 
 static void
-print_hello (CtkWidget *w,
+print_hello (CtkWidget *w G_GNUC_UNUSED,
 	     guint      action)
 {
   switch (action)
@@ -75,7 +75,7 @@ blink_cb (gpointer data)
 }
 
 static void
-blink (CtkWidget *widget,
+blink (CtkWidget *widget G_GNUC_UNUSED,
        CtkWidget *window)
 {
   guint blink_timeout = GPOINTER_TO_UINT (g_object_get_data (G_OBJECT (window), "blink"));
@@ -105,7 +105,8 @@ remote_destroy (CtkWidget *window)
 }
 
 static void
-add_buttons (CtkWidget *widget, CtkWidget *box)
+add_buttons (CtkWidget *widget G_GNUC_UNUSED,
+	     CtkWidget *box)
 {
   CtkWidget *add_button;
   CtkWidget *remove_button;

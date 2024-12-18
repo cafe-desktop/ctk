@@ -59,7 +59,7 @@ value_is_done_parsing (CtkCssParser *parser)
 }
 
 static gboolean
-parse_four_numbers (CtkCssShorthandProperty  *shorthand,
+parse_four_numbers (CtkCssShorthandProperty  *shorthand G_GNUC_UNUSED,
                     CtkCssValue             **values,
                     CtkCssParser             *parser,
                     CtkCssNumberParseFlags    flags)
@@ -129,7 +129,7 @@ parse_border_width (CtkCssShorthandProperty  *shorthand,
 }
 
 static gboolean 
-parse_border_radius (CtkCssShorthandProperty  *shorthand,
+parse_border_radius (CtkCssShorthandProperty  *shorthand G_GNUC_UNUSED,
                      CtkCssValue             **values,
                      CtkCssParser             *parser)
 {
@@ -210,7 +210,7 @@ fail:
 }
 
 static gboolean 
-parse_border_color (CtkCssShorthandProperty  *shorthand,
+parse_border_color (CtkCssShorthandProperty  *shorthand G_GNUC_UNUSED,
                     CtkCssValue             **values,
                     CtkCssParser             *parser)
 {
@@ -235,7 +235,7 @@ parse_border_color (CtkCssShorthandProperty  *shorthand,
 }
 
 static gboolean
-parse_border_style (CtkCssShorthandProperty  *shorthand,
+parse_border_style (CtkCssShorthandProperty  *shorthand G_GNUC_UNUSED,
                     CtkCssValue             **values,
                     CtkCssParser             *parser)
 {
@@ -261,7 +261,7 @@ parse_border_style (CtkCssShorthandProperty  *shorthand,
 }
 
 static gboolean
-parse_border_image (CtkCssShorthandProperty  *shorthand,
+parse_border_image (CtkCssShorthandProperty  *shorthand G_GNUC_UNUSED,
                     CtkCssValue             **values,
                     CtkCssParser             *parser)
 {
@@ -328,7 +328,7 @@ parse_border_image (CtkCssShorthandProperty  *shorthand,
 }
 
 static gboolean
-parse_border_side (CtkCssShorthandProperty  *shorthand,
+parse_border_side (CtkCssShorthandProperty  *shorthand G_GNUC_UNUSED,
                    CtkCssValue             **values,
                    CtkCssParser             *parser)
 {
@@ -370,7 +370,7 @@ parse_border_side (CtkCssShorthandProperty  *shorthand,
 }
 
 static gboolean
-parse_border (CtkCssShorthandProperty  *shorthand,
+parse_border (CtkCssShorthandProperty  *shorthand G_GNUC_UNUSED,
               CtkCssValue             **values,
               CtkCssParser             *parser)
 {
@@ -425,7 +425,7 @@ parse_border (CtkCssShorthandProperty  *shorthand,
 }
 
 static gboolean
-parse_font_with_pango (CtkCssShorthandProperty  *shorthand,
+parse_font_with_pango (CtkCssShorthandProperty  *shorthand G_GNUC_UNUSED,
                        CtkCssValue             **values,
                        CtkCssParser             *parser)
 {
@@ -668,7 +668,7 @@ parse_background (CtkCssShorthandProperty  *shorthand,
 }
 
 static gboolean
-parse_one_transition (CtkCssShorthandProperty  *shorthand,
+parse_one_transition (CtkCssShorthandProperty  *shorthand G_GNUC_UNUSED,
                       CtkCssValue             **values,
                       CtkCssParser             *parser)
 {
@@ -770,7 +770,7 @@ parse_transition (CtkCssShorthandProperty  *shorthand,
 }
 
 static gboolean
-parse_one_animation (CtkCssShorthandProperty  *shorthand,
+parse_one_animation (CtkCssShorthandProperty  *shorthand G_GNUC_UNUSED,
                      CtkCssValue             **values,
                      CtkCssParser             *parser)
 {
@@ -887,7 +887,7 @@ parse_animation (CtkCssShorthandProperty  *shorthand,
 }
 
 static gboolean
-parse_text_decoration (CtkCssShorthandProperty  *shorthand,
+parse_text_decoration (CtkCssShorthandProperty  *shorthand G_GNUC_UNUSED,
                        CtkCssValue             **values,
                        CtkCssParser             *parser)
 {
@@ -925,8 +925,8 @@ parse_text_decoration (CtkCssShorthandProperty  *shorthand,
 }
 
 static gboolean
-parse_all (CtkCssShorthandProperty  *shorthand,
-           CtkCssValue             **values,
+parse_all (CtkCssShorthandProperty  *shorthand G_GNUC_UNUSED,
+           CtkCssValue             **values G_GNUC_UNUSED,
            CtkCssParser             *parser)
 {
   _ctk_css_parser_error (parser, "The 'all' property can only be set to 'initial', 'inherit' or 'unset'");
@@ -1014,7 +1014,7 @@ unpack_border_radius (CtkCssShorthandProperty *shorthand,
 }
 
 static void
-pack_border_radius (CtkCssShorthandProperty *shorthand,
+pack_border_radius (CtkCssShorthandProperty *shorthand G_GNUC_UNUSED,
                     GValue                  *value,
                     CtkStyleQueryFunc        query_func,
                     gpointer                 query_data)
@@ -1033,7 +1033,7 @@ pack_border_radius (CtkCssShorthandProperty *shorthand,
 }
 
 static void
-unpack_font_description (CtkCssShorthandProperty *shorthand,
+unpack_font_description (CtkCssShorthandProperty *shorthand G_GNUC_UNUSED,
                          CtkStyleProperties      *props,
                          CtkStateFlags            state,
                          const GValue            *value)
@@ -1132,7 +1132,7 @@ unpack_font_description (CtkCssShorthandProperty *shorthand,
 }
 
 static void
-pack_font_description (CtkCssShorthandProperty *shorthand,
+pack_font_description (CtkCssShorthandProperty *shorthand G_GNUC_UNUSED,
                        GValue                  *value,
                        CtkStyleQueryFunc        query_func,
                        gpointer                 query_data)

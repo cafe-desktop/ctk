@@ -632,9 +632,9 @@ ctk_button_class_init (CtkButtonClass *klass)
 
 static void
 multipress_pressed_cb (CtkGestureMultiPress *gesture,
-                       guint                 n_press,
-                       gdouble               x,
-                       gdouble               y,
+                       guint                 n_press G_GNUC_UNUSED,
+                       gdouble               x G_GNUC_UNUSED,
+                       gdouble               y G_GNUC_UNUSED,
                        CtkWidget            *widget)
 {
   CtkButton *button = CTK_BUTTON (widget);
@@ -650,9 +650,9 @@ multipress_pressed_cb (CtkGestureMultiPress *gesture,
 
 static void
 multipress_released_cb (CtkGestureMultiPress *gesture,
-                        guint                 n_press,
-                        gdouble               x,
-                        gdouble               y,
+                        guint                 n_press G_GNUC_UNUSED,
+                        gdouble               x G_GNUC_UNUSED,
+                        gdouble               y G_GNUC_UNUSED,
                         CtkWidget            *widget)
 {
   CtkButton *button = CTK_BUTTON (widget);
@@ -696,8 +696,8 @@ multipress_gesture_update_cb (CtkGesture       *gesture,
 }
 
 static void
-multipress_gesture_cancel_cb (CtkGesture       *gesture,
-                              CdkEventSequence *sequence,
+multipress_gesture_cancel_cb (CtkGesture       *gesture G_GNUC_UNUSED,
+                              CdkEventSequence *sequence G_GNUC_UNUSED,
                               CtkButton        *button)
 {
   ctk_button_do_release (button, FALSE);
@@ -1737,7 +1737,7 @@ ctk_button_allocate (CtkCssGadget        *gadget,
                      const CtkAllocation *allocation,
                      int                  baseline,
                      CtkAllocation       *out_clip,
-                     gpointer             unused)
+                     gpointer             unused G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkWidget *child;
@@ -1774,11 +1774,11 @@ ctk_button_draw (CtkWidget *widget,
 static gboolean
 ctk_button_render (CtkCssGadget *gadget,
                    cairo_t      *cr,
-                   int           x,
-                   int           y,
-                   int           width,
-                   int           height,
-                   gpointer      data)
+                   int           x G_GNUC_UNUSED,
+                   int           y G_GNUC_UNUSED,
+                   int           width G_GNUC_UNUSED,
+                   int           height G_GNUC_UNUSED,
+                   gpointer      data G_GNUC_UNUSED)
 {
   CtkWidget *widget;
 
@@ -1811,7 +1811,7 @@ ctk_button_do_release (CtkButton *button,
 
 static gboolean
 ctk_button_grab_broken (CtkWidget          *widget,
-			CdkEventGrabBroken *event)
+			CdkEventGrabBroken *event G_GNUC_UNUSED)
 {
   CtkButton *button = CTK_BUTTON (widget);
   
@@ -2012,7 +2012,7 @@ ctk_button_measure (CtkCssGadget   *gadget,
 		    int            *natural,
 		    int            *minimum_baseline,
 		    int            *natural_baseline,
-                    gpointer        data)
+                    gpointer        data G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkWidget *child;
@@ -2417,7 +2417,7 @@ show_image_change_notify (CtkButton *button)
 
 static void
 traverse_container (CtkWidget *widget,
-		    gpointer   data)
+		    gpointer   data G_GNUC_UNUSED)
 {
   if (CTK_IS_BUTTON (widget))
     show_image_change_notify (CTK_BUTTON (widget));
@@ -2426,7 +2426,7 @@ traverse_container (CtkWidget *widget,
 }
 
 static void
-ctk_button_setting_changed (CtkSettings *settings)
+ctk_button_setting_changed (CtkSettings *settings G_GNUC_UNUSED)
 {
   GList *list, *l;
 
@@ -2441,7 +2441,7 @@ ctk_button_setting_changed (CtkSettings *settings)
 
 static void
 ctk_button_screen_changed (CtkWidget *widget,
-			   CdkScreen *previous_screen)
+			   CdkScreen *previous_screen G_GNUC_UNUSED)
 {
   CtkButton *button;
   CtkButtonPrivate *priv;
@@ -2479,7 +2479,7 @@ ctk_button_screen_changed (CtkWidget *widget,
 
 static void
 ctk_button_state_changed (CtkWidget    *widget,
-                          CtkStateType  previous_state)
+                          CtkStateType  previous_state G_GNUC_UNUSED)
 {
   CtkButton *button = CTK_BUTTON (widget);
 

@@ -35,10 +35,10 @@ ctk_css_value_rgba_free (CtkCssValue *value)
 
 static CtkCssValue *
 ctk_css_value_rgba_compute (CtkCssValue             *value,
-                            guint                    property_id,
-                            CtkStyleProviderPrivate *provider,
-                            CtkCssStyle             *style,
-                            CtkCssStyle             *parent_style)
+                            guint                    property_id G_GNUC_UNUSED,
+                            CtkStyleProviderPrivate *provider G_GNUC_UNUSED,
+                            CtkCssStyle             *style G_GNUC_UNUSED,
+                            CtkCssStyle             *parent_style G_GNUC_UNUSED)
 {
   return _ctk_css_value_ref (value);
 }
@@ -61,7 +61,7 @@ transition (double start,
 static CtkCssValue *
 ctk_css_value_rgba_transition (CtkCssValue *start,
                                CtkCssValue *end,
-                               guint        property_id,
+                               guint        property_id G_GNUC_UNUSED,
                                double       progress)
 {
   CdkRGBA result;

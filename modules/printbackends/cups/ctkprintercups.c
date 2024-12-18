@@ -211,10 +211,10 @@ ctk_printer_cups_finalize (GObject *object)
 }
 
 static void
-ctk_printer_cups_set_property (GObject         *object,
-                               guint            prop_id,
-                               const GValue    *value,
-                               GParamSpec      *pspec)
+ctk_printer_cups_set_property (GObject      *object,
+                               guint         prop_id,
+                               const GValue *value G_GNUC_UNUSED,
+                               GParamSpec   *pspec)
 {
   switch (prop_id)
     {
@@ -334,9 +334,9 @@ colord_client_profile_connect_cb (GObject *source_object,
 }
 
 static void
-colord_client_device_get_profile_for_qualifiers_cb (GObject *source_object,
+colord_client_device_get_profile_for_qualifiers_cb (GObject      *source_object G_GNUC_UNUSED,
                                                     GAsyncResult *res,
-                                                    gpointer user_data)
+                                                    gpointer      user_data)
 {
   CtkPrinterCups *printer = CTK_PRINTER_CUPS (user_data);
   GError *error = NULL;
@@ -367,8 +367,8 @@ out:
 }
 
 void
-ctk_printer_cups_update_settings (CtkPrinterCups *printer,
-                                  CtkPrintSettings *settings,
+ctk_printer_cups_update_settings (CtkPrinterCups      *printer,
+                                  CtkPrintSettings    *settings G_GNUC_UNUSED,
                                   CtkPrinterOptionSet *set)
 {
   gchar *qualifier = NULL;
@@ -460,9 +460,9 @@ out:
 }
 
 static void
-colord_client_find_device_cb (GObject *source_object,
+colord_client_find_device_cb (GObject      *source_object G_GNUC_UNUSED,
                               GAsyncResult *res,
-                              gpointer user_data)
+                              gpointer      user_data)
 {
   CtkPrinterCups *printer = CTK_PRINTER_CUPS (user_data);
   GError *error = NULL;
@@ -565,8 +565,8 @@ colord_client_connect_cb (GObject *source_object,
 
 static void
 colord_printer_details_aquired_cb (CtkPrinterCups *printer,
-                                   gboolean success,
-                                   gpointer user_data)
+                                   gboolean        success G_GNUC_UNUSED,
+                                   gpointer        user_data G_GNUC_UNUSED)
 {
   /* refresh the device */
   if (printer->colord_client)

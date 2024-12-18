@@ -52,7 +52,7 @@ ctk_css_value_icon_theme_disconnect_handler (CtkCssValue *value)
 }
 
 static void
-ctk_css_value_icon_theme_changed_cb (CtkIconTheme *icontheme,
+ctk_css_value_icon_theme_changed_cb (CtkIconTheme *icontheme G_GNUC_UNUSED,
                                      CtkCssValue  *value)
 {
   ctk_css_value_icon_theme_disconnect_handler (value);
@@ -71,10 +71,10 @@ ctk_css_value_icon_theme_free (CtkCssValue *value)
 
 static CtkCssValue *
 ctk_css_value_icon_theme_compute (CtkCssValue             *icon_theme,
-                                  guint                    property_id,
+                                  guint                    property_id G_GNUC_UNUSED,
                                   CtkStyleProviderPrivate *provider,
-                                  CtkCssStyle             *style,
-                                  CtkCssStyle             *parent_style)
+                                  CtkCssStyle             *style G_GNUC_UNUSED,
+                                  CtkCssStyle             *parent_style G_GNUC_UNUSED)
 {
   CtkIconTheme *icontheme;
 
@@ -87,23 +87,23 @@ ctk_css_value_icon_theme_compute (CtkCssValue             *icon_theme,
 }
 
 static gboolean
-ctk_css_value_icon_theme_equal (const CtkCssValue *value1,
-                                const CtkCssValue *value2)
+ctk_css_value_icon_theme_equal (const CtkCssValue *value1 G_GNUC_UNUSED,
+                                const CtkCssValue *value2 G_GNUC_UNUSED)
 {
   return FALSE;
 }
 
 static CtkCssValue *
-ctk_css_value_icon_theme_transition (CtkCssValue *start,
-                                     CtkCssValue *end,
-                                     guint        property_id,
-                                     double       progress)
+ctk_css_value_icon_theme_transition (CtkCssValue *start G_GNUC_UNUSED,
+                                     CtkCssValue *end G_GNUC_UNUSED,
+                                     guint        property_id G_GNUC_UNUSED,
+                                     double       progress G_GNUC_UNUSED)
 {
   return NULL;
 }
 
 static void
-ctk_css_value_icon_theme_print (const CtkCssValue *icon_theme,
+ctk_css_value_icon_theme_print (const CtkCssValue *icon_theme G_GNUC_UNUSED,
                                 GString           *string)
 {
   g_string_append (string, "initial");

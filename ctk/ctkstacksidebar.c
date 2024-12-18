@@ -115,7 +115,7 @@ ctk_stack_sidebar_get_property (GObject    *object,
 static void
 update_header (CtkListBoxRow *row,
                CtkListBoxRow *before,
-               gpointer       userdata)
+               gpointer       userdata G_GNUC_UNUSED)
 {
   CtkWidget *ret = NULL;
 
@@ -166,7 +166,7 @@ sort_list (CtkListBoxRow *row1,
 }
 
 static void
-ctk_stack_sidebar_row_selected (CtkListBox    *box,
+ctk_stack_sidebar_row_selected (CtkListBox    *box G_GNUC_UNUSED,
                                 CtkListBoxRow *row,
                                 gpointer       userdata)
 {
@@ -252,8 +252,8 @@ update_row (CtkStackSidebar *sidebar,
 }
 
 static void
-on_position_updated (CtkWidget       *widget,
-                     GParamSpec      *pspec,
+on_position_updated (CtkWidget       *widget G_GNUC_UNUSED,
+                     GParamSpec      *pspec G_GNUC_UNUSED,
                      CtkStackSidebar *sidebar)
 {
   CtkStackSidebarPrivate *priv = ctk_stack_sidebar_get_instance_private (sidebar);
@@ -263,7 +263,7 @@ on_position_updated (CtkWidget       *widget,
 
 static void
 on_child_updated (CtkWidget       *widget,
-                  GParamSpec      *pspec,
+                  GParamSpec      *pspec G_GNUC_UNUSED,
                   CtkStackSidebar *sidebar)
 {
   CtkStackSidebarPrivate *priv = ctk_stack_sidebar_get_instance_private (sidebar);
@@ -354,7 +354,7 @@ clear_sidebar (CtkStackSidebar *sidebar)
 
 static void
 on_child_changed (CtkWidget       *widget,
-                  GParamSpec      *pspec,
+                  GParamSpec      *pspec G_GNUC_UNUSED,
                   CtkStackSidebar *sidebar)
 {
   CtkStackSidebarPrivate *priv = ctk_stack_sidebar_get_instance_private (sidebar);
@@ -372,7 +372,7 @@ on_child_changed (CtkWidget       *widget,
 }
 
 static void
-on_stack_child_added (CtkContainer    *container,
+on_stack_child_added (CtkContainer    *container G_GNUC_UNUSED,
                       CtkWidget       *widget,
                       CtkStackSidebar *sidebar)
 {
@@ -380,7 +380,7 @@ on_stack_child_added (CtkContainer    *container,
 }
 
 static void
-on_stack_child_removed (CtkContainer    *container,
+on_stack_child_removed (CtkContainer    *container G_GNUC_UNUSED,
                         CtkWidget       *widget,
                         CtkStackSidebar *sidebar)
 {

@@ -58,8 +58,8 @@ struct _CtkEventControllerPrivate
 G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (CtkEventController, ctk_event_controller, G_TYPE_OBJECT)
 
 static gboolean
-ctk_event_controller_handle_event_default (CtkEventController *controller,
-                                           const CdkEvent     *event)
+ctk_event_controller_handle_event_default (CtkEventController *controller G_GNUC_UNUSED,
+                                           const CdkEvent     *event G_GNUC_UNUSED)
 {
   return FALSE;
 }

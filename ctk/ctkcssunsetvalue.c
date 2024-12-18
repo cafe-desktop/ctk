@@ -28,14 +28,14 @@ struct _CtkCssValue {
 };
 
 static void
-ctk_css_value_unset_free (CtkCssValue *value)
+ctk_css_value_unset_free (CtkCssValue *value G_GNUC_UNUSED)
 {
   /* Can only happen if the unique value gets unreffed too often */
   g_assert_not_reached ();
 }
 
 static CtkCssValue *
-ctk_css_value_unset_compute (CtkCssValue             *value,
+ctk_css_value_unset_compute (CtkCssValue             *value G_GNUC_UNUSED,
                              guint                    property_id,
                              CtkStyleProviderPrivate *provider,
                              CtkCssStyle             *style,
@@ -59,24 +59,24 @@ ctk_css_value_unset_compute (CtkCssValue             *value,
 }
 
 static gboolean
-ctk_css_value_unset_equal (const CtkCssValue *value1,
-                           const CtkCssValue *value2)
+ctk_css_value_unset_equal (const CtkCssValue *value1 G_GNUC_UNUSED,
+                           const CtkCssValue *value2 G_GNUC_UNUSED)
 {
   return TRUE;
 }
 
 static CtkCssValue *
-ctk_css_value_unset_transition (CtkCssValue *start,
-                                CtkCssValue *end,
-                                guint        property_id,
-                                double       progress)
+ctk_css_value_unset_transition (CtkCssValue *start G_GNUC_UNUSED,
+                                CtkCssValue *end G_GNUC_UNUSED,
+                                guint        property_id G_GNUC_UNUSED,
+                                double       progress G_GNUC_UNUSED)
 {
   return NULL;
 }
 
 static void
-ctk_css_value_unset_print (const CtkCssValue *value,
-                             GString           *string)
+ctk_css_value_unset_print (const CtkCssValue *value G_GNUC_UNUSED,
+                           GString           *string)
 {
   g_string_append (string, "unset");
 }

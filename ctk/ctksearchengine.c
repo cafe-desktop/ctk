@@ -211,7 +211,7 @@ _ctk_search_engine_init (CtkSearchEngine *engine)
 }
 
 static void
-hits_added (CtkSearchEngine *engine,
+hits_added (CtkSearchEngine *engine G_GNUC_UNUSED,
             GList           *hits,
             gpointer         data)
 {

@@ -438,7 +438,7 @@ emit_drag_perform_drop (CtkPlacesSidebar *sidebar,
 static void
 list_box_header_func (CtkListBoxRow *row,
                       CtkListBoxRow *before,
-                      gpointer       user_data)
+                      gpointer       user_data G_GNUC_UNUSED)
 {
   CtkPlacesSidebarSectionType row_section_type;
   CtkPlacesSidebarSectionType before_section_type;
@@ -480,7 +480,7 @@ add_place (CtkPlacesSidebar            *sidebar,
 #ifdef HAVE_CLOUDPROVIDERS
            CloudProvidersAccount       *cloud_provider_account,
 #else
-           gpointer                    *cloud_provider_account,
+           gpointer                    *cloud_provider_account G_GNUC_UNUSED,
 #endif
            const gint                   index,
            const gchar                 *tooltip)
@@ -1694,7 +1694,7 @@ free_drag_data (CtkPlacesSidebar *sidebar)
 
 static void
 start_drop_feedback (CtkPlacesSidebar *sidebar,
-                     CtkSidebarRow    *row,
+                     CtkSidebarRow    *row G_GNUC_UNUSED,
                      CdkDragContext   *context)
 {
   if (sidebar->drag_data_info != DND_CTK_SIDEBAR_ROW)
@@ -1766,7 +1766,7 @@ on_motion_notify_event (CtkWidget      *widget,
 }
 
 static void
-drag_begin_callback (CtkWidget      *widget,
+drag_begin_callback (CtkWidget      *widget G_GNUC_UNUSED,
                      CdkDragContext *context,
                      gpointer        user_data)
 {
@@ -1794,7 +1794,7 @@ drag_begin_callback (CtkWidget      *widget,
 }
 
 static CtkWidget *
-create_placeholder_row (CtkPlacesSidebar *sidebar)
+create_placeholder_row (CtkPlacesSidebar *sidebar G_GNUC_UNUSED)
 {
   return 	g_object_new (CTK_TYPE_SIDEBAR_ROW,
                         "placeholder", TRUE,
@@ -2000,11 +2000,11 @@ drop_files_as_bookmarks (CtkPlacesSidebar *sidebar,
 }
 
 static void
-drag_data_get_callback (CtkWidget        *widget,
-                        CdkDragContext   *context,
+drag_data_get_callback (CtkWidget        *widget G_GNUC_UNUSED,
+                        CdkDragContext   *context G_GNUC_UNUSED,
                         CtkSelectionData *data,
-                        guint             info,
-                        guint             time,
+                        guint             info G_GNUC_UNUSED,
+                        guint             time G_GNUC_UNUSED,
                         gpointer          user_data)
 {
   CtkPlacesSidebar *sidebar = CTK_PLACES_SIDEBAR (user_data);
@@ -2023,7 +2023,7 @@ drag_data_get_callback (CtkWidget        *widget,
 static void
 drag_data_received_callback (CtkWidget        *list_box,
                              CdkDragContext   *context,
-                             int               x,
+                             int               x G_GNUC_UNUSED,
                              int               y,
                              CtkSelectionData *selection_data,
                              guint             info,
@@ -2144,8 +2144,8 @@ out:
 }
 
 static void
-drag_end_callback (CtkWidget      *widget,
-                   CdkDragContext *context,
+drag_end_callback (CtkWidget      *widget G_GNUC_UNUSED,
+                   CdkDragContext *context G_GNUC_UNUSED,
                    gpointer        user_data)
 {
   stop_drop_feedback (CTK_PLACES_SIDEBAR (user_data));
@@ -2170,9 +2170,9 @@ drag_end_callback (CtkWidget      *widget,
  * we build new drag data in drag_data_received.
  */
 static void
-drag_leave_callback (CtkWidget      *widget,
+drag_leave_callback (CtkWidget      *widget G_GNUC_UNUSED,
                      CdkDragContext *context,
-                     guint           time,
+                     guint           time G_GNUC_UNUSED,
                      gpointer        user_data)
 {
   CtkPlacesSidebar *sidebar = CTK_PLACES_SIDEBAR (user_data);
@@ -2190,10 +2190,10 @@ drag_leave_callback (CtkWidget      *widget,
 }
 
 static gboolean
-drag_drop_callback (CtkWidget      *list_box,
+drag_drop_callback (CtkWidget      *list_box G_GNUC_UNUSED,
                     CdkDragContext *context,
-                    gint            x,
-                    gint            y,
+                    gint            x G_GNUC_UNUSED,
+                    gint            y G_GNUC_UNUSED,
                     guint           time,
                     gpointer        user_data)
 {
@@ -2476,7 +2476,7 @@ mount_volume (CtkSidebarRow *row,
 static void
 open_drive (CtkSidebarRow      *row,
             GDrive             *drive,
-            CtkPlacesOpenFlags  open_flags)
+            CtkPlacesOpenFlags  open_flags G_GNUC_UNUSED)
 {
   CtkPlacesSidebar *sidebar;
 
@@ -2582,7 +2582,7 @@ open_row (CtkSidebarRow      *row,
 
 /* Callback used for the "Open" menu items in the context menu */
 static void
-open_shortcut_cb (GSimpleAction *action,
+open_shortcut_cb (GSimpleAction *action G_GNUC_UNUSED,
                   GVariant      *parameter,
                   gpointer       data)
 {
@@ -2595,8 +2595,8 @@ open_shortcut_cb (GSimpleAction *action,
 
 /* Add bookmark for the selected item - just used from mount points */
 static void
-add_shortcut_cb (GSimpleAction *action,
-                 GVariant      *parameter,
+add_shortcut_cb (GSimpleAction *action G_GNUC_UNUSED,
+                 GVariant      *parameter G_GNUC_UNUSED,
                  gpointer       data)
 {
   CtkPlacesSidebar *sidebar = data;
@@ -2622,7 +2622,7 @@ add_shortcut_cb (GSimpleAction *action,
 }
 
 static void
-rename_entry_changed (CtkEntry         *entry,
+rename_entry_changed (CtkEntry         *entry G_GNUC_UNUSED,
                       CtkPlacesSidebar *sidebar)
 {
   CtkPlacesSidebarPlaceType type;
@@ -2667,7 +2667,7 @@ rename_entry_changed (CtkEntry         *entry,
 }
 
 static void
-do_rename (CtkButton        *button,
+do_rename (CtkButton        *button G_GNUC_UNUSED,
            CtkPlacesSidebar *sidebar)
 {
   gchar *new_text;
@@ -2691,7 +2691,7 @@ do_rename (CtkButton        *button,
 }
 
 static void
-on_rename_popover_destroy (CtkWidget        *rename_popover,
+on_rename_popover_destroy (CtkWidget        *rename_popover G_GNUC_UNUSED,
                            CtkPlacesSidebar *sidebar)
 {
   if (sidebar)
@@ -2849,8 +2849,8 @@ rename_bookmark (CtkSidebarRow *row)
 }
 
 static void
-rename_shortcut_cb (GSimpleAction *action,
-                    GVariant      *parameter,
+rename_shortcut_cb (GSimpleAction *action G_GNUC_UNUSED,
+                    GVariant      *parameter G_GNUC_UNUSED,
                     gpointer       data)
 {
   CtkPlacesSidebar *sidebar = data;
@@ -2884,8 +2884,8 @@ remove_bookmark (CtkSidebarRow *row)
 }
 
 static void
-remove_shortcut_cb (GSimpleAction *action,
-                    GVariant      *parameter,
+remove_shortcut_cb (GSimpleAction *action G_GNUC_UNUSED,
+                    GVariant      *parameter G_GNUC_UNUSED,
                     gpointer       data)
 {
   CtkPlacesSidebar *sidebar = data;
@@ -2894,8 +2894,8 @@ remove_shortcut_cb (GSimpleAction *action,
 }
 
 static void
-mount_shortcut_cb (GSimpleAction *action,
-                   GVariant      *parameter,
+mount_shortcut_cb (GSimpleAction *action G_GNUC_UNUSED,
+                   GVariant      *parameter G_GNUC_UNUSED,
                    gpointer       data)
 {
   CtkPlacesSidebar *sidebar = data;
@@ -3073,8 +3073,8 @@ do_unmount (GMount           *mount,
 }
 
 static void
-unmount_shortcut_cb (GSimpleAction *action,
-                     GVariant      *parameter,
+unmount_shortcut_cb (GSimpleAction *action G_GNUC_UNUSED,
+                     GVariant      *parameter G_GNUC_UNUSED,
                      gpointer       data)
 {
   CtkPlacesSidebar *sidebar = data;
@@ -3246,8 +3246,8 @@ do_eject (GMount           *mount,
 }
 
 static void
-eject_shortcut_cb (GSimpleAction *action,
-                   GVariant      *parameter,
+eject_shortcut_cb (GSimpleAction *action G_GNUC_UNUSED,
+                   GVariant      *parameter G_GNUC_UNUSED,
                    gpointer       data)
 {
   CtkPlacesSidebar *sidebar = data;
@@ -3355,8 +3355,8 @@ drive_poll_for_media_cb (GObject      *source_object,
 }
 
 static void
-rescan_shortcut_cb (GSimpleAction *action,
-                    GVariant      *parameter,
+rescan_shortcut_cb (GSimpleAction *action G_GNUC_UNUSED,
+                    GVariant      *parameter G_GNUC_UNUSED,
                     gpointer       data)
 {
   CtkPlacesSidebar *sidebar = data;
@@ -3403,8 +3403,8 @@ drive_start_cb (GObject      *source_object,
 }
 
 static void
-start_shortcut_cb (GSimpleAction *action,
-                   GVariant      *parameter,
+start_shortcut_cb (GSimpleAction *action G_GNUC_UNUSED,
+                   GVariant      *parameter G_GNUC_UNUSED,
                    gpointer       data)
 {
   CtkPlacesSidebar *sidebar = data;
@@ -3428,8 +3428,8 @@ start_shortcut_cb (GSimpleAction *action,
 }
 
 static void
-stop_shortcut_cb (GSimpleAction *action,
-                  GVariant      *parameter,
+stop_shortcut_cb (GSimpleAction *action G_GNUC_UNUSED,
+                  GVariant      *parameter G_GNUC_UNUSED,
                   gpointer       data)
 {
   CtkPlacesSidebar *sidebar = data;
@@ -3453,7 +3453,7 @@ stop_shortcut_cb (GSimpleAction *action,
 }
 
 static gboolean
-on_key_press_event (CtkWidget        *widget,
+on_key_press_event (CtkWidget        *widget G_GNUC_UNUSED,
                     CdkEventKey      *event,
                     CtkPlacesSidebar *sidebar)
 {
@@ -3596,7 +3596,7 @@ add_open_button (CtkWidget          *box,
 }
 
 static void
-on_row_popover_destroy (CtkWidget        *row_popover,
+on_row_popover_destroy (CtkWidget        *row_popover G_GNUC_UNUSED,
                         CtkPlacesSidebar *sidebar)
 {
   if (sidebar)
@@ -3766,7 +3766,7 @@ show_row_popover (CtkSidebarRow *row)
 
 static void
 on_row_activated (CtkListBox    *list_box,
-                  CtkListBoxRow *row,
+                  CtkListBoxRow *row G_GNUC_UNUSED,
                   gpointer       user_data)
 {
   CtkSidebarRow *selected_row;
@@ -3783,7 +3783,7 @@ on_row_activated (CtkListBox    *list_box,
 }
 
 static gboolean
-on_button_press_event (CtkWidget      *widget,
+on_button_press_event (CtkWidget      *widget G_GNUC_UNUSED,
                        CdkEventButton *event,
                        CtkSidebarRow  *row)
 {
@@ -3811,7 +3811,7 @@ on_button_press_event (CtkWidget      *widget,
 }
 
 static gboolean
-on_button_release_event (CtkWidget      *widget,
+on_button_release_event (CtkWidget      *widget G_GNUC_UNUSED,
                          CdkEventButton *event,
                          CtkSidebarRow  *row)
 {
@@ -3857,8 +3857,8 @@ popup_menu_cb (CtkSidebarRow *row)
 }
 
 static void
-long_press_cb (CtkGesture       *gesture,
-               gdouble           x,
+long_press_cb (CtkGesture       *gesture G_GNUC_UNUSED,
+               gdouble           x G_GNUC_UNUSED,
                gdouble           y,
                CtkPlacesSidebar *sidebar)
 {
@@ -3872,7 +3872,7 @@ long_press_cb (CtkGesture       *gesture,
 static gint
 list_box_sort_func (CtkListBoxRow *row1,
                     CtkListBoxRow *row2,
-                    gpointer       user_data)
+                    gpointer       user_data G_GNUC_UNUSED)
 {
   CtkPlacesSidebarSectionType section_type_1, section_type_2;
   CtkPlacesSidebarPlaceType place_type_1, place_type_2;
@@ -3985,7 +3985,7 @@ update_hostname (CtkPlacesSidebar *sidebar)
 }
 
 static void
-hostname_proxy_new_cb (GObject      *source_object,
+hostname_proxy_new_cb (GObject      *source_object G_GNUC_UNUSED,
                        GAsyncResult *res,
                        gpointer      user_data)
 {
@@ -4046,7 +4046,7 @@ create_volume_monitor (CtkPlacesSidebar *sidebar)
 
 static void
 shell_shows_desktop_changed (CtkSettings *settings,
-                             GParamSpec  *pspec,
+                             GParamSpec  *pspec G_GNUC_UNUSED,
                              gpointer     user_data)
 {
   CtkPlacesSidebar *sidebar = user_data;

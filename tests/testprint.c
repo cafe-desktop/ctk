@@ -23,10 +23,10 @@
 #include "testprintfileoperation.h"
 
 static void
-request_page_setup (CtkPrintOperation *operation,
-		    CtkPrintContext *context,
-		    int page_nr,
-		    CtkPageSetup *setup)
+request_page_setup (CtkPrintOperation *operation G_GNUC_UNUSED,
+		    CtkPrintContext   *context G_GNUC_UNUSED,
+		    int                page_nr,
+		    CtkPageSetup      *setup)
 {
   /* Make the second page landscape mode a5 */
   if (page_nr == 1)
@@ -40,9 +40,9 @@ request_page_setup (CtkPrintOperation *operation,
 }
 
 static void
-draw_page (CtkPrintOperation *operation,
-	   CtkPrintContext *context,
-	   int page_nr)
+draw_page (CtkPrintOperation *operation G_GNUC_UNUSED,
+	   CtkPrintContext   *context,
+	   int                page_nr G_GNUC_UNUSED)
 {
   cairo_t *cr;
   PangoLayout *layout;

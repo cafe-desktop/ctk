@@ -74,12 +74,12 @@ get_display_name (const char *language)
 }
 
 static void
-languages_parse_start_tag (GMarkupParseContext  *ctx,
+languages_parse_start_tag (GMarkupParseContext  *ctx G_GNUC_UNUSED,
                            const char           *element_name,
                            const char          **attr_names,
                            const char          **attr_values,
-                           gpointer              user_data,
-                           GError              **error)
+                           gpointer              user_data G_GNUC_UNUSED,
+                           GError              **error G_GNUC_UNUSED)
 {
   const char *ccode_longB;
   const char *ccode_longT;

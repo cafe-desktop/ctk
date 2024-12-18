@@ -981,7 +981,7 @@ ctk_layout_unrealize (CtkWidget *widget)
 }
 
 static void
-ctk_layout_get_preferred_width (CtkWidget *widget,
+ctk_layout_get_preferred_width (CtkWidget *widget G_GNUC_UNUSED,
                                 gint      *minimum,
                                 gint      *natural)
 {
@@ -989,7 +989,7 @@ ctk_layout_get_preferred_width (CtkWidget *widget,
 }
 
 static void
-ctk_layout_get_preferred_height (CtkWidget *widget,
+ctk_layout_get_preferred_height (CtkWidget *widget G_GNUC_UNUSED,
                                  gint      *minimum,
                                  gint      *natural)
 {
@@ -1083,7 +1083,7 @@ ctk_layout_remove (CtkContainer *container,
 
 static void
 ctk_layout_forall (CtkContainer *container,
-		   gboolean      include_internals,
+		   gboolean      include_internals G_GNUC_UNUSED,
 		   CtkCallback   callback,
 		   gpointer      callback_data)
 {
@@ -1106,7 +1106,7 @@ ctk_layout_forall (CtkContainer *container,
  */
 
 static void
-ctk_layout_allocate_child (CtkLayout      *layout,
+ctk_layout_allocate_child (CtkLayout      *layout G_GNUC_UNUSED,
 			   CtkLayoutChild *child)
 {
   CtkAllocation allocation;
@@ -1125,7 +1125,7 @@ ctk_layout_allocate_child (CtkLayout      *layout,
 /* Callbacks */
 
 static void
-ctk_layout_adjustment_changed (CtkAdjustment *adjustment,
+ctk_layout_adjustment_changed (CtkAdjustment *adjustment G_GNUC_UNUSED,
 			       CtkLayout     *layout)
 {
   CtkLayoutPrivate *priv = layout->priv;

@@ -108,8 +108,8 @@ cdk_event_source_check (GSource *base)
 
 static gboolean
 cdk_event_source_dispatch (GSource     *base,
-			   GSourceFunc  callback,
-			   gpointer     data)
+			   GSourceFunc  callback G_GNUC_UNUSED,
+			   gpointer     data G_GNUC_UNUSED)
 {
   CdkWaylandEventSource *source = (CdkWaylandEventSource *) base;
   CdkDisplay *display = source->display;

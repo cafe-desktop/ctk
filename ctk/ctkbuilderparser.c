@@ -716,7 +716,7 @@ parse_signal (ParserData   *data,
 /* Called by CtkBuilder */
 void
 _free_signal_info (SignalInfo *info,
-                   gpointer    user_data)
+                   gpointer    user_data G_GNUC_UNUSED)
 {
   g_free (info->handler);
   g_free (info->connect_object_name);
@@ -726,7 +726,7 @@ _free_signal_info (SignalInfo *info,
 
 static void
 free_requires_info (RequiresInfo *info,
-                    gpointer      user_data)
+                    gpointer      user_data G_GNUC_UNUSED)
 {
   g_free (info->library);
   g_slice_free (RequiresInfo, info);

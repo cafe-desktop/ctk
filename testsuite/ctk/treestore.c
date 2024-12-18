@@ -76,7 +76,7 @@ typedef struct
 
 static void
 tree_store_setup (TreeStore     *fixture,
-		  gconstpointer  test_data)
+		  gconstpointer  test_data G_GNUC_UNUSED)
 {
   int i;
 
@@ -91,7 +91,7 @@ tree_store_setup (TreeStore     *fixture,
 
 static void
 tree_store_teardown (TreeStore     *fixture,
-		     gconstpointer  test_data)
+		     gconstpointer  test_data G_GNUC_UNUSED)
 {
   g_object_unref (fixture->store);
 }
@@ -478,7 +478,7 @@ tree_store_set_gvalue_to_transform (void)
 /* removal */
 static void
 tree_store_test_remove_begin (TreeStore     *fixture,
-			      gconstpointer  user_data)
+			      gconstpointer  user_data G_GNUC_UNUSED)
 {
   int new_order[5] = { -1, 1, 2, 3, 4 };
   CtkTreePath *path;
@@ -498,7 +498,7 @@ tree_store_test_remove_begin (TreeStore     *fixture,
 
 static void
 tree_store_test_remove_middle (TreeStore     *fixture,
-			       gconstpointer  user_data)
+			       gconstpointer  user_data G_GNUC_UNUSED)
 {
   int new_order[5] = { 0, 1, -1, 3, 4 };
   CtkTreePath *path;
@@ -518,7 +518,7 @@ tree_store_test_remove_middle (TreeStore     *fixture,
 
 static void
 tree_store_test_remove_end (TreeStore     *fixture,
-			    gconstpointer  user_data)
+			    gconstpointer  user_data G_GNUC_UNUSED)
 {
   int new_order[5] = { 0, 1, 2, 3, -1 };
   CtkTreePath *path;
@@ -537,7 +537,7 @@ tree_store_test_remove_end (TreeStore     *fixture,
 
 static void
 tree_store_test_clear (TreeStore     *fixture,
-		       gconstpointer  user_data)
+		       gconstpointer  user_data G_GNUC_UNUSED)
 {
   int i;
 
@@ -553,7 +553,7 @@ tree_store_test_clear (TreeStore     *fixture,
 
 static void
 tree_store_test_reorder (TreeStore     *fixture,
-			 gconstpointer  user_data)
+			 gconstpointer  user_data G_GNUC_UNUSED)
 {
   int new_order[5] = { 4, 1, 0, 2, 3 };
 
@@ -565,7 +565,7 @@ tree_store_test_reorder (TreeStore     *fixture,
 
 static void
 tree_store_test_swap_begin (TreeStore     *fixture,
-		            gconstpointer  user_data)
+		            gconstpointer  user_data G_GNUC_UNUSED)
 {
   /* We swap nodes 0 and 1 at the beginning */
   int new_order[5] = { 1, 0, 2, 3, 4 };
@@ -582,7 +582,7 @@ tree_store_test_swap_begin (TreeStore     *fixture,
 
 static void
 tree_store_test_swap_middle_next (TreeStore     *fixture,
-		                  gconstpointer  user_data)
+		                  gconstpointer  user_data G_GNUC_UNUSED)
 {
   /* We swap nodes 2 and 3 in the middle that are next to each other */
   int new_order[5] = { 0, 1, 3, 2, 4 };
@@ -599,7 +599,7 @@ tree_store_test_swap_middle_next (TreeStore     *fixture,
 
 static void
 tree_store_test_swap_middle_apart (TreeStore     *fixture,
-		                   gconstpointer  user_data)
+		                   gconstpointer  user_data G_GNUC_UNUSED)
 {
   /* We swap nodes 1 and 3 in the middle that are apart from each other */
   int new_order[5] = { 0, 3, 2, 1, 4 };
@@ -616,7 +616,7 @@ tree_store_test_swap_middle_apart (TreeStore     *fixture,
 
 static void
 tree_store_test_swap_end (TreeStore     *fixture,
-		          gconstpointer  user_data)
+		          gconstpointer  user_data G_GNUC_UNUSED)
 {
   /* We swap nodes 3 and 4 at the end */
   int new_order[5] = { 0, 1, 2, 4, 3 };
@@ -659,7 +659,7 @@ tree_store_test_swap_single (void)
 
 static void
 tree_store_test_move_after_from_start (TreeStore     *fixture,
-				       gconstpointer  user_data)
+				       gconstpointer  user_data G_GNUC_UNUSED)
 {
   /* We move node 0 after 2 */
   int new_order[5] = { 1, 2, 0, 3, 4 };
@@ -676,7 +676,7 @@ tree_store_test_move_after_from_start (TreeStore     *fixture,
 
 static void
 tree_store_test_move_after_next (TreeStore     *fixture,
-			         gconstpointer  user_data)
+			         gconstpointer  user_data G_GNUC_UNUSED)
 {
   /* We move node 2 after 3 */
   int new_order[5] = { 0, 1, 3, 2, 4 };
@@ -693,7 +693,7 @@ tree_store_test_move_after_next (TreeStore     *fixture,
 
 static void
 tree_store_test_move_after_apart (TreeStore     *fixture,
-			          gconstpointer  user_data)
+			          gconstpointer  user_data G_GNUC_UNUSED)
 {
   /* We move node 1 after 3 */
   int new_order[5] = { 0, 2, 3, 1, 4 };
@@ -710,7 +710,7 @@ tree_store_test_move_after_apart (TreeStore     *fixture,
 
 static void
 tree_store_test_move_after_end (TreeStore     *fixture,
-			        gconstpointer  user_data)
+			        gconstpointer  user_data G_GNUC_UNUSED)
 {
   /* We move node 2 after 4 */
   int new_order[5] = { 0, 1, 3, 4, 2 };
@@ -727,7 +727,7 @@ tree_store_test_move_after_end (TreeStore     *fixture,
 
 static void
 tree_store_test_move_after_from_end (TreeStore     *fixture,
-			             gconstpointer  user_data)
+			             gconstpointer  user_data G_GNUC_UNUSED)
 {
   /* We move node 4 after 1 */
   int new_order[5] = { 0, 1, 4, 2, 3 };
@@ -744,7 +744,7 @@ tree_store_test_move_after_from_end (TreeStore     *fixture,
 
 static void
 tree_store_test_move_after_change_ends (TreeStore     *fixture,
-			                gconstpointer  user_data)
+			                gconstpointer  user_data G_GNUC_UNUSED)
 {
   /* We move 0 after 4, this will cause both the head and tail ends to
    * change.
@@ -763,7 +763,7 @@ tree_store_test_move_after_change_ends (TreeStore     *fixture,
 
 static void
 tree_store_test_move_after_NULL (TreeStore     *fixture,
-			         gconstpointer  user_data)
+			         gconstpointer  user_data G_GNUC_UNUSED)
 {
   /* We move node 2, NULL should prepend */
   int new_order[5] = { 2, 0, 1, 3, 4 };
@@ -809,7 +809,7 @@ tree_store_test_move_after_single (void)
 
 static void
 tree_store_test_move_before_next (TreeStore     *fixture,
-		                  gconstpointer  user_data)
+		                  gconstpointer  user_data G_GNUC_UNUSED)
 {
   /* We move node 3 before 2 */
   int new_order[5] = { 0, 1, 3, 2, 4 };
@@ -826,7 +826,7 @@ tree_store_test_move_before_next (TreeStore     *fixture,
 
 static void
 tree_store_test_move_before_apart (TreeStore     *fixture,
-				   gconstpointer  user_data)
+				   gconstpointer  user_data G_GNUC_UNUSED)
 {
   /* We move node 1 before 3 */
   int new_order[5] = { 0, 2, 1, 3, 4 };
@@ -843,7 +843,7 @@ tree_store_test_move_before_apart (TreeStore     *fixture,
 
 static void
 tree_store_test_move_before_to_start (TreeStore     *fixture,
-				      gconstpointer  user_data)
+				      gconstpointer  user_data G_GNUC_UNUSED)
 {
   /* We move node 2 before 0 */
   int new_order[5] = { 2, 0, 1, 3, 4 };
@@ -860,7 +860,7 @@ tree_store_test_move_before_to_start (TreeStore     *fixture,
 
 static void
 tree_store_test_move_before_from_end (TreeStore     *fixture,
-			              gconstpointer  user_data)
+			              gconstpointer  user_data G_GNUC_UNUSED)
 {
   /* We move node 4 before 2 (replace end) */
   int new_order[5] = { 0, 1, 4, 2, 3 };
@@ -877,7 +877,7 @@ tree_store_test_move_before_from_end (TreeStore     *fixture,
 
 static void
 tree_store_test_move_before_change_ends (TreeStore     *fixture,
-				         gconstpointer  user_data)
+				         gconstpointer  user_data G_GNUC_UNUSED)
 {
   /* We move node 4 before 0 */
   int new_order[5] = { 4, 0, 1, 2, 3 };
@@ -894,7 +894,7 @@ tree_store_test_move_before_change_ends (TreeStore     *fixture,
 
 static void
 tree_store_test_move_before_NULL (TreeStore     *fixture,
-			          gconstpointer  user_data)
+			          gconstpointer  user_data G_GNUC_UNUSED)
 {
   /* We move node 2, NULL should append */
   int new_order[5] = { 0, 1, 3, 4, 2 };
@@ -941,7 +941,7 @@ tree_store_test_move_before_single (void)
 
 static void
 tree_store_test_iter_previous_invalid (TreeStore     *fixture,
-                                       gconstpointer  user_data)
+                                       gconstpointer  user_data G_GNUC_UNUSED)
 {
   CtkTreeIter iter;
 
@@ -955,7 +955,7 @@ tree_store_test_iter_previous_invalid (TreeStore     *fixture,
 
 static void
 tree_store_test_iter_next_invalid (TreeStore     *fixture,
-                                   gconstpointer  user_data)
+                                   gconstpointer  user_data G_GNUC_UNUSED)
 {
   CtkTreePath *path;
   CtkTreeIter iter;
@@ -972,7 +972,7 @@ tree_store_test_iter_next_invalid (TreeStore     *fixture,
 
 static void
 tree_store_test_iter_children_invalid (TreeStore     *fixture,
-                                       gconstpointer  user_data)
+                                       gconstpointer  user_data G_GNUC_UNUSED)
 {
   CtkTreeIter iter, child;
 
@@ -987,7 +987,7 @@ tree_store_test_iter_children_invalid (TreeStore     *fixture,
 
 static void
 tree_store_test_iter_nth_child_invalid (TreeStore     *fixture,
-                                        gconstpointer  user_data)
+                                        gconstpointer  user_data G_GNUC_UNUSED)
 {
   CtkTreeIter iter, child;
 
@@ -1002,7 +1002,7 @@ tree_store_test_iter_nth_child_invalid (TreeStore     *fixture,
 
 static void
 tree_store_test_iter_parent_invalid (TreeStore     *fixture,
-                                     gconstpointer  user_data)
+                                     gconstpointer  user_data G_GNUC_UNUSED)
 {
   CtkTreeIter iter, child;
 

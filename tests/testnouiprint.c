@@ -22,9 +22,9 @@
 #include "ctk/ctk.h"
 
 static void
-draw_page (CtkPrintOperation *operation,
-	   CtkPrintContext *context,
-	   int page_nr)
+draw_page (CtkPrintOperation *operation G_GNUC_UNUSED,
+	   CtkPrintContext   *context,
+	   int                page_nr G_GNUC_UNUSED)
 {
   cairo_t *cr;
   PangoLayout *layout;
@@ -76,7 +76,8 @@ draw_page (CtkPrintOperation *operation,
 
 
 int
-main (int argc, char **argv)
+main (int    argc G_GNUC_UNUSED,
+      char **argv G_GNUC_UNUSED)
 {
   CtkPrintOperation *print;
   CtkPrintSettings *settings;

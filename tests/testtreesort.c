@@ -69,11 +69,11 @@ enum
 };
 
 gboolean
-select_func (CtkTreeSelection  *selection,
-	     CtkTreeModel      *model,
+select_func (CtkTreeSelection  *selection G_GNUC_UNUSED,
+	     CtkTreeModel      *model G_GNUC_UNUSED,
 	     CtkTreePath       *path,
-	     gboolean           path_currently_selected,
-	     gpointer           data)
+	     gboolean           path_currently_selected G_GNUC_UNUSED,
+	     gpointer           data G_GNUC_UNUSED)
 {
   if (ctk_tree_path_get_depth (path) > 1)
     return TRUE;
@@ -81,7 +81,7 @@ select_func (CtkTreeSelection  *selection,
 }
 
 static void
-switch_search_method (CtkWidget *button,
+switch_search_method (CtkWidget *button G_GNUC_UNUSED,
 		      gpointer   tree_view)
 {
   if (!ctk_tree_view_get_search_entry (CTK_TREE_VIEW (tree_view)))

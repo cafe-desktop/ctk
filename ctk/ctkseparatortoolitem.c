@@ -170,8 +170,8 @@ ctk_separator_tool_item_init (CtkSeparatorToolItem *separator_item)
 }
 
 static void
-ctk_separator_tool_item_add (CtkContainer *container,
-                             CtkWidget    *child)
+ctk_separator_tool_item_add (CtkContainer *container G_GNUC_UNUSED,
+                             CtkWidget    *child G_GNUC_UNUSED)
 {
   g_warning ("attempt to add a child to an CtkSeparatorToolItem");
 }
@@ -353,7 +353,7 @@ ctk_separator_tool_item_unmap (CtkWidget *widget)
 
 static gboolean
 ctk_separator_tool_item_motion_event (CtkWidget      *widget,
-                                      CdkEventMotion *event)
+                                      CdkEventMotion *event G_GNUC_UNUSED)
 {
   CtkSeparatorToolItem *separator = CTK_SEPARATOR_TOOL_ITEM (widget);
   CtkSeparatorToolItemPrivate *priv = separator->priv;
@@ -366,7 +366,7 @@ ctk_separator_tool_item_motion_event (CtkWidget      *widget,
 
 static gboolean
 ctk_separator_tool_item_button_event (CtkWidget      *widget,
-                                      CdkEventButton *event)
+                                      CdkEventButton *event G_GNUC_UNUSED)
 {
   CtkSeparatorToolItem *separator = CTK_SEPARATOR_TOOL_ITEM (widget);
   CtkSeparatorToolItemPrivate *priv = separator->priv;

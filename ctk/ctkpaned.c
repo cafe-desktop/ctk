@@ -810,8 +810,8 @@ gesture_drag_update_cb (CtkGestureDrag   *gesture,
 
 static void
 gesture_drag_end_cb (CtkGestureDrag *gesture,
-                     gdouble         offset_x,
-                     gdouble         offset_y,
+                     gdouble         offset_x G_GNUC_UNUSED,
+                     gdouble         offset_y G_GNUC_UNUSED,
                      CtkPaned       *paned)
 {
   if (!paned->priv->panning)
@@ -1187,12 +1187,12 @@ get_number (CtkCssStyle *style,
 static void
 ctk_paned_measure_handle (CtkCssGadget   *gadget,
                           CtkOrientation  orientation,
-                          int             size,
+                          int             size G_GNUC_UNUSED,
                           int            *minimum,
                           int            *natural,
-                          int            *minimum_baseline,
-                          int            *natural_baseline,
-                          gpointer        data)
+                          int            *minimum_baseline G_GNUC_UNUSED,
+                          int            *natural_baseline G_GNUC_UNUSED,
+                          gpointer        data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkCssStyle *style;
@@ -1225,9 +1225,9 @@ ctk_paned_measure (CtkCssGadget   *gadget,
                    int             size,
                    int            *minimum,
                    int            *natural,
-                   int            *minimum_baseline,
-                   int            *natural_baseline,
-                   gpointer        data)
+                   int            *minimum_baseline G_GNUC_UNUSED,
+                   int            *natural_baseline G_GNUC_UNUSED,
+                   gpointer        data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkPaned *paned = CTK_PANED (widget);
@@ -1365,9 +1365,9 @@ ctk_paned_size_allocate (CtkWidget     *widget,
 static void
 ctk_paned_allocate (CtkCssGadget        *gadget,
                     const CtkAllocation *allocation,
-                    int                  baseline,
+                    int                  baseline G_GNUC_UNUSED,
                     CtkAllocation       *out_clip,
-                    gpointer             data)
+                    gpointer             data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkPaned *paned = CTK_PANED (widget);
@@ -1787,11 +1787,11 @@ ctk_paned_draw (CtkWidget *widget,
 static gboolean
 ctk_paned_render (CtkCssGadget *gadget,
                   cairo_t      *cr,
-                  int           x,
-                  int           y,
-                  int           width,
-                  int           height,
-                  gpointer      data)
+                  int           x G_GNUC_UNUSED,
+                  int           y G_GNUC_UNUSED,
+                  int           width G_GNUC_UNUSED,
+                  int           height G_GNUC_UNUSED,
+                  gpointer      data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkPaned *paned = CTK_PANED (widget);
@@ -1843,7 +1843,7 @@ ctk_paned_render_handle (CtkCssGadget *gadget,
                          int           y,
                          int           width,
                          int           height,
-                         gpointer      data)
+                         gpointer      data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkPaned *paned = CTK_PANED (widget);
@@ -2014,7 +2014,7 @@ update_drag (CtkPaned *paned,
 
 static gboolean
 ctk_paned_enter (CtkWidget        *widget,
-		 CdkEventCrossing *event)
+		 CdkEventCrossing *event G_GNUC_UNUSED)
 {
   CtkPaned *paned = CTK_PANED (widget);
   CtkPanedPrivate *priv = paned->priv;
@@ -2035,7 +2035,7 @@ ctk_paned_enter (CtkWidget        *widget,
 
 static gboolean
 ctk_paned_leave (CtkWidget        *widget,
-		 CdkEventCrossing *event)
+		 CdkEventCrossing *event G_GNUC_UNUSED)
 {
   CtkPaned *paned = CTK_PANED (widget);
   CtkPanedPrivate *priv = paned->priv;
@@ -2103,7 +2103,7 @@ ctk_paned_state_flags_changed (CtkWidget     *widget,
 
 static void
 ctk_paned_direction_changed (CtkWidget        *widget,
-                             CtkTextDirection  previous_direction)
+                             CtkTextDirection  previous_direction G_GNUC_UNUSED)
 {
   CtkPaned *paned = CTK_PANED (widget);
 
@@ -2304,7 +2304,7 @@ ctk_paned_remove (CtkContainer *container,
 
 static void
 ctk_paned_forall (CtkContainer *container,
-		  gboolean      include_internals,
+		  gboolean      include_internals G_GNUC_UNUSED,
 		  CtkCallback   callback,
 		  gpointer      callback_data)
 {

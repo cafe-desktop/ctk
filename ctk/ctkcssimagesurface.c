@@ -160,7 +160,7 @@ _ctk_css_image_surface_class_init (CtkCssImageSurfaceClass *klass)
 }
 
 static void
-_ctk_css_image_surface_init (CtkCssImageSurface *image_surface)
+_ctk_css_image_surface_init (CtkCssImageSurface *image_surface G_GNUC_UNUSED)
 {
 }
 

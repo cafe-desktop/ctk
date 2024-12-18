@@ -202,9 +202,9 @@ cdk_wayland_cursor_finalize (GObject *object)
 }
 
 static cairo_surface_t *
-cdk_wayland_cursor_get_surface (CdkCursor *cursor,
-				gdouble *x_hot,
-				gdouble *y_hot)
+cdk_wayland_cursor_get_surface (CdkCursor *cursor G_GNUC_UNUSED,
+				gdouble   *x_hot G_GNUC_UNUSED,
+				gdouble   *y_hot G_GNUC_UNUSED)
 {
   return NULL;
 }
@@ -335,7 +335,7 @@ _cdk_wayland_cursor_class_init (CdkWaylandCursorClass *wayland_cursor_class)
 }
 
 static void
-_cdk_wayland_cursor_init (CdkWaylandCursor *cursor)
+_cdk_wayland_cursor_init (CdkWaylandCursor *cursor G_GNUC_UNUSED)
 {
 }
 
@@ -426,7 +426,7 @@ _cdk_wayland_display_get_cursor_for_type (CdkDisplay    *display,
 
 static void
 buffer_release_callback (void             *_data,
-                         struct wl_buffer *wl_buffer)
+                         struct wl_buffer *wl_buffer G_GNUC_UNUSED)
 {
   cairo_surface_t *cairo_surface = _data;
 
@@ -494,31 +494,31 @@ _cdk_wayland_display_get_cursor_for_surface (CdkDisplay *display,
 }
 
 void
-_cdk_wayland_display_get_default_cursor_size (CdkDisplay *display,
-					      guint       *width,
-					      guint       *height)
+_cdk_wayland_display_get_default_cursor_size (CdkDisplay *display G_GNUC_UNUSED,
+					      guint      *width,
+					      guint      *height)
 {
   *width = 32;
   *height = 32;
 }
 
 void
-_cdk_wayland_display_get_maximal_cursor_size (CdkDisplay *display,
-					      guint       *width,
-					      guint       *height)
+_cdk_wayland_display_get_maximal_cursor_size (CdkDisplay *display G_GNUC_UNUSED,
+					      guint      *width,
+					      guint      *height)
 {
   *width = 256;
   *height = 256;
 }
 
 gboolean
-_cdk_wayland_display_supports_cursor_alpha (CdkDisplay *display)
+_cdk_wayland_display_supports_cursor_alpha (CdkDisplay *display G_GNUC_UNUSED)
 {
   return TRUE;
 }
 
 gboolean
-_cdk_wayland_display_supports_cursor_color (CdkDisplay *display)
+_cdk_wayland_display_supports_cursor_color (CdkDisplay *display G_GNUC_UNUSED)
 {
   return TRUE;
 }

@@ -27,11 +27,11 @@
 G_DEFINE_TYPE (CdkBroadwayMonitor, cdk_broadway_monitor, CDK_TYPE_MONITOR)
 
 static void
-cdk_broadway_monitor_init (CdkBroadwayMonitor *monitor)
+cdk_broadway_monitor_init (CdkBroadwayMonitor *monitor G_GNUC_UNUSED)
 {
 }
 
 static void
-cdk_broadway_monitor_class_init (CdkBroadwayMonitorClass *class)
+cdk_broadway_monitor_class_init (CdkBroadwayMonitorClass *class G_GNUC_UNUSED)
 {
 }

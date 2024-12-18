@@ -483,7 +483,7 @@ ctk_text_renderer_finalize (GObject *object)
 }
 
 static void
-_ctk_text_renderer_init (CtkTextRenderer *renderer)
+_ctk_text_renderer_init (CtkTextRenderer *renderer G_GNUC_UNUSED)
 {
 }
 
@@ -567,14 +567,14 @@ text_renderer_end (CtkTextRenderer *text_renderer)
 }
 
 static cairo_region_t *
-get_selected_clip (CtkTextRenderer    *text_renderer,
-                   PangoLayout        *layout,
-                   PangoLayoutLine    *line,
-                   int                 x,
-                   int                 y,
-                   int                 height,
-                   int                 start_index,
-                   int                 end_index)
+get_selected_clip (CtkTextRenderer *text_renderer G_GNUC_UNUSED,
+                   PangoLayout     *layout G_GNUC_UNUSED,
+                   PangoLayoutLine *line,
+                   int              x,
+                   int              y,
+                   int              height,
+                   int              start_index,
+                   int              end_index)
 {
   gint *ranges;
   gint n_ranges, i;

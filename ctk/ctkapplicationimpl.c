@@ -36,7 +36,7 @@
 G_DEFINE_TYPE (CtkApplicationImpl, ctk_application_impl, G_TYPE_OBJECT)
 
 static void
-ctk_application_impl_init (CtkApplicationImpl *impl)
+ctk_application_impl_init (CtkApplicationImpl *impl G_GNUC_UNUSED)
 {
 }
 

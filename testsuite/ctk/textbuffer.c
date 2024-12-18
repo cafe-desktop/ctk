@@ -120,7 +120,7 @@ count_toggles_at_iter (CtkTextIter *iter,
 }
 
 static gint
-count_toggles_in_range_by_char (CtkTextBuffer     *buffer,
+count_toggles_in_range_by_char (CtkTextBuffer     *buffer G_GNUC_UNUSED,
                                 CtkTextTag        *of_tag,
                                 const CtkTextIter *start,
                                 const CtkTextIter *end)

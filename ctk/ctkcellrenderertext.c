@@ -1932,7 +1932,7 @@ popdown_timeout (gpointer data)
 }
 
 static void
-ctk_cell_renderer_text_popup_unmap (CtkMenu *menu,
+ctk_cell_renderer_text_popup_unmap (CtkMenu *menu G_GNUC_UNUSED,
                                     gpointer data)
 {
   CtkCellRendererTextPrivate *priv;
@@ -1950,7 +1950,7 @@ ctk_cell_renderer_text_popup_unmap (CtkMenu *menu,
 }
 
 static void
-ctk_cell_renderer_text_populate_popup (CtkEntry *entry,
+ctk_cell_renderer_text_populate_popup (CtkEntry *entry G_GNUC_UNUSED,
                                        CtkMenu  *menu,
                                        gpointer  data)
 {
@@ -1972,7 +1972,7 @@ ctk_cell_renderer_text_populate_popup (CtkEntry *entry,
 
 static gboolean
 ctk_cell_renderer_text_focus_out_event (CtkWidget *entry,
-		                        CdkEvent  *event,
+					CdkEvent  *event G_GNUC_UNUSED,
 					gpointer   data)
 {
   CtkCellRendererTextPrivate *priv;
@@ -1994,12 +1994,12 @@ ctk_cell_renderer_text_focus_out_event (CtkWidget *entry,
 
 static CtkCellEditable *
 ctk_cell_renderer_text_start_editing (CtkCellRenderer      *cell,
-				      CdkEvent             *event,
-				      CtkWidget            *widget,
+				      CdkEvent             *event G_GNUC_UNUSED,
+				      CtkWidget            *widget G_GNUC_UNUSED,
 				      const gchar          *path,
-				      const CdkRectangle   *background_area,
-				      const CdkRectangle   *cell_area,
-				      CtkCellRendererState  flags)
+				      const CdkRectangle   *background_area G_GNUC_UNUSED,
+				      const CdkRectangle   *cell_area G_GNUC_UNUSED,
+				      CtkCellRendererState  flags G_GNUC_UNUSED)
 {
   CtkCellRendererText *celltext;
   CtkCellRendererTextPrivate *priv;

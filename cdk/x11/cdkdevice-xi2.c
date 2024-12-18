@@ -412,7 +412,7 @@ cdk_x11_device_xi2_grab (CdkDevice    *device,
                          CdkWindow    *window,
                          gboolean      owner_events,
                          CdkEventMask  event_mask,
-                         CdkWindow    *confine_to,
+                         CdkWindow    *confine_to G_GNUC_UNUSED,
                          CdkCursor    *cursor,
                          guint32       time_)
 {

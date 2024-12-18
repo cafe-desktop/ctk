@@ -118,8 +118,8 @@ ctk_font_chooser_dialog_get_property (GObject      *object,
 }
 
 static void
-font_activated_cb (CtkFontChooser *fontchooser,
-                   const gchar    *fontname,
+font_activated_cb (CtkFontChooser *fontchooser G_GNUC_UNUSED,
+                   const gchar    *fontname G_GNUC_UNUSED,
                    gpointer        user_data)
 {
   CtkDialog *dialog = user_data;

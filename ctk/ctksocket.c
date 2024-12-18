@@ -720,10 +720,10 @@ ctk_socket_send_key_event (CtkSocket *socket,
 
 static gboolean
 activate_key (CtkAccelGroup  *accel_group,
-	      GObject        *acceleratable,
-	      guint           accel_key,
-	      CdkModifierType accel_mods,
-	      GrabbedKey     *grabbed_key)
+	      GObject        *acceleratable G_GNUC_UNUSED,
+	      guint           accel_key G_GNUC_UNUSED,
+	      CdkModifierType accel_mods G_GNUC_UNUSED,
+	      GrabbedKey     *grabbed_key G_GNUC_UNUSED)
 {
   CdkEvent *cdk_event = ctk_get_current_event ();
   
@@ -744,7 +744,7 @@ activate_key (CtkAccelGroup  *accel_group,
 
 static gboolean
 find_accel_key (CtkAccelKey *key,
-		GClosure    *closure,
+		GClosure    *closure G_GNUC_UNUSED,
 		gpointer     data)
 {
   GrabbedKey *grabbed_key = data;
@@ -866,7 +866,7 @@ socket_update_active (CtkSocket *socket)
 
 static void
 ctk_socket_hierarchy_changed (CtkWidget *widget,
-			      CtkWidget *old_toplevel)
+			      CtkWidget *old_toplevel G_GNUC_UNUSED)
 {
   CtkSocket *socket = CTK_SOCKET (widget);
   CtkSocketPrivate *private = socket->priv;
@@ -1019,7 +1019,7 @@ ctk_socket_remove (CtkContainer *container,
 
 static void
 ctk_socket_forall (CtkContainer *container,
-		   gboolean      include_internals,
+		   gboolean      include_internals G_GNUC_UNUSED,
 		   CtkCallback   callback,
 		   gpointer      callback_data)
 {
@@ -1337,10 +1337,10 @@ xembed_get_info (CdkWindow     *window,
 static void
 handle_xembed_message (CtkSocket        *socket,
 		       XEmbedMessageType message,
-		       glong             detail,
+		       glong             detail G_GNUC_UNUSED,
 		       glong             data1,
 		       glong             data2,
-		       guint32           time)
+		       guint32           time G_GNUC_UNUSED)
 {
   CTK_NOTE (PLUGSOCKET,
 	    g_message ("CtkSocket: %s received", _ctk_xembed_message_name (message)));
@@ -1440,7 +1440,7 @@ _ctk_socket_accessible_embed (CtkWidget *socket, CdkWindow *window)
 
 static CdkFilterReturn
 ctk_socket_filter_func (CdkXEvent *cdk_xevent,
-			CdkEvent  *event,
+			CdkEvent  *event G_GNUC_UNUSED,
 			gpointer   data)
 {
   CtkSocket *socket;

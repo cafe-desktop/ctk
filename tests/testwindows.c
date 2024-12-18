@@ -61,10 +61,10 @@ create_window (CdkWindow *parent,
 }
 
 static void
-add_window_cb (CtkTreeModel      *model,
-	       CtkTreePath       *path,
-	       CtkTreeIter       *iter,
-	       gpointer           data)
+add_window_cb (CtkTreeModel *model G_GNUC_UNUSED,
+	       CtkTreePath  *path G_GNUC_UNUSED,
+	       CtkTreeIter  *iter,
+	       gpointer      data)
 {
   GList **selected = data;
   CdkWindow *window;
@@ -198,8 +198,8 @@ select_windows (GList *windows)
 }
 
 static void
-add_window_clicked (CtkWidget *button, 
-		    gpointer data)
+add_window_clicked (CtkWidget *button G_GNUC_UNUSED,
+		    gpointer   data G_GNUC_UNUSED)
 {
   CdkWindow *parent;
   GList *l;
@@ -217,8 +217,8 @@ add_window_clicked (CtkWidget *button,
 }
 
 static void
-remove_window_clicked (CtkWidget *button, 
-		       gpointer data)
+remove_window_clicked (CtkWidget *button G_GNUC_UNUSED,
+		       gpointer   data G_GNUC_UNUSED)
 {
   GList *l, *selected;
 
@@ -276,15 +276,15 @@ save_children (GString *s,
 
 
 static void
-refresh_clicked (CtkWidget *button, 
-		 gpointer data)
+refresh_clicked (CtkWidget *button G_GNUC_UNUSED,
+		 gpointer   data G_GNUC_UNUSED)
 {
   ctk_widget_queue_draw (darea);
 }
 
 static void
-save_clicked (CtkWidget *button, 
-	      gpointer data)
+save_clicked (CtkWidget *button G_GNUC_UNUSED,
+	      gpointer   data G_GNUC_UNUSED)
 {
   GString *s;
   CtkWidget *dialog;
@@ -398,8 +398,8 @@ load_file (GFile *file)
 }
 
 static void
-move_window_clicked (CtkWidget *button, 
-		     gpointer data)
+move_window_clicked (CtkWidget *button G_GNUC_UNUSED,
+		     gpointer   data)
 {
   CtkDirectionType direction;
   GList *selected, *l;
@@ -441,8 +441,8 @@ move_window_clicked (CtkWidget *button,
 }
 
 static void
-manual_clicked (CtkWidget *button, 
-		gpointer data)
+manual_clicked (CtkWidget *button G_GNUC_UNUSED,
+		gpointer   data G_GNUC_UNUSED)
 {
   GList *selected, *l;
   int x, y, w, h;
@@ -526,8 +526,8 @@ manual_clicked (CtkWidget *button,
 }
 
 static void
-restack_clicked (CtkWidget *button,
-		 gpointer data)
+restack_clicked (CtkWidget *button G_GNUC_UNUSED,
+		 gpointer   data)
 {
   GList *selected;
 
@@ -548,8 +548,8 @@ restack_clicked (CtkWidget *button,
 }
 
 static void
-scroll_window_clicked (CtkWidget *button, 
-		       gpointer data)
+scroll_window_clicked (CtkWidget *button G_GNUC_UNUSED,
+		       gpointer   data)
 {
   CtkDirectionType direction;
   GList *selected, *l;
@@ -591,8 +591,8 @@ scroll_window_clicked (CtkWidget *button,
 
 
 static void
-raise_window_clicked (CtkWidget *button, 
-		      gpointer data)
+raise_window_clicked (CtkWidget *button G_GNUC_UNUSED,
+		      gpointer   data G_GNUC_UNUSED)
 {
   GList *selected, *l;
     
@@ -613,8 +613,8 @@ raise_window_clicked (CtkWidget *button,
 }
 
 static void
-lower_window_clicked (CtkWidget *button, 
-		      gpointer data)
+lower_window_clicked (CtkWidget *button G_GNUC_UNUSED,
+		      gpointer   data G_GNUC_UNUSED)
 {
   GList *selected, *l;
     
@@ -636,8 +636,8 @@ lower_window_clicked (CtkWidget *button,
 
 
 static void
-smaller_window_clicked (CtkWidget *button, 
-			gpointer data)
+smaller_window_clicked (CtkWidget *button G_GNUC_UNUSED,
+			gpointer   data G_GNUC_UNUSED)
 {
   GList *selected, *l;
 
@@ -664,8 +664,8 @@ smaller_window_clicked (CtkWidget *button,
 }
 
 static void
-larger_window_clicked (CtkWidget *button, 
-			gpointer data)
+larger_window_clicked (CtkWidget *button G_GNUC_UNUSED,
+		       gpointer   data G_GNUC_UNUSED)
 {
   GList *selected, *l;
 
@@ -688,8 +688,8 @@ larger_window_clicked (CtkWidget *button,
 }
 
 static void
-native_window_clicked (CtkWidget *button, 
-			gpointer data)
+native_window_clicked (CtkWidget *button G_GNUC_UNUSED,
+		       gpointer   data G_GNUC_UNUSED)
 {
   GList *selected, *l;
 
@@ -710,8 +710,8 @@ native_window_clicked (CtkWidget *button,
 }
 
 static void
-alpha_clicked (CtkWidget *button, 
-	       gpointer data)
+alpha_clicked (CtkWidget *button G_GNUC_UNUSED,
+	       gpointer   data)
 {
   GList *selected, *l;
 
@@ -744,7 +744,7 @@ alpha_clicked (CtkWidget *button,
 }
 
 static gboolean
-darea_button_release_event (CtkWidget *widget,
+darea_button_release_event (CtkWidget      *widget G_GNUC_UNUSED,
 			    CdkEventButton *event)
 {
   if ((event->state & CDK_CONTROL_MASK) != 0)
@@ -761,11 +761,11 @@ darea_button_release_event (CtkWidget *widget,
 }
 
 static void
-render_window_cell (CtkTreeViewColumn *tree_column,
+render_window_cell (CtkTreeViewColumn *tree_column G_GNUC_UNUSED,
 		    CtkCellRenderer   *cell,
-		    CtkTreeModel      *tree_model,
+		    CtkTreeModel      *tree_model G_GNUC_UNUSED,
 		    CtkTreeIter       *iter,
-		    gpointer           data)
+		    gpointer           data G_GNUC_UNUSED)
 {
   CdkWindow *window;
   char *name;

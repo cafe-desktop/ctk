@@ -674,7 +674,7 @@ ctk_font_selection_reload_fonts (CtkFontSelection *fontsel)
 
 static void
 ctk_font_selection_screen_changed (CtkWidget *widget,
-				   CdkScreen *previous_screen)
+				   CdkScreen *previous_screen G_GNUC_UNUSED)
 {
   ctk_font_selection_reload_fonts (CTK_FONT_SELECTION (widget));
 }
@@ -689,7 +689,7 @@ ctk_font_selection_style_updated (CtkWidget *widget)
 }
 
 static void
-ctk_font_selection_preview_changed (CtkWidget        *entry,
+ctk_font_selection_preview_changed (CtkWidget        *entry G_GNUC_UNUSED,
 				    CtkFontSelection *fontsel)
 {
   g_object_notify (G_OBJECT (fontsel), "preview-text");
@@ -740,8 +740,8 @@ ctk_font_selection_scroll_to_selection (CtkFontSelection *fontsel)
 }
 
 static void
-ctk_font_selection_scroll_on_map (CtkWidget		*widget,
-                                  gpointer		 data)
+ctk_font_selection_scroll_on_map (CtkWidget *widget G_GNUC_UNUSED,
+                                  gpointer   data)
 {
   ctk_font_selection_scroll_to_selection (CTK_FONT_SELECTION (data));
 }
@@ -965,7 +965,7 @@ ctk_font_selection_show_available_styles (CtkFontSelection *fontsel)
    Note: This will load a font. */
 static void
 ctk_font_selection_select_best_style (CtkFontSelection *fontsel,
-				      gboolean	        use_first)
+				      gboolean          use_first G_GNUC_UNUSED)
 {
   CtkFontSelectionPrivate *priv = fontsel->priv;
   CtkTreeIter iter;
@@ -1120,8 +1120,8 @@ ctk_font_selection_size_activate (CtkWidget   *w,
 }
 
 static gboolean
-ctk_font_selection_size_focus_out (CtkWidget     *w,
-				   CdkEventFocus *event,
+ctk_font_selection_size_focus_out (CtkWidget     *w G_GNUC_UNUSED,
+				   CdkEventFocus *event G_GNUC_UNUSED,
 				   gpointer       data)
 {
   CtkFontSelection *fontsel = CTK_FONT_SELECTION (data);

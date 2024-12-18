@@ -623,7 +623,7 @@ ctk_gears_reshape (CtkGLArea *area, int width, int height)
 
 static gboolean
 ctk_gears_render (CtkGLArea    *area,
-                  CdkGLContext *context)
+                  CdkGLContext *context G_GNUC_UNUSED)
 {
   static const GLfloat red[4]   = { 0.8, 0.1, 0.0, 1.0 };
   static const GLfloat green[4] = { 0.0, 0.8, 0.2, 1.0 };
@@ -871,7 +871,7 @@ ctk_gears_unrealize (CtkWidget *widget)
 static gboolean
 ctk_gears_tick (CtkWidget     *widget,
                 CdkFrameClock *frame_clock,
-                gpointer       user_data)
+                gpointer       user_data G_GNUC_UNUSED)
 {
   CtkGears *gears = CTK_GEARS (widget);
   CtkGearsPrivate *priv = ctk_gears_get_instance_private (gears);

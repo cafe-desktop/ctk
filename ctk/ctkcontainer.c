@@ -605,10 +605,10 @@ ctk_container_buildable_init (CtkBuildableIface *iface)
 }
 
 static void
-ctk_container_buildable_add_child (CtkBuildable  *buildable,
-                                   CtkBuilder    *builder,
-                                   GObject       *child,
-                                   const gchar   *type)
+ctk_container_buildable_add_child (CtkBuildable *buildable,
+                                   CtkBuilder   *builder G_GNUC_UNUSED,
+                                   GObject      *child,
+                                   const gchar  *type)
 {
   if (type)
     {
@@ -781,11 +781,11 @@ packing_start_element (GMarkupParseContext  *context,
 }
 
 static void
-packing_text_element (GMarkupParseContext  *context,
+packing_text_element (GMarkupParseContext  *context G_GNUC_UNUSED,
                       const gchar          *text,
                       gsize                 text_len,
                       gpointer              user_data,
-                      GError              **error)
+                      GError              **error G_GNUC_UNUSED)
 {
   PackingData *data = (PackingData*)user_data;
 
@@ -794,10 +794,10 @@ packing_text_element (GMarkupParseContext  *context,
 }
 
 static void
-packing_end_element (GMarkupParseContext  *context,
-                     const gchar          *element_name,
+packing_end_element (GMarkupParseContext  *context G_GNUC_UNUSED,
+                     const gchar          *element_name G_GNUC_UNUSED,
                      gpointer              user_data,
-                     GError              **error)
+                     GError              **error G_GNUC_UNUSED)
 {
   PackingData *data = (PackingData*)user_data;
 
@@ -1653,15 +1653,15 @@ ctk_container_class_list_child_properties (GObjectClass *cclass,
 }
 
 static void
-ctk_container_add_unimplemented (CtkContainer     *container,
-                                 CtkWidget        *widget)
+ctk_container_add_unimplemented (CtkContainer *container,
+                                 CtkWidget    *widget G_GNUC_UNUSED)
 {
   g_warning ("CtkContainerClass::add not implemented for '%s'", g_type_name (G_TYPE_FROM_INSTANCE (container)));
 }
 
 static void
-ctk_container_remove_unimplemented (CtkContainer     *container,
-                                    CtkWidget        *widget)
+ctk_container_remove_unimplemented (CtkContainer *container,
+                                    CtkWidget    *widget G_GNUC_UNUSED)
 {
   g_warning ("CtkContainerClass::remove not implemented for '%s'", g_type_name (G_TYPE_FROM_INSTANCE (container)));
 }
@@ -2856,7 +2856,7 @@ static GList *
 ctk_container_focus_sort_tab (CtkContainer     *container,
                               GList            *children,
                               CtkDirectionType  direction,
-                              CtkWidget        *old_focus)
+                              CtkWidget        *old_focus G_GNUC_UNUSED)
 {
   CtkTextDirection text_direction = _ctk_widget_get_direction (CTK_WIDGET (container));
   children = g_list_sort_with_data (children, tab_compare, GINT_TO_POINTER (text_direction));
@@ -3671,7 +3671,7 @@ ctk_container_draw (CtkWidget *widget,
 
 static void
 ctk_container_map_child (CtkWidget *child,
-                         gpointer   client_data)
+                         gpointer   client_data G_GNUC_UNUSED)
 {
   if (_ctk_widget_get_visible (child) &&
       _ctk_widget_get_child_visible (child) &&
@@ -3711,9 +3711,9 @@ ctk_container_unmap (CtkWidget *widget)
 }
 
 static gboolean
-ctk_container_should_propagate_draw (CtkContainer   *container,
-                                     CtkWidget      *child,
-                                     cairo_t        *cr)
+ctk_container_should_propagate_draw (CtkContainer *container G_GNUC_UNUSED,
+                                     CtkWidget    *child,
+                                     cairo_t      *cr)
 {
   CdkWindow *child_in_window;
 

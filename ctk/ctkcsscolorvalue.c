@@ -363,7 +363,7 @@ ctk_css_value_color_equal (const CtkCssValue *value1,
 static CtkCssValue *
 ctk_css_value_color_transition (CtkCssValue *start,
                                 CtkCssValue *end,
-                                guint        property_id,
+                                guint        property_id G_GNUC_UNUSED,
                                 double       progress)
 {
   return _ctk_css_color_value_new_mix (start, end, progress);

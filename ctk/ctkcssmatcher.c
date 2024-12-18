@@ -331,7 +331,7 @@ _ctk_css_matcher_node_init (CtkCssMatcher *matcher,
 
 static gboolean
 ctk_css_matcher_any_get_parent (CtkCssMatcher       *matcher,
-                                const CtkCssMatcher *child)
+                                const CtkCssMatcher *child G_GNUC_UNUSED)
 {
   _ctk_css_matcher_any_init (matcher);
 
@@ -340,7 +340,7 @@ ctk_css_matcher_any_get_parent (CtkCssMatcher       *matcher,
 
 static gboolean
 ctk_css_matcher_any_get_previous (CtkCssMatcher       *matcher,
-                                  const CtkCssMatcher *next)
+                                  const CtkCssMatcher *next G_GNUC_UNUSED)
 {
   _ctk_css_matcher_any_init (matcher);
 
@@ -348,7 +348,7 @@ ctk_css_matcher_any_get_previous (CtkCssMatcher       *matcher,
 }
 
 static CtkStateFlags
-ctk_css_matcher_any_get_state (const CtkCssMatcher *matcher)
+ctk_css_matcher_any_get_state (const CtkCssMatcher *matcher G_GNUC_UNUSED)
 {
   /* XXX: This gets tricky when we implement :not() */
 
@@ -359,31 +359,31 @@ ctk_css_matcher_any_get_state (const CtkCssMatcher *matcher)
 }
 
 static gboolean
-ctk_css_matcher_any_has_name (const CtkCssMatcher     *matcher,
-                              /*interned*/ const char *name)
+ctk_css_matcher_any_has_name (const CtkCssMatcher     *matcher G_GNUC_UNUSED,
+                              /*interned*/ const char *name G_GNUC_UNUSED)
 {
   return TRUE;
 }
 
 static gboolean
-ctk_css_matcher_any_has_class (const CtkCssMatcher *matcher,
-                               GQuark               class_name)
+ctk_css_matcher_any_has_class (const CtkCssMatcher *matcher G_GNUC_UNUSED,
+                               GQuark               class_name G_GNUC_UNUSED)
 {
   return TRUE;
 }
 
 static gboolean
-ctk_css_matcher_any_has_id (const CtkCssMatcher *matcher,
-                                    const char          *id)
+ctk_css_matcher_any_has_id (const CtkCssMatcher *matcher G_GNUC_UNUSED,
+                            const char          *id G_GNUC_UNUSED)
 {
   return TRUE;
 }
 
 static gboolean
-ctk_css_matcher_any_has_position (const CtkCssMatcher *matcher,
-                                  gboolean             forward,
-                                  int                  a,
-                                  int                  b)
+ctk_css_matcher_any_has_position (const CtkCssMatcher *matcher G_GNUC_UNUSED,
+                                  gboolean             forward G_GNUC_UNUSED,
+                                  int                  a G_GNUC_UNUSED,
+                                  int                  b G_GNUC_UNUSED)
 {
   return TRUE;
 }
@@ -409,7 +409,7 @@ _ctk_css_matcher_any_init (CtkCssMatcher *matcher)
 
 static gboolean
 ctk_css_matcher_superset_get_parent (CtkCssMatcher       *matcher,
-                                     const CtkCssMatcher *child)
+                                     const CtkCssMatcher *child G_GNUC_UNUSED)
 {
   _ctk_css_matcher_any_init (matcher);
 
@@ -418,7 +418,7 @@ ctk_css_matcher_superset_get_parent (CtkCssMatcher       *matcher,
 
 static gboolean
 ctk_css_matcher_superset_get_previous (CtkCssMatcher       *matcher,
-                                       const CtkCssMatcher *next)
+                                       const CtkCssMatcher *next G_GNUC_UNUSED)
 {
   _ctk_css_matcher_any_init (matcher);
 

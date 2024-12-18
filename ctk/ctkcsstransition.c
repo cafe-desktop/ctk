@@ -123,7 +123,7 @@ _ctk_css_transition_class_init (CtkCssTransitionClass *klass)
 }
 
 static void
-_ctk_css_transition_init (CtkCssTransition *transition)
+_ctk_css_transition_init (CtkCssTransition *transition G_GNUC_UNUSED)
 {
 }
 

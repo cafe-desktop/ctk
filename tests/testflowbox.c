@@ -355,7 +355,7 @@ homogeneous_toggled (CtkToggleButton *button,
 }
 
 static void
-on_child_activated (CtkFlowBox *self,
+on_child_activated (CtkFlowBox *self G_GNUC_UNUSED,
                     CtkWidget  *child)
 {
   const char *id;
@@ -364,9 +364,9 @@ on_child_activated (CtkFlowBox *self,
 }
 
 static G_GNUC_UNUSED void
-selection_foreach (CtkFlowBox      *self,
+selection_foreach (CtkFlowBox      *self G_GNUC_UNUSED,
                    CtkFlowBoxChild *child_info,
-                   gpointer         data)
+                   gpointer         data G_GNUC_UNUSED)
 {
   const char *id;
   CtkWidget *child;
@@ -377,14 +377,15 @@ selection_foreach (CtkFlowBox      *self,
 }
 
 static void
-on_selected_children_changed (CtkFlowBox *self)
+on_selected_children_changed (CtkFlowBox *self G_GNUC_UNUSED)
 {
   g_message ("Selection changed");
   //ctk_flow_box_selected_foreach (self, selection_foreach, NULL);
 }
 
 static gboolean
-filter_func (CtkFlowBoxChild *child, gpointer user_data)
+filter_func (CtkFlowBoxChild *child,
+             gpointer         user_data G_GNUC_UNUSED)
 {
   gint index;
 
@@ -408,7 +409,7 @@ filter_toggled (CtkToggleButton *button,
 static gint
 sort_func (CtkFlowBoxChild *a,
            CtkFlowBoxChild *b,
-           gpointer         data)
+           gpointer         data G_GNUC_UNUSED)
 {
   gchar *ida, *idb;
 

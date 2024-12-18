@@ -195,7 +195,7 @@ static guint16 cyrillic_compose_seqs[] = {
 };
 
 static void
-cyrillic_translit_class_init (CtkIMContextSimpleClass *class)
+cyrillic_translit_class_init (CtkIMContextSimpleClass *class G_GNUC_UNUSED)
 {
 }
 

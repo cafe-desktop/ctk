@@ -45,7 +45,7 @@ ctk_lock_button_accessible_class_init (CtkLockButtonAccessibleClass *klass)
 }
 
 static void
-ctk_lock_button_accessible_init (CtkLockButtonAccessible *lockbutton)
+ctk_lock_button_accessible_init (CtkLockButtonAccessible *lockbutton G_GNUC_UNUSED)
 {
 }
 

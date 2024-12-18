@@ -90,7 +90,7 @@ delegate_notify (GObject    *object,
 }
 
 static void
-delegate_font_activated (CtkFontChooser *receiver,
+delegate_font_activated (CtkFontChooser *receiver G_GNUC_UNUSED,
                          const gchar    *fontname,
                          CtkFontChooser *delegate)
 {

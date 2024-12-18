@@ -239,10 +239,10 @@ ctk_css_selector_tree_get_sibling (const CtkCssSelectorTree *tree)
 /* DEFAULTS */
 
 static void
-ctk_css_selector_default_add_specificity (const CtkCssSelector *selector,
-                                          guint                *ids,
-                                          guint                *classes,
-                                          guint                *elements)
+ctk_css_selector_default_add_specificity (const CtkCssSelector *selector G_GNUC_UNUSED,
+                                          guint                *ids G_GNUC_UNUSED,
+                                          guint                *classes G_GNUC_UNUSED,
+                                          guint                *elements G_GNUC_UNUSED)
 {
   /* no specificity changes */
 }
@@ -257,21 +257,21 @@ ctk_css_selector_default_foreach_matcher (const CtkCssSelector       *selector,
 }
 
 static gboolean
-ctk_css_selector_default_match_one (const CtkCssSelector *selector,
-                                    const CtkCssMatcher  *matcher)
+ctk_css_selector_default_match_one (const CtkCssSelector *selector G_GNUC_UNUSED,
+                                    const CtkCssMatcher  *matcher G_GNUC_UNUSED)
 {
   return TRUE;
 }
 
 static guint
-ctk_css_selector_default_hash_one (const CtkCssSelector *selector)
+ctk_css_selector_default_hash_one (const CtkCssSelector *selector G_GNUC_UNUSED)
 {
   return 0;
 }
 
 static int
-ctk_css_selector_default_compare_one (const CtkCssSelector *a,
-                                      const CtkCssSelector *b)
+ctk_css_selector_default_compare_one (const CtkCssSelector *a G_GNUC_UNUSED,
+                                      const CtkCssSelector *b G_GNUC_UNUSED)
 {
   return 0;
 }
@@ -279,7 +279,7 @@ ctk_css_selector_default_compare_one (const CtkCssSelector *a,
 /* DESCENDANT */
 
 static void
-ctk_css_selector_descendant_print (const CtkCssSelector *selector,
+ctk_css_selector_descendant_print (const CtkCssSelector *selector G_GNUC_UNUSED,
                                    GString              *string)
 {
   g_string_append_c (string, ' ');
@@ -310,7 +310,8 @@ ctk_css_selector_descendant_foreach_matcher (const CtkCssSelector      *selector
 }
 
 static CtkCssChange
-ctk_css_selector_descendant_get_change (const CtkCssSelector *selector, CtkCssChange previous_change)
+ctk_css_selector_descendant_get_change (const CtkCssSelector *selector G_GNUC_UNUSED,
+                                        CtkCssChange          previous_change)
 {
   return _ctk_css_change_for_child (previous_change);
 }
@@ -330,7 +331,7 @@ static const CtkCssSelectorClass CTK_CSS_SELECTOR_DESCENDANT = {
 /* CHILD */
 
 static void
-ctk_css_selector_child_print (const CtkCssSelector *selector,
+ctk_css_selector_child_print (const CtkCssSelector *selector G_GNUC_UNUSED,
                               GString              *string)
 {
   g_string_append (string, " > ");
@@ -351,7 +352,8 @@ ctk_css_selector_child_foreach_matcher (const CtkCssSelector      *selector,
 }
 
 static CtkCssChange
-ctk_css_selector_child_get_change (const CtkCssSelector *selector, CtkCssChange previous_change)
+ctk_css_selector_child_get_change (const CtkCssSelector *selector G_GNUC_UNUSED,
+                                   CtkCssChange          previous_change)
 {
   return _ctk_css_change_for_child (previous_change);
 }
@@ -371,7 +373,7 @@ static const CtkCssSelectorClass CTK_CSS_SELECTOR_CHILD = {
 /* SIBLING */
 
 static void
-ctk_css_selector_sibling_print (const CtkCssSelector *selector,
+ctk_css_selector_sibling_print (const CtkCssSelector *selector G_GNUC_UNUSED,
                                 GString              *string)
 {
   g_string_append (string, " ~ ");
@@ -402,7 +404,8 @@ ctk_css_selector_sibling_foreach_matcher (const CtkCssSelector      *selector,
 }
 
 static CtkCssChange
-ctk_css_selector_sibling_get_change (const CtkCssSelector *selector, CtkCssChange previous_change)
+ctk_css_selector_sibling_get_change (const CtkCssSelector *selector G_GNUC_UNUSED,
+                                     CtkCssChange          previous_change)
 {
   return _ctk_css_change_for_sibling (previous_change);
 }
@@ -422,7 +425,7 @@ static const CtkCssSelectorClass CTK_CSS_SELECTOR_SIBLING = {
 /* ADJACENT */
 
 static void
-ctk_css_selector_adjacent_print (const CtkCssSelector *selector,
+ctk_css_selector_adjacent_print (const CtkCssSelector *selector G_GNUC_UNUSED,
                                  GString              *string)
 {
   g_string_append (string, " + ");
@@ -443,7 +446,8 @@ ctk_css_selector_adjacent_foreach_matcher (const CtkCssSelector      *selector,
 }
 
 static CtkCssChange
-ctk_css_selector_adjacent_get_change (const CtkCssSelector *selector, CtkCssChange previous_change)
+ctk_css_selector_adjacent_get_change (const CtkCssSelector *selector G_GNUC_UNUSED,
+                                      CtkCssChange          previous_change)
 {
   return _ctk_css_change_for_sibling (previous_change);
 }
@@ -495,13 +499,13 @@ ctk_css_selector_not_ ## n ## _match_one (const CtkCssSelector *selector, \
 } \
 \
 static CtkCssChange \
-ctk_css_selector_ ## n ## _get_change (const CtkCssSelector *selector, CtkCssChange previous_change) \
+ctk_css_selector_ ## n ## _get_change (const CtkCssSelector *selector G_GNUC_UNUSED, CtkCssChange previous_change) \
 { \
   return previous_change | CTK_CSS_CHANGE_ ## c; \
 } \
 \
 static void \
-ctk_css_selector_ ## n ## _add_specificity (const CtkCssSelector *selector, \
+ctk_css_selector_ ## n ## _add_specificity (const CtkCssSelector *selector G_GNUC_UNUSED, \
                                             guint                *ids, \
                                             guint                *classes, \
                                             guint                *elements) \
@@ -547,15 +551,15 @@ static const CtkCssSelectorClass CTK_CSS_SELECTOR_NOT_ ## c = { \
 /* ANY */
 
 static void
-print_any (const CtkCssSelector *selector,
+print_any (const CtkCssSelector *selector G_GNUC_UNUSED,
            GString              *string)
 {
   g_string_append_c (string, '*');
 }
 
 static gboolean
-match_any (const CtkCssSelector *selector,
-           const CtkCssMatcher  *matcher)
+match_any (const CtkCssSelector *selector G_GNUC_UNUSED,
+           const CtkCssMatcher  *matcher G_GNUC_UNUSED)
 {
   return TRUE;
 }
@@ -1352,7 +1356,7 @@ _ctk_css_selector_to_string (const CtkCssSelector *selector)
 static gboolean
 ctk_css_selector_foreach_match (const CtkCssSelector *selector,
                                 const CtkCssMatcher  *matcher,
-                                gpointer              unused)
+                                gpointer              unused G_GNUC_UNUSED)
 {
   selector = ctk_css_selector_previous (selector);
 

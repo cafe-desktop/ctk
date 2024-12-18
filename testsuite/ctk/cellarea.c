@@ -83,7 +83,7 @@ GType my_icon_view_get_type (void);
 G_DEFINE_TYPE (MyIconView, my_icon_view, CTK_TYPE_ICON_VIEW)
 
 static void
-my_icon_view_class_init (MyIconViewClass *klass)
+my_icon_view_class_init (MyIconViewClass *klass G_GNUC_UNUSED)
 {
 }
 
@@ -241,7 +241,7 @@ GType my_combo_box_get_type (void);
 G_DEFINE_TYPE (MyComboBox, my_combo_box, CTK_TYPE_COMBO_BOX)
 
 static void
-my_combo_box_class_init (MyComboBoxClass *klass)
+my_combo_box_class_init (MyComboBoxClass *klass G_GNUC_UNUSED)
 {
 }
 
@@ -400,7 +400,7 @@ GType my_cell_view_get_type (void);
 G_DEFINE_TYPE (MyCellView, my_cell_view, CTK_TYPE_CELL_VIEW)
 
 static void
-my_cell_view_class_init (MyCellViewClass *klass)
+my_cell_view_class_init (MyCellViewClass *klass G_GNUC_UNUSED)
 {
 }
 
@@ -557,7 +557,7 @@ GType my_tree_view_column_get_type (void);
 G_DEFINE_TYPE (MyTreeViewColumn, my_tree_view_column, CTK_TYPE_TREE_VIEW_COLUMN)
 
 static void
-my_tree_view_column_class_init (MyTreeViewColumnClass *klass)
+my_tree_view_column_class_init (MyTreeViewColumnClass *klass G_GNUC_UNUSED)
 {
 }
 
@@ -714,7 +714,7 @@ GType my_entry_completion_get_type (void);
 G_DEFINE_TYPE (MyEntryCompletion, my_entry_completion, CTK_TYPE_ENTRY_COMPLETION)
 
 static void
-my_entry_completion_class_init (MyEntryCompletionClass *klass)
+my_entry_completion_class_init (MyEntryCompletionClass *klass G_GNUC_UNUSED)
 {
 }
 

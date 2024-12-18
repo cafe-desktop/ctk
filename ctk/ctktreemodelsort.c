@@ -702,7 +702,7 @@ free_sort_data (SortData *data)
 }
 
 static SortElt *
-lookup_elt_with_offset (CtkTreeModelSort *tree_model_sort,
+lookup_elt_with_offset (CtkTreeModelSort *tree_model_sort G_GNUC_UNUSED,
                         SortLevel        *level,
                         gint              offset,
                         GSequenceIter   **ret_siter)
@@ -996,7 +996,7 @@ ctk_tree_model_sort_row_inserted (CtkTreeModel          *s_model,
 }
 
 static void
-ctk_tree_model_sort_row_has_child_toggled (CtkTreeModel *s_model,
+ctk_tree_model_sort_row_has_child_toggled (CtkTreeModel *s_model G_GNUC_UNUSED,
 					   CtkTreePath  *s_path,
 					   CtkTreeIter  *s_iter,
 					   gpointer      data)
@@ -1018,7 +1018,7 @@ ctk_tree_model_sort_row_has_child_toggled (CtkTreeModel *s_model,
 }
 
 static void
-ctk_tree_model_sort_row_deleted (CtkTreeModel *s_model,
+ctk_tree_model_sort_row_deleted (CtkTreeModel *s_model G_GNUC_UNUSED,
 				 CtkTreePath  *s_path,
 				 gpointer      data)
 {
@@ -1086,9 +1086,9 @@ ctk_tree_model_sort_row_deleted (CtkTreeModel *s_model,
 }
 
 static void
-ctk_tree_model_sort_rows_reordered (CtkTreeModel *s_model,
+ctk_tree_model_sort_rows_reordered (CtkTreeModel *s_model G_GNUC_UNUSED,
 				    CtkTreePath  *s_path,
-				    CtkTreeIter  *s_iter,
+				    CtkTreeIter  *s_iter G_GNUC_UNUSED,
 				    gint         *new_order,
 				    gpointer      data)
 {

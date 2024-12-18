@@ -33,7 +33,9 @@ typedef struct
 } NotifyData;
 
 static void
-count_notify (GObject *obj, GParamSpec *pspec, NotifyData *data)
+count_notify (GObject    *obj G_GNUC_UNUSED,
+	      GParamSpec *pspec,
+	      NotifyData *data)
 {
   if (g_strcmp0 (data->name, pspec->name) == 0)
     data->count++;

@@ -234,9 +234,9 @@ populate_details (CtkInspectorResourceList *rl,
 }
 
 static void
-row_activated (CtkTreeView              *treeview,
+row_activated (CtkTreeView              *treeview G_GNUC_UNUSED,
                CtkTreePath              *path,
-               CtkTreeViewColumn        *column,
+               CtkTreeViewColumn        *column G_GNUC_UNUSED,
                CtkInspectorResourceList *sl)
 {
   if (!populate_details (sl, path))
@@ -287,7 +287,7 @@ on_selection_changed (CtkTreeSelection         *selection,
 }
 
 static void
-open_details (CtkWidget                *button,
+open_details (CtkWidget                *button G_GNUC_UNUSED,
               CtkInspectorResourceList *sl)
 {
   CtkTreeSelection *selection;
@@ -310,7 +310,7 @@ open_details (CtkWidget                *button,
 }
 
 static void
-close_details (CtkWidget                *button,
+close_details (CtkWidget                *button G_GNUC_UNUSED,
                CtkInspectorResourceList *sl)
 {
   ctk_stack_set_visible_child_name (CTK_STACK (sl->priv->stack), "list");
@@ -327,11 +327,11 @@ load_resources (CtkInspectorResourceList *sl)
 }
 
 static void
-count_data_func (CtkTreeViewColumn *col,
+count_data_func (CtkTreeViewColumn *col G_GNUC_UNUSED,
                  CtkCellRenderer   *cell,
                  CtkTreeModel      *model,
                  CtkTreeIter       *iter,
-                 gpointer           data)
+                 gpointer           data G_GNUC_UNUSED)
 {
   gint count;
 
@@ -349,11 +349,11 @@ count_data_func (CtkTreeViewColumn *col,
 }
 
 static void
-size_data_func (CtkTreeViewColumn *col,
+size_data_func (CtkTreeViewColumn *col G_GNUC_UNUSED,
                 CtkCellRenderer   *cell,
                 CtkTreeModel      *model,
                 CtkTreeIter       *iter,
-                gpointer           data)
+                gpointer           data G_GNUC_UNUSED)
 {
   gsize size;
   guint64 stored_size;
@@ -392,7 +392,7 @@ move_search_to_row (CtkInspectorResourceList *sl,
 }
 
 static gboolean
-key_press_event (CtkWidget                *window,
+key_press_event (CtkWidget                *window G_GNUC_UNUSED,
                  CdkEvent                 *event,
                  CtkInspectorResourceList *sl)
 {
@@ -543,7 +543,7 @@ match_row (CtkTreeModel *model,
 
 static void
 search_mode_changed (GObject                  *search_bar,
-                     GParamSpec               *pspec,
+                     GParamSpec               *pspec G_GNUC_UNUSED,
                      CtkInspectorResourceList *sl)
 {
   if (!ctk_search_bar_get_search_mode (CTK_SEARCH_BAR (search_bar)))
@@ -554,7 +554,7 @@ search_mode_changed (GObject                  *search_bar,
 }
 
 static void
-next_match (CtkButton                *button,
+next_match (CtkButton                *button G_GNUC_UNUSED,
             CtkInspectorResourceList *sl)
 {
   if (ctk_search_bar_get_search_mode (CTK_SEARCH_BAR (sl->priv->search_bar)))
@@ -569,7 +569,7 @@ next_match (CtkButton                *button,
 }
 
 static void
-previous_match (CtkButton                *button,
+previous_match (CtkButton                *button G_GNUC_UNUSED,
                 CtkInspectorResourceList *sl)
 {
   if (ctk_search_bar_get_search_mode (CTK_SEARCH_BAR (sl->priv->search_bar)))

@@ -44,7 +44,7 @@ ctk_menu_shell_accessible_class_init (CtkMenuShellAccessibleClass *klass)
 }
 
 static void
-ctk_menu_shell_accessible_init (CtkMenuShellAccessible *menu_shell)
+ctk_menu_shell_accessible_init (CtkMenuShellAccessible *menu_shell G_GNUC_UNUSED)
 {
 }
 

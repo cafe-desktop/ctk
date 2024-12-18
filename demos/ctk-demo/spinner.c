@@ -11,14 +11,16 @@ static CtkWidget *spinner_sensitive = NULL;
 static CtkWidget *spinner_unsensitive = NULL;
 
 static void
-on_play_clicked (CtkButton *button, gpointer user_data)
+on_play_clicked (CtkButton *button G_GNUC_UNUSED,
+		 gpointer   user_data G_GNUC_UNUSED)
 {
   ctk_spinner_start (CTK_SPINNER (spinner_sensitive));
   ctk_spinner_start (CTK_SPINNER (spinner_unsensitive));
 }
 
 static void
-on_stop_clicked (CtkButton *button, gpointer user_data)
+on_stop_clicked (CtkButton *button G_GNUC_UNUSED,
+		 gpointer   user_data G_GNUC_UNUSED)
 {
   ctk_spinner_stop (CTK_SPINNER (spinner_sensitive));
   ctk_spinner_stop (CTK_SPINNER (spinner_unsensitive));

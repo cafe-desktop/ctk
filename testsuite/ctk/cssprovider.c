@@ -1,10 +1,10 @@
 #include <ctk/ctk.h>
 
 static void
-assert_section_is_not_null (CtkCssProvider *provider,
+assert_section_is_not_null (CtkCssProvider *provider G_GNUC_UNUSED,
                             CtkCssSection  *section,
-                            const GError   *error,
-                            gpointer        unused)
+                            const GError   *error G_GNUC_UNUSED,
+                            gpointer        unused G_GNUC_UNUSED)
 {
   g_assert (section != NULL);
 }

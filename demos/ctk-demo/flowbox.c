@@ -11,7 +11,7 @@
 #include <string.h>
 
 static gboolean
-draw_color (CtkWidget  *drawingarea,
+draw_color (CtkWidget  *drawingarea G_GNUC_UNUSED,
             cairo_t    *cr,
             const char *color_name)
 {

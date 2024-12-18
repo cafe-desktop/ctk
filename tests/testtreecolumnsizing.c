@@ -65,7 +65,7 @@ create_model (void)
 }
 
 static void
-toggle_long_content_row (CtkToggleButton *button,
+toggle_long_content_row (CtkToggleButton *button G_GNUC_UNUSED,
                          gpointer         user_data)
 {
   CtkTreeModel *model;

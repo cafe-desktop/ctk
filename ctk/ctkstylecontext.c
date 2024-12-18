@@ -296,7 +296,7 @@ ctk_style_context_pop_style_node (CtkStyleContext *context)
 }
 
 static void
-ctk_style_context_cascade_changed (CtkStyleCascade *cascade,
+ctk_style_context_cascade_changed (CtkStyleCascade *cascade G_GNUC_UNUSED,
                                    CtkStyleContext *context)
 {
   ctk_css_node_invalidate_style_provider (ctk_style_context_get_root (context));
@@ -1077,8 +1077,8 @@ ctk_style_context_get_scale (CtkStyleContext *context)
  **/
 gboolean
 ctk_style_context_state_is_running (CtkStyleContext *context,
-                                    CtkStateType     state,
-                                    gdouble         *progress)
+                                    CtkStateType     state G_GNUC_UNUSED,
+                                    gdouble         *progress G_GNUC_UNUSED)
 {
   g_return_val_if_fail (CTK_IS_STYLE_CONTEXT (context), FALSE);
 
@@ -2287,9 +2287,9 @@ ctk_style_context_lookup_color (CtkStyleContext *context,
 void
 ctk_style_context_notify_state_change (CtkStyleContext *context,
                                        CdkWindow       *window,
-                                       gpointer         region_id,
+                                       gpointer         region_id G_GNUC_UNUSED,
                                        CtkStateType     state,
-                                       gboolean         state_value)
+                                       gboolean         state_value G_GNUC_UNUSED)
 {
   g_return_if_fail (CTK_IS_STYLE_CONTEXT (context));
   g_return_if_fail (CDK_IS_WINDOW (window));
@@ -2318,7 +2318,7 @@ ctk_style_context_notify_state_change (CtkStyleContext *context,
  **/
 void
 ctk_style_context_cancel_animations (CtkStyleContext *context,
-                                     gpointer         region_id)
+                                     gpointer         region_id G_GNUC_UNUSED)
 {
   g_return_if_fail (CTK_IS_STYLE_CONTEXT (context));
 }
@@ -2343,8 +2343,8 @@ ctk_style_context_cancel_animations (CtkStyleContext *context,
 void
 ctk_style_context_scroll_animations (CtkStyleContext *context,
                                      CdkWindow       *window,
-                                     gint             dx,
-                                     gint             dy)
+                                     gint             dx G_GNUC_UNUSED,
+                                     gint             dy G_GNUC_UNUSED)
 {
   g_return_if_fail (CTK_IS_STYLE_CONTEXT (context));
   g_return_if_fail (CDK_IS_WINDOW (window));

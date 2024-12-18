@@ -400,7 +400,7 @@ ctk_cell_renderer_combo_editing_done (CtkCellEditable *combo,
 
 static gboolean
 ctk_cell_renderer_combo_focus_out_event (CtkWidget *widget,
-					 CdkEvent  *event,
+					 CdkEvent  *event G_GNUC_UNUSED,
 					 gpointer   data)
 {
   
@@ -417,9 +417,9 @@ typedef struct
 } SearchData;
 
 static gboolean 
-find_text (CtkTreeModel *model, 
-	   CtkTreePath  *path, 
-	   CtkTreeIter  *iter, 
+find_text (CtkTreeModel *model,
+	   CtkTreePath  *path G_GNUC_UNUSED,
+	   CtkTreeIter  *iter,
 	   gpointer      data)
 {
   CtkCellRendererComboPrivate *priv;
@@ -446,12 +446,12 @@ find_text (CtkTreeModel *model,
 
 static CtkCellEditable *
 ctk_cell_renderer_combo_start_editing (CtkCellRenderer     *cell,
-                                       CdkEvent            *event,
-                                       CtkWidget           *widget,
+                                       CdkEvent            *event G_GNUC_UNUSED,
+                                       CtkWidget           *widget G_GNUC_UNUSED,
                                        const gchar         *path,
-                                       const CdkRectangle  *background_area,
-                                       const CdkRectangle  *cell_area,
-                                       CtkCellRendererState flags)
+                                       const CdkRectangle  *background_area G_GNUC_UNUSED,
+                                       const CdkRectangle  *cell_area G_GNUC_UNUSED,
+                                       CtkCellRendererState flags G_GNUC_UNUSED)
 {
   CtkCellRendererCombo *cell_combo;
   CtkCellRendererText *cell_text;

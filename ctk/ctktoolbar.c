@@ -924,11 +924,11 @@ ctk_toolbar_unrealize (CtkWidget *widget)
 static gboolean
 ctk_toolbar_render (CtkCssGadget *gadget,
                     cairo_t      *cr,
-                    int           x,
-                    int           y,
-                    int           width,
-                    int           height,
-                    gpointer      data)
+                    int           x G_GNUC_UNUSED,
+                    int           y G_GNUC_UNUSED,
+                    int           width G_GNUC_UNUSED,
+                    int           height G_GNUC_UNUSED,
+                    gpointer      data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkToolbar *toolbar = CTK_TOOLBAR (widget);
@@ -964,12 +964,12 @@ ctk_toolbar_draw (CtkWidget *widget,
 static void
 ctk_toolbar_measure (CtkCssGadget   *gadget,
                      CtkOrientation  orientation,
-                     int             for_size,
+                     int             for_size G_GNUC_UNUSED,
                      int            *minimum,
                      int            *natural,
-                     int            *minimum_baseline,
-                     int            *natural_baseline,
-                     gpointer        data)
+                     int            *minimum_baseline G_GNUC_UNUSED,
+                     int            *natural_baseline G_GNUC_UNUSED,
+                     gpointer        data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkToolbar *toolbar = CTK_TOOLBAR (widget);
@@ -1437,14 +1437,14 @@ ctk_toolbar_stop_sliding (CtkToolbar *toolbar)
 
 static void
 remove_item (CtkWidget *menu_item,
-	     gpointer   data)
+	     gpointer   data G_GNUC_UNUSED)
 {
   ctk_container_remove (CTK_CONTAINER (ctk_widget_get_parent (menu_item)),
                         menu_item);
 }
 
 static void
-menu_deactivated (CtkWidget  *menu,
+menu_deactivated (CtkWidget  *menu G_GNUC_UNUSED,
 		  CtkToolbar *toolbar)
 {
   CtkToolbarPrivate *priv = toolbar->priv;
@@ -1454,7 +1454,7 @@ menu_deactivated (CtkWidget  *menu,
 
 static void
 menu_detached (CtkWidget  *widget,
-	       CtkMenu    *menu)
+	       CtkMenu    *menu G_GNUC_UNUSED)
 {
   CtkToolbar *toolbar = CTK_TOOLBAR (widget);
   CtkToolbarPrivate *priv = toolbar->priv;
@@ -1530,9 +1530,9 @@ rebuild_menu (CtkToolbar *toolbar)
 static void
 ctk_toolbar_allocate (CtkCssGadget        *gadget,
                       const CtkAllocation *allocation,
-                      int                  baseline,
-                      CtkAllocation       *out_clip,
-                      gpointer             data)
+                      int                  baseline G_GNUC_UNUSED,
+                      CtkAllocation       *out_clip G_GNUC_UNUSED,
+                      gpointer             data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkToolbar *toolbar = CTK_TOOLBAR (widget);
@@ -2086,7 +2086,7 @@ animation_change_notify (CtkToolbar *toolbar)
 }
 
 static void
-settings_change_notify (CtkSettings      *settings,
+settings_change_notify (CtkSettings      *settings G_GNUC_UNUSED,
                         const GParamSpec *pspec,
                         CtkToolbar       *toolbar)
 {
@@ -2096,7 +2096,7 @@ settings_change_notify (CtkSettings      *settings,
 
 static void
 ctk_toolbar_screen_changed (CtkWidget *widget,
-			    CdkScreen *previous_screen)
+			    CdkScreen *previous_screen G_GNUC_UNUSED)
 {
   CtkToolbar *toolbar = CTK_TOOLBAR (widget);
   CtkToolbarPrivate *priv = toolbar->priv;
@@ -2559,7 +2559,7 @@ ctk_toolbar_forall (CtkContainer *container,
 }
 
 static GType
-ctk_toolbar_child_type (CtkContainer *container)
+ctk_toolbar_child_type (CtkContainer *container G_GNUC_UNUSED)
 {
   return CTK_TYPE_TOOL_ITEM;
 }
@@ -2672,7 +2672,7 @@ show_menu (CtkToolbar     *toolbar,
 }
 
 static void
-ctk_toolbar_arrow_button_clicked (CtkWidget  *button,
+ctk_toolbar_arrow_button_clicked (CtkWidget  *button G_GNUC_UNUSED,
 				  CtkToolbar *toolbar)
 {
   CtkToolbarPrivate *priv = toolbar->priv;
@@ -3333,7 +3333,7 @@ toolbar_content_visible (ToolbarContent *content,
 
 static void
 toolbar_content_size_request (ToolbarContent *content,
-			      CtkToolbar     *toolbar,
+			      CtkToolbar     *toolbar G_GNUC_UNUSED,
 			      CtkRequisition *requisition)
 {
   ctk_widget_get_preferred_size (CTK_WIDGET (content->item),
@@ -3448,7 +3448,7 @@ toolbar_content_set_goal_allocation (ToolbarContent *content,
 
 static void
 toolbar_content_set_child_visible (ToolbarContent *content,
-				   CtkToolbar     *toolbar,
+				   CtkToolbar     *toolbar G_GNUC_UNUSED,
 				   gboolean        visible)
 {
   ctk_widget_set_child_visible (CTK_WIDGET (content->item),
@@ -3503,7 +3503,7 @@ toolbar_content_set_size_request (ToolbarContent *content,
 
 static void
 toolbar_content_toolbar_reconfigured (ToolbarContent *content,
-				      CtkToolbar     *toolbar)
+				      CtkToolbar     *toolbar G_GNUC_UNUSED)
 {
   ctk_tool_item_toolbar_reconfigured (content->item);
 }

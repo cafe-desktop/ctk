@@ -19,7 +19,7 @@ on_motion_notify (CtkWidget      *window,
 }
 
 static void
-on_draw (CtkWidget *window,
+on_draw (CtkWidget *window G_GNUC_UNUSED,
          cairo_t   *cr)
 {
   cairo_set_source_rgb (cr, 1, 1, 1);

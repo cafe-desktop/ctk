@@ -70,11 +70,11 @@ create_icon_store (void)
  * useful and just makes the second row insensitive.
  */
 static void
-set_sensitive (CtkCellLayout   *cell_layout,
+set_sensitive (CtkCellLayout   *cell_layout G_GNUC_UNUSED,
                CtkCellRenderer *cell,
                CtkTreeModel    *tree_model,
                CtkTreeIter     *iter,
-               gpointer         data)
+               gpointer         data G_GNUC_UNUSED)
 {
   CtkTreePath *path;
   gint *indices;
@@ -95,7 +95,7 @@ set_sensitive (CtkCellLayout   *cell_layout,
 static gboolean
 is_separator (CtkTreeModel *model,
               CtkTreeIter  *iter,
-              gpointer      data)
+              gpointer      data G_GNUC_UNUSED)
 {
   CtkTreePath *path;
   gboolean result;
@@ -197,11 +197,11 @@ create_capital_store (void)
 }
 
 static void
-is_capital_sensitive (CtkCellLayout   *cell_layout,
+is_capital_sensitive (CtkCellLayout   *cell_layout G_GNUC_UNUSED,
                       CtkCellRenderer *cell,
                       CtkTreeModel    *tree_model,
                       CtkTreeIter     *iter,
-                      gpointer         data)
+                      gpointer         data G_GNUC_UNUSED)
 {
   gboolean sensitive;
 
@@ -287,7 +287,7 @@ mask_entry_init (MaskEntry *entry)
 
 
 static void
-mask_entry_class_init (MaskEntryClass *klass)
+mask_entry_class_init (MaskEntryClass *klass G_GNUC_UNUSED)
 { }
 
 

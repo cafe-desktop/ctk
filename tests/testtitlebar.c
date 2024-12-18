@@ -1,9 +1,9 @@
 #include <ctk/ctk.h>
 
 static void
-on_text_changed (CtkEntry       *entry,
-                 GParamSpec     *pspec,
-                 CtkHeaderBar   *bar)
+on_text_changed (CtkEntry     *entry,
+                 GParamSpec   *pspec G_GNUC_UNUSED,
+                 CtkHeaderBar *bar)
 {
   const gchar *layout;
 
@@ -51,7 +51,7 @@ create_widgets (CtkHeaderBar *bar,
 
 static void
 change_start (CtkSpinButton *button,
-              GParamSpec    *pspec,
+              GParamSpec    *pspec G_GNUC_UNUSED,
               CtkHeaderBar  *bar)
 {
   create_widgets (bar,
@@ -61,7 +61,7 @@ change_start (CtkSpinButton *button,
 
 static void
 change_end (CtkSpinButton *button,
-            GParamSpec    *pspec,
+            GParamSpec    *pspec G_GNUC_UNUSED,
             CtkHeaderBar  *bar)
 {
   create_widgets (bar,

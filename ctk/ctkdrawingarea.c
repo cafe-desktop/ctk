@@ -140,7 +140,7 @@ ctk_drawing_area_class_init (CtkDrawingAreaClass *class)
 }
 
 static void
-ctk_drawing_area_init (CtkDrawingArea *darea)
+ctk_drawing_area_init (CtkDrawingArea *darea G_GNUC_UNUSED)
 {
 }
 

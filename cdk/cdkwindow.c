@@ -301,10 +301,10 @@ cdk_window_init (CdkWindow *window)
 
 /* Stop and return on the first non-NULL parent */
 static gboolean
-accumulate_get_window (GSignalInvocationHint *ihint,
-		       GValue		       *return_accu,
-		       const GValue	       *handler_return,
-		       gpointer               data)
+accumulate_get_window (GSignalInvocationHint *ihint G_GNUC_UNUSED,
+		       GValue                *return_accu,
+		       const GValue          *handler_return,
+		       gpointer               data G_GNUC_UNUSED)
 {
   g_value_copy (handler_return, return_accu);
   /* Continue while returning NULL */
@@ -312,10 +312,10 @@ accumulate_get_window (GSignalInvocationHint *ihint,
 }
 
 static gboolean
-create_surface_accumulator (GSignalInvocationHint *ihint,
+create_surface_accumulator (GSignalInvocationHint *ihint G_GNUC_UNUSED,
                             GValue                *return_accu,
                             const GValue          *handler_return,
-                            gpointer               data)
+                            gpointer               data G_GNUC_UNUSED)
 {
   g_value_copy (handler_return, return_accu);
 
@@ -535,7 +535,7 @@ cdk_window_class_init (CdkWindowClass *klass)
 }
 
 static void
-seat_removed_cb (CdkDisplay *display,
+seat_removed_cb (CdkDisplay *display G_GNUC_UNUSED,
                  CdkSeat    *seat,
                  CdkWindow  *window)
 {
@@ -1964,8 +1964,8 @@ window_remove_filters (CdkWindow *window)
 }
 
 static void
-update_pointer_info_foreach (CdkDisplay           *display,
-                             CdkDevice            *device,
+update_pointer_info_foreach (CdkDisplay           *display G_GNUC_UNUSED,
+                             CdkDevice            *device G_GNUC_UNUSED,
                              CdkPointerWindowInfo *pointer_info,
                              gpointer              user_data)
 {
@@ -3467,7 +3467,7 @@ cdk_window_end_paint (CdkWindow *window)
  * Deprecated: 3.14
  **/
 void
-cdk_window_flush (CdkWindow *window)
+cdk_window_flush (CdkWindow *window G_GNUC_UNUSED)
 {
 }
 
@@ -4523,8 +4523,8 @@ cdk_window_invalidate_maybe_recurse (CdkWindow            *window,
 }
 
 static gboolean
-true_predicate (CdkWindow *window,
-		gpointer   user_data)
+true_predicate (CdkWindow *window G_GNUC_UNUSED,
+		gpointer   user_data G_GNUC_UNUSED)
 {
   return TRUE;
 }
@@ -7352,7 +7352,7 @@ cdk_window_merge_child_input_shapes (CdkWindow *window)
  */
 gboolean
 cdk_window_set_static_gravities (CdkWindow *window,
-				 gboolean   use_static)
+				 gboolean   use_static G_GNUC_UNUSED)
 {
   g_return_val_if_fail (CDK_IS_WINDOW (window), FALSE);
 
@@ -8818,7 +8818,7 @@ cdk_window_geometry_changed (CdkWindow *window)
 }
 
 static void
-source_events_device_added (CdkDeviceManager *device_manager,
+source_events_device_added (CdkDeviceManager *device_manager G_GNUC_UNUSED,
                             CdkDevice        *device,
                             gpointer          user_data)
 {
@@ -8839,7 +8839,7 @@ source_events_device_added (CdkDeviceManager *device_manager,
 }
 
 static void
-source_events_device_changed (CdkDeviceManager *device_manager,
+source_events_device_changed (CdkDeviceManager *device_manager G_GNUC_UNUSED,
                               CdkDevice        *device,
                               gpointer          user_data)
 {
@@ -11272,7 +11272,7 @@ cdk_window_begin_move_drag (CdkWindow *window,
  * Deprecated: 3.8: this function is no longer needed
  **/
 void
-cdk_window_enable_synchronized_configure (CdkWindow *window)
+cdk_window_enable_synchronized_configure (CdkWindow *window G_GNUC_UNUSED)
 {
 }
 
@@ -11286,7 +11286,7 @@ cdk_window_enable_synchronized_configure (CdkWindow *window)
  * Deprecated: 3.8: this function is no longer needed
  **/
 void
-cdk_window_configure_finished (CdkWindow *window)
+cdk_window_configure_finished (CdkWindow *window G_GNUC_UNUSED)
 {
 }
 
@@ -11694,7 +11694,7 @@ cdk_window_flush_events (CdkFrameClock *clock,
 }
 
 static void
-cdk_window_paint_on_clock (CdkFrameClock *clock,
+cdk_window_paint_on_clock (CdkFrameClock *clock G_GNUC_UNUSED,
 			   void          *data)
 {
   CdkWindow *window;
@@ -11707,7 +11707,7 @@ cdk_window_paint_on_clock (CdkFrameClock *clock,
 }
 
 static void
-cdk_window_resume_events (CdkFrameClock *clock,
+cdk_window_resume_events (CdkFrameClock *clock G_GNUC_UNUSED,
                           void          *data)
 {
   CdkWindow *window;

@@ -16,9 +16,9 @@ static CtkWidget *frame;
 /* draw callback for the drawing area
  */
 static gboolean
-draw_callback (CtkWidget *widget,
+draw_callback (CtkWidget *widget G_GNUC_UNUSED,
                cairo_t   *cr,
-               gpointer   data)
+               gpointer   data G_GNUC_UNUSED)
 {
   cdk_cairo_set_source_rgba (cr, &color);
   cairo_paint (cr);
@@ -29,7 +29,7 @@ draw_callback (CtkWidget *widget,
 static void
 response_cb (CtkDialog *dialog,
              gint       response_id,
-             gpointer   user_data)
+             gpointer   user_data G_GNUC_UNUSED)
 {
   if (response_id == CTK_RESPONSE_OK)
     ctk_color_chooser_get_rgba (CTK_COLOR_CHOOSER (dialog), &color);
@@ -38,8 +38,8 @@ response_cb (CtkDialog *dialog,
 }
 
 static void
-change_color_callback (CtkWidget *button,
-                       gpointer   data)
+change_color_callback (CtkWidget *button G_GNUC_UNUSED,
+                       gpointer   data G_GNUC_UNUSED)
 {
   CtkWidget *dialog;
 

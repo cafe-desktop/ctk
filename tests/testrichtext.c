@@ -29,9 +29,9 @@ quick_rand32 (void)
 }
 
 static gboolean
-delete_event (CtkWidget   *widget,
-              CdkEventAny *event,
-              gpointer     user_data)
+delete_event (CtkWidget   *widget G_GNUC_UNUSED,
+              CdkEventAny *event G_GNUC_UNUSED,
+              gpointer     user_data G_GNUC_UNUSED)
 {
   ctk_main_quit ();
 

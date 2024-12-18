@@ -129,7 +129,8 @@ next:
 }
 
 static void
-entry_changed (CtkEntry *entry, CtkEmojiCompletion *completion)
+entry_changed (CtkEntry           *entry G_GNUC_UNUSED,
+               CtkEmojiCompletion *completion)
 {
   update_completion (completion);
 }
@@ -155,7 +156,7 @@ emoji_activated (CtkWidget          *row,
 }
 
 static void
-row_activated (CtkListBox    *list,
+row_activated (CtkListBox    *list G_GNUC_UNUSED,
                CtkListBoxRow *row,
                gpointer       data)
 {
@@ -165,7 +166,7 @@ row_activated (CtkListBox    *list,
 }
 
 static void
-child_activated (CtkFlowBox      *box,
+child_activated (CtkFlowBox      *box G_GNUC_UNUSED,
                  CtkFlowBoxChild *child,
                  gpointer         data)
 {
@@ -326,7 +327,7 @@ move_active_variation (CtkEmojiCompletion *completion,
 }
 
 static gboolean
-entry_key_press (CtkEntry           *entry,
+entry_key_press (CtkEntry           *entry G_GNUC_UNUSED,
                  CdkEventKey        *event,
                  CtkEmojiCompletion *completion)
 {
@@ -397,8 +398,8 @@ entry_key_press (CtkEntry           *entry,
 }
 
 static gboolean
-entry_focus_out (CtkWidget *entry,
-                 GParamSpec *pspec,
+entry_focus_out (CtkWidget          *entry,
+                 GParamSpec         *pspec G_GNUC_UNUSED,
                  CtkEmojiCompletion *completion)
 {
   if (!ctk_widget_has_focus (entry))
@@ -455,7 +456,7 @@ static void
 get_text (GVariant *emoji_data,
           gunichar  modifier,
           char     *text,
-          gsize     length)
+          gsize     length G_GNUC_UNUSED)
 {
   GVariant *codes;
   int i;
@@ -641,8 +642,8 @@ populate_completion (CtkEmojiCompletion *completion,
 }
 
 static void
-long_pressed_cb (CtkGesture *gesture,
-                 double      x,
+long_pressed_cb (CtkGesture *gesture G_GNUC_UNUSED,
+                 double      x G_GNUC_UNUSED,
                  double      y,
                  gpointer    data)
 {

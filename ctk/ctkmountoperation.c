@@ -442,7 +442,7 @@ pw_dialog_input_is_valid (CtkMountOperation *operation)
 }
 
 static void
-pw_dialog_verify_input (CtkEditable       *editable,
+pw_dialog_verify_input (CtkEditable       *editable G_GNUC_UNUSED,
                         CtkMountOperation *operation)
 {
   CtkMountOperationPrivate *priv = operation->priv;
@@ -1204,7 +1204,7 @@ add_pid_to_process_list_store (CtkMountOperation              *mount_operation,
 }
 
 static void
-remove_pid_from_process_list_store (CtkMountOperation *mount_operation,
+remove_pid_from_process_list_store (CtkMountOperation *mount_operation G_GNUC_UNUSED,
                                     CtkListStore      *list_store,
                                     GPid               pid)
 {
@@ -1305,8 +1305,8 @@ update_process_list_store (CtkMountOperation *mount_operation,
 }
 
 static void
-on_end_process_activated (CtkMenuItem *item,
-                          gpointer user_data)
+on_end_process_activated (CtkMenuItem *item G_GNUC_UNUSED,
+                          gpointer     user_data)
 {
   CtkMountOperation *op = CTK_MOUNT_OPERATION (user_data);
   CtkTreeSelection *selection;
@@ -1374,7 +1374,7 @@ on_end_process_activated (CtkMenuItem *item,
 }
 
 static gboolean
-do_popup_menu_for_process_tree_view (CtkWidget         *widget,
+do_popup_menu_for_process_tree_view (CtkWidget         *widget G_GNUC_UNUSED,
                                      const CdkEvent    *event,
                                      CtkMountOperation *op)
 {

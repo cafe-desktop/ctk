@@ -21,14 +21,16 @@
 
 static gboolean
 monospace_filter (const PangoFontFamily *family,
-                  const PangoFontFace   *face,
-                  gpointer               data)
+                  const PangoFontFace   *face G_GNUC_UNUSED,
+                  gpointer               data G_GNUC_UNUSED)
 {
   return pango_font_family_is_monospace ((PangoFontFamily *) family);
 }
 
 static void
-notify_font_cb (CtkFontChooser *fontchooser, GParamSpec *pspec, gpointer data)
+notify_font_cb (CtkFontChooser *fontchooser,
+                GParamSpec     *pspec G_GNUC_UNUSED,
+                gpointer        data G_GNUC_UNUSED)
 {
   PangoFontFamily *family;
   PangoFontFace *face;
@@ -53,13 +55,17 @@ notify_font_cb (CtkFontChooser *fontchooser, GParamSpec *pspec, gpointer data)
 }
 
 static void
-notify_preview_text_cb (GObject *fontchooser, GParamSpec *pspec, gpointer data)
+notify_preview_text_cb (GObject    *fontchooser,
+                        GParamSpec *pspec G_GNUC_UNUSED,
+                        gpointer    data G_GNUC_UNUSED)
 {
   g_debug ("Changed preview text %s", ctk_font_chooser_get_preview_text (CTK_FONT_CHOOSER (fontchooser)));
 }
 
 static void
-font_activated_cb (CtkFontChooser *chooser, const gchar *font_name, gpointer data)
+font_activated_cb (CtkFontChooser *chooser G_GNUC_UNUSED,
+                   const gchar    *font_name,
+                   gpointer        data G_GNUC_UNUSED)
 {
   g_debug ("font-activated: %s", font_name);
 }

@@ -41,7 +41,7 @@ void ctk_glade_catalog_init (const gchar *catalog_name);
  * editing UI files that define CTK+’s various composite widget classes.
  */
 void
-ctk_glade_catalog_init (const gchar *catalog_name)
+ctk_glade_catalog_init (const gchar *catalog_name G_GNUC_UNUSED)
 {
   g_type_ensure (CTK_TYPE_PATH_BAR);
   g_type_ensure (CTK_TYPE_PLACES_VIEW);

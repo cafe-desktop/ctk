@@ -28,7 +28,7 @@ G_DEFINE_TYPE_WITH_CODE (CtkPanedAccessible, ctk_paned_accessible, CTK_TYPE_CONT
 
 static void
 ctk_paned_accessible_size_allocate_ctk (CtkWidget     *widget,
-                                        CtkAllocation *allocation)
+                                        CtkAllocation *allocation G_GNUC_UNUSED)
 {
   AtkObject *obj = ctk_widget_get_accessible (widget);
 
@@ -56,7 +56,7 @@ ctk_paned_accessible_class_init (CtkPanedAccessibleClass *klass)
 }
 
 static void
-ctk_paned_accessible_init (CtkPanedAccessible *paned)
+ctk_paned_accessible_init (CtkPanedAccessible *paned G_GNUC_UNUSED)
 {
 }
 

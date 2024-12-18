@@ -222,7 +222,7 @@ draw_edge (cairo_t      *cr,
            
 static void
 draw_button (cairo_t *cr,
-             int      part,
+             int      part G_GNUC_UNUSED,
              int      state,
              int      width,
              int      height)
@@ -236,8 +236,8 @@ draw_button (cairo_t *cr,
 
 static void
 draw_frame (cairo_t *cr,
-            int      part,
-            int      state,
+            int      part G_GNUC_UNUSED,
+            int      state G_GNUC_UNUSED,
             int      width,
             int      height)
 {
@@ -250,8 +250,8 @@ draw_frame (cairo_t *cr,
 
 static void
 draw_check (cairo_t *cr,
-            int      part,
-            int      state,
+            int      part G_GNUC_UNUSED,
+            int      state G_GNUC_UNUSED,
             int      width,
             int      height)
 {
@@ -263,8 +263,8 @@ draw_check (cairo_t *cr,
 
 static void
 draw_radio (cairo_t *cr,
-            int      part,
-            int      state,
+            int      part G_GNUC_UNUSED,
+            int      state G_GNUC_UNUSED,
             int      width,
             int      height)
 {
@@ -276,7 +276,7 @@ draw_radio (cairo_t *cr,
 
 static void
 draw_edit (cairo_t *cr,
-           int      part,
+           int      part G_GNUC_UNUSED,
            int      state,
            int      width,
            int      height)
@@ -297,7 +297,7 @@ draw_edit (cairo_t *cr,
 
 static void
 draw_edit_noborder (cairo_t *cr,
-                    int      part,
+                    int      part G_GNUC_UNUSED,
                     int      state,
                     int      width,
                     int      height)
@@ -311,7 +311,7 @@ draw_edit_noborder (cairo_t *cr,
 
 static void
 draw_window (cairo_t *cr,
-             int      part,
+             int      part G_GNUC_UNUSED,
              int      state,
              int      width,
              int      height)
@@ -326,8 +326,8 @@ draw_window (cairo_t *cr,
 
 static void
 draw_window_left (cairo_t *cr,
-                  int      part,
-                  int      state,
+                  int      part G_GNUC_UNUSED,
+                  int      state G_GNUC_UNUSED,
                   int      width,
                   int      height)
 {
@@ -340,8 +340,8 @@ draw_window_left (cairo_t *cr,
 
 static void
 draw_window_right (cairo_t *cr,
-                   int      part,
-                   int      state,
+                   int      part G_GNUC_UNUSED,
+                   int      state G_GNUC_UNUSED,
                    int      width,
                    int      height)
 {
@@ -354,8 +354,8 @@ draw_window_right (cairo_t *cr,
 
 static void
 draw_window_bottom (cairo_t *cr,
-                    int      part,
-                    int      state,
+                    int      part G_GNUC_UNUSED,
+                    int      state G_GNUC_UNUSED,
                     int      width,
                     int      height)
 {
@@ -403,8 +403,8 @@ draw_window_button (cairo_t *cr,
 
 static void
 draw_tab_item (cairo_t *cr,
-               int      part,
-               int      state,
+               int      part G_GNUC_UNUSED,
+               int      state G_GNUC_UNUSED,
                int      width,
                int      height)
 {
@@ -417,8 +417,8 @@ draw_tab_item (cairo_t *cr,
 
 static void
 draw_tab_pane (cairo_t *cr,
-               int      part,
-               int      state,
+               int      part G_GNUC_UNUSED,
+               int      state G_GNUC_UNUSED,
                int      width,
                int      height)
 {
@@ -431,8 +431,8 @@ draw_tab_pane (cairo_t *cr,
 
 static void
 draw_tooltip (cairo_t *cr,
-              int      part,
-              int      state,
+              int      part G_GNUC_UNUSED,
+              int      state G_GNUC_UNUSED,
               int      width,
               int      height)
 {
@@ -533,7 +533,7 @@ ctk_win32_draw_theme_background (cairo_t    *cr,
 void
 ctk_win32_get_theme_part_size (const char *class_name,
                                int          part,
-                               int          state,
+                               int          state G_GNUC_UNUSED,
                                int         *width,
                                int         *height)
 {
@@ -558,10 +558,10 @@ ctk_win32_get_theme_part_size (const char *class_name,
 }
 
 void
-ctk_win32_get_theme_margins (const char     *class_name,
-                             int             part,
-                             int             state,
-                             CtkBorder      *out_margins)
+ctk_win32_get_theme_margins (const char *class_name,
+                             int         part,
+                             int         state G_GNUC_UNUSED,
+                             CtkBorder  *out_margins)
 {
   const CtkWin32ThemePart *theme_part;
 

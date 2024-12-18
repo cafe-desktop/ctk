@@ -32,7 +32,7 @@ G_DEFINE_TYPE (CtkCssImageGradient, _ctk_css_image_gradient, CTK_TYPE_CSS_IMAGE)
 
 static CtkCssImage *
 ctk_css_image_gradient_compute (CtkCssImage             *image,
-                                guint                    property_id,
+                                guint                    property_id G_GNUC_UNUSED,
                                 CtkStyleProviderPrivate *provider,
                                 CtkCssStyle             *style,
                                 CtkCssStyle             *parent_style)
@@ -310,7 +310,7 @@ _ctk_css_image_gradient_class_init (CtkCssImageGradientClass *klass)
 }
 
 static void
-_ctk_css_image_gradient_init (CtkCssImageGradient *image_gradient)
+_ctk_css_image_gradient_init (CtkCssImageGradient *image_gradient G_GNUC_UNUSED)
 {
 }
 

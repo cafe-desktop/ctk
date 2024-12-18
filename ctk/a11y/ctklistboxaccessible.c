@@ -27,7 +27,7 @@ G_DEFINE_TYPE_WITH_CODE (CtkListBoxAccessible, ctk_list_box_accessible, CTK_TYPE
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_SELECTION, atk_selection_interface_init))
 
 static void
-ctk_list_box_accessible_init (CtkListBoxAccessible *accessible)
+ctk_list_box_accessible_init (CtkListBoxAccessible *accessible G_GNUC_UNUSED)
 {
 }
 
@@ -137,7 +137,7 @@ typedef struct
 } FindSelectedData;
 
 static void
-find_selected_row (CtkListBox    *box,
+find_selected_row (CtkListBox    *box G_GNUC_UNUSED,
                    CtkListBoxRow *row,
                    gpointer       data)
 {
@@ -177,8 +177,8 @@ ctk_list_box_accessible_ref_selection (AtkSelection *selection,
 }
 
 static void
-count_selected (CtkListBox    *box,
-                CtkListBoxRow *row,
+count_selected (CtkListBox    *box G_GNUC_UNUSED,
+                CtkListBoxRow *row G_GNUC_UNUSED,
                 gpointer       data)
 {
   gint *count = data;

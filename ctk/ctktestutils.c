@@ -124,9 +124,9 @@ test_find_widget_input_windows (CtkWidget *widget,
 }
 
 static gboolean
-quit_main_loop_callback (CtkWidget     *widget,
-                         CdkFrameClock *frame_clock,
-                         gpointer       user_data)
+quit_main_loop_callback (CtkWidget     *widget G_GNUC_UNUSED,
+                         CdkFrameClock *frame_clock G_GNUC_UNUSED,
+                         gpointer       user_data G_GNUC_UNUSED)
 {
   ctk_main_quit ();
 

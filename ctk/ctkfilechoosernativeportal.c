@@ -88,11 +88,11 @@ filechooser_portal_data_free (FilechooserPortalData *data)
 }
 
 static void
-response_cb (GDBusConnection  *connection,
-             const gchar      *sender_name,
-             const gchar      *object_path,
-             const gchar      *interface_name,
-             const gchar      *signal_name,
+response_cb (GDBusConnection  *connection G_GNUC_UNUSED,
+             const gchar      *sender_name G_GNUC_UNUSED,
+             const gchar      *object_path G_GNUC_UNUSED,
+             const gchar      *interface_name G_GNUC_UNUSED,
+             const gchar      *signal_name G_GNUC_UNUSED,
              GVariant         *parameters,
              gpointer          user_data)
 {
@@ -204,9 +204,9 @@ send_close (FilechooserPortalData *data)
 }
 
 static void
-open_file_msg_cb (GObject *source_object,
+open_file_msg_cb (GObject      *source_object G_GNUC_UNUSED,
                   GAsyncResult *res,
-                  gpointer user_data)
+                  gpointer      user_data)
 {
   FilechooserPortalData *data = user_data;
   CtkFileChooserNative *self = data->self;

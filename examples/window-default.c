@@ -1,8 +1,8 @@
 #include <ctk/ctk.h>
 
 static void
-activate (CtkApplication* app,
-          gpointer        user_data)
+activate (CtkApplication *app,
+          gpointer        user_data G_GNUC_UNUSED)
 {
   CtkWidget *window;
 

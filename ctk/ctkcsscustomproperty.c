@@ -34,7 +34,7 @@
 G_DEFINE_TYPE (CtkCssCustomProperty, _ctk_css_custom_property, CTK_TYPE_CSS_STYLE_PROPERTY)
 
 static CtkCssValue *
-ctk_css_custom_property_parse_value (CtkStyleProperty *property,
+ctk_css_custom_property_parse_value (CtkStyleProperty *property G_GNUC_UNUSED,
                                      CtkCssParser     *parser)
 {
   _ctk_css_parser_error_full (parser,
@@ -86,7 +86,7 @@ _ctk_css_custom_property_class_init (CtkCssCustomPropertyClass *klass)
 }
 
 static void
-_ctk_css_custom_property_init (CtkCssCustomProperty *custom)
+_ctk_css_custom_property_init (CtkCssCustomProperty *custom G_GNUC_UNUSED)
 {
 }
 

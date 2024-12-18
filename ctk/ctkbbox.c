@@ -300,11 +300,11 @@ ctk_button_box_class_init (CtkButtonBoxClass *class)
 static gboolean
 ctk_button_box_render (CtkCssGadget *gadget,
                        cairo_t      *cr,
-                       int           x,
-                       int           y,
-                       int           width,
-                       int           height,
-                       gpointer      unused)
+                       int           x G_GNUC_UNUSED,
+                       int           y G_GNUC_UNUSED,
+                       int           width G_GNUC_UNUSED,
+                       int           height G_GNUC_UNUSED,
+                       gpointer      unused G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   GList *children, *l;
@@ -886,12 +886,12 @@ ctk_button_box_size_request (CtkWidget      *widget,
 static void
 ctk_button_box_measure (CtkCssGadget   *gadget,
                         CtkOrientation  orientation,
-                        int             for_size,
+                        int             for_size G_GNUC_UNUSED,
                         int            *minimum,
                         int            *natural,
                         int            *minimum_baseline,
                         int            *natural_baseline,
-                        gpointer        unused)
+                        gpointer        unused G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkRequisition requisition;
@@ -1050,7 +1050,7 @@ ctk_button_box_allocate (CtkCssGadget        *gadget,
                          const CtkAllocation *allocation,
                          int                  baseline,
                          CtkAllocation       *out_clip,
-                         gpointer             unused)
+                         gpointer             unused G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkButtonBoxPrivate *priv;

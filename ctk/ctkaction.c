@@ -1680,10 +1680,10 @@ ctk_action_get_gicon (CtkAction *action)
 static void
 closure_accel_activate (GClosure     *closure,
                         GValue       *return_value,
-                        guint         n_param_values,
-                        const GValue *param_values,
-                        gpointer      invocation_hint,
-                        gpointer      marshal_data)
+                        guint         n_param_values G_GNUC_UNUSED,
+                        const GValue *param_values G_GNUC_UNUSED,
+                        gpointer      invocation_hint G_GNUC_UNUSED,
+                        gpointer      marshal_data G_GNUC_UNUSED)
 {
   if (ctk_action_is_sensitive (CTK_ACTION (closure->data)))
     {

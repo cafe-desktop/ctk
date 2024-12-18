@@ -4765,8 +4765,8 @@ ctk_widget_destroy (CtkWidget *widget)
  * of the same dialog.
  **/
 void
-ctk_widget_destroyed (CtkWidget      *widget,
-		      CtkWidget      **widget_pointer)
+ctk_widget_destroyed (CtkWidget  *widget G_GNUC_UNUSED,
+		      CtkWidget **widget_pointer)
 {
   /* Don't make any assumptions about the
    *  value of widget!
@@ -4846,7 +4846,9 @@ ctk_widget_real_show (CtkWidget *widget)
 }
 
 static void
-ctk_widget_show_map_callback (CtkWidget *widget, CdkEvent *event, gint *flag)
+ctk_widget_show_map_callback (CtkWidget *widget,
+			      CdkEvent  *event G_GNUC_UNUSED,
+			      gint      *flag)
 {
   *flag = TRUE;
   g_signal_handlers_disconnect_by_func (widget,
@@ -6532,7 +6534,7 @@ ctk_widget_real_adjust_baseline_allocation (CtkWidget *widget,
 
 static gboolean
 ctk_widget_real_can_activate_accel (CtkWidget *widget,
-                                    guint      signal_id)
+                                    guint      signal_id G_GNUC_UNUSED)
 {
   CtkWidgetPrivate *priv = widget->priv;
 
@@ -6577,10 +6579,10 @@ typedef struct {
 static void
 closure_accel_activate (GClosure     *closure,
 			GValue       *return_value,
-			guint         n_param_values,
-			const GValue *param_values,
-			gpointer      invocation_hint,
-			gpointer      marshal_data)
+			guint         n_param_values G_GNUC_UNUSED,
+			const GValue *param_values G_GNUC_UNUSED,
+			gpointer      invocation_hint G_GNUC_UNUSED,
+			gpointer      marshal_data G_GNUC_UNUSED)
 {
   AccelClosure *aclosure = (AccelClosure*) closure;
   gboolean can_activate = ctk_widget_can_activate_accel (closure->data, aclosure->signal_id);
@@ -7210,7 +7212,7 @@ ctk_widget_real_key_release_event (CtkWidget         *widget,
 
 static gboolean
 ctk_widget_real_focus_in_event (CtkWidget     *widget,
-                                CdkEventFocus *event)
+                                CdkEventFocus *event G_GNUC_UNUSED)
 {
   ctk_widget_queue_draw (widget);
 
@@ -7219,7 +7221,7 @@ ctk_widget_real_focus_in_event (CtkWidget     *widget,
 
 static gboolean
 ctk_widget_real_focus_out_event (CtkWidget     *widget,
-                                 CdkEventFocus *event)
+                                 CdkEventFocus *event G_GNUC_UNUSED)
 {
   ctk_widget_queue_draw (widget);
 
@@ -8072,7 +8074,7 @@ ctk_widget_grab_focus (CtkWidget *widget)
 
 static void
 reset_focus_recurse (CtkWidget *widget,
-		     gpointer   data)
+		     gpointer   data G_GNUC_UNUSED)
 {
   if (CTK_IS_CONTAINER (widget))
     {
@@ -8159,9 +8161,9 @@ ctk_widget_real_grab_focus (CtkWidget *focus_widget)
 
 static gboolean
 ctk_widget_real_query_tooltip (CtkWidget  *widget,
-			       gint        x,
-			       gint        y,
-			       gboolean    keyboard_tip,
+			       gint        x G_GNUC_UNUSED,
+			       gint        y G_GNUC_UNUSED,
+			       gboolean    keyboard_tip G_GNUC_UNUSED,
 			       CtkTooltip *tooltip)
 {
   gchar *tooltip_markup;
@@ -8200,8 +8202,8 @@ ctk_widget_query_tooltip (CtkWidget  *widget,
 }
 
 static void
-ctk_widget_real_state_flags_changed (CtkWidget     *widget,
-                                     CtkStateFlags  old_state)
+ctk_widget_real_state_flags_changed (CtkWidget     *widget G_GNUC_UNUSED,
+                                     CtkStateFlags  old_state G_GNUC_UNUSED)
 {
 }
 
@@ -8269,8 +8271,8 @@ ctk_widget_real_show_help (CtkWidget        *widget,
 }
 
 static gboolean
-ctk_widget_real_focus (CtkWidget         *widget,
-                       CtkDirectionType   direction)
+ctk_widget_real_focus (CtkWidget        *widget,
+                       CtkDirectionType  direction G_GNUC_UNUSED)
 {
   if (!ctk_widget_get_can_focus (widget))
     return FALSE;
@@ -9872,14 +9874,14 @@ ctk_widget_override_cursor (CtkWidget     *widget,
 
 static void
 ctk_widget_real_direction_changed (CtkWidget        *widget,
-                                   CtkTextDirection  previous_direction)
+                                   CtkTextDirection  previous_direction G_GNUC_UNUSED)
 {
   ctk_widget_queue_resize (widget);
 }
 
 static void
-ctk_widget_real_style_set (CtkWidget *widget,
-                           CtkStyle  *previous_style)
+ctk_widget_real_style_set (CtkWidget *widget G_GNUC_UNUSED,
+                           CtkStyle  *previous_style G_GNUC_UNUSED)
 {
 }
 
@@ -10041,7 +10043,7 @@ ctk_widget_is_composited (CtkWidget *widget)
 
 static void
 propagate_composited_changed (CtkWidget *widget,
-			      gpointer dummy)
+			      gpointer   dummy G_GNUC_UNUSED)
 {
   if (CTK_IS_CONTAINER (widget))
     {
@@ -10086,7 +10088,8 @@ _ctk_widget_propagate_screen_changed (CtkWidget    *widget,
 }
 
 static void
-reset_style_recurse (CtkWidget *widget, gpointer data)
+reset_style_recurse (CtkWidget *widget,
+		     gpointer   data G_GNUC_UNUSED)
 {
   _ctk_widget_invalidate_style_context (widget, CTK_CSS_CHANGE_ANY);
 
@@ -10265,7 +10268,7 @@ ctk_widget_push_verify_invariants (CtkWidget *widget)
 
 static void
 ctk_widget_verify_child_invariants (CtkWidget *widget,
-                                    gpointer   client_data)
+                                    gpointer   client_data G_GNUC_UNUSED)
 {
   /* We don't recurse further; this is a one-level check. */
   ctk_widget_verify_invariants (widget);
@@ -12135,7 +12138,7 @@ typedef struct {
 
 static void
 finalize_assertion_weak_ref (gpointer data,
-			     GObject *where_the_object_was)
+			     GObject *where_the_object_was G_GNUC_UNUSED)
 {
   FinalizeAssertion *assertion = (FinalizeAssertion *)data;
   assertion->did_finalize = TRUE;
@@ -14001,7 +14004,7 @@ ctk_widget_buildable_get_name (CtkBuildable *buildable)
 
 static GObject *
 ctk_widget_buildable_get_internal_child (CtkBuildable *buildable,
-					 CtkBuilder   *builder,
+					 CtkBuilder   *builder G_GNUC_UNUSED,
 					 const gchar  *childname)
 {
   CtkWidgetClass *class;
@@ -14044,7 +14047,7 @@ ctk_widget_buildable_get_internal_child (CtkBuildable *buildable,
 
 static void
 ctk_widget_buildable_set_buildable_property (CtkBuildable *buildable,
-					     CtkBuilder   *builder,
+					     CtkBuilder   *builder G_GNUC_UNUSED,
 					     const gchar  *name,
 					     const GValue *value)
 {
@@ -14075,7 +14078,8 @@ typedef struct
 } AtkRelationData;
 
 static void
-free_action (AtkActionData *data, gpointer user_data)
+free_action (AtkActionData *data,
+	     gpointer       user_data G_GNUC_UNUSED)
 {
   g_free (data->action_name);
   g_string_free (data->description, TRUE);
@@ -14084,7 +14088,8 @@ free_action (AtkActionData *data, gpointer user_data)
 }
 
 static void
-free_relation (AtkRelationData *data, gpointer user_data)
+free_relation (AtkRelationData *data,
+	       gpointer         user_data G_GNUC_UNUSED)
 {
   g_free (data->target);
   g_slice_free (AtkRelationData, data);
@@ -14247,7 +14252,7 @@ accessibility_text (GMarkupParseContext  *context,
                     const gchar          *text,
                     gsize                 text_len,
                     gpointer              user_data,
-                    GError              **error)
+                    GError              **error G_GNUC_UNUSED)
 {
   AccessibilitySubParserData *data = (AccessibilitySubParserData*)user_data;
 
@@ -14406,12 +14411,12 @@ static const GMarkupParser style_parser =
   };
 
 static gboolean
-ctk_widget_buildable_custom_tag_start (CtkBuildable     *buildable,
-                                       CtkBuilder       *builder,
-                                       GObject          *child,
-                                       const gchar      *tagname,
-                                       GMarkupParser    *parser,
-                                       gpointer         *parser_data)
+ctk_widget_buildable_custom_tag_start (CtkBuildable  *buildable,
+                                       CtkBuilder    *builder,
+                                       GObject       *child G_GNUC_UNUSED,
+                                       const gchar   *tagname,
+                                       GMarkupParser *parser,
+                                       gpointer      *parser_data)
 {
   if (strcmp (tagname, "accelerator") == 0)
     {
@@ -14497,7 +14502,7 @@ _ctk_widget_buildable_finish_accelerator (CtkWidget *widget,
 static void
 ctk_widget_buildable_custom_finished (CtkBuildable *buildable,
                                       CtkBuilder   *builder,
-                                      GObject      *child,
+                                      GObject      *child G_GNUC_UNUSED,
                                       const gchar  *tagname,
                                       gpointer      user_data)
 {
@@ -14588,14 +14593,14 @@ ctk_widget_buildable_custom_finished (CtkBuildable *buildable,
 }
 
 static CtkSizeRequestMode
-ctk_widget_real_get_request_mode (CtkWidget *widget)
+ctk_widget_real_get_request_mode (CtkWidget *widget G_GNUC_UNUSED)
 {
   /* By default widgets don't trade size at all. */
   return CTK_SIZE_REQUEST_CONSTANT_SIZE;
 }
 
 static void
-ctk_widget_real_get_width (CtkWidget *widget,
+ctk_widget_real_get_width (CtkWidget *widget G_GNUC_UNUSED,
 			   gint      *minimum_size,
 			   gint      *natural_size)
 {
@@ -14604,7 +14609,7 @@ ctk_widget_real_get_width (CtkWidget *widget,
 }
 
 static void
-ctk_widget_real_get_height (CtkWidget *widget,
+ctk_widget_real_get_height (CtkWidget *widget G_GNUC_UNUSED,
 			    gint      *minimum_size,
 			    gint      *natural_size)
 {
@@ -14614,7 +14619,7 @@ ctk_widget_real_get_height (CtkWidget *widget,
 
 static void
 ctk_widget_real_get_height_for_width (CtkWidget *widget,
-                                      gint       width,
+                                      gint       width G_GNUC_UNUSED,
                                       gint      *minimum_height,
                                       gint      *natural_height)
 {
@@ -14623,7 +14628,7 @@ ctk_widget_real_get_height_for_width (CtkWidget *widget,
 
 static void
 ctk_widget_real_get_width_for_height (CtkWidget *widget,
-                                      gint       height,
+                                      gint       height G_GNUC_UNUSED,
                                       gint      *minimum_width,
                                       gint      *natural_width)
 {
@@ -15331,7 +15336,7 @@ static guint tooltip_query_id;
 static GSList *tooltip_query_displays;
 
 static gboolean
-tooltip_query_idle (gpointer data)
+tooltip_query_idle (gpointer data G_GNUC_UNUSED)
 {
   g_slist_foreach (tooltip_query_displays, (GFunc)ctk_tooltip_trigger_tooltip_query, NULL);
   g_slist_free_full (tooltip_query_displays, g_object_unref);
@@ -16869,7 +16874,7 @@ get_auto_child_hash (CtkWidget *widget,
 }
 
 static gboolean
-setup_template_child (CtkWidgetTemplate   *template_data,
+setup_template_child (CtkWidgetTemplate   *template_data G_GNUC_UNUSED,
                       GType                class_type,
                       AutomaticChildClass *child_class,
                       CtkWidget           *widget,
@@ -17295,7 +17300,7 @@ ctk_widget_get_action_group (CtkWidget   *widget,
 
 static void
 event_controller_grab_notify (CtkWidget           *widget,
-                              gboolean             was_grabbed,
+                              gboolean             was_grabbed G_GNUC_UNUSED,
                               EventControllerData *data)
 {
   CdkDevice *device = NULL;

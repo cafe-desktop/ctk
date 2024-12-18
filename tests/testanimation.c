@@ -104,9 +104,12 @@ progressive_prepared_callback (GdkPixbufLoader* loader,
 }
 
 static void
-progressive_updated_callback (GdkPixbufLoader* loader,
-                              gint x, gint y, gint width, gint height,
-                              gpointer data)
+progressive_updated_callback (GdkPixbufLoader *loader G_GNUC_UNUSED,
+                              gint             x G_GNUC_UNUSED,
+                              gint             y G_GNUC_UNUSED,
+                              gint             width G_GNUC_UNUSED,
+                              gint             height G_GNUC_UNUSED,
+                              gpointer         data)
 {
   CtkWidget* image;
   

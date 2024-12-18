@@ -143,7 +143,8 @@ test_print_file_operation_draw_page (CtkPrintOperation *operation,
 }
 
 static void
-test_print_file_operation_end_print (CtkPrintOperation *operation, CtkPrintContext *context)
+test_print_file_operation_end_print (CtkPrintOperation *operation,
+				     CtkPrintContext   *context G_GNUC_UNUSED)
 {
   TestPrintFileOperation *op = TEST_PRINT_FILE_OPERATION (operation);
   g_strfreev (op->lines);

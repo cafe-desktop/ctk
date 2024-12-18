@@ -58,7 +58,7 @@ typedef struct {
 static void
 children_changed (AtkObject  *accessible,
                   guint       index,
-                  gpointer    child,
+                  gpointer    child G_GNUC_UNUSED,
                   SignalData *data)
 {
   data->count++;
@@ -102,7 +102,9 @@ remove_child (STATE *state,
 }
 
 static void
-parent_notify (AtkObject *obj, GParamSpec *pspec, SignalData *data)
+parent_notify (AtkObject  *obj,
+	       GParamSpec *pspec G_GNUC_UNUSED,
+	       SignalData *data)
 {
   data->count++;
   data->parent = atk_object_get_parent (obj);

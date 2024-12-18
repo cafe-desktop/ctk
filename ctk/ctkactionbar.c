@@ -84,7 +84,9 @@ ctk_action_bar_show (CtkWidget *widget)
 }
 
 static void
-child_revealed (GObject *object, GParamSpec *pspec, CtkWidget *widget)
+child_revealed (GObject    *object,
+                GParamSpec *pspec G_GNUC_UNUSED,
+                CtkWidget  *widget)
 {
   CTK_WIDGET_CLASS (ctk_action_bar_parent_class)->hide (widget);
   g_signal_handlers_disconnect_by_func (object, child_revealed, widget);
@@ -160,7 +162,7 @@ ctk_action_bar_destroy (CtkWidget *widget)
 }
 
 static GType
-ctk_action_bar_child_type (CtkContainer *container)
+ctk_action_bar_child_type (CtkContainer *container G_GNUC_UNUSED)
 {
   return CTK_TYPE_WIDGET;
 }
@@ -168,7 +170,7 @@ ctk_action_bar_child_type (CtkContainer *container)
 static void
 ctk_action_bar_get_child_property (CtkContainer *container,
                                    CtkWidget    *child,
-                                   guint         property_id,
+                                   guint         property_id G_GNUC_UNUSED,
                                    GValue       *value,
                                    GParamSpec   *pspec)
 {
@@ -186,7 +188,7 @@ ctk_action_bar_get_child_property (CtkContainer *container,
 static void
 ctk_action_bar_set_child_property (CtkContainer *container,
                                    CtkWidget    *child,
-                                   guint         property_id,
+                                   guint         property_id G_GNUC_UNUSED,
                                    const GValue *value,
                                    GParamSpec   *pspec)
 {
@@ -202,11 +204,11 @@ ctk_action_bar_set_child_property (CtkContainer *container,
 static gboolean
 ctk_action_bar_render (CtkCssGadget *gadget,
                        cairo_t      *cr,
-                       int           x,
-                       int           y,
-                       int           width,
-                       int           height,
-                       gpointer      data)
+                       int           x G_GNUC_UNUSED,
+                       int           y G_GNUC_UNUSED,
+                       int           width G_GNUC_UNUSED,
+                       int           height G_GNUC_UNUSED,
+                       gpointer      data G_GNUC_UNUSED)
 {
   CTK_WIDGET_CLASS (ctk_action_bar_parent_class)->draw (ctk_css_gadget_get_owner (gadget), cr);
 
@@ -227,9 +229,9 @@ ctk_action_bar_draw (CtkWidget *widget,
 static void
 ctk_action_bar_allocate (CtkCssGadget        *gadget,
                          const CtkAllocation *allocation,
-                         int                  baseline,
+                         int                  baseline G_GNUC_UNUSED,
                          CtkAllocation       *out_clip,
-                         gpointer             data)
+                         gpointer             data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (CTK_ACTION_BAR (widget));
@@ -261,7 +263,7 @@ ctk_action_bar_measure (CtkCssGadget   *gadget,
                         int            *natural,
                         int            *minimum_baseline,
                         int            *natural_baseline,
-                        gpointer        data)
+                        gpointer        data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkActionBarPrivate *priv = ctk_action_bar_get_instance_private (CTK_ACTION_BAR (widget));
@@ -388,7 +390,7 @@ ctk_action_bar_finalize (GObject *object)
 
 static void
 ctk_action_bar_buildable_add_child (CtkBuildable *buildable,
-                                    CtkBuilder   *builder,
+                                    CtkBuilder   *builder G_GNUC_UNUSED,
                                     GObject      *child,
                                     const gchar  *type)
 {

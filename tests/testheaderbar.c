@@ -20,7 +20,8 @@ static const gchar css[] =
  "}";
 
 static void
-on_bookmark_clicked (CtkButton *button, gpointer data)
+on_bookmark_clicked (CtkButton *button G_GNUC_UNUSED,
+		     gpointer   data)
 {
   CtkWindow *window = CTK_WINDOW (data);
   CtkWidget *chooser;
@@ -41,7 +42,8 @@ on_bookmark_clicked (CtkButton *button, gpointer data)
 static CtkWidget *header;
 
 static void
-change_subtitle (CtkButton *button, gpointer data)
+change_subtitle (CtkButton *button G_GNUC_UNUSED,
+		 gpointer   data G_GNUC_UNUSED)
 {
   if (!CTK_IS_HEADER_BAR (header))
     return;
@@ -57,7 +59,8 @@ change_subtitle (CtkButton *button, gpointer data)
 }
 
 static void
-toggle_fullscreen (CtkButton *button, gpointer data)
+toggle_fullscreen (CtkButton *button G_GNUC_UNUSED,
+		   gpointer   data)
 {
   CtkWidget *window = CTK_WIDGET (data);
   static gboolean fullscreen = FALSE;
@@ -126,7 +129,8 @@ change_header (CtkButton *button, gpointer data)
 }
 
 int
-main (int argc, char *argv[])
+main (int   argc G_GNUC_UNUSED,
+      char *argv[] G_GNUC_UNUSED)
 {
   CtkWidget *window;
   CtkWidget *box;

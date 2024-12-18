@@ -277,8 +277,8 @@ ctk_custom_paper_unix_dialog_class_init (CtkCustomPaperUnixDialogClass *class)
 
 static void
 custom_paper_dialog_response_cb (CtkDialog *dialog,
-				 gint       response,
-				 gpointer   user_data)
+				 gint       response G_GNUC_UNUSED,
+				 gpointer   user_data G_GNUC_UNUSED)
 {
   CtkCustomPaperUnixDialogPrivate *priv = CTK_CUSTOM_PAPER_UNIX_DIALOG (dialog)->priv;
 
@@ -416,7 +416,7 @@ _ctk_custom_paper_unix_dialog_new (CtkWindow   *parent,
 }
 
 static void
-printer_added_cb (CtkPrintBackend          *backend,
+printer_added_cb (CtkPrintBackend          *backend G_GNUC_UNUSED,
 		  CtkPrinter               *printer,
 		  CtkCustomPaperUnixDialog *dialog)
 {
@@ -454,8 +454,8 @@ printer_added_cb (CtkPrintBackend          *backend,
 }
 
 static void
-printer_removed_cb (CtkPrintBackend        *backend,
-		    CtkPrinter             *printer,
+printer_removed_cb (CtkPrintBackend          *backend G_GNUC_UNUSED,
+		    CtkPrinter               *printer,
 		    CtkCustomPaperUnixDialog *dialog)
 {
   CtkCustomPaperUnixDialogPrivate *priv = dialog->priv;
@@ -467,8 +467,8 @@ printer_removed_cb (CtkPrintBackend        *backend,
 
 
 static void
-printer_status_cb (CtkPrintBackend        *backend,
-                   CtkPrinter             *printer,
+printer_status_cb (CtkPrintBackend          *backend G_GNUC_UNUSED,
+                   CtkPrinter               *printer,
 		   CtkCustomPaperUnixDialog *dialog)
 {
   CtkCustomPaperUnixDialogPrivate *priv = dialog->priv;
@@ -598,11 +598,11 @@ unit_widget_set (CtkWidget *unit_widget,
 }
 
 static void
-custom_paper_printer_data_func (CtkCellLayout   *cell_layout,
+custom_paper_printer_data_func (CtkCellLayout   *cell_layout G_GNUC_UNUSED,
 				CtkCellRenderer *cell,
 				CtkTreeModel    *tree_model,
 				CtkTreeIter     *iter,
-				gpointer         data)
+				gpointer         data G_GNUC_UNUSED)
 {
   CtkPrinter *printer;
 
@@ -681,7 +681,7 @@ update_custom_widgets_from_list (CtkCustomPaperUnixDialog *dialog)
 }
 
 static void
-selected_custom_paper_changed (CtkTreeSelection         *selection,
+selected_custom_paper_changed (CtkTreeSelection         *selection G_GNUC_UNUSED,
 			       CtkCustomPaperUnixDialog *dialog)
 {
   update_custom_widgets_from_list (dialog);
@@ -915,7 +915,7 @@ margins_from_printer_changed (CtkCustomPaperUnixDialog *dialog)
 }
 
 static void
-custom_size_name_edited (CtkCellRenderer          *cell,
+custom_size_name_edited (CtkCellRenderer          *cell G_GNUC_UNUSED,
 			 gchar                    *path_string,
 			 gchar                    *new_text,
 			 CtkCustomPaperUnixDialog *dialog)
@@ -944,11 +944,11 @@ custom_size_name_edited (CtkCellRenderer          *cell,
 }
 
 static void
-custom_name_func (CtkTreeViewColumn *tree_column,
+custom_name_func (CtkTreeViewColumn *tree_column G_GNUC_UNUSED,
 		  CtkCellRenderer   *cell,
 		  CtkTreeModel      *tree_model,
 		  CtkTreeIter       *iter,
-		  gpointer           data)
+		  gpointer           data G_GNUC_UNUSED)
 {
   CtkPageSetup *page_setup;
   CtkPaperSize *paper_size;

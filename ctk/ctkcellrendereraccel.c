@@ -430,9 +430,9 @@ ctk_cell_renderer_accel_start_editing (CtkCellRenderer      *cell,
                                        CdkEvent             *event,
                                        CtkWidget            *widget,
                                        const gchar          *path,
-                                       const CdkRectangle   *background_area,
-                                       const CdkRectangle   *cell_area,
-                                       CtkCellRendererState  flags)
+                                       const CdkRectangle   *background_area G_GNUC_UNUSED,
+                                       const CdkRectangle   *cell_area G_GNUC_UNUSED,
+                                       CtkCellRendererState  flags G_GNUC_UNUSED)
 {
   CtkCellRendererAccelPrivate *priv;
   CtkCellRendererText *celltext;
@@ -534,8 +534,8 @@ G_DEFINE_TYPE_WITH_CODE (CtkCellEditableEventBox, ctk_cell_editable_event_box, C
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_CELL_EDITABLE, ctk_cell_editable_event_box_cell_editable_init))
 
 static void
-ctk_cell_editable_event_box_start_editing (CtkCellEditable *cell_editable,
-                                           CdkEvent        *event)
+ctk_cell_editable_event_box_start_editing (CtkCellEditable *cell_editable G_GNUC_UNUSED,
+                                           CdkEvent        *event G_GNUC_UNUSED)
 {
   /* do nothing, because we are pointless */
 }

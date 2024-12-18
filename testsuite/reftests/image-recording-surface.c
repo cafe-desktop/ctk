@@ -24,7 +24,7 @@
 
 G_MODULE_EXPORT void
 image_recording_surface_set (CtkWidget *widget,
-                             gpointer   unused)
+                             gpointer   unused G_GNUC_UNUSED)
 {
   GError *error = NULL;
   GdkPixbuf *pixbuf;

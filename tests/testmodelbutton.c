@@ -1,9 +1,9 @@
 #include <ctk/ctk.h>
 
 static void
-on_action_beep (GSimpleAction *action,
-                GVariant      *parameter,
-                void          *user_data)
+on_action_beep (GSimpleAction *action G_GNUC_UNUSED,
+                GVariant      *parameter G_GNUC_UNUSED,
+                void          *user_data G_GNUC_UNUSED)
 {
   CdkDisplay *display = cdk_display_get_default ();
   g_assert (CDK_IS_DISPLAY (display));
@@ -12,7 +12,7 @@ on_action_beep (GSimpleAction *action,
 
 static void
 on_application_activate (GApplication *gapplication,
-                         void         *user_data)
+                         void         *user_data G_GNUC_UNUSED)
 {
   CtkApplication *application = CTK_APPLICATION (gapplication);
   CtkCssProvider *css_provider = ctk_css_provider_new ();

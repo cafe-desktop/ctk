@@ -57,7 +57,7 @@ cdk_broadway_visual_class_init (CdkBroadwayVisualClass *visual_class)
 }
 
 static void
-cdk_broadway_visual_init (CdkBroadwayVisual *visual)
+cdk_broadway_visual_init (CdkBroadwayVisual *visual G_GNUC_UNUSED)
 {
 }
 

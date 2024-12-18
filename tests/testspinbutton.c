@@ -21,9 +21,9 @@
 static gint num_windows = 0;
 
 static gboolean
-on_delete_event (CtkWidget *w,
-                 CdkEvent *event,
-                 gpointer user_data)
+on_delete_event (CtkWidget *w G_GNUC_UNUSED,
+                 CdkEvent  *event G_GNUC_UNUSED,
+                 gpointer   user_data G_GNUC_UNUSED)
 {
   num_windows--;
   if (num_windows == 0)

@@ -162,10 +162,10 @@ typedef CtkFileChooserIface CtkFileChooserInterface;
 G_DEFINE_INTERFACE (CtkFileChooser, ctk_file_chooser, G_TYPE_OBJECT);
 
 static gboolean
-confirm_overwrite_accumulator (GSignalInvocationHint *ihint,
+confirm_overwrite_accumulator (GSignalInvocationHint *ihint G_GNUC_UNUSED,
 			       GValue                *return_accu,
 			       const GValue          *handler_return,
-			       gpointer               dummy)
+			       gpointer               dummy G_GNUC_UNUSED)
 {
   gboolean continue_emission;
   CtkFileChooserConfirmation conf;

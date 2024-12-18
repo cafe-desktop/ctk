@@ -37,7 +37,8 @@ selectable_row_add (SelectableRow *row, CtkWidget *child)
 }
 
 static void
-update_selectable (CtkWidget *widget, gpointer data)
+update_selectable (CtkWidget *widget,
+		   gpointer   data G_GNUC_UNUSED)
 {
   SelectableRow *row = (SelectableRow *)widget;
   CtkListBox *list;
@@ -51,7 +52,8 @@ update_selectable (CtkWidget *widget, gpointer data)
 }
 
 static void
-update_selected (CtkWidget *widget, gpointer data)
+update_selected (CtkWidget *widget,
+		 gpointer   data G_GNUC_UNUSED)
 {
   SelectableRow *row = (SelectableRow *)widget;
 
@@ -65,7 +67,7 @@ update_selected (CtkWidget *widget, gpointer data)
 }
 
 static void
-selectable_row_class_init (SelectableRowClass *class)
+selectable_row_class_init (SelectableRowClass *class G_GNUC_UNUSED)
 {
 }
 
@@ -93,7 +95,8 @@ add_row (CtkWidget *list, gint i)
 }
 
 static void
-selection_mode_enter (CtkButton *button, CtkBuilder *builder)
+selection_mode_enter (CtkButton  *button G_GNUC_UNUSED,
+		      CtkBuilder *builder)
 {
   CtkWidget *header;
   CtkWidget *list;
@@ -122,7 +125,8 @@ selection_mode_enter (CtkButton *button, CtkBuilder *builder)
 }
 
 static void
-selection_mode_leave (CtkButton *button, CtkBuilder *builder)
+selection_mode_leave (CtkButton  *button G_GNUC_UNUSED,
+		      CtkBuilder *builder)
 {
   CtkWidget *header;
   CtkWidget *list;
@@ -151,13 +155,17 @@ selection_mode_leave (CtkButton *button, CtkBuilder *builder)
 }
 
 static void
-select_all (GAction *action, GVariant *param, CtkWidget *list)
+select_all (GAction   *action G_GNUC_UNUSED,
+	    GVariant  *param G_GNUC_UNUSED,
+	    CtkWidget *list)
 {
   ctk_list_box_select_all (CTK_LIST_BOX (list));
 }
 
 static void
-select_none (GAction *action, GVariant *param, CtkWidget *list)
+select_none (GAction   *action G_GNUC_UNUSED,
+	     GVariant  *param G_GNUC_UNUSED,
+	     CtkWidget *list)
 {
   ctk_list_box_unselect_all (CTK_LIST_BOX (list));
 }
@@ -169,7 +177,8 @@ selected_rows_changed (CtkListBox *list)
 }
 
 int
-main (int argc, char *argv[])
+main (int   argc G_GNUC_UNUSED,
+      char *argv[] G_GNUC_UNUSED)
 {
   CtkBuilder *builder;
   CtkWidget *window;

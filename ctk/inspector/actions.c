@@ -188,7 +188,9 @@ add_group (CtkInspectorActions *sl,
 }
 
 static void
-disconnect_group (gpointer key, gpointer value, gpointer data)
+disconnect_group (gpointer key,
+                  gpointer value G_GNUC_UNUSED,
+                  gpointer data)
 {
   GActionGroup *group = key;
   CtkInspectorActions *sl = data;

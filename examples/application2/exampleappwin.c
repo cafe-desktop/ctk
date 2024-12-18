@@ -30,7 +30,7 @@ example_app_window_new (ExampleApp *app)
 }
 
 void
-example_app_window_open (ExampleAppWindow *win,
-                         GFile            *file)
+example_app_window_open (ExampleAppWindow *win G_GNUC_UNUSED,
+                         GFile            *file G_GNUC_UNUSED)
 {
 }

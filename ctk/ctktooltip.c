@@ -476,7 +476,7 @@ ctk_tooltip_reset (CtkTooltip *tooltip)
 }
 
 static void
-ctk_tooltip_window_hide (CtkWidget *widget,
+ctk_tooltip_window_hide (CtkWidget *widget G_GNUC_UNUSED,
 			 gpointer   user_data)
 {
   CtkTooltip *tooltip = CTK_TOOLTIP (user_data);
@@ -771,7 +771,7 @@ tooltip_browse_mode_expired (gpointer data)
 
 static void
 ctk_tooltip_display_closed (CdkDisplay *display,
-			    gboolean    was_error,
+			    gboolean    was_error G_GNUC_UNUSED,
 			    CtkTooltip *tooltip)
 {
   if (tooltip->timeout_id)

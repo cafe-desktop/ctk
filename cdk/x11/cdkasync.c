@@ -397,7 +397,7 @@ list_children_and_wm_state (Display      *dpy,
 }
 
 static void
-handle_get_wa_reply (Display                   *dpy,
+handle_get_wa_reply (Display                   *dpy G_GNUC_UNUSED,
 		     ChildInfoState            *state,
 		     xGetWindowAttributesReply *repl)
 {
@@ -407,7 +407,7 @@ handle_get_wa_reply (Display                   *dpy,
 }
 
 static void
-handle_get_geometry_reply (Display           *dpy,
+handle_get_geometry_reply (Display           *dpy G_GNUC_UNUSED,
 			   ChildInfoState    *state,
 			   xGetGeometryReply *repl)
 {
@@ -420,7 +420,7 @@ handle_get_geometry_reply (Display           *dpy,
 }
 
 static void
-handle_get_property_reply (Display           *dpy,
+handle_get_property_reply (Display           *dpy G_GNUC_UNUSED,
 			   ChildInfoState    *state,
 			   xGetPropertyReply *repl)
 {

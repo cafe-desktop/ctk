@@ -473,7 +473,7 @@ const CtkTextLineSegmentClass ctk_text_left_mark_type = {
 
 static gboolean
 mark_segment_delete_func (CtkTextLineSegment *seg,
-                          CtkTextLine        *line,
+                          CtkTextLine        *line G_GNUC_UNUSED,
                           gboolean            tree_gone)
 {
   if (tree_gone)

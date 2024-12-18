@@ -61,7 +61,7 @@ G_GNUC_BEGIN_IGNORE_DEPRECATIONS
 G_DEFINE_TYPE (CtkHBox, ctk_hbox, CTK_TYPE_BOX)
 
 static void
-ctk_hbox_class_init (CtkHBoxClass *class)
+ctk_hbox_class_init (CtkHBoxClass *class G_GNUC_UNUSED)
 {
 }
 

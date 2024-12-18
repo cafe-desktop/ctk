@@ -61,7 +61,7 @@ create_menu (gint depth)
 }
 
 static void
-change_orientation (CtkWidget *button,
+change_orientation (CtkWidget *button G_GNUC_UNUSED,
                     CtkWidget *menubar)
 {
   CtkWidget *parent;

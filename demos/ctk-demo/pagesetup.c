@@ -9,7 +9,9 @@
 #include <ctk/ctkunixprint.h>
 
 static void
-done_cb (CtkDialog *dialog, gint response, gpointer data)
+done_cb (CtkDialog *dialog,
+	 gint       response G_GNUC_UNUSED,
+	 gpointer   data G_GNUC_UNUSED)
 {
   ctk_widget_destroy (CTK_WIDGET (dialog));
 }

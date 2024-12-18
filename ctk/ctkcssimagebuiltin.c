@@ -721,17 +721,17 @@ ctk_css_image_builtin_draw_spinner (CtkCssImage *image,
 }
 
 static void
-ctk_css_image_builtin_real_draw (CtkCssImage        *image,
-                                 cairo_t            *cr,
-                                 double              width,
-                                 double              height)
+ctk_css_image_builtin_real_draw (CtkCssImage *image G_GNUC_UNUSED,
+                                 cairo_t     *cr G_GNUC_UNUSED,
+                                 double       width G_GNUC_UNUSED,
+                                 double       height G_GNUC_UNUSED)
 {
   /* It's a builtin image, other code will draw things */
 }
 
 
 static gboolean
-ctk_css_image_builtin_parse (CtkCssImage  *image,
+ctk_css_image_builtin_parse (CtkCssImage  *image G_GNUC_UNUSED,
                              CtkCssParser *parser)
 {
   if (!_ctk_css_parser_try (parser, "builtin", TRUE))
@@ -744,18 +744,18 @@ ctk_css_image_builtin_parse (CtkCssImage  *image,
 }
 
 static void
-ctk_css_image_builtin_print (CtkCssImage *image,
+ctk_css_image_builtin_print (CtkCssImage *image G_GNUC_UNUSED,
                              GString     *string)
 {
   g_string_append (string, "builtin");
 }
 
 static CtkCssImage *
-ctk_css_image_builtin_compute (CtkCssImage             *image,
-                               guint                    property_id,
-                               CtkStyleProviderPrivate *provider,
+ctk_css_image_builtin_compute (CtkCssImage             *image G_GNUC_UNUSED,
+                               guint                    property_id G_GNUC_UNUSED,
+                               CtkStyleProviderPrivate *provider G_GNUC_UNUSED,
                                CtkCssStyle             *style,
-                               CtkCssStyle             *parent_style)
+                               CtkCssStyle             *parent_style G_GNUC_UNUSED)
 {
   CtkCssImageBuiltin *result;
 

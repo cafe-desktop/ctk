@@ -86,7 +86,7 @@ test_sort (void)
 static CtkListBoxRow *callback_row;
 
 static void
-on_row_selected (CtkListBox    *list_box,
+on_row_selected (CtkListBox    *list_box G_GNUC_UNUSED,
                  CtkListBoxRow *row,
                  gpointer       data)
 {
@@ -178,7 +178,8 @@ test_selection (void)
 }
 
 static void
-on_selected_rows_changed (CtkListBox *box, gpointer data)
+on_selected_rows_changed (CtkListBox *box G_GNUC_UNUSED,
+			  gpointer    data)
 {
   gint *i = data;
 
@@ -345,7 +346,7 @@ test_filter (void)
 
 static void
 header_func (CtkListBoxRow *row,
-             CtkListBoxRow *before,
+             CtkListBoxRow *before G_GNUC_UNUSED,
              gpointer       data)
 {
   CtkWidget *child;

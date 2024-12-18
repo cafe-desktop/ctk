@@ -555,9 +555,9 @@ static void
 ctk_cell_renderer_pixbuf_render (CtkCellRenderer      *cell,
                                  cairo_t              *cr,
 				 CtkWidget            *widget,
-				 const CdkRectangle   *background_area,
+				 const CdkRectangle   *background_area G_GNUC_UNUSED,
 				 const CdkRectangle   *cell_area,
-				 CtkCellRendererState  flags)
+				 CtkCellRendererState  flags G_GNUC_UNUSED)
 
 {
   CtkCellRendererPixbuf *cellpixbuf = (CtkCellRendererPixbuf *) cell;

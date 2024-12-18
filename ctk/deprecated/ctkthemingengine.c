@@ -552,8 +552,8 @@ ctk_theming_engine_get_state (CtkThemingEngine *engine)
  **/
 gboolean
 ctk_theming_engine_state_is_running (CtkThemingEngine *engine,
-                                     CtkStateType      state,
-                                     gdouble          *progress)
+                                     CtkStateType      state G_GNUC_UNUSED,
+                                     gdouble          *progress G_GNUC_UNUSED)
 {
   g_return_val_if_fail (CTK_IS_THEMING_ENGINE (engine), FALSE);
 
@@ -940,7 +940,7 @@ ctk_theming_module_class_init (CtkThemingModuleClass *klass)
 }
 
 static void
-ctk_theming_module_init (CtkThemingModule *module)
+ctk_theming_module_init (CtkThemingModule *module G_GNUC_UNUSED)
 {
 }
 

@@ -43,8 +43,8 @@ static gchar *ctk_src_dir = NULL;
 
 static gboolean
 delete_event_cb (CtkWidget *editor,
-		 gint       response,
-		 gpointer   user_data)
+		 gint       response G_GNUC_UNUSED,
+		 gpointer   user_data G_GNUC_UNUSED)
 {
   ctk_widget_hide (editor);
 
@@ -53,7 +53,7 @@ delete_event_cb (CtkWidget *editor,
 
 
 static void
-print_selected_path_clicked_cb (CtkWidget *button,
+print_selected_path_clicked_cb (CtkWidget *button G_GNUC_UNUSED,
 				gpointer   user_data)
 {
   gchar *folder, *filename;
@@ -67,7 +67,7 @@ print_selected_path_clicked_cb (CtkWidget *button,
 }
 
 static void
-add_pwds_parent_as_shortcut_clicked_cb (CtkWidget *button,
+add_pwds_parent_as_shortcut_clicked_cb (CtkWidget *button G_GNUC_UNUSED,
 					gpointer   user_data)
 {
   GError *err = NULL;
@@ -85,7 +85,7 @@ add_pwds_parent_as_shortcut_clicked_cb (CtkWidget *button,
 }
 
 static void
-del_pwds_parent_as_shortcut_clicked_cb (CtkWidget *button,
+del_pwds_parent_as_shortcut_clicked_cb (CtkWidget *button G_GNUC_UNUSED,
 					gpointer   user_data)
 {
   GError *err = NULL;
@@ -103,14 +103,14 @@ del_pwds_parent_as_shortcut_clicked_cb (CtkWidget *button,
 }
 
 static void
-unselect_all_clicked_cb (CtkWidget *button,
+unselect_all_clicked_cb (CtkWidget *button G_GNUC_UNUSED,
                          gpointer   user_data)
 {
   ctk_file_chooser_unselect_all (user_data);
 }
 
 static void
-tests_button_clicked_cb (CtkButton *real_button,
+tests_button_clicked_cb (CtkButton *real_button G_GNUC_UNUSED,
 			 gpointer   user_data)
 {
   CtkWidget *tests;
@@ -165,7 +165,7 @@ tests_button_clicked_cb (CtkButton *real_button,
 
 static void
 chooser_current_folder_changed_cb (CtkFileChooser *chooser,
-				   gpointer        user_data)
+				   gpointer        user_data G_GNUC_UNUSED)
 {
   gchar *folder, *filename;
 
@@ -179,7 +179,7 @@ chooser_current_folder_changed_cb (CtkFileChooser *chooser,
 
 static void
 chooser_selection_changed_cb (CtkFileChooser *chooser,
-			      gpointer        user_data)
+			      gpointer        user_data G_GNUC_UNUSED)
 {
   gchar *filename;
 
@@ -191,7 +191,7 @@ chooser_selection_changed_cb (CtkFileChooser *chooser,
 
 static void
 chooser_file_activated_cb (CtkFileChooser *chooser,
-			   gpointer        user_data)
+			   gpointer        user_data G_GNUC_UNUSED)
 {
   gchar *folder, *filename;
 
@@ -205,7 +205,7 @@ chooser_file_activated_cb (CtkFileChooser *chooser,
 
 static void
 chooser_update_preview_cb (CtkFileChooser *chooser,
-			   gpointer        user_data)
+			   gpointer        user_data G_GNUC_UNUSED)
 {
   gchar *filename;
 

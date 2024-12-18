@@ -11,7 +11,7 @@ static CtkWidget *assistant = NULL;
 static CtkWidget *progress_bar = NULL;
 
 static gboolean
-apply_changes_gradually (gpointer data)
+apply_changes_gradually (gpointer data G_GNUC_UNUSED)
 {
   gdouble fraction;
 
@@ -34,14 +34,16 @@ apply_changes_gradually (gpointer data)
 }
 
 static void
-on_assistant_apply (CtkWidget *widget, gpointer data)
+on_assistant_apply (CtkWidget *widget G_GNUC_UNUSED,
+		    gpointer   data G_GNUC_UNUSED)
 {
   /* Start a timer to simulate changes taking a few seconds to apply. */
   g_timeout_add (100, apply_changes_gradually, NULL);
 }
 
 static void
-on_assistant_close_cancel (CtkWidget *widget, gpointer data)
+on_assistant_close_cancel (CtkWidget *widget G_GNUC_UNUSED,
+			   gpointer   data)
 {
   CtkWidget **assistant = (CtkWidget **) data;
 
@@ -50,7 +52,9 @@ on_assistant_close_cancel (CtkWidget *widget, gpointer data)
 }
 
 static void
-on_assistant_prepare (CtkWidget *widget, CtkWidget *page, gpointer data)
+on_assistant_prepare (CtkWidget *widget,
+		      CtkWidget *page G_GNUC_UNUSED,
+		      gpointer   data G_GNUC_UNUSED)
 {
   gint current_page, n_pages;
   gchar *title;

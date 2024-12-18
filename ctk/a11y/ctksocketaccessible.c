@@ -43,7 +43,7 @@ ctk_socket_accessible_ref_child (AtkObject *obj, int i)
 }
 
 static int
-ctk_socket_accessible_get_n_children (AtkObject *obj)
+ctk_socket_accessible_get_n_children (AtkObject *obj G_GNUC_UNUSED)
 {
   return 1;
 }

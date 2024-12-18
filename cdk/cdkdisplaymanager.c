@@ -167,7 +167,7 @@ cdk_display_manager_class_init (CdkDisplayManagerClass *klass)
 }
 
 static void
-cdk_display_manager_init (CdkDisplayManager *manager)
+cdk_display_manager_init (CdkDisplayManager *manager G_GNUC_UNUSED)
 {
 }
 
@@ -415,7 +415,7 @@ cdk_display_manager_list_displays (CdkDisplayManager *manager)
  * Since: 3.0
  */
 CdkDisplay *
-cdk_display_manager_open_display (CdkDisplayManager *manager,
+cdk_display_manager_open_display (CdkDisplayManager *manager G_GNUC_UNUSED,
                                   const gchar       *name)
 {
   const gchar *backend_list;

@@ -110,7 +110,7 @@ ctk_css_style_property_register (const char *                   name,
 /*** IMPLEMENTATIONS ***/
 
 static void
-query_length_as_int (CtkCssStyleProperty *property,
+query_length_as_int (CtkCssStyleProperty *property G_GNUC_UNUSED,
                      const CtkCssValue   *css_value,
                      GValue              *value)
 {
@@ -119,14 +119,14 @@ query_length_as_int (CtkCssStyleProperty *property,
 }
 
 static CtkCssValue *
-assign_length_from_int (CtkCssStyleProperty *property,
+assign_length_from_int (CtkCssStyleProperty *property G_GNUC_UNUSED,
                         const GValue        *value)
 {
   return _ctk_css_number_value_new (g_value_get_int (value), CTK_CSS_PX);
 }
 
 static void
-query_font_size (CtkCssStyleProperty *property,
+query_font_size (CtkCssStyleProperty *property G_GNUC_UNUSED,
                  const CtkCssValue   *css_value,
                  GValue              *value)
 {
@@ -135,14 +135,14 @@ query_font_size (CtkCssStyleProperty *property,
 }
 
 static CtkCssValue *
-assign_font_size (CtkCssStyleProperty *property,
+assign_font_size (CtkCssStyleProperty *property G_GNUC_UNUSED,
                   const GValue        *value)
 {
   return _ctk_css_number_value_new (g_value_get_double (value), CTK_CSS_PX);
 }
 
 static void
-query_border (CtkCssStyleProperty *property,
+query_border (CtkCssStyleProperty *property G_GNUC_UNUSED,
               const CtkCssValue   *css_value,
               GValue              *value)
 {
@@ -159,7 +159,7 @@ query_border (CtkCssStyleProperty *property,
 }
 
 static CtkCssValue *
-assign_border (CtkCssStyleProperty *property,
+assign_border (CtkCssStyleProperty *property G_GNUC_UNUSED,
                const GValue        *value)
 {
   const CtkBorder *border = g_value_get_boxed (value);
@@ -174,14 +174,14 @@ assign_border (CtkCssStyleProperty *property,
 }
 
 static CtkCssValue *
-color_parse (CtkCssStyleProperty *property,
+color_parse (CtkCssStyleProperty *property G_GNUC_UNUSED,
              CtkCssParser        *parser)
 {
   return _ctk_css_color_value_parse (parser);
 }
 
 static void
-color_query (CtkCssStyleProperty *property,
+color_query (CtkCssStyleProperty *property G_GNUC_UNUSED,
              const CtkCssValue   *css_value,
              GValue              *value)
 {
@@ -190,7 +190,7 @@ color_query (CtkCssStyleProperty *property,
 }
 
 static CtkCssValue *
-color_assign (CtkCssStyleProperty *property,
+color_assign (CtkCssStyleProperty *property G_GNUC_UNUSED,
               const GValue        *value)
 {
   return _ctk_css_rgba_value_new_from_rgba (g_value_get_boxed (value));
@@ -231,14 +231,14 @@ ctk_css_font_family_value_parse (CtkCssParser *parser)
 }
 
 static CtkCssValue *
-font_family_parse (CtkCssStyleProperty *property,
+font_family_parse (CtkCssStyleProperty *property G_GNUC_UNUSED,
                    CtkCssParser        *parser)
 {
   return ctk_css_font_family_value_parse (parser);
 }
 
 static void
-font_family_query (CtkCssStyleProperty *property,
+font_family_query (CtkCssStyleProperty *property G_GNUC_UNUSED,
                    const CtkCssValue   *css_value,
                    GValue              *value)
 {
@@ -260,7 +260,7 @@ font_family_query (CtkCssStyleProperty *property,
 }
 
 static CtkCssValue *
-font_family_assign (CtkCssStyleProperty *property,
+font_family_assign (CtkCssStyleProperty *property G_GNUC_UNUSED,
                     const GValue        *value)
 {
   const char **names;
@@ -280,7 +280,7 @@ font_family_assign (CtkCssStyleProperty *property,
 }
 
 static CtkCssValue *
-font_style_parse (CtkCssStyleProperty *property,
+font_style_parse (CtkCssStyleProperty *property G_GNUC_UNUSED,
                   CtkCssParser        *parser)
 {
   CtkCssValue *value = _ctk_css_font_style_value_try_parse (parser);
@@ -292,7 +292,7 @@ font_style_parse (CtkCssStyleProperty *property,
 }
 
 static void
-font_style_query (CtkCssStyleProperty *property,
+font_style_query (CtkCssStyleProperty *property G_GNUC_UNUSED,
                   const CtkCssValue   *css_value,
                   GValue              *value)
 {
@@ -301,14 +301,14 @@ font_style_query (CtkCssStyleProperty *property,
 }
 
 static CtkCssValue *
-font_style_assign (CtkCssStyleProperty *property,
+font_style_assign (CtkCssStyleProperty *property G_GNUC_UNUSED,
                    const GValue        *value)
 {
   return _ctk_css_font_style_value_new (g_value_get_enum (value));
 }
 
 static CtkCssValue *
-font_weight_parse (CtkCssStyleProperty *property,
+font_weight_parse (CtkCssStyleProperty *property G_GNUC_UNUSED,
                    CtkCssParser        *parser)
 {
   CtkCssValue *value = _ctk_css_font_weight_value_try_parse (parser);
@@ -320,7 +320,7 @@ font_weight_parse (CtkCssStyleProperty *property,
 }
 
 static void
-font_weight_query (CtkCssStyleProperty *property,
+font_weight_query (CtkCssStyleProperty *property G_GNUC_UNUSED,
                    const CtkCssValue   *css_value,
                    GValue              *value)
 {
@@ -329,14 +329,14 @@ font_weight_query (CtkCssStyleProperty *property,
 }
 
 static CtkCssValue *
-font_weight_assign (CtkCssStyleProperty *property,
+font_weight_assign (CtkCssStyleProperty *property G_GNUC_UNUSED,
                     const GValue        *value)
 {
   return _ctk_css_font_weight_value_new (g_value_get_enum (value));
 }
 
 static CtkCssValue *
-font_variant_parse (CtkCssStyleProperty *property,
+font_variant_parse (CtkCssStyleProperty *property G_GNUC_UNUSED,
                     CtkCssParser        *parser)
 {
   CtkCssValue *value = _ctk_css_font_variant_value_try_parse (parser);
@@ -348,7 +348,7 @@ font_variant_parse (CtkCssStyleProperty *property,
 }
 
 static void
-font_variant_query (CtkCssStyleProperty *property,
+font_variant_query (CtkCssStyleProperty *property G_GNUC_UNUSED,
                     const CtkCssValue   *css_value,
                      GValue              *value)
 {
@@ -357,14 +357,14 @@ font_variant_query (CtkCssStyleProperty *property,
 }
 
 static CtkCssValue *
-font_variant_assign (CtkCssStyleProperty *property,
+font_variant_assign (CtkCssStyleProperty *property G_GNUC_UNUSED,
                      const GValue        *value)
 {
   return _ctk_css_font_variant_value_new (g_value_get_enum (value));
 }
 
 static CtkCssValue *
-font_stretch_parse (CtkCssStyleProperty *property,
+font_stretch_parse (CtkCssStyleProperty *property G_GNUC_UNUSED,
                     CtkCssParser        *parser)
 {
   CtkCssValue *value = _ctk_css_font_stretch_value_try_parse (parser);
@@ -376,7 +376,7 @@ font_stretch_parse (CtkCssStyleProperty *property,
 }
 
 static void
-font_stretch_query (CtkCssStyleProperty *property,
+font_stretch_query (CtkCssStyleProperty *property G_GNUC_UNUSED,
                     const CtkCssValue   *css_value,
                     GValue              *value)
 {
@@ -385,14 +385,14 @@ font_stretch_query (CtkCssStyleProperty *property,
 }
 
 static CtkCssValue *
-font_stretch_assign (CtkCssStyleProperty *property,
+font_stretch_assign (CtkCssStyleProperty *property G_GNUC_UNUSED,
                      const GValue        *value)
 {
   return _ctk_css_font_stretch_value_new (g_value_get_enum (value));
 }
 
 static CtkCssValue *
-parse_border_style (CtkCssStyleProperty *property,
+parse_border_style (CtkCssStyleProperty *property G_GNUC_UNUSED,
                     CtkCssParser        *parser)
 {
   CtkCssValue *value = _ctk_css_border_style_value_try_parse (parser);
@@ -404,7 +404,7 @@ parse_border_style (CtkCssStyleProperty *property,
 }
 
 static void
-query_border_style (CtkCssStyleProperty *property,
+query_border_style (CtkCssStyleProperty *property G_GNUC_UNUSED,
                     const CtkCssValue   *css_value,
                     GValue              *value)
 {
@@ -413,7 +413,7 @@ query_border_style (CtkCssStyleProperty *property,
 }
 
 static CtkCssValue *
-assign_border_style (CtkCssStyleProperty *property,
+assign_border_style (CtkCssStyleProperty *property G_GNUC_UNUSED,
                      const GValue        *value)
 {
   return _ctk_css_border_style_value_new (g_value_get_enum (value));
@@ -431,7 +431,7 @@ parse_css_area_one (CtkCssParser *parser)
 }
 
 static CtkCssValue *
-parse_css_area (CtkCssStyleProperty *property,
+parse_css_area (CtkCssStyleProperty *property G_GNUC_UNUSED,
                 CtkCssParser        *parser)
 {
   return _ctk_css_array_value_parse (parser, parse_css_area_one);
@@ -449,21 +449,21 @@ parse_one_css_direction (CtkCssParser *parser)
 }
 
 static CtkCssValue *
-parse_css_direction (CtkCssStyleProperty *property,
+parse_css_direction (CtkCssStyleProperty *property G_GNUC_UNUSED,
                      CtkCssParser        *parser)
 {
   return _ctk_css_array_value_parse (parser, parse_one_css_direction);
 }
 
 static CtkCssValue *
-opacity_parse (CtkCssStyleProperty *property,
+opacity_parse (CtkCssStyleProperty *property G_GNUC_UNUSED,
 	       CtkCssParser        *parser)
 {
   return _ctk_css_number_value_parse (parser, CTK_CSS_PARSE_NUMBER);
 }
 
 static void
-opacity_query (CtkCssStyleProperty *property,
+opacity_query (CtkCssStyleProperty *property G_GNUC_UNUSED,
                const CtkCssValue   *css_value,
                GValue              *value)
 {
@@ -472,8 +472,8 @@ opacity_query (CtkCssStyleProperty *property,
 }
 
 static CtkCssValue *
-parse_font_feature_settings (CtkCssStyleProperty *property,
-                      CtkCssParser        *parser)
+parse_font_feature_settings (CtkCssStyleProperty *property G_GNUC_UNUSED,
+                             CtkCssParser        *parser)
 {
   return _ctk_css_string_value_parse (parser);
 }
@@ -490,7 +490,7 @@ parse_one_css_play_state (CtkCssParser *parser)
 }
 
 static CtkCssValue *
-parse_css_play_state (CtkCssStyleProperty *property,
+parse_css_play_state (CtkCssStyleProperty *property G_GNUC_UNUSED,
                       CtkCssParser        *parser)
 {
   return _ctk_css_array_value_parse (parser, parse_one_css_play_state);
@@ -508,14 +508,14 @@ parse_one_css_fill_mode (CtkCssParser *parser)
 }
 
 static CtkCssValue *
-parse_css_fill_mode (CtkCssStyleProperty *property,
+parse_css_fill_mode (CtkCssStyleProperty *property G_GNUC_UNUSED,
                      CtkCssParser        *parser)
 {
   return _ctk_css_array_value_parse (parser, parse_one_css_fill_mode);
 }
 
 static CtkCssValue *
-image_effect_parse (CtkCssStyleProperty *property,
+image_effect_parse (CtkCssStyleProperty *property G_GNUC_UNUSED,
 		    CtkCssParser        *parser)
 {
   CtkCssValue *value = _ctk_css_icon_effect_value_try_parse (parser);
@@ -527,14 +527,14 @@ image_effect_parse (CtkCssStyleProperty *property,
 }
 
 static CtkCssValue *
-icon_palette_parse (CtkCssStyleProperty *property,
+icon_palette_parse (CtkCssStyleProperty *property G_GNUC_UNUSED,
 		    CtkCssParser        *parser)
 {
   return ctk_css_palette_value_parse (parser);
 }
 
 static CtkCssValue *
-icon_style_parse (CtkCssStyleProperty *property,
+icon_style_parse (CtkCssStyleProperty *property G_GNUC_UNUSED,
 		  CtkCssParser        *parser)
 {
   CtkCssValue *value = _ctk_css_icon_style_value_try_parse (parser);
@@ -572,14 +572,14 @@ bindings_value_parse_one (CtkCssParser *parser)
 }
 
 static CtkCssValue *
-bindings_value_parse (CtkCssStyleProperty *property,
+bindings_value_parse (CtkCssStyleProperty *property G_GNUC_UNUSED,
                       CtkCssParser        *parser)
 {
   return _ctk_css_array_value_parse (parser, bindings_value_parse_one);
 }
 
 static void
-bindings_value_query (CtkCssStyleProperty *property,
+bindings_value_query (CtkCssStyleProperty *property G_GNUC_UNUSED,
                       const CtkCssValue   *css_value,
                       GValue              *value)
 {
@@ -615,7 +615,7 @@ bindings_value_query (CtkCssStyleProperty *property,
 }
 
 static CtkCssValue *
-bindings_value_assign (CtkCssStyleProperty *property,
+bindings_value_assign (CtkCssStyleProperty *property G_GNUC_UNUSED,
                        const GValue        *value)
 {
   GPtrArray *binding_sets = g_value_get_boxed (value);
@@ -639,14 +639,14 @@ bindings_value_assign (CtkCssStyleProperty *property,
 }
 
 static CtkCssValue *
-parse_letter_spacing (CtkCssStyleProperty *property,
+parse_letter_spacing (CtkCssStyleProperty *property G_GNUC_UNUSED,
                       CtkCssParser        *parser)
 {
   return _ctk_css_number_value_parse (parser, CTK_CSS_PARSE_LENGTH);
 }
 
 static CtkCssValue *
-parse_text_decoration_line (CtkCssStyleProperty *property,
+parse_text_decoration_line (CtkCssStyleProperty *property G_GNUC_UNUSED,
                             CtkCssParser        *parser)
 {
   CtkCssValue *value = _ctk_css_text_decoration_line_value_try_parse (parser);
@@ -658,7 +658,7 @@ parse_text_decoration_line (CtkCssStyleProperty *property,
 }
 
 static CtkCssValue *
-parse_text_decoration_style (CtkCssStyleProperty *property,
+parse_text_decoration_style (CtkCssStyleProperty *property G_GNUC_UNUSED,
                              CtkCssParser        *parser)
 {
   CtkCssValue *value = _ctk_css_text_decoration_style_value_try_parse (parser);
@@ -670,35 +670,35 @@ parse_text_decoration_style (CtkCssStyleProperty *property,
 }
 
 static CtkCssValue *
-box_shadow_value_parse (CtkCssStyleProperty *property,
+box_shadow_value_parse (CtkCssStyleProperty *property G_GNUC_UNUSED,
                         CtkCssParser        *parser)
 {
   return _ctk_css_shadows_value_parse (parser, TRUE);
 }
 
 static CtkCssValue *
-shadow_value_parse (CtkCssStyleProperty *property,
+shadow_value_parse (CtkCssStyleProperty *property G_GNUC_UNUSED,
                     CtkCssParser        *parser)
 {
   return _ctk_css_shadows_value_parse (parser, FALSE);
 }
 
 static CtkCssValue *
-transform_value_parse (CtkCssStyleProperty *property,
+transform_value_parse (CtkCssStyleProperty *property G_GNUC_UNUSED,
                        CtkCssParser        *parser)
 {
   return _ctk_css_transform_value_parse (parser);
 }
 
 static CtkCssValue *
-border_corner_radius_value_parse (CtkCssStyleProperty *property,
+border_corner_radius_value_parse (CtkCssStyleProperty *property G_GNUC_UNUSED,
                                   CtkCssParser        *parser)
 {
   return _ctk_css_corner_value_parse (parser);
 }
 
 static CtkCssValue *
-css_image_value_parse (CtkCssStyleProperty *property,
+css_image_value_parse (CtkCssStyleProperty *property G_GNUC_UNUSED,
                        CtkCssParser        *parser)
 {
   CtkCssImage *image;
@@ -726,7 +726,7 @@ css_image_value_parse_with_builtin (CtkCssStyleProperty *property,
 }
 
 static void
-css_image_value_query (CtkCssStyleProperty *property,
+css_image_value_query (CtkCssStyleProperty *property G_GNUC_UNUSED,
                        const CtkCssValue   *css_value,
                        GValue              *value)
 {
@@ -755,8 +755,8 @@ css_image_value_query (CtkCssStyleProperty *property,
 }
 
 static CtkCssValue *
-css_image_value_assign (CtkCssStyleProperty *property,
-                        const GValue        *value)
+css_image_value_assign (CtkCssStyleProperty *property G_GNUC_UNUSED,
+                        const GValue        *value G_GNUC_UNUSED)
 {
   g_warning ("FIXME: assigning images is not implemented");
   return _ctk_css_image_value_new (NULL);
@@ -769,7 +769,7 @@ background_image_value_parse_one (CtkCssParser *parser)
 }
 
 static CtkCssValue *
-background_image_value_parse (CtkCssStyleProperty *property,
+background_image_value_parse (CtkCssStyleProperty *property G_GNUC_UNUSED,
                               CtkCssParser        *parser)
 {
   return _ctk_css_array_value_parse (parser, background_image_value_parse_one);
@@ -791,7 +791,7 @@ background_image_value_assign (CtkCssStyleProperty *property,
 }
 
 static CtkCssValue *
-dpi_parse (CtkCssStyleProperty *property,
+dpi_parse (CtkCssStyleProperty *property G_GNUC_UNUSED,
 	   CtkCssParser        *parser)
 {
   return _ctk_css_number_value_parse (parser, CTK_CSS_PARSE_NUMBER);
@@ -814,14 +814,14 @@ ctk_css_font_size_value_parse (CtkCssParser *parser)
 }
 
 static CtkCssValue *
-font_size_parse (CtkCssStyleProperty *property,
+font_size_parse (CtkCssStyleProperty *property G_GNUC_UNUSED,
                  CtkCssParser        *parser)
 {
   return ctk_css_font_size_value_parse (parser);
 }
 
 static CtkCssValue *
-outline_parse (CtkCssStyleProperty *property,
+outline_parse (CtkCssStyleProperty *property G_GNUC_UNUSED,
                CtkCssParser        *parser)
 {
   return _ctk_css_number_value_parse (parser,
@@ -830,7 +830,7 @@ outline_parse (CtkCssStyleProperty *property,
 }
 
 static CtkCssValue *
-border_image_repeat_parse (CtkCssStyleProperty *property,
+border_image_repeat_parse (CtkCssStyleProperty *property G_GNUC_UNUSED,
                            CtkCssParser        *parser)
 {
   CtkCssValue *value = _ctk_css_border_repeat_value_try_parse (parser);
@@ -845,7 +845,7 @@ border_image_repeat_parse (CtkCssStyleProperty *property,
 }
 
 static CtkCssValue *
-border_image_slice_parse (CtkCssStyleProperty *property,
+border_image_slice_parse (CtkCssStyleProperty *property G_GNUC_UNUSED,
                           CtkCssParser        *parser)
 {
   return _ctk_css_border_value_parse (parser,
@@ -857,7 +857,7 @@ border_image_slice_parse (CtkCssStyleProperty *property,
 }
 
 static CtkCssValue *
-border_image_width_parse (CtkCssStyleProperty *property,
+border_image_width_parse (CtkCssStyleProperty *property G_GNUC_UNUSED,
                           CtkCssParser        *parser)
 {
   return _ctk_css_border_value_parse (parser,
@@ -870,7 +870,7 @@ border_image_width_parse (CtkCssStyleProperty *property,
 }
 
 static CtkCssValue *
-minmax_parse (CtkCssStyleProperty *property,
+minmax_parse (CtkCssStyleProperty *property G_GNUC_UNUSED,
               CtkCssParser        *parser)
 {
   return _ctk_css_number_value_parse (parser,
@@ -895,7 +895,7 @@ transition_property_parse_one (CtkCssParser *parser)
 }
 
 static CtkCssValue *
-transition_property_parse (CtkCssStyleProperty *property,
+transition_property_parse (CtkCssStyleProperty *property G_GNUC_UNUSED,
                            CtkCssParser        *parser)
 {
   return _ctk_css_array_value_parse (parser, transition_property_parse_one);
@@ -908,14 +908,14 @@ transition_time_parse_one (CtkCssParser *parser)
 }
 
 static CtkCssValue *
-transition_time_parse (CtkCssStyleProperty *property,
+transition_time_parse (CtkCssStyleProperty *property G_GNUC_UNUSED,
                        CtkCssParser        *parser)
 {
   return _ctk_css_array_value_parse (parser, transition_time_parse_one);
 }
 
 static CtkCssValue *
-transition_timing_function_parse (CtkCssStyleProperty *property,
+transition_timing_function_parse (CtkCssStyleProperty *property G_GNUC_UNUSED,
                                   CtkCssParser        *parser)
 {
   return _ctk_css_array_value_parse (parser, _ctk_css_ease_value_parse);
@@ -931,21 +931,21 @@ iteration_count_parse_one (CtkCssParser *parser)
 }
 
 static CtkCssValue *
-iteration_count_parse (CtkCssStyleProperty *property,
+iteration_count_parse (CtkCssStyleProperty *property G_GNUC_UNUSED,
                        CtkCssParser        *parser)
 {
   return _ctk_css_array_value_parse (parser, iteration_count_parse_one);
 }
 
 static CtkCssValue *
-engine_parse (CtkCssStyleProperty *property,
+engine_parse (CtkCssStyleProperty *property G_GNUC_UNUSED,
               CtkCssParser        *parser)
 {
   return _ctk_css_engine_value_parse (parser);
 }
 
 static void
-engine_query (CtkCssStyleProperty *property,
+engine_query (CtkCssStyleProperty *property G_GNUC_UNUSED,
               const CtkCssValue   *css_value,
               GValue              *value)
 {
@@ -956,14 +956,14 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static CtkCssValue *
-engine_assign (CtkCssStyleProperty *property,
+engine_assign (CtkCssStyleProperty *property G_GNUC_UNUSED,
                const GValue        *value)
 {
   return _ctk_css_engine_value_new (g_value_get_object (value));
 }
 
 static CtkCssValue *
-parse_margin (CtkCssStyleProperty *property,
+parse_margin (CtkCssStyleProperty *property G_GNUC_UNUSED,
               CtkCssParser        *parser)
 {
   return _ctk_css_number_value_parse (parser,
@@ -972,7 +972,7 @@ parse_margin (CtkCssStyleProperty *property,
 }
 
 static CtkCssValue *
-parse_padding (CtkCssStyleProperty *property,
+parse_padding (CtkCssStyleProperty *property G_GNUC_UNUSED,
                CtkCssParser        *parser)
 {
   return _ctk_css_number_value_parse (parser,
@@ -982,7 +982,7 @@ parse_padding (CtkCssStyleProperty *property,
 }
 
 static CtkCssValue *
-parse_border_width (CtkCssStyleProperty *property,
+parse_border_width (CtkCssStyleProperty *property G_GNUC_UNUSED,
                     CtkCssParser        *parser)
 {
   return _ctk_css_number_value_parse (parser,
@@ -1003,7 +1003,7 @@ blend_mode_value_parse_one (CtkCssParser        *parser)
 }
 
 static CtkCssValue *
-blend_mode_value_parse (CtkCssStyleProperty *property,
+blend_mode_value_parse (CtkCssStyleProperty *property G_GNUC_UNUSED,
                         CtkCssParser        *parser)
 {
   return _ctk_css_array_value_parse (parser, blend_mode_value_parse_one);
@@ -1024,28 +1024,28 @@ background_repeat_value_parse_one (CtkCssParser *parser)
 }
 
 static CtkCssValue *
-background_repeat_value_parse (CtkCssStyleProperty *property,
+background_repeat_value_parse (CtkCssStyleProperty *property G_GNUC_UNUSED,
                                CtkCssParser        *parser)
 {
   return _ctk_css_array_value_parse (parser, background_repeat_value_parse_one);
 }
 
 static CtkCssValue *
-background_size_parse (CtkCssStyleProperty *property,
+background_size_parse (CtkCssStyleProperty *property G_GNUC_UNUSED,
                        CtkCssParser        *parser)
 {
   return _ctk_css_array_value_parse (parser, _ctk_css_bg_size_value_parse);
 }
 
 static CtkCssValue *
-background_position_parse (CtkCssStyleProperty *property,
+background_position_parse (CtkCssStyleProperty *property G_GNUC_UNUSED,
 			   CtkCssParser        *parser)
 {
   return _ctk_css_array_value_parse (parser, _ctk_css_position_value_parse);
 }
 
 static CtkCssValue *
-icon_theme_value_parse (CtkCssStyleProperty *property,
+icon_theme_value_parse (CtkCssStyleProperty *property G_GNUC_UNUSED,
 		        CtkCssParser        *parser)
 {
   return ctk_css_icon_theme_value_parse (parser);

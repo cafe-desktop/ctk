@@ -105,7 +105,7 @@ G_DEFINE_TYPE_WITH_CODE (CtkSearchEntry, ctk_search_entry, CTK_TYPE_ENTRY,
 
 static void
 ctk_search_entry_preedit_changed (CtkEntry    *entry,
-                                  const gchar *preedit)
+                                  const gchar *preedit G_GNUC_UNUSED)
 {
   CtkSearchEntryPrivate *priv = GET_PRIV (entry);
 

@@ -160,7 +160,7 @@ ctk_bin_remove (CtkContainer *container,
 
 static void
 ctk_bin_forall (CtkContainer *container,
-		gboolean      include_internals,
+		gboolean      include_internals G_GNUC_UNUSED,
 		CtkCallback   callback,
 		gpointer      callback_data)
 {

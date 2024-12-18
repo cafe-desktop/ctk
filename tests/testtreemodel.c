@@ -42,7 +42,7 @@ typedef void (InsertFunc)(CtkTreeModel *model,
 
 static void
 list_store_append (CtkTreeModel *model,
-		   gint          items,
+		   gint          items G_GNUC_UNUSED,
 		   gint          i)
 {
   CtkListStore *store = CTK_LIST_STORE (model);
@@ -57,7 +57,7 @@ list_store_append (CtkTreeModel *model,
 
 static void
 list_store_prepend (CtkTreeModel *model,
-		    gint          items,
+		    gint          items G_GNUC_UNUSED,
 		    gint          i)
 {
   CtkListStore *store = CTK_LIST_STORE (model);
@@ -72,7 +72,7 @@ list_store_prepend (CtkTreeModel *model,
 
 static void
 list_store_insert (CtkTreeModel *model,
-		   gint          items,
+		   gint          items G_GNUC_UNUSED,
 		   gint          i)
 {
   CtkListStore *store = CTK_LIST_STORE (model);
@@ -91,7 +91,7 @@ static gint
 compare (CtkTreeModel *model,
 	 CtkTreeIter  *a,
 	 CtkTreeIter  *b,
-	 gpointer      data)
+	 gpointer      data G_GNUC_UNUSED)
 {
   gchar *str_a, *str_b;
   gint result;
@@ -109,7 +109,7 @@ compare (CtkTreeModel *model,
 
 static void
 tree_store_append (CtkTreeModel *model,
-		   gint          items,
+		   gint          items G_GNUC_UNUSED,
 		   gint          i)
 {
   CtkTreeStore *store = CTK_TREE_STORE (model);
@@ -124,7 +124,7 @@ tree_store_append (CtkTreeModel *model,
 
 static void
 tree_store_prepend (CtkTreeModel *model,
-		    gint          items,
+		    gint          items G_GNUC_UNUSED,
 		    gint          i)
 {
   CtkTreeStore *store = CTK_TREE_STORE (model);
@@ -139,7 +139,7 @@ tree_store_prepend (CtkTreeModel *model,
 
 static void
 tree_store_insert_flat (CtkTreeModel *model,
-			gint          items,
+			gint          items G_GNUC_UNUSED,
 			gint          i)
 {
   CtkTreeStore *store = CTK_TREE_STORE (model);
@@ -162,8 +162,8 @@ typedef struct {
 } FindData;
 
 static gboolean
-find_nth (CtkTreeModel *model,
-	  CtkTreePath  *path,
+find_nth (CtkTreeModel *model G_GNUC_UNUSED,
+	  CtkTreePath  *path G_GNUC_UNUSED,
 	  CtkTreeIter  *iter,
 	  gpointer      data)
 {

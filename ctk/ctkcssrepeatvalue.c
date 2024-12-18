@@ -35,10 +35,10 @@ ctk_css_value_repeat_free (CtkCssValue *value)
 
 static CtkCssValue *
 ctk_css_value_repeat_compute (CtkCssValue             *value,
-                              guint                    property_id,
-                              CtkStyleProviderPrivate *provider,
-                              CtkCssStyle             *style,
-                              CtkCssStyle             *parent_style)
+                              guint                    property_id G_GNUC_UNUSED,
+                              CtkStyleProviderPrivate *provider G_GNUC_UNUSED,
+                              CtkCssStyle             *style G_GNUC_UNUSED,
+                              CtkCssStyle             *parent_style G_GNUC_UNUSED)
 {
   return _ctk_css_value_ref (value);
 }
@@ -52,10 +52,10 @@ ctk_css_value_repeat_equal (const CtkCssValue *repeat1,
 }
 
 static CtkCssValue *
-ctk_css_value_repeat_transition (CtkCssValue *start,
-                                 CtkCssValue *end,
-                                 guint        property_id,
-                                 double       progress)
+ctk_css_value_repeat_transition (CtkCssValue *start G_GNUC_UNUSED,
+                                 CtkCssValue *end G_GNUC_UNUSED,
+                                 guint        property_id G_GNUC_UNUSED,
+                                 double       progress G_GNUC_UNUSED)
 {
   return NULL;
 }

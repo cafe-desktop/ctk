@@ -241,6 +241,6 @@ _ctk_css_image_recolor_class_init (CtkCssImageRecolorClass *klass)
 }
 
 static void
-_ctk_css_image_recolor_init (CtkCssImageRecolor *image_recolor)
+_ctk_css_image_recolor_init (CtkCssImageRecolor *image_recolor G_GNUC_UNUSED)
 {
 }

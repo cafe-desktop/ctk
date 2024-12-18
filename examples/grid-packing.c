@@ -1,15 +1,15 @@
 #include <ctk/ctk.h>
 
 static void
-print_hello (CtkWidget *widget,
-             gpointer   data)
+print_hello (CtkWidget *widget G_GNUC_UNUSED,
+             gpointer   data G_GNUC_UNUSED)
 {
   g_print ("Hello World\n");
 }
 
 static void
 activate (CtkApplication *app,
-          gpointer        user_data)
+          gpointer        user_data G_GNUC_UNUSED)
 {
   CtkWidget *window;
   CtkWidget *grid;

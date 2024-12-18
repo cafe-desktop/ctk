@@ -65,9 +65,9 @@ create_button (void)
 }
 
 static gboolean
-on_draw_alignment (CtkWidget      *widget,
-                   cairo_t        *cr,
-                   void           *data)
+on_draw_alignment (CtkWidget *widget G_GNUC_UNUSED,
+                   cairo_t   *cr,
+                   void      *data G_GNUC_UNUSED)
 {
   cairo_set_source_rgb (cr, 1.0, 0.0, 0.0);
   cairo_paint (cr);
@@ -127,7 +127,7 @@ open_test_window (void)
 
 static void
 on_toggle_border_widths (CtkToggleButton *button,
-                         void            *data)
+                         void            *data G_GNUC_UNUSED)
 {
   gboolean has_border;
   int i;
@@ -146,7 +146,7 @@ on_toggle_border_widths (CtkToggleButton *button,
 
 static void
 on_set_small_size_requests (CtkToggleButton *button,
-                            void            *data)
+                            void            *data G_GNUC_UNUSED)
 {
   gboolean has_small_size_requests;
   int i;
@@ -163,7 +163,7 @@ on_set_small_size_requests (CtkToggleButton *button,
 
 static void
 on_set_large_size_requests (CtkToggleButton *button,
-                            void            *data)
+                            void            *data G_GNUC_UNUSED)
 {
   gboolean has_large_size_requests;
   int i;

@@ -3,8 +3,8 @@
 
 static void
 activate_toggle (GSimpleAction *action,
-                 GVariant      *parameter,
-                 gpointer       user_data)
+                 GVariant      *parameter G_GNUC_UNUSED,
+                 gpointer       user_data G_GNUC_UNUSED)
 {
   GVariant *state;
 
@@ -33,8 +33,8 @@ get_clipboard (CtkWidget *widget)
 }
 
 static void
-window_copy (GSimpleAction *action,
-             GVariant      *parameter,
+window_copy (GSimpleAction *action G_GNUC_UNUSED,
+             GVariant      *parameter G_GNUC_UNUSED,
              gpointer       user_data)
 {
   CtkWindow *window = CTK_WINDOW (user_data);
@@ -45,8 +45,8 @@ window_copy (GSimpleAction *action,
 }
 
 static void
-window_paste (GSimpleAction *action,
-              GVariant      *parameter,
+window_paste (GSimpleAction *action G_GNUC_UNUSED,
+              GVariant      *parameter G_GNUC_UNUSED,
               gpointer       user_data)
 {
   CtkWindow *window = CTK_WINDOW (user_data);
@@ -118,7 +118,7 @@ static void
 plug_man_open (GApplication  *application,
                 GFile        **files,
                 gint           n_files,
-                const gchar   *hint)
+                const gchar   *hint G_GNUC_UNUSED)
 {
   gint i;
 
@@ -138,9 +138,9 @@ plug_man_finalize (GObject *object)
 }
 
 static void
-show_about (GSimpleAction *action,
-            GVariant      *parameter,
-            gpointer       user_data)
+show_about (GSimpleAction *action G_GNUC_UNUSED,
+            GVariant      *parameter G_GNUC_UNUSED,
+            gpointer       user_data G_GNUC_UNUSED)
 {
   ctk_show_about_dialog (NULL,
                          "program-name", "Plugman",
@@ -151,9 +151,9 @@ show_about (GSimpleAction *action,
 
 
 static void
-quit_app (GSimpleAction *action,
-          GVariant      *parameter,
-          gpointer       user_data)
+quit_app (GSimpleAction *action G_GNUC_UNUSED,
+          GVariant      *parameter G_GNUC_UNUSED,
+          gpointer       user_data G_GNUC_UNUSED)
 {
   GList *list, *next;
 
@@ -193,8 +193,8 @@ find_plugin_menu (void)
 
 static void
 plugin_action (GAction  *action,
-               GVariant *parameter,
-               gpointer  data)
+               GVariant *parameter G_GNUC_UNUSED,
+               gpointer  data G_GNUC_UNUSED)
 {
   GApplication *app;
   GList *list;
@@ -295,7 +295,7 @@ disable_plugin (const gchar *name)
 }
 
 static void
-enable_or_disable_plugin (CtkToggleButton *button,
+enable_or_disable_plugin (CtkToggleButton *button G_GNUC_UNUSED,
                           const gchar     *name)
 {
   if (plugin_enabled (name))
@@ -306,9 +306,9 @@ enable_or_disable_plugin (CtkToggleButton *button,
 
 
 static void
-configure_plugins (GSimpleAction *action,
-                   GVariant      *parameter,
-                   gpointer       user_data)
+configure_plugins (GSimpleAction *action G_GNUC_UNUSED,
+                   GVariant      *parameter G_GNUC_UNUSED,
+                   gpointer       user_data G_GNUC_UNUSED)
 {
   CtkBuilder *builder;
   CtkWidget *dialog;
@@ -451,7 +451,7 @@ plug_man_startup (GApplication *application)
 }
 
 static void
-plug_man_init (PlugMan *app)
+plug_man_init (PlugMan *app G_GNUC_UNUSED)
 {
 }
 

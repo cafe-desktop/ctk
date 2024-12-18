@@ -53,7 +53,7 @@ static Bug data[] =
 };
 
 static gboolean
-spinner_timeout (gpointer data)
+spinner_timeout (gpointer data G_GNUC_UNUSED)
 {
   CtkTreeIter iter;
   guint pulse;
@@ -128,7 +128,7 @@ create_model (void)
 }
 
 static void
-fixed_toggled (CtkCellRendererToggle *cell,
+fixed_toggled (CtkCellRendererToggle *cell G_GNUC_UNUSED,
                gchar                 *path_str,
                gpointer               data)
 {
@@ -230,9 +230,9 @@ add_columns (CtkTreeView *treeview)
 }
 
 static gboolean
-window_closed (CtkWidget *widget,
-               CdkEvent  *event,
-               gpointer   user_data)
+window_closed (CtkWidget *widget G_GNUC_UNUSED,
+               CdkEvent  *event G_GNUC_UNUSED,
+               gpointer   user_data G_GNUC_UNUSED)
 {
   model = NULL;
   window = NULL;

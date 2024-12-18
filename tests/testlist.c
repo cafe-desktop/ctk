@@ -33,12 +33,12 @@ const char *css =
 G_DEFINE_TYPE (Row, row, CTK_TYPE_LIST_BOX_ROW)
 
 static void
-row_init (Row *row)
+row_init (Row *row G_GNUC_UNUSED)
 {
 }
 
 static void
-row_class_init (RowClass *class)
+row_class_init (RowClass *class G_GNUC_UNUSED)
 {
 }
 
@@ -60,7 +60,9 @@ row_new (const gchar* text, gint sort_id) {
 
 
 static void
-update_header_cb (Row *row, Row *before, gpointer data)
+update_header_cb (Row      *row,
+                  Row      *before,
+                  gpointer  data G_GNUC_UNUSED)
 {
   GList *children;
 
@@ -99,19 +101,24 @@ update_header_cb (Row *row, Row *before, gpointer data)
 }
 
 static int
-sort_cb (Row *a, Row *b, gpointer data)
+sort_cb (Row      *a,
+         Row      *b,
+         gpointer  data G_GNUC_UNUSED)
 {
   return a->sort_id - b->sort_id;
 }
 
 static int
-reverse_sort_cb (Row *a, Row *b, gpointer data)
+reverse_sort_cb (Row      *a,
+                 Row      *b,
+                 gpointer  data G_GNUC_UNUSED)
 {
   return b->sort_id - a->sort_id;
 }
 
 static gboolean
-filter_cb (Row *row, gpointer data)
+filter_cb (Row      *row,
+           gpointer  data G_GNUC_UNUSED)
 {
   if (row->label != NULL)
     {
@@ -125,22 +132,22 @@ filter_cb (Row *row, gpointer data)
 }
 
 static void
-row_activated_cb (CtkListBox *list_box,
+row_activated_cb (CtkListBox    *list_box G_GNUC_UNUSED,
                   CtkListBoxRow *row)
 {
   g_print ("activated row %p\n", row);
 }
 
 static void
-row_selected_cb (CtkListBox *list_box,
+row_selected_cb (CtkListBox    *list_box G_GNUC_UNUSED,
                  CtkListBoxRow *row)
 {
   g_print ("selected row %p\n", row);
 }
 
 static void
-sort_clicked_cb (CtkButton *button,
-                 gpointer data)
+sort_clicked_cb (CtkButton *button G_GNUC_UNUSED,
+                 gpointer   data)
 {
   CtkListBox *list = data;
 
@@ -148,8 +155,8 @@ sort_clicked_cb (CtkButton *button,
 }
 
 static void
-reverse_sort_clicked_cb (CtkButton *button,
-                         gpointer data)
+reverse_sort_clicked_cb (CtkButton *button G_GNUC_UNUSED,
+                         gpointer   data)
 {
   CtkListBox *list = data;
 
@@ -157,8 +164,8 @@ reverse_sort_clicked_cb (CtkButton *button,
 }
 
 static void
-filter_clicked_cb (CtkButton *button,
-                   gpointer data)
+filter_clicked_cb (CtkButton *button G_GNUC_UNUSED,
+                   gpointer   data)
 {
   CtkListBox *list = data;
 
@@ -166,8 +173,8 @@ filter_clicked_cb (CtkButton *button,
 }
 
 static void
-unfilter_clicked_cb (CtkButton *button,
-                   gpointer data)
+unfilter_clicked_cb (CtkButton *button G_GNUC_UNUSED,
+                     gpointer   data)
 {
   CtkListBox *list = data;
 
@@ -175,8 +182,8 @@ unfilter_clicked_cb (CtkButton *button,
 }
 
 static void
-change_clicked_cb (CtkButton *button,
-                   gpointer data)
+change_clicked_cb (CtkButton *button G_GNUC_UNUSED,
+                   gpointer   data)
 {
   Row *row = data;
 
@@ -194,8 +201,8 @@ change_clicked_cb (CtkButton *button,
 }
 
 static void
-add_clicked_cb (CtkButton *button,
-                gpointer data)
+add_clicked_cb (CtkButton *button G_GNUC_UNUSED,
+                gpointer   data)
 {
   CtkListBox *list = data;
   CtkWidget *new_row;
@@ -208,8 +215,8 @@ add_clicked_cb (CtkButton *button,
 }
 
 static void
-separate_clicked_cb (CtkButton *button,
-                     gpointer data)
+separate_clicked_cb (CtkButton *button G_GNUC_UNUSED,
+                     gpointer   data)
 {
   CtkListBox *list = data;
 
@@ -217,8 +224,8 @@ separate_clicked_cb (CtkButton *button,
 }
 
 static void
-unseparate_clicked_cb (CtkButton *button,
-                       gpointer data)
+unseparate_clicked_cb (CtkButton *button G_GNUC_UNUSED,
+                       gpointer   data)
 {
   CtkListBox *list = data;
 
@@ -226,8 +233,8 @@ unseparate_clicked_cb (CtkButton *button,
 }
 
 static void
-visibility_clicked_cb (CtkButton *button,
-                       gpointer data)
+visibility_clicked_cb (CtkButton *button G_GNUC_UNUSED,
+                       gpointer   data)
 {
   CtkWidget *row = data;
 
@@ -252,7 +259,8 @@ single_click_clicked (CtkButton *check, gpointer data)
 }
 
 int
-main (int argc, char *argv[])
+main (int   argc G_GNUC_UNUSED,
+      char *argv[] G_GNUC_UNUSED)
 {
   CtkCssProvider *provider;
   CtkWidget *window, *hbox, *vbox, *list, *row, *row3, *row_vbox, *row_hbox, *l;

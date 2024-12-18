@@ -701,7 +701,7 @@ ctk_spin_button_get_property (GObject      *object,
 
 static void
 swipe_gesture_begin (CtkGesture       *gesture,
-                     CdkEventSequence *sequence,
+                     CdkEventSequence *sequence G_GNUC_UNUSED,
                      CtkSpinButton    *spin_button)
 {
   CdkEventSequence *current;
@@ -720,7 +720,7 @@ swipe_gesture_begin (CtkGesture       *gesture,
 
 static void
 swipe_gesture_update (CtkGesture       *gesture,
-                      CdkEventSequence *sequence,
+                      CdkEventSequence *sequence G_GNUC_UNUSED,
                       CtkSpinButton    *spin_button)
 {
   gdouble vel_y;
@@ -1054,7 +1054,8 @@ ctk_spin_button_unrealize (CtkWidget *widget)
  * changes, and reevaluate our size request.
  */
 static void
-adjustment_changed_cb (CtkAdjustment *adjustment, gpointer data)
+adjustment_changed_cb (CtkAdjustment *adjustment G_GNUC_UNUSED,
+                       gpointer       data)
 {
   CtkSpinButton *spin_button = CTK_SPIN_BUTTON (data);
   CtkSpinButtonPrivate *priv = spin_button->priv;
@@ -1674,7 +1675,7 @@ ctk_spin_button_real_change_value (CtkSpinButton *spin,
 
 static gint
 ctk_spin_button_key_release (CtkWidget   *widget,
-                             CdkEventKey *event)
+                             CdkEventKey *event G_GNUC_UNUSED)
 {
   CtkSpinButton *spin = CTK_SPIN_BUTTON (widget);
   CtkSpinButtonPrivate *priv = spin->priv;

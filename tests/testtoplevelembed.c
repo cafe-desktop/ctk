@@ -5,7 +5,7 @@ CtkWidget *notebook;
 
 
 static void
-remove_notebook_page (CtkWidget *button,
+remove_notebook_page (CtkWidget *button G_GNUC_UNUSED,
 		      CtkWidget *toplevel)
 {
   ctk_container_remove (CTK_CONTAINER (notebook), toplevel);
@@ -33,8 +33,8 @@ create_tab_label (CtkWidget *toplevel)
 
 static void
 toplevel_delete_event (CtkWidget *toplevel,
-		       CdkEvent  *event,
-		       gpointer   none)
+		       CdkEvent  *event G_GNUC_UNUSED,
+		       gpointer   none G_GNUC_UNUSED)
 {
   CdkWindow *cdk_win;
   CtkWidget *label = create_tab_label (toplevel);

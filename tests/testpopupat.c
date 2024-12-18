@@ -1,17 +1,17 @@
 #include <ctk/ctk.h>
 
 static void
-destroy_cb (CtkWidget  *window,
-            CtkBuilder *builder)
+destroy_cb (CtkWidget  *window G_GNUC_UNUSED,
+            CtkBuilder *builder G_GNUC_UNUSED)
 {
   ctk_main_quit ();
 }
 
 static void
-populate_popup_cb (CtkAppChooserWidget *app_chooser_widget,
+populate_popup_cb (CtkAppChooserWidget *app_chooser_widget G_GNUC_UNUSED,
                    CtkMenu             *menu,
-                   GAppInfo            *app_info,
-                   gpointer             user_data)
+                   GAppInfo            *app_info G_GNUC_UNUSED,
+                   gpointer             user_data G_GNUC_UNUSED)
 {
   CtkWidget *menu_item;
 

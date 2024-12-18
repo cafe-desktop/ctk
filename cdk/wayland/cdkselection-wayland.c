@@ -252,7 +252,7 @@ get_buffer_size (void)
 }
 
 static void
-selection_buffer_read_cb (GObject      *object,
+selection_buffer_read_cb (GObject      *object G_GNUC_UNUSED,
                           GAsyncResult *result,
                           gpointer      user_data)
 {
@@ -506,7 +506,7 @@ _wl_to_cdk_actions (uint32_t dnd_actions)
 }
 
 static void
-data_offer_source_actions (void                 *data,
+data_offer_source_actions (void                 *data G_GNUC_UNUSED,
                            struct wl_data_offer *wl_data_offer,
                            uint32_t              source_actions)
 {
@@ -531,8 +531,8 @@ data_offer_source_actions (void                 *data,
 }
 
 static void
-data_offer_action (void                 *data,
-                   struct wl_data_offer *wl_data_offer,
+data_offer_action (void                 *data G_GNUC_UNUSED,
+                   struct wl_data_offer *wl_data_offer G_GNUC_UNUSED,
                    uint32_t              action)
 {
   CdkDragContext *drop_context;
@@ -1025,7 +1025,7 @@ cdk_wayland_selection_request_target (CdkWaylandSelection *wayland_selection,
 }
 
 static void
-data_source_target (void                  *data,
+data_source_target (void                  *data G_GNUC_UNUSED,
                     struct wl_data_source *source,
                     const char            *mime_type)
 {
@@ -1111,7 +1111,7 @@ data_source_cancelled (void                  *data,
 }
 
 static void
-data_source_dnd_drop_performed (void                  *data,
+data_source_dnd_drop_performed (void                  *data G_GNUC_UNUSED,
                                 struct wl_data_source *source)
 {
   CdkDragContext *context;
@@ -1125,7 +1125,7 @@ data_source_dnd_drop_performed (void                  *data,
 }
 
 static void
-data_source_dnd_finished (void                  *data,
+data_source_dnd_finished (void                  *data G_GNUC_UNUSED,
                           struct wl_data_source *source)
 {
   CdkDisplay *display = cdk_display_get_default ();
@@ -1149,7 +1149,7 @@ data_source_dnd_finished (void                  *data,
 }
 
 static void
-data_source_action (void                  *data,
+data_source_action (void                  *data G_GNUC_UNUSED,
                     struct wl_data_source *source,
                     uint32_t               action)
 {
@@ -1221,7 +1221,7 @@ zwp_primary_source_v1_send (void                                   *data,
 }
 
 static void
-primary_source_cancelled (void     *data,
+primary_source_cancelled (void     *data G_GNUC_UNUSED,
                           gpointer  source)
 {
   CdkDisplay *display;
@@ -1392,7 +1392,7 @@ gboolean
 _cdk_wayland_display_set_selection_owner (CdkDisplay *display,
                                           CdkWindow  *owner,
                                           CdkAtom     selection,
-                                          guint32     time,
+                                          guint32     time G_GNUC_UNUSED,
                                           gboolean    send_event)
 {
   CdkWaylandSelection *wayland_selection = cdk_wayland_display_get_selection (display);
@@ -1431,11 +1431,11 @@ _cdk_wayland_display_set_selection_owner (CdkDisplay *display,
 
 void
 _cdk_wayland_display_send_selection_notify (CdkDisplay *display,
-                                            CdkWindow  *requestor,
-                                            CdkAtom     selection,
-                                            CdkAtom     target,
+                                            CdkWindow  *requestor G_GNUC_UNUSED,
+                                            CdkAtom     selection G_GNUC_UNUSED,
+                                            CdkAtom     target G_GNUC_UNUSED,
                                             CdkAtom     property,
-                                            guint32     time)
+                                            guint32     time G_GNUC_UNUSED)
 {
   CdkWaylandSelection *wayland_selection;
 
@@ -1456,7 +1456,7 @@ _cdk_wayland_display_send_selection_notify (CdkDisplay *display,
 }
 
 gint
-_cdk_wayland_display_get_selection_property (CdkDisplay  *display,
+_cdk_wayland_display_get_selection_property (CdkDisplay  *display G_GNUC_UNUSED,
                                              CdkWindow   *requestor,
                                              guchar     **data,
                                              CdkAtom     *ret_type,
@@ -1547,7 +1547,7 @@ _cdk_wayland_display_convert_selection (CdkDisplay *display,
                                         CdkWindow  *requestor,
                                         CdkAtom     selection,
                                         CdkAtom     target,
-                                        guint32     time)
+                                        guint32     time G_GNUC_UNUSED)
 {
   CdkWaylandDisplay *display_wayland = CDK_WAYLAND_DISPLAY (display);
   CdkWaylandSelection *wayland_selection = cdk_wayland_display_get_selection (display);
@@ -1657,9 +1657,9 @@ _cdk_wayland_display_convert_selection (CdkDisplay *display,
 }
 
 gint
-_cdk_wayland_display_text_property_to_utf8_list (CdkDisplay    *display,
-                                                 CdkAtom        encoding,
-                                                 gint           format,
+_cdk_wayland_display_text_property_to_utf8_list (CdkDisplay    *display G_GNUC_UNUSED,
+                                                 CdkAtom        encoding G_GNUC_UNUSED,
+                                                 gint           format G_GNUC_UNUSED,
                                                  const guchar  *text,
                                                  gint           length,
                                                  gchar       ***list)
@@ -1749,7 +1749,7 @@ sanitize_utf8 (const gchar *src,
 }
 
 gchar *
-_cdk_wayland_display_utf8_to_string_target (CdkDisplay  *display,
+_cdk_wayland_display_utf8_to_string_target (CdkDisplay  *display G_GNUC_UNUSED,
                                             const gchar *str)
 {
   /* This is mainly needed when interfacing with old clients through

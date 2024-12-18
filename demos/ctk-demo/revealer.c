@@ -51,7 +51,7 @@ reveal_one (gpointer data)
 static CtkWidget *window = NULL;
 
 static void
-on_destroy (gpointer data)
+on_destroy (gpointer data G_GNUC_UNUSED)
 {
   window = NULL;
   if (timeout != 0)

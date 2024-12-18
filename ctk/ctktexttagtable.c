@@ -197,7 +197,8 @@ ctk_text_tag_table_new (void)
 }
 
 static void
-foreach_unref (CtkTextTag *tag, gpointer data)
+foreach_unref (CtkTextTag *tag,
+               gpointer    data G_GNUC_UNUSED)
 {
   CtkTextTagTable *table = CTK_TEXT_TAG_TABLE (tag->priv->table);
   CtkTextTagTablePrivate *priv = table->priv;
@@ -237,10 +238,10 @@ ctk_text_tag_table_buildable_interface_init (CtkBuildableIface   *iface)
 }
 
 static void
-ctk_text_tag_table_buildable_add_child (CtkBuildable        *buildable,
-					CtkBuilder          *builder,
-					GObject             *child,
-					const gchar         *type)
+ctk_text_tag_table_buildable_add_child (CtkBuildable *buildable,
+					CtkBuilder   *builder G_GNUC_UNUSED,
+					GObject      *child,
+					const gchar  *type)
 {
   if (type && strcmp (type, "tag") == 0)
     ctk_text_tag_table_add (CTK_TEXT_TAG_TABLE (buildable),
@@ -386,7 +387,9 @@ struct ForeachData
 };
 
 static void
-hash_foreach (gpointer key, gpointer value, gpointer data)
+hash_foreach (gpointer key G_GNUC_UNUSED,
+              gpointer value,
+              gpointer data)
 {
   struct ForeachData *fd = data;
 

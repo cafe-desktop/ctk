@@ -133,7 +133,7 @@ ctk_css_image_url_compute (CtkCssImage             *image,
                            guint                    property_id,
                            CtkStyleProviderPrivate *provider,
                            CtkCssStyle             *style,
-                           CtkCssStyle             *parent_style)
+                           CtkCssStyle             *parent_style G_GNUC_UNUSED)
 {
   CtkCssImageUrl *url = CTK_CSS_IMAGE_URL (image);
   CtkCssImage *copy;
@@ -201,7 +201,7 @@ _ctk_css_image_url_class_init (CtkCssImageUrlClass *klass)
 }
 
 static void
-_ctk_css_image_url_init (CtkCssImageUrl *image_url)
+_ctk_css_image_url_init (CtkCssImageUrl *image_url G_GNUC_UNUSED)
 {
 }
 

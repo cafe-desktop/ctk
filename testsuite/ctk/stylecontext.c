@@ -371,7 +371,7 @@ test_style_classes (void)
 
 static void
 test_style_priorities_setup (PrioritiesFixture *f,
-                             gconstpointer      unused)
+                             gconstpointer      unused G_GNUC_UNUSED)
 {
   GError *error = NULL;
   CtkWidgetPath *path;
@@ -396,7 +396,7 @@ test_style_priorities_setup (PrioritiesFixture *f,
 
 static void
 test_style_priorities_teardown (PrioritiesFixture *f,
-                                gconstpointer      unused)
+                                gconstpointer      unused G_GNUC_UNUSED)
 {
   g_object_unref (f->blue_provider);
   g_object_unref (f->red_provider);
@@ -406,7 +406,7 @@ test_style_priorities_teardown (PrioritiesFixture *f,
 
 static void
 test_style_priorities_equal (PrioritiesFixture *f,
-                             gconstpointer      unused)
+                             gconstpointer      unused G_GNUC_UNUSED)
 {
   CdkRGBA color, ref_color;
 
@@ -427,7 +427,7 @@ test_style_priorities_equal (PrioritiesFixture *f,
 
 static void
 test_style_priorities_screen_only (PrioritiesFixture *f,
-                                   gconstpointer      unused)
+                                   gconstpointer      unused G_GNUC_UNUSED)
 {
   CdkRGBA color, ref_color;
 
@@ -444,7 +444,7 @@ test_style_priorities_screen_only (PrioritiesFixture *f,
 
 static void
 test_style_priorities_context_only (PrioritiesFixture *f,
-                                    gconstpointer      unused)
+                                    gconstpointer      unused G_GNUC_UNUSED)
 {
   CdkRGBA color, ref_color;
 
@@ -460,7 +460,7 @@ test_style_priorities_context_only (PrioritiesFixture *f,
 
 static void
 test_style_priorities_screen_higher (PrioritiesFixture *f,
-                                     gconstpointer      unused)
+                                     gconstpointer      unused G_GNUC_UNUSED)
 {
   CdkRGBA color, ref_color;
 
@@ -479,7 +479,7 @@ test_style_priorities_screen_higher (PrioritiesFixture *f,
 
 static void
 test_style_priorities_context_higher (PrioritiesFixture *f,
-                                      gconstpointer      unused)
+                                      gconstpointer      unused G_GNUC_UNUSED)
 {
   CdkRGBA color, ref_color;
 
@@ -498,7 +498,7 @@ test_style_priorities_context_higher (PrioritiesFixture *f,
 
 static void
 test_style_priorities_two_screen (PrioritiesFixture *f,
-                                  gconstpointer      unused)
+                                  gconstpointer      unused G_GNUC_UNUSED)
 {
   CdkRGBA color, ref_color;
 
@@ -518,7 +518,7 @@ test_style_priorities_two_screen (PrioritiesFixture *f,
 
 static void
 test_style_priorities_two_context (PrioritiesFixture *f,
-                                   gconstpointer      unused)
+                                   gconstpointer      unused G_GNUC_UNUSED)
 {
   CdkRGBA color, ref_color;
 
@@ -536,7 +536,7 @@ test_style_priorities_two_context (PrioritiesFixture *f,
 
 static void
 test_style_priorities_three_screen_higher (PrioritiesFixture *f,
-                                           gconstpointer      unused)
+                                           gconstpointer      unused G_GNUC_UNUSED)
 {
   CdkRGBA color, ref_color;
 
@@ -558,7 +558,7 @@ test_style_priorities_three_screen_higher (PrioritiesFixture *f,
 
 static void
 test_style_priorities_three_context_higher (PrioritiesFixture *f,
-                                            gconstpointer      unused)
+                                            gconstpointer      unused G_GNUC_UNUSED)
 {
   CdkRGBA color, ref_color;
 

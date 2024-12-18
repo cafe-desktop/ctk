@@ -196,7 +196,7 @@ instance_counts_enabled (void)
 }
 
 static void
-cell_data_data (CtkCellLayout   *layout,
+cell_data_data (CtkCellLayout   *layout G_GNUC_UNUSED,
                 CtkCellRenderer *cell,
                 CtkTreeModel    *model,
                 CtkTreeIter     *iter,
@@ -216,7 +216,7 @@ cell_data_data (CtkCellLayout   *layout,
 }
 
 static void
-cell_data_delta (CtkCellLayout   *layout,
+cell_data_delta (CtkCellLayout   *layout G_GNUC_UNUSED,
                  CtkCellRenderer *cell,
                  CtkTreeModel    *model,
                  CtkTreeIter     *iter,
@@ -253,7 +253,7 @@ type_data_free (gpointer data)
 }
 
 static gboolean
-key_press_event (CtkWidget              *window,
+key_press_event (CtkWidget              *window G_GNUC_UNUSED,
                  CdkEvent               *event,
                  CtkInspectorStatistics *sl)
 {
@@ -311,7 +311,7 @@ match_row (CtkTreeModel *model,
            gint          column,
            const gchar  *key,
            CtkTreeIter  *iter,
-           gpointer      data)
+           gpointer      data G_GNUC_UNUSED)
 {
   gchar *type;
   gboolean match;
@@ -467,5 +467,3 @@ ctk_inspector_statistics_class_init (CtkInspectorStatisticsClass *klass)
   ctk_widget_class_bind_template_child_private (widget_class, CtkInspectorStatistics, excuse);
 
 }
-
-// vim: set et sw=2 ts=2:

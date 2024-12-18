@@ -139,7 +139,7 @@ on_window_realize (CtkWidget  *window,
 }
 
 void
-on_window_unrealize (CtkWidget  *window,
+on_window_unrealize (CtkWidget  *window G_GNUC_UNUSED,
                      FrameStats *frame_stats)
 {
   g_signal_handlers_disconnect_by_func (frame_stats->frame_clock,
@@ -149,7 +149,7 @@ on_window_unrealize (CtkWidget  *window,
 }
 
 void
-on_window_destroy (CtkWidget  *window,
+on_window_destroy (CtkWidget  *window G_GNUC_UNUSED,
                    FrameStats *stats)
 {
   g_free (stats);

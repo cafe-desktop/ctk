@@ -77,7 +77,7 @@ ctk_stack_accessible_class_init (CtkStackAccessibleClass *klass)
 }
 
 static void
-ctk_stack_accessible_init (CtkStackAccessible *bar) {}
+ctk_stack_accessible_init (CtkStackAccessible *bar G_GNUC_UNUSED) {}
 
 
 void

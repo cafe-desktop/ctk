@@ -466,7 +466,7 @@ ctk_combo_box_measure (CtkCssGadget   *gadget,
                        int            *natural,
                        int            *minimum_baseline,
                        int            *natural_baseline,
-                       gpointer        data)
+                       gpointer        data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkComboBox *combo_box = CTK_COMBO_BOX (widget);
@@ -484,7 +484,7 @@ ctk_combo_box_allocate (CtkCssGadget        *gadget,
                         const CtkAllocation *allocation,
                         int                  baseline,
                         CtkAllocation       *out_clip,
-                        gpointer             data)
+                        gpointer             data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkComboBox *combo_box = CTK_COMBO_BOX (widget);
@@ -531,11 +531,11 @@ ctk_combo_box_allocate (CtkCssGadget        *gadget,
 static gboolean
 ctk_combo_box_render (CtkCssGadget *gadget,
                       cairo_t      *cr,
-                      int           x,
-                      int           y,
-                      int           width,
-                      int           height,
-                      gpointer      data)
+                      int           x G_GNUC_UNUSED,
+                      int           y G_GNUC_UNUSED,
+                      int           width G_GNUC_UNUSED,
+                      int           height G_GNUC_UNUSED,
+                      gpointer      data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkComboBox *combo_box = CTK_COMBO_BOX (widget);
@@ -1539,7 +1539,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS;
 
 static void
 ctk_combo_box_button_state_flags_changed (CtkWidget     *widget,
-                                          CtkStateFlags  previous,
+                                          CtkStateFlags  previous G_GNUC_UNUSED,
                                           gpointer       data)
 {
   CtkComboBox *combo_box = CTK_COMBO_BOX (data);
@@ -1805,7 +1805,7 @@ ctk_combo_box_detacher (CtkWidget *widget,
 }
 
 static gboolean
-ctk_combo_box_grab_broken_event (CtkWidget          *widget,
+ctk_combo_box_grab_broken_event (CtkWidget          *widget G_GNUC_UNUSED,
                                  CdkEventGrabBroken *event,
                                  gpointer            user_data)
 {
@@ -2509,7 +2509,7 @@ ctk_combo_box_forall (CtkContainer *container,
 }
 
 static void
-ctk_combo_box_child_show (CtkWidget *widget,
+ctk_combo_box_child_show (CtkWidget   *widget G_GNUC_UNUSED,
                           CtkComboBox *combo_box)
 {
   CtkComboBoxPrivate *priv = combo_box->priv;
@@ -2519,7 +2519,7 @@ ctk_combo_box_child_show (CtkWidget *widget,
 }
 
 static void
-ctk_combo_box_child_hide (CtkWidget *widget,
+ctk_combo_box_child_hide (CtkWidget   *widget G_GNUC_UNUSED,
                           CtkComboBox *combo_box)
 {
   CtkComboBoxPrivate *priv = combo_box->priv;
@@ -2537,7 +2537,7 @@ typedef struct {
 } SearchData;
 
 static gboolean
-tree_next_func (CtkTreeModel *model,
+tree_next_func (CtkTreeModel *model G_GNUC_UNUSED,
                 CtkTreePath  *path,
                 CtkTreeIter  *iter,
                 gpointer      data)
@@ -2584,7 +2584,7 @@ tree_next (CtkComboBox  *combo,
 }
 
 static gboolean
-tree_prev_func (CtkTreeModel *model,
+tree_prev_func (CtkTreeModel *model G_GNUC_UNUSED,
                 CtkTreePath  *path,
                 CtkTreeIter  *iter,
                 gpointer      data)
@@ -2629,8 +2629,8 @@ tree_prev (CtkComboBox  *combo,
 }
 
 static gboolean
-tree_last_func (CtkTreeModel *model,
-                CtkTreePath  *path,
+tree_last_func (CtkTreeModel *model G_GNUC_UNUSED,
+                CtkTreePath  *path G_GNUC_UNUSED,
                 CtkTreeIter  *iter,
                 gpointer      data)
 {
@@ -2664,8 +2664,8 @@ tree_last (CtkComboBox  *combo,
 
 
 static gboolean
-tree_first_func (CtkTreeModel *model,
-                 CtkTreePath  *path,
+tree_first_func (CtkTreeModel *model G_GNUC_UNUSED,
+                 CtkTreePath  *path G_GNUC_UNUSED,
                  CtkTreeIter  *iter,
                  gpointer      data)
 {
@@ -2796,7 +2796,7 @@ ctk_combo_box_menu_destroy (CtkComboBox *combo_box)
 
 /* callbacks */
 static gboolean
-ctk_combo_box_menu_button_press (CtkWidget      *widget,
+ctk_combo_box_menu_button_press (CtkWidget      *widget G_GNUC_UNUSED,
                                  CdkEventButton *event,
                                  gpointer        user_data)
 {
@@ -2819,7 +2819,7 @@ ctk_combo_box_menu_button_press (CtkWidget      *widget,
 }
 
 static void
-ctk_combo_box_menu_activate (CtkWidget   *menu,
+ctk_combo_box_menu_activate (CtkWidget   *menu G_GNUC_UNUSED,
                              const gchar *path,
                              CtkComboBox *combo_box)
 {
@@ -2865,10 +2865,10 @@ ctk_combo_box_update_sensitivity (CtkComboBox *combo_box)
 }
 
 static void
-ctk_combo_box_model_row_inserted (CtkTreeModel     *model,
-                                  CtkTreePath      *path,
-                                  CtkTreeIter      *iter,
-                                  gpointer          user_data)
+ctk_combo_box_model_row_inserted (CtkTreeModel *model G_GNUC_UNUSED,
+                                  CtkTreePath  *path G_GNUC_UNUSED,
+                                  CtkTreeIter  *iter G_GNUC_UNUSED,
+                                  gpointer      user_data)
 {
   CtkComboBox *combo_box = CTK_COMBO_BOX (user_data);
 
@@ -2879,9 +2879,9 @@ ctk_combo_box_model_row_inserted (CtkTreeModel     *model,
 }
 
 static void
-ctk_combo_box_model_row_deleted (CtkTreeModel     *model,
-                                 CtkTreePath      *path,
-                                 gpointer          user_data)
+ctk_combo_box_model_row_deleted (CtkTreeModel *model G_GNUC_UNUSED,
+                                 CtkTreePath  *path G_GNUC_UNUSED,
+                                 gpointer      user_data)
 {
   CtkComboBox *combo_box = CTK_COMBO_BOX (user_data);
   CtkComboBoxPrivate *priv = combo_box->priv;
@@ -2900,11 +2900,11 @@ ctk_combo_box_model_row_deleted (CtkTreeModel     *model,
 }
 
 static void
-ctk_combo_box_model_rows_reordered (CtkTreeModel    *model,
-                                    CtkTreePath     *path,
-                                    CtkTreeIter     *iter,
-                                    gint            *new_order,
-                                    gpointer         user_data)
+ctk_combo_box_model_rows_reordered (CtkTreeModel *model G_GNUC_UNUSED,
+                                    CtkTreePath  *path,
+                                    CtkTreeIter  *iter,
+                                    gint         *new_order,
+                                    gpointer      user_data)
 {
   ctk_tree_row_reference_reordered (G_OBJECT (user_data), path, iter, new_order);
 }
@@ -2967,10 +2967,10 @@ ctk_combo_box_list_popup_resize (CtkComboBox *combo_box)
 }
 
 static void
-ctk_combo_box_model_row_expanded (CtkTreeModel     *model,
-                                  CtkTreePath      *path,
-                                  CtkTreeIter      *iter,
-                                  gpointer          user_data)
+ctk_combo_box_model_row_expanded (CtkTreeModel *model G_GNUC_UNUSED,
+                                  CtkTreePath  *path G_GNUC_UNUSED,
+                                  CtkTreeIter  *iter G_GNUC_UNUSED,
+                                  gpointer      user_data)
 {
   CtkComboBox *combo_box = CTK_COMBO_BOX (user_data);
 
@@ -3093,7 +3093,7 @@ ctk_combo_box_list_destroy (CtkComboBox *combo_box)
 /* callbacks */
 
 static gboolean
-ctk_combo_box_list_button_pressed (CtkWidget      *widget,
+ctk_combo_box_list_button_pressed (CtkWidget      *widget G_GNUC_UNUSED,
                                    CdkEventButton *event,
                                    gpointer        data)
 {
@@ -3131,7 +3131,7 @@ ctk_combo_box_list_button_pressed (CtkWidget      *widget,
 }
 
 static gboolean
-ctk_combo_box_list_button_released (CtkWidget      *widget,
+ctk_combo_box_list_button_released (CtkWidget      *widget G_GNUC_UNUSED,
                                     CdkEventButton *event,
                                     gpointer        data)
 {
@@ -3342,8 +3342,8 @@ ctk_combo_box_list_scroll_timeout (CtkComboBox *combo_box)
 }
 
 static gboolean
-ctk_combo_box_list_enter_notify (CtkWidget        *widget,
-                                 CdkEventCrossing *event,
+ctk_combo_box_list_enter_notify (CtkWidget        *widget G_GNUC_UNUSED,
+                                 CdkEventCrossing *event G_GNUC_UNUSED,
                                  gpointer          data)
 {
   CtkComboBox *combo_box = CTK_COMBO_BOX (data);
@@ -3357,8 +3357,8 @@ static gboolean
 ctk_combo_box_list_select_func (CtkTreeSelection *selection,
                                 CtkTreeModel     *model,
                                 CtkTreePath      *path,
-                                gboolean          path_currently_selected,
-                                gpointer          data)
+                                gboolean          path_currently_selected G_GNUC_UNUSED,
+                                gpointer          data G_GNUC_UNUSED)
 {
   GList *list, *columns;
   gboolean sensitive = FALSE;
@@ -3405,10 +3405,10 @@ ctk_combo_box_list_select_func (CtkTreeSelection *selection,
 }
 
 static void
-ctk_combo_box_list_row_changed (CtkTreeModel *model,
-                                CtkTreePath  *path,
-                                CtkTreeIter  *iter,
-                                gpointer      data)
+ctk_combo_box_list_row_changed (CtkTreeModel *model G_GNUC_UNUSED,
+                                CtkTreePath  *path G_GNUC_UNUSED,
+                                CtkTreeIter  *iter G_GNUC_UNUSED,
+                                gpointer      data G_GNUC_UNUSED)
 {
   /* XXX Do nothing ? */
 }
@@ -4105,7 +4105,7 @@ ctk_combo_box_real_move_active (CtkComboBox   *combo_box,
 
 static gboolean
 ctk_combo_box_mnemonic_activate (CtkWidget *widget,
-                                 gboolean   group_cycling)
+                                 gboolean   group_cycling G_GNUC_UNUSED)
 {
   CtkComboBox *combo_box = CTK_COMBO_BOX (widget);
 
@@ -4187,7 +4187,7 @@ ctk_combo_box_destroy (CtkWidget *widget)
 }
 
 static void
-ctk_combo_box_entry_contents_changed (CtkEntry *entry,
+ctk_combo_box_entry_contents_changed (CtkEntry *entry G_GNUC_UNUSED,
                                       gpointer  user_data)
 {
   CtkComboBox *combo_box = CTK_COMBO_BOX (user_data);
@@ -4205,7 +4205,7 @@ ctk_combo_box_entry_contents_changed (CtkEntry *entry,
 
 static void
 ctk_combo_box_entry_active_changed (CtkComboBox *combo_box,
-                                    gpointer     user_data)
+                                    gpointer     user_data G_GNUC_UNUSED)
 {
   CtkTreeModel *model;
   CtkTreeIter iter;
@@ -4341,7 +4341,7 @@ ctk_combo_box_finalize (GObject *object)
 }
 
 static gboolean
-ctk_cell_editable_key_press (CtkWidget   *widget,
+ctk_cell_editable_key_press (CtkWidget   *widget G_GNUC_UNUSED,
                              CdkEventKey *event,
                              gpointer     data)
 {
@@ -4386,7 +4386,7 @@ popdown_idle (gpointer data)
 }
 
 static void
-popdown_handler (CtkWidget *widget,
+popdown_handler (CtkWidget *widget G_GNUC_UNUSED,
                  gpointer   data)
 {
   guint id;

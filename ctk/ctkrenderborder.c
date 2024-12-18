@@ -337,7 +337,7 @@ ctk_border_image_render (CtkBorderImage   *image,
 
 static void
 hide_border_sides (double         border[4],
-                   CtkBorderStyle border_style[4],
+                   CtkBorderStyle border_style[4] G_GNUC_UNUSED,
                    guint          hidden_side)
 {
   guint i;

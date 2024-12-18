@@ -73,7 +73,7 @@ typedef struct
 
 static void
 list_store_setup (ListStore     *fixture,
-		  gconstpointer  test_data)
+		  gconstpointer  test_data G_GNUC_UNUSED)
 {
   int i;
 
@@ -88,7 +88,7 @@ list_store_setup (ListStore     *fixture,
 
 static void
 list_store_teardown (ListStore     *fixture,
-		     gconstpointer  test_data)
+		     gconstpointer  test_data G_GNUC_UNUSED)
 {
   g_object_unref (fixture->store);
 }
@@ -475,7 +475,7 @@ list_store_set_gvalue_to_transform (void)
 /* removal */
 static void
 list_store_test_remove_begin (ListStore     *fixture,
-			      gconstpointer  user_data)
+			      gconstpointer  user_data G_GNUC_UNUSED)
 {
   int new_order[5] = { -1, 1, 2, 3, 4 };
   CtkTreePath *path;
@@ -495,7 +495,7 @@ list_store_test_remove_begin (ListStore     *fixture,
 
 static void
 list_store_test_remove_middle (ListStore     *fixture,
-			       gconstpointer  user_data)
+			       gconstpointer  user_data G_GNUC_UNUSED)
 {
   int new_order[5] = { 0, 1, -1, 3, 4 };
   CtkTreePath *path;
@@ -515,7 +515,7 @@ list_store_test_remove_middle (ListStore     *fixture,
 
 static void
 list_store_test_remove_end (ListStore     *fixture,
-			    gconstpointer  user_data)
+			    gconstpointer  user_data G_GNUC_UNUSED)
 {
   int new_order[5] = { 0, 1, 2, 3, -1 };
   CtkTreePath *path;
@@ -534,7 +534,7 @@ list_store_test_remove_end (ListStore     *fixture,
 
 static void
 list_store_test_clear (ListStore     *fixture,
-		       gconstpointer  user_data)
+		       gconstpointer  user_data G_GNUC_UNUSED)
 {
   int i;
 
@@ -550,7 +550,7 @@ list_store_test_clear (ListStore     *fixture,
 
 static void
 list_store_test_reorder (ListStore     *fixture,
-			 gconstpointer  user_data)
+			 gconstpointer  user_data G_GNUC_UNUSED)
 {
   int new_order[5] = { 4, 1, 0, 2, 3 };
 
@@ -562,7 +562,7 @@ list_store_test_reorder (ListStore     *fixture,
 
 static void
 list_store_test_swap_begin (ListStore     *fixture,
-		            gconstpointer  user_data)
+			    gconstpointer  user_data G_GNUC_UNUSED)
 {
   /* We swap nodes 0 and 1 at the beginning */
   int new_order[5] = { 1, 0, 2, 3, 4 };
@@ -579,7 +579,7 @@ list_store_test_swap_begin (ListStore     *fixture,
 
 static void
 list_store_test_swap_middle_next (ListStore     *fixture,
-		                  gconstpointer  user_data)
+				  gconstpointer  user_data G_GNUC_UNUSED)
 {
   /* We swap nodes 2 and 3 in the middle that are next to each other */
   int new_order[5] = { 0, 1, 3, 2, 4 };
@@ -596,7 +596,7 @@ list_store_test_swap_middle_next (ListStore     *fixture,
 
 static void
 list_store_test_swap_middle_apart (ListStore     *fixture,
-		                   gconstpointer  user_data)
+				   gconstpointer  user_data G_GNUC_UNUSED)
 {
   /* We swap nodes 1 and 3 in the middle that are apart from each other */
   int new_order[5] = { 0, 3, 2, 1, 4 };
@@ -613,7 +613,7 @@ list_store_test_swap_middle_apart (ListStore     *fixture,
 
 static void
 list_store_test_swap_end (ListStore     *fixture,
-		          gconstpointer  user_data)
+			  gconstpointer  user_data G_GNUC_UNUSED)
 {
   /* We swap nodes 3 and 4 at the end */
   int new_order[5] = { 0, 1, 2, 4, 3 };
@@ -656,7 +656,7 @@ list_store_test_swap_single (void)
 
 static void
 list_store_test_move_after_from_start (ListStore     *fixture,
-				       gconstpointer  user_data)
+				       gconstpointer  user_data G_GNUC_UNUSED)
 {
   /* We move node 0 after 2 */
   int new_order[5] = { 1, 2, 0, 3, 4 };
@@ -673,7 +673,7 @@ list_store_test_move_after_from_start (ListStore     *fixture,
 
 static void
 list_store_test_move_after_next (ListStore     *fixture,
-			         gconstpointer  user_data)
+				 gconstpointer  user_data G_GNUC_UNUSED)
 {
   /* We move node 2 after 3 */
   int new_order[5] = { 0, 1, 3, 2, 4 };
@@ -690,7 +690,7 @@ list_store_test_move_after_next (ListStore     *fixture,
 
 static void
 list_store_test_move_after_apart (ListStore     *fixture,
-			          gconstpointer  user_data)
+				  gconstpointer  user_data G_GNUC_UNUSED)
 {
   /* We move node 1 after 3 */
   int new_order[5] = { 0, 2, 3, 1, 4 };
@@ -707,7 +707,7 @@ list_store_test_move_after_apart (ListStore     *fixture,
 
 static void
 list_store_test_move_after_end (ListStore     *fixture,
-			        gconstpointer  user_data)
+				gconstpointer  user_data G_GNUC_UNUSED)
 {
   /* We move node 2 after 4 */
   int new_order[5] = { 0, 1, 3, 4, 2 };
@@ -724,7 +724,7 @@ list_store_test_move_after_end (ListStore     *fixture,
 
 static void
 list_store_test_move_after_from_end (ListStore     *fixture,
-			             gconstpointer  user_data)
+				     gconstpointer  user_data G_GNUC_UNUSED)
 {
   /* We move node 4 after 1 */
   int new_order[5] = { 0, 1, 4, 2, 3 };
@@ -741,7 +741,7 @@ list_store_test_move_after_from_end (ListStore     *fixture,
 
 static void
 list_store_test_move_after_change_ends (ListStore     *fixture,
-			                gconstpointer  user_data)
+					gconstpointer  user_data G_GNUC_UNUSED)
 {
   /* We move 0 after 4, this will cause both the head and tail ends to
    * change.
@@ -760,7 +760,7 @@ list_store_test_move_after_change_ends (ListStore     *fixture,
 
 static void
 list_store_test_move_after_NULL (ListStore     *fixture,
-			         gconstpointer  user_data)
+				 gconstpointer  user_data G_GNUC_UNUSED)
 {
   /* We move node 2, NULL should prepend */
   int new_order[5] = { 2, 0, 1, 3, 4 };
@@ -806,7 +806,7 @@ list_store_test_move_after_single (void)
 
 static void
 list_store_test_move_before_next (ListStore     *fixture,
-		                  gconstpointer  user_data)
+				  gconstpointer  user_data G_GNUC_UNUSED)
 {
   /* We move node 3 before 2 */
   int new_order[5] = { 0, 1, 3, 2, 4 };
@@ -823,7 +823,7 @@ list_store_test_move_before_next (ListStore     *fixture,
 
 static void
 list_store_test_move_before_apart (ListStore     *fixture,
-				   gconstpointer  user_data)
+				   gconstpointer  user_data G_GNUC_UNUSED)
 {
   /* We move node 1 before 3 */
   int new_order[5] = { 0, 2, 1, 3, 4 };
@@ -840,7 +840,7 @@ list_store_test_move_before_apart (ListStore     *fixture,
 
 static void
 list_store_test_move_before_to_start (ListStore     *fixture,
-				      gconstpointer  user_data)
+				      gconstpointer  user_data G_GNUC_UNUSED)
 {
   /* We move node 2 before 0 */
   int new_order[5] = { 2, 0, 1, 3, 4 };
@@ -857,7 +857,7 @@ list_store_test_move_before_to_start (ListStore     *fixture,
 
 static void
 list_store_test_move_before_from_end (ListStore     *fixture,
-			              gconstpointer  user_data)
+			              gconstpointer  user_data G_GNUC_UNUSED)
 {
   /* We move node 4 before 2 (replace end) */
   int new_order[5] = { 0, 1, 4, 2, 3 };
@@ -874,7 +874,7 @@ list_store_test_move_before_from_end (ListStore     *fixture,
 
 static void
 list_store_test_move_before_change_ends (ListStore     *fixture,
-				         gconstpointer  user_data)
+				         gconstpointer  user_data G_GNUC_UNUSED)
 {
   /* We move node 4 before 0 */
   int new_order[5] = { 4, 0, 1, 2, 3 };
@@ -891,7 +891,7 @@ list_store_test_move_before_change_ends (ListStore     *fixture,
 
 static void
 list_store_test_move_before_NULL (ListStore     *fixture,
-			          gconstpointer  user_data)
+			          gconstpointer  user_data G_GNUC_UNUSED)
 {
   /* We move node 2, NULL should append */
   int new_order[5] = { 0, 1, 3, 4, 2 };
@@ -938,7 +938,7 @@ list_store_test_move_before_single (void)
 
 static void
 list_store_test_iter_previous_invalid (ListStore     *fixture,
-                                       gconstpointer  user_data)
+                                       gconstpointer  user_data G_GNUC_UNUSED)
 {
   CtkTreeIter iter;
 
@@ -952,7 +952,7 @@ list_store_test_iter_previous_invalid (ListStore     *fixture,
 
 static void
 list_store_test_iter_next_invalid (ListStore     *fixture,
-                                   gconstpointer  user_data)
+                                   gconstpointer  user_data G_GNUC_UNUSED)
 {
   CtkTreePath *path;
   CtkTreeIter iter;
@@ -969,7 +969,7 @@ list_store_test_iter_next_invalid (ListStore     *fixture,
 
 static void
 list_store_test_iter_children_invalid (ListStore     *fixture,
-                                       gconstpointer  user_data)
+                                       gconstpointer  user_data G_GNUC_UNUSED)
 {
   CtkTreeIter iter, child;
 
@@ -984,7 +984,7 @@ list_store_test_iter_children_invalid (ListStore     *fixture,
 
 static void
 list_store_test_iter_nth_child_invalid (ListStore     *fixture,
-                                        gconstpointer  user_data)
+                                        gconstpointer  user_data G_GNUC_UNUSED)
 {
   CtkTreeIter iter, child;
 
@@ -999,7 +999,7 @@ list_store_test_iter_nth_child_invalid (ListStore     *fixture,
 
 static void
 list_store_test_iter_parent_invalid (ListStore     *fixture,
-                                     gconstpointer  user_data)
+                                     gconstpointer  user_data G_GNUC_UNUSED)
 {
   CtkTreeIter iter, child;
 

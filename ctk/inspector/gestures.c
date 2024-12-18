@@ -76,7 +76,8 @@ clear_all (CtkInspectorGestures *sl)
 }
 
 static void
-phase_changed_cb (CtkComboBox *combo, CtkInspectorGestures *sl)
+phase_changed_cb (CtkComboBox          *combo,
+                  CtkInspectorGestures *sl G_GNUC_UNUSED)
 {
   CtkWidget *row;
   CtkPropagationPhase phase;
@@ -89,7 +90,7 @@ phase_changed_cb (CtkComboBox *combo, CtkInspectorGestures *sl)
 }
 
 static void
-row_activated (CtkListBox           *box,
+row_activated (CtkListBox           *box G_GNUC_UNUSED,
                CtkListBoxRow        *row,
                CtkInspectorGestures *sl)
 {
@@ -101,7 +102,7 @@ row_activated (CtkListBox           *box,
 
 static void
 add_gesture (CtkInspectorGestures *sl,
-             GObject              *object,
+             GObject              *object G_GNUC_UNUSED,
              CtkWidget            *listbox,
              CtkGesture           *gesture,
              CtkPropagationPhase   phase)

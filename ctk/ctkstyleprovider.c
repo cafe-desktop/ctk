@@ -50,7 +50,7 @@ ctk_style_provider_get_type (void)
 }
 
 static void
-ctk_style_provider_iface_init (gpointer g_iface)
+ctk_style_provider_iface_init (gpointer g_iface G_GNUC_UNUSED)
 {
 }
 

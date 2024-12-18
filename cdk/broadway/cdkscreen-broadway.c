@@ -75,7 +75,7 @@ cdk_broadway_screen_get_height_mm (CdkScreen *screen)
 }
 
 static gint
-cdk_broadway_screen_get_number (CdkScreen *screen)
+cdk_broadway_screen_get_number (CdkScreen *screen G_GNUC_UNUSED)
 {
   return 0;
 }
@@ -162,7 +162,7 @@ cdk_broadway_screen_get_rgba_visual (CdkScreen *screen)
 
 CdkScreen *
 _cdk_broadway_screen_new (CdkDisplay *display,
-			  gint	 screen_number)
+			  gint        screen_number G_GNUC_UNUSED)
 {
   CdkScreen *screen;
   CdkBroadwayScreen *broadway_screen;
@@ -183,51 +183,51 @@ _cdk_broadway_screen_new (CdkDisplay *display,
  * is_composited to avoid a race condition here.
  */
 void
-_cdk_broadway_screen_setup (CdkScreen *screen)
+_cdk_broadway_screen_setup (CdkScreen *screen G_GNUC_UNUSED)
 {
 }
 
 static gboolean
-cdk_broadway_screen_is_composited (CdkScreen *screen)
+cdk_broadway_screen_is_composited (CdkScreen *screen G_GNUC_UNUSED)
 {
   return TRUE;
 }
 
 
 static gchar *
-cdk_broadway_screen_make_display_name (CdkScreen *screen)
+cdk_broadway_screen_make_display_name (CdkScreen *screen G_GNUC_UNUSED)
 {
   return g_strdup ("browser");
 }
 
 static CdkWindow *
-cdk_broadway_screen_get_active_window (CdkScreen *screen)
+cdk_broadway_screen_get_active_window (CdkScreen *screen G_GNUC_UNUSED)
 {
   return NULL;
 }
 
 static GList *
-cdk_broadway_screen_get_window_stack (CdkScreen *screen)
+cdk_broadway_screen_get_window_stack (CdkScreen *screen G_GNUC_UNUSED)
 {
   return NULL;
 }
 
 static void
-cdk_broadway_screen_broadcast_client_message (CdkScreen *screen,
-					      CdkEvent  *event)
+cdk_broadway_screen_broadcast_client_message (CdkScreen *screen G_GNUC_UNUSED,
+					      CdkEvent  *event G_GNUC_UNUSED)
 {
 }
 
 static gboolean
-cdk_broadway_screen_get_setting (CdkScreen   *screen,
-				 const gchar *name,
-				 GValue      *value)
+cdk_broadway_screen_get_setting (CdkScreen   *screen G_GNUC_UNUSED,
+				 const gchar *name G_GNUC_UNUSED,
+				 GValue      *value G_GNUC_UNUSED)
 {
   return FALSE;
 }
 
 void
-_cdk_broadway_screen_events_init (CdkScreen *screen)
+_cdk_broadway_screen_events_init (CdkScreen *screen G_GNUC_UNUSED)
 {
 }
 

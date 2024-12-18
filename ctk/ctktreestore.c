@@ -505,7 +505,7 @@ ctk_tree_store_finalize (GObject *object)
 
 
 static CtkTreeModelFlags
-ctk_tree_store_get_flags (CtkTreeModel *tree_model)
+ctk_tree_store_get_flags (CtkTreeModel *tree_model G_GNUC_UNUSED)
 {
   return CTK_TREE_MODEL_ITERS_PERSIST;
 }
@@ -1938,8 +1938,8 @@ ctk_tree_store_iter_is_valid (CtkTreeStore *tree_store,
 /* DND */
 
 
-static gboolean real_ctk_tree_store_row_draggable (CtkTreeDragSource *drag_source,
-                                                   CtkTreePath       *path)
+static gboolean real_ctk_tree_store_row_draggable (CtkTreeDragSource *drag_source G_GNUC_UNUSED,
+                                                   CtkTreePath       *path G_GNUC_UNUSED)
 {
   return TRUE;
 }
@@ -2234,7 +2234,7 @@ typedef struct _SortTuple
 static gint
 ctk_tree_store_reorder_func (gconstpointer a,
 			     gconstpointer b,
-			     gpointer      user_data)
+			     gpointer      user_data G_GNUC_UNUSED)
 {
   SortTuple *a_reorder;
   SortTuple *b_reorder;
@@ -3391,10 +3391,10 @@ tree_model_start_element (GMarkupParseContext  *context,
 }
 
 static void
-tree_model_end_element (GMarkupParseContext  *context,
+tree_model_end_element (GMarkupParseContext  *context G_GNUC_UNUSED,
                         const gchar          *element_name,
                         gpointer              user_data,
-                        GError              **error)
+                        GError              **error G_GNUC_UNUSED)
 {
   GSListSubParserData *data = (GSListSubParserData*)user_data;
 
@@ -3469,9 +3469,9 @@ ctk_tree_store_buildable_custom_tag_start (CtkBuildable  *buildable,
 }
 
 static void
-ctk_tree_store_buildable_custom_finished (CtkBuildable *buildable,
-                                          CtkBuilder   *builder,
-                                          GObject      *child,
+ctk_tree_store_buildable_custom_finished (CtkBuildable *buildable G_GNUC_UNUSED,
+                                          CtkBuilder   *builder G_GNUC_UNUSED,
+                                          GObject      *child G_GNUC_UNUSED,
                                           const gchar  *tagname,
                                           gpointer      user_data)
 {

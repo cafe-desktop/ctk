@@ -65,7 +65,7 @@ ctk_progress_bar_accessible_class_init (CtkProgressBarAccessibleClass *klass)
 }
 
 static void
-ctk_progress_bar_accessible_init (CtkProgressBarAccessible *bar)
+ctk_progress_bar_accessible_init (CtkProgressBarAccessible *bar G_GNUC_UNUSED)
 {
 }
 
@@ -83,7 +83,7 @@ ctk_progress_bar_accessible_get_current_value (AtkValue *obj,
 }
 
 static void
-ctk_progress_bar_accessible_get_maximum_value (AtkValue *obj,
+ctk_progress_bar_accessible_get_maximum_value (AtkValue *obj G_GNUC_UNUSED,
                                                GValue   *value)
 {
   memset (value, 0, sizeof (GValue));
@@ -92,7 +92,7 @@ ctk_progress_bar_accessible_get_maximum_value (AtkValue *obj,
 }
 
 static void
-ctk_progress_bar_accessible_get_minimum_value (AtkValue *obj,
+ctk_progress_bar_accessible_get_minimum_value (AtkValue *obj G_GNUC_UNUSED,
                                                GValue   *value)
 {
   memset (value, 0, sizeof (GValue));
@@ -114,7 +114,7 @@ ctk_progress_bar_accessible_get_value_and_text (AtkValue  *obj,
 }
 
 static AtkRange *
-ctk_progress_bar_accessible_get_range (AtkValue *obj)
+ctk_progress_bar_accessible_get_range (AtkValue *obj G_GNUC_UNUSED)
 {
   return atk_range_new (0.0, 1.0, NULL);
 }

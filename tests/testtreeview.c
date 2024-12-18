@@ -163,7 +163,7 @@ get_model_types (void)
 }
 
 static void
-toggled_callback (CtkCellRendererToggle *celltoggle,
+toggled_callback (CtkCellRendererToggle *celltoggle G_GNUC_UNUSED,
                   gchar                 *path_string,
                   CtkTreeView           *tree_view)
 {
@@ -235,10 +235,10 @@ toggled_callback (CtkCellRendererToggle *celltoggle,
 }
 
 static void
-edited_callback (CtkCellRendererText *renderer,
-		 const gchar   *path_string,
-		 const gchar   *new_text,
-		 CtkTreeView  *tree_view)
+edited_callback (CtkCellRendererText *renderer G_GNUC_UNUSED,
+		 const gchar         *path_string,
+		 const gchar         *new_text,
+		 CtkTreeView         *tree_view)
 {
   CtkTreeModel *model = NULL;
   CtkTreeModelSort *sort_model = NULL;
@@ -633,10 +633,10 @@ columns_selected (CtkComboBox *combo_box, gpointer data)
 }
 
 void
-on_row_activated (CtkTreeView       *tree_view,
-                  CtkTreePath       *path,
-                  CtkTreeViewColumn *column,
-                  gpointer           user_data)
+on_row_activated (CtkTreeView       *tree_view G_GNUC_UNUSED,
+                  CtkTreePath       *path G_GNUC_UNUSED,
+                  CtkTreeViewColumn *column G_GNUC_UNUSED,
+                  gpointer           user_data G_GNUC_UNUSED)
 {
   g_print ("Row activated\n");
 }
@@ -862,13 +862,13 @@ static GType column_types[] = {
 };
   
 static gint
-ctk_real_model_types_get_n_columns (CtkTreeModel *tree_model)
+ctk_real_model_types_get_n_columns (CtkTreeModel *tree_model G_GNUC_UNUSED)
 {
   return G_N_ELEMENTS (column_types);
 }
 
 static GType
-ctk_real_model_types_get_column_type (CtkTreeModel *tree_model,
+ctk_real_model_types_get_column_type (CtkTreeModel *tree_model G_GNUC_UNUSED,
                                       gint          index)
 {
   g_return_val_if_fail (index < G_N_ELEMENTS (column_types), G_TYPE_INVALID);
@@ -936,7 +936,7 @@ ctk_real_model_types_get_path (CtkTreeModel *tree_model,
 }
 
 static void
-ctk_real_model_types_get_value (CtkTreeModel *tree_model,
+ctk_real_model_types_get_value (CtkTreeModel *tree_model G_GNUC_UNUSED,
                                 CtkTreeIter  *iter,
                                 gint          column,
                                 GValue       *value)
@@ -970,7 +970,7 @@ ctk_real_model_types_get_value (CtkTreeModel *tree_model,
 }
 
 static gboolean
-ctk_real_model_types_iter_next (CtkTreeModel  *tree_model,
+ctk_real_model_types_iter_next (CtkTreeModel  *tree_model G_GNUC_UNUSED,
                                 CtkTreeIter   *iter)
 {
   
@@ -1023,7 +1023,7 @@ ctk_real_model_types_iter_next (CtkTreeModel  *tree_model,
 }
 
 static gboolean
-ctk_real_model_types_iter_children (CtkTreeModel *tree_model,
+ctk_real_model_types_iter_children (CtkTreeModel *tree_model G_GNUC_UNUSED,
                                     CtkTreeIter  *iter,
                                     CtkTreeIter  *parent)
 {
@@ -1048,7 +1048,7 @@ ctk_real_model_types_iter_children (CtkTreeModel *tree_model,
 }
 
 static gboolean
-ctk_real_model_types_iter_has_child (CtkTreeModel *tree_model,
+ctk_real_model_types_iter_has_child (CtkTreeModel *tree_model G_GNUC_UNUSED,
                                      CtkTreeIter  *iter)
 {
   GType type;
@@ -1071,7 +1071,7 @@ ctk_real_model_types_iter_has_child (CtkTreeModel *tree_model,
 }
 
 static gint
-ctk_real_model_types_iter_n_children (CtkTreeModel *tree_model,
+ctk_real_model_types_iter_n_children (CtkTreeModel *tree_model G_GNUC_UNUSED,
                                       CtkTreeIter  *iter)
 {
   if (iter == NULL)
@@ -1095,7 +1095,7 @@ ctk_real_model_types_iter_n_children (CtkTreeModel *tree_model,
 }
 
 static gboolean
-ctk_real_model_types_iter_nth_child (CtkTreeModel *tree_model,
+ctk_real_model_types_iter_nth_child (CtkTreeModel *tree_model G_GNUC_UNUSED,
                                      CtkTreeIter  *iter,
                                      CtkTreeIter  *parent,
                                      gint          n)
@@ -1138,7 +1138,7 @@ ctk_real_model_types_iter_nth_child (CtkTreeModel *tree_model,
 }
 
 static gboolean
-ctk_real_model_types_iter_parent (CtkTreeModel *tree_model,
+ctk_real_model_types_iter_parent (CtkTreeModel *tree_model G_GNUC_UNUSED,
                                   CtkTreeIter  *iter,
                                   CtkTreeIter  *child)
 {

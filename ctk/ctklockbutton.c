@@ -394,8 +394,8 @@ update_state (CtkLockButton *button)
 }
 
 static void
-on_permission_changed (GPermission *permission,
-                       GParamSpec  *pspec,
+on_permission_changed (GPermission *permission G_GNUC_UNUSED,
+                       GParamSpec  *pspec G_GNUC_UNUSED,
                        gpointer     user_data)
 {
   CtkLockButton *button = CTK_LOCK_BUTTON (user_data);
@@ -404,7 +404,7 @@ on_permission_changed (GPermission *permission,
 }
 
 static void
-acquire_cb (GObject      *source,
+acquire_cb (GObject      *source G_GNUC_UNUSED,
             GAsyncResult *result,
             gpointer      user_data)
 {
@@ -426,7 +426,7 @@ acquire_cb (GObject      *source,
 }
 
 static void
-release_cb (GObject      *source,
+release_cb (GObject      *source G_GNUC_UNUSED,
             GAsyncResult *result,
             gpointer      user_data)
 {

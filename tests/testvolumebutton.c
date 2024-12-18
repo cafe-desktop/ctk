@@ -18,15 +18,15 @@
 #include <ctk/ctk.h>
 
 static void
-value_changed (CtkWidget *button,
+value_changed (CtkWidget *button G_GNUC_UNUSED,
                gdouble volume,
-               gpointer user_data)
+               gpointer user_data G_GNUC_UNUSED)
 {
   g_message ("volume changed to %f", volume);
 }
 
 static void
-toggle_orientation (CtkWidget *button,
+toggle_orientation (CtkWidget *button G_GNUC_UNUSED,
                     CtkWidget *scalebutton)
 {
   if (ctk_orientable_get_orientation (CTK_ORIENTABLE (scalebutton)) ==
@@ -44,8 +44,8 @@ toggle_orientation (CtkWidget *button,
 
 static void
 response_cb (CtkDialog *dialog,
-             gint       arg1,
-             gpointer   user_data)
+             gint       arg1 G_GNUC_UNUSED,
+             gpointer   user_data G_GNUC_UNUSED)
 {
   ctk_widget_destroy (CTK_WIDGET (dialog));
 }

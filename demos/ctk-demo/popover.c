@@ -33,7 +33,7 @@ create_popover (CtkWidget       *parent,
 
 static CtkWidget *
 create_complex_popover (CtkWidget       *parent,
-                        CtkPositionType  pos)
+                        CtkPositionType  pos G_GNUC_UNUSED)
 {
   CtkWidget *popover, *window, *content;
   CtkBuilder *builder;
@@ -56,7 +56,7 @@ create_complex_popover (CtkWidget       *parent,
 
 static void
 entry_size_allocate_cb (CtkEntry      *entry,
-                        CtkAllocation *allocation,
+                        CtkAllocation *allocation G_GNUC_UNUSED,
                         gpointer       user_data)
 {
   CtkEntryIconPosition popover_pos;
@@ -76,7 +76,7 @@ entry_size_allocate_cb (CtkEntry      *entry,
 static void
 entry_icon_press_cb (CtkEntry             *entry,
                      CtkEntryIconPosition  icon_pos,
-                     CdkEvent             *event,
+                     CdkEvent             *event G_GNUC_UNUSED,
                      gpointer              user_data)
 {
   CtkWidget *popover = user_data;
@@ -92,7 +92,7 @@ entry_icon_press_cb (CtkEntry             *entry,
 
 static void
 day_selected_cb (CtkCalendar *calendar,
-                 gpointer     user_data)
+                 gpointer     user_data G_GNUC_UNUSED)
 {
   cairo_rectangle_int_t rect;
   CtkAllocation allocation;
@@ -123,7 +123,7 @@ day_selected_cb (CtkCalendar *calendar,
 }
 
 CtkWidget *
-do_popover (CtkWidget *do_widget)
+do_popover (CtkWidget *do_widget G_GNUC_UNUSED)
 {
   static CtkWidget *window = NULL;
 

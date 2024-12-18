@@ -48,6 +48,6 @@ ctk_scale_accessible_class_init (CtkScaleAccessibleClass *klass)
 }
 
 static void
-ctk_scale_accessible_init (CtkScaleAccessible *scale)
+ctk_scale_accessible_init (CtkScaleAccessible *scale G_GNUC_UNUSED)
 {
 }

@@ -49,7 +49,7 @@ cell_data_func (CtkTreeViewColumn *col,
                 CtkCellRenderer   *cell,
                 CtkTreeModel      *model,
                 CtkTreeIter       *iter,
-                gpointer           data)
+                gpointer           data G_GNUC_UNUSED)
 {
   gint num;
   GValue gvalue = { 0, };

@@ -2943,8 +2943,8 @@ find_word_end_func (const PangoLogAttr *attrs,
 static gboolean
 is_word_end_func (const PangoLogAttr *attrs,
                   gint                offset,
-                  gint                min_offset,
-                  gint                len)
+                  gint                min_offset G_GNUC_UNUSED,
+                  gint                len G_GNUC_UNUSED)
 {
   return attrs[offset].is_word_end;
 }
@@ -2952,7 +2952,7 @@ is_word_end_func (const PangoLogAttr *attrs,
 static gboolean
 find_word_start_func (const PangoLogAttr *attrs,
                       gint                offset,
-                      gint                len,
+                      gint                len G_GNUC_UNUSED,
                       gint               *found_offset,
                       gboolean            already_moved_initially)
 {
@@ -2977,8 +2977,8 @@ find_word_start_func (const PangoLogAttr *attrs,
 static gboolean
 is_word_start_func (const PangoLogAttr *attrs,
                     gint                offset,
-                    gint                min_offset,
-                    gint                len)
+                    gint                min_offset G_GNUC_UNUSED,
+                    gint                len G_GNUC_UNUSED)
 {
   return attrs[offset].is_word_start;
 }
@@ -2987,7 +2987,7 @@ static gboolean
 inside_word_func (const PangoLogAttr *attrs,
                   gint                offset,
                   gint                min_offset,
-                  gint                len)
+                  gint                len G_GNUC_UNUSED)
 {
   /* Find next word start or end */
   while (offset >= min_offset &&
@@ -3030,8 +3030,8 @@ find_sentence_end_func (const PangoLogAttr *attrs,
 static gboolean
 is_sentence_end_func (const PangoLogAttr *attrs,
                       gint                offset,
-                      gint                min_offset,
-                      gint                len)
+                      gint                min_offset G_GNUC_UNUSED,
+                      gint                len G_GNUC_UNUSED)
 {
   return attrs[offset].is_sentence_end;
 }
@@ -3039,7 +3039,7 @@ is_sentence_end_func (const PangoLogAttr *attrs,
 static gboolean
 find_sentence_start_func (const PangoLogAttr *attrs,
                           gint                offset,
-                          gint                len,
+                          gint                len G_GNUC_UNUSED,
                           gint               *found_offset,
                           gboolean            already_moved_initially)
 {
@@ -3064,8 +3064,8 @@ find_sentence_start_func (const PangoLogAttr *attrs,
 static gboolean
 is_sentence_start_func (const PangoLogAttr *attrs,
                         gint                offset,
-                        gint                min_offset,
-                        gint                len)
+                        gint                min_offset G_GNUC_UNUSED,
+                        gint                len G_GNUC_UNUSED)
 {
   return attrs[offset].is_sentence_start;
 }
@@ -3074,7 +3074,7 @@ static gboolean
 inside_sentence_func (const PangoLogAttr *attrs,
                       gint                offset,
                       gint                min_offset,
-                      gint                len)
+                      gint                len G_GNUC_UNUSED)
 {
   /* Find next sentence start or end */
   while (!(attrs[offset].is_sentence_start || attrs[offset].is_sentence_end))
@@ -3624,7 +3624,7 @@ find_forward_cursor_pos_func (const PangoLogAttr *attrs,
 static gboolean
 find_backward_cursor_pos_func (const PangoLogAttr *attrs,
                                gint                offset,
-                               gint                len,
+                               gint                len G_GNUC_UNUSED,
                                gint               *found_offset,
                                gboolean            already_moved_initially)
 {
@@ -3647,9 +3647,9 @@ find_backward_cursor_pos_func (const PangoLogAttr *attrs,
 
 static gboolean
 is_cursor_pos_func (const PangoLogAttr *attrs,
-                    gint          offset,
-                    gint          min_offset,
-                    gint          len)
+                    gint                offset,
+                    gint                min_offset G_GNUC_UNUSED,
+                    gint                len G_GNUC_UNUSED)
 {
   return attrs[offset].is_cursor_position;
 }

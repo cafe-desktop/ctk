@@ -62,7 +62,7 @@ ctk_tree_sortable_get_type (void)
 }
 
 static void
-ctk_tree_sortable_base_init (gpointer g_class)
+ctk_tree_sortable_base_init (gpointer g_class G_GNUC_UNUSED)
 {
   static gboolean initialized = FALSE;
 

@@ -111,7 +111,7 @@ entry_set_rgba (CtkColorEditor *editor,
 }
 
 static void
-entry_apply (CtkWidget      *entry,
+entry_apply (CtkWidget      *entry G_GNUC_UNUSED,
              CtkColorEditor *editor)
 {
   CdkRGBA color;
@@ -134,7 +134,7 @@ entry_apply (CtkWidget      *entry,
 
 static gboolean
 entry_focus_out (CtkWidget      *entry,
-                 CdkEventFocus  *event,
+                 CdkEventFocus  *event G_GNUC_UNUSED,
                  CtkColorEditor *editor)
 {
   entry_apply (entry, editor);
@@ -142,8 +142,8 @@ entry_focus_out (CtkWidget      *entry,
 }
 
 static void
-entry_text_changed (CtkWidget      *entry,
-                    GParamSpec     *pspec,
+entry_text_changed (CtkWidget      *entry G_GNUC_UNUSED,
+                    GParamSpec     *pspec G_GNUC_UNUSED,
                     CtkColorEditor *editor)
 {
   editor->priv->text_changed = TRUE;
@@ -233,7 +233,7 @@ popup_edit (CtkWidget      *widget,
 }
 
 static gboolean
-popup_key_press (CtkWidget      *popup,
+popup_key_press (CtkWidget      *popup G_GNUC_UNUSED,
                  CdkEventKey    *event,
                  CtkColorEditor *editor)
 {
@@ -343,7 +343,7 @@ scaled_adjustment (CtkAdjustment *a,
 static gboolean
 popup_draw (CtkWidget      *popup,
             cairo_t        *cr,
-            CtkColorEditor *editor)
+            CtkColorEditor *editor G_GNUC_UNUSED)
 {
   CtkStyleContext *context;
   gint width, height;
@@ -381,7 +381,7 @@ color_picked (GObject      *source,
 }
 
 static void
-pick_color (CtkButton      *button,
+pick_color (CtkButton      *button G_GNUC_UNUSED,
             CtkColorEditor *editor)
 {
   ctk_color_picker_pick (editor->priv->picker, color_picked, editor);

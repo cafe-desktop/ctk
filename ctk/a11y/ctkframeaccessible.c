@@ -60,6 +60,6 @@ ctk_frame_accessible_class_init (CtkFrameAccessibleClass *klass)
 }
 
 static void
-ctk_frame_accessible_init (CtkFrameAccessible *frame)
+ctk_frame_accessible_init (CtkFrameAccessible *frame G_GNUC_UNUSED)
 {
 }

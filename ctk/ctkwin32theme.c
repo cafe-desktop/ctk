@@ -106,7 +106,7 @@ ctk_win32_theme_ref (CtkWin32Theme *theme)
 }
 
 static gboolean
-ctk_win32_theme_close (CtkWin32Theme *theme)
+ctk_win32_theme_close (CtkWin32Theme *theme G_GNUC_UNUSED)
 {
 #ifdef G_OS_WIN32
   if (theme->htheme)
@@ -462,7 +462,7 @@ ctk_win32_theme_get_part_size (const CtkWin32Theme  *theme,
 }
 
 int
-ctk_win32_theme_get_size (CtkWin32Theme *theme,
+ctk_win32_theme_get_size (CtkWin32Theme *theme G_GNUC_UNUSED,
 			  int            id)
 {
 #ifdef G_OS_WIN32
@@ -485,7 +485,7 @@ ctk_win32_theme_get_size (CtkWin32Theme *theme,
 }
 
 void
-ctk_win32_theme_get_color (CtkWin32Theme *theme,
+ctk_win32_theme_get_color (CtkWin32Theme *theme G_GNUC_UNUSED,
                            gint           id,
                            CdkRGBA       *color)
 {

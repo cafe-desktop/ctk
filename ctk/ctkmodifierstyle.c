@@ -65,8 +65,8 @@ _ctk_modifier_style_init (CtkModifierStyle *modifier_style)
 
 static gboolean
 ctk_modifier_style_get_style_property (CtkStyleProvider *provider,
-                                       CtkWidgetPath    *path,
-                                       CtkStateFlags     state,
+                                       CtkWidgetPath    *path G_GNUC_UNUSED,
+                                       CtkStateFlags     state G_GNUC_UNUSED,
                                        GParamSpec       *pspec,
                                        GValue           *value)
 {

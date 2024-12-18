@@ -458,7 +458,7 @@ entry_key_press (CtkEntry *entry, CdkEventKey *event)
 }
 
 CtkWidget *
-do_font_features (CtkWidget *do_widget)
+do_font_features (CtkWidget *do_widget G_GNUC_UNUSED)
 {
   static CtkWidget *window = NULL;
 

@@ -217,9 +217,9 @@ cdk_gl_blit_region (CdkWindow *window, cairo_region_t *region)
 }
 
 static void
-cdk_x11_gl_context_end_frame (CdkGLContext *context,
+cdk_x11_gl_context_end_frame (CdkGLContext   *context,
                               cairo_region_t *painted,
-                              cairo_region_t *damage)
+                              cairo_region_t *damage G_GNUC_UNUSED)
 {
   CdkX11GLContext *context_x11 = CDK_X11_GL_CONTEXT (context);
   CdkWindow *window = cdk_gl_context_get_window (context);

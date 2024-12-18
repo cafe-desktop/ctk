@@ -94,6 +94,6 @@ ctk_menu_accessible_class_init (CtkMenuAccessibleClass *klass)
 }
 
 static void
-ctk_menu_accessible_init (CtkMenuAccessible *accessible)
+ctk_menu_accessible_init (CtkMenuAccessible *accessible G_GNUC_UNUSED)
 {
 }

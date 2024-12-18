@@ -528,9 +528,9 @@ ctk_file_chooser_native_finalize (GObject *object)
 }
 
 static gint
-override_delete_handler (CtkDialog *dialog,
-                         CdkEventAny *event,
-                         gpointer data)
+override_delete_handler (CtkDialog   *dialog G_GNUC_UNUSED,
+                         CdkEventAny *event G_GNUC_UNUSED,
+                         gpointer     data G_GNUC_UNUSED)
 {
   return TRUE; /* Do not destroy */
 }
@@ -599,7 +599,7 @@ ctk_file_chooser_native_new (const gchar          *title,
 }
 
 static void
-dialog_response_cb (CtkDialog *dialog,
+dialog_response_cb (CtkDialog *dialog G_GNUC_UNUSED,
                     gint response_id,
                     gpointer data)
 {
@@ -612,7 +612,7 @@ dialog_response_cb (CtkDialog *dialog,
 }
 
 static void
-dialog_update_preview_cb (CtkFileChooser *file_chooser,
+dialog_update_preview_cb (CtkFileChooser *file_chooser G_GNUC_UNUSED,
                           gpointer data)
 {
   g_signal_emit_by_name (data, "update-preview");

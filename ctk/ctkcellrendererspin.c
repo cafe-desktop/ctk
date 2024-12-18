@@ -246,7 +246,7 @@ ctk_cell_renderer_spin_set_property (GObject      *object,
 
 static gboolean
 ctk_cell_renderer_spin_focus_out_event (CtkWidget *widget,
-					CdkEvent  *event,
+					CdkEvent  *event G_GNUC_UNUSED,
 					gpointer   data)
 {
   gboolean canceled;
@@ -278,7 +278,7 @@ ctk_cell_renderer_spin_focus_out_event (CtkWidget *widget,
 static gboolean
 ctk_cell_renderer_spin_key_press_event (CtkWidget   *widget,
 					CdkEventKey *event,
-					gpointer     data)
+					gpointer     data G_GNUC_UNUSED)
 {
   if (event->state == 0)
     {
@@ -298,9 +298,9 @@ ctk_cell_renderer_spin_key_press_event (CtkWidget   *widget,
 }
 
 static gboolean
-ctk_cell_renderer_spin_button_press_event (CtkWidget      *widget,
-                                           CdkEventButton *event,
-                                           gpointer        user_data)
+ctk_cell_renderer_spin_button_press_event (CtkWidget      *widget G_GNUC_UNUSED,
+					   CdkEventButton *event,
+					   gpointer        user_data G_GNUC_UNUSED)
 {
   /* Block 2BUTTON and 3BUTTON here, so that they won't be eaten
    * by tree view.
@@ -314,12 +314,12 @@ ctk_cell_renderer_spin_button_press_event (CtkWidget      *widget,
 
 static CtkCellEditable *
 ctk_cell_renderer_spin_start_editing (CtkCellRenderer      *cell,
-				      CdkEvent             *event,
-				      CtkWidget            *widget,
+				      CdkEvent             *event G_GNUC_UNUSED,
+				      CtkWidget            *widget G_GNUC_UNUSED,
 				      const gchar          *path,
-				      const CdkRectangle   *background_area,
-				      const CdkRectangle   *cell_area,
-				      CtkCellRendererState  flags)
+				      const CdkRectangle   *background_area G_GNUC_UNUSED,
+				      const CdkRectangle   *cell_area G_GNUC_UNUSED,
+				      CtkCellRendererState  flags G_GNUC_UNUSED)
 {
   CtkCellRendererSpinPrivate *priv;
   CtkCellRendererText *cell_text;

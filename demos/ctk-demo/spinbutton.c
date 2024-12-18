@@ -171,10 +171,10 @@ month_spin_output (CtkSpinButton *spin_button)
 }
 
 static gboolean
-value_to_label (GBinding     *binding,
+value_to_label (GBinding     *binding G_GNUC_UNUSED,
                 const GValue *from,
                 GValue       *to,
-                gpointer      user_data)
+                gpointer      user_data G_GNUC_UNUSED)
 {
   g_value_take_string (to, g_strdup_printf ("%g", g_value_get_double (from)));
   return TRUE;

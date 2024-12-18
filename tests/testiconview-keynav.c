@@ -180,8 +180,8 @@ keynav_failed (CtkWidget        *view,
 
 static gboolean
 focus_out (CtkWidget     *view,
-           CdkEventFocus *event,
-           gpointer       data)
+           CdkEventFocus *event G_GNUC_UNUSED,
+           gpointer       data G_GNUC_UNUSED)
 {
   ctk_icon_view_unselect_all (CTK_ICON_VIEW (view));
 
@@ -190,8 +190,8 @@ focus_out (CtkWidget     *view,
 
 static gboolean
 focus_in (CtkWidget     *view,
-          CdkEventFocus *event,
-          gpointer       data)
+          CdkEventFocus *event G_GNUC_UNUSED,
+          gpointer       data G_GNUC_UNUSED)
 {
   CtkTreePath *path;
 

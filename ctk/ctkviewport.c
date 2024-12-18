@@ -151,9 +151,9 @@ ctk_viewport_measure (CtkCssGadget   *gadget,
                       int             for_size,
                       int            *minimum,
                       int            *natural,
-                      int            *minimum_baseline,
-                      int            *natural_baseline,
-                      gpointer        data)
+                      int            *minimum_baseline G_GNUC_UNUSED,
+                      int            *natural_baseline G_GNUC_UNUSED,
+                      gpointer        data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkWidget *child;
@@ -272,9 +272,9 @@ viewport_set_vadjustment_values (CtkViewport *viewport)
 static void
 ctk_viewport_allocate (CtkCssGadget        *gadget,
                        const CtkAllocation *allocation,
-                       int                  baseline,
-                       CtkAllocation       *out_clip,
-                       gpointer             data)
+                       int                  baseline G_GNUC_UNUSED,
+                       CtkAllocation       *out_clip G_GNUC_UNUSED,
+                       gpointer             data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkViewport *viewport = CTK_VIEWPORT (widget);
@@ -331,11 +331,11 @@ draw_bin (cairo_t *cr,
 static gboolean
 ctk_viewport_render (CtkCssGadget *gadget,
                      cairo_t      *cr,
-                     int           x,
-                     int           y,
-                     int           width,
-                     int           height,
-                     gpointer      data)
+                     int           x G_GNUC_UNUSED,
+                     int           y G_GNUC_UNUSED,
+                     int           width G_GNUC_UNUSED,
+                     int           height G_GNUC_UNUSED,
+                     gpointer      data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkViewport *viewport = CTK_VIEWPORT (widget);
@@ -1035,7 +1035,7 @@ ctk_viewport_size_allocate (CtkWidget     *widget,
 }
 
 static void
-ctk_viewport_adjustment_value_changed (CtkAdjustment *adjustment,
+ctk_viewport_adjustment_value_changed (CtkAdjustment *adjustment G_GNUC_UNUSED,
 				       gpointer       data)
 {
   CtkViewport *viewport = CTK_VIEWPORT (data);

@@ -619,7 +619,7 @@ ctk_overlay_reorder_overlay (CtkOverlay *overlay,
 
 static void
 ctk_overlay_forall (CtkContainer *overlay,
-                    gboolean      include_internals,
+                    gboolean      include_internals G_GNUC_UNUSED,
                     CtkCallback   callback,
                     gpointer      callback_data)
 {
@@ -856,7 +856,7 @@ ctk_overlay_init (CtkOverlay *overlay)
 
 static void
 ctk_overlay_buildable_add_child (CtkBuildable *buildable,
-                                 CtkBuilder   *builder,
+                                 CtkBuilder   *builder G_GNUC_UNUSED,
                                  GObject      *child,
                                  const gchar  *type)
 {

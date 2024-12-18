@@ -123,7 +123,7 @@ static guint16 ipa_compose_seqs[] = {
 };
 
 static void
-ipa_class_init (CtkIMContextSimpleClass *class)
+ipa_class_init (CtkIMContextSimpleClass *class G_GNUC_UNUSED)
 {
 }
 

@@ -84,7 +84,7 @@ static void ctk_kinetic_scrolling_init_overshoot (CtkKineticScrolling *data,
 CtkKineticScrolling *
 ctk_kinetic_scrolling_new (gdouble lower,
                            gdouble upper,
-                           gdouble overshoot_width,
+                           gdouble overshoot_width G_GNUC_UNUSED,
                            gdouble decel_friction,
                            gdouble overshoot_friction,
                            gdouble initial_position,

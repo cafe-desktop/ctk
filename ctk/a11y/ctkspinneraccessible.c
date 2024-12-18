@@ -50,7 +50,7 @@ ctk_spinner_accessible_class_init (CtkSpinnerAccessibleClass *klass)
 }
 
 static void
-ctk_spinner_accessible_init (CtkSpinnerAccessible *self)
+ctk_spinner_accessible_init (CtkSpinnerAccessible *self G_GNUC_UNUSED)
 {
 }
 

@@ -137,7 +137,7 @@ append_error_value (GString *string,
 }
 
 static void
-parsing_error_cb (CtkCssProvider *provider,
+parsing_error_cb (CtkCssProvider *provider G_GNUC_UNUSED,
                   CtkCssSection  *section,
                   const GError   *error,
                   GString        *errors)

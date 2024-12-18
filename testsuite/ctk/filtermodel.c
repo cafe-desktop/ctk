@@ -479,7 +479,7 @@ filter_test_unblock_signals (FilterTest *fixture)
 
 static void
 filter_test_teardown (FilterTest    *fixture,
-                      gconstpointer  test_data)
+                      gconstpointer  test_data G_GNUC_UNUSED)
 {
   signal_monitor_free (fixture->monitor);
 
@@ -674,7 +674,7 @@ insert_path_with_visibility (FilterTest  *fixture,
 
 static void
 verify_test_suite (FilterTest    *fixture,
-                   gconstpointer  user_data)
+                   gconstpointer  user_data G_GNUC_UNUSED)
 {
   check_filter_model (fixture);
 }
@@ -689,7 +689,7 @@ verify_test_suite_vroot (FilterTest    *fixture,
 
 static void
 filled_hide_root_level (FilterTest    *fixture,
-                        gconstpointer  user_data)
+                        gconstpointer  user_data G_GNUC_UNUSED)
 {
   signal_monitor_append_signal (fixture->monitor, ROW_DELETED, "2");
   set_path_visibility (fixture, "2", FALSE);
@@ -736,7 +736,7 @@ filled_hide_root_level (FilterTest    *fixture,
 
 static void
 filled_hide_child_levels (FilterTest    *fixture,
-                          gconstpointer  user_data)
+                          gconstpointer  user_data G_GNUC_UNUSED)
 {
   set_path_visibility (fixture, "0:2", FALSE);
   check_filter_model (fixture);
@@ -783,7 +783,7 @@ filled_hide_child_levels (FilterTest    *fixture,
 
 static void
 filled_hide_child_levels_root_expanded (FilterTest    *fixture,
-                                        gconstpointer  user_data)
+                                        gconstpointer  user_data G_GNUC_UNUSED)
 {
   CtkTreePath *path;
 
@@ -1079,7 +1079,7 @@ filled_vroot_hide_child_levels_root_expanded (FilterTest    *fixture,
 
 static void
 empty_show_nodes (FilterTest    *fixture,
-                  gconstpointer  user_data)
+                  gconstpointer  user_data G_GNUC_UNUSED)
 {
   check_filter_model (fixture);
   check_level_length (fixture->filter, NULL, 0);
@@ -1122,7 +1122,7 @@ empty_show_nodes (FilterTest    *fixture,
 
 static void
 empty_show_multiple_nodes (FilterTest    *fixture,
-                           gconstpointer  user_data)
+                           gconstpointer  user_data G_GNUC_UNUSED)
 {
   CtkTreeIter iter;
   CtkTreePath *changed_path;
@@ -1355,7 +1355,7 @@ empty_vroot_show_multiple_nodes (FilterTest    *fixture,
 
 static void
 unfiltered_hide_single (FilterTest    *fixture,
-                        gconstpointer  user_data)
+                        gconstpointer  user_data G_GNUC_UNUSED)
 
 {
   signal_monitor_append_signal (fixture->monitor, ROW_CHANGED, "2");
@@ -1377,7 +1377,7 @@ unfiltered_hide_single (FilterTest    *fixture,
 
 static void
 unfiltered_hide_single_root_expanded (FilterTest    *fixture,
-                                      gconstpointer  user_data)
+                                      gconstpointer  user_data G_GNUC_UNUSED)
 
 {
   signal_monitor_append_signal (fixture->monitor, ROW_CHANGED, "2");
@@ -1396,7 +1396,7 @@ unfiltered_hide_single_root_expanded (FilterTest    *fixture,
 
 static void
 unfiltered_hide_single_child (FilterTest    *fixture,
-                              gconstpointer  user_data)
+                              gconstpointer  user_data G_GNUC_UNUSED)
 
 {
   /* This row is not shown, so its signal is not propagated */
@@ -1419,7 +1419,7 @@ unfiltered_hide_single_child (FilterTest    *fixture,
 
 static void
 unfiltered_hide_single_child_root_expanded (FilterTest    *fixture,
-                                            gconstpointer  user_data)
+                                            gconstpointer  user_data G_GNUC_UNUSED)
 
 {
   signal_monitor_append_signal (fixture->monitor, ROW_CHANGED, "2:2");
@@ -1440,7 +1440,7 @@ unfiltered_hide_single_child_root_expanded (FilterTest    *fixture,
 
 static void
 unfiltered_hide_single_multi_level (FilterTest    *fixture,
-                                    gconstpointer  user_data)
+                                    gconstpointer  user_data G_GNUC_UNUSED)
 
 {
   /* This row is not shown, so its signal is not propagated */
@@ -1474,7 +1474,7 @@ unfiltered_hide_single_multi_level (FilterTest    *fixture,
 
 static void
 unfiltered_hide_single_multi_level_root_expanded (FilterTest    *fixture,
-                                                  gconstpointer  user_data)
+                                                  gconstpointer  user_data G_GNUC_UNUSED)
 
 {
   /* This row is not shown, so its signal is not propagated */
@@ -1657,7 +1657,7 @@ unfiltered_vroot_hide_single_multi_level_root_expanded (FilterTest    *fixture,
 
 static void
 unfiltered_show_single (FilterTest    *fixture,
-                        gconstpointer  user_data)
+                        gconstpointer  user_data G_GNUC_UNUSED)
 
 {
   signal_monitor_append_signal (fixture->monitor, ROW_CHANGED, "2");
@@ -1677,7 +1677,7 @@ unfiltered_show_single (FilterTest    *fixture,
 
 static void
 unfiltered_show_single_child (FilterTest    *fixture,
-                              gconstpointer  user_data)
+                              gconstpointer  user_data G_GNUC_UNUSED)
 
 {
   set_path_visibility (fixture, "2:2", TRUE);
@@ -1706,7 +1706,7 @@ unfiltered_show_single_child (FilterTest    *fixture,
 
 static void
 unfiltered_show_single_child_root_expanded (FilterTest    *fixture,
-                                            gconstpointer  user_data)
+                                            gconstpointer  user_data G_GNUC_UNUSED)
 
 {
   signal_monitor_append_signal (fixture->monitor, ROW_CHANGED, "2:2");
@@ -1736,7 +1736,7 @@ unfiltered_show_single_child_root_expanded (FilterTest    *fixture,
 
 static void
 unfiltered_show_single_multi_level (FilterTest    *fixture,
-                                    gconstpointer  user_data)
+                                    gconstpointer  user_data G_GNUC_UNUSED)
 
 {
   /* The view is not showing these rows (collapsed state), so it is not
@@ -1771,7 +1771,7 @@ unfiltered_show_single_multi_level (FilterTest    *fixture,
 
 static void
 unfiltered_show_single_multi_level_root_expanded (FilterTest    *fixture,
-                                                  gconstpointer  user_data)
+                                                  gconstpointer  user_data G_GNUC_UNUSED)
 
 {
   /* The view is not showing this row (collapsed state), so it is not
@@ -1975,7 +1975,7 @@ unfiltered_vroot_show_single_multi_level_root_expanded (FilterTest    *fixture,
 
 static void
 unfiltered_rows_reordered_root_level (FilterTest    *fixture,
-                                      gconstpointer  user_data)
+                                      gconstpointer  user_data G_GNUC_UNUSED)
 {
   int order0[] = { 1, 2, 3, 4, 0 };
   int order1[] = { 0, 2, 1, 3, 4 };
@@ -2018,7 +2018,7 @@ unfiltered_rows_reordered_root_level (FilterTest    *fixture,
 
 static void
 unfiltered_rows_reordered_child_level (FilterTest    *fixture,
-                                       gconstpointer  user_data)
+                                       gconstpointer  user_data G_GNUC_UNUSED)
 {
   int order0[] = { 1, 2, 3, 4, 0 };
   int order1[] = { 0, 2, 1, 3, 4 };
@@ -2064,7 +2064,7 @@ unfiltered_rows_reordered_child_level (FilterTest    *fixture,
 
 static void
 filtered_rows_reordered_root_level_first_hidden (FilterTest    *fixture,
-                                                 gconstpointer  user_data)
+                                                 gconstpointer  user_data G_GNUC_UNUSED)
 {
   int order0[] = { 1, 2, 3, 0 };
   int order1[] = { 0, 2, 1, 3 };
@@ -2111,7 +2111,7 @@ filtered_rows_reordered_root_level_first_hidden (FilterTest    *fixture,
 
 static void
 filtered_rows_reordered_root_level_middle_hidden (FilterTest    *fixture,
-                                                  gconstpointer  user_data)
+                                                  gconstpointer  user_data G_GNUC_UNUSED)
 {
   int order0[] = { 1, 2, 3, 0 };
   int order1[] = { 0, 2, 1, 3 };
@@ -2158,7 +2158,7 @@ filtered_rows_reordered_root_level_middle_hidden (FilterTest    *fixture,
 
 static void
 filtered_rows_reordered_child_level_first_hidden (FilterTest    *fixture,
-                                                  gconstpointer  user_data)
+                                                  gconstpointer  user_data G_GNUC_UNUSED)
 {
   int order0[] = { 1, 2, 3, 0 };
   int order1[] = { 0, 2, 1, 3 };
@@ -2208,7 +2208,7 @@ filtered_rows_reordered_child_level_first_hidden (FilterTest    *fixture,
 
 static void
 filtered_rows_reordered_child_level_middle_hidden (FilterTest    *fixture,
-                                                   gconstpointer  user_data)
+                                                   gconstpointer  user_data G_GNUC_UNUSED)
 {
   int order0[] = { 1, 2, 3, 0 };
   int order1[] = { 0, 2, 1, 3 };
@@ -2258,7 +2258,7 @@ filtered_rows_reordered_child_level_middle_hidden (FilterTest    *fixture,
 
 static void
 filtered_rows_reordered_child_level_4_hidden (FilterTest    *fixture,
-                                              gconstpointer  user_data)
+                                              gconstpointer  user_data G_GNUC_UNUSED)
 {
   int order0[] = { 0 };
   CtkTreeIter iter1, iter4;
@@ -2299,7 +2299,7 @@ filtered_rows_reordered_child_level_4_hidden (FilterTest    *fixture,
 
 static void
 filtered_rows_reordered_child_level_all_hidden (FilterTest    *fixture,
-                                                gconstpointer  user_data)
+                                                gconstpointer  user_data G_GNUC_UNUSED)
 {
   CtkTreeIter iter1, iter4;
   CtkTreePath *path;
@@ -4583,7 +4583,7 @@ ref_count_transfer_child_level_filter (void)
 static gboolean
 specific_path_dependent_filter_func (CtkTreeModel *model,
                                      CtkTreeIter  *iter,
-                                     gpointer      data)
+                                     gpointer      data G_GNUC_UNUSED)
 {
   CtkTreePath *path;
 
@@ -4747,18 +4747,18 @@ specific_append_after_collapse (void)
 
 
 static gint
-specific_sort_filter_remove_node_compare_func (CtkTreeModel  *model,
-                                               CtkTreeIter   *iter1,
-                                               CtkTreeIter   *iter2,
-                                               gpointer       data)
+specific_sort_filter_remove_node_compare_func (CtkTreeModel *model G_GNUC_UNUSED,
+                                               CtkTreeIter  *iter1 G_GNUC_UNUSED,
+                                               CtkTreeIter  *iter2 G_GNUC_UNUSED,
+                                               gpointer      data G_GNUC_UNUSED)
 {
   return -1;
 }
 
 static gboolean
-specific_sort_filter_remove_node_visible_func (CtkTreeModel  *model,
-                                               CtkTreeIter   *iter,
-                                               gpointer       data)
+specific_sort_filter_remove_node_visible_func (CtkTreeModel *model,
+                                               CtkTreeIter  *iter,
+                                               gpointer      data G_GNUC_UNUSED)
 {
   char *item = NULL;
 
@@ -4900,7 +4900,7 @@ specific_root_mixed_visibility (void)
 static gboolean
 specific_has_child_filter_filter_func (CtkTreeModel *model,
                                        CtkTreeIter  *iter,
-                                       gpointer      data)
+                                       gpointer      data G_GNUC_UNUSED)
 {
   return ctk_tree_model_iter_has_child (model, iter);
 }
@@ -5019,7 +5019,7 @@ specific_has_child_filter (void)
 static gboolean
 specific_root_has_child_filter_filter_func (CtkTreeModel *model,
                                             CtkTreeIter  *iter,
-                                            gpointer      data)
+                                            gpointer      data G_GNUC_UNUSED)
 {
   int depth;
   CtkTreePath *path;
@@ -5292,7 +5292,7 @@ specific_has_child_filter_on_sort_model (void)
 static gboolean
 specific_at_least_2_children_filter_filter_func (CtkTreeModel *model,
                                                  CtkTreeIter  *iter,
-                                                 gpointer      data)
+                                                 gpointer      data G_GNUC_UNUSED)
 {
   return ctk_tree_model_iter_n_children (model, iter) >= 2;
 }
@@ -5703,7 +5703,7 @@ static int
 specific_bug_301558_sort_func (CtkTreeModel *model,
                                CtkTreeIter  *a,
                                CtkTreeIter  *b,
-                               gpointer      data)
+                               gpointer      data G_GNUC_UNUSED)
 {
   int i, j;
 
@@ -5777,7 +5777,7 @@ specific_bug_301558 (void)
 static gboolean
 specific_bug_311955_filter_func (CtkTreeModel *model,
                                  CtkTreeIter  *iter,
-                                 gpointer      data)
+                                 gpointer      data G_GNUC_UNUSED)
 {
   int value;
 
@@ -6010,8 +6010,8 @@ specific_bug_346800 (void)
 }
 
 static gboolean
-specific_bug_464173_visible_func (CtkTreeModel *model,
-                                  CtkTreeIter  *iter,
+specific_bug_464173_visible_func (CtkTreeModel *model G_GNUC_UNUSED,
+                                  CtkTreeIter  *iter G_GNUC_UNUSED,
                                   gpointer      data)
 {
   gboolean *visible = (gboolean *)data;
@@ -6054,7 +6054,7 @@ specific_bug_464173 (void)
 static gboolean
 specific_bug_540201_filter_func (CtkTreeModel *model,
                                  CtkTreeIter  *iter,
-                                 gpointer      data)
+                                 gpointer      data G_GNUC_UNUSED)
 {
   gboolean has_children;
 
@@ -6107,7 +6107,7 @@ specific_bug_540201 (void)
 static gboolean
 specific_bug_549287_visible_func (CtkTreeModel *model,
                                   CtkTreeIter  *iter,
-                                  gpointer      data)
+                                  gpointer      data G_GNUC_UNUSED)
 {
   gboolean result = FALSE;
 
@@ -6502,7 +6502,7 @@ specific_bug_657353_related (void)
 static gboolean
 specific_bug_657353_visible_func (CtkTreeModel *model,
                                   CtkTreeIter  *iter,
-                                  gpointer      data)
+                                  gpointer      data G_GNUC_UNUSED)
 {
   gchar *str;
   gboolean ret = FALSE;
@@ -6602,7 +6602,7 @@ specific_bug_658696 (void)
 static gboolean
 specific_bug_659022_visible_func (CtkTreeModel *model,
                                   CtkTreeIter  *iter,
-                                  gpointer      data)
+                                  gpointer      data G_GNUC_UNUSED)
 {
   CtkTreeIter tmp;
 
@@ -6786,9 +6786,9 @@ static int row_changed_count;
 static int filter_row_changed_count;
 
 static void
-row_changed (CtkTreeModel *model,
-             CtkTreePath  *path,
-             CtkTreeIter  *iter,
+row_changed (CtkTreeModel *model G_GNUC_UNUSED,
+             CtkTreePath  *path G_GNUC_UNUSED,
+             CtkTreeIter  *iter G_GNUC_UNUSED,
              gpointer data)
 {
   int *count = data;

@@ -392,14 +392,14 @@ _cdk_broadway_events_got_input (BroadwayInputMsg *message)
 }
 
 void
-_cdk_broadway_display_queue_events (CdkDisplay *display)
+_cdk_broadway_display_queue_events (CdkDisplay *display G_GNUC_UNUSED)
 {
 }
 
 static gboolean
 cdk_event_source_dispatch (GSource     *source,
-                           GSourceFunc  callback,
-                           gpointer     user_data)
+                           GSourceFunc  callback G_GNUC_UNUSED,
+                           gpointer     user_data G_GNUC_UNUSED)
 {
   CdkDisplay *display = ((CdkEventSource*) source)->display;
   CdkEvent *event;

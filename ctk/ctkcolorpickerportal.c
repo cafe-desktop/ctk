@@ -45,7 +45,7 @@ G_DEFINE_TYPE_WITH_CODE (CtkColorPickerPortal, ctk_color_picker_portal, G_TYPE_O
 
 static gboolean
 ctk_color_picker_portal_initable_init (GInitable     *initable,
-                                       GCancellable  *cancellable,
+                                       GCancellable  *cancellable G_GNUC_UNUSED,
                                        GError       **error)
 {
   CtkColorPickerPortal *picker = CTK_COLOR_PICKER_PORTAL (initable);
@@ -105,7 +105,7 @@ ctk_color_picker_portal_initable_iface_init (GInitableIface *iface)
 }
 
 static void
-ctk_color_picker_portal_init (CtkColorPickerPortal *picker)
+ctk_color_picker_portal_init (CtkColorPickerPortal *picker G_GNUC_UNUSED)
 {
 }
 
@@ -135,10 +135,10 @@ ctk_color_picker_portal_new (void)
 
 static void
 portal_response_received (GDBusConnection *connection,
-                          const char      *sender_name,
-                          const char      *object_path,
-                          const char      *interface_name,
-                          const char      *signal_name,
+                          const char      *sender_name G_GNUC_UNUSED,
+                          const char      *object_path G_GNUC_UNUSED,
+                          const char      *interface_name G_GNUC_UNUSED,
+                          const char      *signal_name G_GNUC_UNUSED,
                           GVariant        *parameters,
                           gpointer         user_data)
 {

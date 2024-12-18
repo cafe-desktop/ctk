@@ -101,11 +101,11 @@ swatch_draw (CtkWidget *widget,
 static gboolean
 ctk_color_swatch_render (CtkCssGadget *gadget,
                          cairo_t      *cr,
-                         int           x,
-                         int           y,
-                         int           width,
-                         int           height,
-                         gpointer      data)
+                         int           x G_GNUC_UNUSED,
+                         int           y G_GNUC_UNUSED,
+                         int           width G_GNUC_UNUSED,
+                         int           height G_GNUC_UNUSED,
+                         gpointer      data G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkColorSwatch *swatch;
@@ -202,10 +202,10 @@ swatch_drag_begin (CtkWidget      *widget,
 
 static void
 swatch_drag_data_get (CtkWidget        *widget,
-                      CdkDragContext   *context,
+                      CdkDragContext   *context G_GNUC_UNUSED,
                       CtkSelectionData *selection_data,
-                      guint             info,
-                      guint             time)
+                      guint             info G_GNUC_UNUSED,
+                      guint             time G_GNUC_UNUSED)
 {
   CtkColorSwatch *swatch = CTK_COLOR_SWATCH (widget);
   guint16 vals[4];
@@ -225,12 +225,12 @@ swatch_drag_data_get (CtkWidget        *widget,
 
 static void
 swatch_drag_data_received (CtkWidget        *widget,
-                           CdkDragContext   *context,
-                           gint              x,
-                           gint              y,
+                           CdkDragContext   *context G_GNUC_UNUSED,
+                           gint              x G_GNUC_UNUSED,
+                           gint              y G_GNUC_UNUSED,
                            CtkSelectionData *selection_data,
-                           guint             info,
-                           guint             time)
+                           guint             info G_GNUC_UNUSED,
+                           guint             time G_GNUC_UNUSED)
 {
   gint length;
   guint16 *vals;
@@ -263,12 +263,12 @@ swatch_drag_data_received (CtkWidget        *widget,
 static void
 ctk_color_swatch_measure (CtkCssGadget   *gadget,
                           CtkOrientation  orientation,
-                          int             for_size,
+                          int             for_size G_GNUC_UNUSED,
                           int            *minimum,
                           int            *natural,
-                          int            *minimum_baseline,
-                          int            *natural_baseline,
-                          gpointer        unused)
+                          int            *minimum_baseline G_GNUC_UNUSED,
+                          int            *natural_baseline G_GNUC_UNUSED,
+                          gpointer        unused G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkColorSwatch *swatch;
@@ -322,7 +322,7 @@ swatch_key_press (CtkWidget   *widget,
 
 static gboolean
 swatch_enter_notify (CtkWidget        *widget,
-                     CdkEventCrossing *event)
+                     CdkEventCrossing *event G_GNUC_UNUSED)
 {
   ctk_widget_set_state_flags (widget, CTK_STATE_FLAG_PRELIGHT, FALSE);
 
@@ -331,7 +331,7 @@ swatch_enter_notify (CtkWidget        *widget,
 
 static gboolean
 swatch_leave_notify (CtkWidget        *widget,
-                     CdkEventCrossing *event)
+                     CdkEventCrossing *event G_GNUC_UNUSED)
 {
   ctk_widget_unset_state_flags (widget, CTK_STATE_FLAG_PRELIGHT);
 
@@ -392,8 +392,8 @@ swatch_primary_action (CtkColorSwatch *swatch)
 
 static void
 hold_action (CtkGestureLongPress *gesture,
-             gdouble              x,
-             gdouble              y,
+             gdouble              x G_GNUC_UNUSED,
+             gdouble              y G_GNUC_UNUSED,
              CtkColorSwatch      *swatch)
 {
   do_popup (swatch);
@@ -403,8 +403,8 @@ hold_action (CtkGestureLongPress *gesture,
 static void
 tap_action (CtkGestureMultiPress *gesture,
             gint                  n_press,
-            gdouble               x,
-            gdouble               y,
+            gdouble               x G_GNUC_UNUSED,
+            gdouble               y G_GNUC_UNUSED,
             CtkColorSwatch       *swatch)
 {
   guint button;

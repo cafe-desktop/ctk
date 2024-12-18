@@ -406,7 +406,7 @@ cdk_window_cache_add (CdkWindowCache *cache,
 
 static CdkFilterReturn
 cdk_window_cache_shape_filter (CdkXEvent *xev,
-                               CdkEvent  *event,
+                               CdkEvent  *event G_GNUC_UNUSED,
                                gpointer   data)
 {
   XEvent *xevent = (XEvent *)xev;
@@ -441,7 +441,7 @@ cdk_window_cache_shape_filter (CdkXEvent *xev,
 
 static CdkFilterReturn
 cdk_window_cache_filter (CdkXEvent *xev,
-                         CdkEvent  *event,
+                         CdkEvent  *event G_GNUC_UNUSED,
                          gpointer   data)
 {
   XEvent *xevent = (XEvent *)xev;
@@ -956,7 +956,7 @@ xdnd_action_to_atom (CdkDisplay    *display,
 static CdkFilterReturn
 xdnd_status_filter (CdkXEvent *xev,
                     CdkEvent  *event,
-                    gpointer   data)
+                    gpointer   data G_GNUC_UNUSED)
 {
   CdkDisplay *display;
   XEvent *xevent = (XEvent *)xev;
@@ -1007,7 +1007,7 @@ xdnd_status_filter (CdkXEvent *xev,
 static CdkFilterReturn
 xdnd_finished_filter (CdkXEvent *xev,
                       CdkEvent  *event,
-                      gpointer   data)
+                      gpointer   data G_GNUC_UNUSED)
 {
   CdkDisplay *display;
   XEvent *xevent = (XEvent *)xev;
@@ -1659,7 +1659,7 @@ xdnd_precache_atoms (CdkDisplay *display)
 static CdkFilterReturn
 xdnd_enter_filter (CdkXEvent *xev,
                    CdkEvent  *event,
-                   gpointer   cb_data)
+                   gpointer   cb_data G_GNUC_UNUSED)
 {
   CdkDisplay *display;
   CdkX11Display *display_x11;
@@ -1789,7 +1789,7 @@ xdnd_enter_filter (CdkXEvent *xev,
 static CdkFilterReturn
 xdnd_leave_filter (CdkXEvent *xev,
                    CdkEvent  *event,
-                   gpointer   data)
+                   gpointer   data G_GNUC_UNUSED)
 {
   XEvent *xevent = (XEvent *)xev;
   guint32 source_window = xevent->xclient.data.l[0];
@@ -1829,7 +1829,7 @@ xdnd_leave_filter (CdkXEvent *xev,
 static CdkFilterReturn
 xdnd_position_filter (CdkXEvent *xev,
                       CdkEvent  *event,
-                      gpointer   data)
+                      gpointer   data G_GNUC_UNUSED)
 {
   XEvent *xevent = (XEvent *)xev;
   guint32 source_window = xevent->xclient.data.l[0];
@@ -1894,7 +1894,7 @@ xdnd_position_filter (CdkXEvent *xev,
 static CdkFilterReturn
 xdnd_drop_filter (CdkXEvent *xev,
                   CdkEvent  *event,
-                  gpointer   data)
+                  gpointer   data G_GNUC_UNUSED)
 {
   XEvent *xevent = (XEvent *)xev;
   guint32 source_window = xevent->xclient.data.l[0];
@@ -1974,7 +1974,7 @@ _cdk_x11_dnd_filter (CdkXEvent *xev,
 
 static void
 cdk_drag_do_leave (CdkX11DragContext *context_x11,
-                   guint32            time)
+                   guint32            time G_GNUC_UNUSED)
 {
   CdkDragContext *context = CDK_DRAG_CONTEXT (context_x11);
 
@@ -2429,7 +2429,7 @@ cdk_x11_drag_context_drag_drop (CdkDragContext *context,
 static void
 cdk_x11_drag_context_drag_status (CdkDragContext *context,
                                   CdkDragAction   action,
-                                  guint32         time_)
+                                  guint32         time_ G_GNUC_UNUSED)
 {
   CdkX11DragContext *context_x11 = CDK_X11_DRAG_CONTEXT (context);
   XEvent xev;
@@ -2463,16 +2463,16 @@ cdk_x11_drag_context_drag_status (CdkDragContext *context,
 }
 
 static void
-cdk_x11_drag_context_drop_reply (CdkDragContext *context,
-                                 gboolean        accepted,
-                                 guint32         time_)
+cdk_x11_drag_context_drop_reply (CdkDragContext *context G_GNUC_UNUSED,
+                                 gboolean        accepted G_GNUC_UNUSED,
+                                 guint32         time_ G_GNUC_UNUSED)
 {
 }
 
 static void
 cdk_x11_drag_context_drop_finish (CdkDragContext *context,
                                   gboolean        success,
-                                  guint32         time)
+                                  guint32         time G_GNUC_UNUSED)
 {
   if (context->protocol == CDK_DRAG_PROTO_XDND)
     {
@@ -2866,7 +2866,7 @@ cdk_x11_drag_context_set_cursor (CdkDragContext *context,
 
 static void
 cdk_x11_drag_context_cancel (CdkDragContext      *context,
-                             CdkDragCancelReason  reason)
+                             CdkDragCancelReason  reason G_GNUC_UNUSED)
 {
   drag_context_ungrab (context);
   cdk_drag_drop_done (context, FALSE);
@@ -2874,7 +2874,7 @@ cdk_x11_drag_context_cancel (CdkDragContext      *context,
 
 static void
 cdk_x11_drag_context_drop_performed (CdkDragContext *context,
-                                     guint32         time_)
+                                     guint32         time_ G_GNUC_UNUSED)
 {
   drag_context_ungrab (context);
 }

@@ -522,7 +522,8 @@ parse_input_message (BroadwayInput *input, const unsigned char *message)
 }
 
 static inline void
-hex_dump (guchar *data, gsize len)
+hex_dump (guchar *data G_GNUC_UNUSED,
+	  gsize   len G_GNUC_UNUSED)
 {
 #ifdef DEBUG_WEBSOCKETS
   gsize i, j;
@@ -717,7 +718,7 @@ broadway_server_consume_all_input (BroadwayServer *server)
 
 
 static gboolean
-input_data_cb (GObject  *stream,
+input_data_cb (GObject       *stream G_GNUC_UNUSED,
 	       BroadwayInput *input)
 {
   BroadwayServer *server = input->server;
@@ -1221,7 +1222,7 @@ got_http_request_line (GInputStream *stream,
 }
 
 static gboolean
-handle_incoming_connection (GSocketService    *service,
+handle_incoming_connection (GSocketService    *service G_GNUC_UNUSED,
 			    GSocketConnection *connection,
 			    GObject           *source_object)
 {
@@ -1699,11 +1700,11 @@ broadway_server_focus_window (BroadwayServer *server,
 
 guint32
 broadway_server_grab_pointer (BroadwayServer *server,
-			      gint client_id,
-			      gint id,
-			      gboolean owner_events,
-			      guint32 event_mask,
-			      guint32 time_)
+			      gint            client_id,
+			      gint            id,
+			      gboolean        owner_events,
+			      guint32         event_mask G_GNUC_UNUSED,
+			      guint32         time_)
 {
   if (server->pointer_grab_window_id != -1 &&
       time_ != 0 && server->pointer_grab_time > time_)

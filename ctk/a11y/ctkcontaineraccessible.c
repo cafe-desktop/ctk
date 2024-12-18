@@ -32,7 +32,7 @@ struct _CtkContainerAccessiblePrivate
 G_DEFINE_TYPE_WITH_PRIVATE (CtkContainerAccessible, ctk_container_accessible, CTK_TYPE_WIDGET_ACCESSIBLE)
 
 static void
-count_widget (CtkWidget *widget,
+count_widget (CtkWidget *widget G_GNUC_UNUSED,
               gint      *count)
 {
   (*count)++;

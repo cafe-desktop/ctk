@@ -430,7 +430,7 @@ ctk_font_button_font_chooser_get_font_map (CtkFontChooser *chooser)
 }
 
 static void
-ctk_font_button_font_chooser_notify (GObject    *object,
+ctk_font_button_font_chooser_notify (GObject    *object G_GNUC_UNUSED,
                                      GParamSpec *pspec,
                                      gpointer    user_data)
 {
@@ -1155,7 +1155,7 @@ ctk_font_button_clicked (CtkButton *button)
 
 
 static void
-response_cb (CtkDialog *dialog,
+response_cb (CtkDialog *dialog G_GNUC_UNUSED,
              gint       response_id,
              gpointer   data)
 {
@@ -1205,7 +1205,7 @@ response_cb (CtkDialog *dialog,
 }
 
 static void
-dialog_destroy (CtkWidget *widget,
+dialog_destroy (CtkWidget *widget G_GNUC_UNUSED,
                 gpointer   data)
 {
   CtkFontButton *font_button = CTK_FONT_BUTTON (data);

@@ -446,7 +446,7 @@ _ctk_text_handle_update (CtkTextHandle         *handle,
 }
 
 static void
-adjustment_changed_cb (CtkAdjustment *adjustment,
+adjustment_changed_cb (CtkAdjustment *adjustment G_GNUC_UNUSED,
                        CtkTextHandle *handle)
 {
   _ctk_text_handle_update (handle, CTK_TEXT_HANDLE_POSITION_SELECTION_START);

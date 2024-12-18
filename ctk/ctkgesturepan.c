@@ -129,7 +129,7 @@ direction_from_offset (gdouble          offset_x,
 }
 
 static gboolean
-guess_direction (CtkGesturePan   *gesture,
+guess_direction (CtkGesturePan   *gesture G_GNUC_UNUSED,
                  gdouble          offset_x,
                  gdouble          offset_y,
                  CtkPanDirection *direction)
@@ -204,8 +204,8 @@ ctk_gesture_pan_drag_update (CtkGestureDrag *gesture,
 
 static void
 ctk_gesture_pan_drag_end (CtkGestureDrag *gesture,
-                          gdouble         offset_x,
-                          gdouble         offset_y)
+                          gdouble         offset_x G_GNUC_UNUSED,
+                          gdouble         offset_y G_GNUC_UNUSED)
 {
   CtkGesturePanPrivate *priv;
 

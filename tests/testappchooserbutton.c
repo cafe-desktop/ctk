@@ -28,7 +28,7 @@ static CtkWidget *sel_image, *sel_name;
 
 static void
 combo_changed_cb (CtkComboBox *cb,
-                  gpointer     user_data)
+                  gpointer     user_data G_GNUC_UNUSED)
 {
   GAppInfo *app_info;
 
@@ -45,9 +45,9 @@ combo_changed_cb (CtkComboBox *cb,
 }
 
 static void
-special_item_activated_cb (CtkAppChooserButton *b,
-                           const gchar *item_name,
-                           gpointer user_data)
+special_item_activated_cb (CtkAppChooserButton *b G_GNUC_UNUSED,
+                           const gchar         *item_name G_GNUC_UNUSED,
+                           gpointer             user_data G_GNUC_UNUSED)
 {
   ctk_image_set_from_gicon (CTK_IMAGE (sel_image), g_themed_icon_new ("face-smile"),
                             CTK_ICON_SIZE_DIALOG);
@@ -55,9 +55,9 @@ special_item_activated_cb (CtkAppChooserButton *b,
 }
 
 static void
-action_cb (CtkAppChooserButton *b,
-           const gchar *item_name,
-           gpointer user_data)
+action_cb (CtkAppChooserButton *b G_GNUC_UNUSED,
+           const gchar         *item_name,
+           gpointer             user_data G_GNUC_UNUSED)
 {
   g_print ("Activated custom item %s\n", item_name);
 }

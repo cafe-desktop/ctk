@@ -231,7 +231,7 @@ ctk_print_backend_get_property (GObject    *object,
 }
 
 static void
-_ctk_print_backend_module_init (CtkPrintBackendModule *pb_module)
+_ctk_print_backend_module_init (CtkPrintBackendModule *pb_module G_GNUC_UNUSED)
 {
 }
 
@@ -485,59 +485,59 @@ ctk_print_backend_dispose (GObject *object)
 
 
 static void
-fallback_printer_request_details (CtkPrinter *printer)
+fallback_printer_request_details (CtkPrinter *printer G_GNUC_UNUSED)
 {
 }
 
 static gboolean
-fallback_printer_mark_conflicts (CtkPrinter          *printer,
-				 CtkPrinterOptionSet *options)
-{
-  return FALSE;
-}
-
-static gboolean
-fallback_printer_get_hard_margins (CtkPrinter *printer,
-				   gdouble    *top,
-				   gdouble    *bottom,
-				   gdouble    *left,
-				   gdouble    *right)
+fallback_printer_mark_conflicts (CtkPrinter          *printer G_GNUC_UNUSED,
+				 CtkPrinterOptionSet *options G_GNUC_UNUSED)
 {
   return FALSE;
 }
 
 static gboolean
-fallback_printer_get_hard_margins_for_paper_size (CtkPrinter   *printer,
-						  CtkPaperSize *paper_size,
-						  gdouble      *top,
-						  gdouble      *bottom,
-						  gdouble      *left,
-						  gdouble      *right)
+fallback_printer_get_hard_margins (CtkPrinter *printer G_GNUC_UNUSED,
+				   gdouble    *top G_GNUC_UNUSED,
+				   gdouble    *bottom G_GNUC_UNUSED,
+				   gdouble    *left G_GNUC_UNUSED,
+				   gdouble    *right G_GNUC_UNUSED)
+{
+  return FALSE;
+}
+
+static gboolean
+fallback_printer_get_hard_margins_for_paper_size (CtkPrinter   *printer G_GNUC_UNUSED,
+						  CtkPaperSize *paper_size G_GNUC_UNUSED,
+						  gdouble      *top G_GNUC_UNUSED,
+						  gdouble      *bottom G_GNUC_UNUSED,
+						  gdouble      *left G_GNUC_UNUSED,
+						  gdouble      *right G_GNUC_UNUSED)
 {
   return FALSE;
 }
 
 static GList *
-fallback_printer_list_papers (CtkPrinter *printer)
+fallback_printer_list_papers (CtkPrinter *printer G_GNUC_UNUSED)
 {
   return NULL;
 }
 
 static CtkPageSetup *
-fallback_printer_get_default_page_size (CtkPrinter *printer)
+fallback_printer_get_default_page_size (CtkPrinter *printer G_GNUC_UNUSED)
 {
   return NULL;
 }
 
 static CtkPrintCapabilities
-fallback_printer_get_capabilities (CtkPrinter *printer)
+fallback_printer_get_capabilities (CtkPrinter *printer G_GNUC_UNUSED)
 {
   return 0;
 }
 
 
 static void
-printer_hash_to_sorted_active_list (const gchar  *key,
+printer_hash_to_sorted_active_list (const gchar  *key G_GNUC_UNUSED,
                                     gpointer      value,
                                     GList       **out_list)
 {

@@ -16,7 +16,7 @@ enum {
 };
 
 static void
-format_number (CtkTreeViewColumn *col,
+format_number (CtkTreeViewColumn *col G_GNUC_UNUSED,
                CtkCellRenderer   *cell,
                CtkTreeModel      *model,
                CtkTreeIter       *iter,
@@ -36,7 +36,7 @@ filter_modify_func (CtkTreeModel *model,
                     CtkTreeIter  *iter,
                     GValue       *value,
                     gint          column,
-                    gpointer      data)
+                    gpointer      data G_GNUC_UNUSED)
 {
   CtkTreeModelFilter *filter_model = CTK_TREE_MODEL_FILTER (model);
   gint width, height;
@@ -73,7 +73,7 @@ filter_modify_func (CtkTreeModel *model,
 static gboolean
 visible_func (CtkTreeModel *model,
               CtkTreeIter  *iter,
-              gpointer      data)
+              gpointer      data G_GNUC_UNUSED)
 {
   gint width;
 

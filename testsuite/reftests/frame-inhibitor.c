@@ -25,9 +25,9 @@
 #include "ctk-reftest.h"
 
 static gboolean 
-tick_callback_for_1_frame (CtkWidget     *widget,
-                           CdkFrameClock *frame_clock,
-                           gpointer       unused)
+tick_callback_for_1_frame (CtkWidget     *widget G_GNUC_UNUSED,
+                           CdkFrameClock *frame_clock G_GNUC_UNUSED,
+                           gpointer       unused G_GNUC_UNUSED)
 {
   reftest_uninhibit_snapshot ();
 
@@ -47,8 +47,8 @@ inhibit_for_1_frame (CtkWidget *widget)
 
 static gboolean 
 tick_callback_for_2_frames (CtkWidget     *widget,
-                            CdkFrameClock *frame_clock,
-                            gpointer       unused)
+                            CdkFrameClock *frame_clock G_GNUC_UNUSED,
+                            gpointer       unused G_GNUC_UNUSED)
 {
   inhibit_for_1_frame (widget);
   reftest_uninhibit_snapshot ();
@@ -69,8 +69,8 @@ inhibit_for_2_frames (CtkWidget *widget)
 
 static gboolean 
 tick_callback_for_3_frames (CtkWidget     *widget,
-                            CdkFrameClock *frame_clock,
-                            gpointer       unused)
+                            CdkFrameClock *frame_clock G_GNUC_UNUSED,
+                            gpointer       unused G_GNUC_UNUSED)
 {
   inhibit_for_2_frames (widget);
   reftest_uninhibit_snapshot ();

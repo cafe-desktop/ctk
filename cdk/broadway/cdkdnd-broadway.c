@@ -86,10 +86,10 @@ cdk_broadway_drag_context_finalize (GObject *object)
 
 CdkDragContext *
 _cdk_broadway_window_drag_begin (CdkWindow *window,
-				 CdkDevice *device,
-				 GList     *targets,
-                                 gint       x_root,
-                                 gint       y_root)
+				 CdkDevice *device G_GNUC_UNUSED,
+				 GList     *targets G_GNUC_UNUSED,
+				 gint       x_root G_GNUC_UNUSED,
+				 gint       y_root G_GNUC_UNUSED)
 {
   CdkDragContext *new_context;
 
@@ -104,19 +104,19 @@ _cdk_broadway_window_drag_begin (CdkWindow *window,
 }
 
 CdkDragProtocol
-_cdk_broadway_window_get_drag_protocol (CdkWindow *window,
-					CdkWindow **target)
+_cdk_broadway_window_get_drag_protocol (CdkWindow  *window G_GNUC_UNUSED,
+					CdkWindow **target G_GNUC_UNUSED)
 {
   return CDK_DRAG_PROTO_NONE;
 }
 
 static CdkWindow *
 cdk_broadway_drag_context_find_window (CdkDragContext  *context,
-				       CdkWindow       *drag_window,
-				       CdkScreen       *screen,
-				       gint             x_root,
-				       gint             y_root,
-				       CdkDragProtocol *protocol)
+				       CdkWindow       *drag_window G_GNUC_UNUSED,
+				       CdkScreen       *screen G_GNUC_UNUSED,
+				       gint             x_root G_GNUC_UNUSED,
+				       gint             y_root G_GNUC_UNUSED,
+				       CdkDragProtocol *protocol G_GNUC_UNUSED)
 {
   g_return_val_if_fail (context != NULL, NULL);
   return NULL;
@@ -125,12 +125,12 @@ cdk_broadway_drag_context_find_window (CdkDragContext  *context,
 static gboolean
 cdk_broadway_drag_context_drag_motion (CdkDragContext *context,
 				       CdkWindow      *dest_window,
-				       CdkDragProtocol protocol,
-				       gint            x_root,
-				       gint            y_root,
-				       CdkDragAction   suggested_action,
-				       CdkDragAction   possible_actions,
-				       guint32         time)
+				       CdkDragProtocol protocol G_GNUC_UNUSED,
+				       gint            x_root G_GNUC_UNUSED,
+				       gint            y_root G_GNUC_UNUSED,
+				       CdkDragAction   suggested_action G_GNUC_UNUSED,
+				       CdkDragAction   possible_actions G_GNUC_UNUSED,
+				       guint32         time G_GNUC_UNUSED)
 {
   g_return_val_if_fail (context != NULL, FALSE);
   g_return_val_if_fail (dest_window == NULL || CDK_WINDOW_IS_BROADWAY (dest_window), FALSE);
@@ -140,14 +140,14 @@ cdk_broadway_drag_context_drag_motion (CdkDragContext *context,
 
 static void
 cdk_broadway_drag_context_drag_drop (CdkDragContext *context,
-				     guint32         time)
+				     guint32         time G_GNUC_UNUSED)
 {
   g_return_if_fail (context != NULL);
 }
 
 static void
 cdk_broadway_drag_context_drag_abort (CdkDragContext *context,
-				      guint32         time)
+				      guint32         time G_GNUC_UNUSED)
 {
   g_return_if_fail (context != NULL);
 }
@@ -155,31 +155,31 @@ cdk_broadway_drag_context_drag_abort (CdkDragContext *context,
 /* Destination side */
 
 static void
-cdk_broadway_drag_context_drag_status (CdkDragContext   *context,
-				       CdkDragAction     action,
-				       guint32           time)
+cdk_broadway_drag_context_drag_status (CdkDragContext *context,
+				       CdkDragAction   action G_GNUC_UNUSED,
+				       guint32         time G_GNUC_UNUSED)
 {
   g_return_if_fail (context != NULL);
 }
 
 static void
-cdk_broadway_drag_context_drop_reply (CdkDragContext   *context,
-				      gboolean          ok,
-				      guint32           time)
+cdk_broadway_drag_context_drop_reply (CdkDragContext *context,
+				      gboolean        ok G_GNUC_UNUSED,
+				      guint32         time G_GNUC_UNUSED)
 {
   g_return_if_fail (context != NULL);
 }
 
 static void
-cdk_broadway_drag_context_drop_finish (CdkDragContext   *context,
-				       gboolean          success,
-				       guint32           time)
+cdk_broadway_drag_context_drop_finish (CdkDragContext *context,
+				       gboolean        success G_GNUC_UNUSED,
+				       guint32         time G_GNUC_UNUSED)
 {
   g_return_if_fail (context != NULL);
 }
 
 void
-_cdk_broadway_window_register_dnd (CdkWindow      *window)
+_cdk_broadway_window_register_dnd (CdkWindow *window G_GNUC_UNUSED)
 {
 }
 
@@ -200,7 +200,7 @@ cdk_broadway_drag_context_drop_status (CdkDragContext *context)
 }
 
 void
-_cdk_broadway_display_init_dnd (CdkDisplay *display)
+_cdk_broadway_display_init_dnd (CdkDisplay *display G_GNUC_UNUSED)
 {
 }
 

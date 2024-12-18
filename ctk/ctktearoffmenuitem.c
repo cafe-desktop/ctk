@@ -283,9 +283,9 @@ ctk_tearoff_menu_item_activate (CtkMenuItem *menu_item)
 }
 
 static void
-tearoff_state_changed (CtkMenu            *menu,
-                       GParamSpec         *pspec,
-                       gpointer            data)
+tearoff_state_changed (CtkMenu    *menu,
+                       GParamSpec *pspec G_GNUC_UNUSED,
+                       gpointer    data)
 {
   CtkTearoffMenuItem *tearoff_menu_item = CTK_TEAROFF_MENU_ITEM (data);
   CtkTearoffMenuItemPrivate *priv = tearoff_menu_item->priv;

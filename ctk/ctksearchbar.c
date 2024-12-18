@@ -90,7 +90,7 @@ enum {
 static GParamSpec *widget_props[LAST_PROPERTY] = { NULL, };
 
 static void
-stop_search_cb (CtkWidget    *entry,
+stop_search_cb (CtkWidget    *entry G_GNUC_UNUSED,
                 CtkSearchBar *bar)
 {
   CtkSearchBarPrivate *priv = ctk_search_bar_get_instance_private (bar);
@@ -112,8 +112,8 @@ entry_key_pressed_event_cb (CtkWidget    *widget,
 }
 
 static void
-preedit_changed_cb (CtkEntry  *entry,
-                    CtkWidget *popup,
+preedit_changed_cb (CtkEntry  *entry G_GNUC_UNUSED,
+                    CtkWidget *popup G_GNUC_UNUSED,
                     gboolean  *preedit_changed)
 {
   *preedit_changed = TRUE;
@@ -237,7 +237,7 @@ ctk_search_bar_handle_event (CtkSearchBar *bar,
 
 static void
 reveal_child_changed_cb (GObject      *object,
-                         GParamSpec   *pspec,
+                         GParamSpec   *pspec G_GNUC_UNUSED,
                          CtkSearchBar *bar)
 {
   CtkSearchBarPrivate *priv = ctk_search_bar_get_instance_private (bar);
@@ -265,7 +265,7 @@ reveal_child_changed_cb (GObject      *object,
 
 static void
 child_revealed_changed_cb (GObject      *object,
-                           GParamSpec   *pspec,
+                           GParamSpec   *pspec G_GNUC_UNUSED,
                            CtkSearchBar *bar)
 {
   CtkSearchBarPrivate *priv = ctk_search_bar_get_instance_private (bar);
@@ -277,7 +277,7 @@ child_revealed_changed_cb (GObject      *object,
 }
 
 static void
-close_button_clicked_cb (CtkWidget    *button,
+close_button_clicked_cb (CtkWidget    *button G_GNUC_UNUSED,
                          CtkSearchBar *bar)
 {
   CtkSearchBarPrivate *priv = ctk_search_bar_get_instance_private (bar);

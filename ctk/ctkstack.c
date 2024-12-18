@@ -924,7 +924,7 @@ ctk_stack_progress_updated (CtkStack *stack)
 static gboolean
 ctk_stack_transition_cb (CtkWidget     *widget,
                          CdkFrameClock *frame_clock,
-                         gpointer       user_data)
+                         gpointer       user_data G_GNUC_UNUSED)
 {
   CtkStack *stack = CTK_STACK (widget);
   CtkStackPrivate *priv = ctk_stack_get_instance_private (stack);
@@ -1174,7 +1174,7 @@ set_visible_child (CtkStack               *stack,
 
 static void
 stack_child_visibility_notify_cb (GObject    *obj,
-                                  GParamSpec *pspec,
+                                  GParamSpec *pspec G_GNUC_UNUSED,
                                   gpointer    user_data)
 {
   CtkStack *stack = CTK_STACK (user_data);
@@ -1893,7 +1893,7 @@ ctk_stack_set_visible_child_full (CtkStack               *stack,
 
 static void
 ctk_stack_forall (CtkContainer *container,
-                  gboolean      include_internals,
+                  gboolean      include_internals G_GNUC_UNUSED,
                   CtkCallback   callback,
                   gpointer      callback_data)
 {
@@ -2124,11 +2124,11 @@ ctk_stack_draw (CtkWidget *widget,
 static gboolean
 ctk_stack_render (CtkCssGadget *gadget,
                   cairo_t      *cr,
-                  int           x,
-                  int           y,
-                  int           width,
-                  int           height,
-                  gpointer      data)
+                  int           x G_GNUC_UNUSED,
+                  int           y G_GNUC_UNUSED,
+                  int           width G_GNUC_UNUSED,
+                  int           height G_GNUC_UNUSED,
+                  gpointer      data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkStack *stack = CTK_STACK (widget);
@@ -2233,9 +2233,9 @@ ctk_stack_size_allocate (CtkWidget     *widget,
 static void
 ctk_stack_allocate (CtkCssGadget        *gadget,
                     const CtkAllocation *allocation,
-                    int                  baseline,
+                    int                  baseline G_GNUC_UNUSED,
                     CtkAllocation       *out_clip,
-                    gpointer             data)
+                    gpointer             data G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkStack *stack;
@@ -2370,9 +2370,9 @@ ctk_stack_measure (CtkCssGadget   *gadget,
                    int             for_size,
                    int            *minimum,
                    int            *natural,
-                   int            *minimum_baseline,
-                   int            *natural_baseline,
-                   gpointer        data)
+                   int            *minimum_baseline G_GNUC_UNUSED,
+                   int            *natural_baseline G_GNUC_UNUSED,
+                   gpointer        data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkStack *stack = CTK_STACK (widget);

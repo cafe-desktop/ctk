@@ -51,7 +51,7 @@ GType size_group_row_get_type (void);
 G_DEFINE_TYPE (SizeGroupRow, size_group_row, CTK_TYPE_LIST_BOX_ROW)
 
 static void
-size_group_row_init (SizeGroupRow *row)
+size_group_row_init (SizeGroupRow *row G_GNUC_UNUSED)
 {
 }
 
@@ -75,7 +75,8 @@ size_group_row_get_property (GObject    *object,
 }
 
 static void
-size_group_row_widget_destroyed (CtkWidget *widget, SizeGroupRow *row)
+size_group_row_widget_destroyed (CtkWidget    *widget G_GNUC_UNUSED,
+                                 SizeGroupRow *row)
 {
   CtkWidget *parent;
 
@@ -184,7 +185,7 @@ clear_view (CtkInspectorSizeGroups *sl)
 }
 
 static void
-add_widget (CtkInspectorSizeGroups *sl,
+add_widget (CtkInspectorSizeGroups *sl G_GNUC_UNUSED,
             CtkListBox             *listbox,
             CtkWidget              *widget)
 {
@@ -308,8 +309,6 @@ ctk_inspector_size_groups_init (CtkInspectorSizeGroups *sl)
 }
 
 static void
-ctk_inspector_size_groups_class_init (CtkInspectorSizeGroupsClass *klass)
+ctk_inspector_size_groups_class_init (CtkInspectorSizeGroupsClass *klass G_GNUC_UNUSED)
 {
 }
-
-// vim: set et sw=2 ts=2:

@@ -183,7 +183,7 @@ rgba_value_print (const GValue *value,
 static CtkCssValue *
 rgba_value_compute (CtkStyleProviderPrivate *provider,
                     CtkCssStyle             *values,
-                    CtkCssStyle             *parent_values,
+                    CtkCssStyle             *parent_values G_GNUC_UNUSED,
                     CtkCssValue             *specified)
 {
   CdkRGBA white = { 1, 1, 1, 1 };
@@ -277,7 +277,7 @@ color_value_print (const GValue *value,
 static CtkCssValue *
 color_value_compute (CtkStyleProviderPrivate *provider,
                      CtkCssStyle             *values,
-                     CtkCssStyle             *parent_values,
+                     CtkCssStyle             *parent_values G_GNUC_UNUSED,
                      CtkCssValue             *specified)
 {
   CdkColor color = { 0, 65535, 65535, 65535 };

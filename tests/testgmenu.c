@@ -128,13 +128,17 @@ get_model (void)
 /* The example actions {{{1 */
 
 static void
-activate_action (GSimpleAction *action, GVariant *parameter, gpointer user_data)
+activate_action (GSimpleAction *action,
+		 GVariant      *parameter G_GNUC_UNUSED,
+		 gpointer       user_data G_GNUC_UNUSED)
 {
   g_print ("Action %s activated\n", g_action_get_name (G_ACTION (action)));
 }
 
 static void
-activate_toggle (GSimpleAction *action, GVariant *parameter, gpointer user_data)
+activate_toggle (GSimpleAction *action,
+		 GVariant      *parameter G_GNUC_UNUSED,
+		 gpointer       user_data G_GNUC_UNUSED)
 {
   GVariant *old_state, *new_state;
 
@@ -151,7 +155,9 @@ activate_toggle (GSimpleAction *action, GVariant *parameter, gpointer user_data)
 }
 
 static void
-activate_radio (GSimpleAction *action, GVariant *parameter, gpointer user_data)
+activate_radio (GSimpleAction *action,
+		GVariant      *parameter,
+		gpointer       user_data G_GNUC_UNUSED)
 {
   GVariant *old_state, *new_state;
 
@@ -192,7 +198,7 @@ get_group (void)
 /* The action treeview {{{1 */
 
 static void
-enabled_cell_func (CtkTreeViewColumn *column,
+enabled_cell_func (CtkTreeViewColumn *column G_GNUC_UNUSED,
                    CtkCellRenderer   *cell,
                    CtkTreeModel      *model,
                    CtkTreeIter       *iter,
@@ -210,7 +216,7 @@ enabled_cell_func (CtkTreeViewColumn *column,
 }
 
 static void
-state_cell_func (CtkTreeViewColumn *column,
+state_cell_func (CtkTreeViewColumn *column G_GNUC_UNUSED,
                  CtkCellRenderer   *cell,
                  CtkTreeModel      *model,
                  CtkTreeIter       *iter,
@@ -250,7 +256,7 @@ state_cell_func (CtkTreeViewColumn *column,
 }
 
 static void
-enabled_cell_toggled (CtkCellRendererToggle *cell,
+enabled_cell_toggled (CtkCellRendererToggle *cell G_GNUC_UNUSED,
                       const gchar           *path_str,
                       CtkTreeModel          *model)
 {
@@ -277,7 +283,7 @@ enabled_cell_toggled (CtkCellRendererToggle *cell,
 }
 
 static void
-state_cell_toggled (CtkCellRendererToggle *cell,
+state_cell_toggled (CtkCellRendererToggle *cell G_GNUC_UNUSED,
                     const gchar           *path_str,
                     CtkTreeModel          *model)
 {
@@ -316,10 +322,10 @@ state_cell_toggled (CtkCellRendererToggle *cell,
 }
 
 static void
-state_cell_edited (CtkCellRendererCombo  *cell,
-                   const gchar           *path_str,
-                   const gchar           *new_text,
-                   CtkTreeModel          *model)
+state_cell_edited (CtkCellRendererCombo *cell G_GNUC_UNUSED,
+                   const gchar          *path_str,
+                   const gchar          *new_text,
+                   CtkTreeModel         *model)
 {
   GActionGroup *group;
   GAction *action;
@@ -418,7 +424,8 @@ create_action_treeview (GActionGroup *group)
 /* Dynamic menu changes {{{1 */
 
 static void
-toggle_sumerian (CtkToggleButton *button, gpointer data)
+toggle_sumerian (CtkToggleButton *button,
+		 gpointer         data G_GNUC_UNUSED)
 {
   GMenuModel *model;
   gboolean adding;
@@ -600,9 +607,9 @@ create_add_remove_buttons (GActionGroup *group,
 #define OBJ_PATH "/org/ctk/TestMenus"
 
 static gboolean
-on_delete_event (CtkWidget   *widget,
-		 CdkEvent    *event,
-		 gpointer     user_data)
+on_delete_event (CtkWidget   *widget G_GNUC_UNUSED,
+		 CdkEvent    *event G_GNUC_UNUSED,
+		 gpointer     user_data G_GNUC_UNUSED)
 {
   ctk_main_quit ();
   return TRUE;

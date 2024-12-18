@@ -2066,7 +2066,7 @@ cdk_x11_device_manager_xi2_translate_event (CdkEventTranslator *translator,
 }
 
 static CdkEventMask
-cdk_x11_device_manager_xi2_get_handled_events (CdkEventTranslator *translator)
+cdk_x11_device_manager_xi2_get_handled_events (CdkEventTranslator *translator G_GNUC_UNUSED)
 {
   return (CDK_KEY_PRESS_MASK |
           CDK_KEY_RELEASE_MASK |

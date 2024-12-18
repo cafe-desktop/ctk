@@ -243,7 +243,7 @@ ctk_accessible_connect_widget_destroyed (CtkAccessible *accessible)
 }
 
 static void
-ctk_accessible_widget_destroyed (CtkWidget     *widget,
+ctk_accessible_widget_destroyed (CtkWidget     *widget G_GNUC_UNUSED,
                                  CtkAccessible *accessible)
 {
   ctk_accessible_set_widget (accessible, NULL);

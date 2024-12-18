@@ -185,9 +185,9 @@ notify_changed (CtkBookmarksManager *manager)
 }
 
 static void
-bookmarks_file_changed (GFileMonitor      *monitor,
+bookmarks_file_changed (GFileMonitor      *monitor G_GNUC_UNUSED,
 			GFile             *file,
-			GFile             *other_file,
+			GFile             *other_file G_GNUC_UNUSED,
 			GFileMonitorEvent  event,
 			gpointer           data)
 {
