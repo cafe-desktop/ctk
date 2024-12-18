@@ -148,7 +148,7 @@ ctk_print_context_finalize (GObject *object)
 }
 
 static void
-ctk_print_context_init (CtkPrintContext *context)
+ctk_print_context_init (CtkPrintContext *context G_GNUC_UNUSED)
 {
 }
 
@@ -176,7 +176,7 @@ _ctk_print_context_new (CtkPrintOperation *op)
 }
 
 static PangoFontMap *
-_ctk_print_context_get_fontmap (CtkPrintContext *context)
+_ctk_print_context_get_fontmap (CtkPrintContext *context G_GNUC_UNUSED)
 {
   return pango_cairo_font_map_get_default ();
 }

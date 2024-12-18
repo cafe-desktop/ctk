@@ -22,19 +22,22 @@
 #include <ctk/ctk.h>
 
 static void
-notify_font_name_cb (GObject *fontsel, GParamSpec *pspec, gpointer data)
+notify_font_name_cb (GObject    *fontsel,
+		     GParamSpec *pspec G_GNUC_UNUSED,
+		     gpointer    data G_GNUC_UNUSED)
 {
   g_debug ("Changed font name %s", ctk_font_selection_get_font_name (CTK_FONT_SELECTION (fontsel)));
 }
 
 static void
-notify_preview_text_cb (GObject *fontsel, GParamSpec *pspec, gpointer data)
+notify_preview_text_cb (GObject *fontsel, GParamSpec *pspec G_GNUC_UNUSED, gpointer data G_GNUC_UNUSED)
 {
   g_debug ("Changed preview text %s", ctk_font_selection_get_preview_text (CTK_FONT_SELECTION (fontsel)));
 }
 
 int
-main (int argc, char *argv[])
+main (int   argc G_GNUC_UNUSED,
+      char *argv[] G_GNUC_UNUSED)
 {
   CtkWidget *window;
   CtkWidget *hbox;

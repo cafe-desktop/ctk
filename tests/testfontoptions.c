@@ -28,7 +28,8 @@ set_font_options (CtkWidget *label)
 }
 
 int
-main (int argc, char *argv[])
+main (int   argc G_GNUC_UNUSED,
+      char *argv[] G_GNUC_UNUSED)
 {
   CtkWidget *window, *label, *grid, *demo;
 

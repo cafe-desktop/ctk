@@ -131,7 +131,7 @@ cdk_device_tool_class_init (CdkDeviceToolClass *klass)
 }
 
 static void
-cdk_device_tool_init (CdkDeviceTool *tool)
+cdk_device_tool_init (CdkDeviceTool *tool G_GNUC_UNUSED)
 {
 }
 

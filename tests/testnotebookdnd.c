@@ -61,10 +61,10 @@ static const CtkTargetEntry button_targets[] = {
 
 static CtkNotebook*
 window_creation_function (CtkNotebook *source_notebook,
-                          CtkWidget   *child,
+                          CtkWidget   *child G_GNUC_UNUSED,
                           gint         x,
                           gint         y,
-                          gpointer     data)
+                          gpointer     data G_GNUC_UNUSED)
 {
   CtkWidget *window, *notebook;
 
@@ -86,7 +86,10 @@ window_creation_function (CtkNotebook *source_notebook,
 }
 
 static void
-on_page_reordered (CtkNotebook *notebook, CtkWidget *child, guint page_num, gpointer data)
+on_page_reordered (CtkNotebook *notebook G_GNUC_UNUSED,
+		   CtkWidget   *child G_GNUC_UNUSED,
+		   guint        page_num,
+		   gpointer     data G_GNUC_UNUSED)
 {
   g_print ("page %d reordered\n", page_num);
 }
@@ -94,7 +97,7 @@ on_page_reordered (CtkNotebook *notebook, CtkWidget *child, guint page_num, gpoi
 static void
 on_notebook_drag_begin (CtkWidget      *widget,
                         CdkDragContext *context,
-                        gpointer        data)
+                        gpointer        data G_GNUC_UNUSED)
 {
   guint page_num;
 
@@ -134,14 +137,14 @@ remove_in_idle (gpointer data)
 }
 
 static void
-on_button_drag_data_received (CtkWidget        *widget,
-                              CdkDragContext   *context,
-                              gint              x,
-                              gint              y,
+on_button_drag_data_received (CtkWidget        *widget G_GNUC_UNUSED,
+                              CdkDragContext   *context G_GNUC_UNUSED,
+                              gint              x G_GNUC_UNUSED,
+                              gint              y G_GNUC_UNUSED,
                               CtkSelectionData *data,
-                              guint             info,
-                              guint             time,
-                              gpointer          user_data)
+                              guint             info G_GNUC_UNUSED,
+                              guint             time G_GNUC_UNUSED,
+                              gpointer          user_data G_GNUC_UNUSED)
 {
   CtkWidget **child;
 
@@ -151,7 +154,7 @@ on_button_drag_data_received (CtkWidget        *widget,
 }
 
 static void
-action_clicked_cb (CtkWidget *button,
+action_clicked_cb (CtkWidget *button G_GNUC_UNUSED,
                    CtkWidget *notebook)
 {
   CtkWidget *page, *title;

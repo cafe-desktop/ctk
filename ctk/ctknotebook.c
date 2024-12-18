@@ -648,10 +648,10 @@ add_reorder_bindings (CtkBindingSet    *binding_set,
 }
 
 static gboolean
-ctk_object_handled_accumulator (GSignalInvocationHint *ihint,
+ctk_object_handled_accumulator (GSignalInvocationHint *ihint G_GNUC_UNUSED,
                                 GValue                *return_accu,
                                 const GValue          *handler_return,
-                                gpointer               dummy)
+                                gpointer               dummy G_GNUC_UNUSED)
 {
   gboolean continue_emission;
   GObject *object;
@@ -1384,7 +1384,7 @@ ctk_notebook_buildable_init (CtkBuildableIface *iface)
 
 static void
 ctk_notebook_buildable_add_child (CtkBuildable  *buildable,
-                                  CtkBuilder    *builder,
+                                  CtkBuilder    *builder G_GNUC_UNUSED,
                                   GObject       *child,
                                   const gchar   *type)
 {
@@ -2343,12 +2343,12 @@ ctk_notebook_get_preferred_tabs_size (CtkNotebook    *notebook,
 static void
 ctk_notebook_measure_tabs (CtkCssGadget   *gadget,
                            CtkOrientation  orientation,
-                           gint            size,
+                           gint            size G_GNUC_UNUSED,
                            gint           *minimum,
                            gint           *natural,
-                           gint           *minimum_baseline,
-                           gint           *natural_baseline,
-                           gpointer        unused)
+                           gint           *minimum_baseline G_GNUC_UNUSED,
+                           gint           *natural_baseline G_GNUC_UNUSED,
+                           gpointer        unused G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkNotebook *notebook = CTK_NOTEBOOK (widget);
@@ -2373,9 +2373,9 @@ ctk_notebook_measure_stack (CtkCssGadget   *gadget,
                             gint            size,
                             gint           *minimum,
                             gint           *natural,
-                            gint           *minimum_baseline,
-                            gint           *natural_baseline,
-                            gpointer        unused)
+                            gint           *minimum_baseline G_GNUC_UNUSED,
+                            gint           *natural_baseline G_GNUC_UNUSED,
+                            gpointer        unused G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkNotebook *notebook = CTK_NOTEBOOK (widget);
@@ -2457,9 +2457,9 @@ ctk_notebook_get_preferred_height (CtkWidget *widget,
 static void
 ctk_notebook_allocate_tabs (CtkCssGadget        *gadget,
                             const CtkAllocation *allocation,
-                            int                  baseline,
-                            CtkAllocation       *out_clip,
-                            gpointer             unused)
+                            int                  baseline G_GNUC_UNUSED,
+                            CtkAllocation       *out_clip G_GNUC_UNUSED,
+                            gpointer             unused G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkNotebook *notebook = CTK_NOTEBOOK (widget);
@@ -2472,7 +2472,7 @@ ctk_notebook_allocate_stack (CtkCssGadget        *gadget,
                              const CtkAllocation *allocation,
                              int                  baseline,
                              CtkAllocation       *out_clip,
-                             gpointer             unused)
+                             gpointer             unused G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkNotebook *notebook = CTK_NOTEBOOK (widget);
@@ -2530,11 +2530,11 @@ ctk_notebook_size_allocate (CtkWidget     *widget,
 static gboolean
 ctk_notebook_draw_stack (CtkCssGadget *gadget,
                          cairo_t      *cr,
-                         int           x,
-                         int           y,
-                         int           width,
-                         int           height,
-                         gpointer      unused)
+                         int           x G_GNUC_UNUSED,
+                         int           y G_GNUC_UNUSED,
+                         int           width G_GNUC_UNUSED,
+                         int           height G_GNUC_UNUSED,
+                         gpointer      unused G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkNotebook *notebook = CTK_NOTEBOOK (widget);
@@ -2956,9 +2956,9 @@ get_drop_position (CtkNotebook *notebook)
 }
 
 static void
-prepare_drag_window (CdkSeat   *seat,
+prepare_drag_window (CdkSeat   *seat G_GNUC_UNUSED,
                      CdkWindow *window,
-                     gpointer   user_data)
+                     gpointer   user_data G_GNUC_UNUSED)
 {
   cdk_window_show (window);
 }
@@ -3478,7 +3478,7 @@ update_arrow_state (CtkNotebook *notebook)
 
 static void
 ctk_notebook_state_flags_changed (CtkWidget     *widget,
-                                  CtkStateFlags  previous_state)
+                                  CtkStateFlags  previous_state G_GNUC_UNUSED)
 {
   CtkNotebook *notebook = CTK_NOTEBOOK (widget);
 
@@ -3491,7 +3491,7 @@ ctk_notebook_state_flags_changed (CtkWidget     *widget,
 
 static gboolean
 ctk_notebook_focus_in (CtkWidget     *widget,
-                       CdkEventFocus *event)
+                       CdkEventFocus *event G_GNUC_UNUSED)
 {
   CtkNotebook *notebook = CTK_NOTEBOOK (widget);
   CtkNotebookPrivate *priv = notebook->priv;
@@ -3503,7 +3503,7 @@ ctk_notebook_focus_in (CtkWidget     *widget,
 
 static gboolean
 ctk_notebook_focus_out (CtkWidget     *widget,
-                        CdkEventFocus *event)
+                        CdkEventFocus *event G_GNUC_UNUSED)
 {
   CtkNotebook *notebook = CTK_NOTEBOOK (widget);
   CtkNotebookPrivate *priv = notebook->priv;
@@ -3636,7 +3636,7 @@ ctk_notebook_style_updated (CtkWidget *widget)
 static gboolean
 on_drag_icon_draw (CtkWidget *widget,
                    cairo_t   *cr,
-                   gpointer   data)
+                   gpointer   data G_GNUC_UNUSED)
 {
   CtkWidget *child;
   CtkRequisition requisition;
@@ -3745,10 +3745,10 @@ ctk_notebook_drag_end (CtkWidget      *widget,
 }
 
 static CtkNotebook *
-ctk_notebook_create_window (CtkNotebook *notebook,
-                            CtkWidget   *page,
-                            gint         x,
-                            gint         y)
+ctk_notebook_create_window (CtkNotebook *notebook G_GNUC_UNUSED,
+                            CtkWidget   *page G_GNUC_UNUSED,
+                            gint         x G_GNUC_UNUSED,
+                            gint         y G_GNUC_UNUSED)
 {
   return NULL;
 }
@@ -3909,8 +3909,8 @@ ctk_notebook_drag_motion (CtkWidget      *widget,
 
 static void
 ctk_notebook_drag_leave (CtkWidget      *widget,
-                         CdkDragContext *context,
-                         guint           time)
+                         CdkDragContext *context G_GNUC_UNUSED,
+                         guint           time G_GNUC_UNUSED)
 {
   CtkNotebook *notebook = CTK_NOTEBOOK (widget);
 
@@ -3921,8 +3921,8 @@ ctk_notebook_drag_leave (CtkWidget      *widget,
 static gboolean
 ctk_notebook_drag_drop (CtkWidget        *widget,
                         CdkDragContext   *context,
-                        gint              x,
-                        gint              y,
+                        gint              x G_GNUC_UNUSED,
+                        gint              y G_GNUC_UNUSED,
                         guint             time)
 {
   CdkAtom target, tab_target;
@@ -4026,10 +4026,10 @@ do_detach_tab (CtkNotebook     *from,
 
 static void
 ctk_notebook_drag_data_get (CtkWidget        *widget,
-                            CdkDragContext   *context,
+                            CdkDragContext   *context G_GNUC_UNUSED,
                             CtkSelectionData *data,
-                            guint             info,
-                            guint             time)
+                            guint             info G_GNUC_UNUSED,
+                            guint             time G_GNUC_UNUSED)
 {
   CtkNotebook *notebook = CTK_NOTEBOOK (widget);
   CtkNotebookPrivate *priv = notebook->priv;
@@ -4058,7 +4058,7 @@ ctk_notebook_drag_data_received (CtkWidget        *widget,
                                  gint              x,
                                  gint              y,
                                  CtkSelectionData *data,
-                                 guint             info,
+                                 guint             info G_GNUC_UNUSED,
                                  guint             time)
 {
   CtkNotebook *notebook;
@@ -4292,7 +4292,7 @@ focus_tabs_in (CtkNotebook *notebook)
 
 static gboolean
 focus_tabs_move (CtkNotebook     *notebook,
-                 CtkDirectionType direction,
+                 CtkDirectionType direction G_GNUC_UNUSED,
                  gint             search_direction)
 {
   CtkNotebookPrivate *priv = notebook->priv;
@@ -4622,7 +4622,7 @@ ctk_notebook_forall (CtkContainer *container,
 }
 
 static GType
-ctk_notebook_child_type (CtkContainer     *container)
+ctk_notebook_child_type (CtkContainer *container G_GNUC_UNUSED)
 {
   return CTK_TYPE_WIDGET;
 }
@@ -4633,7 +4633,7 @@ ctk_notebook_child_type (CtkContainer     *container)
  */
 static void
 page_visible_cb (CtkWidget  *child,
-                 GParamSpec *arg,
+                 GParamSpec *arg G_GNUC_UNUSED,
                  gpointer    data)
 {
   CtkNotebook *notebook = CTK_NOTEBOOK (data);
@@ -4676,14 +4676,14 @@ page_visible_cb (CtkWidget  *child,
 }
 
 static void
-measure_tab (CtkCssGadget           *gadget,
-             CtkOrientation          orientation,
-             gint                    for_size,
-             gint                   *minimum,
-             gint                   *natural,
-             gint                   *minimum_baseline,
-             gint                   *natural_baseline,
-             gpointer                data)
+measure_tab (CtkCssGadget   *gadget G_GNUC_UNUSED,
+             CtkOrientation  orientation,
+             gint            for_size,
+             gint           *minimum,
+             gint           *natural,
+             gint           *minimum_baseline,
+             gint           *natural_baseline,
+             gpointer        data)
 {
   CtkNotebookPage *page = data;
 
@@ -4752,10 +4752,10 @@ allocate_tab (CtkCssGadget        *gadget,
 static gboolean
 draw_tab (CtkCssGadget *gadget,
           cairo_t      *cr,
-          int           x,
-          int           y,
-          int           width,
-          int           height,
+          int           x G_GNUC_UNUSED,
+          int           y G_GNUC_UNUSED,
+          int           width G_GNUC_UNUSED,
+          int           height G_GNUC_UNUSED,
           gpointer      data)
 {
   CtkNotebookPage *page = data;
@@ -5236,11 +5236,11 @@ ctk_notebook_search_page (CtkNotebook *notebook,
 static gboolean
 ctk_notebook_draw_tabs (CtkCssGadget *gadget,
                         cairo_t      *cr,
-                        int           x,
-                        int           y,
-                        int           width,
-                        int           height,
-                        gpointer      unused)
+                        int           x G_GNUC_UNUSED,
+                        int           y G_GNUC_UNUSED,
+                        int           width G_GNUC_UNUSED,
+                        int           height G_GNUC_UNUSED,
+                        gpointer      unused G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkNotebook *notebook = CTK_NOTEBOOK (widget);
@@ -6187,9 +6187,9 @@ ctk_notebook_calc_tabs (CtkNotebook  *notebook,
  * ctk_notebook_real_switch_page
  */
 static void
-ctk_notebook_real_switch_page (CtkNotebook     *notebook,
-                               CtkWidget*       child,
-                               guint            page_num)
+ctk_notebook_real_switch_page (CtkNotebook *notebook,
+                               CtkWidget*   child,
+                               guint        page_num G_GNUC_UNUSED)
 {
   CtkNotebookPrivate *priv = notebook->priv;
   GList *list = ctk_notebook_find_child (notebook, CTK_WIDGET (child));
@@ -6411,7 +6411,7 @@ ctk_notebook_menu_item_recreate (CtkNotebook *notebook,
 
 static void
 ctk_notebook_menu_label_unparent (CtkWidget *widget,
-                                  gpointer  data)
+                                  gpointer   data G_GNUC_UNUSED)
 {
   ctk_widget_unparent (ctk_bin_get_child (CTK_BIN (widget)));
   _ctk_bin_set_child (CTK_BIN (widget), NULL);
@@ -6590,8 +6590,8 @@ ctk_notebook_page_compare_tab (gconstpointer a,
 
 static gboolean
 ctk_notebook_mnemonic_activate_switch_page (CtkWidget *child,
-                                            gboolean overload,
-                                            gpointer data)
+                                            gboolean   overload G_GNUC_UNUSED,
+                                            gpointer   data)
 {
   CtkNotebook *notebook = CTK_NOTEBOOK (data);
   CtkNotebookPrivate *priv = notebook->priv;

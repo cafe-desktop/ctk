@@ -924,7 +924,7 @@ cb_button_timeout (gpointer user_data)
 
 static gboolean
 cb_button_press (CtkWidget      *widget,
-		 CdkEventButton *event,
+		 CdkEventButton *event G_GNUC_UNUSED,
 		 gpointer        user_data)
 {
   CtkScaleButton *button = CTK_SCALE_BUTTON (user_data);
@@ -949,8 +949,8 @@ cb_button_press (CtkWidget      *widget,
 }
 
 static gboolean
-cb_button_release (CtkWidget      *widget,
-		   CdkEventButton *event,
+cb_button_release (CtkWidget      *widget G_GNUC_UNUSED,
+		   CdkEventButton *event G_GNUC_UNUSED,
 		   gpointer        user_data)
 {
   CtkScaleButton *button = CTK_SCALE_BUTTON (user_data);
@@ -1072,7 +1072,7 @@ cb_scale_value_changed (CtkRange *range,
 }
 
 static void
-cb_popup_mapped (CtkWidget *popup,
+cb_popup_mapped (CtkWidget *popup G_GNUC_UNUSED,
                  gpointer   user_data)
 {
   CtkScaleButton *button = user_data;

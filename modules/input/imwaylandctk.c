@@ -110,10 +110,10 @@ reset_preedit (CtkIMContextWayland *context)
 }
 
 static void
-text_input_enter (void                     *data,
-                  struct ctk_text_input    *text_input,
-                  uint32_t                  serial,
-                  struct wl_surface        *surface)
+text_input_enter (void                  *data,
+                  struct ctk_text_input *text_input G_GNUC_UNUSED,
+                  uint32_t               serial,
+                  struct wl_surface     *surface G_GNUC_UNUSED)
 {
   CtkIMContextWaylandGlobal *global = data;
 
@@ -121,10 +121,10 @@ text_input_enter (void                     *data,
 }
 
 static void
-text_input_leave (void                     *data,
-                  struct ctk_text_input    *text_input,
-                  uint32_t                  serial,
-                  struct wl_surface        *surface)
+text_input_leave (void                  *data G_GNUC_UNUSED,
+                  struct ctk_text_input *text_input G_GNUC_UNUSED,
+                  uint32_t               serial G_GNUC_UNUSED,
+                  struct wl_surface     *surface G_GNUC_UNUSED)
 {
   CtkIMContextWayland *context;
 
@@ -136,10 +136,10 @@ text_input_leave (void                     *data,
 }
 
 static void
-text_input_preedit (void                     *data,
-                    struct ctk_text_input    *text_input,
-                    const char               *text,
-                    guint                     cursor)
+text_input_preedit (void                  *data G_GNUC_UNUSED,
+                    struct ctk_text_input *text_input G_GNUC_UNUSED,
+                    const char            *text,
+                    guint                  cursor)
 {
   CtkIMContextWayland *context;
   gboolean state_change;
@@ -167,9 +167,9 @@ text_input_preedit (void                     *data,
 }
 
 static void
-text_input_commit (void                     *data,
-                   struct ctk_text_input    *text_input,
-                   const char               *text)
+text_input_commit (void                  *data,
+                   struct ctk_text_input *text_input G_GNUC_UNUSED,
+                   const char            *text)
 {
   CtkIMContextWaylandGlobal *global = data;
 
@@ -178,10 +178,10 @@ text_input_commit (void                     *data,
 }
 
 static void
-text_input_delete_surrounding_text (void                     *data,
-                                    struct ctk_text_input    *text_input,
-                                    uint32_t                  offset,
-                                    uint32_t                  len)
+text_input_delete_surrounding_text (void                  *data,
+                                    struct ctk_text_input *text_input G_GNUC_UNUSED,
+                                    uint32_t               offset,
+                                    uint32_t               len)
 {
   CtkIMContextWaylandGlobal *global = data;
 
@@ -199,10 +199,10 @@ static const struct ctk_text_input_listener text_input_listener = {
 
 static void
 registry_handle_global (void               *data,
-                        struct wl_registry *registry,
+                        struct wl_registry *registry G_GNUC_UNUSED,
                         uint32_t            id,
                         const char         *interface,
-                        uint32_t            version)
+                        uint32_t            version G_GNUC_UNUSED)
 {
   CtkIMContextWaylandGlobal *global = data;
   CdkSeat *seat = cdk_display_get_default_seat (cdk_display_get_default ());
@@ -223,7 +223,7 @@ registry_handle_global (void               *data,
 
 static void
 registry_handle_global_remove (void               *data,
-                               struct wl_registry *registry,
+                               struct wl_registry *registry G_GNUC_UNUSED,
                                uint32_t            id)
 {
   CtkIMContextWaylandGlobal *global = data;
@@ -405,7 +405,7 @@ ctk_im_context_wayland_finalize (GObject *object)
 }
 
 static void
-pressed_cb (CtkGestureMultiPress *gesture,
+pressed_cb (CtkGestureMultiPress *gesture G_GNUC_UNUSED,
             gint                  n_press,
             gdouble               x,
             gdouble               y,
@@ -419,7 +419,7 @@ pressed_cb (CtkGestureMultiPress *gesture,
 }
 
 static void
-released_cb (CtkGestureMultiPress *gesture,
+released_cb (CtkGestureMultiPress *gesture G_GNUC_UNUSED,
              gint                  n_press,
              gdouble               x,
              gdouble               y,

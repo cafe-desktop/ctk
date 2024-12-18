@@ -29,7 +29,7 @@ typedef struct
 MyDoubleCtkEntry;
 
 void
-get_screen_response (CtkDialog *dialog,
+get_screen_response (CtkDialog *dialog G_GNUC_UNUSED,
 		     gint       response_id,
 		     CtkEntry  *entry)
 {
@@ -40,7 +40,7 @@ get_screen_response (CtkDialog *dialog,
 }
 
 void
-entry_dialog_response (CtkDialog        *dialog,
+entry_dialog_response (CtkDialog        *dialog G_GNUC_UNUSED,
 		       gint              response_id,
 		       MyDoubleCtkEntry *de)
 {

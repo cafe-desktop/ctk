@@ -1556,7 +1556,7 @@ mount_volume (CtkPlacesView *view,
 /* Callback used when the file list's popup menu is detached */
 static void
 popup_menu_detach_cb (CtkWidget *attach_widget,
-                      CtkMenu   *menu)
+                      CtkMenu   *menu G_GNUC_UNUSED)
 {
   CtkPlacesViewPrivate *priv;
 
@@ -1565,7 +1565,7 @@ popup_menu_detach_cb (CtkWidget *attach_widget,
 }
 
 static void
-open_cb (CtkMenuItem      *item,
+open_cb (CtkMenuItem      *item G_GNUC_UNUSED,
          CtkPlacesViewRow *row)
 {
   CtkPlacesView *self;
@@ -1575,7 +1575,7 @@ open_cb (CtkMenuItem      *item,
 }
 
 static void
-open_in_new_tab_cb (CtkMenuItem      *item,
+open_in_new_tab_cb (CtkMenuItem      *item G_GNUC_UNUSED,
                     CtkPlacesViewRow *row)
 {
   CtkPlacesView *self;
@@ -1585,7 +1585,7 @@ open_in_new_tab_cb (CtkMenuItem      *item,
 }
 
 static void
-open_in_new_window_cb (CtkMenuItem      *item,
+open_in_new_window_cb (CtkMenuItem      *item G_GNUC_UNUSED,
                        CtkPlacesViewRow *row)
 {
   CtkPlacesView *self;
@@ -1595,7 +1595,7 @@ open_in_new_window_cb (CtkMenuItem      *item,
 }
 
 static void
-mount_cb (CtkMenuItem      *item,
+mount_cb (CtkMenuItem      *item G_GNUC_UNUSED,
           CtkPlacesViewRow *row)
 {
   CtkPlacesViewPrivate *priv;
@@ -1618,7 +1618,7 @@ mount_cb (CtkMenuItem      *item,
 }
 
 static void
-unmount_cb (CtkMenuItem      *item,
+unmount_cb (CtkMenuItem      *item G_GNUC_UNUSED,
             CtkPlacesViewRow *row)
 {
   CtkWidget *view;
@@ -1811,7 +1811,7 @@ on_button_press_event (CtkPlacesViewRow *row,
 }
 
 static gboolean
-on_key_press_event (CtkWidget     *widget,
+on_key_press_event (CtkWidget     *widget G_GNUC_UNUSED,
                     CdkEventKey   *event,
                     CtkPlacesView *view)
 {
@@ -1859,7 +1859,7 @@ on_key_press_event (CtkWidget     *widget,
 }
 
 static void
-on_eject_button_clicked (CtkWidget        *widget,
+on_eject_button_clicked (CtkWidget        *widget G_GNUC_UNUSED,
                          CtkPlacesViewRow *row)
 {
   if (row)
@@ -1943,9 +1943,9 @@ out:
 
 static void
 on_address_entry_show_help_pressed (CtkPlacesView        *view,
-                                    CtkEntryIconPosition  icon_pos,
-                                    CdkEvent             *event,
-                                    CtkEntry             *entry)
+                                    CtkEntryIconPosition  icon_pos G_GNUC_UNUSED,
+                                    CdkEvent             *event G_GNUC_UNUSED,
+                                    CtkEntry             *entry G_GNUC_UNUSED)
 {
   CtkPlacesViewPrivate *priv;
   CdkRectangle rect;
@@ -1964,7 +1964,7 @@ on_address_entry_show_help_pressed (CtkPlacesView        *view,
 static void
 on_recent_servers_listbox_row_activated (CtkPlacesView    *view,
                                          CtkPlacesViewRow *row,
-                                         CtkWidget        *listbox)
+                                         CtkWidget        *listbox G_GNUC_UNUSED)
 {
   CtkPlacesViewPrivate *priv;
   gchar *uri;
@@ -1980,7 +1980,7 @@ on_recent_servers_listbox_row_activated (CtkPlacesView    *view,
 static void
 on_listbox_row_activated (CtkPlacesView    *view,
                           CtkPlacesViewRow *row,
-                          CtkWidget        *listbox)
+                          CtkWidget        *listbox G_GNUC_UNUSED)
 {
   CtkPlacesViewPrivate *priv;
   CdkEvent *event;
@@ -2174,7 +2174,7 @@ listbox_header_func (CtkListBoxRow *row,
 static gint
 listbox_sort_func (CtkListBoxRow *row1,
                    CtkListBoxRow *row2,
-                   gpointer       user_data)
+                   gpointer       user_data G_GNUC_UNUSED)
 {
   gboolean row1_is_network;
   gboolean row2_is_network;

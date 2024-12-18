@@ -432,7 +432,7 @@ static guint16 am_et_compose_seqs[] = {
 };
 
 static void
-am_et_class_init (CtkIMContextSimpleClass *class)
+am_et_class_init (CtkIMContextSimpleClass *class G_GNUC_UNUSED)
 {
 }
 

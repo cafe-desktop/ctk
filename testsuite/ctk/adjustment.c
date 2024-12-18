@@ -54,13 +54,13 @@ static gint changed_count;
 static gint value_changed_count;
 
 static void
-changed_cb (CtkAdjustment *a)
+changed_cb (CtkAdjustment *a G_GNUC_UNUSED)
 {
   changed_count++;
 }
 
 static void
-value_changed_cb (CtkAdjustment *a)
+value_changed_cb (CtkAdjustment *a G_GNUC_UNUSED)
 {
   value_changed_count++;
 }

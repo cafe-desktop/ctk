@@ -776,7 +776,7 @@ ctk_model_button_measure (CtkCssGadget   *gadget,
                           int            *natural,
                           int            *minimum_baseline,
                           int            *natural_baseline,
-                          gpointer        data)
+                          gpointer        data G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkModelButton *button;
@@ -916,7 +916,7 @@ ctk_model_button_allocate (CtkCssGadget        *gadget,
                            const CtkAllocation *allocation,
                            int                  baseline,
                            CtkAllocation       *out_clip,
-                           gpointer             unused)
+                           gpointer             unused G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkModelButton *button;
@@ -1032,11 +1032,11 @@ ctk_model_button_draw (CtkWidget *widget,
 static gboolean
 ctk_model_button_render (CtkCssGadget *gadget,
                          cairo_t      *cr,
-                         int           x,
-                         int           y,
-                         int           width,
-                         int           height,
-                         gpointer      data)
+                         int           x G_GNUC_UNUSED,
+                         int           y G_GNUC_UNUSED,
+                         int           width G_GNUC_UNUSED,
+                         int           height G_GNUC_UNUSED,
+                         gpointer      data G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkModelButton *button;

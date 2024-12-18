@@ -293,7 +293,7 @@ ctk_frame_buildable_init (CtkBuildableIface *iface)
 
 static void
 ctk_frame_buildable_add_child (CtkBuildable *buildable,
-			       CtkBuilder   *builder,
+			       CtkBuilder   *builder G_GNUC_UNUSED,
 			       GObject      *child,
 			       const gchar  *type)
 {
@@ -450,7 +450,7 @@ ctk_frame_remove (CtkContainer *container,
 
 static void
 ctk_frame_forall (CtkContainer *container,
-		  gboolean      include_internals,
+		  gboolean      include_internals G_GNUC_UNUSED,
 		  CtkCallback   callback,
 		  gpointer      callback_data)
 {
@@ -724,11 +724,11 @@ ctk_frame_draw (CtkWidget *widget,
 static gboolean
 ctk_frame_render (CtkCssGadget *gadget,
                   cairo_t      *cr,
-                  int           x,
+                  int           x G_GNUC_UNUSED,
                   int           y,
-                  int           width,
-                  int           height,
-                  gpointer      data)
+                  int           width G_GNUC_UNUSED,
+                  int           height G_GNUC_UNUSED,
+                  gpointer      data G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkFramePrivate *priv;
@@ -795,10 +795,10 @@ ctk_frame_size_allocate (CtkWidget     *widget,
 
 static void
 ctk_frame_allocate (CtkCssGadget        *gadget,
-                    const CtkAllocation *allocation,
-                    int                  baseline,
+                    const CtkAllocation *allocation G_GNUC_UNUSED,
+                    int                  baseline G_GNUC_UNUSED,
                     CtkAllocation       *out_clip,
-                    gpointer             data)
+                    gpointer             data G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkFrame *frame;
@@ -859,9 +859,9 @@ ctk_frame_allocate (CtkCssGadget        *gadget,
 static void
 ctk_frame_allocate_border (CtkCssGadget        *gadget,
                            const CtkAllocation *allocation,
-                           int                  baseline,
+                           int                  baseline G_GNUC_UNUSED,
                            CtkAllocation       *out_clip,
-                           gpointer             data)
+                           gpointer             data G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkFramePrivate *priv;
@@ -932,9 +932,9 @@ ctk_frame_measure (CtkCssGadget   *gadget,
                    int             for_size,
                    int            *minimum,
                    int            *natural,
-                   int            *minimum_baseline,
-                   int            *natural_baseline,
-                   gpointer        data)
+                   int            *minimum_baseline G_GNUC_UNUSED,
+                   int            *natural_baseline G_GNUC_UNUSED,
+                   gpointer        data G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkFrame *frame;
@@ -983,9 +983,9 @@ ctk_frame_measure_border (CtkCssGadget   *gadget,
                           int             for_size,
                           int            *minimum,
                           int            *natural,
-                          int            *minimum_baseline,
-                          int            *natural_baseline,
-                          gpointer        data)
+                          int            *minimum_baseline G_GNUC_UNUSED,
+                          int            *natural_baseline G_GNUC_UNUSED,
+                          gpointer        data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkWidget *child;

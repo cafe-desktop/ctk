@@ -14,7 +14,7 @@
 #include <ctk/ctk.h>
 
 void
-toggle_resize (CtkWidget *widget,
+toggle_resize (CtkWidget *widget G_GNUC_UNUSED,
                CtkWidget *child)
 {
   CtkWidget *parent;
@@ -42,7 +42,7 @@ toggle_resize (CtkWidget *widget,
 }
 
 void
-toggle_shrink (CtkWidget *widget,
+toggle_shrink (CtkWidget *widget G_GNUC_UNUSED,
                CtkWidget *child)
 {
   CtkWidget *parent;

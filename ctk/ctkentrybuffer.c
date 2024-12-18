@@ -222,9 +222,9 @@ ctk_entry_buffer_normal_delete_text (CtkEntryBuffer *buffer,
 
 static void
 ctk_entry_buffer_real_inserted_text (CtkEntryBuffer *buffer,
-                                     guint           position,
-                                     const gchar    *chars,
-                                     guint           n_chars)
+                                     guint           position G_GNUC_UNUSED,
+                                     const gchar    *chars G_GNUC_UNUSED,
+                                     guint           n_chars G_GNUC_UNUSED)
 {
   g_object_notify_by_pspec (G_OBJECT (buffer), entry_buffer_props[PROP_TEXT]);
   g_object_notify_by_pspec (G_OBJECT (buffer), entry_buffer_props[PROP_LENGTH]);
@@ -232,8 +232,8 @@ ctk_entry_buffer_real_inserted_text (CtkEntryBuffer *buffer,
 
 static void
 ctk_entry_buffer_real_deleted_text (CtkEntryBuffer *buffer,
-                                    guint           position,
-                                    guint           n_chars)
+                                    guint           position G_GNUC_UNUSED,
+                                    guint           n_chars G_GNUC_UNUSED)
 {
   g_object_notify_by_pspec (G_OBJECT (buffer), entry_buffer_props[PROP_TEXT]);
   g_object_notify_by_pspec (G_OBJECT (buffer), entry_buffer_props[PROP_LENGTH]);

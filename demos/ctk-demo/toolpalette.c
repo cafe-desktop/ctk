@@ -88,7 +88,7 @@ canvas_item_draw (const CanvasItem *item,
 }
 
 static gboolean
-canvas_draw (CtkWidget *widget,
+canvas_draw (CtkWidget *widget G_GNUC_UNUSED,
              cairo_t   *cr)
 {
   GList *iter;
@@ -168,9 +168,9 @@ palette_drag_data_received (CtkWidget        *widget,
                             gint              x,
                             gint              y,
                             CtkSelectionData *selection,
-                            guint             info,
-                            guint             time,
-                            gpointer          data)
+                            guint             info G_GNUC_UNUSED,
+                            guint             time G_GNUC_UNUSED,
+                            gpointer          data G_GNUC_UNUSED)
 {
   CtkAllocation     allocation;
   CtkToolItemGroup *drop_group = NULL;
@@ -212,9 +212,9 @@ passive_canvas_drag_data_received (CtkWidget        *widget,
                                    gint              x,
                                    gint              y,
                                    CtkSelectionData *selection,
-                                   guint             info,
-                                   guint             time,
-                                   gpointer          data)
+                                   guint             info G_GNUC_UNUSED,
+                                   guint             time G_GNUC_UNUSED,
+                                   gpointer          data G_GNUC_UNUSED)
 {
   /* find the tool button, which is the source of this DnD operation */
 
@@ -253,7 +253,7 @@ interactive_canvas_drag_motion (CtkWidget      *widget,
                                 gint            x,
                                 gint            y,
                                 guint           time,
-                                gpointer        data)
+                                gpointer        data G_GNUC_UNUSED)
 {
   if (drop_item)
     {
@@ -287,9 +287,9 @@ interactive_canvas_drag_data_received (CtkWidget        *widget,
                                        gint              x,
                                        gint              y,
                                        CtkSelectionData *selection,
-                                       guint             info,
+                                       guint             info G_GNUC_UNUSED,
                                        guint             time,
-                                       gpointer          data)
+                                       gpointer          data G_GNUC_UNUSED)
 
 {
   /* find the tool button which is the source of this DnD operation */
@@ -340,10 +340,10 @@ interactive_canvas_drag_data_received (CtkWidget        *widget,
 static gboolean
 interactive_canvas_drag_drop (CtkWidget      *widget,
                               CdkDragContext *context,
-                              gint            x,
-                              gint            y,
+                              gint            x G_GNUC_UNUSED,
+                              gint            y G_GNUC_UNUSED,
                               guint           time,
-                              gpointer        data)
+                              gpointer        data G_GNUC_UNUSED)
 {
   CdkAtom target = ctk_drag_dest_find_target (widget, context, NULL);
 

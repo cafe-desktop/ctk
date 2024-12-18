@@ -200,7 +200,9 @@ typedef struct {
 } LegacyData;
 
 static gboolean
-legacy_cb (CtkWidget *w, CdkEventButton *button, gpointer data)
+legacy_cb (CtkWidget      *w,
+	   CdkEventButton *button G_GNUC_UNUSED,
+	   gpointer        data)
 {
   LegacyData *ld = data;
 
@@ -217,7 +219,11 @@ typedef struct {
 } GestureData;
 
 static void
-press_cb (CtkGesture *g, gint n_press, gdouble x, gdouble y, gpointer data)
+press_cb (CtkGesture *g,
+	  gint        n_press G_GNUC_UNUSED,
+	  gdouble     x G_GNUC_UNUSED,
+	  gdouble     y G_GNUC_UNUSED,
+	  gpointer    data)
 {
   CtkEventController *c = CTK_EVENT_CONTROLLER (g);
   CdkEventSequence *sequence;
@@ -242,7 +248,9 @@ press_cb (CtkGesture *g, gint n_press, gdouble x, gdouble y, gpointer data)
 }
 
 static void
-cancel_cb (CtkGesture *g, CdkEventSequence *sequence, gpointer data)
+cancel_cb (CtkGesture       *g,
+	   CdkEventSequence *sequence G_GNUC_UNUSED,
+	   gpointer          data)
 {
   GestureData *gd = data;
   const gchar *name;
@@ -255,7 +263,9 @@ cancel_cb (CtkGesture *g, CdkEventSequence *sequence, gpointer data)
 }
 
 static void
-begin_cb (CtkGesture *g, CdkEventSequence *sequence, gpointer data)
+begin_cb (CtkGesture       *g,
+	  CdkEventSequence *sequence G_GNUC_UNUSED,
+	  gpointer          data)
 {
   GestureData *gd = data;
   const gchar *name;
@@ -271,7 +281,9 @@ begin_cb (CtkGesture *g, CdkEventSequence *sequence, gpointer data)
 }
 
 static void
-end_cb (CtkGesture *g, CdkEventSequence *sequence, gpointer data)
+end_cb (CtkGesture       *g,
+	CdkEventSequence *sequence G_GNUC_UNUSED,
+	gpointer          data)
 {
   GestureData *gd = data;
   const gchar *name;
@@ -284,7 +296,9 @@ end_cb (CtkGesture *g, CdkEventSequence *sequence, gpointer data)
 }
 
 static void
-update_cb (CtkGesture *g, CdkEventSequence *sequence, gpointer data)
+update_cb (CtkGesture       *g,
+	   CdkEventSequence *sequence G_GNUC_UNUSED,
+	   gpointer          data)
 {
   GestureData *gd = data;
   const gchar *name;

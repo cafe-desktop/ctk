@@ -321,7 +321,7 @@ client_handle_request (BroadwayClient *client,
 }
 
 static void
-client_fill_cb (GObject *source_object,
+client_fill_cb (GObject *source_object G_GNUC_UNUSED,
 		GAsyncResult *result,
 		gpointer user_data)
 {
@@ -369,9 +369,9 @@ client_fill_cb (GObject *source_object,
 
 
 static gboolean
-incoming_client (GSocketService    *service,
+incoming_client (GSocketService    *service G_GNUC_UNUSED,
 		 GSocketConnection *connection,
-		 GObject           *source_object)
+		 GObject           *source_object G_GNUC_UNUSED)
 {
   BroadwayClient *client;
   GInputStream *input;

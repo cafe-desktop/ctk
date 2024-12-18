@@ -148,14 +148,14 @@ ctk_button_accessible_get_name (AtkObject *obj)
 }
 
 static gint
-ctk_button_accessible_get_n_children (AtkObject* obj)
+ctk_button_accessible_get_n_children (AtkObject* obj G_GNUC_UNUSED)
 {
   return 0;
 }
 
 static AtkObject *
-ctk_button_accessible_ref_child (AtkObject *obj,
-                                 gint       i)
+ctk_button_accessible_ref_child (AtkObject *obj G_GNUC_UNUSED,
+                                 gint       i G_GNUC_UNUSED)
 {
   return NULL;
 }
@@ -219,7 +219,7 @@ ctk_button_accessible_class_init (CtkButtonAccessibleClass *klass)
 }
 
 static void
-ctk_button_accessible_init (CtkButtonAccessible *button)
+ctk_button_accessible_init (CtkButtonAccessible *button G_GNUC_UNUSED)
 {
 }
 
@@ -244,7 +244,7 @@ ctk_button_accessible_do_action (AtkAction *action,
 }
 
 static gint
-ctk_button_accessible_get_n_actions (AtkAction *action)
+ctk_button_accessible_get_n_actions (AtkAction *action G_GNUC_UNUSED)
 {
   return 1;
 }
@@ -306,7 +306,7 @@ ctk_button_accessible_get_keybinding (AtkAction *action,
 }
 
 static const gchar *
-ctk_button_accessible_action_get_name (AtkAction *action,
+ctk_button_accessible_action_get_name (AtkAction *action G_GNUC_UNUSED,
                                        gint       i)
 {
   if (i == 0)
@@ -315,7 +315,7 @@ ctk_button_accessible_action_get_name (AtkAction *action,
 }
 
 static const gchar *
-ctk_button_accessible_action_get_localized_name (AtkAction *action,
+ctk_button_accessible_action_get_localized_name (AtkAction *action G_GNUC_UNUSED,
                                                  gint       i)
 {
   if (i == 0)
@@ -324,7 +324,7 @@ ctk_button_accessible_action_get_localized_name (AtkAction *action,
 }
 
 static const gchar *
-ctk_button_accessible_action_get_description (AtkAction *action,
+ctk_button_accessible_action_get_description (AtkAction *action G_GNUC_UNUSED,
                                               gint       i)
 {
   if (i == 0)

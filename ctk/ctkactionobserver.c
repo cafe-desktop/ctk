@@ -50,7 +50,7 @@ G_DEFINE_INTERFACE (CtkActionObserver, ctk_action_observer, G_TYPE_OBJECT)
  */
 
 void
-ctk_action_observer_default_init (CtkActionObserverInterface *class)
+ctk_action_observer_default_init (CtkActionObserverInterface *class G_GNUC_UNUSED)
 {
 }
 

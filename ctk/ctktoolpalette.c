@@ -752,7 +752,7 @@ ctk_tool_palette_realize (CtkWidget *widget)
 }
 
 static void
-ctk_tool_palette_adjustment_value_changed (CtkAdjustment *adjustment,
+ctk_tool_palette_adjustment_value_changed (CtkAdjustment *adjustment G_GNUC_UNUSED,
                                            gpointer       data)
 {
   CtkAllocation allocation;
@@ -818,7 +818,7 @@ ctk_tool_palette_remove (CtkContainer *container,
 
 static void
 ctk_tool_palette_forall (CtkContainer *container,
-                         gboolean      internals,
+                         gboolean      internals G_GNUC_UNUSED,
                          CtkCallback   callback,
                          gpointer      callback_data)
 {
@@ -842,7 +842,7 @@ ctk_tool_palette_forall (CtkContainer *container,
 }
 
 static GType
-ctk_tool_palette_child_type (CtkContainer *container)
+ctk_tool_palette_child_type (CtkContainer *container G_GNUC_UNUSED)
 {
   return CTK_TYPE_TOOL_ITEM_GROUP;
 }
@@ -903,7 +903,7 @@ ctk_tool_palette_get_child_property (CtkContainer *container,
 
 static void
 ctk_tool_palette_screen_changed (CtkWidget *widget,
-                                 CdkScreen *previous_screen)
+                                 CdkScreen *previous_screen G_GNUC_UNUSED)
 {
   CtkToolPalette *palette = CTK_TOOL_PALETTE (widget);
 
@@ -1284,7 +1284,7 @@ ctk_tool_palette_set_group_position (CtkToolPalette   *palette,
 
 static void
 ctk_tool_palette_group_notify_collapsed (CtkToolItemGroup *group,
-                                         GParamSpec       *pspec,
+                                         GParamSpec       *pspec G_GNUC_UNUSED,
                                          gpointer          data)
 {
   CtkToolPalette *palette = CTK_TOOL_PALETTE (data);
@@ -1722,10 +1722,10 @@ _ctk_tool_palette_get_item_size (CtkToolPalette *palette,
 
 static void
 ctk_tool_palette_item_drag_data_get (CtkWidget        *widget,
-                                     CdkDragContext   *context,
+                                     CdkDragContext   *context G_GNUC_UNUSED,
                                      CtkSelectionData *selection,
-                                     guint             info,
-                                     guint             time,
+                                     guint             info G_GNUC_UNUSED,
+                                     guint             time G_GNUC_UNUSED,
                                      gpointer          data)
 {
   CtkToolPaletteDragData drag_data = { CTK_TOOL_PALETTE (data), NULL };
@@ -1743,10 +1743,10 @@ ctk_tool_palette_item_drag_data_get (CtkWidget        *widget,
 
 static void
 ctk_tool_palette_child_drag_data_get (CtkWidget        *widget,
-                                      CdkDragContext   *context,
+                                      CdkDragContext   *context G_GNUC_UNUSED,
                                       CtkSelectionData *selection,
-                                      guint             info,
-                                      guint             time,
+                                      guint             info G_GNUC_UNUSED,
+                                      guint             time G_GNUC_UNUSED,
                                       gpointer          data)
 {
   CtkToolPaletteDragData drag_data = { CTK_TOOL_PALETTE (data), NULL };

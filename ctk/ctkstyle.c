@@ -794,7 +794,7 @@ ctk_style_update_from_context (CtkStyle *style)
 }
 
 static void
-style_context_changed (CtkStyleContext *context,
+style_context_changed (CtkStyleContext *context G_GNUC_UNUSED,
                        gpointer         user_data)
 {
   ctk_style_update_from_context (CTK_STYLE (user_data));
@@ -1096,8 +1096,8 @@ ctk_style_real_copy (CtkStyle *style,
 }
 
 static void
-ctk_style_real_init_from_rc (CtkStyle   *style,
-			     CtkRcStyle *rc_style)
+ctk_style_real_init_from_rc (CtkStyle   *style G_GNUC_UNUSED,
+			     CtkRcStyle *rc_style G_GNUC_UNUSED)
 {
 }
 
@@ -1245,12 +1245,12 @@ ctk_style_get (CtkStyle    *style,
 }
 
 static void
-ctk_style_real_realize (CtkStyle *style)
+ctk_style_real_realize (CtkStyle *style G_GNUC_UNUSED)
 {
 }
 
 static void
-ctk_style_real_unrealize (CtkStyle *style)
+ctk_style_real_unrealize (CtkStyle *style G_GNUC_UNUSED)
 {
 }
 
@@ -1359,7 +1359,7 @@ out:
 static GdkPixbuf *
 ctk_default_render_icon (CtkStyle            *style,
                          const CtkIconSource *source,
-                         CtkTextDirection     direction,
+                         CtkTextDirection     direction G_GNUC_UNUSED,
                          CtkStateType         state,
                          CtkIconSize          size,
                          CtkWidget           *widget,
@@ -1591,7 +1591,7 @@ transform_detail_string (const gchar     *detail,
 static void
 ctk_default_draw_hline (CtkStyle     *style,
                         cairo_t       *cr,
-                        CtkStateType  state_type,
+                        CtkStateType  state_type G_GNUC_UNUSED,
                         CtkWidget     *widget,
                         const gchar   *detail,
                         gint          x1,
@@ -1628,7 +1628,7 @@ ctk_default_draw_hline (CtkStyle     *style,
 static void
 ctk_default_draw_vline (CtkStyle      *style,
                         cairo_t       *cr,
-                        CtkStateType  state_type,
+                        CtkStateType  state_type G_GNUC_UNUSED,
                         CtkWidget     *widget,
                         const gchar   *detail,
                         gint          y1,
@@ -1663,7 +1663,7 @@ ctk_default_draw_vline (CtkStyle      *style,
 static void
 ctk_default_draw_shadow (CtkStyle      *style,
                          cairo_t       *cr,
-                         CtkStateType   state_type,
+                         CtkStateType   state_type G_GNUC_UNUSED,
                          CtkShadowType  shadow_type,
                          CtkWidget     *widget,
                          const gchar   *detail,
@@ -1750,11 +1750,11 @@ static void
 ctk_default_draw_arrow (CtkStyle      *style,
 			cairo_t       *cr,
 			CtkStateType   state,
-			CtkShadowType  shadow,
+			CtkShadowType  shadow G_GNUC_UNUSED,
 			CtkWidget     *widget,
 			const gchar   *detail,
 			CtkArrowType   arrow_type,
-			gboolean       fill,
+			gboolean       fill G_GNUC_UNUSED,
 			gint           x,
 			gint           y,
 			gint           width,
@@ -1840,8 +1840,8 @@ ctk_default_draw_diamond (CtkStyle      *style,
                           cairo_t       *cr,
                           CtkStateType   state_type,
                           CtkShadowType  shadow_type,
-                          CtkWidget     *widget,
-                          const gchar   *detail,
+                          CtkWidget     *widget G_GNUC_UNUSED,
+                          const gchar   *detail G_GNUC_UNUSED,
                           gint           x,
                           gint           y,
                           gint           width,
@@ -1951,7 +1951,7 @@ ctk_default_draw_diamond (CtkStyle      *style,
 }
 
 static void
-option_menu_get_props (CtkWidget      *widget,
+option_menu_get_props (CtkWidget      *widget G_GNUC_UNUSED,
 		       CtkRequisition *indicator_size,
 		       CtkBorder      *indicator_spacing)
 {
@@ -2042,7 +2042,7 @@ static void
 ctk_default_draw_flat_box (CtkStyle      *style,
                            cairo_t       *cr,
                            CtkStateType   state_type,
-                           CtkShadowType  shadow_type,
+                           CtkShadowType  shadow_type G_GNUC_UNUSED,
                            CtkWidget     *widget,
                            const gchar   *detail,
                            gint           x,
@@ -2229,9 +2229,9 @@ static void
 ctk_default_draw_tab (CtkStyle      *style,
 		      cairo_t       *cr,
 		      CtkStateType   state_type,
-		      CtkShadowType  shadow_type,
+		      CtkShadowType  shadow_type G_GNUC_UNUSED,
 		      CtkWidget     *widget,
-		      const gchar   *detail,
+		      const gchar   *detail G_GNUC_UNUSED,
 		      gint           x,
 		      gint           y,
 		      gint           width,
@@ -2419,7 +2419,7 @@ static void
 ctk_default_draw_extension (CtkStyle       *style,
                             cairo_t        *cr,
                             CtkStateType    state_type,
-                            CtkShadowType   shadow_type,
+                            CtkShadowType   shadow_type G_GNUC_UNUSED,
                             CtkWidget      *widget,
                             const gchar    *detail,
                             gint            x,
@@ -2481,7 +2481,7 @@ ctk_default_draw_extension (CtkStyle       *style,
 static void 
 ctk_default_draw_focus (CtkStyle      *style,
 			cairo_t       *cr,
-			CtkStateType   state_type,
+			CtkStateType   state_type G_GNUC_UNUSED,
 			CtkWidget     *widget,
 			const gchar   *detail,
 			gint           x,
@@ -2521,7 +2521,7 @@ static void
 ctk_default_draw_slider (CtkStyle      *style,
                          cairo_t       *cr,
                          CtkStateType   state_type,
-                         CtkShadowType  shadow_type,
+                         CtkShadowType  shadow_type G_GNUC_UNUSED,
                          CtkWidget     *widget,
                          const gchar   *detail,
                          gint           x,
@@ -2576,14 +2576,14 @@ static void
 ctk_default_draw_handle (CtkStyle      *style,
 			 cairo_t       *cr,
 			 CtkStateType   state_type,
-			 CtkShadowType  shadow_type,
+			 CtkShadowType  shadow_type G_GNUC_UNUSED,
 			 CtkWidget     *widget,
 			 const gchar   *detail,
 			 gint           x,
 			 gint           y,
 			 gint           width,
 			 gint           height,
-			 CtkOrientation orientation)
+			 CtkOrientation orientation G_GNUC_UNUSED)
 {
   CtkStyleContext *context;
   CtkStylePrivate *priv;
@@ -2704,7 +2704,7 @@ static void
 ctk_default_draw_layout (CtkStyle        *style,
                          cairo_t         *cr,
                          CtkStateType     state_type,
-			 gboolean         use_text,
+                         gboolean         use_text G_GNUC_UNUSED,
                          CtkWidget       *widget,
                          const gchar     *detail,
                          gint             x,
@@ -2851,8 +2851,8 @@ static void
 ctk_default_draw_spinner (CtkStyle     *style,
                           cairo_t      *cr,
                           CtkStateType  state_type,
-                          CtkWidget    *widget,
-                          const gchar  *detail,
+                          CtkWidget    *widget G_GNUC_UNUSED,
+                          const gchar  *detail G_GNUC_UNUSED,
                           guint         step,
                           gint          x,
                           gint          y,
@@ -4053,7 +4053,7 @@ ctk_widget_has_rc_style (CtkWidget *widget)
  */
 void
 ctk_widget_set_style (CtkWidget *widget,
-                      CtkStyle  *style)
+                      CtkStyle  *style G_GNUC_UNUSED)
 {
   g_return_if_fail (CTK_IS_WIDGET (widget));
 }
@@ -4660,7 +4660,7 @@ GdkPixbuf*
 ctk_widget_render_icon (CtkWidget      *widget,
                         const gchar    *stock_id,
                         CtkIconSize     size,
-                        const gchar    *detail)
+                        const gchar    *detail G_GNUC_UNUSED)
 {
   ctk_widget_ensure_style (widget);
 

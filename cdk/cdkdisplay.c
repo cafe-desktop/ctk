@@ -90,12 +90,12 @@ static guint signals[LAST_SIGNAL] = { 0 };
 G_DEFINE_TYPE (CdkDisplay, cdk_display, G_TYPE_OBJECT)
 
 static void
-cdk_display_real_make_default (CdkDisplay *display)
+cdk_display_real_make_default (CdkDisplay *display G_GNUC_UNUSED)
 {
 }
 
 static void
-device_removed_cb (CdkDeviceManager *device_manager,
+device_removed_cb (CdkDeviceManager *device_manager G_GNUC_UNUSED,
                    CdkDevice        *device,
                    CdkDisplay       *display)
 {
@@ -122,15 +122,15 @@ cdk_display_real_opened (CdkDisplay *display)
 }
 
 static void
-cdk_display_real_event_data_copy (CdkDisplay     *display,
-                                  const CdkEvent *src,
-                                  CdkEvent       *dst)
+cdk_display_real_event_data_copy (CdkDisplay     *display G_GNUC_UNUSED,
+                                  const CdkEvent *src G_GNUC_UNUSED,
+                                  CdkEvent       *dst G_GNUC_UNUSED)
 {
 }
 
 static void
-cdk_display_real_event_data_free (CdkDisplay     *display,
-                                  CdkEvent       *dst)
+cdk_display_real_event_data_free (CdkDisplay *display G_GNUC_UNUSED,
+                                  CdkEvent   *dst G_GNUC_UNUSED)
 {
 }
 
@@ -291,9 +291,9 @@ free_device_grab (CdkDeviceGrabInfo *info)
 }
 
 static gboolean
-free_device_grabs_foreach (gpointer key,
+free_device_grabs_foreach (gpointer key G_GNUC_UNUSED,
                            gpointer value,
-                           gpointer user_data)
+                           gpointer user_data G_GNUC_UNUSED)
 {
   GList *list = value;
 
@@ -1025,7 +1025,7 @@ synthesize_crossing_events (CdkDisplay      *display,
 }
 
 static CdkWindow *
-get_current_toplevel (CdkDisplay      *display,
+get_current_toplevel (CdkDisplay      *display G_GNUC_UNUSED,
                       CdkDevice       *device,
                       int             *x_out,
                       int             *y_out,

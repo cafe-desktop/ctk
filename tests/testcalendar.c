@@ -138,8 +138,8 @@ calendar_set_signal_strings (char         *sig_str,
 }
 
 static void
-calendar_month_changed (CtkWidget    *widget,
-                             CalendarData *data)
+calendar_month_changed (CtkWidget    *widget G_GNUC_UNUSED,
+                        CalendarData *data)
 {
   char buffer[256] = "month_changed: ";
 
@@ -148,8 +148,8 @@ calendar_month_changed (CtkWidget    *widget,
 }
 
 static void
-calendar_day_selected (CtkWidget    *widget,
-                            CalendarData *data)
+calendar_day_selected (CtkWidget    *widget G_GNUC_UNUSED,
+                       CalendarData *data)
 {
   char buffer[256] = "day_selected: ";
 
@@ -160,8 +160,8 @@ calendar_day_selected (CtkWidget    *widget,
 }
 
 static void
-calendar_day_selected_double_click (CtkWidget    *widget,
-                                         CalendarData *data)
+calendar_day_selected_double_click (CtkWidget    *widget G_GNUC_UNUSED,
+                                    CalendarData *data)
 {
   char buffer[256] = "day_selected_double_click: ";
   guint day;
@@ -178,8 +178,8 @@ calendar_day_selected_double_click (CtkWidget    *widget,
 }
 
 static void
-calendar_prev_month (CtkWidget    *widget,
-                          CalendarData *data)
+calendar_prev_month (CtkWidget    *widget G_GNUC_UNUSED,
+                     CalendarData *data)
 {
   char buffer[256] = "prev_month: ";
 
@@ -188,7 +188,7 @@ calendar_prev_month (CtkWidget    *widget,
 }
 
 static void
-calendar_next_month (CtkWidget    *widget,
+calendar_next_month (CtkWidget    *widget G_GNUC_UNUSED,
                      CalendarData *data)
 {
   char buffer[256] = "next_month: ";
@@ -198,7 +198,7 @@ calendar_next_month (CtkWidget    *widget,
 }
 
 static void
-calendar_prev_year (CtkWidget    *widget,
+calendar_prev_year (CtkWidget    *widget G_GNUC_UNUSED,
                     CalendarData *data)
 {
   char buffer[256] = "prev_year: ";
@@ -208,7 +208,7 @@ calendar_prev_year (CtkWidget    *widget,
 }
 
 static void
-calendar_next_year (CtkWidget    *widget,
+calendar_next_year (CtkWidget    *widget G_GNUC_UNUSED,
                     CalendarData *data)
 {
   char buffer[256] = "next_year: ";
@@ -270,7 +270,7 @@ void calendar_select_font (CtkWidget    *button,
 }
 
 static gchar*
-calendar_detail_cb (CtkCalendar *calendar,
+calendar_detail_cb (CtkCalendar *calendar G_GNUC_UNUSED,
                     guint        year,
                     guint        month,
                     guint        day,

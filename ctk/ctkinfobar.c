@@ -602,7 +602,7 @@ ctk_info_bar_class_init (CtkInfoBarClass *klass)
 }
 
 static void
-close_button_clicked_cb (CtkWidget  *button,
+close_button_clicked_cb (CtkWidget  *button G_GNUC_UNUSED,
                          CtkInfoBar *info_bar)
 {
   ctk_info_bar_response (CTK_INFO_BAR (info_bar),
@@ -610,11 +610,11 @@ close_button_clicked_cb (CtkWidget  *button,
 }
 
 static void
-click_pressed_cb (CtkGestureMultiPress *gesture,
-                   guint            n_press,
-                   gdouble          x,
-                   gdouble          y,
-                   CtkInfoBar      *info_bar)
+click_pressed_cb (CtkGestureMultiPress *gesture G_GNUC_UNUSED,
+                  guint                 n_press G_GNUC_UNUSED,
+                  gdouble               x G_GNUC_UNUSED,
+                  gdouble               y G_GNUC_UNUSED,
+                  CtkInfoBar           *info_bar)
 {
   CtkInfoBarPrivate *priv = ctk_info_bar_get_instance_private (info_bar);
 
@@ -658,7 +658,7 @@ ctk_info_bar_buildable_interface_init (CtkBuildableIface *iface)
 }
 
 static gint
-get_response_for_widget (CtkInfoBar *info_bar,
+get_response_for_widget (CtkInfoBar *info_bar G_GNUC_UNUSED,
                          CtkWidget  *widget)
 {
   ResponseData *rd;
@@ -1116,11 +1116,11 @@ parser_start_element (GMarkupParseContext  *context,
 }
 
 static void
-parser_text_element (GMarkupParseContext  *context,
+parser_text_element (GMarkupParseContext  *context G_GNUC_UNUSED,
                      const gchar          *text,
                      gsize                 text_len,
                      gpointer              user_data,
-                     GError              **error)
+                     GError              **error G_GNUC_UNUSED)
 {
   SubParserData *data = (SubParserData*)user_data;
 
@@ -1129,10 +1129,10 @@ parser_text_element (GMarkupParseContext  *context,
 }
 
 static void
-parser_end_element (GMarkupParseContext  *context,
-                    const gchar          *element_name,
+parser_end_element (GMarkupParseContext  *context G_GNUC_UNUSED,
+                    const gchar          *element_name G_GNUC_UNUSED,
                     gpointer              user_data,
-                    GError              **error)
+                    GError              **error G_GNUC_UNUSED)
 {
   SubParserData *data = (SubParserData*)user_data;
 

@@ -163,7 +163,7 @@ draw_shadow_box (cairo_t   *cr,
 static gboolean
 draw_callback (CtkWidget *widget,
                cairo_t   *cr,
-               gpointer   data)
+               gpointer   data G_GNUC_UNUSED)
 {
   CdkRectangle rect;
 

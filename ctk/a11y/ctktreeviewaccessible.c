@@ -703,7 +703,7 @@ ctk_tree_view_accessible_is_row_selected (AtkTable *table,
 static gboolean
 ctk_tree_view_accessible_is_selected (AtkTable *table,
                                       gint      row,
-                                      gint      column)
+                                      gint      column G_GNUC_UNUSED)
 {
   return ctk_tree_view_accessible_is_row_selected (table, row);
 }
@@ -714,9 +714,9 @@ typedef struct {
 } SelectedRowsData;
 
 static void
-get_selected_rows (CtkTreeModel *model,
+get_selected_rows (CtkTreeModel *model G_GNUC_UNUSED,
                    CtkTreePath  *path,
-                   CtkTreeIter  *iter,
+                   CtkTreeIter  *iter G_GNUC_UNUSED,
                    gpointer      datap)
 {
   SelectedRowsData *data = datap;
@@ -1794,7 +1794,7 @@ to_visible_column_id (CtkTreeView *treeview,
 static void
 ctk_tree_view_accessible_do_add_column (CtkTreeViewAccessible *accessible,
                                         CtkTreeView           *treeview,
-                                        CtkTreeViewColumn     *column,
+                                        CtkTreeViewColumn     *column G_GNUC_UNUSED,
                                         guint                  id)
 {
   guint row, n_rows, n_cols;
@@ -1892,7 +1892,7 @@ _ctk_tree_view_accessible_remove_column (CtkTreeView       *treeview,
 
 void
 _ctk_tree_view_accessible_reorder_column (CtkTreeView       *treeview,
-                                          CtkTreeViewColumn *column)
+                                          CtkTreeViewColumn *column G_GNUC_UNUSED)
 {
   AtkObject *obj;
 

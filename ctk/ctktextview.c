@@ -2027,7 +2027,7 @@ ctk_text_view_set_buffer (CtkTextView   *text_view,
 }
 
 static CtkTextBuffer*
-ctk_text_view_create_buffer (CtkTextView *text_view)
+ctk_text_view_create_buffer (CtkTextView *text_view G_GNUC_UNUSED)
 {
   return ctk_text_buffer_new (NULL);
 }
@@ -4159,7 +4159,7 @@ ctk_text_view_update_child_allocation (CtkTextView      *text_view,
 }
 
 static void
-ctk_text_view_child_allocated (CtkTextLayout *layout,
+ctk_text_view_child_allocated (CtkTextLayout *layout G_GNUC_UNUSED,
                                CtkWidget     *child,
                                gint           x,
                                gint           y,
@@ -4564,7 +4564,7 @@ ctk_text_view_invalidate (CtkTextView *text_view)
 }
 
 static void
-invalidated_handler (CtkTextLayout *layout,
+invalidated_handler (CtkTextLayout *layout G_GNUC_UNUSED,
                      gpointer       data)
 {
   CtkTextView *text_view;
@@ -4940,7 +4940,7 @@ ctk_text_view_style_updated (CtkWidget *widget)
 
 static void
 ctk_text_view_direction_changed (CtkWidget        *widget,
-                                 CtkTextDirection  previous_direction)
+                                 CtkTextDirection  previous_direction G_GNUC_UNUSED)
 {
   CtkTextViewPrivate *priv = CTK_TEXT_VIEW (widget)->priv;
 
@@ -4954,7 +4954,7 @@ ctk_text_view_direction_changed (CtkWidget        *widget,
 
 static void
 ctk_text_view_state_flags_changed (CtkWidget     *widget,
-                                   CtkStateFlags  previous_state)
+                                   CtkStateFlags  previous_state G_GNUC_UNUSED)
 {
   CtkTextView *text_view = CTK_TEXT_VIEW (widget);
   CtkTextViewPrivate *priv = text_view->priv;
@@ -5202,7 +5202,7 @@ static void
 ctk_text_view_show_magnifier (CtkTextView *text_view,
                               CtkTextIter *iter,
                               gint         x,
-                              gint         y)
+                              gint         y G_GNUC_UNUSED)
 {
   cairo_rectangle_int_t rect;
   CtkTextViewPrivate *priv;
@@ -5342,8 +5342,8 @@ ctk_text_view_handle_dragged (CtkTextHandle         *handle,
 }
 
 static void
-ctk_text_view_handle_drag_started (CtkTextHandle         *handle,
-                                   CtkTextHandlePosition  pos,
+ctk_text_view_handle_drag_started (CtkTextHandle         *handle G_GNUC_UNUSED,
+                                   CtkTextHandlePosition  pos G_GNUC_UNUSED,
                                    CtkTextView           *text_view)
 {
   text_view->priv->cursor_handle_dragged = FALSE;
@@ -5351,8 +5351,8 @@ ctk_text_view_handle_drag_started (CtkTextHandle         *handle,
 }
 
 static void
-ctk_text_view_handle_drag_finished (CtkTextHandle         *handle,
-                                    CtkTextHandlePosition  pos,
+ctk_text_view_handle_drag_finished (CtkTextHandle         *handle G_GNUC_UNUSED,
+                                    CtkTextHandlePosition  pos G_GNUC_UNUSED,
                                     CtkTextView           *text_view)
 {
   CtkTextViewPrivate *priv = text_view->priv;
@@ -5638,8 +5638,8 @@ get_iter_from_gesture (CtkTextView *text_view,
 static void
 ctk_text_view_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
                                           gint                  n_press,
-                                          gdouble               x,
-                                          gdouble               y,
+                                          gdouble               x G_GNUC_UNUSED,
+                                          gdouble               y G_GNUC_UNUSED,
                                           CtkTextView          *text_view)
 {
   CdkEventSequence *sequence;
@@ -5798,14 +5798,15 @@ ctk_text_view_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
 }
 
 static void
-keymap_direction_changed (CdkKeymap   *keymap,
+keymap_direction_changed (CdkKeymap   *keymap G_GNUC_UNUSED,
 			  CtkTextView *text_view)
 {
   ctk_text_view_check_keymap_direction (text_view);
 }
 
 static gint
-ctk_text_view_focus_in_event (CtkWidget *widget, CdkEventFocus *event)
+ctk_text_view_focus_in_event (CtkWidget     *widget,
+			      CdkEventFocus *event G_GNUC_UNUSED)
 {
   CtkTextView *text_view;
   CtkTextViewPrivate *priv;
@@ -5840,7 +5841,8 @@ ctk_text_view_focus_in_event (CtkWidget *widget, CdkEventFocus *event)
 }
 
 static gint
-ctk_text_view_focus_out_event (CtkWidget *widget, CdkEventFocus *event)
+ctk_text_view_focus_out_event (CtkWidget     *widget,
+			       CdkEventFocus *event G_GNUC_UNUSED)
 {
   CtkTextView *text_view;
   CtkTextViewPrivate *priv;
@@ -6174,7 +6176,7 @@ ctk_text_view_remove (CtkContainer *container,
 
 static void
 ctk_text_view_forall (CtkContainer *container,
-                      gboolean      include_internals,
+                      gboolean      include_internals G_GNUC_UNUSED,
                       CtkCallback   callback,
                       gpointer      callback_data)
 {
@@ -6986,7 +6988,8 @@ ctk_text_view_scroll_hpages (CtkTextView *text_view,
 }
 
 static gboolean
-whitespace (gunichar ch, gpointer user_data)
+whitespace (gunichar ch,
+	    gpointer user_data G_GNUC_UNUSED)
 {
   return (ch == ' ' || ch == '\t');
 }
@@ -7248,7 +7251,7 @@ ctk_text_view_paste_clipboard (CtkTextView *text_view)
 
 static void
 ctk_text_view_paste_done_handler (CtkTextBuffer *buffer,
-                                  CtkClipboard  *clipboard,
+                                  CtkClipboard  *clipboard G_GNUC_UNUSED,
                                   gpointer       data)
 {
   CtkTextView *text_view = data;
@@ -7266,7 +7269,7 @@ ctk_text_view_paste_done_handler (CtkTextBuffer *buffer,
 }
 
 static void
-ctk_text_view_buffer_changed_handler (CtkTextBuffer *buffer,
+ctk_text_view_buffer_changed_handler (CtkTextBuffer *buffer G_GNUC_UNUSED,
                                       gpointer       data)
 {
   CtkTextView *text_view = data;
@@ -7679,8 +7682,8 @@ drag_gesture_get_text_window_coords (CtkGestureDrag *gesture,
 
 static void
 ctk_text_view_drag_gesture_update (CtkGestureDrag *gesture,
-                                   gdouble         offset_x,
-                                   gdouble         offset_y,
+                                   gdouble         offset_x G_GNUC_UNUSED,
+                                   gdouble         offset_y G_GNUC_UNUSED,
                                    CtkTextView    *text_view)
 {
   gint start_x, start_y, x, y;
@@ -7798,8 +7801,8 @@ ctk_text_view_drag_gesture_update (CtkGestureDrag *gesture,
 
 static void
 ctk_text_view_drag_gesture_end (CtkGestureDrag *gesture,
-                                gdouble         offset_x,
-                                gdouble         offset_y,
+                                gdouble         offset_x G_GNUC_UNUSED,
+                                gdouble         offset_y G_GNUC_UNUSED,
                                 CtkTextView    *text_view)
 {
   gboolean is_touchscreen, clicked_in_selection;
@@ -8271,7 +8274,7 @@ ctk_text_view_im_context_filter_keypress (CtkTextView  *text_view,
 static void
 drag_begin_cb (CtkWidget      *widget,
                CdkDragContext *context,
-               gpointer        data)
+               gpointer        data G_GNUC_UNUSED)
 {
   CtkTextView     *text_view = CTK_TEXT_VIEW (widget);
   CtkTextBuffer   *buffer = ctk_text_view_get_buffer (text_view);
@@ -8297,7 +8300,7 @@ drag_begin_cb (CtkWidget      *widget,
 
 static void
 ctk_text_view_start_selection_dnd (CtkTextView       *text_view,
-                                   const CtkTextIter *iter,
+                                   const CtkTextIter *iter G_GNUC_UNUSED,
                                    const CdkEvent    *event,
                                    gint               x,
                                    gint               y)
@@ -8314,15 +8317,15 @@ ctk_text_view_start_selection_dnd (CtkTextView       *text_view,
 }
 
 static void
-ctk_text_view_drag_begin (CtkWidget        *widget,
-                          CdkDragContext   *context)
+ctk_text_view_drag_begin (CtkWidget      *widget G_GNUC_UNUSED,
+                          CdkDragContext *context G_GNUC_UNUSED)
 {
   /* do nothing */
 }
 
 static void
-ctk_text_view_drag_end (CtkWidget        *widget,
-                        CdkDragContext   *context)
+ctk_text_view_drag_end (CtkWidget      *widget,
+                        CdkDragContext *context G_GNUC_UNUSED)
 {
   CtkTextView *text_view;
 
@@ -8332,10 +8335,10 @@ ctk_text_view_drag_end (CtkWidget        *widget,
 
 static void
 ctk_text_view_drag_data_get (CtkWidget        *widget,
-                             CdkDragContext   *context,
+                             CdkDragContext   *context G_GNUC_UNUSED,
                              CtkSelectionData *selection_data,
                              guint             info,
-                             guint             time)
+                             guint             time G_GNUC_UNUSED)
 {
   CtkTextView *text_view = CTK_TEXT_VIEW (widget);
   CtkTextBuffer *buffer = ctk_text_view_get_buffer (text_view);
@@ -8394,8 +8397,8 @@ ctk_text_view_drag_data_get (CtkWidget        *widget,
 }
 
 static void
-ctk_text_view_drag_data_delete (CtkWidget        *widget,
-                                CdkDragContext   *context)
+ctk_text_view_drag_data_delete (CtkWidget      *widget,
+                                CdkDragContext *context G_GNUC_UNUSED)
 {
   ctk_text_buffer_delete_selection (CTK_TEXT_VIEW (widget)->priv->buffer,
                                     TRUE, CTK_TEXT_VIEW (widget)->priv->editable);
@@ -8403,8 +8406,8 @@ ctk_text_view_drag_data_delete (CtkWidget        *widget,
 
 static void
 ctk_text_view_drag_leave (CtkWidget        *widget,
-                          CdkDragContext   *context,
-                          guint             time)
+                          CdkDragContext   *context G_GNUC_UNUSED,
+                          guint             time G_GNUC_UNUSED)
 {
   CtkTextView *text_view;
   CtkTextViewPrivate *priv;
@@ -8535,8 +8538,8 @@ ctk_text_view_drag_motion (CtkWidget        *widget,
 static gboolean
 ctk_text_view_drag_drop (CtkWidget        *widget,
                          CdkDragContext   *context,
-                         gint              x,
-                         gint              y,
+                         gint              x G_GNUC_UNUSED,
+                         gint              y G_GNUC_UNUSED,
                          guint             time)
 {
   CtkTextView *text_view;
@@ -8594,8 +8597,8 @@ insert_text_data (CtkTextView      *text_view,
 static void
 ctk_text_view_drag_data_received (CtkWidget        *widget,
                                   CdkDragContext   *context,
-                                  gint              x,
-                                  gint              y,
+                                  gint              x G_GNUC_UNUSED,
+                                  gint              y G_GNUC_UNUSED,
                                   CtkSelectionData *selection_data,
                                   guint             info,
                                   guint             time)
@@ -9084,7 +9087,7 @@ ctk_text_view_value_changed (CtkAdjustment *adjustment,
 }
 
 static void
-ctk_text_view_commit_handler (CtkIMContext  *context,
+ctk_text_view_commit_handler (CtkIMContext  *context G_GNUC_UNUSED,
                               const gchar   *str,
                               CtkTextView   *text_view)
 {
@@ -9209,7 +9212,7 @@ ctk_text_view_retrieve_surrounding_handler (CtkIMContext  *context,
 }
 
 static gboolean
-ctk_text_view_delete_surrounding_handler (CtkIMContext  *context,
+ctk_text_view_delete_surrounding_handler (CtkIMContext  *context G_GNUC_UNUSED,
 					  gint           offset,
 					  gint           n_chars,
 					  CtkTextView   *text_view)
@@ -9235,7 +9238,7 @@ ctk_text_view_delete_surrounding_handler (CtkIMContext  *context,
 
 static void
 ctk_text_view_mark_set_handler (CtkTextBuffer     *buffer,
-                                const CtkTextIter *location,
+                                const CtkTextIter *location G_GNUC_UNUSED,
                                 CtkTextMark       *mark,
                                 gpointer           data)
 {
@@ -9269,7 +9272,7 @@ ctk_text_view_mark_set_handler (CtkTextBuffer     *buffer,
 
 static void
 ctk_text_view_target_list_notify (CtkTextBuffer    *buffer,
-                                  const GParamSpec *pspec,
+                                  const GParamSpec *pspec G_GNUC_UNUSED,
                                   gpointer          data)
 {
   CtkWidget     *widget = CTK_WIDGET (data);
@@ -9420,7 +9423,7 @@ ctk_text_view_select_all (CtkWidget *widget,
 }
 
 static void
-select_all_cb (CtkWidget   *menuitem,
+select_all_cb (CtkWidget   *menuitem G_GNUC_UNUSED,
 	       CtkTextView *text_view)
 {
   ctk_text_view_select_all (CTK_WIDGET (text_view), TRUE);
@@ -9435,7 +9438,7 @@ delete_cb (CtkTextView *text_view)
 
 static void
 popup_menu_detach (CtkWidget *attach_widget,
-		   CtkMenu   *menu)
+		   CtkMenu   *menu G_GNUC_UNUSED)
 {
   CTK_TEXT_VIEW (attach_widget)->priv->popup_menu = NULL;
 }
@@ -9465,7 +9468,7 @@ range_contains_editable_text (const CtkTextIter *start,
 }
 
 static void
-popup_targets_received (CtkClipboard     *clipboard,
+popup_targets_received (CtkClipboard     *clipboard G_GNUC_UNUSED,
 			CtkSelectionData *data,
 			gpointer          user_data)
 {
@@ -9659,7 +9662,7 @@ ctk_text_view_get_selection_rect (CtkTextView           *text_view,
 
 static void
 show_or_hide_handles (CtkWidget   *popover,
-                      GParamSpec  *pspec,
+                      GParamSpec  *pspec G_GNUC_UNUSED,
                       CtkTextView *text_view)
 {
   gboolean visible;
@@ -9716,7 +9719,7 @@ append_bubble_action (CtkTextView  *text_view,
 }
 
 static void
-bubble_targets_received (CtkClipboard     *clipboard,
+bubble_targets_received (CtkClipboard     *clipboard G_GNUC_UNUSED,
                          CtkSelectionData *data,
                          gpointer          user_data)
 {

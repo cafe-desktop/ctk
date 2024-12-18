@@ -162,7 +162,7 @@ cdk_broadway_display_flush (CdkDisplay *display)
 }
 
 static gboolean
-cdk_broadway_display_has_pending (CdkDisplay *display)
+cdk_broadway_display_has_pending (CdkDisplay *display G_GNUC_UNUSED)
 {
   return FALSE;
 }
@@ -213,54 +213,54 @@ cdk_broadway_display_finalize (GObject *object)
 }
 
 static void
-cdk_broadway_display_notify_startup_complete (CdkDisplay  *display,
-					      const gchar *startup_id)
+cdk_broadway_display_notify_startup_complete (CdkDisplay  *display G_GNUC_UNUSED,
+					      const gchar *startup_id G_GNUC_UNUSED)
 {
 }
 
 static gboolean
-cdk_broadway_display_supports_selection_notification (CdkDisplay *display)
+cdk_broadway_display_supports_selection_notification (CdkDisplay *display G_GNUC_UNUSED)
 {
   return FALSE;
 }
 
 static gboolean
-cdk_broadway_display_request_selection_notification (CdkDisplay *display,
-						     CdkAtom     selection)
+cdk_broadway_display_request_selection_notification (CdkDisplay *display G_GNUC_UNUSED,
+						     CdkAtom     selection G_GNUC_UNUSED)
 
 {
     return FALSE;
 }
 
 static gboolean
-cdk_broadway_display_supports_clipboard_persistence (CdkDisplay *display)
+cdk_broadway_display_supports_clipboard_persistence (CdkDisplay *display G_GNUC_UNUSED)
 {
   return FALSE;
 }
 
 static void
-cdk_broadway_display_store_clipboard (CdkDisplay    *display,
-				      CdkWindow     *clipboard_window,
-				      guint32        time_,
-				      const CdkAtom *targets,
-				      gint           n_targets)
+cdk_broadway_display_store_clipboard (CdkDisplay    *display G_GNUC_UNUSED,
+				      CdkWindow     *clipboard_window G_GNUC_UNUSED,
+				      guint32        time_ G_GNUC_UNUSED,
+				      const CdkAtom *targets G_GNUC_UNUSED,
+				      gint           n_targets G_GNUC_UNUSED)
 {
 }
 
 static gboolean
-cdk_broadway_display_supports_shapes (CdkDisplay *display)
-{
-  return FALSE;
-}
-
-static gboolean
-cdk_broadway_display_supports_input_shapes (CdkDisplay *display)
+cdk_broadway_display_supports_shapes (CdkDisplay *display G_GNUC_UNUSED)
 {
   return FALSE;
 }
 
 static gboolean
-cdk_broadway_display_supports_composite (CdkDisplay *display)
+cdk_broadway_display_supports_input_shapes (CdkDisplay *display G_GNUC_UNUSED)
+{
+  return FALSE;
+}
+
+static gboolean
+cdk_broadway_display_supports_composite (CdkDisplay *display G_GNUC_UNUSED)
 {
   return FALSE;
 }
@@ -291,7 +291,7 @@ cdk_broadway_display_hide_keyboard (CdkBroadwayDisplay *display)
 }
 
 static int
-cdk_broadway_display_get_n_monitors (CdkDisplay *display)
+cdk_broadway_display_get_n_monitors (CdkDisplay *display G_GNUC_UNUSED)
 {
   return 1;
 }

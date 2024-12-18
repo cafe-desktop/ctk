@@ -584,8 +584,8 @@ ctk_fishbowl_do_update (CtkFishbowl *fishbowl)
 
 static gboolean
 ctk_fishbowl_tick (CtkWidget     *widget,
-                   CdkFrameClock *frame_clock,
-                   gpointer       unused)
+                   CdkFrameClock *frame_clock G_GNUC_UNUSED,
+                   gpointer       unused G_GNUC_UNUSED)
 {
   CtkFishbowl *fishbowl = CTK_FISHBOWL (widget);
   CtkFishbowlPrivate *priv = ctk_fishbowl_get_instance_private (fishbowl);

@@ -195,10 +195,10 @@ recompute_trash_state (CtkTrashMonitor *monitor)
  * whenever something happens.
  */
 static void
-file_monitor_changed_cb (GFileMonitor      *file_monitor,
-                         GFile             *child,
-                         GFile             *other_file,
-                         GFileMonitorEvent  event_type,
+file_monitor_changed_cb (GFileMonitor      *file_monitor G_GNUC_UNUSED,
+                         GFile             *child G_GNUC_UNUSED,
+                         GFile             *other_file G_GNUC_UNUSED,
+                         GFileMonitorEvent  event_type G_GNUC_UNUSED,
                          CtkTrashMonitor   *monitor)
 {
   recompute_trash_state (monitor);

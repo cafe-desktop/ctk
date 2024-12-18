@@ -86,7 +86,7 @@ add_string (CtkInspectorStrvEditor *editor,
 }
 
 static void
-add_cb (CtkButton              *button,
+add_cb (CtkButton              *button G_GNUC_UNUSED,
         CtkInspectorStrvEditor *editor)
 {
   add_string (editor, "");

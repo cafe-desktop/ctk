@@ -66,7 +66,8 @@ G_DEFINE_TYPE_WITH_CODE (CtkEntryIconAccessible, ctk_entry_icon_accessible, ATK_
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_COMPONENT, icon_atk_component_interface_init))
 
 static void
-ctk_entry_icon_accessible_remove_entry (gpointer data, GObject *obj)
+ctk_entry_icon_accessible_remove_entry (gpointer data,
+                                        GObject *obj G_GNUC_UNUSED)
 {
   CtkEntryIconAccessible *icon = data;
 
@@ -98,7 +99,7 @@ ctk_entry_icon_accessible_new (CtkEntryAccessible *entry,
 }
 
 static void
-ctk_entry_icon_accessible_init (CtkEntryIconAccessible *icon)
+ctk_entry_icon_accessible_init (CtkEntryIconAccessible *icon G_GNUC_UNUSED)
 {
 }
 
@@ -1330,7 +1331,7 @@ typedef struct
 } PasteData;
 
 static void
-paste_received_cb (CtkClipboard *clipboard,
+paste_received_cb (CtkClipboard *clipboard G_GNUC_UNUSED,
                    const gchar  *text,
                    gpointer      data)
 {
@@ -1492,7 +1493,7 @@ ctk_entry_accessible_do_action (AtkAction *action,
 }
 
 static gint
-ctk_entry_accessible_get_n_actions (AtkAction *action)
+ctk_entry_accessible_get_n_actions (AtkAction *action G_GNUC_UNUSED)
 {
   return 1;
 }
@@ -1544,7 +1545,7 @@ ctk_entry_accessible_get_keybinding (AtkAction *action,
 }
 
 static const gchar*
-ctk_entry_accessible_action_get_name (AtkAction *action,
+ctk_entry_accessible_action_get_name (AtkAction *action G_GNUC_UNUSED,
                                       gint       i)
 {
   if (i == 0)
@@ -1553,7 +1554,7 @@ ctk_entry_accessible_action_get_name (AtkAction *action,
 }
 
 static const gchar*
-ctk_entry_accessible_action_get_localized_name (AtkAction *action,
+ctk_entry_accessible_action_get_localized_name (AtkAction *action G_GNUC_UNUSED,
                                                 gint       i)
 {
   if (i == 0)
@@ -1562,7 +1563,7 @@ ctk_entry_accessible_action_get_localized_name (AtkAction *action,
 }
 
 static const gchar*
-ctk_entry_accessible_action_get_description (AtkAction *action,
+ctk_entry_accessible_action_get_description (AtkAction *action G_GNUC_UNUSED,
                                              gint       i)
 {
   if (i == 0)

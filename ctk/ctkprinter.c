@@ -1132,8 +1132,8 @@ free_printer_list (PrinterList *printer_list)
 }
 
 static gboolean
-list_added_cb (CtkPrintBackend *backend, 
-	       CtkPrinter      *printer, 
+list_added_cb (CtkPrintBackend *backend G_GNUC_UNUSED,
+	       CtkPrinter      *printer,
 	       PrinterList     *printer_list)
 {
   if (printer_list->func (printer, printer_list->data))
@@ -1147,7 +1147,7 @@ list_added_cb (CtkPrintBackend *backend,
 
 static void
 backend_status_changed (GObject    *object,
-                        GParamSpec *pspec,
+                        GParamSpec *pspec G_GNUC_UNUSED,
                         gpointer    data)
 {
   CtkPrintBackend *backend = CTK_PRINT_BACKEND (object);

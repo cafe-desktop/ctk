@@ -277,11 +277,11 @@ ctk_menu_item_actionable_interface_init (CtkActionableInterface *iface)
 static gboolean
 ctk_menu_item_render (CtkCssGadget *gadget,
                       cairo_t      *cr,
-                      int           x,
-                      int           y,
-                      int           width,
-                      int           height,
-                      gpointer      data)
+                      int           x G_GNUC_UNUSED,
+                      int           y G_GNUC_UNUSED,
+                      int           width G_GNUC_UNUSED,
+                      int           height G_GNUC_UNUSED,
+                      gpointer      data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkMenuItem *menu_item = CTK_MENU_ITEM (widget);
@@ -312,7 +312,7 @@ ctk_menu_item_allocate (CtkCssGadget        *gadget,
                         const CtkAllocation *allocation,
                         int                  baseline,
                         CtkAllocation       *out_clip,
-                        gpointer             data)
+                        gpointer             data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkMenuItem *menu_item = CTK_MENU_ITEM (widget);
@@ -569,9 +569,9 @@ ctk_menu_item_measure (CtkCssGadget   *gadget,
                        int             size,
                        int            *minimum,
                        int            *natural,
-                       int            *minimum_baseline,
-                       int            *natural_baseline,
-                       gpointer        data)
+                       int            *minimum_baseline G_GNUC_UNUSED,
+                       int            *natural_baseline G_GNUC_UNUSED,
+                       gpointer        data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
 
@@ -1872,10 +1872,10 @@ ctk_real_menu_item_get_label (CtkMenuItem *menu_item)
 
 static void
 popped_up_cb (CtkMenu            *menu,
-              const CdkRectangle *flipped_rect,
-              const CdkRectangle *final_rect,
+              const CdkRectangle *flipped_rect G_GNUC_UNUSED,
+              const CdkRectangle *final_rect G_GNUC_UNUSED,
               gboolean            flipped_x,
-              gboolean            flipped_y,
+              gboolean            flipped_y G_GNUC_UNUSED,
               CtkMenuItem        *menu_item)
 {
   CtkWidget *parent = ctk_widget_get_parent (CTK_WIDGET (menu_item));
@@ -2403,7 +2403,7 @@ ctk_menu_item_get_accel_path (CtkMenuItem *menu_item)
 
 static void
 ctk_menu_item_forall (CtkContainer *container,
-                      gboolean      include_internals,
+                      gboolean      include_internals G_GNUC_UNUSED,
                       CtkCallback   callback,
                       gpointer      callback_data)
 {

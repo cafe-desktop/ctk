@@ -60,7 +60,7 @@ print_selected (CtkRecentChooser *chooser)
 }
 
 static void
-response_cb (CtkDialog *dialog,
+response_cb (CtkDialog *dialog G_GNUC_UNUSED,
 	     gint       response_id)
 {
   if (response_id == CTK_RESPONSE_OK)
@@ -73,15 +73,15 @@ response_cb (CtkDialog *dialog,
 }
 
 static void
-filter_changed (CtkRecentChooserDialog *dialog,
-		gpointer                data)
+filter_changed (CtkRecentChooserDialog *dialog G_GNUC_UNUSED,
+		gpointer                data G_GNUC_UNUSED)
 {
   g_print ("recent filter changed\n");
 }
 
 static void
 notify_multiple_cb (CtkWidget  *dialog,
-		    GParamSpec *pspec,
+		    GParamSpec *pspec G_GNUC_UNUSED,
 		    CtkWidget  *button)
 {
   gboolean multiple;
@@ -92,7 +92,7 @@ notify_multiple_cb (CtkWidget  *dialog,
 }
 
 static void
-kill_dependent (CtkWindow *win,
+kill_dependent (CtkWindow *win G_GNUC_UNUSED,
 		CtkWidget *dep)
 {
   ctk_widget_destroy (dep);

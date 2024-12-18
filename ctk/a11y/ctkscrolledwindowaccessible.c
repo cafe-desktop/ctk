@@ -188,6 +188,6 @@ ctk_scrolled_window_accessible_class_init (CtkScrolledWindowAccessibleClass *kla
 }
 
 static void
-ctk_scrolled_window_accessible_init (CtkScrolledWindowAccessible *window)
+ctk_scrolled_window_accessible_init (CtkScrolledWindowAccessible *window G_GNUC_UNUSED)
 {
 }

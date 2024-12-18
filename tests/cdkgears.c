@@ -93,7 +93,8 @@ create_axis_slider (CtkGears *gears,
 }
 
 static void
-moar_gears (CtkButton *button, gpointer data)
+moar_gears (CtkButton *button G_GNUC_UNUSED,
+	    gpointer   data)
 {
   CtkContainer *container = CTK_CONTAINER (data);
   CtkWidget *gears;

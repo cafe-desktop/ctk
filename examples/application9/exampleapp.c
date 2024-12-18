@@ -12,13 +12,13 @@ struct _ExampleApp
 G_DEFINE_TYPE(ExampleApp, example_app, CTK_TYPE_APPLICATION);
 
 static void
-example_app_init (ExampleApp *app)
+example_app_init (ExampleApp *app G_GNUC_UNUSED)
 {
 }
 
 static void
-preferences_activated (GSimpleAction *action,
-                       GVariant      *parameter,
+preferences_activated (GSimpleAction *action G_GNUC_UNUSED,
+                       GVariant      *parameter G_GNUC_UNUSED,
                        gpointer       app)
 {
   ExampleAppPrefs *prefs;
@@ -30,8 +30,8 @@ preferences_activated (GSimpleAction *action,
 }
 
 static void
-quit_activated (GSimpleAction *action,
-                GVariant      *parameter,
+quit_activated (GSimpleAction *action G_GNUC_UNUSED,
+                GVariant      *parameter G_GNUC_UNUSED,
                 gpointer       app)
 {
   g_application_quit (G_APPLICATION (app));
@@ -78,7 +78,7 @@ static void
 example_app_open (GApplication  *app,
                   GFile        **files,
                   gint           n_files,
-                  const gchar   *hint)
+                  const gchar   *hint G_GNUC_UNUSED)
 {
   GList *windows;
   ExampleAppWindow *win;

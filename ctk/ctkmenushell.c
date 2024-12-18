@@ -425,7 +425,7 @@ ctk_menu_shell_class_init (CtkMenuShellClass *klass)
 }
 
 static GType
-ctk_menu_shell_child_type (CtkContainer *container)
+ctk_menu_shell_child_type (CtkContainer *container G_GNUC_UNUSED)
 {
   return CTK_TYPE_MENU_ITEM;
 }
@@ -1097,7 +1097,7 @@ ctk_menu_shell_leave_notify (CtkWidget        *widget,
 
 static void
 ctk_menu_shell_screen_changed (CtkWidget *widget,
-                               CdkScreen *previous_screen)
+                               CdkScreen *previous_screen G_GNUC_UNUSED)
 {
   ctk_menu_shell_reset_key_hash (CTK_MENU_SHELL (widget));
 }
@@ -1137,7 +1137,7 @@ ctk_menu_shell_remove (CtkContainer *container,
 
 static void
 ctk_menu_shell_forall (CtkContainer *container,
-                       gboolean      include_internals,
+                       gboolean      include_internals G_GNUC_UNUSED,
                        CtkCallback   callback,
                        gpointer      callback_data)
 {
@@ -1744,7 +1744,7 @@ ctk_menu_shell_get_mnemonic_hash (CtkMenuShell *menu_shell,
 
 static void
 menu_shell_add_mnemonic_foreach (guint     keyval,
-                                 GSList   *targets,
+                                 GSList   *targets G_GNUC_UNUSED,
                                  gpointer  data)
 {
   CtkKeyHash *key_hash = data;
@@ -1987,7 +1987,7 @@ ctk_menu_shell_get_parent_shell (CtkMenuShell *menu_shell)
 }
 
 static void
-ctk_menu_shell_item_activate (CtkMenuItem *menuitem,
+ctk_menu_shell_item_activate (CtkMenuItem *menuitem G_GNUC_UNUSED,
                               gpointer     user_data)
 {
   CtkMenuTrackerItem *item = user_data;
@@ -1996,7 +1996,7 @@ ctk_menu_shell_item_activate (CtkMenuItem *menuitem,
 }
 
 static void
-ctk_menu_shell_submenu_shown (CtkWidget *submenu,
+ctk_menu_shell_submenu_shown (CtkWidget *submenu G_GNUC_UNUSED,
                               gpointer   user_data)
 {
   CtkMenuTrackerItem *item = user_data;

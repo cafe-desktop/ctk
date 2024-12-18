@@ -116,6 +116,6 @@ ctk_toggle_button_accessible_class_init (CtkToggleButtonAccessibleClass *klass)
 }
 
 static void
-ctk_toggle_button_accessible_init (CtkToggleButtonAccessible *button)
+ctk_toggle_button_accessible_init (CtkToggleButtonAccessible *button G_GNUC_UNUSED)
 {
 }

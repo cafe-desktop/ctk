@@ -120,7 +120,7 @@ ctk_css_animated_style_class_init (CtkCssAnimatedStyleClass *klass)
 }
 
 static void
-ctk_css_animated_style_init (CtkCssAnimatedStyle *style)
+ctk_css_animated_style_init (CtkCssAnimatedStyle *style G_GNUC_UNUSED)
 {
 }
 

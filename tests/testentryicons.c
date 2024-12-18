@@ -2,7 +2,10 @@
 #include <stdio.h>
 
 static void
-clear_pressed (CtkEntry *entry, gint icon, CdkEvent *event, gpointer data)
+clear_pressed (CtkEntry *entry,
+               gint      icon,
+               CdkEvent *event G_GNUC_UNUSED,
+               gpointer  data G_GNUC_UNUSED)
 {
    if (icon == CTK_ENTRY_ICON_SECONDARY)
      ctk_entry_set_text (entry, "");
@@ -11,7 +14,7 @@ clear_pressed (CtkEntry *entry, gint icon, CdkEvent *event, gpointer data)
 static void
 drag_begin_cb (CtkWidget      *widget,
                CdkDragContext *context,
-               gpointer        user_data)
+               gpointer        user_data G_GNUC_UNUSED)
 {
   gint pos;
 
@@ -22,11 +25,11 @@ drag_begin_cb (CtkWidget      *widget,
 
 static void
 drag_data_get_cb (CtkWidget        *widget,
-                  CdkDragContext   *context,
+                  CdkDragContext   *context G_GNUC_UNUSED,
                   CtkSelectionData *data,
-                  guint             info,
-                  guint             time,
-                  gpointer          user_data)
+                  guint             info G_GNUC_UNUSED,
+                  guint             time G_GNUC_UNUSED,
+                  gpointer          user_data G_GNUC_UNUSED)
 {
   gint pos;
 

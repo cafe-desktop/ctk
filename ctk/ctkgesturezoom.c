@@ -53,7 +53,7 @@ static guint signals[LAST_SIGNAL] = { 0 };
 G_DEFINE_TYPE_WITH_PRIVATE (CtkGestureZoom, ctk_gesture_zoom, CTK_TYPE_GESTURE)
 
 static void
-ctk_gesture_zoom_init (CtkGestureZoom *gesture)
+ctk_gesture_zoom_init (CtkGestureZoom *gesture G_GNUC_UNUSED)
 {
 }
 
@@ -160,7 +160,7 @@ ctk_gesture_zoom_filter_event (CtkEventController *controller,
 
 static void
 ctk_gesture_zoom_begin (CtkGesture       *gesture,
-                        CdkEventSequence *sequence)
+                        CdkEventSequence *sequence G_GNUC_UNUSED)
 {
   CtkGestureZoom *zoom = CTK_GESTURE_ZOOM (gesture);
   CtkGestureZoomPrivate *priv;
@@ -171,7 +171,7 @@ ctk_gesture_zoom_begin (CtkGesture       *gesture,
 
 static void
 ctk_gesture_zoom_update (CtkGesture       *gesture,
-                         CdkEventSequence *sequence)
+                         CdkEventSequence *sequence G_GNUC_UNUSED)
 {
   _ctk_gesture_zoom_check_emit (CTK_GESTURE_ZOOM (gesture));
 }

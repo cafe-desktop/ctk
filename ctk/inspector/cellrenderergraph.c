@@ -114,7 +114,7 @@ ctk_cell_renderer_graph_set_property (GObject      *object,
 
 static void
 ctk_cell_renderer_graph_get_size (CtkCellRenderer    *cell,
-                                  CtkWidget          *widget,
+                                  CtkWidget          *widget G_GNUC_UNUSED,
                                   const CdkRectangle *cell_area,
                                   gint               *x_offset,
                                   gint               *y_offset,
@@ -157,8 +157,8 @@ ctk_cell_renderer_graph_render (CtkCellRenderer      *cell,
                                 cairo_t              *cr,
                                 CtkWidget            *widget,
                                 const CdkRectangle   *background_area,
-                                const CdkRectangle   *cell_area,
-                                CtkCellRendererState  flags)
+                                const CdkRectangle   *cell_area G_GNUC_UNUSED,
+                                CtkCellRendererState  flags G_GNUC_UNUSED)
 {
   CtkCellRendererGraph *graph = CTK_CELL_RENDERER_GRAPH (cell);
   CtkCellRendererGraphPrivate *priv = graph->priv;

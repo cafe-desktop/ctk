@@ -8,7 +8,7 @@
 #include <ctk/ctk.h>
 
 static void
-show_parsing_error (CtkCssProvider *provider,
+show_parsing_error (CtkCssProvider *provider G_GNUC_UNUSED,
                     CtkCssSection  *section,
                     const GError   *error,
                     CtkTextBuffer  *buffer)

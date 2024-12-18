@@ -176,7 +176,7 @@ cdk_profiler_set_int_counter (guint  id,
 #else
 
 void
-cdk_profiler_start (int fd)
+cdk_profiler_start (int fd G_GNUC_UNUSED)
 {
 }
 
@@ -192,38 +192,38 @@ cdk_profiler_is_running (void)
 }
 
 void
-cdk_profiler_add_mark (gint64      start,
-                       guint64     duration,
-                       const char *name,
-                       const char *message)
+cdk_profiler_add_mark (gint64      start G_GNUC_UNUSED,
+                       guint64     duration G_GNUC_UNUSED,
+                       const char *name G_GNUC_UNUSED,
+                       const char *message G_GNUC_UNUSED)
 {
 }
 
 guint
-cdk_profiler_define_counter (const char *name,
-                             const char *description)
+cdk_profiler_define_counter (const char *name G_GNUC_UNUSED,
+                             const char *description G_GNUC_UNUSED)
 {
  return 0;
 }
 
 void
-cdk_profiler_set_counter (guint  id,
-                          gint64 time,
-                          double value)
+cdk_profiler_set_counter (guint  id G_GNUC_UNUSED,
+                          gint64 time G_GNUC_UNUSED,
+                          double value G_GNUC_UNUSED)
 {
 }
 
 guint
-cdk_profiler_define_int_counter (const char *name,
-                                 const char *description)
+cdk_profiler_define_int_counter (const char *name G_GNUC_UNUSED,
+                                 const char *description G_GNUC_UNUSED)
 {
   return 0;
 }
 
 void
-cdk_profiler_set_int_counter (guint  id,
-                              gint64 time,
-                              gint64 value)
+cdk_profiler_set_int_counter (guint  id G_GNUC_UNUSED,
+                              gint64 time G_GNUC_UNUSED,
+                              gint64 value G_GNUC_UNUSED)
 {
 }
 

@@ -31,7 +31,7 @@ static CtkWidget *def, *recommended, *fallback, *other, *all;
 static void
 dialog_response (CtkDialog *d,
                  gint       response_id,
-                 gpointer   user_data)
+                 gpointer   user_data G_GNUC_UNUSED)
 {
   g_print ("Response: %d\n", response_id);
 
@@ -128,8 +128,8 @@ display_dialog (void)
 }
 
 static void
-button_clicked (CtkButton *b,
-                gpointer   user_data)
+button_clicked (CtkButton *b G_GNUC_UNUSED,
+                gpointer   user_data G_GNUC_UNUSED)
 {
   CtkWidget *w;
   gchar *path;

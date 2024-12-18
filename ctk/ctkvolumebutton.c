@@ -210,11 +210,11 @@ ctk_volume_button_new (void)
 
 static gboolean
 cb_query_tooltip (CtkWidget  *button,
-		  gint        x,
-		  gint        y,
-		  gboolean    keyboard_mode,
+		  gint        x G_GNUC_UNUSED,
+		  gint        y G_GNUC_UNUSED,
+		  gboolean    keyboard_mode G_GNUC_UNUSED,
 		  CtkTooltip *tooltip,
-		  gpointer    user_data)
+		  gpointer    user_data G_GNUC_UNUSED)
 {
   CtkScaleButton *scale_button = CTK_SCALE_BUTTON (button);
   CtkAdjustment *adjustment;
@@ -257,7 +257,9 @@ cb_query_tooltip (CtkWidget  *button,
 }
 
 static void
-cb_value_changed (CtkVolumeButton *button, gdouble value, gpointer user_data)
+cb_value_changed (CtkVolumeButton *button,
+		  gdouble          value G_GNUC_UNUSED,
+		  gpointer         user_data G_GNUC_UNUSED)
 {
   ctk_widget_trigger_tooltip_query (CTK_WIDGET (button));
 }

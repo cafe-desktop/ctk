@@ -177,7 +177,7 @@ G_DEFINE_TYPE_WITH_PRIVATE (CtkApplication, ctk_application, G_TYPE_APPLICATION)
 
 static gboolean
 ctk_application_focus_in_event_cb (CtkWindow      *window,
-                                   CdkEventFocus  *event,
+                                   CdkEventFocus  *event G_GNUC_UNUSED,
                                    CtkApplication *application)
 {
   CtkApplicationPrivate *priv = application->priv;
@@ -344,7 +344,7 @@ ctk_application_local_command_line (GApplication   *application,
 }
 
 static void
-ctk_application_add_platform_data (GApplication    *application,
+ctk_application_add_platform_data (GApplication    *application G_GNUC_UNUSED,
                                    GVariantBuilder *builder)
 {
   /* This is slightly evil.
@@ -373,7 +373,7 @@ ctk_application_before_emit (GApplication *g_application,
 }
 
 static void
-ctk_application_after_emit (GApplication *application,
+ctk_application_after_emit (GApplication *application G_GNUC_UNUSED,
                             GVariant     *platform_data)
 {
   const char *startup_notification_id = NULL;
@@ -629,14 +629,14 @@ static const gchar org_gnome_Sysprof3_Profiler_xml[] =
 static GDBusInterfaceInfo *org_gnome_Sysprof3_Profiler;
 
 static void
-sysprof_profiler_method_call (GDBusConnection       *connection,
-                              const gchar           *sender,
-                              const gchar           *object_path,
-                              const gchar           *interface_name,
+sysprof_profiler_method_call (GDBusConnection       *connection G_GNUC_UNUSED,
+                              const gchar           *sender G_GNUC_UNUSED,
+                              const gchar           *object_path G_GNUC_UNUSED,
+                              const gchar           *interface_name G_GNUC_UNUSED,
                               const gchar           *method_name,
                               GVariant              *parameters,
                               GDBusMethodInvocation *invocation,
-                              gpointer               user_data)
+                              gpointer               user_data G_GNUC_UNUSED)
 {
   if (strcmp (method_name, "Start") == 0)
     {
@@ -694,7 +694,7 @@ sysprof_profiler_method_call (GDBusConnection       *connection,
 static gboolean
 ctk_application_dbus_register (GApplication     *application,
                                GDBusConnection  *connection,
-                               const char       *obect_path,
+                               const char       *obect_path G_GNUC_UNUSED,
                                GError          **error)
 {
   CtkApplicationPrivate *priv = ctk_application_get_instance_private (CTK_APPLICATION (application));
@@ -729,7 +729,7 @@ ctk_application_dbus_register (GApplication     *application,
 static void
 ctk_application_dbus_unregister (GApplication     *application,
                                  GDBusConnection  *connection,
-                                 const char       *obect_path)
+                                 const char       *obect_path G_GNUC_UNUSED)
 {
   CtkApplicationPrivate *priv = ctk_application_get_instance_private (CTK_APPLICATION (application));
 

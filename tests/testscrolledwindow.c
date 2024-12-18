@@ -64,7 +64,7 @@ kinetic_scrolling_changed (CtkToggleButton *toggle_button,
 }
 
 static void
-add_row (CtkButton  *button,
+add_row (CtkButton  *button G_GNUC_UNUSED,
          CtkListBox *listbox)
 {
   CtkWidget *row;
@@ -77,7 +77,7 @@ add_row (CtkButton  *button,
 }
 
 static void
-remove_row (CtkButton  *button,
+remove_row (CtkButton  *button G_GNUC_UNUSED,
             CtkListBox *listbox)
 {
   GList *children, *last;
@@ -364,7 +364,8 @@ scrollable_policy (void)
 
 
 int
-main (int argc, char *argv[])
+main (int   argc G_GNUC_UNUSED,
+      char *argv[] G_GNUC_UNUSED)
 {
   ctk_init (NULL, NULL);
 

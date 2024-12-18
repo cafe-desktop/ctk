@@ -53,7 +53,8 @@ node_set (CtkTreeIter *iter)
 }
 
 static void
-iter_remove (CtkWidget *button, CtkTreeView *tree_view)
+iter_remove (CtkWidget   *button G_GNUC_UNUSED,
+	     CtkTreeView *tree_view)
 {
   CtkTreeIter selected;
   CtkTreeModel *model;
@@ -160,7 +161,8 @@ iter_insert_with_values (CtkWidget *button, CtkTreeView *tree_view)
 }
 
 static void
-iter_insert_before  (CtkWidget *button, CtkTreeView *tree_view)
+iter_insert_before  (CtkWidget   *button G_GNUC_UNUSED,
+		     CtkTreeView *tree_view)
 {
   CtkTreeIter iter;
   CtkTreeIter selected;
@@ -187,7 +189,8 @@ iter_insert_before  (CtkWidget *button, CtkTreeView *tree_view)
 }
 
 static void
-iter_insert_after (CtkWidget *button, CtkTreeView *tree_view)
+iter_insert_after (CtkWidget   *button G_GNUC_UNUSED,
+		   CtkTreeView *tree_view)
 {
   CtkTreeIter iter;
   CtkTreeIter selected;
@@ -220,7 +223,8 @@ iter_insert_after (CtkWidget *button, CtkTreeView *tree_view)
 }
 
 static void
-iter_prepend (CtkWidget *button, CtkTreeView *tree_view)
+iter_prepend (CtkWidget   *button G_GNUC_UNUSED,
+	      CtkTreeView *tree_view)
 {
   CtkTreeIter iter;
   CtkTreeIter selected;
@@ -250,7 +254,8 @@ iter_prepend (CtkWidget *button, CtkTreeView *tree_view)
 }
 
 static void
-iter_append (CtkWidget *button, CtkTreeView *tree_view)
+iter_append (CtkWidget   *button G_GNUC_UNUSED,
+	     CtkTreeView *tree_view)
 {
   CtkTreeIter iter;
   CtkTreeIter selected;

@@ -2,10 +2,10 @@
 #include <ctk/ctk.h>
 
 static gboolean
-boolean_to_text (GBinding *binding,
+boolean_to_text (GBinding     *binding G_GNUC_UNUSED,
                  const GValue *source,
-                 GValue *target,
-                 gpointer dummy G_GNUC_UNUSED)
+                 GValue       *target,
+                 gpointer      dummy G_GNUC_UNUSED)
 {
   if (g_value_get_boolean (source))
     g_value_set_string (target, "Enabled");
@@ -62,7 +62,9 @@ set_state_delayed (gpointer data)
 }
 
 static gboolean
-set_state (CtkSwitch *sw, gboolean state, gpointer data)
+set_state (CtkSwitch *sw,
+	   gboolean   state,
+	   gpointer   data G_GNUC_UNUSED)
 {
   SetStateData *d;
   guint id;
@@ -83,7 +85,9 @@ set_state (CtkSwitch *sw, gboolean state, gpointer data)
 }
 
 static void
-sw_delay_notify (GObject *obj, GParamSpec *pspec, gpointer data)
+sw_delay_notify (GObject    *obj,
+		 GParamSpec *pspec G_GNUC_UNUSED,
+		 gpointer    data)
 {
   CtkWidget *spinner = data;
   gboolean active;

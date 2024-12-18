@@ -1164,7 +1164,7 @@ show_image_change_notify (CtkImageMenuItem *image_menu_item)
 
 static void
 traverse_container (CtkWidget *widget,
-                    gpointer   data)
+                    gpointer   data G_GNUC_UNUSED)
 {
   if (CTK_IS_IMAGE_MENU_ITEM (widget))
     show_image_change_notify (CTK_IMAGE_MENU_ITEM (widget));
@@ -1173,7 +1173,7 @@ traverse_container (CtkWidget *widget,
 }
 
 static void
-ctk_image_menu_item_setting_changed (CtkSettings *settings)
+ctk_image_menu_item_setting_changed (CtkSettings *settings G_GNUC_UNUSED)
 {
   GList *list, *l;
 
@@ -1188,7 +1188,7 @@ ctk_image_menu_item_setting_changed (CtkSettings *settings)
 
 static void
 ctk_image_menu_item_screen_changed (CtkWidget *widget,
-                                    CdkScreen *previous_screen)
+                                    CdkScreen *previous_screen G_GNUC_UNUSED)
 {
   CtkSettings *settings;
   gulong show_image_connection;

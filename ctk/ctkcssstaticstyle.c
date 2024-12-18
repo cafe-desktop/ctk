@@ -102,7 +102,7 @@ ctk_css_static_style_class_init (CtkCssStaticStyleClass *klass)
 }
 
 static void
-ctk_css_static_style_init (CtkCssStaticStyle *style)
+ctk_css_static_style_init (CtkCssStaticStyle *style G_GNUC_UNUSED)
 {
 }
 
@@ -143,7 +143,7 @@ ctk_css_static_style_set_value (CtkCssStaticStyle *style,
 static CtkCssStyle *default_style;
 
 static void
-clear_default_style (gpointer data)
+clear_default_style (gpointer data G_GNUC_UNUSED)
 {
   g_set_object (&default_style, NULL);
 }

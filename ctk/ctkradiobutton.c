@@ -272,7 +272,7 @@ ctk_radio_button_set_property (GObject      *object,
 static void
 ctk_radio_button_get_property (GObject    *object,
 			       guint       prop_id,
-			       GValue     *value,
+			       GValue     *value G_GNUC_UNUSED,
 			       GParamSpec *pspec)
 {
   switch (prop_id)

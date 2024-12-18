@@ -3,7 +3,7 @@
 static gint value_changed_count;
 
 static void
-value_changed_cb (CtkSpinButton *spin)
+value_changed_cb (CtkSpinButton *spin G_GNUC_UNUSED)
 {
   value_changed_count++;
 }
@@ -40,7 +40,8 @@ test_value_changed (void)
 static gint adjustment_changed_count;
 
 static void
-adjustment_changed_cb (GObject *object, GParamSpec *pspec)
+adjustment_changed_cb (GObject    *object G_GNUC_UNUSED,
+		       GParamSpec *pspec G_GNUC_UNUSED)
 {
   adjustment_changed_count++;
 }

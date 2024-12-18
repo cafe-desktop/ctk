@@ -387,7 +387,7 @@ ctk_menu_section_box_class_init (CtkMenuSectionBoxClass *class)
 
 static void
 update_popover_position_cb (GObject    *source,
-                            GParamSpec *spec,
+                            GParamSpec *spec G_GNUC_UNUSED,
                             gpointer   *user_data)
 {
   CtkPopover *popover = CTK_POPOVER (source);

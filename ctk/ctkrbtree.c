@@ -53,7 +53,7 @@ _ctk_rbtree_is_nil (CtkRBNode *node)
 }
 
 static CtkRBNode *
-_ctk_rbnode_new (CtkRBTree *tree,
+_ctk_rbnode_new (CtkRBTree *tree G_GNUC_UNUSED,
 		 gint       height)
 {
   CtkRBNode *node = g_slice_new (CtkRBNode);
@@ -338,9 +338,9 @@ _ctk_rbtree_new (void)
 }
 
 static void
-_ctk_rbtree_free_helper (CtkRBTree  *tree,
+_ctk_rbtree_free_helper (CtkRBTree  *tree G_GNUC_UNUSED,
 			 CtkRBNode  *node,
-			 gpointer    data)
+			 gpointer    data G_GNUC_UNUSED)
 {
   if (node->children)
     _ctk_rbtree_free (node->children);
@@ -781,9 +781,9 @@ _ctk_rbtree_set_fixed_height (CtkRBTree *tree,
 }
 
 static void
-reorder_prepare (CtkRBTree *tree,
+reorder_prepare (CtkRBTree *tree G_GNUC_UNUSED,
                  CtkRBNode *node,
-                 gpointer   data)
+                 gpointer   data G_GNUC_UNUSED)
 {
   node->offset -= node->left->offset + node->right->offset;
   CTK_RBNODE_UNSET_FLAG (node, CTK_RBNODE_DESCENDANTS_INVALID);
@@ -792,7 +792,7 @@ reorder_prepare (CtkRBTree *tree,
 static void
 reorder_fixup (CtkRBTree *tree,
                CtkRBNode *node,
-               gpointer   data)
+               gpointer   data G_GNUC_UNUSED)
 {
   node->offset += node->left->offset + node->right->offset;
   node->count = 1 + node->left->count + node->right->count;
@@ -1473,7 +1473,7 @@ _ctk_rbtree_traverse (CtkRBTree             *tree,
 }
 
 static inline
-void _fixup_validation (CtkRBTree *tree,
+void _fixup_validation (CtkRBTree *tree G_GNUC_UNUSED,
 			CtkRBNode *node)
 {
   if (CTK_RBNODE_FLAG_SET (node, CTK_RBNODE_INVALID) ||
@@ -1491,8 +1491,8 @@ void _fixup_validation (CtkRBTree *tree,
 }
 
 static inline
-void _fixup_total_count (CtkRBTree *tree,
-		    CtkRBNode *node)
+void _fixup_total_count (CtkRBTree *tree G_GNUC_UNUSED,
+			 CtkRBNode *node)
 {
   node->total_count = 1 +
     (node->children != NULL ? node->children->root->total_count : 0) + 
@@ -1664,7 +1664,7 @@ _ctk_rbtree_test_structure (CtkRBTree *tree)
 }
 
 static void
-_ctk_rbtree_test (const gchar *where,
+_ctk_rbtree_test (const gchar *where G_GNUC_UNUSED,
                   CtkRBTree   *tree)
 {
   CtkRBTree *tmp_tree;

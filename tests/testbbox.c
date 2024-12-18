@@ -49,7 +49,7 @@ populate_combo_with (CtkComboBoxText *combo, const char** elements)
 
 static void
 combo_changed_cb (CtkComboBoxText *combo,
-		  gpointer user_data)
+		  gpointer         user_data G_GNUC_UNUSED)
 {
   gint active = ctk_combo_box_get_active (CTK_COMBO_BOX (combo));
 

@@ -228,7 +228,7 @@ build_alpha_widgets (void)
 
 static void
 on_alpha_screen_changed (CtkWindow *window,
-			 CdkScreen *old_screen,
+			 CdkScreen *old_screen G_GNUC_UNUSED,
 			 CtkWidget *label)
 {
   CdkScreen *screen = ctk_widget_get_screen (CTK_WIDGET (window));
@@ -331,7 +331,7 @@ create_alpha_window (CtkWidget *widget)
  * default background colour).
  */
 static gboolean
-transparent_draw (CtkWidget *widget,
+transparent_draw (CtkWidget *widget G_GNUC_UNUSED,
                   cairo_t   *cr)
 {
   cairo_set_operator (cr, CAIRO_OPERATOR_CLEAR);
@@ -379,7 +379,7 @@ window_draw (CtkWidget *widget,
 }
 
 void
-create_composited_window (CtkWidget *widget)
+create_composited_window (CtkWidget *widget G_GNUC_UNUSED)
 {
   static CtkWidget *window;
 
@@ -538,7 +538,7 @@ pattern_vadj_changed (CtkAdjustment *adjustment,
 
 static void
 pattern_realize (CtkWidget *widget,
-		 gpointer   data)
+		 gpointer   data G_GNUC_UNUSED)
 {
   CdkWindow *window;
 
@@ -632,7 +632,7 @@ create_big_windows (CtkWidget *widget)
  */
 
 static void
-button_window (CtkWidget *widget,
+button_window (CtkWidget *widget G_GNUC_UNUSED,
 	       CtkWidget *button)
 {
   if (!ctk_widget_get_visible (button))
@@ -1014,8 +1014,8 @@ static CtkWidget *
 create_bbox (gint  horizontal,
 	     char* title, 
 	     gint  spacing,
-	     gint  child_w,
-	     gint  child_h,
+	     gint  child_w G_GNUC_UNUSED,
+	     gint  child_h G_GNUC_UNUSED,
 	     gint  layout)
 {
   CtkWidget *frame;
@@ -1140,7 +1140,7 @@ create_button_box (CtkWidget *widget)
 
 static CtkWidget*
 new_pixbuf (char      *filename,
-	    CdkWindow *window)
+	    CdkWindow *window G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   GdkPixbuf *pixbuf;
@@ -1162,56 +1162,56 @@ new_pixbuf (char      *filename,
 
 
 static void
-set_toolbar_small_stock (CtkWidget *widget,
+set_toolbar_small_stock (CtkWidget *widget G_GNUC_UNUSED,
 			 gpointer   data)
 {
   ctk_toolbar_set_icon_size (CTK_TOOLBAR (data), CTK_ICON_SIZE_SMALL_TOOLBAR);
 }
 
 static void
-set_toolbar_large_stock (CtkWidget *widget,
+set_toolbar_large_stock (CtkWidget *widget G_GNUC_UNUSED,
 			 gpointer   data)
 {
   ctk_toolbar_set_icon_size (CTK_TOOLBAR (data), CTK_ICON_SIZE_LARGE_TOOLBAR);
 }
 
 static void
-set_toolbar_horizontal (CtkWidget *widget,
+set_toolbar_horizontal (CtkWidget *widget G_GNUC_UNUSED,
 			gpointer   data)
 {
   ctk_orientable_set_orientation (CTK_ORIENTABLE (data), CTK_ORIENTATION_HORIZONTAL);
 }
 
 static void
-set_toolbar_vertical (CtkWidget *widget,
+set_toolbar_vertical (CtkWidget *widget G_GNUC_UNUSED,
 		      gpointer   data)
 {
   ctk_orientable_set_orientation (CTK_ORIENTABLE (data), CTK_ORIENTATION_VERTICAL);
 }
 
 static void
-set_toolbar_icons (CtkWidget *widget,
+set_toolbar_icons (CtkWidget *widget G_GNUC_UNUSED,
 		   gpointer   data)
 {
   ctk_toolbar_set_style (CTK_TOOLBAR (data), CTK_TOOLBAR_ICONS);
 }
 
 static void
-set_toolbar_text (CtkWidget *widget,
+set_toolbar_text (CtkWidget *widget G_GNUC_UNUSED,
 	          gpointer   data)
 {
   ctk_toolbar_set_style (CTK_TOOLBAR (data), CTK_TOOLBAR_TEXT);
 }
 
 static void
-set_toolbar_both (CtkWidget *widget,
+set_toolbar_both (CtkWidget *widget G_GNUC_UNUSED,
 		  gpointer   data)
 {
   ctk_toolbar_set_style (CTK_TOOLBAR (data), CTK_TOOLBAR_BOTH);
 }
 
 static void
-set_toolbar_both_horiz (CtkWidget *widget,
+set_toolbar_both_horiz (CtkWidget *widget G_GNUC_UNUSED,
 			gpointer   data)
 {
   ctk_toolbar_set_style (CTK_TOOLBAR (data), CTK_TOOLBAR_BOTH_HORIZ);
@@ -1312,7 +1312,7 @@ create_toolbar (CtkWidget *widget)
 static guint statusbar_counter = 1;
 
 static void
-statusbar_push (CtkWidget *button,
+statusbar_push (CtkWidget    *button G_GNUC_UNUSED,
 		CtkStatusbar *statusbar)
 {
   gchar text[1024];
@@ -1323,7 +1323,7 @@ statusbar_push (CtkWidget *button,
 }
 
 static void
-statusbar_push_long (CtkWidget *button,
+statusbar_push_long (CtkWidget    *button G_GNUC_UNUSED,
                      CtkStatusbar *statusbar)
 {
   gchar text[1024];
@@ -1334,23 +1334,23 @@ statusbar_push_long (CtkWidget *button,
 }
 
 static void
-statusbar_pop (CtkWidget *button,
+statusbar_pop (CtkWidget *button G_GNUC_UNUSED,
 	       CtkStatusbar *statusbar)
 {
   ctk_statusbar_pop (statusbar, 1);
 }
 
 static void
-statusbar_steal (CtkWidget *button,
+statusbar_steal (CtkWidget *button G_GNUC_UNUSED,
 	         CtkStatusbar *statusbar)
 {
   ctk_statusbar_remove (statusbar, 1, 4);
 }
 
 static void
-statusbar_popped (CtkStatusbar  *statusbar,
-		  guint          context_id,
-		  const gchar	*text)
+statusbar_popped (CtkStatusbar  *statusbar G_GNUC_UNUSED,
+		  guint          context_id G_GNUC_UNUSED,
+		  const gchar   *text)
 {
   if (!text)
     statusbar_counter = 1;
@@ -1685,7 +1685,9 @@ create_selectable_control (CtkWidget *widget)
 }
 
 static void
-dialog_response (CtkWidget *dialog, gint response_id, CtkLabel *label)
+dialog_response (CtkWidget *dialog,
+		 gint       response_id G_GNUC_UNUSED,
+		 CtkLabel  *label)
 {
   const gchar *text;
 
@@ -1699,7 +1701,9 @@ dialog_response (CtkWidget *dialog, gint response_id, CtkLabel *label)
 }
 
 static gboolean
-activate_link (CtkWidget *label, const gchar *uri, gpointer data)
+activate_link (CtkWidget   *label,
+	       const gchar *uri,
+	       gpointer     data G_GNUC_UNUSED)
 {
   if (g_strcmp0 (uri, "keynav") == 0)
     {
@@ -2803,7 +2807,9 @@ create_image (CtkWidget *widget)
  */
 
 static int
-list_sort_cb (CtkListBoxRow *a, CtkListBoxRow *b, gpointer data)
+list_sort_cb (CtkListBoxRow *a,
+	      CtkListBoxRow *b,
+	      gpointer       data G_GNUC_UNUSED)
 {
   gint aa = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (a), "value"));
   gint bb = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (b), "value"));
@@ -2811,13 +2817,15 @@ list_sort_cb (CtkListBoxRow *a, CtkListBoxRow *b, gpointer data)
 }
 
 static gboolean
-list_filter_all_cb (CtkListBoxRow *row, gpointer data)
+list_filter_all_cb (CtkListBoxRow *row G_GNUC_UNUSED,
+		    gpointer       data G_GNUC_UNUSED)
 {
   return FALSE;
 }
 
 static gboolean
-list_filter_odd_cb (CtkListBoxRow *row, gpointer data)
+list_filter_odd_cb (CtkListBoxRow *row,
+		    gpointer       data G_GNUC_UNUSED)
 {
   gint value = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (row), "value"));
 
@@ -2825,8 +2833,8 @@ list_filter_odd_cb (CtkListBoxRow *row, gpointer data)
 }
 
 static void
-list_sort_clicked_cb (CtkButton *button,
-                      gpointer data)
+list_sort_clicked_cb (CtkButton *button G_GNUC_UNUSED,
+		      gpointer   data)
 {
   CtkListBox *list = data;
 
@@ -2834,8 +2842,8 @@ list_sort_clicked_cb (CtkButton *button,
 }
 
 static void
-list_filter_odd_clicked_cb (CtkButton *button,
-                            gpointer data)
+list_filter_odd_clicked_cb (CtkButton *button G_GNUC_UNUSED,
+			    gpointer   data)
 {
   CtkListBox *list = data;
 
@@ -2843,8 +2851,8 @@ list_filter_odd_clicked_cb (CtkButton *button,
 }
 
 static void
-list_filter_all_clicked_cb (CtkButton *button,
-                            gpointer data)
+list_filter_all_clicked_cb (CtkButton *button G_GNUC_UNUSED,
+			    gpointer   data)
 {
   CtkListBox *list = data;
 
@@ -2853,8 +2861,8 @@ list_filter_all_clicked_cb (CtkButton *button,
 
 
 static void
-list_unfilter_clicked_cb (CtkButton *button,
-                          gpointer data)
+list_unfilter_clicked_cb (CtkButton *button G_GNUC_UNUSED,
+			  gpointer   data)
 {
   CtkListBox *list = data;
 
@@ -2862,8 +2870,8 @@ list_unfilter_clicked_cb (CtkButton *button,
 }
 
 static void
-add_placeholder_clicked_cb (CtkButton *button,
-                            gpointer data)
+add_placeholder_clicked_cb (CtkButton *button G_GNUC_UNUSED,
+			    gpointer   data)
 {
   CtkListBox *list = data;
   CtkWidget *label;
@@ -2874,8 +2882,8 @@ add_placeholder_clicked_cb (CtkButton *button,
 }
 
 static void
-remove_placeholder_clicked_cb (CtkButton *button,
-                            gpointer data)
+remove_placeholder_clicked_cb (CtkButton *button G_GNUC_UNUSED,
+			       gpointer   data)
 {
   CtkListBox *list = data;
 
@@ -3472,7 +3480,7 @@ create_key_lookup (CtkWidget *widget)
  */
 
 static gboolean
-cmw_destroy_cb(CtkWidget *widget)
+cmw_destroy_cb (CtkWidget *widget G_GNUC_UNUSED)
 {
   /* This is needed to get out of ctk_main */
   ctk_main_quit ();
@@ -3481,7 +3489,7 @@ cmw_destroy_cb(CtkWidget *widget)
 }
 
 static void
-cmw_color (CtkWidget *widget, CtkWidget *parent)
+cmw_color (CtkWidget *widget G_GNUC_UNUSED, CtkWidget *parent)
 {
     CtkWidget *csd;
 
@@ -3501,7 +3509,8 @@ cmw_color (CtkWidget *widget, CtkWidget *parent)
 }
 
 static void
-cmw_file (CtkWidget *widget, CtkWidget *parent)
+cmw_file (CtkWidget *widget G_GNUC_UNUSED,
+	  CtkWidget *parent)
 {
     CtkWidget *fs;
 
@@ -3646,7 +3655,9 @@ static CtkWidget *sw_float_parent;
 static gulong sw_destroyed_handler = 0;
 
 static gboolean
-scrolled_windows_delete_cb (CtkWidget *widget, CdkEventAny *event, CtkWidget *scrollwin)
+scrolled_windows_delete_cb (CtkWidget   *widget G_GNUC_UNUSED,
+			    CdkEventAny *event G_GNUC_UNUSED,
+			    CtkWidget   *scrollwin)
 {
   ctk_widget_reparent (scrollwin, sw_parent);
   
@@ -3659,7 +3670,8 @@ scrolled_windows_delete_cb (CtkWidget *widget, CdkEventAny *event, CtkWidget *sc
 }
 
 static void
-scrolled_windows_destroy_cb (CtkWidget *widget, CtkWidget *scrollwin)
+scrolled_windows_destroy_cb (CtkWidget *widget G_GNUC_UNUSED,
+			     CtkWidget *scrollwin G_GNUC_UNUSED)
 {
   ctk_widget_destroy (sw_float_parent);
 
@@ -4019,7 +4031,7 @@ create_expander (CtkWidget *widget)
 static gboolean
 event_box_draw (CtkWidget *widget,
 		cairo_t   *cr,
-		gpointer   user_data)
+		gpointer   user_data G_GNUC_UNUSED)
 {
   if (ctk_widget_get_window (widget) ==
       ctk_widget_get_window (ctk_widget_get_parent (widget)))
@@ -4032,17 +4044,17 @@ event_box_draw (CtkWidget *widget,
 }
 
 static void
-event_box_label_pressed (CtkWidget        *widget,
-			 CdkEventButton   *event,
-			 gpointer user_data)
+event_box_label_pressed (CtkWidget        *widget G_GNUC_UNUSED,
+			 CdkEventButton   *event G_GNUC_UNUSED,
+			 gpointer          user_data G_GNUC_UNUSED)
 {
   g_print ("clicked on event box\n");
 }
 
 static void
-event_box_button_clicked (CtkWidget *widget,
-			  CtkWidget *button,
-			  gpointer user_data)
+event_box_button_clicked (CtkWidget *widget G_GNUC_UNUSED,
+			  CtkWidget *button G_GNUC_UNUSED,
+			  gpointer   user_data G_GNUC_UNUSED)
 {
   g_print ("pushed button\n");
 }
@@ -4356,7 +4368,8 @@ toggle_numeric (CtkWidget *widget, CtkSpinButton *spin)
 }
 
 static void
-change_digits (CtkWidget *widget, CtkSpinButton *spin)
+change_digits (CtkWidget     *widget G_GNUC_UNUSED,
+	       CtkSpinButton *spin)
 {
   ctk_spin_button_set_digits (CTK_SPIN_BUTTON (spinner1),
 			      ctk_spin_button_get_value_as_int (spin));
@@ -4734,7 +4747,7 @@ create_spins (CtkWidget *widget)
 static gint
 cursor_draw (CtkWidget *widget,
 	     cairo_t   *cr,
-	     gpointer   user_data)
+	     gpointer   user_data G_GNUC_UNUSED)
 {
   int width, height;
 
@@ -5155,7 +5168,8 @@ create_color_selection (CtkWidget *widget)
 }
 
 void
-flipping_toggled_cb (CtkWidget *widget, gpointer data)
+flipping_toggled_cb (CtkWidget *widget,
+		     gpointer   data G_GNUC_UNUSED)
 {
   int state = ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (widget));
   int new_direction = state ? CTK_TEXT_DIR_RTL : CTK_TEXT_DIR_LTR;
@@ -5192,7 +5206,8 @@ orientable_toggle_orientation (CtkOrientable *orientable)
 }
 
 void
-flipping_orientation_toggled_cb (CtkWidget *widget, gpointer data)
+flipping_orientation_toggled_cb (CtkWidget *widget,
+				 gpointer   data G_GNUC_UNUSED)
 {
   CtkWidget *content_area;
   CtkWidget *toplevel;
@@ -5452,7 +5467,9 @@ create_font_selection (CtkWidget *widget)
 static CtkWidget *dialog_window = NULL;
 
 static void
-dialog_response_cb (CtkWidget *widget, gint response, gpointer unused)
+dialog_response_cb (CtkWidget *widget G_GNUC_UNUSED,
+		    gint       response,
+		    gpointer   unused G_GNUC_UNUSED)
 {
   if (response == CTK_RESPONSE_APPLY)
     {
@@ -5592,7 +5609,8 @@ screen_display_check (CtkWidget *widget, ScreenDisplaySelection *data)
 }
 
 void
-screen_display_destroy_diag (CtkWidget *widget, CtkWidget *data)
+screen_display_destroy_diag (CtkWidget *widget G_GNUC_UNUSED,
+			     CtkWidget *data)
 {
   ctk_widget_destroy (data);
 }
@@ -5666,9 +5684,9 @@ static gulong event_watcher_leave_id = 0;
 
 static gboolean
 event_watcher (GSignalInvocationHint *ihint,
-	       guint                  n_param_values,
+	       guint                  n_param_values G_GNUC_UNUSED,
 	       const GValue          *param_values,
-	       gpointer               data)
+	       gpointer               data G_GNUC_UNUSED)
 {
   g_print ("Watch: \"%s\" emitted for %s\n",
 	   g_signal_name (ihint->signal_id),
@@ -5971,7 +5989,9 @@ set_page_image (CtkNotebook *notebook, gint page_num, GdkPixbuf *pixbuf)
 }
 
 static void
-page_switch (CtkWidget *widget, gpointer *page, gint page_num)
+page_switch (CtkWidget *widget,
+	     gpointer  *page G_GNUC_UNUSED,
+	     gint       page_num)
 {
   CtkNotebook *notebook = CTK_NOTEBOOK (widget);
   gint old_page_num = ctk_notebook_get_current_page (notebook);
@@ -6085,14 +6105,14 @@ create_pages (CtkNotebook *notebook, gint start, gint end)
 }
 
 static void
-rotate_notebook (CtkButton   *button,
+rotate_notebook (CtkButton   *button G_GNUC_UNUSED,
 		 CtkNotebook *notebook)
 {
   ctk_notebook_set_tab_pos (notebook, (ctk_notebook_get_tab_pos (notebook) + 1) % 4);
 }
 
 static void
-show_all_pages (CtkButton   *button,
+show_all_pages (CtkButton   *button G_GNUC_UNUSED,
 		CtkNotebook *notebook)
 {  
   ctk_container_foreach (CTK_CONTAINER (notebook),
@@ -6294,7 +6314,8 @@ create_notebook (CtkWidget *widget)
  */
 
 void
-toggle_resize (CtkWidget *widget, CtkWidget *child)
+toggle_resize (CtkWidget *widget G_GNUC_UNUSED,
+	       CtkWidget *child)
 {
   CtkContainer *container = CTK_CONTAINER (ctk_widget_get_parent (child));
   GValue value = G_VALUE_INIT;
@@ -6305,7 +6326,8 @@ toggle_resize (CtkWidget *widget, CtkWidget *child)
 }
 
 void
-toggle_shrink (CtkWidget *widget, CtkWidget *child)
+toggle_shrink (CtkWidget *widget G_GNUC_UNUSED,
+	       CtkWidget *child)
 {
   CtkContainer *container = CTK_CONTAINER (ctk_widget_get_parent (child));
   GValue value = G_VALUE_INIT;
@@ -7496,7 +7518,7 @@ get_ints (CtkWidget *window,
 }
 
 static void
-set_size_callback (CtkWidget *widget,
+set_size_callback (CtkWidget *widget G_GNUC_UNUSED,
                    gpointer   data)
 {
   gint w, h;
@@ -7507,7 +7529,7 @@ set_size_callback (CtkWidget *widget,
 }
 
 static void
-unset_default_size_callback (CtkWidget *widget,
+unset_default_size_callback (CtkWidget *widget G_GNUC_UNUSED,
                              gpointer   data)
 {
   ctk_window_set_default_size (g_object_get_data (data, "target"),
@@ -7515,7 +7537,7 @@ unset_default_size_callback (CtkWidget *widget,
 }
 
 static void
-set_default_size_callback (CtkWidget *widget,
+set_default_size_callback (CtkWidget *widget G_GNUC_UNUSED,
                            gpointer   data)
 {
   gint w, h;
@@ -7527,7 +7549,7 @@ set_default_size_callback (CtkWidget *widget,
 }
 
 static void
-unset_size_request_callback (CtkWidget *widget,
+unset_size_request_callback (CtkWidget *widget G_GNUC_UNUSED,
 			     gpointer   data)
 {
   ctk_widget_set_size_request (g_object_get_data (data, "target"),
@@ -7535,7 +7557,7 @@ unset_size_request_callback (CtkWidget *widget,
 }
 
 static void
-set_size_request_callback (CtkWidget *widget,
+set_size_request_callback (CtkWidget *widget G_GNUC_UNUSED,
 			   gpointer   data)
 {
   gint w, h;
@@ -7547,7 +7569,7 @@ set_size_request_callback (CtkWidget *widget,
 }
 
 static void
-set_location_callback (CtkWidget *widget,
+set_location_callback (CtkWidget *widget G_GNUC_UNUSED,
                        gpointer   data)
 {
   gint x, y;
@@ -7558,7 +7580,7 @@ set_location_callback (CtkWidget *widget,
 }
 
 static void
-move_to_position_callback (CtkWidget *widget,
+move_to_position_callback (CtkWidget *widget G_GNUC_UNUSED,
                            gpointer   data)
 {
   gint x, y;
@@ -7614,7 +7636,7 @@ pos_selected (CtkWidget *widget,
 }
 
 static void
-move_gravity_window_to_current_position (CtkWidget *widget,
+move_gravity_window_to_current_position (CtkWidget *widget G_GNUC_UNUSED,
                                          gpointer   data)
 {
   gint x, y;
@@ -7697,7 +7719,7 @@ get_screen_corner (CtkWindow *window,
 }
 
 static void
-move_gravity_window_to_starting_position (CtkWidget *widget,
+move_gravity_window_to_starting_position (CtkWidget *widget G_GNUC_UNUSED,
                                           gpointer   data)
 {
   gint x, y;
@@ -7780,7 +7802,7 @@ make_gravity_window (CtkWidget   *destroy_with,
 }
 
 static void
-do_gravity_test (CtkWidget *widget,
+do_gravity_test (CtkWidget *widget G_GNUC_UNUSED,
                  gpointer   data)
 {
   CtkWidget *destroy_with = data;
@@ -8146,7 +8168,7 @@ progress_timeout (gpointer data)
 }
 
 static void
-destroy_progress (CtkWidget     *widget,
+destroy_progress (CtkWidget     *widget G_GNUC_UNUSED,
 		  ProgressData **pdata)
 {
   if ((*pdata)->timer)
@@ -8229,7 +8251,8 @@ toggle_running (CtkWidget *widget, ProgressData *pdata)
 }
 
 static void
-entry_changed (CtkWidget *widget, ProgressData *pdata)
+entry_changed (CtkWidget    *widget G_GNUC_UNUSED,
+	       ProgressData *pdata)
 {
   ctk_progress_bar_set_text (CTK_PROGRESS_BAR (pdata->pbar),
 			  ctk_entry_get_text (CTK_ENTRY (pdata->entry)));
@@ -8858,7 +8881,7 @@ create_selection_test (CtkWidget *widget)
 static int scroll_test_pos = 0.0;
 
 static gint
-scroll_test_draw (CtkWidget     *widget,
+scroll_test_draw (CtkWidget     *widget G_GNUC_UNUSED,
                   cairo_t       *cr,
                   CtkAdjustment *adjustment)
 {
@@ -8885,8 +8908,9 @@ scroll_test_draw (CtkWidget     *widget,
 }
 
 static gint
-scroll_test_scroll (CtkWidget *widget, CdkEventScroll *event,
-		    CtkAdjustment *adjustment)
+scroll_test_scroll (CtkWidget      *widget G_GNUC_UNUSED,
+		    CdkEventScroll *event,
+		    CtkAdjustment  *adjustment)
 {
   gdouble new_value = ctk_adjustment_get_value (adjustment) + ((event->direction == CDK_SCROLL_UP) ?
 				    -ctk_adjustment_get_page_increment (adjustment) / 2:
@@ -8898,8 +8922,9 @@ scroll_test_scroll (CtkWidget *widget, CdkEventScroll *event,
 }
 
 static void
-scroll_test_configure (CtkWidget *widget, CdkEventConfigure *event,
-		       CtkAdjustment *adjustment)
+scroll_test_configure (CtkWidget         *widget,
+		       CdkEventConfigure *event G_GNUC_UNUSED,
+		       CtkAdjustment     *adjustment)
 {
   CtkAllocation allocation;
 
@@ -9040,7 +9065,7 @@ timeout_test (CtkWidget *label)
 }
 
 void
-start_timeout_test (CtkWidget *widget,
+start_timeout_test (CtkWidget *widget G_GNUC_UNUSED,
 		    CtkWidget *label)
 {
   if (!timer)
@@ -9050,8 +9075,8 @@ start_timeout_test (CtkWidget *widget,
 }
 
 void
-stop_timeout_test (CtkWidget *widget,
-		   gpointer   data)
+stop_timeout_test (CtkWidget *widget G_GNUC_UNUSED,
+		   gpointer   data G_GNUC_UNUSED)
 {
   if (timer)
     {
@@ -9061,7 +9086,7 @@ stop_timeout_test (CtkWidget *widget,
 }
 
 void
-destroy_timeout_test (CtkWidget  *widget,
+destroy_timeout_test (CtkWidget  *widget G_GNUC_UNUSED,
 		      CtkWidget **window)
 {
   stop_timeout_test (NULL, NULL);
@@ -9137,7 +9162,8 @@ create_timeout_test (CtkWidget *widget)
  */
 
 void
-mainloop_destroyed (CtkWidget *w, CtkWidget **window)
+mainloop_destroyed (CtkWidget  *w G_GNUC_UNUSED,
+		    CtkWidget **window)
 {
   *window = NULL;
   ctk_main_quit ();
@@ -9314,14 +9340,14 @@ void create_layout (CtkWidget *widget)
 }
 
 static void
-show_native (CtkWidget *button,
+show_native (CtkWidget            *button G_GNUC_UNUSED,
              CtkFileChooserNative *native)
 {
   ctk_native_dialog_show (CTK_NATIVE_DIALOG (native));
 }
 
 static void
-hide_native (CtkWidget *button,
+hide_native (CtkWidget            *button G_GNUC_UNUSED,
              CtkFileChooserNative *native)
 {
   ctk_native_dialog_hide (CTK_NATIVE_DIALOG (native));
@@ -9433,8 +9459,8 @@ native_extra_widget_toggle (CtkWidget *checkbutton,
 
 
 static void
-native_visible_notify_show (GObject	*object,
-                            GParamSpec	*pspec,
+native_visible_notify_show (GObject     *object,
+                            GParamSpec  *pspec G_GNUC_UNUSED,
                             CtkWidget   *show_button)
 {
   CtkFileChooserNative *native = CTK_FILE_CHOOSER_NATIVE (object);
@@ -9445,8 +9471,8 @@ native_visible_notify_show (GObject	*object,
 }
 
 static void
-native_visible_notify_hide (GObject	*object,
-                            GParamSpec	*pspec,
+native_visible_notify_hide (GObject     *object,
+                            GParamSpec  *pspec G_GNUC_UNUSED,
                             CtkWidget   *hide_button)
 {
   CtkFileChooserNative *native = CTK_FILE_CHOOSER_NATIVE (object);
@@ -9698,7 +9724,8 @@ create_native_dialogs (CtkWidget *widget)
  */
 
 void
-do_exit (CtkWidget *widget, CtkWidget *window)
+do_exit (CtkWidget *widget G_GNUC_UNUSED,
+	 CtkWidget *window)
 {
   ctk_widget_destroy (window);
   ctk_main_quit ();

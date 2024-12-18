@@ -647,9 +647,9 @@ ctk_size_group_buildable_custom_tag_start (CtkBuildable  *buildable,
 }
 
 static void
-ctk_size_group_buildable_custom_finished (CtkBuildable  *buildable,
+ctk_size_group_buildable_custom_finished (CtkBuildable  *buildable G_GNUC_UNUSED,
                                           CtkBuilder    *builder,
-                                          GObject       *child,
+                                          GObject       *child G_GNUC_UNUSED,
                                           const gchar   *tagname,
                                           gpointer       user_data)
 {

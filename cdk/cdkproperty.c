@@ -193,7 +193,7 @@ intern_atom_internal (const gchar *atom_name,
  */
 CdkAtom
 cdk_atom_intern (const gchar *atom_name,
-                 gboolean     only_if_exists)
+                 gboolean     only_if_exists G_GNUC_UNUSED)
 {
   g_return_val_if_fail (atom_name != NULL, CDK_NONE);
 

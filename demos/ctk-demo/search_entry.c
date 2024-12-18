@@ -40,7 +40,7 @@ search_progress_done (CtkEntry *entry)
 }
 
 static gboolean
-finish_search (CtkButton *button)
+finish_search (CtkButton *button G_GNUC_UNUSED)
 {
   show_find_button ();
   if (search_progress_id)
@@ -72,7 +72,7 @@ start_search (CtkButton *button,
 
 static void
 stop_search (CtkButton *button,
-             gpointer   data)
+             gpointer   data G_GNUC_UNUSED)
 {
   if (finish_search_id)
     {
@@ -89,7 +89,7 @@ clear_entry (CtkEntry *entry)
 }
 
 static void
-search_by_name (CtkWidget *item,
+search_by_name (CtkWidget *item G_GNUC_UNUSED,
                 CtkEntry  *entry)
 {
   ctk_entry_set_icon_tooltip_text (entry,
@@ -100,7 +100,7 @@ search_by_name (CtkWidget *item,
 }
 
 static void
-search_by_description (CtkWidget *item,
+search_by_description (CtkWidget *item G_GNUC_UNUSED,
                        CtkEntry  *entry)
 {
 
@@ -112,7 +112,7 @@ search_by_description (CtkWidget *item,
 }
 
 static void
-search_by_file (CtkWidget *item,
+search_by_file (CtkWidget *item G_GNUC_UNUSED,
                 CtkEntry  *entry)
 {
   ctk_entry_set_icon_tooltip_text (entry,
@@ -151,10 +151,10 @@ create_search_menu (CtkWidget *entry)
 }
 
 static void
-icon_press_cb (CtkEntry       *entry,
+icon_press_cb (CtkEntry       *entry G_GNUC_UNUSED,
                gint            position,
                CdkEventButton *event,
-               gpointer        data)
+               gpointer        data G_GNUC_UNUSED)
 {
   if (position == CTK_ENTRY_ICON_PRIMARY)
     ctk_menu_popup_at_pointer (CTK_MENU (menu), (CdkEvent *) event);
@@ -172,7 +172,7 @@ activate_cb (CtkEntry  *entry,
 }
 
 static void
-search_entry_destroyed (CtkWidget *widget)
+search_entry_destroyed (CtkWidget *widget G_GNUC_UNUSED)
 {
   if (finish_search_id != 0)
     {
@@ -192,7 +192,7 @@ search_entry_destroyed (CtkWidget *widget)
 static void
 entry_populate_popup (CtkEntry *entry,
                       CtkMenu  *menu,
-                      gpointer user_data)
+                      gpointer  user_data G_GNUC_UNUSED)
 {
   CtkWidget *item;
   CtkWidget *search_menu;

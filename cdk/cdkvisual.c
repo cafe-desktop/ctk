@@ -57,7 +57,7 @@
 G_DEFINE_TYPE (CdkVisual, cdk_visual, G_TYPE_OBJECT)
 
 static void
-cdk_visual_init (CdkVisual *visual)
+cdk_visual_init (CdkVisual *visual G_GNUC_UNUSED)
 {
 }
 
@@ -396,7 +396,7 @@ cdk_visual_get_bits_per_rgb (CdkVisual *visual)
 }
 
 static void
-cdk_visual_get_pixel_details (CdkVisual *visual,
+cdk_visual_get_pixel_details (CdkVisual *visual G_GNUC_UNUSED,
                               gulong     pixel_mask,
                               guint32   *mask,
                               gint      *shift,

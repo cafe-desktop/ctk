@@ -142,7 +142,7 @@ setup_scroll (CtkTextView *textview,
 }
 
 static void
-remove_timeout (CtkWidget *window,
+remove_timeout (CtkWidget *window G_GNUC_UNUSED,
                 gpointer   timeout)
 {
   g_source_remove (GPOINTER_TO_UINT (timeout));
@@ -172,7 +172,7 @@ create_text_view (CtkWidget *hbox,
 }
 
 CtkWidget *
-do_textscroll (CtkWidget *do_widget)
+do_textscroll (CtkWidget *do_widget G_GNUC_UNUSED)
 {
   static CtkWidget *window = NULL;
 

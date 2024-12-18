@@ -99,7 +99,7 @@ G_DEFINE_TYPE_WITH_PRIVATE (CtkFileSystem, _ctk_file_system, G_TYPE_OBJECT)
 
 /* CtkFileSystem methods */
 static void
-volumes_changed (GVolumeMonitor *volume_monitor,
+volumes_changed (GVolumeMonitor *volume_monitor G_GNUC_UNUSED,
 		 gpointer        volume,
 		 gpointer        user_data)
 {
@@ -611,7 +611,7 @@ _ctk_file_system_mount_enclosing_volume (CtkFileSystem                     *file
 }
 
 CtkFileSystemVolume *
-_ctk_file_system_get_volume_for_file (CtkFileSystem *file_system,
+_ctk_file_system_get_volume_for_file (CtkFileSystem *file_system G_GNUC_UNUSED,
 				      GFile         *file)
 {
   GMount *mount;

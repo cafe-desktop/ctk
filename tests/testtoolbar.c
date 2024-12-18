@@ -90,8 +90,11 @@ change_toolbar_style (CtkWidget *option_menu, CtkWidget *toolbar)
 }
 
 static void
-set_visible_func(CtkTreeViewColumn *tree_column, CtkCellRenderer *cell,
-		 CtkTreeModel *model, CtkTreeIter *iter, gpointer data)
+set_visible_func(CtkTreeViewColumn *tree_column G_GNUC_UNUSED,
+		 CtkCellRenderer   *cell,
+		 CtkTreeModel      *model,
+		 CtkTreeIter       *iter,
+		 gpointer           data G_GNUC_UNUSED)
 {
   CtkToolItem *tool_item;
   gboolean visible;
@@ -104,8 +107,9 @@ set_visible_func(CtkTreeViewColumn *tree_column, CtkCellRenderer *cell,
 }
 
 static void
-visibile_toggled(CtkCellRendererToggle *cell, const gchar *path_str,
-		 CtkTreeModel *model)
+visibile_toggled(CtkCellRendererToggle *cell G_GNUC_UNUSED,
+		 const gchar           *path_str,
+		 CtkTreeModel          *model)
 {
   CtkTreePath *path;
   CtkTreeIter iter;
@@ -125,8 +129,11 @@ visibile_toggled(CtkCellRendererToggle *cell, const gchar *path_str,
 }
 
 static void
-set_expand_func(CtkTreeViewColumn *tree_column, CtkCellRenderer *cell,
-		CtkTreeModel *model, CtkTreeIter *iter, gpointer data)
+set_expand_func(CtkTreeViewColumn *tree_column G_GNUC_UNUSED,
+		CtkCellRenderer   *cell,
+		CtkTreeModel      *model,
+		CtkTreeIter       *iter,
+		gpointer           data G_GNUC_UNUSED)
 {
   CtkToolItem *tool_item;
 
@@ -137,8 +144,9 @@ set_expand_func(CtkTreeViewColumn *tree_column, CtkCellRenderer *cell,
 }
 
 static void
-expand_toggled(CtkCellRendererToggle *cell, const gchar *path_str,
-	       CtkTreeModel *model)
+expand_toggled(CtkCellRendererToggle *cell G_GNUC_UNUSED,
+	       const gchar           *path_str,
+	       CtkTreeModel          *model)
 {
   CtkTreePath *path;
   CtkTreeIter iter;
@@ -156,8 +164,11 @@ expand_toggled(CtkCellRendererToggle *cell, const gchar *path_str,
 }
 
 static void
-set_homogeneous_func(CtkTreeViewColumn *tree_column, CtkCellRenderer *cell,
-		     CtkTreeModel *model, CtkTreeIter *iter, gpointer data)
+set_homogeneous_func(CtkTreeViewColumn *tree_column G_GNUC_UNUSED,
+		     CtkCellRenderer   *cell,
+		     CtkTreeModel      *model,
+		     CtkTreeIter       *iter,
+		     gpointer           data G_GNUC_UNUSED)
 {
   CtkToolItem *tool_item;
 
@@ -168,8 +179,9 @@ set_homogeneous_func(CtkTreeViewColumn *tree_column, CtkCellRenderer *cell,
 }
 
 static void
-homogeneous_toggled(CtkCellRendererToggle *cell, const gchar *path_str,
-		    CtkTreeModel *model)
+homogeneous_toggled(CtkCellRendererToggle *cell G_GNUC_UNUSED,
+		    const gchar           *path_str,
+		    CtkTreeModel          *model)
 {
   CtkTreePath *path;
   CtkTreeIter iter;
@@ -188,8 +200,11 @@ homogeneous_toggled(CtkCellRendererToggle *cell, const gchar *path_str,
 
 
 static void
-set_important_func(CtkTreeViewColumn *tree_column, CtkCellRenderer *cell,
-		   CtkTreeModel *model, CtkTreeIter *iter, gpointer data)
+set_important_func(CtkTreeViewColumn *tree_column G_GNUC_UNUSED,
+		   CtkCellRenderer   *cell,
+		   CtkTreeModel      *model,
+		   CtkTreeIter       *iter,
+		   gpointer           data G_GNUC_UNUSED)
 {
   CtkToolItem *tool_item;
 
@@ -200,8 +215,9 @@ set_important_func(CtkTreeViewColumn *tree_column, CtkCellRenderer *cell,
 }
 
 static void
-important_toggled(CtkCellRendererToggle *cell, const gchar *path_str,
-		  CtkTreeModel *model)
+important_toggled(CtkCellRendererToggle *cell G_GNUC_UNUSED,
+		  const gchar           *path_str,
+		  CtkTreeModel          *model)
 {
   CtkTreePath *path;
   CtkTreeIter iter;
@@ -333,8 +349,12 @@ icon_size_history_changed (CtkComboBox *menu, CtkToolbar *toolbar)
 }
 
 static gboolean
-toolbar_drag_drop (CtkWidget *widget, CdkDragContext *context,
-		   gint x, gint y, guint time, CtkWidget *label)
+toolbar_drag_drop (CtkWidget      *widget,
+		   CdkDragContext *context G_GNUC_UNUSED,
+		   gint            x,
+		   gint            y,
+		   guint           time G_GNUC_UNUSED,
+		   CtkWidget      *label)
 {
   gchar buf[32];
 
@@ -365,7 +385,11 @@ typedef struct
 } MenuPositionData;
 
 static void
-position_function (CtkMenu *menu, gint *x, gint *y, gboolean *push_in, gpointer user_data)
+position_function (CtkMenu  *menu G_GNUC_UNUSED,
+		   gint     *x,
+		   gint     *y,
+		   gboolean *push_in,
+		   gpointer  user_data)
 {
   /* Do not do this in your own code */
 
@@ -382,7 +406,10 @@ position_function (CtkMenu *menu, gint *x, gint *y, gboolean *push_in, gpointer 
 }
 
 static gboolean
-popup_context_menu (CtkToolbar *toolbar, gint x, gint y, gint button_number)
+popup_context_menu (CtkToolbar *toolbar G_GNUC_UNUSED,
+		    gint        x,
+		    gint        y,
+		    gint        button_number)
 {
   MenuPositionData position_data;
   
@@ -420,7 +447,7 @@ toolbar_drag_motion (CtkToolbar     *toolbar,
 		     gint            x,
 		     gint            y,
 		     guint           time,
-		     gpointer        null)
+		     gpointer        null G_GNUC_UNUSED)
 {
   gint index;
   
@@ -441,9 +468,9 @@ toolbar_drag_motion (CtkToolbar     *toolbar,
 
 static void
 toolbar_drag_leave (CtkToolbar     *toolbar,
-		    CdkDragContext *context,
-		    guint           time,
-		    gpointer	    null)
+		    CdkDragContext *context G_GNUC_UNUSED,
+		    guint           time G_GNUC_UNUSED,
+		    gpointer        null G_GNUC_UNUSED)
 {
   if (drag_item)
     {

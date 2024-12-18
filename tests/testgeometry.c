@@ -27,7 +27,7 @@ static int window_count = 0;
 const char *geometry_string;
 
 static void
-on_window_destroy (CtkWidget *widget)
+on_window_destroy (CtkWidget *widget G_GNUC_UNUSED)
 {
   window_count--;
   if (window_count == 0)

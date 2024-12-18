@@ -249,8 +249,8 @@ _ctk_css_style_property_class_init (CtkCssStylePropertyClass *klass)
 }
 
 static CtkCssValue *
-ctk_css_style_property_real_parse_value (CtkCssStyleProperty *property,
-                                         CtkCssParser        *parser)
+ctk_css_style_property_real_parse_value (CtkCssStyleProperty *property G_GNUC_UNUSED,
+                                         CtkCssParser        *parser G_GNUC_UNUSED)
 {
   g_assert_not_reached ();
   return NULL;

@@ -59,25 +59,25 @@ ctk_tool_shell_default_init (CtkToolShellInterface *iface)
 }
 
 static CtkReliefStyle
-ctk_tool_shell_real_get_relief_style (CtkToolShell *shell)
+ctk_tool_shell_real_get_relief_style (CtkToolShell *shell G_GNUC_UNUSED)
 {
   return CTK_RELIEF_NONE;
 }
 
 static CtkOrientation
-ctk_tool_shell_real_get_text_orientation (CtkToolShell *shell)
+ctk_tool_shell_real_get_text_orientation (CtkToolShell *shell G_GNUC_UNUSED)
 {
   return CTK_ORIENTATION_HORIZONTAL;
 }
 
 static gfloat
-ctk_tool_shell_real_get_text_alignment (CtkToolShell *shell)
+ctk_tool_shell_real_get_text_alignment (CtkToolShell *shell G_GNUC_UNUSED)
 {
   return 0.5f;
 }
 
 static PangoEllipsizeMode
-ctk_tool_shell_real_get_ellipsize_mode (CtkToolShell *shell)
+ctk_tool_shell_real_get_ellipsize_mode (CtkToolShell *shell G_GNUC_UNUSED)
 {
   return PANGO_ELLIPSIZE_NONE;
 }

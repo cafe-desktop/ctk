@@ -22,7 +22,7 @@
 
 static void
 on_toggle_hexpand (CtkToggleButton *toggle,
-                   void            *data)
+                   void            *data G_GNUC_UNUSED)
 {
   g_object_set (toggle,
                 "hexpand", ctk_toggle_button_get_active (toggle),
@@ -31,7 +31,7 @@ on_toggle_hexpand (CtkToggleButton *toggle,
 
 static void
 on_toggle_vexpand (CtkToggleButton *toggle,
-                   void            *data)
+                   void            *data G_GNUC_UNUSED)
 {
   g_object_set (toggle,
                 "vexpand", ctk_toggle_button_get_active (toggle),

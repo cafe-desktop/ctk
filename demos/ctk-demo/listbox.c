@@ -108,7 +108,7 @@ ctk_message_class_init (CtkMessageClass *klass)
 }
 
 static void
-ctk_message_init (CtkMessage *msg)
+ctk_message_init (CtkMessage *msg G_GNUC_UNUSED)
 {
 }
 
@@ -220,14 +220,14 @@ ctk_message_row_expand (CtkMessageRow *row)
 
 static void
 expand_clicked (CtkMessageRow *row,
-                CtkButton *button)
+                CtkButton     *button G_GNUC_UNUSED)
 {
   ctk_message_row_expand (row);
 }
 
 static void
 reshare_clicked (CtkMessageRow *row,
-                 CtkButton *button)
+                 CtkButton     *button G_GNUC_UNUSED)
 {
   CtkMessageRowPrivate *priv = row->priv;
 
@@ -238,7 +238,7 @@ reshare_clicked (CtkMessageRow *row,
 
 static void
 favorite_clicked (CtkMessageRow *row,
-                  CtkButton *button)
+                  CtkButton     *button G_GNUC_UNUSED)
 {
   CtkMessageRowPrivate *priv = row->priv;
 
@@ -319,13 +319,16 @@ ctk_message_row_new (CtkMessage *message)
 }
 
 static int
-ctk_message_row_sort (CtkMessageRow *a, CtkMessageRow *b, gpointer data)
+ctk_message_row_sort (CtkMessageRow *a,
+		      CtkMessageRow *b,
+		      gpointer       data G_GNUC_UNUSED)
 {
   return b->priv->message->time - a->priv->message->time;
 }
 
 static void
-row_activated (CtkListBox *listbox, CtkListBoxRow *row)
+row_activated (CtkListBox    *listbox G_GNUC_UNUSED,
+	       CtkListBoxRow *row)
 {
   ctk_message_row_expand (CTK_MESSAGE_ROW (row));
 }

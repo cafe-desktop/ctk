@@ -134,7 +134,8 @@ static int object = 0;
 static int object_after = 0;
 
 G_MODULE_EXPORT void /* exported for CtkBuilder */
-signal_normal (CtkWindow *window, GParamSpec *spec)
+signal_normal (CtkWindow  *window,
+	       GParamSpec *spec G_GNUC_UNUSED)
 {
   g_assert (CTK_IS_WINDOW (window));
   g_assert (normal == 0);
@@ -144,7 +145,8 @@ signal_normal (CtkWindow *window, GParamSpec *spec)
 }
 
 G_MODULE_EXPORT void /* exported for CtkBuilder */
-signal_after (CtkWindow *window, GParamSpec *spec)
+signal_after (CtkWindow  *window,
+	      GParamSpec *spec G_GNUC_UNUSED)
 {
   g_assert (CTK_IS_WINDOW (window));
   g_assert (normal == 1);
@@ -154,7 +156,8 @@ signal_after (CtkWindow *window, GParamSpec *spec)
 }
 
 G_MODULE_EXPORT void /* exported for CtkBuilder */
-signal_object (CtkButton *button, GParamSpec *spec)
+signal_object (CtkButton  *button,
+	       GParamSpec *spec G_GNUC_UNUSED)
 {
   g_assert (CTK_IS_BUTTON (button));
   g_assert (object == 0);
@@ -164,7 +167,8 @@ signal_object (CtkButton *button, GParamSpec *spec)
 }
 
 G_MODULE_EXPORT void /* exported for CtkBuilder */
-signal_object_after (CtkButton *button, GParamSpec *spec)
+signal_object_after (CtkButton  *button,
+		     GParamSpec *spec G_GNUC_UNUSED)
 {
   g_assert (CTK_IS_BUTTON (button));
   g_assert (object == 1);
@@ -174,28 +178,32 @@ signal_object_after (CtkButton *button, GParamSpec *spec)
 }
 
 G_MODULE_EXPORT void /* exported for CtkBuilder */
-signal_first (CtkButton *button, GParamSpec *spec)
+signal_first (CtkButton  *button G_GNUC_UNUSED,
+	      GParamSpec *spec G_GNUC_UNUSED)
 {
   g_assert (normal == 0);
   normal = 10;
 }
 
 G_MODULE_EXPORT void /* exported for CtkBuilder */
-signal_second (CtkButton *button, GParamSpec *spec)
+signal_second (CtkButton  *button G_GNUC_UNUSED,
+	       GParamSpec *spec G_GNUC_UNUSED)
 {
   g_assert (normal == 10);
   normal = 20;
 }
 
 G_MODULE_EXPORT void /* exported for CtkBuilder */
-signal_extra (CtkButton *button, GParamSpec *spec)
+signal_extra (CtkButton  *button G_GNUC_UNUSED,
+	      GParamSpec *spec G_GNUC_UNUSED)
 {
   g_assert (normal == 20);
   normal = 30;
 }
 
 G_MODULE_EXPORT void /* exported for CtkBuilder */
-signal_extra2 (CtkButton *button, GParamSpec *spec)
+signal_extra2 (CtkButton  *button G_GNUC_UNUSED,
+	       GParamSpec *spec G_GNUC_UNUSED)
 {
   g_assert (normal == 30);
   normal = 40;
@@ -1815,8 +1823,8 @@ test_value_from_string (void)
 static gboolean model_freed = FALSE;
 
 static void
-model_weakref (gpointer data,
-               GObject *model)
+model_weakref (gpointer data G_GNUC_UNUSED,
+               GObject *model G_GNUC_UNUSED)
 {
   model_freed = TRUE;
 }
@@ -2610,13 +2618,15 @@ test_level_bar (void)
 static GObject *external_object = NULL, *external_object_swapped = NULL;
 
 G_MODULE_EXPORT void
-on_button_clicked (CtkButton *button, GObject *data)
+on_button_clicked (CtkButton *button G_GNUC_UNUSED,
+		   GObject   *data)
 {
   external_object = data;
 }
 
 G_MODULE_EXPORT void
-on_button_clicked_swapped (GObject *data, CtkButton *button)
+on_button_clicked_swapped (GObject   *data,
+			   CtkButton *button G_GNUC_UNUSED)
 {
   external_object_swapped = data;
 }
@@ -2835,7 +2845,7 @@ test_template ()
 }
 
 G_MODULE_EXPORT void
-on_cellrenderertoggle1_toggled (CtkCellRendererToggle *cell)
+on_cellrenderertoggle1_toggled (CtkCellRendererToggle *cell G_GNUC_UNUSED)
 {
 }
 

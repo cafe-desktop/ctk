@@ -225,7 +225,7 @@ ctk_menu_button_get_property (GObject    *object,
 
 static void
 ctk_menu_button_state_flags_changed (CtkWidget    *widget,
-                                     CtkStateFlags previous_state_flags)
+                                     CtkStateFlags previous_state_flags G_GNUC_UNUSED)
 {
   CtkMenuButton *button = CTK_MENU_BUTTON (widget);
   CtkMenuButtonPrivate *priv = button->priv;

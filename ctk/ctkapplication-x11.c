@@ -74,12 +74,12 @@ ctk_application_impl_x11_get_window_system_id (CtkApplicationImplDBus *dbus,
 }
 
 static void
-ctk_application_impl_x11_init (CtkApplicationImplX11 *x11)
+ctk_application_impl_x11_init (CtkApplicationImplX11 *x11 G_GNUC_UNUSED)
 {
 }
 
 static void
-ctk_application_impl_x11_before_emit (CtkApplicationImpl *impl,
+ctk_application_impl_x11_before_emit (CtkApplicationImpl *impl G_GNUC_UNUSED,
                                       GVariant           *platform_data)
 {
   const char *startup_notification_id = NULL;

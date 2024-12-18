@@ -223,7 +223,7 @@ add_recent_item (CtkEmojiChooser *chooser,
 }
 
 static void
-emoji_activated (CtkFlowBox      *box,
+emoji_activated (CtkFlowBox      *box G_GNUC_UNUSED,
                  CtkFlowBoxChild *child,
                  gpointer         data)
 {
@@ -319,7 +319,7 @@ show_variations (CtkEmojiChooser *chooser,
 static void
 update_hover (CtkWidget *widget,
               CdkEvent  *event,
-              gpointer   data)
+              gpointer   data G_GNUC_UNUSED)
 {
   if (event->type == CDK_ENTER_NOTIFY)
     ctk_widget_set_state_flags (widget, CTK_STATE_FLAG_PRELIGHT, FALSE);
@@ -344,7 +344,7 @@ long_pressed_cb (CtkGesture *gesture,
 
 static void
 pressed_cb (CtkGesture *gesture,
-            int         n_press,
+            int         n_press G_GNUC_UNUSED,
             double      x,
             double      y,
             gpointer    data)
@@ -626,7 +626,7 @@ update_headings (CtkEmojiChooser *chooser)
 }
 
 static void
-search_changed (CtkEntry *entry,
+search_changed (CtkEntry *entry G_GNUC_UNUSED,
                 gpointer  data)
 {
   CtkEmojiChooser *chooser = data;

@@ -71,8 +71,8 @@ gboolean
 _cdk_broadway_display_set_selection_owner (CdkDisplay *display,
 					   CdkWindow  *owner,
 					   CdkAtom     selection,
-					   guint32     time,
-					   gboolean    send_event)
+					   guint32     time G_GNUC_UNUSED,
+					   gboolean    send_event G_GNUC_UNUSED)
 {
   GSList *tmp_list;
   OwnerInfo *info;
@@ -131,18 +131,18 @@ _cdk_broadway_display_get_selection_owner (CdkDisplay *display,
 }
 
 void
-_cdk_broadway_display_convert_selection (CdkDisplay *display,
-					 CdkWindow *requestor,
-					 CdkAtom    selection,
-					 CdkAtom    target,
-					 guint32    time)
+_cdk_broadway_display_convert_selection (CdkDisplay *display G_GNUC_UNUSED,
+					 CdkWindow *requestor G_GNUC_UNUSED,
+					 CdkAtom    selection G_GNUC_UNUSED,
+					 CdkAtom    target G_GNUC_UNUSED,
+					 guint32    time G_GNUC_UNUSED)
 {
   g_warning ("convert_selection not implemented");
 }
 
 gint
-_cdk_broadway_display_get_selection_property (CdkDisplay *display,
-					      CdkWindow  *requestor,
+_cdk_broadway_display_get_selection_property (CdkDisplay *display G_GNUC_UNUSED,
+					      CdkWindow  *requestor G_GNUC_UNUSED,
 					      guchar    **data,
 					      CdkAtom    *ret_type,
 					      gint       *ret_format)
@@ -160,12 +160,12 @@ _cdk_broadway_display_get_selection_property (CdkDisplay *display,
 }
 
 void
-_cdk_broadway_display_send_selection_notify (CdkDisplay      *display,
-					     CdkWindow       *requestor,
-					     CdkAtom          selection,
-					     CdkAtom          target,
-					     CdkAtom          property, 
-					     guint32          time)
+_cdk_broadway_display_send_selection_notify (CdkDisplay *display,
+					     CdkWindow  *requestor G_GNUC_UNUSED,
+					     CdkAtom     selection G_GNUC_UNUSED,
+					     CdkAtom     target G_GNUC_UNUSED,
+					     CdkAtom     property G_GNUC_UNUSED,
+					     guint32     time G_GNUC_UNUSED)
 {
   g_return_if_fail (CDK_IS_DISPLAY (display));
 
@@ -254,7 +254,7 @@ make_list (const gchar  *text,
 gint 
 _cdk_broadway_display_text_property_to_utf8_list (CdkDisplay    *display,
 						  CdkAtom        encoding,
-						  gint           format,
+						  gint           format G_GNUC_UNUSED,
 						  const guchar  *text,
 						  gint           length,
 						  gchar       ***list)
@@ -278,7 +278,7 @@ _cdk_broadway_display_text_property_to_utf8_list (CdkDisplay    *display,
 }
 
 gchar *
-_cdk_broadway_display_utf8_to_string_target (CdkDisplay  *display,
+_cdk_broadway_display_utf8_to_string_target (CdkDisplay  *display G_GNUC_UNUSED,
 					     const gchar *str)
 {
   return g_strdup (str);

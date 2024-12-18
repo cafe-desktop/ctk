@@ -1449,11 +1449,11 @@ _ctk_text_btree_find_line_by_y (CtkTextBTree *tree,
 }
 
 static gint
-find_line_top_in_line_list (CtkTextBTree *tree,
-                            BTreeView *view,
-                            CtkTextLine *line,
-                            CtkTextLine *target_line,
-                            gint y)
+find_line_top_in_line_list (CtkTextBTree *tree G_GNUC_UNUSED,
+                            BTreeView    *view,
+                            CtkTextLine  *line,
+                            CtkTextLine  *target_line,
+                            gint          y)
 {
   while (line != NULL)
     {
@@ -2707,9 +2707,9 @@ redisplay_mark_if_visible (CtkTextLineSegment *mark)
 }
 
 static void
-ensure_not_off_end (CtkTextBTree *tree,
-                    CtkTextLineSegment *mark,
-                    CtkTextIter *iter)
+ensure_not_off_end (CtkTextBTree       *tree,
+                    CtkTextLineSegment *mark G_GNUC_UNUSED,
+                    CtkTextIter        *iter)
 {
   if (ctk_text_iter_get_line (iter) == _ctk_text_btree_line_count (tree))
     ctk_text_iter_backward_char (iter);
@@ -3617,7 +3617,7 @@ _ctk_text_line_previous (CtkTextLine *line)
 
 CtkTextLineData*
 _ctk_text_line_data_new (CtkTextLayout *layout,
-                         CtkTextLine   *line)
+                         CtkTextLine   *line G_GNUC_UNUSED)
 {
   CtkTextLineData *line_data;
 
@@ -3988,8 +3988,8 @@ _ctk_text_line_byte_to_char (CtkTextLine *line,
 }
 
 gint
-_ctk_text_line_char_to_byte (CtkTextLine *line,
-                            gint         char_offset)
+_ctk_text_line_char_to_byte (CtkTextLine *line G_GNUC_UNUSED,
+                             gint         char_offset G_GNUC_UNUSED)
 {
   g_warning ("FIXME not implemented");
 
@@ -5540,7 +5540,7 @@ ctk_text_btree_node_destroy (CtkTextBTree *tree, CtkTextBTreeNode *node)
 }
 
 static void
-ctk_text_btree_node_free_empty (CtkTextBTree *tree,
+ctk_text_btree_node_free_empty (CtkTextBTree     *tree G_GNUC_UNUSED,
                                 CtkTextBTreeNode *node)
 {
   g_return_if_fail ((node->level > 0 && node->children.node == NULL) ||
@@ -5678,7 +5678,7 @@ get_tree_bounds (CtkTextBTree *tree,
 }
 
 static void
-tag_changed_cb (CtkTextTagTable *table,
+tag_changed_cb (CtkTextTagTable *table G_GNUC_UNUSED,
                 CtkTextTag      *tag,
                 gboolean         size_changed,
                 CtkTextBTree    *tree)
@@ -7284,7 +7284,8 @@ _ctk_text_btree_spew_line (CtkTextBTree* tree, CtkTextLine* line)
 }
 
 void
-_ctk_text_btree_spew_segment (CtkTextBTree* tree, CtkTextLineSegment * seg)
+_ctk_text_btree_spew_segment (CtkTextBTree       *tree G_GNUC_UNUSED,
+			      CtkTextLineSegment *seg)
 {
   printf ("     segment: %p type: %s bytes: %d chars: %d\n",
           seg, seg->type->name, seg->byte_count, seg->char_count);

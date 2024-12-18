@@ -480,7 +480,7 @@ ctk_scale_allocate_marks (CtkCssGadget        *gadget,
                           const CtkAllocation *allocation,
                           int                  baseline,
                           CtkAllocation       *out_clip,
-                          gpointer             data)
+                          gpointer             data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkScale *scale = CTK_SCALE (widget);
@@ -1175,9 +1175,9 @@ ctk_scale_render_value (CtkCssGadget *gadget,
                         cairo_t      *cr,
                         int           x,
                         int           y,
-                        int           width,
-                        int           height,
-                        gpointer      user_data)
+                        int           width G_GNUC_UNUSED,
+                        int           height G_GNUC_UNUSED,
+                        gpointer      user_data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkScale *scale = CTK_SCALE (widget);
@@ -1219,12 +1219,12 @@ ctk_css_node_update_layout_attributes (CtkCssNode  *node,
 static void
 ctk_scale_measure_value (CtkCssGadget   *gadget,
                          CtkOrientation  orientation,
-                         gint            for_size,
+                         gint            for_size G_GNUC_UNUSED,
                          gint           *minimum,
                          gint           *natural,
-                         gint           *minimum_baseline,
-                         gint           *natural_baseline,
-                         gpointer        user_data)
+                         gint           *minimum_baseline G_GNUC_UNUSED,
+                         gint           *natural_baseline G_GNUC_UNUSED,
+                         gpointer        user_data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkScale *scale = CTK_SCALE (widget);
@@ -1588,7 +1588,7 @@ ctk_scale_get_range_size_request (CtkRange       *range,
 }
 
 static void
-ctk_scale_value_style_changed (CtkCssNode        *node,
+ctk_scale_value_style_changed (CtkCssNode        *node G_GNUC_UNUSED,
                                CtkCssStyleChange *change,
                                CtkScale          *scale)
 {
@@ -1623,7 +1623,7 @@ ctk_scale_mark_style_changed (CtkCssNode        *node,
 
 static void
 ctk_scale_screen_changed (CtkWidget *widget,
-                          CdkScreen *old_screen)
+                          CdkScreen *old_screen G_GNUC_UNUSED)
 {
   ctk_scale_clear_value_layout (CTK_SCALE (widget));
   ctk_scale_clear_mark_layouts (CTK_SCALE (widget));
@@ -1632,11 +1632,11 @@ ctk_scale_screen_changed (CtkWidget *widget,
 static void
 ctk_scale_measure_mark_label (CtkCssGadget   *gadget,
                               CtkOrientation  orientation,
-                              gint            for_size,
+                              gint            for_size G_GNUC_UNUSED,
                               gint           *minimum,
                               gint           *natural,
-                              gint           *minimum_baseline,
-                              gint           *natural_baseline,
+                              gint           *minimum_baseline G_GNUC_UNUSED,
+                              gint           *natural_baseline G_GNUC_UNUSED,
                               gpointer        user_data)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
@@ -1661,13 +1661,13 @@ ctk_scale_measure_mark_label (CtkCssGadget   *gadget,
 }
 
 static void
-ctk_scale_measure_mark (CtkCssGadget   *gadget,
+ctk_scale_measure_mark (CtkCssGadget   *gadget G_GNUC_UNUSED,
                         CtkOrientation  orientation,
-                        gint            for_size,
+                        gint            for_size G_GNUC_UNUSED,
                         gint           *minimum,
                         gint           *natural,
-                        gint           *minimum_baseline,
-                        gint           *natural_baseline,
+                        gint           *minimum_baseline G_GNUC_UNUSED,
+                        gint           *natural_baseline G_GNUC_UNUSED,
                         gpointer        user_data)
 {
   CtkScaleMark *mark = user_data;
@@ -1693,12 +1693,12 @@ ctk_scale_measure_mark (CtkCssGadget   *gadget,
 static void
 ctk_scale_measure_marks (CtkCssGadget   *gadget,
                          CtkOrientation  orientation,
-                         gint            for_size,
+                         gint            for_size G_GNUC_UNUSED,
                          gint           *minimum,
                          gint           *natural,
-                         gint           *minimum_baseline,
-                         gint           *natural_baseline,
-                         gpointer        user_data)
+                         gint           *minimum_baseline G_GNUC_UNUSED,
+                         gint           *natural_baseline G_GNUC_UNUSED,
+                         gpointer        user_data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkScale *scale = CTK_SCALE (widget);
@@ -1806,7 +1806,7 @@ ctk_scale_render_mark_indicator (CtkCssGadget *gadget,
                                  int           y,
                                  int           width,
                                  int           height,
-                                 gpointer      user_data)
+                                 gpointer      user_data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkStyleContext *context;
@@ -1835,8 +1835,8 @@ ctk_scale_render_mark_label (CtkCssGadget *gadget,
                              cairo_t      *cr,
                              int           x,
                              int           y,
-                             int           width,
-                             int           height,
+                             int           width G_GNUC_UNUSED,
+                             int           height G_GNUC_UNUSED,
                              gpointer      user_data)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
@@ -1855,12 +1855,12 @@ ctk_scale_render_mark_label (CtkCssGadget *gadget,
 }
 
 static gboolean
-ctk_scale_render_mark (CtkCssGadget *gadget,
+ctk_scale_render_mark (CtkCssGadget *gadget G_GNUC_UNUSED,
                        cairo_t      *cr,
-                       int           x,
-                       int           y,
-                       int           width,
-                       int           height,
+                       int           x G_GNUC_UNUSED,
+                       int           y G_GNUC_UNUSED,
+                       int           width G_GNUC_UNUSED,
+                       int           height G_GNUC_UNUSED,
                        gpointer      user_data)
 {
   CtkScaleMark *mark = user_data;
@@ -1875,11 +1875,11 @@ ctk_scale_render_mark (CtkCssGadget *gadget,
 static gboolean
 ctk_scale_render_marks (CtkCssGadget *gadget,
                         cairo_t      *cr,
-                        int           x,
-                        int           y,
-                        int           width,
-                        int           height,
-                        gpointer      user_data)
+                        int           x G_GNUC_UNUSED,
+                        int           y G_GNUC_UNUSED,
+                        int           width G_GNUC_UNUSED,
+                        int           height G_GNUC_UNUSED,
+                        gpointer      user_data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkScale *scale = CTK_SCALE (widget);
@@ -2466,7 +2466,7 @@ marks_text (GMarkupParseContext  *context,
             const gchar          *text,
             gsize                 text_len,
             gpointer              user_data,
-            GError              **error)
+            GError              **error G_GNUC_UNUSED)
 {
   MarksSubparserData *data = (MarksSubparserData*)user_data;
 

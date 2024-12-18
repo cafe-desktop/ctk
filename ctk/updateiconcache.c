@@ -74,9 +74,9 @@ static gchar *var_name = "-";
 static GStatBuf cache_dir_stat;
 static gboolean cache_up_to_date;
 
-static int check_dir_mtime (const char        *dir,
-                            const GStatBuf    *sb,
-                            int                tf)
+static int check_dir_mtime (const char     *dir G_GNUC_UNUSED,
+                            const GStatBuf *sb,
+                            int             tf)
 {
   if (tf != FTW_NS && sb->st_mtime > cache_dir_stat.st_mtime)
     {
@@ -827,7 +827,9 @@ write_card32 (FILE *cache, guint32 n)
 
 
 static gboolean
-write_image_data (FILE *cache, ImageData *image_data, int offset)
+write_image_data (FILE      *cache,
+		  ImageData *image_data,
+		  int        offset G_GNUC_UNUSED)
 {
   guint8 *s;
   guint len;

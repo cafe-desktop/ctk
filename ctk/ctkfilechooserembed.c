@@ -103,14 +103,14 @@ delegate_initial_focus (CtkFileChooserEmbed *chooser_embed)
 }
 
 static void
-delegate_default_size_changed (CtkFileChooserEmbed *chooser_embed,
+delegate_default_size_changed (CtkFileChooserEmbed *chooser_embed G_GNUC_UNUSED,
 			       gpointer             data)
 {
   g_signal_emit_by_name (data, "default-size-changed");
 }
 
 static void
-delegate_response_requested (CtkFileChooserEmbed *chooser_embed,
+delegate_response_requested (CtkFileChooserEmbed *chooser_embed G_GNUC_UNUSED,
 			     gpointer             data)
 {
   g_signal_emit_by_name (data, "response-requested");

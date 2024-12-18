@@ -71,7 +71,7 @@ inhibitor_toggled (CtkToggleButton *button, CtkApplication *app)
 
 static void
 activate (CtkApplication *app,
-          gpointer        data)
+          gpointer        data G_GNUC_UNUSED)
 {
   CtkWidget *box;
   CtkWidget *separator;
@@ -130,8 +130,8 @@ activate (CtkApplication *app,
 }
 
 static void
-quit (CtkApplication *app,
-      gpointer        data)
+quit (CtkApplication *app G_GNUC_UNUSED,
+      gpointer        data G_GNUC_UNUSED)
 {
   g_print ("Received quit\n");
   ctk_widget_destroy (win);

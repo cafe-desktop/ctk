@@ -260,7 +260,7 @@ binding_key_hash_destroy (gpointer data)
 }
 
 static void
-insert_entries_into_key_hash (gpointer key,
+insert_entries_into_key_hash (gpointer key G_GNUC_UNUSED,
                               gpointer value,
                               gpointer data)
 {

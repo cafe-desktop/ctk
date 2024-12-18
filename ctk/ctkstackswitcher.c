@@ -208,7 +208,7 @@ update_button (CtkStackSwitcher *self,
 
 static void
 on_title_icon_visible_updated (CtkWidget        *widget,
-                               GParamSpec       *pspec,
+                               GParamSpec       *pspec G_GNUC_UNUSED,
                                CtkStackSwitcher *self)
 {
   CtkWidget *button;
@@ -222,7 +222,7 @@ on_title_icon_visible_updated (CtkWidget        *widget,
 
 static void
 on_position_updated (CtkWidget        *widget,
-                     GParamSpec       *pspec,
+                     GParamSpec       *pspec G_GNUC_UNUSED,
                      CtkStackSwitcher *self)
 {
   CtkWidget *button;
@@ -242,7 +242,7 @@ on_position_updated (CtkWidget        *widget,
 
 static void
 on_needs_attention_updated (CtkWidget        *widget,
-                            GParamSpec       *pspec,
+                            GParamSpec       *pspec G_GNUC_UNUSED,
                             CtkStackSwitcher *self)
 {
   CtkWidget *button;
@@ -290,10 +290,10 @@ ctk_stack_switcher_switch_timeout (gpointer data)
 
 static gboolean
 ctk_stack_switcher_drag_motion (CtkWidget      *widget,
-                                CdkDragContext *context,
+                                CdkDragContext *context G_GNUC_UNUSED,
                                 gint            x,
                                 gint            y,
-                                guint           time)
+                                guint           time G_GNUC_UNUSED)
 {
   CtkStackSwitcher *self = CTK_STACK_SWITCHER (widget);
   CtkStackSwitcherPrivate *priv;
@@ -342,8 +342,8 @@ ctk_stack_switcher_drag_motion (CtkWidget      *widget,
 
 static void
 ctk_stack_switcher_drag_leave (CtkWidget      *widget,
-                               CdkDragContext *context,
-                               guint           time)
+                               CdkDragContext *context G_GNUC_UNUSED,
+                               guint           time G_GNUC_UNUSED)
 {
   CtkStackSwitcher *self = CTK_STACK_SWITCHER (widget);
 
@@ -435,7 +435,7 @@ clear_switcher (CtkStackSwitcher *self)
 
 static void
 on_child_changed (CtkWidget        *widget,
-                  GParamSpec       *pspec,
+                  GParamSpec       *pspec G_GNUC_UNUSED,
                   CtkStackSwitcher *self)
 {
   CtkWidget *child;
@@ -455,7 +455,7 @@ on_child_changed (CtkWidget        *widget,
 }
 
 static void
-on_stack_child_added (CtkContainer     *container,
+on_stack_child_added (CtkContainer     *container G_GNUC_UNUSED,
                       CtkWidget        *widget,
                       CtkStackSwitcher *self)
 {
@@ -463,7 +463,7 @@ on_stack_child_added (CtkContainer     *container,
 }
 
 static void
-on_stack_child_removed (CtkContainer     *container,
+on_stack_child_removed (CtkContainer     *container G_GNUC_UNUSED,
                         CtkWidget        *widget,
                         CtkStackSwitcher *self)
 {

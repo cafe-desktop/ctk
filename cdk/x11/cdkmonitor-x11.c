@@ -90,7 +90,7 @@ cdk_x11_monitor_get_workarea (CdkMonitor   *monitor,
 }
 
 static void
-cdk_x11_monitor_init (CdkX11Monitor *monitor)
+cdk_x11_monitor_init (CdkX11Monitor *monitor G_GNUC_UNUSED)
 {
 }
 

@@ -9,7 +9,9 @@ static CtkWidget *default_height_spin;
 static CtkWidget *resizable_check;
 
 static gboolean
-configure_event_cb (CtkWidget *window, CdkEventConfigure *event, CtkLabel *label)
+configure_event_cb (CtkWidget         *window,
+		    CdkEventConfigure *event G_GNUC_UNUSED,
+		    CtkLabel          *label)
 {
   gchar *str;
   gint width, height;
@@ -135,7 +137,8 @@ create_window (void)
 }
 
 int
-main (int argc, char *argv[])
+main (int   argc G_GNUC_UNUSED,
+      char *argv[] G_GNUC_UNUSED)
 {
   ctk_init (NULL, NULL);
 

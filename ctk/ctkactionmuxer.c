@@ -181,7 +181,7 @@ ctk_action_muxer_action_enabled_changed (CtkActionMuxer *muxer,
 }
 
 static void
-ctk_action_muxer_group_action_enabled_changed (GActionGroup *action_group,
+ctk_action_muxer_group_action_enabled_changed (GActionGroup *action_group G_GNUC_UNUSED,
                                                const gchar  *action_name,
                                                gboolean      enabled,
                                                gpointer      user_data)
@@ -196,7 +196,7 @@ ctk_action_muxer_group_action_enabled_changed (GActionGroup *action_group,
 }
 
 static void
-ctk_action_muxer_parent_action_enabled_changed (GActionGroup *action_group,
+ctk_action_muxer_parent_action_enabled_changed (GActionGroup *action_group G_GNUC_UNUSED,
                                                 const gchar  *action_name,
                                                 gboolean      enabled,
                                                 gpointer      user_data)
@@ -221,7 +221,7 @@ ctk_action_muxer_action_state_changed (CtkActionMuxer *muxer,
 }
 
 static void
-ctk_action_muxer_group_action_state_changed (GActionGroup *action_group,
+ctk_action_muxer_group_action_state_changed (GActionGroup *action_group G_GNUC_UNUSED,
                                              const gchar  *action_name,
                                              GVariant     *state,
                                              gpointer      user_data)
@@ -236,7 +236,7 @@ ctk_action_muxer_group_action_state_changed (GActionGroup *action_group,
 }
 
 static void
-ctk_action_muxer_parent_action_state_changed (GActionGroup *action_group,
+ctk_action_muxer_parent_action_state_changed (GActionGroup *action_group G_GNUC_UNUSED,
                                               const gchar  *action_name,
                                               GVariant     *state,
                                               gpointer      user_data)
@@ -315,7 +315,7 @@ ctk_action_muxer_action_removed (CtkActionMuxer *muxer,
 }
 
 static void
-ctk_action_muxer_action_removed_from_group (GActionGroup *action_group,
+ctk_action_muxer_action_removed_from_group (GActionGroup *action_group G_GNUC_UNUSED,
                                             const gchar  *action_name,
                                             gpointer      user_data)
 {
@@ -329,7 +329,7 @@ ctk_action_muxer_action_removed_from_group (GActionGroup *action_group,
 }
 
 static void
-ctk_action_muxer_action_removed_from_parent (GActionGroup *action_group,
+ctk_action_muxer_action_removed_from_parent (GActionGroup *action_group G_GNUC_UNUSED,
                                              const gchar  *action_name,
                                              gpointer      user_data)
 {
@@ -357,7 +357,7 @@ ctk_action_muxer_primary_accel_changed (CtkActionMuxer *muxer,
 }
 
 static void
-ctk_action_muxer_parent_primary_accel_changed (CtkActionMuxer *parent,
+ctk_action_muxer_parent_primary_accel_changed (CtkActionMuxer *parent G_GNUC_UNUSED,
                                                const gchar    *action_name,
                                                const gchar    *action_and_target,
                                                gpointer        user_data)
@@ -746,7 +746,7 @@ ctk_action_muxer_remove (CtkActionMuxer *muxer,
 
 static void
 ctk_action_muxer_append_prefixes (gpointer key,
-                                  gpointer value,
+                                  gpointer value G_GNUC_UNUSED,
                                   gpointer user_data)
 {
   const gchar *prefix = key;

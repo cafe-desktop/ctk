@@ -336,7 +336,7 @@ is_stock_accept_response_id (gint response_id)
 
 /* Callback used when the user activates a file in the file chooser widget */
 static void
-file_chooser_widget_file_activated (CtkFileChooser       *chooser,
+file_chooser_widget_file_activated (CtkFileChooser       *chooser G_GNUC_UNUSED,
                                     CtkFileChooserDialog *dialog)
 {
   CtkWidget *widget;
@@ -381,7 +381,7 @@ file_chooser_widget_default_size_changed (CtkWidget            *widget,
 }
 
 static void
-file_chooser_widget_selection_changed (CtkWidget            *widget,
+file_chooser_widget_selection_changed (CtkWidget            *widget G_GNUC_UNUSED,
                                        CtkFileChooserDialog *dialog)
 {
   CtkWidget *button;
@@ -400,7 +400,7 @@ file_chooser_widget_selection_changed (CtkWidget            *widget,
 }
 
 static void
-file_chooser_widget_response_requested (CtkWidget            *widget,
+file_chooser_widget_response_requested (CtkWidget            *widget G_GNUC_UNUSED,
                                         CtkFileChooserDialog *dialog)
 {
   CtkWidget *button;
@@ -425,7 +425,7 @@ file_chooser_widget_response_requested (CtkWidget            *widget,
 
 static void
 ctk_file_chooser_dialog_set_property (GObject      *object,
-                                      guint         prop_id,
+                                      guint         prop_id G_GNUC_UNUSED,
                                       const GValue *value,
                                       GParamSpec   *pspec)
 
@@ -439,7 +439,7 @@ ctk_file_chooser_dialog_set_property (GObject      *object,
 
 static void
 ctk_file_chooser_dialog_get_property (GObject    *object,
-                                      guint       prop_id,
+                                      guint       prop_id G_GNUC_UNUSED,
                                       GValue     *value,
                                       GParamSpec *pspec)
 {

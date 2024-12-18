@@ -280,7 +280,7 @@ is_param_set (GObject    *object,
 }
 
 static void
-serialize_tag (gpointer key,
+serialize_tag (gpointer key G_GNUC_UNUSED,
                gpointer data,
                gpointer user_data)
 {
@@ -413,7 +413,7 @@ serialize_section_header (GString     *str,
 }
 
 static void
-serialize_text (CtkTextBuffer        *buffer,
+serialize_text (CtkTextBuffer        *buffer G_GNUC_UNUSED,
                 SerializationContext *context)
 {
   CtkTextIter iter, old_iter;
@@ -593,12 +593,12 @@ serialize_pixbufs (SerializationContext *context,
 G_GNUC_END_IGNORE_DEPRECATIONS
 
 guint8 *
-_ctk_text_buffer_serialize_rich_text (CtkTextBuffer     *register_buffer,
+_ctk_text_buffer_serialize_rich_text (CtkTextBuffer     *register_buffer G_GNUC_UNUSED,
                                       CtkTextBuffer     *content_buffer,
                                       const CtkTextIter *start,
                                       const CtkTextIter *end,
                                       gsize             *length,
-                                      gpointer           user_data)
+                                      gpointer           user_data G_GNUC_UNUSED)
 {
   SerializationContext context;
   GString *text;
@@ -974,7 +974,7 @@ static gboolean
 check_no_attributes (GMarkupParseContext  *context,
                      const char           *element_name,
                      const char          **attribute_names,
-                     const char          **attribute_values,
+                     const char          **attribute_values G_GNUC_UNUSED,
                      GError              **error)
 {
   if (attribute_names[0] != NULL)
@@ -1437,10 +1437,10 @@ sort_tag_prio (TextTagPrio *a,
 }
 
 static void
-end_element_handler (GMarkupParseContext  *context,
-		     const gchar          *element_name,
+end_element_handler (GMarkupParseContext  *context G_GNUC_UNUSED,
+		     const gchar          *element_name G_GNUC_UNUSED,
 		     gpointer              user_data,
-		     GError              **error)
+		     GError              **error G_GNUC_UNUSED)
 {
   ParseInfo *info = user_data;
   gchar *tmp;
@@ -1563,11 +1563,11 @@ all_whitespace (const char *text,
 }
 
 static void
-text_handler (GMarkupParseContext  *context,
+text_handler (GMarkupParseContext  *context G_GNUC_UNUSED,
 	      const gchar          *text,
 	      gsize                 text_len,
 	      gpointer              user_data,
-	      GError              **error)
+	      GError              **error G_GNUC_UNUSED)
 {
   ParseInfo *info = user_data;
   TextSpan *span;
@@ -1845,13 +1845,13 @@ deserialize_text (CtkTextBuffer *buffer,
 }
 
 gboolean
-_ctk_text_buffer_deserialize_rich_text (CtkTextBuffer *register_buffer,
+_ctk_text_buffer_deserialize_rich_text (CtkTextBuffer *register_buffer G_GNUC_UNUSED,
                                         CtkTextBuffer *content_buffer,
                                         CtkTextIter   *iter,
                                         const guint8  *text,
                                         gsize          length,
                                         gboolean       create_tags,
-                                        gpointer       user_data,
+                                        gpointer       user_data G_GNUC_UNUSED,
                                         GError       **error)
 {
   GList *headers;

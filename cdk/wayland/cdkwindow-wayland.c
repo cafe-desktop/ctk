@@ -75,12 +75,12 @@ struct _CdkWaylandWindowClass
 G_DEFINE_TYPE (CdkWaylandWindow, cdk_wayland_window, CDK_TYPE_WINDOW)
 
 static void
-cdk_wayland_window_class_init (CdkWaylandWindowClass *wayland_window_class)
+cdk_wayland_window_class_init (CdkWaylandWindowClass *wayland_window_class G_GNUC_UNUSED)
 {
 }
 
 static void
-cdk_wayland_window_init (CdkWaylandWindow *wayland_window)
+cdk_wayland_window_init (CdkWaylandWindow *wayland_window G_GNUC_UNUSED)
 {
 }
 
@@ -726,7 +726,7 @@ window_update_scale (CdkWindow *window)
 }
 
 static void
-on_monitors_changed (CdkScreen *screen,
+on_monitors_changed (CdkScreen *screen G_GNUC_UNUSED,
                      CdkWindow *window)
 {
   window_update_scale (window);
@@ -738,9 +738,9 @@ static void cdk_wayland_window_create_surface (CdkWindow *window);
 void
 _cdk_wayland_display_create_window_impl (CdkDisplay    *display,
                                          CdkWindow     *window,
-                                         CdkWindow     *real_parent,
+                                         CdkWindow     *real_parent G_GNUC_UNUSED,
                                          CdkScreen     *screen,
-                                         CdkEventMask   event_mask,
+                                         CdkEventMask   event_mask G_GNUC_UNUSED,
                                          CdkWindowAttr *attributes,
                                          gint           attributes_mask)
 {
@@ -844,7 +844,7 @@ static const cairo_user_data_key_t cdk_wayland_window_cairo_key;
 
 static void
 buffer_release_callback (void             *_data,
-                         struct wl_buffer *wl_buffer)
+                         struct wl_buffer *wl_buffer G_GNUC_UNUSED)
 {
   cairo_surface_t *cairo_surface = _data;
   CdkWindowImplWayland *impl = cairo_surface_get_user_data (cairo_surface, &cdk_wayland_window_cairo_key);
@@ -966,10 +966,10 @@ cdk_wayland_window_ref_cairo_surface (CdkWindow *window)
 }
 
 static cairo_surface_t *
-cdk_wayland_window_create_similar_image_surface (CdkWindow *     window,
-                                                 cairo_format_t  format,
-                                                 int             width,
-                                                 int             height)
+cdk_wayland_window_create_similar_image_surface (CdkWindow *    window G_GNUC_UNUSED,
+                                                 cairo_format_t format,
+                                                 int            width,
+                                                 int            height)
 {
   return cairo_image_surface_create (format, width, height);
 }
@@ -1473,7 +1473,7 @@ cdk_wayland_set_input_region_if_empty (CdkWindow *window)
 
 static void
 surface_enter (void              *data,
-               struct wl_surface *wl_surface,
+               struct wl_surface *wl_surface G_GNUC_UNUSED,
                struct wl_output  *output)
 {
   CdkWindow *window = CDK_WINDOW (data);
@@ -1489,7 +1489,7 @@ surface_enter (void              *data,
 
 static void
 surface_leave (void              *data,
-               struct wl_surface *wl_surface,
+               struct wl_surface *wl_surface G_GNUC_UNUSED,
                struct wl_output  *output)
 {
   CdkWindow *window = CDK_WINDOW (data);
@@ -1772,7 +1772,7 @@ cdk_wayland_window_handle_close (CdkWindow *window)
 
 static void
 xdg_surface_configure (void               *data,
-                       struct xdg_surface *xdg_surface,
+                       struct xdg_surface *xdg_surface G_GNUC_UNUSED,
                        uint32_t            serial)
 {
   CdkWindow *window = CDK_WINDOW (data);
@@ -1786,7 +1786,7 @@ static const struct xdg_surface_listener xdg_surface_listener = {
 
 static void
 xdg_toplevel_configure (void                *data,
-                        struct xdg_toplevel *xdg_toplevel,
+                        struct xdg_toplevel *xdg_toplevel G_GNUC_UNUSED,
                         int32_t              width,
                         int32_t              height,
                         struct wl_array     *states)
@@ -1824,7 +1824,7 @@ xdg_toplevel_configure (void                *data,
 
 static void
 xdg_toplevel_close (void                *data,
-                    struct xdg_toplevel *xdg_toplevel)
+                    struct xdg_toplevel *xdg_toplevel G_GNUC_UNUSED)
 {
   CdkWindow *window = CDK_WINDOW (data);
 
@@ -1859,7 +1859,7 @@ create_xdg_toplevel_resources (CdkWindow *window)
 
 static void
 zxdg_surface_v6_configure (void                   *data,
-                           struct zxdg_surface_v6 *xdg_surface,
+                           struct zxdg_surface_v6 *xdg_surface G_GNUC_UNUSED,
                            uint32_t                serial)
 {
   CdkWindow *window = CDK_WINDOW (data);
@@ -1873,7 +1873,7 @@ static const struct zxdg_surface_v6_listener zxdg_surface_v6_listener = {
 
 static void
 zxdg_toplevel_v6_configure (void                    *data,
-                            struct zxdg_toplevel_v6 *xdg_toplevel,
+                            struct zxdg_toplevel_v6 *xdg_toplevel G_GNUC_UNUSED,
                             int32_t                  width,
                             int32_t                  height,
                             struct wl_array         *states)
@@ -1911,7 +1911,7 @@ zxdg_toplevel_v6_configure (void                    *data,
 
 static void
 zxdg_toplevel_v6_close (void                    *data,
-                        struct zxdg_toplevel_v6 *xdg_toplevel)
+                        struct zxdg_toplevel_v6 *xdg_toplevel G_GNUC_UNUSED)
 {
   CdkWindow *window = CDK_WINDOW (data);
 
@@ -2076,7 +2076,7 @@ cdk_wayland_window_handle_configure_popup (CdkWindow *window,
 
 static void
 xdg_popup_configure (void             *data,
-                     struct xdg_popup *xdg_popup,
+                     struct xdg_popup *xdg_popup G_GNUC_UNUSED,
                      int32_t           x,
                      int32_t           y,
                      int32_t           width,
@@ -2089,7 +2089,7 @@ xdg_popup_configure (void             *data,
 
 static void
 xdg_popup_done (void             *data,
-                struct xdg_popup *xdg_popup)
+                struct xdg_popup *xdg_popup G_GNUC_UNUSED)
 {
   CdkWindow *window = CDK_WINDOW (data);
 
@@ -2106,7 +2106,7 @@ static const struct xdg_popup_listener xdg_popup_listener = {
 
 static void
 zxdg_popup_v6_configure (void                 *data,
-                         struct zxdg_popup_v6 *xdg_popup,
+                         struct zxdg_popup_v6 *xdg_popup G_GNUC_UNUSED,
                          int32_t               x,
                          int32_t               y,
                          int32_t               width,
@@ -2119,7 +2119,7 @@ zxdg_popup_v6_configure (void                 *data,
 
 static void
 zxdg_popup_v6_done (void                 *data,
-                    struct zxdg_popup_v6 *xdg_popup)
+                    struct zxdg_popup_v6 *xdg_popup G_GNUC_UNUSED)
 {
   CdkWindow *window = CDK_WINDOW (data);
 
@@ -2259,7 +2259,9 @@ window_anchor_to_gravity_legacy (CdkGravity rect_anchor)
 }
 
 static void
-kwin_server_decoration_mode_set (void *data, struct org_kde_kwin_server_decoration *org_kde_kwin_server_decoration, uint32_t mode)
+kwin_server_decoration_mode_set (void                                  *data,
+				 struct org_kde_kwin_server_decoration *org_kde_kwin_server_decoration G_GNUC_UNUSED,
+				 uint32_t                               mode)
 {
   CdkWindow *window = CDK_WINDOW (data);
   CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
@@ -3187,7 +3189,7 @@ cdk_wayland_window_map (CdkWindow *window)
 
 static void
 cdk_wayland_window_show (CdkWindow *window,
-                         gboolean   already_mapped)
+                         gboolean   already_mapped G_GNUC_UNUSED)
 {
   CdkWindowImplWayland *impl = CDK_WINDOW_IMPL_WAYLAND (window->impl);
 
@@ -3406,25 +3408,25 @@ cdk_window_wayland_get_events (CdkWindow *window)
 }
 
 static void
-cdk_window_wayland_raise (CdkWindow *window)
+cdk_window_wayland_raise (CdkWindow *window G_GNUC_UNUSED)
 {
 }
 
 static void
-cdk_window_wayland_lower (CdkWindow *window)
+cdk_window_wayland_lower (CdkWindow *window G_GNUC_UNUSED)
 {
 }
 
 static void
-cdk_window_wayland_restack_under (CdkWindow *window,
-                                  GList     *native_siblings)
+cdk_window_wayland_restack_under (CdkWindow *window G_GNUC_UNUSED,
+                                  GList     *native_siblings G_GNUC_UNUSED)
 {
 }
 
 static void
-cdk_window_wayland_restack_toplevel (CdkWindow *window,
-                                     CdkWindow *sibling,
-                                     gboolean   above)
+cdk_window_wayland_restack_toplevel (CdkWindow *window G_GNUC_UNUSED,
+                                     CdkWindow *sibling G_GNUC_UNUSED,
+                                     gboolean   above G_GNUC_UNUSED)
 {
 }
 
@@ -3519,7 +3521,7 @@ cdk_window_wayland_move_resize (CdkWindow *window,
 
 /* Avoid zero width/height as this is a protocol error */
 static void
-sanitize_anchor_rect (CdkWindow    *window,
+sanitize_anchor_rect (CdkWindow    *window G_GNUC_UNUSED,
                       CdkRectangle *rect)
 {
   gint original_width = rect->width;
@@ -3555,16 +3557,16 @@ cdk_window_wayland_move_to_rect (CdkWindow          *window,
 }
 
 static void
-cdk_window_wayland_set_background (CdkWindow       *window,
-                                   cairo_pattern_t *pattern)
+cdk_window_wayland_set_background (CdkWindow       *window G_GNUC_UNUSED,
+                                   cairo_pattern_t *pattern G_GNUC_UNUSED)
 {
 }
 
 static gboolean
-cdk_window_wayland_reparent (CdkWindow *window,
-                             CdkWindow *new_parent,
-                             gint       x,
-                             gint       y)
+cdk_window_wayland_reparent (CdkWindow *window G_GNUC_UNUSED,
+                             CdkWindow *new_parent G_GNUC_UNUSED,
+                             gint       x G_GNUC_UNUSED,
+                             gint       y G_GNUC_UNUSED)
 {
   return FALSE;
 }
@@ -3665,10 +3667,10 @@ cdk_window_wayland_get_device_state (CdkWindow       *window,
 }
 
 static void
-cdk_window_wayland_shape_combine_region (CdkWindow            *window,
-                                         const cairo_region_t *shape_region,
-                                         gint                  offset_x,
-                                         gint                  offset_y)
+cdk_window_wayland_shape_combine_region (CdkWindow            *window G_GNUC_UNUSED,
+                                         const cairo_region_t *shape_region G_GNUC_UNUSED,
+                                         gint                  offset_x G_GNUC_UNUSED,
+                                         gint                  offset_y G_GNUC_UNUSED)
 {
 }
 
@@ -3696,7 +3698,7 @@ cdk_window_wayland_input_shape_combine_region (CdkWindow            *window,
 
 static void
 cdk_wayland_window_destroy (CdkWindow *window,
-                            gboolean   recursing,
+                            gboolean   recursing G_GNUC_UNUSED,
                             gboolean   foreign_destroy)
 {
   g_return_if_fail (CDK_IS_WINDOW (window));
@@ -3710,18 +3712,18 @@ cdk_wayland_window_destroy (CdkWindow *window,
 }
 
 static void
-cdk_window_wayland_destroy_foreign (CdkWindow *window)
+cdk_window_wayland_destroy_foreign (CdkWindow *window G_GNUC_UNUSED)
 {
 }
 
 static cairo_region_t *
-cdk_wayland_window_get_shape (CdkWindow *window)
+cdk_wayland_window_get_shape (CdkWindow *window G_GNUC_UNUSED)
 {
   return NULL;
 }
 
 static cairo_region_t *
-cdk_wayland_window_get_input_shape (CdkWindow *window)
+cdk_wayland_window_get_input_shape (CdkWindow *window G_GNUC_UNUSED)
 {
   return NULL;
 }
@@ -3780,7 +3782,7 @@ cdk_wayland_window_get_type_hint (CdkWindow *window)
 
 static void
 ctk_surface_configure (void                *data,
-                       struct ctk_surface1 *ctk_surface,
+                       struct ctk_surface1 *ctk_surface G_GNUC_UNUSED,
                        struct wl_array     *states)
 {
   CdkWindow *window = CDK_WINDOW (data);
@@ -3822,7 +3824,7 @@ ctk_surface_configure (void                *data,
 
 static void
 ctk_surface_configure_edges (void                *data,
-                             struct ctk_surface1 *ctk_surface,
+                             struct ctk_surface1 *ctk_surface G_GNUC_UNUSED,
                              struct wl_array     *edge_constraints)
 {
   CdkWindow *window = CDK_WINDOW (data);
@@ -3912,20 +3914,20 @@ cdk_wayland_window_set_modal_hint (CdkWindow *window,
 }
 
 static void
-cdk_wayland_window_set_skip_taskbar_hint (CdkWindow *window,
-                                          gboolean   skips_taskbar)
+cdk_wayland_window_set_skip_taskbar_hint (CdkWindow *window G_GNUC_UNUSED,
+                                          gboolean   skips_taskbar G_GNUC_UNUSED)
 {
 }
 
 static void
-cdk_wayland_window_set_skip_pager_hint (CdkWindow *window,
-                                        gboolean   skips_pager)
+cdk_wayland_window_set_skip_pager_hint (CdkWindow *window G_GNUC_UNUSED,
+                                        gboolean   skips_pager G_GNUC_UNUSED)
 {
 }
 
 static void
-cdk_wayland_window_set_urgency_hint (CdkWindow *window,
-                                     gboolean   urgent)
+cdk_wayland_window_set_urgency_hint (CdkWindow *window G_GNUC_UNUSED,
+                                     gboolean   urgent G_GNUC_UNUSED)
 {
 }
 
@@ -4011,14 +4013,14 @@ cdk_wayland_window_set_title (CdkWindow   *window,
 }
 
 static void
-cdk_wayland_window_set_role (CdkWindow   *window,
-                             const gchar *role)
+cdk_wayland_window_set_role (CdkWindow   *window G_GNUC_UNUSED,
+                             const gchar *role G_GNUC_UNUSED)
 {
 }
 
 static void
-cdk_wayland_window_set_startup_id (CdkWindow   *window,
-                                   const gchar *startup_id)
+cdk_wayland_window_set_startup_id (CdkWindow   *window G_GNUC_UNUSED,
+                                   const gchar *startup_id G_GNUC_UNUSED)
 {
 }
 
@@ -4099,32 +4101,32 @@ cdk_wayland_window_get_frame_extents (CdkWindow    *window,
 }
 
 static void
-cdk_wayland_window_set_override_redirect (CdkWindow *window,
-                                          gboolean   override_redirect)
+cdk_wayland_window_set_override_redirect (CdkWindow *window G_GNUC_UNUSED,
+                                          gboolean   override_redirect G_GNUC_UNUSED)
 {
 }
 
 static void
-cdk_wayland_window_set_accept_focus (CdkWindow *window,
-                                     gboolean   accept_focus)
+cdk_wayland_window_set_accept_focus (CdkWindow *window G_GNUC_UNUSED,
+                                     gboolean   accept_focus G_GNUC_UNUSED)
 {
 }
 
 static void
-cdk_wayland_window_set_focus_on_map (CdkWindow *window,
-                                     gboolean focus_on_map)
+cdk_wayland_window_set_focus_on_map (CdkWindow *window G_GNUC_UNUSED,
+                                     gboolean focus_on_map G_GNUC_UNUSED)
 {
 }
 
 static void
-cdk_wayland_window_set_icon_list (CdkWindow *window,
-                                  GList     *pixbufs)
+cdk_wayland_window_set_icon_list (CdkWindow *window G_GNUC_UNUSED,
+                                  GList     *pixbufs G_GNUC_UNUSED)
 {
 }
 
 static void
 cdk_wayland_window_set_icon_name (CdkWindow   *window,
-                                  const gchar *name)
+                                  const gchar *name G_GNUC_UNUSED)
 {
   if (CDK_WINDOW_DESTROYED (window))
     return;
@@ -4170,12 +4172,12 @@ cdk_wayland_window_deiconify (CdkWindow *window)
 }
 
 static void
-cdk_wayland_window_stick (CdkWindow *window)
+cdk_wayland_window_stick (CdkWindow *window G_GNUC_UNUSED)
 {
 }
 
 static void
-cdk_wayland_window_unstick (CdkWindow *window)
+cdk_wayland_window_unstick (CdkWindow *window G_GNUC_UNUSED)
 {
 }
 
@@ -4340,43 +4342,45 @@ cdk_wayland_window_unfullscreen (CdkWindow *window)
 }
 
 static void
-cdk_wayland_window_set_keep_above (CdkWindow *window, gboolean setting)
+cdk_wayland_window_set_keep_above (CdkWindow *window G_GNUC_UNUSED,
+				   gboolean   setting G_GNUC_UNUSED)
 {
 }
 
 static void
-cdk_wayland_window_set_keep_below (CdkWindow *window, gboolean setting)
+cdk_wayland_window_set_keep_below (CdkWindow *window G_GNUC_UNUSED,
+				   gboolean   setting G_GNUC_UNUSED)
 {
 }
 
 static CdkWindow *
-cdk_wayland_window_get_group (CdkWindow *window)
+cdk_wayland_window_get_group (CdkWindow *window G_GNUC_UNUSED)
 {
   return NULL;
 }
 
 static void
-cdk_wayland_window_set_group (CdkWindow *window,
-                              CdkWindow *leader)
+cdk_wayland_window_set_group (CdkWindow *window G_GNUC_UNUSED,
+                              CdkWindow *leader G_GNUC_UNUSED)
 {
 }
 
 static void
-cdk_wayland_window_set_decorations (CdkWindow       *window,
-                                    CdkWMDecoration  decorations)
+cdk_wayland_window_set_decorations (CdkWindow       *window G_GNUC_UNUSED,
+                                    CdkWMDecoration  decorations G_GNUC_UNUSED)
 {
 }
 
 static gboolean
-cdk_wayland_window_get_decorations (CdkWindow       *window,
-                                    CdkWMDecoration *decorations)
+cdk_wayland_window_get_decorations (CdkWindow       *window G_GNUC_UNUSED,
+                                    CdkWMDecoration *decorations G_GNUC_UNUSED)
 {
   return FALSE;
 }
 
 static void
-cdk_wayland_window_set_functions (CdkWindow     *window,
-                                  CdkWMFunction  functions)
+cdk_wayland_window_set_functions (CdkWindow     *window G_GNUC_UNUSED,
+                                  CdkWMFunction  functions G_GNUC_UNUSED)
 {
 }
 
@@ -4384,10 +4388,10 @@ static void
 cdk_wayland_window_begin_resize_drag (CdkWindow     *window,
                                       CdkWindowEdge  edge,
                                       CdkDevice     *device,
-                                      gint           button,
-                                      gint           root_x,
-                                      gint           root_y,
-                                      guint32        timestamp)
+                                      gint           button G_GNUC_UNUSED,
+                                      gint           root_x G_GNUC_UNUSED,
+                                      gint           root_y G_GNUC_UNUSED,
+                                      guint32        timestamp G_GNUC_UNUSED)
 {
   CdkWindowImplWayland *impl;
   CdkWaylandDisplay *display_wayland;
@@ -4472,10 +4476,10 @@ cdk_wayland_window_begin_resize_drag (CdkWindow     *window,
 static void
 cdk_wayland_window_begin_move_drag (CdkWindow *window,
                                     CdkDevice *device,
-                                    gint       button,
-                                    gint       root_x,
-                                    gint       root_y,
-                                    guint32    timestamp)
+                                    gint       button G_GNUC_UNUSED,
+                                    gint       root_x G_GNUC_UNUSED,
+                                    gint       root_y G_GNUC_UNUSED,
+                                    guint32    timestamp G_GNUC_UNUSED)
 {
   CdkWindowImplWayland *impl;
   CdkWaylandDisplay *display_wayland;
@@ -4518,14 +4522,14 @@ cdk_wayland_window_begin_move_drag (CdkWindow *window,
 }
 
 static void
-cdk_wayland_window_set_opacity (CdkWindow *window,
-                                gdouble    opacity)
+cdk_wayland_window_set_opacity (CdkWindow *window G_GNUC_UNUSED,
+                                gdouble    opacity G_GNUC_UNUSED)
 {
 }
 
 static void
-cdk_wayland_window_set_composited (CdkWindow *window,
-                                   gboolean   composited)
+cdk_wayland_window_set_composited (CdkWindow *window G_GNUC_UNUSED,
+                                   gboolean   composited G_GNUC_UNUSED)
 {
 }
 
@@ -4544,43 +4548,43 @@ cdk_wayland_window_destroy_notify (CdkWindow *window)
 }
 
 static void
-cdk_wayland_window_sync_rendering (CdkWindow *window)
+cdk_wayland_window_sync_rendering (CdkWindow *window G_GNUC_UNUSED)
 {
 }
 
 static gboolean
-cdk_wayland_window_simulate_key (CdkWindow       *window,
-                                 gint             x,
-                                 gint             y,
-                                 guint            keyval,
-                                 CdkModifierType  modifiers,
-                                 CdkEventType     key_pressrelease)
-{
-  return FALSE;
-}
-
-static gboolean
-cdk_wayland_window_simulate_button (CdkWindow       *window,
-                                    gint             x,
-                                    gint             y,
-                                    guint            button,
-                                    CdkModifierType  modifiers,
-                                    CdkEventType     button_pressrelease)
+cdk_wayland_window_simulate_key (CdkWindow       *window G_GNUC_UNUSED,
+                                 gint             x G_GNUC_UNUSED,
+                                 gint             y G_GNUC_UNUSED,
+                                 guint            keyval G_GNUC_UNUSED,
+                                 CdkModifierType  modifiers G_GNUC_UNUSED,
+                                 CdkEventType     key_pressrelease G_GNUC_UNUSED)
 {
   return FALSE;
 }
 
 static gboolean
-cdk_wayland_window_get_property (CdkWindow   *window,
-                                 CdkAtom      property,
-                                 CdkAtom      type,
-                                 gulong       offset,
-                                 gulong       length,
-                                 gint         pdelete,
-                                 CdkAtom     *actual_property_type,
-                                 gint        *actual_format_type,
-                                 gint        *actual_length,
-                                 guchar     **data)
+cdk_wayland_window_simulate_button (CdkWindow       *window G_GNUC_UNUSED,
+                                    gint             x G_GNUC_UNUSED,
+                                    gint             y G_GNUC_UNUSED,
+                                    guint            button G_GNUC_UNUSED,
+                                    CdkModifierType  modifiers G_GNUC_UNUSED,
+                                    CdkEventType     button_pressrelease G_GNUC_UNUSED)
+{
+  return FALSE;
+}
+
+static gboolean
+cdk_wayland_window_get_property (CdkWindow   *window G_GNUC_UNUSED,
+                                 CdkAtom      property G_GNUC_UNUSED,
+                                 CdkAtom      type G_GNUC_UNUSED,
+                                 gulong       offset G_GNUC_UNUSED,
+                                 gulong       length G_GNUC_UNUSED,
+                                 gint         pdelete G_GNUC_UNUSED,
+                                 CdkAtom     *actual_property_type G_GNUC_UNUSED,
+                                 gint        *actual_format_type G_GNUC_UNUSED,
+                                 gint        *actual_length G_GNUC_UNUSED,
+                                 guchar     **data G_GNUC_UNUSED)
 {
   return FALSE;
 }
@@ -4599,8 +4603,8 @@ cdk_wayland_window_change_property (CdkWindow    *window,
 }
 
 static void
-cdk_wayland_window_delete_property (CdkWindow *window,
-                                    CdkAtom    property)
+cdk_wayland_window_delete_property (CdkWindow *window G_GNUC_UNUSED,
+                                    CdkAtom    property G_GNUC_UNUSED)
 {
 }
 
@@ -5079,7 +5083,7 @@ invoke_exported_closures (CdkWindow *window)
 
 static void
 xdg_exported_handle (void                    *data,
-                     struct zxdg_exported_v1 *zxdg_exported_v1,
+                     struct zxdg_exported_v1 *zxdg_exported_v1 G_GNUC_UNUSED,
                      const char              *handle)
 {
   CdkWindow *window = data;
@@ -5282,7 +5286,7 @@ unset_transient_for_exported (CdkWindow *window)
 
 static void
 xdg_imported_destroyed (void                    *data,
-                        struct zxdg_imported_v1 *zxdg_imported_v1)
+                        struct zxdg_imported_v1 *zxdg_imported_v1 G_GNUC_UNUSED)
 {
   CdkWindow *window = data;
 

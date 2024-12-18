@@ -190,7 +190,7 @@ ctk_cell_renderer_spinner_new (void)
 
 static void
 ctk_cell_renderer_spinner_update_size (CtkCellRendererSpinner *cell,
-                                       CtkWidget              *widget)
+                                       CtkWidget              *widget G_GNUC_UNUSED)
 {
   CtkCellRendererSpinnerPrivate *priv = cell->priv;
 
@@ -329,7 +329,7 @@ static void
 ctk_cell_renderer_spinner_render (CtkCellRenderer      *cellr,
                                   cairo_t              *cr,
                                   CtkWidget            *widget,
-                                  const CdkRectangle   *background_area,
+                                  const CdkRectangle   *background_area G_GNUC_UNUSED,
                                   const CdkRectangle   *cell_area,
                                   CtkCellRendererState  flags)
 {

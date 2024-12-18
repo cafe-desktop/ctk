@@ -62,7 +62,7 @@ G_DEFINE_TYPE_WITH_CODE (CtkColorChooserDialog, ctk_color_chooser_dialog, CTK_TY
                                                 ctk_color_chooser_dialog_iface_init))
 
 static void
-propagate_notify (GObject               *o,
+propagate_notify (GObject               *o G_GNUC_UNUSED,
                   GParamSpec            *pspec,
                   CtkColorChooserDialog *cc)
 {
@@ -82,8 +82,8 @@ save_color (CtkColorChooserDialog *dialog)
 }
 
 static void
-color_activated_cb (CtkColorChooser *chooser,
-                    CdkRGBA         *color,
+color_activated_cb (CtkColorChooser *chooser G_GNUC_UNUSED,
+                    CdkRGBA         *color G_GNUC_UNUSED,
                     CtkDialog       *dialog)
 {
   save_color (CTK_COLOR_CHOOSER_DIALOG (dialog));
@@ -93,7 +93,7 @@ color_activated_cb (CtkColorChooser *chooser,
 static void
 ctk_color_chooser_dialog_response (CtkDialog *dialog,
                                    gint       response_id,
-                                   gpointer   user_data)
+                                   gpointer   user_data G_GNUC_UNUSED)
 {
   if (response_id == CTK_RESPONSE_OK)
     save_color (CTK_COLOR_CHOOSER_DIALOG (dialog));

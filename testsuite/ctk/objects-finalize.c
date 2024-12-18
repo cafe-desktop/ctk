@@ -29,7 +29,7 @@ typedef GType (*GTypeGetFunc) (void);
 static gboolean finalized = FALSE;
 
 static gboolean
-main_loop_quit_cb (gpointer data)
+main_loop_quit_cb (gpointer data G_GNUC_UNUSED)
 {
   ctk_main_quit ();
 
@@ -39,7 +39,7 @@ main_loop_quit_cb (gpointer data)
 
 static void
 check_finalized (gpointer data,
-		 GObject *where_the_object_was)
+		 GObject *where_the_object_wa G_GNUC_UNUSED)
 {
   gboolean *did_finalize = (gboolean *)data;
 

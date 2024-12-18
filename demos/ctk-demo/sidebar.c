@@ -10,7 +10,7 @@
 #include <ctk/ctk.h>
 
 CtkWidget *
-do_sidebar (CtkWidget *do_widget)
+do_sidebar (CtkWidget *do_widget G_GNUC_UNUSED)
 {
   static CtkWidget *window = NULL;
   const gchar* pages[] = {

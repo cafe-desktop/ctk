@@ -2,7 +2,7 @@
 
 static void
 toggle_center (CtkCheckButton *button,
-               GParamSpec     *pspec,
+               GParamSpec     *pspec G_GNUC_UNUSED,
                CtkActionBar   *bar)
 {
   if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button)))
@@ -21,7 +21,7 @@ toggle_center (CtkCheckButton *button,
 
 static void
 toggle_visibility (CtkCheckButton *button,
-                   GParamSpec     *pspec,
+                   GParamSpec     *pspec G_GNUC_UNUSED,
                    CtkActionBar   *bar)
 {
   if (ctk_toggle_button_get_active (CTK_TOGGLE_BUTTON (button)))
@@ -69,7 +69,7 @@ create_widgets (CtkActionBar  *bar,
 
 static void
 change_start (CtkSpinButton *button,
-              GParamSpec    *pspec,
+              GParamSpec    *pspec G_GNUC_UNUSED,
               CtkActionBar  *bar)
 {
   create_widgets (bar,
@@ -79,7 +79,7 @@ change_start (CtkSpinButton *button,
 
 static void
 change_end (CtkSpinButton *button,
-            GParamSpec    *pspec,
+            GParamSpec    *pspec G_GNUC_UNUSED,
             CtkActionBar  *bar)
 {
   create_widgets (bar,

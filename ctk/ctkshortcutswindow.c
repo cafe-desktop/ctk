@@ -473,7 +473,7 @@ update_accels_for_actions (CtkShortcutsWindow *self)
 }
 
 static void
-keys_changed_handler (CtkWindow          *window,
+keys_changed_handler (CtkWindow          *window G_GNUC_UNUSED,
                       CtkShortcutsWindow *self)
 {
   update_accels_for_actions (self);
@@ -504,7 +504,7 @@ ctk_shortcuts_window_set_window (CtkShortcutsWindow *self,
 static void
 ctk_shortcuts_window__list_box__row_activated (CtkShortcutsWindow *self,
                                                CtkListBoxRow      *row,
-                                               CtkListBox         *list_box)
+                                               CtkListBox         *list_box G_GNUC_UNUSED)
 {
   CtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);
   CtkWidget *section;
@@ -747,7 +747,7 @@ ctk_shortcuts_window_unmap (CtkWidget *widget)
 }
 
 static GType
-ctk_shortcuts_window_child_type (CtkContainer *container)
+ctk_shortcuts_window_child_type (CtkContainer *container G_GNUC_UNUSED)
 {
   return CTK_TYPE_SHORTCUTS_SECTION;
 }
@@ -850,7 +850,7 @@ ctk_shortcuts_window_class_init (CtkShortcutsWindowClass *klass)
 static gboolean
 window_key_press_event_cb (CtkWidget *window,
                            CdkEvent  *event,
-                           gpointer   data)
+                           gpointer   data G_GNUC_UNUSED)
 {
   CtkShortcutsWindow *self = CTK_SHORTCUTS_WINDOW (window);
   CtkShortcutsWindowPrivate *priv = ctk_shortcuts_window_get_instance_private (self);

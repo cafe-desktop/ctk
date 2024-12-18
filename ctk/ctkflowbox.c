@@ -401,11 +401,11 @@ ctk_flow_box_child_draw (CtkWidget *widget,
 static gboolean
 ctk_flow_box_child_render (CtkCssGadget *gadget,
                            cairo_t      *cr,
-                           int           x,
-                           int           y,
-                           int           width,
-                           int           height,
-                           gpointer      data)
+                           int           x G_GNUC_UNUSED,
+                           int           y G_GNUC_UNUSED,
+                           int           width G_GNUC_UNUSED,
+                           int           height G_GNUC_UNUSED,
+                           gpointer      data G_GNUC_UNUSED)
 {
   CtkWidget *widget;
 
@@ -486,9 +486,9 @@ ctk_flow_box_child_measure (CtkCssGadget   *gadget,
                             int             for_size,
                             int            *minimum,
                             int            *natural,
-                            int            *minimum_baseline,
-                            int            *natural_baseline,
-                            gpointer        data)
+                            int            *minimum_baseline G_GNUC_UNUSED,
+                            int            *natural_baseline G_GNUC_UNUSED,
+                            gpointer        data G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkWidget *child;
@@ -568,9 +568,9 @@ ctk_flow_box_child_size_allocate (CtkWidget     *widget,
 static void
 ctk_flow_box_child_allocate (CtkCssGadget        *gadget,
                              const CtkAllocation *allocation,
-                             int                  baseline,
+                             int                  baseline G_GNUC_UNUSED,
                              CtkAllocation       *out_clip,
-                             gpointer             data)
+                             gpointer             data G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkWidget *child;
@@ -1165,7 +1165,7 @@ ctk_flow_box_select_and_activate (CtkFlowBox      *box,
 /* Focus utilities {{{3 */
 
 static GSequenceIter *
-ctk_flow_box_get_previous_focusable (CtkFlowBox    *box,
+ctk_flow_box_get_previous_focusable (CtkFlowBox    *box G_GNUC_UNUSED,
                                      GSequenceIter *iter)
 {
   CtkFlowBoxChild *child;
@@ -1183,7 +1183,7 @@ ctk_flow_box_get_previous_focusable (CtkFlowBox    *box,
 }
 
 static GSequenceIter *
-ctk_flow_box_get_next_focusable (CtkFlowBox    *box,
+ctk_flow_box_get_next_focusable (CtkFlowBox    *box G_GNUC_UNUSED,
                                  GSequenceIter *iter)
 {
   CtkFlowBoxChild *child;
@@ -1616,9 +1616,9 @@ ctk_flow_box_size_allocate (CtkWidget     *widget,
 static void
 ctk_flow_box_allocate (CtkCssGadget        *gadget,
                        const CtkAllocation *allocation,
-                       int                  baseline,
+                       int                  baseline G_GNUC_UNUSED,
                        CtkAllocation       *out_clip,
-                       gpointer             unused)
+                       gpointer             unused G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkFlowBox *box = CTK_FLOW_BOX (widget);
@@ -2108,9 +2108,9 @@ ctk_flow_box_measure (CtkCssGadget   *gadget,
                       int             for_size,
                       int            *minimum,
                       int            *natural,
-                      int            *minimum_baseline,
-                      int            *natural_baseline,
-                      gpointer        data)
+                      int            *minimum_baseline G_GNUC_UNUSED,
+                      int            *natural_baseline G_GNUC_UNUSED,
+                      gpointer        data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkFlowBox *box = CTK_FLOW_BOX (widget);
@@ -2624,7 +2624,7 @@ ctk_flow_box_render (CtkCssGadget *gadget,
                      int           y,
                      int           width,
                      int           height,
-                     gpointer      data)
+                     gpointer      data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkFlowBox *box = CTK_FLOW_BOX (widget);
@@ -2752,8 +2752,8 @@ remove_autoscroll (CtkFlowBox *box)
 }
 
 static gboolean
-autoscroll_cb (CtkWidget     *widget,
-               CdkFrameClock *frame_clock,
+autoscroll_cb (CtkWidget     *widget G_GNUC_UNUSED,
+               CdkFrameClock *frame_clock G_GNUC_UNUSED,
                gpointer       data)
 {
   CtkFlowBox *box = CTK_FLOW_BOX (data);
@@ -3048,9 +3048,9 @@ ctk_flow_box_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
 
 static void
 ctk_flow_box_multipress_gesture_released (CtkGestureMultiPress *gesture,
-                                          guint                 n_press,
-                                          gdouble               x,
-                                          gdouble               y,
+                                          guint                 n_press G_GNUC_UNUSED,
+                                          gdouble               x G_GNUC_UNUSED,
+                                          gdouble               y G_GNUC_UNUSED,
                                           CtkFlowBox           *box)
 {
   CtkFlowBoxPrivate *priv = BOX_PRIV (box);
@@ -3090,7 +3090,7 @@ ctk_flow_box_multipress_gesture_released (CtkGestureMultiPress *gesture,
 }
 
 static void
-ctk_flow_box_multipress_gesture_stopped (CtkGestureMultiPress *gesture,
+ctk_flow_box_multipress_gesture_stopped (CtkGestureMultiPress *gesture G_GNUC_UNUSED,
                                          CtkFlowBox           *box)
 {
   CtkFlowBoxPrivate *priv = BOX_PRIV (box);
@@ -3102,8 +3102,8 @@ ctk_flow_box_multipress_gesture_stopped (CtkGestureMultiPress *gesture,
 
 static void
 ctk_flow_box_drag_gesture_begin (CtkGestureDrag *gesture,
-                                 gdouble         start_x,
-                                 gdouble         start_y,
+                                 gdouble         start_x G_GNUC_UNUSED,
+                                 gdouble         start_y G_GNUC_UNUSED,
                                  CtkWidget      *widget)
 {
   CtkFlowBoxPrivate *priv = BOX_PRIV (widget);
@@ -3139,8 +3139,8 @@ ctk_flow_box_stop_rubberband (CtkFlowBox *box)
 
 static void
 ctk_flow_box_drag_gesture_end (CtkGestureDrag *gesture,
-                               gdouble         offset_x,
-                               gdouble         offset_y,
+                               gdouble         offset_x G_GNUC_UNUSED,
+                               gdouble         offset_y G_GNUC_UNUSED,
                                CtkFlowBox     *box)
 {
   CtkFlowBoxPrivate *priv = BOX_PRIV (box);
@@ -3282,7 +3282,7 @@ ctk_flow_box_remove (CtkContainer *container,
 
 static void
 ctk_flow_box_forall (CtkContainer *container,
-                     gboolean      include_internals,
+                     gboolean      include_internals G_GNUC_UNUSED,
                      CtkCallback   callback,
                      gpointer      callback_target)
 {
@@ -3299,7 +3299,7 @@ ctk_flow_box_forall (CtkContainer *container,
 }
 
 static GType
-ctk_flow_box_child_type (CtkContainer *container)
+ctk_flow_box_child_type (CtkContainer *container G_GNUC_UNUSED)
 {
   return CTK_TYPE_FLOW_BOX_CHILD;
 }

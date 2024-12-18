@@ -1172,9 +1172,9 @@ specific_bug_674587 (void)
 }
 
 static void
-row_deleted_cb (CtkTreeModel *tree_model,
-    CtkTreePath  *path,
-    guint *count)
+row_deleted_cb (CtkTreeModel *tree_model G_GNUC_UNUSED,
+		CtkTreePath  *path G_GNUC_UNUSED,
+		guint        *count)
 {
   *count = *count + 1;
 }
@@ -1203,10 +1203,10 @@ specific_bug_698846 (void)
 }
 
 static int
-sort_func (CtkTreeModel *model,
-           CtkTreeIter  *a,
-           CtkTreeIter  *b,
-           gpointer      data)
+sort_func (CtkTreeModel *model G_GNUC_UNUSED,
+           CtkTreeIter  *a G_GNUC_UNUSED,
+           CtkTreeIter  *b G_GNUC_UNUSED,
+           gpointer      data G_GNUC_UNUSED)
 {
   return 0;
 }
@@ -1214,7 +1214,7 @@ sort_func (CtkTreeModel *model,
 static int column_changed;
 
 static void
-sort_column_changed (CtkTreeSortable *sortable)
+sort_column_changed (CtkTreeSortable *sortable G_GNUC_UNUSED)
 {
   column_changed++;
 }

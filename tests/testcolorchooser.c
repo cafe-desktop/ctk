@@ -1,7 +1,9 @@
 #include <ctk/ctk.h>
 
 static void
-color_changed (GObject *o, GParamSpec *pspect, gpointer data)
+color_changed (GObject    *o,
+	       GParamSpec *pspect G_GNUC_UNUSED,
+	       gpointer    data G_GNUC_UNUSED)
 {
   CdkRGBA color;
 

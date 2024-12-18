@@ -257,7 +257,7 @@ ctk_invisible_realize (CtkWidget *widget)
 }
 
 static void
-ctk_invisible_style_updated (CtkWidget *widget)
+ctk_invisible_style_updated (CtkWidget *widget G_GNUC_UNUSED)
 {
   /* Don't chain up to parent implementation */
 }

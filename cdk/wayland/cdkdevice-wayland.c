@@ -330,12 +330,12 @@ G_DEFINE_TYPE (CdkWaylandDeviceManager,
 	       cdk_wayland_device_manager, CDK_TYPE_DEVICE_MANAGER)
 
 static gboolean
-cdk_wayland_device_get_history (CdkDevice      *device,
-                                CdkWindow      *window,
-                                guint32         start,
-                                guint32         stop,
-                                CdkTimeCoord ***events,
-                                gint           *n_events)
+cdk_wayland_device_get_history (CdkDevice      *device G_GNUC_UNUSED,
+                                CdkWindow      *window G_GNUC_UNUSED,
+                                guint32         start G_GNUC_UNUSED,
+                                guint32         stop G_GNUC_UNUSED,
+                                CdkTimeCoord ***events G_GNUC_UNUSED,
+                                gint           *n_events G_GNUC_UNUSED)
 {
   return FALSE;
 }
@@ -505,7 +505,7 @@ cdk_wayland_device_update_window_cursor (CdkDevice *device)
 
 static void
 cdk_wayland_device_set_window_cursor (CdkDevice *device,
-                                      CdkWindow *window,
+                                      CdkWindow *window G_GNUC_UNUSED,
                                       CdkCursor *cursor)
 {
   CdkWaylandSeat *seat = CDK_WAYLAND_SEAT (cdk_device_get_seat (device));
@@ -545,10 +545,10 @@ cdk_wayland_device_set_window_cursor (CdkDevice *device,
 }
 
 static void
-cdk_wayland_device_warp (CdkDevice *device,
-                         CdkScreen *screen,
-                         gdouble    x,
-                         gdouble    y)
+cdk_wayland_device_warp (CdkDevice *device G_GNUC_UNUSED,
+                         CdkScreen *screen G_GNUC_UNUSED,
+                         gdouble    x G_GNUC_UNUSED,
+                         gdouble    y G_GNUC_UNUSED)
 {
 }
 
@@ -695,7 +695,7 @@ static void
 emulate_focus (CdkWindow *window,
                CdkDevice *device,
                gboolean   focus_in,
-               guint32    time_)
+               guint32    time_ G_GNUC_UNUSED)
 {
   CdkEvent *event;
 
@@ -791,9 +791,9 @@ device_maybe_emit_ungrab_crossing (CdkDevice      *device,
 static CdkGrabStatus
 cdk_wayland_device_grab (CdkDevice    *device,
                          CdkWindow    *window,
-                         gboolean      owner_events,
-                         CdkEventMask  event_mask,
-                         CdkWindow    *confine_to,
+                         gboolean      owner_events G_GNUC_UNUSED,
+                         CdkEventMask  event_mask G_GNUC_UNUSED,
+                         CdkWindow    *confine_to G_GNUC_UNUSED,
                          CdkCursor    *cursor,
                          guint32       time_)
 {
@@ -881,7 +881,7 @@ cdk_wayland_device_window_at_position (CdkDevice       *device,
                                        gdouble         *win_x,
                                        gdouble         *win_y,
                                        CdkModifierType *mask,
-                                       gboolean         get_toplevel)
+                                       gboolean         get_toplevel G_GNUC_UNUSED)
 {
   CdkWaylandPointerData *pointer;
 
@@ -901,9 +901,9 @@ cdk_wayland_device_window_at_position (CdkDevice       *device,
 }
 
 static void
-cdk_wayland_device_select_window_events (CdkDevice    *device,
-                                         CdkWindow    *window,
-                                         CdkEventMask  event_mask)
+cdk_wayland_device_select_window_events (CdkDevice    *device G_GNUC_UNUSED,
+                                         CdkWindow    *window G_GNUC_UNUSED,
+                                         CdkEventMask  event_mask G_GNUC_UNUSED)
 {
 }
 
@@ -1050,12 +1050,12 @@ cdk_wayland_device_pad_iface_init (CdkDevicePadInterface *iface)
 }
 
 static void
-cdk_wayland_device_pad_class_init (CdkWaylandDevicePadClass *klass)
+cdk_wayland_device_pad_class_init (CdkWaylandDevicePadClass *klass G_GNUC_UNUSED)
 {
 }
 
 static void
-cdk_wayland_device_pad_init (CdkWaylandDevicePad *pad)
+cdk_wayland_device_pad_init (CdkWaylandDevicePad *pad G_GNUC_UNUSED)
 {
 }
 
@@ -1536,7 +1536,7 @@ cdk_wayland_seat_get_frame_event (CdkWaylandSeat *seat,
 
 static void
 pointer_handle_enter (void              *data,
-                      struct wl_pointer *pointer,
+                      struct wl_pointer *pointer G_GNUC_UNUSED,
                       uint32_t           serial,
                       struct wl_surface *surface,
                       wl_fixed_t         sx,
@@ -1594,7 +1594,7 @@ pointer_handle_enter (void              *data,
 
 static void
 pointer_handle_leave (void              *data,
-                      struct wl_pointer *pointer,
+                      struct wl_pointer *pointer G_GNUC_UNUSED,
                       uint32_t           serial,
                       struct wl_surface *surface)
 {
@@ -1648,7 +1648,7 @@ pointer_handle_leave (void              *data,
 
 static void
 pointer_handle_motion (void              *data,
-                       struct wl_pointer *pointer,
+                       struct wl_pointer *pointer G_GNUC_UNUSED,
                        uint32_t           time,
                        wl_fixed_t         sx,
                        wl_fixed_t         sy)
@@ -1692,7 +1692,7 @@ pointer_handle_motion (void              *data,
 
 static void
 pointer_handle_button (void              *data,
-                       struct wl_pointer *pointer,
+                       struct wl_pointer *pointer G_GNUC_UNUSED,
                        uint32_t           serial,
                        uint32_t           time,
                        uint32_t           button,
@@ -1786,7 +1786,7 @@ get_axis_name (uint32_t axis)
 
 static void
 pointer_handle_axis (void              *data,
-                     struct wl_pointer *pointer,
+                     struct wl_pointer *pointer G_GNUC_UNUSED,
                      uint32_t           time,
                      uint32_t           axis,
                      wl_fixed_t         value)
@@ -1824,7 +1824,7 @@ pointer_handle_axis (void              *data,
 
 static void
 pointer_handle_frame (void              *data,
-                      struct wl_pointer *pointer)
+                      struct wl_pointer *pointer G_GNUC_UNUSED)
 {
   CdkWaylandSeat *seat = data;
 
@@ -1856,7 +1856,7 @@ get_axis_source_name (enum wl_pointer_axis_source source)
 
 static void
 pointer_handle_axis_source (void                        *data,
-                            struct wl_pointer           *pointer,
+                            struct wl_pointer           *pointer G_GNUC_UNUSED,
                             enum wl_pointer_axis_source  source)
 {
   CdkWaylandSeat *seat = data;
@@ -1873,7 +1873,7 @@ pointer_handle_axis_source (void                        *data,
 
 static void
 pointer_handle_axis_stop (void              *data,
-                          struct wl_pointer *pointer,
+                          struct wl_pointer *pointer G_GNUC_UNUSED,
                           uint32_t           time,
                           uint32_t           axis)
 {
@@ -1905,7 +1905,7 @@ pointer_handle_axis_stop (void              *data,
 
 static void
 pointer_handle_axis_discrete (void              *data,
-                              struct wl_pointer *pointer,
+                              struct wl_pointer *pointer G_GNUC_UNUSED,
                               uint32_t           axis,
                               int32_t            value)
 {
@@ -1934,7 +1934,7 @@ pointer_handle_axis_discrete (void              *data,
 
 static void
 keyboard_handle_keymap (void               *data,
-                        struct wl_keyboard *keyboard,
+                        struct wl_keyboard *keyboard G_GNUC_UNUSED,
                         uint32_t            format,
                         int                 fd,
                         uint32_t            size)
@@ -1955,10 +1955,10 @@ keyboard_handle_keymap (void               *data,
 
 static void
 keyboard_handle_enter (void               *data,
-                       struct wl_keyboard *keyboard,
+                       struct wl_keyboard *keyboard G_GNUC_UNUSED,
                        uint32_t            serial,
                        struct wl_surface  *surface,
-                       struct wl_array    *keys)
+                       struct wl_array    *keys G_GNUC_UNUSED)
 {
   CdkWaylandSeat *seat = data;
   CdkEvent *event;
@@ -2002,9 +2002,9 @@ static void stop_key_repeat (CdkWaylandSeat *seat);
 
 static void
 keyboard_handle_leave (void               *data,
-                       struct wl_keyboard *keyboard,
+                       struct wl_keyboard *keyboard G_GNUC_UNUSED,
                        uint32_t            serial,
-                       struct wl_surface  *surface)
+                       struct wl_surface  *surface G_GNUC_UNUSED)
 {
   CdkWaylandSeat *seat = data;
   CdkEvent *event;
@@ -2283,8 +2283,8 @@ deliver_key_event (CdkWaylandSeat *seat,
 
 static void
 sync_after_repeat_callback (void               *data,
-                            struct wl_callback *callback,
-                            uint32_t            time)
+                            struct wl_callback *callback G_GNUC_UNUSED,
+                            uint32_t            time G_GNUC_UNUSED)
 {
   CdkWaylandSeat *seat = data;
 
@@ -2320,7 +2320,7 @@ keyboard_repeat (gpointer data)
 
 static void
 keyboard_handle_key (void               *data,
-                     struct wl_keyboard *keyboard,
+                     struct wl_keyboard *keyboard G_GNUC_UNUSED,
                      uint32_t            serial,
                      uint32_t            time,
                      uint32_t            key,
@@ -2342,8 +2342,8 @@ keyboard_handle_key (void               *data,
 
 static void
 keyboard_handle_modifiers (void               *data,
-                           struct wl_keyboard *keyboard,
-                           uint32_t            serial,
+                           struct wl_keyboard *keyboard G_GNUC_UNUSED,
+                           uint32_t            serial G_GNUC_UNUSED,
                            uint32_t            mods_depressed,
                            uint32_t            mods_latched,
                            uint32_t            mods_locked,
@@ -2369,7 +2369,7 @@ keyboard_handle_modifiers (void               *data,
 
 static void
 keyboard_handle_repeat_info (void               *data,
-                             struct wl_keyboard *keyboard,
+                             struct wl_keyboard *keyboard G_GNUC_UNUSED,
                              int32_t             rate,
                              int32_t             delay)
 {
@@ -2491,7 +2491,7 @@ touch_handle_master_pointer_crossing (CdkWaylandSeat      *seat,
 
 static void
 touch_handle_down (void              *data,
-                   struct wl_touch   *wl_touch,
+                   struct wl_touch   *wl_touch G_GNUC_UNUSED,
                    uint32_t           serial,
                    uint32_t           time,
                    struct wl_surface *wl_surface,
@@ -2531,7 +2531,7 @@ touch_handle_down (void              *data,
 
 static void
 touch_handle_up (void            *data,
-                 struct wl_touch *wl_touch,
+                 struct wl_touch *wl_touch G_GNUC_UNUSED,
                  uint32_t         serial,
                  uint32_t         time,
                  int32_t          id)
@@ -2562,7 +2562,7 @@ touch_handle_up (void            *data,
 
 static void
 touch_handle_motion (void            *data,
-                     struct wl_touch *wl_touch,
+                     struct wl_touch *wl_touch G_GNUC_UNUSED,
                      uint32_t         time,
                      int32_t          id,
                      wl_fixed_t       x,
@@ -2591,14 +2591,14 @@ touch_handle_motion (void            *data,
 }
 
 static void
-touch_handle_frame (void            *data,
-                    struct wl_touch *wl_touch)
+touch_handle_frame (void            *data G_GNUC_UNUSED,
+                    struct wl_touch *wl_touch G_GNUC_UNUSED)
 {
 }
 
 static void
 touch_handle_cancel (void            *data,
-                     struct wl_touch *wl_touch)
+                     struct wl_touch *wl_touch G_GNUC_UNUSED)
 {
   CdkWaylandSeat *wayland_seat = data;
   CdkWaylandTouchData *touch;
@@ -2670,10 +2670,10 @@ emit_gesture_swipe_event (CdkWaylandSeat          *seat,
 
 static void
 gesture_swipe_begin (void                                *data,
-                     struct zwp_pointer_gesture_swipe_v1 *swipe,
+                     struct zwp_pointer_gesture_swipe_v1 *swipe G_GNUC_UNUSED,
                      uint32_t                             serial,
                      uint32_t                             time,
-                     struct wl_surface                   *surface,
+                     struct wl_surface                   *surface G_GNUC_UNUSED,
                      uint32_t                             fingers)
 {
   CdkWaylandSeat *seat = data;
@@ -2689,7 +2689,7 @@ gesture_swipe_begin (void                                *data,
 
 static void
 gesture_swipe_update (void                                *data,
-                      struct zwp_pointer_gesture_swipe_v1 *swipe,
+                      struct zwp_pointer_gesture_swipe_v1 *swipe G_GNUC_UNUSED,
                       uint32_t                             time,
                       wl_fixed_t                           dx,
                       wl_fixed_t                           dy)
@@ -2706,7 +2706,7 @@ gesture_swipe_update (void                                *data,
 
 static void
 gesture_swipe_end (void                                *data,
-                   struct zwp_pointer_gesture_swipe_v1 *swipe,
+                   struct zwp_pointer_gesture_swipe_v1 *swipe G_GNUC_UNUSED,
                    uint32_t                             serial,
                    uint32_t                             time,
                    int32_t                              cancelled)
@@ -2775,10 +2775,10 @@ emit_gesture_pinch_event (CdkWaylandSeat          *seat,
 
 static void
 gesture_pinch_begin (void                                *data,
-                     struct zwp_pointer_gesture_pinch_v1 *pinch,
+                     struct zwp_pointer_gesture_pinch_v1 *pinch G_GNUC_UNUSED,
                      uint32_t                             serial,
                      uint32_t                             time,
-                     struct wl_surface                   *surface,
+                     struct wl_surface                   *surface G_GNUC_UNUSED,
                      uint32_t                             fingers)
 {
   CdkWaylandSeat *seat = data;
@@ -2793,7 +2793,7 @@ gesture_pinch_begin (void                                *data,
 
 static void
 gesture_pinch_update (void                                *data,
-                      struct zwp_pointer_gesture_pinch_v1 *pinch,
+                      struct zwp_pointer_gesture_pinch_v1 *pinch G_GNUC_UNUSED,
                       uint32_t                             time,
                       wl_fixed_t                           dx,
                       wl_fixed_t                           dy,
@@ -2813,7 +2813,7 @@ gesture_pinch_update (void                                *data,
 
 static void
 gesture_pinch_end (void                                *data,
-                   struct zwp_pointer_gesture_pinch_v1 *pinch,
+                   struct zwp_pointer_gesture_pinch_v1 *pinch G_GNUC_UNUSED,
                    uint32_t                             serial,
                    uint32_t                             time,
                    int32_t                              cancelled)
@@ -2949,7 +2949,7 @@ tablet_pad_lookup_button_group (CdkWaylandTabletPadData *pad,
 
 static void
 tablet_handle_name (void                 *data,
-                    struct zwp_tablet_v2 *wp_tablet,
+                    struct zwp_tablet_v2 *wp_tablet G_GNUC_UNUSED,
                     const char           *name)
 {
   CdkWaylandTabletData *tablet = data;
@@ -2959,7 +2959,7 @@ tablet_handle_name (void                 *data,
 
 static void
 tablet_handle_id (void                 *data,
-                  struct zwp_tablet_v2 *wp_tablet,
+                  struct zwp_tablet_v2 *wp_tablet G_GNUC_UNUSED,
                   uint32_t              vid,
                   uint32_t              pid)
 {
@@ -2971,7 +2971,7 @@ tablet_handle_id (void                 *data,
 
 static void
 tablet_handle_path (void                 *data,
-                    struct zwp_tablet_v2 *wp_tablet,
+                    struct zwp_tablet_v2 *wp_tablet G_GNUC_UNUSED,
                     const char           *path)
 {
   CdkWaylandTabletData *tablet = data;
@@ -2981,7 +2981,7 @@ tablet_handle_path (void                 *data,
 
 static void
 tablet_handle_done (void                 *data,
-                    struct zwp_tablet_v2 *wp_tablet)
+                    struct zwp_tablet_v2 *wp_tablet G_GNUC_UNUSED)
 {
   CdkWaylandTabletData *tablet = data;
   CdkWaylandSeat *seat = CDK_WAYLAND_SEAT (tablet->seat);
@@ -3065,7 +3065,7 @@ tablet_handle_done (void                 *data,
 
 static void
 tablet_handle_removed (void                 *data,
-                       struct zwp_tablet_v2 *wp_tablet)
+                       struct zwp_tablet_v2 *wp_tablet G_GNUC_UNUSED)
 {
   CdkWaylandTabletData *tablet = data;
 
@@ -3408,7 +3408,7 @@ get_scroll_device (CdkWaylandSeat              *seat,
 }
 
 static void
-seat_handle_name (void           *data,
+seat_handle_name (void           *data G_GNUC_UNUSED,
                   struct wl_seat *seat,
                   const char     *name)
 {
@@ -3424,7 +3424,7 @@ static const struct wl_seat_listener seat_listener = {
 
 static void
 tablet_tool_handle_type (void                      *data,
-                         struct zwp_tablet_tool_v2 *wp_tablet_tool,
+                         struct zwp_tablet_tool_v2 *wp_tablet_tool G_GNUC_UNUSED,
                          uint32_t                   tool_type)
 {
   CdkWaylandTabletToolData *tool = data;
@@ -3460,7 +3460,7 @@ tablet_tool_handle_type (void                      *data,
 
 static void
 tablet_tool_handle_hardware_serial (void                      *data,
-                                    struct zwp_tablet_tool_v2 *wp_tablet_tool,
+                                    struct zwp_tablet_tool_v2 *wp_tablet_tool G_GNUC_UNUSED,
                                     uint32_t                   serial_hi,
                                     uint32_t                   serial_lo)
 {
@@ -3471,7 +3471,7 @@ tablet_tool_handle_hardware_serial (void                      *data,
 
 static void
 tablet_tool_handle_hardware_id_wacom (void                      *data,
-                                      struct zwp_tablet_tool_v2 *wp_tablet_tool,
+                                      struct zwp_tablet_tool_v2 *wp_tablet_tool G_GNUC_UNUSED,
                                       uint32_t                   id_hi,
                                       uint32_t                   id_lo)
 {
@@ -3482,7 +3482,7 @@ tablet_tool_handle_hardware_id_wacom (void                      *data,
 
 static void
 tablet_tool_handle_capability (void                      *data,
-                               struct zwp_tablet_tool_v2 *wp_tablet_tool,
+                               struct zwp_tablet_tool_v2 *wp_tablet_tool G_GNUC_UNUSED,
                                uint32_t                   capability)
 {
   CdkWaylandTabletToolData *tool = data;
@@ -3509,7 +3509,7 @@ tablet_tool_handle_capability (void                      *data,
 
 static void
 tablet_tool_handle_done (void                      *data,
-                         struct zwp_tablet_tool_v2 *wp_tablet_tool)
+                         struct zwp_tablet_tool_v2 *wp_tablet_tool G_GNUC_UNUSED)
 {
   CdkWaylandTabletToolData *tool = data;
 
@@ -3521,7 +3521,7 @@ tablet_tool_handle_done (void                      *data,
 
 static void
 tablet_tool_handle_removed (void                      *data,
-                            struct zwp_tablet_tool_v2 *wp_tablet_tool)
+                            struct zwp_tablet_tool_v2 *wp_tablet_tool G_GNUC_UNUSED)
 {
   CdkWaylandTabletToolData *tool = data;
 
@@ -3686,7 +3686,7 @@ cdk_wayland_mimic_device_axes (CdkDevice *master,
 
 static void
 tablet_tool_handle_proximity_in (void                      *data,
-                                 struct zwp_tablet_tool_v2 *wp_tablet_tool,
+                                 struct zwp_tablet_tool_v2 *wp_tablet_tool G_GNUC_UNUSED,
                                  uint32_t                   serial,
                                  struct zwp_tablet_v2      *wp_tablet,
                                  struct wl_surface         *wl_surface)
@@ -3733,7 +3733,7 @@ tablet_tool_handle_proximity_in (void                      *data,
 
 static void
 tablet_tool_handle_proximity_out (void                      *data,
-                                  struct zwp_tablet_tool_v2 *wp_tablet_tool)
+                                  struct zwp_tablet_tool_v2 *wp_tablet_tool G_GNUC_UNUSED)
 {
   CdkWaylandTabletToolData *tool = data;
   CdkWaylandTabletData *tablet = tool->current_tablet;
@@ -3793,7 +3793,7 @@ tablet_create_button_event_frame (CdkWaylandTabletData *tablet,
 
 static void
 tablet_tool_handle_down (void                      *data,
-                         struct zwp_tablet_tool_v2 *wp_tablet_tool,
+                         struct zwp_tablet_tool_v2 *wp_tablet_tool G_GNUC_UNUSED,
                          uint32_t                   serial)
 {
   CdkWaylandTabletToolData *tool = data;
@@ -3813,7 +3813,7 @@ tablet_tool_handle_down (void                      *data,
 
 static void
 tablet_tool_handle_up (void                      *data,
-                       struct zwp_tablet_tool_v2 *wp_tablet_tool)
+                       struct zwp_tablet_tool_v2 *wp_tablet_tool G_GNUC_UNUSED)
 {
   CdkWaylandTabletToolData *tool = data;
   CdkWaylandTabletData *tablet = tool->current_tablet;
@@ -3827,7 +3827,7 @@ tablet_tool_handle_up (void                      *data,
 
 static void
 tablet_tool_handle_motion (void                      *data,
-                           struct zwp_tablet_tool_v2 *wp_tablet_tool,
+                           struct zwp_tablet_tool_v2 *wp_tablet_tool G_GNUC_UNUSED,
                            wl_fixed_t                 sx,
                            wl_fixed_t                 sy)
 {
@@ -3867,7 +3867,7 @@ tablet_tool_handle_motion (void                      *data,
 
 static void
 tablet_tool_handle_pressure (void                      *data,
-                             struct zwp_tablet_tool_v2 *wp_tablet_tool,
+                             struct zwp_tablet_tool_v2 *wp_tablet_tool G_GNUC_UNUSED,
                              uint32_t                   pressure)
 {
   CdkWaylandTabletToolData *tool = data;
@@ -3889,7 +3889,7 @@ tablet_tool_handle_pressure (void                      *data,
 
 static void
 tablet_tool_handle_distance (void                      *data,
-                             struct zwp_tablet_tool_v2 *wp_tablet_tool,
+                             struct zwp_tablet_tool_v2 *wp_tablet_tool G_GNUC_UNUSED,
                              uint32_t                   distance)
 {
   CdkWaylandTabletToolData *tool = data;
@@ -3911,7 +3911,7 @@ tablet_tool_handle_distance (void                      *data,
 
 static void
 tablet_tool_handle_tilt (void                      *data,
-                         struct zwp_tablet_tool_v2 *wp_tablet_tool,
+                         struct zwp_tablet_tool_v2 *wp_tablet_tool G_GNUC_UNUSED,
                          wl_fixed_t                 xtilt,
                          wl_fixed_t                 ytilt)
 {
@@ -3941,7 +3941,7 @@ tablet_tool_handle_tilt (void                      *data,
 
 static void
 tablet_tool_handle_button (void                      *data,
-                           struct zwp_tablet_tool_v2 *wp_tablet_tool,
+                           struct zwp_tablet_tool_v2 *wp_tablet_tool G_GNUC_UNUSED,
                            uint32_t                   serial,
                            uint32_t                   button,
                            uint32_t                   state)
@@ -3977,7 +3977,7 @@ tablet_tool_handle_button (void                      *data,
 
 static void
 tablet_tool_handle_rotation (void                      *data,
-                             struct zwp_tablet_tool_v2 *wp_tablet_tool,
+                             struct zwp_tablet_tool_v2 *wp_tablet_tool G_GNUC_UNUSED,
                              wl_fixed_t                 degrees)
 {
   CdkWaylandTabletToolData *tool = data;
@@ -4001,7 +4001,7 @@ tablet_tool_handle_rotation (void                      *data,
 
 static void
 tablet_tool_handle_slider (void                      *data,
-                           struct zwp_tablet_tool_v2 *wp_tablet_tool,
+                           struct zwp_tablet_tool_v2 *wp_tablet_tool G_GNUC_UNUSED,
                            int32_t                    position)
 {
   CdkWaylandTabletToolData *tool = data;
@@ -4023,7 +4023,7 @@ tablet_tool_handle_slider (void                      *data,
 
 static void
 tablet_tool_handle_wheel (void                      *data,
-                          struct zwp_tablet_tool_v2 *wp_tablet_tool,
+                          struct zwp_tablet_tool_v2 *wp_tablet_tool G_GNUC_UNUSED,
                           int32_t                    degrees,
                           int32_t                    clicks)
 {
@@ -4062,7 +4062,7 @@ tablet_tool_handle_wheel (void                      *data,
 
 static void
 tablet_tool_handle_frame (void                      *data,
-                          struct zwp_tablet_tool_v2 *wl_tablet_tool,
+                          struct zwp_tablet_tool_v2 *wl_tablet_tool G_GNUC_UNUSED,
                           uint32_t                   time)
 {
   CdkWaylandTabletToolData *tool = data;
@@ -4333,7 +4333,7 @@ tablet_pad_group_handle_modes (void                           *data,
 }
 
 static void
-tablet_pad_group_handle_done (void                           *data,
+tablet_pad_group_handle_done (void                           *data G_GNUC_UNUSED,
                               struct zwp_tablet_pad_group_v2 *wp_tablet_pad_group)
 {
   CDK_NOTE (EVENTS,
@@ -4385,7 +4385,7 @@ static const struct zwp_tablet_pad_group_v2_listener tablet_pad_group_listener =
 
 static void
 tablet_pad_handle_group (void                           *data,
-                         struct zwp_tablet_pad_v2       *wp_tablet_pad,
+                         struct zwp_tablet_pad_v2       *wp_tablet_pad G_GNUC_UNUSED,
                          struct zwp_tablet_pad_group_v2 *wp_tablet_pad_group)
 {
   CdkWaylandTabletPadData *pad = data;
@@ -4498,7 +4498,7 @@ tablet_pad_handle_button (void                     *data,
 static void
 tablet_pad_handle_enter (void                     *data,
                          struct zwp_tablet_pad_v2 *wp_tablet_pad,
-                         uint32_t                  serial,
+                         uint32_t                  serial G_GNUC_UNUSED,
                          struct zwp_tablet_v2     *wp_tablet,
                          struct wl_surface        *surface)
 {
@@ -4517,7 +4517,7 @@ tablet_pad_handle_enter (void                     *data,
 static void
 tablet_pad_handle_leave (void                     *data,
                          struct zwp_tablet_pad_v2 *wp_tablet_pad,
-                         uint32_t                  serial,
+                         uint32_t                  serial G_GNUC_UNUSED,
                          struct wl_surface        *surface)
 {
   CdkWaylandTabletPadData *pad = data;
@@ -4565,7 +4565,7 @@ static const struct zwp_tablet_pad_v2_listener tablet_pad_listener = {
 
 static void
 tablet_seat_handle_tablet_added (void                      *data,
-                                 struct zwp_tablet_seat_v2 *wp_tablet_seat,
+                                 struct zwp_tablet_seat_v2 *wp_tablet_seat G_GNUC_UNUSED,
                                  struct zwp_tablet_v2      *wp_tablet)
 {
   CdkWaylandSeat *seat = data;
@@ -4584,7 +4584,7 @@ tablet_seat_handle_tablet_added (void                      *data,
 
 static void
 tablet_seat_handle_tool_added (void                      *data,
-                               struct zwp_tablet_seat_v2 *wp_tablet_seat,
+                               struct zwp_tablet_seat_v2 *wp_tablet_seat G_GNUC_UNUSED,
                                struct zwp_tablet_tool_v2 *wp_tablet_tool)
 {
   CdkWaylandSeat *seat = data;
@@ -4602,7 +4602,7 @@ tablet_seat_handle_tool_added (void                      *data,
 
 static void
 tablet_seat_handle_pad_added (void                      *data,
-                              struct zwp_tablet_seat_v2 *wp_tablet_seat,
+                              struct zwp_tablet_seat_v2 *wp_tablet_seat G_GNUC_UNUSED,
                               struct zwp_tablet_pad_v2  *wp_tablet_pad)
 {
   CdkWaylandSeat *seat = data;
@@ -4625,7 +4625,7 @@ static const struct zwp_tablet_seat_v2_listener tablet_seat_listener = {
 };
 
 static void
-on_monitors_changed (CdkScreen      *screen,
+on_monitors_changed (CdkScreen      *screen G_GNUC_UNUSED,
                      CdkWaylandSeat *seat)
 {
   pointer_surface_update_scale (seat->master_pointer);
@@ -4714,7 +4714,7 @@ pointer_surface_update_scale (CdkDevice *device)
 
 static void
 pointer_surface_enter (void              *data,
-                       struct wl_surface *wl_surface,
+                       struct wl_surface *wl_surface G_GNUC_UNUSED,
                        struct wl_output  *output)
 
 {
@@ -4744,7 +4744,7 @@ pointer_surface_enter (void              *data,
 
 static void
 pointer_surface_leave (void              *data,
-                       struct wl_surface *wl_surface,
+                       struct wl_surface *wl_surface G_GNUC_UNUSED,
                        struct wl_output  *output)
 {
   CdkDevice *device = data;
@@ -5125,7 +5125,7 @@ cdk_wayland_seat_class_init (CdkWaylandSeatClass *klass)
 }
 
 static void
-cdk_wayland_seat_init (CdkWaylandSeat *seat)
+cdk_wayland_seat_init (CdkWaylandSeat *seat G_GNUC_UNUSED)
 {
 }
 
@@ -5304,7 +5304,7 @@ cdk_wayland_device_manager_class_init (CdkWaylandDeviceManagerClass *klass)
 }
 
 static void
-cdk_wayland_device_manager_init (CdkWaylandDeviceManager *device_manager)
+cdk_wayland_device_manager_init (CdkWaylandDeviceManager *device_manager G_GNUC_UNUSED)
 {
 }
 

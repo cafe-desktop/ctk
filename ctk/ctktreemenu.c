@@ -867,10 +867,10 @@ find_empty_submenu (CtkTreeMenu  *menu)
 }
 
 static void
-row_inserted_cb (CtkTreeModel     *model,
-                 CtkTreePath      *path,
-                 CtkTreeIter      *iter,
-                 CtkTreeMenu      *menu)
+row_inserted_cb (CtkTreeModel *model G_GNUC_UNUSED,
+                 CtkTreePath  *path,
+                 CtkTreeIter  *iter,
+                 CtkTreeMenu  *menu)
 {
   CtkTreeMenuPrivate *priv = menu->priv;
   gint               *indices, index, depth;
@@ -922,9 +922,9 @@ row_inserted_cb (CtkTreeModel     *model,
 }
 
 static void
-row_deleted_cb (CtkTreeModel     *model,
-                CtkTreePath      *path,
-                CtkTreeMenu      *menu)
+row_deleted_cb (CtkTreeModel *model G_GNUC_UNUSED,
+                CtkTreePath  *path,
+                CtkTreeMenu  *menu)
 {
   CtkTreeMenuPrivate *priv = menu->priv;
   CtkWidget          *item;
@@ -958,11 +958,11 @@ row_deleted_cb (CtkTreeModel     *model,
 }
 
 static void
-row_reordered_cb (CtkTreeModel    *model,
-                  CtkTreePath     *path,
-                  CtkTreeIter     *iter,
-                  gint            *new_order,
-                  CtkTreeMenu     *menu)
+row_reordered_cb (CtkTreeModel *model G_GNUC_UNUSED,
+                  CtkTreePath  *path,
+                  CtkTreeIter  *iter G_GNUC_UNUSED,
+                  gint         *new_order G_GNUC_UNUSED,
+                  CtkTreeMenu  *menu)
 {
   CtkTreeMenuPrivate *priv = menu->priv;
   gboolean            this_menu = FALSE;
@@ -1058,9 +1058,9 @@ row_changed_cb (CtkTreeModel         *model,
 }
 
 static void
-context_size_changed_cb (CtkCellAreaContext  *context,
-                         GParamSpec          *pspec,
-                         CtkWidget           *menu)
+context_size_changed_cb (CtkCellAreaContext *context G_GNUC_UNUSED,
+                         GParamSpec         *pspec,
+                         CtkWidget          *menu)
 {
   if (!strcmp (pspec->name, "minimum-width") ||
       !strcmp (pspec->name, "natural-width") ||
@@ -1090,12 +1090,12 @@ area_is_sensitive (CtkCellArea *area)
 }
 
 static void
-area_apply_attributes_cb (CtkCellArea          *area,
-                          CtkTreeModel         *tree_model,
-                          CtkTreeIter          *iter,
-                          gboolean              is_expander,
-                          gboolean              is_expanded,
-                          CtkTreeMenu          *menu)
+area_apply_attributes_cb (CtkCellArea  *area G_GNUC_UNUSED,
+                          CtkTreeModel *tree_model,
+                          CtkTreeIter  *iter,
+                          gboolean      is_expander G_GNUC_UNUSED,
+                          gboolean      is_expanded G_GNUC_UNUSED,
+                          CtkTreeMenu  *menu)
 {
   /* If the menu for this iter has a submenu */
   CtkTreeMenuPrivate *priv = menu->priv;
@@ -1432,9 +1432,9 @@ item_activated_cb (CtkMenuItem          *item,
 }
 
 static void
-submenu_activated_cb (CtkTreeMenu          *submenu,
-                      const gchar          *path,
-                      CtkTreeMenu          *menu)
+submenu_activated_cb (CtkTreeMenu *submenu G_GNUC_UNUSED,
+                      const gchar *path,
+                      CtkTreeMenu *menu)
 {
   g_signal_emit (menu, tree_menu_signals[SIGNAL_MENU_ACTIVATE], 0, path);
 }

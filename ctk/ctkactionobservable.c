@@ -30,7 +30,7 @@ G_DEFINE_INTERFACE (CtkActionObservable, ctk_action_observable, G_TYPE_OBJECT)
  */
 
 void
-ctk_action_observable_default_init (CtkActionObservableInterface *iface)
+ctk_action_observable_default_init (CtkActionObservableInterface *iface G_GNUC_UNUSED)
 {
 }
 

@@ -140,7 +140,7 @@ notify_external_change (CtkIMContextWayland *context)
 
 static void
 text_input_preedit (void                     *data,
-                    struct zwp_text_input_v3 *text_input,
+                    struct zwp_text_input_v3 *text_input G_GNUC_UNUSED,
                     const char               *text,
                     gint                      cursor_begin,
                     gint                      cursor_end)
@@ -189,7 +189,7 @@ text_input_preedit_apply (CtkIMContextWaylandGlobal *global)
 
 static void
 text_input_commit (void                     *data,
-                   struct zwp_text_input_v3 *text_input,
+                   struct zwp_text_input_v3 *text_input G_GNUC_UNUSED,
                    const char               *text)
 {
   CtkIMContextWaylandGlobal *global = data;
@@ -217,7 +217,7 @@ text_input_commit_apply (CtkIMContextWaylandGlobal *global, gboolean valid)
 
 static void
 text_input_delete_surrounding_text (void                     *data,
-                                    struct zwp_text_input_v3 *text_input,
+                                    struct zwp_text_input_v3 *text_input G_GNUC_UNUSED,
                                     uint32_t                  before_length,
                                     uint32_t                  after_length)
 {
@@ -255,7 +255,7 @@ text_input_delete_surrounding_text_apply (CtkIMContextWaylandGlobal *global,
 
 static void
 text_input_done (void                     *data,
-                 struct zwp_text_input_v3 *text_input,
+                 struct zwp_text_input_v3 *text_input G_GNUC_UNUSED,
                  uint32_t                  serial)
 {
   CtkIMContextWaylandGlobal *global = data;
@@ -576,7 +576,7 @@ disable (CtkIMContextWayland *context_wayland)
 
 
 static void
-pressed_cb (CtkGestureMultiPress *gesture,
+pressed_cb (CtkGestureMultiPress *gesture G_GNUC_UNUSED,
             gint                  n_press,
             gdouble               x,
             gdouble               y,
@@ -590,7 +590,7 @@ pressed_cb (CtkGestureMultiPress *gesture,
 }
 
 static void
-released_cb (CtkGestureMultiPress *gesture,
+released_cb (CtkGestureMultiPress *gesture G_GNUC_UNUSED,
              gint                  n_press,
              gdouble               x,
              gdouble               y,
@@ -654,9 +654,9 @@ ctk_im_context_wayland_set_client_window (CtkIMContext *context,
 }
 
 static void
-text_input_enter (void                     *data,
-                  struct zwp_text_input_v3 *text_input,
-                  struct wl_surface        *surface)
+text_input_enter (void                     *data G_GNUC_UNUSED,
+                  struct zwp_text_input_v3 *text_input G_GNUC_UNUSED,
+                  struct wl_surface        *surface G_GNUC_UNUSED)
 {
   global->focused = TRUE;
 
@@ -665,9 +665,9 @@ text_input_enter (void                     *data,
 }
 
 static void
-text_input_leave (void                     *data,
-                  struct zwp_text_input_v3 *text_input,
-                  struct wl_surface        *surface)
+text_input_leave (void                     *data G_GNUC_UNUSED,
+                  struct zwp_text_input_v3 *text_input G_GNUC_UNUSED,
+                  struct wl_surface        *surface G_GNUC_UNUSED)
 {
   global->focused = FALSE;
 
@@ -687,10 +687,10 @@ static const struct zwp_text_input_v3_listener text_input_listener = {
 
 static void
 registry_handle_global (void               *data,
-                        struct wl_registry *registry,
+                        struct wl_registry *registry G_GNUC_UNUSED,
                         uint32_t            id,
                         const char         *interface,
-                        uint32_t            version)
+                        uint32_t            version G_GNUC_UNUSED)
 {
   CtkIMContextWaylandGlobal *global = data;
   CdkSeat *seat = cdk_display_get_default_seat (cdk_display_get_default ());
@@ -712,7 +712,7 @@ registry_handle_global (void               *data,
 
 static void
 registry_handle_global_remove (void               *data,
-                               struct wl_registry *registry,
+                               struct wl_registry *registry G_GNUC_UNUSED,
                                uint32_t            id)
 {
   CtkIMContextWaylandGlobal *global = data;

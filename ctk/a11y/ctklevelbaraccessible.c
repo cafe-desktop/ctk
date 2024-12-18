@@ -66,7 +66,7 @@ ctk_level_bar_accessible_class_init (CtkLevelBarAccessibleClass *klass)
 }
 
 static void
-ctk_level_bar_accessible_init (CtkLevelBarAccessible *button)
+ctk_level_bar_accessible_init (CtkLevelBarAccessible *button G_GNUC_UNUSED)
 {
 }
 

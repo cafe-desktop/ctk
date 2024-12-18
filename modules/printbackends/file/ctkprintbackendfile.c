@@ -330,7 +330,7 @@ _cairo_write (void                *closure,
 
 
 static cairo_surface_t *
-file_printer_create_cairo_surface (CtkPrinter       *printer,
+file_printer_create_cairo_surface (CtkPrinter       *printer G_GNUC_UNUSED,
 				   CtkPrintSettings *settings,
 				   gdouble           width, 
 				   gdouble           height,
@@ -378,7 +378,7 @@ typedef struct {
 
 /* expects CDK lock to be held */
 static void
-file_print_cb_locked (CtkPrintBackendFile *print_backend,
+file_print_cb_locked (CtkPrintBackendFile *print_backend G_GNUC_UNUSED,
                       GError              *error,
                       gpointer            user_data)
 {
@@ -424,7 +424,7 @@ file_print_cb (CtkPrintBackendFile *print_backend,
 
 static gboolean
 file_write (GIOChannel   *source,
-            GIOCondition  con,
+            GIOCondition  con G_GNUC_UNUSED,
             gpointer      user_data)
 {
   gchar buf[_STREAM_MAX_CHUNK_SIZE];
@@ -653,7 +653,7 @@ file_printer_output_file_format_changed (CtkPrinterOption    *format_option,
 static CtkPrinterOptionSet *
 file_printer_get_options (CtkPrinter           *printer,
 			  CtkPrintSettings     *settings,
-			  CtkPageSetup         *page_setup,
+			  CtkPageSetup         *page_setup G_GNUC_UNUSED,
 			  CtkPrintCapabilities  capabilities)
 {
   CtkPrinterOptionSet *set;
@@ -768,7 +768,7 @@ file_printer_get_options (CtkPrinter           *printer,
 }
 
 static void
-file_printer_get_settings_from_options (CtkPrinter          *printer,
+file_printer_get_settings_from_options (CtkPrinter          *printer G_GNUC_UNUSED,
 					CtkPrinterOptionSet *options,
 					CtkPrintSettings    *settings)
 {
@@ -791,10 +791,10 @@ file_printer_get_settings_from_options (CtkPrinter          *printer,
 }
 
 static void
-file_printer_prepare_for_print (CtkPrinter       *printer,
+file_printer_prepare_for_print (CtkPrinter       *printer G_GNUC_UNUSED,
 				CtkPrintJob      *print_job,
 				CtkPrintSettings *settings,
-				CtkPageSetup     *page_setup)
+				CtkPageSetup     *page_setup G_GNUC_UNUSED)
 {
   gdouble scale;
   CtkPrintPages pages;
@@ -841,7 +841,7 @@ file_printer_prepare_for_print (CtkPrinter       *printer,
 }
 
 static GList *
-file_printer_list_papers (CtkPrinter *printer)
+file_printer_list_papers (CtkPrinter *printer G_GNUC_UNUSED)
 {
   GList *result = NULL;
   GList *papers, *p;
@@ -865,7 +865,7 @@ file_printer_list_papers (CtkPrinter *printer)
 }
 
 static CtkPageSetup *
-file_printer_get_default_page_size (CtkPrinter *printer)
+file_printer_get_default_page_size (CtkPrinter *printer G_GNUC_UNUSED)
 {
   CtkPageSetup *result = NULL;
 

@@ -352,8 +352,8 @@ _cdk_x11_display_queue_events (CdkDisplay *display)
 
 static gboolean
 cdk_event_source_dispatch (GSource     *source,
-                           GSourceFunc  callback,
-                           gpointer     user_data)
+                           GSourceFunc  callback G_GNUC_UNUSED,
+                           gpointer     user_data G_GNUC_UNUSED)
 {
   CdkDisplay *display = ((CdkEventSource*) source)->display;
   CdkEvent *event;

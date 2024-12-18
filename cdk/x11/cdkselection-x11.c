@@ -105,7 +105,7 @@ _cdk_x11_display_set_selection_owner (CdkDisplay *display,
                                       CdkWindow  *owner,
                                       CdkAtom     selection,
                                       guint32     time,
-                                      gboolean    send_event)
+                                      gboolean    send_event G_GNUC_UNUSED)
 {
   Display *xdisplay;
   Window xwindow;
@@ -685,7 +685,7 @@ sanitize_utf8 (const gchar *src,
 }
 
 gchar *
-_cdk_x11_display_utf8_to_string_target (CdkDisplay  *display,
+_cdk_x11_display_utf8_to_string_target (CdkDisplay  *display G_GNUC_UNUSED,
                                         const gchar *str)
 {
   return sanitize_utf8 (str, TRUE);

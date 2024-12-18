@@ -9,7 +9,7 @@
 static void
 on_bar_response (CtkInfoBar *info_bar,
                  gint        response_id,
-                 gpointer    user_data)
+                 gpointer    user_data G_GNUC_UNUSED)
 {
   CtkWidget *dialog;
   CtkWidget *window;

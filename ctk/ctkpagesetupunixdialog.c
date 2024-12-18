@@ -293,7 +293,7 @@ ctk_page_setup_unix_dialog_finalize (GObject *object)
 }
 
 static void
-printer_added_cb (CtkPrintBackend        *backend,
+printer_added_cb (CtkPrintBackend        *backend G_GNUC_UNUSED,
                   CtkPrinter             *printer,
                   CtkPageSetupUnixDialog *dialog)
 {
@@ -335,7 +335,7 @@ printer_added_cb (CtkPrintBackend        *backend,
 }
 
 static void
-printer_removed_cb (CtkPrintBackend        *backend,
+printer_removed_cb (CtkPrintBackend        *backend G_GNUC_UNUSED,
                     CtkPrinter             *printer,
                     CtkPageSetupUnixDialog *dialog)
 {
@@ -348,7 +348,7 @@ printer_removed_cb (CtkPrintBackend        *backend,
 
 
 static void
-printer_status_cb (CtkPrintBackend        *backend,
+printer_status_cb (CtkPrintBackend        *backend G_GNUC_UNUSED,
                    CtkPrinter             *printer,
                    CtkPageSetupUnixDialog *dialog)
 {
@@ -423,7 +423,7 @@ load_print_backends (CtkPageSetupUnixDialog *dialog)
 static gboolean
 paper_size_row_is_separator (CtkTreeModel *model,
                              CtkTreeIter  *iter,
-                             gpointer      data)
+                             gpointer      data G_GNUC_UNUSED)
 {
   gboolean separator;
 
@@ -745,7 +745,7 @@ double_to_string (gdouble d,
 
 static void
 custom_paper_dialog_response_cb (CtkDialog *custom_paper_dialog,
-                                 gint       response_id,
+                                 gint       response_id G_GNUC_UNUSED,
                                  gpointer   user_data)
 {
   CtkPageSetupUnixDialog *page_setup_dialog = CTK_PAGE_SETUP_UNIX_DIALOG (user_data);
@@ -858,11 +858,11 @@ paper_size_changed (CtkComboBox            *combo_box,
 }
 
 static void
-page_name_func (CtkCellLayout   *cell_layout,
+page_name_func (CtkCellLayout   *cell_layout G_GNUC_UNUSED,
                 CtkCellRenderer *cell,
                 CtkTreeModel    *tree_model,
                 CtkTreeIter     *iter,
-                gpointer         data)
+                gpointer         data G_GNUC_UNUSED)
 {
   CtkPageSetup *page_setup;
   CtkPaperSize *paper_size;

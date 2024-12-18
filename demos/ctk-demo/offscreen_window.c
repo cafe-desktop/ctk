@@ -181,7 +181,7 @@ ctk_rotated_bin_new (void)
 }
 
 static CdkWindow *
-pick_offscreen_child (CdkWindow     *offscreen_window,
+pick_offscreen_child (CdkWindow     *offscreen_window G_GNUC_UNUSED,
                       double         widget_x,
                       double         widget_y,
                       CtkRotatedBin *bin)
@@ -204,7 +204,7 @@ pick_offscreen_child (CdkWindow     *offscreen_window,
 }
 
 static void
-offscreen_window_to_parent (CdkWindow     *offscreen_window,
+offscreen_window_to_parent (CdkWindow     *offscreen_window G_GNUC_UNUSED,
                             double         offscreen_x,
                             double         offscreen_y,
                             double        *parent_x,
@@ -215,7 +215,7 @@ offscreen_window_to_parent (CdkWindow     *offscreen_window,
 }
 
 static void
-offscreen_window_from_parent (CdkWindow     *window,
+offscreen_window_from_parent (CdkWindow     *window G_GNUC_UNUSED,
                               double         parent_x,
                               double         parent_y,
                               double        *offscreen_x,
@@ -353,7 +353,7 @@ ctk_rotated_bin_remove (CtkContainer *container,
 
 static void
 ctk_rotated_bin_forall (CtkContainer *container,
-                        gboolean      include_internals,
+                        gboolean      include_internals G_GNUC_UNUSED,
                         CtkCallback   callback,
                         gpointer      callback_data)
 {
@@ -485,7 +485,7 @@ ctk_rotated_bin_size_allocate (CtkWidget     *widget,
 
 static gboolean
 ctk_rotated_bin_damage (CtkWidget      *widget,
-                        CdkEventExpose *event)
+                        CdkEventExpose *event G_GNUC_UNUSED)
 {
   cdk_window_invalidate_rect (ctk_widget_get_window (widget),
                               NULL, FALSE);

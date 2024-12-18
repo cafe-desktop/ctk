@@ -367,7 +367,7 @@ _ctk_search_engine_simple_class_init (CtkSearchEngineSimpleClass *class)
 }
 
 static void
-_ctk_search_engine_simple_init (CtkSearchEngineSimple *engine)
+_ctk_search_engine_simple_init (CtkSearchEngineSimple *engine G_GNUC_UNUSED)
 {
 }
 

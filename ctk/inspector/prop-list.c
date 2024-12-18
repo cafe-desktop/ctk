@@ -74,7 +74,7 @@ struct _CtkInspectorPropListPrivate
 G_DEFINE_TYPE_WITH_PRIVATE (CtkInspectorPropList, ctk_inspector_prop_list, CTK_TYPE_BOX)
 
 static void
-search_close_clicked (CtkWidget            *button,
+search_close_clicked (CtkWidget            *button G_GNUC_UNUSED,
                       CtkInspectorPropList *pl)
 {
   ctk_entry_set_text (CTK_ENTRY (pl->priv->search_entry), "");
@@ -82,7 +82,7 @@ search_close_clicked (CtkWidget            *button,
 }
 
 static gboolean
-key_press_event (CtkWidget            *window,
+key_press_event (CtkWidget            *window G_GNUC_UNUSED,
                  CdkEvent             *event,
                  CtkInspectorPropList *pl)
 {
@@ -468,7 +468,7 @@ ctk_inspector_prop_list_update_prop (CtkInspectorPropList *pl,
 }
 
 static void
-ctk_inspector_prop_list_prop_changed_cb (GObject              *pspec,
+ctk_inspector_prop_list_prop_changed_cb (GObject              *pspec G_GNUC_UNUSED,
                                          GParamSpec           *prop,
                                          CtkInspectorPropList *pl)
 {
@@ -576,5 +576,3 @@ ctk_inspector_prop_list_set_object (CtkInspectorPropList *pl,
 
   return TRUE;
 }
-
-// vim: set et sw=2 ts=2:

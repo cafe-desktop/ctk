@@ -70,8 +70,8 @@ typedef struct {
 } VariantEditorData;
 
 static void
-variant_editor_changed_cb (GObject           *obj,
-                           GParamSpec        *pspec,
+variant_editor_changed_cb (GObject           *obj G_GNUC_UNUSED,
+                           GParamSpec        *pspec G_GNUC_UNUSED,
                            VariantEditorData *data)
 {
   data->callback (data->editor, data->data);
@@ -199,7 +199,7 @@ variant_editor_get_value (CtkWidget *editor)
 }
 
 static void
-activate_action (CtkWidget                *button,
+activate_action (CtkWidget                *button G_GNUC_UNUSED,
                  CtkInspectorActionEditor *r)
 {
   GVariant *parameter = NULL;
@@ -235,8 +235,8 @@ state_changed (CtkWidget *editor,
 }
 
 static void
-action_enabled_changed_cb (GActionGroup             *group,
-                           const gchar              *action_name,
+action_enabled_changed_cb (GActionGroup             *group G_GNUC_UNUSED,
+                           const gchar              *action_name G_GNUC_UNUSED,
                            gboolean                  enabled,
                            CtkInspectorActionEditor *r)
 {
@@ -249,8 +249,8 @@ action_enabled_changed_cb (GActionGroup             *group,
 }
 
 static void
-action_state_changed_cb (GActionGroup             *group,
-                         const gchar              *action_name,
+action_state_changed_cb (GActionGroup             *group G_GNUC_UNUSED,
+                         const gchar              *action_name G_GNUC_UNUSED,
                          GVariant                 *state,
                          CtkInspectorActionEditor *r)
 {

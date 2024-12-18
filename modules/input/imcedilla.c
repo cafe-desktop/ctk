@@ -70,7 +70,7 @@ static guint16 cedilla_compose_seqs[] = {
 };
 
 static void
-cedilla_class_init (CtkIMContextSimpleClass *class)
+cedilla_class_init (CtkIMContextSimpleClass *class G_GNUC_UNUSED)
 {
 }
 

@@ -707,7 +707,7 @@ ctk_tray_icon_get_icon_size_property (CtkTrayIcon *icon)
 
 static CdkFilterReturn
 ctk_tray_icon_manager_filter (CdkXEvent *xevent,
-			      CdkEvent  *event,
+			      CdkEvent  *event G_GNUC_UNUSED,
 			      gpointer   user_data)
 {
   CtkTrayIcon *icon = user_data;
@@ -907,7 +907,7 @@ ctk_tray_icon_manager_window_destroyed (CtkTrayIcon *icon)
 
 static gboolean
 ctk_tray_icon_delete (CtkWidget   *widget,
-		      CdkEventAny *event)
+		      CdkEventAny *event G_GNUC_UNUSED)
 {
   CTK_NOTE (PLUGSOCKET,
             g_message ("CtkStatusIcon %p: delete notify, tray manager window %lx",
@@ -984,7 +984,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
-ctk_tray_icon_style_updated (CtkWidget   *widget)
+ctk_tray_icon_style_updated (CtkWidget *widget G_GNUC_UNUSED)
 {
   /* The default handler resets the background according to the style. We either
    * use a transparent background or a parent-relative background and ignore the

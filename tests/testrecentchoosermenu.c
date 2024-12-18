@@ -24,7 +24,7 @@ static CtkWidget *label = NULL;
 
 static void
 item_activated_cb (CtkRecentChooser *chooser,
-                   gpointer          data)
+                   gpointer          data G_GNUC_UNUSED)
 {
   CtkRecentInfo *info;
   GString *text;
@@ -105,7 +105,7 @@ create_recent_chooser_menu (gint limit)
 }
 
 static CtkWidget *
-create_file_menu (CtkAccelGroup *accelgroup)
+create_file_menu (CtkAccelGroup *accelgroup G_GNUC_UNUSED)
 {
   CtkWidget *menu;
   CtkWidget *menuitem;

@@ -849,11 +849,11 @@ create_capital_tree (void)
 }
 
 static void
-capital_sensitive (CtkCellLayout   *cell_layout,
+capital_sensitive (CtkCellLayout   *cell_layout G_GNUC_UNUSED,
 		   CtkCellRenderer *cell,
 		   CtkTreeModel    *tree_model,
 		   CtkTreeIter     *iter,
-		   gpointer         data)
+		   gpointer         data G_GNUC_UNUSED)
 {
   gboolean sensitive;
 
@@ -1001,11 +1001,11 @@ setup_combo_entry (CtkComboBoxText *combo)
 }
 
 static void
-set_sensitive (CtkCellLayout   *cell_layout,
+set_sensitive (CtkCellLayout   *cell_layout G_GNUC_UNUSED,
 	       CtkCellRenderer *cell,
 	       CtkTreeModel    *tree_model,
 	       CtkTreeIter     *iter,
-	       gpointer         data)
+	       gpointer         data G_GNUC_UNUSED)
 {
   CtkTreePath *path;
   gint *indices;
@@ -1022,7 +1022,7 @@ set_sensitive (CtkCellLayout   *cell_layout,
 static gboolean
 is_separator (CtkTreeModel *model,
 	      CtkTreeIter  *iter,
-	      gpointer      data)
+	      gpointer      data G_GNUC_UNUSED)
 {
   CtkTreePath *path;
   gboolean result;

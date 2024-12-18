@@ -306,9 +306,9 @@ focus_list_model (void)
 }
 
 static void
-cell_toggled (CtkCellRendererToggle *cell_renderer,
+cell_toggled (CtkCellRendererToggle *cell_renderer G_GNUC_UNUSED,
 	      const gchar           *path,
-	      CtkIconView      *iconview)
+	      CtkIconView           *iconview)
 {
   CtkTreeModel *model = ctk_icon_view_get_model (iconview);
   CtkTreeIter   iter;
@@ -324,10 +324,10 @@ cell_toggled (CtkCellRendererToggle *cell_renderer,
 }
 
 static void
-cell_edited (CtkCellRendererToggle *cell_renderer,
+cell_edited (CtkCellRendererToggle *cell_renderer G_GNUC_UNUSED,
 	     const gchar           *path,
 	     const gchar           *new_text,
-	     CtkIconView      *iconview)
+	     CtkIconView           *iconview)
 {
   CtkTreeModel *model = ctk_icon_view_get_model (iconview);
   CtkTreeIter   iter;
@@ -612,7 +612,8 @@ background_area (void)
 
 
 int
-main (int argc, char *argv[])
+main (int   argc G_GNUC_UNUSED,
+      char *argv[] G_GNUC_UNUSED)
 {
   ctk_init (NULL, NULL);
 

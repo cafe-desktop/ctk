@@ -527,8 +527,8 @@ ctk_icon_theme_class_init (CtkIconThemeClass *klass)
  * for the screen, drop the reference
  */
 static void
-display_closed (CdkDisplay   *display,
-                gboolean      is_error,
+display_closed (CdkDisplay   *display G_GNUC_UNUSED,
+                gboolean      is_error G_GNUC_UNUSED,
                 CtkIconTheme *icon_theme)
 {
   CtkIconThemePrivate *priv = icon_theme->priv;
@@ -586,8 +586,8 @@ update_current_theme (CtkIconTheme *icon_theme)
 /* Callback when the icon theme CtkSetting changes
  */
 static void
-theme_changed (CtkSettings  *settings,
-               GParamSpec   *pspec,
+theme_changed (CtkSettings  *settings G_GNUC_UNUSED,
+               GParamSpec   *pspec G_GNUC_UNUSED,
                CtkIconTheme *icon_theme)
 {
   update_current_theme (icon_theme);
@@ -2479,7 +2479,7 @@ ctk_icon_theme_has_icon (CtkIconTheme *icon_theme,
 
 static void
 add_size (gpointer key,
-          gpointer value,
+          gpointer value G_GNUC_UNUSED,
           gpointer user_data)
 {
   gint **res_p = user_data;
@@ -2568,7 +2568,7 @@ ctk_icon_theme_get_icon_sizes (CtkIconTheme *icon_theme,
 
 static void
 add_key_to_hash (gpointer key,
-                 gpointer value,
+                 gpointer value G_GNUC_UNUSED,
                  gpointer user_data)
 {
   GHashTable *hash = user_data;
@@ -2578,7 +2578,7 @@ add_key_to_hash (gpointer key,
 
 static void
 add_key_to_list (gpointer key,
-                 gpointer value,
+                 gpointer value G_GNUC_UNUSED,
                  gpointer user_data)
 {
   GList **list = user_data;
@@ -3212,7 +3212,7 @@ theme_list_contexts (IconTheme  *theme,
 }
 
 static gboolean
-scan_directory (CtkIconThemePrivate *icon_theme,
+scan_directory (CtkIconThemePrivate *icon_theme G_GNUC_UNUSED,
                 IconThemeDir        *dir,
                 gchar               *full_dir)
 {
@@ -3250,9 +3250,9 @@ scan_directory (CtkIconThemePrivate *icon_theme,
 }
 
 static gboolean
-scan_resources (CtkIconThemePrivate  *icon_theme,
-                IconThemeDir         *dir,
-                gchar                *full_dir)
+scan_resources (CtkIconThemePrivate *icon_theme G_GNUC_UNUSED,
+                IconThemeDir        *dir,
+                gchar               *full_dir)
 {
   gint i;
   gchar **children;
@@ -4034,7 +4034,8 @@ icon_info_ensure_scale_and_pixbuf (CtkIconInfo *icon_info)
 }
 
 static void
-proxy_pixbuf_destroy (guchar *pixels, gpointer data)
+proxy_pixbuf_destroy (guchar  *pixels G_GNUC_UNUSED,
+		      gpointer data)
 {
   CtkIconInfo *icon_info = data;
   CtkIconTheme *icon_theme = icon_info->in_cache;
@@ -4171,9 +4172,9 @@ ctk_icon_info_load_surface (CtkIconInfo  *icon_info,
 
 static void
 load_icon_thread  (GTask        *task,
-                   gpointer      source_object,
+                   gpointer      source_object G_GNUC_UNUSED,
                    gpointer      task_data,
-                   GCancellable *cancellable)
+                   GCancellable *cancellable G_GNUC_UNUSED)
 {
   CtkIconInfo *dup = task_data;
 
@@ -4879,9 +4880,9 @@ async_load_no_symbolic_cb (GObject      *source_object,
 
 static void
 load_symbolic_icon_thread  (GTask        *task,
-                            gpointer      source_object,
+                            gpointer      source_object G_GNUC_UNUSED,
                             gpointer      task_data,
-                            GCancellable *cancellable)
+                            GCancellable *cancellable G_GNUC_UNUSED)
 {
   AsyncSymbolicData *data = task_data;
   GError *error;
@@ -5242,8 +5243,8 @@ ctk_icon_info_load_symbolic_for_style (CtkIconInfo   *icon_info,
  * Deprecated: 3.14: Embedded rectangles and attachment points are deprecated
  */
 void
-ctk_icon_info_set_raw_coordinates (CtkIconInfo *icon_info,
-                                   gboolean     raw_coordinates)
+ctk_icon_info_set_raw_coordinates (CtkIconInfo *icon_info G_GNUC_UNUSED,
+                                   gboolean     raw_coordinates G_GNUC_UNUSED)
 {
 }
 
@@ -5263,8 +5264,8 @@ ctk_icon_info_set_raw_coordinates (CtkIconInfo *icon_info,
  * Deprecated: 3.14: Embedded rectangles are deprecated
  */
 gboolean
-ctk_icon_info_get_embedded_rect (CtkIconInfo  *icon_info,
-                                 CdkRectangle *rectangle)
+ctk_icon_info_get_embedded_rect (CtkIconInfo  *icon_info G_GNUC_UNUSED,
+                                 CdkRectangle *rectangle G_GNUC_UNUSED)
 {
   return FALSE;
 }
@@ -5286,9 +5287,9 @@ ctk_icon_info_get_embedded_rect (CtkIconInfo  *icon_info,
  * Deprecated: 3.14: Attachment points are deprecated
  */
 gboolean
-ctk_icon_info_get_attach_points (CtkIconInfo  *icon_info,
-                                 CdkPoint    **points,
-                                 gint         *n_points)
+ctk_icon_info_get_attach_points (CtkIconInfo  *icon_info G_GNUC_UNUSED,
+                                 CdkPoint    **points G_GNUC_UNUSED,
+                                 gint         *n_points G_GNUC_UNUSED)
 {
   return FALSE;
 }
@@ -5306,7 +5307,7 @@ ctk_icon_info_get_attach_points (CtkIconInfo  *icon_info,
  * Deprecated: 3.14: Display names are deprecated
  */
 const gchar *
-ctk_icon_info_get_display_name (CtkIconInfo *icon_info)
+ctk_icon_info_get_display_name (CtkIconInfo *icon_info G_GNUC_UNUSED)
 {
   return NULL;
 }

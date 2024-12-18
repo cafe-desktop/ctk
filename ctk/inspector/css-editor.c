@@ -62,7 +62,7 @@ css_error_free (gpointer data)
 }
 
 static gboolean
-query_tooltip_cb (CtkWidget             *widget,
+query_tooltip_cb (CtkWidget             *widget G_GNUC_UNUSED,
                   gint                   x,
                   gint                   y,
                   gboolean               keyboard_tip,
@@ -190,7 +190,7 @@ save_response (CtkWidget             *dialog,
 }
 
 static void
-save_clicked (CtkButton             *button,
+save_clicked (CtkButton             *button G_GNUC_UNUSED,
               CtkInspectorCssEditor *ce)
 {
   CtkWidget *dialog;
@@ -235,7 +235,7 @@ update_timeout (gpointer data)
 }
 
 static void
-text_changed (CtkTextBuffer         *buffer,
+text_changed (CtkTextBuffer         *buffer G_GNUC_UNUSED,
               CtkInspectorCssEditor *ce)
 {
   if (ce->priv->timeout != 0)
@@ -248,7 +248,7 @@ text_changed (CtkTextBuffer         *buffer,
 }
 
 static void
-show_parsing_error (CtkCssProvider        *provider,
+show_parsing_error (CtkCssProvider        *provider G_GNUC_UNUSED,
                     CtkCssSection         *section,
                     const GError          *error,
                     CtkInspectorCssEditor *ce)

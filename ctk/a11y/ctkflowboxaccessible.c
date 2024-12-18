@@ -27,7 +27,7 @@ G_DEFINE_TYPE_WITH_CODE (CtkFlowBoxAccessible, ctk_flow_box_accessible, CTK_TYPE
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_SELECTION, atk_selection_interface_init))
 
 static void
-ctk_flow_box_accessible_init (CtkFlowBoxAccessible *accessible)
+ctk_flow_box_accessible_init (CtkFlowBoxAccessible *accessible G_GNUC_UNUSED)
 {
 }
 
@@ -143,7 +143,7 @@ typedef struct
 } FindSelectedData;
 
 static void
-find_selected_child (CtkFlowBox      *box,
+find_selected_child (CtkFlowBox      *box G_GNUC_UNUSED,
                      CtkFlowBoxChild *child,
                      gpointer         data)
 {
@@ -183,8 +183,8 @@ ctk_flow_box_accessible_ref_selection (AtkSelection *selection,
 }
 
 static void
-count_selected (CtkFlowBox      *box,
-                CtkFlowBoxChild *child,
+count_selected (CtkFlowBox      *box G_GNUC_UNUSED,
+                CtkFlowBoxChild *child G_GNUC_UNUSED,
                 gpointer         data)
 {
   gint *count = data;

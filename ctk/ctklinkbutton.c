@@ -332,7 +332,7 @@ ctk_link_button_unrealize (CtkWidget *widget)
 
 static void
 popup_menu_detach (CtkWidget *attach_widget,
-		   CtkMenu   *menu)
+		   CtkMenu   *menu G_GNUC_UNUSED)
 {
   CtkLinkButton *link_button = CTK_LINK_BUTTON (attach_widget);
 
@@ -340,7 +340,7 @@ popup_menu_detach (CtkWidget *attach_widget,
 }
 
 static void
-copy_activate_cb (CtkWidget     *widget,
+copy_activate_cb (CtkWidget     *widget G_GNUC_UNUSED,
 		  CtkLinkButton *link_button)
 {
   CtkLinkButtonPrivate *priv = link_button->priv;
@@ -457,7 +457,7 @@ ctk_link_button_popup_menu (CtkWidget *widget)
 }
 
 static void
-ctk_link_button_drag_begin (CtkWidget      *widget,
+ctk_link_button_drag_begin (CtkWidget      *widget G_GNUC_UNUSED,
                             CdkDragContext *context)
 {
   ctk_drag_set_icon_name (context, "text-x-generic", 0, 0);
@@ -465,11 +465,11 @@ ctk_link_button_drag_begin (CtkWidget      *widget,
 
 static void
 ctk_link_button_drag_data_get_cb (CtkWidget        *widget,
-				  CdkDragContext   *context,
+				  CdkDragContext   *context G_GNUC_UNUSED,
 				  CtkSelectionData *selection,
-				  guint             _info,
-				  guint             _time,
-				  gpointer          user_data)
+				  guint             _info G_GNUC_UNUSED,
+				  guint             _time G_GNUC_UNUSED,
+				  gpointer          user_data G_GNUC_UNUSED)
 {
   CtkLinkButton *link_button = CTK_LINK_BUTTON (widget);
   gchar *uri;
@@ -565,11 +565,11 @@ ctk_link_button_new_with_label (const gchar *uri,
 
 static gboolean 
 ctk_link_button_query_tooltip_cb (CtkWidget    *widget,
-                                  gint          x,
-                                  gint          y,
-                                  gboolean      keyboard_tip,
+                                  gint          x G_GNUC_UNUSED,
+                                  gint          y G_GNUC_UNUSED,
+                                  gboolean      keyboard_tip G_GNUC_UNUSED,
                                   CtkTooltip   *tooltip,
-                                  gpointer      data)
+                                  gpointer      data G_GNUC_UNUSED)
 {
   CtkLinkButton *link_button = CTK_LINK_BUTTON (widget);
   const gchar *label, *uri;

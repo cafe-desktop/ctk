@@ -31,12 +31,12 @@ typedef CtkButtonAccessibleClass MyButtonAccessibleClass;
 G_DEFINE_TYPE (MyButtonAccessible, my_button_accessible, CTK_TYPE_BUTTON_ACCESSIBLE)
 
 static void
-my_button_accessible_init (MyButtonAccessible *a)
+my_button_accessible_init (MyButtonAccessible *a G_GNUC_UNUSED)
 {
 }
 
 static void
-my_button_accessible_class_init (MyButtonAccessibleClass *class)
+my_button_accessible_class_init (MyButtonAccessibleClass *class G_GNUC_UNUSED)
 {
 }
 
@@ -46,7 +46,7 @@ typedef CtkButtonClass MyButtonClass;
 G_DEFINE_TYPE (MyButton, my_button, CTK_TYPE_BUTTON)
 
 static void
-my_button_init (MyButton *b)
+my_button_init (MyButton *b G_GNUC_UNUSED)
 {
 }
 
@@ -57,7 +57,8 @@ my_button_class_init (MyButtonClass *class)
                                         my_button_accessible_get_type ());
 }
 
-int main (int argc, char *argv[])
+int main (int   argc G_GNUC_UNUSED,
+	  char *argv[] G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkAccessible *accessible;

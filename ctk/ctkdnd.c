@@ -355,7 +355,7 @@ ctk_drag_get_ipc_widget (CtkWidget *widget)
 
 static CdkFilterReturn
 root_key_filter (CdkXEvent *xevent,
-                 CdkEvent  *event,
+                 CdkEvent  *event G_GNUC_UNUSED,
                  gpointer   data)
 {
   XEvent *ev = (XEvent *) xevent;
@@ -779,7 +779,7 @@ ensure_drag_cursor_pixbuf (int i)
 }
 
 static CdkCursor *
-ctk_drag_get_cursor (CtkWidget         *widget,
+ctk_drag_get_cursor (CtkWidget         *widget G_GNUC_UNUSED,
                      CdkDisplay        *display,
                      CdkDragAction      action,
                      CtkDragSourceInfo *info)
@@ -2029,7 +2029,7 @@ ctk_drag_begin (CtkWidget     *widget,
 }
 
 static void
-icon_widget_destroyed (CtkWidget         *widget,
+icon_widget_destroyed (CtkWidget         *widget G_GNUC_UNUSED,
                        CtkDragSourceInfo *info)
 {
   g_clear_object (&info->icon_widget);
@@ -2154,7 +2154,7 @@ ctk_drag_set_icon_widget (CdkDragContext *context,
 }
 
 static void
-ctk_drag_draw_icon_pattern (CtkWidget *window,
+ctk_drag_draw_icon_pattern (CtkWidget *window G_GNUC_UNUSED,
                             cairo_t   *cr,
                             gpointer   pattern)
 {
@@ -2677,7 +2677,7 @@ ctk_drag_drop (CtkDragSourceInfo *info,
  * Source side callbacks.
  */
 static void
-ctk_drag_selection_get (CtkWidget        *widget, 
+ctk_drag_selection_get (CtkWidget        *widget G_GNUC_UNUSED,
                         CtkSelectionData *selection_data,
                         guint             sel_info,
                         guint32           time,
@@ -2995,7 +2995,7 @@ ctk_drag_cancel_internal (CtkDragSourceInfo *info,
 }
 
 static void
-ctk_drag_context_drop_performed_cb (CdkDragContext    *context,
+ctk_drag_context_drop_performed_cb (CdkDragContext    *context G_GNUC_UNUSED,
                                     guint32            time_,
                                     CtkDragSourceInfo *info)
 {
@@ -3004,7 +3004,7 @@ ctk_drag_context_drop_performed_cb (CdkDragContext    *context,
 }
 
 static void
-ctk_drag_context_cancel_cb (CdkDragContext      *context,
+ctk_drag_context_cancel_cb (CdkDragContext      *context G_GNUC_UNUSED,
                             CdkDragCancelReason  reason,
                             CtkDragSourceInfo   *info)
 {
@@ -3028,7 +3028,7 @@ ctk_drag_context_cancel_cb (CdkDragContext      *context,
 
 static void
 ctk_drag_context_action_cb (CdkDragContext    *context,
-                            CdkDragAction      action,
+                            CdkDragAction      action G_GNUC_UNUSED,
                             CtkDragSourceInfo *info)
 {
   if (info->proxy_dest)
@@ -3056,7 +3056,7 @@ ctk_drag_context_action_cb (CdkDragContext    *context,
 }
 
 static void
-ctk_drag_context_dnd_finished_cb (CdkDragContext    *context,
+ctk_drag_context_dnd_finished_cb (CdkDragContext    *context G_GNUC_UNUSED,
                                   CtkDragSourceInfo *info)
 {
   ctk_drag_source_release_selections (info, CDK_CURRENT_TIME);
@@ -3073,7 +3073,7 @@ ctk_drag_context_dnd_finished_cb (CdkDragContext    *context,
 
 /* “motion-notify-event” callback during drag. */
 static gboolean
-ctk_drag_motion_cb (CtkWidget      *widget,
+ctk_drag_motion_cb (CtkWidget      *widget G_GNUC_UNUSED,
                     CdkEventMotion *event,
                     gpointer        data)
 {
@@ -3189,7 +3189,7 @@ ctk_drag_key_cb (CtkWidget   *widget,
 }
 
 static gboolean
-ctk_drag_grab_broken_event_cb (CtkWidget          *widget,
+ctk_drag_grab_broken_event_cb (CtkWidget          *widget G_GNUC_UNUSED,
                                CdkEventGrabBroken *event,
                                gpointer            data)
 {
@@ -3210,7 +3210,7 @@ ctk_drag_grab_broken_event_cb (CtkWidget          *widget,
 
 static void
 ctk_drag_grab_notify_cb (CtkWidget *widget,
-                         gboolean   was_grabbed,
+                         gboolean   was_grabbed G_GNUC_UNUSED,
                          gpointer   data)
 {
   CtkDragSourceInfo *info = (CtkDragSourceInfo *)data;
@@ -3231,8 +3231,8 @@ ctk_drag_grab_notify_cb (CtkWidget *widget,
 
 /* “button-release-event” callback during drag */
 static gboolean
-ctk_drag_button_release_cb (CtkWidget      *widget, 
-                            CdkEventButton *event, 
+ctk_drag_button_release_cb (CtkWidget      *widget G_GNUC_UNUSED,
+                            CdkEventButton *event,
                             gpointer        data)
 {
   CtkDragSourceInfo *info = (CtkDragSourceInfo *)data;

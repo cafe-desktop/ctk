@@ -59,7 +59,7 @@ static void
 open (GApplication  *application,
       GFile        **files,
       gint           n_files,
-      const gchar   *hint)
+      const gchar   *hint G_GNUC_UNUSED)
 {
   gint i;
 
@@ -73,9 +73,9 @@ typedef CtkApplicationClass MenuButtonClass;
 G_DEFINE_TYPE (MenuButton, menu_button, CTK_TYPE_APPLICATION)
 
 static void
-show_about (GSimpleAction *action,
-            GVariant      *parameter,
-            gpointer       user_data)
+show_about (GSimpleAction *action G_GNUC_UNUSED,
+            GVariant      *parameter G_GNUC_UNUSED,
+            gpointer       user_data G_GNUC_UNUSED)
 {
   ctk_show_about_dialog (NULL,
                          "program-name", "Sunny",
@@ -87,9 +87,9 @@ show_about (GSimpleAction *action,
 
 
 static void
-quit_app (GSimpleAction *action,
-          GVariant      *parameter,
-          gpointer       user_data)
+quit_app (GSimpleAction *action G_GNUC_UNUSED,
+          GVariant      *parameter G_GNUC_UNUSED,
+          gpointer       user_data G_GNUC_UNUSED)
 {
   GList *list, *next;
 
@@ -110,8 +110,8 @@ quit_app (GSimpleAction *action,
 }
 
 static void
-new_activated (GSimpleAction *action,
-               GVariant      *parameter,
+new_activated (GSimpleAction *action G_GNUC_UNUSED,
+               GVariant      *parameter G_GNUC_UNUSED,
                gpointer       user_data)
 {
   GApplication *app = user_data;
@@ -163,7 +163,7 @@ startup (GApplication *application)
 }
 
 static void
-menu_button_init (MenuButton *app)
+menu_button_init (MenuButton *app G_GNUC_UNUSED)
 {
 }
 

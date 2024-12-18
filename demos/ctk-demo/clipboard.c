@@ -14,7 +14,7 @@
 #include <string.h>
 
 void
-copy_button_clicked (CtkWidget *button,
+copy_button_clicked (CtkWidget *button G_GNUC_UNUSED,
                      gpointer   user_data)
 {
   CtkWidget *entry;
@@ -31,7 +31,7 @@ copy_button_clicked (CtkWidget *button,
 }
 
 void
-paste_received (CtkClipboard *clipboard,
+paste_received (CtkClipboard *clipboard G_GNUC_UNUSED,
                 const gchar  *text,
                 gpointer      user_data)
 {
@@ -45,8 +45,8 @@ paste_received (CtkClipboard *clipboard,
 }
 
 void
-paste_button_clicked (CtkWidget *button,
-                     gpointer   user_data)
+paste_button_clicked (CtkWidget *button G_GNUC_UNUSED,
+                      gpointer   user_data)
 {
   CtkWidget *entry;
   CtkClipboard *clipboard;
@@ -93,7 +93,7 @@ get_image_pixbuf (CtkImage *image)
 }
 
 static void
-drag_begin (CtkWidget      *widget,
+drag_begin (CtkWidget      *widget G_GNUC_UNUSED,
             CdkDragContext *context,
             gpointer        data)
 {
@@ -105,11 +105,11 @@ drag_begin (CtkWidget      *widget,
 }
 
 void
-drag_data_get (CtkWidget        *widget,
-               CdkDragContext   *context,
+drag_data_get (CtkWidget        *widget G_GNUC_UNUSED,
+               CdkDragContext   *context G_GNUC_UNUSED,
                CtkSelectionData *selection_data,
-               guint             info,
-               guint             time,
+               guint             info G_GNUC_UNUSED,
+               guint             time G_GNUC_UNUSED,
                gpointer          data)
 {
   GdkPixbuf *pixbuf;
@@ -120,13 +120,13 @@ drag_data_get (CtkWidget        *widget,
 }
 
 static void
-drag_data_received (CtkWidget        *widget,
-                    CdkDragContext   *context,
-                    gint              x,
-                    gint              y,
+drag_data_received (CtkWidget        *widget G_GNUC_UNUSED,
+                    CdkDragContext   *context G_GNUC_UNUSED,
+                    gint              x G_GNUC_UNUSED,
+                    gint              y G_GNUC_UNUSED,
                     CtkSelectionData *selection_data,
-                    guint             info,
-                    guint32           time,
+                    guint             info G_GNUC_UNUSED,
+                    guint32           time G_GNUC_UNUSED,
                     gpointer          data)
 {
   if (ctk_selection_data_get_length (selection_data) > 0)
@@ -140,7 +140,7 @@ drag_data_received (CtkWidget        *widget,
 }
 
 static void
-copy_image (CtkMenuItem *item,
+copy_image (CtkMenuItem *item G_GNUC_UNUSED,
             gpointer     data)
 {
   CtkClipboard *clipboard;
@@ -154,7 +154,7 @@ copy_image (CtkMenuItem *item,
 }
 
 static void
-paste_image (CtkMenuItem *item,
+paste_image (CtkMenuItem *item G_GNUC_UNUSED,
              gpointer     data)
 {
   CtkClipboard *clipboard;
@@ -171,7 +171,7 @@ paste_image (CtkMenuItem *item,
 }
 
 static gboolean
-button_press (CtkWidget      *widget,
+button_press (CtkWidget      *widget G_GNUC_UNUSED,
               CdkEventButton *button,
               gpointer        data)
 {

@@ -16,8 +16,8 @@ G_DEFINE_TYPE (BloatPad, bloat_pad, CTK_TYPE_APPLICATION)
 
 static void
 activate_toggle (GSimpleAction *action,
-                 GVariant      *parameter,
-                 gpointer       user_data)
+                 GVariant      *parameter G_GNUC_UNUSED,
+                 gpointer       user_data G_GNUC_UNUSED)
 {
   GVariant *state;
 
@@ -29,7 +29,7 @@ activate_toggle (GSimpleAction *action,
 static void
 activate_radio (GSimpleAction *action,
                 GVariant      *parameter,
-                gpointer       user_data)
+                gpointer       user_data G_GNUC_UNUSED)
 {
   g_action_change_state (G_ACTION (action), parameter);
 }
@@ -100,8 +100,8 @@ get_clipboard (CtkWidget *widget)
 }
 
 static void
-window_copy (GSimpleAction *action,
-             GVariant      *parameter,
+window_copy (GSimpleAction *action G_GNUC_UNUSED,
+             GVariant      *parameter G_GNUC_UNUSED,
              gpointer       user_data)
 {
   CtkWindow *window = CTK_WINDOW (user_data);
@@ -112,8 +112,8 @@ window_copy (GSimpleAction *action,
 }
 
 static void
-window_paste (GSimpleAction *action,
-              GVariant      *parameter,
+window_paste (GSimpleAction *action G_GNUC_UNUSED,
+              GVariant      *parameter G_GNUC_UNUSED,
               gpointer       user_data)
 {
   CtkWindow *window = CTK_WINDOW (user_data);
@@ -127,8 +127,8 @@ window_paste (GSimpleAction *action,
 }
 
 static void
-activate_clear (GSimpleAction *action,
-                GVariant      *parameter,
+activate_clear (GSimpleAction *action G_GNUC_UNUSED,
+                GVariant      *parameter G_GNUC_UNUSED,
                 gpointer       user_data)
 {
   CtkWindow *window = CTK_WINDOW (user_data);
@@ -138,8 +138,8 @@ activate_clear (GSimpleAction *action,
 }
 
 static void
-activate_clear_all (GSimpleAction *action,
-                    GVariant      *parameter,
+activate_clear_all (GSimpleAction *action G_GNUC_UNUSED,
+                    GVariant      *parameter G_GNUC_UNUSED,
                     gpointer       user_data)
 {
   CtkApplication *app = CTK_APPLICATION (user_data);
@@ -306,7 +306,7 @@ static void
 bloat_pad_open (GApplication  *application,
                 GFile        **files,
                 gint           n_files,
-                const gchar   *hint)
+                const gchar   *hint G_GNUC_UNUSED)
 {
   gint i;
 
@@ -321,8 +321,8 @@ bloat_pad_finalize (GObject *object)
 }
 
 static void
-new_activated (GSimpleAction *action,
-               GVariant      *parameter,
+new_activated (GSimpleAction *action G_GNUC_UNUSED,
+               GVariant      *parameter G_GNUC_UNUSED,
                gpointer       user_data)
 {
   GApplication *app = user_data;
@@ -331,9 +331,9 @@ new_activated (GSimpleAction *action,
 }
 
 static void
-about_activated (GSimpleAction *action,
-                 GVariant      *parameter,
-                 gpointer       user_data)
+about_activated (GSimpleAction *action G_GNUC_UNUSED,
+                 GVariant      *parameter G_GNUC_UNUSED,
+                 gpointer       user_data G_GNUC_UNUSED)
 {
   ctk_show_about_dialog (NULL,
                          "program-name", "Bloatpad",
@@ -343,8 +343,8 @@ about_activated (GSimpleAction *action,
 }
 
 static void
-quit_activated (GSimpleAction *action,
-                GVariant      *parameter,
+quit_activated (GSimpleAction *action G_GNUC_UNUSED,
+                GVariant      *parameter G_GNUC_UNUSED,
                 gpointer       user_data)
 {
   GApplication *app = user_data;
@@ -403,8 +403,8 @@ response (CtkDialog *dialog,
 }
 
 static void
-edit_accels (GSimpleAction *action,
-             GVariant      *parameter,
+edit_accels (GSimpleAction *action G_GNUC_UNUSED,
+             GVariant      *parameter G_GNUC_UNUSED,
              gpointer       user_data)
 {
   CtkApplication *app = user_data;
@@ -628,7 +628,7 @@ bloat_pad_shutdown (GApplication *application)
 }
 
 static void
-bloat_pad_init (BloatPad *app)
+bloat_pad_init (BloatPad *app G_GNUC_UNUSED)
 {
 }
 

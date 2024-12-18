@@ -2532,7 +2532,7 @@ calendar_invalidate_day (CtkCalendar *calendar,
 
 static gboolean
 is_color_attribute (PangoAttribute *attribute,
-                    gpointer        data)
+                    gpointer        data G_GNUC_UNUSED)
 {
   return (attribute->klass->type == PANGO_ATTR_FOREGROUND ||
           attribute->klass->type == PANGO_ATTR_BACKGROUND);
@@ -3295,7 +3295,7 @@ ctk_calendar_key_press (CtkWidget   *widget,
 
 static void
 ctk_calendar_state_flags_changed (CtkWidget     *widget,
-                                  CtkStateFlags  previous_state)
+                                  CtkStateFlags  previous_state G_GNUC_UNUSED)
 {
   CtkCalendar *calendar = CTK_CALENDAR (widget);
   CtkCalendarPrivate *priv = calendar->priv;
@@ -3317,7 +3317,7 @@ ctk_calendar_grab_notify (CtkWidget *widget,
 
 static gboolean
 ctk_calendar_focus_out (CtkWidget     *widget,
-                        CdkEventFocus *event)
+                        CdkEventFocus *event G_GNUC_UNUSED)
 {
   CtkCalendar *calendar = CTK_CALENDAR (widget);
 
@@ -3336,10 +3336,10 @@ ctk_calendar_focus_out (CtkWidget     *widget,
 
 static void
 ctk_calendar_drag_data_get (CtkWidget        *widget,
-                            CdkDragContext   *context,
+                            CdkDragContext   *context G_GNUC_UNUSED,
                             CtkSelectionData *selection_data,
-                            guint             info,
-                            guint             time)
+                            guint             info G_GNUC_UNUSED,
+                            guint             time G_GNUC_UNUSED)
 {
   CtkCalendar *calendar = CTK_CALENDAR (widget);
   CtkCalendarPrivate *priv = calendar->priv;
@@ -3376,8 +3376,8 @@ get_status_pending (CdkDragContext *context)
 
 static void
 ctk_calendar_drag_leave (CtkWidget      *widget,
-                         CdkDragContext *context,
-                         guint           time)
+                         CdkDragContext *context G_GNUC_UNUSED,
+                         guint           time G_GNUC_UNUSED)
 {
   CtkCalendarPrivate *priv = CTK_CALENDAR (widget)->priv;
 
@@ -3389,8 +3389,8 @@ ctk_calendar_drag_leave (CtkWidget      *widget,
 static gboolean
 ctk_calendar_drag_motion (CtkWidget      *widget,
                           CdkDragContext *context,
-                          gint            x,
-                          gint            y,
+                          gint            x G_GNUC_UNUSED,
+                          gint            y G_GNUC_UNUSED,
                           guint           time)
 {
   CtkCalendarPrivate *priv = CTK_CALENDAR (widget)->priv;
@@ -3417,8 +3417,8 @@ ctk_calendar_drag_motion (CtkWidget      *widget,
 static gboolean
 ctk_calendar_drag_drop (CtkWidget      *widget,
                         CdkDragContext *context,
-                        gint            x,
-                        gint            y,
+                        gint            x G_GNUC_UNUSED,
+                        gint            y G_GNUC_UNUSED,
                         guint           time)
 {
   CdkAtom target;
@@ -3438,10 +3438,10 @@ ctk_calendar_drag_drop (CtkWidget      *widget,
 static void
 ctk_calendar_drag_data_received (CtkWidget        *widget,
                                  CdkDragContext   *context,
-                                 gint              x,
-                                 gint              y,
+                                 gint              x G_GNUC_UNUSED,
+                                 gint              y G_GNUC_UNUSED,
                                  CtkSelectionData *selection_data,
-                                 guint             info,
+                                 guint             info G_GNUC_UNUSED,
                                  guint             time)
 {
   CtkCalendar *calendar = CTK_CALENDAR (widget);

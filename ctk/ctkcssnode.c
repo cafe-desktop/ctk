@@ -459,22 +459,22 @@ ctk_css_node_real_update_style (CtkCssNode   *cssnode,
 }
 
 static void
-ctk_css_node_real_invalidate (CtkCssNode *node)
+ctk_css_node_real_invalidate (CtkCssNode *node G_GNUC_UNUSED)
 {
 }
 
 static void
-ctk_css_node_real_queue_validate (CtkCssNode *node)
+ctk_css_node_real_queue_validate (CtkCssNode *node G_GNUC_UNUSED)
 {
 }
 
 static void
-ctk_css_node_real_dequeue_validate (CtkCssNode *node)
+ctk_css_node_real_dequeue_validate (CtkCssNode *node G_GNUC_UNUSED)
 {
 }
 
 static void
-ctk_css_node_real_validate (CtkCssNode *node)
+ctk_css_node_real_validate (CtkCssNode *node G_GNUC_UNUSED)
 {
 }
 
@@ -488,33 +488,33 @@ ctk_css_node_real_init_matcher (CtkCssNode     *cssnode,
 }
 
 static CtkWidgetPath *
-ctk_css_node_real_create_widget_path (CtkCssNode *cssnode)
+ctk_css_node_real_create_widget_path (CtkCssNode *cssnode G_GNUC_UNUSED)
 {
   return ctk_widget_path_new ();
 }
 
 static const CtkWidgetPath *
-ctk_css_node_real_get_widget_path (CtkCssNode *cssnode)
+ctk_css_node_real_get_widget_path (CtkCssNode *cssnode G_GNUC_UNUSED)
 {
   return NULL;
 }
 
 static CtkStyleProviderPrivate *
-ctk_css_node_real_get_style_provider (CtkCssNode *cssnode)
+ctk_css_node_real_get_style_provider (CtkCssNode *cssnode G_GNUC_UNUSED)
 {
   return NULL;
 }
 
 static CdkFrameClock *
-ctk_css_node_real_get_frame_clock (CtkCssNode *cssnode)
+ctk_css_node_real_get_frame_clock (CtkCssNode *cssnode G_GNUC_UNUSED)
 {
   return NULL;
 }
 
 static void
-ctk_css_node_real_node_removed (CtkCssNode *parent,
+ctk_css_node_real_node_removed (CtkCssNode *parent G_GNUC_UNUSED,
                                 CtkCssNode *node,
-                                CtkCssNode *previous)
+                                CtkCssNode *previous G_GNUC_UNUSED)
 {
   if (node->previous_sibling)
     node->previous_sibling->next_sibling = node->next_sibling;

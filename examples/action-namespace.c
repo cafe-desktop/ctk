@@ -2,7 +2,7 @@
 
 static void
 action_activated (GSimpleAction *action,
-                  GVariant      *parameter,
+                  GVariant      *parameter G_GNUC_UNUSED,
                   gpointer       user_data)
 {
   CtkWindow *parent = user_data;
@@ -66,7 +66,7 @@ const gchar *menu_ui =
 
 static void
 activate (GApplication *app,
-          gpointer      user_data)
+          gpointer      user_data G_GNUC_UNUSED)
 {
   CtkWidget *win;
   CtkWidget *button;

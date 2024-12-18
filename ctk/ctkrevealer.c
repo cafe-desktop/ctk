@@ -572,7 +572,7 @@ ctk_revealer_set_position (CtkRevealer *revealer,
 static gboolean
 ctk_revealer_animate_cb (CtkWidget     *widget,
                          CdkFrameClock *frame_clock,
-                         gpointer       user_data)
+                         gpointer       user_data G_GNUC_UNUSED)
 {
   CtkRevealer *revealer = CTK_REVEALER (widget);
   CtkRevealerPrivate *priv = ctk_revealer_get_instance_private (revealer);

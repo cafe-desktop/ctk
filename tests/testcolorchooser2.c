@@ -20,7 +20,9 @@ text_activated (CtkEntry *entry, gpointer data)
 }
 
 static void
-rgba_changed (CtkColorChooser *chooser, GParamSpec *pspec, gpointer data)
+rgba_changed (CtkColorChooser *chooser,
+	      GParamSpec      *pspec G_GNUC_UNUSED,
+	      gpointer         data)
 {
   CtkWidget *entry = data;
   CdkRGBA color;
@@ -36,7 +38,8 @@ rgba_changed (CtkColorChooser *chooser, GParamSpec *pspec, gpointer data)
   g_free (s);
 }
 
-int main (int argc, char *argv[])
+int main (int   argc G_GNUC_UNUSED,
+	  char *argv[] G_GNUC_UNUSED)
 {
   CtkWidget *window;
   CtkWidget *chooser;

@@ -144,7 +144,7 @@ redraw_everything (void)
 }
 
 static double
-get_font_scale (CtkInspectorVisual *vis)
+get_font_scale (CtkInspectorVisual *vis G_GNUC_UNUSED)
 {
 #ifdef CDK_WINDOWING_X11
   if (CDK_IS_X11_DISPLAY (cdk_display_get_default ()))
@@ -574,7 +574,8 @@ init_cursors (CtkInspectorVisual *vis)
 }
 
 static void
-cursor_size_changed (CtkAdjustment *adjustment, CtkInspectorVisual *vis)
+cursor_size_changed (CtkAdjustment      *adjustment,
+                     CtkInspectorVisual *vis G_GNUC_UNUSED)
 {
   gint size;
 
@@ -619,7 +620,8 @@ init_font_scale (CtkInspectorVisual *vis)
 
 #if defined (CDK_WINDOWING_X11)
 static void
-scale_changed (CtkAdjustment *adjustment, CtkInspectorVisual *vis)
+scale_changed (CtkAdjustment      *adjustment,
+               CtkInspectorVisual *vis G_GNUC_UNUSED)
 {
   CdkDisplay *display;
   gint scale;
@@ -845,7 +847,7 @@ init_rendering_mode (CtkInspectorVisual *vis)
 
 static void
 rendering_mode_changed (CtkComboBox        *c,
-                        CtkInspectorVisual *vis)
+                        CtkInspectorVisual *vis G_GNUC_UNUSED)
 {
   CdkRenderingMode mode;
 
@@ -973,5 +975,3 @@ ctk_inspector_visual_class_init (CtkInspectorVisualClass *klass)
   ctk_widget_class_bind_template_callback (widget_class, software_surface_activate);
   ctk_widget_class_bind_template_callback (widget_class, texture_rectangle_activate);
 }
-
-// vim: set et sw=2 ts=2:

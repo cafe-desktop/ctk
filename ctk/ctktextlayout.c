@@ -1248,7 +1248,7 @@ get_style (CtkTextLayout *layout,
 }
 
 static void
-release_style (CtkTextLayout *layout,
+release_style (CtkTextLayout     *layout G_GNUC_UNUSED,
                CtkTextAttributes *style)
 {
   g_return_if_fail (style != NULL);
@@ -1558,7 +1558,7 @@ ctk_text_attr_appearance_new (const CtkTextAppearance *appearance)
 }
 
 static void
-add_generic_attrs (CtkTextLayout      *layout,
+add_generic_attrs (CtkTextLayout      *layout G_GNUC_UNUSED,
                    CtkTextAppearance  *appearance,
                    gint                byte_count,
                    PangoAttrList      *attrs,
@@ -1644,12 +1644,12 @@ add_generic_attrs (CtkTextLayout      *layout,
 }
 
 static void
-add_text_attrs (CtkTextLayout      *layout,
+add_text_attrs (CtkTextLayout      *layout G_GNUC_UNUSED,
                 CtkTextAttributes  *style,
                 gint                byte_count,
                 PangoAttrList      *attrs,
                 gint                start,
-                gboolean            size_only)
+                gboolean            size_only G_GNUC_UNUSED)
 {
   PangoAttribute *attr;
 
@@ -1697,9 +1697,9 @@ add_text_attrs (CtkTextLayout      *layout,
 }
 
 static void
-add_pixbuf_attrs (CtkTextLayout      *layout,
-                  CtkTextLineDisplay *display,
-                  CtkTextAttributes  *style,
+add_pixbuf_attrs (CtkTextLayout      *layout G_GNUC_UNUSED,
+                  CtkTextLineDisplay *display G_GNUC_UNUSED,
+                  CtkTextAttributes  *style G_GNUC_UNUSED,
                   CtkTextLineSegment *seg,
                   PangoAttrList      *attrs,
                   gint                start)
@@ -1726,8 +1726,8 @@ add_pixbuf_attrs (CtkTextLayout      *layout,
 
 static void
 add_child_attrs (CtkTextLayout      *layout,
-                 CtkTextLineDisplay *display,
-                 CtkTextAttributes  *style,
+                 CtkTextLineDisplay *display G_GNUC_UNUSED,
+                 CtkTextAttributes  *style G_GNUC_UNUSED,
                  CtkTextLineSegment *seg,
                  PangoAttrList      *attrs,
                  gint                start)
@@ -3716,7 +3716,7 @@ ctk_text_layout_move_iter_visually (CtkTextLayout *layout,
 }
 
 void
-ctk_text_layout_spew (CtkTextLayout *layout)
+ctk_text_layout_spew (CtkTextLayout *layout G_GNUC_UNUSED)
 {
 #if 0
   CtkTextDisplayLine *iter;
@@ -3755,7 +3755,7 @@ ctk_text_layout_spew (CtkTextLayout *layout)
  */
 static void
 ctk_text_layout_mark_set_handler (CtkTextBuffer     *buffer,
-                                  const CtkTextIter *location,
+                                  const CtkTextIter *location G_GNUC_UNUSED,
                                   CtkTextMark       *mark,
                                   gpointer           data)
 {
@@ -3766,10 +3766,10 @@ ctk_text_layout_mark_set_handler (CtkTextBuffer     *buffer,
 }
 
 static void
-ctk_text_layout_buffer_insert_text (CtkTextBuffer *textbuffer,
-				    CtkTextIter   *iter,
-				    gchar         *str,
-				    gint           len,
+ctk_text_layout_buffer_insert_text (CtkTextBuffer *textbuffer G_GNUC_UNUSED,
+				    CtkTextIter   *iter G_GNUC_UNUSED,
+				    gchar         *str G_GNUC_UNUSED,
+				    gint           len G_GNUC_UNUSED,
 				    gpointer       data)
 {
   CtkTextLayout *layout = CTK_TEXT_LAYOUT (data);
@@ -3778,9 +3778,9 @@ ctk_text_layout_buffer_insert_text (CtkTextBuffer *textbuffer,
 }
 
 static void
-ctk_text_layout_buffer_delete_range (CtkTextBuffer *textbuffer,
-				     CtkTextIter   *start,
-				     CtkTextIter   *end,
+ctk_text_layout_buffer_delete_range (CtkTextBuffer *textbuffer G_GNUC_UNUSED,
+				     CtkTextIter   *start G_GNUC_UNUSED,
+				     CtkTextIter   *end G_GNUC_UNUSED,
 				     gpointer       data)
 {
   CtkTextLayout *layout = CTK_TEXT_LAYOUT (data);

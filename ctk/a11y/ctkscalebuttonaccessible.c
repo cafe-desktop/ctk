@@ -32,7 +32,7 @@ G_DEFINE_TYPE_WITH_CODE (CtkScaleButtonAccessible, ctk_scale_button_accessible, 
                          G_IMPLEMENT_INTERFACE (ATK_TYPE_VALUE, atk_value_interface_init));
 
 static void
-ctk_scale_button_accessible_value_changed (CtkAdjustment *adjustment,
+ctk_scale_button_accessible_value_changed (CtkAdjustment *adjustment G_GNUC_UNUSED,
                                            gpointer       data)
 {
   g_object_notify (G_OBJECT (data), "accessible-value");
@@ -94,7 +94,7 @@ ctk_scale_button_accessible_class_init (CtkScaleButtonAccessibleClass *klass)
 }
 
 static void
-ctk_scale_button_accessible_init (CtkScaleButtonAccessible *button)
+ctk_scale_button_accessible_init (CtkScaleButtonAccessible *button G_GNUC_UNUSED)
 {
 }
 
@@ -125,13 +125,13 @@ ctk_scale_button_accessible_do_action (AtkAction *action,
 }
 
 static gint
-ctk_scale_button_accessible_get_n_actions (AtkAction *action)
+ctk_scale_button_accessible_get_n_actions (AtkAction *action G_GNUC_UNUSED)
 {
   return 2;
 }
 
 static const gchar *
-ctk_scale_button_accessible_get_description (AtkAction *action,
+ctk_scale_button_accessible_get_description (AtkAction *action G_GNUC_UNUSED,
                                              gint       i)
 {
   switch (i)
@@ -146,7 +146,7 @@ ctk_scale_button_accessible_get_description (AtkAction *action,
 }
 
 static const gchar *
-ctk_scale_button_accessible_action_get_name (AtkAction *action,
+ctk_scale_button_accessible_action_get_name (AtkAction *action G_GNUC_UNUSED,
                                              gint       i)
 {
   switch (i)
@@ -161,7 +161,7 @@ ctk_scale_button_accessible_action_get_name (AtkAction *action,
 }
 
 static const gchar *
-ctk_scale_button_accessible_action_get_localized_name (AtkAction *action,
+ctk_scale_button_accessible_action_get_localized_name (AtkAction *action G_GNUC_UNUSED,
                                                        gint       i)
 {
   switch (i)

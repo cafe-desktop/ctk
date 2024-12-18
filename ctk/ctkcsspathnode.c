@@ -93,7 +93,7 @@ ctk_css_path_node_real_get_widget_path (CtkCssNode *node)
 static CtkCssStyle *
 ctk_css_path_node_update_style (CtkCssNode   *cssnode,
                                 CtkCssChange  change,
-                                gint64        timestamp,
+                                gint64        timestamp G_GNUC_UNUSED,
                                 CtkCssStyle  *style)
 {
   /* This should get rid of animations */
@@ -128,7 +128,7 @@ ctk_css_path_node_class_init (CtkCssPathNodeClass *klass)
 }
 
 static void
-ctk_css_path_node_init (CtkCssPathNode *cssnode)
+ctk_css_path_node_init (CtkCssPathNode *cssnode G_GNUC_UNUSED)
 {
 }
 

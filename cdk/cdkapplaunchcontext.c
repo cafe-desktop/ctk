@@ -156,8 +156,8 @@ cdk_app_launch_context_finalize (GObject *object)
 
 static gchar *
 cdk_app_launch_context_get_display (GAppLaunchContext *context,
-                                    GAppInfo          *info,
-                                    GList             *files)
+                                    GAppInfo          *info G_GNUC_UNUSED,
+                                    GList             *files G_GNUC_UNUSED)
 {
   CdkAppLaunchContext *ctx = CDK_APP_LAUNCH_CONTEXT (context);
   CdkDisplay *display;
@@ -355,15 +355,15 @@ cdk_app_launch_context_new (void)
 }
 
 static char *
-cdk_app_launch_context_get_startup_notify_id (GAppLaunchContext *context,
-                                              GAppInfo          *info,
-                                              GList             *files)
+cdk_app_launch_context_get_startup_notify_id (GAppLaunchContext *context G_GNUC_UNUSED,
+                                              GAppInfo          *info G_GNUC_UNUSED,
+                                              GList             *files G_GNUC_UNUSED)
 {
  return NULL;
 }
 
 static void
-cdk_app_launch_context_launch_failed (GAppLaunchContext *context,
-                                      const gchar       *startup_notify_id)
+cdk_app_launch_context_launch_failed (GAppLaunchContext *context G_GNUC_UNUSED,
+                                      const gchar       *startup_notify_id G_GNUC_UNUSED)
 {
 }

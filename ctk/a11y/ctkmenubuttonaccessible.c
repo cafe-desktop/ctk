@@ -114,6 +114,6 @@ ctk_menu_button_accessible_class_init (CtkMenuButtonAccessibleClass *klass)
 }
 
 static void
-ctk_menu_button_accessible_init (CtkMenuButtonAccessible *menu_button)
+ctk_menu_button_accessible_init (CtkMenuButtonAccessible *menu_button G_GNUC_UNUSED)
 {
 }

@@ -113,7 +113,7 @@ ctk_notebook_page_accessible_get_parent (AtkObject *accessible)
 }
 
 static gint
-ctk_notebook_page_accessible_get_n_children (AtkObject *accessible)
+ctk_notebook_page_accessible_get_n_children (AtkObject *accessible G_GNUC_UNUSED)
 {
   return 1;
 }
@@ -229,8 +229,8 @@ ctk_notebook_page_accessible_init (CtkNotebookPageAccessible *page)
 }
 
 static void
-notify_tab_label (GObject    *object,
-                  GParamSpec *pspec,
+notify_tab_label (GObject    *object G_GNUC_UNUSED,
+                  GParamSpec *pspec G_GNUC_UNUSED,
                   AtkObject  *atk_obj)
 {
   if (atk_obj->name == NULL)
@@ -287,9 +287,9 @@ ctk_notebook_page_accessible_invalidate (CtkNotebookPageAccessible *page)
 
 static AtkObject*
 ctk_notebook_page_accessible_ref_accessible_at_point (AtkComponent *component,
-                                                      gint          x,
-                                                      gint          y,
-                                                      AtkCoordType  coord_type)
+                                                      gint          x G_GNUC_UNUSED,
+                                                      gint          y G_GNUC_UNUSED,
+                                                      AtkCoordType  coord_type G_GNUC_UNUSED)
 {
   /* There is only one child so we return it */
   AtkObject* child;

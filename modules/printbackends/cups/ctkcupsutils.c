@@ -925,7 +925,7 @@ static char *cups_password = NULL;
 static char *cups_username = NULL;
 
 static const char *
-passwordCB (const char *prompt)
+passwordCB (const char *prompt G_GNUC_UNUSED)
 {
   char *pwd = cups_password;
   cups_password = NULL;

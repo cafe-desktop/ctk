@@ -161,11 +161,11 @@ ctk_inspector_signals_list_set_object (CtkInspectorSignalsList *sl,
 }
 
 static void
-render_count (CtkTreeViewColumn *column,
+render_count (CtkTreeViewColumn *column G_GNUC_UNUSED,
               CtkCellRenderer   *renderer,
               CtkTreeModel      *model,
               CtkTreeIter       *iter,
-              gpointer           data)
+              gpointer           data G_GNUC_UNUSED)
 {
   gint count;
   gboolean no_hooks;
@@ -207,7 +207,7 @@ ctk_inspector_signals_list_init (CtkInspectorSignalsList *sl)
 
 static gboolean
 trace_hook (GSignalInvocationHint *ihint,
-            guint                  n_param_values,
+            guint                  n_param_values G_GNUC_UNUSED,
             const GValue          *param_values,
             gpointer               data)
 {
@@ -232,7 +232,7 @@ trace_hook (GSignalInvocationHint *ihint,
 
 static gboolean
 start_tracing_cb (CtkTreeModel *model,
-                  CtkTreePath  *path,
+                  CtkTreePath  *path G_GNUC_UNUSED,
                   CtkTreeIter  *iter,
                   gpointer      data)
 {
@@ -265,9 +265,9 @@ start_tracing_cb (CtkTreeModel *model,
 
 static gboolean
 stop_tracing_cb (CtkTreeModel *model,
-                 CtkTreePath  *path,
+                 CtkTreePath  *path G_GNUC_UNUSED,
                  CtkTreeIter  *iter,
-                 gpointer      data)
+                 gpointer      data G_GNUC_UNUSED)
 {
   guint signal_id;
   gulong hook_id;
@@ -321,16 +321,17 @@ toggle_tracing (CtkToggleButton *button, CtkInspectorSignalsList *sl)
 
 static gboolean
 clear_log_cb (CtkTreeModel *model,
-              CtkTreePath  *path,
+              CtkTreePath  *path G_GNUC_UNUSED,
               CtkTreeIter  *iter,
-              gpointer      data)
+              gpointer      data G_GNUC_UNUSED)
 {
   ctk_list_store_set (CTK_LIST_STORE (model), iter, COLUMN_COUNT, 0, -1);
   return FALSE;
 }
 
 static void
-clear_log (CtkButton *button, CtkInspectorSignalsList *sl)
+clear_log (CtkButton               *button G_GNUC_UNUSED,
+           CtkInspectorSignalsList *sl)
 {
   ctk_text_buffer_set_text (sl->priv->text, "", -1);
 

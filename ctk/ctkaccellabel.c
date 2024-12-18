@@ -270,7 +270,7 @@ ctk_accel_label_get_property (GObject    *object,
 }
 
 static void
-node_style_changed_cb (CtkCssNode        *node,
+node_style_changed_cb (CtkCssNode        *node G_GNUC_UNUSED,
                        CtkCssStyleChange *change,
                        CtkWidget         *widget)
 {
@@ -515,7 +515,7 @@ refetch_widget_accel_closure (CtkAccelLabel *accel_label)
 
 static void
 accel_widget_weak_ref_cb (CtkAccelLabel *accel_label,
-                          CtkWidget     *old_accel_widget)
+                          CtkWidget     *old_accel_widget G_GNUC_UNUSED)
 {
   g_return_if_fail (CTK_IS_ACCEL_LABEL (accel_label));
   g_return_if_fail (CTK_IS_WIDGET (accel_label->priv->accel_widget));
@@ -581,9 +581,9 @@ ctk_accel_label_reset (CtkAccelLabel *accel_label)
 }
 
 static void
-check_accel_changed (CtkAccelGroup  *accel_group,
-		     guint           keyval,
-		     CdkModifierType modifier,
+check_accel_changed (CtkAccelGroup  *accel_group G_GNUC_UNUSED,
+		     guint           keyval G_GNUC_UNUSED,
+		     CdkModifierType modifier G_GNUC_UNUSED,
 		     GClosure       *accel_closure,
 		     CtkAccelLabel  *accel_label)
 {
@@ -639,7 +639,7 @@ ctk_accel_label_set_accel_closure (CtkAccelLabel *accel_label,
 }
 
 static gboolean
-find_accel (CtkAccelKey *key,
+find_accel (CtkAccelKey *key G_GNUC_UNUSED,
 	    GClosure    *closure,
 	    gpointer     data)
 {
@@ -691,8 +691,8 @@ append_without_underscores (GString *s,
  * See http://docs.info.apple.com/article.html?path=Mac/10.5/en/cdb_symbs.html 
  * for the list of special keys. */
 static gboolean
-append_keyval_symbol (guint    accelerator_key,
-                      GString *gstring)
+append_keyval_symbol (guint    accelerator_key G_GNUC_UNUSED,
+                      GString *gstring G_GNUC_UNUSED)
 {
 #ifdef CDK_WINDOWING_QUARTZ
   switch (accelerator_key)

@@ -182,8 +182,8 @@ _ctk_file_chooser_entry_class_init (CtkFileChooserEntryClass *class)
 }
 
 static gboolean
-match_func (CtkEntryCompletion *compl,
-            const gchar        *key,
+match_func (CtkEntryCompletion *compl G_GNUC_UNUSED,
+            const gchar        *key G_GNUC_UNUSED,
             CtkTreeIter        *iter,
             gpointer            user_data)
 {
@@ -335,7 +335,7 @@ ctk_file_chooser_entry_dispose (GObject *object)
 
 /* Match functions for the CtkEntryCompletion */
 static gboolean
-match_selected_callback (CtkEntryCompletion  *completion,
+match_selected_callback (CtkEntryCompletion  *completion G_GNUC_UNUSED,
                          CtkTreeModel        *model,
                          CtkTreeIter         *iter,
                          CtkFileChooserEntry *chooser_entry)
@@ -584,8 +584,8 @@ discard_completion_store (CtkFileChooserEntry *chooser_entry)
 }
 
 static gboolean
-completion_store_set (CtkFileSystemModel  *model,
-                      GFile               *file,
+completion_store_set (CtkFileSystemModel  *model G_GNUC_UNUSED,
+                      GFile               *file G_GNUC_UNUSED,
                       GFileInfo           *info,
                       int                  column,
                       GValue              *value,
@@ -649,7 +649,7 @@ populate_completion_store (CtkFileChooserEntry *chooser_entry)
 
 /* Callback when the current folder finishes loading */
 static void
-finished_loading_cb (CtkFileSystemModel  *model,
+finished_loading_cb (CtkFileSystemModel  *model G_GNUC_UNUSED,
                      GError              *error,
 		     CtkFileChooserEntry *chooser_entry)
 {

@@ -222,7 +222,7 @@ static guint16 viqr_compose_seqs[] = {
 };
 
 static void
-viqr_class_init (CtkIMContextSimpleClass *class)
+viqr_class_init (CtkIMContextSimpleClass *class G_GNUC_UNUSED)
 {
 }
 

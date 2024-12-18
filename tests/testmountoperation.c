@@ -30,7 +30,7 @@ static gboolean dont_save_password = FALSE;
 static void
 got_reply (GMountOperation       *op,
            GMountOperationResult  result,
-           gpointer               user_data)
+           gpointer               user_data G_GNUC_UNUSED)
 {
   if (result == G_MOUNT_OPERATION_HANDLED)
     {

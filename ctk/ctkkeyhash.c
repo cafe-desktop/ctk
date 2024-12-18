@@ -47,9 +47,9 @@ struct _CtkKeyHash
 };
 
 static void
-key_hash_clear_keycode (gpointer key,
+key_hash_clear_keycode (gpointer key G_GNUC_UNUSED,
 			gpointer value,
-			gpointer data)
+			gpointer data G_GNUC_UNUSED)
 {
   GSList *keys = value;
   g_slist_free (keys);
@@ -98,7 +98,7 @@ key_hash_get_keycode_hash (CtkKeyHash *key_hash)
 }
 
 static void
-key_hash_keys_changed (CdkKeymap  *keymap,
+key_hash_keys_changed (CdkKeymap  *keymap G_GNUC_UNUSED,
 		       CtkKeyHash *key_hash)
 {
   /* The keymap changed, so we have to regenerate the keycode hash

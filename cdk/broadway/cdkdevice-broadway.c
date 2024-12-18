@@ -98,12 +98,12 @@ cdk_broadway_device_init (CdkBroadwayDevice *device_core)
 }
 
 static gboolean
-cdk_broadway_device_get_history (CdkDevice      *device,
-				 CdkWindow      *window,
-				 guint32         start,
-				 guint32         stop,
-				 CdkTimeCoord ***events,
-				 gint           *n_events)
+cdk_broadway_device_get_history (CdkDevice      *device G_GNUC_UNUSED,
+				 CdkWindow      *window G_GNUC_UNUSED,
+				 guint32         start G_GNUC_UNUSED,
+				 guint32         stop G_GNUC_UNUSED,
+				 CdkTimeCoord ***events G_GNUC_UNUSED,
+				 gint           *n_events G_GNUC_UNUSED)
 {
   return FALSE;
 }
@@ -126,17 +126,17 @@ cdk_broadway_device_get_state (CdkDevice       *device,
 }
 
 static void
-cdk_broadway_device_set_window_cursor (CdkDevice *device,
-				       CdkWindow *window,
-				       CdkCursor *cursor)
+cdk_broadway_device_set_window_cursor (CdkDevice *device G_GNUC_UNUSED,
+				       CdkWindow *window G_GNUC_UNUSED,
+				       CdkCursor *cursor G_GNUC_UNUSED)
 {
 }
 
 static void
-cdk_broadway_device_warp (CdkDevice *device,
-			  CdkScreen *screen,
-			  gdouble    x,
-			  gdouble    y)
+cdk_broadway_device_warp (CdkDevice *device G_GNUC_UNUSED,
+			  CdkScreen *screen G_GNUC_UNUSED,
+			  gdouble    x G_GNUC_UNUSED,
+			  gdouble    y G_GNUC_UNUSED)
 {
 }
 
@@ -274,8 +274,8 @@ cdk_broadway_device_grab (CdkDevice    *device,
 			  CdkWindow    *window,
 			  gboolean      owner_events,
 			  CdkEventMask  event_mask,
-			  CdkWindow    *confine_to,
-			  CdkCursor    *cursor,
+			  CdkWindow    *confine_to G_GNUC_UNUSED,
+			  CdkCursor    *cursor G_GNUC_UNUSED,
 			  guint32       time_)
 {
   CdkDisplay *display;
@@ -344,7 +344,7 @@ cdk_broadway_device_window_at_position (CdkDevice       *device,
 					gdouble         *win_x,
 					gdouble         *win_y,
 					CdkModifierType *mask,
-					gboolean         get_toplevel)
+					gboolean         get_toplevel G_GNUC_UNUSED)
 {
   CdkScreen *screen;
   CdkWindow *root_window;
@@ -359,8 +359,8 @@ cdk_broadway_device_window_at_position (CdkDevice       *device,
 }
 
 static void
-cdk_broadway_device_select_window_events (CdkDevice    *device,
-					  CdkWindow    *window,
-					  CdkEventMask  event_mask)
+cdk_broadway_device_select_window_events (CdkDevice    *device G_GNUC_UNUSED,
+					  CdkWindow    *window G_GNUC_UNUSED,
+					  CdkEventMask  event_mask G_GNUC_UNUSED)
 {
 }

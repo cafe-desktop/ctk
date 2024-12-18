@@ -245,7 +245,7 @@ ctk_combo_box_accessible_do_action (AtkAction *action,
 }
 
 static gint
-ctk_combo_box_accessible_get_n_actions (AtkAction *action)
+ctk_combo_box_accessible_get_n_actions (AtkAction *action G_GNUC_UNUSED)
 {
   return 1;
 }
@@ -297,7 +297,7 @@ ctk_combo_box_accessible_get_keybinding (AtkAction *action,
 }
 
 static const gchar *
-ctk_combo_box_accessible_action_get_name (AtkAction *action,
+ctk_combo_box_accessible_action_get_name (AtkAction *action G_GNUC_UNUSED,
                                           gint       i)
 {
   if (i == 0)
@@ -306,7 +306,7 @@ ctk_combo_box_accessible_action_get_name (AtkAction *action,
 }
 
 static const gchar *
-ctk_combo_box_accessible_action_get_localized_name (AtkAction *action,
+ctk_combo_box_accessible_action_get_localized_name (AtkAction *action G_GNUC_UNUSED,
                                                     gint       i)
 {
   if (i == 0)
@@ -315,7 +315,7 @@ ctk_combo_box_accessible_action_get_localized_name (AtkAction *action,
 }
 
 static const gchar *
-ctk_combo_box_accessible_action_get_description (AtkAction *action,
+ctk_combo_box_accessible_action_get_description (AtkAction *action G_GNUC_UNUSED,
                                                  gint       i)
 {
   if (i == 0)

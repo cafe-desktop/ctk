@@ -48,7 +48,8 @@ ctk_compose_data_free (CtkComposeData *compose_data)
 }
 
 static void
-ctk_compose_list_element_free (CtkComposeData *compose_data, gpointer data)
+ctk_compose_list_element_free (CtkComposeData *compose_data,
+                               gpointer        data G_GNUC_UNUSED)
 {
   ctk_compose_data_free (compose_data);
 }

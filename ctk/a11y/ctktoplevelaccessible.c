@@ -88,7 +88,7 @@ ctk_toplevel_accessible_ref_child (AtkObject *obj,
 }
 
 static const char *
-ctk_toplevel_accessible_get_name (AtkObject *obj)
+ctk_toplevel_accessible_get_name (AtkObject *obj G_GNUC_UNUSED)
 {
   return g_get_prgname ();
 }
@@ -189,8 +189,8 @@ remove_child (CtkToplevelAccessible *toplevel,
 }
 
 static gboolean
-show_event_watcher (GSignalInvocationHint *ihint,
-                    guint                  n_param_values,
+show_event_watcher (GSignalInvocationHint *ihint G_GNUC_UNUSED,
+                    guint                  n_param_values G_GNUC_UNUSED,
                     const GValue          *param_values,
                     gpointer               data)
 {
@@ -235,8 +235,8 @@ show_event_watcher (GSignalInvocationHint *ihint,
 }
 
 static gboolean
-hide_event_watcher (GSignalInvocationHint *ihint,
-                    guint                  n_param_values,
+hide_event_watcher (GSignalInvocationHint *ihint G_GNUC_UNUSED,
+                    guint                  n_param_values G_GNUC_UNUSED,
                     const GValue          *param_values,
                     gpointer               data)
 {

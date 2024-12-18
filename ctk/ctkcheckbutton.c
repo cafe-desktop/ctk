@@ -259,8 +259,8 @@ ctk_check_button_class_init (CtkCheckButtonClass *class)
 
 static void
 draw_indicator_changed (GObject    *object,
-                        GParamSpec *pspec,
-                        gpointer    user_data)
+                        GParamSpec *pspec G_GNUC_UNUSED,
+                        gpointer    user_data G_GNUC_UNUSED)
 {
   CtkButton *button = CTK_BUTTON (object);
   CtkCheckButtonPrivate *priv = ctk_check_button_get_instance_private (CTK_CHECK_BUTTON (button));

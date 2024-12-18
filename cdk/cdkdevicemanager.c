@@ -254,7 +254,7 @@ cdk_device_manager_class_init (CdkDeviceManagerClass *klass)
 }
 
 static void
-cdk_device_manager_init (CdkDeviceManager *device_manager)
+cdk_device_manager_init (CdkDeviceManager *device_manager G_GNUC_UNUSED)
 {
 }
 

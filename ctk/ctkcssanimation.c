@@ -118,7 +118,7 @@ ctk_css_animation_apply_values (CtkStyleAnimation    *style_animation,
 }
 
 static gboolean
-ctk_css_animation_is_finished (CtkStyleAnimation *style_animation)
+ctk_css_animation_is_finished (CtkStyleAnimation *style_animation G_GNUC_UNUSED)
 {
   return FALSE;
 }
@@ -161,7 +161,7 @@ _ctk_css_animation_class_init (CtkCssAnimationClass *klass)
 }
 
 static void
-_ctk_css_animation_init (CtkCssAnimation *animation)
+_ctk_css_animation_init (CtkCssAnimation *animation G_GNUC_UNUSED)
 {
 }
 

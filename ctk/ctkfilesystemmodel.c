@@ -488,7 +488,7 @@ node_compute_visibility_and_filters (CtkFileSystemModel *model, guint id)
 /*** CtkTreeModel ***/
 
 static CtkTreeModelFlags
-ctk_file_system_model_get_flags (CtkTreeModel *tree_model)
+ctk_file_system_model_get_flags (CtkTreeModel *tree_model G_GNUC_UNUSED)
 {
   /* CTK_TREE_MODEL_ITERS_PERSIST doesn't work with arrays :( */
   return CTK_TREE_MODEL_LIST_ONLY;
@@ -650,16 +650,16 @@ ctk_file_system_model_iter_next (CtkTreeModel *tree_model,
 }
 
 static gboolean
-ctk_file_system_model_iter_children (CtkTreeModel *tree_model,
-				     CtkTreeIter  *iter,
-				     CtkTreeIter  *parent)
+ctk_file_system_model_iter_children (CtkTreeModel *tree_model G_GNUC_UNUSED,
+				     CtkTreeIter  *iter G_GNUC_UNUSED,
+				     CtkTreeIter  *parent G_GNUC_UNUSED)
 {
   return FALSE;
 }
 
 static gboolean
-ctk_file_system_model_iter_has_child (CtkTreeModel *tree_model,
-				      CtkTreeIter  *iter)
+ctk_file_system_model_iter_has_child (CtkTreeModel *tree_model G_GNUC_UNUSED,
+				      CtkTreeIter  *iter G_GNUC_UNUSED)
 {
   return FALSE;
 }
@@ -677,23 +677,23 @@ ctk_file_system_model_iter_n_children (CtkTreeModel *tree_model,
 }
 
 static gboolean
-ctk_file_system_model_iter_parent (CtkTreeModel *tree_model,
-				   CtkTreeIter  *iter,
-				   CtkTreeIter  *child)
+ctk_file_system_model_iter_parent (CtkTreeModel *tree_model G_GNUC_UNUSED,
+				   CtkTreeIter  *iter G_GNUC_UNUSED,
+				   CtkTreeIter  *child G_GNUC_UNUSED)
 {
   return FALSE;
 }
 
 static void
-ctk_file_system_model_ref_node (CtkTreeModel *tree_model,
-				CtkTreeIter  *iter)
+ctk_file_system_model_ref_node (CtkTreeModel *tree_model G_GNUC_UNUSED,
+				CtkTreeIter  *iter G_GNUC_UNUSED)
 {
   /* nothing to do */
 }
 
 static void
-ctk_file_system_model_unref_node (CtkTreeModel *tree_model,
-				  CtkTreeIter  *iter)
+ctk_file_system_model_unref_node (CtkTreeModel *tree_model G_GNUC_UNUSED,
+				  CtkTreeIter  *iter G_GNUC_UNUSED)
 {
   /* nothing to do */
 }
@@ -833,7 +833,8 @@ ctk_file_system_model_sort (CtkFileSystemModel *model)
 }
 
 static void
-ctk_file_system_model_sort_node (CtkFileSystemModel *model, guint node)
+ctk_file_system_model_sort_node (CtkFileSystemModel *model,
+				 guint               node G_GNUC_UNUSED)
 {
   /* FIXME: improve */
   ctk_file_system_model_sort (model);
@@ -1119,7 +1120,9 @@ _ctk_file_system_model_init (CtkFileSystemModel *model)
 /*** API ***/
 
 static void
-ctk_file_system_model_closed_enumerator (GObject *object, GAsyncResult *res, gpointer data)
+ctk_file_system_model_closed_enumerator (GObject      *object,
+					 GAsyncResult *res,
+					 gpointer      data G_GNUC_UNUSED)
 {
   g_file_enumerator_close_finish (G_FILE_ENUMERATOR (object), res, NULL);
 }
@@ -1257,9 +1260,9 @@ ctk_file_system_model_query_done (GObject *     object,
 }
 
 static void
-ctk_file_system_model_monitor_change (GFileMonitor *      monitor,
+ctk_file_system_model_monitor_change (GFileMonitor *      monitor G_GNUC_UNUSED,
                                       GFile *             file,
-                                      GFile *             other_file,
+                                      GFile *             other_file G_GNUC_UNUSED,
                                       GFileMonitorEvent   type,
                                       CtkFileSystemModel *model)
 {

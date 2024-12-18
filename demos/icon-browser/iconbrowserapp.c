@@ -16,13 +16,13 @@ struct _IconBrowserAppClass
 G_DEFINE_TYPE(IconBrowserApp, icon_browser_app, CTK_TYPE_APPLICATION);
 
 static void
-icon_browser_app_init (IconBrowserApp *app)
+icon_browser_app_init (IconBrowserApp *app G_GNUC_UNUSED)
 {
 }
 
 static void
-quit_activated (GSimpleAction *action,
-                GVariant      *parameter,
+quit_activated (GSimpleAction *action G_GNUC_UNUSED,
+                GVariant      *parameter G_GNUC_UNUSED,
                 gpointer       app)
 {
   g_application_quit (G_APPLICATION (app));

@@ -373,7 +373,7 @@ ctk_font_chooser_widget_refilter_font_list (CtkFontChooserWidget *fontchooser)
 }
 
 static void
-text_changed_cb (CtkEntry             *entry,
+text_changed_cb (CtkEntry             *entry G_GNUC_UNUSED,
                  CtkFontChooserWidget *fc)
 {
   ctk_font_chooser_widget_refilter_font_list (fc);
@@ -419,7 +419,7 @@ size_change_cb (CtkAdjustment *adjustment,
 
 static gboolean
 output_cb (CtkSpinButton *spin,
-           gpointer       data)
+           gpointer       data G_GNUC_UNUSED)
 {
   CtkAdjustment *adjustment;
   gchar *text;
@@ -519,9 +519,9 @@ ctk_font_chooser_widget_update_marks (CtkFontChooserWidget *fontchooser)
 }
 
 static void
-row_activated_cb (CtkTreeView       *view,
-                  CtkTreePath       *path,
-                  CtkTreeViewColumn *column,
+row_activated_cb (CtkTreeView       *view G_GNUC_UNUSED,
+                  CtkTreePath       *path G_GNUC_UNUSED,
+                  CtkTreeViewColumn *column G_GNUC_UNUSED,
                   gpointer           user_data)
 {
   CtkFontChooserWidget *fontchooser = user_data;
@@ -571,7 +571,7 @@ cursor_changed_cb (CtkTreeView *treeview,
 }
 
 static gboolean
-resize_by_scroll_cb (CtkWidget      *scrolled_window,
+resize_by_scroll_cb (CtkWidget      *scrolled_window G_GNUC_UNUSED,
                      CdkEventScroll *event,
                      gpointer        user_data)
 {
@@ -624,9 +624,9 @@ ctk_font_chooser_widget_update_preview_attributes (CtkFontChooserWidget *fontcho
 }
 
 static void
-row_inserted_cb (CtkTreeModel *model,
-                 CtkTreePath  *path,
-                 CtkTreeIter  *iter,
+row_inserted_cb (CtkTreeModel *model G_GNUC_UNUSED,
+                 CtkTreePath  *path G_GNUC_UNUSED,
+                 CtkTreeIter  *iter G_GNUC_UNUSED,
                  gpointer      user_data)
 {
   CtkFontChooserWidget *fontchooser = user_data;
@@ -637,7 +637,7 @@ row_inserted_cb (CtkTreeModel *model,
 
 static void
 row_deleted_cb  (CtkTreeModel *model,
-                 CtkTreePath  *path,
+                 CtkTreePath  *path G_GNUC_UNUSED,
                  gpointer      user_data)
 {
   CtkFontChooserWidget *fontchooser = user_data;
@@ -784,9 +784,9 @@ axis_equal (gconstpointer v1, gconstpointer v2)
 }
 
 static void
-axis_remove (gpointer key,
+axis_remove (gpointer key G_GNUC_UNUSED,
              gpointer value,
-             gpointer data)
+             gpointer data G_GNUC_UNUSED)
 {
   Axis *a = value;
 
@@ -1108,7 +1108,7 @@ ctk_font_chooser_widget_get_preview_attributes (CtkFontChooserWidget       *font
 }
 
 static void
-ctk_font_chooser_widget_cell_data_func (CtkTreeViewColumn *column,
+ctk_font_chooser_widget_cell_data_func (CtkTreeViewColumn *column G_GNUC_UNUSED,
                                         CtkCellRenderer   *cell,
                                         CtkTreeModel      *tree_model,
                                         CtkTreeIter       *iter,
@@ -1491,7 +1491,7 @@ add_font_variations (CtkFontChooserWidget *fontchooser,
 }
 
 static void
-adjustment_changed (CtkAdjustment *adjustment,
+adjustment_changed (CtkAdjustment *adjustment G_GNUC_UNUSED,
                     Axis          *axis)
 {
   CtkFontChooserWidget *fontchooser = CTK_FONT_CHOOSER_WIDGET (axis->fontchooser);
@@ -1526,7 +1526,7 @@ should_show_axis (hb_ot_var_axis_info_t *ax)
 }
 
 static gboolean
-is_named_instance (hb_font_t *font)
+is_named_instance (hb_font_t *font G_GNUC_UNUSED)
 {
   /* FIXME */
   return FALSE;
@@ -1778,7 +1778,7 @@ set_inconsistent (CtkCheckButton *button,
 
 static void
 feat_clicked (CtkWidget *feat,
-              gpointer   data)
+              gpointer   data G_GNUC_UNUSED)
 {
   g_signal_handlers_block_by_func (feat, feat_clicked, NULL);
 
@@ -1792,10 +1792,10 @@ feat_clicked (CtkWidget *feat,
 }
 
 static void
-feat_pressed (CtkGesture *gesture,
-              int         n_press,
-              double      x,
-              double      y,
+feat_pressed (CtkGesture *gesture G_GNUC_UNUSED,
+              int         n_press G_GNUC_UNUSED,
+              double      x G_GNUC_UNUSED,
+              double      y G_GNUC_UNUSED,
               CtkWidget  *feat)
 {
   gboolean inconsistent;

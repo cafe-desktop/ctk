@@ -12,8 +12,8 @@ G_DEFINE_TYPE (TestApp, test_app, CTK_TYPE_APPLICATION)
 static CtkWidget *create_row (const gchar *label);
 
 static void
-activate_first_row (GSimpleAction *simple,
-                    GVariant      *parameter,
+activate_first_row (GSimpleAction *simple G_GNUC_UNUSED,
+                    GVariant      *parameter G_GNUC_UNUSED,
                     gpointer       user_data)
 {
   const gchar *text = "First row activated (no parameter action)";
@@ -23,7 +23,7 @@ activate_first_row (GSimpleAction *simple,
 }
 
 static void
-activate_print_string (GSimpleAction *simple,
+activate_print_string (GSimpleAction *simple G_GNUC_UNUSED,
                        GVariant      *parameter,
                        gpointer       user_data)
 {
@@ -34,7 +34,7 @@ activate_print_string (GSimpleAction *simple,
 }
 
 static void
-activate_print_int (GSimpleAction *simple,
+activate_print_int (GSimpleAction *simple G_GNUC_UNUSED,
                     GVariant      *parameter,
                     gpointer       user_data)
 {
@@ -48,7 +48,7 @@ activate_print_int (GSimpleAction *simple,
 }
 
 static void
-row_without_gaction_activated_cb (CtkListBox    *list,
+row_without_gaction_activated_cb (CtkListBox    *list G_GNUC_UNUSED,
                                   CtkListBoxRow *row,
                                   gpointer       user_data)
 {
@@ -62,7 +62,9 @@ row_without_gaction_activated_cb (CtkListBox    *list,
 }
 
 static void
-add_separator (CtkListBoxRow *row, CtkListBoxRow *before, gpointer data)
+add_separator (CtkListBoxRow *row,
+               CtkListBoxRow *before,
+               gpointer       data G_GNUC_UNUSED)
 {
   if (!before)
     return;
@@ -185,7 +187,7 @@ test_app_activate (GApplication *application)
 }
 
 static void
-test_app_init (TestApp *app)
+test_app_init (TestApp *app G_GNUC_UNUSED)
 {
 }
 

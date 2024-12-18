@@ -81,7 +81,8 @@ update_cursor (CtkWidget *widget,  gdouble x, gdouble y)
 
 /* Create a new backing surface of the appropriate size */
 static gint
-configure_event (CtkWidget *widget, CdkEventConfigure *event)
+configure_event (CtkWidget         *widget,
+		 CdkEventConfigure *event G_GNUC_UNUSED)
 {
   CtkAllocation allocation;
   cairo_t *cr;
@@ -107,7 +108,8 @@ configure_event (CtkWidget *widget, CdkEventConfigure *event)
 
 /* Refill the screen from the backing surface */
 static gboolean
-draw (CtkWidget *widget, cairo_t *cr)
+draw (CtkWidget *widget G_GNUC_UNUSED,
+      cairo_t   *cr)
 {
   cairo_set_source_surface (cr, surface, 0, 0);
   cairo_paint (cr);
@@ -204,7 +206,8 @@ button_press_event (CtkWidget *widget, CdkEventButton *event)
 }
 
 static gint
-key_press_event (CtkWidget *widget, CdkEventKey *event)
+key_press_event (CtkWidget   *widget G_GNUC_UNUSED,
+		 CdkEventKey *event)
 {
   if ((event->keyval >= 0x20) && (event->keyval <= 0xFF))
     printf("I got a %c\n", event->keyval);
@@ -268,7 +271,8 @@ motion_notify_event (CtkWidget *widget, CdkEventMotion *event)
    cursor */
 
 static gint
-proximity_out_event (CtkWidget *widget, CdkEventProximity *event)
+proximity_out_event (CtkWidget         *widget,
+		     CdkEventProximity *event G_GNUC_UNUSED)
 {
   cursor_proximity = FALSE;
   update_cursor (widget, cursor_x, cursor_y);
@@ -276,7 +280,8 @@ proximity_out_event (CtkWidget *widget, CdkEventProximity *event)
 }
 
 static gint
-leave_notify_event (CtkWidget *widget, CdkEventCrossing *event)
+leave_notify_event (CtkWidget        *widget,
+		    CdkEventCrossing *event G_GNUC_UNUSED)
 {
   cursor_proximity = FALSE;
   update_cursor (widget, cursor_x, cursor_y);

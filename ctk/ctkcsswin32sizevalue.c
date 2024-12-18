@@ -119,10 +119,10 @@ ctk_css_value_win32_compute_size (const CtkCssValue *value)
 
 static CtkCssValue *
 ctk_css_value_win32_size_compute (CtkCssValue             *value,
-                                  guint                    property_id,
-                                  CtkStyleProviderPrivate *provider,
-                                  CtkCssStyle             *style,
-                                  CtkCssStyle             *parent_style)
+                                  guint                    property_id G_GNUC_UNUSED,
+                                  CtkStyleProviderPrivate *provider G_GNUC_UNUSED,
+                                  CtkCssStyle             *style G_GNUC_UNUSED,
+                                  CtkCssStyle             *parent_style G_GNUC_UNUSED)
 {
   return _ctk_css_number_value_new (value->scale * ctk_css_value_win32_compute_size (value), CTK_CSS_PX);
 }
@@ -193,19 +193,19 @@ ctk_css_value_win32_size_print (const CtkCssValue *value,
 
 static double
 ctk_css_value_win32_size_get (const CtkCssValue *value,
-                              double             one_hundred_percent)
+                              double             one_hundred_percent G_GNUC_UNUSED)
 {
   return value->scale * ctk_css_value_win32_compute_size (value);
 }
 
 static CtkCssDimension
-ctk_css_value_win32_size_get_dimension (const CtkCssValue *value)
+ctk_css_value_win32_size_get_dimension (const CtkCssValue *value G_GNUC_UNUSED)
 {
   return CTK_CSS_DIMENSION_LENGTH;
 }
 
 static gboolean
-ctk_css_value_win32_size_has_percent (const CtkCssValue *value)
+ctk_css_value_win32_size_has_percent (const CtkCssValue *value G_GNUC_UNUSED)
 {
   return FALSE;
 }
@@ -333,7 +333,7 @@ ctk_css_win32_size_value_parse_part_size (CtkCssValue *value,
 
 CtkCssValue *
 ctk_css_win32_size_value_parse (CtkCssParser           *parser,
-                                CtkCssNumberParseFlags  flags)
+                                CtkCssNumberParseFlags  flags G_GNUC_UNUSED)
 {
   CtkWin32Theme *theme;
   CtkCssValue *result;

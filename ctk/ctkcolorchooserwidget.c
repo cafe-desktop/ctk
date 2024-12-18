@@ -168,7 +168,7 @@ connect_swatch_signals (CtkWidget *p,
 }
 
 static void
-button_activate (CtkColorSwatch        *swatch,
+button_activate (CtkColorSwatch        *swatch G_GNUC_UNUSED,
                  CtkColorChooserWidget *cc)
 {
   /* somewhat random, makes the hairline nicely visible */
@@ -279,7 +279,7 @@ ctk_color_chooser_widget_set_show_editor (CtkColorChooserWidget *cc,
 
 static void
 update_from_editor (CtkColorEditor        *editor,
-                    GParamSpec            *pspec,
+                    GParamSpec            *pspec G_GNUC_UNUSED,
                     CtkColorChooserWidget *widget)
 {
   if (ctk_widget_get_visible (CTK_WIDGET (editor)))

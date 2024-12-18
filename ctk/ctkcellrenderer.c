@@ -1335,7 +1335,7 @@ ctk_cell_renderer_real_get_preferred_size (CtkCellRenderer   *cell,
 }
 
 static CtkSizeRequestMode 
-ctk_cell_renderer_real_get_request_mode (CtkCellRenderer *cell)
+ctk_cell_renderer_real_get_request_mode (CtkCellRenderer *cell G_GNUC_UNUSED)
 {
   /* By default cell renderers are height-for-width. */
   return CTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH;
@@ -1365,7 +1365,7 @@ ctk_cell_renderer_real_get_preferred_height (CtkCellRenderer *cell,
 static void
 ctk_cell_renderer_real_get_preferred_height_for_width (CtkCellRenderer *cell,
                                                        CtkWidget       *widget,
-                                                       gint             width,
+                                                       gint             width G_GNUC_UNUSED,
                                                        gint            *minimum_height,
                                                        gint            *natural_height)
 {
@@ -1376,7 +1376,7 @@ ctk_cell_renderer_real_get_preferred_height_for_width (CtkCellRenderer *cell,
 static void
 ctk_cell_renderer_real_get_preferred_width_for_height (CtkCellRenderer *cell,
                                                        CtkWidget       *widget,
-                                                       gint             height,
+                                                       gint             height G_GNUC_UNUSED,
                                                        gint            *minimum_width,
                                                        gint            *natural_width)
 {
@@ -1389,11 +1389,11 @@ ctk_cell_renderer_real_get_preferred_width_for_height (CtkCellRenderer *cell,
  * space than its natural size (this is fine for toggles and pixbufs etc
  * but needs to be overridden from wrapping/ellipsizing text renderers) */
 static void
-ctk_cell_renderer_real_get_aligned_area (CtkCellRenderer         *cell,
-					 CtkWidget               *widget,
-					 CtkCellRendererState     flags,
-					 const CdkRectangle      *cell_area,
-					 CdkRectangle            *aligned_area)
+ctk_cell_renderer_real_get_aligned_area (CtkCellRenderer      *cell,
+					 CtkWidget            *widget,
+					 CtkCellRendererState  flags G_GNUC_UNUSED,
+					 const CdkRectangle   *cell_area,
+					 CdkRectangle         *aligned_area)
 {
   gint opposite_size, x_offset, y_offset;
   gint natural_size;

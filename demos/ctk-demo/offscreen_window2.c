@@ -62,22 +62,22 @@ static GType    ctk_mirror_bin_child_type    (CtkContainer    *container);
 G_DEFINE_TYPE (CtkMirrorBin, ctk_mirror_bin, CTK_TYPE_CONTAINER);
 
 static void
-to_child (CtkMirrorBin *bin,
-          double         widget_x,
-          double         widget_y,
-          double        *x_out,
-          double        *y_out)
+to_child (CtkMirrorBin *bin G_GNUC_UNUSED,
+          double        widget_x,
+          double        widget_y,
+          double       *x_out,
+          double       *y_out)
 {
   *x_out = widget_x;
   *y_out = widget_y;
 }
 
 static void
-to_parent (CtkMirrorBin *bin,
-           double         offscreen_x,
-           double         offscreen_y,
-           double        *x_out,
-           double        *y_out)
+to_parent (CtkMirrorBin *bin G_GNUC_UNUSED,
+           double        offscreen_x,
+           double        offscreen_y,
+           double       *x_out,
+           double       *y_out)
 {
   *x_out = offscreen_x;
   *y_out = offscreen_y;
@@ -120,9 +120,9 @@ ctk_mirror_bin_new (void)
 }
 
 static CdkWindow *
-pick_offscreen_child (CdkWindow     *offscreen_window,
-                      double         widget_x,
-                      double         widget_y,
+pick_offscreen_child (CdkWindow    *offscreen_window G_GNUC_UNUSED,
+                      double        widget_x,
+                      double        widget_y,
                       CtkMirrorBin *bin)
 {
  CtkAllocation child_area;
@@ -143,18 +143,18 @@ pick_offscreen_child (CdkWindow     *offscreen_window,
 }
 
 static void
-offscreen_window_to_parent (CdkWindow     *offscreen_window,
-                            double         offscreen_x,
-                            double         offscreen_y,
-                            double        *parent_x,
-                            double        *parent_y,
+offscreen_window_to_parent (CdkWindow    *offscreen_window G_GNUC_UNUSED,
+                            double        offscreen_x,
+                            double        offscreen_y,
+                            double       *parent_x,
+                            double       *parent_y,
                             CtkMirrorBin *bin)
 {
   to_parent (bin, offscreen_x, offscreen_y, parent_x, parent_y);
 }
 
 static void
-offscreen_window_from_parent (CdkWindow     *window,
+offscreen_window_from_parent (CdkWindow     *window G_GNUC_UNUSED,
                               double         parent_x,
                               double         parent_y,
                               double        *offscreen_x,
@@ -292,9 +292,9 @@ ctk_mirror_bin_remove (CtkContainer *container,
 
 static void
 ctk_mirror_bin_forall (CtkContainer *container,
-                        gboolean      include_internals,
-                        CtkCallback   callback,
-                        gpointer      callback_data)
+                       gboolean      include_internals G_GNUC_UNUSED,
+                       CtkCallback   callback,
+                       gpointer      callback_data)
 {
   CtkMirrorBin *bin = CTK_MIRROR_BIN (container);
 
@@ -392,7 +392,7 @@ ctk_mirror_bin_size_allocate (CtkWidget     *widget,
 
 static gboolean
 ctk_mirror_bin_damage (CtkWidget      *widget,
-                        CdkEventExpose *event)
+                       CdkEventExpose *event G_GNUC_UNUSED)
 {
   cdk_window_invalidate_rect (ctk_widget_get_window (widget),
                               NULL, FALSE);

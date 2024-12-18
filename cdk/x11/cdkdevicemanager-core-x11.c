@@ -100,7 +100,7 @@ create_core_keyboard (CdkDeviceManager *device_manager,
 }
 
 static void
-cdk_x11_device_manager_core_init (CdkX11DeviceManagerCore *device_manager)
+cdk_x11_device_manager_core_init (CdkX11DeviceManagerCore *device_manager G_GNUC_UNUSED)
 {
 }
 

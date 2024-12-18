@@ -82,13 +82,13 @@ static void view_column_model_init (ViewColumnModel *model)
 }
 
 static gint
-view_column_model_get_n_columns (CtkTreeModel *tree_model)
+view_column_model_get_n_columns (CtkTreeModel *tree_model G_GNUC_UNUSED)
 {
   return 2;
 }
 
 static GType
-view_column_model_get_column_type (CtkTreeModel *tree_model,
+view_column_model_get_column_type (CtkTreeModel *tree_model G_GNUC_UNUSED,
 				   gint          index)
 {
   switch (index)
@@ -214,15 +214,15 @@ view_column_model_iter_children (CtkTreeModel *tree_model,
 }
 
 static gboolean
-view_column_model_iter_has_child (CtkTreeModel *tree_model,
-				  CtkTreeIter  *iter)
+view_column_model_iter_has_child (CtkTreeModel *tree_model G_GNUC_UNUSED,
+				  CtkTreeIter  *iter G_GNUC_UNUSED)
 {
   return FALSE;
 }
 
 static gint
 view_column_model_iter_n_children (CtkTreeModel *tree_model,
-				   CtkTreeIter  *iter)
+				   CtkTreeIter  *iter G_GNUC_UNUSED)
 {
   return g_list_length (((ViewColumnModel *)tree_model)->columns);
 }
@@ -245,9 +245,9 @@ view_column_model_iter_nth_child (CtkTreeModel *tree_model,
 }
 
 static gboolean
-view_column_model_iter_parent (CtkTreeModel *tree_model,
-			       CtkTreeIter  *iter,
-			       CtkTreeIter  *child)
+view_column_model_iter_parent (CtkTreeModel *tree_model G_GNUC_UNUSED,
+			       CtkTreeIter  *iter G_GNUC_UNUSED,
+			       CtkTreeIter  *child G_GNUC_UNUSED)
 {
   return FALSE;
 }
@@ -282,8 +282,8 @@ view_column_model_drag_data_get (CtkTreeDragSource   *drag_source,
 }
 
 static gboolean
-view_column_model_drag_data_delete (CtkTreeDragSource *drag_source,
-				    CtkTreePath       *path)
+view_column_model_drag_data_delete (CtkTreeDragSource *drag_source G_GNUC_UNUSED,
+				    CtkTreePath       *path G_GNUC_UNUSED)
 {
   /* Nothing -- we handle moves on the dest side */
   
@@ -291,8 +291,8 @@ view_column_model_drag_data_delete (CtkTreeDragSource *drag_source,
 }
 
 static gboolean
-view_column_model_row_drop_possible (CtkTreeDragDest   *drag_dest,
-				     CtkTreePath       *dest_path,
+view_column_model_row_drop_possible (CtkTreeDragDest   *drag_dest G_GNUC_UNUSED,
+				     CtkTreePath       *dest_path G_GNUC_UNUSED,
 				     CtkSelectionData  *selection_data)
 {
   CtkTreeModel *src_model;
@@ -366,7 +366,7 @@ view_column_model_drag_dest_init (CtkTreeDragDestIface *iface)
 }
 
 static void
-view_column_model_class_init (ViewColumnModelClass *klass)
+view_column_model_class_init (ViewColumnModelClass *klass G_GNUC_UNUSED)
 {
 }
 
@@ -376,7 +376,8 @@ G_DEFINE_TYPE_WITH_CODE (ViewColumnModel, view_column_model, CTK_TYPE_LIST_STORE
                          G_IMPLEMENT_INTERFACE (CTK_TYPE_TREE_DRAG_DEST, view_column_model_drag_dest_init))
 
 static void
-update_columns (CtkTreeView *view, ViewColumnModel *view_model)
+update_columns (CtkTreeView     *view G_GNUC_UNUSED,
+		ViewColumnModel *view_model)
 {
   GList *old_columns = view_model->columns;
   gint old_length, length;
@@ -498,7 +499,8 @@ view_column_model_new (CtkTreeView *view)
  */
 
 static void
-add_clicked (CtkWidget *button, gpointer data)
+add_clicked (CtkWidget *button G_GNUC_UNUSED,
+	     gpointer   data G_GNUC_UNUSED)
 {
   static gint i = 0;
 
@@ -523,11 +525,11 @@ add_clicked (CtkWidget *button, gpointer data)
 }
 
 static void
-get_visible (CtkTreeViewColumn *tree_column,
+get_visible (CtkTreeViewColumn *tree_column G_GNUC_UNUSED,
 	     CtkCellRenderer   *cell,
 	     CtkTreeModel      *tree_model,
 	     CtkTreeIter       *iter,
-	     gpointer           data)
+	     gpointer           data G_GNUC_UNUSED)
 {
   CtkTreeViewColumn *column;
 
@@ -540,7 +542,7 @@ get_visible (CtkTreeViewColumn *tree_column,
 }
 
 static void
-set_visible (CtkCellRendererToggle *cell,
+set_visible (CtkCellRendererToggle *cell G_GNUC_UNUSED,
 	     gchar                 *path_str,
 	     gpointer               data)
 {
@@ -671,8 +673,8 @@ move_row  (CtkTreeModel *src,
 }
 
 static void
-add_left_clicked (CtkWidget *button,
-		  gpointer data)
+add_left_clicked (CtkWidget *button G_GNUC_UNUSED,
+		  gpointer   data)
 {
   CtkTreeIter iter;
 
@@ -684,7 +686,8 @@ add_left_clicked (CtkWidget *button,
 }
 
 static void
-add_right_clicked (CtkWidget *button, gpointer data)
+add_right_clicked (CtkWidget *button G_GNUC_UNUSED,
+		   gpointer   data)
 {
   CtkTreeIter iter;
 

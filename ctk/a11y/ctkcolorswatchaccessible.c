@@ -109,25 +109,25 @@ _ctk_color_swatch_accessible_class_init (CtkColorSwatchAccessibleClass *klass)
 }
 
 static void
-_ctk_color_swatch_accessible_init (CtkColorSwatchAccessible *scale)
+_ctk_color_swatch_accessible_init (CtkColorSwatchAccessible *scale G_GNUC_UNUSED)
 {
 }
 
 static gint
-ctk_color_swatch_accessible_get_n_actions (AtkAction *action)
+ctk_color_swatch_accessible_get_n_actions (AtkAction *action G_GNUC_UNUSED)
 {
   return 3;
 }
 
 static const gchar *
-ctk_color_swatch_accessible_get_keybinding (AtkAction *action,
-                                            gint       i)
+ctk_color_swatch_accessible_get_keybinding (AtkAction *action G_GNUC_UNUSED,
+                                            gint       i G_GNUC_UNUSED)
 {
   return NULL;
 }
 
 static const gchar *
-ctk_color_swatch_accessible_get_name (AtkAction *action,
+ctk_color_swatch_accessible_get_name (AtkAction *action G_GNUC_UNUSED,
                                       gint       i)
 {
   switch (i)
@@ -140,7 +140,7 @@ ctk_color_swatch_accessible_get_name (AtkAction *action,
 }
 
 static const gchar *
-ctk_color_swatch_accessible_get_localized_name (AtkAction *action,
+ctk_color_swatch_accessible_get_localized_name (AtkAction *action G_GNUC_UNUSED,
                                                 gint       i)
 {
   switch (i)
@@ -153,7 +153,7 @@ ctk_color_swatch_accessible_get_localized_name (AtkAction *action,
 }
 
 static const gchar *
-ctk_color_swatch_accessible_get_description (AtkAction *action,
+ctk_color_swatch_accessible_get_description (AtkAction *action G_GNUC_UNUSED,
                                              gint       i)
 {
   switch (i)

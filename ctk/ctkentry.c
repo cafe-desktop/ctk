@@ -3557,7 +3557,7 @@ ctk_entry_measure (CtkCssGadget   *gadget,
                    int            *natural,
                    int            *minimum_baseline,
                    int            *natural_baseline,
-                   gpointer        unused)
+                   gpointer        unused G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkEntry *entry;
@@ -3809,7 +3809,7 @@ ctk_entry_allocate (CtkCssGadget        *gadget,
                     const CtkAllocation *allocation,
                     int                  baseline,
                     CtkAllocation       *out_clip,
-                    gpointer             data)
+                    gpointer             data G_GNUC_UNUSED)
 {
   CtkEntry *entry;
   CtkWidget *widget;
@@ -4024,11 +4024,11 @@ ctk_entry_draw_undershoot (CtkEntry *entry,
 static gboolean
 ctk_entry_render (CtkCssGadget *gadget,
                   cairo_t      *cr,
-                  int           x,
-                  int           y,
-                  int           width,
-                  int           height,
-                  gpointer      data)
+                  int           x G_GNUC_UNUSED,
+                  int           y G_GNUC_UNUSED,
+                  int           width G_GNUC_UNUSED,
+                  int           height G_GNUC_UNUSED,
+                  gpointer      data G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkEntry *entry;
@@ -4448,8 +4448,8 @@ gesture_get_current_point_in_layout (CtkGestureSingle *gesture,
 static void
 ctk_entry_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
                                       gint                  n_press,
-                                      gdouble               widget_x,
-                                      gdouble               widget_y,
+                                      gdouble               widget_x G_GNUC_UNUSED,
+                                      gdouble               widget_y G_GNUC_UNUSED,
                                       CtkEntry             *entry)
 {
   CtkEditable *editable = CTK_EDITABLE (entry);
@@ -4649,7 +4649,7 @@ _ctk_entry_get_selected_text (CtkEntry *entry)
 static void
 ctk_entry_show_magnifier (CtkEntry *entry,
                           gint      x,
-                          gint      y)
+                          gint      y G_GNUC_UNUSED)
 {
   CtkAllocation allocation;
   cairo_rectangle_int_t rect;
@@ -4675,8 +4675,8 @@ ctk_entry_show_magnifier (CtkEntry *entry,
 
 static void
 ctk_entry_drag_gesture_update (CtkGestureDrag *gesture,
-                               gdouble         offset_x,
-                               gdouble         offset_y,
+                               gdouble         offset_x G_GNUC_UNUSED,
+                               gdouble         offset_y G_GNUC_UNUSED,
                                CtkEntry       *entry)
 {
   CtkWidget *widget = CTK_WIDGET (entry);
@@ -4809,8 +4809,8 @@ ctk_entry_drag_gesture_update (CtkGestureDrag *gesture,
 
 static void
 ctk_entry_drag_gesture_end (CtkGestureDrag *gesture,
-                            gdouble         offset_x,
-                            gdouble         offset_y,
+                            gdouble         offset_x G_GNUC_UNUSED,
+                            gdouble         offset_y G_GNUC_UNUSED,
                             CtkEntry       *entry)
 {
   CtkEntryPrivate *priv = entry->priv;
@@ -4954,7 +4954,7 @@ out:
 
 static gint
 ctk_entry_focus_in (CtkWidget     *widget,
-		    CdkEventFocus *event)
+		    CdkEventFocus *event G_GNUC_UNUSED)
 {
   CtkEntry *entry = CTK_ENTRY (widget);
   CtkEntryPrivate *priv = entry->priv;
@@ -4992,7 +4992,7 @@ ctk_entry_focus_in (CtkWidget     *widget,
 
 static gint
 ctk_entry_focus_out (CtkWidget     *widget,
-		     CdkEventFocus *event)
+		     CdkEventFocus *event G_GNUC_UNUSED)
 {
   CtkEntry *entry = CTK_ENTRY (widget);
   CtkEntryPrivate *priv = entry->priv;
@@ -5114,7 +5114,7 @@ ctk_entry_direction_changed (CtkWidget        *widget,
 
 static void
 ctk_entry_state_flags_changed (CtkWidget     *widget,
-                               CtkStateFlags  previous_state)
+                               CtkStateFlags  previous_state G_GNUC_UNUSED)
 {
   CtkEntry *entry = CTK_ENTRY (widget);
   CtkEntryPrivate *priv = entry->priv;
@@ -5152,7 +5152,7 @@ ctk_entry_state_flags_changed (CtkWidget     *widget,
 
 static void
 ctk_entry_screen_changed (CtkWidget *widget,
-			  CdkScreen *old_screen)
+			  CdkScreen *old_screen G_GNUC_UNUSED)
 {
   ctk_entry_recompute (CTK_ENTRY (widget));
 }
@@ -5311,7 +5311,8 @@ ctk_entry_style_updated (CtkWidget *widget)
 /* CtkCellEditable method implementations
  */
 static void
-ctk_cell_editable_entry_activated (CtkEntry *entry, gpointer data)
+ctk_cell_editable_entry_activated (CtkEntry *entry,
+				   gpointer  data G_GNUC_UNUSED)
 {
   ctk_cell_editable_editing_done (CTK_CELL_EDITABLE (entry));
   ctk_cell_editable_remove_widget (CTK_CELL_EDITABLE (entry));
@@ -5320,7 +5321,7 @@ ctk_cell_editable_entry_activated (CtkEntry *entry, gpointer data)
 static gboolean
 ctk_cell_editable_key_press_event (CtkEntry    *entry,
 				   CdkEventKey *key_event,
-				   gpointer     data)
+				   gpointer     data G_GNUC_UNUSED)
 {
   CtkEntryPrivate *priv = entry->priv;
 
@@ -5347,7 +5348,7 @@ ctk_cell_editable_key_press_event (CtkEntry    *entry,
 
 static void
 ctk_entry_start_editing (CtkCellEditable *cell_editable,
-			 CdkEvent        *event)
+			 CdkEvent        *event G_GNUC_UNUSED)
 {
   g_signal_connect (cell_editable, "activate",
 		    G_CALLBACK (ctk_cell_editable_entry_activated), NULL);
@@ -5427,9 +5428,9 @@ ctk_entry_real_delete_text (CtkEditable *editable,
 /* CtkEntryBuffer signal handlers
  */
 static void
-buffer_inserted_text (CtkEntryBuffer *buffer,
+buffer_inserted_text (CtkEntryBuffer *buffer G_GNUC_UNUSED,
                       guint           position,
-                      const gchar    *chars,
+                      const gchar    *chars G_GNUC_UNUSED,
                       guint           n_chars,
                       CtkEntry       *entry)
 {
@@ -5478,7 +5479,7 @@ buffer_inserted_text (CtkEntryBuffer *buffer,
 }
 
 static void
-buffer_deleted_text (CtkEntryBuffer *buffer,
+buffer_deleted_text (CtkEntryBuffer *buffer G_GNUC_UNUSED,
                      guint           position,
                      guint           n_chars,
                      CtkEntry       *entry)
@@ -5518,8 +5519,8 @@ buffer_deleted_text (CtkEntryBuffer *buffer,
 }
 
 static void
-buffer_notify_text (CtkEntryBuffer *buffer,
-                    GParamSpec     *spec,
+buffer_notify_text (CtkEntryBuffer *buffer G_GNUC_UNUSED,
+                    GParamSpec     *spec G_GNUC_UNUSED,
                     CtkEntry       *entry)
 {
   if (entry->priv->handling_key_event)
@@ -5530,16 +5531,16 @@ buffer_notify_text (CtkEntryBuffer *buffer,
 }
 
 static void
-buffer_notify_length (CtkEntryBuffer *buffer,
-                      GParamSpec     *spec,
+buffer_notify_length (CtkEntryBuffer *buffer G_GNUC_UNUSED,
+                      GParamSpec     *spec G_GNUC_UNUSED,
                       CtkEntry       *entry)
 {
   g_object_notify_by_pspec (G_OBJECT (entry), entry_props[PROP_TEXT_LENGTH]);
 }
 
 static void
-buffer_notify_max_length (CtkEntryBuffer *buffer,
-                          GParamSpec     *spec,
+buffer_notify_max_length (CtkEntryBuffer *buffer G_GNUC_UNUSED,
+                          GParamSpec     *spec G_GNUC_UNUSED,
                           CtkEntry       *entry)
 {
   g_object_notify_by_pspec (G_OBJECT (entry), entry_props[PROP_MAX_LENGTH]);
@@ -6056,7 +6057,7 @@ ctk_entry_real_activate (CtkEntry *entry)
 }
 
 static void
-keymap_direction_changed (CdkKeymap *keymap,
+keymap_direction_changed (CdkKeymap *keymap G_GNUC_UNUSED,
                           CtkEntry  *entry)
 {
   ctk_entry_recompute (entry);
@@ -6066,7 +6067,7 @@ keymap_direction_changed (CdkKeymap *keymap,
  */
 
 static void
-ctk_entry_commit_cb (CtkIMContext *context,
+ctk_entry_commit_cb (CtkIMContext *context G_GNUC_UNUSED,
 		     const gchar  *str,
 		     CtkEntry     *entry)
 {
@@ -6077,7 +6078,7 @@ ctk_entry_commit_cb (CtkIMContext *context,
 }
 
 static void 
-ctk_entry_preedit_changed_cb (CtkIMContext *context,
+ctk_entry_preedit_changed_cb (CtkIMContext *context G_GNUC_UNUSED,
 			      CtkEntry     *entry)
 {
   CtkEntryPrivate *priv = entry->priv;
@@ -6117,7 +6118,7 @@ ctk_entry_retrieve_surrounding_cb (CtkIMContext *context,
 }
 
 static gboolean
-ctk_entry_delete_surrounding_cb (CtkIMContext *slave,
+ctk_entry_delete_surrounding_cb (CtkIMContext *slave G_GNUC_UNUSED,
 				 gint          offset,
 				 gint          n_chars,
 				 CtkEntry     *entry)
@@ -6721,8 +6722,8 @@ ctk_entry_handle_dragged (CtkTextHandle         *handle,
 }
 
 static void
-ctk_entry_handle_drag_started (CtkTextHandle         *handle,
-                               CtkTextHandlePosition  pos,
+ctk_entry_handle_drag_started (CtkTextHandle         *handle G_GNUC_UNUSED,
+                               CtkTextHandlePosition  pos G_GNUC_UNUSED,
                                CtkEntry              *entry)
 {
   entry->priv->cursor_handle_dragged = FALSE;
@@ -6730,8 +6731,8 @@ ctk_entry_handle_drag_started (CtkTextHandle         *handle,
 }
 
 static void
-ctk_entry_handle_drag_finished (CtkTextHandle         *handle,
-                                CtkTextHandlePosition  pos,
+ctk_entry_handle_drag_finished (CtkTextHandle         *handle G_GNUC_UNUSED,
+                                CtkTextHandlePosition  pos G_GNUC_UNUSED,
                                 CtkEntry              *entry)
 {
   CtkEntryPrivate *priv = entry->priv;
@@ -7319,7 +7320,7 @@ truncate_multiline (const gchar *text)
 }
 
 static void
-paste_received (CtkClipboard *clipboard,
+paste_received (CtkClipboard *clipboard G_GNUC_UNUSED,
 		const gchar  *text,
 		gpointer      data)
 {
@@ -7391,9 +7392,9 @@ ctk_entry_paste (CtkEntry *entry,
 }
 
 static void
-primary_get_cb (CtkClipboard     *clipboard,
+primary_get_cb (CtkClipboard     *clipboard G_GNUC_UNUSED,
 		CtkSelectionData *selection_data,
-		guint             info,
+		guint             info G_GNUC_UNUSED,
 		gpointer          data)
 {
   CtkEntry *entry = CTK_ENTRY (data);
@@ -7408,7 +7409,7 @@ primary_get_cb (CtkClipboard     *clipboard,
 }
 
 static void
-primary_clear_cb (CtkClipboard *clipboard,
+primary_clear_cb (CtkClipboard *clipboard G_GNUC_UNUSED,
 		  gpointer      data)
 {
   CtkEntry *entry = CTK_ENTRY (data);
@@ -9488,7 +9489,7 @@ activate_cb (CtkWidget *menuitem,
 
 static gboolean
 ctk_entry_mnemonic_activate (CtkWidget *widget,
-			     gboolean   group_cycling)
+			     gboolean   group_cycling G_GNUC_UNUSED)
 {
   ctk_widget_grab_focus (widget);
   return CDK_EVENT_STOP;
@@ -9509,7 +9510,7 @@ check_undo_icon_grab (CtkEntry      *entry,
 
 static void
 ctk_entry_grab_notify (CtkWidget *widget,
-                       gboolean   was_grabbed)
+                       gboolean   was_grabbed G_GNUC_UNUSED)
 {
   CtkEntryPrivate *priv;
   gint i;
@@ -9544,7 +9545,7 @@ append_action_signal (CtkEntry     *entry,
 	
 static void
 popup_menu_detach (CtkWidget *attach_widget,
-		   CtkMenu   *menu)
+		   CtkMenu   *menu G_GNUC_UNUSED)
 {
   CtkEntry *entry_attach = CTK_ENTRY (attach_widget);
   CtkEntryPrivate *priv_attach = entry_attach->priv;
@@ -9559,7 +9560,7 @@ typedef struct
 } PopupInfo;
 
 static void
-popup_targets_received (CtkClipboard     *clipboard,
+popup_targets_received (CtkClipboard     *clipboard G_GNUC_UNUSED,
 			CtkSelectionData *data,
 			gpointer          user_data)
 {
@@ -9682,7 +9683,7 @@ ctk_entry_popup_menu (CtkWidget *widget)
 
 static void
 show_or_hide_handles (CtkWidget  *popover,
-                      GParamSpec *pspec,
+                      GParamSpec *pspec G_GNUC_UNUSED,
                       CtkEntry   *entry)
 {
   gboolean visible;
@@ -9744,7 +9745,7 @@ append_bubble_action (CtkEntry     *entry,
 }
 
 static void
-bubble_targets_received (CtkClipboard     *clipboard,
+bubble_targets_received (CtkClipboard     *clipboard G_GNUC_UNUSED,
                          CtkSelectionData *data,
                          gpointer          user_data)
 {
@@ -9936,7 +9937,7 @@ ctk_entry_drag_begin (CtkWidget      *widget,
 
 static void
 ctk_entry_drag_end (CtkWidget      *widget,
-                    CdkDragContext *context)
+                    CdkDragContext *context G_GNUC_UNUSED)
 {
   CtkEntry *entry = CTK_ENTRY (widget);
   CtkEntryPrivate *priv = entry->priv;
@@ -9952,9 +9953,9 @@ ctk_entry_drag_end (CtkWidget      *widget,
 }
 
 static void
-ctk_entry_drag_leave (CtkWidget        *widget,
-		      CdkDragContext   *context,
-		      guint             time)
+ctk_entry_drag_leave (CtkWidget      *widget,
+		      CdkDragContext *context G_GNUC_UNUSED,
+		      guint           time G_GNUC_UNUSED)
 {
   CtkEntry *entry = CTK_ENTRY (widget);
   CtkEntryPrivate *priv = entry->priv;
@@ -9965,11 +9966,11 @@ ctk_entry_drag_leave (CtkWidget        *widget,
 }
 
 static gboolean
-ctk_entry_drag_drop  (CtkWidget        *widget,
-		      CdkDragContext   *context,
-		      gint              x,
-		      gint              y,
-		      guint             time)
+ctk_entry_drag_drop  (CtkWidget      *widget,
+		      CdkDragContext *context,
+		      gint            x G_GNUC_UNUSED,
+		      gint            y G_GNUC_UNUSED,
+		      guint           time)
 {
   CtkEntry *entry = CTK_ENTRY (widget);
   CtkEntryPrivate *priv = entry->priv;
@@ -9987,11 +9988,11 @@ ctk_entry_drag_drop  (CtkWidget        *widget,
 }
 
 static gboolean
-ctk_entry_drag_motion (CtkWidget        *widget,
-		       CdkDragContext   *context,
-		       gint              x,
-		       gint              y,
-		       guint             time)
+ctk_entry_drag_motion (CtkWidget      *widget,
+		       CdkDragContext *context,
+		       gint            x,
+		       gint            y G_GNUC_UNUSED,
+		       guint           time)
 {
   CtkEntry *entry = CTK_ENTRY (widget);
   CtkEntryPrivate *priv = entry->priv;
@@ -10057,9 +10058,9 @@ static void
 ctk_entry_drag_data_received (CtkWidget        *widget,
 			      CdkDragContext   *context,
 			      gint              x,
-			      gint              y,
+			      gint              y G_GNUC_UNUSED,
 			      CtkSelectionData *selection_data,
-			      guint             info,
+			      guint             info G_GNUC_UNUSED,
 			      guint             time)
 {
   CtkEntry *entry = CTK_ENTRY (widget);
@@ -10107,10 +10108,10 @@ ctk_entry_drag_data_received (CtkWidget        *widget,
 
 static void
 ctk_entry_drag_data_get (CtkWidget        *widget,
-			 CdkDragContext   *context,
+			 CdkDragContext   *context G_GNUC_UNUSED,
 			 CtkSelectionData *selection_data,
-			 guint             info,
-			 guint             time)
+			 guint             info G_GNUC_UNUSED,
+			 guint             time G_GNUC_UNUSED)
 {
   CtkEntry *entry = CTK_ENTRY (widget);
   CtkEntryPrivate *priv = entry->priv;
@@ -10143,7 +10144,7 @@ ctk_entry_drag_data_get (CtkWidget        *widget,
 
 static void
 ctk_entry_drag_data_delete (CtkWidget      *widget,
-			    CdkDragContext *context)
+			    CdkDragContext *context G_GNUC_UNUSED)
 {
   CtkEntry *entry = CTK_ENTRY (widget);
   CtkEntryPrivate *priv = entry->priv;
@@ -10502,7 +10503,7 @@ ctk_entry_get_cursor_hadjustment (CtkEntry *entry)
 static gboolean
 tick_cb (CtkWidget     *widget,
          CdkFrameClock *frame_clock,
-         gpointer       user_data)
+         gpointer       user_data G_GNUC_UNUSED)
 {
   CtkEntry *entry = CTK_ENTRY (widget);
   CtkEntryPrivate *priv = entry->priv;
@@ -11119,8 +11120,8 @@ ctk_entry_insert_emoji (CtkEntry *entry)
 static void
 pick_emoji (CtkEntry *entry,
             int       icon,
-            CdkEvent *event,
-            gpointer  data)
+            CdkEvent *event G_GNUC_UNUSED,
+            gpointer  data G_GNUC_UNUSED)
 {
   if (icon == CTK_ENTRY_ICON_SECONDARY)
     ctk_entry_insert_emoji (entry);

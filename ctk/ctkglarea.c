@@ -367,7 +367,9 @@ ctk_gl_area_real_create_context (CtkGLArea *area)
 }
 
 static void
-ctk_gl_area_resize (CtkGLArea *area, int width, int height)
+ctk_gl_area_resize (CtkGLArea *area G_GNUC_UNUSED,
+                    int        width,
+                    int        height)
 {
   glViewport (0, 0, width, height);
 }
@@ -739,10 +741,10 @@ ctk_gl_area_draw (CtkWidget *widget,
 }
 
 static gboolean
-create_context_accumulator (GSignalInvocationHint *ihint,
-                            GValue *return_accu,
-                            const GValue *handler_return,
-                            gpointer data)
+create_context_accumulator (GSignalInvocationHint *ihint G_GNUC_UNUSED,
+                            GValue                *return_accu,
+                            const GValue          *handler_return,
+                            gpointer               data G_GNUC_UNUSED)
 {
   g_value_copy (handler_return, return_accu);
 

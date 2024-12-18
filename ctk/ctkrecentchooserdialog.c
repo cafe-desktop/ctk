@@ -146,7 +146,7 @@ ctk_recent_chooser_dialog_init (CtkRecentChooserDialog *dialog)
  * make the dialog emit a valid response signal
  */
 static void
-ctk_recent_chooser_item_activated_cb (CtkRecentChooser *chooser,
+ctk_recent_chooser_item_activated_cb (CtkRecentChooser *chooser G_GNUC_UNUSED,
 				      gpointer          user_data)
 {
   CtkDialog *rc_dialog;
@@ -242,7 +242,7 @@ ctk_recent_chooser_dialog_set_property (GObject      *object,
 
 static void
 ctk_recent_chooser_dialog_get_property (GObject      *object,
-					guint         prop_id,
+					guint         prop_id G_GNUC_UNUSED,
 					GValue       *value,
 					GParamSpec   *pspec)
 {

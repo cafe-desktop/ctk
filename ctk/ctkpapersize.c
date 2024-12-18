@@ -869,7 +869,7 @@ ctk_paper_size_get_default (void)
  * Since: 2.10
  */
 gdouble
-ctk_paper_size_get_default_top_margin (CtkPaperSize *size,
+ctk_paper_size_get_default_top_margin (CtkPaperSize *size G_GNUC_UNUSED,
                                        CtkUnit       unit)
 {
   gdouble margin;
@@ -919,7 +919,7 @@ ctk_paper_size_get_default_bottom_margin (CtkPaperSize *size,
  * Since: 2.10
  */
 gdouble
-ctk_paper_size_get_default_left_margin (CtkPaperSize *size,
+ctk_paper_size_get_default_left_margin (CtkPaperSize *size G_GNUC_UNUSED,
                                         CtkUnit       unit)
 {
   gdouble margin;
@@ -940,7 +940,7 @@ ctk_paper_size_get_default_left_margin (CtkPaperSize *size,
  * Since: 2.10
  */
 gdouble
-ctk_paper_size_get_default_right_margin (CtkPaperSize *size,
+ctk_paper_size_get_default_right_margin (CtkPaperSize *size G_GNUC_UNUSED,
                                          CtkUnit       unit)
 {
   gdouble margin;

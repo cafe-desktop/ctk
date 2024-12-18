@@ -290,8 +290,8 @@ ctk_im_multicontext_get_slave (CtkIMMulticontext *multicontext)
 }
 
 static void
-im_module_setting_changed (CtkSettings *settings, 
-                           gpointer     data)
+im_module_setting_changed (CtkSettings *settings G_GNUC_UNUSED,
+                           gpointer     data G_GNUC_UNUSED)
 {
   global_context_id = NULL;
 }
@@ -501,28 +501,28 @@ ctk_im_multicontext_set_surrounding (CtkIMContext *context,
 }
 
 static void
-ctk_im_multicontext_preedit_start_cb   (CtkIMContext      *slave,
+ctk_im_multicontext_preedit_start_cb   (CtkIMContext      *slave G_GNUC_UNUSED,
 					CtkIMMulticontext *multicontext)
 {
   g_signal_emit_by_name (multicontext, "preedit-start");
 }
 
 static void
-ctk_im_multicontext_preedit_end_cb (CtkIMContext      *slave,
+ctk_im_multicontext_preedit_end_cb (CtkIMContext      *slave G_GNUC_UNUSED,
 				    CtkIMMulticontext *multicontext)
 {
   g_signal_emit_by_name (multicontext, "preedit-end");
 }
 
 static void
-ctk_im_multicontext_preedit_changed_cb (CtkIMContext      *slave,
+ctk_im_multicontext_preedit_changed_cb (CtkIMContext      *slave G_GNUC_UNUSED,
 					CtkIMMulticontext *multicontext)
 {
   g_signal_emit_by_name (multicontext, "preedit-changed");
 }
 
 static void
-ctk_im_multicontext_commit_cb (CtkIMContext      *slave,
+ctk_im_multicontext_commit_cb (CtkIMContext      *slave G_GNUC_UNUSED,
 			       const gchar       *str,
 			       CtkIMMulticontext *multicontext)
 {
@@ -530,7 +530,7 @@ ctk_im_multicontext_commit_cb (CtkIMContext      *slave,
 }
 
 static gboolean
-ctk_im_multicontext_retrieve_surrounding_cb (CtkIMContext      *slave,
+ctk_im_multicontext_retrieve_surrounding_cb (CtkIMContext      *slave G_GNUC_UNUSED,
 					     CtkIMMulticontext *multicontext)
 {
   gboolean result;
@@ -541,7 +541,7 @@ ctk_im_multicontext_retrieve_surrounding_cb (CtkIMContext      *slave,
 }
 
 static gboolean
-ctk_im_multicontext_delete_surrounding_cb (CtkIMContext      *slave,
+ctk_im_multicontext_delete_surrounding_cb (CtkIMContext      *slave G_GNUC_UNUSED,
 					   gint               offset,
 					   gint               n_chars,
 					   CtkIMMulticontext *multicontext)
@@ -773,8 +773,8 @@ propagate_purpose (CtkIMMulticontext *context)
 }
 
 static void
-ctk_im_multicontext_notify (GObject      *object,
-                            GParamSpec   *pspec)
+ctk_im_multicontext_notify (GObject    *object,
+                            GParamSpec *pspec G_GNUC_UNUSED)
 {
   propagate_purpose (CTK_IM_MULTICONTEXT (object));
 }

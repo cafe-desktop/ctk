@@ -76,9 +76,9 @@ load_pixbufs (GError **error)
 
 /* Expose callback for the drawing area */
 static gint
-draw_cb (CtkWidget *widget,
+draw_cb (CtkWidget *widget G_GNUC_UNUSED,
          cairo_t   *cr,
-         gpointer   data)
+         gpointer   data G_GNUC_UNUSED)
 {
   cdk_cairo_set_source_pixbuf (cr, frame, 0, 0);
   cairo_paint (cr);
@@ -92,9 +92,9 @@ static gint64 start_time;
 
 /* Handler to regenerate the frame */
 static gboolean
-on_tick (CtkWidget     *widget,
+on_tick (CtkWidget     *widget G_GNUC_UNUSED,
          CdkFrameClock *frame_clock,
-         gpointer       data)
+         gpointer       data G_GNUC_UNUSED)
 {
   gint64 current_time;
   double f;

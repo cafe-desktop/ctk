@@ -107,14 +107,14 @@ object_tree_get_parent_default (GObject *object)
 }
 
 static void
-object_tree_forall_default (GObject              *object,
-                            ObjectTreeForallFunc  forall_func,
-                            gpointer              forall_data)
+object_tree_forall_default (GObject              *object G_GNUC_UNUSED,
+                            ObjectTreeForallFunc  forall_func G_GNUC_UNUSED,
+                            gpointer              forall_data G_GNUC_UNUSED)
 {
 }
 
 static gboolean
-object_tree_get_sensitive_default (GObject *object)
+object_tree_get_sensitive_default (GObject *object G_GNUC_UNUSED)
 {
   return TRUE;
 }
@@ -557,9 +557,9 @@ object_get_sensitive (GObject *object)
 }
 
 static void
-on_row_activated (CtkTreeView            *tree,
+on_row_activated (CtkTreeView            *tree G_GNUC_UNUSED,
                   CtkTreePath            *path,
-                  CtkTreeViewColumn      *col,
+                  CtkTreeViewColumn      *col G_GNUC_UNUSED,
                   CtkInspectorObjectTree *wt)
 {
   CtkTreeIter iter;
@@ -663,7 +663,7 @@ ctk_object_tree_remove_dead_object (gpointer data, GObject *dead_object)
 
 static gboolean
 weak_unref_cb (CtkTreeModel *model,
-               CtkTreePath  *path,
+               CtkTreePath  *path G_GNUC_UNUSED,
                CtkTreeIter  *iter,
                gpointer      data)
 {
@@ -689,8 +689,8 @@ clear_store (CtkInspectorObjectTree *wt)
 }
 
 static gboolean
-map_or_unmap (GSignalInvocationHint *ihint,
-              guint                  n_params,
+map_or_unmap (GSignalInvocationHint *ihint G_GNUC_UNUSED,
+              guint                  n_params G_GNUC_UNUSED,
               const GValue          *params,
               gpointer               data)
 {
@@ -722,7 +722,7 @@ move_search_to_row (CtkInspectorObjectTree *wt,
 }
 
 static gboolean
-key_press_event (CtkWidget              *window,
+key_press_event (CtkWidget              *window G_GNUC_UNUSED,
                  CdkEvent               *event,
                  CtkInspectorObjectTree *wt)
 {
@@ -876,7 +876,7 @@ match_row (CtkTreeModel *model,
 
 static void
 search_mode_changed (GObject                *search_bar,
-                     GParamSpec             *pspec,
+                     GParamSpec             *pspec G_GNUC_UNUSED,
                      CtkInspectorObjectTree *wt)
 {
   if (!ctk_search_bar_get_search_mode (CTK_SEARCH_BAR (search_bar)))
@@ -887,7 +887,7 @@ search_mode_changed (GObject                *search_bar,
 }
 
 static void
-next_match (CtkButton              *button,
+next_match (CtkButton              *button G_GNUC_UNUSED,
             CtkInspectorObjectTree *wt)
 {
   if (ctk_search_bar_get_search_mode (CTK_SEARCH_BAR (wt->priv->search_bar)))
@@ -902,7 +902,7 @@ next_match (CtkButton              *button,
 }
 
 static void
-previous_match (CtkButton              *button,
+previous_match (CtkButton              *button G_GNUC_UNUSED,
                 CtkInspectorObjectTree *wt)
 {
   if (ctk_search_bar_get_search_mode (CTK_SEARCH_BAR (wt->priv->search_bar)))
@@ -917,7 +917,7 @@ previous_match (CtkButton              *button,
 }
 
 static void
-stop_search (CtkWidget              *entry,
+stop_search (CtkWidget              *entry G_GNUC_UNUSED,
              CtkInspectorObjectTree *wt)
 {
   ctk_entry_set_text (CTK_ENTRY (wt->priv->search_entry), "");
@@ -1026,7 +1026,7 @@ typedef struct
 
 static void
 child_callback (GObject    *object,
-                const char *name,
+                const char *name G_GNUC_UNUSED,
                 gpointer    data)
 {
   FindAllData *d = data;
@@ -1289,6 +1289,3 @@ ctk_inspector_object_tree_find_object (CtkInspectorObjectTree *wt,
                                                                    iter);
     }
 }
-
-
-// vim: set et sw=2 ts=2:

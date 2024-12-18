@@ -494,7 +494,7 @@ ctk_gradient_fade (CtkGradient *gradient,
 CtkGradient *
 _ctk_gradient_transition (CtkGradient *start,
                           CtkGradient *end,
-                          guint        property_id,
+                          guint        property_id G_GNUC_UNUSED,
                           double       progress)
 {
   CtkGradient *gradient;

@@ -70,7 +70,7 @@ struct _NetWmSupportedAtoms
 };
 
 static void
-cdk_x11_screen_init (CdkX11Screen *screen)
+cdk_x11_screen_init (CdkX11Screen *screen G_GNUC_UNUSED)
 {
 }
 

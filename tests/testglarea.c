@@ -319,8 +319,8 @@ draw_triangle (void)
 }
 
 static gboolean
-render (CtkGLArea    *area,
-        CdkGLContext *context)
+render (CtkGLArea    *area G_GNUC_UNUSED,
+        CdkGLContext *context G_GNUC_UNUSED)
 {
   glClearColor (0.5, 0.5, 0.5, 1.0);
   glClear (GL_COLOR_BUFFER_BIT);

@@ -72,15 +72,15 @@ show_action_infobar (GSimpleAction *action,
 
 static void
 activate_action (GSimpleAction *action,
-                 GVariant      *parameter,
-                 gpointer       user_data)
+                 GVariant      *parameter G_GNUC_UNUSED,
+                 gpointer       user_data G_GNUC_UNUSED)
 {
   show_action_dialog (action);
 }
 
 static void
-activate_new (GSimpleAction *action,
-              GVariant      *parameter,
+activate_new (GSimpleAction *action G_GNUC_UNUSED,
+              GVariant      *parameter G_GNUC_UNUSED,
               gpointer       user_data)
 {
   GApplication *app = user_data;
@@ -89,7 +89,7 @@ activate_new (GSimpleAction *action,
 }
 
 static void
-open_response_cb (CtkNativeDialog *dialog,
+open_response_cb (CtkNativeDialog *dialog G_GNUC_UNUSED,
                   gint             response_id,
                   gpointer         user_data)
 {
@@ -130,8 +130,8 @@ open_response_cb (CtkNativeDialog *dialog,
 
 
 static void
-activate_open (GSimpleAction *action,
-               GVariant      *parameter,
+activate_open (GSimpleAction *action G_GNUC_UNUSED,
+               GVariant      *parameter G_GNUC_UNUSED,
                gpointer       user_data)
 {
   GApplication *app = user_data;
@@ -154,8 +154,8 @@ activate_open (GSimpleAction *action,
 
 static void
 activate_toggle (GSimpleAction *action,
-                 GVariant      *parameter,
-                 gpointer       user_data)
+                 GVariant      *parameter G_GNUC_UNUSED,
+                 gpointer       user_data G_GNUC_UNUSED)
 {
   GVariant *state;
 
@@ -177,8 +177,8 @@ activate_radio (GSimpleAction *action,
 }
 
 static void
-activate_about (GSimpleAction *action,
-                GVariant      *parameter,
+activate_about (GSimpleAction *action G_GNUC_UNUSED,
+                GVariant      *parameter G_GNUC_UNUSED,
                 gpointer       user_data)
 {
   CtkWidget *window = user_data;
@@ -218,8 +218,8 @@ activate_about (GSimpleAction *action,
 }
 
 static void
-activate_quit (GSimpleAction *action,
-               GVariant      *parameter,
+activate_quit (GSimpleAction *action G_GNUC_UNUSED,
+               GVariant      *parameter G_GNUC_UNUSED,
                gpointer       user_data)
 {
   CtkApplication *app = user_data;
@@ -269,8 +269,8 @@ update_statusbar (CtkTextBuffer         *buffer,
 
 static void
 mark_set_callback (CtkTextBuffer         *buffer,
-                   const CtkTextIter     *new_location,
-                   CtkTextMark           *mark,
+                   const CtkTextIter     *new_location G_GNUC_UNUSED,
+                   CtkTextMark           *mark G_GNUC_UNUSED,
                    DemoApplicationWindow *window)
 {
   update_statusbar (buffer, window);
@@ -279,7 +279,7 @@ mark_set_callback (CtkTextBuffer         *buffer,
 static void
 change_theme_state (GSimpleAction *action,
                     GVariant      *state,
-                    gpointer       user_data)
+                    gpointer       user_data G_GNUC_UNUSED)
 {
   CtkSettings *settings = ctk_settings_get_default ();
 
@@ -307,7 +307,7 @@ change_titlebar_state (GSimpleAction *action,
 static void
 change_radio_state (GSimpleAction *action,
                     GVariant      *state,
-                    gpointer       user_data)
+                    gpointer       user_data G_GNUC_UNUSED)
 {
   g_simple_action_set_state (action, state);
 }
@@ -331,7 +331,8 @@ static GActionEntry win_entries[] = {
 };
 
 static void
-clicked_cb (CtkWidget *widget, DemoApplicationWindow *window)
+clicked_cb (CtkWidget             *widget G_GNUC_UNUSED,
+	    DemoApplicationWindow *window)
 {
   ctk_widget_hide (window->infobar);
 }
@@ -531,7 +532,8 @@ demo_application_window_class_init (DemoApplicationWindowClass *class)
 }
 
 int
-main (int argc, char *argv[])
+main (int   argc G_GNUC_UNUSED,
+      char *argv[] G_GNUC_UNUSED)
 {
   CtkApplication *app;
 

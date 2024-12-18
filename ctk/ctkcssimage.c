@@ -38,13 +38,13 @@
 G_DEFINE_ABSTRACT_TYPE (CtkCssImage, _ctk_css_image, G_TYPE_OBJECT)
 
 static int
-ctk_css_image_real_get_width (CtkCssImage *image)
+ctk_css_image_real_get_width (CtkCssImage *image G_GNUC_UNUSED)
 {
   return 0;
 }
 
 static int
-ctk_css_image_real_get_height (CtkCssImage *image)
+ctk_css_image_real_get_height (CtkCssImage *image G_GNUC_UNUSED)
 {
   return 0;
 }
@@ -65,17 +65,17 @@ ctk_css_image_real_get_aspect_ratio (CtkCssImage *image)
 
 static CtkCssImage *
 ctk_css_image_real_compute (CtkCssImage             *image,
-                            guint                    property_id,
-                            CtkStyleProviderPrivate *provider,
-                            CtkCssStyle             *style,
-                            CtkCssStyle             *parent_style)
+                            guint                    property_id G_GNUC_UNUSED,
+                            CtkStyleProviderPrivate *provider G_GNUC_UNUSED,
+                            CtkCssStyle             *style G_GNUC_UNUSED,
+                            CtkCssStyle             *parent_style G_GNUC_UNUSED)
 {
   return g_object_ref (image);
 }
 
 static gboolean
-ctk_css_image_real_equal (CtkCssImage *image1,
-                          CtkCssImage *image2)
+ctk_css_image_real_equal (CtkCssImage *image1 G_GNUC_UNUSED,
+                          CtkCssImage *image2 G_GNUC_UNUSED)
 {
   return FALSE;
 }
@@ -83,7 +83,7 @@ ctk_css_image_real_equal (CtkCssImage *image1,
 static CtkCssImage *
 ctk_css_image_real_transition (CtkCssImage *start,
                                CtkCssImage *end,
-                               guint        property_id,
+                               guint        property_id G_GNUC_UNUSED,
                                double       progress)
 {
   if (progress <= 0.0)
@@ -108,7 +108,7 @@ _ctk_css_image_class_init (CtkCssImageClass *klass)
 }
 
 static void
-_ctk_css_image_init (CtkCssImage *image)
+_ctk_css_image_init (CtkCssImage *image G_GNUC_UNUSED)
 {
 }
 

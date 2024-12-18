@@ -11,8 +11,8 @@ static CtkWidget *entry1 = NULL;
 static CtkWidget *entry2 = NULL;
 
 static void
-message_dialog_clicked (CtkButton *button,
-                        gpointer   user_data)
+message_dialog_clicked (CtkButton *button G_GNUC_UNUSED,
+                        gpointer   user_data G_GNUC_UNUSED)
 {
   CtkWidget *dialog;
   static gint i = 1;
@@ -31,8 +31,8 @@ message_dialog_clicked (CtkButton *button,
 }
 
 static void
-interactive_dialog_clicked (CtkButton *button,
-                            gpointer   user_data)
+interactive_dialog_clicked (CtkButton *button G_GNUC_UNUSED,
+                            gpointer   user_data G_GNUC_UNUSED)
 {
   CtkWidget *content_area;
   CtkWidget *dialog;

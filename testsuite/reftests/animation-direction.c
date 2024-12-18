@@ -25,7 +25,7 @@
 #include "ctk-reftest.h"
 
 static gboolean
-unblock (gpointer data)
+unblock (gpointer data G_GNUC_UNUSED)
 {
   reftest_uninhibit_snapshot ();
   return G_SOURCE_REMOVE;

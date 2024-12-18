@@ -310,7 +310,7 @@ ctk_shortcuts_section_set_property (GObject      *object,
 }
 
 static GType
-ctk_shortcuts_section_child_type (CtkContainer *container)
+ctk_shortcuts_section_child_type (CtkContainer *container G_GNUC_UNUSED)
 {
   return CTK_TYPE_SHORTCUTS_GROUP;
 }
@@ -584,7 +584,7 @@ ctk_shortcuts_section_maybe_reflow (CtkShortcutsSection *self)
 
 static void
 adjust_page_buttons (CtkWidget *widget,
-                     gpointer   data)
+                     gpointer   data G_GNUC_UNUSED)
 {
   CtkWidget *label;
 

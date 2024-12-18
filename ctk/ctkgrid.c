@@ -522,7 +522,7 @@ ctk_grid_remove (CtkContainer *container,
 
 static void
 ctk_grid_forall (CtkContainer *container,
-                 gboolean      include_internals,
+                 gboolean      include_internals G_GNUC_UNUSED,
                  CtkCallback   callback,
                  gpointer      callback_data)
 {
@@ -542,7 +542,7 @@ ctk_grid_forall (CtkContainer *container,
 }
 
 static GType
-ctk_grid_child_type (CtkContainer *container)
+ctk_grid_child_type (CtkContainer *container G_GNUC_UNUSED)
 {
   return CTK_TYPE_WIDGET;
 }
@@ -1555,7 +1555,7 @@ ctk_grid_measure (CtkCssGadget   *gadget,
                   int            *natural,
                   int            *minimum_baseline,
                   int            *natural_baseline,
-                  gpointer        data)
+                  gpointer        data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkGrid *grid = CTK_GRID (widget);
@@ -1656,9 +1656,9 @@ ctk_grid_size_allocate (CtkWidget     *widget,
 static void
 ctk_grid_allocate (CtkCssGadget        *gadget,
                    const CtkAllocation *allocation,
-                   int                  baseline,
+                   int                  baseline G_GNUC_UNUSED,
                    CtkAllocation       *out_clip,
-                   gpointer             data)
+                   gpointer             data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkGrid *grid = CTK_GRID (widget);
@@ -1702,11 +1702,11 @@ ctk_grid_allocate (CtkCssGadget        *gadget,
 static gboolean
 ctk_grid_render (CtkCssGadget *gadget,
                  cairo_t      *cr,
-                 int           x,
-                 int           y,
-                 int           width,
-                 int           height,
-                 gpointer      data)
+                 int           x G_GNUC_UNUSED,
+                 int           y G_GNUC_UNUSED,
+                 int           width G_GNUC_UNUSED,
+                 int           height G_GNUC_UNUSED,
+                 gpointer      data G_GNUC_UNUSED)
 {
   CTK_WIDGET_CLASS (ctk_grid_parent_class)->draw (ctk_css_gadget_get_owner (gadget), cr);
 

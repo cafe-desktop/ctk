@@ -410,7 +410,7 @@ static void
 ctk_cell_renderer_toggle_render (CtkCellRenderer      *cell,
 				 cairo_t              *cr,
 				 CtkWidget            *widget,
-				 const CdkRectangle   *background_area,
+				 const CdkRectangle   *background_area G_GNUC_UNUSED,
 				 const CdkRectangle   *cell_area,
 				 CtkCellRendererState  flags)
 {
@@ -490,12 +490,12 @@ ctk_cell_renderer_toggle_render (CtkCellRenderer      *cell,
 
 static gint
 ctk_cell_renderer_toggle_activate (CtkCellRenderer      *cell,
-				   CdkEvent             *event,
-				   CtkWidget            *widget,
+				   CdkEvent             *event G_GNUC_UNUSED,
+				   CtkWidget            *widget G_GNUC_UNUSED,
 				   const gchar          *path,
-				   const CdkRectangle   *background_area,
-				   const CdkRectangle   *cell_area,
-				   CtkCellRendererState  flags)
+				   const CdkRectangle   *background_area G_GNUC_UNUSED,
+				   const CdkRectangle   *cell_area G_GNUC_UNUSED,
+				   CtkCellRendererState  flags G_GNUC_UNUSED)
 {
   CtkCellRendererTogglePrivate *priv;
   CtkCellRendererToggle *celltoggle;

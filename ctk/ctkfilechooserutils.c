@@ -347,36 +347,36 @@ delegate_notify (GObject    *object,
 }
 
 static void
-delegate_selection_changed (CtkFileChooser *chooser,
+delegate_selection_changed (CtkFileChooser *chooser G_GNUC_UNUSED,
 			    gpointer        data)
 {
   g_signal_emit_by_name (data, "selection-changed");
 }
 
 static void
-delegate_current_folder_changed (CtkFileChooser *chooser,
+delegate_current_folder_changed (CtkFileChooser *chooser G_GNUC_UNUSED,
 				 gpointer        data)
 {
   g_signal_emit_by_name (data, "current-folder-changed");
 }
 
 static void
-delegate_update_preview (CtkFileChooser    *chooser,
+delegate_update_preview (CtkFileChooser    *chooser G_GNUC_UNUSED,
 			 gpointer           data)
 {
   g_signal_emit_by_name (data, "update-preview");
 }
 
 static void
-delegate_file_activated (CtkFileChooser    *chooser,
-			 gpointer           data)
+delegate_file_activated (CtkFileChooser *chooser G_GNUC_UNUSED,
+			 gpointer        data)
 {
   g_signal_emit_by_name (data, "file-activated");
 }
 
 static CtkFileChooserConfirmation
-delegate_confirm_overwrite (CtkFileChooser    *chooser,
-			    gpointer           data)
+delegate_confirm_overwrite (CtkFileChooser *chooser G_GNUC_UNUSED,
+			    gpointer        data)
 {
   CtkFileChooserConfirmation conf;
 

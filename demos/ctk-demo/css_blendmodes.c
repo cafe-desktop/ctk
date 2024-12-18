@@ -58,7 +58,7 @@ update_css_for_blend_mode (CtkCssProvider *provider,
 #pragma GCC diagnostic pop
 
 static void
-row_activated (CtkListBox     *listbox,
+row_activated (CtkListBox     *listbox G_GNUC_UNUSED,
                CtkListBoxRow  *row,
                CtkCssProvider *provider)
 {

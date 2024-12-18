@@ -924,7 +924,7 @@ ctk_path_bar_remove (CtkContainer *container,
 
 static void
 ctk_path_bar_forall (CtkContainer *container,
-		     gboolean      include_internals,
+		     gboolean      include_internals G_GNUC_UNUSED,
 		     CtkCallback   callback,
 		     gpointer      callback_data)
 {
@@ -1078,9 +1078,9 @@ ctk_path_bar_stop_scrolling (CtkPathBar *path_bar)
 }
 
 static gboolean
-ctk_path_bar_slider_up_defocus (CtkWidget      *widget,
-                                    CdkEventButton *event,
-                                    CtkPathBar     *path_bar)
+ctk_path_bar_slider_up_defocus (CtkWidget      *widget G_GNUC_UNUSED,
+                                CdkEventButton *event,
+                                CtkPathBar     *path_bar)
 {
   GList *list;
   GList *up_button = NULL;
@@ -1106,9 +1106,9 @@ ctk_path_bar_slider_up_defocus (CtkWidget      *widget,
 }
 
 static gboolean
-ctk_path_bar_slider_down_defocus (CtkWidget      *widget,
-                                    CdkEventButton *event,
-                                    CtkPathBar     *path_bar)
+ctk_path_bar_slider_down_defocus (CtkWidget      *widget G_GNUC_UNUSED,
+                                  CdkEventButton *event,
+                                  CtkPathBar     *path_bar)
 {
   GList *list;
   GList *down_button = NULL;
@@ -1169,7 +1169,7 @@ ctk_path_bar_slider_button_press (CtkWidget      *widget,
 }
 
 static gboolean
-ctk_path_bar_slider_button_release (CtkWidget      *widget, 
+ctk_path_bar_slider_button_release (CtkWidget      *widget G_GNUC_UNUSED,
 				    CdkEventButton *event,
 				    CtkPathBar     *path_bar)
 {
@@ -1192,7 +1192,7 @@ ctk_path_bar_grab_notify (CtkWidget *widget,
 
 static void
 ctk_path_bar_state_changed (CtkWidget    *widget,
-			    CtkStateType  previous_state)
+			    CtkStateType  previous_state G_GNUC_UNUSED)
 {
   if (!ctk_widget_is_sensitive (widget))
     ctk_path_bar_stop_scrolling (CTK_PATH_BAR (widget));
@@ -1231,7 +1231,7 @@ change_icon_theme (CtkPathBar *path_bar)
 
 /* Callback used when a CtkSettings value changes */
 static void
-settings_notify_cb (GObject    *object,
+settings_notify_cb (GObject    *object G_GNUC_UNUSED,
 		    GParamSpec *pspec,
 		    CtkPathBar *path_bar)
 {
@@ -1522,11 +1522,11 @@ find_button_type (CtkPathBar  *path_bar,
 }
 
 static void
-button_drag_data_get_cb (CtkWidget        *widget,
-                         CdkDragContext   *context,
+button_drag_data_get_cb (CtkWidget        *widget G_GNUC_UNUSED,
+                         CdkDragContext   *context G_GNUC_UNUSED,
                          CtkSelectionData *selection_data,
-                         guint             info,
-                         guint             time_,
+                         guint             info G_GNUC_UNUSED,
+                         guint             time_ G_GNUC_UNUSED,
                          gpointer          data)
 {
   ButtonData *button_data;
@@ -1732,7 +1732,7 @@ ctk_path_bar_set_file_finish (struct SetFileInfo *info,
 static void
 ctk_path_bar_get_info_callback (GCancellable *cancellable,
 			        GFileInfo    *info,
-			        const GError *error,
+			        const GError *error G_GNUC_UNUSED,
 			        gpointer      data)
 {
   gboolean cancelled = g_cancellable_is_cancelled (cancellable);

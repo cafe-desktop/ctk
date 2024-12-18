@@ -363,11 +363,11 @@ do_store_auth_info (GTask *task)
 }
 
 static void
-prompt_completed_cb (GDBusConnection *connection,
-                     const gchar     *sender_name,
-                     const gchar     *object_path,
-                     const gchar     *interface_name,
-                     const gchar     *signal_name,
+prompt_completed_cb (GDBusConnection *connection G_GNUC_UNUSED,
+                     const gchar     *sender_name G_GNUC_UNUSED,
+                     const gchar     *object_path G_GNUC_UNUSED,
+                     const gchar     *interface_name G_GNUC_UNUSED,
+                     const gchar     *signal_name G_GNUC_UNUSED,
                      GVariant        *parameters,
                      gpointer         user_data)
 {
@@ -584,7 +584,7 @@ unlock_read_alias_cb (GObject      *source_object,
 }
 
 static void
-item_proxy_cb (GObject      *source_object,
+item_proxy_cb (GObject      *source_object G_GNUC_UNUSED,
                GAsyncResult *res,
                gpointer      user_data)
 {
@@ -830,7 +830,7 @@ open_session_cb (GObject      *source_object,
 }
 
 static void
-get_connection_cb (GObject      *source_object,
+get_connection_cb (GObject      *source_object G_GNUC_UNUSED,
                    GAsyncResult *res,
                    gpointer      user_data)
 {
@@ -982,9 +982,9 @@ ctk_cups_secrets_service_query_task (gpointer              source_object,
 }
 
 static void
-store_done_cb (GObject      *source_object,
+store_done_cb (GObject      *source_object G_GNUC_UNUSED,
                GAsyncResult *res,
-               gpointer      user_data)
+               gpointer      user_data G_GNUC_UNUSED)
 {
   GTask  *task = (GTask *) res;
   GError *error = NULL;

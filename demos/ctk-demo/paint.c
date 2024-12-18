@@ -152,9 +152,9 @@ drawing_area_apply_stroke (DrawingArea   *area,
 }
 
 static void
-stylus_gesture_down (CtkGestureStylus *gesture,
-                     gdouble           x,
-                     gdouble           y,
+stylus_gesture_down (CtkGestureStylus *gesture G_GNUC_UNUSED,
+                     gdouble           x G_GNUC_UNUSED,
+                     gdouble           y G_GNUC_UNUSED,
                      DrawingArea      *area)
 {
   cairo_new_path (area->cr);
@@ -217,7 +217,7 @@ color_button_color_set (CtkColorButton *button,
 }
 
 CtkWidget *
-do_paint (CtkWidget *toplevel)
+do_paint (CtkWidget *toplevel G_GNUC_UNUSED)
 {
   static CtkWidget *window = NULL;
 

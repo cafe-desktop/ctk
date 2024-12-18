@@ -144,7 +144,7 @@ get_style (CtkStyleContext *parent,
 
 static CtkStyleContext *
 get_style_with_siblings (CtkStyleContext *parent,
-                         const char      *selector,
+                         const char      *selector G_GNUC_UNUSED,
                          const char     **siblings,
                          gint             position)
 {
@@ -396,12 +396,12 @@ draw_menu (CtkWidget *widget,
 }
 
 static void
-draw_menubar (CtkWidget     *widget,
-              cairo_t       *cr,
-              gint           x,
-              gint           y,
-              gint           width,
-              gint          *height)
+draw_menubar (CtkWidget *widget G_GNUC_UNUSED,
+              cairo_t   *cr,
+              gint       x,
+              gint       y,
+              gint       width,
+              gint      *height)
 {
   CtkStyleContext *frame_context;
   CtkStyleContext *border_context;
@@ -447,7 +447,7 @@ draw_menubar (CtkWidget     *widget,
 }
 
 static void
-draw_notebook (CtkWidget     *widget,
+draw_notebook (CtkWidget     *widget G_GNUC_UNUSED,
                cairo_t       *cr,
                gint           x,
                gint           y,
@@ -496,7 +496,7 @@ draw_notebook (CtkWidget     *widget,
 }
 
 static void
-draw_horizontal_scrollbar (CtkWidget     *widget,
+draw_horizontal_scrollbar (CtkWidget     *widget G_GNUC_UNUSED,
                            cairo_t       *cr,
                            gint           x,
                            gint           y,
@@ -581,7 +581,7 @@ draw_text (CtkWidget     *widget,
 }
 
 static void
-draw_check (CtkWidget     *widget,
+draw_check (CtkWidget     *widget G_GNUC_UNUSED,
             cairo_t       *cr,
             gint           x,
             gint           y,
@@ -614,7 +614,7 @@ draw_check (CtkWidget     *widget,
 }
 
 static void
-draw_radio (CtkWidget     *widget,
+draw_radio (CtkWidget     *widget G_GNUC_UNUSED,
             cairo_t       *cr,
             gint           x,
             gint           y,
@@ -647,7 +647,7 @@ draw_radio (CtkWidget     *widget,
 }
 
 static void
-draw_progress (CtkWidget *widget,
+draw_progress (CtkWidget *widget G_GNUC_UNUSED,
                cairo_t   *cr,
                gint       x,
                gint       y,
@@ -679,7 +679,7 @@ draw_progress (CtkWidget *widget,
 }
 
 static void
-draw_scale (CtkWidget *widget,
+draw_scale (CtkWidget *widget G_GNUC_UNUSED,
             cairo_t   *cr,
             gint       x,
             gint       y,
@@ -735,7 +735,7 @@ draw_scale (CtkWidget *widget,
 }
 
 static void
-draw_combobox (CtkWidget *widget,
+draw_combobox (CtkWidget *widget G_GNUC_UNUSED,
                cairo_t   *cr,
                gint       x,
                gint       y,

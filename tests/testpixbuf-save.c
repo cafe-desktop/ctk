@@ -1,5 +1,3 @@
-/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*- */
-
 #include "config.h"
 #include <stdio.h>
 
@@ -106,7 +104,9 @@ do_compare (GdkPixbuf *pixbuf, GdkPixbuf *compare, GError *err)
 }
 
 static void
-keypress_check (CtkWidget *widget, CdkEventKey *evt, gpointer data)
+keypress_check (CtkWidget   *widget G_GNUC_UNUSED,
+		CdkEventKey *evt,
+		gpointer     data)
 {
         GdkPixbuf *pixbuf;
         CtkDrawingArea *da = (CtkDrawingArea*)data;
@@ -302,14 +302,17 @@ keypress_check (CtkWidget *widget, CdkEventKey *evt, gpointer data)
 
 
 static int
-close_app (CtkWidget *widget, gpointer data)
+close_app (CtkWidget *widget G_GNUC_UNUSED,
+	   gpointer   data G_GNUC_UNUSED)
 {
         ctk_main_quit ();
         return TRUE;
 }
 
 static gboolean
-draw_cb (CtkWidget *drawing_area, cairo_t *cr, gpointer data)
+draw_cb (CtkWidget *drawing_area,
+	 cairo_t   *cr,
+	 gpointer   data G_GNUC_UNUSED)
 {
         GdkPixbuf *pixbuf;
          
@@ -323,7 +326,9 @@ draw_cb (CtkWidget *drawing_area, cairo_t *cr, gpointer data)
 }
 
 static int
-configure_cb (CtkWidget *drawing_area, CdkEventConfigure *evt, gpointer data)
+configure_cb (CtkWidget         *drawing_area,
+	      CdkEventConfigure *evt,
+	      gpointer           data G_GNUC_UNUSED)
 {
         GdkPixbuf *pixbuf;
                            

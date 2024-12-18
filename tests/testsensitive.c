@@ -1,7 +1,8 @@
 #include <ctk/ctk.h>
 
 static void
-set_insensitive (CtkButton *b, CtkWidget *w)
+set_insensitive (CtkButton *b G_GNUC_UNUSED,
+		 CtkWidget *w)
 {
   ctk_widget_set_sensitive (w, FALSE);
 }

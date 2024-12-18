@@ -31,7 +31,8 @@ set_fullscreen_monitor_cb (CtkWidget *widget, gpointer user_data)
 }
 
 static void
-remove_fullscreen_cb (CtkWidget *widget, gpointer user_data)
+remove_fullscreen_cb (CtkWidget *widget,
+		      gpointer   user_data G_GNUC_UNUSED)
 {
   CdkWindow  *window;
 

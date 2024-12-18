@@ -56,16 +56,18 @@ increase_level (gpointer data)
 }
 
 static gboolean
-window_delete_event (CtkWidget *widget,
-                     CdkEvent *event,
-                     gpointer _data)
+window_delete_event (CtkWidget *widget G_GNUC_UNUSED,
+                     CdkEvent  *event G_GNUC_UNUSED,
+                     gpointer   _data G_GNUC_UNUSED)
 {
   ctk_main_quit ();
   return FALSE;
 }
 
 static void
-toggle (CtkSwitch *sw, GParamSpec *pspec, CtkLevelBar *bar)
+toggle (CtkSwitch   *sw,
+	GParamSpec  *pspec G_GNUC_UNUSED,
+	CtkLevelBar *bar)
 {
   if (ctk_switch_get_active (sw))
     ctk_level_bar_set_mode (bar, CTK_LEVEL_BAR_MODE_DISCRETE);

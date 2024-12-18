@@ -141,10 +141,10 @@ get_accessible_for_widget (CtkWidget *widget,
 }
 
 static gboolean
-cail_focus_watcher (GSignalInvocationHint *ihint,
-                    guint                  n_param_values,
+cail_focus_watcher (GSignalInvocationHint *ihint G_GNUC_UNUSED,
+                    guint                  n_param_values G_GNUC_UNUSED,
                     const GValue          *param_values,
-                    gpointer               data)
+                    gpointer               data G_GNUC_UNUSED)
 {
   GObject *object;
   CtkWidget *widget;
@@ -273,10 +273,10 @@ cail_focus_watcher (GSignalInvocationHint *ihint,
 }
 
 static gboolean
-cail_select_watcher (GSignalInvocationHint *ihint,
-                     guint                  n_param_values,
+cail_select_watcher (GSignalInvocationHint *ihint G_GNUC_UNUSED,
+                     guint                  n_param_values G_GNUC_UNUSED,
                      const GValue          *param_values,
-                     gpointer               data)
+                     gpointer               data G_GNUC_UNUSED)
 {
   GObject *object;
   CtkWidget *widget;
@@ -389,10 +389,10 @@ cail_map_submenu_cb (CtkWidget *widget)
 
 
 static gboolean
-cail_deselect_watcher (GSignalInvocationHint *ihint,
-                       guint                  n_param_values,
+cail_deselect_watcher (GSignalInvocationHint *ihint G_GNUC_UNUSED,
+                       guint                  n_param_values G_GNUC_UNUSED,
                        const GValue          *param_values,
-                       gpointer               data)
+                       gpointer               data G_GNUC_UNUSED)
 {
   GObject *object;
   CtkWidget *widget;
@@ -438,10 +438,10 @@ cail_deselect_watcher (GSignalInvocationHint *ihint,
 }
 
 static gboolean 
-cail_switch_page_watcher (GSignalInvocationHint *ihint,
-                          guint                  n_param_values,
+cail_switch_page_watcher (GSignalInvocationHint *ihint G_GNUC_UNUSED,
+                          guint                  n_param_values G_GNUC_UNUSED,
                           const GValue          *param_values,
-                          gpointer               data)
+                          gpointer               data G_GNUC_UNUSED)
 {
   GObject *object;
   CtkWidget *widget;
@@ -609,10 +609,10 @@ cail_focus_notify_when_idle (CtkWidget *widget)
 }
 
 static gboolean
-cail_deactivate_watcher (GSignalInvocationHint *ihint,
-                         guint                  n_param_values,
+cail_deactivate_watcher (GSignalInvocationHint *ihint G_GNUC_UNUSED,
+                         guint                  n_param_values G_GNUC_UNUSED,
                          const GValue          *param_values,
-                         gpointer               data)
+                         gpointer               data G_GNUC_UNUSED)
 {
   GObject *object;
   CtkWidget *widget;
@@ -805,10 +805,10 @@ cail_set_focus_object (AtkObject *focus_obj,
 }
 
 static gboolean
-state_event_watcher (GSignalInvocationHint *hint,
-                     guint                  n_param_values,
+state_event_watcher (GSignalInvocationHint *hint G_GNUC_UNUSED,
+                     guint                  n_param_values G_GNUC_UNUSED,
                      const GValue          *param_values,
-                     gpointer               data)
+                     gpointer               data G_GNUC_UNUSED)
 {
   GObject *object;
   CtkWidget *widget;
@@ -850,10 +850,10 @@ state_event_watcher (GSignalInvocationHint *hint,
 }
 
 static gboolean
-configure_event_watcher (GSignalInvocationHint *hint,
-                         guint                  n_param_values,
+configure_event_watcher (GSignalInvocationHint *hint G_GNUC_UNUSED,
+                         guint                  n_param_values G_GNUC_UNUSED,
                          const GValue          *param_values,
-                         gpointer               data)
+                         gpointer               data G_GNUC_UNUSED)
 {
   CtkAllocation allocation;
   GObject *object;
@@ -913,8 +913,8 @@ window_focus (CtkWidget     *widget,
 }
 
 static void
-window_added (AtkObject *atk_obj,
-              guint      index,
+window_added (AtkObject *atk_obj G_GNUC_UNUSED,
+              guint      index G_GNUC_UNUSED,
               AtkObject *child)
 {
   CtkWidget *widget;
@@ -932,8 +932,8 @@ window_added (AtkObject *atk_obj,
 }
 
 static void
-window_removed (AtkObject *atk_obj,
-                guint      index,
+window_removed (AtkObject *atk_obj G_GNUC_UNUSED,
+                guint      index G_GNUC_UNUSED,
                 AtkObject *child)
 {
   CtkWidget *widget;

@@ -252,7 +252,7 @@ ctk_gesture_multi_press_begin (CtkGesture       *gesture,
 
 static void
 ctk_gesture_multi_press_update (CtkGesture       *gesture,
-                                CdkEventSequence *sequence)
+                                CdkEventSequence *sequence G_GNUC_UNUSED)
 {
   CtkGestureMultiPress *multi_press;
   CdkEventSequence *current;
@@ -268,7 +268,7 @@ ctk_gesture_multi_press_update (CtkGesture       *gesture,
 
 static void
 ctk_gesture_multi_press_end (CtkGesture       *gesture,
-                             CdkEventSequence *sequence)
+                             CdkEventSequence *sequence G_GNUC_UNUSED)
 {
   CtkGestureMultiPress *multi_press;
   CtkGestureMultiPressPrivate *priv;
@@ -390,7 +390,7 @@ ctk_gesture_multi_press_class_init (CtkGestureMultiPressClass *klass)
 }
 
 static void
-ctk_gesture_multi_press_init (CtkGestureMultiPress *gesture)
+ctk_gesture_multi_press_init (CtkGestureMultiPress *gesture G_GNUC_UNUSED)
 {
 }
 

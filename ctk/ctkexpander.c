@@ -489,7 +489,7 @@ ctk_expander_init (CtkExpander *expander)
 
 static void
 ctk_expander_buildable_add_child (CtkBuildable  *buildable,
-                                  CtkBuilder    *builder,
+                                  CtkBuilder    *builder G_GNUC_UNUSED,
                                   GObject       *child,
                                   const gchar   *type)
 {
@@ -730,10 +730,10 @@ ctk_expander_draw (CtkWidget *widget,
 }
 
 static void
-gesture_multipress_released_cb (CtkGestureMultiPress *gesture,
-                                gint                  n_press,
-                                gdouble               x,
-                                gdouble               y,
+gesture_multipress_released_cb (CtkGestureMultiPress *gesture G_GNUC_UNUSED,
+                                gint                  n_press G_GNUC_UNUSED,
+                                gdouble               x G_GNUC_UNUSED,
+                                gdouble               y G_GNUC_UNUSED,
                                 CtkExpander          *expander)
 {
   if (expander->priv->prelight)
@@ -867,10 +867,10 @@ expand_timeout (gpointer data)
 
 static gboolean
 ctk_expander_drag_motion (CtkWidget        *widget,
-                          CdkDragContext   *context,
-                          gint              x,
-                          gint              y,
-                          guint             time)
+                          CdkDragContext   *context G_GNUC_UNUSED,
+                          gint              x G_GNUC_UNUSED,
+                          gint              y G_GNUC_UNUSED,
+                          guint             time G_GNUC_UNUSED)
 {
   CtkExpander *expander = CTK_EXPANDER (widget);
   CtkExpanderPrivate *priv = expander->priv;
@@ -886,8 +886,8 @@ ctk_expander_drag_motion (CtkWidget        *widget,
 
 static void
 ctk_expander_drag_leave (CtkWidget      *widget,
-                         CdkDragContext *context,
-                         guint           time)
+                         CdkDragContext *context G_GNUC_UNUSED,
+                         guint           time G_GNUC_UNUSED)
 {
   CtkExpander *expander = CTK_EXPANDER (widget);
   CtkExpanderPrivate *priv = expander->priv;
@@ -1145,7 +1145,7 @@ ctk_expander_remove (CtkContainer *container,
 
 static void
 ctk_expander_forall (CtkContainer *container,
-                     gboolean      include_internals,
+                     gboolean      include_internals G_GNUC_UNUSED,
                      CtkCallback   callback,
                      gpointer      callback_data)
 {

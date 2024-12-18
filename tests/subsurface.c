@@ -76,7 +76,7 @@ da_size_allocate (CtkWidget     *widget,
 }
 
 static gboolean
-da_draw (CtkWidget *widget,
+da_draw (CtkWidget *widget G_GNUC_UNUSED,
          cairo_t   *cr)
 {
   cairo_set_source_rgb (cr, 1.0, 0.0, 0.0); 
@@ -86,7 +86,8 @@ da_draw (CtkWidget *widget,
 }
 
 int
-main (int argc, char *argv[])
+main (int   argc G_GNUC_UNUSED,
+      char *argv[] G_GNUC_UNUSED)
 {
   CtkWidget *window, *label, *box, *widget;
   CtkWidget *stack, *switcher;

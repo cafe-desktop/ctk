@@ -67,7 +67,7 @@ add_rows (gpointer data)
 }
 
 static void
-edge_overshot (CtkScrolledWindow *sw,
+edge_overshot (CtkScrolledWindow *sw G_GNUC_UNUSED,
                CtkPositionType    pos,
                CtkListBox        *list)
 {
@@ -82,15 +82,16 @@ edge_overshot (CtkScrolledWindow *sw,
 }
 
 static void
-edge_reached (CtkScrolledWindow *sw,
+edge_reached (CtkScrolledWindow *sw G_GNUC_UNUSED,
 	      CtkPositionType    pos,
-	      CtkListBox        *list)
+	      CtkListBox        *list G_GNUC_UNUSED)
 {
   g_print ("Reached the edge at pos %d!\n", pos);
 }
 
 int
-main (int argc, char *argv[])
+main (int   argc G_GNUC_UNUSED,
+      char *argv[] G_GNUC_UNUSED)
 {
   CtkWidget *win;
   CtkWidget *sw;

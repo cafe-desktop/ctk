@@ -271,7 +271,7 @@ ctk_window_accessible_ref_state_set (AtkObject *accessible)
 }
 
 static void
-count_widget (CtkWidget *widget,
+count_widget (CtkWidget *widget G_GNUC_UNUSED,
               gint      *count)
 {
   (*count)++;
@@ -369,7 +369,7 @@ ctk_window_accessible_class_init (CtkWindowAccessibleClass *klass)
 }
 
 static void
-ctk_window_accessible_init (CtkWindowAccessible *accessible)
+ctk_window_accessible_init (CtkWindowAccessible *accessible G_GNUC_UNUSED)
 {
 }
 
@@ -464,7 +464,7 @@ atk_component_interface_init (AtkComponentIface *iface)
 }
 
 static void
-atk_window_interface_init (AtkWindowIface *iface)
+atk_window_interface_init (AtkWindowIface *iface G_GNUC_UNUSED)
 {
   /* At this moment AtkWindow is just about signals */
 }

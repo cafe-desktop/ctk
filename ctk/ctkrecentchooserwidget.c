@@ -103,7 +103,7 @@ ctk_recent_chooser_widget_set_property (GObject      *object,
 
 static void
 ctk_recent_chooser_widget_get_property (GObject    *object,
-				        guint       prop_id,
+				        guint       prop_id G_GNUC_UNUSED,
 				        GValue     *value,
 				        GParamSpec *pspec)
 {

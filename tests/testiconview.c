@@ -84,7 +84,8 @@ create_model (void)
 
 
 static void
-foreach_selected_remove (CtkWidget *button, CtkIconView *icon_list)
+foreach_selected_remove (CtkWidget   *button G_GNUC_UNUSED,
+			 CtkIconView *icon_list)
 {
   CtkTreeIter iter;
   CtkTreeModel *model;
@@ -109,7 +110,8 @@ foreach_selected_remove (CtkWidget *button, CtkIconView *icon_list)
 
 
 static void
-swap_rows (CtkWidget *button, CtkIconView *icon_list)
+swap_rows (CtkWidget   *button G_GNUC_UNUSED,
+	   CtkIconView *icon_list)
 {
   CtkTreeIter iter, iter2;
   CtkTreeModel *model;
@@ -157,19 +159,22 @@ add_n_items (CtkIconView *icon_list, gint n)
 }
 
 static void
-add_some (CtkWidget *button, CtkIconView *icon_list)
+add_some (CtkWidget   *button G_GNUC_UNUSED,
+	  CtkIconView *icon_list)
 {
   add_n_items (icon_list, SOME_ITEMS);
 }
 
 static void
-add_many (CtkWidget *button, CtkIconView *icon_list)
+add_many (CtkWidget   *button G_GNUC_UNUSED,
+	  CtkIconView *icon_list)
 {
   add_n_items (icon_list, MANY_ITEMS);
 }
 
 static void
-add_large (CtkWidget *button, CtkIconView *icon_list)
+add_large (CtkWidget   *button G_GNUC_UNUSED,
+	   CtkIconView *icon_list)
 {
   CtkListStore *store;
   CtkTreeIter iter;
@@ -233,13 +238,15 @@ add_large (CtkWidget *button, CtkIconView *icon_list)
 }
 
 static void
-select_all (CtkWidget *button, CtkIconView *icon_list)
+select_all (CtkWidget   *button G_GNUC_UNUSED,
+	    CtkIconView *icon_list)
 {
   ctk_icon_view_select_all (icon_list);
 }
 
 static void
-select_nonexisting (CtkWidget *button, CtkIconView *icon_list)
+select_nonexisting (CtkWidget   *button G_GNUC_UNUSED,
+		    CtkIconView *icon_list)
 {  
   CtkTreePath *path = ctk_tree_path_new_from_indices (999999, -1);
   ctk_icon_view_select_path (icon_list, path);
@@ -247,13 +254,14 @@ select_nonexisting (CtkWidget *button, CtkIconView *icon_list)
 }
 
 static void
-unselect_all (CtkWidget *button, CtkIconView *icon_list)
+unselect_all (CtkWidget   *button G_GNUC_UNUSED,
+	      CtkIconView *icon_list)
 {
   ctk_icon_view_unselect_all (icon_list);
 }
 
 static void
-selection_changed (CtkIconView *icon_list)
+selection_changed (CtkIconView *icon_list G_GNUC_UNUSED)
 {
   g_print ("Selection changed!\n");
 }
@@ -288,7 +296,7 @@ item_activated (CtkIconView *icon_view,
 }
 
 static void
-toggled (CtkCellRendererToggle *cell,
+toggled (CtkCellRendererToggle *cell G_GNUC_UNUSED,
 	 gchar                 *path_string,
 	 gpointer               data)
 {
@@ -307,7 +315,7 @@ toggled (CtkCellRendererToggle *cell,
 }
 
 static void
-edited (CtkCellRendererText *cell,
+edited (CtkCellRendererText *cell G_GNUC_UNUSED,
 	gchar               *path_string,
 	gchar               *new_text,
 	gpointer             data)
@@ -323,7 +331,7 @@ edited (CtkCellRendererText *cell,
 }
 
 static void
-item_cb (CtkWidget *menuitem,
+item_cb (CtkWidget *menuitem G_GNUC_UNUSED,
 	 ItemData  *data)
 {
   item_activated (data->icon_list, data->path);

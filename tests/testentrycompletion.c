@@ -159,7 +159,7 @@ static gboolean
 match_func (CtkEntryCompletion *completion,
 	    const gchar        *key,
 	    CtkTreeIter        *iter,
-	    gpointer            user_data)
+	    gpointer            user_data G_GNUC_UNUSED)
 {
   gchar *item = NULL;
   CtkTreeModel *model;
@@ -183,9 +183,9 @@ match_func (CtkEntryCompletion *completion,
 }
 
 static void
-activated_cb (CtkEntryCompletion *completion, 
+activated_cb (CtkEntryCompletion *completion G_GNUC_UNUSED,
 	      gint                index,
-	      gpointer            user_data)
+	      gpointer            user_data G_GNUC_UNUSED)
 {
   g_print ("action activated: %d\n", index);
 }

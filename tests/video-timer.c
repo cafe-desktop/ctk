@@ -101,7 +101,7 @@ peek_next_frame (void)
 /* Frame producer thread */
 
 static gpointer
-create_frames_thread (gpointer data)
+create_frames_thread (gpointer data G_GNUC_UNUSED)
 {
   int frame_count = 0;
 
@@ -304,7 +304,7 @@ print_statistics (void)
 
 static void
 on_update (CdkFrameClock *frame_clock,
-           gpointer       data)
+           gpointer       data G_GNUC_UNUSED)
 {
   CdkFrameTimings *timings = cdk_frame_clock_get_current_timings (frame_clock);
   gint64 frame_time = cdk_frame_timings_get_frame_time (timings);

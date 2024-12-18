@@ -26,7 +26,7 @@
 G_DEFINE_TYPE (CdkWaylandMonitor, cdk_wayland_monitor, CDK_TYPE_MONITOR)
 
 static void
-cdk_wayland_monitor_init (CdkWaylandMonitor *monitor)
+cdk_wayland_monitor_init (CdkWaylandMonitor *monitor G_GNUC_UNUSED)
 {
 }
 

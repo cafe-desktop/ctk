@@ -1,7 +1,7 @@
 #include <ctk/ctk.h>
 
 static gboolean
-da_draw (CtkWidget *widget,
+da_draw (CtkWidget *widget G_GNUC_UNUSED,
          cairo_t   *cr,
          gpointer   user_data)
 {
@@ -16,8 +16,8 @@ da_draw (CtkWidget *widget,
 }
 
 static gboolean
-offscreen_damage (CtkWidget      *widget,
-                  CdkEventExpose *event,
+offscreen_damage (CtkWidget      *widget G_GNUC_UNUSED,
+                  CdkEventExpose *event G_GNUC_UNUSED,
                   CtkWidget      *da)
 {
   ctk_widget_queue_draw (da);
@@ -26,7 +26,9 @@ offscreen_damage (CtkWidget      *widget,
 }
 
 static gboolean
-da_button_press (CtkWidget *area, CdkEventButton *event, CtkWidget *button)
+da_button_press (CtkWidget      *area G_GNUC_UNUSED,
+		 CdkEventButton *event G_GNUC_UNUSED,
+		 CtkWidget      *button)
 {
   ctk_widget_set_size_request (button, 150, 60);
   return TRUE;

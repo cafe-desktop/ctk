@@ -42,7 +42,7 @@ G_DEFINE_TYPE_WITH_CODE (CtkNotebookAccessible, ctk_notebook_accessible, CTK_TYP
 
 static void
 create_notebook_page_accessible (CtkNotebookAccessible *accessible,
-                                 CtkNotebook           *notebook,
+                                 CtkNotebook           *notebook G_GNUC_UNUSED,
                                  CtkWidget             *child,
                                  gint                   page_num)
 {
@@ -58,7 +58,7 @@ static void
 page_added_cb (CtkNotebook *notebook,
                CtkWidget   *child,
                guint        page_num,
-               gpointer     data)
+               gpointer     data G_GNUC_UNUSED)
 {
   AtkObject *atk_obj;
   CtkNotebookAccessible *accessible;
@@ -72,7 +72,7 @@ static void
 page_removed_cb (CtkNotebook *notebook,
                  CtkWidget   *widget,
                  guint        page_num,
-                 gpointer     data)
+                 gpointer     data G_GNUC_UNUSED)
 {
   CtkNotebookAccessible *accessible;
   AtkObject *obj;

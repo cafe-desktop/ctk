@@ -24,9 +24,9 @@ CtkWidget *label;
 #define SIZE 256.
 
 static void
-image_request_cb (CtkClipboard *clipboard,
-                  GdkPixbuf *pixbuf,
-                  gpointer data)
+image_request_cb (CtkClipboard *clipboard G_GNUC_UNUSED,
+                  GdkPixbuf    *pixbuf,
+                  gpointer      data G_GNUC_UNUSED)
 {
   gdouble factor;
   char *str;
@@ -62,17 +62,17 @@ update_display (void)
 }
 
 static void
-on_owner_change (CtkClipboard *clipboard,
-                 CdkEvent     *event,
-                 gpointer      user_data)
+on_owner_change (CtkClipboard *clipboard G_GNUC_UNUSED,
+                 CdkEvent     *event G_GNUC_UNUSED,
+                 gpointer      user_data G_GNUC_UNUSED)
 {
   update_display ();
 }
 
 static void
-on_response (CtkDialog *dialog,
+on_response (CtkDialog *dialog G_GNUC_UNUSED,
              gint       response_id,
-             gpointer   user_data)
+             gpointer   user_data G_GNUC_UNUSED)
 {
   switch (response_id)
     {

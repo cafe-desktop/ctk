@@ -1,4 +1,3 @@
-/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
 /* CTK - The GIMP Toolkit
  * Copyright (C) David Zeuthen <davidz@redhat.com>
  * Copyright (C) 2001 Havoc Pennington
@@ -394,7 +393,8 @@ read_rgb_icon (CdkDisplay *display,
 }
 
 static void
-free_pixels (guchar *pixels, gpointer data)
+free_pixels (guchar   *pixels,
+             gpointer  data G_GNUC_UNUSED)
 {
   g_free (pixels);
 }

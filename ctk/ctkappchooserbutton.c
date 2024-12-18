@@ -123,7 +123,7 @@ G_DEFINE_TYPE_WITH_CODE (CtkAppChooserButton, ctk_app_chooser_button, CTK_TYPE_C
 static gboolean
 row_separator_func (CtkTreeModel *model,
                     CtkTreeIter  *iter,
-                    gpointer      user_data)
+                    gpointer      user_data G_GNUC_UNUSED)
 {
   gboolean separator;
 
@@ -169,7 +169,7 @@ select_app_data_free (SelectAppData *data)
 
 static gboolean
 select_application_func_cb (CtkTreeModel *model,
-                            CtkTreePath  *path,
+                            CtkTreePath  *path G_GNUC_UNUSED,
                             CtkTreeIter  *iter,
                             gpointer      user_data)
 {

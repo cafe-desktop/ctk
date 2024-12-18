@@ -18,7 +18,7 @@ static void
 fancy_shape_renderer (cairo_t        *cr,
                       PangoAttrShape *attr,
                       gboolean        do_path,
-                      gpointer        data)
+                      gpointer        data G_GNUC_UNUSED)
 {
   double x, y;
   cairo_get_current_point (cr, &x, &y);
@@ -91,7 +91,7 @@ create_fancy_attr_list_for_layout (PangoLayout *layout)
 static gboolean
 rotated_text_draw (CtkWidget *widget,
                    cairo_t   *cr,
-                   gpointer   data)
+                   gpointer   data G_GNUC_UNUSED)
 {
 #define RADIUS 150
 #define N_WORDS 5

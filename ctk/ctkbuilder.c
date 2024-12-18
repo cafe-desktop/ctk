@@ -427,7 +427,7 @@ _ctk_builder_resolve_type_lazily (const gchar *name)
  */
 
 static GType
-ctk_builder_real_get_type_from_name (CtkBuilder  *builder,
+ctk_builder_real_get_type_from_name (CtkBuilder  *builder G_GNUC_UNUSED,
                                      const gchar *type_name)
 {
   GType gtype;
@@ -855,7 +855,7 @@ _ctk_builder_construct (CtkBuilder  *builder,
 void
 _ctk_builder_apply_properties (CtkBuilder  *builder,
                                ObjectInfo  *info,
-                               GError     **error)
+                               GError     **error G_GNUC_UNUSED)
 {
   ObjectProperties *parameters;
   CtkBuildableIface *iface;
@@ -991,7 +991,7 @@ ctk_builder_apply_delayed_properties (CtkBuilder *builder)
 
 static inline void
 free_binding_info (gpointer data,
-                   gpointer user)
+                   gpointer user G_GNUC_UNUSED)
 {
   BindingInfo *info = data;
 

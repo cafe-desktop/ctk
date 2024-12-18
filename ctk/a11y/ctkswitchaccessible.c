@@ -62,18 +62,18 @@ ctk_switch_accessible_class_init (CtkSwitchAccessibleClass *klass)
 }
 
 static void
-ctk_switch_accessible_init (CtkSwitchAccessible *self)
+ctk_switch_accessible_init (CtkSwitchAccessible *self G_GNUC_UNUSED)
 {
 }
 
 static gint
-ctk_switch_action_get_n_actions (AtkAction *action)
+ctk_switch_action_get_n_actions (AtkAction *action G_GNUC_UNUSED)
 {
   return 1;
 }
 
 static const gchar *
-ctk_switch_action_get_name (AtkAction *action,
+ctk_switch_action_get_name (AtkAction *action G_GNUC_UNUSED,
                             gint       i)
 {
   if (i == 0)
@@ -82,7 +82,7 @@ ctk_switch_action_get_name (AtkAction *action,
 }
 
 static const gchar *
-ctk_switch_action_get_localized_name (AtkAction *action,
+ctk_switch_action_get_localized_name (AtkAction *action G_GNUC_UNUSED,
                                       gint       i)
 {
   if (i == 0)
@@ -91,7 +91,7 @@ ctk_switch_action_get_localized_name (AtkAction *action,
 }
 
 static const gchar *
-ctk_switch_action_get_description (AtkAction *action,
+ctk_switch_action_get_description (AtkAction *action G_GNUC_UNUSED,
                                    gint       i)
 {
   if (i == 0)

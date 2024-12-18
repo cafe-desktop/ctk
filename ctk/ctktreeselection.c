@@ -644,7 +644,7 @@ ctk_tree_selection_get_selected_rows (CtkTreeSelection   *selection,
 }
 
 static void
-ctk_tree_selection_count_selected_rows_helper (CtkRBTree *tree,
+ctk_tree_selection_count_selected_rows_helper (CtkRBTree *tree G_GNUC_UNUSED,
 					       CtkRBNode *node,
 					       gpointer   data)
 {

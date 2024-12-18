@@ -545,7 +545,7 @@ emit_selection_changed_if_changing_selection (CtkFileChooserButton *button)
 static gboolean
 ctk_file_chooser_button_set_current_folder (CtkFileChooser    *chooser,
 					    GFile             *file,
-					    GError           **error)
+					    GError           **error G_GNUC_UNUSED)
 {
   CtkFileChooserButton *button = CTK_FILE_CHOOSER_BUTTON (chooser);
   CtkFileChooserButtonPrivate *priv = button->priv;
@@ -580,7 +580,7 @@ ctk_file_chooser_button_get_current_folder (CtkFileChooser *chooser)
 static gboolean
 ctk_file_chooser_button_select_file (CtkFileChooser *chooser,
 				     GFile          *file,
-				     GError        **error)
+				     GError        **error G_GNUC_UNUSED)
 {
   CtkFileChooserButton *button = CTK_FILE_CHOOSER_BUTTON (chooser);
   CtkFileChooserButtonPrivate *priv = button->priv;
@@ -2214,7 +2214,7 @@ model_remove_rows (CtkFileChooserButton *button,
 
 /* Filter Model */
 static gboolean
-test_if_file_is_visible (CtkFileSystem *fs,
+test_if_file_is_visible (CtkFileSystem *fs G_GNUC_UNUSED,
 			 GFile         *file,
 			 gboolean       local_only,
 			 gboolean       is_folder)
@@ -2323,11 +2323,11 @@ filter_model_visible_func (CtkTreeModel *model,
 
 /* Combo Box */
 static void
-name_cell_data_func (CtkCellLayout   *layout,
+name_cell_data_func (CtkCellLayout   *layout G_GNUC_UNUSED,
 		     CtkCellRenderer *cell,
 		     CtkTreeModel    *model,
 		     CtkTreeIter     *iter,
-		     gpointer         user_data)
+		     gpointer         user_data G_GNUC_UNUSED)
 {
   gchar type;
 
@@ -2347,7 +2347,7 @@ name_cell_data_func (CtkCellLayout   *layout,
 static gboolean
 combo_box_row_separator_func (CtkTreeModel *model,
 			      CtkTreeIter  *iter,
-			      gpointer      user_data)
+			      gpointer      user_data G_GNUC_UNUSED)
 {
   gchar type = ROW_TYPE_INVALID;
 
@@ -2823,8 +2823,8 @@ combo_box_changed_cb (CtkComboBox *combo_box,
  * present signal handler.
  */
 static void
-combo_box_notify_popup_shown_cb (GObject    *object,
-				 GParamSpec *pspec,
+combo_box_notify_popup_shown_cb (GObject    *object G_GNUC_UNUSED,
+				 GParamSpec *pspec G_GNUC_UNUSED,
 				 gpointer    user_data)
 {
   CtkFileChooserButton *button = CTK_FILE_CHOOSER_BUTTON (user_data);
@@ -2858,7 +2858,7 @@ combo_box_notify_popup_shown_cb (GObject    *object,
 
 /* Button */
 static void
-button_clicked_cb (CtkButton *real_button,
+button_clicked_cb (CtkButton *real_button G_GNUC_UNUSED,
 		   gpointer   user_data)
 {
   open_dialog (user_data);
@@ -2867,7 +2867,7 @@ button_clicked_cb (CtkButton *real_button,
 /* Dialog */
 
 static void
-chooser_update_preview_cb (CtkFileChooser *dialog,
+chooser_update_preview_cb (CtkFileChooser *dialog G_GNUC_UNUSED,
                            gpointer        user_data)
 {
   g_signal_emit_by_name (user_data, "update-preview");
@@ -2920,8 +2920,8 @@ chooser_notify_cb (GObject    *dialog,
 
 static gboolean
 dialog_delete_event_cb (CtkWidget *dialog,
-			CdkEvent  *event,
-		        gpointer   user_data)
+			CdkEvent  *event G_GNUC_UNUSED,
+		        gpointer   user_data G_GNUC_UNUSED)
 {
   g_signal_emit_by_name (dialog, "response", CTK_RESPONSE_DELETE_EVENT);
 
@@ -2962,7 +2962,7 @@ common_response_cb (CtkFileChooserButton *button,
 
 
 static void
-dialog_response_cb (CtkDialog *dialog,
+dialog_response_cb (CtkDialog *dialog G_GNUC_UNUSED,
 		    gint       response,
 		    gpointer   user_data)
 {
@@ -2979,9 +2979,9 @@ dialog_response_cb (CtkDialog *dialog,
 }
 
 static void
-native_response_cb (CtkFileChooserNative *native,
-		    gint       response,
-		    gpointer   user_data)
+native_response_cb (CtkFileChooserNative *native G_GNUC_UNUSED,
+		    gint                  response,
+		    gpointer              user_data)
 {
   CtkFileChooserButton *button = CTK_FILE_CHOOSER_BUTTON (user_data);
 

@@ -1824,9 +1824,9 @@ ctk_range_measure_trough (CtkCssGadget   *gadget,
                           gint            for_size,
                           gint           *minimum,
                           gint           *natural,
-                          gint           *minimum_baseline,
-                          gint           *natural_baseline,
-                          gpointer        user_data)
+                          gint           *minimum_baseline G_GNUC_UNUSED,
+                          gint           *natural_baseline G_GNUC_UNUSED,
+                          gpointer        user_data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkRange *range = CTK_RANGE (widget);
@@ -1862,12 +1862,12 @@ ctk_range_measure_trough (CtkCssGadget   *gadget,
 static void
 ctk_range_measure (CtkCssGadget   *gadget,
                    CtkOrientation  orientation,
-                   gint            for_size,
+                   gint            for_size G_GNUC_UNUSED,
                    gint           *minimum,
                    gint           *natural,
-                   gint           *minimum_baseline,
-                   gint           *natural_baseline,
-                   gpointer        user_data)
+                   gint           *minimum_baseline G_GNUC_UNUSED,
+                   gint           *natural_baseline G_GNUC_UNUSED,
+                   gpointer        user_data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkRange *range = CTK_RANGE (widget);
@@ -1945,7 +1945,7 @@ ctk_range_allocate_trough (CtkCssGadget        *gadget,
                            const CtkAllocation *allocation,
                            int                  baseline,
                            CtkAllocation       *out_clip,
-                           gpointer             data)
+                           gpointer             data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkRange *range = CTK_RANGE (widget);
@@ -2152,7 +2152,7 @@ ctk_range_allocate (CtkCssGadget        *gadget,
                     const CtkAllocation *allocation,
                     int                  baseline,
                     CtkAllocation       *out_clip,
-                    gpointer             data)
+                    gpointer             data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkRange *range = CTK_RANGE (widget);
@@ -2366,7 +2366,7 @@ ctk_range_render_trough (CtkCssGadget *gadget,
                          int           y,
                          int           width,
                          int           height,
-                         gpointer      user_data)
+                         gpointer      user_data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkRange *range = CTK_RANGE (widget);
@@ -2392,11 +2392,11 @@ ctk_range_render_trough (CtkCssGadget *gadget,
 static gboolean
 ctk_range_render (CtkCssGadget *gadget,
                   cairo_t      *cr,
-                  int           x,
-                  int           y,
-                  int           width,
-                  int           height,
-                  gpointer      user_data)
+                  int           x G_GNUC_UNUSED,
+                  int           y G_GNUC_UNUSED,
+                  int           width G_GNUC_UNUSED,
+                  int           height G_GNUC_UNUSED,
+                  gpointer      user_data G_GNUC_UNUSED)
 {
   CtkWidget *widget = ctk_css_gadget_get_owner (gadget);
   CtkRange *range = CTK_RANGE (widget);
@@ -2657,7 +2657,7 @@ update_initial_slider_position (CtkRange      *range,
 }
 
 static void
-ctk_range_long_press_gesture_pressed (CtkGestureLongPress *gesture,
+ctk_range_long_press_gesture_pressed (CtkGestureLongPress *gesture G_GNUC_UNUSED,
                                       gdouble              x,
                                       gdouble              y,
                                       CtkRange            *range)
@@ -2678,7 +2678,7 @@ ctk_range_long_press_gesture_pressed (CtkGestureLongPress *gesture,
 
 static void
 ctk_range_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
-                                      guint                 n_press,
+                                      guint                 n_press G_GNUC_UNUSED,
                                       gdouble               x,
                                       gdouble               y,
                                       CtkRange             *range)
@@ -2833,8 +2833,8 @@ ctk_range_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
 }
 
 static void
-ctk_range_multipress_gesture_released (CtkGestureMultiPress *gesture,
-                                       guint                 n_press,
+ctk_range_multipress_gesture_released (CtkGestureMultiPress *gesture G_GNUC_UNUSED,
+                                       guint                 n_press G_GNUC_UNUSED,
                                        gdouble               x,
                                        gdouble               y,
                                        CtkRange             *range)
@@ -2940,8 +2940,8 @@ remove_autoscroll (CtkRange *range)
 }
 
 static gboolean
-autoscroll_cb (CtkWidget     *widget,
-               CdkFrameClock *frame_clock,
+autoscroll_cb (CtkWidget     *widget G_GNUC_UNUSED,
+               CdkFrameClock *frame_clock G_GNUC_UNUSED,
                gpointer       data)
 {
   CtkRange *range = CTK_RANGE (data);
@@ -3187,9 +3187,9 @@ ctk_range_drag_gesture_update (CtkGestureDrag *gesture,
 }
 
 static void
-ctk_range_drag_gesture_begin (CtkGestureDrag *gesture,
-                              gdouble         offset_x,
-                              gdouble         offset_y,
+ctk_range_drag_gesture_begin (CtkGestureDrag *gesture G_GNUC_UNUSED,
+                              gdouble         offset_x G_GNUC_UNUSED,
+                              gdouble         offset_y G_GNUC_UNUSED,
                               CtkRange       *range)
 {
   CtkRangePrivate *priv = range->priv;
@@ -3223,7 +3223,7 @@ ctk_range_event (CtkWidget *widget,
 }
 
 static void
-ctk_range_adjustment_changed (CtkAdjustment *adjustment,
+ctk_range_adjustment_changed (CtkAdjustment *adjustment G_GNUC_UNUSED,
 			      gpointer       data)
 {
   CtkRange *range = CTK_RANGE (data);
@@ -3241,7 +3241,7 @@ ctk_range_adjustment_changed (CtkAdjustment *adjustment,
 }
 
 static void
-ctk_range_adjustment_value_changed (CtkAdjustment *adjustment,
+ctk_range_adjustment_value_changed (CtkAdjustment *adjustment G_GNUC_UNUSED,
 				    gpointer       data)
 {
   CtkRange *range = CTK_RANGE (data);
@@ -3769,7 +3769,7 @@ ctk_range_calc_marks (CtkRange *range)
 
 static gboolean
 ctk_range_real_change_value (CtkRange      *range,
-                             CtkScrollType  scroll,
+                             CtkScrollType  scroll G_GNUC_UNUSED,
                              gdouble        value)
 {
   CtkRangePrivate *priv = range->priv;

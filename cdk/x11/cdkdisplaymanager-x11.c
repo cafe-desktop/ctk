@@ -41,7 +41,7 @@ struct _CdkX11DisplayManagerClass
 G_DEFINE_TYPE (CdkX11DisplayManager, cdk_x11_display_manager, CDK_TYPE_DISPLAY_MANAGER)
 
 static void
-cdk_x11_display_manager_init (CdkX11DisplayManager *manager)
+cdk_x11_display_manager_init (CdkX11DisplayManager *manager G_GNUC_UNUSED)
 {
 }
 

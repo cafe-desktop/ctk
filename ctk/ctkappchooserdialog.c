@@ -119,7 +119,7 @@ add_or_find_application (CtkAppChooserDialog *self)
 static void
 ctk_app_chooser_dialog_response (CtkDialog *dialog,
                                  gint       response_id,
-                                 gpointer   user_data)
+                                 gpointer   user_data G_GNUC_UNUSED)
 {
   CtkAppChooserDialog *self = CTK_APP_CHOOSER_DIALOG (dialog);
 
@@ -137,8 +137,8 @@ ctk_app_chooser_dialog_response (CtkDialog *dialog,
 }
 
 static void
-widget_application_selected_cb (CtkAppChooserWidget *widget,
-                                GAppInfo            *app_info,
+widget_application_selected_cb (CtkAppChooserWidget *widget G_GNUC_UNUSED,
+                                GAppInfo            *app_info G_GNUC_UNUSED,
                                 gpointer             user_data)
 {
   CtkDialog *self = user_data;
@@ -147,8 +147,8 @@ widget_application_selected_cb (CtkAppChooserWidget *widget,
 }
 
 static void
-widget_application_activated_cb (CtkAppChooserWidget *widget,
-                                 GAppInfo            *app_info,
+widget_application_activated_cb (CtkAppChooserWidget *widget G_GNUC_UNUSED,
+                                 GAppInfo            *app_info G_GNUC_UNUSED,
                                  gpointer             user_data)
 {
   CtkAppChooserDialog *self = user_data;
@@ -252,7 +252,7 @@ set_dialog_properties (CtkAppChooserDialog *self)
 }
 
 static void
-show_more_button_clicked_cb (CtkButton *button,
+show_more_button_clicked_cb (CtkButton *button G_GNUC_UNUSED,
                              gpointer   user_data)
 {
   CtkAppChooserDialog *self = user_data;
@@ -269,7 +269,7 @@ show_more_button_clicked_cb (CtkButton *button,
 
 static void
 widget_notify_for_button_cb (GObject    *source,
-                             GParamSpec *pspec,
+                             GParamSpec *pspec G_GNUC_UNUSED,
                              gpointer    user_data)
 {
   CtkAppChooserDialog *self = user_data;
@@ -284,7 +284,7 @@ widget_notify_for_button_cb (GObject    *source,
 }
 
 static void
-forget_menu_item_activate_cb (CtkMenuItem *item,
+forget_menu_item_activate_cb (CtkMenuItem *item G_GNUC_UNUSED,
                               gpointer     user_data)
 {
   CtkAppChooserDialog *self = user_data;
@@ -317,7 +317,7 @@ build_forget_menu_item (CtkAppChooserDialog *self)
 }
 
 static void
-widget_populate_popup_cb (CtkAppChooserWidget *widget,
+widget_populate_popup_cb (CtkAppChooserWidget *widget G_GNUC_UNUSED,
                           CtkMenu             *menu,
                           GAppInfo            *info,
                           gpointer             user_data)
@@ -333,7 +333,7 @@ widget_populate_popup_cb (CtkAppChooserWidget *widget,
 }
 
 static gboolean
-key_press_event_cb (CtkWidget    *widget,
+key_press_event_cb (CtkWidget    *widget G_GNUC_UNUSED,
                     CdkEvent     *event,
                     CtkSearchBar *bar)
 {
@@ -435,7 +435,7 @@ show_error_dialog (const gchar *primary,
 }
 
 static void
-software_button_clicked_cb (CtkButton           *button,
+software_button_clicked_cb (CtkButton           *button G_GNUC_UNUSED,
                             CtkAppChooserDialog *self)
 {
   GSubprocess *process;

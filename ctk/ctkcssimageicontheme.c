@@ -32,7 +32,7 @@
 G_DEFINE_TYPE (CtkCssImageIconTheme, _ctk_css_image_icon_theme, CTK_TYPE_CSS_IMAGE)
 
 static double
-ctk_css_image_icon_theme_get_aspect_ratio (CtkCssImage *image)
+ctk_css_image_icon_theme_get_aspect_ratio (CtkCssImage *image G_GNUC_UNUSED)
 {
   /* icon theme icons only take a single size when requesting, so we insist on being square */
   return 1.0;
@@ -130,10 +130,10 @@ ctk_css_image_icon_theme_print (CtkCssImage *image,
 
 static CtkCssImage *
 ctk_css_image_icon_theme_compute (CtkCssImage             *image,
-                                  guint                    property_id,
+                                  guint                    property_id G_GNUC_UNUSED,
                                   CtkStyleProviderPrivate *provider,
                                   CtkCssStyle             *style,
-                                  CtkCssStyle             *parent_style)
+                                  CtkCssStyle             *parent_style G_GNUC_UNUSED)
 {
   CtkCssImageIconTheme *icon_theme = CTK_CSS_IMAGE_ICON_THEME (image);
   CtkCssImageIconTheme *copy;

@@ -29,8 +29,8 @@ typedef struct {
 } PackData;
 
 static void
-button_clicked_cb (CtkButton *b,
-                   gpointer user_data)
+button_clicked_cb (CtkButton *b G_GNUC_UNUSED,
+                   gpointer   user_data)
 {
   PackData *d = user_data;
   CtkCssProvider *provider;
@@ -80,7 +80,7 @@ button_clicked_cb (CtkButton *b,
 }
 
 static void
-refresh_cb (CtkWidget *button,
+refresh_cb (CtkWidget *button G_GNUC_UNUSED,
             gpointer   user_data)
 {
   PackData *d = user_data;

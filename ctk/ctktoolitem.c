@@ -302,7 +302,7 @@ ctk_tool_item_dispose (GObject *object)
 
 static void
 ctk_tool_item_parent_set (CtkWidget   *toolitem,
-			  CtkWidget   *prev_parent)
+			  CtkWidget   *prev_parent G_GNUC_UNUSED)
 {
   if (ctk_widget_get_parent (CTK_WIDGET (toolitem)) != NULL)
     ctk_tool_item_toolbar_reconfigured (CTK_TOOL_ITEM (toolitem));

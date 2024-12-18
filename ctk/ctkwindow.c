@@ -1642,7 +1642,7 @@ drag_gesture_update_cb (CtkGestureDrag *gesture,
 }
 
 static void
-node_style_changed_cb (CtkCssNode        *node,
+node_style_changed_cb (CtkCssNode        *node G_GNUC_UNUSED,
                        CtkCssStyleChange *change,
                        CtkWidget         *widget)
 {
@@ -2026,7 +2026,7 @@ ctk_window_buildable_interface_init (CtkBuildableIface *iface)
 
 static void
 ctk_window_buildable_add_child (CtkBuildable *buildable,
-                                CtkBuilder   *builder,
+                                CtkBuilder   *builder G_GNUC_UNUSED,
                                 GObject      *child,
                                 const gchar  *type)
 {
@@ -3176,7 +3176,8 @@ ctk_window_dispose (GObject *object)
 }
 
 static void
-parent_destroyed_callback (CtkWindow *parent, CtkWindow *child)
+parent_destroyed_callback (CtkWindow *parent G_GNUC_UNUSED,
+			   CtkWindow *child)
 {
   ctk_widget_destroy (CTK_WIDGET (child));
 }
@@ -3218,7 +3219,7 @@ ctk_window_transient_parent_realized (CtkWidget *parent,
 }
 
 static void
-ctk_window_transient_parent_unrealized (CtkWidget *parent,
+ctk_window_transient_parent_unrealized (CtkWidget *parent G_GNUC_UNUSED,
 					CtkWidget *window)
 {
   if (_ctk_widget_get_realized (window))
@@ -3228,7 +3229,7 @@ ctk_window_transient_parent_unrealized (CtkWidget *parent,
 
 static void
 ctk_window_transient_parent_screen_changed (CtkWindow	*parent,
-					    GParamSpec	*pspec,
+					    GParamSpec	*pspec G_GNUC_UNUSED,
 					    CtkWindow   *window)
 {
   ctk_window_set_screen (window, parent->priv->screen);
@@ -4168,7 +4169,7 @@ ctk_window_enable_csd (CtkWindow *window)
 
 static void
 on_titlebar_title_notify (CtkHeaderBar *titlebar,
-                          GParamSpec   *pspec,
+                          GParamSpec   *pspec G_GNUC_UNUSED,
                           CtkWindow    *self)
 {
   const gchar *title;
@@ -6241,7 +6242,7 @@ popover_unmap (CtkWidget        *widget,
 }
 
 static void
-popover_map (CtkWidget        *widget,
+popover_map (CtkWidget        *widget G_GNUC_UNUSED,
              CtkWindowPopover *popover)
 {
   if (popover->window && ctk_widget_get_visible (popover->widget))
@@ -6377,7 +6378,7 @@ ctk_window_map (CtkWidget *widget)
 
 static gboolean
 ctk_window_map_event (CtkWidget   *widget,
-                      CdkEventAny *event)
+                      CdkEventAny *event G_GNUC_UNUSED)
 {
   if (!_ctk_widget_get_mapped (widget))
     {
@@ -8069,7 +8070,7 @@ ctk_window_state_event (CtkWidget           *widget,
  */
 void
 ctk_window_set_has_resize_grip (CtkWindow *window,
-                                gboolean   value)
+                                gboolean   value G_GNUC_UNUSED)
 {
   g_return_if_fail (CTK_IS_WINDOW (window));
 }
@@ -8132,7 +8133,7 @@ ctk_window_get_has_resize_grip (CtkWindow *window)
  */
 gboolean
 ctk_window_get_resize_grip_area (CtkWindow    *window,
-                                 CdkRectangle *rect)
+                                 CdkRectangle *rect G_GNUC_UNUSED)
 {
   g_return_val_if_fail (CTK_IS_WINDOW (window), FALSE);
 
@@ -8489,7 +8490,7 @@ ctk_window_has_mnemonic_modifier_pressed (CtkWindow *window)
 
 static gint
 ctk_window_focus_in_event (CtkWidget     *widget,
-			   CdkEventFocus *event)
+			   CdkEventFocus *event G_GNUC_UNUSED)
 {
   CtkWindow *window = CTK_WINDOW (widget);
 
@@ -8512,7 +8513,7 @@ ctk_window_focus_in_event (CtkWidget     *widget,
 
 static gint
 ctk_window_focus_out_event (CtkWidget     *widget,
-			    CdkEventFocus *event)
+			    CdkEventFocus *event G_GNUC_UNUSED)
 {
   CtkWindow *window = CTK_WINDOW (widget);
 
@@ -9142,7 +9143,7 @@ _ctk_window_unset_focus_and_default (CtkWindow *window,
 
 static void
 popup_menu_detach (CtkWidget *widget,
-                   CtkMenu   *menu)
+                   CtkMenu   *menu G_GNUC_UNUSED)
 {
   CTK_WINDOW (widget)->priv->popup_menu = NULL;
 }
@@ -9164,7 +9165,7 @@ ctk_window_get_state (CtkWindow *window)
 }
 
 static void
-restore_window_clicked (CtkMenuItem *menuitem,
+restore_window_clicked (CtkMenuItem *menuitem G_GNUC_UNUSED,
                         gpointer     user_data)
 {
   CtkWindow *window = CTK_WINDOW (user_data);
@@ -9185,7 +9186,7 @@ restore_window_clicked (CtkMenuItem *menuitem,
 }
 
 static void
-move_window_clicked (CtkMenuItem *menuitem,
+move_window_clicked (CtkMenuItem *menuitem G_GNUC_UNUSED,
                      gpointer     user_data)
 {
   CtkWindow *window = CTK_WINDOW (user_data);
@@ -9197,7 +9198,7 @@ move_window_clicked (CtkMenuItem *menuitem,
 }
 
 static void
-resize_window_clicked (CtkMenuItem *menuitem,
+resize_window_clicked (CtkMenuItem *menuitem G_GNUC_UNUSED,
                        gpointer     user_data)
 {
   CtkWindow *window = CTK_WINDOW (user_data);
@@ -9210,7 +9211,7 @@ resize_window_clicked (CtkMenuItem *menuitem,
 }
 
 static void
-minimize_window_clicked (CtkMenuItem *menuitem,
+minimize_window_clicked (CtkMenuItem *menuitem G_GNUC_UNUSED,
                          gpointer     user_data)
 {
   CtkWindow *window = CTK_WINDOW (user_data);
@@ -9224,7 +9225,7 @@ minimize_window_clicked (CtkMenuItem *menuitem,
 }
 
 static void
-maximize_window_clicked (CtkMenuItem *menuitem,
+maximize_window_clicked (CtkMenuItem *menuitem G_GNUC_UNUSED,
                          gpointer     user_data)
 {
   CtkWindow *window = CTK_WINDOW (user_data);
@@ -9239,7 +9240,7 @@ maximize_window_clicked (CtkMenuItem *menuitem,
 }
 
 static void
-ontop_window_clicked (CtkMenuItem *menuitem,
+ontop_window_clicked (CtkMenuItem *menuitem G_GNUC_UNUSED,
                       gpointer     user_data)
 {
   CtkWindow *window = (CtkWindow *)user_data;
@@ -9248,7 +9249,7 @@ ontop_window_clicked (CtkMenuItem *menuitem,
 }
 
 static void
-close_window_clicked (CtkMenuItem *menuitem,
+close_window_clicked (CtkMenuItem *menuitem G_GNUC_UNUSED,
                       gpointer     user_data)
 {
   CtkWindow *window = (CtkWindow *)user_data;
@@ -11247,8 +11248,8 @@ ctk_window_set_theme_variant (CtkWindow *window)
 
 #ifdef CDK_WINDOWING_X11
 static void
-ctk_window_on_theme_variant_changed (CtkSettings *settings,
-                                     GParamSpec  *pspec,
+ctk_window_on_theme_variant_changed (CtkSettings *settings G_GNUC_UNUSED,
+                                     GParamSpec  *pspec G_GNUC_UNUSED,
                                      CtkWindow   *window)
 {
   if (window->priv->type == CTK_WINDOW_TOPLEVEL)
@@ -11257,7 +11258,7 @@ ctk_window_on_theme_variant_changed (CtkSettings *settings,
 #endif
 
 static void
-ctk_window_on_composited_changed (CdkScreen *screen,
+ctk_window_on_composited_changed (CdkScreen *screen G_GNUC_UNUSED,
 				  CtkWindow *window)
 {
   CtkWidget *widget = CTK_WIDGET (window);
@@ -11834,9 +11835,9 @@ ctk_window_activate_menubar (CtkWindow   *window,
 }
 
 static void
-ctk_window_mnemonic_hash_foreach (guint      keyval,
-				  GSList    *targets,
-				  gpointer   data)
+ctk_window_mnemonic_hash_foreach (guint     keyval,
+				  GSList   *targets G_GNUC_UNUSED,
+				  gpointer  data)
 {
   struct {
     CtkWindow *window;
@@ -11919,7 +11920,7 @@ window_key_entry_destroy (gpointer data)
 }
 
 static void
-add_to_key_hash (CtkWindow      *window,
+add_to_key_hash (CtkWindow      *window G_GNUC_UNUSED,
 		 guint           keyval,
 		 CdkModifierType modifiers,
 		 gboolean        is_mnemonic,
@@ -12732,7 +12733,7 @@ warn_response (CtkDialog *dialog,
 }
 
 static gboolean
-update_debugging (gpointer data)
+update_debugging (gpointer data G_GNUC_UNUSED)
 {
   ctk_inspector_window_rescan (inspector_window);
   ctk_window_update_debugging_id = 0;
@@ -12873,7 +12874,7 @@ set_warn_again (gboolean warn)
 }
 
 static gboolean
-ctk_window_enable_debugging (CtkWindow *window,
+ctk_window_enable_debugging (CtkWindow *window G_GNUC_UNUSED,
                              gboolean   toggle)
 {
   gboolean warn;
@@ -12927,7 +12928,7 @@ typedef struct {
 } WaylandWindowHandleExportedData;
 
 static void
-wayland_window_handle_exported (CdkWindow  *window,
+wayland_window_handle_exported (CdkWindow  *window G_GNUC_UNUSED,
                                 const char *wayland_handle_str,
                                 gpointer    user_data)
 {

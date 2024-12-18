@@ -103,7 +103,7 @@ response_cb (CtkDialog *dialog,
 
 static gboolean
 no_backup_files_filter (const CtkFileFilterInfo *filter_info,
-			gpointer                 data)
+			gpointer                 data G_GNUC_UNUSED)
 {
   gsize len = filter_info->display_name ? strlen (filter_info->display_name) : 0;
   if (len > 0 && filter_info->display_name[len - 1] == '~')
@@ -113,8 +113,8 @@ no_backup_files_filter (const CtkFileFilterInfo *filter_info,
 }
 
 static void
-filter_changed (CtkFileChooserDialog *dialog,
-		gpointer              data)
+filter_changed (CtkFileChooserDialog *dialog G_GNUC_UNUSED,
+		gpointer              data G_GNUC_UNUSED)
 {
   g_print ("file filter changed\n");
 }
@@ -352,14 +352,14 @@ set_current_folder (CtkFileChooser *chooser,
 }
 
 static void
-set_folder_nonexistent_cb (CtkButton      *button,
+set_folder_nonexistent_cb (CtkButton      *button G_GNUC_UNUSED,
 			   CtkFileChooser *chooser)
 {
   set_current_folder (chooser, "/nonexistent");
 }
 
 static void
-set_folder_existing_nonexistent_cb (CtkButton      *button,
+set_folder_existing_nonexistent_cb (CtkButton      *button G_GNUC_UNUSED,
 				    CtkFileChooser *chooser)
 {
   set_current_folder (chooser, "/usr/nonexistent");
@@ -385,21 +385,21 @@ set_filename (CtkFileChooser *chooser,
 }
 
 static void
-set_filename_nonexistent_cb (CtkButton      *button,
+set_filename_nonexistent_cb (CtkButton      *button G_GNUC_UNUSED,
 			     CtkFileChooser *chooser)
 {
   set_filename (chooser, "/nonexistent");
 }
 
 static void
-set_filename_existing_nonexistent_cb (CtkButton      *button,
+set_filename_existing_nonexistent_cb (CtkButton      *button G_GNUC_UNUSED,
 				      CtkFileChooser *chooser)
 {
   set_filename (chooser, "/usr/nonexistent");
 }
 
 static void
-get_selection_cb (CtkButton      *button,
+get_selection_cb (CtkButton      *button G_GNUC_UNUSED,
 		  CtkFileChooser *chooser)
 {
   GSList *selection;
@@ -429,7 +429,7 @@ get_selection_cb (CtkButton      *button,
 }
 
 static void
-get_current_name_cb (CtkButton      *button,
+get_current_name_cb (CtkButton      *button G_GNUC_UNUSED,
 		     CtkFileChooser *chooser)
 {
   char *name;
@@ -440,7 +440,7 @@ get_current_name_cb (CtkButton      *button,
 }
 
 static void
-unmap_and_remap_cb (CtkButton *button,
+unmap_and_remap_cb (CtkButton      *button G_GNUC_UNUSED,
 		    CtkFileChooser *chooser)
 {
   ctk_widget_hide (CTK_WIDGET (chooser));
@@ -448,7 +448,8 @@ unmap_and_remap_cb (CtkButton *button,
 }
 
 static void
-kill_dependent (CtkWindow *win, CtkWidget *dep)
+kill_dependent (CtkWindow *win G_GNUC_UNUSED,
+		CtkWidget *dep)
 {
   ctk_widget_destroy (dep);
   g_object_unref (dep);
@@ -456,7 +457,7 @@ kill_dependent (CtkWindow *win, CtkWidget *dep)
 
 static void
 notify_multiple_cb (CtkWidget  *dialog,
-		    GParamSpec *pspec,
+		    GParamSpec *pspec G_GNUC_UNUSED,
 		    CtkWidget  *button)
 {
   gboolean multiple;
@@ -468,7 +469,7 @@ notify_multiple_cb (CtkWidget  *dialog,
 
 static CtkFileChooserConfirmation
 confirm_overwrite_cb (CtkFileChooser *chooser,
-		      gpointer        data)
+		      gpointer        data G_GNUC_UNUSED)
 {
   CtkWidget *dialog;
   CtkWidget *button;

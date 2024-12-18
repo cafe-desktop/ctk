@@ -178,7 +178,7 @@ show_dialog_with_header_buttons (CtkWindow *parent)
 }
 
 static void
-show_dialog_with_header_buttons2 (CtkWindow *parent)
+show_dialog_with_header_buttons2 (CtkWindow *parent G_GNUC_UNUSED)
 {
   CtkBuilder *builder;
   CtkWidget *dialog;
@@ -313,7 +313,8 @@ show_dialog_from_template_with_header (CtkWindow *parent)
 }
 
 int
-main (int argc, char *argv[])
+main (int   argc G_GNUC_UNUSED,
+      char *argv[] G_GNUC_UNUSED)
 {
   CtkWidget *window;
   CtkWidget *vbox;

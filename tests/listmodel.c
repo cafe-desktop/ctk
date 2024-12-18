@@ -25,7 +25,7 @@ typedef struct
 G_DEFINE_TYPE (MyObject, my_object, G_TYPE_OBJECT)
 
 static void
-my_object_init (MyObject *obj)
+my_object_init (MyObject *obj G_GNUC_UNUSED)
 {
 }
 
@@ -103,7 +103,7 @@ my_object_class_init (MyObjectClass *class)
 
 static CtkWidget *
 create_widget (gpointer item,
-               gpointer user_data)
+               gpointer user_data G_GNUC_UNUSED)
 {
   MyObject *obj = (MyObject *)item;
   CtkWidget *label;
@@ -115,7 +115,9 @@ create_widget (gpointer item,
 }
 
 static gint
-compare_items (gconstpointer a, gconstpointer b, gpointer data)
+compare_items (gconstpointer a,
+	       gconstpointer b,
+	       gpointer      data G_GNUC_UNUSED)
 {
   gint id_a, id_b;
 
@@ -126,7 +128,8 @@ compare_items (gconstpointer a, gconstpointer b, gpointer data)
 }
 
 static void
-add_some (CtkButton *button, GListStore *store)
+add_some (CtkButton  *button G_GNUC_UNUSED,
+	  GListStore *store)
 {
   gint n, i;
   guint n_items;
@@ -150,7 +153,8 @@ add_some (CtkButton *button, GListStore *store)
 }
 
 static void
-remove_some (CtkButton *button, GListStore *store)
+remove_some (CtkButton  *button G_GNUC_UNUSED,
+	     GListStore *store)
 {
   gint n, i;
   guint n_items;
@@ -166,7 +170,8 @@ remove_some (CtkButton *button, GListStore *store)
 }
 
 int
-main (int argc, char *argv[])
+main (int   argc G_GNUC_UNUSED,
+      char *argv[] G_GNUC_UNUSED)
 {
   CtkWidget *window, *grid, *sw, *box, *button;
   GListStore *store;

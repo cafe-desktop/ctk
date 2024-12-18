@@ -121,7 +121,7 @@ ctk_icon_view_item_accessible_do_action (AtkAction *action,
 }
 
 static gint
-ctk_icon_view_item_accessible_get_n_actions (AtkAction *action)
+ctk_icon_view_item_accessible_get_n_actions (AtkAction *action G_GNUC_UNUSED)
 {
         return 1;
 }
@@ -144,7 +144,7 @@ ctk_icon_view_item_accessible_get_description (AtkAction *action,
 }
 
 static const gchar *
-ctk_icon_view_item_accessible_get_name (AtkAction *action,
+ctk_icon_view_item_accessible_get_name (AtkAction *action G_GNUC_UNUSED,
                                         gint       i)
 {
   if (i != 0)
@@ -213,7 +213,7 @@ typedef struct {
 static gboolean
 get_pixbuf_foreach (CtkCellRenderer    *renderer,
                     const CdkRectangle *cell_area,
-                    const CdkRectangle *cell_background,
+                    const CdkRectangle *cell_background G_GNUC_UNUSED,
                     GetPixbufBoxData   *data)
 {
   if (CTK_IS_CELL_RENDERER_PIXBUF (renderer))
@@ -468,12 +468,12 @@ ctk_icon_view_item_accessible_get_character_count (AtkText *text)
 
 static void
 ctk_icon_view_item_accessible_get_character_extents (AtkText      *text,
-                                                     gint         offset,
-                                                     gint         *x,
-                                                     gint         *y,
-                                                     gint         *width,
-                                                     gint         *height,
-                                                     AtkCoordType coord_type)
+                                                     gint          offset G_GNUC_UNUSED,
+                                                     gint         *x G_GNUC_UNUSED,
+                                                     gint         *y G_GNUC_UNUSED,
+                                                     gint         *width G_GNUC_UNUSED,
+                                                     gint         *height G_GNUC_UNUSED,
+                                                     AtkCoordType  coord_type G_GNUC_UNUSED)
 {
   CtkIconViewItemAccessible *item;
 #if 0
@@ -511,9 +511,9 @@ ctk_icon_view_item_accessible_get_character_extents (AtkText      *text,
 
 static gint
 ctk_icon_view_item_accessible_get_offset_at_point (AtkText      *text,
-                                                   gint          x,
-                                                   gint          y,
-                                                   AtkCoordType coord_type)
+                                                   gint          x G_GNUC_UNUSED,
+                                                   gint          y G_GNUC_UNUSED,
+                                                   AtkCoordType coord_type G_GNUC_UNUSED)
 {
   CtkIconViewItemAccessible *item;
   gint offset = 0;
@@ -1025,9 +1025,9 @@ _ctk_icon_view_accessible_adjustment_changed (CtkIconView *icon_view)
 }
 
 static void
-ctk_icon_view_accessible_model_row_changed (CtkTreeModel *tree_model,
+ctk_icon_view_accessible_model_row_changed (CtkTreeModel *tree_model G_GNUC_UNUSED,
                                             CtkTreePath  *path,
-                                            CtkTreeIter  *iter,
+                                            CtkTreeIter  *iter G_GNUC_UNUSED,
                                             gpointer      user_data)
 {
   AtkObject *atk_obj;
@@ -1063,9 +1063,9 @@ ctk_icon_view_accessible_model_row_changed (CtkTreeModel *tree_model,
 }
 
 static void
-ctk_icon_view_accessible_model_row_inserted (CtkTreeModel *tree_model,
+ctk_icon_view_accessible_model_row_inserted (CtkTreeModel *tree_model G_GNUC_UNUSED,
                                              CtkTreePath  *path,
-                                             CtkTreeIter  *iter,
+                                             CtkTreeIter  *iter G_GNUC_UNUSED,
                                              gpointer     user_data)
 {
   CtkIconViewItemAccessibleInfo *info;
@@ -1106,7 +1106,7 @@ ctk_icon_view_accessible_model_row_inserted (CtkTreeModel *tree_model,
 }
 
 static void
-ctk_icon_view_accessible_model_row_deleted (CtkTreeModel *tree_model,
+ctk_icon_view_accessible_model_row_deleted (CtkTreeModel *tree_model G_GNUC_UNUSED,
                                             CtkTreePath  *path,
                                             gpointer     user_data)
 {
@@ -1169,8 +1169,8 @@ ctk_icon_view_accessible_item_compare (CtkIconViewItemAccessibleInfo *i1,
 
 static void
 ctk_icon_view_accessible_model_rows_reordered (CtkTreeModel *tree_model,
-                                               CtkTreePath  *path,
-                                               CtkTreeIter  *iter,
+                                               CtkTreePath  *path G_GNUC_UNUSED,
+                                               CtkTreeIter  *iter G_GNUC_UNUSED,
                                                gint         *new_order,
                                                gpointer     user_data)
 {

@@ -228,7 +228,7 @@ ctk_printer_option_widget_new (CtkPrinterOption *source)
 }
 
 static void
-source_changed_cb (CtkPrinterOption *source,
+source_changed_cb (CtkPrinterOption        *source G_GNUC_UNUSED,
 		   CtkPrinterOptionWidget  *widget)
 {
   update_widgets (widget);
@@ -341,9 +341,9 @@ struct ComboSet {
 };
 
 static gboolean
-set_cb (CtkTreeModel *model, 
-	CtkTreePath  *path, 
-	CtkTreeIter  *iter, 
+set_cb (CtkTreeModel *model,
+	CtkTreePath  *path G_GNUC_UNUSED,
+	CtkTreeIter  *iter,
 	gpointer      data)
 {
   struct ComboSet *set_data = data;
@@ -527,7 +527,7 @@ dialog_response_callback (CtkDialog              *dialog,
 }
 
 static void
-filesave_choose_cb (CtkWidget              *button,
+filesave_choose_cb (CtkWidget              *button G_GNUC_UNUSED,
                     CtkPrinterOptionWidget *widget)
 {
   CtkPrinterOptionWidgetPrivate *priv = widget->priv;

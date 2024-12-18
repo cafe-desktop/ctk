@@ -83,9 +83,9 @@ G_DEFINE_ABSTRACT_TYPE_WITH_CODE (CtkCssGadget, ctk_css_gadget, G_TYPE_OBJECT,
                                   G_ADD_PRIVATE (CtkCssGadget))
 
 static void
-ctk_css_gadget_real_get_preferred_size (CtkCssGadget   *gadget,
-                                        CtkOrientation  orientation,
-                                        gint            for_size,
+ctk_css_gadget_real_get_preferred_size (CtkCssGadget   *gadget G_GNUC_UNUSED,
+                                        CtkOrientation  orientation G_GNUC_UNUSED,
+                                        gint            for_size G_GNUC_UNUSED,
                                         gint           *minimum,
                                         gint           *natural,
                                         gint           *minimum_baseline,
@@ -101,21 +101,21 @@ ctk_css_gadget_real_get_preferred_size (CtkCssGadget   *gadget,
 }
 
 static void
-ctk_css_gadget_real_allocate (CtkCssGadget        *gadget,
+ctk_css_gadget_real_allocate (CtkCssGadget        *gadget G_GNUC_UNUSED,
                               const CtkAllocation *allocation,
-                              int                  baseline,
+                              int                  baseline G_GNUC_UNUSED,
                               CtkAllocation       *out_clip)
 {
   *out_clip = *allocation;
 }
 
 static gboolean
-ctk_css_gadget_real_draw (CtkCssGadget *gadget,
-                          cairo_t      *cr,
-                          int           x,
-                          int           y,
-                          int           width,
-                          int           height)
+ctk_css_gadget_real_draw (CtkCssGadget *gadget G_GNUC_UNUSED,
+                          cairo_t      *cr G_GNUC_UNUSED,
+                          int           x G_GNUC_UNUSED,
+                          int           y G_GNUC_UNUSED,
+                          int           width G_GNUC_UNUSED,
+                          int           height G_GNUC_UNUSED)
 {
   return FALSE;
 }
@@ -157,7 +157,7 @@ ctk_css_gadget_get_property (GObject    *object,
 }
 
 static void
-ctk_css_gadget_node_style_changed_cb (CtkCssNode        *node,
+ctk_css_gadget_node_style_changed_cb (CtkCssNode        *node G_GNUC_UNUSED,
                                       CtkCssStyleChange *change,
                                       CtkCssGadget      *gadget)
 {

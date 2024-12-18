@@ -2,7 +2,7 @@
 
 static void
 split_decorations (CtkSettings *settings,
-                   GParamSpec  *pspec,
+                   GParamSpec  *pspec G_GNUC_UNUSED,
                    CtkBuilder  *builder)
 {
   CtkWidget *sheader, *mheader;
@@ -33,7 +33,8 @@ split_decorations (CtkSettings *settings,
 }
 
 int
-main (int argc, char *argv[])
+main (int   argc G_GNUC_UNUSED,
+      char *argv[] G_GNUC_UNUSED)
 {
   CtkBuilder *builder;
   CtkSettings *settings;

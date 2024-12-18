@@ -47,17 +47,17 @@ ctk_css_value_typed_compute (CtkCssValue             *value,
 }
 
 static gboolean
-ctk_css_value_typed_equal (const CtkCssValue *value1,
-                           const CtkCssValue *value2)
+ctk_css_value_typed_equal (const CtkCssValue *value1 G_GNUC_UNUSED,
+                           const CtkCssValue *value2 G_GNUC_UNUSED)
 {
   return FALSE;
 }
 
 static CtkCssValue *
-ctk_css_value_typed_transition (CtkCssValue *start,
-                                CtkCssValue *end,
-                                guint        property_id,
-                                double       progress)
+ctk_css_value_typed_transition (CtkCssValue *start G_GNUC_UNUSED,
+                                CtkCssValue *end G_GNUC_UNUSED,
+                                guint        property_id G_GNUC_UNUSED,
+                                double       progress G_GNUC_UNUSED)
 {
   return NULL;
 }

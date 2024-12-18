@@ -2139,9 +2139,9 @@ ctk_tree_view_buildable_init (CtkBuildableIface *iface)
 
 static void
 ctk_tree_view_buildable_add_child (CtkBuildable *tree_view,
-				   CtkBuilder  *builder,
+				   CtkBuilder  *builder G_GNUC_UNUSED,
 				   GObject     *child,
-				   const gchar *type)
+				   const gchar *type G_GNUC_UNUSED)
 {
   ctk_tree_view_append_column (CTK_TREE_VIEW (tree_view), CTK_TREE_VIEW_COLUMN (child));
 }
@@ -3461,8 +3461,8 @@ ctk_tree_view_drag_gesture_begin (CtkGestureDrag *gesture,
 static void
 ctk_tree_view_column_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
                                                  gint                  n_press,
-                                                 gdouble               x,
-                                                 gdouble               y,
+                                                 gdouble               x G_GNUC_UNUSED,
+                                                 gdouble               y G_GNUC_UNUSED,
                                                  CtkTreeView          *tree_view)
 {
   CdkEventSequence *sequence;
@@ -3500,7 +3500,7 @@ ctk_tree_view_column_multipress_gesture_pressed (CtkGestureMultiPress *gesture,
 static void
 ctk_tree_view_column_drag_gesture_begin (CtkGestureDrag *gesture,
                                          gdouble         start_x,
-                                         gdouble         start_y,
+                                         gdouble         start_y G_GNUC_UNUSED,
                                          CtkTreeView    *tree_view)
 {
   CdkEventSequence *sequence;
@@ -3661,8 +3661,8 @@ ctk_tree_view_button_release_column_resize (CtkTreeView *tree_view)
 
 static void
 ctk_tree_view_column_drag_gesture_end (CtkGestureDrag *gesture,
-                                       gdouble         offset_x,
-                                       gdouble         offset_y,
+                                       gdouble         offset_x G_GNUC_UNUSED,
+                                       gdouble         offset_y G_GNUC_UNUSED,
                                        CtkTreeView    *tree_view)
 {
   CdkEventSequence *sequence;
@@ -3686,9 +3686,9 @@ ctk_tree_view_column_drag_gesture_end (CtkGestureDrag *gesture,
 }
 
 static void
-ctk_tree_view_drag_gesture_end (CtkGestureDrag *gesture,
-                                gdouble         offset_x,
-                                gdouble         offset_y,
+ctk_tree_view_drag_gesture_end (CtkGestureDrag *gesture G_GNUC_UNUSED,
+                                gdouble         offset_x G_GNUC_UNUSED,
+                                gdouble         offset_y G_GNUC_UNUSED,
                                 CtkTreeView    *tree_view)
 {
   ctk_tree_view_stop_rubber_band (tree_view);
@@ -3696,9 +3696,9 @@ ctk_tree_view_drag_gesture_end (CtkGestureDrag *gesture,
 
 static void
 ctk_tree_view_multipress_gesture_released (CtkGestureMultiPress *gesture,
-                                           gint                  n_press,
-                                           gdouble               x,
-                                           gdouble               y,
+                                           gint                  n_press G_GNUC_UNUSED,
+                                           gdouble               x G_GNUC_UNUSED,
+                                           gdouble               y G_GNUC_UNUSED,
                                            CtkTreeView          *tree_view)
 {
   gboolean modify, extend;
@@ -4257,7 +4257,7 @@ ctk_tree_view_motion_draw_column_motion_arrow (CtkTreeView *tree_view)
 static gboolean
 ctk_tree_view_motion_resize_column (CtkTreeView *tree_view,
                                     gdouble      x,
-                                    gdouble      y)
+                                    gdouble      y G_GNUC_UNUSED)
 {
   gint new_width;
   CtkTreeViewColumn *column;
@@ -4376,7 +4376,7 @@ ctk_tree_view_horizontal_autoscroll (CtkTreeView *tree_view)
 static gboolean
 ctk_tree_view_motion_drag_column (CtkTreeView *tree_view,
                                   gdouble      x,
-                                  gdouble      y)
+                                  gdouble      y G_GNUC_UNUSED)
 {
   CtkAllocation allocation, button_allocation;
   CtkTreeViewColumn *column = tree_view->priv->drag_column;
@@ -4461,7 +4461,7 @@ static void
 ctk_tree_view_update_rubber_band_selection_range (CtkTreeView *tree_view,
 						 CtkRBTree   *start_tree,
 						 CtkRBNode   *start_node,
-						 CtkRBTree   *end_tree,
+						 CtkRBTree   *end_tree G_GNUC_UNUSED,
 						 CtkRBNode   *end_node,
 						 gboolean     select,
 						 gboolean     skip_start,
@@ -4809,8 +4809,8 @@ ctk_tree_view_column_drag_gesture_update (CtkGestureDrag *gesture,
 
 static void
 ctk_tree_view_drag_gesture_update (CtkGestureDrag *gesture,
-                                   gdouble         offset_x,
-                                   gdouble         offset_y,
+                                   gdouble         offset_x G_GNUC_UNUSED,
+                                   gdouble         offset_y G_GNUC_UNUSED,
                                    CtkTreeView    *tree_view)
 {
   if (tree_view->priv->tree == NULL)
@@ -6230,7 +6230,7 @@ ctk_tree_view_enter_notify (CtkWidget        *widget,
 
 static gboolean
 ctk_tree_view_leave_notify (CtkWidget        *widget,
-			    CdkEventCrossing *event)
+			    CdkEventCrossing *event G_GNUC_UNUSED)
 {
   CtkTreeView *tree_view;
 
@@ -7126,8 +7126,8 @@ do_presize_handler (CtkTreeView *tree_view)
 
 static gboolean
 presize_handler_callback (CtkWidget     *widget,
-                          CdkFrameClock *clock,
-                          gpointer       unused)
+                          CdkFrameClock *clock G_GNUC_UNUSED,
+                          gpointer       unused G_GNUC_UNUSED)
 {
   do_presize_handler (CTK_TREE_VIEW (widget));
 		   
@@ -7987,7 +7987,7 @@ ctk_tree_view_drag_begin (CtkWidget      *widget,
 
 static void
 ctk_tree_view_drag_end (CtkWidget      *widget,
-                        CdkDragContext *context)
+                        CdkDragContext *context G_GNUC_UNUSED)
 {
   CtkTreeView *tree_view = CTK_TREE_VIEW (widget);
 
@@ -8000,8 +8000,8 @@ static void
 ctk_tree_view_drag_data_get (CtkWidget        *widget,
                              CdkDragContext   *context,
                              CtkSelectionData *selection_data,
-                             guint             info,
-                             guint             time)
+                             guint             info G_GNUC_UNUSED,
+                             guint             time G_GNUC_UNUSED)
 {
   CtkTreeView *tree_view;
   CtkTreeModel *model;
@@ -8084,8 +8084,8 @@ ctk_tree_view_drag_data_delete (CtkWidget      *widget,
 
 static void
 ctk_tree_view_drag_leave (CtkWidget      *widget,
-                          CdkDragContext *context,
-                          guint             time)
+                          CdkDragContext *context G_GNUC_UNUSED,
+                          guint           time G_GNUC_UNUSED)
 {
   CtkTreeView *tree_view = CTK_TREE_VIEW (widget);
 
@@ -8241,10 +8241,10 @@ static void
 ctk_tree_view_drag_data_received (CtkWidget        *widget,
                                   CdkDragContext   *context,
 				  /* coordinates relative to the widget */
-                                  gint              x,
-                                  gint              y,
+                                  gint              x G_GNUC_UNUSED,
+                                  gint              y G_GNUC_UNUSED,
                                   CtkSelectionData *selection_data,
-                                  guint             info,
+                                  guint             info G_GNUC_UNUSED,
                                   guint             time)
 {
   CtkTreePath *path;
@@ -8472,7 +8472,7 @@ ctk_tree_view_has_can_focus_cell (CtkTreeView *tree_view)
 
 static void
 column_sizing_notify (GObject    *object,
-                      GParamSpec *pspec,
+                      GParamSpec *pspec G_GNUC_UNUSED,
                       gpointer    data)
 {
   CtkTreeViewColumn *c = CTK_TREE_VIEW_COLUMN (object);
@@ -9257,7 +9257,7 @@ ctk_tree_view_row_has_child_toggled (CtkTreeModel *model,
 }
 
 static void
-count_children_helper (CtkRBTree *tree,
+count_children_helper (CtkRBTree *tree G_GNUC_UNUSED,
 		       CtkRBNode *node,
 		       gpointer   data)
 {
@@ -9267,7 +9267,7 @@ count_children_helper (CtkRBTree *tree,
 }
 
 static void
-check_selection_helper (CtkRBTree *tree,
+check_selection_helper (CtkRBTree *tree G_GNUC_UNUSED,
                         CtkRBNode *node,
                         gpointer   data)
 {
@@ -9280,7 +9280,7 @@ check_selection_helper (CtkRBTree *tree,
 }
 
 static void
-ctk_tree_view_row_deleted (CtkTreeModel *model,
+ctk_tree_view_row_deleted (CtkTreeModel *model G_GNUC_UNUSED,
 			   CtkTreePath  *path,
 			   gpointer      data)
 {
@@ -9473,7 +9473,7 @@ ctk_tree_view_rows_reordered (CtkTreeModel *model,
 
 static void
 ctk_tree_view_get_background_xrange (CtkTreeView       *tree_view,
-                                     CtkRBTree         *tree,
+                                     CtkRBTree         *tree G_GNUC_UNUSED,
                                      CtkTreeViewColumn *column,
                                      gint              *x1,
                                      gint              *x2)
@@ -11374,7 +11374,7 @@ ctk_tree_view_start_interactive_search (CtkTreeView *tree_view)
 
 /* Callbacks */
 static void
-ctk_tree_view_adjustment_changed (CtkAdjustment *adjustment,
+ctk_tree_view_adjustment_changed (CtkAdjustment *adjustment G_GNUC_UNUSED,
 				  CtkTreeView   *tree_view)
 {
   if (ctk_widget_get_realized (CTK_WIDGET (tree_view)))
@@ -15132,7 +15132,7 @@ ctk_tree_view_search_window_hide (CtkWidget   *search_window,
 static void
 ctk_tree_view_search_position_func (CtkTreeView *tree_view,
 				    CtkWidget   *search_window,
-				    gpointer     user_data)
+				    gpointer     user_data G_GNUC_UNUSED)
 {
   gint x, y;
   gint tree_x, tree_y;
@@ -15172,7 +15172,7 @@ ctk_tree_view_search_position_func (CtkTreeView *tree_view,
 }
 
 static void
-ctk_tree_view_search_disable_popdown (CtkEntry *entry,
+ctk_tree_view_search_disable_popdown (CtkEntry *entry G_GNUC_UNUSED,
 				      CtkMenu  *menu,
 				      gpointer  data)
 {
@@ -15187,7 +15187,7 @@ ctk_tree_view_search_disable_popdown (CtkEntry *entry,
  * callback.
  */
 static void
-ctk_tree_view_search_preedit_changed (CtkIMContext *im_context,
+ctk_tree_view_search_preedit_changed (CtkIMContext *im_context G_GNUC_UNUSED,
 				      CtkTreeView  *tree_view)
 {
   tree_view->priv->imcontext_changed = 1;
@@ -15204,15 +15204,15 @@ ctk_tree_view_search_preedit_changed (CtkIMContext *im_context,
 }
 
 static void
-ctk_tree_view_search_commit (CtkIMContext *im_context,
-                             gchar        *buf,
+ctk_tree_view_search_commit (CtkIMContext *im_context G_GNUC_UNUSED,
+                             gchar        *buf G_GNUC_UNUSED,
                              CtkTreeView  *tree_view)
 {
   tree_view->priv->imcontext_changed = 1;
 }
 
 static void
-ctk_tree_view_search_activate (CtkEntry    *entry,
+ctk_tree_view_search_activate (CtkEntry    *entry G_GNUC_UNUSED,
 			       CtkTreeView *tree_view)
 {
   CtkTreePath *path;
@@ -15246,7 +15246,7 @@ ctk_tree_view_real_search_enable_popdown (gpointer data)
 }
 
 static void
-ctk_tree_view_search_enable_popdown (CtkWidget *widget,
+ctk_tree_view_search_enable_popdown (CtkWidget *widget G_GNUC_UNUSED,
 				     gpointer   data)
 {
   guint id;
@@ -15255,8 +15255,8 @@ ctk_tree_view_search_enable_popdown (CtkWidget *widget,
 }
 
 static gboolean
-ctk_tree_view_search_delete_event (CtkWidget *widget,
-				   CdkEventAny *event,
+ctk_tree_view_search_delete_event (CtkWidget   *widget,
+				   CdkEventAny *event G_GNUC_UNUSED,
 				   CtkTreeView *tree_view)
 {
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
@@ -15392,7 +15392,7 @@ ctk_tree_view_search_key_press_event (CtkWidget *widget,
  *  nothing was found, and TRUE otherwise.
  */
 static gboolean
-ctk_tree_view_search_move (CtkWidget   *window,
+ctk_tree_view_search_move (CtkWidget   *window G_GNUC_UNUSED,
 			   CtkTreeView *tree_view,
 			   gboolean     up)
 {
@@ -15450,7 +15450,7 @@ ctk_tree_view_search_equal_func (CtkTreeModel *model,
 				 gint          column,
 				 const gchar  *key,
 				 CtkTreeIter  *iter,
-				 gpointer      search_data)
+				 gpointer      search_data G_GNUC_UNUSED)
 {
   gboolean retval = TRUE;
   const gchar *str;
@@ -16440,7 +16440,7 @@ ctk_tree_view_set_tooltip_query_cb (CtkWidget  *widget,
 				    gint        y,
 				    gboolean    keyboard_tip,
 				    CtkTooltip *tooltip,
-				    gpointer    data)
+				    gpointer    data G_GNUC_UNUSED)
 {
   GValue value = G_VALUE_INIT;
   GValue transformed = G_VALUE_INIT;

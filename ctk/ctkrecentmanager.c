@@ -537,9 +537,9 @@ ctk_recent_manager_real_changed (CtkRecentManager *manager)
 }
 
 static void
-ctk_recent_manager_monitor_changed (GFileMonitor      *monitor,
-                                    GFile             *file,
-                                    GFile             *other_file,
+ctk_recent_manager_monitor_changed (GFileMonitor      *monitor G_GNUC_UNUSED,
+                                    GFile             *file G_GNUC_UNUSED,
+                                    GFile             *other_file G_GNUC_UNUSED,
                                     GFileMonitorEvent  event_type,
                                     gpointer           user_data)
 {
@@ -1346,7 +1346,7 @@ ctk_recent_manager_get_items (CtkRecentManager *manager)
 
 static void
 purge_recent_items_list (CtkRecentManager  *manager,
-                         GError           **error)
+                         GError           **error G_GNUC_UNUSED)
 {
   CtkRecentManagerPrivate *priv = manager->priv;
 

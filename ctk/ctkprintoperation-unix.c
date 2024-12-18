@@ -69,7 +69,7 @@ static void find_printer        (const gchar   *printer,
 
 static void
 unix_start_page (CtkPrintOperation *op,
-		 CtkPrintContext   *print_context,
+		 CtkPrintContext   *print_context G_GNUC_UNUSED,
 		 CtkPageSetup      *page_setup)
 {
   CtkPrintOperationUnix *op_unix;  
@@ -346,7 +346,7 @@ ctk_print_operation_unix_launch_preview (CtkPrintOperation *op,
 G_GNUC_END_IGNORE_DEPRECATIONS
 
 static void
-unix_finish_send  (CtkPrintJob  *job,
+unix_finish_send  (CtkPrintJob  *job G_GNUC_UNUSED,
                    gpointer      user_data, 
                    const GError *error)
 {
@@ -413,7 +413,7 @@ job_status_changed_cb (CtkPrintJob       *job,
 
 static void
 print_setup_changed_cb (CtkPrintUnixDialog *print_dialog, 
-                        GParamSpec         *pspec,
+                        GParamSpec         *pspec G_GNUC_UNUSED,
                         gpointer            user_data)
 {
   CtkPageSetup             *page_setup;
@@ -784,7 +784,7 @@ close_preview (void *data)
 }
 
 static cairo_surface_t *
-ctk_print_operation_unix_create_preview_surface (CtkPrintOperation *op,
+ctk_print_operation_unix_create_preview_surface (CtkPrintOperation *op G_GNUC_UNUSED,
                                                  CtkPageSetup      *page_setup,
                                                  gdouble           *dpi_x,
                                                  gdouble           *dpi_y,
@@ -821,22 +821,22 @@ ctk_print_operation_unix_create_preview_surface (CtkPrintOperation *op,
 }
 
 static void
-ctk_print_operation_unix_preview_start_page (CtkPrintOperation *op,
-                                             cairo_surface_t   *surface,
-                                             cairo_t           *cr)
+ctk_print_operation_unix_preview_start_page (CtkPrintOperation *op G_GNUC_UNUSED,
+                                             cairo_surface_t   *surface G_GNUC_UNUSED,
+                                             cairo_t           *cr G_GNUC_UNUSED)
 {
 }
 
 static void
-ctk_print_operation_unix_preview_end_page (CtkPrintOperation *op,
-                                           cairo_surface_t   *surface,
+ctk_print_operation_unix_preview_end_page (CtkPrintOperation *op G_GNUC_UNUSED,
+                                           cairo_surface_t   *surface G_GNUC_UNUSED,
                                            cairo_t           *cr)
 {
   cairo_show_page (cr);
 }
 
 static void
-ctk_print_operation_unix_resize_preview_surface (CtkPrintOperation *op,
+ctk_print_operation_unix_resize_preview_surface (CtkPrintOperation *op G_GNUC_UNUSED,
                                                  CtkPageSetup      *page_setup,
                                                  cairo_surface_t   *surface)
 {
@@ -1078,8 +1078,8 @@ find_printer_idle (gpointer data)
 }
 
 static void
-printer_added_cb (CtkPrintBackend *backend, 
-                  CtkPrinter      *printer, 
+printer_added_cb (CtkPrintBackend *backend G_GNUC_UNUSED,
+                  CtkPrinter      *printer,
 		  PrinterFinder   *finder)
 {
   if (finder->found_printer)

@@ -101,10 +101,10 @@ ctk_css_value_border_equal (const CtkCssValue *value1,
 }
 
 static CtkCssValue *
-ctk_css_value_border_transition (CtkCssValue *start,
-                                 CtkCssValue *end,
-                                 guint        property_id,
-                                 double       progress)
+ctk_css_value_border_transition (CtkCssValue *start G_GNUC_UNUSED,
+                                 CtkCssValue *end G_GNUC_UNUSED,
+                                 guint        property_id G_GNUC_UNUSED,
+                                 double       progress G_GNUC_UNUSED)
 {
   return NULL;
 }

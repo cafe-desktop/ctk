@@ -84,7 +84,7 @@ _cdk_x11_window_move_resize_child (CdkWindow *window,
 }
 
 static Bool
-expose_serial_predicate (Display *xdisplay,
+expose_serial_predicate (Display *xdisplay G_GNUC_UNUSED,
 			 XEvent  *xev,
 			 XPointer arg)
 {

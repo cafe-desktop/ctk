@@ -1897,7 +1897,7 @@ ctk_label_setup_mnemonic (CtkLabel *label,
 
 static void
 ctk_label_hierarchy_changed (CtkWidget *widget,
-			     CtkWidget *old_toplevel)
+			     CtkWidget *old_toplevel G_GNUC_UNUSED)
 {
   CtkLabel *label = CTK_LABEL (widget);
   CtkLabelPrivate *priv = label->priv;
@@ -1983,8 +1983,8 @@ _ctk_label_mnemonics_visible_apply_recursively (CtkWidget *widget,
 
 static void
 label_mnemonics_visible_changed (CtkWindow  *window,
-                                 GParamSpec *pspec,
-                                 gpointer    data)
+                                 GParamSpec *pspec G_GNUC_UNUSED,
+                                 gpointer    data G_GNUC_UNUSED)
 {
   gboolean mnemonics_visible;
 
@@ -1997,7 +1997,7 @@ label_mnemonics_visible_changed (CtkWindow  *window,
 
 static void
 ctk_label_screen_changed (CtkWidget *widget,
-			  CdkScreen *old_screen)
+			  CdkScreen *old_screen G_GNUC_UNUSED)
 {
   CtkSettings *settings;
   gboolean shortcuts_connected;
@@ -2032,7 +2032,7 @@ ctk_label_screen_changed (CtkWidget *widget,
 
 static void
 label_mnemonic_widget_weak_notify (gpointer      data,
-				   GObject      *where_the_object_was)
+				   GObject      *where_the_object_was G_GNUC_UNUSED)
 {
   CtkLabel *label = data;
   CtkLabelPrivate *priv = label->priv;
@@ -2503,10 +2503,10 @@ start_element_handler (GMarkupParseContext  *context,
 }
 
 static void
-end_element_handler (GMarkupParseContext  *context,
+end_element_handler (GMarkupParseContext  *context G_GNUC_UNUSED,
                      const gchar          *element_name,
                      gpointer              user_data,
-                     GError              **error)
+                     GError              **error G_GNUC_UNUSED)
 {
   UriParserData *pdata = user_data;
 
@@ -2524,11 +2524,11 @@ end_element_handler (GMarkupParseContext  *context,
 }
 
 static void
-text_handler (GMarkupParseContext  *context,
+text_handler (GMarkupParseContext  *context G_GNUC_UNUSED,
               const gchar          *text,
               gsize                 text_len,
               gpointer              user_data,
-              GError              **error)
+              GError              **error G_GNUC_UNUSED)
 {
   UriParserData *pdata = user_data;
   gchar *newtext;
@@ -3655,7 +3655,7 @@ get_size_for_allocation (CtkLabel *label,
 }
 
 static gint
-get_char_pixels (CtkWidget   *label,
+get_char_pixels (CtkWidget   *label G_GNUC_UNUSED,
                  PangoLayout *layout)
 {
   PangoContext *context;
@@ -3878,7 +3878,7 @@ ctk_label_measure (CtkCssGadget   *gadget,
                    int            *natural,
                    int            *minimum_baseline,
                    int            *natural_baseline,
-                   gpointer        unused)
+                   gpointer        unused G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkLabel *label;
@@ -4301,7 +4301,7 @@ ctk_label_render (CtkCssGadget *gadget,
                   int           y,
                   int           width,
                   int           height,
-                  gpointer      data)
+                  gpointer      data G_GNUC_UNUSED)
 {
   CtkWidget *widget;
   CtkLabel *label;
@@ -5108,7 +5108,7 @@ connect_mnemonics_visible_notify (CtkLabel *label)
 static void
 drag_begin_cb (CtkWidget      *widget,
                CdkDragContext *context,
-               gpointer        data)
+               gpointer        data G_GNUC_UNUSED)
 {
   CtkLabel *label = CTK_LABEL (widget);
   CtkLabelPrivate *priv = label->priv;
@@ -5223,8 +5223,8 @@ ctk_label_drag_gesture_begin (CtkGestureDrag *gesture,
 
 static void
 ctk_label_drag_gesture_update (CtkGestureDrag *gesture,
-                               gdouble         offset_x,
-                               gdouble         offset_y,
+                               gdouble         offset_x G_GNUC_UNUSED,
+                               gdouble         offset_y G_GNUC_UNUSED,
                                CtkLabel       *label)
 {
   CtkLabelPrivate *priv = label->priv;
@@ -5694,26 +5694,26 @@ ctk_label_set_selection_text (CtkLabel         *label,
 
 static void
 ctk_label_drag_data_get (CtkWidget        *widget,
-			 CdkDragContext   *context,
+			 CdkDragContext   *context G_GNUC_UNUSED,
 			 CtkSelectionData *selection_data,
-			 guint             info,
-			 guint             time)
+			 guint             info G_GNUC_UNUSED,
+			 guint             time G_GNUC_UNUSED)
 {
   ctk_label_set_selection_text (CTK_LABEL (widget), selection_data);
 }
 
 static void
-get_text_callback (CtkClipboard     *clipboard,
+get_text_callback (CtkClipboard     *clipboard G_GNUC_UNUSED,
                    CtkSelectionData *selection_data,
-                   guint             info,
+                   guint             info G_GNUC_UNUSED,
                    gpointer          user_data_or_owner)
 {
   ctk_label_set_selection_text (CTK_LABEL (user_data_or_owner), selection_data);
 }
 
 static void
-clear_text_callback (CtkClipboard     *clipboard,
-                     gpointer          user_data_or_owner)
+clear_text_callback (CtkClipboard *clipboard G_GNUC_UNUSED,
+                     gpointer      user_data_or_owner)
 {
   CtkLabel *label;
   CtkLabelPrivate *priv;
@@ -6577,7 +6577,7 @@ append_action_signal (CtkLabel     *label,
 
 static void
 popup_menu_detach (CtkWidget *attach_widget,
-		   CtkMenu   *menu)
+		   CtkMenu   *menu G_GNUC_UNUSED)
 {
   CtkLabel *label = CTK_LABEL (attach_widget);
   CtkLabelPrivate *priv = label->priv;

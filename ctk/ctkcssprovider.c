@@ -432,7 +432,7 @@ ctk_css_provider_emit_error (CtkCssProvider *provider,
 }
 
 static void
-ctk_css_scanner_parser_error (CtkCssParser *parser,
+ctk_css_scanner_parser_error (CtkCssParser *parser G_GNUC_UNUSED,
                               const GError *error,
                               gpointer      user_data)
 {
@@ -533,9 +533,9 @@ ctk_css_provider_init (CtkCssProvider *css_provider)
 }
 
 static void
-verify_tree_match_results (CtkCssProvider *provider,
-			   const CtkCssMatcher *matcher,
-			   GPtrArray *tree_rules)
+verify_tree_match_results (CtkCssProvider      *provider G_GNUC_UNUSED,
+			   const CtkCssMatcher *matcher G_GNUC_UNUSED,
+			   GPtrArray           *tree_rules G_GNUC_UNUSED)
 {
 #ifdef VERIFY_TREE
   CtkCssProviderPrivate *priv = provider->priv;
@@ -570,9 +570,9 @@ verify_tree_match_results (CtkCssProvider *provider,
 }
 
 static void
-verify_tree_get_change_results (CtkCssProvider *provider,
-				const CtkCssMatcher *matcher,
-				CtkCssChange change)
+verify_tree_get_change_results (CtkCssProvider      *provider G_GNUC_UNUSED,
+				const CtkCssMatcher *matcher G_GNUC_UNUSED,
+				CtkCssChange         change G_GNUC_UNUSED)
 {
 #ifdef VERIFY_TREE
   {
@@ -969,7 +969,7 @@ ctk_css_provider_reset (CtkCssProvider *css_provider)
 }
 
 static void
-ctk_css_provider_propagate_error (CtkCssProvider  *provider,
+ctk_css_provider_propagate_error (CtkCssProvider  *provider G_GNUC_UNUSED,
                                   CtkCssSection   *section,
                                   const GError    *error,
                                   GError         **propagate_to)

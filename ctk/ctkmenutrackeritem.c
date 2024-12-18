@@ -212,7 +212,7 @@ ctk_menu_tracker_item_finalize (GObject *object)
 }
 
 static void
-ctk_menu_tracker_item_init (CtkMenuTrackerItem * self)
+ctk_menu_tracker_item_init (CtkMenuTrackerItem * self G_GNUC_UNUSED)
 {
 }
 
@@ -289,7 +289,7 @@ ctk_menu_tracker_item_update_visibility (CtkMenuTrackerItem *self)
 
 static void
 ctk_menu_tracker_item_action_added (CtkActionObserver   *observer,
-                                    CtkActionObservable *observable,
+                                    CtkActionObservable *observable G_GNUC_UNUSED,
                                     const gchar         *action_name,
                                     const GVariantType  *parameter_type,
                                     gboolean             enabled,
@@ -362,7 +362,7 @@ ctk_menu_tracker_item_action_added (CtkActionObserver   *observer,
 
 static void
 ctk_menu_tracker_item_action_enabled_changed (CtkActionObserver   *observer,
-                                              CtkActionObservable *observable,
+                                              CtkActionObservable *observable G_GNUC_UNUSED,
                                               const gchar         *action_name,
                                               gboolean             enabled)
 {
@@ -385,7 +385,7 @@ ctk_menu_tracker_item_action_enabled_changed (CtkActionObserver   *observer,
 
 static void
 ctk_menu_tracker_item_action_state_changed (CtkActionObserver   *observer,
-                                            CtkActionObservable *observable,
+                                            CtkActionObservable *observable G_GNUC_UNUSED,
                                             const gchar         *action_name,
                                             GVariant            *state)
 {
@@ -419,7 +419,7 @@ ctk_menu_tracker_item_action_state_changed (CtkActionObserver   *observer,
 
 static void
 ctk_menu_tracker_item_action_removed (CtkActionObserver   *observer,
-                                      CtkActionObservable *observable,
+                                      CtkActionObservable *observable G_GNUC_UNUSED,
                                       const gchar         *action_name)
 {
   CtkMenuTrackerItem *self = CTK_MENU_TRACKER_ITEM (observer);
@@ -461,8 +461,8 @@ ctk_menu_tracker_item_action_removed (CtkActionObserver   *observer,
 
 static void
 ctk_menu_tracker_item_primary_accel_changed (CtkActionObserver   *observer,
-                                             CtkActionObservable *observable,
-                                             const gchar         *action_name,
+                                             CtkActionObservable *observable G_GNUC_UNUSED,
+                                             const gchar         *action_name G_GNUC_UNUSED,
                                              const gchar         *action_and_target)
 {
   CtkMenuTrackerItem *self = CTK_MENU_TRACKER_ITEM (observer);
@@ -856,7 +856,7 @@ ctk_menu_tracker_opener_update (CtkMenuTrackerOpener *opener)
 }
 
 static void
-ctk_menu_tracker_opener_added (GActionGroup *group,
+ctk_menu_tracker_opener_added (GActionGroup *group G_GNUC_UNUSED,
                                const gchar  *action_name,
                                gpointer      user_data)
 {
@@ -867,7 +867,7 @@ ctk_menu_tracker_opener_added (GActionGroup *group,
 }
 
 static void
-ctk_menu_tracker_opener_removed (GActionGroup *action_group,
+ctk_menu_tracker_opener_removed (GActionGroup *action_group G_GNUC_UNUSED,
                                  const gchar  *action_name,
                                  gpointer      user_data)
 {
@@ -878,9 +878,9 @@ ctk_menu_tracker_opener_removed (GActionGroup *action_group,
 }
 
 static void
-ctk_menu_tracker_opener_changed (GActionGroup *action_group,
+ctk_menu_tracker_opener_changed (GActionGroup *action_group G_GNUC_UNUSED,
                                  const gchar  *action_name,
-                                 GVariant     *new_state,
+                                 GVariant     *new_state G_GNUC_UNUSED,
                                  gpointer      user_data)
 {
   CtkMenuTrackerOpener *opener = user_data;

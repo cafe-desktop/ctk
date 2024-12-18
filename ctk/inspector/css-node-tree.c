@@ -220,7 +220,7 @@ ctk_inspector_css_node_tree_class_init (CtkInspectorCssNodeTreeClass *klass)
 static int
 sort_strv (gconstpointer a,
            gconstpointer b,
-           gpointer      data)
+           gpointer      data G_GNUC_UNUSED)
 {
   char **ap = (char **) a;
   char **bp = (char **) b;
@@ -266,7 +266,7 @@ format_state_flags (CtkStateFlags state)
 }
 
 static void
-ctk_inspector_css_node_tree_get_node_value (CtkTreeModelCssNode *model,
+ctk_inspector_css_node_tree_get_node_value (CtkTreeModelCssNode *model G_GNUC_UNUSED,
                                             CtkCssNode          *node,
                                             int                  column,
                                             GValue              *value)
@@ -434,7 +434,7 @@ ctk_inspector_css_node_tree_update_style (CtkInspectorCssNodeTree *cnt,
 }
 
 static void
-ctk_inspector_css_node_tree_update_style_cb (CtkCssNode              *node,
+ctk_inspector_css_node_tree_update_style_cb (CtkCssNode              *node G_GNUC_UNUSED,
                                              CtkCssStyleChange       *change,
                                              CtkInspectorCssNodeTree *cnt)
 {

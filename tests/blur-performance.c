@@ -1,5 +1,3 @@
-/* -*- mode: C; c-basic-offset: 2; indent-tabs-mode: nil; -*- */
-
 #include <ctk/ctkcairoblurprivate.h>
 
 static void
@@ -17,7 +15,8 @@ init_surface (cairo_t *cr)
 }
 
 int
-main (int argc, char **argv)
+main (int    argc G_GNUC_UNUSED,
+      char **argv G_GNUC_UNUSED)
 {
   cairo_surface_t *surface;
   cairo_t *cr;

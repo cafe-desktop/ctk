@@ -22,8 +22,8 @@ static cairo_surface_t *surface = NULL;
 /* Create a new surface of the appropriate size to store our scribbles */
 static gboolean
 scribble_configure_event (CtkWidget         *widget,
-                          CdkEventConfigure *event,
-                          gpointer           data)
+                          CdkEventConfigure *event G_GNUC_UNUSED,
+                          gpointer           data G_GNUC_UNUSED)
 {
   CtkAllocation allocation;
   cairo_t *cr;
@@ -51,9 +51,9 @@ scribble_configure_event (CtkWidget         *widget,
 
 /* Redraw the screen from the surface */
 static gboolean
-scribble_draw (CtkWidget *widget,
+scribble_draw (CtkWidget *widget G_GNUC_UNUSED,
                cairo_t   *cr,
-               gpointer   data)
+               gpointer   data G_GNUC_UNUSED)
 {
   cairo_set_source_surface (cr, surface, 0, 0);
   cairo_paint (cr);
@@ -92,7 +92,7 @@ draw_brush (CtkWidget *widget,
 static gboolean
 scribble_button_press_event (CtkWidget      *widget,
                              CdkEventButton *event,
-                             gpointer        data)
+                             gpointer        data G_GNUC_UNUSED)
 {
   if (surface == NULL)
     return FALSE; /* paranoia check, in case we haven't gotten a configure event */
@@ -107,7 +107,7 @@ scribble_button_press_event (CtkWidget      *widget,
 static gboolean
 scribble_motion_notify_event (CtkWidget      *widget,
                               CdkEventMotion *event,
-                              gpointer        data)
+                              gpointer        data G_GNUC_UNUSED)
 {
   int x, y;
   CdkModifierType state;
@@ -139,7 +139,7 @@ scribble_motion_notify_event (CtkWidget      *widget,
 static gboolean
 checkerboard_draw (CtkWidget *da,
                    cairo_t   *cr,
-                   gpointer   data)
+                   gpointer   data G_GNUC_UNUSED)
 {
   gint i, j, xcount, ycount, width, height;
 

@@ -74,7 +74,7 @@ ctk_window_group_init (CtkWindowGroup *group)
 }
 
 static void
-ctk_window_group_class_init (CtkWindowGroupClass *klass)
+ctk_window_group_class_init (CtkWindowGroupClass *klass G_GNUC_UNUSED)
 {
 }
 
