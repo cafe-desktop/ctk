@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-13 13:45+0200\n"
+"POT-Creation-Date: 2024-12-19 12:00+0100\n"
 "PO-Revision-Date: 2020-08-29 12:47+0900\n"
 "Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
 "Language-Team: Gnome Korea <gnome-kr@googlegroups.com>\n"
@@ -27,48 +27,48 @@ msgstr ""
 msgid "Broadway display type not supported: %s"
 msgstr "브로드웨이 디스플레이 방식을 지원하지 않습니다: %s"
 
-#: cdk/cdk.c:179
+#: cdk/cdk.c:182
 #, c-format
 msgid "Error parsing option --cdk-debug"
 msgstr "--cdk-debug 옵션 파싱 오류"
 
-#: cdk/cdk.c:199
+#: cdk/cdk.c:205
 #, c-format
 msgid "Error parsing option --cdk-no-debug"
 msgstr "--cdk-no-debug 옵션 파싱 오류"
 
 #. Description of --class=CLASS in --help output
-#: cdk/cdk.c:228
+#: cdk/cdk.c:240
 msgid "Program class as used by the window manager"
 msgstr "창 관리자에서 사용하는 프로그램 클래스"
 
 #. Placeholder in --class=CLASS in --help output
-#: cdk/cdk.c:229
+#: cdk/cdk.c:241
 msgid "CLASS"
 msgstr "<클래스>"
 
 #. Description of --name=NAME in --help output
-#: cdk/cdk.c:231
+#: cdk/cdk.c:243
 msgid "Program name as used by the window manager"
 msgstr "창 관리자에서 사용하는 프로그램 이름"
 
 #. Placeholder in --name=NAME in --help output
-#: cdk/cdk.c:232
+#: cdk/cdk.c:244
 msgid "NAME"
 msgstr "<이름>"
 
 #. Description of --display=DISPLAY in --help output
-#: cdk/cdk.c:235
+#: cdk/cdk.c:247
 msgid "X display to use"
 msgstr "사용할 X 디스플레이"
 
 #. Placeholder in --display=DISPLAY in --help output
-#: cdk/cdk.c:236
+#: cdk/cdk.c:248
 msgid "DISPLAY"
 msgstr "<디스플레이>"
 
 #. Description of --cdk-debug=FLAGS in --help output
-#: cdk/cdk.c:240
+#: cdk/cdk.c:252
 msgid "CDK debugging flags to set"
 msgstr "설정할 CDK 디버깅 플래그"
 
@@ -76,12 +76,12 @@ msgstr "설정할 CDK 디버깅 플래그"
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
 #. Placeholder in --ctk-debug=FLAGS in --help output
 #. Placeholder in --ctk-no-debug=FLAGS in --help output
-#: cdk/cdk.c:241 cdk/cdk.c:244 ctk/ctkmain.c:471 ctk/ctkmain.c:474
+#: cdk/cdk.c:253 cdk/cdk.c:256 ctk/ctkmain.c:477 ctk/ctkmain.c:480
 msgid "FLAGS"
 msgstr "<플래그>"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
-#: cdk/cdk.c:243
+#: cdk/cdk.c:255
 msgid "CDK debugging flags to unset"
 msgstr "설정 해제할 CDK 디버깅 플래그"
 
@@ -605,7 +605,7 @@ msgid "Edit"
 msgstr "편집"
 
 #: ctk/a11y/ctkcellaccessible.c:261 ctk/a11y/ctkcolorswatchaccessible.c:149
-#: ctk/a11y/ctkentryaccessible.c:1560 ctk/a11y/ctkexpanderaccessible.c:281
+#: ctk/a11y/ctkentryaccessible.c:1561 ctk/a11y/ctkexpanderaccessible.c:281
 msgctxt "Action name"
 msgid "Activate"
 msgstr "활성화"
@@ -660,7 +660,7 @@ msgctxt "Action description"
 msgid "Presses the combobox"
 msgstr "콤보상자를 누릅니다"
 
-#: ctk/a11y/ctkentryaccessible.c:1569
+#: ctk/a11y/ctkentryaccessible.c:1570
 msgctxt "Action description"
 msgid "Activates the entry"
 msgstr "입력창을 활성화합니다"
@@ -703,15 +703,15 @@ msgctxt "Stock label"
 msgid "_Close"
 msgstr "닫기(_C)"
 
-#: ctk/a11y/ctkimageaccessible.c:59 ctk/ctkheaderbar.c:415 ctk/ctkwindow.c:9319
+#: ctk/a11y/ctkimageaccessible.c:59 ctk/ctkheaderbar.c:415 ctk/ctkwindow.c:9320
 msgid "Minimize"
 msgstr "최소화"
 
-#: ctk/a11y/ctkimageaccessible.c:60 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9328
+#: ctk/a11y/ctkimageaccessible.c:60 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9329
 msgid "Maximize"
 msgstr "최대화"
 
-#: ctk/a11y/ctkimageaccessible.c:61 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9285
+#: ctk/a11y/ctkimageaccessible.c:61 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9286
 msgid "Restore"
 msgstr "복구"
 
@@ -1259,7 +1259,7 @@ msgstr ""
 #: ctk/ctkmountoperation.c:593 ctk/ctkpagesetupunixdialog.c:197
 #: ctk/ctkprintbackend.c:781 ctk/ctkprinteroptionwidget.c:545
 #: ctk/ctkprintunixdialog.c:674 ctk/ctkprintunixdialog.c:747
-#: ctk/ctkwindow.c:12789 ctk/inspector/css-editor.c:201
+#: ctk/ctkwindow.c:12788 ctk/inspector/css-editor.c:201
 #: ctk/ui/ctkappchooserdialog.ui:61 ctk/ui/ctkassistant.ui:125
 #: ctk/ui/ctkcolorchooserdialog.ui:34 ctk/ui/ctkfontchooserdialog.ui:31
 msgid "_Cancel"
@@ -1308,7 +1308,7 @@ msgid "_Apply"
 msgstr "적용(_A)"
 
 #: ctk/deprecated/ctkfontsel.c:1698 ctk/ctkmessagedialog.c:938
-#: ctk/ctkmessagedialog.c:960 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12790
+#: ctk/ctkmessagedialog.c:960 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12789
 msgid "_OK"
 msgstr "확인(_O)"
 
@@ -1613,7 +1613,7 @@ msgid "Other Applications"
 msgstr "다른 프로그램"
 
 #: ctk/ctkapplicationwindow.c:345 ctk/ctkprintoperation-unix.c:485
-#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1688
+#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1694
 msgid "Application"
 msgstr "프로그램"
 
@@ -2196,55 +2196,55 @@ msgstr "오른쪽(_R):"
 msgid "Paper Margins"
 msgstr "용지 여백"
 
-#: ctk/ctkentry.c:9589 ctk/ctklabel.c:6676 ctk/ctktextview.c:9516
+#: ctk/ctkentry.c:9590 ctk/ctklabel.c:6676 ctk/ctktextview.c:9519
 msgid "Cu_t"
 msgstr "잘라내기(_T)"
 
-#: ctk/ctkentry.c:9593 ctk/ctklabel.c:6677 ctk/ctktextview.c:9520
+#: ctk/ctkentry.c:9594 ctk/ctklabel.c:6677 ctk/ctktextview.c:9523
 msgid "_Copy"
 msgstr "복사(_C)"
 
-#: ctk/ctkentry.c:9597 ctk/ctklabel.c:6678 ctk/ctktextview.c:9522
+#: ctk/ctkentry.c:9598 ctk/ctklabel.c:6678 ctk/ctktextview.c:9525
 msgid "_Paste"
 msgstr "붙여넣기(_P)"
 
-#: ctk/ctkentry.c:9600 ctk/ctkfilechooserwidget.c:1499
-#: ctk/ctkfilechooserwidget.c:2334 ctk/ctklabel.c:6680 ctk/ctktextview.c:9525
+#: ctk/ctkentry.c:9601 ctk/ctkfilechooserwidget.c:1499
+#: ctk/ctkfilechooserwidget.c:2334 ctk/ctklabel.c:6680 ctk/ctktextview.c:9528
 msgid "_Delete"
 msgstr "삭제(_D)"
 
-#: ctk/ctkentry.c:9611 ctk/ctklabel.c:6689 ctk/ctktextview.c:9539
+#: ctk/ctkentry.c:9612 ctk/ctklabel.c:6689 ctk/ctktextview.c:9542
 msgid "Select _All"
 msgstr "모두 선택(_A)"
 
 # 키보드에 써 있는 단어이므로 번역하지 않는다
-#: ctk/ctkentry.c:9621 ctk/ctktextview.c:9549
+#: ctk/ctkentry.c:9622 ctk/ctktextview.c:9552
 msgid "Insert _Emoji"
 msgstr "에모지 입력(_E)"
 
-#: ctk/ctkentry.c:9797 ctk/ctktextview.c:9773
+#: ctk/ctkentry.c:9798 ctk/ctktextview.c:9776
 msgid "Select all"
 msgstr "모두 선택"
 
-#: ctk/ctkentry.c:9800 ctk/ctktextview.c:9776
+#: ctk/ctkentry.c:9801 ctk/ctktextview.c:9779
 msgid "Cut"
 msgstr "잘라내기"
 
-#: ctk/ctkentry.c:9803 ctk/ctktextview.c:9779
+#: ctk/ctkentry.c:9804 ctk/ctktextview.c:9782
 msgid "Copy"
 msgstr "복사"
 
-#: ctk/ctkentry.c:9806 ctk/ctktextview.c:9782
+#: ctk/ctkentry.c:9807 ctk/ctktextview.c:9785
 msgid "Paste"
 msgstr "붙여넣기"
 
 # Caps Lock 키보드 위에 쓰여 있는 글이므로 번역/음역하지 않는다
-#: ctk/ctkentry.c:10878
+#: ctk/ctkentry.c:10879
 msgid "Caps Lock is on"
 msgstr "Caps Lock이 켜져 있습니다"
 
 # 키보드에 써 있는 단어이므로 번역하지 않는다
-#: ctk/ctkentry.c:11156
+#: ctk/ctkentry.c:11157
 msgid "Insert Emoji"
 msgstr "에모지 입력"
 
@@ -2525,6 +2525,7 @@ msgid "Yesterday"
 msgstr "어제"
 
 #: ctk/ctkfilechooserwidget.c:4906
+#, fuzzy, c-format
 msgid "%-e %b"
 msgstr "%b %-e일"
 
@@ -2586,7 +2587,7 @@ msgid "Spreadsheet"
 msgstr "스프레드시트"
 
 #: ctk/ctkfilechooserwidget.c:5054 ctk/ctkfilechooserwidget.c:5243
-#: ctk/inspector/prop-editor.c:1691
+#: ctk/inspector/prop-editor.c:1697
 msgid "Unknown"
 msgstr "알 수 없음"
 
@@ -2674,7 +2675,7 @@ msgstr "기울이기"
 msgid "Optical Size"
 msgstr "광학 크기"
 
-#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1678
+#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1684
 msgid "Default"
 msgstr "기본값"
 
@@ -2710,7 +2711,7 @@ msgstr "OpenGL 컨텍스트 만들기 실패"
 msgid "Application menu"
 msgstr "프로그램 메뉴"
 
-#: ctk/ctkheaderbar.c:458 ctk/ctkwindow.c:9355
+#: ctk/ctkheaderbar.c:458 ctk/ctkwindow.c:9356
 msgid "Close"
 msgstr "닫기"
 
@@ -2719,7 +2720,7 @@ msgstr "닫기"
 msgid "Icon '%s' not present in theme %s"
 msgstr "%2$s 테마에 '%1$s' 아이콘이 없습니다"
 
-#: ctk/ctkicontheme.c:4096 ctk/ctkicontheme.c:4463
+#: ctk/ctkicontheme.c:4097 ctk/ctkicontheme.c:4464
 msgid "Failed to load icon"
 msgstr "아이콘을 읽어들이는 데 실패"
 
@@ -2867,40 +2868,40 @@ msgstr ""
 "시스템 관리자에게 문의하십시오"
 
 #. Description of --ctk-module=MODULES in --help output
-#: ctk/ctkmain.c:464
+#: ctk/ctkmain.c:470
 msgid "Load additional CTK+ modules"
 msgstr "CTK+ 모듈을 추가로 읽어들입니다"
 
 #. Placeholder in --ctk-module=MODULES in --help output
-#: ctk/ctkmain.c:465
+#: ctk/ctkmain.c:471
 msgid "MODULES"
 msgstr "<모듈>"
 
 #. Description of --g-fatal-warnings in --help output
-#: ctk/ctkmain.c:467
+#: ctk/ctkmain.c:473
 msgid "Make all warnings fatal"
 msgstr "모든 경고를 치명적인 것으로 간주합니다"
 
 #. Description of --ctk-debug=FLAGS in --help output
-#: ctk/ctkmain.c:470
+#: ctk/ctkmain.c:476
 msgid "CTK+ debugging flags to set"
 msgstr "설정할 CTK+ 디버깅 플래그"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
-#: ctk/ctkmain.c:473
+#: ctk/ctkmain.c:479
 msgid "CTK+ debugging flags to unset"
 msgstr "설정 해제할 CTK+ 디버깅 플래그"
 
-#: ctk/ctkmain.c:808 ctk/ctkmain.c:1002
+#: ctk/ctkmain.c:814 ctk/ctkmain.c:1008
 #, c-format
 msgid "Cannot open display: %s"
 msgstr "디스플레이를 열 수 없습니다: %s"
 
-#: ctk/ctkmain.c:920
+#: ctk/ctkmain.c:926
 msgid "CTK+ Options"
 msgstr "CTK+ 옵션"
 
-#: ctk/ctkmain.c:920
+#: ctk/ctkmain.c:926
 msgid "Show CTK+ Options"
 msgstr "CTK+ 옵션 표시"
 
@@ -2909,7 +2910,7 @@ msgstr "CTK+ 옵션 표시"
 #. * Do *not* translate it to "predefinito:LTR", if it
 #. * it isn't default:LTR or default:RTL it will not work
 #.
-#: ctk/ctkmain.c:1273
+#: ctk/ctkmain.c:1279
 msgid "default:LTR"
 msgstr "default:LTR"
 
@@ -4115,24 +4116,24 @@ msgctxt "volume percentage"
 msgid "%d %%"
 msgstr "%d %%"
 
-#: ctk/ctkwindow.c:9303
+#: ctk/ctkwindow.c:9304
 msgid "Move"
 msgstr "옮기기"
 
-#: ctk/ctkwindow.c:9311
+#: ctk/ctkwindow.c:9312
 msgid "Resize"
 msgstr "크기 조절"
 
-#: ctk/ctkwindow.c:9342
+#: ctk/ctkwindow.c:9343
 msgid "Always on Top"
 msgstr "항상 위"
 
-#: ctk/ctkwindow.c:12777
+#: ctk/ctkwindow.c:12776
 #, c-format
 msgid "Do you want to use CTK+ Inspector?"
 msgstr "CTK+ 인스펙터를 사용하시겠습니까?"
 
-#: ctk/ctkwindow.c:12779
+#: ctk/ctkwindow.c:12778
 #, c-format
 msgid ""
 "CTK+ Inspector is an interactive debugger that lets you explore and modify "
@@ -4143,7 +4144,7 @@ msgstr ""
 "그램의 내부 구조를 살펴 보거나 수정할 수 있습니다. CTK+ 인스펙터를 사용했을 "
 "때 프로그램이 멈추거나 이상 동작으로 중지할 수도 있습니다."
 
-#: ctk/ctkwindow.c:12784
+#: ctk/ctkwindow.c:12783
 msgid "Don't show this message again"
 msgstr "이 메시지 다시 보지 않기"
 
@@ -4257,22 +4258,22 @@ msgstr "GL 버전"
 msgid "GL Vendor"
 msgstr "GL 공급사"
 
-#: ctk/inspector/gestures.c:130
+#: ctk/inspector/gestures.c:131
 msgctxt "event phase"
 msgid "None"
 msgstr "없음"
 
-#: ctk/inspector/gestures.c:131
+#: ctk/inspector/gestures.c:132
 msgctxt "event phase"
 msgid "Capture"
 msgstr "캡쳐"
 
-#: ctk/inspector/gestures.c:132
+#: ctk/inspector/gestures.c:133
 msgctxt "event phase"
 msgid "Bubble"
 msgstr "버블"
 
-#: ctk/inspector/gestures.c:133
+#: ctk/inspector/gestures.c:134
 msgctxt "event phase"
 msgid "Target"
 msgstr "대상"
@@ -4285,7 +4286,7 @@ msgstr "이름 없는 섹션"
 msgid "Label"
 msgstr "레이블"
 
-#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1387
+#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1393
 msgid "Action"
 msgstr "동작"
 
@@ -4315,9 +4316,9 @@ msgid "Default Widget"
 msgstr "기본 위젯"
 
 #: ctk/inspector/misc-info.ui:192 ctk/inspector/misc-info.ui:237
-#: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1069
-#: ctk/inspector/prop-editor.c:1268 ctk/inspector/prop-editor.c:1395
-#: ctk/inspector/prop-editor.c:1506 ctk/inspector/window.ui:382
+#: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1075
+#: ctk/inspector/prop-editor.c:1274 ctk/inspector/prop-editor.c:1401
+#: ctk/inspector/prop-editor.c:1512 ctk/inspector/window.ui:382
 msgid "Properties"
 msgstr "속성"
 
@@ -4408,71 +4409,71 @@ msgstr "알 수 없음"
 msgid "Object: %p (%s)"
 msgstr "오브젝트: %p (%s)"
 
-#: ctk/inspector/prop-editor.c:1139
+#: ctk/inspector/prop-editor.c:1145
 #, c-format
 msgid "Uneditable property type: %s"
 msgstr "속성 타입을 편집할 수 없습니다: %s"
 
-#: ctk/inspector/prop-editor.c:1259
+#: ctk/inspector/prop-editor.c:1265
 msgid "Attribute mapping"
 msgstr "속성 매핑"
 
-#: ctk/inspector/prop-editor.c:1264
+#: ctk/inspector/prop-editor.c:1270
 msgid "Model:"
 msgstr "모델:"
 
-#: ctk/inspector/prop-editor.c:1265
+#: ctk/inspector/prop-editor.c:1271
 #, c-format
 msgid "%p (%s)"
 msgstr "%p (%s)"
 
-#: ctk/inspector/prop-editor.c:1275
+#: ctk/inspector/prop-editor.c:1281
 msgid "Column:"
 msgstr "컬럼:"
 
-#: ctk/inspector/prop-editor.c:1285
+#: ctk/inspector/prop-editor.c:1291
 msgctxt "property name"
 msgid "None"
 msgstr "없음"
 
-#: ctk/inspector/prop-editor.c:1391
+#: ctk/inspector/prop-editor.c:1397
 #, c-format
 msgid "Defined at: %p (%s)"
 msgstr "정의된 위치: %p (%s)"
 
-#: ctk/inspector/prop-editor.c:1455 ctk/inspector/prop-editor.c:1471
+#: ctk/inspector/prop-editor.c:1461 ctk/inspector/prop-editor.c:1477
 msgid "inverted"
 msgstr "반전"
 
-#: ctk/inspector/prop-editor.c:1487
+#: ctk/inspector/prop-editor.c:1493
 msgid "bidirectional, inverted"
 msgstr "양방향, 반전"
 
-#: ctk/inspector/prop-editor.c:1492 ctk/inspector/prop-editor.c:1606
+#: ctk/inspector/prop-editor.c:1498 ctk/inspector/prop-editor.c:1612
 msgid "bidirectional"
 msgstr "양방향"
 
-#: ctk/inspector/prop-editor.c:1497
+#: ctk/inspector/prop-editor.c:1503
 msgid "Binding:"
 msgstr "바인딩:"
 
-#: ctk/inspector/prop-editor.c:1625
+#: ctk/inspector/prop-editor.c:1631
 msgid "Setting:"
 msgstr "설정:"
 
-#: ctk/inspector/prop-editor.c:1665
+#: ctk/inspector/prop-editor.c:1671
 msgid "Source:"
 msgstr "원본:"
 
-#: ctk/inspector/prop-editor.c:1667
+#: ctk/inspector/prop-editor.c:1673
 msgid "Reset"
 msgstr "초기화"
 
-#: ctk/inspector/prop-editor.c:1681
+#: ctk/inspector/prop-editor.c:1687
 msgid "Theme"
 msgstr "테마"
 
-#: ctk/inspector/prop-editor.c:1684
+#: ctk/inspector/prop-editor.c:1690
 msgid "XSettings"
 msgstr "XSettings"
 
@@ -4534,30 +4535,30 @@ msgstr "시그널"
 msgid "Connected"
 msgstr "연결됨"
 
-#: ctk/inspector/size-groups.c:225
+#: ctk/inspector/size-groups.c:226
 msgid "Ignore hidden"
 msgstr "숨김 무시"
 
-#: ctk/inspector/size-groups.c:243
+#: ctk/inspector/size-groups.c:244
 msgid "Mode"
 msgstr "모드"
 
-#: ctk/inspector/size-groups.c:253
+#: ctk/inspector/size-groups.c:254
 msgctxt "sizegroup mode"
 msgid "None"
 msgstr "없음"
 
-#: ctk/inspector/size-groups.c:254
+#: ctk/inspector/size-groups.c:255
 msgctxt "sizegroup mode"
 msgid "Horizontal"
 msgstr "가로"
 
-#: ctk/inspector/size-groups.c:255
+#: ctk/inspector/size-groups.c:256
 msgctxt "sizegroup mode"
 msgid "Vertical"
 msgstr "세로"
 
-#: ctk/inspector/size-groups.c:256
+#: ctk/inspector/size-groups.c:257
 msgctxt "sizegroup mode"
 msgid "Both"
 msgstr "모두"
@@ -4598,15 +4599,15 @@ msgstr "GOBJECT_DEBUG=instance-count 변수로 통계 기능 사용"
 msgid "Theme is hardcoded by CTK_THEME"
 msgstr "테마가 CTK_THEME으로 하드 코딩되어 있습니다"
 
-#: ctk/inspector/visual.c:657
+#: ctk/inspector/visual.c:659
 msgid "Backend does not support window scaling"
 msgstr "백엔드가 창 크기 조정을 지원하지 않습니다"
 
-#: ctk/inspector/visual.c:752
+#: ctk/inspector/visual.c:754
 msgid "Setting is hardcoded by CTK_TEST_TOUCHSCREEN"
 msgstr "설정이 CTK_TEST_TOUCHSCREEN에서 하드 코딩되어 있습니다"
 
-#: ctk/inspector/visual.c:817
+#: ctk/inspector/visual.c:819
 msgid ""
 "Not settable at runtime.\n"
 "Use CDK_GL=always or CDK_GL=disable instead"
@@ -4614,8 +4615,8 @@ msgstr ""
 "실행 중에 설정할 수 없습니다.\n"
 "CDK_GL=always 또는 CDK_GL=disable 변수를 사용하십시오."
 
-#: ctk/inspector/visual.c:831 ctk/inspector/visual.c:832
-#: ctk/inspector/visual.c:833
+#: ctk/inspector/visual.c:833 ctk/inspector/visual.c:834
+#: ctk/inspector/visual.c:835
 msgid "GL rendering is disabled"
 msgstr "GL 렌더링을 사용하지 않습니다"
 
@@ -7173,7 +7174,6 @@ msgstr "서비스"
 
 #. used for the application menu on MacOS.  %s is replaced with the application name.
 #: ctk/ui/ctkapplication-quartz.ui:29
-#, c-format
 msgid "Hide %s"
 msgstr "%s 숨기기"
 
@@ -7189,7 +7189,6 @@ msgstr "모두 보이기"
 
 #. used for the application menu on MacOS.  %s is replaced with the application name.
 #: ctk/ui/ctkapplication-quartz.ui:49
-#, c-format
 msgid "Quit %s"
 msgstr "%s 끝내기"
 
@@ -7628,105 +7627,105 @@ msgstr "볼륨 낮추기"
 msgid "Decreases the volume"
 msgstr "볼륨을 낮춥니다"
 
-#: ctk/updateiconcache.c:1402
+#: ctk/updateiconcache.c:1404
 #, c-format
 msgid "Failed to write header\n"
 msgstr "헤더를 쓰는 데 실패\n"
 
-#: ctk/updateiconcache.c:1408
+#: ctk/updateiconcache.c:1410
 #, c-format
 msgid "Failed to write hash table\n"
 msgstr "해시 테이블을 쓰는 데 실패\n"
 
-#: ctk/updateiconcache.c:1414
+#: ctk/updateiconcache.c:1416
 #, c-format
 msgid "Failed to write folder index\n"
 msgstr "폴더 인덱스를 쓰는 데 실패\n"
 
-#: ctk/updateiconcache.c:1422
+#: ctk/updateiconcache.c:1424
 #, c-format
 msgid "Failed to rewrite header\n"
 msgstr "헤더를 다시 쓰는 데 실패\n"
 
-#: ctk/updateiconcache.c:1516
+#: ctk/updateiconcache.c:1518
 #, c-format
 msgid "Failed to open file %s : %s\n"
 msgstr "'%s' 파일 열기 실패 : %s\n"
 
-#: ctk/updateiconcache.c:1524 ctk/updateiconcache.c:1554
+#: ctk/updateiconcache.c:1526 ctk/updateiconcache.c:1556
 #, c-format
 msgid "Failed to write cache file: %s\n"
 msgstr "캐시 파일을 쓰는 데 실패: %s\n"
 
-#: ctk/updateiconcache.c:1564
+#: ctk/updateiconcache.c:1566
 #, c-format
 msgid "The generated cache was invalid.\n"
 msgstr "만들어진 캐시가 잘못되었습니다.\n"
 
-#: ctk/updateiconcache.c:1578
+#: ctk/updateiconcache.c:1580
 #, c-format
 msgid "Could not rename %s to %s: %s, removing %s then.\n"
 msgstr "%s의 이름을 %s(으)로 바꿀 수 없습니다: %s, %s을(를) 지웁니다.\n"
 
-#: ctk/updateiconcache.c:1592
+#: ctk/updateiconcache.c:1594
 #, c-format
 msgid "Could not rename %s to %s: %s\n"
 msgstr "%s의 이름을 %s(으)로 바꿀 수 없습니다: %s\n"
 
-#: ctk/updateiconcache.c:1602
+#: ctk/updateiconcache.c:1604
 #, c-format
 msgid "Could not rename %s back to %s: %s.\n"
 msgstr "%s의 이름을 %s(으)로 되돌릴 수 없습니다: %s.\n"
 
-#: ctk/updateiconcache.c:1625
+#: ctk/updateiconcache.c:1627
 #, c-format
 msgid "Cache file created successfully.\n"
 msgstr "캐시 파일을 성공적으로 만들었습니다.\n"
 
-#: ctk/updateiconcache.c:1664
+#: ctk/updateiconcache.c:1666
 msgid "Overwrite an existing cache, even if up to date"
 msgstr "캐시가 최신이더라도 현재 캐시를 덮어씁니다"
 
-#: ctk/updateiconcache.c:1665
+#: ctk/updateiconcache.c:1667
 msgid "Don't check for the existence of index.theme"
 msgstr "index.theme 파일이 있는지 검사하지 않습니다"
 
-#: ctk/updateiconcache.c:1666
+#: ctk/updateiconcache.c:1668
 msgid "Don't include image data in the cache"
 msgstr "캐시에 그림 데이터를 넣지 않습니다"
 
-#: ctk/updateiconcache.c:1667
+#: ctk/updateiconcache.c:1669
 msgid "Include image data in the cache"
 msgstr "캐시에 그림 데이터를 넣습니다"
 
-#: ctk/updateiconcache.c:1668
+#: ctk/updateiconcache.c:1670
 msgid "Output a C header file"
 msgstr "C 헤더 파일을 출력합니다"
 
-#: ctk/updateiconcache.c:1669
+#: ctk/updateiconcache.c:1671
 msgid "Turn off verbose output"
 msgstr "자세히 출력하지 않습니다"
 
-#: ctk/updateiconcache.c:1670
+#: ctk/updateiconcache.c:1672
 msgid "Validate existing icon cache"
 msgstr "현재 아이콘 캐시 확인"
 
-#: ctk/updateiconcache.c:1737
+#: ctk/updateiconcache.c:1739
 #, c-format
 msgid "File not found: %s\n"
 msgstr "파일이 없습니다: %s\n"
 
-#: ctk/updateiconcache.c:1743
+#: ctk/updateiconcache.c:1745
 #, c-format
 msgid "Not a valid icon cache: %s\n"
 msgstr "올바른 아이콘 캐시가 아닙니다: %s\n"
 
-#: ctk/updateiconcache.c:1756
+#: ctk/updateiconcache.c:1758
 #, c-format
 msgid "No theme index file.\n"
 msgstr "테마 인덱스 파일이 없습니다.\n"
 
-#: ctk/updateiconcache.c:1760
+#: ctk/updateiconcache.c:1762
 #, c-format
 msgid ""
 "No theme index file in '%s'.\n"

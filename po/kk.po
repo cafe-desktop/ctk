@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-13 13:45+0200\n"
+"POT-Creation-Date: 2024-12-19 12:00+0100\n"
 "PO-Revision-Date: 2020-09-19 17:15+0500\n"
 "Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
 "Language-Team: Kazakh <kk_KZ@googlegroups.com>\n"
@@ -23,48 +23,48 @@ msgstr ""
 msgid "Broadway display type not supported: %s"
 msgstr "Кеңтаратылым дисплей түріне қолдау жоқ: %s"
 
-#: cdk/cdk.c:179
+#: cdk/cdk.c:182
 #, c-format
 msgid "Error parsing option --cdk-debug"
 msgstr "--cdk-debug опциясын талдау қатесі"
 
-#: cdk/cdk.c:199
+#: cdk/cdk.c:205
 #, c-format
 msgid "Error parsing option --cdk-no-debug"
 msgstr "--cdk-no-debug опциясын талдау қатесі"
 
 #. Description of --class=CLASS in --help output
-#: cdk/cdk.c:228
+#: cdk/cdk.c:240
 msgid "Program class as used by the window manager"
 msgstr "Терезелер басқарушы қолданатындай бағдарлама класы"
 
 #. Placeholder in --class=CLASS in --help output
-#: cdk/cdk.c:229
+#: cdk/cdk.c:241
 msgid "CLASS"
 msgstr "КЛАСС"
 
 #. Description of --name=NAME in --help output
-#: cdk/cdk.c:231
+#: cdk/cdk.c:243
 msgid "Program name as used by the window manager"
 msgstr "Терезелер басқарушы қолданатындай бағдарлама аты"
 
 #. Placeholder in --name=NAME in --help output
-#: cdk/cdk.c:232
+#: cdk/cdk.c:244
 msgid "NAME"
 msgstr "АТЫ"
 
 #. Description of --display=DISPLAY in --help output
-#: cdk/cdk.c:235
+#: cdk/cdk.c:247
 msgid "X display to use"
 msgstr "Қолданылатын X дисплейі"
 
 #. Placeholder in --display=DISPLAY in --help output
-#: cdk/cdk.c:236
+#: cdk/cdk.c:248
 msgid "DISPLAY"
 msgstr "ДИСПЛЕЙ"
 
 #. Description of --cdk-debug=FLAGS in --help output
-#: cdk/cdk.c:240
+#: cdk/cdk.c:252
 msgid "CDK debugging flags to set"
 msgstr "CDK жөндеу жалаушалары орнатылған"
 
@@ -72,12 +72,12 @@ msgstr "CDK жөндеу жалаушалары орнатылған"
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
 #. Placeholder in --ctk-debug=FLAGS in --help output
 #. Placeholder in --ctk-no-debug=FLAGS in --help output
-#: cdk/cdk.c:241 cdk/cdk.c:244 ctk/ctkmain.c:471 ctk/ctkmain.c:474
+#: cdk/cdk.c:253 cdk/cdk.c:256 ctk/ctkmain.c:477 ctk/ctkmain.c:480
 msgid "FLAGS"
 msgstr "ЖАЛАУШАЛАР"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
-#: cdk/cdk.c:243
+#: cdk/cdk.c:255
 msgid "CDK debugging flags to unset"
 msgstr "CDK жөндеу жалаушалары орнатылмаған"
 
@@ -574,7 +574,7 @@ msgid "Edit"
 msgstr "Түзету"
 
 #: ctk/a11y/ctkcellaccessible.c:261 ctk/a11y/ctkcolorswatchaccessible.c:149
-#: ctk/a11y/ctkentryaccessible.c:1560 ctk/a11y/ctkexpanderaccessible.c:281
+#: ctk/a11y/ctkentryaccessible.c:1561 ctk/a11y/ctkexpanderaccessible.c:281
 msgctxt "Action name"
 msgid "Activate"
 msgstr "Белсендіру"
@@ -630,7 +630,7 @@ msgctxt "Action description"
 msgid "Presses the combobox"
 msgstr "Тізімі бар өрісті басады"
 
-#: ctk/a11y/ctkentryaccessible.c:1569
+#: ctk/a11y/ctkentryaccessible.c:1570
 msgctxt "Action description"
 msgid "Activates the entry"
 msgstr "Элементті белсендіреді"
@@ -673,15 +673,15 @@ msgctxt "Stock label"
 msgid "_Close"
 msgstr "_Жабу"
 
-#: ctk/a11y/ctkimageaccessible.c:59 ctk/ctkheaderbar.c:415 ctk/ctkwindow.c:9319
+#: ctk/a11y/ctkimageaccessible.c:59 ctk/ctkheaderbar.c:415 ctk/ctkwindow.c:9320
 msgid "Minimize"
 msgstr "Қайыру"
 
-#: ctk/a11y/ctkimageaccessible.c:60 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9328
+#: ctk/a11y/ctkimageaccessible.c:60 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9329
 msgid "Maximize"
 msgstr "Жазық қылу"
 
-#: ctk/a11y/ctkimageaccessible.c:61 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9285
+#: ctk/a11y/ctkimageaccessible.c:61 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9286
 msgid "Restore"
 msgstr "Қалпына келтіру"
 
@@ -1228,7 +1228,7 @@ msgstr ""
 #: ctk/ctkmountoperation.c:593 ctk/ctkpagesetupunixdialog.c:197
 #: ctk/ctkprintbackend.c:781 ctk/ctkprinteroptionwidget.c:545
 #: ctk/ctkprintunixdialog.c:674 ctk/ctkprintunixdialog.c:747
-#: ctk/ctkwindow.c:12789 ctk/inspector/css-editor.c:201
+#: ctk/ctkwindow.c:12788 ctk/inspector/css-editor.c:201
 #: ctk/ui/ctkappchooserdialog.ui:61 ctk/ui/ctkassistant.ui:125
 #: ctk/ui/ctkcolorchooserdialog.ui:34 ctk/ui/ctkfontchooserdialog.ui:31
 msgid "_Cancel"
@@ -1277,7 +1277,7 @@ msgid "_Apply"
 msgstr "Іске _асыру"
 
 #: ctk/deprecated/ctkfontsel.c:1698 ctk/ctkmessagedialog.c:938
-#: ctk/ctkmessagedialog.c:960 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12790
+#: ctk/ctkmessagedialog.c:960 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12789
 msgid "_OK"
 msgstr "О_К"
 
@@ -1582,7 +1582,7 @@ msgid "Other Applications"
 msgstr "Басқа қолданбалар"
 
 #: ctk/ctkapplicationwindow.c:345 ctk/ctkprintoperation-unix.c:485
-#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1688
+#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1694
 msgid "Application"
 msgstr "Қолданба"
 
@@ -2162,52 +2162,52 @@ msgstr "Оң ж_ақ:"
 msgid "Paper Margins"
 msgstr "Қағаздың шет өрістері"
 
-#: ctk/ctkentry.c:9589 ctk/ctklabel.c:6676 ctk/ctktextview.c:9516
+#: ctk/ctkentry.c:9590 ctk/ctklabel.c:6676 ctk/ctktextview.c:9519
 msgid "Cu_t"
 msgstr "Қ_иып алу"
 
-#: ctk/ctkentry.c:9593 ctk/ctklabel.c:6677 ctk/ctktextview.c:9520
+#: ctk/ctkentry.c:9594 ctk/ctklabel.c:6677 ctk/ctktextview.c:9523
 msgid "_Copy"
 msgstr "_Көшіру"
 
-#: ctk/ctkentry.c:9597 ctk/ctklabel.c:6678 ctk/ctktextview.c:9522
+#: ctk/ctkentry.c:9598 ctk/ctklabel.c:6678 ctk/ctktextview.c:9525
 msgid "_Paste"
 msgstr "Кірі_стіру"
 
-#: ctk/ctkentry.c:9600 ctk/ctkfilechooserwidget.c:1499
-#: ctk/ctkfilechooserwidget.c:2334 ctk/ctklabel.c:6680 ctk/ctktextview.c:9525
+#: ctk/ctkentry.c:9601 ctk/ctkfilechooserwidget.c:1499
+#: ctk/ctkfilechooserwidget.c:2334 ctk/ctklabel.c:6680 ctk/ctktextview.c:9528
 msgid "_Delete"
 msgstr "Ө_шіру"
 
-#: ctk/ctkentry.c:9611 ctk/ctklabel.c:6689 ctk/ctktextview.c:9539
+#: ctk/ctkentry.c:9612 ctk/ctklabel.c:6689 ctk/ctktextview.c:9542
 msgid "Select _All"
 msgstr "Б_арлығын таңдау"
 
-#: ctk/ctkentry.c:9621 ctk/ctktextview.c:9549
+#: ctk/ctkentry.c:9622 ctk/ctktextview.c:9552
 msgid "Insert _Emoji"
 msgstr "_Эмодзи кірістіру"
 
-#: ctk/ctkentry.c:9797 ctk/ctktextview.c:9773
+#: ctk/ctkentry.c:9798 ctk/ctktextview.c:9776
 msgid "Select all"
 msgstr "Барлығын таңдау"
 
-#: ctk/ctkentry.c:9800 ctk/ctktextview.c:9776
+#: ctk/ctkentry.c:9801 ctk/ctktextview.c:9779
 msgid "Cut"
 msgstr "Қиып алу"
 
-#: ctk/ctkentry.c:9803 ctk/ctktextview.c:9779
+#: ctk/ctkentry.c:9804 ctk/ctktextview.c:9782
 msgid "Copy"
 msgstr "Көшіру"
 
-#: ctk/ctkentry.c:9806 ctk/ctktextview.c:9782
+#: ctk/ctkentry.c:9807 ctk/ctktextview.c:9785
 msgid "Paste"
 msgstr "Кірістіру"
 
-#: ctk/ctkentry.c:10878
+#: ctk/ctkentry.c:10879
 msgid "Caps Lock is on"
 msgstr "Caps Lock іске қосулы тұр"
 
-#: ctk/ctkentry.c:11156
+#: ctk/ctkentry.c:11157
 msgid "Insert Emoji"
 msgstr "Эмодзи кірістіру"
 
@@ -2487,6 +2487,7 @@ msgid "Yesterday"
 msgstr "Кеше"
 
 #: ctk/ctkfilechooserwidget.c:4906
+#, c-format
 msgid "%-e %b"
 msgstr "%-e %b"
 
@@ -2548,7 +2549,7 @@ msgid "Spreadsheet"
 msgstr "Электрондық кесте"
 
 #: ctk/ctkfilechooserwidget.c:5054 ctk/ctkfilechooserwidget.c:5243
-#: ctk/inspector/prop-editor.c:1691
+#: ctk/inspector/prop-editor.c:1697
 msgid "Unknown"
 msgstr "Белгісіз"
 
@@ -2635,7 +2636,7 @@ msgstr "Көлбеу"
 msgid "Optical Size"
 msgstr "Оптикалық өлшемі"
 
-#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1678
+#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1684
 msgid "Default"
 msgstr "Үнсіз келісім бойынша"
 
@@ -2671,7 +2672,7 @@ msgstr "OpenGL контекстін жасау сәтсіз"
 msgid "Application menu"
 msgstr "Қолданба мәзірі"
 
-#: ctk/ctkheaderbar.c:458 ctk/ctkwindow.c:9355
+#: ctk/ctkheaderbar.c:458 ctk/ctkwindow.c:9356
 msgid "Close"
 msgstr "Жабу"
 
@@ -2680,7 +2681,7 @@ msgstr "Жабу"
 msgid "Icon '%s' not present in theme %s"
 msgstr "\"%s\" таңбашасы %s темасында жоқ"
 
-#: ctk/ctkicontheme.c:4096 ctk/ctkicontheme.c:4463
+#: ctk/ctkicontheme.c:4097 ctk/ctkicontheme.c:4464
 msgid "Failed to load icon"
 msgstr "Таңбашаны жүктеу сәтсіз"
 
@@ -2828,40 +2829,40 @@ msgstr ""
 "Жүйелік әкімшіге хабарласыңыз"
 
 #. Description of --ctk-module=MODULES in --help output
-#: ctk/ctkmain.c:464
+#: ctk/ctkmain.c:470
 msgid "Load additional CTK+ modules"
 msgstr "Қосымша CTK+ модульдерін жүктеу"
 
 #. Placeholder in --ctk-module=MODULES in --help output
-#: ctk/ctkmain.c:465
+#: ctk/ctkmain.c:471
 msgid "MODULES"
 msgstr "МОДУЛЬДЕР"
 
 #. Description of --g-fatal-warnings in --help output
-#: ctk/ctkmain.c:467
+#: ctk/ctkmain.c:473
 msgid "Make all warnings fatal"
 msgstr "Барлық ескертулерді қатаң деп белгілеу"
 
 #. Description of --ctk-debug=FLAGS in --help output
-#: ctk/ctkmain.c:470
+#: ctk/ctkmain.c:476
 msgid "CTK+ debugging flags to set"
 msgstr "CTK+ жөндеу жалаушалары орнатылған"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
-#: ctk/ctkmain.c:473
+#: ctk/ctkmain.c:479
 msgid "CTK+ debugging flags to unset"
 msgstr "CTK+ жөндеу жалаушалары орнатылмаған"
 
-#: ctk/ctkmain.c:808 ctk/ctkmain.c:1002
+#: ctk/ctkmain.c:814 ctk/ctkmain.c:1008
 #, c-format
 msgid "Cannot open display: %s"
 msgstr "Экранды ашу мүмкін емес: %s"
 
-#: ctk/ctkmain.c:920
+#: ctk/ctkmain.c:926
 msgid "CTK+ Options"
 msgstr "CTK+ опциялары"
 
-#: ctk/ctkmain.c:920
+#: ctk/ctkmain.c:926
 msgid "Show CTK+ Options"
 msgstr "CTK+ опцияларын көрсету"
 
@@ -2870,7 +2871,7 @@ msgstr "CTK+ опцияларын көрсету"
 #. * Do *not* translate it to "predefinito:LTR", if it
 #. * it isn't default:LTR or default:RTL it will not work
 #.
-#: ctk/ctkmain.c:1273
+#: ctk/ctkmain.c:1279
 msgid "default:LTR"
 msgstr "default:LTR"
 
@@ -4070,24 +4071,24 @@ msgctxt "volume percentage"
 msgid "%d %%"
 msgstr "%d %%"
 
-#: ctk/ctkwindow.c:9303
+#: ctk/ctkwindow.c:9304
 msgid "Move"
 msgstr "Жылжыту"
 
-#: ctk/ctkwindow.c:9311
+#: ctk/ctkwindow.c:9312
 msgid "Resize"
 msgstr "Өлшемін өзгерту"
 
-#: ctk/ctkwindow.c:9342
+#: ctk/ctkwindow.c:9343
 msgid "Always on Top"
 msgstr "Әрқашан үстінде"
 
-#: ctk/ctkwindow.c:12777
+#: ctk/ctkwindow.c:12776
 #, c-format
 msgid "Do you want to use CTK+ Inspector?"
 msgstr "CTK+ Inspector қолданғыңыз келе ме?"
 
-#: ctk/ctkwindow.c:12779
+#: ctk/ctkwindow.c:12778
 #, c-format
 msgid ""
 "CTK+ Inspector is an interactive debugger that lets you explore and modify "
@@ -4098,7 +4099,7 @@ msgstr ""
 "қолданбасының ішкі құрылысын шолып, түзете аласыз. Оны қолдану нәтижесінде "
 "қолданба сынуы, немесе құлап түсуі  де мүмкін."
 
-#: ctk/ctkwindow.c:12784
+#: ctk/ctkwindow.c:12783
 msgid "Don't show this message again"
 msgstr "Бұл хабарламаны келесіде көрсетпеу"
 
@@ -4213,22 +4214,22 @@ msgstr "GL нұсқасы"
 msgid "GL Vendor"
 msgstr "GL өндірушісі"
 
-#: ctk/inspector/gestures.c:130
+#: ctk/inspector/gestures.c:131
 msgctxt "event phase"
 msgid "None"
 msgstr "Ешнәрсе"
 
-#: ctk/inspector/gestures.c:131
+#: ctk/inspector/gestures.c:132
 msgctxt "event phase"
 msgid "Capture"
 msgstr "Төмендейтін"
 
-#: ctk/inspector/gestures.c:132
+#: ctk/inspector/gestures.c:133
 msgctxt "event phase"
 msgid "Bubble"
 msgstr "Жоғарылайтын"
 
-#: ctk/inspector/gestures.c:133
+#: ctk/inspector/gestures.c:134
 msgctxt "event phase"
 msgid "Target"
 msgstr "Мақсаты"
@@ -4241,7 +4242,7 @@ msgstr "Атаусыз санат"
 msgid "Label"
 msgstr "Белгі"
 
-#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1387
+#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1393
 msgid "Action"
 msgstr "Әрекет"
 
@@ -4270,9 +4271,9 @@ msgid "Default Widget"
 msgstr "Үнсіз келісім виджеті"
 
 #: ctk/inspector/misc-info.ui:192 ctk/inspector/misc-info.ui:237
-#: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1069
-#: ctk/inspector/prop-editor.c:1268 ctk/inspector/prop-editor.c:1395
-#: ctk/inspector/prop-editor.c:1506 ctk/inspector/window.ui:382
+#: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1075
+#: ctk/inspector/prop-editor.c:1274 ctk/inspector/prop-editor.c:1401
+#: ctk/inspector/prop-editor.c:1512 ctk/inspector/window.ui:382
 msgid "Properties"
 msgstr "Қасиеттері"
 
@@ -4363,71 +4364,71 @@ msgstr "Белгісіз"
 msgid "Object: %p (%s)"
 msgstr "Объект: %p (%s)"
 
-#: ctk/inspector/prop-editor.c:1139
+#: ctk/inspector/prop-editor.c:1145
 #, c-format
 msgid "Uneditable property type: %s"
 msgstr "Түзетілмейтін қасиет түрі: %s"
 
-#: ctk/inspector/prop-editor.c:1259
+#: ctk/inspector/prop-editor.c:1265
 msgid "Attribute mapping"
 msgstr "Атрибуттарды сәйкестеу"
 
-#: ctk/inspector/prop-editor.c:1264
+#: ctk/inspector/prop-editor.c:1270
 msgid "Model:"
 msgstr "Модель:"
 
-#: ctk/inspector/prop-editor.c:1265
+#: ctk/inspector/prop-editor.c:1271
 #, c-format
 msgid "%p (%s)"
 msgstr "%p (%s)"
 
-#: ctk/inspector/prop-editor.c:1275
+#: ctk/inspector/prop-editor.c:1281
 msgid "Column:"
 msgstr "Баған:"
 
-#: ctk/inspector/prop-editor.c:1285
+#: ctk/inspector/prop-editor.c:1291
 msgctxt "property name"
 msgid "None"
 msgstr "Ешнәрсе"
 
-#: ctk/inspector/prop-editor.c:1391
+#: ctk/inspector/prop-editor.c:1397
 #, c-format
 msgid "Defined at: %p (%s)"
 msgstr "Анықталған жері: %p (%s)"
 
-#: ctk/inspector/prop-editor.c:1455 ctk/inspector/prop-editor.c:1471
+#: ctk/inspector/prop-editor.c:1461 ctk/inspector/prop-editor.c:1477
 msgid "inverted"
 msgstr "терістелген"
 
-#: ctk/inspector/prop-editor.c:1487
+#: ctk/inspector/prop-editor.c:1493
 msgid "bidirectional, inverted"
 msgstr "қос бағытты, терістелген"
 
-#: ctk/inspector/prop-editor.c:1492 ctk/inspector/prop-editor.c:1606
+#: ctk/inspector/prop-editor.c:1498 ctk/inspector/prop-editor.c:1612
 msgid "bidirectional"
 msgstr "қос бағытты"
 
-#: ctk/inspector/prop-editor.c:1497
+#: ctk/inspector/prop-editor.c:1503
 msgid "Binding:"
 msgstr "Байланыс:"
 
-#: ctk/inspector/prop-editor.c:1625
+#: ctk/inspector/prop-editor.c:1631
 msgid "Setting:"
 msgstr "Баптау:"
 
-#: ctk/inspector/prop-editor.c:1665
+#: ctk/inspector/prop-editor.c:1671
 msgid "Source:"
 msgstr "Қайнар көзі:"
 
-#: ctk/inspector/prop-editor.c:1667
+#: ctk/inspector/prop-editor.c:1673
 msgid "Reset"
 msgstr "Тастау"
 
-#: ctk/inspector/prop-editor.c:1681
+#: ctk/inspector/prop-editor.c:1687
 msgid "Theme"
 msgstr "Тема"
 
-#: ctk/inspector/prop-editor.c:1684
+#: ctk/inspector/prop-editor.c:1690
 msgid "XSettings"
 msgstr "XSettings"
 
@@ -4489,30 +4490,30 @@ msgstr "Сигнал"
 msgid "Connected"
 msgstr "Байланысқан"
 
-#: ctk/inspector/size-groups.c:225
+#: ctk/inspector/size-groups.c:226
 msgid "Ignore hidden"
 msgstr "Жасырынды елемеу"
 
-#: ctk/inspector/size-groups.c:243
+#: ctk/inspector/size-groups.c:244
 msgid "Mode"
 msgstr "Режим"
 
-#: ctk/inspector/size-groups.c:253
+#: ctk/inspector/size-groups.c:254
 msgctxt "sizegroup mode"
 msgid "None"
 msgstr "Ешнәрсе"
 
-#: ctk/inspector/size-groups.c:254
+#: ctk/inspector/size-groups.c:255
 msgctxt "sizegroup mode"
 msgid "Horizontal"
 msgstr "Горизонталды"
 
-#: ctk/inspector/size-groups.c:255
+#: ctk/inspector/size-groups.c:256
 msgctxt "sizegroup mode"
 msgid "Vertical"
 msgstr "Вертикалды"
 
-#: ctk/inspector/size-groups.c:256
+#: ctk/inspector/size-groups.c:257
 msgctxt "sizegroup mode"
 msgid "Both"
 msgstr "Екеуі де"
@@ -4553,15 +4554,15 @@ msgstr "Статистиканы GOBJECT_DEBUG=instance-count арқылы іс�
 msgid "Theme is hardcoded by CTK_THEME"
 msgstr "Тема CTK_THEME арқылы қатаң берілген"
 
-#: ctk/inspector/visual.c:657
+#: ctk/inspector/visual.c:659
 msgid "Backend does not support window scaling"
 msgstr "Қозғалтқыш терезелерді масштабтауды қолдамайды"
 
-#: ctk/inspector/visual.c:752
+#: ctk/inspector/visual.c:754
 msgid "Setting is hardcoded by CTK_TEST_TOUCHSCREEN"
 msgstr "Баптау CTK_TEST_TOUCHSCREEN арқылы қатаң берілген"
 
-#: ctk/inspector/visual.c:817
+#: ctk/inspector/visual.c:819
 msgid ""
 "Not settable at runtime.\n"
 "Use CDK_GL=always or CDK_GL=disable instead"
@@ -4569,8 +4570,8 @@ msgstr ""
 "Орындалу кезінде орнату мүмкін емес.\n"
 "Орнына CDK_GL=always не CDK_GL=disable қолданыңыз"
 
-#: ctk/inspector/visual.c:831 ctk/inspector/visual.c:832
-#: ctk/inspector/visual.c:833
+#: ctk/inspector/visual.c:833 ctk/inspector/visual.c:834
+#: ctk/inspector/visual.c:835
 msgid "GL rendering is disabled"
 msgstr "GL рендерингі сөндірілген"
 
@@ -7124,7 +7125,6 @@ msgstr "Қызметтер"
 
 #. used for the application menu on MacOS.  %s is replaced with the application name.
 #: ctk/ui/ctkapplication-quartz.ui:29
-#, c-format
 msgid "Hide %s"
 msgstr "Жасыру %s"
 
@@ -7140,7 +7140,6 @@ msgstr "Барлығын көрсету"
 
 #. used for the application menu on MacOS.  %s is replaced with the application name.
 #: ctk/ui/ctkapplication-quartz.ui:49
-#, c-format
 msgid "Quit %s"
 msgstr "%s жұмысын аяқтау"
 
@@ -7576,105 +7575,105 @@ msgstr "Дыбысты азайту"
 msgid "Decreases the volume"
 msgstr "Дыбысты азайтады"
 
-#: ctk/updateiconcache.c:1402
+#: ctk/updateiconcache.c:1404
 #, c-format
 msgid "Failed to write header\n"
 msgstr "Тақырыптамасын жазу сәтсіз\n"
 
-#: ctk/updateiconcache.c:1408
+#: ctk/updateiconcache.c:1410
 #, c-format
 msgid "Failed to write hash table\n"
 msgstr "Хэш кестесін жазу сәтсіз\n"
 
-#: ctk/updateiconcache.c:1414
+#: ctk/updateiconcache.c:1416
 #, c-format
 msgid "Failed to write folder index\n"
 msgstr "Бума индексін жазу сәтсіз\n"
 
-#: ctk/updateiconcache.c:1422
+#: ctk/updateiconcache.c:1424
 #, c-format
 msgid "Failed to rewrite header\n"
 msgstr "Тақырыптаманы қайта жазу сәтсіз\n"
 
-#: ctk/updateiconcache.c:1516
+#: ctk/updateiconcache.c:1518
 #, c-format
 msgid "Failed to open file %s : %s\n"
 msgstr "Файлды ашу қатемен аяқталды %s : %s\n"
 
-#: ctk/updateiconcache.c:1524 ctk/updateiconcache.c:1554
+#: ctk/updateiconcache.c:1526 ctk/updateiconcache.c:1556
 #, c-format
 msgid "Failed to write cache file: %s\n"
 msgstr "Кэш файлын жазу сәтсіз: %s\n"
 
-#: ctk/updateiconcache.c:1564
+#: ctk/updateiconcache.c:1566
 #, c-format
 msgid "The generated cache was invalid.\n"
 msgstr "Жасалған кэш қате.\n"
 
-#: ctk/updateiconcache.c:1578
+#: ctk/updateiconcache.c:1580
 #, c-format
 msgid "Could not rename %s to %s: %s, removing %s then.\n"
 msgstr "%s үшін жаңа %s атын орнату мүмкін емес: %s, кейін %s өшіріледі.\n"
 
-#: ctk/updateiconcache.c:1592
+#: ctk/updateiconcache.c:1594
 #, c-format
 msgid "Could not rename %s to %s: %s\n"
 msgstr "%s атын жаңа %s атына ауыстыру мүмкін емес: %s\n"
 
-#: ctk/updateiconcache.c:1602
+#: ctk/updateiconcache.c:1604
 #, c-format
 msgid "Could not rename %s back to %s: %s.\n"
 msgstr "%s атын қайта %s етіп орнату мүмкін емес: %s.\n"
 
-#: ctk/updateiconcache.c:1625
+#: ctk/updateiconcache.c:1627
 #, c-format
 msgid "Cache file created successfully.\n"
 msgstr "Кэш файлы сәтті жасалды.\n"
 
-#: ctk/updateiconcache.c:1664
+#: ctk/updateiconcache.c:1666
 msgid "Overwrite an existing cache, even if up to date"
 msgstr "Бар кэшті үстінен жазу, ескірмесе де"
 
-#: ctk/updateiconcache.c:1665
+#: ctk/updateiconcache.c:1667
 msgid "Don't check for the existence of index.theme"
 msgstr "index.theme файлының бар-жоғын тексермеу"
 
-#: ctk/updateiconcache.c:1666
+#: ctk/updateiconcache.c:1668
 msgid "Don't include image data in the cache"
 msgstr "Кэш ішіне сурет файлдарын қоспау"
 
-#: ctk/updateiconcache.c:1667
+#: ctk/updateiconcache.c:1669
 msgid "Include image data in the cache"
 msgstr "Кэш ішіне сурет деректерін қосу"
 
-#: ctk/updateiconcache.c:1668
+#: ctk/updateiconcache.c:1670
 msgid "Output a C header file"
 msgstr "C тақырыптама файлын шығару"
 
-#: ctk/updateiconcache.c:1669
+#: ctk/updateiconcache.c:1671
 msgid "Turn off verbose output"
 msgstr "Кеңейтілген шығысты сөндіру"
 
-#: ctk/updateiconcache.c:1670
+#: ctk/updateiconcache.c:1672
 msgid "Validate existing icon cache"
 msgstr "Бар болып тұрған таңбашалар кэшін тексеру"
 
-#: ctk/updateiconcache.c:1737
+#: ctk/updateiconcache.c:1739
 #, c-format
 msgid "File not found: %s\n"
 msgstr "Файл табылмады: %s\n"
 
-#: ctk/updateiconcache.c:1743
+#: ctk/updateiconcache.c:1745
 #, c-format
 msgid "Not a valid icon cache: %s\n"
 msgstr "Дұрыс таңбашалар кэші емес: %s\n"
 
-#: ctk/updateiconcache.c:1756
+#: ctk/updateiconcache.c:1758
 #, c-format
 msgid "No theme index file.\n"
 msgstr "Теманың индекс файлы табылмады.\n"
 
-#: ctk/updateiconcache.c:1760
+#: ctk/updateiconcache.c:1762
 #, c-format
 msgid ""
 "No theme index file in '%s'.\n"

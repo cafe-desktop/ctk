@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+.master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-13 13:45+0200\n"
+"POT-Creation-Date: 2024-12-19 12:00+0100\n"
 "PO-Revision-Date: 2020-10-19 09:15+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
@@ -32,48 +32,48 @@ msgstr ""
 msgid "Broadway display type not supported: %s"
 msgstr "Tipo de pantalla «broadway» no soportado: %s"
 
-#: cdk/cdk.c:179
+#: cdk/cdk.c:182
 #, c-format
 msgid "Error parsing option --cdk-debug"
 msgstr "Error al analizar la opción --cdk-debug"
 
-#: cdk/cdk.c:199
+#: cdk/cdk.c:205
 #, c-format
 msgid "Error parsing option --cdk-no-debug"
 msgstr "Error al analizar la opción --cdk-no-debug"
 
 #. Description of --class=CLASS in --help output
-#: cdk/cdk.c:228
+#: cdk/cdk.c:240
 msgid "Program class as used by the window manager"
 msgstr "Clase del programa tal como la usa el gestor de ventanas"
 
 #. Placeholder in --class=CLASS in --help output
-#: cdk/cdk.c:229
+#: cdk/cdk.c:241
 msgid "CLASS"
 msgstr "CLASE"
 
 #. Description of --name=NAME in --help output
-#: cdk/cdk.c:231
+#: cdk/cdk.c:243
 msgid "Program name as used by the window manager"
 msgstr "Nombre del programa tal como lo usa el gestor de ventanas"
 
 #. Placeholder in --name=NAME in --help output
-#: cdk/cdk.c:232
+#: cdk/cdk.c:244
 msgid "NAME"
 msgstr "NOMBRE"
 
 #. Description of --display=DISPLAY in --help output
-#: cdk/cdk.c:235
+#: cdk/cdk.c:247
 msgid "X display to use"
 msgstr "Visor [display] X que usar"
 
 #. Placeholder in --display=DISPLAY in --help output
-#: cdk/cdk.c:236
+#: cdk/cdk.c:248
 msgid "DISPLAY"
 msgstr "VISOR"
 
 #. Description of --cdk-debug=FLAGS in --help output
-#: cdk/cdk.c:240
+#: cdk/cdk.c:252
 msgid "CDK debugging flags to set"
 msgstr "Opciones de depuración CTK+ que establecer"
 
@@ -81,12 +81,12 @@ msgstr "Opciones de depuración CTK+ que establecer"
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
 #. Placeholder in --ctk-debug=FLAGS in --help output
 #. Placeholder in --ctk-no-debug=FLAGS in --help output
-#: cdk/cdk.c:241 cdk/cdk.c:244 ctk/ctkmain.c:471 ctk/ctkmain.c:474
+#: cdk/cdk.c:253 cdk/cdk.c:256 ctk/ctkmain.c:477 ctk/ctkmain.c:480
 msgid "FLAGS"
 msgstr "OPCIONES"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
-#: cdk/cdk.c:243
+#: cdk/cdk.c:255
 msgid "CDK debugging flags to unset"
 msgstr "Opciones de depuración CTK+ que quitar"
 
@@ -585,7 +585,7 @@ msgid "Edit"
 msgstr "Editar"
 
 #: ctk/a11y/ctkcellaccessible.c:261 ctk/a11y/ctkcolorswatchaccessible.c:149
-#: ctk/a11y/ctkentryaccessible.c:1560 ctk/a11y/ctkexpanderaccessible.c:281
+#: ctk/a11y/ctkentryaccessible.c:1561 ctk/a11y/ctkexpanderaccessible.c:281
 msgctxt "Action name"
 msgid "Activate"
 msgstr "Activar"
@@ -641,7 +641,7 @@ msgctxt "Action description"
 msgid "Presses the combobox"
 msgstr "Pulsa la caja combinada"
 
-#: ctk/a11y/ctkentryaccessible.c:1569
+#: ctk/a11y/ctkentryaccessible.c:1570
 msgctxt "Action description"
 msgid "Activates the entry"
 msgstr "Activa la entrada"
@@ -684,15 +684,15 @@ msgctxt "Stock label"
 msgid "_Close"
 msgstr "_Cerrar"
 
-#: ctk/a11y/ctkimageaccessible.c:59 ctk/ctkheaderbar.c:415 ctk/ctkwindow.c:9319
+#: ctk/a11y/ctkimageaccessible.c:59 ctk/ctkheaderbar.c:415 ctk/ctkwindow.c:9320
 msgid "Minimize"
 msgstr "Minimizar"
 
-#: ctk/a11y/ctkimageaccessible.c:60 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9328
+#: ctk/a11y/ctkimageaccessible.c:60 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9329
 msgid "Maximize"
 msgstr "Maximizar"
 
-#: ctk/a11y/ctkimageaccessible.c:61 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9285
+#: ctk/a11y/ctkimageaccessible.c:61 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9286
 msgid "Restore"
 msgstr "Restaurar"
 
@@ -1246,7 +1246,7 @@ msgstr ""
 #: ctk/ctkmountoperation.c:593 ctk/ctkpagesetupunixdialog.c:197
 #: ctk/ctkprintbackend.c:781 ctk/ctkprinteroptionwidget.c:545
 #: ctk/ctkprintunixdialog.c:674 ctk/ctkprintunixdialog.c:747
-#: ctk/ctkwindow.c:12789 ctk/inspector/css-editor.c:201
+#: ctk/ctkwindow.c:12788 ctk/inspector/css-editor.c:201
 #: ctk/ui/ctkappchooserdialog.ui:61 ctk/ui/ctkassistant.ui:125
 #: ctk/ui/ctkcolorchooserdialog.ui:34 ctk/ui/ctkfontchooserdialog.ui:31
 msgid "_Cancel"
@@ -1297,7 +1297,7 @@ msgid "_Apply"
 msgstr "_Aplicar"
 
 #: ctk/deprecated/ctkfontsel.c:1698 ctk/ctkmessagedialog.c:938
-#: ctk/ctkmessagedialog.c:960 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12790
+#: ctk/ctkmessagedialog.c:960 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12789
 msgid "_OK"
 msgstr "_Aceptar"
 
@@ -1602,7 +1602,7 @@ msgid "Other Applications"
 msgstr "Otras aplicaciones"
 
 #: ctk/ctkapplicationwindow.c:345 ctk/ctkprintoperation-unix.c:485
-#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1688
+#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1694
 msgid "Application"
 msgstr "Aplicación"
 
@@ -2149,52 +2149,52 @@ msgstr "_Derecho:"
 msgid "Paper Margins"
 msgstr "Márgenes del papel"
 
-#: ctk/ctkentry.c:9589 ctk/ctklabel.c:6676 ctk/ctktextview.c:9516
+#: ctk/ctkentry.c:9590 ctk/ctklabel.c:6676 ctk/ctktextview.c:9519
 msgid "Cu_t"
 msgstr "Cor_tar"
 
-#: ctk/ctkentry.c:9593 ctk/ctklabel.c:6677 ctk/ctktextview.c:9520
+#: ctk/ctkentry.c:9594 ctk/ctklabel.c:6677 ctk/ctktextview.c:9523
 msgid "_Copy"
 msgstr "_Copiar"
 
-#: ctk/ctkentry.c:9597 ctk/ctklabel.c:6678 ctk/ctktextview.c:9522
+#: ctk/ctkentry.c:9598 ctk/ctklabel.c:6678 ctk/ctktextview.c:9525
 msgid "_Paste"
 msgstr "_Pegar"
 
-#: ctk/ctkentry.c:9600 ctk/ctkfilechooserwidget.c:1499
-#: ctk/ctkfilechooserwidget.c:2334 ctk/ctklabel.c:6680 ctk/ctktextview.c:9525
+#: ctk/ctkentry.c:9601 ctk/ctkfilechooserwidget.c:1499
+#: ctk/ctkfilechooserwidget.c:2334 ctk/ctklabel.c:6680 ctk/ctktextview.c:9528
 msgid "_Delete"
 msgstr "_Eliminar"
 
-#: ctk/ctkentry.c:9611 ctk/ctklabel.c:6689 ctk/ctktextview.c:9539
+#: ctk/ctkentry.c:9612 ctk/ctklabel.c:6689 ctk/ctktextview.c:9542
 msgid "Select _All"
 msgstr "Seleccionar _todo"
 
-#: ctk/ctkentry.c:9621 ctk/ctktextview.c:9549
+#: ctk/ctkentry.c:9622 ctk/ctktextview.c:9552
 msgid "Insert _Emoji"
 msgstr "Insertar _emoticono"
 
-#: ctk/ctkentry.c:9797 ctk/ctktextview.c:9773
+#: ctk/ctkentry.c:9798 ctk/ctktextview.c:9776
 msgid "Select all"
 msgstr "Seleccionar todo"
 
-#: ctk/ctkentry.c:9800 ctk/ctktextview.c:9776
+#: ctk/ctkentry.c:9801 ctk/ctktextview.c:9779
 msgid "Cut"
 msgstr "Cortar"
 
-#: ctk/ctkentry.c:9803 ctk/ctktextview.c:9779
+#: ctk/ctkentry.c:9804 ctk/ctktextview.c:9782
 msgid "Copy"
 msgstr "Copiar"
 
-#: ctk/ctkentry.c:9806 ctk/ctktextview.c:9782
+#: ctk/ctkentry.c:9807 ctk/ctktextview.c:9785
 msgid "Paste"
 msgstr "Pegar"
 
-#: ctk/ctkentry.c:10878
+#: ctk/ctkentry.c:10879
 msgid "Caps Lock is on"
 msgstr "Bloq Mayús está activado"
 
-#: ctk/ctkentry.c:11156
+#: ctk/ctkentry.c:11157
 msgid "Insert Emoji"
 msgstr "Insertar emoticono"
 
@@ -2479,6 +2479,7 @@ msgid "Yesterday"
 msgstr "Ayer"
 
 #: ctk/ctkfilechooserwidget.c:4906
+#, c-format
 msgid "%-e %b"
 msgstr "%-e %b"
 
@@ -2540,7 +2541,7 @@ msgid "Spreadsheet"
 msgstr "Hoja de cálculo"
 
 #: ctk/ctkfilechooserwidget.c:5054 ctk/ctkfilechooserwidget.c:5243
-#: ctk/inspector/prop-editor.c:1691
+#: ctk/inspector/prop-editor.c:1697
 msgid "Unknown"
 msgstr "Desconocido"
 
@@ -2628,7 +2629,7 @@ msgstr "Slant"
 msgid "Optical Size"
 msgstr "Tamaño óptico"
 
-#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1678
+#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1684
 msgid "Default"
 msgstr "Predeterminada"
 
@@ -2664,7 +2665,7 @@ msgstr "Falló al crear el contexto de OpenGL"
 msgid "Application menu"
 msgstr "Menú de la aplicación"
 
-#: ctk/ctkheaderbar.c:458 ctk/ctkwindow.c:9355
+#: ctk/ctkheaderbar.c:458 ctk/ctkwindow.c:9356
 msgid "Close"
 msgstr "Cerrar"
 
@@ -2673,7 +2674,7 @@ msgstr "Cerrar"
 msgid "Icon '%s' not present in theme %s"
 msgstr "El icono «%s» no está presente en el tema %s"
 
-#: ctk/ctkicontheme.c:4096 ctk/ctkicontheme.c:4463
+#: ctk/ctkicontheme.c:4097 ctk/ctkicontheme.c:4464
 msgid "Failed to load icon"
 msgstr "No se pudo cargar el icono"
 
@@ -2820,40 +2821,40 @@ msgstr ""
 "Contacte con el administrador de su sistema"
 
 #. Description of --ctk-module=MODULES in --help output
-#: ctk/ctkmain.c:464
+#: ctk/ctkmain.c:470
 msgid "Load additional CTK+ modules"
 msgstr "Cargar módulos adicionales CTK+"
 
 #. Placeholder in --ctk-module=MODULES in --help output
-#: ctk/ctkmain.c:465
+#: ctk/ctkmain.c:471
 msgid "MODULES"
 msgstr "MÓDULOS"
 
 #. Description of --g-fatal-warnings in --help output
-#: ctk/ctkmain.c:467
+#: ctk/ctkmain.c:473
 msgid "Make all warnings fatal"
 msgstr "Hacer todas las advertencias fatales"
 
 #. Description of --ctk-debug=FLAGS in --help output
-#: ctk/ctkmain.c:470
+#: ctk/ctkmain.c:476
 msgid "CTK+ debugging flags to set"
 msgstr "Opciones de depuración CTK+ a poner"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
-#: ctk/ctkmain.c:473
+#: ctk/ctkmain.c:479
 msgid "CTK+ debugging flags to unset"
 msgstr "Opciones de depuración CTK+ a quitar"
 
-#: ctk/ctkmain.c:808 ctk/ctkmain.c:1002
+#: ctk/ctkmain.c:814 ctk/ctkmain.c:1008
 #, c-format
 msgid "Cannot open display: %s"
 msgstr "No se puede abrir el visor: %s"
 
-#: ctk/ctkmain.c:920
+#: ctk/ctkmain.c:926
 msgid "CTK+ Options"
 msgstr "Opciones CTK+"
 
-#: ctk/ctkmain.c:920
+#: ctk/ctkmain.c:926
 msgid "Show CTK+ Options"
 msgstr "Mostrar opciones CTK+"
 
@@ -2862,7 +2863,7 @@ msgstr "Mostrar opciones CTK+"
 #. * Do *not* translate it to "predefinito:LTR", if it
 #. * it isn't default:LTR or default:RTL it will not work
 #.
-#: ctk/ctkmain.c:1273
+#: ctk/ctkmain.c:1279
 msgid "default:LTR"
 msgstr "default:LTR"
 
@@ -4066,24 +4067,24 @@ msgctxt "volume percentage"
 msgid "%d %%"
 msgstr "%d %%"
 
-#: ctk/ctkwindow.c:9303
+#: ctk/ctkwindow.c:9304
 msgid "Move"
 msgstr "Mover"
 
-#: ctk/ctkwindow.c:9311
+#: ctk/ctkwindow.c:9312
 msgid "Resize"
 msgstr "Redimensionar"
 
-#: ctk/ctkwindow.c:9342
+#: ctk/ctkwindow.c:9343
 msgid "Always on Top"
 msgstr "Siempre encima"
 
-#: ctk/ctkwindow.c:12777
+#: ctk/ctkwindow.c:12776
 #, c-format
 msgid "Do you want to use CTK+ Inspector?"
 msgstr "¿Quiere usar el inspector de CTK+?"
 
-#: ctk/ctkwindow.c:12779
+#: ctk/ctkwindow.c:12778
 #, c-format
 msgid ""
 "CTK+ Inspector is an interactive debugger that lets you explore and modify "
@@ -4094,7 +4095,7 @@ msgstr ""
 "modificar los aspectos internos de cualquier aplicación de CTK+. Al usarlo "
 "puede hacer que la aplicación falle o se cierre."
 
-#: ctk/ctkwindow.c:12784
+#: ctk/ctkwindow.c:12783
 msgid "Don't show this message again"
 msgstr "No mostrar este mensaje de nuevo"
 
@@ -4212,22 +4213,22 @@ msgid "GL Vendor"
 msgstr "Fabricante GL"
 
 # src/file-manager/fm-icon-text-window.c:85
-#: ctk/inspector/gestures.c:130
+#: ctk/inspector/gestures.c:131
 msgctxt "event phase"
 msgid "None"
 msgstr "Ninguna"
 
-#: ctk/inspector/gestures.c:131
+#: ctk/inspector/gestures.c:132
 msgctxt "event phase"
 msgid "Capture"
 msgstr "Capturar"
 
-#: ctk/inspector/gestures.c:132
+#: ctk/inspector/gestures.c:133
 msgctxt "event phase"
 msgid "Bubble"
 msgstr "Burbuja"
 
-#: ctk/inspector/gestures.c:133
+#: ctk/inspector/gestures.c:134
 msgctxt "event phase"
 msgid "Target"
 msgstr "Objetivo"
@@ -4240,7 +4241,7 @@ msgstr "Sección sin nombre"
 msgid "Label"
 msgstr "Etiqueta"
 
-#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1387
+#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1393
 msgid "Action"
 msgstr "Acción"
 
@@ -4269,9 +4270,9 @@ msgid "Default Widget"
 msgstr "Widget predeterminada"
 
 #: ctk/inspector/misc-info.ui:192 ctk/inspector/misc-info.ui:237
-#: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1069
-#: ctk/inspector/prop-editor.c:1268 ctk/inspector/prop-editor.c:1395
-#: ctk/inspector/prop-editor.c:1506 ctk/inspector/window.ui:382
+#: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1075
+#: ctk/inspector/prop-editor.c:1274 ctk/inspector/prop-editor.c:1401
+#: ctk/inspector/prop-editor.c:1512 ctk/inspector/window.ui:382
 msgid "Properties"
 msgstr "Propiedades"
 
@@ -4362,72 +4363,72 @@ msgstr "Desconocido"
 msgid "Object: %p (%s)"
 msgstr "Objeto: %p (%s)"
 
-#: ctk/inspector/prop-editor.c:1139
+#: ctk/inspector/prop-editor.c:1145
 #, c-format
 msgid "Uneditable property type: %s"
 msgstr "Tipo de propiedad no editable %s"
 
-#: ctk/inspector/prop-editor.c:1259
+#: ctk/inspector/prop-editor.c:1265
 msgid "Attribute mapping"
 msgstr "Mapeado de atributos"
 
-#: ctk/inspector/prop-editor.c:1264
+#: ctk/inspector/prop-editor.c:1270
 msgid "Model:"
 msgstr "Modelo:"
 
-#: ctk/inspector/prop-editor.c:1265
+#: ctk/inspector/prop-editor.c:1271
 #, c-format
 msgid "%p (%s)"
 msgstr "%p (%s)"
 
-#: ctk/inspector/prop-editor.c:1275
+#: ctk/inspector/prop-editor.c:1281
 msgid "Column:"
 msgstr "Columna:"
 
 # src/file-manager/fm-icon-text-window.c:85
-#: ctk/inspector/prop-editor.c:1285
+#: ctk/inspector/prop-editor.c:1291
 msgctxt "property name"
 msgid "None"
 msgstr "Ninguna"
 
-#: ctk/inspector/prop-editor.c:1391
+#: ctk/inspector/prop-editor.c:1397
 #, c-format
 msgid "Defined at: %p (%s)"
 msgstr "Definida en: %p (%s)"
 
-#: ctk/inspector/prop-editor.c:1455 ctk/inspector/prop-editor.c:1471
+#: ctk/inspector/prop-editor.c:1461 ctk/inspector/prop-editor.c:1477
 msgid "inverted"
 msgstr "invertida"
 
-#: ctk/inspector/prop-editor.c:1487
+#: ctk/inspector/prop-editor.c:1493
 msgid "bidirectional, inverted"
 msgstr "bidireccional, invertida"
 
-#: ctk/inspector/prop-editor.c:1492 ctk/inspector/prop-editor.c:1606
+#: ctk/inspector/prop-editor.c:1498 ctk/inspector/prop-editor.c:1612
 msgid "bidirectional"
 msgstr "bidireccional"
 
-#: ctk/inspector/prop-editor.c:1497
+#: ctk/inspector/prop-editor.c:1503
 msgid "Binding:"
 msgstr "Vinculación:"
 
-#: ctk/inspector/prop-editor.c:1625
+#: ctk/inspector/prop-editor.c:1631
 msgid "Setting:"
 msgstr "Configuración:"
 
-#: ctk/inspector/prop-editor.c:1665
+#: ctk/inspector/prop-editor.c:1671
 msgid "Source:"
 msgstr "Fuente:"
 
-#: ctk/inspector/prop-editor.c:1667
+#: ctk/inspector/prop-editor.c:1673
 msgid "Reset"
 msgstr "Reiniciar"
 
-#: ctk/inspector/prop-editor.c:1681
+#: ctk/inspector/prop-editor.c:1687
 msgid "Theme"
 msgstr "Tema"
 
-#: ctk/inspector/prop-editor.c:1684
+#: ctk/inspector/prop-editor.c:1690
 msgid "XSettings"
 msgstr "XSettings"
 
@@ -4489,31 +4490,31 @@ msgstr "Señal"
 msgid "Connected"
 msgstr "Conectada"
 
-#: ctk/inspector/size-groups.c:225
+#: ctk/inspector/size-groups.c:226
 msgid "Ignore hidden"
 msgstr "Ignorar ocultas"
 
-#: ctk/inspector/size-groups.c:243
+#: ctk/inspector/size-groups.c:244
 msgid "Mode"
 msgstr "Modo"
 
 # src/file-manager/fm-icon-text-window.c:85
-#: ctk/inspector/size-groups.c:253
+#: ctk/inspector/size-groups.c:254
 msgctxt "sizegroup mode"
 msgid "None"
 msgstr "Ninguno"
 
-#: ctk/inspector/size-groups.c:254
+#: ctk/inspector/size-groups.c:255
 msgctxt "sizegroup mode"
 msgid "Horizontal"
 msgstr "Horizontal"
 
-#: ctk/inspector/size-groups.c:255
+#: ctk/inspector/size-groups.c:256
 msgctxt "sizegroup mode"
 msgid "Vertical"
 msgstr "Vertical"
 
-#: ctk/inspector/size-groups.c:256
+#: ctk/inspector/size-groups.c:257
 msgctxt "sizegroup mode"
 msgid "Both"
 msgstr "Ambas"
@@ -4554,15 +4555,15 @@ msgstr "Activar estadísticas con with GOBJECT_DEBUG=instance-count"
 msgid "Theme is hardcoded by CTK_THEME"
 msgstr "El tema está codificado en CTK_THEME"
 
-#: ctk/inspector/visual.c:657
+#: ctk/inspector/visual.c:659
 msgid "Backend does not support window scaling"
 msgstr "El «backend» no soporta el escalado de ventanas"
 
-#: ctk/inspector/visual.c:752
+#: ctk/inspector/visual.c:754
 msgid "Setting is hardcoded by CTK_TEST_TOUCHSCREEN"
 msgstr "La configuración está codificada en CTK_TEST_TOUCHSCREEN"
 
-#: ctk/inspector/visual.c:817
+#: ctk/inspector/visual.c:819
 msgid ""
 "Not settable at runtime.\n"
 "Use CDK_GL=always or CDK_GL=disable instead"
@@ -4570,8 +4571,8 @@ msgstr ""
 "No configurable en tiempo de ejecución.\n"
 "Use CDK_GL=always o CDK_GL=disable en su lugar"
 
-#: ctk/inspector/visual.c:831 ctk/inspector/visual.c:832
-#: ctk/inspector/visual.c:833
+#: ctk/inspector/visual.c:833 ctk/inspector/visual.c:834
+#: ctk/inspector/visual.c:835
 msgid "GL rendering is disabled"
 msgstr "El renderizado GL está desactivado"
 
@@ -7125,7 +7126,6 @@ msgstr "Servicios"
 
 #. used for the application menu on MacOS.  %s is replaced with the application name.
 #: ctk/ui/ctkapplication-quartz.ui:29
-#, c-format
 msgid "Hide %s"
 msgstr "Ocultar %s"
 
@@ -7141,7 +7141,6 @@ msgstr "Mostrar todo"
 
 #. used for the application menu on MacOS.  %s is replaced with the application name.
 #: ctk/ui/ctkapplication-quartz.ui:49
-#, c-format
 msgid "Quit %s"
 msgstr "Salir de %s"
 
@@ -7579,105 +7578,105 @@ msgstr "Bajar volumen"
 msgid "Decreases the volume"
 msgstr "Disminuye el volumen"
 
-#: ctk/updateiconcache.c:1402
+#: ctk/updateiconcache.c:1404
 #, c-format
 msgid "Failed to write header\n"
 msgstr "Falló al escribir la cabecera\n"
 
-#: ctk/updateiconcache.c:1408
+#: ctk/updateiconcache.c:1410
 #, c-format
 msgid "Failed to write hash table\n"
 msgstr "Falló al escribir la tabla hash\n"
 
-#: ctk/updateiconcache.c:1414
+#: ctk/updateiconcache.c:1416
 #, c-format
 msgid "Failed to write folder index\n"
 msgstr "Falló al escribir el índice de la carpeta\n"
 
-#: ctk/updateiconcache.c:1422
+#: ctk/updateiconcache.c:1424
 #, c-format
 msgid "Failed to rewrite header\n"
 msgstr "Falló al reescribir la cabecera\n"
 
-#: ctk/updateiconcache.c:1516
+#: ctk/updateiconcache.c:1518
 #, c-format
 msgid "Failed to open file %s : %s\n"
 msgstr "Falló al abrir el archivo «%s»: %s\n"
 
-#: ctk/updateiconcache.c:1524 ctk/updateiconcache.c:1554
+#: ctk/updateiconcache.c:1526 ctk/updateiconcache.c:1556
 #, c-format
 msgid "Failed to write cache file: %s\n"
 msgstr "Falló al escribir el archivo de caché: %s\n"
 
-#: ctk/updateiconcache.c:1564
+#: ctk/updateiconcache.c:1566
 #, c-format
 msgid "The generated cache was invalid.\n"
 msgstr "La caché generada no es válida.\n"
 
-#: ctk/updateiconcache.c:1578
+#: ctk/updateiconcache.c:1580
 #, c-format
 msgid "Could not rename %s to %s: %s, removing %s then.\n"
 msgstr "No se pudo renombrar %s a %s: %s, eliminando %s entonces.\n"
 
-#: ctk/updateiconcache.c:1592
+#: ctk/updateiconcache.c:1594
 #, c-format
 msgid "Could not rename %s to %s: %s\n"
 msgstr "No se pudo renombrar %s a %s: %s\n"
 
-#: ctk/updateiconcache.c:1602
+#: ctk/updateiconcache.c:1604
 #, c-format
 msgid "Could not rename %s back to %s: %s.\n"
 msgstr "No se pudo renombrar %s de nuevo a %s: %s.\n"
 
-#: ctk/updateiconcache.c:1625
+#: ctk/updateiconcache.c:1627
 #, c-format
 msgid "Cache file created successfully.\n"
 msgstr "Archivo de caché creado con éxito.\n"
 
-#: ctk/updateiconcache.c:1664
+#: ctk/updateiconcache.c:1666
 msgid "Overwrite an existing cache, even if up to date"
 msgstr "Sobrescribir un caché existente, incluso si está actualizado"
 
-#: ctk/updateiconcache.c:1665
+#: ctk/updateiconcache.c:1667
 msgid "Don't check for the existence of index.theme"
 msgstr "No comprobar la existencia de index.theme"
 
-#: ctk/updateiconcache.c:1666
+#: ctk/updateiconcache.c:1668
 msgid "Don't include image data in the cache"
 msgstr "No incluir los datos de la imagen en la caché"
 
-#: ctk/updateiconcache.c:1667
+#: ctk/updateiconcache.c:1669
 msgid "Include image data in the cache"
 msgstr "Incluir los datos de la imagen en la caché"
 
-#: ctk/updateiconcache.c:1668
+#: ctk/updateiconcache.c:1670
 msgid "Output a C header file"
 msgstr "Sacar un archivo de cabecera C"
 
-#: ctk/updateiconcache.c:1669
+#: ctk/updateiconcache.c:1671
 msgid "Turn off verbose output"
 msgstr "Desactivar la salida prolija"
 
-#: ctk/updateiconcache.c:1670
+#: ctk/updateiconcache.c:1672
 msgid "Validate existing icon cache"
 msgstr "Validar la caché de iconos existente"
 
-#: ctk/updateiconcache.c:1737
+#: ctk/updateiconcache.c:1739
 #, c-format
 msgid "File not found: %s\n"
 msgstr "Archivo no encontrado: %s\n"
 
-#: ctk/updateiconcache.c:1743
+#: ctk/updateiconcache.c:1745
 #, c-format
 msgid "Not a valid icon cache: %s\n"
 msgstr "No es una caché de iconos válida: %s\n"
 
-#: ctk/updateiconcache.c:1756
+#: ctk/updateiconcache.c:1758
 #, c-format
 msgid "No theme index file.\n"
 msgstr "No existe el archivo índice del tema.\n"
 
-#: ctk/updateiconcache.c:1760
+#: ctk/updateiconcache.c:1762
 #, c-format
 msgid ""
 "No theme index file in '%s'.\n"

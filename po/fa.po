@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+ 2.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-13 13:45+0200\n"
+"POT-Creation-Date: 2024-12-19 12:00+0100\n"
 "PO-Revision-Date: 2020-09-08 12:04+0000\n"
 "Last-Translator: Arash Mousavi <mousavi.arash@gmail.com>\n"
 "Language-Team: Persian <>\n"
@@ -30,48 +30,48 @@ msgstr ""
 msgid "Broadway display type not supported: %s"
 msgstr "نوع نمایشگر broadway پشتیبانی نمی‌شود: %s"
 
-#: cdk/cdk.c:179
+#: cdk/cdk.c:182
 #, c-format
 msgid "Error parsing option --cdk-debug"
 msgstr "خطا در تجزیهٔ گزینهٔ ‪--cdk-debug"
 
-#: cdk/cdk.c:199
+#: cdk/cdk.c:205
 #, c-format
 msgid "Error parsing option --cdk-no-debug"
 msgstr "خطا در تجزیهٔ گزینهٔ ‪--cdk-no-debug"
 
 #. Description of --class=CLASS in --help output
-#: cdk/cdk.c:228
+#: cdk/cdk.c:240
 msgid "Program class as used by the window manager"
 msgstr "ردهٔ برنامه، به شکل مورد استفادهٔ مدیر پنجره‌ها"
 
 #. Placeholder in --class=CLASS in --help output
-#: cdk/cdk.c:229
+#: cdk/cdk.c:241
 msgid "CLASS"
 msgstr "CLASS"
 
 #. Description of --name=NAME in --help output
-#: cdk/cdk.c:231
+#: cdk/cdk.c:243
 msgid "Program name as used by the window manager"
 msgstr "نام برنامه، به شکل مورد استفادهٔ مدیر پنجره‌ها"
 
 #. Placeholder in --name=NAME in --help output
-#: cdk/cdk.c:232
+#: cdk/cdk.c:244
 msgid "NAME"
 msgstr "NAME"
 
 #. Description of --display=DISPLAY in --help output
-#: cdk/cdk.c:235
+#: cdk/cdk.c:247
 msgid "X display to use"
 msgstr "نمایشگر X مورد استفاده"
 
 #. Placeholder in --display=DISPLAY in --help output
-#: cdk/cdk.c:236
+#: cdk/cdk.c:248
 msgid "DISPLAY"
 msgstr "DISPLAY"
 
 #. Description of --cdk-debug=FLAGS in --help output
-#: cdk/cdk.c:240
+#: cdk/cdk.c:252
 msgid "CDK debugging flags to set"
 msgstr "پرچم‌های اشکال‌زدایی CDK که باید یک شوند"
 
@@ -79,12 +79,12 @@ msgstr "پرچم‌های اشکال‌زدایی CDK که باید یک شون�
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
 #. Placeholder in --ctk-debug=FLAGS in --help output
 #. Placeholder in --ctk-no-debug=FLAGS in --help output
-#: cdk/cdk.c:241 cdk/cdk.c:244 ctk/ctkmain.c:471 ctk/ctkmain.c:474
+#: cdk/cdk.c:253 cdk/cdk.c:256 ctk/ctkmain.c:477 ctk/ctkmain.c:480
 msgid "FLAGS"
 msgstr "FLAGS"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
-#: cdk/cdk.c:243
+#: cdk/cdk.c:255
 msgid "CDK debugging flags to unset"
 msgstr "پرچم‌های اشکال‌زدایی CDK که باید صفر شوند"
 
@@ -581,7 +581,7 @@ msgid "Edit"
 msgstr "ویرایش"
 
 #: ctk/a11y/ctkcellaccessible.c:261 ctk/a11y/ctkcolorswatchaccessible.c:149
-#: ctk/a11y/ctkentryaccessible.c:1560 ctk/a11y/ctkexpanderaccessible.c:281
+#: ctk/a11y/ctkentryaccessible.c:1561 ctk/a11y/ctkexpanderaccessible.c:281
 msgctxt "Action name"
 msgid "Activate"
 msgstr "فعال‌سازی"
@@ -636,7 +636,7 @@ msgctxt "Action description"
 msgid "Presses the combobox"
 msgstr "‫combobox را فشار می‌دهد"
 
-#: ctk/a11y/ctkentryaccessible.c:1569
+#: ctk/a11y/ctkentryaccessible.c:1570
 msgctxt "Action description"
 msgid "Activates the entry"
 msgstr "ورودی را فعال می‌کند"
@@ -679,15 +679,15 @@ msgctxt "Stock label"
 msgid "_Close"
 msgstr "_بستن"
 
-#: ctk/a11y/ctkimageaccessible.c:59 ctk/ctkheaderbar.c:415 ctk/ctkwindow.c:9319
+#: ctk/a11y/ctkimageaccessible.c:59 ctk/ctkheaderbar.c:415 ctk/ctkwindow.c:9320
 msgid "Minimize"
 msgstr "حداقل کردن"
 
-#: ctk/a11y/ctkimageaccessible.c:60 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9328
+#: ctk/a11y/ctkimageaccessible.c:60 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9329
 msgid "Maximize"
 msgstr "حداکثر کردن"
 
-#: ctk/a11y/ctkimageaccessible.c:61 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9285
+#: ctk/a11y/ctkimageaccessible.c:61 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9286
 msgid "Restore"
 msgstr "بازآوری"
 
@@ -1236,7 +1236,7 @@ msgstr ""
 #: ctk/ctkmountoperation.c:593 ctk/ctkpagesetupunixdialog.c:197
 #: ctk/ctkprintbackend.c:781 ctk/ctkprinteroptionwidget.c:545
 #: ctk/ctkprintunixdialog.c:674 ctk/ctkprintunixdialog.c:747
-#: ctk/ctkwindow.c:12789 ctk/inspector/css-editor.c:201
+#: ctk/ctkwindow.c:12788 ctk/inspector/css-editor.c:201
 #: ctk/ui/ctkappchooserdialog.ui:61 ctk/ui/ctkassistant.ui:125
 #: ctk/ui/ctkcolorchooserdialog.ui:34 ctk/ui/ctkfontchooserdialog.ui:31
 msgid "_Cancel"
@@ -1285,7 +1285,7 @@ msgid "_Apply"
 msgstr "_اعمال"
 
 #: ctk/deprecated/ctkfontsel.c:1698 ctk/ctkmessagedialog.c:938
-#: ctk/ctkmessagedialog.c:960 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12790
+#: ctk/ctkmessagedialog.c:960 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12789
 msgid "_OK"
 msgstr "_تأیید"
 
@@ -1590,7 +1590,7 @@ msgid "Other Applications"
 msgstr "برنامه‌های دیگر"
 
 #: ctk/ctkapplicationwindow.c:345 ctk/ctkprintoperation-unix.c:485
-#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1688
+#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1694
 msgid "Application"
 msgstr "برنامه"
 
@@ -2173,52 +2173,52 @@ msgstr "_راست:"
 msgid "Paper Margins"
 msgstr "حاشیه‌های کاغذ"
 
-#: ctk/ctkentry.c:9589 ctk/ctklabel.c:6676 ctk/ctktextview.c:9516
+#: ctk/ctkentry.c:9590 ctk/ctklabel.c:6676 ctk/ctktextview.c:9519
 msgid "Cu_t"
 msgstr "_برش"
 
-#: ctk/ctkentry.c:9593 ctk/ctklabel.c:6677 ctk/ctktextview.c:9520
+#: ctk/ctkentry.c:9594 ctk/ctklabel.c:6677 ctk/ctktextview.c:9523
 msgid "_Copy"
 msgstr "_رونوشت"
 
-#: ctk/ctkentry.c:9597 ctk/ctklabel.c:6678 ctk/ctktextview.c:9522
+#: ctk/ctkentry.c:9598 ctk/ctklabel.c:6678 ctk/ctktextview.c:9525
 msgid "_Paste"
 msgstr "_چسباندن"
 
-#: ctk/ctkentry.c:9600 ctk/ctkfilechooserwidget.c:1499
-#: ctk/ctkfilechooserwidget.c:2334 ctk/ctklabel.c:6680 ctk/ctktextview.c:9525
+#: ctk/ctkentry.c:9601 ctk/ctkfilechooserwidget.c:1499
+#: ctk/ctkfilechooserwidget.c:2334 ctk/ctklabel.c:6680 ctk/ctktextview.c:9528
 msgid "_Delete"
 msgstr "_حذف"
 
-#: ctk/ctkentry.c:9611 ctk/ctklabel.c:6689 ctk/ctktextview.c:9539
+#: ctk/ctkentry.c:9612 ctk/ctklabel.c:6689 ctk/ctktextview.c:9542
 msgid "Select _All"
 msgstr "انتخاب _همه"
 
-#: ctk/ctkentry.c:9621 ctk/ctktextview.c:9549
+#: ctk/ctkentry.c:9622 ctk/ctktextview.c:9552
 msgid "Insert _Emoji"
 msgstr "درج _ایموجی"
 
-#: ctk/ctkentry.c:9797 ctk/ctktextview.c:9773
+#: ctk/ctkentry.c:9798 ctk/ctktextview.c:9776
 msgid "Select all"
 msgstr "انتخاب همه"
 
-#: ctk/ctkentry.c:9800 ctk/ctktextview.c:9776
+#: ctk/ctkentry.c:9801 ctk/ctktextview.c:9779
 msgid "Cut"
 msgstr "برش"
 
-#: ctk/ctkentry.c:9803 ctk/ctktextview.c:9779
+#: ctk/ctkentry.c:9804 ctk/ctktextview.c:9782
 msgid "Copy"
 msgstr "رونوشت"
 
-#: ctk/ctkentry.c:9806 ctk/ctktextview.c:9782
+#: ctk/ctkentry.c:9807 ctk/ctktextview.c:9785
 msgid "Paste"
 msgstr "چسباندن"
 
-#: ctk/ctkentry.c:10878
+#: ctk/ctkentry.c:10879
 msgid "Caps Lock is on"
 msgstr "قفل تبدیل روشن است"
 
-#: ctk/ctkentry.c:11156
+#: ctk/ctkentry.c:11157
 msgid "Insert Emoji"
 msgstr "درج ایموجی"
 
@@ -2500,6 +2500,7 @@ msgid "Yesterday"
 msgstr "دیروز"
 
 #: ctk/ctkfilechooserwidget.c:4906
+#, fuzzy, c-format
 msgid "%-e %b"
 msgstr "%O-e %b"
 
@@ -2561,7 +2562,7 @@ msgid "Spreadsheet"
 msgstr "صفحهٔ گسترده"
 
 #: ctk/ctkfilechooserwidget.c:5054 ctk/ctkfilechooserwidget.c:5243
-#: ctk/inspector/prop-editor.c:1691
+#: ctk/inspector/prop-editor.c:1697
 msgid "Unknown"
 msgstr "نامعلوم"
 
@@ -2648,7 +2649,7 @@ msgstr "شکافتن"
 msgid "Optical Size"
 msgstr "اندازهٔ نوری"
 
-#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1678
+#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1684
 msgid "Default"
 msgstr "پیش‌گزیده"
 
@@ -2684,7 +2685,7 @@ msgstr "ساخت زمینه OpenGL شکست خورد"
 msgid "Application menu"
 msgstr "فهرست برنامه"
 
-#: ctk/ctkheaderbar.c:458 ctk/ctkwindow.c:9355
+#: ctk/ctkheaderbar.c:458 ctk/ctkwindow.c:9356
 msgid "Close"
 msgstr "بستن"
 
@@ -2693,7 +2694,7 @@ msgstr "بستن"
 msgid "Icon '%s' not present in theme %s"
 msgstr "شمایل «%s» در تم «%s» وجود ندارد"
 
-#: ctk/ctkicontheme.c:4096 ctk/ctkicontheme.c:4463
+#: ctk/ctkicontheme.c:4097 ctk/ctkicontheme.c:4464
 msgid "Failed to load icon"
 msgstr "بارکردن شمایل شکست خورد"
 
@@ -2840,40 +2841,40 @@ msgstr ""
 "با مدیر سامانه‌تان تماس بگیرید"
 
 #. Description of --ctk-module=MODULES in --help output
-#: ctk/ctkmain.c:464
+#: ctk/ctkmain.c:470
 msgid "Load additional CTK+ modules"
 msgstr "پیمانه‌های ‪CTK+‬ بیشتری بار شود"
 
 #. Placeholder in --ctk-module=MODULES in --help output
-#: ctk/ctkmain.c:465
+#: ctk/ctkmain.c:471
 msgid "MODULES"
 msgstr "MODULES"
 
 #. Description of --g-fatal-warnings in --help output
-#: ctk/ctkmain.c:467
+#: ctk/ctkmain.c:473
 msgid "Make all warnings fatal"
 msgstr "تبدیل همهٔ اخطارها به مهلک"
 
 #. Description of --ctk-debug=FLAGS in --help output
-#: ctk/ctkmain.c:470
+#: ctk/ctkmain.c:476
 msgid "CTK+ debugging flags to set"
 msgstr "پرچم‌های اشکال‌زدایی ‪CTK+‬ که باید تنظیم شوند"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
-#: ctk/ctkmain.c:473
+#: ctk/ctkmain.c:479
 msgid "CTK+ debugging flags to unset"
 msgstr "پرچم‌های اشکال‌زدایی ‪CTK+‬ که باید از تنظیم خارج شوند"
 
-#: ctk/ctkmain.c:808 ctk/ctkmain.c:1002
+#: ctk/ctkmain.c:814 ctk/ctkmain.c:1008
 #, c-format
 msgid "Cannot open display: %s"
 msgstr "ناتوان در گشودن نمایشگر: %s"
 
-#: ctk/ctkmain.c:920
+#: ctk/ctkmain.c:926
 msgid "CTK+ Options"
 msgstr "گزینه‌های ‪CTK+"
 
-#: ctk/ctkmain.c:920
+#: ctk/ctkmain.c:926
 msgid "Show CTK+ Options"
 msgstr "نمایش گزینه‌های ‪CTK+"
 
@@ -2882,7 +2883,7 @@ msgstr "نمایش گزینه‌های ‪CTK+"
 #. * Do *not* translate it to "predefinito:LTR", if it
 #. * it isn't default:LTR or default:RTL it will not work
 #.
-#: ctk/ctkmain.c:1273
+#: ctk/ctkmain.c:1279
 msgid "default:LTR"
 msgstr "default:RTL"
 
@@ -4078,24 +4079,24 @@ msgctxt "volume percentage"
 msgid "%d %%"
 msgstr "%Id ٪"
 
-#: ctk/ctkwindow.c:9303
+#: ctk/ctkwindow.c:9304
 msgid "Move"
 msgstr "جابه‌جایی"
 
-#: ctk/ctkwindow.c:9311
+#: ctk/ctkwindow.c:9312
 msgid "Resize"
 msgstr "تغییر اندازه"
 
-#: ctk/ctkwindow.c:9342
+#: ctk/ctkwindow.c:9343
 msgid "Always on Top"
 msgstr "همیشه در بالا"
 
-#: ctk/ctkwindow.c:12777
+#: ctk/ctkwindow.c:12776
 #, c-format
 msgid "Do you want to use CTK+ Inspector?"
 msgstr "آیا میخواهید از بازرس +CTK استفاده کنید؟"
 
-#: ctk/ctkwindow.c:12779
+#: ctk/ctkwindow.c:12778
 #, c-format
 msgid ""
 "CTK+ Inspector is an interactive debugger that lets you explore and modify "
@@ -4106,7 +4107,7 @@ msgstr ""
 "+CTK را می‌دهد. استفاده از آن ممکن است باعث شود که برنامه‌ها قفل کنند یا از هم "
 "بپاشند."
 
-#: ctk/ctkwindow.c:12784
+#: ctk/ctkwindow.c:12783
 msgid "Don't show this message again"
 msgstr "این پیام را دوباره نمایش نده"
 
@@ -4224,22 +4225,22 @@ msgid "GL Vendor"
 msgstr "تولیدکننده GL"
 
 # farmaan
-#: ctk/inspector/gestures.c:130
+#: ctk/inspector/gestures.c:131
 msgctxt "event phase"
 msgid "None"
 msgstr "هیچ‌کدام"
 
-#: ctk/inspector/gestures.c:131
+#: ctk/inspector/gestures.c:132
 msgctxt "event phase"
 msgid "Capture"
 msgstr "گرفتن"
 
-#: ctk/inspector/gestures.c:132
+#: ctk/inspector/gestures.c:133
 msgctxt "event phase"
 msgid "Bubble"
 msgstr "Bubble"
 
-#: ctk/inspector/gestures.c:133
+#: ctk/inspector/gestures.c:134
 msgctxt "event phase"
 msgid "Target"
 msgstr "هدف"
@@ -4252,7 +4253,7 @@ msgstr "قسمت بدون نام"
 msgid "Label"
 msgstr "برچسب"
 
-#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1387
+#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1393
 msgid "Action"
 msgstr "کنش"
 
@@ -4281,9 +4282,9 @@ msgid "Default Widget"
 msgstr "ابزارک پیش‌گزیده"
 
 #: ctk/inspector/misc-info.ui:192 ctk/inspector/misc-info.ui:237
-#: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1069
-#: ctk/inspector/prop-editor.c:1268 ctk/inspector/prop-editor.c:1395
-#: ctk/inspector/prop-editor.c:1506 ctk/inspector/window.ui:382
+#: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1075
+#: ctk/inspector/prop-editor.c:1274 ctk/inspector/prop-editor.c:1401
+#: ctk/inspector/prop-editor.c:1512 ctk/inspector/window.ui:382
 msgid "Properties"
 msgstr "ویژگی‌ها"
 
@@ -4374,72 +4375,72 @@ msgstr "نامعلوم"
 msgid "Object: %p (%s)"
 msgstr "شیء: %p (%s)"
 
-#: ctk/inspector/prop-editor.c:1139
+#: ctk/inspector/prop-editor.c:1145
 #, c-format
 msgid "Uneditable property type: %s"
 msgstr "مشخصه غیرقابل ویرایش: %s"
 
-#: ctk/inspector/prop-editor.c:1259
+#: ctk/inspector/prop-editor.c:1265
 msgid "Attribute mapping"
 msgstr "اتصال ویژگی‌ها"
 
-#: ctk/inspector/prop-editor.c:1264
+#: ctk/inspector/prop-editor.c:1270
 msgid "Model:"
 msgstr "مدل:"
 
-#: ctk/inspector/prop-editor.c:1265
+#: ctk/inspector/prop-editor.c:1271
 #, c-format
 msgid "%p (%s)"
 msgstr "%p (%s)"
 
-#: ctk/inspector/prop-editor.c:1275
+#: ctk/inspector/prop-editor.c:1281
 msgid "Column:"
 msgstr "ستون:"
 
 # farmaan
-#: ctk/inspector/prop-editor.c:1285
+#: ctk/inspector/prop-editor.c:1291
 msgctxt "property name"
 msgid "None"
 msgstr "هیچ‌کدام"
 
-#: ctk/inspector/prop-editor.c:1391
+#: ctk/inspector/prop-editor.c:1397
 #, c-format
 msgid "Defined at: %p (%s)"
 msgstr "تعریف شده در: %p (%s)"
 
-#: ctk/inspector/prop-editor.c:1455 ctk/inspector/prop-editor.c:1471
+#: ctk/inspector/prop-editor.c:1461 ctk/inspector/prop-editor.c:1477
 msgid "inverted"
 msgstr "معکوس"
 
-#: ctk/inspector/prop-editor.c:1487
+#: ctk/inspector/prop-editor.c:1493
 msgid "bidirectional, inverted"
 msgstr "دوجهته، معکوس"
 
-#: ctk/inspector/prop-editor.c:1492 ctk/inspector/prop-editor.c:1606
+#: ctk/inspector/prop-editor.c:1498 ctk/inspector/prop-editor.c:1612
 msgid "bidirectional"
 msgstr "دوجهته"
 
-#: ctk/inspector/prop-editor.c:1497
+#: ctk/inspector/prop-editor.c:1503
 msgid "Binding:"
 msgstr "مقیدسازی:"
 
-#: ctk/inspector/prop-editor.c:1625
+#: ctk/inspector/prop-editor.c:1631
 msgid "Setting:"
 msgstr "تنظیمات:"
 
-#: ctk/inspector/prop-editor.c:1665
+#: ctk/inspector/prop-editor.c:1671
 msgid "Source:"
 msgstr "منبع:"
 
-#: ctk/inspector/prop-editor.c:1667
+#: ctk/inspector/prop-editor.c:1673
 msgid "Reset"
 msgstr "تنظیم‌مجدد"
 
-#: ctk/inspector/prop-editor.c:1681
+#: ctk/inspector/prop-editor.c:1687
 msgid "Theme"
 msgstr "تم"
 
-#: ctk/inspector/prop-editor.c:1684
+#: ctk/inspector/prop-editor.c:1690
 msgid "XSettings"
 msgstr "تنظیمات X"
 
@@ -4501,31 +4502,31 @@ msgstr "سیگنال"
 msgid "Connected"
 msgstr "متصل شده"
 
-#: ctk/inspector/size-groups.c:225
+#: ctk/inspector/size-groups.c:226
 msgid "Ignore hidden"
 msgstr "نادیده‌گرفتن مخفی‌ها"
 
-#: ctk/inspector/size-groups.c:243
+#: ctk/inspector/size-groups.c:244
 msgid "Mode"
 msgstr "حالت"
 
 # farmaan
-#: ctk/inspector/size-groups.c:253
+#: ctk/inspector/size-groups.c:254
 msgctxt "sizegroup mode"
 msgid "None"
 msgstr "هیچ‌کدام"
 
-#: ctk/inspector/size-groups.c:254
+#: ctk/inspector/size-groups.c:255
 msgctxt "sizegroup mode"
 msgid "Horizontal"
 msgstr "افقی"
 
-#: ctk/inspector/size-groups.c:255
+#: ctk/inspector/size-groups.c:256
 msgctxt "sizegroup mode"
 msgid "Vertical"
 msgstr "عمودی"
 
-#: ctk/inspector/size-groups.c:256
+#: ctk/inspector/size-groups.c:257
 msgctxt "sizegroup mode"
 msgid "Both"
 msgstr "هر دو"
@@ -4566,15 +4567,15 @@ msgstr "فعال‌سازی آمارها را با GOBJECT_DEBUG=instance-count"
 msgid "Theme is hardcoded by CTK_THEME"
 msgstr "تم با استفاده از CTK_THEME رونویسی شده است"
 
-#: ctk/inspector/visual.c:657
+#: ctk/inspector/visual.c:659
 msgid "Backend does not support window scaling"
 msgstr "پسانه از تغییر اندازه پنجره پشتیبانی نمی‌کند"
 
-#: ctk/inspector/visual.c:752
+#: ctk/inspector/visual.c:754
 msgid "Setting is hardcoded by CTK_TEST_TOUCHSCREEN"
 msgstr "تنظیمات با استفاده از CTK_TEST_TOUCHSCREEN رونویسی شده است"
 
-#: ctk/inspector/visual.c:817
+#: ctk/inspector/visual.c:819
 msgid ""
 "Not settable at runtime.\n"
 "Use CDK_GL=always or CDK_GL=disable instead"
@@ -4582,8 +4583,8 @@ msgstr ""
 "در هنگام اجرا قابل تنظیم نیست.\n"
 "بجای آن از CDK_GL=always یا CDK_GL=disable استفاده کنید"
 
-#: ctk/inspector/visual.c:831 ctk/inspector/visual.c:832
-#: ctk/inspector/visual.c:833
+#: ctk/inspector/visual.c:833 ctk/inspector/visual.c:834
+#: ctk/inspector/visual.c:835
 msgid "GL rendering is disabled"
 msgstr "رندر GL غیرفعال است"
 
@@ -7137,7 +7138,6 @@ msgstr "سرویس‌ها"
 
 #. used for the application menu on MacOS.  %s is replaced with the application name.
 #: ctk/ui/ctkapplication-quartz.ui:29
-#, c-format
 msgid "Hide %s"
 msgstr "مخفی‌کردن %s"
 
@@ -7153,7 +7153,6 @@ msgstr "نمایش همه"
 
 #. used for the application menu on MacOS.  %s is replaced with the application name.
 #: ctk/ui/ctkapplication-quartz.ui:49
-#, c-format
 msgid "Quit %s"
 msgstr "خروج از %s"
 
@@ -7589,105 +7588,105 @@ msgstr "کم کردن صدا"
 msgid "Decreases the volume"
 msgstr "کم کردن بلندی صدا"
 
-#: ctk/updateiconcache.c:1402
+#: ctk/updateiconcache.c:1404
 #, c-format
 msgid "Failed to write header\n"
 msgstr "نوشتن سرآیند خراب شد\n"
 
-#: ctk/updateiconcache.c:1408
+#: ctk/updateiconcache.c:1410
 #, c-format
 msgid "Failed to write hash table\n"
 msgstr "نوشتن جدول درهم خراب شد \n"
 
-#: ctk/updateiconcache.c:1414
+#: ctk/updateiconcache.c:1416
 #, c-format
 msgid "Failed to write folder index\n"
 msgstr "نوشتن نمایهٔ شاخه خراب شد\n"
 
-#: ctk/updateiconcache.c:1422
+#: ctk/updateiconcache.c:1424
 #, c-format
 msgid "Failed to rewrite header\n"
 msgstr "بازنویسی سرآیند خراب شد\n"
 
-#: ctk/updateiconcache.c:1516
+#: ctk/updateiconcache.c:1518
 #, c-format
 msgid "Failed to open file %s : %s\n"
 msgstr "گشودن پروندهٔ%s : %s خراب شد\n"
 
-#: ctk/updateiconcache.c:1524 ctk/updateiconcache.c:1554
+#: ctk/updateiconcache.c:1526 ctk/updateiconcache.c:1556
 #, c-format
 msgid "Failed to write cache file: %s\n"
 msgstr "نوشتن پروندهٔ حافظه‌نهان «‎%s» خراب شد\n"
 
-#: ctk/updateiconcache.c:1564
+#: ctk/updateiconcache.c:1566
 #, c-format
 msgid "The generated cache was invalid.\n"
 msgstr "حافظه‌نهان تولید شده نامعتبر بود\n"
 
-#: ctk/updateiconcache.c:1578
+#: ctk/updateiconcache.c:1580
 #, c-format
 msgid "Could not rename %s to %s: %s, removing %s then.\n"
 msgstr "تغییر نما %s به %s ممکن نبود:  %s، پس %s پاک می‌شود.\n"
 
-#: ctk/updateiconcache.c:1592
+#: ctk/updateiconcache.c:1594
 #, c-format
 msgid "Could not rename %s to %s: %s\n"
 msgstr "تغییر نام «%s» به %s ممکن نبود: %s \n"
 
-#: ctk/updateiconcache.c:1602
+#: ctk/updateiconcache.c:1604
 #, c-format
 msgid "Could not rename %s back to %s: %s.\n"
 msgstr "برگشت تغییر نام شاخهٔ %s به %s ممکن نبود: %s \n"
 
-#: ctk/updateiconcache.c:1625
+#: ctk/updateiconcache.c:1627
 #, c-format
 msgid "Cache file created successfully.\n"
 msgstr "پروندهٔ حافظه‌نهان با موفقیت ایجاد شد.\n"
 
-#: ctk/updateiconcache.c:1664
+#: ctk/updateiconcache.c:1666
 msgid "Overwrite an existing cache, even if up to date"
 msgstr "جای‌نوشتن یک حافظه‌نهان موجود، حتی اگر به‌روز باشد"
 
-#: ctk/updateiconcache.c:1665
+#: ctk/updateiconcache.c:1667
 msgid "Don't check for the existence of index.theme"
 msgstr "وجود index.theme بررسی نشود"
 
-#: ctk/updateiconcache.c:1666
+#: ctk/updateiconcache.c:1668
 msgid "Don't include image data in the cache"
 msgstr "حافظه‌نهان داده‌های تصویر را شامل نشود"
 
-#: ctk/updateiconcache.c:1667
+#: ctk/updateiconcache.c:1669
 msgid "Include image data in the cache"
 msgstr "حافظه‌نهان، داده‌های تصویر را شامل شود"
 
-#: ctk/updateiconcache.c:1668
+#: ctk/updateiconcache.c:1670
 msgid "Output a C header file"
 msgstr "خروج یک سر‌آیند C"
 
-#: ctk/updateiconcache.c:1669
+#: ctk/updateiconcache.c:1671
 msgid "Turn off verbose output"
 msgstr "خروجی مفصل را خاموش کن"
 
-#: ctk/updateiconcache.c:1670
+#: ctk/updateiconcache.c:1672
 msgid "Validate existing icon cache"
 msgstr "حافظه‌نهان نشان موجود اعتبارسنجی شود"
 
-#: ctk/updateiconcache.c:1737
+#: ctk/updateiconcache.c:1739
 #, c-format
 msgid "File not found: %s\n"
 msgstr "پرونده پیدا نشد: %s\n"
 
-#: ctk/updateiconcache.c:1743
+#: ctk/updateiconcache.c:1745
 #, c-format
 msgid "Not a valid icon cache: %s\n"
 msgstr "این یک حافظه نهان شمایل معتبر نیست: %s\n"
 
-#: ctk/updateiconcache.c:1756
+#: ctk/updateiconcache.c:1758
 #, c-format
 msgid "No theme index file.\n"
 msgstr "پروندهٔ نمایهٔ چهره‌ای نیست.\n"
 
-#: ctk/updateiconcache.c:1760
+#: ctk/updateiconcache.c:1762
 #, c-format
 msgid ""
 "No theme index file in '%s'.\n"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-13 13:45+0200\n"
+"POT-Creation-Date: 2024-12-19 12:00+0100\n"
 "PO-Revision-Date: 2020-10-08 22:22+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -26,48 +26,48 @@ msgstr ""
 msgid "Broadway display type not supported: %s"
 msgstr "Broadway-visningstyp stöds inte: %s"
 
-#: cdk/cdk.c:179
+#: cdk/cdk.c:182
 #, c-format
 msgid "Error parsing option --cdk-debug"
 msgstr "Fel vid tolkning av flaggan --cdk-debug"
 
-#: cdk/cdk.c:199
+#: cdk/cdk.c:205
 #, c-format
 msgid "Error parsing option --cdk-no-debug"
 msgstr "Fel vid tolkning av flaggan --cdk-no-debug"
 
 #. Description of --class=CLASS in --help output
-#: cdk/cdk.c:228
+#: cdk/cdk.c:240
 msgid "Program class as used by the window manager"
 msgstr "Programklass som den används av fönsterhanteraren"
 
 #. Placeholder in --class=CLASS in --help output
-#: cdk/cdk.c:229
+#: cdk/cdk.c:241
 msgid "CLASS"
 msgstr "KLASS"
 
 #. Description of --name=NAME in --help output
-#: cdk/cdk.c:231
+#: cdk/cdk.c:243
 msgid "Program name as used by the window manager"
 msgstr "Programnamn som det används av fönsterhanteraren"
 
 #. Placeholder in --name=NAME in --help output
-#: cdk/cdk.c:232
+#: cdk/cdk.c:244
 msgid "NAME"
 msgstr "NAMN"
 
 #. Description of --display=DISPLAY in --help output
-#: cdk/cdk.c:235
+#: cdk/cdk.c:247
 msgid "X display to use"
 msgstr "X-display att använda"
 
 #. Placeholder in --display=DISPLAY in --help output
-#: cdk/cdk.c:236
+#: cdk/cdk.c:248
 msgid "DISPLAY"
 msgstr "DISPLAY"
 
 #. Description of --cdk-debug=FLAGS in --help output
-#: cdk/cdk.c:240
+#: cdk/cdk.c:252
 msgid "CDK debugging flags to set"
 msgstr "CDK-felsökningsflaggor att ställa in"
 
@@ -75,12 +75,12 @@ msgstr "CDK-felsökningsflaggor att ställa in"
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
 #. Placeholder in --ctk-debug=FLAGS in --help output
 #. Placeholder in --ctk-no-debug=FLAGS in --help output
-#: cdk/cdk.c:241 cdk/cdk.c:244 ctk/ctkmain.c:471 ctk/ctkmain.c:474
+#: cdk/cdk.c:253 cdk/cdk.c:256 ctk/ctkmain.c:477 ctk/ctkmain.c:480
 msgid "FLAGS"
 msgstr "FLAGGOR"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
-#: cdk/cdk.c:243
+#: cdk/cdk.c:255
 msgid "CDK debugging flags to unset"
 msgstr "CDK-felsökningsflaggor att inte ställa in"
 
@@ -579,7 +579,7 @@ msgid "Edit"
 msgstr "Redigera"
 
 #: ctk/a11y/ctkcellaccessible.c:261 ctk/a11y/ctkcolorswatchaccessible.c:149
-#: ctk/a11y/ctkentryaccessible.c:1560 ctk/a11y/ctkexpanderaccessible.c:281
+#: ctk/a11y/ctkentryaccessible.c:1561 ctk/a11y/ctkexpanderaccessible.c:281
 msgctxt "Action name"
 msgid "Activate"
 msgstr "Aktivera"
@@ -634,7 +634,7 @@ msgctxt "Action description"
 msgid "Presses the combobox"
 msgstr "Trycker kombinationsrutan"
 
-#: ctk/a11y/ctkentryaccessible.c:1569
+#: ctk/a11y/ctkentryaccessible.c:1570
 msgctxt "Action description"
 msgid "Activates the entry"
 msgstr "Aktiverar fältet"
@@ -677,15 +677,15 @@ msgctxt "Stock label"
 msgid "_Close"
 msgstr "S_täng"
 
-#: ctk/a11y/ctkimageaccessible.c:59 ctk/ctkheaderbar.c:415 ctk/ctkwindow.c:9319
+#: ctk/a11y/ctkimageaccessible.c:59 ctk/ctkheaderbar.c:415 ctk/ctkwindow.c:9320
 msgid "Minimize"
 msgstr "Minimera"
 
-#: ctk/a11y/ctkimageaccessible.c:60 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9328
+#: ctk/a11y/ctkimageaccessible.c:60 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9329
 msgid "Maximize"
 msgstr "Maximera"
 
-#: ctk/a11y/ctkimageaccessible.c:61 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9285
+#: ctk/a11y/ctkimageaccessible.c:61 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9286
 msgid "Restore"
 msgstr "Återställ"
 
@@ -1234,7 +1234,7 @@ msgstr ""
 #: ctk/ctkmountoperation.c:593 ctk/ctkpagesetupunixdialog.c:197
 #: ctk/ctkprintbackend.c:781 ctk/ctkprinteroptionwidget.c:545
 #: ctk/ctkprintunixdialog.c:674 ctk/ctkprintunixdialog.c:747
-#: ctk/ctkwindow.c:12789 ctk/inspector/css-editor.c:201
+#: ctk/ctkwindow.c:12788 ctk/inspector/css-editor.c:201
 #: ctk/ui/ctkappchooserdialog.ui:61 ctk/ui/ctkassistant.ui:125
 #: ctk/ui/ctkcolorchooserdialog.ui:34 ctk/ui/ctkfontchooserdialog.ui:31
 msgid "_Cancel"
@@ -1283,7 +1283,7 @@ msgid "_Apply"
 msgstr "_Verkställ"
 
 #: ctk/deprecated/ctkfontsel.c:1698 ctk/ctkmessagedialog.c:938
-#: ctk/ctkmessagedialog.c:960 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12790
+#: ctk/ctkmessagedialog.c:960 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12789
 msgid "_OK"
 msgstr "_OK"
 
@@ -1588,7 +1588,7 @@ msgid "Other Applications"
 msgstr "Övriga program"
 
 #: ctk/ctkapplicationwindow.c:345 ctk/ctkprintoperation-unix.c:485
-#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1688
+#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1694
 msgid "Application"
 msgstr "Program"
 
@@ -2136,52 +2136,52 @@ msgstr "_Höger:"
 msgid "Paper Margins"
 msgstr "Pappersmarginaler"
 
-#: ctk/ctkentry.c:9589 ctk/ctklabel.c:6676 ctk/ctktextview.c:9516
+#: ctk/ctkentry.c:9590 ctk/ctklabel.c:6676 ctk/ctktextview.c:9519
 msgid "Cu_t"
 msgstr "Klipp _ut"
 
-#: ctk/ctkentry.c:9593 ctk/ctklabel.c:6677 ctk/ctktextview.c:9520
+#: ctk/ctkentry.c:9594 ctk/ctklabel.c:6677 ctk/ctktextview.c:9523
 msgid "_Copy"
 msgstr "_Kopiera"
 
-#: ctk/ctkentry.c:9597 ctk/ctklabel.c:6678 ctk/ctktextview.c:9522
+#: ctk/ctkentry.c:9598 ctk/ctklabel.c:6678 ctk/ctktextview.c:9525
 msgid "_Paste"
 msgstr "Klistra _in"
 
-#: ctk/ctkentry.c:9600 ctk/ctkfilechooserwidget.c:1499
-#: ctk/ctkfilechooserwidget.c:2334 ctk/ctklabel.c:6680 ctk/ctktextview.c:9525
+#: ctk/ctkentry.c:9601 ctk/ctkfilechooserwidget.c:1499
+#: ctk/ctkfilechooserwidget.c:2334 ctk/ctklabel.c:6680 ctk/ctktextview.c:9528
 msgid "_Delete"
 msgstr "_Ta bort"
 
-#: ctk/ctkentry.c:9611 ctk/ctklabel.c:6689 ctk/ctktextview.c:9539
+#: ctk/ctkentry.c:9612 ctk/ctklabel.c:6689 ctk/ctktextview.c:9542
 msgid "Select _All"
 msgstr "Markera _allt"
 
-#: ctk/ctkentry.c:9621 ctk/ctktextview.c:9549
+#: ctk/ctkentry.c:9622 ctk/ctktextview.c:9552
 msgid "Insert _Emoji"
 msgstr "Infoga _emoji"
 
-#: ctk/ctkentry.c:9797 ctk/ctktextview.c:9773
+#: ctk/ctkentry.c:9798 ctk/ctktextview.c:9776
 msgid "Select all"
 msgstr "Markera allt"
 
-#: ctk/ctkentry.c:9800 ctk/ctktextview.c:9776
+#: ctk/ctkentry.c:9801 ctk/ctktextview.c:9779
 msgid "Cut"
 msgstr "Klipp ut"
 
-#: ctk/ctkentry.c:9803 ctk/ctktextview.c:9779
+#: ctk/ctkentry.c:9804 ctk/ctktextview.c:9782
 msgid "Copy"
 msgstr "Kopiera"
 
-#: ctk/ctkentry.c:9806 ctk/ctktextview.c:9782
+#: ctk/ctkentry.c:9807 ctk/ctktextview.c:9785
 msgid "Paste"
 msgstr "Klistra in"
 
-#: ctk/ctkentry.c:10878
+#: ctk/ctkentry.c:10879
 msgid "Caps Lock is on"
 msgstr "Caps Lock är aktiverad"
 
-#: ctk/ctkentry.c:11156
+#: ctk/ctkentry.c:11157
 msgid "Insert Emoji"
 msgstr "Infoga emoji"
 
@@ -2464,6 +2464,7 @@ msgid "Yesterday"
 msgstr "Igår"
 
 #: ctk/ctkfilechooserwidget.c:4906
+#, c-format
 msgid "%-e %b"
 msgstr "%-e %b"
 
@@ -2525,7 +2526,7 @@ msgid "Spreadsheet"
 msgstr "Kalkylblad"
 
 #: ctk/ctkfilechooserwidget.c:5054 ctk/ctkfilechooserwidget.c:5243
-#: ctk/inspector/prop-editor.c:1691
+#: ctk/inspector/prop-editor.c:1697
 msgid "Unknown"
 msgstr "Okänd"
 
@@ -2612,7 +2613,7 @@ msgstr "Lutning"
 msgid "Optical Size"
 msgstr "Optisk storlek"
 
-#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1678
+#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1684
 msgid "Default"
 msgstr "Standard"
 
@@ -2649,7 +2650,7 @@ msgstr "Skapande av OpenGL-kontext misslyckades"
 msgid "Application menu"
 msgstr "Programmeny"
 
-#: ctk/ctkheaderbar.c:458 ctk/ctkwindow.c:9355
+#: ctk/ctkheaderbar.c:458 ctk/ctkwindow.c:9356
 msgid "Close"
 msgstr "Stäng"
 
@@ -2658,7 +2659,7 @@ msgstr "Stäng"
 msgid "Icon '%s' not present in theme %s"
 msgstr "Ikonen ”%s” finns inte i temat %s"
 
-#: ctk/ctkicontheme.c:4096 ctk/ctkicontheme.c:4463
+#: ctk/ctkicontheme.c:4097 ctk/ctkicontheme.c:4464
 msgid "Failed to load icon"
 msgstr "Misslyckades med att läsa in ikon"
 
@@ -2804,40 +2805,40 @@ msgstr ""
 "Kontakta din systemadministratör"
 
 #. Description of --ctk-module=MODULES in --help output
-#: ctk/ctkmain.c:464
+#: ctk/ctkmain.c:470
 msgid "Load additional CTK+ modules"
 msgstr "Läs in ytterligare CTK+-moduler"
 
 #. Placeholder in --ctk-module=MODULES in --help output
-#: ctk/ctkmain.c:465
+#: ctk/ctkmain.c:471
 msgid "MODULES"
 msgstr "MODULER"
 
 #. Description of --g-fatal-warnings in --help output
-#: ctk/ctkmain.c:467
+#: ctk/ctkmain.c:473
 msgid "Make all warnings fatal"
 msgstr "Gör alla varningar ödesdigra"
 
 #. Description of --ctk-debug=FLAGS in --help output
-#: ctk/ctkmain.c:470
+#: ctk/ctkmain.c:476
 msgid "CTK+ debugging flags to set"
 msgstr "CTK+-felsökningsflaggor att ställa in"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
-#: ctk/ctkmain.c:473
+#: ctk/ctkmain.c:479
 msgid "CTK+ debugging flags to unset"
 msgstr "CTK+-felsökningsflaggor att inte ställa in"
 
-#: ctk/ctkmain.c:808 ctk/ctkmain.c:1002
+#: ctk/ctkmain.c:814 ctk/ctkmain.c:1008
 #, c-format
 msgid "Cannot open display: %s"
 msgstr "Kan inte öppna display: %s"
 
-#: ctk/ctkmain.c:920
+#: ctk/ctkmain.c:926
 msgid "CTK+ Options"
 msgstr "CTK+-flaggor"
 
-#: ctk/ctkmain.c:920
+#: ctk/ctkmain.c:926
 msgid "Show CTK+ Options"
 msgstr "Visa CTK+-flaggor"
 
@@ -2846,7 +2847,7 @@ msgstr "Visa CTK+-flaggor"
 #. * Do *not* translate it to "predefinito:LTR", if it
 #. * it isn't default:LTR or default:RTL it will not work
 #.
-#: ctk/ctkmain.c:1273
+#: ctk/ctkmain.c:1279
 msgid "default:LTR"
 msgstr "default:LTR"
 
@@ -4047,24 +4048,24 @@ msgctxt "volume percentage"
 msgid "%d %%"
 msgstr "%d %%"
 
-#: ctk/ctkwindow.c:9303
+#: ctk/ctkwindow.c:9304
 msgid "Move"
 msgstr "Flytta"
 
-#: ctk/ctkwindow.c:9311
+#: ctk/ctkwindow.c:9312
 msgid "Resize"
 msgstr "Ändra storlek"
 
-#: ctk/ctkwindow.c:9342
+#: ctk/ctkwindow.c:9343
 msgid "Always on Top"
 msgstr "Alltid överst"
 
-#: ctk/ctkwindow.c:12777
+#: ctk/ctkwindow.c:12776
 #, c-format
 msgid "Do you want to use CTK+ Inspector?"
 msgstr "Vill du använda CTK+ Inspector?"
 
-#: ctk/ctkwindow.c:12779
+#: ctk/ctkwindow.c:12778
 #, c-format
 msgid ""
 "CTK+ Inspector is an interactive debugger that lets you explore and modify "
@@ -4075,7 +4076,7 @@ msgstr ""
 "det inre i vilket CTK+-program som helst. Användning av det kan medföra att "
 "programmet avslutar eller kraschar."
 
-#: ctk/ctkwindow.c:12784
+#: ctk/ctkwindow.c:12783
 msgid "Don't show this message again"
 msgstr "Visa inte detta meddelande igen"
 
@@ -4189,23 +4190,23 @@ msgstr "GL-version"
 msgid "GL Vendor"
 msgstr "GL-leverantör"
 
-#: ctk/inspector/gestures.c:130
+#: ctk/inspector/gestures.c:131
 msgctxt "event phase"
 msgid "None"
 msgstr "Ingen"
 
 # https://developer.gnome.org/ctk3/stable/CtkEventController.html#CtkPropagationPhase
-#: ctk/inspector/gestures.c:131
+#: ctk/inspector/gestures.c:132
 msgctxt "event phase"
 msgid "Capture"
 msgstr "Fångst"
 
-#: ctk/inspector/gestures.c:132
+#: ctk/inspector/gestures.c:133
 msgctxt "event phase"
 msgid "Bubble"
 msgstr "Bubbla"
 
-#: ctk/inspector/gestures.c:133
+#: ctk/inspector/gestures.c:134
 msgctxt "event phase"
 msgid "Target"
 msgstr "Mål"
@@ -4218,7 +4219,7 @@ msgstr "Ej namngiven sektion"
 msgid "Label"
 msgstr "Etikett"
 
-#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1387
+#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1393
 msgid "Action"
 msgstr "Åtgärd"
 
@@ -4247,9 +4248,9 @@ msgid "Default Widget"
 msgstr "Standardkomponent"
 
 #: ctk/inspector/misc-info.ui:192 ctk/inspector/misc-info.ui:237
-#: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1069
-#: ctk/inspector/prop-editor.c:1268 ctk/inspector/prop-editor.c:1395
-#: ctk/inspector/prop-editor.c:1506 ctk/inspector/window.ui:382
+#: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1075
+#: ctk/inspector/prop-editor.c:1274 ctk/inspector/prop-editor.c:1401
+#: ctk/inspector/prop-editor.c:1512 ctk/inspector/window.ui:382
 msgid "Properties"
 msgstr "Egenskaper"
 
@@ -4340,71 +4341,71 @@ msgstr "Okänd"
 msgid "Object: %p (%s)"
 msgstr "Objekt: %p (%s)"
 
-#: ctk/inspector/prop-editor.c:1139
+#: ctk/inspector/prop-editor.c:1145
 #, c-format
 msgid "Uneditable property type: %s"
 msgstr "Ej redigerbar egenskapstyp: %s"
 
-#: ctk/inspector/prop-editor.c:1259
+#: ctk/inspector/prop-editor.c:1265
 msgid "Attribute mapping"
 msgstr "Attributmappning"
 
-#: ctk/inspector/prop-editor.c:1264
+#: ctk/inspector/prop-editor.c:1270
 msgid "Model:"
 msgstr "Modell:"
 
-#: ctk/inspector/prop-editor.c:1265
+#: ctk/inspector/prop-editor.c:1271
 #, c-format
 msgid "%p (%s)"
 msgstr "%p (%s)"
 
-#: ctk/inspector/prop-editor.c:1275
+#: ctk/inspector/prop-editor.c:1281
 msgid "Column:"
 msgstr "Kolumn:"
 
-#: ctk/inspector/prop-editor.c:1285
+#: ctk/inspector/prop-editor.c:1291
 msgctxt "property name"
 msgid "None"
 msgstr "Ingen"
 
-#: ctk/inspector/prop-editor.c:1391
+#: ctk/inspector/prop-editor.c:1397
 #, c-format
 msgid "Defined at: %p (%s)"
 msgstr "Definierad vid: %p (%s)"
 
-#: ctk/inspector/prop-editor.c:1455 ctk/inspector/prop-editor.c:1471
+#: ctk/inspector/prop-editor.c:1461 ctk/inspector/prop-editor.c:1477
 msgid "inverted"
 msgstr "omvänd"
 
-#: ctk/inspector/prop-editor.c:1487
+#: ctk/inspector/prop-editor.c:1493
 msgid "bidirectional, inverted"
 msgstr "dubbelriktad, omvänd"
 
-#: ctk/inspector/prop-editor.c:1492 ctk/inspector/prop-editor.c:1606
+#: ctk/inspector/prop-editor.c:1498 ctk/inspector/prop-editor.c:1612
 msgid "bidirectional"
 msgstr "dubbelriktad"
 
-#: ctk/inspector/prop-editor.c:1497
+#: ctk/inspector/prop-editor.c:1503
 msgid "Binding:"
 msgstr "Bindning:"
 
-#: ctk/inspector/prop-editor.c:1625
+#: ctk/inspector/prop-editor.c:1631
 msgid "Setting:"
 msgstr "Inställning:"
 
-#: ctk/inspector/prop-editor.c:1665
+#: ctk/inspector/prop-editor.c:1671
 msgid "Source:"
 msgstr "Källa:"
 
-#: ctk/inspector/prop-editor.c:1667
+#: ctk/inspector/prop-editor.c:1673
 msgid "Reset"
 msgstr "Återställ"
 
-#: ctk/inspector/prop-editor.c:1681
+#: ctk/inspector/prop-editor.c:1687
 msgid "Theme"
 msgstr "Tema"
 
-#: ctk/inspector/prop-editor.c:1684
+#: ctk/inspector/prop-editor.c:1690
 msgid "XSettings"
 msgstr "XSettings"
 
@@ -4466,30 +4467,30 @@ msgstr "Signal"
 msgid "Connected"
 msgstr "Ansluten"
 
-#: ctk/inspector/size-groups.c:225
+#: ctk/inspector/size-groups.c:226
 msgid "Ignore hidden"
 msgstr "Ignorera dolda"
 
-#: ctk/inspector/size-groups.c:243
+#: ctk/inspector/size-groups.c:244
 msgid "Mode"
 msgstr "Läge"
 
-#: ctk/inspector/size-groups.c:253
+#: ctk/inspector/size-groups.c:254
 msgctxt "sizegroup mode"
 msgid "None"
 msgstr "Inget"
 
-#: ctk/inspector/size-groups.c:254
+#: ctk/inspector/size-groups.c:255
 msgctxt "sizegroup mode"
 msgid "Horizontal"
 msgstr "Horisontellt"
 
-#: ctk/inspector/size-groups.c:255
+#: ctk/inspector/size-groups.c:256
 msgctxt "sizegroup mode"
 msgid "Vertical"
 msgstr "Vertikalt"
 
-#: ctk/inspector/size-groups.c:256
+#: ctk/inspector/size-groups.c:257
 msgctxt "sizegroup mode"
 msgid "Both"
 msgstr "Båda"
@@ -4530,15 +4531,15 @@ msgstr "Aktivera statistik med GOBJECT_DEBUG=instance-count"
 msgid "Theme is hardcoded by CTK_THEME"
 msgstr "Temat är hårdkodat med CTK_THEME"
 
-#: ctk/inspector/visual.c:657
+#: ctk/inspector/visual.c:659
 msgid "Backend does not support window scaling"
 msgstr "Bakände stöder inte fönsterskalning"
 
-#: ctk/inspector/visual.c:752
+#: ctk/inspector/visual.c:754
 msgid "Setting is hardcoded by CTK_TEST_TOUCHSCREEN"
 msgstr "Inställningen är hårdkodad med CTK_TEST_TOUCHSCREEN"
 
-#: ctk/inspector/visual.c:817
+#: ctk/inspector/visual.c:819
 msgid ""
 "Not settable at runtime.\n"
 "Use CDK_GL=always or CDK_GL=disable instead"
@@ -4546,8 +4547,8 @@ msgstr ""
 "Går ej att ställa in under körning.\n"
 "Använd CDK_GL=always eller CDK_GL=disable i stället"
 
-#: ctk/inspector/visual.c:831 ctk/inspector/visual.c:832
-#: ctk/inspector/visual.c:833
+#: ctk/inspector/visual.c:833 ctk/inspector/visual.c:834
+#: ctk/inspector/visual.c:835
 msgid "GL rendering is disabled"
 msgstr "GL-rendering är inaktiverad"
 
@@ -7103,7 +7104,6 @@ msgstr "Tjänster"
 
 #. used for the application menu on MacOS.  %s is replaced with the application name.
 #: ctk/ui/ctkapplication-quartz.ui:29
-#, c-format
 msgid "Hide %s"
 msgstr "Dölj %s"
 
@@ -7119,7 +7119,6 @@ msgstr "Visa alla"
 
 #. used for the application menu on MacOS.  %s is replaced with the application name.
 #: ctk/ui/ctkapplication-quartz.ui:49
-#, c-format
 msgid "Quit %s"
 msgstr "Avsluta %s"
 
@@ -7556,105 +7555,105 @@ msgstr "Sänk volymen"
 msgid "Decreases the volume"
 msgstr "Sänker volymen"
 
-#: ctk/updateiconcache.c:1402
+#: ctk/updateiconcache.c:1404
 #, c-format
 msgid "Failed to write header\n"
 msgstr "Misslyckades med att skriva huvud\n"
 
-#: ctk/updateiconcache.c:1408
+#: ctk/updateiconcache.c:1410
 #, c-format
 msgid "Failed to write hash table\n"
 msgstr "Misslyckades med att skriva hashtabell\n"
 
-#: ctk/updateiconcache.c:1414
+#: ctk/updateiconcache.c:1416
 #, c-format
 msgid "Failed to write folder index\n"
 msgstr "Misslyckades med att skriva mappindex\n"
 
-#: ctk/updateiconcache.c:1422
+#: ctk/updateiconcache.c:1424
 #, c-format
 msgid "Failed to rewrite header\n"
 msgstr "Misslyckades med att skriva om huvud\n"
 
-#: ctk/updateiconcache.c:1516
+#: ctk/updateiconcache.c:1518
 #, c-format
 msgid "Failed to open file %s : %s\n"
 msgstr "Misslyckades med att öppna filen %s : %s\n"
 
-#: ctk/updateiconcache.c:1524 ctk/updateiconcache.c:1554
+#: ctk/updateiconcache.c:1526 ctk/updateiconcache.c:1556
 #, c-format
 msgid "Failed to write cache file: %s\n"
 msgstr "Misslyckades med att skriva cachefil: %s\n"
 
-#: ctk/updateiconcache.c:1564
+#: ctk/updateiconcache.c:1566
 #, c-format
 msgid "The generated cache was invalid.\n"
 msgstr "Den genererade cachen var ogiltig.\n"
 
-#: ctk/updateiconcache.c:1578
+#: ctk/updateiconcache.c:1580
 #, c-format
 msgid "Could not rename %s to %s: %s, removing %s then.\n"
 msgstr "Kunde inte byta namn på %s till %s: %s, tar bort %s.\n"
 
-#: ctk/updateiconcache.c:1592
+#: ctk/updateiconcache.c:1594
 #, c-format
 msgid "Could not rename %s to %s: %s\n"
 msgstr "Kunde inte byta namn på %s till %s: %s\n"
 
-#: ctk/updateiconcache.c:1602
+#: ctk/updateiconcache.c:1604
 #, c-format
 msgid "Could not rename %s back to %s: %s.\n"
 msgstr "Kunde inte byta namn på %s tillbaka till %s: %s.\n"
 
-#: ctk/updateiconcache.c:1625
+#: ctk/updateiconcache.c:1627
 #, c-format
 msgid "Cache file created successfully.\n"
 msgstr "Cachefil skapades.\n"
 
-#: ctk/updateiconcache.c:1664
+#: ctk/updateiconcache.c:1666
 msgid "Overwrite an existing cache, even if up to date"
 msgstr "Skriv över en befintlig cache, även om den är uppdaterad"
 
-#: ctk/updateiconcache.c:1665
+#: ctk/updateiconcache.c:1667
 msgid "Don't check for the existence of index.theme"
 msgstr "Kontrollera inte om index.theme finns"
 
-#: ctk/updateiconcache.c:1666
+#: ctk/updateiconcache.c:1668
 msgid "Don't include image data in the cache"
 msgstr "Inkludera inte bilddata i cachen"
 
-#: ctk/updateiconcache.c:1667
+#: ctk/updateiconcache.c:1669
 msgid "Include image data in the cache"
 msgstr "Inkludera bilddata i cachen"
 
-#: ctk/updateiconcache.c:1668
+#: ctk/updateiconcache.c:1670
 msgid "Output a C header file"
 msgstr "Skriv ut en C-headerfil"
 
-#: ctk/updateiconcache.c:1669
+#: ctk/updateiconcache.c:1671
 msgid "Turn off verbose output"
 msgstr "Stäng av informativ utskrift"
 
-#: ctk/updateiconcache.c:1670
+#: ctk/updateiconcache.c:1672
 msgid "Validate existing icon cache"
 msgstr "Validera befintlig ikoncache"
 
-#: ctk/updateiconcache.c:1737
+#: ctk/updateiconcache.c:1739
 #, c-format
 msgid "File not found: %s\n"
 msgstr "Filen hittades inte: %s\n"
 
-#: ctk/updateiconcache.c:1743
+#: ctk/updateiconcache.c:1745
 #, c-format
 msgid "Not a valid icon cache: %s\n"
 msgstr "Inte en giltig ikoncache: %s\n"
 
-#: ctk/updateiconcache.c:1756
+#: ctk/updateiconcache.c:1758
 #, c-format
 msgid "No theme index file.\n"
 msgstr "Ingen temaindexfil.\n"
 
-#: ctk/updateiconcache.c:1760
+#: ctk/updateiconcache.c:1762
 #, c-format
 msgid ""
 "No theme index file in '%s'.\n"

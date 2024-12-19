@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Gnome Nepali Translation Project\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-13 13:45+0200\n"
+"POT-Creation-Date: 2024-12-19 12:00+0100\n"
 "PO-Revision-Date: 2017-08-21 04:28+0545\n"
 "Last-Translator: Pawan Chitrakar <chautari@gmail.com>\n"
 "Language-Team: Nepali Translation Team <chautari@gmail.com>\n"
@@ -27,48 +27,48 @@ msgstr ""
 msgid "Broadway display type not supported: %s"
 msgstr "फाइल प्रकार  %s (%s) समर्थित छैन"
 
-#: cdk/cdk.c:179
+#: cdk/cdk.c:182
 #, fuzzy, c-format
 msgid "Error parsing option --cdk-debug"
 msgstr "पद वर्णन विकल्पमा त्रुटि %s"
 
-#: cdk/cdk.c:199
+#: cdk/cdk.c:205
 #, fuzzy, c-format
 msgid "Error parsing option --cdk-no-debug"
 msgstr "पद वर्णन विकल्पमा त्रुटि %s"
 
 #. Description of --class=CLASS in --help output
-#: cdk/cdk.c:228
+#: cdk/cdk.c:240
 msgid "Program class as used by the window manager"
 msgstr "सञ्झ्याल प्रबन्धक द्वारा प्रयोग गरिएको जस्तो कार्यक्रम तह"
 
 #. Placeholder in --class=CLASS in --help output
-#: cdk/cdk.c:229
+#: cdk/cdk.c:241
 msgid "CLASS"
 msgstr "CLASS"
 
 #. Description of --name=NAME in --help output
-#: cdk/cdk.c:231
+#: cdk/cdk.c:243
 msgid "Program name as used by the window manager"
 msgstr "सञ्झ्याल प्रबन्धक द्वारा प्रयोग गरिएको जस्तो कार्यक्रम तह"
 
 #. Placeholder in --name=NAME in --help output
-#: cdk/cdk.c:232
+#: cdk/cdk.c:244
 msgid "NAME"
 msgstr "NAME"
 
 #. Description of --display=DISPLAY in --help output
-#: cdk/cdk.c:235
+#: cdk/cdk.c:247
 msgid "X display to use"
 msgstr "प्रयोग गरिने X प्रदर्शन"
 
 #. Placeholder in --display=DISPLAY in --help output
-#: cdk/cdk.c:236
+#: cdk/cdk.c:248
 msgid "DISPLAY"
 msgstr "DISPLAY"
 
 #. Description of --cdk-debug=FLAGS in --help output
-#: cdk/cdk.c:240
+#: cdk/cdk.c:252
 msgid "CDK debugging flags to set"
 msgstr "CDK डिबग्गिङ फ्ल्यागहरू सेट भयो"
 
@@ -76,12 +76,12 @@ msgstr "CDK डिबग्गिङ फ्ल्यागहरू सेट �
 #. Placeholder in --cdk-no-debug=FLAGS in --help output
 #. Placeholder in --ctk-debug=FLAGS in --help output
 #. Placeholder in --ctk-no-debug=FLAGS in --help output
-#: cdk/cdk.c:241 cdk/cdk.c:244 ctk/ctkmain.c:471 ctk/ctkmain.c:474
+#: cdk/cdk.c:253 cdk/cdk.c:256 ctk/ctkmain.c:477 ctk/ctkmain.c:480
 msgid "FLAGS"
 msgstr "FLAGS"
 
 #. Description of --cdk-no-debug=FLAGS in --help output
-#: cdk/cdk.c:243
+#: cdk/cdk.c:255
 #, fuzzy
 msgid "CDK debugging flags to unset"
 msgstr "अनसेट गरिने Cdk डिबगिङ झन्डा"
@@ -615,7 +615,7 @@ msgid "Edit"
 msgstr "सम्पादन गर्नुहोस्"
 
 #: ctk/a11y/ctkcellaccessible.c:261 ctk/a11y/ctkcolorswatchaccessible.c:149
-#: ctk/a11y/ctkentryaccessible.c:1560 ctk/a11y/ctkexpanderaccessible.c:281
+#: ctk/a11y/ctkentryaccessible.c:1561 ctk/a11y/ctkexpanderaccessible.c:281
 msgctxt "Action name"
 msgid "Activate"
 msgstr "सक्रिय गर्ने"
@@ -673,7 +673,7 @@ msgctxt "Action description"
 msgid "Presses the combobox"
 msgstr "प्रणालिगत ठूलो बाकस"
 
-#: ctk/a11y/ctkentryaccessible.c:1569
+#: ctk/a11y/ctkentryaccessible.c:1570
 #, fuzzy
 msgctxt "Action description"
 msgid "Activates the entry"
@@ -719,15 +719,15 @@ msgctxt "Stock label"
 msgid "_Close"
 msgstr "_बन्द"
 
-#: ctk/a11y/ctkimageaccessible.c:59 ctk/ctkheaderbar.c:415 ctk/ctkwindow.c:9319
+#: ctk/a11y/ctkimageaccessible.c:59 ctk/ctkheaderbar.c:415 ctk/ctkwindow.c:9320
 msgid "Minimize"
 msgstr "सानो पार्नुहोस्"
 
-#: ctk/a11y/ctkimageaccessible.c:60 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9328
+#: ctk/a11y/ctkimageaccessible.c:60 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9329
 msgid "Maximize"
 msgstr "ठूलो पार्नुहोस्"
 
-#: ctk/a11y/ctkimageaccessible.c:61 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9285
+#: ctk/a11y/ctkimageaccessible.c:61 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9286
 msgid "Restore"
 msgstr "पूर्वावस्थामा ल्याउनुहोस्"
 
@@ -1314,7 +1314,7 @@ msgstr ""
 #: ctk/ctkmountoperation.c:593 ctk/ctkpagesetupunixdialog.c:197
 #: ctk/ctkprintbackend.c:781 ctk/ctkprinteroptionwidget.c:545
 #: ctk/ctkprintunixdialog.c:674 ctk/ctkprintunixdialog.c:747
-#: ctk/ctkwindow.c:12789 ctk/inspector/css-editor.c:201
+#: ctk/ctkwindow.c:12788 ctk/inspector/css-editor.c:201
 #: ctk/ui/ctkappchooserdialog.ui:61 ctk/ui/ctkassistant.ui:125
 #: ctk/ui/ctkcolorchooserdialog.ui:34 ctk/ui/ctkfontchooserdialog.ui:31
 msgid "_Cancel"
@@ -1363,7 +1363,7 @@ msgid "_Apply"
 msgstr "_लागू"
 
 #: ctk/deprecated/ctkfontsel.c:1698 ctk/ctkmessagedialog.c:938
-#: ctk/ctkmessagedialog.c:960 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12790
+#: ctk/ctkmessagedialog.c:960 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12789
 msgid "_OK"
 msgstr "_ठिक छ"
 
@@ -1682,7 +1682,7 @@ msgid "Other Applications"
 msgstr "अन्य अनुप्रयोगमा जस्तै उही फन्ट प्रयोग गर्नुहोस्"
 
 #: ctk/ctkapplicationwindow.c:345 ctk/ctkprintoperation-unix.c:485
-#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1688
+#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1694
 #, fuzzy
 msgid "Application"
 msgstr "अनुप्रयोग:"
@@ -2260,55 +2260,55 @@ msgstr "_दायाँ:"
 msgid "Paper Margins"
 msgstr "कागज सिमान्तहरू"
 
-#: ctk/ctkentry.c:9589 ctk/ctklabel.c:6676 ctk/ctktextview.c:9516
+#: ctk/ctkentry.c:9590 ctk/ctklabel.c:6676 ctk/ctktextview.c:9519
 msgid "Cu_t"
 msgstr "काट्नुहोस्"
 
-#: ctk/ctkentry.c:9593 ctk/ctklabel.c:6677 ctk/ctktextview.c:9520
+#: ctk/ctkentry.c:9594 ctk/ctklabel.c:6677 ctk/ctktextview.c:9523
 msgid "_Copy"
 msgstr "प्रतिलिपि गर्नुहोस्"
 
-#: ctk/ctkentry.c:9597 ctk/ctklabel.c:6678 ctk/ctktextview.c:9522
+#: ctk/ctkentry.c:9598 ctk/ctklabel.c:6678 ctk/ctktextview.c:9525
 msgid "_Paste"
 msgstr "टाँस्नुहोस्"
 
-#: ctk/ctkentry.c:9600 ctk/ctkfilechooserwidget.c:1499
-#: ctk/ctkfilechooserwidget.c:2334 ctk/ctklabel.c:6680 ctk/ctktextview.c:9525
+#: ctk/ctkentry.c:9601 ctk/ctkfilechooserwidget.c:1499
+#: ctk/ctkfilechooserwidget.c:2334 ctk/ctklabel.c:6680 ctk/ctktextview.c:9528
 msgid "_Delete"
 msgstr "मेटाउनुहोस्"
 
-#: ctk/ctkentry.c:9611 ctk/ctklabel.c:6689 ctk/ctktextview.c:9539
+#: ctk/ctkentry.c:9612 ctk/ctklabel.c:6689 ctk/ctktextview.c:9542
 msgid "Select _All"
 msgstr "सबै_छान्नुहोस्"
 
-#: ctk/ctkentry.c:9621 ctk/ctktextview.c:9549
+#: ctk/ctkentry.c:9622 ctk/ctktextview.c:9552
 #, fuzzy
 msgid "Insert _Emoji"
 msgstr "भावचिन्ह"
 
-#: ctk/ctkentry.c:9797 ctk/ctktextview.c:9773
+#: ctk/ctkentry.c:9798 ctk/ctktextview.c:9776
 #, fuzzy
 msgid "Select all"
 msgstr "सबै_छान्नुहोस्"
 
-#: ctk/ctkentry.c:9800 ctk/ctktextview.c:9776
+#: ctk/ctkentry.c:9801 ctk/ctktextview.c:9779
 msgid "Cut"
 msgstr "काट्नुहोस्"
 
-#: ctk/ctkentry.c:9803 ctk/ctktextview.c:9779
+#: ctk/ctkentry.c:9804 ctk/ctktextview.c:9782
 msgid "Copy"
 msgstr "प्रतिलपि गर्नुहोस्"
 
-#: ctk/ctkentry.c:9806 ctk/ctktextview.c:9782
+#: ctk/ctkentry.c:9807 ctk/ctktextview.c:9785
 msgid "Paste"
 msgstr "टाँस्नुहोस्"
 
-#: ctk/ctkentry.c:10878
+#: ctk/ctkentry.c:10879
 #, fuzzy
 msgid "Caps Lock is on"
 msgstr "क्यप्स लक अन छ"
 
-#: ctk/ctkentry.c:11156
+#: ctk/ctkentry.c:11157
 #, fuzzy
 msgid "Insert Emoji"
 msgstr "भावचिन्ह"
@@ -2633,6 +2633,7 @@ msgid "Yesterday"
 msgstr "हिजोसम्म"
 
 #: ctk/ctkfilechooserwidget.c:4906
+#, c-format
 msgid "%-e %b"
 msgstr "%-e %b"
 
@@ -2699,7 +2700,7 @@ msgid "Spreadsheet"
 msgstr ""
 
 #: ctk/ctkfilechooserwidget.c:5054 ctk/ctkfilechooserwidget.c:5243
-#: ctk/inspector/prop-editor.c:1691
+#: ctk/inspector/prop-editor.c:1697
 msgid "Unknown"
 msgstr "अज्ञात"
 
@@ -2789,7 +2790,7 @@ msgstr ""
 msgid "Optical Size"
 msgstr ""
 
-#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1678
+#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1684
 msgid "Default"
 msgstr "पूर्वनिर्धारित"
 
@@ -2830,7 +2831,7 @@ msgstr "अस्थायी फाइल सिर्जना गर्दा
 msgid "Application menu"
 msgstr "अनुप्रयोग मेनु"
 
-#: ctk/ctkheaderbar.c:458 ctk/ctkwindow.c:9355
+#: ctk/ctkheaderbar.c:458 ctk/ctkwindow.c:9356
 msgid "Close"
 msgstr "बन्दगर्नुहोस्"
 
@@ -2839,7 +2840,7 @@ msgstr "बन्दगर्नुहोस्"
 msgid "Icon '%s' not present in theme %s"
 msgstr "विषयवस्तुमा प्रतिमा '%s' उपस्थित छैन"
 
-#: ctk/ctkicontheme.c:4096 ctk/ctkicontheme.c:4463
+#: ctk/ctkicontheme.c:4097 ctk/ctkicontheme.c:4464
 msgid "Failed to load icon"
 msgstr "प्रतिमा लोड गर्न असफल भयो"
 
@@ -2983,42 +2984,42 @@ msgid ""
 msgstr ""
 
 #. Description of --ctk-module=MODULES in --help output
-#: ctk/ctkmain.c:464
+#: ctk/ctkmain.c:470
 msgid "Load additional CTK+ modules"
 msgstr "थप CTK+ मोड्युलहरू लोड गर्नुहोस्"
 
 #. Placeholder in --ctk-module=MODULES in --help output
-#: ctk/ctkmain.c:465
+#: ctk/ctkmain.c:471
 msgid "MODULES"
 msgstr "MODULES"
 
 #. Description of --g-fatal-warnings in --help output
-#: ctk/ctkmain.c:467
+#: ctk/ctkmain.c:473
 msgid "Make all warnings fatal"
 msgstr "सबै चेतावनीहरू घातक बनाउनुहोस्"
 
 #. Description of --ctk-debug=FLAGS in --help output
-#: ctk/ctkmain.c:470
+#: ctk/ctkmain.c:476
 msgid "CTK+ debugging flags to set"
 msgstr "सेट गरिने CTK + त्रुटि सच्याउने झण्डाहरू"
 
 #. Description of --ctk-no-debug=FLAGS in --help output
-#: ctk/ctkmain.c:473
+#: ctk/ctkmain.c:479
 msgid "CTK+ debugging flags to unset"
 msgstr "सेट हटाइने CTK + त्रुटि सच्याउने झण्डाहरू"
 
-#: ctk/ctkmain.c:808 ctk/ctkmain.c:1002
+#: ctk/ctkmain.c:814 ctk/ctkmain.c:1008
 #, fuzzy, c-format
 msgid "Cannot open display: %s"
 msgstr ""
 "यू आर एल खोल्न सकेन:\n"
 "%sस"
 
-#: ctk/ctkmain.c:920
+#: ctk/ctkmain.c:926
 msgid "CTK+ Options"
 msgstr "CTK+ विकल्पहरू"
 
-#: ctk/ctkmain.c:920
+#: ctk/ctkmain.c:926
 msgid "Show CTK+ Options"
 msgstr "CTK+ विकल्पहरू देखाउनुहोस्"
 
@@ -3027,7 +3028,7 @@ msgstr "CTK+ विकल्पहरू देखाउनुहोस्"
 #. * Do *not* translate it to "predefinito:LTR", if it
 #. * it isn't default:LTR or default:RTL it will not work
 #.
-#: ctk/ctkmain.c:1273
+#: ctk/ctkmain.c:1279
 msgid "default:LTR"
 msgstr "default:LTR"
 
@@ -4315,24 +4316,24 @@ msgctxt "volume percentage"
 msgid "%d %%"
 msgstr " (%'d"
 
-#: ctk/ctkwindow.c:9303
+#: ctk/ctkwindow.c:9304
 msgid "Move"
 msgstr "सार्नुहोस्"
 
-#: ctk/ctkwindow.c:9311
+#: ctk/ctkwindow.c:9312
 msgid "Resize"
 msgstr "पुन:आकार"
 
-#: ctk/ctkwindow.c:9342
+#: ctk/ctkwindow.c:9343
 msgid "Always on Top"
 msgstr "सधै माथि"
 
-#: ctk/ctkwindow.c:12777
+#: ctk/ctkwindow.c:12776
 #, fuzzy, c-format
 msgid "Do you want to use CTK+ Inspector?"
 msgstr "तपाईं किबोर्ड स्क्यानका लागि यो उपकरण प्रयोग गर्न चाहनुहुन्छ?"
 
-#: ctk/ctkwindow.c:12779
+#: ctk/ctkwindow.c:12778
 #, c-format
 msgid ""
 "CTK+ Inspector is an interactive debugger that lets you explore and modify "
@@ -4340,7 +4341,7 @@ msgid ""
 "break or crash."
 msgstr ""
 
-#: ctk/ctkwindow.c:12784
+#: ctk/ctkwindow.c:12783
 msgid "Don't show this message again"
 msgstr "यो सन्देश पुन: नदेखाउनुहोस्"
 
@@ -4469,23 +4470,23 @@ msgstr "संस्करण: "
 msgid "GL Vendor"
 msgstr "विक्रेता:"
 
-#: ctk/inspector/gestures.c:130
+#: ctk/inspector/gestures.c:131
 msgctxt "event phase"
 msgid "None"
 msgstr "None"
 
-#: ctk/inspector/gestures.c:131
+#: ctk/inspector/gestures.c:132
 msgctxt "event phase"
 msgid "Capture"
 msgstr "खिच्नुहोस"
 
-#: ctk/inspector/gestures.c:132
+#: ctk/inspector/gestures.c:133
 #, fuzzy
 msgctxt "event phase"
 msgid "Bubble"
 msgstr "सूचना बबल प्रदर्शन गर्दा त्रुटि: %s\n"
 
-#: ctk/inspector/gestures.c:133
+#: ctk/inspector/gestures.c:134
 msgctxt "event phase"
 msgid "Target"
 msgstr "लक्ष्य"
@@ -4499,7 +4500,7 @@ msgstr "सेक्सन: "
 msgid "Label"
 msgstr "निसानी"
 
-#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1387
+#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1393
 msgid "Action"
 msgstr "क्रिया"
 
@@ -4531,9 +4532,9 @@ msgid "Default Widget"
 msgstr "जहाँ औजार एउटा पूर्वनिर्धारित औजार हुन सक्छ"
 
 #: ctk/inspector/misc-info.ui:192 ctk/inspector/misc-info.ui:237
-#: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1069
-#: ctk/inspector/prop-editor.c:1268 ctk/inspector/prop-editor.c:1395
-#: ctk/inspector/prop-editor.c:1506 ctk/inspector/window.ui:382
+#: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1075
+#: ctk/inspector/prop-editor.c:1274 ctk/inspector/prop-editor.c:1401
+#: ctk/inspector/prop-editor.c:1512 ctk/inspector/window.ui:382
 msgid "Properties"
 msgstr "गुण"
 
@@ -4643,52 +4644,52 @@ msgid "Object: %p (%s)"
 msgstr ""
 "मास्टर  %p: %p[%s] हरूलाई ह्यासमा थप गर्न अक्षम। त्यहाँ (%p) नामको वस्तु पहिले देखि नै छ।"
 
-#: ctk/inspector/prop-editor.c:1139
+#: ctk/inspector/prop-editor.c:1145
 #, fuzzy, c-format
 msgid "Uneditable property type: %s"
 msgstr "गुण %s का लागि अवैध गुण प्रकार %s"
 
-#: ctk/inspector/prop-editor.c:1259
+#: ctk/inspector/prop-editor.c:1265
 #, fuzzy
 msgid "Attribute mapping"
 msgstr "मानचित्र"
 
-#: ctk/inspector/prop-editor.c:1264
+#: ctk/inspector/prop-editor.c:1270
 msgid "Model:"
 msgstr "नमूना:"
 
-#: ctk/inspector/prop-editor.c:1265
+#: ctk/inspector/prop-editor.c:1271
 #, fuzzy, c-format
 msgid "%p (%s)"
 msgstr ""
 "मास्टर  %p: %p[%s] हरूलाई ह्यासमा थप गर्न अक्षम। त्यहाँ (%p) नामको वस्तु पहिले देखि नै छ।"
 
-#: ctk/inspector/prop-editor.c:1275
+#: ctk/inspector/prop-editor.c:1281
 #, fuzzy
 msgid "Column:"
 msgstr "स्तम्भ"
 
-#: ctk/inspector/prop-editor.c:1285
+#: ctk/inspector/prop-editor.c:1291
 msgctxt "property name"
 msgid "None"
 msgstr "None"
 
-#: ctk/inspector/prop-editor.c:1391
+#: ctk/inspector/prop-editor.c:1397
 #, fuzzy, c-format
 msgid "Defined at: %p (%s)"
 msgstr "<%s> मा %s परिभाषित गरिएको छैन"
 
-#: ctk/inspector/prop-editor.c:1455 ctk/inspector/prop-editor.c:1471
+#: ctk/inspector/prop-editor.c:1461 ctk/inspector/prop-editor.c:1477
 #, fuzzy
 msgid "inverted"
 msgstr "उल्टाइयो"
 
-#: ctk/inspector/prop-editor.c:1487
+#: ctk/inspector/prop-editor.c:1493
 #, fuzzy
 msgid "bidirectional, inverted"
 msgstr "उल्टाइयो"
 
-#: ctk/inspector/prop-editor.c:1492 ctk/inspector/prop-editor.c:1606
+#: ctk/inspector/prop-editor.c:1498 ctk/inspector/prop-editor.c:1612
 #, fuzzy
 msgid "bidirectional"
 msgstr ""
@@ -4698,29 +4699,29 @@ msgstr ""
 "द्विद्वैशिक (द्विगुना): +1,-1,+2,-2,+3,-3\n"
 "(चरण साइज फ्रेम सन्दर्भ पारामिति द्वारा सेट गरिएको छ)"
 
-#: ctk/inspector/prop-editor.c:1497
+#: ctk/inspector/prop-editor.c:1503
 msgid "Binding:"
 msgstr "बाइन्डिङ:"
 
-#: ctk/inspector/prop-editor.c:1625
+#: ctk/inspector/prop-editor.c:1631
 msgid "Setting:"
 msgstr "सेटिङ:"
 
-#: ctk/inspector/prop-editor.c:1665
+#: ctk/inspector/prop-editor.c:1671
 #, fuzzy
 msgid "Source:"
 msgstr "स्रोत"
 
-#: ctk/inspector/prop-editor.c:1667
+#: ctk/inspector/prop-editor.c:1673
 #, fuzzy
 msgid "Reset"
 msgstr "रिसेट गर्नुहोस्"
 
-#: ctk/inspector/prop-editor.c:1681
+#: ctk/inspector/prop-editor.c:1687
 msgid "Theme"
 msgstr "विषयवस्तु"
 
-#: ctk/inspector/prop-editor.c:1684
+#: ctk/inspector/prop-editor.c:1690
 msgid "XSettings"
 msgstr ""
 
@@ -4789,33 +4790,33 @@ msgstr "सङ्केत"
 msgid "Connected"
 msgstr "जडान गरियो"
 
-#: ctk/inspector/size-groups.c:225
+#: ctk/inspector/size-groups.c:226
 msgid "Ignore hidden"
 msgstr "लुकाउन उपेक्षा गर्नुहोस्"
 
-#: ctk/inspector/size-groups.c:243
+#: ctk/inspector/size-groups.c:244
 #, fuzzy
 msgid "Mode"
 msgstr "शैली"
 
-#: ctk/inspector/size-groups.c:253
+#: ctk/inspector/size-groups.c:254
 msgctxt "sizegroup mode"
 msgid "None"
 msgstr "None"
 
-#: ctk/inspector/size-groups.c:254
+#: ctk/inspector/size-groups.c:255
 #, fuzzy
 msgctxt "sizegroup mode"
 msgid "Horizontal"
 msgstr "तेर्सो"
 
-#: ctk/inspector/size-groups.c:255
+#: ctk/inspector/size-groups.c:256
 #, fuzzy
 msgctxt "sizegroup mode"
 msgid "Vertical"
 msgstr "ठाडो"
 
-#: ctk/inspector/size-groups.c:256
+#: ctk/inspector/size-groups.c:257
 msgctxt "sizegroup mode"
 msgid "Both"
 msgstr "दुवै"
@@ -4863,22 +4864,22 @@ msgstr ""
 msgid "Theme is hardcoded by CTK_THEME"
 msgstr "ctk+ द्वारा प्रयोग गरिएको पूर्वनिर्धारित विषयवस्तुको आधार नाम ।"
 
-#: ctk/inspector/visual.c:657
+#: ctk/inspector/visual.c:659
 msgid "Backend does not support window scaling"
 msgstr ""
 
-#: ctk/inspector/visual.c:752
+#: ctk/inspector/visual.c:754
 msgid "Setting is hardcoded by CTK_TEST_TOUCHSCREEN"
 msgstr ""
 
-#: ctk/inspector/visual.c:817
+#: ctk/inspector/visual.c:819
 msgid ""
 "Not settable at runtime.\n"
 "Use CDK_GL=always or CDK_GL=disable instead"
 msgstr ""
 
-#: ctk/inspector/visual.c:831 ctk/inspector/visual.c:832
-#: ctk/inspector/visual.c:833
+#: ctk/inspector/visual.c:833 ctk/inspector/visual.c:834
+#: ctk/inspector/visual.c:835
 #, fuzzy
 msgid "GL rendering is disabled"
 msgstr "अक्षम पारिएको"
@@ -7575,7 +7576,6 @@ msgstr "%1 सेवाहरू"
 
 #. used for the application menu on MacOS.  %s is replaced with the application name.
 #: ctk/ui/ctkapplication-quartz.ui:29
-#, c-format
 msgid "Hide %s"
 msgstr "%s लुकाउनुहोस्"
 
@@ -7595,7 +7595,7 @@ msgstr "सबै नदेखाऊ"
 
 #. used for the application menu on MacOS.  %s is replaced with the application name.
 #: ctk/ui/ctkapplication-quartz.ui:49
-#, fuzzy, c-format
+#, fuzzy
 msgid "Quit %s"
 msgstr "अन्त्य गर्नुहोस्"
 
@@ -8053,101 +8053,101 @@ msgstr "भोल्युम घटाउनुहोस्"
 msgid "Decreases the volume"
 msgstr "आवाज"
 
-#: ctk/updateiconcache.c:1402
+#: ctk/updateiconcache.c:1404
 #, c-format
 msgid "Failed to write header\n"
 msgstr "हेडर लेख्न असफल भयो\n"
 
-#: ctk/updateiconcache.c:1408
+#: ctk/updateiconcache.c:1410
 #, c-format
 msgid "Failed to write hash table\n"
 msgstr "ह्यास तालिका लेख्न असफल भयो\n"
 
-#: ctk/updateiconcache.c:1414
+#: ctk/updateiconcache.c:1416
 #, c-format
 msgid "Failed to write folder index\n"
 msgstr "फोल्डर अनुक्रमाणिका लेख्न असफल भयो\n"
 
-#: ctk/updateiconcache.c:1422
+#: ctk/updateiconcache.c:1424
 #, c-format
 msgid "Failed to rewrite header\n"
 msgstr "हेडर पुन: लेख्न असफल भयो\n"
 
-#: ctk/updateiconcache.c:1516
+#: ctk/updateiconcache.c:1518
 #, fuzzy, c-format
 msgid "Failed to open file %s : %s\n"
 msgstr "फाइल '%s' खोल्न असफल: %s"
 
-#: ctk/updateiconcache.c:1524 ctk/updateiconcache.c:1554
+#: ctk/updateiconcache.c:1526 ctk/updateiconcache.c:1556
 #, c-format
 msgid "Failed to write cache file: %s\n"
 msgstr "क्यास फाइल लेख्न असफल भयो: %s\n"
 
-#: ctk/updateiconcache.c:1564
+#: ctk/updateiconcache.c:1566
 #, c-format
 msgid "The generated cache was invalid.\n"
 msgstr "सिर्जना गरिएको क्यास अवैध थियो ।\n"
 
-#: ctk/updateiconcache.c:1578
+#: ctk/updateiconcache.c:1580
 #, c-format
 msgid "Could not rename %s to %s: %s, removing %s then.\n"
 msgstr "%s लाई %s मा पुन: नामाकरण गर्न सकेन: %s, %s हटाउँदै त्यसपछि ।\n"
 
-#: ctk/updateiconcache.c:1592
+#: ctk/updateiconcache.c:1594
 #, c-format
 msgid "Could not rename %s to %s: %s\n"
 msgstr "%s लाई %s पुन: नामाकरण गर्न सकेन: %s\n"
 
-#: ctk/updateiconcache.c:1602
+#: ctk/updateiconcache.c:1604
 #, c-format
 msgid "Could not rename %s back to %s: %s.\n"
 msgstr "%s लाई फेरि %s मा पुन: नामाकरण गर्न सकेन: %s.\n"
 
-#: ctk/updateiconcache.c:1625
+#: ctk/updateiconcache.c:1627
 #, c-format
 msgid "Cache file created successfully.\n"
 msgstr "क्याश फाइल सफलतापूर्वक सिर्जना गरियो ।\n"
 
-#: ctk/updateiconcache.c:1664
+#: ctk/updateiconcache.c:1666
 msgid "Overwrite an existing cache, even if up to date"
 msgstr "एउटा अवस्थित क्याशलाई अधिलेखन गर्नुहोस्, यदि अद्यावधिक भए पनि"
 
-#: ctk/updateiconcache.c:1665
+#: ctk/updateiconcache.c:1667
 msgid "Don't check for the existence of index.theme"
 msgstr "अवस्थित index.theme को लागि जाँच नगर्नुहोस्"
 
-#: ctk/updateiconcache.c:1666
+#: ctk/updateiconcache.c:1668
 msgid "Don't include image data in the cache"
 msgstr "क्याशमा छवि डेटा समावेश नगर्नुहोस्"
 
-#: ctk/updateiconcache.c:1667
+#: ctk/updateiconcache.c:1669
 #, fuzzy
 msgid "Include image data in the cache"
 msgstr "क्याशमा छवि डेटा समावेश नगर्नुहोस्"
 
-#: ctk/updateiconcache.c:1668
+#: ctk/updateiconcache.c:1670
 msgid "Output a C header file"
 msgstr "सी हेडर फाइल निर्गत गर्नुहोस्"
 
-#: ctk/updateiconcache.c:1669
+#: ctk/updateiconcache.c:1671
 msgid "Turn off verbose output"
 msgstr "भरबोस निर्गत बन्द गर्नुहोस्"
 
-#: ctk/updateiconcache.c:1670
+#: ctk/updateiconcache.c:1672
 msgid "Validate existing icon cache"
 msgstr "अवस्थित प्रतिमा क्याश प्रमाणीत गर्नुहोस्"
 
-#: ctk/updateiconcache.c:1737
+#: ctk/updateiconcache.c:1739
 #, c-format
 msgid "File not found: %s\n"
 msgstr "फाइल फेला परेन: %s\n"
 
-#: ctk/updateiconcache.c:1743
+#: ctk/updateiconcache.c:1745
 #, c-format
 msgid "Not a valid icon cache: %s\n"
 msgstr "वैध प्रतिमा क्याश होइन: %s\n"
 
-#: ctk/updateiconcache.c:1756
+#: ctk/updateiconcache.c:1758
 #, fuzzy, c-format
 msgid "No theme index file.\n"
 msgstr ""
@@ -8155,7 +8155,7 @@ msgstr ""
 "यदि तपाईँ यहाँ साँच्चै एउटा प्रतिमा क्याश सिर्जना गर्न चाहनुहुन्छ भने, --ignore-theme-"
 "index प्रयोग गर्नुहोस् ।\n"
 
-#: ctk/updateiconcache.c:1760
+#: ctk/updateiconcache.c:1762
 #, c-format
 msgid ""
 "No theme index file in '%s'.\n"
