@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+ 3.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-13 13:45+0200\n"
+"POT-Creation-Date: 2024-12-19 12:06+0100\n"
 "PO-Revision-Date: 2019-10-08 18:54+0800\n"
 "Last-Translator: pan93412 <pan93412@gmail.com>\n"
 "Language-Team: Chinese <zh-l10n@linux.org.tw>\n"
@@ -920,24 +920,24 @@ msgstr "動作目標值"
 msgid "The parameter for action invocations"
 msgstr "動作調用的參數"
 
-#: ctk/ctkactionbar.c:338 ctk/ctkbox.c:358 ctk/ctkheaderbar.c:2013
+#: ctk/ctkactionbar.c:340 ctk/ctkbox.c:358 ctk/ctkheaderbar.c:2013
 msgid "Pack type"
 msgstr "排列方式"
 
-#: ctk/ctkactionbar.c:339 ctk/ctkbox.c:359 ctk/ctkheaderbar.c:2014
+#: ctk/ctkactionbar.c:341 ctk/ctkbox.c:359 ctk/ctkheaderbar.c:2014
 msgid ""
 "A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
 msgstr ""
 "CtkPackType 意指子元件的排列方式是從主元件的開始位置，還是從結束位置進行排列"
 
-#: ctk/ctkactionbar.c:345 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
+#: ctk/ctkactionbar.c:347 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
 #: ctk/ctknotebook.c:840 ctk/ctkpaned.c:368 ctk/ctkpopover.c:1767
 #: ctk/ctkpopovermenu.c:384 ctk/ctkstack.c:537 ctk/ctktoolitemgroup.c:1714
 msgid "Position"
 msgstr "位置"
 
-#: ctk/ctkactionbar.c:346 ctk/ctkbox.c:366 ctk/ctkheaderbar.c:2021
+#: ctk/ctkactionbar.c:348 ctk/ctkbox.c:366 ctk/ctkheaderbar.c:2021
 #: ctk/ctknotebook.c:841 ctk/ctkpopovermenu.c:385 ctk/ctkstack.c:538
 msgid "The index of the child in the parent"
 msgstr "子元件在母元件中的索引編號"
@@ -3891,51 +3891,51 @@ msgstr "按鈕數目"
 msgid "Button number to listen to"
 msgstr "監聽的按鈕數目"
 
-#: ctk/ctkglarea.c:784
+#: ctk/ctkglarea.c:786
 msgid "Context"
 msgstr "脈絡"
 
-#: ctk/ctkglarea.c:785
+#: ctk/ctkglarea.c:787
 msgid "The GL context"
 msgstr "GL 脈絡"
 
-#: ctk/ctkglarea.c:807
+#: ctk/ctkglarea.c:809
 msgid "Auto render"
 msgstr "自動繪製"
 
-#: ctk/ctkglarea.c:808
+#: ctk/ctkglarea.c:810
 msgid "Whether the CtkGLArea renders on each redraw"
 msgstr "CtkGLArea 繪製器是否在每個重繪"
 
-#: ctk/ctkglarea.c:828
+#: ctk/ctkglarea.c:830
 msgid "Has alpha"
 msgstr "具有透明"
 
-#: ctk/ctkglarea.c:829
+#: ctk/ctkglarea.c:831
 msgid "Whether the color buffer has an alpha component"
 msgstr "顏色緩衝區是否含有透明度元件"
 
-#: ctk/ctkglarea.c:845
+#: ctk/ctkglarea.c:847
 msgid "Has depth buffer"
 msgstr "具有深度緩衝區"
 
-#: ctk/ctkglarea.c:846
+#: ctk/ctkglarea.c:848
 msgid "Whether a depth buffer is allocated"
 msgstr "是否配置深度緩衝區"
 
-#: ctk/ctkglarea.c:862
+#: ctk/ctkglarea.c:864
 msgid "Has stencil buffer"
 msgstr "具有板模緩衝區"
 
-#: ctk/ctkglarea.c:863
+#: ctk/ctkglarea.c:865
 msgid "Whether a stencil buffer is allocated"
 msgstr "是否配置板模緩衝區"
 
-#: ctk/ctkglarea.c:881
+#: ctk/ctkglarea.c:883
 msgid "Use OpenGL ES"
 msgstr "使用 OpenGL ES"
 
-#: ctk/ctkglarea.c:882
+#: ctk/ctkglarea.c:884
 msgid "Whether the context uses OpenGL or OpenGL ES"
 msgstr "脈絡是否使用 OpenGL 或 OpenGL ES"
 

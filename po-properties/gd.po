@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-13 13:45+0200\n"
+"POT-Creation-Date: 2024-12-19 12:06+0100\n"
 "PO-Revision-Date: 2018-02-23 17:24+0100\n"
 "Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
 "Language-Team: Fòram na Gàidhlig\n"
@@ -974,11 +974,11 @@ msgstr "Luach targaid a’ ghnìomha"
 msgid "The parameter for action invocations"
 msgstr "Am paramadair airson gairmean air gnìomhan"
 
-#: ctk/ctkactionbar.c:338 ctk/ctkbox.c:358 ctk/ctkheaderbar.c:2013
+#: ctk/ctkactionbar.c:340 ctk/ctkbox.c:358 ctk/ctkheaderbar.c:2013
 msgid "Pack type"
 msgstr "Seòrsa na pacaide"
 
-#: ctk/ctkactionbar.c:339 ctk/ctkbox.c:359 ctk/ctkheaderbar.c:2014
+#: ctk/ctkactionbar.c:341 ctk/ctkbox.c:359 ctk/ctkheaderbar.c:2014
 msgid ""
 "A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
@@ -986,13 +986,13 @@ msgstr ""
 "CtkPackType a nochdas an dèid am pàiste a phacadh a thaobh toiseach no "
 "deireadh a’ phàraint"
 
-#: ctk/ctkactionbar.c:345 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
+#: ctk/ctkactionbar.c:347 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
 #: ctk/ctknotebook.c:840 ctk/ctkpaned.c:368 ctk/ctkpopover.c:1767
 #: ctk/ctkpopovermenu.c:384 ctk/ctkstack.c:537 ctk/ctktoolitemgroup.c:1714
 msgid "Position"
 msgstr "Ionad"
 
-#: ctk/ctkactionbar.c:346 ctk/ctkbox.c:366 ctk/ctkheaderbar.c:2021
+#: ctk/ctkactionbar.c:348 ctk/ctkbox.c:366 ctk/ctkheaderbar.c:2021
 #: ctk/ctknotebook.c:841 ctk/ctkpopovermenu.c:385 ctk/ctkstack.c:538
 msgid "The index of the child in the parent"
 msgstr "Inneacs a’ phàiste sa phàrant"
@@ -4104,52 +4104,52 @@ msgstr "Àireamh a’ phutain"
 msgid "Button number to listen to"
 msgstr "Àireamh a’ phutain a thèid èisteachd ris"
 
-#: ctk/ctkglarea.c:784
+#: ctk/ctkglarea.c:786
 msgid "Context"
 msgstr "Co-theacsa"
 
-#: ctk/ctkglarea.c:785
+#: ctk/ctkglarea.c:787
 msgid "The GL context"
 msgstr "Co-theacsa GL"
 
-#: ctk/ctkglarea.c:807
+#: ctk/ctkglarea.c:809
 msgid "Auto render"
 msgstr "Reandaradh fèin-obrachail"
 
-#: ctk/ctkglarea.c:808
+#: ctk/ctkglarea.c:810
 msgid "Whether the CtkGLArea renders on each redraw"
 msgstr ""
 "Co-dhiù an dèid CtkGLArea a reandaradh leis gach ath-tharraing gus nach dèid"
 
-#: ctk/ctkglarea.c:828
+#: ctk/ctkglarea.c:830
 msgid "Has alpha"
 msgstr "Tha alpha aige"
 
-#: ctk/ctkglarea.c:829
+#: ctk/ctkglarea.c:831
 msgid "Whether the color buffer has an alpha component"
 msgstr "Co-dhiù am bi co-phàirt alpha aig bufair nan dath gus nach bi"
 
-#: ctk/ctkglarea.c:845
+#: ctk/ctkglarea.c:847
 msgid "Has depth buffer"
 msgstr "Tha bufair doimhneachd aige"
 
-#: ctk/ctkglarea.c:846
+#: ctk/ctkglarea.c:848
 msgid "Whether a depth buffer is allocated"
 msgstr "Co-dhiù an dèid bufair doimhneachd a riarachadh gus nach dèid"
 
-#: ctk/ctkglarea.c:862
+#: ctk/ctkglarea.c:864
 msgid "Has stencil buffer"
 msgstr "Tha bufair steansail aige"
 
-#: ctk/ctkglarea.c:863
+#: ctk/ctkglarea.c:865
 msgid "Whether a stencil buffer is allocated"
 msgstr "Co-dhiù an dèid bufair steansail a riarachadh gus nach dèid"
 
-#: ctk/ctkglarea.c:881
+#: ctk/ctkglarea.c:883
 msgid "Use OpenGL ES"
 msgstr "Cleachd OpenGL ES"
 
-#: ctk/ctkglarea.c:882
+#: ctk/ctkglarea.c:884
 msgid "Whether the context uses OpenGL or OpenGL ES"
 msgstr "Co-dhiù an cleachd an co-theacsa OpenGL gus an cleachd e OpenGL ES"
 

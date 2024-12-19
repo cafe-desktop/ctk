@@ -35,7 +35,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+ 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-13 13:45+0200\n"
+"POT-Creation-Date: 2024-12-19 12:06+0100\n"
 "PO-Revision-Date: 2020-08-25 16:36+0200\n"
 "Last-Translator: Nathan Follens <nthn@unseen.is>\n"
 "Language-Team: Dutch <gnome-nl-list@gnome.org>\n"
@@ -998,11 +998,11 @@ msgstr "Doelwaarde actie"
 msgid "The parameter for action invocations"
 msgstr "De parameter voor aanroepen van actie"
 
-#: ctk/ctkactionbar.c:338 ctk/ctkbox.c:358 ctk/ctkheaderbar.c:2013
+#: ctk/ctkactionbar.c:340 ctk/ctkbox.c:358 ctk/ctkheaderbar.c:2013
 msgid "Pack type"
 msgstr "Verpakkingsstijl"
 
-#: ctk/ctkactionbar.c:339 ctk/ctkbox.c:359 ctk/ctkheaderbar.c:2014
+#: ctk/ctkactionbar.c:341 ctk/ctkbox.c:359 ctk/ctkheaderbar.c:2014
 msgid ""
 "A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
@@ -1010,13 +1010,13 @@ msgstr ""
 "Een CtkPackType welke aangeeft of de dochter verpakt is met het begin of met "
 "het einde van de moeder"
 
-#: ctk/ctkactionbar.c:345 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
+#: ctk/ctkactionbar.c:347 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
 #: ctk/ctknotebook.c:840 ctk/ctkpaned.c:368 ctk/ctkpopover.c:1767
 #: ctk/ctkpopovermenu.c:384 ctk/ctkstack.c:537 ctk/ctktoolitemgroup.c:1714
 msgid "Position"
 msgstr "Positie"
 
-#: ctk/ctkactionbar.c:346 ctk/ctkbox.c:366 ctk/ctkheaderbar.c:2021
+#: ctk/ctkactionbar.c:348 ctk/ctkbox.c:366 ctk/ctkheaderbar.c:2021
 #: ctk/ctknotebook.c:841 ctk/ctkpopovermenu.c:385 ctk/ctkstack.c:538
 msgid "The index of the child in the parent"
 msgstr "De index van de dochter in de moeder"
@@ -4108,52 +4108,52 @@ msgstr "Knopnummer"
 msgid "Button number to listen to"
 msgstr "Knopnummer waarnaar moet worden geluisterd"
 
-#: ctk/ctkglarea.c:784
+#: ctk/ctkglarea.c:786
 msgid "Context"
 msgstr "Context"
 
-#: ctk/ctkglarea.c:785
+#: ctk/ctkglarea.c:787
 msgid "The GL context"
 msgstr "De GL-context"
 
 # de te maken tekst
-#: ctk/ctkglarea.c:807
+#: ctk/ctkglarea.c:809
 msgid "Auto render"
 msgstr "Automatisch renderen"
 
-#: ctk/ctkglarea.c:808
+#: ctk/ctkglarea.c:810
 msgid "Whether the CtkGLArea renders on each redraw"
 msgstr "Of de CtkGLArea rendert telkens wanneer er opnieuw getekend wordt"
 
-#: ctk/ctkglarea.c:828
+#: ctk/ctkglarea.c:830
 msgid "Has alpha"
 msgstr "Heeft alpha"
 
-#: ctk/ctkglarea.c:829
+#: ctk/ctkglarea.c:831
 msgid "Whether the color buffer has an alpha component"
 msgstr "Of de kleurbuffer een alpha-component heeft"
 
-#: ctk/ctkglarea.c:845
+#: ctk/ctkglarea.c:847
 msgid "Has depth buffer"
 msgstr "Heeft dieptebuffer"
 
-#: ctk/ctkglarea.c:846
+#: ctk/ctkglarea.c:848
 msgid "Whether a depth buffer is allocated"
 msgstr "Of er een dieptebuffer is toegewezen"
 
-#: ctk/ctkglarea.c:862
+#: ctk/ctkglarea.c:864
 msgid "Has stencil buffer"
 msgstr "Heeft stencilbuffer"
 
-#: ctk/ctkglarea.c:863
+#: ctk/ctkglarea.c:865
 msgid "Whether a stencil buffer is allocated"
 msgstr "Of er een stencilbuffer is toegewezen"
 
-#: ctk/ctkglarea.c:881
+#: ctk/ctkglarea.c:883
 msgid "Use OpenGL ES"
 msgstr "OpenGL ES gebruiken"
 
-#: ctk/ctkglarea.c:882
+#: ctk/ctkglarea.c:884
 msgid "Whether the context uses OpenGL or OpenGL ES"
 msgstr "Of de context OpenGL of OpenGL ES gebruikt"
 

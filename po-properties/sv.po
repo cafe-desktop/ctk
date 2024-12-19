@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+ properties\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-13 13:45+0200\n"
+"POT-Creation-Date: 2024-12-19 12:06+0100\n"
 "PO-Revision-Date: 2020-06-25 21:59+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -962,11 +962,11 @@ msgstr "Åtgärdens målvärde"
 msgid "The parameter for action invocations"
 msgstr "Parametern för åtgärdsanrop"
 
-#: ctk/ctkactionbar.c:338 ctk/ctkbox.c:358 ctk/ctkheaderbar.c:2013
+#: ctk/ctkactionbar.c:340 ctk/ctkbox.c:358 ctk/ctkheaderbar.c:2013
 msgid "Pack type"
 msgstr "Packningstyp"
 
-#: ctk/ctkactionbar.c:339 ctk/ctkbox.c:359 ctk/ctkheaderbar.c:2014
+#: ctk/ctkactionbar.c:341 ctk/ctkbox.c:359 ctk/ctkheaderbar.c:2014
 msgid ""
 "A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
@@ -974,13 +974,13 @@ msgstr ""
 "En CtkPackType som indikerar huruvida den underordnade packas med avseende "
 "på början eller slutet på den överordnade"
 
-#: ctk/ctkactionbar.c:345 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
+#: ctk/ctkactionbar.c:347 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
 #: ctk/ctknotebook.c:840 ctk/ctkpaned.c:368 ctk/ctkpopover.c:1767
 #: ctk/ctkpopovermenu.c:384 ctk/ctkstack.c:537 ctk/ctktoolitemgroup.c:1714
 msgid "Position"
 msgstr "Position"
 
-#: ctk/ctkactionbar.c:346 ctk/ctkbox.c:366 ctk/ctkheaderbar.c:2021
+#: ctk/ctkactionbar.c:348 ctk/ctkbox.c:366 ctk/ctkheaderbar.c:2021
 #: ctk/ctknotebook.c:841 ctk/ctkpopovermenu.c:385 ctk/ctkstack.c:538
 msgid "The index of the child in the parent"
 msgstr "Indexet för den underordnade i den överordnade"
@@ -4032,51 +4032,51 @@ msgstr "Knappnummer"
 msgid "Button number to listen to"
 msgstr "Knappnummer att lyssna på"
 
-#: ctk/ctkglarea.c:784
+#: ctk/ctkglarea.c:786
 msgid "Context"
 msgstr "Kontext"
 
-#: ctk/ctkglarea.c:785
+#: ctk/ctkglarea.c:787
 msgid "The GL context"
 msgstr "GL-kontexten"
 
-#: ctk/ctkglarea.c:807
+#: ctk/ctkglarea.c:809
 msgid "Auto render"
 msgstr "Automatisk rendering"
 
-#: ctk/ctkglarea.c:808
+#: ctk/ctkglarea.c:810
 msgid "Whether the CtkGLArea renders on each redraw"
 msgstr "Huruvida CtkGLArea-ytan renderas vid varje omritning"
 
-#: ctk/ctkglarea.c:828
+#: ctk/ctkglarea.c:830
 msgid "Has alpha"
 msgstr "Har alfa"
 
-#: ctk/ctkglarea.c:829
+#: ctk/ctkglarea.c:831
 msgid "Whether the color buffer has an alpha component"
 msgstr "Huruvida färgbufferten har en alfakomponent"
 
-#: ctk/ctkglarea.c:845
+#: ctk/ctkglarea.c:847
 msgid "Has depth buffer"
 msgstr "Har djupbuffert"
 
-#: ctk/ctkglarea.c:846
+#: ctk/ctkglarea.c:848
 msgid "Whether a depth buffer is allocated"
 msgstr "Huruvida en djupbuffert är allokerad"
 
-#: ctk/ctkglarea.c:862
+#: ctk/ctkglarea.c:864
 msgid "Has stencil buffer"
 msgstr "Har stencilbuffert"
 
-#: ctk/ctkglarea.c:863
+#: ctk/ctkglarea.c:865
 msgid "Whether a stencil buffer is allocated"
 msgstr "Huruvida en stencilbuffert är allokerad"
 
-#: ctk/ctkglarea.c:881
+#: ctk/ctkglarea.c:883
 msgid "Use OpenGL ES"
 msgstr "Använd OpenGL ES"
 
-#: ctk/ctkglarea.c:882
+#: ctk/ctkglarea.c:884
 msgid "Whether the context uses OpenGL or OpenGL ES"
 msgstr "Huruvida kontexten använder OpenGL eller OpenGL ES"
 

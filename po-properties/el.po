@@ -29,7 +29,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+-properties.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-13 13:45+0200\n"
+"POT-Creation-Date: 2024-12-19 12:06+0100\n"
 "PO-Revision-Date: 2019-06-17 01:20+0300\n"
 "Last-Translator: Efstathios Iosifidis <eiosifidis@gnome.org>\n"
 "Language-Team: team@lists.gnome.gr\n"
@@ -987,11 +987,11 @@ msgstr "Τιμή προορισμού ενέργειας"
 msgid "The parameter for action invocations"
 msgstr "Η παράμετρος για επικλήσεις ενέργειας"
 
-#: ctk/ctkactionbar.c:338 ctk/ctkbox.c:358 ctk/ctkheaderbar.c:2013
+#: ctk/ctkactionbar.c:340 ctk/ctkbox.c:358 ctk/ctkheaderbar.c:2013
 msgid "Pack type"
 msgstr "Τύπος συσκευασίας"
 
-#: ctk/ctkactionbar.c:339 ctk/ctkbox.c:359 ctk/ctkheaderbar.c:2014
+#: ctk/ctkactionbar.c:341 ctk/ctkbox.c:359 ctk/ctkheaderbar.c:2014
 msgid ""
 "A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
@@ -999,13 +999,13 @@ msgstr ""
 "Ο τύπος CtkPack που ορίζει αν το θυγατρικό θα συσκευάζεται με αναφορά στην "
 "αρχή ή το τέλος του γονικού"
 
-#: ctk/ctkactionbar.c:345 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
+#: ctk/ctkactionbar.c:347 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
 #: ctk/ctknotebook.c:840 ctk/ctkpaned.c:368 ctk/ctkpopover.c:1767
 #: ctk/ctkpopovermenu.c:384 ctk/ctkstack.c:537 ctk/ctktoolitemgroup.c:1714
 msgid "Position"
 msgstr "Θέση"
 
-#: ctk/ctkactionbar.c:346 ctk/ctkbox.c:366 ctk/ctkheaderbar.c:2021
+#: ctk/ctkactionbar.c:348 ctk/ctkbox.c:366 ctk/ctkheaderbar.c:2021
 #: ctk/ctknotebook.c:841 ctk/ctkpopovermenu.c:385 ctk/ctkstack.c:538
 msgid "The index of the child in the parent"
 msgstr "Ο δείκτης του θυγατρικού στο γονικό"
@@ -4083,51 +4083,51 @@ msgstr "Αριθμητικό πλήκτρο"
 msgid "Button number to listen to"
 msgstr "Αριθμητικό πλήκτρο για να ακούσετε"
 
-#: ctk/ctkglarea.c:784
+#: ctk/ctkglarea.c:786
 msgid "Context"
 msgstr "Περιβάλλον"
 
-#: ctk/ctkglarea.c:785
+#: ctk/ctkglarea.c:787
 msgid "The GL context"
 msgstr "Το περιβάλλον GL"
 
-#: ctk/ctkglarea.c:807
+#: ctk/ctkglarea.c:809
 msgid "Auto render"
 msgstr "Αυτόματη απόδοση"
 
-#: ctk/ctkglarea.c:808
+#: ctk/ctkglarea.c:810
 msgid "Whether the CtkGLArea renders on each redraw"
 msgstr "Αν η περιοχή CtkGL αποδίδει σε κάθε επανασχεδίαση"
 
-#: ctk/ctkglarea.c:828
+#: ctk/ctkglarea.c:830
 msgid "Has alpha"
 msgstr "Έχει άλφα"
 
-#: ctk/ctkglarea.c:829
+#: ctk/ctkglarea.c:831
 msgid "Whether the color buffer has an alpha component"
 msgstr "Aν η ενδιάμεση μνήμη του χρώματος έχει στοιχείο άλφα"
 
-#: ctk/ctkglarea.c:845
+#: ctk/ctkglarea.c:847
 msgid "Has depth buffer"
 msgstr "Έχει ενδιάμεση μνήμη βάθους"
 
-#: ctk/ctkglarea.c:846
+#: ctk/ctkglarea.c:848
 msgid "Whether a depth buffer is allocated"
 msgstr "Αν μια ενδιάμεση μνήμη βάθους κατανέμεται"
 
-#: ctk/ctkglarea.c:862
+#: ctk/ctkglarea.c:864
 msgid "Has stencil buffer"
 msgstr "Έχει ενδιάμεση μνήμη ίχνους"
 
-#: ctk/ctkglarea.c:863
+#: ctk/ctkglarea.c:865
 msgid "Whether a stencil buffer is allocated"
 msgstr "Αν κατανέμεται η ενδιάμεση μνήμη ίχνους"
 
-#: ctk/ctkglarea.c:881
+#: ctk/ctkglarea.c:883
 msgid "Use OpenGL ES"
 msgstr "Χρήση OpenGL ES"
 
-#: ctk/ctkglarea.c:882
+#: ctk/ctkglarea.c:884
 msgid "Whether the context uses OpenGL or OpenGL ES"
 msgstr "Αν το περιεχόμενο χρησιμοποιεί OpenGL ή OpenGL ES"
 
@@ -8474,8 +8474,8 @@ msgstr "Αν το κουμπί εναλλαγής θα πρέπει να πατ�
 #: ctk/ctktogglebutton.c:195
 msgid "If the toggle button is in an \"in between\" state"
 msgstr ""
-"Αν το κουμπί εναλλαγής θα πρέπει να είναι σε κατάσταση \"in "
-"between\" (μεταξύ)"
+"Αν το κουμπί εναλλαγής θα πρέπει να είναι σε κατάσταση \"in between\" "
+"(μεταξύ)"
 
 #: ctk/ctktogglebutton.c:201
 msgid "Draw Indicator"

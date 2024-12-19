@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-13 13:45+0200\n"
+"POT-Creation-Date: 2024-12-19 12:06+0100\n"
 "PO-Revision-Date: 2010-05-16 16:06 -0400\n"
 "Last-Translator: Thomas Thurman <tthurman@gnome.org>\n"
 "Language-Team: Shavian <ubuntu-l10n-en-shaw@launchpad.net>\n"
@@ -976,11 +976,11 @@ msgstr "𐑨𐑒𐑖𐑩𐑯 𐑺𐑦𐑩 𐑚𐑹𐑛𐑼"
 msgid "The parameter for action invocations"
 msgstr ""
 
-#: ctk/ctkactionbar.c:338 ctk/ctkbox.c:358 ctk/ctkheaderbar.c:2013
+#: ctk/ctkactionbar.c:340 ctk/ctkbox.c:358 ctk/ctkheaderbar.c:2013
 msgid "Pack type"
 msgstr "𐑐𐑨𐑒 𐑑𐑲𐑐"
 
-#: ctk/ctkactionbar.c:339 ctk/ctkbox.c:359 ctk/ctkheaderbar.c:2014
+#: ctk/ctkactionbar.c:341 ctk/ctkbox.c:359 ctk/ctkheaderbar.c:2014
 #, fuzzy
 msgid ""
 "A CtkPackType indicating whether the child is packed with reference to the "
@@ -989,13 +989,13 @@ msgstr ""
 "𐑩 CtkPackType 𐑦𐑯𐑛𐑦𐑒𐑱𐑑𐑦𐑙 𐑢𐑧𐑞𐑼 𐑞 𐑗𐑲𐑤𐑛 𐑦𐑟 𐑐𐑨𐑒𐑑 𐑢𐑦𐑞 𐑮𐑧𐑓𐑼𐑩𐑯𐑕 𐑑 𐑞 𐑕𐑑𐑸𐑑 𐑹 𐑧𐑯𐑛 𐑝 𐑞 "
 "𐑐𐑺𐑩𐑯𐑑"
 
-#: ctk/ctkactionbar.c:345 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
+#: ctk/ctkactionbar.c:347 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
 #: ctk/ctknotebook.c:840 ctk/ctkpaned.c:368 ctk/ctkpopover.c:1767
 #: ctk/ctkpopovermenu.c:384 ctk/ctkstack.c:537 ctk/ctktoolitemgroup.c:1714
 msgid "Position"
 msgstr "𐑐𐑩𐑟𐑦𐑖𐑩𐑯"
 
-#: ctk/ctkactionbar.c:346 ctk/ctkbox.c:366 ctk/ctkheaderbar.c:2021
+#: ctk/ctkactionbar.c:348 ctk/ctkbox.c:366 ctk/ctkheaderbar.c:2021
 #: ctk/ctknotebook.c:841 ctk/ctkpopovermenu.c:385 ctk/ctkstack.c:538
 msgid "The index of the child in the parent"
 msgstr "𐑞 𐑦𐑯𐑛𐑧𐑒𐑕 𐑝 𐑞 𐑗𐑲𐑤𐑛 𐑦𐑯 𐑞 𐑐𐑺𐑩𐑯𐑑"
@@ -4204,58 +4204,58 @@ msgstr "𐑚𐑳𐑑𐑩𐑯 𐑮𐑦𐑤𐑰𐑓"
 msgid "Button number to listen to"
 msgstr ""
 
-#: ctk/ctkglarea.c:784
+#: ctk/ctkglarea.c:786
 #, fuzzy
 msgid "Context"
 msgstr "𐑖𐑴 𐑑𐑧𐑒𐑕𐑑"
 
-#: ctk/ctkglarea.c:785
+#: ctk/ctkglarea.c:787
 msgid "The GL context"
 msgstr ""
 
-#: ctk/ctkglarea.c:807
+#: ctk/ctkglarea.c:809
 #, fuzzy
 msgid "Auto render"
 msgstr "𐑑𐑧𐑒𐑕𐑑 𐑑 𐑮𐑧𐑯𐑛𐑻"
 
-#: ctk/ctkglarea.c:808
+#: ctk/ctkglarea.c:810
 #, fuzzy
 msgid "Whether the CtkGLArea renders on each redraw"
 msgstr "𐑢𐑧𐑞𐑼 𐑞 𐑣𐑧𐑛𐑼 𐑒𐑨𐑯 𐑚𐑰 𐑒𐑤𐑦𐑒𐑑"
 
-#: ctk/ctkglarea.c:828
+#: ctk/ctkglarea.c:830
 #, fuzzy
 msgid "Has alpha"
 msgstr "𐑣𐑨𐑟 𐑨𐑤𐑓𐑩"
 
-#: ctk/ctkglarea.c:829
+#: ctk/ctkglarea.c:831
 #, fuzzy
 msgid "Whether the color buffer has an alpha component"
 msgstr "𐑢𐑧𐑞𐑼 𐑞 pixbuf 𐑣𐑨𐑟 𐑩𐑯 𐑨𐑤𐑓𐑩 𐑗𐑨𐑯𐑩𐑤"
 
-#: ctk/ctkglarea.c:845
+#: ctk/ctkglarea.c:847
 msgid "Has depth buffer"
 msgstr ""
 
-#: ctk/ctkglarea.c:846
+#: ctk/ctkglarea.c:848
 #, fuzzy
 msgid "Whether a depth buffer is allocated"
 msgstr "𐑢𐑧𐑞𐑼 𐑞 𐑕𐑐𐑦𐑯𐑻 𐑦𐑟 𐑨𐑒𐑑𐑦𐑝"
 
-#: ctk/ctkglarea.c:862
+#: ctk/ctkglarea.c:864
 msgid "Has stencil buffer"
 msgstr ""
 
-#: ctk/ctkglarea.c:863
+#: ctk/ctkglarea.c:865
 #, fuzzy
 msgid "Whether a stencil buffer is allocated"
 msgstr "𐑢𐑧𐑞𐑼 𐑞 𐑕𐑐𐑦𐑯𐑻 𐑦𐑟 𐑨𐑒𐑑𐑦𐑝"
 
-#: ctk/ctkglarea.c:881
+#: ctk/ctkglarea.c:883
 msgid "Use OpenGL ES"
 msgstr ""
 
-#: ctk/ctkglarea.c:882
+#: ctk/ctkglarea.c:884
 msgid "Whether the context uses OpenGL or OpenGL ES"
 msgstr ""
 
@@ -10141,5 +10141,3 @@ msgstr ""
 #, fuzzy
 msgid "The title of the color profile to use"
 msgstr "𐑞 𐑑𐑲𐑑𐑩𐑤 𐑝 𐑞 𐑒𐑳𐑤𐑼 𐑕𐑦𐑤𐑧𐑒𐑖𐑩𐑯 𐑛𐑲𐑩𐑤𐑪𐑜"
-
-#, fuzzy

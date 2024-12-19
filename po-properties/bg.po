@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+-properties master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-13 13:45+0200\n"
+"POT-Creation-Date: 2024-12-19 12:06+0100\n"
 "PO-Revision-Date: 2013-01-12 07:10+0200\n"
 "Last-Translator: Alexander Shopov <ash@kambanaria.org>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
@@ -974,11 +974,11 @@ msgstr "стойност на действието"
 msgid "The parameter for action invocations"
 msgstr "Параметърът за извикване на действието"
 
-#: ctk/ctkactionbar.c:338 ctk/ctkbox.c:358 ctk/ctkheaderbar.c:2013
+#: ctk/ctkactionbar.c:340 ctk/ctkbox.c:358 ctk/ctkheaderbar.c:2013
 msgid "Pack type"
 msgstr "Вид пакетиране"
 
-#: ctk/ctkactionbar.c:339 ctk/ctkbox.c:359 ctk/ctkheaderbar.c:2014
+#: ctk/ctkactionbar.c:341 ctk/ctkbox.c:359 ctk/ctkheaderbar.c:2014
 msgid ""
 "A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
@@ -986,13 +986,13 @@ msgstr ""
 "CtkPackType, който указва, дали дъщерният елемент е пакетиран спрямо "
 "началото или края на контейнера"
 
-#: ctk/ctkactionbar.c:345 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
+#: ctk/ctkactionbar.c:347 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
 #: ctk/ctknotebook.c:840 ctk/ctkpaned.c:368 ctk/ctkpopover.c:1767
 #: ctk/ctkpopovermenu.c:384 ctk/ctkstack.c:537 ctk/ctktoolitemgroup.c:1714
 msgid "Position"
 msgstr "Позиция"
 
-#: ctk/ctkactionbar.c:346 ctk/ctkbox.c:366 ctk/ctkheaderbar.c:2021
+#: ctk/ctkactionbar.c:348 ctk/ctkbox.c:366 ctk/ctkheaderbar.c:2021
 #: ctk/ctknotebook.c:841 ctk/ctkpopovermenu.c:385 ctk/ctkstack.c:538
 msgid "The index of the child in the parent"
 msgstr "Индексът на дъщерния елемент в контейнера"
@@ -1420,9 +1420,8 @@ msgid ""
 "How to lay out the buttons in the box. Possible values are: spread, edge, "
 "start and end"
 msgstr ""
-"Как да се подредят бутоните в рамката. Възможни стойности са "
-"„spread“ (разтягане), „edge“ (по края), „start“ (от началото), „end“ (от "
-"края)"
+"Как да се подредят бутоните в рамката. Възможни стойности са „spread“ "
+"(разтягане), „edge“ (по края), „start“ (от началото), „end“ (от края)"
 
 #: ctk/ctkbbox.c:284
 msgid "Secondary"
@@ -4074,59 +4073,59 @@ msgstr "Вдаване на бутон"
 msgid "Button number to listen to"
 msgstr ""
 
-#: ctk/ctkglarea.c:784
+#: ctk/ctkglarea.c:786
 #, fuzzy
 msgid "Context"
 msgstr "Вид съдържание"
 
-#: ctk/ctkglarea.c:785
+#: ctk/ctkglarea.c:787
 #, fuzzy
 msgid "The GL context"
 msgstr "Контекст за стила"
 
-#: ctk/ctkglarea.c:807
+#: ctk/ctkglarea.c:809
 #, fuzzy
 msgid "Auto render"
 msgstr "Текст за показване"
 
-#: ctk/ctkglarea.c:808
+#: ctk/ctkglarea.c:810
 #, fuzzy
 msgid "Whether the CtkGLArea renders on each redraw"
 msgstr "Дали заглавието може да бъде натискано"
 
-#: ctk/ctkglarea.c:828
+#: ctk/ctkglarea.c:830
 #, fuzzy
 msgid "Has alpha"
 msgstr "Използване на алфа"
 
-#: ctk/ctkglarea.c:829
+#: ctk/ctkglarea.c:831
 #, fuzzy
 msgid "Whether the color buffer has an alpha component"
 msgstr "Дали да се дава алфа стойност на цвета"
 
-#: ctk/ctkglarea.c:845
+#: ctk/ctkglarea.c:847
 msgid "Has depth buffer"
 msgstr ""
 
-#: ctk/ctkglarea.c:846
+#: ctk/ctkglarea.c:848
 #, fuzzy
 msgid "Whether a depth buffer is allocated"
 msgstr "Дали индикаторът за прогрес е активен"
 
-#: ctk/ctkglarea.c:862
+#: ctk/ctkglarea.c:864
 msgid "Has stencil buffer"
 msgstr ""
 
-#: ctk/ctkglarea.c:863
+#: ctk/ctkglarea.c:865
 #, fuzzy
 msgid "Whether a stencil buffer is allocated"
 msgstr "Дали индикаторът за прогрес е активен"
 
-#: ctk/ctkglarea.c:881
+#: ctk/ctkglarea.c:883
 msgid "Use OpenGL ES"
 msgstr ""
 
-#: ctk/ctkglarea.c:882
+#: ctk/ctkglarea.c:884
 msgid "Whether the context uses OpenGL or OpenGL ES"
 msgstr ""
 
@@ -7019,8 +7018,8 @@ msgstr "Стил на подсказките на Xft"
 msgid ""
 "What degree of hinting to use; hintnone, hintslight, hintmedium, or hintfull"
 msgstr ""
-"Колко силно да се използват подсказките: „hintnone“ (никак), "
-"„hintslight“ (леко), „hintmedium“ (средно) или „hintfull“ (изцяло)"
+"Колко силно да се използват подсказките: „hintnone“ (никак), „hintslight“ "
+"(леко), „hintmedium“ (средно) или „hintfull“ (изцяло)"
 
 #: ctk/ctksettings.c:617
 msgid "Xft RGBA"
@@ -7029,8 +7028,8 @@ msgstr "Xft RGBA"
 #: ctk/ctksettings.c:618
 msgid "Type of subpixel antialiasing; none, rgb, bgr, vrgb, vbgr"
 msgstr ""
-"Видът на подпикселното заглаждане: „none“ (никакво), „rgb“ (чзс), "
-"„bgr“ (сзч), „vrgb“ (Вчзс), „vbgr“ (Всзч)"
+"Видът на подпикселното заглаждане: „none“ (никакво), „rgb“ (чзс), „bgr“ "
+"(сзч), „vrgb“ (Вчзс), „vbgr“ (Всзч)"
 
 #: ctk/ctksettings.c:627
 msgid "Xft DPI"
@@ -9943,5 +9942,3 @@ msgstr "Име на цветовия профил"
 #: modules/printbackends/cups/ctkprintercups.c:92
 msgid "The title of the color profile to use"
 msgstr "Името на използвания цветови профил"
-
-#, fuzzy

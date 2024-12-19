@@ -40,7 +40,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+ 2.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-13 13:45+0200\n"
+"POT-Creation-Date: 2024-12-19 12:06+0100\n"
 "PO-Revision-Date: 2019-08-16 13:31+0200\n"
 "Last-Translator: Jordi Mas <jmas@softcatala.org>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
@@ -988,11 +988,11 @@ msgstr "Valor de l'objectiu de l'acció"
 msgid "The parameter for action invocations"
 msgstr "El paràmetre per les crides a l'acció"
 
-#: ctk/ctkactionbar.c:338 ctk/ctkbox.c:358 ctk/ctkheaderbar.c:2013
+#: ctk/ctkactionbar.c:340 ctk/ctkbox.c:358 ctk/ctkheaderbar.c:2013
 msgid "Pack type"
 msgstr "Tipus de paquet"
 
-#: ctk/ctkactionbar.c:339 ctk/ctkbox.c:359 ctk/ctkheaderbar.c:2014
+#: ctk/ctkactionbar.c:341 ctk/ctkbox.c:359 ctk/ctkheaderbar.c:2014
 msgid ""
 "A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
@@ -1000,13 +1000,13 @@ msgstr ""
 "Un CtkPackType que indica si el fill s'empaqueta en referència a l'inici o "
 "al final del pare"
 
-#: ctk/ctkactionbar.c:345 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
+#: ctk/ctkactionbar.c:347 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
 #: ctk/ctknotebook.c:840 ctk/ctkpaned.c:368 ctk/ctkpopover.c:1767
 #: ctk/ctkpopovermenu.c:384 ctk/ctkstack.c:537 ctk/ctktoolitemgroup.c:1714
 msgid "Position"
 msgstr "Posició"
 
-#: ctk/ctkactionbar.c:346 ctk/ctkbox.c:366 ctk/ctkheaderbar.c:2021
+#: ctk/ctkactionbar.c:348 ctk/ctkbox.c:366 ctk/ctkheaderbar.c:2021
 #: ctk/ctknotebook.c:841 ctk/ctkpopovermenu.c:385 ctk/ctkstack.c:538
 msgid "The index of the child in the parent"
 msgstr "L'índex del fill en el pare"
@@ -1428,8 +1428,8 @@ msgid ""
 "How to lay out the buttons in the box. Possible values are: spread, edge, "
 "start and end"
 msgstr ""
-"Com disposar els botons a la caixa. Els valors possibles són: "
-"«spread» (escampats), «edge» (cantonada), «start» (inici) i «end» (final)"
+"Com disposar els botons a la caixa. Els valors possibles són: «spread» "
+"(escampats), «edge» (cantonada), «start» (inici) i «end» (final)"
 
 #: ctk/ctkbbox.c:284
 msgid "Secondary"
@@ -4066,51 +4066,51 @@ msgstr "Número del botó"
 msgid "Button number to listen to"
 msgstr "El número de botó pel qual escoltar"
 
-#: ctk/ctkglarea.c:784
+#: ctk/ctkglarea.c:786
 msgid "Context"
 msgstr "Context"
 
-#: ctk/ctkglarea.c:785
+#: ctk/ctkglarea.c:787
 msgid "The GL context"
 msgstr "El context GL"
 
-#: ctk/ctkglarea.c:807
+#: ctk/ctkglarea.c:809
 msgid "Auto render"
 msgstr "Renderització automàtica"
 
-#: ctk/ctkglarea.c:808
+#: ctk/ctkglarea.c:810
 msgid "Whether the CtkGLArea renders on each redraw"
 msgstr "Si la CtkGLArea es renderitza cada vegada que es torna a dibuixar"
 
-#: ctk/ctkglarea.c:828
+#: ctk/ctkglarea.c:830
 msgid "Has alpha"
 msgstr "Té alfa"
 
-#: ctk/ctkglarea.c:829
+#: ctk/ctkglarea.c:831
 msgid "Whether the color buffer has an alpha component"
 msgstr "Si la memòria intermèdia del color té un component alfa"
 
-#: ctk/ctkglarea.c:845
+#: ctk/ctkglarea.c:847
 msgid "Has depth buffer"
 msgstr "Té una memòria intermèdia de profunditat"
 
-#: ctk/ctkglarea.c:846
+#: ctk/ctkglarea.c:848
 msgid "Whether a depth buffer is allocated"
 msgstr "Si la memòria intermèdia de profunditat està assignada"
 
-#: ctk/ctkglarea.c:862
+#: ctk/ctkglarea.c:864
 msgid "Has stencil buffer"
 msgstr "Té memòria intermèdia de plantilla"
 
-#: ctk/ctkglarea.c:863
+#: ctk/ctkglarea.c:865
 msgid "Whether a stencil buffer is allocated"
 msgstr "Si l'indicador de memòria intermèdia de plantilla està assignat"
 
-#: ctk/ctkglarea.c:881
+#: ctk/ctkglarea.c:883
 msgid "Use OpenGL ES"
 msgstr "Usa OpenGL ES"
 
-#: ctk/ctkglarea.c:882
+#: ctk/ctkglarea.c:884
 msgid "Whether the context uses OpenGL or OpenGL ES"
 msgstr "Si el context usa OpenGL o OpenGL ES"
 
@@ -6934,8 +6934,8 @@ msgstr "Estil de transformació Xft"
 msgid ""
 "What degree of hinting to use; hintnone, hintslight, hintmedium, or hintfull"
 msgstr ""
-"Quin grau de transformació a emprar: «hintnone» (cap), "
-"«hintslight» (senzill), «hintmedium» (mitjà) o «hintfull» (complet)"
+"Quin grau de transformació a emprar: «hintnone» (cap), «hintslight» "
+"(senzill), «hintmedium» (mitjà) o «hintfull» (complet)"
 
 #: ctk/ctksettings.c:617
 msgid "Xft RGBA"
@@ -6945,8 +6945,8 @@ msgstr "RGBA de Xft"
 msgid "Type of subpixel antialiasing; none, rgb, bgr, vrgb, vbgr"
 msgstr ""
 "Tipus de suavitzat de subpíxels: «none» (cap), «rgb» (vermell-verd-blau), "
-"«bgr» (blau-verd-vermell), «vrgb» (vermell-verd-blau vertical) o "
-"«vbgr» (blau-verd-vermell vertical)"
+"«bgr» (blau-verd-vermell), «vrgb» (vermell-verd-blau vertical) o «vbgr» "
+"(blau-verd-vermell vertical)"
 
 #: ctk/ctksettings.c:627
 msgid "Xft DPI"
@@ -8605,8 +8605,8 @@ msgid ""
 "Whether the toolbar item is considered important. When TRUE, toolbar buttons "
 "show text in CTK_TOOLBAR_BOTH_HORIZ mode"
 msgstr ""
-"Si l'element de la barra d'eines es considera important. Si és "
-"«TRUE» (cert), els botons de la barra d'eines mostraran el text en mode "
+"Si l'element de la barra d'eines es considera important. Si és «TRUE» "
+"(cert), els botons de la barra d'eines mostraran el text en mode "
 "CTK_TOOLBAR_BOTH_HORIZ"
 
 #: ctk/ctktoolitemgroup.c:1638

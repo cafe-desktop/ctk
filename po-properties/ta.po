@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+-properties.master.ta\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-13 13:45+0200\n"
+"POT-Creation-Date: 2024-12-19 12:06+0100\n"
 "PO-Revision-Date: 2014-09-23 17:33+0530\n"
 "Last-Translator: Shantha kumar <shkumar@redhat.com>\n"
 "Language-Team: Tamil <kde-i18n-doc@kde.org>\n"
@@ -953,11 +953,11 @@ msgstr "செயல் இலக்கு மதிப்பு"
 msgid "The parameter for action invocations"
 msgstr "செயல் அழைப்புகளுக்கான அளவுரு"
 
-#: ctk/ctkactionbar.c:338 ctk/ctkbox.c:358 ctk/ctkheaderbar.c:2013
+#: ctk/ctkactionbar.c:340 ctk/ctkbox.c:358 ctk/ctkheaderbar.c:2013
 msgid "Pack type"
 msgstr "அடுக்கும் வகை"
 
-#: ctk/ctkactionbar.c:339 ctk/ctkbox.c:359 ctk/ctkheaderbar.c:2014
+#: ctk/ctkactionbar.c:341 ctk/ctkbox.c:359 ctk/ctkheaderbar.c:2014
 msgid ""
 "A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
@@ -965,13 +965,13 @@ msgstr ""
 "சேய் பெற்றோரின் துவக்கம் அல்லது  முடிவு  எதில் அடங்கி உல்லது எனக்காட்டும் ஒரு "
 "ஜிடிகேபாக்டைப்"
 
-#: ctk/ctkactionbar.c:345 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
+#: ctk/ctkactionbar.c:347 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
 #: ctk/ctknotebook.c:840 ctk/ctkpaned.c:368 ctk/ctkpopover.c:1767
 #: ctk/ctkpopovermenu.c:384 ctk/ctkstack.c:537 ctk/ctktoolitemgroup.c:1714
 msgid "Position"
 msgstr "இடம்"
 
-#: ctk/ctkactionbar.c:346 ctk/ctkbox.c:366 ctk/ctkheaderbar.c:2021
+#: ctk/ctkactionbar.c:348 ctk/ctkbox.c:366 ctk/ctkheaderbar.c:2021
 #: ctk/ctknotebook.c:841 ctk/ctkpopovermenu.c:385 ctk/ctkstack.c:538
 msgid "The index of the child in the parent"
 msgstr "பெற்றோரில் சேயின் அகரவரிசை"
@@ -3992,59 +3992,59 @@ msgstr "பொத்தான் எண்"
 msgid "Button number to listen to"
 msgstr "கவனிக்க வேண்டிய பொத்தான் எண்"
 
-#: ctk/ctkglarea.c:784
+#: ctk/ctkglarea.c:786
 #, fuzzy
 msgid "Context"
 msgstr "உள்ளடக்க வகை"
 
-#: ctk/ctkglarea.c:785
+#: ctk/ctkglarea.c:787
 #, fuzzy
 msgid "The GL context"
 msgstr "பாணி சூழல்"
 
-#: ctk/ctkglarea.c:807
+#: ctk/ctkglarea.c:809
 #, fuzzy
 msgid "Auto render"
 msgstr "வரையவேண்டிய உரை"
 
-#: ctk/ctkglarea.c:808
+#: ctk/ctkglarea.c:810
 #, fuzzy
 msgid "Whether the CtkGLArea renders on each redraw"
 msgstr "சைகைகள் தொடுகை நிகழ்வுகளை மட்டும் கையாளுமா"
 
-#: ctk/ctkglarea.c:828
+#: ctk/ctkglarea.c:830
 #, fuzzy
 msgid "Has alpha"
 msgstr "அல்பா (Alpha) உண்டு"
 
-#: ctk/ctkglarea.c:829
+#: ctk/ctkglarea.c:831
 #, fuzzy
 msgid "Whether the color buffer has an alpha component"
 msgstr "pixbuf ஆல்ஃபா தடத்தினை கொண்டுள்ளதா"
 
-#: ctk/ctkglarea.c:845
+#: ctk/ctkglarea.c:847
 msgid "Has depth buffer"
 msgstr ""
 
-#: ctk/ctkglarea.c:846
+#: ctk/ctkglarea.c:848
 #, fuzzy
 msgid "Whether a depth buffer is allocated"
 msgstr "ஸபின்னர் செயலில் உள்ளதா"
 
-#: ctk/ctkglarea.c:862
+#: ctk/ctkglarea.c:864
 msgid "Has stencil buffer"
 msgstr ""
 
-#: ctk/ctkglarea.c:863
+#: ctk/ctkglarea.c:865
 #, fuzzy
 msgid "Whether a stencil buffer is allocated"
 msgstr "ஸபின்னர் செயலில் உள்ளதா"
 
-#: ctk/ctkglarea.c:881
+#: ctk/ctkglarea.c:883
 msgid "Use OpenGL ES"
 msgstr ""
 
-#: ctk/ctkglarea.c:882
+#: ctk/ctkglarea.c:884
 msgid "Whether the context uses OpenGL or OpenGL ES"
 msgstr ""
 

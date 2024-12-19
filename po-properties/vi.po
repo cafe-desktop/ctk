@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+-properties master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-13 13:45+0200\n"
+"POT-Creation-Date: 2024-12-19 12:06+0100\n"
 "PO-Revision-Date: 2015-09-28 15:48+0700\n"
 "Last-Translator: Trần Ngọc Quân <vnwildman@gmail.com>\n"
 "Language-Team: Vietnamese <gnome-vi-list@gnome.org>\n"
@@ -951,11 +951,11 @@ msgstr "giá trị hành động đích"
 msgid "The parameter for action invocations"
 msgstr "Đối số cho gọi thao tác"
 
-#: ctk/ctkactionbar.c:338 ctk/ctkbox.c:358 ctk/ctkheaderbar.c:2013
+#: ctk/ctkactionbar.c:340 ctk/ctkbox.c:358 ctk/ctkheaderbar.c:2013
 msgid "Pack type"
 msgstr "Kiểu đóng gói"
 
-#: ctk/ctkactionbar.c:339 ctk/ctkbox.c:359 ctk/ctkheaderbar.c:2014
+#: ctk/ctkactionbar.c:341 ctk/ctkbox.c:359 ctk/ctkheaderbar.c:2014
 msgid ""
 "A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
@@ -963,13 +963,13 @@ msgstr ""
 "Một CtkPackType ngụ ý nếu đóng gói ô điều khiển từ đầu hay cuối của ô điều "
 "khiển mẹ"
 
-#: ctk/ctkactionbar.c:345 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
+#: ctk/ctkactionbar.c:347 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
 #: ctk/ctknotebook.c:840 ctk/ctkpaned.c:368 ctk/ctkpopover.c:1767
 #: ctk/ctkpopovermenu.c:384 ctk/ctkstack.c:537 ctk/ctktoolitemgroup.c:1714
 msgid "Position"
 msgstr "Vị trí"
 
-#: ctk/ctkactionbar.c:346 ctk/ctkbox.c:366 ctk/ctkheaderbar.c:2021
+#: ctk/ctkactionbar.c:348 ctk/ctkbox.c:366 ctk/ctkheaderbar.c:2021
 #: ctk/ctknotebook.c:841 ctk/ctkpopovermenu.c:385 ctk/ctkstack.c:538
 msgid "The index of the child in the parent"
 msgstr "Chỉ mục của ô điều khiển con trong ô điều khiển mẹ"
@@ -3575,8 +3575,8 @@ msgstr "Dùng mã định dạng"
 #: ctk/ctkexpander.c:325 ctk/ctklabel.c:820
 msgid "The text of the label includes XML markup. See pango_parse_markup()"
 msgstr ""
-"Văn bản của nhãn có chứa mã định dạng XML. Hãy xem "
-"“pango_parse_markup()” (pango phân tách mã định dạng)"
+"Văn bản của nhãn có chứa mã định dạng XML. Hãy xem “pango_parse_markup()” "
+"(pango phân tách mã định dạng)"
 
 #: ctk/ctkexpander.c:342
 msgid "Space to put between the label and the child"
@@ -4007,51 +4007,51 @@ msgstr "Số nút bấm"
 msgid "Button number to listen to"
 msgstr "Số nút để mà nghe nó"
 
-#: ctk/ctkglarea.c:784
+#: ctk/ctkglarea.c:786
 msgid "Context"
 msgstr "Ngữ cảnh"
 
-#: ctk/ctkglarea.c:785
+#: ctk/ctkglarea.c:787
 msgid "The GL context"
 msgstr "Ngữ cảnh GL"
 
-#: ctk/ctkglarea.c:807
+#: ctk/ctkglarea.c:809
 msgid "Auto render"
 msgstr "Vẽ tự động"
 
-#: ctk/ctkglarea.c:808
+#: ctk/ctkglarea.c:810
 msgid "Whether the CtkGLArea renders on each redraw"
 msgstr "CtkGLArea có được vẽ lại mỗi khi vẽ lại hay không"
 
-#: ctk/ctkglarea.c:828
+#: ctk/ctkglarea.c:830
 msgid "Has alpha"
 msgstr "Có trong suốt"
 
-#: ctk/ctkglarea.c:829
+#: ctk/ctkglarea.c:831
 msgid "Whether the color buffer has an alpha component"
 msgstr "Bộ đệm màu có thành phần trong suốt hay không"
 
-#: ctk/ctkglarea.c:845
+#: ctk/ctkglarea.c:847
 msgid "Has depth buffer"
 msgstr "Có bộ đệm sâu"
 
-#: ctk/ctkglarea.c:846
+#: ctk/ctkglarea.c:848
 msgid "Whether a depth buffer is allocated"
 msgstr "Có phân bổ bộ nhớ đệm sâu hay không"
 
-#: ctk/ctkglarea.c:862
+#: ctk/ctkglarea.c:864
 msgid "Has stencil buffer"
 msgstr "Có bộ đệm mẫu"
 
-#: ctk/ctkglarea.c:863
+#: ctk/ctkglarea.c:865
 msgid "Whether a stencil buffer is allocated"
 msgstr "Có phân bổ bộ nhớ đệm khuôn mẫu hay không"
 
-#: ctk/ctkglarea.c:881
+#: ctk/ctkglarea.c:883
 msgid "Use OpenGL ES"
 msgstr ""
 
-#: ctk/ctkglarea.c:882
+#: ctk/ctkglarea.c:884
 msgid "Whether the context uses OpenGL or OpenGL ES"
 msgstr ""
 
@@ -5069,8 +5069,8 @@ msgstr "Văn bản"
 #, fuzzy
 msgid "The text of the button includes XML markup. See pango_parse_markup()"
 msgstr ""
-"Văn bản của nhãn có chứa mã định dạng XML. Hãy xem "
-"“pango_parse_markup()” (pango phân tách mã định dạng)"
+"Văn bản của nhãn có chứa mã định dạng XML. Hãy xem “pango_parse_markup()” "
+"(pango phân tách mã định dạng)"
 
 #: ctk/ctkmodelbutton.c:1226
 msgid "Menu name"

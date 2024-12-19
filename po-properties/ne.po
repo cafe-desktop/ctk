@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Gnome Nepali Translation Project\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-13 13:45+0200\n"
+"POT-Creation-Date: 2024-12-19 12:06+0100\n"
 "PO-Revision-Date: 2017-08-20 15:26+0545\n"
 "Last-Translator: Pawan Chitrakar <chautari@gmail.com>\n"
 "Language-Team: Nepali Translation Team <chautari@gmail.com>\n"
@@ -983,11 +983,11 @@ msgstr "लक्ष्य:"
 msgid "The parameter for action invocations"
 msgstr "फिल्टर पदवर्णन गर्दा त्रुटि: %s: %s\n"
 
-#: ctk/ctkactionbar.c:338 ctk/ctkbox.c:358 ctk/ctkheaderbar.c:2013
+#: ctk/ctkactionbar.c:340 ctk/ctkbox.c:358 ctk/ctkheaderbar.c:2013
 msgid "Pack type"
 msgstr "थन्क्याउने प्रकार"
 
-#: ctk/ctkactionbar.c:339 ctk/ctkbox.c:359 ctk/ctkheaderbar.c:2014
+#: ctk/ctkactionbar.c:341 ctk/ctkbox.c:359 ctk/ctkheaderbar.c:2014
 msgid ""
 "A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
@@ -995,13 +995,13 @@ msgstr ""
 " जीटीके बँधाइको प्रकारले के देखाउँछ भने जब उपशाखा बन्द गरिन्छ संदर्भसँग मूल कम्प्युटर सुरू वा "
 "बन्द हुन्छ"
 
-#: ctk/ctkactionbar.c:345 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
+#: ctk/ctkactionbar.c:347 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
 #: ctk/ctknotebook.c:840 ctk/ctkpaned.c:368 ctk/ctkpopover.c:1767
 #: ctk/ctkpopovermenu.c:384 ctk/ctkstack.c:537 ctk/ctktoolitemgroup.c:1714
 msgid "Position"
 msgstr "अवस्था"
 
-#: ctk/ctkactionbar.c:346 ctk/ctkbox.c:366 ctk/ctkheaderbar.c:2021
+#: ctk/ctkactionbar.c:348 ctk/ctkbox.c:366 ctk/ctkheaderbar.c:2021
 #: ctk/ctknotebook.c:841 ctk/ctkpopovermenu.c:385 ctk/ctkstack.c:538
 msgid "The index of the child in the parent"
 msgstr "मुख्यभित्र शाखाको सूचक"
@@ -4238,63 +4238,63 @@ msgstr "बटन नम्बर"
 msgid "Button number to listen to"
 msgstr "बटन नम्बर"
 
-#: ctk/ctkglarea.c:784
+#: ctk/ctkglarea.c:786
 msgid "Context"
 msgstr "प्रसँग"
 
-#: ctk/ctkglarea.c:785
+#: ctk/ctkglarea.c:787
 #, fuzzy
 msgid "The GL context"
 msgstr "प्रसँग"
 
-#: ctk/ctkglarea.c:807
+#: ctk/ctkglarea.c:809
 #, fuzzy
 msgid "Auto render"
 msgstr "स्वत:"
 
-#: ctk/ctkglarea.c:808
+#: ctk/ctkglarea.c:810
 #, fuzzy
 msgid "Whether the CtkGLArea renders on each redraw"
 msgstr "जब शीर्षलेख क्लिक गर्न सकिन्छ"
 
-#: ctk/ctkglarea.c:828
+#: ctk/ctkglarea.c:830
 #, fuzzy
 msgid "Has alpha"
 msgstr ""
 "तपाईँले छविका लागि कर्सर मास्क बचत गर्न सक्नु हुन्न\n"
 "जुनसंगअल्फा च्यानल छैन।"
 
-#: ctk/ctkglarea.c:829
+#: ctk/ctkglarea.c:831
 #, fuzzy
 msgid "Whether the color buffer has an alpha component"
 msgstr "जहाँ पिक्सबफसँग अल्फा प्रसारणमार्ग छ"
 
-#: ctk/ctkglarea.c:845
+#: ctk/ctkglarea.c:847
 #, fuzzy
 msgid "Has depth buffer"
 msgstr "अस्थायी स्मृति"
 
-#: ctk/ctkglarea.c:846
+#: ctk/ctkglarea.c:848
 #, fuzzy
 msgid "Whether a depth buffer is allocated"
 msgstr "जहाँ कार्य सक्षम छ"
 
-#: ctk/ctkglarea.c:862
+#: ctk/ctkglarea.c:864
 #, fuzzy
 msgid "Has stencil buffer"
 msgstr "स्टेन्सिल काट्ने......"
 
-#: ctk/ctkglarea.c:863
+#: ctk/ctkglarea.c:865
 #, fuzzy
 msgid "Whether a stencil buffer is allocated"
 msgstr "जहाँ कार्य सक्षम छ"
 
-#: ctk/ctkglarea.c:881
+#: ctk/ctkglarea.c:883
 #, fuzzy
 msgid "Use OpenGL ES"
 msgstr "अफ्रिका/दारेसलाम"
 
-#: ctk/ctkglarea.c:882
+#: ctk/ctkglarea.c:884
 msgid "Whether the context uses OpenGL or OpenGL ES"
 msgstr ""
 
@@ -10398,5 +10398,3 @@ msgstr "रङ प्रोफाइल"
 #, fuzzy
 msgid "The title of the color profile to use"
 msgstr "पूर्वनिर्धारित फाँट शीर्षक प्रयोग गर्नुहोस्: "
-
-#, fuzzy

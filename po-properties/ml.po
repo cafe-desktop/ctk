@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+-properties.master.ml\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-13 13:45+0200\n"
+"POT-Creation-Date: 2024-12-19 12:06+0100\n"
 "PO-Revision-Date: 2009-08-24 14:19+0530\n"
 "Last-Translator: \n"
 "Language-Team:  <en@li.org>\n"
@@ -975,11 +975,11 @@ msgstr "പ്രവൃത്തിതലത്തിന്‍റെ അതി�
 msgid "The parameter for action invocations"
 msgstr ""
 
-#: ctk/ctkactionbar.c:338 ctk/ctkbox.c:358 ctk/ctkheaderbar.c:2013
+#: ctk/ctkactionbar.c:340 ctk/ctkbox.c:358 ctk/ctkheaderbar.c:2013
 msgid "Pack type"
 msgstr "ഏത് തരം പാക്ക്"
 
-#: ctk/ctkactionbar.c:339 ctk/ctkbox.c:359 ctk/ctkheaderbar.c:2014
+#: ctk/ctkactionbar.c:341 ctk/ctkbox.c:359 ctk/ctkheaderbar.c:2014
 msgid ""
 "A CtkPackType indicating whether the child is packed with reference to the "
 "start or end of the parent"
@@ -987,13 +987,13 @@ msgstr ""
 "ഒരു ചൈള്‍ഡ് പാക്ക് ചെയ്തിരിക്കുന്നത് പേരന്‍റിന്‍റെ ആരംഭത്തിലോ അവസാനത്തിലോ എന്ന് സൂചിപ്പിക്കുന്നതിനുളള "
 "ഒരു CtkPackType"
 
-#: ctk/ctkactionbar.c:345 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
+#: ctk/ctkactionbar.c:347 ctk/ctkbox.c:365 ctk/ctkheaderbar.c:2020
 #: ctk/ctknotebook.c:840 ctk/ctkpaned.c:368 ctk/ctkpopover.c:1767
 #: ctk/ctkpopovermenu.c:384 ctk/ctkstack.c:537 ctk/ctktoolitemgroup.c:1714
 msgid "Position"
 msgstr "സ്ഥാനം"
 
-#: ctk/ctkactionbar.c:346 ctk/ctkbox.c:366 ctk/ctkheaderbar.c:2021
+#: ctk/ctkactionbar.c:348 ctk/ctkbox.c:366 ctk/ctkheaderbar.c:2021
 #: ctk/ctknotebook.c:841 ctk/ctkpopovermenu.c:385 ctk/ctkstack.c:538
 msgid "The index of the child in the parent"
 msgstr "പേരന്‍റില്‍ ചൈള്‍ഡിന്‍റെ സൂചികാ"
@@ -4114,58 +4114,58 @@ msgstr "മൊട്ടിന്റെ വ്യക്തത"
 msgid "Button number to listen to"
 msgstr ""
 
-#: ctk/ctkglarea.c:784
+#: ctk/ctkglarea.c:786
 #, fuzzy
 msgid "Context"
 msgstr "ടെക്സ്റ്റ് കാണിക്കുക"
 
-#: ctk/ctkglarea.c:785
+#: ctk/ctkglarea.c:787
 msgid "The GL context"
 msgstr ""
 
-#: ctk/ctkglarea.c:807
+#: ctk/ctkglarea.c:809
 #, fuzzy
 msgid "Auto render"
 msgstr "ഫയല്‍ ചിട്ടപ്പെടുത്തല്‍‌ ഉപാധി"
 
-#: ctk/ctkglarea.c:808
+#: ctk/ctkglarea.c:810
 #, fuzzy
 msgid "Whether the CtkGLArea renders on each redraw"
 msgstr "തലവാചകം ക്ളിക്ക് ചെയ്യാവുന്നതാണോ"
 
-#: ctk/ctkglarea.c:828
+#: ctk/ctkglarea.c:830
 #, fuzzy
 msgid "Has alpha"
 msgstr "Alpha ഉണ്ട്"
 
-#: ctk/ctkglarea.c:829
+#: ctk/ctkglarea.c:831
 #, fuzzy
 msgid "Whether the color buffer has an alpha component"
 msgstr "pixbufന് alpha ചാനല്‍ ഉണ്ടോ എന്ന്"
 
-#: ctk/ctkglarea.c:845
+#: ctk/ctkglarea.c:847
 msgid "Has depth buffer"
 msgstr ""
 
-#: ctk/ctkglarea.c:846
+#: ctk/ctkglarea.c:848
 #, fuzzy
 msgid "Whether a depth buffer is allocated"
 msgstr "പ്രൈമറി ചിഹ്നം സജീവമാക്കുവാന്‍ സാധിക്കുമോ എന്നു്"
 
-#: ctk/ctkglarea.c:862
+#: ctk/ctkglarea.c:864
 msgid "Has stencil buffer"
 msgstr ""
 
-#: ctk/ctkglarea.c:863
+#: ctk/ctkglarea.c:865
 #, fuzzy
 msgid "Whether a stencil buffer is allocated"
 msgstr "പ്രൈമറി ചിഹ്നം സജീവമാക്കുവാന്‍ സാധിക്കുമോ എന്നു്"
 
-#: ctk/ctkglarea.c:881
+#: ctk/ctkglarea.c:883
 msgid "Use OpenGL ES"
 msgstr ""
 
-#: ctk/ctkglarea.c:882
+#: ctk/ctkglarea.c:884
 msgid "Whether the context uses OpenGL or OpenGL ES"
 msgstr ""
 
@@ -9936,5 +9936,3 @@ msgstr ""
 #, fuzzy
 msgid "The title of the color profile to use"
 msgstr "നിറം തിരഞ്ഞെടുക്കല്‍ ഡയലോഗിനുളള തലക്കെട്ട്"
-
-#, fuzzy
