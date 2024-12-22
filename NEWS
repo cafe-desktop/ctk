@@ -1,3 +1,35 @@
+Overview of Changes in CTK+ 3.25.6
+===================================
+
+  * INSTALL: add details about ctk-building.html file
+  * Use 'advaita-icon-theme' instead 'adwaita-icon-theme'
+  * ctkdnd: don't make 'ctk_drag_set_icon_stock' deprecated
+  * CtkToolButton: don't make deprecated stock functions
+  * tests: reduce the scope of some variables
+  * ctk,docs: add 'migrating-gtk3-to-ctk.txt' and 'migrating-ctk-releases.txt'
+  * ctkstylecontext: don't make deprecated 'ctk_style_context_set_background'
+  * ctkwindow: don't make deprecated 'ctk_window_parse_geometry'
+  * ctkmenutoolbutton: don't make deprecated 'ctk_menu_tool_button_new_from_stock'
+  * don't make deprecated CtkStyleProperties
+  * m4: remove 'ax_prog_cc_for_build'
+  * build: use 'm4_pattern_allow' with 'PKG_CONFIG_FOR_BUILD'
+  * ctkprintoperation-win32: avoid duplicate condition
+  * ctk-demo,main: reduce the scope of variable
+  * gdkpixbufutils: remove useless assignment
+  * fnmatch: avoid redundant initialization in variable
+  * ctkwin32theme: declare some parameters as const
+  * testtreecolumns: Fix memory leak
+  * cdk,meson: remove missing cdkdeprecated.c
+  * ctkimagedefinition:
+    - Check array bounds (Fix meson build)
+    - Use casts in 'ctk_image_definition_unref'
+  * Avoid diagnostics for gcc-11 false positive out of bounds accesses
+  * add G_GNUC_UNUSED in unused parameters
+  * testinput: Add CdkEvent casts
+  * ci: some improvements
+  * Update translations
+
+
 Overview of Changes in CTK+ 3.25.5
 ===================================
 
@@ -167,7 +199,7 @@ Overview of Changes in CTK+ 3.25.0
 ===================================
 
 * Initial release:
- - Froked from GTK+ 3.24.24
+ - Forked from GTK+ 3.24.24
  - ci enabled with Github Actions
  - Renaming functions:
      gtk -> ctk, gdk -> cdk, gail -> cail, broadwayd -> cdkbroadwayd
