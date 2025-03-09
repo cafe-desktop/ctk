@@ -4,7 +4,6 @@
 requires:
   debian:
     # Useful URL: https://github.com/cafe-desktop/debian-packages
-    # cafe B-D: advaita-icon-theme
     - aptitude
     - autoconf
     - autoconf-archive
@@ -86,7 +85,6 @@ requires:
 
 before_scripts:
   - ./html-cppcheck
-  - ./install-from-git https://github.com/cafe-desktop/advaita-icon-theme master
 
 build_scripts:
   - ./before-build
