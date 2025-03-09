@@ -2664,6 +2664,8 @@ ctk_drag_drop (CtkDragSourceInfo *info,
     {
       if (info->icon_window)
         ctk_widget_hide (info->icon_window);
+      if (info->proxy_dest)
+        g_object_ref (info->proxy_dest->context);
 
       cdk_drag_drop (info->context, time);
       info->drop_timeout = cdk_threads_add_timeout (DROP_ABORT_TIME,
@@ -2757,7 +2759,7 @@ static void
 ctk_drag_source_info_free (CtkDragSourceInfo *info)
 {
   ctk_drag_remove_icon (info);
-  ctk_widget_destroy (info->icon_window);
+  g_clear_pointer (&info->icon_window, ctk_widget_destroy);
   g_free (info);
 }
 
@@ -2812,7 +2814,11 @@ ctk_drag_source_info_destroy (CtkDragSourceInfo *info)
   ctk_target_list_unref (info->target_list);
 
   if (info->drop_timeout)
-    g_source_remove (info->drop_timeout);
+    {
+      g_source_remove (info->drop_timeout);
+      if (info->proxy_dest)
+        g_object_unref (info->proxy_dest->context);
+    }
 
   if (info->update_idle)
     g_source_remove (info->update_idle);
@@ -3258,14 +3264,20 @@ static gboolean
 ctk_drag_abort_timeout (gpointer data)
 {
   CtkDragSourceInfo *info = data;
+  CdkDragContext *context = NULL;
   guint32 time = CDK_CURRENT_TIME;
 
   if (info->proxy_dest)
-    time = info->proxy_dest->proxy_drop_time;
+    {
+      time = info->proxy_dest->proxy_drop_time;
+      context = info->proxy_dest->context;
+    }
 
   info->drop_timeout = 0;
   ctk_drag_drop_finished (info, CTK_DRAG_RESULT_TIMEOUT_EXPIRED, time);
-  
+
+  g_clear_object (&context);
+
   return FALSE;
 }
 
