@@ -85,6 +85,7 @@ requires:
 
 before_scripts:
   - ./html-cppcheck
+  - ./install-from-git https://github.com/cafe-desktop/cafe-icon-theme master
 
 build_scripts:
   - ./before-build
