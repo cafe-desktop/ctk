@@ -82,9 +82,18 @@ requires:
     - xauth
     - xvfb
     - xml-core
+    
+    #required for cafe-icon-theme
+    - curl
+    - intltool
+    - librsvg2-bin
+    - libxml-simple-perl #required for ctk-icon-naming-utils
+    - make
 
 before_scripts:
   - ./html-cppcheck
+  - ./install-from-git https://github.com/cafe-desktop/cafe-common master
+  - ./install-from-git https://github.com/cafe-desktop/ctk-icon-naming-utils master
   - ./install-from-git https://github.com/cafe-desktop/cafe-icon-theme master
 
 build_scripts:
