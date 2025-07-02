@@ -57,7 +57,6 @@ gboolean
 ctk_scan_string (const char **pos, GString *out)
 {
   const char *p = *pos, *q = *pos;
-  char *tmp, *tmp2;
   gboolean quoted;
 
   while (g_ascii_isspace (*p))
@@ -67,6 +66,8 @@ ctk_scan_string (const char **pos, GString *out)
     return FALSE;
   else if (*p == '"')
     {
+      char *tmp, *tmp2;
+
       p++;
       quoted = FALSE;
       for (q = p; (*q != '"') || quoted; q++)

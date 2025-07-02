@@ -61,8 +61,6 @@ int
 main (int argc, char *argv[])
 {
   CtkIconTheme *icon_theme;
-  CtkIconInfo *icon_info;
-  char *context;
   char *themename;
   GList *list;
   int size = 48;
@@ -168,6 +166,8 @@ main (int argc, char *argv[])
     }
   else if (strcmp (argv[1], "list") == 0)
     {
+      char *context;
+
       if (argc >= 4)
 	context = argv[3];
       else
@@ -194,6 +194,8 @@ main (int argc, char *argv[])
     }
   else if (strcmp (argv[1], "lookup") == 0)
     {
+      CtkIconInfo *icon_info;
+
       if (argc < 4)
 	{
 	  g_object_unref (icon_theme);

@@ -204,11 +204,12 @@ registry_handle_global (void               *data,
                         const char         *interface,
                         uint32_t            version G_GNUC_UNUSED)
 {
-  CtkIMContextWaylandGlobal *global = data;
   CdkSeat *seat = cdk_display_get_default_seat (cdk_display_get_default ());
 
   if (strcmp (interface, "ctk_text_input_manager") == 0)
     {
+      CtkIMContextWaylandGlobal *global = data;
+
       global->text_input_manager_wl_id = id;
       global->text_input_manager =
         wl_registry_bind (global->registry, global->text_input_manager_wl_id,

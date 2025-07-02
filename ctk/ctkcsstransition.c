@@ -52,7 +52,6 @@ ctk_css_transition_apply_values (CtkStyleAnimation   *style_animation,
 {
   CtkCssTransition *transition = CTK_CSS_TRANSITION (style_animation);
   CtkCssValue *value, *end;
-  double progress;
   CtkProgressState state;
 
   end = ctk_css_animated_style_get_intrinsic_value (style, transition->property);
@@ -63,6 +62,8 @@ ctk_css_transition_apply_values (CtkStyleAnimation   *style_animation,
     value = _ctk_css_value_ref (transition->start);
   else if (state == CTK_PROGRESS_STATE_DURING)
     {
+      double progress;
+
       progress = ctk_progress_tracker_get_progress (&transition->tracker, FALSE);
       progress = _ctk_css_ease_value_transform (transition->ease, progress);
 

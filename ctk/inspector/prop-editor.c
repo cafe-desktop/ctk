@@ -858,7 +858,6 @@ property_editor (GObject                *object,
 {
   CtkWidget *prop_edit;
   CtkAdjustment *adj;
-  gchar *msg;
   GType type = G_PARAM_SPEC_TYPE (spec);
 
   if (type == G_TYPE_PARAM_INT)
@@ -1142,6 +1141,8 @@ property_editor (GObject                *object,
     }
   else
     {
+      gchar *msg;
+
       msg = g_strdup_printf (_("Uneditable property type: %s"),
                              g_type_name (G_PARAM_SPEC_TYPE (spec)));
       prop_edit = ctk_label_new (msg);

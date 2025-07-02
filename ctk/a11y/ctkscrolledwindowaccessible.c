@@ -135,7 +135,7 @@ ctk_scrolled_window_accessible_ref_child (AtkObject *obj,
   CtkWidget *widget;
   CtkScrolledWindow *scrolled_window;
   CtkWidget *hscrollbar, *vscrollbar;
-  GList *children, *tmp_list;
+  GList *children;
   gint n_children;
   AtkObject  *accessible = NULL;
 
@@ -165,7 +165,10 @@ ctk_scrolled_window_accessible_ref_child (AtkObject *obj,
     accessible = ctk_widget_get_accessible (vscrollbar);
   else if (child < n_children)
     {
+      GList *tmp_list;
+
       tmp_list = g_list_nth (children, child);
+
       if (tmp_list)
         accessible = ctk_widget_get_accessible (CTK_WIDGET (tmp_list->data));
     }

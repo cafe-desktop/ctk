@@ -948,8 +948,6 @@ _ctk_cell_layout_buildable_custom_tag_end (CtkBuildable *buildable G_GNUC_UNUSED
 					   const gchar  *tagname,
 					   gpointer     *data)
 {
-  CellPackingSubParserData *packing_data;
-
   if (strcmp (tagname, "attributes") == 0)
     {
       AttributesSubParserData *attr_data;
@@ -963,6 +961,8 @@ _ctk_cell_layout_buildable_custom_tag_end (CtkBuildable *buildable G_GNUC_UNUSED
     }
   else if (strcmp (tagname, "cell-packing") == 0)
     {
+      CellPackingSubParserData *packing_data;
+
       packing_data = (CellPackingSubParserData *)data;
       g_string_free (packing_data->string, TRUE);
       g_slice_free (CellPackingSubParserData, packing_data);
