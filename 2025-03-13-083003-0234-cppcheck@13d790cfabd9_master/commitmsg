@@ -1,0 +1,13 @@
+ctkdnd: Fix crashes in cafe-panel
+
+It happens moving windows in window list applet, sometimes after around 5 minutes later it crashes.
+
+based in gtk commits:
+https://gitlab.gnome.org/GNOME/gtk/-/commit/2353a7a176fc3f34e81b928adfdc9dbb3d40ce1a
+https://gitlab.gnome.org/GNOME/gtk/-/commit/34c12e4885dcb712272c441941234187cb131bc3
+
+merged in MR:
+https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/6660
+
+which fixes:
+https://gitlab.gnome.org/GNOME/gtk/-/issues/7128
