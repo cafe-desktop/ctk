@@ -3037,7 +3037,7 @@ ctk_icon_view_layout (CtkIconView *icon_view)
                                      sizes);
 
   /* Actually allocate the rows */
-  g_qsort_with_data (sizes, n_rows, sizeof (CtkRequestedSize), compare_sizes, NULL);
+  g_sort_array (sizes, n_rows, sizeof (CtkRequestedSize), compare_sizes, NULL);
   
   items = priv->items;
   priv->height = priv->margin;

@@ -396,7 +396,7 @@ _ctk_css_keyframes_print (CtkCssKeyframes *keyframes,
   sorted = g_new (guint, keyframes->n_properties);
   for (p = 0; p < keyframes->n_properties; p++)
     sorted[p] = p;
-  g_qsort_with_data (sorted, keyframes->n_properties, sizeof (guint), compare_property_by_name, keyframes);
+  g_sort_array (sorted, keyframes->n_properties, sizeof (guint), compare_property_by_name, keyframes);
 
   for (k = 0; k < keyframes->n_keyframes; k++)
     {

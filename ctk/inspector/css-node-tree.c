@@ -231,11 +231,11 @@ sort_strv (gconstpointer a,
 static void
 strv_sort (char **strv)
 {
-  g_qsort_with_data (strv,
-		     g_strv_length (strv),
-                     sizeof (char *),
-                     sort_strv,
-                     NULL);
+  g_sort_array (strv,
+                g_strv_length (strv),
+                sizeof (char *),
+                sort_strv,
+                NULL);
 }
 
 static gchar *
@@ -461,5 +461,3 @@ ctk_inspector_css_node_tree_set_node (CtkInspectorCssNodeTree *cnt,
 
   g_signal_connect (node, "style-changed", G_CALLBACK (ctk_inspector_css_node_tree_update_style_cb), cnt);
 }
-
-// vim: set et sw=2 ts=2:

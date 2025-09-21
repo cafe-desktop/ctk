@@ -2310,11 +2310,11 @@ ctk_tree_store_reorder (CtkTreeStore *tree_store,
       node = node->next;
     }
 
-  g_qsort_with_data (sort_array,
-		     length,
-		     sizeof (SortTuple),
-		     ctk_tree_store_reorder_func,
-		     NULL);
+  g_sort_array (sort_array,
+		length,
+		sizeof (SortTuple),
+		ctk_tree_store_reorder_func,
+		NULL);
 
   /* fix up level */
   for (i = 0; i < length - 1; i++)
