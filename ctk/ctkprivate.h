@@ -92,7 +92,7 @@ gboolean        _ctk_propagate_captured_event  (CtkWidget       *widget,
                                                 CtkWidget       *topmost);
 
 
-gdouble _ctk_get_slowdown ();
+gdouble _ctk_get_slowdown (void);
 void    _ctk_set_slowdown (gdouble slowdown_factor);
 
 gboolean ctk_should_use_portal (void);
