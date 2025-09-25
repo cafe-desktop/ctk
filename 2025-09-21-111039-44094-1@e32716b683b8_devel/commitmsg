@@ -1,0 +1,4 @@
+Fix build with gcc 15 in _ctk_get_slowdown()
+
+based in gtk commit:
+https://gitlab.gnome.org/GNOME/gtk/-/commit/022c36a1379d82b4212a298ed6eaec02bc0ed7f1
