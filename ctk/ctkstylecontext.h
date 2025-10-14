@@ -1215,7 +1215,7 @@ void ctk_style_context_get_margin           (CtkStyleContext *context,
                                              CtkStateFlags    state,
                                              CtkBorder       *margin);
 
-CDK_DEPRECATED_IN_3_12
+CDK_AVAILABLE_IN_ALL
 void ctk_style_context_invalidate           (CtkStyleContext *context);
 CDK_AVAILABLE_IN_ALL
 void ctk_style_context_reset_widgets        (CdkScreen       *screen);

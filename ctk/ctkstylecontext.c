@@ -2431,8 +2431,6 @@ ctk_style_context_validate (CtkStyleContext  *context,
  * information immediately.
  *
  * Since: 3.0
- *
- * Deprecated: 3.12: Style contexts are invalidated automatically.
  **/
 void
 ctk_style_context_invalidate (CtkStyleContext *context)

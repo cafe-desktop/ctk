@@ -307,9 +307,7 @@ test_invalidate_saved (void)
 
   context = ctk_widget_get_style_context (window);
   ctk_style_context_save (context);
-G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   ctk_style_context_invalidate (context);
-G_GNUC_END_IGNORE_DEPRECATIONS
   ctk_style_context_restore (context);
 
   ctk_widget_destroy (window);
