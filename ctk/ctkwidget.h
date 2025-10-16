@@ -879,7 +879,7 @@ void                  ctk_widget_set_app_paintable      (CtkWidget    *widget,
 CDK_AVAILABLE_IN_ALL
 gboolean              ctk_widget_get_app_paintable      (CtkWidget    *widget);
 
-CDK_DEPRECATED_IN_3_14
+CDK_AVAILABLE_IN_ALL
 void                  ctk_widget_set_double_buffered    (CtkWidget    *widget,
 							 gboolean      double_buffered);
 CDK_DEPRECATED_IN_3_14

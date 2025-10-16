@@ -3837,9 +3837,7 @@ ctk_widget_set_property (GObject         *object,
         ctk_widget_queue_tooltip_query (widget);
       break;
     case PROP_DOUBLE_BUFFERED:
-      G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       ctk_widget_set_double_buffered (widget, g_value_get_boolean (value));
-      G_GNUC_END_IGNORE_DEPRECATIONS
       break;
     case PROP_HALIGN:
       ctk_widget_set_halign (widget, g_value_get_enum (value));
@@ -9383,10 +9381,6 @@ ctk_widget_get_app_paintable (CtkWidget *widget)
  * will cause a separate rendering pass for every widget. This will likely
  * cause rendering problems - in particular related to stacking - and usually
  * increases rendering times significantly.
- *
- * Deprecated: 3.14: This function does not work under non-X11 backends or with
- * non-native windows.
- * It should not be used in newly written code.
  **/
 void
 ctk_widget_set_double_buffered (CtkWidget *widget,
