@@ -90,7 +90,7 @@ before_scripts:
 
 build_scripts:
   - ./before-build
-  - ./make-scanbuild '--disable-dependency-tracking --enable-broadway-backend --enable-x11-backend --enable-wayland-backend --enable-gtk-doc --enable-man --enable-shared --enable-introspection --disable-static --enable-installed-tests --enable-test-print-backend'
+  - ./make-scanbuild '--disable-dependency-tracking --enable-broadway-backend --enable-x11-backend --enable-wayland-backend --enable-gtk-doc --enable-man --enable-shared --enable-introspection --disable-static --enable-installed-tests --enable-test-print-backend --enable-cloudproviders'
   - ./after-build
 
 after_scripts:
