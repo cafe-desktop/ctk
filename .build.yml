@@ -43,6 +43,7 @@ requires:
     - libc6-dev
     - libcairo2-dev
     - libcairo-gobject2
+    - libcloudproviders-dev
     - libcolord-dev
     - libcups2-dev
     - libegl1-mesa-dev
