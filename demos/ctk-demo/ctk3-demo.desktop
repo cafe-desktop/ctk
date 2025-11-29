@@ -6,4 +6,4 @@ Icon=ctk3-demo
 Terminal=false
 Type=Application
 StartupNotify=true
-Categories=Development;CTK;
+Categories=Development;

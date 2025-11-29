@@ -6,4 +6,4 @@ Icon=ctk3-widget-factory
 Terminal=false
 Type=Application
 StartupNotify=true
-Categories=Development;CTK;
+Categories=Development;
