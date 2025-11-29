@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Widget Factory
+Name=CTK+ Widget Factory
 Comment=A showcase for CTK+ widgets, designed for testing themes.
 Exec=ctk3-widget-factory
 Icon=ctk3-widget-factory
