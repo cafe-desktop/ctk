@@ -1,0 +1,1509 @@
+<html>
+<head>
+<title>ctk (clang-tools 1:19.0-63) - scan-build results</title>
+<link type="text/css" rel="stylesheet" href="scanview.css"/>
+<script src="sorttable.js"></script>
+<script language='javascript' type="text/javascript">
+function SetDisplay(RowClass, DisplayVal)
+{
+  var Rows = document.getElementsByTagName("tr");
+  for ( var i = 0 ; i < Rows.length; ++i ) {
+    if (Rows[i].className == RowClass) {
+      Rows[i].style.display = DisplayVal;
+    }
+  }
+}
+
+function CopyCheckedStateToCheckButtons(SummaryCheckButton) {
+  var Inputs = document.getElementsByTagName("input");
+  for ( var i = 0 ; i < Inputs.length; ++i ) {
+    if (Inputs[i].type == "checkbox") {
+      if(Inputs[i] != SummaryCheckButton) {
+        Inputs[i].checked = SummaryCheckButton.checked;
+        Inputs[i].onclick();
+      }
+    }
+  }
+}
+
+function returnObjById( id ) {
+    if (document.getElementById)
+        var returnVar = document.getElementById(id);
+    else if (document.all)
+        var returnVar = document.all[id];
+    else if (document.layers)
+        var returnVar = document.layers[id];
+    return returnVar;
+}
+
+var NumUnchecked = 0;
+
+function ToggleDisplay(CheckButton, ClassName) {
+  if (CheckButton.checked) {
+    SetDisplay(ClassName, "");
+    if (--NumUnchecked == 0) {
+      returnObjById("AllBugsCheck").checked = true;
+    }
+  }
+  else {
+    SetDisplay(ClassName, "none");
+    NumUnchecked++;
+    returnObjById("AllBugsCheck").checked = false;
+  }
+}
+</script>
+<!-- SUMMARYENDHEAD -->
+</head>
+<body>
+<h1>ctk (clang-tools 1:19.0-63) - scan-build results</h1>
+
+<table>
+<tr><th>User:</th><td>root@741ba2bcc921</td></tr>
+<tr><th>Working Directory:</th><td>/rootdir</td></tr>
+<tr><th>Command Line:</th><td>make -j 5</td></tr>
+<tr><th>Clang Version:</th><td>Debian clang version 19.1.7 (7)
+</td></tr>
+<tr><th>Date:</th><td>Thu Oct 16 17:42:44 2025</td></tr>
+</table>
+<h2>Bug Summary</h2><table>
+<thead><tr><td>Bug Type</td><td>Quantity</td><td class="sorttable_nosort">Display?</td></tr></thead>
+<tr style="font-weight:bold"><td class="SUMM_DESC">All Bugs</td><td class="Q">459</td><td><center><input type="checkbox" id="AllBugsCheck" onClick="CopyCheckedStateToCheckButtons(this);" checked/></center></td></tr>
+<tr><th>API</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">Argument with 'nonnull' attribute passed null</td><td class="Q">3</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_api_argument_with_nonnull_attribute_passed_null');" checked/></center></td></tr>
+<tr><th>Error handling</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">Value of 'errno' was not checked</td><td class="Q">1</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_error_handling_value_of_errno_was_not_checked');" checked/></center></td></tr>
+<tr><th>Logic error</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">Array subscript is undefined</td><td class="Q">1</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_array_subscript_is_undefined');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Assigned value is garbage or undefined</td><td class="Q">12</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_assigned_value_is_garbage_or_undefined');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Buffer overflow</td><td class="Q">3</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_buffer_overflow');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Cast from non-struct type to struct type</td><td class="Q">122</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_cast_from_non-struct_type_to_struct_type');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Cast region with wrong size</td><td class="Q">2</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_cast_region_with_wrong_size');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Dereference of null pointer</td><td class="Q">65</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_dereference_of_null_pointer');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Dereference of undefined pointer value</td><td class="Q">2</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_dereference_of_undefined_pointer_value');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Division by zero</td><td class="Q">6</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_division_by_zero');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Garbage return value</td><td class="Q">1</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_garbage_return_value');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Out-of-bound access</td><td class="Q">32</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_out-of-bound_access');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Out-of-bound array access</td><td class="Q">1</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_out-of-bound_array_access');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Result of operation is garbage or undefined</td><td class="Q">9</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_result_of_operation_is_garbage_or_undefined');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Uninitialized argument value</td><td class="Q">23</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_uninitialized_argument_value');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Use fixed address</td><td class="Q">53</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_logic_error_use_fixed_address');" checked/></center></td></tr>
+<tr><th>Memory error</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">Memory leak</td><td class="Q">7</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_memory_error_memory_leak');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Use of zero allocated</td><td class="Q">2</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_memory_error_use_of_zero_allocated');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Use-after-free</td><td class="Q">6</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_memory_error_use-after-free');" checked/></center></td></tr>
+<tr><th>Stream handling error</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">Invalid stream state</td><td class="Q">2</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_stream_handling_error_invalid_stream_state');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Stream already in EOF</td><td class="Q">1</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_stream_handling_error_stream_already_in_eof');" checked/></center></td></tr>
+<tr><th>Suspicious operation</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">Bitwise shift</td><td class="Q">1</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_suspicious_operation_bitwise_shift');" checked/></center></td></tr>
+<tr><th>Unused code</th><th colspan=2></th></tr>
+<tr><td class="SUMM_DESC">Dead assignment</td><td class="Q">53</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_unused_code_dead_assignment');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Dead increment</td><td class="Q">3</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_unused_code_dead_increment');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Dead initialization</td><td class="Q">3</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_unused_code_dead_initialization');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Dead nested assignment</td><td class="Q">7</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_unused_code_dead_nested_assignment');" checked/></center></td></tr>
+<tr><td class="SUMM_DESC">Unreachable code</td><td class="Q">38</td><td><center><input type="checkbox" onClick="ToggleDisplay(this,'bt_unused_code_unreachable_code');" checked/></center></td></tr>
+</table>
+
+<h2>Filter Results by File</h2>
+<input
+  type="text"
+  id="file_input"
+  onkeyup="searchFiles()"
+  placeholder="Enter a path or filename"
+  title="Enter a path or filename">
+
+<h2>Reports</h2>
+
+<table id="reports_table" class="sortable" style="table-layout:automatic">
+<thead><tr>
+  <td>Bug Group</td>
+  <td class="sorttable_sorted">Bug Type<span id="sorttable_sortfwdind">&nbsp;&#x25BE;</span></td>
+  <td>File</td>
+  <td>Function/Method</td>
+  <td class="Q">Line</td>
+  <td class="Q">Path Length</td>
+  <td class="sorttable_nosort"></td>
+  <!-- REPORTBUGCOL -->
+</tr></thead>
+<tbody>
+<tr class="bt_api_argument_with_nonnull_attribute_passed_null"><td class="DESC">API</td><td class="DESC">Argument with 'nonnull' attribute passed null</td><td>ctk/ctkapplicationaccels.c</td><td class="DESC">add_entry</td><td class="Q">98</td><td class="Q">20</td><td><a href="report-46de0d.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-46de0d.html" -->
+</tr>
+<tr class="bt_api_argument_with_nonnull_attribute_passed_null"><td class="DESC">API</td><td class="DESC">Argument with 'nonnull' attribute passed null</td><td>ctk/ctktreemodel.c</td><td class="DESC">ctk_tree_path_append_index</td><td class="Q">807</td><td class="Q">24</td><td><a href="report-84abd0.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-84abd0.html" -->
+</tr>
+<tr class="bt_api_argument_with_nonnull_attribute_passed_null"><td class="DESC">API</td><td class="DESC">Argument with 'nonnull' attribute passed null</td><td>ctk/ctkcolorsel.c</td><td class="DESC">get_current_colors</td><td class="Q">1298</td><td class="Q">36</td><td><a href="report-c45e3f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c45e3f.html" -->
+</tr>
+<tr class="bt_logic_error_array_subscript_is_undefined"><td class="DESC">Logic error</td><td class="DESC">Array subscript is undefined</td><td>ctk/ctkiconview.c</td><td class="DESC">ctk_icon_view_rows_reordered</td><td class="Q">3590</td><td class="Q">11</td><td><a href="report-092d74.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-092d74.html" -->
+</tr>
+<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>ctk/ctktreemodelsort.c</td><td class="DESC">ctk_tree_model_sort_rows_reordered</td><td class="Q">1174</td><td class="Q">15</td><td><a href="report-0c9232.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-0c9232.html" -->
+</tr>
+<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>ctk/ctkbox.c</td><td class="DESC">ctk_box_size_allocate_with_center</td><td class="Q">1020</td><td class="Q">51</td><td><a href="report-1816c5.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-1816c5.html" -->
+</tr>
+<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>ctk/ctktreemodelfilter.c</td><td class="DESC">ctk_tree_model_filter_emit_row_inserted_for_path</td><td class="Q">1933</td><td class="Q">96</td><td><a href="report-235314.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-235314.html" -->
+</tr>
+<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>ctk/ctkcellareaboxcontext.c</td><td class="DESC">allocate_for_orientation</td><td class="Q">753</td><td class="Q">36</td><td><a href="report-3a080a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-3a080a.html" -->
+</tr>
+<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>ctk/ctkcellareabox.c</td><td class="DESC">compute_group_size_for_opposing_orientation</td><td class="Q">1649</td><td class="Q">32</td><td><a href="report-56c05c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-56c05c.html" -->
+</tr>
+<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>ctk/ctktreemodelfilter.c</td><td class="DESC">ctk_tree_model_filter_emit_row_inserted_for_path</td><td class="Q">1934</td><td class="Q">102</td><td><a href="report-65fd9d.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-65fd9d.html" -->
+</tr>
+<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>cdk/x11/cdkdevice-core-x11.c</td><td class="DESC">cdk_x11_device_core_window_at_position</td><td class="Q">560</td><td class="Q">15</td><td><a href="report-8e89c7.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-8e89c7.html" -->
+</tr>
+<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>ctk/ctkwindow.c</td><td class="DESC">popover_realize</td><td class="Q">6732</td><td class="Q">38</td><td><a href="report-b75ba9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-b75ba9.html" -->
+</tr>
+<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>cdk/x11/cdkdevice-xi2.c</td><td class="DESC">_cdk_x11_device_xi2_translate_state</td><td class="Q">776</td><td class="Q">15</td><td><a href="report-bc87b7.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-bc87b7.html" -->
+</tr>
+<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>ctk/ctkcellareabox.c</td><td class="DESC">get_allocated_cells</td><td class="Q">962</td><td class="Q">24</td><td><a href="report-c9b559.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c9b559.html" -->
+</tr>
+<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>ctk/ctktreestore.c</td><td class="DESC">ctk_tree_store_move</td><td class="Q">2576</td><td class="Q">41</td><td><a href="report-cbfc5a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-cbfc5a.html" -->
+</tr>
+<tr class="bt_logic_error_assigned_value_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Assigned value is garbage or undefined</td><td>ctk/ctktreestore.c</td><td class="DESC">ctk_tree_store_move</td><td class="Q">2637</td><td class="Q">40</td><td><a href="report-dbe954.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-dbe954.html" -->
+</tr>
+<tr class="bt_suspicious_operation_bitwise_shift"><td class="DESC">Suspicious operation</td><td class="DESC">Bitwise shift</td><td>ctk/ctkbitmaskprivateimpl.h</td><td class="DESC">_ctk_bitmask_invert_range</td><td class="Q">132</td><td class="Q">13</td><td><a href="report-df1ad9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-df1ad9.html" -->
+</tr>
+<tr class="bt_logic_error_buffer_overflow"><td class="DESC">Logic error</td><td class="DESC">Buffer overflow</td><td>ctk/ctkaccelgroup.c</td><td class="DESC">quick_accel_find</td><td class="Q">605</td><td class="Q">19</td><td><a href="report-6d9419.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-6d9419.html" -->
+</tr>
+<tr class="bt_logic_error_buffer_overflow"><td class="DESC">Logic error</td><td class="DESC">Buffer overflow</td><td>cdk/broadway/broadway-server.c</td><td class="DESC">parse_touch_data</td><td class="Q">411</td><td class="Q">34</td><td><a href="report-c09e3c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c09e3c.html" -->
+</tr>
+<tr class="bt_logic_error_buffer_overflow"><td class="DESC">Logic error</td><td class="DESC">Buffer overflow</td><td>cdk/broadway/broadway-server.c</td><td class="DESC">parse_pointer_data</td><td class="Q">395</td><td class="Q">34</td><td><a href="report-f75161.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-f75161.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkprintoperation-portal.c</td><td class="DESC">prepare_print_response</td><td class="Q">411</td><td class="Q">1</td><td><a href="report-00699b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-00699b.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>cdk/x11/cdkasync.c</td><td class="DESC">get_child_info_handler</td><td class="Q">467</td><td class="Q">1</td><td><a href="report-028bde.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-028bde.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>tests/testgmenu.c</td><td class="DESC">state_cell_func</td><td class="Q">247</td><td class="Q">1</td><td><a href="report-0470cf.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-0470cf.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkfilesystemmodel.c</td><td class="DESC">thaw_updates</td><td class="Q">2072</td><td class="Q">1</td><td><a href="report-04bfb0.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-04bfb0.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkapplication-dbus.c</td><td class="DESC">ctk_application_impl_dbus_startup</td><td class="Q">493</td><td class="Q">1</td><td><a href="report-0649a4.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-0649a4.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkprintoperation-portal.c</td><td class="DESC">call_prepare_print</td><td class="Q">592</td><td class="Q">1</td><td><a href="report-068713.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-068713.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/inspector/action-editor.c</td><td class="DESC">variant_editor_set_value</td><td class="Q">134</td><td class="Q">1</td><td><a href="report-071267.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-071267.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/inspector/action-editor.c</td><td class="DESC">variant_editor_new</td><td class="Q">94</td><td class="Q">1</td><td><a href="report-0d7d44.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-0d7d44.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>cdk/x11/cdkkeys-x11.c</td><td class="DESC">cdk_x11_keymap_get_entries_for_keyval</td><td class="Q">894</td><td class="Q">1</td><td><a href="report-0e38e6.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-0e38e6.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>cdk/x11/cdkwindow-x11.c</td><td class="DESC">cdk_window_set_mwm_hints</td><td class="Q">4535</td><td class="Q">1</td><td><a href="report-0e686c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-0e686c.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkfilesystemmodel.c</td><td class="DESC">_ctk_file_system_model_get_info</td><td class="Q">1694</td><td class="Q">1</td><td><a href="report-0f76b5.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-0f76b5.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkactionhelper.c</td><td class="DESC">ctk_action_helper_action_state_changed</td><td class="Q">253</td><td class="Q">1</td><td><a href="report-10987e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-10987e.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkfilesystemmodel.c</td><td class="DESC">drag_source_drag_data_get</td><td class="Q">988</td><td class="Q">1</td><td><a href="report-12cac7.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-12cac7.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkapplication.c</td><td class="DESC">extract_accel_from_menu_item</td><td class="Q">489</td><td class="Q">1</td><td><a href="report-1b87f9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-1b87f9.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkfilechoosernativeportal.c</td><td class="DESC">show_portal_file_chooser</td><td class="Q">352</td><td class="Q">1</td><td><a href="report-1d4118.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-1d4118.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkiconfactory.c</td><td class="DESC">ctk_icon_factory_buildable_custom_tag_end</td><td class="Q">2516</td><td class="Q">1</td><td><a href="report-21a7d1.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-21a7d1.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkcssselector.c</td><td class="DESC">get_tree</td><td class="Q">1728</td><td class="Q">1</td><td><a href="report-2362fa.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-2362fa.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkpapersize.c</td><td class="DESC">ctk_paper_size_to_gvariant</td><td class="Q">1103</td><td class="Q">1</td><td><a href="report-281c7a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-281c7a.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkrecentchooserutils.c</td><td class="DESC">sort_recent_items_proxy</td><td class="Q">327</td><td class="Q">1</td><td><a href="report-28ba0a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-28ba0a.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkactiongroup.c</td><td class="DESC">ctk_action_group_buildable_custom_tag_end</td><td class="Q">482</td><td class="Q">1</td><td><a href="report-29318a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-29318a.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>tests/testlist4.c</td><td class="DESC">new_window</td><td class="Q">152</td><td class="Q">1</td><td><a href="report-2a14e9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-2a14e9.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkapplication.c</td><td class="DESC">extract_accel_from_menu_item</td><td class="Q">487</td><td class="Q">1</td><td><a href="report-2a4d50.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-2a4d50.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/inspector/action-editor.c</td><td class="DESC">variant_editor_get_value</td><td class="Q">174</td><td class="Q">1</td><td><a href="report-2fcc94.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-2fcc94.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkprintunixdialog.c</td><td class="DESC">emit_ok_response</td><td class="Q">2365</td><td class="Q">1</td><td><a href="report-304df1.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-304df1.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkfilesystemmodel.c</td><td class="DESC">_ctk_file_system_model_update_file</td><td class="Q">1973</td><td class="Q">1</td><td><a href="report-30a92a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-30a92a.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkfilesystemmodel.c</td><td class="DESC">ctk_file_system_model_finalize</td><td class="Q">1057</td><td class="Q">1</td><td><a href="report-30b0c5.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-30b0c5.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>cdk/x11/cdkwindow-x11.c</td><td class="DESC">cdk_window_get_mwm_hints</td><td class="Q">4503</td><td class="Q">1</td><td><a href="report-30cbca.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-30cbca.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkfilesystemmodel.c</td><td class="DESC">_ctk_file_system_model_get_value</td><td class="Q">1750</td><td class="Q">1</td><td><a href="report-314d9a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-314d9a.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkfilesystemmodel.c</td><td class="DESC">node_set_visible_and_filtered_out</td><td class="Q">338</td><td class="Q">1</td><td><a href="report-328c4f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-328c4f.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkfilesystemmodel.c</td><td class="DESC">node_should_be_visible</td><td class="Q">447</td><td class="Q">1</td><td><a href="report-350afa.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-350afa.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkpagesetup.c</td><td class="DESC">ctk_page_setup_to_gvariant</td><td class="Q">860</td><td class="Q">1</td><td><a href="report-35bb3d.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-35bb3d.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/inspector/action-editor.c</td><td class="DESC">variant_editor_set_value</td><td class="Q">144</td><td class="Q">1</td><td><a href="report-3620c8.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-3620c8.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkprintsettings.c</td><td class="DESC">ctk_print_settings_new_from_gvariant</td><td class="Q">2002</td><td class="Q">1</td><td><a href="report-37188c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-37188c.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkfilesystemmodel.c</td><td class="DESC">node_get_for_file</td><td class="Q">1791</td><td class="Q">1</td><td><a href="report-3ad90b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-3ad90b.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkfilesystemmodel.c</td><td class="DESC">ctk_file_system_model_sort</td><td class="Q">794</td><td class="Q">1</td><td><a href="report-3bdf0e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-3bdf0e.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctksettings.c</td><td class="DESC">ctk_settings_get_for_display</td><td class="Q">2021</td><td class="Q">1</td><td><a href="report-3e7fad.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-3e7fad.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkcelllayout.c</td><td class="DESC">_ctk_cell_layout_buildable_custom_tag_end</td><td class="Q">955</td><td class="Q">1</td><td><a href="report-442084.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-442084.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>cdk/x11/cdkkeys-x11.c</td><td class="DESC">cdk_x11_keymap_get_entries_for_keycode</td><td class="Q">1031</td><td class="Q">1</td><td><a href="report-492834.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-492834.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkliststore.c</td><td class="DESC">ctk_list_store_buildable_custom_tag_end</td><td class="Q">2671</td><td class="Q">1</td><td><a href="report-4950e7.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-4950e7.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkfilesystemmodel.c</td><td class="DESC">ctk_file_system_model_iter_nth_child</td><td class="Q">564</td><td class="Q">1</td><td><a href="report-4bc012.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-4bc012.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkfilesystemmodel.c</td><td class="DESC">ctk_file_system_model_iter_nth_child</td><td class="Q">561</td><td class="Q">1</td><td><a href="report-4cd26f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-4cd26f.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/inspector/action-editor.c</td><td class="DESC">variant_editor_new</td><td class="Q">99</td><td class="Q">1</td><td><a href="report-50b395.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-50b395.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkmenutrackeritem.c</td><td class="DESC">ctk_menu_tracker_item_action_state_changed</td><td class="Q">410</td><td class="Q">1</td><td><a href="report-51fc6d.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-51fc6d.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkrecentchooserutils.c</td><td class="DESC">sort_recent_items_proxy</td><td class="Q">328</td><td class="Q">1</td><td><a href="report-53311a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-53311a.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkcssselector.c</td><td class="DESC">_ctk_css_selector_tree_builder_build</td><td class="Q">1919</td><td class="Q">1</td><td><a href="report-53c980.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-53c980.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkmenutrackeritem.c</td><td class="DESC">ctk_menu_tracker_opener_update</td><td class="Q">838</td><td class="Q">1</td><td><a href="report-548731.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-548731.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkmountoperation.c</td><td class="DESC">ctk_mount_operation_show_processes_do_proxy</td><td class="Q">1644</td><td class="Q">1</td><td><a href="report-5903fe.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-5903fe.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>cdk/x11/cdkasync.c</td><td class="DESC">list_children_handler</td><td class="Q">311</td><td class="Q">1</td><td><a href="report-591bbb.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-591bbb.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>cdk/wayland/cdkkeys-wayland.c</td><td class="DESC">cdk_wayland_keymap_get_entries_for_keyval</td><td class="Q">173</td><td class="Q">1</td><td><a href="report-5a64fb.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-5a64fb.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkfilesystemmodel.c</td><td class="DESC">_ctk_file_system_model_iter_is_filtered_out</td><td class="Q">1667</td><td class="Q">1</td><td><a href="report-633634.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-633634.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>modules/printbackends/cups/ctkcupssecretsutils.c</td><td class="DESC">create_attributes</td><td class="Q">77</td><td class="Q">1</td><td><a href="report-66c3f5.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-66c3f5.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkprintsettings.c</td><td class="DESC">ctk_print_settings_to_gvariant</td><td class="Q">1969</td><td class="Q">1</td><td><a href="report-6a7af6.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-6a7af6.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>modules/input/ctkimcontextxim.c</td><td class="DESC">string_conversion_callback</td><td class="Q">1187</td><td class="Q">1</td><td><a href="report-6abfad.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-6abfad.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkfilesystemmodel.c</td><td class="DESC">ctk_file_system_model_set_n_columns</td><td class="Q">1371</td><td class="Q">1</td><td><a href="report-6ac541.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-6ac541.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>cdk/wayland/cdkscreen-wayland.c</td><td class="DESC">fontconfig_dbus_proxy_open_cb</td><td class="Q">1286</td><td class="Q">1</td><td><a href="report-6ea520.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-6ea520.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkfilesystemmodel.c</td><td class="DESC">_ctk_file_system_model_get_file</td><td class="Q">1719</td><td class="Q">1</td><td><a href="report-6f8027.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-6f8027.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkfilesystemmodel.c</td><td class="DESC">node_should_be_filtered_out</td><td class="Q">377</td><td class="Q">1</td><td><a href="report-738493.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-738493.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkprintsettings.c</td><td class="DESC">ctk_print_settings_new_from_gvariant</td><td class="Q">1992</td><td class="Q">1</td><td><a href="report-73a98b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-73a98b.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>tests/testlist4.c</td><td class="DESC">new_window</td><td class="Q">132</td><td class="Q">1</td><td><a href="report-73e6ad.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-73e6ad.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkfilesystemmodel.c</td><td class="DESC">remove_file</td><td class="Q">1922</td><td class="Q">1</td><td><a href="report-73f2f1.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-73f2f1.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkflowbox.c</td><td class="DESC">ctk_flow_box_render</td><td class="Q">2702</td><td class="Q">1</td><td><a href="report-74e19e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-74e19e.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>cdk/x11/cdkasync.c</td><td class="DESC">roundtrip_handler</td><td class="Q">685</td><td class="Q">1</td><td><a href="report-75fb95.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-75fb95.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkapplication-dbus.c</td><td class="DESC">ctk_application_impl_dbus_uninhibit</td><td class="Q">771</td><td class="Q">1</td><td><a href="report-769626.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-769626.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkpapersize.c</td><td class="DESC">ctk_paper_size_new_from_gvariant</td><td class="Q">1143</td><td class="Q">1</td><td><a href="report-78e16c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-78e16c.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkmenubar.c</td><td class="DESC">ctk_menu_bar_allocate</td><td class="Q">553</td><td class="Q">1</td><td><a href="report-79178a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-79178a.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>cdk/x11/cdkasync.c</td><td class="DESC">get_child_info_handler</td><td class="Q">517</td><td class="Q">1</td><td><a href="report-7d0c69.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-7d0c69.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkcelllayout.c</td><td class="DESC">_ctk_cell_layout_buildable_custom_tag_end</td><td class="Q">966</td><td class="Q">1</td><td><a href="report-802569.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-802569.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>cdk/x11/cdkasync.c</td><td class="DESC">get_child_info_handler</td><td class="Q">504</td><td class="Q">1</td><td><a href="report-806c7e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-806c7e.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>modules/input/ctkimcontextxim.c</td><td class="DESC">status_draw_callback</td><td class="Q">1161</td><td class="Q">1</td><td><a href="report-81f3b4.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-81f3b4.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>modules/input/ctkimcontextxim.c</td><td class="DESC">preedit_caret_callback</td><td class="Q">1125</td><td class="Q">1</td><td><a href="report-8493b6.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-8493b6.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctktoolpalette.c</td><td class="DESC">ctk_tool_palette_get_drag_item</td><td class="Q">1596</td><td class="Q">1</td><td><a href="report-84f341.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-84f341.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>modules/input/ctkimcontextxim.c</td><td class="DESC">preedit_start_callback</td><td class="Q">966</td><td class="Q">1</td><td><a href="report-8803f1.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-8803f1.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkcssselector.c</td><td class="DESC">_ctk_css_selector_tree_builder_build</td><td class="Q">1928</td><td class="Q">1</td><td><a href="report-8ac2f6.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-8ac2f6.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>cdk/x11/cdkasync.c</td><td class="DESC">get_child_info_handler</td><td class="Q">491</td><td class="Q">1</td><td><a href="report-8b45c6.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-8b45c6.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/inspector/action-editor.c</td><td class="DESC">variant_editor_get_value</td><td class="Q">179</td><td class="Q">1</td><td><a href="report-8d0b20.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-8d0b20.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkcontainer.c</td><td class="DESC">ctk_container_buildable_custom_tag_end</td><td class="Q">972</td><td class="Q">1</td><td><a href="report-8f0987.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-8f0987.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>cdk/x11/cdkdisplay-x11.c</td><td class="DESC">cdk_internal_connection_watch</td><td class="Q">1885</td><td class="Q">1</td><td><a href="report-951f78.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-951f78.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkfilesystemmodel.c</td><td class="DESC">thaw_updates</td><td class="Q">2084</td><td class="Q">1</td><td><a href="report-9e6df2.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-9e6df2.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>modules/input/ctkimcontextxim.c</td><td class="DESC">preedit_done_callback</td><td class="Q">980</td><td class="Q">1</td><td><a href="report-9fcc88.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-9fcc88.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>cdk/x11/cdkasync.c</td><td class="DESC">send_event_handler</td><td class="Q">142</td><td class="Q">1</td><td><a href="report-a00280.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-a00280.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkfilesystemmodel.c</td><td class="DESC">_ctk_file_system_model_clear_cache</td><td class="Q">2129</td><td class="Q">1</td><td><a href="report-a25c26.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-a25c26.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkactionhelper.c</td><td class="DESC">ctk_action_helper_action_added</td><td class="Q">171</td><td class="Q">1</td><td><a href="report-a301e7.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-a301e7.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>cdk/x11/cdkasync.c</td><td class="DESC">roundtrip_handler</td><td class="Q">697</td><td class="Q">1</td><td><a href="report-a3dc98.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-a3dc98.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkfilesystemmodel.c</td><td class="DESC">ctk_file_system_model_sort</td><td class="Q">810</td><td class="Q">1</td><td><a href="report-a62188.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-a62188.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkfilesystemmodel.c</td><td class="DESC">ctk_file_system_model_iter_nth_child</td><td class="Q">542</td><td class="Q">1</td><td><a href="report-ab4b4a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-ab4b4a.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkfilesystemmodel.c</td><td class="DESC">node_get_tree_row</td><td class="Q">282</td><td class="Q">1</td><td><a href="report-b56cad.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-b56cad.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkfilesystem.c</td><td class="DESC">_ctk_file_system_get_volume_for_file</td><td class="Q">624</td><td class="Q">1</td><td><a href="report-b5ccf9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-b5ccf9.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkfilesystemmodel.c</td><td class="DESC">ctk_file_system_model_iter_nth_child</td><td class="Q">572</td><td class="Q">1</td><td><a href="report-b65cf7.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-b65cf7.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkfilesystemmodel.c</td><td class="DESC">node_validate_rows</td><td class="Q">267</td><td class="Q">1</td><td><a href="report-b8059c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-b8059c.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/inspector/prop-list.c</td><td class="DESC">ctk_inspector_prop_list_update_prop</td><td class="Q">441</td><td class="Q">1</td><td><a href="report-bcc528.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-bcc528.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkcolorpickerportal.c</td><td class="DESC">ctk_color_picker_portal_pick</td><td class="Q">210</td><td class="Q">1</td><td><a href="report-c00f27.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c00f27.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>cdk/wayland/cdkscreen-wayland.c</td><td class="DESC">dbus_properties_change_cb</td><td class="Q">1211</td><td class="Q">1</td><td><a href="report-c29902.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c29902.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>demos/ctk-demo/event_axes.c</td><td class="DESC">init_pad_controller</td><td class="Q">594</td><td class="Q">1</td><td><a href="report-c3c6eb.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c3c6eb.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>modules/input/ctkimcontextxim.c</td><td class="DESC">preedit_draw_callback</td><td class="Q">1052</td><td class="Q">1</td><td><a href="report-c3ec21.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c3ec21.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>cdk/wayland/cdkscreen-wayland.c</td><td class="DESC">fontconfig_dbus_proxy_open_cb</td><td class="Q">1269</td><td class="Q">1</td><td><a href="report-c9b1dd.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c9b1dd.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkfilefilter.c</td><td class="DESC">ctk_file_filter_buildable_custom_tag_end</td><td class="Q">374</td><td class="Q">1</td><td><a href="report-cba98d.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-cba98d.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>cdk/x11/cdkasync.c</td><td class="DESC">list_children_handler</td><td class="Q">296</td><td class="Q">1</td><td><a href="report-cd9f90.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-cd9f90.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkbuilder.c</td><td class="DESC">_ctk_builder_construct</td><td class="Q">783</td><td class="Q">1</td><td><a href="report-cde636.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-cde636.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>tests/testgmenu.c</td><td class="DESC">state_cell_func</td><td class="Q">239</td><td class="Q">1</td><td><a href="report-cfe7cf.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-cfe7cf.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkcssselector.c</td><td class="DESC">ctk_css_selector_tree_at_offset</td><td class="Q">218</td><td class="Q">1</td><td><a href="report-d083ab.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d083ab.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkflowbox.c</td><td class="DESC">ctk_flow_box_render</td><td class="Q">2704</td><td class="Q">1</td><td><a href="report-d3bb6e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d3bb6e.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>cdk/wayland/cdkscreen-wayland.c</td><td class="DESC">dbus_properties_change_cb</td><td class="Q">1230</td><td class="Q">1</td><td><a href="report-d5f65f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d5f65f.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>tests/testgmenu.c</td><td class="DESC">state_cell_toggled</td><td class="Q">304</td><td class="Q">1</td><td><a href="report-d990c3.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d990c3.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>modules/input/ctkimcontextxim.c</td><td class="DESC">xim_instantiate_callback</td><td class="Q">354</td><td class="Q">1</td><td><a href="report-da8447.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-da8447.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkcssnodedeclaration.c</td><td class="DESC">get_regions</td><td class="Q">55</td><td class="Q">1</td><td><a href="report-db971c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-db971c.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkpagesetup.c</td><td class="DESC">ctk_page_setup_new_from_gvariant</td><td class="Q">900</td><td class="Q">1</td><td><a href="report-ddf2d5.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-ddf2d5.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkmenutrackeritem.c</td><td class="DESC">ctk_menu_tracker_item_action_added</td><td class="Q">334</td><td class="Q">1</td><td><a href="report-e352d9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-e352d9.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkfilesystemmodel.c</td><td class="DESC">_ctk_file_system_model_iter_is_visible</td><td class="Q">1641</td><td class="Q">1</td><td><a href="report-e46498.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-e46498.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>modules/input/ctkimcontextxim.c</td><td class="DESC">xim_destroy_callback</td><td class="Q">405</td><td class="Q">1</td><td><a href="report-e6704f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-e6704f.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkmenusectionbox.c</td><td class="DESC">update_popover_position_cb</td><td class="Q">394</td><td class="Q">1</td><td><a href="report-e82fac.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-e82fac.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkprintoperation-portal.c</td><td class="DESC">prepare_print_response</td><td class="Q">407</td><td class="Q">1</td><td><a href="report-e8fe32.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-e8fe32.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkrecentfilter.c</td><td class="DESC">ctk_recent_filter_buildable_custom_tag_end</td><td class="Q">401</td><td class="Q">1</td><td><a href="report-e928f9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-e928f9.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkprintoperation-portal.c</td><td class="DESC">portal_job_complete</td><td class="Q">224</td><td class="Q">1</td><td><a href="report-e9a338.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-e9a338.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkapplication-dbus.c</td><td class="DESC">ctk_application_impl_dbus_inhibit</td><td class="Q">698</td><td class="Q">1</td><td><a href="report-ea3be5.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-ea3be5.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctksettings.c</td><td class="DESC">settings_display_closed</td><td class="Q">1925</td><td class="Q">1</td><td><a href="report-ecf0d4.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-ecf0d4.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>modules/printbackends/cups/ctkcupssecretsutils.c</td><td class="DESC">do_store_auth_info</td><td class="Q">331</td><td class="Q">1</td><td><a href="report-ee1f83.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-ee1f83.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkfilesystemmodel.c</td><td class="DESC">node_validate_rows</td><td class="Q">261</td><td class="Q">1</td><td><a href="report-efcf8f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-efcf8f.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkfilesystemmodel.c</td><td class="DESC">ctk_file_system_model_iter_next</td><td class="Q">640</td><td class="Q">1</td><td><a href="report-f20917.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-f20917.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkprintoperation-portal.c</td><td class="DESC">call_prepare_print</td><td class="Q">582</td><td class="Q">1</td><td><a href="report-f32698.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-f32698.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>modules/input/ctkimcontextxim.c</td><td class="DESC">string_conversion_callback</td><td class="Q">1188</td><td class="Q">1</td><td><a href="report-f834ab.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-f834ab.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>ctk/ctkactionable.c</td><td class="DESC">ctk_actionable_default_init</td><td class="Q">78</td><td class="Q">1</td><td><a href="report-f93553.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-f93553.html" -->
+</tr>
+<tr class="bt_logic_error_cast_from_non-struct_type_to_struct_type"><td class="DESC">Logic error</td><td class="DESC">Cast from non-struct type to struct type</td><td>cdk/x11/cdkasync.c</td><td class="DESC">send_event_handler</td><td class="Q">163</td><td class="Q">1</td><td><a href="report-fe20f9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-fe20f9.html" -->
+</tr>
+<tr class="bt_logic_error_cast_region_with_wrong_size"><td class="DESC">Logic error</td><td class="DESC">Cast region with wrong size</td><td>ctk/ctkcssselector.c</td><td class="DESC">ctk_css_selector_new</td><td class="Q">927</td><td class="Q">5</td><td><a href="report-6c5772.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-6c5772.html" -->
+</tr>
+<tr class="bt_logic_error_cast_region_with_wrong_size"><td class="DESC">Logic error</td><td class="DESC">Cast region with wrong size</td><td>ctk/ctkimagedefinition.c</td><td class="DESC">ctk_image_definition_alloc</td><td class="Q">128</td><td class="Q">6</td><td><a href="report-bbde27.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-bbde27.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>tests/testdialog.c</td><td class="DESC">main</td><td class="Q">356</td><td class="Q">1</td><td><a href="report-0edd10.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-0edd10.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>ctk/ctkheaderbar.c</td><td class="DESC">ctk_header_bar_compute_size_for_opposing_orientation</td><td class="Q">842</td><td class="Q">1</td><td><a href="report-0ef344.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-0ef344.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>modules/printbackends/test/ctkprintbackendtest.c</td><td class="DESC">test_printer_get_options</td><td class="Q">495</td><td class="Q">1</td><td><a href="report-1c53e0.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-1c53e0.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>ctk/ctkcssprovider.c</td><td class="DESC">ctk_css_provider_load_from_data</td><td class="Q">1844</td><td class="Q">1</td><td><a href="report-1cb64b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-1cb64b.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>ctk/ctktreeview.c</td><td class="DESC">ctk_tree_view_real_collapse_row</td><td class="Q">12980</td><td class="Q">1</td><td><a href="report-1d87c3.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-1d87c3.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>tests/testdialog.c</td><td class="DESC">main</td><td class="Q">392</td><td class="Q">1</td><td><a href="report-222fcb.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-222fcb.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>ctk/ctktreeview.c</td><td class="DESC">ctk_tree_view_motion_draw_column_motion_arrow</td><td class="Q">4079</td><td class="Q">1</td><td><a href="report-230067.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-230067.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>ctk/ctknotebook.c</td><td class="DESC">ctk_notebook_calculate_tabs_allocation</td><td class="Q">5797</td><td class="Q">1</td><td><a href="report-2588a1.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-2588a1.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>modules/printbackends/cups/ctkprintbackendcups.c</td><td class="DESC">cups_request_job_info_cb</td><td class="Q">1774</td><td class="Q">1</td><td><a href="report-26a7e4.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-26a7e4.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>tests/ctkgears.c</td><td class="DESC">ctk_gears_tick</td><td class="Q">924</td><td class="Q">1</td><td><a href="report-3c0905.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-3c0905.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>ctk/ctkcellrenderertoggle.c</td><td class="DESC">ctk_cell_renderer_toggle_render</td><td class="Q">426</td><td class="Q">1</td><td><a href="report-4341b8.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-4341b8.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>testsuite/ctk/builder.c</td><td class="DESC">test_pango_attributes</td><td class="Q">2043</td><td class="Q">1</td><td><a href="report-4490da.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-4490da.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>cdk/cdkwindow.c</td><td class="DESC">cdk_window_add_update_window</td><td class="Q">3744</td><td class="Q">1</td><td><a href="report-4c61a3.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-4c61a3.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>ctk/ctktextbtree.c</td><td class="DESC">_ctk_text_btree_insert</td><td class="Q">1158</td><td class="Q">1</td><td><a href="report-4c8b13.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-4c8b13.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>ctk/ctktextlayout.c</td><td class="DESC">ctk_text_layout_validate_yrange</td><td class="Q">1108</td><td class="Q">1</td><td><a href="report-521a0b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-521a0b.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>testsuite/ctk/builder.c</td><td class="DESC">test_widget</td><td class="Q">1617</td><td class="Q">1</td><td><a href="report-5d62b5.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-5d62b5.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>demos/ctk-demo/foreigndrawing.c</td><td class="DESC">draw_combobox</td><td class="Q">799</td><td class="Q">1</td><td><a href="report-641b1c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-641b1c.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>testsuite/ctk/recentmanager.c</td><td class="DESC">recent_manager_add</td><td class="Q">58</td><td class="Q">1</td><td><a href="report-71f264.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-71f264.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>ctk/ctktreemodelfilter.c</td><td class="DESC">ctk_real_tree_model_filter_convert_child_path_to_path</td><td class="Q">4103</td><td class="Q">1</td><td><a href="report-7315a8.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-7315a8.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>ctk/ctkshortcutssection.c</td><td class="DESC">ctk_shortcuts_section_reflow_groups</td><td class="Q">630</td><td class="Q">1</td><td><a href="report-734634.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-734634.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>ctk/ctkmenubar.c</td><td class="DESC">ctk_menu_bar_allocate</td><td class="Q">551</td><td class="Q">1</td><td><a href="report-739303.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-739303.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>tests/testbaseline.c</td><td class="DESC">main</td><td class="Q">138</td><td class="Q">1</td><td><a href="report-7688a9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-7688a9.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>ctk/ctktextlayout.c</td><td class="DESC">ctk_text_layout_move_iter_visually</td><td class="Q">3668</td><td class="Q">1</td><td><a href="report-778a98.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-778a98.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>ctk/ctktreeview.c</td><td class="DESC">ctk_tree_view_motion_draw_column_motion_arrow</td><td class="Q">4078</td><td class="Q">1</td><td><a href="report-7d87be.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-7d87be.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>cdk/broadway/broadway-server.c</td><td class="DESC">parse_input_message</td><td class="Q">483</td><td class="Q">1</td><td><a href="report-7f1c68.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-7f1c68.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>ctk/ctkrevealer.c</td><td class="DESC">ctk_revealer_real_size_allocate</td><td class="Q">486</td><td class="Q">1</td><td><a href="report-840424.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-840424.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>ctk/ctktreedatalist.c</td><td class="DESC">_ctk_tree_data_list_set_header</td><td class="Q">554</td><td class="Q">1</td><td><a href="report-8cbd0e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-8cbd0e.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>modules/printbackends/test/ctkprintbackendtest.c</td><td class="DESC">ctk_print_backend_test_print_stream</td><td class="Q">411</td><td class="Q">1</td><td><a href="report-8e30ee.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-8e30ee.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>ctk/a11y/ctktextcellaccessible.c</td><td class="DESC">ctk_text_cell_accessible_get_default_attributes</td><td class="Q">340</td><td class="Q">1</td><td><a href="report-90ce3a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-90ce3a.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>testsuite/ctk/filtermodel.c</td><td class="DESC">specific_ref_leaf_and_remove_ancestor</td><td class="Q">5628</td><td class="Q">1</td><td><a href="report-90d0d9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-90d0d9.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>cdk/wayland/cdkselection-wayland.c</td><td class="DESC">cdk_wayland_selection_request_target</td><td class="Q">1019</td><td class="Q">1</td><td><a href="report-9d9c5e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-9d9c5e.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>testsuite/cdk/rectangle.c</td><td class="DESC">test_rectangle_intersect</td><td class="Q">38</td><td class="Q">1</td><td><a href="report-9dc1c8.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-9dc1c8.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>testsuite/ctk/filtermodel.c</td><td class="DESC">specific_virtual_ref_leaf_and_remove_ancestor</td><td class="Q">5681</td><td class="Q">1</td><td><a href="report-a3574a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-a3574a.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>cdk/broadway/cdkwindow-broadway.c</td><td class="DESC">cdk_broadway_window_set_opacity</td><td class="Q">1518</td><td class="Q">1</td><td><a href="report-a3a0dd.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-a3a0dd.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>ctk/ctkcellareabox.c</td><td class="DESC">get_allocated_cells</td><td class="Q">914</td><td class="Q">1</td><td><a href="report-a80ae8.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-a80ae8.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>ctk/ctkrevealer.c</td><td class="DESC">ctk_revealer_real_size_allocate</td><td class="Q">487</td><td class="Q">1</td><td><a href="report-ac53aa.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-ac53aa.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>ctk/a11y/ctktoplevelaccessible.c</td><td class="DESC">is_combo_window</td><td class="Q">118</td><td class="Q">1</td><td><a href="report-bf152e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-bf152e.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>ctk/ctkcellareaboxcontext.c</td><td class="DESC">_ctk_cell_area_box_context_get_requests</td><td class="Q">694</td><td class="Q">1</td><td><a href="report-c01a32.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c01a32.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>tests/testscale.c</td><td class="DESC">main</td><td class="Q">165</td><td class="Q">1</td><td><a href="report-c0345f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c0345f.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>ctk/ctkwindow.c</td><td class="DESC">ctk_window_realize</td><td class="Q">7510</td><td class="Q">1</td><td><a href="report-c39114.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c39114.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>ctk/ctkcellarea.c</td><td class="DESC">ctk_cell_area_add_focus_sibling</td><td class="Q">3066</td><td class="Q">1</td><td><a href="report-c65bcb.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c65bcb.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>ctk/ctkcellrendererspinner.c</td><td class="DESC">ctk_cell_renderer_spinner_render</td><td class="Q">362</td><td class="Q">1</td><td><a href="report-ca55a8.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-ca55a8.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>ctk/ctkbindings.c</td><td class="DESC">ctk_binding_entry_clear_internal</td><td class="Q">824</td><td class="Q">1</td><td><a href="report-cdd1ec.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-cdd1ec.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>cdk/broadway/broadway-server.c</td><td class="DESC">parse_input_message</td><td class="Q">465</td><td class="Q">1</td><td><a href="report-d2368f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d2368f.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>tests/testctk.c</td><td class="DESC">create_statusbar</td><td class="Q">1437</td><td class="Q">1</td><td><a href="report-d25b97.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d25b97.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>tests/video-timer.c</td><td class="DESC">on_update</td><td class="Q">335</td><td class="Q">1</td><td><a href="report-d60f64.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d60f64.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>cdk/x11/cdkkeys-x11.c</td><td class="DESC">MyEnhancedXkbTranslateKeyCode</td><td class="Q">1103</td><td class="Q">1</td><td><a href="report-d7c4ab.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d7c4ab.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>ctk/ctkflowbox.c</td><td class="DESC">ctk_flow_box_render</td><td class="Q">2643</td><td class="Q">1</td><td><a href="report-dd7dfc.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-dd7dfc.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>ctk/ctktextbtree.c</td><td class="DESC">_ctk_text_btree_validate_line</td><td class="Q">5461</td><td class="Q">1</td><td><a href="report-e673d9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-e673d9.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>cdk/broadway/cdkwindow-broadway.c</td><td class="DESC">cdk_broadway_window_set_opacity</td><td class="Q">1520</td><td class="Q">1</td><td><a href="report-eb0f1b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-eb0f1b.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>testsuite/ctk/recentmanager.c</td><td class="DESC">recent_manager_purge</td><td class="Q">281</td><td class="Q">1</td><td><a href="report-f2ba3d.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-f2ba3d.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>ctk/ctktreeview.c</td><td class="DESC">ctk_tree_view_multipress_gesture_pressed</td><td class="Q">3180</td><td class="Q">1</td><td><a href="report-f91cc8.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-f91cc8.html" -->
+</tr>
+<tr class="bt_unused_code_dead_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead assignment</td><td>testsuite/ctk/filtermodel.c</td><td class="DESC">specific_sort_ref_leaf_and_remove_ancestor</td><td class="Q">5579</td><td class="Q">1</td><td><a href="report-fd17b1.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-fd17b1.html" -->
+</tr>
+<tr class="bt_unused_code_dead_increment"><td class="DESC">Unused code</td><td class="DESC">Dead increment</td><td>ctk/ctktreeview.c</td><td class="DESC">ctk_tree_view_move_cursor_page_up_down</td><td class="Q">10686</td><td class="Q">1</td><td><a href="report-3926cf.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-3926cf.html" -->
+</tr>
+<tr class="bt_unused_code_dead_increment"><td class="DESC">Unused code</td><td class="DESC">Dead increment</td><td>ctk/ctkheaderbar.c</td><td class="DESC">ctk_header_bar_compute_size_for_opposing_orientation</td><td class="Q">873</td><td class="Q">1</td><td><a href="report-a19a64.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-a19a64.html" -->
+</tr>
+<tr class="bt_unused_code_dead_increment"><td class="DESC">Unused code</td><td class="DESC">Dead increment</td><td>tests/ctkoffscreenbox.c</td><td class="DESC">ctk_offscreen_box_size_allocate</td><td class="Q">603</td><td class="Q">1</td><td><a href="report-c83d62.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c83d62.html" -->
+</tr>
+<tr class="bt_unused_code_dead_initialization"><td class="DESC">Unused code</td><td class="DESC">Dead initialization</td><td>ctk/a11y/ctkcellaccessible.c</td><td class="DESC">ctk_cell_accessible_action_do_action</td><td class="Q">295</td><td class="Q">1</td><td><a href="report-64b71c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-64b71c.html" -->
+</tr>
+<tr class="bt_unused_code_dead_initialization"><td class="DESC">Unused code</td><td class="DESC">Dead initialization</td><td>ctk/ctkdbusgenerated.c</td><td class="DESC">_ctk_mount_operation_handler_skeleton_dbus_interface_get_properties</td><td class="Q">2094</td><td class="Q">1</td><td><a href="report-b273d6.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-b273d6.html" -->
+</tr>
+<tr class="bt_unused_code_dead_initialization"><td class="DESC">Unused code</td><td class="DESC">Dead initialization</td><td>ctk/ctkentrycompletion.c</td><td class="DESC">ctk_entry_completion_insert_completion_text</td><td class="Q">1877</td><td class="Q">1</td><td><a href="report-d5a837.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d5a837.html" -->
+</tr>
+<tr class="bt_unused_code_dead_nested_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead nested assignment</td><td>docs/reference/cdk/cdk3-scan.c</td><td class="DESC">output_object_signal</td><td class="Q">198</td><td class="Q">1</td><td><a href="report-25ea44.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-25ea44.html" -->
+</tr>
+<tr class="bt_unused_code_dead_nested_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead nested assignment</td><td>ctk/ctktoolbar.c</td><td class="DESC">ctk_toolbar_allocate</td><td class="Q">1574</td><td class="Q">1</td><td><a href="report-42d168.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-42d168.html" -->
+</tr>
+<tr class="bt_unused_code_dead_nested_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead nested assignment</td><td>testsuite/ctk/listbox.c</td><td class="DESC">check_sorted</td><td class="Q">31</td><td class="Q">1</td><td><a href="report-51eb01.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-51eb01.html" -->
+</tr>
+<tr class="bt_unused_code_dead_nested_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead nested assignment</td><td>ctk/ctktoolbar.c</td><td class="DESC">ctk_toolbar_allocate</td><td class="Q">1580</td><td class="Q">1</td><td><a href="report-524f64.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-524f64.html" -->
+</tr>
+<tr class="bt_unused_code_dead_nested_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead nested assignment</td><td>tests/testcombo.c</td><td class="DESC">create_color_pixbuf</td><td class="Q">44</td><td class="Q">1</td><td><a href="report-977a77.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-977a77.html" -->
+</tr>
+<tr class="bt_unused_code_dead_nested_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead nested assignment</td><td>ctk/ctkbbox.c</td><td class="DESC">ctk_button_box_child_requisition</td><td class="Q">634</td><td class="Q">1</td><td><a href="report-e93159.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-e93159.html" -->
+</tr>
+<tr class="bt_unused_code_dead_nested_assignment"><td class="DESC">Unused code</td><td class="DESC">Dead nested assignment</td><td>ctk/updateiconcache.c</td><td class="DESC">get_image_meta_data_size</td><td class="Q">1023</td><td class="Q">1</td><td><a href="report-f14e52.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-f14e52.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctkrbtree.c</td><td class="DESC">_ctk_rbtree_remove_node_fixup</td><td class="Q">268</td><td class="Q">11</td><td><a href="report-0577dc.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-0577dc.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctkrbtree.c</td><td class="DESC">_ctk_rbtree_remove_node_fixup</td><td class="Q">299</td><td class="Q">13</td><td><a href="report-0d8f95.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-0d8f95.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctktextbtree.c</td><td class="DESC">ctk_text_btree_node_common_parent</td><td class="Q">5638</td><td class="Q">32</td><td><a href="report-0e0ebe.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-0e0ebe.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctkpango.c</td><td class="DESC">_ctk_pango_move_lines</td><td class="Q">728</td><td class="Q">11</td><td><a href="report-0e124a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-0e124a.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctktextbtree.c</td><td class="DESC">_ctk_text_btree_last_could_contain_tag</td><td class="Q">3144</td><td class="Q">17</td><td><a href="report-0e25b4.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-0e25b4.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctkliststore.c</td><td class="DESC">ctk_list_store_real_set_value</td><td class="Q">884</td><td class="Q">31</td><td><a href="report-121f84.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-121f84.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctkcellareabox.c</td><td class="DESC">allocate_cells_manually</td><td class="Q">771</td><td class="Q">25</td><td><a href="report-136510.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-136510.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>cdk/x11/cdkkeys-x11.c</td><td class="DESC">cdk_x11_keymap_get_entries_for_keycode</td><td class="Q">1030</td><td class="Q">21</td><td><a href="report-1774bc.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-1774bc.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctkpathbar.c</td><td class="DESC">ctk_path_bar_size_allocate</td><td class="Q">784</td><td class="Q">22</td><td><a href="report-207d73.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-207d73.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctktextbtree.c</td><td class="DESC">_ctk_text_btree_delete</td><td class="Q">855</td><td class="Q">31</td><td><a href="report-21d2f2.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-21d2f2.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctktextbtree.c</td><td class="DESC">node_compare</td><td class="Q">4273</td><td class="Q">25</td><td><a href="report-2497bf.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-2497bf.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctknotebook.c</td><td class="DESC">ctk_notebook_search_page</td><td class="Q">5228</td><td class="Q">20</td><td><a href="report-261c61.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-261c61.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctktextbufferserialize.c</td><td class="DESC">serialize_text</td><td class="Q">453</td><td class="Q">12</td><td><a href="report-27b82b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-27b82b.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>cdk/x11/cdkwindow-x11.c</td><td class="DESC">cdk_x11_window_set_geometry_hints</td><td class="Q">2631</td><td class="Q">18</td><td><a href="report-295592.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-295592.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctktextbtree.c</td><td class="DESC">node_compare</td><td class="Q">4306</td><td class="Q">46</td><td><a href="report-2de8a7.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-2de8a7.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctkemojicompletion.c</td><td class="DESC">move_active_variation</td><td class="Q">309</td><td class="Q">28</td><td><a href="report-31fcc0.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-31fcc0.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctkpango.c</td><td class="DESC">_ctk_pango_move_lines</td><td class="Q">721</td><td class="Q">5</td><td><a href="report-36034d.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-36034d.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctktextbtree.c</td><td class="DESC">ensure_end_iter_segment</td><td class="Q">3465</td><td class="Q">10</td><td><a href="report-365bfc.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-365bfc.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>cdk/x11/cdkwindow-x11.c</td><td class="DESC">cdk_x11_window_set_geometry_hints</td><td class="Q">2638</td><td class="Q">20</td><td><a href="report-3a863d.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-3a863d.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>modules/input/ctkimcontextxim.c</td><td class="DESC">set_ic_client_window</td><td class="Q">569</td><td class="Q">11</td><td><a href="report-40aabb.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-40aabb.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctkrbtree.c</td><td class="DESC">_ctk_rbtree_test_dirty</td><td class="Q">1598</td><td class="Q">7</td><td><a href="report-41919b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-41919b.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>cdk/x11/cdkwindow-x11.c</td><td class="DESC">cdk_x11_window_set_geometry_hints</td><td class="Q">2624</td><td class="Q">16</td><td><a href="report-41fb4f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-41fb4f.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctktreemodelfilter.c</td><td class="DESC">ctk_tree_model_filter_row_deleted_invisible_node</td><td class="Q">2510</td><td class="Q">28</td><td><a href="report-42c34e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-42c34e.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctktreeview.c</td><td class="DESC">ctk_tree_view_update_rubber_band_selection_range</td><td class="Q">4505</td><td class="Q">59</td><td><a href="report-43c753.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-43c753.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctkstack.c</td><td class="DESC">stack_child_visibility_notify_cb</td><td class="Q">1196</td><td class="Q">8</td><td><a href="report-46da84.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-46da84.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctktextbtree.c</td><td class="DESC">_ctk_text_btree_delete</td><td class="Q">975</td><td class="Q">27</td><td><a href="report-4819ec.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-4819ec.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>cdk/x11/cdkkeys-x11.c</td><td class="DESC">cdk_x11_keymap_get_entries_for_keycode</td><td class="Q">1036</td><td class="Q">23</td><td><a href="report-485c60.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-485c60.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctkpathbar.c</td><td class="DESC">ctk_path_bar_slider_down_defocus</td><td class="Q">1131</td><td class="Q">5</td><td><a href="report-49d1a0.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-49d1a0.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctktextbtree.c</td><td class="DESC">node_compare</td><td class="Q">4294</td><td class="Q">32</td><td><a href="report-56cc1e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-56cc1e.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctktreeview.c</td><td class="DESC">validate_visible_area</td><td class="Q">6718</td><td class="Q">69</td><td><a href="report-5d8c9f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-5d8c9f.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctktextbtree.c</td><td class="DESC">ctk_text_btree_node_common_parent</td><td class="Q">5640</td><td class="Q">38</td><td><a href="report-62e363.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-62e363.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctktextbtree.c</td><td class="DESC">ctk_text_btree_resolve_bidi</td><td class="Q">633</td><td class="Q">23</td><td><a href="report-74a14c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-74a14c.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctktextbtree.c</td><td class="DESC">_ctk_text_btree_delete</td><td class="Q">842</td><td class="Q">36</td><td><a href="report-7b0826.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-7b0826.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctktextbtree.c</td><td class="DESC">_ctk_text_line_next_could_contain_tag</td><td class="Q">4464</td><td class="Q">35</td><td><a href="report-7dc416.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-7dc416.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctkwindow.c</td><td class="DESC">ctk_window_set_geometry_hints</td><td class="Q">4083</td><td class="Q">15</td><td><a href="report-7e402f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-7e402f.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctkselection.c</td><td class="DESC">selection_set_text_plain</td><td class="Q">1553</td><td class="Q">27</td><td><a href="report-82f4af.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-82f4af.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctkbuiltinicon.c</td><td class="DESC">ctk_builtin_icon_get_preferred_size</td><td class="Q">125</td><td class="Q">9</td><td><a href="report-870551.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-870551.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctktextbtree.c</td><td class="DESC">node_compare</td><td class="Q">4306</td><td class="Q">40</td><td><a href="report-870e7e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-870e7e.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>modules/input/ctkimcontextxim.c</td><td class="DESC">xim_text_to_utf8</td><td class="Q">1030</td><td class="Q">18</td><td><a href="report-8e261b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-8e261b.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctktreeview.c</td><td class="DESC">ctk_tree_view_update_rubber_band_selection_range</td><td class="Q">4508</td><td class="Q">56</td><td><a href="report-93b36a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-93b36a.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctkmountoperation-x11.c</td><td class="DESC">get_name_for_window_with_pid</td><td class="Q">860</td><td class="Q">20</td><td><a href="report-9731e9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-9731e9.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctkpathbar.c</td><td class="DESC">ctk_path_bar_scroll_down</td><td class="Q">988</td><td class="Q">15</td><td><a href="report-98523d.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-98523d.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctktreeview.c</td><td class="DESC">ctk_tree_view_move_cursor_start_end</td><td class="Q">10866</td><td class="Q">31</td><td><a href="report-9881ec.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-9881ec.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctktextbtree.c</td><td class="DESC">post_insert_fixup</td><td class="Q">6003</td><td class="Q">10</td><td><a href="report-a3fc80.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-a3fc80.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctkemojicompletion.c</td><td class="DESC">move_active_row</td><td class="Q">215</td><td class="Q">21</td><td><a href="report-b21f78.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-b21f78.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctklabel.c</td><td class="DESC">get_size_for_allocation</td><td class="Q">3650</td><td class="Q">16</td><td><a href="report-b3db2a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-b3db2a.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctktreeview.c</td><td class="DESC">ctk_tree_view_get_row_height</td><td class="Q">13814</td><td class="Q">28</td><td><a href="report-ba19f2.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-ba19f2.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctkentry.c</td><td class="DESC">ctk_entry_drag_begin</td><td class="Q">9928</td><td class="Q">24</td><td><a href="report-bb746d.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-bb746d.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctktreeview.c</td><td class="DESC">ctk_tree_view_update_rubber_band_selection_range</td><td class="Q">4535</td><td class="Q">53</td><td><a href="report-bebd9c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-bebd9c.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctktextbtree.c</td><td class="DESC">_ctk_text_btree_delete</td><td class="Q">860</td><td class="Q">35</td><td><a href="report-c5664b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c5664b.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>cdk/x11/cdkwindow-x11.c</td><td class="DESC">cdk_x11_window_set_geometry_hints</td><td class="Q">2658</td><td class="Q">26</td><td><a href="report-cbca98.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-cbca98.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/a11y/ctktreeviewaccessible.c</td><td class="DESC">ctk_tree_view_accessible_ref_selection</td><td class="Q">948</td><td class="Q">11</td><td><a href="report-d0a0b5.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d0a0b5.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctkemojicompletion.c</td><td class="DESC">move_active_variation</td><td class="Q">308</td><td class="Q">34</td><td><a href="report-d76f46.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d76f46.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>cdk/x11/cdkwindow-x11.c</td><td class="DESC">cdk_x11_window_set_geometry_hints</td><td class="Q">2645</td><td class="Q">22</td><td><a href="report-d78491.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d78491.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctktextbtree.c</td><td class="DESC">ctk_text_btree_node_common_parent</td><td class="Q">5644</td><td class="Q">44</td><td><a href="report-da4cf2.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-da4cf2.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>cdk/x11/cdkwindow-x11.c</td><td class="DESC">cdk_x11_window_set_geometry_hints</td><td class="Q">2683</td><td class="Q">30</td><td><a href="report-db2915.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-db2915.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctktreeview.c</td><td class="DESC">ctk_tree_view_header_focus</td><td class="Q">8641</td><td class="Q">28</td><td><a href="report-db2af7.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-db2af7.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctkpathbar.c</td><td class="DESC">ctk_path_bar_slider_up_defocus</td><td class="Q">1103</td><td class="Q">5</td><td><a href="report-e0141c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-e0141c.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctktextbtree.c</td><td class="DESC">ctk_text_btree_node_common_parent</td><td class="Q">5638</td><td class="Q">36</td><td><a href="report-e60b65.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-e60b65.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctktextbtree.c</td><td class="DESC">ctk_text_btree_node_common_parent</td><td class="Q">5645</td><td class="Q">44</td><td><a href="report-e78df3.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-e78df3.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctktextbtree.c</td><td class="DESC">_ctk_text_btree_delete</td><td class="Q">831</td><td class="Q">42</td><td><a href="report-ebb430.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-ebb430.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctkshortcutssection.c</td><td class="DESC">ctk_shortcuts_section_reflow_groups</td><td class="Q">743</td><td class="Q">18</td><td><a href="report-f539eb.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-f539eb.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctktextlayout.c</td><td class="DESC">ctk_text_layout_get_line_display</td><td class="Q">2523</td><td class="Q">35</td><td><a href="report-f71f69.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-f71f69.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctktreeview.c</td><td class="DESC">ctk_tree_view_update_rubber_band_selection_range</td><td class="Q">4498</td><td class="Q">54</td><td><a href="report-fa061a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-fa061a.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_null_pointer"><td class="DESC">Logic error</td><td class="DESC">Dereference of null pointer</td><td>ctk/ctkemojicompletion.c</td><td class="DESC">move_active_row</td><td class="Q">217</td><td class="Q">18</td><td><a href="report-fb2261.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-fb2261.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_undefined_pointer_value"><td class="DESC">Logic error</td><td class="DESC">Dereference of undefined pointer value</td><td>ctk/ctktreemodelfilter.c</td><td class="DESC">ctk_tree_model_filter_row_changed</td><td class="Q">2039</td><td class="Q">63</td><td><a href="report-0e2dab.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-0e2dab.html" -->
+</tr>
+<tr class="bt_logic_error_dereference_of_undefined_pointer_value"><td class="DESC">Logic error</td><td class="DESC">Dereference of undefined pointer value</td><td>ctk/ctkiconview.c</td><td class="DESC">ctk_icon_view_rows_reordered</td><td class="Q">3595</td><td class="Q">14</td><td><a href="report-9c5786.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-9c5786.html" -->
+</tr>
+<tr class="bt_logic_error_division_by_zero"><td class="DESC">Logic error</td><td class="DESC">Division by zero</td><td>ctk/ctktoolitemgroup.c</td><td class="DESC">udiv</td><td class="Q">661</td><td class="Q">48</td><td><a href="report-1736ae.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-1736ae.html" -->
+</tr>
+<tr class="bt_logic_error_division_by_zero"><td class="DESC">Logic error</td><td class="DESC">Division by zero</td><td>ctk/deprecated/ctktable.c</td><td class="DESC">ctk_table_size_request_pass3</td><td class="Q">1378</td><td class="Q">40</td><td><a href="report-5921f4.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-5921f4.html" -->
+</tr>
+<tr class="bt_logic_error_division_by_zero"><td class="DESC">Logic error</td><td class="DESC">Division by zero</td><td>ctk/ctktoolitemgroup.c</td><td class="DESC">ctk_tool_item_group_real_size_allocate</td><td class="Q">1003</td><td class="Q">39</td><td><a href="report-5aec37.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-5aec37.html" -->
+</tr>
+<tr class="bt_logic_error_division_by_zero"><td class="DESC">Logic error</td><td class="DESC">Division by zero</td><td>ctk/deprecated/ctktable.c</td><td class="DESC">ctk_table_size_request_pass3</td><td class="Q">1432</td><td class="Q">46</td><td><a href="report-750202.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-750202.html" -->
+</tr>
+<tr class="bt_logic_error_division_by_zero"><td class="DESC">Logic error</td><td class="DESC">Division by zero</td><td>ctk/ctkboxgadget.c</td><td class="DESC">ctk_box_gadget_distribute</td><td class="Q">190</td><td class="Q">28</td><td><a href="report-9be131.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-9be131.html" -->
+</tr>
+<tr class="bt_logic_error_division_by_zero"><td class="DESC">Logic error</td><td class="DESC">Division by zero</td><td>ctk/ctktoolbar.c</td><td class="DESC">ctk_toolbar_allocate</td><td class="Q">1682</td><td class="Q">38</td><td><a href="report-f362f3.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-f362f3.html" -->
+</tr>
+<tr class="bt_logic_error_garbage_return_value"><td class="DESC">Logic error</td><td class="DESC">Garbage return value</td><td>cdk/broadway/cdkdevice-broadway.c</td><td class="DESC">cdk_broadway_device_window_at_position</td><td class="Q">358</td><td class="Q">7</td><td><a href="report-c37878.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c37878.html" -->
+</tr>
+<tr class="bt_stream_handling_error_invalid_stream_state"><td class="DESC">Stream handling error</td><td class="DESC">Invalid stream state</td><td>tests/testfilechooser.c</td><td class="DESC">my_new_from_file_at_size</td><td class="Q">202</td><td class="Q">18</td><td><a href="report-400827.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-400827.html" -->
+</tr>
+<tr class="bt_stream_handling_error_invalid_stream_state"><td class="DESC">Stream handling error</td><td class="DESC">Invalid stream state</td><td>cdk/tmp-introspectvx2lr9qp/Cdk-3.0.c</td><td class="DESC">read_line</td><td class="Q">89</td><td class="Q">33</td><td><a href="report-5d4bc8.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-5d4bc8.html" -->
+</tr>
+<tr class="bt_memory_error_memory_leak"><td class="DESC">Memory error</td><td class="DESC">Memory leak</td><td>ctk/ctkimmodule.c</td><td class="DESC">ctk_im_module_initialize</td><td class="Q">499</td><td class="Q">24</td><td><a href="report-1d5584.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-1d5584.html" -->
+</tr>
+<tr class="bt_memory_error_memory_leak"><td class="DESC">Memory error</td><td class="DESC">Memory leak</td><td>cdk/broadway/broadway-server.c</td><td class="DESC">handle_incoming_connection</td><td class="Q">1247</td><td class="Q">7</td><td><a href="report-252a27.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-252a27.html" -->
+</tr>
+<tr class="bt_memory_error_memory_leak"><td class="DESC">Memory error</td><td class="DESC">Memory leak</td><td>ctk/ctkprinter.c</td><td class="DESC">ctk_enumerate_printers</td><td class="Q">1290</td><td class="Q">11</td><td><a href="report-58f859.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-58f859.html" -->
+</tr>
+<tr class="bt_memory_error_memory_leak"><td class="DESC">Memory error</td><td class="DESC">Memory leak</td><td>ctk/ctkcssnode.c</td><td class="DESC">ctk_css_node_get_property</td><td class="Q">187</td><td class="Q">8</td><td><a href="report-64c4ee.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-64c4ee.html" -->
+</tr>
+<tr class="bt_memory_error_memory_leak"><td class="DESC">Memory error</td><td class="DESC">Memory leak</td><td>ctk/ctkprintoperation-unix.c</td><td class="DESC">find_printer</td><td class="Q">1224</td><td class="Q">18</td><td><a href="report-66ce5d.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-66ce5d.html" -->
+</tr>
+<tr class="bt_memory_error_memory_leak"><td class="DESC">Memory error</td><td class="DESC">Memory leak</td><td>ctk/ctktoolitemgroup.c</td><td class="DESC">ctk_tool_item_group_real_size_query</td><td class="Q">830</td><td class="Q">25</td><td><a href="report-7c0c29.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-7c0c29.html" -->
+</tr>
+<tr class="bt_memory_error_memory_leak"><td class="DESC">Memory error</td><td class="DESC">Memory leak</td><td>modules/printbackends/lpr/ctkprintbackendlpr.c</td><td class="DESC">ctk_print_backend_lpr_print_stream</td><td class="Q">382</td><td class="Q">11</td><td><a href="report-d7fab4.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d7fab4.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>ctk/ctkprintoperation.c</td><td class="DESC">prepare_data</td><td class="Q">2808</td><td class="Q">24</td><td><a href="report-03fc33.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-03fc33.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>ctk/ctktextiter.c</td><td class="DESC">strbreakup</td><td class="Q">4903</td><td class="Q">29</td><td><a href="report-068bf6.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-068bf6.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>ctk/ctkheaderbar.c</td><td class="DESC">ctk_header_bar_allocate_contents</td><td class="Q">1119</td><td class="Q">24</td><td><a href="report-08bbb0.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-08bbb0.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>ctk/ctkbbox.c</td><td class="DESC">ctk_button_box_allocate</td><td class="Q">1295</td><td class="Q">21</td><td><a href="report-135018.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-135018.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>cdk/wayland/cdkkeys-wayland.c</td><td class="DESC">update_direction</td><td class="Q">509</td><td class="Q">26</td><td><a href="report-14d911.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-14d911.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>ctk/ctkbbox.c</td><td class="DESC">ctk_button_box_allocate</td><td class="Q">1139</td><td class="Q">9</td><td><a href="report-1e21a9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-1e21a9.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>ctk/ctkcellareaboxcontext.c</td><td class="DESC">_ctk_cell_area_box_context_get_requests</td><td class="Q">717</td><td class="Q">31</td><td><a href="report-1e2295.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-1e2295.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>ctk/ctkflowbox.c</td><td class="DESC">gather_aligned_item_requests</td><td class="Q">1488</td><td class="Q">52</td><td><a href="report-27dc5d.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-27dc5d.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>cdk/x11/cdkselection-x11.c</td><td class="DESC">make_list</td><td class="Q">478</td><td class="Q">23</td><td><a href="report-3baf44.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-3baf44.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>cdk/wayland/cdkkeys-wayland.c</td><td class="DESC">update_direction</td><td class="Q">506</td><td class="Q">26</td><td><a href="report-3f8ec9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-3f8ec9.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>ctk/ctktreemodel.c</td><td class="DESC">ctk_tree_path_append_index</td><td class="Q">813</td><td class="Q">24</td><td><a href="report-401cfc.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-401cfc.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>ctk/ctkheaderbar.c</td><td class="DESC">ctk_header_bar_allocate_contents</td><td class="Q">1170</td><td class="Q">46</td><td><a href="report-40277b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-40277b.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>ctk/ctkflowbox.c</td><td class="DESC">ctk_flow_box_allocate</td><td class="Q">1876</td><td class="Q">63</td><td><a href="report-4bb117.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-4bb117.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>demos/ctk-demo/main.c</td><td class="DESC">parse_chars</td><td class="Q">431</td><td class="Q">36</td><td><a href="report-62f03a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-62f03a.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>ctk/ctkcellareabox.c</td><td class="DESC">get_group_sizes</td><td class="Q">1603</td><td class="Q">30</td><td><a href="report-7d23b3.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-7d23b3.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>ctk/ctkbbox.c</td><td class="DESC">ctk_button_box_allocate</td><td class="Q">1137</td><td class="Q">9</td><td><a href="report-87bbb9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-87bbb9.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>ctk/ctkiconview.c</td><td class="DESC">ctk_icon_view_rows_reordered</td><td class="Q">3590</td><td class="Q">14</td><td><a href="report-94b827.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-94b827.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>ctk/ctkbbox.c</td><td class="DESC">ctk_button_box_child_requisition</td><td class="Q">711</td><td class="Q">32</td><td><a href="report-9fc51e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-9fc51e.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>ctk/ctksettings.c</td><td class="DESC">ctk_settings_init</td><td class="Q">336</td><td class="Q">8</td><td><a href="report-a44897.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-a44897.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>cdk/x11/cdkdnd-x11.c</td><td class="DESC">xdnd_send_enter</td><td class="Q">1284</td><td class="Q">26</td><td><a href="report-ae74f2.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-ae74f2.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>ctk/ctkbbox.c</td><td class="DESC">ctk_button_box_child_requisition</td><td class="Q">705</td><td class="Q">31</td><td><a href="report-aef59f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-aef59f.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>ctk/ctkgrid.c</td><td class="DESC">ctk_grid_get_size</td><td class="Q">1434</td><td class="Q">10</td><td><a href="report-bca756.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-bca756.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>modules/printbackends/cups/ctkprintbackendcups.c</td><td class="DESC">localtime_to_utctime</td><td class="Q">6608</td><td class="Q">18</td><td><a href="report-bfbb58.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-bfbb58.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>ctk/ctkgrid.c</td><td class="DESC">ctk_grid_request_compute_expand</td><td class="Q">979</td><td class="Q">24</td><td><a href="report-c6d531.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c6d531.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>ctk/ctkprintunixdialog.c</td><td class="DESC">dialog_get_page_ranges</td><td class="Q">2439</td><td class="Q">38</td><td><a href="report-c83deb.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c83deb.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>modules/input/ctkimcontextxim.c</td><td class="DESC">preedit_draw_callback</td><td class="Q">1092</td><td class="Q">31</td><td><a href="report-ccc8b2.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-ccc8b2.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>ctk/ctkheaderbar.c</td><td class="DESC">ctk_header_bar_allocate_contents</td><td class="Q">1052</td><td class="Q">6</td><td><a href="report-da3989.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-da3989.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>ctk/ctkcsskeyframes.c</td><td class="DESC">_ctk_css_keyframes_print</td><td class="Q">408</td><td class="Q">21</td><td><a href="report-e66de0.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-e66de0.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>cdk/x11/cdkwindow-x11.c</td><td class="DESC">set_initial_hints</td><td class="Q">1612</td><td class="Q">24</td><td><a href="report-efb124.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-efb124.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>ctk/ctkmenu.c</td><td class="DESC">menu_ensure_layout</td><td class="Q">432</td><td class="Q">18</td><td><a href="report-f04cba.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-f04cba.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>cdk/cdkwindow.c</td><td class="DESC">_cdk_window_process_updates_recurse_helper</td><td class="Q">3905</td><td class="Q">35</td><td><a href="report-f1656a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-f1656a.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound access</td><td>ctk/ctktoolitemgroup.c</td><td class="DESC">ctk_tool_item_group_real_size_query</td><td class="Q">789</td><td class="Q">25</td><td><a href="report-f912a1.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-f912a1.html" -->
+</tr>
+<tr class="bt_logic_error_out-of-bound_array_access"><td class="DESC">Logic error</td><td class="DESC">Out-of-bound array access</td><td>ctk/ctktreemodel.c</td><td class="DESC">ctk_tree_path_prepend_index</td><td class="Q">834</td><td class="Q">5</td><td><a href="report-81ac6e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-81ac6e.html" -->
+</tr>
+<tr class="bt_logic_error_result_of_operation_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Result of operation is garbage or undefined</td><td>ctk/ctkcssselector.c</td><td class="DESC">ctk_css_selector_equal</td><td class="Q">123</td><td class="Q">15</td><td><a href="report-086003.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-086003.html" -->
+</tr>
+<tr class="bt_logic_error_result_of_operation_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Result of operation is garbage or undefined</td><td>cdk/x11/cdkdevice-xi2.c</td><td class="DESC">cdk_x11_device_xi2_window_at_position</td><td class="Q">664</td><td class="Q">19</td><td><a href="report-14f371.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-14f371.html" -->
+</tr>
+<tr class="bt_logic_error_result_of_operation_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Result of operation is garbage or undefined</td><td>cdk/x11/cdkdevice-core-x11.c</td><td class="DESC">cdk_x11_device_core_window_at_position</td><td class="Q">557</td><td class="Q">15</td><td><a href="report-26d76b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-26d76b.html" -->
+</tr>
+<tr class="bt_logic_error_result_of_operation_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Result of operation is garbage or undefined</td><td>demos/ctk-demo/foreigndrawing.c</td><td class="DESC">query_size</td><td class="Q">236</td><td class="Q">8</td><td><a href="report-91ea55.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-91ea55.html" -->
+</tr>
+<tr class="bt_logic_error_result_of_operation_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Result of operation is garbage or undefined</td><td>ctk/ctkcssselector.c</td><td class="DESC">ctk_css_selector_compare_one</td><td class="Q">197</td><td class="Q">12</td><td><a href="report-9e7b02.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-9e7b02.html" -->
+</tr>
+<tr class="bt_logic_error_result_of_operation_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Result of operation is garbage or undefined</td><td>cdk/x11/cdkdevice-xi2.c</td><td class="DESC">cdk_x11_device_xi2_window_at_position</td><td class="Q">661</td><td class="Q">17</td><td><a href="report-a13af3.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-a13af3.html" -->
+</tr>
+<tr class="bt_logic_error_result_of_operation_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Result of operation is garbage or undefined</td><td>ctk/ctkrbtree.c</td><td class="DESC">_ctk_rbtree_reorder</td><td class="Q">865</td><td class="Q">15</td><td><a href="report-a392b9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-a392b9.html" -->
+</tr>
+<tr class="bt_logic_error_result_of_operation_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Result of operation is garbage or undefined</td><td>ctk/ctkbbox.c</td><td class="DESC">ctk_button_box_child_requisition</td><td class="Q">758</td><td class="Q">34</td><td><a href="report-c63cb3.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c63cb3.html" -->
+</tr>
+<tr class="bt_logic_error_result_of_operation_is_garbage_or_undefined"><td class="DESC">Logic error</td><td class="DESC">Result of operation is garbage or undefined</td><td>cdk/x11/cdkdevice-core-x11.c</td><td class="DESC">cdk_x11_device_core_window_at_position</td><td class="Q">554</td><td class="Q">13</td><td><a href="report-f185ff.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-f185ff.html" -->
+</tr>
+<tr class="bt_stream_handling_error_stream_already_in_eof"><td class="DESC">Stream handling error</td><td class="DESC">Stream already in EOF</td><td>cdk/tmp-introspectvx2lr9qp/Cdk-3.0.c</td><td class="DESC">read_line</td><td class="Q">89</td><td class="Q">33</td><td><a href="report-9361af.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-9361af.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>ctk/ctktooltip.c</td><td class="DESC">ctk_tooltip_run_requery</td><td class="Q">837</td><td class="Q">18</td><td><a href="report-00b82b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-00b82b.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>ctk/ctktextview.c</td><td class="DESC">ctk_text_view_drag_gesture_update</td><td class="Q">7798</td><td class="Q">15</td><td><a href="report-09c8ed.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-09c8ed.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>ctk/ctktextiter.c</td><td class="DESC">ctk_text_iter_backward_search</td><td class="Q">5337</td><td class="Q">37</td><td><a href="report-13d61a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-13d61a.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>ctk/ctktextiter.c</td><td class="DESC">ctk_text_iter_backward_search</td><td class="Q">5335</td><td class="Q">37</td><td><a href="report-1bf744.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-1bf744.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>ctk/ctkrange.c</td><td class="DESC">_ctk_range_get_wheel_delta</td><td class="Q">3108</td><td class="Q">12</td><td><a href="report-450118.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-450118.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>ctk/ctktoolitemgroup.c</td><td class="DESC">ctk_tool_item_group_get_child_property</td><td class="Q">1585</td><td class="Q">22</td><td><a href="report-4e12e2.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-4e12e2.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>cdk/x11/cdkglcontext-x11.c</td><td class="DESC">glx_pixmap_get</td><td class="Q">418</td><td class="Q">16</td><td><a href="report-73003c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-73003c.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>ctk/ctkpopover.c</td><td class="DESC">ctk_popover_get_gap_coords</td><td class="Q">786</td><td class="Q">40</td><td><a href="report-7d1a0f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-7d1a0f.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>ctk/ctkpopover.c</td><td class="DESC">ctk_popover_get_gap_coords</td><td class="Q">777</td><td class="Q">42</td><td><a href="report-7dcb27.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-7dcb27.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>ctk/ctktooltip.c</td><td class="DESC">ctk_tooltip_run_requery</td><td class="Q">844</td><td class="Q">22</td><td><a href="report-7e5f83.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-7e5f83.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>ctk/ctktextview.c</td><td class="DESC">ctk_text_view_drag_gesture_end</td><td class="Q">7844</td><td class="Q">17</td><td><a href="report-889911.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-889911.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>ctk/ctkpopover.c</td><td class="DESC">ctk_popover_update_position</td><td class="Q">1089</td><td class="Q">19</td><td><a href="report-8ed9ad.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-8ed9ad.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>testsuite/a11y/children.c</td><td class="DESC">test_add_remove</td><td class="Q">172</td><td class="Q">17</td><td><a href="report-b4298c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-b4298c.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>ctk/ctkwindow.c</td><td class="DESC">_ctk_window_set_popover_position</td><td class="Q">12594</td><td class="Q">33</td><td><a href="report-ba203f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-ba203f.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>ctk/ctktextview.c</td><td class="DESC">ctk_text_view_drag_gesture_update</td><td class="Q">7716</td><td class="Q">9</td><td><a href="report-c05a3d.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c05a3d.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>modules/printbackends/file/ctkprintbackendfile.c</td><td class="DESC">file_printer_get_options</td><td class="Q">732</td><td class="Q">12</td><td><a href="report-c1afc1.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c1afc1.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>ctk/ctktoolitemgroup.c</td><td class="DESC">ctk_tool_item_group_set_child_property</td><td class="Q">1519</td><td class="Q">22</td><td><a href="report-c3551b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c3551b.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>ctk/ctktoolitemgroup.c</td><td class="DESC">ctk_tool_item_group_get_child_property</td><td class="Q">1593</td><td class="Q">22</td><td><a href="report-c73a6b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c73a6b.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>ctk/ctktoolitemgroup.c</td><td class="DESC">ctk_tool_item_group_get_child_property</td><td class="Q">1589</td><td class="Q">22</td><td><a href="report-d117bc.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d117bc.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>ctk/ctkliststore.c</td><td class="DESC">ctk_list_store_reorder</td><td class="Q">1737</td><td class="Q">18</td><td><a href="report-deb2e8.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-deb2e8.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>ctk/ctkpopover.c</td><td class="DESC">_ctk_popover_update_child_visible</td><td class="Q">1041</td><td class="Q">30</td><td><a href="report-ef2fb2.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-ef2fb2.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>ctk/ctktoolitemgroup.c</td><td class="DESC">ctk_tool_item_group_get_child_property</td><td class="Q">1581</td><td class="Q">22</td><td><a href="report-f3ef9b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-f3ef9b.html" -->
+</tr>
+<tr class="bt_logic_error_uninitialized_argument_value"><td class="DESC">Logic error</td><td class="DESC">Uninitialized argument value</td><td>cdk/wayland/cdkdisplay-wayland.c</td><td class="DESC">_cdk_wayland_display_create_shm_surface</td><td class="Q">1391</td><td class="Q">7</td><td><a href="report-f6c848.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-f6c848.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>ctk/ctkhsv.c</td><td class="DESC">ctk_hsv_button_press</td><td class="Q">655</td><td class="Q">1</td><td><a href="report-03163a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-03163a.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>testsuite/a11y/state/state-record.c</td><td class="DESC">main</td><td class="Q">379</td><td class="Q">1</td><td><a href="report-0c7c52.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-0c7c52.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>tests/testsocket.c</td><td class="DESC">child_read_watch</td><td class="Q">177</td><td class="Q">1</td><td><a href="report-148f71.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-148f71.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>tests/testmountoperation.c</td><td class="DESC">main</td><td class="Q">126</td><td class="Q">1</td><td><a href="report-1a1172.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-1a1172.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>tests/testsocket.c</td><td class="DESC">main</td><td class="Q">400</td><td class="Q">1</td><td><a href="report-1b3afb.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-1b3afb.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>ctk/ctkmain.c</td><td class="DESC">ctk_init_with_args</td><td class="Q">984</td><td class="Q">1</td><td><a href="report-1bbea4.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-1bbea4.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>ctk/ctk-launch.c</td><td class="DESC">main</td><td class="Q">152</td><td class="Q">1</td><td><a href="report-1f2154.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-1f2154.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>ctk/ctkmenu.c</td><td class="DESC">ctk_menu_scroll</td><td class="Q">4201</td><td class="Q">1</td><td><a href="report-21fbda.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-21fbda.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>tests/testmountoperation.c</td><td class="DESC">main</td><td class="Q">148</td><td class="Q">1</td><td><a href="report-25ff57.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-25ff57.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>ctk/ctksearchentry.c</td><td class="DESC">ctk_search_entry_handle_event</td><td class="Q">464</td><td class="Q">1</td><td><a href="report-37e89e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-37e89e.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>ctk/ctktextview.c</td><td class="DESC">ctk_text_view_drag_gesture_end</td><td class="Q">7862</td><td class="Q">1</td><td><a href="report-3a620c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-3a620c.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>cdk/cdkgl.c</td><td class="DESC">cdk_cairo_draw_from_gl</td><td class="Q">559</td><td class="Q">1</td><td><a href="report-5bfaab.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-5bfaab.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>ctk/ctkprintutils.c</td><td class="DESC">_ctk_print_convert_to_mm</td><td class="Q">37</td><td class="Q">1</td><td><a href="report-635f38.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-635f38.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>ctk/a11y/ctkwindowaccessible.c</td><td class="DESC">ctk_window_accessible_ref_relation_set</td><td class="Q">228</td><td class="Q">1</td><td><a href="report-6ccd3e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-6ccd3e.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>cdk/cdkgl.c</td><td class="DESC">cdk_cairo_draw_from_gl</td><td class="Q">442</td><td class="Q">1</td><td><a href="report-75129c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-75129c.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>cdk/x11/cdkdisplaymanager-x11.c</td><td class="DESC">cdk_x11_display_manager_finalize</td><td class="Q">52</td><td class="Q">1</td><td><a href="report-780c52.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-780c52.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>cdk/cdkgl.c</td><td class="DESC">cdk_cairo_draw_from_gl</td><td class="Q">697</td><td class="Q">1</td><td><a href="report-806da6.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-806da6.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>ctk/ctk-launch.c</td><td class="DESC">main</td><td class="Q">170</td><td class="Q">1</td><td><a href="report-899aac.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-899aac.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>ctk/ctkicontheme.c</td><td class="DESC">theme_dir_size_difference</td><td class="Q">2849</td><td class="Q">1</td><td><a href="report-90a709.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-90a709.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>ctk/ctkhsv.c</td><td class="DESC">ctk_hsv_button_press</td><td class="Q">673</td><td class="Q">1</td><td><a href="report-959ba1.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-959ba1.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>ctk/ctktreemodel.c</td><td class="DESC">ctk_tree_model_foreach</td><td class="Q">2039</td><td class="Q">1</td><td><a href="report-9e8664.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-9e8664.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>testsuite/reftests/reftest-snapshot.c</td><td class="DESC">connect_signals</td><td class="Q">202</td><td class="Q">1</td><td><a href="report-a29dd9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-a29dd9.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>ctk/ctkfilechooserbutton.c</td><td class="DESC">ctk_file_chooser_button_mnemonic_activate</td><td class="Q">1308</td><td class="Q">1</td><td><a href="report-b425c0.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-b425c0.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>ctk/ctkgesturesingle.c</td><td class="DESC">ctk_gesture_single_handle_event</td><td class="Q">199</td><td class="Q">1</td><td><a href="report-b8a3f8.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-b8a3f8.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>ctk/ctkuimanager.c</td><td class="DESC">ctk_ui_manager_buildable_construct_child</td><td class="Q">718</td><td class="Q">1</td><td><a href="report-c69b75.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c69b75.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>ctk/ctk-launch.c</td><td class="DESC">main</td><td class="Q">187</td><td class="Q">1</td><td><a href="report-cfbe12.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-cfbe12.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>tests/print-editor.c</td><td class="DESC">main</td><td class="Q">1012</td><td class="Q">1</td><td><a href="report-d111e4.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d111e4.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>testsuite/reftests/reftest-snapshot.c</td><td class="DESC">connect_signals</td><td class="Q">219</td><td class="Q">1</td><td><a href="report-d12653.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d12653.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>ctk/ctklevelbar.c</td><td class="DESC">ctk_level_bar_buildable_custom_finished</td><td class="Q">860</td><td class="Q">1</td><td><a href="report-d2718c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d2718c.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>ctk/ctk-launch.c</td><td class="DESC">main</td><td class="Q">121</td><td class="Q">1</td><td><a href="report-dbc3cc.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-dbc3cc.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>tests/testgmenu.c</td><td class="DESC">main</td><td class="Q">640</td><td class="Q">1</td><td><a href="report-dbc932.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-dbc932.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>testsuite/reftests/reftest-snapshot.c</td><td class="DESC">connect_signals</td><td class="Q">230</td><td class="Q">1</td><td><a href="report-dd420e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-dd420e.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>tests/testfilechooserbutton.c</td><td class="DESC">main</td><td class="Q">242</td><td class="Q">1</td><td><a href="report-e04fbb.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-e04fbb.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>ctk/ctkprintutils.c</td><td class="DESC">_ctk_print_convert_from_mm</td><td class="Q">56</td><td class="Q">1</td><td><a href="report-e0ee78.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-e0ee78.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>cdk/cdkgl.c</td><td class="DESC">cdk_cairo_draw_from_gl</td><td class="Q">466</td><td class="Q">1</td><td><a href="report-ec6eb5.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-ec6eb5.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>ctk/ctktreemodel.c</td><td class="DESC">ctk_tree_model_foreach</td><td class="Q">2043</td><td class="Q">1</td><td><a href="report-f67d81.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-f67d81.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>cdk/tmp-introspectvx2lr9qp/Cdk-3.0.c</td><td class="DESC">value_to_string</td><td class="Q">239</td><td class="Q">1</td><td><a href="report-fb6164.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-fb6164.html" -->
+</tr>
+<tr class="bt_unused_code_unreachable_code"><td class="DESC">Unused code</td><td class="DESC">Unreachable code</td><td>ctk/ctk-launch.c</td><td class="DESC">main</td><td class="Q">161</td><td class="Q">1</td><td><a href="report-ff0060.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-ff0060.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>ctk/ctkcssstyleproperty.c</td><td class="DESC">_ctk_css_style_property_get_mask_affecting</td><td class="Q">414</td><td class="Q">1</td><td><a href="report-08a64a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-08a64a.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>testsuite/ctk/bitmask.c</td><td class="DESC">test_union</td><td class="Q">169</td><td class="Q">2</td><td><a href="report-0a8d81.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-0a8d81.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>ctk/ctkcssstyleproperty.c</td><td class="DESC">_ctk_css_style_property_get_mask_affecting</td><td class="Q">421</td><td class="Q">5</td><td><a href="report-0da733.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-0da733.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>ctk/ctkrbtree.c</td><td class="DESC">_ctk_rbnode_free</td><td class="Q">80</td><td class="Q">6</td><td><a href="report-0e89c1.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-0e89c1.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>ctk/ctktreemodelsort.c</td><td class="DESC">ctk_tree_model_sort_reset_default_sort_func</td><td class="Q">2707</td><td class="Q">9</td><td><a href="report-10bc30.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-10bc30.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>testsuite/ctk/bitmask.c</td><td class="DESC">create_masks</td><td class="Q">435</td><td class="Q">3</td><td><a href="report-13c6c0.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-13c6c0.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>testsuite/ctk/gestures.c</td><td class="DESC">point_update</td><td class="Q">103</td><td class="Q">5</td><td><a href="report-17e04e.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-17e04e.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>testsuite/ctk/bitmask.c</td><td class="DESC">test_intersect</td><td class="Q">221</td><td class="Q">8</td><td><a href="report-223e1b.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-223e1b.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>testsuite/ctk/bitmask.c</td><td class="DESC">test_intersect_hardcoded</td><td class="Q">267</td><td class="Q">11</td><td><a href="report-2604b8.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-2604b8.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>ctk/ctkfilesystemmodel.c</td><td class="DESC">emit_row_changed_for_node</td><td class="Q">320</td><td class="Q">34</td><td><a href="report-262509.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-262509.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>ctk/ctktextbufferserialize.c</td><td class="DESC">serialize_text</td><td class="Q">488</td><td class="Q">16</td><td><a href="report-29c647.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-29c647.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>ctk/ctktextbtree.c</td><td class="DESC">_ctk_text_btree_remove_view</td><td class="Q">1631</td><td class="Q">20</td><td><a href="report-2edb42.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-2edb42.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>testsuite/ctk/bitmask.c</td><td class="DESC">test_union</td><td class="Q">167</td><td class="Q">2</td><td><a href="report-355e8f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-355e8f.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>ctk/ctktextbtree.c</td><td class="DESC">summary_destroy</td><td class="Q">4889</td><td class="Q">33</td><td><a href="report-3cbf82.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-3cbf82.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>ctk/ctkrbtree.c</td><td class="DESC">_ctk_rbnode_free</td><td class="Q">78</td><td class="Q">6</td><td><a href="report-446cdf.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-446cdf.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>ctk/ctkrbtree.c</td><td class="DESC">_ctk_rbnode_free</td><td class="Q">79</td><td class="Q">6</td><td><a href="report-45a085.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-45a085.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>ctk/ctkselection.c</td><td class="DESC">ctk_target_list_add</td><td class="Q">327</td><td class="Q">8</td><td><a href="report-4e38b9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-4e38b9.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>ctk/ctkcssprovider.c</td><td class="DESC">ctk_css_ruleset_add</td><td class="Q">371</td><td class="Q">5</td><td><a href="report-552e65.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-552e65.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>cdk/wayland/cdkselection-wayland.c</td><td class="DESC">_cdk_wayland_display_get_selection_property</td><td class="Q">1488</td><td class="Q">9</td><td><a href="report-5603f5.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-5603f5.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>testsuite/ctk/bitmask.c</td><td class="DESC">test_subtract_hardcoded</td><td class="Q">314</td><td class="Q">14</td><td><a href="report-58b520.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-58b520.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>testsuite/ctk/bitmask.c</td><td class="DESC">test_invert_range</td><td class="Q">389</td><td class="Q">2</td><td><a href="report-58d696.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-58d696.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>testsuite/ctk/bitmask.c</td><td class="DESC">ctk_bitmask_new_parse</td><td class="Q">44</td><td class="Q">4</td><td><a href="report-58e9e0.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-58e9e0.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>ctk/ctktreemodelsort.c</td><td class="DESC">ctk_tree_model_sort_set_model</td><td class="Q">2193</td><td class="Q">11</td><td><a href="report-59ed1c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-59ed1c.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>testsuite/ctk/bitmask.c</td><td class="DESC">test_intersect</td><td class="Q">204</td><td class="Q">2</td><td><a href="report-63313a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-63313a.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>ctk/ctkselection.c</td><td class="DESC">ctk_selection_data_set</td><td class="Q">1390</td><td class="Q">34</td><td><a href="report-644a94.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-644a94.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>testsuite/ctk/bitmask.c</td><td class="DESC">test_intersect</td><td class="Q">220</td><td class="Q">6</td><td><a href="report-673cde.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-673cde.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>testsuite/ctk/bitmask.c</td><td class="DESC">test_subtract_hardcoded</td><td class="Q">302</td><td class="Q">3</td><td><a href="report-6940f3.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-6940f3.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>testsuite/ctk/bitmask.c</td><td class="DESC">ctk_bitmask_new_parse</td><td class="Q">49</td><td class="Q">6</td><td><a href="report-6cfc0a.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-6cfc0a.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>testsuite/ctk/bitmask.c</td><td class="DESC">test_intersect_hardcoded</td><td class="Q">259</td><td class="Q">3</td><td><a href="report-7a9c02.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-7a9c02.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>ctk/ctkselection.c</td><td class="DESC">ctk_selection_default_handler</td><td class="Q">3182</td><td class="Q">28</td><td><a href="report-80c474.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-80c474.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>ctk/ctktextbtree.c</td><td class="DESC">summary_destroy</td><td class="Q">4887</td><td class="Q">33</td><td><a href="report-82044d.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-82044d.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>ctk/ctkcssstylechange.c</td><td class="DESC">ctk_css_style_change_init</td><td class="Q">35</td><td class="Q">1</td><td><a href="report-859cfd.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-859cfd.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>testsuite/ctk/gestures.c</td><td class="DESC">point_press</td><td class="Q">51</td><td class="Q">3</td><td><a href="report-931704.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-931704.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>testsuite/ctk/bitmask.c</td><td class="DESC">test_invert_range</td><td class="Q">388</td><td class="Q">2</td><td><a href="report-a0857f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-a0857f.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>ctk/ctkcellareaboxcontext.c</td><td class="DESC">_ctk_cell_area_box_context_get_requests</td><td class="Q">717</td><td class="Q">26</td><td><a href="report-a420f3.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-a420f3.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>testsuite/ctk/bitmask.c</td><td class="DESC">test_union</td><td class="Q">185</td><td class="Q">6</td><td><a href="report-a76d64.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-a76d64.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>ctk/ctktextbtree.c</td><td class="DESC">_ctk_text_btree_remove_view</td><td class="Q">1632</td><td class="Q">20</td><td><a href="report-afef91.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-afef91.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>testsuite/ctk/bitmask.c</td><td class="DESC">test_union</td><td class="Q">184</td><td class="Q">6</td><td><a href="report-b0dec2.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-b0dec2.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>testsuite/ctk/bitmask.c</td><td class="DESC">test_intersect</td><td class="Q">206</td><td class="Q">2</td><td><a href="report-b53ac9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-b53ac9.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>ctk/ctkcsslookup.c</td><td class="DESC">_ctk_css_lookup_new</td><td class="Q">40</td><td class="Q">3</td><td><a href="report-ba987f.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-ba987f.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>testsuite/ctk/bitmask.c</td><td class="DESC">ctk_bitmask_new_parse</td><td class="Q">51</td><td class="Q">8</td><td><a href="report-bc2e60.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-bc2e60.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>testsuite/ctk/bitmask.c</td><td class="DESC">test_intersect</td><td class="Q">216</td><td class="Q">8</td><td><a href="report-c0ed93.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c0ed93.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>testsuite/ctk/bitmask.c</td><td class="DESC">test_union</td><td class="Q">168</td><td class="Q">2</td><td><a href="report-c13ac0.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c13ac0.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>testsuite/ctk/bitmask.c</td><td class="DESC">test_intersect</td><td class="Q">215</td><td class="Q">6</td><td><a href="report-c41f76.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c41f76.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>testsuite/ctk/bitmask.c</td><td class="DESC">test_invert_range</td><td class="Q">410</td><td class="Q">16</td><td><a href="report-cf66ca.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-cf66ca.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>testsuite/ctk/bitmask.c</td><td class="DESC">test_invert_range</td><td class="Q">390</td><td class="Q">2</td><td><a href="report-d3d8f5.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-d3d8f5.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>ctk/ctkiconview.c</td><td class="DESC">ctk_icon_view_layout</td><td class="Q">3023</td><td class="Q">13</td><td><a href="report-e123a2.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-e123a2.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>ctk/ctktreedatalist.c</td><td class="DESC">_ctk_tree_data_list_header_new</td><td class="Q">485</td><td class="Q">5</td><td><a href="report-ecdd27.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-ecdd27.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>ctk/ctkflowbox.c</td><td class="DESC">ctk_flow_box_allocate</td><td class="Q">1780</td><td class="Q">41</td><td><a href="report-f47d2c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-f47d2c.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>testsuite/ctk/bitmask.c</td><td class="DESC">test_subtract_hardcoded</td><td class="Q">305</td><td class="Q">20</td><td><a href="report-f55741.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-f55741.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>ctk/ctkcssstylechange.c</td><td class="DESC">ctk_css_style_compare_next_value</td><td class="Q">72</td><td class="Q">9</td><td><a href="report-f8564c.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-f8564c.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>testsuite/ctk/gestures.c</td><td class="DESC">point_release</td><td class="Q">157</td><td class="Q">13</td><td><a href="report-f8f2fb.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-f8f2fb.html" -->
+</tr>
+<tr class="bt_logic_error_use_fixed_address"><td class="DESC">Logic error</td><td class="DESC">Use fixed address</td><td>testsuite/ctk/bitmask.c</td><td class="DESC">test_intersect</td><td class="Q">205</td><td class="Q">2</td><td><a href="report-fdec96.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-fdec96.html" -->
+</tr>
+<tr class="bt_memory_error_use_of_zero_allocated"><td class="DESC">Memory error</td><td class="DESC">Use of zero allocated</td><td>ctk/ctktreestore.c</td><td class="DESC">ctk_tree_store_set_n_columns</td><td class="Q">429</td><td class="Q">21</td><td><a href="report-1e43a5.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-1e43a5.html" -->
+</tr>
+<tr class="bt_memory_error_use_of_zero_allocated"><td class="DESC">Memory error</td><td class="DESC">Use of zero allocated</td><td>ctk/ctkliststore.c</td><td class="DESC">ctk_list_store_set_n_columns</td><td class="Q">535</td><td class="Q">23</td><td><a href="report-c577e9.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-c577e9.html" -->
+</tr>
+<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory error</td><td class="DESC">Use-after-free</td><td>cdk/cdkwindow.c</td><td class="DESC">_cdk_event_filter_unref</td><td class="Q">1949</td><td class="Q">27</td><td><a href="report-48f524.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-48f524.html" -->
+</tr>
+<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory error</td><td class="DESC">Use-after-free</td><td>cdk/broadway/cdkbroadway-server.c</td><td class="DESC">map_named_shm</td><td class="Q">567</td><td class="Q">15</td><td><a href="report-792577.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-792577.html" -->
+</tr>
+<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory error</td><td class="DESC">Use-after-free</td><td>tests/testtreeview.c</td><td class="DESC">ctk_real_model_types_iter_next</td><td class="Q">1014</td><td class="Q">11</td><td><a href="report-7e5c59.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-7e5c59.html" -->
+</tr>
+<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory error</td><td class="DESC">Use-after-free</td><td>ctk/ctkiconfactory.c</td><td class="DESC">ctk_icon_factory_buildable_custom_tag_end</td><td class="Q">2559</td><td class="Q">34</td><td><a href="report-961be7.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-961be7.html" -->
+</tr>
+<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory error</td><td class="DESC">Use-after-free</td><td>ctk/ctkemojicompletion.c</td><td class="DESC">populate_completion</td><td class="Q">598</td><td class="Q">11</td><td><a href="report-96e7d4.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-96e7d4.html" -->
+</tr>
+<tr class="bt_memory_error_use-after-free"><td class="DESC">Memory error</td><td class="DESC">Use-after-free</td><td>cdk/cdkwindow.c</td><td class="DESC">_cdk_event_filter_unref</td><td class="Q">1947</td><td class="Q">26</td><td><a href="report-ffc6ba.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-ffc6ba.html" -->
+</tr>
+<tr class="bt_error_handling_value_of_errno_was_not_checked"><td class="DESC">Error handling</td><td class="DESC">Value of 'errno' was not checked</td><td>ctk/updateiconcache.c</td><td class="DESC">write_card16</td><td class="Q">811</td><td class="Q">23</td><td><a href="report-e818a1.html#EndPath">View Report</a></td>
+<!-- REPORTBUG id="report-e818a1.html" -->
+</tr>
+</tbody>
+</table>
+
+</body></html>
