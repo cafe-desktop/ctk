@@ -22,7 +22,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+.master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-19 12:00+0100\n"
+"POT-Creation-Date: 2025-12-16 11:58+0100\n"
 "PO-Revision-Date: 2019-11-13 21:47+0300\n"
 "Last-Translator: Stas Solovey <whats_up@tut.by>\n"
 "Language-Team: Русский <gnome-cyr@gnome.org>\n"
@@ -1603,7 +1603,7 @@ msgid "Other Applications"
 msgstr "Другие приложения"
 
 #: ctk/ctkapplicationwindow.c:345 ctk/ctkprintoperation-unix.c:485
-#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1694
+#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1695
 msgid "Application"
 msgstr "Приложение"
 
@@ -2579,7 +2579,7 @@ msgid "Spreadsheet"
 msgstr "Таблица"
 
 #: ctk/ctkfilechooserwidget.c:5054 ctk/ctkfilechooserwidget.c:5243
-#: ctk/inspector/prop-editor.c:1697
+#: ctk/inspector/prop-editor.c:1698
 msgid "Unknown"
 msgstr "Неизвестен"
 
@@ -2665,7 +2665,7 @@ msgstr "Наклон"
 msgid "Optical Size"
 msgstr "Оптический размер"
 
-#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1684
+#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1685
 msgid "Default"
 msgstr "По умолчанию"
 
@@ -4279,7 +4279,7 @@ msgstr "Безымянный раздел"
 msgid "Label"
 msgstr "Метка"
 
-#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1393
+#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1394
 msgid "Action"
 msgstr "Действие"
 
@@ -4309,9 +4309,9 @@ msgid "Default Widget"
 msgstr "Виджет по умолчанию"
 
 #: ctk/inspector/misc-info.ui:192 ctk/inspector/misc-info.ui:237
-#: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1075
-#: ctk/inspector/prop-editor.c:1274 ctk/inspector/prop-editor.c:1401
-#: ctk/inspector/prop-editor.c:1512 ctk/inspector/window.ui:382
+#: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1074
+#: ctk/inspector/prop-editor.c:1275 ctk/inspector/prop-editor.c:1402
+#: ctk/inspector/prop-editor.c:1513 ctk/inspector/window.ui:382
 msgid "Properties"
 msgstr "Свойства"
 
@@ -4403,75 +4403,75 @@ msgstr "Неизвестный тип"
 msgid "Object: %p (%s)"
 msgstr "Объект: %p (%s)"
 
-#: ctk/inspector/prop-editor.c:1145
+#: ctk/inspector/prop-editor.c:1146
 #, c-format
 msgid "Uneditable property type: %s"
 msgstr "Нередактируемое свойство: %s"
 
-#: ctk/inspector/prop-editor.c:1265
+#: ctk/inspector/prop-editor.c:1266
 msgid "Attribute mapping"
 msgstr "Соответствие атрибутов"
 
-#: ctk/inspector/prop-editor.c:1270
+#: ctk/inspector/prop-editor.c:1271
 msgid "Model:"
 msgstr "Модель:"
 
-#: ctk/inspector/prop-editor.c:1271
+#: ctk/inspector/prop-editor.c:1272
 #, c-format
 msgid "%p (%s)"
 msgstr "%p (%s)"
 
-#: ctk/inspector/prop-editor.c:1281
+#: ctk/inspector/prop-editor.c:1282
 msgid "Column:"
 msgstr "Столбец:"
 
-#: ctk/inspector/prop-editor.c:1291
+#: ctk/inspector/prop-editor.c:1292
 msgctxt "property name"
 msgid "None"
 msgstr "Нет"
 
-#: ctk/inspector/prop-editor.c:1397
+#: ctk/inspector/prop-editor.c:1398
 #, c-format
 msgid "Defined at: %p (%s)"
 msgstr "Определено в: %p (%s)"
 
 # Привязка свойств
-#: ctk/inspector/prop-editor.c:1461 ctk/inspector/prop-editor.c:1477
+#: ctk/inspector/prop-editor.c:1462 ctk/inspector/prop-editor.c:1478
 msgid "inverted"
 msgstr "обратная"
 
 # Привязка свойств
-#: ctk/inspector/prop-editor.c:1493
+#: ctk/inspector/prop-editor.c:1494
 msgid "bidirectional, inverted"
 msgstr "двунаправленная, обратная"
 
 # Привязка свойств
-#: ctk/inspector/prop-editor.c:1498 ctk/inspector/prop-editor.c:1612
+#: ctk/inspector/prop-editor.c:1499 ctk/inspector/prop-editor.c:1613
 msgid "bidirectional"
 msgstr "двунаправленная"
 
 # Привязка свойств
-#: ctk/inspector/prop-editor.c:1503
+#: ctk/inspector/prop-editor.c:1504
 msgid "Binding:"
 msgstr "Привязка:"
 
-#: ctk/inspector/prop-editor.c:1631
+#: ctk/inspector/prop-editor.c:1632
 msgid "Setting:"
 msgstr "Параметр:"
 
-#: ctk/inspector/prop-editor.c:1671
+#: ctk/inspector/prop-editor.c:1672
 msgid "Source:"
 msgstr "Источник:"
 
-#: ctk/inspector/prop-editor.c:1673
+#: ctk/inspector/prop-editor.c:1674
 msgid "Reset"
 msgstr "Сбросить"
 
-#: ctk/inspector/prop-editor.c:1687
+#: ctk/inspector/prop-editor.c:1688
 msgid "Theme"
 msgstr "Тема"
 
-#: ctk/inspector/prop-editor.c:1690
+#: ctk/inspector/prop-editor.c:1691
 msgid "XSettings"
 msgstr "XSettings"
 

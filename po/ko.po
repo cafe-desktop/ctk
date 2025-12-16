@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-19 12:00+0100\n"
+"POT-Creation-Date: 2025-12-16 11:58+0100\n"
 "PO-Revision-Date: 2020-08-29 12:47+0900\n"
 "Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
 "Language-Team: Gnome Korea <gnome-kr@googlegroups.com>\n"
@@ -1613,7 +1613,7 @@ msgid "Other Applications"
 msgstr "다른 프로그램"
 
 #: ctk/ctkapplicationwindow.c:345 ctk/ctkprintoperation-unix.c:485
-#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1694
+#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1695
 msgid "Application"
 msgstr "프로그램"
 
@@ -2587,7 +2587,7 @@ msgid "Spreadsheet"
 msgstr "스프레드시트"
 
 #: ctk/ctkfilechooserwidget.c:5054 ctk/ctkfilechooserwidget.c:5243
-#: ctk/inspector/prop-editor.c:1697
+#: ctk/inspector/prop-editor.c:1698
 msgid "Unknown"
 msgstr "알 수 없음"
 
@@ -2675,7 +2675,7 @@ msgstr "기울이기"
 msgid "Optical Size"
 msgstr "광학 크기"
 
-#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1684
+#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1685
 msgid "Default"
 msgstr "기본값"
 
@@ -4286,7 +4286,7 @@ msgstr "이름 없는 섹션"
 msgid "Label"
 msgstr "레이블"
 
-#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1393
+#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1394
 msgid "Action"
 msgstr "동작"
 
@@ -4316,9 +4316,9 @@ msgid "Default Widget"
 msgstr "기본 위젯"
 
 #: ctk/inspector/misc-info.ui:192 ctk/inspector/misc-info.ui:237
-#: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1075
-#: ctk/inspector/prop-editor.c:1274 ctk/inspector/prop-editor.c:1401
-#: ctk/inspector/prop-editor.c:1512 ctk/inspector/window.ui:382
+#: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1074
+#: ctk/inspector/prop-editor.c:1275 ctk/inspector/prop-editor.c:1402
+#: ctk/inspector/prop-editor.c:1513 ctk/inspector/window.ui:382
 msgid "Properties"
 msgstr "속성"
 
@@ -4409,71 +4409,71 @@ msgstr "알 수 없음"
 msgid "Object: %p (%s)"
 msgstr "오브젝트: %p (%s)"
 
-#: ctk/inspector/prop-editor.c:1145
+#: ctk/inspector/prop-editor.c:1146
 #, c-format
 msgid "Uneditable property type: %s"
 msgstr "속성 타입을 편집할 수 없습니다: %s"
 
-#: ctk/inspector/prop-editor.c:1265
+#: ctk/inspector/prop-editor.c:1266
 msgid "Attribute mapping"
 msgstr "속성 매핑"
 
-#: ctk/inspector/prop-editor.c:1270
+#: ctk/inspector/prop-editor.c:1271
 msgid "Model:"
 msgstr "모델:"
 
-#: ctk/inspector/prop-editor.c:1271
+#: ctk/inspector/prop-editor.c:1272
 #, c-format
 msgid "%p (%s)"
 msgstr "%p (%s)"
 
-#: ctk/inspector/prop-editor.c:1281
+#: ctk/inspector/prop-editor.c:1282
 msgid "Column:"
 msgstr "컬럼:"
 
-#: ctk/inspector/prop-editor.c:1291
+#: ctk/inspector/prop-editor.c:1292
 msgctxt "property name"
 msgid "None"
 msgstr "없음"
 
-#: ctk/inspector/prop-editor.c:1397
+#: ctk/inspector/prop-editor.c:1398
 #, c-format
 msgid "Defined at: %p (%s)"
 msgstr "정의된 위치: %p (%s)"
 
-#: ctk/inspector/prop-editor.c:1461 ctk/inspector/prop-editor.c:1477
+#: ctk/inspector/prop-editor.c:1462 ctk/inspector/prop-editor.c:1478
 msgid "inverted"
 msgstr "반전"
 
-#: ctk/inspector/prop-editor.c:1493
+#: ctk/inspector/prop-editor.c:1494
 msgid "bidirectional, inverted"
 msgstr "양방향, 반전"
 
-#: ctk/inspector/prop-editor.c:1498 ctk/inspector/prop-editor.c:1612
+#: ctk/inspector/prop-editor.c:1499 ctk/inspector/prop-editor.c:1613
 msgid "bidirectional"
 msgstr "양방향"
 
-#: ctk/inspector/prop-editor.c:1503
+#: ctk/inspector/prop-editor.c:1504
 msgid "Binding:"
 msgstr "바인딩:"
 
-#: ctk/inspector/prop-editor.c:1631
+#: ctk/inspector/prop-editor.c:1632
 msgid "Setting:"
 msgstr "설정:"
 
-#: ctk/inspector/prop-editor.c:1671
+#: ctk/inspector/prop-editor.c:1672
 msgid "Source:"
 msgstr "원본:"
 
-#: ctk/inspector/prop-editor.c:1673
+#: ctk/inspector/prop-editor.c:1674
 msgid "Reset"
 msgstr "초기화"
 
-#: ctk/inspector/prop-editor.c:1687
+#: ctk/inspector/prop-editor.c:1688
 msgid "Theme"
 msgstr "테마"
 
-#: ctk/inspector/prop-editor.c:1690
+#: ctk/inspector/prop-editor.c:1691
 msgid "XSettings"
 msgstr "XSettings"
 

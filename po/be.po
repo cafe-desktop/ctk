@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+ master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-19 12:00+0100\n"
+"POT-Creation-Date: 2025-12-16 11:58+0100\n"
 "PO-Revision-Date: 2012-09-07 18:22+0300\n"
 "Last-Translator: Ihar Hrachyshka <ihar.hrachyshka@gmail.com>\n"
 "Language-Team: Belarusian <i18n-bel-gnome@googlegroups.com>\n"
@@ -1599,7 +1599,7 @@ msgid "Other Applications"
 msgstr "Іншыя праграмы"
 
 #: ctk/ctkapplicationwindow.c:345 ctk/ctkprintoperation-unix.c:485
-#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1694
+#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1695
 msgid "Application"
 msgstr "Праграма"
 
@@ -2586,7 +2586,7 @@ msgid "Spreadsheet"
 msgstr ""
 
 #: ctk/ctkfilechooserwidget.c:5054 ctk/ctkfilechooserwidget.c:5243
-#: ctk/inspector/prop-editor.c:1697
+#: ctk/inspector/prop-editor.c:1698
 msgid "Unknown"
 msgstr "Невядома"
 
@@ -2678,7 +2678,7 @@ msgstr ""
 msgid "Optical Size"
 msgstr ""
 
-#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1684
+#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1685
 #, fuzzy
 msgid "Default"
 msgstr "default:mm"
@@ -4326,7 +4326,7 @@ msgstr ""
 msgid "Label"
 msgstr "подпіс"
 
-#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1393
+#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1394
 #, fuzzy
 msgid "Action"
 msgstr "Мясціна"
@@ -4359,9 +4359,9 @@ msgid "Default Widget"
 msgstr "Прадвызначаная праграма"
 
 #: ctk/inspector/misc-info.ui:192 ctk/inspector/misc-info.ui:237
-#: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1075
-#: ctk/inspector/prop-editor.c:1274 ctk/inspector/prop-editor.c:1401
-#: ctk/inspector/prop-editor.c:1512 ctk/inspector/window.ui:382
+#: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1074
+#: ctk/inspector/prop-editor.c:1275 ctk/inspector/prop-editor.c:1402
+#: ctk/inspector/prop-editor.c:1513 ctk/inspector/window.ui:382
 #, fuzzy
 msgid "Properties"
 msgstr "_Уласцівасці"
@@ -4456,76 +4456,76 @@ msgstr "Невядома"
 msgid "Object: %p (%s)"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1145
+#: ctk/inspector/prop-editor.c:1146
 #, fuzzy, c-format
 msgid "Uneditable property type: %s"
 msgstr "Не ўдалося спыніць %s"
 
-#: ctk/inspector/prop-editor.c:1265
+#: ctk/inspector/prop-editor.c:1266
 msgid "Attribute mapping"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1270
+#: ctk/inspector/prop-editor.c:1271
 msgid "Model:"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1271
+#: ctk/inspector/prop-editor.c:1272
 #, c-format
 msgid "%p (%s)"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1281
+#: ctk/inspector/prop-editor.c:1282
 #, fuzzy
 msgid "Column:"
 msgstr "Гучнасць"
 
-#: ctk/inspector/prop-editor.c:1291
+#: ctk/inspector/prop-editor.c:1292
 #, fuzzy
 msgctxt "property name"
 msgid "None"
 msgstr "Няма"
 
-#: ctk/inspector/prop-editor.c:1397
+#: ctk/inspector/prop-editor.c:1398
 #, c-format
 msgid "Defined at: %p (%s)"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1461 ctk/inspector/prop-editor.c:1477
+#: ctk/inspector/prop-editor.c:1462 ctk/inspector/prop-editor.c:1478
 #, fuzzy
 msgid "inverted"
 msgstr "_Пераўтварыць"
 
-#: ctk/inspector/prop-editor.c:1493
+#: ctk/inspector/prop-editor.c:1494
 msgid "bidirectional, inverted"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1498 ctk/inspector/prop-editor.c:1612
+#: ctk/inspector/prop-editor.c:1499 ctk/inspector/prop-editor.c:1613
 msgid "bidirectional"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1503
+#: ctk/inspector/prop-editor.c:1504
 msgid "Binding:"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1631
+#: ctk/inspector/prop-editor.c:1632
 #, fuzzy
 msgid "Setting:"
 msgstr "Запуск %s"
 
-#: ctk/inspector/prop-editor.c:1671
+#: ctk/inspector/prop-editor.c:1672
 #, fuzzy
 msgid "Source:"
 msgstr "Крыніца паперы"
 
-#: ctk/inspector/prop-editor.c:1673
+#: ctk/inspector/prop-editor.c:1674
 msgid "Reset"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1687
+#: ctk/inspector/prop-editor.c:1688
 msgid "Theme"
 msgstr ""
 
-#: ctk/inspector/prop-editor.c:1690
+#: ctk/inspector/prop-editor.c:1691
 #, fuzzy
 msgid "XSettings"
 msgstr "Запуск %s"

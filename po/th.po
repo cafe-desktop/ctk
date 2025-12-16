@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-19 12:00+0100\n"
+"POT-Creation-Date: 2025-12-16 11:58+0100\n"
 "PO-Revision-Date: 2016-05-30 12:21+0700\n"
 "Last-Translator: Theppitak Karoonboonyanan <theppitak@gmail.com>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
@@ -1579,7 +1579,7 @@ msgid "Other Applications"
 msgstr "โปรแกรมอื่นๆ"
 
 #: ctk/ctkapplicationwindow.c:345 ctk/ctkprintoperation-unix.c:485
-#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1694
+#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1695
 msgid "Application"
 msgstr "โปรแกรม"
 
@@ -2560,7 +2560,7 @@ msgid "Spreadsheet"
 msgstr ""
 
 #: ctk/ctkfilechooserwidget.c:5054 ctk/ctkfilechooserwidget.c:5243
-#: ctk/inspector/prop-editor.c:1697
+#: ctk/inspector/prop-editor.c:1698
 msgid "Unknown"
 msgstr "ไม่ทราบ"
 
@@ -2648,7 +2648,7 @@ msgstr ""
 msgid "Optical Size"
 msgstr ""
 
-#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1684
+#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1685
 msgid "Default"
 msgstr "ค่าปริยาย"
 
@@ -4256,7 +4256,7 @@ msgstr "หัวข้อไม่มีชื่อ"
 msgid "Label"
 msgstr "ฉลาก"
 
-#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1393
+#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1394
 msgid "Action"
 msgstr "การกระทำ"
 
@@ -4285,9 +4285,9 @@ msgid "Default Widget"
 msgstr "วิดเจ็ตปริยาย"
 
 #: ctk/inspector/misc-info.ui:192 ctk/inspector/misc-info.ui:237
-#: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1075
-#: ctk/inspector/prop-editor.c:1274 ctk/inspector/prop-editor.c:1401
-#: ctk/inspector/prop-editor.c:1512 ctk/inspector/window.ui:382
+#: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1074
+#: ctk/inspector/prop-editor.c:1275 ctk/inspector/prop-editor.c:1402
+#: ctk/inspector/prop-editor.c:1513 ctk/inspector/window.ui:382
 msgid "Properties"
 msgstr "คุณสมบัติ"
 
@@ -4378,71 +4378,71 @@ msgstr "ไม่ทราบ"
 msgid "Object: %p (%s)"
 msgstr "ออบเจกต์: %p (%s)"
 
-#: ctk/inspector/prop-editor.c:1145
+#: ctk/inspector/prop-editor.c:1146
 #, c-format
 msgid "Uneditable property type: %s"
 msgstr "ชนิดของคุณสมบัติซึ่งไม่สามารถแก้ไขได้: %s"
 
-#: ctk/inspector/prop-editor.c:1265
+#: ctk/inspector/prop-editor.c:1266
 msgid "Attribute mapping"
 msgstr "การจับคู่แอตทริบิวต์"
 
-#: ctk/inspector/prop-editor.c:1270
+#: ctk/inspector/prop-editor.c:1271
 msgid "Model:"
 msgstr "แบบช้อมูล:"
 
-#: ctk/inspector/prop-editor.c:1271
+#: ctk/inspector/prop-editor.c:1272
 #, c-format
 msgid "%p (%s)"
 msgstr "%p (%s)"
 
-#: ctk/inspector/prop-editor.c:1281
+#: ctk/inspector/prop-editor.c:1282
 msgid "Column:"
 msgstr "คอลัมน์:"
 
-#: ctk/inspector/prop-editor.c:1291
+#: ctk/inspector/prop-editor.c:1292
 msgctxt "property name"
 msgid "None"
 msgstr "ไม่มี"
 
-#: ctk/inspector/prop-editor.c:1397
+#: ctk/inspector/prop-editor.c:1398
 #, c-format
 msgid "Defined at: %p (%s)"
 msgstr "กำหนดไว้ที่: %p (%s)"
 
-#: ctk/inspector/prop-editor.c:1461 ctk/inspector/prop-editor.c:1477
+#: ctk/inspector/prop-editor.c:1462 ctk/inspector/prop-editor.c:1478
 msgid "inverted"
 msgstr "กลับทิศ"
 
-#: ctk/inspector/prop-editor.c:1493
+#: ctk/inspector/prop-editor.c:1494
 msgid "bidirectional, inverted"
 msgstr "สองทิศทาง, กลับทิศ"
 
-#: ctk/inspector/prop-editor.c:1498 ctk/inspector/prop-editor.c:1612
+#: ctk/inspector/prop-editor.c:1499 ctk/inspector/prop-editor.c:1613
 msgid "bidirectional"
 msgstr "สองทิศทาง"
 
-#: ctk/inspector/prop-editor.c:1503
+#: ctk/inspector/prop-editor.c:1504
 msgid "Binding:"
 msgstr "การผูกโยง:"
 
-#: ctk/inspector/prop-editor.c:1631
+#: ctk/inspector/prop-editor.c:1632
 msgid "Setting:"
 msgstr "ค่าตั้ง:"
 
-#: ctk/inspector/prop-editor.c:1671
+#: ctk/inspector/prop-editor.c:1672
 msgid "Source:"
 msgstr "แหล่งที่มา:"
 
-#: ctk/inspector/prop-editor.c:1673
+#: ctk/inspector/prop-editor.c:1674
 msgid "Reset"
 msgstr "คืนค่าเดิม"
 
-#: ctk/inspector/prop-editor.c:1687
+#: ctk/inspector/prop-editor.c:1688
 msgid "Theme"
 msgstr "ชุดตกแต่ง"
 
-#: ctk/inspector/prop-editor.c:1690
+#: ctk/inspector/prop-editor.c:1691
 msgid "XSettings"
 msgstr "XSettings"
 

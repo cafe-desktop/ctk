@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+ 2.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-19 12:00+0100\n"
+"POT-Creation-Date: 2025-12-16 11:58+0100\n"
 "PO-Revision-Date: 2020-09-08 12:04+0000\n"
 "Last-Translator: Arash Mousavi <mousavi.arash@gmail.com>\n"
 "Language-Team: Persian <>\n"
@@ -1590,7 +1590,7 @@ msgid "Other Applications"
 msgstr "برنامه‌های دیگر"
 
 #: ctk/ctkapplicationwindow.c:345 ctk/ctkprintoperation-unix.c:485
-#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1694
+#: ctk/ctkprintoperation-win32.c:1527 ctk/inspector/prop-editor.c:1695
 msgid "Application"
 msgstr "برنامه"
 
@@ -2562,7 +2562,7 @@ msgid "Spreadsheet"
 msgstr "صفحهٔ گسترده"
 
 #: ctk/ctkfilechooserwidget.c:5054 ctk/ctkfilechooserwidget.c:5243
-#: ctk/inspector/prop-editor.c:1697
+#: ctk/inspector/prop-editor.c:1698
 msgid "Unknown"
 msgstr "نامعلوم"
 
@@ -2649,7 +2649,7 @@ msgstr "شکافتن"
 msgid "Optical Size"
 msgstr "اندازهٔ نوری"
 
-#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1684
+#: ctk/ctkfontchooserwidget.c:2094 ctk/inspector/prop-editor.c:1685
 msgid "Default"
 msgstr "پیش‌گزیده"
 
@@ -4253,7 +4253,7 @@ msgstr "قسمت بدون نام"
 msgid "Label"
 msgstr "برچسب"
 
-#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1393
+#: ctk/inspector/menu.ui:39 ctk/inspector/prop-editor.c:1394
 msgid "Action"
 msgstr "کنش"
 
@@ -4282,9 +4282,9 @@ msgid "Default Widget"
 msgstr "ابزارک پیش‌گزیده"
 
 #: ctk/inspector/misc-info.ui:192 ctk/inspector/misc-info.ui:237
-#: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1075
-#: ctk/inspector/prop-editor.c:1274 ctk/inspector/prop-editor.c:1401
-#: ctk/inspector/prop-editor.c:1512 ctk/inspector/window.ui:382
+#: ctk/inspector/misc-info.ui:453 ctk/inspector/prop-editor.c:1074
+#: ctk/inspector/prop-editor.c:1275 ctk/inspector/prop-editor.c:1402
+#: ctk/inspector/prop-editor.c:1513 ctk/inspector/window.ui:382
 msgid "Properties"
 msgstr "ویژگی‌ها"
 
@@ -4375,72 +4375,72 @@ msgstr "نامعلوم"
 msgid "Object: %p (%s)"
 msgstr "شیء: %p (%s)"
 
-#: ctk/inspector/prop-editor.c:1145
+#: ctk/inspector/prop-editor.c:1146
 #, c-format
 msgid "Uneditable property type: %s"
 msgstr "مشخصه غیرقابل ویرایش: %s"
 
-#: ctk/inspector/prop-editor.c:1265
+#: ctk/inspector/prop-editor.c:1266
 msgid "Attribute mapping"
 msgstr "اتصال ویژگی‌ها"
 
-#: ctk/inspector/prop-editor.c:1270
+#: ctk/inspector/prop-editor.c:1271
 msgid "Model:"
 msgstr "مدل:"
 
-#: ctk/inspector/prop-editor.c:1271
+#: ctk/inspector/prop-editor.c:1272
 #, c-format
 msgid "%p (%s)"
 msgstr "%p (%s)"
 
-#: ctk/inspector/prop-editor.c:1281
+#: ctk/inspector/prop-editor.c:1282
 msgid "Column:"
 msgstr "ستون:"
 
 # farmaan
-#: ctk/inspector/prop-editor.c:1291
+#: ctk/inspector/prop-editor.c:1292
 msgctxt "property name"
 msgid "None"
 msgstr "هیچ‌کدام"
 
-#: ctk/inspector/prop-editor.c:1397
+#: ctk/inspector/prop-editor.c:1398
 #, c-format
 msgid "Defined at: %p (%s)"
 msgstr "تعریف شده در: %p (%s)"
 
-#: ctk/inspector/prop-editor.c:1461 ctk/inspector/prop-editor.c:1477
+#: ctk/inspector/prop-editor.c:1462 ctk/inspector/prop-editor.c:1478
 msgid "inverted"
 msgstr "معکوس"
 
-#: ctk/inspector/prop-editor.c:1493
+#: ctk/inspector/prop-editor.c:1494
 msgid "bidirectional, inverted"
 msgstr "دوجهته، معکوس"
 
-#: ctk/inspector/prop-editor.c:1498 ctk/inspector/prop-editor.c:1612
+#: ctk/inspector/prop-editor.c:1499 ctk/inspector/prop-editor.c:1613
 msgid "bidirectional"
 msgstr "دوجهته"
 
-#: ctk/inspector/prop-editor.c:1503
+#: ctk/inspector/prop-editor.c:1504
 msgid "Binding:"
 msgstr "مقیدسازی:"
 
-#: ctk/inspector/prop-editor.c:1631
+#: ctk/inspector/prop-editor.c:1632
 msgid "Setting:"
 msgstr "تنظیمات:"
 
-#: ctk/inspector/prop-editor.c:1671
+#: ctk/inspector/prop-editor.c:1672
 msgid "Source:"
 msgstr "منبع:"
 
-#: ctk/inspector/prop-editor.c:1673
+#: ctk/inspector/prop-editor.c:1674
 msgid "Reset"
 msgstr "تنظیم‌مجدد"
 
-#: ctk/inspector/prop-editor.c:1687
+#: ctk/inspector/prop-editor.c:1688
 msgid "Theme"
 msgstr "تم"
 
-#: ctk/inspector/prop-editor.c:1690
+#: ctk/inspector/prop-editor.c:1691
 msgid "XSettings"
 msgstr "تنظیمات X"
 
