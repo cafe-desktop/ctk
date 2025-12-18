@@ -1,3 +1,21 @@
+Overview of Changes in CTK+ 3.25.7
+===================================
+
+  * ctkdnd: Fix crashes in cafe-panel
+  * reduce the scope of some variables
+  * ci: some improvements
+  * Fix build with gcc 15 in _ctk_get_slowdown()
+  * 'g_sort_array' instead deprecated 'g_qsort_with_data'
+  * ctkstylecontext: don't make deprecated 'ctk_style_context_invalidate'
+  * ctkwidget: don't make deprecated 'ctk_widget_set_double_buffered'
+  * ctk desktop files:
+    - don't hide development applications
+    - remove CTK category because it isn't in freedesktop
+    - update names
+  * ctk3-icon-browser: update icon
+  * Update translations
+
+
 Overview of Changes in CTK+ 3.25.6
 ===================================
 
