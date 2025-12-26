@@ -3,95 +3,12 @@
 ##########################################################
 requires:
   debian:
-    # Useful URL: https://github.com/cafe-desktop/debian-packages
-    # cafe B-D: advaita-icon-theme
-    - aptitude
-    - autoconf
-    - autoconf-archive
-    - automake
-    - autopoint
-    - autotools-dev
-    - build-essential
-    - ccache
-    - clang
-    - clang-tools
-    - cppcheck
-    - dconf-gsettings-backend
-    - dh-autoreconf
-    - docbook
-    - docbook-dsssl
-    - docbook-ebnf
-    - docbook-slides
-    - docbook-website
-    - docbook-to-man
-    - docbook-utils
-    - docbook-xml
-    - docbook-xsl
-    - expect #required for unbuffer
-    - g++
-    - gcc
-    - gettext
-    - git
-    - gobject-introspection
-    - gettext
-    - gvfs
-    - gtk-doc-tools
-    - hicolor-icon-theme
-    - itstool
-    - libatk-bridge2.0-dev
-    - libatk1.0-dev
-    - libc6-dev
-    - libcairo2-dev
-    - libcairo-gobject2
-    - libcolord-dev
-    - libcups2-dev
-    - libegl1-mesa-dev
-    - libepoxy-dev
-    - libfontconfig1-dev
-    - libfreetype6-dev
-    - libgdk-pixbuf-2.0-dev
-    - libgirepository1.0-dev
-    - libglib2.0-dev
-    - libharfbuzz-dev
-    - libpango1.0-dev
-    - librsvg2-common
-    - libtool
-    - libtool-bin
-    - libwayland-dev
-    - libx11-dev
-    - libxcomposite-dev
-    - libxcursor-dev
-    - libxdamage-dev
-    - libxext-dev
-    - libxfixes-dev
-    - libxi-dev
-    - libxinerama-dev
-    - libxkbcommon-dev
-    - libxkbcommon-x11-dev
-    - libxml2-utils
-    - libxml2-dev
-    - libxrandr-dev
-    - locales
-    - ninja-build
-    - pkgconf
-    - python3
-    - python3-pip
-    - python3-setuptools
-    - python3-wheel
-    - shared-mime-info
-    - wayland-protocols
-    - xauth
-    - xvfb
-    - xml-core
 
 before_scripts:
-  - ./html-cppcheck
-  - ./install-from-git https://github.com/cafe-desktop/advaita-icon-theme master
+  - ./debrepo-install
 
 build_scripts:
-  - ./before-build
-  - ./make-scanbuild '--disable-dependency-tracking --enable-broadway-backend --enable-x11-backend --enable-wayland-backend --enable-gtk-doc --enable-man --enable-shared --enable-introspection --disable-static --enable-installed-tests --enable-test-print-backend'
-  - ./after-build
+  - ./build-debs https://github.com/cafe-desktop/debian-packages devel ctk+3.0
 
 after_scripts:
   - if [ -f "gen-index" ]; then ./gen-index -l 20 -i https://github.com/cafe-desktop/ctk/raw/master/demos/ctk-demo/data/16x16/ctk3-demo.png; fi
