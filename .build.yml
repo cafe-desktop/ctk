@@ -49,7 +49,6 @@ requires:
     - libepoxy-dev
     - libfontconfig1-dev
     - libfreetype6-dev
-    - libgdk-pixbuf-2.0-dev
     - libgirepository1.0-dev
     - libglib2.0-dev
     - libharfbuzz-dev
@@ -84,8 +83,15 @@ requires:
     - xvfb
     - xml-core
 
+    #required for gdk-pixbuf
+    - cmake
+    - gi-docgen
+    - meson
+    - python3-docutils
+
 before_scripts:
   - ./html-cppcheck
+  - ./install-from-git https://gitlab.gnome.org/GNOME/gdk-pixbuf 2.44.5 meson '--libdir=/usr/lib/x86_64-linux-gnu --libexecdir=/usr/lib/x86_64-linux-gnu -Dglycin=disabled -Dbuiltin_loaders=png,jpeg -Dthumbnailer=enabled -Dothers=enabled -Dthumbnailer=enabled'
   - ./install-from-git https://github.com/cafe-desktop/advaita-icon-theme master
 
 build_scripts:
