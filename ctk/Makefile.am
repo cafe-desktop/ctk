@@ -1344,17 +1344,17 @@ ctk.gresource.xml: Makefile.am inspector/Makefile.inc
           n=`basename $$f`; \
           echo "    <file>theme/Advaita/assets/$$n</file>" >> $@; \
         done; \
-	echo "    <file>theme/HighContrast/ctk.css</file>" >> $@; \
-	echo "    <file alias='theme/HighContrastInverse/ctk.css'>theme/HighContrast/ctk-inverse.css</file>" >> $@; \
-	echo "    <file>theme/HighContrast/ctk-contained.css</file>" >> $@; \
-	echo "    <file>theme/HighContrast/ctk-contained-inverse.css</file>" >> $@; \
-	      for f in $(srcdir)/theme/HighContrast/assets/*.png; do \
+	echo "    <file>theme/BigContrast/ctk.css</file>" >> $@; \
+	echo "    <file alias='theme/BigContrastInverse/ctk.css'>theme/BigContrast/ctk-inverse.css</file>" >> $@; \
+	echo "    <file>theme/BigContrast/ctk-contained.css</file>" >> $@; \
+	echo "    <file>theme/BigContrast/ctk-contained-inverse.css</file>" >> $@; \
+	      for f in $(srcdir)/theme/BigContrast/assets/*.png; do \
           n=`basename $$f`; \
-          echo "    <file preprocess='to-pixdata'>theme/HighContrast/assets/$$n</file>" >> $@; \
+          echo "    <file preprocess='to-pixdata'>theme/BigContrast/assets/$$n</file>" >> $@; \
         done; \
-        for f in $(srcdir)/theme/HighContrast/assets/*.svg; do \
+        for f in $(srcdir)/theme/BigContrast/assets/*.svg; do \
           n=`basename $$f`; \
-          echo "    <file>theme/HighContrast/assets/$$n</file>" >> $@; \
+          echo "    <file>theme/BigContrast/assets/$$n</file>" >> $@; \
         done; \
 	echo "    <file>theme/win32/ctk-win32-base.css</file>" >> $@; \
 	echo "    <file>theme/win32/ctk.css</file>" >> $@; \
@@ -1415,9 +1415,9 @@ advaita_theme_scss = \
 	$()
 
 highcontrast_theme_scss = \
-	theme/HighContrast/_colors-hc.scss 	\
-	theme/HighContrast/ctk-contained-inverse.scss \
-	theme/HighContrast/ctk-contained.scss 	\
+	theme/BigContrast/_colors-hc.scss 	\
+	theme/BigContrast/ctk-contained-inverse.scss \
+	theme/BigContrast/ctk-contained.scss 	\
 	$()
 
 if REBUILD_SCSS
@@ -1436,10 +1436,10 @@ theme/Advaita/ctk-contained.css: $(top_srcdir)/ctk/theme/Advaita/ctk-contained.s
 theme/Advaita/ctk-contained-dark.css: $(top_srcdir)/ctk/theme/Advaita/ctk-contained-dark.scss $(advaita_theme_scss)
 	$(scss_verbose) $(MKDIR_P) $(dir $@) && $(SASSC) $(SASSC_OPTS) $< $@ || rm -f $@
 
-theme/HighContrast/ctk-contained.css: $(top_srcdir)/ctk/theme/HighContrast/ctk-contained.scss $(highcontrast_theme_scss)
+theme/BigContrast/ctk-contained.css: $(top_srcdir)/ctk/theme/BigContrast/ctk-contained.scss $(highcontrast_theme_scss)
 	$(scss_verbose) $(MKDIR_P) $(dir $@) && $(SASSC) $(SASSC_OPTS) $< $@ || rm -f $@
 
-theme/HighContrast/ctk-contained-inverse.css: $(top_srcdir)/ctk/theme/HighContrast/ctk-contained-inverse.scss $(highcontrast_theme_scss)
+theme/BigContrast/ctk-contained-inverse.css: $(top_srcdir)/ctk/theme/BigContrast/ctk-contained-inverse.scss $(highcontrast_theme_scss)
 	$(scss_verbose) $(MKDIR_P) $(dir $@) && $(SASSC) $(SASSC_OPTS) $< $@ || rm -f $@
 
 endif # REBUILD_SCSS
@@ -1456,10 +1456,10 @@ theme_sources = 				\
 	theme/Advaita/ctk.css 			\
 	theme/Advaita/ctk-dark.css 		\
 	$(highcontrast_theme_scss)		\
-	theme/HighContrast/ctk-contained.css 	\
-	theme/HighContrast/ctk-contained-inverse.css \
-	theme/HighContrast/ctk.css 		\
-	theme/HighContrast/ctk-inverse.css
+	theme/BigContrast/ctk-contained.css 	\
+	theme/BigContrast/ctk-contained-inverse.css \
+	theme/BigContrast/ctk.css 		\
+	theme/BigContrast/ctk-inverse.css
 
 resource_files = $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(builddir)/ctk.gresource.xml)
 
@@ -1839,11 +1839,11 @@ EXTRA_DIST +=                   \
 	theme/Advaita/meson.build \
 	theme/Advaita/parse-sass.sh \
 	theme/Advaita/render-assets.sh \
-	theme/HighContrast/assets.svg \
-	theme/HighContrast/assets.txt \
-	theme/HighContrast/meson.build \
-	theme/HighContrast/parse-sass.sh \
-	theme/HighContrast/render-assets.sh
+	theme/BigContrast/assets.svg \
+	theme/BigContrast/assets.txt \
+	theme/BigContrast/meson.build \
+	theme/BigContrast/parse-sass.sh \
+	theme/BigContrast/render-assets.sh
 
 
 -include $(top_srcdir)/git.mk

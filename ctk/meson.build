@@ -729,7 +729,7 @@ if sassc.found()
   sassc_opts = [ '-a', '-M', '-t', 'compact' ]
 
   subdir('theme/Advaita')
-  subdir('theme/HighContrast')
+  subdir('theme/BigContrast')
 endif
 
 ctkresources = gnome.compile_resources('ctkresources',

@@ -53,10 +53,10 @@ NULL=
 !if [for %x in (png svg) do @(for %f in (..\ctk\theme\Advaita\assets\*.%x) do @call create-lists.bat file resources_sources.mak %f)]
 !endif
 
-!if [for %f in (..\ctk\theme\HighContrast\ctk.css ..\ctk\theme\HighContrast\ctk-inverse.css ..\ctk\theme\HighContrast\ctk-contained.css ..\ctk\theme\HighContrast\ctk-contained-inverse.css) do @call create-lists.bat file resources_sources.mak %f]
+!if [for %f in (..\ctk\theme\BigContrast\ctk.css ..\ctk\theme\BigContrast\ctk-inverse.css ..\ctk\theme\BigContrast\ctk-contained.css ..\ctk\theme\BigContrast\ctk-contained-inverse.css) do @call create-lists.bat file resources_sources.mak %f]
 !endif
 
-!if [for %x in (png svg) do @(for %f in (..\ctk\theme\HighContrast\assets\*.%x) do @call create-lists.bat file resources_sources.mak %f)]
+!if [for %x in (png svg) do @(for %f in (..\ctk\theme\BigContrast\assets\*.%x) do @call create-lists.bat file resources_sources.mak %f)]
 !endif
 
 !if [for %f in (..\ctk\theme\win32\ctk-win32-base.css ..\ctk\theme\win32\ctk.css) do @call create-lists.bat file resources_sources.mak %f]

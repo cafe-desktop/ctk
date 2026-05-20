@@ -1,4 +1,4 @@
 [Test]
-Exec=/bin/sh -c "env CTK_THEME=HighContrastInverse G_ENABLE_DIAGNOSTIC=0 @libexecdir@/installed-tests/ctk+/ctk-reftest -k --verbose --tap --output $(pwd) --directory @libexecdir@/installed-tests/ctk+/reftests"
+Exec=/bin/sh -c "env CTK_THEME=BigContrastInverse G_ENABLE_DIAGNOSTIC=0 @libexecdir@/installed-tests/ctk+/ctk-reftest -k --verbose --tap --output $(pwd) --directory @libexecdir@/installed-tests/ctk+/reftests"
 Type=session-exclusive
 Output=TAP

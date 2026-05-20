@@ -6,7 +6,7 @@ theme_variants = [
   'inverse',
 ]
 
-theme_deps += custom_target('HighContrast',
+theme_deps += custom_target('BigContrast',
                             input: 'ctk-contained.scss',
                             output: 'ctk-contained.css',
                             command: [
@@ -16,7 +16,7 @@ theme_deps += custom_target('HighContrast',
                             build_by_default: true)
 
 foreach variant: theme_variants
-  theme_deps += custom_target('HighContrast-' + variant,
+  theme_deps += custom_target('BigContrast-' + variant,
                               input: 'ctk-contained-@0@.scss'.format(variant),
                               output: 'ctk-contained-@0@.css'.format(variant),
                               command: [

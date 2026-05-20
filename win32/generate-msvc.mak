@@ -141,12 +141,12 @@ all:	\
 	@echo     ^<file^>theme/Advaita/ctk-contained-dark.css^</file^>>> $@
 	@for %%f in (..\ctk\theme\Advaita\assets\*.png) do @echo     ^<file preprocess='to-pixdata'^>theme/Advaita/assets/%%~nxf^</file^>>> $@
 	@for %%f in (..\ctk\theme\Advaita\assets\*.svg) do @echo     ^<file^>theme/Advaita/assets/%%~nxf^</file^>>> $@
-	@echo     ^<file^>theme/HighContrast/ctk.css^</file^>>> $@
-	@echo     ^<file alias='theme/HighContrastInverse/ctk.css'^>theme/HighContrast/ctk-inverse.css^</file^>>> $@
-	@echo     ^<file^>theme/HighContrast/ctk-contained.css^</file^>>> $@
-	@echo     ^<file^>theme/HighContrast/ctk-contained-inverse.css^</file^>>> $@
-	@for %%f in (..\ctk\theme\HighContrast\assets\*.png) do @echo     ^<file preprocess='to-pixdata'^>theme/HighContrast/assets/%%~nxf^</file^>>> $@
-	@for %%f in (..\ctk\theme\HighContrast\assets\*.svg) do @echo     ^<file^>theme/HighContrast/assets/%%~nxf^</file^>>> $@
+	@echo     ^<file^>theme/BigContrast/ctk.css^</file^>>> $@
+	@echo     ^<file alias='theme/BigContrastInverse/ctk.css'^>theme/BigContrast/ctk-inverse.css^</file^>>> $@
+	@echo     ^<file^>theme/BigContrast/ctk-contained.css^</file^>>> $@
+	@echo     ^<file^>theme/BigContrast/ctk-contained-inverse.css^</file^>>> $@
+	@for %%f in (..\ctk\theme\BigContrast\assets\*.png) do @echo     ^<file preprocess='to-pixdata'^>theme/BigContrast/assets/%%~nxf^</file^>>> $@
+	@for %%f in (..\ctk\theme\BigContrast\assets\*.svg) do @echo     ^<file^>theme/BigContrast/assets/%%~nxf^</file^>>> $@
 	@echo     ^<file^>theme/win32/ctk-win32-base.css^</file^>>> $@
 	@echo     ^<file^>theme/win32/ctk.css^</file^>>> $@
 	@for %%f in (..\ctk\cursor\*.png) do @echo     ^<file^>cursor/%%~nxf^</file^>>> $@

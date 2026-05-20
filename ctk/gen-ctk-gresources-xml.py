@@ -32,19 +32,19 @@ for f in get_files('theme/Advaita/assets', '.svg'):
   xml += '    <file>theme/Advaita/assets/{0}</file>\n'.format(f)
 
 xml += '''
-    <file>theme/HighContrast/ctk.css</file>
-    <file alias='theme/HighContrastInverse/ctk.css'>theme/HighContrast/ctk-inverse.css</file>
-    <file>theme/HighContrast/ctk-contained.css</file>
-    <file>theme/HighContrast/ctk-contained-inverse.css</file>
+    <file>theme/BigContrast/ctk.css</file>
+    <file alias='theme/BigContrastInverse/ctk.css'>theme/BigContrast/ctk-inverse.css</file>
+    <file>theme/BigContrast/ctk-contained.css</file>
+    <file>theme/BigContrast/ctk-contained-inverse.css</file>
 '''
 
-for f in get_files('theme/HighContrast/assets', '.png'):
-  xml += '    <file preprocess=\'to-pixdata\'>theme/HighContrast/assets/{0}</file>\n'.format(f)
+for f in get_files('theme/BigContrast/assets', '.png'):
+  xml += '    <file preprocess=\'to-pixdata\'>theme/BigContrast/assets/{0}</file>\n'.format(f)
 
 xml += '\n'
 
-for f in get_files('theme/HighContrast/assets', '.svg'):
-  xml += '    <file>theme/HighContrast/assets/{0}</file>\n'.format(f)
+for f in get_files('theme/BigContrast/assets', '.svg'):
+  xml += '    <file>theme/BigContrast/assets/{0}</file>\n'.format(f)
 
 xml += '''
     <file>theme/win32/ctk-win32-base.css</file>
