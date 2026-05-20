@@ -1414,7 +1414,7 @@ advaita_theme_scss = \
 	theme/Advaita/ctk-contained.scss 	\
 	$()
 
-highcontrast_theme_scss = \
+bigcontrast_theme_scss = \
 	theme/BigContrast/_colors-hc.scss 	\
 	theme/BigContrast/ctk-contained-inverse.scss \
 	theme/BigContrast/ctk-contained.scss 	\
@@ -1436,10 +1436,10 @@ theme/Advaita/ctk-contained.css: $(top_srcdir)/ctk/theme/Advaita/ctk-contained.s
 theme/Advaita/ctk-contained-dark.css: $(top_srcdir)/ctk/theme/Advaita/ctk-contained-dark.scss $(advaita_theme_scss)
 	$(scss_verbose) $(MKDIR_P) $(dir $@) && $(SASSC) $(SASSC_OPTS) $< $@ || rm -f $@
 
-theme/BigContrast/ctk-contained.css: $(top_srcdir)/ctk/theme/BigContrast/ctk-contained.scss $(highcontrast_theme_scss)
+theme/BigContrast/ctk-contained.css: $(top_srcdir)/ctk/theme/BigContrast/ctk-contained.scss $(bigcontrast_theme_scss)
 	$(scss_verbose) $(MKDIR_P) $(dir $@) && $(SASSC) $(SASSC_OPTS) $< $@ || rm -f $@
 
-theme/BigContrast/ctk-contained-inverse.css: $(top_srcdir)/ctk/theme/BigContrast/ctk-contained-inverse.scss $(highcontrast_theme_scss)
+theme/BigContrast/ctk-contained-inverse.css: $(top_srcdir)/ctk/theme/BigContrast/ctk-contained-inverse.scss $(bigcontrast_theme_scss)
 	$(scss_verbose) $(MKDIR_P) $(dir $@) && $(SASSC) $(SASSC_OPTS) $< $@ || rm -f $@
 
 endif # REBUILD_SCSS
@@ -1455,7 +1455,7 @@ theme_sources = 				\
 	theme/Advaita/ctk-contained-dark.css 	\
 	theme/Advaita/ctk.css 			\
 	theme/Advaita/ctk-dark.css 		\
-	$(highcontrast_theme_scss)		\
+	$(bigcontrast_theme_scss)		\
 	theme/BigContrast/ctk-contained.css 	\
 	theme/BigContrast/ctk-contained-inverse.css \
 	theme/BigContrast/ctk.css 		\
