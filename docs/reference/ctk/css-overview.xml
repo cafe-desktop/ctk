@@ -634,7 +634,7 @@ checkbutton:indeterminate {
       file from a URL. CSS does not specify anything about supported file
       formats; within CTK+, you can expect at least PNG, JPEG and SVG to
       work. The full list of supported image formats is determined by the
-      available gdk-pixbuf image loaders and may vary between systems.
+      available cdk-pixbuf image loaders and may vary between systems.
     </para>
 
     <example>

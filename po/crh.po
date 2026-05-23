@@ -18,7 +18,7 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 
-# gdk-pixbuf/gdk-pixbuf-io.c:425 gdk-pixbuf/gdk-pixbuf-io.c:451
+# cdk-pixbuf/cdk-pixbuf-io.c:425 cdk-pixbuf/cdk-pixbuf-io.c:451
 #: cdk/broadway/cdkbroadway-server.c:144
 #, fuzzy, c-format
 msgid "Broadway display type not supported: %s"
@@ -1417,7 +1417,7 @@ msgstr "%d"
 msgid "Output to this directory instead of cwd"
 msgstr ""
 
-# gdk-pixbuf/io-xbm.c:284
+# cdk-pixbuf/io-xbm.c:284
 #: ctk/encodesymbolic.c:268
 #, fuzzy, c-format
 msgid "Invalid size %s\n"
@@ -1429,7 +1429,7 @@ msgstr "Keçersiz dosye adı"
 msgid "Can't load file: %s\n"
 msgstr "Meta-dosye yüklenamadı"
 
-# gdk-pixbuf/gdk-pixbuf-animation.c:144 gdk-pixbuf/gdk-pixbuf-io.c:516
+# cdk-pixbuf/cdk-pixbuf-animation.c:144 cdk-pixbuf/cdk-pixbuf-io.c:516
 #: ctk/encodesymbolic.c:309 ctk/encodesymbolic.c:315
 #, fuzzy, c-format
 msgid "Can't save file %s: %s\n"
@@ -1884,7 +1884,7 @@ msgctxt "Accelerator"
 msgid "Disabled"
 msgstr "Ğayrı qabilleştirilgen"
 
-# gdk-pixbuf/io-xbm.c:284
+# cdk-pixbuf/io-xbm.c:284
 #. This label is displayed in a treeview cell displaying
 #. * an accelerator key combination that is not valid according
 #. * to ctk_accelerator_valid().
@@ -2446,7 +2446,7 @@ msgstr "Dosye saylanamadı"
 msgid "The item that you selected is not a folder try using a different item."
 msgstr ""
 
-# gdk-pixbuf/io-xbm.c:284
+# cdk-pixbuf/io-xbm.c:284
 #: ctk/ctkfilechooserwidget.c:869
 msgid "Invalid file name"
 msgstr "Keçersiz dosye adı"
@@ -2863,7 +2863,7 @@ msgstr ""
 msgid "Character Variants"
 msgstr ""
 
-# gdk-pixbuf/io-tiff.c:277
+# cdk-pixbuf/io-tiff.c:277
 #: ctk/ctkglarea.c:314
 #, fuzzy
 msgid "OpenGL context creation failed"
@@ -2885,7 +2885,7 @@ msgstr "_Qapat"
 msgid "Icon '%s' not present in theme %s"
 msgstr "Temada '%s' işaretçigi bulunmay"
 
-# gdk-pixbuf/io-tiff.c:411
+# cdk-pixbuf/io-tiff.c:411
 #: ctk/ctkicontheme.c:4097 ctk/ctkicontheme.c:4464
 msgid "Failed to load icon"
 msgstr "İşaretçikniñ yüklenüvi becerilamadı"
@@ -3006,7 +3006,7 @@ msgstr "İşaretçik yüklengende hata: %s"
 msgid "Copy URL"
 msgstr "URL'ni Kopiyala"
 
-# gdk-pixbuf/io-xbm.c:284
+# cdk-pixbuf/io-xbm.c:284
 #: ctk/ctklinkbutton.c:522
 msgid "Invalid URI"
 msgstr "Keçersiz URI"
@@ -3766,7 +3766,7 @@ msgstr "Qullanıcı qarışması kerek"
 msgid "Custom size"
 msgstr "Şahsiyleştirilgen ölçü"
 
-# gdk-pixbuf/io-xpm.c:1257
+# cdk-pixbuf/io-xpm.c:1257
 #: ctk/ctkprintoperation-win32.c:1619
 msgid "No printer found"
 msgstr "Hiç bir bastırıcı tapılmadı"
@@ -3780,8 +3780,8 @@ msgstr "CreateDC içün keçersiz delil"
 msgid "Error from StartDoc"
 msgstr "StartDoc'tan hata"
 
-# gdk-pixbuf/io-gif.c:746 gdk-pixbuf/io-gif.c:1340 gdk-pixbuf/io-gif.c:1385
-# gdk-pixbuf/io-gif.c:1499
+# cdk-pixbuf/io-gif.c:746 cdk-pixbuf/io-gif.c:1340 cdk-pixbuf/io-gif.c:1385
+# cdk-pixbuf/io-gif.c:1499
 #: ctk/ctkprintoperation-win32.c:1783 ctk/ctkprintoperation-win32.c:1806
 #: ctk/ctkprintoperation-win32.c:1854
 msgid "Not enough free memory"
@@ -3933,7 +3933,7 @@ msgstr "Listeni _Temizle"
 msgid "Show _Private Resources"
 msgstr "_Hususiy Çoqraqlarnı Köster"
 
-# gdk-pixbuf/io-xpm.c:1257
+# cdk-pixbuf/io-xpm.c:1257
 #. we create a placeholder menuitem, to be used in case
 #. * the menu is empty. this placeholder will stay around
 #. * for the entire lifetime of the menu, and we just hide it
@@ -4065,7 +4065,7 @@ msgstr "Qıdıruv"
 msgid "Search Shortcuts"
 msgstr ""
 
-# gdk-pixbuf/io-xpm.c:1257
+# cdk-pixbuf/io-xpm.c:1257
 #: ctk/ctkshortcutswindow.c:1053 ctk/ui/ctkemojichooser.ui:376
 #: ctk/ui/ctkfilechooserwidget.ui:323
 #, fuzzy
@@ -7590,7 +7590,7 @@ msgstr "Alâqadar Uyğulamalar"
 msgid "_Find New Applications"
 msgstr "Başqa Uyğulamalar"
 
-# gdk-pixbuf/io-xpm.c:1257
+# cdk-pixbuf/io-xpm.c:1257
 #: ctk/ui/ctkappchooserwidget.ui:119
 #, fuzzy
 msgid "No applications found."
@@ -7775,7 +7775,7 @@ msgstr "Hurufat Ailesi"
 msgid "Preview text"
 msgstr "_Ög-baquv:"
 
-# gdk-pixbuf/io-xpm.c:1257
+# cdk-pixbuf/io-xpm.c:1257
 #: ctk/ui/ctkfontchooserwidget.ui:201
 #, fuzzy
 msgid "No Fonts Found"
@@ -7834,7 +7834,7 @@ msgstr ""
 msgid "Available Protocols"
 msgstr ""
 
-# gdk-pixbuf/io-xpm.c:1257
+# cdk-pixbuf/io-xpm.c:1257
 #. Translators: Server as any successfully connected network address
 #: ctk/ui/ctkplacesview.ui:135
 #, fuzzy
@@ -7845,7 +7845,7 @@ msgstr "Hiç bir bastırıcı tapılmadı"
 msgid "Recent Servers"
 msgstr ""
 
-# gdk-pixbuf/io-xpm.c:1257
+# cdk-pixbuf/io-xpm.c:1257
 #: ctk/ui/ctkplacesview.ui:261
 #, fuzzy
 msgid "No results found"
@@ -8111,38 +8111,38 @@ msgid "Decreases the volume"
 msgstr "Davuş seviyesini eksiltir"
 
 # tüklü
-# gdk-pixbuf/io-tiff.c:264
+# cdk-pixbuf/io-tiff.c:264
 #: ctk/updateiconcache.c:1404
 #, c-format
 msgid "Failed to write header\n"
 msgstr "Başlıq yazılamadı\n"
 
 # tüklü
-# gdk-pixbuf/io-tiff.c:264
+# cdk-pixbuf/io-tiff.c:264
 #: ctk/updateiconcache.c:1410
 #, c-format
 msgid "Failed to write hash table\n"
 msgstr "Heş cedveli yazılamadı\n"
 
-# gdk-pixbuf/io-xbm.c:429
+# cdk-pixbuf/io-xbm.c:429
 #: ctk/updateiconcache.c:1416
 #, c-format
 msgid "Failed to write folder index\n"
 msgstr "Cilbent indeksi yazılamadı\n"
 
-# gdk-pixbuf/io-tiff.c:264
+# cdk-pixbuf/io-tiff.c:264
 #: ctk/updateiconcache.c:1424
 #, c-format
 msgid "Failed to rewrite header\n"
 msgstr "Başlıqnı kene yazmaqta muvafaqiyetsizlik\n"
 
-# gdk-pixbuf/gdk-pixbuf-animation.c:144 gdk-pixbuf/gdk-pixbuf-io.c:516
+# cdk-pixbuf/cdk-pixbuf-animation.c:144 cdk-pixbuf/cdk-pixbuf-io.c:516
 #: ctk/updateiconcache.c:1518
 #, c-format
 msgid "Failed to open file %s : %s\n"
 msgstr "%s dosyesi açılamadı : %s\n"
 
-# gdk-pixbuf/gdk-pixbuf-animation.c:144 gdk-pixbuf/gdk-pixbuf-io.c:516
+# cdk-pixbuf/cdk-pixbuf-animation.c:144 cdk-pixbuf/cdk-pixbuf-io.c:516
 #: ctk/updateiconcache.c:1526 ctk/updateiconcache.c:1556
 #, c-format
 msgid "Failed to write cache file: %s\n"
@@ -8603,7 +8603,7 @@ msgctxt "printing option value"
 msgid "Convert to PS level 2"
 msgstr "PS seviye 2'ge çevir"
 
-# gdk-pixbuf/io-xpm.c:1257
+# cdk-pixbuf/io-xpm.c:1257
 #. Translators: this is an option of "GhostScript"
 #: modules/printbackends/cups/ctkprintbackendcups.c:4716
 #, fuzzy

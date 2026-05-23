@@ -65,7 +65,7 @@
 #include "config.h"
 #include <string.h>
 
-#include <gdk-pixbuf/gdk-pixbuf.h>
+#include <cdk-pixbuf/cdk-pixbuf.h>
 
 #include "ctkfilefilterprivate.h"
 #include "ctkbuildable.h"
@@ -525,7 +525,7 @@ ctk_file_filter_add_pixbuf_formats (CtkFileFilter *filter)
   rule = g_slice_new (FilterRule);
   rule->type = FILTER_RULE_PIXBUF_FORMATS;
   rule->needed = CTK_FILE_FILTER_MIME_TYPE;
-  rule->u.pixbuf_formats = gdk_pixbuf_get_formats ();
+  rule->u.pixbuf_formats = cdk_pixbuf_get_formats ();
   file_filter_add_rule (filter, rule);
 }
 
@@ -652,7 +652,7 @@ NSArray * _ctk_file_filter_get_as_pattern_nsstrings (CtkFileFilter *filter)
 		int i;
 		gchar **extensions;
 
-		extensions = gdk_pixbuf_format_get_extensions (list->data);
+		extensions = cdk_pixbuf_format_get_extensions (list->data);
 
 		for (i = 0; extensions[i] != NULL; i++)
 		  {
@@ -701,7 +701,7 @@ _ctk_file_filter_get_as_patterns (CtkFileFilter      *filter)
 		int i;
 		gchar **extensions;
 
-		extensions = gdk_pixbuf_format_get_extensions (list->data);
+		extensions = cdk_pixbuf_format_get_extensions (list->data);
 
 		for (i = 0; extensions[i] != NULL; i++)
                   g_ptr_array_add (array, g_strdup_printf ("*.%s", extensions[i]));
@@ -785,7 +785,7 @@ ctk_file_filter_filter (CtkFileFilter           *filter,
 		int i;
 		gchar **mime_types;
 
-		mime_types = gdk_pixbuf_format_get_mime_types (list->data);
+		mime_types = cdk_pixbuf_format_get_mime_types (list->data);
 
 		for (i = 0; mime_types[i] != NULL; i++)
 		  {
@@ -849,7 +849,7 @@ ctk_file_filter_to_gvariant (CtkFileFilter *filter)
                 gchar **mime_types;
                 int i;
 
-                mime_types = gdk_pixbuf_format_get_mime_types (fmt);
+                mime_types = cdk_pixbuf_format_get_mime_types (fmt);
                 for (i = 0; mime_types[i]; i++)
                   g_variant_builder_add (&builder, "(us)", 1, mime_types[i]);
                 g_strfreev (mime_types);

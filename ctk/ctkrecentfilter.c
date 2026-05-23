@@ -72,7 +72,7 @@
 #include "config.h"
 #include <string.h>
 
-#include <gdk-pixbuf/gdk-pixbuf.h>
+#include <cdk-pixbuf/cdk-pixbuf.h>
 
 #include "ctkrecentfilter.h"
 #include "ctkbuildable.h"
@@ -578,7 +578,7 @@ ctk_recent_filter_add_pixbuf_formats (CtkRecentFilter *filter)
   rule = g_new0 (FilterRule, 1);
   rule->type = FILTER_RULE_PIXBUF_FORMATS;
   rule->needed = CTK_RECENT_FILTER_MIME_TYPE;
-  rule->u.pixbuf_formats = gdk_pixbuf_get_formats ();
+  rule->u.pixbuf_formats = cdk_pixbuf_get_formats ();
   
   recent_filter_add_rule (filter, rule);
 }
@@ -794,7 +794,7 @@ ctk_recent_filter_filter (CtkRecentFilter           *filter,
                 gint i;
 		gchar **mime_types;
 
-		mime_types = gdk_pixbuf_format_get_mime_types (list->data);
+		mime_types = cdk_pixbuf_format_get_mime_types (list->data);
 
 		for (i = 0; mime_types[i] != NULL; i++)
                   {

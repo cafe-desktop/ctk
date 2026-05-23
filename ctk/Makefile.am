@@ -621,7 +621,7 @@ ctk_private_h_sources =		\
 	ctkwin32themeprivate.h	\
 	ctkwindowprivate.h	\
 	ctktreemenu.h		\
-	gdkpixbufutilsprivate.h \
+	cdkpixbufutilsprivate.h \
 	open-type-layout.h	\
 	language-names.h	\
 	script-names.h
@@ -1015,7 +1015,7 @@ ctk_base_c_sources = 		\
 	ctkwindowgroup.c	\
 	ctkwin32draw.c		\
 	ctkwin32theme.c		\
-	gdkpixbufutils.c	\
+	cdkpixbufutils.c	\
 	language-names.c	\
 	script-names.c
 

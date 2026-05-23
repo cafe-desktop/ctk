@@ -256,8 +256,8 @@ cdk_draw_pixbuf (window,
                  pixbuf,
                  0, 0
                  x, y,
-                 gdk_pixbuf_get_width (pixbuf),
-                 gdk_pixbuf_get_height (pixbuf),
+                 cdk_pixbuf_get_width (pixbuf),
+                 cdk_pixbuf_get_height (pixbuf),
                  CDK_RGB_DITHER_NORMAL,
                  0, 0);
            </programlisting></informalexample>
@@ -755,7 +755,7 @@ cairo_arc (cr, 1.5, 1.5, 1.5, 0, 2 * M_PI);
 cairo_fill (cr);
 cairo_destroy (cr);
 
-pixbuf = gdk_pixbuf_get_from_surface (s,
+pixbuf = cdk_pixbuf_get_from_surface (s,
                                       0, 0,
                                       3, 3);
 
@@ -842,7 +842,7 @@ on_alpha_screen_changed (CtkWindow *window,
             <row><entry>cdk_drawable_get_visual()</entry><entry>cdk_window_get_visual()</entry></row>
             <row><entry>cdk_drawable_get_size()</entry><entry>cdk_window_get_width()
                                                               cdk_window_get_height()</entry></row>
-            <row><entry>gdk_pixbuf_get_from_drawable()</entry><entry>gdk_pixbuf_get_from_window()</entry></row>
+            <row><entry>cdk_pixbuf_get_from_drawable()</entry><entry>cdk_pixbuf_get_from_window()</entry></row>
             <row><entry>cdk_drawable_get_clip_region()</entry><entry>cdk_window_get_clip_region()</entry></row>
             <row><entry>cdk_drawable_get_visible_region()</entry><entry>cdk_window_get_visible_region()</entry></row>
           </tbody>
@@ -1242,7 +1242,7 @@ ctk_arrow_draw (CtkWidget *widget,
   <title>Install CTK+ modules in the right place</title>
   <para>
     Some software packages install loadable CTK+ modules such as theme engines,
-    gdk-pixbuf loaders or input methods. Since CTK+ 3 is parallel-installable
+    cdk-pixbuf loaders or input methods. Since CTK+ 3 is parallel-installable
     with CTK+ 2.x, the two CTK+ versions have separate locations for their
     loadable modules. The location for CTK+ 2.x is
     <filename><replaceable>libdir</replaceable>/ctk-2.0</filename>
@@ -1261,7 +1261,7 @@ ctk_arrow_draw (CtkWidget *widget,
     suffix to make them parallel-installable.
   </para>
   <para>
-    Note that CTK+ modules often link against libctk, libgdk-pixbuf, etc.
+    Note that CTK+ modules often link against libctk, libcdk-pixbuf, etc.
     If that is the case for your module, you have to be careful to link the
     CTK+ 2.x version of your module against the 2.x version of the libraries,
     and the CTK+ 3 version against hte 3.x versions. Loading a module linked

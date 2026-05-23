@@ -28,7 +28,7 @@
 
 #include <gio/gio.h>
 #include <cdk/cdk.h>
-#include <gdk-pixbuf/gdk-pixbuf.h>
+#include <cdk-pixbuf/cdk-pixbuf.h>
 
 struct _CtkMountOperationLookupContext;
 typedef struct _CtkMountOperationLookupContext CtkMountOperationLookupContext;

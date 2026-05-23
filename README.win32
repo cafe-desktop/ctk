@@ -104,12 +104,12 @@ CFLAGS=-O2 \
 
 libtoolcacheize &&
 rm ctk/ctk.def &&
-(PATH="$PWD/gdk-pixbuf/.libs:/devel/target/$HEX/bin:$PATH" make -j3 install || (rm .libtool-cache* && PATH="/devel/target/$HEX/bin:$PATH" make -j3 install)) &&
+(PATH="$PWD/cdk-pixbuf/.libs:/devel/target/$HEX/bin:$PATH" make -j3 install || (rm .libtool-cache* && PATH="/devel/target/$HEX/bin:$PATH" make -j3 install)) &&
 
-PATH="/devel/target/$HEX/bin:$PATH" gdk-pixbuf-query-loaders >/devel/target/$HEX/etc/ctk-2.0/gdk-pixbuf.loaders &&
+PATH="/devel/target/$HEX/bin:$PATH" cdk-pixbuf-query-loaders >/devel/target/$HEX/etc/ctk-2.0/cdk-pixbuf.loaders &&
 
-grep -v -E 'Automatically generated|Created by|LoaderDir =' <$TARGET/etc/ctk-2.0/gdk-pixbuf.loaders >$TARGET/etc/ctk-2.0/gdk-pixbuf.loaders.temp &&
-    mv $TARGET/etc/ctk-2.0/gdk-pixbuf.loaders.temp $TARGET/etc/ctk-2.0/gdk-pixbuf.loaders &&
+grep -v -E 'Automatically generated|Created by|LoaderDir =' <$TARGET/etc/ctk-2.0/cdk-pixbuf.loaders >$TARGET/etc/ctk-2.0/cdk-pixbuf.loaders.temp &&
+    mv $TARGET/etc/ctk-2.0/cdk-pixbuf.loaders.temp $TARGET/etc/ctk-2.0/cdk-pixbuf.loaders &&
 grep -v -E 'Automatically generated|Created by|ModulesPath =' <$TARGET/etc/ctk-2.0/ctk.immodules >$TARGET/etc/ctk-2.0/ctk.immodules.temp &&
     mv $TARGET/etc/ctk-2.0/ctk.immodules.temp $TARGET/etc/ctk-2.0/ctk.immodules &&
 
@@ -133,7 +133,7 @@ properly after installing the dependencies before building CTK+.
 
 As you see above, after running configure, one can just say "make
 install", like on Unix. A post-build fix is needed, running
-gdk-pixbuf-query-loaders once more to get a correct gdk-pixbuf.loaders
+cdk-pixbuf-query-loaders once more to get a correct cdk-pixbuf.loaders
 file.
 
 For a 64-bit build you need to remove the ctk/ctk.def file and let it

@@ -344,25 +344,25 @@ get_pixbuf_size (CtkIconHelper   *self,
       ensure_icon_size (self, &width, &height);
 
       if (scale != orig_scale ||
-	  width < gdk_pixbuf_get_width (orig_pixbuf) / orig_scale ||
-          height < gdk_pixbuf_get_height (orig_pixbuf) / orig_scale)
+	  width < cdk_pixbuf_get_width (orig_pixbuf) / orig_scale ||
+          height < cdk_pixbuf_get_height (orig_pixbuf) / orig_scale)
 	{
-	  width = MIN (width * scale, gdk_pixbuf_get_width (orig_pixbuf) * scale / orig_scale);
-	  height = MIN (height * scale, gdk_pixbuf_get_height (orig_pixbuf) * scale / orig_scale);
+	  width = MIN (width * scale, cdk_pixbuf_get_width (orig_pixbuf) * scale / orig_scale);
+	  height = MIN (height * scale, cdk_pixbuf_get_height (orig_pixbuf) * scale / orig_scale);
 
           scale_pixmap = TRUE;
 	}
       else
 	{
-	  width = gdk_pixbuf_get_width (orig_pixbuf);
-	  height = gdk_pixbuf_get_height (orig_pixbuf);
+	  width = cdk_pixbuf_get_width (orig_pixbuf);
+	  height = cdk_pixbuf_get_height (orig_pixbuf);
 	  scale = orig_scale;
 	}
     }
   else
     {
-      width = gdk_pixbuf_get_width (orig_pixbuf);
-      height = gdk_pixbuf_get_height (orig_pixbuf);
+      width = cdk_pixbuf_get_width (orig_pixbuf);
+      height = cdk_pixbuf_get_height (orig_pixbuf);
       scale = orig_scale;
     }
 
@@ -390,7 +390,7 @@ ensure_surface_from_pixbuf (CtkIconHelper *self,
                        orig_pixbuf,
                        orig_scale,
                        &width, &height, &scale))
-    pixbuf = gdk_pixbuf_scale_simple (orig_pixbuf,
+    pixbuf = cdk_pixbuf_scale_simple (orig_pixbuf,
                                       width, height,
                                       GDK_INTERP_BILINEAR);
   else
@@ -635,8 +635,8 @@ _ctk_icon_helper_get_size (CtkIconHelper *self,
     case CTK_IMAGE_ANIMATION:
       {
         GdkPixbufAnimation *animation = ctk_image_definition_get_animation (self->priv->def);
-        width = gdk_pixbuf_animation_get_width (animation);
-        height = gdk_pixbuf_animation_get_height (animation);
+        width = cdk_pixbuf_animation_get_width (animation);
+        height = cdk_pixbuf_animation_get_height (animation);
         break;
       }
 

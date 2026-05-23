@@ -65,7 +65,7 @@
  * “broken image” icon similar to that used in many web browsers.
  * If you want to handle errors in loading the file yourself,
  * for example by displaying an error message, then load the image with
- * gdk_pixbuf_new_from_file(), then create the #CtkImage with
+ * cdk_pixbuf_new_from_file(), then create the #CtkImage with
  * ctk_image_new_from_pixbuf().
  *
  * The image file may contain an animation, if so the #CtkImage will
@@ -127,10 +127,10 @@
  *
  * Sometimes an application will want to avoid depending on external data
  * files, such as image files. CTK+ comes with a program to avoid this,
- * called “gdk-pixbuf-csource”. This library
+ * called “cdk-pixbuf-csource”. This library
  * allows you to convert an image into a C variable declaration, which
  * can then be loaded into a #GdkPixbuf using
- * gdk_pixbuf_new_from_inline().
+ * cdk_pixbuf_new_from_inline().
  *
  * # CSS nodes
  *
@@ -580,9 +580,9 @@ ctk_image_get_property (GObject     *object,
  * animation.
  *
  * If you need to detect failures to load the file, use
- * gdk_pixbuf_new_from_file() to load the file yourself, then create
+ * cdk_pixbuf_new_from_file() to load the file yourself, then create
  * the #CtkImage from the pixbuf. (Or for animations, use
- * gdk_pixbuf_animation_new_from_file()).
+ * cdk_pixbuf_animation_new_from_file()).
  *
  * The storage type (ctk_image_get_storage_type()) of the returned
  * image is not defined, it will be whatever is appropriate for
@@ -615,9 +615,9 @@ ctk_image_new_from_file   (const gchar *filename)
  * animation.
  *
  * If you need to detect failures to load the file, use
- * gdk_pixbuf_new_from_file() to load the file yourself, then create
+ * cdk_pixbuf_new_from_file() to load the file yourself, then create
  * the #CtkImage from the pixbuf. (Or for animations, use
- * gdk_pixbuf_animation_new_from_file()).
+ * cdk_pixbuf_animation_new_from_file()).
  *
  * The storage type (ctk_image_get_storage_type()) of the returned
  * image is not defined, it will be whatever is appropriate for
@@ -856,15 +856,15 @@ on_loader_size_prepared (GdkPixbufLoader *loader,
   GdkPixbufFormat *format;
 
   /* Let the regular icon helper code path handle non-scalable images */
-  format = gdk_pixbuf_loader_get_format (loader);
-  if (!gdk_pixbuf_format_is_scalable (format))
+  format = cdk_pixbuf_loader_get_format (loader);
+  if (!cdk_pixbuf_format_is_scalable (format))
     {
       loader_data->scale_factor = 1;
       return;
     }
 
   scale_factor = ctk_widget_get_scale_factor (CTK_WIDGET (loader_data->image));
-  gdk_pixbuf_loader_set_size (loader, width * scale_factor, height * scale_factor);
+  cdk_pixbuf_loader_set_size (loader, width * scale_factor, height * scale_factor);
   loader_data->scale_factor = scale_factor;
 }
 
@@ -885,7 +885,7 @@ load_scalable_with_loader (CtkImage    *image,
   animation = NULL;
   bytes = NULL;
 
-  loader = gdk_pixbuf_loader_new ();
+  loader = cdk_pixbuf_loader_new ();
   loader_data.image = image;
 
   g_signal_connect (loader, "size-prepared", G_CALLBACK (on_loader_size_prepared), &loader_data);
@@ -908,13 +908,13 @@ load_scalable_with_loader (CtkImage    *image,
   if (!bytes)
     goto out;
 
-  if (!gdk_pixbuf_loader_write_bytes (loader, bytes, NULL))
+  if (!cdk_pixbuf_loader_write_bytes (loader, bytes, NULL))
     goto out;
 
-  if (!gdk_pixbuf_loader_close (loader, NULL))
+  if (!cdk_pixbuf_loader_close (loader, NULL))
     goto out;
 
-  animation = gdk_pixbuf_loader_get_animation (loader);
+  animation = cdk_pixbuf_loader_get_animation (loader);
   if (animation != NULL)
     {
       g_object_ref (animation);
@@ -923,7 +923,7 @@ load_scalable_with_loader (CtkImage    *image,
     }
 
  out:
-  gdk_pixbuf_loader_close (loader, NULL);
+  cdk_pixbuf_loader_close (loader, NULL);
   g_object_unref (loader);
   g_bytes_unref (bytes);
 
@@ -976,9 +976,9 @@ ctk_image_set_from_file   (CtkImage    *image,
    * if it's just a single pixbuf
    */
 
-  if (gdk_pixbuf_animation_is_static_image (anim))
+  if (cdk_pixbuf_animation_is_static_image (anim))
     ctk_image_set_from_pixbuf (image,
-			       gdk_pixbuf_animation_get_static_image (anim));
+			       cdk_pixbuf_animation_get_static_image (anim));
   else
     ctk_image_set_from_animation (image, anim);
 
@@ -1051,7 +1051,7 @@ ctk_image_set_from_resource (CtkImage    *image,
     }
 
   if (resource_is_pixdata (resource_path))
-    animation = gdk_pixbuf_animation_new_from_resource (resource_path, NULL);
+    animation = cdk_pixbuf_animation_new_from_resource (resource_path, NULL);
   else
     animation = load_scalable_with_loader (image, NULL, resource_path, &scale_factor);
 
@@ -1064,8 +1064,8 @@ ctk_image_set_from_resource (CtkImage    *image,
       return;
     }
 
-  if (gdk_pixbuf_animation_is_static_image (animation))
-    ctk_image_set_from_pixbuf (image, gdk_pixbuf_animation_get_static_image (animation));
+  if (cdk_pixbuf_animation_is_static_image (animation))
+    ctk_image_set_from_pixbuf (image, cdk_pixbuf_animation_get_static_image (animation));
   else
     ctk_image_set_from_animation (image, animation);
 
@@ -1615,9 +1615,9 @@ animation_timeout (gpointer data)
 
   priv->animation_timeout = 0;
 
-  gdk_pixbuf_animation_iter_advance (priv->animation_iter, NULL);
+  cdk_pixbuf_animation_iter_advance (priv->animation_iter, NULL);
 
-  delay = gdk_pixbuf_animation_iter_get_delay_time (priv->animation_iter);
+  delay = cdk_pixbuf_animation_iter_get_delay_time (priv->animation_iter);
   if (delay >= 0)
     {
       CtkWidget *widget = CTK_WIDGET (image);
@@ -1642,9 +1642,9 @@ get_animation_frame (CtkImage *image)
       int delay;
 
       priv->animation_iter = 
-        gdk_pixbuf_animation_get_iter (_ctk_icon_helper_peek_animation (priv->icon_helper), NULL);
+        cdk_pixbuf_animation_get_iter (_ctk_icon_helper_peek_animation (priv->icon_helper), NULL);
 
-      delay = gdk_pixbuf_animation_iter_get_delay_time (priv->animation_iter);
+      delay = cdk_pixbuf_animation_iter_get_delay_time (priv->animation_iter);
       if (delay >= 0) {
         priv->animation_timeout =
           cdk_threads_add_timeout (delay, animation_timeout, image);
@@ -1655,7 +1655,7 @@ get_animation_frame (CtkImage *image)
   /* don't advance the anim iter here, or we could get frame changes between two
    * exposes of different areas.
    */
-  return g_object_ref (gdk_pixbuf_animation_iter_get_pixbuf (priv->animation_iter));
+  return g_object_ref (cdk_pixbuf_animation_iter_get_pixbuf (priv->animation_iter));
 }
 
 static float

@@ -67,8 +67,8 @@ set_cell_color (CtkCellLayout   *cell_layout G_GNUC_UNUSED,
 
   g_free (text);
 
-  pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, 24, 24);
-  gdk_pixbuf_fill (pixbuf, pixel);
+  pixbuf = cdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, 24, 24);
+  cdk_pixbuf_fill (pixbuf, pixel);
 
   g_object_set (cell, "pixbuf", pixbuf, NULL);
 

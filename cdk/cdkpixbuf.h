@@ -30,21 +30,21 @@
 #endif
 
 #include <cairo.h>
-#include <gdk-pixbuf/gdk-pixbuf.h>
+#include <cdk-pixbuf/cdk-pixbuf.h>
 #include <cdk/cdktypes.h>
 #include <cdk/cdkversionmacros.h>
 
 G_BEGIN_DECLS
 
 CDK_AVAILABLE_IN_ALL
-GdkPixbuf *gdk_pixbuf_get_from_window  (CdkWindow       *window,
+GdkPixbuf *cdk_pixbuf_get_from_window  (CdkWindow       *window,
                                         gint             src_x,
                                         gint             src_y,
                                         gint             width,
                                         gint             height);
 
 CDK_AVAILABLE_IN_ALL
-GdkPixbuf *gdk_pixbuf_get_from_surface (cairo_surface_t *surface,
+GdkPixbuf *cdk_pixbuf_get_from_surface (cairo_surface_t *surface,
                                         gint             src_x,
                                         gint             src_y,
                                         gint             width,
