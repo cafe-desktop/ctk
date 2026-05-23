@@ -26,7 +26,7 @@
 static void
 fill_model (CtkTreeModel *model)
 {
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   int i;
   CtkTreeIter iter;
   CtkListStore *store = CTK_LIST_STORE (model);
@@ -50,7 +50,7 @@ fill_model (CtkTreeModel *model)
     {
       char *str, *str2;
 
-      GdkPixbuf *pb;
+      CdkPixbuf *pb;
       size = g_random_int_range (20, 70);
       pb = cdk_pixbuf_scale_simple (pixbuf, size, size, CDK_INTERP_NEAREST);
 
@@ -132,7 +132,7 @@ add_n_items (CtkIconView *icon_list, gint n)
 
   CtkTreeIter iter;
   CtkListStore *store;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   gint i;
 
   store = CTK_LIST_STORE (ctk_icon_view_get_model (icon_list));
@@ -179,7 +179,7 @@ add_large (CtkWidget   *button G_GNUC_UNUSED,
   CtkListStore *store;
   CtkTreeIter iter;
 
-  GdkPixbuf *pixbuf, *pb;
+  CdkPixbuf *pixbuf, *pb;
   gchar *str;
 
   store = CTK_LIST_STORE (ctk_icon_view_get_model (icon_list));

@@ -31,7 +31,7 @@ void        ctk_render_content_path             (CtkStyleContext        *context
                                                  double                  width,
                                                  double                  height);
 
-GdkPixbuf * ctk_render_icon_pixbuf_unpacked     (GdkPixbuf              *base_pixbuf,
+CdkPixbuf * ctk_render_icon_pixbuf_unpacked     (CdkPixbuf              *base_pixbuf,
                                                  CtkIconSize             size,
                                                  CtkCssIconEffect        icon_effect);
 

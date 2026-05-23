@@ -90,7 +90,7 @@
  * set the title property explicitly when constructing a CtkAboutDialog,
  * as shown in the following example:
  * |[<!-- language="C" -->
- * GdkPixbuf *example_logo = cdk_pixbuf_new_from_file ("./logo.png", NULL);
+ * CdkPixbuf *example_logo = cdk_pixbuf_new_from_file ("./logo.png", NULL);
  * ctk_show_about_dialog (NULL,
  *                        "program-name", "ExampleCode",
  *                        "logo", example_logo,
@@ -1735,7 +1735,7 @@ ctk_about_dialog_set_translator_credits (CtkAboutDialog *about,
  *
  * Since: 2.6
  */
-GdkPixbuf *
+CdkPixbuf *
 ctk_about_dialog_get_logo (CtkAboutDialog *about)
 {
   CtkAboutDialogPrivate *priv;
@@ -1753,7 +1753,7 @@ ctk_about_dialog_get_logo (CtkAboutDialog *about)
 /**
  * ctk_about_dialog_set_logo:
  * @about: a #CtkAboutDialog
- * @logo: (allow-none): a #GdkPixbuf, or %NULL
+ * @logo: (allow-none): a #CdkPixbuf, or %NULL
  *
  * Sets the pixbuf to be displayed as logo in the about dialog.
  * If it is %NULL, the default window icon set with
@@ -1763,7 +1763,7 @@ ctk_about_dialog_get_logo (CtkAboutDialog *about)
  */
 void
 ctk_about_dialog_set_logo (CtkAboutDialog *about,
-                           GdkPixbuf      *logo)
+                           CdkPixbuf      *logo)
 {
   CtkAboutDialogPrivate *priv;
 

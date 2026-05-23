@@ -10600,7 +10600,7 @@ ctk_widget_create_pango_layout (CtkWidget   *widget,
  * #CTK_STOCK_OPEN or #CTK_STOCK_OK. @size should be a size
  * such as #CTK_ICON_SIZE_MENU.
  *
- * The pixels in the returned #GdkPixbuf are shared with the rest of
+ * The pixels in the returned #CdkPixbuf are shared with the rest of
  * the application and should not be modified. The pixbuf should be freed
  * after use with g_object_unref().
  *
@@ -10609,7 +10609,7 @@ ctk_widget_create_pango_layout (CtkWidget   *widget,
  *
  * Since: 3.0
  **/
-GdkPixbuf*
+CdkPixbuf*
 ctk_widget_render_icon_pixbuf (CtkWidget   *widget,
                                const gchar *stock_id,
                                CtkIconSize  size)

@@ -316,7 +316,7 @@ void           ctk_entry_set_placeholder_text    (CtkEntry             *entry,
 CDK_AVAILABLE_IN_ALL
 void           ctk_entry_set_icon_from_pixbuf            (CtkEntry             *entry,
 							  CtkEntryIconPosition  icon_pos,
-							  GdkPixbuf            *pixbuf);
+							  CdkPixbuf            *pixbuf);
 CDK_DEPRECATED_IN_3_10_FOR(ctk_entry_set_icon_from_icon_name)
 void           ctk_entry_set_icon_from_stock             (CtkEntry             *entry,
 							  CtkEntryIconPosition  icon_pos,
@@ -333,7 +333,7 @@ CDK_AVAILABLE_IN_ALL
 CtkImageType ctk_entry_get_icon_storage_type             (CtkEntry             *entry,
 							  CtkEntryIconPosition  icon_pos);
 CDK_AVAILABLE_IN_ALL
-GdkPixbuf*   ctk_entry_get_icon_pixbuf                   (CtkEntry             *entry,
+CdkPixbuf*   ctk_entry_get_icon_pixbuf                   (CtkEntry             *entry,
 							  CtkEntryIconPosition  icon_pos);
 CDK_DEPRECATED_IN_3_10_FOR(ctk_entry_get_icon_name)
 const gchar* ctk_entry_get_icon_stock                    (CtkEntry             *entry,

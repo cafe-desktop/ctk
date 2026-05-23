@@ -108,7 +108,7 @@ ctk_css_image_recolor_load (CtkCssImageRecolor  *recolor,
   CtkCssImageUrl *url = CTK_CSS_IMAGE_URL (recolor);
   CtkIconInfo *info;
   CdkRGBA fg, success, warning, error;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   CtkCssImage *image;
   GError *local_error = NULL;
 

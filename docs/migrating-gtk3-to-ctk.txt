@@ -11,7 +11,7 @@ Gtk -> Ctk
 
 cdk -> cdk
 CDK -> CDK
-Gdk -> Cdk
+Cdk -> Cdk
 
 GAIL -> CAIL
 gail -> cail
@@ -26,11 +26,11 @@ ctkdoc -> gtkdoc
 CTKDOC -> GTKDOC
 CTK_DOC -> GTK_DOC
 
-3. CTK can build with GdkPixbuf, if you have related code, you must rename:
+3. CTK can build with CdkPixbuf, if you have related code, you must rename:
 
 cdkpixbuf -> cdkpixbuf
 cdk-pixbuf -> cdk-pixbuf
-CdkPixbuf -> GdkPixbuf
+CdkPixbuf -> CdkPixbuf
 cdk_pixbuf -> cdk_pixbuf
 CDK-Pixbuf -> CDK-Pixbuf
 CDK_PIXBUF -> CDK_PIXBUF
@@ -39,7 +39,7 @@ CDK_INTERP_BILINEAR -> CDK_INTERP_BILINEAR
 CDK_INTERP_HYPER -> CDK_INTERP_HYPER
 CDK_INTERP_NEAREST -> CDK_INTERP_NEAREST
 CDK_INTERP_TILES -> CDK_INTERP_TILES
-CdkInterpType -> GdkInterpType
+CdkInterpType -> CdkInterpType
 CDK_COLORSPACE_RGB -> CDK_COLORSPACE_RGB
 CDK_TYPE_PIXBUF -> CDK_TYPE_PIXBUF
 CDK_IS_PIXBUF -> CDK_IS_PIXBUF

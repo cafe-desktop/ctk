@@ -958,7 +958,7 @@ background_loaded_cb (GObject      *source G_GNUC_UNUSED,
 {
   BackgroundData *bd = data;
   CtkWidget *child;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   GError *error = NULL;
 
   pixbuf = cdk_pixbuf_new_from_stream_finish (res, &error);
@@ -988,7 +988,7 @@ populate_flowbox (CtkWidget *flowbox)
   GFile *file;
   GInputStream *stream;
   BackgroundData *bd;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   CtkWidget *child;
 
   if (GPOINTER_TO_UINT (g_object_get_data (G_OBJECT (flowbox), "populated")))
@@ -1137,7 +1137,7 @@ my_text_view_class_init (MyTextViewClass *class)
 static void
 my_text_view_set_background (MyTextView *tv, const gchar *filename)
 {
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   GError *error = NULL;
 
   if (tv->surface)

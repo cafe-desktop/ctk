@@ -52,7 +52,7 @@ set_cell_color (CtkCellLayout   *cell_layout G_GNUC_UNUSED,
   gchar *text;
   CdkRGBA color;
   guint32 pixel = 0;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
 
   ctk_tree_model_get (tree_model, iter, COL_TEXT, &text, -1);
   if (!text)

@@ -787,7 +787,7 @@ static void
 set_color_icon (CdkDragContext *context,
                 gdouble        *colors)
 {
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   guint32 pixel;
 
   pixbuf = cdk_pixbuf_new (CDK_COLORSPACE_RGB, FALSE,
@@ -1676,7 +1676,7 @@ make_picker_cursor (CdkScreen *screen)
 
   if (!cursor)
     {
-      GdkPixbuf *pixbuf;
+      CdkPixbuf *pixbuf;
 
       pixbuf = cdk_pixbuf_new_from_data (dropper_bits,
                                          CDK_COLORSPACE_RGB, TRUE, 8,
@@ -1701,7 +1701,7 @@ grab_color_at_pointer (CdkScreen *screen,
                        gint       y_root,
                        gpointer   data)
 {
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   guchar *pixels;
   CtkColorSelection *colorsel = data;
   CtkColorSelectionPrivate *priv;

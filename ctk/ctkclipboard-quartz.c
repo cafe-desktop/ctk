@@ -641,7 +641,7 @@ pixbuf_clear_func (CtkClipboard *clipboard,
 
 void
 ctk_clipboard_set_image (CtkClipboard *clipboard,
-			 GdkPixbuf    *pixbuf)
+			 CdkPixbuf    *pixbuf)
 {
   CtkTargetList *list;
   GList *l;
@@ -761,7 +761,7 @@ ctk_clipboard_request_image (CtkClipboard                  *clipboard,
 			     CtkClipboardImageReceivedFunc  callback,
 			     gpointer                       user_data)
 {
-  GdkPixbuf *pixbuf = ctk_clipboard_wait_for_image (clipboard);
+  CdkPixbuf *pixbuf = ctk_clipboard_wait_for_image (clipboard);
 
   callback (clipboard, pixbuf, user_data);
 
@@ -894,7 +894,7 @@ ctk_clipboard_wait_for_text (CtkClipboard *clipboard)
  *
  * Returns: (nullable) (transfer full):
  */
-GdkPixbuf *
+CdkPixbuf *
 ctk_clipboard_wait_for_image (CtkClipboard *clipboard)
 {
   CdkAtom target = cdk_atom_intern_static_string("image/tiff");
@@ -904,7 +904,7 @@ ctk_clipboard_wait_for_image (CtkClipboard *clipboard)
 
   if (data && data->data)
     {
-      GdkPixbuf *pixbuf = ctk_selection_data_get_pixbuf (data);
+      CdkPixbuf *pixbuf = ctk_selection_data_get_pixbuf (data);
       ctk_selection_data_free (data);
       return pixbuf;
     }

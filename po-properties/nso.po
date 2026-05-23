@@ -4680,8 +4680,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ctk/ctkimage.c:257 ctk/ctkstatusicon.c:227
-msgid "A GdkPixbuf to display"
-msgstr "GdkPixbuf yeo e swanetšego go bontšhwa"
+msgid "A CdkPixbuf to display"
+msgstr "CdkPixbuf yeo e swanetšego go bontšhwa"
 
 #: ctk/ctkimage.c:263
 msgid "Surface"
@@ -4743,8 +4743,8 @@ msgid "Animation"
 msgstr "Tsošološo"
 
 #: ctk/ctkimage.c:327
-msgid "GdkPixbufAnimation to display"
-msgstr "GdkPixbufAnimation yeo e swanetšego go bontšhwa"
+msgid "CdkPixbufAnimation to display"
+msgstr "CdkPixbufAnimation yeo e swanetšego go bontšhwa"
 
 #: ctk/ctkimage.c:371
 msgid "Resource"

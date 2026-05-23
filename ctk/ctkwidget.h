@@ -1179,7 +1179,7 @@ PangoLayout  *ctk_widget_create_pango_layout  (CtkWidget   *widget,
 					       const gchar *text);
 
 CDK_AVAILABLE_IN_ALL
-GdkPixbuf    *ctk_widget_render_icon_pixbuf   (CtkWidget   *widget,
+CdkPixbuf    *ctk_widget_render_icon_pixbuf   (CtkWidget   *widget,
                                                const gchar *stock_id,
                                                CtkIconSize  size);
 

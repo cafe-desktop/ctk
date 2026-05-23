@@ -111,7 +111,7 @@
  * {
  *   CtkWidget *preview;
  *   char *filename;
- *   GdkPixbuf *pixbuf;
+ *   CdkPixbuf *pixbuf;
  *   gboolean have_preview;
  *
  *   preview = CTK_WIDGET (data);

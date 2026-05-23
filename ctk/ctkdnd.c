@@ -275,7 +275,7 @@ static void     set_icon_helper (CdkDragContext    *context,
 static struct {
   CdkDragAction action;
   const gchar  *name;
-  GdkPixbuf    *pixbuf;
+  CdkPixbuf    *pixbuf;
   CdkCursor    *cursor;
 } drag_cursors[] = {
   { .action = CDK_ACTION_DEFAULT },
@@ -2213,7 +2213,7 @@ ctk_drag_set_icon_definition (CdkDragContext     *context,
  * ctk_drag_set_icon_pixbuf:
  * @context: the context for a drag (This must be called 
  *            with a  context for the source side of a drag)
- * @pixbuf: the #GdkPixbuf to use as the drag icon
+ * @pixbuf: the #CdkPixbuf to use as the drag icon
  * @hot_x: the X offset within @widget of the hotspot
  * @hot_y: the Y offset within @widget of the hotspot
  * 
@@ -2221,7 +2221,7 @@ ctk_drag_set_icon_definition (CdkDragContext     *context,
  */
 void 
 ctk_drag_set_icon_pixbuf (CdkDragContext *context,
-                          GdkPixbuf      *pixbuf,
+                          CdkPixbuf      *pixbuf,
                           gint            hot_x,
                           gint            hot_y)
 {

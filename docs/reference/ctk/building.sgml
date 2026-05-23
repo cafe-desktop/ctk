@@ -162,7 +162,7 @@ How to compile CTK+ itself
     </itemizedlist>
     <para>
       Some of the libraries that CTK+ depends on are maintained by
-      by the CTK+ team: GLib, GdkPixbuf, Pango, ATK and GObject Introspection.
+      by the CTK+ team: GLib, CdkPixbuf, Pango, ATK and GObject Introspection.
       Other libraries are maintained separately.
     </para>
     <itemizedlist>
@@ -178,7 +178,7 @@ How to compile CTK+ itself
       </listitem>
       <listitem>
         <para>
-          The <ulink url="https://git.gnome.org/browse/cdk-pixbuf/">GdkPixbuf library</ulink>
+          The <ulink url="https://git.gnome.org/browse/cdk-pixbuf/">CdkPixbuf library</ulink>
           provides facilities for loading images in a variety of file formats.
           It is available
           <ulink url="https://download.gnome.org/sources/cdk-pixbuf/">here</ulink>.

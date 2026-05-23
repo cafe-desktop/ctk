@@ -452,7 +452,7 @@ ctk_text_renderer_draw_shape (PangoRenderer   *renderer,
   else if (CDK_IS_PIXBUF (attr->data))
     {
       cairo_t *cr = text_renderer->cr;
-      GdkPixbuf *pixbuf = CDK_PIXBUF (attr->data);
+      CdkPixbuf *pixbuf = CDK_PIXBUF (attr->data);
       
       cairo_save (cr);
 

@@ -40,7 +40,7 @@ void	      _ctk_icon_cache_add_icons      (CtkIconCache *cache,
 gint          _ctk_icon_cache_get_icon_flags (CtkIconCache *cache,
 					      const gchar  *icon_name,
 					      gint          directory_index);
-GdkPixbuf    *_ctk_icon_cache_get_icon       (CtkIconCache *cache,
+CdkPixbuf    *_ctk_icon_cache_get_icon       (CtkIconCache *cache,
 					      const gchar  *icon_name,
 					      gint          directory_index);
 

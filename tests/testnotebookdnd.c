@@ -105,7 +105,7 @@ on_notebook_drag_begin (CtkWidget      *widget,
 
   if (page_num > 2)
     {
-      GdkPixbuf *pixbuf;
+      CdkPixbuf *pixbuf;
       CtkIconTheme *icon_theme;
       int width;
 

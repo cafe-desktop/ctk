@@ -2128,7 +2128,7 @@ ctk_builder_value_from_string_type (CtkBuilder   *builder,
         {
           gchar *filename;
           GError *tmp_error = NULL;
-          GdkPixbuf *pixbuf = NULL;
+          CdkPixbuf *pixbuf = NULL;
 
           if (g_hash_table_contains (builder->priv->objects, string))
             {

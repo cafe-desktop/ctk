@@ -564,7 +564,7 @@ ctk_recent_filter_add_pattern (CtkRecentFilter *filter,
  * @filter: a #CtkRecentFilter
  *
  * Adds a rule allowing image files in the formats supported
- * by GdkPixbuf.
+ * by CdkPixbuf.
  *
  * Since: 2.10
  */

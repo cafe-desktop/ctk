@@ -127,7 +127,7 @@ const CtkTextLineSegmentClass ctk_text_pixbuf_type = {
 };
 
 CtkTextLineSegment *
-_ctk_pixbuf_segment_new (GdkPixbuf *pixbuf)
+_ctk_pixbuf_segment_new (CdkPixbuf *pixbuf)
 {
   /* gcc-11 issues a diagnostic here because the size allocated
      for SEG does not cover the entire size of a CtkTextLineSegment

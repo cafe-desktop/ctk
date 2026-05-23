@@ -69,7 +69,7 @@ void _ctk_text_btree_insert        (CtkTextIter *iter,
                                     const gchar *text,
                                     gint         len);
 void _ctk_text_btree_insert_pixbuf (CtkTextIter *iter,
-                                    GdkPixbuf   *pixbuf);
+                                    CdkPixbuf   *pixbuf);
 
 void _ctk_text_btree_insert_child_anchor (CtkTextIter        *iter,
                                           CtkTextChildAnchor *anchor);

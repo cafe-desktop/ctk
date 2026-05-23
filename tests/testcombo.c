@@ -24,10 +24,10 @@
  */
 
 /* grid combo demo */
-static GdkPixbuf *
+static CdkPixbuf *
 create_color_pixbuf (const char *color)
 {
-        GdkPixbuf *pixbuf;
+        CdkPixbuf *pixbuf;
         CdkRGBA rgba;
 
         int x;
@@ -61,7 +61,7 @@ create_combo_box_grid_demo (void)
 {
         CtkWidget *combo;
         CtkTreeIter iter;
-        GdkPixbuf *pixbuf;
+        CdkPixbuf *pixbuf;
         CtkCellRenderer *cell = ctk_cell_renderer_pixbuf_new ();
         CtkListStore *store;
 

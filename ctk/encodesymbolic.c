@@ -39,7 +39,7 @@ static GOptionEntry args[] = {
   { NULL }
 };
 
-static GdkPixbuf *
+static CdkPixbuf *
 load_symbolic_svg (char *file_data, gsize file_len,
                    int width,
                    int height,
@@ -50,7 +50,7 @@ load_symbolic_svg (char *file_data, gsize file_len,
                    GError        **error)
 {
   GInputStream *stream;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   gchar *css_fg;
   gchar *css_success;
   gchar *css_warning;
@@ -125,8 +125,8 @@ load_symbolic_svg (char *file_data, gsize file_len,
 }
 
 static void
-extract_plane (GdkPixbuf *src,
-               GdkPixbuf *dst,
+extract_plane (CdkPixbuf *src,
+               CdkPixbuf *dst,
                int from_plane,
                int to_plane)
 {
@@ -161,7 +161,7 @@ extract_plane (GdkPixbuf *src,
     }
 }
 
-static GdkPixbuf *
+static CdkPixbuf *
 make_symbolic_pixbuf (char *file,
                       int width,
                       int height,
@@ -169,7 +169,7 @@ make_symbolic_pixbuf (char *file,
 
 {
   CdkRGBA r = { 1,0,0,1}, g = {0,1,0,1};
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   int plane;
   gchar *file_data;
   gsize file_len;
@@ -183,7 +183,7 @@ make_symbolic_pixbuf (char *file,
 
   for (plane = 0; plane < 3; plane++)
     {
-      GdkPixbuf *loaded;
+      CdkPixbuf *loaded;
 
       /* Here we render the svg with all colors solid, this should
        * always make the alpha channel the same and it should match
@@ -224,7 +224,7 @@ main (int argc, char **argv)
 {
   gchar *path, *basename, *pngpath, *pngfile, *dot;
   GOptionContext *context;
-  GdkPixbuf *symbolic;
+  CdkPixbuf *symbolic;
   GError *error;
   int width, height;
   gchar **sizev;

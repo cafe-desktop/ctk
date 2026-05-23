@@ -27,7 +27,7 @@ image_recording_surface_set (CtkWidget *widget,
                              gpointer   unused G_GNUC_UNUSED)
 {
   GError *error = NULL;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   cairo_surface_t *surface;
   cairo_t *cr;
   cairo_rectangle_t rect;

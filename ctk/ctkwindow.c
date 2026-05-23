@@ -4468,7 +4468,7 @@ icon_list_from_theme (CtkWindow   *window,
   GList *list;
 
   CtkIconTheme *icon_theme;
-  GdkPixbuf *icon;
+  CdkPixbuf *icon;
   gint *sizes;
   gint i;
 
@@ -4576,12 +4576,12 @@ ctk_window_realize_icon (CtkWindow *window)
     }
 }
 
-static GdkPixbuf *
+static CdkPixbuf *
 icon_from_list (GList *list,
                 gint   size)
 {
-  GdkPixbuf *best;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *best;
+  CdkPixbuf *pixbuf;
   GList *l;
 
   best = NULL;
@@ -4602,7 +4602,7 @@ icon_from_list (GList *list,
   return best;
 }
 
-static GdkPixbuf *
+static CdkPixbuf *
 icon_from_name (const gchar *name,
                 gint         size)
 {
@@ -4611,7 +4611,7 @@ icon_from_name (const gchar *name,
                                    CTK_ICON_LOOKUP_FORCE_SIZE, NULL);
 }
 
-GdkPixbuf *
+CdkPixbuf *
 ctk_window_get_icon_for_size (CtkWindow *window,
                               gint       size)
 {
@@ -4665,7 +4665,7 @@ ctk_window_unrealize_icon (CtkWindow *window)
 /**
  * ctk_window_set_icon_list:
  * @window: a #CtkWindow
- * @list: (element-type GdkPixbuf): list of #GdkPixbuf
+ * @list: (element-type CdkPixbuf): list of #CdkPixbuf
  *
  * Sets up the icon representing a #CtkWindow. The icon is used when
  * the window is minimized (also known as iconified).  Some window
@@ -4734,7 +4734,7 @@ ctk_window_set_icon_list (CtkWindow  *window,
  * The list is copied, but the reference count on each
  * member won’t be incremented.
  *
- * Returns: (element-type GdkPixbuf) (transfer container): copy of window’s icon list
+ * Returns: (element-type CdkPixbuf) (transfer container): copy of window’s icon list
  **/
 GList*
 ctk_window_get_icon_list (CtkWindow  *window)
@@ -4778,7 +4778,7 @@ ctk_window_get_icon_list (CtkWindow  *window)
  **/
 void
 ctk_window_set_icon (CtkWindow  *window,
-                     GdkPixbuf  *icon)
+                     CdkPixbuf  *icon)
 {
   GList *list;
   
@@ -4880,7 +4880,7 @@ ctk_window_get_icon_name (CtkWindow *window)
  *
  * Returns: (transfer none) (nullable): icon for window or %NULL if none
  **/
-GdkPixbuf*
+CdkPixbuf*
 ctk_window_get_icon (CtkWindow  *window)
 {
   CtkWindowIconInfo *info;
@@ -4896,12 +4896,12 @@ ctk_window_get_icon (CtkWindow  *window)
 
 /* Load pixbuf, printing warning on failure if error == NULL
  */
-static GdkPixbuf *
+static CdkPixbuf *
 load_pixbuf_verbosely (const char *filename,
 		       GError    **err)
 {
   GError *local_err = NULL;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
 
   pixbuf = cdk_pixbuf_new_from_file (filename, &local_err);
 
@@ -4941,7 +4941,7 @@ ctk_window_set_icon_from_file (CtkWindow   *window,
 			       const gchar *filename,
 			       GError     **err)
 {
-  GdkPixbuf *pixbuf = load_pixbuf_verbosely (filename, err);
+  CdkPixbuf *pixbuf = load_pixbuf_verbosely (filename, err);
 
   if (pixbuf)
     {
@@ -4956,7 +4956,7 @@ ctk_window_set_icon_from_file (CtkWindow   *window,
 
 /**
  * ctk_window_set_default_icon_list:
- * @list: (element-type GdkPixbuf) (transfer container): a list of #GdkPixbuf
+ * @list: (element-type CdkPixbuf) (transfer container): a list of #CdkPixbuf
  *
  * Sets an icon list to be used as fallback for windows that haven't
  * had ctk_window_set_icon_list() called on them to set up a
@@ -5016,7 +5016,7 @@ ctk_window_set_default_icon_list (GList *list)
  * Since: 2.4
  **/
 void
-ctk_window_set_default_icon (GdkPixbuf *icon)
+ctk_window_set_default_icon (CdkPixbuf *icon)
 {
   GList *list;
   
@@ -5110,7 +5110,7 @@ gboolean
 ctk_window_set_default_icon_from_file (const gchar *filename,
 				       GError     **err)
 {
-  GdkPixbuf *pixbuf = load_pixbuf_verbosely (filename, err);
+  CdkPixbuf *pixbuf = load_pixbuf_verbosely (filename, err);
 
   if (pixbuf)
     {
@@ -5131,7 +5131,7 @@ ctk_window_set_default_icon_from_file (const gchar *filename,
  * but the pixbufs in the list have not had their reference count
  * incremented.
  * 
- * Returns: (element-type GdkPixbuf) (transfer container): copy of default icon list 
+ * Returns: (element-type CdkPixbuf) (transfer container): copy of default icon list 
  **/
 GList*
 ctk_window_get_default_icon_list (void)

@@ -1198,7 +1198,7 @@ test_icon_view (void)
     "  <object class=\"CtkListStore\" id=\"liststore1\">"
     "    <columns>"
     "      <column type=\"gchararray\"/>"
-    "      <column type=\"GdkPixbuf\"/>"
+    "      <column type=\"CdkPixbuf\"/>"
     "    </columns>"
     "    <data>"
     "      <row>"

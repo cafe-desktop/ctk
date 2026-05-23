@@ -1143,7 +1143,7 @@ new_pixbuf (char      *filename,
 	    CdkWindow *window G_GNUC_UNUSED)
 {
   CtkWidget *widget;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
 
   if (strcmp (filename, "test.xpm") == 0)
     pixbuf = NULL;
@@ -1974,7 +1974,7 @@ on_rotated_text_unrealize (CtkWidget *widget)
 static gboolean
 on_rotated_text_draw (CtkWidget *widget,
                       cairo_t   *cr,
-	              GdkPixbuf *tile_pixbuf)
+	              CdkPixbuf *tile_pixbuf)
 {
   static const gchar *words[] = { "The", "grand", "old", "Duke", "of", "York",
                                   "had", "10,000", "men" };
@@ -2046,7 +2046,7 @@ create_rotated_text (CtkWidget *widget)
       CtkRequisition requisition;
       CtkWidget *content_area;
       CtkWidget *drawing_area;
-      GdkPixbuf *tile_pixbuf;
+      CdkPixbuf *tile_pixbuf;
 
       window = ctk_dialog_new_with_buttons ("Rotated Text",
 					    CTK_WINDOW (ctk_widget_get_toplevel (widget)), 0,
@@ -2764,7 +2764,7 @@ create_image (CtkWidget *widget)
   if (window == NULL)
     {
       CtkWidget *vbox;
-      GdkPixbuf *pixbuf;
+      CdkPixbuf *pixbuf;
         
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
       
@@ -5969,12 +5969,12 @@ static const char * book_closed_xpm[] = {
 "      ..        ",
 "                "};
 
-GdkPixbuf *book_open;
-GdkPixbuf *book_closed;
+CdkPixbuf *book_open;
+CdkPixbuf *book_closed;
 CtkWidget *sample_notebook;
 
 static void
-set_page_image (CtkNotebook *notebook, gint page_num, GdkPixbuf *pixbuf)
+set_page_image (CtkNotebook *notebook, gint page_num, CdkPixbuf *pixbuf)
 {
   CtkWidget *page_widget;
   CtkWidget *pixwid;
@@ -6921,7 +6921,7 @@ shape_create_icon (CdkScreen *screen,
   CursorOffset* icon_pos;
   cairo_surface_t *mask;
   cairo_region_t *mask_region;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   cairo_t *cr;
 
   /*
@@ -7098,7 +7098,7 @@ create_wmhints (CtkWidget *widget)
       CtkWidget *box1;
       CtkWidget *box2;
       CdkWindow *cdk_window;
-      GdkPixbuf *pixbuf;
+      CdkPixbuf *pixbuf;
       GList *list;
 
       window = ctk_window_new (CTK_WINDOW_TOPLEVEL);
@@ -8611,7 +8611,7 @@ snapshot_widget_event (CtkWidget	       *widget,
 	{
 	  cairo_surface_t *surface;
 	  CtkWidget *window, *image;
-          GdkPixbuf *pixbuf;
+          CdkPixbuf *pixbuf;
           int width, height;
           cairo_t *cr;
 

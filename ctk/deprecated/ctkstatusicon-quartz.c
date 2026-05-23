@@ -40,7 +40,7 @@
 - (id) initWithStatusIcon:(CtkStatusIcon *)status_icon;
 - (void) ensureItem;
 - (void) actionCb:(NSObject *)button;
-- (void) setImage:(GdkPixbuf *)pixbuf;
+- (void) setImage:(CdkPixbuf *)pixbuf;
 - (void) setVisible:(gboolean)visible;
 - (void) setToolTip:(const gchar *)tooltip_text;
 - (float) getWidth;
@@ -88,7 +88,7 @@
                  time * 1000.0);
 }
 
-- (void) setImage:(GdkPixbuf *)pixbuf
+- (void) setImage:(CdkPixbuf *)pixbuf
 {
   /* Support NULL */
   [self ensureItem];

@@ -4917,8 +4917,8 @@ msgstr "Pixbuf"
 
 #: ctk/ctkimage.c:257 ctk/ctkstatusicon.c:227
 #, fuzzy
-msgid "A GdkPixbuf to display"
-msgstr "Ein anzuzeigender GdkPixbuf"
+msgid "A CdkPixbuf to display"
+msgstr "Ein anzuzeigender CdkPixbuf"
 
 #: ctk/ctkimage.c:263
 msgid "Surface"
@@ -4978,8 +4978,8 @@ msgstr "Animatschoon"
 
 #: ctk/ctkimage.c:327
 #, fuzzy
-msgid "GdkPixbufAnimation to display"
-msgstr "Die Anzuzeigende GdkPixbufAnimation"
+msgid "CdkPixbufAnimation to display"
+msgstr "Die Anzuzeigende CdkPixbufAnimation"
 
 #: ctk/ctkimage.c:371
 msgid "Resource"

@@ -4207,8 +4207,8 @@ msgid "Pixbuf"
 msgstr "픽스버퍼"
 
 #: ctk/ctkimage.c:257 ctk/ctkstatusicon.c:227
-msgid "A GdkPixbuf to display"
-msgstr "표시할 GdkPixbuf"
+msgid "A CdkPixbuf to display"
+msgstr "표시할 CdkPixbuf"
 
 #: ctk/ctkimage.c:263
 msgid "Surface"
@@ -4260,8 +4260,8 @@ msgid "Animation"
 msgstr "애니메이션"
 
 #: ctk/ctkimage.c:327
-msgid "GdkPixbufAnimation to display"
-msgstr "표시할 GdkPixbufAnimation"
+msgid "CdkPixbufAnimation to display"
+msgstr "표시할 CdkPixbufAnimation"
 
 #: ctk/ctkimage.c:371
 msgid "Resource"
