@@ -83,7 +83,7 @@ requires:
     - xvfb
     - xml-core
 
-    #required for gdk-pixbuf
+    #required for cdk-pixbuf
     - cmake
     - gi-docgen
     - meson
@@ -91,7 +91,7 @@ requires:
 
 before_scripts:
   - ./html-cppcheck
-  - ./install-from-git https://gitlab.gnome.org/GNOME/gdk-pixbuf 2.44.5 meson '--libdir=/usr/lib/x86_64-linux-gnu --libexecdir=/usr/lib/x86_64-linux-gnu -Dglycin=disabled -Dbuiltin_loaders=png,jpeg -Dthumbnailer=enabled -Dothers=enabled -Dthumbnailer=enabled'
+  - ./install-from-git https://github.com/cafe-desktop/cdk-pixbuf master meson '--libdir=/usr/lib/x86_64-linux-gnu --libexecdir=/usr/lib/x86_64-linux-gnu'
   - ./install-from-git https://github.com/cafe-desktop/advaita-icon-theme master
 
 build_scripts:
