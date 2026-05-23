@@ -18,7 +18,7 @@ test_set_source_big_pixbuf (void)
 
   surface = cairo_image_surface_create (CAIRO_FORMAT_ARGB32, 10, 10);
   cr = cairo_create (surface);
-  pixbuf = cdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, WAY_TOO_BIG, 1);
+  pixbuf = cdk_pixbuf_new (CDK_COLORSPACE_RGB, FALSE, 8, WAY_TOO_BIG, 1);
 
   cdk_cairo_set_source_pixbuf (cr, pixbuf, 0, 0);
   g_assert_cmpint (cairo_status (cr), !=, CAIRO_STATUS_SUCCESS);

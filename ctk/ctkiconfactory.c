@@ -1357,7 +1357,7 @@ find_and_render_icon_source (CtkIconSet       *icon_set,
 	      pixbuf = cdk_pixbuf_scale_simple (pixbuf,
 						cdk_pixbuf_get_width (pixbuf) * scale,
 						cdk_pixbuf_get_height (pixbuf) * scale,
-						GDK_INTERP_BILINEAR);
+						CDK_INTERP_BILINEAR);
 	      g_object_unref (tmp);
 	    }
 	  break;
@@ -1964,7 +1964,7 @@ ctk_icon_source_set_pixbuf (CtkIconSource *source,
                             GdkPixbuf     *pixbuf)
 {
   g_return_if_fail (source != NULL);
-  g_return_if_fail (pixbuf == NULL || GDK_IS_PIXBUF (pixbuf));
+  g_return_if_fail (pixbuf == NULL || CDK_IS_PIXBUF (pixbuf));
 
   if (source->type == CTK_ICON_SOURCE_PIXBUF &&
       source->source.pixbuf == pixbuf)

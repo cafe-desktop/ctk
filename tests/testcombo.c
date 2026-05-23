@@ -37,7 +37,7 @@ create_color_pixbuf (const char *color)
         if (!cdk_rgba_parse (&rgba, color))
                 return NULL;
 
-        pixbuf = cdk_pixbuf_new (GDK_COLORSPACE_RGB,
+        pixbuf = cdk_pixbuf_new (CDK_COLORSPACE_RGB,
                                  FALSE, 8,
                                  16, 16);
 
@@ -65,7 +65,7 @@ create_combo_box_grid_demo (void)
         CtkCellRenderer *cell = ctk_cell_renderer_pixbuf_new ();
         CtkListStore *store;
 
-        store = ctk_list_store_new (3, GDK_TYPE_PIXBUF, G_TYPE_INT, G_TYPE_INT);
+        store = ctk_list_store_new (3, CDK_TYPE_PIXBUF, G_TYPE_INT, G_TYPE_INT);
 
         /* first row */
         pixbuf = create_color_pixbuf ("red");

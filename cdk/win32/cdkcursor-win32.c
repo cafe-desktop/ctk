@@ -17,7 +17,7 @@
  */
 
 #include "config.h"
-#define GDK_PIXBUF_ENABLE_BACKEND /* Ugly? */
+#define CDK_PIXBUF_ENABLE_BACKEND /* Ugly? */
 #include "cdkdisplay.h"
 #include "cdkscreen.h"
 #include "cdkcursor.h"
@@ -771,7 +771,7 @@ cdk_win32_icon_to_pixbuf_libctk_only (HICON hicon,
       if (!GDI_CALL (GetDIBits, (hdc, ii.hbmColor, 0, h, bits, (BITMAPINFO *)&bmi, DIB_RGB_COLORS)))
 	goto out2;
 
-      pixbuf = cdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, w, h);
+      pixbuf = cdk_pixbuf_new (CDK_COLORSPACE_RGB, TRUE, 8, w, h);
       pixels = cdk_pixbuf_get_pixels (pixbuf);
       rowstride = cdk_pixbuf_get_rowstride (pixbuf);
       no_alpha = TRUE;
@@ -824,7 +824,7 @@ cdk_win32_icon_to_pixbuf_libctk_only (HICON hicon,
       if (!GDI_CALL (GetDIBits, (hdc, ii.hbmMask, 0, h*2, bits, (BITMAPINFO *)&bmi, DIB_RGB_COLORS)))
 	goto out2;
 
-      pixbuf = cdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, w, h);
+      pixbuf = cdk_pixbuf_new (CDK_COLORSPACE_RGB, TRUE, 8, w, h);
       pixels = cdk_pixbuf_get_pixels (pixbuf);
       rowstride = cdk_pixbuf_get_rowstride (pixbuf);
       bpl = ((w-1)/32 + 1)*4;
@@ -938,7 +938,7 @@ _cdk_win32_display_get_cursor_for_surface (CdkDisplay      *display,
                                         width,
                                         height);
 
-  g_return_val_if_fail (GDK_IS_PIXBUF (pixbuf), NULL);
+  g_return_val_if_fail (CDK_IS_PIXBUF (pixbuf), NULL);
   g_return_val_if_fail (0 <= x && x < cdk_pixbuf_get_width (pixbuf), NULL);
   g_return_val_if_fail (0 <= y && y < cdk_pixbuf_get_height (pixbuf), NULL);
 

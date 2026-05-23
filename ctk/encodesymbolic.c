@@ -177,7 +177,7 @@ make_symbolic_pixbuf (char *file,
   if (!g_file_get_contents (file, &file_data, &file_len, error))
     return NULL;
 
-  pixbuf = cdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, width, height);
+  pixbuf = cdk_pixbuf_new (CDK_COLORSPACE_RGB, TRUE, 8, width, height);
 
   cdk_pixbuf_fill (pixbuf, 0);
 

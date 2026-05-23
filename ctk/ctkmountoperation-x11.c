@@ -410,7 +410,7 @@ scaled_from_pixdata (guchar *pixdata,
   GdkPixbuf *dest;
 
   src = cdk_pixbuf_new_from_data (pixdata,
-                                  GDK_COLORSPACE_RGB,
+                                  CDK_COLORSPACE_RGB,
                                   TRUE,
                                   8,
                                   w, h, w * 4,
@@ -427,7 +427,7 @@ scaled_from_pixdata (guchar *pixdata,
 
       size = MAX (w, h);
 
-      tmp = cdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, size, size);
+      tmp = cdk_pixbuf_new (CDK_COLORSPACE_RGB, TRUE, 8, size, size);
 
       if (tmp != NULL)
         {
@@ -443,7 +443,7 @@ scaled_from_pixdata (guchar *pixdata,
 
   if (w != new_w || h != new_h)
     {
-      dest = cdk_pixbuf_scale_simple (src, new_w, new_h, GDK_INTERP_BILINEAR);
+      dest = cdk_pixbuf_scale_simple (src, new_w, new_h, CDK_INTERP_BILINEAR);
 
       g_object_unref (G_OBJECT (src));
     }

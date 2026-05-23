@@ -255,7 +255,7 @@ ctk_image_class_init (CtkImageClass *class)
       g_param_spec_object ("pixbuf",
                            P_("Pixbuf"),
                            P_("A GdkPixbuf to display"),
-                           GDK_TYPE_PIXBUF,
+                           CDK_TYPE_PIXBUF,
                            CTK_PARAM_READWRITE);
 
   image_props[PROP_SURFACE] =
@@ -325,7 +325,7 @@ ctk_image_class_init (CtkImageClass *class)
       g_param_spec_object ("pixbuf-animation",
                            P_("Animation"),
                            P_("GdkPixbufAnimation to display"),
-                           GDK_TYPE_PIXBUF_ANIMATION,
+                           CDK_TYPE_PIXBUF_ANIMATION,
                            CTK_PARAM_READWRITE);
 
   /**
@@ -777,7 +777,7 @@ ctk_image_new_from_animation (GdkPixbufAnimation *animation)
 {
   CtkImage *image;
 
-  g_return_val_if_fail (GDK_IS_PIXBUF_ANIMATION (animation), NULL);
+  g_return_val_if_fail (CDK_IS_PIXBUF_ANIMATION (animation), NULL);
   
   image = g_object_new (CTK_TYPE_IMAGE, NULL);
 
@@ -991,8 +991,8 @@ ctk_image_set_from_file   (CtkImage    *image,
   g_object_thaw_notify (G_OBJECT (image));
 }
 
-#ifndef GDK_PIXBUF_MAGIC_NUMBER
-#define GDK_PIXBUF_MAGIC_NUMBER (0x47646b50)    /* 'CdkP' */
+#ifndef CDK_PIXBUF_MAGIC_NUMBER
+#define CDK_PIXBUF_MAGIC_NUMBER (0x47646b50)    /* 'CdkP' */
 #endif
 
 static gboolean
@@ -1013,7 +1013,7 @@ resource_is_pixdata (const gchar *resource_path)
     goto out;
 
   magic = (stream[0] << 24) + (stream[1] << 16) + (stream[2] << 8) + stream[3];
-  if (magic == GDK_PIXBUF_MAGIC_NUMBER)
+  if (magic == CDK_PIXBUF_MAGIC_NUMBER)
     ret = TRUE;
 
 out:
@@ -1096,7 +1096,7 @@ ctk_image_set_from_pixbuf (CtkImage  *image,
 
   g_return_if_fail (CTK_IS_IMAGE (image));
   g_return_if_fail (pixbuf == NULL ||
-                    GDK_IS_PIXBUF (pixbuf));
+                    CDK_IS_PIXBUF (pixbuf));
 
   priv = image->priv;
 
@@ -1205,7 +1205,7 @@ ctk_image_set_from_animation (CtkImage           *image,
 
   g_return_if_fail (CTK_IS_IMAGE (image));
   g_return_if_fail (animation == NULL ||
-                    GDK_IS_PIXBUF_ANIMATION (animation));
+                    CDK_IS_PIXBUF_ANIMATION (animation));
 
   priv = image->priv;
 

@@ -790,7 +790,7 @@ set_color_icon (CdkDragContext *context,
   GdkPixbuf *pixbuf;
   guint32 pixel;
 
-  pixbuf = cdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE,
+  pixbuf = cdk_pixbuf_new (CDK_COLORSPACE_RGB, FALSE,
                            8, 48, 32);
 
   pixel = (((UNSCALE (colors[COLORSEL_RED])   & 0xff00) << 16) |
@@ -1679,7 +1679,7 @@ make_picker_cursor (CdkScreen *screen)
       GdkPixbuf *pixbuf;
 
       pixbuf = cdk_pixbuf_new_from_data (dropper_bits,
-                                         GDK_COLORSPACE_RGB, TRUE, 8,
+                                         CDK_COLORSPACE_RGB, TRUE, 8,
                                          DROPPER_WIDTH, DROPPER_HEIGHT,
                                          DROPPER_STRIDE,
                                          NULL, NULL);

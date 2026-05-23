@@ -1563,7 +1563,7 @@ create_show_processes_dialog (CtkMountOperation *op,
                     op);
 
   list_store = ctk_list_store_new (3,
-                                   GDK_TYPE_PIXBUF,
+                                   CDK_TYPE_PIXBUF,
                                    G_TYPE_STRING,
                                    G_TYPE_INT);
 
