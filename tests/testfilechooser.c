@@ -142,7 +142,7 @@ size_prepared_cb (GdkPixbufLoader *loader,
 		width = des_width;
 	}
 
-	gdk_pixbuf_loader_set_size (loader, width, height);
+	cdk_pixbuf_loader_set_size (loader, width, height);
 }
 
 GdkPixbuf *
@@ -189,9 +189,9 @@ my_new_from_file_at_size (const char *filename,
 		return NULL;
         }
 
-	loader = gdk_pixbuf_loader_new ();
+	loader = cdk_pixbuf_loader_new ();
 #ifdef DONT_PRESERVE_ASPECT
-	gdk_pixbuf_loader_set_size (loader, width, height);
+	cdk_pixbuf_loader_set_size (loader, width, height);
 #else
 	info[0] = width;
 	info[1] = height;
@@ -201,8 +201,8 @@ my_new_from_file_at_size (const char *filename,
 	while (!feof (f)) {
 		length = fread (buffer, 1, sizeof (buffer), f);
 		if (length > 0)
-			if (!gdk_pixbuf_loader_write (loader, buffer, length, error)) {
-			        gdk_pixbuf_loader_close (loader, NULL);
+			if (!cdk_pixbuf_loader_write (loader, buffer, length, error)) {
+			        cdk_pixbuf_loader_close (loader, NULL);
 				fclose (f);
 				g_object_unref (loader);
 				return NULL;
@@ -212,12 +212,12 @@ my_new_from_file_at_size (const char *filename,
 	fclose (f);
 
 	g_assert (*error == NULL);
-	if (!gdk_pixbuf_loader_close (loader, error)) {
+	if (!cdk_pixbuf_loader_close (loader, error)) {
 		g_object_unref (loader);
 		return NULL;
 	}
 
-	pixbuf = gdk_pixbuf_loader_get_pixbuf (loader);
+	pixbuf = cdk_pixbuf_loader_get_pixbuf (loader);
 
 	if (!pixbuf) {
 		g_object_unref (loader);

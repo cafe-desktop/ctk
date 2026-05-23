@@ -189,7 +189,7 @@
 189|Kristian Rietveld|krietvel|RT @krietvel: Just pushed the last patch that finishes the transition of the OS X backend to the new rendering goodness. #ctk|1286297494|0|CTKtoolkit|0|1
 190|CTK+ and friends|CTKtoolkit|ANNOUNCE: ctkmm 2.91.0 (#C++ bindings) released: http://mail.gnome.org/archives/ctkmm-list/2010-October/msg00000.html #ctk|1286128646|0||0|1
 191|CTK+ and friends|CTKtoolkit|CTK+ 2.91.0 (unstable) released: http://ur1.ca/1xbzr The rendering cleanup work has landed. Porting guide here: http://ur1.ca/1xbzs #ctk|1286073059|0||0|0
-192|CTK+ and friends|CTKtoolkit|Anyone up to the challenge of writing a WebP gdkpixbuf loader?|1285950573|0||0|3
+192|CTK+ and friends|CTKtoolkit|Anyone up to the challenge of writing a WebP cdkpixbuf loader?|1285950573|0||0|3
 193|Clutter Toolkit|cluttertoolkit|RT @cluttertoolkit: Clutter 1.4.0 - new stable release! grab it while it's hot, on www.clutter-project.org|1285731448|0|CTKtoolkit|0|10
 194|CTK+ and friends|CTKtoolkit|We strongly recommend not using PyCTK for new projects and to port existing applications from #PyCTK to #PyGObject #python #ctk|1285721997|0||5|39
 195|CTK+ and friends|CTKtoolkit|ANNOUNCE: PyGObject 2.26.0 released:http://mail.gnome.org/archives/python-hackers-list/2010-September/msg00019.html #ctk #python #bindings|1285721968|0||0|0
@@ -246,7 +246,7 @@
 246|CTK+ and friends|CTKtoolkit|#GSettings / #dconf is ready: http://mail.gnome.org/archives/desktop-devel-list/2010-June/msg00226.html . Please port your modules! #ctk|1277909398|0||0|1
 247|CTK+ and friends|CTKtoolkit|More work in height-for-width layout system for CTK+ : http://blogs.gnome.org/tvb/2010/06/30/ctk-learns-height-for-width-episode-ii/ #ctk|1277909313|0||0|0
 248|CTK+ and friends|CTKtoolkit|GLib 2.25.10 (unstable) released: http://ur1.ca/0ee7o WARNING: There have been API changes in GDBus. #ctk|1277685452|0||0|1
-249|CTK+ and friends|CTKtoolkit|gdk-pixbuf is now a standalone package: http://mail.gnome.org/archives/ctk-devel-list/2010-June/msg00172.html #ctk|1277685365|0||0|1
+249|CTK+ and friends|CTKtoolkit|cdk-pixbuf is now a standalone package: http://mail.gnome.org/archives/ctk-devel-list/2010-June/msg00172.html #ctk|1277685365|0||0|1
 250|CTK+ and friends|CTKtoolkit|CTK+ 2.90.4 (unstable) released: http://mail.gnome.org/archives/ctk-devel-list/2010-June/msg00182.html #ctk|1277685274|0||0|0
 251|CTK+ and friends|CTKtoolkit|CTK+ 2.21.3 (unstable) released: http://mail.gnome.org/archives/ctk-devel-list/2010-June/msg00183.html #ctk|1277685237|0||0|0
 252|CTK+ and friends|CTKtoolkit|We are open to fix API that make the life of #bindings harder but only by addition+rename, or addition+deprecation. File bugs, please #ctk|1277312749|0||0|0

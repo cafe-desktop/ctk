@@ -5154,7 +5154,7 @@ msgstr "Kösterilecek işaretçik kümesi"
 msgid "Filename"
 msgstr "Dosye adı"
 
-# gdk-pixbuf/io-tiff.c:411
+# cdk-pixbuf/io-tiff.c:411
 #: ctk/ctkimage.c:271 ctk/ctkstatusicon.c:235
 msgid "Filename to load and display"
 msgstr "Yüklenip kösterilecek dosye adı"

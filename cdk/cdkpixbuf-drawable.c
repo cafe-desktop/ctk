@@ -22,12 +22,12 @@
 
 #include "config.h"
 
-#include "gdkpixbuf.h"
+#include "cdkpixbuf.h"
 
 #include "cdkwindow.h"
 #include "cdkinternals.h"
 
-#include <gdk-pixbuf/gdk-pixbuf.h>
+#include <cdk-pixbuf/cdk-pixbuf.h>
 
 /**
  * SECTION:pixbufs
@@ -43,7 +43,7 @@
 
 
 /**
- * gdk_pixbuf_get_from_window:
+ * cdk_pixbuf_get_from_window:
  * @window: Source window
  * @src_x: Source X coordinate within @window
  * @src_y: Source Y coordinate within @window
@@ -81,7 +81,7 @@
  *     reference count of 1, or %NULL on error
  */
 GdkPixbuf *
-gdk_pixbuf_get_from_window (CdkWindow *src,
+cdk_pixbuf_get_from_window (CdkWindow *src,
                             gint       src_x,
                             gint       src_y,
                             gint       width,
@@ -119,7 +119,7 @@ gdk_pixbuf_get_from_window (CdkWindow *src,
   cairo_paint (cr);
   cairo_destroy (cr);
 
-  dest = gdk_pixbuf_get_from_surface (copy, 0, 0, width * scale, height * scale);
+  dest = cdk_pixbuf_get_from_surface (copy, 0, 0, width * scale, height * scale);
 
   cairo_surface_destroy (copy);
   cairo_surface_destroy (surface);
@@ -235,7 +235,7 @@ convert_no_alpha (guchar *dest_data,
 }
 
 /**
- * gdk_pixbuf_get_from_surface:
+ * cdk_pixbuf_get_from_surface:
  * @surface: surface to copy from
  * @src_x: Source X coordinate within @surface
  * @src_y: Source Y coordinate within @surface
@@ -245,7 +245,7 @@ convert_no_alpha (guchar *dest_data,
  * Transfers image data from a #cairo_surface_t and converts it to an RGB(A)
  * representation inside a #GdkPixbuf. This allows you to efficiently read
  * individual pixels from cairo surfaces. For #CdkWindows, use
- * gdk_pixbuf_get_from_window() instead.
+ * cdk_pixbuf_get_from_window() instead.
  *
  * This function will create an RGB pixbuf with 8 bits per channel.
  * The pixbuf will contain an alpha channel if the @surface contains one.
@@ -254,7 +254,7 @@ convert_no_alpha (guchar *dest_data,
  *     reference count of 1, or %NULL on error
  */
 GdkPixbuf *
-gdk_pixbuf_get_from_surface  (cairo_surface_t *surface,
+cdk_pixbuf_get_from_surface  (cairo_surface_t *surface,
                               gint             src_x,
                               gint             src_y,
                               gint             width,
@@ -268,7 +268,7 @@ gdk_pixbuf_get_from_surface  (cairo_surface_t *surface,
   g_return_val_if_fail (width > 0 && height > 0, NULL);
 
   content = cairo_surface_get_content (surface) | CAIRO_CONTENT_COLOR;
-  dest = gdk_pixbuf_new (GDK_COLORSPACE_RGB,
+  dest = cdk_pixbuf_new (GDK_COLORSPACE_RGB,
                          !!(content & CAIRO_CONTENT_ALPHA),
                          8,
                          width, height);
@@ -292,16 +292,16 @@ gdk_pixbuf_get_from_surface  (cairo_surface_t *surface,
       return NULL;
     }
 
-  if (gdk_pixbuf_get_has_alpha (dest))
-    convert_alpha (gdk_pixbuf_get_pixels (dest),
-                   gdk_pixbuf_get_rowstride (dest),
+  if (cdk_pixbuf_get_has_alpha (dest))
+    convert_alpha (cdk_pixbuf_get_pixels (dest),
+                   cdk_pixbuf_get_rowstride (dest),
                    cairo_image_surface_get_data (surface),
                    cairo_image_surface_get_stride (surface),
                    src_x, src_y,
                    width, height);
   else
-    convert_no_alpha (gdk_pixbuf_get_pixels (dest),
-                      gdk_pixbuf_get_rowstride (dest),
+    convert_no_alpha (cdk_pixbuf_get_pixels (dest),
+                      cdk_pixbuf_get_rowstride (dest),
                       cairo_image_surface_get_data (surface),
                       cairo_image_surface_get_stride (surface),
                       src_x, src_y,

@@ -23,7 +23,7 @@ RUN apt-get update -qq && apt-get install --no-install-recommends -qq -y \
     libepoxy-dev \
     libfontconfig1-dev \
     libfreetype6-dev \
-    libgdk-pixbuf2.0-dev \
+    libcdk-pixbuf2.0-dev \
     libgirepository1.0-dev \
     libglib2.0-dev \
     libharfbuzz-dev \

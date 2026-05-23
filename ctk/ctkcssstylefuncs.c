@@ -24,7 +24,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <gdk-pixbuf/gdk-pixbuf.h>
+#include <cdk-pixbuf/cdk-pixbuf.h>
 #include <cairo-gobject.h>
 
 #include "ctkcsscolorvalueprivate.h"
@@ -743,7 +743,7 @@ pattern_value_parse (CtkCssParser *parser,
       path = g_file_get_path (file);
       g_object_unref (file);
 
-      pixbuf = gdk_pixbuf_new_from_file (path, &error);
+      pixbuf = cdk_pixbuf_new_from_file (path, &error);
       g_free (path);
       if (pixbuf == NULL)
         {
@@ -756,8 +756,8 @@ pattern_value_parse (CtkCssParser *parser,
       cairo_surface_destroy (surface);
 
       cairo_matrix_init_scale (&matrix,
-                               gdk_pixbuf_get_width (pixbuf),
-                               gdk_pixbuf_get_height (pixbuf));
+                               cdk_pixbuf_get_width (pixbuf),
+                               cdk_pixbuf_get_height (pixbuf));
       cairo_pattern_set_matrix (pattern, &matrix);
 
       g_object_unref (pixbuf);

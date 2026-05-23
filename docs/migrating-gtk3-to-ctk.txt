@@ -9,7 +9,7 @@ gtk -> ctk
 GTK -> CTK
 Gtk -> Ctk
 
-gdk -> cdk
+cdk -> cdk
 GDK -> CDK
 Gdk -> Cdk
 
@@ -28,10 +28,10 @@ CTK_DOC -> GTK_DOC
 
 3. CTK can build with GdkPixbuf, if you have related code, you must rename:
 
-cdkpixbuf -> gdkpixbuf
-cdk-pixbuf -> gdk-pixbuf
+cdkpixbuf -> cdkpixbuf
+cdk-pixbuf -> cdk-pixbuf
 CdkPixbuf -> GdkPixbuf
-cdk_pixbuf -> gdk_pixbuf
+cdk_pixbuf -> cdk_pixbuf
 CDK-Pixbuf -> GDK-Pixbuf
 CDK_PIXBUF -> GDK_PIXBUF
 CDKPIXBUF -> GDKPIXBUF

@@ -37,14 +37,14 @@ create_color_pixbuf (const char *color)
         if (!cdk_rgba_parse (&rgba, color))
                 return NULL;
 
-        pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB,
+        pixbuf = cdk_pixbuf_new (GDK_COLORSPACE_RGB,
                                  FALSE, 8,
                                  16, 16);
 
-        p = pixels = gdk_pixbuf_get_pixels (pixbuf);
+        p = pixels = cdk_pixbuf_get_pixels (pixbuf);
 
-        num = gdk_pixbuf_get_width (pixbuf) *
-                gdk_pixbuf_get_height (pixbuf);
+        num = cdk_pixbuf_get_width (pixbuf) *
+                cdk_pixbuf_get_height (pixbuf);
 
         for (x = 0; x < num; x++) {
                 p[0] = rgba.red * 255;

@@ -409,7 +409,7 @@ scaled_from_pixdata (guchar *pixdata,
   GdkPixbuf *src;
   GdkPixbuf *dest;
 
-  src = gdk_pixbuf_new_from_data (pixdata,
+  src = cdk_pixbuf_new_from_data (pixdata,
                                   GDK_COLORSPACE_RGB,
                                   TRUE,
                                   8,
@@ -427,12 +427,12 @@ scaled_from_pixdata (guchar *pixdata,
 
       size = MAX (w, h);
 
-      tmp = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, size, size);
+      tmp = cdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, size, size);
 
       if (tmp != NULL)
         {
-          gdk_pixbuf_fill (tmp, 0);
-          gdk_pixbuf_copy_area (src, 0, 0, w, h,
+          cdk_pixbuf_fill (tmp, 0);
+          cdk_pixbuf_copy_area (src, 0, 0, w, h,
                                 tmp,
                                 (size - w) / 2, (size - h) / 2);
 
@@ -443,7 +443,7 @@ scaled_from_pixdata (guchar *pixdata,
 
   if (w != new_w || h != new_h)
     {
-      dest = gdk_pixbuf_scale_simple (src, new_w, new_h, GDK_INTERP_BILINEAR);
+      dest = cdk_pixbuf_scale_simple (src, new_w, new_h, GDK_INTERP_BILINEAR);
 
       g_object_unref (G_OBJECT (src));
     }

@@ -1,5 +1,5 @@
 
-/* testpixbuf -- test program for gdk-pixbuf code
+/* testpixbuf -- test program for cdk-pixbuf code
  * Copyright (C) 1999 Mark Crichton, Larry Ewing
  *
  * This library is free software; you can redistribute it and/or
@@ -53,7 +53,7 @@ destroy_context (gpointer data)
 
   if (lc->pixbuf_loader)
     {
-      gdk_pixbuf_loader_close (lc->pixbuf_loader, NULL);
+      cdk_pixbuf_loader_close (lc->pixbuf_loader, NULL);
       g_object_unref (lc->pixbuf_loader);
     }
   
@@ -89,18 +89,18 @@ progressive_prepared_callback (GdkPixbufLoader* loader,
 
   image = CTK_WIDGET (data);
     
-  pixbuf = gdk_pixbuf_loader_get_pixbuf (loader);
+  pixbuf = cdk_pixbuf_loader_get_pixbuf (loader);
 
   /* Avoid displaying random memory contents, since the pixbuf
    * isn't filled in yet.
    */
-  gdk_pixbuf_fill (pixbuf, 0xaaaaaaff);
+  cdk_pixbuf_fill (pixbuf, 0xaaaaaaff);
 
   /* Could set the pixbuf instead, if we only wanted to display
    * static images.
    */
   ctk_image_set_from_animation (CTK_IMAGE (image),
-                                gdk_pixbuf_loader_get_animation (loader));
+                                cdk_pixbuf_loader_get_animation (loader));
 }
 
 static void
@@ -124,7 +124,7 @@ progressive_updated_callback (GdkPixbufLoader *loader G_GNUC_UNUSED,
    */
 
   /* We only really need to redraw if the image's animation iterator
-   * is gdk_pixbuf_animation_iter_on_currently_loading_frame(), but
+   * is cdk_pixbuf_animation_iter_on_currently_loading_frame(), but
    * who cares.
    */
   
@@ -177,7 +177,7 @@ progressive_timeout (gpointer data)
           return FALSE; /* uninstall the timeout */
         }
 
-      if (!gdk_pixbuf_loader_write (lc->pixbuf_loader,
+      if (!cdk_pixbuf_loader_write (lc->pixbuf_loader,
                                     buf, bytes_read,
                                     &error))
         {
@@ -215,7 +215,7 @@ progressive_timeout (gpointer data)
            * it was incomplete.
            */
           error = NULL;
-          if (!gdk_pixbuf_loader_close (lc->pixbuf_loader,
+          if (!cdk_pixbuf_loader_close (lc->pixbuf_loader,
                                         &error))
             {
               CtkWidget *dialog;
@@ -274,12 +274,12 @@ progressive_timeout (gpointer data)
 
       if (lc->pixbuf_loader)
         {
-          gdk_pixbuf_loader_close (lc->pixbuf_loader, NULL);
+          cdk_pixbuf_loader_close (lc->pixbuf_loader, NULL);
           g_object_unref (lc->pixbuf_loader);
           lc->pixbuf_loader = NULL;
         }
       
-      lc->pixbuf_loader = gdk_pixbuf_loader_new ();
+      lc->pixbuf_loader = cdk_pixbuf_loader_new ();
       
       g_signal_connect (lc->pixbuf_loader, "area_prepared",
 			G_CALLBACK (progressive_prepared_callback), image);

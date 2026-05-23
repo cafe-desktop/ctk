@@ -22,7 +22,7 @@ cdk_sources = files(
   'cdkframeclock.c',
   'cdkframeclockidle.c',
   'cdkpango.c',
-  'gdkpixbuf-drawable.c',
+  'cdkpixbuf-drawable.c',
   'cdkprofiler.c',
   'cdkproperty.c',
   'cdkrectangle.c',
@@ -63,7 +63,7 @@ cdk_gir_public_headers = files(
   'cdkmonitor.h',
   'cdkpango.h',
   'cdkframeclock.h',
-  'gdkpixbuf.h',
+  'cdkpixbuf.h',
   'cdkprivate.h',
   'cdkproperty.h',
   'cdkrectangle.h',
@@ -308,7 +308,7 @@ if build_gir
   cdk_gir_inc = [ 'cairo-1.0', 'Gio-2.0', ]
 
   if pixbuf_dep.type_name() == 'internal'
-    cdk_gir_inc += subproject('gdk-pixbuf').get_variable('gdkpixbuf_gir').get(0)
+    cdk_gir_inc += subproject('cdk-pixbuf').get_variable('cdkpixbuf_gir').get(0)
   else
     cdk_gir_inc += 'GdkPixbuf-2.0'
   endif

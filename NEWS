@@ -33,7 +33,7 @@ Overview of Changes in CTK+ 3.25.6
   * build: use 'm4_pattern_allow' with 'PKG_CONFIG_FOR_BUILD'
   * ctkprintoperation-win32: avoid duplicate condition
   * ctk-demo,main: reduce the scope of variable
-  * gdkpixbufutils: remove useless assignment
+  * cdkpixbufutils: remove useless assignment
   * fnmatch: avoid redundant initialization in variable
   * ctkwin32theme: declare some parameters as const
   * testtreecolumns: Fix memory leak
@@ -220,5 +220,5 @@ Overview of Changes in CTK+ 3.25.0
  - Forked from GTK+ 3.24.24
  - ci enabled with Github Actions
  - Renaming functions:
-     gtk -> ctk, gdk -> cdk, gail -> cail, broadwayd -> cdkbroadwayd
+     gtk -> ctk, cdk -> cdk, gail -> cail, broadwayd -> cdkbroadwayd
  - Apply debian patches from [gtk+3.0_3.24.24-4.debian.tar.xz]
