@@ -1464,10 +1464,10 @@ theme_sources = 				\
 resource_files = $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(builddir)/ctk.gresource.xml)
 
 ctkresources.h: ctk.gresource.xml
-	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) $< \
+	$(AM_V_GEN) GDK_PIXBUF_PIXDATA=cdk-pixbuf-pixdata $(GLIB_COMPILE_RESOURCES) $< \
 		--target=$@ --sourcedir=$(srcdir) --c-name _ctk --generate-header --manual-register --internal
 ctkresources.c: ctk.gresource.xml $(resource_files)
-	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) $< \
+	$(AM_V_GEN) GDK_PIXBUF_PIXDATA=cdk-pixbuf-pixdata $(GLIB_COMPILE_RESOURCES) $< \
 		--target=$@ --sourcedir=$(srcdir) --c-name _ctk --generate-source --manual-register --internal
 
 ctkprivatetypebuiltins.h: stamp-ctkprivatetypebuiltins.h
