@@ -3796,7 +3796,7 @@ apply_emblems_to_pixbuf (GdkPixbuf   *pixbuf,
             }
 
           cdk_pixbuf_composite (emblem, icon, x, y, ew, eh, x, y,
-                                scale, scale, GDK_INTERP_BILINEAR, 255);
+                                scale, scale, CDK_INTERP_BILINEAR, 255);
        }
    }
 
@@ -4024,7 +4024,7 @@ icon_info_ensure_scale_and_pixbuf (CtkIconInfo *icon_info)
       icon_info->pixbuf = cdk_pixbuf_scale_simple (source_pixbuf,
                                                    MAX (1, 0.5 + image_width * icon_info->scale),
                                                    MAX (1, 0.5 + image_height * icon_info->scale),
-                                                   GDK_INTERP_BILINEAR);
+                                                   CDK_INTERP_BILINEAR);
       g_object_unref (source_pixbuf);
     }
 
@@ -4376,7 +4376,7 @@ ctk_icon_theme_color_symbolic_pixbuf (GdkPixbuf     *symbolic,
   width = cdk_pixbuf_get_width (symbolic);
   height = cdk_pixbuf_get_height (symbolic);
 
-  colored = cdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, width, height);
+  colored = cdk_pixbuf_new (CDK_COLORSPACE_RGB, TRUE, 8, width, height);
 
   src_stride = cdk_pixbuf_get_rowstride (symbolic);
   src_data = cdk_pixbuf_get_pixels (symbolic);
@@ -5353,7 +5353,7 @@ ctk_icon_theme_add_builtin_icon (const gchar *icon_name,
   gpointer key;
 
   g_return_if_fail (icon_name != NULL);
-  g_return_if_fail (GDK_IS_PIXBUF (pixbuf));
+  g_return_if_fail (CDK_IS_PIXBUF (pixbuf));
   
   if (!icon_theme_builtin_icons)
     icon_theme_builtin_icons = g_hash_table_new (g_str_hash, g_str_equal);
@@ -5513,11 +5513,11 @@ ctk_icon_theme_lookup_by_gicon_for_scale (CtkIconTheme       *icon_theme,
   g_return_val_if_fail (G_IS_ICON (icon), NULL);
   g_warn_if_fail ((flags & CTK_ICON_LOOKUP_GENERIC_FALLBACK) == 0);
 
-  if (GDK_IS_PIXBUF (icon))
+  if (CDK_IS_PIXBUF (icon))
     {
       GdkPixbuf *pixbuf;
 
-      pixbuf = GDK_PIXBUF (icon);
+      pixbuf = CDK_PIXBUF (icon);
 
       if ((flags & CTK_ICON_LOOKUP_FORCE_SIZE) != 0)
         {
@@ -5533,7 +5533,7 @@ ctk_icon_theme_lookup_by_gicon_for_scale (CtkIconTheme       *icon_theme,
           scaled = cdk_pixbuf_scale_simple (pixbuf,
                                             0.5 + width * pixbuf_scale,
                                             0.5 + height * pixbuf_scale,
-                                            GDK_INTERP_BILINEAR);
+                                            CDK_INTERP_BILINEAR);
 
           info = ctk_icon_info_new_for_pixbuf (icon_theme, scaled);
 
@@ -5630,7 +5630,7 @@ ctk_icon_info_new_for_pixbuf (CtkIconTheme *icon_theme,
   CtkIconInfo *info;
 
   g_return_val_if_fail (CTK_IS_ICON_THEME (icon_theme), NULL);
-  g_return_val_if_fail (GDK_IS_PIXBUF (pixbuf), NULL);
+  g_return_val_if_fail (CDK_IS_PIXBUF (pixbuf), NULL);
 
   info = icon_info_new (ICON_THEME_DIR_UNTHEMED, 0, 1);
   info->pixbuf = g_object_ref (pixbuf);

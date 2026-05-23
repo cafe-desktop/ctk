@@ -3945,7 +3945,7 @@ cdk_x11_window_set_icon_list (CdkWindow *window,
   while (l)
     {
       pixbuf = l->data;
-      g_return_if_fail (GDK_IS_PIXBUF (pixbuf));
+      g_return_if_fail (CDK_IS_PIXBUF (pixbuf));
 
       width = cdk_pixbuf_get_width (pixbuf);
       height = cdk_pixbuf_get_height (pixbuf);

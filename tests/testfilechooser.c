@@ -227,8 +227,8 @@ my_new_from_file_at_size (const char *filename,
 			return NULL;
 
 		g_set_error (error,
-                             GDK_PIXBUF_ERROR,
-                             GDK_PIXBUF_ERROR_FAILED,
+                             CDK_PIXBUF_ERROR,
+                             CDK_PIXBUF_ERROR_FAILED,
                              _("Failed to load image '%s': reason not known, probably a corrupt image file"),
                              filename);
 		return NULL;

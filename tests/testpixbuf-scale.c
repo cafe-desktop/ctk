@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-GdkInterpType interp_type = GDK_INTERP_BILINEAR;
+GdkInterpType interp_type = CDK_INTERP_BILINEAR;
 int overall_alpha = 255;
 GdkPixbuf *pixbuf;
 CtkWidget *darea;
@@ -13,10 +13,10 @@ void
 set_interp_type (CtkWidget *widget,
 		 gpointer   data G_GNUC_UNUSED)
 {
-  guint types[] = { GDK_INTERP_NEAREST,
-                    GDK_INTERP_BILINEAR,
-                    GDK_INTERP_TILES,
-                    GDK_INTERP_HYPER };
+  guint types[] = { CDK_INTERP_NEAREST,
+                    CDK_INTERP_BILINEAR,
+                    CDK_INTERP_TILES,
+                    CDK_INTERP_HYPER };
 
   interp_type = types[ctk_combo_box_get_active (CTK_COMBO_BOX (widget))];
   ctk_widget_queue_draw (darea);
@@ -44,7 +44,7 @@ draw_cb (CtkWidget *widget,
   width = ctk_widget_get_allocated_width (widget);
   height = ctk_widget_get_allocated_height (widget);
 
-  dest = cdk_pixbuf_new (GDK_COLORSPACE_RGB, FALSE, 8, width, height);
+  dest = cdk_pixbuf_new (CDK_COLORSPACE_RGB, FALSE, 8, width, height);
 
   cdk_pixbuf_composite_color (pixbuf, dest,
 			      0, 0, width, height,

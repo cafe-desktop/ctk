@@ -840,7 +840,7 @@ ctk_window_class_init (CtkWindowClass *klass)
       g_param_spec_object ("icon",
                            P_("Icon"),
                            P_("Icon for this window"),
-                           GDK_TYPE_PIXBUF,
+                           CDK_TYPE_PIXBUF,
                            CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY);
 
   /**
@@ -4597,7 +4597,7 @@ icon_from_list (GList *list,
     }
 
   if (best == NULL)
-    best = cdk_pixbuf_scale_simple (GDK_PIXBUF (list->data), size, size, GDK_INTERP_BILINEAR);
+    best = cdk_pixbuf_scale_simple (CDK_PIXBUF (list->data), size, size, CDK_INTERP_BILINEAR);
 
   return best;
 }
@@ -4783,7 +4783,7 @@ ctk_window_set_icon (CtkWindow  *window,
   GList *list;
   
   g_return_if_fail (CTK_IS_WINDOW (window));
-  g_return_if_fail (icon == NULL || GDK_IS_PIXBUF (icon));
+  g_return_if_fail (icon == NULL || CDK_IS_PIXBUF (icon));
 
   list = NULL;
 
@@ -4889,7 +4889,7 @@ ctk_window_get_icon (CtkWindow  *window)
 
   info = get_icon_info (window);
   if (info && info->icon_list)
-    return GDK_PIXBUF (info->icon_list->data);
+    return CDK_PIXBUF (info->icon_list->data);
   else
     return NULL;
 }
@@ -5020,7 +5020,7 @@ ctk_window_set_default_icon (GdkPixbuf *icon)
 {
   GList *list;
   
-  g_return_if_fail (GDK_IS_PIXBUF (icon));
+  g_return_if_fail (CDK_IS_PIXBUF (icon));
 
   list = g_list_prepend (NULL, icon);
   ctk_window_set_default_icon_list (list);

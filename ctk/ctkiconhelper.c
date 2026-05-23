@@ -392,7 +392,7 @@ ensure_surface_from_pixbuf (CtkIconHelper *self,
                        &width, &height, &scale))
     pixbuf = cdk_pixbuf_scale_simple (orig_pixbuf,
                                       width, height,
-                                      GDK_INTERP_BILINEAR);
+                                      CDK_INTERP_BILINEAR);
   else
     pixbuf = g_object_ref (orig_pixbuf);
 

@@ -24,7 +24,7 @@
 
 #include "config.h"
 
-#define GDK_PIXBUF_ENABLE_BACKEND
+#define CDK_PIXBUF_ENABLE_BACKEND
 #include <cdk-pixbuf/cdk-pixbuf.h>
 
 #include "cdkcursor.h"
@@ -343,7 +343,7 @@ cdk_cursor_new_from_pixbuf (CdkDisplay *display,
   CdkCursor *cursor;
  
   g_return_val_if_fail (CDK_IS_DISPLAY (display), NULL);
-  g_return_val_if_fail (GDK_IS_PIXBUF (pixbuf), NULL);
+  g_return_val_if_fail (CDK_IS_PIXBUF (pixbuf), NULL);
 
   if (x == -1 && (option = cdk_pixbuf_get_option (pixbuf, "x_hot")))
     {
@@ -482,7 +482,7 @@ cdk_cursor_get_image (CdkCursor *cursor)
       old = pixbuf;
       pixbuf = cdk_pixbuf_scale_simple (old,
 					w / x_scale, h / y_scale,
-					GDK_INTERP_HYPER);
+					CDK_INTERP_HYPER);
       g_object_unref (old);
     }
 

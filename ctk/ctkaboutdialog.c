@@ -550,7 +550,7 @@ ctk_about_dialog_class_init (CtkAboutDialogClass *klass)
     g_param_spec_object ("logo",
                          P_("Logo"),
                          P_("A logo for the about box. If this is not set, it defaults to ctk_window_get_default_icon_list()"),
-                         GDK_TYPE_PIXBUF,
+                         CDK_TYPE_PIXBUF,
                          CTK_PARAM_READWRITE | G_PARAM_EXPLICIT_NOTIFY);
 
   /**
@@ -1785,7 +1785,7 @@ ctk_about_dialog_set_logo (CtkAboutDialog *about,
       if (pixbufs != NULL)
         {
           ctk_image_set_from_pixbuf (CTK_IMAGE (priv->logo_image),
-                                     GDK_PIXBUF (pixbufs->data));
+                                     CDK_PIXBUF (pixbufs->data));
 
           g_list_free (pixbufs);
         }

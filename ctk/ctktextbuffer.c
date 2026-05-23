@@ -344,7 +344,7 @@ ctk_text_buffer_class_init (CtkTextBufferClass *klass)
                   G_TYPE_NONE,
                   2,
                   CTK_TYPE_TEXT_ITER | G_SIGNAL_TYPE_STATIC_SCOPE,
-                  GDK_TYPE_PIXBUF);
+                  CDK_TYPE_PIXBUF);
   g_signal_set_va_marshaller (signals[INSERT_PIXBUF],
                               G_TYPE_FROM_CLASS (klass),
                               _ctk_marshal_VOID__BOXED_OBJECTv);
@@ -1943,7 +1943,7 @@ ctk_text_buffer_insert_pixbuf (CtkTextBuffer *buffer,
 {
   g_return_if_fail (CTK_IS_TEXT_BUFFER (buffer));
   g_return_if_fail (iter != NULL);
-  g_return_if_fail (GDK_IS_PIXBUF (pixbuf));
+  g_return_if_fail (CDK_IS_PIXBUF (pixbuf));
   g_return_if_fail (ctk_text_iter_get_buffer (iter) == buffer);
   
   g_signal_emit (buffer, signals[INSERT_PIXBUF], 0,

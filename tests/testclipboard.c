@@ -42,7 +42,7 @@ image_request_cb (CtkClipboard *clipboard G_GNUC_UNUSED,
 
       factor = MAX ((SIZE / height), (SIZE / width));
 
-      copy = cdk_pixbuf_scale_simple (pixbuf, width * factor, height * factor, GDK_INTERP_BILINEAR);
+      copy = cdk_pixbuf_scale_simple (pixbuf, width * factor, height * factor, CDK_INTERP_BILINEAR);
       ctk_image_set_from_pixbuf (CTK_IMAGE (image), copy);
       g_object_unref (copy);
       str = g_strdup_printf ("<b>Image</b> %d \342\234\225 %d", width, height);
