@@ -4,7 +4,7 @@ static void
 test_set_source_big_pixbuf (void)
 {
   cairo_surface_t *surface;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   cairo_t *cr;
 
 #define WAY_TOO_BIG 65540

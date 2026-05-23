@@ -39,7 +39,7 @@ struct _CtkImageDefinitionPixbuf {
   CtkImageType type;
   gint ref_count;
 
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   int scale;
 };
 
@@ -61,7 +61,7 @@ struct _CtkImageDefinitionAnimation {
   CtkImageType type;
   gint ref_count;
 
-  GdkPixbufAnimation *animation;
+  CdkPixbufAnimation *animation;
   int scale;
 };
 
@@ -134,7 +134,7 @@ ctk_image_definition_alloc (CtkImageType type)
 }
 
 CtkImageDefinition *
-ctk_image_definition_new_pixbuf (GdkPixbuf *pixbuf,
+ctk_image_definition_new_pixbuf (CdkPixbuf *pixbuf,
                                  int        scale)
 {
   CtkImageDefinition *def;
@@ -184,7 +184,7 @@ ctk_image_definition_new_icon_set (CtkIconSet *icon_set)
 }
 
 CtkImageDefinition *
-ctk_image_definition_new_animation (GdkPixbufAnimation *animation,
+ctk_image_definition_new_animation (CdkPixbufAnimation *animation,
                                     int                 scale)
 {
   CtkImageDefinition *def;
@@ -344,7 +344,7 @@ ctk_image_definition_get_scale (const CtkImageDefinition *def)
     }
 }
 
-GdkPixbuf *
+CdkPixbuf *
 ctk_image_definition_get_pixbuf (const CtkImageDefinition *def)
 {
   if (def->type != CTK_IMAGE_PIXBUF)
@@ -371,7 +371,7 @@ ctk_image_definition_get_icon_set (const CtkImageDefinition *def)
   return def->icon_set.icon_set;
 }
 
-GdkPixbufAnimation *
+CdkPixbufAnimation *
 ctk_image_definition_get_animation (const CtkImageDefinition *def)
 {
   if (def->type != CTK_IMAGE_ANIMATION)

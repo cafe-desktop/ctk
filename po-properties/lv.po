@@ -4241,8 +4241,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ctk/ctkimage.c:257 ctk/ctkstatusicon.c:227
-msgid "A GdkPixbuf to display"
-msgstr "GdkPixbuf, ko attēlot"
+msgid "A CdkPixbuf to display"
+msgstr "CdkPixbuf, ko attēlot"
 
 #: ctk/ctkimage.c:263
 msgid "Surface"
@@ -4296,8 +4296,8 @@ msgid "Animation"
 msgstr "Animācija"
 
 #: ctk/ctkimage.c:327
-msgid "GdkPixbufAnimation to display"
-msgstr "GdkPixbufAnimation, ko attēlot"
+msgid "CdkPixbufAnimation to display"
+msgstr "CdkPixbufAnimation, ko attēlot"
 
 #: ctk/ctkimage.c:371
 msgid "Resource"

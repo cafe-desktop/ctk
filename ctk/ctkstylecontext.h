@@ -1123,7 +1123,7 @@ CDK_AVAILABLE_IN_ALL
 CtkIconSet * ctk_style_context_lookup_icon_set (CtkStyleContext *context,
                                                 const gchar     *stock_id);
 CDK_AVAILABLE_IN_ALL
-GdkPixbuf  * ctk_icon_set_render_icon_pixbuf   (CtkIconSet      *icon_set,
+CdkPixbuf  * ctk_icon_set_render_icon_pixbuf   (CtkIconSet      *icon_set,
                                                 CtkStyleContext *context,
                                                 CtkIconSize      size);
 CDK_DEPRECATED_IN_3_10

@@ -8470,7 +8470,7 @@ ctk_entry_get_alignment (CtkEntry *entry)
  * ctk_entry_set_icon_from_pixbuf:
  * @entry: a #CtkEntry
  * @icon_pos: Icon position
- * @pixbuf: (allow-none): A #GdkPixbuf, or %NULL
+ * @pixbuf: (allow-none): A #CdkPixbuf, or %NULL
  *
  * Sets the icon shown in the specified position using a pixbuf.
  *
@@ -8481,7 +8481,7 @@ ctk_entry_get_alignment (CtkEntry *entry)
 void
 ctk_entry_set_icon_from_pixbuf (CtkEntry             *entry,
                                 CtkEntryIconPosition  icon_pos,
-                                GdkPixbuf            *pixbuf)
+                                CdkPixbuf            *pixbuf)
 {
   CtkEntryPrivate *priv;
   EntryIconInfo *icon_info;
@@ -8790,21 +8790,21 @@ ctk_entry_get_icon_activatable (CtkEntry             *entry,
  *
  * Unlike the other methods of setting and getting icon data, this
  * method will work regardless of whether the icon was set using a
- * #GdkPixbuf, a #GIcon, a stock item, or an icon name.
+ * #CdkPixbuf, a #GIcon, a stock item, or an icon name.
  *
- * Returns: (transfer none) (nullable): A #GdkPixbuf, or %NULL if no icon is
+ * Returns: (transfer none) (nullable): A #CdkPixbuf, or %NULL if no icon is
  *     set for this position.
  *
  * Since: 2.16
  */
-GdkPixbuf *
+CdkPixbuf *
 ctk_entry_get_icon_pixbuf (CtkEntry             *entry,
                            CtkEntryIconPosition  icon_pos)
 {
   CtkEntryPrivate *priv;
   EntryIconInfo *icon_info;
   cairo_surface_t *surface;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   int width, height;
 
   g_return_val_if_fail (CTK_IS_ENTRY (entry), NULL);

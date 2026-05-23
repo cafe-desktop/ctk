@@ -204,7 +204,7 @@ struct _CtkStyleClass
                                  CtkStateType            state_type);
 
 
-  GdkPixbuf * (* render_icon)   (CtkStyle               *style,
+  CdkPixbuf * (* render_icon)   (CtkStyle               *style,
                                  const CtkIconSource    *source,
                                  CtkTextDirection        direction,
                                  CtkStateType            state,
@@ -470,7 +470,7 @@ gboolean    ctk_style_lookup_color           (CtkStyle     *style,
                                               CdkColor     *color);
 
 CDK_AVAILABLE_IN_ALL
-GdkPixbuf*  ctk_style_render_icon     (CtkStyle            *style,
+CdkPixbuf*  ctk_style_render_icon     (CtkStyle            *style,
                                        const CtkIconSource *source,
                                        CtkTextDirection     direction,
                                        CtkStateType         state,
@@ -783,7 +783,7 @@ void       ctk_widget_class_path          (CtkWidget *widget,
                                            gchar    **path,
                                            gchar    **path_reversed);
 CDK_AVAILABLE_IN_ALL
-GdkPixbuf *ctk_widget_render_icon         (CtkWidget   *widget,
+CdkPixbuf *ctk_widget_render_icon         (CtkWidget   *widget,
                                            const gchar *stock_id,
                                            CtkIconSize  size,
                                            const gchar *detail);

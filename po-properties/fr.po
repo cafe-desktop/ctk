@@ -4389,8 +4389,8 @@ msgid "Pixbuf"
 msgstr "Pixbuf"
 
 #: ctk/ctkimage.c:257 ctk/ctkstatusicon.c:227
-msgid "A GdkPixbuf to display"
-msgstr "L’objet « GdkPixbuf » à afficher"
+msgid "A CdkPixbuf to display"
+msgstr "L’objet « CdkPixbuf » à afficher"
 
 #: ctk/ctkimage.c:263
 msgid "Surface"
@@ -4444,8 +4444,8 @@ msgid "Animation"
 msgstr "Animation"
 
 #: ctk/ctkimage.c:327
-msgid "GdkPixbufAnimation to display"
-msgstr "Objet « GdkPixbufAnimation » à afficher"
+msgid "CdkPixbufAnimation to display"
+msgstr "Objet « CdkPixbufAnimation » à afficher"
 
 #: ctk/ctkimage.c:371
 msgid "Resource"

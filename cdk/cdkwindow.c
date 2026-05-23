@@ -10687,7 +10687,7 @@ cdk_window_get_event_compression (CdkWindow *window)
 /**
  * cdk_window_set_icon_list:
  * @window: The #CdkWindow toplevel window to set the icon of.
- * @pixbufs: (transfer none) (element-type GdkPixbuf):
+ * @pixbufs: (transfer none) (element-type CdkPixbuf):
  *     A list of pixbufs, of different sizes.
  *
  * Sets a list of icons for the window. One of these will be used

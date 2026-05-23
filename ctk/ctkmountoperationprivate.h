@@ -40,7 +40,7 @@ gboolean _ctk_mount_operation_lookup_info         (CtkMountOperationLookupContex
                                                    gint                            size_pixels,
                                                    gchar                         **out_name,
                                                    gchar                         **out_command_line,
-                                                   GdkPixbuf                     **out_pixbuf);
+                                                   CdkPixbuf                     **out_pixbuf);
 
 void     _ctk_mount_operation_lookup_context_free (CtkMountOperationLookupContext *context);
 

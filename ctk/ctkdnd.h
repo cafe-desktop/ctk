@@ -86,7 +86,7 @@ void ctk_drag_set_icon_widget (CdkDragContext *context,
 			       gint            hot_y);
 CDK_AVAILABLE_IN_ALL
 void ctk_drag_set_icon_pixbuf (CdkDragContext *context,
-			       GdkPixbuf      *pixbuf,
+			       CdkPixbuf      *pixbuf,
 			       gint            hot_x,
 			       gint            hot_y);
 CDK_AVAILABLE_IN_ALL

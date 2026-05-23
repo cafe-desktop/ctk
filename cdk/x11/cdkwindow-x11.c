@@ -3822,7 +3822,7 @@ cdk_window_update_icon (CdkWindow *window,
                         GList     *icon_list)
 {
   CdkToplevelX11 *toplevel;
-  GdkPixbuf *best_icon;
+  CdkPixbuf *best_icon;
   GList *tmp_list;
   int best_size;
   
@@ -3846,7 +3846,7 @@ cdk_window_update_icon (CdkWindow *window,
   best_icon = NULL;
   for (tmp_list = icon_list; tmp_list; tmp_list = tmp_list->next)
     {
-      GdkPixbuf *pixbuf = tmp_list->data;
+      CdkPixbuf *pixbuf = tmp_list->data;
       int this;
   
       /* average width and height - if someone passes in a rectangular
@@ -3926,7 +3926,7 @@ cdk_x11_window_set_icon_list (CdkWindow *window,
   gulong *p;
   gint size;
   GList *l;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   gint width, height, stride;
   gint x, y;
   gint n_channels;

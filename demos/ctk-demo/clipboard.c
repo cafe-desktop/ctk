@@ -64,7 +64,7 @@ paste_button_clicked (CtkWidget *button G_GNUC_UNUSED,
                               paste_received, entry);
 }
 
-static GdkPixbuf *
+static CdkPixbuf *
 get_image_pixbuf (CtkImage *image)
 {
   const gchar *icon_name;
@@ -97,7 +97,7 @@ drag_begin (CtkWidget      *widget G_GNUC_UNUSED,
             CdkDragContext *context,
             gpointer        data)
 {
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
 
   pixbuf = get_image_pixbuf (CTK_IMAGE (data));
   ctk_drag_set_icon_pixbuf (context, pixbuf, -2, -2);
@@ -112,7 +112,7 @@ drag_data_get (CtkWidget        *widget G_GNUC_UNUSED,
                guint             time G_GNUC_UNUSED,
                gpointer          data)
 {
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
 
   pixbuf = get_image_pixbuf (CTK_IMAGE (data));
   ctk_selection_data_set_pixbuf (selection_data, pixbuf);
@@ -131,7 +131,7 @@ drag_data_received (CtkWidget        *widget G_GNUC_UNUSED,
 {
   if (ctk_selection_data_get_length (selection_data) > 0)
     {
-      GdkPixbuf *pixbuf;
+      CdkPixbuf *pixbuf;
 
       pixbuf = ctk_selection_data_get_pixbuf (selection_data);
       ctk_image_set_from_pixbuf (CTK_IMAGE (data), pixbuf);
@@ -144,7 +144,7 @@ copy_image (CtkMenuItem *item G_GNUC_UNUSED,
             gpointer     data)
 {
   CtkClipboard *clipboard;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
 
   clipboard = ctk_clipboard_get (CDK_SELECTION_CLIPBOARD);
   pixbuf = get_image_pixbuf (CTK_IMAGE (data));
@@ -158,7 +158,7 @@ paste_image (CtkMenuItem *item G_GNUC_UNUSED,
              gpointer     data)
 {
   CtkClipboard *clipboard;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
 
   clipboard = ctk_clipboard_get (CDK_SELECTION_CLIPBOARD);
   pixbuf = ctk_clipboard_wait_for_image (clipboard);

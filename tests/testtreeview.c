@@ -302,7 +302,7 @@ set_columns_type (CtkTreeView *tree_view, ColumnsType type)
 {
   CtkTreeViewColumn *col;
   CtkCellRenderer *rend;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   CtkWidget *image;
   CtkAdjustment *adjustment;
 
@@ -470,7 +470,7 @@ get_columns_type (void)
   return current_column_type;
 }
 
-static GdkPixbuf *our_pixbuf;
+static CdkPixbuf *our_pixbuf;
   
 typedef enum
 {

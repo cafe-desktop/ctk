@@ -4359,8 +4359,8 @@ msgid "Pixbuf"
 msgstr "Буфер с пиксели"
 
 #: ctk/ctkimage.c:257 ctk/ctkstatusicon.c:227
-msgid "A GdkPixbuf to display"
-msgstr "GdkPixbuf за показване"
+msgid "A CdkPixbuf to display"
+msgstr "CdkPixbuf за показване"
 
 #: ctk/ctkimage.c:263
 msgid "Surface"
@@ -4416,8 +4416,8 @@ msgid "Animation"
 msgstr "Анимация"
 
 #: ctk/ctkimage.c:327
-msgid "GdkPixbufAnimation to display"
-msgstr "GdkPixbufAnimation за показване"
+msgid "CdkPixbufAnimation to display"
+msgstr "CdkPixbufAnimation за показване"
 
 #: ctk/ctkimage.c:371
 #, fuzzy

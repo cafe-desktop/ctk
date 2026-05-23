@@ -4,9 +4,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-GdkInterpType interp_type = CDK_INTERP_BILINEAR;
+CdkInterpType interp_type = CDK_INTERP_BILINEAR;
 int overall_alpha = 255;
-GdkPixbuf *pixbuf;
+CdkPixbuf *pixbuf;
 CtkWidget *darea;
   
 void
@@ -38,7 +38,7 @@ draw_cb (CtkWidget *widget,
 	 cairo_t   *cr,
 	 gpointer   data G_GNUC_UNUSED)
 {
-  GdkPixbuf *dest;
+  CdkPixbuf *dest;
   int width, height;
 
   width = ctk_widget_get_allocated_width (widget);

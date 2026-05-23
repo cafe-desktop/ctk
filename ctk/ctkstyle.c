@@ -109,7 +109,7 @@ static void      ctk_style_real_set_background (CtkStyle	*style,
 static CtkStyle *ctk_style_real_clone          (CtkStyle	*style);
 static void      ctk_style_real_init_from_rc   (CtkStyle	*style,
                                                 CtkRcStyle	*rc_style);
-static GdkPixbuf *ctk_default_render_icon      (CtkStyle            *style,
+static CdkPixbuf *ctk_default_render_icon      (CtkStyle            *style,
                                                 const CtkIconSource *source,
                                                 CtkTextDirection     direction,
                                                 CtkStateType         state,
@@ -1278,10 +1278,10 @@ ctk_style_real_set_background (CtkStyle    *style,
  * according to the given parameters and returns the result in a
  * pixbuf.
  *
- * Returns: (transfer full): a newly-created #GdkPixbuf
+ * Returns: (transfer full): a newly-created #CdkPixbuf
  *     containing the rendered icon
  */
-GdkPixbuf *
+CdkPixbuf *
 ctk_style_render_icon (CtkStyle            *style,
                        const CtkIconSource *source,
                        CtkTextDirection     direction,
@@ -1290,7 +1290,7 @@ ctk_style_render_icon (CtkStyle            *style,
                        CtkWidget           *widget,
                        const gchar         *detail)
 {
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
   
   g_return_val_if_fail (CTK_IS_STYLE (style), NULL);
   g_return_val_if_fail (CTK_STYLE_GET_CLASS (style)->render_icon != NULL, NULL);
@@ -1356,7 +1356,7 @@ out:
   cairo_restore (cr);
 }
 
-static GdkPixbuf *
+static CdkPixbuf *
 ctk_default_render_icon (CtkStyle            *style,
                          const CtkIconSource *source,
                          CtkTextDirection     direction G_GNUC_UNUSED,
@@ -1368,7 +1368,7 @@ ctk_default_render_icon (CtkStyle            *style,
   CtkStyleContext *context;
   CtkStylePrivate *priv;
   CtkStateFlags flags = 0;
-  GdkPixbuf *pixbuf;
+  CdkPixbuf *pixbuf;
 
   if (widget)
     context = ctk_widget_get_style_context (widget);
@@ -4649,14 +4649,14 @@ ctk_widget_class_path (CtkWidget *widget,
  * that theme engines can special-case rendering for that widget or
  * code.
  *
- * The pixels in the returned #GdkPixbuf are shared with the rest of
+ * The pixels in the returned #CdkPixbuf are shared with the rest of
  * the application and should not be modified. The pixbuf should be
  * freed after use with g_object_unref().
  *
  * Returns: (nullable) (transfer full): a new pixbuf, or %NULL if the
  *     stock ID wasn’t known
  **/
-GdkPixbuf*
+CdkPixbuf*
 ctk_widget_render_icon (CtkWidget      *widget,
                         const gchar    *stock_id,
                         CtkIconSize     size,

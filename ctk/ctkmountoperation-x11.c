@@ -399,15 +399,15 @@ free_pixels (guchar   *pixels,
   g_free (pixels);
 }
 
-static GdkPixbuf*
+static CdkPixbuf*
 scaled_from_pixdata (guchar *pixdata,
                      int     w,
                      int     h,
                      int     new_w,
                      int     new_h)
 {
-  GdkPixbuf *src;
-  GdkPixbuf *dest;
+  CdkPixbuf *src;
+  CdkPixbuf *dest;
 
   src = cdk_pixbuf_new_from_data (pixdata,
                                   CDK_COLORSPACE_RGB,
@@ -422,7 +422,7 @@ scaled_from_pixdata (guchar *pixdata,
 
   if (w != h)
     {
-      GdkPixbuf *tmp;
+      CdkPixbuf *tmp;
       int size;
 
       size = MAX (w, h);
@@ -898,13 +898,13 @@ get_name_for_window_with_pid (CtkMountOperationLookupContext *context,
 
 /* ---------------------------------------------------------------------------------------------------- */
 
-static GdkPixbuf *
+static CdkPixbuf *
 get_pixbuf_for_window_with_pid (CtkMountOperationLookupContext *context,
                                 GPid                            pid,
                                 gint                            size_pixels)
 {
   Window window;
-  GdkPixbuf *ret;
+  CdkPixbuf *ret;
 
   ret = NULL;
 
@@ -966,7 +966,7 @@ _ctk_mount_operation_lookup_info (CtkMountOperationLookupContext *context,
                                   gint                            size_pixels,
                                   gchar                         **out_name,
                                   gchar                         **out_command_line,
-                                  GdkPixbuf                     **out_pixbuf)
+                                  CdkPixbuf                     **out_pixbuf)
 {
   g_return_val_if_fail (out_name != NULL && *out_name == NULL, FALSE);
   g_return_val_if_fail (out_command_line != NULL && *out_command_line == NULL, FALSE);
