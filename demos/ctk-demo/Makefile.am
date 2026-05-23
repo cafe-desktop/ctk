@@ -159,7 +159,7 @@ ctk3_demo_application_LDADD = $(LDADDS)
 resource_files = $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/demo.gresource.xml)
 
 demo_resources.c: demo.gresource.xml $(resource_files)
-	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) --generate-source $(srcdir)/demo.gresource.xml
+	$(AM_V_GEN) GDK_PIXBUF_PIXDATA=cdk-pixbuf-pixdata $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) --generate-source $(srcdir)/demo.gresource.xml
 
 iconthemedir = $(datadir)/icons/hicolor
 
