@@ -26,7 +26,7 @@ LDADD = \
 
 BUILT_SOURCES =
 
-CDK_PIXBUF_MODULE_FILE = $(shell pkg-config --variable=cdk_pixbuf_binarydir cdk-pixbuf-2.0)/loaders.cache
+GDK_PIXBUF_MODULE_FILE = $(shell pkg-config --variable=cdk_pixbuf_binarydir cdk-pixbuf-2.0)/loaders.cache
 
 CLEANFILES =
 
@@ -36,7 +36,7 @@ TESTS_ENVIRONMENT = \
 	G_ENABLE_DIAGNOSTIC=0 		\
 	GIO_USE_VFS=local 		\
 	GSETTINGS_BACKEND=memory	\
-	CDK_PIXBUF_MODULE_FILE="$(CDK_PIXBUF_MODULE_FILE)"
+	GDK_PIXBUF_MODULE_FILE="$(CDK_PIXBUF_MODULE_FILE)"
 
 TEST_PROGS += 			\
 	accel			\
