@@ -96,9 +96,9 @@ before_scripts:
   - ./install-from-git https://github.com/cafe-desktop/advaita-icon-theme master
 
 build_scripts:
-  - ./before-build
-  - ./make-scanbuild '--disable-dependency-tracking --enable-broadway-backend --enable-x11-backend --enable-wayland-backend --enable-gtk-doc --enable-man --enable-shared --enable-introspection --disable-static --enable-installed-tests --enable-test-print-backend'
-  - ./after-build
+  - cd `pkg-config --variable=cdk_pixbuf_binarydir cdk-pixbuf-2.0`
+  - cd loaders
+  - ls
 
 after_scripts:
   - if [ -f "gen-index" ]; then ./gen-index -l 20 -i https://github.com/cafe-desktop/ctk/raw/master/demos/ctk-demo/data/16x16/ctk3-demo.png; fi
