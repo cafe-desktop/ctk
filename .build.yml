@@ -53,7 +53,6 @@ requires:
     - libglib2.0-dev
     - libharfbuzz-dev
     - libpango1.0-dev
-    - librsvg2-common
     - libtool
     - libtool-bin
     - libwayland-dev
@@ -86,6 +85,7 @@ requires:
     #required for cdk-pixbuf
     - cmake
     - gi-docgen
+    - librsvg2-dev
     - meson
     - python3-docutils
 
