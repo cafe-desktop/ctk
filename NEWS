@@ -1,3 +1,16 @@
+Overview of Changes in CTK+ 3.26.0
+===================================
+
+  * ci: some improvements
+  * port from GdkPixbuf to CdkPixbuf
+  * ctk,Makefile: Fix warnings generating ctkresources.c
+  * demos,ctk-demo,Makefile: Fix warning generating demo_resources.c
+  * add .pot files
+  * build:
+    - dont hide glib deprecation warnings
+    - set debug_default yes
+
+
 Overview of Changes in CTK+ 3.25.7
 ===================================
 
@@ -33,7 +46,7 @@ Overview of Changes in CTK+ 3.25.6
   * build: use 'm4_pattern_allow' with 'PKG_CONFIG_FOR_BUILD'
   * ctkprintoperation-win32: avoid duplicate condition
   * ctk-demo,main: reduce the scope of variable
-  * cdkpixbufutils: remove useless assignment
+  * gdkpixbufutils: remove useless assignment
   * fnmatch: avoid redundant initialization in variable
   * ctkwin32theme: declare some parameters as const
   * testtreecolumns: Fix memory leak
@@ -220,5 +233,5 @@ Overview of Changes in CTK+ 3.25.0
  - Forked from GTK+ 3.24.24
  - ci enabled with Github Actions
  - Renaming functions:
-     gtk -> ctk, cdk -> cdk, gail -> cail, broadwayd -> cdkbroadwayd
+     gtk -> ctk, gdk -> cdk, gail -> cail, broadwayd -> cdkbroadwayd
  - Apply debian patches from [gtk+3.0_3.24.24-4.debian.tar.xz]

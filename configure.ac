@@ -9,9 +9,9 @@
 # set CTK_BINARY_AGE and CTK_INTERFACE_AGE to 0.
 
 m4_define([ctk_major_version], [3])
-m4_define([ctk_minor_version], [25])
-m4_define([ctk_micro_version], [7])
-m4_define([ctk_interface_age], [5])
+m4_define([ctk_minor_version], [26])
+m4_define([ctk_micro_version], [0])
+m4_define([ctk_interface_age], [0])
 m4_define([ctk_binary_age],
           [m4_eval(100 * ctk_minor_version + ctk_micro_version)])
 m4_define([ctk_version],
