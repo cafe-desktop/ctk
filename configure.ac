@@ -284,8 +284,7 @@ if test "$os_win32" = "yes"; then
 fi
 AM_CONDITIONAL(MS_LIB_AVAILABLE, test x$ms_librarian = xyes)
 
-m4_define([debug_default],
-          m4_if(m4_eval(ctk_minor_version % 2), [1], [yes], [minimum]))
+m4_define([debug_default], [yes])
 
 dnl declare --enable-* args and collect ac_help strings
 AC_ARG_ENABLE(debug,
