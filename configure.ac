@@ -818,18 +818,6 @@ AC_CHECK_HEADERS(ftw.h,
                  AC_DEFINE(HAVE_FTW_H, 1,
                            [Define to 1 if ftw.h is available]))
 
-#
-# Disable deprecation checks for all libraries we depend on on stable branches.
-# This is so newer versions of those libraries don't cause more warnings with
-# a stable CTK version.
-# We don't ever want to turn off deprecation warnings for master however, because
-# that's where we get rid of deprecated API we use.
-#
-if test m4_eval(ctk_minor_version % 2) = 0 ; then
-  AC_DEFINE_UNQUOTED(GLIB_DISABLE_DEPRECATION_WARNINGS, 1,
-                     [Disable deprecation warnings from glib])
-fi
-
 dnl
 saved_cflags="$CFLAGS"
 saved_ldflags="$LDFLAGS"
