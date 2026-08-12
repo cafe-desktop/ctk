@@ -1,0 +1,89 @@
+Format: 1.8
+Date: Sun, 14 Jun 2026 11:58:49 +0200
+Source: ctk+3.0
+Binary: ctk-3-examples ctk-3-examples-dbgsym ctk-update-icon-cache ctk-update-icon-cache-dbgsym gir1.2-ctk-3.0 libcail-3-0 libcail-3-0-dbgsym libcail-3-dev libcail-3-doc libctk-3-0 libctk-3-0-dbgsym libctk-3-0-udeb libctk-3-bin libctk-3-bin-dbgsym libctk-3-common libctk-3-dev libctk-3-doc
+Architecture: amd64 all
+Version: 3.26.0-1
+Distribution: unstable
+Urgency: medium
+Maintainer: Pablo Barciela <scow@riseup.net>
+Changed-By: Pablo Barciela <scow@riseup.net>
+Description:
+ ctk-3-examples - example files for CTK 3
+ ctk-update-icon-cache - icon theme caching utility
+ gir1.2-ctk-3.0 - CTK graphical user interface library -- gir bindings
+ libcail-3-0 - GNOME Accessibility Implementation Library -- shared libraries
+ libcail-3-dev - GNOME Accessibility Implementation Library -- development files
+ libcail-3-doc - documentation files of the Cail library
+ libctk-3-0 - CTK graphical user interface library
+ libctk-3-0-udeb - CTK graphical user interface library - minimal runtime (udeb)
+ libctk-3-bin - programs for the CTK graphical user interface library
+ libctk-3-common - common files for the CTK graphical user interface library
+ libctk-3-dev - development files for the CTK library
+ libctk-3-doc - documentation for the CTK graphical user interface library
+Changes:
+ ctk+3.0 (3.26.0-1) unstable; urgency=medium
+ .
+   * control:
+     - Use debhelper compat level 13
+     - remove librsvg2-common
+   * tests,control: remove librsvg2-common
+   * port from GdkPixbuf to CdkPixbuf
+   * New upstream release
+Checksums-Sha1:
+ 2e69c1dba914e1d4451b0aaec41350272a0ee0f9 19923 ctk+3.0_3.26.0-1_amd64.buildinfo
+ d50b477fa9d7652aa4093cd771115ce2bf1747a9 1287392 ctk-3-examples-dbgsym_3.26.0-1_amd64.deb
+ 01ad2ff6d8c9635249e4861d2d796db62e9816cf 1682592 ctk-3-examples_3.26.0-1_amd64.deb
+ bbd8c6ebc0daf5bfb418573c38496139f939de2b 40112 ctk-update-icon-cache-dbgsym_3.26.0-1_amd64.deb
+ b36b953a71a9d9528bed97c62fb728f292a18f20 27448 ctk-update-icon-cache_3.26.0-1_amd64.deb
+ 9f3692066af25ba417e223e4e5f297f5c8ece41b 201864 gir1.2-ctk-3.0_3.26.0-1_amd64.deb
+ 288a1fc319d2cd2968341ba5a484d1edadbcd3e8 31524 libcail-3-0-dbgsym_3.26.0-1_amd64.deb
+ 67c7dc55c86327a89242439de0109d1839f0d7df 23228 libcail-3-0_3.26.0-1_amd64.deb
+ ca58c55e0f1dcf19b2fca3c62c6d28517a895b3a 15364 libcail-3-dev_3.26.0-1_amd64.deb
+ 075c7576bf3afdad816378c772510cbbeddf559b 23624 libcail-3-doc_3.26.0-1_all.deb
+ dd8b68b05f52a4aed4789af748a22448587eabe4 9086116 libctk-3-0-dbgsym_3.26.0-1_amd64.deb
+ dd4fefa7c42d50dd291dbd23016fe30d894825ef 2484984 libctk-3-0-udeb_3.26.0-1_amd64.udeb
+ f2642ddcc7593f06aaa57914b07b4df26674ff83 2709980 libctk-3-0_3.26.0-1_amd64.deb
+ acf6e02551ea510fc51701404e2488f07486390a 108408 libctk-3-bin-dbgsym_3.26.0-1_amd64.deb
+ 981bb9546fc5523fff216aaa77269e4977c81ab9 64076 libctk-3-bin_3.26.0-1_amd64.deb
+ 3b46d629c57106ade7d017f6d1bce907d184eed2 3290672 libctk-3-common_3.26.0-1_all.deb
+ 6dd0c82f453a1fc9a4c64f428bc087d564e0eea3 1098492 libctk-3-dev_3.26.0-1_amd64.deb
+ 686b41f911180b7157453d532f7bda9527b2ea4e 3325184 libctk-3-doc_3.26.0-1_all.deb
+Checksums-Sha256:
+ 2111d675439b719fae635cb3d5efc8ae219d403a08fdc2af6b2bdad12b663973 19923 ctk+3.0_3.26.0-1_amd64.buildinfo
+ b1aef39f8851cdc40e7147d301c74135da9ed462aab106e5746ddfa8a920cb8b 1287392 ctk-3-examples-dbgsym_3.26.0-1_amd64.deb
+ cdfe098c8416b4a05c6c69f92e61f634ff808465b4012237b23b9ad0b16ac8d7 1682592 ctk-3-examples_3.26.0-1_amd64.deb
+ 6bb751fb001fc3c95be02f920809bd1697435f27adf8157a79655602637f113f 40112 ctk-update-icon-cache-dbgsym_3.26.0-1_amd64.deb
+ 14b01dbe4012d0c6dc4f0a6974e2cbb5edf064b9d542354f4e52b632af606790 27448 ctk-update-icon-cache_3.26.0-1_amd64.deb
+ aa10668b4f629a7592a573af1a985909d134bc1b08f7bdba81fd92180d4850d1 201864 gir1.2-ctk-3.0_3.26.0-1_amd64.deb
+ 982c7f199b8eb687e637bff411479d266098565c6cb7abcc8ca1ebe1d2772988 31524 libcail-3-0-dbgsym_3.26.0-1_amd64.deb
+ 38f24961511c1aae3f0a513d6b5f6263d23f81393196a6fdab3f04b6e86dea5f 23228 libcail-3-0_3.26.0-1_amd64.deb
+ 8048f4c10a73a711e9752301514bc32a27893fe9ab5c8f0fba466022472ca8ca 15364 libcail-3-dev_3.26.0-1_amd64.deb
+ 7526c0b9682474d326e14c17ba848829be019ef378a92c317cd9337bf2b25f57 23624 libcail-3-doc_3.26.0-1_all.deb
+ b91a7515805e9853ba912edc5f8379e057dc7237bfee557a09f1484b49a441ad 9086116 libctk-3-0-dbgsym_3.26.0-1_amd64.deb
+ 6985f10079818b009d876f22a299477793cae615c76b2241b12efd11bb439be7 2484984 libctk-3-0-udeb_3.26.0-1_amd64.udeb
+ fee79839d41c79ebe895a6d670262469a419b063806d4a57463ea3944f20a2fc 2709980 libctk-3-0_3.26.0-1_amd64.deb
+ 33e63654bdfaac4b2e913d6bdd75b6918b0a7f7c193aef02d626559ba33e267b 108408 libctk-3-bin-dbgsym_3.26.0-1_amd64.deb
+ f9a42bb968467f5030d1e49bfd6e3427076b915d362efe70858c5e454d8500e4 64076 libctk-3-bin_3.26.0-1_amd64.deb
+ d4428eb6931d9408a41b6f310478091fad293f3ce137632b78136649b9b7ed88 3290672 libctk-3-common_3.26.0-1_all.deb
+ 05ad070b1285a228a2e496e3caca0580cd8e13107e31f2a3121d3737d4240af2 1098492 libctk-3-dev_3.26.0-1_amd64.deb
+ afbcd5b19fdd30152fda329cdb0cc9729407c2b159f4564a1ba5801ce73b01ad 3325184 libctk-3-doc_3.26.0-1_all.deb
+Files:
+ 2c409d53ff461836d9b7856cc59acb00 19923 libs optional ctk+3.0_3.26.0-1_amd64.buildinfo
+ b8c7dabb3b02a6b1966c7651536a6076 1287392 debug optional ctk-3-examples-dbgsym_3.26.0-1_amd64.deb
+ 57d2bc031768e0785ad378e6c9401bdd 1682592 x11 optional ctk-3-examples_3.26.0-1_amd64.deb
+ b09780a7cb0b7e1cf0347308b249f849 40112 debug optional ctk-update-icon-cache-dbgsym_3.26.0-1_amd64.deb
+ 728f2c2294fda2bace3521001f29309b 27448 misc optional ctk-update-icon-cache_3.26.0-1_amd64.deb
+ 4d82591b41e506bbff315756b04b5421 201864 introspection optional gir1.2-ctk-3.0_3.26.0-1_amd64.deb
+ 617593b26e240ead8267ab6b6f05e761 31524 debug optional libcail-3-0-dbgsym_3.26.0-1_amd64.deb
+ e8194411f5b4566d745b411b2db12a6a 23228 libs optional libcail-3-0_3.26.0-1_amd64.deb
+ 2b7e81bb30a3f654a9953a3adabe9030 15364 libdevel optional libcail-3-dev_3.26.0-1_amd64.deb
+ 36b42203d4c0df76d005f9f7e6208cd6 23624 doc optional libcail-3-doc_3.26.0-1_all.deb
+ 2d301ed36dcf7518520497668c11e224 9086116 debug optional libctk-3-0-dbgsym_3.26.0-1_amd64.deb
+ f352ca786e7eff959eb2be7cd22f2bca 2484984 debian-installer optional libctk-3-0-udeb_3.26.0-1_amd64.udeb
+ 933db297c3d95591331b42c2bdd38d71 2709980 libs optional libctk-3-0_3.26.0-1_amd64.deb
+ 56386dce20e833747a5a1b9dd6fd7eb9 108408 debug optional libctk-3-bin-dbgsym_3.26.0-1_amd64.deb
+ 4a71d418939b1c8d4a0d275b4d2d7468 64076 misc optional libctk-3-bin_3.26.0-1_amd64.deb
+ b13afcbb010de6cee6b5035b1b3c99a8 3290672 misc optional libctk-3-common_3.26.0-1_all.deb
+ 5eedc9059280ef3cf871b8ec8dc22090 1098492 libdevel optional libctk-3-dev_3.26.0-1_amd64.deb
+ a1fcf0c7f796ca626a241c125784a5f5 3325184 doc optional libctk-3-doc_3.26.0-1_all.deb
