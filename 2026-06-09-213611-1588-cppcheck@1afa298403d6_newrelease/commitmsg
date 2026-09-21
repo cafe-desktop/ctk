@@ -1,0 +1,3 @@
+Revert "ci: test debs"
+
+This reverts commit 1cf5ec65ec645760e4bd284c07504b1e8e9d1307.

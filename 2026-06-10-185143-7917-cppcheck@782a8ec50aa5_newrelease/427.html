@@ -1,0 +1,328 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cppcheck - HTML report - ctk (cppcheck 2.20.0-2)</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.highlight .hll { background-color: #ffffcc }
+.highlight { background: #ffffff; }
+.highlight .c { color: #888 } /* Comment */
+.highlight .err { color: #F00; background-color: #FAA } /* Error */
+.highlight .k { color: #080; font-weight: bold } /* Keyword */
+.highlight .o { color: #333 } /* Operator */
+.highlight .ch { color: #888 } /* Comment.Hashbang */
+.highlight .cm { color: #888 } /* Comment.Multiline */
+.highlight .cp { color: #579 } /* Comment.Preproc */
+.highlight .cpf { color: #888 } /* Comment.PreprocFile */
+.highlight .c1 { color: #888 } /* Comment.Single */
+.highlight .cs { color: #C00; font-weight: bold } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .ges { font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.highlight .gr { color: #F00 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888 } /* Generic.Output */
+.highlight .gp { color: #C65D09; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #04D } /* Generic.Traceback */
+.highlight .kc { color: #080; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #080; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #080; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #038; font-weight: bold } /* Keyword.Pseudo */
+.highlight .kr { color: #080; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #339; font-weight: bold } /* Keyword.Type */
+.highlight .m { color: #60E; font-weight: bold } /* Literal.Number */
+.highlight .s { background-color: #FFF0F0 } /* Literal.String */
+.highlight .na { color: #00C } /* Name.Attribute */
+.highlight .nb { color: #007020 } /* Name.Builtin */
+.highlight .nc { color: #B06; font-weight: bold } /* Name.Class */
+.highlight .no { color: #036; font-weight: bold } /* Name.Constant */
+.highlight .nd { color: #555; font-weight: bold } /* Name.Decorator */
+.highlight .ni { color: #800; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #F00; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #06B; font-weight: bold } /* Name.Function */
+.highlight .nl { color: #970; font-weight: bold } /* Name.Label */
+.highlight .nn { color: #0E84B5; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #070 } /* Name.Tag */
+.highlight .nv { color: #963 } /* Name.Variable */
+.highlight .ow { color: #000; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #BBB } /* Text.Whitespace */
+.highlight .mb { color: #60E; font-weight: bold } /* Literal.Number.Bin */
+.highlight .mf { color: #60E; font-weight: bold } /* Literal.Number.Float */
+.highlight .mh { color: #058; font-weight: bold } /* Literal.Number.Hex */
+.highlight .mi { color: #00D; font-weight: bold } /* Literal.Number.Integer */
+.highlight .mo { color: #40E; font-weight: bold } /* Literal.Number.Oct */
+.highlight .sa { background-color: #FFF0F0 } /* Literal.String.Affix */
+.highlight .sb { background-color: #FFF0F0 } /* Literal.String.Backtick */
+.highlight .sc { color: #04D } /* Literal.String.Char */
+.highlight .dl { background-color: #FFF0F0 } /* Literal.String.Delimiter */
+.highlight .sd { color: #D42 } /* Literal.String.Doc */
+.highlight .s2 { background-color: #FFF0F0 } /* Literal.String.Double */
+.highlight .se { color: #666; font-weight: bold; background-color: #FFF0F0 } /* Literal.String.Escape */
+.highlight .sh { background-color: #FFF0F0 } /* Literal.String.Heredoc */
+.highlight .si { background-color: #EEE } /* Literal.String.Interpol */
+.highlight .sx { color: #D20; background-color: #FFF0F0 } /* Literal.String.Other */
+.highlight .sr { color: #000; background-color: #FFF0FF } /* Literal.String.Regex */
+.highlight .s1 { background-color: #FFF0F0 } /* Literal.String.Single */
+.highlight .ss { color: #A60 } /* Literal.String.Symbol */
+.highlight .bp { color: #007020 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #06B; font-weight: bold } /* Name.Function.Magic */
+.highlight .vc { color: #369 } /* Name.Variable.Class */
+.highlight .vg { color: #D70; font-weight: bold } /* Name.Variable.Global */
+.highlight .vi { color: #33B } /* Name.Variable.Instance */
+.highlight .vm { color: #963 } /* Name.Variable.Magic */
+.highlight .il { color: #00D; font-weight: bold } /* Literal.Number.Integer.Long */
+    </style>
+    <script>
+      function getStyle(el, styleProp) {
+        var y;
+
+        if (el.currentStyle) {
+          y = el.currentStyle[styleProp];
+        } else if (window.getComputedStyle) {
+          y = document.defaultView.getComputedStyle(el, null).getPropertyValue(styleProp);
+        }
+
+        return y;
+      }
+
+      function toggle() {
+        var el = this.expandable_content;
+        var mark = this.expandable_marker;
+
+        if (el.style.display === "block") {
+          el.style.display = "none";
+          mark.textContent = "[+]";
+        } else {
+          el.style.display = "block";
+          mark.textContent = "[-]";
+        }
+      }
+
+      function initExpandables() {
+        var elements = document.querySelectorAll(".expandable");
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          var el = elements[i];
+          var clickable = el.querySelector("span");
+          var marker = clickable.querySelector(".marker");
+          var content = el.querySelector(".content");
+          var width = clickable.clientWidth - parseInt(getStyle(content, "padding-left")) - parseInt(getStyle(content, "padding-right"));
+          content.style.width = width + "px";
+          clickable.expandable_content = content;
+          clickable.expandable_marker = marker;
+          clickable.addEventListener("click", toggle);
+        }
+      }
+
+      function toggleDisplay(cb) {
+        var elements = document.querySelectorAll("." + cb.id);
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          elements[i].classList.toggle("id-filtered", !cb.checked);
+        }
+
+        updateFileRows();
+      }
+
+      function toggleSeverity(cb) {
+        cb.parentElement.classList.toggle("unchecked", !cb.checked);
+        var elements = document.querySelectorAll(".sev_" + cb.id);
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          elements[i].classList.toggle("severity-filtered", !cb.checked);
+        }
+
+        updateFileRows();
+      }
+      
+      function toggleClassification(cb) {
+        cb.parentElement.classList.toggle("unchecked", !cb.checked);
+        var elements = document.querySelectorAll(".class_" + cb.id);
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          elements[i].classList.toggle("classification-filtered", !cb.checked);
+        }
+
+        updateFileRows();
+      }
+    
+      function toggleTool(cb) {
+        cb.parentElement.classList.toggle("unchecked", !cb.checked);
+
+        var elements;
+        if (cb.id == "clang-tidy")
+            elements = document.querySelectorAll("[class^=clang-tidy-]");
+        else
+            elements = document.querySelectorAll(".issue:not([class^=clang-tidy-])");
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          elements[i].classList.toggle("tool-filtered", !cb.checked);
+        }
+
+        updateFileRows();
+      }
+
+      function toggleAll() {
+        var elements = document.querySelectorAll(".idToggle");
+
+        // starting from 1 since 0 is the "toggle all" input
+        for (var i = 1, len = elements.length; i < len; i++) {
+          var changed = elements[i].checked != elements[0].checked;
+          if (changed) {
+            elements[i].checked = elements[0].checked;
+            toggleDisplay(elements[i]);
+          }
+        }
+      }
+
+      function filterFile(filter) {
+        var elements = document.querySelectorAll(".fileEntry");
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          var visible = elements[i].querySelector("tr").querySelector("td").textContent.toLowerCase().includes(filter.toLowerCase());
+          elements[i].classList.toggle("text-filtered", !visible);
+        }
+      }
+
+      function filterText(text) {
+        filter = text.toLowerCase();
+        var elements = document.querySelectorAll(".issue");
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          var visible = false;
+          var fields = elements[i].querySelectorAll("td");
+          for (var n = 0, num = fields.length; n < num; n++) {
+            if (fields[n].textContent.toLowerCase().includes(filter)) {
+              visible = true;
+              break;
+            }
+          }
+          elements[i].classList.toggle("text-filtered", !visible);
+        }
+
+        updateFileRows();
+      }
+
+      function updateFileRows(element) {
+        var elements = document.querySelectorAll(".fileEntry");
+
+        for (var i = 0, len = elements.length; i < len; i++) {
+          var visible = elements[i].querySelector(".issue:not(.id-filtered):not(.severity-filtered):not(.classification-filtered):not(.tool-filtered):not(.text-filtered)");
+          elements[i].classList.toggle("file-filtered", !visible);
+        }
+      }
+
+      function reapplyFilters() {
+        // Reapply ID filters
+        var idToggles = document.querySelectorAll(".idToggle");
+        for (var i = 1; i < idToggles.length; i++) {
+          var cb = idToggles[i];
+          var elements = document.querySelectorAll("." + cb.id);
+          for (var j = 0; j < elements.length; j++) {
+            elements[j].classList.toggle("id-filtered", !cb.checked);
+          }
+        }
+
+        // Reapply severity filters
+        var sevToggles = document.querySelectorAll(".sev_toggle");
+        for (var i = 0; i < sevToggles.length; i++) {
+          var cb = sevToggles[i];
+            var elements = document.querySelectorAll(".sev_" + cb.id);
+          for (var j = 0; j < elements.length; j++) {
+            elements[j].classList.toggle("severity-filtered", !cb.checked);
+          }
+        }
+
+        // Reapply classification filters
+        var classToggles = document.querySelectorAll(".class_toggle");
+        for (var i = 0; i < classToggles.length; i++) {
+          var cb = classToggles[i];
+          var elements = document.querySelectorAll(".class_" + cb.id);
+          for (var j = 0; j < elements.length; j++) {
+            elements[j].classList.toggle("classification-filtered", !cb.checked);
+          }
+        }
+
+        // Reapply tool filters
+        var toolToggles = document.querySelectorAll(".tool_toggle");
+        for (var i = 0; i < toolToggles.length; i++) {
+          var cb = toolToggles[i];
+          var elements;
+          if (cb.id == "clang-tidy")
+            elements = document.querySelectorAll("[class^=clang-tidy-]");
+          else
+            elements = document.querySelectorAll(".issue:not([class^=clang-tidy-])");
+
+          for (var j = 0; j < elements.length; j++) {
+            elements[j].classList.toggle("tool-filtered", !cb.checked);
+          }
+        }
+
+        // Update file rows
+        updateFileRows();
+      }
+
+      window.addEventListener("pageshow", reapplyFilters);
+      window.addEventListener("load", initExpandables);
+    </script>
+  </head>
+  <body>
+    <div id="wrapper">
+    <div id="header" class="header">
+      <h1>Cppcheck report - ctk (cppcheck 2.20.0-2): examples/application9/exampleapp.h</h1>
+
+    </div>
+
+    <div id="menu">
+     <p><a href="index.html">Defects:</a> exampleapp.h</p>
+<a href="427.html#line-8"> unknownMacro 8</a>
+    </div>
+    <div id="content">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><a id="line-1" name="line-1"></a><span class="cp">#ifndef __EXAMPLEAPP_H</span>
+<a id="line-2" name="line-2"></a><span class="cp">#define __EXAMPLEAPP_H</span>
+<a id="line-3" name="line-3"></a>
+<a id="line-4" name="line-4"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;ctk/ctk.h&gt;</span>
+<a id="line-5" name="line-5"></a>
+<a id="line-6" name="line-6"></a>
+<a id="line-7" name="line-7"></a><span class="cp">#define EXAMPLE_APP_TYPE (example_app_get_type ())</span>
+<a id="line-8" name="line-8"></a><span class="hll"><span class="n">G_DECLARE_FINAL_TYPE</span><span class="w"> </span><span class="p">(</span><span class="n">ExampleApp</span><span class="p">,</span><span class="w"> </span><span class="n">example_app</span><span class="p">,</span><span class="w"> </span><span class="n">EXAMPLE</span><span class="p">,</span><span class="w"> </span><span class="n">APP</span><span class="p">,</span><span class="w"> </span><span class="n">CtkApplication</span><span class="p">)</span><span class="error2">&lt;--- There is an unknown macro here somewhere. Configuration is required. If G_DECLARE_FINAL_TYPE is a macro then please configure it.</span>
+</span><a id="line-9" name="line-9"></a>
+<a id="line-10" name="line-10"></a>
+<a id="line-11" name="line-11"></a><span class="n">ExampleApp</span><span class="w">     </span><span class="o">*</span><span class="n">example_app_new</span><span class="w">         </span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<a id="line-12" name="line-12"></a>
+<a id="line-13" name="line-13"></a>
+<a id="line-14" name="line-14"></a><span class="cp">#endif </span><span class="cm">/* __EXAMPLEAPP_H */</span>
+</pre></div></td></tr></table></div>
+
+    </div>
+    <div id="footer" class="footer">
+      <p>
+        Created by Cppcheck 2.20.0 (<a href="https://cppcheck.sourceforge.io">Sourceforge</a>, <a href="irc://irc.libera.chat/#cppcheck">IRC</a>)
+      </p>
+    </div>
+    </div>
+  </body>
+</html>
