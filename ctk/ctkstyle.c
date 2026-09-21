@@ -1068,7 +1068,7 @@ ctk_style_real_copy (CtkStyle *style,
       style->base[i] = src->base[i];
 
       if (style->background[i])
-	cairo_pattern_destroy (style->background[i]),
+	cairo_pattern_destroy (style->background[i]);
       style->background[i] = src->background[i];
       if (style->background[i])
 	cairo_pattern_reference (style->background[i]);
