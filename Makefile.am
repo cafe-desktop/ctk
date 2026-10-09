@@ -38,8 +38,7 @@ MAINTAINERCLEANFILES = \
 	$(srcdir)/m4/gtk-doc.m4 \
 	$(srcdir)/INSTALL \
 	$(srcdir)/README \
-	$(srcdir)/gtk-doc.make \
-	$(srcdir)/ChangeLog
+	$(srcdir)/gtk-doc.make
 
 if OS_UNIX
 valgrinddir = $(datadir)/ctk-3.0/valgrind
@@ -85,26 +84,6 @@ dist-hook:
 	mkdir $(distdir)/subprojects
 	cp -p $(srcdir)/subprojects/*.wrap $(distdir)/subprojects
 	$(top_srcdir)/check-version.py $(top_srcdir)/configure.ac $(top_srcdir)/meson.build
-
-distclean-local:
-	if test "$(srcdir)" = "."; then :; else \
-		rm -f ChangeLog; \
-	fi
-
-ChangeLog:
-	$(AM_V_GEN) if test -d "$(srcdir)/.git"; then \
-	  (GIT_DIR=$(top_srcdir)/.git $(top_builddir)/build-aux/missing git log CTK_2_16_0^^.. --stat) | fmt --split-only > $@.tmp \
-	  && mv -f $@.tmp $@ \
-	  || ($(RM) $@.tmp; \
-	      echo Failed to generate ChangeLog, your ChangeLog may be outdated >&2; \
-	      (test -f $@ || echo git-log is required to generate this file >> $@)); \
-	else \
-	  test -f $@ || \
-	  (echo A git checkout and git-log is required to generate ChangeLog >&2 && \
-	  echo A git checkout and git-log is required to generate this file >> $@); \
-	fi
-
-.PHONY: ChangeLog
 
 uninstall-local:
 	rm -f $(DESTDIR)$(pkgconfigdir)/ctk+-3.0.pc
