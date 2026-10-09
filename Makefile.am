@@ -13,7 +13,6 @@ EXTRA_DIST +=			\
 	README.in		\
 	INSTALL			\
 	INSTALL.in		\
-	NEWS.pre-1-0		\
 	README.commits		\
 	README.win32		\
 	check-version.py	\
