@@ -810,6 +810,8 @@ static void     ctk_tree_view_ensure_interactive_directory (CtkTreeView *tree_vi
 static void     ctk_tree_view_search_window_hide        (CtkWidget        *search_window,
                                                          CtkTreeView      *tree_view,
                                                          CdkDevice        *device);
+static gboolean ctk_tree_view_button_press              (CtkWidget        *widget,
+                                                         CdkEventButton   *event);
 static void     ctk_tree_view_search_position_func      (CtkTreeView      *tree_view,
 							 CtkWidget        *search_window,
 							 gpointer          user_data);
@@ -989,6 +991,7 @@ ctk_tree_view_class_init (CtkTreeViewClass *class)
   widget_class->draw = ctk_tree_view_draw;
   widget_class->key_press_event = ctk_tree_view_key_press;
   widget_class->key_release_event = ctk_tree_view_key_release;
+  widget_class->button_press_event = ctk_tree_view_button_press;
   widget_class->enter_notify_event = ctk_tree_view_enter_notify;
   widget_class->leave_notify_event = ctk_tree_view_leave_notify;
   widget_class->focus_out_event = ctk_tree_view_focus_out;
@@ -6270,6 +6273,35 @@ ctk_tree_view_focus_out (CtkWidget     *widget,
   return FALSE;
 }
 
+/* Any button press inside the tree view dismisses the interactive search
+ * popup.  The popup is not modal (see
+ * ctk_tree_view_ensure_interactive_directory), so without this handler a
+ * click on the view would leave the popup open instead of dismissing it.
+ *
+ * Assigning this handler replaces the inherited default class handler
+ * (CtkWidget's ctk_widget_real_button_event), which is the only thing
+ * that feeds the bubble-phase gestures (multipress_gesture: row
+ * selection and double-click activation, drag_gesture: rubberbanding)
+ * with button events.  Overriding without chaining up would leave those
+ * gestures without events: plain clicks would stop selecting rows.  The
+ * press must not be swallowed either: multipress_gesture_pressed
+ * activates on n_press == 2 and needs both presses of a double click. */
+static gboolean
+ctk_tree_view_button_press (CtkWidget      *widget,
+                            CdkEventButton *event)
+{
+  CtkTreeView *tree_view = CTK_TREE_VIEW (widget);
+
+  if (tree_view->priv->search_window != NULL &&
+      ctk_widget_get_visible (tree_view->priv->search_window))
+    {
+      ctk_tree_view_search_window_hide (tree_view->priv->search_window, tree_view,
+                                        cdk_event_get_device ((CdkEvent *) event));
+    }
+
+  return CTK_WIDGET_CLASS (ctk_tree_view_parent_class)->button_press_event (widget, event);
+}
+
 
 /* Incremental Reflow
  */
@@ -11226,7 +11258,13 @@ ctk_tree_view_ensure_interactive_directory (CtkTreeView *tree_view)
 
   ctk_window_set_type_hint (CTK_WINDOW (tree_view->priv->search_window),
                             CDK_WINDOW_TYPE_HINT_UTILITY);
-  ctk_window_set_modal (CTK_WINDOW (tree_view->priv->search_window), TRUE);
+  /* The search popup is deliberately not modal.  If it were made modal,
+   * it would hold a grab while mapped, affecting the other windows in its
+   * CtkWindowGroup.  ctk_main_do_event() would then silently drop
+   * ::delete-event (WM Delete) for those windows, so the application's
+   * other windows could not be closed with their titlebar close buttons
+   * while the search popup is open.  Clicks on the view hide the popup in
+   * ctk_tree_view_button_press(). */
   ctk_window_set_transient_for (CTK_WINDOW (tree_view->priv->search_window),
                                 CTK_WINDOW (toplevel));
 
