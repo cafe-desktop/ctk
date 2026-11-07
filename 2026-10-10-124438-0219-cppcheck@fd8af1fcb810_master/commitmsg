@@ -1,0 +1,3 @@
+build: stop generating ChangeLog
+
+and require automake with foreign

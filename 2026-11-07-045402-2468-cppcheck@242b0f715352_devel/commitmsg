@@ -1,0 +1,3 @@
+ctktreeview: Fix: make the interactive search popup non-modal
+
+Fixes closing the window in baul with mouse while the popup is shown in 'List' view
