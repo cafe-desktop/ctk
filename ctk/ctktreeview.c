@@ -2177,9 +2177,27 @@ ctk_tree_view_free_rbtree (CtkTreeView *tree_view)
   tree_view->priv->prelight_node = NULL;
 }
 
+/* Marks the toplevel of @tree_view as having the interactive search popup
+ * open (see ctk_window_set_interactive_search_open()): while the popup is
+ * mapped the search owns the keyboard, so toplevel mnemonics, accelerators
+ * and binding sets must not fire.  The modal grab the popup used to hold
+ * did this implicitly; the popup is not modal anymore. */
+static void
+ctk_tree_view_update_interactive_search (CtkTreeView *tree_view,
+                                         gboolean     open)
+{
+  CtkWidget *toplevel;
+
+  toplevel = ctk_widget_get_toplevel (CTK_WIDGET (tree_view));
+  if (CTK_IS_WINDOW (toplevel))
+    ctk_window_set_interactive_search_open (CTK_WINDOW (toplevel), open);
+}
+
 static void
 ctk_tree_view_destroy_search_window (CtkTreeView *tree_view)
 {
+  ctk_tree_view_update_interactive_search (tree_view, FALSE);
+
   ctk_widget_destroy (tree_view->priv->search_window);
 
   tree_view->priv->search_window = NULL;
@@ -6122,6 +6140,7 @@ ctk_tree_view_key_press (CtkWidget   *widget,
     {
       CdkEvent *new_event;
       gulong popup_menu_id;
+      gboolean handled;
 
       new_event = cdk_event_copy ((CdkEvent *) event);
       g_object_unref (((CdkEventKey *) new_event)->window);
@@ -6134,8 +6153,25 @@ ctk_tree_view_key_press (CtkWidget   *widget,
                                         NULL);
 
       /* Because we keep the focus on the treeview, we need to forward
-       * the key events to the entry, when it is visible. */
-      ctk_widget_event (tree_view->priv->search_window, new_event);
+       * the key events to the entry, when it is visible.  The window
+       * path delivers the key through the popup's focus chain.  Keys
+       * it did not handle (BackSpace, Delete, ...) are retried on the
+       * entry itself, the same way the hidden-popup path below feeds
+       * the first keystroke, so text editing works even if the popup
+       * ends up without a focus widget. */
+      handled = ctk_widget_event (tree_view->priv->search_window, new_event);
+      if (!handled)
+        {
+          CdkEvent *entry_event;
+
+          entry_event = cdk_event_copy ((CdkEvent *) event);
+          g_object_unref (((CdkEventKey *) entry_event)->window);
+          ((CdkEventKey *) entry_event)->window =
+            g_object_ref (ctk_widget_get_window (tree_view->priv->search_entry));
+          ctk_widget_realize (tree_view->priv->search_entry);
+          ctk_widget_event (tree_view->priv->search_entry, entry_event);
+          cdk_event_free (entry_event);
+        }
       cdk_event_free (new_event);
 
       g_signal_handler_disconnect (tree_view->priv->search_entry,
@@ -11397,6 +11433,7 @@ ctk_tree_view_real_start_interactive_search (CtkTreeView *tree_view,
   ctk_entry_grab_focus_without_selecting (CTK_ENTRY (tree_view->priv->search_entry));
 
   ctk_widget_show (tree_view->priv->search_window);
+  ctk_tree_view_update_interactive_search (tree_view, TRUE);
   if (tree_view->priv->search_entry_changed_id == 0)
     {
       tree_view->priv->search_entry_changed_id =
@@ -15180,6 +15217,7 @@ ctk_tree_view_search_window_hide (CtkWidget   *search_window,
       /* send focus-in event */
       send_focus_change (CTK_WIDGET (tree_view->priv->search_entry), device, FALSE);
       ctk_widget_hide (search_window);
+      ctk_tree_view_update_interactive_search (tree_view, FALSE);
       ctk_entry_set_text (CTK_ENTRY (tree_view->priv->search_entry), "");
       send_focus_change (CTK_WIDGET (tree_view), device, TRUE);
     }

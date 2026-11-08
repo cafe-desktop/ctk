@@ -238,6 +238,7 @@ struct _CtkWindowPrivate
   guint    hide_titlebar_when_maximized : 1;
   guint    iconify_initially         : 1; /* ctk_window_iconify() called before realization */
   guint    is_active                 : 1;
+  guint    interactive_search_open   : 1;
   guint    maximize_initially        : 1;
   guint    mnemonics_visible         : 1;
   guint    mnemonics_visible_set     : 1;
@@ -8241,15 +8242,77 @@ ctk_window_propagate_key_event (CtkWindow        *window,
   return handled;
 }
 
+/**
+ * ctk_window_set_interactive_search_open:
+ * @window: a toplevel #CtkWindow
+ * @open: whether an interactive search is active for @window
+ *
+ * Marks @window as having an interactive (typeahead) search popup open.
+ * While the flag is set, key events delivered to @window no longer
+ * activate its mnemonics and accelerators nor its toplevel key bindings:
+ * the search popup owns the keyboard, exactly like it did when the popup
+ * was modal and held a keyboard grab.  Key events still reach the focus
+ * widget, which forwards them to the search popup (see for instance
+ * ctk_tree_view_key_press()).
+ *
+ * CtkTreeView sets this flag automatically for its built-in interactive
+ * search popup.  Applications that implement their own interactive search
+ * popup (e.g. BaulIconContainer) should set it while their popup is
+ * mapped and unset it when the popup is hidden or destroyed.
+ *
+ * Since: 3.26
+ */
+void
+ctk_window_set_interactive_search_open (CtkWindow *window,
+                                        gboolean   open)
+{
+  CtkWindowPrivate *priv;
+
+  g_return_if_fail (CTK_IS_WINDOW (window));
+
+  priv = window->priv;
+  open = open != FALSE;
+
+  if (priv->interactive_search_open == open)
+    return;
+
+  priv->interactive_search_open = open;
+}
+
+/**
+ * ctk_window_get_interactive_search_open:
+ * @window: a toplevel #CtkWindow
+ *
+ * Returns whether an interactive search popup is currently marked as open
+ * for @window (see ctk_window_set_interactive_search_open()).
+ *
+ * Returns: %TRUE if an interactive search is active for @window.
+ *
+ * Since: 3.26
+ */
+gboolean
+ctk_window_get_interactive_search_open (CtkWindow *window)
+{
+  g_return_val_if_fail (CTK_IS_WINDOW (window), FALSE);
+
+  return window->priv->interactive_search_open;
+}
+
 static gint
 ctk_window_key_press_event (CtkWidget   *widget,
-			    CdkEventKey *event)
+                            CdkEventKey *event)
 {
   CtkWindow *window = CTK_WINDOW (widget);
   gboolean handled = FALSE;
 
-  /* handle mnemonics and accelerators */
-  if (!handled)
+  /* While an interactive search popup is open (see
+   * ctk_window_set_interactive_search_open()), the search owns the
+   * keyboard: window mnemonics and accelerators used to be swallowed by
+   * the grab that the modal popup held, and the toplevel binding set
+   * (BackSpace bound to "go up", for instance) would otherwise fire
+   * while the user is editing the search text.  The focus widget, and
+   * through it the search popup, still sees the event below. */
+  if (!window->priv->interactive_search_open)
     handled = ctk_window_activate_key (window, event);
 
   /* handle focus widget key events */
@@ -8257,7 +8320,7 @@ ctk_window_key_press_event (CtkWidget   *widget,
     handled = ctk_window_propagate_key_event (window, event);
 
   /* Chain up, invokes binding set */
-  if (!handled)
+  if (!handled && !window->priv->interactive_search_open)
     handled = CTK_WIDGET_CLASS (ctk_window_parent_class)->key_press_event (widget, event);
 
   return handled;
@@ -12001,6 +12064,31 @@ ctk_window_activate_key (CtkWindow   *window,
 
   g_return_val_if_fail (CTK_IS_WINDOW (window), FALSE);
   g_return_val_if_fail (event != NULL, FALSE);
+
+  /* While an interactive search popup is open for a window of this
+   * group, no accelerator fires: the search popup owns the keyboard
+   * (see ctk_window_set_interactive_search_open()).  The popup itself
+   * shares the group, so its own key handling, which ends up here
+   * through ctk_window_key_press_event(), is covered by this check
+   * as well. */
+  if (window->priv->interactive_search_open)
+    return FALSE;
+
+  if (window->priv->group != NULL)
+    {
+      GList *group_windows, *l;
+
+      group_windows = ctk_window_group_list_windows (window->priv->group);
+      for (l = group_windows; l; l = l->next)
+        {
+          if (CTK_WINDOW (l->data)->priv->interactive_search_open)
+            {
+              g_list_free (group_windows);
+              return FALSE;
+            }
+        }
+      g_list_free (group_windows);
+    }
 
   key_hash = ctk_window_get_key_hash (window);
 
