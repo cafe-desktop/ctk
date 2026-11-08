@@ -6102,6 +6102,48 @@ ctk_tree_view_key_press (CtkWidget   *widget,
         }
     }
 
+  /* While the interactive search popup is shown, all key events belong
+   * to the search.  Forward them to the search window before chaining
+   * up to the parent class, whose key bindings (Space, for instance)
+   * would otherwise consume the keys instead of letting them be typed
+   * into the search entry.  Escape and Tab are forwarded as well, so
+   * that ctk_tree_view_search_key_press_event() can cancel the search.
+   *
+   * The focus stays on the tree view while the popup is shown (see
+   * ctk_tree_view_real_start_interactive_search), so this is the path
+   * every keystroke takes during the search.  No Cdk grab is used for
+   * this: grabbing the keyboard would deliver FocusOut with NotifyGrab
+   * mode to the tree view, which has the focus, and
+   * ctk_tree_view_focus_out() hides the popup on focus loss. */
+  if (tree_view->priv->search_window != NULL &&
+      ctk_widget_is_visible (tree_view->priv->search_window) &&
+      ctk_widget_has_focus (CTK_WIDGET (tree_view)) &&
+      !tree_view->priv->search_custom_entry_set)
+    {
+      CdkEvent *new_event;
+      gulong popup_menu_id;
+
+      new_event = cdk_event_copy ((CdkEvent *) event);
+      g_object_unref (((CdkEventKey *) new_event)->window);
+      ((CdkEventKey *) new_event)->window =
+        g_object_ref (ctk_widget_get_window (tree_view->priv->search_window));
+      ctk_widget_realize (tree_view->priv->search_window);
+
+      popup_menu_id = g_signal_connect (tree_view->priv->search_entry,
+                                        "popup-menu", G_CALLBACK (ctk_true),
+                                        NULL);
+
+      /* Because we keep the focus on the treeview, we need to forward
+       * the key events to the entry, when it is visible. */
+      ctk_widget_event (tree_view->priv->search_window, new_event);
+      cdk_event_free (new_event);
+
+      g_signal_handler_disconnect (tree_view->priv->search_entry,
+                                   popup_menu_id);
+
+      return TRUE;
+    }
+
   /* Chain up to the parent class.  It handles the keybindings. */
   if (CTK_WIDGET_CLASS (ctk_tree_view_parent_class)->key_press_event (widget, event))
     return TRUE;
@@ -6114,9 +6156,9 @@ ctk_tree_view_key_press (CtkWidget   *widget,
 
   /* Initially, before the search window is visible, we pass the event to the
    * IM context of the search entry box. If it triggers a commit or a preedit,
-   * we then show the search window without loosing tree view focus.
-   * If the seach window is already visible, we forward the events to it,
-   * keeping the focus on the tree view.
+   * we then show the search window without loosing tree view focus.  Keys
+   * that cancel the search (Escape, Tab) are left unhandled here while the
+   * popup is hidden: they must not start one.
    */
   if (ctk_widget_has_focus (CTK_WIDGET (tree_view))
       && tree_view->priv->enable_search
@@ -6154,30 +6196,6 @@ ctk_tree_view_key_press (CtkWidget   *widget,
                   return FALSE;
                 }
             }
-        }
-      else
-        {
-          CdkEvent *new_event;
-          gulong popup_menu_id;
-
-          new_event = cdk_event_copy ((CdkEvent *) event);
-          g_object_unref (((CdkEventKey *) new_event)->window);
-          ((CdkEventKey *) new_event)->window =
-            g_object_ref (ctk_widget_get_window (search_window));
-          ctk_widget_realize (search_window);
-
-          popup_menu_id = g_signal_connect (tree_view->priv->search_entry,
-                                            "popup-menu", G_CALLBACK (ctk_true),
-                                            NULL);
-
-          /* Because we keep the focus on the treeview, we need to forward the
-           * key events to the entry, when it is visible. */
-          ctk_widget_event (search_window, new_event);
-          cdk_event_free (new_event);
-
-          g_signal_handler_disconnect (tree_view->priv->search_entry,
-                                       popup_menu_id);
-
         }
     }
 
