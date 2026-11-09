@@ -2689,6 +2689,30 @@ propagate_event (CtkWidget *widget,
           if (widget != window && ctk_widget_has_grab (widget))
             handled_event = propagate_func (widget, event);
 
+          if (!handled_event && CTK_IS_WINDOW (window) &&
+              ctk_window_get_interactive_search_open (CTK_WINDOW (window)))
+            {
+              CtkWidget *focus;
+
+              focus = ctk_window_get_focus (CTK_WINDOW (window));
+
+              if (focus != NULL && focus != window)
+                {
+                  /* An interactive search popup is open for this window
+                   * (see ctk_window_set_interactive_search_open()): the
+                   * search owns the keyboard, exactly like a modal popup
+                   * holding a keyboard grab used to.  Deliver the event
+                   * straight to the focus widget, which forwards it to the
+                   * search popup, skipping the window's key event emission:
+                   * handlers applications connected to the toplevel (which
+                   * run before ctk_window_key_press_event() and can consume
+                   * the key first, e.g. a BackSpace bound to "go up" or an
+                   * Escape bound to "stop"), the accelerators and the
+                   * toplevel binding set must not see the key. */
+                  handled_event = propagate_func (focus, event);
+                }
+            }
+
           if (!handled_event &&
               ctk_widget_is_sensitive (window))
             handled_event = propagate_func (window, event);
