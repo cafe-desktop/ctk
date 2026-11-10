@@ -11825,9 +11825,9 @@ G_GNUC_END_IGNORE_DEPRECATIONS
   return result != 0;
 }
 
-static gboolean
-ctk_window_activate_menubar (CtkWindow   *window,
-                             CdkEventKey *event)
+gboolean
+_ctk_window_activate_menubar (CtkWindow   *window,
+                              CdkEventKey *event)
 {
   CtkWindowPrivate *priv = window->priv;
   gchar *accel = NULL;
@@ -12167,7 +12167,7 @@ ctk_window_activate_key (CtkWindow   *window,
         }
     }
 
-  return ctk_window_activate_menubar (window, event);
+  return _ctk_window_activate_menubar (window, event);
 }
 
 static void
