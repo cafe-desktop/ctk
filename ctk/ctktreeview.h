@@ -459,6 +459,8 @@ CDK_AVAILABLE_IN_ALL
 void                          ctk_tree_view_set_search_entry         (CtkTreeView                   *tree_view,
 								      CtkEntry                      *entry);
 CDK_AVAILABLE_IN_ALL
+gboolean                      ctk_tree_view_stop_interactive_search (CtkTreeView                   *tree_view);
+CDK_AVAILABLE_IN_ALL
 CtkTreeViewSearchPositionFunc ctk_tree_view_get_search_position_func (CtkTreeView                   *tree_view);
 CDK_AVAILABLE_IN_ALL
 void                          ctk_tree_view_set_search_position_func (CtkTreeView                   *tree_view,
