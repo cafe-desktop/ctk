@@ -153,6 +153,9 @@ gboolean      ctk_window_export_handle   (CtkWindow               *window,
                                           gpointer                 user_data);
 void          ctk_window_unexport_handle (CtkWindow               *window);
 
+gboolean _ctk_window_activate_menubar (CtkWindow   *window,
+                                       CdkEventKey *event);
+
 G_END_DECLS
 
 #endif /* __CTK_WINDOW_PRIVATE_H__ */
