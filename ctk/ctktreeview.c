@@ -15223,6 +15223,37 @@ ctk_tree_view_search_window_hide (CtkWidget   *search_window,
     }
 }
 
+/**
+ * ctk_tree_view_stop_interactive_search:
+ * @tree_view: A #CtkTreeView
+ *
+ * Stops the interactive search of @tree_view: if the search popup is
+ * shown, it is hidden and the keyboard goes back to the tree view,
+ * just like when the search is cancelled with Escape.  The selected
+ * row is not activated.
+ *
+ * Return value: %TRUE if the interactive search was open and has been
+ * stopped, %FALSE if the search was not active.
+ *
+ * Since: 3.27
+ */
+gboolean
+ctk_tree_view_stop_interactive_search (CtkTreeView *tree_view)
+{
+  g_return_val_if_fail (CTK_IS_TREE_VIEW (tree_view), FALSE);
+
+  if (tree_view->priv->search_window != NULL &&
+      ctk_widget_is_visible (tree_view->priv->search_window))
+    {
+      ctk_tree_view_search_window_hide (tree_view->priv->search_window,
+                                        tree_view,
+                                        ctk_get_current_event_device ());
+      return TRUE;
+    }
+
+  return FALSE;
+}
+
 static void
 ctk_tree_view_search_position_func (CtkTreeView *tree_view,
 				    CtkWidget   *search_window,
