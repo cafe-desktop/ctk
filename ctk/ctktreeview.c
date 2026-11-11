@@ -6142,6 +6142,30 @@ ctk_tree_view_key_press (CtkWidget   *widget,
       gulong popup_menu_id;
       gboolean handled;
 
+      /* The notebook page-change combinations (Ctrl+Tab and
+       * Ctrl+Page_Up/Page_Down) do not belong to the search: ancestors
+       * of the view own them (CtkNotebook binds Ctrl+Page_Up/Page_Down
+       * to "change-current-page"; applications bind Ctrl+Tab, e.g.
+       * baul's ctrl-tab-switch-tabs window handler).  Hide the popup
+       * and let the event continue to the toplevel, exactly like the
+       * popups that do not flag the window (baul's icon view), so that
+       * switching tabs works while the search is open instead of being
+       * swallowed here. */
+      if ((event->state & CDK_CONTROL_MASK) != 0 &&
+          (event->keyval == CDK_KEY_Tab ||
+           event->keyval == CDK_KEY_KP_Tab ||
+           event->keyval == CDK_KEY_ISO_Left_Tab ||
+           event->keyval == CDK_KEY_Page_Up ||
+           event->keyval == CDK_KEY_Page_Down ||
+           event->keyval == CDK_KEY_KP_Page_Up ||
+           event->keyval == CDK_KEY_KP_Page_Down))
+        {
+          ctk_tree_view_search_window_hide (tree_view->priv->search_window,
+                                            tree_view,
+                                            cdk_event_get_device ((CdkEvent *) event));
+          return FALSE;
+        }
+
       new_event = cdk_event_copy ((CdkEvent *) event);
       g_object_unref (((CdkEventKey *) new_event)->window);
       ((CdkEventKey *) new_event)->window =
