@@ -15214,12 +15214,20 @@ ctk_tree_view_search_window_hide (CtkWidget   *search_window,
 	
   if (ctk_widget_get_visible (search_window))
     {
-      /* send focus-in event */
+      /* send focus-out event to the search entry, then hide.  The
+       * toplevel's focus widget never left the tree view (the entry only
+       * became the focus widget of the popup window itself), so the
+       * keyboard returns to the tree view on its own.  Re-focusing the
+       * tree view here would fire a focus-in event in the middle of its
+       * own focus-out handling: applications that activate state on view
+       * focus-in re-enter with the focus chain mid-flight (baul's
+       * fm-list-view focus_in_event_callback makes the hosting slot
+       * active again while the window is switching slots, and its
+       * slot_inactive assertion aborts). */
       send_focus_change (CTK_WIDGET (tree_view->priv->search_entry), device, FALSE);
       ctk_widget_hide (search_window);
       ctk_tree_view_update_interactive_search (tree_view, FALSE);
       ctk_entry_set_text (CTK_ENTRY (tree_view->priv->search_entry), "");
-      send_focus_change (CTK_WIDGET (tree_view), device, TRUE);
     }
 }
 
