@@ -15429,8 +15429,17 @@ ctk_tree_view_search_button_press_event (CtkWidget *widget,
 					 CtkTreeView *tree_view)
 {
   CdkDevice *keyb_device;
+  CtkWidget *event_widget;
 
   g_return_val_if_fail (CTK_IS_WIDGET (widget), FALSE);
+
+  /* Presses on the search entry itself are left to the entry, so that
+   * clicking to place the cursor or double-clicking to select part of
+   * the query works as in any other text entry.  Presses landing on
+   * the frame around the entry keep dismissing the popup. */
+  event_widget = ctk_get_event_widget ((CdkEvent *) event);
+  if (event_widget == tree_view->priv->search_entry)
+    return FALSE;
 
   keyb_device = cdk_device_get_associated_device (event->device);
   ctk_tree_view_search_window_hide (widget, tree_view, keyb_device);
