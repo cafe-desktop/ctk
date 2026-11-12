@@ -834,6 +834,9 @@ static gboolean ctk_tree_view_search_delete_event       (CtkWidget        *widge
 static gboolean ctk_tree_view_search_button_press_event (CtkWidget        *widget,
 							 CdkEventButton   *event,
 							 CtkTreeView      *tree_view);
+static gboolean ctk_tree_view_search_entry_event        (CtkWidget        *entry,
+							 CdkEventAny      *event,
+							 CtkTreeView      *tree_view);
 static gboolean ctk_tree_view_search_scroll_event       (CtkWidget        *entry,
 							 CdkEventScroll   *event,
 							 CtkTreeView      *tree_view);
@@ -11378,6 +11381,9 @@ ctk_tree_view_ensure_interactive_directory (CtkTreeView *tree_view)
   g_signal_connect (tree_view->priv->search_entry,
 		    "activate", G_CALLBACK (ctk_tree_view_search_activate),
 		    tree_view);
+  g_signal_connect (tree_view->priv->search_entry, "event",
+		    G_CALLBACK (ctk_tree_view_search_entry_event),
+		    tree_view);
 
   g_signal_connect (_ctk_entry_get_im_context (CTK_ENTRY (tree_view->priv->search_entry)),
 		    "preedit-changed",
@@ -15480,6 +15486,37 @@ ctk_tree_view_search_scroll_event (CtkWidget *widget,
   return retval;
 }
 
+/* Button presses on the search entry count as search activity, even
+ * though the entry's multipress gesture claims them, so that plain
+ * clicks never reach ::button-press-event (the synthesized
+ * ::button-press-event with CDK_2BUTTON_PRESS/CDK_3BUTTON_PRESS does).
+ * The ::event signal is emitted for every event delivered to the
+ * entry, claimed or not.  Renew the flush timeout on any button press
+ * and return FALSE, leaving event handling untouched. */
+static gboolean
+ctk_tree_view_search_entry_event (CtkWidget   *entry G_GNUC_UNUSED,
+				 CdkEventAny *event,
+				 CtkTreeView *tree_view)
+{
+  if (event->type != CDK_BUTTON_PRESS &&
+      event->type != CDK_2BUTTON_PRESS &&
+      event->type != CDK_3BUTTON_PRESS)
+    return FALSE;
+
+  if (tree_view->priv->typeselect_flush_timeout
+      && !tree_view->priv->search_custom_entry_set)
+    {
+      g_source_remove (tree_view->priv->typeselect_flush_timeout);
+      tree_view->priv->typeselect_flush_timeout =
+        cdk_threads_add_timeout (CTK_TREE_VIEW_SEARCH_DIALOG_TIMEOUT,
+                       (GSourceFunc) ctk_tree_view_search_entry_flush_timeout,
+                       tree_view);
+      g_source_set_name_by_id (tree_view->priv->typeselect_flush_timeout, "[ctk+] ctk_tree_view_search_entry_flush_timeout");
+    }
+
+  return FALSE;
+}
+
 static gboolean
 ctk_tree_view_search_key_press_event (CtkWidget *widget,
 				      CdkEventKey *event,
@@ -15498,6 +15535,26 @@ ctk_tree_view_search_key_press_event (CtkWidget *widget,
       ctk_tree_view_search_window_hide (widget, tree_view,
                                         cdk_event_get_device ((CdkEvent *) event));
       return TRUE;
+    }
+
+  /* Every key press delivered to the popup counts as search activity,
+   * whether it edits the query or not.  Keys like Left/Right or
+   * Home/End just move the entry cursor without changing its text and
+   * bare modifiers change nothing at all, so none of them renews the
+   * flush timeout through the "changed" signal, and the popup used to
+   * close while the user was still interacting with it.  Renew it here
+   * for every key that reaches the popup and is not a cancellation, so
+   * the popup stays open for a full timeout period counted from the
+   * last keystroke. */
+  if (tree_view->priv->typeselect_flush_timeout
+      && !tree_view->priv->search_custom_entry_set)
+    {
+      g_source_remove (tree_view->priv->typeselect_flush_timeout);
+      tree_view->priv->typeselect_flush_timeout =
+        cdk_threads_add_timeout (CTK_TREE_VIEW_SEARCH_DIALOG_TIMEOUT,
+                       (GSourceFunc) ctk_tree_view_search_entry_flush_timeout,
+                       tree_view);
+      g_source_set_name_by_id (tree_view->priv->typeselect_flush_timeout, "[ctk+] ctk_tree_view_search_entry_flush_timeout");
     }
 
   default_accel = ctk_widget_get_modifier_mask (widget,
@@ -15537,18 +15594,6 @@ ctk_tree_view_search_key_press_event (CtkWidget *widget,
         ctk_widget_error_bell (widget);
 
       retval = TRUE;
-    }
-
-  /* renew the flush timeout */
-  if (retval && tree_view->priv->typeselect_flush_timeout
-      && !tree_view->priv->search_custom_entry_set)
-    {
-      g_source_remove (tree_view->priv->typeselect_flush_timeout);
-      tree_view->priv->typeselect_flush_timeout =
-	cdk_threads_add_timeout (CTK_TREE_VIEW_SEARCH_DIALOG_TIMEOUT,
-		       (GSourceFunc) ctk_tree_view_search_entry_flush_timeout,
-		       tree_view);
-      g_source_set_name_by_id (tree_view->priv->typeselect_flush_timeout, "[ctk+] ctk_tree_view_search_entry_flush_timeout");
     }
 
   return retval;
