@@ -12172,6 +12172,61 @@ ctk_window_activate_key (CtkWindow   *window,
   return _ctk_window_activate_menubar (window, event);
 }
 
+gboolean
+_ctk_window_activate_mnemonics (CtkWindow   *window,
+                                CdkEventKey *event)
+{
+  CtkKeyHash *key_hash;
+  CtkWindowKeyEntry *found_entry = NULL;
+  gboolean enable_mnemonics;
+
+  g_return_val_if_fail (CTK_IS_WINDOW (window), FALSE);
+  g_return_val_if_fail (event != NULL, FALSE);
+
+  /* Mnemonic-only mirror of the key hash lookup of
+   * ctk_window_activate_key(): the entries carry the mnemonic
+   * modifier (Alt by default), so the lookup only matches with
+   * the modifier held and plain keys are unaffected.
+   * Accelerators stay out: they must remain swallowed by the
+   * search, exactly like the modal grab that the popup held
+   * before. */
+  key_hash = ctk_window_get_key_hash (window);
+
+  if (key_hash)
+    {
+      GSList *tmp_list;
+      GSList *entries = _ctk_key_hash_lookup (key_hash,
+                                              event->hardware_keycode,
+                                              event->state,
+                                              ctk_accelerator_get_default_mod_mask (),
+                                              event->group);
+
+      g_object_get (ctk_widget_get_settings (CTK_WIDGET (window)),
+                    "ctk-enable-mnemonics", &enable_mnemonics,
+                    NULL);
+
+      for (tmp_list = entries; tmp_list; tmp_list = tmp_list->next)
+        {
+          CtkWindowKeyEntry *entry = tmp_list->data;
+
+          if (entry->is_mnemonic && enable_mnemonics)
+            {
+              found_entry = entry;
+              break;
+            }
+        }
+
+      g_slist_free (entries);
+    }
+
+  if (found_entry)
+    return ctk_window_mnemonic_activate (window,
+                                         found_entry->keyval,
+                                         found_entry->modifiers);
+
+  return FALSE;
+}
+
 static void
 window_update_has_focus (CtkWindow *window)
 {

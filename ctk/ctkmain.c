@@ -2694,15 +2694,23 @@ propagate_event (CtkWidget *widget,
             {
               CtkWidget *focus;
 
-              /* The menu bar accelerator (F10 by default) is not part of
-               * the search: it must keep working while the popup is shown,
-               * exactly like with search popups that do not flag the
-               * window (e.g. the icon view of baul), whose events still
-               * reach ctk_window_activate_key().  Everything else belongs
-               * to the search. */
+              /* The menu bar accelerator (F10 by default) and the
+               * window mnemonics (Alt+F, Alt+E and friends) are not
+               * part of the search: they must keep working while the
+               * popup is shown, exactly like with search popups that do
+               * not flag the window (e.g. the icon view of baul), whose
+               * events still reach ctk_window_activate_key().
+               * Everything else belongs to the search. */
               if (event->type == CDK_KEY_PRESS &&
                   _ctk_window_activate_menubar (CTK_WINDOW (window),
                                                 (CdkEventKey *) event))
+                {
+                  handled_event = TRUE;
+                  focus = NULL;
+                }
+              else if (event->type == CDK_KEY_PRESS &&
+                       _ctk_window_activate_mnemonics (CTK_WINDOW (window),
+                                                       (CdkEventKey *) event))
                 {
                   handled_event = TRUE;
                   focus = NULL;
