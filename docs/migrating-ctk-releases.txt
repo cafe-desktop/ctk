@@ -62,7 +62,7 @@ Migrating from one CTK release to another
 
     Since the commit:
     ctkwindow: keep accelerators and toplevel bindings out of the interactive search
-    https://github.com/cafe-desktop/ctk/commit/41e0a2e66f60791b587a40c6c717d65a3ae9ba59
+    https://github.com/cafe-desktop/ctk/commit/abaf78423d95d288c96aa157953b2e39f58c8348
 
     ctktreeview:
 
@@ -79,4 +79,4 @@ Migrating from one CTK release to another
 
     Since the commit:
     ctktreeview: add ctk_tree_view_stop_interactive_search()
-    https://github.com/cafe-desktop/ctk/commit/d61cf1b0665927c9d29a3f4a893de1e902013a6b
+    https://github.com/cafe-desktop/ctk/commit/3d06885c901af13de33802f06e87b4e522f3b323
