@@ -367,6 +367,12 @@ gboolean ctk_window_propagate_key_event   (CtkWindow        *window,
 					   CdkEventKey      *event);
 
 CDK_AVAILABLE_IN_ALL
+void     ctk_window_set_interactive_search_open (CtkWindow  *window,
+                                                 gboolean    open);
+CDK_AVAILABLE_IN_ALL
+gboolean ctk_window_get_interactive_search_open (CtkWindow  *window);
+
+CDK_AVAILABLE_IN_ALL
 void     ctk_window_present            (CtkWindow *window);
 CDK_AVAILABLE_IN_ALL
 void     ctk_window_present_with_time  (CtkWindow *window,
