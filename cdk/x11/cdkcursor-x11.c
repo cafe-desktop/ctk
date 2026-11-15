@@ -456,6 +456,89 @@ _cdk_x11_display_get_default_arrow_cursor (CdkDisplay *display)
 }
 
 /**
+ * _cdk_x11_display_pointer_over_grab_frame:
+ * @display: a #CdkDisplay
+ * @grab_xwindow: the native window a pointer grab is about to be taken on
+ *
+ * Returns whether the pointer sits on a window of the window manager frame
+ * that wraps @grab_xwindow (a resize border, the titlebar, ...).  The
+ * window under the pointer is then an ancestor or a sibling of
+ * @grab_xwindow inside the same frame hierarchy, which the shared
+ * ancestor below the root detects.
+ *
+ * The cursor shown there is provided by the frame, not by any of our
+ * windows, so window_under_pointer does not know about it; for the resize
+ * borders it is one of the cursors a keyboard-driven grab must not pin
+ * over the whole screen, and the caller replaces it with the default
+ * arrow.  While the pointer is on the root or on unrelated windows the
+ * helper returns %FALSE and the caller freezes the image instead.
+ *
+ * Returns: %TRUE when the pointer is over the frame of @grab_xwindow.
+ **/
+gboolean
+_cdk_x11_display_pointer_over_grab_frame (CdkDisplay *display,
+                                          Window      grab_xwindow)
+{
+  Display *xdisplay;
+  Window root, parent, w, pointer_child;
+  Window *children = NULL;
+  Window chain[16];
+  int root_x, root_y, win_x, win_y, i, n_chain = 0;
+  unsigned int mask, n_dummy = 0;
+
+  if (cdk_display_is_closed (display))
+    return FALSE;
+
+  xdisplay = CDK_DISPLAY_XDISPLAY (display);
+  root = DefaultRootWindow (xdisplay);
+
+  /* The deepest window under the pointer; the grab is not active yet. */
+  if (!XQueryPointer (xdisplay, root, &root, &pointer_child,
+                      &root_x, &root_y, &win_x, &win_y, &mask))
+    return FALSE;
+
+  if (pointer_child == None)
+    return FALSE;
+
+  /* Ancestors of the pointer window, the pointer window itself first,
+   * stopping before the root. */
+  w = pointer_child;
+  while (w != None && w != root && n_chain < (int) G_N_ELEMENTS (chain))
+    {
+      chain[n_chain++] = w;
+      children = NULL;
+      if (!XQueryTree (xdisplay, w, &root, &parent,
+                       &children, &n_dummy))
+        return FALSE;
+      if (children != NULL)
+        XFree (children);
+      w = parent;
+    }
+
+  /* Ancestors of the grab window: a shared one below the root means the
+   * pointer is over the frame holding our window. */
+  w = grab_xwindow;
+  while (w != None && w != root)
+    {
+      for (i = 0; i < n_chain; i++)
+        {
+          if (chain[i] == w)
+            return TRUE;
+        }
+
+      children = NULL;
+      if (!XQueryTree (xdisplay, w, &root, &parent,
+                       &children, &n_dummy))
+        return FALSE;
+      if (children != NULL)
+        XFree (children);
+      w = parent;
+    }
+
+  return FALSE;
+}
+
+/**
  * cdk_x11_cursor_get_xdisplay:
  * @cursor: (type CdkX11Cursor): a #CdkCursor.
  * 

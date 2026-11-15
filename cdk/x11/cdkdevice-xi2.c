@@ -472,17 +472,21 @@ cdk_x11_device_xi2_grab (CdkDevice    *device,
        * cursor there then shows up all over the screen while the grab is
        * active (e.g. menus opened with the keyboard while the pointer is
        * parked outside the window).  Define a cursor on the grab window
-       * so that does not happen: when the pointer shows a cursor none of
-       * our windows provided (the root or the window manager frame
-       * cursor), freeze its exact image, the visible cursor does not
-       * change at all; when the pointer shows one of our own cursors (a
-       * resize border, a text cursor, ...), define the theme's default
-       * arrow instead, a keyboard-driven grab must not pin an application
-       * cursor over the whole screen, and the swap is between different
-       * icons, so no hotspot jump is seen.  Inside the application the
-       * per-window cursors keep working through update_cursor(), because
-       * the grab cursor stays None. */
-      if (_cdk_display_pointer_window_has_cursor (display, device))
+       * so that does not happen: when the pointer shows one of our own
+       * cursors (a resize border, a text cursor, ...), or when it sits on
+       * a resize border or another zone of the window manager frame
+       * wrapping the grabbed toplevel, define the theme's default arrow
+       * instead, a keyboard-driven grab must not pin an application or
+       * frame cursor over the whole screen, and the swap is between
+       * different icons, so no hotspot jump is seen.  When the pointer
+       * shows a cursor none of our windows provided and does not sit on
+       * the frame of the grabbed toplevel (the root, or a window of
+       * another client), freeze its exact image, the visible cursor does
+       * not change at all.  Inside the application the per-window cursors
+       * keep working through update_cursor(), because the grab cursor
+       * stays None. */
+      if (_cdk_display_pointer_window_has_cursor (display, device) ||
+          _cdk_x11_display_pointer_over_grab_frame (display, xwindow))
         {
           CdkCursor *arrow = _cdk_x11_display_get_default_arrow_cursor (display);
 
