@@ -285,6 +285,134 @@ _cdk_x11_display_get_cursor_for_type (CdkDisplay    *display,
   return CDK_CURSOR (private);
 }
 
+typedef struct
+{
+  gulong serial;
+  Cursor xcursor;
+  Display *xdisplay;
+} CurrentCursorCache;
+
+static void
+current_cursor_cache_free (gpointer data)
+{
+  CurrentCursorCache *cache = data;
+
+  if (cache->xcursor != None)
+    XFreeCursor (cache->xdisplay, cache->xcursor);
+  g_slice_free (CurrentCursorCache, cache);
+}
+
+/**
+ * _cdk_x11_display_get_current_cursor:
+ * @display: a #CdkDisplay
+ *
+ * Returns the X cursor the pointer is currently showing, as a #Cursor
+ * suitable for defining on a window.  The cursor image is fetched with
+ * XFixes and cached by its serial, so repeated grabs while the pointer
+ * cursor stays the same reuse the same #Cursor.
+ *
+ * Returns: the X cursor the pointer is currently showing, or %None if it
+ *          could not be fetched.
+ **/
+Cursor
+_cdk_x11_display_get_current_cursor (CdkDisplay *display)
+{
+  static GQuark cache_quark = 0;
+  Display *xdisplay;
+  XFixesCursorImage *image;
+  CurrentCursorCache *cache;
+  XcursorImage *xcimage;
+  Cursor xcursor;
+  gulong serial;
+  unsigned int i, n_pixels;
+
+  if (cdk_display_is_closed (display))
+    return None;
+
+  xdisplay = CDK_DISPLAY_XDISPLAY (display);
+
+  image = XFixesGetCursorImage (xdisplay);
+  if (image == NULL || image->width == 0 || image->height == 0)
+    {
+      if (image != NULL)
+        XFree (image);
+      return None;
+    }
+
+  if (cache_quark == 0)
+    cache_quark = g_quark_from_static_string ("cdk-x11-current-cursor-cache");
+
+  cache = g_object_get_qdata (G_OBJECT (display), cache_quark);
+  if (cache != NULL && cache->serial == image->cursor_serial)
+    {
+      XFree (image);
+      return cache->xcursor;
+    }
+
+  xcimage = XcursorImageCreate (image->width, image->height);
+  if (xcimage == NULL)
+    {
+      XFree (image);
+      return None;
+    }
+
+  xcimage->xhot = image->xhot;
+  xcimage->yhot = image->yhot;
+  n_pixels = (unsigned int) image->width * (unsigned int) image->height;
+  for (i = 0; i < n_pixels; i++)
+    xcimage->pixels[i] = (XcursorPixel) image->pixels[i];
+
+  serial = image->cursor_serial;
+
+  xcursor = XcursorImageLoadCursor (xdisplay, xcimage);
+  XcursorImageDestroy (xcimage);
+  XFree (image);
+
+  if (xcursor == None)
+    return None;
+
+  if (cache != NULL)
+    g_object_steal_qdata (G_OBJECT (display), cache_quark);
+
+  cache = g_slice_new (CurrentCursorCache);
+  cache->serial = serial;
+  cache->xcursor = xcursor;
+  cache->xdisplay = xdisplay;
+  g_object_set_qdata_full (G_OBJECT (display), cache_quark, cache,
+                           current_cursor_cache_free);
+
+  return xcursor;
+}
+
+static GQuark grab_current_cursor_quark = 0;
+
+/* Remembers the X cursor the pointer was showing when the last grab without
+ * an explicit cursor was taken, so cursor-less windows applying their
+ * cursor during the grab keep that image instead of walking up the window
+ * ancestors, where the window manager frame windows can carry a stale
+ * cursor.  Cleared when the grab is released. */
+void
+_cdk_x11_display_set_grab_current_cursor (CdkDisplay *display,
+                                          Cursor      xcursor)
+{
+  if (grab_current_cursor_quark == 0)
+    grab_current_cursor_quark =
+      g_quark_from_static_string ("cdk-x11-grab-current-cursor");
+
+  g_object_set_qdata (G_OBJECT (display), grab_current_cursor_quark,
+                      GUINT_TO_POINTER ((guint) xcursor));
+}
+
+Cursor
+_cdk_x11_display_get_grab_current_cursor (CdkDisplay *display)
+{
+  if (grab_current_cursor_quark == 0)
+    return None;
+
+  return (Cursor) GPOINTER_TO_UINT (g_object_get_qdata (G_OBJECT (display),
+                                                        grab_current_cursor_quark));
+}
+
 /**
  * cdk_x11_cursor_get_xdisplay:
  * @cursor: (type CdkX11Cursor): a #CdkCursor.

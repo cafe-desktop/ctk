@@ -8565,11 +8565,45 @@ _cdk_display_set_window_under_pointer (CdkDisplay *display,
 				       CdkWindow  *window)
 {
   CdkPointerWindowInfo *device_info;
+  CdkWindow *previous, *toplevel;
+  CdkWindowImplClass *impl_class;
 
   device_info = _cdk_display_get_pointer_info (display, device);
 
-  if (device_info->window_under_pointer)
-    g_object_unref (device_info->window_under_pointer);
+  previous = device_info->window_under_pointer;
+
+  /* When the pointer leaves all our windows, the cursor last applied on
+   * the toplevel it left stays defined on the native window: nothing runs
+   * update_cursor() again while there is no window under the pointer.  The
+   * stale cursor is not visible while the pointer is away (the server shows
+   * the cursor of the window under the pointer), but a pointer grab taken
+   * on the toplevel while that cursor is stale makes the server display the
+   * stale cursor all over the screen until the grab ends: opening a menu
+   * with the keyboard (F10, Alt+mnemonic) grabs the pointer on the
+   * application toplevel, so with the pointer parked outside the window
+   * after having crossed one of its client-side resize handles, the menu
+   * shows the resize cursor stuck over the whole screen.  Reset the applied
+   * cursor here; the right one is applied again as soon as the pointer
+   * enters a window.
+   *
+   * While a grab is active, keep the applied cursor untouched instead: it
+   * is what the server displays for the windows outside the grabbed
+   * window, and undefining it would walk up to the window manager frame
+   * windows, whose cursor can be stale too.  The grab itself defines the
+   * pointer cursor on the toplevel when it was taken without an explicit
+   * cursor. */
+  if (window == NULL &&
+      previous != NULL &&
+      !CDK_WINDOW_DESTROYED (previous) &&
+      _cdk_display_get_last_device_grab (display, device) == NULL)
+    {
+      toplevel = get_event_toplevel (previous);
+      impl_class = CDK_WINDOW_IMPL_GET_CLASS (toplevel->impl);
+      impl_class->set_device_cursor (toplevel, device, NULL);
+    }
+
+  if (previous)
+    g_object_unref (previous);
   device_info->window_under_pointer = window;
 
   if (window)
