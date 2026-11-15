@@ -440,6 +440,7 @@ cdk_x11_device_xi2_grab (CdkDevice    *device,
   XIEventMask mask;
   Window xwindow;
   Cursor xcursor;
+  Cursor grab_cursor = None;
   gint status;
 
   display = cdk_device_get_display (device);
@@ -470,18 +471,33 @@ cdk_x11_device_xi2_grab (CdkDevice    *device,
        * WM applied last on the frame side the pointer crossed; a stale
        * cursor there then shows up all over the screen while the grab is
        * active (e.g. menus opened with the keyboard while the pointer is
-       * parked outside the window).  Define the cursor the pointer is
-       * currently showing on the grab window: the cursor does not change
-       * for the windows outside the application, and inside it the
-       * per-window cursors keep working through update_cursor() because
+       * parked outside the window).  Define a cursor on the grab window
+       * so that does not happen: when the pointer shows a cursor none of
+       * our windows provided (the root or the window manager frame
+       * cursor), freeze its exact image, the visible cursor does not
+       * change at all; when the pointer shows one of our own cursors (a
+       * resize border, a text cursor, ...), define the theme's default
+       * arrow instead, a keyboard-driven grab must not pin an application
+       * cursor over the whole screen, and the swap is between different
+       * icons, so no hotspot jump is seen.  Inside the application the
+       * per-window cursors keep working through update_cursor(), because
        * the grab cursor stays None. */
-      Cursor current_cursor = _cdk_x11_display_get_current_cursor (display);
+      if (_cdk_display_pointer_window_has_cursor (display, device))
+        {
+          CdkCursor *arrow = _cdk_x11_display_get_default_arrow_cursor (display);
 
-      if (current_cursor != None)
+          if (arrow != NULL)
+            grab_cursor = cdk_x11_cursor_get_xcursor (arrow);
+        }
+
+      if (grab_cursor == None)
+        grab_cursor = _cdk_x11_display_get_current_cursor (display);
+
+      if (grab_cursor != None)
         XIDefineCursor (CDK_DISPLAY_XDISPLAY (display),
                         device_xi2->device_id,
                         xwindow,
-                        current_cursor);
+                        grab_cursor);
     }
 
   mask.deviceid = device_xi2->device_id;
@@ -506,13 +522,10 @@ cdk_x11_device_xi2_grab (CdkDevice    *device,
   if (status == GrabSuccess && xcursor == None &&
       cdk_device_get_source (device) != CDK_SOURCE_KEYBOARD)
     {
-      /* Remember the cursor the pointer was showing when this grab was
-       * taken: cursor-less windows applying their cursor while the grab
-       * is active keep that image instead of walking up the window
-       * ancestors, where the window manager frame windows can carry a
-       * stale cursor. */
-      Cursor grab_cursor = _cdk_x11_display_get_current_cursor (display);
-
+      /* Remember the cursor the grab was taken with: cursor-less windows
+       * applying their cursor while the grab is active keep that image
+       * instead of walking up the window ancestors, where the window
+       * manager frame windows can carry a stale cursor. */
       if (grab_cursor != None)
         _cdk_x11_display_set_grab_current_cursor (display, grab_cursor);
     }

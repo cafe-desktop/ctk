@@ -8615,6 +8615,31 @@ _cdk_display_set_window_under_pointer (CdkDisplay *display,
   _cdk_display_enable_motion_hints (display, device);
 }
 
+gboolean
+_cdk_display_pointer_window_has_cursor (CdkDisplay *display,
+                                        CdkDevice  *device)
+{
+  CdkPointerWindowInfo *device_info;
+  CdkWindow *cursor_window, *parent;
+
+  device_info = _cdk_display_get_pointer_info (display, device);
+  cursor_window = device_info->window_under_pointer;
+
+  if (cursor_window == NULL)
+    return FALSE;
+
+  /* Same walk update_cursor() does: the cursor is inherited from the
+   * parent, and it stops before the root. */
+  while (cursor_window->cursor == NULL &&
+         !g_hash_table_contains (cursor_window->device_cursor, device) &&
+         (parent = get_event_parent (cursor_window)) != NULL &&
+         parent->window_type != CDK_WINDOW_ROOT)
+    cursor_window = parent;
+
+  return (cursor_window->cursor != NULL ||
+          g_hash_table_contains (cursor_window->device_cursor, device));
+}
+
 /**
  * cdk_pointer_grab:
  * @window: the #CdkWindow which will own the grab (the grab window).

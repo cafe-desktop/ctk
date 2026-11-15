@@ -414,6 +414,48 @@ _cdk_x11_display_get_grab_current_cursor (CdkDisplay *display)
 }
 
 /**
+ * _cdk_x11_display_get_default_arrow_cursor:
+ * @display: a #CdkDisplay
+ *
+ * Returns the theme's default arrow cursor, cached on the display.  Used
+ * for grabs taken without an explicit cursor while the pointer shows one
+ * of our own cursors (a resize border, a text cursor, ...): the
+ * keyboard-driven grab must not pin that application cursor over the
+ * whole screen, and the arrow replaces it.
+ *
+ * Returns: (transfer none): the default arrow #CdkCursor, or %NULL if it
+ *          could not be created.
+ **/
+CdkCursor *
+_cdk_x11_display_get_default_arrow_cursor (CdkDisplay *display)
+{
+  static GQuark arrow_quark = 0;
+  CdkCursor *arrow;
+
+  if (cdk_display_is_closed (display))
+    return NULL;
+
+  if (arrow_quark == 0)
+    arrow_quark = g_quark_from_static_string ("cdk-x11-default-arrow-cursor");
+
+  arrow = g_object_get_qdata (G_OBJECT (display), arrow_quark);
+  if (arrow != NULL)
+    {
+      _cdk_x11_cursor_update_theme (arrow);
+      return arrow;
+    }
+
+  arrow = cdk_cursor_new_from_name (display, "default");
+  if (arrow == NULL)
+    return NULL;
+
+  g_object_set_qdata_full (G_OBJECT (display), arrow_quark, arrow,
+                           g_object_unref);
+
+  return arrow;
+}
+
+/**
  * cdk_x11_cursor_get_xdisplay:
  * @cursor: (type CdkX11Cursor): a #CdkCursor.
  * 
