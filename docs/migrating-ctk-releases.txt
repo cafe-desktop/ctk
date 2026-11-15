@@ -34,3 +34,49 @@ Migrating from one CTK release to another
     Since the commit:
     ctkdialog: add function 'ctk_dialog_add_button_with_icon_name'
     https://github.com/cafe-desktop/ctk/commit/3e456cbc39846b525af39257274af266853a17ce
+
+    Changes in CTK 3.27.0
+    =====================
+    ctkwindow:
+
+    New functions:
+
+    void
+    ctk_window_set_interactive_search_open (CtkWindow  *window,
+                                            gboolean    open)
+
+    gboolean
+    ctk_window_get_interactive_search_open (CtkWindow  *window)
+
+    ctk_window_set_interactive_search_open() marks a toplevel window as
+    having an interactive (typeahead) search popup open, and
+    ctk_window_get_interactive_search_open() returns whether the flag is
+    currently set. While the flag is set, the search popup owns the
+    keyboard: key events delivered to the window do not activate its
+    accelerators nor its toplevel key bindings, but they still reach the
+    focus widget, which forwards them to the search popup.
+
+    Applications that implement their own interactive search popup should
+    set the flag while their popup is mapped, and unset it when the popup
+    is hidden or destroyed.
+
+    Since the commit:
+    ctkwindow: keep accelerators and toplevel bindings out of the interactive search
+    https://github.com/cafe-desktop/ctk/commit/41e0a2e66f60791b587a40c6c717d65a3ae9ba59
+
+    ctktreeview:
+
+    New function:
+
+    gboolean
+    ctk_tree_view_stop_interactive_search (CtkTreeView *tree_view)
+
+    Stops the interactive search of a CtkTreeView: if the search popup is
+    shown, it is hidden and the keyboard goes back to the tree view, just
+    like when the search is cancelled with Escape. The selected row is not
+    activated. It returns TRUE if the interactive search was open and has
+    been stopped, and FALSE if the search was not active.
+
+    Since the commit:
+    ctktreeview: add ctk_tree_view_stop_interactive_search()
+    https://github.com/cafe-desktop/ctk/commit/d61cf1b0665927c9d29a3f4a893de1e902013a6b
