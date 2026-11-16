@@ -290,9 +290,27 @@ cdk_x11_device_xi2_set_window_cursor (CdkDevice *device,
                     CDK_WINDOW_XID (window),
                     cdk_x11_cursor_get_xcursor (cursor));
   else
-    XIUndefineCursor (CDK_WINDOW_XDISPLAY (window),
-                      device_xi2->device_id,
-                      CDK_WINDOW_XID (window));
+    {
+      /* While a grab is active, applying a NULL cursor on the toplevel
+       * makes the server walk up the window ancestors for the cursor to
+       * show, and the window manager frame windows can carry a stale
+       * cursor there.  Keep the cursor the grab started with instead. */
+      CdkDisplay *display = cdk_device_get_display (device);
+      Cursor fallback = None;
+
+      if (_cdk_display_get_last_device_grab (display, device) != NULL)
+        fallback = _cdk_x11_display_get_grab_current_cursor (display);
+
+      if (fallback != None)
+        XIDefineCursor (CDK_WINDOW_XDISPLAY (window),
+                        device_xi2->device_id,
+                        CDK_WINDOW_XID (window),
+                        fallback);
+      else
+        XIUndefineCursor (CDK_WINDOW_XDISPLAY (window),
+                          device_xi2->device_id,
+                          CDK_WINDOW_XID (window));
+    }
 }
 
 static void
@@ -441,6 +459,31 @@ cdk_x11_device_xi2_grab (CdkDevice    *device,
       xcursor = cdk_x11_cursor_get_xcursor (cursor);
     }
 
+  if (xcursor == None &&
+      cdk_device_get_source (device) != CDK_SOURCE_KEYBOARD)
+    {
+      /* A grab without an explicit cursor makes the server display, for
+       * every window outside the grabbed window, the cursor of the grab
+       * window walking up its ancestors.  The grab window here is the
+       * native toplevel of the application, and its ancestors are the
+       * window manager frame windows, whose cursor is whatever arrow the
+       * WM applied last on the frame side the pointer crossed; a stale
+       * cursor there then shows up all over the screen while the grab is
+       * active (e.g. menus opened with the keyboard while the pointer is
+       * parked outside the window).  Define the cursor the pointer is
+       * currently showing on the grab window: the cursor does not change
+       * for the windows outside the application, and inside it the
+       * per-window cursors keep working through update_cursor() because
+       * the cursor argument passed to XIGrabDevice stays None. */
+      Cursor current_cursor = _cdk_x11_display_get_current_cursor (display);
+
+      if (current_cursor != None)
+        XIDefineCursor (CDK_DISPLAY_XDISPLAY (display),
+                        device_xi2->device_id,
+                        xwindow,
+                        current_cursor);
+    }
+
   mask.deviceid = device_xi2->device_id;
   mask.mask = _cdk_x11_device_xi2_translate_event_mask (device_manager_xi2,
                                                         event_mask,
@@ -459,6 +502,20 @@ cdk_x11_device_xi2_grab (CdkDevice    *device,
                          GrabModeAsync, GrabModeAsync,
                          owner_events,
                          &mask);
+
+  if (status == GrabSuccess && xcursor == None &&
+      cdk_device_get_source (device) != CDK_SOURCE_KEYBOARD)
+    {
+      /* Remember the cursor the pointer was showing when this grab was
+       * taken: cursor-less windows applying their cursor while the grab
+       * is active keep that image instead of walking up the window
+       * ancestors, where the window manager frame windows can carry a
+       * stale cursor. */
+      Cursor grab_cursor = _cdk_x11_display_get_current_cursor (display);
+
+      if (grab_cursor != None)
+        _cdk_x11_display_set_grab_current_cursor (display, grab_cursor);
+    }
 
   g_free (mask.mask);
 
@@ -479,6 +536,8 @@ cdk_x11_device_xi2_ungrab (CdkDevice *device,
   serial = NextRequest (CDK_DISPLAY_XDISPLAY (display));
 
   XIUngrabDevice (CDK_DISPLAY_XDISPLAY (display), device_xi2->device_id, time_);
+
+  _cdk_x11_display_set_grab_current_cursor (display, None);
 
   _cdk_x11_display_update_grab_info_ungrab (display, device, time_, serial);
 }
