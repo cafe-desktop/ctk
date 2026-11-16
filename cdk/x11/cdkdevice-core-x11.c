@@ -20,6 +20,7 @@
 
 #include "cdkx11device-core.h"
 #include "cdkdeviceprivate.h"
+#include "cdkdisplayprivate.h"
 
 #include "cdkinternals.h"
 #include "cdkwindow.h"
@@ -225,14 +226,50 @@ cdk_x11_device_core_set_window_cursor (CdkDevice *device,
       /* While a grab is active, applying a NULL cursor on the toplevel
        * makes the server walk up the window ancestors for the cursor to
        * show, and the window manager frame windows can carry a stale
-       * cursor there.  Keep the cursor the grab started with instead. */
+       * cursor there.  Keep the cursor the grab started with instead.
+       *
+       * A NULL on the window the grab was taken on is the unpin request
+       * the pointer proxy sends with the first pointer movement under the
+       * grab: cursorless grabs freeze on the grab window the image the
+       * pointer was showing when they were taken, so that the repeated
+       * menu grabs of a held key do not flicker the cursor while the
+       * pointer sits still on another client's window, but once the
+       * pointer moves that image would follow it over the whole screen,
+       * and a keyboard-driven grab must not pin an application cursor
+       * that way; swap it for the theme's default arrow and remember the
+       * arrow for the rest of the grab, so the windows applying their
+       * cursor during it keep it consistent.  The grab window of a
+       * keyboard-opened popup menu is the menu toplevel, whose hover
+       * updates arrive here too, and they unpin as well, which is right,
+       * the pointer has then moved into the menu.  Grabs taken with an
+       * explicit cursor remember None and show that cursor regardless of
+       * the window attributes, so their grab window is left untouched. */
       CdkDisplay *display = cdk_device_get_display (device);
-      Cursor fallback = None;
+      CdkDeviceGrabInfo *grab;
+      CdkCursor *arrow;
+      Cursor grab_cursor = None;
 
-      if (_cdk_display_get_last_device_grab (display, device) != NULL)
-        fallback = _cdk_x11_display_get_grab_current_cursor (display);
+      grab = _cdk_display_get_last_device_grab (display, device);
+      if (grab != NULL)
+        grab_cursor = _cdk_x11_display_get_grab_current_cursor (display);
 
-      xcursor = fallback;
+      if (grab != NULL && window == grab->window)
+        {
+          arrow = _cdk_x11_display_get_default_arrow_cursor (display);
+
+          if (grab_cursor == None || arrow == NULL)
+            return;
+
+          if (grab_cursor != cdk_x11_cursor_get_xcursor (arrow))
+            {
+              grab_cursor = cdk_x11_cursor_get_xcursor (arrow);
+              _cdk_x11_display_set_grab_current_cursor (display, grab_cursor);
+            }
+          else
+            return;
+        }
+
+      xcursor = grab_cursor;
     }
   else
     xcursor = cdk_x11_cursor_get_xcursor (cursor);

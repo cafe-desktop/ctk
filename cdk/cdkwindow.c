@@ -8591,7 +8591,7 @@ _cdk_display_set_window_under_pointer (CdkDisplay *display,
    * is what the server displays for the windows outside the grabbed
    * window, and undefining it would walk up to the window manager frame
    * windows, whose cursor can be stale too.  The grab itself defines on
-   * the toplevel the cursor the pointer was showing when it was taken
+   * the grab window the cursor the pointer was showing when it was taken
    * without an explicit cursor.
    *
    * The same applies to the leaves caused by the grabs of other clients:
@@ -9381,10 +9381,31 @@ proxy_pointer_event (CdkDisplay                 *display,
   if (source_event->type == CDK_MOTION_NOTIFY ||
       source_event->type == CDK_TOUCH_UPDATE)
     {
+      CdkDeviceGrabInfo *grab;
       CdkWindow *event_win;
       guint evmask;
       gboolean is_hint;
       CdkEventSequence *sequence;
+
+      /* The cursor a cursorless grab shows over the windows outside the
+       * grabbed one is the image frozen on the grab window when the grab
+       * was taken, so that the repeated menu grabs of a held key do not
+       * flicker the cursor while the pointer sits still on another
+       * client's window.  Once the pointer moves under the grab, that
+       * image would follow it over the whole screen, and a grab must not
+       * pin an application cursor that way: apply a NULL cursor on the
+       * grab window, the device swaps the frozen image for the theme's
+       * default arrow there.  The request is a no-op for the grabs that
+       * defined the arrow instead of freezing, and for the grabs taken
+       * with an explicit cursor, which show that cursor regardless of the
+       * window attributes; implicit grabs have no frozen image and are
+       * skipped here. */
+      grab = _cdk_display_get_last_device_grab (display, device);
+      if (grab != NULL && !grab->implicit &&
+          !CDK_WINDOW_DESTROYED (grab->window))
+        CDK_DEVICE_GET_CLASS (device)->set_window_cursor (device,
+                                                          grab->window,
+                                                          NULL);
 
       sequence = cdk_event_get_event_sequence (source_event);
 
