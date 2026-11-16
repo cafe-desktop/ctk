@@ -451,14 +451,18 @@ cdk_x11_device_core_grab (CdkDevice    *device,
                              xcursor,
                              time_);
 
-      if (status == GrabSuccess && xcursor == None)
+      if (status == GrabSuccess)
         {
           /* Remember the cursor the grab was taken with: cursor-less windows
            * applying their cursor while the grab is active keep that image
            * instead of walking up the window ancestors, where the window
-           * manager frame windows can carry a stale cursor. */
-          if (grab_cursor != None)
-            _cdk_x11_display_set_grab_current_cursor (display, grab_cursor);
+           * manager frame windows can carry a stale cursor.  A grab taken
+           * with an explicit cursor remembers None instead, so windows
+           * applying their NULL cursor while that grab is active inherit
+           * the explicit cursor the server shows on the grab window while
+           * the grab lasts, not an image remembered from an earlier
+           * cursorless grab. */
+          _cdk_x11_display_set_grab_current_cursor (display, grab_cursor);
         }
     }
 
