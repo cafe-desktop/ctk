@@ -595,7 +595,16 @@ cdk_x11_device_xi2_ungrab (CdkDevice *device,
 
   XIUngrabDevice (CDK_DISPLAY_XDISPLAY (display), device_xi2->device_id, time_);
 
-  _cdk_x11_display_set_grab_current_cursor (display, None);
+  /* The device being ungrabbed can be a keyboard: releasing a keyboard grab
+   * while the pointer grab of the device pair is still active must not erase
+   * the image the pointer grab remembered, or the unpin request sent with the
+   * first pointer movement finds a None remembered cursor and returns early,
+   * leaving the frozen image pinned over the whole screen until the grab ends
+   * instead of swapping it for the theme's default arrow.  The core backend
+   * only clears on pointer ungrabs too, and the XI2 grab only remembers the
+   * cursor on non-keyboard devices. */
+  if (cdk_device_get_source (device) != CDK_SOURCE_KEYBOARD)
+    _cdk_x11_display_set_grab_current_cursor (display, None);
 
   _cdk_x11_display_update_grab_info_ungrab (display, device, time_, serial);
 }
