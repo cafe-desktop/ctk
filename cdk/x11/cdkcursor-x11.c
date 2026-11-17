@@ -135,6 +135,12 @@ find_in_cache (CdkDisplay    *display,
   return NULL;
 }
 
+typedef struct _CurrentCursorCache CurrentCursorCache;
+
+static void current_cursor_cache_free (gpointer data);
+static GQuark current_cursor_cache_quark = 0;
+static GQuark default_arrow_cursor_quark = 0;
+
 /* Called by cdk_x11_display_finalize to flush any cached cursors
  * for a dead display.
  */
@@ -163,6 +169,32 @@ _cdk_x11_cursor_display_finalize (CdkDisplay *display)
           itemp = &(item->next);
           item = item->next;
         }
+    }
+
+  /* The current cursor cache and the default arrow are held in qdata on
+   * the display and carry X resources of it too: release them here, while
+   * the connection is still open, like the list above.  Their qdata
+   * destroy notifies would otherwise run at the end of the finalize
+   * stage, after cdk_x11_display_finalize has already called
+   * XCloseDisplay and freed the Display. */
+  if (current_cursor_cache_quark != 0)
+    {
+      CurrentCursorCache *cache;
+
+      cache = g_object_steal_qdata (G_OBJECT (display),
+                                    current_cursor_cache_quark);
+      if (cache != NULL)
+        current_cursor_cache_free (cache);
+    }
+
+  if (default_arrow_cursor_quark != 0)
+    {
+      CdkCursor *arrow;
+
+      arrow = g_object_steal_qdata (G_OBJECT (display),
+                                    default_arrow_cursor_quark);
+      if (arrow != NULL)
+        g_object_unref (arrow);
     }
 }
 
@@ -285,12 +317,12 @@ _cdk_x11_display_get_cursor_for_type (CdkDisplay    *display,
   return CDK_CURSOR (private);
 }
 
-typedef struct
+struct _CurrentCursorCache
 {
   gulong serial;
   Cursor xcursor;
   Display *xdisplay;
-} CurrentCursorCache;
+};
 
 static void
 current_cursor_cache_free (gpointer data)
@@ -317,7 +349,6 @@ current_cursor_cache_free (gpointer data)
 Cursor
 _cdk_x11_display_get_current_cursor (CdkDisplay *display)
 {
-  static GQuark cache_quark = 0;
   Display *xdisplay;
   XFixesCursorImage *image;
   CurrentCursorCache *cache;
@@ -339,10 +370,10 @@ _cdk_x11_display_get_current_cursor (CdkDisplay *display)
       return None;
     }
 
-  if (cache_quark == 0)
-    cache_quark = g_quark_from_static_string ("cdk-x11-current-cursor-cache");
+  if (current_cursor_cache_quark == 0)
+    current_cursor_cache_quark = g_quark_from_static_string ("cdk-x11-current-cursor-cache");
 
-  cache = g_object_get_qdata (G_OBJECT (display), cache_quark);
+  cache = g_object_get_qdata (G_OBJECT (display), current_cursor_cache_quark);
   if (cache != NULL && cache->serial == image->cursor_serial)
     {
       XFree (image);
@@ -373,13 +404,13 @@ _cdk_x11_display_get_current_cursor (CdkDisplay *display)
 
   if (cache != NULL)
     current_cursor_cache_free (g_object_steal_qdata (G_OBJECT (display),
-                               cache_quark));
+                               current_cursor_cache_quark));
 
   cache = g_slice_new (CurrentCursorCache);
   cache->serial = serial;
   cache->xcursor = xcursor;
   cache->xdisplay = xdisplay;
-  g_object_set_qdata_full (G_OBJECT (display), cache_quark, cache,
+  g_object_set_qdata_full (G_OBJECT (display), current_cursor_cache_quark, cache,
                            current_cursor_cache_free);
 
   return xcursor;
@@ -434,16 +465,15 @@ _cdk_x11_display_get_grab_current_cursor (CdkDisplay *display)
 CdkCursor *
 _cdk_x11_display_get_default_arrow_cursor (CdkDisplay *display)
 {
-  static GQuark arrow_quark = 0;
   CdkCursor *arrow;
 
   if (cdk_display_is_closed (display))
     return NULL;
 
-  if (arrow_quark == 0)
-    arrow_quark = g_quark_from_static_string ("cdk-x11-default-arrow-cursor");
+  if (default_arrow_cursor_quark == 0)
+    default_arrow_cursor_quark = g_quark_from_static_string ("cdk-x11-default-arrow-cursor");
 
-  arrow = g_object_get_qdata (G_OBJECT (display), arrow_quark);
+  arrow = g_object_get_qdata (G_OBJECT (display), default_arrow_cursor_quark);
   if (arrow != NULL)
     {
       _cdk_x11_cursor_update_theme (arrow);
@@ -454,7 +484,7 @@ _cdk_x11_display_get_default_arrow_cursor (CdkDisplay *display)
   if (arrow == NULL)
     return NULL;
 
-  g_object_set_qdata_full (G_OBJECT (display), arrow_quark, arrow,
+  g_object_set_qdata_full (G_OBJECT (display), default_arrow_cursor_quark, arrow,
                            g_object_unref);
 
   return arrow;
