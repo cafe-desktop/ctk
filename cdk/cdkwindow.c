@@ -8591,8 +8591,9 @@ _cdk_display_set_window_under_pointer (CdkDisplay *display,
    * is what the server displays for the windows outside the grabbed
    * window, and undefining it would walk up to the window manager frame
    * windows, whose cursor can be stale too.  The grab itself defines on
-   * the grab window the cursor the pointer was showing when it was taken
-   * without an explicit cursor.
+   * the grab window the theme's default arrow when it was taken without
+   * an explicit cursor, or the image the pointer was showing when the
+   * theme provides no arrow.
    *
    * The same applies to the leaves caused by the grabs of other clients:
    * their native crossing events are only ignored here when we have a
@@ -8624,31 +8625,6 @@ _cdk_display_set_window_under_pointer (CdkDisplay *display,
     }
 
   _cdk_display_enable_motion_hints (display, device);
-}
-
-gboolean
-_cdk_display_pointer_window_has_cursor (CdkDisplay *display,
-                                        CdkDevice  *device)
-{
-  CdkPointerWindowInfo *device_info;
-  CdkWindow *cursor_window, *parent;
-
-  device_info = _cdk_display_get_pointer_info (display, device);
-  cursor_window = device_info->window_under_pointer;
-
-  if (cursor_window == NULL)
-    return FALSE;
-
-  /* Same walk update_cursor() does: the cursor is inherited from the
-   * parent, and it stops before the root. */
-  while (cursor_window->cursor == NULL &&
-         !g_hash_table_contains (cursor_window->device_cursor, device) &&
-         (parent = get_event_parent (cursor_window)) != NULL &&
-         parent->window_type != CDK_WINDOW_ROOT)
-    cursor_window = parent;
-
-  return (cursor_window->cursor != NULL ||
-          g_hash_table_contains (cursor_window->device_cursor, device));
 }
 
 /**
@@ -9388,18 +9364,17 @@ proxy_pointer_event (CdkDisplay                 *display,
       CdkEventSequence *sequence;
 
       /* The cursor a cursorless grab shows over the windows outside the
-       * grabbed one is the image frozen on the grab window when the grab
-       * was taken, so that the repeated menu grabs of a held key do not
-       * flicker the cursor while the pointer sits still on another
-       * client's window.  Once the pointer moves under the grab, that
-       * image would follow it over the whole screen, and a grab must not
-       * pin an application cursor that way: apply a NULL cursor on the
-       * grab window, the device swaps the frozen image for the theme's
-       * default arrow there.  The request is a no-op for the grabs that
-       * defined the arrow instead of freezing, and for the grabs taken
-       * with an explicit cursor, which show that cursor regardless of the
-       * window attributes; implicit grabs have no frozen image and are
-       * skipped here. */
+       * grabbed one is the theme's default arrow the grab defined on the
+       * grab window when it was taken, or, when the theme provided no
+       * arrow, the image frozen there instead.  Once the pointer moves
+       * under the grab, a frozen image would follow it over the whole
+       * screen, and a grab must not pin an application cursor that way:
+       * apply a NULL cursor on the grab window, the device swaps the
+       * frozen image for the theme's default arrow there.  The request is
+       * a no-op for the grabs that defined the arrow, which already
+       * remember it, and for the grabs taken with an explicit cursor,
+       * which show that cursor regardless of the window attributes;
+       * implicit grabs have no frozen image and are skipped here. */
       grab = _cdk_display_get_last_device_grab (display, device);
       if (grab != NULL && !grab->implicit &&
           !CDK_WINDOW_DESTROYED (grab->window))

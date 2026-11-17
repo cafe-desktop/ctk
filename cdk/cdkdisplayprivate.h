@@ -309,8 +309,6 @@ void                _cdk_display_enable_motion_hints  (CdkDisplay       *display
                                                        CdkDevice        *device);
 CdkPointerWindowInfo * _cdk_display_get_pointer_info  (CdkDisplay       *display,
                                                        CdkDevice        *device);
-gboolean            _cdk_display_pointer_window_has_cursor (CdkDisplay       *display,
-                                                            CdkDevice        *device);
 void                _cdk_display_pointer_info_foreach (CdkDisplay       *display,
                                                        CdkDisplayPointerInfoForeach func,
                                                        gpointer          user_data);

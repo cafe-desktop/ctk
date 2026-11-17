@@ -343,6 +343,10 @@ current_cursor_cache_free (gpointer data)
  * XFixes and cached by its serial, so repeated grabs while the pointer
  * cursor stays the same reuse the same #Cursor.
  *
+ * Used as the fallback of the cursorless grabs that cannot get the
+ * theme's default arrow: the grab then freezes the image the pointer is
+ * showing on the grab window instead.
+ *
  * Returns: the X cursor the pointer is currently showing, or %None if it
  *          could not be fetched.
  **/
@@ -454,10 +458,11 @@ _cdk_x11_display_get_grab_current_cursor (CdkDisplay *display)
  * @display: a #CdkDisplay
  *
  * Returns the theme's default arrow cursor, cached on the display.  Used
- * for grabs taken without an explicit cursor while the pointer shows one
- * of our own cursors (a resize border, a text cursor, ...): the
- * keyboard-driven grab must not pin that application cursor over the
- * whole screen, and the arrow replaces it.
+ * for grabs taken without an explicit cursor, whatever the pointer is
+ * showing: an application cursor of this client (a resize border, a text
+ * cursor, ...), one of another client, or a cursor of the window manager
+ * frame wrapping the grabbed toplevel, a keyboard-driven grab must not
+ * pin any of those over the whole screen, and the arrow replaces them.
  *
  * Returns: (transfer none): the default arrow #CdkCursor, or %NULL if it
  *          could not be created.
@@ -488,89 +493,6 @@ _cdk_x11_display_get_default_arrow_cursor (CdkDisplay *display)
                            g_object_unref);
 
   return arrow;
-}
-
-/**
- * _cdk_x11_display_pointer_over_grab_frame:
- * @display: a #CdkDisplay
- * @grab_xwindow: the native window a pointer grab is about to be taken on
- *
- * Returns whether the pointer sits on a window of the window manager frame
- * that wraps @grab_xwindow (a resize border, the titlebar, ...).  The
- * window under the pointer is then an ancestor or a sibling of
- * @grab_xwindow inside the same frame hierarchy, which the shared
- * ancestor below the root detects.
- *
- * The cursor shown there is provided by the frame, not by any of our
- * windows, so window_under_pointer does not know about it; for the resize
- * borders it is one of the cursors a keyboard-driven grab must not pin
- * over the whole screen, and the caller replaces it with the default
- * arrow.  While the pointer is on the root or on unrelated windows the
- * helper returns %FALSE and the caller freezes the image instead.
- *
- * Returns: %TRUE when the pointer is over the frame of @grab_xwindow.
- **/
-gboolean
-_cdk_x11_display_pointer_over_grab_frame (CdkDisplay *display,
-                                          Window      grab_xwindow)
-{
-  Display *xdisplay;
-  Window root, parent, w, pointer_child;
-  Window *children = NULL;
-  Window chain[16];
-  int root_x, root_y, win_x, win_y, i, n_chain = 0;
-  unsigned int mask, n_dummy = 0;
-
-  if (cdk_display_is_closed (display))
-    return FALSE;
-
-  xdisplay = CDK_DISPLAY_XDISPLAY (display);
-  root = DefaultRootWindow (xdisplay);
-
-  /* The deepest window under the pointer; the grab is not active yet. */
-  if (!XQueryPointer (xdisplay, root, &root, &pointer_child,
-                      &root_x, &root_y, &win_x, &win_y, &mask))
-    return FALSE;
-
-  if (pointer_child == None)
-    return FALSE;
-
-  /* Ancestors of the pointer window, the pointer window itself first,
-   * stopping before the root. */
-  w = pointer_child;
-  while (w != None && w != root && n_chain < (int) G_N_ELEMENTS (chain))
-    {
-      chain[n_chain++] = w;
-      children = NULL;
-      if (!XQueryTree (xdisplay, w, &root, &parent,
-                       &children, &n_dummy))
-        return FALSE;
-      if (children != NULL)
-        XFree (children);
-      w = parent;
-    }
-
-  /* Ancestors of the grab window: a shared one below the root means the
-   * pointer is over the frame holding our window. */
-  w = grab_xwindow;
-  while (w != None && w != root)
-    {
-      for (i = 0; i < n_chain; i++)
-        {
-          if (chain[i] == w)
-            return TRUE;
-        }
-
-      children = NULL;
-      if (!XQueryTree (xdisplay, w, &root, &parent,
-                       &children, &n_dummy))
-        return FALSE;
-      if (children != NULL)
-        XFree (children);
-      w = parent;
-    }
-
-  return FALSE;
 }
 
 /**

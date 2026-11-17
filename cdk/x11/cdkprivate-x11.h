@@ -272,8 +272,6 @@ CdkCursor *_cdk_x11_display_get_cursor_for_surface  (CdkDisplay    *display,
                                                      gdouble        x,
                                                      gdouble        y);
 Cursor     _cdk_x11_display_get_current_cursor      (CdkDisplay    *display);
-gboolean   _cdk_x11_display_pointer_over_grab_frame (CdkDisplay    *display,
-                                                     Window         grab_xwindow);
 void       _cdk_x11_display_set_grab_current_cursor (CdkDisplay    *display,
                                                      Cursor         xcursor);
 Cursor     _cdk_x11_display_get_grab_current_cursor (CdkDisplay    *display);

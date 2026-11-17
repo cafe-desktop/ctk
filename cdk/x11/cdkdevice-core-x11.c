@@ -117,8 +117,8 @@ cdk_x11_device_core_init (CdkX11DeviceCore *device_core)
 
 static gboolean
 impl_coord_in_window (CdkWindow *window,
-		      int        impl_x,
-		      int        impl_y)
+                      int        impl_x,
+                      int        impl_y)
 {
   if (impl_x < window->abs_x ||
       impl_x >= window->abs_x + window->width)
@@ -230,20 +230,20 @@ cdk_x11_device_core_set_window_cursor (CdkDevice *device,
        *
        * A NULL on the window the grab was taken on is the unpin request
        * the pointer proxy sends with the first pointer movement under the
-       * grab: cursorless grabs freeze on the grab window the image the
-       * pointer was showing when they were taken, so that the repeated
-       * menu grabs of a held key do not flicker the cursor while the
-       * pointer sits still on another client's window, but once the
-       * pointer moves that image would follow it over the whole screen,
-       * and a keyboard-driven grab must not pin an application cursor
-       * that way; swap it for the theme's default arrow and remember the
-       * arrow for the rest of the grab, so the windows applying their
-       * cursor during it keep it consistent.  The grab window of a
-       * keyboard-opened popup menu is the menu toplevel, whose hover
-       * updates arrive here too, and they unpin as well, which is right,
-       * the pointer has then moved into the menu.  Grabs taken with an
-       * explicit cursor remember None and show that cursor regardless of
-       * the window attributes, so their grab window is left untouched. */
+       * grab.  The cursorless grabs remember the theme's default arrow
+       * they defined on the grab window when they were taken, and the
+       * request is a no-op on them; the grabs that had to freeze the
+       * image the pointer was showing instead, because the theme
+       * provided no arrow, get the swap here, the arrow remembered for
+       * the rest of the grab, so the windows applying their cursor
+       * during it keep it consistent: a keyboard-driven grab must not
+       * pin an application cursor over the whole screen once the pointer
+       * moves.  The grab window of a keyboard-opened popup menu is the
+       * menu toplevel, whose hover updates arrive here too, and they
+       * unpin as well, which is right, the pointer has then moved into
+       * the menu.  Grabs taken with an explicit cursor remember None and
+       * show that cursor regardless of the window attributes, so their
+       * grab window is left untouched. */
       CdkDisplay *display = cdk_device_get_display (device);
       CdkDeviceGrabInfo *grab;
       CdkCursor *arrow;
@@ -411,6 +411,7 @@ cdk_x11_device_core_grab (CdkDevice    *device,
     {
       Cursor xcursor;
       Cursor grab_cursor = None;
+      CdkCursor *arrow;
       guint xevent_mask;
       gint i;
 
@@ -433,30 +434,32 @@ cdk_x11_device_core_grab (CdkDevice    *device,
            * the WM applied last on the frame side the pointer crossed; a
            * stale cursor there then shows up all over the screen while the
            * grab is active (e.g. menus opened with the keyboard while the
-           * pointer is parked outside the window).  Define a cursor on the
-           * grab window so that does not happen: when the pointer shows
-           * one of our own cursors (a resize border, a text cursor, ...),
-           * or when it sits on a resize border or another zone of the
-           * window manager frame wrapping the grabbed toplevel, define the
-           * theme's default arrow instead, a keyboard-driven grab must not
-           * pin an application or frame cursor over the whole screen, and
-           * the swap is between different icons, so no hotspot jump is
-           * seen.  When the pointer shows a cursor none of our windows
-           * provided and does not sit on the frame of the grabbed toplevel
-           * (the root, or a window of another client), freeze its exact
-           * image, the visible cursor does not change at all.  Inside the
-           * application the per-window cursors keep working through
-           * update_cursor(), because the cursor argument passed to
+           * pointer is parked outside the window).  Define the theme's
+           * default arrow on the grab window so that does not happen,
+           * whatever the pointer is showing: a keyboard-driven grab must
+           * not pin an application cursor, ours or another client's, or a
+           * frame cursor over the whole screen, and the swap is between
+           * different icons, so no hotspot jump is seen.  The arrow also
+           * matches what a click does under the grab, the first click on a
+           * window of another client only dismisses the menu.  The churn of
+           * the toggling grabs of a held key flickers the cursor between
+           * the arrow and the window under the pointer at the key repeat
+           * rate while the pointer sits still; freezing the foreign image
+           * avoided that flicker, but the steady foreign cursor is
+           * precisely the promise the grab breaks with the first click.
+           * Inside the application the per-window cursors keep working
+           * through update_cursor(), because the cursor argument passed to
            * XGrabPointer stays None. */
-          if (_cdk_display_pointer_window_has_cursor (display, device) ||
-              _cdk_x11_display_pointer_over_grab_frame (display, xwindow))
-            {
-              CdkCursor *arrow = _cdk_x11_display_get_default_arrow_cursor (display);
+          arrow = _cdk_x11_display_get_default_arrow_cursor (display);
 
-              if (arrow != NULL)
-                grab_cursor = cdk_x11_cursor_get_xcursor (arrow);
-            }
+          if (arrow != NULL)
+            grab_cursor = cdk_x11_cursor_get_xcursor (arrow);
 
+          /* A theme that fails to provide the default arrow falls back to
+           * freezing the exact image the pointer shows: the visible cursor
+           * does not change at all, the stale frame cursor does not come
+           * back, and the frozen image stays for as long as the grab
+           * lasts. */
           if (grab_cursor == None)
             grab_cursor = _cdk_x11_display_get_current_cursor (display);
 
