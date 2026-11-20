@@ -1,0 +1,21 @@
+cdk: don't reset the applied cursor on leaves caused by grabs
+
+The native crossing events that a client receives when another client
+grabs or releases the pointer are only ignored when the client has a
+grab of its own; when it has none they are handled, and a leave caused
+by a grab of another client clears the window under the pointer and
+resets the applied cursor.  Since all cursors are applied on the
+toplevel, undefining it leaves the whole window hierarchy without a
+cursor on the server, and until the following enter event is processed
+the server walks up the ancestors to the window manager frame windows,
+whose cursor flashes over the client area; a pointer grab taken by the
+other client in that instant freezes the frame cursor instead of the
+cursor the pointer was showing.  Holding F10 on an app while the
+pointer sits on another app's text box makes the menu grabs flicker the
+frame cursor over the text box on every menu toggle.
+
+Restrict the reset to leaves not caused by grabs: the applied cursor is
+not visible while the other client's grab lasts, and it is what the
+server shows again as soon as the grab ends, so keeping it defined
+removes the flash and keeps the frame cursor from being frozen by grabs
+taken in the meantime.

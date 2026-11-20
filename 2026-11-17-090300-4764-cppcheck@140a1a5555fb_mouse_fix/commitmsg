@@ -1,0 +1,15 @@
+cdk: don't forget the grab cursor on keyboard ungrabs
+
+The XI2 ungrab clears the remembered grab cursor unconditionally, but
+the device being ungrabbed can be a keyboard: releasing a keyboard grab
+while the pointer grab of the device pair is still active erases the
+image the pointer grab remembered, and the unpin request sent with the
+first pointer movement finds a None remembered cursor and returns
+early, so the frozen image keeps following the pointer over the whole
+screen until the grab ends instead of swapping to the theme's default
+arrow.
+
+Only clear the remembered cursor when the device being ungrabbed is not
+a keyboard, like the core backend does on its pointer ungrabs and like
+the XI2 grab does when it remembers the cursor only on non-keyboard
+devices.

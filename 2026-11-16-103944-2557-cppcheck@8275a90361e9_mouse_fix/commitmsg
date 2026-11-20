@@ -1,0 +1,14 @@
+cdk: forget the grab cursor on grabs with an explicit cursor
+
+A successful grab remembers the cursor it was taken with only when it
+was taken without an explicit cursor: when a grab with an explicit
+cursor is taken while a cursorless grab is still remembered, the
+remembered image survives until the ungrab, and windows applying their
+NULL cursor while the explicit grab is active redefine that remembered
+image instead of inheriting the explicit cursor of the grab window,
+which the server shows on the grab window while the grab lasts.
+
+Remember the cursor the grab was taken with on every successful grab:
+cursorless grabs keep remembering the frozen or arrow image, and grabs
+with an explicit cursor remember None, so those windows walk up to the
+grab window and inherit its explicit cursor.

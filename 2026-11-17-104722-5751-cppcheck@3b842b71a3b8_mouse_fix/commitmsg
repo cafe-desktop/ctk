@@ -1,0 +1,15 @@
+cdk: free the cursor caches before the display's connection closes
+
+The current cursor cache and the default arrow are held in qdata on the
+display, and GObject clears the qdata at the end of the finalize stage,
+after the class finalize chain has run: by then
+cdk_x11_display_finalize has already called XCloseDisplay and freed the
+Display, so their destroy notifies calling XFreeCursor ran on freed
+memory whenever the display object was destroyed after a grab had
+frozen a cursor.  The pre-existing cursor cache list avoids this by
+being released from _cdk_x11_cursor_display_finalize, which runs before
+XCloseDisplay.
+
+Release both qdata there too, like the list, so the X cursor resources
+are freed while the connection is still open on every teardown path,
+and the destroy notifies only remain as a safety net.

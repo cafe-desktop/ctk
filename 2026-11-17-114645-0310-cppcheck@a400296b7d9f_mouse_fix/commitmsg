@@ -1,0 +1,29 @@
+cdk: define the default arrow on cursorless grabs over foreign cursors
+
+The cursorless grabs taken while the pointer shows one of our own
+cursors, or sits on the frame of the grabbed toplevel, already define
+the theme's default arrow on the grab window: a keyboard-driven grab
+must not pin an application or frame cursor over the whole screen.  A
+grab taken while the pointer shows a cursor none of our windows
+provided (the root, or a window of another client) still freezes that
+foreign image on the grab window instead, so that the toggling grabs of
+a held key do not flicker the cursor between the arrow and the window
+under the pointer at the key repeat rate while the pointer sits still.
+
+But the frozen image pins the foreign cursor over the whole screen for
+as long as the grab lasts, and a menu opened with a single F10 press
+with the pointer parked on another application's text box then keeps
+the text cursor on the screen while the menu is open, promising a click
+the menu is going to eat, the first click only dismisses the menu.
+Define the theme's default arrow there as well, the grab must not pin a
+foreign cursor either, and the arrow matches what a click does under
+the grab; the churn of a held key flickers the cursor between the arrow
+and the window under the pointer while the key repeats, freezing the
+image avoided that flicker, but the steady foreign cursor is precisely
+the promise the grab breaks.
+
+The helpers that classified the cursor the pointer was showing for the
+grab are not needed anymore and go away.  A theme that fails to provide
+the default arrow falls back to freezing the exact image the pointer
+shows, the visible cursor does not change at all and the stale frame
+cursor does not come back.

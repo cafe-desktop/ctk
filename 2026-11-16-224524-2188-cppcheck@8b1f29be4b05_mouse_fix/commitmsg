@@ -1,0 +1,25 @@
+cdk: unpin the frozen grab cursor when the pointer moves
+
+The image that cursorless grabs freeze on the grab window is meant for
+the repeated menu grabs of a held key: the toggling grabs would
+otherwise show the theme's arrow while active and the cursor of the
+window under the pointer while inactive, flickering at the key repeat
+rate while the pointer sits still on, say, another application's text
+box.
+
+The frozen image outlives the churn, though: pressing the key once and
+then moving the pointer keeps that image over the whole screen until the
+grab ends, whatever window it passes, because the server shows the grab
+window's cursor for every window outside the grabbed one.  It happens
+whichever application the pointer sits on; the frozen image comes from
+the grabbing client, not from the window under the pointer.
+
+Let the first pointer movement under the grab unpin it: the pointer
+proxy applies a NULL cursor on the grab window, which nothing else does
+while the grab lasts, and the device swaps the frozen image for the
+theme's default arrow there, remembering the arrow for the rest of the
+grab so the windows applying their cursor during it stay consistent.
+Grabs taken with an explicit cursor have no frozen image to unpin and
+show that cursor regardless of the window attributes, so their grab
+window is left untouched, and the request is a no-op for the grabs that
+defined the arrow instead of freezing.

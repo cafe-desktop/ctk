@@ -1,0 +1,23 @@
+cdk: unpin the frozen grab cursor when the grab outlives the churn
+
+The image cursorless grabs freeze on their window is meant for the
+toggling grabs of a held key: the churn would otherwise flicker the
+cursor between the theme's arrow and the window under the pointer at
+the key repeat rate while the pointer sits still on, say, another
+application's text box.  The first pointer movement under the grab
+already unpins it, but the movement only reaches the grabbing client
+while the pointer crosses its own windows, and a menu opened with a
+single F10 press and no movement keeps the image pinned for as long
+as the menu lasts: with the pointer parked on another client's text
+box, the frozen text cursor then promises a click that the menu is
+going to eat, the first click only dismisses the menu.
+
+A grab that outlives the churn is not one of the toggling grabs
+anymore.  Arm a timeout longer than any key repeat interval when the
+image is frozen, re-armed by every toggle of the churn so it never
+fires while the key repeats: when it fires with the grab still alive
+on the same window, the unpin is the same NULL the pointer proxy
+applies with the first movement, and the device swaps the frozen
+image for the theme's default arrow, remembering it for the rest of
+the grab.  Grabs that defined the arrow or an explicit cursor have no
+frozen image and arm nothing.

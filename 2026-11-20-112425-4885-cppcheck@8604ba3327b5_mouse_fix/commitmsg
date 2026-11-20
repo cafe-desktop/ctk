@@ -1,0 +1,45 @@
+cdk: define the default arrow on cursorless grabs
+
+A grab taken without an explicit cursor leaves the server showing,
+for as long as the grab lasts, whatever cursor the grabbed window
+and its ancestors provide.  The grabbed window is the native toplevel
+of the application, so as soon as the pointer leaves it the server
+walks up to the window manager frame windows, whose cursor is
+whatever arrow the WM applied last on the frame side the pointer
+crossed: a stale cursor then shows up all over the screen, and a
+keyboard-driven grab pins it for the whole grab (e.g. menus opened
+with the keyboard while the pointer is parked outside the window).
+
+Define the theme's default arrow on the grab window instead, for as
+long as the grab lasts, and remember it on the display: the cursor
+argument passed to the grab stays None, so the per-window cursors of
+the application keep working through update_cursor() while the grab
+is active, and the cursor-less windows hovered under the grab apply
+the remembered image instead of being undefined and walking up the
+window ancestors, where the frame windows can carry a stale cursor.
+Grabs taken with an explicit cursor remember None: the server shows
+that cursor regardless of the window attributes, so the windows
+hovering their NULL cursor under the grab are just left undefined.
+
+A theme that fails to provide the default arrow falls back to
+freezing the exact image the pointer was showing when the grab was
+taken: the image is fetched with XFixes, cached by its cursor serial
+with its hot spot preserved, and stays on screen for as long as the
+grab lasts.  The frozen image and the arrow are cached on the display
+and released when the display's connection closes, like the rest of
+the cached cursors.
+
+On ungrab the remembered image is forgotten, so the server goes back
+to showing the cursor of the window under the pointer; releasing a
+keyboard grab while the pointer grab of the device pair is still
+active keeps the remembered image, because the pointer grab is the
+one that defined it.
+
+Outside of grabs, reset the cursor applied on the toplevel when the
+pointer leaves all our windows: nothing runs update_cursor() while
+there is no window under the pointer, so the last applied cursor
+would stay defined on the native toplevel and the server would walk
+past it to the window manager frame windows until the following enter
+event.  Leaves caused by grabs, ours or other clients', keep the
+applied cursor: it is not what the server displays while the grab
+lasts and is what the server shows again as soon as the grab ends.

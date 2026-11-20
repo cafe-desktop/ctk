@@ -1,0 +1,395 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" href="https://github.com/cafe-desktop/ctk/raw/master/demos/ctk-demo/data/16x16/ctk3-demo.png" />
+  <title>ctk Code Analyzer results</title>
+</head>
+<body>
+<h1>
+  <a href="https://github.com/cafe-desktop">cafe-desktop</a>/<a href="https://github.com/cafe-desktop/ctk">ctk</a> Static analyzer results
+</h1>
+  <a href="https://github.com/cafe-desktop/ctk" title="Github"><i class="fa fa-github fa-2x"></i>GitHub</a>
+  <a href="https://github.com/cafe-desktop/ctk/actions/workflows/main.yml" title="Gihub Actions"><img src="https://github.com/cafe-desktop/ctk/actions/workflows/main.yml/badge.svg" alt="Build Status" /></a>
+<hr/>
+Commit: <a href="https://github.com/cafe-desktop/ctk/commit/8604ba3327b5e5426e3eb051535df7e8f7649a02">8604ba3327b5e5426e3eb051535df7e8f7649a02</a><br/>
+Compare: <a href="https://github.com/cafe-desktop/ctk/compare/"></a><br/>
+Branch: <a href="https://github.com/cafe-desktop/ctk/tree/mouse_fix">mouse_fix</a><br/>
+Time: 2026-11-20 11:24:25+00:00<br/>
+Messages:<br/>
+<pre>
+cdk: define the default arrow on cursorless grabs
+
+A grab taken without an explicit cursor leaves the server showing,
+for as long as the grab lasts, whatever cursor the grabbed window
+and its ancestors provide.  The grabbed window is the native toplevel
+of the application, so as soon as the pointer leaves it the server
+walks up to the window manager frame windows, whose cursor is
+whatever arrow the WM applied last on the frame side the pointer
+crossed: a stale cursor then shows up all over the screen, and a
+keyboard-driven grab pins it for the whole grab (e.g. menus opened
+with the keyboard while the pointer is parked outside the window).
+
+Define the theme's default arrow on the grab window instead, for as
+long as the grab lasts, and remember it on the display: the cursor
+argument passed to the grab stays None, so the per-window cursors of
+the application keep working through update_cursor() while the grab
+is active, and the cursor-less windows hovered under the grab apply
+the remembered image instead of being undefined and walking up the
+window ancestors, where the frame windows can carry a stale cursor.
+Grabs taken with an explicit cursor remember None: the server shows
+that cursor regardless of the window attributes, so the windows
+hovering their NULL cursor under the grab are just left undefined.
+
+A theme that fails to provide the default arrow falls back to
+freezing the exact image the pointer was showing when the grab was
+taken: the image is fetched with XFixes, cached by its cursor serial
+with its hot spot preserved, and stays on screen for as long as the
+grab lasts.  The frozen image and the arrow are cached on the display
+and released when the display's connection closes, like the rest of
+the cached cursors.
+
+On ungrab the remembered image is forgotten, so the server goes back
+to showing the cursor of the window under the pointer; releasing a
+keyboard grab while the pointer grab of the device pair is still
+active keeps the remembered image, because the pointer grab is the
+one that defined it.
+
+Outside of grabs, reset the cursor applied on the toplevel when the
+pointer leaves all our windows: nothing runs update_cursor() while
+there is no window under the pointer, so the last applied cursor
+would stay defined on the native toplevel and the server would walk
+past it to the window manager frame windows until the following enter
+event.  Leaves caused by grabs, ours or other clients', keep the
+applied cursor: it is not what the server displays while the grab
+lasts and is what the server shows again as soon as the grab ends.
+</pre>
+<a href="https://cafe-desktop.github.io/ctk/output_8604ba3327b5e5426e3eb051535df7e8f7649a02">Logs</a><br/>
+<br/>
+Warnings: 5879<br/>
+<hr/>
+<ul>
+<li><a href="2026-11-20-112425-4885-cppcheck@8604ba3327b5_mouse_fix">2026-11-20-112425-4885-cppcheck@8604ba3327b5_mouse_fix</a></li>
+<li><a href="2026-11-20-105807-45762-1@8604ba3327b5_mouse_fix">2026-11-20-105807-45762-1@8604ba3327b5_mouse_fix</a></li>
+<li><a href=2026-11-20-110243-4583-cppcheck@c4e0208514df_mouse_fix title="docs,migrating-ctk-releases: Fix real links of commits in master">2026-11-20-110243-4583-cppcheck@c4e0208514df_mouse_fix</a> <a href="2026-11-20-110243-4583-cppcheck@c4e0208514df_mouse_fix/output_c4e0208514dfe338fd9e1f9400be35419e77f59a">logs</a> 5879</li>
+<li><a href=2026-11-20-102707-45764-1@c4e0208514df_mouse_fix title="docs,migrating-ctk-releases: Fix real links of commits in master">2026-11-20-102707-45764-1@c4e0208514df_mouse_fix</a> <a href="2026-11-20-102707-45764-1@c4e0208514df_mouse_fix/output_c4e0208514dfe338fd9e1f9400be35419e77f59a">logs</a> 5879</li>
+<li><a href=2026-11-17-114645-0310-cppcheck@a400296b7d9f_mouse_fix title="cdk: define the default arrow on cursorless grabs over foreign cursors
+
+The cursorless grabs taken while the pointer shows one of our own
+cursors, or sits on the frame of the grabbed toplevel, already define
+the theme's default arrow on the grab window: a keyboard-driven grab
+must not pin an application or frame cursor over the whole screen.  A
+grab taken while the pointer shows a cursor none of our windows
+provided (the root, or a window of another client) still freezes that
+foreign image on the grab window instead, so that the toggling grabs of
+a held key do not flicker the cursor between the arrow and the window
+under the pointer at the key repeat rate while the pointer sits still.
+
+But the frozen image pins the foreign cursor over the whole screen for
+as long as the grab lasts, and a menu opened with a single F10 press
+with the pointer parked on another application's text box then keeps
+the text cursor on the screen while the menu is open, promising a click
+the menu is going to eat, the first click only dismisses the menu.
+Define the theme's default arrow there as well, the grab must not pin a
+foreign cursor either, and the arrow matches what a click does under
+the grab; the churn of a held key flickers the cursor between the arrow
+and the window under the pointer while the key repeats, freezing the
+image avoided that flicker, but the steady foreign cursor is precisely
+the promise the grab breaks.
+
+The helpers that classified the cursor the pointer was showing for the
+grab are not needed anymore and go away.  A theme that fails to provide
+the default arrow falls back to freezing the exact image the pointer
+shows, the visible cursor does not change at all and the stale frame
+cursor does not come back.">2026-11-17-114645-0310-cppcheck@a400296b7d9f_mouse_fix</a> <a href="2026-11-17-114645-0310-cppcheck@a400296b7d9f_mouse_fix/output_a400296b7d9fad6c88e54c10c0b4c7d180b6e9aa">logs</a> 5879</li>
+<li><a href=2026-11-17-111306-45724-1@a400296b7d9f_mouse_fix title="cdk: define the default arrow on cursorless grabs over foreign cursors
+
+The cursorless grabs taken while the pointer shows one of our own
+cursors, or sits on the frame of the grabbed toplevel, already define
+the theme's default arrow on the grab window: a keyboard-driven grab
+must not pin an application or frame cursor over the whole screen.  A
+grab taken while the pointer shows a cursor none of our windows
+provided (the root, or a window of another client) still freezes that
+foreign image on the grab window instead, so that the toggling grabs of
+a held key do not flicker the cursor between the arrow and the window
+under the pointer at the key repeat rate while the pointer sits still.
+
+But the frozen image pins the foreign cursor over the whole screen for
+as long as the grab lasts, and a menu opened with a single F10 press
+with the pointer parked on another application's text box then keeps
+the text cursor on the screen while the menu is open, promising a click
+the menu is going to eat, the first click only dismisses the menu.
+Define the theme's default arrow there as well, the grab must not pin a
+foreign cursor either, and the arrow matches what a click does under
+the grab; the churn of a held key flickers the cursor between the arrow
+and the window under the pointer while the key repeats, freezing the
+image avoided that flicker, but the steady foreign cursor is precisely
+the promise the grab breaks.
+
+The helpers that classified the cursor the pointer was showing for the
+grab are not needed anymore and go away.  A theme that fails to provide
+the default arrow falls back to freezing the exact image the pointer
+shows, the visible cursor does not change at all and the stale frame
+cursor does not come back.">2026-11-17-111306-45724-1@a400296b7d9f_mouse_fix</a> <a href="2026-11-17-111306-45724-1@a400296b7d9f_mouse_fix/output_a400296b7d9fad6c88e54c10c0b4c7d180b6e9aa">logs</a> 5879</li>
+<li><a href=2026-11-17-110008-6866-cppcheck@72cc7b643265_mouse_fix title="cdk: unpin the frozen grab cursor when the grab outlives the churn
+
+The image cursorless grabs freeze on their window is meant for the
+toggling grabs of a held key: the churn would otherwise flicker the
+cursor between the theme's arrow and the window under the pointer at
+the key repeat rate while the pointer sits still on, say, another
+application's text box.  The first pointer movement under the grab
+already unpins it, but the movement only reaches the grabbing client
+while the pointer crosses its own windows, and a menu opened with a
+single F10 press and no movement keeps the image pinned for as long
+as the menu lasts: with the pointer parked on another client's text
+box, the frozen text cursor then promises a click that the menu is
+going to eat, the first click only dismisses the menu.
+
+A grab that outlives the churn is not one of the toggling grabs
+anymore.  Arm a timeout longer than any key repeat interval when the
+image is frozen, re-armed by every toggle of the churn so it never
+fires while the key repeats: when it fires with the grab still alive
+on the same window, the unpin is the same NULL the pointer proxy
+applies with the first movement, and the device swaps the frozen
+image for the theme's default arrow, remembering it for the rest of
+the grab.  Grabs that defined the arrow or an explicit cursor have no
+frozen image and arm nothing.">2026-11-17-110008-6866-cppcheck@72cc7b643265_mouse_fix</a> <a href="2026-11-17-110008-6866-cppcheck@72cc7b643265_mouse_fix/output_72cc7b6432655c6a3ef725ab5b49133c74ef1e45">logs</a> 5879</li>
+<li><a href=2026-11-17-104722-5751-cppcheck@3b842b71a3b8_mouse_fix title="cdk: free the cursor caches before the display's connection closes
+
+The current cursor cache and the default arrow are held in qdata on the
+display, and GObject clears the qdata at the end of the finalize stage,
+after the class finalize chain has run: by then
+cdk_x11_display_finalize has already called XCloseDisplay and freed the
+Display, so their destroy notifies calling XFreeCursor ran on freed
+memory whenever the display object was destroyed after a grab had
+frozen a cursor.  The pre-existing cursor cache list avoids this by
+being released from _cdk_x11_cursor_display_finalize, which runs before
+XCloseDisplay.
+
+Release both qdata there too, like the list, so the X cursor resources
+are freed while the connection is still open on every teardown path,
+and the destroy notifies only remain as a safety net.">2026-11-17-104722-5751-cppcheck@3b842b71a3b8_mouse_fix</a> <a href="2026-11-17-104722-5751-cppcheck@3b842b71a3b8_mouse_fix/output_3b842b71a3b8ce307b856196fe6a93da4b8052ef">logs</a> 5879</li>
+<li><a href=2026-11-17-103209-45725-1@72cc7b643265_mouse_fix title="cdk: unpin the frozen grab cursor when the grab outlives the churn
+
+The image cursorless grabs freeze on their window is meant for the
+toggling grabs of a held key: the churn would otherwise flicker the
+cursor between the theme's arrow and the window under the pointer at
+the key repeat rate while the pointer sits still on, say, another
+application's text box.  The first pointer movement under the grab
+already unpins it, but the movement only reaches the grabbing client
+while the pointer crosses its own windows, and a menu opened with a
+single F10 press and no movement keeps the image pinned for as long
+as the menu lasts: with the pointer parked on another client's text
+box, the frozen text cursor then promises a click that the menu is
+going to eat, the first click only dismisses the menu.
+
+A grab that outlives the churn is not one of the toggling grabs
+anymore.  Arm a timeout longer than any key repeat interval when the
+image is frozen, re-armed by every toggle of the churn so it never
+fires while the key repeats: when it fires with the grab still alive
+on the same window, the unpin is the same NULL the pointer proxy
+applies with the first movement, and the device swaps the frozen
+image for the theme's default arrow, remembering it for the rest of
+the grab.  Grabs that defined the arrow or an explicit cursor have no
+frozen image and arm nothing.">2026-11-17-103209-45725-1@72cc7b643265_mouse_fix</a> <a href="2026-11-17-103209-45725-1@72cc7b643265_mouse_fix/output_72cc7b6432655c6a3ef725ab5b49133c74ef1e45">logs</a> 5879</li>
+<li><a href=2026-11-17-101326-45724-1@3b842b71a3b8_mouse_fix title="cdk: free the cursor caches before the display's connection closes
+
+The current cursor cache and the default arrow are held in qdata on the
+display, and GObject clears the qdata at the end of the finalize stage,
+after the class finalize chain has run: by then
+cdk_x11_display_finalize has already called XCloseDisplay and freed the
+Display, so their destroy notifies calling XFreeCursor ran on freed
+memory whenever the display object was destroyed after a grab had
+frozen a cursor.  The pre-existing cursor cache list avoids this by
+being released from _cdk_x11_cursor_display_finalize, which runs before
+XCloseDisplay.
+
+Release both qdata there too, like the list, so the X cursor resources
+are freed while the connection is still open on every teardown path,
+and the destroy notifies only remain as a safety net.">2026-11-17-101326-45724-1@3b842b71a3b8_mouse_fix</a> <a href="2026-11-17-101326-45724-1@3b842b71a3b8_mouse_fix/output_3b842b71a3b8ce307b856196fe6a93da4b8052ef">logs</a> 5879</li>
+<li><a href=2026-11-17-094459-9276-cppcheck@16b1ce4a2b4c_mouse_fix title="cdk: free the cursor caches before the display's connection
+ closes
+
+The current cursor cache and the default arrow are held in qdata on the
+display, and GObject clears the qdata at the end of the finalize stage,
+after the class finalize chain has run: by then
+cdk_x11_display_finalize has already called XCloseDisplay and freed the
+Display, so their destroy notifies calling XFreeCursor ran on freed
+memory whenever the display object was destroyed after a grab had
+frozen a cursor.  The pre-existing cursor cache list avoids this by
+being released from _cdk_x11_cursor_display_finalize, which runs before
+XCloseDisplay.
+
+Release both qdata there too, like the list, so the X cursor resources
+are freed while the connection is still open on every teardown path,
+and the destroy notifies only remain as a safety net.">2026-11-17-094459-9276-cppcheck@16b1ce4a2b4c_mouse_fix</a> <a href="2026-11-17-094459-9276-cppcheck@16b1ce4a2b4c_mouse_fix/output_16b1ce4a2b4c6507dba5a7aa82a39fe90bee9dbf">logs</a> 5879</li>
+<li><a href=2026-11-17-092238-45724-1@16b1ce4a2b4c_mouse_fix title="cdk: free the cursor caches before the display's connection
+ closes
+
+The current cursor cache and the default arrow are held in qdata on the
+display, and GObject clears the qdata at the end of the finalize stage,
+after the class finalize chain has run: by then
+cdk_x11_display_finalize has already called XCloseDisplay and freed the
+Display, so their destroy notifies calling XFreeCursor ran on freed
+memory whenever the display object was destroyed after a grab had
+frozen a cursor.  The pre-existing cursor cache list avoids this by
+being released from _cdk_x11_cursor_display_finalize, which runs before
+XCloseDisplay.
+
+Release both qdata there too, like the list, so the X cursor resources
+are freed while the connection is still open on every teardown path,
+and the destroy notifies only remain as a safety net.">2026-11-17-092238-45724-1@16b1ce4a2b4c_mouse_fix</a> <a href="2026-11-17-092238-45724-1@16b1ce4a2b4c_mouse_fix/output_16b1ce4a2b4c6507dba5a7aa82a39fe90bee9dbf">logs</a> 5879</li>
+<li><a href=2026-11-17-090300-4764-cppcheck@140a1a5555fb_mouse_fix title="cdk: don't forget the grab cursor on keyboard ungrabs
+
+The XI2 ungrab clears the remembered grab cursor unconditionally, but
+the device being ungrabbed can be a keyboard: releasing a keyboard grab
+while the pointer grab of the device pair is still active erases the
+image the pointer grab remembered, and the unpin request sent with the
+first pointer movement finds a None remembered cursor and returns
+early, so the frozen image keeps following the pointer over the whole
+screen until the grab ends instead of swapping to the theme's default
+arrow.
+
+Only clear the remembered cursor when the device being ungrabbed is not
+a keyboard, like the core backend does on its pointer ungrabs and like
+the XI2 grab does when it remembers the cursor only on non-keyboard
+devices.">2026-11-17-090300-4764-cppcheck@140a1a5555fb_mouse_fix</a> <a href="2026-11-17-090300-4764-cppcheck@140a1a5555fb_mouse_fix/output_140a1a5555fbb9567065762ef955c9bdba1e3433">logs</a> 5879</li>
+<li><a href=2026-11-17-083653-45721-1@140a1a5555fb_mouse_fix title="cdk: don't forget the grab cursor on keyboard ungrabs
+
+The XI2 ungrab clears the remembered grab cursor unconditionally, but
+the device being ungrabbed can be a keyboard: releasing a keyboard grab
+while the pointer grab of the device pair is still active erases the
+image the pointer grab remembered, and the unpin request sent with the
+first pointer movement finds a None remembered cursor and returns
+early, so the frozen image keeps following the pointer over the whole
+screen until the grab ends instead of swapping to the theme's default
+arrow.
+
+Only clear the remembered cursor when the device being ungrabbed is not
+a keyboard, like the core backend does on its pointer ungrabs and like
+the XI2 grab does when it remembers the cursor only on non-keyboard
+devices.">2026-11-17-083653-45721-1@140a1a5555fb_mouse_fix</a> <a href="2026-11-17-083653-45721-1@140a1a5555fb_mouse_fix/output_140a1a5555fbb9567065762ef955c9bdba1e3433">logs</a> 5879</li>
+<li><a href=2026-11-16-224524-2188-cppcheck@8b1f29be4b05_mouse_fix title="cdk: unpin the frozen grab cursor when the pointer moves
+
+The image that cursorless grabs freeze on the grab window is meant for
+the repeated menu grabs of a held key: the toggling grabs would
+otherwise show the theme's arrow while active and the cursor of the
+window under the pointer while inactive, flickering at the key repeat
+rate while the pointer sits still on, say, another application's text
+box.
+
+The frozen image outlives the churn, though: pressing the key once and
+then moving the pointer keeps that image over the whole screen until the
+grab ends, whatever window it passes, because the server shows the grab
+window's cursor for every window outside the grabbed one.  It happens
+whichever application the pointer sits on; the frozen image comes from
+the grabbing client, not from the window under the pointer.
+
+Let the first pointer movement under the grab unpin it: the pointer
+proxy applies a NULL cursor on the grab window, which nothing else does
+while the grab lasts, and the device swaps the frozen image for the
+theme's default arrow there, remembering the arrow for the rest of the
+grab so the windows applying their cursor during it stay consistent.
+Grabs taken with an explicit cursor have no frozen image to unpin and
+show that cursor regardless of the window attributes, so their grab
+window is left untouched, and the request is a no-op for the grabs that
+defined the arrow instead of freezing.">2026-11-16-224524-2188-cppcheck@8b1f29be4b05_mouse_fix</a> <a href="2026-11-16-224524-2188-cppcheck@8b1f29be4b05_mouse_fix/output_8b1f29be4b056c4710276d096be0791936885bd0">logs</a> 5879</li>
+<li><a href=2026-11-16-221010-45726-1@8b1f29be4b05_mouse_fix title="cdk: unpin the frozen grab cursor when the pointer moves
+
+The image that cursorless grabs freeze on the grab window is meant for
+the repeated menu grabs of a held key: the toggling grabs would
+otherwise show the theme's arrow while active and the cursor of the
+window under the pointer while inactive, flickering at the key repeat
+rate while the pointer sits still on, say, another application's text
+box.
+
+The frozen image outlives the churn, though: pressing the key once and
+then moving the pointer keeps that image over the whole screen until the
+grab ends, whatever window it passes, because the server shows the grab
+window's cursor for every window outside the grabbed one.  It happens
+whichever application the pointer sits on; the frozen image comes from
+the grabbing client, not from the window under the pointer.
+
+Let the first pointer movement under the grab unpin it: the pointer
+proxy applies a NULL cursor on the grab window, which nothing else does
+while the grab lasts, and the device swaps the frozen image for the
+theme's default arrow there, remembering the arrow for the rest of the
+grab so the windows applying their cursor during it stay consistent.
+Grabs taken with an explicit cursor have no frozen image to unpin and
+show that cursor regardless of the window attributes, so their grab
+window is left untouched, and the request is a no-op for the grabs that
+defined the arrow instead of freezing.">2026-11-16-221010-45726-1@8b1f29be4b05_mouse_fix</a> <a href="2026-11-16-221010-45726-1@8b1f29be4b05_mouse_fix/output_8b1f29be4b056c4710276d096be0791936885bd0">logs</a> 5879</li>
+<li><a href=2026-11-16-120633-4672-cppcheck@0d28552c44dd_mouse_fix title="cdk: don't reset the applied cursor on leaves caused by grabs
+
+The native crossing events that a client receives when another client
+grabs or releases the pointer are only ignored when the client has a
+grab of its own; when it has none they are handled, and a leave caused
+by a grab of another client clears the window under the pointer and
+resets the applied cursor.  Since all cursors are applied on the
+toplevel, undefining it leaves the whole window hierarchy without a
+cursor on the server, and until the following enter event is processed
+the server walks up the ancestors to the window manager frame windows,
+whose cursor flashes over the client area; a pointer grab taken by the
+other client in that instant freezes the frame cursor instead of the
+cursor the pointer was showing.  Holding F10 on an app while the
+pointer sits on another app's text box makes the menu grabs flicker the
+frame cursor over the text box on every menu toggle.
+
+Restrict the reset to leaves not caused by grabs: the applied cursor is
+not visible while the other client's grab lasts, and it is what the
+server shows again as soon as the grab ends, so keeping it defined
+removes the flash and keeps the frame cursor from being frozen by grabs
+taken in the meantime.">2026-11-16-120633-4672-cppcheck@0d28552c44dd_mouse_fix</a> <a href="2026-11-16-120633-4672-cppcheck@0d28552c44dd_mouse_fix/output_0d28552c44dd61b7b1a84b328de9484f0490be9c">logs</a> 5879</li>
+<li><a href=2026-11-16-114011-45725-1@0d28552c44dd_mouse_fix title="cdk: don't reset the applied cursor on leaves caused by grabs
+
+The native crossing events that a client receives when another client
+grabs or releases the pointer are only ignored when the client has a
+grab of its own; when it has none they are handled, and a leave caused
+by a grab of another client clears the window under the pointer and
+resets the applied cursor.  Since all cursors are applied on the
+toplevel, undefining it leaves the whole window hierarchy without a
+cursor on the server, and until the following enter event is processed
+the server walks up the ancestors to the window manager frame windows,
+whose cursor flashes over the client area; a pointer grab taken by the
+other client in that instant freezes the frame cursor instead of the
+cursor the pointer was showing.  Holding F10 on an app while the
+pointer sits on another app's text box makes the menu grabs flicker the
+frame cursor over the text box on every menu toggle.
+
+Restrict the reset to leaves not caused by grabs: the applied cursor is
+not visible while the other client's grab lasts, and it is what the
+server shows again as soon as the grab ends, so keeping it defined
+removes the flash and keeps the frame cursor from being frozen by grabs
+taken in the meantime.">2026-11-16-114011-45725-1@0d28552c44dd_mouse_fix</a> <a href="2026-11-16-114011-45725-1@0d28552c44dd_mouse_fix/output_0d28552c44dd61b7b1a84b328de9484f0490be9c">logs</a> 5879</li>
+<li><a href=2026-11-16-103944-2557-cppcheck@8275a90361e9_mouse_fix title="cdk: forget the grab cursor on grabs with an explicit cursor
+
+A successful grab remembers the cursor it was taken with only when it
+was taken without an explicit cursor: when a grab with an explicit
+cursor is taken while a cursorless grab is still remembered, the
+remembered image survives until the ungrab, and windows applying their
+NULL cursor while the explicit grab is active redefine that remembered
+image instead of inheriting the explicit cursor of the grab window,
+which the server shows on the grab window while the grab lasts.
+
+Remember the cursor the grab was taken with on every successful grab:
+cursorless grabs keep remembering the frozen or arrow image, and grabs
+with an explicit cursor remember None, so those windows walk up to the
+grab window and inherit its explicit cursor.">2026-11-16-103944-2557-cppcheck@8275a90361e9_mouse_fix</a> <a href="2026-11-16-103944-2557-cppcheck@8275a90361e9_mouse_fix/output_8275a90361e9446a24054d6de6fe58ff8c663cb1">logs</a> 5879</li>
+<li><a href=2026-11-16-101349-45725-1@8275a90361e9_mouse_fix title="cdk: forget the grab cursor on grabs with an explicit cursor
+
+A successful grab remembers the cursor it was taken with only when it
+was taken without an explicit cursor: when a grab with an explicit
+cursor is taken while a cursorless grab is still remembered, the
+remembered image survives until the ungrab, and windows applying their
+NULL cursor while the explicit grab is active redefine that remembered
+image instead of inheriting the explicit cursor of the grab window,
+which the server shows on the grab window while the grab lasts.
+
+Remember the cursor the grab was taken with on every successful grab:
+cursorless grabs keep remembering the frozen or arrow image, and grabs
+with an explicit cursor remember None, so those windows walk up to the
+grab window and inherit its explicit cursor.">2026-11-16-101349-45725-1@8275a90361e9_mouse_fix</a> <a href="2026-11-16-101349-45725-1@8275a90361e9_mouse_fix/output_8275a90361e9446a24054d6de6fe58ff8c663cb1">logs</a> 5879</li>
+</ul>
+3.4G
+</body>
+</html>
