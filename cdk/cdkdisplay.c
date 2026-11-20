@@ -1096,7 +1096,7 @@ switch_to_pointer_grab (CdkDisplay        *display,
 	  /* !owner_event Grabbing a window that we're not inside, current status is
 	     now NULL (i.e. outside grabbed window) */
 	  if (!grab->owner_events && info->window_under_pointer != grab->window)
-	    _cdk_display_set_window_under_pointer (display, device, NULL);
+	    _cdk_display_set_window_under_pointer (display, device, NULL, FALSE);
 	}
 
       grab->activated = TRUE;
@@ -1163,7 +1163,8 @@ switch_to_pointer_grab (CdkDisplay        *display,
                                         CDK_CROSSING_UNGRAB, time, serial);
 
 	  /* We're now ungrabbed, update the window_under_pointer */
-	  _cdk_display_set_window_under_pointer (display, device, pointer_window);
+	  _cdk_display_set_window_under_pointer (display, device,
+	                                         pointer_window, FALSE);
 	}
     }
 

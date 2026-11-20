@@ -19,6 +19,7 @@
 
 #include "cdkx11device-xi2.h"
 #include "cdkdeviceprivate.h"
+#include "cdkdisplayprivate.h"
 
 #include "cdkintl.h"
 #include "cdkasync.h"
@@ -290,9 +291,42 @@ cdk_x11_device_xi2_set_window_cursor (CdkDevice *device,
                     CDK_WINDOW_XID (window),
                     cdk_x11_cursor_get_xcursor (cursor));
   else
-    XIUndefineCursor (CDK_WINDOW_XDISPLAY (window),
-                      device_xi2->device_id,
-                      CDK_WINDOW_XID (window));
+    {
+      /* While a grab is active, a NULL cursor on the grab window itself
+       * must not strip the cursor the grab defined there: update_cursor()
+       * sends it when the pointer hovers cursor-less windows of the
+       * grabbed hierarchy, and undefining would make the server walk past
+       * the grab window up to its ancestors, where the window manager
+       * frame windows can carry a stale cursor.  Grabs taken with an
+       * explicit cursor show that cursor regardless of the window
+       * attributes, so their grab window is left untouched as well.  On
+       * any other window a NULL applies the cursor the grab was taken
+       * with: cursor-less windows applying their cursor while the grab
+       * lasts keep that image instead of walking up the window ancestors,
+       * where the window manager frame windows can carry a stale cursor. */
+      CdkDisplay *display = cdk_device_get_display (device);
+      CdkDeviceGrabInfo *grab;
+      Cursor grab_cursor = None;
+
+      grab = _cdk_display_get_last_device_grab (display, device);
+      if (grab != NULL)
+        {
+          if (window == grab->window)
+            return;
+
+          grab_cursor = _cdk_x11_display_get_grab_current_cursor (display);
+        }
+
+      if (grab_cursor != None)
+        XIDefineCursor (CDK_WINDOW_XDISPLAY (window),
+                        device_xi2->device_id,
+                        CDK_WINDOW_XID (window),
+                        grab_cursor);
+      else
+        XIUndefineCursor (CDK_WINDOW_XDISPLAY (window),
+                          device_xi2->device_id,
+                          CDK_WINDOW_XID (window));
+    }
 }
 
 static void
@@ -422,6 +456,8 @@ cdk_x11_device_xi2_grab (CdkDevice    *device,
   XIEventMask mask;
   Window xwindow;
   Cursor xcursor;
+  Cursor grab_cursor = None;
+  CdkCursor *arrow;
   gint status;
 
   display = cdk_device_get_display (device);
@@ -439,6 +475,47 @@ cdk_x11_device_xi2_grab (CdkDevice    *device,
     {
       _cdk_x11_cursor_update_theme (cursor);
       xcursor = cdk_x11_cursor_get_xcursor (cursor);
+    }
+
+  if (xcursor == None &&
+      cdk_device_get_source (device) != CDK_SOURCE_KEYBOARD)
+    {
+      /* A grab without an explicit cursor makes the server display, for
+       * every window outside the grabbed window, the cursor of the grab
+       * window walking up its ancestors, and a grab window with no cursor
+       * of its own keeps walking up past it.  The grab window here is the
+       * native toplevel of the application, and its ancestors are the
+       * window manager frame windows, whose cursor is whatever arrow the
+       * WM applied last on the frame side the pointer crossed; a stale
+       * cursor there then shows up all over the screen while the grab is
+       * active (e.g. menus opened with the keyboard while the pointer is
+       * parked outside the window).  Define the theme's default arrow on
+       * the grab window so that does not happen, whatever the pointer is
+       * showing: an application cursor of this client, one of another
+       * client, or a cursor of the frame must not be pinned over the
+       * whole screen by a keyboard-driven grab.  The arrow also matches
+       * what a click does under the grab, the first click on a window of
+       * another client only dismisses the menu.  Inside the application
+       * the per-window cursors keep working through update_cursor(),
+       * because the cursor argument passed to XIGrabDevice stays None. */
+      arrow = _cdk_x11_display_get_default_arrow_cursor (display);
+
+      if (arrow != NULL)
+        grab_cursor = cdk_x11_cursor_get_xcursor (arrow);
+
+      /* A theme that fails to provide the default arrow falls back to
+       * freezing the exact image the pointer shows: the visible cursor
+       * does not change at all, the stale frame cursor does not come
+       * back, and the frozen image stays for as long as the grab
+       * lasts. */
+      if (grab_cursor == None)
+        grab_cursor = _cdk_x11_display_get_current_cursor (display);
+
+      if (grab_cursor != None)
+        XIDefineCursor (CDK_DISPLAY_XDISPLAY (display),
+                        device_xi2->device_id,
+                        xwindow,
+                        grab_cursor);
     }
 
   mask.deviceid = device_xi2->device_id;
@@ -460,6 +537,20 @@ cdk_x11_device_xi2_grab (CdkDevice    *device,
                          owner_events,
                          &mask);
 
+  if (status == GrabSuccess &&
+      cdk_device_get_source (device) != CDK_SOURCE_KEYBOARD)
+    {
+      /* Remember the cursor the grab was taken with: cursor-less windows
+       * applying their cursor while the grab is active keep that image
+       * instead of walking up the window ancestors, where the window
+       * manager frame windows can carry a stale cursor.  A grab taken
+       * with an explicit cursor remembers None instead: the server shows
+       * that cursor regardless of the window attributes, so the windows
+       * applying their NULL cursor while the grab lasts are just left
+       * undefined. */
+      _cdk_x11_display_set_grab_current_cursor (display, grab_cursor);
+    }
+
   g_free (mask.mask);
 
   _cdk_x11_display_update_grab_info (display, device, status);
@@ -479,6 +570,17 @@ cdk_x11_device_xi2_ungrab (CdkDevice *device,
   serial = NextRequest (CDK_DISPLAY_XDISPLAY (display));
 
   XIUngrabDevice (CDK_DISPLAY_XDISPLAY (display), device_xi2->device_id, time_);
+
+  /* The device being ungrabbed can be a keyboard: releasing a keyboard grab
+   * while the pointer grab of the device pair is still active must not erase
+   * the image the pointer grab remembered, or the cursor-less windows of the
+   * grabbed hierarchy applying their cursor for the rest of the grab are
+   * undefined instead and walk up the window ancestors, where the window
+   * manager frame windows can carry a stale cursor.  The core backend only
+   * clears on pointer ungrabs too, and the XI2 grab only remembers the
+   * cursor on non-keyboard devices. */
+  if (cdk_device_get_source (device) != CDK_SOURCE_KEYBOARD)
+    _cdk_x11_display_set_grab_current_cursor (display, None);
 
   _cdk_x11_display_update_grab_info_ungrab (display, device, time_, serial);
 }

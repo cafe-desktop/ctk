@@ -271,6 +271,11 @@ CdkCursor *_cdk_x11_display_get_cursor_for_surface  (CdkDisplay    *display,
                                                      cairo_surface_t *surface,
                                                      gdouble        x,
                                                      gdouble        y);
+Cursor     _cdk_x11_display_get_current_cursor      (CdkDisplay    *display);
+void       _cdk_x11_display_set_grab_current_cursor (CdkDisplay    *display,
+                                                     Cursor         xcursor);
+Cursor     _cdk_x11_display_get_grab_current_cursor (CdkDisplay    *display);
+CdkCursor *_cdk_x11_display_get_default_arrow_cursor (CdkDisplay    *display);
 gboolean   _cdk_x11_display_supports_cursor_alpha   (CdkDisplay    *display);
 gboolean   _cdk_x11_display_supports_cursor_color   (CdkDisplay    *display);
 void       _cdk_x11_display_get_default_cursor_size (CdkDisplay *display,

@@ -8562,14 +8562,55 @@ get_pointer_window (CdkDisplay *display,
 void
 _cdk_display_set_window_under_pointer (CdkDisplay *display,
                                        CdkDevice  *device,
-				       CdkWindow  *window)
+				       CdkWindow  *window,
+				       gboolean    leave_caused_by_grab)
 {
   CdkPointerWindowInfo *device_info;
+  CdkWindow *previous, *toplevel;
+  CdkWindowImplClass *impl_class;
 
   device_info = _cdk_display_get_pointer_info (display, device);
 
-  if (device_info->window_under_pointer)
-    g_object_unref (device_info->window_under_pointer);
+  previous = device_info->window_under_pointer;
+
+  /* When the pointer leaves all our windows, the cursor last applied on
+   * the toplevel it left stays defined on the native window: nothing runs
+   * update_cursor() again while there is no window under the pointer.
+   * Reset the applied cursor here, so the toplevel does not keep the
+   * hover's cursor applied once the hover is over; the right one is
+   * applied again as soon as the pointer enters a window.
+   *
+   * While a grab is active, keep the applied cursor untouched instead:
+   * it is not what the server displays while the grab lasts, the grab
+   * defines the theme's default arrow on its grab window, or the image
+   * the pointer was showing when the theme provides no arrow, and the
+   * windows the pointer crosses under the grab keep the image the grab
+   * remembered.  Undefining the applied cursor anyway would leave the
+   * toplevel bare the moment the grab ends: with the pointer on one of
+   * our cursor-less windows then, the server walks past the bare toplevel
+   * up to the window manager frame windows, whose cursor can be stale,
+   * until the following enter event is processed.
+   *
+   * The same applies to the leaves caused by the grabs of other clients:
+   * resetting on them would leave our windows without a cursor until the
+   * following enter event is processed, with the server walking up to the
+   * window manager frame windows in the meantime; the applied cursor is
+   * not visible while the other client's grab lasts and is what the
+   * server shows again as soon as the grab ends, so keep it defined on
+   * leaves caused by grabs. */
+  if (window == NULL &&
+      previous != NULL &&
+      !CDK_WINDOW_DESTROYED (previous) &&
+      !leave_caused_by_grab &&
+      _cdk_display_get_last_device_grab (display, device) == NULL)
+    {
+      toplevel = get_event_toplevel (previous);
+      impl_class = CDK_WINDOW_IMPL_GET_CLASS (toplevel->impl);
+      impl_class->set_device_cursor (toplevel, device, NULL);
+    }
+
+  if (previous)
+    g_object_unref (previous);
   device_info->window_under_pointer = window;
 
   if (window)
@@ -9013,7 +9054,9 @@ do_synthesize_crossing_event (gpointer data)
                                                NULL,
                                                serial,
                                                FALSE);
-              _cdk_display_set_window_under_pointer (display, device, new_window_under_pointer);
+              _cdk_display_set_window_under_pointer (display, device,
+                                                     new_window_under_pointer,
+                                                     FALSE);
             }
         }
     }
@@ -9161,9 +9204,14 @@ proxy_pointer_event (CdkDisplay                 *display,
   gdouble toplevel_x, toplevel_y;
   guint32 time_;
   gboolean non_linear, need_synthetic_enter = FALSE;
+  gboolean leave_caused_by_grab;
   gint event_type;
 
   event_type = source_event->type;
+  leave_caused_by_grab = ((event_type == CDK_ENTER_NOTIFY ||
+                           event_type == CDK_LEAVE_NOTIFY) &&
+                          (source_event->crossing.mode == CDK_CROSSING_GRAB ||
+                           source_event->crossing.mode == CDK_CROSSING_UNGRAB));
   event_window = source_event->any.window;
   cdk_event_get_coords (source_event, &toplevel_x, &toplevel_y);
   cdk_event_get_state (source_event, &state);
@@ -9234,7 +9282,8 @@ proxy_pointer_event (CdkDisplay                 *display,
 			   source_event,
 			   serial);
 
-      _cdk_display_set_window_under_pointer (display, device, NULL);
+      _cdk_display_set_window_under_pointer (display, device, NULL,
+                                             leave_caused_by_grab);
       return TRUE;
     }
 
@@ -9274,7 +9323,8 @@ proxy_pointer_event (CdkDisplay                 *display,
 				       state, time_,
 				       source_event,
 				       serial, non_linear);
-      _cdk_display_set_window_under_pointer (display, device, pointer_window);
+      _cdk_display_set_window_under_pointer (display, device, pointer_window,
+                                             FALSE);
       return TRUE;
     }
 
@@ -9295,7 +9345,8 @@ proxy_pointer_event (CdkDisplay                 *display,
 				       state, time_,
 				       source_event,
 				       serial, non_linear);
-      _cdk_display_set_window_under_pointer (display, device, pointer_window);
+      _cdk_display_set_window_under_pointer (display, device, pointer_window,
+                                             leave_caused_by_grab);
     }
 
   if (source_event->type == CDK_MOTION_NOTIFY ||

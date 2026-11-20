@@ -135,6 +135,12 @@ find_in_cache (CdkDisplay    *display,
   return NULL;
 }
 
+typedef struct _CurrentCursorCache CurrentCursorCache;
+
+static void current_cursor_cache_free (gpointer data);
+static GQuark current_cursor_cache_quark = 0;
+static GQuark default_arrow_cursor_quark = 0;
+
 /* Called by cdk_x11_display_finalize to flush any cached cursors
  * for a dead display.
  */
@@ -163,6 +169,32 @@ _cdk_x11_cursor_display_finalize (CdkDisplay *display)
           itemp = &(item->next);
           item = item->next;
         }
+    }
+
+  /* The current cursor cache and the default arrow are held in qdata on
+   * the display and carry X resources of it too: release them here, while
+   * the connection is still open, like the list above.  Their qdata
+   * destroy notifies would otherwise run at the end of the finalize
+   * stage, after cdk_x11_display_finalize has already called
+   * XCloseDisplay and freed the Display. */
+  if (current_cursor_cache_quark != 0)
+    {
+      CurrentCursorCache *cache;
+
+      cache = g_object_steal_qdata (G_OBJECT (display),
+                                    current_cursor_cache_quark);
+      if (cache != NULL)
+        current_cursor_cache_free (cache);
+    }
+
+  if (default_arrow_cursor_quark != 0)
+    {
+      CdkCursor *arrow;
+
+      arrow = g_object_steal_qdata (G_OBJECT (display),
+                                    default_arrow_cursor_quark);
+      if (arrow != NULL)
+        g_object_unref (arrow);
     }
 }
 
@@ -283,6 +315,187 @@ _cdk_x11_display_get_cursor_for_type (CdkDisplay    *display,
     add_to_cache (private);
 
   return CDK_CURSOR (private);
+}
+
+struct _CurrentCursorCache
+{
+  gulong serial;
+  Cursor xcursor;
+  Display *xdisplay;
+};
+
+static void
+current_cursor_cache_free (gpointer data)
+{
+  CurrentCursorCache *cache = data;
+
+  if (cache->xcursor != None)
+    XFreeCursor (cache->xdisplay, cache->xcursor);
+  g_slice_free (CurrentCursorCache, cache);
+}
+
+/**
+ * _cdk_x11_display_get_current_cursor:
+ * @display: a #CdkDisplay
+ *
+ * Returns the X cursor the pointer is currently showing, as a #Cursor
+ * suitable for defining on a window.  The cursor image is fetched with
+ * XFixes and cached by its serial, so repeated grabs while the pointer
+ * cursor stays the same reuse the same #Cursor.
+ *
+ * Used as the fallback of the cursorless grabs that cannot get the
+ * theme's default arrow: the grab then freezes the image the pointer is
+ * showing on the grab window instead.
+ *
+ * Returns: the X cursor the pointer is currently showing, or %None if it
+ *          could not be fetched.
+ **/
+Cursor
+_cdk_x11_display_get_current_cursor (CdkDisplay *display)
+{
+  Display *xdisplay;
+  XFixesCursorImage *image;
+  CurrentCursorCache *cache;
+  XcursorImage *xcimage;
+  Cursor xcursor;
+  gulong serial;
+  unsigned int i, n_pixels;
+
+  if (cdk_display_is_closed (display))
+    return None;
+
+  xdisplay = CDK_DISPLAY_XDISPLAY (display);
+
+  image = XFixesGetCursorImage (xdisplay);
+  if (image == NULL || image->width == 0 || image->height == 0)
+    {
+      if (image != NULL)
+        XFree (image);
+      return None;
+    }
+
+  if (current_cursor_cache_quark == 0)
+    current_cursor_cache_quark = g_quark_from_static_string ("cdk-x11-current-cursor-cache");
+
+  cache = g_object_get_qdata (G_OBJECT (display), current_cursor_cache_quark);
+  if (cache != NULL && cache->serial == image->cursor_serial)
+    {
+      XFree (image);
+      return cache->xcursor;
+    }
+
+  xcimage = XcursorImageCreate (image->width, image->height);
+  if (xcimage == NULL)
+    {
+      XFree (image);
+      return None;
+    }
+
+  xcimage->xhot = image->xhot;
+  xcimage->yhot = image->yhot;
+  n_pixels = (unsigned int) image->width * (unsigned int) image->height;
+  for (i = 0; i < n_pixels; i++)
+    xcimage->pixels[i] = (XcursorPixel) image->pixels[i];
+
+  serial = image->cursor_serial;
+
+  xcursor = XcursorImageLoadCursor (xdisplay, xcimage);
+  XcursorImageDestroy (xcimage);
+  XFree (image);
+
+  if (xcursor == None)
+    return None;
+
+  if (cache != NULL)
+    current_cursor_cache_free (g_object_steal_qdata (G_OBJECT (display),
+                               current_cursor_cache_quark));
+
+  cache = g_slice_new (CurrentCursorCache);
+  cache->serial = serial;
+  cache->xcursor = xcursor;
+  cache->xdisplay = xdisplay;
+  g_object_set_qdata_full (G_OBJECT (display), current_cursor_cache_quark, cache,
+                           current_cursor_cache_free);
+
+  return xcursor;
+}
+
+static GQuark grab_current_cursor_quark = 0;
+
+/* Remembers the cursor the last grab without an explicit cursor defined on
+ * its grab window: the theme's default arrow, or, when the theme provides
+ * no arrow, the image the pointer was showing when the grab was taken.
+ * Cursor-less windows applying their cursor while the grab lasts keep that
+ * image instead of being undefined and walking up the window ancestors,
+ * where the window manager frame windows can carry a stale cursor.  Grabs
+ * taken with an explicit cursor remember None.  Cleared when the grab is
+ * released. */
+void
+_cdk_x11_display_set_grab_current_cursor (CdkDisplay *display,
+                                          Cursor      xcursor)
+{
+  if (grab_current_cursor_quark == 0)
+    grab_current_cursor_quark =
+      g_quark_from_static_string ("cdk-x11-grab-current-cursor");
+
+  g_object_set_qdata (G_OBJECT (display), grab_current_cursor_quark,
+                      GUINT_TO_POINTER ((guint) xcursor));
+}
+
+Cursor
+_cdk_x11_display_get_grab_current_cursor (CdkDisplay *display)
+{
+  gpointer data;
+
+  if (grab_current_cursor_quark == 0)
+    return None;
+
+  data = g_object_get_qdata (G_OBJECT (display),
+                             grab_current_cursor_quark);
+
+  return (Cursor) GPOINTER_TO_UINT (data);
+}
+
+/**
+ * _cdk_x11_display_get_default_arrow_cursor:
+ * @display: a #CdkDisplay
+ *
+ * Returns the theme's default arrow cursor, cached on the display.  Used
+ * for grabs taken without an explicit cursor, whatever the pointer is
+ * showing: an application cursor of this client (a resize border, a text
+ * cursor, ...), one of another client, or a cursor of the window manager
+ * frame wrapping the grabbed toplevel.  A keyboard-driven grab must not
+ * pin any of those over the whole screen, and the arrow replaces them.
+ *
+ * Returns: (transfer none): the default arrow #CdkCursor, or %NULL if it
+ *          could not be created.
+ **/
+CdkCursor *
+_cdk_x11_display_get_default_arrow_cursor (CdkDisplay *display)
+{
+  CdkCursor *arrow;
+
+  if (cdk_display_is_closed (display))
+    return NULL;
+
+  if (default_arrow_cursor_quark == 0)
+    default_arrow_cursor_quark = g_quark_from_static_string ("cdk-x11-default-arrow-cursor");
+
+  arrow = g_object_get_qdata (G_OBJECT (display), default_arrow_cursor_quark);
+  if (arrow != NULL)
+    {
+      _cdk_x11_cursor_update_theme (arrow);
+      return arrow;
+    }
+
+  arrow = cdk_cursor_new_from_name (display, "default");
+  if (arrow == NULL)
+    return NULL;
+
+  g_object_set_qdata_full (G_OBJECT (display), default_arrow_cursor_quark, arrow,
+                           g_object_unref);
+
+  return arrow;
 }
 
 /**

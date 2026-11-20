@@ -549,7 +549,8 @@ void _cdk_synthesize_crossing_events (CdkDisplay                 *display,
 				      gboolean                    non_linear);
 void _cdk_display_set_window_under_pointer (CdkDisplay *display,
                                             CdkDevice  *device,
-                                            CdkWindow  *window);
+                                            CdkWindow  *window,
+                                            gboolean    leave_caused_by_grab);
 
 
 void _cdk_synthesize_crossing_events_for_geometry_change (CdkWindow *changed_window);
