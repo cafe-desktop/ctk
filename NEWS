@@ -1,3 +1,35 @@
+Overview of Changes in CTK+ 3.27.0
+===================================
+
+  * ctkstyle: Fix typo
+  * build:
+    - remove NEWS.pre-1-0 from EXTRA_DIST
+    - stop generating ChangeLog
+  * Interactive search popup improvements:
+    - ctktreeview
+      - make the interactive search popup non-modal
+      - do not re-focus the tree view when hiding the search popup
+      - let the notebook page-change combos through the search
+      - let the search entry keep its own button presses
+      - renew the search timeout on any key press and entry button press
+      - add ctk_tree_view_stop_interactive_search()
+      - forward the search keys to the popup before the keybindings
+    - ctkwindow: keep accelerators and toplevel bindings out of the interactive search:
+      - add ctk_window_set_interactive_search_open()
+      - add ctk_window_get_interactive_search_open()
+    - ctkmain:
+      - keep toplevel key handlers out of the interactive search
+      - let the menu bar accelerator through the interactive search
+      - let the window mnemonics through the interactive search
+    - docs: document the interactive search API additions in migrating-ctk-releases.txt
+  * cdk:
+    - define the default arrow on cursorless grabs
+    - _cdk_x11_display_get_current_cursor with HAVE_XCURSOR and HAVE_XFIXES
+    - define the theme's arrow on cursor-less toplevels
+  * Fix spelling errors in strings
+  * Update translations
+
+
 Overview of Changes in CTK+ 3.26.0
 ===================================
 

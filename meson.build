@@ -1,5 +1,5 @@
 project('ctk+-3.0', 'c',
-        version: '3.26.0',
+        version: '3.27.0',
         default_options: [
           'buildtype=debugoptimized',
           'warning_level=1'
