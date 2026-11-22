@@ -297,7 +297,7 @@ _cairo_write (void                *closure,
   error = NULL;
 
   CTK_NOTE (PRINTING,
-            g_print ("FILE Backend: Writting %u byte chunk to temp file\n", length));
+            g_print ("FILE Backend: Writing %u byte chunk to temp file\n", length));
 
   while (length > 0) 
     {
@@ -310,7 +310,7 @@ _cairo_write (void                *closure,
           if (error != NULL)
             {
               CTK_NOTE (PRINTING,
-                        g_print ("FILE Backend: Error writting to temp file, %s\n", error->message));
+                        g_print ("FILE Backend: Error writing to temp file, %s\n", error->message));
 
               g_error_free (error);
             }
@@ -470,7 +470,7 @@ file_write (GIOChannel   *source,
     }
 
   CTK_NOTE (PRINTING,
-            g_print ("FILE Backend: Writting %lu byte chunk to target file\n", bytes_read));
+            g_print ("FILE Backend: Writing %lu byte chunk to target file\n", bytes_read));
 
   return TRUE;
 }

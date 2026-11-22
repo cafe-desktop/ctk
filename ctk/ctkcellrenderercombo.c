@@ -158,7 +158,7 @@ ctk_cell_renderer_combo_class_init (CtkCellRendererComboClass *klass)
   /** 
    * CtkCellRendererCombo:has-entry:
    *
-   * If %TRUE, the cell renderer will include an entry and allow to enter 
+   * If %TRUE, the cell renderer will include an entry and allow entering
    * values other than the ones in the popup list. 
    *
    * Since: 2.6
@@ -167,7 +167,7 @@ ctk_cell_renderer_combo_class_init (CtkCellRendererComboClass *klass)
                                    PROP_HAS_ENTRY,
                                    g_param_spec_boolean ("has-entry",
 							 P_("Has Entry"),
-							 P_("If FALSE, don't allow to enter strings other than the chosen ones"),
+							 P_("If FALSE, don't allow entering strings other than the chosen ones"),
 							 TRUE,
 							 CTK_PARAM_READWRITE|G_PARAM_EXPLICIT_NOTIFY));
 

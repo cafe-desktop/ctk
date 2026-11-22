@@ -1,7 +1,7 @@
 /* Pickers
  *
  * These widgets are mainly intended for use in preference dialogs.
- * They allow to select colors, fonts, files, directories and applications.
+ * They allow selecting colors, fonts, files, directories and applications.
  */
 
 #include <ctk/ctk.h>

@@ -1,6 +1,6 @@
 /* Spinner
  *
- * CtkSpinner allows to show that background activity is on-going.
+ * CtkSpinner shows that background activity is on-going.
  *
  */
 

@@ -1,6 +1,6 @@
 /* Expander
  *
- * CtkExpander allows to provide additional content that is initially hidden.
+ * CtkExpander provides additional content that is initially hidden.
  * This is also known as "disclosure triangle".
  *
  * This example also shows how to make the window resizable only if the expander

@@ -1,6 +1,6 @@
 /* Entry/Search Entry
  *
- * CtkEntry allows to display icons and progress information.
+ * CtkEntry can display icons and progress information.
  * This demo shows how to use these features in a search entry.
  */
 

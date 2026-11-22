@@ -6,7 +6,7 @@
 
 .background:backdrop { color: #919190; background-color: #353535; text-shadow: none; -ctk-icon-shadow: none; }
 
-/* These wildcard seems unavoidable, need to investigate. Wildcards are bad and troublesome, use them with care, or better, just don't. Everytime a wildcard is used a kitten dies, painfully. */
+/* These wildcard seems unavoidable, need to investigate. Wildcards are bad and troublesome, use them with care, or better, just don't. Every time a wildcard is used a kitten dies, painfully. */
 *:disabled { -ctk-icon-effect: dim; }
 
 .ctkstyle-fallback { color: #eeeeec; background-color: #353535; }

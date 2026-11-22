@@ -1,6 +1,6 @@
 /* Combo Boxes
  *
- * The CtkComboBox widget allows to select one option out of a list.
+ * The CtkComboBox widget allows selecting one option out of a list.
  * The CtkComboBoxEntry additionally allows the user to enter a value
  * that is not in the list of options.
  *

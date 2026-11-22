@@ -804,7 +804,7 @@ cdk_wayland_device_grab (CdkDevice    *device,
       cdk_window_is_visible (window))
     {
       g_warning ("Window %p is already mapped at the time of grabbing. "
-                 "cdk_seat_grab() should be used to simultanously grab input "
+                 "cdk_seat_grab() should be used to simultaneously grab input "
                  "and show this popup. You may find oddities ahead.",
                  window);
     }

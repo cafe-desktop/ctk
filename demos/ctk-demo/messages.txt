@@ -217,7 +217,7 @@
 217|CTK+ and friends|CTKtoolkit|Minutes of the CTK+ Team Meeting - 2010-08-17: http://mail.gnome.org/archives/ctk-devel-list/2010-August/msg00155.html #ctk|1282094165|0||0|0
 218|CTK+ and friends|CTKtoolkit|CTK+ 2.90.6 (unstable) released: http://mail.gnome.org/archives/ctk-devel-list/2010-August/msg00146.html #ctk|1282061092|0||0|0
 219|Emmanuele Bassi|ebassi|RT @ebassi: http://bit.ly/9gabxR - @cluttertoolkit + gobject-introspection + pygobject. say goodbye to pyclutter!|1282043493|0|CTKtoolkit|0|3
-220|CTK+ and friends|CTKtoolkit|CTK+ 2.21.6 (unstable) Relased: http://mail.gnome.org/archives/ctk-devel-list/2010-August/msg00127.html #ctk|1282006494|0||0|0
+220|CTK+ and friends|CTKtoolkit|CTK+ 2.21.6 (unstable) Released: http://mail.gnome.org/archives/ctk-devel-list/2010-August/msg00127.html #ctk|1282006494|0||0|0
 221|Stormy|storming|RT @storming: Novell is looking for a GNOME developer to work on SUSE Linux. http://linkd.in/bEAUUj|1282001084|0|CTKtoolkit|0|19
 222|Tommi Komulainen|tko|RT @tko: I want my libglib-gslist.so and libglib-glist.so .. and some popcorn. maybe just popcorn|1282000936|0|CTKtoolkit|0|1
 223|CTK+ and friends|CTKtoolkit|GLib 2.25.14 (unstable) released: http://mail.gnome.org/archives/ctk-devel-list/2010-August/msg00123.html #ctk|1282000398|0||0|0
@@ -336,10 +336,10 @@
 336|CTK+ and friends|CTKtoolkit|New Glib STABLE release: 2.24 http://mail.gnome.org/archives/ctk-devel-list/2010-March/msg00149.html #ctk|1269892314|0||0|0
 337|CTK+ and friends|CTKtoolkit|Help the GNOME Foundation to hire a sysadmin for GNOME! http://www.gnome.org/friends|1269658993|0||0|1
 338|CTK+ and friends|CTKtoolkit|Our friends from #Openismus sponsor #Glade 3 improvements http://bit.ly/9GqLDl|1269656334|0||0|0
-339|CTK+ and friends|CTKtoolkit|♺ @johandahlin: just commited the last remaining piece for cairo support in #gjs. World domination here we come|1269646821|0||0|0
+339|CTK+ and friends|CTKtoolkit|♺ @johandahlin: just committed the last remaining piece for cairo support in #gjs. World domination here we come|1269646821|0||0|0
 340|FedericoMenaQuintero|federicomena|RT @federicomena: Yay, the patch for glade is done - https://bugzilla.gnome.org/show_bug.cgi?id=594231|1269616128|0|CTKtoolkit|0|1
 341|Jorge Castro|castrojo|RT @castrojo: Become a Friend of GNOME: http://wp.me/poAPi-da|1269616083|0|CTKtoolkit|0|2
-342|Johan Dahlin|johandahlin|RT @johandahlin: just commited the last remaining piece for cairo support in #gjs. World domination here we come|1269616001|0|CTKtoolkit|0|2
+342|Johan Dahlin|johandahlin|RT @johandahlin: just committed the last remaining piece for cairo support in #gjs. World domination here we come|1269616001|0|CTKtoolkit|0|2
 343|Jono Bacon|jonobacon|RT @jonobacon: New Acire and Python Snippets website! http://is.gd/aZGnF - still a work in progress, working on it as we speak! #pythons ...|1269615964|0|CTKtoolkit|0|5
 344|CTK+ and friends|CTKtoolkit|Python Snippets: project to gather an archive of simple Python (with CTK+) examples http://ur1.ca/rru1 !ctk @jonobacon|1269555086|0||0|2
 345|CTK+ and friends|CTKtoolkit|#yorbafoundation is hiring #Vala/#Ctk+ developers and summer interns in California to create multimedia apps http://yorba.org/jobs|1269479714|0||0|1
@@ -369,7 +369,7 @@
 369|CTK+ and friends|CTKtoolkit|#Openismus is looking for C/C++ CTK+/Qt trainees http://bit.ly/c16WEp|1267831840|0||0|0
 370|Clutter Toolkit|cluttertoolkit|RT @cluttertoolkit: clutter 1.2.0 - first stable release, with lots of new API - http://bit.ly/ckdS6R|1267561885|0|CTKtoolkit|0|9
 371|CTK+ and friends|CTKtoolkit|#Lanedo is hiring CTK+/GNOME hackers! http://bit.ly/d6fTWQ|1267560392|0||0|1
-372|CTK+ and friends|CTKtoolkit|You can help to make a difference too, help the #CTK+ maintainers to improve the documetnation infrastructure! http://bit.ly/dmJifE|1267538283|0||0|1
+372|CTK+ and friends|CTKtoolkit|You can help to make a difference too, help the #CTK+ maintainers to improve the documentation infrastructure! http://bit.ly/dmJifE|1267538283|0||0|1
 373|CTK+ and friends|CTKtoolkit|Designers bring back excitement around the #GNOME project http://bit.ly/9Zcx8c|1267202696|0||0|1
 374|CTK+ and friends|CTKtoolkit|#webkit #ctk gets ARGB support, allowing it to set a transparent background! http://bit.ly/cBeouj|1267146282|0||0|2
 375|CTK+ and friends|CTKtoolkit|Follow GNOME TV on Vimeo http://is.gd/96PlT|1267050829|0||0|1
