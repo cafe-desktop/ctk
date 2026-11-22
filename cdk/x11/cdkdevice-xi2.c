@@ -322,6 +322,39 @@ cdk_x11_device_xi2_set_window_cursor (CdkDevice *device,
                         device_xi2->device_id,
                         CDK_WINDOW_XID (window),
                         grab_cursor);
+      else if (cdk_window_get_window_type (window) == CDK_WINDOW_TOPLEVEL)
+        {
+          /* Outside of grabs, leaving one of our own toplevels bare hands
+           * the cursor lookup to the server, which resolves it walking up
+           * the window's ancestors: the first window beyond our toplevel
+           * is the window manager frame, carrying whatever cursor the WM
+           * applied last on the side the pointer crossed.  The WM stops
+           * receiving pointer events for as long as one of our grabs
+           * lasts, so that image is frozen meanwhile and can be stale by
+           * the time the grab ends: with the pointer parked on a resize
+           * border, opening a menu with the keyboard and clicking off it
+           * into the window makes update_cursor() strip the remembered
+           * image the grab applied on the following enter, and the
+           * frame's stale resize cursor then shows up all over the client
+           * area until the pointer reaches the title bar or a corner and
+           * the WM redefines its frame cursor.  Define the theme's default
+           * arrow instead: it is the image the server would show walking
+           * past the bare toplevel anyway, and it keeps the frame windows
+           * out of the lookup for as long as the pointer is over our
+           * windows, whatever the frame carries.  A theme that fails to
+           * provide the arrow keeps the old behavior. */
+          CdkCursor *arrow = _cdk_x11_display_get_default_arrow_cursor (display);
+
+          if (arrow != NULL)
+            XIDefineCursor (CDK_WINDOW_XDISPLAY (window),
+                            device_xi2->device_id,
+                            CDK_WINDOW_XID (window),
+                            cdk_x11_cursor_get_xcursor (arrow));
+          else
+            XIUndefineCursor (CDK_WINDOW_XDISPLAY (window),
+                              device_xi2->device_id,
+                              CDK_WINDOW_XID (window));
+        }
       else
         XIUndefineCursor (CDK_WINDOW_XDISPLAY (window),
                           device_xi2->device_id,
