@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-19 12:06+0100\n"
+"POT-Creation-Date: 2026-11-22 15:03+0100\n"
 "PO-Revision-Date: 2010-05-16 16:06 -0400\n"
 "Last-Translator: Thomas Thurman <tthurman@gnome.org>\n"
 "Language-Team: Shavian <ubuntu-l10n-en-shaw@launchpad.net>\n"
@@ -215,11 +215,11 @@ msgstr ""
 msgid "Minor version number"
 msgstr ""
 
-#: cdk/x11/cdkdevice-xi2.c:143
+#: cdk/x11/cdkdevice-xi2.c:144
 msgid "Device ID"
 msgstr ""
 
-#: cdk/x11/cdkdevice-xi2.c:144
+#: cdk/x11/cdkdevice-xi2.c:145
 msgid "Device identifier"
 msgstr ""
 
@@ -289,7 +289,7 @@ msgid "The GIcon being displayed"
 msgstr "𐑞 GIcon 𐑚𐑰𐑦𐑙 𐑛𐑩𐑕𐑐𐑤𐑱𐑛"
 
 #: ctk/ctkaction.c:341 ctk/ctkcellrendererpixbuf.c:245 ctk/ctkimage.c:341
-#: ctk/ctkprinter.c:170 ctk/ctkstatusicon.c:253 ctk/ctkwindow.c:890
+#: ctk/ctkprinter.c:170 ctk/ctkstatusicon.c:253 ctk/ctkwindow.c:891
 msgid "Icon Name"
 msgstr "𐑲𐑒𐑪𐑯 𐑯𐑱𐑥"
 
@@ -1447,8 +1447,8 @@ msgstr "𐑕𐑧𐑒𐑪𐑯𐑛𐑼𐑦"
 
 #: ctk/ctkbbox.c:285
 msgid ""
-"If TRUE, the child appears in a secondary group of children, suitable for, e."
-"g., help buttons"
+"If TRUE, the child appears in a secondary group of children, suitable for, "
+"e.g., help buttons"
 msgstr ""
 "𐑦𐑓 𐑑𐑮𐑵, 𐑞 𐑗𐑲𐑤𐑛 𐑩𐑐𐑽𐑟 𐑦𐑯 𐑩 𐑕𐑧𐑒𐑪𐑯𐑛𐑼𐑦 𐑜𐑮𐑵𐑐 𐑝 𐑗𐑦𐑤𐑛𐑮𐑩𐑯, 𐑕𐑿𐑑𐑩𐑚𐑩𐑤 𐑓𐑹, 𐑧.𐑡𐑰., 𐑣𐑧𐑤𐑐 "
 "𐑚𐑳𐑑𐑩𐑯𐑟"
@@ -2067,8 +2067,8 @@ msgid "Has Entry"
 msgstr "𐑣𐑨𐑟 𐑧𐑯𐑑𐑮𐑦"
 
 #: ctk/ctkcellrenderercombo.c:170
-msgid "If FALSE, don't allow to enter strings other than the chosen ones"
-msgstr "𐑦𐑓 𐑓𐑷𐑤𐑕, 𐑛𐑴𐑯𐑑 𐑩𐑤𐑬 𐑑 𐑧𐑯𐑑𐑼 𐑕𐑑𐑮𐑦𐑙𐑟 𐑳𐑞𐑼 𐑞𐑨𐑯 𐑞 𐑗𐑴𐑟𐑩𐑯 𐑢𐑳𐑯𐑟"
+msgid "If FALSE, don't allow entering strings other than the chosen ones"
+msgstr ""
 
 #: ctk/ctkcellrendererpixbuf.c:152
 #, fuzzy
@@ -2145,7 +2145,7 @@ msgid "Whether the rendered pixbuf should be colorized according to the state"
 msgstr "𐑢𐑧𐑞𐑼 𐑞 𐑮𐑧𐑯𐑛𐑻𐑛 pixbuf 𐑖𐑫𐑛 𐑚𐑰 𐑒𐑩𐑤𐑻𐑲𐑟𐑛 𐑩𐑒𐑹𐑛𐑦𐑙 𐑑 𐑞 𐑕𐑑𐑱𐑑"
 
 #: ctk/ctkcellrendererpixbuf.c:281 ctk/ctkimage.c:357 ctk/ctkmodelbutton.c:1166
-#: ctk/ctkshortcutsshortcut.c:550 ctk/ctkwindow.c:841
+#: ctk/ctkshortcutsshortcut.c:550 ctk/ctkwindow.c:842
 msgid "Icon"
 msgstr "𐑲𐑒𐑪𐑯"
 
@@ -3785,12 +3785,12 @@ msgid ""
 "collapsing"
 msgstr ""
 
-#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1672 ctk/ctktreeview.c:1234
+#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1672 ctk/ctktreeview.c:1240
 #, fuzzy
 msgid "Expander Size"
 msgstr "Expander 𐑕𐑲𐑟"
 
-#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1673 ctk/ctktreeview.c:1235
+#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1673 ctk/ctktreeview.c:1241
 #, fuzzy
 msgid "Size of the expander arrow"
 msgstr "𐑕𐑲𐑟 𐑝 𐑞 expander 𐑨𐑮𐑴"
@@ -3975,12 +3975,12 @@ msgid "The selection mode"
 msgstr "𐑞 𐑕𐑦𐑤𐑧𐑒𐑖𐑩𐑯 𐑥𐑴𐑛"
 
 #: ctk/ctkflowbox.c:3836 ctk/ctkiconview.c:665 ctk/ctklistbox.c:493
-#: ctk/ctktreeview.c:1220
+#: ctk/ctktreeview.c:1226
 msgid "Activate on Single Click"
 msgstr ""
 
 #: ctk/ctkflowbox.c:3837 ctk/ctkiconview.c:666 ctk/ctklistbox.c:494
-#: ctk/ctktreeview.c:1221
+#: ctk/ctktreeview.c:1227
 msgid "Activate row on a single click"
 msgstr ""
 
@@ -4451,17 +4451,17 @@ msgid ""
 "How the text and icon of each item are positioned relative to each other"
 msgstr "𐑣𐑬 𐑞 𐑑𐑧𐑒𐑕𐑑 𐑯 𐑲𐑒𐑪𐑯 𐑝 𐑰𐑗 𐑲𐑑𐑩𐑥 𐑸 𐑐𐑩𐑟𐑦𐑖𐑩𐑯𐑛 𐑮𐑧𐑤𐑩𐑑𐑦𐑝 𐑑 𐑰𐑗 𐑳𐑞𐑼"
 
-#: ctk/ctkiconview.c:605 ctk/ctktreeview.c:1059 ctk/ctktreeviewcolumn.c:351
+#: ctk/ctkiconview.c:605 ctk/ctktreeview.c:1065 ctk/ctktreeviewcolumn.c:351
 #, fuzzy
 msgid "Reorderable"
 msgstr "Reorderable"
 
-#: ctk/ctkiconview.c:606 ctk/ctktreeview.c:1060
+#: ctk/ctkiconview.c:606 ctk/ctktreeview.c:1066
 #, fuzzy
 msgid "View is reorderable"
 msgstr "𐑝𐑿 𐑦𐑟 reorderable"
 
-#: ctk/ctkiconview.c:613 ctk/ctktreeview.c:1204
+#: ctk/ctkiconview.c:613 ctk/ctktreeview.c:1210
 #, fuzzy
 msgid "Tooltip Column"
 msgstr "Tooltip 𐑒𐑪𐑤𐑩𐑥"
@@ -4642,11 +4642,11 @@ msgid "Width of border around the action area"
 msgstr "𐑢𐑦𐑛𐑔 𐑝 𐑚𐑹𐑛𐑼 𐑩𐑮𐑬𐑯𐑛 𐑞 𐑨𐑒𐑖𐑩𐑯 𐑺𐑦𐑩"
 
 #: ctk/ctkinvisible.c:98 ctk/ctkmountoperation.c:183 ctk/ctkstatusicon.c:296
-#: ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:897
+#: ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:898
 msgid "Screen"
 msgstr "𐑕𐑒𐑮𐑰𐑯"
 
-#: ctk/ctkinvisible.c:99 ctk/ctkwindow.c:898
+#: ctk/ctkinvisible.c:99 ctk/ctkwindow.c:899
 msgid "The screen where this window will be displayed"
 msgstr "𐑞 𐑕𐑒𐑮𐑰𐑯 𐑢𐑺 𐑞𐑦𐑕 𐑢𐑦𐑯𐑛𐑴 𐑢𐑦𐑤 𐑚𐑰 𐑛𐑩𐑕𐑐𐑤𐑱𐑛"
 
@@ -5403,7 +5403,7 @@ msgstr "𐑛𐑲𐑩𐑤𐑪𐑜"
 msgid "The title of the file chooser dialog"
 msgstr "𐑞 𐑑𐑲𐑑𐑩𐑤 𐑝 𐑞 𐑓𐑲𐑤 chooser 𐑛𐑲𐑩𐑤𐑪𐑜."
 
-#: ctk/ctknativedialog.c:228 ctk/ctkpopover.c:1782 ctk/ctkwindow.c:789
+#: ctk/ctknativedialog.c:228 ctk/ctkpopover.c:1782 ctk/ctkwindow.c:790
 msgid "Modal"
 msgstr "𐑥𐑴𐑛𐑩𐑤"
 
@@ -5419,11 +5419,11 @@ msgstr "𐑦𐑓 𐑑𐑮𐑵, 𐑞 𐑢𐑦𐑯𐑛𐑴 𐑦𐑟 𐑥𐑴𐑛�
 msgid "Whether the dialog is currently visible"
 msgstr "𐑢𐑧𐑞𐑼 𐑞 𐑢𐑦𐑡𐑩𐑑 𐑦𐑟 𐑝𐑦𐑕𐑦𐑚𐑩𐑤"
 
-#: ctk/ctknativedialog.c:256 ctk/ctkwindow.c:1064
+#: ctk/ctknativedialog.c:256 ctk/ctkwindow.c:1065
 msgid "Transient for Window"
 msgstr "𐑑𐑮𐑨𐑯𐑠𐑩𐑯𐑑 𐑓𐑹 𐑢𐑦𐑯𐑛𐑴"
 
-#: ctk/ctknativedialog.c:257 ctk/ctkwindow.c:1065
+#: ctk/ctknativedialog.c:257 ctk/ctkwindow.c:1066
 msgid "The transient parent of the dialog"
 msgstr "𐑞 𐑑𐑮𐑨𐑯𐑠𐑩𐑯𐑑 𐑐𐑺𐑩𐑯𐑑 𐑝 𐑞 𐑛𐑲𐑩𐑤𐑪𐑜"
 
@@ -9070,220 +9070,220 @@ msgstr "TreeModelSort 𐑥𐑪𐑛𐑩𐑤"
 msgid "The model for the TreeModelSort to sort"
 msgstr "𐑞 𐑥𐑪𐑛𐑩𐑤 𐑓𐑹 𐑞 TreeModelSort 𐑑 𐑕𐑹𐑑"
 
-#: ctk/ctktreeview.c:1031
+#: ctk/ctktreeview.c:1037
 #, fuzzy
 msgid "TreeView Model"
 msgstr "TreeView 𐑥𐑪𐑛𐑩𐑤"
 
-#: ctk/ctktreeview.c:1032
+#: ctk/ctktreeview.c:1038
 msgid "The model for the tree view"
 msgstr "𐑞 𐑥𐑪𐑛𐑩𐑤 𐑓𐑹 𐑞 𐑑𐑮𐑰 𐑝𐑿"
 
-#: ctk/ctktreeview.c:1038
+#: ctk/ctktreeview.c:1044
 msgid "Headers Visible"
 msgstr "𐑣𐑧𐑛𐑼𐑟 𐑝𐑦𐑕𐑦𐑚𐑩𐑤"
 
-#: ctk/ctktreeview.c:1039
+#: ctk/ctktreeview.c:1045
 msgid "Show the column header buttons"
 msgstr "𐑖𐑴 𐑞 𐑒𐑪𐑤𐑩𐑥 𐑣𐑧𐑛𐑼 𐑚𐑳𐑑𐑩𐑯𐑟"
 
-#: ctk/ctktreeview.c:1045
+#: ctk/ctktreeview.c:1051
 #, fuzzy
 msgid "Headers Clickable"
 msgstr "𐑣𐑧𐑛𐑼𐑟 Clickable"
 
-#: ctk/ctktreeview.c:1046
+#: ctk/ctktreeview.c:1052
 msgid "Column headers respond to click events"
 msgstr "𐑒𐑪𐑤𐑩𐑥 𐑣𐑧𐑛𐑼𐑟 𐑮𐑰𐑕𐑐𐑪𐑯𐑛 𐑑 𐑒𐑤𐑦𐑒 𐑦𐑝𐑧𐑯𐑑𐑕"
 
-#: ctk/ctktreeview.c:1052
+#: ctk/ctktreeview.c:1058
 #, fuzzy
 msgid "Expander Column"
 msgstr "Expander 𐑒𐑪𐑤𐑩𐑥"
 
-#: ctk/ctktreeview.c:1053
+#: ctk/ctktreeview.c:1059
 #, fuzzy
 msgid "Set the column for the expander column"
 msgstr "𐑕𐑧𐑑 𐑞 𐑒𐑪𐑤𐑩𐑥 𐑓𐑹 𐑞 expander 𐑒𐑪𐑤𐑩𐑥"
 
-#: ctk/ctktreeview.c:1074
+#: ctk/ctktreeview.c:1080
 msgid "Rules Hint"
 msgstr "𐑮𐑵𐑤𐑟 𐑣𐑦𐑯𐑑"
 
-#: ctk/ctktreeview.c:1075
+#: ctk/ctktreeview.c:1081
 msgid "Set a hint to the theme engine to draw rows in alternating colors"
 msgstr "𐑕𐑧𐑑 𐑩 𐑣𐑦𐑯𐑑 𐑑 𐑞 𐑔𐑰𐑥 𐑧𐑯𐑡𐑦𐑯 𐑑 𐑛𐑮𐑷 𐑮𐑴𐑟 𐑦𐑯 𐑪𐑤𐑑𐑻𐑯𐑱𐑑𐑦𐑙 𐑒𐑳𐑤𐑼𐑟"
 
-#: ctk/ctktreeview.c:1081
+#: ctk/ctktreeview.c:1087
 msgid "Enable Search"
 msgstr "𐑦𐑯𐑱𐑚𐑩𐑤 𐑕𐑻𐑗"
 
-#: ctk/ctktreeview.c:1082
+#: ctk/ctktreeview.c:1088
 #, fuzzy
 msgid "View allows user to search through columns interactively"
 msgstr "𐑝𐑿 𐑩𐑤𐑬𐑟 𐑿𐑟𐑼 𐑑 𐑕𐑻𐑗 𐑔𐑮𐑵 𐑒𐑪𐑤𐑩𐑥𐑟 interactively"
 
-#: ctk/ctktreeview.c:1088
+#: ctk/ctktreeview.c:1094
 msgid "Search Column"
 msgstr "𐑕𐑻𐑗 𐑒𐑪𐑤𐑩𐑥"
 
-#: ctk/ctktreeview.c:1089
+#: ctk/ctktreeview.c:1095
 msgid "Model column to search through during interactive search"
 msgstr "𐑥𐑪𐑛𐑩𐑤 𐑒𐑪𐑤𐑩𐑥 𐑑 𐑕𐑻𐑗 𐑔𐑮𐑵 𐑛𐑘𐑫𐑼𐑦𐑙 𐑦𐑯𐑑𐑻𐑨𐑒𐑑𐑦𐑝 𐑕𐑻𐑗"
 
-#: ctk/ctktreeview.c:1107
+#: ctk/ctktreeview.c:1113
 msgid "Fixed Height Mode"
 msgstr "𐑓𐑦𐑒𐑕𐑑 𐑣𐑲𐑑 𐑥𐑴𐑛"
 
-#: ctk/ctktreeview.c:1108
+#: ctk/ctktreeview.c:1114
 #, fuzzy
 msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
 msgstr "𐑕𐑐𐑰𐑛𐑟 𐑳𐑐 CtkTreeView 𐑚𐑲 𐑩𐑕𐑿𐑥𐑦𐑙 𐑞𐑨𐑑 𐑷𐑤 𐑮𐑴𐑟 𐑣𐑨𐑝 𐑞 𐑕𐑱𐑥 𐑣𐑲𐑑"
 
-#: ctk/ctktreeview.c:1127
+#: ctk/ctktreeview.c:1133
 msgid "Hover Selection"
 msgstr "𐑣𐑩𐑝𐑻 𐑕𐑦𐑤𐑧𐑒𐑖𐑩𐑯"
 
-#: ctk/ctktreeview.c:1128
+#: ctk/ctktreeview.c:1134
 msgid "Whether the selection should follow the pointer"
 msgstr "𐑢𐑧𐑞𐑼 𐑞 𐑕𐑦𐑤𐑧𐑒𐑖𐑩𐑯 𐑖𐑫𐑛 𐑓𐑪𐑤𐑴 𐑞 𐑐𐑶𐑯𐑑𐑼"
 
-#: ctk/ctktreeview.c:1146
+#: ctk/ctktreeview.c:1152
 msgid "Hover Expand"
 msgstr "𐑣𐑩𐑝𐑻 𐑦𐑒𐑕𐑐𐑨𐑯𐑛"
 
-#: ctk/ctktreeview.c:1147
+#: ctk/ctktreeview.c:1153
 msgid ""
 "Whether rows should be expanded/collapsed when the pointer moves over them"
 msgstr "𐑢𐑧𐑞𐑼 𐑮𐑴𐑟 𐑖𐑫𐑛 𐑚𐑰 𐑦𐑒𐑕𐑐𐑨𐑯𐑛𐑩𐑛/𐑒𐑩𐑤𐑨𐑐𐑕𐑑 𐑢𐑧𐑯 𐑞 𐑐𐑶𐑯𐑑𐑼 𐑥𐑵𐑝𐑟 𐑴𐑝𐑼 𐑞𐑧𐑥"
 
-#: ctk/ctktreeview.c:1160
+#: ctk/ctktreeview.c:1166
 #, fuzzy
 msgid "Show Expanders"
 msgstr "𐑖𐑴 Expanders"
 
-#: ctk/ctktreeview.c:1161
+#: ctk/ctktreeview.c:1167
 #, fuzzy
 msgid "View has expanders"
 msgstr "𐑝𐑿 𐑣𐑨𐑟 expanders"
 
-#: ctk/ctktreeview.c:1174
+#: ctk/ctktreeview.c:1180
 msgid "Level Indentation"
 msgstr "𐑤𐑧𐑝𐑩𐑤 𐑦𐑯𐑛𐑧𐑯𐑑𐑱𐑖𐑩𐑯"
 
-#: ctk/ctktreeview.c:1175
+#: ctk/ctktreeview.c:1181
 msgid "Extra indentation for each level"
 msgstr "𐑧𐑒𐑕𐑑𐑮𐑩 𐑦𐑯𐑛𐑧𐑯𐑑𐑱𐑖𐑩𐑯 𐑓𐑹 𐑰𐑗 𐑤𐑧𐑝𐑩𐑤"
 
-#: ctk/ctktreeview.c:1182
+#: ctk/ctktreeview.c:1188
 msgid "Rubber Banding"
 msgstr "𐑮𐑳𐑚𐑼 𐑚𐑨𐑯𐑛𐑦𐑙"
 
-#: ctk/ctktreeview.c:1183
+#: ctk/ctktreeview.c:1189
 msgid ""
 "Whether to enable selection of multiple items by dragging the mouse pointer"
 msgstr "𐑢𐑧𐑞𐑼 𐑑 𐑦𐑯𐑱𐑚𐑩𐑤 𐑕𐑦𐑤𐑧𐑒𐑖𐑩𐑯 𐑝 𐑥𐑳𐑤𐑑𐑦𐑐𐑩𐑤 𐑲𐑑𐑩𐑥𐑟 𐑚𐑲 𐑛𐑮𐑨𐑜𐑦𐑙 𐑞 𐑥𐑬𐑕 𐑐𐑶𐑯𐑑𐑼"
 
-#: ctk/ctktreeview.c:1189
+#: ctk/ctktreeview.c:1195
 msgid "Enable Grid Lines"
 msgstr "𐑦𐑯𐑱𐑚𐑩𐑤 𐑜𐑮𐑦𐑛 𐑤𐑲𐑯𐑟"
 
-#: ctk/ctktreeview.c:1190
+#: ctk/ctktreeview.c:1196
 msgid "Whether grid lines should be drawn in the tree view"
 msgstr "𐑢𐑧𐑞𐑼 𐑜𐑮𐑦𐑛 𐑤𐑲𐑯𐑟 𐑖𐑫𐑛 𐑚𐑰 𐑛𐑮𐑷𐑯 𐑦𐑯 𐑞 𐑑𐑮𐑰 𐑝𐑿"
 
-#: ctk/ctktreeview.c:1197
+#: ctk/ctktreeview.c:1203
 msgid "Enable Tree Lines"
 msgstr "𐑦𐑯𐑱𐑚𐑩𐑤 𐑑𐑮𐑰 𐑤𐑲𐑯𐑟"
 
-#: ctk/ctktreeview.c:1198
+#: ctk/ctktreeview.c:1204
 msgid "Whether tree lines should be drawn in the tree view"
 msgstr "𐑢𐑧𐑞𐑼 𐑑𐑮𐑰 𐑤𐑲𐑯𐑟 𐑖𐑫𐑛 𐑚𐑰 𐑛𐑮𐑷𐑯 𐑦𐑯 𐑞 𐑑𐑮𐑰 𐑝𐑿"
 
-#: ctk/ctktreeview.c:1205
+#: ctk/ctktreeview.c:1211
 #, fuzzy
 msgid "The column in the model containing the tooltip texts for the rows"
 msgstr "𐑞 𐑒𐑪𐑤𐑩𐑥 𐑦𐑯 𐑞 𐑥𐑪𐑛𐑩𐑤 𐑒𐑩𐑯𐑑𐑱𐑯𐑦𐑙 𐑞 tooltip 𐑑𐑧𐑒𐑕𐑑𐑕 𐑓𐑹 𐑞 𐑮𐑴𐑟"
 
-#: ctk/ctktreeview.c:1243
+#: ctk/ctktreeview.c:1249
 msgid "Vertical Separator Width"
 msgstr "𐑝𐑻𐑑𐑦𐑒𐑩𐑤 𐑕𐑧𐑐𐑼𐑱𐑑𐑼 𐑢𐑦𐑛𐑔"
 
-#: ctk/ctktreeview.c:1244
+#: ctk/ctktreeview.c:1250
 msgid "Vertical space between cells.  Must be an even number"
 msgstr "𐑝𐑻𐑑𐑦𐑒𐑩𐑤 𐑕𐑐𐑱𐑕 𐑚𐑦𐑑𐑢𐑰𐑯 𐑕𐑧𐑤𐑟.  𐑥𐑳𐑕𐑑 𐑚𐑰 𐑩𐑯 𐑰𐑝𐑩𐑯 𐑯𐑳𐑥𐑚𐑼"
 
-#: ctk/ctktreeview.c:1252
+#: ctk/ctktreeview.c:1258
 msgid "Horizontal Separator Width"
 msgstr "𐑣𐑪𐑮𐑦𐑟𐑪𐑯𐑑𐑩𐑤 𐑕𐑧𐑐𐑼𐑱𐑑𐑼 𐑢𐑦𐑛𐑔"
 
-#: ctk/ctktreeview.c:1253
+#: ctk/ctktreeview.c:1259
 msgid "Horizontal space between cells.  Must be an even number"
 msgstr "𐑣𐑪𐑮𐑦𐑟𐑪𐑯𐑑𐑩𐑤 𐑕𐑐𐑱𐑕 𐑚𐑦𐑑𐑢𐑰𐑯 𐑕𐑧𐑤𐑟.  𐑥𐑳𐑕𐑑 𐑚𐑰 𐑩𐑯 𐑰𐑝𐑩𐑯 𐑯𐑳𐑥𐑚𐑼"
 
-#: ctk/ctktreeview.c:1261
+#: ctk/ctktreeview.c:1267
 msgid "Allow Rules"
 msgstr "𐑩𐑤𐑬 𐑮𐑵𐑤𐑟"
 
-#: ctk/ctktreeview.c:1262
+#: ctk/ctktreeview.c:1268
 msgid "Allow drawing of alternating color rows"
 msgstr "𐑩𐑤𐑬 𐑛𐑮𐑷𐑦𐑙 𐑝 𐑪𐑤𐑑𐑻𐑯𐑱𐑑𐑦𐑙 𐑒𐑳𐑤𐑼 𐑮𐑴𐑟"
 
-#: ctk/ctktreeview.c:1268
+#: ctk/ctktreeview.c:1274
 #, fuzzy
 msgid "Indent Expanders"
 msgstr "𐑦𐑯𐑛𐑧𐑯𐑑 Expanders"
 
-#: ctk/ctktreeview.c:1269
+#: ctk/ctktreeview.c:1275
 #, fuzzy
 msgid "Make the expanders indented"
 msgstr "𐑥𐑱𐑒 𐑞 expanders 𐑦𐑯𐑛𐑧𐑯𐑑𐑩𐑛"
 
-#: ctk/ctktreeview.c:1275
+#: ctk/ctktreeview.c:1281
 msgid "Even Row Color"
 msgstr "𐑰𐑝𐑩𐑯 𐑮𐑴 𐑒𐑳𐑤𐑼"
 
-#: ctk/ctktreeview.c:1276
+#: ctk/ctktreeview.c:1282
 msgid "Color to use for even rows"
 msgstr "𐑒𐑳𐑤𐑼 𐑑 𐑿𐑕 𐑓𐑹 𐑰𐑝𐑩𐑯 𐑮𐑴𐑟"
 
-#: ctk/ctktreeview.c:1282
+#: ctk/ctktreeview.c:1288
 msgid "Odd Row Color"
 msgstr "𐑪𐑛 𐑮𐑴 𐑒𐑳𐑤𐑼"
 
-#: ctk/ctktreeview.c:1283
+#: ctk/ctktreeview.c:1289
 msgid "Color to use for odd rows"
 msgstr "𐑒𐑳𐑤𐑼 𐑑 𐑿𐑕 𐑓𐑹 𐑪𐑛 𐑮𐑴𐑟"
 
-#: ctk/ctktreeview.c:1290
+#: ctk/ctktreeview.c:1296
 msgid "Grid line width"
 msgstr "𐑜𐑮𐑦𐑛 𐑤𐑲𐑯 𐑢𐑦𐑛𐑔"
 
-#: ctk/ctktreeview.c:1291
+#: ctk/ctktreeview.c:1297
 msgid "Width, in pixels, of the tree view grid lines"
 msgstr "𐑢𐑦𐑛𐑔, 𐑦𐑯 𐑐𐑦𐑒𐑕𐑩𐑤𐑟, 𐑝 𐑞 𐑑𐑮𐑰 𐑝𐑿 𐑜𐑮𐑦𐑛 𐑤𐑲𐑯𐑟"
 
-#: ctk/ctktreeview.c:1297
+#: ctk/ctktreeview.c:1303
 msgid "Tree line width"
 msgstr "𐑑𐑮𐑰 𐑤𐑲𐑯 𐑢𐑦𐑛𐑔"
 
-#: ctk/ctktreeview.c:1298
+#: ctk/ctktreeview.c:1304
 msgid "Width, in pixels, of the tree view lines"
 msgstr "𐑢𐑦𐑛𐑔, 𐑦𐑯 𐑐𐑦𐑒𐑕𐑩𐑤𐑟, 𐑝 𐑞 𐑑𐑮𐑰 𐑝𐑿 𐑤𐑲𐑯𐑟"
 
-#: ctk/ctktreeview.c:1304
+#: ctk/ctktreeview.c:1310
 msgid "Grid line pattern"
 msgstr "𐑜𐑮𐑦𐑛 𐑤𐑲𐑯 𐑐𐑨𐑑𐑼𐑯"
 
-#: ctk/ctktreeview.c:1305
+#: ctk/ctktreeview.c:1311
 msgid "Dash pattern used to draw the tree view grid lines"
 msgstr "𐑛𐑨𐑖 𐑐𐑨𐑑𐑼𐑯 𐑿𐑕𐑑 𐑑 𐑛𐑮𐑷 𐑞 𐑑𐑮𐑰 𐑝𐑿 𐑜𐑮𐑦𐑛 𐑤𐑲𐑯𐑟"
 
-#: ctk/ctktreeview.c:1311
+#: ctk/ctktreeview.c:1317
 msgid "Tree line pattern"
 msgstr "𐑑𐑮𐑰 𐑤𐑲𐑯 𐑐𐑨𐑑𐑼𐑯"
 
-#: ctk/ctktreeview.c:1312
+#: ctk/ctktreeview.c:1318
 msgid "Dash pattern used to draw the tree view lines"
 msgstr "𐑛𐑨𐑖 𐑐𐑨𐑑𐑼𐑯 𐑿𐑕𐑑 𐑑 𐑛𐑮𐑷 𐑞 𐑑𐑮𐑰 𐑝𐑿 𐑤𐑲𐑯𐑟"
 
@@ -9291,7 +9291,7 @@ msgstr "𐑛𐑨𐑖 𐑐𐑨𐑑𐑼𐑯 𐑿𐑕𐑑 𐑑 𐑛𐑮𐑷 𐑞 �
 msgid "Whether to display the column"
 msgstr "𐑢𐑧𐑞𐑼 𐑑 𐑛𐑦𐑕𐑐𐑤𐑱 𐑞 𐑒𐑪𐑤𐑩𐑥"
 
-#: ctk/ctktreeviewcolumn.c:253 ctk/ctkwindow.c:782
+#: ctk/ctktreeviewcolumn.c:253 ctk/ctkwindow.c:783
 #, fuzzy
 msgid "Resizable"
 msgstr "Resizable"
@@ -9872,140 +9872,140 @@ msgstr "𐑢𐑦𐑛𐑔 𐑝 𐑣𐑨𐑯𐑛𐑩𐑤"
 msgid "Height of text selection handles"
 msgstr "𐑞 𐑑𐑲𐑑𐑩𐑤 𐑝 𐑞 𐑓𐑪𐑯𐑑 𐑕𐑦𐑤𐑧𐑒𐑖𐑩𐑯 𐑛𐑲𐑩𐑤𐑪𐑜"
 
-#: ctk/ctkwindow.c:744
+#: ctk/ctkwindow.c:745
 msgid "Window Type"
 msgstr "𐑢𐑦𐑯𐑛𐑴 𐑑𐑲𐑐"
 
-#: ctk/ctkwindow.c:745
+#: ctk/ctkwindow.c:746
 msgid "The type of the window"
 msgstr "𐑞 𐑑𐑲𐑐 𐑝 𐑞 𐑢𐑦𐑯𐑛𐑴"
 
-#: ctk/ctkwindow.c:752
+#: ctk/ctkwindow.c:753
 msgid "Window Title"
 msgstr "𐑢𐑦𐑯𐑛𐑴 𐑑𐑲𐑑𐑩𐑤"
 
-#: ctk/ctkwindow.c:753
+#: ctk/ctkwindow.c:754
 msgid "The title of the window"
 msgstr "𐑞 𐑑𐑲𐑑𐑩𐑤 𐑝 𐑞 𐑢𐑦𐑯𐑛𐑴"
 
-#: ctk/ctkwindow.c:759
+#: ctk/ctkwindow.c:760
 msgid "Window Role"
 msgstr "𐑢𐑦𐑯𐑛𐑴 𐑮𐑴𐑤"
 
-#: ctk/ctkwindow.c:760
+#: ctk/ctkwindow.c:761
 msgid "Unique identifier for the window to be used when restoring a session"
 msgstr "𐑿𐑯𐑰𐑒 𐑲𐑛𐑧𐑯𐑑𐑦𐑓𐑲𐑼 𐑓𐑹 𐑞 𐑢𐑦𐑯𐑛𐑴 𐑑 𐑚𐑰 𐑿𐑟𐑛 𐑢𐑧𐑯 𐑮𐑩𐑕𐑑𐑹𐑦𐑙 𐑩 𐑕𐑧𐑖𐑩𐑯"
 
-#: ctk/ctkwindow.c:775
+#: ctk/ctkwindow.c:776
 msgid "Startup ID"
 msgstr "𐑕𐑑𐑸𐑑𐑳𐑐 ID"
 
-#: ctk/ctkwindow.c:776
+#: ctk/ctkwindow.c:777
 msgid "Unique startup identifier for the window used by startup-notification"
 msgstr "𐑿𐑯𐑰𐑒 𐑕𐑑𐑸𐑑𐑳𐑐 𐑲𐑛𐑧𐑯𐑑𐑦𐑓𐑲𐑼 𐑓𐑹 𐑞 𐑢𐑦𐑯𐑛𐑴 𐑿𐑕𐑑 𐑚𐑲 𐑕𐑑𐑸𐑑𐑳𐑐-𐑯𐑴𐑑𐑦𐑓𐑦𐑒𐑱𐑖𐑩𐑯"
 
-#: ctk/ctkwindow.c:783
+#: ctk/ctkwindow.c:784
 msgid "If TRUE, users can resize the window"
 msgstr "𐑦𐑓 𐑑𐑮𐑵, 𐑿𐑟𐑼𐑟 𐑒𐑨𐑯 𐑮𐑰𐑕𐑲𐑟 𐑞 𐑢𐑦𐑯𐑛𐑴"
 
-#: ctk/ctkwindow.c:790
+#: ctk/ctkwindow.c:791
 msgid ""
 "If TRUE, the window is modal (other windows are not usable while this one is "
 "up)"
 msgstr "𐑦𐑓 𐑑𐑮𐑵, 𐑞 𐑢𐑦𐑯𐑛𐑴 𐑦𐑟 𐑥𐑴𐑛𐑩𐑤 (𐑳𐑞𐑼 𐑢𐑦𐑯𐑛𐑴𐑟 𐑸 𐑯𐑪𐑑 𐑘𐑵𐑟𐑩𐑚𐑩𐑤 𐑢𐑲𐑤 𐑞𐑦𐑕 𐑢𐑳𐑯 𐑦𐑟 𐑳𐑐)"
 
-#: ctk/ctkwindow.c:796
+#: ctk/ctkwindow.c:797
 msgid "Window Position"
 msgstr "𐑢𐑦𐑯𐑛𐑴 𐑐𐑩𐑟𐑦𐑖𐑩𐑯"
 
-#: ctk/ctkwindow.c:797
+#: ctk/ctkwindow.c:798
 msgid "The initial position of the window"
 msgstr "𐑞 𐑦𐑯𐑦𐑖𐑩𐑤 𐑐𐑩𐑟𐑦𐑖𐑩𐑯 𐑝 𐑞 𐑢𐑦𐑯𐑛𐑴"
 
-#: ctk/ctkwindow.c:804
+#: ctk/ctkwindow.c:805
 msgid "Default Width"
 msgstr "𐑛𐑦𐑓𐑷𐑤𐑑 𐑢𐑦𐑛𐑔"
 
-#: ctk/ctkwindow.c:805
+#: ctk/ctkwindow.c:806
 msgid "The default width of the window, used when initially showing the window"
 msgstr "𐑞 𐑛𐑦𐑓𐑷𐑤𐑑 𐑢𐑦𐑛𐑔 𐑝 𐑞 𐑢𐑦𐑯𐑛𐑴, 𐑿𐑕𐑑 𐑢𐑧𐑯 𐑦𐑯𐑦𐑖𐑩𐑤𐑦 𐑖𐑴𐑦𐑙 𐑞 𐑢𐑦𐑯𐑛𐑴"
 
-#: ctk/ctkwindow.c:812
+#: ctk/ctkwindow.c:813
 msgid "Default Height"
 msgstr "𐑛𐑦𐑓𐑷𐑤𐑑 𐑣𐑲𐑑"
 
-#: ctk/ctkwindow.c:813
+#: ctk/ctkwindow.c:814
 msgid ""
 "The default height of the window, used when initially showing the window"
 msgstr "𐑞 𐑛𐑦𐑓𐑷𐑤𐑑 𐑣𐑲𐑑 𐑝 𐑞 𐑢𐑦𐑯𐑛𐑴, 𐑿𐑕𐑑 𐑢𐑧𐑯 𐑦𐑯𐑦𐑖𐑩𐑤𐑦 𐑖𐑴𐑦𐑙 𐑞 𐑢𐑦𐑯𐑛𐑴"
 
-#: ctk/ctkwindow.c:820
+#: ctk/ctkwindow.c:821
 msgid "Destroy with Parent"
 msgstr "𐑛𐑩𐑕𐑑𐑮𐑶 𐑢𐑦𐑞 𐑐𐑺𐑩𐑯𐑑"
 
-#: ctk/ctkwindow.c:821
+#: ctk/ctkwindow.c:822
 msgid "If this window should be destroyed when the parent is destroyed"
 msgstr "𐑦𐑓 𐑞𐑦𐑕 𐑢𐑦𐑯𐑛𐑴 𐑖𐑫𐑛 𐑚𐑰 𐑛𐑩𐑕𐑑𐑮𐑶𐑛 𐑢𐑧𐑯 𐑞 𐑐𐑺𐑩𐑯𐑑 𐑦𐑟 𐑛𐑩𐑕𐑑𐑮𐑶𐑛"
 
-#: ctk/ctkwindow.c:834
+#: ctk/ctkwindow.c:835
 msgid "Hide the titlebar during maximization"
 msgstr ""
 
-#: ctk/ctkwindow.c:835
+#: ctk/ctkwindow.c:836
 #, fuzzy
 msgid "If this window's titlebar should be hidden when the window is maximized"
 msgstr "𐑦𐑓 𐑞𐑦𐑕 𐑢𐑦𐑯𐑛𐑴 𐑖𐑫𐑛 𐑚𐑰 𐑛𐑩𐑕𐑑𐑮𐑶𐑛 𐑢𐑧𐑯 𐑞 𐑐𐑺𐑩𐑯𐑑 𐑦𐑟 𐑛𐑩𐑕𐑑𐑮𐑶𐑛"
 
-#: ctk/ctkwindow.c:842
+#: ctk/ctkwindow.c:843
 msgid "Icon for this window"
 msgstr "𐑲𐑒𐑪𐑯 𐑓𐑹 𐑞𐑦𐑕 𐑢𐑦𐑯𐑛𐑴"
 
-#: ctk/ctkwindow.c:858
+#: ctk/ctkwindow.c:859
 msgid "Mnemonics Visible"
 msgstr "𐑯𐑦𐑥𐑭𐑯𐑦𐑒𐑕 𐑝𐑦𐑕𐑦𐑚𐑩𐑤"
 
-#: ctk/ctkwindow.c:859
+#: ctk/ctkwindow.c:860
 msgid "Whether mnemonics are currently visible in this window"
 msgstr "𐑢𐑧𐑞𐑼 𐑯𐑦𐑥𐑭𐑯𐑦𐑒𐑕 𐑸 𐑒𐑳𐑮𐑩𐑯𐑑𐑤𐑦 𐑝𐑦𐑕𐑦𐑚𐑩𐑤 𐑦𐑯 𐑞𐑦𐑕 𐑢𐑦𐑯𐑛𐑴"
 
-#: ctk/ctkwindow.c:875
+#: ctk/ctkwindow.c:876
 #, fuzzy
 msgid "Focus Visible"
 msgstr "𐑒𐑻𐑕𐑼 𐑝𐑦𐑕𐑦𐑚𐑩𐑤"
 
-#: ctk/ctkwindow.c:876
+#: ctk/ctkwindow.c:877
 #, fuzzy
 msgid "Whether focus rectangles are currently visible in this window"
 msgstr "𐑢𐑧𐑞𐑼 𐑯𐑦𐑥𐑭𐑯𐑦𐑒𐑕 𐑸 𐑒𐑳𐑮𐑩𐑯𐑑𐑤𐑦 𐑝𐑦𐑕𐑦𐑚𐑩𐑤 𐑦𐑯 𐑞𐑦𐑕 𐑢𐑦𐑯𐑛𐑴"
 
-#: ctk/ctkwindow.c:891
+#: ctk/ctkwindow.c:892
 msgid "Name of the themed icon for this window"
 msgstr "𐑯𐑱𐑥 𐑝 𐑞 𐑔𐑰𐑥𐑛 𐑲𐑒𐑪𐑯 𐑓𐑹 𐑞𐑦𐑕 𐑢𐑦𐑯𐑛𐑴"
 
-#: ctk/ctkwindow.c:904
+#: ctk/ctkwindow.c:905
 msgid "Is Active"
 msgstr "𐑦𐑟 𐑨𐑒𐑑𐑦𐑝"
 
-#: ctk/ctkwindow.c:905
+#: ctk/ctkwindow.c:906
 #, fuzzy
 msgid "Whether the toplevel is the current active window"
 msgstr "𐑢𐑧𐑞𐑼 𐑞 toplevel 𐑦𐑟 𐑞 𐑒𐑳𐑮𐑩𐑯𐑑 𐑨𐑒𐑑𐑦𐑝 𐑢𐑦𐑯𐑛𐑴"
 
-#: ctk/ctkwindow.c:911
+#: ctk/ctkwindow.c:912
 #, fuzzy
 msgid "Focus in Toplevel"
 msgstr "𐑓𐑴𐑒𐑩𐑕 𐑦𐑯 Toplevel"
 
-#: ctk/ctkwindow.c:912
+#: ctk/ctkwindow.c:913
 #, fuzzy
 msgid "Whether the input focus is within this CtkWindow"
 msgstr "𐑢𐑧𐑞𐑼 𐑞 𐑦𐑯𐑐𐑫𐑑 𐑓𐑴𐑒𐑩𐑕 𐑦𐑟 𐑢𐑦𐑞𐑦𐑯 𐑞𐑦𐑕 CtkWindow"
 
-#: ctk/ctkwindow.c:918
+#: ctk/ctkwindow.c:919
 msgid "Type hint"
 msgstr "𐑑𐑲𐑐 𐑣𐑦𐑯𐑑"
 
-#: ctk/ctkwindow.c:919
+#: ctk/ctkwindow.c:920
 msgid ""
 "Hint to help the desktop environment understand what kind of window this is "
 "and how to treat it."
@@ -10013,123 +10013,123 @@ msgstr ""
 "𐑣𐑦𐑯𐑑 𐑑 𐑣𐑧𐑤𐑐 𐑞 𐑛𐑧𐑕𐑒𐑑𐑪𐑐 𐑧𐑯𐑝𐑲𐑼𐑯𐑥𐑩𐑯𐑑 𐑳𐑯𐑛𐑼𐑕𐑑𐑨𐑯𐑛 𐑢𐑪𐑑 𐑒𐑲𐑯𐑛 𐑝 𐑢𐑦𐑯𐑛𐑴 𐑞𐑦𐑕 𐑦𐑟 𐑯 𐑣𐑬 𐑑 "
 "𐑑𐑮𐑰𐑑 𐑦𐑑."
 
-#: ctk/ctkwindow.c:926
+#: ctk/ctkwindow.c:927
 msgid "Skip taskbar"
 msgstr "𐑕𐑒𐑦𐑐 𐑑𐑭𐑕𐑒𐑚𐑸"
 
-#: ctk/ctkwindow.c:927
+#: ctk/ctkwindow.c:928
 msgid "TRUE if the window should not be in the task bar."
 msgstr "𐑑𐑮𐑵 𐑦𐑓 𐑞 𐑢𐑦𐑯𐑛𐑴 𐑖𐑫𐑛 𐑯𐑪𐑑 𐑚𐑰 𐑦𐑯 𐑞 𐑑𐑭𐑕𐑒 𐑚𐑸."
 
-#: ctk/ctkwindow.c:933
+#: ctk/ctkwindow.c:934
 msgid "Skip pager"
 msgstr "𐑕𐑒𐑦𐑐 𐑐𐑱𐑡𐑻"
 
-#: ctk/ctkwindow.c:934
+#: ctk/ctkwindow.c:935
 msgid "TRUE if the window should not be in the pager."
 msgstr "𐑑𐑮𐑵 𐑦𐑓 𐑞 𐑢𐑦𐑯𐑛𐑴 𐑖𐑫𐑛 𐑯𐑪𐑑 𐑚𐑰 𐑦𐑯 𐑞 𐑐𐑱𐑡𐑻."
 
-#: ctk/ctkwindow.c:940
+#: ctk/ctkwindow.c:941
 msgid "Urgent"
 msgstr "𐑻𐑡𐑩𐑯𐑑"
 
-#: ctk/ctkwindow.c:941
+#: ctk/ctkwindow.c:942
 msgid "TRUE if the window should be brought to the user's attention."
 msgstr "𐑑𐑮𐑵 𐑦𐑓 𐑞 𐑢𐑦𐑯𐑛𐑴 𐑖𐑫𐑛 𐑚𐑰 𐑚𐑮𐑷𐑑 𐑑 𐑞 𐑿𐑟𐑼'𐑕 𐑩𐑑𐑧𐑯𐑖𐑩𐑯."
 
-#: ctk/ctkwindow.c:954
+#: ctk/ctkwindow.c:955
 msgid "Accept focus"
 msgstr "𐑨𐑒𐑕𐑧𐑐𐑑 𐑓𐑴𐑒𐑩𐑕"
 
-#: ctk/ctkwindow.c:955
+#: ctk/ctkwindow.c:956
 msgid "TRUE if the window should receive the input focus."
 msgstr "𐑑𐑮𐑵 𐑦𐑓 𐑞 𐑢𐑦𐑯𐑛𐑴 𐑖𐑫𐑛 𐑮𐑦𐑕𐑰𐑝 𐑞 𐑦𐑯𐑐𐑫𐑑 𐑓𐑴𐑒𐑩𐑕."
 
-#: ctk/ctkwindow.c:968
+#: ctk/ctkwindow.c:969
 msgid "Focus on map"
 msgstr "𐑓𐑴𐑒𐑩𐑕 𐑪𐑯 𐑥𐑨𐑐"
 
-#: ctk/ctkwindow.c:969
+#: ctk/ctkwindow.c:970
 msgid "TRUE if the window should receive the input focus when mapped."
 msgstr "𐑑𐑮𐑵 𐑦𐑓 𐑞 𐑢𐑦𐑯𐑛𐑴 𐑖𐑫𐑛 𐑮𐑦𐑕𐑰𐑝 𐑞 𐑦𐑯𐑐𐑫𐑑 𐑓𐑴𐑒𐑩𐑕 𐑢𐑧𐑯 𐑥𐑨𐑐𐑑."
 
-#: ctk/ctkwindow.c:982
+#: ctk/ctkwindow.c:983
 msgid "Decorated"
 msgstr "𐑛𐑧𐑒𐑻𐑱𐑑𐑩𐑛"
 
-#: ctk/ctkwindow.c:983
+#: ctk/ctkwindow.c:984
 msgid "Whether the window should be decorated by the window manager"
 msgstr "𐑢𐑧𐑞𐑼 𐑞 𐑢𐑦𐑯𐑛𐑴 𐑖𐑫𐑛 𐑚𐑰 𐑛𐑧𐑒𐑻𐑱𐑑𐑩𐑛 𐑚𐑲 𐑞 𐑢𐑦𐑯𐑛𐑴 𐑥𐑨𐑯𐑩𐑡𐑼"
 
-#: ctk/ctkwindow.c:996
+#: ctk/ctkwindow.c:997
 msgid "Deletable"
 msgstr "𐑛𐑦𐑤𐑰𐑑𐑩𐑚𐑩𐑤"
 
-#: ctk/ctkwindow.c:997
+#: ctk/ctkwindow.c:998
 msgid "Whether the window frame should have a close button"
 msgstr "𐑢𐑧𐑞𐑼 𐑞 𐑢𐑦𐑯𐑛𐑴 𐑓𐑮𐑱𐑥 𐑖𐑫𐑛 𐑣𐑨𐑝 𐑩 𐑒𐑤𐑴𐑕 𐑚𐑳𐑑𐑩𐑯"
 
-#: ctk/ctkwindow.c:1017
+#: ctk/ctkwindow.c:1018
 #, fuzzy
 msgid "Resize grip"
 msgstr "𐑣𐑨𐑟 𐑮𐑰𐑕𐑲𐑟 𐑜𐑮𐑦𐑐"
 
-#: ctk/ctkwindow.c:1018
+#: ctk/ctkwindow.c:1019
 #, fuzzy
 msgid "Specifies whether the window should have a resize grip"
 msgstr "𐑢𐑧𐑞𐑼 𐑞 𐑢𐑦𐑯𐑛𐑴 𐑓𐑮𐑱𐑥 𐑖𐑫𐑛 𐑣𐑨𐑝 𐑩 𐑒𐑤𐑴𐑕 𐑚𐑳𐑑𐑩𐑯"
 
-#: ctk/ctkwindow.c:1033
+#: ctk/ctkwindow.c:1034
 msgid "Resize grip is visible"
 msgstr ""
 
-#: ctk/ctkwindow.c:1034
+#: ctk/ctkwindow.c:1035
 #, fuzzy
 msgid "Specifies whether the window's resize grip is visible."
 msgstr "𐑢𐑧𐑞𐑼 𐑞 𐑨𐑒𐑖𐑩𐑯 𐑜𐑮𐑵𐑐 𐑦𐑟 𐑝𐑦𐑕𐑦𐑚𐑩𐑤."
 
-#: ctk/ctkwindow.c:1048
+#: ctk/ctkwindow.c:1049
 msgid "Gravity"
 msgstr "𐑜𐑮𐑨𐑝𐑩𐑑𐑰"
 
-#: ctk/ctkwindow.c:1049
+#: ctk/ctkwindow.c:1050
 msgid "The window gravity of the window"
 msgstr "𐑞 𐑢𐑦𐑯𐑛𐑴 𐑜𐑮𐑨𐑝𐑩𐑑𐑰 𐑝 𐑞 𐑢𐑦𐑯𐑛𐑴"
 
-#: ctk/ctkwindow.c:1084
+#: ctk/ctkwindow.c:1085
 #, fuzzy
 msgid "Attached to Widget"
 msgstr "𐑩𐑑𐑨𐑗 𐑢𐑦𐑡𐑩𐑑"
 
-#: ctk/ctkwindow.c:1085
+#: ctk/ctkwindow.c:1086
 #, fuzzy
 msgid "The widget where the window is attached"
 msgstr "𐑞 𐑢𐑦𐑡𐑩𐑑 𐑞 𐑥𐑧𐑯𐑿 𐑦𐑟 𐑩𐑑𐑨𐑗𐑑 𐑑"
 
-#: ctk/ctkwindow.c:1091
+#: ctk/ctkwindow.c:1092
 msgid "Is maximized"
 msgstr ""
 
-#: ctk/ctkwindow.c:1092
+#: ctk/ctkwindow.c:1093
 #, fuzzy
 msgid "Whether the window is maximized"
 msgstr "𐑢𐑧𐑞𐑼 𐑞 𐑢𐑦𐑡𐑩𐑑 𐑦𐑟 𐑝𐑦𐑕𐑦𐑚𐑩𐑤"
 
-#: ctk/ctkwindow.c:1113
+#: ctk/ctkwindow.c:1114
 #, fuzzy
 msgid "CtkApplication"
 msgstr "𐑩𐑐𐑤𐑦𐑒𐑱𐑕𐑩𐑯 paintable"
 
-#: ctk/ctkwindow.c:1114
+#: ctk/ctkwindow.c:1115
 #, fuzzy
 msgid "The CtkApplication for the window"
 msgstr "𐑞 𐑦𐑯𐑦𐑖𐑩𐑤 𐑐𐑩𐑟𐑦𐑖𐑩𐑯 𐑝 𐑞 𐑢𐑦𐑯𐑛𐑴"
 
-#: ctk/ctkwindow.c:1124 ctk/ctkwindow.c:1125
+#: ctk/ctkwindow.c:1125 ctk/ctkwindow.c:1126
 msgid "Decorated button layout"
 msgstr ""
 
-#: ctk/ctkwindow.c:1131 ctk/ctkwindow.c:1132
+#: ctk/ctkwindow.c:1132 ctk/ctkwindow.c:1133
 msgid "Decoration resize handle size"
 msgstr ""
 

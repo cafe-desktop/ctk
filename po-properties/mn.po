@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+-properties.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-19 12:06+0100\n"
+"POT-Creation-Date: 2026-11-22 15:03+0100\n"
 "PO-Revision-Date: 2004-03-09 12:13+0100\n"
 "Last-Translator: Sanlig Badral <badral@openmn.org>\n"
 "Language-Team: Mongolian <openmn-core@lists.sf.net>\n"
@@ -248,11 +248,11 @@ msgstr ""
 msgid "Minor version number"
 msgstr ""
 
-#: cdk/x11/cdkdevice-xi2.c:143
+#: cdk/x11/cdkdevice-xi2.c:144
 msgid "Device ID"
 msgstr ""
 
-#: cdk/x11/cdkdevice-xi2.c:144
+#: cdk/x11/cdkdevice-xi2.c:145
 msgid "Device identifier"
 msgstr ""
 
@@ -325,7 +325,7 @@ msgstr "Дүрслэлийн сан зурагдаж байна."
 
 # ctk/ctksettings.c:215
 #: ctk/ctkaction.c:341 ctk/ctkcellrendererpixbuf.c:245 ctk/ctkimage.c:341
-#: ctk/ctkprinter.c:170 ctk/ctkstatusicon.c:253 ctk/ctkwindow.c:890
+#: ctk/ctkprinter.c:170 ctk/ctkstatusicon.c:253 ctk/ctkwindow.c:891
 #, fuzzy
 msgid "Icon Name"
 msgstr "Бичгийн нэр"
@@ -1637,8 +1637,8 @@ msgstr "Хоёрдогч "
 
 #: ctk/ctkbbox.c:285
 msgid ""
-"If TRUE, the child appears in a secondary group of children, suitable for, e."
-"g., help buttons"
+"If TRUE, the child appears in a secondary group of children, suitable for, "
+"e.g., help buttons"
 msgstr ""
 "Хэрэв ҮНЭН бол хүү хүүгийн хоёрдогч бүлэгт харагддаг, Ж.нь тусламжийн товчны "
 "хослолт тохирох."
@@ -2341,7 +2341,7 @@ msgid "Has Entry"
 msgstr ""
 
 #: ctk/ctkcellrenderercombo.c:170
-msgid "If FALSE, don't allow to enter strings other than the chosen ones"
+msgid "If FALSE, don't allow entering strings other than the chosen ones"
 msgstr ""
 
 # ctk/ctkcellrendererpixbuf.c:104
@@ -2416,7 +2416,7 @@ msgstr "Хүрээ харагдах эсэх"
 
 # ctk/ctkwindow.c:494
 #: ctk/ctkcellrendererpixbuf.c:281 ctk/ctkimage.c:357 ctk/ctkmodelbutton.c:1166
-#: ctk/ctkshortcutsshortcut.c:550 ctk/ctkwindow.c:841
+#: ctk/ctkshortcutsshortcut.c:550 ctk/ctkwindow.c:842
 msgid "Icon"
 msgstr "Тэмдэг"
 
@@ -4270,11 +4270,11 @@ msgid ""
 "collapsing"
 msgstr ""
 
-#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1672 ctk/ctktreeview.c:1234
+#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1672 ctk/ctktreeview.c:1240
 msgid "Expander Size"
 msgstr "Дэлгэгдэгчийн хэмжээ"
 
-#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1673 ctk/ctktreeview.c:1235
+#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1673 ctk/ctktreeview.c:1241
 msgid "Size of the expander arrow"
 msgstr "Дэлгэгдэгч сумны хэмжээ"
 
@@ -4473,12 +4473,12 @@ msgid "The selection mode"
 msgstr "Сонгогдсон жил"
 
 #: ctk/ctkflowbox.c:3836 ctk/ctkiconview.c:665 ctk/ctklistbox.c:493
-#: ctk/ctktreeview.c:1220
+#: ctk/ctktreeview.c:1226
 msgid "Activate on Single Click"
 msgstr ""
 
 #: ctk/ctkflowbox.c:3837 ctk/ctkiconview.c:666 ctk/ctklistbox.c:494
-#: ctk/ctktreeview.c:1221
+#: ctk/ctktreeview.c:1227
 msgid "Activate row on a single click"
 msgstr ""
 
@@ -5013,16 +5013,16 @@ msgid ""
 msgstr ""
 
 # ctk/ctktreeview.c:562 ctk/ctktreeviewcolumn.c:273
-#: ctk/ctkiconview.c:605 ctk/ctktreeview.c:1059 ctk/ctktreeviewcolumn.c:351
+#: ctk/ctkiconview.c:605 ctk/ctktreeview.c:1065 ctk/ctktreeviewcolumn.c:351
 msgid "Reorderable"
 msgstr "Дахин цэгцлэхүйц"
 
-#: ctk/ctkiconview.c:606 ctk/ctktreeview.c:1060
+#: ctk/ctkiconview.c:606 ctk/ctktreeview.c:1066
 msgid "View is reorderable"
 msgstr "Дахин цэгцлэхүйцээр харуулах"
 
 # ctk/ctktreeview.c:586
-#: ctk/ctkiconview.c:613 ctk/ctktreeview.c:1204
+#: ctk/ctkiconview.c:613 ctk/ctktreeview.c:1210
 #, fuzzy
 msgid "Tooltip Column"
 msgstr "Текст Багана"
@@ -5237,11 +5237,11 @@ msgstr "Үндсэн харилцах цонхны талбайн орчмын �
 
 # ctk/ctkinputdialog.c:246
 #: ctk/ctkinvisible.c:98 ctk/ctkmountoperation.c:183 ctk/ctkstatusicon.c:296
-#: ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:897
+#: ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:898
 msgid "Screen"
 msgstr "Дэлгэц"
 
-#: ctk/ctkinvisible.c:99 ctk/ctkwindow.c:898
+#: ctk/ctkinvisible.c:99 ctk/ctkwindow.c:899
 msgid "The screen where this window will be displayed"
 msgstr "Уг цонх дүрслэгдэх дэлгэц."
 
@@ -6098,7 +6098,7 @@ msgid "The title of the file chooser dialog"
 msgstr "Бичиг сонгогч цонхны гарчиг"
 
 # ctk/ctkwindow.c:449
-#: ctk/ctknativedialog.c:228 ctk/ctkpopover.c:1782 ctk/ctkwindow.c:789
+#: ctk/ctknativedialog.c:228 ctk/ctkpopover.c:1782 ctk/ctkwindow.c:790
 msgid "Modal"
 msgstr "Модал"
 
@@ -6116,11 +6116,11 @@ msgstr ""
 msgid "Whether the dialog is currently visible"
 msgstr "Удирдлагын элемент харагдаж байна."
 
-#: ctk/ctknativedialog.c:256 ctk/ctkwindow.c:1064
+#: ctk/ctknativedialog.c:256 ctk/ctkwindow.c:1065
 msgid "Transient for Window"
 msgstr ""
 
-#: ctk/ctknativedialog.c:257 ctk/ctkwindow.c:1065
+#: ctk/ctknativedialog.c:257 ctk/ctkwindow.c:1066
 #, fuzzy
 msgid "The transient parent of the dialog"
 msgstr "Мэдээний цонх дээрх товчлуурууд"
@@ -10189,243 +10189,243 @@ msgstr "TreeModelSort загвар"
 msgid "The model for the TreeModelSort to sort"
 msgstr "TreeModelSort-оор сортлох загвар"
 
-#: ctk/ctktreeview.c:1031
+#: ctk/ctktreeview.c:1037
 msgid "TreeView Model"
 msgstr "Модчилж үзүүлэх загвар"
 
-#: ctk/ctktreeview.c:1032
+#: ctk/ctktreeview.c:1038
 msgid "The model for the tree view"
 msgstr "Модоор харуулах загвар"
 
 # ctk/ctktreeview.c:546
-#: ctk/ctktreeview.c:1038
+#: ctk/ctktreeview.c:1044
 #, fuzzy
 msgid "Headers Visible"
 msgstr "Сонгогдохуйц толгойнууд "
 
 # ctk/ctktreeview.c:539
-#: ctk/ctktreeview.c:1039
+#: ctk/ctktreeview.c:1045
 msgid "Show the column header buttons"
 msgstr "Баганы толгойн товчыг үзүүлэх"
 
 # ctk/ctktreeview.c:546
-#: ctk/ctktreeview.c:1045
+#: ctk/ctktreeview.c:1051
 msgid "Headers Clickable"
 msgstr "Сонгогдохуйц толгойнууд "
 
 # ctk/ctktreeview.c:547
-#: ctk/ctktreeview.c:1046
+#: ctk/ctktreeview.c:1052
 msgid "Column headers respond to click events"
 msgstr "Үр дүнг гаргах багана"
 
-#: ctk/ctktreeview.c:1052
+#: ctk/ctktreeview.c:1058
 msgid "Expander Column"
 msgstr "Дэлгэгдэгч  багана"
 
-#: ctk/ctktreeview.c:1053
+#: ctk/ctktreeview.c:1059
 msgid "Set the column for the expander column"
 msgstr "Баганыг дэлгэгдэгч багана болгож тохируулах"
 
-#: ctk/ctktreeview.c:1074
+#: ctk/ctktreeview.c:1080
 msgid "Rules Hint"
 msgstr "Сануулгын дүрмүүд"
 
-#: ctk/ctktreeview.c:1075
+#: ctk/ctktreeview.c:1081
 msgid "Set a hint to the theme engine to draw rows in alternating colors"
 msgstr "Мөрүүдийн өнгө солигдоход хэлбэрийн машинд дохио дамжуулах"
 
 # ctk/ctktreeview.c:578
-#: ctk/ctktreeview.c:1081
+#: ctk/ctktreeview.c:1087
 msgid "Enable Search"
 msgstr "Хайлтыг идэвхжүүлэх"
 
-#: ctk/ctktreeview.c:1082
+#: ctk/ctktreeview.c:1088
 msgid "View allows user to search through columns interactively"
 msgstr "Баганаар хайж буй хэрэглэгчийн сумыг үзүүлэх"
 
 # ctk/ctktreeview.c:586
-#: ctk/ctktreeview.c:1088
+#: ctk/ctktreeview.c:1094
 msgid "Search Column"
 msgstr "Багана хайх"
 
-#: ctk/ctktreeview.c:1089
+#: ctk/ctktreeview.c:1095
 #, fuzzy
 msgid "Model column to search through during interactive search"
 msgstr "Кодоор хайх үеийн баганы загвар"
 
 # ctk/ctkcellrenderer.c:178
-#: ctk/ctktreeview.c:1107
+#: ctk/ctktreeview.c:1113
 msgid "Fixed Height Mode"
 msgstr "хатуу өндөртэй горим"
 
-#: ctk/ctktreeview.c:1108
+#: ctk/ctktreeview.c:1114
 msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
 msgstr "CtkTreeView бүх мөрийг ижил өндөртэй авч хурдасгана."
 
-#: ctk/ctktreeview.c:1127
+#: ctk/ctktreeview.c:1133
 msgid "Hover Selection"
 msgstr ""
 
 # ctk/ctkcolorsel.c:1705
-#: ctk/ctktreeview.c:1128
+#: ctk/ctktreeview.c:1134
 #, fuzzy
 msgid "Whether the selection should follow the pointer"
 msgstr "Өнгө сонгогч нь тодорхойгүй тогтоохыг зөвшөөрөөд тодорхойлж байна "
 
-#: ctk/ctktreeview.c:1146
+#: ctk/ctktreeview.c:1152
 #, fuzzy
 msgid "Hover Expand"
 msgstr "Задлах"
 
-#: ctk/ctktreeview.c:1147
+#: ctk/ctktreeview.c:1153
 #, fuzzy
 msgid ""
 "Whether rows should be expanded/collapsed when the pointer moves over them"
 msgstr "Хэрвээ цонх цонхны менежерээр чимэглэгдсэн бол ҮНЭН."
 
-#: ctk/ctktreeview.c:1160
+#: ctk/ctktreeview.c:1166
 #, fuzzy
 msgid "Show Expanders"
 msgstr "Өргөтгөгдсөн"
 
-#: ctk/ctktreeview.c:1161
+#: ctk/ctktreeview.c:1167
 #, fuzzy
 msgid "View has expanders"
 msgstr "Өргөтгөгдсөн"
 
-#: ctk/ctktreeview.c:1174
+#: ctk/ctktreeview.c:1180
 msgid "Level Indentation"
 msgstr ""
 
-#: ctk/ctktreeview.c:1175
+#: ctk/ctktreeview.c:1181
 msgid "Extra indentation for each level"
 msgstr ""
 
-#: ctk/ctktreeview.c:1182
+#: ctk/ctktreeview.c:1188
 msgid "Rubber Banding"
 msgstr ""
 
 # ctk/ctkfilesel.c:552
-#: ctk/ctktreeview.c:1183
+#: ctk/ctktreeview.c:1189
 #, fuzzy
 msgid ""
 "Whether to enable selection of multiple items by dragging the mouse pointer"
 msgstr "Олон файл сонгогдож болох эсэх."
 
 # ctk/ctkcombo.c:139
-#: ctk/ctktreeview.c:1189
+#: ctk/ctktreeview.c:1195
 #, fuzzy
 msgid "Enable Grid Lines"
 msgstr "\"Сум\" товч идэхтэй"
 
-#: ctk/ctktreeview.c:1190
+#: ctk/ctktreeview.c:1196
 #, fuzzy
 msgid "Whether grid lines should be drawn in the tree view"
 msgstr "Хүрээ харагдах эсэх"
 
 # ctk/ctkcombo.c:139
-#: ctk/ctktreeview.c:1197
+#: ctk/ctktreeview.c:1203
 #, fuzzy
 msgid "Enable Tree Lines"
 msgstr "\"Сум\" товч идэхтэй"
 
-#: ctk/ctktreeview.c:1198
+#: ctk/ctktreeview.c:1204
 #, fuzzy
 msgid "Whether tree lines should be drawn in the tree view"
 msgstr "Хүрээ харагдах эсэх"
 
-#: ctk/ctktreeview.c:1205
+#: ctk/ctktreeview.c:1211
 #, fuzzy
 msgid "The column in the model containing the tooltip texts for the rows"
 msgstr "Стрингүүд дуудагдах өгөгдлийн эхийн загвар дахь багана"
 
 # ctk/ctktreeview.c:609
-#: ctk/ctktreeview.c:1243
+#: ctk/ctktreeview.c:1249
 msgid "Vertical Separator Width"
 msgstr "Босоо тусгаарлагчийн өргөн"
 
-#: ctk/ctktreeview.c:1244
+#: ctk/ctktreeview.c:1250
 msgid "Vertical space between cells.  Must be an even number"
 msgstr "Босоо зай нүд хоёрын хооронд ижил тоо байх ёстой"
 
 # ctk/ctktreeview.c:618
-#: ctk/ctktreeview.c:1252
+#: ctk/ctktreeview.c:1258
 msgid "Horizontal Separator Width"
 msgstr "Хэвтээ тусгаарлагчийн өргөн"
 
-#: ctk/ctktreeview.c:1253
+#: ctk/ctktreeview.c:1259
 msgid "Horizontal space between cells.  Must be an even number"
 msgstr "Хэвтээ зай нүд хоёрын хооронд ижил тоо байх ёстой."
 
-#: ctk/ctktreeview.c:1261
+#: ctk/ctktreeview.c:1267
 msgid "Allow Rules"
 msgstr "Дүрмүүдийг зөвшөөрөх"
 
-#: ctk/ctktreeview.c:1262
+#: ctk/ctktreeview.c:1268
 msgid "Allow drawing of alternating color rows"
 msgstr "Мөрийн өнгө солихыг хүлээн зөвшөөрөх"
 
-#: ctk/ctktreeview.c:1268
+#: ctk/ctktreeview.c:1274
 msgid "Indent Expanders"
 msgstr "Дэлгэгч"
 
-#: ctk/ctktreeview.c:1269
+#: ctk/ctktreeview.c:1275
 msgid "Make the expanders indented"
 msgstr "Дэлгэгдсэн хавтсын урд талын тэмдэгийг дар"
 
-#: ctk/ctktreeview.c:1275
+#: ctk/ctktreeview.c:1281
 msgid "Even Row Color"
 msgstr "Хэрэглээгүй байгаа (идэвхгүй байгаа) мөрийн өнгө"
 
-#: ctk/ctktreeview.c:1276
+#: ctk/ctktreeview.c:1282
 msgid "Color to use for even rows"
 msgstr "Хэрэглээгүй байгаа (идэвхгүй байгаа) мөрийн өнгө"
 
-#: ctk/ctktreeview.c:1282
+#: ctk/ctktreeview.c:1288
 msgid "Odd Row Color"
 msgstr "Хэрэглэж байгаа (идэвхтэй байгаа) мөрийн өнгө"
 
-#: ctk/ctktreeview.c:1283
+#: ctk/ctktreeview.c:1289
 msgid "Color to use for odd rows"
 msgstr "Хэрэглэж (идэвхтэй байгаа) байгаа мөрийн өнгө."
 
-#: ctk/ctktreeview.c:1290
+#: ctk/ctktreeview.c:1296
 #, fuzzy
 msgid "Grid line width"
 msgstr "Төв шугамын өргөн"
 
-#: ctk/ctktreeview.c:1291
+#: ctk/ctktreeview.c:1297
 #, fuzzy
 msgid "Width, in pixels, of the tree view grid lines"
 msgstr "Төв заагчын шугамын өргөн (цэгээр)"
 
 # ctk/ctkcellrenderer.c:167
-#: ctk/ctktreeview.c:1297
+#: ctk/ctktreeview.c:1303
 #, fuzzy
 msgid "Tree line width"
 msgstr "Хатуу өргөн"
 
-#: ctk/ctktreeview.c:1298
+#: ctk/ctktreeview.c:1304
 #, fuzzy
 msgid "Width, in pixels, of the tree view lines"
 msgstr "Төв заагчын шугамын өргөн (цэгээр)"
 
-#: ctk/ctktreeview.c:1304
+#: ctk/ctktreeview.c:1310
 #, fuzzy
 msgid "Grid line pattern"
 msgstr "Төв шугаман хэв зургийн зураас"
 
-#: ctk/ctktreeview.c:1305
+#: ctk/ctktreeview.c:1311
 #, fuzzy
 msgid "Dash pattern used to draw the tree view grid lines"
 msgstr "Хэв зургийн зураас нь төв заагчийг зурахад хэрэглэнэ."
 
-#: ctk/ctktreeview.c:1311
+#: ctk/ctktreeview.c:1317
 #, fuzzy
 msgid "Tree line pattern"
 msgstr "Төв шугаман хэв зургийн зураас"
 
-#: ctk/ctktreeview.c:1312
+#: ctk/ctktreeview.c:1318
 #, fuzzy
 msgid "Dash pattern used to draw the tree view lines"
 msgstr "Хэв зургийн зураас нь төв заагчийг зурахад хэрэглэнэ."
@@ -10435,7 +10435,7 @@ msgid "Whether to display the column"
 msgstr "Баганыг үзүүл."
 
 # ctk/ctktreeviewcolumn.c:182 ctk/ctkwindow.c:441
-#: ctk/ctktreeviewcolumn.c:253 ctk/ctkwindow.c:782
+#: ctk/ctktreeviewcolumn.c:253 ctk/ctkwindow.c:783
 msgid "Resizable"
 msgstr "Дахин хэмжээ тогтоогдохуйц"
 
@@ -11083,50 +11083,50 @@ msgid "Height of text selection handles"
 msgstr "Бичиг сонгогч цонхны гарчиг"
 
 # ctk/ctkwindow.c:406
-#: ctk/ctkwindow.c:744
+#: ctk/ctkwindow.c:745
 msgid "Window Type"
 msgstr "Цонхны төрөл"
 
 # ctk/ctkwindow.c:407
-#: ctk/ctkwindow.c:745
+#: ctk/ctkwindow.c:746
 msgid "The type of the window"
 msgstr "Цонхны төрөл"
 
 # ctk/ctkwindow.c:416
-#: ctk/ctkwindow.c:752
+#: ctk/ctkwindow.c:753
 msgid "Window Title"
 msgstr "Цонхны гарчиг"
 
 # ctk/ctkwindow.c:417
-#: ctk/ctkwindow.c:753
+#: ctk/ctkwindow.c:754
 msgid "The title of the window"
 msgstr "Цонхны гарчиг"
 
 # ctk/ctkwindow.c:416
-#: ctk/ctkwindow.c:759
+#: ctk/ctkwindow.c:760
 msgid "Window Role"
 msgstr "Цонхны үүрэг"
 
-#: ctk/ctkwindow.c:760
+#: ctk/ctkwindow.c:761
 msgid "Unique identifier for the window to be used when restoring a session"
 msgstr "Суулт сэргээхэд хэрэглэгдэх цонхны цор ганц таних тэмдэг"
 
-#: ctk/ctkwindow.c:775
+#: ctk/ctkwindow.c:776
 #, fuzzy
 msgid "Startup ID"
 msgstr "Бүлэг"
 
-#: ctk/ctkwindow.c:776
+#: ctk/ctkwindow.c:777
 #, fuzzy
 msgid "Unique startup identifier for the window used by startup-notification"
 msgstr "Суулт сэргээхэд хэрэглэгдэх цонхны цор ганц таних тэмдэг"
 
 # ctk/ctkwindow.c:442
-#: ctk/ctkwindow.c:783
+#: ctk/ctkwindow.c:784
 msgid "If TRUE, users can resize the window"
 msgstr "Хэрэв хэрэглэгчид цонхны хэмжээг өөрчилж чадаж байвал үнэн."
 
-#: ctk/ctkwindow.c:790
+#: ctk/ctkwindow.c:791
 msgid ""
 "If TRUE, the window is modal (other windows are not usable while this one is "
 "up)"
@@ -11134,246 +11134,246 @@ msgstr ""
 "Хэрэв цонх нь modal (хамгийн наад цонхноос бусад нь идэвхгүй байдаг) бол үнэн"
 
 # ctk/ctkwindow.c:457
-#: ctk/ctkwindow.c:796
+#: ctk/ctkwindow.c:797
 msgid "Window Position"
 msgstr "Цонхны байрлал"
 
 # ctk/ctkwindow.c:458
-#: ctk/ctkwindow.c:797
+#: ctk/ctkwindow.c:798
 msgid "The initial position of the window"
 msgstr "Цонхны эхний байрлал"
 
 # ctk/ctkwindow.c:466
-#: ctk/ctkwindow.c:804
+#: ctk/ctkwindow.c:805
 msgid "Default Width"
 msgstr "Стандарт өргөн"
 
 # ctk/ctkwindow.c:467
-#: ctk/ctkwindow.c:805
+#: ctk/ctkwindow.c:806
 msgid "The default width of the window, used when initially showing the window"
 msgstr "Стандарт өргөнтэй цонхыг эхэлж үзүүлдэг."
 
 # ctk/ctkwindow.c:476
-#: ctk/ctkwindow.c:812
+#: ctk/ctkwindow.c:813
 msgid "Default Height"
 msgstr "Стандалрт өндөр"
 
 # ctk/ctkwindow.c:477
-#: ctk/ctkwindow.c:813
+#: ctk/ctkwindow.c:814
 msgid ""
 "The default height of the window, used when initially showing the window"
 msgstr "Стандарт өндөртэй цонхыг эхэлж үзүүлдэг."
 
 # ctk/ctkwindow.c:486
-#: ctk/ctkwindow.c:820
+#: ctk/ctkwindow.c:821
 msgid "Destroy with Parent"
 msgstr "Сурвалжтай нь хамт устга."
 
 # ctk/ctkwindow.c:487
-#: ctk/ctkwindow.c:821
+#: ctk/ctkwindow.c:822
 msgid "If this window should be destroyed when the parent is destroyed"
 msgstr "Сурвалж нь устах үед цонх устдаг."
 
-#: ctk/ctkwindow.c:834
+#: ctk/ctkwindow.c:835
 msgid "Hide the titlebar during maximization"
 msgstr ""
 
 # ctk/ctkwindow.c:487
-#: ctk/ctkwindow.c:835
+#: ctk/ctkwindow.c:836
 #, fuzzy
 msgid "If this window's titlebar should be hidden when the window is maximized"
 msgstr "Сурвалж нь устах үед цонх устдаг."
 
 # ctk/ctkwindow.c:495
-#: ctk/ctkwindow.c:842
+#: ctk/ctkwindow.c:843
 msgid "Icon for this window"
 msgstr "Энэ цонхны тэмдэг"
 
-#: ctk/ctkwindow.c:858
+#: ctk/ctkwindow.c:859
 #, fuzzy
 msgid "Mnemonics Visible"
 msgstr "Мнемоник товч"
 
-#: ctk/ctkwindow.c:859
+#: ctk/ctkwindow.c:860
 #, fuzzy
 msgid "Whether mnemonics are currently visible in this window"
 msgstr "Оргил үе нь идэвхтэй цонхны явц эсэх"
 
 # ctk/ctktextview.c:632
-#: ctk/ctkwindow.c:875
+#: ctk/ctkwindow.c:876
 #, fuzzy
 msgid "Focus Visible"
 msgstr "Түүчээын харагдах байдал"
 
-#: ctk/ctkwindow.c:876
+#: ctk/ctkwindow.c:877
 #, fuzzy
 msgid "Whether focus rectangles are currently visible in this window"
 msgstr "Оргил үе нь идэвхтэй цонхны явц эсэх"
 
 # ctk/ctkwindow.c:495
-#: ctk/ctkwindow.c:891
+#: ctk/ctkwindow.c:892
 #, fuzzy
 msgid "Name of the themed icon for this window"
 msgstr "Энэ цонхны тэмдэг"
 
 # ctk/ctkcheckmenuitem.c:115 ctk/ctktogglebutton.c:130
-#: ctk/ctkwindow.c:904
+#: ctk/ctkwindow.c:905
 msgid "Is Active"
 msgstr "Идэвхтэй"
 
-#: ctk/ctkwindow.c:905
+#: ctk/ctkwindow.c:906
 msgid "Whether the toplevel is the current active window"
 msgstr "Оргил үе нь идэвхтэй цонхны явц эсэх"
 
-#: ctk/ctkwindow.c:911
+#: ctk/ctkwindow.c:912
 msgid "Focus in Toplevel"
 msgstr "Оргил үе дэх фокус"
 
-#: ctk/ctkwindow.c:912
+#: ctk/ctkwindow.c:913
 msgid "Whether the input focus is within this CtkWindow"
 msgstr "Төв оролт CtkWindow-тай байдаг эсэх"
 
-#: ctk/ctkwindow.c:918
+#: ctk/ctkwindow.c:919
 msgid "Type hint"
 msgstr "Сануулга бичих"
 
-#: ctk/ctkwindow.c:919
+#: ctk/ctkwindow.c:920
 msgid ""
 "Hint to help the desktop environment understand what kind of window this is "
 "and how to treat it."
 msgstr "Дэлгэцэнд байрлах цонхнуудыг хэрхэн үзэх сануулга"
 
-#: ctk/ctkwindow.c:926
+#: ctk/ctkwindow.c:927
 msgid "Skip taskbar"
 msgstr "Ажлын мөрийг алгасах"
 
-#: ctk/ctkwindow.c:927
+#: ctk/ctkwindow.c:928
 msgid "TRUE if the window should not be in the task bar."
 msgstr "Хэрэв цэсийн мөрөнд цонх байхгүй бол "
 
-#: ctk/ctkwindow.c:933
+#: ctk/ctkwindow.c:934
 msgid "Skip pager"
 msgstr "pager-ийг алгасах"
 
-#: ctk/ctkwindow.c:934
+#: ctk/ctkwindow.c:935
 msgid "TRUE if the window should not be in the pager."
 msgstr "Хэрвээ цонх ажлын-талбар солигчид харъяалагдахгүй бол ҮНЭН."
 
-#: ctk/ctkwindow.c:940
+#: ctk/ctkwindow.c:941
 msgid "Urgent"
 msgstr ""
 
-#: ctk/ctkwindow.c:941
+#: ctk/ctkwindow.c:942
 #, fuzzy
 msgid "TRUE if the window should be brought to the user's attention."
 msgstr "Хэрвээ цонх ажлын-талбар солигчид харъяалагдахгүй бол ҮНЭН."
 
 # ctk/ctkwidget.c:451
-#: ctk/ctkwindow.c:954
+#: ctk/ctkwindow.c:955
 msgid "Accept focus"
 msgstr "Төвөөр авах"
 
-#: ctk/ctkwindow.c:955
+#: ctk/ctkwindow.c:956
 msgid "TRUE if the window should receive the input focus."
 msgstr "Хэрвээ цонх оруулах фокус авах бол ҮНЭН."
 
-#: ctk/ctkwindow.c:968
+#: ctk/ctkwindow.c:969
 #, fuzzy
 msgid "Focus on map"
 msgstr "Товшиход хараалах"
 
-#: ctk/ctkwindow.c:969
+#: ctk/ctkwindow.c:970
 #, fuzzy
 msgid "TRUE if the window should receive the input focus when mapped."
 msgstr "Хэрвээ цонх оруулах фокус авах бол ҮНЭН."
 
-#: ctk/ctkwindow.c:982
+#: ctk/ctkwindow.c:983
 msgid "Decorated"
 msgstr "Чимэглэсэн"
 
-#: ctk/ctkwindow.c:983
+#: ctk/ctkwindow.c:984
 msgid "Whether the window should be decorated by the window manager"
 msgstr "Хэрвээ цонх цонхны менежерээр чимэглэгдсэн бол ҮНЭН."
 
 # ctk/ctklabel.c:333
-#: ctk/ctkwindow.c:996
+#: ctk/ctkwindow.c:997
 #, fuzzy
 msgid "Deletable"
 msgstr "Сонгогдох"
 
-#: ctk/ctkwindow.c:997
+#: ctk/ctkwindow.c:998
 #, fuzzy
 msgid "Whether the window frame should have a close button"
 msgstr "Хэрвээ цонх цонхны менежерээр чимэглэгдсэн бол ҮНЭН."
 
-#: ctk/ctkwindow.c:1017
+#: ctk/ctkwindow.c:1018
 #, fuzzy
 msgid "Resize grip"
 msgstr "Хэмжээ өөрчилөлт тааруулагч бий"
 
-#: ctk/ctkwindow.c:1018
+#: ctk/ctkwindow.c:1019
 #, fuzzy
 msgid "Specifies whether the window should have a resize grip"
 msgstr "Хэрвээ цонх цонхны менежерээр чимэглэгдсэн бол ҮНЭН."
 
-#: ctk/ctkwindow.c:1033
+#: ctk/ctkwindow.c:1034
 msgid "Resize grip is visible"
 msgstr ""
 
 # ctk/ctkwidget.c:424
-#: ctk/ctkwindow.c:1034
+#: ctk/ctkwindow.c:1035
 #, fuzzy
 msgid "Specifies whether the window's resize grip is visible."
 msgstr "Үйлдлийн бүлэг харагдахуйц эсэх."
 
-#: ctk/ctkwindow.c:1048
+#: ctk/ctkwindow.c:1049
 msgid "Gravity"
 msgstr "Хүнд"
 
 # ctk/ctkwindow.c:407
-#: ctk/ctkwindow.c:1049
+#: ctk/ctkwindow.c:1050
 msgid "The window gravity of the window"
 msgstr "Цонхны цонхны хүнд"
 
 # ctk/ctkimagemenuitem.c:124
-#: ctk/ctkwindow.c:1084
+#: ctk/ctkwindow.c:1085
 #, fuzzy
 msgid "Attached to Widget"
 msgstr "Тусгай элемент"
 
 # ctk/ctkcheckmenuitem.c:116
-#: ctk/ctkwindow.c:1085
+#: ctk/ctkwindow.c:1086
 #, fuzzy
 msgid "The widget where the window is attached"
 msgstr "Цэсний элемэнт бол шалгагдсан уу, эсвэл "
 
-#: ctk/ctkwindow.c:1091
+#: ctk/ctkwindow.c:1092
 msgid "Is maximized"
 msgstr ""
 
 # ctk/ctkwidget.c:424
-#: ctk/ctkwindow.c:1092
+#: ctk/ctkwindow.c:1093
 #, fuzzy
 msgid "Whether the window is maximized"
 msgstr "Удирдлагын элемент харагдаж байна."
 
 # ctk/ctkwidget.c:437
-#: ctk/ctkwindow.c:1113
+#: ctk/ctkwindow.c:1114
 #, fuzzy
 msgid "CtkApplication"
 msgstr "Зураглагдах програм"
 
 # ctk/ctkwindow.c:458
-#: ctk/ctkwindow.c:1114
+#: ctk/ctkwindow.c:1115
 #, fuzzy
 msgid "The CtkApplication for the window"
 msgstr "Цонхны эхний байрлал"
 
-#: ctk/ctkwindow.c:1124 ctk/ctkwindow.c:1125
+#: ctk/ctkwindow.c:1125 ctk/ctkwindow.c:1126
 msgid "Decorated button layout"
 msgstr ""
 
-#: ctk/ctkwindow.c:1131 ctk/ctkwindow.c:1132
+#: ctk/ctkwindow.c:1132 ctk/ctkwindow.c:1133
 msgid "Decoration resize handle size"
 msgstr ""
 

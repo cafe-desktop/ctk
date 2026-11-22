@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bn_IN\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-19 12:06+0100\n"
+"POT-Creation-Date: 2026-11-22 15:03+0100\n"
 "PO-Revision-Date: 2010-03-30 15:52+0530\n"
 "Last-Translator: Runa Bhattacharjee <runab@redhat.com>\n"
 "Language-Team: Bengali INDIA <anubad@lists.ankur.org.in>\n"
@@ -222,11 +222,11 @@ msgstr ""
 msgid "Minor version number"
 msgstr ""
 
-#: cdk/x11/cdkdevice-xi2.c:143
+#: cdk/x11/cdkdevice-xi2.c:144
 msgid "Device ID"
 msgstr ""
 
-#: cdk/x11/cdkdevice-xi2.c:144
+#: cdk/x11/cdkdevice-xi2.c:145
 msgid "Device identifier"
 msgstr ""
 
@@ -293,7 +293,7 @@ msgid "The GIcon being displayed"
 msgstr "প্রদর্শিত GIcon"
 
 #: ctk/ctkaction.c:341 ctk/ctkcellrendererpixbuf.c:245 ctk/ctkimage.c:341
-#: ctk/ctkprinter.c:170 ctk/ctkstatusicon.c:253 ctk/ctkwindow.c:890
+#: ctk/ctkprinter.c:170 ctk/ctkstatusicon.c:253 ctk/ctkwindow.c:891
 msgid "Icon Name"
 msgstr "আইকনের নাম"
 
@@ -1458,8 +1458,8 @@ msgstr "দ্বিতীয়"
 
 #: ctk/ctkbbox.c:285
 msgid ""
-"If TRUE, the child appears in a secondary group of children, suitable for, e."
-"g., help buttons"
+"If TRUE, the child appears in a secondary group of children, suitable for, "
+"e.g., help buttons"
 msgstr ""
 "যদি মানটি TRUE হয় তবে চাইল্ডকে একটি দ্বিতীয় চিলড্রেন গ্রপে দেখা যায়; এটি সহায়িকা "
 "প্রদর্শনকারী বাটনের জন্য বিশেষ উপযোগী"
@@ -2068,8 +2068,8 @@ msgid "Has Entry"
 msgstr "এন্ট্রি আছে"
 
 #: ctk/ctkcellrenderercombo.c:170
-msgid "If FALSE, don't allow to enter strings other than the chosen ones"
-msgstr "এর মান মিথ্যা (FALSE) হলে বাছাইকৃত পঙ্‌ক্তি ব্যতীত অন্য কিছু লিখতে দেবে না"
+msgid "If FALSE, don't allow entering strings other than the chosen ones"
+msgstr ""
 
 #: ctk/ctkcellrendererpixbuf.c:152
 msgid "Pixbuf Object"
@@ -2138,7 +2138,7 @@ msgid "Whether the rendered pixbuf should be colorized according to the state"
 msgstr "অঙ্কিত পিক্সবাফকে স্টেট অনুসারে রং করা হবে কিনা"
 
 #: ctk/ctkcellrendererpixbuf.c:281 ctk/ctkimage.c:357 ctk/ctkmodelbutton.c:1166
-#: ctk/ctkshortcutsshortcut.c:550 ctk/ctkwindow.c:841
+#: ctk/ctkshortcutsshortcut.c:550 ctk/ctkwindow.c:842
 msgid "Icon"
 msgstr "আইকন"
 
@@ -3751,11 +3751,11 @@ msgid ""
 "collapsing"
 msgstr ""
 
-#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1672 ctk/ctktreeview.c:1234
+#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1672 ctk/ctktreeview.c:1240
 msgid "Expander Size"
 msgstr "বর্ধিষ্ণু আকার"
 
-#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1673 ctk/ctktreeview.c:1235
+#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1673 ctk/ctktreeview.c:1241
 msgid "Size of the expander arrow"
 msgstr "বর্ধিষ্ণু তীরচিহ্নের আকার"
 
@@ -3940,12 +3940,12 @@ msgid "The selection mode"
 msgstr "বাছাইকরণ মোড"
 
 #: ctk/ctkflowbox.c:3836 ctk/ctkiconview.c:665 ctk/ctklistbox.c:493
-#: ctk/ctktreeview.c:1220
+#: ctk/ctktreeview.c:1226
 msgid "Activate on Single Click"
 msgstr ""
 
 #: ctk/ctkflowbox.c:3837 ctk/ctkiconview.c:666 ctk/ctklistbox.c:494
-#: ctk/ctktreeview.c:1221
+#: ctk/ctktreeview.c:1227
 msgid "Activate row on a single click"
 msgstr ""
 
@@ -4419,15 +4419,15 @@ msgid ""
 "How the text and icon of each item are positioned relative to each other"
 msgstr "প্রতিটি বস্তুর আইকন ও টেক্সটকে পরস্পরের সাপেক্ষে যে ভাবে রাখা হয়"
 
-#: ctk/ctkiconview.c:605 ctk/ctktreeview.c:1059 ctk/ctktreeviewcolumn.c:351
+#: ctk/ctkiconview.c:605 ctk/ctktreeview.c:1065 ctk/ctktreeviewcolumn.c:351
 msgid "Reorderable"
 msgstr "পুনরায় সাজানোর যোগ্য"
 
-#: ctk/ctkiconview.c:606 ctk/ctktreeview.c:1060
+#: ctk/ctkiconview.c:606 ctk/ctktreeview.c:1066
 msgid "View is reorderable"
 msgstr "প্রদর্শিত দৃশ্য পুনরায় সাজানোর যোগ্য"
 
-#: ctk/ctkiconview.c:613 ctk/ctktreeview.c:1204
+#: ctk/ctkiconview.c:613 ctk/ctktreeview.c:1210
 msgid "Tooltip Column"
 msgstr "টুল-টিপের কলাম"
 
@@ -4605,11 +4605,11 @@ msgid "Width of border around the action area"
 msgstr "কর্মক্ষেত্রের চারপাশের প্রান্তের প্রস্থ"
 
 #: ctk/ctkinvisible.c:98 ctk/ctkmountoperation.c:183 ctk/ctkstatusicon.c:296
-#: ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:897
+#: ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:898
 msgid "Screen"
 msgstr "পর্দা"
 
-#: ctk/ctkinvisible.c:99 ctk/ctkwindow.c:898
+#: ctk/ctkinvisible.c:99 ctk/ctkwindow.c:899
 msgid "The screen where this window will be displayed"
 msgstr "এই উইন্ডোটি যে পর্দায় প্রদর্শিত হবে"
 
@@ -5364,7 +5364,7 @@ msgstr "ডায়ালগ"
 msgid "The title of the file chooser dialog"
 msgstr "ফাইল নির্বাচক ডায়ালগের শিরোনাম।"
 
-#: ctk/ctknativedialog.c:228 ctk/ctkpopover.c:1782 ctk/ctkwindow.c:789
+#: ctk/ctknativedialog.c:228 ctk/ctkpopover.c:1782 ctk/ctkwindow.c:790
 msgid "Modal"
 msgstr "মোডাল (Modal)"
 
@@ -5382,11 +5382,11 @@ msgstr ""
 msgid "Whether the dialog is currently visible"
 msgstr "উইজেট দৃশ্যমান কিনা"
 
-#: ctk/ctknativedialog.c:256 ctk/ctkwindow.c:1064
+#: ctk/ctknativedialog.c:256 ctk/ctkwindow.c:1065
 msgid "Transient for Window"
 msgstr "উইন্ডোর ক্ষেত্রে অস্থায়ী"
 
-#: ctk/ctknativedialog.c:257 ctk/ctkwindow.c:1065
+#: ctk/ctknativedialog.c:257 ctk/ctkwindow.c:1066
 msgid "The transient parent of the dialog"
 msgstr "ডায়লগের অস্থায়ী ঊর্ধ্বতন বস্তু"
 
@@ -9007,213 +9007,213 @@ msgstr "TreeModelSort মডেল"
 msgid "The model for the TreeModelSort to sort"
 msgstr "TreeModelSort-এর যে মডেলকে ক্রমানুসার সাজানো হবে"
 
-#: ctk/ctktreeview.c:1031
+#: ctk/ctktreeview.c:1037
 msgid "TreeView Model"
 msgstr "ট্রি-ভিউ মডেল"
 
-#: ctk/ctktreeview.c:1032
+#: ctk/ctktreeview.c:1038
 msgid "The model for the tree view"
 msgstr "ট্রি-ভিউ-এর মডেল"
 
-#: ctk/ctktreeview.c:1038
+#: ctk/ctktreeview.c:1044
 msgid "Headers Visible"
 msgstr "হেডার দৃশ্যমান থাকবে"
 
-#: ctk/ctktreeview.c:1039
+#: ctk/ctktreeview.c:1045
 msgid "Show the column header buttons"
 msgstr "কলাম হেডারের বাটন প্রদর্শন করো"
 
-#: ctk/ctktreeview.c:1045
+#: ctk/ctktreeview.c:1051
 msgid "Headers Clickable"
 msgstr "ক্লিক করার যোগ্য হেডার"
 
-#: ctk/ctktreeview.c:1046
+#: ctk/ctktreeview.c:1052
 msgid "Column headers respond to click events"
 msgstr "কলাম হেডার ক্লিক ইভেন্টসমূহে সাড়া দেয়"
 
-#: ctk/ctktreeview.c:1052
+#: ctk/ctktreeview.c:1058
 msgid "Expander Column"
 msgstr "বর্ধিষ্ণু (Expander) কলাম"
 
-#: ctk/ctktreeview.c:1053
+#: ctk/ctktreeview.c:1059
 msgid "Set the column for the expander column"
 msgstr "কলামটি প্রকৃতি বর্ধিষ্ণু (Expander) কলাম হিসেবে নির্ধারণ করো"
 
-#: ctk/ctktreeview.c:1074
+#: ctk/ctktreeview.c:1080
 msgid "Rules Hint"
 msgstr "নিয়ম সংক্রান্ত ইঙ্গিত"
 
-#: ctk/ctktreeview.c:1075
+#: ctk/ctktreeview.c:1081
 msgid "Set a hint to the theme engine to draw rows in alternating colors"
 msgstr ""
 "পরিবর্তনশীল রঙে সারি আঁকার উদ্দেশ্যে থিম ইঞ্জিনের জন্যে একটি ইঙ্গিত নির্ধারণ করো"
 
-#: ctk/ctktreeview.c:1081
+#: ctk/ctktreeview.c:1087
 msgid "Enable Search"
 msgstr "অনুসন্ধান প্রক্রিয়া সক্রিয় করো"
 
-#: ctk/ctktreeview.c:1082
+#: ctk/ctktreeview.c:1088
 msgid "View allows user to search through columns interactively"
 msgstr ""
 "এই দৃশ্যটি ব্যবহারকারীর অংশগ্রহণের মধ্য দিয়ে (Interactive) কলাম থেকে অনুসন্ধান "
 "চালাতে দেয়"
 
-#: ctk/ctktreeview.c:1088
+#: ctk/ctktreeview.c:1094
 msgid "Search Column"
 msgstr "অনুসন্ধানের কলাম"
 
-#: ctk/ctktreeview.c:1089
+#: ctk/ctktreeview.c:1095
 msgid "Model column to search through during interactive search"
 msgstr "ইন্টারেক্টিভ অনুসন্ধানের সময় যে মডেল কলামের মধ্যে অনুসন্ধান করা হবে"
 
-#: ctk/ctktreeview.c:1107
+#: ctk/ctktreeview.c:1113
 msgid "Fixed Height Mode"
 msgstr "পূর্বনির্দিষ্ট উচ্চতা ব্যবহারকারী মোড"
 
-#: ctk/ctktreeview.c:1108
+#: ctk/ctktreeview.c:1114
 msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
 msgstr "সকল সারির উচ্চতা সমান বিবেচনা করে CtkTreeView-কে দ্রুততর করে"
 
 # FIXME
-#: ctk/ctktreeview.c:1127
+#: ctk/ctktreeview.c:1133
 msgid "Hover Selection"
 msgstr "ভাসমান (Hover) নির্বাচন"
 
-#: ctk/ctktreeview.c:1128
+#: ctk/ctktreeview.c:1134
 msgid "Whether the selection should follow the pointer"
 msgstr "পয়েন্টারকে অনুসরণ করে নির্বাচন করা হবে কিনা"
 
-#: ctk/ctktreeview.c:1146
+#: ctk/ctktreeview.c:1152
 msgid "Hover Expand"
 msgstr "ভাসমান (Hover) সম্প্রসারণ"
 
-#: ctk/ctktreeview.c:1147
+#: ctk/ctktreeview.c:1153
 msgid ""
 "Whether rows should be expanded/collapsed when the pointer moves over them"
 msgstr "কোন সারির ওপর পয়েন্টার রাখা হলে তাকে সম্প্রসারিত-করা/খোলা হবে কিনা"
 
-#: ctk/ctktreeview.c:1160
+#: ctk/ctktreeview.c:1166
 msgid "Show Expanders"
 msgstr "এক্সপ্যান্ডার প্রদর্শন করা হবে"
 
-#: ctk/ctktreeview.c:1161
+#: ctk/ctktreeview.c:1167
 msgid "View has expanders"
 msgstr "প্রদর্শনক্ষেত্রে এক্সপ্যান্ডার উপস্থিত রয়েছে"
 
-#: ctk/ctktreeview.c:1174
+#: ctk/ctktreeview.c:1180
 msgid "Level Indentation"
 msgstr "স্তরের অবচ্ছেদ"
 
-#: ctk/ctktreeview.c:1175
+#: ctk/ctktreeview.c:1181
 msgid "Extra indentation for each level"
 msgstr "প্রতিটি স্তরের জন্য ব্যবহৃত অতিরিক্ত অবচ্ছেদ"
 
-#: ctk/ctktreeview.c:1182
+#: ctk/ctktreeview.c:1188
 msgid "Rubber Banding"
 msgstr "রাবার ব্যান্ডিং"
 
-#: ctk/ctktreeview.c:1183
+#: ctk/ctktreeview.c:1189
 msgid ""
 "Whether to enable selection of multiple items by dragging the mouse pointer"
 msgstr "মাউস পয়েন্টার টেনে একাধিক বস্তুর নির্বাচন ব্যবস্থা সক্রিয় করা হবে কি না"
 
-#: ctk/ctktreeview.c:1189
+#: ctk/ctktreeview.c:1195
 msgid "Enable Grid Lines"
 msgstr "গ্রিডের রেখা সক্রিয় করা হবে"
 
-#: ctk/ctktreeview.c:1190
+#: ctk/ctktreeview.c:1196
 msgid "Whether grid lines should be drawn in the tree view"
 msgstr "ট্রি অনুযায়ী প্রদর্শন ক্ষেত্রের মধ্যে গ্রিডের রেখার প্রদর্শিত হবে কি না"
 
-#: ctk/ctktreeview.c:1197
+#: ctk/ctktreeview.c:1203
 msgid "Enable Tree Lines"
 msgstr "ট্রির রেখা সক্রিয় করা হবে"
 
-#: ctk/ctktreeview.c:1198
+#: ctk/ctktreeview.c:1204
 msgid "Whether tree lines should be drawn in the tree view"
 msgstr "ট্রি অনুযায়ী প্রদর্শনের ক্ষেত্রে ট্রির রেখার প্রয়োগ করা হবে কি না"
 
-#: ctk/ctktreeview.c:1205
+#: ctk/ctktreeview.c:1211
 msgid "The column in the model containing the tooltip texts for the rows"
 msgstr "সারির জন্য প্রদর্শনযোগ্য টুল-টিপের লেখা ধারণকারী মডেলের কলাম"
 
-#: ctk/ctktreeview.c:1243
+#: ctk/ctktreeview.c:1249
 msgid "Vertical Separator Width"
 msgstr "উলম্ব বিভাজকের প্রস্থ"
 
-#: ctk/ctktreeview.c:1244
+#: ctk/ctktreeview.c:1250
 msgid "Vertical space between cells.  Must be an even number"
 msgstr "দুটি ঘরের মাঝে উলম্ব স্থান।  এটি অবশ্যই একটি জোড় সংখ্যা হবে"
 
-#: ctk/ctktreeview.c:1252
+#: ctk/ctktreeview.c:1258
 msgid "Horizontal Separator Width"
 msgstr "অনুভূমিক বিভাজকের প্রস্থ"
 
-#: ctk/ctktreeview.c:1253
+#: ctk/ctktreeview.c:1259
 msgid "Horizontal space between cells.  Must be an even number"
 msgstr "দুটি ঘরের মাঝে অনুভূমিক স্থান।  এটি অবশ্যই একটি জোড় সংখ্যা হবে"
 
-#: ctk/ctktreeview.c:1261
+#: ctk/ctktreeview.c:1267
 msgid "Allow Rules"
 msgstr "নিয়ম অনুমোদন করো"
 
-#: ctk/ctktreeview.c:1262
+#: ctk/ctktreeview.c:1268
 msgid "Allow drawing of alternating color rows"
 msgstr "পরিবর্তনশীল রং দিয়ে সারি আঁকা অনুমোদন করো"
 
-#: ctk/ctktreeview.c:1268
+#: ctk/ctktreeview.c:1274
 msgid "Indent Expanders"
 msgstr "অবচ্ছেদ (Indent) প্রসারক"
 
-#: ctk/ctktreeview.c:1269
+#: ctk/ctktreeview.c:1275
 msgid "Make the expanders indented"
 msgstr "প্রসারকগুলোকে অবচ্ছেদিত (Indented) করো"
 
-#: ctk/ctktreeview.c:1275
+#: ctk/ctktreeview.c:1281
 msgid "Even Row Color"
 msgstr "জোড় নম্বরের সারির রং"
 
-#: ctk/ctktreeview.c:1276
+#: ctk/ctktreeview.c:1282
 msgid "Color to use for even rows"
 msgstr "জোড় নম্বরের সারিতে ব্যবহৃত রং"
 
-#: ctk/ctktreeview.c:1282
+#: ctk/ctktreeview.c:1288
 msgid "Odd Row Color"
 msgstr "বেজোড় নম্বরের সারির রং"
 
-#: ctk/ctktreeview.c:1283
+#: ctk/ctktreeview.c:1289
 msgid "Color to use for odd rows"
 msgstr "বেজোড় নম্বরের সারিতে ব্যবহৃত রং"
 
-#: ctk/ctktreeview.c:1290
+#: ctk/ctktreeview.c:1296
 msgid "Grid line width"
 msgstr "গ্রিডের রেখার প্রস্থ"
 
-#: ctk/ctktreeview.c:1291
+#: ctk/ctktreeview.c:1297
 msgid "Width, in pixels, of the tree view grid lines"
 msgstr "ট্রি অনুযায়ী প্রদর্শনের মধ্যে গ্রিডের রেখার প্রস্থ, পিক্সেলে ধার্য"
 
-#: ctk/ctktreeview.c:1297
+#: ctk/ctktreeview.c:1303
 msgid "Tree line width"
 msgstr "ট্রির রেখার প্রস্থ"
 
-#: ctk/ctktreeview.c:1298
+#: ctk/ctktreeview.c:1304
 msgid "Width, in pixels, of the tree view lines"
 msgstr "ট্রি অনুযায়ী প্রদর্শনের রেখার প্রস্থ, পিক্সেলে ধার্য"
 
-#: ctk/ctktreeview.c:1304
+#: ctk/ctktreeview.c:1310
 msgid "Grid line pattern"
 msgstr "গ্রিডের রেখার বিন্যাস"
 
-#: ctk/ctktreeview.c:1305
+#: ctk/ctktreeview.c:1311
 msgid "Dash pattern used to draw the tree view grid lines"
 msgstr "ট্রি অনুযায়ী প্রদর্শনের গ্রিডের রেখা আঁকার জন্য ব্যবহৃত ড্যাশের বিন্যাস"
 
-#: ctk/ctktreeview.c:1311
+#: ctk/ctktreeview.c:1317
 msgid "Tree line pattern"
 msgstr "ট্রির রেখার বিন্যাস"
 
-#: ctk/ctktreeview.c:1312
+#: ctk/ctktreeview.c:1318
 msgid "Dash pattern used to draw the tree view lines"
 msgstr "ট্রি অনুযায়ী প্রদর্শনের রেখা আঁকার জন্য ব্যবহৃত ড্যাশের বিন্যাস"
 
@@ -9221,7 +9221,7 @@ msgstr "ট্রি অনুযায়ী প্রদর্শনের রে
 msgid "Whether to display the column"
 msgstr "কলাম প্রদর্শন করা হবে কিনা"
 
-#: ctk/ctktreeviewcolumn.c:253 ctk/ctkwindow.c:782
+#: ctk/ctktreeviewcolumn.c:253 ctk/ctkwindow.c:783
 msgid "Resizable"
 msgstr "পরিবর্তনযোগ্য আকার"
 
@@ -9794,45 +9794,45 @@ msgstr "হাতলের প্রস্থ"
 msgid "Height of text selection handles"
 msgstr "ফন্ট নির্বাচক ডায়ালগের শিরোনাম"
 
-#: ctk/ctkwindow.c:744
+#: ctk/ctkwindow.c:745
 msgid "Window Type"
 msgstr "উইন্ডোর ধরন"
 
-#: ctk/ctkwindow.c:745
+#: ctk/ctkwindow.c:746
 msgid "The type of the window"
 msgstr "উইন্ডোর ধরন "
 
-#: ctk/ctkwindow.c:752
+#: ctk/ctkwindow.c:753
 msgid "Window Title"
 msgstr "উইন্ডোর শিরোনাম "
 
-#: ctk/ctkwindow.c:753
+#: ctk/ctkwindow.c:754
 msgid "The title of the window"
 msgstr "উইন্ডোর শিরোনাম "
 
-#: ctk/ctkwindow.c:759
+#: ctk/ctkwindow.c:760
 msgid "Window Role"
 msgstr "উইন্ডোর ভূমিকা"
 
 # FIXME: Unique-এর অর্থ ভাল হয় নাই ;-(
-#: ctk/ctkwindow.c:760
+#: ctk/ctkwindow.c:761
 msgid "Unique identifier for the window to be used when restoring a session"
 msgstr "কোন সেশন পুনরুদ্ধারের সময় উইন্ডোর জন্য যে একক (Unique) নির্দেশক ব্যবহৃত হবে"
 
-#: ctk/ctkwindow.c:775
+#: ctk/ctkwindow.c:776
 msgid "Startup ID"
 msgstr "প্রারম্ভিক ID"
 
 # FIXME: Unique-এর অর্থ ভাল হয় নাই ;-(
-#: ctk/ctkwindow.c:776
+#: ctk/ctkwindow.c:777
 msgid "Unique startup identifier for the window used by startup-notification"
 msgstr "startup-notification দ্বারা ব্যবহৃত উইন্ডোর জন্য স্বতন্ত্র প্রারম্ভিক নির্দেশক"
 
-#: ctk/ctkwindow.c:783
+#: ctk/ctkwindow.c:784
 msgid "If TRUE, users can resize the window"
 msgstr "যদি TRUE হয় তবে ব্যবহারকারীগণ উইন্ডোর আকার পরিবর্তন করতে পারবেন"
 
-#: ctk/ctkwindow.c:790
+#: ctk/ctkwindow.c:791
 msgid ""
 "If TRUE, the window is modal (other windows are not usable while this one is "
 "up)"
@@ -9840,96 +9840,96 @@ msgstr ""
 "যদি TRUE হয় তবে উইন্ডোটো মোডাল (এই উইন্ডোটি যখন দেখা যাবে থাকবে তখন অন্যান্য "
 "উইন্ডো ব্যবহার করা যাবে না)"
 
-#: ctk/ctkwindow.c:796
+#: ctk/ctkwindow.c:797
 msgid "Window Position"
 msgstr "উইন্ডোর অবস্থান"
 
-#: ctk/ctkwindow.c:797
+#: ctk/ctkwindow.c:798
 msgid "The initial position of the window"
 msgstr "উইন্ডোর প্রাথমিক অবস্থান"
 
-#: ctk/ctkwindow.c:804
+#: ctk/ctkwindow.c:805
 msgid "Default Width"
 msgstr "ডিফল্ট প্রস্থ"
 
-#: ctk/ctkwindow.c:805
+#: ctk/ctkwindow.c:806
 msgid "The default width of the window, used when initially showing the window"
 msgstr "উইন্ডোটি প্রথমবার প্রদর্শনের সময় যে ডিফল্ট প্রস্থ ব্যবহার করা হবে"
 
-#: ctk/ctkwindow.c:812
+#: ctk/ctkwindow.c:813
 msgid "Default Height"
 msgstr "ডিফল্ট উচ্চতা"
 
-#: ctk/ctkwindow.c:813
+#: ctk/ctkwindow.c:814
 msgid ""
 "The default height of the window, used when initially showing the window"
 msgstr "উইন্ডোটি প্রথমবার প্রদর্শনের সময় যে ডিফল্ট উচ্চতা ব্যবহার করা হবে"
 
-#: ctk/ctkwindow.c:820
+#: ctk/ctkwindow.c:821
 msgid "Destroy with Parent"
 msgstr "প্যারেন্ট সাথেই বন্ধ করো"
 
-#: ctk/ctkwindow.c:821
+#: ctk/ctkwindow.c:822
 msgid "If this window should be destroyed when the parent is destroyed"
 msgstr "প্যারেন্ট উইন্ডো বন্ধ করে দিলে এই উইন্ডোটিও বন্ধ করা হবে কিনা"
 
-#: ctk/ctkwindow.c:834
+#: ctk/ctkwindow.c:835
 msgid "Hide the titlebar during maximization"
 msgstr ""
 
-#: ctk/ctkwindow.c:835
+#: ctk/ctkwindow.c:836
 #, fuzzy
 msgid "If this window's titlebar should be hidden when the window is maximized"
 msgstr "প্যারেন্ট উইন্ডো বন্ধ করে দিলে এই উইন্ডোটিও বন্ধ করা হবে কিনা"
 
-#: ctk/ctkwindow.c:842
+#: ctk/ctkwindow.c:843
 msgid "Icon for this window"
 msgstr "এই উইন্ডোর জন্য আইকন"
 
-#: ctk/ctkwindow.c:858
+#: ctk/ctkwindow.c:859
 msgid "Mnemonics Visible"
 msgstr "দৃশ্যমান স্মৃতিসহায়ক"
 
-#: ctk/ctkwindow.c:859
+#: ctk/ctkwindow.c:860
 msgid "Whether mnemonics are currently visible in this window"
 msgstr "এই উইন্ডোর মধ্যে স্মৃতিসহায়ক বর্তমানে প্রদর্শিত হবে কি না"
 
-#: ctk/ctkwindow.c:875
+#: ctk/ctkwindow.c:876
 #, fuzzy
 msgid "Focus Visible"
 msgstr "কার্সার দৃশ্যমান"
 
-#: ctk/ctkwindow.c:876
+#: ctk/ctkwindow.c:877
 #, fuzzy
 msgid "Whether focus rectangles are currently visible in this window"
 msgstr "এই উইন্ডোর মধ্যে স্মৃতিসহায়ক বর্তমানে প্রদর্শিত হবে কি না"
 
-#: ctk/ctkwindow.c:891
+#: ctk/ctkwindow.c:892
 msgid "Name of the themed icon for this window"
 msgstr "এই উইন্ডোর জন্য থিমযুক্ত আইকনের নাম"
 
-#: ctk/ctkwindow.c:904
+#: ctk/ctkwindow.c:905
 msgid "Is Active"
 msgstr "সক্রিয় অবস্থায় আছে"
 
-#: ctk/ctkwindow.c:905
+#: ctk/ctkwindow.c:906
 msgid "Whether the toplevel is the current active window"
 msgstr "সর্বোচ্চ স্তরটি বর্তমানে সক্রিয় উইন্ডো কিনা"
 
 # FIXME
-#: ctk/ctkwindow.c:911
+#: ctk/ctkwindow.c:912
 msgid "Focus in Toplevel"
 msgstr "উপরের স্তরের ফোকাস"
 
-#: ctk/ctkwindow.c:912
+#: ctk/ctkwindow.c:913
 msgid "Whether the input focus is within this CtkWindow"
 msgstr "ইনপুটের ফোকাস CtkWindow'র মধ্যে আছে কিনা"
 
-#: ctk/ctkwindow.c:918
+#: ctk/ctkwindow.c:919
 msgid "Type hint"
 msgstr "ধরন সংক্রান্ত ইঙ্গিত"
 
-#: ctk/ctkwindow.c:919
+#: ctk/ctkwindow.c:920
 msgid ""
 "Hint to help the desktop environment understand what kind of window this is "
 "and how to treat it."
@@ -9937,126 +9937,126 @@ msgstr ""
 "এটি কি ধরনের উইন্ডো এবং এটি কিভাবে ব্যবহার করতে হবে সে ব্যাপারে ডেস্কটপকে সাহায্য "
 "করার জন্য ইঙ্গিত।"
 
-#: ctk/ctkwindow.c:926
+#: ctk/ctkwindow.c:927
 msgid "Skip taskbar"
 msgstr "টাস্কবার এড়িয়ে যাওয়া হোক"
 
-#: ctk/ctkwindow.c:927
+#: ctk/ctkwindow.c:928
 msgid "TRUE if the window should not be in the task bar."
 msgstr "উইন্ডোটি টাস্কবারে না থাকলে TRUE ।"
 
-#: ctk/ctkwindow.c:933
+#: ctk/ctkwindow.c:934
 msgid "Skip pager"
 msgstr "পেজার এড়িয়ে যাওয়া হোক"
 
-#: ctk/ctkwindow.c:934
+#: ctk/ctkwindow.c:935
 msgid "TRUE if the window should not be in the pager."
 msgstr "পেজারে উইন্ডোটি না থাকলে TRUE ।"
 
-#: ctk/ctkwindow.c:940
+#: ctk/ctkwindow.c:941
 msgid "Urgent"
 msgstr "জরুরি"
 
-#: ctk/ctkwindow.c:941
+#: ctk/ctkwindow.c:942
 msgid "TRUE if the window should be brought to the user's attention."
 msgstr "এটির মান সত্য (TRUE) হলে, উইন্ডোকে ব্যবহারকারীর গোচরে আনা হবে।"
 
 # FIXME
-#: ctk/ctkwindow.c:954
+#: ctk/ctkwindow.c:955
 msgid "Accept focus"
 msgstr "ফোকাস অনুমোদন করো"
 
-#: ctk/ctkwindow.c:955
+#: ctk/ctkwindow.c:956
 msgid "TRUE if the window should receive the input focus."
 msgstr "উইন্ডোটি ইনপুট ফোকাসের লক্ষ্য হলে এর মান TRUE ।"
 
 # FIXME: Is 'focus' a verb ?
-#: ctk/ctkwindow.c:968
+#: ctk/ctkwindow.c:969
 msgid "Focus on map"
 msgstr "মানচিত্রের ওপর ফোকাস করো"
 
 # FIXME
-#: ctk/ctkwindow.c:969
+#: ctk/ctkwindow.c:970
 msgid "TRUE if the window should receive the input focus when mapped."
 msgstr "এর মান সত্য (TRUE) হলে উইন্ডোটি ইনপুট ফোকাসের লক্ষ্য হবে।"
 
-#: ctk/ctkwindow.c:982
+#: ctk/ctkwindow.c:983
 msgid "Decorated"
 msgstr "সজ্জিত"
 
-#: ctk/ctkwindow.c:983
+#: ctk/ctkwindow.c:984
 msgid "Whether the window should be decorated by the window manager"
 msgstr "উইন্ডো ব্যবস্থাপক উইন্ডোটি সজ্জিত করবে কিনা"
 
-#: ctk/ctkwindow.c:996
+#: ctk/ctkwindow.c:997
 msgid "Deletable"
 msgstr "বর্জন যোগ্য"
 
-#: ctk/ctkwindow.c:997
+#: ctk/ctkwindow.c:998
 msgid "Whether the window frame should have a close button"
 msgstr "উইন্ডোর ফ্রেমের মধ্যে বন্ধ করার বাটন উপস্থিত থাকবে কি না"
 
-#: ctk/ctkwindow.c:1017
+#: ctk/ctkwindow.c:1018
 #, fuzzy
 msgid "Resize grip"
 msgstr "আকার পরিবর্তনের ক্ষমতা আছে"
 
-#: ctk/ctkwindow.c:1018
+#: ctk/ctkwindow.c:1019
 #, fuzzy
 msgid "Specifies whether the window should have a resize grip"
 msgstr "উইন্ডোর ফ্রেমের মধ্যে বন্ধ করার বাটন উপস্থিত থাকবে কি না"
 
-#: ctk/ctkwindow.c:1033
+#: ctk/ctkwindow.c:1034
 msgid "Resize grip is visible"
 msgstr ""
 
-#: ctk/ctkwindow.c:1034
+#: ctk/ctkwindow.c:1035
 #, fuzzy
 msgid "Specifies whether the window's resize grip is visible."
 msgstr "এই কাজের গ্রুপটি দৃশ্যমান কিনা।"
 
-#: ctk/ctkwindow.c:1048
+#: ctk/ctkwindow.c:1049
 msgid "Gravity"
 msgstr "মাধ্যাকর্ষণ"
 
-#: ctk/ctkwindow.c:1049
+#: ctk/ctkwindow.c:1050
 msgid "The window gravity of the window"
 msgstr "এই উইন্ডোটির উইন্ডো মাধ্যাকর্ষণ"
 
-#: ctk/ctkwindow.c:1084
+#: ctk/ctkwindow.c:1085
 #, fuzzy
 msgid "Attached to Widget"
 msgstr "উইজেট সংযুক্ত করুন"
 
-#: ctk/ctkwindow.c:1085
+#: ctk/ctkwindow.c:1086
 #, fuzzy
 msgid "The widget where the window is attached"
 msgstr "মেনুটি যে উইজেটের সাথে যুক্ত"
 
-#: ctk/ctkwindow.c:1091
+#: ctk/ctkwindow.c:1092
 msgid "Is maximized"
 msgstr ""
 
-#: ctk/ctkwindow.c:1092
+#: ctk/ctkwindow.c:1093
 #, fuzzy
 msgid "Whether the window is maximized"
 msgstr "উইজেট দৃশ্যমান কিনা"
 
-#: ctk/ctkwindow.c:1113
+#: ctk/ctkwindow.c:1114
 #, fuzzy
 msgid "CtkApplication"
 msgstr "আঁকারযোগ্য অ্যাপলিকেশন"
 
-#: ctk/ctkwindow.c:1114
+#: ctk/ctkwindow.c:1115
 #, fuzzy
 msgid "The CtkApplication for the window"
 msgstr "উইন্ডোর প্রাথমিক অবস্থান"
 
-#: ctk/ctkwindow.c:1124 ctk/ctkwindow.c:1125
+#: ctk/ctkwindow.c:1125 ctk/ctkwindow.c:1126
 msgid "Decorated button layout"
 msgstr ""
 
-#: ctk/ctkwindow.c:1131 ctk/ctkwindow.c:1132
+#: ctk/ctkwindow.c:1132 ctk/ctkwindow.c:1133
 msgid "Decoration resize handle size"
 msgstr ""
 

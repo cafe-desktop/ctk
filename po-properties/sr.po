@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-19 12:06+0100\n"
+"POT-Creation-Date: 2026-11-22 15:03+0100\n"
 "PO-Revision-Date: 2020-08-18 23:03+0200\n"
 "Last-Translator: Марко М. Костић <marko.m.kostic@gmail.com>\n"
 "Language-Team: Serbian <gnome-sr@googlegroups.org>\n"
@@ -207,11 +207,11 @@ msgstr "Споредни"
 msgid "Minor version number"
 msgstr "Број споредног издања"
 
-#: cdk/x11/cdkdevice-xi2.c:143
+#: cdk/x11/cdkdevice-xi2.c:144
 msgid "Device ID"
 msgstr "ИБ уређаја"
 
-#: cdk/x11/cdkdevice-xi2.c:144
+#: cdk/x11/cdkdevice-xi2.c:145
 msgid "Device identifier"
 msgstr "Одредник уређаја"
 
@@ -280,7 +280,7 @@ msgid "The GIcon being displayed"
 msgstr "Гиконица која је приказана"
 
 #: ctk/ctkaction.c:341 ctk/ctkcellrendererpixbuf.c:245 ctk/ctkimage.c:341
-#: ctk/ctkprinter.c:170 ctk/ctkstatusicon.c:253 ctk/ctkwindow.c:890
+#: ctk/ctkprinter.c:170 ctk/ctkstatusicon.c:253 ctk/ctkwindow.c:891
 msgid "Icon Name"
 msgstr "Назив иконице"
 
@@ -1404,8 +1404,8 @@ msgstr "Другоразредно"
 
 #: ctk/ctkbbox.c:285
 msgid ""
-"If TRUE, the child appears in a secondary group of children, suitable for, e."
-"g., help buttons"
+"If TRUE, the child appears in a secondary group of children, suitable for, "
+"e.g., help buttons"
 msgstr ""
 "Ако је постављено, садржани елемент се појављује међу другим елементима, што "
 "је одговарајуће за нпр. дугмиће за помоћ."
@@ -1990,8 +1990,8 @@ msgid "Has Entry"
 msgstr "Омогућава унос"
 
 #: ctk/ctkcellrenderercombo.c:170
-msgid "If FALSE, don't allow to enter strings other than the chosen ones"
-msgstr "Уколико није постављено, не дозвољава унос ниски осим изабраних"
+msgid "If FALSE, don't allow entering strings other than the chosen ones"
+msgstr ""
 
 #: ctk/ctkcellrendererpixbuf.c:152
 msgid "Pixbuf Object"
@@ -2059,7 +2059,7 @@ msgid "Whether the rendered pixbuf should be colorized according to the state"
 msgstr "Да ли се исцртана сличица боји према стању или не"
 
 #: ctk/ctkcellrendererpixbuf.c:281 ctk/ctkimage.c:357 ctk/ctkmodelbutton.c:1166
-#: ctk/ctkshortcutsshortcut.c:550 ctk/ctkwindow.c:841
+#: ctk/ctkshortcutsshortcut.c:550 ctk/ctkwindow.c:842
 msgid "Icon"
 msgstr "Иконица"
 
@@ -3615,11 +3615,11 @@ msgstr ""
 "скупљањем"
 
 # Ovo je LOSE!
-#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1672 ctk/ctktreeview.c:1234
+#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1672 ctk/ctktreeview.c:1240
 msgid "Expander Size"
 msgstr "Величина разграника"
 
-#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1673 ctk/ctktreeview.c:1235
+#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1673 ctk/ctktreeview.c:1241
 msgid "Size of the expander arrow"
 msgstr "Величина стрелице за гранање"
 
@@ -3792,12 +3792,12 @@ msgid "The selection mode"
 msgstr "Режим избора"
 
 #: ctk/ctkflowbox.c:3836 ctk/ctkiconview.c:665 ctk/ctklistbox.c:493
-#: ctk/ctktreeview.c:1220
+#: ctk/ctktreeview.c:1226
 msgid "Activate on Single Click"
 msgstr "Покрени на један клик"
 
 #: ctk/ctkflowbox.c:3837 ctk/ctkiconview.c:666 ctk/ctklistbox.c:494
-#: ctk/ctktreeview.c:1221
+#: ctk/ctktreeview.c:1227
 msgid "Activate row on a single click"
 msgstr "Покрените ред на један клик"
 
@@ -4226,15 +4226,15 @@ msgid ""
 msgstr ""
 "Како се текст и иконице сваке ставке постављају једно у односу на друго"
 
-#: ctk/ctkiconview.c:605 ctk/ctktreeview.c:1059 ctk/ctktreeviewcolumn.c:351
+#: ctk/ctkiconview.c:605 ctk/ctktreeview.c:1065 ctk/ctktreeviewcolumn.c:351
 msgid "Reorderable"
 msgstr "Редослед променљив"
 
-#: ctk/ctkiconview.c:606 ctk/ctktreeview.c:1060
+#: ctk/ctkiconview.c:606 ctk/ctktreeview.c:1066
 msgid "View is reorderable"
 msgstr "Дозвољена је измена редоследа"
 
-#: ctk/ctkiconview.c:613 ctk/ctktreeview.c:1204
+#: ctk/ctkiconview.c:613 ctk/ctktreeview.c:1210
 msgid "Tooltip Column"
 msgstr "Колона савета"
 
@@ -4407,11 +4407,11 @@ msgid "Width of border around the action area"
 msgstr "Ширина ивице око акционе области"
 
 #: ctk/ctkinvisible.c:98 ctk/ctkmountoperation.c:183 ctk/ctkstatusicon.c:296
-#: ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:897
+#: ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:898
 msgid "Screen"
 msgstr "Екран"
 
-#: ctk/ctkinvisible.c:99 ctk/ctkwindow.c:898
+#: ctk/ctkinvisible.c:99 ctk/ctkwindow.c:899
 msgid "The screen where this window will be displayed"
 msgstr "Екран на којем ће се приказати овај прозор"
 
@@ -5122,7 +5122,7 @@ msgstr "Наслов прозорчета"
 msgid "The title of the file chooser dialog"
 msgstr "Наслов прозорчета за избор датотека"
 
-#: ctk/ctknativedialog.c:228 ctk/ctkpopover.c:1782 ctk/ctkwindow.c:789
+#: ctk/ctknativedialog.c:228 ctk/ctkpopover.c:1782 ctk/ctkwindow.c:790
 msgid "Modal"
 msgstr "Модални"
 
@@ -5138,11 +5138,11 @@ msgstr ""
 msgid "Whether the dialog is currently visible"
 msgstr "Да ли је прозорче тренутно видљиво"
 
-#: ctk/ctknativedialog.c:256 ctk/ctkwindow.c:1064
+#: ctk/ctknativedialog.c:256 ctk/ctkwindow.c:1065
 msgid "Transient for Window"
 msgstr "Провидност прозора"
 
-#: ctk/ctknativedialog.c:257 ctk/ctkwindow.c:1065
+#: ctk/ctknativedialog.c:257 ctk/ctkwindow.c:1066
 msgid "The transient parent of the dialog"
 msgstr "Провидност главног прозора прозорчета"
 
@@ -8597,212 +8597,212 @@ msgstr "Модел ређања моделом стабла"
 msgid "The model for the TreeModelSort to sort"
 msgstr "Модел који треба поређати за ређање моделом стабла"
 
-#: ctk/ctktreeview.c:1031
+#: ctk/ctktreeview.c:1037
 msgid "TreeView Model"
 msgstr "Модел прегледа стаблом"
 
-#: ctk/ctktreeview.c:1032
+#: ctk/ctktreeview.c:1038
 msgid "The model for the tree view"
 msgstr "Модел за разгранати преглед"
 
-#: ctk/ctktreeview.c:1038
+#: ctk/ctktreeview.c:1044
 msgid "Headers Visible"
 msgstr "Заглавља видљива"
 
-#: ctk/ctktreeview.c:1039
+#: ctk/ctktreeview.c:1045
 msgid "Show the column header buttons"
 msgstr "Прикажи дугмиће за заглавље колона"
 
-#: ctk/ctktreeview.c:1045
+#: ctk/ctktreeview.c:1051
 msgid "Headers Clickable"
 msgstr "Заглавља се могу кликнути"
 
-#: ctk/ctktreeview.c:1046
+#: ctk/ctktreeview.c:1052
 msgid "Column headers respond to click events"
 msgstr "Заглавља колона одговарају на притиске мишем"
 
-#: ctk/ctktreeview.c:1052
+#: ctk/ctktreeview.c:1058
 msgid "Expander Column"
 msgstr "Колона гранања"
 
-#: ctk/ctktreeview.c:1053
+#: ctk/ctktreeview.c:1059
 msgid "Set the column for the expander column"
 msgstr "Поставите колону у којој се врши гранање"
 
-#: ctk/ctktreeview.c:1074
+#: ctk/ctktreeview.c:1080
 msgid "Rules Hint"
 msgstr "Наговештај за линије"
 
-#: ctk/ctktreeview.c:1075
+#: ctk/ctktreeview.c:1081
 msgid "Set a hint to the theme engine to draw rows in alternating colors"
 msgstr ""
 "Поставите наговештај за мотор теме ради исцртавања редова у наизменичним "
 "бојама"
 
-#: ctk/ctktreeview.c:1081
+#: ctk/ctktreeview.c:1087
 msgid "Enable Search"
 msgstr "Укључи претрагу"
 
-#: ctk/ctktreeview.c:1082
+#: ctk/ctktreeview.c:1088
 msgid "View allows user to search through columns interactively"
 msgstr "Преглед дозвољава корисницима да траже интерактивно кроз ступце"
 
-#: ctk/ctktreeview.c:1088
+#: ctk/ctktreeview.c:1094
 msgid "Search Column"
 msgstr "Колона претраге"
 
-#: ctk/ctktreeview.c:1089
+#: ctk/ctktreeview.c:1095
 msgid "Model column to search through during interactive search"
 msgstr "Модел колоне за претраживање при интерактивној претрази"
 
-#: ctk/ctktreeview.c:1107
+#: ctk/ctktreeview.c:1113
 msgid "Fixed Height Mode"
 msgstr "Утврђена висина реда"
 
-#: ctk/ctktreeview.c:1108
+#: ctk/ctktreeview.c:1114
 msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
 msgstr "Убрзава приказ претпостављањем да сви редови имају исту висину"
 
-#: ctk/ctktreeview.c:1127
+#: ctk/ctktreeview.c:1133
 msgid "Hover Selection"
 msgstr "Избор под мишем"
 
-#: ctk/ctktreeview.c:1128
+#: ctk/ctktreeview.c:1134
 msgid "Whether the selection should follow the pointer"
 msgstr "Да ли избор треба да прати показивач"
 
-#: ctk/ctktreeview.c:1146
+#: ctk/ctktreeview.c:1152
 msgid "Hover Expand"
 msgstr "Рашири под мишем"
 
-#: ctk/ctktreeview.c:1147
+#: ctk/ctktreeview.c:1153
 msgid ""
 "Whether rows should be expanded/collapsed when the pointer moves over them"
 msgstr ""
 "Да ли редови треба да се разгранају/скупе када показивач пређе преко њих"
 
-#: ctk/ctktreeview.c:1160
+#: ctk/ctktreeview.c:1166
 msgid "Show Expanders"
 msgstr "Прикажи прошириваче"
 
-#: ctk/ctktreeview.c:1161
+#: ctk/ctktreeview.c:1167
 msgid "View has expanders"
 msgstr "Приказ има прошириваче"
 
-#: ctk/ctktreeview.c:1174
+#: ctk/ctktreeview.c:1180
 msgid "Level Indentation"
 msgstr "Ниво увлачења"
 
-#: ctk/ctktreeview.c:1175
+#: ctk/ctktreeview.c:1181
 msgid "Extra indentation for each level"
 msgstr "Додатно увлачење за сваки ниво"
 
-#: ctk/ctktreeview.c:1182
+#: ctk/ctktreeview.c:1188
 msgid "Rubber Banding"
 msgstr "Истезање гумице"
 
-#: ctk/ctktreeview.c:1183
+#: ctk/ctktreeview.c:1189
 msgid ""
 "Whether to enable selection of multiple items by dragging the mouse pointer"
 msgstr "Да ли је дозвољен избор више ставки превлачењем курзора миша"
 
-#: ctk/ctktreeview.c:1189
+#: ctk/ctktreeview.c:1195
 msgid "Enable Grid Lines"
 msgstr "Омогући линије мреже"
 
-#: ctk/ctktreeview.c:1190
+#: ctk/ctktreeview.c:1196
 msgid "Whether grid lines should be drawn in the tree view"
 msgstr "Да ли треба цртати линије мреже у приказу стабла"
 
-#: ctk/ctktreeview.c:1197
+#: ctk/ctktreeview.c:1203
 msgid "Enable Tree Lines"
 msgstr "Омогући линије стабла"
 
-#: ctk/ctktreeview.c:1198
+#: ctk/ctktreeview.c:1204
 msgid "Whether tree lines should be drawn in the tree view"
 msgstr "Да ли треба цртати линије стабла у приказу стабла"
 
-#: ctk/ctktreeview.c:1205
+#: ctk/ctktreeview.c:1211
 msgid "The column in the model containing the tooltip texts for the rows"
 msgstr "Колона у модела која садржи текст савета за редове"
 
-#: ctk/ctktreeview.c:1243
+#: ctk/ctktreeview.c:1249
 msgid "Vertical Separator Width"
 msgstr "Ширина усправних раздвојника"
 
-#: ctk/ctktreeview.c:1244
+#: ctk/ctktreeview.c:1250
 msgid "Vertical space between cells.  Must be an even number"
 msgstr "Усправни размак између поља.  Мора бити паран број"
 
-#: ctk/ctktreeview.c:1252
+#: ctk/ctktreeview.c:1258
 msgid "Horizontal Separator Width"
 msgstr "Ширина водоравних раздвојника"
 
-#: ctk/ctktreeview.c:1253
+#: ctk/ctktreeview.c:1259
 msgid "Horizontal space between cells.  Must be an even number"
 msgstr "Водоравни размак између поља.  Мора бити паран број"
 
-#: ctk/ctktreeview.c:1261
+#: ctk/ctktreeview.c:1267
 msgid "Allow Rules"
 msgstr "Дозволи линије"
 
-#: ctk/ctktreeview.c:1262
+#: ctk/ctktreeview.c:1268
 msgid "Allow drawing of alternating color rows"
 msgstr "Дозволи исцртавање редова у наизменичним бојама"
 
-#: ctk/ctktreeview.c:1268
+#: ctk/ctktreeview.c:1274
 msgid "Indent Expanders"
 msgstr "Увлачење за гранање"
 
-#: ctk/ctktreeview.c:1269
+#: ctk/ctktreeview.c:1275
 msgid "Make the expanders indented"
 msgstr "Поставити да гранање буде увучено"
 
-#: ctk/ctktreeview.c:1275
+#: ctk/ctktreeview.c:1281
 msgid "Even Row Color"
 msgstr "Боја парног реда"
 
-#: ctk/ctktreeview.c:1276
+#: ctk/ctktreeview.c:1282
 msgid "Color to use for even rows"
 msgstr "Боја за парне редове"
 
-#: ctk/ctktreeview.c:1282
+#: ctk/ctktreeview.c:1288
 msgid "Odd Row Color"
 msgstr "Боја непарног реда"
 
-#: ctk/ctktreeview.c:1283
+#: ctk/ctktreeview.c:1289
 msgid "Color to use for odd rows"
 msgstr "Боја за непарне редове"
 
-#: ctk/ctktreeview.c:1290
+#: ctk/ctktreeview.c:1296
 msgid "Grid line width"
 msgstr "Ширина линије мреже"
 
-#: ctk/ctktreeview.c:1291
+#: ctk/ctktreeview.c:1297
 msgid "Width, in pixels, of the tree view grid lines"
 msgstr "Ширина, у пикселима, линија мреже приказа стабла"
 
-#: ctk/ctktreeview.c:1297
+#: ctk/ctktreeview.c:1303
 msgid "Tree line width"
 msgstr "Ширина линија дрвета"
 
-#: ctk/ctktreeview.c:1298
+#: ctk/ctktreeview.c:1304
 msgid "Width, in pixels, of the tree view lines"
 msgstr "Ширина, у пикселима, линија приказа стабла"
 
-#: ctk/ctktreeview.c:1304
+#: ctk/ctktreeview.c:1310
 msgid "Grid line pattern"
 msgstr "Образац линија мреже"
 
-#: ctk/ctktreeview.c:1305
+#: ctk/ctktreeview.c:1311
 msgid "Dash pattern used to draw the tree view grid lines"
 msgstr "Образац линија који се користи за цртање линија мреже приказа стабла"
 
-#: ctk/ctktreeview.c:1311
+#: ctk/ctktreeview.c:1317
 msgid "Tree line pattern"
 msgstr "Образац линија стабла"
 
-#: ctk/ctktreeview.c:1312
+#: ctk/ctktreeview.c:1318
 msgid "Dash pattern used to draw the tree view lines"
 msgstr "Образац линија који се користи за цртање линија приказа стабла"
 
@@ -8810,7 +8810,7 @@ msgstr "Образац линија који се користи за цртањ
 msgid "Whether to display the column"
 msgstr "Да ли приказати колону"
 
-#: ctk/ctktreeviewcolumn.c:253 ctk/ctkwindow.c:782
+#: ctk/ctktreeviewcolumn.c:253 ctk/ctkwindow.c:783
 msgid "Resizable"
 msgstr "Величина променљива"
 
@@ -9354,44 +9354,44 @@ msgstr "Ширина ручке за избор текста"
 msgid "Height of text selection handles"
 msgstr "Висина ручке за избор текста"
 
-#: ctk/ctkwindow.c:744
+#: ctk/ctkwindow.c:745
 msgid "Window Type"
 msgstr "Врста прозора"
 
-#: ctk/ctkwindow.c:745
+#: ctk/ctkwindow.c:746
 msgid "The type of the window"
 msgstr "Врста прозора"
 
-#: ctk/ctkwindow.c:752
+#: ctk/ctkwindow.c:753
 msgid "Window Title"
 msgstr "Наслов прозора"
 
-#: ctk/ctkwindow.c:753
+#: ctk/ctkwindow.c:754
 msgid "The title of the window"
 msgstr "Наслов прозора"
 
-#: ctk/ctkwindow.c:759
+#: ctk/ctkwindow.c:760
 msgid "Window Role"
 msgstr "Улога прозора"
 
-#: ctk/ctkwindow.c:760
+#: ctk/ctkwindow.c:761
 msgid "Unique identifier for the window to be used when restoring a session"
 msgstr "Јединствени обележивач прозора који се користи при обнављању сесије"
 
-#: ctk/ctkwindow.c:775
+#: ctk/ctkwindow.c:776
 msgid "Startup ID"
 msgstr "ИБ покретања"
 
-#: ctk/ctkwindow.c:776
+#: ctk/ctkwindow.c:777
 msgid "Unique startup identifier for the window used by startup-notification"
 msgstr ""
 "Јединствени одредник покретања за прозоре које користи обавештење покретања"
 
-#: ctk/ctkwindow.c:783
+#: ctk/ctkwindow.c:784
 msgid "If TRUE, users can resize the window"
 msgstr "Ако је постављено, корисници могу променити величину прозора"
 
-#: ctk/ctkwindow.c:790
+#: ctk/ctkwindow.c:791
 msgid ""
 "If TRUE, the window is modal (other windows are not usable while this one is "
 "up)"
@@ -9399,94 +9399,94 @@ msgstr ""
 "Ако је постављено, прозор је модални (остали прозори се не могу користити "
 "док је овај приказан)"
 
-#: ctk/ctkwindow.c:796
+#: ctk/ctkwindow.c:797
 msgid "Window Position"
 msgstr "Положај прозора"
 
-#: ctk/ctkwindow.c:797
+#: ctk/ctkwindow.c:798
 msgid "The initial position of the window"
 msgstr "Почетни положај прозора"
 
-#: ctk/ctkwindow.c:804
+#: ctk/ctkwindow.c:805
 msgid "Default Width"
 msgstr "Уобичајена ширина"
 
-#: ctk/ctkwindow.c:805
+#: ctk/ctkwindow.c:806
 msgid "The default width of the window, used when initially showing the window"
 msgstr "Уобичајена ширина прозора, користи се при првом приказивању прозора"
 
-#: ctk/ctkwindow.c:812
+#: ctk/ctkwindow.c:813
 msgid "Default Height"
 msgstr "Уобичајена висина"
 
-#: ctk/ctkwindow.c:813
+#: ctk/ctkwindow.c:814
 msgid ""
 "The default height of the window, used when initially showing the window"
 msgstr "Уобичајена висина прозора, користи се при првом приказивању прозора"
 
-#: ctk/ctkwindow.c:820
+#: ctk/ctkwindow.c:821
 msgid "Destroy with Parent"
 msgstr "Уништава са покретачем"
 
-#: ctk/ctkwindow.c:821
+#: ctk/ctkwindow.c:822
 msgid "If this window should be destroyed when the parent is destroyed"
 msgstr ""
 "Да ли овај прозор треба уклонити када се уклони прозор из ког је овај позван"
 
-#: ctk/ctkwindow.c:834
+#: ctk/ctkwindow.c:835
 msgid "Hide the titlebar during maximization"
 msgstr "Скрива траку наслова за време увећавања"
 
-#: ctk/ctkwindow.c:835
+#: ctk/ctkwindow.c:836
 msgid "If this window's titlebar should be hidden when the window is maximized"
 msgstr ""
 "Да ли трака наслова овог прозора треба да буде скривена када је прозор увећан"
 
-#: ctk/ctkwindow.c:842
+#: ctk/ctkwindow.c:843
 msgid "Icon for this window"
 msgstr "Иконица за овај прозор"
 
-#: ctk/ctkwindow.c:858
+#: ctk/ctkwindow.c:859
 msgid "Mnemonics Visible"
 msgstr "Приказује мнемонике"
 
-#: ctk/ctkwindow.c:859
+#: ctk/ctkwindow.c:860
 msgid "Whether mnemonics are currently visible in this window"
 msgstr "Одређује да ли су мнемонике приказане у овом прозору"
 
-#: ctk/ctkwindow.c:875
+#: ctk/ctkwindow.c:876
 msgid "Focus Visible"
 msgstr "Фокус се види"
 
-#: ctk/ctkwindow.c:876
+#: ctk/ctkwindow.c:877
 msgid "Whether focus rectangles are currently visible in this window"
 msgstr "Да ли су правоугаоници првог плана тренутно видљиви у овом прозору"
 
-#: ctk/ctkwindow.c:891
+#: ctk/ctkwindow.c:892
 msgid "Name of the themed icon for this window"
 msgstr "Назив иконице из теме за овај прозор"
 
-#: ctk/ctkwindow.c:904
+#: ctk/ctkwindow.c:905
 msgid "Is Active"
 msgstr "Је Покренут"
 
-#: ctk/ctkwindow.c:905
+#: ctk/ctkwindow.c:906
 msgid "Whether the toplevel is the current active window"
 msgstr "Да ли је први ниво тренутно активни прозор"
 
-#: ctk/ctkwindow.c:911
+#: ctk/ctkwindow.c:912
 msgid "Focus in Toplevel"
 msgstr "Фокус на први ниво"
 
-#: ctk/ctkwindow.c:912
+#: ctk/ctkwindow.c:913
 msgid "Whether the input focus is within this CtkWindow"
 msgstr "Да ли је фокус за унос унутар овог Гтк прозора"
 
-#: ctk/ctkwindow.c:918
+#: ctk/ctkwindow.c:919
 msgid "Type hint"
 msgstr "Наговештај о врсти"
 
-#: ctk/ctkwindow.c:919
+#: ctk/ctkwindow.c:920
 msgid ""
 "Hint to help the desktop environment understand what kind of window this is "
 "and how to treat it."
@@ -9494,116 +9494,116 @@ msgstr ""
 "Наговештај који помаже окружењу радне површине да разуме које врсте је овај "
 "прозор и како га поставити."
 
-#: ctk/ctkwindow.c:926
+#: ctk/ctkwindow.c:927
 msgid "Skip taskbar"
 msgstr "Прескочи списак процеса"
 
-#: ctk/ctkwindow.c:927
+#: ctk/ctkwindow.c:928
 msgid "TRUE if the window should not be in the task bar."
 msgstr "Ако је постављено, прозор се неће видети на списку процеса."
 
-#: ctk/ctkwindow.c:933
+#: ctk/ctkwindow.c:934
 msgid "Skip pager"
 msgstr "Не приказуј у списку прозора"
 
-#: ctk/ctkwindow.c:934
+#: ctk/ctkwindow.c:935
 msgid "TRUE if the window should not be in the pager."
 msgstr "Ако је постављено, прозор се неће видети у списку прозора."
 
-#: ctk/ctkwindow.c:940
+#: ctk/ctkwindow.c:941
 msgid "Urgent"
 msgstr "Хитно"
 
-#: ctk/ctkwindow.c:941
+#: ctk/ctkwindow.c:942
 msgid "TRUE if the window should be brought to the user's attention."
 msgstr "Ако је постављено, прозор ће бити наметнут кориснику."
 
-#: ctk/ctkwindow.c:954
+#: ctk/ctkwindow.c:955
 msgid "Accept focus"
 msgstr "Прихвата фокус"
 
-#: ctk/ctkwindow.c:955
+#: ctk/ctkwindow.c:956
 msgid "TRUE if the window should receive the input focus."
 msgstr "Ако је постављено, прозор ће примати фокус за унос."
 
-#: ctk/ctkwindow.c:968
+#: ctk/ctkwindow.c:969
 msgid "Focus on map"
 msgstr "Фокусирање при мапирању"
 
-#: ctk/ctkwindow.c:969
+#: ctk/ctkwindow.c:970
 msgid "TRUE if the window should receive the input focus when mapped."
 msgstr "Ако је постављено, прозор ће примати фокус при мапирању."
 
-#: ctk/ctkwindow.c:982
+#: ctk/ctkwindow.c:983
 msgid "Decorated"
 msgstr "Украшен"
 
-#: ctk/ctkwindow.c:983
+#: ctk/ctkwindow.c:984
 msgid "Whether the window should be decorated by the window manager"
 msgstr "Да ли управник прозорима треба да украси прозор"
 
 # Избирач наиђе на отирач? :) Али ми не пада ништа паметније на памет :(
-#: ctk/ctkwindow.c:996
+#: ctk/ctkwindow.c:997
 msgid "Deletable"
 msgstr "Може се брисати"
 
-#: ctk/ctkwindow.c:997
+#: ctk/ctkwindow.c:998
 msgid "Whether the window frame should have a close button"
 msgstr "Да ли оквир прозора треба да има дугме за затварање"
 
-#: ctk/ctkwindow.c:1017
+#: ctk/ctkwindow.c:1018
 msgid "Resize grip"
 msgstr "Хватаљка за промену величине"
 
-#: ctk/ctkwindow.c:1018
+#: ctk/ctkwindow.c:1019
 msgid "Specifies whether the window should have a resize grip"
 msgstr "Одређује да ли прозор треба да има хватаљку за промену величине"
 
-#: ctk/ctkwindow.c:1033
+#: ctk/ctkwindow.c:1034
 msgid "Resize grip is visible"
 msgstr "Видљивост хватаљке за промену величине"
 
-#: ctk/ctkwindow.c:1034
+#: ctk/ctkwindow.c:1035
 msgid "Specifies whether the window's resize grip is visible."
 msgstr "Одређује да ли се види хватаљка за промену величине прозора."
 
-#: ctk/ctkwindow.c:1048
+#: ctk/ctkwindow.c:1049
 msgid "Gravity"
 msgstr "Привлачење"
 
-#: ctk/ctkwindow.c:1049
+#: ctk/ctkwindow.c:1050
 msgid "The window gravity of the window"
 msgstr "Привлачење између прозора"
 
-#: ctk/ctkwindow.c:1084
+#: ctk/ctkwindow.c:1085
 msgid "Attached to Widget"
 msgstr "Прикачено елементу"
 
-#: ctk/ctkwindow.c:1085
+#: ctk/ctkwindow.c:1086
 msgid "The widget where the window is attached"
 msgstr "Елемент на који је прикачен прозор"
 
-#: ctk/ctkwindow.c:1091
+#: ctk/ctkwindow.c:1092
 msgid "Is maximized"
 msgstr "Увећан је"
 
-#: ctk/ctkwindow.c:1092
+#: ctk/ctkwindow.c:1093
 msgid "Whether the window is maximized"
 msgstr "Да ли ће прозор бити увећан"
 
-#: ctk/ctkwindow.c:1113
+#: ctk/ctkwindow.c:1114
 msgid "CtkApplication"
 msgstr "Гтк програм"
 
-#: ctk/ctkwindow.c:1114
+#: ctk/ctkwindow.c:1115
 msgid "The CtkApplication for the window"
 msgstr "Гтк програм за прозор"
 
-#: ctk/ctkwindow.c:1124 ctk/ctkwindow.c:1125
+#: ctk/ctkwindow.c:1125 ctk/ctkwindow.c:1126
 msgid "Decorated button layout"
 msgstr "Распоред украшеног дугмета"
 
-#: ctk/ctkwindow.c:1131 ctk/ctkwindow.c:1132
+#: ctk/ctkwindow.c:1132 ctk/ctkwindow.c:1133
 msgid "Decoration resize handle size"
 msgstr "Величина ручке за промену величине украса"
 

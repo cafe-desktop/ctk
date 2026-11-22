@@ -29,7 +29,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+-properties.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-19 12:06+0100\n"
+"POT-Creation-Date: 2026-11-22 15:03+0100\n"
 "PO-Revision-Date: 2019-06-17 01:20+0300\n"
 "Last-Translator: Efstathios Iosifidis <eiosifidis@gnome.org>\n"
 "Language-Team: team@lists.gnome.gr\n"
@@ -222,11 +222,11 @@ msgstr "Δευτερεύων"
 msgid "Minor version number"
 msgstr "Δευτερεύων αριθμός έκδοσης"
 
-#: cdk/x11/cdkdevice-xi2.c:143
+#: cdk/x11/cdkdevice-xi2.c:144
 msgid "Device ID"
 msgstr "Αναγνωριστικό συσκευής"
 
-#: cdk/x11/cdkdevice-xi2.c:144
+#: cdk/x11/cdkdevice-xi2.c:145
 msgid "Device identifier"
 msgstr "Ταυτοποιητής συσκευής"
 
@@ -298,7 +298,7 @@ msgid "The GIcon being displayed"
 msgstr "Το GIcon που εμφανίζεται"
 
 #: ctk/ctkaction.c:341 ctk/ctkcellrendererpixbuf.c:245 ctk/ctkimage.c:341
-#: ctk/ctkprinter.c:170 ctk/ctkstatusicon.c:253 ctk/ctkwindow.c:890
+#: ctk/ctkprinter.c:170 ctk/ctkstatusicon.c:253 ctk/ctkwindow.c:891
 msgid "Icon Name"
 msgstr "Όνομα εικονιδίου"
 
@@ -1438,8 +1438,8 @@ msgstr "Δευτερεύον"
 
 #: ctk/ctkbbox.c:285
 msgid ""
-"If TRUE, the child appears in a secondary group of children, suitable for, e."
-"g., help buttons"
+"If TRUE, the child appears in a secondary group of children, suitable for, "
+"e.g., help buttons"
 msgstr ""
 "Αν ΑΛΗΘΕΣ, το θυγατρικό εμφανίζεται σε μια δεύτερη ομάδα θυγατρικών "
 "κατάλληλη για π.χ κουμπιά βοήθειας"
@@ -2033,8 +2033,8 @@ msgid "Has Entry"
 msgstr "Έχει καταχώριση"
 
 #: ctk/ctkcellrenderercombo.c:170
-msgid "If FALSE, don't allow to enter strings other than the chosen ones"
-msgstr "Αν ΨΕΥΔΕΣ, να μην εισάγονται συμβολοσειρές εκτός από τα επιλεγμένα"
+msgid "If FALSE, don't allow entering strings other than the chosen ones"
+msgstr ""
 
 #: ctk/ctkcellrendererpixbuf.c:152
 msgid "Pixbuf Object"
@@ -2103,7 +2103,7 @@ msgid "Whether the rendered pixbuf should be colorized according to the state"
 msgstr "Αν το εμφανιζόμενο pixbuf θα χρωματίζεται σύμφωνα με την κατάσταση"
 
 #: ctk/ctkcellrendererpixbuf.c:281 ctk/ctkimage.c:357 ctk/ctkmodelbutton.c:1166
-#: ctk/ctkshortcutsshortcut.c:550 ctk/ctkwindow.c:841
+#: ctk/ctkshortcutsshortcut.c:550 ctk/ctkwindow.c:842
 msgid "Icon"
 msgstr "Εικονίδιο"
 
@@ -3683,11 +3683,11 @@ msgstr ""
 "Είτε η επέκταση θα αλλάζει το μέγεθος του κορυφαίου παραθύρου κατά την "
 "επέκταση και την κατάρρευση"
 
-#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1672 ctk/ctktreeview.c:1234
+#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1672 ctk/ctktreeview.c:1240
 msgid "Expander Size"
 msgstr "Μέγεθος επέκτασης"
 
-#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1673 ctk/ctktreeview.c:1235
+#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1673 ctk/ctktreeview.c:1241
 msgid "Size of the expander arrow"
 msgstr "Μέγεθος του βέλους επέκτασης"
 
@@ -3869,12 +3869,12 @@ msgid "The selection mode"
 msgstr "Η λειτουργία επιλογής"
 
 #: ctk/ctkflowbox.c:3836 ctk/ctkiconview.c:665 ctk/ctklistbox.c:493
-#: ctk/ctktreeview.c:1220
+#: ctk/ctktreeview.c:1226
 msgid "Activate on Single Click"
 msgstr "Ενεργοποίηση με μονό κλικ"
 
 #: ctk/ctkflowbox.c:3837 ctk/ctkiconview.c:666 ctk/ctklistbox.c:494
-#: ctk/ctktreeview.c:1221
+#: ctk/ctktreeview.c:1227
 msgid "Activate row on a single click"
 msgstr "Ενεργοποίηση γραμμής με μονό κλικ"
 
@@ -4311,15 +4311,15 @@ msgid ""
 msgstr ""
 "Πως το κείμενο και κάθε στοιχείο τοποθετούνται σχετικά το ένα με το άλλο"
 
-#: ctk/ctkiconview.c:605 ctk/ctktreeview.c:1059 ctk/ctktreeviewcolumn.c:351
+#: ctk/ctkiconview.c:605 ctk/ctktreeview.c:1065 ctk/ctktreeviewcolumn.c:351
 msgid "Reorderable"
 msgstr "Δυνατότητα αναδιάταξης"
 
-#: ctk/ctkiconview.c:606 ctk/ctktreeview.c:1060
+#: ctk/ctkiconview.c:606 ctk/ctktreeview.c:1066
 msgid "View is reorderable"
 msgstr "Η προβολή έχει δυνατότητα αναδιάταξης"
 
-#: ctk/ctkiconview.c:613 ctk/ctktreeview.c:1204
+#: ctk/ctkiconview.c:613 ctk/ctktreeview.c:1210
 msgid "Tooltip Column"
 msgstr "Στήλη συμβουλών οθόνης"
 
@@ -4494,11 +4494,11 @@ msgid "Width of border around the action area"
 msgstr "Πλάτος πλαισίου γύρω από την περιοχή ενεργειών"
 
 #: ctk/ctkinvisible.c:98 ctk/ctkmountoperation.c:183 ctk/ctkstatusicon.c:296
-#: ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:897
+#: ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:898
 msgid "Screen"
 msgstr "Οθόνη"
 
-#: ctk/ctkinvisible.c:99 ctk/ctkwindow.c:898
+#: ctk/ctkinvisible.c:99 ctk/ctkwindow.c:899
 msgid "The screen where this window will be displayed"
 msgstr "Η οθόνη όπου θα εμφανίζεται αυτό το παράθυρο"
 
@@ -5225,7 +5225,7 @@ msgstr "Τίτλος διαλόγου"
 msgid "The title of the file chooser dialog"
 msgstr "Ο τίτλος του διαλόγου επιλογής αρχείου"
 
-#: ctk/ctknativedialog.c:228 ctk/ctkpopover.c:1782 ctk/ctkwindow.c:789
+#: ctk/ctknativedialog.c:228 ctk/ctkpopover.c:1782 ctk/ctkwindow.c:790
 msgid "Modal"
 msgstr "Σχηματικό"
 
@@ -5241,11 +5241,11 @@ msgstr ""
 msgid "Whether the dialog is currently visible"
 msgstr "Αν το γραφικό στοιχείο θα είναι ορατό"
 
-#: ctk/ctknativedialog.c:256 ctk/ctkwindow.c:1064
+#: ctk/ctknativedialog.c:256 ctk/ctkwindow.c:1065
 msgid "Transient for Window"
 msgstr "Προσωρινό παραθύρου"
 
-#: ctk/ctknativedialog.c:257 ctk/ctkwindow.c:1065
+#: ctk/ctknativedialog.c:257 ctk/ctkwindow.c:1066
 msgid "The transient parent of the dialog"
 msgstr "Το προσωρινό γονικό του διαλόγου"
 
@@ -8794,223 +8794,223 @@ msgstr "Μοντέλο δενδροειδούς ταξινόμησης"
 msgid "The model for the TreeModelSort to sort"
 msgstr "Το μοντέλο για δενδροειδή ταξινόμηση"
 
-#: ctk/ctktreeview.c:1031
+#: ctk/ctktreeview.c:1037
 msgid "TreeView Model"
 msgstr "Μοντέλο δενδροειδούς προβολής"
 
-#: ctk/ctktreeview.c:1032
+#: ctk/ctktreeview.c:1038
 msgid "The model for the tree view"
 msgstr "Το μοντέλο για δενδροειδή προβολή"
 
-#: ctk/ctktreeview.c:1038
+#: ctk/ctktreeview.c:1044
 msgid "Headers Visible"
 msgstr "Ορατές κεφαλίδες"
 
-#: ctk/ctktreeview.c:1039
+#: ctk/ctktreeview.c:1045
 msgid "Show the column header buttons"
 msgstr "Προβολή των κουμπιών της κεφαλίδας στήλης"
 
-#: ctk/ctktreeview.c:1045
+#: ctk/ctktreeview.c:1051
 msgid "Headers Clickable"
 msgstr "Δυνατότητα κλικ στις κεφαλίδες"
 
-#: ctk/ctktreeview.c:1046
+#: ctk/ctktreeview.c:1052
 msgid "Column headers respond to click events"
 msgstr "Οι κεφαλίδες στηλών να ανταποκρίνονται σε γεγονότα κλικ"
 
-#: ctk/ctktreeview.c:1052
+#: ctk/ctktreeview.c:1058
 msgid "Expander Column"
 msgstr "Στήλη επέκτασης"
 
-#: ctk/ctktreeview.c:1053
+#: ctk/ctktreeview.c:1059
 msgid "Set the column for the expander column"
 msgstr "Ορισμός στήλης για τη στήλη επέκτασης"
 
-#: ctk/ctktreeview.c:1074
+#: ctk/ctktreeview.c:1080
 msgid "Rules Hint"
 msgstr "Υπόδειξη κανόνων"
 
-#: ctk/ctktreeview.c:1075
+#: ctk/ctktreeview.c:1081
 msgid "Set a hint to the theme engine to draw rows in alternating colors"
 msgstr ""
 "Ορισμός υπόδειξης στη μηχανή θεμάτων για το σχεδιασμό γραμμών σε εναλλακτικά "
 "χρώματα."
 
-#: ctk/ctktreeview.c:1081
+#: ctk/ctktreeview.c:1087
 msgid "Enable Search"
 msgstr "Ενεργοποίηση αναζήτησης"
 
-#: ctk/ctktreeview.c:1082
+#: ctk/ctktreeview.c:1088
 msgid "View allows user to search through columns interactively"
 msgstr "Η προβολή επιτρέπει τη διαδραστική αναζήτηση μέσω στηλών"
 
-#: ctk/ctktreeview.c:1088
+#: ctk/ctktreeview.c:1094
 msgid "Search Column"
 msgstr "Στήλη αναζήτησης"
 
-#: ctk/ctktreeview.c:1089
+#: ctk/ctktreeview.c:1095
 msgid "Model column to search through during interactive search"
 msgstr ""
 "Στήλη του μοντέλου στην οποία θα γίνει αναζήτηση κατά τη διαδραστική "
 "αναζήτηση"
 
-#: ctk/ctktreeview.c:1107
+#: ctk/ctktreeview.c:1113
 msgid "Fixed Height Mode"
 msgstr "Λειτουργία σταθερού ύψους"
 
-#: ctk/ctktreeview.c:1108
+#: ctk/ctktreeview.c:1114
 msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
 msgstr ""
 "Συντομεύει το CtkTreeView με το να θεωρεί ότι όλες οι γραμμές έχουν το ίδιο "
 "ύψος"
 
-#: ctk/ctktreeview.c:1127
+#: ctk/ctktreeview.c:1133
 msgid "Hover Selection"
 msgstr "Επιλογή με αιώρηση"
 
-#: ctk/ctktreeview.c:1128
+#: ctk/ctktreeview.c:1134
 msgid "Whether the selection should follow the pointer"
 msgstr "Αν η επιλογή θα ακολουθεί το δρομέα"
 
-#: ctk/ctktreeview.c:1146
+#: ctk/ctktreeview.c:1152
 msgid "Hover Expand"
 msgstr "Ανάπτυξη με αιώρηση"
 
-#: ctk/ctktreeview.c:1147
+#: ctk/ctktreeview.c:1153
 msgid ""
 "Whether rows should be expanded/collapsed when the pointer moves over them"
 msgstr ""
 "Αν το οι γραμμές θα αναπτύσσονται/συμπτήσσονται όταν περνά από πάνω τους ο "
 "δρομέας "
 
-#: ctk/ctktreeview.c:1160
+#: ctk/ctktreeview.c:1166
 msgid "Show Expanders"
 msgstr "Προβολή επεκτάσεων"
 
-#: ctk/ctktreeview.c:1161
+#: ctk/ctktreeview.c:1167
 msgid "View has expanders"
 msgstr "Η προβολή διαθέτει επεκτάσεις"
 
-#: ctk/ctktreeview.c:1174
+#: ctk/ctktreeview.c:1180
 msgid "Level Indentation"
 msgstr "Επίπεδα εσοχών"
 
-#: ctk/ctktreeview.c:1175
+#: ctk/ctktreeview.c:1181
 msgid "Extra indentation for each level"
 msgstr "Επιπλέον εσοχή σε κάθε επίπεδο"
 
-#: ctk/ctktreeview.c:1182
+#: ctk/ctktreeview.c:1188
 msgid "Rubber Banding"
 msgstr "Ομαδοποίηση"
 
-#: ctk/ctktreeview.c:1183
+#: ctk/ctktreeview.c:1189
 msgid ""
 "Whether to enable selection of multiple items by dragging the mouse pointer"
 msgstr ""
 "Αν θα επιτρέπεται η επιλογή πολλαπλών αντικειμένων με το σύρσιμο του δρομέα "
 "του ποντικιού"
 
-#: ctk/ctktreeview.c:1189
+#: ctk/ctktreeview.c:1195
 msgid "Enable Grid Lines"
 msgstr "Ενεργοποίηση γραμμών πλέγματος"
 
-#: ctk/ctktreeview.c:1190
+#: ctk/ctktreeview.c:1196
 msgid "Whether grid lines should be drawn in the tree view"
 msgstr "Αν θα εμφανίζονται οι γραμμές πλέγματος στην προβολή δέντρου"
 
-#: ctk/ctktreeview.c:1197
+#: ctk/ctktreeview.c:1203
 msgid "Enable Tree Lines"
 msgstr "Ενεργοποίηση γραμμών δένδρου"
 
-#: ctk/ctktreeview.c:1198
+#: ctk/ctktreeview.c:1204
 msgid "Whether tree lines should be drawn in the tree view"
 msgstr "Αν θα εμφανίζονται οι γραμμές δέντρου στην προβολή δέντρου"
 
-#: ctk/ctktreeview.c:1205
+#: ctk/ctktreeview.c:1211
 msgid "The column in the model containing the tooltip texts for the rows"
 msgstr ""
 "Η στήλη στο μοντέλο που περιέχει τα κείμενα των συμβουλών οθόνης για τις "
 "γραμμές"
 
-#: ctk/ctktreeview.c:1243
+#: ctk/ctktreeview.c:1249
 msgid "Vertical Separator Width"
 msgstr "Πλάτος κάθετου διαχωριστικού"
 
-#: ctk/ctktreeview.c:1244
+#: ctk/ctktreeview.c:1250
 msgid "Vertical space between cells.  Must be an even number"
 msgstr "Κάθετο διάστημα μεταξύ κελιών. Πρέπει να είναι ζυγός αριθμός"
 
-#: ctk/ctktreeview.c:1252
+#: ctk/ctktreeview.c:1258
 msgid "Horizontal Separator Width"
 msgstr "Πλάτος οριζόντιου διαχωριστικού"
 
-#: ctk/ctktreeview.c:1253
+#: ctk/ctktreeview.c:1259
 msgid "Horizontal space between cells.  Must be an even number"
 msgstr "Οριζόντιο διάστημα μεταξύ κελιών. Πρέπει να είναι ζυγός αριθμός"
 
-#: ctk/ctktreeview.c:1261
+#: ctk/ctktreeview.c:1267
 msgid "Allow Rules"
 msgstr "Να επιτρέπονται κανόνες"
 
-#: ctk/ctktreeview.c:1262
+#: ctk/ctktreeview.c:1268
 msgid "Allow drawing of alternating color rows"
 msgstr "Να επιτρέπεται ο σχεδιασμός γραμμών με εναλλαγές γραμμές χρωμάτων"
 
-#: ctk/ctktreeview.c:1268
+#: ctk/ctktreeview.c:1274
 msgid "Indent Expanders"
 msgstr "Εσοχή επεκτάσεων"
 
-#: ctk/ctktreeview.c:1269
+#: ctk/ctktreeview.c:1275
 msgid "Make the expanders indented"
 msgstr "Να οριοθετείται η εσοχή των επεκτάσεων"
 
-#: ctk/ctktreeview.c:1275
+#: ctk/ctktreeview.c:1281
 msgid "Even Row Color"
 msgstr "Χρώμα ζυγής γραμμής"
 
-#: ctk/ctktreeview.c:1276
+#: ctk/ctktreeview.c:1282
 msgid "Color to use for even rows"
 msgstr "Χρώμα που θα χρησιμοποιείται για τις ζυγές γραμμές"
 
-#: ctk/ctktreeview.c:1282
+#: ctk/ctktreeview.c:1288
 msgid "Odd Row Color"
 msgstr "Χρώμα μονής γραμμής"
 
-#: ctk/ctktreeview.c:1283
+#: ctk/ctktreeview.c:1289
 msgid "Color to use for odd rows"
 msgstr "Χρώμα που θα χρησιμοποιείται για τις μονές γραμμές"
 
-#: ctk/ctktreeview.c:1290
+#: ctk/ctktreeview.c:1296
 msgid "Grid line width"
 msgstr "Πλάτος γραμμής πλέγματος"
 
-#: ctk/ctktreeview.c:1291
+#: ctk/ctktreeview.c:1297
 msgid "Width, in pixels, of the tree view grid lines"
 msgstr "Πλάτος, σε εικονοστοιχεία, των γραμμών πλέγματος στην προβολή δέντρου"
 
-#: ctk/ctktreeview.c:1297
+#: ctk/ctktreeview.c:1303
 msgid "Tree line width"
 msgstr "Πλάτος γραμμής δένδρου"
 
-#: ctk/ctktreeview.c:1298
+#: ctk/ctktreeview.c:1304
 msgid "Width, in pixels, of the tree view lines"
 msgstr "Πλάτος, σε εικονοστοιχεία των γραμμών προβολής δένδρου"
 
-#: ctk/ctktreeview.c:1304
+#: ctk/ctktreeview.c:1310
 msgid "Grid line pattern"
 msgstr "Μοτίβο γραμμής πλέγματος"
 
-#: ctk/ctktreeview.c:1305
+#: ctk/ctktreeview.c:1311
 msgid "Dash pattern used to draw the tree view grid lines"
 msgstr ""
 "Διακεκομμένο μοτίβο που θα χρησιμοποιείται για τη σχεδίαση των γραμμών "
 "πλέγματος στην προβολή δέντρου"
 
-#: ctk/ctktreeview.c:1311
+#: ctk/ctktreeview.c:1317
 msgid "Tree line pattern"
 msgstr "Μοτίβο γραμμής δένδρου"
 
-#: ctk/ctktreeview.c:1312
+#: ctk/ctktreeview.c:1318
 msgid "Dash pattern used to draw the tree view lines"
 msgstr ""
 "Διακεκομμένο μοτίβο που θα χρησιμοποιείται για τη σχεδίαση των γραμμών "
@@ -9020,7 +9020,7 @@ msgstr ""
 msgid "Whether to display the column"
 msgstr "Αν θα εμφανίζεται η στήλη"
 
-#: ctk/ctktreeviewcolumn.c:253 ctk/ctkwindow.c:782
+#: ctk/ctktreeviewcolumn.c:253 ctk/ctkwindow.c:783
 msgid "Resizable"
 msgstr "Δυνατότητα αλλαγής μεγέθους"
 
@@ -9578,48 +9578,48 @@ msgstr "Το πλάτος που χειρίζεται η επιλογή του �
 msgid "Height of text selection handles"
 msgstr "Το ύψος που χειρίζεται η επιλογή του κειμένου"
 
-#: ctk/ctkwindow.c:744
+#: ctk/ctkwindow.c:745
 msgid "Window Type"
 msgstr "Τύπος παραθύρου"
 
-#: ctk/ctkwindow.c:745
+#: ctk/ctkwindow.c:746
 msgid "The type of the window"
 msgstr "Ο τύπος του παραθύρου"
 
-#: ctk/ctkwindow.c:752
+#: ctk/ctkwindow.c:753
 msgid "Window Title"
 msgstr "Τίτλος παραθύρου"
 
-#: ctk/ctkwindow.c:753
+#: ctk/ctkwindow.c:754
 msgid "The title of the window"
 msgstr "Ο τίτλος του παραθύρου"
 
-#: ctk/ctkwindow.c:759
+#: ctk/ctkwindow.c:760
 msgid "Window Role"
 msgstr "Ρόλος παραθύρου"
 
-#: ctk/ctkwindow.c:760
+#: ctk/ctkwindow.c:761
 msgid "Unique identifier for the window to be used when restoring a session"
 msgstr ""
 "Μοναδικό αναγνωριστικό για το παράθυρο που θα χρησιμοποείται για την "
 "επαναφορά μιας συνεδρίας"
 
-#: ctk/ctkwindow.c:775
+#: ctk/ctkwindow.c:776
 msgid "Startup ID"
 msgstr "Αναγνωριστικό εκκίνησης"
 
-#: ctk/ctkwindow.c:776
+#: ctk/ctkwindow.c:777
 msgid "Unique startup identifier for the window used by startup-notification"
 msgstr ""
 "Μοναδικό αναγνωριστικό εκκίνησης για το παράθυρο που θα χρησιμοποείται για "
 "την ειδοποίηση εκκίνησης"
 
-#: ctk/ctkwindow.c:783
+#: ctk/ctkwindow.c:784
 msgid "If TRUE, users can resize the window"
 msgstr ""
 "Αν είναι ΑΛΗΘΕΣ, οι χρήστες μπορούν να αλλάζουν το μέγεθος του παραθύρου"
 
-#: ctk/ctkwindow.c:790
+#: ctk/ctkwindow.c:791
 msgid ""
 "If TRUE, the window is modal (other windows are not usable while this one is "
 "up)"
@@ -9627,99 +9627,99 @@ msgstr ""
 "Αν ΑΛΗΘΕΣ, το παράθυρο είναι σχηματικό (τα άλλα παράθυρα δε μπορούν να "
 "χρησιμοποιηθούν όταν αυτό είναι ενεργό)."
 
-#: ctk/ctkwindow.c:796
+#: ctk/ctkwindow.c:797
 msgid "Window Position"
 msgstr "Θέση παραθύρου"
 
-#: ctk/ctkwindow.c:797
+#: ctk/ctkwindow.c:798
 msgid "The initial position of the window"
 msgstr "Η αρχική θέση του παραθύρου"
 
-#: ctk/ctkwindow.c:804
+#: ctk/ctkwindow.c:805
 msgid "Default Width"
 msgstr "Προεπιλεγμένο πλάτος"
 
-#: ctk/ctkwindow.c:805
+#: ctk/ctkwindow.c:806
 msgid "The default width of the window, used when initially showing the window"
 msgstr ""
 "Το προεπιλεγμένο πλάτος του παραθύρου που χρησιμοποιείται κατα την αρχική "
 "εμφάνιση του παραθύρου"
 
-#: ctk/ctkwindow.c:812
+#: ctk/ctkwindow.c:813
 msgid "Default Height"
 msgstr "Προεπιλεγμένο ύψος"
 
-#: ctk/ctkwindow.c:813
+#: ctk/ctkwindow.c:814
 msgid ""
 "The default height of the window, used when initially showing the window"
 msgstr ""
 "Το προεπιλεγμένο ύψος του παραθύρου που χρησιμοποιείται κατά την αρχική "
 "εμφάνιση του παραθύρου"
 
-#: ctk/ctkwindow.c:820
+#: ctk/ctkwindow.c:821
 msgid "Destroy with Parent"
 msgstr "Καταστροφή με το γονικό"
 
-#: ctk/ctkwindow.c:821
+#: ctk/ctkwindow.c:822
 msgid "If this window should be destroyed when the parent is destroyed"
 msgstr ""
 "Αν θα πρέπει να καταστραφεί αυτό το παράθυρο όταν καταστρέφεται το γονικό"
 
-#: ctk/ctkwindow.c:834
+#: ctk/ctkwindow.c:835
 msgid "Hide the titlebar during maximization"
 msgstr "Απόκρυψη της μπάρας τίτλου κατα τη διάρκεια μεγιστοποίησης"
 
-#: ctk/ctkwindow.c:835
+#: ctk/ctkwindow.c:836
 msgid "If this window's titlebar should be hidden when the window is maximized"
 msgstr ""
 "Αν θα πρέπει να είναι κρυμμένη η μπάρα του τίτλου της εφαρμογής όταν το "
 "παράθυρο μεγιστοποιείται"
 
-#: ctk/ctkwindow.c:842
+#: ctk/ctkwindow.c:843
 msgid "Icon for this window"
 msgstr "Εικονίδιο για αυτό το παράθυρο"
 
-#: ctk/ctkwindow.c:858
+#: ctk/ctkwindow.c:859
 msgid "Mnemonics Visible"
 msgstr "Προβολή μνημονικών"
 
-#: ctk/ctkwindow.c:859
+#: ctk/ctkwindow.c:860
 msgid "Whether mnemonics are currently visible in this window"
 msgstr "Αν το μνημονικά θα είναι ορατά σε αυτό το παράθυρο"
 
-#: ctk/ctkwindow.c:875
+#: ctk/ctkwindow.c:876
 msgid "Focus Visible"
 msgstr "Ορατή εστίαση"
 
-#: ctk/ctkwindow.c:876
+#: ctk/ctkwindow.c:877
 msgid "Whether focus rectangles are currently visible in this window"
 msgstr "Αν τα ορθογώνια εστίασης θα είναι ορατά σε αυτό το παράθυρο"
 
-#: ctk/ctkwindow.c:891
+#: ctk/ctkwindow.c:892
 msgid "Name of the themed icon for this window"
 msgstr "Όνομα του εικονιδίου με θέμα για αυτό το παράθυρο"
 
-#: ctk/ctkwindow.c:904
+#: ctk/ctkwindow.c:905
 msgid "Is Active"
 msgstr "Είναι ενεργό"
 
-#: ctk/ctkwindow.c:905
+#: ctk/ctkwindow.c:906
 msgid "Whether the toplevel is the current active window"
 msgstr "Αν το κορυφαίο επίπεδο θα είναι το τρέχον ενεργό παράθυρο"
 
-#: ctk/ctkwindow.c:911
+#: ctk/ctkwindow.c:912
 msgid "Focus in Toplevel"
 msgstr "Εστίαση στο κορυφαίο επίπεδο"
 
-#: ctk/ctkwindow.c:912
+#: ctk/ctkwindow.c:913
 msgid "Whether the input focus is within this CtkWindow"
 msgstr "Αν η εστίαση είναι μέσα σε αυτό το CtkWindow"
 
-#: ctk/ctkwindow.c:918
+#: ctk/ctkwindow.c:919
 msgid "Type hint"
 msgstr "Είδος υπόδειξης"
 
-#: ctk/ctkwindow.c:919
+#: ctk/ctkwindow.c:920
 msgid ""
 "Hint to help the desktop environment understand what kind of window this is "
 "and how to treat it."
@@ -9727,116 +9727,116 @@ msgstr ""
 "Υπόδειξη για να βοηθηθεί το περιβάλλον εργασίας να καταλάβει το είδος του "
 "παραθύρου και πώς να το χειριστεί."
 
-#: ctk/ctkwindow.c:926
+#: ctk/ctkwindow.c:927
 msgid "Skip taskbar"
 msgstr "Παράκαμψη γραμμής εργασιών"
 
-#: ctk/ctkwindow.c:927
+#: ctk/ctkwindow.c:928
 msgid "TRUE if the window should not be in the task bar."
 msgstr "ΑΛΗΘΕΣ αν το παράθυρο δε θα είναι στη γραμμή εργασιών."
 
-#: ctk/ctkwindow.c:933
+#: ctk/ctkwindow.c:934
 msgid "Skip pager"
 msgstr "Παράκαμψη pager"
 
-#: ctk/ctkwindow.c:934
+#: ctk/ctkwindow.c:935
 msgid "TRUE if the window should not be in the pager."
 msgstr "ΑΛΗΘΕΣ εάν το παράθυρο δε θα είναι στο πρόγραμμα σελίδας."
 
-#: ctk/ctkwindow.c:940
+#: ctk/ctkwindow.c:941
 msgid "Urgent"
 msgstr "Επείγον"
 
-#: ctk/ctkwindow.c:941
+#: ctk/ctkwindow.c:942
 msgid "TRUE if the window should be brought to the user's attention."
 msgstr ""
 "ΑΛΗΘΕΣ αν το παράθυρο θα πρέπει να προσελκύει το ενδιαφέρον του χρήστη."
 
-#: ctk/ctkwindow.c:954
+#: ctk/ctkwindow.c:955
 msgid "Accept focus"
 msgstr "Δέχεται εστίαση"
 
-#: ctk/ctkwindow.c:955
+#: ctk/ctkwindow.c:956
 msgid "TRUE if the window should receive the input focus."
 msgstr "ΑΛΗΘΕΣ αν το παράθυρο θα δέχεται εστίαση εισόδου."
 
-#: ctk/ctkwindow.c:968
+#: ctk/ctkwindow.c:969
 msgid "Focus on map"
 msgstr "Εστίαση στο χάρτη"
 
-#: ctk/ctkwindow.c:969
+#: ctk/ctkwindow.c:970
 msgid "TRUE if the window should receive the input focus when mapped."
 msgstr "ΑΛΗΘΕΣ αν το παράθυρο θα δέχεται εστίαση εισόδου."
 
-#: ctk/ctkwindow.c:982
+#: ctk/ctkwindow.c:983
 msgid "Decorated"
 msgstr "Διακοσμημένο"
 
-#: ctk/ctkwindow.c:983
+#: ctk/ctkwindow.c:984
 msgid "Whether the window should be decorated by the window manager"
 msgstr "Αν το παράθυρο θα διακοσμείται από το διαχειριστή παραθύρων"
 
-#: ctk/ctkwindow.c:996
+#: ctk/ctkwindow.c:997
 msgid "Deletable"
 msgstr "Δυνατότητα διαγραφής"
 
-#: ctk/ctkwindow.c:997
+#: ctk/ctkwindow.c:998
 msgid "Whether the window frame should have a close button"
 msgstr "Αν το πλάισιο του παραθύρου θα διαθέτει κουμπί κλεισίματος"
 
-#: ctk/ctkwindow.c:1017
+#: ctk/ctkwindow.c:1018
 msgid "Resize grip"
 msgstr "Λαβή αλλαγής μεγέθους"
 
-#: ctk/ctkwindow.c:1018
+#: ctk/ctkwindow.c:1019
 msgid "Specifies whether the window should have a resize grip"
 msgstr "Καθορίζει αν το παράθυρο θα διαθέτει λαβή αλλαγής μεγέθους"
 
-#: ctk/ctkwindow.c:1033
+#: ctk/ctkwindow.c:1034
 msgid "Resize grip is visible"
 msgstr "Ορατή λαβή αλλαγής μεγέθους"
 
-#: ctk/ctkwindow.c:1034
+#: ctk/ctkwindow.c:1035
 msgid "Specifies whether the window's resize grip is visible."
 msgstr "Καθορίζει αν η λαβή αλλαγής μεγέθους του παραθύρου θα είναι ορατή."
 
-#: ctk/ctkwindow.c:1048
+#: ctk/ctkwindow.c:1049
 msgid "Gravity"
 msgstr "Βαρύτητα"
 
-#: ctk/ctkwindow.c:1049
+#: ctk/ctkwindow.c:1050
 msgid "The window gravity of the window"
 msgstr "Η βαρύτητα παραθύρου του παραθύρου"
 
-#: ctk/ctkwindow.c:1084
+#: ctk/ctkwindow.c:1085
 msgid "Attached to Widget"
 msgstr "Προσδεμένο στο γραφικό στοιχείο"
 
-#: ctk/ctkwindow.c:1085
+#: ctk/ctkwindow.c:1086
 msgid "The widget where the window is attached"
 msgstr "Το γραφικό στοιχείο στο οποίο θα είναι προσδεμένο το παράθυρο"
 
-#: ctk/ctkwindow.c:1091
+#: ctk/ctkwindow.c:1092
 msgid "Is maximized"
 msgstr "Είναι μεγιστοποιημένο"
 
-#: ctk/ctkwindow.c:1092
+#: ctk/ctkwindow.c:1093
 msgid "Whether the window is maximized"
 msgstr "Αν το παράθυρο είναι μεγιστοποιημένο"
 
-#: ctk/ctkwindow.c:1113
+#: ctk/ctkwindow.c:1114
 msgid "CtkApplication"
 msgstr "CtkApplication"
 
-#: ctk/ctkwindow.c:1114
+#: ctk/ctkwindow.c:1115
 msgid "The CtkApplication for the window"
 msgstr "Η CtkApplication για το παράθυρο"
 
-#: ctk/ctkwindow.c:1124 ctk/ctkwindow.c:1125
+#: ctk/ctkwindow.c:1125 ctk/ctkwindow.c:1126
 msgid "Decorated button layout"
 msgstr "Διακοσμημένη διάταξη κουμπιού"
 
-#: ctk/ctkwindow.c:1131 ctk/ctkwindow.c:1132
+#: ctk/ctkwindow.c:1132 ctk/ctkwindow.c:1133
 msgid "Decoration resize handle size"
 msgstr "Μέγεθος χειριστή αυξομείωσης διακόσμησης"
 

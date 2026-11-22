@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+-properties\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-19 12:06+0100\n"
+"POT-Creation-Date: 2026-11-22 15:03+0100\n"
 "PO-Revision-Date: 2020-09-07 10:52+0200\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: slovenčina <>\n"
@@ -205,11 +205,11 @@ msgstr "Vedľajšie"
 msgid "Minor version number"
 msgstr "Vedľajšie číslo vezrie"
 
-#: cdk/x11/cdkdevice-xi2.c:143
+#: cdk/x11/cdkdevice-xi2.c:144
 msgid "Device ID"
 msgstr "Identifikátor zariadenia"
 
-#: cdk/x11/cdkdevice-xi2.c:144
+#: cdk/x11/cdkdevice-xi2.c:145
 msgid "Device identifier"
 msgstr "Identifikátor zariadenia"
 
@@ -276,7 +276,7 @@ msgid "The GIcon being displayed"
 msgstr "Zobrazená GIkona"
 
 #: ctk/ctkaction.c:341 ctk/ctkcellrendererpixbuf.c:245 ctk/ctkimage.c:341
-#: ctk/ctkprinter.c:170 ctk/ctkstatusicon.c:253 ctk/ctkwindow.c:890
+#: ctk/ctkprinter.c:170 ctk/ctkstatusicon.c:253 ctk/ctkwindow.c:891
 msgid "Icon Name"
 msgstr "Názov ikony"
 
@@ -1402,8 +1402,8 @@ msgstr "Vedľajšia"
 
 #: ctk/ctkbbox.c:285
 msgid ""
-"If TRUE, the child appears in a secondary group of children, suitable for, e."
-"g., help buttons"
+"If TRUE, the child appears in a secondary group of children, suitable for, "
+"e.g., help buttons"
 msgstr ""
 "Ak je TRUE, potomok bude vo vedľajšej skupine potomkov, čo sa hodí napríklad "
 "pre tlačidlá Pomocníka"
@@ -1986,8 +1986,8 @@ msgid "Has Entry"
 msgstr "Má položku"
 
 #: ctk/ctkcellrenderercombo.c:170
-msgid "If FALSE, don't allow to enter strings other than the chosen ones"
-msgstr "Ak FALSE, nepovolí sa zadanie iného reťazca než sú tie zadané"
+msgid "If FALSE, don't allow entering strings other than the chosen ones"
+msgstr ""
 
 #: ctk/ctkcellrendererpixbuf.c:152
 msgid "Pixbuf Object"
@@ -2056,7 +2056,7 @@ msgid "Whether the rendered pixbuf should be colorized according to the state"
 msgstr "Určuje či má byť vykreslený pixbuf zafarbený podľa stavu"
 
 #: ctk/ctkcellrendererpixbuf.c:281 ctk/ctkimage.c:357 ctk/ctkmodelbutton.c:1166
-#: ctk/ctkshortcutsshortcut.c:550 ctk/ctkwindow.c:841
+#: ctk/ctkshortcutsshortcut.c:550 ctk/ctkwindow.c:842
 msgid "Icon"
 msgstr "Ikona"
 
@@ -3611,11 +3611,11 @@ msgid ""
 msgstr ""
 "Či pri otváraní a zatváraní rozbaľovač zmení veľkosť okna vrchnej úrovne"
 
-#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1672 ctk/ctktreeview.c:1234
+#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1672 ctk/ctktreeview.c:1240
 msgid "Expander Size"
 msgstr "Veľkosť rozbaľovača"
 
-#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1673 ctk/ctktreeview.c:1235
+#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1673 ctk/ctktreeview.c:1241
 msgid "Size of the expander arrow"
 msgstr "Veľkosť šípky rozbaľovača"
 
@@ -3792,12 +3792,12 @@ msgid "The selection mode"
 msgstr "Režim výberu"
 
 #: ctk/ctkflowbox.c:3836 ctk/ctkiconview.c:665 ctk/ctklistbox.c:493
-#: ctk/ctktreeview.c:1220
+#: ctk/ctktreeview.c:1226
 msgid "Activate on Single Click"
 msgstr "Aktivovať pri jednoduchom kliknutí"
 
 #: ctk/ctkflowbox.c:3837 ctk/ctkiconview.c:666 ctk/ctklistbox.c:494
-#: ctk/ctktreeview.c:1221
+#: ctk/ctktreeview.c:1227
 msgid "Activate row on a single click"
 msgstr "Aktivovať riadok pri jednoduchom kliknutí"
 
@@ -4226,15 +4226,15 @@ msgid ""
 "How the text and icon of each item are positioned relative to each other"
 msgstr "Ako sú text a ikona každej položky vzájomne umiestnené"
 
-#: ctk/ctkiconview.c:605 ctk/ctktreeview.c:1059 ctk/ctktreeviewcolumn.c:351
+#: ctk/ctkiconview.c:605 ctk/ctktreeview.c:1065 ctk/ctktreeviewcolumn.c:351
 msgid "Reorderable"
 msgstr "Zmena poradia"
 
-#: ctk/ctkiconview.c:606 ctk/ctktreeview.c:1060
+#: ctk/ctkiconview.c:606 ctk/ctktreeview.c:1066
 msgid "View is reorderable"
 msgstr "Zmena poradia zobrazenia je možná"
 
-#: ctk/ctkiconview.c:613 ctk/ctktreeview.c:1204
+#: ctk/ctkiconview.c:613 ctk/ctktreeview.c:1210
 msgid "Tooltip Column"
 msgstr "Stĺpec bublinových tipov"
 
@@ -4407,11 +4407,11 @@ msgid "Width of border around the action area"
 msgstr "Šírka okraja okolo oblasti s akciou"
 
 #: ctk/ctkinvisible.c:98 ctk/ctkmountoperation.c:183 ctk/ctkstatusicon.c:296
-#: ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:897
+#: ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:898
 msgid "Screen"
 msgstr "Obrazovka"
 
-#: ctk/ctkinvisible.c:99 ctk/ctkwindow.c:898
+#: ctk/ctkinvisible.c:99 ctk/ctkwindow.c:899
 msgid "The screen where this window will be displayed"
 msgstr "Obrazovka, na ktorej sa má toto okno zobraziť"
 
@@ -5120,7 +5120,7 @@ msgstr "Titulok dialógového okna"
 msgid "The title of the file chooser dialog"
 msgstr "Titulok dialógového okna výberu súboru"
 
-#: ctk/ctknativedialog.c:228 ctk/ctkpopover.c:1782 ctk/ctkwindow.c:789
+#: ctk/ctknativedialog.c:228 ctk/ctkpopover.c:1782 ctk/ctkwindow.c:790
 msgid "Modal"
 msgstr "Modálne"
 
@@ -5136,11 +5136,11 @@ msgstr ""
 msgid "Whether the dialog is currently visible"
 msgstr "Určuje, či je dialógové okno práve viditeľné"
 
-#: ctk/ctknativedialog.c:256 ctk/ctkwindow.c:1064
+#: ctk/ctknativedialog.c:256 ctk/ctkwindow.c:1065
 msgid "Transient for Window"
 msgstr "Dočasný rodič pre okno"
 
-#: ctk/ctknativedialog.c:257 ctk/ctkwindow.c:1065
+#: ctk/ctknativedialog.c:257 ctk/ctkwindow.c:1066
 msgid "The transient parent of the dialog"
 msgstr "Dočasný rodič dialógového okna"
 
@@ -8627,212 +8627,212 @@ msgstr "Model zoraďovacieho stromového modelu"
 msgid "The model for the TreeModelSort to sort"
 msgstr "Zoraďovací model pre stromový pohľad TreeModelSort"
 
-#: ctk/ctktreeview.c:1031
+#: ctk/ctktreeview.c:1037
 msgid "TreeView Model"
 msgstr "Model stromového pohľadu"
 
-#: ctk/ctktreeview.c:1032
+#: ctk/ctktreeview.c:1038
 msgid "The model for the tree view"
 msgstr "Model pre stromový pohľad"
 
-#: ctk/ctktreeview.c:1038
+#: ctk/ctktreeview.c:1044
 msgid "Headers Visible"
 msgstr "Viditeľné záhlavia"
 
-#: ctk/ctktreeview.c:1039
+#: ctk/ctktreeview.c:1045
 msgid "Show the column header buttons"
 msgstr "Zobraziť tlačidlá v záhlaví stĺpcov"
 
-#: ctk/ctktreeview.c:1045
+#: ctk/ctktreeview.c:1051
 msgid "Headers Clickable"
 msgstr "Kliknutia na záhlavia"
 
-#: ctk/ctktreeview.c:1046
+#: ctk/ctktreeview.c:1052
 msgid "Column headers respond to click events"
 msgstr "Záhlavia stĺpcov reagujú na udalosti kliknutia"
 
-#: ctk/ctktreeview.c:1052
+#: ctk/ctktreeview.c:1058
 msgid "Expander Column"
 msgstr "Stĺpec rozbaľovača"
 
-#: ctk/ctktreeview.c:1053
+#: ctk/ctktreeview.c:1059
 msgid "Set the column for the expander column"
 msgstr "Nastaví stĺpec pre stĺpec rozbaľovača"
 
-#: ctk/ctktreeview.c:1074
+#: ctk/ctktreeview.c:1080
 msgid "Rules Hint"
 msgstr "Rada pre pravidlá"
 
-#: ctk/ctktreeview.c:1075
+#: ctk/ctktreeview.c:1081
 msgid "Set a hint to the theme engine to draw rows in alternating colors"
 msgstr "Nastaví radu pre podporu tém ako kresliť riadky v striedavých farbách"
 
-#: ctk/ctktreeview.c:1081
+#: ctk/ctktreeview.c:1087
 msgid "Enable Search"
 msgstr "Povoliť hľadanie"
 
-#: ctk/ctktreeview.c:1082
+#: ctk/ctktreeview.c:1088
 msgid "View allows user to search through columns interactively"
 msgstr "Pohľad umožňuje interaktívne hľadanie v stĺpcoch"
 
-#: ctk/ctktreeview.c:1088
+#: ctk/ctktreeview.c:1094
 msgid "Search Column"
 msgstr "Hľadací stĺpec"
 
-#: ctk/ctktreeview.c:1089
+#: ctk/ctktreeview.c:1095
 msgid "Model column to search through during interactive search"
 msgstr "Stĺpec modelu, v ktorom sa má hľadať počas interaktívneho hľadania"
 
-#: ctk/ctktreeview.c:1107
+#: ctk/ctktreeview.c:1113
 msgid "Fixed Height Mode"
 msgstr "Režim pevnej výšky"
 
-#: ctk/ctktreeview.c:1108
+#: ctk/ctktreeview.c:1114
 msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
 msgstr "Zrýchli CtkTreeView predpokladom, že všetky riadky majú rovnakú výšku"
 
-#: ctk/ctktreeview.c:1127
+#: ctk/ctktreeview.c:1133
 msgid "Hover Selection"
 msgstr "Postávanie vyberá"
 
-#: ctk/ctktreeview.c:1128
+#: ctk/ctktreeview.c:1134
 msgid "Whether the selection should follow the pointer"
 msgstr "Určuje, či má výber nasledovať ukazovateľ"
 
-#: ctk/ctktreeview.c:1146
+#: ctk/ctktreeview.c:1152
 msgid "Hover Expand"
 msgstr "Postávanie rozširuje"
 
-#: ctk/ctktreeview.c:1147
+#: ctk/ctktreeview.c:1153
 msgid ""
 "Whether rows should be expanded/collapsed when the pointer moves over them"
 msgstr ""
 "Určujem, či sa majú riadky rozbaliť/zbaliť v závislosti od pohybu "
 "ukazovateľa a nad nimi"
 
-#: ctk/ctktreeview.c:1160
+#: ctk/ctktreeview.c:1166
 msgid "Show Expanders"
 msgstr "Zobraziť rozbaľovače"
 
-#: ctk/ctktreeview.c:1161
+#: ctk/ctktreeview.c:1167
 msgid "View has expanders"
 msgstr "Pohľad má rozbaľovače"
 
-#: ctk/ctktreeview.c:1174
+#: ctk/ctktreeview.c:1180
 msgid "Level Indentation"
 msgstr "Odsadenie pre úrovne"
 
-#: ctk/ctktreeview.c:1175
+#: ctk/ctktreeview.c:1181
 msgid "Extra indentation for each level"
 msgstr "Extra odsadenie pre každú úroveň"
 
-#: ctk/ctktreeview.c:1182
+#: ctk/ctktreeview.c:1188
 msgid "Rubber Banding"
 msgstr "Gumené väzby"
 
-#: ctk/ctktreeview.c:1183
+#: ctk/ctktreeview.c:1189
 msgid ""
 "Whether to enable selection of multiple items by dragging the mouse pointer"
 msgstr ""
 "Určuje, či má byť možný výber viacerých položiek ťahaním ukazovateľa myši"
 
-#: ctk/ctktreeview.c:1189
+#: ctk/ctktreeview.c:1195
 msgid "Enable Grid Lines"
 msgstr "Povoliť čiary mriežky"
 
-#: ctk/ctktreeview.c:1190
+#: ctk/ctktreeview.c:1196
 msgid "Whether grid lines should be drawn in the tree view"
 msgstr "Určuje, či majú byť v stromovom pohľade zobrazené čiary mriežky"
 
-#: ctk/ctktreeview.c:1197
+#: ctk/ctktreeview.c:1203
 msgid "Enable Tree Lines"
 msgstr "Povoliť čiary stromu"
 
-#: ctk/ctktreeview.c:1198
+#: ctk/ctktreeview.c:1204
 msgid "Whether tree lines should be drawn in the tree view"
 msgstr "Určuje, či majú byť zobrazené čiary v stromovom pohľade"
 
-#: ctk/ctktreeview.c:1205
+#: ctk/ctktreeview.c:1211
 msgid "The column in the model containing the tooltip texts for the rows"
 msgstr "Stĺpec v modeli, ktorý obsahuje texty bublinových tipov pre riadky"
 
-#: ctk/ctktreeview.c:1243
+#: ctk/ctktreeview.c:1249
 msgid "Vertical Separator Width"
 msgstr "Šírka zvislého oddeľovača"
 
-#: ctk/ctktreeview.c:1244
+#: ctk/ctktreeview.c:1250
 msgid "Vertical space between cells.  Must be an even number"
 msgstr "Zvislý priestor medzi bunkami. Musí byť párne číslo"
 
-#: ctk/ctktreeview.c:1252
+#: ctk/ctktreeview.c:1258
 msgid "Horizontal Separator Width"
 msgstr "Šírka vodorovného oddeľovača"
 
-#: ctk/ctktreeview.c:1253
+#: ctk/ctktreeview.c:1259
 msgid "Horizontal space between cells.  Must be an even number"
 msgstr "Vodorovný priestor medzi bunkami. Musí byť párne číslo"
 
-#: ctk/ctktreeview.c:1261
+#: ctk/ctktreeview.c:1267
 msgid "Allow Rules"
 msgstr "Povoliť pravidlá"
 
-#: ctk/ctktreeview.c:1262
+#: ctk/ctktreeview.c:1268
 msgid "Allow drawing of alternating color rows"
 msgstr "Povoliť kreslenie rôznofarebných riadkov"
 
-#: ctk/ctktreeview.c:1268
+#: ctk/ctktreeview.c:1274
 msgid "Indent Expanders"
 msgstr "Odsadiť rozbaľovače"
 
-#: ctk/ctktreeview.c:1269
+#: ctk/ctktreeview.c:1275
 msgid "Make the expanders indented"
 msgstr "Odsadí rozbaľovače"
 
-#: ctk/ctktreeview.c:1275
+#: ctk/ctktreeview.c:1281
 msgid "Even Row Color"
 msgstr "Farba párnych riadkov"
 
-#: ctk/ctktreeview.c:1276
+#: ctk/ctktreeview.c:1282
 msgid "Color to use for even rows"
 msgstr "Farba používaná pre párne riadky"
 
-#: ctk/ctktreeview.c:1282
+#: ctk/ctktreeview.c:1288
 msgid "Odd Row Color"
 msgstr "Farba nepárnych riadkov"
 
-#: ctk/ctktreeview.c:1283
+#: ctk/ctktreeview.c:1289
 msgid "Color to use for odd rows"
 msgstr "Farba používaná pre nepárne riadky"
 
-#: ctk/ctktreeview.c:1290
+#: ctk/ctktreeview.c:1296
 msgid "Grid line width"
 msgstr "Šírka čiary mriežky"
 
-#: ctk/ctktreeview.c:1291
+#: ctk/ctktreeview.c:1297
 msgid "Width, in pixels, of the tree view grid lines"
 msgstr "Šírka čiary mriežky stromového pohľadu, v pixeloch"
 
-#: ctk/ctktreeview.c:1297
+#: ctk/ctktreeview.c:1303
 msgid "Tree line width"
 msgstr "Šírka čiary stromu"
 
-#: ctk/ctktreeview.c:1298
+#: ctk/ctktreeview.c:1304
 msgid "Width, in pixels, of the tree view lines"
 msgstr "Šírka čiary stromového pohľadu, v pixeloch"
 
-#: ctk/ctktreeview.c:1304
+#: ctk/ctktreeview.c:1310
 msgid "Grid line pattern"
 msgstr "Vzorka čiary mriežky"
 
-#: ctk/ctktreeview.c:1305
+#: ctk/ctktreeview.c:1311
 msgid "Dash pattern used to draw the tree view grid lines"
 msgstr "Čiarkovaná vzorka použitá na vykreslenie čiar mriežky"
 
-#: ctk/ctktreeview.c:1311
+#: ctk/ctktreeview.c:1317
 msgid "Tree line pattern"
 msgstr "Vzorka čiary stromu"
 
-#: ctk/ctktreeview.c:1312
+#: ctk/ctktreeview.c:1318
 msgid "Dash pattern used to draw the tree view lines"
 msgstr "Čiarkovaná vzorka použitá na vykreslenie čiar stromu"
 
@@ -8840,7 +8840,7 @@ msgstr "Čiarkovaná vzorka použitá na vykreslenie čiar stromu"
 msgid "Whether to display the column"
 msgstr "Určuje, či zobraziť stĺpec"
 
-#: ctk/ctktreeviewcolumn.c:253 ctk/ctkwindow.c:782
+#: ctk/ctktreeviewcolumn.c:253 ctk/ctkwindow.c:783
 msgid "Resizable"
 msgstr "Zmena veľkosti"
 
@@ -9393,43 +9393,43 @@ msgstr "Šírka ovládacieho políčka pre výber textu"
 msgid "Height of text selection handles"
 msgstr "Výška ovládacieho políčka pre výber textu"
 
-#: ctk/ctkwindow.c:744
+#: ctk/ctkwindow.c:745
 msgid "Window Type"
 msgstr "Typ okna"
 
-#: ctk/ctkwindow.c:745
+#: ctk/ctkwindow.c:746
 msgid "The type of the window"
 msgstr "Typ okna"
 
-#: ctk/ctkwindow.c:752
+#: ctk/ctkwindow.c:753
 msgid "Window Title"
 msgstr "Titulok okna"
 
-#: ctk/ctkwindow.c:753
+#: ctk/ctkwindow.c:754
 msgid "The title of the window"
 msgstr "Text titulku okna"
 
-#: ctk/ctkwindow.c:759
+#: ctk/ctkwindow.c:760
 msgid "Window Role"
 msgstr "Úloha okna"
 
-#: ctk/ctkwindow.c:760
+#: ctk/ctkwindow.c:761
 msgid "Unique identifier for the window to be used when restoring a session"
 msgstr "Jednoznačný identifikátor okna pre obnovu relácie"
 
-#: ctk/ctkwindow.c:775
+#: ctk/ctkwindow.c:776
 msgid "Startup ID"
 msgstr "Spúšťací identifikátor"
 
-#: ctk/ctkwindow.c:776
+#: ctk/ctkwindow.c:777
 msgid "Unique startup identifier for the window used by startup-notification"
 msgstr "Jednoznačný spúšťací identifikátor okna pre „startup-notification“"
 
-#: ctk/ctkwindow.c:783
+#: ctk/ctkwindow.c:784
 msgid "If TRUE, users can resize the window"
 msgstr "Ak je TRUE, používateľ môže zmeniť veľkosť okna"
 
-#: ctk/ctkwindow.c:790
+#: ctk/ctkwindow.c:791
 msgid ""
 "If TRUE, the window is modal (other windows are not usable while this one is "
 "up)"
@@ -9437,209 +9437,209 @@ msgstr ""
 "Ak je TRUE, okno je modálne (ostatné okná nie je možné používať, ak je toto "
 "zobrazené)"
 
-#: ctk/ctkwindow.c:796
+#: ctk/ctkwindow.c:797
 msgid "Window Position"
 msgstr "Pozícia okna"
 
-#: ctk/ctkwindow.c:797
+#: ctk/ctkwindow.c:798
 msgid "The initial position of the window"
 msgstr "Počiatočná pozícia okna"
 
-#: ctk/ctkwindow.c:804
+#: ctk/ctkwindow.c:805
 msgid "Default Width"
 msgstr "Predvolená šírka"
 
-#: ctk/ctkwindow.c:805
+#: ctk/ctkwindow.c:806
 msgid "The default width of the window, used when initially showing the window"
 msgstr "Predvolená šírka okna použitá pri počiatočnom zobrazení okna"
 
-#: ctk/ctkwindow.c:812
+#: ctk/ctkwindow.c:813
 msgid "Default Height"
 msgstr "Predvolená výška"
 
-#: ctk/ctkwindow.c:813
+#: ctk/ctkwindow.c:814
 msgid ""
 "The default height of the window, used when initially showing the window"
 msgstr "Predvolená výška okna použitá pri počiatočnom zobrazení okna"
 
-#: ctk/ctkwindow.c:820
+#: ctk/ctkwindow.c:821
 msgid "Destroy with Parent"
 msgstr "Zničiť s rodičom"
 
-#: ctk/ctkwindow.c:821
+#: ctk/ctkwindow.c:822
 msgid "If this window should be destroyed when the parent is destroyed"
 msgstr "Určuje, či má byť okno zničené pri zničení rodiča"
 
-#: ctk/ctkwindow.c:834
+#: ctk/ctkwindow.c:835
 msgid "Hide the titlebar during maximization"
 msgstr "Skryť lištu s titulkom počas maximalizácie"
 
-#: ctk/ctkwindow.c:835
+#: ctk/ctkwindow.c:836
 msgid "If this window's titlebar should be hidden when the window is maximized"
 msgstr ""
 "Určuje, či má byť táto lišta s titulkom okna skrytá pri maximalizácii okna"
 
-#: ctk/ctkwindow.c:842
+#: ctk/ctkwindow.c:843
 msgid "Icon for this window"
 msgstr "Ikona pre toto okno"
 
-#: ctk/ctkwindow.c:858
+#: ctk/ctkwindow.c:859
 msgid "Mnemonics Visible"
 msgstr "Viditeľné klávesové skratky"
 
-#: ctk/ctkwindow.c:859
+#: ctk/ctkwindow.c:860
 msgid "Whether mnemonics are currently visible in this window"
 msgstr "Určuje, či sú klávesové skratky momentálne viditeľné v tomto okne"
 
-#: ctk/ctkwindow.c:875
+#: ctk/ctkwindow.c:876
 msgid "Focus Visible"
 msgstr "Zameriavač viditeľný"
 
-#: ctk/ctkwindow.c:876
+#: ctk/ctkwindow.c:877
 msgid "Whether focus rectangles are currently visible in this window"
 msgstr "Určuje, či je aktuálne viditeľný obdĺžnik zameriavača v tomto okne"
 
-#: ctk/ctkwindow.c:891
+#: ctk/ctkwindow.c:892
 msgid "Name of the themed icon for this window"
 msgstr "Témovateľná ikona pre toto okno"
 
-#: ctk/ctkwindow.c:904
+#: ctk/ctkwindow.c:905
 msgid "Is Active"
 msgstr "Je aktívne"
 
-#: ctk/ctkwindow.c:905
+#: ctk/ctkwindow.c:906
 msgid "Whether the toplevel is the current active window"
 msgstr "Určuje, či je najvyšší prvok momentálne aktívne okno"
 
-#: ctk/ctkwindow.c:911
+#: ctk/ctkwindow.c:912
 msgid "Focus in Toplevel"
 msgstr "Zameriavač v najvyššom prvku"
 
-#: ctk/ctkwindow.c:912
+#: ctk/ctkwindow.c:913
 msgid "Whether the input focus is within this CtkWindow"
 msgstr "Určuje, či je vstupný zameriavač v tomto prvku CtkWindow"
 
-#: ctk/ctkwindow.c:918
+#: ctk/ctkwindow.c:919
 msgid "Type hint"
 msgstr "Rada o type"
 
-#: ctk/ctkwindow.c:919
+#: ctk/ctkwindow.c:920
 msgid ""
 "Hint to help the desktop environment understand what kind of window this is "
 "and how to treat it."
 msgstr "Rada pre prostredie, čo je toto za typ okna a ako s ním pracovať."
 
-#: ctk/ctkwindow.c:926
+#: ctk/ctkwindow.c:927
 msgid "Skip taskbar"
 msgstr "Vynechať v paneli úloh"
 
-#: ctk/ctkwindow.c:927
+#: ctk/ctkwindow.c:928
 msgid "TRUE if the window should not be in the task bar."
 msgstr "TRUE, ak okno nemá byť v paneli úloh."
 
-#: ctk/ctkwindow.c:933
+#: ctk/ctkwindow.c:934
 msgid "Skip pager"
 msgstr "Vynechať v stránkovači"
 
-#: ctk/ctkwindow.c:934
+#: ctk/ctkwindow.c:935
 msgid "TRUE if the window should not be in the pager."
 msgstr "TRUE, ak okno nemá byť v stránkovači."
 
-#: ctk/ctkwindow.c:940
+#: ctk/ctkwindow.c:941
 msgid "Urgent"
 msgstr "Urgentné"
 
-#: ctk/ctkwindow.c:941
+#: ctk/ctkwindow.c:942
 msgid "TRUE if the window should be brought to the user's attention."
 msgstr "TRUE, ak okno má byť privedené do pozornosti používateľa."
 
-#: ctk/ctkwindow.c:954
+#: ctk/ctkwindow.c:955
 msgid "Accept focus"
 msgstr "Prijíma zameranie"
 
-#: ctk/ctkwindow.c:955
+#: ctk/ctkwindow.c:956
 msgid "TRUE if the window should receive the input focus."
 msgstr "TRUE, ak okno má dostávať vstupný zameriavač."
 
-#: ctk/ctkwindow.c:968
+#: ctk/ctkwindow.c:969
 msgid "Focus on map"
 msgstr "Zameranie pri mapovaní"
 
-#: ctk/ctkwindow.c:969
+#: ctk/ctkwindow.c:970
 msgid "TRUE if the window should receive the input focus when mapped."
 msgstr "Hodnota true, ak okno má dostávať vstupné zameranie keď je mapované."
 
-#: ctk/ctkwindow.c:982
+#: ctk/ctkwindow.c:983
 msgid "Decorated"
 msgstr "Dekorované"
 
-#: ctk/ctkwindow.c:983
+#: ctk/ctkwindow.c:984
 msgid "Whether the window should be decorated by the window manager"
 msgstr "Určuje, či má okno mať dekorácie od správcu okien"
 
-#: ctk/ctkwindow.c:996
+#: ctk/ctkwindow.c:997
 msgid "Deletable"
 msgstr "Odstrániteľné"
 
-#: ctk/ctkwindow.c:997
+#: ctk/ctkwindow.c:998
 msgid "Whether the window frame should have a close button"
 msgstr "Určuje, či má mať rámec okna tlačidlo na zatvorenie"
 
 # MČ: možno by som „grip“ preložil ako „úchop“. Neviem čo je zaužívané, ale ovládač (priveľa slov sa prekladá ako ovládač) sa mi zdá nevhodný.
 # PM: toto som riešil s juls úchop je podľa JULS bohemizmus ani tiahlo nie je správne - odporučili mi rúčka, rukoväť alebo ucho, uško
-#: ctk/ctkwindow.c:1017
+#: ctk/ctkwindow.c:1018
 msgid "Resize grip"
 msgstr "Ovládač zmeny veľkosti"
 
-#: ctk/ctkwindow.c:1018
+#: ctk/ctkwindow.c:1019
 msgid "Specifies whether the window should have a resize grip"
 msgstr "Určuje, či má okno mať ovládač zmeny veľkosti"
 
-#: ctk/ctkwindow.c:1033
+#: ctk/ctkwindow.c:1034
 msgid "Resize grip is visible"
 msgstr "Ovládač zmeny veľkosti je viditeľný"
 
-#: ctk/ctkwindow.c:1034
+#: ctk/ctkwindow.c:1035
 msgid "Specifies whether the window's resize grip is visible."
 msgstr "Určuje, či je ovládač na zmenu veľkosti okna viditeľný."
 
-#: ctk/ctkwindow.c:1048
+#: ctk/ctkwindow.c:1049
 msgid "Gravity"
 msgstr "Gravitácia"
 
-#: ctk/ctkwindow.c:1049
+#: ctk/ctkwindow.c:1050
 msgid "The window gravity of the window"
 msgstr "Gravitácia okna"
 
-#: ctk/ctkwindow.c:1084
+#: ctk/ctkwindow.c:1085
 msgid "Attached to Widget"
 msgstr "Pripojený k ovládaciemu prvku"
 
-#: ctk/ctkwindow.c:1085
+#: ctk/ctkwindow.c:1086
 msgid "The widget where the window is attached"
 msgstr "Ovládací prvok, ku ktorému je okno pripojené"
 
-#: ctk/ctkwindow.c:1091
+#: ctk/ctkwindow.c:1092
 msgid "Is maximized"
 msgstr "Je maximalizované"
 
-#: ctk/ctkwindow.c:1092
+#: ctk/ctkwindow.c:1093
 msgid "Whether the window is maximized"
 msgstr "Určuje, či je okno maximalizované"
 
-#: ctk/ctkwindow.c:1113
+#: ctk/ctkwindow.c:1114
 msgid "CtkApplication"
 msgstr "CtkApplication"
 
-#: ctk/ctkwindow.c:1114
+#: ctk/ctkwindow.c:1115
 msgid "The CtkApplication for the window"
 msgstr "CtkApplication pre okno"
 
-#: ctk/ctkwindow.c:1124 ctk/ctkwindow.c:1125
+#: ctk/ctkwindow.c:1125 ctk/ctkwindow.c:1126
 msgid "Decorated button layout"
 msgstr "Dakorované rozloženie tlačidiel"
 
-#: ctk/ctkwindow.c:1131 ctk/ctkwindow.c:1132
+#: ctk/ctkwindow.c:1132 ctk/ctkwindow.c:1133
 msgid "Decoration resize handle size"
 msgstr "Dekorácia zmení veľkosť ovládača"
 

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-19 12:06+0100\n"
+"POT-Creation-Date: 2026-11-22 15:03+0100\n"
 "PO-Revision-Date: 2003-02-11\n"
 "Last-Translator: Raphael Finkel <raphael@cs.uky.edu>\n"
 "Language-Team: None <>\n"
@@ -219,11 +219,11 @@ msgstr ""
 msgid "Minor version number"
 msgstr ""
 
-#: cdk/x11/cdkdevice-xi2.c:143
+#: cdk/x11/cdkdevice-xi2.c:144
 msgid "Device ID"
 msgstr ""
 
-#: cdk/x11/cdkdevice-xi2.c:144
+#: cdk/x11/cdkdevice-xi2.c:145
 msgid "Device identifier"
 msgstr ""
 
@@ -294,7 +294,7 @@ msgid "The GIcon being displayed"
 msgstr "בילדל געזעמל צו װײַזן"
 
 #: ctk/ctkaction.c:341 ctk/ctkcellrendererpixbuf.c:245 ctk/ctkimage.c:341
-#: ctk/ctkprinter.c:170 ctk/ctkstatusicon.c:253 ctk/ctkwindow.c:890
+#: ctk/ctkprinter.c:170 ctk/ctkstatusicon.c:253 ctk/ctkwindow.c:891
 #, fuzzy
 msgid "Icon Name"
 msgstr "שריפֿט נאָמען"
@@ -1501,11 +1501,11 @@ msgstr "אין צװײטן אָרט"
 
 #: ctk/ctkbbox.c:285
 msgid ""
-"If TRUE, the child appears in a secondary group of children, suitable for, e."
-"g., help buttons"
+"If TRUE, the child appears in a secondary group of children, suitable for, "
+"e.g., help buttons"
 msgstr ""
-"אױב יאָ, װײַזט זיך דאָס קינד אין אַ צװײטע גרופּע קינדער, פּאַסיק למשל פֿאַר "
-"געהילפֿס־קנעפּלעך"
+"אױב יאָ, װײַזט זיך דאָס קינד אין אַ צװײטע גרופּע קינדער, פּאַסיק למשל פֿאַר געהילפֿס־"
+"קנעפּלעך"
 
 #: ctk/ctkbbox.c:292
 #, fuzzy
@@ -1581,8 +1581,8 @@ msgid ""
 "Text of the label widget inside the button, if the button contains a label "
 "widget"
 msgstr ""
-"טעקסט פֿון עטיקעט־צעפּיכעסל אין דרינען פֿון קנעפּל, אױב דאָס קנעפּל האָט אַן "
-"עטיקעט־צעפּיכעסל"
+"טעקסט פֿון עטיקעט־צעפּיכעסל אין דרינען פֿון קנעפּל, אױב דאָס קנעפּל האָט אַן עטיקעט־"
+"צעפּיכעסל"
 
 #: ctk/ctkbutton.c:288 ctk/ctkexpander.c:316 ctk/ctklabel.c:826
 #: ctk/ctkmenuitem.c:802 ctk/ctktoolbutton.c:211
@@ -2136,7 +2136,7 @@ msgid "Has Entry"
 msgstr ""
 
 #: ctk/ctkcellrenderercombo.c:170
-msgid "If FALSE, don't allow to enter strings other than the chosen ones"
+msgid "If FALSE, don't allow entering strings other than the chosen ones"
 msgstr ""
 
 #: ctk/ctkcellrendererpixbuf.c:152
@@ -2208,7 +2208,7 @@ msgid "Whether the rendered pixbuf should be colorized according to the state"
 msgstr "אױב מען װיל אַז די צאַמרינע זאָל זיך װײַזן"
 
 #: ctk/ctkcellrendererpixbuf.c:281 ctk/ctkimage.c:357 ctk/ctkmodelbutton.c:1166
-#: ctk/ctkshortcutsshortcut.c:550 ctk/ctkwindow.c:841
+#: ctk/ctkshortcutsshortcut.c:550 ctk/ctkwindow.c:842
 msgid "Icon"
 msgstr "בילדל"
 
@@ -3890,11 +3890,11 @@ msgid ""
 "collapsing"
 msgstr ""
 
-#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1672 ctk/ctktreeview.c:1234
+#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1672 ctk/ctktreeview.c:1240
 msgid "Expander Size"
 msgstr "פֿאַרגרעסער גרײס"
 
-#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1673 ctk/ctktreeview.c:1235
+#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1673 ctk/ctktreeview.c:1241
 msgid "Size of the expander arrow"
 msgstr "גרײס פֿון דער פֿאַרגרעסער־פֿײַל"
 
@@ -4085,12 +4085,12 @@ msgid "The selection mode"
 msgstr "סעלעקטירטער טעקע־נאָמען"
 
 #: ctk/ctkflowbox.c:3836 ctk/ctkiconview.c:665 ctk/ctklistbox.c:493
-#: ctk/ctktreeview.c:1220
+#: ctk/ctktreeview.c:1226
 msgid "Activate on Single Click"
 msgstr ""
 
 #: ctk/ctkflowbox.c:3837 ctk/ctkiconview.c:666 ctk/ctklistbox.c:494
-#: ctk/ctktreeview.c:1221
+#: ctk/ctktreeview.c:1227
 msgid "Activate row on a single click"
 msgstr ""
 
@@ -4572,15 +4572,15 @@ msgid ""
 "How the text and icon of each item are positioned relative to each other"
 msgstr ""
 
-#: ctk/ctkiconview.c:605 ctk/ctktreeview.c:1059 ctk/ctktreeviewcolumn.c:351
+#: ctk/ctkiconview.c:605 ctk/ctktreeview.c:1065 ctk/ctktreeviewcolumn.c:351
 msgid "Reorderable"
 msgstr "װידער־סאָרטירעװדיק"
 
-#: ctk/ctkiconview.c:606 ctk/ctktreeview.c:1060
+#: ctk/ctkiconview.c:606 ctk/ctktreeview.c:1066
 msgid "View is reorderable"
 msgstr "דער געשטאַלט איז װידער־סאָרטירעװדיק"
 
-#: ctk/ctkiconview.c:613 ctk/ctktreeview.c:1204
+#: ctk/ctkiconview.c:613 ctk/ctktreeview.c:1210
 #, fuzzy
 msgid "Tooltip Column"
 msgstr "זוכזײַל"
@@ -4772,11 +4772,11 @@ msgid "Width of border around the action area"
 msgstr "ברײט פֿון צאַמרינע אַרום דיִאַלאָג־שטח בראָש"
 
 #: ctk/ctkinvisible.c:98 ctk/ctkmountoperation.c:183 ctk/ctkstatusicon.c:296
-#: ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:897
+#: ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:898
 msgid "Screen"
 msgstr "עקראַן"
 
-#: ctk/ctkinvisible.c:99 ctk/ctkwindow.c:898
+#: ctk/ctkinvisible.c:99 ctk/ctkwindow.c:899
 msgid "The screen where this window will be displayed"
 msgstr "דער עקראַן װוּ דער פֿענצטער װעט זיך װײַזן"
 
@@ -5571,7 +5571,7 @@ msgstr "פֿענצטער טיטל"
 msgid "The title of the file chooser dialog"
 msgstr "דער טיטל פֿונעם פֿענצטער"
 
-#: ctk/ctknativedialog.c:228 ctk/ctkpopover.c:1782 ctk/ctkwindow.c:789
+#: ctk/ctknativedialog.c:228 ctk/ctkpopover.c:1782 ctk/ctkwindow.c:790
 msgid "Modal"
 msgstr "מאָדאַל"
 
@@ -5589,11 +5589,11 @@ msgstr ""
 msgid "Whether the dialog is currently visible"
 msgstr "אױב דאָס צעפּיכעסל איז זעעװדיק"
 
-#: ctk/ctknativedialog.c:256 ctk/ctkwindow.c:1064
+#: ctk/ctknativedialog.c:256 ctk/ctkwindow.c:1065
 msgid "Transient for Window"
 msgstr ""
 
-#: ctk/ctknativedialog.c:257 ctk/ctkwindow.c:1065
+#: ctk/ctknativedialog.c:257 ctk/ctkwindow.c:1066
 #, fuzzy
 msgid "The transient parent of the dialog"
 msgstr "די קנעפּלעך װאָס װײַזן זיך אין דעם דיִאַלאָג־פֿענצטער"
@@ -7823,8 +7823,8 @@ msgstr "מען קען פֿאַרבײַטן פֿאַרגיכערערס"
 msgid ""
 "Whether menu accelerators can be changed by pressing a key over the menu item"
 msgstr ""
-"צי מעניו־פֿאַרגיכערערס לאָזן זיך פֿאַרבײַטן דורך דריקן אַ קלאַװיש איבער דעם "
-"מעניו־אײנס"
+"צי מעניו־פֿאַרגיכערערס לאָזן זיך פֿאַרבײַטן דורך דריקן אַ קלאַװיש איבער דעם מעניו־"
+"אײנס"
 
 #: ctk/ctksettings.c:1485
 msgid "Delay before submenus appear"
@@ -9343,230 +9343,230 @@ msgstr "בױם־מאָדעל סאָרטירונג"
 msgid "The model for the TreeModelSort to sort"
 msgstr "דער מאָדעל װאָס אַ בױם־מאָדעל זאָל סאָרטירן"
 
-#: ctk/ctktreeview.c:1031
+#: ctk/ctktreeview.c:1037
 msgid "TreeView Model"
 msgstr "בױם־געשטאַלט מאָדעל"
 
-#: ctk/ctktreeview.c:1032
+#: ctk/ctktreeview.c:1038
 msgid "The model for the tree view"
 msgstr "דער מאָדעל פֿאַר דעם בױם־געשטאַלט"
 
-#: ctk/ctktreeview.c:1038
+#: ctk/ctktreeview.c:1044
 #, fuzzy
 msgid "Headers Visible"
 msgstr "קאָפּצעטלעך קליקעװדיק"
 
-#: ctk/ctktreeview.c:1039
+#: ctk/ctktreeview.c:1045
 msgid "Show the column header buttons"
 msgstr "װײַז די זײַל קאָפּצעטל קנעפּלעך"
 
-#: ctk/ctktreeview.c:1045
+#: ctk/ctktreeview.c:1051
 msgid "Headers Clickable"
 msgstr "קאָפּצעטלעך קליקעװדיק"
 
-#: ctk/ctktreeview.c:1046
+#: ctk/ctktreeview.c:1052
 msgid "Column headers respond to click events"
 msgstr "קאָפּצעטלעך באַהאַנדלען קליקן"
 
-#: ctk/ctktreeview.c:1052
+#: ctk/ctktreeview.c:1058
 msgid "Expander Column"
 msgstr "פֿאַרגרעסער־זײַל"
 
-#: ctk/ctktreeview.c:1053
+#: ctk/ctktreeview.c:1059
 msgid "Set the column for the expander column"
 msgstr "באַשטעטיק דעם זײַל פֿאַר דעם פֿאַרגרעסער־זײַל"
 
-#: ctk/ctktreeview.c:1074
+#: ctk/ctktreeview.c:1080
 msgid "Rules Hint"
 msgstr "כּללים־רמז"
 
-#: ctk/ctktreeview.c:1075
+#: ctk/ctktreeview.c:1081
 msgid "Set a hint to the theme engine to draw rows in alternating colors"
 msgstr "באַשטעטיק אַ רמז מיט דעם טעמע־מאָטאָר צו צײכענען שורות אין װעקסלדיקע פֿאַרבן"
 
-#: ctk/ctktreeview.c:1081
+#: ctk/ctktreeview.c:1087
 msgid "Enable Search"
 msgstr "דערמעגלעך זוכן"
 
-#: ctk/ctktreeview.c:1082
+#: ctk/ctktreeview.c:1088
 msgid "View allows user to search through columns interactively"
 msgstr "דער געשטאַלט לאָזט אינטעראַקטיװ זוכן דורך זײַלן"
 
-#: ctk/ctktreeview.c:1088
+#: ctk/ctktreeview.c:1094
 msgid "Search Column"
 msgstr "זוכזײַל"
 
-#: ctk/ctktreeview.c:1089
+#: ctk/ctktreeview.c:1095
 #, fuzzy
 msgid "Model column to search through during interactive search"
 msgstr "מוסטערזײַל אַדורכצוזוכן בשעת מען זוכט דורך קאָדירונג"
 
-#: ctk/ctktreeview.c:1107
+#: ctk/ctktreeview.c:1113
 #, fuzzy
 msgid "Fixed Height Mode"
 msgstr "די הײך ניט צו ענדערן"
 
-#: ctk/ctktreeview.c:1108
+#: ctk/ctktreeview.c:1114
 msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
 msgstr ""
 
-#: ctk/ctktreeview.c:1127
+#: ctk/ctktreeview.c:1133
 msgid "Hover Selection"
 msgstr ""
 
-#: ctk/ctktreeview.c:1128
+#: ctk/ctktreeview.c:1134
 #, fuzzy
 msgid "Whether the selection should follow the pointer"
 msgstr "צי דער פֿאַרב אױסקלײַבער זאָל לאָזן באַשטעטיקן מאַטקײט"
 
-#: ctk/ctktreeview.c:1146
+#: ctk/ctktreeview.c:1152
 #, fuzzy
 msgid "Hover Expand"
 msgstr "פֿאַרגרעסער"
 
-#: ctk/ctktreeview.c:1147
+#: ctk/ctktreeview.c:1153
 #, fuzzy
 msgid ""
 "Whether rows should be expanded/collapsed when the pointer moves over them"
 msgstr "אױב „יאָ“, טאָר דער פֿענצטער ניט זײַן אינעם בלעטערער"
 
-#: ctk/ctktreeview.c:1160
+#: ctk/ctktreeview.c:1166
 #, fuzzy
 msgid "Show Expanders"
 msgstr "איז אַ פֿאַרגרעסערער"
 
-#: ctk/ctktreeview.c:1161
+#: ctk/ctktreeview.c:1167
 #, fuzzy
 msgid "View has expanders"
 msgstr "איז אַ פֿאַרגרעסערער"
 
-#: ctk/ctktreeview.c:1174
+#: ctk/ctktreeview.c:1180
 msgid "Level Indentation"
 msgstr ""
 
-#: ctk/ctktreeview.c:1175
+#: ctk/ctktreeview.c:1181
 msgid "Extra indentation for each level"
 msgstr ""
 
-#: ctk/ctktreeview.c:1182
+#: ctk/ctktreeview.c:1188
 msgid "Rubber Banding"
 msgstr ""
 
-#: ctk/ctktreeview.c:1183
+#: ctk/ctktreeview.c:1189
 #, fuzzy
 msgid ""
 "Whether to enable selection of multiple items by dragging the mouse pointer"
 msgstr "צי מער װי אײן טעקע לאָזט זיך סעלעקטירן"
 
-#: ctk/ctktreeview.c:1189
+#: ctk/ctktreeview.c:1195
 #, fuzzy
 msgid "Enable Grid Lines"
 msgstr "דערמעגלעך פֿײַל־קלאַװישן"
 
-#: ctk/ctktreeview.c:1190
+#: ctk/ctktreeview.c:1196
 #, fuzzy
 msgid "Whether grid lines should be drawn in the tree view"
 msgstr "אױב מען װיל אַז די צאַמרינע זאָל זיך װײַזן"
 
-#: ctk/ctktreeview.c:1197
+#: ctk/ctktreeview.c:1203
 #, fuzzy
 msgid "Enable Tree Lines"
 msgstr "דערמעגלעך פֿײַל־קלאַװישן"
 
-#: ctk/ctktreeview.c:1198
+#: ctk/ctktreeview.c:1204
 #, fuzzy
 msgid "Whether tree lines should be drawn in the tree view"
 msgstr "אױב מען װיל אַז די צאַמרינע זאָל זיך װײַזן"
 
-#: ctk/ctktreeview.c:1205
+#: ctk/ctktreeview.c:1211
 #, fuzzy
 msgid "The column in the model containing the tooltip texts for the rows"
 msgstr "דער מאָדעל פֿאַר דעם בױם־געשטאַלט"
 
-#: ctk/ctktreeview.c:1243
+#: ctk/ctktreeview.c:1249
 msgid "Vertical Separator Width"
 msgstr "װערטיקאַלישע צעשײד־ברײט"
 
-#: ctk/ctktreeview.c:1244
+#: ctk/ctktreeview.c:1250
 msgid "Vertical space between cells.  Must be an even number"
 msgstr "דאָס װערטיקאַלישע לײדיק אָרט צװישן צעלן.  מוז זײַן אַ גראָדציפֿער."
 
-#: ctk/ctktreeview.c:1252
+#: ctk/ctktreeview.c:1258
 msgid "Horizontal Separator Width"
 msgstr "האָריזאָנטאַלישע צעשײד־ברײט"
 
-#: ctk/ctktreeview.c:1253
+#: ctk/ctktreeview.c:1259
 msgid "Horizontal space between cells.  Must be an even number"
 msgstr "דאָס האָריזאָנטאַלישע לײדיק אָרט צװישן צעלן.  מוז זײַן אַ גראָדציפֿער."
 
-#: ctk/ctktreeview.c:1261
+#: ctk/ctktreeview.c:1267
 msgid "Allow Rules"
 msgstr "דערלאָז כּללים"
 
-#: ctk/ctktreeview.c:1262
+#: ctk/ctktreeview.c:1268
 msgid "Allow drawing of alternating color rows"
 msgstr "דערלאָז צײכענען װעקסלדיק־פֿאַרב שורות"
 
-#: ctk/ctktreeview.c:1268
+#: ctk/ctktreeview.c:1274
 msgid "Indent Expanders"
 msgstr "צײנדל אײַן פֿאַרגרעסערס"
 
-#: ctk/ctktreeview.c:1269
+#: ctk/ctktreeview.c:1275
 msgid "Make the expanders indented"
 msgstr "די פֿאַרגרעסערס זאָלן זײַן אײַנגעצײנדלט"
 
-#: ctk/ctktreeview.c:1275
+#: ctk/ctktreeview.c:1281
 msgid "Even Row Color"
 msgstr "גראָדציפֿער־שורה פֿאַרב"
 
-#: ctk/ctktreeview.c:1276
+#: ctk/ctktreeview.c:1282
 msgid "Color to use for even rows"
 msgstr "פֿאַרב צו ניצן אין גראָדציפֿער־שורות"
 
-#: ctk/ctktreeview.c:1282
+#: ctk/ctktreeview.c:1288
 msgid "Odd Row Color"
 msgstr "אומציפֿער־שורה פֿאַרב"
 
-#: ctk/ctktreeview.c:1283
+#: ctk/ctktreeview.c:1289
 msgid "Color to use for odd rows"
 msgstr "פֿאַרב צו ניצן אין אומציפֿער־שורות"
 
-#: ctk/ctktreeview.c:1290
+#: ctk/ctktreeview.c:1296
 #, fuzzy
 msgid "Grid line width"
 msgstr "פֿאָקוס ליניע־ברײט"
 
-#: ctk/ctktreeview.c:1291
+#: ctk/ctktreeview.c:1297
 #, fuzzy
 msgid "Width, in pixels, of the tree view grid lines"
 msgstr "ברײט, אין בילדצעלן, פֿון דער פֿאָקוס־סימן ליניע"
 
-#: ctk/ctktreeview.c:1297
+#: ctk/ctktreeview.c:1303
 #, fuzzy
 msgid "Tree line width"
 msgstr "די ברײט ניט צו ענדערן"
 
-#: ctk/ctktreeview.c:1298
+#: ctk/ctktreeview.c:1304
 #, fuzzy
 msgid "Width, in pixels, of the tree view lines"
 msgstr "ברײט, אין בילדצעלן, פֿון דער פֿאָקוס־סימן ליניע"
 
-#: ctk/ctktreeview.c:1304
+#: ctk/ctktreeview.c:1310
 #, fuzzy
 msgid "Grid line pattern"
 msgstr "פֿאָקוס־ליניע מקף־סכעמע"
 
-#: ctk/ctktreeview.c:1305
+#: ctk/ctktreeview.c:1311
 #, fuzzy
 msgid "Dash pattern used to draw the tree view grid lines"
 msgstr "די מקף־סכעמע מיט װעלכער די פֿאָקוס־סימן צײכנט זיך"
 
-#: ctk/ctktreeview.c:1311
+#: ctk/ctktreeview.c:1317
 #, fuzzy
 msgid "Tree line pattern"
 msgstr "פֿאָקוס־ליניע מקף־סכעמע"
 
-#: ctk/ctktreeview.c:1312
+#: ctk/ctktreeview.c:1318
 #, fuzzy
 msgid "Dash pattern used to draw the tree view lines"
 msgstr "די מקף־סכעמע מיט װעלכער די פֿאָקוס־סימן צײכנט זיך"
@@ -9575,7 +9575,7 @@ msgstr "די מקף־סכעמע מיט װעלכער די פֿאָקוס־סימ�
 msgid "Whether to display the column"
 msgstr "אױב מען װײַזט דעם זײַל"
 
-#: ctk/ctktreeviewcolumn.c:253 ctk/ctkwindow.c:782
+#: ctk/ctktreeviewcolumn.c:253 ctk/ctkwindow.c:783
 msgid "Resizable"
 msgstr "גרײס־סטרױערעװדיק"
 
@@ -10058,8 +10058,8 @@ msgid ""
 "Color with which to draw the secondary insertion cursor when editing mixed "
 "right-to-left and left-to-right text"
 msgstr ""
-"פֿאַרב מיט װעלכער דער צװײטער אַרײַנלײג־לױפֿער צײכנט זיך װען מען רעדאַגירט "
-"בײד־ריכטונגדיקן טעקסט"
+"פֿאַרב מיט װעלכער דער צװײטער אַרײַנלײג־לױפֿער צײכנט זיך װען מען רעדאַגירט בײד־"
+"ריכטונגדיקן טעקסט"
 
 #: ctk/ctkwidget.c:3565
 msgid "Cursor line aspect ratio"
@@ -10157,45 +10157,45 @@ msgstr "הענטל ברײט"
 msgid "Height of text selection handles"
 msgstr "דער טיטל פֿונעם פֿענצטער"
 
-#: ctk/ctkwindow.c:744
+#: ctk/ctkwindow.c:745
 msgid "Window Type"
 msgstr "פֿענצטער סאָרט"
 
-#: ctk/ctkwindow.c:745
+#: ctk/ctkwindow.c:746
 msgid "The type of the window"
 msgstr "דער סאָרט פֿונעם פֿענצטער"
 
-#: ctk/ctkwindow.c:752
+#: ctk/ctkwindow.c:753
 msgid "Window Title"
 msgstr "פֿענצטער טיטל"
 
-#: ctk/ctkwindow.c:753
+#: ctk/ctkwindow.c:754
 msgid "The title of the window"
 msgstr "דער טיטל פֿונעם פֿענצטער"
 
-#: ctk/ctkwindow.c:759
+#: ctk/ctkwindow.c:760
 #, fuzzy
 msgid "Window Role"
 msgstr "פֿענצטער טיטל"
 
-#: ctk/ctkwindow.c:760
+#: ctk/ctkwindow.c:761
 msgid "Unique identifier for the window to be used when restoring a session"
 msgstr ""
 
-#: ctk/ctkwindow.c:775
+#: ctk/ctkwindow.c:776
 #, fuzzy
 msgid "Startup ID"
 msgstr "גרופּע"
 
-#: ctk/ctkwindow.c:776
+#: ctk/ctkwindow.c:777
 msgid "Unique startup identifier for the window used by startup-notification"
 msgstr ""
 
-#: ctk/ctkwindow.c:783
+#: ctk/ctkwindow.c:784
 msgid "If TRUE, users can resize the window"
 msgstr "אױב „יאָ”, קענען ניצערס סטרױערן די פֿענצטערגרײס"
 
-#: ctk/ctkwindow.c:790
+#: ctk/ctkwindow.c:791
 msgid ""
 "If TRUE, the window is modal (other windows are not usable while this one is "
 "up)"
@@ -10203,98 +10203,98 @@ msgstr ""
 "אױב „יאָ”, איז דער פֿענצטער „מאָדאַל”: אַנדערע פֿענצטערס קען מען ניט ניצן בשעת דער "
 "דאָזיקער װײַזט זיך"
 
-#: ctk/ctkwindow.c:796
+#: ctk/ctkwindow.c:797
 msgid "Window Position"
 msgstr "פֿענצטער פּאָזיציע"
 
-#: ctk/ctkwindow.c:797
+#: ctk/ctkwindow.c:798
 msgid "The initial position of the window"
 msgstr "די אָנהײב־פּאָזיציע פֿונעם פֿענצטער"
 
-#: ctk/ctkwindow.c:804
+#: ctk/ctkwindow.c:805
 msgid "Default Width"
 msgstr "געװײנטלעכע ברײט"
 
-#: ctk/ctkwindow.c:805
+#: ctk/ctkwindow.c:806
 msgid "The default width of the window, used when initially showing the window"
 msgstr "די געװײנטלעכע ברײט פֿונעם פֿענצטער װען ער װײַזט זיך צוערשטנס"
 
-#: ctk/ctkwindow.c:812
+#: ctk/ctkwindow.c:813
 msgid "Default Height"
 msgstr "געװײנטלעכע הײך"
 
-#: ctk/ctkwindow.c:813
+#: ctk/ctkwindow.c:814
 msgid ""
 "The default height of the window, used when initially showing the window"
 msgstr "די געװײנטלעכע הײך פֿונעם פֿענצטער װען ער װײַזט זיך צוערשטנס"
 
-#: ctk/ctkwindow.c:820
+#: ctk/ctkwindow.c:821
 msgid "Destroy with Parent"
 msgstr "פֿאַרטיליק מיט טאַטע־מאַמע"
 
-#: ctk/ctkwindow.c:821
+#: ctk/ctkwindow.c:822
 msgid "If this window should be destroyed when the parent is destroyed"
 msgstr "אױב דער פֿענצטער זאָל זיך פֿאַרטיליקן װען זײַן טאַטע־מאַמע איז פֿאַרטיליקט"
 
-#: ctk/ctkwindow.c:834
+#: ctk/ctkwindow.c:835
 msgid "Hide the titlebar during maximization"
 msgstr ""
 
-#: ctk/ctkwindow.c:835
+#: ctk/ctkwindow.c:836
 #, fuzzy
 msgid "If this window's titlebar should be hidden when the window is maximized"
 msgstr "אױב דער פֿענצטער זאָל זיך פֿאַרטיליקן װען זײַן טאַטע־מאַמע איז פֿאַרטיליקט"
 
-#: ctk/ctkwindow.c:842
+#: ctk/ctkwindow.c:843
 msgid "Icon for this window"
 msgstr "דאָס בילדל פֿאַר דעם פֿענצטער"
 
-#: ctk/ctkwindow.c:858
+#: ctk/ctkwindow.c:859
 #, fuzzy
 msgid "Mnemonics Visible"
 msgstr "מנעמאָנישער קלאַװיש"
 
-#: ctk/ctkwindow.c:859
+#: ctk/ctkwindow.c:860
 #, fuzzy
 msgid "Whether mnemonics are currently visible in this window"
 msgstr "צי דאָס קאָפּ־מדרגה צעפּיכעסל איז דער איצט־אַקטיװער פֿענצטער"
 
-#: ctk/ctkwindow.c:875
+#: ctk/ctkwindow.c:876
 #, fuzzy
 msgid "Focus Visible"
 msgstr "זעעװדיקער לױפֿער"
 
-#: ctk/ctkwindow.c:876
+#: ctk/ctkwindow.c:877
 #, fuzzy
 msgid "Whether focus rectangles are currently visible in this window"
 msgstr "צי דאָס קאָפּ־מדרגה צעפּיכעסל איז דער איצט־אַקטיװער פֿענצטער"
 
-#: ctk/ctkwindow.c:891
+#: ctk/ctkwindow.c:892
 #, fuzzy
 msgid "Name of the themed icon for this window"
 msgstr "דאָס בילדל פֿאַר דעם פֿענצטער"
 
-#: ctk/ctkwindow.c:904
+#: ctk/ctkwindow.c:905
 msgid "Is Active"
 msgstr "אַקטיװ"
 
-#: ctk/ctkwindow.c:905
+#: ctk/ctkwindow.c:906
 msgid "Whether the toplevel is the current active window"
 msgstr "צי דאָס קאָפּ־מדרגה צעפּיכעסל איז דער איצט־אַקטיװער פֿענצטער"
 
-#: ctk/ctkwindow.c:911
+#: ctk/ctkwindow.c:912
 msgid "Focus in Toplevel"
 msgstr "פֿאָקוס אין קאָפּ־מדרגה צעפּיכעסל"
 
-#: ctk/ctkwindow.c:912
+#: ctk/ctkwindow.c:913
 msgid "Whether the input focus is within this CtkWindow"
 msgstr "צי דער אַרײַנשרײַב פֿאָקוס איז אין דעם־אָ Ctk פֿענצטער"
 
-#: ctk/ctkwindow.c:918
+#: ctk/ctkwindow.c:919
 msgid "Type hint"
 msgstr "סאָרט רמז"
 
-#: ctk/ctkwindow.c:919
+#: ctk/ctkwindow.c:920
 msgid ""
 "Hint to help the desktop environment understand what kind of window this is "
 "and how to treat it."
@@ -10302,132 +10302,132 @@ msgstr ""
 "רמז צו העלפֿן דעם עקראַנפֿלאַך־סבֿיבֿה פֿאַרשטײן װאָס פֿאַר אַ פֿענצטער ער זאָל זײַן און װי "
 "אים צו באַהאַנדלען"
 
-#: ctk/ctkwindow.c:926
+#: ctk/ctkwindow.c:927
 msgid "Skip taskbar"
 msgstr "היפּער איבער אַרבעט־װירע"
 
-#: ctk/ctkwindow.c:927
+#: ctk/ctkwindow.c:928
 msgid "TRUE if the window should not be in the task bar."
 msgstr "אױב „יאָ“, טאָר דער פֿענצטער ניט זײַן אין דער אַרבעט־װירע"
 
-#: ctk/ctkwindow.c:933
+#: ctk/ctkwindow.c:934
 msgid "Skip pager"
 msgstr "היפּער איבער בלעטערער"
 
-#: ctk/ctkwindow.c:934
+#: ctk/ctkwindow.c:935
 msgid "TRUE if the window should not be in the pager."
 msgstr "אױב „יאָ“, טאָר דער פֿענצטער ניט זײַן אינעם בלעטערער"
 
-#: ctk/ctkwindow.c:940
+#: ctk/ctkwindow.c:941
 msgid "Urgent"
 msgstr ""
 
-#: ctk/ctkwindow.c:941
+#: ctk/ctkwindow.c:942
 #, fuzzy
 msgid "TRUE if the window should be brought to the user's attention."
 msgstr "אױב „יאָ“, טאָר דער פֿענצטער ניט זײַן אינעם בלעטערער"
 
-#: ctk/ctkwindow.c:954
+#: ctk/ctkwindow.c:955
 #, fuzzy
 msgid "Accept focus"
 msgstr "איז פֿאָקוס"
 
-#: ctk/ctkwindow.c:955
+#: ctk/ctkwindow.c:956
 #, fuzzy
 msgid "TRUE if the window should receive the input focus."
 msgstr "אױב „יאָ“, טאָר דער פֿענצטער ניט זײַן אינעם בלעטערער"
 
-#: ctk/ctkwindow.c:968
+#: ctk/ctkwindow.c:969
 #, fuzzy
 msgid "Focus on map"
 msgstr "פֿאָקוס אין קאָפּ־מדרגה צעפּיכעסל"
 
-#: ctk/ctkwindow.c:969
+#: ctk/ctkwindow.c:970
 #, fuzzy
 msgid "TRUE if the window should receive the input focus when mapped."
 msgstr "אױב „יאָ“, טאָר דער פֿענצטער ניט זײַן אינעם בלעטערער"
 
-#: ctk/ctkwindow.c:982
+#: ctk/ctkwindow.c:983
 msgid "Decorated"
 msgstr ""
 
-#: ctk/ctkwindow.c:983
+#: ctk/ctkwindow.c:984
 #, fuzzy
 msgid "Whether the window should be decorated by the window manager"
 msgstr "אױב „יאָ“, טאָר דער פֿענצטער ניט זײַן אינעם בלעטערער"
 
-#: ctk/ctkwindow.c:996
+#: ctk/ctkwindow.c:997
 #, fuzzy
 msgid "Deletable"
 msgstr "סעלעקטירעװדיק"
 
-#: ctk/ctkwindow.c:997
+#: ctk/ctkwindow.c:998
 #, fuzzy
 msgid "Whether the window frame should have a close button"
 msgstr "אױב „יאָ“, טאָר דער פֿענצטער ניט זײַן אינעם בלעטערער"
 
-#: ctk/ctkwindow.c:1017
+#: ctk/ctkwindow.c:1018
 #, fuzzy
 msgid "Resize grip"
 msgstr "גרײס־סטרױערעװדיק"
 
-#: ctk/ctkwindow.c:1018
+#: ctk/ctkwindow.c:1019
 #, fuzzy
 msgid "Specifies whether the window should have a resize grip"
 msgstr "אױב „יאָ“, טאָר דער פֿענצטער ניט זײַן אינעם בלעטערער"
 
-#: ctk/ctkwindow.c:1033
+#: ctk/ctkwindow.c:1034
 msgid "Resize grip is visible"
 msgstr ""
 
-#: ctk/ctkwindow.c:1034
+#: ctk/ctkwindow.c:1035
 #, fuzzy
 msgid "Specifies whether the window's resize grip is visible."
 msgstr "אױב דאָס צעפּיכעסל איז זעעװדיק"
 
-#: ctk/ctkwindow.c:1048
+#: ctk/ctkwindow.c:1049
 msgid "Gravity"
 msgstr ""
 
-#: ctk/ctkwindow.c:1049
+#: ctk/ctkwindow.c:1050
 #, fuzzy
 msgid "The window gravity of the window"
 msgstr "דער סאָרט פֿונעם פֿענצטער"
 
-#: ctk/ctkwindow.c:1084
+#: ctk/ctkwindow.c:1085
 #, fuzzy
 msgid "Attached to Widget"
 msgstr "בילד־צעפּיכעסל"
 
-#: ctk/ctkwindow.c:1085
+#: ctk/ctkwindow.c:1086
 #, fuzzy
 msgid "The widget where the window is attached"
 msgstr "צי די מעניו־אײנס האָט אַ פֿײגעלע"
 
-#: ctk/ctkwindow.c:1091
+#: ctk/ctkwindow.c:1092
 msgid "Is maximized"
 msgstr ""
 
-#: ctk/ctkwindow.c:1092
+#: ctk/ctkwindow.c:1093
 #, fuzzy
 msgid "Whether the window is maximized"
 msgstr "אױב דאָס צעפּיכעסל איז זעעװדיק"
 
-#: ctk/ctkwindow.c:1113
+#: ctk/ctkwindow.c:1114
 #, fuzzy
 msgid "CtkApplication"
 msgstr "אַפּליקאַציע מאָלעװדיק"
 
-#: ctk/ctkwindow.c:1114
+#: ctk/ctkwindow.c:1115
 #, fuzzy
 msgid "The CtkApplication for the window"
 msgstr "די אָנהײב־פּאָזיציע פֿונעם פֿענצטער"
 
-#: ctk/ctkwindow.c:1124 ctk/ctkwindow.c:1125
+#: ctk/ctkwindow.c:1125 ctk/ctkwindow.c:1126
 msgid "Decorated button layout"
 msgstr ""
 
-#: ctk/ctkwindow.c:1131 ctk/ctkwindow.c:1132
+#: ctk/ctkwindow.c:1132 ctk/ctkwindow.c:1133
 msgid "Decoration resize handle size"
 msgstr ""
 

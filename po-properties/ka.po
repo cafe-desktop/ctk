@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ka\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-19 12:06+0100\n"
+"POT-Creation-Date: 2026-11-22 15:03+0100\n"
 "PO-Revision-Date: 2008-03-19 16:31+0100\n"
 "Last-Translator: Vladimer Sichinava ვლადიმერ სიჭინავა <vsichi@gnome.org>\n"
 "Language-Team: Georgian <http://mail.gnome.org/mailman/listinfo/gnome-ge-"
@@ -221,11 +221,11 @@ msgstr ""
 msgid "Minor version number"
 msgstr ""
 
-#: cdk/x11/cdkdevice-xi2.c:143
+#: cdk/x11/cdkdevice-xi2.c:144
 msgid "Device ID"
 msgstr ""
 
-#: cdk/x11/cdkdevice-xi2.c:144
+#: cdk/x11/cdkdevice-xi2.c:145
 msgid "Device identifier"
 msgstr ""
 
@@ -295,7 +295,7 @@ msgid "The GIcon being displayed"
 msgstr "ხატულების ნაკრები საჩვენებლად"
 
 #: ctk/ctkaction.c:341 ctk/ctkcellrendererpixbuf.c:245 ctk/ctkimage.c:341
-#: ctk/ctkprinter.c:170 ctk/ctkstatusicon.c:253 ctk/ctkwindow.c:890
+#: ctk/ctkprinter.c:170 ctk/ctkstatusicon.c:253 ctk/ctkwindow.c:891
 msgid "Icon Name"
 msgstr "ხატულას სახელი"
 
@@ -1465,8 +1465,8 @@ msgstr "მეორადი"
 
 #: ctk/ctkbbox.c:285
 msgid ""
-"If TRUE, the child appears in a secondary group of children, suitable for, e."
-"g., help buttons"
+"If TRUE, the child appears in a secondary group of children, suitable for, "
+"e.g., help buttons"
 msgstr ""
 "თუ მითითებულია, ქვეელემენტი სხვა ქვეელემენტების მეორად ჯგუფში გამოჩნდება.  "
 "მოსახერხებელია მაგ., დახმარების ღილაკებისთვის"
@@ -2076,8 +2076,8 @@ msgid "Has Entry"
 msgstr "შეიცავს ელემენტს"
 
 #: ctk/ctkcellrenderercombo.c:170
-msgid "If FALSE, don't allow to enter strings other than the chosen ones"
-msgstr "თუ არაა მითითებული, შესაძლებელია მხოლოდ შერჩეული ტექსტის მითითება"
+msgid "If FALSE, don't allow entering strings other than the chosen ones"
+msgstr ""
 
 #: ctk/ctkcellrendererpixbuf.c:152
 msgid "Pixbuf Object"
@@ -2146,7 +2146,7 @@ msgid "Whether the rendered pixbuf should be colorized according to the state"
 msgstr "გარდასახული pixbuf-ის სტატუსის მიხედვით დაფერვის ჩართვა/ამორთვა"
 
 #: ctk/ctkcellrendererpixbuf.c:281 ctk/ctkimage.c:357 ctk/ctkmodelbutton.c:1166
-#: ctk/ctkshortcutsshortcut.c:550 ctk/ctkwindow.c:841
+#: ctk/ctkshortcutsshortcut.c:550 ctk/ctkwindow.c:842
 msgid "Icon"
 msgstr "ხატულა"
 
@@ -3784,11 +3784,11 @@ msgid ""
 "collapsing"
 msgstr ""
 
-#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1672 ctk/ctktreeview.c:1234
+#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1672 ctk/ctktreeview.c:1240
 msgid "Expander Size"
 msgstr "გამფართოებლის ზომა"
 
-#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1673 ctk/ctktreeview.c:1235
+#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1673 ctk/ctktreeview.c:1241
 msgid "Size of the expander arrow"
 msgstr "გამფართოებლის ისრის ზომა"
 
@@ -3964,12 +3964,12 @@ msgid "The selection mode"
 msgstr "მონიშვნის რეჟიმი"
 
 #: ctk/ctkflowbox.c:3836 ctk/ctkiconview.c:665 ctk/ctklistbox.c:493
-#: ctk/ctktreeview.c:1220
+#: ctk/ctktreeview.c:1226
 msgid "Activate on Single Click"
 msgstr ""
 
 #: ctk/ctkflowbox.c:3837 ctk/ctkiconview.c:666 ctk/ctklistbox.c:494
-#: ctk/ctktreeview.c:1221
+#: ctk/ctktreeview.c:1227
 msgid "Activate row on a single click"
 msgstr ""
 
@@ -4434,15 +4434,15 @@ msgid ""
 "How the text and icon of each item are positioned relative to each other"
 msgstr "თითოეული ელემენტის ტექსტისა და ხატულას ურთიერთმიმართება"
 
-#: ctk/ctkiconview.c:605 ctk/ctktreeview.c:1059 ctk/ctktreeviewcolumn.c:351
+#: ctk/ctkiconview.c:605 ctk/ctktreeview.c:1065 ctk/ctktreeviewcolumn.c:351
 msgid "Reorderable"
 msgstr "გადაწყობადი"
 
-#: ctk/ctkiconview.c:606 ctk/ctktreeview.c:1060
+#: ctk/ctkiconview.c:606 ctk/ctktreeview.c:1066
 msgid "View is reorderable"
 msgstr "ჩვენების ელემენტების გადაწყობადობა"
 
-#: ctk/ctkiconview.c:613 ctk/ctktreeview.c:1204
+#: ctk/ctkiconview.c:613 ctk/ctktreeview.c:1210
 msgid "Tooltip Column"
 msgstr "კარნახის სვეტი"
 
@@ -4628,11 +4628,11 @@ msgid "Width of border around the action area"
 msgstr "მთავარი დიალოგის კონტურის სისქე"
 
 #: ctk/ctkinvisible.c:98 ctk/ctkmountoperation.c:183 ctk/ctkstatusicon.c:296
-#: ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:897
+#: ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:898
 msgid "Screen"
 msgstr "ეკრანი"
 
-#: ctk/ctkinvisible.c:99 ctk/ctkwindow.c:898
+#: ctk/ctkinvisible.c:99 ctk/ctkwindow.c:899
 msgid "The screen where this window will be displayed"
 msgstr "ეკრანი, რომელზეც ეს ფანჯარა გამოჩნდება"
 
@@ -5396,7 +5396,7 @@ msgstr "დიალოგი"
 msgid "The title of the file chooser dialog"
 msgstr "ფაილების არჩევის დიალოგის სახელი."
 
-#: ctk/ctknativedialog.c:228 ctk/ctkpopover.c:1782 ctk/ctkwindow.c:789
+#: ctk/ctknativedialog.c:228 ctk/ctkpopover.c:1782 ctk/ctkwindow.c:790
 msgid "Modal"
 msgstr "მოდალური"
 
@@ -5414,11 +5414,11 @@ msgstr ""
 msgid "Whether the dialog is currently visible"
 msgstr "მართვის ელემენტების ხილულობა"
 
-#: ctk/ctknativedialog.c:256 ctk/ctkwindow.c:1064
+#: ctk/ctknativedialog.c:256 ctk/ctkwindow.c:1065
 msgid "Transient for Window"
 msgstr ""
 
-#: ctk/ctknativedialog.c:257 ctk/ctkwindow.c:1065
+#: ctk/ctknativedialog.c:257 ctk/ctkwindow.c:1066
 #, fuzzy
 msgid "The transient parent of the dialog"
 msgstr "შეტყობინების დიალოგში ნაჩვენები ღილაკები"
@@ -9085,226 +9085,226 @@ msgstr "TreeModelSort მოდელი"
 msgid "The model for the TreeModelSort to sort"
 msgstr "TreeModelSort სორტირების მოდელი"
 
-#: ctk/ctktreeview.c:1031
+#: ctk/ctktreeview.c:1037
 msgid "TreeView Model"
 msgstr "TreeView მოდელი"
 
-#: ctk/ctktreeview.c:1032
+#: ctk/ctktreeview.c:1038
 msgid "The model for the tree view"
 msgstr "განტოტვილი ჩვენების მოდელი"
 
-#: ctk/ctktreeview.c:1038
+#: ctk/ctktreeview.c:1044
 msgid "Headers Visible"
 msgstr "თავსართები ხილულია"
 
-#: ctk/ctktreeview.c:1039
+#: ctk/ctktreeview.c:1045
 msgid "Show the column header buttons"
 msgstr "სვეტების თავსართების ღილაკების ჩვენება"
 
-#: ctk/ctktreeview.c:1045
+#: ctk/ctktreeview.c:1051
 msgid "Headers Clickable"
 msgstr "დაწკაპვადი თავსართები"
 
-#: ctk/ctktreeview.c:1046
+#: ctk/ctktreeview.c:1052
 msgid "Column headers respond to click events"
 msgstr "დაწკაპვისადმი მგრძნობიარე თავსართები"
 
-#: ctk/ctktreeview.c:1052
+#: ctk/ctktreeview.c:1058
 msgid "Expander Column"
 msgstr "გაფართოებადი სვეტი"
 
-#: ctk/ctktreeview.c:1053
+#: ctk/ctktreeview.c:1059
 msgid "Set the column for the expander column"
 msgstr "გაფართოებადი სვეტის მითითება"
 
-#: ctk/ctktreeview.c:1074
+#: ctk/ctktreeview.c:1080
 msgid "Rules Hint"
 msgstr "წესების კარნახი"
 
-#: ctk/ctktreeview.c:1075
+#: ctk/ctktreeview.c:1081
 msgid "Set a hint to the theme engine to draw rows in alternating colors"
 msgstr "კარნახი თემების ძრავისთვის მწკრივების ალტერნატული დაფერვისთვის"
 
-#: ctk/ctktreeview.c:1081
+#: ctk/ctktreeview.c:1087
 msgid "Enable Search"
 msgstr "ძიების ნებადართვა"
 
-#: ctk/ctktreeview.c:1082
+#: ctk/ctktreeview.c:1088
 msgid "View allows user to search through columns interactively"
 msgstr "ძიება სვეტების მიხედვით ინტერაქტიულ რეჟიმში"
 
-#: ctk/ctktreeview.c:1088
+#: ctk/ctktreeview.c:1094
 msgid "Search Column"
 msgstr "სვეტის ძიება"
 
-#: ctk/ctktreeview.c:1089
+#: ctk/ctktreeview.c:1095
 #, fuzzy
 msgid "Model column to search through during interactive search"
 msgstr "ძირითადი სვეტი, რომელშიც ძიება ხდება კოდის საშუალებით"
 
-#: ctk/ctktreeview.c:1107
+#: ctk/ctktreeview.c:1113
 msgid "Fixed Height Mode"
 msgstr "ფიქსირებული სიმაღლის რეჟიმი"
 
-#: ctk/ctktreeview.c:1108
+#: ctk/ctktreeview.c:1114
 msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
 msgstr ""
 "CtkTreeView მართვის ელემენტის დაჩქარება ყველა მწკრივის ერთი და იგივე "
 "სიმაღლის დაშვებით"
 
-#: ctk/ctktreeview.c:1127
+#: ctk/ctktreeview.c:1133
 msgid "Hover Selection"
 msgstr "თავისუფალი შერჩევა"
 
-#: ctk/ctktreeview.c:1128
+#: ctk/ctktreeview.c:1134
 msgid "Whether the selection should follow the pointer"
 msgstr "მონიშნულის თანმიდევნება მაჩვენებელზე"
 
-#: ctk/ctktreeview.c:1146
+#: ctk/ctktreeview.c:1152
 msgid "Hover Expand"
 msgstr "თავისუფალი გაფართოება"
 
-#: ctk/ctktreeview.c:1147
+#: ctk/ctktreeview.c:1153
 msgid ""
 "Whether rows should be expanded/collapsed when the pointer moves over them"
 msgstr "სტრიქონების გაშლა/შეკუმშვა მასზე მაჩვენებელი ისრის გადატარებისას"
 
-#: ctk/ctktreeview.c:1160
+#: ctk/ctktreeview.c:1166
 msgid "Show Expanders"
 msgstr "გაფართოების ელემენტების ჩვენება"
 
-#: ctk/ctktreeview.c:1161
+#: ctk/ctktreeview.c:1167
 #, fuzzy
 msgid "View has expanders"
 msgstr "გაფართოებადი"
 
-#: ctk/ctktreeview.c:1174
+#: ctk/ctktreeview.c:1180
 msgid "Level Indentation"
 msgstr ""
 
-#: ctk/ctktreeview.c:1175
+#: ctk/ctktreeview.c:1181
 msgid "Extra indentation for each level"
 msgstr ""
 
-#: ctk/ctktreeview.c:1182
+#: ctk/ctktreeview.c:1188
 msgid "Rubber Banding"
 msgstr ""
 
-#: ctk/ctktreeview.c:1183
+#: ctk/ctktreeview.c:1189
 #, fuzzy
 msgid ""
 "Whether to enable selection of multiple items by dragging the mouse pointer"
 msgstr "მრავალი ფაილის არჩევის დაშვება"
 
-#: ctk/ctktreeview.c:1189
+#: ctk/ctktreeview.c:1195
 #, fuzzy
 msgid "Enable Grid Lines"
 msgstr "ისრების გამოყენება"
 
-#: ctk/ctktreeview.c:1190
+#: ctk/ctktreeview.c:1196
 #, fuzzy
 msgid "Whether grid lines should be drawn in the tree view"
 msgstr "კონტურის ჩვენება"
 
-#: ctk/ctktreeview.c:1197
+#: ctk/ctktreeview.c:1203
 #, fuzzy
 msgid "Enable Tree Lines"
 msgstr "ისრების გამოყენება"
 
-#: ctk/ctktreeview.c:1198
+#: ctk/ctktreeview.c:1204
 #, fuzzy
 msgid "Whether tree lines should be drawn in the tree view"
 msgstr "კონტურის ჩვენება"
 
-#: ctk/ctktreeview.c:1205
+#: ctk/ctktreeview.c:1211
 #, fuzzy
 msgid "The column in the model containing the tooltip texts for the rows"
 msgstr "ტექსტის შემცველი სვეტი მონაცემთა მოდელში."
 
-#: ctk/ctktreeview.c:1243
+#: ctk/ctktreeview.c:1249
 msgid "Vertical Separator Width"
 msgstr "მართობული გამყოფის სიგანე"
 
-#: ctk/ctktreeview.c:1244
+#: ctk/ctktreeview.c:1250
 msgid "Vertical space between cells.  Must be an even number"
 msgstr "უჯრების მართობული გამყოფის სიგანე. უნდა იყოს ლუწი რიცხვი"
 
-#: ctk/ctktreeview.c:1252
+#: ctk/ctktreeview.c:1258
 msgid "Horizontal Separator Width"
 msgstr "განივი გამყოფის სიგანე"
 
-#: ctk/ctktreeview.c:1253
+#: ctk/ctktreeview.c:1259
 msgid "Horizontal space between cells.  Must be an even number"
 msgstr "უჯრების განივი გამყოფის სიგანე. უნდა იყოს ლუწი რიცხვი"
 
-#: ctk/ctktreeview.c:1261
+#: ctk/ctktreeview.c:1267
 msgid "Allow Rules"
 msgstr "წესების ნებადართვა"
 
-#: ctk/ctktreeview.c:1262
+#: ctk/ctktreeview.c:1268
 msgid "Allow drawing of alternating color rows"
 msgstr "მწკრივების სხვადასხვა დაფერვის ნებადართვა"
 
-#: ctk/ctktreeview.c:1268
+#: ctk/ctktreeview.c:1274
 msgid "Indent Expanders"
 msgstr "გამფართოებლის აბზაცი"
 
-#: ctk/ctktreeview.c:1269
+#: ctk/ctktreeview.c:1275
 msgid "Make the expanders indented"
 msgstr "გამფართოებელ ობიექტებში აბზაცის მითითება"
 
-#: ctk/ctktreeview.c:1275
+#: ctk/ctktreeview.c:1281
 msgid "Even Row Color"
 msgstr "ლუწი მწკრივების ფერი"
 
-#: ctk/ctktreeview.c:1276
+#: ctk/ctktreeview.c:1282
 msgid "Color to use for even rows"
 msgstr "ფერი ლუწი მწკრივების დასაფერად"
 
-#: ctk/ctktreeview.c:1282
+#: ctk/ctktreeview.c:1288
 msgid "Odd Row Color"
 msgstr "კენტი მწკრივების ფერი"
 
-#: ctk/ctktreeview.c:1283
+#: ctk/ctktreeview.c:1289
 msgid "Color to use for odd rows"
 msgstr "ფერი კენტი მწკრივების დასაფერად"
 
-#: ctk/ctktreeview.c:1290
+#: ctk/ctktreeview.c:1296
 #, fuzzy
 msgid "Grid line width"
 msgstr "მონაცემთა შეტანის ფოკუსირების ზოლის სიგანე"
 
-#: ctk/ctktreeview.c:1291
+#: ctk/ctktreeview.c:1297
 #, fuzzy
 msgid "Width, in pixels, of the tree view grid lines"
 msgstr "მონაცემთა შეტანის ფოკუსირების ზოლის სიგანე რასტრულ პიქსელებში"
 
-#: ctk/ctktreeview.c:1297
+#: ctk/ctktreeview.c:1303
 #, fuzzy
 msgid "Tree line width"
 msgstr "ფიქსირებული სიგანე"
 
-#: ctk/ctktreeview.c:1298
+#: ctk/ctktreeview.c:1304
 #, fuzzy
 msgid "Width, in pixels, of the tree view lines"
 msgstr "მონაცემთა შეტანის ფოკუსირების ზოლის სიგანე რასტრულ პიქსელებში"
 
-#: ctk/ctktreeview.c:1304
+#: ctk/ctktreeview.c:1310
 #, fuzzy
 msgid "Grid line pattern"
 msgstr "მონაცემთა შეტანის ფოკუსირების ზოლის დაშტრიხვა"
 
-#: ctk/ctktreeview.c:1305
+#: ctk/ctktreeview.c:1311
 #, fuzzy
 msgid "Dash pattern used to draw the tree view grid lines"
 msgstr "მონაცემთა შეტანის ფოკუსირების ზოლის დაშტრიხვის ნიმუში"
 
-#: ctk/ctktreeview.c:1311
+#: ctk/ctktreeview.c:1317
 #, fuzzy
 msgid "Tree line pattern"
 msgstr "მონაცემთა შეტანის ფოკუსირების ზოლის დაშტრიხვა"
 
-#: ctk/ctktreeview.c:1312
+#: ctk/ctktreeview.c:1318
 #, fuzzy
 msgid "Dash pattern used to draw the tree view lines"
 msgstr "მონაცემთა შეტანის ფოკუსირების ზოლის დაშტრიხვის ნიმუში"
@@ -9313,7 +9313,7 @@ msgstr "მონაცემთა შეტანის ფოკუსირ�
 msgid "Whether to display the column"
 msgstr "სვეტის ჩვენება"
 
-#: ctk/ctktreeviewcolumn.c:253 ctk/ctkwindow.c:782
+#: ctk/ctktreeviewcolumn.c:253 ctk/ctkwindow.c:783
 msgid "Resizable"
 msgstr "ცვლადი ზომით"
 
@@ -9898,45 +9898,45 @@ msgstr "რეგულატორის სიგანე"
 msgid "Height of text selection handles"
 msgstr "შრიფტის არჩევის დიალოგის სახელი."
 
-#: ctk/ctkwindow.c:744
+#: ctk/ctkwindow.c:745
 msgid "Window Type"
 msgstr "ფანჯრის ტიპი"
 
-#: ctk/ctkwindow.c:745
+#: ctk/ctkwindow.c:746
 msgid "The type of the window"
 msgstr "ფანჯრის ტიპიТип окна"
 
-#: ctk/ctkwindow.c:752
+#: ctk/ctkwindow.c:753
 msgid "Window Title"
 msgstr "ფანჯრის სათაური"
 
-#: ctk/ctkwindow.c:753
+#: ctk/ctkwindow.c:754
 msgid "The title of the window"
 msgstr "ფანჯრის სათაური"
 
-#: ctk/ctkwindow.c:759
+#: ctk/ctkwindow.c:760
 msgid "Window Role"
 msgstr "ფანჯრის როლი"
 
-#: ctk/ctkwindow.c:760
+#: ctk/ctkwindow.c:761
 msgid "Unique identifier for the window to be used when restoring a session"
 msgstr "ფანჯრის უნიკალური კოდი, რომელიც სეანსის აღდეგნისას გამოიყენება"
 
-#: ctk/ctkwindow.c:775
+#: ctk/ctkwindow.c:776
 #, fuzzy
 msgid "Startup ID"
 msgstr "ჯგუფი"
 
-#: ctk/ctkwindow.c:776
+#: ctk/ctkwindow.c:777
 #, fuzzy
 msgid "Unique startup identifier for the window used by startup-notification"
 msgstr "ფანჯრის უნიკალური კოდი, რომელიც სეანსის აღდეგნისას გამოიყენება"
 
-#: ctk/ctkwindow.c:783
+#: ctk/ctkwindow.c:784
 msgid "If TRUE, users can resize the window"
 msgstr "თუ მითითებულია, ფანჯრის ზომის შეცვლა შესაძლებელია"
 
-#: ctk/ctkwindow.c:790
+#: ctk/ctkwindow.c:791
 msgid ""
 "If TRUE, the window is modal (other windows are not usable while this one is "
 "up)"
@@ -9944,97 +9944,97 @@ msgstr ""
 "თუ მითითებულია, ფანჯარა მოდალურია (მის დახურვამდე სხვა ფანჯარებზე მიმართვა "
 "შუძლებელია)"
 
-#: ctk/ctkwindow.c:796
+#: ctk/ctkwindow.c:797
 msgid "Window Position"
 msgstr "ფანჯრის პოზიცია"
 
-#: ctk/ctkwindow.c:797
+#: ctk/ctkwindow.c:798
 msgid "The initial position of the window"
 msgstr "ფანჯრის საწყისი მდებარეობა"
 
-#: ctk/ctkwindow.c:804
+#: ctk/ctkwindow.c:805
 msgid "Default Width"
 msgstr "ნაგულისხმები სიგანე"
 
-#: ctk/ctkwindow.c:805
+#: ctk/ctkwindow.c:806
 msgid "The default width of the window, used when initially showing the window"
 msgstr "ფანჯრის ნაგულისხმები სიგანე ფანჯრის თავდაპირველად ჩვენებისას"
 
-#: ctk/ctkwindow.c:812
+#: ctk/ctkwindow.c:813
 msgid "Default Height"
 msgstr "ნაგულისხმები სიმაღლე"
 
-#: ctk/ctkwindow.c:813
+#: ctk/ctkwindow.c:814
 msgid ""
 "The default height of the window, used when initially showing the window"
 msgstr "ფანჯრის ნაგულისხმები სიმაღლე ფანჯრის თავდაპირველად ჩვენებისას"
 
-#: ctk/ctkwindow.c:820
+#: ctk/ctkwindow.c:821
 msgid "Destroy with Parent"
 msgstr "წაშლა ძირეულთან ერთად"
 
-#: ctk/ctkwindow.c:821
+#: ctk/ctkwindow.c:822
 msgid "If this window should be destroyed when the parent is destroyed"
 msgstr "ამ ფანჯრის წაშლა ძირეული ფანჯრის წაშლისას"
 
-#: ctk/ctkwindow.c:834
+#: ctk/ctkwindow.c:835
 msgid "Hide the titlebar during maximization"
 msgstr ""
 
-#: ctk/ctkwindow.c:835
+#: ctk/ctkwindow.c:836
 #, fuzzy
 msgid "If this window's titlebar should be hidden when the window is maximized"
 msgstr "ამ ფანჯრის წაშლა ძირეული ფანჯრის წაშლისას"
 
-#: ctk/ctkwindow.c:842
+#: ctk/ctkwindow.c:843
 msgid "Icon for this window"
 msgstr "ამ ფანჯრის ხატულა"
 
-#: ctk/ctkwindow.c:858
+#: ctk/ctkwindow.c:859
 #, fuzzy
 msgid "Mnemonics Visible"
 msgstr "მნემონური კლავიში"
 
-#: ctk/ctkwindow.c:859
+#: ctk/ctkwindow.c:860
 #, fuzzy
 msgid "Whether mnemonics are currently visible in this window"
 msgstr "მიმდინარე ფანჯრის აქტიურობა"
 
-#: ctk/ctkwindow.c:875
+#: ctk/ctkwindow.c:876
 #, fuzzy
 msgid "Focus Visible"
 msgstr "ხილული კურსორი"
 
-#: ctk/ctkwindow.c:876
+#: ctk/ctkwindow.c:877
 #, fuzzy
 msgid "Whether focus rectangles are currently visible in this window"
 msgstr "მიმდინარე ფანჯრის აქტიურობა"
 
-#: ctk/ctkwindow.c:891
+#: ctk/ctkwindow.c:892
 msgid "Name of the themed icon for this window"
 msgstr "ამ ფანჯრის ხატულას სახელი"
 
-#: ctk/ctkwindow.c:904
+#: ctk/ctkwindow.c:905
 msgid "Is Active"
 msgstr "აქტიურია"
 
-#: ctk/ctkwindow.c:905
+#: ctk/ctkwindow.c:906
 msgid "Whether the toplevel is the current active window"
 msgstr "მიმდინარე ფანჯრის აქტიურობა"
 
-#: ctk/ctkwindow.c:911
+#: ctk/ctkwindow.c:912
 msgid "Focus in Toplevel"
 msgstr "ფოკუსირება ფანჯარაზე"
 
-#: ctk/ctkwindow.c:912
+#: ctk/ctkwindow.c:913
 msgid "Whether the input focus is within this CtkWindow"
 msgstr "შეტანის ფოკუსის არსებობა მოცემულ CtkWindow ფანჯარაში"
 
-#: ctk/ctkwindow.c:918
+#: ctk/ctkwindow.c:919
 msgid "Type hint"
 msgstr "კარნახის ტიპი"
 
-#: ctk/ctkwindow.c:919
+#: ctk/ctkwindow.c:920
 msgid ""
 "Hint to help the desktop environment understand what kind of window this is "
 "and how to treat it."
@@ -10042,125 +10042,125 @@ msgstr ""
 "კარნახი (hint), რომელიც სამუშაო გარემოს საშუალება აძლევს განსაზღვროს რა "
 "ტიპისაა ფანჯარა და როგორ დამუშავდეს."
 
-#: ctk/ctkwindow.c:926
+#: ctk/ctkwindow.c:927
 msgid "Skip taskbar"
 msgstr "დამალვა ამოცანების პულტზე"
 
-#: ctk/ctkwindow.c:927
+#: ctk/ctkwindow.c:928
 msgid "TRUE if the window should not be in the task bar."
 msgstr "\"ჭეშმარიტი\", თუ ფანჯარა ამოცანების პულტზე არ უნდა ჩანდეს."
 
-#: ctk/ctkwindow.c:933
+#: ctk/ctkwindow.c:934
 msgid "Skip pager"
 msgstr "დამალვა სამუშაო პულტზე"
 
-#: ctk/ctkwindow.c:934
+#: ctk/ctkwindow.c:935
 msgid "TRUE if the window should not be in the pager."
 msgstr "\"ჭეშმარიტი\", თუ ფანჯარა სამუშაო პულტზე არ უნდა ჩანდეს."
 
-#: ctk/ctkwindow.c:940
+#: ctk/ctkwindow.c:941
 msgid "Urgent"
 msgstr "სასწრაფო"
 
-#: ctk/ctkwindow.c:941
+#: ctk/ctkwindow.c:942
 msgid "TRUE if the window should be brought to the user's attention."
 msgstr "\"ჭეშმარიტი\", თუ ფანჯარამ მომხმარებლის ყურადღება უნდა მიიქციოს."
 
-#: ctk/ctkwindow.c:954
+#: ctk/ctkwindow.c:955
 msgid "Accept focus"
 msgstr "ფოკუსის მიღება"
 
-#: ctk/ctkwindow.c:955
+#: ctk/ctkwindow.c:956
 msgid "TRUE if the window should receive the input focus."
 msgstr "თუ მითითებულია, ფანჯარა შეტანაზე ფოკუსირდება."
 
-#: ctk/ctkwindow.c:968
+#: ctk/ctkwindow.c:969
 msgid "Focus on map"
 msgstr "ფოკუსირება"
 
-#: ctk/ctkwindow.c:969
+#: ctk/ctkwindow.c:970
 msgid "TRUE if the window should receive the input focus when mapped."
 msgstr "თუ მითითებულია ფანჯარა შეტანის რეჟიმში იმუშავებს."
 
-#: ctk/ctkwindow.c:982
+#: ctk/ctkwindow.c:983
 msgid "Decorated"
 msgstr "გაფორმება"
 
-#: ctk/ctkwindow.c:983
+#: ctk/ctkwindow.c:984
 msgid "Whether the window should be decorated by the window manager"
 msgstr "ფანჯრის გაფორმება ფანჯრების მმართველის მიერ"
 
-#: ctk/ctkwindow.c:996
+#: ctk/ctkwindow.c:997
 #, fuzzy
 msgid "Deletable"
 msgstr "მონიშვნადი"
 
-#: ctk/ctkwindow.c:997
+#: ctk/ctkwindow.c:998
 #, fuzzy
 msgid "Whether the window frame should have a close button"
 msgstr "ფანჯრის გაფორმება ფანჯრების მმართველის მიერ"
 
-#: ctk/ctkwindow.c:1017
+#: ctk/ctkwindow.c:1018
 #, fuzzy
 msgid "Resize grip"
 msgstr "ზომის შეცვლის კუთხე"
 
-#: ctk/ctkwindow.c:1018
+#: ctk/ctkwindow.c:1019
 #, fuzzy
 msgid "Specifies whether the window should have a resize grip"
 msgstr "ფანჯრის გაფორმება ფანჯრების მმართველის მიერ"
 
-#: ctk/ctkwindow.c:1033
+#: ctk/ctkwindow.c:1034
 msgid "Resize grip is visible"
 msgstr ""
 
-#: ctk/ctkwindow.c:1034
+#: ctk/ctkwindow.c:1035
 #, fuzzy
 msgid "Specifies whether the window's resize grip is visible."
 msgstr "ქმედებების ჯგუფის ხილულობა."
 
-#: ctk/ctkwindow.c:1048
+#: ctk/ctkwindow.c:1049
 msgid "Gravity"
 msgstr "მიმართება"
 
-#: ctk/ctkwindow.c:1049
+#: ctk/ctkwindow.c:1050
 msgid "The window gravity of the window"
 msgstr "ფანჯრების ურთიერთმიმართება"
 
-#: ctk/ctkwindow.c:1084
+#: ctk/ctkwindow.c:1085
 #, fuzzy
 msgid "Attached to Widget"
 msgstr "მართვის დამატებითი ელემენტი"
 
-#: ctk/ctkwindow.c:1085
+#: ctk/ctkwindow.c:1086
 #, fuzzy
 msgid "The widget where the window is attached"
 msgstr "მენიუს ელემენტის გააქტივება"
 
-#: ctk/ctkwindow.c:1091
+#: ctk/ctkwindow.c:1092
 msgid "Is maximized"
 msgstr ""
 
-#: ctk/ctkwindow.c:1092
+#: ctk/ctkwindow.c:1093
 #, fuzzy
 msgid "Whether the window is maximized"
 msgstr "მართვის ელემენტების ხილულობა"
 
-#: ctk/ctkwindow.c:1113
+#: ctk/ctkwindow.c:1114
 #, fuzzy
 msgid "CtkApplication"
 msgstr "პროგრამული ასახვა"
 
-#: ctk/ctkwindow.c:1114
+#: ctk/ctkwindow.c:1115
 #, fuzzy
 msgid "The CtkApplication for the window"
 msgstr "ფანჯრის საწყისი მდებარეობა"
 
-#: ctk/ctkwindow.c:1124 ctk/ctkwindow.c:1125
+#: ctk/ctkwindow.c:1125 ctk/ctkwindow.c:1126
 msgid "Decorated button layout"
 msgstr ""
 
-#: ctk/ctkwindow.c:1131 ctk/ctkwindow.c:1132
+#: ctk/ctkwindow.c:1132 ctk/ctkwindow.c:1133
 msgid "Decoration resize handle size"
 msgstr ""
 

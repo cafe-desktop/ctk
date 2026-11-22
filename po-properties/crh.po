@@ -6,11 +6,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+-properties\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-19 12:06+0100\n"
+"POT-Creation-Date: 2026-11-22 15:03+0100\n"
 "PO-Revision-Date: 2012-04-16 01:48-0500\n"
 "Last-Translator: Reşat SABIQ <tilde.birlik@gmail.com>\n"
-"Language-Team: QIRIMTATARCA (Qırım Türkçesi) <tilde-birlik-meydan@lists."
-"sourceforge.net>\n"
+"Language-Team: QIRIMTATARCA (Qırım Türkçesi) <tilde-birlik-"
+"meydan@lists.sourceforge.net>\n"
 "Language: crh\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -243,11 +243,11 @@ msgstr ""
 msgid "Minor version number"
 msgstr ""
 
-#: cdk/x11/cdkdevice-xi2.c:143
+#: cdk/x11/cdkdevice-xi2.c:144
 msgid "Device ID"
 msgstr ""
 
-#: cdk/x11/cdkdevice-xi2.c:144
+#: cdk/x11/cdkdevice-xi2.c:145
 msgid "Device identifier"
 msgstr ""
 
@@ -320,7 +320,7 @@ msgstr "Kösterilgen GIcon"
 
 # ctk/ctkfontsel.c:185
 #: ctk/ctkaction.c:341 ctk/ctkcellrendererpixbuf.c:245 ctk/ctkimage.c:341
-#: ctk/ctkprinter.c:170 ctk/ctkstatusicon.c:253 ctk/ctkwindow.c:890
+#: ctk/ctkprinter.c:170 ctk/ctkstatusicon.c:253 ctk/ctkwindow.c:891
 msgid "Icon Name"
 msgstr "İşaretçik İsmi"
 
@@ -1653,8 +1653,8 @@ msgstr "Ekilemci"
 # ctk/ctkbbox.c:161
 #: ctk/ctkbbox.c:285
 msgid ""
-"If TRUE, the child appears in a secondary group of children, suitable for, e."
-"g., help buttons"
+"If TRUE, the child appears in a secondary group of children, suitable for, "
+"e.g., help buttons"
 msgstr ""
 "Eger DOĞRU ise; bala, balalarnıñ ekilemci zümresi içinde körünir, örnek "
 "olaraq yardım dögmeleri içün uyğundır"
@@ -2369,9 +2369,8 @@ msgid "Has Entry"
 msgstr "Kirildisi Bar"
 
 #: ctk/ctkcellrenderercombo.c:170
-msgid "If FALSE, don't allow to enter strings other than the chosen ones"
+msgid "If FALSE, don't allow entering strings other than the chosen ones"
 msgstr ""
-"Eger YAÑLIŞ ise, saylanğan olğanlarnıñ tışında başqa tizgilerni kirsettirme"
 
 # ctk/ctkcellrendererpixbuf.c:102 ctk/ctkcellrenderertextpixbuf.c:125
 #: ctk/ctkcellrendererpixbuf.c:152
@@ -2450,7 +2449,7 @@ msgstr ""
 "tüslendirilmeycegi"
 
 #: ctk/ctkcellrendererpixbuf.c:281 ctk/ctkimage.c:357 ctk/ctkmodelbutton.c:1166
-#: ctk/ctkshortcutsshortcut.c:550 ctk/ctkwindow.c:841
+#: ctk/ctkshortcutsshortcut.c:550 ctk/ctkwindow.c:842
 msgid "Icon"
 msgstr "İşaretçik"
 
@@ -4328,11 +4327,11 @@ msgid ""
 msgstr ""
 
 # ctk/ctktreeview.c:526
-#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1672 ctk/ctktreeview.c:1234
+#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1672 ctk/ctktreeview.c:1240
 msgid "Expander Size"
 msgstr "Kenişletici Ölçüsi"
 
-#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1673 ctk/ctktreeview.c:1235
+#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1673 ctk/ctktreeview.c:1241
 msgid "Size of the expander arrow"
 msgstr "Kenişletici oqunıñ ölçüsi"
 
@@ -4541,12 +4540,12 @@ msgid "The selection mode"
 msgstr "Saylam tarzı"
 
 #: ctk/ctkflowbox.c:3836 ctk/ctkiconview.c:665 ctk/ctklistbox.c:493
-#: ctk/ctktreeview.c:1220
+#: ctk/ctktreeview.c:1226
 msgid "Activate on Single Click"
 msgstr ""
 
 #: ctk/ctkflowbox.c:3837 ctk/ctkiconview.c:666 ctk/ctklistbox.c:494
-#: ctk/ctktreeview.c:1221
+#: ctk/ctktreeview.c:1227
 msgid "Activate row on a single click"
 msgstr ""
 
@@ -5085,16 +5084,16 @@ msgstr ""
 "Her unsurnıñ metin ve işaretçiginiñ bir-birine nisbeten nasıl mevamlanğanı"
 
 # ctk/ctktreeview.c:505 ctk/ctktreeviewcolumn.c:253
-#: ctk/ctkiconview.c:605 ctk/ctktreeview.c:1059 ctk/ctktreeviewcolumn.c:351
+#: ctk/ctkiconview.c:605 ctk/ctktreeview.c:1065 ctk/ctktreeviewcolumn.c:351
 msgid "Reorderable"
 msgstr "Kene sıralanabilir"
 
 # ctk/ctktreeview.c:506
-#: ctk/ctkiconview.c:606 ctk/ctktreeview.c:1060
+#: ctk/ctkiconview.c:606 ctk/ctktreeview.c:1066
 msgid "View is reorderable"
 msgstr "Körünim yañıdan sıralana bilir"
 
-#: ctk/ctkiconview.c:613 ctk/ctktreeview.c:1204
+#: ctk/ctkiconview.c:613 ctk/ctktreeview.c:1210
 msgid "Tooltip Column"
 msgstr "Alet-qaranesi Sutunı"
 
@@ -5298,11 +5297,11 @@ msgstr "Amel mesahasınıñ etrafındaki sıñırnıñ kenişligi"
 
 # ctk/ctkinputdialog.c:243
 #: ctk/ctkinvisible.c:98 ctk/ctkmountoperation.c:183 ctk/ctkstatusicon.c:296
-#: ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:897
+#: ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:898
 msgid "Screen"
 msgstr "Ekran"
 
-#: ctk/ctkinvisible.c:99 ctk/ctkwindow.c:898
+#: ctk/ctkinvisible.c:99 ctk/ctkwindow.c:899
 msgid "The screen where this window will be displayed"
 msgstr "Bu pencereniñ kösterilecegi ekran"
 
@@ -5325,8 +5324,8 @@ msgid ""
 "CtkLabel:xalign for that"
 msgstr ""
 "Etiket metniniñ satırlarınıñ bir-birine nisbeten hizalanması. Bu, etiketniñ "
-"tahsisi içerisinde hizalanmasını tesirlemez. Onıñ içün baqıñız: CtkMisc::"
-"xalign"
+"tahsisi içerisinde hizalanmasını tesirlemez. Onıñ içün baqıñız: "
+"CtkMisc::xalign"
 
 # ctk/ctklabel.c:236
 #: ctk/ctklabel.c:877
@@ -6154,7 +6153,7 @@ msgid "The title of the file chooser dialog"
 msgstr "Dosye saylavcı dialognıñ serlevhası."
 
 # ctk/ctkwindow.c:372
-#: ctk/ctknativedialog.c:228 ctk/ctkpopover.c:1782 ctk/ctkwindow.c:789
+#: ctk/ctknativedialog.c:228 ctk/ctkpopover.c:1782 ctk/ctkwindow.c:790
 msgid "Modal"
 msgstr "Modal"
 
@@ -6174,11 +6173,11 @@ msgstr ""
 msgid "Whether the dialog is currently visible"
 msgstr "Pencereçikniñ körünir olıp olmağanı"
 
-#: ctk/ctknativedialog.c:256 ctk/ctkwindow.c:1064
+#: ctk/ctknativedialog.c:256 ctk/ctkwindow.c:1065
 msgid "Transient for Window"
 msgstr "Pencere içün Keçici"
 
-#: ctk/ctknativedialog.c:257 ctk/ctkwindow.c:1065
+#: ctk/ctknativedialog.c:257 ctk/ctkwindow.c:1066
 msgid "The transient parent of the dialog"
 msgstr "Dialognıñ keçici olğan babası"
 
@@ -10332,127 +10331,127 @@ msgid "The model for the TreeModelSort to sort"
 msgstr "TreeModelSort içün sıralandırılacaq model"
 
 # ctk/ctktreeview.c:457
-#: ctk/ctktreeview.c:1031
+#: ctk/ctktreeview.c:1037
 msgid "TreeView Model"
 msgstr "TreeView Modeli"
 
 # ctk/ctktreeview.c:458
-#: ctk/ctktreeview.c:1032
+#: ctk/ctktreeview.c:1038
 msgid "The model for the tree view"
 msgstr "Terek körünimi içün model"
 
 # ctk/ctktreeview.c:489
-#: ctk/ctktreeview.c:1038
+#: ctk/ctktreeview.c:1044
 msgid "Headers Visible"
 msgstr "Başlıqlar Körünir"
 
 # ctk/ctktreeview.c:482
-#: ctk/ctktreeview.c:1039
+#: ctk/ctktreeview.c:1045
 msgid "Show the column header buttons"
 msgstr "Sutun başlığı dögmelerini köster"
 
 # ctk/ctktreeview.c:489
-#: ctk/ctktreeview.c:1045
+#: ctk/ctktreeview.c:1051
 msgid "Headers Clickable"
 msgstr "Başlıqlar Çertilebilir"
 
 # ctk/ctktreeview.c:490
-#: ctk/ctktreeview.c:1046
+#: ctk/ctktreeview.c:1052
 msgid "Column headers respond to click events"
 msgstr "Sutun başlıqları çertme vaqialarına cevap berir"
 
 # ctk/ctktreeview.c:497
-#: ctk/ctktreeview.c:1052
+#: ctk/ctktreeview.c:1058
 msgid "Expander Column"
 msgstr "Kenişletici Sutun"
 
 # ctk/ctktreeview.c:498
-#: ctk/ctktreeview.c:1053
+#: ctk/ctktreeview.c:1059
 msgid "Set the column for the expander column"
 msgstr "Sutunnı kenişletici sutun olaraq tesbit et"
 
 # ctk/ctktreeview.c:513
-#: ctk/ctktreeview.c:1074
+#: ctk/ctktreeview.c:1080
 msgid "Rules Hint"
 msgstr "Cedveller Kinayesi"
 
 # ctk/ctktreeview.c:514
-#: ctk/ctktreeview.c:1075
+#: ctk/ctktreeview.c:1081
 msgid "Set a hint to the theme engine to draw rows in alternating colors"
 msgstr ""
 "Saflarnı nevbetleşken tüslerde sızmaq içün tema motorına bir kinaye tesbit et"
 
-#: ctk/ctktreeview.c:1081
+#: ctk/ctktreeview.c:1087
 msgid "Enable Search"
 msgstr "Qıdırmanı Qabilleştir"
 
 # tüklü
-#: ctk/ctktreeview.c:1082
+#: ctk/ctktreeview.c:1088
 msgid "View allows user to search through columns interactively"
 msgstr "Körünim qullanıcığa sutunlarda tesirleşimli qıdırma izni berir"
 
-#: ctk/ctktreeview.c:1088
+#: ctk/ctktreeview.c:1094
 msgid "Search Column"
 msgstr "Qıdırma Sutunı"
 
-#: ctk/ctktreeview.c:1089
+#: ctk/ctktreeview.c:1095
 msgid "Model column to search through during interactive search"
 msgstr "Tesirleşimli qıdırma esnasında üzerinde qıdırılacaq sutun modeli"
 
 # ctk/ctkcellrenderer.c:179
-#: ctk/ctktreeview.c:1107
+#: ctk/ctktreeview.c:1113
 msgid "Fixed Height Mode"
 msgstr "Sabit Yükseklik Tarzı"
 
-#: ctk/ctktreeview.c:1108
+#: ctk/ctktreeview.c:1114
 msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
 msgstr ""
 "Saflarnıñ hepsiniñ aynı yükseklikte olğanını farz eterek CtkTreeView'ni "
 "sur'atlandırır"
 
-#: ctk/ctktreeview.c:1127
+#: ctk/ctktreeview.c:1133
 msgid "Hover Selection"
 msgstr "Avelenme Saylamı"
 
 # ctk/ctkcolorsel.c:1669
-#: ctk/ctktreeview.c:1128
+#: ctk/ctktreeview.c:1134
 msgid "Whether the selection should follow the pointer"
 msgstr "Saylamnıñ noqtacını taqip etip etmeycegi"
 
 # ctk/ctkpreview.c:134
-#: ctk/ctktreeview.c:1146
+#: ctk/ctktreeview.c:1152
 msgid "Hover Expand"
 msgstr "Avelenme Cayılması"
 
 # ctk/ctkpaned.c:126
-#: ctk/ctktreeview.c:1147
+#: ctk/ctktreeview.c:1153
 msgid ""
 "Whether rows should be expanded/collapsed when the pointer moves over them"
 msgstr ""
 "Saflarnıñ noqtacı üzerlerinden keçkende cayıldırılacağımı yoqsa "
 "eştirilecegimi"
 
-#: ctk/ctktreeview.c:1160
+#: ctk/ctktreeview.c:1166
 msgid "Show Expanders"
 msgstr "Cayıldırıcılarnı Köster"
 
-#: ctk/ctktreeview.c:1161
+#: ctk/ctktreeview.c:1167
 msgid "View has expanders"
 msgstr "Körünim cayıldırıcılarğa sahip"
 
-#: ctk/ctktreeview.c:1174
+#: ctk/ctktreeview.c:1180
 msgid "Level Indentation"
 msgstr "Seviye Kirintilemesi"
 
-#: ctk/ctktreeview.c:1175
+#: ctk/ctktreeview.c:1181
 msgid "Extra indentation for each level"
 msgstr "Her seviye içün ziyade kirintileme"
 
-#: ctk/ctktreeview.c:1182
+#: ctk/ctktreeview.c:1188
 msgid "Rubber Banding"
 msgstr "Silgiçleme"
 
-#: ctk/ctktreeview.c:1183
+#: ctk/ctktreeview.c:1189
 msgid ""
 "Whether to enable selection of multiple items by dragging the mouse pointer"
 msgstr ""
@@ -10460,115 +10459,115 @@ msgstr ""
 "qabilleştirilip qabilleştirilmeycegi"
 
 # ctk/ctkcombo.c:133
-#: ctk/ctktreeview.c:1189
+#: ctk/ctktreeview.c:1195
 msgid "Enable Grid Lines"
 msgstr "Izğara Sızıqlarını Qabilleştir"
 
 # ctk/ctknotebook.c:376
-#: ctk/ctktreeview.c:1190
+#: ctk/ctktreeview.c:1196
 msgid "Whether grid lines should be drawn in the tree view"
 msgstr "Terek körüniminde ızğara sızıqlarınıñ sızılıp sızılmaycağı"
 
 # ctk/ctkcombo.c:133
-#: ctk/ctktreeview.c:1197
+#: ctk/ctktreeview.c:1203
 msgid "Enable Tree Lines"
 msgstr "Terek Sızıqlarını Qabilleştir"
 
 # ctk/ctknotebook.c:376
-#: ctk/ctktreeview.c:1198
+#: ctk/ctktreeview.c:1204
 msgid "Whether tree lines should be drawn in the tree view"
 msgstr "Terek körüniminde terek sızıqlarınıñ sızılıp sızılmaycağı"
 
 # tüklü
-#: ctk/ctktreeview.c:1205
+#: ctk/ctktreeview.c:1211
 msgid "The column in the model containing the tooltip texts for the rows"
 msgstr "Saflar içün alet-qaranesi metinlerini derç etken modeldeki sutun"
 
 # ctk/ctktreeview.c:535
-#: ctk/ctktreeview.c:1243
+#: ctk/ctktreeview.c:1249
 msgid "Vertical Separator Width"
 msgstr "Vertikal Ayırğıç Kenişligi"
 
-#: ctk/ctktreeview.c:1244
+#: ctk/ctktreeview.c:1250
 msgid "Vertical space between cells.  Must be an even number"
 msgstr "Hüceyreler arasındaki vertikal boşluq.  Bir çift sayı olmalı"
 
 # ctk/ctktreeview.c:544
-#: ctk/ctktreeview.c:1252
+#: ctk/ctktreeview.c:1258
 msgid "Horizontal Separator Width"
 msgstr "Ufqiy Ayırğıç Kenişligi"
 
-#: ctk/ctktreeview.c:1253
+#: ctk/ctktreeview.c:1259
 msgid "Horizontal space between cells.  Must be an even number"
 msgstr "Hüceyreler arasındaki ufqiy boşluq.  Bir çift sayı olmalı"
 
-#: ctk/ctktreeview.c:1261
+#: ctk/ctktreeview.c:1267
 msgid "Allow Rules"
 msgstr "Cedvellerge İzin Ber"
 
-#: ctk/ctktreeview.c:1262
+#: ctk/ctktreeview.c:1268
 msgid "Allow drawing of alternating color rows"
 msgstr "Nevbetleşken tüslü saflarnı sızuvğa izin ber"
 
-#: ctk/ctktreeview.c:1268
+#: ctk/ctktreeview.c:1274
 msgid "Indent Expanders"
 msgstr "Cayıldırıcılarnı Kirintile"
 
-#: ctk/ctktreeview.c:1269
+#: ctk/ctktreeview.c:1275
 msgid "Make the expanders indented"
 msgstr "Cayıldırıcılarnı kirintilendir"
 
-#: ctk/ctktreeview.c:1275
+#: ctk/ctktreeview.c:1281
 msgid "Even Row Color"
 msgstr "Çift Saf Tüsü"
 
-#: ctk/ctktreeview.c:1276
+#: ctk/ctktreeview.c:1282
 msgid "Color to use for even rows"
 msgstr "Çift satırlar içün qullanılacaq tüs"
 
-#: ctk/ctktreeview.c:1282
+#: ctk/ctktreeview.c:1288
 msgid "Odd Row Color"
 msgstr "Tek Saf Tüsü"
 
-#: ctk/ctktreeview.c:1283
+#: ctk/ctktreeview.c:1289
 msgid "Color to use for odd rows"
 msgstr "Tek saflar içün qullanılacaq tüs"
 
-#: ctk/ctktreeview.c:1290
+#: ctk/ctktreeview.c:1296
 msgid "Grid line width"
 msgstr "Izğara sızığı kenişligi"
 
 # ctk/ctkwidget.c:1069
-#: ctk/ctktreeview.c:1291
+#: ctk/ctktreeview.c:1297
 msgid "Width, in pixels, of the tree view grid lines"
 msgstr "Terek körünimi ızğara sızıqları kenişligi, piksel cınsından"
 
 # ctk/ctkcellrenderer.c:168
-#: ctk/ctktreeview.c:1297
+#: ctk/ctktreeview.c:1303
 msgid "Tree line width"
 msgstr "Terek sızığı kenişligi"
 
 # ctk/ctkwidget.c:1069
-#: ctk/ctktreeview.c:1298
+#: ctk/ctktreeview.c:1304
 msgid "Width, in pixels, of the tree view lines"
 msgstr "Terek körünimi sızıqları kenişligi, piksel cınsından"
 
-#: ctk/ctktreeview.c:1304
+#: ctk/ctktreeview.c:1310
 msgid "Grid line pattern"
 msgstr "Izğara sızığı naqşı"
 
 # ctk/ctkwidget.c:1069
-#: ctk/ctktreeview.c:1305
+#: ctk/ctktreeview.c:1311
 msgid "Dash pattern used to draw the tree view grid lines"
 msgstr ""
 "Terek körünimi ızğara sızıqlarını sızğanda qullanılacaq çarpma-sızıq naqşı"
 
-#: ctk/ctktreeview.c:1311
+#: ctk/ctktreeview.c:1317
 msgid "Tree line pattern"
 msgstr "Terek sızığı naqşı"
 
 # ctk/ctkwidget.c:1069
-#: ctk/ctktreeview.c:1312
+#: ctk/ctktreeview.c:1318
 msgid "Dash pattern used to draw the tree view lines"
 msgstr ""
 "Terek körünimi terek sızıqlarını sızğanda qullanılacaq çarpma-sızıq naqşı"
@@ -10579,7 +10578,7 @@ msgid "Whether to display the column"
 msgstr "Sutunnıñ kösterilip kösterilmeycegi"
 
 # ctk/ctkwindow.c:364
-#: ctk/ctktreeviewcolumn.c:253 ctk/ctkwindow.c:782
+#: ctk/ctktreeviewcolumn.c:253 ctk/ctkwindow.c:783
 msgid "Resizable"
 msgstr "Kene-ölçülendirilebilir"
 
@@ -11245,52 +11244,52 @@ msgid "Height of text selection handles"
 msgstr "Hurufat saylamı dialogınıñ serlevhası"
 
 # ctk/ctkwindow.c:322
-#: ctk/ctkwindow.c:744
+#: ctk/ctkwindow.c:745
 msgid "Window Type"
 msgstr "Pencere Türü"
 
 # ctk/ctkwindow.c:323
-#: ctk/ctkwindow.c:745
+#: ctk/ctkwindow.c:746
 msgid "The type of the window"
 msgstr "Pencereniñ türü"
 
 # ctk/ctkwindow.c:332
-#: ctk/ctkwindow.c:752
+#: ctk/ctkwindow.c:753
 msgid "Window Title"
 msgstr "Pencere Serlevhası"
 
 # ctk/ctkwindow.c:333
-#: ctk/ctkwindow.c:753
+#: ctk/ctkwindow.c:754
 msgid "The title of the window"
 msgstr "Pencereniñ serlevhası"
 
 # ctk/ctkwindow.c:332
-#: ctk/ctkwindow.c:759
+#: ctk/ctkwindow.c:760
 msgid "Window Role"
 msgstr "Pencere Rolü"
 
-#: ctk/ctkwindow.c:760
+#: ctk/ctkwindow.c:761
 msgid "Unique identifier for the window to be used when restoring a session"
 msgstr ""
 "Oturım keri tiklengende qullanılacaq pencere içün emsalsiz kimliklendirici"
 
-#: ctk/ctkwindow.c:775
+#: ctk/ctkwindow.c:776
 msgid "Startup ID"
 msgstr "Başlanğıç Kimligi"
 
-#: ctk/ctkwindow.c:776
+#: ctk/ctkwindow.c:777
 msgid "Unique startup identifier for the window used by startup-notification"
 msgstr ""
 "Başlanğıç-tebliği (startup-notification) tarafından qullanılğan pencere içün "
 "emsalsiz başlanğıç kimliklendiricisi"
 
 # ctk/ctkwindow.c:365
-#: ctk/ctkwindow.c:783
+#: ctk/ctkwindow.c:784
 msgid "If TRUE, users can resize the window"
 msgstr "Eger DOĞRU ise, qullanıcılar pencere ölçüsini deñiştire bilir"
 
 # ctk/ctkwindow.c:373
-#: ctk/ctkwindow.c:790
+#: ctk/ctkwindow.c:791
 msgid ""
 "If TRUE, the window is modal (other windows are not usable while this one is "
 "up)"
@@ -11299,109 +11298,109 @@ msgstr ""
 "qullanılamaz)"
 
 # ctk/ctkwindow.c:380
-#: ctk/ctkwindow.c:796
+#: ctk/ctkwindow.c:797
 msgid "Window Position"
 msgstr "Pencere Mevamı"
 
 # ctk/ctkwindow.c:381
-#: ctk/ctkwindow.c:797
+#: ctk/ctkwindow.c:798
 msgid "The initial position of the window"
 msgstr "Pencereniñ başlanğıç mevamı"
 
 # ctk/ctkwindow.c:389
-#: ctk/ctkwindow.c:804
+#: ctk/ctkwindow.c:805
 msgid "Default Width"
 msgstr "Ög-belgilengen Kenişlik"
 
-#: ctk/ctkwindow.c:805
+#: ctk/ctkwindow.c:806
 msgid "The default width of the window, used when initially showing the window"
 msgstr ""
 "Pencere ilk kösterilgeninde qullanılğan, pencereniñ ög-belgilengen kenişligi"
 
 # ctk/ctkwindow.c:399
-#: ctk/ctkwindow.c:812
+#: ctk/ctkwindow.c:813
 msgid "Default Height"
 msgstr "Ög-belgilengen Yükseklik"
 
-#: ctk/ctkwindow.c:813
+#: ctk/ctkwindow.c:814
 msgid ""
 "The default height of the window, used when initially showing the window"
 msgstr ""
 "Pencere ilk kösterilgeninde qullanılğan, pencereniñ ög-belgilengen yüksekligi"
 
 # ctk/ctkwindow.c:409
-#: ctk/ctkwindow.c:820
+#: ctk/ctkwindow.c:821
 msgid "Destroy with Parent"
 msgstr "Baba ile yoq et"
 
 # ctk/ctkwindow.c:410
-#: ctk/ctkwindow.c:821
+#: ctk/ctkwindow.c:822
 msgid "If this window should be destroyed when the parent is destroyed"
 msgstr "Bu pencereniñ babası yoq etilgende yoq etilip etilmeycegi"
 
-#: ctk/ctkwindow.c:834
+#: ctk/ctkwindow.c:835
 msgid "Hide the titlebar during maximization"
 msgstr ""
 
 # ctk/ctkwindow.c:410
-#: ctk/ctkwindow.c:835
+#: ctk/ctkwindow.c:836
 #, fuzzy
 msgid "If this window's titlebar should be hidden when the window is maximized"
 msgstr "Bu pencereniñ babası yoq etilgende yoq etilip etilmeycegi"
 
-#: ctk/ctkwindow.c:842
+#: ctk/ctkwindow.c:843
 msgid "Icon for this window"
 msgstr "Bu pencere içün işaretçik"
 
 # ctk/ctklabel.c:258
-#: ctk/ctkwindow.c:858
+#: ctk/ctkwindow.c:859
 msgid "Mnemonics Visible"
 msgstr "Hatırlatıcılar Körüne"
 
 # ctk/ctkwidget.c:485
-#: ctk/ctkwindow.c:859
+#: ctk/ctkwindow.c:860
 msgid "Whether mnemonics are currently visible in this window"
 msgstr "Hatırlatıcılarnıñ hal-hazırda bu pencerede körünip körünmegeni"
 
 # ctk/ctktextview.c:616
-#: ctk/ctkwindow.c:875
+#: ctk/ctkwindow.c:876
 #, fuzzy
 msgid "Focus Visible"
 msgstr "İmleç Körünir"
 
 # ctk/ctkwidget.c:485
-#: ctk/ctkwindow.c:876
+#: ctk/ctkwindow.c:877
 #, fuzzy
 msgid "Whether focus rectangles are currently visible in this window"
 msgstr "Hatırlatıcılarnıñ hal-hazırda bu pencerede körünip körünmegeni"
 
-#: ctk/ctkwindow.c:891
+#: ctk/ctkwindow.c:892
 msgid "Name of the themed icon for this window"
 msgstr "Bu pencere içün temalı işaretçikniñ ismi"
 
 # ctk/ctkcheckmenuitem.c:114 ctk/ctktogglebutton.c:144
-#: ctk/ctkwindow.c:904
+#: ctk/ctkwindow.c:905
 msgid "Is Active"
 msgstr "Faaldir"
 
 # ctk/ctkwidget.c:485
-#: ctk/ctkwindow.c:905
+#: ctk/ctkwindow.c:906
 msgid "Whether the toplevel is the current active window"
 msgstr "Üst seviyeniñ hal-hazırda faal pencere olıp olmağanı"
 
-#: ctk/ctkwindow.c:911
+#: ctk/ctkwindow.c:912
 msgid "Focus in Toplevel"
 msgstr "Fokus Üst Seviyede"
 
-#: ctk/ctkwindow.c:912
+#: ctk/ctkwindow.c:913
 msgid "Whether the input focus is within this CtkWindow"
 msgstr "Kirdi fokusınıñ bu CtkWindow içerisinde olıp olmağanı"
 
-#: ctk/ctkwindow.c:918
+#: ctk/ctkwindow.c:919
 msgid "Type hint"
 msgstr "Tür kinayesi"
 
-#: ctk/ctkwindow.c:919
+#: ctk/ctkwindow.c:920
 msgid ""
 "Hint to help the desktop environment understand what kind of window this is "
 "and how to treat it."
@@ -11409,142 +11408,142 @@ msgstr ""
 "Masaüstü çevresiniñ bunıñ ne tür pencere olğanını ve onıñ nasıl muamele "
 "etilecegini añlavına yardım etmek içün kinaye."
 
-#: ctk/ctkwindow.c:926
+#: ctk/ctkwindow.c:927
 msgid "Skip taskbar"
 msgstr "Vazife çubuğını atla"
 
-#: ctk/ctkwindow.c:927
+#: ctk/ctkwindow.c:928
 msgid "TRUE if the window should not be in the task bar."
 msgstr "Pencereniñ vazife çubuğında olmayuvı lâzim ise, DOĞRU"
 
 # tüklü
-#: ctk/ctkwindow.c:933
+#: ctk/ctkwindow.c:934
 msgid "Skip pager"
 msgstr "Saifecini atla"
 
 # ctk/ctkpaned.c:126
-#: ctk/ctkwindow.c:934
+#: ctk/ctkwindow.c:935
 msgid "TRUE if the window should not be in the pager."
 msgstr "DOĞRU ise, pencereniñ saifecide olmayuvı lâzim."
 
-#: ctk/ctkwindow.c:940
+#: ctk/ctkwindow.c:941
 msgid "Urgent"
 msgstr "Acil"
 
 # ctk/ctkpaned.c:126
-#: ctk/ctkwindow.c:941
+#: ctk/ctkwindow.c:942
 msgid "TRUE if the window should be brought to the user's attention."
 msgstr "DOĞRU ise, pencereniñ qullanıcınıñ diqqatına ketirilüvi lâzim."
 
 # ctk/ctkwidget.c:470
-#: ctk/ctkwindow.c:954
+#: ctk/ctkwindow.c:955
 msgid "Accept focus"
 msgstr "Fokusnı qabul et"
 
 # ctk/ctkpaned.c:126
-#: ctk/ctkwindow.c:955
+#: ctk/ctkwindow.c:956
 msgid "TRUE if the window should receive the input focus."
 msgstr "DOĞRU ise pencereniñ kirdi fokusını qabul etüvi lâzim."
 
-#: ctk/ctkwindow.c:968
+#: ctk/ctkwindow.c:969
 msgid "Focus on map"
 msgstr "Haritalama üzerine fokuslan"
 
 # ctk/ctkpaned.c:126
-#: ctk/ctkwindow.c:969
+#: ctk/ctkwindow.c:970
 msgid "TRUE if the window should receive the input focus when mapped."
 msgstr ""
 "DOĞRU ise, haritalanğanında pencereniñ kirdi fokusını qabul etüvi lâzim."
 
-#: ctk/ctkwindow.c:982
+#: ctk/ctkwindow.c:983
 msgid "Decorated"
 msgstr "Bezeklengen"
 
 # ctk/ctkpaned.c:126
-#: ctk/ctkwindow.c:983
+#: ctk/ctkwindow.c:984
 msgid "Whether the window should be decorated by the window manager"
 msgstr "Pencereniñ pencere idarecisi tarafından bezeklenip bezeklenmeycegi"
 
 # ctk/ctklabel.c:251
-#: ctk/ctkwindow.c:996
+#: ctk/ctkwindow.c:997
 msgid "Deletable"
 msgstr "Silinebilir"
 
 # ctk/ctkpaned.c:126
-#: ctk/ctkwindow.c:997
+#: ctk/ctkwindow.c:998
 msgid "Whether the window frame should have a close button"
 msgstr "Pencere çerçivesiniñ qapatma dögmesine sahip olıp olmaycağı"
 
 # tüklü
-#: ctk/ctkwindow.c:1017
+#: ctk/ctkwindow.c:1018
 #, fuzzy
 msgid "Resize grip"
 msgstr "Kene-ölçülendirme Sıqqıçı Bar"
 
 # ctk/ctkpaned.c:126
-#: ctk/ctkwindow.c:1018
+#: ctk/ctkwindow.c:1019
 #, fuzzy
 msgid "Specifies whether the window should have a resize grip"
 msgstr "Pencere çerçivesiniñ qapatma dögmesine sahip olıp olmaycağı"
 
-#: ctk/ctkwindow.c:1033
+#: ctk/ctkwindow.c:1034
 msgid "Resize grip is visible"
 msgstr ""
 
 # ctk/ctkwidget.c:443
-#: ctk/ctkwindow.c:1034
+#: ctk/ctkwindow.c:1035
 #, fuzzy
 msgid "Specifies whether the window's resize grip is visible."
 msgstr "Amel zümresiniñ körünir olıp olmağanı."
 
-#: ctk/ctkwindow.c:1048
+#: ctk/ctkwindow.c:1049
 msgid "Gravity"
 msgstr "Çekim"
 
 # ctk/ctkwindow.c:323
-#: ctk/ctkwindow.c:1049
+#: ctk/ctkwindow.c:1050
 msgid "The window gravity of the window"
 msgstr "Pencereniñ pencere çekimi"
 
 # ctk/ctkimagemenuitem.c:124
-#: ctk/ctkwindow.c:1084
+#: ctk/ctkwindow.c:1085
 #, fuzzy
 msgid "Attached to Widget"
 msgstr "İlişilgen Pencereçik"
 
 # ctk/ctkcheckmenuitem.c:115
-#: ctk/ctkwindow.c:1085
+#: ctk/ctkwindow.c:1086
 #, fuzzy
 msgid "The widget where the window is attached"
 msgstr "Menüniñ yanına ilişkeni pencereçik"
 
-#: ctk/ctkwindow.c:1091
+#: ctk/ctkwindow.c:1092
 msgid "Is maximized"
 msgstr ""
 
 # ctk/ctkwidget.c:443
-#: ctk/ctkwindow.c:1092
+#: ctk/ctkwindow.c:1093
 #, fuzzy
 msgid "Whether the window is maximized"
 msgstr "Pencereçikniñ körünir olıp olmağanı"
 
 # ctk/ctkwidget.c:456
-#: ctk/ctkwindow.c:1113
+#: ctk/ctkwindow.c:1114
 #, fuzzy
 msgid "CtkApplication"
 msgstr "Uyğulamaca boyalanabilir"
 
 # ctk/ctkwindow.c:381
-#: ctk/ctkwindow.c:1114
+#: ctk/ctkwindow.c:1115
 #, fuzzy
 msgid "The CtkApplication for the window"
 msgstr "Pencereniñ başlanğıç mevamı"
 
-#: ctk/ctkwindow.c:1124 ctk/ctkwindow.c:1125
+#: ctk/ctkwindow.c:1125 ctk/ctkwindow.c:1126
 msgid "Decorated button layout"
 msgstr ""
 
-#: ctk/ctkwindow.c:1131 ctk/ctkwindow.c:1132
+#: ctk/ctkwindow.c:1132 ctk/ctkwindow.c:1133
 msgid "Decoration resize handle size"
 msgstr ""
 

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+_properties HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-19 12:06+0100\n"
+"POT-Creation-Date: 2026-11-22 15:03+0100\n"
 "PO-Revision-Date: 2016-05-06 20:30+0200\n"
 "Last-Translator: Cédric Valmary (totenoc.eu) <cvalmary@yahoo.fr>\n"
 "Language-Team: Tot En Òc\n"
@@ -205,11 +205,11 @@ msgstr "Menor"
 msgid "Minor version number"
 msgstr "Numèro de version menor"
 
-#: cdk/x11/cdkdevice-xi2.c:143
+#: cdk/x11/cdkdevice-xi2.c:144
 msgid "Device ID"
 msgstr "ID del periferic"
 
-#: cdk/x11/cdkdevice-xi2.c:144
+#: cdk/x11/cdkdevice-xi2.c:145
 msgid "Device identifier"
 msgstr "Identificant del periferic"
 
@@ -279,7 +279,7 @@ msgid "The GIcon being displayed"
 msgstr "L'objècte « GIcon » afichat"
 
 #: ctk/ctkaction.c:341 ctk/ctkcellrendererpixbuf.c:245 ctk/ctkimage.c:341
-#: ctk/ctkprinter.c:170 ctk/ctkstatusicon.c:253 ctk/ctkwindow.c:890
+#: ctk/ctkprinter.c:170 ctk/ctkstatusicon.c:253 ctk/ctkwindow.c:891
 msgid "Icon Name"
 msgstr "Nom de l'icòna"
 
@@ -1431,8 +1431,8 @@ msgstr "Derivat"
 
 #: ctk/ctkbbox.c:285
 msgid ""
-"If TRUE, the child appears in a secondary group of children, suitable for, e."
-"g., help buttons"
+"If TRUE, the child appears in a secondary group of children, suitable for, "
+"e.g., help buttons"
 msgstr ""
 "Se verai (TRUE), l'element enfant apareis dins un grop derivat, conven per "
 "ex. per de botons d'ajuda"
@@ -2035,10 +2035,8 @@ msgid "Has Entry"
 msgstr "Accèpta una picada"
 
 #: ctk/ctkcellrenderercombo.c:170
-msgid "If FALSE, don't allow to enter strings other than the chosen ones"
+msgid "If FALSE, don't allow entering strings other than the chosen ones"
 msgstr ""
-"Se fals (FALSE), la picada de valors autras que las que son definidas dins "
-"lo modèl es pas autorizada"
 
 #: ctk/ctkcellrendererpixbuf.c:152
 msgid "Pixbuf Object"
@@ -2106,7 +2104,7 @@ msgid "Whether the rendered pixbuf should be colorized according to the state"
 msgstr "Indica se lo pixbuf afichat deu èsser colorizat segon son estat"
 
 #: ctk/ctkcellrendererpixbuf.c:281 ctk/ctkimage.c:357 ctk/ctkmodelbutton.c:1166
-#: ctk/ctkshortcutsshortcut.c:550 ctk/ctkwindow.c:841
+#: ctk/ctkshortcutsshortcut.c:550 ctk/ctkwindow.c:842
 msgid "Icon"
 msgstr "Icòna"
 
@@ -3713,11 +3711,11 @@ msgstr ""
 "Indica se l'icòna d'extension redimensiona la fenèstra de primièr nivèl al "
 "moment de l'extension e del replec"
 
-#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1672 ctk/ctktreeview.c:1234
+#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1672 ctk/ctktreeview.c:1240
 msgid "Expander Size"
 msgstr "Talha de l'icòna d'extension"
 
-#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1673 ctk/ctktreeview.c:1235
+#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1673 ctk/ctktreeview.c:1241
 msgid "Size of the expander arrow"
 msgstr "La talha de la sageta de l'icòna d'extension"
 
@@ -3901,12 +3899,12 @@ msgid "The selection mode"
 msgstr "Lo mòde de seleccion"
 
 #: ctk/ctkflowbox.c:3836 ctk/ctkiconview.c:665 ctk/ctklistbox.c:493
-#: ctk/ctktreeview.c:1220
+#: ctk/ctktreeview.c:1226
 msgid "Activate on Single Click"
 msgstr "Activar al simple clic"
 
 #: ctk/ctkflowbox.c:3837 ctk/ctkiconview.c:666 ctk/ctklistbox.c:494
-#: ctk/ctktreeview.c:1221
+#: ctk/ctktreeview.c:1227
 msgid "Activate row on a single click"
 msgstr "Activa la linha sus un simple clic"
 
@@ -4346,15 +4344,15 @@ msgid ""
 "How the text and icon of each item are positioned relative to each other"
 msgstr "Definís la posicion relativa del tèxte e de l'icòna de cada element"
 
-#: ctk/ctkiconview.c:605 ctk/ctktreeview.c:1059 ctk/ctktreeviewcolumn.c:351
+#: ctk/ctkiconview.c:605 ctk/ctktreeview.c:1065 ctk/ctktreeviewcolumn.c:351
 msgid "Reorderable"
 msgstr "Reorganizable"
 
-#: ctk/ctkiconview.c:606 ctk/ctktreeview.c:1060
+#: ctk/ctkiconview.c:606 ctk/ctktreeview.c:1066
 msgid "View is reorderable"
 msgstr "La vista pòt èsser reorganizada"
 
-#: ctk/ctkiconview.c:613 ctk/ctktreeview.c:1204
+#: ctk/ctkiconview.c:613 ctk/ctktreeview.c:1210
 msgid "Tooltip Column"
 msgstr "Colomna d'infobulla"
 
@@ -4531,11 +4529,11 @@ msgid "Width of border around the action area"
 msgstr "Largor de la bordadura a l'entorn de la zòna d'accions"
 
 #: ctk/ctkinvisible.c:98 ctk/ctkmountoperation.c:183 ctk/ctkstatusicon.c:296
-#: ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:897
+#: ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:898
 msgid "Screen"
 msgstr "Ecran"
 
-#: ctk/ctkinvisible.c:99 ctk/ctkwindow.c:898
+#: ctk/ctkinvisible.c:99 ctk/ctkwindow.c:899
 msgid "The screen where this window will be displayed"
 msgstr "L'ecran sul qual aquesta fenèstra serà afichada"
 
@@ -5272,7 +5270,7 @@ msgstr "Bóstia de dialòg"
 msgid "The title of the file chooser dialog"
 msgstr "Lo títol de la bóstia de dialòg de seleccion de fichièr."
 
-#: ctk/ctknativedialog.c:228 ctk/ctkpopover.c:1782 ctk/ctkwindow.c:789
+#: ctk/ctknativedialog.c:228 ctk/ctkpopover.c:1782 ctk/ctkwindow.c:790
 msgid "Modal"
 msgstr "Modala"
 
@@ -5290,11 +5288,11 @@ msgstr ""
 msgid "Whether the dialog is currently visible"
 msgstr "Indica se l'element grafic es visible"
 
-#: ctk/ctknativedialog.c:256 ctk/ctkwindow.c:1064
+#: ctk/ctknativedialog.c:256 ctk/ctkwindow.c:1065
 msgid "Transient for Window"
 msgstr "Fenèstra parenta transitòria"
 
-#: ctk/ctknativedialog.c:257 ctk/ctkwindow.c:1065
+#: ctk/ctknativedialog.c:257 ctk/ctkwindow.c:1066
 msgid "The transient parent of the dialog"
 msgstr "La fenèstra parenta transitòria de la bóstia de dialòg"
 
@@ -8930,228 +8928,228 @@ msgstr "Modèl TreeModelSort"
 msgid "The model for the TreeModelSort to sort"
 msgstr "Modèl per un TreeModelSort triable"
 
-#: ctk/ctktreeview.c:1031
+#: ctk/ctktreeview.c:1037
 msgid "TreeView Model"
 msgstr "Modèl TreeView"
 
-#: ctk/ctktreeview.c:1032
+#: ctk/ctktreeview.c:1038
 msgid "The model for the tree view"
 msgstr "Modèl de la vista arborescenta"
 
-#: ctk/ctktreeview.c:1038
+#: ctk/ctktreeview.c:1044
 msgid "Headers Visible"
 msgstr "Entèstas visiblas"
 
-#: ctk/ctktreeview.c:1039
+#: ctk/ctktreeview.c:1045
 msgid "Show the column header buttons"
 msgstr "Aficha los botons d'entèsta de colomna"
 
-#: ctk/ctktreeview.c:1045
+#: ctk/ctktreeview.c:1051
 msgid "Headers Clickable"
 msgstr "Entèstas clicablas"
 
-#: ctk/ctktreeview.c:1046
+#: ctk/ctktreeview.c:1052
 msgid "Column headers respond to click events"
 msgstr "Las entèstas de colomnas respondon als clics"
 
-#: ctk/ctktreeview.c:1052
+#: ctk/ctktreeview.c:1058
 msgid "Expander Column"
 msgstr "Colomna d'extension"
 
-#: ctk/ctktreeview.c:1053
+#: ctk/ctktreeview.c:1059
 msgid "Set the column for the expander column"
 msgstr "Definís la colomna per las icònas d'extension"
 
-#: ctk/ctktreeview.c:1074
+#: ctk/ctktreeview.c:1080
 msgid "Rules Hint"
 msgstr "Indicacion de las linhas"
 
-#: ctk/ctktreeview.c:1075
+#: ctk/ctktreeview.c:1081
 msgid "Set a hint to the theme engine to draw rows in alternating colors"
 msgstr ""
 "Dona una indicacion al motor del tèma per dessenhar las linhas amb de colors "
 "alternadas"
 
-#: ctk/ctktreeview.c:1081
+#: ctk/ctktreeview.c:1087
 msgid "Enable Search"
 msgstr "Activar la recèrca"
 
-#: ctk/ctktreeview.c:1082
+#: ctk/ctktreeview.c:1088
 msgid "View allows user to search through columns interactively"
 msgstr ""
 "La vista permet a l'utilizaire de far una recèrca interactiva dins las "
 "colomnas"
 
-#: ctk/ctktreeview.c:1088
+#: ctk/ctktreeview.c:1094
 msgid "Search Column"
 msgstr "Colomna de recèrca"
 
-#: ctk/ctktreeview.c:1089
+#: ctk/ctktreeview.c:1095
 msgid "Model column to search through during interactive search"
 msgstr ""
 "Colomna de modèl dins la quala efectuar la recèrca al moment d'una recèrca "
 "interactiva"
 
-#: ctk/ctktreeview.c:1107
+#: ctk/ctktreeview.c:1113
 msgid "Fixed Height Mode"
 msgstr "Mòde nautor fixa"
 
-#: ctk/ctktreeview.c:1108
+#: ctk/ctktreeview.c:1114
 msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
 msgstr ""
 "Accelèra lo rendut de l'objècte CtkTreeView en supausant que totas las "
 "linhas an lo meteis nautor"
 
-#: ctk/ctktreeview.c:1127
+#: ctk/ctktreeview.c:1133
 msgid "Hover Selection"
 msgstr "Seleccion per susvòl"
 
-#: ctk/ctktreeview.c:1128
+#: ctk/ctktreeview.c:1134
 msgid "Whether the selection should follow the pointer"
 msgstr "Indica se la seleccion deu seguir lo puntador"
 
-#: ctk/ctktreeview.c:1146
+#: ctk/ctktreeview.c:1152
 msgid "Hover Expand"
 msgstr "Espandiment per susvòl"
 
-#: ctk/ctktreeview.c:1147
+#: ctk/ctktreeview.c:1153
 msgid ""
 "Whether rows should be expanded/collapsed when the pointer moves over them"
 msgstr ""
 "Indica se las linhas devon èsser desvolopadas/replegadas quand lo puntador "
 "passe en dessús d'elas"
 
-#: ctk/ctktreeview.c:1160
+#: ctk/ctktreeview.c:1166
 msgid "Show Expanders"
 msgstr "Afichar las icònas d'extension"
 
-#: ctk/ctktreeview.c:1161
+#: ctk/ctktreeview.c:1167
 msgid "View has expanders"
 msgstr "La vista a d'icònas d'extension"
 
-#: ctk/ctktreeview.c:1174
+#: ctk/ctktreeview.c:1180
 msgid "Level Indentation"
 msgstr "Indentacion ierarquica"
 
-#: ctk/ctktreeview.c:1175
+#: ctk/ctktreeview.c:1181
 msgid "Extra indentation for each level"
 msgstr "Indentacion suplementària per cada nivèl"
 
-#: ctk/ctktreeview.c:1182
+#: ctk/ctktreeview.c:1188
 msgid "Rubber Banding"
 msgstr "Estaca elastica"
 
-#: ctk/ctktreeview.c:1183
+#: ctk/ctktreeview.c:1189
 msgid ""
 "Whether to enable selection of multiple items by dragging the mouse pointer"
 msgstr ""
 "Indica se cal activar la seleccion de mantun element en fasent lisar lo "
 "puntador de mirga"
 
-#: ctk/ctktreeview.c:1189
+#: ctk/ctktreeview.c:1195
 msgid "Enable Grid Lines"
 msgstr "Activar lo traçat de las linhas"
 
-#: ctk/ctktreeview.c:1190
+#: ctk/ctktreeview.c:1196
 msgid "Whether grid lines should be drawn in the tree view"
 msgstr ""
 "Indica se las linhas de la grasilha devon èsser traçadas dins la vista "
 "arborescenta"
 
-#: ctk/ctktreeview.c:1197
+#: ctk/ctktreeview.c:1203
 msgid "Enable Tree Lines"
 msgstr "Activar las linhas d'arborescéncia"
 
-#: ctk/ctktreeview.c:1198
+#: ctk/ctktreeview.c:1204
 msgid "Whether tree lines should be drawn in the tree view"
 msgstr ""
 "Indica se las linhas de las ierarquias de l'arborescéncia devon èsser "
 "traçadas"
 
-#: ctk/ctktreeview.c:1205
+#: ctk/ctktreeview.c:1211
 msgid "The column in the model containing the tooltip texts for the rows"
 msgstr ""
 "La colomna del modèl que conten los tèxtes de las infobullas per las linhas"
 
-#: ctk/ctktreeview.c:1243
+#: ctk/ctktreeview.c:1249
 msgid "Vertical Separator Width"
 msgstr "Largor de separacion verticala"
 
-#: ctk/ctktreeview.c:1244
+#: ctk/ctktreeview.c:1250
 msgid "Vertical space between cells.  Must be an even number"
 msgstr "Espaçament vertical entre cellulas. Deu èsser un nombre par"
 
-#: ctk/ctktreeview.c:1252
+#: ctk/ctktreeview.c:1258
 msgid "Horizontal Separator Width"
 msgstr "Largor de separacion orizontala"
 
-#: ctk/ctktreeview.c:1253
+#: ctk/ctktreeview.c:1259
 msgid "Horizontal space between cells.  Must be an even number"
 msgstr "Espaçament orizontal entre cellulas. Deu èsser un nombre par"
 
-#: ctk/ctktreeview.c:1261
+#: ctk/ctktreeview.c:1267
 msgid "Allow Rules"
 msgstr "Autorizar las linhas"
 
-#: ctk/ctktreeview.c:1262
+#: ctk/ctktreeview.c:1268
 msgid "Allow drawing of alternating color rows"
 msgstr "Autorizar lo traçat de linhas en colors alternadas"
 
-#: ctk/ctktreeview.c:1268
+#: ctk/ctktreeview.c:1274
 msgid "Indent Expanders"
 msgstr "Indentar las icònas d'extension"
 
-#: ctk/ctktreeview.c:1269
+#: ctk/ctktreeview.c:1275
 msgid "Make the expanders indented"
 msgstr "Indenta las icònas d'extension"
 
-#: ctk/ctktreeview.c:1275
+#: ctk/ctktreeview.c:1281
 msgid "Even Row Color"
 msgstr "Color de las linhas paras"
 
-#: ctk/ctktreeview.c:1276
+#: ctk/ctktreeview.c:1282
 msgid "Color to use for even rows"
 msgstr "Color d'utilizar per las linhas paras"
 
-#: ctk/ctktreeview.c:1282
+#: ctk/ctktreeview.c:1288
 msgid "Odd Row Color"
 msgstr "Color de las linhas imparas"
 
-#: ctk/ctktreeview.c:1283
+#: ctk/ctktreeview.c:1289
 msgid "Color to use for odd rows"
 msgstr "Color d'utilizar per las linhas imparas"
 
-#: ctk/ctktreeview.c:1290
+#: ctk/ctktreeview.c:1296
 msgid "Grid line width"
 msgstr "Largor de las linhas de grasilha"
 
-#: ctk/ctktreeview.c:1291
+#: ctk/ctktreeview.c:1297
 msgid "Width, in pixels, of the tree view grid lines"
 msgstr "Largor, en pixèls, de las linhas de la grasilha d'arborescéncia"
 
-#: ctk/ctktreeview.c:1297
+#: ctk/ctktreeview.c:1303
 msgid "Tree line width"
 msgstr "Largor de las linhas d'arborescéncia"
 
-#: ctk/ctktreeview.c:1298
+#: ctk/ctktreeview.c:1304
 msgid "Width, in pixels, of the tree view lines"
 msgstr "Largor, en pixèls, de las linhas d'arborescéncia"
 
-#: ctk/ctktreeview.c:1304
+#: ctk/ctktreeview.c:1310
 msgid "Grid line pattern"
 msgstr "Motiu de las linhas de grasilha"
 
-#: ctk/ctktreeview.c:1305
+#: ctk/ctktreeview.c:1311
 msgid "Dash pattern used to draw the tree view grid lines"
 msgstr ""
 "Motiu de puntilhats utilizat per dessenhar las linhas de grasilha de "
 "l'arborescéncia"
 
-#: ctk/ctktreeview.c:1311
+#: ctk/ctktreeview.c:1317
 msgid "Tree line pattern"
 msgstr "Motiu de las linhas d'arborescéncia"
 
-#: ctk/ctktreeview.c:1312
+#: ctk/ctktreeview.c:1318
 msgid "Dash pattern used to draw the tree view lines"
 msgstr ""
 "Motiu de puntilhats utilizat per dessenhar las linhas de la ierarquia de "
@@ -9161,7 +9159,7 @@ msgstr ""
 msgid "Whether to display the column"
 msgstr "Indica se aquesta colomna deu èsser afichada"
 
-#: ctk/ctktreeviewcolumn.c:253 ctk/ctkwindow.c:782
+#: ctk/ctktreeviewcolumn.c:253 ctk/ctkwindow.c:783
 msgid "Resizable"
 msgstr "Redimensionable"
 
@@ -9734,45 +9732,45 @@ msgstr "Largor de las ponhadas de seleccion del tèxte"
 msgid "Height of text selection handles"
 msgstr "Nautor de las ponhadas de seleccion de tèxte"
 
-#: ctk/ctkwindow.c:744
+#: ctk/ctkwindow.c:745
 msgid "Window Type"
 msgstr "Tipe de fenèstra"
 
-#: ctk/ctkwindow.c:745
+#: ctk/ctkwindow.c:746
 msgid "The type of the window"
 msgstr "Lo tipe de la fenèstra"
 
-#: ctk/ctkwindow.c:752
+#: ctk/ctkwindow.c:753
 msgid "Window Title"
 msgstr "Títol de la fenèstra"
 
-#: ctk/ctkwindow.c:753
+#: ctk/ctkwindow.c:754
 msgid "The title of the window"
 msgstr "Lo títol de la fenèstra"
 
-#: ctk/ctkwindow.c:759
+#: ctk/ctkwindow.c:760
 msgid "Window Role"
 msgstr "Ròtle de la fenèstra"
 
-#: ctk/ctkwindow.c:760
+#: ctk/ctkwindow.c:761
 msgid "Unique identifier for the window to be used when restoring a session"
 msgstr ""
 "Identificant unic de la fenèstra d'utilizar pel restabliment d'una session"
 
-#: ctk/ctkwindow.c:775
+#: ctk/ctkwindow.c:776
 msgid "Startup ID"
 msgstr "ID d'aviada"
 
-#: ctk/ctkwindow.c:776
+#: ctk/ctkwindow.c:777
 msgid "Unique startup identifier for the window used by startup-notification"
 msgstr ""
 "Identificant unic d'aviada per la fenèstra, utilizat per startup-notification"
 
-#: ctk/ctkwindow.c:783
+#: ctk/ctkwindow.c:784
 msgid "If TRUE, users can resize the window"
 msgstr "Se verai (TRUE), los utilizaires pòdon redimensionar la fenèstra"
 
-#: ctk/ctkwindow.c:790
+#: ctk/ctkwindow.c:791
 msgid ""
 "If TRUE, the window is modal (other windows are not usable while this one is "
 "up)"
@@ -9780,101 +9778,101 @@ msgstr ""
 "Se verai (TRUE), la fenèstra es modala (las autras fenèstras pòdon pas èsser "
 "utilizadas tant qu'aquesta es dobèrta)"
 
-#: ctk/ctkwindow.c:796
+#: ctk/ctkwindow.c:797
 msgid "Window Position"
 msgstr "Posicion de la fenèstra"
 
-#: ctk/ctkwindow.c:797
+#: ctk/ctkwindow.c:798
 msgid "The initial position of the window"
 msgstr "La posicion iniciala de la fenèstra"
 
-#: ctk/ctkwindow.c:804
+#: ctk/ctkwindow.c:805
 msgid "Default Width"
 msgstr "Largor per defaut"
 
-#: ctk/ctkwindow.c:805
+#: ctk/ctkwindow.c:806
 msgid "The default width of the window, used when initially showing the window"
 msgstr ""
 "La largor per defaut de la fenèstra, utilizat al moment de l'afichatge "
 "inicial de la fenèstra"
 
-#: ctk/ctkwindow.c:812
+#: ctk/ctkwindow.c:813
 msgid "Default Height"
 msgstr "Nautor per defaut"
 
-#: ctk/ctkwindow.c:813
+#: ctk/ctkwindow.c:814
 msgid ""
 "The default height of the window, used when initially showing the window"
 msgstr ""
 "La nautor per defaut de la fenèstra, utilizat al moment de l'afichatge "
 "inicial de la fenèstra"
 
-#: ctk/ctkwindow.c:820
+#: ctk/ctkwindow.c:821
 msgid "Destroy with Parent"
 msgstr "Destrusir en meteis temps que lo parent"
 
-#: ctk/ctkwindow.c:821
+#: ctk/ctkwindow.c:822
 msgid "If this window should be destroyed when the parent is destroyed"
 msgstr ""
 "Indica se aquesta fenèstra deu èsser destrusida quand lo parent es destrusit"
 
-#: ctk/ctkwindow.c:834
+#: ctk/ctkwindow.c:835
 msgid "Hide the titlebar during maximization"
 msgstr "Amagar la barra de títol pendent la maximizacion"
 
-#: ctk/ctkwindow.c:835
+#: ctk/ctkwindow.c:836
 msgid "If this window's titlebar should be hidden when the window is maximized"
 msgstr ""
 "Indica se la barra de títol d'aquesta fenèstra deu èsser amagada quand la "
 "fenèstra es maximizada"
 
-#: ctk/ctkwindow.c:842
+#: ctk/ctkwindow.c:843
 msgid "Icon for this window"
 msgstr "Icòna per aquesta fenèstra"
 
-#: ctk/ctkwindow.c:858
+#: ctk/ctkwindow.c:859
 msgid "Mnemonics Visible"
 msgstr "Mnemonics visibles"
 
-#: ctk/ctkwindow.c:859
+#: ctk/ctkwindow.c:860
 msgid "Whether mnemonics are currently visible in this window"
 msgstr "Indica se los mnemonics son actualament visibles dins aquesta fenèstra"
 
-#: ctk/ctkwindow.c:875
+#: ctk/ctkwindow.c:876
 msgid "Focus Visible"
 msgstr "Focus visible"
 
-#: ctk/ctkwindow.c:876
+#: ctk/ctkwindow.c:877
 msgid "Whether focus rectangles are currently visible in this window"
 msgstr ""
 "Indica se los rectangles de focus son actualament visibles dins aquesta "
 "fenèstra"
 
-#: ctk/ctkwindow.c:891
+#: ctk/ctkwindow.c:892
 msgid "Name of the themed icon for this window"
 msgstr "Nom de l'icòna tematizada per aquesta fenèstra"
 
-#: ctk/ctkwindow.c:904
+#: ctk/ctkwindow.c:905
 msgid "Is Active"
 msgstr "Es activa"
 
-#: ctk/ctkwindow.c:905
+#: ctk/ctkwindow.c:906
 msgid "Whether the toplevel is the current active window"
 msgstr "Indica se la fenèstra de mai naut nivèl es la fenèstra activa actuala"
 
-#: ctk/ctkwindow.c:911
+#: ctk/ctkwindow.c:912
 msgid "Focus in Toplevel"
 msgstr "Focus al nivèl lo mai naut"
 
-#: ctk/ctkwindow.c:912
+#: ctk/ctkwindow.c:913
 msgid "Whether the input focus is within this CtkWindow"
 msgstr "Indica se lo focus de picada es dins aqueste objècte CtkWindow"
 
-#: ctk/ctkwindow.c:918
+#: ctk/ctkwindow.c:919
 msgid "Type hint"
 msgstr "Indicacion de tipe"
 
-#: ctk/ctkwindow.c:919
+#: ctk/ctkwindow.c:920
 msgid ""
 "Hint to help the desktop environment understand what kind of window this is "
 "and how to treat it."
@@ -9882,118 +9880,118 @@ msgstr ""
 "Indicacion per ajudar l'environament de burèu a compréner quin es lo tipe de "
 "fenèstra e cossí la tractar."
 
-#: ctk/ctkwindow.c:926
+#: ctk/ctkwindow.c:927
 msgid "Skip taskbar"
 msgstr "Ignorar la barra de prètzfaits"
 
-#: ctk/ctkwindow.c:927
+#: ctk/ctkwindow.c:928
 msgid "TRUE if the window should not be in the task bar."
 msgstr ""
 "Se verai (TRUE), la fenèstra apareis pas dins la barra dels prètzfaits."
 
-#: ctk/ctkwindow.c:933
+#: ctk/ctkwindow.c:934
 msgid "Skip pager"
 msgstr "Ignorar lo pager"
 
-#: ctk/ctkwindow.c:934
+#: ctk/ctkwindow.c:935
 msgid "TRUE if the window should not be in the pager."
 msgstr "Se verai (TRUE), la fenèstra deu pas èsser dins lo pager."
 
-#: ctk/ctkwindow.c:940
+#: ctk/ctkwindow.c:941
 msgid "Urgent"
 msgstr "Urgent"
 
-#: ctk/ctkwindow.c:941
+#: ctk/ctkwindow.c:942
 #, fuzzy
 msgid "TRUE if the window should be brought to the user's attention."
 msgstr "Se verai (TRUE), la fenèstra deu atraire l'atencion de l'utilizaire."
 
-#: ctk/ctkwindow.c:954
+#: ctk/ctkwindow.c:955
 msgid "Accept focus"
 msgstr "Accèpta lo focus"
 
-#: ctk/ctkwindow.c:955
+#: ctk/ctkwindow.c:956
 msgid "TRUE if the window should receive the input focus."
 msgstr "Se verai (TRUE), la fenèstra deu recebre lo focus d'entrada."
 
-#: ctk/ctkwindow.c:968
+#: ctk/ctkwindow.c:969
 msgid "Focus on map"
 msgstr "Focus sus mappe"
 
-#: ctk/ctkwindow.c:969
+#: ctk/ctkwindow.c:970
 msgid "TRUE if the window should receive the input focus when mapped."
 msgstr ""
 "Se verai (TRUE), la fenèstra deu recebre lo focus d'entrada quand es mappada."
 
-#: ctk/ctkwindow.c:982
+#: ctk/ctkwindow.c:983
 msgid "Decorated"
 msgstr "Decorada"
 
-#: ctk/ctkwindow.c:983
+#: ctk/ctkwindow.c:984
 msgid "Whether the window should be decorated by the window manager"
 msgstr "Indica se la fenèstra deu èsser decorada pel gestionari de fenèstras"
 
-#: ctk/ctkwindow.c:996
+#: ctk/ctkwindow.c:997
 msgid "Deletable"
 msgstr "Suprimible"
 
-#: ctk/ctkwindow.c:997
+#: ctk/ctkwindow.c:998
 msgid "Whether the window frame should have a close button"
 msgstr "Indica se lo quadre de la fenèstra dispausa d'un boton de tampadura"
 
-#: ctk/ctkwindow.c:1017
+#: ctk/ctkwindow.c:1018
 msgid "Resize grip"
 msgstr "Ponhada de redimensionament"
 
-#: ctk/ctkwindow.c:1018
+#: ctk/ctkwindow.c:1019
 msgid "Specifies whether the window should have a resize grip"
 msgstr "Indica se la fenèstra dispausa d'una ponhada de redimensionament"
 
-#: ctk/ctkwindow.c:1033
+#: ctk/ctkwindow.c:1034
 msgid "Resize grip is visible"
 msgstr "Ponhada de redimensionament visible"
 
-#: ctk/ctkwindow.c:1034
+#: ctk/ctkwindow.c:1035
 msgid "Specifies whether the window's resize grip is visible."
 msgstr "Indica se la ponhada de redimensionament es visibla."
 
-#: ctk/ctkwindow.c:1048
+#: ctk/ctkwindow.c:1049
 msgid "Gravity"
 msgstr "Gravitat"
 
-#: ctk/ctkwindow.c:1049
+#: ctk/ctkwindow.c:1050
 msgid "The window gravity of the window"
 msgstr "La gravitat de la fenèstra"
 
-#: ctk/ctkwindow.c:1084
+#: ctk/ctkwindow.c:1085
 msgid "Attached to Widget"
 msgstr "Estacat a l'element grafic"
 
-#: ctk/ctkwindow.c:1085
+#: ctk/ctkwindow.c:1086
 msgid "The widget where the window is attached"
 msgstr "L'element grafic al qual la fenèstra es restacada"
 
-#: ctk/ctkwindow.c:1091
+#: ctk/ctkwindow.c:1092
 msgid "Is maximized"
 msgstr "Es maximizada"
 
-#: ctk/ctkwindow.c:1092
+#: ctk/ctkwindow.c:1093
 msgid "Whether the window is maximized"
 msgstr "Indica se la fenèstra es maximizada"
 
-#: ctk/ctkwindow.c:1113
+#: ctk/ctkwindow.c:1114
 msgid "CtkApplication"
 msgstr "CtkApplication"
 
-#: ctk/ctkwindow.c:1114
+#: ctk/ctkwindow.c:1115
 msgid "The CtkApplication for the window"
 msgstr "L'objècte CtkApplication de la fenèstra"
 
-#: ctk/ctkwindow.c:1124 ctk/ctkwindow.c:1125
+#: ctk/ctkwindow.c:1125 ctk/ctkwindow.c:1126
 msgid "Decorated button layout"
 msgstr "Decoracion de l'agençament dels botons"
 
-#: ctk/ctkwindow.c:1131 ctk/ctkwindow.c:1132
+#: ctk/ctkwindow.c:1132 ctk/ctkwindow.c:1133
 msgid "Decoration resize handle size"
 msgstr "Talha de decoracion de la ponhada de redimensionament"
 

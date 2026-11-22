@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+-properties\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-19 12:06+0100\n"
+"POT-Creation-Date: 2026-11-22 15:03+0100\n"
 "PO-Revision-Date: 2005-02-08 08:59+0200\n"
 "Last-Translator: Canonical Ltd <translations@canonical.com>\n"
 "Language-Team: Xhosa <xh-translate@ubuntu.com>\n"
@@ -222,11 +222,11 @@ msgstr ""
 msgid "Minor version number"
 msgstr ""
 
-#: cdk/x11/cdkdevice-xi2.c:143
+#: cdk/x11/cdkdevice-xi2.c:144
 msgid "Device ID"
 msgstr ""
 
-#: cdk/x11/cdkdevice-xi2.c:144
+#: cdk/x11/cdkdevice-xi2.c:145
 msgid "Device identifier"
 msgstr ""
 
@@ -297,7 +297,7 @@ msgid "The GIcon being displayed"
 msgstr "Ukumisela umfanekiso ongumqondiso emawubonakaliswe"
 
 #: ctk/ctkaction.c:341 ctk/ctkcellrendererpixbuf.c:245 ctk/ctkimage.c:341
-#: ctk/ctkprinter.c:170 ctk/ctkstatusicon.c:253 ctk/ctkwindow.c:890
+#: ctk/ctkprinter.c:170 ctk/ctkstatusicon.c:253 ctk/ctkwindow.c:891
 msgid "Icon Name"
 msgstr "Igama Lomfanekiso Ongumqondiso"
 
@@ -1512,8 +1512,8 @@ msgstr "Udidi lwesibini"
 
 #: ctk/ctkbbox.c:285
 msgid ""
-"If TRUE, the child appears in a secondary group of children, suitable for, e."
-"g., help buttons"
+"If TRUE, the child appears in a secondary group of children, suitable for, "
+"e.g., help buttons"
 msgstr ""
 "Ukuba TRUE, inkqubo engumntwana ivela kwiqela elikudidi lwesibini leenkqubo "
 "ezingabantwana, ilungele uku, umz. amaqhosha oncedo"
@@ -2159,10 +2159,8 @@ msgid "Has Entry"
 msgstr "Inesingeniso"
 
 #: ctk/ctkcellrenderercombo.c:170
-msgid "If FALSE, don't allow to enter strings other than the chosen ones"
+msgid "If FALSE, don't allow entering strings other than the chosen ones"
 msgstr ""
-"Ukuba FALSE, ungavumeli ukufakwa kwamagama angamanye ngaphandle kwalawo "
-"akhethiweyo"
 
 #: ctk/ctkcellrendererpixbuf.c:152
 msgid "Pixbuf Object"
@@ -2234,7 +2232,7 @@ msgid "Whether the rendered pixbuf should be colorized according to the state"
 msgstr "Nokuba ngaba umda kumele uboniswe okanye hayi"
 
 #: ctk/ctkcellrendererpixbuf.c:281 ctk/ctkimage.c:357 ctk/ctkmodelbutton.c:1166
-#: ctk/ctkshortcutsshortcut.c:550 ctk/ctkwindow.c:841
+#: ctk/ctkshortcutsshortcut.c:550 ctk/ctkwindow.c:842
 msgid "Icon"
 msgstr "Umfanekiso ongumqondiso"
 
@@ -3924,11 +3922,11 @@ msgid ""
 "collapsing"
 msgstr ""
 
-#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1672 ctk/ctktreeview.c:1234
+#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1672 ctk/ctktreeview.c:1240
 msgid "Expander Size"
 msgstr "Ubungakanani Besandisi"
 
-#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1673 ctk/ctktreeview.c:1235
+#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1673 ctk/ctktreeview.c:1241
 msgid "Size of the expander arrow"
 msgstr "Ubungakanani besalathisi sesandisi"
 
@@ -4116,12 +4114,12 @@ msgid "The selection mode"
 msgstr "Imo yokukhetha"
 
 #: ctk/ctkflowbox.c:3836 ctk/ctkiconview.c:665 ctk/ctklistbox.c:493
-#: ctk/ctktreeview.c:1220
+#: ctk/ctktreeview.c:1226
 msgid "Activate on Single Click"
 msgstr ""
 
 #: ctk/ctkflowbox.c:3837 ctk/ctkiconview.c:666 ctk/ctklistbox.c:494
-#: ctk/ctktreeview.c:1221
+#: ctk/ctktreeview.c:1227
 msgid "Activate row on a single click"
 msgstr ""
 
@@ -4600,15 +4598,15 @@ msgstr ""
 "Indlela omiswe ngayo umbhalo kunye nomfanekiso ongumqondiso wento nganye "
 "ekhethwayo ngokunxulumene nenye"
 
-#: ctk/ctkiconview.c:605 ctk/ctktreeview.c:1059 ctk/ctktreeviewcolumn.c:351
+#: ctk/ctkiconview.c:605 ctk/ctktreeview.c:1065 ctk/ctktreeviewcolumn.c:351
 msgid "Reorderable"
 msgstr "Inokuphindwa i-odolwe"
 
-#: ctk/ctkiconview.c:606 ctk/ctktreeview.c:1060
+#: ctk/ctkiconview.c:606 ctk/ctktreeview.c:1066
 msgid "View is reorderable"
 msgstr "Imbonakalo inokuphinda i-odolwe"
 
-#: ctk/ctkiconview.c:613 ctk/ctktreeview.c:1204
+#: ctk/ctkiconview.c:613 ctk/ctktreeview.c:1210
 #, fuzzy
 msgid "Tooltip Column"
 msgstr "Ikholam Yombhalo"
@@ -4798,11 +4796,11 @@ msgid "Width of border around the action area"
 msgstr "Ububanzi bomda ojikeleze eyona ndawo yonxibelelwano"
 
 #: ctk/ctkinvisible.c:98 ctk/ctkmountoperation.c:183 ctk/ctkstatusicon.c:296
-#: ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:897
+#: ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:898
 msgid "Screen"
 msgstr "Iskrini"
 
-#: ctk/ctkinvisible.c:99 ctk/ctkwindow.c:898
+#: ctk/ctkinvisible.c:99 ctk/ctkwindow.c:899
 msgid "The screen where this window will be displayed"
 msgstr "Iskrini eso le festile iza kuthi ibonakaliswe kuso"
 
@@ -5594,7 +5592,7 @@ msgstr "Unxibelelwano"
 msgid "The title of the file chooser dialog"
 msgstr "Isihloko sonxibelelwano lokukhetha ifayili."
 
-#: ctk/ctknativedialog.c:228 ctk/ctkpopover.c:1782 ctk/ctkwindow.c:789
+#: ctk/ctknativedialog.c:228 ctk/ctkpopover.c:1782 ctk/ctkwindow.c:790
 msgid "Modal"
 msgstr "Indlela eyenziwa ngayo"
 
@@ -5612,11 +5610,11 @@ msgstr ""
 msgid "Whether the dialog is currently visible"
 msgstr "Nokuba ngaba isixhobo siyabonakala na"
 
-#: ctk/ctknativedialog.c:256 ctk/ctkwindow.c:1064
+#: ctk/ctknativedialog.c:256 ctk/ctkwindow.c:1065
 msgid "Transient for Window"
 msgstr ""
 
-#: ctk/ctknativedialog.c:257 ctk/ctkwindow.c:1065
+#: ctk/ctknativedialog.c:257 ctk/ctkwindow.c:1066
 #, fuzzy
 msgid "The transient parent of the dialog"
 msgstr "Amaqhosha abonakala kwibhokisi yomyalezo"
@@ -9438,234 +9436,234 @@ msgstr "Imodeli eyi-TreeModelSort"
 msgid "The model for the TreeModelSort to sort"
 msgstr "Imodeli ye-TreeModelSort yokuhlela"
 
-#: ctk/ctktreeview.c:1031
+#: ctk/ctktreeview.c:1037
 msgid "TreeView Model"
 msgstr "Imodeli Ye-TreeView"
 
-#: ctk/ctktreeview.c:1032
+#: ctk/ctktreeview.c:1038
 msgid "The model for the tree view"
 msgstr "Imodeli yembonakalo ebumthi"
 
-#: ctk/ctktreeview.c:1038
+#: ctk/ctktreeview.c:1044
 #, fuzzy
 msgid "Headers Visible"
 msgstr "Okubhalwe Emantla Ephepha Kuyacofeka"
 
-#: ctk/ctktreeview.c:1039
+#: ctk/ctktreeview.c:1045
 msgid "Show the column header buttons"
 msgstr "Bonisa amaqhosha okubhalwe emantla ephepha kwikholam"
 
-#: ctk/ctktreeview.c:1045
+#: ctk/ctktreeview.c:1051
 msgid "Headers Clickable"
 msgstr "Okubhalwe Emantla Ephepha Kuyacofeka"
 
-#: ctk/ctktreeview.c:1046
+#: ctk/ctktreeview.c:1052
 msgid "Column headers respond to click events"
 msgstr "Okubhalwe emantla ephepha kwiikholam kuyaluva ucofeko"
 
-#: ctk/ctktreeview.c:1052
+#: ctk/ctktreeview.c:1058
 msgid "Expander Column"
 msgstr "Ikholam Yokwandisa"
 
-#: ctk/ctktreeview.c:1053
+#: ctk/ctktreeview.c:1059
 msgid "Set the column for the expander column"
 msgstr "Ukumisela ikholam njengekholam eyandisekayo"
 
-#: ctk/ctktreeview.c:1074
+#: ctk/ctktreeview.c:1080
 msgid "Rules Hint"
 msgstr "Icebiso Ngemithetho"
 
-#: ctk/ctktreeview.c:1075
+#: ctk/ctktreeview.c:1081
 msgid "Set a hint to the theme engine to draw rows in alternating colors"
 msgstr ""
 "Milisela icebiso kwinjini yomxholo ukuzoba izalathisi ngemibala "
 "etshintshiselanayo"
 
-#: ctk/ctktreeview.c:1081
+#: ctk/ctktreeview.c:1087
 msgid "Enable Search"
 msgstr "Yenza uKhangela asebenze"
 
-#: ctk/ctktreeview.c:1082
+#: ctk/ctktreeview.c:1088
 msgid "View allows user to search through columns interactively"
 msgstr ""
 "Imbonakalo yenza ukuba umsebenzisi akwazi ukukhetha kwiikholam "
 "ngokusebenzisanayo"
 
-#: ctk/ctktreeview.c:1088
+#: ctk/ctktreeview.c:1094
 msgid "Search Column"
 msgstr "Ikholam Yokukhetha"
 
-#: ctk/ctktreeview.c:1089
+#: ctk/ctktreeview.c:1095
 #, fuzzy
 msgid "Model column to search through during interactive search"
 msgstr "Ikholam eyimodeli ekukhethwa kuyo xa kukhangelwa kwikhodi"
 
-#: ctk/ctktreeview.c:1107
+#: ctk/ctktreeview.c:1113
 msgid "Fixed Height Mode"
 msgstr "Imo Yomphakamo Esisigxina"
 
-#: ctk/ctktreeview.c:1108
+#: ctk/ctktreeview.c:1114
 msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
 msgstr ""
 "Ikhawuleziza imbonakalo ye-CtkTreeView ngokuqikelela ukuba yonke imigca "
 "inomphakamo ofanayo"
 
-#: ctk/ctktreeview.c:1127
+#: ctk/ctktreeview.c:1133
 msgid "Hover Selection"
 msgstr "Ukukhetha I-hover"
 
-#: ctk/ctktreeview.c:1128
+#: ctk/ctktreeview.c:1134
 msgid "Whether the selection should follow the pointer"
 msgstr "Nokuba ngaba okukhethiweyo kumele ukulandela isikhombisi na"
 
-#: ctk/ctktreeview.c:1146
+#: ctk/ctktreeview.c:1152
 msgid "Hover Expand"
 msgstr "Ukwandiswa Kwe-Hover"
 
-#: ctk/ctktreeview.c:1147
+#: ctk/ctktreeview.c:1153
 msgid ""
 "Whether rows should be expanded/collapsed when the pointer moves over them"
 msgstr ""
 "Nokuba ngaba imigca inokwandiswa/ifinyezwe xa isikhombisi sidlula phezu kwayo"
 
-#: ctk/ctktreeview.c:1160
+#: ctk/ctktreeview.c:1166
 #, fuzzy
 msgid "Show Expanders"
 msgstr "Sisandisi"
 
-#: ctk/ctktreeview.c:1161
+#: ctk/ctktreeview.c:1167
 #, fuzzy
 msgid "View has expanders"
 msgstr "Sisandisi"
 
-#: ctk/ctktreeview.c:1174
+#: ctk/ctktreeview.c:1180
 msgid "Level Indentation"
 msgstr ""
 
-#: ctk/ctktreeview.c:1175
+#: ctk/ctktreeview.c:1181
 msgid "Extra indentation for each level"
 msgstr ""
 
-#: ctk/ctktreeview.c:1182
+#: ctk/ctktreeview.c:1188
 msgid "Rubber Banding"
 msgstr ""
 
-#: ctk/ctktreeview.c:1183
+#: ctk/ctktreeview.c:1189
 #, fuzzy
 msgid ""
 "Whether to enable selection of multiple items by dragging the mouse pointer"
 msgstr "Nokuba ngaba iifayili eziphindiweyo zingakhethwa na"
 
-#: ctk/ctktreeview.c:1189
+#: ctk/ctktreeview.c:1195
 #, fuzzy
 msgid "Enable Grid Lines"
 msgstr "Ukwenza amaqhosha ezalathisi asebenze"
 
-#: ctk/ctktreeview.c:1190
+#: ctk/ctktreeview.c:1196
 #, fuzzy
 msgid "Whether grid lines should be drawn in the tree view"
 msgstr "Nokuba ngaba umda kumele uboniswe okanye hayi"
 
-#: ctk/ctktreeview.c:1197
+#: ctk/ctktreeview.c:1203
 #, fuzzy
 msgid "Enable Tree Lines"
 msgstr "Ukwenza amaqhosha ezalathisi asebenze"
 
-#: ctk/ctktreeview.c:1198
+#: ctk/ctktreeview.c:1204
 #, fuzzy
 msgid "Whether tree lines should be drawn in the tree view"
 msgstr "Nokuba ngaba umda kumele uboniswe okanye hayi"
 
-#: ctk/ctktreeview.c:1205
+#: ctk/ctktreeview.c:1211
 #, fuzzy
 msgid "The column in the model containing the tooltip texts for the rows"
 msgstr "Ikholam yemodeli equlethe uluhlu lwamagama."
 
-#: ctk/ctktreeview.c:1243
+#: ctk/ctktreeview.c:1249
 msgid "Vertical Separator Width"
 msgstr "Ububanzi Besahluli Ngokuthe Nkqo"
 
-#: ctk/ctktreeview.c:1244
+#: ctk/ctktreeview.c:1250
 msgid "Vertical space between cells.  Must be an even number"
 msgstr ""
 "Isithuba esithe nkqo esiphakathi kwee-cell. Masibe linani elingunombini"
 
-#: ctk/ctktreeview.c:1252
+#: ctk/ctktreeview.c:1258
 msgid "Horizontal Separator Width"
 msgstr "Ububanzi Besahluli Ngokuthe Tyaba"
 
-#: ctk/ctktreeview.c:1253
+#: ctk/ctktreeview.c:1259
 msgid "Horizontal space between cells.  Must be an even number"
 msgstr "Isithuba esithe tyaba phakathi kwee-cell. Mayibe linani elingunombini"
 
-#: ctk/ctktreeview.c:1261
+#: ctk/ctktreeview.c:1267
 msgid "Allow Rules"
 msgstr "Vumela Imithetho"
 
-#: ctk/ctktreeview.c:1262
+#: ctk/ctktreeview.c:1268
 msgid "Allow drawing of alternating color rows"
 msgstr "Vumela ukuzotywa kwemigca enemibala etshiselanayo"
 
-#: ctk/ctktreeview.c:1268
+#: ctk/ctktreeview.c:1274
 msgid "Indent Expanders"
 msgstr "Qalisa Izandiso Nganeno"
 
-#: ctk/ctktreeview.c:1269
+#: ctk/ctktreeview.c:1275
 msgid "Make the expanders indented"
 msgstr "Yenza ukuba izandisi ziqale nganeno"
 
-#: ctk/ctktreeview.c:1275
+#: ctk/ctktreeview.c:1281
 msgid "Even Row Color"
 msgstr "Umbala Wemigca Engoonombini"
 
-#: ctk/ctktreeview.c:1276
+#: ctk/ctktreeview.c:1282
 msgid "Color to use for even rows"
 msgstr "Umbala omawusetyenziswe kwimigca engoonombini"
 
-#: ctk/ctktreeview.c:1282
+#: ctk/ctktreeview.c:1288
 msgid "Odd Row Color"
 msgstr "Umbala wemigca emnqakathi"
 
-#: ctk/ctktreeview.c:1283
+#: ctk/ctktreeview.c:1289
 msgid "Color to use for odd rows"
 msgstr "Umbala omawusetyenziswe kwimigca emnqakathi"
 
-#: ctk/ctktreeview.c:1290
+#: ctk/ctktreeview.c:1296
 #, fuzzy
 msgid "Grid line width"
 msgstr "Gxila kububanzi bomgca"
 
-#: ctk/ctktreeview.c:1291
+#: ctk/ctktreeview.c:1297
 #, fuzzy
 msgid "Width, in pixels, of the tree view grid lines"
 msgstr "Ububanzi, bomgca osisibonisi ogxilayo, ngokwee-pixels"
 
-#: ctk/ctktreeview.c:1297
+#: ctk/ctktreeview.c:1303
 #, fuzzy
 msgid "Tree line width"
 msgstr "Ububanzi obusisigxina"
 
-#: ctk/ctktreeview.c:1298
+#: ctk/ctktreeview.c:1304
 #, fuzzy
 msgid "Width, in pixels, of the tree view lines"
 msgstr "Ububanzi, bomgca osisibonisi ogxilayo, ngokwee-pixels"
 
-#: ctk/ctktreeview.c:1304
+#: ctk/ctktreeview.c:1310
 #, fuzzy
 msgid "Grid line pattern"
 msgstr "Ipateni yomgca oqhawu-qhawukayo yogxilo"
 
-#: ctk/ctktreeview.c:1305
+#: ctk/ctktreeview.c:1311
 #, fuzzy
 msgid "Dash pattern used to draw the tree view grid lines"
 msgstr "Ipateni eqhawu-qhawukayo esetyenziswa ukuzoba isibonisi esigxilayo"
 
-#: ctk/ctktreeview.c:1311
+#: ctk/ctktreeview.c:1317
 #, fuzzy
 msgid "Tree line pattern"
 msgstr "Ipateni yomgca oqhawu-qhawukayo yogxilo"
 
-#: ctk/ctktreeview.c:1312
+#: ctk/ctktreeview.c:1318
 #, fuzzy
 msgid "Dash pattern used to draw the tree view lines"
 msgstr "Ipateni eqhawu-qhawukayo esetyenziswa ukuzoba isibonisi esigxilayo"
@@ -9674,7 +9672,7 @@ msgstr "Ipateni eqhawu-qhawukayo esetyenziswa ukuzoba isibonisi esigxilayo"
 msgid "Whether to display the column"
 msgstr "Nokuba ngaba ikholam ivele na"
 
-#: ctk/ctktreeviewcolumn.c:253 ctk/ctkwindow.c:782
+#: ctk/ctktreeviewcolumn.c:253 ctk/ctkwindow.c:783
 msgid "Resizable"
 msgstr "Buyatshintsheka ubungakanani"
 
@@ -10269,45 +10267,45 @@ msgstr "Ububanzi besikhombisi"
 msgid "Height of text selection handles"
 msgstr "Isihloko sebhokisi yokukhetha ifonti"
 
-#: ctk/ctkwindow.c:744
+#: ctk/ctkwindow.c:745
 msgid "Window Type"
 msgstr "Uhlobo Lwefestile"
 
-#: ctk/ctkwindow.c:745
+#: ctk/ctkwindow.c:746
 msgid "The type of the window"
 msgstr "Uhlobo lwefestile"
 
-#: ctk/ctkwindow.c:752
+#: ctk/ctkwindow.c:753
 msgid "Window Title"
 msgstr "Isihloko Sefestile"
 
-#: ctk/ctkwindow.c:753
+#: ctk/ctkwindow.c:754
 msgid "The title of the window"
 msgstr "Uhlobo lwefestile"
 
-#: ctk/ctkwindow.c:759
+#: ctk/ctkwindow.c:760
 msgid "Window Role"
 msgstr "Indima Yefestile"
 
-#: ctk/ctkwindow.c:760
+#: ctk/ctkwindow.c:761
 msgid "Unique identifier for the window to be used when restoring a session"
 msgstr "Isahluli esahlukileyo sefestile esisetyenziswa xa kuhlaziywa iseshoni"
 
-#: ctk/ctkwindow.c:775
+#: ctk/ctkwindow.c:776
 #, fuzzy
 msgid "Startup ID"
 msgstr "Iqela"
 
-#: ctk/ctkwindow.c:776
+#: ctk/ctkwindow.c:777
 #, fuzzy
 msgid "Unique startup identifier for the window used by startup-notification"
 msgstr "Isahluli esahlukileyo sefestile esisetyenziswa xa kuhlaziywa iseshoni"
 
-#: ctk/ctkwindow.c:783
+#: ctk/ctkwindow.c:784
 msgid "If TRUE, users can resize the window"
 msgstr "Ukuba TRUE, abasebenzisi bangabutshintsha ubungakanani befestile"
 
-#: ctk/ctkwindow.c:790
+#: ctk/ctkwindow.c:791
 msgid ""
 "If TRUE, the window is modal (other windows are not usable while this one is "
 "up)"
@@ -10315,103 +10313,103 @@ msgstr ""
 "Ukuba TRUE, ifestile inenkqubo (ezinye iifestile azisebenziseki ngelixa le "
 "ivuliwe)"
 
-#: ctk/ctkwindow.c:796
+#: ctk/ctkwindow.c:797
 msgid "Window Position"
 msgstr "Indawo Yefestile"
 
-#: ctk/ctkwindow.c:797
+#: ctk/ctkwindow.c:798
 msgid "The initial position of the window"
 msgstr "Indawo yokuqala yefestile"
 
-#: ctk/ctkwindow.c:804
+#: ctk/ctkwindow.c:805
 msgid "Default Width"
 msgstr "Ububanzi Obumiselweyo"
 
-#: ctk/ctkwindow.c:805
+#: ctk/ctkwindow.c:806
 msgid "The default width of the window, used when initially showing the window"
 msgstr ""
 "Ububanzi obumiselweyo befestile, busetyenziswa xa ubonisa ifestile okokuqala"
 
-#: ctk/ctkwindow.c:812
+#: ctk/ctkwindow.c:813
 msgid "Default Height"
 msgstr "Umphakamo Omiselweyo"
 
-#: ctk/ctkwindow.c:813
+#: ctk/ctkwindow.c:814
 msgid ""
 "The default height of the window, used when initially showing the window"
 msgstr ""
 "Umphakamo omiselweyo wefestile, usetyenziswa xa ubonisa ifestile okokuqala"
 
-#: ctk/ctkwindow.c:820
+#: ctk/ctkwindow.c:821
 msgid "Destroy with Parent"
 msgstr "Tshabalalisa kunye Nenkqubo Engunozala"
 
-#: ctk/ctkwindow.c:821
+#: ctk/ctkwindow.c:822
 msgid "If this window should be destroyed when the parent is destroyed"
 msgstr ""
 "Ukuba ngaba le festile ifanele itshatyalaliswe xa inkqubo engunozala "
 "itshabalele"
 
-#: ctk/ctkwindow.c:834
+#: ctk/ctkwindow.c:835
 msgid "Hide the titlebar during maximization"
 msgstr ""
 
-#: ctk/ctkwindow.c:835
+#: ctk/ctkwindow.c:836
 #, fuzzy
 msgid "If this window's titlebar should be hidden when the window is maximized"
 msgstr ""
 "Ukuba ngaba le festile ifanele itshatyalaliswe xa inkqubo engunozala "
 "itshabalele"
 
-#: ctk/ctkwindow.c:842
+#: ctk/ctkwindow.c:843
 msgid "Icon for this window"
 msgstr "Umfanekiso ongumqondiso wale festile"
 
-#: ctk/ctkwindow.c:858
+#: ctk/ctkwindow.c:859
 #, fuzzy
 msgid "Mnemonics Visible"
 msgstr "Iqhosha lokukhumbula"
 
-#: ctk/ctkwindow.c:859
+#: ctk/ctkwindow.c:860
 #, fuzzy
 msgid "Whether mnemonics are currently visible in this window"
 msgstr "Nokuba ngaba inqanaba elingentla yeyona festile isebenza ngoku"
 
-#: ctk/ctkwindow.c:875
+#: ctk/ctkwindow.c:876
 #, fuzzy
 msgid "Focus Visible"
 msgstr "Ikhesha Ebonakalayo"
 
-#: ctk/ctkwindow.c:876
+#: ctk/ctkwindow.c:877
 #, fuzzy
 msgid "Whether focus rectangles are currently visible in this window"
 msgstr "Nokuba ngaba inqanaba elingentla yeyona festile isebenza ngoku"
 
-#: ctk/ctkwindow.c:891
+#: ctk/ctkwindow.c:892
 msgid "Name of the themed icon for this window"
 msgstr "Igama lomfanekiso ongumqondiso onesihloko wale festile"
 
-#: ctk/ctkwindow.c:904
+#: ctk/ctkwindow.c:905
 msgid "Is Active"
 msgstr "Iyasebenza Ngoku"
 
-#: ctk/ctkwindow.c:905
+#: ctk/ctkwindow.c:906
 msgid "Whether the toplevel is the current active window"
 msgstr "Nokuba ngaba inqanaba elingentla yeyona festile isebenza ngoku"
 
-#: ctk/ctkwindow.c:911
+#: ctk/ctkwindow.c:912
 msgid "Focus in Toplevel"
 msgstr "Gxininisa kwiNqanaba Elingentla"
 
-#: ctk/ctkwindow.c:912
+#: ctk/ctkwindow.c:913
 msgid "Whether the input focus is within this CtkWindow"
 msgstr "Nokuba ngaba ugxilo lofakelo lungaphakathi kwale CtkWindow na"
 
-#: ctk/ctkwindow.c:918
+#: ctk/ctkwindow.c:919
 msgid "Type hint"
 msgstr "Uhlobo lwecebiso"
 
-#: ctk/ctkwindow.c:919
+#: ctk/ctkwindow.c:920
 msgid ""
 "Hint to help the desktop environment understand what kind of window this is "
 "and how to treat it."
@@ -10419,126 +10417,126 @@ msgstr ""
 "Icebiso elithi lincede ubume be-desktop ukuze buqonde ukuba hlobo luni na "
 "lwefestile nokuba kufanele isetyenziswe njani na."
 
-#: ctk/ctkwindow.c:926
+#: ctk/ctkwindow.c:927
 msgid "Skip taskbar"
 msgstr "Tsiba i-taskbar"
 
-#: ctk/ctkwindow.c:927
+#: ctk/ctkwindow.c:928
 msgid "TRUE if the window should not be in the task bar."
 msgstr "TRUE ukuba ifestile ayimele ukuba kwi-taskbar."
 
-#: ctk/ctkwindow.c:933
+#: ctk/ctkwindow.c:934
 msgid "Skip pager"
 msgstr "I-pager yokutsiba"
 
-#: ctk/ctkwindow.c:934
+#: ctk/ctkwindow.c:935
 msgid "TRUE if the window should not be in the pager."
 msgstr "TRUE ukuba ifestile akufanele ukuba ibe kwi-pager."
 
-#: ctk/ctkwindow.c:940
+#: ctk/ctkwindow.c:941
 msgid "Urgent"
 msgstr ""
 
-#: ctk/ctkwindow.c:941
+#: ctk/ctkwindow.c:942
 #, fuzzy
 msgid "TRUE if the window should be brought to the user's attention."
 msgstr "TRUE ukuba ifestile akufanele ukuba ibe kwi-pager."
 
-#: ctk/ctkwindow.c:954
+#: ctk/ctkwindow.c:955
 msgid "Accept focus"
 msgstr "Iyalwamkela ugxininiso"
 
-#: ctk/ctkwindow.c:955
+#: ctk/ctkwindow.c:956
 msgid "TRUE if the window should receive the input focus."
 msgstr "TRUE ukuba ifestile imele ifumane ugxininixo olungenayo."
 
-#: ctk/ctkwindow.c:968
+#: ctk/ctkwindow.c:969
 msgid "Focus on map"
 msgstr "Gxininisa emephini"
 
-#: ctk/ctkwindow.c:969
+#: ctk/ctkwindow.c:970
 msgid "TRUE if the window should receive the input focus when mapped."
 msgstr "TRUE ukuba ifestile imele ifumane ugxininiso olungenayo xa izotyiwe."
 
-#: ctk/ctkwindow.c:982
+#: ctk/ctkwindow.c:983
 msgid "Decorated"
 msgstr "Ehonjisiweyo"
 
-#: ctk/ctkwindow.c:983
+#: ctk/ctkwindow.c:984
 msgid "Whether the window should be decorated by the window manager"
 msgstr "Nokuba ngaba ifestile imele ihonjiswe na ngumlawuli wefestile"
 
-#: ctk/ctkwindow.c:996
+#: ctk/ctkwindow.c:997
 #, fuzzy
 msgid "Deletable"
 msgstr "Iyakhetheka"
 
-#: ctk/ctkwindow.c:997
+#: ctk/ctkwindow.c:998
 #, fuzzy
 msgid "Whether the window frame should have a close button"
 msgstr "Nokuba ngaba ifestile imele ihonjiswe na ngumlawuli wefestile"
 
-#: ctk/ctkwindow.c:1017
+#: ctk/ctkwindow.c:1018
 #, fuzzy
 msgid "Resize grip"
 msgstr "Linesibambi Sokutshintsha Ubungakanani"
 
-#: ctk/ctkwindow.c:1018
+#: ctk/ctkwindow.c:1019
 #, fuzzy
 msgid "Specifies whether the window should have a resize grip"
 msgstr "Nokuba ngaba ifestile imele ihonjiswe na ngumlawuli wefestile"
 
-#: ctk/ctkwindow.c:1033
+#: ctk/ctkwindow.c:1034
 msgid "Resize grip is visible"
 msgstr ""
 
-#: ctk/ctkwindow.c:1034
+#: ctk/ctkwindow.c:1035
 #, fuzzy
 msgid "Specifies whether the window's resize grip is visible."
 msgstr "Nokuba ngaba iqela lezenzo liyabonakala na."
 
-#: ctk/ctkwindow.c:1048
+#: ctk/ctkwindow.c:1049
 msgid "Gravity"
 msgstr "Umbizane womhlaba"
 
-#: ctk/ctkwindow.c:1049
+#: ctk/ctkwindow.c:1050
 msgid "The window gravity of the window"
 msgstr "Umbizane ngokwasemhlabeni wefestile"
 
-#: ctk/ctkwindow.c:1084
+#: ctk/ctkwindow.c:1085
 #, fuzzy
 msgid "Attached to Widget"
 msgstr "Esinye isixhobo"
 
-#: ctk/ctkwindow.c:1085
+#: ctk/ctkwindow.c:1086
 #, fuzzy
 msgid "The widget where the window is attached"
 msgstr "Nokuba ngaba okukhethwa kwimenyu kuvavanyiwe na"
 
-#: ctk/ctkwindow.c:1091
+#: ctk/ctkwindow.c:1092
 msgid "Is maximized"
 msgstr ""
 
-#: ctk/ctkwindow.c:1092
+#: ctk/ctkwindow.c:1093
 #, fuzzy
 msgid "Whether the window is maximized"
 msgstr "Nokuba ngaba isixhobo siyabonakala na"
 
-#: ctk/ctkwindow.c:1113
+#: ctk/ctkwindow.c:1114
 #, fuzzy
 msgid "CtkApplication"
 msgstr "Inkqubo enokupeyinteka"
 
-#: ctk/ctkwindow.c:1114
+#: ctk/ctkwindow.c:1115
 #, fuzzy
 msgid "The CtkApplication for the window"
 msgstr "Indawo yokuqala yefestile"
 
-#: ctk/ctkwindow.c:1124 ctk/ctkwindow.c:1125
+#: ctk/ctkwindow.c:1125 ctk/ctkwindow.c:1126
 msgid "Decorated button layout"
 msgstr ""
 
-#: ctk/ctkwindow.c:1131 ctk/ctkwindow.c:1132
+#: ctk/ctkwindow.c:1132 ctk/ctkwindow.c:1133
 msgid "Decoration resize handle size"
 msgstr ""
 

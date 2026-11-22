@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+-properties\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-19 12:06+0100\n"
+"POT-Creation-Date: 2026-11-22 15:03+0100\n"
 "PO-Revision-Date: 2010-01-19 16:26+0200\n"
 "Last-Translator: Russell Kyaw <rkyaw@yahoo.com>\n"
 "Language-Team: Burmese <my@li.org>\n"
@@ -217,11 +217,11 @@ msgstr ""
 msgid "Minor version number"
 msgstr ""
 
-#: cdk/x11/cdkdevice-xi2.c:143
+#: cdk/x11/cdkdevice-xi2.c:144
 msgid "Device ID"
 msgstr ""
 
-#: cdk/x11/cdkdevice-xi2.c:144
+#: cdk/x11/cdkdevice-xi2.c:145
 msgid "Device identifier"
 msgstr ""
 
@@ -287,7 +287,7 @@ msgid "The GIcon being displayed"
 msgstr "ပြသနေတဲ့ GIcon"
 
 #: ctk/ctkaction.c:341 ctk/ctkcellrendererpixbuf.c:245 ctk/ctkimage.c:341
-#: ctk/ctkprinter.c:170 ctk/ctkstatusicon.c:253 ctk/ctkwindow.c:890
+#: ctk/ctkprinter.c:170 ctk/ctkstatusicon.c:253 ctk/ctkwindow.c:891
 msgid "Icon Name"
 msgstr "အမှတ်တံဆိပ် အမည်"
 
@@ -1432,8 +1432,8 @@ msgstr "ဒုတိယအဆင့်"
 
 #: ctk/ctkbbox.c:285
 msgid ""
-"If TRUE, the child appears in a secondary group of children, suitable for, e."
-"g., help buttons"
+"If TRUE, the child appears in a secondary group of children, suitable for, "
+"e.g., help buttons"
 msgstr ""
 "မှန်နေရင်၊ ကလေးဟာ ကလေးများရဲ့ ဒုတိယ အဆင့် အုပ်စုတခုမှာ ပေါ်နေတယ်၊ ဥပမာ - အကူအညီ ခလုတ်များ အတွက် "
 "သင့်လျှော်တယ်။"
@@ -2031,8 +2031,8 @@ msgid "Has Entry"
 msgstr "ထည့်သွင်းထားပြီ"
 
 #: ctk/ctkcellrenderercombo.c:170
-msgid "If FALSE, don't allow to enter strings other than the chosen ones"
-msgstr "မှားရင်၊ ရွေးထားတဲ့ အချက်များ မဟုတ်ရင် စာသာများကို မထည့်သွင်းစေနဲ့"
+msgid "If FALSE, don't allow entering strings other than the chosen ones"
+msgstr ""
 
 #: ctk/ctkcellrendererpixbuf.c:152
 msgid "Pixbuf Object"
@@ -2101,7 +2101,7 @@ msgid "Whether the rendered pixbuf should be colorized according to the state"
 msgstr "အခြေအနေအရ တင်ဆက်တဲ့ pixbuf ကို အရောင်ဆိုးထား၊ မထား။"
 
 #: ctk/ctkcellrendererpixbuf.c:281 ctk/ctkimage.c:357 ctk/ctkmodelbutton.c:1166
-#: ctk/ctkshortcutsshortcut.c:550 ctk/ctkwindow.c:841
+#: ctk/ctkshortcutsshortcut.c:550 ctk/ctkwindow.c:842
 msgid "Icon"
 msgstr "ပုံသင်္ကေတ"
 
@@ -3686,11 +3686,11 @@ msgid ""
 "collapsing"
 msgstr ""
 
-#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1672 ctk/ctktreeview.c:1234
+#: ctk/ctkexpander.c:396 ctk/ctktoolitemgroup.c:1672 ctk/ctktreeview.c:1240
 msgid "Expander Size"
 msgstr "ချဲ့ကားသူ အရွယ်"
 
-#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1673 ctk/ctktreeview.c:1235
+#: ctk/ctkexpander.c:397 ctk/ctktoolitemgroup.c:1673 ctk/ctktreeview.c:1241
 msgid "Size of the expander arrow"
 msgstr "ချဲ့ကားတဲ့ မြှားရဲ့ အ​ရွယ်"
 
@@ -3871,12 +3871,12 @@ msgid "The selection mode"
 msgstr "ရွေးချယ်မှု စနစ်"
 
 #: ctk/ctkflowbox.c:3836 ctk/ctkiconview.c:665 ctk/ctklistbox.c:493
-#: ctk/ctktreeview.c:1220
+#: ctk/ctktreeview.c:1226
 msgid "Activate on Single Click"
 msgstr ""
 
 #: ctk/ctkflowbox.c:3837 ctk/ctkiconview.c:666 ctk/ctklistbox.c:494
-#: ctk/ctktreeview.c:1221
+#: ctk/ctktreeview.c:1227
 msgid "Activate row on a single click"
 msgstr ""
 
@@ -4341,15 +4341,15 @@ msgid ""
 "How the text and icon of each item are positioned relative to each other"
 msgstr "စာသားနဲ့ အချက်တခုစီရဲ့ ပုံ​သင်္ကေတများက တခုစီနဲ့ ဆက်စပ်ပြီ နေရာယူမဲ့ ပုံစံ"
 
-#: ctk/ctkiconview.c:605 ctk/ctktreeview.c:1059 ctk/ctktreeviewcolumn.c:351
+#: ctk/ctkiconview.c:605 ctk/ctktreeview.c:1065 ctk/ctktreeviewcolumn.c:351
 msgid "Reorderable"
 msgstr "နေရာပြန်စီနိုင်တယ်"
 
-#: ctk/ctkiconview.c:606 ctk/ctktreeview.c:1060
+#: ctk/ctkiconview.c:606 ctk/ctktreeview.c:1066
 msgid "View is reorderable"
 msgstr "ရှုမြင်ချက်ကို နေရာပြန်စီနိုင်တယ်"
 
-#: ctk/ctkiconview.c:613 ctk/ctktreeview.c:1204
+#: ctk/ctkiconview.c:613 ctk/ctktreeview.c:1210
 msgid "Tooltip Column"
 msgstr "Tooltip ကော်လံ"
 
@@ -4529,11 +4529,11 @@ msgid "Width of border around the action area"
 msgstr "ပင်မ အညွှန်းစာမျက်နှာ နယ်ပယ် ၀န်းကျင်ရှိမှ အနားသတ် အကျယ်"
 
 #: ctk/ctkinvisible.c:98 ctk/ctkmountoperation.c:183 ctk/ctkstatusicon.c:296
-#: ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:897
+#: ctk/ctkstylecontext.c:229 ctk/ctkwindow.c:898
 msgid "Screen"
 msgstr "မျက်နှာပြင်"
 
-#: ctk/ctkinvisible.c:99 ctk/ctkwindow.c:898
+#: ctk/ctkinvisible.c:99 ctk/ctkwindow.c:899
 msgid "The screen where this window will be displayed"
 msgstr "၀င်းဒိုး ပြသလာမဲ့ မျက်နှာပြင်"
 
@@ -5278,7 +5278,7 @@ msgstr "အညွှန်းစာမျက်နှာ"
 msgid "The title of the file chooser dialog"
 msgstr "ဖိုင် ရွေးချယ်ကိရိယာ အညွှန်းစာမျက်နှာရဲ့ ခေါင်းစဉ်"
 
-#: ctk/ctknativedialog.c:228 ctk/ctkpopover.c:1782 ctk/ctkwindow.c:789
+#: ctk/ctknativedialog.c:228 ctk/ctkpopover.c:1782 ctk/ctkwindow.c:790
 msgid "Modal"
 msgstr "ဖြစ်နိုင်ချေ"
 
@@ -5294,11 +5294,11 @@ msgstr "မှန်ရင်၊ ၀င်းဒိုးဟာ ဖြစ်န�
 msgid "Whether the dialog is currently visible"
 msgstr "Widget ကို မြင်နိုင်၊ မမြင်နိုင်"
 
-#: ctk/ctknativedialog.c:256 ctk/ctkwindow.c:1064
+#: ctk/ctknativedialog.c:256 ctk/ctkwindow.c:1065
 msgid "Transient for Window"
 msgstr "၀င်းဒိုးအတွက် ယာယီ"
 
-#: ctk/ctknativedialog.c:257 ctk/ctkwindow.c:1065
+#: ctk/ctknativedialog.c:257 ctk/ctkwindow.c:1066
 msgid "The transient parent of the dialog"
 msgstr "အညွှန်းစာမျက်နှာရဲ့ ယာယီ ပင်ရင်း"
 
@@ -8878,210 +8878,210 @@ msgstr "TreeModelSort ပုံစံငယ်"
 msgid "The model for the TreeModelSort to sort"
 msgstr "မျိုးတူစုဖို့ TreeModelSort ပုံစံငယ်"
 
-#: ctk/ctktreeview.c:1031
+#: ctk/ctktreeview.c:1037
 msgid "TreeView Model"
 msgstr "TreeView ပုံစီငယ်"
 
-#: ctk/ctktreeview.c:1032
+#: ctk/ctktreeview.c:1038
 msgid "The model for the tree view"
 msgstr "အပင် မြင်ကွင်းအတွက် ပုံစံငယ်"
 
-#: ctk/ctktreeview.c:1038
+#: ctk/ctktreeview.c:1044
 msgid "Headers Visible"
 msgstr "ခေါင်းစီးများ မြင်နိုင်မှု"
 
-#: ctk/ctktreeview.c:1039
+#: ctk/ctktreeview.c:1045
 msgid "Show the column header buttons"
 msgstr "ကော်လံ​ ခေါင်းစီး ခလုတ်များကို ပြသပါ"
 
-#: ctk/ctktreeview.c:1045
+#: ctk/ctktreeview.c:1051
 msgid "Headers Clickable"
 msgstr "နှိုပ်နိုင်တဲ့ ခေါင်းစီးများ"
 
-#: ctk/ctktreeview.c:1046
+#: ctk/ctktreeview.c:1052
 msgid "Column headers respond to click events"
 msgstr "အဖြစ်အပျက်များ နှိုပ်ချက်ကို တုန်ပြန်တဲ့ ကော်လံ ခေါင်းစီများ"
 
-#: ctk/ctktreeview.c:1052
+#: ctk/ctktreeview.c:1058
 msgid "Expander Column"
 msgstr "ချဲ့ကားကိရိယာ ကော်လံ"
 
-#: ctk/ctktreeview.c:1053
+#: ctk/ctktreeview.c:1059
 msgid "Set the column for the expander column"
 msgstr "ချဲ့ကားကိရိယာ ကော်လံအတွက် ကော်လံ ချမှတ်ချက်"
 
-#: ctk/ctktreeview.c:1074
+#: ctk/ctktreeview.c:1080
 msgid "Rules Hint"
 msgstr "စည်းကမ်း အရိပ်အမြွတ်"
 
-#: ctk/ctktreeview.c:1075
+#: ctk/ctktreeview.c:1081
 msgid "Set a hint to the theme engine to draw rows in alternating colors"
 msgstr ""
 "အခြား အရောင်များဖြင့် အခင်းအကျင်း အင်ဂျင်က အတန်းများကို ရေးဆွဲဖို့ အရိပ်အမြွတ် တခုကို ချမှတ်ချက်"
 
-#: ctk/ctktreeview.c:1081
+#: ctk/ctktreeview.c:1087
 msgid "Enable Search"
 msgstr "ရှာဖွေမှုကို ဖွင့်ထားပါ"
 
-#: ctk/ctktreeview.c:1082
+#: ctk/ctktreeview.c:1088
 msgid "View allows user to search through columns interactively"
 msgstr "ရှုမြင်ချက်က ကော်လံများ တလျှောက် အပြန်အလှန် ​ရှာဖွေနိုင်ဖို့ သုံးစွဲသူကို ခွင့်ပြုတယ်"
 
-#: ctk/ctktreeview.c:1088
+#: ctk/ctktreeview.c:1094
 msgid "Search Column"
 msgstr "ကော်လံ ရှာဖွေမှု"
 
-#: ctk/ctktreeview.c:1089
+#: ctk/ctktreeview.c:1095
 msgid "Model column to search through during interactive search"
 msgstr "အပြန်အလှန် ​ရှာဖွေမှုအတွင်း နေရာအနှံ့ ရှာဖွေဖို့ ပုံစံငယ် ကော်လံ"
 
-#: ctk/ctktreeview.c:1107
+#: ctk/ctktreeview.c:1113
 msgid "Fixed Height Mode"
 msgstr "သတ်မှတ်ထားတဲ့ အမြင့် စနစ်"
 
-#: ctk/ctktreeview.c:1108
+#: ctk/ctktreeview.c:1114
 msgid "Speeds up CtkTreeView by assuming that all rows have the same height"
 msgstr "အတန်း အားလုံးမှာ တူညီတဲ့ အမြင့် ရှိကြသလို မှတ်ယူပြီး CtkTreeView ကို အရှိန်မြှင့်ပါ"
 
-#: ctk/ctktreeview.c:1127
+#: ctk/ctktreeview.c:1133
 msgid "Hover Selection"
 msgstr "ဝဲပျံချက် ရွေးချယ်ခြင်း"
 
-#: ctk/ctktreeview.c:1128
+#: ctk/ctktreeview.c:1134
 msgid "Whether the selection should follow the pointer"
 msgstr "ရွေးချယ်ခြင်းက ညွှန်တံကို လိုက်ရ၊ မလိုက်ရ"
 
-#: ctk/ctktreeview.c:1146
+#: ctk/ctktreeview.c:1152
 msgid "Hover Expand"
 msgstr "ဝဲပျံချက် ချဲ့ကားမှု"
 
-#: ctk/ctktreeview.c:1147
+#: ctk/ctktreeview.c:1153
 msgid ""
 "Whether rows should be expanded/collapsed when the pointer moves over them"
 msgstr "အတန်းများကို ညွှန်တံက ၄င်းတို့ အပေါ် ရွေးသွားတဲ့အခါ ချဲ့ကား/ခေါက်သိမ်းသင့်၊ မသင့်"
 
-#: ctk/ctktreeview.c:1160
+#: ctk/ctktreeview.c:1166
 msgid "Show Expanders"
 msgstr "ချဲ့ကားကိရိယာများကို ပြသပါ"
 
-#: ctk/ctktreeview.c:1161
+#: ctk/ctktreeview.c:1167
 msgid "View has expanders"
 msgstr "ရှုမြင်ချက်မှာ ချဲ့ကားကိရိယာများ ရှိတယ်"
 
-#: ctk/ctktreeview.c:1174
+#: ctk/ctktreeview.c:1180
 msgid "Level Indentation"
 msgstr "အတွင်းစည်း အဆင့်"
 
-#: ctk/ctktreeview.c:1175
+#: ctk/ctktreeview.c:1181
 msgid "Extra indentation for each level"
 msgstr "အဆင့်တိုင်းအတွက် အပို အတွင်းစည်း"
 
-#: ctk/ctktreeview.c:1182
+#: ctk/ctktreeview.c:1188
 msgid "Rubber Banding"
 msgstr "ရာဘာ စည်းပတ်ခြင်း"
 
-#: ctk/ctktreeview.c:1183
+#: ctk/ctktreeview.c:1189
 msgid ""
 "Whether to enable selection of multiple items by dragging the mouse pointer"
 msgstr "အချက်များ အများအပြား ရွေးချယ်မှုကို ကြွတ်ခလုတ် ညွှန်တံကို ဒရွတ်ဆွဲခြင်းဖြင့် ဖွင့်နိုင်၊ မဖွင့်နိုင်"
 
-#: ctk/ctktreeview.c:1189
+#: ctk/ctktreeview.c:1195
 msgid "Enable Grid Lines"
 msgstr "ဂရစ်ကွက် လိုင်းများကို ဖွင့်ပါ"
 
-#: ctk/ctktreeview.c:1190
+#: ctk/ctktreeview.c:1196
 msgid "Whether grid lines should be drawn in the tree view"
 msgstr "ဂရစ်ကွက် လိုင်းများကို အပင် မြင်ကွင်းနဲ့ ရေးဆွဲ၊ မရေးဆွဲ"
 
-#: ctk/ctktreeview.c:1197
+#: ctk/ctktreeview.c:1203
 msgid "Enable Tree Lines"
 msgstr "အပင်လိုင်းများ ဖွင့်ပါ"
 
-#: ctk/ctktreeview.c:1198
+#: ctk/ctktreeview.c:1204
 msgid "Whether tree lines should be drawn in the tree view"
 msgstr "အပင်လိုင်းများကို အပင်မြင်ကွင်းနဲ့ ရေးဆွဲသင့်၊ မသင့်"
 
-#: ctk/ctktreeview.c:1205
+#: ctk/ctktreeview.c:1211
 msgid "The column in the model containing the tooltip texts for the rows"
 msgstr "အတန်းများအတွက် tooltip စာသားများ ပါရှိတဲ့ ပုံစံငယ်ထဲက ကော်လံ"
 
-#: ctk/ctktreeview.c:1243
+#: ctk/ctktreeview.c:1249
 msgid "Vertical Separator Width"
 msgstr "ဒေါင်လိုက် ပုဒ်ခွဲ အကျယ်"
 
-#: ctk/ctktreeview.c:1244
+#: ctk/ctktreeview.c:1250
 msgid "Vertical space between cells.  Must be an even number"
 msgstr "အခန်းငယ်များ အကြားမှ ဒေါင်လိုက် နေရာလပ်။ စုံကိန်း တခု ဖြစ်ရမယ်"
 
-#: ctk/ctktreeview.c:1252
+#: ctk/ctktreeview.c:1258
 msgid "Horizontal Separator Width"
 msgstr "ပြင်ညီ ပုဒ်ခွဲ အကျယ်"
 
-#: ctk/ctktreeview.c:1253
+#: ctk/ctktreeview.c:1259
 msgid "Horizontal space between cells.  Must be an even number"
 msgstr "အခန်းငယ်များ အကြား ပြင်ညီ နေရာလပ်။ စုံကိန်း တခု ဖြစ်ရမယ်"
 
-#: ctk/ctktreeview.c:1261
+#: ctk/ctktreeview.c:1267
 msgid "Allow Rules"
 msgstr "စည်းကမ်းများကို ခွင့်ပြုပါ"
 
-#: ctk/ctktreeview.c:1262
+#: ctk/ctktreeview.c:1268
 msgid "Allow drawing of alternating color rows"
 msgstr "အခြား အရောင် အတန်းများကို ရေးဆွဲဖို့ ခွင့်ပြုပါ"
 
-#: ctk/ctktreeview.c:1268
+#: ctk/ctktreeview.c:1274
 msgid "Indent Expanders"
 msgstr "အတွင်းစည်း ချဲ့ကားကိရိယာများ"
 
-#: ctk/ctktreeview.c:1269
+#: ctk/ctktreeview.c:1275
 msgid "Make the expanders indented"
 msgstr "ချဲ့ကား ကိရိယာများကို အတွင်းစည်း ချမှတ်ပါ"
 
-#: ctk/ctktreeview.c:1275
+#: ctk/ctktreeview.c:1281
 msgid "Even Row Color"
 msgstr "စုံကိန်း အတန်း အရောင်"
 
-#: ctk/ctktreeview.c:1276
+#: ctk/ctktreeview.c:1282
 msgid "Color to use for even rows"
 msgstr "စုံကိန်း အတန်းများမှာ သုံးစွဲမဲ့ အရောင်"
 
-#: ctk/ctktreeview.c:1282
+#: ctk/ctktreeview.c:1288
 msgid "Odd Row Color"
 msgstr "မကိန်း အတန်း အရောင်"
 
-#: ctk/ctktreeview.c:1283
+#: ctk/ctktreeview.c:1289
 msgid "Color to use for odd rows"
 msgstr "မကိန်း အတန်းများမှ သုံးစွဲမဲ့ အရောင်"
 
-#: ctk/ctktreeview.c:1290
+#: ctk/ctktreeview.c:1296
 msgid "Grid line width"
 msgstr "ဂရစ်လိုင်း အကျယ်"
 
-#: ctk/ctktreeview.c:1291
+#: ctk/ctktreeview.c:1297
 msgid "Width, in pixels, of the tree view grid lines"
 msgstr "pixel များအလိုက်၊ အပင် မြင်ကွင်း ဂရစ်လိုင်းများရဲ့ အကျယ်"
 
-#: ctk/ctktreeview.c:1297
+#: ctk/ctktreeview.c:1303
 msgid "Tree line width"
 msgstr "အပင်လိုင်း အကျယ်"
 
-#: ctk/ctktreeview.c:1298
+#: ctk/ctktreeview.c:1304
 msgid "Width, in pixels, of the tree view lines"
 msgstr "pixel များနဲ့ အပင် မြင်ကွင်း လိုင်းများရဲ့ အကျယ်"
 
-#: ctk/ctktreeview.c:1304
+#: ctk/ctktreeview.c:1310
 msgid "Grid line pattern"
 msgstr "ဂရစ်လိုင်း ပုံစံ"
 
-#: ctk/ctktreeview.c:1305
+#: ctk/ctktreeview.c:1311
 msgid "Dash pattern used to draw the tree view grid lines"
 msgstr "အပင် မြင်ကွင်း ဂရစ်လိုင်းများကို ရေးဆွဲရန် သုံးစွဲတဲ့ မျဉ်းရှည်လေး ပုံစံ"
 
-#: ctk/ctktreeview.c:1311
+#: ctk/ctktreeview.c:1317
 msgid "Tree line pattern"
 msgstr "အပင် လိုင်း ပုံစံ"
 
-#: ctk/ctktreeview.c:1312
+#: ctk/ctktreeview.c:1318
 msgid "Dash pattern used to draw the tree view lines"
 msgstr "အပင် မြင်ကွင် လိုင်းများကို ရေးဆွဲရန် သုံးစွဲတဲ့ မျဉ်းရှည်လေး ပုံစံ"
 
@@ -9089,7 +9089,7 @@ msgstr "အပင် မြင်ကွင် လိုင်းများက�
 msgid "Whether to display the column"
 msgstr "ကော်လံကို ပြမလား၊ မပြဘူးလား"
 
-#: ctk/ctktreeviewcolumn.c:253 ctk/ctkwindow.c:782
+#: ctk/ctktreeviewcolumn.c:253 ctk/ctkwindow.c:783
 msgid "Resizable"
 msgstr "အရွယ်ညှိနိုင်တယ်"
 
@@ -9651,262 +9651,262 @@ msgstr "လက်ကိုင် အကျယ်"
 msgid "Height of text selection handles"
 msgstr "ဖောင့် ရွေးချယ်ရေး အညွှန်းစာမျက်နှာရဲ့ ​ခေါင်းစဉ်"
 
-#: ctk/ctkwindow.c:744
+#: ctk/ctkwindow.c:745
 msgid "Window Type"
 msgstr "၀င်းဒိုး အမျိုးအစား"
 
-#: ctk/ctkwindow.c:745
+#: ctk/ctkwindow.c:746
 msgid "The type of the window"
 msgstr "၀င်းဒိုးရဲ့ အမျိုးအစား"
 
-#: ctk/ctkwindow.c:752
+#: ctk/ctkwindow.c:753
 msgid "Window Title"
 msgstr "၀င်းဒိုး ခေါင်းစဉ်"
 
-#: ctk/ctkwindow.c:753
+#: ctk/ctkwindow.c:754
 msgid "The title of the window"
 msgstr "၀င်းဒိုးရဲ့ ခေါင်းစဉ်"
 
-#: ctk/ctkwindow.c:759
+#: ctk/ctkwindow.c:760
 msgid "Window Role"
 msgstr "၀င်းဒိုး အခန်းကဏ္ဍ"
 
-#: ctk/ctkwindow.c:760
+#: ctk/ctkwindow.c:761
 msgid "Unique identifier for the window to be used when restoring a session"
 msgstr "အခန်းကဏ္ဍ တခုကို ပြန်ထားတဲ့အခါ သုံးစွဲတဲ့ ၀င်းဒိုးအတွက် သီးခြား ဖေါ်​ထုတ်ကိရိယာ"
 
-#: ctk/ctkwindow.c:775
+#: ctk/ctkwindow.c:776
 msgid "Startup ID"
 msgstr "အစပြုတဲ့ ID"
 
-#: ctk/ctkwindow.c:776
+#: ctk/ctkwindow.c:777
 msgid "Unique startup identifier for the window used by startup-notification"
 msgstr "startup-notification မှ သုံးစွဲတဲ့ ၀င်းဒိုးအတွက် သီးခြား အစပြု ဖေါ်ထုတ် ကိရိယာ"
 
-#: ctk/ctkwindow.c:783
+#: ctk/ctkwindow.c:784
 msgid "If TRUE, users can resize the window"
 msgstr "မှန်ရင်၊ သုံးစွဲသူများက ၀င်းဒိုးကို အရွယ်ညှိနိုင်ကြတယ်"
 
-#: ctk/ctkwindow.c:790
+#: ctk/ctkwindow.c:791
 msgid ""
 "If TRUE, the window is modal (other windows are not usable while this one is "
 "up)"
 msgstr "မှန်ရင်၊ ၀င်းဒိုးဟာ ဖြစ်နိုင်ချေ (ဒီတခု သုံးနေချိန်မှာ အခြား ၀င်းဒိုးများကို သုံးလို့ မရဘူး) ဖြစ်တယ်"
 
-#: ctk/ctkwindow.c:796
+#: ctk/ctkwindow.c:797
 msgid "Window Position"
 msgstr "၀င်းဒိုး တည်နေရာ"
 
-#: ctk/ctkwindow.c:797
+#: ctk/ctkwindow.c:798
 msgid "The initial position of the window"
 msgstr "၀င်းဒိုးရဲ့ အစပိုင်း တည်နေရာ"
 
-#: ctk/ctkwindow.c:804
+#: ctk/ctkwindow.c:805
 msgid "Default Width"
 msgstr "စံထားချက် အကျယ်"
 
-#: ctk/ctkwindow.c:805
+#: ctk/ctkwindow.c:806
 msgid "The default width of the window, used when initially showing the window"
 msgstr "၀င်းဒိုးကို အစပြု ဖေါ်ပြတဲ့အခါ သုံးစွဲတဲ့ ၀င်းဒိုးရဲ့ စံထားချက် အကျယ်"
 
-#: ctk/ctkwindow.c:812
+#: ctk/ctkwindow.c:813
 msgid "Default Height"
 msgstr "စံထားချက် အမြင့်"
 
-#: ctk/ctkwindow.c:813
+#: ctk/ctkwindow.c:814
 msgid ""
 "The default height of the window, used when initially showing the window"
 msgstr "၀င်းဒိုးကို အစပြု ဖေါ်ပြတဲ့အခါ သုံးစွဲတဲ့ ၀င်းဒိုးရဲ့ စံထားချက် အမြင့်"
 
-#: ctk/ctkwindow.c:820
+#: ctk/ctkwindow.c:821
 msgid "Destroy with Parent"
 msgstr "ပင်ရင်းနဲ့ ဖျက်စီးပါ"
 
-#: ctk/ctkwindow.c:821
+#: ctk/ctkwindow.c:822
 msgid "If this window should be destroyed when the parent is destroyed"
 msgstr "ပင်ရင်းကို ဖျတ်စီးတဲ့အခါ ဒီ၀င်းဒိုးကို ဖျက်စီးသင့်သလား"
 
-#: ctk/ctkwindow.c:834
+#: ctk/ctkwindow.c:835
 msgid "Hide the titlebar during maximization"
 msgstr ""
 
-#: ctk/ctkwindow.c:835
+#: ctk/ctkwindow.c:836
 #, fuzzy
 msgid "If this window's titlebar should be hidden when the window is maximized"
 msgstr "ပင်ရင်းကို ဖျတ်စီးတဲ့အခါ ဒီ၀င်းဒိုးကို ဖျက်စီးသင့်သလား"
 
-#: ctk/ctkwindow.c:842
+#: ctk/ctkwindow.c:843
 msgid "Icon for this window"
 msgstr "၀င်းဒိုးအတွက် ပုံသ​င်္ကေတ"
 
-#: ctk/ctkwindow.c:858
+#: ctk/ctkwindow.c:859
 #, fuzzy
 msgid "Mnemonics Visible"
 msgstr "မှတ်ဉာဏ်ကူ သော့ချက်"
 
-#: ctk/ctkwindow.c:859
+#: ctk/ctkwindow.c:860
 #, fuzzy
 msgid "Whether mnemonics are currently visible in this window"
 msgstr "ထိပ်ပိုင်းအဆင့်ဟာ လက်ရှိ သက်၀င်တဲ့ ၀င်းဒိုး ဖြစ်၊ မဖြစ်"
 
-#: ctk/ctkwindow.c:875
+#: ctk/ctkwindow.c:876
 #, fuzzy
 msgid "Focus Visible"
 msgstr "မြင်နိုင်တဲ့ ခါဆာ"
 
-#: ctk/ctkwindow.c:876
+#: ctk/ctkwindow.c:877
 #, fuzzy
 msgid "Whether focus rectangles are currently visible in this window"
 msgstr "ထိပ်ပိုင်းအဆင့်ဟာ လက်ရှိ သက်၀င်တဲ့ ၀င်းဒိုး ဖြစ်၊ မဖြစ်"
 
-#: ctk/ctkwindow.c:891
+#: ctk/ctkwindow.c:892
 msgid "Name of the themed icon for this window"
 msgstr "ဒီ၀င်းဒိုးအတွက် ခင်းကျင်းထားတဲ့ ပုံသင်္ကေတရဲ့ အမည်"
 
-#: ctk/ctkwindow.c:904
+#: ctk/ctkwindow.c:905
 msgid "Is Active"
 msgstr "သက်၀င်နေတယ်"
 
-#: ctk/ctkwindow.c:905
+#: ctk/ctkwindow.c:906
 msgid "Whether the toplevel is the current active window"
 msgstr "ထိပ်ပိုင်းအဆင့်ဟာ လက်ရှိ သက်၀င်တဲ့ ၀င်းဒိုး ဖြစ်၊ မဖြစ်"
 
-#: ctk/ctkwindow.c:911
+#: ctk/ctkwindow.c:912
 msgid "Focus in Toplevel"
 msgstr "ထိပ်ပိုင်းအဆင့်မှာ ဗဟိုပြုထားတယ်"
 
-#: ctk/ctkwindow.c:912
+#: ctk/ctkwindow.c:913
 msgid "Whether the input focus is within this CtkWindow"
 msgstr "ထည့်သွင်းချက် ဗဟိုပြုမှုဟာ ဒီ CtkWindow အတွင်း ရှိ၊ မရှိ"
 
-#: ctk/ctkwindow.c:918
+#: ctk/ctkwindow.c:919
 msgid "Type hint"
 msgstr "ရိုက်ထည့်ချက် အရိပ်အမြွတ်"
 
-#: ctk/ctkwindow.c:919
+#: ctk/ctkwindow.c:920
 msgid ""
 "Hint to help the desktop environment understand what kind of window this is "
 "and how to treat it."
 msgstr ""
 "၀င်းဒိုးရဲ့ အမျိုးအစားနဲ့ ၄င်းကို ပြုမှုမဲ့ ပုံစံက စားပွဲတင် ပတ်၀န်းကျင် နားလည်မှုအတွက် ကူညီပေးမဲ့ အရိပ်အမြွတ်"
 
-#: ctk/ctkwindow.c:926
+#: ctk/ctkwindow.c:927
 msgid "Skip taskbar"
 msgstr "taskbar ကို ကျော်ပါ"
 
-#: ctk/ctkwindow.c:927
+#: ctk/ctkwindow.c:928
 msgid "TRUE if the window should not be in the task bar."
 msgstr "၀င်းဒိုးဟာ task bar ထဲမှာ မရှိရင် မှန်တယ်။"
 
-#: ctk/ctkwindow.c:933
+#: ctk/ctkwindow.c:934
 msgid "Skip pager"
 msgstr "pager ကို ကျော်ပါ"
 
-#: ctk/ctkwindow.c:934
+#: ctk/ctkwindow.c:935
 msgid "TRUE if the window should not be in the pager."
 msgstr "၀င်းဒိုးဟာ pager ထဲမှာ မရှိရင် မှန်တယ်။"
 
-#: ctk/ctkwindow.c:940
+#: ctk/ctkwindow.c:941
 msgid "Urgent"
 msgstr "အရေးတကြီး"
 
-#: ctk/ctkwindow.c:941
+#: ctk/ctkwindow.c:942
 msgid "TRUE if the window should be brought to the user's attention."
 msgstr "၀င်းဒိုးကို သုံးစွဲသူရဲ့ အာရုံစိုက်မှုအတွက် ယူဆောင်ခဲ့ရင် မှန်တယ်။"
 
-#: ctk/ctkwindow.c:954
+#: ctk/ctkwindow.c:955
 msgid "Accept focus"
 msgstr "ဗဟိုပြုချက်ကို လက်ခံပါ"
 
-#: ctk/ctkwindow.c:955
+#: ctk/ctkwindow.c:956
 msgid "TRUE if the window should receive the input focus."
 msgstr "၀င်းဒိုးက ထည့်သွင်းချက် ဗဟိုပြုမှုကို လက်ခံရင် မှန်တယ်။"
 
-#: ctk/ctkwindow.c:968
+#: ctk/ctkwindow.c:969
 msgid "Focus on map"
 msgstr "မြေပုံပေါ် ဗဟိုပြုပါ"
 
-#: ctk/ctkwindow.c:969
+#: ctk/ctkwindow.c:970
 msgid "TRUE if the window should receive the input focus when mapped."
 msgstr "၀င်းဒိုးက ပုံဖေါ်ပြီးတဲ့အခါ ထည့်သွင်းမှု ဗဟိုပြုချက်ကို ရရှိရင် မှန်တယ်။"
 
-#: ctk/ctkwindow.c:982
+#: ctk/ctkwindow.c:983
 msgid "Decorated"
 msgstr "အလှဆင်ချက်"
 
-#: ctk/ctkwindow.c:983
+#: ctk/ctkwindow.c:984
 msgid "Whether the window should be decorated by the window manager"
 msgstr "၀င်းဒိုးကို ၀င်းဒိုး မန်နေဂျာက အလှဆင်သင့်၊ မဆင်သင့်"
 
-#: ctk/ctkwindow.c:996
+#: ctk/ctkwindow.c:997
 msgid "Deletable"
 msgstr "ပယ်ဖျက်နိုင်တယ်"
 
-#: ctk/ctkwindow.c:997
+#: ctk/ctkwindow.c:998
 msgid "Whether the window frame should have a close button"
 msgstr "၀င်းဒိုး ဘောင်မှာ ပိတ်ထားတဲ့ ခလုတ်တခု ရှိသင့်၊ မရှိသင့်"
 
-#: ctk/ctkwindow.c:1017
+#: ctk/ctkwindow.c:1018
 #, fuzzy
 msgid "Resize grip"
 msgstr "အရွယ်ညှိတဲ့ ဆုပ်ကိုင်မှု ရှိတယ်"
 
-#: ctk/ctkwindow.c:1018
+#: ctk/ctkwindow.c:1019
 #, fuzzy
 msgid "Specifies whether the window should have a resize grip"
 msgstr "၀င်းဒိုး ဘောင်မှာ ပိတ်ထားတဲ့ ခလုတ်တခု ရှိသင့်၊ မရှိသင့်"
 
-#: ctk/ctkwindow.c:1033
+#: ctk/ctkwindow.c:1034
 msgid "Resize grip is visible"
 msgstr ""
 
-#: ctk/ctkwindow.c:1034
+#: ctk/ctkwindow.c:1035
 #, fuzzy
 msgid "Specifies whether the window's resize grip is visible."
 msgstr "လှုပ်ရှားမှု အဖွဲ့ကို မြင်နိုင်၊ မြင်နိုင်။"
 
-#: ctk/ctkwindow.c:1048
+#: ctk/ctkwindow.c:1049
 msgid "Gravity"
 msgstr "ကြီးလေးမှု"
 
-#: ctk/ctkwindow.c:1049
+#: ctk/ctkwindow.c:1050
 msgid "The window gravity of the window"
 msgstr "၀င်းဒိုးရဲ့ ၀င်းဒိုး ကြီးလေးမှု"
 
-#: ctk/ctkwindow.c:1084
+#: ctk/ctkwindow.c:1085
 #, fuzzy
 msgid "Attached to Widget"
 msgstr "widgetကို ပူးတွဲပါ"
 
-#: ctk/ctkwindow.c:1085
+#: ctk/ctkwindow.c:1086
 #, fuzzy
 msgid "The widget where the window is attached"
 msgstr "widget စာရင်းမှတ်ကို ပူးတွဲထားတဲ့ နေရာ"
 
-#: ctk/ctkwindow.c:1091
+#: ctk/ctkwindow.c:1092
 msgid "Is maximized"
 msgstr ""
 
-#: ctk/ctkwindow.c:1092
+#: ctk/ctkwindow.c:1093
 #, fuzzy
 msgid "Whether the window is maximized"
 msgstr "Widget ကို မြင်နိုင်၊ မမြင်နိုင်"
 
-#: ctk/ctkwindow.c:1113
+#: ctk/ctkwindow.c:1114
 #, fuzzy
 msgid "CtkApplication"
 msgstr "အရောင်ဆိုးနိုင်တဲ့ လုပ်ငန်းသုံးကိရိယာ"
 
-#: ctk/ctkwindow.c:1114
+#: ctk/ctkwindow.c:1115
 #, fuzzy
 msgid "The CtkApplication for the window"
 msgstr "၀င်းဒိုးရဲ့ အစပိုင်း တည်နေရာ"
 
-#: ctk/ctkwindow.c:1124 ctk/ctkwindow.c:1125
+#: ctk/ctkwindow.c:1125 ctk/ctkwindow.c:1126
 msgid "Decorated button layout"
 msgstr ""
 
-#: ctk/ctkwindow.c:1131 ctk/ctkwindow.c:1132
+#: ctk/ctkwindow.c:1132 ctk/ctkwindow.c:1133
 msgid "Decoration resize handle size"
 msgstr ""
 
