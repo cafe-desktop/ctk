@@ -353,6 +353,7 @@ current_cursor_cache_free (gpointer data)
 Cursor
 _cdk_x11_display_get_current_cursor (CdkDisplay *display)
 {
+#if defined(HAVE_XCURSOR) && defined(HAVE_XFIXES)
   Display *xdisplay;
   XFixesCursorImage *image;
   CurrentCursorCache *cache;
@@ -418,6 +419,12 @@ _cdk_x11_display_get_current_cursor (CdkDisplay *display)
                            current_cursor_cache_free);
 
   return xcursor;
+#else
+  /* Without Xcursor and XFixes there is no way to fetch the image the
+   * pointer is showing; the grab code then has nothing to freeze and
+   * relies on the theme's default arrow alone, when it is available. */
+  return None;
+#endif
 }
 
 static GQuark grab_current_cursor_quark = 0;
