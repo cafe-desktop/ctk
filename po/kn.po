@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+.master.kn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-16 11:58+0100\n"
+"POT-Creation-Date: 2026-11-22 15:03+0100\n"
 "PO-Revision-Date: 2014-09-23 10:15+0530\n"
 "Last-Translator: Shankar Prasad <svenkate AT redhat Dot com>\n"
 "Language-Team: Kannada <kde-i18n-doc@kde.org>\n"
@@ -680,15 +680,15 @@ msgctxt "Stock label"
 msgid "_Close"
 msgstr "ಮುಚ್ಚು (_C)"
 
-#: ctk/a11y/ctkimageaccessible.c:59 ctk/ctkheaderbar.c:415 ctk/ctkwindow.c:9320
+#: ctk/a11y/ctkimageaccessible.c:59 ctk/ctkheaderbar.c:415 ctk/ctkwindow.c:9381
 msgid "Minimize"
 msgstr "ಕುಗ್ಗಿಸು"
 
-#: ctk/a11y/ctkimageaccessible.c:60 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9329
+#: ctk/a11y/ctkimageaccessible.c:60 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9390
 msgid "Maximize"
 msgstr "ಹಿಗ್ಗಿಸು"
 
-#: ctk/a11y/ctkimageaccessible.c:61 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9286
+#: ctk/a11y/ctkimageaccessible.c:61 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9347
 msgid "Restore"
 msgstr "ಮರಳಿ ಸ್ಥಾಪಿಸಿ"
 
@@ -1243,7 +1243,7 @@ msgstr ""
 #: ctk/ctkmountoperation.c:593 ctk/ctkpagesetupunixdialog.c:197
 #: ctk/ctkprintbackend.c:781 ctk/ctkprinteroptionwidget.c:545
 #: ctk/ctkprintunixdialog.c:674 ctk/ctkprintunixdialog.c:747
-#: ctk/ctkwindow.c:12788 ctk/inspector/css-editor.c:201
+#: ctk/ctkwindow.c:12928 ctk/inspector/css-editor.c:201
 #: ctk/ui/ctkappchooserdialog.ui:61 ctk/ui/ctkassistant.ui:125
 #: ctk/ui/ctkcolorchooserdialog.ui:34 ctk/ui/ctkfontchooserdialog.ui:31
 msgid "_Cancel"
@@ -1292,7 +1292,7 @@ msgid "_Apply"
 msgstr "ಅನ್ವಯಿಸು (_A)"
 
 #: ctk/deprecated/ctkfontsel.c:1698 ctk/ctkmessagedialog.c:938
-#: ctk/ctkmessagedialog.c:960 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12789
+#: ctk/ctkmessagedialog.c:960 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12929
 msgid "_OK"
 msgstr "ಸರಿ (_O)"
 
@@ -2725,7 +2725,7 @@ msgstr "ಮುದ್ರಕದ ಮಾಹಿತಿಯನ್ನು ಪಡೆಯು�
 msgid "Application menu"
 msgstr "ಅನ್ವಯದ ಮೆನು"
 
-#: ctk/ctkheaderbar.c:458 ctk/ctkwindow.c:9356
+#: ctk/ctkheaderbar.c:458 ctk/ctkwindow.c:9417
 msgid "Close"
 msgstr "ಮುಚ್ಚು"
 
@@ -4153,24 +4153,24 @@ msgctxt "volume percentage"
 msgid "%d %%"
 msgstr ""
 
-#: ctk/ctkwindow.c:9304
+#: ctk/ctkwindow.c:9365
 msgid "Move"
 msgstr ""
 
-#: ctk/ctkwindow.c:9312
+#: ctk/ctkwindow.c:9373
 msgid "Resize"
 msgstr ""
 
-#: ctk/ctkwindow.c:9343
+#: ctk/ctkwindow.c:9404
 msgid "Always on Top"
 msgstr ""
 
-#: ctk/ctkwindow.c:12776
+#: ctk/ctkwindow.c:12916
 #, c-format
 msgid "Do you want to use CTK+ Inspector?"
 msgstr "ನೀವು CTK+ ಇನ್‌ಸ್ಪೆಕ್ಟರ್‌ ಅನ್ನು ಬಳಸಲು ಬಯಸುವಿರಾ?"
 
-#: ctk/ctkwindow.c:12778
+#: ctk/ctkwindow.c:12918
 #, c-format
 msgid ""
 "CTK+ Inspector is an interactive debugger that lets you explore and modify "
@@ -4181,7 +4181,7 @@ msgstr ""
 "ಅನ್ವಯದ ಆಂತರಿಕಗಳನ್ನು ಪರಿಶೀಲಿಸಲು ಮತ್ತು ಮಾರ್ಪಡಿಸಲು ಅವಕಾಶ ನೀಡುತ್ತದೆ. ಇದನ್ನು "
 "ಬಳಸುವುದರಿಂದ ಅನ್ವಯ ನಿಂತು ಹೋಗಲು ಅಥವ ಕುಸಿತಗೊಳ್ಳಲು ಕಾರಣವಾಗಬಹುದು."
 
-#: ctk/ctkwindow.c:12783
+#: ctk/ctkwindow.c:12923
 msgid "Don't show this message again"
 msgstr ""
 

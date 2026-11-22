@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+.ctk-2-4.bs\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-16 11:58+0100\n"
+"POT-Creation-Date: 2026-11-22 15:03+0100\n"
 "PO-Revision-Date: 2015-03-03 21:03+0100\n"
 "Last-Translator: Samir Ribić <Unknown>\n"
 "Language-Team: Bosnian <lokal@linux.org.ba>\n"
@@ -683,15 +683,15 @@ msgctxt "Stock label"
 msgid "_Close"
 msgstr "_Zatvori"
 
-#: ctk/a11y/ctkimageaccessible.c:59 ctk/ctkheaderbar.c:415 ctk/ctkwindow.c:9320
+#: ctk/a11y/ctkimageaccessible.c:59 ctk/ctkheaderbar.c:415 ctk/ctkwindow.c:9381
 msgid "Minimize"
 msgstr "Minimiziraj"
 
-#: ctk/a11y/ctkimageaccessible.c:60 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9329
+#: ctk/a11y/ctkimageaccessible.c:60 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9390
 msgid "Maximize"
 msgstr "Maksimizacija"
 
-#: ctk/a11y/ctkimageaccessible.c:61 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9286
+#: ctk/a11y/ctkimageaccessible.c:61 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9347
 msgid "Restore"
 msgstr "Obnovi"
 
@@ -1242,7 +1242,7 @@ msgstr ""
 #: ctk/ctkmountoperation.c:593 ctk/ctkpagesetupunixdialog.c:197
 #: ctk/ctkprintbackend.c:781 ctk/ctkprinteroptionwidget.c:545
 #: ctk/ctkprintunixdialog.c:674 ctk/ctkprintunixdialog.c:747
-#: ctk/ctkwindow.c:12788 ctk/inspector/css-editor.c:201
+#: ctk/ctkwindow.c:12928 ctk/inspector/css-editor.c:201
 #: ctk/ui/ctkappchooserdialog.ui:61 ctk/ui/ctkassistant.ui:125
 #: ctk/ui/ctkcolorchooserdialog.ui:34 ctk/ui/ctkfontchooserdialog.ui:31
 msgid "_Cancel"
@@ -1291,7 +1291,7 @@ msgid "_Apply"
 msgstr "_Primijeni"
 
 #: ctk/deprecated/ctkfontsel.c:1698 ctk/ctkmessagedialog.c:938
-#: ctk/ctkmessagedialog.c:960 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12789
+#: ctk/ctkmessagedialog.c:960 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12929
 msgid "_OK"
 msgstr "_Uredu"
 
@@ -2722,7 +2722,7 @@ msgstr "Kreiranje OpenGL konteksta neuspjelo"
 msgid "Application menu"
 msgstr "Peogramski meni"
 
-#: ctk/ctkheaderbar.c:458 ctk/ctkwindow.c:9356
+#: ctk/ctkheaderbar.c:458 ctk/ctkwindow.c:9417
 msgid "Close"
 msgstr "ZatvorI"
 
@@ -4148,24 +4148,24 @@ msgctxt "volume percentage"
 msgid "%d %%"
 msgstr "%d %%"
 
-#: ctk/ctkwindow.c:9304
+#: ctk/ctkwindow.c:9365
 msgid "Move"
 msgstr ""
 
-#: ctk/ctkwindow.c:9312
+#: ctk/ctkwindow.c:9373
 msgid "Resize"
 msgstr ""
 
-#: ctk/ctkwindow.c:9343
+#: ctk/ctkwindow.c:9404
 msgid "Always on Top"
 msgstr ""
 
-#: ctk/ctkwindow.c:12776
+#: ctk/ctkwindow.c:12916
 #, c-format
 msgid "Do you want to use CTK+ Inspector?"
 msgstr "Da li želite koristiti CTK+ Kontrolora?"
 
-#: ctk/ctkwindow.c:12778
+#: ctk/ctkwindow.c:12918
 #, c-format
 msgid ""
 "CTK+ Inspector is an interactive debugger that lets you explore and modify "
@@ -4176,7 +4176,7 @@ msgstr ""
 "modificiranje unutarnjih dijelova bilo koje CTK+ aplikacije. Korištenje može "
 "uzrokovati prekid ili pad iste."
 
-#: ctk/ctkwindow.c:12783
+#: ctk/ctkwindow.c:12923
 msgid "Don't show this message again"
 msgstr "Ne prikazuj više ovu poruku"
 

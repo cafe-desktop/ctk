@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: as\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-16 11:58+0100\n"
+"POT-Creation-Date: 2026-11-22 15:03+0100\n"
 "PO-Revision-Date: 2014-09-08 19:22+0530\n"
 "Last-Translator: Nilamdyuti Goswami <ngoswami@redhat.com>\n"
 "Language-Team: Assamese <kde-i18n-doc@kde.org>\n"
@@ -680,15 +680,15 @@ msgctxt "Stock label"
 msgid "_Close"
 msgstr "বন্ধ কৰক (_C)"
 
-#: ctk/a11y/ctkimageaccessible.c:59 ctk/ctkheaderbar.c:415 ctk/ctkwindow.c:9320
+#: ctk/a11y/ctkimageaccessible.c:59 ctk/ctkheaderbar.c:415 ctk/ctkwindow.c:9381
 msgid "Minimize"
 msgstr "সৰু কৰক"
 
-#: ctk/a11y/ctkimageaccessible.c:60 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9329
+#: ctk/a11y/ctkimageaccessible.c:60 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9390
 msgid "Maximize"
 msgstr "ডাঙৰ কৰক"
 
-#: ctk/a11y/ctkimageaccessible.c:61 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9286
+#: ctk/a11y/ctkimageaccessible.c:61 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9347
 msgid "Restore"
 msgstr "পুনৰুদ্ধাৰ কৰক"
 
@@ -1242,7 +1242,7 @@ msgstr ""
 #: ctk/ctkmountoperation.c:593 ctk/ctkpagesetupunixdialog.c:197
 #: ctk/ctkprintbackend.c:781 ctk/ctkprinteroptionwidget.c:545
 #: ctk/ctkprintunixdialog.c:674 ctk/ctkprintunixdialog.c:747
-#: ctk/ctkwindow.c:12788 ctk/inspector/css-editor.c:201
+#: ctk/ctkwindow.c:12928 ctk/inspector/css-editor.c:201
 #: ctk/ui/ctkappchooserdialog.ui:61 ctk/ui/ctkassistant.ui:125
 #: ctk/ui/ctkcolorchooserdialog.ui:34 ctk/ui/ctkfontchooserdialog.ui:31
 msgid "_Cancel"
@@ -1291,7 +1291,7 @@ msgid "_Apply"
 msgstr "প্ৰয়োগ কৰক (_A)"
 
 #: ctk/deprecated/ctkfontsel.c:1698 ctk/ctkmessagedialog.c:938
-#: ctk/ctkmessagedialog.c:960 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12789
+#: ctk/ctkmessagedialog.c:960 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12929
 msgid "_OK"
 msgstr "ঠিক আছে (_O)"
 
@@ -2723,7 +2723,7 @@ msgstr "প্ৰিনটাৰৰ তথ্য পোৱাত ব্যৰ্
 msgid "Application menu"
 msgstr "এপ্লিকেচন মেনু"
 
-#: ctk/ctkheaderbar.c:458 ctk/ctkwindow.c:9356
+#: ctk/ctkheaderbar.c:458 ctk/ctkwindow.c:9417
 msgid "Close"
 msgstr "বন্ধ কৰক"
 
@@ -4145,24 +4145,24 @@ msgctxt "volume percentage"
 msgid "%d %%"
 msgstr ""
 
-#: ctk/ctkwindow.c:9304
+#: ctk/ctkwindow.c:9365
 msgid "Move"
 msgstr "স্থানান্তৰ কৰক"
 
-#: ctk/ctkwindow.c:9312
+#: ctk/ctkwindow.c:9373
 msgid "Resize"
 msgstr "পুনৰআকাৰ দিয়ক"
 
-#: ctk/ctkwindow.c:9343
+#: ctk/ctkwindow.c:9404
 msgid "Always on Top"
 msgstr "সদায় ওপৰত"
 
-#: ctk/ctkwindow.c:12776
+#: ctk/ctkwindow.c:12916
 #, c-format
 msgid "Do you want to use CTK+ Inspector?"
 msgstr "আপুনি CTK+ নিৰীক্ষক ব্যৱহাৰ কৰিব খোজে নে?"
 
-#: ctk/ctkwindow.c:12778
+#: ctk/ctkwindow.c:12918
 #, c-format
 msgid ""
 "CTK+ Inspector is an interactive debugger that lets you explore and modify "
@@ -4173,7 +4173,7 @@ msgstr ""
 "অন্বেষণ আৰু পৰিবৰ্তন কৰাৰ সুবিধা দিয়ে। ইয়াক ব্যৱহাৰ কৰিলে এপ্লিকেচন ভাঙিব পাৰে "
 "অথবা স্খলন হব পাৰে।"
 
-#: ctk/ctkwindow.c:12783
+#: ctk/ctkwindow.c:12923
 msgid "Don't show this message again"
 msgstr ""
 

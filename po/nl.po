@@ -28,7 +28,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-16 11:58+0100\n"
+"POT-Creation-Date: 2026-11-22 15:03+0100\n"
 "PO-Revision-Date: 2020-08-25 16:39+0200\n"
 "Last-Translator: Nathan Follens <nthn@unseen.is>\n"
 "Language-Team: Dutch <gnome-nl-list@gnome.org>\n"
@@ -707,15 +707,15 @@ msgctxt "Stock label"
 msgid "_Close"
 msgstr "Sl_uiten"
 
-#: ctk/a11y/ctkimageaccessible.c:59 ctk/ctkheaderbar.c:415 ctk/ctkwindow.c:9320
+#: ctk/a11y/ctkimageaccessible.c:59 ctk/ctkheaderbar.c:415 ctk/ctkwindow.c:9381
 msgid "Minimize"
 msgstr "Minimaliseren"
 
-#: ctk/a11y/ctkimageaccessible.c:60 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9329
+#: ctk/a11y/ctkimageaccessible.c:60 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9390
 msgid "Maximize"
 msgstr "Maximaliseren"
 
-#: ctk/a11y/ctkimageaccessible.c:61 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9286
+#: ctk/a11y/ctkimageaccessible.c:61 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9347
 msgid "Restore"
 msgstr "Herstellen"
 
@@ -1294,7 +1294,7 @@ msgstr ""
 #: ctk/ctkmountoperation.c:593 ctk/ctkpagesetupunixdialog.c:197
 #: ctk/ctkprintbackend.c:781 ctk/ctkprinteroptionwidget.c:545
 #: ctk/ctkprintunixdialog.c:674 ctk/ctkprintunixdialog.c:747
-#: ctk/ctkwindow.c:12788 ctk/inspector/css-editor.c:201
+#: ctk/ctkwindow.c:12928 ctk/inspector/css-editor.c:201
 #: ctk/ui/ctkappchooserdialog.ui:61 ctk/ui/ctkassistant.ui:125
 #: ctk/ui/ctkcolorchooserdialog.ui:34 ctk/ui/ctkfontchooserdialog.ui:31
 msgid "_Cancel"
@@ -1349,7 +1349,7 @@ msgstr "Toe_passen"
 
 # Ok/OK
 #: ctk/deprecated/ctkfontsel.c:1698 ctk/ctkmessagedialog.c:938
-#: ctk/ctkmessagedialog.c:960 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12789
+#: ctk/ctkmessagedialog.c:960 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12929
 msgid "_OK"
 msgstr "_Ok"
 
@@ -2780,7 +2780,7 @@ msgstr "OpenGL-context aanmaken is mislukt"
 msgid "Application menu"
 msgstr "Toepassingenmenu"
 
-#: ctk/ctkheaderbar.c:458 ctk/ctkwindow.c:9356
+#: ctk/ctkheaderbar.c:458 ctk/ctkwindow.c:9417
 msgid "Close"
 msgstr "Sluiten"
 
@@ -4216,24 +4216,24 @@ msgctxt "volume percentage"
 msgid "%d %%"
 msgstr "%d %%"
 
-#: ctk/ctkwindow.c:9304
+#: ctk/ctkwindow.c:9365
 msgid "Move"
 msgstr "Verplaatsen"
 
-#: ctk/ctkwindow.c:9312
+#: ctk/ctkwindow.c:9373
 msgid "Resize"
 msgstr "Grootte wijzigen"
 
-#: ctk/ctkwindow.c:9343
+#: ctk/ctkwindow.c:9404
 msgid "Always on Top"
 msgstr "Altijd bovenop"
 
-#: ctk/ctkwindow.c:12776
+#: ctk/ctkwindow.c:12916
 #, c-format
 msgid "Do you want to use CTK+ Inspector?"
 msgstr "Wilt u CTK+ Inspector gebruiken?"
 
-#: ctk/ctkwindow.c:12778
+#: ctk/ctkwindow.c:12918
 #, c-format
 msgid ""
 "CTK+ Inspector is an interactive debugger that lets you explore and modify "
@@ -4244,7 +4244,7 @@ msgstr ""
 "inwendige van een CTK+ toepassing kunt verkennen en wijzigen. Het gebruik "
 "ervan kan ertoe leiden dat de toepassing afgebroken wordt of vastloopt."
 
-#: ctk/ctkwindow.c:12783
+#: ctk/ctkwindow.c:12923
 msgid "Don't show this message again"
 msgstr "Deze boodschap niet meer tonen"
 

@@ -29,7 +29,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ctk+ master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-16 11:58+0100\n"
+"POT-Creation-Date: 2026-11-22 15:03+0100\n"
 "PO-Revision-Date: 2020-08-29 10:20-0400\n"
 "Last-Translator: Dingzhong Chen <wsxy162@@gmail.com>\n"
 "Language-Team: Chinese (China) <i18n-zh@googlegroups.com>\n"
@@ -694,15 +694,15 @@ msgctxt "Stock label"
 msgid "_Close"
 msgstr "关闭(_C)"
 
-#: ctk/a11y/ctkimageaccessible.c:59 ctk/ctkheaderbar.c:415 ctk/ctkwindow.c:9320
+#: ctk/a11y/ctkimageaccessible.c:59 ctk/ctkheaderbar.c:415 ctk/ctkwindow.c:9381
 msgid "Minimize"
 msgstr "最小化"
 
-#: ctk/a11y/ctkimageaccessible.c:60 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9329
+#: ctk/a11y/ctkimageaccessible.c:60 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9390
 msgid "Maximize"
 msgstr "最大化"
 
-#: ctk/a11y/ctkimageaccessible.c:61 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9286
+#: ctk/a11y/ctkimageaccessible.c:61 ctk/ctkheaderbar.c:439 ctk/ctkwindow.c:9347
 msgid "Restore"
 msgstr "还原"
 
@@ -1242,7 +1242,7 @@ msgstr ""
 #: ctk/ctkmountoperation.c:593 ctk/ctkpagesetupunixdialog.c:197
 #: ctk/ctkprintbackend.c:781 ctk/ctkprinteroptionwidget.c:545
 #: ctk/ctkprintunixdialog.c:674 ctk/ctkprintunixdialog.c:747
-#: ctk/ctkwindow.c:12788 ctk/inspector/css-editor.c:201
+#: ctk/ctkwindow.c:12928 ctk/inspector/css-editor.c:201
 #: ctk/ui/ctkappchooserdialog.ui:61 ctk/ui/ctkassistant.ui:125
 #: ctk/ui/ctkcolorchooserdialog.ui:34 ctk/ui/ctkfontchooserdialog.ui:31
 msgid "_Cancel"
@@ -1291,7 +1291,7 @@ msgid "_Apply"
 msgstr "应用(_A)"
 
 #: ctk/deprecated/ctkfontsel.c:1698 ctk/ctkmessagedialog.c:938
-#: ctk/ctkmessagedialog.c:960 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12789
+#: ctk/ctkmessagedialog.c:960 ctk/ctkprintbackend.c:782 ctk/ctkwindow.c:12929
 msgid "_OK"
 msgstr "确定(_O)"
 
@@ -2687,7 +2687,7 @@ msgstr "OpenGL 上下文创建失败"
 msgid "Application menu"
 msgstr "应用程序菜单"
 
-#: ctk/ctkheaderbar.c:458 ctk/ctkwindow.c:9356
+#: ctk/ctkheaderbar.c:458 ctk/ctkwindow.c:9417
 msgid "Close"
 msgstr "关闭"
 
@@ -4080,25 +4080,25 @@ msgctxt "volume percentage"
 msgid "%d %%"
 msgstr "%d %%"
 
-#: ctk/ctkwindow.c:9304
+#: ctk/ctkwindow.c:9365
 msgid "Move"
 msgstr "移动"
 
-#: ctk/ctkwindow.c:9312
+#: ctk/ctkwindow.c:9373
 msgid "Resize"
 msgstr "改变大小"
 
-#: ctk/ctkwindow.c:9343
+#: ctk/ctkwindow.c:9404
 msgid "Always on Top"
 msgstr "常居顶端"
 
 # Chrome 那个叫检查元素，这个叫检查器也没什么问题吧。
-#: ctk/ctkwindow.c:12776
+#: ctk/ctkwindow.c:12916
 #, c-format
 msgid "Do you want to use CTK+ Inspector?"
 msgstr "您是否要使用 CTK+ 检查器？"
 
-#: ctk/ctkwindow.c:12778
+#: ctk/ctkwindow.c:12918
 #, c-format
 msgid ""
 "CTK+ Inspector is an interactive debugger that lets you explore and modify "
@@ -4108,7 +4108,7 @@ msgstr ""
 "CTK+ 检查器是一个交互式的调试器，让您可以探索并修改任何 CTK+ 应用程序的内部构"
 "造。使用它可能造成应用程序损坏或崩溃。"
 
-#: ctk/ctkwindow.c:12783
+#: ctk/ctkwindow.c:12923
 msgid "Don't show this message again"
 msgstr "不要再显示这个消息"
 
